@@ -4,75 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF2ECC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 05:55:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 852ECC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 06:31:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m3cM1/M2F99lQNTk/mf3eCyuRUuDxSKl3wL10gD58IM=; b=nrX4hdBimZxP0i
-	wHKK05ar4h9VVqJVmgsaPHqLGgeRePwhmOCEqIpe/1u8/aEalGfCPZljx6ASZSiCdKPC/ijdwVb2j
-	QSzYaVyXoEGs/e4Hn1IKaW9to5fveuoIzQirMQY2VPh9jiz1Oz1bpGhoEBUTOxJRIJmHrQDMZWgZF
-	DGXE5hh1ckbzc096vBjiNWsDKgXTwtS+jmxA1DLqKPLEGeE+u+vNtTvI1HtPIlwLQ/adguhaWME+M
-	lqSnlu1cMF9gpB8e/F9MVwGyyE9JbwWA+oErrOY0pkInbrsnwHyugtZ/sYdYyi+DEnfZ8dKHaq3xg
-	n/uclS1Sf785nz2iYxZQ==;
+	List-Owner; bh=2qx1X4aQ4L86/daizkamoRmh2EbP3i29OUbZd1guDpE=; b=v2mPCiGLQaOivb
+	CEnvtZeSWlOL0U3ZIwCF2EfZFNCUolgv7PkLcijT2I5SudJam98CxiTmbQ6ztk7WZx3+ESbPajkDE
+	I049U+KRZn+6/VS93lIKjjjQhQgKB/33DQOhy+Ww0DrCfGmkGritcuIUeIH65RfNvmq935n9vIcdQ
+	RiOrJEmhWWgXQeUduHFCLtDEKIcF80NXiHo8lKy8c7/6sAWT7TUQTVkaEyUaKelL4BJC/usyD25wV
+	6GGadQXPSGF8M955PiPadNAK0Ma38ZWgd9+7UG0pLOS+hUNc4JpwTlNwDxvkPHIDkf+0tYIP1k/sR
+	qUSVT2YsnzmpF3HalJWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njEA0-00CgFP-WD; Tue, 26 Apr 2022 05:54:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njEjV-00Cjkx-FO; Tue, 26 Apr 2022 06:31:33 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njE9n-00CgCO-O4; Tue, 26 Apr 2022 05:54:42 +0000
-X-UUID: d3ee80f6b0254abfa25c95e1b5387746-20220425
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=8snoiGjXGQXtlxEDca2Itjw8eZTjMRZdxXjVhOq9JYY=; 
- b=h4vmNUWOtdMKrY6k5fUIYy+TTJE92fgF3A5o4gSQw5EkGOWEbtbdXy1S0aERcw5AMCq7NGto9cr6DVTf2504UAkS11EvJPohihGZYs/lanTMETuddpOyHD+btzFDgLS26qQb6bl1Bu6PMlUWKFG5CszerXIc5ZFDb9fNUcQzJTo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:b45996ed-7e27-486d-a846-36d01e051c36, OB:0,
- LO
- B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
- ION:release,TS:25
-X-CID-META: VersionHash:faefae9, CLOUDID:f985f5f0-da02-41b4-b6df-58f4ccd36682,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: d3ee80f6b0254abfa25c95e1b5387746-20220425
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 163034472; Mon, 25 Apr 2022 22:54:30 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Apr 2022 22:52:43 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 13:52:41 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Apr 2022 13:52:39 +0800
-Message-ID: <4ff4246cd5d567a3fa8124800f5d75be0034621c.camel@mediatek.com>
-Subject: Re: [PATCH v2] iommu/mediatek: fix NULL pointer dereference when
- printing dev_name
-From: Yong Wu <yong.wu@mediatek.com>
-To: Robin Murphy <robin.murphy@arm.com>, Miles Chen <miles.chen@mediatek.com>
-CC: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, Joerg Roedel <jroedel@suse.de>,
- <iommu@lists.linux-foundation.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 26 Apr 2022 13:52:38 +0800
-In-Reply-To: <9debe3ab-603d-0d30-a6aa-8963b48e83d4@arm.com>
-References: <20220425082449.1821-1-miles.chen@mediatek.com>
- <9debe3ab-603d-0d30-a6aa-8963b48e83d4@arm.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1njEjI-00Cjei-Jx
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 06:31:23 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id b24so21023877edu.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 25 Apr 2022 23:31:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=o60Xdt5/lIQwm3L1GGhGdikwdOr9Y2T0obDjUUJBvKM=;
+ b=J5JP8COoziPIOC17a1AheYKEJ74nJMdOvTMVfjYEI62ywlbIffHES6TQyJ5BFbsjaK
+ tY9ZyUKyb9v4HGphUo/lSTdBB3cioJKtkzd6i+n7lg4Zn1uTju1dAIwnS3f2Q+qzDS6d
+ cB8OUjlNse0gs68Usif4169gsBrvcoKvNWM8ShCNQC9l8ns943iDaQO1cp3erX75a8q5
+ ME5XfexVA2CzmiLdNs8XgcRIwqWsxTAHjM98eosxAtu5ovZ/VcuaouLPy5I2Ey+//Ok9
+ jebbYJa9e/jOJ4HAf1lBwWUvCRN7R4R2a3BaaOlV82IOVI6z/tVhzK2TuFQyOtcY/jFQ
+ KRGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=o60Xdt5/lIQwm3L1GGhGdikwdOr9Y2T0obDjUUJBvKM=;
+ b=X13fzkCKUlCwxXqvDJ1r2QuOOVKvrf8JC1NDNEyWzi6ZGBcrpeY2s52AQPs1/PW95R
+ y6wnsoZeBOBi4kl1GHiB5O0K3ZP1KKd+xG0D31l7Et48bCWx7dtPNLwOXfqMTQdMJpy5
+ qVE4MWn7xebDvwtYk2uguh7XWoBkOlwcWI41dcY02SWJs4xUTTwuvgpuhlzoXTMekUNh
+ gts4dkGH1KElYPkDuMaL1ZbPYJk/O/D4NxotgPtcMy2QEOjq2l4vbVCGAlPl86Kb9L5Z
+ S2rpggr9byVEsB8WRFgfs7thL0qK4aWi7HWd0OgnBht2/Fy48INk3RffpvDK2tIHn/Tt
+ gcfw==
+X-Gm-Message-State: AOAM5328Tr4MlIXS08WSqjVCxxBsQVHPafNYDQKdLhNo0IdLfD2ejV+g
+ fZRmxhM2zvcVJcFD4yHkeEC5tA==
+X-Google-Smtp-Source: ABdhPJwxSeWO8cf9PYw5+0di2Y79/EaTY+pCk5EE82cxph/Dq3q5Z8dUFxTXDfTKxIZkq+xt1jrpKA==
+X-Received: by 2002:a50:cd8c:0:b0:41c:bb5a:1c7b with SMTP id
+ p12-20020a50cd8c000000b0041cbb5a1c7bmr22624009edi.351.1650954675180; 
+ Mon, 25 Apr 2022 23:31:15 -0700 (PDT)
+Received: from [192.168.0.244] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ lb18-20020a170907785200b006efe7bb40b0sm4347749ejc.74.2022.04.25.23.31.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Apr 2022 23:31:14 -0700 (PDT)
+Message-ID: <0169c4ac-fdce-29b7-553a-14dc7df532d1@linaro.org>
+Date: Tue, 26 Apr 2022 08:31:13 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v2 1/1] dt-bindings: nvmem: mediatek: Convert mtk-efuse
+ binding to YAML
+Content-Language: en-US
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Lala Lin <lala.lin@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
+References: <20220425084800.2021-1-allen-kh.cheng@mediatek.com>
+ <20220425084800.2021-2-allen-kh.cheng@mediatek.com>
+ <e64bdca8-7b18-b450-830c-ca07946a73fb@linaro.org>
+ <9d65b713e3ffdd34dcca532c4c97fa98b124bde4.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <9d65b713e3ffdd34dcca532c4c97fa98b124bde4.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_225439_996745_776E44D4 
-X-CRM114-Status: GOOD (  33.98  )
+X-CRM114-CacheID: sfid-20220425_233120_821265_B8F94273 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,230 +102,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-04-25 at 11:03 +0100, Robin Murphy wrote:
-> On 2022-04-25 09:24, Miles Chen via iommu wrote:
-> > When larbdev is NULL (in the case I hit, the node is incorrectly
-> > set
-> > iommus = <&iommu NUM>), it will cause device_link_add() fail and
-> > kernel crashes when we try to print dev_name(larbdev).
-> > 
-> > Fix it by adding a NULL pointer check before
-> > device_link_add/device_link_remove.
-> > 
-> > It should work for normal correct setting and avoid the crash
-> > caused
-> > by my incorrect setting.
-> > 
-> > Error log:
-> > [   18.189042][  T301] Unable to handle kernel NULL pointer
-> > dereference at virtual address 0000000000000050
-> > [   18.190247][  T301] Mem abort info:
-> > [   18.190255][  T301]   ESR = 0x96000005
-> > [   18.190263][  T301]   EC = 0x25: DABT (current EL), IL = 32 bits
-> > [   18.192142][  T301]   SET = 0, FnV = 0
-> > [   18.192151][  T301]   EA = 0, S1PTW = 0
-> > [   18.194710][  T301]   FSC = 0x05: level 1 translation fault
-> > [   18.195424][  T301] Data abort info:
-> > [   18.195888][  T301]   ISV = 0, ISS = 0x00000005
-> > [   18.196500][  T301]   CM = 0, WnR = 0
-> > [   18.196977][  T301] user pgtable: 4k pages, 39-bit VAs,
-> > pgdp=0000000104f9e000
-> > [   18.197889][  T301] [0000000000000050] pgd=0000000000000000,
-> > p4d=0000000000000000, pud=0000000000000000
-> > [   18.199220][  T301] Internal error: Oops: 96000005 [#1] PREEMPT
-> > SMP
-> > [   18.343152][  T301] Kernel Offset: 0x1444080000 from
-> > 0xffffffc008000000
-> > [   18.343988][  T301] PHYS_OFFSET: 0x40000000
-> > [   18.344519][  T301] pstate: a0400005 (NzCv daif +PAN -UAO)
-> > [   18.345213][  T301] pc : mtk_iommu_probe_device+0xf8/0x118
-> > [mtk_iommu]
-> > [   18.346050][  T301] lr : mtk_iommu_probe_device+0xd0/0x118
-> > [mtk_iommu]
-> > [   18.346884][  T301] sp : ffffffc00a5635e0
-> > [   18.347392][  T301] x29: ffffffc00a5635e0 x28: ffffffd44a46c1d8
-> > [   18.348156][  T301] x27: ffffff80c39a8000 x26: ffffffd44a80cc38
-> > [   18.348917][  T301] x25: 0000000000000000 x24: ffffffd44a80cc38
-> > [   18.349677][  T301] x23: ffffffd44e4da4c6 x22: ffffffd44a80cc38
-> > [   18.350438][  T301] x21: ffffff80cecd1880 x20: 0000000000000000
-> > [   18.351198][  T301] x19: ffffff80c439f010 x18: ffffffc00a50d0c0
-> > [   18.351959][  T301] x17: ffffffffffffffff x16: 0000000000000004
-> > [   18.352719][  T301] x15: 0000000000000004 x14: ffffffd44eb5d420
-> > [   18.353480][  T301] x13: 0000000000000ad2 x12: 0000000000000003
-> > [   18.354241][  T301] x11: 00000000fffffad2 x10: c0000000fffffad2
-> > [   18.355003][  T301] x9 : a0d288d8d7142d00 x8 : a0d288d8d7142d00
-> > [   18.355763][  T301] x7 : ffffffd44c2bc640 x6 : 0000000000000000
-> > [   18.356524][  T301] x5 : 0000000000000080 x4 : 0000000000000001
-> > [   18.357284][  T301] x3 : 0000000000000000 x2 : 0000000000000005
-> > [   18.358045][  T301] x1 : 0000000000000000 x0 : 0000000000000000
-> > [   18.360208][  T301] Hardware name: MT6873 (DT)
-> > [   18.360771][  T301] Call trace:
-> > [   18.361168][  T301]  dump_backtrace+0xf8/0x1f0
-> > [   18.361737][  T301]  dump_stack_lvl+0xa8/0x11c
-> > [   18.362305][  T301]  dump_stack+0x1c/0x2c
-> > [   18.362816][  T301]  mrdump_common_die+0x184/0x40c [mrdump]
-> > [   18.363575][  T301]  ipanic_die+0x24/0x38 [mrdump]
-> > [   18.364230][  T301]  atomic_notifier_call_chain+0x128/0x2b8
-> > [   18.364937][  T301]  die+0x16c/0x568
-> > [   18.365394][  T301]  __do_kernel_fault+0x1e8/0x214
-> > [   18.365402][  T301]  do_page_fault+0xb8/0x678
-> > [   18.366934][  T301]  do_translation_fault+0x48/0x64
-> > [   18.368645][  T301]  do_mem_abort+0x68/0x148
-> > [   18.368652][  T301]  el1_abort+0x40/0x64
-> > [   18.368660][  T301]  el1h_64_sync_handler+0x54/0x88
-> > [   18.368668][  T301]  el1h_64_sync+0x68/0x6c
-> > [   18.368673][  T301]  mtk_iommu_probe_device+0xf8/0x118
-> > [mtk_iommu]
-> > [   18.369840][  T301]  __iommu_probe_device+0x12c/0x358
-> > [   18.370880][  T301]  iommu_probe_device+0x3c/0x31c
-> > [   18.372026][  T301]  of_iommu_configure+0x200/0x274
-> > [   18.373587][  T301]  of_dma_configure_id+0x1b8/0x230
-> > [   18.375200][  T301]  platform_dma_configure+0x24/0x3c
-> > [   18.376456][  T301]  really_probe+0x110/0x504
-> > [   18.376464][  T301]  __driver_probe_device+0xb4/0x188
-> > [   18.376472][  T301]  driver_probe_device+0x5c/0x2b8
-> > [   18.376481][  T301]  __driver_attach+0x338/0x42c
-> > [   18.377992][  T301]  bus_add_driver+0x218/0x4c8
-> > [   18.379389][  T301]  driver_register+0x84/0x17c
-> > [   18.380580][  T301]  __platform_driver_register+0x28/0x38
-> > ...
-> > 
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > Fixes: 635319a4a744 ("media: iommu/mediatek: Add device_link
-> > between the consumer and the larb devices")
-> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > 
-> > ---
-> > 
-> > Change since v1
-> > fix a build warning reported by kernel test robot
-> > https://lore.kernel.org/lkml/202204231446.IYKdZ674-lkp@intel.com/
-> > 
-> > ---
-> >   drivers/iommu/mtk_iommu.c    | 13 ++++++++-----
-> >   drivers/iommu/mtk_iommu_v1.c | 13 ++++++++-----
-> >   2 files changed, 16 insertions(+), 10 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 6fd75a60abd6..03e0133f346a 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -581,10 +581,12 @@ static struct iommu_device
-> > *mtk_iommu_probe_device(struct device *dev)
-> >   		}
-> >   	}
-> >   	larbdev = data->larb_imu[larbid].dev;
-> > -	link = device_link_add(dev, larbdev,
-> > -			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> > -	if (!link)
-> > -		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
-> > +	if (larbdev) {
+On 26/04/2022 08:23, allen-kh.cheng wrote:
+>>> +properties:
+>>> +  compatible:
+>>> +    oneOf:
+>>> +      - enum:
+>>> +          - mediatek,mt8173-efuse
+>>> +          - mediatek,efuse
+>>
+>> Still no changes...
+>>
 > 
-> Until the MT8195 infra MMU support lands, is there ever a case where 
-> it's actually valid for larbdev to be NULL? If not, I think it would
-> be 
-> a lot clearer to explicitly fail the probe here, rather than
-> silently 
-> continue and risk fatal errors, hangs, or other weird behaviour if 
-> there's no guarantee that the correct LARB is powered up (plus then
-> the 
-> release callbacks wouldn't need to worry about it either).
-
-Yes. It should return fail for this case. This issue only happens when
-the dts parameters doesn't respect the definition from the binding[1].
-
-Locally Miles tested with a internal definition that have not send
-upstream to get this KE. In this case, I'm not sure if we should
-request the user use the right ID in dts. Anyway I have no objection to
-modifying this, then something like this: (Avoid invalid input from
-dtb)
-
-@@ -790,6 +790,8 @@ static struct iommu_device
-*mtk_iommu_probe_device(struct device *dev)
- 	 * All the ports in each a device should be in the same larbs.
- 	 */
- 	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
-+	if (larbid >= MTK_LARB_NR_MAX)
-+		return ERR_PTR(-EINVAL);
- 	for (i = 1; i < fwspec->num_ids; i++) {
- 		larbidx = MTK_M4U_TO_LARB(fwspec->ids[i]);
- 		if (larbid != larbidx) {
-@@ -799,6 +801,8 @@ static struct iommu_device
-*mtk_iommu_probe_device(struct device *dev)
- 		}
- 	}
- 	larbdev = data->larb_imu[larbid].dev;
-+	if (!larbdev)
-+		return ERR_PTR(-EINVAL);
- 	link = device_link_add(dev, larbdev,
- 			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
- 	if (!link)
-
-
-[1] 
-https://elixir.bootlin.com/linux/v5.18-rc1/source/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml#L116
-
-
+> I just want to confirm again.
 > 
-> Robin.
+> "Generic compatibles should not be used standalone"
 > 
-> > +		link = device_link_add(dev, larbdev,
-> > +				       DL_FLAG_PM_RUNTIME |
-> > DL_FLAG_STATELESS);
-> > +		if (!link)
-> > +			dev_err(dev, "Unable to link %s\n",
-> > dev_name(larbdev));
-> > +	}
-> >   	return &data->iommu;
-> >   }
-> >   
-> > @@ -601,7 +603,8 @@ static void mtk_iommu_release_device(struct
-> > device *dev)
-> >   	data = dev_iommu_priv_get(dev);
-> >   	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
-> >   	larbdev = data->larb_imu[larbid].dev;
-> > -	device_link_remove(dev, larbdev);
-> > +	if (larbdev)
-> > +		device_link_remove(dev, larbdev);
-> >   
-> >   	iommu_fwspec_free(dev);
-> >   }
-> > diff --git a/drivers/iommu/mtk_iommu_v1.c
-> > b/drivers/iommu/mtk_iommu_v1.c
-> > index ecff800656e6..18365c73eeb2 100644
-> > --- a/drivers/iommu/mtk_iommu_v1.c
-> > +++ b/drivers/iommu/mtk_iommu_v1.c
-> > @@ -467,10 +467,12 @@ static struct iommu_device
-> > *mtk_iommu_probe_device(struct device *dev)
-> >   	}
-> >   
-> >   	larbdev = data->larb_imu[larbid].dev;
-> > -	link = device_link_add(dev, larbdev,
-> > -			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> > -	if (!link)
-> > -		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
-> > +	if (larbdev) {
-> > +		link = device_link_add(dev, larbdev,
-> > +				       DL_FLAG_PM_RUNTIME |
-> > DL_FLAG_STATELESS);
-> > +		if (!link)
-> > +			dev_err(dev, "Unable to link %s\n",
-> > dev_name(larbdev));
-> > +	}
-> >   
-> >   	return &data->iommu;
-> >   }
-> > @@ -502,7 +504,8 @@ static void mtk_iommu_release_device(struct
-> > device *dev)
-> >   	data = dev_iommu_priv_get(dev);
-> >   	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
-> >   	larbdev = data->larb_imu[larbid].dev;
-> > -	device_link_remove(dev, larbdev);
-> > +	if (larbdev)
-> > +		device_link_remove(dev, larbdev);
-> >   
-> >   	iommu_fwspec_free(dev);
-> >   }
+> It seems we should remove mediatek,efuse and keep "mediatek,mt8173-
+> efuse"in binding. have I got that right?
+
+You should comment for which chipsets this compatible is and add a
+deprecated:true. In such case it cannot be part of enum but separate
+item in this oneOf.
+
+
+Best regards,
+Krzysztof
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
