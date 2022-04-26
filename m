@@ -4,73 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 313B3C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 06:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7E25C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 07:16:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W5BjqNOhcPfgOajJ1AXO9wjKI4yzOKUOb7hpsGDVcOc=; b=w0HkZpInxEggQ4
-	XJnTWF4Y3B0FQDrXO+m3iuNNNtjjs4cKExGcvwDETEWZrPf794QSETHDpuuz2fxhg73Lti3ROkZqi
-	kWg6UF6S6eyy+DR0GuuD84mVMVvaxkRRhmZ/FcaFbpP78XATbYxnaqq1TQRu9CoqiBNXL9XEpqIAx
-	AhAEjdX7R1kZ+Itp473a08jfI7ry4bScv2plRb7aKLx3ACFA4bOPz39qWNYE+Qn1gs+vbGMwwaqZN
-	s8HbYaP0azQPfW94P0BPL8M/gRAqSB/K80f5ABlnGRHto787lDuFdIfYi3CQpblEZY+IeUC8Ul9Sy
-	pletVaEES7MuFRmuHzqw==;
+	List-Owner; bh=cx2dSAJ3rw454UALYSUuj1A7NZpurvPrQvtS7kFqSJw=; b=aD9y34rDqofjWf
+	xwSkBd/qfXOUzV8fVgik1a5Da6k2hSFeY+4upeu/16uZqIHICm429aO1jAyrDKu+UFOvVaMxlxb3e
+	CpyY9Fov9MHgql+36i2aSm3DI/m+s/7wk5M/Td9lsP+Fz4CNnyIe5NbUPFqkPW5vCjiQxXvX8Gx6u
+	t+R4rmijw4gskkBTr6nNdJ4XagdpSb0T8pnJnEV3z3/6cawwP2cgvEK5GMzC/NaoK9W5dHpgCuLrL
+	hmr1ZSVfXsIGPHpppsLoCMwgTCADHKcrFbQHQR0NRgXFlWPZIdsFn0hARVId2LAsQCommNx/dha1M
+	Po0vEHVQ2YT6Fr7/1hDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njElO-00Ck4O-PX; Tue, 26 Apr 2022 06:33:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njFQS-00CuUz-Ci; Tue, 26 Apr 2022 07:15:56 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njElC-00Ck0q-B4; Tue, 26 Apr 2022 06:33:20 +0000
-X-UUID: 0e1e3f528e1d462a91b36f72a1caf6db-20220425
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:c7990e6a-6738-4ff5-bd53-47f2133c099f, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:e6e67ec6-85ee-4ac1-ac05-bd3f1e72e732,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 0e1e3f528e1d462a91b36f72a1caf6db-20220425
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1535564152; Mon, 25 Apr 2022 23:33:12 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Apr 2022 23:23:10 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 26 Apr 2022 14:23:02 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Apr 2022 14:23:01 +0800
-Message-ID: <9d65b713e3ffdd34dcca532c4c97fa98b124bde4.camel@mediatek.com>
-Subject: Re: [PATCH v2 1/1] dt-bindings: nvmem: mediatek: Convert mtk-efuse
- binding to YAML
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "Srinivas
- Kandagatla" <srinivas.kandagatla@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski@canonical.com>
-CC: Lala Lin <lala.lin@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-Date: Tue, 26 Apr 2022 14:23:01 +0800
-In-Reply-To: <e64bdca8-7b18-b450-830c-ca07946a73fb@linaro.org>
-References: <20220425084800.2021-1-allen-kh.cheng@mediatek.com>
- <20220425084800.2021-2-allen-kh.cheng@mediatek.com>
- <e64bdca8-7b18-b450-830c-ca07946a73fb@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1njFQP-00CuTY-36
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 07:15:54 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-2eba37104a2so172932347b3.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 00:15:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=W48mPmCEODAeKCo4cYR/TrFD4JfPLTSWRwhqTfeCiJA=;
+ b=gb90e2Jc05v2CZzab1gHuWlQZ7mOLM72uzZFGtD2dQ9ITduk47VqRyMZSqLQBpMOdA
+ nFLeuRNpSqERdwglV+kmc4yo4Q1h4a/lvVcQQQimgkzRm1zMQHkM/eHTlmBATFoWbcYf
+ yi57ZBCATFUH0Z7H/An1LTnNVoGM6AkOemwmY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=W48mPmCEODAeKCo4cYR/TrFD4JfPLTSWRwhqTfeCiJA=;
+ b=2ZIwgLI6vXzMbcqeiUdsut8pyPWCOBPGNFckapE/6czBZ071H7vvis71vgPUPNTAVr
+ 0p3AQi5AMJEx8A4ndDZ+I6hjSilIBhoaU6DLUiUBFpjZpAmfL/p2K1CNBbfPbvKqFQVW
+ zBEmH7cEITHy0PYIQUfD3XKYik4L09Z4u+1Yf5DrXGlb2tJgvMdi6XKarKXzNs1JwsDe
+ P86Qgautnw6AD6u1GaCpM6iC4Huj37zZipx5PgcY8wrCk7owI4LjNigIPHzac9oh7Cij
+ 9RA6ddeAQD65MWEL8D0O5rw4EOYFy14ZwBITWQ80AzIHISlRfFErjGA2l39cIloycAMA
+ 9UyA==
+X-Gm-Message-State: AOAM530/cnlkO5y6ci+fqkcdnPJG3Pi8RGQmaH4KQ8f5No+0D4S4tSIi
+ Kv5zSgYnSQqOv3PtPPu/cVXwGDXyYtLZo5Y5fIOntw==
+X-Google-Smtp-Source: ABdhPJz7mWph1YxLYcWICwibet7gNS3uzR3x+TVoftrHCaq7u1jn0mZA1c/96IclyLrgvQXvXMO9rZu6QlzK9rbUOSE=
+X-Received: by 2002:a81:ad1f:0:b0:2f4:da5b:5133 with SMTP id
+ l31-20020a81ad1f000000b002f4da5b5133mr20961896ywh.105.1650957350928; Tue, 26
+ Apr 2022 00:15:50 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220420102044.10832-1-roger.lu@mediatek.com>
+ <7hczhbe3wn.fsf@baylibre.com>
+ <3d463c8b099fdb1c9a0df9e615a8ca1d8a034120.camel@mediatek.com>
+ <7hsfq6ql4v.fsf@baylibre.com>
+ <d67d5f4f2ec96ade2398e7c0897dbb16bf5fb145.camel@mediatek.com>
+ <ca127f7f-0620-1c03-4f39-206945b0e612@gmail.com>
+In-Reply-To: <ca127f7f-0620-1c03-4f39-206945b0e612@gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 26 Apr 2022 15:15:39 +0800
+Message-ID: <CAGXv+5HtMVCUdV=kNfOTCp3-1gEzTWtZ1xapgw=L-C2nTC0yag@mail.gmail.com>
+Subject: Re: [PATCH v24 0/7] soc: mediatek: SVS: introduce MTK SVS
+To: Matthias Brugger <matthias.bgg@gmail.com>, Roger Lu <roger.lu@mediatek.com>,
+ Kevin Hilman <khilman@kernel.org>,
+ =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <rex-bc.chen@mediatek.com>
+Cc: Enric Balletbo Serra <eballetbo@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Fan Chen <fan.chen@mediatek.com>, 
+ HenryC Chen <HenryC.Chen@mediatek.com>,
+ Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>, 
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Guenter Roeck <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_233318_434486_83817F01 
-X-CRM114-Status: GOOD (  26.26  )
+X-CRM114-CacheID: sfid-20220426_001553_201425_7955E8C4 
+X-CRM114-Status: GOOD (  36.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,144 +98,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On Fri, Apr 22, 2022 at 11:38 PM Matthias Brugger
+<matthias.bgg@gmail.com> wrote:
+>
+>
+>
+> On 22/04/2022 04:24, Roger Lu wrote:
+> > Hi Kevin,
+> >
+> > On Thu, 2022-04-21 at 12:41 -0700, Kevin Hilman wrote:
+> >> Hi Roger,
+> >>
+> >> Roger Lu <roger.lu@mediatek.com> writes:
+> >>
+> >>> On Wed, 2022-04-20 at 16:22 -0700, Kevin Hilman wrote:
+> >>
+> >> [...]
+> >>
+> >>>> That being said, it would be really nice to see an integration tree
+> >>>> where this was all tested on mainline (e.g. v5.17, or v5.18-rc)
+> >>>>
+> >>>> For example, I can apply this to v5.18-rc2 and boot on my mt8183-pumpkin
+> >>>> board, it fails to probe[1] because there is no CCI node in the upstream
+> >>>> mt8183.dtsi.
+> >>>>
+> >>>> I'm assuming this series is also not very useful without the CPUfreq
+> >>>> series from Rex, so being able to test this, CCI and CPUfreq together on
+> >>>> MT8183 on a mainline kernel would be very helpful.
+> >>>>
+> >>>> Kevin
+> >>>>
+> >>>> [1]
+> >>>> [    0.573332] mtk-svs 1100b000.svs: cannot find cci node
+> >>>> [    0.574061] mtk-svs 1100b000.svs: error -ENODEV: svs platform probe
+> >>>> fail
+> >>>
+> >>> Just share. I've tested this series on below two platforms and it works as
+> >>> expected.
+> >>> - mt8183-Krane (kernel-v5.10)
+> >>> - mt8192-Hayato (kernel-v5.4)
+> >>
+> >> Unfortunately testing on v5.4 and v5.10 with lots of other additional
+> >> out-of-tree patches does not give much confidence that this series works
+> >> with upstream, especially when I've given a few reasons why it will not
+> >> work uptream.
+> >>
+> >> The examples I gave above for CCI and CPUs/cluster disable are good
+> >> examples, but another one I forgot to mention is the dependency on Mali.
+> >> The SVS driver will never probe because it also depens on a "mali" node,
+> >> which doesn't exist upstream either (but panfrost does, and acutually
+> >> loads/probes fine on v5.17/v5.18) so this should be fixed to work with
+> >> upstream panfrost.
+> >>
+> >> IMO, in order for this to be merged upstream, it should at least have
+> >> some basic validation with upstream, and so far I have not even been
+> >> able to make it successfuly probe.  To do that, you will need to either
+> >> provide a list of the dependencies for testing this with mainline
+> >> (e.g. CCI series, CPUfreq series, any DT changes), or even better, an
+> >> integration tree based on recent mainline (e.g. v5.17 stable, or
+> >> v5.18-rc) which shows all the patches (in addition to this series) used
+> >> to validate this on mainline.
+> >
+> > No problem. We'll find a machine that can be run correctly with recent mainline
+> > (e.g. v5.17 stable, or v5.18-rc) and add patches (CCI series + CPUfreq series +
+> > any DT changes) to test this SVS series. Thanks very much.
+> >
+>
+> Thanks Roger. I'll wait until this got tested with upstream Linux, before I will
+> apply all the patches.
 
-On Mon, 2022-04-25 at 18:38 +0200, Krzysztof Kozlowski wrote:
-> On 25/04/2022 10:48, Allen-KH Cheng wrote:
-> > Convert MediaTek eFuse devicetree binding to YAML.
-> > 
-> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/nvmem/mtk,efuse.yaml  | 70
-> > +++++++++++++++++++
-> 
-> The vendor prefix is mediatek. Quoting my previous reply:
-> 
->   Same comments as usual, so "vendor,device-name", e.g.
-> "mediatek,efuse"
->   if this is going to match all possible future MediaTek chips or
->   "mediatek,mt7622-efuse"
-> 
-> so keep it mediatek,efuse.yaml.
-> 
+Hi everyone,
 
-Yes, this can match can match current MTK chips.
+I've put together an integration test branch:
 
-I will keep the file name.
+https://github.com/wens/linux/commits/mt8183-cpufreq-cci-svs-test
 
-> >  .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 ------------
-> >  2 files changed, 70 insertions(+), 43 deletions(-)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
-> >  delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-
-> > efuse.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
-> > b/Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
-> > new file mode 100644
-> > index 000000000000..d056bc61dd5b
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
-> > @@ -0,0 +1,70 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/nvmem/mtk,efuse.yaml*__;Iw!!CTRNKA9wMg0ARbw!2opCfMBuhT3qG85-CIdLu3yviYqRI08FFlpx4vGOKsJLRgOilZDcv1zCy75fOabzogXR6t7cqOrvYULjSab_7sq-qA$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!2opCfMBuhT3qG85-CIdLu3yviYqRI08FFlpx4vGOKsJLRgOilZDcv1zCy75fOabzogXR6t7cqOrvYULjSaY9-kvJ9A$
-> >  
-> > +
-> > +title: MediaTek eFuse device tree bindings
-> 
-> No changes here. Please read my comments from your v1, don't ignore
-> them.
-> 
+This branch is based on next-20220422 and includes the following series:
 
-My apologies for the mistake, I see the reply of v1 after I send v2. 
+- ANX7625 DPI support v2
+  https://lore.kernel.org/all/20220422084720.959271-1-xji@analogixsemi.com/
+- MTK SVS v24
+  https://lore.kernel.org/all/20220420102044.10832-1-roger.lu@mediatek.com/
+- MTK cpufreq v4
+  https://lore.kernel.org/all/20220422075239.16437-1-rex-bc.chen@mediatek.com/
+- PM / devfreq core patches from
+  http://git.kernel.org/chanwoo/h/devfreq-testing
+  PM / devfreq: Export devfreq_get_freq_range symbol within devfreq
+  PM / devfreq: Add cpu based scaling support to passive governor
+  PM / devfreq: passive: Reduce duplicate code when passive_devfreq case
+  PM / devfreq: passive: Update frequency when start governor
+- CCI devfreq v2
+  https://lore.kernel.org/all/20220408052150.22536-1-johnson.wang@mediatek.com/
 
-I will remove "device tree bindings".
+And some patches of my own to fix some errors. See the last handful of
+patches including and after the fixup! one.
 
-> > +
-> > +maintainers:
-> > +  - Lala Lin <lala.lin@mediatek.com>
-> > +  - Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > +
-> > +allOf:
-> > +  - $ref: "nvmem.yaml#"
-> > +
-> > +properties:
-> > +  compatible:
-> > +    oneOf:
-> > +      - enum:
-> > +          - mediatek,mt8173-efuse
-> > +          - mediatek,efuse
-> 
-> Still no changes...
-> 
+This was tested on Juniper (Acer Chromebook Spin 311) that has MT8183.
+Looking at the mcu_*_sel clocks from /sys/kernel/debug/clk/clk_summary ,
+it does seem like things are happening, though I'm not sure how to
+thoroughly test this, especially SVS.
 
-I just want to confirm again.
-
-"Generic compatibles should not be used standalone"
-
-It seems we should remove mediatek,efuse and keep "mediatek,mt8173-
-efuse"in binding. have I got that right?
+Hope this unblocks things for everyone involved.
 
 
-> > +      - items:
-> > +          - enum:
-> > +              - mediatek,mt7622-efuse
-> > +              - mediatek,mt7623-efuse
-> > +              - mediatek,mt8183-efuse
-> > +              - mediatek,mt8192-efuse
-> > +              - mediatek,mt8195-efuse
-> > +              - mediatek,mt8516-efuse
-> > +          - const: mediatek,efuse
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +patternProperties:
-> > +  "^.*@[0-9a-f]+$":
-> > +    type: object
-> > +
-> > +    properties:
-> > +      reg:
-> > +        maxItems: 1
-> > +        description:
-> > +          Offset and size in bytes within the storage device.
-> > +
-> > +    required:
-> > +      - reg
-> > +
-> > +    additionalProperties: false
-> 
-> Still no changes.
-> 
-
-Will remove this.
-
-Thanks,
-Allen
-
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +
-> > +unevaluatedProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +
-> 
-> Still no changes.
-> 
-> 
-> Best regards,
-> Krzysztof
-
+Regards
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
