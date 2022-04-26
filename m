@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AD97C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24E23C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:44:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IKhABv22J/9gfiYoML2xnjHSCQuA63FT5GiZHLVSUhg=; b=aNv7o/7VYd9TOk
-	bBAqZRHPoZJzD2zn4O8/pGMIHX5/8CrHId/clbJvkgkygf3S/YdJg8U+VW+jhFyHz7h8zD21oMLix
-	YmKuy7lEl2oqMXF4fnvfBuR8MM8kH5lruuNBkaLFXzzdAF7Emb+WKxvP3b1uK5nEPLOZ3s/N9fs4y
-	unSFBj93ra2u1DdqgegBWARCSLaBa+PCl7OztwVy/+LdAuhntvy5GMj0p5Eb9QUmhIwoj01BO2afe
-	iJwAmvilPzDmzwg8PwPp7Ji5v+IDRIHLCEyQRs0PDVACuvsMFubTbeAynPZMr01fZtQlGxCNAanfi
-	mIC099lwvhd0n74zdijg==;
+	List-Owner; bh=K4+zvQiLG37axcf/cGiYtrRcLQs0/5bc3T7YeE4KuDs=; b=L/oN3np262A4DE
+	v0y1IovxOpLyvEWmmTx+9yfnpdbiuP/03vsyMAiGsQ8Wv4KCDnsS42EQHn+AujUXLvEhPD/BMaCa1
+	Fnse050UirKOul/35V9cbNPxxF7iTWwGqKRkc6S3o+cnlwPdFZuXfx0oaHiEvlprVHGE4Awy4IytJ
+	AT+ZaKBXJIcpI3zHIB9mG/h3WceT1u2pD/yUw/QdmJrDp/Im4KnyUF/0W2OqGFs+eUA5Unuogn5+Z
+	4Ff8rOcw85A3aaI/6fm4Qty+CmRxOkhlERRl0wnVOK11fd/otufxLuxkF2mOczqSc2vd6OU5wOHx7
+	uXcjK/ltaDQF9brJMGpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njLTb-00EhM4-4W; Tue, 26 Apr 2022 13:43:35 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1njLTw-00EhYt-H0; Tue, 26 Apr 2022 13:43:56 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njLRx-00EgY8-HH
- for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 13:41:56 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id j15so12288983wrb.2
- for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 06:41:51 -0700 (PDT)
+ id 1njLRz-00Egao-HN
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 13:41:59 +0000
+Received: by mail-wr1-x433.google.com with SMTP id v12so18723720wrv.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 06:41:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=2WiMjqWr2rsQkaBLMdtHZGm9iFmjCwz/X0cFtlbeMbU=;
- b=mMT97IDgEHYlbhiTTxwI72dtKJRNNtraEazEdhQ/1+YombRbDcfLnDCwnj54oiuFZM
- FovrX6lSuitpqUzu9jUJ7nsCKE/ZVtOBg/LFWmB33MskN2xoLOcCbAYUUHhBLf2bEVjt
- 8TsMe1h3/CgL0gRVqs8VWprUHUtA4OE/YQdHxfoIKwhQYdP6vg328RtAtADmSoYcFM8I
- i0PYbWuSXY8crl2h6fYDPA+CDIfDFhVFA5V6OXhMOhQWl2dX+npfWyC8xS+MjX0ONbRu
- w1Elkgp5YYWIaK1wiJypr/20J6ugzWkTVB43oXyomvH+CZbmIgEhpY7dTM5v0c+xDDud
- OQZg==
+ bh=lRfVC5aaQ4N6y57lWHZ8XzBxGf9B+nlX2tNH+pQF5EY=;
+ b=Ohi3dOa+z+/2uqEnU+QGx15AYZjcV5LG3H81paqeYyTAEYMJCy/MmTBgSVtbIL4nRw
+ yU3+HzaVaQEeG/ya92peeYASG7VtFTWsCVTT21PM+J/8bDS3/wD6G2O5SLVoEIWm61Py
+ Oi5jIDHqqp4P86mP/fIG9bN6grsDjmLLiP5KCcvivwCkzYfhsGFxETfcEOLoa59Y5jhA
+ RNe1MkZ17JrECnn/rQuVNH+7Esp7WumapPaNcDoqVtKYc2TuFkUXY6lQT3t8jddP+dCf
+ 7uhZ+z2ZpQ2mOtueekHx1CFNRrZGvs/4Nui1vf9up65ItkK8rh10R/L266I74UkknfeT
+ jV0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2WiMjqWr2rsQkaBLMdtHZGm9iFmjCwz/X0cFtlbeMbU=;
- b=rRuoVZF0GNGeAhtodg0bz/IIDQq3uEYpuCADDBB7pr557iuhBGez0yNmUyLhbB2lhL
- ezAVU87evYa3UHvGi5rDJSXDLjX72J2Pqv71m1EG2FWrK/cL8Crr217xDVUS/w+dHNe1
- vK34BmPJCx0GBz5kcGzF3WA4/EuqhVXI7DlJfyf78m7gDvTw+J+c8+cqzOs2fDCywDRy
- ebJZgfs0kIOX6Idphqf4xr6354qdQZMDyYNBJ/tZuc5wHTUWt3aI1dnDSus5dCAKdgI9
- ojER6RI9wDLY/N74GGy3Ra2I8SN6lufv2oFhR0BoSoqqU/8IQc7sH1iO14rVrTYFO0O/
- qPgQ==
-X-Gm-Message-State: AOAM532Z8ujgTkaO9uxBbkZBpwEK5VSLGuxwEf8blTRnlJ6u6rJkFJ4b
- yWJfFR74BWwftF9Tl5akOkzZ/A==
-X-Google-Smtp-Source: ABdhPJw1ZH7IdVVddcYsXC8gaDPJgCy1xQQ7ICVPpYhMiOh4ni1tkFYXXnPGKsa/Iahi3/JTftqvng==
-X-Received: by 2002:a5d:620f:0:b0:20a:d560:9996 with SMTP id
- y15-20020a5d620f000000b0020ad5609996mr12288405wru.471.1650980510326; 
- Tue, 26 Apr 2022 06:41:50 -0700 (PDT)
+ bh=lRfVC5aaQ4N6y57lWHZ8XzBxGf9B+nlX2tNH+pQF5EY=;
+ b=SHNdQAXWNS7DWmGjzIwtbIhmElVD3RUceaMgptUhxh6aogClr8uLF/M+x6zdSHudai
+ tIc53m09zBl4ZYgLuHBgfF3Cntbglry0uI76to+A5uODg9QCJHN9KYwDSjDfKNM4aneg
+ uFtewI+/F21TuCq7HW6VtPzVH/Qvfl8jTlD97ZfooEuHAJnRi9WQ41BNPTwZ+j2Wicu9
+ haMn57d7OkEU/fc9e595RGlimNInSAvbSs/U2jjxx4v1Rv4AvURA1pX8qeGlzw/Cv+sE
+ GWnsfc+oSwRQD6eAgDhALN2b1GBD1qNEXagMTqsji/Gm9HPEETYs4Axf86KN5towBSrl
+ GoTw==
+X-Gm-Message-State: AOAM533wO6t5riTYOnZfiP0vAyuPl7jZCN3Uah0T+vwTDZ63tblR1ukw
+ nuarMe9rKT5bgNbv9UMOMgx2Nw==
+X-Google-Smtp-Source: ABdhPJzBLZfCcm8hoYkEZchekZF0zzr274AwXjGp/5LtIjvGZKDbBEb1QoUBNKaQ+Aixc1sCq9/WyQ==
+X-Received: by 2002:adf:ed8f:0:b0:20a:e2a7:7201 with SMTP id
+ c15-20020adfed8f000000b0020ae2a77201mr3991412wro.26.1650980514411; 
+ Tue, 26 Apr 2022 06:41:54 -0700 (PDT)
 Received: from radium.lan ([88.160.162.107]) by smtp.gmail.com with ESMTPSA id
- b6-20020adfd1c6000000b0020aac8a9946sm13628475wrd.47.2022.04.26.06.41.49
+ b6-20020adfd1c6000000b0020aac8a9946sm13628475wrd.47.2022.04.26.06.41.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 06:41:49 -0700 (PDT)
+ Tue, 26 Apr 2022 06:41:54 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Biao Huang <biao.huang@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 3/7] arm64: dts: mediatek: mt8195: add ethernet device node
-Date: Tue, 26 Apr 2022 15:41:01 +0200
-Message-Id: <20220426134106.242353-4-fparent@baylibre.com>
+Cc: Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 6/7] arm64: dts: mediatek: mt8195-demo: Remove input-name
+ property
+Date: Tue, 26 Apr 2022 15:41:04 +0200
+Message-Id: <20220426134106.242353-7-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220426134106.242353-1-fparent@baylibre.com>
 References: <20220426134106.242353-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_064153_625494_3B877640 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20220426_064155_629055_E7251E1D 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,104 +92,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Biao Huang <biao.huang@mediatek.com>
+This property doesn't seem to exist in the documentation nor
+in source code, let's remove it from the device-tree.
 
-This commit adds device node for mt8195 ethernet.
-
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
-This patch comes from https://lore.kernel.org/all/20211207015505.16746-7-biao.huang@mediatek.com/
+This patch is related to [0].
 
-The differences between that patch and this patch is that:
-* The EVB dts modification has been split into its own commit
-* The patch was rebased to fix merge conflict with the upstream mt8195.dtsi file
-* Re-ordered the node to be correctly sorted based on node address
+[0] https://lore.kernel.org/all/20211123065158.1383182-1-danct12@riseup.net/
 
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 70 ++++++++++++++++++++++++
- 1 file changed, 70 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index aa05071a80b8..a58641d1cab0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -912,6 +912,76 @@ spis1: spi@1101e000 {
- 			status = "disabled";
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index 0b7985486e2a..d1f650d99d7e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -35,7 +35,6 @@ optee {
  
-+		eth: ethernet@11021000 {
-+			compatible = "mediatek,mt8195-gmac", "snps,dwmac-5.10a";
-+			reg = <0 0x11021000 0 0x4000>;
-+			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names = "macirq";
-+			mac-address = [00 55 7b b5 7d f7];
-+			clock-names = "axi",
-+				      "apb",
-+				      "mac_main",
-+				      "ptp_ref",
-+				      "rmii_internal",
-+				      "mac_cg";
-+			clocks = <&pericfg_ao CLK_PERI_AO_ETHERNET>,
-+				 <&pericfg_ao CLK_PERI_AO_ETHERNET_BUS>,
-+				 <&topckgen CLK_TOP_SNPS_ETH_250M>,
-+				 <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
-+				 <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>,
-+				 <&pericfg_ao CLK_PERI_AO_ETHERNET_MAC>;
-+			assigned-clocks = <&topckgen CLK_TOP_SNPS_ETH_250M>,
-+					  <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
-+					  <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_ETHPLL_D2>,
-+						 <&topckgen CLK_TOP_ETHPLL_D8>,
-+						 <&topckgen CLK_TOP_ETHPLL_D10>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_ETHER>;
-+			mediatek,pericfg = <&infracfg_ao>;
-+			snps,axi-config = <&stmmac_axi_setup>;
-+			snps,mtl-rx-config = <&mtl_rx_setup>;
-+			snps,mtl-tx-config = <&mtl_tx_setup>;
-+			snps,txpbl = <16>;
-+			snps,rxpbl = <16>;
-+			clk_csr = <0>;
-+			status = "disabled";
-+
-+			stmmac_axi_setup: stmmac-axi-config {
-+				snps,wr_osr_lmt = <0x7>;
-+				snps,rd_osr_lmt = <0x7>;
-+				snps,blen = <0 0 0 0 16 8 4>;
-+			};
-+
-+			mtl_rx_setup: rx-queues-config {
-+				snps,rx-queues-to-use = <1>;
-+				snps,rx-sched-sp;
-+				queue0 {
-+					snps,dcb-algorithm;
-+					snps,map-to-dma-channel = <0x0>;
-+					snps,priority = <0x0>;
-+				};
-+			};
-+			mtl_tx_setup: tx-queues-config {
-+				snps,tx-queues-to-use = <3>;
-+				snps,tx-sched-wrr;
-+				queue0 {
-+					snps,weight = <0x10>;
-+					snps,dcb-algorithm;
-+					snps,priority = <0x0>;
-+				};
-+				queue1 {
-+					snps,weight = <0x11>;
-+					snps,dcb-algorithm;
-+					snps,priority = <0x1>;
-+				};
-+				queue2 {
-+					snps,weight = <0x12>;
-+					snps,dcb-algorithm;
-+					snps,priority = <0x2>;
-+				};
-+			};
-+		};
-+
- 		ssusb: usb@11201000 {
- 			compatible ="mediatek,mt8195-mtu3", "mediatek,mtu3";
- 			reg = <0 0x11201000 0 0x2dff>,
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		input-name = "gpio-keys";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&gpio_keys_pins>;
+ 
 -- 
 2.36.0
 
