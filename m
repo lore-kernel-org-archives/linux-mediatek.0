@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D60EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 20:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20915C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 23:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eCoKBn+KnOxqQPnuv5rPdXFXIrFFA1avchlDNW37emY=; b=LPo68McSc4sZYo
-	vFZVS29srG2s6A5fEifi5voZP6Plr6y1S5SdM5bySka44SXqGcW31kkGdRDo5xFrsQMa/mkmal8ZQ
-	GDjH4oFB7n9u1TGX4g4ERv1yx5emqRkYNxI58fFFVn+iDmi4EhuTpaQONY/X2jLJMrM3ba8zLqneO
-	ANFgedsnll9HS7ERA0fSfgMO8KV8VVgelKZFNbnV5XbkQguZ2l/Lkqd09rl/Qpe/bXmgyY0pZ2Pa3
-	KKy32mDvawX4bocNiC5VVvBzW0qEwc3wWPf4lR0yCKACpA/YzP6CWD1xEJpB40FvAJQQ1angsrfCu
-	0y3lb9/+lDfePU9Przrw==;
+	List-Owner; bh=J0IpBLOTMjKeGaQGcmkbpFCRRwvtPIs5kTPS/DUjNjU=; b=CI9AjoRAHGKR4B
+	bX7wp3A8vR93WvdbVBrF/i/CStHFXz3j8r6GcPoVnq7M0F44D5ZdJ8PkWwxVk2fUA2jhbi2MNozzA
+	5R2R8cx1Rt0qcOf99KIfRWODrY6G2HQ9QFcbdxQ3haA5b3pS38G5GE/ix/g5q13LUSDr0WqJwUc9/
+	Bjg6B8CF/MLWGhb12GhJx8ttwp38BY1BPNy7GQk4Fc9h0/65PnXJtt7cmARDGuvlXPY9YsyrDxVy2
+	TnbHSq3CIpQDEL564F14jGiTCIFKcf/lCxuNf8+BrMYyiD2WVFDcHMo7d+67vHlPZ7F/Fv/dqbjOG
+	OIii0RMdAuFVibphDP5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njRw6-00GCO7-DB; Tue, 26 Apr 2022 20:37:26 +0000
-Received: from mail-ot1-f53.google.com ([209.85.210.53])
+	id 1njUAZ-00Gah1-V6; Tue, 26 Apr 2022 23:00:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njRvr-00GCJn-Ou; Tue, 26 Apr 2022 20:37:13 +0000
-Received: by mail-ot1-f53.google.com with SMTP id
- u17-20020a9d4d91000000b00605a73abac1so5862114otk.7; 
- Tue, 26 Apr 2022 13:37:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=8Ua/QldL7pC5LZXWxffOFe8RnQhvpw8c3zNSB5ycwY8=;
- b=FrG8sQvjXBJBRBtZ6tVto2TPBcraZgqsVqhmVUfnqrqtaDINI5xKYUtUqCPMi3T+Qo
- rxjS8j2OA5CRs7lwe+C+GZk6iY3DvaDCRqh20VQDaKhpDsuJPFoOrMcV9dLsedo5FHz/
- NYGHH47CMbxjA0DRd22/beqyJHrH4ATXGsr9SyZT1JiEbL/N9KCjL8N1MTX/If91VyzZ
- fRQo+hT1QrTzKPCKrvCzHDmnkvPDTIgT+04THsABDHpd3NBRzAN1+poSKKoGSprFO9tN
- FHZHH9Jb1lHEcozs+BDjAhwVB2NTsFZqLZ/eG2uzbWSzmO3p2zVUuFM763r3t9HKMz32
- gfLw==
-X-Gm-Message-State: AOAM532dE/2NcqC5UX5rP3B7JkuImAhJBcV0xtlWo3U+wtPsmNMrdvvW
- KVQi9YZUlelx3/UbteIhBQ==
-X-Google-Smtp-Source: ABdhPJzV94dg7hlsrdCIRh48Q/JHhKt1BGntT/HsErX1a5fw7wvJMn0OMxu04NvUD/iPdux9O8sz9w==
-X-Received: by 2002:a9d:4e8d:0:b0:605:4f04:4863 with SMTP id
- v13-20020a9d4e8d000000b006054f044863mr9009729otk.204.1651005428916; 
- Tue, 26 Apr 2022 13:37:08 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- q4-20020a4a3004000000b0035e974ec923sm282663oof.2.2022.04.26.13.37.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 13:37:08 -0700 (PDT)
-Received: (nullmailer pid 2493275 invoked by uid 1000);
- Tue, 26 Apr 2022 20:37:07 -0000
-Date: Tue, 26 Apr 2022 15:37:07 -0500
-From: Rob Herring <robh@kernel.org>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>, allen-kh.cheng@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH] dt-bindings: media: mtk-vcodec: Adds encoder power
- domain property
-Message-ID: <YmhX89nQjkwt5qb3@robh.at.kernel.org>
-References: <20220420073440.31649-1-irui.wang@mediatek.com>
+ id 1njUAW-00Gag8-Bb; Tue, 26 Apr 2022 23:00:31 +0000
+X-UUID: 89f40dc6fe5848aa86857bea370ce247-20220426
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:59604ae0-5e9c-407c-879e-674ae5ec69cb, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:f974cb2e-6199-437e-8ab4-9920b4bc5b76,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 89f40dc6fe5848aa86857bea370ce247-20220426
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 31042960; Tue, 26 Apr 2022 16:00:21 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 26 Apr 2022 16:00:19 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 27 Apr 2022 07:00:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 27 Apr 2022 07:00:16 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <allen-kh.cheng@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <hsinyi@chromium.org>,
+ <krzysztof.kozlowski@canonical.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <ryder.lee@kernel.org>,
+ <wenst@chromium.org>
+Subject: Re: [PATCH v5 1/2] dt-bindings: arm: Add compatible for Mediatek
+ MT8186
+Date: Wed, 27 Apr 2022 07:00:16 +0800
+Message-ID: <20220426230017.20640-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220426125046.17311-2-allen-kh.cheng@mediatek.com>
+References: <20220426125046.17311-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220420073440.31649-1-irui.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_133711_848872_E9719F6E 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20220426_160028_437474_308D72C3 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,66 +83,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 20, 2022 at 03:34:39PM +0800, Irui Wang wrote:
-> Adds encoder power domain property
+Hi Allen,
 
-Why? You can't add new, required properties as that breaks compatibility 
-with existing DTs.
+> This commit adds dt-binding documentation for the Mediatek MT8186
 
+s/Mediatek/MediaTek/
+
+
+thanks,
+Miles
+
+> reference board.
 > 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > ---
->  .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml | 7 +++++++
->  1 file changed, 7 insertions(+)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> index deb5b657a2d5..3c069c965992 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> @@ -41,6 +41,9 @@ properties:
->  
->    assigned-clock-parents: true
->  
-> +  power-domains:
-> +    maxItems: 1
-> +
->    iommus:
->      minItems: 1
->      maxItems: 32
-> @@ -72,6 +75,7 @@ required:
->    - iommus
->    - assigned-clocks
->    - assigned-clock-parents
-> +  - power-domains
->  
->  allOf:
->    - if:
-> @@ -132,6 +136,7 @@ examples:
->      #include <dt-bindings/clock/mt8173-clk.h>
->      #include <dt-bindings/memory/mt8173-larb-port.h>
->      #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/mt8173-power.h>
->  
->      vcodec_enc_avc: vcodec@18002000 {
->        compatible = "mediatek,mt8173-vcodec-enc";
-> @@ -153,6 +158,7 @@ examples:
->        clock-names = "venc_sel";
->        assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
->        assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
-> +      power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
->      };
->  
->      vcodec_enc_vp8: vcodec@19002000 {
-> @@ -173,4 +179,5 @@ examples:
->        clock-names = "venc_lt_sel";
->        assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
->        assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>;
-> +      power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC_LT>;
->      };
-> -- 
-> 2.18.0
-> 
-> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 4a2bd9759c47..5a29b7b381ef 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -131,6 +131,10 @@ properties:
+>            - enum:
+>                - mediatek,mt8183-evb
+>            - const: mediatek,mt8183
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8186-evb
+> +          - const: mediatek,mt8186
+>        - items:
+>            - enum:
+>                - mediatek,mt8192-evb
 
 _______________________________________________
 Linux-mediatek mailing list
