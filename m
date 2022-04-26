@@ -4,70 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A8B5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 03:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948C6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 04:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HBIh5af9J3D+wc7kTVqNTxSkuFM6BjZmjoKmDKwhyC8=; b=TfGGnN/jcVD7x/
-	oAW5V4DE17MNrnJCu/WeS2qprV3GNKRCNDWxPxCRQgtObqSONYvv0IGxCfZ3z/G+NuaTzLsPfGFWC
-	7sk0q7ywr//tnffc7PAJZjnR33Un2JZDfogL747kv/4YGzyXkcplJenu4yRj+95/5WLqXwc0mjJ3n
-	jveopYGvgpE4R9ZaELKt9mGJVsv/uapZQsyc4HqZCk1MHyEdnzpHASxENS6WKgP+fCc58aU8cMFgC
-	nKQ1lLzz6JvlZNtdSuWPBeswZ5ogdsmif1FVTgCPpaJ6SUJy9NcZYvBeIera0EUqPr6q9Q5md04iI
-	GMLtR8ojkZM3zSYR5W9g==;
+	List-Owner; bh=2mrHoj3D7Qvwdk+2sOiIJF2CKovWvbI8yMKL4/jsBXQ=; b=I/o7obbKbfYQOM
+	/7xFKMVpSzAVPDzZu+lNJBv8ii4kaUyYrB1/0u62IcXEVxu7sMI+J3IyO54cIgIeDAokC/sxrKFuD
+	5qFRqBTJbFMwg2PtWwbxiPNswCM98hfFgbwppjCI2kNPcymW5IVQmNwG1n+Q1jCrbpoKyTdWR9E0w
+	EEwdh3CW9gcP6Ubx/fOJHoPyt3f8id7rxo1M+/TmOPrCg2wDifJTjSKWLGwKW0S4zNwlJOsj9cnno
+	3hoTqXy+6Nr4S45juSpZLyZNNAas5t+1Mobhjw+K6bBEL2STO2CY+4bMYYRIYRyrwZfbTCgXni+OA
+	RluJ2Gj3zlnWq6TOPciw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njBik-00CHqI-5H; Tue, 26 Apr 2022 03:18:34 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1njCNn-00CMMY-L0; Tue, 26 Apr 2022 04:00:59 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njBiX-00CHmd-Or
- for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 03:18:23 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id w187so21203822ybe.2
- for <linux-mediatek@lists.infradead.org>; Mon, 25 Apr 2022 20:18:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ymvQGhwLD6LrQR70e/w6ZPsiExN1hAhcmAPj4jy8dAs=;
- b=hl9cabfzvJuk6NdpihUW2V6JgM6pg6VorWRkIKdEdXpq9fhgiWK1MzSd5HZrlZyDu5
- y9jb2HFJ4/ItQpenFhNgKyZCt9bfvcDzFEb6/J/2Mhi6v4gBi67b/bpNwZpHbDJcmNjE
- yxZ8PbmBCRO+dNafHrM8EWAipoRe7jmCdoCeg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ymvQGhwLD6LrQR70e/w6ZPsiExN1hAhcmAPj4jy8dAs=;
- b=RWPTC6cWvPgnI0Gpee/4oSa+wqk4hHpFFG4D/qcJQEo3pBseMoZi67nMdq3PVIzTyg
- 7nZ58ebnG1rWgSHiXzloud6sozQp92721gG94jv8ZO90cTfdaJLgNoQtBK4BCN6OnJTa
- O/iYT8FzNXJ8s8tyznxtZCVFJ7coOIA+miLUtrguxqt6STqFpm3ZVMUB5vN7Gj8Gukrm
- zgiQEyT3HXod8ejJbeYcbfY+ZRvxstCL+7G2xrtPafhmgUrDD4oUIZP9W9MNb5gIcVjB
- +JQBgsNboi7+aFzvx28VrL1z6KhLAESfgt+PlrKsAeMl88httTz6w5ghCnFCzkUYNJt0
- 5eIw==
-X-Gm-Message-State: AOAM532Hkbliajg1+lwbjBMMkvKW1oSb8CLkbHFbZ9R4tMss/sM52LF/
- xnkr51d8oWcMOrSygN6WzqlvbIpKZc1Lgs4lsnPj2w==
-X-Google-Smtp-Source: ABdhPJyhHmusCSOHXNUImfAEEzGb8B8HQK3f3IeirnXiVrdZPW5jq5AEGz0c4s9rGNFdKqdnfg94FcKxSxPYMEgzAMs=
-X-Received: by 2002:a5b:34a:0:b0:645:4966:b5d3 with SMTP id
- q10-20020a5b034a000000b006454966b5d3mr18130893ybp.461.1650943097894; Mon, 25
- Apr 2022 20:18:17 -0700 (PDT)
+ id 1njCNk-00CMKn-0T; Tue, 26 Apr 2022 04:00:57 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 23PL8t2i022267;
+ Tue, 26 Apr 2022 04:00:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2021-07-09;
+ bh=VfaAkAPyUePRFxMzN4vqCs4A6PVXSAifuZPdHgE9/bI=;
+ b=g30R3MYw16RtEFJoD/k/wG7apkc24EzrkocSqiTxKqOanPgiMm8TrNvPwmGPiSH2OPGn
+ DtMVSx9bNUJNvK8eYhTyyPW2osoW4uN5Zyf6KNcL1upxZZCt0hwdTKC53CfyRpBp3wA5
+ 3fDnWX+G7TXLBoJAC7QiaX8XJwt8/A6JEvwYZs6W9OC4h0xqMnTu9B4Tot5rGAqlK11f
+ 4J8Yylg5ttBqSb+Ht7SwTsZds63CKPsNjZCZBCQ2ks/u67LsronCEAfYjqoeBYXjBdJO
+ VNsnzqek+waFTQnrZIupbsCwpQNsJmb7Ey13B2X/9n2eGAXf1ibMM/2u1KbKdg7bRMnO PA== 
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3fmaw4d0bt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 26 Apr 2022 04:00:49 +0000
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
+ with SMTP id 23Q40QVv029494; Tue, 26 Apr 2022 04:00:48 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id
+ 3fp5yj3v2c-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 26 Apr 2022 04:00:48 +0000
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 23Q40juV030030;
+ Tue, 26 Apr 2022 04:00:47 GMT
+Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id
+ 3fp5yj3v10-4; Tue, 26 Apr 2022 04:00:47 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Po-Wen Kao <powen.kao@mediatek.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Avri Altman <avri.altman@wdc.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+ chun-hung.wu@mediatek.com, chaotian.jing@mediatek.com,
+ linux-scsi@vger.kernel.org, stanley.chu@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, cc.chou@mediatek.com,
+ wsd_upstream@mediatek.com, peter.wang@mediatek.com,
+ alice.chao@mediatek.com, yohan.joung@sk.com, jiajie.hao@mediatek.com,
+ linux-mediatek@lists.infradead.org, huobean@gmail.com, jason.li@sk.com,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/1] scsi: ufs: remove redundant HPB unmap
+Date: Tue, 26 Apr 2022 00:00:43 -0400
+Message-Id: <165094528686.21993.15243100183282892659.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.35.2
+In-Reply-To: <20220412073131.10644-1-powen.kao@mediatek.com>
+References: <20220412073131.10644-1-powen.kao@mediatek.com>
 MIME-Version: 1.0
-References: <20220425125546.4129-1-johnson.wang@mediatek.com>
- <20220425125546.4129-2-johnson.wang@mediatek.com>
-In-Reply-To: <20220425125546.4129-2-johnson.wang@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 26 Apr 2022 11:18:06 +0800
-Message-ID: <CAGXv+5HgyN+kp86M2GgFtbruXSAMSLxsh9vf8zVE5TxRMyTyaA@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: interconnect: Add MediaTek CCI
- dt-bindings
-To: Johnson Wang <johnson.wang@mediatek.com>, krzk+dt@kernel.org
-Cc: cw00.choi@samsung.com, robh+dt@kernel.org, kyungmin.park@samsung.com, 
- khilman@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, jia-wei.chang@mediatek.com, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+X-Proofpoint-GUID: 5ZG8fnjdj6FEVSC0UJ8zd_-U7Y1gxeCo
+X-Proofpoint-ORIG-GUID: 5ZG8fnjdj6FEVSC0UJ8zd_-U7Y1gxeCo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_201821_873767_845AD3B3 
-X-CRM114-Status: GOOD (  23.52  )
+X-CRM114-CacheID: sfid-20220425_210056_212164_95E4EB7D 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,183 +100,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 25, 2022 at 8:56 PM Johnson Wang <johnson.wang@mediatek.com> wrote:
->
-> Add devicetree binding of MediaTek CCI on MT8183 and MT8186.
->
-> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> ---
->  .../bindings/interconnect/mediatek,cci.yaml   | 139 ++++++++++++++++++
->  1 file changed, 139 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
->
-> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-> new file mode 100644
-> index 000000000000..e5221e17d11b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-> @@ -0,0 +1,139 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/interconnect/mediatek,cci.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Cache Coherent Interconnect (CCI) frequency and voltage scaling
-> +
-> +maintainers:
-> +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> +
-> +description: |
-> +  MediaTek Cache Coherent Interconnect (CCI) is a hardware engine used by
-> +  MT8183 and MT8186 SoCs to scale the frequency and adjust the voltage in
-> +  hardware. It can also optimize the voltage to reduce the power consumption.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8183-cci
-> +      - mediatek,mt8186-cci
-> +
-> +  clocks:
-> +    items:
-> +      - description:
-> +          The multiplexer for clock input of CPU cluster.
+On Tue, 12 Apr 2022 15:31:28 +0800, Po-Wen Kao wrote:
 
-of the bus, not CPU cluster.
+> Since the HPB mapping is already reset in ufshpb_init by setting
+> flag QUERY_FLAG_IDN_HPB_RESET, there is no need doing so again in
+> ufshpb_hpb_lu_prepared.
+> 
+> This would also resolve the issue where HPB WRTIE BUFFER is issued
+> before UAC being cleared.
+> 
+> [...]
 
-> +      - description:
-> +          A parent of "cpu" clock which is used as an intermediate clock source
-> +          when the original CPU is under transition and not stable yet.
+Applied to 5.19/scsi-queue, thanks!
 
-This really should be handled in the clk controller, and not by every device
-that happens to take a clock from a mux with upstream PLLs that can change
-in clock rate. The end device hardware only takes one clock input. That's it.
+[1/1] scsi: ufs: remove redundant HPB unmap
+      https://git.kernel.org/mkp/scsi/c/25a0bf213b8a
 
-> +
-> +  clock-names:
-> +    items:
-> +      - const: cci
-> +      - const: intermediate
-> +
-> +  operating-points-v2: true
-> +  opp-table: true
-> +
-> +  proc-supply:
-> +    description:
-> +      Phandle of the regulator for CCI that provides the supply voltage.
-> +
-> +  sram-supply:
-> +    description:
-> +      Phandle of the regulator for sram of CCI that provides the supply
-> +      voltage. When it presents, the cci devfreq driver needs to do
-
-When it is present, the implementation needs to ...
-
-ChenYu
-
-> +      "voltage tracking" to step by step scale up/down Vproc and Vsram to fit
-> +      SoC specific needs. When absent, the voltage scaling flow is handled by
-> +      hardware, hence no software "voltage tracking" is needed.
-> +
-> +required:
-> +  - compatible
-> +  - clocks
-> +  - clock-names
-> +  - operating-points-v2
-> +  - proc-supply
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8183-clk.h>
-> +    cci: cci {
-> +        compatible = "mediatek,mt8183-cci";
-> +        clocks = <&mcucfg CLK_MCU_BUS_SEL>,
-> +                 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +        clock-names = "cci", "intermediate";
-> +        operating-points-v2 = <&cci_opp>;
-> +        proc-supply = <&mt6358_vproc12_reg>;
-> +    };
-> +
-> +    cci_opp: opp-table-cci {
-> +        compatible = "operating-points-v2";
-> +        opp-shared;
-> +        opp2_00: opp-273000000 {
-> +            opp-hz = /bits/ 64 <273000000>;
-> +            opp-microvolt = <650000>;
-> +        };
-> +        opp2_01: opp-338000000 {
-> +            opp-hz = /bits/ 64 <338000000>;
-> +            opp-microvolt = <687500>;
-> +        };
-> +        opp2_02: opp-403000000 {
-> +            opp-hz = /bits/ 64 <403000000>;
-> +            opp-microvolt = <718750>;
-> +        };
-> +        opp2_03: opp-463000000 {
-> +            opp-hz = /bits/ 64 <463000000>;
-> +            opp-microvolt = <756250>;
-> +        };
-> +        opp2_04: opp-546000000 {
-> +            opp-hz = /bits/ 64 <546000000>;
-> +            opp-microvolt = <800000>;
-> +        };
-> +        opp2_05: opp-624000000 {
-> +            opp-hz = /bits/ 64 <624000000>;
-> +            opp-microvolt = <818750>;
-> +        };
-> +        opp2_06: opp-689000000 {
-> +            opp-hz = /bits/ 64 <689000000>;
-> +            opp-microvolt = <850000>;
-> +        };
-> +        opp2_07: opp-767000000 {
-> +            opp-hz = /bits/ 64 <767000000>;
-> +            opp-microvolt = <868750>;
-> +        };
-> +        opp2_08: opp-845000000 {
-> +            opp-hz = /bits/ 64 <845000000>;
-> +            opp-microvolt = <893750>;
-> +        };
-> +        opp2_09: opp-871000000 {
-> +            opp-hz = /bits/ 64 <871000000>;
-> +            opp-microvolt = <906250>;
-> +        };
-> +        opp2_10: opp-923000000 {
-> +            opp-hz = /bits/ 64 <923000000>;
-> +            opp-microvolt = <931250>;
-> +        };
-> +        opp2_11: opp-962000000 {
-> +            opp-hz = /bits/ 64 <962000000>;
-> +            opp-microvolt = <943750>;
-> +        };
-> +        opp2_12: opp-1027000000 {
-> +            opp-hz = /bits/ 64 <1027000000>;
-> +            opp-microvolt = <975000>;
-> +        };
-> +        opp2_13: opp-1092000000 {
-> +            opp-hz = /bits/ 64 <1092000000>;
-> +            opp-microvolt = <1000000>;
-> +        };
-> +        opp2_14: opp-1144000000 {
-> +            opp-hz = /bits/ 64 <1144000000>;
-> +            opp-microvolt = <1025000>;
-> +        };
-> +        opp2_15: opp-1196000000 {
-> +            opp-hz = /bits/ 64 <1196000000>;
-> +            opp-microvolt = <1050000>;
-> +        };
-> +    };
-> --
-> 2.18.0
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
