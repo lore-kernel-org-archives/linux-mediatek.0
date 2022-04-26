@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D92C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 16:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54129C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 16:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xPWZbivu6AxuTe+oJAg86zRbppz3/IIrG2US/EqRvdg=; b=f7qT+CJlBXXk7G
-	U4t3syYzSvL+/N7OlqMUwN67iaEbJgZ0gM00H/8aJ/TyFkxawWIyLG1V1XspqJ6CGcKqfq3NNT900
-	LMc8uFEY+cWWT5FKwYq0RTNn8+9IP5CsrDYYrf6TpbxxjyMxwsmxAH6A/Vh5eM7hymIfvdhbsJvld
-	U2/7DL0l8JnYgAL+sUPSzMnLXErNECYFQ93f+swpc3rVHQMCipodzfR7dae8vsIcGcf//p0uQIYCe
-	upxS6+x/ulth2m/aOyWdxEnH49awJefW2hOzqc21a8QsLoBbc8j8iLLqEaO4XORPd80+dUaRv2+is
-	GZdfnEJUKgpTcIWA4jMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fGhkVY1mkC/J2W6d9m9B6oLYCim/jCOsZuh//optkM0=; b=ESntc8BBfGiUiW
+	VjCu4RySBPCGkoNtPW7vXuCMoIZzJ1jl+Wrem9XYU6sFEidJdgcTbE/DbrPZGMkrFCXLZRp6QZGtC
+	Uu4HiBhrr33juDxlIMlfTqpi4powU0VfsA7BmH4S90dtxoqOMTCRQvLQBNtAmD1QIoKDg0FdtktLa
+	tlCN6o52/MSJs29ZDj8McOf1jSEkZjg1w6h3Z8kwAtdFh6+COjmCfRSLx6VBdy/5Je6s0MX4AwF82
+	txq8hwgZyK49KeD2qDo6vxxb9y7TDGxUpAponhH9FlebKsA0COwCg6h6L5xggFltGL+lydmFSZb73
+	ZcYRnEX9hTx6Om08IV3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njODO-00FMni-B2; Tue, 26 Apr 2022 16:39:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njOKT-00FOcH-L5; Tue, 26 Apr 2022 16:46:21 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njODD-00FMkn-NE; Tue, 26 Apr 2022 16:38:53 +0000
-X-UUID: 6c525288e8e649268247f117a22aa55d-20220426
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:c2d0ad45-3517-4cf7-b53c-583f708ceaba, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:c5be8ec6-85ee-4ac1-ac05-bd3f1e72e732,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
- l
-X-UUID: 6c525288e8e649268247f117a22aa55d-20220426
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <lecopzer.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1902471827; Tue, 26 Apr 2022 09:38:44 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 09:38:43 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 27 Apr 2022 00:38:40 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 27 Apr 2022 00:38:40 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <lecopzer.chen@mediatek.com>, <pmladek@suse.com>
-CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
- <alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
- <davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
- <keescook@chromium.org>, <kernelfans@gmail.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-perf-users@vger.kernel.org>,
- <mark.rutland@arm.com>, <masahiroy@kernel.org>, <matthias.bgg@gmail.com>,
- <maz@kernel.org>, <mcgrof@kernel.org>, <mingo@redhat.com>,
- <namhyung@kernel.org>, <nixiaoming@huawei.com>, <peterz@infradead.org>,
- <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
- <will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: Re: [PATCH v3 5/5] arm64: Enable perf events based hard lockup
- detector
-Date: Wed, 27 Apr 2022 00:38:40 +0800
-Message-ID: <20220426163840.18871-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220421163035.26402-1-lecopzer.chen@mediatek.com>
-References: <20220421163035.26402-1-lecopzer.chen@mediatek.com>
+ id 1njOKQ-00FOWu-0Q
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 16:46:20 +0000
+Received: by mail-wr1-x432.google.com with SMTP id q23so13408984wra.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 09:46:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a4Dsh1MIN0xZI+gwJI4fdmqtKhkwKXeMWuLlT5BOjsQ=;
+ b=4RGJ1GWCGaRqYH7/PaHb5ZLmdutMuHjUNGWfkBquGA1U2RooGiMDqO9bvYVUWCYTeS
+ 3pgWEyaxGDIyUEW6UYtA1v9zTpn01nmefLwkSVdhQuvHtemFICCmTNhLxkRCOpPxAVL/
+ Qrhk8lyyFac2/hwXxfqOeNV0ujOVdxkxkcPOf8IPAWWTUbcA+5bkhCrxgnFBqCYOTfrA
+ 2a9f8sGovPTc+4hS2XPwwRrws22Eu2m78cWLxOCwwSwDoiP12ZvEg3QsIqj6HpceMmVu
+ MrKqwLvcfgXDc2pKVro7BGyQizR52D14IABJKwvfREGIPZF51VRnjwcBjQ8yjm3BHjbj
+ rI4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a4Dsh1MIN0xZI+gwJI4fdmqtKhkwKXeMWuLlT5BOjsQ=;
+ b=txdxprv3EW4xRHsg7dcZCnb630dQ0zAhgtuCadO+1T+TdtEZHGMIjLhIhqmR6/YuPp
+ UG5NangeQjQEk4TeVFwRFKv0pmfjPGvWwA8xKn/kd3GtURGdd/KgwFyzST/hkxuS95sw
+ bd63tGYlb0pmzYRbQiJmVkz+az1rWmvqtRD5aIf7T/AmrZPIgr8rk/QNd2RAW5rBC7Hv
+ V4tNM2N2jwMelNsCx4T04NAzu8y8AkiAI7ktR/dK6wLqsWOY8WHTRm5fcaIPOhxFIjTg
+ Sd4+FsZpXw9p4H7MPvdYzml1mU9hNr0uE/KuV9DQCWqiHDHVgNLzdEXHFEpyr+87sTbE
+ cDJw==
+X-Gm-Message-State: AOAM531eg4b/eiyHfn4VmuXLYCLDh8oi/AlUaFire7rMpfGLzIFLLtLV
+ 29C+izg3jVcVSZRapzUYdT4fZQ==
+X-Google-Smtp-Source: ABdhPJyQj4nlAzq8f49npdb5BnklLFCtyQ6VIVK795e5133V4LSp0puZE2gqfmU4YR9lWfCCN9WEsw==
+X-Received: by 2002:adf:b34a:0:b0:20a:d6e4:cea4 with SMTP id
+ k10-20020adfb34a000000b0020ad6e4cea4mr12132328wrd.675.1650991573906; 
+ Tue, 26 Apr 2022 09:46:13 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+ by smtp.gmail.com with ESMTPSA id
+ l6-20020a1c2506000000b0038e6fe8e8d8sm14499539wml.5.2022.04.26.09.46.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Apr 2022 09:46:13 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/2] arm64: dts: mt8183: add dpi node to mt8183
+Date: Tue, 26 Apr 2022 18:45:46 +0200
+Message-Id: <20220426164547.434324-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.36.0
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_093851_799494_1B0F4042 
-X-CRM114-Status: GOOD (  37.92  )
+X-CRM114-CacheID: sfid-20220426_094618_257917_63BF9A7F 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,132 +93,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > The call path for hardlockup_detector_perf_init() is really complicated,
-> > 
-> > I have some approach about this:
-> >   1. abstract second variable with Kconfig.
-> >     a. Add a ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT
-> >        (the naming is a little bit long, may have better naming)
-> >        in "lib/Kconfig.debug" if ARCH knew they do need delayed init for
-> >        lockup detector.
-> > 
-> >        + select ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT if HAVE_HARDLOCKUP_DETECTOR_PERF
-> > 
-> >     b. and the watchdog_nmi_probe would look like.
-> > 
-> >     +int __init watchdog_nmi_probe(void)
-> >     +{
-> >     +	int ret;
-> >     +
-> >     + /* comment here... */
-> >     +	if (!arm_pmu_irq_is_nmi())
-> >     +		return -ENODEV;
-> >     +
-> >     +	ret = hardlockup_detector_perf_init();
-> >     +	if (ret &&
-> >     +		  IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
-> >     +		return -EBUSY;
-> >     +
-> >     + return ret;
-> >     +}
-> > 
-> >     and than we can have only one variable (allow_lockup_detector_init_retry)
-> >     in 4th patch.
-> > 
-> >  
-> >   2. base on ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT, change
-> >      inside hardlockup_detector_perf_init().
-> > 
-> > int __init hardlockup_detector_perf_init(void)
-> > {
-> > 	int ret = hardlockup_detector_event_create();
-> > 
-> > 	if (ret) {
-> > 		pr_info("Perf NMI watchdog permanently disabled\n");
-> > +
-> > +		/* comment here... */
-> > +		if (IS_ENABLED(ARCH_SUPPORTS_HARDLOCKUP_DETECTOR_DLAYED_INIT))
-> > +			ret = -EBUSY;
-> > 	} else {
-> > 		perf_event_release_kernel(this_cpu_read(watchdog_ev));
-> > 		this_cpu_write(watchdog_ev, NULL);
-> > 	}
-> > 	return ret;
-> > }
-> > 
-> >   3. Don't add any other config, try to find a proper location
-> >      to return -EBUSY in hardlockup_detector_event_create().
-> >      IMHO, this may involve the PMU subsys and should be
-> >      the hardest approach.
-> 
-> Honestly, everything looks a bit ugly and complicated to me.
-> 
-> OKAY, is the return value actually important?
-> 
-> What about just introducing the API that will allow to try to
-> initialize the hardlockup detector later:
-> 
-> /*
->  * Retry hardlockup detector init. It is useful when it requires some
->  * functionality that has to be initialized later on a particular
->  * platform.
->  */
-> void __init retry_lockup_detector_init(void)
-> {
-> 	/* Must be called before late init calls. */
-> 	if (!allow_lockup_detector_init_retry)
-> 		return 0;
-> 
-> 	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
-> }
-> 
-> /*
->  * Ensure that optional delayed hardlockup init is proceed before
->  * the init code and memory is freed.
->  */
-> static int __init lockup_detector_check(void)
-> {
-> 	/* Prevent any later retry. */
-> 	allow_lockup_detector_init_retry = false;
-> 
-> 	/* Make sure no work is pending. */
-> 	flush_work(&detector_work);
-> }
-> late_initcall_sync(lockup_detector_check);
-> 
-> You could leave lockup_detector_init() as it is. It does not really
-> matter what was the exact error value returned by watchdog_nmi_probe().
-> 
-> Then you could call retry_lockup_detector_init() in
-> armv8_pmu_driver_init() and be done with it.
-> 
-> It will be universal API that might be used on any architecture
-> for any reason. If nobody calls retry_lockup_detector_init()
-> then nohing will happen and the code will work as before.
-> 
-> It might make sense to provide the API only on architectures that
-> really need it. We could hide it under
-> 
->    ARCH_NEED_DELAYED_HARDLOCKUP_DETECTOR_INIT
-> 
-> , similar to ARCH_NEEDS_CPU_IDLE_COUPLE.
-> 
+From: Pi-Hsun Shih <pihsun@chromium.org>
 
-During implementation, if I add ARCH_NEED_DELAYED_..., there will contain
-many enclosed ifdef-endif and is a little bit ugly.
-Also, I didn't find a must-have reason to this Kconfig after I rebase from
-your suggestion.
+Add dpi node to mt8183.
 
-The one calls retry_lockup_detector_init() must fail at lockup_detector_init,
-so I think anyone who has aleady failed at lockup_detector_init() has right
-to retry no matter HW, SW or Arch reason.
-Thus I might not introduce a new Kconfig in v4, and I would be glad to see
-if any further commet on this.
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+v2: no changes
 
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-
-
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 4b08691ed39e..49e662e34b36 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1507,6 +1507,17 @@ dsi0: dsi@14014000 {
+ 			phy-names = "dphy";
+ 		};
+ 
++		dpi0: dpi@14015000 {
++			compatible = "mediatek,mt8183-dpi";
++			reg = <0 0x14015000 0 0x1000>;
++			interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_DPI_IF>,
++				 <&mmsys CLK_MM_DPI_MM>,
++				 <&apmixedsys CLK_APMIXED_TVDPLL>;
++			clock-names = "pixel", "engine", "pll";
++		};
++
+ 		mutex: mutex@14016000 {
+ 			compatible = "mediatek,mt8183-disp-mutex";
+ 			reg = <0 0x14016000 0 0x1000>;
+-- 
+2.36.0
 
 
 _______________________________________________
