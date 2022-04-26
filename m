@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F91BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 16:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D908C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 16:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nrnhK9BuqgIlPuDS/+lEAkUgNAqDZaeVN+hT9b5SKw0=; b=SgmIDbYtCfn9Un
-	cXsZNjgI+ZkjNyY2csswtpDQrXCl+WjkEytiW3Mzdk2lhWYEsH9kUgRaQkWA7GGOXM9T+WCXO45GI
-	22EvbmvLCP1xZd0ec0aYTO345Cyt9eVvEybIzt6+kYcdw6FyIwNFHmSDFnhV/RnVWSZQ3IPKX+G51
-	H2shPfykAQnlZpbnYbhxXuDSNiGdu+/uWGkJmND8DxBZ3pkRTDKMcWUr9FLT0seY/5pQ31lLsG6rv
-	D7MLfYmcLrlWek+KFD0npNB3lyEy1Y1WwQxOp8TiiqC//le9l4VPCRq9jIcGLeEzyTNTPnpt2I38a
-	9kyF1ztvbbwD2rn0QvdA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VU0RyBXOqlpTpKYlaoLqo3MIOwYAIU5hns0W0yY/vXM=; b=xX9Jc1DbjagV4T
+	FtM8awxZ1DBb+gFt9ZaJ0KgLB1O+izwVzdbYrKQnCnXCoQ6jZ1gZrMCem+ptxfzIaDkagXOWjudwX
+	gEWvIiPY2AMiD9GSL3TfaAGUESf+ykWFgACAsVRdqqD8SXXrJCbQIQbj8vW/unXphLaVe2TO01vs2
+	49X00gykIFYS0qmOwdqGi1Gp7NtBoFUgcy11UIM7kLB61+wyWiVeM6V1sJrL0PJaA7B2yYbY0UnuX
+	0apQNHFFqsYORRiBKpoU1sqU+n3LsY0FONolDa7bD50m8cWVYaBnNX9rvz/vcltX+Pc5boGmWMMHQ
+	6m5vAJTXtktHMEaA5Jrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njOKu-00FOpc-Vs; Tue, 26 Apr 2022 16:46:49 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1njOMY-00FPXU-W7; Tue, 26 Apr 2022 16:48:31 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njOKR-00FOXP-SQ
- for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 16:46:21 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id e2so20018079wrh.7
- for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 09:46:16 -0700 (PDT)
+ id 1njOMK-00FPQZ-NM
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 16:48:18 +0000
+Received: by mail-wr1-x430.google.com with SMTP id d5so11098839wrb.6
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 09:48:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=hDUErSF+n1k4cG7IQv0rQoHbdfQHDvgwLI/ub82oI98=;
- b=kN1kjMj3AUcIxo+isiGbvhu7TC4PV+So7N1BvAQzcaE48QfCfbPjXiHPKOG6zQliuA
- ER+yoD75Uc33LlmE99guO8c7Ubxx8haampaZds46hwE/b6ZhPM5C3oAdiylNdirL+STx
- pSbXgv5rwilHw+43iW3IOCZJ0Hmt1GDZULXi0LPGK6KEPf6JUVJ3OuyEUn/EgoZin51p
- 1JNHrR9MhvYCpXQ060nrxpEA7dqfa+hPyl/+5eFJlGKlyns+DEyoSsL6NAU5g/Drtpp2
- IQIvnM7ReE15C7n+NtMbu4ig2qJLOtcMrAOu8/xnFtvC0Gxa1duo6KQVTWkylLVfcnvm
- EQ4w==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P4ciD6HIPd+5KM3dYGEOIb5g49z+4yJDjMPc1UvrfkU=;
+ b=IJZs0rJxdFFgeK0qhrf9rXUqCycI5k/9aihNZmVD0Pm7hmJYgN98EhRFb8/56KGxsW
+ CmQ5FLvhRT4+RAs64ooR2h5jeA/sWjQd/rmBfezKcTvUEIrNPcxYGtb8HYbbwPrK3LYD
+ Yr7ZgIq2JOarZPyr9GVegHztUbpfnLqoABb3C/ZOaC376RFckBFWhGra/jOo8/25KYwX
+ ipklu/+JHJHG15T+ehqtCqTvzkbDJQvlrFRjEJokElNDaeLVCTfowAlwUaaeEa4xNdzO
+ kUNbuBJ5j5knBsDJwIROJHpa5v/PYiYNACjfXHM/1lUsbWYOHqnUz0kffnT2idz5N2LI
+ YsPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=hDUErSF+n1k4cG7IQv0rQoHbdfQHDvgwLI/ub82oI98=;
- b=Ldh+ulKBfgJkoPI9NbEp0kXigeU8VJwLlgFze6UBq2lAOUFc8xdc/P+wrE16HGfFdC
- mYg3864CQIMYAywY4uF5CFlryUQRl46iT24WXexrZDSma/+ZnnxHsvE5YHMaO2HpWdU7
- DzwE/E9yEeY/MZUpTosT2rHt9UshMdGc8XEletcNdTqKwkRgGJrG97bSWd0Ql870RKGi
- 1nLJDM//PKy3Bdm7m0MLf8v89uZ2IFnls7yCG7P+KJSZFGmWFyfax/F/7n0PONoy4FqS
- lq6ijZ12rxenjlNyCKtquVFBALV2ONJxl2O5d+VLOPIX0VNM/5mBTFH5pNI2i7P0mpVo
- yewQ==
-X-Gm-Message-State: AOAM530FWkmEfWc/Eracx9f/KDaxfNdOc+zm1lKKInGocQcedVaqTn3y
- ajvJMsgCKxNB2NciQuPxhv6q9A==
-X-Google-Smtp-Source: ABdhPJwDpUz3osm/6WMOLqtZWzpqkpSglRhHXyNOzKVIBhSeAfIer9VL6SBEZjBTZd3EB5JnlNnqcw==
-X-Received: by 2002:adf:fe47:0:b0:20a:c899:829f with SMTP id
- m7-20020adffe47000000b0020ac899829fmr18600290wrs.165.1650991575214; 
- Tue, 26 Apr 2022 09:46:15 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P4ciD6HIPd+5KM3dYGEOIb5g49z+4yJDjMPc1UvrfkU=;
+ b=PtSlN1EP+S8IRprPPFg310T2cQhjSQD/t0Anh7pjXgNfaD3IMnLedb98guXPewaroK
+ a084cs/LCba8K3Wn3gL9KIr8Nh3STAw/qeLZeoa75YriN/QyZSMTZOZ6s2Lu9INrDBfs
+ dSAXGIz1VuPu8DhOVLZRSwonG9FUedRmzWhgdPuLnyEi9AHlBFevYyJy4Bpikud5lxzO
+ aEzSUAbjyaHvQGRWqqYvucPI4qvyS11HlyilNjbkaAepsF72lxwXIPzQT95EAZqoyhls
+ t2MaCCiy3W7bnREoimuINpSuzZK67Yo6oh32gmJU6xM/zrSXwHDma2xYAb5gESUfoRrp
+ uBqA==
+X-Gm-Message-State: AOAM533CuSDnyX+PNNUSX3JXZiX+uo1+OBiU+mZlKGIobK4lLN+7kNBF
+ Q3GtQt9fu5sICOHhkOf55aC3WQ==
+X-Google-Smtp-Source: ABdhPJxxUshafCrpaa0LIgdqChjnIZ0fYu0cr2UYUDQ5TDdi5wXwhZ8aLoRJtA4XGbiS68e8+yiZFQ==
+X-Received: by 2002:a5d:6752:0:b0:20a:ce1f:2ceb with SMTP id
+ l18-20020a5d6752000000b0020ace1f2cebmr16099080wrw.715.1650991691348; 
+ Tue, 26 Apr 2022 09:48:11 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
  by smtp.gmail.com with ESMTPSA id
- l6-20020a1c2506000000b0038e6fe8e8d8sm14499539wml.5.2022.04.26.09.46.14
+ f1-20020a1c6a01000000b0038c9f6a3634sm14012661wmc.7.2022.04.26.09.48.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 09:46:14 -0700 (PDT)
+ Tue, 26 Apr 2022 09:48:10 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -67,16 +67,15 @@ To: Rob Herring <robh+dt@kernel.org>,
 Cc: Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8183-pumpkin: add HDMI support
-Date: Tue, 26 Apr 2022 18:45:47 +0200
-Message-Id: <20220426164547.434324-2-fparent@baylibre.com>
+Subject: [PATCH] arm64: dts: mediatek: mt8183-pumpkin: fix bad thermistor node
+ name
+Date: Tue, 26 Apr 2022 18:47:55 +0200
+Message-Id: <20220426164755.435372-1-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.0
-In-Reply-To: <20220426164547.434324-1-fparent@baylibre.com>
-References: <20220426164547.434324-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_094619_967110_F37EFF13 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20220426_094816_822311_5F26CF24 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,168 +92,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8183 Pumpkin board has a micro-HDMI connector. HDMI support is
-provided by an IT66121 DPI <-> HDMI bridge.
-
-This commit enables DPI and add the node for the IT66121 bridge.
+Fix the following dtbs_check error by using the correct node name:
+/home/fabo/build/linux/mt8183-pumpkin/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dtb: ntc: $nodename:0: 'ntc' does not match '^thermistor(.*)?$'
+	From schema: /home/fabo/devel/baylibre/linux-mainline/Documentation/devicetree/bindings/hwmon/ntc-thermistor.yaml
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
-v2: rename pinctrl node names to not include any underscore
-
- .../boot/dts/mediatek/mt8183-pumpkin.dts      | 121 ++++++++++++++++++
- 1 file changed, 121 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index ee912825cfc6..10b2c0500219 100644
+index 10b2c0500219..3d6da7efe31b 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -62,6 +62,18 @@ ntc {
- 		pulldown-ohm = <0>;
- 		io-channels = <&auxadc 0>;
- 	};
-+
-+	connector {
-+		compatible = "hdmi-connector";
-+		label = "hdmi";
-+		type = "d";
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi_connector_out>;
-+			};
-+		};
-+	};
- };
- 
- &auxadc {
-@@ -120,6 +132,41 @@ &i2c6 {
- 	pinctrl-0 = <&i2c6_pins>;
- 	status = "okay";
- 	clock-frequency = <100000>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	it66121hdmitx: hdmitx@4c {
-+		compatible = "ite,it66121";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ite_pins>;
-+		vcn33-supply = <&mt6358_vcn33_wifi_reg>;
-+		vcn18-supply = <&mt6358_vcn18_reg>;
-+		vrf12-supply = <&mt6358_vrf12_reg>;
-+		reset-gpios = <&pio 160 GPIO_ACTIVE_LOW>;
-+		interrupt-parent = <&pio>;
-+		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-+		reg = <0x4c>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				it66121_in: endpoint {
-+					bus-width = <12>;
-+					remote-endpoint = <&dpi_out>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+				hdmi_connector_out: endpoint {
-+					remote-endpoint = <&hdmi_connector_in>;
-+				};
-+			};
-+		};
-+	};
- };
- 
- &mmc0 {
-@@ -332,6 +379,67 @@ pins_clk {
- 			input-enable;
+@@ -55,7 +55,7 @@ led-green {
  		};
  	};
-+
-+	ite_pins: ite-pins {
-+		pins-irq {
-+			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins-rst {
-+			pinmux = <PINMUX_GPIO160__FUNC_GPIO160>;
-+			output-high;
-+		};
-+	};
-+
-+	dpi_func_pins: dpi-func-pins {
-+		pins-dpi {
-+			pinmux = <PINMUX_GPIO12__FUNC_I2S5_BCK>,
-+				 <PINMUX_GPIO46__FUNC_I2S5_LRCK>,
-+				 <PINMUX_GPIO47__FUNC_I2S5_DO>,
-+				 <PINMUX_GPIO13__FUNC_DBPI_D0>,
-+				 <PINMUX_GPIO14__FUNC_DBPI_D1>,
-+				 <PINMUX_GPIO15__FUNC_DBPI_D2>,
-+				 <PINMUX_GPIO16__FUNC_DBPI_D3>,
-+				 <PINMUX_GPIO17__FUNC_DBPI_D4>,
-+				 <PINMUX_GPIO18__FUNC_DBPI_D5>,
-+				 <PINMUX_GPIO19__FUNC_DBPI_D6>,
-+				 <PINMUX_GPIO20__FUNC_DBPI_D7>,
-+				 <PINMUX_GPIO21__FUNC_DBPI_D8>,
-+				 <PINMUX_GPIO22__FUNC_DBPI_D9>,
-+				 <PINMUX_GPIO23__FUNC_DBPI_D10>,
-+				 <PINMUX_GPIO24__FUNC_DBPI_D11>,
-+				 <PINMUX_GPIO25__FUNC_DBPI_HSYNC>,
-+				 <PINMUX_GPIO26__FUNC_DBPI_VSYNC>,
-+				 <PINMUX_GPIO27__FUNC_DBPI_DE>,
-+				 <PINMUX_GPIO28__FUNC_DBPI_CK>;
-+		};
-+	};
-+
-+	dpi_idle_pins: dpi-idle-pins {
-+		pins-idle {
-+			pinmux = <PINMUX_GPIO12__FUNC_GPIO12>,
-+				 <PINMUX_GPIO46__FUNC_GPIO46>,
-+				 <PINMUX_GPIO47__FUNC_GPIO47>,
-+				 <PINMUX_GPIO13__FUNC_GPIO13>,
-+				 <PINMUX_GPIO14__FUNC_GPIO14>,
-+				 <PINMUX_GPIO15__FUNC_GPIO15>,
-+				 <PINMUX_GPIO16__FUNC_GPIO16>,
-+				 <PINMUX_GPIO17__FUNC_GPIO17>,
-+				 <PINMUX_GPIO18__FUNC_GPIO18>,
-+				 <PINMUX_GPIO19__FUNC_GPIO19>,
-+				 <PINMUX_GPIO20__FUNC_GPIO20>,
-+				 <PINMUX_GPIO21__FUNC_GPIO21>,
-+				 <PINMUX_GPIO22__FUNC_GPIO22>,
-+				 <PINMUX_GPIO23__FUNC_GPIO23>,
-+				 <PINMUX_GPIO24__FUNC_GPIO24>,
-+				 <PINMUX_GPIO25__FUNC_GPIO25>,
-+				 <PINMUX_GPIO26__FUNC_GPIO26>,
-+				 <PINMUX_GPIO27__FUNC_GPIO27>,
-+				 <PINMUX_GPIO28__FUNC_GPIO28>;
-+		};
-+	};
- };
  
- &mfg {
-@@ -381,3 +489,16 @@ &scp {
- &dsi0 {
- 	status = "disabled";
- };
-+
-+&dpi0 {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&dpi_func_pins>;
-+	pinctrl-1 = <&dpi_idle_pins>;
-+	status = "okay";
-+
-+	port {
-+		dpi_out: endpoint {
-+			remote-endpoint = <&it66121_in>;
-+		};
-+	};
-+};
+-	ntc {
++	thermistor {
+ 		compatible = "murata,ncp03wf104";
+ 		pullup-uv = <1800000>;
+ 		pullup-ohm = <390000>;
 -- 
 2.36.0
 
