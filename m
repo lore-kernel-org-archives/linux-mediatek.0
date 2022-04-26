@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B9DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 10:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF17BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 10:24:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JES4VbzZszHDifzKLs+mqR5HJvMZfOy0RiTaq3I+ric=; b=A42SXeDQrny+Us
-	Y9XMSPuA/M5Ik76sIlJi6cSnfrOxubP5xScjQG9JzKdV3XYjy0+eKFTBEbyKijDj0JiuMRhZxQtjo
-	w1rjjtqw4p7mQvLFiGiJjbTqs3XXHptR46xH7qQTJG16G2aRIQnU2xtW3ROn+L9t/7rwKa63mBC7P
-	4b0UkysRXKIJOCseOAcdNMAOhioeKoxoZ6jm+Zqy8tRun26TooTSOs7AKCF7zW6u/PCwO0xAFHxwM
-	woTKXXEH/+cg1vX3OHTX4SsgScGQismK6w9v4P/tWFPXPdPJKZsJ7VXdxikroHYQcYbeQVuYkicSS
-	/W3st0f0bZPCas38onFQ==;
+	List-Owner; bh=rQIqKvIqFBWsDR4y9dD+YR+F5ktvZhsPL/RUFW7f1JU=; b=XfAdhLX3rQG2YH
+	4w+gJb9yY350ZZAdT8xMz4XXjq0GsHCIka8613Y3/aywTu1CbmQ8R8PgEUjganC0RV/Ygu1SCjED1
+	XDIun+2avSQvxkh4zCYIclVFnM83YCXd8rybYQWHiDSy+UDmTnCf8Kp1SPOehCIFYAnBYXMLa3mDa
+	zSndMsBH5ohKuD8TY9z2l/MdlLk3DTDXg5nkNZduXCWerHJZ+HAzBLqYJOVkEQYFx0hv4jJTio12d
+	pfMUUDU87SO60M+E5F1Uoux9asokj3IKYImpl/yb8dQC7GyiVR3TNRMqxFW4u8V83twWgXWUJiqR+
+	5533O4ucGM2OjYkQWguA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njIMT-00Dpjb-Bi; Tue, 26 Apr 2022 10:24:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njINH-00DqBc-VV; Tue, 26 Apr 2022 10:24:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njIHX-00DnCG-6t; Tue, 26 Apr 2022 10:18:57 +0000
-X-UUID: c5a32c3384494c9e966bd086ecd9a556-20220426
+ id 1njIHX-00DnHZ-Ex; Tue, 26 Apr 2022 10:18:59 +0000
+X-UUID: 33c65e72652341eea4357fb0c70ee0b5-20220426
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:7f17134d-2486-444c-bada-2942aaad7a14, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:1107e642-c992-4b58-b6c5-627e7c3f44f0, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:8db087c6-85ee-4ac1-ac05-bd3f1e72e732,
+X-CID-META: VersionHash:faefae9, CLOUDID:e2bdbf2e-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: c5a32c3384494c9e966bd086ecd9a556-20220426
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+X-UUID: 33c65e72652341eea4357fb0c70ee0b5-20220426
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1634827796; Tue, 26 Apr 2022 03:18:44 -0700
+ with ESMTP id 1421681484; Tue, 26 Apr 2022 03:18:42 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 03:08:42 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 26 Apr 2022 03:09:00 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 18:08:40 +0800
+ 15.0.1497.2; Tue, 26 Apr 2022 18:08:58 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Apr 2022 18:08:38 +0800
+ Transport; Tue, 26 Apr 2022 18:08:56 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -64,18 +64,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v10, 04/17] media: mediatek: vcodec: Read max resolution from
- dec_capability
-Date: Tue, 26 Apr 2022 18:08:15 +0800
-Message-ID: <20220426100828.13429-5-yunfei.dong@mediatek.com>
+Subject: [PATCH v10, 11/17] media: mediatek: vcodec: Fix v4l2-compliance fail
+Date: Tue, 26 Apr 2022 18:08:22 +0800
+Message-ID: <20220426100828.13429-12-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220426100828.13429-1-yunfei.dong@mediatek.com>
 References: <20220426100828.13429-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_031855_312465_E71E6C08 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20220426_031855_535884_2835CB9F 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,163 +91,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Supported max resolution for different platforms are not the same: 2K
-or 4K, getting it according to dec_capability.
+Need to use default pic info when get pic info fail.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Steve Cho <stevecho@chromium.org>
 ---
- .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 44 ++++++++++---------
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  4 ++
- 2 files changed, 28 insertions(+), 20 deletions(-)
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index 130ecef2e766..e42d5c17d90e 100644
+index dab6acb3158c..0d9007339faf 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -152,13 +152,15 @@ void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_ctx *ctx)
- 	q_data->coded_height = DFT_CFG_HEIGHT;
- 	q_data->fmt = ctx->dev->vdec_pdata->default_cap_fmt;
- 	q_data->field = V4L2_FIELD_NONE;
-+	ctx->max_width = MTK_VDEC_MAX_W;
-+	ctx->max_height = MTK_VDEC_MAX_H;
+@@ -485,11 +485,14 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 		ctx->picinfo.pic_w = pix_mp->width;
+ 		ctx->picinfo.pic_h = pix_mp->height;
  
- 	v4l_bound_align_image(&q_data->coded_width,
- 				MTK_VDEC_MIN_W,
--				MTK_VDEC_MAX_W, 4,
-+				ctx->max_width, 4,
- 				&q_data->coded_height,
- 				MTK_VDEC_MIN_H,
--				MTK_VDEC_MAX_H, 5, 6);
-+				ctx->max_height, 5, 6);
++		/*
++		 * If get pic info fail, need to use the default pic info params, or
++		 * v4l2-compliance will fail
++		 */
+ 		ret = vdec_if_get_param(ctx, GET_PARAM_PIC_INFO, &ctx->picinfo);
+ 		if (ret) {
+ 			mtk_v4l2_err("[%d]Error!! Get GET_PARAM_PICTURE_INFO Fail",
+ 				     ctx->id);
+-			return -EINVAL;
+ 		}
  
- 	q_data->sizeimage[0] = q_data->coded_width * q_data->coded_height;
- 	q_data->bytesperline[0] = q_data->coded_width;
-@@ -217,7 +219,7 @@ static int vidioc_vdec_subscribe_evt(struct v4l2_fh *fh,
- 	}
- }
- 
--static int vidioc_try_fmt(struct v4l2_format *f,
-+static int vidioc_try_fmt(struct mtk_vcodec_ctx *ctx, struct v4l2_format *f,
- 			  const struct mtk_video_fmt *fmt)
- {
- 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
-@@ -225,9 +227,9 @@ static int vidioc_try_fmt(struct v4l2_format *f,
- 	pix_fmt_mp->field = V4L2_FIELD_NONE;
- 
- 	pix_fmt_mp->width =
--		clamp(pix_fmt_mp->width, MTK_VDEC_MIN_W, MTK_VDEC_MAX_W);
-+		clamp(pix_fmt_mp->width, MTK_VDEC_MIN_W, ctx->max_width);
- 	pix_fmt_mp->height =
--		clamp(pix_fmt_mp->height, MTK_VDEC_MIN_H, MTK_VDEC_MAX_H);
-+		clamp(pix_fmt_mp->height, MTK_VDEC_MIN_H, ctx->max_height);
- 
- 	if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
- 		pix_fmt_mp->num_planes = 1;
-@@ -245,16 +247,16 @@ static int vidioc_try_fmt(struct v4l2_format *f,
- 		tmp_h = pix_fmt_mp->height;
- 		v4l_bound_align_image(&pix_fmt_mp->width,
- 					MTK_VDEC_MIN_W,
--					MTK_VDEC_MAX_W, 6,
-+					ctx->max_width, 6,
- 					&pix_fmt_mp->height,
- 					MTK_VDEC_MIN_H,
--					MTK_VDEC_MAX_H, 6, 9);
-+					ctx->max_height, 6, 9);
- 
- 		if (pix_fmt_mp->width < tmp_w &&
--			(pix_fmt_mp->width + 64) <= MTK_VDEC_MAX_W)
-+			(pix_fmt_mp->width + 64) <= ctx->max_width)
- 			pix_fmt_mp->width += 64;
- 		if (pix_fmt_mp->height < tmp_h &&
--			(pix_fmt_mp->height + 64) <= MTK_VDEC_MAX_H)
-+			(pix_fmt_mp->height + 64) <= ctx->max_height)
- 			pix_fmt_mp->height += 64;
- 
- 		mtk_v4l2_debug(0,
-@@ -294,7 +296,7 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
- 		fmt = mtk_vdec_find_format(f, dec_pdata);
- 	}
- 
--	return vidioc_try_fmt(f, fmt);
-+	return vidioc_try_fmt(ctx, f, fmt);
- }
- 
- static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
-@@ -317,7 +319,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- 		return -EINVAL;
- 	}
- 
--	return vidioc_try_fmt(f, fmt);
-+	return vidioc_try_fmt(ctx, f, fmt);
- }
- 
- static int vidioc_vdec_g_selection(struct file *file, void *priv,
-@@ -444,8 +446,14 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 	if (fmt == NULL)
- 		return -EINVAL;
- 
-+	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
-+		mtk_v4l2_debug(3, "4K is enabled");
-+		ctx->max_width = VCODEC_DEC_4K_CODED_WIDTH;
-+		ctx->max_height = VCODEC_DEC_4K_CODED_HEIGHT;
-+	}
-+
- 	q_data->fmt = fmt;
--	vidioc_try_fmt(f, q_data->fmt);
-+	vidioc_try_fmt(ctx, f, q_data->fmt);
- 	if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
- 		q_data->sizeimage[0] = pix_mp->plane_fmt[0].sizeimage;
- 		q_data->coded_width = pix_mp->width;
-@@ -529,14 +537,9 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 
- 		fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
- 		fsize->stepwise = dec_pdata->vdec_framesizes[i].stepwise;
--		if (!(ctx->dev->dec_capability &
--				VCODEC_CAPABILITY_4K_DISABLED)) {
--			mtk_v4l2_debug(3, "4K is enabled");
--			fsize->stepwise.max_width =
--					VCODEC_DEC_4K_CODED_WIDTH;
--			fsize->stepwise.max_height =
--					VCODEC_DEC_4K_CODED_HEIGHT;
--		}
-+
-+		fsize->stepwise.max_width = ctx->max_width;
-+		fsize->stepwise.max_height = ctx->max_height;
- 		mtk_v4l2_debug(1, "%x, %d %d %d %d %d %d",
- 				ctx->dev->dec_capability,
- 				fsize->stepwise.min_width,
-@@ -545,6 +548,7 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 				fsize->stepwise.min_height,
- 				fsize->stepwise.max_height,
- 				fsize->stepwise.step_height);
-+
- 		return 0;
- 	}
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index bb7b8e914d24..6d27e4d41ede 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -284,6 +284,8 @@ struct vdec_pic_info {
-  *	  mtk_video_dec_buf.
-  * @hw_id: hardware index used to identify different hardware.
-  *
-+ * @max_width: hardware supported max width
-+ * @max_height: hardware supported max height
-  * @msg_queue: msg queue used to store lat buffer information.
-  */
- struct mtk_vcodec_ctx {
-@@ -329,6 +331,8 @@ struct mtk_vcodec_ctx {
- 	struct mutex lock;
- 	int hw_id;
- 
-+	unsigned int max_width;
-+	unsigned int max_height;
- 	struct vdec_msg_queue msg_queue;
- };
- 
+ 		ctx->last_decoded_picinfo = ctx->picinfo;
 -- 
 2.18.0
 
