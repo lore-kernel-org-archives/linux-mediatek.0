@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C52C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA94C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uojS5iTh6cQUusV8x5VTqf8EgsR3V6iSmetyjrUf/R8=; b=RPLAYTzI/ZDs2r
-	NtbURSpPasq8HMPfK+CY6jkohKu6CMug6e0tgPJM/lYMDHi58VmC8QjLr02BqbAoSnviqpXG3Rv7V
-	bXwMZRUMrwcwgrnEasu5key7oqMjDYRBMp6cnuqf7VOt4wHMVpfSmfQeki5CeNWVCjl2c7x6RZJh7
-	FraxL2CSO058Trl0V0pFqfFyof8WR8CBWrepXP1I1vfH8qDfn/9wL1o3zPyY1My+PSnhzWA/T9t+K
-	GU6hbGPn+QVpTlRn640bv02rfi3omtEKHFI+TZckAaM02lLJ/Z3Ofv/C6qWfx7WABFpID9mkVbDCW
-	NzAU7tkw35VkyIGz2iQg==;
+	List-Owner; bh=5VxYkcSmENSyo93a7oGYwEW4781rzDfTvBrGwvu64OY=; b=fqJwMW+VK3nUuX
+	zdJD6RMDN91vXLoITT83VdYsRzMqdMhgYM4Xl2AmZB03A5ePSTG0kD1kb3FbytKztg0dpWnAgLQJX
+	qtkywqZiYFhvVKIiCnWoSa181+KdWTVfA3z/F0Yzv8gomXFJNi+WDAwfWB0lPyg1ITSk615Ojhszw
+	4XIpjyLDQ33yy6s5bDpwqa8FPgTMp2yAII+zEX05ZwSCro/qIZjPXenhy29hjm3N28/OHf6nGNmUS
+	uSlsgac/A078hnLp4DhvP+Zwrufc1OfE2tcD8plRyFnXk5tiMy5KCIY/GO4xSmoW6H7OwJk8i3bjt
+	0FJBOErU6F/Vtlrv/law==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njLfU-00En6K-9y; Tue, 26 Apr 2022 13:55:52 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1njLfX-00En8W-7E; Tue, 26 Apr 2022 13:55:55 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njLdE-00Elti-21
- for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 13:53:37 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id w4so25535168wrg.12
- for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 06:53:29 -0700 (PDT)
+ id 1njLdG-00Ely8-Ck
+ for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 13:53:40 +0000
+Received: by mail-wr1-x432.google.com with SMTP id s21so10890587wrb.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 06:53:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NSPijaD+f/0zVFm+Yx4b1C0MDA0Gs9+IxO2aTwmm2dI=;
- b=5sTu3reUZ/D7WVN5H8YcW9y6Y/Ke/a9s9ssXnYuXVl3+HJJLMSn76Sq9pGMUjZXNmG
- FXkQZ692OnMwQdwxU5ROq2/KiIocmS/SOAiWtUn8/HhNl8y+lst/JLZky1DhheOp5iM4
- 68Sx6S1uNoljHsGtihJ509m2G25Z2c1nufEVMiDGuL0dAHkxC6C95HyPqvwywaAF7t8k
- iI0OffFTm1qRTZhwPjkoIB+Fz3gJrk20veXfnZ137JCCc+pNSptpeTT0EHH05BAKP3WY
- WQC/ZabeUhtJn9uMN73R+2Af7QWGFHXopGVnv5ctNDJT1P6n88ghPBU+bWyrl45oG1gX
- zvdA==
+ bh=+gbDSzBgFUstx3vAtmhMB1WWymTnfkPpJ2BBVAe7qM8=;
+ b=rKgrTIQRTjHY+QtRVm3uhXuRFy9GFwVJ+lzbD98t1fgh6Poc221of/XAj8KerkZ42P
+ C+ZpiNzei59SNOB+AUmWV1elGYyJXlD6pwT3ljgBTCzetjBTv1c59yHXNpqqge4WmlQk
+ wwFEZYUhg2JR/SuOq9ZImZumt/sgw1EifvF+gqLEkzjxoMYwF+iK4EQZHUBqyjqAFPvX
+ G5cKhophLSD4/4JyT/A59hgiD+wBF5X6tnmj6VrHc0x8DHoqfYPvvyPCkc/QmPE4xAiK
+ GeX3jgVTSWIiM0DauIDMHuhIMOU6Hm0djgvd/jX4ajMRk+EkVGdcOp2W9TNeRNLUTY2T
+ pnlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=NSPijaD+f/0zVFm+Yx4b1C0MDA0Gs9+IxO2aTwmm2dI=;
- b=Fptak8icQmCKVex8Dsda0WIVuGoLdfkD+TZYq3haDpEMS9oBEuNQAFfTk2C2kuodvI
- /aVVND96cqza24dQB7A2tWPslfczRQjx6hOn126j8wUZf0UAmu0vd1v+zCZaZDyEpGAI
- HEUbcnqu+yQBjE5vxljZcwUUHuKFYis2Qs9XAwaXH20oaE/cezlPBG9fYII4Ngwc9hvc
- dorTpim5UooR9jBA6j5j1Eg5wqUEnmJGkCt4y9XDlqW+pGdyIkHD5dxEpATJG4+1rQ9u
- MUuSkQqAnRK8uxqPmqWoHtcfzj8J8GYVht0Vha8JUCWffjT6Rr7BMZxeeqSjKZ0VKvXS
- Pgjg==
-X-Gm-Message-State: AOAM532LFwDDip4I/thyx8nxaUeieYQyYLmej5FBKd+I3WEA+iTAxGga
- I+UopagynvqKyhkvEujO6GtoQA==
-X-Google-Smtp-Source: ABdhPJw0lMnT3QLeM/7DxRZav6cl/N5O7FfTfXNSrQ2Cx1+4fJUzX917Psb/7srV8MG9taEy0pDw1g==
-X-Received: by 2002:a05:6000:1ace:b0:20a:ad7f:d616 with SMTP id
- i14-20020a0560001ace00b0020aad7fd616mr18465795wry.327.1650981208364; 
- Tue, 26 Apr 2022 06:53:28 -0700 (PDT)
+ bh=+gbDSzBgFUstx3vAtmhMB1WWymTnfkPpJ2BBVAe7qM8=;
+ b=vjeQTG22ErdJLrAUdKOFGPkokXOvliSN3HlorByudZ9GEliJn7iq/+7qdltzIaeEFc
+ FL2nfx7ZpoBIc7yAn8RzqqelHIjlhASyihIU2PQ2aRW5mtSFFoWNyJheLIOQlUk36TkI
+ NI4IvzgBIZCro3GSWwP1AaeP6vsrh6sD2p6ymUsUU+8NmiTF76HY8CUwvWEftHoD8g9g
+ rLEdugT79GOPnfpiRhvrTbrqk94YTVSgoO5EE1qUpSYyGQKrvUUFfgiZ8+E51SbRfO7S
+ Czu8pjId7/Adirx+vyFv5ssXW8FfpH7PmqKsaFMxPDUU/48ZBQYKbqf09I+hgZAypkEl
+ NugA==
+X-Gm-Message-State: AOAM531okV5lsNILk4CS5MGrptAa7lZOq5SYHw4G5+Dw1WitG+CJDidY
+ j3zi4DJRaL5EilCHJBMq83eBNw==
+X-Google-Smtp-Source: ABdhPJzGergTCkU6GvmqVNI+eV3Y2g5B9Ab+BVFa+qIK916IBxpfV6Rc8j9IOJ8+9NUGUw3fktwZMg==
+X-Received: by 2002:a05:6000:1789:b0:20a:9fbc:b1b5 with SMTP id
+ e9-20020a056000178900b0020a9fbcb1b5mr18208596wrg.581.1650981212914; 
+ Tue, 26 Apr 2022 06:53:32 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
  by smtp.gmail.com with ESMTPSA id
- m35-20020a05600c3b2300b00393ebe201a6sm5504775wms.44.2022.04.26.06.53.27
+ m35-20020a05600c3b2300b00393ebe201a6sm5504775wms.44.2022.04.26.06.53.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 06:53:27 -0700 (PDT)
+ Tue, 26 Apr 2022 06:53:32 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+Cc: Fabien Parent <fparent@baylibre.com>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/8] dt-bindings: input: mtk-pmic-keys: add MT6359 binding
- definition
-Date: Tue, 26 Apr 2022 15:53:06 +0200
-Message-Id: <20220426135313.245466-2-fparent@baylibre.com>
+Subject: [PATCH v2 4/8] Input: mtk-pmic-keys: rename platform data struct
+Date: Tue, 26 Apr 2022 15:53:09 +0200
+Message-Id: <20220426135313.245466-5-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220426135313.245466-1-fparent@baylibre.com>
 References: <20220426135313.245466-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_065332_146750_94CEE422 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220426_065334_491607_5F6DB5E7 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +93,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding definition for the support of the MT6359 keyboard driver.
+Rename the struct that is given to the .data field of the of_device_id
+entries to reflect that this structure will not only contain register
+definitions but also other platform data.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Tested-by: Mattijs Korpershoek <mkorpershoek@baylibre.com> # on mt8183-pumpkin
 ---
 v2: no changes
 
- Documentation/devicetree/bindings/input/mtk-pmic-keys.txt | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/input/keyboard/mtk-pmic-keys.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-index 9d00f2a8e13a..afe9062a4dc7 100644
---- a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-+++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-@@ -13,6 +13,7 @@ Required properties:
- 	- "mediatek,mt6397-keys"
- 	- "mediatek,mt6323-keys"
- 	- "mediatek,mt6358-keys"
-+	- "mediatek,mt6359-keys"
- - linux,keycodes: See Documentation/devicetree/bindings/input/input.yaml
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index c31ab4368388..a0da644fe93d 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -50,12 +50,12 @@ struct mtk_pmic_keys_regs {
+ 	.intsel_mask		= _intsel_mask,		\
+ }
  
- Optional Properties:
+-struct mtk_pmic_regs {
++struct mtk_pmic_keys_pdata {
+ 	const struct mtk_pmic_keys_regs keys_regs[MTK_PMIC_MAX_KEY_COUNT];
+ 	u32 pmic_rst_reg;
+ };
+ 
+-static const struct mtk_pmic_regs mt6397_regs = {
++static const struct mtk_pmic_keys_pdata mt6397_pdata = {
+ 	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+ 		MTK_PMIC_KEYS_REGS(MT6397_CHRSTATUS,
+ 		0x8, MT6397_INT_RSV, 0x10),
+@@ -65,7 +65,7 @@ static const struct mtk_pmic_regs mt6397_regs = {
+ 	.pmic_rst_reg = MT6397_TOP_RST_MISC,
+ };
+ 
+-static const struct mtk_pmic_regs mt6323_regs = {
++static const struct mtk_pmic_keys_pdata mt6323_pdata = {
+ 	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+ 		MTK_PMIC_KEYS_REGS(MT6323_CHRSTATUS,
+ 		0x2, MT6323_INT_MISC_CON, 0x10),
+@@ -75,7 +75,7 @@ static const struct mtk_pmic_regs mt6323_regs = {
+ 	.pmic_rst_reg = MT6323_TOP_RST_MISC,
+ };
+ 
+-static const struct mtk_pmic_regs mt6358_regs = {
++static const struct mtk_pmic_keys_pdata mt6358_pdata = {
+ 	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+ 		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
+ 				   0x2, MT6358_PSC_TOP_INT_CON0, 0x5),
+@@ -255,13 +255,13 @@ static SIMPLE_DEV_PM_OPS(mtk_pmic_keys_pm_ops, mtk_pmic_keys_suspend,
+ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
+ 	{
+ 		.compatible = "mediatek,mt6397-keys",
+-		.data = &mt6397_regs,
++		.data = &mt6397_pdata,
+ 	}, {
+ 		.compatible = "mediatek,mt6323-keys",
+-		.data = &mt6323_regs,
++		.data = &mt6323_pdata,
+ 	}, {
+ 		.compatible = "mediatek,mt6358-keys",
+-		.data = &mt6358_regs,
++		.data = &mt6358_pdata,
+ 	}, {
+ 		/* sentinel */
+ 	}
+@@ -277,7 +277,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 	static const char *const irqnames[] = { "powerkey", "homekey" };
+ 	static const char *const irqnames_r[] = { "powerkey_r", "homekey_r" };
+ 	struct mtk_pmic_keys *keys;
+-	const struct mtk_pmic_regs *mtk_pmic_regs;
++	const struct mtk_pmic_keys_pdata *mtk_pmic_keys_pdata;
+ 	struct input_dev *input_dev;
+ 	const struct of_device_id *of_id =
+ 		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
+@@ -288,7 +288,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 
+ 	keys->dev = &pdev->dev;
+ 	keys->regmap = pmic_chip->regmap;
+-	mtk_pmic_regs = of_id->data;
++	mtk_pmic_keys_pdata = of_id->data;
+ 
+ 	keys->input_dev = input_dev = devm_input_allocate_device(keys->dev);
+ 	if (!input_dev) {
+@@ -310,7 +310,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	for_each_child_of_node(node, child) {
+-		keys->keys[index].regs = &mtk_pmic_regs->keys_regs[index];
++		keys->keys[index].regs = &mtk_pmic_keys_pdata->keys_regs[index];
+ 
+ 		keys->keys[index].irq =
+ 			platform_get_irq_byname(pdev, irqnames[index]);
+@@ -358,7 +358,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 		return error;
+ 	}
+ 
+-	mtk_pmic_keys_lp_reset_setup(keys, mtk_pmic_regs->pmic_rst_reg);
++	mtk_pmic_keys_lp_reset_setup(keys, mtk_pmic_keys_pdata->pmic_rst_reg);
+ 
+ 	platform_set_drvdata(pdev, keys);
+ 
 -- 
 2.36.0
 
