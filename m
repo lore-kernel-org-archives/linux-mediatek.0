@@ -4,63 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B9CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 16:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9173CC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 16:27:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=chSNJOELARw7To3q+abem8AWV9LsPW7cXufmGBMrflc=; b=jcpN164+6LmH6H
-	EZWcIdcNuDrJgQ9hJ3xeAPgfP/QRhasouPuA6SjcDoXuTvobOZcqfnBXRbtSxvieyAtjxcXOyXKGg
-	hKrFX0us/ZlLIgy2OHDGUiAvR1Yef/QIn5rer18Jm7GgaZ7rqid26YfKpS5fDzVfHIeKTYvSG2+Ht
-	qK+2X9ojjEypyHZiG/yLiQXeJ4d4FBOIXLkcAzl54hWMR/zkho5onbWt7wNKA2eAdvPPLHYi2+4Ep
-	VXOWB2zNWSOV6oEqFB4xRvwjw8H1Y9n02MeCja6w7FzRTueL1D/xOhXh0gwbp95gV2PgA2WbwvHwv
-	8uCEK3aRjC3ZshA9pxKQ==;
+	List-Owner; bh=8TZw7FeJBmKDJ370Rl4rNJpW9mSF/8K4liV520XZIww=; b=qVOa/TxMo1SAmF
+	QoL0iQ3kEr2pt4Ayt+uot18olJ23CS93Sele18nOzPPccygjkQR3UtxJeERkT6osW8aF+vEvGPFsW
+	f9D6uv21qL7R5uLeltgA12rKb5uqoq9dc0n5EDDgVGr3u8yMIU5S9Okb2rn69aNhA53Men/QDI7hZ
+	4tioSKX7J8nujaB4LCuSEykOA49nCHxi++r+/hYLZ2QbcHxAftXT1Quj3LyNiqwU6rpLnZpfov8qu
+	HfOPO3Rq3lYNuW/ylPRl2BcPDnh+S9yidN0Aqfc9frf2MiWJk2YK4dtIAdCGsnwOYWpbywFF7ORG2
+	ai2p2eKe2wP1ZTb3W+DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njNhy-00FHYn-4I; Tue, 26 Apr 2022 16:06:34 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njNhi-00FHTs-OR; Tue, 26 Apr 2022 16:06:20 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 5E74D1F42C72
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650989172;
- bh=1wvRqjVZjbReycK48tbxPvly7/Q6yNLcAhf9ITv2WX4=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=YJ+JNryBr+ROkJYtXFkF2H7ftrQmFIYl0D5Zd8CaOOtgTlc4zdhdCLz4PcLX35eWL
- 8LlIMGeCuzRmK5RG257HlotWDGpbNlMgzHXqy4Gw7oR2KBXSx4FjL0HZ3YIys1ZWgK
- Q+dTEiHDJOhNl85mAePKB3wKTVETMQyV6AfLu9ho/YtTWReGmumRRSbAEB3mvyqvpo
- uCoHd0koRXgJUNYWwi/WnkHuMMdL0T10+aMc+rxmrEKSI7Yv5UWDJKJ/q/hbVWWu8+
- 6JQq3FJ5jH3QJcgXGiuXkD3MPc1j6lLrdttCq3OL4Tm4RiAX7gUdH+N0e6RPnJfe34
- BeSwA7WpwmCpg==
-Message-ID: <bad44be8-abc7-169f-bc7a-cef3692c9a71@collabora.com>
-Date: Tue, 26 Apr 2022 18:06:08 +0200
+	id 1njO1h-00FLIq-A1; Tue, 26 Apr 2022 16:26:57 +0000
+Received: from mcgrof by bombadil.infradead.org with local (Exim 4.94.2 #2
+ (Red Hat Linux)) id 1njO1g-00FLId-M1; Tue, 26 Apr 2022 16:26:56 +0000
+Date: Tue, 26 Apr 2022 09:26:56 -0700
+From: Luis Chamberlain <mcgrof@kernel.org>
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>, atomlin@redhat.com
+Cc: linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-modules@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ yj.chiang@mediatek.com
+Subject: Re: [PATCH] module: show disallowed symbol name for inherit_taint()
+Message-ID: <YmgdUKmfym1/XnhP@bombadil.infradead.org>
+References: <20220426042120.9686-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v7 2/2] phy: mediatek: Add PCIe PHY driver
-Content-Language: en-US
-To: Jianjun Wang <jianjun.wang@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Wei-Shun Chang <weishunc@google.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, rex-bc.chen@mediatek.com,
- randy.wu@mediatek.com, jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
- qizhong.cheng@mediatek.com, jian.yang@mediatek.com
-References: <20220422142331.17173-1-jianjun.wang@mediatek.com>
- <20220422142331.17173-3-jianjun.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220422142331.17173-3-jianjun.wang@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_090618_970517_64193595 
-X-CRM114-Status: GOOD (  12.38  )
+Content-Disposition: inline
+In-Reply-To: <20220426042120.9686-1-lecopzer.chen@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +46,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/04/22 16:23, Jianjun Wang ha scritto:
-> Add PCIe GEN3 PHY driver support on MediaTek chipsets.
+Can you base your changes on modules-next [0] and resend and Cc
+atomlin@redhat.com?
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/linux.git/log/?h=modules-next
+
+  Luis
+
+On Tue, Apr 26, 2022 at 12:21:20PM +0800, Lecopzer Chen wrote:
+> The error log for inherit_taint() doesn't really help to find the symbols
+> which violate GPL rules.
 > 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-
-Hello Jianjun,
-there's only one last bit to fix, check below:
-
+> For example,
+> if a module has 50 disallowed symbols, the log only shows the content below
+> and is duplicated with 50 lines.
+>     AAA: module using GPL-only symbols uses symbols from proprietary module BBB.
+>     AAA: module using GPL-only symbols uses symbols from proprietary module BBB.
+>     ...
+> 
+> This patch add symbol name to tell the offending symbols explicitly.
+> 
+> To-be:
+>     AAA: module using GPL-only symbols uses symbols SS1 from proprietary module BBB.
+>     AAA: module using GPL-only symbols uses symbols SS2 from proprietary module BBB.
+>     ...
+> 
+> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
 > ---
->   drivers/phy/mediatek/Kconfig        |  11 ++
->   drivers/phy/mediatek/Makefile       |   1 +
->   drivers/phy/mediatek/phy-mtk-pcie.c | 267 ++++++++++++++++++++++++++++
->   3 files changed, 279 insertions(+)
->   create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+>  kernel/module.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-
-..snip..
-
-> +static int mtk_pcie_read_efuse(struct mtk_pcie_phy *pcie_phy)
-> +{
-> +	struct device *dev = pcie_phy->dev;
-> +	bool nvmem_enabled;
-> +	int ret, i;
-> +
-> +	/* nvmem data is optional */
-> +	nvmem_enabled = device_property_read_bool(dev, "nvmem-cells");
-
-device_property_read_bool() returns device_property_present().
-
-I would prefer that, instead, you call the latter:
-
-	nvmem_enabled = device_property_present(dev, "nvmem-cells");
-
-It's the same, yes, but this will increase human readability, as the function
-name clearly states the intention here.
-
-Thanks,
-Angelo
-
+> diff --git a/kernel/module.c b/kernel/module.c
+> index 6cea788fd965..30973f0d2b7c 100644
+> --- a/kernel/module.c
+> +++ b/kernel/module.c
+> @@ -1372,20 +1372,20 @@ static int verify_namespace_is_imported(const struct load_info *info,
+>  	return 0;
+>  }
+>  
+> -static bool inherit_taint(struct module *mod, struct module *owner)
+> +static bool inherit_taint(struct module *mod, struct module *owner, const char *name)
+>  {
+>  	if (!owner || !test_bit(TAINT_PROPRIETARY_MODULE, &owner->taints))
+>  		return true;
+>  
+>  	if (mod->using_gplonly_symbols) {
+> -		pr_err("%s: module using GPL-only symbols uses symbols from proprietary module %s.\n",
+> -			mod->name, owner->name);
+> +		pr_err("%s: module using GPL-only symbols uses symbols %s from proprietary module %s.\n",
+> +			mod->name, name, owner->name);
+>  		return false;
+>  	}
+>  
+>  	if (!test_bit(TAINT_PROPRIETARY_MODULE, &mod->taints)) {
+> -		pr_warn("%s: module uses symbols from proprietary module %s, inheriting taint.\n",
+> -			mod->name, owner->name);
+> +		pr_warn("%s: module uses symbols %s from proprietary module %s, inheriting taint.\n",
+> +			mod->name, name, owner->name);
+>  		set_bit(TAINT_PROPRIETARY_MODULE, &mod->taints);
+>  	}
+>  	return true;
+> @@ -1417,7 +1417,7 @@ static const struct kernel_symbol *resolve_symbol(struct module *mod,
+>  	if (fsa.license == GPL_ONLY)
+>  		mod->using_gplonly_symbols = true;
+>  
+> -	if (!inherit_taint(mod, fsa.owner)) {
+> +	if (!inherit_taint(mod, fsa.owner, name)) {
+>  		fsa.sym = NULL;
+>  		goto getname;
+>  	}
+> -- 
+> 2.18.0
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
