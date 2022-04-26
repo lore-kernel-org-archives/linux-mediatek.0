@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 306CAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 02:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB5C8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 02:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/c4llkGrkBrS8XqpEFK0o7Czee7Vw+BWJqz9LpazEvk=; b=pAkKqPwh5O5JBU
-	oG+AxPeJbN0gK0OPua3Rf2UnLZ5DjPwvuG1gtuWL5PJfrk8g04OYzRX8rO/sQtT/OB4JiGidNkHES
-	q0WJrEcle6STdIXkJIZBrQvS18NPfpJ1dgPMjOnPKAeOQBZmmsSkqIUQjb26do8cpYKKqbYzOQs3n
-	It93Nx6a5nqnilVkDnw9jmyi5SHJWhs+CtXrKWBN4j8pQ+bKdiX6F4GcM/WSmnVio2D0xuOuJPneY
-	YCadXSlFSro5qDL60LqcU6riNESYIlg2Af80Y7nqDLGIi+/995d2/XQeH9swl/yUH3IvBz5hp98Fs
-	BBC5m+VViNICHKVVhGkw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=o+IV+fPKbWbAJmppZ7Pc1Gxtt2X6bs1aE6p8ZjVTf/E=; b=tV3KVnztnRsDoQ
+	ab7cyp5Yz58tqQ/RgwV7LLc98U1rqeDKxJotYcK5L+mEIYRNMdfQmzgrv+NJGzcJVsAnsbINv25Uv
+	MP2vx5f+kAwOYGNcf+FIexsUqtG7g3F080kweEcSYSnnc/IyF26LZ0tTve/DvZPBt3bmVjo3TvEF+
+	JOc4ARJlhxNYEAQTmfET7hrt6OkINGAjbWV5HWRupeAyw8tEDgS5UDitdL0cvB1T5WnfTIDCQK9l/
+	z3C247NIZ/OWuHWMXDNcYWs821DgL1vtOWFgX+t1Te0br3/yv75p5kIlkIgBG9WOtVfu0QNskgr4Y
+	TpU6WZ4RtT3getgS6fZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njB1g-00CCcc-Fo; Tue, 26 Apr 2022 02:34:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njBGx-00CEQr-Pq; Tue, 26 Apr 2022 02:49:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njB1c-00CCc1-Bh
- for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 02:34:02 +0000
-X-UUID: de6db79aeece42729b0c788c44023572-20220425
+ id 1njBGm-00CEOG-Ak; Tue, 26 Apr 2022 02:49:42 +0000
+X-UUID: 183f306407d04d5195fbae54de7d36f3-20220425
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=JxOhV/4DjcO2mhvn2jiLuFW6cALEAGnMz9VqUKUoMCs=; 
+ b=tnKoplnp7HAp9sRQj/7bF0Na/7QROaZ3cGcq0c36gvfI6zbqNwq+BRXVA0zAMsLtWBxyNTwk4sEqZrznk4I1XWDxVsikgJuMSKQJWDc8wA1wRZEYGDfNgfczs4pDPRxvISRk6q9onaBQA8IAmsAvvxVUd/YJf29VPOW2eOkV5LE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:e3229e01-0193-4a4d-a5f1-0908f30ced32, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:588b5b4e-173a-4a9b-a58c-1a1e73efad94, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:1a8618f0-06b0-4305-bfbf-554bfc9d151a,
+ B:0,IP:0,URL:0,TC:0,Content:7,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:7
+X-CID-META: VersionHash:faefae9, CLOUDID:2218eff0-da02-41b4-b6df-58f4ccd36682,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: de6db79aeece42729b0c788c44023572-20220425
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <meichia.chiu@mediatek.com>)
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 183f306407d04d5195fbae54de7d36f3-20220425
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1842558295; Mon, 25 Apr 2022 19:33:52 -0700
+ with ESMTP id 1432133990; Mon, 25 Apr 2022 19:49:34 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Apr 2022 19:23:50 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Apr 2022 19:39:32 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 26 Apr 2022 10:23:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 26 Apr 2022 10:23:37 +0800
-From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee
- <ryder.lee@mediatek.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, MeiChia Chiu
- <MeiChia.Chiu@mediatek.com>
-Subject: [PATCH] mt76: mt7915: add support for 6G in-band discovery
-Date: Tue, 26 Apr 2022 10:23:35 +0800
-Message-ID: <20220426022335.8433-1-MeiChia.Chiu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Tue, 26 Apr 2022 10:39:31 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 26 Apr 2022 10:39:29 +0800
+Message-ID: <48f4a8d3d447342eb952598d479028586caacedc.camel@mediatek.com>
+Subject: Re: [PATCH v1, 1/1] drm/mediatek: add lut diff flag for new gamma
+ hardware support
+From: yongqiang.niu <yongqiang.niu@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com>,
+ <devicetree@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, David Airlie
+ <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Dennis YC
+ Hsieh" <dennis-yc.hsieh@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
+Date: Tue, 26 Apr 2022 10:39:29 +0800
+In-Reply-To: <a9e026c2018668057b8482c27eeae991667c46d3.camel@mediatek.com>
+References: <20220420130617.814-1-yongqiang.niu@mediatek.com>
+ <20220420130617.814-2-yongqiang.niu@mediatek.com>
+ <a9e026c2018668057b8482c27eeae991667c46d3.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_193400_475039_CC1A2034 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20220425_194940_423645_CB2C3171 
+X-CRM114-Status: GOOD (  35.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,284 +93,239 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add offloading FILS discovery and unsolicited broadcast probe response support.
+On Tue, 2022-04-26 at 09:58 +0800, CK Hu wrote:
+> Hi, Yongqiang:
+> 
+> On Wed, 2022-04-20 at 21:06 +0800, Yongqiang Niu wrote:
+> > From: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com
+> > >
+> > 
+> > mt8183 gamma module usage is different with before soc,
+> > gamma odd(index start from 0) lut value set to hardware
+> > register should be
+> > the difference of current lut value with last lut value.
+> > 
+> > gamma function support both increase and decrease lut.
+> 
+> How to set decrease lut?
+> 
+> Original lut:
+> 12 10 8 6 4 2
+> 
+> Does diff lut look like this?
+> 12 [2] 8 [2] 4 [2]
+> 
+yes
 
-Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/init.c  |  2 +
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 17 +++--
- .../net/wireless/mediatek/mt76/mt7915/main.c  |  8 +-
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 75 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 15 +++-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  4 +-
- 6 files changed, 107 insertions(+), 14 deletions(-)
+> How does hardware know that this is increase lut or decrease lut?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 70baad756dd0..d123ecb9fb0c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -351,6 +351,8 @@ mt7915_init_wiphy(struct ieee80211_hw *hw)
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HT);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_VHT);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HE);
-+	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_UNSOL_BCAST_PROBE_RESP);
-+	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_FILS_DISCOVERY);
- 
- 	if (!mdev->dev->of_node ||
- 	    !of_property_read_bool(mdev->dev->of_node,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index e353e8c44d6c..de7bf137c234 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1177,7 +1177,7 @@ mt7915_mac_tx_rate_val(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 
- void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
- 			   struct sk_buff *skb, struct mt76_wcid *wcid, int pid,
--			   struct ieee80211_key_conf *key, bool beacon)
-+			   struct ieee80211_key_conf *key, u32 changed)
- {
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
- 	struct ieee80211_vif *vif = info->control.vif;
-@@ -1188,6 +1188,10 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
- 	bool mcast = false;
- 	u16 tx_count = 15;
- 	u32 val;
-+	bool beacon = !!(changed & (BSS_CHANGED_BEACON |
-+				    BSS_CHANGED_BEACON_ENABLED));
-+	bool inband_disc = !!(changed & (BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
-+					 BSS_CHANGED_FILS_DISCOVERY));
- 
- 	if (vif) {
- 		struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-@@ -1200,7 +1204,10 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
- 	if (ext_phy && dev->mt76.phy2)
- 		mphy = dev->mt76.phy2;
- 
--	if (beacon) {
-+	if (inband_disc) {
-+		p_fmt = MT_TX_TYPE_FW;
-+		q_idx = MT_LMAC_ALTX0;
-+	} else if (beacon) {
- 		p_fmt = MT_TX_TYPE_FW;
- 		q_idx = MT_LMAC_BCN0;
- 	} else if (skb_get_queue_mapping(skb) >= MT_TXQ_PSD) {
-@@ -1308,8 +1315,7 @@ int mt7915_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 		return id;
- 
- 	pid = mt76_tx_status_skb_add(mdev, wcid, tx_info->skb);
--	mt7915_mac_write_txwi(dev, txwi_ptr, tx_info->skb, wcid, pid, key,
--			      false);
-+	mt7915_mac_write_txwi(dev, txwi_ptr, tx_info->skb, wcid, pid, key, 0);
- 
- 	txp = (struct mt7915_txp *)(txwi + MT_TXD_SIZE);
- 	for (i = 0; i < nbuf; i++) {
-@@ -1919,7 +1925,8 @@ mt7915_update_vif_beacon(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 	case NL80211_IFTYPE_MESH_POINT:
- 	case NL80211_IFTYPE_ADHOC:
- 	case NL80211_IFTYPE_AP:
--		mt7915_mcu_add_beacon(hw, vif, vif->bss_conf.enable_beacon);
-+		mt7915_mcu_add_beacon(hw, vif, vif->bss_conf.enable_beacon,
-+				      BSS_CHANGED_BEACON_ENABLED);
- 		break;
- 	default:
- 		break;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 5177b19f9154..c2c615931782 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -622,8 +622,10 @@ static void mt7915_bss_info_changed(struct ieee80211_hw *hw,
- 		mt7915_update_bss_color(hw, vif, &info->he_bss_color);
- 
- 	if (changed & (BSS_CHANGED_BEACON |
--		       BSS_CHANGED_BEACON_ENABLED))
--		mt7915_mcu_add_beacon(hw, vif, info->enable_beacon);
-+		       BSS_CHANGED_BEACON_ENABLED |
-+		       BSS_CHANGED_UNSOL_BCAST_PROBE_RESP |
-+		       BSS_CHANGED_FILS_DISCOVERY))
-+		mt7915_mcu_add_beacon(hw, vif, info->enable_beacon, changed);
- 
- 	mutex_unlock(&dev->mt76.mutex);
- }
-@@ -636,7 +638,7 @@ mt7915_channel_switch_beacon(struct ieee80211_hw *hw,
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
- 
- 	mutex_lock(&dev->mt76.mutex);
--	mt7915_mcu_add_beacon(hw, vif, true);
-+	mt7915_mcu_add_beacon(hw, vif, true, BSS_CHANGED_BEACON);
- 	mutex_unlock(&dev->mt76.mutex);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 2a07a5d2a439..87e44c69d72b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1892,6 +1892,7 @@ mt7915_mcu_beacon_cont(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 	u8 *buf;
- 	int len = sizeof(*cont) + MT_TXD_SIZE + skb->len;
- 
-+	len = (len & 0x3) ? ((len | 0x3) + 1) : len;
- 	tlv = mt7915_mcu_add_nested_subtlv(rskb, BSS_INFO_BCN_CONTENT,
- 					   len, &bcn->sub_ntlv, &bcn->len);
- 
-@@ -1910,7 +1911,7 @@ mt7915_mcu_beacon_cont(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 
- 	buf = (u8 *)tlv + sizeof(*cont);
- 	mt7915_mac_write_txwi(dev, (__le32 *)buf, skb, wcid, 0, NULL,
--			      true);
-+			      BSS_CHANGED_BEACON);
- 	memcpy(buf + MT_TXD_SIZE, skb->data, skb->len);
- }
- 
-@@ -1992,8 +1993,71 @@ mt7915_mcu_beacon_check_caps(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 	}
- }
- 
--int mt7915_mcu_add_beacon(struct ieee80211_hw *hw,
--			  struct ieee80211_vif *vif, int en)
-+static void
-+mt7915_mcu_beacon_inband_discov(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+				struct sk_buff *rskb, struct bss_info_bcn *bcn,
-+				u32 changed)
-+{
-+#define OFFLOAD_TX_MODE_SU	BIT(0)
-+#define OFFLOAD_TX_MODE_MU	BIT(1)
-+	struct ieee80211_hw *hw = mt76_hw(dev);
-+	struct mt7915_phy *phy = mt7915_hw_phy(hw);
-+	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-+	struct cfg80211_chan_def *chandef = &mvif->phy->mt76->chandef;
-+	enum nl80211_band band = chandef->chan->band;
-+	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
-+	struct bss_info_inband_discovery *discov;
-+	struct ieee80211_tx_info *info;
-+	struct sk_buff *skb = NULL;
-+	struct tlv *tlv;
-+	bool ext_phy = phy != &dev->phy;
-+	u8 *buf, interval;
-+	int len;
-+
-+	if (changed & BSS_CHANGED_FILS_DISCOVERY &&
-+	    vif->bss_conf.fils_discovery.max_interval) {
-+		interval = vif->bss_conf.fils_discovery.max_interval;
-+		skb = ieee80211_get_fils_discovery_tmpl(hw, vif);
-+	} else if (changed & BSS_CHANGED_UNSOL_BCAST_PROBE_RESP &&
-+		   vif->bss_conf.unsol_bcast_probe_resp_interval) {
-+		interval = vif->bss_conf.unsol_bcast_probe_resp_interval;
-+		skb = ieee80211_get_unsol_bcast_probe_resp_tmpl(hw, vif);
-+	}
-+
-+	if (!skb)
-+		return;
-+
-+	info = IEEE80211_SKB_CB(skb);
-+	info->control.vif = vif;
-+	info->band = band;
-+
-+	if (ext_phy)
-+		info->hw_queue |= MT_TX_HW_QUEUE_EXT_PHY;
-+
-+	len = sizeof(*discov) + MT_TXD_SIZE + skb->len;
-+	len = (len & 0x3) ? ((len | 0x3) + 1) : len;
-+
-+	tlv = mt7915_mcu_add_nested_subtlv(rskb, BSS_INFO_BCN_DISCOV,
-+					   len, &bcn->sub_ntlv, &bcn->len);
-+	discov = (struct bss_info_inband_discovery *)tlv;
-+	discov->tx_mode = OFFLOAD_TX_MODE_SU;
-+	/* 0: UNSOL PROBE RESP, 1: FILS DISCOV */
-+	discov->tx_type = !!(changed & BSS_CHANGED_FILS_DISCOVERY);
-+	discov->tx_interval = interval;
-+	discov->prob_rsp_len = cpu_to_le16(MT_TXD_SIZE + skb->len);
-+	discov->enable = true;
-+
-+	buf = (u8 *)tlv + sizeof(*discov);
-+
-+	mt7915_mac_write_txwi(dev, (__le32 *)buf, skb, wcid, 0, NULL,
-+			      changed);
-+	memcpy(buf + MT_TXD_SIZE, skb->data, skb->len);
-+
-+	dev_kfree_skb(skb);
-+}
-+
-+int mt7915_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			  int en, u32 changed)
- {
- #define MAX_BEACON_SIZE 512
- 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
-@@ -2044,6 +2108,11 @@ int mt7915_mcu_add_beacon(struct ieee80211_hw *hw,
- 	mt7915_mcu_beacon_cont(dev, vif, rskb, skb, bcn, &offs);
- 	dev_kfree_skb(skb);
- 
-+	if (changed & BSS_CHANGED_UNSOL_BCAST_PROBE_RESP ||
-+	    changed & BSS_CHANGED_FILS_DISCOVERY)
-+		mt7915_mcu_beacon_inband_discov(dev, vif, rskb,
-+						bcn, changed);
-+
- out:
- 	return mt76_mcu_skb_send_msg(&phy->dev->mt76, rskb,
- 				     MCU_EXT_CMD(BSS_INFO_UPDATE), true);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 064d33e33738..e1d576701fdf 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -404,11 +404,23 @@ struct bss_info_bcn_cont {
- 	__le16 pkt_len;
- } __packed __aligned(4);
- 
-+struct bss_info_inband_discovery {
-+	__le16 tag;
-+	__le16 len;
-+	u8 tx_type;
-+	u8 tx_mode;
-+	u8 tx_interval;
-+	u8 enable;
-+	__le16 rsv;
-+	__le16 prob_rsp_len;
-+} __packed __aligned(4);
-+
- enum {
- 	BSS_INFO_BCN_CSA,
- 	BSS_INFO_BCN_BCC,
- 	BSS_INFO_BCN_MBSSID,
- 	BSS_INFO_BCN_CONTENT,
-+	BSS_INFO_BCN_DISCOV,
- 	BSS_INFO_BCN_MAX
- };
- 
-@@ -476,6 +488,7 @@ enum {
- #define MT7915_BEACON_UPDATE_SIZE	(sizeof(struct sta_req_hdr) +	\
- 					 sizeof(struct bss_info_bcn_cntdwn) + \
- 					 sizeof(struct bss_info_bcn_mbss) + \
--					 sizeof(struct bss_info_bcn_cont))
-+					 sizeof(struct bss_info_bcn_cont) + \
-+					 sizeof(struct bss_info_inband_discovery))
- 
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 6c590eff14f1..03431012b2ff 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -464,7 +464,7 @@ int mt7915_mcu_add_rx_ba(struct mt7915_dev *dev,
- int mt7915_mcu_update_bss_color(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 				struct cfg80211_he_bss_color *he_bss_color);
- int mt7915_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
--			  int enable);
-+			  int enable, u32 changed);
- int mt7915_mcu_add_obss_spr(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-                             bool enable);
- int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-@@ -551,7 +551,7 @@ void mt7915_mac_cca_stats_reset(struct mt7915_phy *phy);
- void mt7915_mac_enable_nf(struct mt7915_dev *dev, bool ext_phy);
- void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
- 			   struct sk_buff *skb, struct mt76_wcid *wcid, int pid,
--			   struct ieee80211_key_conf *key, bool beacon);
-+			   struct ieee80211_key_conf *key, u32 changed);
- void mt7915_mac_set_timing(struct mt7915_phy *phy);
- int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		       struct ieee80211_sta *sta);
--- 
-2.18.0
+gamma register 0x20 , bit 2, 
+if this bit set to 1, hardware will know lut is decrease.
+this bit default is 0, that means lut is increase
 
+> 
+> > chrome os app set increase lut normally.
+> > 
+> > for increase lut example, chrome os user space set lut
+> > like this(only r chanel for example):
+> > 2 4 6 8 10 12.
+> > 1) mt8183 gamma driver should set the gamma lut to hardware
+> > register like this:
+> > 2 [2] 6 [8] 10 [2]
+> 
+> 2 [2] 6 [2] 10 [2]
+> 
+> > the value with [] is the difference value
+> > 2) gamma hardware will restore the lut when apply gamma
+> > function to display
+> 
+> I don't know why do you mention the 'restore', any modification is
+> related to this?
+> 
+that means gamma
+hardware process display data with original lut
+> > 
+> > Signed-off-by: Yongqiang Niu <
+> > yongqiang.niu@mediatek.corp-partner.google.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  4 ++-
+> >  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 +-
+> >  drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 34 +++++++++++++++++++
+> > ----
+> >  3 files changed, 32 insertions(+), 8 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > index f46d4ab73d6a..e6378b074a17 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > @@ -23,6 +23,7 @@
+> >  
+> >  struct mtk_disp_aal_data {
+> >  	bool has_gamma;
+> > +	bool lut_diff;
+> >  };
+> >  
+> >  /**
+> > @@ -66,7 +67,7 @@ void mtk_aal_gamma_set(struct device *dev, struct
+> > drm_crtc_state *state)
+> >  	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
+> >  
+> >  	if (aal->data && aal->data->has_gamma)
+> > -		mtk_gamma_set_common(aal->regs, state);
+> > +		mtk_gamma_set_common(aal->regs, state, aal->data-
+> > > lut_diff);
+> 
+> gamma in aal does not support diff lut, so this would make things
+> simple.
+> 
+> mtk_gamma_set_common(aal->regs, state, false);
 
+fix next version
+> 
+> Regards,
+> CK
+> 
+> >  }
+> >  
+> >  void mtk_aal_start(struct device *dev)
+> > @@ -148,6 +149,7 @@ static int mtk_disp_aal_remove(struct
+> > platform_device *pdev)
+> >  
+> >  static const struct mtk_disp_aal_data mt8173_aal_driver_data = {
+> >  	.has_gamma = true,
+> > +	.lut_diff = false,
+> >  };
+> >  
+> >  static const struct of_device_id mtk_disp_aal_driver_dt_match[] =
+> > {
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > index 86c3068894b1..3380651c6707 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > @@ -51,7 +51,7 @@ void mtk_gamma_config(struct device *dev,
+> > unsigned
+> > int w,
+> >  		      unsigned int h, unsigned int vrefresh,
+> >  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> >  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
+> > *state);
+> > -void mtk_gamma_set_common(void __iomem *regs, struct
+> > drm_crtc_state
+> > *state);
+> > +void mtk_gamma_set_common(void __iomem *regs, struct
+> > drm_crtc_state
+> > *state, bool lut_diff);
+> >  void mtk_gamma_start(struct device *dev);
+> >  void mtk_gamma_stop(struct device *dev);
+> >  
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > index 3a5815ab4079..fec2e9a5b60d 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > @@ -27,6 +27,7 @@
+> >  
+> >  struct mtk_disp_gamma_data {
+> >  	bool has_dither;
+> > +	bool lut_diff;
+> >  };
+> >  
+> >  /*
+> > @@ -53,12 +54,13 @@ void mtk_gamma_clk_disable(struct device *dev)
+> >  	clk_disable_unprepare(gamma->clk);
+> >  }
+> >  
+> > -void mtk_gamma_set_common(void __iomem *regs, struct
+> > drm_crtc_state
+> > *state)
+> > +void mtk_gamma_set_common(void __iomem *regs, struct
+> > drm_crtc_state
+> > *state, bool lut_diff)
+> >  {
+> >  	unsigned int i, reg;
+> >  	struct drm_color_lut *lut;
+> >  	void __iomem *lut_base;
+> >  	u32 word;
+> > +	u32 diff[3] = {0};
+> >  
+> >  	if (state->gamma_lut) {
+> >  		reg = readl(regs + DISP_GAMMA_CFG);
+> > @@ -67,9 +69,20 @@ void mtk_gamma_set_common(void __iomem *regs,
+> > struct drm_crtc_state *state)
+> >  		lut_base = regs + DISP_GAMMA_LUT;
+> >  		lut = (struct drm_color_lut *)state->gamma_lut->data;
+> >  		for (i = 0; i < MTK_LUT_SIZE; i++) {
+> > -			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) <<
+> > 20) +
+> > -				(((lut[i].green >> 6) & LUT_10BIT_MASK)
+> > << 10) +
+> > -				((lut[i].blue >> 6) & LUT_10BIT_MASK);
+> > +
+> > +			if (!lut_diff || (i % 2 == 0)) {
+> > +				word = (((lut[i].red >> 6) &
+> > LUT_10BIT_MASK) << 20) +
+> > +					(((lut[i].green >> 6) &
+> > LUT_10BIT_MASK) << 10) +
+> > +					((lut[i].blue >> 6) &
+> > LUT_10BIT_MASK);
+> > +			} else {
+> > +				diff[0] = abs((lut[i].red >> 6) -
+> > (lut[i - 1].red >> 6));
+> > +				diff[1] = abs((lut[i].green >> 6) -
+> > (lut[i - 1].green >> 6));
+> > +				diff[2] = abs((lut[i].blue >> 6) -
+> > (lut[i - 1].blue >> 6));
+> > +
+> > +				word = ((diff[0] & LUT_10BIT_MASK) <<
+> > 20) +
+> > +					((diff[1] & LUT_10BIT_MASK) <<
+> > 10) +
+> > +					(diff[2] & LUT_10BIT_MASK);
+> > +			}
+> >  			writel(word, (lut_base + i * 4));
+> >  		}
+> >  	}
+> > @@ -78,8 +91,12 @@ void mtk_gamma_set_common(void __iomem *regs,
+> > struct drm_crtc_state *state)
+> >  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
+> > *state)
+> >  {
+> >  	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> > +	bool lut_diff = false;
+> > +
+> > +	if (gamma->data)
+> > +		lut_diff = gamma->data->lut_diff;
+> >  
+> > -	mtk_gamma_set_common(gamma->regs, state);
+> > +	mtk_gamma_set_common(gamma->regs, state, lut_diff);
+> >  }
+> >  
+> >  void mtk_gamma_config(struct device *dev, unsigned int w,
+> > @@ -176,10 +193,15 @@ static const struct mtk_disp_gamma_data
+> > mt8173_gamma_driver_data = {
+> >  	.has_dither = true,
+> >  };
+> >  
+> > +static const struct mtk_disp_gamma_data mt8183_gamma_driver_data =
+> > {
+> > +	.lut_diff = true,
+> > +};
+> > +
+> >  static const struct of_device_id mtk_disp_gamma_driver_dt_match[]
+> > =
+> > {
+> >  	{ .compatible = "mediatek,mt8173-disp-gamma",
+> >  	  .data = &mt8173_gamma_driver_data},
+> > -	{ .compatible = "mediatek,mt8183-disp-gamma"},
+> > +	{ .compatible = "mediatek,mt8183-disp-gamma",
+> > +	  .data = &mt8183_gamma_driver_data},
+> >  	{},
+> >  };
+> >  MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
