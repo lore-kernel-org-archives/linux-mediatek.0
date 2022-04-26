@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F42C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA500C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Apr 2022 13:59:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dn45g7c5OTfrkcXFV4GoIcwOfzpj6gQp62MivoCLrBc=; b=piFyu8i637ibI7
-	9vttoZ3cCM2rVD84jt+a29KS6egaJUMiQTlgTE8Neqtzyr8H2VOZIAMF1uZrDsW2PA1RBB+7GsdqR
-	UZ+DQ4TJp+cqFpfaXCCX1jO/kPLlOh1eI51kJxueiAmzPbmEDUkhk845/9Otx9s/asqFe5qzn5aBL
-	xSH+1xPAeW+w4pEIDlAnZR6y8/nphcoobSM4XSCasmZmYfEZS/kFQM9aoUlQvFd1HNO9UIvh17Bmn
-	Q/JwhiAowfjiCYrGHbC/Z3hjGDgB/8q1hodFBkBYeopjym9M6n0uIuEM3kwcrnflLC+Ht7BBY+tCd
-	J+5UY0zTgtuALNClnSpw==;
+	List-Owner; bh=hCg9CNB7W1hUChdW3h+A+ftPiD38kaKs4l/gFKZ2H4A=; b=OVek+0adxaGP7+
+	pom+CbqoxOqBa1yOuv1cG6SlS+ooYy2rKLdqWnWvByO6iGpCwO6gxWrIWaFxm0M6s9O59/0uM/GOx
+	wuref6m2mP/q+agWwrWILA8dkQ18aBoZJB5F6WcZYngx8w47wl2S9IFscy1pBmTSCD6N5XcyKDqGT
+	fsTlCrevtUTdu2ZCVRx+EHedjFVB7i7GZW9NK5IxCvCHeAyp7V22fCdGf5YKIJoZIfd9uNprIfIgs
+	NFvDpuq7AHuArMmNBpPOpXp0Axwh5sxpZ57imiqjPTLVnDUse09zi4p4acJ25E0NXBqCOG6/NL4eB
+	cdS2+n5XVJ5FVvicxlcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njLhs-00EoJ4-Lz; Tue, 26 Apr 2022 13:58:20 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1njLiq-00Eokh-Cs; Tue, 26 Apr 2022 13:59:20 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njLdL-00Em2W-EK
+ id 1njLdJ-00Em1H-M0
  for linux-mediatek@lists.infradead.org; Tue, 26 Apr 2022 13:53:44 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id w4so25535795wrg.12
- for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 06:53:38 -0700 (PDT)
+Received: by mail-wr1-x436.google.com with SMTP id i5so6528747wrc.13
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Apr 2022 06:53:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6PPGdjzLBRfmjyoYZPbtheYxkUOxVcg2XjuwyGNEy84=;
- b=HYqHeXHh2jVFDzdmAAsOgALRoHWL3lylNXPL38qJKWgAhYHnpOcKvTgqc0S8MKTa1D
- KmiiqFzIT5/QBQVrAK+sjKMobtjDgyeim9RfZOHg46y/OlCh3osuBTszhmtAka/UQ2Gi
- /heJA9jcE+HxOs5yED5UC9WG32WsOgl11Ujh3pc/eLL+H2JU4Ky5ypWEEKOyEGqy1WKW
- Wj1m8C/Dyutxj3dogPfQlPCsD462xfyBYhPV7Z2sCQiO2hAFYEV1xQYsfGpr5NNQuJKx
- EJPIZnu1GBhAPjARnX3ityHRgQAeGIovnvXJlQxpSyJ0g3U0cSCeEq970+ij1X+3SB+0
- 5eWA==
+ bh=qek8WhKX0R1hchr7sewuE/CWJLJNrj/b//Vrg13RV5s=;
+ b=uM2UEk3aImwHE6qFhV3CyW6+TuirIyp6LnmblEvuDSJAZMIzZc1m+gOFbqP/RjTQEI
+ HjG/j2jhXKM7AwvpWXiR3m/hN5fyUxXZFmNsHUxkOSgRW3lDZU/vryXlk85JzE/hFMs1
+ B+7BTJUsQEAlPnrroSd49bUYmEjRxYx88fHT9axNXJZGKupxGuTs/3fnc7fbnkjrMlfm
+ xxoF7nBpXQAaVNGgMHdtTLzd9B5dHKR8n+Dd5Kz8vlpMeA5Nm3W2E6RGleTrzyi/O9i6
+ 4bwhOeLOwvOla0GTEMCNp+04CH2vD2i0oNR8S9XF2vdlto4CU8JTvnGnAo7MvtTJc4cJ
+ 4hFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6PPGdjzLBRfmjyoYZPbtheYxkUOxVcg2XjuwyGNEy84=;
- b=T0PDOL4p/2XLFmShqAtDTjoMFGyLaqYQ/pWhq0TXQ1t+YSb9fPzwgEgj1Ta6NIsAzu
- gGgOZEvHTq+Vd+y0/TYtjI57KG6kLWRmXoqNrm2YKRZpHwInWfjqRnM67tbiZCs3+AL9
- VRZtXn6nPZjLOwzfwV+gEsxdQRH1PM3xp+Wo/YaEzAp1IrRcft9/Qi2lx6Agl2t6o0Ks
- bq8vrzk2MdqlSh1Z4dLv1klS4K8w74aFGJVoPQDHrrZwco3HgvCaFkErG8MFzWG/2dSH
- GuOgcGqliFxrpyqHPyGgksDDW1Op9CELuZI+Y6rVMZRTc9ISFdNwiWim2txW47VpvBIH
- ol4Q==
-X-Gm-Message-State: AOAM530asTTOB5PPreX3uFcBhdIoXVDKahvAcYgmFYlOmrUwIOI1qCnc
- gvlblcHJ6z3hpMDeM437nFNSLg==
-X-Google-Smtp-Source: ABdhPJxv5zp1uTq4FHJtwaeINExGGDRpzDODK6frUqUyafJ3hBir6qwv2I4zIElowuN410a68r3QwA==
-X-Received: by 2002:adf:ef46:0:b0:20a:e153:1f4e with SMTP id
- c6-20020adfef46000000b0020ae1531f4emr4710059wrp.352.1650981217679; 
- Tue, 26 Apr 2022 06:53:37 -0700 (PDT)
+ bh=qek8WhKX0R1hchr7sewuE/CWJLJNrj/b//Vrg13RV5s=;
+ b=Uea3qnTAJUsnripBroBHhe4YOabV+VS1zF0tGbGxWFM/fYJW0Ts8U98i/TPuK948/x
+ 0HXB7+RnVNpcxZ1BakcLT4YG91MXfa1RYn0aKzSjcU2Y7aTud5KyLSeyGKRXs3osJZM5
+ x99EpZhUdNWrNJRB2LSLz8qTbkrUfRBrj5HOWfO2OFJHcmwQXRxNImjycP4f7sQAFhg5
+ mVImUhBo9WbFv+nKMEx7e5j3dTYWM6veYmcvjwPkMm+W2IHU8X2QI5x3vvIw4oWKwWvx
+ DGatqt9oPIq2Vh989/JBA4cyxX78cKB54d2Vt853w8NyrGG0j97FUDLPiHUeunkhjUyD
+ 0Clg==
+X-Gm-Message-State: AOAM530/LCvByN5sIeiOfrOCpowJE+2/VB1dhM5b9i0WB17ww/lg7xBV
+ QvMhTfvpKdhtosD/C93jYl8q1g==
+X-Google-Smtp-Source: ABdhPJxUR9Jtuqq119l4xJed5Lzq8/81nYLzjxAkVb3AcK+LTLpg18lkx0agwYhFDZnMSWgT2t7s5g==
+X-Received: by 2002:a5d:47c3:0:b0:20a:d856:8a9c with SMTP id
+ o3-20020a5d47c3000000b0020ad8568a9cmr9762114wrc.181.1650981216041; 
+ Tue, 26 Apr 2022 06:53:36 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
  by smtp.gmail.com with ESMTPSA id
- m35-20020a05600c3b2300b00393ebe201a6sm5504775wms.44.2022.04.26.06.53.36
+ m35-20020a05600c3b2300b00393ebe201a6sm5504775wms.44.2022.04.26.06.53.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 06:53:37 -0700 (PDT)
+ Tue, 26 Apr 2022 06:53:35 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
+Cc: Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 7/8] arm64: dts: mediatek: mt6359: add node for PMIC keys
- support
-Date: Tue, 26 Apr 2022 15:53:12 +0200
-Message-Id: <20220426135313.245466-8-fparent@baylibre.com>
+Subject: [PATCH v2 6/8] Input: keyboard: mtk-pmic-keys: add support for MT6359
+Date: Tue, 26 Apr 2022 15:53:11 +0200
+Message-Id: <20220426135313.245466-7-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220426135313.245466-1-fparent@baylibre.com>
 References: <20220426135313.245466-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_065339_669479_DC29ADF8 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20220426_065338_078659_43C77CF5 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,29 +92,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add node for the MT6359 PMIC keyboard in mt6359.dtsi.
+Add support for the MT6359 PMIC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
-v2: remove key definitions from dtsi
+v2: no changes
 
- arch/arm64/boot/dts/mediatek/mt6359.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/input/keyboard/mtk-pmic-keys.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-index df3e822232d3..c09cbd8e81ce 100644
---- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-@@ -294,5 +294,9 @@ mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub {
- 		mt6359rtc: mt6359rtc {
- 			compatible = "mediatek,mt6358-rtc";
- 		};
-+
-+		mt6359keys: keyboard {
-+			compatible = "mediatek,mt6359-keys";
-+		};
- 	};
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index 609b87afd020..115ed4aaae81 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -10,6 +10,7 @@
+ #include <linux/kernel.h>
+ #include <linux/mfd/mt6323/registers.h>
+ #include <linux/mfd/mt6358/registers.h>
++#include <linux/mfd/mt6359/registers.h>
+ #include <linux/mfd/mt6397/core.h>
+ #include <linux/mfd/mt6397/registers.h>
+ #include <linux/module.h>
+@@ -87,6 +88,17 @@ static const struct mtk_pmic_keys_pdata mt6358_pdata = {
+ 	.has_key_release_irqs = true,
  };
+ 
++static const struct mtk_pmic_keys_pdata mt6359_pdata = {
++	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
++		MTK_PMIC_KEYS_REGS(MT6359_TOPSTATUS,
++		0x2, MT6359_PSC_TOP_INT_CON0, 0x5),
++	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
++		MTK_PMIC_KEYS_REGS(MT6359_TOPSTATUS,
++		0x8, MT6359_PSC_TOP_INT_CON0, 0xa),
++	.pmic_rst_reg = MT6359_TOP_RST_MISC,
++	.has_key_release_irqs = true,
++};
++
+ struct mtk_pmic_keys_info {
+ 	struct mtk_pmic_keys *keys;
+ 	const struct mtk_pmic_keys_regs *regs;
+@@ -264,6 +276,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt6358-keys",
+ 		.data = &mt6358_pdata,
++	}, {
++		.compatible = "mediatek,mt6359-keys",
++		.data = &mt6359_pdata,
+ 	}, {
+ 		/* sentinel */
+ 	}
 -- 
 2.36.0
 
