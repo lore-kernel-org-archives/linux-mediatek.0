@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BFEBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 14:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBDD4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 14:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OVV2UW2X2qF0ZU0XlvZ1x16IgwHZA6639Obpddc8pd0=; b=WDTE+yFAb4y6ArwhBhSMm7dVL+
-	GIborDKJGNdJRih8XFXcC5RBeClKXnZkjOJNw5ksoUpql5ldI/oySKd+Cb2VEVrC1j99Vd6fX/kPP
-	IGk7xgNpgNRH8FOAROkgOCk1P8qKU8GAIzKtSYBSe59K0VSjR3sZAbHP0jqijqWE06wcY0jbcUr33
-	NN1TwwyVvJ2MjE3Ntywyebo9T/jtAcq+uZp4ZtFQfNRGOrw3by5GtWfZTWVGNgF1oyQ0lyjzxfNOp
-	f5WOes5sqNQnPC5qNXcwmwj67kJiEbqgoMdmPMWnrgos14HXBuW3XyyQLI87Jn3ZAr49r+hRdywws
-	ylwJ3JGw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5f8S2abI4Z/Dkfb9HQduGNWpGdD/ZIfLcDXFaqPApPI=; b=VRF5jqB70BLcd5
+	Rh81/8eiggD+RSW6JmzPYWsQOzsYiJxb2Rgf/s86xBLzOWfsbWc2+gCR6h1au/Zo0EmYc6P+4SOWY
+	73g9GDOwsckpCNJ72UInzxbnFl7EWNHHFyAmVduRmzaoqS+mqv6DVfO54yoDtApIy7Gtlfzm8ZQbp
+	QlmDmt1MkyZMvjxYUSM0sRGbCq8kgO+fKwCwSfLPHW+w4QjCqD6LMA5Izrb0thypZtL+WwhH3I6MI
+	ReHRnh+UnTMcTthykgEpPaDb7etBgp8v+lfcU2sRc0G3jd/y4xZNSBOJ7dmxj4rQf8sQLGFAaTOzJ
+	IAEWh8tYoz91pAnHYYxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njiQb-001kBQ-Kb; Wed, 27 Apr 2022 14:14:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1njifK-001mus-8u; Wed, 27 Apr 2022 14:29:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njiQQ-001k8b-JT; Wed, 27 Apr 2022 14:13:51 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 1260361DD1;
- Wed, 27 Apr 2022 14:13:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34185C385A9;
- Wed, 27 Apr 2022 14:13:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651068829;
- bh=YRr62X1KC5ng1LU4kmCYYrPiYAa/FMG0PmYtGBvTSd0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jp0majI7UjWwC8FLYui36TU6U/wwA7CUyylwj6NAoHTeojNVT550lHLbgA9aJK/wQ
- FZPc6pqY5naKiec48+BKfQ0t/jX/vAdL0OtqiAX8k19DOMyKpVTnW2Ktdsp96uu7rX
- v4O6lToN80jNleN/6Esd/qgLAGp8P9d1mlG4pLM9rpCsXZARsaAJwG4y2QZgQ9PClm
- vy7yzzSgGcmZvjTBUVl7NsoFkbM6BCfH1kMJaDukYik5lpdF0umPockeea8qrSdSG9
- 2JXUx3CRyi7l32931F9MEKFdqS271YDlMhQGk8QO4hYB2viStfjD+TiF90nywvNTh9
- 5n49mp5csBdgg==
-Date: Wed, 27 Apr 2022 15:13:42 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>, linux-spi@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Roger Quadros <rogerq@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Cai Huoqing <cai.huoqing@linux.dev>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Colin Ian King <colin.king@intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Paul Cercueil <paul@crapouillou.net>,
- Pratyush Yadav <p.yadav@ti.com>, Yu Kuai <yukuai3@huawei.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:NAND FLASH SUBSYSTEM" <linux-mtd@lists.infradead.org>
-Subject: Re: [PATCH v6 0/5] spi: add support for Mediatek SPI-NAND controller
-Message-ID: <YmlPlhKTrRXZo/Sx@sirena.org.uk>
-References: <20220424032527.673605-1-gch981213@gmail.com>
- <20220427112857.7ddd7fc8@xps13>
- <CAJsYDV+DfBEmWr7D1aO8F=3WMurAg6aEhf5gY86BXOUSyJ2nXA@mail.gmail.com>
+ id 1njiew-001mj0-FM; Wed, 27 Apr 2022 14:28:52 +0000
+X-UUID: 222438e5f95842c4bbd347b0b292aaa5-20220427
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:bcea6201-d75e-4b03-99d0-85fac4619c3c, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:515cb2c6-85ee-4ac1-ac05-bd3f1e72e732,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 222438e5f95842c4bbd347b0b292aaa5-20220427
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 746337930; Wed, 27 Apr 2022 07:28:45 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Apr 2022 07:28:43 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 27 Apr 2022 22:28:41 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 27 Apr 2022 22:28:41 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ <hsinyi@chromium.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v7 0/2] Add basic node support for MediaTek MT8186 SoC
+Date: Wed, 27 Apr 2022 22:28:37 +0800
+Message-ID: <20220427142839.12598-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <CAJsYDV+DfBEmWr7D1aO8F=3WMurAg6aEhf5gY86BXOUSyJ2nXA@mail.gmail.com>
-X-Cookie: Buckle up!
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_071350_714744_A0FFE1EE 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20220427_072850_585013_C7EA502C 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,65 +76,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0472949709151075293=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+MT8186 is a SoC based on 64bit ARMv8 architecture.
+It contains 6 CA55 and 2 CA78 cores.
+MT8186 share many HW IP with MT65xx series.
 
---===============0472949709151075293==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4i1ELcqcSD2FWPzu"
-Content-Disposition: inline
+This patchset was tested on MT8186 evaluation board to shell.
 
+Based on matthias/, v5.18-next/dts64. and add the below PATCHs
+- clk series: 20220409132251.31725-1-chun-jie.chen@mediatek.com
+- mt8186 timer compatible: 20220311130732.22706-2-allen-kh.cheng@mediatek.com
+- mt8186 watchdog compatible from commit 888423f98c8f
+  in linux/kernel/git/groeck/linux-staging.git, watchdog-next 
+- reset header from commit 457ece3a0fbf
+  in linux/kernel/git/groeck/linux-staging.git, watchdog-next
 
---4i1ELcqcSD2FWPzu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+changes since v6:
+ - remove unnecessary blank line
 
-On Wed, Apr 27, 2022 at 10:04:57PM +0800, Chuanhong Guo wrote:
-> On Wed, Apr 27, 2022 at 5:29 PM Miquel Raynal <miquel.raynal@bootlin.com> wrote:
+changes since v5:
+ - replace Mediatek a to MediaTek
+ - use GPL-2.0-only OR BSD-2-Clause
 
-> > The patch actually look independent, so if it's fine for you I can take
-> > the two mtd patches and let you merge the spi/binding changes.
+changes since v4:
+ - correct driver clock of mt8186
+ - add power domains controller and clock controllers
+ - add pinctrl, usb host, spi and i2c nodes
+ - add node status in mt8186-evb.dts
+ - correct some dtbs_check warnings
 
-> Out of curiosity:
-> Wouldn't that break the build for spi subsystem? Because...
+changes since v3:
+ - remove serial, mmc and phy patch from series. (already merged)
+ - remove mcusysoff node
+ - move oscillator nodes at the head of dts
+ - change name from usb-phy to t-phy
 
-> > >  rename drivers/mtd/nand/raw/mtk_ecc.h => include/linux/mtd/nand-ecc-mtk.h (100%)
+changes since v2:$
+ - add soc {} in mt8186.dtsi
 
-> The spi driver needs this header file which is moved in the mtd patch.
+changes since v1:
+ - add dt-bindings: arm: Add compatible for MediaTek MT8186
 
-Ah, that'll be an issue indeed - if I could get a signed tag with the
-dependency in it I can go ahead with the SPI bits?
+Allen-KH Cheng (2):
+  dt-bindings: arm: Add compatible for MediaTek MT8186
+  arm64: dts: Add MediaTek SoC MT8186 dts and evaluation board and
+    Makefile
 
---4i1ELcqcSD2FWPzu
-Content-Type: application/pgp-signature; name="signature.asc"
+ .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ arch/arm64/boot/dts/mediatek/mt8186-evb.dts   | 232 +++++
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 932 ++++++++++++++++++
+ 4 files changed, 1169 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
 
------BEGIN PGP SIGNATURE-----
+-- 
+2.18.0
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJpT5UACgkQJNaLcl1U
-h9CoCggAgr/UCrnXyGYR548Hq8CNekwM2Sb0hIKaUwNi7p1ZqciUlWwzMJKtAYrV
-ZTgWlLGUMY476SBCyrtHlucuB+DKBwCikrUnMMsEk39+pMEXSNPdKLnjG7hqd6Qr
-u/8Px3mAdyBzOgdcIlxcTl8kgIvR+aqMSzkjsRJaZ3csuqCnN8NVQAHJ+yLBqkrg
-bEr083uX8PyGSTCQc+v7HaMXce143J8bJYj0lFWJ23znLRf4Lb6PemUQhcoXCF2H
-d+3GC4HLLB9cUfyTT5FqxE17wgACp6rjjIMuSc7BgTmwM9g61EfIqVjUYtRpTBTm
-980Mme+EQalOui5TWB1hYXW0VXicHQ==
-=2Qhu
------END PGP SIGNATURE-----
-
---4i1ELcqcSD2FWPzu--
-
-
---===============0472949709151075293==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0472949709151075293==--
-
