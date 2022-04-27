@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DE9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 22:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCDDCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 22:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2lA3PwEBb9mfzn2AuvSCI7LoTk8dtciLlm3FwRbXTg0=; b=KCfcGxjFfB8dcL
-	jdLPEolTMf7UsuFAWGYXIOcu90ct3zy7FBCVoggrcbY9boLKNPhJvvFTBmtkg/I+mriI7FeU8BJQd
-	dD18a62w4DWUxAQ/W+kj2KPq+sp88/+IGUwb5zyM+SrfMuquVR6cMhy11qowkCMZpzzZ97iOM+W7a
-	NVTh1Bfq6tiWhjmdTRJq9JjU3wSat1zzgi1heYf4+bbjmNUeKG8cM7zFH9Jpw4KPiDMorNb2eOksa
-	OHfEeL6Cq5orVWVwlNX37P+DzHXcsFAsUjrdUR8H8hBthsStdaQe5V+bJ7SueLLxoufSA3UX5GuJw
-	y2Hq/ab8dZQGDAgbMdVQ==;
+	List-Owner; bh=D+UUB4cqdX8sYXrvIjDGGgUsRDVL+tmMrfndgvTyLAo=; b=Z0wL+t9aymBDdA
+	Fm9kN1Y+3EwIP4MWwLRDLjMXF5xJiCPV3H60idaDZnmvbYuBzFeW99U8P7w+8K8PE6pt2SCagksoY
+	rdKbTKnXHw5OvSu3INRri8AkGhBoODY6HonVbTyiOqhVs/9P4CGYZMbYuQZuqsZMD2qq5ErI5DT/J
+	ejEsr4mhoKp+e1tuWFvEF416G7tS5wSk/ReGgCP7XjJVOLNNQTcezY13lOEzAIud4tAvJaToLJuBs
+	gBXvTqOw/aBtI6HwEexppu/CjtW++6D9D9TMmS5goXMri3yrWBpmipDJ9xmGdsb/wEOp6kTAhh7Wn
+	tzm342OIKOrizlQjJfZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njpkP-003iGx-SL; Wed, 27 Apr 2022 22:02:57 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1njpoQ-003jmc-9j; Wed, 27 Apr 2022 22:07:06 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njpkD-003iEQ-FL; Wed, 27 Apr 2022 22:02:47 +0000
+ id 1njpnz-003jaI-KU; Wed, 27 Apr 2022 22:06:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E24D0B82B06;
- Wed, 27 Apr 2022 22:02:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 374A9C385A7;
- Wed, 27 Apr 2022 22:02:39 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 30C4FB82B02;
+ Wed, 27 Apr 2022 22:06:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C59B1C385A7;
+ Wed, 27 Apr 2022 22:06:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651096962;
- bh=jGR3MtKiwYyR+lUnJSaAaDsNLiw4lH+yX1MtYnOs/i4=;
+ s=k20201202; t=1651097196;
+ bh=489hiLJcs6Ide99fGbIyUUwfO7HB+IkkCGXSwNjrVls=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=KYAsSER2fa68mS9DGuKJMxkz2YSD++pSrMvoxGWqBZ5FXe3TlAtwgsOqiA4aJk+7P
- FuC7iZnPgJiRFtfG+2TqFhKDB+aB4DF9nCvdnEZwf4nt1QKW3etyqCmmBh3DpTgIZm
- wFPwoKtcIqCFyYKxr8vgd+ej8mL9eM5Kz0ftgvB0h+bNI2N9rWu6XiD0pSWSBp8lS9
- Op3mySF/PDzwazx7lnmoYQibcQyvh6ZJbp9xQeZHubDMvGDQRgM7Q+s+BQWXFdt8b1
- gp5kEKwMNBA4bHkInGCJQiEozfrj5VYJpiGnY2D0C6L4paMmJuzSHS2r9Cdic0GlUW
- 1mFKxLwcqiTVg==
+ b=G/2cUhuQR3ud2rXBziL0oth7g3hoX2Prqkr1UbESIsL88ApimAswbBe4zAQlK9Wz3
+ 2n7m/Sij2UzhwGpvx/x/Kvv5dDbKMihZSAXPu2i9pjF5+IDOG/MkNgFDQGrF7gVZk1
+ cz5l6d4DdoX1AwJFeI3f48y0gyYwzVktJyeA9r1SkR3d9dHgAlgndCdsMcynqgfoNN
+ OG3jhzKpU0TJrOskD+z3GrxODGhLsYDa8jLDolSI+R5FptNvMYRbO/fxhYjAi1U8e4
+ ss5/qUdaXYIWtAa3eHZ4xilsuuKDV3h3/ms0xIaWu5kKFvE5n6eiNqSL4IBlpUccQd
+ VjkMqDrLL/smA==
 From: Mark Brown <broonie@kernel.org>
-To: yc.hung@mediatek.com, tiwai@suse.com, matthias.bgg@gmail.com,
- perex@perex.cz, allen-kh.cheng@mediatek.com, ranjani.sridharan@linux.intel.com,
- yangyingliang@huawei.com, daniel.baluta@nxp.com, kai.vehmanen@linux.intel.com,
- pierre-louis.bossart@linux.intel.com, tinghan.shen@mediatek.com,
- lgirdwood@gmail.com
-Cc: sound-open-firmware@alsa-project.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org
-In-Reply-To: <20220427071030.10172-1-tinghan.shen@mediatek.com>
-References: <20220427071030.10172-1-tinghan.shen@mediatek.com>
-Subject: Re: [PATCH v2] ASoC: SOF: mediatek: Fix allyesconfig build error
-Message-Id: <165109695894.498174.15533470381534539256.b4-ty@kernel.org>
-Date: Wed, 27 Apr 2022 23:02:38 +0100
+To: gch981213@gmail.com, linux-spi@vger.kernel.org
+Cc: cai.huoqing@linux.dev, paul@crapouillou.net, richard@nod.at,
+ krzk+dt@kernel.org, yukuai3@huawei.com, colin.king@intel.com,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, vigneshr@ti.com,
+ linux-mtd@lists.infradead.org, f.fainelli@gmail.com, p.yadav@ti.com,
+ tsbogend@alpha.franken.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, rogerq@kernel.org,
+ linux-arm-kernel@lists.infradead.org, miquel.raynal@bootlin.com,
+ wsa+renesas@sang-engineering.com
+In-Reply-To: <20220424032527.673605-1-gch981213@gmail.com>
+References: <20220424032527.673605-1-gch981213@gmail.com>
+Subject: Re: (subset) [PATCH v6 0/5] spi: add support for Mediatek SPI-NAND
+ controller
+Message-Id: <165109719250.501011.1358501844817783587.b4-ty@kernel.org>
+Date: Wed, 27 Apr 2022 23:06:32 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_150245_696899_9172BDEB 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20220427_150639_860898_E3B5768D 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,24 +77,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 27 Apr 2022 15:10:30 +0800, Tinghan Shen wrote:
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o:(.opd+0x18): multiple
-> definition of `adsp_clock_on';
-> sound/soc/sof/mediatek/mt8195/mt8195-clk.o:(.opd+0x60): first defined
-> here
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o: in function
-> `.adsp_clock_on':
+On Sun, 24 Apr 2022 11:25:22 +0800, Chuanhong Guo wrote:
+> Mediatek has an extended version of their NAND Flash Interface which
+> has a SPI-NAND mode. In this mode, the controller can perform 1-bit
+> spi-mem ops for up-to 0xa0 bytes and typical SPI-NAND single, dual
+> and quad IO page cache ops with 2-byte address. Additionally, the
+> page cache ops can be performed with ECC and auto data formatting
+> using the ECC engine of the controller.
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
 Thanks!
 
-[1/1] ASoC: SOF: mediatek: Fix allyesconfig build error
-      commit: 9ce170dc9c08895846c5828addb724e42bf98484
+[2/5] spi: add driver for MTK SPI NAND Flash Interface
+      commit: 764f1b7481645b2b4488eda26c4da7f331697e6b
+[4/5] spi: dt-bindings: add binding doc for spi-mtk-snfi
+      commit: 69bb9b29bf67e850beece45e9c99ca707eac7e41
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
