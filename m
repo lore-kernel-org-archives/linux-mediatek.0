@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A164C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 03:25:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C7AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 03:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7FCzhi6i1pcYRvO7R1j/TBU1Uqlr8Ok7bwd3y8jo7fo=; b=U068izzEop9Wbw
-	YyJduy0zV7zDBXCGiW/wDBlwdpvHfCF4hcVzfc9JrurRHer7TbBNrnuVYu9Jp9YP6pJCwj2KQyeTA
-	D+wdYt4MROaG6AcDL39cyNdtX3FAQPzERTtcBP5y6g74m5B/cgaGy4Tu38D5iESJ6hsxAF0M3Xb8p
-	amNRLQs5muC6cUpV92VG4oEi3JKqGCBsPDIFkmIDPbk6JW4d9c+pvZLyX0opvj8LtWxYY8nY/6C5h
-	3YwXVBGY+mv+tNGc2UDw4hEOR+bLf4WxSCyT+KtJkqoGGaUNEriWEBkuRmYKharKuCAh6MSG7Eeq7
-	ZUq17qZA9zS+x9OTvFSA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tk3bYcVlGB6VLsd/S/B14zkfFb3RXnQPYxcTSDUz/ak=; b=WYOYGZAHeJ7rYE
+	eHqWrnAaS94vCe8BukQhhdnoW6xe1jhAr6GWmt+KWarWfa5OqHr6rgS+NWJ1ubppNmSSCIlBL0mdR
+	0UUxwSAl7J0jnHINeowts3BtWbAldYaHX3EIbugLmVMDwljQSAuWy0Jma85uSDAHHUndPNrf7Jc4q
+	CIcI9oN3tMWTG46Cym9a3fLHtwCo3r/ZTpitT/tae8kBwqFcRObDinpmEydCrltctZ+BloDgWpDv+
+	SA83rUoMyKcTkcDnQ2vUzv2egFwAetVdnQex9ZllBwRxztryjmbcqmtp8CwAf502k3e5W+DZiHvfX
+	7YAdr+n72yhrPBwt42PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njYIf-00HDDX-T0; Wed, 27 Apr 2022 03:25:09 +0000
+	id 1njYJ0-00HDPe-EK; Wed, 27 Apr 2022 03:25:30 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njYGA-00HBtf-2t; Wed, 27 Apr 2022 03:22:35 +0000
-X-UUID: a901573bc097435cba2864f95e86331d-20220426
+ id 1njYGA-00HBtb-JC; Wed, 27 Apr 2022 03:22:36 +0000
+X-UUID: e7e38071be214a8abdbe9de7e1665b02-20220426
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:368062bb-7ffa-4d6a-9639-64686ca4cecc, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:8533a8ad-cd81-44b7-b946-9cbf079b5627, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:d57bd42e-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:da7bd42e-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: a901573bc097435cba2864f95e86331d-20220426
+X-UUID: e7e38071be214a8abdbe9de7e1665b02-20220426
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1605457330; Tue, 26 Apr 2022 20:22:23 -0700
+ with ESMTP id 681188738; Tue, 26 Apr 2022 20:22:23 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 20:12:23 -0700
+ 15.0.1497.2; Tue, 26 Apr 2022 20:12:27 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 Apr 2022 11:12:12 +0800
+ Wed, 27 Apr 2022 11:12:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 27 Apr 2022 11:12:12 +0800
+ Frontend Transport; Wed, 27 Apr 2022 11:12:17 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
  <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
@@ -57,16 +57,18 @@ CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH V4 00/15] Cleanup MediaTek clk reset drivers and support
- MT8192/MT8195
-Date: Wed, 27 Apr 2022 11:09:35 +0800
-Message-ID: <20220427030950.23395-1-rex-bc.chen@mediatek.com>
+Subject: [PATCH V4 07/15] clk: mediatek: reset: Support nonsequence base
+ offsets of reset registers
+Date: Wed, 27 Apr 2022 11:09:42 +0800
+Message-ID: <20220427030950.23395-8-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220427030950.23395-1-rex-bc.chen@mediatek.com>
+References: <20220427030950.23395-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_202234_141370_694CED12 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20220426_202234_666350_8BD9B58E 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,80 +85,418 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In this series, we cleanup MediaTek clock reset drivers in clk/mediatek
-folder. MediaTek clock reset driver is used to provide reset control
-of modules controlled in clk, like infra_ao.
+The bank offsets are not serial for all reset registers.
+For example, there are five infra reset banks for MT8192: 0x120, 0x130,
+0x140, 0x150 and 0x730.
 
-Changes for V4:
-1. Abandon the implementation of reset-cell = 2, and use reset index to
-   determine which reset bit is used.
-2. Add documentation for enum/structure/function in reset.h.
-3. Combine binding/drvier support patch for MT8192 and MT8195.
-4. The MT8195 DTS is accepted by Matthias, and I add new DTS patch to
-   support infracfg_ao reset for MT8195. The DTS of MT8195 is still
-   not merged into mainline. Please refer to [1].
+To support this,
+- Change reg_ofs to rst_bank_ofs which is a pointer to base offsets of
+  the reset register.
+- Add a new define RST_NR_PER_BANK to define reset number for each
+  reset bank.
 
-[1]: https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=for-next&id=37f2582883be7218dc69f9af135959a8e93de223
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ drivers/clk/mediatek/clk-mt2701-eth.c |  6 ++++--
+ drivers/clk/mediatek/clk-mt2701-g3d.c |  6 ++++--
+ drivers/clk/mediatek/clk-mt2701-hif.c |  6 ++++--
+ drivers/clk/mediatek/clk-mt2701.c     | 11 +++++++----
+ drivers/clk/mediatek/clk-mt2712.c     | 15 +++++++++------
+ drivers/clk/mediatek/clk-mt7622-eth.c |  6 ++++--
+ drivers/clk/mediatek/clk-mt7622-hif.c |  6 ++++--
+ drivers/clk/mediatek/clk-mt7622.c     | 11 +++++++----
+ drivers/clk/mediatek/clk-mt7629-eth.c |  6 ++++--
+ drivers/clk/mediatek/clk-mt7629-hif.c |  6 ++++--
+ drivers/clk/mediatek/clk-mt8135.c     | 11 +++++++----
+ drivers/clk/mediatek/clk-mt8173.c     | 11 +++++++----
+ drivers/clk/mediatek/clk-mt8183.c     | 14 ++++++++++++--
+ drivers/clk/mediatek/reset.c          | 11 ++++++-----
+ drivers/clk/mediatek/reset.h          |  6 ++++--
+ 15 files changed, 87 insertions(+), 45 deletions(-)
 
-Changes for V3:
-1. Modify drivers for reviewers' comments.
-2. Add dt-binding patch for MT8192/MT8195 infra.
-3. Add reset property of infra node for MT8192.
-4. Use original function for simple operation.
-
-Changes for V2:
-1. Modify drivers for reviewers' comments.
-2. Use simple reset to replace v1.
-3. Recover v2 to set_clr.
-4. Separate error handling to another patch.
-5. Add support for input offset and bit from DT.
-6. Add support for MT8192 and MT8195.
-
-Rex-BC Chen (15):
-  clk: mediatek: reset: Add reset.h
-  clk: mediatek: reset: Fix written reset bit offset
-  clk: mediatek: reset: Refine and reorder functions in reset.c
-  clk: mediatek: reset: Extract common drivers to update function
-  clk: mediatek: reset: Merge and revise reset register function
-  clk: mediatek: reset: Revise structure to control reset register
-  clk: mediatek: reset: Support nonsequence base offsets of reset registers
-  clk: mediatek: reset: Change return type for clock reset register function
-  clk: mediatek: reset: Add new register reset function with device
-  clk: mediatek: reset: Add reset support for simple probe
-  dt-bindings: arm: mediatek: Add #reset-cells property for MT8192/MT8195
-  dt-bindings: reset: mediatek: Add infra_ao reset bit for MT8192/MT8195
-  clk: mediatek: reset: Add infra_ao reset support for MT8192/MT8195
-  arm64: dts: mediatek: Add infra #reset-cells property for MT8192
-  arm64: dts: mediatek: Add infra #reset-cells property for MT8195
-
- .../mediatek/mediatek,mt8192-sys-clock.yaml   |   3 +
- .../mediatek/mediatek,mt8195-sys-clock.yaml   |   3 +
- arch/arm64/boot/dts/mediatek/mt8192.dtsi      |   1 +
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  13 +-
- drivers/clk/mediatek/clk-mt2701-eth.c         |  10 +-
- drivers/clk/mediatek/clk-mt2701-g3d.c         |  10 +-
- drivers/clk/mediatek/clk-mt2701-hif.c         |  10 +-
- drivers/clk/mediatek/clk-mt2701.c             |  22 ++-
- drivers/clk/mediatek/clk-mt2712.c             |  22 ++-
- drivers/clk/mediatek/clk-mt7622-eth.c         |  10 +-
- drivers/clk/mediatek/clk-mt7622-hif.c         |  12 +-
- drivers/clk/mediatek/clk-mt7622.c             |  22 ++-
- drivers/clk/mediatek/clk-mt7629-eth.c         |  10 +-
- drivers/clk/mediatek/clk-mt7629-hif.c         |  12 +-
- drivers/clk/mediatek/clk-mt8135.c             |  22 ++-
- drivers/clk/mediatek/clk-mt8173.c             |  22 ++-
- drivers/clk/mediatek/clk-mt8183.c             |  18 +-
- drivers/clk/mediatek/clk-mt8192.c             |  18 ++
- drivers/clk/mediatek/clk-mt8195-infra_ao.c    |  15 ++
- drivers/clk/mediatek/clk-mtk.c                |   7 +
- drivers/clk/mediatek/clk-mtk.h                |   9 +-
- drivers/clk/mediatek/reset.c                  | 172 ++++++++++++------
- drivers/clk/mediatek/reset.h                  |  77 ++++++++
- include/dt-bindings/reset/mt8192-resets.h     |   8 +
- include/dt-bindings/reset/mt8195-resets.h     |   6 +
- 25 files changed, 440 insertions(+), 94 deletions(-)
- create mode 100644 drivers/clk/mediatek/reset.h
-
+diff --git a/drivers/clk/mediatek/clk-mt2701-eth.c b/drivers/clk/mediatek/clk-mt2701-eth.c
+index 2cc35dfdbca7..0ae4bce3bb37 100644
+--- a/drivers/clk/mediatek/clk-mt2701-eth.c
++++ b/drivers/clk/mediatek/clk-mt2701-eth.c
+@@ -36,10 +36,12 @@ static const struct mtk_gate eth_clks[] = {
+ 	GATE_ETH(CLK_ETHSYS_CRYPTO, "crypto_clk", "ethif_sel", 29),
+ };
+ 
++static u16 rst_ofs[] = { 0x34, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SIMPLE,
+-	.rst_bank_nr = 1,
+-	.reg_ofs = 0x34,
++	.rst_bank_ofs = rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(rst_ofs),
+ };
+ 
+ static const struct of_device_id of_match_clk_mt2701_eth[] = {
+diff --git a/drivers/clk/mediatek/clk-mt2701-g3d.c b/drivers/clk/mediatek/clk-mt2701-g3d.c
+index 0905d5c12691..8d2053517ddc 100644
+--- a/drivers/clk/mediatek/clk-mt2701-g3d.c
++++ b/drivers/clk/mediatek/clk-mt2701-g3d.c
+@@ -35,10 +35,12 @@ static const struct mtk_gate g3d_clks[] = {
+ 	GATE_G3D(CLK_G3DSYS_CORE, "g3d_core", "mfg_sel", 0),
+ };
+ 
++static u16 rst_ofs[] = { 0xC, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SIMPLE,
+-	.rst_bank_nr = 1,
+-	.reg_ofs = 0xc,
++	.rst_bank_ofs = rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(rst_ofs),
+ };
+ 
+ static int clk_mt2701_g3dsys_init(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt2701-hif.c b/drivers/clk/mediatek/clk-mt2701-hif.c
+index 24d5bac1bb9b..e40865a6f45e 100644
+--- a/drivers/clk/mediatek/clk-mt2701-hif.c
++++ b/drivers/clk/mediatek/clk-mt2701-hif.c
+@@ -33,10 +33,12 @@ static const struct mtk_gate hif_clks[] = {
+ 	GATE_HIF(CLK_HIFSYS_PCIE2, "pcie2_clk", "ethpll_500m_ck", 26),
+ };
+ 
++static u16 rst_ofs[] = { 0x34, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SIMPLE,
+-	.rst_bank_nr = 1,
+-	.reg_ofs = 0x34,
++	.rst_bank_ofs = rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(rst_ofs),
+ };
+ 
+ static const struct of_device_id of_match_clk_mt2701_hif[] = {
+diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
+index 70a934faa529..ebb1b9975ab0 100644
+--- a/drivers/clk/mediatek/clk-mt2701.c
++++ b/drivers/clk/mediatek/clk-mt2701.c
+@@ -735,18 +735,21 @@ static const struct mtk_fixed_factor infra_fixed_divs[] = {
+ 	FACTOR(CLK_INFRA_CLK_13M, "clk13m", "clk26m", 1, 2),
+ };
+ 
++static u16 infrasys_rst_ofs[] = { 0x30, 0x34, };
++static u16 perfcfg_rst_ofs[] = { 0x0, 0x4, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+ 	/* infrasys */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x30,
++		.rst_bank_ofs = infrasys_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(infrasys_rst_ofs),
+ 	},
+ 	/* pericfg */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x0,
++		.rst_bank_ofs = perfcfg_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(perfcfg_rst_ofs),
+ 	},
+ };
+ 
+diff --git a/drivers/clk/mediatek/clk-mt2712.c b/drivers/clk/mediatek/clk-mt2712.c
+index cef7c79788ec..2a9d70dd97d6 100644
+--- a/drivers/clk/mediatek/clk-mt2712.c
++++ b/drivers/clk/mediatek/clk-mt2712.c
+@@ -1258,18 +1258,21 @@ static const struct mtk_pll_data plls[] = {
+ 		0, 31, 0x0300, 4, 0, 0, 0, 0x0304, 0),
+ };
+ 
++static u16 infrasys_rst_ofs[] = { 0x30, 0x34, };
++static u16 perfcfg_rst_ofs[] = { 0x0, 0x4, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+-	/* infra */
++	/* infrasys */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x30,
++		.rst_bank_ofs = infrasys_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(infrasys_rst_ofs),
+ 	},
+-	/* peri */
++	/* pericfg */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x0,
++		.rst_bank_ofs = perfcfg_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(perfcfg_rst_ofs),
+ 	},
+ };
+ 
+diff --git a/drivers/clk/mediatek/clk-mt7622-eth.c b/drivers/clk/mediatek/clk-mt7622-eth.c
+index b6da1871a1f9..b58fe61a8443 100644
+--- a/drivers/clk/mediatek/clk-mt7622-eth.c
++++ b/drivers/clk/mediatek/clk-mt7622-eth.c
+@@ -65,10 +65,12 @@ static const struct mtk_gate sgmii_clks[] = {
+ 		   "ssusb_cdr_fb", 5),
+ };
+ 
++static u16 rst_ofs[] = { 0x34, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SIMPLE,
+-	.rst_bank_nr = 1,
+-	.reg_ofs = 0x34,
++	.rst_bank_ofs = rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(rst_ofs),
+ };
+ 
+ static int clk_mt7622_ethsys_init(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt7622-hif.c b/drivers/clk/mediatek/clk-mt7622-hif.c
+index c2841deb52a5..1ee79d4837a4 100644
+--- a/drivers/clk/mediatek/clk-mt7622-hif.c
++++ b/drivers/clk/mediatek/clk-mt7622-hif.c
+@@ -76,10 +76,12 @@ static const struct mtk_gate pcie_clks[] = {
+ 	GATE_PCIE(CLK_SATA_PM_EN, "sata_pm_en", "univpll2_d4", 30),
+ };
+ 
++static u16 rst_ofs[] = { 0x34, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SIMPLE,
+-	.rst_bank_nr = 1,
+-	.reg_ofs = 0x34,
++	.rst_bank_ofs = rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(rst_ofs),
+ };
+ 
+ static int clk_mt7622_ssusbsys_init(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt7622.c b/drivers/clk/mediatek/clk-mt7622.c
+index 880e752527a9..d6e7c9dd54e6 100644
+--- a/drivers/clk/mediatek/clk-mt7622.c
++++ b/drivers/clk/mediatek/clk-mt7622.c
+@@ -610,18 +610,21 @@ static struct mtk_composite peri_muxes[] = {
+ 	MUX(CLK_PERIBUS_SEL, "peribus_ck_sel", peribus_ck_parents, 0x05C, 0, 1),
+ };
+ 
++static u16 infrasys_rst_ofs[] = { 0x30, };
++static u16 perfcfg_rst_ofs[] = { 0x0, 0x4, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+ 	/* infrasys */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 1,
+-		.reg_ofs = 0x30,
++		.rst_bank_ofs = infrasys_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(infrasys_rst_ofs),
+ 	},
+ 	/* pericfg */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x0,
++		.rst_bank_ofs = perfcfg_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(perfcfg_rst_ofs),
+ 	},
+ };
+ 
+diff --git a/drivers/clk/mediatek/clk-mt7629-eth.c b/drivers/clk/mediatek/clk-mt7629-eth.c
+index e054aa1e1479..56ff7c1f6ec1 100644
+--- a/drivers/clk/mediatek/clk-mt7629-eth.c
++++ b/drivers/clk/mediatek/clk-mt7629-eth.c
+@@ -76,10 +76,12 @@ static const struct mtk_gate sgmii_clks[2][4] = {
+ 	}
+ };
+ 
++static u16 rst_ofs[] = { 0x34, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SIMPLE,
+-	.rst_bank_nr = 1,
+-	.reg_ofs = 0x34,
++	.rst_bank_ofs = rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(rst_ofs),
+ };
+ 
+ static int clk_mt7629_ethsys_init(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt7629-hif.c b/drivers/clk/mediatek/clk-mt7629-hif.c
+index ab085092041e..fc12110b04fc 100644
+--- a/drivers/clk/mediatek/clk-mt7629-hif.c
++++ b/drivers/clk/mediatek/clk-mt7629-hif.c
+@@ -71,10 +71,12 @@ static const struct mtk_gate pcie_clks[] = {
+ 	GATE_PCIE(CLK_PCIE_P0_PIPE_EN, "pcie_p0_pipe_en", "pcie0_pipe_en", 23),
+ };
+ 
++static u16 rst_ofs[] = { 0x34, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SIMPLE,
+-	.rst_bank_nr = 1,
+-	.reg_ofs = 0x34,
++	.rst_bank_ofs = rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(rst_ofs),
+ };
+ 
+ static int clk_mt7629_ssusbsys_init(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
+index a4cfc094895c..6c8a9485e960 100644
+--- a/drivers/clk/mediatek/clk-mt8135.c
++++ b/drivers/clk/mediatek/clk-mt8135.c
+@@ -514,18 +514,21 @@ static const struct mtk_composite peri_clks[] __initconst = {
+ 	MUX(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents, 0x40c, 3, 1),
+ };
+ 
++static u16 infrasys_rst_ofs[] = { 0x30, 0x34, };
++static u16 perfcfg_rst_ofs[] = { 0x0, 0x4, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+ 	/* infrasys */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x30,
++		.rst_bank_ofs = infrasys_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(infrasys_rst_ofs),
+ 	},
+ 	/* pericfg */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x0,
++		.rst_bank_ofs = perfcfg_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(perfcfg_rst_ofs),
+ 	}
+ };
+ 
+diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+index cba1495b2a67..df388edfb12d 100644
+--- a/drivers/clk/mediatek/clk-mt8173.c
++++ b/drivers/clk/mediatek/clk-mt8173.c
+@@ -819,18 +819,21 @@ static const struct mtk_gate venclt_clks[] __initconst = {
+ 	GATE_VENCLT(CLK_VENCLT_CKE1, "venclt_cke1", "venclt_sel", 4),
+ };
+ 
++static u16 infrasys_rst_ofs[] = { 0x30, 0x34, };
++static u16 perfcfg_rst_ofs[] = { 0x0, 0x4, };
++
+ static const struct mtk_clk_rst_desc clk_rst_desc[] = {
+ 	/* infrasys */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x30,
++		.rst_bank_ofs = infrasys_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(infrasys_rst_ofs),
+ 	},
+ 	/* pericfg */
+ 	{
+ 		.version = MTK_RST_SIMPLE,
+-		.rst_bank_nr = 2,
+-		.reg_ofs = 0x0,
++		.rst_bank_ofs = perfcfg_rst_ofs,
++		.rst_bank_nr = ARRAY_SIZE(perfcfg_rst_ofs),
+ 	}
+ };
+ 
+diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
+index 3517eca5ee83..de4ba5e055ca 100644
+--- a/drivers/clk/mediatek/clk-mt8183.c
++++ b/drivers/clk/mediatek/clk-mt8183.c
+@@ -20,6 +20,9 @@
+ 
+ /* Infra global controller reset set register */
+ #define INFRA_RST0_SET_OFFSET		0x120
++#define INFRA_RST1_SET_OFFSET		0x130
++#define INFRA_RST2_SET_OFFSET		0x140
++#define INFRA_RST3_SET_OFFSET		0x150
+ 
+ static DEFINE_SPINLOCK(mt8183_clk_lock);
+ 
+@@ -1153,10 +1156,17 @@ static const struct mtk_pll_data plls[] = {
+ 		0, 0, 32, 8, 0x02B4, 1, 0x02BC, 0x0014, 1, 0x02B8, 0, 0x02B4),
+ };
+ 
++static u16 infra_rst_ofs[] = {
++	INFRA_RST0_SET_OFFSET,
++	INFRA_RST1_SET_OFFSET,
++	INFRA_RST2_SET_OFFSET,
++	INFRA_RST3_SET_OFFSET,
++};
++
+ static const struct mtk_clk_rst_desc clk_rst_desc = {
+ 	.version = MTK_RST_SET_CLR,
+-	.rst_bank_nr = 4,
+-	.reg_ofs = INFRA_RST0_SET_OFFSET,
++	.rst_bank_ofs = infra_rst_ofs,
++	.rst_bank_nr = ARRAY_SIZE(infra_rst_ofs),
+ };
+ 
+ static int clk_mt8183_apmixed_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index 47bc6b1842fd..11b2f74f121d 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -24,8 +24,8 @@ static int mtk_reset_update(struct reset_controller_dev *rcdev,
+ 	unsigned int val = deassert ? 0 : ~0;
+ 
+ 	return regmap_update_bits(data->regmap,
+-				  data->desc->reg_ofs + ((id / 32) << 2),
+-				  BIT(id % 32), val);
++				  data->desc->rst_bank_ofs[id / RST_NR_PER_BANK],
++				  BIT(id % RST_NR_PER_BANK), val);
+ }
+ 
+ static int mtk_reset_assert(struct reset_controller_dev *rcdev,
+@@ -58,8 +58,9 @@ static int mtk_reset_update_set_clr(struct reset_controller_dev *rcdev,
+ 	unsigned int deassert_ofs = deassert ? 0x4 : 0;
+ 
+ 	return regmap_write(data->regmap,
+-			    data->desc->reg_ofs + ((id / 32) << 4) + deassert_ofs,
+-			    BIT(id % 32));
++			    data->desc->rst_bank_ofs[id / RST_NR_PER_BANK] +
++			    deassert_ofs,
++			    BIT(id % RST_NR_PER_BANK));
+ }
+ 
+ static int mtk_reset_assert_set_clr(struct reset_controller_dev *rcdev,
+@@ -135,7 +136,7 @@ void mtk_register_reset_controller(struct device_node *np,
+ 	data->desc = desc;
+ 	data->regmap = regmap;
+ 	data->rcdev.owner = THIS_MODULE;
+-	data->rcdev.nr_resets = desc->rst_bank_nr * 32;
++	data->rcdev.nr_resets = desc->rst_bank_nr * RST_NR_PER_BANK;
+ 	data->rcdev.ops = rcops;
+ 	data->rcdev.of_node = np;
+ 
+diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
+index 91358e8cb851..83840ecf8b27 100644
+--- a/drivers/clk/mediatek/reset.h
++++ b/drivers/clk/mediatek/reset.h
+@@ -9,6 +9,8 @@
+ #include <linux/reset-controller.h>
+ #include <linux/types.h>
+ 
++#define RST_NR_PER_BANK 32
++
+ /**
+  * enum mtk_reset_version - Version of MediaTek clock reset controller.
+  * @MTK_RST_SIMPLE: Use the same registers for bit set and clear.
+@@ -24,12 +26,12 @@ enum mtk_reset_version {
+ /**
+  * struct mtk_clk_rst_desc - Description of MediaTek clock reset.
+  * @version: Reset version which is defined in enum mtk_reset_version.
+- * @reg_ofs: Base offset of the reset register.
++ * @rst_bank_ofs: Pointer to base offsets of the reset register.
+  * @rst_bank_nr: Quantity of reset bank.
+  */
+ struct mtk_clk_rst_desc {
+ 	u8 version;
+-	u16 reg_ofs;
++	u16 *rst_bank_ofs;
+ 	u32 rst_bank_nr;
+ };
+ 
 -- 
 2.18.0
 
