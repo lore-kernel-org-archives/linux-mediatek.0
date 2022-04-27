@@ -4,83 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D89C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 07:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A4CAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 07:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yxINe0XExOFmCtj576MgqcGdFE0lRnd+xk311qy3pAU=; b=mywoLj904wsiYB
-	c043uJ8lto/Qx9aYtIaWh2J+ZRtubECDtAj4FoPRLSlFicVqDtJI9P1CP9rzzJQbuhbWsiLJSoH2A
-	6r/LZ0QswpIfRE/AyDfVPR+ITKXk/cau2+Dx0jXQTbJGdqy0ITEIJuo5Eboo86/zFjRNNqtyCSODX
-	NJfjLjHw0U+KMvyaVJdjBaErH30b7Y5i5HYOaFNRBcL9sB0tU44a7VYZnib7zqkSW9VzkPKE60mSl
-	oIadFrbNP9Wc48hwF/Ha4bC2XDom9QPIjOmJdjct4jgmzs0SigXDaXK++/t3oRxtceGVkFCM9cC/C
-	VoOe946wilg7XQfKK59w==;
+	List-Owner; bh=t0xitnWwUNz8SsSDt/hgF+SXUNx7wsOrr1YSMlux+i0=; b=0FOx75N9m3fvs5
+	wnFhpL8CeMH55FuCvuG+AiazWlqyWGCxREjSZqO0gfsd4daIhXT5UiGcQVEbM5hPrLn2n0OkETcpD
+	zBLkd6UuMMoFypj7xKnTy4o2+SYnqirBG5AK6LiUws2ILAQ9Dj09zJYNe+4qARalOz/EV7bFgVBM2
+	vt0VNhJHzFxWGzpYuh3k8jK2f1kZFHyWmPKUm1ZBPzg3XM617mJE7Jfq3e96WTOXEy6uEfWVQXRmH
+	GHjEWvvIPgxbyLYSOcD1YbGf0OZgMfLyNXkH1M+LFyny6UkAjpt94RsTi1CKoKuszwo20+Xi8MMmW
+	9jEs3OmTrm0M+sRU8U+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njbkw-0009zq-FO; Wed, 27 Apr 2022 07:06:34 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1njboJ-000BGp-Rl; Wed, 27 Apr 2022 07:10:03 +0000
+Received: from mga17.intel.com ([192.55.52.151])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njbkV-0009je-H5; Wed, 27 Apr 2022 07:06:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1651043134;
- bh=E31kil/RNvUPQgFAepzSBEELBXvKZrRDE3N9X6PH5T8=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=DjGNxyUD+bf4zvIFNz83qx3GE4Yvs5YLCQhUJ6l6Y9gGcU0a83Afo3A5hHD4aVhvY
- /Ax2SBesyOiMJXLpWyF8sGln6GLim0PTIW/W5aAFWK6guzToaoczP9HdTcMDSUppcU
- CFDxK3UdNucMrIOOjoj2JGyE5NOEba+Jpt3hmdm0=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.148.41] ([217.61.148.41]) by web-mail.gmx.net
- (3c-app-gmx-bap04.server.lan [172.19.172.74]) (via HTTP); Wed, 27 Apr 2022
- 09:05:34 +0200
+ id 1njbny-000B9d-P8; Wed, 27 Apr 2022 07:09:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1651043382; x=1682579382;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=uPctFvVUp/90RjGt37SzGewuilKpZhaTrSX2P6USs1Y=;
+ b=SfAuSMx0kT8VsYjU/QQ73qaYfuyhFdkimJTC5uyyG/60JPWKrWZ8rwm+
+ IdnDqDybYZ3kBZ5c53KD3RlewEjSuY24BozvloIsNvukgu4jcDktzbytP
+ O9jtpNZoUXbBYpA5m5ZJDeWk8sXUv5OMzTueuLAzc66xSaNTT5BW5sIE/
+ DAykdltEgPHiTBlnHTMSUUxTIiF2WrF9AUcVMmW9ChguKCw63ycOXztsf
+ ZfDfdDb/n4AY7RvpXzIWmw3etDZLgEULVCPZI3JOHWWnP/+lZa+1GJ/82
+ f6DxWltXvoLe+ZRy+m4punQFVAqpNGlZeCGRRdLW/gBCO/cO8J0LrDLUk Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10329"; a="246406180"
+X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="246406180"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2022 00:09:40 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="680102079"
+Received: from lkp-server01.sh.intel.com (HELO 5056e131ad90) ([10.239.97.150])
+ by orsmga004.jf.intel.com with ESMTP; 27 Apr 2022 00:09:31 -0700
+Received: from kbuild by 5056e131ad90 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1njbnm-0004RW-8a;
+ Wed, 27 Apr 2022 07:09:30 +0000
+Date: Wed, 27 Apr 2022 15:09:05 +0800
+From: kernel test robot <lkp@intel.com>
+To: Johnson Wang <johnson.wang@mediatek.com>, cw00.choi@samsung.com,
+ krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com
+Cc: kbuild-all@lists.01.org, khilman@kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, jia-wei.chang@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Johnson Wang <johnson.wang@mediatek.com>
+Subject: Re: [PATCH v3 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
+ devfreq driver
+Message-ID: <202204271534.xh4s4n5E-lkp@intel.com>
+References: <20220425125546.4129-3-johnson.wang@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-ba152dbe-5a7c-4098-acff-3e7b225f0349-1651043134680@3c-app-gmx-bap04>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner
- <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Andrew Lunn
- <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian
- Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Subject: Aw: Re: [RFC v1 1/3] net: dsa: mt753x: make reset optional
-Date: Wed, 27 Apr 2022 09:05:34 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20220426235713.engzue7ujwqjdyjc@skbuf>
-References: <20220426134924.30372-1-linux@fw-web.de>
- <20220426134924.30372-2-linux@fw-web.de>
- <20220426235713.engzue7ujwqjdyjc@skbuf>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:BgK3bwwwsZyAlEyB2njy500W/y0pBdlhH28Qhy54gfqNlVJPhRCXN1L7fzbHRwm2NhWIt
- wtsoVISknJP68kmlU/Ne3LPu27zqumySiroUKNvD3n3rqoWlVnHOi13drtzrr6X+TADx7uJfTn1t
- 9FuVVDgSJikg8OKzG6Ux/wmOpd2+Ha4EsuNnk/1NAUt6D0GiQ8XJ2/0ptYYgJM35Iogc9LRnTDY9
- 0tQmjj2r9F5tJ1GixD+w366AYglq49w0uwB4bgYnAXf/7SZ/5cdOEZKx84mARgM8OEku6HY7ilQS
- po=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BfBhc8THtNQ=:FmPM6Sbgg35utsLpoBVKWj
- RhwN3n5dcfttYrYGD3nUUmgyz76ELiRfChWBqtFpLRf+MYrR5Ovp4+BqDcC26HH6JKvRQbPA7
- RY/gZe/B3B0VSfioY+L02yptu7tp9RvbtU7AWa5JSX+XWhozJufzh3yqru38GrlZVSZ9Q5M2B
- cfEonm56YX4DHY19Gr7L6RooIe9tEZsITo4k60kO0NMGOFKJWkXUp9zVug4rxzq8oVAnpQQAj
- nWiljo9mOsuXrzJh4PXopgPEnxOL1GvFzn/l2UPX6nYp3RDn/oyMJl433iPbJPdjv+NBNwNiX
- jz89CSuXtv3yPSBI4jx6Jp1Gwbc9JV0CpiROCbLdPcUHTdBmMTZEl4J0s35pE4pLX23aOIZo8
- oU1E6gOG0Lj4xYRAuxWIIGuaTEuYW/rc462iUD0AKSkJBpO0SQ5Gq/V89G5VTPlhdfdZqrFH5
- YpRQV5TIUS4pzKIWDsuvQ4ol0910PCH3+EpUOQLVv83DVHqSyLdwbScd6q1MX+GAvNzrDrtvS
- r/AJEaZWNqnyCnWnMUQKqWGPC0fBDfbn5Fp0+XC9NZrZQLDnVmXruO5sImrB6WskfJKLmlXgF
- U/+iex/+cLAuPWqcCSir5czEZDNBdMUdqnDU8pynYFW26/3/UZfgdFpaZQ7qLfwqc/bsChUmQ
- 13DrwQHm3aFthJPqAnRJ8IcCKf/VPY1sa/o6vlLRVs4cd4wZ5J3yNxXmda1BRDVMMEbzO58zR
- BwFBEfj5Rhax1Vm1nW1RhOAs8hKEO1XC6T+7tcn5n1OQ8jY0bu7oKg3w5ky/Di554zjAphU7V
- hfikbdB
+Content-Disposition: inline
+In-Reply-To: <20220425125546.4129-3-johnson.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_000608_137794_2C177765 
-X-CRM114-Status: GOOD (  24.23  )
+X-CRM114-CacheID: sfid-20220427_000942_878946_34A4F221 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,69 +84,239 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Johnson,
 
-you're right, reset is already optional...
+Thank you for the patch! Yet something to improve:
 
-idk why it was failing before the patch...i guess i had always defined the reset in dts on switch-side and dropped it same time with this patch.
+[auto build test ERROR on robh/for-next]
+[also build test ERROR on linus/master v5.18-rc4 next-20220426]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-Reset on both nodes (gmac+switch) blocks in switch driver because of exclusive (error message "could not get our reset line") and after dropping the reset on gmac-side the mdio-bus does not come up after switch driver resets gmac+switch (in loop with edefer).
+url:    https://github.com/intel-lab-lkp/linux/commits/Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+config: arc-allyesconfig (https://download.01.org/0day-ci/archive/20220427/202204271534.xh4s4n5E-lkp@intel.com/config)
+compiler: arceb-elf-gcc (GCC) 11.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/98b34c0587837b0e5b880b11a52433f8f0eee19f
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820
+        git checkout 98b34c0587837b0e5b880b11a52433f8f0eee19f
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash
 
-> Gesendet: Mittwoch, 27. April 2022 um 01:57 Uhr
-> Von: "Vladimir Oltean" <olteanv@gmail.com>
-> On Tue, Apr 26, 2022 at 03:49:22PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Currently a reset line is required, but on BPI-R2-Pro board
-> > this reset is shared with the gmac and prevents the switch to
-> > be initialized because mdio is not ready fast enough after
-> > the reset.
-> >
-> > So make the reset optional to allow shared reset lines.
->
-> What does it mean "to allow shared reset lines"? Allow as in "allow them
-> to sit there, unused"?
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-for switch part unused right, but reset-line is used by gmac. If switch does the reset, it resets the gmac too and so the mdio goes down. It took longer to get up than the wait-poll after the reset and so i got mdio read errors.
+All errors (new ones prefixed by >>):
 
-> > -	} else {
-> > +	} else if (priv->reset) {
->
-> I don't really understand this patch. gpiod_set_value_cansleep() can
-> tolerate NULL GPIO descriptors.
+   drivers/devfreq/mtk-cci-devfreq.c: In function 'mtk_ccifreq_probe':
+>> drivers/devfreq/mtk-cci-devfreq.c:372:21: error: 'struct devfreq_passive_data' has no member named 'parent_type'
+     372 |         passive_data->parent_type = CPUFREQ_PARENT_DEV;
+         |                     ^~
+>> drivers/devfreq/mtk-cci-devfreq.c:372:37: error: 'CPUFREQ_PARENT_DEV' undeclared (first use in this function)
+     372 |         passive_data->parent_type = CPUFREQ_PARENT_DEV;
+         |                                     ^~~~~~~~~~~~~~~~~~
+   drivers/devfreq/mtk-cci-devfreq.c:372:37: note: each undeclared identifier is reported only once for each function it appears in
+   In file included from include/linux/device.h:15,
+                    from include/linux/devfreq.h:13,
+                    from drivers/devfreq/mtk-cci-devfreq.c:7:
+   drivers/devfreq/mtk-cci-devfreq.c:378:30: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long int' [-Wformat=]
+     378 |                 dev_err(dev, "failed to add devfreq device: %d\n",
+         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                              ^~~
+   include/linux/dev_printk.h:144:56: note: in expansion of macro 'dev_fmt'
+     144 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
+         |                                                        ^~~~~~~
+   drivers/devfreq/mtk-cci-devfreq.c:378:17: note: in expansion of macro 'dev_err'
+     378 |                 dev_err(dev, "failed to add devfreq device: %d\n",
+         |                 ^~~~~~~
+   drivers/devfreq/mtk-cci-devfreq.c:378:62: note: format string is defined here
+     378 |                 dev_err(dev, "failed to add devfreq device: %d\n",
+         |                                                             ~^
+         |                                                              |
+         |                                                              int
+         |                                                             %ld
 
-had not looked for NULL-tolerance, so i precautionary added the check.
 
-> >  		gpiod_set_value_cansleep(priv->reset, 0);
-> >  		usleep_range(1000, 1100);
-> >  		gpiod_set_value_cansleep(priv->reset, 1);
+vim +372 drivers/devfreq/mtk-cci-devfreq.c
 
-> > @@ -3272,8 +3272,7 @@ mt7530_probe(struct mdio_device *mdiodev)
-> >  		priv->reset = devm_gpiod_get_optional(&mdiodev->dev, "reset",
-> >  						      GPIOD_OUT_LOW);
-> >  		if (IS_ERR(priv->reset)) {
-> > -			dev_err(&mdiodev->dev, "Couldn't get our reset line\n");
-> > -			return PTR_ERR(priv->reset);
-> > +			dev_warn(&mdiodev->dev, "Couldn't get our reset line\n");
->
-> I certainly don't understand why you're suppressing the pointer-encoded
-> errors here. The function used is devm_gpiod_get_optional(), which
-> returns NULL for a missing reset-gpios, not IS_ERR(something). The
-> IS_ERR(something) is actually important to not ignore, maybe it's
-> IS_ERR(-EPROBE_DEFER). And this change breaks waiting for the descriptor
-> to become available.
+   255	
+   256	static int mtk_ccifreq_probe(struct platform_device *pdev)
+   257	{
+   258		struct device *dev = &pdev->dev;
+   259		struct mtk_ccifreq_drv *drv;
+   260		struct devfreq_passive_data *passive_data;
+   261		struct dev_pm_opp *opp;
+   262		unsigned long rate, opp_volt;
+   263		int ret;
+   264	
+   265		drv = devm_kzalloc(dev, sizeof(*drv), GFP_KERNEL);
+   266		if (!drv)
+   267			return -ENOMEM;
+   268	
+   269		drv->dev = dev;
+   270		drv->soc_data = (const struct mtk_ccifreq_platform_data *)
+   271					of_device_get_match_data(&pdev->dev);
+   272		mutex_init(&drv->reg_lock);
+   273		platform_set_drvdata(pdev, drv);
+   274	
+   275		drv->cci_clk = devm_clk_get(dev, "cci");
+   276		if (IS_ERR(drv->cci_clk)) {
+   277			ret = PTR_ERR(drv->cci_clk);
+   278			return dev_err_probe(dev, ret,
+   279					     "failed to get cci clk: %d\n", ret);
+   280		}
+   281	
+   282		drv->inter_clk = devm_clk_get(dev, "intermediate");
+   283		if (IS_ERR(drv->inter_clk)) {
+   284			ret = PTR_ERR(drv->inter_clk);
+   285			dev_err_probe(dev, ret,
+   286				      "failed to get intermediate clk: %d\n", ret);
+   287			goto out_free_resources;
+   288		}
+   289	
+   290		drv->proc_reg = devm_regulator_get_optional(dev, "proc");
+   291		if (IS_ERR(drv->proc_reg)) {
+   292			ret = PTR_ERR(drv->proc_reg);
+   293			dev_err_probe(dev, ret,
+   294				      "failed to get proc regulator: %d\n", ret);
+   295			goto out_free_resources;
+   296		}
+   297	
+   298		ret = regulator_enable(drv->proc_reg);
+   299		if (ret) {
+   300			dev_err(dev, "failed to enable proc regulator\n");
+   301			goto out_free_resources;
+   302		}
+   303	
+   304		drv->sram_reg = regulator_get_optional(dev, "sram");
+   305		if (IS_ERR(drv->sram_reg))
+   306			drv->sram_reg = NULL;
+   307		else {
+   308			ret = regulator_enable(drv->sram_reg);
+   309			if (ret) {
+   310				dev_err(dev, "failed to enable sram regulator\n");
+   311				goto out_free_resources;
+   312			}
+   313		}
+   314	
+   315		/*
+   316		 * We assume min voltage is 0 and tracking target voltage using
+   317		 * min_volt_shift for each iteration.
+   318		 * The retry_max is 3 times of expeted iteration count.
+   319		 */
+   320		drv->vtrack_max = 3 * DIV_ROUND_UP(max(drv->soc_data->sram_max_volt,
+   321						       drv->soc_data->proc_max_volt),
+   322						   drv->soc_data->min_volt_shift);
+   323	
+   324		ret = clk_prepare_enable(drv->cci_clk);
+   325		if (ret)
+   326			goto out_free_resources;
+   327	
+   328		ret = clk_prepare_enable(drv->inter_clk);
+   329		if (ret)
+   330			goto out_disable_cci_clk;
+   331	
+   332		ret = dev_pm_opp_of_add_table(dev);
+   333		if (ret) {
+   334			dev_err(dev, "failed to add opp table: %d\n", ret);
+   335			goto out_disable_inter_clk;
+   336		}
+   337	
+   338		rate = clk_get_rate(drv->inter_clk);
+   339		opp = dev_pm_opp_find_freq_ceil(dev, &rate);
+   340		if (IS_ERR(opp)) {
+   341			ret = PTR_ERR(opp);
+   342			dev_err(dev, "failed to get intermediate opp: %d\n", ret);
+   343			goto out_remove_opp_table;
+   344		}
+   345		drv->inter_voltage = dev_pm_opp_get_voltage(opp);
+   346		dev_pm_opp_put(opp);
+   347	
+   348		rate = U32_MAX;
+   349		opp = dev_pm_opp_find_freq_floor(drv->dev, &rate);
+   350		if (IS_ERR(opp)) {
+   351			dev_err(dev, "failed to get opp\n");
+   352			ret = PTR_ERR(opp);
+   353			goto out_remove_opp_table;
+   354		}
+   355	
+   356		opp_volt = dev_pm_opp_get_voltage(opp);
+   357		dev_pm_opp_put(opp);
+   358		ret = mtk_ccifreq_set_voltage(drv, opp_volt);
+   359		if (ret) {
+   360			dev_err(dev, "failed to scale to highest voltage %lu in proc_reg\n",
+   361				opp_volt);
+   362			goto out_remove_opp_table;
+   363		}
+   364	
+   365		passive_data = devm_kzalloc(dev, sizeof(struct devfreq_passive_data),
+   366					    GFP_KERNEL);
+   367		if (!passive_data) {
+   368			ret = -ENOMEM;
+   369			goto out_remove_opp_table;
+   370		}
+   371	
+ > 372		passive_data->parent_type = CPUFREQ_PARENT_DEV;
+   373		drv->devfreq = devm_devfreq_add_device(dev, &mtk_ccifreq_profile,
+   374						       DEVFREQ_GOV_PASSIVE,
+   375						       passive_data);
+   376		if (IS_ERR(drv->devfreq)) {
+   377			ret = -EPROBE_DEFER;
+   378			dev_err(dev, "failed to add devfreq device: %d\n",
+   379				PTR_ERR(drv->devfreq));
+   380			goto out_remove_opp_table;
+   381		}
+   382	
+   383		drv->opp_nb.notifier_call = mtk_ccifreq_opp_notifier;
+   384		ret = dev_pm_opp_register_notifier(dev, &drv->opp_nb);
+   385		if (ret) {
+   386			dev_err(dev, "failed to register opp notifier: %d\n", ret);
+   387			goto out_remove_devfreq_device;
+   388		}
+   389		return 0;
+   390	
+   391	out_remove_devfreq_device:
+   392		devm_devfreq_remove_device(dev, drv->devfreq);
+   393	
+   394	out_remove_opp_table:
+   395		dev_pm_opp_of_remove_table(dev);
+   396	
+   397	out_disable_inter_clk:
+   398		clk_disable_unprepare(drv->inter_clk);
+   399	
+   400	out_disable_cci_clk:
+   401		clk_disable_unprepare(drv->cci_clk);
+   402	
+   403	out_free_resources:
+   404		if (regulator_is_enabled(drv->proc_reg))
+   405			regulator_disable(drv->proc_reg);
+   406		if (drv->sram_reg && regulator_is_enabled(drv->sram_reg))
+   407			regulator_disable(drv->sram_reg);
+   408	
+   409		if (!IS_ERR(drv->proc_reg))
+   410			regulator_put(drv->proc_reg);
+   411		if (!IS_ERR(drv->sram_reg))
+   412			regulator_put(drv->sram_reg);
+   413		if (!IS_ERR(drv->cci_clk))
+   414			clk_put(drv->cci_clk);
+   415		if (!IS_ERR(drv->inter_clk))
+   416			clk_put(drv->inter_clk);
+   417	
+   418		return ret;
+   419	}
+   420	
 
-you're right...the intention was to not leave the probe function if not reset was defined...but yes, devm_gpiod_get_optional is called so reset is already optional.
-
-> So what doesn't work without this patch, exactly?
-
-reverted the Patch in my repo and it is still working :)
-
-just ignore it. something went wrong during my tests...
-
-sorry for the inconvenience.
-
-regards Frank
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
 _______________________________________________
 Linux-mediatek mailing list
