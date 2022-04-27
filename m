@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7C08C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 06:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57478C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 06:52:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9MWoz/73IBMT5ny3Ed7f9fJ7DWoaiOLxR46UnbatKQw=; b=3/CL6jAkqLcUgG
-	ACZAbqEoBM72XTC0/IcPoojuiZbKllDgUE0zkmuDNvY7UC2JvL5uyUC58of1z+b4RI/UursQ0xQZA
-	3dpyVI+3X2JnvQTDGSnu8ULMn7Xq9s+l1L4s50v7FIqtjRV796gqehlS2/yRaSfhcY1nk2nmaSj+p
-	Lt/RZNxON6RNwk0NhU97qSqr+RE6sLx7IVk90BT67nHYxSE1HyhAviReO7eXtRy/EQO/w0OJtlL0s
-	UBQGh6CGkEJ2s1qR1Ud427+8thpnuTZPhJrejKPSuf1sPkfF7y+xdkZhDl5Igze1F+XuNecvVD9Ik
-	6BsnYe1mWyDHza4zBBKA==;
+	List-Owner; bh=rvBjDPck8ecJJbQMcbWXOGSkaCfff99PpoTkRQ/d8zs=; b=Kd07YuMfPbKDxR
+	s1bANv8SsmWhtwcuPehx3azPIWPs4zYwSTokNry7UozEX0PjbZTpAX7HznRH/hbVIGKUlK1IoMp2o
+	Fn3NAk8zWuunmNn6WtTfpOhQhsEUGYJO8Ac7B0TKg6mQDUcLSaU1/MbAWlPL8jWn4oFeIEGVUTGu7
+	GLbEE8D1q3dHraxzJA5BST3ersd9GXrY4mvCxWOzHLcjZEGsbYxDFCyANUEwqkJP4dr9ShNmw7gA1
+	B2w2Su6BvJ9lk9GHXsF8aOJ2Zs0LGtYT7ondo3JZMPwRcafVkEWuApxUn4iOMckRlJjYuHiDQvbZ2
+	hdLm7FqKLhSQYImVZH4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njbVt-0005Co-2L; Wed, 27 Apr 2022 06:51:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njbWw-0005lW-9n; Wed, 27 Apr 2022 06:52:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njbUp-0004js-IH; Wed, 27 Apr 2022 06:49:57 +0000
-X-UUID: 2b3a3818bc9f4b37974e9cf6c59428c4-20220426
+ id 1njbWs-0005iH-VR; Wed, 27 Apr 2022 06:52:04 +0000
+X-UUID: fb9ca795a253423cbe331652590e8818-20220426
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:1138e12b-c5fb-406f-952e-91a67b339a58, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:1eab31cf-6697-4765-aedd-2e6b57e12890, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:3997dc2e-6199-437e-8ab4-9920b4bc5b76,
+ B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:8
+X-CID-META: VersionHash:faefae9, CLOUDID:1ab1dc2e-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 2b3a3818bc9f4b37974e9cf6c59428c4-20220426
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+X-UUID: fb9ca795a253423cbe331652590e8818-20220426
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 646744178; Tue, 26 Apr 2022 23:49:46 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1127926490; Tue, 26 Apr 2022 23:51:56 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 26 Apr 2022 23:44:36 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 Apr 2022 14:44:34 +0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 27 Apr 2022 14:44:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 27 Apr 2022 14:44:34 +0800
+ Frontend Transport; Wed, 27 Apr 2022 14:44:33 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
@@ -67,18 +68,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
  <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
  <river.cheng@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v17 5/6] dts: arm64: mt8183: add GCE client property for
- Mediatek MUTEX
-Date: Wed, 27 Apr 2022 14:44:24 +0800
-Message-ID: <20220427064425.30383-6-moudy.ho@mediatek.com>
+Subject: [PATCH v17 4/6] dt-bindings: soc: mediatek: add gce-client-reg for
+ MUTEX
+Date: Wed, 27 Apr 2022 14:44:23 +0800
+Message-ID: <20220427064425.30383-5-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220427064425.30383-1-moudy.ho@mediatek.com>
 References: <20220427064425.30383-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_234955_634568_2896E4CB 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20220426_235203_065636_71DDC556 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,26 +97,39 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 In order to allow modules with latency requirements such as MDP3
-to set registers through CMDQ, add the relevant dts property.
+to set registers through CMDQ, add the relevant GCE property.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ .../bindings/soc/mediatek/mediatek,mutex.yaml        | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 4b08691ed39e..fc6ac2a46324 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1514,6 +1514,7 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
- 					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
- 		};
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+index 40598243c84d..e4399e1f9b1c 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+@@ -60,6 +60,18 @@ properties:
+       include/dt-bindings/gce/<chip>-gce.h of each chips.
+     $ref: /schemas/types.yaml#/definitions/uint32-array
  
- 		larb0: larb@14017000 {
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
+ required:
+   - compatible
+   - reg
 -- 
 2.18.0
 
