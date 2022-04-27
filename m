@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A4CAC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE546C433FE
 	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 07:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t0xitnWwUNz8SsSDt/hgF+SXUNx7wsOrr1YSMlux+i0=; b=0FOx75N9m3fvs5
-	wnFhpL8CeMH55FuCvuG+AiazWlqyWGCxREjSZqO0gfsd4daIhXT5UiGcQVEbM5hPrLn2n0OkETcpD
-	zBLkd6UuMMoFypj7xKnTy4o2+SYnqirBG5AK6LiUws2ILAQ9Dj09zJYNe+4qARalOz/EV7bFgVBM2
-	vt0VNhJHzFxWGzpYuh3k8jK2f1kZFHyWmPKUm1ZBPzg3XM617mJE7Jfq3e96WTOXEy6uEfWVQXRmH
-	GHjEWvvIPgxbyLYSOcD1YbGf0OZgMfLyNXkH1M+LFyny6UkAjpt94RsTi1CKoKuszwo20+Xi8MMmW
-	9jEs3OmTrm0M+sRU8U+Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YkNZGYCzBo8LYGChKEaTs+IArck27Y+JUeOKYCUd5rU=; b=Hwgx7yPzDslseS
+	9DHXVavyPIYd0qB6kyTZVUzAk/3F2irnEy+ry0cR1K3IYLlZqDF0RZkkGesg88c3Q9KWBSYSGjK6E
+	9r5wo3XZvg4QCkG1vYDtDyvsFsLA+EgdtNOCgcgsr4fHbxeCNl32IXtHvNv45ttchdvOGKRFmu1q4
+	YgRCYKHz8Eyv9QLTu5x5gcP35S1Ve08vGriA5ce1YiT685WFgMADDXcCzBZExqthaqckt8KipNlEb
+	183oPnnmSzq+Rr8jmGEqxXVRqaoV/G+oCt4fN3CXTjSu73xuXTlg8QoxK4s7vGXeXeWkctY8SUXoB
+	h9wJ6Nky8nXHRR+2yAjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njboJ-000BGp-Rl; Wed, 27 Apr 2022 07:10:03 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1njboK-000BHM-UA; Wed, 27 Apr 2022 07:10:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njbny-000B9d-P8; Wed, 27 Apr 2022 07:09:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651043382; x=1682579382;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=uPctFvVUp/90RjGt37SzGewuilKpZhaTrSX2P6USs1Y=;
- b=SfAuSMx0kT8VsYjU/QQ73qaYfuyhFdkimJTC5uyyG/60JPWKrWZ8rwm+
- IdnDqDybYZ3kBZ5c53KD3RlewEjSuY24BozvloIsNvukgu4jcDktzbytP
- O9jtpNZoUXbBYpA5m5ZJDeWk8sXUv5OMzTueuLAzc66xSaNTT5BW5sIE/
- DAykdltEgPHiTBlnHTMSUUxTIiF2WrF9AUcVMmW9ChguKCw63ycOXztsf
- ZfDfdDb/n4AY7RvpXzIWmw3etDZLgEULVCPZI3JOHWWnP/+lZa+1GJ/82
- f6DxWltXvoLe+ZRy+m4punQFVAqpNGlZeCGRRdLW/gBCO/cO8J0LrDLUk Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10329"; a="246406180"
-X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="246406180"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 00:09:40 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="680102079"
-Received: from lkp-server01.sh.intel.com (HELO 5056e131ad90) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 27 Apr 2022 00:09:31 -0700
-Received: from kbuild by 5056e131ad90 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1njbnm-0004RW-8a;
- Wed, 27 Apr 2022 07:09:30 +0000
-Date: Wed, 27 Apr 2022 15:09:05 +0800
-From: kernel test robot <lkp@intel.com>
-To: Johnson Wang <johnson.wang@mediatek.com>, cw00.choi@samsung.com,
- krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com
-Cc: kbuild-all@lists.01.org, khilman@kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, jia-wei.chang@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Johnson Wang <johnson.wang@mediatek.com>
-Subject: Re: [PATCH v3 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
- devfreq driver
-Message-ID: <202204271534.xh4s4n5E-lkp@intel.com>
-References: <20220425125546.4129-3-johnson.wang@mediatek.com>
+ id 1njbo5-000BBq-Es; Wed, 27 Apr 2022 07:09:55 +0000
+X-UUID: 042493aca5a440588963aa983f070468-20220427
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:e9f35264-3b40-40ac-b869-deae7e9f789e, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:1976dd2e-6199-437e-8ab4-9920b4bc5b76,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 042493aca5a440588963aa983f070468-20220427
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <moudy.ho@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1464600878; Wed, 27 Apr 2022 00:09:45 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Apr 2022 00:05:17 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 27 Apr 2022 15:05:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 27 Apr 2022 15:05:15 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Alexandre Courbot
+ <acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+ <pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+ <randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+ <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+ <river.cheng@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v14 0/3] media: mediatek: support mdp3 on mt8183 platform
+Date: Wed, 27 Apr 2022 15:05:11 +0800
+Message-ID: <20220427070514.10355-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220425125546.4129-3-johnson.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_000942_878946_34A4F221 
-X-CRM114-Status: GOOD (  20.53  )
+X-CRM114-CacheID: sfid-20220427_000949_564835_85334CD4 
+X-CRM114-Status: GOOD (  22.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,239 +93,197 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Johnson,
+Change since v13:
+- Rebase on v5.18-rc4
+- Depend on:
+  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=636041
+- Remove advanced functionality about ISP settings for direct link cases.
+- Remove the software designation in the mt8183 dts and
+  revise corresponding bindings.
 
-Thank you for the patch! Yet something to improve:
+Change since v12:
+- Rebase on linux-next
+- Depend on:
+  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=630948
+- Remove messages related to routing information in MDP3, and leave the related
+  settings in MMSYS.
+- Remove unnecessary phandle and redundant property in RDMA dt-binding and
+  adjust the corresponding driver.
+- Revise MDP3 node name in dts. 
+- Removed unnecessary functions, mutex and work queue in MDP3 driver
+- Fixed format mapping error for V4L2_PIX_FMT_RGB565X
 
-[auto build test ERROR on robh/for-next]
-[also build test ERROR on linus/master v5.18-rc4 next-20220426]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+Change since v11:
+- Rebase on linux-next tag:next-20220316
+- Depend on:
+  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=624281
+- Remove redundant hardware index in data-binding suggested by Rob Herring.
+- Referring to Rob Herring's suggestion to improve some descriptions in the
+  RDMA dt-binding
+- Move MDP3 file folder from "./drive/media/platform/mtk-mdp3" to
+  "./driver/media/platform/mediatek/mdp3"
+- Fixed the V4L2 and MDP color format mapping error in RGB565 which
+  checked by Benjamin Gaignard
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-config: arc-allyesconfig (https://download.01.org/0day-ci/archive/20220427/202204271534.xh4s4n5E-lkp@intel.com/config)
-compiler: arceb-elf-gcc (GCC) 11.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/98b34c0587837b0e5b880b11a52433f8f0eee19f
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820
-        git checkout 98b34c0587837b0e5b880b11a52433f8f0eee19f
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash
+Change since v10:
+- The routing table needs to be discarded, and the calculation result
+  on the SCP side is used to write a suitable mux setting for
+  1 input port and 2 output ports.
+- Adjust dts parsing flow to remove redundant HW IDs.
+- Fix memory leak caused by no free path information in function "mdp_cmdq_send".
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+Change since v9:
+- Keep only the MDP3 driver patches and split the remaining mmsys and
+  mutex patches into another mail.
+- Move mutex mod settings to corresponding driver and make relevant adjustments
+  for this in MDP3 driver.
+- Fix compile warning reported by kernel test robot.
 
-All errors (new ones prefixed by >>):
+Change since v8:
+- Rebase on v5.16-rc2.
+- Refer to Angelo's suggestion, adjust the register writing format to increase
+  readability and significance.
+- Refer to Angelo's suggestion, adjust or reduce inappropriate debugging
+  messages.
+- Refer to Rob Herring's suggestion to correct the the binding file
+  to make it with the specification.
+- Fix compile warning reported by kernel test robot.
 
-   drivers/devfreq/mtk-cci-devfreq.c: In function 'mtk_ccifreq_probe':
->> drivers/devfreq/mtk-cci-devfreq.c:372:21: error: 'struct devfreq_passive_data' has no member named 'parent_type'
-     372 |         passive_data->parent_type = CPUFREQ_PARENT_DEV;
-         |                     ^~
->> drivers/devfreq/mtk-cci-devfreq.c:372:37: error: 'CPUFREQ_PARENT_DEV' undeclared (first use in this function)
-     372 |         passive_data->parent_type = CPUFREQ_PARENT_DEV;
-         |                                     ^~~~~~~~~~~~~~~~~~
-   drivers/devfreq/mtk-cci-devfreq.c:372:37: note: each undeclared identifier is reported only once for each function it appears in
-   In file included from include/linux/device.h:15,
-                    from include/linux/devfreq.h:13,
-                    from drivers/devfreq/mtk-cci-devfreq.c:7:
-   drivers/devfreq/mtk-cci-devfreq.c:378:30: warning: format '%d' expects argument of type 'int', but argument 3 has type 'long int' [-Wformat=]
-     378 |                 dev_err(dev, "failed to add devfreq device: %d\n",
-         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
-     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
-         |                              ^~~
-   include/linux/dev_printk.h:144:56: note: in expansion of macro 'dev_fmt'
-     144 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |                                                        ^~~~~~~
-   drivers/devfreq/mtk-cci-devfreq.c:378:17: note: in expansion of macro 'dev_err'
-     378 |                 dev_err(dev, "failed to add devfreq device: %d\n",
-         |                 ^~~~~~~
-   drivers/devfreq/mtk-cci-devfreq.c:378:62: note: format string is defined here
-     378 |                 dev_err(dev, "failed to add devfreq device: %d\n",
-         |                                                             ~^
-         |                                                              |
-         |                                                              int
-         |                                                             %ld
+Change since v7:
+- Rebase on v5.15-rc6.
+- Revise several V4L2 M2M settings to pass v4l2-compliance test.
+- Integrate those same component dt-binding documents of DRM and MDP, and
+  move them under the MMSYS domain.
+- Split MMSYS and MUTEX into two different files according to
+  their functional properties.
 
+Changes since v6:
+- Refactor GCE event to corresponding node.
+- Fix dt_binding_check fail.
+- Fix compilation errors.
 
-vim +372 drivers/devfreq/mtk-cci-devfreq.c
+Changes since v5:
+- Rebase on v5.14-rc6.
+- Move MMSYS/Mutex settings to corresponding driver.
+- Revise the software license description and copyright.
+- Remove unnecessary enum. or definitions.
+- Optimize platform/chip definition conditions.
+- Use general printing functions instead of MDP3 private ones.
+- Fix compile warning.
 
-   255	
-   256	static int mtk_ccifreq_probe(struct platform_device *pdev)
-   257	{
-   258		struct device *dev = &pdev->dev;
-   259		struct mtk_ccifreq_drv *drv;
-   260		struct devfreq_passive_data *passive_data;
-   261		struct dev_pm_opp *opp;
-   262		unsigned long rate, opp_volt;
-   263		int ret;
-   264	
-   265		drv = devm_kzalloc(dev, sizeof(*drv), GFP_KERNEL);
-   266		if (!drv)
-   267			return -ENOMEM;
-   268	
-   269		drv->dev = dev;
-   270		drv->soc_data = (const struct mtk_ccifreq_platform_data *)
-   271					of_device_get_match_data(&pdev->dev);
-   272		mutex_init(&drv->reg_lock);
-   273		platform_set_drvdata(pdev, drv);
-   274	
-   275		drv->cci_clk = devm_clk_get(dev, "cci");
-   276		if (IS_ERR(drv->cci_clk)) {
-   277			ret = PTR_ERR(drv->cci_clk);
-   278			return dev_err_probe(dev, ret,
-   279					     "failed to get cci clk: %d\n", ret);
-   280		}
-   281	
-   282		drv->inter_clk = devm_clk_get(dev, "intermediate");
-   283		if (IS_ERR(drv->inter_clk)) {
-   284			ret = PTR_ERR(drv->inter_clk);
-   285			dev_err_probe(dev, ret,
-   286				      "failed to get intermediate clk: %d\n", ret);
-   287			goto out_free_resources;
-   288		}
-   289	
-   290		drv->proc_reg = devm_regulator_get_optional(dev, "proc");
-   291		if (IS_ERR(drv->proc_reg)) {
-   292			ret = PTR_ERR(drv->proc_reg);
-   293			dev_err_probe(dev, ret,
-   294				      "failed to get proc regulator: %d\n", ret);
-   295			goto out_free_resources;
-   296		}
-   297	
-   298		ret = regulator_enable(drv->proc_reg);
-   299		if (ret) {
-   300			dev_err(dev, "failed to enable proc regulator\n");
-   301			goto out_free_resources;
-   302		}
-   303	
-   304		drv->sram_reg = regulator_get_optional(dev, "sram");
-   305		if (IS_ERR(drv->sram_reg))
-   306			drv->sram_reg = NULL;
-   307		else {
-   308			ret = regulator_enable(drv->sram_reg);
-   309			if (ret) {
-   310				dev_err(dev, "failed to enable sram regulator\n");
-   311				goto out_free_resources;
-   312			}
-   313		}
-   314	
-   315		/*
-   316		 * We assume min voltage is 0 and tracking target voltage using
-   317		 * min_volt_shift for each iteration.
-   318		 * The retry_max is 3 times of expeted iteration count.
-   319		 */
-   320		drv->vtrack_max = 3 * DIV_ROUND_UP(max(drv->soc_data->sram_max_volt,
-   321						       drv->soc_data->proc_max_volt),
-   322						   drv->soc_data->min_volt_shift);
-   323	
-   324		ret = clk_prepare_enable(drv->cci_clk);
-   325		if (ret)
-   326			goto out_free_resources;
-   327	
-   328		ret = clk_prepare_enable(drv->inter_clk);
-   329		if (ret)
-   330			goto out_disable_cci_clk;
-   331	
-   332		ret = dev_pm_opp_of_add_table(dev);
-   333		if (ret) {
-   334			dev_err(dev, "failed to add opp table: %d\n", ret);
-   335			goto out_disable_inter_clk;
-   336		}
-   337	
-   338		rate = clk_get_rate(drv->inter_clk);
-   339		opp = dev_pm_opp_find_freq_ceil(dev, &rate);
-   340		if (IS_ERR(opp)) {
-   341			ret = PTR_ERR(opp);
-   342			dev_err(dev, "failed to get intermediate opp: %d\n", ret);
-   343			goto out_remove_opp_table;
-   344		}
-   345		drv->inter_voltage = dev_pm_opp_get_voltage(opp);
-   346		dev_pm_opp_put(opp);
-   347	
-   348		rate = U32_MAX;
-   349		opp = dev_pm_opp_find_freq_floor(drv->dev, &rate);
-   350		if (IS_ERR(opp)) {
-   351			dev_err(dev, "failed to get opp\n");
-   352			ret = PTR_ERR(opp);
-   353			goto out_remove_opp_table;
-   354		}
-   355	
-   356		opp_volt = dev_pm_opp_get_voltage(opp);
-   357		dev_pm_opp_put(opp);
-   358		ret = mtk_ccifreq_set_voltage(drv, opp_volt);
-   359		if (ret) {
-   360			dev_err(dev, "failed to scale to highest voltage %lu in proc_reg\n",
-   361				opp_volt);
-   362			goto out_remove_opp_table;
-   363		}
-   364	
-   365		passive_data = devm_kzalloc(dev, sizeof(struct devfreq_passive_data),
-   366					    GFP_KERNEL);
-   367		if (!passive_data) {
-   368			ret = -ENOMEM;
-   369			goto out_remove_opp_table;
-   370		}
-   371	
- > 372		passive_data->parent_type = CPUFREQ_PARENT_DEV;
-   373		drv->devfreq = devm_devfreq_add_device(dev, &mtk_ccifreq_profile,
-   374						       DEVFREQ_GOV_PASSIVE,
-   375						       passive_data);
-   376		if (IS_ERR(drv->devfreq)) {
-   377			ret = -EPROBE_DEFER;
-   378			dev_err(dev, "failed to add devfreq device: %d\n",
-   379				PTR_ERR(drv->devfreq));
-   380			goto out_remove_opp_table;
-   381		}
-   382	
-   383		drv->opp_nb.notifier_call = mtk_ccifreq_opp_notifier;
-   384		ret = dev_pm_opp_register_notifier(dev, &drv->opp_nb);
-   385		if (ret) {
-   386			dev_err(dev, "failed to register opp notifier: %d\n", ret);
-   387			goto out_remove_devfreq_device;
-   388		}
-   389		return 0;
-   390	
-   391	out_remove_devfreq_device:
-   392		devm_devfreq_remove_device(dev, drv->devfreq);
-   393	
-   394	out_remove_opp_table:
-   395		dev_pm_opp_of_remove_table(dev);
-   396	
-   397	out_disable_inter_clk:
-   398		clk_disable_unprepare(drv->inter_clk);
-   399	
-   400	out_disable_cci_clk:
-   401		clk_disable_unprepare(drv->cci_clk);
-   402	
-   403	out_free_resources:
-   404		if (regulator_is_enabled(drv->proc_reg))
-   405			regulator_disable(drv->proc_reg);
-   406		if (drv->sram_reg && regulator_is_enabled(drv->sram_reg))
-   407			regulator_disable(drv->sram_reg);
-   408	
-   409		if (!IS_ERR(drv->proc_reg))
-   410			regulator_put(drv->proc_reg);
-   411		if (!IS_ERR(drv->sram_reg))
-   412			regulator_put(drv->sram_reg);
-   413		if (!IS_ERR(drv->cci_clk))
-   414			clk_put(drv->cci_clk);
-   415		if (!IS_ERR(drv->inter_clk))
-   416			clk_put(drv->inter_clk);
-   417	
-   418		return ret;
-   419	}
-   420	
+Changes since v4:
+- Rebase on v5.13-rc1.
+- Remove the CMDQ flush flow to match the CMDQ API change.
+- Integrate four of MDP's direct-link subcomponents into MDP controller node
+  from syscon node to avoid illegal clock usage.
+- Rewrite dt-binding in a JSON compatible subset of YAML
+- Fix a bit of macro argument precedence.
+
+Changes since v3:
+- Rebase on v5.9-rc1.
+- modify code for review comment from Rob Herring, cancel multiple nodes using
+  same register base situation.
+- control IOMMU port through pm runtime get/put to DMA components' device.
+- SCP(VPU) driver revision.
+- stop queuing jobs(remove flush_workqueue()) after mdp_m2m_release().
+- add computation of plane address with data_offset.
+- fix scale ratio check issue.
+- add default v4l2_format setting.
+
+Changes since v2:
+- modify code for review comment from Tomasz Figa & Alexandre Courbot
+- review comment from Rob Herring will offer code revision in v4, due to
+  it's related to device node modification, will need to modify code
+  architecture
+
+Changes since v1:
+- modify code for CMDQ v3 API support
+- EC ipi cmd migration
+- fix compliance test fail item (m2m cmd with -f) due to there is two problem in runing all format(-f) cmd:
+1. out of memory before test complete
+        Due to capture buffer mmap (refcount + 1) after reqbuf but seems
+        no corresponding munmap called before device close.
+        There are total 12XX items(formats) in format test and each format
+        alloc 8 capture/output buffers.
+2. unceasingly captureBufs() (randomly)
+        Seems the break statement didn't catch the count == 0 situation:
+        In v4l2-test-buffers.cpp, function: captureBufs()
+                        ...
+                        count--;
+                        if (!node->is_m2m && !count)
+                                break;
+        Log is as attachment
+
+Hi,
+
+This patch is used to present Media Data Path 3 (MDP3)
+which provided scaling and color format conversion.
+support using GCE to write register in critical time limitation.
+support V4L2 m2m device control.
+
+Moudy Ho (3):
+  dt-binding: mediatek: add bindings for MediaTek MDP3 components
+  dts: arm64: mt8183: add Mediatek MDP3 nodes
+  media: platform: mtk-mdp3: add Mediatek MDP3 driver
+
+ .../bindings/media/mediatek,mdp3-rdma.yaml    |  82 ++
+ .../bindings/media/mediatek,mdp3-rsz.yaml     |  61 ++
+ .../bindings/media/mediatek,mdp3-wrot.yaml    |  66 ++
+ .../bindings/soc/mediatek/mediatek,ccorr.yaml |  54 +
+ .../bindings/soc/mediatek/mediatek,wdma.yaml  |  67 ++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  79 +-
+ drivers/media/platform/mediatek/Kconfig       |   1 +
+ drivers/media/platform/mediatek/Makefile      |   1 +
+ drivers/media/platform/mediatek/mdp3/Kconfig  |  20 +
+ drivers/media/platform/mediatek/mdp3/Makefile |   6 +
+ .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |  19 +
+ .../platform/mediatek/mdp3/mdp_reg_rdma.h     |  65 ++
+ .../platform/mediatek/mdp3/mdp_reg_rsz.h      |  39 +
+ .../platform/mediatek/mdp3/mdp_reg_wdma.h     |  47 +
+ .../platform/mediatek/mdp3/mdp_reg_wrot.h     |  55 +
+ .../platform/mediatek/mdp3/mtk-img-ipi.h      | 290 +++++
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 478 +++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  47 +
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 987 ++++++++++++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.h    | 185 ++++
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 378 +++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  95 ++
+ .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     | 772 ++++++++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |  48 +
+ .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 736 +++++++++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-regs.h    | 370 +++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     | 312 ++++++
+ .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |  78 ++
+ 28 files changed, 5437 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+ create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
+ create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
+ create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.h
 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
