@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 530C5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 15:42:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78563C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 16:05:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EHWp2Y/oTQSAyj1IYFWalE7SVSCb86LXA9BCQ7NUEVE=; b=qYpIlsNlGaPW1W
-	9414+ldVICSVcPo9/8SSqINxE2WIZ2NTuwGwwNNJdPoyJkK3RfmayBhsllfNIMkofJ72jt/oaa6qG
-	bQZgbZPAw6fmPIkwebWXa1GFK/TgH9Hd+mJU/MDBfBu7/HlOvWowkFNEmpz7yk366PDIOUMNQrVGT
-	sJbJ35T9ccB7rJnmBqRsjJ4Ms+BG6gA/rv1tMbEb9i9FXiM1KuK03GCUBDKg6aZKE4yzvxc9q0PAp
-	elFjJGjuQPRpdupr2CUcXZNd1eYBJdMh5j/Di4/p465/lj4A3Zwaed9nlfIKZWfYJ/Ssci/MuwT+J
-	LidN3FEWNhstJHVILaDw==;
+	List-Owner; bh=n28H0NTHw9ye/gMJ/VRKiUdPe9Wnb7D2OJb6Ems8YpM=; b=4TVNDWxWcioVLP
+	CLi/3thRQAYBxL7QeQ98TXLDg1EMydsOWfHm3L5M8JPXhaIdoRUitKVu2/lJPXHpaqhTIFCuUgK8q
+	5z0Bvtb5B7J3/U8hMa3kwznZL1oS2PKCS3Zos1YV7pLzQR/U0hTvMk1PGf4XqCSNv1D1HUbU/i8bR
+	D3zwOcLjJ3iKWHkltObNc/Z29Vxe/zceyRc+QlSFDURwby3d026Q3FMkE+lPO+FYSrTAk/ezIK5nF
+	NPDHvGcNPQlm53QieGmoIZO7ezPza9MAbHT8ycQYOFmU4e0idybar6ky9wkfZmIAH1dAh+2shw3v6
+	h+pXdv6buECNqoF8mj/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njjnt-0022vY-B5; Wed, 27 Apr 2022 15:42:09 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1njkAH-002ApZ-1i; Wed, 27 Apr 2022 16:05:17 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njjnD-0022VS-HA; Wed, 27 Apr 2022 15:41:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E78CBB82874;
- Wed, 27 Apr 2022 15:41:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 443A8C385B0;
- Wed, 27 Apr 2022 15:41:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651074084;
- bh=UQ7T/ivpJnhp+Ti+c/WaKjLjgaMTqUGoKyi4mXYztSY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UsXrG1LE5E2RLtUlEospNCQSJAz+ihkIyJbeRakZD8CAipd9sUm9oe4AbidOAuVZG
- ezLMIoYTsUdjLO+6fERs2D+QXE0DrCgjaXj2fu8dELW/CKGOTX/2QaTbaNZVOjaA+m
- QihQFcX+8vr0XoAdOnG7zQQ0BLvHOqCvWgJB4qf5jRb7mGX7G9y+o6ZUb8B0Tltbwc
- B5ZLKAWErQ/SfIHnAh+kHwxsTeH7nZTIOQe6NWZfRrHP5CyQnhDEngUMgh39VJ0Ga2
- fxnYTI0e+v7bgqkNa5MLqbsMB4XRoKiKj8HU3gPJ9E2RDoPif/gs8IrtoE0lMe+7Rb
- GWgEhyJd6E5VA==
-From: Jakub Kicinski <kuba@kernel.org>
-To: davem@davemloft.net,
-	pabeni@redhat.com
-Cc: netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>, nbd@nbd.name,
- john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 05/14] eth: mtk_eth_soc: remove a copy of the
- NAPI_POLL_WEIGHT define
-Date: Wed, 27 Apr 2022 08:41:02 -0700
-Message-Id: <20220427154111.529975-6-kuba@kernel.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220427154111.529975-1-kuba@kernel.org>
-References: <20220427154111.529975-1-kuba@kernel.org>
+ id 1njk5h-0028LM-Aq; Wed, 27 Apr 2022 16:00:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1651075233; x=1682611233;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=rXX+rT71J5egDkFCr0XNgCNM2Ip7kcs7C+TCy0oaa2o=;
+ b=iAwwp2dzuc1zUe6xP2fHqaeCyPuoCqTQEcVpUkJbie9OZs6uSKIWThDe
+ /GA59L7lGfZhgmVq2GoJzvH1GoIFYDUWcAuzYwxWcQFg3g1zh3g5G39kH
+ v1eolmvfrg5sTJGDwdy4S/ZTrT+P12gA4I3v7vLjYHBhNyZmyCXZ5lVg8
+ qNFzJXLebiVfvVfWYHClotYClycaSWXFTORTxmHo6XuFOaYSFIqK3PzWh
+ K91DUJuZ3COJV0s2hpgywTH9ehJ/7zlVYUciq1n8VXhmP4nYJBIkRimOC
+ E6xFG6KCc766rr5qPut07tZclwfbdDYYnaX74r7fbvbJJvLxGpdqEhOvv Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10330"; a="326472124"
+X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; d="scan'208";a="326472124"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2022 08:56:35 -0700
+X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; d="scan'208";a="559008157"
+Received: from dktowns1-mobl2.amr.corp.intel.com (HELO [10.209.20.44])
+ ([10.209.20.44])
+ by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2022 08:56:34 -0700
+Message-ID: <7213fec3-6844-6913-b63e-2be8fc6df626@linux.intel.com>
+Date: Wed, 27 Apr 2022 10:39:15 -0500
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.5.0
+Subject: Re: [PATCH v2] ASoC: SOF: mediatek: Fix allyesconfig build error
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yaochun Hung <yc.hung@mediatek.com>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Yang Yingliang <yangyingliang@huawei.com>
+Cc: sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220427071030.10172-1-tinghan.shen@mediatek.com>
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+In-Reply-To: <20220427071030.10172-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_084127_762535_29B383A7 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20220427_090033_508992_F433AC69 
+X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,54 +90,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Defining local versions of NAPI_POLL_WEIGHT with the same
-values in the drivers just makes refactoring harder.
 
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
----
-CC: nbd@nbd.name
-CC: john@phrozen.org
-CC: sean.wang@mediatek.com
-CC: Mark-MC.Lee@mediatek.com
-CC: matthias.bgg@gmail.com
-CC: linux-arm-kernel@lists.infradead.org
-CC: linux-mediatek@lists.infradead.org
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 -
- 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 18eebcaa6a76..31c5da5d6b72 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3298,9 +3298,9 @@ static int mtk_probe(struct platform_device *pdev)
- 	 */
- 	init_dummy_netdev(&eth->dummy_dev);
- 	netif_napi_add(&eth->dummy_dev, &eth->tx_napi, mtk_napi_tx,
--		       MTK_NAPI_WEIGHT);
-+		       NAPI_POLL_WEIGHT);
- 	netif_napi_add(&eth->dummy_dev, &eth->rx_napi, mtk_napi_rx,
--		       MTK_NAPI_WEIGHT);
-+		       NAPI_POLL_WEIGHT);
- 
- 	platform_set_drvdata(pdev, eth);
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index c98c7ee42c6f..b04977fa84f6 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -24,7 +24,6 @@
- #define MTK_MAX_RX_LENGTH_2K	2048
- #define MTK_TX_DMA_BUF_LEN	0x3fff
- #define MTK_DMA_SIZE		512
--#define MTK_NAPI_WEIGHT		64
- #define MTK_MAC_COUNT		2
- #define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
- #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
--- 
-2.34.1
+On 4/27/22 02:10, Tinghan Shen wrote:
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o:(.opd+0x18): multiple
+> definition of `adsp_clock_on';
+> sound/soc/sof/mediatek/mt8195/mt8195-clk.o:(.opd+0x60): first defined
+> here
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o: in function
+> `.adsp_clock_on':
+> 
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o:(.opd+0x30): multiple
+> definition of `adsp_clock_off';
+> sound/soc/sof/mediatek/mt8195/mt8195-clk.o:(.opd+0x78): first defined
+> here
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o: in function
+> `.adsp_clock_off':
+> 
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o:(.opd+0x0): multiple
+> definition of `sof_hifixdsp_boot_sequence';
+> sound/soc/sof/mediatek/mt8195/mt8195-loader.o:(.opd+0x0): first defined
+> here
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o: in function
+> `.sof_hifixdsp_boot_sequence':
+> 
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o:(.opd+0x18): multiple
+> definition of `sof_hifixdsp_shutdown';
+>  sound/soc/sof/mediatek/mt8195/mt8195-loader.o:(.opd+0x18): first defined
+> here
+> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o: in function
+> `.sof_hifixdsp_shutdown':
+> 
+> Fixes: 570c14dc92d5 ("ASoC: SOF: mediatek: Add mt8186 sof fw loader and
+> dsp ops")
+> Fixes: 210b3ab932f7 ("ASoC: SOF: mediatek: Add mt8186 dsp clock support")
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+
+> ---
+> 
+> Changes since v1:
+> Rebase on Mark's for-next and update "Fixes" commit id
+> 
+> ---
+>  sound/soc/sof/mediatek/mt8186/mt8186-clk.c    |  4 ++--
+>  sound/soc/sof/mediatek/mt8186/mt8186-clk.h    |  4 ++--
+>  sound/soc/sof/mediatek/mt8186/mt8186-loader.c |  4 ++--
+>  sound/soc/sof/mediatek/mt8186/mt8186.c        | 18 +++++++++---------
+>  sound/soc/sof/mediatek/mt8186/mt8186.h        |  4 ++--
+>  5 files changed, 17 insertions(+), 17 deletions(-)
 
 _______________________________________________
 Linux-mediatek mailing list
