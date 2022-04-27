@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78563C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 16:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B359C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 17:05:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n28H0NTHw9ye/gMJ/VRKiUdPe9Wnb7D2OJb6Ems8YpM=; b=4TVNDWxWcioVLP
-	CLi/3thRQAYBxL7QeQ98TXLDg1EMydsOWfHm3L5M8JPXhaIdoRUitKVu2/lJPXHpaqhTIFCuUgK8q
-	5z0Bvtb5B7J3/U8hMa3kwznZL1oS2PKCS3Zos1YV7pLzQR/U0hTvMk1PGf4XqCSNv1D1HUbU/i8bR
-	D3zwOcLjJ3iKWHkltObNc/Z29Vxe/zceyRc+QlSFDURwby3d026Q3FMkE+lPO+FYSrTAk/ezIK5nF
-	NPDHvGcNPQlm53QieGmoIZO7ezPza9MAbHT8ycQYOFmU4e0idybar6ky9wkfZmIAH1dAh+2shw3v6
-	h+pXdv6buECNqoF8mj/g==;
+	List-Owner; bh=eh75Sbe5A8D6QHl8GH7OkAMy2ABXM1erIaPnCg7ChU0=; b=zK4/wUrJo2G2Wn
+	AgmIqHJbAem44QC4682Mh1+TcmpVU4MiEzMk7EmYDK5xZ1M2de6hHvqXcPcQVEI2mJXg1tmDrVvAw
+	UDlpR8R+LLCZupfFITp+n2MhtBy8pBFLfgre2/0om3arWVbdP565LRwTUMLNSA76bugI95W+qmxM6
+	Q1LDBAMjCGJc0uTHm2SUIdWWK0oegbWD/yBfkIcld4GiGdTBLDLqqkognnQO/wdsHSiNwvCaUQ7ZD
+	cghlMTyU/EYKoSu2idYUqQa1XY4Bov52CkYlCAeoZJlt7jM2XKSCdm49YxP3C51qhYEcswwRHRGD7
+	BFRv1R32ZbD1trwPGqXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njkAH-002ApZ-1i; Wed, 27 Apr 2022 16:05:17 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1njl6l-002WAH-Bt; Wed, 27 Apr 2022 17:05:43 +0000
+Received: from relay12.mail.gandi.net ([217.70.178.232])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njk5h-0028LM-Aq; Wed, 27 Apr 2022 16:00:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651075233; x=1682611233;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=rXX+rT71J5egDkFCr0XNgCNM2Ip7kcs7C+TCy0oaa2o=;
- b=iAwwp2dzuc1zUe6xP2fHqaeCyPuoCqTQEcVpUkJbie9OZs6uSKIWThDe
- /GA59L7lGfZhgmVq2GoJzvH1GoIFYDUWcAuzYwxWcQFg3g1zh3g5G39kH
- v1eolmvfrg5sTJGDwdy4S/ZTrT+P12gA4I3v7vLjYHBhNyZmyCXZ5lVg8
- qNFzJXLebiVfvVfWYHClotYClycaSWXFTORTxmHo6XuFOaYSFIqK3PzWh
- K91DUJuZ3COJV0s2hpgywTH9ehJ/7zlVYUciq1n8VXhmP4nYJBIkRimOC
- E6xFG6KCc766rr5qPut07tZclwfbdDYYnaX74r7fbvbJJvLxGpdqEhOvv Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10330"; a="326472124"
-X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; d="scan'208";a="326472124"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 08:56:35 -0700
-X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; d="scan'208";a="559008157"
-Received: from dktowns1-mobl2.amr.corp.intel.com (HELO [10.209.20.44])
- ([10.209.20.44])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 08:56:34 -0700
-Message-ID: <7213fec3-6844-6913-b63e-2be8fc6df626@linux.intel.com>
-Date: Wed, 27 Apr 2022 10:39:15 -0500
+ id 1njkMN-002FUH-No; Wed, 27 Apr 2022 16:17:50 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+ by mail.gandi.net (Postfix) with ESMTPSA id 842F2200007;
+ Wed, 27 Apr 2022 16:17:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+ t=1651076263;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6bH236ERFtId0dlFB5w7Um+t9YOETlWqFMja0vZdBWM=;
+ b=AhHa/7qYmf+S1v9N7LCIjqXNWFg3Zsj2p8Ht4i3+2f+h3gecumPQjKhkL3rFMr36BKyI2L
+ wN98gSrpn/huAqqnOIKPHnmLNeAI7goURKO/AdFRQd8ctCo/Kczm3czNuZFVgHq1qRB7lg
+ Uws9h5BWmjiwWHVBozum2b6Uep4QEHV0Q26KDuzBr6yAyIcyszlcmUzqlSpKt83+/mKUBd
+ aCDJAi3qmiPk70JSdixfWQAORow32i/3F/Bp3ZT7XpiDH+DSkiNo0E082inMB0D8QJx781
+ adTSstgt8+aTIfEdXTCYwvjeBSDwZFnuhFLP0GBTCoUZPIdKggBdBIC/MOHsdQ==
+Date: Wed, 27 Apr 2022 18:17:38 +0200
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Chuanhong Guo <gch981213@gmail.com>, linux-spi@vger.kernel.org, Rob
+ Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Richard Weinberger
+ <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Roger Quadros
+ <rogerq@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Cai
+ Huoqing <cai.huoqing@linux.dev>, Florian Fainelli <f.fainelli@gmail.com>,
+ Colin Ian King <colin.king@intel.com>, Wolfram Sang
+ <wsa+renesas@sang-engineering.com>, Paul Cercueil <paul@crapouillou.net>,
+ Pratyush Yadav <p.yadav@ti.com>, Yu Kuai <yukuai3@huawei.com>, "open
+ list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, open list
+ <linux-kernel@vger.kernel.org>, "open list:NAND FLASH SUBSYSTEM"
+ <linux-mtd@lists.infradead.org>
+Subject: Re: [PATCH v6 0/5] spi: add support for Mediatek SPI-NAND controller
+Message-ID: <20220427181738.2ad3e126@xps13>
+In-Reply-To: <YmlPlhKTrRXZo/Sx@sirena.org.uk>
+References: <20220424032527.673605-1-gch981213@gmail.com>
+ <20220427112857.7ddd7fc8@xps13>
+ <CAJsYDV+DfBEmWr7D1aO8F=3WMurAg6aEhf5gY86BXOUSyJ2nXA@mail.gmail.com>
+ <YmlPlhKTrRXZo/Sx@sirena.org.uk>
+Organization: Bootlin
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Firefox/91.0 Thunderbird/91.5.0
-Subject: Re: [PATCH v2] ASoC: SOF: mediatek: Fix allyesconfig build error
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yaochun Hung <yc.hung@mediatek.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Yang Yingliang <yangyingliang@huawei.com>
-Cc: sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220427071030.10172-1-tinghan.shen@mediatek.com>
-From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-In-Reply-To: <20220427071030.10172-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_090033_508992_F433AC69 
-X-CRM114-Status: UNSURE (   9.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220427_091748_421225_79F2931C 
+X-CRM114-Status: GOOD (  18.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,57 +86,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello,
 
+broonie@kernel.org wrote on Wed, 27 Apr 2022 15:13:42 +0100:
 
-On 4/27/22 02:10, Tinghan Shen wrote:
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o:(.opd+0x18): multiple
-> definition of `adsp_clock_on';
-> sound/soc/sof/mediatek/mt8195/mt8195-clk.o:(.opd+0x60): first defined
-> here
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o: in function
-> `.adsp_clock_on':
+> On Wed, Apr 27, 2022 at 10:04:57PM +0800, Chuanhong Guo wrote:
+> > On Wed, Apr 27, 2022 at 5:29 PM Miquel Raynal <miquel.raynal@bootlin.com> wrote:  
 > 
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o:(.opd+0x30): multiple
-> definition of `adsp_clock_off';
-> sound/soc/sof/mediatek/mt8195/mt8195-clk.o:(.opd+0x78): first defined
-> here
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o: in function
-> `.adsp_clock_off':
+> > > The patch actually look independent, so if it's fine for you I can take
+> > > the two mtd patches and let you merge the spi/binding changes.  
 > 
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o:(.opd+0x0): multiple
-> definition of `sof_hifixdsp_boot_sequence';
-> sound/soc/sof/mediatek/mt8195/mt8195-loader.o:(.opd+0x0): first defined
-> here
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o: in function
-> `.sof_hifixdsp_boot_sequence':
+> > Out of curiosity:
+> > Wouldn't that break the build for spi subsystem? Because...  
 > 
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o:(.opd+0x18): multiple
-> definition of `sof_hifixdsp_shutdown';
->  sound/soc/sof/mediatek/mt8195/mt8195-loader.o:(.opd+0x18): first defined
-> here
-> ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o: in function
-> `.sof_hifixdsp_shutdown':
+> > > >  rename drivers/mtd/nand/raw/mtk_ecc.h => include/linux/mtd/nand-ecc-mtk.h (100%)  
 > 
-> Fixes: 570c14dc92d5 ("ASoC: SOF: mediatek: Add mt8186 sof fw loader and
-> dsp ops")
-> Fixes: 210b3ab932f7 ("ASoC: SOF: mediatek: Add mt8186 dsp clock support")
+> > The spi driver needs this header file which is moved in the mtd patch.  
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Ah, that'll be an issue indeed - if I could get a signed tag with the
+> dependency in it I can go ahead with the SPI bits?
 
-Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+I pulled the two patches, here is a tag with these patches for you,
+Mark.
 
-> ---
-> 
-> Changes since v1:
-> Rebase on Mark's for-next and update "Fixes" commit id
-> 
-> ---
->  sound/soc/sof/mediatek/mt8186/mt8186-clk.c    |  4 ++--
->  sound/soc/sof/mediatek/mt8186/mt8186-clk.h    |  4 ++--
->  sound/soc/sof/mediatek/mt8186/mt8186-loader.c |  4 ++--
->  sound/soc/sof/mediatek/mt8186/mt8186.c        | 18 +++++++++---------
->  sound/soc/sof/mediatek/mt8186/mt8186.h        |  4 ++--
->  5 files changed, 17 insertions(+), 17 deletions(-)
+The following changes since commit 3123109284176b1532874591f7c81f3837bbdc17:
+
+  Linux 5.18-rc1 (2022-04-03 14:08:21 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git tags/mtd/mtk-spi-nand-for-5.19
+
+for you to fetch changes up to 4c5bf4b51c9857e20c5f5e9d74b86aa1bd1def40:
+
+  mtd: nand: mtk-ecc: also parse nand-ecc-engine if available (2022-04-27 18:12:43 +0200)
+
+----------------------------------------------------------------
+Mediatek ECC changes:
+* Also parse the default nand-ecc-engine property if available
+* Make mtk_ecc.c a separated module
+
+----------------------------------------------------------------
+Chuanhong Guo (2):
+      mtd: nand: make mtk_ecc.c a separated module
+      mtd: nand: mtk-ecc: also parse nand-ecc-engine if available
+
+ drivers/mtd/nand/Kconfig                                           | 7 +++++++
+ drivers/mtd/nand/Makefile                                          | 1 +
+ drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c}                      | 8 +++++---
+ drivers/mtd/nand/raw/Kconfig                                       | 1 +
+ drivers/mtd/nand/raw/Makefile                                      | 2 +-
+ drivers/mtd/nand/raw/mtk_nand.c                                    | 2 +-
+ drivers/mtd/nand/raw/mtk_ecc.h => include/linux/mtd/nand-ecc-mtk.h | 0
+ 7 files changed, 16 insertions(+), 5 deletions(-)
+ rename drivers/mtd/nand/{raw/mtk_ecc.c => ecc-mtk.c} (98%)
+ rename drivers/mtd/nand/raw/mtk_ecc.h => include/linux/mtd/nand-ecc-mtk.h (100%)
 
 _______________________________________________
 Linux-mediatek mailing list
