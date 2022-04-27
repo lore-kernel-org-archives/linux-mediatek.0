@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B7A0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 01:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 912EFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 01:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vHgRrKezH6gSxCJeZDE5GNTpQxFdIs1sXn1XHEiGjw8=; b=rUBCtCsCX3EYZH
-	5z4yKB2rcc58kVuZ5XWNHyyK/PXm1whWHjyWiY1k3dzeij4NKeXADP7GxaIEFAJvc1ZtZZxAzs1G/
-	uRb/5gYFiOaldEICSKu8qMqg23GOXlDC+t/aN9SzOLuthyoHtE2TKMmJidSficUOxsFR8uHD7nipx
-	rCmBzMb7/8ZPFJf2BFORbn85xrFuDl+ZEUeecdpbBBrwLlyRGcnVcLCmdwkKsUWmL663ZJGljUwpi
-	qQkAiNpaCqv05Q1dlrdKbG+hJWH2wlMA8SA+To5/yplsxanEwT5uIITW4j1rGx9AYV3lrEvjMdTjm
-	qDClQH0OQ45UL38eykeA==;
+	List-Owner; bh=NBV3PKw3k6GiPFmg9S8Vhs4vkoOdgg7yrVoAEW1EObc=; b=DdC5HobVfMzyKE
+	nLJB2vWXK1Y9zVfpHEKfITPUMdsNWTWUcegtmkIBmRIORU8RXE6ka26HNFskcpUX7rX+JM9n4PIAk
+	G+nwgD6UbR+1pZ1wlCxbDSMT94YzGtKusEYNDyCelRw+X48fYoqA324IEZYqu/Yck42VwGtDnY6Jr
+	WKGb5a3/yPmJQWcYkB1xNcCVytJJqLGj9IsPJuFF1sbA3Wh2+xOoPhYe5Y7tRO0jfbFUwRLBuovle
+	EPy0inL/CJkvN6vyM/SQGu1TVaEL3OwfVagD5fM+el2ulaEDlK9m9UoILHgyj6oiMvf7TNNtDTylH
+	FyfNeTHheOKklGcqR1zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njWZb-00GtfD-R8; Wed, 27 Apr 2022 01:34:31 +0000
+	id 1njWqI-00GwyE-8E; Wed, 27 Apr 2022 01:51:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njWZP-00Gte8-8X; Wed, 27 Apr 2022 01:34:22 +0000
-X-UUID: 68078042ad5c403ab68aa65e2753fe79-20220426
+ id 1njWq7-00Gwtl-Ge; Wed, 27 Apr 2022 01:51:36 +0000
+X-UUID: 4f193b66269041188ac284f60dc028e9-20220426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=ZCme6fswpAgAVaJ6HWIGXKc6W12jTuRdqpz42niqDXI=; 
+ b=HILI3zXA6SYXf5UFhjdsi1k7xVn52csn2RMUzC0PG++3L/rf4xWQCdMvNSHBhAVz15Xgn2v/JoVWWzAhrnKuULLN771+XhbHOfgc50fPflyxefUFH8QL/iQBwfi7bYuAvocODBxG1HvYbPDNdcC0XRxqClsMFb8iio9iWBC9v+I=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:441f64a6-1fbd-4b3a-a9f2-c0414c99f9eb, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:e8b7f08d-d949-4a96-b177-c9ab3efcb4b1, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:f57bcf2e-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:ab1b98c6-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 68078042ad5c403ab68aa65e2753fe79-20220426
+X-UUID: 4f193b66269041188ac284f60dc028e9-20220426
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <nancy.lin@mediatek.com>)
+ (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1643746812; Tue, 26 Apr 2022 18:34:12 -0700
+ with ESMTP id 1063565119; Tue, 26 Apr 2022 18:51:29 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Apr 2022 18:34:10 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ 15.0.1497.2; Tue, 26 Apr 2022 18:51:27 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 Apr 2022 09:34:02 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ Wed, 27 Apr 2022 09:51:25 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 Apr 2022 09:34:02 +0800
-Message-ID: <30b00fffe6f3398edc6d94679cbfba55ddafc57f.camel@mediatek.com>
-Subject: Re: [PATCH 3/5] dt-bindings: mediatek: add vdosys1 RDMA definition
- for mt8195
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Rex-BC Chen <rex-bc.chen@mediatek.com>
-CC: <krzysztof.kozlowski+dt@linaro.org>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <matthias.bgg@gmail.com>,
- <angelogioacchino.delregno@collabora.com>, <jason-jh.lin@mediatek.com>,
+ Transport; Wed, 27 Apr 2022 09:51:23 +0800
+Message-ID: <de68bcba2a25aba3e045ecb6280e3ec432e95e96.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/1] pwrap: mediatek: fix FSM timeout issue
+From: zhiyong.tao <zhiyong.tao@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <lee.jones@linaro.org>,
+ <robh+dt@kernel.org>, <matthias.bgg@gmail.com>, <lgirdwood@gmail.com>,
+ <broonie@kernel.org>, <eddie.huang@mediatek.com>, <a.zummo@towertech.it>,
+ <alexandre.belloni@bootlin.com>, <fshao@chromium.org>
+CC: <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>,
+ <tinghan.shen@mediatek.com>, <hsin-hsiung.wang@mediatek.com>,
+ <sean.wang@mediatek.com>, <macpaul.lin@mediatek.com>, <wen.su@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 27 Apr 2022 09:33:57 +0800
-In-Reply-To: <YmhVKw/FQ/iQfLLD@robh.at.kernel.org>
-References: <20220419033237.23405-1-rex-bc.chen@mediatek.com>
- <20220419033237.23405-4-rex-bc.chen@mediatek.com>
- <YmhVKw/FQ/iQfLLD@robh.at.kernel.org>
+ <linux-rtc@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Wed, 27 Apr 2022 09:51:23 +0800
+In-Reply-To: <862706781d408669cd80e7e041d96a878178283c.camel@mediatek.com>
+References: <20220424025738.32271-1-zhiyong.tao@mediatek.com>
+ <20220424025738.32271-2-zhiyong.tao@mediatek.com>
+ <862706781d408669cd80e7e041d96a878178283c.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_183419_333549_AA9F06E5 
-X-CRM114-Status: GOOD (  29.53  )
+X-CRM114-CacheID: sfid-20220426_185135_606413_87216ACF 
+X-CRM114-Status: GOOD (  24.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,160 +93,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-Thanks for the review.
-
-On Tue, 2022-04-26 at 15:25 -0500, Rob Herring wrote:
-> On Tue, Apr 19, 2022 at 11:32:35AM +0800, Rex-BC Chen wrote:
-> > From: "Nancy.Lin" <nancy.lin@mediatek.com>
+On Mon, 2022-04-25 at 10:05 +0800, Rex-BC Chen wrote:
+> On Sun, 2022-04-24 at 10:57 +0800, Zhiyong Tao wrote:
+> > From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
 > > 
-> > Add vdosys1 RDMA definition.
-> 
-> How does this compare to the mediatek,mt8183-mdp3-rdma or 
-> mediatek,mt8195-disp-rdma?
-> 
-
-1. The mediatek,mt8195-vdo1-rdma is a completely different HW engine
-with mediatek,mt8195-disp-rdma.
-2. The mediatek,mt8195-vdo1-rdma is similar to mt8183-mdp3-rdma but
-with different compression support and tile size.
-
-Regards,
-Nancy
-
+> > Fix pwrap FSM timeout issue which leads the system crash on GFX
+> > VSRAM
+> > power on.
+> > Add a usleep delay to avoid busy read for the H/W status.
+> > For avoiding the system behavior(ex. disable interrupt in
+> > suspend/resume
+> > flow, schedule block task)cause if (time_after()) be turn first,
+> > we change it after sleep delay.
+> > Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135
+> > and
+> > MT8173 SoCs")
 > > 
-> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
 > > ---
-> >  .../display/mediatek/mediatek,mdp-rdma.yaml   | 86
-> > +++++++++++++++++++
-> >  1 file changed, 86 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
-> > rdma.yaml
+> 
+> Hello Zhiyong,
+> 
+> IMO, commit messages should be
+> 
+> Fix pwrap FSM timeout issue....
+> ...we change it after sleep delay.
+> 
+> (=> one blank)
+> Fixes: 1f022d84bd19 ("soc: mediatek: Add PMIC wrapper for MT8135 and
+> MT8173 SoCs")
+> (=> oneline)
+> 
+we will change it in v4
+> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
+> 
+> >  drivers/soc/mediatek/mtk-pmic-wrap.c | 8 ++++++--
+> >  1 file changed, 6 insertions(+), 2 deletions(-)
 > > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
-> > rdma.yaml
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
-> > rdma.yaml
-> > new file mode 100644
-> > index 000000000000..6ab773569462
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
-> > rdma.yaml
-> > @@ -0,0 +1,86 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,mdp-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!2wDOMpaEiBxKqnxB_Ocy9EiZEBgMnMmhgp0QxtKsUv2WjEbcBxe1P0gILWVkqZ2k$
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index 952bc554f443..ac7139a67e87 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -12,6 +12,7 @@
+> >  #include <linux/platform_device.h>
+> >  #include <linux/regmap.h>
+> >  #include <linux/reset.h>
+> > +#include <linux/delay.h>
+> 
+> Sorry, I do not notice this in previous version. It will proper order
+> the header in alphabet.
+we will change it in v4
+> 
+>  #include <linux/delay.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+>  #include <linux/reset.h>
+> 
+> BRs,
+> Rex
 > >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!2wDOMpaEiBxKqnxB_Ocy9EiZEBgMnMmhgp0QxtKsUv2WjEbcBxe1P0gILfySwMCt$
+> >  #define PWRAP_MT8135_BRIDGE_IORD_ARB_EN		0x4
+> >  #define PWRAP_MT8135_BRIDGE_WACS3_EN		0x10
+> > @@ -1197,10 +1198,13 @@ static int pwrap_wait_for_state(struct
+> > pmic_wrapper *wrp,
+> >  	timeout = jiffies + usecs_to_jiffies(10000);
 > >  
+> >  	do {
+> > -		if (time_after(jiffies, timeout))
+> > -			return fp(wrp) ? 0 : -ETIMEDOUT;
+> >  		if (fp(wrp))
+> >  			return 0;
 > > +
-> > +title: MediaTek MDP RDMA
+> > +		usleep_range(10, 11);
 > > +
-> > +maintainers:
-> > +  - Matthias Brugger <matthias.bgg@gmail.com>
-> > +
-> > +description: |
-> > +  The mediatek MDP RDMA stands for Read Direct Memory Access.
-> > +  It provides real time data to the back-end panel driver, such as
-> > DSI,
-> > +  DPI and DP_INTF.
-> > +  It contains one line buffer to store the sufficient pixel data.
-> > +  RDMA device node must be siblings to the central MMSYS_CONFIG
-> > node.
-> > +  For a description of the MMSYS_CONFIG binding, see
-> > +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya
-> > ml for details.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    oneOf:
-> > +      - items:
-> > +          - const: mediatek,mt8195-vdo1-rdma
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  power-domains:
-> > +    description: A phandle and PM domain specifier as defined by
-> > bindings of
-> > +      the power controller specified by phandle. See
-> > +      Documentation/devicetree/bindings/power/power-domain.yaml
-> > for details.
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: RDMA Clock
-> > +
-> > +  iommus:
-> > +    description:
-> > +      This property should point to the respective IOMMU block
-> > with master port as argument,
-> > +      see
-> > Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for
-> > details.
-> > +
-> > +  mediatek,gce-client-reg:
-> > +    description:
-> > +      The register of display function block to be set by gce.
-> > There are 4 arguments,
-> > +      such as gce node, subsys id, offset and register size. The
-> > subsys id that is
-> > +      mapping to the register of display function blocks is
-> > defined in the gce header
-> > +      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
-> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +    maxItems: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - power-domains
-> > +  - clocks
-> > +  - iommus
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/clock/mt8195-clk.h>
-> > +    #include <dt-bindings/power/mt8195-power.h>
-> > +    #include <dt-bindings/gce/mt8195-gce.h>
-> > +    #include <dt-bindings/memory/mt8195-memory-port.h>
-> > +
-> > +    soc {
-> > +        #address-cells = <2>;
-> > +        #size-cells = <2>;
-> > +
-> > +        vdo1_rdma0: mdp-rdma@1c104000 {
-> > +            compatible = "mediatek,mt8195-vdo1-rdma";
-> > +            reg = <0 0x1c104000 0 0x1000>;
-> > +            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-> > +            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-> > +            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
-> > +            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX
-> > 0x4000 0x1000>;
-> > +        };
-> > +    };
-> > -- 
-> > 2.18.0
-> > 
-> > 
-
-
+> > +		if (time_after(jiffies, timeout))
+> > +			return fp(wrp) ? 0 : -ETIMEDOUT;
+> >  	} while (1);
+> >  }
+> >  
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
