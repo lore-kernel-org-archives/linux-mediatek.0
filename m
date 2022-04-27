@@ -4,79 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A946DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 10:09:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 259B1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 10:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2IXnYnN8Sd5b6Do4c1JUcV0z+8h44nmGWlC+5TrAC00=; b=eZ+hQ5BBO1iT/B
-	A9ilcdtyfXLRTGTypTp2k1g0qpelb8kg0ZvUBML2aP895bPKHcDjugQO67dPNKoVPoUxHd45/C0U1
-	d35WDlRg44RsubMzINgIqIanvReLFfsrimM/RSj20BShinRyC0yQQZKUubaoZazODozLRDiCtk3OK
-	g/l6bx+x3KADyCtqrC2gcNvQ8BDbgQXv+mWUdc8W0UnjDfY23iCu6wZRwrKaZPAcz6eSq6+4CRekw
-	CbtGPvMroFOF+arJuaKcxCsFZOzy2cXm4tDMPDM9+KVavbt52pUGX5duF6aXQho/LSUvub86hxdZX
-	XPoZjWcPRfN1ckWdaXFQ==;
+	List-Owner; bh=ISafwYrSRCTGM7/78eUzS09kIt53Kggpp3iA5f0fCXk=; b=i/yOwf+4bIihRP
+	e5DOB9qfipXc3N0Np4DNwVUGhXoyi002os3QooBlEN5No9c/OzDLB9hC4P1PLCqsQ2EPI5fI4kCbf
+	TaOMAhXK8hsXkHJtoiqNrZz4ME66AqHbJhvcFKweS0bAJIR+/9xQ3LID3r2/TQnE9AQVznaN261MV
+	qlaLfKUkLgyDp8KsHzFFlAt6d0EncQ7mtnU2SxSqo89CPBgJoFNsx6wTLHT5v0F7W8NnJD2OvORzr
+	owlpuW5mdE69hOv3fX3Z8qX2KL2KGIGKkPf8iNIeu8vj1oTIihBkeBJ49YKYbsTIX3Z2YbguOEfqK
+	8uLP+KFEoQ93fzLeuIYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njebv-000svu-VL; Wed, 27 Apr 2022 10:09:28 +0000
+	id 1njenX-000uiJ-0G; Wed, 27 Apr 2022 10:21:27 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njebb-000ss8-4r; Wed, 27 Apr 2022 10:09:09 +0000
-X-UUID: 2583c7fc93674dd0b75435c7710eecad-20220427
+ id 1njenL-000uhE-5s; Wed, 27 Apr 2022 10:21:17 +0000
+X-UUID: 0ef3e56b954a4d7198979911ec13531e-20220427
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:95e507c5-8def-44fd-8904-13cbbac4e222, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:e18ab691-af38-41fd-9f2c-0bc1b6f565b2, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:3304adc6-85ee-4ac1-ac05-bd3f1e72e732,
+X-CID-META: VersionHash:faefae9, CLOUDID:b759e52e-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 2583c7fc93674dd0b75435c7710eecad-20220427
+X-UUID: 0ef3e56b954a4d7198979911ec13531e-20220427
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
+ (envelope-from <johnson.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 150761557; Wed, 27 Apr 2022 03:09:01 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Apr 2022 03:00:38 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Apr 2022 18:00:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 1726321691; Wed, 27 Apr 2022 03:21:10 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Apr 2022 03:12:04 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 27 Apr 2022 18:11:55 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 Apr 2022 18:00:37 +0800
-Message-ID: <daca88d63fa844179a3d44affee124584353bec9.camel@mediatek.com>
-Subject: Re: [PATCH v2 1/1] dt-bindings: nvmem: mediatek: Convert mtk-efuse
- binding to YAML
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "Srinivas
- Kandagatla" <srinivas.kandagatla@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski@canonical.com>
-CC: Lala Lin <lala.lin@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Transport; Wed, 27 Apr 2022 18:11:55 +0800
+Message-ID: <a72b6333be0d8a2065477e47222c309a0d520fd4.camel@mediatek.com>
+Subject: Re: [PATCH v3 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
+ devfreq driver
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: kernel test robot <lkp@intel.com>, <cw00.choi@samsung.com>,
+ <krzk+dt@kernel.org>, <robh+dt@kernel.org>, <kyungmin.park@samsung.com>
+CC: <llvm@lists.linux.dev>, <kbuild-all@lists.01.org>, <khilman@kernel.org>,
+ <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-Date: Wed, 27 Apr 2022 18:00:37 +0800
-In-Reply-To: <0c63c24a-8014-2491-095c-77893d2141d9@linaro.org>
-References: <20220425084800.2021-1-allen-kh.cheng@mediatek.com>
- <20220425084800.2021-2-allen-kh.cheng@mediatek.com>
- <e64bdca8-7b18-b450-830c-ca07946a73fb@linaro.org>
- <9d65b713e3ffdd34dcca532c4c97fa98b124bde4.camel@mediatek.com>
- <0169c4ac-fdce-29b7-553a-14dc7df532d1@linaro.org>
- <a8e212a0e0449e015a33e76b320266376d4b9be6.camel@mediatek.com>
- <89609af9-5feb-0553-5e39-c97c4750b5a1@linaro.org>
- <33c754a7b6e4cd631bb2aeef002d34a6c25d6689.camel@mediatek.com>
- <0c63c24a-8014-2491-095c-77893d2141d9@linaro.org>
+ <linux-mediatek@lists.infradead.org>, <jia-wei.chang@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 27 Apr 2022 18:11:55 +0800
+In-Reply-To: <202204271737.oAuTwqZH-lkp@intel.com>
+References: <20220425125546.4129-3-johnson.wang@mediatek.com>
+ <202204271737.oAuTwqZH-lkp@intel.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_030907_239520_A1F20D98 
-X-CRM114-Status: GOOD (  35.20  )
+X-CRM114-CacheID: sfid-20220427_032115_281880_6AB698EE 
+X-CRM114-Status: GOOD (  24.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,167 +84,298 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Wed, 2022-04-27 at 11:39 +0200, Krzysztof Kozlowski wrote:
-> On 27/04/2022 11:28, allen-kh.cheng wrote:
-> > Hi Krzysztof,
-> > 
-> > On Tue, 2022-04-26 at 12:14 +0200, Krzysztof Kozlowski wrote:
-> > > On 26/04/2022 12:02, allen-kh.cheng wrote:
-> > > > Hi Krzysztof,
-> > > > 
-> > > > On Tue, 2022-04-26 at 08:31 +0200, Krzysztof Kozlowski wrote:
-> > > > > On 26/04/2022 08:23, allen-kh.cheng wrote:
-> > > > > > > > +properties:
-> > > > > > > > +  compatible:
-> > > > > > > > +    oneOf:
-> > > > > > > > +      - enum:
-> > > > > > > > +          - mediatek,mt8173-efuse
-> > > > > > > > +          - mediatek,efuse
-> > > > > > > 
-> > > > > > > Still no changes...
-> > > > > > > 
-> > > > > > 
-> > > > > > I just want to confirm again.
-> > > > > > 
-> > > > > > "Generic compatibles should not be used standalone"
-> > > > > > 
-> > > > > > It seems we should remove mediatek,efuse and keep
-> > > > > > "mediatek,mt8173-
-> > > > > > efuse"in binding. have I got that right?
-> > > > > 
-> > > > > You should comment for which chipsets this compatible is and
-> > > > > add
-> > > > > a
-> > > > > deprecated:true. In such case it cannot be part of enum but
-> > > > > separate
-> > > > > item in this oneOf.
-> > > > > 
-> > > > > 
-> > > > > Best regards,
-> > > > > Krzysztof
-> > > > 
-> > > > Thanks for your suggestions, I would plan to send PATCHs as
-> > > > below,
-> > > > 
-> > > > We have a PATCH 01 for current accepted dts
-> > > > 
-> > > > properties:
-> > > >   compatible:
-> > > >     oneOf:
-> > > >       - enum:
-> > > >         - mediatek,efuse
-> > > > 
-> > > >         - mediatek,mt8173-efuse
-> > > >         description: Only mt8173-efuse
-> > > > with generic fallback should be used
-> > > >       - items:
-> > > >           - enum:
-> > > >     
-> > > > - mediatek,mt7622-efuse
-> > > > 			  ...
-> > > >           - const: mediatek,efuse
-> > > > 
-> > > > Then add PATCH 02 to deprecate it
-> > > > 
-> > > > properties:
-> > > >   compatible:
-> > > >     oneOf:
-> > > >       - enum:
-> > > >         - mediatek,efuse
-> > > >         - mediatek,mt8173-efuse
-> > > >         deprecated: true
-> > > >         description: The mediatek,efuse is a generic fallback
-> > > > for
-> > > > other
-> > > > Chipset. Do not use the single compatible such as
-> > > > mediatek,efuse
-> > > > or mediatek,mt8173-efuse. It is deprecated.
-> > > >       - items:
-> > > >           - enum:
-> > > >               - mediatek,mt7622-efuse
-> > > >               ...
-> > > >           - const: mediatek,efuse
-> > > > 
-> > > > 
-> > > > PATCH 03 for 8173
-> > > > 
-> > > > update mt8173.dtsi 
-> > > > 
-> > > > change compatible from "mediatek,mt8173-efuse" to
-> > > > "mediatek,mt8173-
-> > > > efuse", "mediatek,efuse";
-> > > > 
-> > > > 
-> > > > Do you think it'd be okay ?
-> > > 
-> > > The idea is correct, but as I said it cannot be part of enum, but
-> > > separate item in oneOf. You should see an error when testing your
-> > > patch.
-> > > 
-> > > 
-> > > Best regards,
-> > > Krzysztof
-> > 
-> > I have tested 
-> > make DT_CHECKER_FLAGS=-m dt_binding_check
-> > DT_SCHEMA_FILES=Documentation/devicetree/bindings/nvmem/mtk,efuse.y
-> > aml
-> > 
-> > make ARCH=arm64 dtbs_check
-> > DT_SCHEMA_FILES=Documentation/devicetree/bindings/nvmem/mtk,efuse.y
-> > aml
-> > 
-> > Is the following correct as final version ?
+On Wed, 2022-04-27 at 17:25 +0800, kernel test robot wrote:
+> Hi Johnson,
 > 
-> Almost :)
+> Thank you for the patch! Perhaps something to improve:
 > 
-> > 
-> > properties:
-> >   compatible:
-> >     oneOf:
-> >       - const: mediatek,mt8173-efuse
-> > #Don't use this in new dts files
+> [auto build test WARNING on robh/for-next]
+> [also build test WARNING on linus/master v5.18-rc4 next-20220427]
+> [If your patch is applied to the wrong git tree, kindly drop us a
+> note.
+> And when submitting patch, we suggest to use '--base' as documented
+> in
 > 
-> This compatible above is correct for mt8173, isn't it?
+https://urldefense.com/v3/__https://git-scm.com/docs/git-format-patch__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMS_s9zEZ$
+>  ]
 > 
-> >         deprecated: true
-> >       - const:
-> > mediatek,efuse
-> >         deprecated: true
-> >         description:
-> >          
-> > Please use mediatek,efuse as fallback.
+> url:    
+> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commits/Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMc1U_tqz$
+>  
+> base:   
+> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMUzTprof$
+>   for-next
+> config: hexagon-allyesconfig (
+> https://urldefense.com/v3/__https://download.01.org/0day-ci/archive/20220427/202204271737.oAuTwqZH-lkp@intel.com/config__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMaVRzbSL$
+>  )
+> compiler: clang version 15.0.0 (
+> https://urldefense.com/v3/__https://github.com/llvm/llvm-project__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMRqw5IY-$
+> $  1cddcfdc3c683b393df1a5c9063252eb60e52818)
+> reproduce (this is a W=1 build):
+>         wget 
+> https://urldefense.com/v3/__https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMQLiD-i9$
+>   -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         # 
+> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commit/98b34c0587837b0e5b880b11a52433f8f0eee19f__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMU5yd7Y2$
+>  
+>         git remote add linux-review 
+> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMW4ldtnH$
+>  
+>         git fetch --no-tags linux-review Johnson-Wang/Introduce-
+> MediaTek-CCI-devfreq-driver/20220425-205820
+>         git checkout 98b34c0587837b0e5b880b11a52433f8f0eee19f
+>         # save the config file
+>         mkdir build_dir && cp config build_dir/.config
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross
+> W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash block/partitions/
+> drivers/devfreq/ drivers/iio/imu/ drivers/misc/lkdtm/
 > 
-> Description does not match. This should be something like:
-> "MediaTek efuse for MT8173. Deprecated, use mediatek,mt8173-efuse
-> instead"
+> If you fix the issue, kindly add following tag as appropriate
+> Reported-by: kernel test robot <lkp@intel.com>
+> 
+> All warnings (new ones prefixed by >>):
+> 
+>    drivers/devfreq/mtk-cci-devfreq.c:372:16: error: no member named
+> 'parent_type' in 'struct devfreq_passive_data'
+>            passive_data->parent_type = CPUFREQ_PARENT_DEV;
+>            ~~~~~~~~~~~~  ^
+>    drivers/devfreq/mtk-cci-devfreq.c:372:30: error: use of undeclared
+> identifier 'CPUFREQ_PARENT_DEV'
+>            passive_data->parent_type = CPUFREQ_PARENT_DEV;
+>                                        ^
+> > > drivers/devfreq/mtk-cci-devfreq.c:379:4: warning: format
+> > > specifies type 'int' but the argument has type 'long' [-Wformat]
+> 
+>                            PTR_ERR(drv->devfreq));
+>                            ^~~~~~~~~~~~~~~~~~~~~
+>    include/linux/dev_printk.h:144:65: note: expanded from macro
+> 'dev_err'
+>            dev_printk_index_wrap(_dev_err, KERN_ERR, dev,
+> dev_fmt(fmt), ##__VA_ARGS__)
+>                                                                   ~~~
+>      ^~~~~~~~~~~
+>    include/linux/dev_printk.h:110:23: note: expanded from macro
+> 'dev_printk_index_wrap'
+>                    _p_func(dev, fmt,
+> ##__VA_ARGS__);                       \
+>                                 ~~~    ^~~~~~~~~~~
+>    1 warning and 2 errors generated.
 > 
 > 
+> vim +379 drivers/devfreq/mtk-cci-devfreq.c
 > 
-> Best regards,
-> Krzysztof
+>    255	
+>    256	static int mtk_ccifreq_probe(struct platform_device
+> *pdev)
+>    257	{
+>    258		struct device *dev = &pdev->dev;
+>    259		struct mtk_ccifreq_drv *drv;
+>    260		struct devfreq_passive_data *passive_data;
+>    261		struct dev_pm_opp *opp;
+>    262		unsigned long rate, opp_volt;
+>    263		int ret;
+>    264	
+>    265		drv = devm_kzalloc(dev, sizeof(*drv),
+> GFP_KERNEL);
+>    266		if (!drv)
+>    267			return -ENOMEM;
+>    268	
+>    269		drv->dev = dev;
+>    270		drv->soc_data = (const struct
+> mtk_ccifreq_platform_data *)
+>    271					of_device_get_match_dat
+> a(&pdev->dev);
+>    272		mutex_init(&drv->reg_lock);
+>    273		platform_set_drvdata(pdev, drv);
+>    274	
+>    275		drv->cci_clk = devm_clk_get(dev, "cci");
+>    276		if (IS_ERR(drv->cci_clk)) {
+>    277			ret = PTR_ERR(drv->cci_clk);
+>    278			return dev_err_probe(dev, ret,
+>    279					     "failed to get cci
+> clk: %d\n", ret);
+>    280		}
+>    281	
+>    282		drv->inter_clk = devm_clk_get(dev,
+> "intermediate");
+>    283		if (IS_ERR(drv->inter_clk)) {
+>    284			ret = PTR_ERR(drv->inter_clk);
+>    285			dev_err_probe(dev, ret,
+>    286				      "failed to get
+> intermediate clk: %d\n", ret);
+>    287			goto out_free_resources;
+>    288		}
+>    289	
+>    290		drv->proc_reg =
+> devm_regulator_get_optional(dev, "proc");
+>    291		if (IS_ERR(drv->proc_reg)) {
+>    292			ret = PTR_ERR(drv->proc_reg);
+>    293			dev_err_probe(dev, ret,
+>    294				      "failed to get proc
+> regulator: %d\n", ret);
+>    295			goto out_free_resources;
+>    296		}
+>    297	
+>    298		ret = regulator_enable(drv->proc_reg);
+>    299		if (ret) {
+>    300			dev_err(dev, "failed to enable proc
+> regulator\n");
+>    301			goto out_free_resources;
+>    302		}
+>    303	
+>    304		drv->sram_reg = regulator_get_optional(dev,
+> "sram");
+>    305		if (IS_ERR(drv->sram_reg))
+>    306			drv->sram_reg = NULL;
+>    307		else {
+>    308			ret = regulator_enable(drv->sram_reg);
+>    309			if (ret) {
+>    310				dev_err(dev, "failed to enable
+> sram regulator\n");
+>    311				goto out_free_resources;
+>    312			}
+>    313		}
+>    314	
+>    315		/*
+>    316		 * We assume min voltage is 0 and tracking
+> target voltage using
+>    317		 * min_volt_shift for each iteration.
+>    318		 * The retry_max is 3 times of expeted
+> iteration count.
+>    319		 */
+>    320		drv->vtrack_max = 3 * DIV_ROUND_UP(max(drv-
+> >soc_data->sram_max_volt,
+>    321						       drv-
+> >soc_data->proc_max_volt),
+>    322						   drv-
+> >soc_data->min_volt_shift);
+>    323	
+>    324		ret = clk_prepare_enable(drv->cci_clk);
+>    325		if (ret)
+>    326			goto out_free_resources;
+>    327	
+>    328		ret = clk_prepare_enable(drv->inter_clk);
+>    329		if (ret)
+>    330			goto out_disable_cci_clk;
+>    331	
+>    332		ret = dev_pm_opp_of_add_table(dev);
+>    333		if (ret) {
+>    334			dev_err(dev, "failed to add opp table:
+> %d\n", ret);
+>    335			goto out_disable_inter_clk;
+>    336		}
+>    337	
+>    338		rate = clk_get_rate(drv->inter_clk);
+>    339		opp = dev_pm_opp_find_freq_ceil(dev, &rate);
+>    340		if (IS_ERR(opp)) {
+>    341			ret = PTR_ERR(opp);
+>    342			dev_err(dev, "failed to get
+> intermediate opp: %d\n", ret);
+>    343			goto out_remove_opp_table;
+>    344		}
+>    345		drv->inter_voltage =
+> dev_pm_opp_get_voltage(opp);
+>    346		dev_pm_opp_put(opp);
+>    347	
+>    348		rate = U32_MAX;
+>    349		opp = dev_pm_opp_find_freq_floor(drv->dev,
+> &rate);
+>    350		if (IS_ERR(opp)) {
+>    351			dev_err(dev, "failed to get opp\n");
+>    352			ret = PTR_ERR(opp);
+>    353			goto out_remove_opp_table;
+>    354		}
+>    355	
+>    356		opp_volt = dev_pm_opp_get_voltage(opp);
+>    357		dev_pm_opp_put(opp);
+>    358		ret = mtk_ccifreq_set_voltage(drv, opp_volt);
+>    359		if (ret) {
+>    360			dev_err(dev, "failed to scale to
+> highest voltage %lu in proc_reg\n",
+>    361				opp_volt);
+>    362			goto out_remove_opp_table;
+>    363		}
+>    364	
+>    365		passive_data = devm_kzalloc(dev, sizeof(struct
+> devfreq_passive_data),
+>    366					    GFP_KERNEL);
+>    367		if (!passive_data) {
+>    368			ret = -ENOMEM;
+>    369			goto out_remove_opp_table;
+>    370		}
+>    371	
+>    372		passive_data->parent_type = CPUFREQ_PARENT_DEV;
+>    373		drv->devfreq = devm_devfreq_add_device(dev,
+> &mtk_ccifreq_profile,
+>    374						       DEVFREQ_
+> GOV_PASSIVE,
+>    375						       passive_
+> data);
+>    376		if (IS_ERR(drv->devfreq)) {
+>    377			ret = -EPROBE_DEFER;
+>    378			dev_err(dev, "failed to add devfreq
+> device: %d\n",
+>  > 379				PTR_ERR(drv->devfreq));
+>    380			goto out_remove_opp_table;
+>    381		}
+>    382	
+>    383		drv->opp_nb.notifier_call =
+> mtk_ccifreq_opp_notifier;
+>    384		ret = dev_pm_opp_register_notifier(dev, &drv-
+> >opp_nb);
+>    385		if (ret) {
+>    386			dev_err(dev, "failed to register opp
+> notifier: %d\n", ret);
+>    387			goto out_remove_devfreq_device;
+>    388		}
+>    389		return 0;
+>    390	
+>    391	out_remove_devfreq_device:
+>    392		devm_devfreq_remove_device(dev, drv->devfreq);
+>    393	
+>    394	out_remove_opp_table:
+>    395		dev_pm_opp_of_remove_table(dev);
+>    396	
+>    397	out_disable_inter_clk:
+>    398		clk_disable_unprepare(drv->inter_clk);
+>    399	
+>    400	out_disable_cci_clk:
+>    401		clk_disable_unprepare(drv->cci_clk);
+>    402	
+>    403	out_free_resources:
+>    404		if (regulator_is_enabled(drv->proc_reg))
+>    405			regulator_disable(drv->proc_reg);
+>    406		if (drv->sram_reg && regulator_is_enabled(drv-
+> >sram_reg))
+>    407			regulator_disable(drv->sram_reg);
+>    408	
+>    409		if (!IS_ERR(drv->proc_reg))
+>    410			regulator_put(drv->proc_reg);
+>    411		if (!IS_ERR(drv->sram_reg))
+>    412			regulator_put(drv->sram_reg);
+>    413		if (!IS_ERR(drv->cci_clk))
+>    414			clk_put(drv->cci_clk);
+>    415		if (!IS_ERR(drv->inter_clk))
+>    416			clk_put(drv->inter_clk);
+>    417	
+>    418		return ret;
+>    419	}
+>    420	
+> 
 
-I think there are two cases in mediatek efuse dirver now.
+Hi "kernel test robot",
 
-Case 1, 
-const: mediatek,efuse is deprecated.
-const: mediatek,mt8173-efuse is remained. All mediatek chipsets will
-use mediatek,mt8173-efuse as fallback.
+Thanks for your review.
 
-Case 2,
-const: mediatek,efuse is deprecated.
-const: mediatek,mt8173-efuse is deprecated.
+This patch is based on chanwoo/devfreq-testing[1]
+[1]
+https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing
 
-All mediatek chipsets(include ediatek,mt8173-efuse) will use
-mediatek,efuse as fallback.
+I will follow your suggestion to use '--base' in the next version.
 
-Which one do you think is better?
-
-Best regards,
-Allen
-
+BRs,
+Johnson Wang
 
 
 _______________________________________________
