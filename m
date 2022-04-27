@@ -4,74 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E628C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 13:11:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0271AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 13:24:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SHVHOBxy0qoSBeJYniLDYyks10IZkWXRHaaebdXPMY8=; b=RXo95ZZxq62P20haqZ0QS81JNv
-	+KAnJ1f6I9UI937Gls+LIQQWUr1BNJD9bkq6wyuDFLFedGvQUjGXnb0g1pvi83EKC+CEc0i1I3EFB
-	jDHRmmkL4RU5CPv6OOwEqc5po3qJ2BOWsohuaG8+7WrgAU976EpmvKUw5AdQM1oeI7Lmkk3Sg1nZ+
-	oY3251mZvczO+MaeNJZYpFXxJYtCLssJXCTqZZ019emINSY3xN44VmffRC4r4+1hY6PKIjZpb8yHm
-	JV1s6ciyUuxkUQkhkYzeeEIWy9KAqnSOxJarAr1eW6pAOf7hYjgqHo5LzcCu9PUit7feN+DDwzHdb
-	4e6jKjwg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cITB6kny3u+dPn1o0LDAghPO/ju3QBkGqCraxvyzS4U=; b=exqDlAb7vL9rza
+	JOVIdBNTWPalGcszjLRJ2Su+Oi3TUE7B/5UkjaVbKTMwfGzsrgWyA3ytpTlkQ5kiV0ov0W23BmGE0
+	j2W8fpv+uOa4bq66SyCKCKGfQ7c+HjYf6/1uoqy1iZp9T6v3tIwG1+v41n91yyuPPlkYdycNcFElM
+	7kTIb37GaActQ10B72Z3/1lnHWQe1/WosldZqRN3g1lDAOh/Ia1nSMXPXyVf7LJVU+CTLDaetkhAK
+	Qiu8R0VjCAhScveNs35YuCoMI3SLdCXXfysjmx1pWtiZ3Yn6dQTQSywMzQEQHU+S336larv18wRE2
+	iyI49cGqYoeM1eANBTww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njhSJ-001Ujq-Fd; Wed, 27 Apr 2022 13:11:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1njheQ-001WhZ-Ui; Wed, 27 Apr 2022 13:24:14 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njhS7-001Ufs-0f; Wed, 27 Apr 2022 13:11:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 930FF61BAA;
- Wed, 27 Apr 2022 13:11:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7FC1C385A9;
- Wed, 27 Apr 2022 13:11:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651065090;
- bh=tpIYWICrW+Xe2NYo9+47DtMMvdK4RGp2TzuVJyjTpZk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=b7unDFzV3JJ93notz6nFF8qVCFjJ34yZONp6aEjymzwqcKThuj8hPwyIEQp4oyGjH
- Nc8Jwo6xRw7wqIP7Ns8of9TW2BnweRHUiYUyrMjQd1DIb/sLx9hQOnbS/xVOVBlv5D
- jpweLVNSIvktWp6sp2qD0AeGPbAvvsw9GSj5Ubo+mhE7jJs0Z6hnFu8O2reeakEaLB
- nPLS2QiotHoSXJ2c9gVDgnvYgW4X9HhFztis9wB6kcWMjX6hXOyg4MLlwCCTNp8Lsd
- AB4wZIhMFlANHQU5JDN2+CIqPmx13fGtsyUgPL929Tsl5VD/ZlR4FVRmhmN8ti2Q2M
- 0XpGV3FuVmuYw==
-Date: Wed, 27 Apr 2022 14:11:22 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Chuanhong Guo <gch981213@gmail.com>, linux-spi@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Roger Quadros <rogerq@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Cai Huoqing <cai.huoqing@linux.dev>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Colin Ian King <colin.king@intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Paul Cercueil <paul@crapouillou.net>,
- Pratyush Yadav <p.yadav@ti.com>, Yu Kuai <yukuai3@huawei.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:NAND FLASH SUBSYSTEM" <linux-mtd@lists.infradead.org>
-Subject: Re: [PATCH v6 0/5] spi: add support for Mediatek SPI-NAND controller
-Message-ID: <YmlA+tqqigjkRyMZ@sirena.org.uk>
-References: <20220424032527.673605-1-gch981213@gmail.com>
- <20220427112857.7ddd7fc8@xps13>
+ id 1njhe6-001WWI-27; Wed, 27 Apr 2022 13:23:55 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 7CFA81F4470F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651065815;
+ bh=EqjX82GXjqOFhq0gUXw4CciC7Vh5NdYSqj0fE42uX6o=;
+ h=From:To:Cc:Subject:Date:From;
+ b=bSxZLmiNzzvmXvS/G0LxIU/onl0isc+fFq4malUf2KNMqo23k4kNwVDTtuflJ/w4J
+ HarckUhk1BL8we8qLtMgp3haKnf/itziBU9PrNASD+/GJXpm6aLc3D57RJhXzb9Riy
+ l37/ujoD9a9pdwCCC0APr4XvDovBW8AS2b5t4H+Fxv7sEZou6YXG+oX7qPTrAMKnA4
+ 3aWqVdivsu4IRy/5xbiGPti8eMVdRII8HAUoCjwfOWrVCQV4keFlrXQBnxJcEObmne
+ Xft18vwjFIOwH3yjSNJ8DUvD1zgCney2xR9Msf+rhkaBmnlRcciKHFsLVAtaackZHb
+ VJryDVrVaoGxg==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: gregkh@linuxfoundation.org
+Cc: jirislaby@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, zhiyong.tao@mediatek.com,
+ colin.king@intel.com, linux-serial@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 0/3] MediaTek 8250 UART: fixes and improvements
+Date: Wed, 27 Apr 2022 15:23:25 +0200
+Message-Id: <20220427132328.228297-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-In-Reply-To: <20220427112857.7ddd7fc8@xps13>
-X-Cookie: Buckle up!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_061131_135249_DEFA9AEF 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20220427_062354_256052_4CF1BE9B 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,58 +63,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7880842343558386987=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Even though the UART IP on MTK platforms is 16550A compatible, some
+registers are not at a "standard" offset. In order to allow full
+functionality of the flow control features and to make Linux able
+to fully and properly reconfigure the UART IP, eventually allowing
+communication at high speed after a full IP reset, some register
+offset fixes have been done.
+While at it, even though this bit is always set, also paranoidly
+make sure that the "new register map" feature is enabled, as that's
+done with just one writel() at probe time, introducing no overhead.
 
---===============7880842343558386987==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3/axAlvjop7jo6tE"
-Content-Disposition: inline
+This has been tested on multiple Chromebooks featuring different
+SoCs, and a MT6795 Xperia M5 smartphone.
 
+AngeloGioacchino Del Regno (3):
+  serial: 8250_mtk: Fix UART_EFR register address
+  serial: 8250_mtk: Make sure to select the right FEATURE_SEL
+  serial: 8250_mtk: Fix register address for XON/XOFF character
 
---3/axAlvjop7jo6tE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+ drivers/tty/serial/8250/8250_mtk.c | 29 ++++++++++++++++++++---------
+ 1 file changed, 20 insertions(+), 9 deletions(-)
 
-On Wed, Apr 27, 2022 at 11:28:57AM +0200, Miquel Raynal wrote:
+-- 
+2.35.1
 
-> The patch actually look independent, so if it's fine for you I can take
-> the two mtd patches and let you merge the spi/binding changes.
-
-> Would this work for you?
-
-That sounds great.
-
---3/axAlvjop7jo6tE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJpQPkACgkQJNaLcl1U
-h9D1ngf/VxXyRrmMrFHXOQIT/K9jzEroGCHRoT3IkpzG2UwCERVkL3XY1VX8Bem6
-oeIQERn5z5pFMCvgeLOWDvW4LuV0J0E2Wp9IjvFxdX8fA5K7Tbg3albH0isMfcUp
-FZcnMXUynnhcg/dTJYMXHunlQH+8yv84MjxSqq1wDmrHWCy76vraVev5n2eoBdo9
-fQ06pKoqMEgkf1ICdUnlW8i9Y8LgmlZSyj7iGRhfw3H2MxBIHVmi2TOdAYM2u/eC
-sanKESRfPqRjsbK6kkTy4oePpH0uR+aRLqzqtX9qcF/Wnw+A+WZBc8gQPZZqLvjX
-9YGhLRk4sIgGwjyxbojuoeAw+pqSrA==
-=3uM/
------END PGP SIGNATURE-----
-
---3/axAlvjop7jo6tE--
-
-
---===============7880842343558386987==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7880842343558386987==--
-
