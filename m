@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 259B1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 10:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53D6AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 11:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ISafwYrSRCTGM7/78eUzS09kIt53Kggpp3iA5f0fCXk=; b=i/yOwf+4bIihRP
-	e5DOB9qfipXc3N0Np4DNwVUGhXoyi002os3QooBlEN5No9c/OzDLB9hC4P1PLCqsQ2EPI5fI4kCbf
-	TaOMAhXK8hsXkHJtoiqNrZz4ME66AqHbJhvcFKweS0bAJIR+/9xQ3LID3r2/TQnE9AQVznaN261MV
-	qlaLfKUkLgyDp8KsHzFFlAt6d0EncQ7mtnU2SxSqo89CPBgJoFNsx6wTLHT5v0F7W8NnJD2OvORzr
-	owlpuW5mdE69hOv3fX3Z8qX2KL2KGIGKkPf8iNIeu8vj1oTIihBkeBJ49YKYbsTIX3Z2YbguOEfqK
-	8uLP+KFEoQ93fzLeuIYA==;
+	List-Owner; bh=dOooE+5uXrOa5XwRMpQkLzmxueU+4+VWFki+lUL1TOY=; b=kLZKrhBAgqd5Wq
+	YxcVtvrhdwtSiJt5qd704QLXbF7lWX4JyYYxGyhJ212Rcy8bK4DTruQbfC+q5OntpTkLycw00iAMO
+	50g1lliiHItlwf7zkSaDvzCnPxF/+OrUXPA6gPambN9zcNCaxyL88SiItYfMwoIzLyikjjVmAf6tY
+	fZPoP75Fbu/uPflKZTwBn+ZONGng9scpTth+acsIY49cB2L2iRPO+HZ13G05WA+HXujVDZLNzvCTC
+	GdMIrSoHN4QVj9gogJcWzzZm4NIpNCFJ1VfbSSqEnm+ZM+2tVuTRkUd/MJx2CmTQEmHppmx7JI7F3
+	gKttAlIPljuFosQZREmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njenX-000uiJ-0G; Wed, 27 Apr 2022 10:21:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1njfr6-00165I-L7; Wed, 27 Apr 2022 11:29:12 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njenL-000uhE-5s; Wed, 27 Apr 2022 10:21:17 +0000
-X-UUID: 0ef3e56b954a4d7198979911ec13531e-20220427
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:e18ab691-af38-41fd-9f2c-0bc1b6f565b2, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:b759e52e-6199-437e-8ab4-9920b4bc5b76,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 0ef3e56b954a4d7198979911ec13531e-20220427
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <johnson.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1726321691; Wed, 27 Apr 2022 03:21:10 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Apr 2022 03:12:04 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 Apr 2022 18:11:55 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 Apr 2022 18:11:55 +0800
-Message-ID: <a72b6333be0d8a2065477e47222c309a0d520fd4.camel@mediatek.com>
-Subject: Re: [PATCH v3 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
- devfreq driver
-From: Johnson Wang <johnson.wang@mediatek.com>
-To: kernel test robot <lkp@intel.com>, <cw00.choi@samsung.com>,
- <krzk+dt@kernel.org>, <robh+dt@kernel.org>, <kyungmin.park@samsung.com>
-CC: <llvm@lists.linux.dev>, <kbuild-all@lists.01.org>, <khilman@kernel.org>,
- <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <jia-wei.chang@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 27 Apr 2022 18:11:55 +0800
-In-Reply-To: <202204271737.oAuTwqZH-lkp@intel.com>
-References: <20220425125546.4129-3-johnson.wang@mediatek.com>
- <202204271737.oAuTwqZH-lkp@intel.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1njfqx-0015yI-1j; Wed, 27 Apr 2022 11:29:10 +0000
+Received: by mail-ed1-x534.google.com with SMTP id z19so1555152edx.9;
+ Wed, 27 Apr 2022 04:29:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=NkJteM65W6zQPWRXCAleN3D0FlNTwOT7i0Kr6m0yEgc=;
+ b=hC4TnU/qm3AqQ6GI5lr3KG3Cj5VkamVGPz+q/U1eyBScp9bw/KWsnAH8+n7A+2E3At
+ ez32w2p4cC7TZSv29GvtK5mzZYK9pqNUDUx6zKC2iz1nfxsceYqKPcJhUquPKba/cBO5
+ /BwxPwNpWvy4ooeuRYTMGCMQmt2sarLOWfRQb0DBS7LQM7coTG89EE1fft9ye05dADj9
+ JHikId7CW/lHnk13j8vmg9QUngIMMo+Arfze530vf7rV9ygEEGGB3e75UGiUekGvJi/X
+ CtiCdsVb1H2rpC9djz/6T38ag5ERSrrObBLYQDI2B7Kk8Cq5YqRpfX2IAEHRmAri8Yw3
+ ZuNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=NkJteM65W6zQPWRXCAleN3D0FlNTwOT7i0Kr6m0yEgc=;
+ b=rQDv7omYB7bGOA+ADaRGbm+i2WM+WK5leGCNEMynNO9nP8DXexWKAJRpe/FbudHWSP
+ 48LdjhUhe0BCKiH8WhzwddzSXsEMbjdWvU82Mjuhl2KkzoCDXZCp8u4ClFP35ZYxQ8Yx
+ s6urOQRUxqrqw33CafmzYsxtyltFJZwcy3trzgKUl1V5V/y8/3MqNZMC8LKzyII7lqeI
+ 0w9AWS4lndkmqa4VCL7IabgfbZd9ZGOuj/8YcLWZXnN5HwBP9uZmMIoECNxGeJQywNQh
+ GIB14n+w1oDwDxOg0cx4nGuqWs87GKZGSafI4H3gXq15zOUtQboyQqSL8bLen7+JxIsd
+ AS4Q==
+X-Gm-Message-State: AOAM533RbVsXtKRFr1JS218ZXH7+5/e6TlHLkBpK9x1J/e5TqJccEid7
+ 4HkhkFLpmCdIth+k6Gi0hoE=
+X-Google-Smtp-Source: ABdhPJzLYggzhFJDDA2zXYNCKiXxnqxYBEgVeqOwRyJRgRoaJdh3iPZd2PqxHUdp1VRgRIQo8kZA4g==
+X-Received: by 2002:a05:6402:2932:b0:425:d7b3:e0d1 with SMTP id
+ ee50-20020a056402293200b00425d7b3e0d1mr20731767edb.141.1651058939732; 
+ Wed, 27 Apr 2022 04:28:59 -0700 (PDT)
+Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
+ h22-20020a056402281600b004206bd9d0c6sm8813509ede.8.2022.04.27.04.28.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Apr 2022 04:28:58 -0700 (PDT)
+Date: Wed, 27 Apr 2022 14:28:56 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [RFC v1 2/3] net: dsa: mt753x: make CPU-Port dynamic
+Message-ID: <20220427112856.vzlxnmgm4el4yynj@skbuf>
+References: <20220426134924.30372-1-linux@fw-web.de>
+ <20220426134924.30372-3-linux@fw-web.de>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220426134924.30372-3-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_032115_281880_6AB698EE 
-X-CRM114-Status: GOOD (  24.39  )
+X-CRM114-CacheID: sfid-20220427_042903_199547_0D0DA6BC 
+X-CRM114-Status: GOOD (  52.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,303 +81,363 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, DENG Qingfang <dqfext@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-04-27 at 17:25 +0800, kernel test robot wrote:
-> Hi Johnson,
+On Tue, Apr 26, 2022 at 03:49:23PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Thank you for the patch! Perhaps something to improve:
+> Currently CPU-Port is hardcoded to Port 6.
 > 
-> [auto build test WARNING on robh/for-next]
-> [also build test WARNING on linus/master v5.18-rc4 next-20220427]
-> [If your patch is applied to the wrong git tree, kindly drop us a
-> note.
-> And when submitting patch, we suggest to use '--base' as documented
-> in
+> On BPI-R2-Pro board this port is not connected and only Port 5 is
+> connected to gmac of SoC.
 > 
-https://urldefense.com/v3/__https://git-scm.com/docs/git-format-patch__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMS_s9zEZ$
->  ]
+> Replace this hardcoded CPU-Port with a member in mt7530_priv struct
+> which is set in mt753x_cpu_port_enable to the right port.
 > 
-> url:    
-> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commits/Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMc1U_tqz$
+> I defined a default in probe (in case no CPU-Port will be setup) and
+> if both cpu-port were setup port 6 will be used like the const prior
+> this patch.
+> 
+> In mt7531_setup first access is before we know which port should be used
+> (mt753x_cpu_port_enable) so section "BPDU to CPU port" needs to be moved
+> down.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  drivers/net/dsa/mt7530.c | 46 ++++++++++++++++++++++------------------
+>  drivers/net/dsa/mt7530.h |  2 +-
+>  2 files changed, 26 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index ccf4cb944167..4789105b8137 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -1004,6 +1004,7 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+>  			return ret;
+>  	}
 >  
-> base:   
-> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMUzTprof$
->   for-next
-> config: hexagon-allyesconfig (
-> https://urldefense.com/v3/__https://download.01.org/0day-ci/archive/20220427/202204271737.oAuTwqZH-lkp@intel.com/config__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMaVRzbSL$
->  )
-> compiler: clang version 15.0.0 (
-> https://urldefense.com/v3/__https://github.com/llvm/llvm-project__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMRqw5IY-$
-> $  1cddcfdc3c683b393df1a5c9063252eb60e52818)
-> reproduce (this is a W=1 build):
->         wget 
-> https://urldefense.com/v3/__https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMQLiD-i9$
->   -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # 
-> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commit/98b34c0587837b0e5b880b11a52433f8f0eee19f__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMU5yd7Y2$
+> +	priv->cpu_port = port;
+>  	/* Enable Mediatek header mode on the cpu port */
+>  	mt7530_write(priv, MT7530_PVC_P(port),
+>  		     PORT_SPEC_TAG);
+> @@ -1041,7 +1042,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
+>  	 * restore the port matrix if the port is the member of a certain
+>  	 * bridge.
+>  	 */
+> -	priv->ports[port].pm |= PCR_MATRIX(BIT(MT7530_CPU_PORT));
+> +	priv->ports[port].pm |= PCR_MATRIX(BIT(priv->cpu_port));
+
+This is called with an "int port" argument, so could you please do:
+
+	struct dsa_port *dp = dsa_to_port(ds, port);
+
+	if (dsa_port_is_user(dp)) {
+		struct dsa_port *cpu_dp = dp->cpu_dp;
+
+		priv->ports[port].pm |= PCR_MATRIX(BIT(cpu_dp->index));
+	}
+
+>  	priv->ports[port].enable = true;
+>  	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+>  		   priv->ports[port].pm);
+> @@ -1190,8 +1191,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
+>  			struct netlink_ext_ack *extack)
+>  {
+>  	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
+> -	u32 port_bitmap = BIT(MT7530_CPU_PORT);
+>  	struct mt7530_priv *priv = ds->priv;
+> +	u32 port_bitmap = BIT(priv->cpu_port);
+
+Here we know for certain that "port" is a user port, so could you please:
+
+	struct dsa_port *cpu_dp = dp->cpu_dp;
+	u32 port_bitmap = BIT(cpu_dp->index);
+
 >  
->         git remote add linux-review 
-> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMW4ldtnH$
+>  	mutex_lock(&priv->reg_mutex);
 >  
->         git fetch --no-tags linux-review Johnson-Wang/Introduce-
-> MediaTek-CCI-devfreq-driver/20220425-205820
->         git checkout 98b34c0587837b0e5b880b11a52433f8f0eee19f
->         # save the config file
->         mkdir build_dir && cp config build_dir/.config
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross
-> W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash block/partitions/
-> drivers/devfreq/ drivers/iio/imu/ drivers/misc/lkdtm/
-> 
-> If you fix the issue, kindly add following tag as appropriate
-> Reported-by: kernel test robot <lkp@intel.com>
-> 
-> All warnings (new ones prefixed by >>):
-> 
->    drivers/devfreq/mtk-cci-devfreq.c:372:16: error: no member named
-> 'parent_type' in 'struct devfreq_passive_data'
->            passive_data->parent_type = CPUFREQ_PARENT_DEV;
->            ~~~~~~~~~~~~  ^
->    drivers/devfreq/mtk-cci-devfreq.c:372:30: error: use of undeclared
-> identifier 'CPUFREQ_PARENT_DEV'
->            passive_data->parent_type = CPUFREQ_PARENT_DEV;
->                                        ^
-> > > drivers/devfreq/mtk-cci-devfreq.c:379:4: warning: format
-> > > specifies type 'int' but the argument has type 'long' [-Wformat]
-> 
->                            PTR_ERR(drv->devfreq));
->                            ^~~~~~~~~~~~~~~~~~~~~
->    include/linux/dev_printk.h:144:65: note: expanded from macro
-> 'dev_err'
->            dev_printk_index_wrap(_dev_err, KERN_ERR, dev,
-> dev_fmt(fmt), ##__VA_ARGS__)
->                                                                   ~~~
->      ^~~~~~~~~~~
->    include/linux/dev_printk.h:110:23: note: expanded from macro
-> 'dev_printk_index_wrap'
->                    _p_func(dev, fmt,
-> ##__VA_ARGS__);                       \
->                                 ~~~    ^~~~~~~~~~~
->    1 warning and 2 errors generated.
-> 
-> 
-> vim +379 drivers/devfreq/mtk-cci-devfreq.c
-> 
->    255	
->    256	static int mtk_ccifreq_probe(struct platform_device
-> *pdev)
->    257	{
->    258		struct device *dev = &pdev->dev;
->    259		struct mtk_ccifreq_drv *drv;
->    260		struct devfreq_passive_data *passive_data;
->    261		struct dev_pm_opp *opp;
->    262		unsigned long rate, opp_volt;
->    263		int ret;
->    264	
->    265		drv = devm_kzalloc(dev, sizeof(*drv),
-> GFP_KERNEL);
->    266		if (!drv)
->    267			return -ENOMEM;
->    268	
->    269		drv->dev = dev;
->    270		drv->soc_data = (const struct
-> mtk_ccifreq_platform_data *)
->    271					of_device_get_match_dat
-> a(&pdev->dev);
->    272		mutex_init(&drv->reg_lock);
->    273		platform_set_drvdata(pdev, drv);
->    274	
->    275		drv->cci_clk = devm_clk_get(dev, "cci");
->    276		if (IS_ERR(drv->cci_clk)) {
->    277			ret = PTR_ERR(drv->cci_clk);
->    278			return dev_err_probe(dev, ret,
->    279					     "failed to get cci
-> clk: %d\n", ret);
->    280		}
->    281	
->    282		drv->inter_clk = devm_clk_get(dev,
-> "intermediate");
->    283		if (IS_ERR(drv->inter_clk)) {
->    284			ret = PTR_ERR(drv->inter_clk);
->    285			dev_err_probe(dev, ret,
->    286				      "failed to get
-> intermediate clk: %d\n", ret);
->    287			goto out_free_resources;
->    288		}
->    289	
->    290		drv->proc_reg =
-> devm_regulator_get_optional(dev, "proc");
->    291		if (IS_ERR(drv->proc_reg)) {
->    292			ret = PTR_ERR(drv->proc_reg);
->    293			dev_err_probe(dev, ret,
->    294				      "failed to get proc
-> regulator: %d\n", ret);
->    295			goto out_free_resources;
->    296		}
->    297	
->    298		ret = regulator_enable(drv->proc_reg);
->    299		if (ret) {
->    300			dev_err(dev, "failed to enable proc
-> regulator\n");
->    301			goto out_free_resources;
->    302		}
->    303	
->    304		drv->sram_reg = regulator_get_optional(dev,
-> "sram");
->    305		if (IS_ERR(drv->sram_reg))
->    306			drv->sram_reg = NULL;
->    307		else {
->    308			ret = regulator_enable(drv->sram_reg);
->    309			if (ret) {
->    310				dev_err(dev, "failed to enable
-> sram regulator\n");
->    311				goto out_free_resources;
->    312			}
->    313		}
->    314	
->    315		/*
->    316		 * We assume min voltage is 0 and tracking
-> target voltage using
->    317		 * min_volt_shift for each iteration.
->    318		 * The retry_max is 3 times of expeted
-> iteration count.
->    319		 */
->    320		drv->vtrack_max = 3 * DIV_ROUND_UP(max(drv-
-> >soc_data->sram_max_volt,
->    321						       drv-
-> >soc_data->proc_max_volt),
->    322						   drv-
-> >soc_data->min_volt_shift);
->    323	
->    324		ret = clk_prepare_enable(drv->cci_clk);
->    325		if (ret)
->    326			goto out_free_resources;
->    327	
->    328		ret = clk_prepare_enable(drv->inter_clk);
->    329		if (ret)
->    330			goto out_disable_cci_clk;
->    331	
->    332		ret = dev_pm_opp_of_add_table(dev);
->    333		if (ret) {
->    334			dev_err(dev, "failed to add opp table:
-> %d\n", ret);
->    335			goto out_disable_inter_clk;
->    336		}
->    337	
->    338		rate = clk_get_rate(drv->inter_clk);
->    339		opp = dev_pm_opp_find_freq_ceil(dev, &rate);
->    340		if (IS_ERR(opp)) {
->    341			ret = PTR_ERR(opp);
->    342			dev_err(dev, "failed to get
-> intermediate opp: %d\n", ret);
->    343			goto out_remove_opp_table;
->    344		}
->    345		drv->inter_voltage =
-> dev_pm_opp_get_voltage(opp);
->    346		dev_pm_opp_put(opp);
->    347	
->    348		rate = U32_MAX;
->    349		opp = dev_pm_opp_find_freq_floor(drv->dev,
-> &rate);
->    350		if (IS_ERR(opp)) {
->    351			dev_err(dev, "failed to get opp\n");
->    352			ret = PTR_ERR(opp);
->    353			goto out_remove_opp_table;
->    354		}
->    355	
->    356		opp_volt = dev_pm_opp_get_voltage(opp);
->    357		dev_pm_opp_put(opp);
->    358		ret = mtk_ccifreq_set_voltage(drv, opp_volt);
->    359		if (ret) {
->    360			dev_err(dev, "failed to scale to
-> highest voltage %lu in proc_reg\n",
->    361				opp_volt);
->    362			goto out_remove_opp_table;
->    363		}
->    364	
->    365		passive_data = devm_kzalloc(dev, sizeof(struct
-> devfreq_passive_data),
->    366					    GFP_KERNEL);
->    367		if (!passive_data) {
->    368			ret = -ENOMEM;
->    369			goto out_remove_opp_table;
->    370		}
->    371	
->    372		passive_data->parent_type = CPUFREQ_PARENT_DEV;
->    373		drv->devfreq = devm_devfreq_add_device(dev,
-> &mtk_ccifreq_profile,
->    374						       DEVFREQ_
-> GOV_PASSIVE,
->    375						       passive_
-> data);
->    376		if (IS_ERR(drv->devfreq)) {
->    377			ret = -EPROBE_DEFER;
->    378			dev_err(dev, "failed to add devfreq
-> device: %d\n",
->  > 379				PTR_ERR(drv->devfreq));
->    380			goto out_remove_opp_table;
->    381		}
->    382	
->    383		drv->opp_nb.notifier_call =
-> mtk_ccifreq_opp_notifier;
->    384		ret = dev_pm_opp_register_notifier(dev, &drv-
-> >opp_nb);
->    385		if (ret) {
->    386			dev_err(dev, "failed to register opp
-> notifier: %d\n", ret);
->    387			goto out_remove_devfreq_device;
->    388		}
->    389		return 0;
->    390	
->    391	out_remove_devfreq_device:
->    392		devm_devfreq_remove_device(dev, drv->devfreq);
->    393	
->    394	out_remove_opp_table:
->    395		dev_pm_opp_of_remove_table(dev);
->    396	
->    397	out_disable_inter_clk:
->    398		clk_disable_unprepare(drv->inter_clk);
->    399	
->    400	out_disable_cci_clk:
->    401		clk_disable_unprepare(drv->cci_clk);
->    402	
->    403	out_free_resources:
->    404		if (regulator_is_enabled(drv->proc_reg))
->    405			regulator_disable(drv->proc_reg);
->    406		if (drv->sram_reg && regulator_is_enabled(drv-
-> >sram_reg))
->    407			regulator_disable(drv->sram_reg);
->    408	
->    409		if (!IS_ERR(drv->proc_reg))
->    410			regulator_put(drv->proc_reg);
->    411		if (!IS_ERR(drv->sram_reg))
->    412			regulator_put(drv->sram_reg);
->    413		if (!IS_ERR(drv->cci_clk))
->    414			clk_put(drv->cci_clk);
->    415		if (!IS_ERR(drv->inter_clk))
->    416			clk_put(drv->inter_clk);
->    417	
->    418		return ret;
->    419	}
->    420	
-> 
+> @@ -1267,9 +1268,9 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
+>  	 * the CPU port get out of VLAN filtering mode.
+>  	 */
+>  	if (all_user_ports_removed) {
+> -		mt7530_write(priv, MT7530_PCR_P(MT7530_CPU_PORT),
+> +		mt7530_write(priv, MT7530_PCR_P(priv->cpu_port),
+>  			     PCR_MATRIX(dsa_user_ports(priv->ds)));
+> -		mt7530_write(priv, MT7530_PVC_P(MT7530_CPU_PORT), PORT_SPEC_TAG
+> +		mt7530_write(priv, MT7530_PVC_P(priv->cpu_port), PORT_SPEC_TAG
+>  			     | PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+>  	}
+>  }
 
-Hi "kernel test robot",
+Same idea here, go through dp->cpu_dp.
 
-Thanks for your review.
+> @@ -1335,8 +1336,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
+>  	 */
+>  	if (priv->ports[port].enable)
+>  		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+> -			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
+> -	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
+> +			   PCR_MATRIX(BIT(priv->cpu_port)));
+> +	priv->ports[port].pm = PCR_MATRIX(BIT(priv->cpu_port));
 
-This patch is based on chanwoo/devfreq-testing[1]
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing
+Same.
 
-I will follow your suggestion to use '--base' in the next version.
+>  
+>  	/* When a port is removed from the bridge, the port would be set up
+>  	 * back to the default as is at initial boot which is a VLAN-unaware
+> @@ -1503,6 +1504,7 @@ static int
+>  mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
+>  			   struct netlink_ext_ack *extack)
+>  {
+> +	struct mt7530_priv *priv = ds->priv;
+>  	if (vlan_filtering) {
+>  		/* The port is being kept as VLAN-unaware port when bridge is
+>  		 * set up with vlan_filtering not being set, Otherwise, the
+> @@ -1510,7 +1512,7 @@ mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
+>  		 * for becoming a VLAN-aware port.
+>  		 */
+>  		mt7530_port_set_vlan_aware(ds, port);
+> -		mt7530_port_set_vlan_aware(ds, MT7530_CPU_PORT);
+> +		mt7530_port_set_vlan_aware(ds, priv->cpu_port);
+>  	} else {
+>  		mt7530_port_set_vlan_unaware(ds, port);
+>  	}
 
-BRs,
-Johnson Wang
+Same.
+
+> @@ -1526,7 +1528,7 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
+>  	u32 val;
+>  
+>  	new_members = entry->old_members | BIT(entry->port) |
+> -		      BIT(MT7530_CPU_PORT);
+> +		      BIT(priv->cpu_port);
+>  
+>  	/* Validate the entry with independent learning, create egress tag per
+>  	 * VLAN and joining the port as one of the port members.
+> @@ -1550,8 +1552,8 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
+>  	 * DSA tag.
+>  	 */
+>  	mt7530_rmw(priv, MT7530_VAWD2,
+> -		   ETAG_CTRL_P_MASK(MT7530_CPU_PORT),
+> -		   ETAG_CTRL_P(MT7530_CPU_PORT,
+> +		   ETAG_CTRL_P_MASK(priv->cpu_port),
+> +		   ETAG_CTRL_P(priv->cpu_port,
+>  			       MT7530_VLAN_EGRESS_STACK));
+>  }
+
+This one is interesting. For some reason, the driver author felt the
+need to explicitly add BIT(MT7530_CPU_PORT) to new_members, even though
+mt7530_port_vlan_add() will be called on the CPU port too
+
+bridge vlan add dev swp0 vid 100
+bridge vlan add dev br0 vid 100 self		# here
+
+I would first make a patch that leaves it up to DSA to call
+port_vlan_add for the CPU port, rather than doing it implicitly.
+There is a certain advantage to that too. You can do autonomous
+forwarding in a certain VLAN, but not add br0 to that VLAN, and then,
+you could avoid flooding the CPU with those packets, if you know that
+software doesn't need to process them.
+
+The modified function would look like this:
+
+static void
+mt7530_hw_vlan_add(struct mt7530_priv *priv,
+		   struct mt7530_hw_vlan_entry *entry)
+{
+	struct dsa_port *dp = dsa_to_port(priv->ds, entry->port);
+	u8 new_members;
+	u32 val;
+
+	new_members = entry->old_members | BIT(entry->port);
+
+	/* Validate the entry with independent learning, create egress tag per
+	 * VLAN and joining the port as one of the port members.
+	 */
+	val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) | FID(FID_BRIDGED) |
+	      VLAN_VALID;
+	mt7530_write(priv, MT7530_VAWD1, val);
+
+	/* Decide whether adding tag or not for those outgoing packets from the
+	 * port inside the VLAN.
+	 * CPU port is always taken as a tagged port for serving more than one
+	 * VLANs across and also being applied with egress type stack mode for
+	 * that VLAN tags would be appended after hardware special tag used as
+	 * DSA tag.
+	 */
+	if (dsa_port_is_cpu(dp))
+		val = MT7530_VLAN_EGRESS_STACK;
+	else if (entry->untagged)
+		val = MT7530_VLAN_EGRESS_UNTAG;
+	else
+		val = MT7530_VLAN_EGRESS_TAG;
+	mt7530_rmw(priv, MT7530_VAWD2,
+		   ETAG_CTRL_P_MASK(entry->port),
+		   ETAG_CTRL_P(entry->port, val));
+}
+
+Then please confirm that there aren't regressions in local traffic
+termination for a VLAN-aware bridge. Pinging over a bridge with
+vlan_filtering=1 should be sufficient, since that is done in the default
+pvid of 1.
+
+With this change, you no longer need to concern yourself about the fixed
+value of MT7530_CPU_PORT.
+
+>  
+> @@ -1575,7 +1577,7 @@ mt7530_hw_vlan_del(struct mt7530_priv *priv,
+>  	 * the entry would be kept valid. Otherwise, the entry is got to be
+>  	 * disabled.
+>  	 */
+> -	if (new_members && new_members != BIT(MT7530_CPU_PORT)) {
+> +	if (new_members && new_members != BIT(priv->cpu_port)) {
+>  		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
+>  		      VLAN_VALID;
+>  		mt7530_write(priv, MT7530_VAWD1, val);
+
+Here the logic is again too convoluted for its own good. Let's think
+before changing.
+
+What I think was happening was this. DSA used to be super blind when
+adding a VLAN to the CPU port. Since there is no netdev for the CPU
+port, then what DSA used to do was to implicitly program a bridge VLAN to
+the CPU port whenever that VLAN was programmed on a user port. The
+downside is that you never know when you can remove that VLAN, since the
+CPU port is shared between multiple user ports and refcounting was
+impossible due to technical switchdev API details.
+
+Here, the mt7530 driver tries to outsmart DSA by saying "hey, if the CPU
+port is the only remaining member of the VLAN, this VLAN is garbage,
+let's remove it". Which, I mean, fair point.
+
+But since commit 134ef2388e7f ("net: dsa: add explicit support for host
+bridge VLANs"), DSA does a better job of keeping track of VLANs added on
+CPU ports, and it doesn't leave dangling VLANs behind. You need to trust it.
+
+So in this case, you would have to change the code like this:
+
+	if (new_members) {
+		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
+		      VLAN_VALID;
+		mt7530_write(priv, MT7530_VAWD1, val);
+	} else {
+		mt7530_write(priv, MT7530_VAWD1, 0);
+		mt7530_write(priv, MT7530_VAWD2, 0);
+	}
+
+and then delete the comment, it isn't relevant any longer.
+
+> @@ -2105,7 +2107,7 @@ mt7530_setup(struct dsa_switch *ds)
+>  	 * controller also is the container for two GMACs nodes representing
+>  	 * as two netdev instances.
+>  	 */
+> -	dn = dsa_to_port(ds, MT7530_CPU_PORT)->master->dev.of_node->parent;
+> +	dn = dsa_to_port(ds, priv->cpu_port)->master->dev.of_node->parent;
+
+Holy ####, this is convoluted. This gets us the OF node of the container
+of the DSA master, alright.
+
+Could you do something more generic? Something like this:
+
+	struct device_node *dn = NULL;
+	struct dsa_port *cpu_dp;
+
+	dsa_switch_for_each_cpu_port(cpu_dp, ds) {
+		dn = cpu_dp->master->dev.of_node->parent;
+		/* It doesn't matter which CPU port is found first,
+		 * their masters should share the same parent OF node
+		 */
+		break;
+	}
+
+	if (!dn) {
+		ERROR ERROR ERROR, no CPU port
+	}
+
+>  	ds->assisted_learning_on_cpu_port = true;
+>  	ds->mtu_enforcement_ingress = true;
+>  
+> @@ -2337,15 +2339,6 @@ mt7531_setup(struct dsa_switch *ds)
+>  	mt7531_ind_c45_phy_write(priv, MT753X_CTRL_PHY_ADDR, MDIO_MMD_VEND2,
+>  				 CORE_PLL_GROUP4, val);
+>  
+> -	/* BPDU to CPU port */
+> -	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
+> -		   BIT(MT7530_CPU_PORT));
+> -	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
+> -		   MT753X_BPDU_CPU_ONLY);
+> -
+> -	/* Enable and reset MIB counters */
+> -	mt7530_mib_reset(ds);
+> -
+>  	for (i = 0; i < MT7530_NUM_PORTS; i++) {
+>  		/* Disable forwarding by default on all ports */
+>  		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
+> @@ -2373,6 +2366,15 @@ mt7531_setup(struct dsa_switch *ds)
+>  			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+>  	}
+>  
+> +	/* BPDU to CPU port */
+> +	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
+> +		   BIT(priv->cpu_port));
+> +	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
+> +		   MT753X_BPDU_CPU_ONLY);
+> +
+> +	/* Enable and reset MIB counters */
+> +	mt7530_mib_reset(ds);
+> +
+>  	/* Setup VLAN ID 0 for VLAN-unaware bridges */
+>  	ret = mt7530_setup_vlan0(priv);
+>  	if (ret)
+> @@ -3213,6 +3215,8 @@ mt7530_probe(struct mdio_device *mdiodev)
+>  	if (!priv)
+>  		return -ENOMEM;
+>  
+> +	priv->cpu_port = 6;
+> +
+>  	priv->ds = devm_kzalloc(&mdiodev->dev, sizeof(*priv->ds), GFP_KERNEL);
+>  	if (!priv->ds)
+>  		return -ENOMEM;
+> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+> index 91508e2feef9..62df8d10f6d4 100644
+> --- a/drivers/net/dsa/mt7530.h
+> +++ b/drivers/net/dsa/mt7530.h
+> @@ -8,7 +8,6 @@
+>  
+>  #define MT7530_NUM_PORTS		7
+>  #define MT7530_NUM_PHYS			5
+> -#define MT7530_CPU_PORT			6
+>  #define MT7530_NUM_FDB_RECORDS		2048
+>  #define MT7530_ALL_MEMBERS		0xff
+>  
+> @@ -823,6 +822,7 @@ struct mt7530_priv {
+>  	u8			mirror_tx;
+>  
+>  	struct mt7530_port	ports[MT7530_NUM_PORTS];
+> +	int			cpu_port;
+
+And this should no longer be needed.
+
+>  	/* protect among processes for registers access*/
+>  	struct mutex reg_mutex;
+>  	int irq;
+> -- 
+> 2.25.1
+> 
 
 
 _______________________________________________
