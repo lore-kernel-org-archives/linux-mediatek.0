@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD838C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 18:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3030BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 19:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DFZh4h/9qA7bTFvtIrq/wkCe8AlRTXGo2FtTbJW7hnI=; b=FNEH+iEG2brCZS
-	j56pX4G8fDZUHoGBKjlTlWC5ujPnuDHQKcA5eU5v70gxKMFTnDuMQRPUm1Bf9cYS6Bhhfz9u+6V9k
-	Kl7YS1OLizyA1qJnAuxo3Tnl/9lsjTDDtFSF/nTdbsOD+nMCbImG7qN4nXLJCxJAKqZKoAj3wMZUv
-	0tGS/knwMXSsFYrN9Kb/4DqYiv5+4dqzkG7JN3wQY4lOYssywI23f9tMAT4mYvCQjT0pk0zLnNb3v
-	XFcoAFcZhClS9WdSZgrZm4TFBhxIMXgBZxYTlASzmw04wJo9yBdEnE5HWMBQooQ9fQrNwWrFLIFE3
-	kue+O563mMtfQjk9ARlg==;
+	List-Owner; bh=rKJEQTI0QMTh7SXgdvAv8UkcHs9IakPUrs5OTeOSFbQ=; b=MGOW6XB+HBwt2z
+	YYUndWnkwWJI2UWPF7pliW61+nsiVtNDlZh1og1I0xPjSkh2A6Ag2GADww3pKs3hz4yhEavbgVeeG
+	6GxFhv40tdOFsRNRffQgnefbiZxzD0njdewSIIH/F3UmvQGc24yLSorxNZrYHgH0S8EsAPzZgAdxQ
+	Aunob5eKLZQKFPq0z6uC1ea+GFt7Rn4PiGAq5Yp1zfQBZYI64+WW3yCezj7AbetFCFr+aEmhRHkWs
+	jb0v1kAwslQcWp5zh7HkfVR7OR+32/L+JEU5BYwjjQw3e5vlbTXxlrg10UqzLWaxWFu7QKCjVCkSq
+	bwRHO6tMWBuZkErXKKHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njmlI-0038zL-FI; Wed, 27 Apr 2022 18:51:40 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1njmtj-003Cin-UF; Wed, 27 Apr 2022 19:00:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njmky-0038rQ-GA; Wed, 27 Apr 2022 18:51:21 +0000
-Received: by mail-oi1-f173.google.com with SMTP id v65so2945981oig.10;
- Wed, 27 Apr 2022 11:51:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=AGqch3bATlGRMhd+ZKwzHi93QGO4MV6rf3Gggs9S8RU=;
- b=Q7C/p7zXE9kfFaPc8v/vjQNP1UT67HcEiRCYz/H2Ge21tpRTz/DlEZuqdeCuND2wnJ
- q4kJBmg6LF5Wiu+oNGOzSGi2ukTNqIB4bDcaFvS6Vm1ISQU5KkW0GzT1g9bvSRUThhfy
- r05WpHaF0WpT6iXv51vaHw7lg6a6pO+MzfCotG4EIQ6oQAh2czGJJ9ohzQU3QZOzMsGf
- 3mwABNhYhx0JBGemUwTNNMwVsANCY8SAeQlh+pjTtNQhjjC4ijslcY4EquoV6oVzk8V3
- LQMxVJrpFiuoL+FrPy4jSYV4yVCib3X9Xr06SKDG2+OjPHtTo+HOvvxmwkfmtGFVP1Y4
- PptA==
-X-Gm-Message-State: AOAM533zxl8setWhN/oeKC5O/Nzz3lBqeIEPcrZ8bi7Wfn37AzLjby5N
- /aagp19lIuKzWPNr6SBTyw==
-X-Google-Smtp-Source: ABdhPJzzy7JvgYRMGnamDwMItt3zlMQk/ii3fBauzE+PpVYc6O+WSGeQ6iaBSdKNZRgfSiaKBYadIQ==
-X-Received: by 2002:aca:4246:0:b0:322:8eea:1049 with SMTP id
- p67-20020aca4246000000b003228eea1049mr13729426oia.73.1651085479761; 
- Wed, 27 Apr 2022 11:51:19 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- q34-20020a056808202200b0032545864b89sm2911778oiw.14.2022.04.27.11.51.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Apr 2022 11:51:18 -0700 (PDT)
-Received: (nullmailer pid 446568 invoked by uid 1000);
- Wed, 27 Apr 2022 18:51:18 -0000
-Date: Wed, 27 Apr 2022 13:51:18 -0500
-From: Rob Herring <robh@kernel.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Cc: lee.jones@linaro.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, pavel@ucw.cz, devicetree@vger.kernel.org,
- linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- gene_chen@richtek.com, cy_huang@richtek.com
-Subject: Re: [PATCH 2/2] dt-bindings: mfd: Add bindings for the Mediatek MT6360
-Message-ID: <YmmQpg/Hh6qTNhj2@robh.at.kernel.org>
-References: <20220427080330.40136-1-gene.chen.richtek@gmail.com>
- <20220427080330.40136-3-gene.chen.richtek@gmail.com>
+ id 1njmtZ-003Caj-Cl
+ for linux-mediatek@lists.infradead.org; Wed, 27 Apr 2022 19:00:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 752C46122F;
+ Wed, 27 Apr 2022 19:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DAEE3C385AF;
+ Wed, 27 Apr 2022 19:00:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1651086011;
+ bh=BR8Nx5V0ctF4VhQqy59tGJCpM99Usfg6y5bXRmiMcUE=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=APZkRWMJTnxGEVNnIEjEvi5wwO1L7qm5TyI6nzt+XU16+Aw7GgQT/QLtiFlH/Nv2s
+ RjGxhZserePOc/zKKHOy84W+8RNvzIAc2knWKXi4Mz1yvRxVAng+t7Q3as4rhB7vBS
+ drqSEtJnHAV7hiaci/EjLSLccGZ8QqM2/VLnlBj7q4rnOoTrKKJPt0ozZCBzGnBppx
+ Q9zheUXwtzFVE3KJis8O6MQ3L+rm8yJ4dD76sOJOAkGI7qVImHQ8cZLSKY4YjvBN2y
+ d3FuRw8GDKlZrpdoRvSz8WITMbjokXEdrfHqR1b0z3Ual4Ox7rqd95HQNqJB2J+df3
+ N4SsZQ6C8njJw==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ BB4FAEAC09C; Wed, 27 Apr 2022 19:00:11 +0000 (UTC)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220427080330.40136-3-gene.chen.richtek@gmail.com>
+Subject: Re: [PATCH] Bluetooth: btusb: Add a new PID/VID 0489/e0c8 for MT7921
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <165108601175.12854.4715052613865968017.git-patchwork-notify@kernel.org>
+Date: Wed, 27 Apr 2022 19:00:11 +0000
+References: <1b7d9428ba0c6d572d7da1da166240833350786e.1651082524.git.objelf@gmail.com>
+In-Reply-To: <1b7d9428ba0c6d572d7da1da166240833350786e.1651082524.git.objelf@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, Soul.Huang@mediatek.com,
+ YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
+ Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+ Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ ted.huang@mediatek.com, Eric.Liang@mediatek.com, Stella.Chang@mediatek.com,
+ Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
+ frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com,
+ mcchou@chromium.org, shawnku@google.com, linux-bluetooth@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_115120_601188_12AF4CD3 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20220427_120013_495944_8B59327C 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,21 +83,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 27, 2022 at 04:03:30PM +0800, Gene Chen wrote:
-> From: Gene Chen <gene_chen@richtek.com>
-> 
-> Add bindings for the Mediatek MT6360
-> 
-> Signed-off-by: Gene Chen <gene_chen@richtek.com>
-> ---
->  .../devicetree/bindings/mfd/mt6360.yaml       | 258 ++++++++++++++++++
->  1 file changed, 258 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mt6360.yaml
+Hello:
 
-As I mentioned, I applied your previous version. Please send a patch on 
-top of it adding the child nodes.
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Marcel Holtmann <marcel@holtmann.org>:
 
-Rob
+On Thu, 28 Apr 2022 02:38:39 +0800 you wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Add VID 0489 & PID e0c8 for MediaTek MT7921 USB Bluetooth chip.
+> 
+> The information in /sys/kernel/debug/usb/devices about the Bluetooth
+> device is listed as the below.
+> 
+> [...]
+
+Here is the summary with links:
+  - Bluetooth: btusb: Add a new PID/VID 0489/e0c8 for MT7921
+    https://git.kernel.org/bluetooth/bluetooth-next/c/48b57999e387
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
