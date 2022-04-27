@@ -4,94 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 652A3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 13:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5BDEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 13:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k6foyor6H9OjdFa5yk59ICM91fjqcVc7f/2xyob/3sE=; b=GvfegSmKtgOYCt
-	JqcSTtBNQXuajW/iJUdTcWGg2XyA3KO+Ese54qKHv2T4kNlU4zxC5hE02dxlyKBTgJ2FjoKVQ7Dp/
-	S8O3HD5XZglHd9ZMpXo2EUJ028+iVkAQD2nZveZzrw4Zf1XX6BA8sE8BeRdEU9Dj/fWt7DEUx8HI3
-	tipcn1FvB0VojObM3ng4g5kWpsaO9DpoRE+WUr9L7ujmnyqKgOZhHsUU2T+L16882xw3vrTGaNVgz
-	QHWGWDv+i7vTb9BlrdXlz8zx9shwmaAjkbgATv62vLAw0WsP0TMuV3D0/wJsnZt2lVOIYPd4H/H72
-	QFr/RAFwhECxL+R3G51A==;
+	List-Owner; bh=75Ji8eNR9Kv+3m1vXTC6TpuGUQgwtI9ZRWq/xujFB58=; b=fk3Bbcj6mWf40/
+	GP1Dfy0zU0FKudi1CVLOTg3lak+/Hx84TUp9CJp1zESezs3nrgeRP3+Wltlq9GniNjvbj6Zz0hX/Z
+	DeK+J1S8jemfq0PkcXxoXRi9A5gZRNJvL01s76PH2vcpgJm9PRZhXFg8rz/3yi6nddE6a+vobeF3N
+	obG1C3CPIdGfTh8EutpiXZuFxI7mINKhh3hicnlg6quk3IU3cw7dK3VffbXerOLPQo2LC4UES7F27
+	L7k/lltmF4raLxFyAecBzDL19NqK/0ONsyJjHJZH0mGY55EFX4sddHxHn8jucTUJh/7PhGBJj6I62
+	X5s38VIluT9hKsmRqXdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nji7E-001g5A-GP; Wed, 27 Apr 2022 13:54:00 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1nji7k-001gGq-EQ; Wed, 27 Apr 2022 13:54:32 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nji7B-001g2q-Tf
- for linux-mediatek@lists.infradead.org; Wed, 27 Apr 2022 13:53:59 +0000
-Received: by mail-ej1-x634.google.com with SMTP id dk23so3547234ejb.8
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Apr 2022 06:53:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=/VHZPsVMAFIMi2pBbLfD5fKKNKqKbuM/A2SGKvxDgK4=;
- b=AwyCfjozdBWESOd/ALQolQKJzimk9604uiUm6wDtCOrm5sOppI0nnP7ziMhAz/f51o
- yUoGs5n7teJKcGbtpp4NaCK1/YbXG4P0YRKx0GchwQ9vgRF3UzfbEWkpW6xKyra3pN1l
- PnkWJfEI6GymVqL/stEHO/IxUCTYRc23BDHctj09QFj9iz4132J3vnRtPknCK5c+jcpX
- LqdBOHmvHmX3UBdujsR9oaGfVGw6exZ+FyeGxLo3un9Y9FzaEGgaGIPtXu3p+HBW1Ko4
- xhja6WXow4QKqlI9wX3Qd7Z0kLokBkl8Z0hIyMTDjmsUsMc8TcluX6xUkaT8/fgTZJOm
- AGTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=/VHZPsVMAFIMi2pBbLfD5fKKNKqKbuM/A2SGKvxDgK4=;
- b=SGQv4DZW+zR3kXAhM8gt6P0VsjQGG2PNm5rmZ08K925MwvrgFfStMe0VE48u76KIuD
- 7tsXmI1F8Z2kKwlfAFFE/r0Qa5KTHGYu1joYE9ww1p+Kta8DwcCCEdHwvk3LHIZOCuhN
- /Gh9eXqSedE7/s7XOSkY3fAuejT1hthYiE1oqmsKuLXVuzUtnewaaHzDKa9pfIofPiFz
- ZBcdQB4JjjgFVvC6VR3GHyq+QiL7PgQQZzPNFGHJ8DosHK25gAUuELWl9AE9y4WSUxv6
- UdKbd9E57A7ITkNMMyIZmZiivbqdmEGyMdxBwzg0YTi8VDNI1jfSZofkZIhGan/m29hb
- RpzA==
-X-Gm-Message-State: AOAM533ylJ0Se79b2cVs9qMjxSWG3rfRSCf7Yg6A6OdsZwFgHCM0XvRw
- R6jhuS0PmECnUjv7Vz2OAoNMTQ==
-X-Google-Smtp-Source: ABdhPJylNBSCvH5CoQ2choSP7+rTzl3z8DvUVHYaOOrw5yxaVm205jVSxTlZqO9OF2mULcAztWn0nw==
-X-Received: by 2002:a17:907:7f0a:b0:6f3:9712:dfed with SMTP id
- qf10-20020a1709077f0a00b006f39712dfedmr14448010ejc.557.1651067634774; 
- Wed, 27 Apr 2022 06:53:54 -0700 (PDT)
-Received: from [192.168.0.154] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- jt24-20020a170906ca1800b006ef606fe5f2sm6762723ejb.61.2022.04.27.06.53.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Apr 2022 06:53:53 -0700 (PDT)
-Message-ID: <51be638b-e12d-b9ae-c14b-f51e33d2503e@linaro.org>
-Date: Wed, 27 Apr 2022 15:53:52 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v2 1/1] dt-bindings: nvmem: mediatek: Convert mtk-efuse
- binding to YAML
-Content-Language: en-US
-To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Lala Lin <lala.lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
+ id 1nji7V-001g9a-1Q; Wed, 27 Apr 2022 13:54:18 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 6F40D1F44800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651067650;
+ bh=bti1EdzC6WGQOpy3EhTaJntgvmOLWjzLid7YZh3R18U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZPMe9lhK77QoJalyS6cqCntKPDuSJtht+9pXHYF8jNb+Fm/jrQxt11+7ECe+kAVws
+ 7Q1djtafBwzDzuCu3Eby+gbF483OhYDVojG/lc5WwI8MRcXnN7HdXR8zQ6M9pDlypN
+ na7Eu20Wwjpv/4P0GKb1tr58G4QTnzp4fbBjbq+d5IqmNp6RglbdzEEfcpmOFV5GiE
+ trbvQnIiu8X82hAn6rayZwhczfMCPtaQxtfroSeu64fYXfKSySrR8Xp0icofv/Ago7
+ 8czX7fmeFd8iisdowAVFzbbMimCf3OeOJ5rWf1KoyqbK4c/yyGwv432ulrEMgp6J2b
+ hOeWo0e123UZQ==
+Date: Wed, 27 Apr 2022 09:54:04 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Rob Herring <robh+dt@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-References: <20220425084800.2021-1-allen-kh.cheng@mediatek.com>
- <20220425084800.2021-2-allen-kh.cheng@mediatek.com>
- <e64bdca8-7b18-b450-830c-ca07946a73fb@linaro.org>
- <9d65b713e3ffdd34dcca532c4c97fa98b124bde4.camel@mediatek.com>
- <0169c4ac-fdce-29b7-553a-14dc7df532d1@linaro.org>
- <a8e212a0e0449e015a33e76b320266376d4b9be6.camel@mediatek.com>
- <89609af9-5feb-0553-5e39-c97c4750b5a1@linaro.org>
- <33c754a7b6e4cd631bb2aeef002d34a6c25d6689.camel@mediatek.com>
- <0c63c24a-8014-2491-095c-77893d2141d9@linaro.org>
- <daca88d63fa844179a3d44affee124584353bec9.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <daca88d63fa844179a3d44affee124584353bec9.camel@mediatek.com>
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1 01/10] arm64: dts: mediatek: Introduce MT8192-based
+ Asurada board family
+Message-ID: <20220427135404.a4xxp3rvvzrgqfqs@notapiano>
+References: <20220316151327.564214-1-nfraprado@collabora.com>
+ <20220316151327.564214-2-nfraprado@collabora.com>
+ <CAGXv+5Gv2pjPXynz6HCdgux+giPDC5qRk+KW1aFduVz82rM=+g@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAGXv+5Gv2pjPXynz6HCdgux+giPDC5qRk+KW1aFduVz82rM=+g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_065358_029625_763D7E94 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20220427_065417_252974_0F697246 
+X-CRM114-Status: GOOD (  26.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,34 +67,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/04/2022 12:00, allen-kh.cheng wrote:
-> I think there are two cases in mediatek efuse dirver now.
-> 
-> Case 1, 
-> const: mediatek,efuse is deprecated.
-> const: mediatek,mt8173-efuse is remained. All mediatek chipsets will
-> use mediatek,mt8173-efuse as fallback.
-> 
-> Case 2,
-> const: mediatek,efuse is deprecated.
-> const: mediatek,mt8173-efuse is deprecated.
-> 
-> All mediatek chipsets(include ediatek,mt8173-efuse) will use
-> mediatek,efuse as fallback.
-> 
-> Which one do you think is better?
+Hi Chen-Yu,
 
-Indeed, I forgot that mt8173 would also fallback to generic efuse.
-Indeed let's go with case 2, so your proposal before was correct.
+thank you for the review.
 
+On Wed, Apr 27, 2022 at 04:43:50PM +0800, Chen-Yu Tsai wrote:
+> Hi,
+> =
 
-Best regards,
-Krzysztof
+> On Wed, Mar 16, 2022 at 11:17 PM N=EDcolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
+> >
+> > Introduce the MT8192 Asurada Chromebook platform, including the Asurada
+> > Spherion and Asurada Hayato boards.
+> >
+> > This is enough configuration to get serial output working on Spherion
+> > and Hayato.
+> >
+> > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> >
+> > ---
+> >
+> >  arch/arm64/boot/dts/mediatek/Makefile         |  2 ++
+> >  .../dts/mediatek/mt8192-asurada-hayato-r1.dts | 11 ++++++++
+> >  .../mediatek/mt8192-asurada-spherion-r0.dts   | 13 ++++++++++
+> >  .../boot/dts/mediatek/mt8192-asurada.dtsi     | 26 +++++++++++++++++++
+> >  4 files changed, 52 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-=
+r1.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherio=
+n-r0.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dt=
+s/mediatek/Makefile
+> > index 8c1e18032f9f..034cba17276b 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -37,5 +37,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-kodama-=
+sku32.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku0.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku176.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-pumpkin.dtb
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8192-asurada-hayato-r1.dtb
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8192-asurada-spherion-r0.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8192-evb.dtb
+> >  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8516-pumpkin.dtb
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts =
+b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+> > new file mode 100644
+> > index 000000000000..e18e14b13d61
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+> > @@ -0,0 +1,11 @@
+> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > +/*
+> > + * Copyright 2020 Google LLC
+> > + */
+> > +/dts-v1/;
+> > +#include "mt8192-asurada.dtsi"
+> > +
+> > +/ {
+> > +       model =3D "MediaTek Hayato rev1";
+> =
+
+> I think this should be "Google Hayato ...", and the one in spherion should
+> read "Google Spherion" as well?
+> =
+
+> These are project code names used in Google. Both devices use the common
+> "Asurada" hardware design, also done by Google.
+
+These were the names downstream so I didn't want to change them. But I agree
+with you, and will take this as authorization do change them so for the next
+version.
+
+> =
+
+> > +       compatible =3D "google,hayato-rev1", "google,hayato", "mediatek=
+,mt8192";
+> =
+
+> You should add a patch adding this to the DT binding doc
+> Documentation/devicetree/bindings/arm/mediatek.yaml
+> =
+
+> Same for Spherion.
+
+Okay.
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
