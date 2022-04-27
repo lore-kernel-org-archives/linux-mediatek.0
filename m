@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8137C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 15:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 530C5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 15:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jnHTvOGw3xo2VwaTW3mqUxuHuuzWlcaz/6njH++nVXw=; b=fu4jR5Ey8uY8QO
-	VLc8nVwSGJQTnjNvyPw+MDZyBsxJ0C29ccozVW4awQ7KNhwIc+NK8W2OJ7h0gPHkxdrIcRPhOal1k
-	z92dSXWvTrtnYYx29ZL1H6T+/er2vcBLneDwwF2vI4uIzqp+9NyRxs9o6N4//SDuxwsFDjDpxpo/2
-	E5JVYrad9cptNkZblVN3PuD5gxmrvX72hF2Q5N5yCNugbo6wKqr8IyR1IQmXFD+HU5eOn312FJxGN
-	ap1yryHs1+gFLafFRsgd/Ii2nM4X8v7A3YoAgEO7I7RMf1qqqcSvXZOmInfD2vtCWJwD+isAsDTSD
-	/JSda/Z2zXqHuAxheoqA==;
+	List-Owner; bh=EHWp2Y/oTQSAyj1IYFWalE7SVSCb86LXA9BCQ7NUEVE=; b=qYpIlsNlGaPW1W
+	9414+ldVICSVcPo9/8SSqINxE2WIZ2NTuwGwwNNJdPoyJkK3RfmayBhsllfNIMkofJ72jt/oaa6qG
+	bQZgbZPAw6fmPIkwebWXa1GFK/TgH9Hd+mJU/MDBfBu7/HlOvWowkFNEmpz7yk366PDIOUMNQrVGT
+	sJbJ35T9ccB7rJnmBqRsjJ4Ms+BG6gA/rv1tMbEb9i9FXiM1KuK03GCUBDKg6aZKE4yzvxc9q0PAp
+	elFjJGjuQPRpdupr2CUcXZNd1eYBJdMh5j/Di4/p465/lj4A3Zwaed9nlfIKZWfYJ/Ssci/MuwT+J
+	LidN3FEWNhstJHVILaDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njjnS-0022dr-Ck; Wed, 27 Apr 2022 15:41:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1njjnt-0022vY-B5; Wed, 27 Apr 2022 15:42:09 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njjn9-0022UF-QS; Wed, 27 Apr 2022 15:41:25 +0000
+ id 1njjnD-0022VS-HA; Wed, 27 Apr 2022 15:41:29 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 0B961617B7;
- Wed, 27 Apr 2022 15:41:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C186C385AD;
- Wed, 27 Apr 2022 15:41:21 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E78CBB82874;
+ Wed, 27 Apr 2022 15:41:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 443A8C385B0;
+ Wed, 27 Apr 2022 15:41:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651074082;
- bh=rE+qwrcYq1YEDwagHt9bw0Dmvq2A/QwK2cQtgGYtZKA=;
+ s=k20201202; t=1651074084;
+ bh=UQ7T/ivpJnhp+Ti+c/WaKjLjgaMTqUGoKyi4mXYztSY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=t+rRpvTelqAmnOxdhSnJBNQ97HYVO1XodTEWwDfdhbxiVpvUs+NWkAu00L0KAWCjP
- PcSQuS0lYSCwzFvNFQabbm9RTHxWFPt7HKSNJfJlwDdMEE8CRTiKRdFFSq1BcqRW5F
- Mld1jCYk7HsQSNZXkm00T4qPUjKnsHAcRqBYRN6thrfPCsmggIfeRUpFL78tLsBd/n
- RleASA3ke4E/qVXBqnOgH8c5zlPm8j0hYYNrt1nynlzoZRhN4Ol44vbGoMFmIhQXOL
- 36VdePnn7Vku9k2R4p7RdwiICc+qF+FVqkxEWAfz3MvAstn5GaB2tKbZOvn7vvx3G/
- f8GLg0Qwv5hhA==
+ b=UsXrG1LE5E2RLtUlEospNCQSJAz+ihkIyJbeRakZD8CAipd9sUm9oe4AbidOAuVZG
+ ezLMIoYTsUdjLO+6fERs2D+QXE0DrCgjaXj2fu8dELW/CKGOTX/2QaTbaNZVOjaA+m
+ QihQFcX+8vr0XoAdOnG7zQQ0BLvHOqCvWgJB4qf5jRb7mGX7G9y+o6ZUb8B0Tltbwc
+ B5ZLKAWErQ/SfIHnAh+kHwxsTeH7nZTIOQe6NWZfRrHP5CyQnhDEngUMgh39VJ0Ga2
+ fxnYTI0e+v7bgqkNa5MLqbsMB4XRoKiKj8HU3gPJ9E2RDoPif/gs8IrtoE0lMe+7Rb
+ GWgEhyJd6E5VA==
 From: Jakub Kicinski <kuba@kernel.org>
 To: davem@davemloft.net,
 	pabeni@redhat.com
-Cc: netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- ulli.kroll@googlemail.com, linus.walleij@linaro.org, mlindner@marvell.com,
- stephen@networkplumber.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com,
- grygorii.strashko@ti.com, wei.liu@kernel.org, paul@xen.org,
- prabhakar.mahadev-lad.rj@bp.renesas.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-omap@vger.kernel.org, xen-devel@lists.xenproject.org
-Subject: [PATCH net-next 01/14] eth: remove copies of the NAPI_POLL_WEIGHT
- define
-Date: Wed, 27 Apr 2022 08:40:58 -0700
-Message-Id: <20220427154111.529975-2-kuba@kernel.org>
+Cc: netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>, nbd@nbd.name,
+ john@phrozen.org, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 05/14] eth: mtk_eth_soc: remove a copy of the
+ NAPI_POLL_WEIGHT define
+Date: Wed, 27 Apr 2022 08:41:02 -0700
+Message-Id: <20220427154111.529975-6-kuba@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220427154111.529975-1-kuba@kernel.org>
 References: <20220427154111.529975-1-kuba@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_084123_991149_BA1975CA 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20220427_084127_762535_29B383A7 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,189 +78,48 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Defining local versions of NAPI_POLL_WEIGHT with the same
 values in the drivers just makes refactoring harder.
 
-Drop the special defines in a bunch of drivers where the
-removal is relatively simple so grouping into one patch
-does not impact reviewability.
-
 Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 ---
-CC: ulli.kroll@googlemail.com
-CC: linus.walleij@linaro.org
-CC: mlindner@marvell.com
-CC: stephen@networkplumber.org
 CC: nbd@nbd.name
 CC: john@phrozen.org
 CC: sean.wang@mediatek.com
 CC: Mark-MC.Lee@mediatek.com
 CC: matthias.bgg@gmail.com
-CC: grygorii.strashko@ti.com
-CC: wei.liu@kernel.org
-CC: paul@xen.org
-CC: prabhakar.mahadev-lad.rj@bp.renesas.com
 CC: linux-arm-kernel@lists.infradead.org
 CC: linux-mediatek@lists.infradead.org
-CC: linux-omap@vger.kernel.org
-CC: xen-devel@lists.xenproject.org
 ---
- drivers/net/ethernet/cortina/gemini.c         | 4 +---
- drivers/net/ethernet/marvell/skge.c           | 3 +--
- drivers/net/ethernet/marvell/sky2.c           | 3 +--
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 3 +--
- drivers/net/ethernet/ti/davinci_emac.c        | 3 +--
- drivers/net/ethernet/ti/netcp_core.c          | 5 ++---
- drivers/net/xen-netback/interface.c           | 3 +--
- 7 files changed, 8 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 -
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/cortina/gemini.c b/drivers/net/ethernet/cortina/gemini.c
-index 8014eb33937c..9e6de2f968fa 100644
---- a/drivers/net/ethernet/cortina/gemini.c
-+++ b/drivers/net/ethernet/cortina/gemini.c
-@@ -68,7 +68,6 @@ MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- #define DEFAULT_GMAC_RXQ_ORDER		9
- #define DEFAULT_GMAC_TXQ_ORDER		8
- #define DEFAULT_RX_BUF_ORDER		11
--#define DEFAULT_NAPI_WEIGHT		64
- #define TX_MAX_FRAGS			16
- #define TX_QUEUE_NUM			1	/* max: 6 */
- #define RX_MAX_ALLOC_ORDER		2
-@@ -2472,8 +2471,7 @@ static int gemini_ethernet_port_probe(struct platform_device *pdev)
- 	netdev->max_mtu = 10236 - VLAN_ETH_HLEN;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 18eebcaa6a76..31c5da5d6b72 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3298,9 +3298,9 @@ static int mtk_probe(struct platform_device *pdev)
+ 	 */
+ 	init_dummy_netdev(&eth->dummy_dev);
+ 	netif_napi_add(&eth->dummy_dev, &eth->tx_napi, mtk_napi_tx,
+-		       MTK_NAPI_WEIGHT);
++		       NAPI_POLL_WEIGHT);
+ 	netif_napi_add(&eth->dummy_dev, &eth->rx_napi, mtk_napi_rx,
+-		       MTK_NAPI_WEIGHT);
++		       NAPI_POLL_WEIGHT);
  
- 	port->freeq_refill = 0;
--	netif_napi_add(netdev, &port->napi, gmac_napi_poll,
--		       DEFAULT_NAPI_WEIGHT);
-+	netif_napi_add(netdev, &port->napi, gmac_napi_poll, NAPI_POLL_WEIGHT);
+ 	platform_set_drvdata(pdev, eth);
  
- 	ret = of_get_mac_address(np, mac);
- 	if (!ret) {
-diff --git a/drivers/net/ethernet/marvell/skge.c b/drivers/net/ethernet/marvell/skge.c
-index cf03c67fbf40..c1e985416c0e 100644
---- a/drivers/net/ethernet/marvell/skge.c
-+++ b/drivers/net/ethernet/marvell/skge.c
-@@ -50,7 +50,6 @@
- #define PHY_RETRIES	        1000
- #define ETH_JUMBO_MTU		9000
- #define TX_WATCHDOG		(5 * HZ)
--#define NAPI_WEIGHT		64
- #define BLINK_MS		250
- #define LINK_HZ			HZ
- 
-@@ -3833,7 +3832,7 @@ static struct net_device *skge_devinit(struct skge_hw *hw, int port,
- 		dev->features |= NETIF_F_HIGHDMA;
- 
- 	skge = netdev_priv(dev);
--	netif_napi_add(dev, &skge->napi, skge_poll, NAPI_WEIGHT);
-+	netif_napi_add(dev, &skge->napi, skge_poll, NAPI_POLL_WEIGHT);
- 	skge->netdev = dev;
- 	skge->hw = hw;
- 	skge->msg_enable = netif_msg_init(debug, default_msg);
-diff --git a/drivers/net/ethernet/marvell/sky2.c b/drivers/net/ethernet/marvell/sky2.c
-index ea16b1dd6a98..a1e907c85217 100644
---- a/drivers/net/ethernet/marvell/sky2.c
-+++ b/drivers/net/ethernet/marvell/sky2.c
-@@ -63,7 +63,6 @@
- #define TX_DEF_PENDING		63
- 
- #define TX_WATCHDOG		(5 * HZ)
--#define NAPI_WEIGHT		64
- #define PHY_RETRIES		1000
- 
- #define SKY2_EEPROM_MAGIC	0x9955aabb
-@@ -4938,7 +4937,7 @@ static int sky2_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		}
- 	}
- 
--	netif_napi_add(dev, &hw->napi, sky2_poll, NAPI_WEIGHT);
-+	netif_napi_add(dev, &hw->napi, sky2_poll, NAPI_POLL_WEIGHT);
- 
- 	err = register_netdev(dev);
- 	if (err) {
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 4cd0747edaff..95839fd84dab 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -30,7 +30,6 @@
- #define MTK_STAR_WAIT_TIMEOUT			300
- #define MTK_STAR_MAX_FRAME_SIZE			1514
- #define MTK_STAR_SKB_ALIGNMENT			16
--#define MTK_STAR_NAPI_WEIGHT			64
- #define MTK_STAR_HASHTABLE_MC_LIMIT		256
- #define MTK_STAR_HASHTABLE_SIZE_MAX		512
- 
-@@ -1551,7 +1550,7 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	ndev->netdev_ops = &mtk_star_netdev_ops;
- 	ndev->ethtool_ops = &mtk_star_ethtool_ops;
- 
--	netif_napi_add(ndev, &priv->napi, mtk_star_poll, MTK_STAR_NAPI_WEIGHT);
-+	netif_napi_add(ndev, &priv->napi, mtk_star_poll, NAPI_POLL_WEIGHT);
- 
- 	return devm_register_netdev(dev, ndev);
- }
-diff --git a/drivers/net/ethernet/ti/davinci_emac.c b/drivers/net/ethernet/ti/davinci_emac.c
-index 9d1e98db308b..2a3e4e842fa5 100644
---- a/drivers/net/ethernet/ti/davinci_emac.c
-+++ b/drivers/net/ethernet/ti/davinci_emac.c
-@@ -113,7 +113,6 @@ static const char emac_version_string[] = "TI DaVinci EMAC Linux v6.1";
- #define EMAC_DEF_RX_NUM_DESC		(128)
- #define EMAC_DEF_MAX_TX_CH		(1) /* Max TX channels configured */
- #define EMAC_DEF_MAX_RX_CH		(1) /* Max RX channels configured */
--#define EMAC_POLL_WEIGHT		(64) /* Default NAPI poll weight */
- 
- /* Buffer descriptor parameters */
- #define EMAC_DEF_TX_MAX_SERVICE		(32) /* TX max service BD's */
-@@ -1949,7 +1948,7 @@ static int davinci_emac_probe(struct platform_device *pdev)
- 
- 	ndev->netdev_ops = &emac_netdev_ops;
- 	ndev->ethtool_ops = &ethtool_ops;
--	netif_napi_add(ndev, &priv->napi, emac_poll, EMAC_POLL_WEIGHT);
-+	netif_napi_add(ndev, &priv->napi, emac_poll, NAPI_POLL_WEIGHT);
- 
- 	pm_runtime_enable(&pdev->dev);
- 	rc = pm_runtime_resume_and_get(&pdev->dev);
-diff --git a/drivers/net/ethernet/ti/netcp_core.c b/drivers/net/ethernet/ti/netcp_core.c
-index 16507bff652a..21b0e961eab5 100644
---- a/drivers/net/ethernet/ti/netcp_core.c
-+++ b/drivers/net/ethernet/ti/netcp_core.c
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index c98c7ee42c6f..b04977fa84f6 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
 @@ -24,7 +24,6 @@
- #include "netcp.h"
- 
- #define NETCP_SOP_OFFSET	(NET_IP_ALIGN + NET_SKB_PAD)
--#define NETCP_NAPI_WEIGHT	64
- #define NETCP_TX_TIMEOUT	(5 * HZ)
- #define NETCP_PACKET_SIZE	(ETH_FRAME_LEN + ETH_FCS_LEN)
- #define NETCP_MIN_PACKET_SIZE	ETH_ZLEN
-@@ -2096,8 +2095,8 @@ static int netcp_create_interface(struct netcp_device *netcp_device,
- 	}
- 
- 	/* NAPI register */
--	netif_napi_add(ndev, &netcp->rx_napi, netcp_rx_poll, NETCP_NAPI_WEIGHT);
--	netif_tx_napi_add(ndev, &netcp->tx_napi, netcp_tx_poll, NETCP_NAPI_WEIGHT);
-+	netif_napi_add(ndev, &netcp->rx_napi, netcp_rx_poll, NAPI_POLL_WEIGHT);
-+	netif_tx_napi_add(ndev, &netcp->tx_napi, netcp_tx_poll, NAPI_POLL_WEIGHT);
- 
- 	/* Register the network device */
- 	ndev->dev_id		= 0;
-diff --git a/drivers/net/xen-netback/interface.c b/drivers/net/xen-netback/interface.c
-index fe8e21ad8ed9..8e035374a370 100644
---- a/drivers/net/xen-netback/interface.c
-+++ b/drivers/net/xen-netback/interface.c
-@@ -42,7 +42,6 @@
- #include <xen/balloon.h>
- 
- #define XENVIF_QUEUE_LENGTH 32
--#define XENVIF_NAPI_WEIGHT  64
- 
- /* Number of bytes allowed on the internal guest Rx queue. */
- #define XENVIF_RX_QUEUE_BYTES (XEN_NETIF_RX_RING_SIZE/2 * PAGE_SIZE)
-@@ -739,7 +738,7 @@ int xenvif_connect_data(struct xenvif_queue *queue,
- 	atomic_set(&queue->inflight_packets, 0);
- 
- 	netif_napi_add(queue->vif->dev, &queue->napi, xenvif_poll,
--			XENVIF_NAPI_WEIGHT);
-+			NAPI_POLL_WEIGHT);
- 
- 	queue->stalled = true;
- 
+ #define MTK_MAX_RX_LENGTH_2K	2048
+ #define MTK_TX_DMA_BUF_LEN	0x3fff
+ #define MTK_DMA_SIZE		512
+-#define MTK_NAPI_WEIGHT		64
+ #define MTK_MAC_COUNT		2
+ #define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
+ #define MTK_RX_HLEN		(NET_SKB_PAD + MTK_RX_ETH_HLEN + NET_IP_ALIGN)
 -- 
 2.34.1
 
