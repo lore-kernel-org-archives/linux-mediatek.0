@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C11C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 00:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 051C9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 00:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hSfBorf9tn3Rq1GFGI4RRXZKqAsES2IK1PrMDdWbxKk=; b=t7MBRee5AnN3/J
-	KUuA75zHkscLOG39js72PoJx1OS87rn6ipVU4wAhs3lIRlNY87Ni8XjEPHxQbIb7JHfzwcxwdXjhi
-	jUgWwxpOH/fs96oi6SFkkMYKJcR+1bJeU6hYinjMWloXBg3En0RBz/5g1WhU6mPtUnfffciR+Ca8z
-	xCnUS9zbyK8w0jcj987C/0rL52lM8z3QcJPCT4NsM0afMk9fuSXTXexHVvzv+/WQZZjZNl4mavcW5
-	EH1TkV3kUuBZK/tzeIozi0FXWdlbbG9GAG2Q/3kLe6z3WnSdgifAMaL/jAMtcb0z0NR6hDIfW2cIB
-	nMARud1x5+pe7/FUAaxQ==;
+	List-Owner; bh=73xH/j1Z/Gk5ho7MhiSCE01i2Tr2Ggd9CZtqQ/hrniQ=; b=DrLqIdBnQYrQVd
+	aRmaaHxwR8o5CdJVX9gPoBBxSFZDJbTaHfD8h07oiFlZn34me8kp3dUDy2uxb3tNnw0zPYrSiA3Qe
+	anMQ/T5AyR0VL4wEqxc7mA3u1NDtITiWJdEyZrO/TPX2NnOqg2iuG0Uvn8hB+SGXx3DFSZKJ+uLaP
+	39xNO/6ZKvK/D637uXqm+gIWExbBbJbLO/lvo60mdx5o6Ulvs/LKMWX5i4Vr6EBl2O2HX+YLLgiTh
+	5ULZPHdqTn72hyTDi04kKNqujYIcaeEwnwg93kjyicbA+r+V7UJb08SJIYu/n8Mnqk6/7R4Zv4HMV
+	Fv8Qhu6mou8dnY+qJXxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njVdQ-00GliC-4E; Wed, 27 Apr 2022 00:34:24 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1njVsv-00Gpnc-RB; Wed, 27 Apr 2022 00:50:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njVdF-00GlgL-BF; Wed, 27 Apr 2022 00:34:14 +0000
+ id 1njVsk-00Gpl7-L1; Wed, 27 Apr 2022 00:50:16 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id EBC4EB823FC;
- Wed, 27 Apr 2022 00:34:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00051C385A4;
- Wed, 27 Apr 2022 00:34:09 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 2D26761AF6;
+ Wed, 27 Apr 2022 00:50:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 082C4C385AF;
+ Wed, 27 Apr 2022 00:50:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651019650;
- bh=w8xOCgz07U6QLDdN1TlVIYIPxUDnYGMJhvye/e+Xq+c=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=i9r5Swi9RF5uZq/NT+5UF3nO28x9iQj0yhn1AYSzHRrk56Fx4JQMatRTMp/kiXZ9E
- kJcDheQ/d1uxHds9JWEt1NlA1kyH07azSfZF0pZ3R1QbafOHBovFZagC5/j9Wpo2Iy
- peLf1f2GQXjI/vvxLlYJ9yovB/xCBulmqYBSRoHj3UGWg2evkuuUzenyYCKSxIor8l
- LuqBLLpqC6jkBo1Zm7ui2ookfgRfMQmVdWRw9r+svF4uo58J+Wa2sONpWWy6qJb0XW
- Ws+fTi4FsnzMufJ/k4Y8PrvIXed5fXAKWL+0VHvurBQcu1AsJ1kxh303j6mFHGqJX5
- rFVCYMk69V7Jw==
-Date: Tue, 26 Apr 2022 17:34:08 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang
- <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Golle
- <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
- <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt753x: fix pcs conversion regression
-Message-ID: <20220426173408.24ddf574@kernel.org>
-In-Reply-To: <E1nj6FW-007WZB-5Y@rmk-PC.armlinux.org.uk>
-References: <E1nj6FW-007WZB-5Y@rmk-PC.armlinux.org.uk>
+ s=k20201202; t=1651020612;
+ bh=lrydYJjF8fl5pv7H7jwOfVqnpBXMFfGcvaZeDdva/Fg=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=MoZ1FVIDiB5o8z/s3NkMXhO/Xi8ksCvjfr1fdGZthOaGEMXyv1oy/gvJcrrLMuWkg
+ pEPhr//c53V9o4fqWeV8OVN9FA+fx0hr+iQNt7vPdJOFg17bgn9UPu7cwrNvMnMktA
+ o2Y1j0jrR0hxlE756del3m4OM9n37Bs88Dmmv+EDVg6vBCWyfseF/PYFKR/fpu2v/U
+ aGgIfVLUlEQHY4ZvN8EVCUxeOSATI3pgseRdTi6blbU/i+DXPqWEQgeIw308AML4t1
+ zJEKGX6VUDs5A1mrbZOpb52a6T7fDjGMLUpIFfyqXMNnv+K+5MFRI/cck63M/w0s9A
+ FViFwR96nJcFA==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ E06D2F03841; Wed, 27 Apr 2022 00:50:11 +0000 (UTC)
 MIME-Version: 1.0
+Subject: Re: [PATCH net-next] net: dsa: mt753x: fix pcs conversion regression
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <165102061191.18100.15381630708714680923.git-patchwork-notify@kernel.org>
+Date: Wed, 27 Apr 2022 00:50:11 +0000
+References: <E1nj6FW-007WZB-5Y@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1nj6FW-007WZB-5Y@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Cc: Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+ daniel@makrotopia.org, andrew@lunn.ch, vivien.didelot@gmail.com,
+ f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_173413_570416_9580F365 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20220426_175014_764984_5E1E919D 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,19 +78,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 Apr 2022 22:28:02 +0100 Russell King (Oracle) wrote:
-> Reported-by: Daniel Golle <daniel@makrotopia.org>
-> Tested-by: Daniel Golle <daniel@makrotopia.org>
-> Fixes: cbd1f243bc41 ("net: dsa: mt7530: partially convert to phylink_pcs")
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
-> 
-> Fixes line added so people know which net-next commit is affected;
-> this is only in net-next at present. If you think it's unnecessary,
-> please remove when applying the patch, or let me know and I will
-> resend.
+Hello:
 
-Not at all, FWIW it's very useful.
+This patch was applied to netdev/net-next.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Mon, 25 Apr 2022 22:28:02 +0100 you wrote:
+> Daniel Golle reports that the conversion of mt753x to phylink PCS caused
+> an oops as below.
+> 
+> The problem is with the placement of the PCS initialisation, which
+> occurs after mt7531_setup() has been called. However, burited in this
+> function is a call to setup the CPU port, which requires the PCS
+> structure to be already setup.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next] net: dsa: mt753x: fix pcs conversion regression
+    https://git.kernel.org/netdev/net-next/c/fae463084032
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
