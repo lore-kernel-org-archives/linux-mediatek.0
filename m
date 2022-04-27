@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B4FDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 07:15:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF16AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Apr 2022 07:23:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8J5L6ist5cPac52peBT7ms0Xnaz3G2ccpPaNcETAJ9U=; b=O4PUiRxUgs+QwJ
-	9sB5ft3ZWnFspgq7qc9VWLj4EDMD6RBd6sYC0HeXJptzc4q8d3iDUUdAneSyZt57J4K/BWsAKcd8j
-	uAGvCSeKFLWDh/p9uvx6xFxvUkmu2nzuocZwh/ok3niW8Et7KqvlZ+oJBF3QEZkrXfsg2kzQIT6sf
-	5/ma7wAyphWW+M+Y+cj0SLksNzl+dgV5dlyTUT0h+ngA+c+KjtAiRgES9YhXiIXHftlp8xA2ycLqL
-	09zgeWF0UvCkCNRUnJE2JkpUG4T8Nw9+xg34vKfBkF5I77GhWJY1J/uZ98DpinIhGfQDdHl+DVnGo
-	2jANxaufzBOHdnGVjG/Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FzDN9c2O/Cjc5ekvqSS/ms19kPx3pwjUInvHq2OPRr0=; b=HkV4EM3N363+YJ
+	i9ZHS8uvgG8ViQY+DWTg6l/eqSr036uxQ2+rInPkfAOU4CQg6ynSTFJGGCRHTfmdNB5mBzR1JOBgX
+	k075rePX05Vor2/g0KdKCxunvXXWIFnfznteOSIk4PudNksRppTowRJK9s+FpTCn1Q7EaoEBV0zda
+	8AK+iPtP8nvjl1Tr2x+SD8tclrOFr665V5E5RsCtzlAJmX934YFOtHH0vDY56TviwR4R9W8QX31gJ
+	DQS2lmCGtriSsnXBQa7nqEpK7/HQu27cp2xZOb1sJUIKrLerefbr0rcCzRRCJ6oE9xcTyYfAdk4zv
+	YnloqhJFPEdaB2hfSwXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njbtX-000DjD-IK; Wed, 27 Apr 2022 07:15:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1njc1K-000FKM-2q; Wed, 27 Apr 2022 07:23:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njbtF-000Da5-Vr; Wed, 27 Apr 2022 07:15:11 +0000
-X-UUID: 548f2d829756462cb7de59b3fdff57c3-20220427
+ id 1njc18-000FIS-38; Wed, 27 Apr 2022 07:23:20 +0000
+X-UUID: a92d8281df654b3aa5362f5aabbdcc3c-20220427
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:1285b6df-411f-465b-babd-aed7fb0f3b4d, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:46ece5bd-0b59-4229-9993-7568973351d4, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:e4a8a5c6-85ee-4ac1-ac05-bd3f1e72e732,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:900ede2e-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 548f2d829756462cb7de59b3fdff57c3-20220427
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
+X-UUID: a92d8281df654b3aa5362f5aabbdcc3c-20220427
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1526239619; Wed, 27 Apr 2022 00:15:02 -0700
+ with ESMTP id 753052126; Wed, 27 Apr 2022 00:23:11 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Apr 2022 00:15:00 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Apr 2022 00:22:53 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 Apr 2022 15:14:59 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 27 Apr 2022 15:14:59 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, Liam Girdwood
- <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, Daniel Baluta
- <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
- <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tinghan Shen <tinghan.shen@mediatek.com>, "Yaochun
- Hung" <yc.hung@mediatek.com>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Yang Yingliang <yangyingliang@huawei.com>
-CC: <sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
+ Wed, 27 Apr 2022 15:22:44 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 27 Apr 2022 15:22:44 +0800
+Message-ID: <9053a481cbe752b458997cff5f0fe7d3040fc22b.camel@mediatek.com>
+Subject: Re: [PATCH v17 06/21] soc: mediatek: add cmdq support of mtk-mmsys
+ config API for mt8195 vdosys1
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
+ Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <dri-devel@lists.freedesktop.org>,
+ <llvm@lists.linux.dev>, <singo.chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2] ASoC: SOF: mediatek: Fix allyesconfig build error
-Date: Wed, 27 Apr 2022 15:10:30 +0800
-Message-ID: <20220427071030.10172-1-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.15.GIT
+Date: Wed, 27 Apr 2022 15:22:43 +0800
+In-Reply-To: <eca7f22a-9a04-dd67-aaad-3cf64a909090@gmail.com>
+References: <20220416020749.29010-1-nancy.lin@mediatek.com>
+ <20220416020749.29010-7-nancy.lin@mediatek.com>
+ <eca7f22a-9a04-dd67-aaad-3cf64a909090@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_001510_071353_D24BFA26 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20220427_002318_169525_8E8BD145 
+X-CRM114-Status: GOOD (  34.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,184 +90,237 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o:(.opd+0x18): multiple
-definition of `adsp_clock_on';
-sound/soc/sof/mediatek/mt8195/mt8195-clk.o:(.opd+0x60): first defined
-here
-ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o: in function
-`.adsp_clock_on':
+Hi Matthias,
 
-ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o:(.opd+0x30): multiple
-definition of `adsp_clock_off';
-sound/soc/sof/mediatek/mt8195/mt8195-clk.o:(.opd+0x78): first defined
-here
-ld: sound/soc/sof/mediatek/mt8186/mt8186-clk.o: in function
-`.adsp_clock_off':
+Thanks for the review.
 
-ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o:(.opd+0x0): multiple
-definition of `sof_hifixdsp_boot_sequence';
-sound/soc/sof/mediatek/mt8195/mt8195-loader.o:(.opd+0x0): first defined
-here
-ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o: in function
-`.sof_hifixdsp_boot_sequence':
+On Fri, 2022-04-22 at 13:37 +0200, Matthias Brugger wrote:
+> 
+> On 16/04/2022 04:07, Nancy.Lin wrote:
+> > Add cmdq support for mtk-mmsys config API.
+> > The mmsys config register settings need to take effect with the
+> > other
+> > HW settings(like OVL_ADAPTOR...) at the same vblanking time.
+> > 
+> > If we use CPU to write the mmsys reg, we can't guarantee all the
+> > settings can be written in the same vblanking time.
+> > Cmdq is used for this purpose. We prepare all the related HW
+> > settings
+> > in one cmdq packet. The first command in the packet is "wait stream
+> > done",
+> > and then following with all the HW settings. After the cmdq packet
+> > is
+> > flush to GCE HW. The GCE waits for the "stream done event" to
+> > coming
+> > and then starts flushing all the HW settings. This can guarantee
+> > all
+> > the settings flush in the same vblanking.
+> > 
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-mmsys.c       | 50 ++++++++++++++++++---
+> > -----
+> >   include/linux/soc/mediatek/mtk-mmsys.h | 15 +++++---
+> >   2 files changed, 47 insertions(+), 18 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > b/drivers/soc/mediatek/mtk-mmsys.c
+> > index 7b262cefef85..ea04aa2c3840 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > @@ -177,6 +177,7 @@ struct mtk_mmsys {
+> >   	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
+> >   	struct reset_controller_dev rcdev;
+> >   	phys_addr_t io_start;
+> > +	struct cmdq_client_reg cmdq_base;
+> >   };
+> >   
+> >   static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
+> > @@ -280,46 +281,61 @@ static const struct reset_control_ops
+> > mtk_mmsys_reset_ops = {
+> >   	.reset = mtk_mmsys_reset,
+> >   };
+> >   
+> > -static void mtk_mmsys_write_reg(struct device *dev, u32 offset,
+> > u32 mask, u32 val)
+> > +static void mtk_mmsys_write_reg(struct device *dev, u32 offset,
+> > u32 mask, u32 val,
+> > +				struct cmdq_pkt *cmdq_pkt)
+> >   {
+> >   	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> >   	u32 tmp;
+> >   
+> > -	tmp = readl(mmsys->regs + offset);
+> > -	tmp = (tmp & ~mask) | val;
+> > -	writel(tmp, mmsys->regs + offset);
+> > +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> > +	if (cmdq_pkt && mmsys->cmdq_base.size) {
+> > +		cmdq_pkt_write_mask(cmdq_pkt, mmsys->cmdq_base.subsys,
+> > +				    mmsys->cmdq_base.offset + offset,
+> > val,
+> > +				    mask);
+> 
+> If we put here:
+> 
+>     return;
+> }
+> #endif
+> 
+> > +	} else {
+> > +#endif
+> > +		tmp = readl(mmsys->regs + offset);
+> > +		tmp = (tmp & ~mask) | val;
+> > +		writel(tmp, mmsys->regs + offset);
+> > +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> > +	}
+> > +#endif
+> 
+> Then we can get rid of this IS_REACHABLE. Other then that patch looks
+> good.
+> 
+> Matthias
+> 
 
-ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o:(.opd+0x18): multiple
-definition of `sof_hifixdsp_shutdown';
- sound/soc/sof/mediatek/mt8195/mt8195-loader.o:(.opd+0x18): first defined
-here
-ld: sound/soc/sof/mediatek/mt8186/mt8186-loader.o: in function
-`.sof_hifixdsp_shutdown':
+Thanks for your suggestion. I will refine it in the next revision.
 
-Fixes: 570c14dc92d5 ("ASoC: SOF: mediatek: Add mt8186 sof fw loader and
-dsp ops")
-Fixes: 210b3ab932f7 ("ASoC: SOF: mediatek: Add mt8186 dsp clock support")
+Regards,
+Nancy
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
-
-Changes since v1:
-Rebase on Mark's for-next and update "Fixes" commit id
-
----
- sound/soc/sof/mediatek/mt8186/mt8186-clk.c    |  4 ++--
- sound/soc/sof/mediatek/mt8186/mt8186-clk.h    |  4 ++--
- sound/soc/sof/mediatek/mt8186/mt8186-loader.c |  4 ++--
- sound/soc/sof/mediatek/mt8186/mt8186.c        | 18 +++++++++---------
- sound/soc/sof/mediatek/mt8186/mt8186.h        |  4 ++--
- 5 files changed, 17 insertions(+), 17 deletions(-)
-
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186-clk.c b/sound/soc/sof/mediatek/mt8186/mt8186-clk.c
-index 5f805981b8e6..22220fd50b62 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186-clk.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186-clk.c
-@@ -74,7 +74,7 @@ static void adsp_disable_all_clock(struct snd_sof_dev *sdev)
- 	clk_disable_unprepare(priv->clk[CLK_TOP_AUDIODSP]);
- }
- 
--int adsp_clock_on(struct snd_sof_dev *sdev)
-+int mt8186_adsp_clock_on(struct snd_sof_dev *sdev)
- {
- 	struct device *dev = sdev->dev;
- 	int ret;
-@@ -92,7 +92,7 @@ int adsp_clock_on(struct snd_sof_dev *sdev)
- 	return 0;
- }
- 
--void adsp_clock_off(struct snd_sof_dev *sdev)
-+void mt8186_adsp_clock_off(struct snd_sof_dev *sdev)
- {
- 	snd_sof_dsp_write(sdev, DSP_REG_BAR, ADSP_CK_EN, 0);
- 	snd_sof_dsp_write(sdev, DSP_REG_BAR, ADSP_UART_CTRL, 0);
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186-clk.h b/sound/soc/sof/mediatek/mt8186/mt8186-clk.h
-index fa174dfceff0..89c23caf0fee 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186-clk.h
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186-clk.h
-@@ -19,6 +19,6 @@ enum adsp_clk_id {
- };
- 
- int mt8186_adsp_init_clock(struct snd_sof_dev *sdev);
--int adsp_clock_on(struct snd_sof_dev *sdev);
--void adsp_clock_off(struct snd_sof_dev *sdev);
-+int mt8186_adsp_clock_on(struct snd_sof_dev *sdev);
-+void mt8186_adsp_clock_off(struct snd_sof_dev *sdev);
- #endif
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186-loader.c b/sound/soc/sof/mediatek/mt8186/mt8186-loader.c
-index 6ab4921b1010..548b12c33d8a 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186-loader.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186-loader.c
-@@ -11,7 +11,7 @@
- #include "mt8186.h"
- #include "../../ops.h"
- 
--void sof_hifixdsp_boot_sequence(struct snd_sof_dev *sdev, u32 boot_addr)
-+void mt8186_sof_hifixdsp_boot_sequence(struct snd_sof_dev *sdev, u32 boot_addr)
- {
- 	/* set RUNSTALL to stop core */
- 	snd_sof_dsp_update_bits(sdev, DSP_REG_BAR, ADSP_HIFI_IO_CONFIG,
-@@ -39,7 +39,7 @@ void sof_hifixdsp_boot_sequence(struct snd_sof_dev *sdev, u32 boot_addr)
- 				RUNSTALL, 0);
- }
- 
--void sof_hifixdsp_shutdown(struct snd_sof_dev *sdev)
-+void mt8186_sof_hifixdsp_shutdown(struct snd_sof_dev *sdev)
- {
- 	/* set RUNSTALL to stop core */
- 	snd_sof_dsp_update_bits(sdev, DSP_REG_BAR, ADSP_HIFI_IO_CONFIG,
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index c8faa63497c6..6d574fd4492e 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -211,7 +211,7 @@ static int mt8186_run(struct snd_sof_dev *sdev)
- 
- 	adsp_bootup_addr = SRAM_PHYS_BASE_FROM_DSP_VIEW;
- 	dev_dbg(sdev->dev, "HIFIxDSP boot from base : 0x%08X\n", adsp_bootup_addr);
--	sof_hifixdsp_boot_sequence(sdev, adsp_bootup_addr);
-+	mt8186_sof_hifixdsp_boot_sequence(sdev, adsp_bootup_addr);
- 
- 	return 0;
- }
-@@ -284,9 +284,9 @@ static int mt8186_dsp_probe(struct snd_sof_dev *sdev)
- 		return ret;
- 	}
- 
--	ret = adsp_clock_on(sdev);
-+	ret = mt8186_adsp_clock_on(sdev);
- 	if (ret) {
--		dev_err(sdev->dev, "adsp_clock_on fail!\n");
-+		dev_err(sdev->dev, "mt8186_adsp_clock_on fail!\n");
- 		return ret;
- 	}
- 
-@@ -297,18 +297,18 @@ static int mt8186_dsp_probe(struct snd_sof_dev *sdev)
- 
- static int mt8186_dsp_remove(struct snd_sof_dev *sdev)
- {
--	sof_hifixdsp_shutdown(sdev);
-+	mt8186_sof_hifixdsp_shutdown(sdev);
- 	adsp_sram_power_off(sdev);
--	adsp_clock_off(sdev);
-+	mt8186_adsp_clock_off(sdev);
- 
- 	return 0;
- }
- 
- static int mt8186_dsp_suspend(struct snd_sof_dev *sdev, u32 target_state)
- {
--	sof_hifixdsp_shutdown(sdev);
-+	mt8186_sof_hifixdsp_shutdown(sdev);
- 	adsp_sram_power_off(sdev);
--	adsp_clock_off(sdev);
-+	mt8186_adsp_clock_off(sdev);
- 
- 	return 0;
- }
-@@ -317,9 +317,9 @@ static int mt8186_dsp_resume(struct snd_sof_dev *sdev)
- {
- 	int ret;
- 
--	ret = adsp_clock_on(sdev);
-+	ret = mt8186_adsp_clock_on(sdev);
- 	if (ret) {
--		dev_err(sdev->dev, "adsp_clock_on fail!\n");
-+		dev_err(sdev->dev, "mt8186_adsp_clock_on fail!\n");
- 		return ret;
- 	}
- 
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.h b/sound/soc/sof/mediatek/mt8186/mt8186.h
-index df52ae9659e4..98b2965e5ba6 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.h
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.h
-@@ -75,6 +75,6 @@ struct snd_sof_dev;
- #define SIZE_SHARED_DRAM_UL			0x40000 /*Shared buffer for Uplink*/
- #define TOTAL_SIZE_SHARED_DRAM_FROM_TAIL	(SIZE_SHARED_DRAM_DL + SIZE_SHARED_DRAM_UL)
- 
--void sof_hifixdsp_boot_sequence(struct snd_sof_dev *sdev, u32 boot_addr);
--void sof_hifixdsp_shutdown(struct snd_sof_dev *sdev);
-+void mt8186_sof_hifixdsp_boot_sequence(struct snd_sof_dev *sdev, u32 boot_addr);
-+void mt8186_sof_hifixdsp_shutdown(struct snd_sof_dev *sdev);
- #endif
--- 
-2.18.0
+> >   }
+> >   
+> > -void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
+> > width, int height)
+> > +void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
+> > width,
+> > +				  int height, struct cmdq_pkt
+> > *cmdq_pkt)
+> >   {
+> >   	mtk_mmsys_write_reg(dev, MT8195_VDO1_MERGE0_ASYNC_CFG_WD + 0x10
+> > * idx,
+> > -			    ~0, height << 16 | width);
+> > +			    ~0, height << 16 | width, cmdq_pkt);
+> >   }
+> >   EXPORT_SYMBOL_GPL(mtk_mmsys_merge_async_config);
+> >   
+> > -void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
+> > be_height)
+> > +void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
+> > be_height,
+> > +			   struct cmdq_pkt *cmdq_pkt)
+> >   {
+> >   	mtk_mmsys_write_reg(dev, MT8195_VDO1_HDRBE_ASYNC_CFG_WD, ~0,
+> > -			    be_height << 16 | be_width);
+> > +			    be_height << 16 | be_width, cmdq_pkt);
+> >   }
+> >   EXPORT_SYMBOL_GPL(mtk_mmsys_hdr_confing);
+> >   
+> >   void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool
+> > alpha_sel, u16 alpha,
+> > -			       u8 mode, u32 biwidth)
+> > +			       u8 mode, u32 biwidth, struct cmdq_pkt
+> > *cmdq_pkt)
+> >   {
+> >   	mtk_mmsys_write_reg(dev, MT8195_VDO1_MIXER_IN1_ALPHA + (idx -
+> > 1) * 4, ~0,
+> > -			    alpha << 16 | alpha);
+> > +			    alpha << 16 | alpha, cmdq_pkt);
+> >   	mtk_mmsys_write_reg(dev, MT8195_VDO1_HDR_TOP_CFG, BIT(19 +
+> > idx),
+> > -			    alpha_sel << (19 + idx));
+> > +			    alpha_sel << (19 + idx), cmdq_pkt);
+> >   	mtk_mmsys_write_reg(dev, MT8195_VDO1_MIXER_IN1_PAD + (idx - 1)
+> > * 4,
+> > -			    GENMASK(31, 16) | GENMASK(1, 0), biwidth <<
+> > 16 | mode);
+> > +			    GENMASK(31, 16) | GENMASK(1, 0),
+> > +			    biwidth << 16 | mode, cmdq_pkt);
+> >   }
+> >   EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_config);
+> >   
+> > -void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
+> > bool channel_swap)
+> > +void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
+> > bool channel_swap,
+> > +				     struct cmdq_pkt *cmdq_pkt)
+> >   {
+> >   	mtk_mmsys_write_reg(dev, MT8195_VDO1_MIXER_IN1_PAD + (idx - 1)
+> > * 4, BIT(4),
+> > -			    channel_swap << 4);
+> > +			    channel_swap << 4, cmdq_pkt);
+> >   }
+> >   EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_channel_swap);
+> >   
+> > @@ -377,6 +393,12 @@ static int mtk_mmsys_probe(struct
+> > platform_device *pdev)
+> >   		mmsys->data = match_data->drv_data[0];
+> >   	}
+> >   
+> > +#if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> > +	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
+> > +	if (ret)
+> > +		dev_dbg(dev, "No mediatek,gce-client-reg!\n");
+> > +#endif
+> > +
+> >   	platform_set_drvdata(pdev, mmsys);
+> >   
+> >   	clks = platform_device_register_data(&pdev->dev, mmsys->data-
+> > >clk_driver,
+> > diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
+> > b/include/linux/soc/mediatek/mtk-mmsys.h
+> > index fe620929b0f9..7a73305390ba 100644
+> > --- a/include/linux/soc/mediatek/mtk-mmsys.h
+> > +++ b/include/linux/soc/mediatek/mtk-mmsys.h
+> > @@ -6,6 +6,10 @@
+> >   #ifndef __MTK_MMSYS_H
+> >   #define __MTK_MMSYS_H
+> >   
+> > +#include <linux/mailbox_controller.h>
+> > +#include <linux/mailbox/mtk-cmdq-mailbox.h>
+> > +#include <linux/soc/mediatek/mtk-cmdq.h>
+> > +
+> >   enum mtk_ddp_comp_id;
+> >   struct device;
+> >   
+> > @@ -73,13 +77,16 @@ void mtk_mmsys_ddp_disconnect(struct device
+> > *dev,
+> >   			      enum mtk_ddp_comp_id cur,
+> >   			      enum mtk_ddp_comp_id next);
+> >   
+> > -void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
+> > width, int height);
+> > +void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
+> > width,
+> > +				  int height, struct cmdq_pkt
+> > *cmdq_pkt);
+> >   
+> > -void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
+> > be_height);
+> > +void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
+> > be_height,
+> > +			   struct cmdq_pkt *cmdq_pkt);
+> >   
+> >   void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool
+> > alpha_sel, u16 alpha,
+> > -			       u8 mode, u32 biwidth);
+> > +			       u8 mode, u32 biwidth, struct cmdq_pkt
+> > *cmdq_pkt);
+> >   
+> > -void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
+> > bool channel_swap);
+> > +void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
+> > bool channel_swap,
+> > +				     struct cmdq_pkt *cmdq_pkt);
+> >   
+> >   #endif /* __MTK_MMSYS_H */
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> 
+https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!0pXxTj2b3mnxU4EoC9pD9oDKrMfP94xbd8LbZmH458oNOSzit_MOSnjS6RhGvUhR$
+>  
 
 
 _______________________________________________
