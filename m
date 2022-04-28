@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41236C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 09:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B719C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 09:49:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CWEsyNdRQ54GzjAk/6Gtv0R0WOnsPz6JSmaJJ4JKfXs=; b=NiN5x8Cl1Zhmyx
-	Q0uBLTkl8pxkE/C1ty+AeV5NDHpS5zskWzRulb7L8fVeBghNRqrzHI7K3EyEySvXdfCTub63HT4Ct
-	uXOvlLZLhuKBXTFaNw6ExzfNAwwAtS4q8PAs1MSRZ5WQ3jPQHZKs2s6BbIAdxDTQGSlaXySZWgqay
-	Xh8R6zvcF9Ig7R773TXW4t5rO96jeFtgZQM/YvV0seK2G0Yorj+Wf2eEJbDGdlImxw3cqoDeNoKRt
-	7lbxY92lCr+7Y3D3QiumSaT52Ln5ht/6orL6niC50melN4gOEMc67ZaQpLnyKAb95thY514qQafRC
-	W68w8mAMVzTSrWv5q3iw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7TKvXkFAZyvbZuksuVzZbWzQOJy7NcwNKrV6IteeJV0=; b=ITTgrlVTiw6Ft6
+	iYfzFUznpZtmdRuFyq6agiyN9W/ou2Y167id9HksgcYoJYaWlcGx5KDlzR6IOW7g+BS3TV4YY/Hvl
+	edlzyI2M/sXM2ISnMqblOLOHqpkX7auZKSAWMFIirdeew9P8dLBsZTuvyEjIlfq0IVs64mgCNu2Go
+	Vqzy8twSvPmPDr+xUumV168LDXalDOy1TEiUppvtzNIClGpmXnvdI2ZQ/BwjTnBR9LkdRMDpocwRd
+	X0HlI4VEbwEwTonIYFg4lbsw4E1FXBfu9u7B8BNB/jB82+lRchT+n0lIlpkFCgzgNVLSDjSveNaxh
+	NSAWymIyuQ45Dn3iuDzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk0kJ-005q6T-CH; Thu, 28 Apr 2022 09:47:35 +0000
+	id 1nk0ld-005qq9-Tu; Thu, 28 Apr 2022 09:48:57 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk0g7-005oDh-KA; Thu, 28 Apr 2022 09:43:17 +0000
-X-UUID: 82ec5eaf52ac44e7a69eccd7535048de-20220428
+ id 1nk0g9-005oDh-Mu; Thu, 28 Apr 2022 09:43:19 +0000
+X-UUID: 194f4f1a8c6b4e569e44544a0ac996ab-20220428
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:3b196a31-2d2b-42ba-8062-e30505f0509e, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:29b32c9d-eef8-4354-9c36-efddfce2f62d, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:42ad082f-6199-437e-8ab4-9920b4bc5b76,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:45ad082f-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 82ec5eaf52ac44e7a69eccd7535048de-20220428
+X-UUID: 194f4f1a8c6b4e569e44544a0ac996ab-20220428
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 50494430; Thu, 28 Apr 2022 02:43:09 -0700
+ with ESMTP id 338182466; Thu, 28 Apr 2022 02:43:09 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Apr 2022 02:34:10 -0700
+ 15.0.1497.2; Thu, 28 Apr 2022 02:33:58 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 28 Apr 2022 17:34:08 +0800
+ Thu, 28 Apr 2022 17:33:57 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 Apr 2022 17:34:08 +0800
+ Transport; Thu, 28 Apr 2022 17:33:56 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>,
  <angelogioacchino.delregno@collabora.com>
@@ -58,18 +58,15 @@ CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
  <jiaxin.yu@mediatek.com>
-Subject: [v4 12/18] ASoC: mediatek: mt8186: support gpio control in platform
- driver
-Date: Thu, 28 Apr 2022 17:33:49 +0800
-Message-ID: <20220428093355.16172-13-jiaxin.yu@mediatek.com>
+Subject: [v4 00/18] ASoC: mediatek: Add support for MT8186 SoC
+Date: Thu, 28 Apr 2022 17:33:37 +0800
+Message-ID: <20220428093355.16172-1-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220428093355.16172-1-jiaxin.yu@mediatek.com>
-References: <20220428093355.16172-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_024315_717606_11E9A63C 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20220428_024317_787318_D22A017F 
+X-CRM114-Status: GOOD (  16.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,291 +83,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add gpio control for all audio interface separately.
+This series of patches adds support for Mediatek AFE of MT8186 Soc.
+Patches are based on broonie tree "for-next" branch.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
----
- sound/soc/mediatek/mt8186/mt8186-afe-gpio.c | 244 ++++++++++++++++++++
- sound/soc/mediatek/mt8186/mt8186-afe-gpio.h |  19 ++
- 2 files changed, 263 insertions(+)
+Changes since v3:
+  - [v4 09/18]
+    - remove DEBUG_COEFF debugging code
+  - [v4 10/18]
+    - simplify the logic of the code
+  - [v4 13/18]
+    - split out the MT6366 bits into mt8186-mt6366-commom.c
+    - fix build error of "error: 'struct dev_pm_info' has no member named 'runtime_error'"
+    - fix bug of adda dai driver
+    - add route for pcm interface channel 2.
+  - [v4 15/18]
+  - [v4 17/18]
+    - commonize the configuration of the codecs
+    - move MT6366 common bits into mt8186-mt6366-common.c
+
+Changes since v2:
+  - add a new compatible string "mediatek,mt6366-sound"
+  - modify the log level for simplicity
+  - use dev_err_probe(...) instead of dev_err(...) in dev probe()
+  - optimized the logic of some code
+  - use BIT() and GENMASK() macros to descript the registers
+
+  Thanks for AngeloGioacchino's careful reviews.
+
+Changes since v1:
+  [v2 01/17]
+    - add a new ID to the existing mt6358 codec driver
+  [v2 03/17]
+    - modify log level in DAPM events
+    - use standard numeric control with name ending in Switch
+    - return 1 when the value changed in mixer control's .get callback
+  [v2 05/17]
+    - ending in Switch to the standard on/off controls
+    - change to "HW Gain 1 Volume" and "HW Gain 2 Volume"
+  [v2 09/17]
+    - return an error in the default case rather than just picking one of
+      the behaviours when do .set_fmt
+    - use the new defines that are _PROVIDER_MASK, _DAIFMT_CBP_CFP and
+      _DAIFMT_CBC_CFC
+  [v2 10/17]
+  [v2 11/17]
+    - the clock and gpio are aplit out into separate  patches
+
+  The source file's GPL comment use c++ style, and the header fils's GPL
+  comment use c style. We have added "Switch" after the names of all the
+  controls that just are simple on/off.
+
+Jiaxin Yu (18):
+  ASoC: mediatek: mt6366: support for mt6366 codec
+  dt-bindings: mediatek: mt6358: add new compatible for using mt6366
+  ASoC: mediatek: mt8186: support audsys clock control
+  ASoC: mediatek: mt8186: support adda in platform driver
+  ASoC: mediatek: mt8186: support hostless in platform driver
+  ASoC: mediatek: mt8186: support hw gain in platform driver
+  ASoC: mediatek: mt8186: support i2s in platform driver
+  ASoC: mediatek: mt8186: support pcm in platform driver
+  ASoC: mediatek: mt8186: support src in platform driver
+  ASoC: mediatek: mt8186: support tdm in platform driver
+  ASoC: mediatek: mt8186: support audio clock control in platform driver
+  ASoC: mediatek: mt8186: support gpio control in platform driver
+  ASoC: mediatek: mt8186: add platform driver
+  dt-bindings: mediatek: mt8186: add audio afe document
+  ASoC: mediatek: mt8186: add machine driver with mt6366, da7219 and
+    max98357
+  dt-bindings: mediatek: mt8186: add mt8186-mt6366-da7219-max98357
+    document
+  ASoC: mediatek: mt8186: add machine driver with mt6366, rt1019 and
+    rt5682s
+  dt-bindings: mediatek: mt8186: add mt8186-mt6366-rt1019-rt5682s
+    document
+
+ .../devicetree/bindings/sound/mt6358.txt      |    4 +-
+ .../bindings/sound/mt8186-afe-pcm.yaml        |  175 +
+ .../sound/mt8186-mt6366-da7219-max98357.yaml  |   71 +
+ .../sound/mt8186-mt6366-rt1019-rt5682s.yaml   |   71 +
+ sound/soc/codecs/mt6358.c                     |    1 +
+ sound/soc/mediatek/Kconfig                    |   44 +
+ sound/soc/mediatek/Makefile                   |    1 +
+ sound/soc/mediatek/mt8186/Makefile            |   22 +
+ sound/soc/mediatek/mt8186/mt8186-afe-clk.c    |  651 ++++
+ sound/soc/mediatek/mt8186/mt8186-afe-clk.h    |  106 +
+ sound/soc/mediatek/mt8186/mt8186-afe-common.h |  235 ++
+ .../soc/mediatek/mt8186/mt8186-afe-control.c  |  261 ++
+ sound/soc/mediatek/mt8186/mt8186-afe-gpio.c   |  244 ++
+ sound/soc/mediatek/mt8186/mt8186-afe-gpio.h   |   19 +
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    | 3005 +++++++++++++++++
+ sound/soc/mediatek/mt8186/mt8186-audsys-clk.c |  150 +
+ sound/soc/mediatek/mt8186/mt8186-audsys-clk.h |   15 +
+ .../soc/mediatek/mt8186/mt8186-audsys-clkid.h |   45 +
+ sound/soc/mediatek/mt8186/mt8186-dai-adda.c   |  873 +++++
+ .../soc/mediatek/mt8186/mt8186-dai-hostless.c |  298 ++
+ .../soc/mediatek/mt8186/mt8186-dai-hw-gain.c  |  236 ++
+ sound/soc/mediatek/mt8186/mt8186-dai-i2s.c    | 1355 ++++++++
+ sound/soc/mediatek/mt8186/mt8186-dai-pcm.c    |  423 +++
+ sound/soc/mediatek/mt8186/mt8186-dai-src.c    |  695 ++++
+ sound/soc/mediatek/mt8186/mt8186-dai-tdm.c    |  695 ++++
+ .../mediatek/mt8186/mt8186-interconnection.h  |   69 +
+ .../soc/mediatek/mt8186/mt8186-misc-control.c |  294 ++
+ .../mediatek/mt8186/mt8186-mt6366-common.c    |   59 +
+ .../mediatek/mt8186/mt8186-mt6366-common.h    |   17 +
+ .../mt8186/mt8186-mt6366-da7219-max98357.c    | 1003 ++++++
+ .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     |  979 ++++++
+ sound/soc/mediatek/mt8186/mt8186-reg.h        | 2913 ++++++++++++++++
+ 32 files changed, 15028 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
+ create mode 100644 sound/soc/mediatek/mt8186/Makefile
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-control.c
  create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
  create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-audsys-clk.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-audsys-clk.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-audsys-clkid.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-hostless.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-i2s.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-src.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-tdm.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-misc-control.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-common.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-common.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-reg.h
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
-new file mode 100644
-index 000000000000..5ba28095b7da
---- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
-@@ -0,0 +1,244 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// mt8186-afe-gpio.c  --  Mediatek 8186 afe gpio ctrl
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-+
-+#include <linux/gpio.h>
-+#include <linux/pinctrl/consumer.h>
-+
-+#include "mt8186-afe-common.h"
-+#include "mt8186-afe-gpio.h"
-+
-+struct pinctrl *aud_pinctrl;
-+
-+enum mt8186_afe_gpio {
-+	MT8186_AFE_GPIO_CLK_MOSI_OFF,
-+	MT8186_AFE_GPIO_CLK_MOSI_ON,
-+	MT8186_AFE_GPIO_CLK_MISO_OFF,
-+	MT8186_AFE_GPIO_CLK_MISO_ON,
-+	MT8186_AFE_GPIO_DAT_MISO_OFF,
-+	MT8186_AFE_GPIO_DAT_MISO_ON,
-+	MT8186_AFE_GPIO_DAT_MOSI_OFF,
-+	MT8186_AFE_GPIO_DAT_MOSI_ON,
-+	MT8186_AFE_GPIO_I2S0_OFF,
-+	MT8186_AFE_GPIO_I2S0_ON,
-+	MT8186_AFE_GPIO_I2S1_OFF,
-+	MT8186_AFE_GPIO_I2S1_ON,
-+	MT8186_AFE_GPIO_I2S2_OFF,
-+	MT8186_AFE_GPIO_I2S2_ON,
-+	MT8186_AFE_GPIO_I2S3_OFF,
-+	MT8186_AFE_GPIO_I2S3_ON,
-+	MT8186_AFE_GPIO_TDM_OFF,
-+	MT8186_AFE_GPIO_TDM_ON,
-+	MT8186_AFE_GPIO_PCM_OFF,
-+	MT8186_AFE_GPIO_PCM_ON,
-+	MT8186_AFE_GPIO_GPIO_NUM
-+};
-+
-+struct audio_gpio_attr {
-+	const char *name;
-+	bool gpio_prepare;
-+	struct pinctrl_state *gpioctrl;
-+};
-+
-+static struct audio_gpio_attr aud_gpios[MT8186_AFE_GPIO_GPIO_NUM] = {
-+	[MT8186_AFE_GPIO_CLK_MOSI_OFF] = {"aud_clk_mosi_off", false, NULL},
-+	[MT8186_AFE_GPIO_CLK_MOSI_ON] = {"aud_clk_mosi_on", false, NULL},
-+	[MT8186_AFE_GPIO_CLK_MISO_OFF] = {"aud_clk_miso_off", false, NULL},
-+	[MT8186_AFE_GPIO_CLK_MISO_ON] = {"aud_clk_miso_on", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MISO_OFF] = {"aud_dat_miso_off", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MISO_ON] = {"aud_dat_miso_on", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MOSI_OFF] = {"aud_dat_mosi_off", false, NULL},
-+	[MT8186_AFE_GPIO_DAT_MOSI_ON] = {"aud_dat_mosi_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S0_OFF] = {"aud_gpio_i2s0_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S0_ON] = {"aud_gpio_i2s0_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S1_OFF] = {"aud_gpio_i2s1_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S1_ON] = {"aud_gpio_i2s1_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S2_OFF] = {"aud_gpio_i2s2_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S2_ON] = {"aud_gpio_i2s2_on", false, NULL},
-+	[MT8186_AFE_GPIO_I2S3_OFF] = {"aud_gpio_i2s3_off", false, NULL},
-+	[MT8186_AFE_GPIO_I2S3_ON] = {"aud_gpio_i2s3_on", false, NULL},
-+	[MT8186_AFE_GPIO_TDM_OFF] = {"aud_gpio_tdm_off", false, NULL},
-+	[MT8186_AFE_GPIO_TDM_ON] = {"aud_gpio_tdm_on", false, NULL},
-+	[MT8186_AFE_GPIO_PCM_OFF] = {"aud_gpio_pcm_off", false, NULL},
-+	[MT8186_AFE_GPIO_PCM_ON] = {"aud_gpio_pcm_on", false, NULL},
-+};
-+
-+static DEFINE_MUTEX(gpio_request_mutex);
-+
-+int mt8186_afe_gpio_init(struct device *dev)
-+{
-+	int i, j, ret;
-+
-+	aud_pinctrl = devm_pinctrl_get(dev);
-+	if (IS_ERR(aud_pinctrl)) {
-+		ret = PTR_ERR(aud_pinctrl);
-+		dev_err(dev, "%s(), ret %d, cannot get aud_pinctrl!\n",
-+			__func__, ret);
-+		return ret;
-+	}
-+
-+	for (i = 0; i < ARRAY_SIZE(aud_gpios); i++) {
-+		aud_gpios[i].gpioctrl = pinctrl_lookup_state(aud_pinctrl,
-+							     aud_gpios[i].name);
-+		if (IS_ERR(aud_gpios[i].gpioctrl)) {
-+			ret = PTR_ERR(aud_gpios[i].gpioctrl);
-+			dev_info(dev, "%s(), pinctrl_lookup_state %s fail, ret %d\n",
-+				 __func__, aud_gpios[i].name, ret);
-+		} else {
-+			aud_gpios[i].gpio_prepare = true;
-+		}
-+	}
-+
-+	/* gpio status init */
-+	for (i = MT8186_DAI_ADDA; i <= MT8186_DAI_TDM_IN; i++) {
-+		for (j = 0; j <= 1; j++)
-+			mt8186_afe_gpio_request(dev, false, i, j);
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt8186_afe_gpio_init);
-+
-+static int mt8186_afe_gpio_select(struct device *dev,
-+				  enum mt8186_afe_gpio type)
-+{
-+	int ret = 0;
-+
-+	if (type < 0 || type >= MT8186_AFE_GPIO_GPIO_NUM) {
-+		dev_err(dev, "%s(), error, invalid gpio type %d\n",
-+			__func__, type);
-+		return -EINVAL;
-+	}
-+
-+	if (!aud_gpios[type].gpio_prepare) {
-+		dev_err(dev, "%s(), error, gpio type %d not prepared\n",
-+			__func__, type);
-+		return -EIO;
-+	}
-+
-+	ret = pinctrl_select_state(aud_pinctrl,
-+				   aud_gpios[type].gpioctrl);
-+	if (ret) {
-+		dev_err(dev, "%s(), error, can not set gpio type %d\n",
-+			__func__, type);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt8186_afe_gpio_adda_dl(struct device *dev, bool enable)
-+{
-+	int ret;
-+
-+	if (enable) {
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MOSI_ON);
-+		if (ret) {
-+			dev_err(dev, "%s(), MOSI CLK ON slect fail!\n", __func__);
-+			return ret;
-+		}
-+
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MOSI_ON);
-+		if (ret) {
-+			dev_err(dev, "%s(), MOSI DAT ON slect fail!\n", __func__);
-+			return ret;
-+		}
-+	} else {
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MOSI_OFF);
-+		if (ret) {
-+			dev_err(dev, "%s(), MOSI DAT OFF slect fail!\n", __func__);
-+			return ret;
-+		}
-+
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MOSI_OFF);
-+		if (ret) {
-+			dev_err(dev, "%s(), MOSI CLK ON slect fail!\n", __func__);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt8186_afe_gpio_adda_ul(struct device *dev, bool enable)
-+{
-+	int ret;
-+
-+	if (enable) {
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MISO_ON);
-+		if (ret) {
-+			dev_err(dev, "%s(), MISO CLK ON slect fail!\n", __func__);
-+			return ret;
-+		}
-+
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MISO_ON);
-+		if (ret) {
-+			dev_err(dev, "%s(), MISO DAT ON slect fail!\n", __func__);
-+			return ret;
-+		}
-+	} else {
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_DAT_MISO_OFF);
-+		if (ret) {
-+			dev_err(dev, "%s(), MISO DAT OFF slect fail!\n", __func__);
-+			return ret;
-+		}
-+
-+		ret = mt8186_afe_gpio_select(dev, MT8186_AFE_GPIO_CLK_MISO_OFF);
-+		if (ret) {
-+			dev_err(dev, "%s(), MISO CLK OFF slect fail!\n", __func__);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+int mt8186_afe_gpio_request(struct device *dev, bool enable,
-+			    int dai, int uplink)
-+{
-+	enum mt8186_afe_gpio sel;
-+	int ret = -EINVAL;
-+
-+	mutex_lock(&gpio_request_mutex);
-+
-+	switch (dai) {
-+	case MT8186_DAI_ADDA:
-+		if (uplink)
-+			ret = mt8186_afe_gpio_adda_ul(dev, enable);
-+		else
-+			ret = mt8186_afe_gpio_adda_dl(dev, enable);
-+		goto unlock;
-+	case MT8186_DAI_I2S_0:
-+		sel = enable ? MT8186_AFE_GPIO_I2S0_ON : MT8186_AFE_GPIO_I2S0_OFF;
-+		break;
-+	case MT8186_DAI_I2S_1:
-+		sel = enable ? MT8186_AFE_GPIO_I2S1_ON : MT8186_AFE_GPIO_I2S1_OFF;
-+		break;
-+	case MT8186_DAI_I2S_2:
-+		sel = enable ? MT8186_AFE_GPIO_I2S2_ON : MT8186_AFE_GPIO_I2S2_OFF;
-+		break;
-+	case MT8186_DAI_I2S_3:
-+		sel = enable ? MT8186_AFE_GPIO_I2S3_ON : MT8186_AFE_GPIO_I2S3_OFF;
-+		break;
-+	case MT8186_DAI_TDM_IN:
-+		sel = enable ? MT8186_AFE_GPIO_TDM_ON : MT8186_AFE_GPIO_TDM_OFF;
-+		break;
-+	case MT8186_DAI_PCM:
-+		sel = enable ? MT8186_AFE_GPIO_PCM_ON : MT8186_AFE_GPIO_PCM_OFF;
-+		break;
-+	default:
-+		mutex_unlock(&gpio_request_mutex);
-+		dev_err(dev, "%s(), invalid dai %d\n", __func__, dai);
-+		goto unlock;
-+	}
-+
-+	ret = mt8186_afe_gpio_select(dev, sel);
-+
-+unlock:
-+	mutex_unlock(&gpio_request_mutex);
-+
-+	return ret;
-+}
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
-new file mode 100644
-index 000000000000..1ddc27838eb1
---- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * mt6833-afe-gpio.h  --  Mediatek 6833 afe gpio ctrl definition
-+ *
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-+ */
-+
-+#ifndef _MT8186_AFE_GPIO_H_
-+#define _MT8186_AFE_GPIO_H_
-+
-+struct mtk_base_afe;
-+
-+int mt8186_afe_gpio_init(struct device *dev);
-+
-+int mt8186_afe_gpio_request(struct device *dev, bool enable,
-+			    int dai, int uplink);
-+
-+#endif
 -- 
 2.25.1
 
