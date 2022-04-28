@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CA00C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 13:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 654A6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 13:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DLAOb9ZT9+xNLfrSjsrwHgw7AVlv+/9jgBCExILPNug=; b=cWm98GL8NhNvV3
-	9dCgpR6Yp9p1ixuAbUCRkSUtJYMBSIFBVAj87NZ1AGFfyhL7n/xIJ5rXe68sg61oxPxzHS1hO0fP4
-	vo9aUgXCyoFsHIy9vUB5eSekwzO4jXIwXYdBC6bMhOghtrdAhOGU2QqBzsZc3Y3ckFh2dY37EWB+l
-	WHUyPpQQR3AHAQJ0gD6nQC62u0IHtbttrwE5UkXOeD4yFdUr+Zc8NMGyA7bSRy4BZE5MwBjOS9rWI
-	TCY8drqXqnyxh39UWj0W70pKQ191v34bpQR/RuTBYWveheEbpB706ILs482OJ7wA4ehkD6O4hlJpZ
-	VLkyh/aN7rmgElpcKA5g==;
+	List-Owner; bh=ADHvKeYNv7SNLbuGc9wlV/r8JaLKraFRDwKxmfP3ocY=; b=0U9iOJsLtAGloJ
+	wvMDoYwKmbYRtzkuTdXxmhKnGHAulRYSStJ9/CIO5BkNnESJWk7RQyGhVqFQV3IT+In8+Zc0Y7VjZ
+	dLNU59wnsQDhiIkI3deDoTgrVIY0ceSgKlolzMdTnNLvoEVbokJWmuzpfjwFWjPUu7N1fD0/Ld8vL
+	QcWhLk6ypAKAFigzVSWjb/7qU6toWHTxyy8czGONDsQfAJDGkn9RYm+c6MKeO+BWHOaXB/YSpYlGd
+	zeDbOWc1/dof/CLkEPvJajDAqcZoUSTqbiZWFAcphbkkPjC6JsDSUfKebGJEWGuUkSzW1Y2bgxI/e
+	6OzGskn+JatVN9styZAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk4Po-0079Ka-NS; Thu, 28 Apr 2022 13:42:40 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nk4SZ-007AX0-CG; Thu, 28 Apr 2022 13:45:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk4I5-0075hg-42; Thu, 28 Apr 2022 13:34:42 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 25E171F4043E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651152877;
- bh=GU8omeXrJMfiZadEv1lU4ULMJLZKc5nKhQvVWYR6Kng=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Zci5EGF3w5QPmXuuq1SwposSe9d6KMSH+Ii9J0t8fDkjJ+2m3YGMhkSwg7zkTynOT
- w/Aa2fGUruj+UOOaLFTBHP7XSnhvs+VZnu/ZSce56t3dJYtlEuH4YzuTnuuAU4uiV/
- 4v7+SZ41eHXIbheZq9MCva6QLsLleUNuaKmNUPBk5ridkPajUXpjB/SavbfR2aDPYu
- eUMpp4ABATl2qO7Ussp78Jy9en/I6kxjO3Fviszdp2mRb7jpY+rx7G+NrfxApud6Rx
- NrVK166N4mB+o0OPyfdt4yfop/8p1Dyp+ln8isOFls/tXHIqkKSK/Xgpp7mRlgY0gQ
- s4QpN720ZSaKQ==
-Message-ID: <8007e692-7a67-2930-709a-494d4e7df1de@collabora.com>
-Date: Thu, 28 Apr 2022 15:34:33 +0200
+ id 1nk4J0-00767h-Fa; Thu, 28 Apr 2022 13:35:39 +0000
+X-UUID: 4d626e10464942e28c844b19ad3b987f-20220428
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:ebbf9189-2078-4083-b5cf-89fc9bf145ef, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:2047d6c6-85ee-4ac1-ac05-bd3f1e72e732,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 4d626e10464942e28c844b19ad3b987f-20220428
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1207219475; Thu, 28 Apr 2022 06:35:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Apr 2022 06:25:26 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 28 Apr 2022 21:25:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 28 Apr 2022 21:25:24 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski@canonical.com>
+CC: Lala Lin <lala.lin@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v3 3/3] arm64: dts: mediatek: update efuse compatible fallbacks
+Date: Thu, 28 Apr 2022 21:25:20 +0800
+Message-ID: <20220428132520.2033-4-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220428132520.2033-1-allen-kh.cheng@mediatek.com>
+References: <20220428132520.2033-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v8 1/2] dt-bindings: arm: Add compatible for MediaTek
- MT8186
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- hsinyi@chromium.org
-References: <20220428061717.11197-1-allen-kh.cheng@mediatek.com>
- <20220428061717.11197-2-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220428061717.11197-2-allen-kh.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_063441_387156_77AEAA58 
-X-CRM114-Status: UNSURE (   7.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220428_063538_548692_0E99671F 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,18 +80,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/04/22 08:17, Allen-KH Cheng ha scritto:
-> This commit adds dt-binding documentation for the MediaTek MT8186
-> reference board.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+dtschema expects mediatek,efuse to be a generic fallback. We add
+mediatek,efuse fallback for mt8173 and mt8192 SoC.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 3 ++-
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 40d7b47fc52e..a62fb810d2a0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -594,7 +594,8 @@
+ 		};
+ 
+ 		efuse: efuse@10206000 {
+-			compatible = "mediatek,mt8173-efuse";
++			compatible = "mediatek,mt8173-efuse",
++				     "mediatek,efuse";
+ 			reg = <0 0x10206000 0 0x1000>;
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 26dbe9ecc528..4a5af1ed3abf 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -911,7 +911,8 @@
+ 		};
+ 
+ 		efuse: efuse@11c10000 {
+-			compatible = "mediatek,efuse";
++			compatible = "mediatek,mt8192-efuse",
++				     "mediatek,efuse";
+ 			reg = <0 0x11c10000 0 0x1000>;
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
+-- 
+2.18.0
 
 
 _______________________________________________
