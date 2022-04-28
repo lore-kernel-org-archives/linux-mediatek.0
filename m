@@ -4,54 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A52C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 15:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA97DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 17:28:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=amS3FGfsgbMb0nzVH1PDVjchLpb+QsDz/31V+WB1mKE=; b=T4BvC+skTD9Us6
-	DicPDJUtzSk0snEqVlokdvaHxKpDT5JXK+lRHN3qdFsQ2bbtEw3VfirsRZM7pIzsr95HJZn4/pZQc
-	lQAhfHrLXvRB6qVbKCrJgoiuRWNAa4zoFTc6OwpMFY2jsVFzAA6Mzw3aCkGhVrwn3Bjoddp5Wg4It
-	wWEAosQ39YHjcZpe0E0qV9NRkpYzteMN0cpEQEG32xGFzH5Jp59HgEkY4g/8cm9coRSs9lCviuTH+
-	DlD1JDQxjlVMPWU2LrfxQXbcyZCp+sY10fdOzJcCzeGNxb0xs0BbEwt6Ex0lDuxH2y5yztdL0p8ya
-	QYmXFrZbEP2AbFXSitGA==;
+	List-Owner; bh=01PtQo+byQTlxsh0U0i7gGl8Cr+oId62iPS1DQj8ow0=; b=KLuyzCm9XN2kDN
+	H61ewRCS4q1SnErpOBX34qkgzTN0r1JQp8lgYuqJHQ7BJ1/xOP6s8KIOOqWqNO5KvRnoa+GyQFO6k
+	YzmWjtxkne8xPsd5+ISEHakHDW2j5Gvw19Oe3TjtYEAn1RuhaIAqOGjWUZr7sbVyoSZ3rTztpY0jz
+	Ma+2cVe8P++EJYX7UVlotuUcUohmrqEmp/VgRu5hLGJiTL6AlPI73rowMetGZ28f0rrHISJ8MYgJY
+	Ol1n0fnBgXNYQieyRqi6LOUdmbk5CfTbjrdXTCvmPhDP9H23Zh5Jq8jT9BjSYek9lq5W8yufID40y
+	RzY1BRb+NB4RvnJg8L+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk63n-007f7p-Ej; Thu, 28 Apr 2022 15:28:03 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1nk7vp-0082E5-Aw; Thu, 28 Apr 2022 17:27:57 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk63O-007exx-MU; Thu, 28 Apr 2022 15:27:42 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
- id CBFB6374; Thu, 28 Apr 2022 17:27:32 +0200 (CEST)
-Date: Thu, 28 Apr 2022 17:27:31 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, youlin.pei@mediatek.com,
- anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
- yen-chang.chen@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
- libo.kang@mediatek.com, chengci.xu@mediatek.com
-Subject: Re: [PATCH v3 0/2] MT8186 IOMMU SUPPORT
-Message-ID: <YmqyY7V5p2i2h6ZN@8bytes.org>
-References: <20220407083230.18041-1-yong.wu@mediatek.com>
+ id 1nk7vd-0082B1-74; Thu, 28 Apr 2022 17:27:47 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 17F951F45AF3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651166861;
+ bh=f/YKBB23D0bseW16hv84OHBRhIMmK//gXgwxfifn6wc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZFHkcLOf+zGzJqMAyknpw1W9Uy7790ipn/B7lvWc+TpS3A8R0HmJfYVV80brlodQn
+ LlOc33tIg6LIgDA4KNLWt0/ULYZFRv9Km77eVdUg+GOawujomqVnWdUhZAAHCibRlA
+ 7jGDAm48/pS9de43lgY4fUZPRR+LDnGTuQ+MrR68A7kVJzpxvBsqKy+IjTrWEg+fUu
+ 0CuQcLhCztNqOJWQx6qKfxZK8lgsi4XAisTSyyOeU4Vty4gYNho8caBV0GduangYLT
+ +dGb05RLZHX3thrDUl4SiQ13KCyRKsG0DxqYRiBhbiwxIHRnlmVtXs3pOaTeJOT8aK
+ iJgw52vNTgPqA==
+Date: Thu, 28 Apr 2022 13:27:36 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
+ hsinyi@chromium.org
+Subject: Re: [PATCH v8 2/2] arm64: dts: Add MediaTek SoC MT8186 dts and
+ evaluation board and Makefile
+Message-ID: <20220428172736.qlkinujpxjxumsnx@notapiano>
+References: <20220428061717.11197-1-allen-kh.cheng@mediatek.com>
+ <20220428061717.11197-3-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220407083230.18041-1-yong.wu@mediatek.com>
+In-Reply-To: <20220428061717.11197-3-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_082738_933894_607A2F26 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20220428_102745_506587_44A99304 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,29 +70,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 07, 2022 at 04:32:28PM +0800, Yong Wu wrote:
-> Yong Wu (2):
->   dt-bindings: mediatek: mt8186: Add binding for MM iommu
->   iommu/mediatek: Add mt8186 iommu support
-> 
->  .../bindings/iommu/mediatek,iommu.yaml        |   4 +
->  drivers/iommu/mtk_iommu.c                     |  17 ++
->  .../dt-bindings/memory/mt8186-memory-port.h   | 217 ++++++++++++++++++
->  3 files changed, 238 insertions(+)
->  create mode 100644 include/dt-bindings/memory/mt8186-memory-port.h
+Hi Allen,
 
-This patch-set seems to apply cleanly only on 'MT8195 IOMMU SUPPORT',
-please re-submit it together with the former when you made the changes
-Matthias requested.
+On Thu, Apr 28, 2022 at 02:17:17PM +0800, Allen-KH Cheng wrote:
+> +		scp: scp@10500000 {
+> +			compatible =3D "mediatek,mt8186-scp";
+> +			reg =3D <0 0x10500000 0 0x40000>,
+> +			      <0 0x105c0000 0 0x19080>;
+> +			reg-names =3D "sram", "cfg";
+
+The mtk,scp dt-binding should be updated as it currently doesn't allow l1tc=
+m to
+be missing. According to comments in the driver cfg is optional as well, so=
+ a
+patch to the binding making both optional would be great.
 
 Thanks,
-
-	Joerg
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
