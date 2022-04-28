@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58CA6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 09:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CCF8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 09:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DKEDfHz/puvXdt5BZGko+7xpvvN7KKLT1GcgwddHUyM=; b=OYPUCUkUb2GVSn
-	7eqhyGEi2WS8iFHFC2rZCyCz8qIyhJfwXq65b+kcwUa8gE/0dK/i2asdVIV3suxhgLfJzMZojCajG
-	qjhyF9UEKlUyZibEBVrn5R8ev5E+3THUfm9L8qJMnXazrNfTWx2WsdkQLVAIpKvI+sp6P7wKNv5mu
-	qYNUGZhBPo+uDw6XGyiyl5kEcBwRKv6z9M1z7Ig8U65K9DVqUbr7N3xVfJn4saO3ziCergm8iBDW+
-	pTiSxj7ezh0kqYwshLcVGwEzjRx82cBeFP1vQmgIZ73fEobAcXfzimTC/OCIoZ4x2YllYNLVWe+ao
-	OhBdPQy7uS9ipt/2ACUw==;
+	List-Owner; bh=zKYjd0dyCrEmRgxONpUvT+Xkif1YW2Ie5BucqWkgw2w=; b=zpVaSUZoT3KtGK
+	AzvgalHga0dzcKlPscW8wkiXRWiLgyX/+m/Hvv3S1X6nK2/R1/TUnG4QakbaRhqH/2rmmU86xGljh
+	bXozQTPTlgO34siXh5WFVvizvx0VTxh8knntFI2FFOXkSNa6NcyPjJnSIT4srLPjzizTVulVDV136
+	q6Ot5lnl0bssWC+pw5keuRii+JUxZSB2YpPRhs16kYXowvVmiikymsm+PalFmLljgwl33MsA6UD2G
+	NPiWfCovY6e+z8SL2Mm9KGe4IZmZQHmsGJk51L/i5YSK6vGWhaIvyrwDc/ggPcdS4F39YQuoMaxyc
+	p3LyntpGarQDMjscJz4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk0Wq-005k6K-Cj; Thu, 28 Apr 2022 09:33:40 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1nk0X6-005kCE-4g; Thu, 28 Apr 2022 09:33:56 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk0WR-005jxx-St; Thu, 28 Apr 2022 09:33:17 +0000
-Received: by mail-pf1-x435.google.com with SMTP id j6so3744366pfe.13;
- Thu, 28 Apr 2022 02:33:14 -0700 (PDT)
+ id 1nk0WX-005jzL-OZ; Thu, 28 Apr 2022 09:33:26 +0000
+Received: by mail-pl1-x630.google.com with SMTP id u7so3827330plg.13;
+ Thu, 28 Apr 2022 02:33:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=Jx2sI9U4OCn+w0obbX5GiL9CUWZWFJnR6/XlVL4TXok=;
- b=bFBvSiqIfUxsZ8Ums18LxH6niAvg0Lz5mTnbjPoz6e7cc3W40d5Td4P9r4NmpzYzlG
- pb2pvd/fXNxKbXjjuxJTRfqemXZc5KxQbMZ5Wuk+EUVJrFkJk3ha3u/vUTc8gcDH2ZH4
- DYNBWeJ8rGROjMMEZ74Ps4VHWwPSQWgFFGQhUW73O+VsGZpTH8xrRumYjdv5aVujDovW
- zKdYJPsJ3gw/4mCZrUbNmmJy/mzwVjz8dWSQRaGHn6VmDpfh03IlvxgWESyWPR4FK9Lp
- 317ZFqDKgDGgi8ciEAnbSuQhGJ9IijVs0u6OI4FyqXw6w9ULSoYT0tsHNkCckiPlaBBO
- ED6Q==
+ bh=NM66A5OAYldkjcIb7EpGVNaXhKoeVCq/L19afQaEiL8=;
+ b=hh5ezwk8i9ar3NTDhQHy0zyGei9208iSfcYM4YKq7O7K0RrZv8nlLNVmZC5WZjFeyG
+ wSX/vbgQt2Owd+lFxbpKWcSA8srI+fqG+qf+la3Z5DnRkViqZk9izZXHExD0DrFrdU6g
+ znQ5hG8nP1Qm/IlUv5O9ZnAEjDc0HzgE7Joasu9VCfXtqikXU5Mf1J6AjzQuQCYMFEJX
+ 8XnAzmx4tNgZn8QLBihX54lO8xfa9WhADOdlOAG/dWZIgCLDmQ7YEYe4LKRiFPa2NU6z
+ rjv+mv8su9wKGjN9xhgry1eXts98AoZqtZSFfEafhAowpMyfOrW4ALy/NGCPxvkZWxoh
+ 4Cfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=Jx2sI9U4OCn+w0obbX5GiL9CUWZWFJnR6/XlVL4TXok=;
- b=IRFKaQPINszb2srVQvrRZzMMPSHZXncQNu21mu+lJEoKiXuvZmVkZB+ZkVMiV4vxEQ
- gK1vMlFjKBE+3dIqrQ0XVwQybdDTbhC4j5bREmKtz7xdUN0SoIFrx0BtPpqDb4PUPpOe
- MB5VM1IboVcYpjw30Gf6PR8MWmlrZ5nmw/+/97IIT6ZJuYPzRZX1TuAVlYUdcZ2Yvxt1
- MBfyJFUI/zRB9fHeUw3NuYGtSEY2TmYcjDnwkVRxL1e38kWzd5TJFL/eQFDqKK3fmxSd
- LHqqYMIUdrtW4SwR0QHfamz9lJ3fC3tftCUPCfeT94Laz6XnDAO8sKdmc0Tjoh3wM8fX
- 4tYw==
-X-Gm-Message-State: AOAM5316W66ntN3V/3iUFJrEnTPLIbqilvrG9W3gUOhVQ8Q0Yrc99ISt
- 6pmiZ597L5olMwYpYnEPkeM=
-X-Google-Smtp-Source: ABdhPJzT2s4BUbfVF0ibXJZuFaWAvgA8sAUtMX0axqPQQcd8lpcMQU7X+4fWs802ydw8Yj9CznwA5g==
-X-Received: by 2002:a63:8943:0:b0:3aa:f1ce:4f24 with SMTP id
- v64-20020a638943000000b003aaf1ce4f24mr22369940pgd.34.1651138393834; 
- Thu, 28 Apr 2022 02:33:13 -0700 (PDT)
+ bh=NM66A5OAYldkjcIb7EpGVNaXhKoeVCq/L19afQaEiL8=;
+ b=6yXwgwvh5nTMzo1QQWzB0a0YnWuRzcizNIgc7e/E1D5Dq5jAQZAf9pPrtIJ3X857c3
+ 7mj5DpIL2c4keq/BpVQqtGbB5fH7hGr4xfKyN7s+JnJ6iB+kVBphpnzKESEfhc4ZlpMe
+ Tm00eM6dMtDs4rXFMnb7abvS2n8JmQ9Bj7y7GhPCdJYoippnh9Z831vxX1YqQAtlpGQz
+ jmjw9hW/jEH0z2Nsf1m4iQrdOrY7Hy8GIZkJRImlYwRYg/K9atl/pbLtLHfP0awdLqWu
+ ECy0+zNHNPLPS/q3TSyrpKVY3Nm8sMPj4Q2p7rOHulNsOTSTW1la3jqyw0fdrgvbdQEz
+ ku8Q==
+X-Gm-Message-State: AOAM533fF6sFLUrkz5yG7j+ojyXmnHS8vUA6jrTV5VA41lSB4KZ9c1ER
+ tLF3IjOeBdgxLLe67kK2w74QuDOSYqI=
+X-Google-Smtp-Source: ABdhPJy/iXJqbVKjkw099C2uzmg24SKXb49S4CmFSCjXdPCaT9YW/nJ4DtvBfrGPZAG8YdZqZYDZvw==
+X-Received: by 2002:a17:902:8c81:b0:156:7fee:643b with SMTP id
+ t1-20020a1709028c8100b001567fee643bmr32899635plo.59.1651138398072; 
+ Thu, 28 Apr 2022 02:33:18 -0700 (PDT)
 Received: from localhost.localdomain ([2402:7500:569:2b1f:d169:337e:6359:8ff7])
  by smtp.gmail.com with ESMTPSA id
- i66-20020a628745000000b0050d36a5fe70sm15457932pfe.127.2022.04.28.02.33.08
+ i66-20020a628745000000b0050d36a5fe70sm15457932pfe.127.2022.04.28.02.33.14
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 28 Apr 2022 02:33:12 -0700 (PDT)
+ Thu, 28 Apr 2022 02:33:17 -0700 (PDT)
 From: cy_huang <u0084500@gmail.com>
 To: pavel@ucw.cz,
 	matthias.bgg@gmail.com
 Cc: cy_huang@richtek.com, jacek.anaszewski@gmail.com, gene_chen@richtek.com,
  linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/4] leds: flash: mt6360: Fix the wrong enable_reg in
- multicolor brightness set
-Date: Thu, 28 Apr 2022 17:32:42 +0800
-Message-Id: <1651138365-17362-2-git-send-email-u0084500@gmail.com>
+Subject: [PATCH 2/4] leds: flash: mt6360: Remove unused dependency in Kconfig
+Date: Thu, 28 Apr 2022 17:32:43 +0800
+Message-Id: <1651138365-17362-3-git-send-email-u0084500@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1651138365-17362-1-git-send-email-u0084500@gmail.com>
 References: <1651138365-17362-1-git-send-email-u0084500@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_023315_970019_6E356E69 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20220428_023321_843022_624FE7E1 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,27 +91,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: ChiYuan Huang <cy_huang@richtek.com>
 
-Fix the wrong enable_reg in multicolor brightness set.
+Kconfig already guarantee LED_CLASS_FLASH will be selected.
+Remove useless dependency for LEDS_CLASS/LEDS_CLASS_FLASH.
 
 Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
 ---
- drivers/leds/flash/leds-mt6360.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/leds/flash/Kconfig | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/leds/flash/leds-mt6360.c b/drivers/leds/flash/leds-mt6360.c
-index e1066a5..712cd46 100644
---- a/drivers/leds/flash/leds-mt6360.c
-+++ b/drivers/leds/flash/leds-mt6360.c
-@@ -115,7 +115,8 @@ static int mt6360_mc_brightness_set(struct led_classdev *lcdev,
- 		struct mc_subled *subled = mccdev->subled_info + i;
+diff --git a/drivers/leds/flash/Kconfig b/drivers/leds/flash/Kconfig
+index d3eb689..38b325c 100644
+--- a/drivers/leds/flash/Kconfig
++++ b/drivers/leds/flash/Kconfig
+@@ -50,8 +50,7 @@ config LEDS_MAX77693
  
- 		real_bright = min(lcdev->max_brightness, subled->brightness);
--		ret = regmap_update_bits(priv->regmap, MT6360_REG_ISNK(i),
-+		ret = regmap_update_bits(priv->regmap,
-+					 MT6360_REG_ISNK(subled->channel),
- 					 MT6360_ISNK_MASK, real_bright);
- 		if (ret)
- 			goto out;
+ config LEDS_MT6360
+ 	tristate "LED Support for Mediatek MT6360 PMIC"
+-	depends on LEDS_CLASS && OF
+-	depends on LEDS_CLASS_FLASH || !LEDS_CLASS_FLASH
++	depends on OF
+ 	depends on LEDS_CLASS_MULTICOLOR || !LEDS_CLASS_MULTICOLOR
+ 	depends on V4L2_FLASH_LED_CLASS || !V4L2_FLASH_LED_CLASS
+ 	depends on MFD_MT6360
 -- 
 2.7.4
 
