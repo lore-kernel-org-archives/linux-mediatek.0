@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D88C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 11:51:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74BCDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 11:56:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4KWmkkG1UCDpsLVZHzRpPIm8GqEePstQSq3TTMsO7aE=; b=x4KDJ6jjjDEtQM
-	SHrMAx1DU6ixSd1Je/BFTviouGQVWbOYeAoAUBNOc/50gp8rDXSRQEJ1FiEW3Sg6WJZqrAthgBDGB
-	974+mEQ9MiwKWrhcbJfay1iozavH9dYi02h+nUR4FP8ikdNwSZFvAPMruA/iGXinY98gnhY55pnQx
-	l6odwgVsuP4waHl9+6TXyArq3zFe3wCrIkJnHKKnUo8X0lOVxLxTtHfX24z6Odm2kEJkocuD6cK9b
-	uIm7Jwr49FPOlmegP3bPCDnIcNvinu73OPEC60Gi9l2ckDieviPpVl4s2XIzDR/QMD1es/CY5Gf0u
-	7gsSQ5DWsg3fHyaJolww==;
+	List-Owner; bh=v4BqE8AQnIRlrCnM0GVH+31B/0bFPIhj1OqDHP2Pl0A=; b=mchaKu6CsE/MMg
+	1pOflAVtRhM2i4hAVDF0fKpHzngSIjPeA/fLY3u9CPQBapzErVJkHtWZbAi9hdeK2u4UiuVC8CEk7
+	vnxpGzy+Vj81eNneKpSpC1C/mO9p7Ls2lxCKCipN5D+6GkO/zQLMogHOwdUpUYCh1BGg2OjwzhMa6
+	WbFdr0NKNpb2ulKc+jnHA/vaHUKLcj7PdDNo6SgDGJu7ibnpSoc0vywQbIzXFHge5+yXvu7gokKy7
+	lotL0gqfjtl/JHLjNKul70k5sfw+qDU7LtiG4gxCmIVCgYx1dy89YMG8Y/q5iYL6z8uHJo7F3QxLg
+	WmviRl8z8RWms1STtgcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk2g5-006bBL-4o; Thu, 28 Apr 2022 11:51:21 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1nk2lJ-006cH6-Hc; Thu, 28 Apr 2022 11:56:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk2ft-006b6k-FY; Thu, 28 Apr 2022 11:51:11 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id r13so9054952ejd.5;
- Thu, 28 Apr 2022 04:51:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=egD9TWiQgZ00ABqrlpVUqX07Bqzo15fCup+voob9j6g=;
- b=WL1Az0l4M71t6wH3bpologdHI+2TTcuoscgjnsBJKMEICZric1CBnR4C+iqFz40wp2
- WduxOA3DY68wKKncU5lIgYNo3SNSThAyo7vsLzBPYwn90G7eAkr+t2XUGZAoEIvL3XXl
- ONaIN7YHpPSW3nloam1m74lWGBzKVTCkfJ7C7Vzfs89uM5mllkCSsiNClcUaos4lvRtS
- 288uNt0JBuhVd9u4Wc70I6n9QqasFOhbZbGnut7fp6kl34H0ZJwMLWrpcF9Of1kHY2eF
- CDcaFvF98+zajvfK2GhQf5AR+uNasFZ0WElVRW1r7LER7Viun70c9lwZbOjsnUIKowOK
- 9Ijg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=egD9TWiQgZ00ABqrlpVUqX07Bqzo15fCup+voob9j6g=;
- b=6j1P4UDYq4526umfI+MnjQ8tP0y2m4j/49NQapXpye6ArKUTLad/VmzusTlOoo9C+b
- WS1taXBPeRQhan2ZQfAbZgom8DFaQnqiRzr3Doe1DkspZCluJDmxRJyGLp4Z3kElH0DX
- pneVXgT48PGWFn7fE3AFzCnNI/g/K6siVl4CUymK7ilm8s9k7qEcmpMLBwB4KsVciDPe
- qvpooGtIhyGHzl6Xj0NGCtNmf8RImCxHErMEsG0l1QAKHoMn8uRfTBd33neWEnnoK1N9
- G/yTVJhlbGJLIvioSph/qTBH0uyBTXL7pU0x3zlAM3jPr4wWxUGMJ5X9OV3e08NDWZqB
- BfmA==
-X-Gm-Message-State: AOAM530fDbK4yzeIamPgdr658UG+cxucdQWfquu4n5dmuLsKwjPP+Nyc
- ntoIUdxd0nEZD4RxXGMfYEfVDGpGobAz2xOtbro+6qYRcaI=
-X-Google-Smtp-Source: ABdhPJz7sphZYsAcSHkuYWOXutg/BiHeCdlfJ7IswfBYScK2TZOjRTZA+jBvaIFK4z2tXF9uaATwhh/UhZCbUQlMNqY=
-X-Received: by 2002:a17:906:c147:b0:6df:f047:1677 with SMTP id
- dp7-20020a170906c14700b006dff0471677mr30824800ejc.4.1651146664432; Thu, 28
- Apr 2022 04:51:04 -0700 (PDT)
+ id 1nk2l5-006cAD-JN; Thu, 28 Apr 2022 11:56:33 +0000
+X-UUID: 5e1bf36e0a704f5c9ba7e6c280bbd336-20220428
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:16ac5333-3f7e-4307-be15-56fd0c42ba0a, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:5465d4c6-85ee-4ac1-ac05-bd3f1e72e732,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 5e1bf36e0a704f5c9ba7e6c280bbd336-20220428
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 500084879; Thu, 28 Apr 2022 04:56:25 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Apr 2022 04:56:23 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Apr 2022 19:56:22 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 28 Apr 2022 19:56:21 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
+ <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
+CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
+ <chun-jie.chen@mediatek.com>, <wenst@chromium.org>,
+ <runyang.chen@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-clk@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH V5 02/16] clk: mediatek: reset: Fix written reset bit offset
+Date: Thu, 28 Apr 2022 19:56:05 +0800
+Message-ID: <20220428115620.13512-3-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220428115620.13512-1-rex-bc.chen@mediatek.com>
+References: <20220428115620.13512-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-References: <1651138365-17362-1-git-send-email-u0084500@gmail.com>
- <1651138365-17362-5-git-send-email-u0084500@gmail.com>
-In-Reply-To: <1651138365-17362-5-git-send-email-u0084500@gmail.com>
-From: Matti Vaittinen <mazziesaccount@gmail.com>
-Date: Thu, 28 Apr 2022 14:50:53 +0300
-Message-ID: <CANhJrGN8avK7mehqVDHVCjBzoG3RU4CykHEaFdQqt40_LjSh1A@mail.gmail.com>
-Subject: Re: [PATCH 4/4] leds: flash: mt6360: Add mt6360 isnk channel hardwre
- breath mode support
-To: cy_huang <u0084500@gmail.com>
-Cc: Pavel Machek <pavel@ucw.cz>, Matthias Brugger <matthias.bgg@gmail.com>, 
- ChiYuan Huang <cy_huang@richtek.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
- Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org, 
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_045109_624785_7A430D98 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20220428_045631_696698_B2EAEBB1 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,51 +84,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi ChiYuan!
+Original assert/deassert bit is BIT(0), but it's more resonable to modify
+them to BIT(id % 32) which is based on id.
 
-On Thu, Apr 28, 2022 at 1:03 PM cy_huang <u0084500@gmail.com> wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
->
-> Add mt6360 isnk channel hardware breath mode support.
->
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
->
-> +static int mt6360_gen_breath_reg_config(struct led_pattern *pattern, u32 len,
-> +                                       u8 *vals, int val_len)
-> +{
-> +       static const struct linear_range tranges[MT6360_ILED_RANGE_MAX] = {
-> +               { 125, 0, 15, 250 }, /* tr/f12 and ton, unit: millisecond */
-> +               { 250, 0, 15, 500 }, /* toff, unit: millisecond */
-> +       };
+This patch will not influence any previous driver because the reset is
+only used for thermal. The id (MT8183_INFRACFG_AO_THERM_SW_RST) is 0.
 
-It's nice to see you are using the linear_ranges helpers here! Just a
-minor remark - do you think you could use field names in linear_ranges
-initializations? That would make it less likely the driver breaks if
-someone changes the struct linear_range definition. Eg, use something
-like:
+Fixes: 64ebb57a3df6 ("clk: reset: Modify reset-controller driver")
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/clk/mediatek/reset.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-static const struct linear_range tranges[MT6360_ILED_RANGE_MAX] = {
-        /* tr/f12 and ton, unit: millisecond */
-        { .min = 125, .min_sel = 0, .max_sel = 15, .step = 250 },
-        /* toff, unit: millisecond */
-        { .min = 250, .min_sel = 0, .max_sel = 15, .step = 500 },
-};
-
-Do you think that would work?
-
-Best Regards
--- Matti
-
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index 9f3cb22aea1b..5191becb45dd 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -18,7 +18,7 @@ static int mtk_reset_assert_set_clr(struct reset_controller_dev *rcdev,
+ 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
+ 	unsigned int reg = data->regofs + ((id / 32) << 4);
+ 
+-	return regmap_write(data->regmap, reg, 1);
++	return regmap_write(data->regmap, reg, BIT(id % 32));
+ }
+ 
+ static int mtk_reset_deassert_set_clr(struct reset_controller_dev *rcdev,
+@@ -27,7 +27,7 @@ static int mtk_reset_deassert_set_clr(struct reset_controller_dev *rcdev,
+ 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
+ 	unsigned int reg = data->regofs + ((id / 32) << 4) + 0x4;
+ 
+-	return regmap_write(data->regmap, reg, 1);
++	return regmap_write(data->regmap, reg, BIT(id % 32));
+ }
+ 
+ static int mtk_reset_assert(struct reset_controller_dev *rcdev,
 -- 
+2.18.0
 
-Matti Vaittinen
-Linux kernel developer at ROHM Semiconductors
-Oulu Finland
-
-~~ When things go utterly wrong vim users can always type :help! ~~
-
-Discuss - Estimate - Plan - Report and finally accomplish this:
-void do_work(int time) __attribute__ ((const));
 
 _______________________________________________
 Linux-mediatek mailing list
