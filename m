@@ -4,88 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3094CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 14:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C1CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 14:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kSehTgZEPMhEYf9nk+IYX3SGYZf32WO58B8/JtiTVnc=; b=ad36tji4d5w0Lm
-	n1gHvPdROyuDdlwHlJIoqHBazixZm6lyee08CjFgkBMe/fYwoWS1pCzBD0hS4Xv11Z30YAugBYVN+
-	fThqcBuWDO8AvavW9Vx3Lz3GSRIOJv1OmexNOvZXXWAh9c+Gu1wJ0l+BE0LZalCWjUkgfHWLefOgW
-	kmAFSDxD+bTkzrrXfgL6OobIC2O3BFldXO5btjzlDDrnHch0KSNTtBWnwJHKacTw+vjSjrpzoSKoe
-	hXoDIcv6/FJj70KGi04pM5CBGtpbUtpiceZmMbC6Fpf1g5mlyUCh8Epy+Te/tuNuNCo06uJN2cN5d
-	s+1iWN+F2J+JD5c5tf7A==;
+	List-Owner; bh=Ij3ADkKEqFYNcOUEVejXAPwu8+461xcX6IeK3lGK/xs=; b=k9XyjZBrek257/
+	DOhWDnjL6A6xpUGdDx31bBsFITQHkD8iNNeEGIiTluccXQe4Fk0PDLqCFBk6op4g9lVeCbshG2iLK
+	VNMJZN0dWCnQnl277XvSZSCpVU3uAu9eP/+7mBapSj//KX9uf91PCLU9nNqLlMlIL1GuVjIylsZee
+	7Q1vnfZGO0TNqkXqBvHZ82Ce1HMbawbgLlwBxCKidSBidv22BhUOu/2aXNOuDmMaZLgFHpkOunGxP
+	66hIcZF3Supg3FRYljI3qwrin8sV7ZkR5j8hOsVRXVrDO+UbJ0MRVClvRT3SSYnwudcyiLPYeOgpY
+	iyNaVoaeHAS7XdN35PpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk4zY-007R6w-DO; Thu, 28 Apr 2022 14:19:36 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1nk5Ay-007UiS-DM; Thu, 28 Apr 2022 14:31:24 +0000
+Received: from mail-oa1-f51.google.com ([209.85.160.51])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk4y9-007QPe-Q1; Thu, 28 Apr 2022 14:18:11 +0000
-Received: by mail-wr1-x435.google.com with SMTP id x18so7049766wrc.0;
- Thu, 28 Apr 2022 07:18:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=5XdPKzrNuCW9Uls4djg9CnJPr0HfyWEzzX13gHvuT9s=;
- b=WYm5siW9NgsC3mcU0a3rvvmjzgshlYltbHF/8MkclQWoK+UeqblajvhIEXxxYve1Hw
- ArzFVVgI0LhX+EQQMKgsLRnxr1l6oRxDxasL6i16yusWP0qQO05kK2pUFQ9rwO2PU7CV
- g/I+91SHjrw6N2nVnNSpIvSq/6Q2axMNSjt8G+cn8jFEaCbdNXqLDCTe+qYh+tyImRcs
- 2C2UQopBi/UqDb8Z7mJP93le0PX8NtFtxYQqKo5iDqjqEk8jhUY5Mz9CaPTNwW+JgW6O
- iYGgtDnGkNWHOvHntQd/+h4c+Y7dY/FegmQSsb4AbzllTJvmfkKOktoV7v9L5Gg3S71D
- XaEw==
+ id 1nk5Av-007UhL-2t; Thu, 28 Apr 2022 14:31:22 +0000
+Received: by mail-oa1-f51.google.com with SMTP id
+ 586e51a60fabf-d6e29fb3d7so5304119fac.7; 
+ Thu, 28 Apr 2022 07:31:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=5XdPKzrNuCW9Uls4djg9CnJPr0HfyWEzzX13gHvuT9s=;
- b=W2Ugg8/L4TGafx82T7WQ9mB4Qyz1/q5/nzWnf/ybgmdRNA1SR/bMiVpzaByiCEjkAF
- bZRJXqdgpZrhd3+OOLQXmxB0nKf3gSlA+MLUOuRact9EuZt1OxfAFjw+SnoAvjT7iVsk
- OUT+Kqoo2G9OG+l3Q6hmSHqpLIhU60alVKW2m7zV6HQAFaopqDryB+mG8OP6H8Gd0UJP
- hY1eUiWyU/ZSOOqTS5I1wArQgDX+l5luZbkZ1t4hpY+6unx7eQtc+1ZsCp4/RjQQBiqL
- lN+WicNRzO94CrRRkyEcv4G03yr5qalCQSp7WuLnnZqlfPCi/PHVe2OJDd3UbLdObKxH
- F/yQ==
-X-Gm-Message-State: AOAM530hQye1RRz9otb4z/knlnRqw49P+Qys6U6tNQRbfDIUwDFO+fMG
- Qztwl8qJ+kld89LBQuYbLM8=
-X-Google-Smtp-Source: ABdhPJx0D91qDY3rAHXrUKYpJ6EndFNu0vi5Ze7REIXxyW9yTMg00OwkJnpjgHzk30D5LZMqwVL8fA==
-X-Received: by 2002:a5d:47ab:0:b0:20a:7f8a:ec69 with SMTP id
- 11-20020a5d47ab000000b0020a7f8aec69mr26826607wrb.504.1651155485199; 
- Thu, 28 Apr 2022 07:18:05 -0700 (PDT)
-Received: from [192.168.0.43] (static-35-180-85-188.ipcom.comunitel.net.
- [188.85.180.35]) by smtp.gmail.com with ESMTPSA id
- s10-20020adf978a000000b0020ae0154f1esm12625wrb.5.2022.04.28.07.17.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Apr 2022 07:18:03 -0700 (PDT)
-Message-ID: <661261a7-45be-230b-b0b2-5837d2139030@gmail.com>
-Date: Thu, 28 Apr 2022 16:17:58 +0200
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=3Pbfgb+P+Y6uKRbvZrIbkDzsXq4uSgu+65I8ansZfZg=;
+ b=UbLtyP4RJ0rmmMDipHd3Gkbm6pSqy8mbMW96C45P3zkOGBDjHYgFK9rW0uSltSjf8A
+ lyeF0gydfy7XX83xcftcZw9tcjmPJjLQSeKF9YA8+A2X/L2Vp38F5F2INRBgHcgfZSow
+ Dl4Mj2NvYTvA9uRZ9A4UN/A7OcKrYtOeemkjE2OrDvCaI2CRy61XvDSypmXoVRNIESw+
+ nSMB5Ezl5WG9wMm8djxPg4Ww0YuaW80Sdrhq9A+VAMoZb+M7agtijzrOKsgbozNOgSEO
+ npryHZKWwPWpHBXiwIevdvacSGL6nmLKs9nTWufiSEblkMZ1fImGMxA99eiT2bAOUxMi
+ zV+w==
+X-Gm-Message-State: AOAM531tqMMvbnGgBi85uo1sEJU3lGkcg+2ZVyUtFrcgSC9qxoraIfEC
+ GeAj8TdsVHC28z+Bt6rbXA==
+X-Google-Smtp-Source: ABdhPJx1VX5F/tJUIHYIip9Fxu6rAMhFBcqi6cHTI0eggbgDWjn/9R4RMK7nTXnkcz/rMEflMMwQ3w==
+X-Received: by 2002:a05:6870:3292:b0:da:d2ff:9dca with SMTP id
+ q18-20020a056870329200b000dad2ff9dcamr14140353oac.215.1651156278750; 
+ Thu, 28 Apr 2022 07:31:18 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ 5-20020a9d0105000000b005fbe5093eb0sm31088otu.54.2022.04.28.07.31.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Apr 2022 07:31:18 -0700 (PDT)
+Received: (nullmailer pid 2184573 invoked by uid 1000);
+ Thu, 28 Apr 2022 14:31:17 -0000
+Date: Thu, 28 Apr 2022 09:31:17 -0500
+From: Rob Herring <robh@kernel.org>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: broonie@kernel.org, angelogioacchino.delregno@collabora.com,
+ devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, tzungbi@google.com,
+ linux-mediatek@lists.infradead.org, trevor.wu@mediatek.com,
+ matthias.bgg@gmail.com, aaronyu@google.com, julianbraha@gmail.com,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [v4 16/18] dt-bindings: mediatek: mt8186: add
+ mt8186-mt6366-da7219-max98357 document
+Message-ID: <YmqlNV31FrcAyuN9@robh.at.kernel.org>
+References: <20220428093355.16172-1-jiaxin.yu@mediatek.com>
+ <20220428093355.16172-17-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v6 15/34] iommu/mediatek: Add IOMMU_TYPE flag
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
- yen-chang.chen@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
- chengci.xu@mediatek.com
-References: <20220407075726.17771-1-yong.wu@mediatek.com>
- <20220407075726.17771-16-yong.wu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220407075726.17771-16-yong.wu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20220428093355.16172-17-jiaxin.yu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_071809_947676_4CFB6995 
-X-CRM114-Status: GOOD (  16.12  )
+X-CRM114-CacheID: sfid-20220428_073121_166761_AFC442A0 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,53 +83,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 07/04/2022 09:57, Yong Wu wrote:
-> Add IOMMU_TYPE definition. In the mt8195, we have another IOMMU_TYPE:
-> infra iommu, also there will be another APU_IOMMU, thus, use 2bits for the
-> IOMMU_TYPE.
+On Thu, Apr 28, 2022 at 05:33:53PM +0800, Jiaxin Yu wrote:
+> Add document for mt8186 board with mt6366, da7219 and max98357.
 > 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 > ---
->   drivers/iommu/mtk_iommu.c | 12 ++++++++++--
->   1 file changed, 10 insertions(+), 2 deletions(-)
+>  .../sound/mt8186-mt6366-da7219-max98357.yaml  | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 84d661e0b371..642949aad47e 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -126,9 +126,17 @@
->   #define SHARE_PGTABLE			BIT(10) /* 2 HW share pgtable */
->   #define DCM_DISABLE			BIT(11)
->   #define NOT_STD_AXI_MODE		BIT(12)
-> +/* 2 bits: iommu type */
-> +#define MTK_IOMMU_TYPE_MM		(0x0 << 13)
-> +#define MTK_IOMMU_TYPE_INFRA		(0x1 << 13)
-> +#define MTK_IOMMU_TYPE_MASK		(0x3 << 13)
->   
-> -#define MTK_IOMMU_HAS_FLAG(pdata, _x) \
-> -		((((pdata)->flags) & (_x)) == (_x))
-> +#define MTK_IOMMU_HAS_FLAG(pdata, _x)	(!!(((pdata)->flags) & (_x)))
+> diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+> new file mode 100644
+> index 000000000000..55e8649f2aea
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+> @@ -0,0 +1,71 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mt8186-mt6366-da7219-max98357.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT8186 with MT6366, DA7219 and MAX98357 ASoC sound card driver
+> +
+> +maintainers:
+> +  - Jiaxin Yu <jiaxin.yu@mediatek.com>
+> +
+> +description:
+> +  This binding describes the MT8186 sound card.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8186_mt6366_da7219_max98357_sound
 
-That could be:
-MTK_IOMMU_HAS_FLAG(pdata, _x) \
-                 MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, _x)
+s/_/-/
 
 > +
-> +#define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
-> +				((((pdata)->flags) & (mask)) == (_x))
-> +#define MTK_IOMMU_IS_TYPE(pdata, _x)	MTK_IOMMU_HAS_FLAG_MASK(pdata, _x,\
-> +							MTK_IOMMU_TYPE_MASK)
->   
->   struct mtk_iommu_domain {
->   	struct io_pgtable_cfg		cfg;
+> +  mediatek,platform:
+> +    $ref: "/schemas/types.yaml#/definitions/phandle"
+> +    description: The phandle of MT8186 ASoC platform.
+> +
+> +  headset-codec:
+> +    type: object
+
+       additionalProperties: false
+
+> +    properties:
+> +      sound-dai:
+> +        $ref: /schemas/types.yaml#/definitions/phandle
+
+sound-dai already has a type, so drop and define how many entries.
+
+> +    required:
+> +        - sound-dai
+> +
+> +  playback-codecs:
+> +    type: object
+
+       additionalProperties: false
+
+> +    properties:
+> +      sound-dai:
+> +        minItems: 2
+> +        maxItems: 3
+
+If more than 1 entry, then you need to define what each one is and the 
+order. Just like reg, interrupts, clocks, etc.
+
+> +        $ref: /schemas/types.yaml#/definitions/phandle-array
+
+Drop
+
+> +    required:
+> +        - sound-dai
+> +
+> +additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - mediatek,platform
+> +  - headset-codec
+> +  - playback-codecs
+> +
+> +examples:
+> +  - |
+> +
+> +    sound: mt8186-sound {
+> +        compatible = "mediatek,mt8186_mt6366_da7219_max98357_sound";
+> +        mediatek,platform = <&afe>;
+> +        pinctrl-names = "aud_clk_mosi_off",
+> +                        "aud_clk_mosi_on";
+> +        pinctrl-0 = <&aud_clk_mosi_off>;
+> +        pinctrl-1 = <&aud_clk_mosi_on>;
+> +
+> +        headset-codec {
+> +            sound-dai = <&da7219>;
+> +        };
+> +
+> +        playback-codecs {
+> +            sound-dai = <&anx_bridge_dp>,
+> +                        <&max98357a>;
+> +        };
+> +    };
+> +
+> +...
+> -- 
+> 2.25.1
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
