@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CEB0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 06:57:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF0FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 07:05:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fwmF7CJxqm6wn3CCneCR73PTEIoIlGglVpzXZ0jodh8=; b=nK8le+sk2s5GCQ
-	+zx9AYvaBlBHpyCuLzsYgiXJug3gFwGfb/54A+IpPldj7ixJx/VU60Toiq9xCm+ycnZvrf8o/8exG
-	c8C6EiFUR2Og+4KUb5Npm4RZxWZsC5AZ3/xONB98fFsMy3OKLaB9ZlSm2IGlpoo222eLk4D+wQYdv
-	3gf290lEo6Wf2xBJtLxvEbCs/KpCIyXk2qcLF8WJzvNfNwjiyXXOEK11haDs6eZ1cOKbHVUT0wsid
-	XIAQzS/a9C40pXOYG9eb/UNMUYk81udy798Wp+AqDMDfOQftwP0N7/aIDrEZouM1VBSZeEYK3bKeW
-	tJ8ggB/TcQG2/nWYwMkg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/vtfu/QYDYWUg4FyLU3OrgU+6nM2gy2C3UFuOmjyVN8=; b=ZdjUvHLTPbc8Xx
+	FMFzFgpuCN01IMaVFv7nJohlYTBbF8V3BA7C9H4IvQRxHkAV+uJzOiOEmtSSFu6nBPp/uUO6IhXRI
+	tvmYw8Qc9L/xtqyNm75xj7yqgKJx45H4F76CwRfRMSi2r5Erdb1pqeRJx3k9NppD+cbgBEPL0QTbV
+	RcG48Wv/iadn2YItegl3yDJrTN9TQXA290LYLmtiR3D3VorHr0IZ7aWRpIxY2SozqzcYt4Z5zDusY
+	G+FPbLNjMMvi81Wes0K9AN/NLdR6u3oPoHtFK+lA+a+J5gE0eL7RFx2LkVBMSwi2Ce5LWVxdQX6qU
+	oaHfbDbkBbyIVlu16NVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njy5o-004zcU-QE; Thu, 28 Apr 2022 06:57:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1njyDO-0052kV-HI; Thu, 28 Apr 2022 07:05:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njy5O-004zUK-9B; Thu, 28 Apr 2022 06:57:11 +0000
-X-UUID: 6b0eff7f3add4b139d4ab982e078ee30-20220427
+ id 1njyCg-0052Ti-UU; Thu, 28 Apr 2022 07:04:44 +0000
+X-UUID: b3070c4b359245ce952b161a9673abd3-20220428
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:333c8450-5b81-4cbf-82fd-5e52f0661cf4, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:06b9e11e-264c-41b8-a7e3-8ff2a846a99c, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:6889012f-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:6ee0c9c6-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 6b0eff7f3add4b139d4ab982e078ee30-20220427
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: b3070c4b359245ce952b161a9673abd3-20220428
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 913177255; Wed, 27 Apr 2022 23:57:04 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 179409837; Thu, 28 Apr 2022 00:04:30 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Apr 2022 23:48:54 -0700
+ 15.0.1497.2; Thu, 28 Apr 2022 00:04:29 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 28 Apr 2022 14:48:52 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Apr 2022 15:04:05 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 Apr 2022 14:48:52 +0800
-Message-ID: <9b42b402be2b0ed065d176238ac2c41f2ec677ef.camel@mediatek.com>
-Subject: Re: [PATCH V3 12/17] dt-binding: mt8192: Add infra_ao reset bit
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@kernel.org"
- <sboyd@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-CC: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>, Chun-Jie Chen
- =?UTF-8?Q?=28=E9=99=B3=E6=B5=9A=E6=A1=80=29?= <Chun-Jie.Chen@mediatek.com>,
- "wenst@chromium.org" <wenst@chromium.org>, Runyang Chen
- =?UTF-8?Q?=28=E9=99=88=E6=B6=A6=E6=B4=8B=29?= <Runyang.Chen@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 28 Apr 2022 14:48:52 +0800
-In-Reply-To: <49dd007b-f6f6-0278-8f06-f81cf951fcd3@linaro.org>
-References: <20220422060152.13534-1-rex-bc.chen@mediatek.com>
- <20220422060152.13534-13-rex-bc.chen@mediatek.com>
- <e5b18654-ce83-44ee-e4c8-4cdfc4ceaa1d@linaro.org>
- <5ec37a01b0b84140a7d171b9a5cff7ad8f9fbe87.camel@mediatek.com>
- <418c5f0c-5279-41f5-3705-345ec9a97ea2@linaro.org>
- <9547368870f6a8d5c5e6bd5dd497ddbe04c51b93.camel@mediatek.com>
- <49dd007b-f6f6-0278-8f06-f81cf951fcd3@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 28 Apr 2022 15:04:04 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
+ Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jassi Brar
+ <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Dennis YC Hsieh
+ <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>
+Subject: [PATCH v3, 0/1] drm/mediatek: add lut diff flag for new gamma hardware
+Date: Thu, 28 Apr 2022 15:04:02 +0800
+Message-ID: <20220428070403.12968-1-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_235710_352411_7BD3CAD2 
-X-CRM114-Status: GOOD (  32.35  )
+X-CRM114-CacheID: sfid-20220428_000443_021987_5A7E6EA3 
+X-CRM114-Status: UNSURE (   7.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,151 +85,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-04-28 at 14:40 +0800, Krzysztof Kozlowski wrote:
-> On 26/04/2022 10:23, Rex-BC Chen wrote:
-> > On Mon, 2022-04-25 at 15:52 +0800, Krzysztof Kozlowski wrote:
-> > > On 25/04/2022 07:01, Rex-BC Chen wrote:
-> > > > On Sat, 2022-04-23 at 18:28 +0800, Krzysztof Kozlowski wrote:
-> > > > > On 22/04/2022 08:01, Rex-BC Chen wrote:
-> > > > > > To support reset of infra_ao, add the bit definition for
-> > > > > > thermal/PCIe/SVS.
-> > > > > > 
-> > > > > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > > > > > ---
-> > > > > >  include/dt-bindings/reset/mt8192-resets.h | 10 ++++++++++
-> > > > > >  1 file changed, 10 insertions(+)
-> > > > > > 
-> > > > > > diff --git a/include/dt-bindings/reset/mt8192-resets.h
-> > > > > > b/include/dt-bindings/reset/mt8192-resets.h
-> > > > > > index be9a7ca245b9..d5f3433175c1 100644
-> > > > > > --- a/include/dt-bindings/reset/mt8192-resets.h
-> > > > > > +++ b/include/dt-bindings/reset/mt8192-resets.h
-> > > > > > @@ -27,4 +27,14 @@
-> > > > > >  
-> > > > > >  #define MT8192_TOPRGU_SW_RST_NUM				
-> > > > > > 23
-> > > > > >  
-> > > > > > +/* INFRA RST0 */
-> > > > > > +#define MT8192_INFRA_RST0_LVTS_AP_RST			
-> > > > > > 	
-> > > > > > 0
-> > > > > > +/* INFRA RST2 */
-> > > > > > +#define MT8192_INFRA_RST2_PCIE_PHY_RST			
-> > > > > > 	
-> > > > > > 15
-> > > > > > +/* INFRA RST3 */
-> > > > > > +#define MT8192_INFRA_RST3_PTP_RST				
-> > > > > > 5
-> > > > > > +/* INFRA RST4 */
-> > > > > > +#define MT8192_INFRA_RST4_LVTS_MCU				
-> > > > > > 12
-> > > > > > +#define MT8192_INFRA_RST4_PCIE_TOP				
-> > > > > > 1
-> > > > > 
-> > > > > These should be the IDs of reset, not some register
-> > > > > values/offsets.
-> > > > > Therefore it is expected to have them incremented by 1.
-> > > > > 
-> > > > > 
-> > > > 
-> > > > Hello Krzysztof,
-> > > > 
-> > > > This is define bit.
-> > > > 
-> > > > There is serveral reset set for infra_ao while it's not serial.
-> > > > For MT8192, it's 0x120/0x130/0x140/0x150/0x730.
-> > > > We are implement #reset-cells = <2>, and we can use this reset
-> > > > drive
-> > > > more easier.
-> > > > 
-> > > > For example, in dts, we can define
-> > > > infra_ao: syscon {
-> > > > 	compatible = "mediatek,mt8192-infracfg", "syscon";
-> > > >  	reg = <0 0x10001000 0 0x1000>;
-> > > >  	#clock-cells = <1>;
-> > > > 	#reset-cells = <2>;
-> > > > };
-> > > > 
-> > > > thermal {
-> > > > 	...
-> > > > 	resets = <&infra_ao 0x730 MT8192_INFRA_RST4_LVTS_MCU>;
-> > > > 	...
-> > > > };
-> > > > 
-> > > > If it's acceptabel, I can update all bit difinition from 0 to
-> > > > 15
-> > > > for
-> > > > all reset set.
-> > > 
-> > > Bits are not acceptable, because you embed specific device
-> > > programming
-> > > model (register bits) into the binding.
-> > > 
-> > > These should be IDs, so decimal numbers incremented from 0, so:
-> > > #define MT8192_INFRA_RST0_LVTS_AP_RST				
-> > > 0
-> > > #define MT8192_INFRA_RST4_LVTS_MCU				
-> > > 1
-> > > #define MT8192_INFRA_RST4_PCIE_TOP				
-> > > 2
-> > > 
-> > > And what is 0x730 in your example? It does not look like ID of a
-> > > reset...
-> > > 
-> > > Entire changeset look wrong from DT point of view.
-> > > 
-> > > Best regards,
-> > > Krzysztof
-> > 
-> > Hello Krzysztof,
-> > 
-> > Got it. I will modify them to reset index.
-> > And the dts in my next version would somthing like this:
-> > 
-> > ----
-> > #define MT8192_INFRA_THERMAL_CTRL_RST			0
-> > #define MT8192_INFRA_PEXTP_PHY_RST			79
-> > #define MT8192_INFRA_PTP_RST				101
-> > #define MT8192_INFRA_RST4_PCIE_TOP			129
-> > #define MT8192_INFRA_THERMAL_CTRL_MCU_RST		140
-> 
-> These are still not IDs, incremented by one.
-> 
-> So again from beginning:
-> 0
-> 1
-> 2
-> ...
-> 
-> Do not encode hardware register bits into the binding.
-> 
-> Best regards,
-> Krzysztof
+base v5.17-rc1
 
-Hello Krzysztof,
+change since v2:
+-change singed-off-by
 
-It's not bit definiton, and it's index for our reset.
-We have 32*5 reset bits for infra.
-But we only use these 5 index currently, I do not list all of them.
 
-The implementation is in [1].
------
-static int mtk_reset_update_set_clr(struct reset_controller_dev *rcdev,
- 	unsigned int deassert_ofs = deassert ? 0x4 : 0;
- 
- 	return regmap_write(data->regmap,
-			    data->desc->rst_bank_ofs[id /          
- 					RST_NR_PER_BANK] +
-			    deassert_ofs,
-			    BIT(id % RST_NR_PER_BANK));
- }
------
+Yongqiang Niu (1):
+  drm/mediatek: add lut diff flag for new gamma hardware support
 
-[1]: 
-https://lore.kernel.org/all/20220427030950.23395-8-rex-bc.chen@mediatek.com/
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 34 +++++++++++++++++++----
+ 3 files changed, 30 insertions(+), 8 deletions(-)
 
-BRs,
-Rex
+-- 
+2.25.1
 
 
 _______________________________________________
