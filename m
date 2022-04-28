@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24807C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 07:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6F5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 07:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WiA14FgpimI5L3ZVhEB1NA/wpO1CeVzl/FJNDVpq/9A=; b=ZpINlMgHcslsCx
-	zrC11o0LgdUQ+UovKB8u+iOmVe4ICJBQICZSTtb8vIGwpdnwHKDLAnXbWVTHJ1uu1Oc0j79nv2w/d
-	UupjCrStb1ElPM3WhKpMOsswZvs1QYdBP5eK9ekYewRb0Ti55SYOXuH5i+SeLZXhcn3Mnf8cx89jU
-	0Cp88AoxrBaNX0eFMBpGqwW0nhS8AVQts0frjS68RmTPWPJQBrkdk0MXVAA6QAMWtjPD1lTSYFs3M
-	RqGJODtzZJlmEhb7gRTNDJ46xIV9bhjntbyDc0Z80w4sGBKkZkONH5KZQCPmlD532M22oppRcPCEu
-	svo/oRhl7fWvfe79DAcA==;
+	List-Owner; bh=hiXvfYvuRUzNGWTaK3PgBq6KICuo5Nxp7ShQLBdBL7g=; b=iDEVbJUt/d+zwj
+	BkdEaBQ2o2UsN+N2UO4QUZDRuPsAhCno0lDJGEOqPsYPSDgNOzqDup+sUtrB8ZRsZ70g6JM69yloL
+	wxMXFHJhJ0ODcdCl3cXStB/XPNtZBtA9NAuOtbo1HxxBwsNsNF5ifkHauavcLojTBAdixsQs5nsCZ
+	ECj9EAM6nIbn6XHrws/rCLTdpDoNmbj00Gsk9aP3/vFteS0Ri3aVXXPAViMaNlYOYs37iBsILTyWZ
+	GjFMkbCTsjW4C1AenGR8cuviaza49RpmKldgpLW61Jh3KRhrD3N/OHQrDCncgNu4M7CQNnr23LtiS
+	c9Itgd85VU7V+ZEjNPVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njyQ9-0057g5-36; Thu, 28 Apr 2022 07:18:37 +0000
+	id 1njyS1-0058hL-KA; Thu, 28 Apr 2022 07:20:33 +0000
 Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njyQ5-0057cz-Pg
- for linux-mediatek@lists.infradead.org; Thu, 28 Apr 2022 07:18:35 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id l18so7702346ejc.7
- for <linux-mediatek@lists.infradead.org>; Thu, 28 Apr 2022 00:18:33 -0700 (PDT)
+ id 1njyRy-0058fO-QZ
+ for linux-mediatek@lists.infradead.org; Thu, 28 Apr 2022 07:20:32 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id l7so7765213ejn.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 28 Apr 2022 00:20:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=mBaBjlFs4Qhyum9X+FB4PBgRB7fsIlzVMQhpW1H9ZZ4=;
- b=cqS0hTiH1HfntnnTaStANQsQu27QSlSciZVbyV3aDN8vNZVpLYWulIuZ2qgoMNFiB6
- H+8hhB3oM+M/FruD3+bj8674Jl6s74Bwf9oaXeSwRq1O9qpOBJRcS/3zx8p6dSYx04by
- E/Py+F0tqz2GEc9qT7CAhjplvNC0vZiEi6G/TTGkrp76nnLc7CRJy5x2JFmiglMlqAEu
- 1bx9ImhNooMrP29bnJxQuZxAO5NcvpCYBXXHF1r4ZpeCubDA/77j9pKAUAPdw6XlxU3u
- SyTI0Do40VglihVO1CY2kUPCpkYe0r5AAmPRUBxHiC9DWtLSHGAhNvaDQmJkfqnt0LEf
- xDSA==
+ bh=up7p03H0J0l2JRjS145DbS50uy8AZoB9ENunf28x/sA=;
+ b=PEs/6oNfJTBBN0h6QIIIJb6yJ2g32AbHqLBEV+1SLFdYoMXSRbT4yEoKcw3XUuNemC
+ uj0IPsvcy+aLjTqkDN0RCJfyuR1Y7fdqG2Xm6zqHBvTbfZetlGIxRzCVig4L+tuVImje
+ 0KXW3mG472TTAwXzM3e7LTmrHs1WsyGarm2Vyg1vpUnkQyfqYgIB1fRhh3Dq7a35111a
+ q0FlxgXc2kKS9zb8OQ0blhu3oqlTYKZtJ5Aa3jeAD5u7/cT2O6WO6kwhkCTUpvU/XsK2
+ jBDAH2sfvRylegku/5gfh2b1R7XUUOb9++mgbsDLuepc/c6XTqhAtfu9mJWvctCogwsm
+ +QNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=mBaBjlFs4Qhyum9X+FB4PBgRB7fsIlzVMQhpW1H9ZZ4=;
- b=XjraZWiRADQRyeIQQ3+bzDc5jo42g92UeC0daY2iK7mJn1KfnpapMiYxc8IzRM4hpj
- iFPBWWWuq+FNLWn52Zft+lzG8dMBI8yT7MyYQSAAcTIKsSXQyF2LVRskuDHs3RLlQwBD
- uoSirD8uHXRi2DGVrq4QBWDV4x7g/YfRw838qfYvhSEoLnErPg/iEZW9OCb3NJbEep+Q
- ii8kPkCSpxTykYuLrCk/4av2JJYgnvyo0CiAb83WDfy4j2nTvo81fCKb02yEdy+i8bcp
- KL4oaDtH+GLueZBFpMiM2z5vNPyur8KqdqMaV6PlW5lKutktXQwVcXb2Bs4Ol/VXOprz
- hHkQ==
-X-Gm-Message-State: AOAM530kB2pAk3rYqRyyK0pWUd9Ppc59Zb3ISyM/cgB+/EHGFkLu4n36
- DgMQssbs5oZWe7OmmOeQBWbwMg==
-X-Google-Smtp-Source: ABdhPJwVuNe9f876NcOK+Qs8PuIFfo1l1GuseRL4xqp78YebmrHyUPTihDzB8RCfU4QhFE/K1Vah/w==
-X-Received: by 2002:a17:907:7202:b0:6df:83a9:67d2 with SMTP id
- dr2-20020a170907720200b006df83a967d2mr29760294ejc.327.1651130312292; 
- Thu, 28 Apr 2022 00:18:32 -0700 (PDT)
+ bh=up7p03H0J0l2JRjS145DbS50uy8AZoB9ENunf28x/sA=;
+ b=5nD9wW+FMXfI98QANCpu0TplCuVmf8nQTBa/xSpsb6erip9MZiRilf9LzfVllZbw71
+ /6e8vhSMXOwGD0h8Gs1bDzkgaqrb+ePGuE2+xzjaW/49ld8+FkuGggQUApICAH0bkCEv
+ 8LTjzqoQiE5bUlXF6AePd/9VLPzXEgZTq9HxENIalN/p473S3aDyWt5uBmRARfUimTDg
+ sePXgDM5sgxZ2oXIzCYcpLCSdO8v5x+ASX1RNt+WsGeD7Skw/4R/4EfLrQ/CYY1RNBjR
+ pB6E/0t9MyxuyJ7bPmIjuC72yzHm3slUol9TzehpM1o7kJ+OvO7/SMSBiz+S8KDEIViV
+ x1mA==
+X-Gm-Message-State: AOAM531HIw6QUzD1Qj9qvyBQgRVBq5xU5iIQBQ1vjXtJ55RgJUP0QQie
+ ZDYJeS+j+/e47sy1QJuE8i6VJQ==
+X-Google-Smtp-Source: ABdhPJxeoFy9Xibfpu3oUK6Cb02FyClEqMnD3LwurqLe+iUl9cJaEWfclRXJgrnFyTpqHolYTF2xXg==
+X-Received: by 2002:a17:906:3101:b0:6d6:5b64:906f with SMTP id
+ 1-20020a170906310100b006d65b64906fmr30322134ejx.513.1651130429559; 
+ Thu, 28 Apr 2022 00:20:29 -0700 (PDT)
 Received: from [192.168.0.160] (xdsl-188-155-176-92.adslplus.ch.
  [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- q23-20020aa7da97000000b0042617ba6380sm1024491eds.10.2022.04.28.00.18.31
+ w14-20020a1709060a0e00b006f01e581668sm7859254ejf.209.2022.04.28.00.20.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Apr 2022 00:18:31 -0700 (PDT)
-Message-ID: <d96797dc-8fbd-fe1c-f970-2f6fc8ca5b69@linaro.org>
-Date: Thu, 28 Apr 2022 09:18:30 +0200
+ Thu, 28 Apr 2022 00:20:29 -0700 (PDT)
+Message-ID: <d4fb371c-c204-3ab5-6f38-7c88de30b25d@linaro.org>
+Date: Thu, 28 Apr 2022 09:20:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH V4 12/15] dt-bindings: reset: mediatek: Add infra_ao reset
- bit for MT8192/MT8195
+Subject: Re: [PATCH] dt-bindings: rtc: mediatek: add mt6358 and mt6366
+ compatible
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, mturquette@baylibre.com,
- sboyd@kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
- chun-jie.chen@mediatek.com, wenst@chromium.org, runyang.chen@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220427030950.23395-1-rex-bc.chen@mediatek.com>
- <20220427030950.23395-13-rex-bc.chen@mediatek.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220428064637.28288-1-allen-kh.cheng@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220427030950.23395-13-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220428064637.28288-1-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_001833_897306_A748047A 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20220428_002030_887401_A102892D 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,76 +99,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/04/2022 05:09, Rex-BC Chen wrote:
-> - To support reset of infra_ao, add the bit definition of
->   thermal/PCIe/SVS for MT8192.
-> - To support reset of infra_ao, add the bit definition of
->   thermal/SVS for MT8195.
-> - Add the driver comment to separate the reset index for
->   TOPRGU and INFRA.
+On 28/04/2022 08:46, Allen-KH Cheng wrote:
+> Add mt6358 and mt6366 compatible in devicetree-binding document for
+> MediaTek PMIC based RTC. mt6358 and mt6366 use same compatible data
+> to store RTC_WRTGR address offset.
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> mt6366-rtc will use mt6358-rts as fallback.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > ---
->  include/dt-bindings/reset/mt8192-resets.h | 8 ++++++++
->  include/dt-bindings/reset/mt8195-resets.h | 6 ++++++
->  2 files changed, 14 insertions(+)
+>  Documentation/devicetree/bindings/rtc/rtc-mt6397.txt | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/include/dt-bindings/reset/mt8192-resets.h b/include/dt-bindings/reset/mt8192-resets.h
-> index be9a7ca245b9..ee0ca02a39bf 100644
-> --- a/include/dt-bindings/reset/mt8192-resets.h
-> +++ b/include/dt-bindings/reset/mt8192-resets.h
-> @@ -7,6 +7,7 @@
->  #ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8192
->  #define _DT_BINDINGS_RESET_CONTROLLER_MT8192
->  
-> +/* TOPRGU resets */
->  #define MT8192_TOPRGU_MM_SW_RST					1
->  #define MT8192_TOPRGU_MFG_SW_RST				2
->  #define MT8192_TOPRGU_VENC_SW_RST				3
-> @@ -27,4 +28,11 @@
->  
->  #define MT8192_TOPRGU_SW_RST_NUM				23
->  
-> +/* INFRA resets */
-> +#define MT8192_INFRA_THERMAL_CTRL_RST			0
-> +#define MT8192_INFRA_PEXTP_PHY_RST				79
-> +#define MT8192_INFRA_PTP_RST					101
-> +#define MT8192_INFRA_RST4_PCIE_TOP				129
-> +#define MT8192_INFRA_THERMAL_CTRL_MCU_RST		140
+> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> index 55a0c8874c03..5b012d222f5b 100644
+> --- a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> +++ b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> @@ -14,6 +14,8 @@ For MediaTek PMIC wrapper bus bindings, see:
+>  Required properties:
+>  - compatible: Should be one of follows
+>         "mediatek,mt6323-rtc": for MT6323 PMIC
+> +       "mediatek,mt6358-rtc": for MT6358 PMIC
+> +       "mediatek,mt6358-rtc","mediatek,mt6366-rtc": for MT6366 PMIC
 
-This is still wrong. I gave you exactly what has to be used:
-0
-1
-2
-...
+Does not look like in correct order.
 
-It's a decimal number incremented by one.
-
-
-> +
->  #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8192 */
-> diff --git a/include/dt-bindings/reset/mt8195-resets.h b/include/dt-bindings/reset/mt8195-resets.h
-> index a26bccc8b957..a3226f40779c 100644
-> --- a/include/dt-bindings/reset/mt8195-resets.h
-> +++ b/include/dt-bindings/reset/mt8195-resets.h
-> @@ -7,6 +7,7 @@
->  #ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8195
->  #define _DT_BINDINGS_RESET_CONTROLLER_MT8195
+>         "mediatek,mt6397-rtc": for MT6397 PMIC
 >  
-> +/* TOPRGU resets */
->  #define MT8195_TOPRGU_CONN_MCU_SW_RST          0
->  #define MT8195_TOPRGU_INFRA_GRST_SW_RST        1
->  #define MT8195_TOPRGU_APU_SW_RST               2
-> @@ -26,4 +27,9 @@
->  
->  #define MT8195_TOPRGU_SW_RST_NUM               16
->  
-> +/* INFRA resets */
-> +#define MT8195_INFRA_THERMAL_AP_RST            0
-> +#define MT8195_INFRA_PTP_RST                   101
-> +#define MT8195_INFRA_THERMAL_MCU_RST           138
-
-Same issue.
+>  Example:
 
 
 Best regards,
