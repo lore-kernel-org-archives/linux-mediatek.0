@@ -4,63 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A22C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 12:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24E9EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 12:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rjmy3lISYrG5OqT9pmy0GS/9C+xsf8eRT+aDqN5lxsw=; b=wvEfM5ayEblHAwALdQGsDWKi4U
-	YujuClV6ZmbpsMmZqlBxmf3+3XBqqWsyR1EjwkvAHAeDajvhGtsIVJUuhjvVOabFPrFLn1+ZiVIyU
-	Y2Y+WbMKAJX9FYxWVuhXcovwaUlY8k8bBUYxyDEGAFv/snYmn06qsN0Mx+zzA6JbY0y12mQz8g5wc
-	HeV9038Kcd/SlD6DTCl682E2l+t3DZzd0Z1uFgO8XW2j47LZX5G0lY4oQkkKzfjQsZj1jLqDdRxys
-	Xnq1vtwc9MkADkoZ37GNL7CAxzcJ6n89V1FDjAf6jCZod0ZDaAcmkCFxSxkqdvCsNeYykhUP5aNwj
-	yaJyLfzA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qmfFUbT3uTjqy+0clWgENwRUqn+POjNXLl96EThEPd4=; b=yrdr6FPVBt53F/
+	AMAZFVIjSH2RGkI06Ik0hQznp7Nnyr83d5MNzFzZnBSf4mQQHsVJugpFrJGCxkUO4VUu9pvf921hw
+	z0+T9xh78FRCrZzYeuduttEK2DfCdc0b+bkmynZA+b0cAm4evrniPB013GtzgquQORlxcKGeislFI
+	UtLe0rHZkXuvktZwMrBjAj59vuwHB0+8VwOqxCfUKHuWkh1VKAZ/qqTYFHj7x2s7FYZuk+oi+1jI7
+	3NjPF1p4POAHPPXXXx5OOuIMM7uFgjv2hcWuxRLsD54CeH+MMCKTj9U8sjBG1d5eq3TKErtLanm72
+	KVIm9T7wJvsAUdOzIBqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk32I-006kL6-7k; Thu, 28 Apr 2022 12:14:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nk36A-006lyQ-Fg; Thu, 28 Apr 2022 12:18:18 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk31v-006kCf-1Z; Thu, 28 Apr 2022 12:13:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 9285161F2C;
- Thu, 28 Apr 2022 12:13:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22D50C385A9;
- Thu, 28 Apr 2022 12:13:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651148034;
- bh=vxjMPjiYyFGhSMcGT25wyA/WTwatpL4xQZLW21y1LrY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CZ6V0X68DhdaTkp6BMzGTX1rWbkZ1DzkL2YhYLd502WaLC5hwoO4uMqjMlVQlu898
- yTH+GdehFwnErraXDMs8PVMX4Ha7/ae6hCmg8SHgzegUoSqyvR7RBqyoEq4QZo31zL
- 2PVwD+W7KLhSKfZW8BxscVA/BHixp+9TiSPUUBvcJ4PZP7u0b0z5zUHdWq+gGArmoF
- kcs73wCOduTNJz5pS2rtOBXp1/eEd0ykp1evkbcjfN8BAUC3UiiZktAJWVeIEpuC5a
- 0OzZZsLv0dTEuYuSJUffm9lb6Gr1CT/f+naBJKllxKJED3w2hUgx0b4PkL2nFRArvv
- PLwyVC3QwZCnw==
-Date: Thu, 28 Apr 2022 13:13:47 +0100
-From: Mark Brown <broonie@kernel.org>
+ id 1nk367-006lq3-A1; Thu, 28 Apr 2022 12:18:17 +0000
+Received: by mail-oi1-f174.google.com with SMTP id v65so5108683oig.10;
+ Thu, 28 Apr 2022 05:17:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=oqNXD0idBs6+FKIlnsEQo6osQwhhpCXlDbeX0RQIYO0=;
+ b=6PM5dSkyFXA+rRxcIMXeIXhieHIuXGcCRRpH/TrAeviKFqKa5JF7fFliaAYBxbTpXp
+ xBReJylp+rQXyhVwV2O8uSmta1bZmQ51na/lrV89yOB8sjK6zXwrkFAz0zje0u7KVMCN
+ 1jqYyH39EpOpzfltssfnWZ/qfdqmf00P+DKz6yWuRExznlJH6MhT8SHiPbgTUefoADHK
+ amgRuydNAl+U4/ftePq+Beb/aIbFiRUrMdnhrWQKPUirqZfBSnZ2ZNG/7eo0EyLntwUc
+ N6N/2rpFyWyYvtrKzF1lz5BIUFCh3gnO04XnyDIklPIUiF4B3tkEsbeqKjtXbuKp4zJM
+ S/Uw==
+X-Gm-Message-State: AOAM533EbTSl9ZUb5kLVtoavSZq4OBv3Am7fdzw8jVgY7oaRkeirqPof
+ TdQLZUymZpj1ijHYlNdDWw==
+X-Google-Smtp-Source: ABdhPJz79Uyli5XuXZ/YbldCnIdSvSISWDE5Fl8O5kQTkx6KQr64F68etKJsVQXHaxzZGCB40WZDIg==
+X-Received: by 2002:a05:6808:1589:b0:322:9102:5503 with SMTP id
+ t9-20020a056808158900b0032291025503mr15696224oiw.68.1651148279242; 
+ Thu, 28 Apr 2022 05:17:59 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ j17-20020a4a92d1000000b0035ea6671d8esm999857ooh.35.2022.04.28.05.17.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Apr 2022 05:17:58 -0700 (PDT)
+Received: (nullmailer pid 1999481 invoked by uid 1000);
+ Thu, 28 Apr 2022 12:17:57 -0000
+From: Rob Herring <robh@kernel.org>
 To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: robh+dt@kernel.org, angelogioacchino.delregno@collabora.com,
- aaronyu@google.com, matthias.bgg@gmail.com, trevor.wu@mediatek.com,
- tzungbi@google.com, julianbraha@gmail.com,
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [v4 07/18] ASoC: mediatek: mt8186: support i2s in platform driver
-Message-ID: <YmqE+80xyBoIJvto@sirena.org.uk>
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ trevor.wu@mediatek.com, broonie@kernel.org, robh+dt@kernel.org,
+ aaronyu@google.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, julianbraha@gmail.com,
+ tzungbi@google.com
+In-Reply-To: <20220428093355.16172-17-jiaxin.yu@mediatek.com>
 References: <20220428093355.16172-1-jiaxin.yu@mediatek.com>
- <20220428093355.16172-8-jiaxin.yu@mediatek.com>
-MIME-Version: 1.0
-In-Reply-To: <20220428093355.16172-8-jiaxin.yu@mediatek.com>
-X-Cookie: Bedfellows make strange politicians.
+ <20220428093355.16172-17-jiaxin.yu@mediatek.com>
+Subject: Re: [v4 16/18] dt-bindings: mediatek: mt8186: add
+ mt8186-mt6366-da7219-max98357 document
+Date: Thu, 28 Apr 2022 07:17:57 -0500
+Message-Id: <1651148277.902080.1999480.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_051355_159785_8A6BF208 
-X-CRM114-Status: GOOD (  16.31  )
+X-CRM114-CacheID: sfid-20220428_051815_403901_78A71700 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,80 +81,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8713818233246722324=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 28 Apr 2022 17:33:53 +0800, Jiaxin Yu wrote:
+> Add document for mt8186 board with mt6366, da7219 and max98357.
+> 
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> ---
+>  .../sound/mt8186-mt6366-da7219-max98357.yaml  | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+> 
 
---===============8713818233246722324==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qf2Y0CXE7QOl/F3W"
-Content-Disposition: inline
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml:30:9: [warning] wrong indentation: expected 6 but found 8 (indentation)
+./Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml:40:9: [warning] wrong indentation: expected 6 but found 8 (indentation)
 
---qf2Y0CXE7QOl/F3W
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+dtschema/dtc warnings/errors:
 
-On Thu, Apr 28, 2022 at 05:33:44PM +0800, Jiaxin Yu wrote:
+doc reference errors (make refcheckdocs):
 
-> +/* clock source control */
-> +static const char * const mt8186_i2s_src_str[] = {
-> +	"Master", "Slave"
-> +};
-> +
-> +static const struct soc_enum mt8186_i2s_src_enum[] = {
-> +	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(mt8186_i2s_src_str),
-> +			    mt8186_i2s_src_str),
-> +};
+See https://patchwork.ozlabs.org/patch/
 
-Not clear why this is user visible?  Shouldn't the machine driver be
-setting this.  Also please use more modern provider/consumer terminology
-for the clocking.
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-> +static int mt8186_i2s_hd_set(struct snd_kcontrol *kcontrol,
-> +			     struct snd_ctl_elem_value *ucontrol)
-> +{
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-> +		return -EINVAL;
-> +	}
-> +
-> +	i2s_priv->low_jitter_en = hd_en;
-> +
-> +	return 0;
-> +}
+pip3 install dtschema --upgrade
 
-Same issue as on the other patch with the events - like I said there
-mixer-test will find a bunch of these issues for you.
+Please check and re-submit.
 
---qf2Y0CXE7QOl/F3W
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJqhPsACgkQJNaLcl1U
-h9DxEAf7BCZnRGuhD7QVceeLK9ft/+r5G6bcDYr/AzaD0m2ib8uHS9gAD2tNCPzS
-hqNii0XqfHOk8qRHngTUCf2jArvOxs/04PUbVN9osjE3US4GasV3r5A2mjdH5Xjb
-YfmoJbCF/LDmP3if9QwJkJEPJ13sqaEQLbO6MKBn9H/iMDXQGzXtLT+A/7vFmnlz
-5Z4kFX2c+4/M3Kkh/tL+5mAWE42SYETASHjOFnvFvK8EyRsHraxWahmN7Q1ZlcIb
-O/hK/hlH53YEyBysNZ4WG7U3CHHIJdf7XUN9/akMdwFo69exz+qHy2PItw6cix2Q
-B26GhDB6BEav6uk7TLEz59R0iKw+eQ==
-=QnX1
------END PGP SIGNATURE-----
-
---qf2Y0CXE7QOl/F3W--
-
-
---===============8713818233246722324==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8713818233246722324==--
-
