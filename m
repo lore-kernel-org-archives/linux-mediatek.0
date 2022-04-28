@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC415C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 02:35:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03125C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 02:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Twszaj15nUGPU6E9qAEjcxBAjWRzrLKwH2sdzvnzRpA=; b=WJu7KuxpavcBjr
-	TIQYW77N0k4aYo0opJ5JMAeJfRmOIMUJsdoU0lV/PD+SezKN6YqxGZqeQBsMrDvUt/7ls5BgsB9Ca
-	b5N8kE54lVcxMIZnyhTMANAyDpvzSdf0Zldt90suuF2k4nf/mOi2mrxBeqlNtPjfiZXl0yRwp+OHB
-	lxjwB0ikcO94FHQpwXh6fOrEsrkwxFr7n1NMaZf4Sal6S0E6DcTRtBMobK1Wqybumh6+l7oVcHjEf
-	NTHxH+0ezGk3DMCLMe9Fi4sM6tuQohMw5pLlPCz2ussjO2sV1CHgzr+vEcZ/zInDuq9qjpq/lwUld
-	2WdhoRSlRPYXmtvmbO6Q==;
+	List-Owner; bh=/l5aYiQonjgR2QzS5E1UU2pgGMtDmMDdrZFp4qrIF0I=; b=Erkk99pBIb18Gm
+	PCla3ENiReTzXQhe21pc8jYlutdmyx5Dl1vtWwDSeHG3jxOwpvHQRJCLpxULtTvGOqgliYYcyNFeR
+	4kPtqGdCXC9VG8Y1njAbqDpYu3EkSnEyeNn9FE1K0ntZ6BuQ1AIhzS6quC+fzYdKwy6JlsfBwKNjT
+	DrG7tkDklO17hqSt98SkSTEXVPC4A+n+n0PAabOgG9vhx0B4QHtNYMQYZPWrcUcAMn8fxrfvsnNvw
+	hRjMUAMUZcUJd2rJj/ApyGgskIRqPru47jcdS2M3bIUn0n2oVMGACQYoZQqjZ3cqFh4XsKqLCa3M6
+	I3y8/pxnYCzciaJI72RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nju0Q-004PoE-2b; Thu, 28 Apr 2022 02:35:46 +0000
+	id 1nju90-004QoX-Tc; Thu, 28 Apr 2022 02:44:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nju0F-004PnC-7v; Thu, 28 Apr 2022 02:35:37 +0000
-X-UUID: f3e4acbbbb4a4cce8fbd931ae4a9caf9-20220427
+ id 1nju8o-004QkR-Rk; Thu, 28 Apr 2022 02:44:28 +0000
+X-UUID: d258b5a467b54c1da0b3e45efd4bca99-20220427
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:84bf754f-cf8e-481a-b72c-c158b01eb7bb, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:3d39f20b-15f6-46f6-95c2-9f7da16c7826, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:2da5f82e-6199-437e-8ab4-9920b4bc5b76,
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:86fdc0c6-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: f3e4acbbbb4a4cce8fbd931ae4a9caf9-20220427
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <nancy.lin@mediatek.com>)
+X-UUID: d258b5a467b54c1da0b3e45efd4bca99-20220427
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 156857513; Wed, 27 Apr 2022 19:35:31 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Apr 2022 19:25:28 -0700
+ with ESMTP id 1986645020; Wed, 27 Apr 2022 19:44:19 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Apr 2022 19:44:17 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Apr 2022 10:25:26 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 28 Apr 2022 10:44:15 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 Apr 2022 10:25:26 +0800
-Message-ID: <030e693e5fb231f7e53884da813da1391c71ecc8.camel@mediatek.com>
-Subject: Re: [PATCH v17 03/21] dt-bindings: mediatek: add ethdr definition
- for mt8195
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, <wim@linux-watchdog.org>, "AngeloGioacchino Del
- Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <dri-devel@lists.freedesktop.org>,
- <llvm@lists.linux.dev>, <singo.chang@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 28 Apr 2022 10:25:26 +0800
-In-Reply-To: <b699a15ae2e810e20d7c388bc347f57d0a951513.camel@pengutronix.de>
-References: <20220416020749.29010-1-nancy.lin@mediatek.com>
- <20220416020749.29010-4-nancy.lin@mediatek.com>
- <b699a15ae2e810e20d7c388bc347f57d0a951513.camel@pengutronix.de>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 28 Apr 2022 10:44:14 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
+ Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jassi Brar
+ <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Dennis YC Hsieh
+ <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>, Yongqiang Niu
+ <yongqiang.niu@mediatek.corp-partner.google.com>
+Subject: [PATCH v2,
+ 1/1] drm/mediatek: add lut diff flag for new gamma hardware support
+Date: Thu, 28 Apr 2022 10:44:11 +0800
+Message-ID: <20220428024411.10133-2-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220428024411.10133-1-yongqiang.niu@mediatek.com>
+References: <20220428024411.10133-1-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_193535_321782_98B7892D 
-X-CRM114-Status: GOOD (  24.74  )
+X-CRM114-CacheID: sfid-20220427_194426_947260_86D90225 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,141 +89,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Philipp,
+From: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com>
 
-Thanks for the review.
+mt8183 gamma module usage is different with before soc,
+gamma odd(index start from 0) lut value set to hardware
+register should be
+the difference of current lut value with last lut value.
 
-On Mon, 2022-04-25 at 11:54 +0200, Philipp Zabel wrote:
-> Hi Nancy,
-> 
-> On Sa, 2022-04-16 at 10:07 +0800, Nancy.Lin wrote:
-> > Add vdosys1 ETHDR definition.
-> > 
-> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> > Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >  .../display/mediatek/mediatek,ethdr.yaml      | 158
-> > ++++++++++++++++++
-> >  1 file changed, 158 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.y
-> > aml
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .yaml
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .yaml
-> > new file mode 100644
-> > index 000000000000..e8303c28a361
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr
-> > .yaml
-> > @@ -0,0 +1,158 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,ethdr.yaml*__;Iw!!CTRNKA9wMg0ARbw!zcXKSpPDpWKl7v-NJE7CCYQtbPpEYQazXsfVX8MAZeNc0RwE7UdQucLql2QskJLk$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!zcXKSpPDpWKl7v-NJE7CCYQtbPpEYQazXsfVX8MAZeNc0RwE7UdQucLql2fDD2NQ$
-> >  
-> > +
-> > +title: Mediatek Ethdr Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> > +  - Philipp Zabel <p.zabel@pengutronix.de>
-> > +
-> > +description: |
-> > +  ETHDR is designed for HDR video and graphics conversion in the
-> > external display path.
-> > +  It handles multiple HDR input types and performs tone mapping,
-> > color space/color
-> > +  format conversion, and then combine different layers, output the
-> > required HDR or
-> > +  SDR signal to the subsequent display path. This engine is
-> > composed of two video
-> > +  frontends, two graphic frontends, one video backend and a mixer.
-> > ETHDR has two
-> > +  DMA function blocks, DS and ADL. These two function blocks read
-> > the pre-programmed
-> > +  registers from DRAM and set them to HW in the v-blanking period.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - const: mediatek,mt8195-disp-ethdr
-> > +  reg:
-> > +    maxItems: 7
-> > +  reg-names:
-> > +    items:
-> > +      - const: mixer
-> > +      - const: vdo_fe0
-> > +      - const: vdo_fe1
-> > +      - const: gfx_fe0
-> > +      - const: gfx_fe1
-> > +      - const: vdo_be
-> > +      - const: adl_ds
-> > +  interrupts:
-> > +    minItems: 1
-> > +  iommus:
-> > +    description: The compatible property is DMA function blocks.
-> > +      Should point to the respective IOMMU block with master port
-> > as argument,
-> > +      see
-> > Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for
-> > +      details.
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +  clocks:
-> > +    items:
-> > +      - description: mixer clock
-> > +      - description: video frontend 0 clock
-> > +      - description: video frontend 1 clock
-> > +      - description: graphic frontend 0 clock
-> > +      - description: graphic frontend 1 clock
-> > +      - description: video backend clock
-> > +      - description: autodownload and menuload clock
-> > +      - description: video frontend 0 async clock
-> > +      - description: video frontend 1 async clock
-> > +      - description: graphic frontend 0 async clock
-> > +      - description: graphic frontend 1 async clock
-> > +      - description: video backend async clock
-> > +      - description: ethdr top clock
-> > +  clock-names:
-> > +    items:
-> > +      - const: mixer
-> > +      - const: vdo_fe0
-> > +      - const: vdo_fe1
-> > +      - const: gfx_fe0
-> > +      - const: gfx_fe1
-> > +      - const: vdo_be
-> > +      - const: adl_ds
-> > +      - const: vdo_fe0_async
-> > +      - const: vdo_fe1_async
-> > +      - const: gfx_fe0_async
-> > +      - const: gfx_fe1_async
-> > +      - const: vdo_be_async
-> > +      - const: ethdr_top
-> > +  power-domains:
-> > +    maxItems: 1
-> > +  resets:
-> > +    maxItems: 5
-> 
-> Please add a reset-names property and name these resets.
-> 
-> regards
-> Philipp
+for example, chrome os user space set lut
+like this(only r chanel for example):
+2 4 6 8 10 12.
+1) mt8183 gamma driver should set the gamma lut to hardware
+register like this:
+2 [2] 6 [8] 10 [2]
+the value with [] is the difference value
+2)gamma hardware process display data with original lut
 
-OK, I will fix it in the next revision.
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 34 +++++++++++++++++++----
+ 3 files changed, 30 insertions(+), 8 deletions(-)
 
-Regards,
-Nancy
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+index f46d4ab73d6a..0f9d7efb61d7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+@@ -66,7 +66,7 @@ void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ 	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
+ 
+ 	if (aal->data && aal->data->has_gamma)
+-		mtk_gamma_set_common(aal->regs, state);
++		mtk_gamma_set_common(aal->regs, state, false);
+ }
+ 
+ void mtk_aal_start(struct device *dev)
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 86c3068894b1..3380651c6707 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -51,7 +51,7 @@ void mtk_gamma_config(struct device *dev, unsigned int w,
+ 		      unsigned int h, unsigned int vrefresh,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state);
+-void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
++void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state, bool lut_diff);
+ void mtk_gamma_start(struct device *dev);
+ void mtk_gamma_stop(struct device *dev);
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+index 3a5815ab4079..bbd558a036ec 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+@@ -27,6 +27,7 @@
+ 
+ struct mtk_disp_gamma_data {
+ 	bool has_dither;
++	bool lut_diff;
+ };
+ 
+ /*
+@@ -53,12 +54,13 @@ void mtk_gamma_clk_disable(struct device *dev)
+ 	clk_disable_unprepare(gamma->clk);
+ }
+ 
+-void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state)
++void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state, bool lut_diff)
+ {
+ 	unsigned int i, reg;
+ 	struct drm_color_lut *lut;
+ 	void __iomem *lut_base;
+ 	u32 word;
++	u32 diff[3] = {0};
+ 
+ 	if (state->gamma_lut) {
+ 		reg = readl(regs + DISP_GAMMA_CFG);
+@@ -67,9 +69,20 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state)
+ 		lut_base = regs + DISP_GAMMA_LUT;
+ 		lut = (struct drm_color_lut *)state->gamma_lut->data;
+ 		for (i = 0; i < MTK_LUT_SIZE; i++) {
+-			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
+-				(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
+-				((lut[i].blue >> 6) & LUT_10BIT_MASK);
++
++			if (!lut_diff || (i % 2 == 0)) {
++				word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
++					(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
++					((lut[i].blue >> 6) & LUT_10BIT_MASK);
++			} else {
++				diff[0] = (lut[i].red >> 6) - (lut[i - 1].red >> 6);
++				diff[1] = (lut[i].green >> 6) - (lut[i - 1].green >> 6);
++				diff[2] = (lut[i].blue >> 6) - (lut[i - 1].blue >> 6);
++
++				word = ((diff[0] & LUT_10BIT_MASK) << 20) +
++					((diff[1] & LUT_10BIT_MASK) << 10) +
++					(diff[2] & LUT_10BIT_MASK);
++			}
+ 			writel(word, (lut_base + i * 4));
+ 		}
+ 	}
+@@ -78,8 +91,12 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state)
+ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+ {
+ 	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
++	bool lut_diff = false;
++
++	if (gamma->data)
++		lut_diff = gamma->data->lut_diff;
+ 
+-	mtk_gamma_set_common(gamma->regs, state);
++	mtk_gamma_set_common(gamma->regs, state, lut_diff);
+ }
+ 
+ void mtk_gamma_config(struct device *dev, unsigned int w,
+@@ -176,10 +193,15 @@ static const struct mtk_disp_gamma_data mt8173_gamma_driver_data = {
+ 	.has_dither = true,
+ };
+ 
++static const struct mtk_disp_gamma_data mt8183_gamma_driver_data = {
++	.lut_diff = true,
++};
++
+ static const struct of_device_id mtk_disp_gamma_driver_dt_match[] = {
+ 	{ .compatible = "mediatek,mt8173-disp-gamma",
+ 	  .data = &mt8173_gamma_driver_data},
+-	{ .compatible = "mediatek,mt8183-disp-gamma"},
++	{ .compatible = "mediatek,mt8183-disp-gamma",
++	  .data = &mt8183_gamma_driver_data},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+-- 
+2.25.1
 
 
 _______________________________________________
