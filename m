@@ -4,88 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E833C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 14:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A12CAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 14:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y79MtmHTt7Yh6X8/EKsweVQLji0pofFXG8nnJja0Z3A=; b=Q/2S18ojk0cltN
-	Lq2FQExg9MULBIrSdw1oh3AppfMlEBO95xn1cxEYHRcgZxZlBR4+LsWpjLL1WYIaV/W3IWXQ4gql0
-	L/06F6HHTIRU4VzlZ3uWLWUcQ3k78C87dhSSVH3k2d+NdjR1ciqT8kXqGu7VjiFcP9QBygrQyZ72T
-	jhb0gKJI7xh7xbl6nWHtLxGffhdqm8MtahMx5HWKTChLRiPIpa5ey52ohOWNRKRhtJiGPQV3nHoa7
-	J9MdCoLLLWy9RreFKc1V/E3PVv2Xql8lUCei+ZSHtdbKrjKL52ejzOn6yoCC3l3YqHHKdHXwkLQ7v
-	ptihs1EkJc6crXFLEACw==;
+	List-Owner; bh=a+Pl7ZB6s0WO8pO+h9O1tksLXPVJwpTmu4D5WNjmt7U=; b=otgJ0yY7wR077h
+	TK96Nri4Cmnx8BAL/08gApxMMfEOqfomMFNEsZtDGFrqS/KVfYEfiDARnE4Pg30aXM27nlkQnIhxB
+	1JPtc8yn0LlVTvRr6+gjFZzdilwCBsx6i2lYTZueAMRG2/oMpCmvswTWQzCe1NExJneqSYooYxnHL
+	h5Ob7DzU8N/d1uKvE2usdNnU5fre6k1wvJifdn7FrLeI5XnAW0OUAelBmvD0r9CD1ZyDU9X04l2nQ
+	MP3NwVv3lvhNHYL6/qbzC+jLRZHn9b/l/aN8zq2zENN6byPmaGFWjxOQrtohu2a+ID9hijTj4rSxf
+	lZl+f8OJSyNv5csC1PMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk5Vv-007XuV-0R; Thu, 28 Apr 2022 14:53:03 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1nk5aD-007Ycu-0o; Thu, 28 Apr 2022 14:57:29 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk5Vr-007XtP-73; Thu, 28 Apr 2022 14:53:00 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id j6so10034774ejc.13;
- Thu, 28 Apr 2022 07:52:57 -0700 (PDT)
+ id 1nk5a0-007YaI-QD; Thu, 28 Apr 2022 14:57:18 +0000
+Received: by mail-lf1-x136.google.com with SMTP id k12so9089585lfr.9;
+ Thu, 28 Apr 2022 07:57:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=CH0gLHPMkRyk0v9r3+gHfXKV5CFksmMEo9DOYnqFl2k=;
- b=gSTt+xjDQ+ie0iT2u2y+n0J/h0tq9oP5hJUEixjpLElI1msGQ3WEqwiRqZQXii4zpG
- rmiReWpEVXy7VBKL7Jc52Vt5WDe4YOTzOYIAZLFhE2dvZSgwaqP8rakCQ0Pnz6Z4+hGQ
- pVlcLRanktLoYDDAK9PowP8gmsh8KIyg9UWZPwIJ7yJLLky0ubdqc5V+HHHuP9pljFuY
- Jst9ENckssXe5eiwRVd75zaAIMsPqiSEh2nlaTzoCVfP+/MfWwBBU7EC+m6NqoAnWGeX
- 1jdaWXUog1U87dofBjw3OoOL5fFuuve9FoMLqNKqAZPKF1hwNEHlttn3NgQhHvPUwqZS
- ZkyA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=edaPhOqJ6sNMjVlH4NUtpjaeXKOnbtBwCPOsuCBJZKU=;
+ b=YfTcS3mTCtPbXgS8Mwgqg8cvzUAYE7YiXXqaZMlJMg6VhBO0FpM4yubZ5zDlAEJeuj
+ Opn7DtAg0Lyfl7G6/w/ZoaDy6IqOeHkqdmHFm7+L/6y8wXYDN3zzf49jG856cDtCkdoj
+ VM0y4iuzePK/m9x6gD1bW5WejAuEXrFHWlfWumymOhIsWoorhrvFSANFrJo7ra2oSRTj
+ 3H+wdUUR8J+cJ8UQ6Z22bhnfGtTTGpsiDNLu4CvozwQfPtN/5RyI2I4o5gUnQ9yd0ltR
+ 3/76dovmgnl4nZBok+n2ZmwSYaN7oprqbMTMMQboH4149gdOLG22zYmLhfpENXufD7fu
+ U+Kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
- :content-transfer-encoding;
- bh=CH0gLHPMkRyk0v9r3+gHfXKV5CFksmMEo9DOYnqFl2k=;
- b=dm1XfWfVHyncrf2SI8dljsTChezzNAwgYuMrdYmy6+LRaGRQZQRW1IupSKJtI3yW+7
- iLZ7b6gP3cUNLAoIZd3WJ3NbgeyOGk/G5IB75VcUsulEu5dFFqfp3w3qYIIJR76dhk7T
- aKlmQ3EakAzyriife9xxLQn0oCXxAOwGT9aSoRiVWOGeX5p1qxNK6tbjzo/8zuPuXwjL
- 7yT30XWX9XdpFeZIKRC5SDUO+HMAgDd2PO4YEim25G9E0AEQNHZwv3vee9pXr+tZd/gk
- RNDL0OLCSKtqAxIS7X0AkME3W2o91Ytz/63NwcTdvrJZcmU2cS2wez0si0nGuD94P6/j
- BKrg==
-X-Gm-Message-State: AOAM531u4lMyemGm3QLw8VWTiFnSAK0L6DVbLElriAsPWcpwX39zf1te
- NJ24Vr66Tzwr6l17PJKTH9A=
-X-Google-Smtp-Source: ABdhPJwNJ16zR3gmI1Rt3eCeL8nSjebh14myevd9sJZuLR1UrdDa18EBFq97MNnEaLbQ2NuSxN2pNw==
-X-Received: by 2002:a17:907:a412:b0:6f0:1071:25ac with SMTP id
- sg18-20020a170907a41200b006f0107125acmr32051305ejc.261.1651157575793; 
- Thu, 28 Apr 2022 07:52:55 -0700 (PDT)
-Received: from [192.168.0.43] (static-35-180-85-188.ipcom.comunitel.net.
- [188.85.180.35]) by smtp.gmail.com with ESMTPSA id
- o4-20020a056402038400b0042617ba63c9sm1724338edv.83.2022.04.28.07.52.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Apr 2022 07:52:55 -0700 (PDT)
-Message-ID: <6668c7bf-6cee-b4e1-bb11-bf2399cc4874@gmail.com>
-Date: Thu, 28 Apr 2022 16:52:53 +0200
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=edaPhOqJ6sNMjVlH4NUtpjaeXKOnbtBwCPOsuCBJZKU=;
+ b=eIK6/aXsfHj0ntFvL0YmLrRzNoNDQl6D5TIh/K8cNPM13JxCeiVt+l9feaMOG91Fi2
+ WXuoKaA3nOxp4xPThh2cGl2ojY7+bYkKgesPOyr04s65CO50xMOz/7n4FjovgChHoQ6p
+ Ngh03gxNNVVVG6oGKPAKAyYiETZJIkJc1IDqlrKRJoyvL2dTRSNL6mGslPtZKKhSrS9B
+ 6FphwdiApEzIn3L07QEbl+zpJwP91q2zUSKPFvyAbI1M+ZUEZ+EeN+QMrZmjX5RawKmg
+ Uh2Eh5kxcmXxoYQmqyJ9pbTFA/7UEY3Us0DaHvQ3UxgB7W2P4ann3cnf5L02X2hBrY7u
+ +LLg==
+X-Gm-Message-State: AOAM532VHQkT+fruMpMXlEemJ2iD5e2+x4nqOvQ+TsPXICphkqqXUvB/
+ OCwHmkT1ZKN5zuRiBdHPC6w2egN4kD3KAgtHB6aAGd6np3A=
+X-Google-Smtp-Source: ABdhPJwkh8xMJd2euFGqJq9Hf7/7jfpX7aEFfs+lWsLvXi1VgE0Dv6VL3djM8Zbk5sBL4KDSrsXefOB4aMTVp46BlNA=
+X-Received: by 2002:a19:fc0e:0:b0:471:ff7d:ab35 with SMTP id
+ a14-20020a19fc0e000000b00471ff7dab35mr17334833lfi.345.1651157833665; Thu, 28
+ Apr 2022 07:57:13 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
- yen-chang.chen@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
- chengci.xu@mediatek.com
-References: <20220407075726.17771-1-yong.wu@mediatek.com>
- <20220407075726.17771-12-yong.wu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v6 11/34] iommu/mediatek: Add a flag NON_STD_AXI
-In-Reply-To: <20220407075726.17771-12-yong.wu@mediatek.com>
+References: <1651138365-17362-1-git-send-email-u0084500@gmail.com>
+ <1651138365-17362-5-git-send-email-u0084500@gmail.com>
+ <CANhJrGN8avK7mehqVDHVCjBzoG3RU4CykHEaFdQqt40_LjSh1A@mail.gmail.com>
+In-Reply-To: <CANhJrGN8avK7mehqVDHVCjBzoG3RU4CykHEaFdQqt40_LjSh1A@mail.gmail.com>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Thu, 28 Apr 2022 22:57:01 +0800
+Message-ID: <CADiBU39sgh-6=KmXgbuhNmL4QAQhdHpPz5nEDwffev8x+MQKpA@mail.gmail.com>
+Subject: Re: [PATCH 4/4] leds: flash: mt6360: Add mt6360 isnk channel hardwre
+ breath mode support
+To: Matti Vaittinen <mazziesaccount@gmail.com>
+Cc: Pavel Machek <pavel@ucw.cz>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ ChiYuan Huang <cy_huang@richtek.com>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
+ Gene Chen <gene_chen@richtek.com>,
+ Linux LED Subsystem <linux-leds@vger.kernel.org>, 
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_075259_299325_A714E000 
-X-CRM114-Status: GOOD (  22.39  )
+X-CRM114-CacheID: sfid-20220428_075716_892722_3536E9B0 
+X-CRM114-Status: GOOD (  19.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,110 +86,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 07/04/2022 09:57, Yong Wu wrote:
-> Add a new flag NON_STD_AXI, All the previous SoC support this flag.
-> Prepare for adding infra and apu iommu which don't support this.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   drivers/iommu/mtk_iommu.c | 16 ++++++++++------
->   1 file changed, 10 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 92f172a772d1..e7008a20ec74 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -122,6 +122,7 @@
->   #define IOVA_34_EN			BIT(8)
->   #define SHARE_PGTABLE			BIT(9) /* 2 HW share pgtable */
->   #define DCM_DISABLE			BIT(10)
-> +#define NOT_STD_AXI_MODE		BIT(11)
->   
->   #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
->   		((((pdata)->flags) & (_x)) == (_x))
-> @@ -785,7 +786,8 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
->   		regval = 0;
->   	} else {
->   		regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
-> -		regval &= ~F_MMU_STANDARD_AXI_MODE_MASK;
-> +		if (MTK_IOMMU_HAS_FLAG(data->plat_data, NOT_STD_AXI_MODE))
-> +			regval &= ~F_MMU_STANDARD_AXI_MODE_MASK;
-
-That means that for mt8195 infra we write back the very same value we read from 
-REG_MMU_MISC_CTRL. Is this necessary?
-Maybe we can come up with a different flag called STD_AXI_MODE and use something 
-like
-} else if (!MTK_IOMMU_HAS_FLAG(data->plat_data, \
-                            STD_AXI_MODE)) {
-
-Reason is that it makes more sense to add a flag for one specific iommu instead 
-of adding a flag to the common case (iommu is not following standard AXI protocol).
-
-What do you think?
-
-Regards,
-Matthias
-
->   		if (MTK_IOMMU_HAS_FLAG(data->plat_data, OUT_ORDER_WR_EN))
->   			regval &= ~F_MMU_IN_ORDER_WR_EN_MASK;
->   	}
-> @@ -1058,7 +1060,8 @@ static const struct dev_pm_ops mtk_iommu_pm_ops = {
->   
->   static const struct mtk_iommu_plat_data mt2712_data = {
->   	.m4u_plat     = M4U_MT2712,
-> -	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG | SHARE_PGTABLE,
-> +	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG | SHARE_PGTABLE |
-> +			NOT_STD_AXI_MODE,
->   	.hw_list      = &m4ulist,
->   	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
->   	.iova_region  = single_domain,
-> @@ -1068,7 +1071,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
->   
->   static const struct mtk_iommu_plat_data mt6779_data = {
->   	.m4u_plat      = M4U_MT6779,
-> -	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN,
-> +	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN |
-> +			 NOT_STD_AXI_MODE,
->   	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
->   	.iova_region   = single_domain,
->   	.iova_region_nr = ARRAY_SIZE(single_domain),
-> @@ -1077,7 +1081,7 @@ static const struct mtk_iommu_plat_data mt6779_data = {
->   
->   static const struct mtk_iommu_plat_data mt8167_data = {
->   	.m4u_plat     = M4U_MT8167,
-> -	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR,
-> +	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR | NOT_STD_AXI_MODE,
->   	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
->   	.iova_region  = single_domain,
->   	.iova_region_nr = ARRAY_SIZE(single_domain),
-> @@ -1087,7 +1091,7 @@ static const struct mtk_iommu_plat_data mt8167_data = {
->   static const struct mtk_iommu_plat_data mt8173_data = {
->   	.m4u_plat     = M4U_MT8173,
->   	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
-> -			HAS_LEGACY_IVRP_PADDR,
-> +			HAS_LEGACY_IVRP_PADDR | NOT_STD_AXI_MODE,
->   	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
->   	.iova_region  = single_domain,
->   	.iova_region_nr = ARRAY_SIZE(single_domain),
-> @@ -1106,7 +1110,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
->   static const struct mtk_iommu_plat_data mt8192_data = {
->   	.m4u_plat       = M4U_MT8192,
->   	.flags          = HAS_BCLK | HAS_SUB_COMM | OUT_ORDER_WR_EN |
-> -			  WR_THROT_EN | IOVA_34_EN,
-> +			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE,
->   	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
->   	.iova_region    = mt8192_multi_dom,
->   	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TWF0dGkgVmFpdHRpbmVuIDxtYXp6aWVzYWNjb3VudEBnbWFpbC5jb20+IOaWvCAyMDIy5bm0NOac
+iDI45pelIOmAseWbmyDkuIvljYg3OjUx5a+r6YGT77yaCj4KPiBIaSBDaGlZdWFuIQo+Cj4gT24g
+VGh1LCBBcHIgMjgsIDIwMjIgYXQgMTowMyBQTSBjeV9odWFuZyA8dTAwODQ1MDBAZ21haWwuY29t
+PiB3cm90ZToKPiA+IEZyb206IENoaVl1YW4gSHVhbmcgPGN5X2h1YW5nQHJpY2h0ZWsuY29tPgo+
+ID4KPiA+IEFkZCBtdDYzNjAgaXNuayBjaGFubmVsIGhhcmR3YXJlIGJyZWF0aCBtb2RlIHN1cHBv
+cnQuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogQ2hpWXVhbiBIdWFuZyA8Y3lfaHVhbmdAcmljaHRl
+ay5jb20+Cj4gPgo+ID4gK3N0YXRpYyBpbnQgbXQ2MzYwX2dlbl9icmVhdGhfcmVnX2NvbmZpZyhz
+dHJ1Y3QgbGVkX3BhdHRlcm4gKnBhdHRlcm4sIHUzMiBsZW4sCj4gPiArICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgdTggKnZhbHMsIGludCB2YWxfbGVuKQo+ID4gK3sKPiA+
+ICsgICAgICAgc3RhdGljIGNvbnN0IHN0cnVjdCBsaW5lYXJfcmFuZ2UgdHJhbmdlc1tNVDYzNjBf
+SUxFRF9SQU5HRV9NQVhdID0gewo+ID4gKyAgICAgICAgICAgICAgIHsgMTI1LCAwLCAxNSwgMjUw
+IH0sIC8qIHRyL2YxMiBhbmQgdG9uLCB1bml0OiBtaWxsaXNlY29uZCAqLwo+ID4gKyAgICAgICAg
+ICAgICAgIHsgMjUwLCAwLCAxNSwgNTAwIH0sIC8qIHRvZmYsIHVuaXQ6IG1pbGxpc2Vjb25kICov
+Cj4gPiArICAgICAgIH07Cj4KPiBJdCdzIG5pY2UgdG8gc2VlIHlvdSBhcmUgdXNpbmcgdGhlIGxp
+bmVhcl9yYW5nZXMgaGVscGVycyBoZXJlISBKdXN0IGEKPiBtaW5vciByZW1hcmsgLSBkbyB5b3Ug
+dGhpbmsgeW91IGNvdWxkIHVzZSBmaWVsZCBuYW1lcyBpbiBsaW5lYXJfcmFuZ2VzCj4gaW5pdGlh
+bGl6YXRpb25zPyBUaGF0IHdvdWxkIG1ha2UgaXQgbGVzcyBsaWtlbHkgdGhlIGRyaXZlciBicmVh
+a3MgaWYKPiBzb21lb25lIGNoYW5nZXMgdGhlIHN0cnVjdCBsaW5lYXJfcmFuZ2UgZGVmaW5pdGlv
+bi4gRWcsIHVzZSBzb21ldGhpbmcKPiBsaWtlOgo+Cj4gc3RhdGljIGNvbnN0IHN0cnVjdCBsaW5l
+YXJfcmFuZ2UgdHJhbmdlc1tNVDYzNjBfSUxFRF9SQU5HRV9NQVhdID0gewo+ICAgICAgICAgLyog
+dHIvZjEyIGFuZCB0b24sIHVuaXQ6IG1pbGxpc2Vjb25kICovCj4gICAgICAgICB7IC5taW4gPSAx
+MjUsIC5taW5fc2VsID0gMCwgLm1heF9zZWwgPSAxNSwgLnN0ZXAgPSAyNTAgfSwKPiAgICAgICAg
+IC8qIHRvZmYsIHVuaXQ6IG1pbGxpc2Vjb25kICovCj4gICAgICAgICB7IC5taW4gPSAyNTAsIC5t
+aW5fc2VsID0gMCwgLm1heF9zZWwgPSAxNSwgLnN0ZXAgPSA1MDAgfSwKPiB9Owo+Cj4gRG8geW91
+IHRoaW5rIHRoYXQgd291bGQgd29yaz8KU3VyZSwgaXQgd29ya3MuClRvIHNwZWNpZnkgdGhlIGZp
+ZWxkIG5hbWUgY2FuIGJlIGNvbXBhdGlibGUgaWYgdGhlIHN0cnVjdCBjaGFuZ2VzIGluIHRoZSBm
+dXR1cmUuClRoYW5rcy4KPgo+IEJlc3QgUmVnYXJkcwo+IC0tIE1hdHRpCj4KPiAtLQo+Cj4gTWF0
+dGkgVmFpdHRpbmVuCj4gTGludXgga2VybmVsIGRldmVsb3BlciBhdCBST0hNIFNlbWljb25kdWN0
+b3JzCj4gT3VsdSBGaW5sYW5kCj4KPiB+fiBXaGVuIHRoaW5ncyBnbyB1dHRlcmx5IHdyb25nIHZp
+bSB1c2VycyBjYW4gYWx3YXlzIHR5cGUgOmhlbHAhIH5+Cj4KPiBEaXNjdXNzIC0gRXN0aW1hdGUg
+LSBQbGFuIC0gUmVwb3J0IGFuZCBmaW5hbGx5IGFjY29tcGxpc2ggdGhpczoKPiB2b2lkIGRvX3dv
+cmsoaW50IHRpbWUpIF9fYXR0cmlidXRlX18gKChjb25zdCkpOwoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
+CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
