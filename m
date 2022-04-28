@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34ACDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 08:08:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3276C43219
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 08:28:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3WmtGQpOUbj7gUqHNbChi12MGkDq0P6FA/U76s6oifA=; b=JNRdkklOdXuqjq
-	CquufkVUQzxBLuEhul7TT9DO57LYH7unCMVr9JUnNsb833is3A7P88nEqwjzbW3uksBbM/iftZ0UL
-	vO2aaVHZD348HdSB8BQ3mq5fRdcM0xaOufe/CnJMSAu3og97rKnfgc8meRKn9WPZ7bYC3ttFkFE4D
-	SVvHoKLh8f7Mlwb2vjSE36mjR7fKFa6rUlKQxKddaHqC8zzupHbyzgEtASrWfGurZ5JF+4+PRdCsl
-	uob+DcQVDZQqsL9N32+nWhYGUe4KyP6F0c1O95lOGygmkK3aKhw7t3gWC827K3XA5scltBTotdyjF
-	0hAIjvhZstBfpiv3Q/6g==;
+	List-Owner; bh=8K7oQl3gsCVuUwHdkehdZq8EjPL6NqYYoKLmyKHa4io=; b=iKLzmPIljyTuEA
+	3LgPPXi9rz/ecj73bl2IU4ldmBUPkYox3D48Uaf0TUeD/IviV+tDKTCvOzyP8XOcWnbbVU7/yIfF6
+	rcPi1Ofstx42qt/9eQccM8UxZWXZU2gw6D3tEqfgUAD/cFV2pI7keDlJwHlY9UlafvHqvK4RW+c1s
+	QkttEQHIZ5UaA+3SR2zdOIxzzEYsfsucfuu54w6ks+LCYv5ZmhTwsdoCJQN9Po1PJhrpjFDQxTX9R
+	T0BYziqmMKPbGxuW+RYQ7g62vHrdlyK3EaJXM+Ki9+AY4dDtR1FIqXYZDIPazEZoDfDvaCpq8mBYb
+	pCS4YoxC/uHlVUSFaI5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njzC8-005PZz-Ag; Thu, 28 Apr 2022 08:08:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1njzV9-005WQf-6u; Thu, 28 Apr 2022 08:27:51 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njzBv-005PUB-NQ; Thu, 28 Apr 2022 08:08:01 +0000
-X-UUID: 6b2e0f72c2d04b3da6dcee457c71017b-20220428
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:a66f0e52-6398-4744-8da5-4be1e7ac6901, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:367a042f-6199-437e-8ab4-9920b4bc5b76,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 6b2e0f72c2d04b3da6dcee457c71017b-20220428
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1758445854; Thu, 28 Apr 2022 01:07:53 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Apr 2022 00:57:51 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 28 Apr 2022 15:57:49 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 Apr 2022 15:57:49 +0800
-Message-ID: <427604a0f73dde94b0415ab3c5605ad37e05989d.camel@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: rtc: mediatek: add mt6358 and mt6366
- compatible
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alessandro Zummo
- <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>
-CC: <linux-rtc@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>
-Date: Thu, 28 Apr 2022 15:57:49 +0800
-In-Reply-To: <d4fb371c-c204-3ab5-6f38-7c88de30b25d@linaro.org>
-References: <20220428064637.28288-1-allen-kh.cheng@mediatek.com>
- <d4fb371c-c204-3ab5-6f38-7c88de30b25d@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1njzUw-005WLd-7G; Thu, 28 Apr 2022 08:27:39 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out1.suse.de (Postfix) with ESMTP id 893EE2186F;
+ Thu, 28 Apr 2022 08:27:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1651134453; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=YIozUSFdjDnLnEJpNn98rpE1d2R0anAtFMrgIZeUiR4=;
+ b=kk0y2HUNWPQ6yurCu47RXpWICv/UYYHPEiBz2vwYJUQU92TGjP6YsUB3QW/6bksx3k5t/F
+ F/My4Vm3K9vGazCfRQnqYqYdnsZXWxKy4/0UkrWqH/AOJ7+7WlUXGP+sLpj9pHauw349c/
+ +8XoiuZlexn/SXMwfGzlxoxmq0EliWI=
+Received: from suse.cz (unknown [10.100.224.162])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by relay2.suse.de (Postfix) with ESMTPS id D7C5B2C141;
+ Thu, 28 Apr 2022 08:27:32 +0000 (UTC)
+Date: Thu, 28 Apr 2022 10:27:32 +0200
+From: Petr Mladek <pmladek@suse.com>
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: acme@kernel.org, akpm@linux-foundation.org,
+ alexander.shishkin@linux.intel.com, catalin.marinas@arm.com,
+ davem@davemloft.net, jolsa@redhat.com, jthierry@redhat.com,
+ keescook@chromium.org, kernelfans@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
+ masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
+ mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
+ nixiaoming@huawei.com, peterz@infradead.org,
+ sparclinux@vger.kernel.org, sumit.garg@linaro.org,
+ wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
+Subject: Re: [PATCH v3 5/5] arm64: Enable perf events based hard lockup
+ detector
+Message-ID: <YmpP9PTa1/pSmuuQ@alley>
+References: <20220421163035.26402-1-lecopzer.chen@mediatek.com>
+ <20220426163840.18871-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220426163840.18871-1-lecopzer.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_010759_812936_3C0F4144 
-X-CRM114-Status: GOOD (  18.26  )
+X-CRM114-CacheID: sfid-20220428_012738_474704_E41C7B67 
+X-CRM114-Status: GOOD (  34.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,54 +82,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Thu, 2022-04-28 at 09:20 +0200, Krzysztof Kozlowski wrote:
-> On 28/04/2022 08:46, Allen-KH Cheng wrote:
-> > Add mt6358 and mt6366 compatible in devicetree-binding document for
-> > MediaTek PMIC based RTC. mt6358 and mt6366 use same compatible data
-> > to store RTC_WRTGR address offset.
+On Wed 2022-04-27 00:38:40, Lecopzer Chen wrote:
+> > What about just introducing the API that will allow to try to
+> > initialize the hardlockup detector later:
 > > 
-> > mt6366-rtc will use mt6358-rts as fallback.
+> > /*
+> >  * Retry hardlockup detector init. It is useful when it requires some
+> >  * functionality that has to be initialized later on a particular
+> >  * platform.
+> >  */
+> > void __init retry_lockup_detector_init(void)
+> > {
+> > 	/* Must be called before late init calls. */
+> > 	if (!allow_lockup_detector_init_retry)
+> > 		return 0;
 > > 
-> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/rtc/rtc-mt6397.txt | 2 ++
-> >  1 file changed, 2 insertions(+)
+> > 	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
+> > }
 > > 
-> > diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> > b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> > index 55a0c8874c03..5b012d222f5b 100644
-> > --- a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> > +++ b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
-> > @@ -14,6 +14,8 @@ For MediaTek PMIC wrapper bus bindings, see:
-> >  Required properties:
-> >  - compatible: Should be one of follows
-> >         "mediatek,mt6323-rtc": for MT6323 PMIC
-> > +       "mediatek,mt6358-rtc": for MT6358 PMIC
-> > +       "mediatek,mt6358-rtc","mediatek,mt6366-rtc": for MT6366
-> > PMIC
+> > /*
+> >  * Ensure that optional delayed hardlockup init is proceed before
+> >  * the init code and memory is freed.
+> >  */
+> > static int __init lockup_detector_check(void)
+> > {
+> > 	/* Prevent any later retry. */
+> > 	allow_lockup_detector_init_retry = false;
+> > 
+> > 	/* Make sure no work is pending. */
+> > 	flush_work(&detector_work);
+> > }
+> > late_initcall_sync(lockup_detector_check);
+> > 
+> > You could leave lockup_detector_init() as it is. It does not really
+> > matter what was the exact error value returned by watchdog_nmi_probe().
+> > 
+> > Then you could call retry_lockup_detector_init() in
+> > armv8_pmu_driver_init() and be done with it.
+> > 
+> > It will be universal API that might be used on any architecture
+> > for any reason. If nobody calls retry_lockup_detector_init()
+> > then nohing will happen and the code will work as before.
+> > 
+> > It might make sense to provide the API only on architectures that
+> > really need it. We could hide it under
+> > 
+> >    ARCH_NEED_DELAYED_HARDLOCKUP_DETECTOR_INIT
+> > 
+> > , similar to ARCH_NEEDS_CPU_IDLE_COUPLE.
+> > 
 > 
-> Does not look like in correct order.
+> During implementation, if I add ARCH_NEED_DELAYED_..., there will contain
+> many enclosed ifdef-endif and is a little bit ugly.
+> Also, I didn't find a must-have reason to this Kconfig after I rebase from
+> your suggestion.
 > 
-> >         "mediatek,mt6397-rtc": for MT6397 PMIC
-> >  
-> >  Example:
-> 
-> 
-> Best regards,
-> Krzysztof
+> The one calls retry_lockup_detector_init() must fail at lockup_detector_init,
+> so I think anyone who has aleady failed at lockup_detector_init() has right
+> to retry no matter HW, SW or Arch reason.
+> Thus I might not introduce a new Kconfig in v4, and I would be glad to see
+> if any further commet on this.
 
-Thanks for yours reminder.
+Sounds reasonable from my POV. There is not much code. It will be removed
+after the init phase. It will be most likely removed even during
+compilation when linked with gcc LTE optimization and the symbols
+are not used.
 
-Our rtc owner didn't notice this.
+Best Regards,
+Petr
 
-I will correct that in next version.
-
-Thanks,
-Allen
-
-
+PS: It might take few days until I do the review of v4. I am a bit
+    overloaded at the moment.
 
 _______________________________________________
 Linux-mediatek mailing list
