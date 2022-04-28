@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3276C43219
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 08:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 025A6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 08:38:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8K7oQl3gsCVuUwHdkehdZq8EjPL6NqYYoKLmyKHa4io=; b=iKLzmPIljyTuEA
-	3LgPPXi9rz/ecj73bl2IU4ldmBUPkYox3D48Uaf0TUeD/IviV+tDKTCvOzyP8XOcWnbbVU7/yIfF6
-	rcPi1Ofstx42qt/9eQccM8UxZWXZU2gw6D3tEqfgUAD/cFV2pI7keDlJwHlY9UlafvHqvK4RW+c1s
-	QkttEQHIZ5UaA+3SR2zdOIxzzEYsfsucfuu54w6ks+LCYv5ZmhTwsdoCJQN9Po1PJhrpjFDQxTX9R
-	T0BYziqmMKPbGxuW+RYQ7g62vHrdlyK3EaJXM+Ki9+AY4dDtR1FIqXYZDIPazEZoDfDvaCpq8mBYb
-	pCS4YoxC/uHlVUSFaI5A==;
+	List-Owner; bh=pNXqJsOEgqVfGPlUsBItQc0OkiPuj3/omycgXn0mYwg=; b=2yPbtYBOzWsDdP
+	Vvcj60I+bh/JWG0D3pM4hJzGgkwjjn7s2UnK0dwxbOmkRGIFlyzew/5mcCiE7yKad+8gY45AftBAh
+	K5ZOd3x5dqgnoiToK72zDQYuXUvIlMJy0Hd/XGqjUPu0b/SF1gDBeuOLGFmS/Gvt/+xiLIVJStg8+
+	/BiVzeaYAeyrqrLl17XsRxcr/dhLsyFHglsypqZkwPu+fMRDpRUX7H6LEAHEgmSC121YwhIYCNpz8
+	LSUR/XbX4cvbX8gsrJ/RZ9h4XlIYdie65rrRBVmDud/V3QHGbHN6WsmJEbaLyix7xsXya5VWANdkl
+	hdq37ofaw7SekshbsolQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njzV9-005WQf-6u; Thu, 28 Apr 2022 08:27:51 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1njzfT-005YmR-Sr; Thu, 28 Apr 2022 08:38:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njzUw-005WLd-7G; Thu, 28 Apr 2022 08:27:39 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out1.suse.de (Postfix) with ESMTP id 893EE2186F;
- Thu, 28 Apr 2022 08:27:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1651134453; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=YIozUSFdjDnLnEJpNn98rpE1d2R0anAtFMrgIZeUiR4=;
- b=kk0y2HUNWPQ6yurCu47RXpWICv/UYYHPEiBz2vwYJUQU92TGjP6YsUB3QW/6bksx3k5t/F
- F/My4Vm3K9vGazCfRQnqYqYdnsZXWxKy4/0UkrWqH/AOJ7+7WlUXGP+sLpj9pHauw349c/
- +8XoiuZlexn/SXMwfGzlxoxmq0EliWI=
-Received: from suse.cz (unknown [10.100.224.162])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id D7C5B2C141;
- Thu, 28 Apr 2022 08:27:32 +0000 (UTC)
-Date: Thu, 28 Apr 2022 10:27:32 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: acme@kernel.org, akpm@linux-foundation.org,
- alexander.shishkin@linux.intel.com, catalin.marinas@arm.com,
- davem@davemloft.net, jolsa@redhat.com, jthierry@redhat.com,
- keescook@chromium.org, kernelfans@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
- masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
- mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
- nixiaoming@huawei.com, peterz@infradead.org,
- sparclinux@vger.kernel.org, sumit.garg@linaro.org,
- wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH v3 5/5] arm64: Enable perf events based hard lockup
- detector
-Message-ID: <YmpP9PTa1/pSmuuQ@alley>
-References: <20220421163035.26402-1-lecopzer.chen@mediatek.com>
- <20220426163840.18871-1-lecopzer.chen@mediatek.com>
+ id 1njzfI-005Yiu-Vn; Thu, 28 Apr 2022 08:38:22 +0000
+X-UUID: 0b1c7dec3ddc4339b29ab85916046de0-20220428
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:f882f3d8-8e8b-4a4b-95a5-dfe20dc9c2cd, OB:0,
+ LO
+ B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:8
+X-CID-META: VersionHash:faefae9, CLOUDID:f0bccdc6-85ee-4ac1-ac05-bd3f1e72e732,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 0b1c7dec3ddc4339b29ab85916046de0-20220428
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 496664459; Thu, 28 Apr 2022 01:38:14 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Apr 2022 01:35:06 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Apr 2022 16:35:02 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 28 Apr 2022 16:35:02 +0800
+Message-ID: <ca8309f7fcfe0a307ec465f082361a3d9842d1ec.camel@mediatek.com>
+Subject: Re: [PATCH v3, 1/1] drm/mediatek: add lut diff flag for new gamma
+ hardware support
+From: CK Hu <ck.hu@mediatek.com>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>
+CC: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com>,
+ <devicetree@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, David Airlie
+ <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Dennis YC
+ Hsieh" <dennis-yc.hsieh@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
+Date: Thu, 28 Apr 2022 16:35:02 +0800
+In-Reply-To: <20220428070403.12968-2-yongqiang.niu@mediatek.com>
+References: <20220428070403.12968-1-yongqiang.niu@mediatek.com>
+ <20220428070403.12968-2-yongqiang.niu@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220426163840.18871-1-lecopzer.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_012738_474704_E41C7B67 
-X-CRM114-Status: GOOD (  34.45  )
+X-CRM114-CacheID: sfid-20220428_013821_057275_5EDFF4C0 
+X-CRM114-Status: GOOD (  25.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,77 +88,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed 2022-04-27 00:38:40, Lecopzer Chen wrote:
-> > What about just introducing the API that will allow to try to
-> > initialize the hardlockup detector later:
-> > 
-> > /*
-> >  * Retry hardlockup detector init. It is useful when it requires some
-> >  * functionality that has to be initialized later on a particular
-> >  * platform.
-> >  */
-> > void __init retry_lockup_detector_init(void)
-> > {
-> > 	/* Must be called before late init calls. */
-> > 	if (!allow_lockup_detector_init_retry)
-> > 		return 0;
-> > 
-> > 	queue_work_on(__smp_processor_id(), system_wq, &detector_work);
-> > }
-> > 
-> > /*
-> >  * Ensure that optional delayed hardlockup init is proceed before
-> >  * the init code and memory is freed.
-> >  */
-> > static int __init lockup_detector_check(void)
-> > {
-> > 	/* Prevent any later retry. */
-> > 	allow_lockup_detector_init_retry = false;
-> > 
-> > 	/* Make sure no work is pending. */
-> > 	flush_work(&detector_work);
-> > }
-> > late_initcall_sync(lockup_detector_check);
-> > 
-> > You could leave lockup_detector_init() as it is. It does not really
-> > matter what was the exact error value returned by watchdog_nmi_probe().
-> > 
-> > Then you could call retry_lockup_detector_init() in
-> > armv8_pmu_driver_init() and be done with it.
-> > 
-> > It will be universal API that might be used on any architecture
-> > for any reason. If nobody calls retry_lockup_detector_init()
-> > then nohing will happen and the code will work as before.
-> > 
-> > It might make sense to provide the API only on architectures that
-> > really need it. We could hide it under
-> > 
-> >    ARCH_NEED_DELAYED_HARDLOCKUP_DETECTOR_INIT
-> > 
-> > , similar to ARCH_NEEDS_CPU_IDLE_COUPLE.
-> > 
+Hi, Yongqiang:
+
+On Thu, 2022-04-28 at 15:04 +0800, Yongqiang Niu wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com>
 > 
-> During implementation, if I add ARCH_NEED_DELAYED_..., there will contain
-> many enclosed ifdef-endif and is a little bit ugly.
-> Also, I didn't find a must-have reason to this Kconfig after I rebase from
-> your suggestion.
+> mt8183 gamma module usage is different with before soc,
+> gamma odd(index start from 0) lut value set to hardware
+> register should be
+> the difference of current lut value with last lut value.
 > 
-> The one calls retry_lockup_detector_init() must fail at lockup_detector_init,
-> so I think anyone who has aleady failed at lockup_detector_init() has right
-> to retry no matter HW, SW or Arch reason.
-> Thus I might not introduce a new Kconfig in v4, and I would be glad to see
-> if any further commet on this.
+> for example, chrome os user space set lut
+> like this(only r chanel for example):
+> 2 4 6 8 10 12.
+> 1) mt8183 gamma driver should set the gamma lut to hardware
+> register like this:
+> 2 [2] 6 [8] 10 [2]
 
-Sounds reasonable from my POV. There is not much code. It will be removed
-after the init phase. It will be most likely removed even during
-compilation when linked with gcc LTE optimization and the symbols
-are not used.
+I don't know why you do not modify this to
 
-Best Regards,
-Petr
+2 [2] 6 [2] 10 [2]
 
-PS: It might take few days until I do the review of v4. I am a bit
-    overloaded at the moment.
+With this modification,
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+
+> the value with [] is the difference value
+> 2)gamma hardware process display data with original lut
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_aal.c   |  2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 34 +++++++++++++++++++
+> ----
+>  3 files changed, 30 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> index f46d4ab73d6a..0f9d7efb61d7 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> @@ -66,7 +66,7 @@ void mtk_aal_gamma_set(struct device *dev, struct
+> drm_crtc_state *state)
+>  	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
+>  
+>  	if (aal->data && aal->data->has_gamma)
+> -		mtk_gamma_set_common(aal->regs, state);
+> +		mtk_gamma_set_common(aal->regs, state, false);
+>  }
+>  
+>  void mtk_aal_start(struct device *dev)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index 86c3068894b1..3380651c6707 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -51,7 +51,7 @@ void mtk_gamma_config(struct device *dev, unsigned
+> int w,
+>  		      unsigned int h, unsigned int vrefresh,
+>  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+>  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
+> *state);
+> -void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state);
+> +void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state, bool lut_diff);
+>  void mtk_gamma_start(struct device *dev);
+>  void mtk_gamma_stop(struct device *dev);
+>  
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> index 3a5815ab4079..bbd558a036ec 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> @@ -27,6 +27,7 @@
+>  
+>  struct mtk_disp_gamma_data {
+>  	bool has_dither;
+> +	bool lut_diff;
+>  };
+>  
+>  /*
+> @@ -53,12 +54,13 @@ void mtk_gamma_clk_disable(struct device *dev)
+>  	clk_disable_unprepare(gamma->clk);
+>  }
+>  
+> -void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state)
+> +void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state, bool lut_diff)
+>  {
+>  	unsigned int i, reg;
+>  	struct drm_color_lut *lut;
+>  	void __iomem *lut_base;
+>  	u32 word;
+> +	u32 diff[3] = {0};
+>  
+>  	if (state->gamma_lut) {
+>  		reg = readl(regs + DISP_GAMMA_CFG);
+> @@ -67,9 +69,20 @@ void mtk_gamma_set_common(void __iomem *regs,
+> struct drm_crtc_state *state)
+>  		lut_base = regs + DISP_GAMMA_LUT;
+>  		lut = (struct drm_color_lut *)state->gamma_lut->data;
+>  		for (i = 0; i < MTK_LUT_SIZE; i++) {
+> -			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) <<
+> 20) +
+> -				(((lut[i].green >> 6) & LUT_10BIT_MASK)
+> << 10) +
+> -				((lut[i].blue >> 6) & LUT_10BIT_MASK);
+> +
+> +			if (!lut_diff || (i % 2 == 0)) {
+> +				word = (((lut[i].red >> 6) &
+> LUT_10BIT_MASK) << 20) +
+> +					(((lut[i].green >> 6) &
+> LUT_10BIT_MASK) << 10) +
+> +					((lut[i].blue >> 6) &
+> LUT_10BIT_MASK);
+> +			} else {
+> +				diff[0] = (lut[i].red >> 6) - (lut[i -
+> 1].red >> 6);
+> +				diff[1] = (lut[i].green >> 6) - (lut[i
+> - 1].green >> 6);
+> +				diff[2] = (lut[i].blue >> 6) - (lut[i -
+> 1].blue >> 6);
+> +
+> +				word = ((diff[0] & LUT_10BIT_MASK) <<
+> 20) +
+> +					((diff[1] & LUT_10BIT_MASK) <<
+> 10) +
+> +					(diff[2] & LUT_10BIT_MASK);
+> +			}
+>  			writel(word, (lut_base + i * 4));
+>  		}
+>  	}
+> @@ -78,8 +91,12 @@ void mtk_gamma_set_common(void __iomem *regs,
+> struct drm_crtc_state *state)
+>  void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+>  {
+>  	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> +	bool lut_diff = false;
+> +
+> +	if (gamma->data)
+> +		lut_diff = gamma->data->lut_diff;
+>  
+> -	mtk_gamma_set_common(gamma->regs, state);
+> +	mtk_gamma_set_common(gamma->regs, state, lut_diff);
+>  }
+>  
+>  void mtk_gamma_config(struct device *dev, unsigned int w,
+> @@ -176,10 +193,15 @@ static const struct mtk_disp_gamma_data
+> mt8173_gamma_driver_data = {
+>  	.has_dither = true,
+>  };
+>  
+> +static const struct mtk_disp_gamma_data mt8183_gamma_driver_data = {
+> +	.lut_diff = true,
+> +};
+> +
+>  static const struct of_device_id mtk_disp_gamma_driver_dt_match[] =
+> {
+>  	{ .compatible = "mediatek,mt8173-disp-gamma",
+>  	  .data = &mt8173_gamma_driver_data},
+> -	{ .compatible = "mediatek,mt8183-disp-gamma"},
+> +	{ .compatible = "mediatek,mt8183-disp-gamma",
+> +	  .data = &mt8183_gamma_driver_data},
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+
 
 _______________________________________________
 Linux-mediatek mailing list
