@@ -4,83 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4A54C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 11:19:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F896C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 11:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4aGDbWy8XsIU2T0BwkV3BtSckOLqu34JHhM26MYSaEw=; b=iZQ1oyxAzGnPht
-	eY3IW7xFe0//TvIMnlo/d89ueTtDyOoOco70THmJ/4wcyxcg9ncc02kNp76lYkT0Hxl96bNywN4fn
-	UcBH4Hw65wriisFLaRMva6foVYaU73ILao9GqzFA0g1je+Nwlv1Zd7dR6SbS4+W8F/dBgIYmkZxwp
-	1SREdmQTA963xa3ARvCxv98HNUIPOM/jXD7C01ns4gyiUIbK9VNkZNEiP8VmXUzCgyVvlKnLDvcjP
-	JZcfKMuVX5XDkswIL59CyB1mBfCgehD6yakc17ebQ2a+COGRWTy7zzOtunu21KdHCOyZcFFDNoNcf
-	V9JPCyfe1CkYouXHGs0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pFiD9ttPv/Ls4VJByv9smSCk6t8+CS8uTNpJa9ULgtU=; b=Fra/CujS/FScUf5DD0BEF21wac
+	xWf0cM0Xi5Xc2CU4OPdZOmcmcRLbuCBlzkO8V4WcCEoiEGuXKROA2bSkotESsuA/G1rPtWr9sLaKu
+	5xGzRvKIouqTXJ0PoY9FrcK5BZsrbi6fKdRTO3E8ZKLkZC0J/EA593C6Z3NonCZ3RLe6FomIXngi1
+	V4UE1DzCwDBq310I6uwfDlqMmQarAmzA6tj5RN+Hs40Wzq05YR7X9MfKKHQgQafvtDL7/4fYOxIYp
+	8gWUjq1Kerl69uhg4P1ceHCJuwip3xR3aiTV4f/U5hfDJ/iqe7YsfgQMgRVQhwnEoXR4Iog5GbDmD
+	e5LYyr3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nk2BN-006V1s-EM; Thu, 28 Apr 2022 11:19:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nk2Ur-006Yr5-Bg; Thu, 28 Apr 2022 11:39:45 +0000
+Received: from mga09.intel.com ([134.134.136.24])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nk2Ab-006Uf1-GN; Thu, 28 Apr 2022 11:18:51 +0000
-X-UUID: 81398703e46f4ee5bb94f1805ea0ce25-20220428
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:5ddc638d-29eb-4ab8-a845-7a87a4062eb9, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:7698d3c6-85ee-4ac1-ac05-bd3f1e72e732,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 81398703e46f4ee5bb94f1805ea0ce25-20220428
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 233296941; Thu, 28 Apr 2022 04:18:45 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Apr 2022 04:18:43 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 28 Apr 2022 19:18:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 28 Apr 2022 19:18:41 +0800
-Message-ID: <b83049a9cc9714a28c90a167245c43afddbc1aab.camel@mediatek.com>
-Subject: Re: [PATCH V4 12/15] dt-bindings: reset: mediatek: Add infra_ao
- reset bit for MT8192/MT8195
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@kernel.org"
- <sboyd@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-CC: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>, Chun-Jie Chen
- =?UTF-8?Q?=28=E9=99=B3=E6=B5=9A=E6=A1=80=29?= <Chun-Jie.Chen@mediatek.com>,
- "wenst@chromium.org" <wenst@chromium.org>, Runyang Chen
- =?UTF-8?Q?=28=E9=99=88=E6=B6=A6=E6=B4=8B=29?= <Runyang.Chen@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 28 Apr 2022 19:18:41 +0800
-In-Reply-To: <d96797dc-8fbd-fe1c-f970-2f6fc8ca5b69@linaro.org>
-References: <20220427030950.23395-1-rex-bc.chen@mediatek.com>
- <20220427030950.23395-13-rex-bc.chen@mediatek.com>
- <d96797dc-8fbd-fe1c-f970-2f6fc8ca5b69@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nk2Uf-006YnP-6X; Thu, 28 Apr 2022 11:39:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1651145973; x=1682681973;
+ h=subject:to:cc:references:from:message-id:date:
+ mime-version:in-reply-to:content-transfer-encoding;
+ bh=EbBBYh9NEVCvlqlF3DlWr+jmXA+iZzTdz52n2zWzX24=;
+ b=QOAW5PrQOMN2kpjR79LhnvbR2K1vlyfzYphYgci9oj2zRGKrE6BEL8G5
+ +5ZCQws1oXSVoZJxQ4j+UHiPFpjGlqja0qsHr2msqUX5gVYAfz17S2Auw
+ AhlGS6prKpYhwDmjvoKHnjHe9j/ZuZiUTq+TslfHWSZHbRKf+BLmSVsDC
+ 3GBbRy/eYN2m7K7ADUFeMrVmbNMCHz7g8aoolxMrmO9hZ7HjHNVMqP91r
+ Y56acwqZpUuYLFAPQ0SKTmkdNDctdzgQim6V6pTI0m0J01L2s5ufy3y+M
+ C2DkOhJWRe/SH7j6D/I0gm8DEVviUl4EiiaGR5ZIaedn+uE9CJYKtBqwY A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10330"; a="265789726"
+X-IronPort-AV: E=Sophos;i="5.90,295,1643702400"; d="scan'208";a="265789726"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Apr 2022 04:39:24 -0700
+X-IronPort-AV: E=Sophos;i="5.90,295,1643702400"; d="scan'208";a="731421296"
+Received: from rongch2-mobl.ccr.corp.intel.com (HELO [10.255.31.248])
+ ([10.255.31.248])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Apr 2022 04:39:21 -0700
+Subject: Re: [kbuild-all] Re: [PATCH v3 2/2] PM / devfreq: mediatek: Introduce
+ MediaTek CCI devfreq driver
+To: Johnson Wang <johnson.wang@mediatek.com>,
+ kernel test robot <lkp@intel.com>, cw00.choi@samsung.com,
+ krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com
+Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220425125546.4129-3-johnson.wang@mediatek.com>
+ <202204271737.oAuTwqZH-lkp@intel.com>
+ <a72b6333be0d8a2065477e47222c309a0d520fd4.camel@mediatek.com>
+From: "Chen, Rong A" <rong.a.chen@intel.com>
+Message-ID: <abc836d8-b7da-c9da-6936-567df7206ca5@intel.com>
+Date: Thu, 28 Apr 2022 19:39:19 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.12.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <a72b6333be0d8a2065477e47222c309a0d520fd4.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_041849_627945_17ADD3A7 
-X-CRM114-Status: GOOD (  20.97  )
+X-CRM114-CacheID: sfid-20220428_043933_313500_2B94F7E7 
+X-CRM114-Status: GOOD (  25.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,100 +80,318 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-04-28 at 15:18 +0800, Krzysztof Kozlowski wrote:
-> On 27/04/2022 05:09, Rex-BC Chen wrote:
-> > - To support reset of infra_ao, add the bit definition of
-> >   thermal/PCIe/SVS for MT8192.
-> > - To support reset of infra_ao, add the bit definition of
-> >   thermal/SVS for MT8195.
-> > - Add the driver comment to separate the reset index for
-> >   TOPRGU and INFRA.
-> > 
-> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > ---
-> >  include/dt-bindings/reset/mt8192-resets.h | 8 ++++++++
-> >  include/dt-bindings/reset/mt8195-resets.h | 6 ++++++
-> >  2 files changed, 14 insertions(+)
-> > 
-> > diff --git a/include/dt-bindings/reset/mt8192-resets.h
-> > b/include/dt-bindings/reset/mt8192-resets.h
-> > index be9a7ca245b9..ee0ca02a39bf 100644
-> > --- a/include/dt-bindings/reset/mt8192-resets.h
-> > +++ b/include/dt-bindings/reset/mt8192-resets.h
-> > @@ -7,6 +7,7 @@
-> >  #ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8192
-> >  #define _DT_BINDINGS_RESET_CONTROLLER_MT8192
-> >  
-> > +/* TOPRGU resets */
-> >  #define MT8192_TOPRGU_MM_SW_RST					
-> > 1
-> >  #define MT8192_TOPRGU_MFG_SW_RST				2
-> >  #define MT8192_TOPRGU_VENC_SW_RST				3
-> > @@ -27,4 +28,11 @@
-> >  
-> >  #define MT8192_TOPRGU_SW_RST_NUM				23
-> >  
-> > +/* INFRA resets */
-> > +#define MT8192_INFRA_THERMAL_CTRL_RST			0
-> > +#define MT8192_INFRA_PEXTP_PHY_RST				79
-> > +#define MT8192_INFRA_PTP_RST					
-> > 101
-> > +#define MT8192_INFRA_RST4_PCIE_TOP				129
-> > +#define MT8192_INFRA_THERMAL_CTRL_MCU_RST		140
-> 
-> This is still wrong. I gave you exactly what has to be used:
-> 0
-> 1
-> 2
-> ...
-> 
-> It's a decimal number incremented by one.
-> 
-> 
-> > +
-> >  #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8192 */
-> > diff --git a/include/dt-bindings/reset/mt8195-resets.h
-> > b/include/dt-bindings/reset/mt8195-resets.h
-> > index a26bccc8b957..a3226f40779c 100644
-> > --- a/include/dt-bindings/reset/mt8195-resets.h
-> > +++ b/include/dt-bindings/reset/mt8195-resets.h
-> > @@ -7,6 +7,7 @@
-> >  #ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8195
-> >  #define _DT_BINDINGS_RESET_CONTROLLER_MT8195
-> >  
-> > +/* TOPRGU resets */
-> >  #define MT8195_TOPRGU_CONN_MCU_SW_RST          0
-> >  #define MT8195_TOPRGU_INFRA_GRST_SW_RST        1
-> >  #define MT8195_TOPRGU_APU_SW_RST               2
-> > @@ -26,4 +27,9 @@
-> >  
-> >  #define MT8195_TOPRGU_SW_RST_NUM               16
-> >  
-> > +/* INFRA resets */
-> > +#define MT8195_INFRA_THERMAL_AP_RST            0
-> > +#define MT8195_INFRA_PTP_RST                   101
-> > +#define MT8195_INFRA_THERMAL_MCU_RST           138
-> 
-> Same issue.
-> 
-> 
-> Best regards,
-> Krzysztof
 
-Hello Krzysztof,
 
-Thanks for your review.
-As mentioned in prvious mail, I will add all reset bits in MT8192 and
-MT8195.
+On 4/27/2022 6:11 PM, Johnson Wang wrote:
+> On Wed, 2022-04-27 at 17:25 +0800, kernel test robot wrote:
+>> Hi Johnson,
+>>
+>> Thank you for the patch! Perhaps something to improve:
+>>
+>> [auto build test WARNING on robh/for-next]
+>> [also build test WARNING on linus/master v5.18-rc4 next-20220427]
+>> [If your patch is applied to the wrong git tree, kindly drop us a
+>> note.
+>> And when submitting patch, we suggest to use '--base' as documented
+>> in
+>>
+> https://urldefense.com/v3/__https://git-scm.com/docs/git-format-patch__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMS_s9zEZ$
+>>   ]
+>>
+>> url:
+>> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commits/Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMc1U_tqz$
+>>   
+>> base:
+>> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMUzTprof$
+>>    for-next
+>> config: hexagon-allyesconfig (
+>> https://urldefense.com/v3/__https://download.01.org/0day-ci/archive/20220427/202204271737.oAuTwqZH-lkp@intel.com/config__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMaVRzbSL$
+>>   )
+>> compiler: clang version 15.0.0 (
+>> https://urldefense.com/v3/__https://github.com/llvm/llvm-project__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMRqw5IY-$
+>> $  1cddcfdc3c683b393df1a5c9063252eb60e52818)
+>> reproduce (this is a W=1 build):
+>>          wget
+>> https://urldefense.com/v3/__https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMQLiD-i9$
+>>    -O ~/bin/make.cross
+>>          chmod +x ~/bin/make.cross
+>>          #
+>> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commit/98b34c0587837b0e5b880b11a52433f8f0eee19f__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMU5yd7Y2$
+>>   
+>>          git remote add linux-review
+>> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMW4ldtnH$
+>>   
+>>          git fetch --no-tags linux-review Johnson-Wang/Introduce-
+>> MediaTek-CCI-devfreq-driver/20220425-205820
+>>          git checkout 98b34c0587837b0e5b880b11a52433f8f0eee19f
+>>          # save the config file
+>>          mkdir build_dir && cp config build_dir/.config
+>>          COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross
+>> W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash block/partitions/
+>> drivers/devfreq/ drivers/iio/imu/ drivers/misc/lkdtm/
+>>
+>> If you fix the issue, kindly add following tag as appropriate
+>> Reported-by: kernel test robot <lkp@intel.com>
+>>
+>> All warnings (new ones prefixed by >>):
+>>
+>>     drivers/devfreq/mtk-cci-devfreq.c:372:16: error: no member named
+>> 'parent_type' in 'struct devfreq_passive_data'
+>>             passive_data->parent_type = CPUFREQ_PARENT_DEV;
+>>             ~~~~~~~~~~~~  ^
+>>     drivers/devfreq/mtk-cci-devfreq.c:372:30: error: use of undeclared
+>> identifier 'CPUFREQ_PARENT_DEV'
+>>             passive_data->parent_type = CPUFREQ_PARENT_DEV;
+>>                                         ^
+>>>> drivers/devfreq/mtk-cci-devfreq.c:379:4: warning: format
+>>>> specifies type 'int' but the argument has type 'long' [-Wformat]
+>>
+>>                             PTR_ERR(drv->devfreq));
+>>                             ^~~~~~~~~~~~~~~~~~~~~
+>>     include/linux/dev_printk.h:144:65: note: expanded from macro
+>> 'dev_err'
+>>             dev_printk_index_wrap(_dev_err, KERN_ERR, dev,
+>> dev_fmt(fmt), ##__VA_ARGS__)
+>>                                                                    ~~~
+>>       ^~~~~~~~~~~
+>>     include/linux/dev_printk.h:110:23: note: expanded from macro
+>> 'dev_printk_index_wrap'
+>>                     _p_func(dev, fmt,
+>> ##__VA_ARGS__);                       \
+>>                                  ~~~    ^~~~~~~~~~~
+>>     1 warning and 2 errors generated.
+>>
+>>
+>> vim +379 drivers/devfreq/mtk-cci-devfreq.c
+>>
+>>     255	
+>>     256	static int mtk_ccifreq_probe(struct platform_device
+>> *pdev)
+>>     257	{
+>>     258		struct device *dev = &pdev->dev;
+>>     259		struct mtk_ccifreq_drv *drv;
+>>     260		struct devfreq_passive_data *passive_data;
+>>     261		struct dev_pm_opp *opp;
+>>     262		unsigned long rate, opp_volt;
+>>     263		int ret;
+>>     264	
+>>     265		drv = devm_kzalloc(dev, sizeof(*drv),
+>> GFP_KERNEL);
+>>     266		if (!drv)
+>>     267			return -ENOMEM;
+>>     268	
+>>     269		drv->dev = dev;
+>>     270		drv->soc_data = (const struct
+>> mtk_ccifreq_platform_data *)
+>>     271					of_device_get_match_dat
+>> a(&pdev->dev);
+>>     272		mutex_init(&drv->reg_lock);
+>>     273		platform_set_drvdata(pdev, drv);
+>>     274	
+>>     275		drv->cci_clk = devm_clk_get(dev, "cci");
+>>     276		if (IS_ERR(drv->cci_clk)) {
+>>     277			ret = PTR_ERR(drv->cci_clk);
+>>     278			return dev_err_probe(dev, ret,
+>>     279					     "failed to get cci
+>> clk: %d\n", ret);
+>>     280		}
+>>     281	
+>>     282		drv->inter_clk = devm_clk_get(dev,
+>> "intermediate");
+>>     283		if (IS_ERR(drv->inter_clk)) {
+>>     284			ret = PTR_ERR(drv->inter_clk);
+>>     285			dev_err_probe(dev, ret,
+>>     286				      "failed to get
+>> intermediate clk: %d\n", ret);
+>>     287			goto out_free_resources;
+>>     288		}
+>>     289	
+>>     290		drv->proc_reg =
+>> devm_regulator_get_optional(dev, "proc");
+>>     291		if (IS_ERR(drv->proc_reg)) {
+>>     292			ret = PTR_ERR(drv->proc_reg);
+>>     293			dev_err_probe(dev, ret,
+>>     294				      "failed to get proc
+>> regulator: %d\n", ret);
+>>     295			goto out_free_resources;
+>>     296		}
+>>     297	
+>>     298		ret = regulator_enable(drv->proc_reg);
+>>     299		if (ret) {
+>>     300			dev_err(dev, "failed to enable proc
+>> regulator\n");
+>>     301			goto out_free_resources;
+>>     302		}
+>>     303	
+>>     304		drv->sram_reg = regulator_get_optional(dev,
+>> "sram");
+>>     305		if (IS_ERR(drv->sram_reg))
+>>     306			drv->sram_reg = NULL;
+>>     307		else {
+>>     308			ret = regulator_enable(drv->sram_reg);
+>>     309			if (ret) {
+>>     310				dev_err(dev, "failed to enable
+>> sram regulator\n");
+>>     311				goto out_free_resources;
+>>     312			}
+>>     313		}
+>>     314	
+>>     315		/*
+>>     316		 * We assume min voltage is 0 and tracking
+>> target voltage using
+>>     317		 * min_volt_shift for each iteration.
+>>     318		 * The retry_max is 3 times of expeted
+>> iteration count.
+>>     319		 */
+>>     320		drv->vtrack_max = 3 * DIV_ROUND_UP(max(drv-
+>>> soc_data->sram_max_volt,
+>>     321						       drv-
+>>> soc_data->proc_max_volt),
+>>     322						   drv-
+>>> soc_data->min_volt_shift);
+>>     323	
+>>     324		ret = clk_prepare_enable(drv->cci_clk);
+>>     325		if (ret)
+>>     326			goto out_free_resources;
+>>     327	
+>>     328		ret = clk_prepare_enable(drv->inter_clk);
+>>     329		if (ret)
+>>     330			goto out_disable_cci_clk;
+>>     331	
+>>     332		ret = dev_pm_opp_of_add_table(dev);
+>>     333		if (ret) {
+>>     334			dev_err(dev, "failed to add opp table:
+>> %d\n", ret);
+>>     335			goto out_disable_inter_clk;
+>>     336		}
+>>     337	
+>>     338		rate = clk_get_rate(drv->inter_clk);
+>>     339		opp = dev_pm_opp_find_freq_ceil(dev, &rate);
+>>     340		if (IS_ERR(opp)) {
+>>     341			ret = PTR_ERR(opp);
+>>     342			dev_err(dev, "failed to get
+>> intermediate opp: %d\n", ret);
+>>     343			goto out_remove_opp_table;
+>>     344		}
+>>     345		drv->inter_voltage =
+>> dev_pm_opp_get_voltage(opp);
+>>     346		dev_pm_opp_put(opp);
+>>     347	
+>>     348		rate = U32_MAX;
+>>     349		opp = dev_pm_opp_find_freq_floor(drv->dev,
+>> &rate);
+>>     350		if (IS_ERR(opp)) {
+>>     351			dev_err(dev, "failed to get opp\n");
+>>     352			ret = PTR_ERR(opp);
+>>     353			goto out_remove_opp_table;
+>>     354		}
+>>     355	
+>>     356		opp_volt = dev_pm_opp_get_voltage(opp);
+>>     357		dev_pm_opp_put(opp);
+>>     358		ret = mtk_ccifreq_set_voltage(drv, opp_volt);
+>>     359		if (ret) {
+>>     360			dev_err(dev, "failed to scale to
+>> highest voltage %lu in proc_reg\n",
+>>     361				opp_volt);
+>>     362			goto out_remove_opp_table;
+>>     363		}
+>>     364	
+>>     365		passive_data = devm_kzalloc(dev, sizeof(struct
+>> devfreq_passive_data),
+>>     366					    GFP_KERNEL);
+>>     367		if (!passive_data) {
+>>     368			ret = -ENOMEM;
+>>     369			goto out_remove_opp_table;
+>>     370		}
+>>     371	
+>>     372		passive_data->parent_type = CPUFREQ_PARENT_DEV;
+>>     373		drv->devfreq = devm_devfreq_add_device(dev,
+>> &mtk_ccifreq_profile,
+>>     374						       DEVFREQ_
+>> GOV_PASSIVE,
+>>     375						       passive_
+>> data);
+>>     376		if (IS_ERR(drv->devfreq)) {
+>>     377			ret = -EPROBE_DEFER;
+>>     378			dev_err(dev, "failed to add devfreq
+>> device: %d\n",
+>>   > 379				PTR_ERR(drv->devfreq));
+>>     380			goto out_remove_opp_table;
+>>     381		}
+>>     382	
+>>     383		drv->opp_nb.notifier_call =
+>> mtk_ccifreq_opp_notifier;
+>>     384		ret = dev_pm_opp_register_notifier(dev, &drv-
+>>> opp_nb);
+>>     385		if (ret) {
+>>     386			dev_err(dev, "failed to register opp
+>> notifier: %d\n", ret);
+>>     387			goto out_remove_devfreq_device;
+>>     388		}
+>>     389		return 0;
+>>     390	
+>>     391	out_remove_devfreq_device:
+>>     392		devm_devfreq_remove_device(dev, drv->devfreq);
+>>     393	
+>>     394	out_remove_opp_table:
+>>     395		dev_pm_opp_of_remove_table(dev);
+>>     396	
+>>     397	out_disable_inter_clk:
+>>     398		clk_disable_unprepare(drv->inter_clk);
+>>     399	
+>>     400	out_disable_cci_clk:
+>>     401		clk_disable_unprepare(drv->cci_clk);
+>>     402	
+>>     403	out_free_resources:
+>>     404		if (regulator_is_enabled(drv->proc_reg))
+>>     405			regulator_disable(drv->proc_reg);
+>>     406		if (drv->sram_reg && regulator_is_enabled(drv-
+>>> sram_reg))
+>>     407			regulator_disable(drv->sram_reg);
+>>     408	
+>>     409		if (!IS_ERR(drv->proc_reg))
+>>     410			regulator_put(drv->proc_reg);
+>>     411		if (!IS_ERR(drv->sram_reg))
+>>     412			regulator_put(drv->sram_reg);
+>>     413		if (!IS_ERR(drv->cci_clk))
+>>     414			clk_put(drv->cci_clk);
+>>     415		if (!IS_ERR(drv->inter_clk))
+>>     416			clk_put(drv->inter_clk);
+>>     417	
+>>     418		return ret;
+>>     419	}
+>>     420	
+>>
+> 
+> Hi "kernel test robot",
+> 
+> Thanks for your review.
+> 
+> This patch is based on chanwoo/devfreq-testing[1]
+> [1]
+> https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing
 
-BRs,
-Rex
+Hi Johnson,
 
+Thanks for the feedback, we'll take a look too.
+
+Best Regards,
+Rong Chen
+
+> 
+> I will follow your suggestion to use '--base' in the next version.
+> 
+> BRs,
+> Johnson Wang
+> _______________________________________________
+> kbuild-all mailing list -- kbuild-all@lists.01.org
+> To unsubscribe send an email to kbuild-all-leave@lists.01.org
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
