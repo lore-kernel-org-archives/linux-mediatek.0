@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D103C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 20:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D97CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Apr 2022 21:23:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8fJ2E+3LYtmYWsyP01Eaqt3ciWSJ4h56N6SjJqrG1sE=; b=mp+s/srMA6l04F
-	jrbrCkhoLR1wBn85DiGCoKrFU9yce4HXjxNjT8FC2pxf6xiUmwZ0qWpF4h3u05t+PR9/0V1PDGjH2
-	tH7GCFM1H2e8PWQFn+mlDbY2jklJZS+xF55xEU4Ig9kigWF8p+8hcNlGhCUnbnRj/KAzqT6WPDpvZ
-	SPPQz5T6ya6tjeZ3vTohz+wW2a3pHvOlsT/jka1jv33bPSoptsaj76a+vrU7uWPzKSJfjXNpaKLi9
-	wHIwKdf4VgwFuFeaoJkvtu9gDO9hv0A6WKGHZN9nEQdV0/YNDAAvJbq2IisIvbfTtixLZHZWYzqY+
-	SV+FQFk0rtqAmr8Sd6xA==;
+	List-Owner; bh=jnHTvOGw3xo2VwaTW3mqUxuHuuzWlcaz/6njH++nVXw=; b=Q47CshY8gqdNbL
+	fRRj+EKrlfuCvXGmPtNxBgGbZdq6jFW389+oDKYGpyc8B9Sx8BAo2iYFmGfDV8G0nV5yq0Onhnflg
+	oRbSq3BtiJpzQtIwapkXBsIEvE2niVvc+uolsLTfFMrMdiY63RnC6KBN1A2UWL5qJr2fUotdvx/Vg
+	J/Ns2jDCv0Dpb0OfF5HWGu+NNkU6PxRIxEqrHB8uxcKtd43pmImd8EUneMWgFPPfgxl/qf27gKMD6
+	vRMlZcPxxkmXrBiy1pfCuGc5DaMNBvr7lG37ACsluiD71K0WAdYOWA6Bl0h3nvSJwUdiBJZu4bK0R
+	UytIKhGRcrHV3NKcwoJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkApL-008NzI-W4; Thu, 28 Apr 2022 20:33:28 +0000
-Received: from mail-oo1-f43.google.com ([209.85.161.43])
+	id 1nkBc5-008VnF-Hj; Thu, 28 Apr 2022 21:23:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkApA-008Nvg-NV; Thu, 28 Apr 2022 20:33:18 +0000
-Received: by mail-oo1-f43.google.com with SMTP id
- g14-20020a4ab80e000000b0035ce300c25aso1086185oop.3; 
- Thu, 28 Apr 2022 13:33:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=B9x15wnuwFtq/3VYQAzVD5Jvl0nQdR42CrutQYJJh2g=;
- b=XEx+y1aPZt1qamVihgxWpvG3u9lJpklzD1V4F9Lx0SZ0j4ewGNr0wCuJuFrfQJplK0
- 1njEjeZpWeLV5VMN59ClAcis2C4Gv0SNmSVuYHlLAyucoe1FleZDlRfJFAHKc7kOejAY
- RYRutPQgzQFeiE/dcyYXGjj5YPh+cS8/B0WNg2EEQwXHSXdPqNVSSeHHbf1HhQy4n3oB
- Xj133mns6t8rFxrKqP4ftxlhQSOfWDAR70EpZh2xctw8f2WpMuwGun12blnDde3+JfH3
- u9jap758v29tRmH03A7346SdtRbbNye1znUk1zEmrJ6oFNMl4bhoKqhd8j7OOF3WnZTh
- wZZA==
-X-Gm-Message-State: AOAM532R9eMhDAcTEOooNitMGVZHxNDzYqWKyQwdTKVzjrFTiY+Lmu8/
- LXibzgKN/AC2fYg0RSqASg==
-X-Google-Smtp-Source: ABdhPJx5fiCLEo8Nkxa3liF7wTlGPWAq3+bwWVA6vMmHt8EESLBE81C80gHKvonIz3kygiYb9WMqVg==
-X-Received: by 2002:a4a:bb0b:0:b0:338:e8bb:d5fc with SMTP id
- f11-20020a4abb0b000000b00338e8bbd5fcmr12524249oop.16.1651177994946; 
- Thu, 28 Apr 2022 13:33:14 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- f60-20020a9d2c42000000b00605d61e3a16sm372946otb.35.2022.04.28.13.33.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 28 Apr 2022 13:33:14 -0700 (PDT)
-Received: (nullmailer pid 220465 invoked by uid 1000);
- Thu, 28 Apr 2022 20:33:13 -0000
-From: Rob Herring <robh@kernel.org>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- chunkuang.hu@kernel.org, jitao.shi@mediatek.com, linux-kernel@vger.kernel.org,
- airlied@linux.ie, krzysztof.kozlowski+dt@linaro.org, daniel@ffwll.ch,
- xinlei.lee@mediatek.com, devicetree@vger.kernel.org, p.zabel@pengutronix.de,
- linux-mediatek@lists.infradead.org, robh+dt@kernel.org,
- dri-devel@lists.freedesktop.org
-In-Reply-To: <20220428133753.8348-2-rex-bc.chen@mediatek.com>
-References: <20220428133753.8348-1-rex-bc.chen@mediatek.com>
- <20220428133753.8348-2-rex-bc.chen@mediatek.com>
-Subject: Re: [PATCH v5 1/4] dt-bindings: display: mediatek: dsi: Convert
- dsi_dtbinding to .yaml
-Date: Thu, 28 Apr 2022 15:33:13 -0500
-Message-Id: <1651177993.334386.220464.nullmailer@robh.at.kernel.org>
+ id 1nkBbt-008Viq-Ni; Thu, 28 Apr 2022 21:23:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0A2B561F02;
+ Thu, 28 Apr 2022 21:23:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC2C6C385AF;
+ Thu, 28 Apr 2022 21:23:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1651181016;
+ bh=rE+qwrcYq1YEDwagHt9bw0Dmvq2A/QwK2cQtgGYtZKA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=no38TJlgb9U2gYSmWW3vbaA67LL/vJLFz33ioGRUtsTQaNukvebyzJoIbnzNysdva
+ KeVy11OYbLms0RZ3OCVWmC+xIzqOfn4cjMDm4pXEPUwGkf5Vh/bq6EPFVjSZNRi8Gv
+ K0WQ0lU2C5coSTjh5mQUdihnE//IYsjUA9LCDzrZFBxUJp2TzIWq64l/nWeuA3hX63
+ ypdEVKeHmETEcBZWCrCA0t0YyCZK0T00ECwMMAFGHOBmb2U//n3oKsH9UQUKdcXHS8
+ YHwwOB9lDtjTbcbbhd9xkPV/5sO9bBltmTYBA0FJ6W+7hZe90XuCDtJphHHUX3s+mY
+ OpuwIG7FYctqA==
+From: Jakub Kicinski <kuba@kernel.org>
+To: davem@davemloft.net,
+	pabeni@redhat.com
+Cc: edumazet@google.com, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, ulli.kroll@googlemail.com,
+ linus.walleij@linaro.org, mlindner@marvell.com, stephen@networkplumber.org,
+ nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com, grygorii.strashko@ti.com,
+ wei.liu@kernel.org, paul@xen.org, prabhakar.mahadev-lad.rj@bp.renesas.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-omap@vger.kernel.org, xen-devel@lists.xenproject.org
+Subject: [PATCH net-next v2 01/15] eth: remove copies of the NAPI_POLL_WEIGHT
+ define
+Date: Thu, 28 Apr 2022 14:23:09 -0700
+Message-Id: <20220428212323.104417-2-kuba@kernel.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220428212323.104417-1-kuba@kernel.org>
+References: <20220428212323.104417-1-kuba@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_133316_807974_53756C10 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220428_142337_894710_E7FAE8A4 
+X-CRM114-Status: GOOD (  16.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,115 +74,199 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Apr 2022 21:37:50 +0800, Rex-BC Chen wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> Convert mediatek,dsi.txt to mediatek,dsi.yaml format
-> 
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->  .../display/mediatek/mediatek,dsi.txt         |  62 ---------
->  .../display/mediatek/mediatek,dsi.yaml        | 122 ++++++++++++++++++
->  2 files changed, 122 insertions(+), 62 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-> 
+Defining local versions of NAPI_POLL_WEIGHT with the same
+values in the drivers just makes refactoring harder.
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+Drop the special defines in a bunch of drivers where the
+removal is relatively simple so grouping into one patch
+does not impact reviewability.
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+---
+CC: ulli.kroll@googlemail.com
+CC: linus.walleij@linaro.org
+CC: mlindner@marvell.com
+CC: stephen@networkplumber.org
+CC: nbd@nbd.name
+CC: john@phrozen.org
+CC: sean.wang@mediatek.com
+CC: Mark-MC.Lee@mediatek.com
+CC: matthias.bgg@gmail.com
+CC: grygorii.strashko@ti.com
+CC: wei.liu@kernel.org
+CC: paul@xen.org
+CC: prabhakar.mahadev-lad.rj@bp.renesas.com
+CC: linux-arm-kernel@lists.infradead.org
+CC: linux-mediatek@lists.infradead.org
+CC: linux-omap@vger.kernel.org
+CC: xen-devel@lists.xenproject.org
+---
+ drivers/net/ethernet/cortina/gemini.c         | 4 +---
+ drivers/net/ethernet/marvell/skge.c           | 3 +--
+ drivers/net/ethernet/marvell/sky2.c           | 3 +--
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 3 +--
+ drivers/net/ethernet/ti/davinci_emac.c        | 3 +--
+ drivers/net/ethernet/ti/netcp_core.c          | 5 ++---
+ drivers/net/xen-netback/interface.c           | 3 +--
+ 7 files changed, 8 insertions(+), 16 deletions(-)
 
-Full log is available here: https://patchwork.ozlabs.org/patch/
-
-
-dsi@1400c000: compatible: ['mediatek,mt7623-dsi', 'mediatek,mt2701-dsi'] is too long
-	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
-	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
-
-dsi@14014000: #address-cells:0:0: 2 was expected
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-
-dsi@14014000: 'port' is a required property
-	arch/arm64/boot/dts/mediatek/mt8183-evb.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-
-dsi@14014000: #size-cells:0:0: 2 was expected
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-
-dsi@1401b000: 'port' is a required property
-	arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dtb
+diff --git a/drivers/net/ethernet/cortina/gemini.c b/drivers/net/ethernet/cortina/gemini.c
+index 8014eb33937c..9e6de2f968fa 100644
+--- a/drivers/net/ethernet/cortina/gemini.c
++++ b/drivers/net/ethernet/cortina/gemini.c
+@@ -68,7 +68,6 @@ MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
+ #define DEFAULT_GMAC_RXQ_ORDER		9
+ #define DEFAULT_GMAC_TXQ_ORDER		8
+ #define DEFAULT_RX_BUF_ORDER		11
+-#define DEFAULT_NAPI_WEIGHT		64
+ #define TX_MAX_FRAGS			16
+ #define TX_QUEUE_NUM			1	/* max: 6 */
+ #define RX_MAX_ALLOC_ORDER		2
+@@ -2472,8 +2471,7 @@ static int gemini_ethernet_port_probe(struct platform_device *pdev)
+ 	netdev->max_mtu = 10236 - VLAN_ETH_HLEN;
+ 
+ 	port->freeq_refill = 0;
+-	netif_napi_add(netdev, &port->napi, gmac_napi_poll,
+-		       DEFAULT_NAPI_WEIGHT);
++	netif_napi_add(netdev, &port->napi, gmac_napi_poll, NAPI_POLL_WEIGHT);
+ 
+ 	ret = of_get_mac_address(np, mac);
+ 	if (!ret) {
+diff --git a/drivers/net/ethernet/marvell/skge.c b/drivers/net/ethernet/marvell/skge.c
+index cf03c67fbf40..c1e985416c0e 100644
+--- a/drivers/net/ethernet/marvell/skge.c
++++ b/drivers/net/ethernet/marvell/skge.c
+@@ -50,7 +50,6 @@
+ #define PHY_RETRIES	        1000
+ #define ETH_JUMBO_MTU		9000
+ #define TX_WATCHDOG		(5 * HZ)
+-#define NAPI_WEIGHT		64
+ #define BLINK_MS		250
+ #define LINK_HZ			HZ
+ 
+@@ -3833,7 +3832,7 @@ static struct net_device *skge_devinit(struct skge_hw *hw, int port,
+ 		dev->features |= NETIF_F_HIGHDMA;
+ 
+ 	skge = netdev_priv(dev);
+-	netif_napi_add(dev, &skge->napi, skge_poll, NAPI_WEIGHT);
++	netif_napi_add(dev, &skge->napi, skge_poll, NAPI_POLL_WEIGHT);
+ 	skge->netdev = dev;
+ 	skge->hw = hw;
+ 	skge->msg_enable = netif_msg_init(debug, default_msg);
+diff --git a/drivers/net/ethernet/marvell/sky2.c b/drivers/net/ethernet/marvell/sky2.c
+index ea16b1dd6a98..a1e907c85217 100644
+--- a/drivers/net/ethernet/marvell/sky2.c
++++ b/drivers/net/ethernet/marvell/sky2.c
+@@ -63,7 +63,6 @@
+ #define TX_DEF_PENDING		63
+ 
+ #define TX_WATCHDOG		(5 * HZ)
+-#define NAPI_WEIGHT		64
+ #define PHY_RETRIES		1000
+ 
+ #define SKY2_EEPROM_MAGIC	0x9955aabb
+@@ -4938,7 +4937,7 @@ static int sky2_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		}
+ 	}
+ 
+-	netif_napi_add(dev, &hw->napi, sky2_poll, NAPI_WEIGHT);
++	netif_napi_add(dev, &hw->napi, sky2_poll, NAPI_POLL_WEIGHT);
+ 
+ 	err = register_netdev(dev);
+ 	if (err) {
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index 4cd0747edaff..95839fd84dab 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -30,7 +30,6 @@
+ #define MTK_STAR_WAIT_TIMEOUT			300
+ #define MTK_STAR_MAX_FRAME_SIZE			1514
+ #define MTK_STAR_SKB_ALIGNMENT			16
+-#define MTK_STAR_NAPI_WEIGHT			64
+ #define MTK_STAR_HASHTABLE_MC_LIMIT		256
+ #define MTK_STAR_HASHTABLE_SIZE_MAX		512
+ 
+@@ -1551,7 +1550,7 @@ static int mtk_star_probe(struct platform_device *pdev)
+ 	ndev->netdev_ops = &mtk_star_netdev_ops;
+ 	ndev->ethtool_ops = &mtk_star_ethtool_ops;
+ 
+-	netif_napi_add(ndev, &priv->napi, mtk_star_poll, MTK_STAR_NAPI_WEIGHT);
++	netif_napi_add(ndev, &priv->napi, mtk_star_poll, NAPI_POLL_WEIGHT);
+ 
+ 	return devm_register_netdev(dev, ndev);
+ }
+diff --git a/drivers/net/ethernet/ti/davinci_emac.c b/drivers/net/ethernet/ti/davinci_emac.c
+index 9d1e98db308b..2a3e4e842fa5 100644
+--- a/drivers/net/ethernet/ti/davinci_emac.c
++++ b/drivers/net/ethernet/ti/davinci_emac.c
+@@ -113,7 +113,6 @@ static const char emac_version_string[] = "TI DaVinci EMAC Linux v6.1";
+ #define EMAC_DEF_RX_NUM_DESC		(128)
+ #define EMAC_DEF_MAX_TX_CH		(1) /* Max TX channels configured */
+ #define EMAC_DEF_MAX_RX_CH		(1) /* Max RX channels configured */
+-#define EMAC_POLL_WEIGHT		(64) /* Default NAPI poll weight */
+ 
+ /* Buffer descriptor parameters */
+ #define EMAC_DEF_TX_MAX_SERVICE		(32) /* TX max service BD's */
+@@ -1949,7 +1948,7 @@ static int davinci_emac_probe(struct platform_device *pdev)
+ 
+ 	ndev->netdev_ops = &emac_netdev_ops;
+ 	ndev->ethtool_ops = &ethtool_ops;
+-	netif_napi_add(ndev, &priv->napi, emac_poll, EMAC_POLL_WEIGHT);
++	netif_napi_add(ndev, &priv->napi, emac_poll, NAPI_POLL_WEIGHT);
+ 
+ 	pm_runtime_enable(&pdev->dev);
+ 	rc = pm_runtime_resume_and_get(&pdev->dev);
+diff --git a/drivers/net/ethernet/ti/netcp_core.c b/drivers/net/ethernet/ti/netcp_core.c
+index 16507bff652a..21b0e961eab5 100644
+--- a/drivers/net/ethernet/ti/netcp_core.c
++++ b/drivers/net/ethernet/ti/netcp_core.c
+@@ -24,7 +24,6 @@
+ #include "netcp.h"
+ 
+ #define NETCP_SOP_OFFSET	(NET_IP_ALIGN + NET_SKB_PAD)
+-#define NETCP_NAPI_WEIGHT	64
+ #define NETCP_TX_TIMEOUT	(5 * HZ)
+ #define NETCP_PACKET_SIZE	(ETH_FRAME_LEN + ETH_FCS_LEN)
+ #define NETCP_MIN_PACKET_SIZE	ETH_ZLEN
+@@ -2096,8 +2095,8 @@ static int netcp_create_interface(struct netcp_device *netcp_device,
+ 	}
+ 
+ 	/* NAPI register */
+-	netif_napi_add(ndev, &netcp->rx_napi, netcp_rx_poll, NETCP_NAPI_WEIGHT);
+-	netif_tx_napi_add(ndev, &netcp->tx_napi, netcp_tx_poll, NETCP_NAPI_WEIGHT);
++	netif_napi_add(ndev, &netcp->rx_napi, netcp_rx_poll, NAPI_POLL_WEIGHT);
++	netif_tx_napi_add(ndev, &netcp->tx_napi, netcp_tx_poll, NAPI_POLL_WEIGHT);
+ 
+ 	/* Register the network device */
+ 	ndev->dev_id		= 0;
+diff --git a/drivers/net/xen-netback/interface.c b/drivers/net/xen-netback/interface.c
+index fe8e21ad8ed9..8e035374a370 100644
+--- a/drivers/net/xen-netback/interface.c
++++ b/drivers/net/xen-netback/interface.c
+@@ -42,7 +42,6 @@
+ #include <xen/balloon.h>
+ 
+ #define XENVIF_QUEUE_LENGTH 32
+-#define XENVIF_NAPI_WEIGHT  64
+ 
+ /* Number of bytes allowed on the internal guest Rx queue. */
+ #define XENVIF_RX_QUEUE_BYTES (XEN_NETIF_RX_RING_SIZE/2 * PAGE_SIZE)
+@@ -739,7 +738,7 @@ int xenvif_connect_data(struct xenvif_queue *queue,
+ 	atomic_set(&queue->inflight_packets, 0);
+ 
+ 	netif_napi_add(queue->vif->dev, &queue->napi, xenvif_poll,
+-			XENVIF_NAPI_WEIGHT);
++			NAPI_POLL_WEIGHT);
+ 
+ 	queue->stalled = true;
+ 
+-- 
+2.34.1
 
 
 _______________________________________________
