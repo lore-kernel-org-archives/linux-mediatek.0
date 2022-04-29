@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76508C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 12:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 660D1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 12:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A8WkNMLQC2zo9pptrQsVeZrt8h4ys7ErO+kOONGqX0Y=; b=LzroI43HFNkyUb
-	qVoe5rQExEf8Aki79j64PeErNzHenuSfyUvoEQRvOqaD7ZWAqE93sd7iifS5OSKEFG1uYSxyG+f6I
-	U78vdOcaUpfXAaQw91bhtZmMB8bkCll7OUbxwUIr8YihL4lPkZ0B+rKtMNk7L6EynyGSK4Z8anILO
-	cNuDKFGHe9DbuHb7RfUD3tAEhezrR/WTm9/QXHGVEpjOzX3RWHw/fb9cxtL6lKrFOYTVCPTOdW7UF
-	XCMqC2KGRLfxs5/MpVHiAdZrZSX5TdzbIbnghjNyafX0JTnyfzRVThCUjWlwTCaB+Xg+57/gAL4pO
-	h99iIixWYixyVCczmIEQ==;
+	List-Owner; bh=dO2iDSTKdP58L3a5HOdCnukbZgJ+48Gc1MJJF9Qg9Co=; b=UxG9MgaG2Bxtoa
+	rwzyXB859MSp75A7yr9fTnohFgzKVOOLBnWeQijjzkPrsejAXuX1nRSuakTmVJWiToGxnmC9FZ9na
+	z7tC3RUn2WwtilHj8ix2u0qNPbdCldDfnrIjovwsWkfB3+iaoMmEwcDFLcLxeQJb4A3W+339E3o7D
+	CEYA+WPIjF02e92ID2XsiJe6pMetlcuXDFUBeCrsOVfIPlAW0nHcIHwLIzpP7frEdD0qpeniDTle0
+	l0zVDCY/bg4dj4EeW563sNwZggbpRFzXnQrzoRD7tAL5LjdWvR3K6PPr/Zz3vRKPtpaNeEvz1i7Lq
+	yHWyIUPI0ACWV/Wu6+/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkQ4V-00BF8c-5B; Fri, 29 Apr 2022 12:50:07 +0000
-Received: from mail-qt1-f181.google.com ([209.85.160.181])
+	id 1nkQBd-00BHJ8-Qa; Fri, 29 Apr 2022 12:57:29 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkQ4H-00BF4l-HQ; Fri, 29 Apr 2022 12:49:56 +0000
-Received: by mail-qt1-f181.google.com with SMTP id fu47so5567819qtb.5;
- Fri, 29 Apr 2022 05:49:49 -0700 (PDT)
+ id 1nkQBR-00BHF4-KT; Fri, 29 Apr 2022 12:57:19 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id d5so10690942wrb.6;
+ Fri, 29 Apr 2022 05:57:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=ePG6wKCbyk/Ae1arQi0XeTIwAd5LTspuTNbaM+4UP34=;
+ b=UhDeT+7OtGdUNKYaRyYzF4YBjNiqiG5cYbp0NWSnSrluhsGjG6xPIOa/eMOslCx/VC
+ t5MHMquFHD0iip2929xPOiKtfcZ7f7Kqyne/BGIHZtW0+1IXEEnNWPhHLQuKrUfZm56I
+ 9MWvhTeIbw3HTkCcUtk4saxKmzHFZqX3ZCB+WWrtNtRnHsgon3MF5RqJ9xvGQws7/0mS
+ b+KAA0MqsPPuKd+MsdTJD2DsZatnp/1g7cxsoG0dVaw4lhJmg2PfwCrWeXpcHA3xyvHa
+ 1U/RSSLyuPWacNUUqAFTW/EiOcufG4eM4aUy+7Ho0cBqUS68URBRmHKyevMB67igwyIh
+ HVWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4tqelAYwf2EnKhlkfmEW1Nniwpv4OsNQ/+Rpd0YuVJE=;
- b=masQCoUtCVbH/q7/nBZCUqu4eUa9NBvz60coJc4oN5KSBN1tosfpVoFAsO2MLeQbZw
- YYNnUIsgkI2UsWUq0TSDT2cJDxBE4MSaSG2yuwoDegkMtUc43GYdI9yW8xM3sJf8Gygg
- urJDqMROmW+n+h/oLcTIiG4Pm9iMdDwENhmEGfuYDyZ8akoEBlkI0RfJp+mlaEbZLsGo
- 12RgkZbw/Z1aZhN6p8czPWFOXzfTsBrOXTCAkiuBCaENMlqgogebOsqaASRJVZH9Ag1d
- FMtrhLFxJj3e0KBVs9BP6jsUxBScnQsxEFWkSNWmOJ4zZXik6x0vchzne9AWLKL5xH1w
- 0+nQ==
-X-Gm-Message-State: AOAM532iUbacR5J2dt1fmcrI1jfi8wPoPsUXXvkiVjVLJbLEmtFD3J3Z
- AEqXDILBrf0XuV3IBk2cXZipkZjY6Rg33LKu
-X-Google-Smtp-Source: ABdhPJwAhG+C2PWQ7nfhMCpPa6Btlv5L5vTQnbDZt3+KMXBLITYZ4VitOsNPlyd6USzzJIxNRH4IYg==
-X-Received: by 2002:a05:622a:1807:b0:2f3:65a6:c100 with SMTP id
- t7-20020a05622a180700b002f365a6c100mr18567179qtc.412.1651236588621; 
- Fri, 29 Apr 2022 05:49:48 -0700 (PDT)
-Received: from mail-yw1-f169.google.com (mail-yw1-f169.google.com.
- [209.85.128.169]) by smtp.gmail.com with ESMTPSA id
- e16-20020ac85990000000b002f3772de70asm1700796qte.69.2022.04.29.05.49.47
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=ePG6wKCbyk/Ae1arQi0XeTIwAd5LTspuTNbaM+4UP34=;
+ b=geG3NsPBqSgEQuDT0NJ4DCYDKh2ytg5DgDZJPCD61TlsRzjuVCcC56FBgu0JHy17WO
+ NBuXzY0eesIhrsUULHz9uiA2hlKUpLRqBjY6ceRvuDZ7mlvzrg3Np3mDg4AAB67MFMN0
+ Z+hMJqikhKAD9LPNmwiKt+VrWWE+d1V5B7N6zXUfoYoM6c0wifmGRFXaa+hdghJ80OPL
+ ocpZSBggyXNOVVahzf2/LckHFHG/ZdSoTWby117p9MGXi/IVYGFaEcbu4tro9QFpnJLQ
+ paxFpl/x1EgYJVybjSrrfo6/Br8WAd4lAkI/lv6RmdrOK9tH4AdnBawH+qhY8TWUH0tf
+ MNWQ==
+X-Gm-Message-State: AOAM530asXfBRAcXBLw4ldmk7zR2rTbC7Q5YzjzLd0Kmx2Lvqv/AJOnU
+ AOcyUupLtEoeZT0/bYhbBKY=
+X-Google-Smtp-Source: ABdhPJx9iOmaDdFy/exNMf07wrNEg2EtThd5KGiPKJ773aQXEiQRCBTb7PUS/mCPw+1r7dSeJNOlxg==
+X-Received: by 2002:adf:ec92:0:b0:20a:d261:2cf2 with SMTP id
+ z18-20020adfec92000000b0020ad2612cf2mr25223015wrn.296.1651237034054; 
+ Fri, 29 Apr 2022 05:57:14 -0700 (PDT)
+Received: from [192.168.0.43] (static-35-180-85-188.ipcom.comunitel.net.
+ [188.85.180.35]) by smtp.gmail.com with ESMTPSA id
+ h9-20020a05600c350900b00393f01c8f00sm6986212wmq.47.2022.04.29.05.57.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 Apr 2022 05:49:48 -0700 (PDT)
-Received: by mail-yw1-f169.google.com with SMTP id
- 00721157ae682-2f7bb893309so83699807b3.12; 
- Fri, 29 Apr 2022 05:49:47 -0700 (PDT)
-X-Received: by 2002:a81:e10d:0:b0:2f7:bb2a:6529 with SMTP id
- w13-20020a81e10d000000b002f7bb2a6529mr34597687ywh.62.1651236586925; Fri, 29
- Apr 2022 05:49:46 -0700 (PDT)
+ Fri, 29 Apr 2022 05:57:13 -0700 (PDT)
+Message-ID: <cf9b425e-84ff-af12-72a7-4056b8cbf90d@gmail.com>
+Date: Fri, 29 Apr 2022 14:57:12 +0200
 MIME-Version: 1.0
-References: <20220428093355.16172-1-jiaxin.yu@mediatek.com>
- <CAMuHMdWYJofetMwkAH4d8UzKZH77hxwRhXrMhaECOs1suQV2PA@mail.gmail.com>
- <b90426905a486ab720b9d67f00ed869285acd768.camel@mediatek.com>
-In-Reply-To: <b90426905a486ab720b9d67f00ed869285acd768.camel@mediatek.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Fri, 29 Apr 2022 14:49:35 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdVA-JJqPB9fiUZSeXZR+fa58V5t2OQjaN1-JvGR+K_H4Q@mail.gmail.com>
-Message-ID: <CAMuHMdVA-JJqPB9fiUZSeXZR+fa58V5t2OQjaN1-JvGR+K_H4Q@mail.gmail.com>
-Subject: Re: [v4 00/18] ASoC: mediatek: Add support for MT8186 SoC
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- aaronyu@google.com, 
- Matthias Brugger <matthias.bgg@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>, 
- Tzung-Bi Shih <tzungbi@google.com>, Julian Braha <julianbraha@gmail.com>, 
- ALSA Development Mailing List <alsa-devel@alsa-project.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v4] dt-bindings: dsp: mediatek: add mt8195 dsp document
+Content-Language: en-US
+To: YC Hung <yc.hung@mediatek.com>, Rob Herring <robh@kernel.org>,
+ broonie@kernel.org
+Cc: robh+dt@kernel.org, daniel.baluta@nxp.com, trevor.wu@mediatek.com,
+ tiwai@suse.com, alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
+ cezary.rojewski@intel.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ allen-kh.cheng@mediatek.com
+References: <20220106064847.15588-1-yc.hung@mediatek.com>
+ <Yd4yNkeGlzdULNlv@robh.at.kernel.org>
+ <68895a40-559b-13ce-d433-f9b32c648323@gmail.com>
+ <9965188904de2e89bc5390fa6c71d9fb243f9d12.camel@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <9965188904de2e89bc5390fa6c71d9fb243f9d12.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_054953_604970_DFDAAE5E 
-X-CRM114-Status: GOOD (  22.17  )
+X-CRM114-CacheID: sfid-20220429_055717_747632_4187470D 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,36 +93,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxin,
+Hi,
 
-On Fri, Apr 29, 2022 at 11:32 AM Jiaxin Yu <jiaxin.yu@mediatek.com> wrote:
-> On Fri, 2022-04-29 at 10:47 +0200, Geert Uytterhoeven wrote:
-> > Gmail tends to mark your patches as spam.
-> > Can you please make sure to use "PATCH" in the subject line, e.g.
-> > "[PATCH v4 00/18] ASoC: mediatek: Add support for MT8186 SoC"?
+On 29/04/2022 07:59, YC Hung wrote:
+> Hi Mattias/Rob,
+> 
+> Sorry I miss this mail.
+> Could you please help to check this patch? Thanks.
+> 
 
-> Sorry for this mistake, I usually use "git format-patch --subject-
-> prefix "v4" --cover-letter -x" to generate a series of patches.
-> So it automatically removes "PATCH". I will correct the cmd to "git
-> format-patch --subject-prefix "PATCH v4" --cover-letter -x".
+Rob gave his reviewed-by. I just saw that the driver maintainer is Mark, so I 
+expect him to take the patch through his tree. Didn't realized this beforehand.
 
-You can just use e.g. "-v4" instead of the --subject-prefix option.
+Regards,
+Matthias
 
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> On Fri, 2022-01-14 at 13:56 +0100, Matthias Brugger wrote:
+>>
+>> On 12/01/2022 02:43, Rob Herring wrote:
+>>> On Thu, 06 Jan 2022 14:48:48 +0800, YC Hung wrote:
+>>>> From: "YC Hung" <yc.hung@mediatek.com>
+>>>>
+>>>> This patch adds mt8195 dsp document. The dsp is used for Sound
+>>>> Open
+>>>> Firmware driver node. It includes registers,  clocks, memory
+>>>> regions,
+>>>> and mailbox for dsp.
+>>>>
+>>>> Signed-off-by: yc.hung <yc.hung@mediatek.com>
+>>>> ---
+>>>> Changes since v3:
+>>>>     Fix patch v3 error : v3 only provide difference between v3 and
+>>>> v2.
+>>>>
+>>>> Changes since v2:
+>>>>     Remove useless watchdog interrupt.
+>>>>     Add commit message more detail description.
+>>>>
+>>>> Changes since v1:
+>>>>     Rename yaml file name as mediatek,mt8195-dsp.yaml
+>>>>     Refine descriptions for mailbox, memory-region and drop unused
+>>>> labels
+>>>>     in examples.
+>>>> ---
+>>>>    .../bindings/dsp/mediatek,mt8195-dsp.yaml     | 105
+>>>> ++++++++++++++++++
+>>>>    1 file changed, 105 insertions(+)
+>>>>    create mode 100644
+>>>> Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
+>>>>
+>>>
+>>> Reviewed-by: Rob Herring <robh@kernel.org>
+>>>
+>>
+>> Rob, it seems we don't have a maintainer for this bindings. Shall I
+>> as MediaTek
+>> SoC maintainer take them through my branch?
+>>
+>> Regards,
+>> Matthias
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
