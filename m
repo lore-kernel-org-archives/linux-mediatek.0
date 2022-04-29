@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BCB7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 12:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420EFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 12:33:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kscIbARNzp8jYoYK9E+kt1blXXQ5IjBNG2803sPwATU=; b=xAOzq9AEIfzWi0
-	bN+btTgSx0i6Fb9xgxwLbH9PGz4HKxeEXEhS0eWy4SQ3AKCexcOAAI/y1pwyBv+PX2nA9ddDoUHqD
-	Xu4coGf5P6vdtV0GNikz6a76mohjGfmLFIRRqnJLxlsHgArqBd9eVC5HfVJjzulJN4dLziueJviQ6
-	UYbX37WRFlhwxzFkkSgULh1KD43Gi1/54LL7xBxVj3r8Oug6s/i8rMAd+WKiRwEKqSaR3KYMhQRg5
-	W88KSbmKcb+hWR5UWjYYi/bivadmd24EkSN58OkqDiueLGdHvKRJoue0rpxSFZKSyjXHBdr6OBZlA
-	PRHHo5qfmJ/trfSRDYWQ==;
+	List-Owner; bh=pkTNnpP8QrNZrJxkwf7u1BB7hObCzQFCgJPKwqnxNz8=; b=Hlv/lpAT808QTS
+	7c3ADCmnHT+2QN6ukSJUe93NCKjWac1bVJZaj+nVzxprIsmoXKt7dXqOCLA5ELNXqPqjp8qzVq4tj
+	ewp6Svrg+PnoXIzcySxm7e0NpXUgg3rgvsTKQtya4vlvNdnW/VnbNxcvz1k7K9Inmp0i7Pt2o15su
+	rSePWsPA4KqBZKTzW0otXir8gArYk/b6VWUg1WWzAVhIWUKdhMQBtfXkCPrMvLjIRZxKhTw1JVOZb
+	ylNb7lrgNGf2rQ8vFMowrlIUMrN6FZ0V/dHwktBPvotLZxfQXnNBfrK1tnyUoQ2bPSx7HWeBAEaLg
+	oaCF8tTkpEpQcC8BMqbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkPoI-00B9Lu-Vg; Fri, 29 Apr 2022 12:33:23 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nkPoK-00B9Mn-NX; Fri, 29 Apr 2022 12:33:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkPmm-00B8bu-9f; Fri, 29 Apr 2022 12:31:50 +0000
+ id 1nkPmp-00B8de-8I; Fri, 29 Apr 2022 12:31:52 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id C1536B83512;
- Fri, 29 Apr 2022 12:31:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37FDAC385B2;
- Fri, 29 Apr 2022 12:31:42 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id C74A1621D7;
+ Fri, 29 Apr 2022 12:31:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EE14C385B4;
+ Fri, 29 Apr 2022 12:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651235505;
- bh=U1fnlH5OyGJ5UIzfEScyxiBRXPgHxk+UHE3ZSX1gPvY=;
+ s=k20201202; t=1651235509;
+ bh=SR30SRUGpIrkdXGfxFhbhtwcmEyED8PObTGdvWsRM14=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ISPMvNcSQFkMZIWSHYxdg5JmBcRxJsqOeGCndtVUOHzFSep/BT5TXtbexxYIN9Zzv
- +D9a9cf63EfihTrNLiCSYnSITsZ858oBCjHM9OAyLTHtFm/haWeZ6ioTJtFEM4508X
- W4q4abspHfamRw89c8Qu/vBggzpAMPr5smLkEFCN3X2QRJXSA8oQRWQzbjenxJVFU4
- vVvWes7+RoHQf0M2d4ygN8Fj6V6mJAIK2a401iKT6MLqVWYU6t/sX2ZbKs9zsTqPq2
- 9k3JTkOU1u4t9YWJ/E3OWsvCRpUR6bsW1GSxvr48e115hufTW00WQFhXx6qalzVU6F
- IOrrneGjSjqHA==
+ b=Y3ixgwhgWJLEfARoa3da3astT6U/FbRks8z3kgcvOsg79q+rLvyJ2qKg2H5JdxeE+
+ gYDIMnLGHHZEx3y4taU3uC8mQSMtrItRW5MlajvOvP4ts/bsdxGqnksVcGEQxKgQ4K
+ Qg7Xiwr9/Ajh5PA3IZZQEVDoV1oqbS8W2KnMOAnOIa2hfycJ6qzAAkN01oCCOYMzeD
+ xH3LSsaTufCVdkEDblV1LZyWTDNkCcOnT3rXGylReSPEutZjHgVavYiDgkRKRZSv2y
+ NSiLA1QuyxJ/naJb/PWVs284Rr0GzvCPJHIrunzxbPQtGwtPP7cUBBCh/GBowaiszc
+ 741KnnTeixmgw==
 From: matthias.bgg@kernel.org
 To: mturquette@baylibre.com,
 	sboyd@kernel.org
@@ -50,19 +50,17 @@ Cc: allen-kh.cheng@mediatek.com, weiyi.lu@mediatek.com,
  linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
  linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  angelogioacchino.delregno@collabora.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
-Subject: [PATCH v2 1/2] dt-bindings: ARM: Mediatek: Remove msdc binding of
- MT8192 clock
-Date: Fri, 29 Apr 2022 14:31:31 +0200
-Message-Id: <20220429123133.28869-2-matthias.bgg@kernel.org>
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2 2/2] clk: mediatek: Delete MT8192 msdc gate
+Date: Fri, 29 Apr 2022 14:31:32 +0200
+Message-Id: <20220429123133.28869-3-matthias.bgg@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220429123133.28869-1-matthias.bgg@kernel.org>
 References: <20220429123133.28869-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_053148_541318_99A4554B 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20220429_053151_409666_B27FC027 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +79,74 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Matthias Brugger <matthias.bgg@gmail.com>
 
-The msdc gate is part of the MMC driver. Delete the binding description
-of this node.
+The msdc gate is part of the MMC driver. Delete the not used code.
 
 Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 ---
 
 Changes in v2:
-- Delete compatible in binding descprition as well
+- add Reviewed-by tag
 
- .../bindings/arm/mediatek/mediatek,mt8192-clock.yaml      | 8 --------
- 1 file changed, 8 deletions(-)
+ drivers/clk/mediatek/clk-mt8192-msdc.c | 21 ---------------------
+ 1 file changed, 21 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
-index c8c67c033f8c..b57cc2e69efb 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
-@@ -24,7 +24,6 @@ properties:
-           - mediatek,mt8192-imp_iic_wrap_w
-           - mediatek,mt8192-imp_iic_wrap_n
-           - mediatek,mt8192-msdc_top
--          - mediatek,mt8192-msdc
-           - mediatek,mt8192-mfgcfg
-           - mediatek,mt8192-imgsys
-           - mediatek,mt8192-imgsys2
-@@ -107,13 +106,6 @@ examples:
-         #clock-cells = <1>;
-     };
+diff --git a/drivers/clk/mediatek/clk-mt8192-msdc.c b/drivers/clk/mediatek/clk-mt8192-msdc.c
+index 87c3b79b79cf..635f7a0b629a 100644
+--- a/drivers/clk/mediatek/clk-mt8192-msdc.c
++++ b/drivers/clk/mediatek/clk-mt8192-msdc.c
+@@ -12,28 +12,15 @@
  
--  - |
--    msdc: clock-controller@11f60000 {
--        compatible = "mediatek,mt8192-msdc";
--        reg = <0x11f60000 0x1000>;
--        #clock-cells = <1>;
--    };
+ #include <dt-bindings/clock/mt8192-clk.h>
+ 
+-static const struct mtk_gate_regs msdc_cg_regs = {
+-	.set_ofs = 0xb4,
+-	.clr_ofs = 0xb4,
+-	.sta_ofs = 0xb4,
+-};
 -
-   - |
-     mfgcfg: clock-controller@13fbf000 {
-         compatible = "mediatek,mt8192-mfgcfg";
+ static const struct mtk_gate_regs msdc_top_cg_regs = {
+ 	.set_ofs = 0x0,
+ 	.clr_ofs = 0x0,
+ 	.sta_ofs = 0x0,
+ };
+ 
+-#define GATE_MSDC(_id, _name, _parent, _shift)	\
+-	GATE_MTK(_id, _name, _parent, &msdc_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+-
+ #define GATE_MSDC_TOP(_id, _name, _parent, _shift)	\
+ 	GATE_MTK(_id, _name, _parent, &msdc_top_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+ 
+-static const struct mtk_gate msdc_clks[] = {
+-	GATE_MSDC(CLK_MSDC_AXI_WRAP, "msdc_axi_wrap", "axi_sel", 22),
+-};
+-
+ static const struct mtk_gate msdc_top_clks[] = {
+ 	GATE_MSDC_TOP(CLK_MSDC_TOP_AES_0P, "msdc_top_aes_0p", "aes_msdcfde_sel", 0),
+ 	GATE_MSDC_TOP(CLK_MSDC_TOP_SRC_0P, "msdc_top_src_0p", "infra_msdc0_src", 1),
+@@ -52,11 +39,6 @@ static const struct mtk_gate msdc_top_clks[] = {
+ 	GATE_MSDC_TOP(CLK_MSDC_TOP_AHB2AXI_BRG_AXI, "msdc_top_ahb2axi_brg_axi", "axi_sel", 14),
+ };
+ 
+-static const struct mtk_clk_desc msdc_desc = {
+-	.clks = msdc_clks,
+-	.num_clks = ARRAY_SIZE(msdc_clks),
+-};
+-
+ static const struct mtk_clk_desc msdc_top_desc = {
+ 	.clks = msdc_top_clks,
+ 	.num_clks = ARRAY_SIZE(msdc_top_clks),
+@@ -64,9 +46,6 @@ static const struct mtk_clk_desc msdc_top_desc = {
+ 
+ static const struct of_device_id of_match_clk_mt8192_msdc[] = {
+ 	{
+-		.compatible = "mediatek,mt8192-msdc",
+-		.data = &msdc_desc,
+-	}, {
+ 		.compatible = "mediatek,mt8192-msdc_top",
+ 		.data = &msdc_top_desc,
+ 	}, {
 -- 
 2.34.1
 
