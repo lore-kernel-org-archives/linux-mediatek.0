@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F28EAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 13:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64AE5C4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 13:37:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NqBtzAAatjylp7BTZgXwT0ItJgWrtOqjVOfJSgqcjMM=; b=Q5OWwwBfUhfxPJ
-	+qktNkYI70h9vySOW20Yy8uJ8EgfDmlxfVIybT+iIPqwNVaoewCX1ByRCDKh5RxjfbmzGAtXb7UD1
-	UN3X7FYB1YfGuPU51Kk1fUyQYWpsjIucx9xmRbnsZ4LkaQxSWosvF7vNoLb1M6BXc1LaV9e/3o8IL
-	ZAvHw1/gpmzrhtt2mzN+bG1r4NLwsAOJq7HbLzCMDOs5ebFVk3iLLdKmqzVm4WD9vM+ecL6i6McT9
-	3j3GVXQvm5jf5t2tiel3BZn5RtTuNwljp1nd+04iRdEY6IVr/Ih8ql56xis1+jVUp8Xlts+AKi6Qu
-	a7OR8/9KUhAharxbVx8g==;
+	List-Owner; bh=QUhynuXJzMQFAgpvj5GjZfeNvC867hRhGxfjTijUFD4=; b=y4DIf6RHW7RsK5
+	B1yXikDBhni7QeW00QeEBTfVArhkkAGTjYAb9dceZX06ALHX5fz7c6fPpl7QrqtZR7GJ64kgZ6TJX
+	/afguUSO/vaKkORXwCqm+Q9ei7ytyAd/kCt4g+4HF7bthRmkvNQU+6L6Pi/2NYggGZ4Sdz2QYTAAp
+	w6DfwCgJxBOAwFrb/Inig4873kBsWdjeyEEp8xqKuO3RT1cl0PmI5yrdM3OWA/MdNh5mXZMMWIvR+
+	xw2k2V1cG5X2ntPZBcRtvucbMe1TWUvUhlOCnxOOkNajfN0Y8oNIFogc7rWqoFNfdaUVqofPHfSPX
+	n9CA9bsTFhu0jaXAWCjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkQiy-00BNfW-O7; Fri, 29 Apr 2022 13:31:56 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nkQoh-00BOsY-Pe; Fri, 29 Apr 2022 13:37:51 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkQik-00BNbG-Um; Fri, 29 Apr 2022 13:31:44 +0000
+ id 1nkQoW-00BOnf-5J; Fri, 29 Apr 2022 13:37:41 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 4CA7F1F4658D
+ (Authenticated sender: kholk11) with ESMTPSA id 27DF61F46597
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651239099;
- bh=uvUnG6SlX1gGcWQAJOz8DPjd6t96tfmGQyIl0sM6fu4=;
+ s=mail; t=1651239454;
+ bh=kcEQjWB3+aoh/KNYmS+gc/t6zz5Iohch35uok/tdZ2g=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=RXuBOWXMODTLX89Onn14gvnX//JsqGDiXZ0epAVc3+VtKm5AZ3J9XLRo96qvV6lCm
- 0KvhB7qlRkRyR4YxcEe5X/NKjj2kj2WH8mS4wQ1fmQN+B8VygH+D97VHfWBjAq2lqc
- nu+nQkqL61QEYW+5cPOkIGmi2GyorxakBtjzYB89+nacx0b3meTUfbzd/ZMUpSNR9a
- L2mWvHOCa9jHqsZ0eedgyXDCt7HHA7N8JlGj/rbzTG2gqtBrVlaGh2+2DBbReM71az
- gmLUGtgtnOz3eldKXKz5a6dqOhXuCAOvqKvQVekasGwmC4SSHETrdljN/l6+VeWamj
- q4sJ/EQ962UXw==
-Message-ID: <6c99b872-6092-4271-467c-788a781110a4@collabora.com>
-Date: Fri, 29 Apr 2022 15:31:36 +0200
+ b=ebK2702xHh6jZr+XuacSG3T6K77O0e6jE4yrdtu4TG85TlKoWWfyhRSUooxkXDMXR
+ 0OoI3Ng05ua+RkKFNWUxH4AKEsV2ra3A4nupIfjQHulZQbrn6NeJ3nCemO0i8EO37n
+ Zy4XpKKUqXxOTV8OlHIP6DfbqvUFKinAR4IbQvSyfDWJSguh8+h9IFwVR4AczojijI
+ fHPfWMfaBjbACP1E9gfPgSRultAXHSnBqumARBke0iTzk2dgTcyd8nlMhywjJYwjXY
+ 90Lw1KN5skaMwO/WgwifwowJDIbGtdpeo4AnFoss0MfbjjpxdBGDAD+TB59o8vj/XP
+ k4LE+kVxfrPkg==
+Message-ID: <5f252726-3757-b063-d34f-c76beaa5d31b@collabora.com>
+Date: Fri, 29 Apr 2022 15:37:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: ARM: Mediatek: Remove msdc binding of
- MT8192 clock
+Subject: Re: [PATCH] rpmsg: mtk_rpmsg: Fix circular locking dependency
 Content-Language: en-US
-To: matthias.bgg@kernel.org, mturquette@baylibre.com, sboyd@kernel.org
-Cc: allen-kh.cheng@mediatek.com, weiyi.lu@mediatek.com,
- chun-jie.chen@mediatek.com, linux-kernel@vger.kernel.org, ikjn@chromium.org,
- miles.chen@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
-References: <20220429123133.28869-1-matthias.bgg@kernel.org>
- <20220429123133.28869-2-matthias.bgg@kernel.org>
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org,
+ linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+References: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
+ <20220428173148.GA2268704@p14s>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220429123133.28869-2-matthias.bgg@kernel.org>
+In-Reply-To: <20220428173148.GA2268704@p14s>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_063143_195937_51B34690 
-X-CRM114-Status: UNSURE (   6.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220429_063740_400793_6217B1B5 
+X-CRM114-Status: GOOD (  22.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,16 +71,62 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/04/22 14:31, matthias.bgg@kernel.org ha scritto:
-> From: Matthias Brugger <matthias.bgg@gmail.com>
+Il 28/04/22 19:31, Mathieu Poirier ha scritto:
+> On Fri, Jan 14, 2022 at 03:47:37PM +0100, AngeloGioacchino Del Regno wrote:
+>> During execution of the worker that's used to register rpmsg devices
+>> we are safely locking the channels mutex but, when creating a new
+>> endpoint for such devices, we are registering a IPI on the SCP, which
+>> then makes the SCP to trigger an interrupt, lock its own mutex and in
+>> turn register more subdevices.
+>> This creates a circular locking dependency situation, as the mtk_rpmsg
+>> channels_lock will then depend on the SCP IPI lock.
+>>
+>> [   18.014514]  Possible unsafe locking scenario:
+>> [   18.014515]        CPU0                    CPU1
+>> [   18.014517]        ----                    ----
+>> [   18.045467]   lock(&mtk_subdev->channels_lock);
+>> [   18.045474]                                lock(&scp->ipi_desc[i].lock);
+>> [   18.228399]                                lock(&mtk_subdev->channels_lock);
+>> [   18.228405]   lock(&scp->ipi_desc[i].lock);
+>> [   18.264405]
 > 
-> The msdc gate is part of the MMC driver. Delete the binding description
-> of this node.
+> I finally understand the problem, something that would have been impossible
+> without the pastebin you provided in your latest email.  Please add the content
+> of that pastebin to the changelog and send another revision (checkpatch
+> warnings can be ignored).
 > 
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Thanks for giving it another look... I'll add a cover letter with the contents
+of the pastebin to avoid possible confusion for anyone looking at the patch.
 
+>>
+>> To solve this, simply unlock the channels_lock mutex before calling
+>> mtk_rpmsg_register_device() and relock it right after, as safety is
+>> still ensured by the locking mechanism that happens right after
+>> through SCP.
+> 
+> The integrity of the subdev->channels list is guaranteed by relocking the
+> mutex, I'm not sure what "through SCP" adds to the sentence.
+
+I'll clarify the commit message.
+
+> 
+>> Notably, mtk_rpmsg_register_device() does not even require locking.
+>>
+> 
+> I don't agree with the above sentence - if locking doesn't happen in
+> mtk_rpmsg_create_device(), there can be two CPUs accessing the list at the same
+> time.
+> 
+
+That's right, I have largely underestimated that for some reason, sorry about that.
+
+Regards,
+Angelo
+
+> Thanks,
+> Mathieu
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
