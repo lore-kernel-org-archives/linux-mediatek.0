@@ -4,79 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14F28C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 15:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A33EFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 17:42:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x8dkLsuP9E9TEmDgu2L/CKEY1YcZB7mpBo8baYi88p0=; b=CVq/vZeVG4hlY9wP3sPzROz7cw
-	VyLX0bvFLLtaOsWONPn381rqUbRJmMnqf9fWOQd+7wh1+p1WKzf2ZCZcqvIr4lnJ527xKIXlehw4n
-	bWuMlMRZxDms3cbYIae7i7GCgaOSpBvwtWOD0H6kcGh20ZSG0AFjyBfCZ/adiyp+f5w7PBLI2U3ma
-	IIHUKtt4A4BkGl+rVChibvUmJrHWzoah/JFfb9U5a05lur0ERbP5twU2/kXIHBiSJEcXQub+bVELa
-	eiumu247Y2bViOmiV/NPM+S+3Bhl/arhK2U2t/BoQ1rDjQjJ/qr4mu6lNl9aE6MuQhel5cqxCDvMm
-	ldfVa+kw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JFckWBod1EdOWQ94GnfnYziKyetxYhz3px+DyeYQofQ=; b=QfhtbrLqWrJJL+
+	nE+MXhFR7KCdChgZDIhgmZMZe6nV2LA3UV1jHpvouaOZio7QwYpRJ8PYs0cMmfNBEOqh2zqHGP9Zo
+	bpnX0uu0Z/T/RNUy+eRlWYM6UxjEypdOAjrO0D+E1m/Vlh9HGYTpUUnL5e+wesIqOhWBk+NP/nRzQ
+	btrAMcFH7L3Fn34l0UU4VF5RvDjUgSDBt9F76GRT0UfmGOf+Q806lTjDWYAZdIVU40bDmrzu/rwH+
+	A4ErLjuGURe6ryFsNcIoFbwgSKajW30vYsskjvGQ1UXTNoTehNkbbQcDYenASDTN7z+Dpm2JuNU0+
+	zfADDa2gmut1N0VSDfgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkSRx-00BksB-Dp; Fri, 29 Apr 2022 15:22:29 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1nkUdJ-00C75p-6a; Fri, 29 Apr 2022 17:42:21 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkSRj-00BklP-RE
- for linux-mediatek@lists.infradead.org; Fri, 29 Apr 2022 15:22:18 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id x18so11281914wrc.0
- for <linux-mediatek@lists.infradead.org>; Fri, 29 Apr 2022 08:22:11 -0700 (PDT)
+ id 1nkUdF-00C75C-Q7
+ for linux-mediatek@lists.infradead.org; Fri, 29 Apr 2022 17:42:19 +0000
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 23THPWqp018608;
+ Fri, 29 Apr 2022 17:42:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=8x338saWQSdA1UydheMJ00f+qNZ6OWiVBPt8zZlM2yY=;
+ b=t+z3m2j7dKEUeyNe6YfjKBGegqc7Mgwc3XTL+gReIrgpcNckPwBahlf8amLMlRaF7a30
+ tIbSXKjuz5sFeE9RauzU8AXqMFIRXMLY0kBc5Jsyyucmbi9H4WU5tdd7P5Sd8kT+ud38
+ eCtBcQlun3NMWWxmevoxGvIV0cJTZT5sBtJmBcCwvNCol6ep1uuNAli2bAErRRVzeJCr
+ e9Nc595MHdMmQegP/PsXg4rXf2T47um/iYMK9vKSpTCs6ULDKbWDWK1LxPW9FhxOLH5F
+ Wyd+nCdvVBdgIb1Mt+X+RlPLH5v+TGqW7nx8f8m5vO7QnRiZUUMo6dR+G7n7ylhf7cgz oA== 
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3fmb5k7g2b-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 29 Apr 2022 17:42:11 +0000
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
+ with SMTP id 23THafIu011824; Fri, 29 Apr 2022 17:42:10 GMT
+Received: from nam11-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11lp2174.outbound.protection.outlook.com [104.47.57.174])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id
+ 3fp5yqeg4w-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 29 Apr 2022 17:42:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=f/zF7ZBuaTNGwDf5d36q5LvWTKHQnzjhLBZN9krSpRHrbJRdpcDPN4VAHe1042pw0qJ2n8J4zpk/mUu8StBpJhD4cnWb5uIUxlc9TWfwd7Gn0XayR0y4MEN8ssFRnhGAa4m/HmKkl/eLrvKz4JWogqiuDyNeEyc52sUps/dXLM8t/hJTvQ7JAPO7Km2lq5r5Dg+c472noHtNdGR3eCXGZMT1TmSc9QXWnOopi12///t0ZDYQXWyUtItygYWwIsogGXvVcBlJk7pkzqu6O9+OK4pWGNhGCvD+AOMBXbaNjyO2l+/4OXg67D/gjXo7cmk6wslCyne0WrMc73WR8RSKvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8x338saWQSdA1UydheMJ00f+qNZ6OWiVBPt8zZlM2yY=;
+ b=dMTzI20LdmpJ4L4Xucrz9teydBOwWRfCcnfZR1sknRJYNUYDPhVMeEx6bNXG+sBzOi7piJVS7O70SAc0pjmSGhrvVsQG0GTXX4nMIXR1pDMrqFCcWFF5sa0Tp2VaUs0Of8DtSuJJfNJQFSDQukl8Hedh7mPPu2nsi33gmEcsVWwXh4llfDKz8NIhnznLVYPWk70U6+zXkG+wkE+DHRTrA2ELHehjM/J2ug2NMOb8wNxWAPYKNYOpcvU2wMrpla4hUOMenmmT0vdgHG1vzKjttBSnAUowBDeVHIslSM8y13BML/TcnF7HftWlp+LLIsEYa8SpWWYAIZ/hQcQ/ecxObQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=BLvBmPgWkNIYBzQnMsLjrqJ6Q+Wo6mPOinOOp47QPLM=;
- b=ggJGd8qKt0ELuTvuMsbWNZtzSIw9cGxyNauKWCMmtHioFLC20Rc/OmS7a7krR8bwlh
- 06MV7aFOWcmY9ZSq18dLu7TDzMa+yDXAUB1N/0PYfmmdhQPzzRfProzG6hiP8eVix5oe
- Dyj5cDIG9yE45kT+TvfwqlprC1UXuyed54SQ47VfpKCakjesL943hVZK9hHKGVWcPj4F
- 9rHtNWzb6K2FNXItMTONP3YVZv31FwkqLwkBYps2pyh9quG0/oahmhTLwnywmBLtY/gK
- F9iF3XvdrY33ZOXBN/J5HJJL/kMB3lXLyqZ3SJNNH4/HbUOitp416cQt5ey7Fgc0k01u
- 88Hw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=BLvBmPgWkNIYBzQnMsLjrqJ6Q+Wo6mPOinOOp47QPLM=;
- b=sz+TtdAKg9+QU8iDENAWbufI3KDFIFBNQ/EoLo9xHz4m+t+ZIKz+HMQOP/ZvuiSm2l
- K6CruhR0Q8Tq1jFaNkFNLQW07F3tzp52BBey+lanNd8tBmzIwPW3f1sde2aEOTa+yGjk
- cBjitEcK5NwwgrOOGOmTGLlKb6lrI0SHNyKvxH6UCIuZiAfkeXBSvoZGNnSgTuCSQaJL
- 3XZdKjMFbh1MmFbFS9a/nBn4B1tEpDhH+uIcjIOrMRvRwVj/FtWd/f0GlL4NwIK69/nM
- keSmVp5LIGHJmQ87XBpXaG9XNjg0JL4Q/Cvt9KAuQLjC3LybI5te3P94kkeBV+SV2CB+
- 8lRg==
-X-Gm-Message-State: AOAM532GYcT9T2c8GjQ1fj0WChIoqAkqyKVqBYK33geFmw485O/GVM2/
- r1gkepmHnBtHuqUciuMTlflGIg==
-X-Google-Smtp-Source: ABdhPJyxAaDV29Pk5q4lL8bvqoUXIkNNDFy+Jel6MnDtQTC/NHbbOczZsAk1AeP9vUrxlLUEo7TeZg==
-X-Received: by 2002:adf:f745:0:b0:20a:c43b:3dfe with SMTP id
- z5-20020adff745000000b0020ac43b3dfemr29754985wrp.117.1651245730494; 
- Fri, 29 Apr 2022 08:22:10 -0700 (PDT)
-Received: from radium ([88.160.162.107]) by smtp.gmail.com with ESMTPSA id
- l6-20020a1c2506000000b0038e6fe8e8d8sm3579793wml.5.2022.04.29.08.22.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Apr 2022 08:22:09 -0700 (PDT)
-Date: Fri, 29 Apr 2022 17:22:03 +0200
-From: Fabien Parent <fparent@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 5/7] arm64: dts: mediatek: mt8195-demo: enable ethernet
-Message-ID: <20220429152203.ppuimwcka5d6rvq4@radium>
-References: <20220426134106.242353-1-fparent@baylibre.com>
- <20220426134106.242353-6-fparent@baylibre.com>
- <c0cf89c05ee708ec3648b267c1c0a0baa1331836.camel@mediatek.com>
- <f4256b5e-e6b8-f9de-fe97-3e9c6cdcb00c@gmail.com>
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8x338saWQSdA1UydheMJ00f+qNZ6OWiVBPt8zZlM2yY=;
+ b=zvoIhHqmj3yki7xL319QsNif86VQEn1BVQSwZFeDP3dfozGfRnm398K1j6nribji/imWpr3RKLj6dYvxmv6D+jlxjURh1owdRocV9gNdTtqtnosoIfHjVgptOPU2oT7ZnJbkJz8SW7PgrLGb1F5fRMH7upVtQEifHGAG11tJ0z0=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by SA2PR10MB4537.namprd10.prod.outlook.com
+ (2603:10b6:806:116::23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5206.13; Fri, 29 Apr
+ 2022 17:42:08 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::b5d5:7b39:ca2d:1b87]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::b5d5:7b39:ca2d:1b87%5]) with mapi id 15.20.5164.025; Fri, 29 Apr 2022
+ 17:42:08 +0000
+Date: Fri, 29 Apr 2022 20:41:37 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Mark Brown <broonie@kernel.org>, Chuanhong Guo <gch981213@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Chuanhong Guo <gch981213@gmail.com>, linux-spi@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] spi: mtk-snfi: preserve dma_mapping_error() error codes
+Message-ID: <YmwjUcTKyQNrrn2g@kili>
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+X-ClientProxiedBy: ZR0P278CA0143.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:40::22) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-In-Reply-To: <f4256b5e-e6b8-f9de-fe97-3e9c6cdcb00c@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 32708fe6-39a6-4dee-ca70-08da2a0794dc
+X-MS-TrafficTypeDiagnostic: SA2PR10MB4537:EE_
+X-Microsoft-Antispam-PRVS: <SA2PR10MB45379F8A36184910DCC512C88EFC9@SA2PR10MB4537.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: kuhCLFo3nJGxPw57QAhbUksKKR9JhrjyuzGqwK+0tNSBkjT3Lp9srl/eGtCyeAVuZ/KQINv/U1qiGGmXK6w+dATmk8CTxs6GzJQmK92+9oyyYXwC1y2mrVPZJbyP80OsB5IeDGhRr04r4JscJNl6w+n9IVL6JEN6zh6A1oGZ9un22qS5Wf7N/zEy3o9PUeCaCFF91JIRo3TkI8hAy0Ll8qDFb5IHEwrCY/8STaGueFObkw2j5c/2IzEVyJqQ3ZdiNRTr5LqaQOaKwiLclxIMZAzs2J02pY56QneSa1opVPOaUyNUqabiwZgGK9K8pEkO0c0nwrU3C2BXHreGZl3HKRYLUwMZ+Lg3NUh9iV1rQGHTG0ALx0V0HIi5yrtadHSoFZknmM3f/Ylw1RAPKD/uwIJTKJqaHNxQHw8aJDK+YnsDRWjUZjy2Rnuo9RypYxwZH7Q774ZwaHUu7WNdrP3JAOEHLcQAkySko6P3rBMKT2hORz3yb8ucMKySv0Bc1OrlEjmbOi4n9988QU3LXrt3r/hovLEVwjo/9B1XJIzCg2Z5StP2tqSNr/HGPJG9yfbVCHcmMCVEc3jgkt+qRPHxwdgCYgwz84o2VZ5/k4Th9AOecV63HaAdusjEUrfCek72s8e0lhPc/vd1j8d57+h1iuk7cqL9jowNOWHkhu464zCYnpX0j8snT9c/MWV5e/xrSXC5deHawxoH9VaKcfYpkA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(366004)(186003)(5660300002)(52116002)(66946007)(66556008)(33716001)(316002)(66476007)(44832011)(2906002)(83380400001)(8676002)(4326008)(8936002)(110136005)(54906003)(6486002)(86362001)(508600001)(38350700002)(38100700002)(6666004)(9686003)(6512007)(26005)(6506007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?PdEKLIusnP3T5sAH4g48ZlrkMSyjICkC3O/CRtvybQrmJe/uHogKTx2AoJ2A?=
+ =?us-ascii?Q?mYh1RBxukqXZ9YIF36ehvQqcqN42Lj9q9DD2LkCJSyTneSiAekVh+tpZxvKy?=
+ =?us-ascii?Q?aOzO3B9m8sx5QOotnwSNW/Yo6VUJref4aUHDLWIcO8JoAVZtwXWlhK9gZiEh?=
+ =?us-ascii?Q?ueS+sZPN6pUEvcalrd55rxPiphiFm6gethhFMOhb+aHImDsa8gaskWzMTcAJ?=
+ =?us-ascii?Q?kgv1lgdkhEhMP3itp2815YR4tWBgVQ8rL5388vNr/8iZj8IZfX0tMJUxSdAm?=
+ =?us-ascii?Q?IZXrmuQIavBg0ctCrrrlXGDC1UPYVa4ij1qJX4XizL0Msu+XbfRJROU9wxkR?=
+ =?us-ascii?Q?qP9XIPe57xCditnvZXw7FrPIMLZrmlwS0ug1Q1bJPRD1Tw3KYQs01GI0tHf+?=
+ =?us-ascii?Q?HtW6wvVAOafH3k7LPEqwi/7QRu4rS3yzutEbgYa2/hH8WDPG/DN+QgoRirqk?=
+ =?us-ascii?Q?vpL41BsFxg8nJoL0GVlD9ajE42kUTqB25fA7yvCupCws9F/T5MQ2FMO67V1q?=
+ =?us-ascii?Q?WXtVNv7mX7mJf474vY6tikd9g9gOkOdTtKnittqhnVykFicmglyzUyxLMUeB?=
+ =?us-ascii?Q?hYqhGxVu5/tdfu2nue50H/J510NfgqMaGbq15Dus0rJie94wuvBusMea6IIE?=
+ =?us-ascii?Q?x6bV0IYdEE03+uip6kbKtGBtD5rpENASAyYcthnGZDqSzKBHo+7hCQGDB4yw?=
+ =?us-ascii?Q?+9LxIfC9gu4L86kVirJHFxupvZsVaKAs4VMocPv6efh4zcjhS3g/M0ArUKI5?=
+ =?us-ascii?Q?JAiGk15jMpDdgAVG8nhGNFeZQLsjbg5bnAE8GBaGGWihlvgzPhhBUuQiaRu+?=
+ =?us-ascii?Q?t89dC34EU/J09WWXiW3JVc+U2sdqos0dOB/Jjm5mUA91q+jLxHQ6D/zLClxy?=
+ =?us-ascii?Q?X/FD1RZ0uuou+bCrstaHRwGBfdKJqgYWYD+ixlbWSwHOFdUHng1f2UAix64L?=
+ =?us-ascii?Q?OHQyC8eqZsloNrXW/i66HUVDTntRcZ6aM9RdDFTY5eJ1ZSCUzoVvXic5U/YB?=
+ =?us-ascii?Q?dIzw/dd48y3DlkTX/z0/1lhE/Bkkmj1Vi7CU/LNT20ok42gDhAUWdK3yQVZ6?=
+ =?us-ascii?Q?j6lubfmDuoBF3ZDwYVDHCl7vjTM0y1AbZ8nTLoMRJkS3DJZGae7TPKxUYjkh?=
+ =?us-ascii?Q?LC+9gxEpzEH02myUzgNncyXXD0sFg+nNHz3EvKIuu6qfRaAOGzUNxwnkaT3G?=
+ =?us-ascii?Q?IGkHzDGoV6vbMUV92GnJ4c9MUO8eIYUDAWQhXYrAyG667S+BpuxEk7bOFg09?=
+ =?us-ascii?Q?TIuzaDE3zE8o6eGJMDurWVvW3Li9JXBbDg17MT6nhHWiysSPypbTAPkM2w+1?=
+ =?us-ascii?Q?Hk+IckjTAspEnPDfEGaCVGHuxlI7bzRkMOSc1oSv3wZjQHY0IryLLXoVHDCQ?=
+ =?us-ascii?Q?yvgctBcxQg4LHIleFDfkcYWt9d3q0iXG21TaOSmWn9E3Rty93QVM17yVuta1?=
+ =?us-ascii?Q?xOrSrHdIX9Bvcfqk6knPPdqxTqRxqRqTeihJ6he+ewqd9nl2ha0l5ab90BL+?=
+ =?us-ascii?Q?TMCnlPn+uaTvNh+zjEEj8gQIw4poH1pAnNh66f2/alXGDqBdVrd0jv33ZVTE?=
+ =?us-ascii?Q?fIjZ0PhqAaueXX5caSPsXQWxqs91/KfV0gqzXzk5FUu28WpkJ7vUzhW3Q6JX?=
+ =?us-ascii?Q?iSCqQzsq7yd5gFyNAK0F2/VrVAUEKNpgivrhuTsQ0dPlWdK+FZrVwkPq6MHc?=
+ =?us-ascii?Q?v65snYzJ+Sse3DpdzJj9zkjolOBTpy3y4AN3553nRED58+f+aennEvLVtDSU?=
+ =?us-ascii?Q?epy9b4LyFYX+OzvSzCuyylBAilBzKM8=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 32708fe6-39a6-4dee-ca70-08da2a0794dc
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Apr 2022 17:42:08.2762 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: GFdPIZte4d521ted9jE7x0qktzokNLZ2Pf6fu1QbNG+oTeCBNgjnnlA0MBUvIy5QOhUDqHd+9rF9v++7y607199Rg3/c1wwmVOx6NtTnrSo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR10MB4537
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486, 18.0.858
+ definitions=2022-04-29_06:2022-04-28,
+ 2022-04-29 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxlogscore=999 mlxscore=0
+ suspectscore=0 malwarescore=0 spamscore=0 adultscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
+ definitions=main-2204290088
+X-Proofpoint-GUID: DtzalwjGD2wQjqjluj1rxwUnY-uObKzZ
+X-Proofpoint-ORIG-GUID: DtzalwjGD2wQjqjluj1rxwUnY-uObKzZ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_082215_936102_49755C36 
-X-CRM114-Status: GOOD (  21.00  )
+X-CRM114-CacheID: sfid-20220429_104218_212654_2B6FA2F7 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,226 +167,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3104810538259598611=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Return -ENOMEM of there is a dma mapping error.  Do not return success.
 
---===============3104810538259598611==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lzoq53ieck3g4u4f"
-Content-Disposition: inline
+Fixes: 764f1b748164 ("spi: add driver for MTK SPI NAND Flash Interface")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/spi/spi-mtk-snfi.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index 2c556e304673..d66bf9762557 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -903,7 +903,8 @@ static int mtk_snand_read_page_cache(struct mtk_snand *snf,
+ 	nfi_write32(snf, NFI_CON, (snf->nfi_cfg.nsectors << CON_SEC_NUM_S));
+ 
+ 	buf_dma = dma_map_single(snf->dev, buf, dma_len, DMA_FROM_DEVICE);
+-	if (dma_mapping_error(snf->dev, buf_dma)) {
++	ret = dma_mapping_error(snf->dev, buf_dma);
++	if (ret) {
+ 		dev_err(snf->dev, "DMA mapping failed.\n");
+ 		goto cleanup;
+ 	}
+@@ -1092,7 +1093,8 @@ static int mtk_snand_write_page_cache(struct mtk_snand *snf,
+ 
+ 	nfi_write32(snf, NFI_CON, (snf->nfi_cfg.nsectors << CON_SEC_NUM_S));
+ 	buf_dma = dma_map_single(snf->dev, snf->buf, dma_len, DMA_TO_DEVICE);
+-	if (dma_mapping_error(snf->dev, buf_dma)) {
++	ret = dma_mapping_error(snf->dev, buf_dma);
++	if (ret) {
+ 		dev_err(snf->dev, "DMA mapping failed.\n");
+ 		goto cleanup;
+ 	}
+-- 
+2.35.1
 
---lzoq53ieck3g4u4f
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Apr 29, 2022 at 04:00:32PM +0200, Matthias Brugger wrote:
->=20
->=20
-> On 27/04/2022 08:25, Macpaul Lin wrote:
-> > On Tue, 2022-04-26 at 15:41 +0200, Fabien Parent wrote:
-> > > Enable ethernet on the MT8195 demo board.
-> > >=20
-> > > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > > ---
-> > >   arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 108
-> > > +++++++++++++++++++
-> > >   1 file changed, 108 insertions(+)
-> > >=20
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > index 08cab3b3943b..0b7985486e2a 100644
-> > > --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > > @@ -80,6 +80,30 @@ optee_reserved: optee@43200000 {
-> > >   	};
-> > >   };
-> > > +&eth {
-> > > +	phy-mode =3D "rgmii-rxid";
-> > > +	phy-handle =3D <&eth_phy>;
-> > > +	snps,reset-gpio =3D <&pio 93 GPIO_ACTIVE_HIGH>;
-> > > +	snps,reset-delays-us =3D <0 10000 10000>;
-> > > +	mediatek,tx-delay-ps =3D <2030>;
-> > > +	pinctrl-names =3D "default", "sleep";
-> > > +	pinctrl-0 =3D <&eth_default_pins>;
-> > > +	pinctrl-1 =3D <&eth_sleep_pins>;
-> > > +	status =3D "okay";
-> > > +
-> > > +	mdio {
-> > > +		compatible =3D "snps,dwmac-mdio";
-> > > +		#address-cells =3D <1>;
-> > > +		#size-cells =3D <0>;
-> > > +
-> > > +		eth_phy: phy@1 {
-> > > +			compatible =3D "ethernet-phy-id001c.c916";
-> > > +			#phy-cells =3D <0>;
-> > > +			reg =3D <0x1>;
-> > > +		};
-> > > +	};
-> > > +};
-> > > +
-> > >   &i2c6 {
-> > >   	clock-frequency =3D <400000>;
-> > >   	pinctrl-0 =3D <&i2c6_pins>;
-> > > @@ -260,6 +284,90 @@ &mt6359_vsram_others_ldo_reg {
-> > >   };
-> > >   &pio {
-> > > +	eth_default_pins: eth-default-pins {
-> > > +		pins-cc {
-> > > +			pinmux =3D <PINMUX_GPIO85__FUNC_GBE_TXC>,
-> > > +				 <PINMUX_GPIO88__FUNC_GBE_TXEN>,
-> > > +				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
-> > > +				 <PINMUX_GPIO86__FUNC_GBE_RXC>;
-> > > +			drive-strength =3D <MTK_DRIVE_8mA>;
-> > > +		};
-> > > +
-> > > +		pins-mdio {
-> > > +			pinmux =3D <PINMUX_GPIO89__FUNC_GBE_MDC>,
-> > > +				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
-> > > +			input-enable;
-> > > +		};
-> > > +
-> > > +		pins-phy-reset {
-> > > +			pinmux =3D <PINMUX_GPIO93__FUNC_GPIO93>;
-> > > +		};
-> > > +
-> > > +		pins-power {
-> > > +			pinmux =3D <PINMUX_GPIO91__FUNC_GPIO91>,
-> > > +				 <PINMUX_GPIO92__FUNC_GPIO92>;
-> > > +			output-high;
-> > > +		};
-> > > +
-> > > +		pins-rxd {
-> > > +			pinmux =3D <PINMUX_GPIO81__FUNC_GBE_RXD3>,
-> > > +				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
-> > > +				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
-> > > +				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
-> > > +		};
-> > > +
-> > > +		pins-txd {
-> > > +			pinmux =3D <PINMUX_GPIO77__FUNC_GBE_TXD3>,
-> > > +				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
-> > > +				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
-> > > +				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
-> > > +			drive-strength =3D <MTK_DRIVE_8mA>;
-> > > +		};
-> > > +	};
-> > > +
-> > > +	eth_sleep_pins: eth-sleep-pins {
-> > > +		pins-cc {
-> > > +			pinmux =3D <PINMUX_GPIO85__FUNC_GPIO85>,
-> > > +				 <PINMUX_GPIO88__FUNC_GPIO88>,
-> > > +				 <PINMUX_GPIO87__FUNC_GPIO87>,
-> > > +				 <PINMUX_GPIO86__FUNC_GPIO86>;
-> > > +		};
-> > > +
-> > > +		pins-mdio {
-> > > +			pinmux =3D <PINMUX_GPIO89__FUNC_GPIO89>,
-> > > +				 <PINMUX_GPIO90__FUNC_GPIO90>;
-> > > +			input-disable;
-> > > +			bias-disable;
-> > > +		};
-> > > +
-> > > +		pins-phy-reset {
-> > > +			pinmux =3D <PINMUX_GPIO93__FUNC_GPIO93>;
-> > > +			input-disable;
-> > > +			bias-disable;
-> > > +		};
-> > > +
-> > > +		pins-power {
-> > > +			pinmux =3D <PINMUX_GPIO91__FUNC_GPIO91>,
-> > > +				 <PINMUX_GPIO92__FUNC_GPIO92>;
-> > > +			input-disable;
-> > > +			bias-disable;
-> > > +		};
-> > > +
-> > > +		pins-rxd {
-> > > +			pinmux =3D <PINMUX_GPIO81__FUNC_GPIO81>,
-> > > +				 <PINMUX_GPIO82__FUNC_GPIO82>,
-> > > +				 <PINMUX_GPIO83__FUNC_GPIO83>,
-> > > +				 <PINMUX_GPIO84__FUNC_GPIO84>;
-> > > +		};
-> > > +
-> > > +		pins-txd {
-> > > +			pinmux =3D <PINMUX_GPIO77__FUNC_GPIO77>,
-> > > +				 <PINMUX_GPIO78__FUNC_GPIO78>,
-> > > +				 <PINMUX_GPIO79__FUNC_GPIO79>,
-> > > +				 <PINMUX_GPIO80__FUNC_GPIO80>;
-> > > +		};
-> > > +	};
-> > > +
-> > >   	gpio_keys_pins: gpio-keys-pins {
-> > >   		pins {
-> > >   			pinmux =3D <PINMUX_GPIO106__FUNC_GPIO106>;
-> >=20
-> > Tested-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> >=20
->=20
-> I get the following error:
-> Error: arch/arm64/boot/dts/mediatek/mt8195.dtsi:582.26-27 syntax error
-
-I think he used my upstreaming branch where I store the patches I sent
-and will send to the mailing list: [0].
-
-I forgot there is a dependency between this patch and [1], and I forgot
-to test this patch serie independenly from the other commits from my
-branch. I will make sure to not forget next time.
-
-So from this patch serie, only patch 1-2, 6-7 can be applied since they
-don't have any hidden dependency:
-  dt-bindings: usb: mediatek,mtu3: add binding for MT8195 SoC
-  arm64: dts: mediatek: mt8195: add ssusb support
-  arm64: dts: mediatek: mt8195-demo: Remove input-name property
-  arm64: dts: mediatek: mt8195-demo: enable uart1
-
-[0] https://github.com/Fabo/linux/tree/mt8195-demo
-[1] https://lore.kernel.org/all/20210615173233.26682-7-tinghan.shen@mediate=
-k.com/
-
->=20
->=20
->=20
-> How did you test?
->=20
-> Regards,
-> Matthias
-
---lzoq53ieck3g4u4f
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEQyJHfU3UNW7IG61XVJKc6g3CeAAFAmJsApoACgkQVJKc6g3C
-eADspw/+L2GTNsHF9vIW29/RPamW2SwAH5iyxGmnDfgAGPU5P2dIVC+TQv4bGPCf
-YCF58yZGnNRljB7gUISwbBpq+fXSsU0rusTqNV7HYTDQV55MAUt+qYUPHsJjTWLC
-NcrUEf532RGv2uD/fSaQlMsfx55KZUepAkljPrvesjiRB55zrJQeEFO/cCdPsEMG
-e9Dx/+uZC1HR0zgy35FuuSvQLAXEuLQP+i10NDfpNAb2Fx9dQGeQnGsLlLv80NUP
-h7p4kJpytmrMVI0qRnj9i9boAOaJQyA/3HXpZqxN68QeRWS5nnx/3SsFedpwjqRK
-8IWz8DveEwUi1fxO7TjajgNPdKj6FuZWSoPTxg+Rl1uQzBSsYADidZ7JwyB/qH/w
-JbY1q+OlN/KJ8yx0eSQa6sFrjNIMbljcb0NJ4/FTWsnxI6UZ+93GbwpnPJ/MTc3J
-dX3G86mla/+lWLjz99e9bbgQndoXvPk0smBGM2roZYd5O5vzbP+CVBF63UXIOlCy
-jGOKd8fDRSMCRYSU56AV7WMdwbgzAMJ7sZmqF8OIZqJFfo7jijv/U500jmP++bQq
-7sFaQcyvLFr75yNXNiBBAJgNjHcfM1zz3BQaWL62XoA7hqZ4wMdWNPz9dBu5A89x
-jxawIrm5GhlRAugRaKYFPoOoDyEGtIWqRQHp8ja2m8Fiibtn5g8=
-=u18v
------END PGP SIGNATURE-----
-
---lzoq53ieck3g4u4f--
-
-
---===============3104810538259598611==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3104810538259598611==--
-
