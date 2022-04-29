@@ -4,86 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E665EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 06:51:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0ACFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 06:54:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kihnlS1dWAU/qb9m2AWD5DH6njermSDL9HDxavWzrYE=; b=XZvzHPBnfM5Jnk
-	DZCggu1XwbaCQyiKJUN50IE39YepCPpYvRiA2qBRgItzfcB4FDZ324ScNTy9RXEK0PIUx4z7FfZBH
-	3kB2/owbeEMvxN2OBCuzhYyyO15ZYLjrRZr5RKda7PSgnqFZF6LgJ5l8XaeeRmRuZr8TaB0FAmwXA
-	lXdM4IK7pezjeRHW22T5DCzDUhncjydmIBLPQ7kpgZJRcE58f+r7s1g83tsW6Aa6szvFTG8iMjJoh
-	+mNBpAcpIn7qRjzMoFEchOWqVpSGYPrQqk/wRtym2hk2IYi1yuDhqrHm5gDdLcU30dokXJXM2byFn
-	HL6YWhrc2JmsIkIE444w==;
+	List-Owner; bh=3KTu9/PzaORyhZp4WB/+HxCTKQbrR+p4eBK6HxzK/fI=; b=YWCdqfioGQi2Qu
+	lsmn7TiSEKCMT7C0BxCSqRVIB3wRMoJxseTe9Gj0+iTHWS4B4HBFKPo3tZn6sQMJ5ppM3mrvvcLhf
+	9S+bk3+LHz54L0u6qbvTzaLGK1BzA0CVHneX2j88uaX3Ys2peOKKqcXPM+k/9opcfWlXOQ9dKnagm
+	5yClHpPy1IRbQrl7cPjhu/j5er0YEpU7s+cK3vQuk90vCQDNcVI/IHWOhiy2qsMKHS4uNA472oqXm
+	q+TojE6zdUjBHgKz5XGz/taxxqpUEc5Q6mvAfTNZ5GNkE0xfWhnaozbYPkP6JOaN5XpzBE3OpLO2i
+	r1JQ0b5F6NeYtp/Qjjgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkKTm-009r4x-8g; Fri, 29 Apr 2022 06:51:50 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1nkKWd-009riV-CS; Fri, 29 Apr 2022 06:54:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkKTk-009r4H-7T
- for linux-mediatek@lists.infradead.org; Fri, 29 Apr 2022 06:51:49 +0000
-Received: by mail-ej1-x636.google.com with SMTP id bv19so13633891ejb.6
- for <linux-mediatek@lists.infradead.org>; Thu, 28 Apr 2022 23:51:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=mDlkYW1jOvACOQZC2hs7NlPEH41hbIy3Cee6HSyQR1o=;
- b=S0HLAOz7G2rA2yLeEvr2F3lrjjv2nPsprZHooIN2NIj88OOaU8taSdX9pKfLMuaXls
- fG7DRxmtn1K6/L4Lec5G9xzPgd+JWZ3bq2tJocG6FDdWIsXeLa7yGRb7rsqVfFYe9OHq
- gf6V9IM0lPCmra8Pn//gbNCyEGFaOVMnJ8Ut+LVJKup9ocmgqu92Idv2GOogtwh2C5Im
- JAbbUW0ygqiSA7nLeLEtxP3TOjOKidni6gZ21GG6HkdPsZx7zNG7eCaFHwRTVmx82IS2
- rZcQph3O8fdi4rQ/2hKoVIlRxSrz+4Zs/UyzVHqzQ/HW6RlsxSkxShDfRGnXGtBVWuxB
- M+kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=mDlkYW1jOvACOQZC2hs7NlPEH41hbIy3Cee6HSyQR1o=;
- b=YzBV9yQE2mrA+EoYwAu9DCyN8JV/nIh40d1ox2hM1r0sXMsrXyl7jEPcbHwjb+dZgi
- SrSSrQ5LZqAEc8EjZ6YMLkweTxHP0BPKGjz1CMIClaVxVy5KeML2ZpG0l1TcJLITR9Qj
- yC3O4k0Zn9/rbuyTAZf3lHh+ORK3/O3umHJMUDr1W0+4WHEdohpkwFXB8crFtDB2z9mJ
- LTJjJnTY8E6+dAmiz+VLKP0T7PvjtvOaG6EkvHhJ/0g0DW8YfnGYn+ChWrBriDfKOrDl
- XXA12YMYkAQ7DKAZvqFQDxTfJ/EWq1lsF1MZaKj1GbA6DO9+GqHHmrn9aocToy4HAKUg
- fKAw==
-X-Gm-Message-State: AOAM532Bvm0ueE9DQWQmvmdedXYBCOJ2OKU8oF9ZaQDAE62gwVOIderQ
- nIRJ02HNGROrkMdIhPaUHbuedA==
-X-Google-Smtp-Source: ABdhPJyKpoYsRgUvdWhjm6qmhIpd2ZkWDXaTdwpzyMQVoxXJm0Pmjoejr9XVBcOAFMWc6EkjcMA1tw==
-X-Received: by 2002:a17:907:c0c:b0:6f3:8667:9be4 with SMTP id
- ga12-20020a1709070c0c00b006f386679be4mr26384276ejc.325.1651215106368; 
- Thu, 28 Apr 2022 23:51:46 -0700 (PDT)
-Received: from [192.168.0.169] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- hz13-20020a1709072ced00b006f3ef214db2sm347293ejc.24.2022.04.28.23.51.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Apr 2022 23:51:45 -0700 (PDT)
-Message-ID: <e010e330-590a-780a-c9a2-0f90e5aa04b9@linaro.org>
-Date: Fri, 29 Apr 2022 08:51:44 +0200
+ id 1nkKWY-009rfa-Gx; Fri, 29 Apr 2022 06:54:45 +0000
+X-UUID: 5c790190fe5f445ca8ea0d0b34a1a000-20220428
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:4a6f886e-8db6-41b8-8809-67faa62c15a3, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:5aff252f-6199-437e-8ab4-9920b4bc5b76,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 5c790190fe5f445ca8ea0d0b34a1a000-20220428
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1084894950; Thu, 28 Apr 2022 23:54:33 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Apr 2022 23:54:32 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 29 Apr 2022 14:54:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 29 Apr 2022 14:54:30 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <matthias.bgg@gmail.com>
+CC: <neal.liu@mediatek.com>, <runyang.chen@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: soc: mediatek: devapc: Add bindings for
+ MT8186
+Date: Fri, 29 Apr 2022 14:54:28 +0800
+Message-ID: <20220429065429.7957-2-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220429065429.7957-1-rex-bc.chen@mediatek.com>
+References: <20220429065429.7957-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v3 1/3] dt-bindings: nvmem: mediatek: Convert efuse
- binding to YAML
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Lala Lin <lala.lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>
-References: <20220428132520.2033-1-allen-kh.cheng@mediatek.com>
- <20220428132520.2033-2-allen-kh.cheng@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220428132520.2033-2-allen-kh.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_235148_322156_C4F27321 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20220428_235442_604930_D14D495D 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,23 +85,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/04/2022 15:25, Allen-KH Cheng wrote:
-> Convert MediaTek eFuse devicetree binding to YAML.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
->  .../devicetree/bindings/nvmem/mtk,efuse.yaml  | 57 +++++++++++++++++++
->  .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 --------------
->  2 files changed, 57 insertions(+), 43 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/nvmem/mtk,efuse.yaml
+Add the dt-binding to support MT8186 devapc.
 
-No, we discussed it already two times, so now third time? You are
-wasting my time. Please read all my replies again.
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+---
+ Documentation/devicetree/bindings/soc/mediatek/devapc.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-NAK.
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+index 31e4d3c339bf..d0a4bc3b03e9 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+@@ -20,6 +20,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt6779-devapc
++      - mediatek,mt8186-devapc
+ 
+   reg:
+     description: The base address of devapc register bank
+-- 
+2.18.0
 
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
