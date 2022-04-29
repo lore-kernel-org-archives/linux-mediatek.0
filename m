@@ -4,87 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22750C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 08:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A419C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 08:31:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2ZZwcaBQvylp6P0xT13AIN/KUGzQaUKedeTmGi5HFPg=; b=Xz4RsbxMki7+EW
-	uFPExboV+779o72v85EzzgfbDUKeOT5lbiOc7hD1Na42O0Z4m2xcgZNeoEm4HltrzZCHmgagQQbY9
-	TcYB+k+h6ovRYT5UFdG3V0zmkPIsy+2awdTacdbn32khOPIESngMMrXbBxiY6cb3ZI9T2xJOPhbyN
-	2kPOsXoWFuNIpLJG1+DVsU3B5xxuYhk3XUDfcB1V78W6bgousPTOAJMqROMRQOdLNyhfX9QsGyHRG
-	vfbcE/lf7rlmTmaBdVDPj1Pwwz/1Wl/uPduQ8DjoCpQOhVGQVm3dkUPe5+KYPYWOW4bA4wX4Xssu1
-	uzIY4uNeiSRvI7Oh/LjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bdMrfrb/tia6PR9TRnzCWyhZ0YgmE9q5tSO1DENUArQ=; b=fqFL1dPeTpdlpI
+	fUl00gX7b4mzjvzP9HsXUfSw0aAEPpmHjQmBErtwG8cL8xY29B7ZK7TgP6AOztTNwz/+pYts6BuYy
+	Huby42lEJurPmt1JHBUOcfL3VoQc4MagtaOd0n5Mgnow9aPsNusTSr+/2daWkrOkDIWWTpwxP4MYb
+	fQDDduDKreLMePYKAit85y/FnmkqTjnyASgZKPCPDfKrvGa1ppKLqHwjUItBYFK1RawAS+FBQkjXh
+	UKDfpIJ8XWPwr5qq5ZeSu/WDDo4QM0jVQzX6R6TUWgTKH4IBwqtzPLKinQ2CXs9hM82xejdJz0P6e
+	E7XYgjm0uzZ/r0u70y2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkLjZ-00A5y0-QD; Fri, 29 Apr 2022 08:12:13 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1nkM1n-00ACNO-46; Fri, 29 Apr 2022 08:31:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkLjL-00A5uk-8C; Fri, 29 Apr 2022 08:12:00 +0000
-Received: by mail-wm1-x331.google.com with SMTP id
- ay11-20020a05600c1e0b00b0038eb92fa965so6591625wmb.4; 
- Fri, 29 Apr 2022 01:11:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:reply-to:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=XqvrYci+95js6f4mZtp9h/yUnthzubPuS18nX3bTZPY=;
- b=Agh0hWfNWOLsgMtRQM7cd5+lULJfekaq2Bdh3j5NJrn8b77Zijoq0Lzu+L84ZM2LVz
- wt1r36bJC8X6sII7aa0Y1uCvfy4g0T+Wg9D0SorY0VU7U5eyo+kztqsvp/jueHRWzWzq
- Clcs/GPXTwguYJs/ySHdd4cVkPfhD7usB5qc1a4HNTnkYp8PYLFPtPSZ0K7NsQXyHsce
- TMHr7eRmKAKhHpRhZdf9P8Yc0fC+6ukgaRo55rChtq9CrWhXGHGrwvZl7oJXgq9/ekOV
- ejIe2PNvw6G5fOikA75aBhkkFGyeLnA85N/DohY9YkAcFI/QMcwRGVZXPcl/thf+D2TZ
- 1wJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:reply-to
- :subject:content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=XqvrYci+95js6f4mZtp9h/yUnthzubPuS18nX3bTZPY=;
- b=0fDSdtuz9GOl5mJu7Y/pNu0BnATM229uzI+ZUS+zyGruHr7VEF4NBdVxHYlGKJxJOF
- 0p79XmVQjBCkFAMPwOW+NkTLaKuG7InBRRnCGOtrb4Fv9kiKseqAlNsIqMXpyCThjEUx
- MNp3kATCsOZEZOjwI63s5eje3YO5byl7d596CFJ0mZeReM4VOQbAxVAd+7OBjCNKHI7K
- LDrIHN5wOkntywhNdnJJhWo7/gFCEz6LWk/KRbn5RqUgumoErJCI9RswMcw/6RJ/qgcQ
- grvg2xcJBaF/AkzlHiE7fvUVJEd4YlAis5EmhJu+sBlQjPH9iYRNkE44R1TTn5RRIn5f
- g2BQ==
-X-Gm-Message-State: AOAM531P7bnUv0egaxEyZyeeWAJ7eTiKFVPz3TKF/mswSKKaDW5laKnh
- 7MhUUsywJcGlBhGt9nnLKoc=
-X-Google-Smtp-Source: ABdhPJzYf70fG27iHwc3wFbKY4QIqsyyUy9X0QI973D1I4SxhcbTK5uGUHInLMnygbTBJgrDh3XA3g==
-X-Received: by 2002:a7b:cbc2:0:b0:388:faec:2036 with SMTP id
- n2-20020a7bcbc2000000b00388faec2036mr2089539wmi.190.1651219916786; 
- Fri, 29 Apr 2022 01:11:56 -0700 (PDT)
-Received: from [10.7.237.11] (54-240-197-227.amazon.com. [54.240.197.227])
- by smtp.gmail.com with ESMTPSA id
- q16-20020a1ce910000000b0038eabd31749sm2222371wmc.32.2022.04.29.01.11.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 Apr 2022 01:11:56 -0700 (PDT)
-Message-ID: <c962f441-05b8-8aa1-5186-c85251f3e0ba@gmail.com>
-Date: Fri, 29 Apr 2022 09:11:54 +0100
+ id 1nkM1k-00ACMH-5K; Fri, 29 Apr 2022 08:31:01 +0000
+X-UUID: eb33c566dd8e4f1183acdc8b851b0026-20220429
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:51b4e143-8c52-4513-832d-ea88d008b334, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:314a2a2f-6199-437e-8ab4-9920b4bc5b76,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: eb33c566dd8e4f1183acdc8b851b0026-20220429
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1123107428; Fri, 29 Apr 2022 01:30:55 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 Apr 2022 01:30:54 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 Apr 2022 16:30:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 29 Apr 2022 16:30:52 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+CC: Fabien Parent <fparent@baylibre.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, CK Hu <ck.hu@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+ Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Cellopoint
+ <cellopoint.kai@gmail.com>
+Subject: [PATCH v2] dt-bindings: arm: mediatek: mmsys: refine power and gce
+ properties
+Date: Fri, 29 Apr 2022 16:30:51 +0800
+Message-ID: <20220429083051.11260-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH net-next v2 01/15] eth: remove copies of the
- NAPI_POLL_WEIGHT define
-Content-Language: en-US
-To: Jakub Kicinski <kuba@kernel.org>, davem@davemloft.net, pabeni@redhat.com
-Cc: edumazet@google.com, netdev@vger.kernel.org, ulli.kroll@googlemail.com,
- linus.walleij@linaro.org, mlindner@marvell.com, stephen@networkplumber.org,
- nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com, grygorii.strashko@ti.com,
- wei.liu@kernel.org, paul@xen.org, prabhakar.mahadev-lad.rj@bp.renesas.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-omap@vger.kernel.org, xen-devel@lists.xenproject.org
-References: <20220428212323.104417-1-kuba@kernel.org>
- <20220428212323.104417-2-kuba@kernel.org>
-From: "Durrant, Paul" <xadimgnik@gmail.com>
-In-Reply-To: <20220428212323.104417-2-kuba@kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_011159_356069_1DBB2D1F 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220429_013100_226329_383288AC 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,53 +80,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: paul@xen.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/04/2022 22:23, Jakub Kicinski wrote:
-> Defining local versions of NAPI_POLL_WEIGHT with the same
-> values in the drivers just makes refactoring harder.
-> 
-> Drop the special defines in a bunch of drivers where the
-> removal is relatively simple so grouping into one patch
-> does not impact reviewability.
-> 
-> Signed-off-by: Jakub Kicinski <kuba@kernel.org>
-> ---
-> CC: ulli.kroll@googlemail.com
-> CC: linus.walleij@linaro.org
-> CC: mlindner@marvell.com
-> CC: stephen@networkplumber.org
-> CC: nbd@nbd.name
-> CC: john@phrozen.org
-> CC: sean.wang@mediatek.com
-> CC: Mark-MC.Lee@mediatek.com
-> CC: matthias.bgg@gmail.com
-> CC: grygorii.strashko@ti.com
-> CC: wei.liu@kernel.org
-> CC: paul@xen.org
-> CC: prabhakar.mahadev-lad.rj@bp.renesas.com
-> CC: linux-arm-kernel@lists.infradead.org
-> CC: linux-mediatek@lists.infradead.org
-> CC: linux-omap@vger.kernel.org
-> CC: xen-devel@lists.xenproject.org
-> ---
->   drivers/net/ethernet/cortina/gemini.c         | 4 +---
->   drivers/net/ethernet/marvell/skge.c           | 3 +--
->   drivers/net/ethernet/marvell/sky2.c           | 3 +--
->   drivers/net/ethernet/mediatek/mtk_star_emac.c | 3 +--
->   drivers/net/ethernet/ti/davinci_emac.c        | 3 +--
->   drivers/net/ethernet/ti/netcp_core.c          | 5 ++---
->   drivers/net/xen-netback/interface.c           | 3 +--
->   7 files changed, 8 insertions(+), 16 deletions(-)
-> 
+Power:
+  Refine description and add item number for power-domains property.
 
-xen-netback patch...
+GCE:
+  Refine description and add item number for mboxes property and
+  mediatek,gce-client-reg property.
 
-Reviewed-by: Paul Durrant <paul@xen.org>
+Fixes: 1da90b8a7bae ("dt-bindings: arm: mediatek: mmsys: add power and gce properties")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+Change in v2:
+  1. Add maxItems: 24 for mboxes property
+  2. Add description and $refs for mediatek,gce-client-reg property
+---
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml | 23 ++++++++++++-------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 6ad023eec193..2b27577f98cc 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -43,17 +43,19 @@ properties:
+     maxItems: 1
+ 
+   power-domains:
++    maxItems: 1
+     description:
+-      A phandle and PM domain specifier as defined by bindings
+-      of the power controller specified by phandle. See
+-      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++      Each mmsys belongs to a power-domains. If mmsys wants to use PM
++      interface to control the power controller of mmsys, it should have
++      this property.
+ 
+   mboxes:
++    minItems: 1
++    maxItems: 24
+     description:
+-      Using mailbox to communicate with GCE, it should have this
+-      property and list of phandle, mailbox specifiers. See
+-      Documentation/devicetree/bindings/mailbox/mtk-gce.txt for details.
+-    $ref: /schemas/types.yaml#/definitions/phandle-array
++      If using mailbox to communicate with GCE, it should have this
++      property. GCE will help configure the hardware settings for the
++      current mmsys data pipeline.
+ 
+   mediatek,gce-client-reg:
+     description:
+@@ -64,7 +66,12 @@ properties:
+       register which is defined in the gce header
+       include/dt-bindings/gce/<chip>-gce.h.
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+-    maxItems: 1
++    items:
++      - items:
++          - description: phandle to GCE
++          - description: subsys id
++          - description: register offset
++          - description: register size
+ 
+   "#clock-cells":
+     const: 1
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
