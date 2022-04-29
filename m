@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6345C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 10:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83D05C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 11:57:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2THNUmnLVGKzfAMUlFEnicNMC6DGUfDCGp+hk1AU9IY=; b=mKWVK3JstgXDgS
-	gtQfT5wJOaO4dN+V/ZK46u2EkF4hjBzZgAc9SCvsE13Dr/nCNC5c9l0VwRVvlDi0YQ2x3Wco8C5JL
-	ATicMdbuWE5KIEws+6WEoWaDWgu8QC2pFeVp/9542wMS4urJ5obY5PonG1SoPrSmEPvlBfG16RaZw
-	VaKs2WDt93++zaQVE+s4fAos89Fb6Ii0WXcQtalpR0m5lE1Rvj0tc0c9qv6S4iEVhSOF7K7nqLTTQ
-	uJ2zTbXanQZeghKmJq0trPbAe89W5v+Fq7Y5JHLp1+Rq5SqCxe1VjQH0HAugXGSuGL/bmsK2K/vQQ
-	TKxJ3TTZIgs8TMuh220A==;
+	List-Owner; bh=NSd/XDDdayvMR4FeckVaXnp7x/GOPpvVVs0Kk93diks=; b=4bTcVm9O/lqpPx
+	DbfdHzJyL0CT5QvzVH7QpSgNsORyrsB0dSkHDK0LlvSQ9N6G2CU+h9WGZQwXHa342/KtztWJYxLFW
+	HqDyK6yI1IOUW5Pbaxl1jqGh5jaranr1Nh2RbHzMKL8g2wQYyS2fHIbCfk8wBUpnCiBaIU1V/q0OC
+	svKOTfOuZoUEWzhpoyt8zy1CE8UyNChIPjQ1CQKBpIhlWUepGwYEoJQx4PSGTULWn+02zXauzVFrV
+	8J0nPjBKs8vbhyiaVfB4biyDMaEZW8+oUtOAE3mUDfhVIlMRBALQi+7Ix3DC85PEoElMpooiPghvr
+	vUFwwXR7PiOzT+gMAXww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkNkA-00AjkX-Cz; Fri, 29 Apr 2022 10:20:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nkPFr-00B3EX-75; Fri, 29 Apr 2022 11:57:47 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkNXg-00AdFz-VK; Fri, 29 Apr 2022 10:08:06 +0000
-X-UUID: ccdac3bd1e8e4138b261737678404629-20220429
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=cwIRd04UmkGgL+1avBYdugOPKP3hMNfhfN+KgAjWeXg=; 
- b=psUuC8cjQQPyYUswBizn66R77+GBtH7JwuzvYYAYgcO2WkL+dbYuBggc0/EPTy4vyZhnmoyBjoZus5FsXAP6CACwn5cqekK0k/EbOMMgZcquf+6MHuqHArRrbP0uorGXbXHSmnjXQHDiSsR9HtZQF3TexCW+IyzVH9Y6nFJ3Ae8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:f9fdcffa-8212-41f6-95f3-7cc68f6eb210, OB:0,
- LO
- B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:263ef6c6-85ee-4ac1-ac05-bd3f1e72e732,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: ccdac3bd1e8e4138b261737678404629-20220429
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 434125664; Fri, 29 Apr 2022 03:07:56 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Apr 2022 03:07:54 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Apr 2022 18:07:53 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 29 Apr 2022 18:07:52 +0800
-Message-ID: <99c329534a462b39d9b39ba04851318e7823e54c.camel@mediatek.com>
-Subject: Re: [v4 13/18] ASoC: mediatek: mt8186: add platform driver
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>
-CC: <robh+dt@kernel.org>, <angelogioacchino.delregno@collabora.com>,
- <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
- <tzungbi@google.com>, <julianbraha@gmail.com>, <alsa-devel@alsa-project.org>, 
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 29 Apr 2022 18:07:52 +0800
-In-Reply-To: <YmqCORqp6nYuQJZf@sirena.org.uk>
-References: <20220428093355.16172-1-jiaxin.yu@mediatek.com>
- <20220428093355.16172-14-jiaxin.yu@mediatek.com>
- <YmqCORqp6nYuQJZf@sirena.org.uk>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nkPFW-00B37I-TY; Fri, 29 Apr 2022 11:57:28 +0000
+Received: by mail-wr1-x435.google.com with SMTP id q23so10491773wra.1;
+ Fri, 29 Apr 2022 04:57:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=zhkPJZ5t7XS30nMpTj6bbXYcVhUfzJ6aKAQ3lOWd/GY=;
+ b=nGMih1E129wjT8YxcuJjbbIO6kan3qaZU3FoAzN+SXh1WnJJeUvOsIrThuW7kchSp/
+ P50XSKfkRWjPwm7BX0Lt/so0I6DiTARr9NRdByEHAScgigM6aAqLbziifarR9djETsd2
+ tYs5eCcPnlOuRNp1OdJ0nMXpAjPYtQ4t+Hu0Sq6hkZ+l1zp3SMdAlDN++L+RjM3bA9Mt
+ qPTUih40eH+pmIVllSKcW4UHSYIHWiaRIlkjKumRV3XA5Ix+0uV+mlI7bsfjIU4Ya4Ea
+ J9b4BUNHvCptkdkXmvzxQQ5TZBABXB86XRIEBkHiJ8Utye8FRgGui3zaIF23IPcZyT/M
+ oY7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=zhkPJZ5t7XS30nMpTj6bbXYcVhUfzJ6aKAQ3lOWd/GY=;
+ b=z1rlc6aFuNVrsg0IN29c7P3Z9ES/cUi1XmXi8RSB0wivXn+7iPv4kW0N0XP6ZOr6fr
+ f9NuCGVYkHrYGZafal1A21E9qkPy6KqPCCgYICZUZYy1EstkHUZkB2l2zu6wmKe/1Blf
+ TZUir0iwLK53rKtAPMmcFp5Vdb2f6yRFpXYqCgwInaYrvtKTzp8HLJEXowkfsv8jXybr
+ xpXZUT1GOODLcBeVngL9wzzjuZp3U80N7MdEBeQUoH7+cHE5UXJtF59h4+nuyVdItNLB
+ 8qF0r0ngLqKxmy7VlM+21kfo80uAM9SHByz0cQ/PcrS2wo41RVbg0XcNva3pp00RdLJM
+ COiw==
+X-Gm-Message-State: AOAM530uyKSl8BcUySq8URMx2k4UP/zUYIo1nhdCYH+F/cHDGZZmhJQv
+ E12J67BDjWjC24JvP5eBEtM=
+X-Google-Smtp-Source: ABdhPJxXcg/TSEnSe3oYHf/l5nfkx/75A11A8wZ2bFw/fGOPv1y0qTM6UjmtOK5SSgG/4kvRt4DycQ==
+X-Received: by 2002:a05:6000:100c:b0:20a:c68a:e9a with SMTP id
+ a12-20020a056000100c00b0020ac68a0e9amr30552315wrx.314.1651233442973; 
+ Fri, 29 Apr 2022 04:57:22 -0700 (PDT)
+Received: from [192.168.0.43] (static-35-180-85-188.ipcom.comunitel.net.
+ [188.85.180.35]) by smtp.gmail.com with ESMTPSA id
+ l11-20020a05600c1d0b00b00393fbabdddfsm2518618wms.36.2022.04.29.04.57.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Apr 2022 04:57:21 -0700 (PDT)
+Message-ID: <91d8eb87-adf0-da62-0c7b-dbf94442f535@gmail.com>
+Date: Fri, 29 Apr 2022 13:57:20 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH] arm64: dts: mt7622: specify the number of DMA requests
+Content-Language: en-US
+To: Rui Salvaterra <rsalvaterra@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: ryder.lee@mediatek.com, daniel@makrotopia.org
+References: <20220429084225.298213-1-rsalvaterra@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220429084225.298213-1-rsalvaterra@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_030805_091195_511AFC68 
-X-CRM114-Status: GOOD (  28.77  )
+X-CRM114-CacheID: sfid-20220429_045727_037881_DA113929 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,148 +87,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-04-28 at 13:02 +0100, Mark Brown wrote:
-> On Thu, Apr 28, 2022 at 05:33:50PM +0800, Jiaxin Yu wrote:
-> > Add mt8186 platform and affiliated driver.
-> > 
-> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > ---
-> >  sound/soc/mediatek/Kconfig                    |   44 +
-> >  sound/soc/mediatek/Makefile                   |    1 +
-> >  sound/soc/mediatek/mt8186/Makefile            |   22 +
-> >  sound/soc/mediatek/mt8186/mt8186-afe-common.h |  235 ++
-> >  .../soc/mediatek/mt8186/mt8186-afe-control.c  |  261 ++
-> >  sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    | 3005
-> > +++++++++++++++++
-> >  .../mediatek/mt8186/mt8186-interconnection.h  |   69 +
-> >  .../soc/mediatek/mt8186/mt8186-misc-control.c |  294 ++
-> >  .../mediatek/mt8186/mt8186-mt6366-common.c    |   59 +
-> >  .../mediatek/mt8186/mt8186-mt6366-common.h    |   17 +
-> >  sound/soc/mediatek/mt8186/mt8186-reg.h        | 2913
-> > ++++++++++++++++
-> >  11 files changed, 6920 insertions(+)
-> 
-> This looks mostly good though it is enormous so I might've missed
-> some
-> things.  The patch series is already very large but it might still be
-> worth splitting this up a bit more, perhaps split the code and data
-> tables/register definitions into separate patches?
-> 
-Yes, agree with you.
 
-I will spit them into three patches:
 
-PATCH 1: 
-  - mt8186-reg.h
-  - mt8186-interconnection.h
-  - mt8186-misc-control.c
+On 29/04/2022 10:42, Rui Salvaterra wrote:
+> The MT7622 device tree never bothered to specify the number of virtual DMA
+> channels for the HSDMA controller, always falling back to the default value of
+> 3. Make this value explicit, in order to avoid the following dmesg notification:
+> 
+> mtk_hsdma 1b007000.dma-controller: Using 3 as missing dma-requests property
+> 
+> Signed-off-by: Rui Salvaterra <rsalvaterra@gmail.com>
 
-PATCH 2:
-  - mt8186-mt6366-common.c
-  - mt8186-mt6366-common.h
+Applied, thanks!
 
-PATCH 3:
-  - sound/soc/mediatek/Kconfig 
-  - sound/soc/mediatek/Makefile
-  - sound/soc/mediatek/mt8186/Makefile
-  - sound/soc/mediatek/mt8186/mt8186-afe-common.h
-  - .../soc/mediatek/mt8186/mt8186-afe-control.c
-  - sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7622.dtsi | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index 3d6eaf6dd078..5551f004945b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -924,6 +924,7 @@ hsdma: dma-controller@1b007000 {
+>   		clock-names = "hsdma";
+>   		power-domains = <&scpsys MT7622_POWER_DOMAIN_ETHSYS>;
+>   		#dma-cells = <1>;
+> +		dma-requests = <3>;
+>   	};
+>   
+>   	eth: ethernet@1b100000 {
 
-> A few relatively minor issues with the controls.
-> 
-> > +/* this order must match reg bit amp_div_ch1/2 */
-> > +static const char * const mt8186_sgen_amp_str[] = {
-> > +	"1/128", "1/64", "1/32", "1/16", "1/8", "1/4", "1/2", "1" };
-> > +static const char * const mt8186_sgen_mute_str[] = {
-> > +	"Off", "On"
-> > +};
-> 
-> On/off controls should be normal Switch controls not enums so
-> userspace
-> can display things sensibly.
-> 
-> > +static int mt8186_sgen_set(struct snd_kcontrol *kcontrol,
-> > +			   struct snd_ctl_elem_value *ucontrol)
-> > +{
-> > +	struct snd_soc_component *cmpnt =
-> > snd_soc_kcontrol_component(kcontrol);
-> > +	struct mtk_base_afe *afe =
-> > snd_soc_component_get_drvdata(cmpnt);
-> > +	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-> > +	struct soc_enum *e = (struct soc_enum *)kcontrol-
-> > >private_value;
-> > +	int mode;
-> > +	int mode_idx;
-> > +
-> > +	if (ucontrol->value.enumerated.item[0] >= e->items)
-> > +		return -EINVAL;
-> 
-> ...
-> 
-> > +				   0x3f << INNER_LOOP_BACK_MODE_SFT);
-> > +	}
-> > +
-> > +	afe_priv->sgen_mode = mode;
-> > +
-> > +	return 0;
-> > +}
-> 
-> This should return 1 if the value is different from the previous
-> value
-> so event generation works, please run mixer-test against a system
-> using
-> the driver to help spot issues like this.  The same issue applies to
-> at
-> least some of the other custom controls.
-> 
-Got it.
-
-> > +static int mt8186_sgen_mute_set(struct snd_kcontrol *kcontrol,
-> > +				struct snd_ctl_elem_value *ucontrol)
-> > +{
-> > +	struct snd_soc_component *cmpnt =
-> > snd_soc_kcontrol_component(kcontrol);
-> > +	struct mtk_base_afe *afe =
-> > snd_soc_component_get_drvdata(cmpnt);
-> > +	struct soc_enum *e = (struct soc_enum *)kcontrol-
-> > >private_value;
-> > +	int mute;
-> > +
-> > +	if (ucontrol->value.enumerated.item[0] >= e->items)
-> > +		return -EINVAL;
-> > +
-> > +	mute = ucontrol->value.integer.value[0];
-> > +
-> > +	dev_dbg(afe->dev, "%s(), kcontrol name %s, mute %d\n",
-> > +		__func__, kcontrol->id.name, mute);
-> > +
-> > +	if (strcmp(kcontrol->id.name, SGEN_MUTE_CH1_KCONTROL_NAME) ==
-> > 0) {
-> > +		regmap_update_bits(afe->regmap, AFE_SINEGEN_CON0,
-> > +				   MUTE_SW_CH1_MASK_SFT,
-> > +				   mute << MUTE_SW_CH1_SFT);
-> > +	} else {
-> > +		regmap_update_bits(afe->regmap, AFE_SINEGEN_CON0,
-> > +				   MUTE_SW_CH2_MASK_SFT,
-> > +				   mute << MUTE_SW_CH2_SFT);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> 
-> I can't tell why some of these are done with custom code rather than
-> using a normal SOC_SINGLE()?
-
-Yes, it's better to use SOC_SINGLE. I will fix them in next version.
-
-Thanks,
-Jiaxin.yu
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
