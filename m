@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22EDCC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 07:32:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4992C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Apr 2022 07:39:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ergTLr5EhusxOp5xddF45PJi3yTrOnb12R4hacnXvUo=; b=h9FMHe1/UCvjrk
-	D5EmWh5lCe0etk352TUMP+yvQyp1aYYC9Dy6idFJ45EGnLdugHobqut1RM4bmI/iwke2HDUSuAg1f
-	+S0FCIKXgh8x29oJ/lEVt5tuO0hQOM0RjVbyaQKWZMeX9ND1XPzqUzJeRrMNpeddlnn6sX/G89tcO
-	rLtFPBqroyFJb3KSjFW85nl5DPTY0dFoHhJ+Qo5X7D++ls4az0zRpSu1ZUy+cEH0c5Mwq8B0Nnvid
-	s0nCFmRe5YEFJekzCMNNgCF6sAgAtPWxcX3nTpbfj2bYxtZNJFTfCnXQJ/xxZ4BHgd1gbl3Ezf0Wo
-	KXW6vk0ZUCo02B3Vum0Q==;
+	List-Owner; bh=LoO+hUqqFwPFo8V4n5gwyQkRW5xIlxM5T8ua4eFeczI=; b=K6sJUWIFZ/ztNW
+	1rcI3EVTMpdRXt/rU98z1wXAwoE4nbIVF/KoUngBG5UFbpwk3kulpgYLNnrgsYkQEfmQKajwAh748
+	tP8yU3oWOgH5M7FV8yVteF/l/7NyCc4JFbz51wbpjT4rp/9zNUVKIxqlKiktS1koMH0+3WI2u+KtX
+	EIQAOnHlURtV7x1llkEj1RvCF8YbZlkOvR7hHVkVLqCG+czxsxZCtT8WUDUrEnWfCMtbOxr3Aw4Vq
+	H0uajVWbcS6w9zgycpDOz0qmrUil3+fyCsdfxPWu42DVOCCFF5V3JjnaM0/7GWsGhgGwEue4XJFwV
+	ddCvDgz3d9cFOrZkkZbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkL6x-009z8u-JK; Fri, 29 Apr 2022 07:32:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nkLEF-00A0Qd-U0; Fri, 29 Apr 2022 07:39:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkL6b-009yy6-7W; Fri, 29 Apr 2022 07:31:59 +0000
-X-UUID: f92bb20576534942866e42237d926462-20220429
+ id 1nkLED-00A0PM-95; Fri, 29 Apr 2022 07:39:51 +0000
+X-UUID: 73768c59b0d64d8c8822f513ef77a809-20220429
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:8b2a11e1-12b2-4a62-bbd8-47ef7895355f, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:aedfd23b-f389-4cb9-a6f9-786ad7a6b7ed, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:439fefc6-85ee-4ac1-ac05-bd3f1e72e732,
+X-CID-META: VersionHash:faefae9, CLOUDID:8ad8272f-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: f92bb20576534942866e42237d926462-20220429
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+X-UUID: 73768c59b0d64d8c8822f513ef77a809-20220429
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 300797239; Fri, 29 Apr 2022 00:31:50 -0700
+ with ESMTP id 1774842735; Fri, 29 Apr 2022 00:39:44 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Apr 2022 00:24:35 -0700
+ 15.0.1497.2; Fri, 29 Apr 2022 00:39:42 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Apr 2022 15:24:34 +0800
+ 15.0.1497.2; Fri, 29 Apr 2022 15:39:40 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 29 Apr 2022 15:24:34 +0800
-Message-ID: <2003dbbd3243f935788316560bf64196bb97ffe4.camel@mediatek.com>
-Subject: Re: [PATCH v4, 3/4] drm/mediatek: keep dsi as LP00 before dcs cmds
- transfer
+ Transport; Fri, 29 Apr 2022 15:39:40 +0800
+Message-ID: <0fb7b063fc246c89430ddf310406ae954a3e3650.camel@mediatek.com>
+Subject: Re: [PATCH v18 04/21] soc: mediatek: add mtk-mmsys support for
+ mt8195 vdosys1
 From: CK Hu <ck.hu@mediatek.com>
-To: xinlei.lee <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>
-CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Fri, 29 Apr 2022 15:24:34 +0800
-In-Reply-To: <7a1f4de98a349d0910d45a92d09d112773cd5fc0.camel@mediatek.com>
-References: <1649644308-8455-1-git-send-email-xinlei.lee@mediatek.com>
- <1649644308-8455-4-git-send-email-xinlei.lee@mediatek.com>
- <fb3d631cd1e86ee12dff5ee3bc1b82b12cb2cb10.camel@mediatek.com>
- <7a1f4de98a349d0910d45a92d09d112773cd5fc0.camel@mediatek.com>
+To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ <wim@linux-watchdog.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: <devicetree@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, "jason-jh .
+ lin" <jason-jh.lin@mediatek.com>, <singo.chang@mediatek.com>,
+ <llvm@lists.linux.dev>, Nick Desaulniers <ndesaulniers@google.com>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
+ Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>
+Date: Fri, 29 Apr 2022 15:39:40 +0800
+In-Reply-To: <20220428105408.11189-5-nancy.lin@mediatek.com>
+References: <20220428105408.11189-1-nancy.lin@mediatek.com>
+ <20220428105408.11189-5-nancy.lin@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_003157_334010_F007F6E4 
-X-CRM114-Status: GOOD (  33.17  )
+X-CRM114-CacheID: sfid-20220429_003949_377662_20CE1D44 
+X-CRM114-Status: GOOD (  18.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,188 +90,261 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Xinlei:
+Hi, Nancy:
 
-On Fri, 2022-04-15 at 09:58 +0800, xinlei.lee wrote:
-> On Wed, 2022-04-13 at 16:31 +0800, CK Hu wrote:
-> > Hi, Xinlei:
-> > 
-> > On Mon, 2022-04-11 at 10:31 +0800, xinlei.lee@mediatek.com wrote:
-> > > From: Jitao Shi <jitao.shi@mediatek.com>
-> > > 
-> > > To comply with the panel sequence, hold the mipi signal to LP00
-> > > before the dcs cmds transmission,
-> > > and pull the mipi signal high from LP00 to LP11 until the start
-> > > of
-> > > the dcs cmds transmission.
-> > > The normal panel timing is :
-> > > (1) pp1800 DC pull up
-> > > (2) avdd & avee AC pull high
-> > > (3) lcm_reset pull high -> pull low -> pull high
-> > > (4) Pull MIPI signal high (LP11) -> initial code -> send video
-> > > data(HS mode)
-> > > The power-off sequence is reversed.
-> > > If dsi is not in cmd mode, then dsi will pull the mipi signal
-> > > high
-> > > in
-> > > the mtk_output_dsi_enable function.
-> > > 
-> > > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
-> > > drm_panel_bridge
-> > > API")
-> > > 
-> > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 28 +++++++++++++++++++++---
-> > > --
-> > > --
-> > >  1 file changed, 21 insertions(+), 7 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > index cf76c53a1af6..9ad6f08c8bfe 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > @@ -203,6 +203,7 @@ struct mtk_dsi {
-> > >  	struct mtk_phy_timing phy_timing;
-> > >  	int refcount;
-> > >  	bool enabled;
-> > > +	bool lanes_ready;
-> > >  	u32 irq_data;
-> > >  	wait_queue_head_t irq_wait_queue;
-> > >  	const struct mtk_dsi_driver_data *driver_data;
-> > > @@ -654,13 +655,6 @@ static int mtk_dsi_poweron(struct mtk_dsi
-> > > *dsi)
-> > >  	mtk_dsi_config_vdo_timing(dsi);
-> > >  	mtk_dsi_set_interrupt_enable(dsi);
-> > >  
-> > > -	mtk_dsi_rxtx_control(dsi);
-> > > -	usleep_range(30, 100);
-> > > -	mtk_dsi_reset_dphy(dsi);
-> > > -	mtk_dsi_clk_ulp_mode_leave(dsi);
-> > > -	mtk_dsi_lane0_ulp_mode_leave(dsi);
-> > > -	mtk_dsi_clk_hs_mode(dsi, 0);
-> > > -
-> > >  	return 0;
-> > >  err_disable_engine_clk:
-> > >  	clk_disable_unprepare(dsi->engine_clk);
-> > > @@ -689,6 +683,23 @@ static void mtk_dsi_poweroff(struct mtk_dsi
-> > > *dsi)
-> > >  	clk_disable_unprepare(dsi->digital_clk);
-> > >  
-> > >  	phy_power_off(dsi->phy);
-> > > +
-> > > +	dsi->lanes_ready = false;
-> > > +}
-> > > +
-> > > +static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
-> > > +{
-> > > +	if (!dsi->lanes_ready) {
-> > > +		dsi->lanes_ready = true;
-> > > +		mtk_dsi_rxtx_control(dsi);
-> > > +		usleep_range(30, 100);
-> > > +		mtk_dsi_reset_dphy(dsi);
-> > > +		mtk_dsi_clk_ulp_mode_leave(dsi);
-> > > +		mtk_dsi_lane0_ulp_mode_leave(dsi);
-> > > +		mtk_dsi_clk_hs_mode(dsi, 0);
-> > > +		msleep(20);
-> > > +	} else
-> > > +		DRM_DEBUG("The dsi_lane is ready\n");
+On Thu, 2022-04-28 at 18:53 +0800, Nancy.Lin wrote:
+> Add mt8195 vdosys1 routing table to the driver data of mtk-mmsys.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mt8195-mmsys.h    | 136
+> +++++++++++++++++++++++++
+>  drivers/soc/mediatek/mtk-mmsys.c       |   2 +
+>  include/linux/soc/mediatek/mtk-mmsys.h |   9 ++
+>  3 files changed, 147 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
+> b/drivers/soc/mediatek/mt8195-mmsys.h
+> index abfe94a30248..51031d75e81e 100644
+> --- a/drivers/soc/mediatek/mt8195-mmsys.h
+> +++ b/drivers/soc/mediatek/mt8195-mmsys.h
+> @@ -75,6 +75,70 @@
+>  #define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 <<
+> 16)
+>  #define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			
+> (3 << 16)
+>  
+> +#define MT8195_VDO1_VPP_MERGE0_P0_SEL_IN			0xf04
+> +#define MT8195_VPP_MERGE0_P0_SEL_IN_FROM_MDP_RDMA0			
+> 1
+> +
+> +#define MT8195_VDO1_VPP_MERGE0_P1_SEL_IN			0xf08
+> +#define MT8195_VPP_MERGE0_P1_SEL_IN_FROM_MDP_RDMA1			
+> 1
+> +
+> +#define MT8195_VDO1_DISP_DPI1_SEL_IN				0xf10
+> +#define MT8195_DISP_DPI1_SEL_IN_FROM_VPP_MERGE4_MOUT			
+> 0
+> +
+> +#define MT8195_VDO1_DISP_DP_INTF0_SEL_IN			0xf14
+> +#define MT8195_DISP_DP_INTF0_SEL_IN_FROM_VPP_MERGE4_MOUT		
+> 0
+> +
+> +#define MT8195_VDO1_MERGE4_SOUT_SEL				0xf18
+> +#define MT8195_MERGE4_SOUT_TO_DPI1_SEL				
+> 	2
+> +#define MT8195_MERGE4_SOUT_TO_DP_INTF0_SEL				
+> 3
+> +
+> +#define MT8195_VDO1_MIXER_IN1_SEL_IN				0xf24
+> +#define MT8195_MIXER_IN1_SEL_IN_FROM_MERGE0_ASYNC_SOUT		
+> 	1
+> +
+> +#define MT8195_VDO1_MIXER_IN2_SEL_IN				0xf28
+> +#define MT8195_MIXER_IN2_SEL_IN_FROM_MERGE1_ASYNC_SOUT		
+> 	1
+> +
+> +#define MT8195_VDO1_MIXER_IN3_SEL_IN				0xf2c
+> +#define MT8195_MIXER_IN3_SEL_IN_FROM_MERGE2_ASYNC_SOUT		
+> 	1
+> +
+> +#define MT8195_VDO1_MIXER_IN4_SEL_IN				0xf30
+> +#define MT8195_MIXER_IN4_SEL_IN_FROM_MERGE3_ASYNC_SOUT		
+> 	1
+> +
+> +#define MT8195_VDO1_MIXER_OUT_SOUT_SEL				
+> 0xf34
+> +#define MT8195_MIXER_SOUT_TO_MERGE4_ASYNC_SEL			
+> 	1
+> +
+> +#define MT8195_VDO1_VPP_MERGE1_P0_SEL_IN			0xf3c
+> +#define MT8195_VPP_MERGE1_P0_SEL_IN_FROM_MDP_RDMA2			
+> 1
+> +
+> +#define MT8195_VDO1_MERGE0_ASYNC_SOUT_SEL			0xf40
+> +#define MT8195_SOUT_TO_MIXER_IN1_SEL					
+> 1
+> +
+> +#define MT8195_VDO1_MERGE1_ASYNC_SOUT_SEL			0xf44
+> +#define MT8195_SOUT_TO_MIXER_IN2_SEL					
+> 1
+> +
+> +#define MT8195_VDO1_MERGE2_ASYNC_SOUT_SEL			0xf48
+> +#define MT8195_SOUT_TO_MIXER_IN3_SEL					
+> 1
+> +
+> +#define MT8195_VDO1_MERGE3_ASYNC_SOUT_SEL			0xf4c
+> +#define MT8195_SOUT_TO_MIXER_IN4_SEL					
+> 1
+> +
+> +#define MT8195_VDO1_MERGE4_ASYNC_SEL_IN				
+> 0xf50
+> +#define MT8195_MERGE4_ASYNC_SEL_IN_FROM_MIXER_OUT_SOUT		
+> 	1
+> +
+> +#define MT8195_VDO1_MIXER_IN1_SOUT_SEL				
+> 0xf58
+> +#define MT8195_MIXER_IN1_SOUT_TO_DISP_MIXER				
+> 0
+> +
+> +#define MT8195_VDO1_MIXER_IN2_SOUT_SEL				
+> 0xf5c
+> +#define MT8195_MIXER_IN2_SOUT_TO_DISP_MIXER				
+> 0
+> +
+> +#define MT8195_VDO1_MIXER_IN3_SOUT_SEL				
+> 0xf60
+> +#define MT8195_MIXER_IN3_SOUT_TO_DISP_MIXER				
+> 0
+> +
+> +#define MT8195_VDO1_MIXER_IN4_SOUT_SEL				
+> 0xf64
+> +#define MT8195_MIXER_IN4_SOUT_TO_DISP_MIXER				
+> 0
+> +
+> +#define MT8195_VDO1_MIXER_SOUT_SEL_IN				
+> 0xf68
+> +#define MT8195_MIXER_SOUT_SEL_IN_FROM_DISP_MIXER			
+> 0
+> +
+>  static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] =
+> {
+>  	{
+>  		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> @@ -364,6 +428,78 @@ static const struct mtk_mmsys_routes
+> mmsys_mt8195_routing_table[] = {
+>  		DDP_COMPONENT_DSC1, DDP_COMPONENT_MERGE0,
+>  		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP1_OUT_TO_MASK,
+>  		MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE
+> +	}, {
+> +		DDP_COMPONENT_MDP_RDMA0, DDP_COMPONENT_MERGE1,
+> +		MT8195_VDO1_VPP_MERGE0_P0_SEL_IN, GENMASK(0, 0),
+> +		MT8195_VPP_MERGE0_P0_SEL_IN_FROM_MDP_RDMA0
+> +	}, {
+> +		DDP_COMPONENT_MDP_RDMA1, DDP_COMPONENT_MERGE1,
+> +		MT8195_VDO1_VPP_MERGE0_P1_SEL_IN, GENMASK(0, 0),
+> +		MT8195_VPP_MERGE0_P1_SEL_IN_FROM_MDP_RDMA1
+> +	}, {
+> +		DDP_COMPONENT_MDP_RDMA2, DDP_COMPONENT_MERGE2,
+> +		MT8195_VDO1_VPP_MERGE1_P0_SEL_IN, GENMASK(0, 0),
+> +		MT8195_VPP_MERGE1_P0_SEL_IN_FROM_MDP_RDMA2
+> +	}, {
+> +		DDP_COMPONENT_MERGE1, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MERGE0_ASYNC_SOUT_SEL, GENMASK(1, 0),
+> +		MT8195_SOUT_TO_MIXER_IN1_SEL
+> +	}, {
+> +		DDP_COMPONENT_MERGE2, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MERGE1_ASYNC_SOUT_SEL, GENMASK(1, 0),
+> +		MT8195_SOUT_TO_MIXER_IN2_SEL
+> +	}, {
+> +		DDP_COMPONENT_MERGE3, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MERGE2_ASYNC_SOUT_SEL, GENMASK(1, 0),
+> +		MT8195_SOUT_TO_MIXER_IN3_SEL
+> +	}, {
+> +		DDP_COMPONENT_MERGE4, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MERGE3_ASYNC_SOUT_SEL, GENMASK(1, 0),
+> +		MT8195_SOUT_TO_MIXER_IN4_SEL
+> +	}, {
+> +		DDP_COMPONENT_ETHDR_MIXER, DDP_COMPONENT_MERGE5,
+> +		MT8195_VDO1_MIXER_OUT_SOUT_SEL, GENMASK(0, 0),
+> +		MT8195_MIXER_SOUT_TO_MERGE4_ASYNC_SEL
+> +	}, {
+> +		DDP_COMPONENT_MERGE1, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MIXER_IN1_SEL_IN, GENMASK(0, 0),
+> +		MT8195_MIXER_IN1_SEL_IN_FROM_MERGE0_ASYNC_SOUT
+> +	}, {
+> +		DDP_COMPONENT_MERGE2, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MIXER_IN2_SEL_IN, GENMASK(0, 0),
+> +		MT8195_MIXER_IN2_SEL_IN_FROM_MERGE1_ASYNC_SOUT
+> +	}, {
+> +		DDP_COMPONENT_MERGE3, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MIXER_IN3_SEL_IN, GENMASK(0, 0),
+> +		MT8195_MIXER_IN3_SEL_IN_FROM_MERGE2_ASYNC_SOUT
+> +	}, {
+> +		DDP_COMPONENT_MERGE4, DDP_COMPONENT_ETHDR_MIXER,
+> +		MT8195_VDO1_MIXER_IN4_SEL_IN, GENMASK(0, 0),
+> +		MT8195_MIXER_IN4_SEL_IN_FROM_MERGE3_ASYNC_SOUT
+> +	}, {
+> +		DDP_COMPONENT_ETHDR_MIXER, DDP_COMPONENT_MERGE5,
+> +		MT8195_VDO1_MIXER_SOUT_SEL_IN, GENMASK(2, 0),
+> +		MT8195_MIXER_SOUT_SEL_IN_FROM_DISP_MIXER
+> +	}, {
+> +		DDP_COMPONENT_ETHDR_MIXER, DDP_COMPONENT_MERGE5,
+> +		MT8195_VDO1_MERGE4_ASYNC_SEL_IN, GENMASK(2, 0),
+> +		MT8195_MERGE4_ASYNC_SEL_IN_FROM_MIXER_OUT_SOUT
+> +	}, {
+> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DPI1,
+> +		MT8195_VDO1_DISP_DPI1_SEL_IN, GENMASK(1, 0),
+> +		MT8195_DISP_DPI1_SEL_IN_FROM_VPP_MERGE4_MOUT
+> +	}, {
+> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DPI1,
+> +		MT8195_VDO1_MERGE4_SOUT_SEL, GENMASK(1, 0),
+> +		MT8195_MERGE4_SOUT_TO_DPI1_SEL
+> +	}, {
+> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF1,
+> +		MT8195_VDO1_DISP_DP_INTF0_SEL_IN, GENMASK(1, 0),
+> +		MT8195_DISP_DP_INTF0_SEL_IN_FROM_VPP_MERGE4_MOUT
+> +	}, {
+> +		DDP_COMPONENT_MERGE5, DDP_COMPONENT_DP_INTF1,
+> +		MT8195_VDO1_MERGE4_SOUT_SEL, GENMASK(1, 0),
+> +		MT8195_MERGE4_SOUT_TO_DP_INTF0_SEL
+>  	}
+>  };
+>  
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> b/drivers/soc/mediatek/mtk-mmsys.c
+> index 548efed8dc1c..03c75a82c8d3 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -146,6 +146,8 @@ static const struct mtk_mmsys_driver_data
+> mt8195_vdosys0_driver_data = {
+>  static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data
+> = {
+>  	.io_start = 0x1c100000,
+>  	.clk_driver = "clk-mt8195-vdo1",
+> +	.routes = mmsys_mt8195_routing_table,
 
-Once mtk_dsi_host_transfer() call this function first, then
-mtk_output_dsi_enable() would call again. This function would be called
-twice in normal sequence, so I think this debug information is not
-necessary.
+I think vdo0 and vdo1 are independent, so the routing table would also
+be independent. Merge these two table into one would waste time to
+search routing of other mmsys.
 
-> > >  }
-> > >  
-> > >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
-> > > @@ -696,6 +707,7 @@ static void mtk_output_dsi_enable(struct
-> > > mtk_dsi
-> > > *dsi)
-> > >  	if (dsi->enabled)
-> > >  		return;
-> > >  
-> > > +	mtk_dsi_lane_ready(dsi);
-> > >  	mtk_dsi_set_mode(dsi);
-> > >  	mtk_dsi_clk_hs_mode(dsi, 1);
-> > >  
-> > > @@ -1001,6 +1013,8 @@ static ssize_t mtk_dsi_host_transfer(struct
-> > > mipi_dsi_host *host,
-> > >  	if (MTK_DSI_HOST_IS_READ(msg->type))
-> > >  		irq_flag |= LPRX_RD_RDY_INT_FLAG;
-> > >  
-> > > +	mtk_dsi_lane_ready(dsi);
-> > 
-> > In [1], YT has move mtk_dsi_lane_ready() before panel prepare for
-> > dsi-
-> > > panel case. Now you move mtk_dsi_lane_ready() after panel
-> > > prepare,
-> > 
-> > this may break dsi->panel case. Please provide a solution for both
-> > case.
-> > 
-> > [1] 
-> > 
-> 
-> 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dsi.c?h=v5.18-rc2&id=0707632b5bacc490f58dfbad741d586c06595ff3
-> > 
-> > Regards,
-> > CK
-> > 
-> > > +
-> > >  	ret = mtk_dsi_host_send_cmd(dsi, msg, irq_flag);
-> > >  	if (ret)
-> > >  		goto restore_dsi_mode;
-> > 
-> > 
-> 
-> Hi CK:
-> 
-> Because the order of dsi->panel in [1] is as follows (tv101 panel as
-> an
-> example):
-> 1. dsi_poweron (lane_ready)
-> 2. panel_prepare
-> 3. panel_prepare_power
-> 4. panel_init_cmd
-> 5. dsi_host_transfer (actually send panel initial code)
-> 
-> This modified order:
-> 1. dsi_poweron
-> 2. panel_prepare
-> 3. panel_prepare_power
-> 4. panel_init_cmd
-> 5. dsi_host_transfer (lane_ready)
-> 
-> It can be seen that the lane_ready is delayed closer to before
-> sending
-> the initial code, which is necessary for some panels with stricter
-> timing requirements.
-> And if this screen does not need to send initial code, it will also
-> do
-> lane_ready in output_dsi_enable, so that dsi can complete LP00->LP11-
-> > HS mode.
+> +	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
+>  };
+>  
+>  static const struct mtk_mmsys_match_data mt8195_mmsys_match_data = {
+> diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
+> b/include/linux/soc/mediatek/mtk-mmsys.h
+> index fb719fd1281c..b4388ba43341 100644
+> --- a/include/linux/soc/mediatek/mtk-mmsys.h
+> +++ b/include/linux/soc/mediatek/mtk-mmsys.h
+> @@ -28,7 +28,16 @@ enum mtk_ddp_comp_id {
+>  	DDP_COMPONENT_DSI1,
+>  	DDP_COMPONENT_DSI2,
+>  	DDP_COMPONENT_DSI3,
+> +	DDP_COMPONENT_ETHDR_MIXER,
+>  	DDP_COMPONENT_GAMMA,
+> +	DDP_COMPONENT_MDP_RDMA0,
+> +	DDP_COMPONENT_MDP_RDMA1,
+> +	DDP_COMPONENT_MDP_RDMA2,
+> +	DDP_COMPONENT_MDP_RDMA3,
+> +	DDP_COMPONENT_MDP_RDMA4,
+> +	DDP_COMPONENT_MDP_RDMA5,
+> +	DDP_COMPONENT_MDP_RDMA6,
+> +	DDP_COMPONENT_MDP_RDMA7,
 
-Understand. You call mtk_dsi_lane_ready() in both
-mtk_output_dsi_enable() and mtk_dsi_host_transfer(). The panel prepare
-may call mtk_dsi_host_transfer() and mtk_dsi_lane_ready() would be
-called.
+These new component is not strongly related to mt8195 (maybe other SoC
+has these component), so I would like adding these new component to
+another patch.
 
 Regards,
 CK
 
-> 
-> [1] 
-> 
-> 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dsi.c?h=v5.18-rc2&id=0707632b5bacc490f58dfbad741d586c06595ff3
-> 
-> Best Regards!
-> xinlei
-> 
+>  	DDP_COMPONENT_MERGE0,
+>  	DDP_COMPONENT_MERGE1,
+>  	DDP_COMPONENT_MERGE2,
 
 
 _______________________________________________
