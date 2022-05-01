@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC003C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 May 2022 22:10:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D0DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 May 2022 22:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JxWGJZG882dyuisDzavHUZnZtVeFujBhryCb1J8NhuQ=; b=DuQkMdU0iO0A5a
-	VR6ZyAXq2ItJ//k5ITEzXO4mq3o/5HbPceyhQGbKSmLnYRBkUP2Iv0gi6oPv5EvGxra1ctIDaw8OA
-	AiPQWYvBVPme7pbpGAfVvd0PREezGtZxOD7rJQm/B9lb7og2LgXihHCoYwwjSSGcnqBCNcNU7C4hF
-	APbyUySCVFbtT21qkDE8UvjuaBIjD5umMsKj+qIRz5YxMeA+PL5sFdAnQneC4Bc3aCW3lbxyg7PgW
-	g1TwEeStC/xl9bLhzAnHTiuL7ZQ0msAAYdTXBdAboNDPYcfZBG8FVmTHIuWSKcP8Q91qOgaeoL5oe
-	9V042jeznqHLysGbP2BA==;
+	List-Owner; bh=DDZ0H8YrpJTl1h2XFXJyFtAqZ5+e2II7MECLil26H/c=; b=S1I/FQ8ePajOa0
+	siUaU4Dn26q2bsj3qLoHfsvl7r2bt9F76W+LWxHTl/2uT/L4jQFNDNqYlQunowXlZVVp2v0y2pG/d
+	KhE5qROieYzIQ06vHJBjjTiYNxn4QXphhlT2/iG17UWUf7nfE2DHhjH6hSR3fBLmrcQhq8mA1F3WM
+	SGzkX3pE0oB21F4VdyOHe4wtFOq0oyUw0AOPCU/Qv6xuMcFd2KmiOVivBeSWd8TWhUPETGWFA6DLo
+	FliIoVGhgIdvIPGvhe4PaWSrCvagrLUKq48UeP2qH8z0qPJ5rSC9rzzsjzEAkaSWyEHc7JeYk82Mt
+	zs7HZT82vU5Gp0sfOH5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlHm0-00H1wT-V7; Sun, 01 May 2022 22:10:36 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1nlIT2-00H4kb-CS; Sun, 01 May 2022 22:55:04 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlHlq-00H1u8-W5
- for linux-mediatek@lists.infradead.org; Sun, 01 May 2022 22:10:28 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-2f7d621d1caso131616687b3.11
- for <linux-mediatek@lists.infradead.org>; Sun, 01 May 2022 15:10:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8WXuaqzf5H6JbTMCrSNoDEe2cTNFwsekkVTcYWtQXX8=;
- b=NIMD1MgHFUA8qDcBtlkRUl6QwAMsrYm2LFtmvl8/1tnPPHxRUpA1yQ5LUAYctdi06T
- TOsD/Pv8VDI71Se+5p7Pej/mhD4qgf+k14w13KqKouOzghHkUgz02mr9ht1C5Q+AQUuh
- 0KviUgNPzfaZP4wqvtLikTYkYLlECRohNbsEu9h/EpakyyZgJrAzbiZa3kK32wRWZAP8
- v8ZanNeCIK/+zl9E9gG5DRVG3Hrx7mW8dweXwuLE07vm1+xVHs5Z+8j39wJwgxAr3TB0
- sIVDxA8IhVVZXSJeGhmsZmd4DHlgLnJXoULjO7WRPuijicppJaGPBhttKcLNbK4Ul/z4
- EqFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8WXuaqzf5H6JbTMCrSNoDEe2cTNFwsekkVTcYWtQXX8=;
- b=xoOzSge7JyUUx83Y4MRSGeJl7ZU3p7QM4nS6FfdbzDbWZVZG6ur2R1MyGgJ0svKfwK
- mRZHZfwMJh/KCYl39aHu823R0WyRZrkZrE27Wl1mNjrwTdTUH4GhnUJaTOm2GLKaD8Pu
- EDzi+PWHR6ExNm17Ge7r2TnqQZvyJ2HtJTRTChiGU/m9R4PYysEB15GPk91jt3tt9cIW
- jcviLRX96WpNpqAAdE+RoV+NCq27+jXVB4rNTi0m2GKjYBo9F0CdzWKhznbVg5fD1v02
- wUz85y4SSQDGBw9B2FJiJL34fFcIIh82KUUwzqeH8wR1QDlMGkX2hej34yGue8XWknrU
- hPmA==
-X-Gm-Message-State: AOAM5326kPYACZennLXrtt6lel+EtZkqqBugpuSZqElk04DZvjZT4fWr
- CiCe3WVdehFhpo55o570vkGN4NjqzHmCduN5lebhKw==
-X-Google-Smtp-Source: ABdhPJwVRMVN6PYWPNDrbRGkbqET+tO2dajvHrcjRYlUisQxn4zRaAT7N9xEe7+WAUzHysUVA7VWrMEEZM+qWd2jZ7k=
-X-Received: by 2002:a81:2154:0:b0:2f4:d79e:35dc with SMTP id
- h81-20020a812154000000b002f4d79e35dcmr9302689ywh.126.1651443023815; Sun, 01
- May 2022 15:10:23 -0700 (PDT)
+ id 1nlISq-00H4hc-Bc; Sun, 01 May 2022 22:54:53 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 24A9BB8101F;
+ Sun,  1 May 2022 22:54:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4BEDC385AF;
+ Sun,  1 May 2022 22:54:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1651445687;
+ bh=XYah/6Osmyojc17k6cqZ+vX1jwgljOTNKYJ/JeSQBfk=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=px2suCI3Pu/bkCRbO5tygyBgCnMM71GOuMyeL9LyUC+OsRZ4FVjr/8GI6djLshrvc
+ M19tpJz53lIURMRhXPy2XW85ZAeHo7k74/Oy2bhXdQVTSPw6UIEz6iBkcW0n4OEGuc
+ SaRoGwLbS3qfyOEVT2ycxXzpFEqlwxiWGPFYsGEPzCagLtS4lZaENeuXI3lFeMNtS7
+ Vck9W34Ic6AROOfxEwL89jMHFFypiHlT/chDQNttnQTa/mJMgZNyERq0ioqK61Lwc4
+ GFuttc2DxKBcnMDQw89NpfG1DJ82UTeiCdmMi6tbiSSm5DOnpRgbA/VuH0chgtxE71
+ 49iYHjxXsDnog==
+Received: by mail-yb1-f177.google.com with SMTP id d12so23475245ybc.4;
+ Sun, 01 May 2022 15:54:47 -0700 (PDT)
+X-Gm-Message-State: AOAM530bzBdTVnb/l0d2rh/dcOmVwRyhQbZvs/8GchLejgwGokOTj0L+
+ l7wxQmY0uPt4y7MZRTERogxmDVJlVyt0ArBb9A==
+X-Google-Smtp-Source: ABdhPJyuplDBOy1HzgzBEurySzDISvnf65i4g3J7NP8mPSls5NwNyrHXj98ge6hOrTKJlam+L9WwpviYEfc1OEFPVok=
+X-Received: by 2002:a25:d194:0:b0:645:7892:43b0 with SMTP id
+ i142-20020a25d194000000b00645789243b0mr8501223ybg.35.1651445686885; Sun, 01
+ May 2022 15:54:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220427154111.529975-1-kuba@kernel.org>
- <20220427154111.529975-2-kuba@kernel.org>
-In-Reply-To: <20220427154111.529975-2-kuba@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 2 May 2022 00:10:12 +0200
-Message-ID: <CACRpkdYOrUkVCW6Bq2V0wkk+2AEP3tkw18m4ra83Gn29knxhYA@mail.gmail.com>
-Subject: Re: [PATCH net-next 01/14] eth: remove copies of the NAPI_POLL_WEIGHT
- define
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: davem@davemloft.net, pabeni@redhat.com, netdev@vger.kernel.org, 
- ulli.kroll@googlemail.com, mlindner@marvell.com, stephen@networkplumber.org, 
- nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com, 
- Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com, grygorii.strashko@ti.com, 
- wei.liu@kernel.org, paul@xen.org, prabhakar.mahadev-lad.rj@bp.renesas.com, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-omap@vger.kernel.org, xen-devel@lists.xenproject.org
+References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+ <20220419094143.9561-9-jason-jh.lin@mediatek.com>
+ <402f0e60-8d3c-850d-84ff-af5424b72b73@gmail.com>
+In-Reply-To: <402f0e60-8d3c-850d-84ff-af5424b72b73@gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 2 May 2022 06:54:35 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-jiX_BhaZ5+skRu4RSZLjcHJerVtwH34fz4N6_jbVK0w@mail.gmail.com>
+Message-ID: <CAAOTY_-jiX_BhaZ5+skRu4RSZLjcHJerVtwH34fz4N6_jbVK0w@mail.gmail.com>
+Subject: Re: [PATCH v20 8/8] soc: mediatek: remove DDP_DOMPONENT_DITHER from
+ enum
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ CK Hu <ck.hu@mediatek.com>, 
+ Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, 
+ DTML <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220501_151027_059128_62B498A1 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220501_155452_741043_9B33C290 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,47 +86,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 27, 2022 at 5:41 PM Jakub Kicinski <kuba@kernel.org> wrote:
-
-> Defining local versions of NAPI_POLL_WEIGHT with the same
-> values in the drivers just makes refactoring harder.
->
-> Drop the special defines in a bunch of drivers where the
-> removal is relatively simple so grouping into one patch
-> does not impact reviewability.
->
-> Signed-off-by: Jakub Kicinski <kuba@kernel.org>
-> ---
-> CC: ulli.kroll@googlemail.com
-> CC: linus.walleij@linaro.org
-> CC: mlindner@marvell.com
-> CC: stephen@networkplumber.org
-> CC: nbd@nbd.name
-> CC: john@phrozen.org
-> CC: sean.wang@mediatek.com
-> CC: Mark-MC.Lee@mediatek.com
-> CC: matthias.bgg@gmail.com
-> CC: grygorii.strashko@ti.com
-> CC: wei.liu@kernel.org
-> CC: paul@xen.org
-> CC: prabhakar.mahadev-lad.rj@bp.renesas.com
-> CC: linux-arm-kernel@lists.infradead.org
-> CC: linux-mediatek@lists.infradead.org
-> CC: linux-omap@vger.kernel.org
-> CC: xen-devel@lists.xenproject.org
-
-Looks good to me!
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-
-Yours,
-Linus Walleij
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIE1hdHRoaWFzOgoKTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4g
+5pa8IDIwMjLlubQ05pyIMjLml6Ug6YCx5LqUIOS4i+WNiDg6NDLlr6vpgZPvvJoKPgo+Cj4KPiBP
+biAxOS8wNC8yMDIyIDExOjQxLCBqYXNvbi1qaC5saW4gd3JvdGU6Cj4gPiBBZnRlciBtbXN5cyBh
+bmQgZHJtIGNoYW5nZSBESVRIRVIgZW51bSB0byBERFBfQ09NUE9ORU5UX0RJVEhFUjAsCj4gPiBt
+bXN5cyBoZWFkZXIgY2FuIHJlbW92ZSB0aGUgdXNlbGVzcyBERFBfQ09NUE9ORU5UX0RJVEhFUiBl
+bnVtLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IGphc29uLWpoLmxpbiA8amFzb24tamgubGluQG1l
+ZGlhdGVrLmNvbT4KPiA+IFJldmlld2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8
+YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgo+Cj4gQWNrZWQtYnk6IE1h
+dHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+Cj4KPiBDaHVuLUt1YW5nLCBJ
+IHRoaW5rIGl0IHdvdWxkIG1ha2Ugc2Vuc2UgdG8gdGFrZSB0aGF0IHRocm91Z2ggeW91ciB0cmVl
+IGFzIGl0Cj4gZGVwZW5kcyBvbiB0aGUgcHJldmlvdXMgcGF0Y2hlcy4KPgo+IEkgcHJvdmlkZSB5
+b3UgYSBzdGFibGUgdGFnIHNvIHRoYXQgeW91IGNhbiB0YWtlIGl0Ogo+IHY1LjE4LW5leHQtdmRz
+bzAtc3RhYmxlLXRhZwoKQWZ0ZXIgSSB0YWtlIHRoaXMgdGFnLCBJIGZpbmQgb25lIGNoZWNrcGF0
+Y2ggd2FybmluZzoKCldBUk5JTkc6IERUIGNvbXBhdGlibGUgc3RyaW5nICJtZWRpYXRlayxtdDgx
+OTUtbW1zeXMiIGFwcGVhcnMKdW4tZG9jdW1lbnRlZCAtLSBjaGVjayAuL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy8KIzY3MDogRklMRTogZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRr
+LW1tc3lzLmM6MzkwOgorICAgICAgICAgICAgICAgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4
+MTk1LW1tc3lzIiwKCkkgdGhpbmsgdGhpcyB0YWcgbG9zdCBvbmUgYmluZGluZyBwYXRjaCwgaXQn
+cyBiZXR0ZXIgdGhhdCB0aGlzIHRhZyBoYXMKbm8gdGhpcyB3YXJuaW5nLgoKUmVnYXJkcywKQ2h1
+bi1LdWFuZy4KCj4KPiBSZWdhcmRzLAo+IE1hdHRoaWFzCj4KPiA+IC0tLQo+ID4gICBpbmNsdWRl
+L2xpbnV4L3NvYy9tZWRpYXRlay9tdGstbW1zeXMuaCB8IDMgKy0tCj4gPiAgIDEgZmlsZSBjaGFu
+Z2VkLCAxIGluc2VydGlvbigrKSwgMiBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEv
+aW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmggYi9pbmNsdWRlL2xpbnV4L3Nv
+Yy9tZWRpYXRlay9tdGstbW1zeXMuaAo+ID4gaW5kZXggNTkxMTdkOTcwZGFmLi5mYjcxOWZkMTI4
+MWMgMTAwNjQ0Cj4gPiAtLS0gYS9pbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRlay9tdGstbW1zeXMu
+aAo+ID4gKysrIGIvaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmgKPiA+IEBA
+IC0xNiw4ICsxNiw3IEBAIGVudW0gbXRrX2RkcF9jb21wX2lkIHsKPiA+ICAgICAgIEREUF9DT01Q
+T05FTlRfQ0NPUlIsCj4gPiAgICAgICBERFBfQ09NUE9ORU5UX0NPTE9SMCwKPiA+ICAgICAgIERE
+UF9DT01QT05FTlRfQ09MT1IxLAo+ID4gLSAgICAgRERQX0NPTVBPTkVOVF9ESVRIRVIsCj4gPiAt
+ICAgICBERFBfQ09NUE9ORU5UX0RJVEhFUjAgPSBERFBfQ09NUE9ORU5UX0RJVEhFUiwKPiA+ICsg
+ICAgIEREUF9DT01QT05FTlRfRElUSEVSMCwKPiA+ICAgICAgIEREUF9DT01QT05FTlRfRElUSEVS
+MSwKPiA+ICAgICAgIEREUF9DT01QT05FTlRfRFBfSU5URjAsCj4gPiAgICAgICBERFBfQ09NUE9O
+RU5UX0RQX0lOVEYxLAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1tZWRpYXRlawo=
