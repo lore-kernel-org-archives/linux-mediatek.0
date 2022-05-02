@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14215C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 May 2022 18:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C78C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 May 2022 19:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=epYwqUVIA/LBt/KrnwJGdUFY3oAvprWES8h19pJfViI=; b=XgrJbwG1JVXFTr
-	HUE9n9Xfpwps7OmuB3N+YWjicTwOfQYGJkuXemC27wonFm5/UcEUXA0HjBN7vtaGrpscV0HzvC2Q2
-	r1p05Ht//qWxs95uiu2if+PM7/8Tn8LM7Dh4CHCfR/ulXWLdgkjKb3MlJhAEb13Fprc73apDP6SE1
-	jxNkecHCuXDLVMr7aOZIZKxweYPZCcv+6mJl0KtpyD7MXmnfdhBElHlC9d4fKfAOX+jO6H/RcmM5f
-	9AD9nm1nRkz1mi0CZ4xsMitFDCaq7f6Fq8LuWHaY6DHEqCok/trjAMg0hRipQfbQMFSEE4CBc/9TI
-	KQ9tseznbXOcptUImxxQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5Lsrd91+VmS7UQplKCzq99XQ2P2PqNUugko+o2NOWzQ=; b=pL41SAOqW+3PXe
+	lCPCi84ASEHy1XZCTbF9XfyJ+xF/x0XEeYFCIwp3WTa8rDYVthyw2Fn+w6ChY6u/tFEGfAgtQFSHb
+	I8eNaOYHCnm/GAKym7OenDzLJPXdDYI9zTR3L13T9xFH3TEFHhBE8HJcUrnCuXaf/jP1MdzUrgQIl
+	RTG8WhUeTeFwH7FP0WK83s0nzq6mBypjPNEEVa4fAr+SyORc0VA/kYiaWRD5gd0L2aPK7+EmK/gee
+	KGe3B7imERcuEkelQTQcTCYJrkTPZC7F4fzs02LbUavgt0QJdhdEouc3zzrhpJ6MefFjVCZmNb33k
+	i9Jj9fGF8p23SHDVFXhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlatY-002Dqm-Nb; Mon, 02 May 2022 18:35:40 +0000
+	id 1nlbey-002NOt-HH; Mon, 02 May 2022 19:24:40 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlatN-002DnA-DO; Mon, 02 May 2022 18:35:30 +0000
+ id 1nlben-002NKW-40; Mon, 02 May 2022 19:24:30 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id B8F721F42914
+ (Authenticated sender: nfraprado) with ESMTPSA id 0E93B1F43616
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651516528;
- bh=LNAKoERXNkxOChEkjc56ibMMeMeZRDZq9ArNo0Yf64k=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=SE1XcgI7Tnd9jrUCWIe+kKGkeveMBSkqfnpzeAxST784bFE4NvXBGVyKtmVTzFQKr
- mpDOuBivzwO3rCkE+y73S6y4rOFyfFJcopT3rZD+7KKBew/QrHsYvAA63H6swWp+iA
- yvm0b7qr6NCBM+H2arXbXISocgeMcw8XvDbH9LeiZbYIPsH0alUlCCKuw21bW3+etY
- gApJ0l9e0G42MnJ4bN1QykoDF04L2CJT45frtB/qiEWKxx6stsS0KFkkd5LX7QTyPL
- 2U/yOkW78IG3fL0m/O7SLSgjUtBCMB6k2mBHuBqHJ2Ja89f7pF7B0JBG+POMq0q4qC
- 9vw5h2ft9f1Yw==
-Date: Mon, 2 May 2022 14:35:23 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com,
+ s=mail; t=1651519464;
+ bh=g/10CsCiiEAtzUkTggO9p2fKiGZMC5fLwF20fgME/00=;
+ h=From:To:Cc:Subject:Date:From;
+ b=S5AZcx8E4EvtBgUSCN9EWouvAbcZYo0t4YVuYZMr2PdcC1hWzIUhYG/C9OA/w2dTV
+ McwPwmNQE7TEj26ozepd0NGY4DLGVlE3VUaoSQoT5493L/6ju2JdwvtvCSOMNwLQk2
+ vaUg+xxPDybtP2jvDXrz9BaxAh4gXYm6jtbPR47rhFHtQr3ABJVpHU+XGlzXJmPlU9
+ k1JuqK0jL+LLaDoD4iE5YZZzStairRVYGsPXdKQ5ysqoY1nBdEK1w9u3Z0aoBmPWIx
+ K+sCCJOeA8eDyMlcPPdxdKa83DluzVt8ocET2HtOJybUPH/9c8vEoGRyT3ZyJybseL
+ HT/fhkfx3mNEw==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+To: Bjorn Andersson <bjorn.andersson@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>, 
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Mathieu Poirier <mathieu.poirier@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Tinghan Shen <tinghan.shen@mediatek.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-remoteproc@vger.kernel.org
-Subject: Re: [PATCH 2/2] dt-bindings: remoteproc: mediatek: Add optional
- memory-region to mtk,scp
-Message-ID: <20220502183523.tfrai4wndzhlvjq5@notapiano>
-References: <20220429211111.2214119-1-nfraprado@collabora.com>
- <20220429211111.2214119-3-nfraprado@collabora.com>
- <YnAA+7eqP/WzGrhQ@robh.at.kernel.org>
+Subject: [PATCH v2 0/2] Mediatek SCP dt-binding tweaks
+Date: Mon,  2 May 2022 15:24:18 -0400
+Message-Id: <20220502192420.2548512-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.36.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YnAA+7eqP/WzGrhQ@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220502_113529_623401_249C990F 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20220502_122429_356783_FA3E4D14 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,68 +69,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 02, 2022 at 11:04:11AM -0500, Rob Herring wrote:
-> On Fri, Apr 29, 2022 at 05:11:10PM -0400, N=EDcolas F. R. A. Prado wrote:
-> > The SCP co-processor can optionally be passed a reserved memory region
-> > to use. Add this property in the dt-binding.
-> > =
-
-> > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-> > ---
-> > =
-
-> >  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> > =
-
-> > diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml =
-b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > index ec9ddeb6ca2c..64a9d2c7ed0d 100644
-> > --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > @@ -51,6 +51,10 @@ properties:
-> >    interrupts:
-> >      maxItems: 1
-> >  =
-
-> > +  memory-region:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> =
-
-> memory-region has a type already, so drop. What's needed is how many =
-
-> entries and what they are if more than 1.
-
-Hi Rob,
-
-OK, didn't notice this common property was already documented elsewhere. In=
- that
-case I'll also drop the description since it's only 1.
-
-Thanks,
-N=EDcolas
-
-> =
-
-> > +    description: phandle to reserved memory region.
-> > +
-> >  required:
-> >    - compatible
-> >    - reg
-> > -- =
-
-> > 2.36.0
-> > =
-
-> > =
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+ClR3byBzaW1wbGUgcGF0Y2hlcyBmb3IgdGhlIE1lZGlhdGVrIFNDUCBkdC1iaW5kaW5nLiBUaGUg
+Zmlyc3QgZml4ZXMgdGhlCnJlZy9yZWctbmFtZXMgcHJvcGVydHkgd2hpbGUgdGhlIHNlY29uZCBh
+ZGRzIGEgbmV3IG9wdGlvbmFsCm1lbW9yeS1yZWdpb24gcHJvcGVydHkuCgp2MTogaHR0cHM6Ly9s
+b3JlLmtlcm5lbC5vcmcvYWxsLzIwMjIwNDI5MjExMTExLjIyMTQxMTktMS1uZnJhcHJhZG9AY29s
+bGFib3JhLmNvbQoKQ2hhbmdlcyBpbiB2MjoKLSBEcm9wcGVkIHR5cGUgYW5kIGRlc2NyaXB0aW9u
+IGZyb20gbWVtb3J5LXJlZ2lvbiBzaW5jZSBpdCdzIGEKICB3ZWxsLWtub3duIHByb3BlcnR5Ci0g
+U2V0IG1lbW9yeS1yZWdpb24gbWF4SXRlbXMgdG8gMQoKTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8g
+KDIpOgogIGR0LWJpbmRpbmdzOiByZW1vdGVwcm9jOiBtZWRpYXRlazogRml4IG9wdGlvbmFsIHJl
+Zy1uYW1lcyBmb3IgbXRrLHNjcAogIGR0LWJpbmRpbmdzOiByZW1vdGVwcm9jOiBtZWRpYXRlazog
+QWRkIG9wdGlvbmFsIG1lbW9yeS1yZWdpb24gdG8KICAgIG10ayxzY3AKCiAuLi4vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9yZW1vdGVwcm9jL210ayxzY3AueWFtbCAgIHwgMTUgKysrKysrKysrKysrLS0t
+CiAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKCi0tIAoy
+LjM2LjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
+ZGlhdGVrCg==
