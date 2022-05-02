@@ -4,63 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A869CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 May 2022 08:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154CBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 May 2022 08:49:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WBtq55lxUj1SwtPl+CZ30g4EES8vYAS4cl2s2UzwDE8=; b=fbxVgX6JKujS0i
-	GnkhwpBrxWi6cn68zcdlFs6W959LAMd3xeInPK04RbOLzmJ9hwLQl8gzTAZKJAvcGPaQkQGWeFJ1J
-	c9ODnkfoyM5GzQ6s6DbhYkDEYJvIUgk58VrNJFqJtLBkyXxFvYNQxexwAqfINWVCd3ez5wSPbdwt7
-	6o4Lkb949uDiFhZ1ka1qDWEZ10oF2CMDc550Ycok7vPBWHZ0frZVJB+tkcYz7R57v+Mh5u13HtIxw
-	Dxhcz1JM5OZ+PGBAImZRxYgRXlZG7hXRNOifkZpq5OjMHxeldn+6gY9OOvQhz2EeO7UNj5i3bQeWJ
-	QLm1ftMK/H5Q17Kww37A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=uCb7nkVy7yYqQgnzYZ/QEtmLBZqc5ZQmQAphMw6ZIow=; b=qxbphAqPDwD75v
+	E4fxjC5kcQQ7yjLJz2nEKR1vVawDebKYQHnCbWHkBsjSClPUU0s9NYIwMqq1BUXHOjjRmHX0wME87
+	Nda86QmS2lxoqyiAn3vKwBfcDciOEHCe5mDo0FmrQv26ukPdgX417qbNGEszKw+DNoXhGgUc1g+iV
+	fzzz9XnIcKWS/oL7SA73Jhz9+tEkFn9rCCTzT+/C4OLRnADeawsmm9h9at5xyUTrU/gSjoCGmqD8Y
+	IOLsfHRjBLHoErU5fW2/p7BldkmHCOkdDNhpuyhW9w/ZIoOiXaaKFbr7ItX7n6L6c3mdTXtzTUU60
+	1XTdVqRKPMaPU4uGodoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlRc0-000Q2Y-VB; Mon, 02 May 2022 08:40:56 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nlRk2-000Sfn-49; Mon, 02 May 2022 08:49:14 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlRbg-000PsR-HO; Mon, 02 May 2022 08:40:38 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A72391F403D6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651480835;
- bh=D8YJoc2PcRQjfbBcH+ipLbCMGp+67jgyWRLQdA5wU+s=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=eZD9I7wAOF04f5zspCYpe65S9Eff6SOO/P1vrulREbaNgS3u4xjfQwNN0Xg9jfUWl
- u/hph2fpECj1BcIARGI8l++FijaIqEPW/EFarfvY0FApsLceAotL2mk9o1SFZl4AF9
- uD07tMnmYx2dZa6qNVx9CSeSJlhqSOWTrE0G6aB+uKTmi34TocvgUAJRD5R6cGpDyJ
- 3PxGoeqkD2ulgsLtZgX2v9VNhBI3KLZmB3UrKRSb3DCw5BbncAq782jJFNSkXI9Iup
- s7T3rKRFYC5kT5+WVi6EIKc1alhQikleCHWrxe0i1Fpvi4DNXA7UVLY1Pp5ZtVEEeA
- 0SKIEJlkNE8oQ==
-Message-ID: <0b7101ec-96a2-cb02-7026-aa706dfef4cf@collabora.com>
-Date: Mon, 2 May 2022 10:40:32 +0200
+ id 1nlRjx-000Sbh-7X
+ for linux-mediatek@lists.infradead.org; Mon, 02 May 2022 08:49:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1651481342;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=g1EGMUSX4uhdpumN1AqArSCJZUMcx2qk+SIJN7jkMXI=;
+ b=P0h/w4e8bqfdcfuw0MzVuqo30xCR92VaVbU/cZWVK81Y/aYl1Hulb/zDJv3U8VC527kV4m
+ U3pcdK/902HbQJMV5WWF5w9oFoD/ZwFVMpxmPmcoChf4Hyn5g1NkQU2mmlN8tjAgL6rYg4
+ MfeBdRSBapuQll01D5v+FmDRUTMF3OU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-399-seB8nNhpNn2AKsk9OHeu3w-1; Mon, 02 May 2022 04:49:01 -0400
+X-MC-Unique: seB8nNhpNn2AKsk9OHeu3w-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ g3-20020a7bc4c3000000b0039409519611so4276957wmk.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 02 May 2022 01:49:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=g1EGMUSX4uhdpumN1AqArSCJZUMcx2qk+SIJN7jkMXI=;
+ b=8OfpxnRKRF1K9Hct503+G3jj0d6vrlJ6Sf4MttjYH9s7chr1LNui7VJiPymnKJUByF
+ uEVioTJo1gUE8vyxv69ak1WBvrGk6qmlJkEhpqV9OJTDWC+EdwhQPT0VNmGTs/mZjJeK
+ ZkXAz9gLj4svvfu7Q203t+6HzGsIER47gmRckNUWUChMYp+F/VTlKMfeZyhfFmGBSkZA
+ c9X5VOKggQcKowsMWc9OfCy/LX+5yDViV75ONL48fKDRYt+NxDVDT/N2SWDZ731s9SKu
+ VPrJbADX55vi2p9KW0fbxRsGOELIWlUDii7IyIrx8Eewu6+FbMAawBgG7DHwVA4aZnkJ
+ iiOg==
+X-Gm-Message-State: AOAM533NSKhiQpsowK5G9Gait17ghSug/DKZK2pvoS90w1cPVS86lePx
+ GuJvtpZ7N5ux11u1NNJ4220fqTVzsuLyqSqZ2QXlIG8zmjX7q4ZtAW3RJ14Sq9wkRtC1/Nl/cND
+ D7N0ieBo7rbFnFG4DT5iEGbqG3VjGMIOt
+X-Received: by 2002:a1c:7512:0:b0:394:16ee:ab9b with SMTP id
+ o18-20020a1c7512000000b0039416eeab9bmr9917240wmc.176.1651481339935; 
+ Mon, 02 May 2022 01:48:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1HDOH0L0J59jWzQqe8OCc8OrGCpxEDekTc2b0ViBR9lVxUT3tRNZw5Yfr7Gkyc9Gu0hnOLg==
+X-Received: by 2002:a1c:7512:0:b0:394:16ee:ab9b with SMTP id
+ o18-20020a1c7512000000b0039416eeab9bmr9917168wmc.176.1651481339590; 
+ Mon, 02 May 2022 01:48:59 -0700 (PDT)
+Received: from minerva.. ([90.167.94.74]) by smtp.gmail.com with ESMTPSA id
+ i14-20020adfa50e000000b0020c5253d8c6sm8032307wrb.18.2022.05.02.01.48.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 May 2022 01:48:59 -0700 (PDT)
+From: Javier Martinez Canillas <javierm@redhat.com>
+To: linux-kernel@vger.kernel.org
+Cc: Thomas Zimmermann <tzimmermann@suse.de>,
+ Javier Martinez Canillas <javierm@redhat.com>,
+ Alain Volmat <alain.volmat@foss.st.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Alexey Brodkin <abrodkin@synopsys.com>, Alison Wang <alison.wang@nxp.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Andrey Grodzovsky <andrey.grodzovsky@amd.com>,
+ Boris Brezillon <bbrezillon@kernel.org>,
+ Brian Starkey <brian.starkey@arm.com>, Chen Feng <puck.chen@hisilicon.com>,
+ Chen-Yu Tsai <wens@csie.org>, Chia-I Wu <olvaffe@gmail.com>,
+ =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Dave Airlie <airlied@redhat.com>,
+ David Airlie <airlied@linux.ie>, Emma Anholt <emma@anholt.net>,
+ Evan Quan <evan.quan@amd.com>, Fabio Estevam <festevam@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Gurchetan Singh <gurchetansingh@chromium.org>,
+ Hans de Goede <hdegoede@redhat.com>, Hao Fang <fanghao11@huawei.com>,
+ Hyun Kwon <hyun.kwon@xilinx.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Joel Stanley <joel@jms.id.au>,
+ John Stultz <john.stultz@linaro.org>, Jyri Sarha <jyri.sarha@iki.fi>,
+ Kevin Hilman <khilman@baylibre.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Liviu Dudau <liviu.dudau@arm.com>,
+ Lucas De Marchi <lucas.demarchi@intel.com>,
+ Lucas Stach <l.stach@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Marek Vasut <marex@denx.de>, Mario Limonciello <mario.limonciello@amd.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Maxime Ripard <mripard@kernel.org>, Michal Simek <michal.simek@xilinx.com>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Nirmoy Das <nirmoy.das@amd.com>,
+ =?UTF-8?q?Noralf=20Tr=C3=B8nnes?= <noralf@tronnes.org>,
+ "Pan, Xinhui" <Xinhui.Pan@amd.com>, Paul Cercueil <paul@crapouillou.net>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Philippe Cornu <philippe.cornu@foss.st.com>,
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
+ Sam Ravnborg <sam@ravnborg.org>, Samuel Holland <samuel@sholland.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Solomon Chiu <solomon.chiu@amd.com>, Stefan Agner <stefan@agner.ch>,
+ Tian Tao <tiantao6@hisilicon.com>, Tomi Valkeinen <tomba@kernel.org>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Yannick Fertre <yannick.fertre@foss.st.com>,
+ Yong Wu <yong.wu@mediatek.com>, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ spice-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org
+Subject: [PATCH 0/3] drm: Allow simpledrm to setup its emulated FB as firmware
+ provided
+Date: Mon,  2 May 2022 10:48:27 +0200
+Message-Id: <20220502084830.285639-1-javierm@redhat.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 2/2] dt-bindings: remoteproc: mediatek: Add optional
- memory-region to mtk,scp
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>
-Cc: kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Tinghan Shen <tinghan.shen@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
-References: <20220429211111.2214119-1-nfraprado@collabora.com>
- <20220429211111.2214119-3-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220429211111.2214119-3-nfraprado@collabora.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=javierm@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220502_014036_782053_0996B116 
-X-CRM114-Status: UNSURE (   7.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220502_014909_374202_89331BEA 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,17 +158,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMjkvMDQvMjIgMjM6MTEsIE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIGhhIHNjcml0dG86Cj4g
-VGhlIFNDUCBjby1wcm9jZXNzb3IgY2FuIG9wdGlvbmFsbHkgYmUgcGFzc2VkIGEgcmVzZXJ2ZWQg
-bWVtb3J5IHJlZ2lvbgo+IHRvIHVzZS4gQWRkIHRoaXMgcHJvcGVydHkgaW4gdGhlIGR0LWJpbmRp
-bmcuCj4gCj4gU2lnbmVkLW9mZi1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFk
-b0Bjb2xsYWJvcmEuY29tPgoKUmV2aWV3ZWQtYnk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25v
-IDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+CgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hello,
+
+This series contain patches suggested by Thomas Zimmermannas a feedback for
+"[RFC PATCH v4 00/11] Fix some race between sysfb device registration and
+drivers probe" [0].
+
+Since other changes in [0] were more controversial, I decided to just split
+this part in a new patch-set and revisit the rest of the patches later.
+
+Patch #1 is just a cleanup since when working on this noticed that some DRM
+drivers were passing as preferred bits per pixel to drm_fbdev_generic_setup()
+the value that is the default anyways.
+
+Patch #2 renames the 'preferred_bpp' drm_fbdev_generic_setup() parameter to
+'options', and make this a multi field parameter so that it can be extended
+later to pass other options as well.
+
+Patch #3 finally adds the new DRM_FB_FW option and makes simpledrm to use it
+so that the registered framebuffer device is also marked as firmware provided.
+
+[0]: https://lore.kernel.org/lkml/20220429084253.1085911-1-javierm@redhat.com/
+
+
+Javier Martinez Canillas (3):
+  drm: Remove superfluous arg when calling to drm_fbdev_generic_setup()
+  drm/fb-helper: Rename preferred_bpp drm_fbdev_generic_setup()
+    parameter
+  drm: Allow simpledrm to setup its emulated FB as firmware provided
+
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  6 +++--
+ drivers/gpu/drm/arm/hdlcd_drv.c               |  2 +-
+ drivers/gpu/drm/arm/malidp_drv.c              |  2 +-
+ drivers/gpu/drm/aspeed/aspeed_gfx_drv.c       |  2 +-
+ drivers/gpu/drm/ast/ast_drv.c                 |  2 +-
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c  |  2 +-
+ drivers/gpu/drm/drm_drv.c                     |  2 +-
+ drivers/gpu/drm/drm_fb_helper.c               | 25 ++++++++++++++++---
+ drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_drv.c     |  2 +-
+ .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  2 +-
+ .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c   |  2 +-
+ drivers/gpu/drm/imx/dcss/dcss-kms.c           |  2 +-
+ drivers/gpu/drm/imx/imx-drm-core.c            |  2 +-
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c     |  2 +-
+ drivers/gpu/drm/mcde/mcde_drv.c               |  2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  2 +-
+ drivers/gpu/drm/meson/meson_drv.c             |  2 +-
+ drivers/gpu/drm/mxsfb/mxsfb_drv.c             |  2 +-
+ drivers/gpu/drm/pl111/pl111_drv.c             |  2 +-
+ drivers/gpu/drm/qxl/qxl_drv.c                 |  2 +-
+ drivers/gpu/drm/rcar-du/rcar_du_drv.c         |  2 +-
+ drivers/gpu/drm/sti/sti_drv.c                 |  2 +-
+ drivers/gpu/drm/stm/drv.c                     |  2 +-
+ drivers/gpu/drm/sun4i/sun4i_drv.c             |  2 +-
+ drivers/gpu/drm/tidss/tidss_drv.c             |  2 +-
+ drivers/gpu/drm/tilcdc/tilcdc_drv.c           |  2 +-
+ drivers/gpu/drm/tiny/arcpgu.c                 |  2 +-
+ drivers/gpu/drm/tiny/bochs.c                  |  2 +-
+ drivers/gpu/drm/tiny/cirrus.c                 |  2 +-
+ drivers/gpu/drm/tiny/simpledrm.c              |  2 +-
+ drivers/gpu/drm/tve200/tve200_drv.c           |  2 +-
+ drivers/gpu/drm/vboxvideo/vbox_drv.c          |  2 +-
+ drivers/gpu/drm/vc4/vc4_drv.c                 |  2 +-
+ drivers/gpu/drm/virtio/virtgpu_drv.c          |  2 +-
+ drivers/gpu/drm/xlnx/zynqmp_dpsub.c           |  2 +-
+ include/drm/drm_fb_helper.h                   | 22 ++++++++++++++++
+ 36 files changed, 80 insertions(+), 39 deletions(-)
+
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
