@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 404E0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 May 2022 18:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14215C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 May 2022 18:35:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fqu4aaE3btCIKDdFb8A7/ahgWcEYNuCViYv0e0GNaT4=; b=JJt2NFVcJxW138
-	wmwt++AdZi3MBP2yXpWsjXzOuTqG3EBRF4wKNrVKzOTIVZ0Wckpj/mUypNwwXrI6AVIZcEl9+xgA/
-	Tn+V6FszXsKgkDAQ8AWi4FLiuu//UvpNCzYbr017LdzSZlfIdauRvg15O6h96aPW+yde3le9jufkG
-	n3ctIQhgUEbfugYgTJk+S6NPYQeSJet/LyHT4tJK2Z/UqWxQDqtN3+HwJNEVNaiZWDwvAc9rNTONc
-	x/ITx+6fCJHrC18pj4+pDmrFNHfJh0dY/YgD1FKbLfTUFDracOZjldGEuhSKT/i4OXXWu0v6EpaF1
-	wob+94FnH7kvIw4s8bBw==;
+	List-Owner; bh=epYwqUVIA/LBt/KrnwJGdUFY3oAvprWES8h19pJfViI=; b=XgrJbwG1JVXFTr
+	HUE9n9Xfpwps7OmuB3N+YWjicTwOfQYGJkuXemC27wonFm5/UcEUXA0HjBN7vtaGrpscV0HzvC2Q2
+	r1p05Ht//qWxs95uiu2if+PM7/8Tn8LM7Dh4CHCfR/ulXWLdgkjKb3MlJhAEb13Fprc73apDP6SE1
+	jxNkecHCuXDLVMr7aOZIZKxweYPZCcv+6mJl0KtpyD7MXmnfdhBElHlC9d4fKfAOX+jO6H/RcmM5f
+	9AD9nm1nRkz1mi0CZ4xsMitFDCaq7f6Fq8LuWHaY6DHEqCok/trjAMg0hRipQfbQMFSEE4CBc/9TI
+	KQ9tseznbXOcptUImxxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlarG-002DCi-5p; Mon, 02 May 2022 18:33:18 +0000
+	id 1nlatY-002Dqm-Nb; Mon, 02 May 2022 18:35:40 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlar0-002D6K-VJ; Mon, 02 May 2022 18:33:05 +0000
+ id 1nlatN-002DnA-DO; Mon, 02 May 2022 18:35:30 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 06AA31F42817
+ (Authenticated sender: nfraprado) with ESMTPSA id B8F721F42914
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651516379;
- bh=dKN4ju/bbXDAUouowRwoVB4iWM1AzKPnXRrkmI1NJjs=;
+ s=mail; t=1651516528;
+ bh=LNAKoERXNkxOChEkjc56ibMMeMeZRDZq9ArNo0Yf64k=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=efhPJidgcFGegYu1ZY05ABw0Si1mNWIAWya2bP0OsaFzSdbsiPhWaR+Am8PfD5kh9
- M1T4AlAb0QFKqpS0kEEWvfDQdEucaGhuQkiIeEaIrPTFZhIASTRFEcxlxWwWxtz9gp
- Pg70/qGpFx4kiiZJPuJaSMyd1f/I51VyFPFWHDlorNA98f57zGktln3LSU9DO0owSg
- cEt0VRj/JblrydGpYhl2LXT6uOKcrGGSGKoOoGGYd26PAIdKzeI7NGkDs1o4dDEOKg
- QspKV2hQTY03EOEZkSRapY+1AFZnZOZUWpSLuCzzyqGmWadSVgEAYDcpPimYIAgN0m
- bdJZNaGTR3z0g==
-Date: Mon, 2 May 2022 14:32:54 -0400
+ b=SE1XcgI7Tnd9jrUCWIe+kKGkeveMBSkqfnpzeAxST784bFE4NvXBGVyKtmVTzFQKr
+ mpDOuBivzwO3rCkE+y73S6y4rOFyfFJcopT3rZD+7KKBew/QrHsYvAA63H6swWp+iA
+ yvm0b7qr6NCBM+H2arXbXISocgeMcw8XvDbH9LeiZbYIPsH0alUlCCKuw21bW3+etY
+ gApJ0l9e0G42MnJ4bN1QykoDF04L2CJT45frtB/qiEWKxx6stsS0KFkkd5LX7QTyPL
+ 2U/yOkW78IG3fL0m/O7SLSgjUtBCMB6k2mBHuBqHJ2Ja89f7pF7B0JBG+POMq0q4qC
+ 9vw5h2ft9f1Yw==
+Date: Mon, 2 May 2022 14:35:23 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- kernel@collabora.com, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org,
- linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- Tinghan Shen <tinghan.shen@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>
-Subject: Re: [PATCH 1/2] dt-bindings: remoteproc: mediatek: Fix optional
- reg-names for mtk,scp
-Message-ID: <20220502183254.qb2paehrlkmhbhf6@notapiano>
+ kernel@collabora.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-remoteproc@vger.kernel.org
+Subject: Re: [PATCH 2/2] dt-bindings: remoteproc: mediatek: Add optional
+ memory-region to mtk,scp
+Message-ID: <20220502183523.tfrai4wndzhlvjq5@notapiano>
 References: <20220429211111.2214119-1-nfraprado@collabora.com>
- <20220429211111.2214119-2-nfraprado@collabora.com>
- <1651505609.475123.1161772.nullmailer@robh.at.kernel.org>
+ <20220429211111.2214119-3-nfraprado@collabora.com>
+ <YnAA+7eqP/WzGrhQ@robh.at.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1651505609.475123.1161772.nullmailer@robh.at.kernel.org>
+In-Reply-To: <YnAA+7eqP/WzGrhQ@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220502_113303_311584_AFB3D498 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20220502_113529_623401_249C990F 
+X-CRM114-Status: GOOD (  17.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,121 +77,61 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 02, 2022 at 10:33:29AM -0500, Rob Herring wrote:
-> On Fri, 29 Apr 2022 17:11:09 -0400, N=EDcolas F. R. A. Prado wrote:
-> > The SCP has three memory regions: sram, l1tcm and cfg. Only sram is
-> > required, the other two are optional. Fix the dt-binding so that the
-> > optional regions can be omitted and passed in any order.
-> > =
-
-> > Also add the missing minItems to the reg property and update the
-> > description.
+On Mon, May 02, 2022 at 11:04:11AM -0500, Rob Herring wrote:
+> On Fri, Apr 29, 2022 at 05:11:10PM -0400, N=EDcolas F. R. A. Prado wrote:
+> > The SCP co-processor can optionally be passed a reserved memory region
+> > to use. Add this property in the dt-binding.
 > > =
 
 > > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-> > =
-
 > > ---
 > > =
 
-> >  .../devicetree/bindings/remoteproc/mtk,scp.yaml      | 12 +++++++++---
-> >  1 file changed, 9 insertions(+), 3 deletions(-)
+> >  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 4 ++++
+> >  1 file changed, 4 insertions(+)
 > > =
 
+> > diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml =
+b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> > index ec9ddeb6ca2c..64a9d2c7ed0d 100644
+> > --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> > +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> > @@ -51,6 +51,10 @@ properties:
+> >    interrupts:
+> >      maxItems: 1
+> >  =
+
+> > +  memory-region:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle
 > =
 
-> Running 'make dtbs_check' with the schema in this patch gives the
-> following warnings. Consider if they are expected or the schema is
-> incorrect. These may not be new warnings.
+> memory-region has a type already, so drop. What's needed is how many =
+
+> entries and what they are if more than 1.
 
 Hi Rob,
 
-These indeed aren't new warnings. But in any case, the fix for the interrup=
-ts
-one is already on its way to mainline [1]. And the memory-region one is wha=
-t is
-fixed by patch 2 in this series.
+OK, didn't notice this common property was already documented elsewhere. In=
+ that
+case I'll also drop the description since it's only 1.
 
 Thanks,
 N=EDcolas
 
-[1] https://lore.kernel.org/all/165066838719.2742284.7900096409445311556.b4=
--ty@linaro.org/
-
 > =
 
-> Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-> This will change in the future.
-> =
+> > +    description: phandle to reserved memory region.
+> > +
+> >  required:
+> >    - compatible
+> >    - reg
+> > -- =
 
-> Full log is available here: https://patchwork.ozlabs.org/patch/
-> =
+> > 2.36.0
+> > =
 
-> =
+> > =
 
-> scp@10500000: interrupts: [[0, 174, 4]] is not of type 'object'
-> 	arch/arm64/boot/dts/mediatek/mt8183-evb.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dtb
-> =
-
-> scp@10500000: memory-region: [[25]] is not of type 'object'
-> 	arch/arm64/boot/dts/mediatek/mt8183-evb.dtb
-> =
-
-> scp@10500000: memory-region: [[27]] is not of type 'object'
-> 	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dtb
-> =
-
-> scp@10500000: memory-region: [[28]] is not of type 'object'
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-> =
-
-> =
-
-> -- =
-
-> To unsubscribe, send mail to kernel-unsubscribe@lists.collabora.co.uk.
 
 _______________________________________________
 Linux-mediatek mailing list
