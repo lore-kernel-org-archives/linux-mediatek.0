@@ -4,57 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6E5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 11:00:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1756C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 11:34:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xsxHSYTPbXjSmYjVtCnqMawqJaQ305Q75WZXCMXfu2I=; b=dVacSUq8hJ/1P+
-	o/YS6r/eAdjya6YJwLHZC9Cs2xkQbmmXCCH3bs9jWdU/veLsNOAuve/zVH9cxctt6FGUFv0TP/t6V
-	oWNQFxlLHxYIr/GAdVsjMR2ytoLxhxYUqUFvItRua86VgvwQ2B+/dutQBBhjnwe6Kf87RorcOISTK
-	k0NJRRqs+nf2O+Nt8KiSw6MtL010Nm8G+Ngx8NEzsjv2md8M4IeAiCuL4FDbLPkJDO+4lHpwoASlQ
-	3Ow51v+Y2FdeKyUnDbCYDkgM3pKPTd1SCulG9YQqmwyrRFIulFRyVzGi0AFJQFMyQJQYhk2wVgpHo
-	bb+bz9SUN4+EW8p+loIg==;
+	List-Owner; bh=OQCsVpzCfBGOb7Oxo8l5mAzxvy8+rlvxJacCRS7rEmc=; b=KAbmSPmCjvjySe
+	LNFwXhSXXrqgOOIXZr3nT+M3v0nVPdVRjL/IsAtfXgaxyQNGBJiYDEoVBftkVwgZA5jYiRs4i0Yew
+	FcICF0d7jufTwCPWHwaQifmsN3EKkVumESLOZVp7DTrNXCkJZTAZTdqioBom+CsmZObk7SnBRO7FZ
+	q5y9lNl0wEEC6xS6hvqonkswKnnRDLUlNR9+Vnd+zPUjV3dKycojm6QYk3qYnov3MukGaCEPf+HlY
+	tcswmY52RhYYQtEebbSv8+Dg1e9dbLCmbKT8cR9fjYvp+szVV+OJI6V63ACnp7YEf3zgIEXtBozkP
+	WwEkk3faT15X50Dh0G8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlqGh-005Ssy-DU; Tue, 03 May 2022 11:00:35 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nlqnE-005c1V-6l; Tue, 03 May 2022 11:34:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlqB3-005PCu-BZ; Tue, 03 May 2022 10:54:47 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 75BBB1F43E42
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651575284;
- bh=Vzt5rJ5w7RADVz/xg7c0ik/5e8mPzC+52IMY2R0fGcU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=AXAvYxaJ2WqoLiScU2zK8GtNyfvNOCc0H86ip/W7ijj6NBN0iT939GlVAah0ZYQJI
- U26VT4lIyEGKJ9VUNRvp1niEdNeY7wqj1NW9hyh0F+W5U5tEx6biJDA0bD1Ekq6Upr
- 8/MgV1J2CATa4EWfJCu9Qm4u+EI5J7uY0H8TtQ4RCSZn46XfIGSbKCYBl0QVNYX0AS
- 0ARqd2bjFYN1iSf7iZcWdrBpQf1XP6nvmSK9zSR0n5p4VU5cdFxeptzSFElJVSeNOi
- LHhgSYZEs6lUIfyXTwksuTR6SuzuEC0E2UArhM3kgzpd8e73MpysVLwui+/pXOtWBA
- 0TguOZty6Cgpg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- chun-jie.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
- weiyi.lu@mediatek.com, mbrugger@suse.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- nfraprado@collabora.com
-Subject: [PATCH 2/2] soc: mediatek: pm-domains: Add support for Helio X10
- MT6795
-Date: Tue,  3 May 2022 12:54:36 +0200
-Message-Id: <20220503105436.54901-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220503105436.54901-1-angelogioacchino.delregno@collabora.com>
-References: <20220503105436.54901-1-angelogioacchino.delregno@collabora.com>
+ id 1nlqn3-005bxC-Bw; Tue, 03 May 2022 11:34:02 +0000
+X-UUID: 14418056d4f44a919fda77560b9e659e-20220503
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:463017cc-d8c9-4baf-8752-4330694b39c5, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:280653c7-85ee-4ac1-ac05-bd3f1e72e732,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 14418056d4f44a919fda77560b9e659e-20220503
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1551064936; Tue, 03 May 2022 04:33:52 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 04:33:50 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 3 May 2022 19:33:49 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Tue, 3 May 2022 19:33:48 +0800
+Message-ID: <27a5dddd91b3dcbd69f08c10108cdec808237ace.camel@mediatek.com>
+Subject: Re: [PATCH V4 07/14] cpufreq: mediatek: Add .get function
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+CC: <rafael@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
+ <roger.lu@mediatek.com>, <hsinyi@google.com>, <khilman@baylibre.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 3 May 2022 19:33:48 +0800
+In-Reply-To: <20220428114835.3ktimyz2tzzqdcbg@vireshk-i7>
+References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
+ <20220422075239.16437-8-rex-bc.chen@mediatek.com>
+ <20220425053548.72w2jh2g6lpzgz6g@vireshk-i7>
+ <64c690e8edf493ec0a4a14e0fdaad2d8e88e6da7.camel@mediatek.com>
+ <20220425100058.4kbvmpi63ygni6k5@vireshk-i7>
+ <078b1f9b39690da98cbd3c4528ba28374a097083.camel@mediatek.com>
+ <20220427031141.or2owu5wrh2cadfo@vireshk-i7>
+ <346736a339bed576817179ded3795d61f71fa06a.camel@mediatek.com>
+ <20220428114835.3ktimyz2tzzqdcbg@vireshk-i7>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_035445_698211_D38C9AD8 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20220503_043401_504224_A2F0321D 
+X-CRM114-Status: GOOD (  35.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,158 +92,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add pm-domains (mtcmos) data for MediaTek Helio X10 MT6795 SoC.
+On Thu, 2022-04-28 at 17:18 +0530, Viresh Kumar wrote:
+> On 28-04-22, 19:16, Rex-BC Chen wrote:
+> > Yes, the call stack will eventually go to __cpufreq_driver_target.
+> > However, we can observe the mismatch between target_freq and
+> > policy-cur 
+> > with a tiny difference.
+> > e.g.
+> > [ 553.065356] cpufreq: target for CPU 0: 500000 kHz, relation 0,
+> > requested 500000 kHz
+> > [ 553.066366] cpufreq: target_freq/policy->cur: 500000/499999 kHz
+> 
+> So you are trying to set the frequency to 500 MHz now, but policy-
+> >cur says it
+> is 499 MHz.
+> 
+Hello Viresh,
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mt6795-pm-domains.h | 112 +++++++++++++++++++++++
- drivers/soc/mediatek/mtk-pm-domains.c    |   5 +
- 2 files changed, 117 insertions(+)
- create mode 100644 drivers/soc/mediatek/mt6795-pm-domains.h
+Yes.
 
-diff --git a/drivers/soc/mediatek/mt6795-pm-domains.h b/drivers/soc/mediatek/mt6795-pm-domains.h
-new file mode 100644
-index 000000000000..ef07c9dfdd9b
---- /dev/null
-+++ b/drivers/soc/mediatek/mt6795-pm-domains.h
-@@ -0,0 +1,112 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+#ifndef __SOC_MEDIATEK_MT6795_PM_DOMAINS_H
-+#define __SOC_MEDIATEK_MT6795_PM_DOMAINS_H
-+
-+#include "mtk-pm-domains.h"
-+#include <dt-bindings/power/mt6795-power.h>
-+
-+/*
-+ * MT6795 power domain support
-+ */
-+
-+static const struct scpsys_domain_data scpsys_domain_data_mt6795[] = {
-+	[MT6795_POWER_DOMAIN_VDEC] = {
-+		.name = "vdec",
-+		.sta_mask = PWR_STATUS_VDEC,
-+		.ctl_offs = SPM_VDE_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+	},
-+	[MT6795_POWER_DOMAIN_VENC] = {
-+		.name = "venc",
-+		.sta_mask = PWR_STATUS_VENC,
-+		.ctl_offs = SPM_VEN_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+	},
-+	[MT6795_POWER_DOMAIN_ISP] = {
-+		.name = "isp",
-+		.sta_mask = PWR_STATUS_ISP,
-+		.ctl_offs = SPM_ISP_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(13, 12),
-+	},
-+	[MT6795_POWER_DOMAIN_MM] = {
-+		.name = "mm",
-+		.sta_mask = PWR_STATUS_DISP,
-+		.ctl_offs = SPM_DIS_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.bp_infracfg = {
-+			BUS_PROT_UPDATE_TOPAXI(MT8173_TOP_AXI_PROT_EN_MM_M0 |
-+					       MT8173_TOP_AXI_PROT_EN_MM_M1),
-+		},
-+	},
-+	[MT6795_POWER_DOMAIN_MJC] = {
-+		.name = "mjc",
-+		.sta_mask = BIT(20),
-+		.ctl_offs = 0x298,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+	},
-+	[MT6795_POWER_DOMAIN_AUDIO] = {
-+		.name = "audio",
-+		.sta_mask = PWR_STATUS_AUDIO,
-+		.ctl_offs = SPM_AUDIO_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+	},
-+	[MT6795_POWER_DOMAIN_MFG_ASYNC] = {
-+		.name = "mfg_async",
-+		.sta_mask = PWR_STATUS_MFG_ASYNC,
-+		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = 0,
-+	},
-+	[MT6795_POWER_DOMAIN_MFG_2D] = {
-+		.name = "mfg_2d",
-+		.sta_mask = PWR_STATUS_MFG_2D,
-+		.ctl_offs = SPM_MFG_2D_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(13, 12),
-+	},
-+	[MT6795_POWER_DOMAIN_MFG] = {
-+		.name = "mfg",
-+		.sta_mask = PWR_STATUS_MFG,
-+		.ctl_offs = SPM_MFG_PWR_CON,
-+		.pwr_sta_offs = SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = GENMASK(13, 8),
-+		.sram_pdn_ack_bits = GENMASK(21, 16),
-+		.bp_infracfg = {
-+			BUS_PROT_UPDATE_TOPAXI(MT8173_TOP_AXI_PROT_EN_MFG_S |
-+					       MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-+					       MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-+					       MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT),
-+		},
-+	},
-+};
-+
-+static const struct scpsys_soc_data mt6795_scpsys_data = {
-+	.domains_data = scpsys_domain_data_mt6795,
-+	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt6795),
-+};
-+
-+#endif /* __SOC_MEDIATEK_MT6795_PM_DOMAINS_H */
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index 5ced254b082b..4da53488c381 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.c
-+++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -16,6 +16,7 @@
- #include <linux/regulator/consumer.h>
- #include <linux/soc/mediatek/infracfg.h>
- 
-+#include "mt6795-pm-domains.h"
- #include "mt8167-pm-domains.h"
- #include "mt8173-pm-domains.h"
- #include "mt8183-pm-domains.h"
-@@ -555,6 +556,10 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
- }
- 
- static const struct of_device_id scpsys_of_match[] = {
-+	{
-+		.compatible = "mediatek,mt6795-power-controller",
-+		.data = &mt6795_scpsys_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt8167-power-controller",
- 		.data = &mt8167_scpsys_data,
--- 
-2.35.1
+> > We check the assignment of policy->cur could be either from
+> > cpufreq_driver->get_intermediate or from cpufreq_driver->get.
+> 
+> policy->cur is set only at two places, in your case:
+> - CPUFREQ_POSTCHANGE
+> - cpufreq_online()
+> 
+> From what I understand, it is possible that cpufreq_online() is
+> setting your
+> frequency to 499999 (once at boot), but as soon as a frequency change
+> has
+> happened after that, policy->cur should be set to 500 MHz and you
+> should see
+> this problem only once.
+> 
+
+Our observation tells us cpufreq_online is setting only once at boot
+for one cpu cluster.
+But we can see the problem repeatly occurs once cpufreq_get is invoked.
+
+e.g.
+[ 71.154560] cpufreq: Warning: CPU frequency out of sync: cpufreq and
+timing core thinks of 500000, is 499999 kHz
+[ 71.155880] cpufreq: notification 0 of frequency transition to 499999
+kHz
+[ 71.156777] cpufreq: notification 1 of frequency transition to 499999
+kHz
+[ 71.187241] cpufreq: target for CPU 0: 500000 kHz, relation 0,
+requested 500000 kHz
+[ 71.188246] cpufreq: target_freq/policy->cur: 500000/499999 kHz
+
+> From CPUFREQ_POSTCHANGE notifier, we always set policy->cur from the
+> table
+> itself, which should be 500000 MHz.
+> 
+
+Our observation tells me it can be either 499999 kHz or 500000 kHz.
+This can be printed at the last line of CPUFREQ_POSTCHANGE within
+'cpufreq_notify_transition'
+
+> I wonder how you see policy->cur to be 499999 here. Does this happen
+> only once ?
+> Or repeatedly ?
+> 
+
+It repeatly happens.
+
+> > But it is strange to have the frequency value like 499999 kHz.
+> > Is the result of tiny frequency difference expected from your point
+> > of
+> > view?
+> 
+> Clock driver can give this value, that is fine.
+> 
+
+Thanks for your answer.
+
+> > > What do you mean by "voltage pulse" here? What actually happens
+> > > which
+> > > you want to avoid.
+> > > 
+> > 
+> > When cpufreq is fixed to lowest opp, "voltage pulse" is a quick
+> > voltage
+> > rising and falling phenomenon which can be observed if
+> > 'cpufreq_get' is
+> > invoked.
+> 
+> Do check if the call is reaching your driver's ->target_index(), it
+> should be
+> which it should not, ideally.
+> 
+
+Yes, 'cpufreq_get' will eventually go to '->target_index()' because of
+inequality between target_freq and policy->cur.
+
+And we realized that the "voltage pulse" is generated by quick
+switching voltage from 500 MHz to intermediate voltage and back to 500
+MHz in current mediatek-cpufreq.c.
+To fix it, we think two possible ways to approach.
+One is from cpufreq framework side. Is it expected to update the
+cpufreq platform driver repeatly for this case?
+If it is expected, then from platform driver side, mediatek-cpufreq
+should handle a condition to avoid unnecessary intermediate voltage
+switching.
+
+BRs,
+Rex
+
+> > Thank you for sharing the correct information.
+> > Is it possible to get frequency (API) a simple way, like get
+> > current
+> > opp frequency?
+> 
+> Lets dig/debug a bit further and fix this if a real problem exists.
+> 
 
 
 _______________________________________________
