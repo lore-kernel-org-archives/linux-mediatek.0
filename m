@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FD9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 09:53:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFCBEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 09:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qKoF8qtaHmia9zbM80QSUbhsJJXP4w2vC2rxRG6gCoo=; b=1f5wQbjGvwKi1G
-	ldiVibYG4RUTgEX07W6XcTNKif1BtbuGpWsfT1uf1Gv8s0Hgd0TvFegR3Dg/89oL52TP1lPB0ICpt
-	2/OwMUInVWdPKtXBqWF1JhlYXNPtuCGEygG5GtFwm3n4lINeU3dIhCIpxd1AnlEVBYFAkuOve+5Dq
-	Gy1HtzqwJi1fSDuoLWVwhEIAHnpPgMpoQFvYQLZNs5qif0LZyOa5y5MW9cLVL23i7jeq4ygKok1rm
-	/hxXXvK96a8BSdol0TpFyVpx+iLy4crgcLBQnYCzS3ASfaP/4xTRwc3sAeZrzw/A/JGh9FQ/SBMGa
-	gV49ZCyFDFgYEtX/cSRA==;
+	List-Owner; bh=yVdV5XglOMCwKp1rifplL1PegC9Zaz1sBfAfOm9HxOw=; b=FjEKHkobO1F4Qj
+	eCAVGIqbddUHlCviZK5xQgh/wtn4kHYswu3O+Cmmbh7jfNZhm22KiV61DnvpMvNn1R7friJacsgHt
+	b80Gtgzkandk57GyLs9FVWNnhYVIPRlscG5IsCAg9YuE3a3FP1ajnjPEJJLvpheqWo6qF4ggz1Onv
+	3rpk12ACvWNVKvjFgLhutA2WtQgYQwq8o1sK6XLF+acDPAt7l5y2nZ/Il1+Bc5tmWZmRCgyFJrvEa
+	LbjuJyuAIgujfk4gsED8aZjGn+y1h9O9sF4sKSKQrIAbFcOIQQ/n3mLZRtgt8vIvlm0en1QHBKpDR
+	vdOhtkD/GwSXpyhgRmgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlpDn-004y1e-Sh; Tue, 03 May 2022 09:53:31 +0000
+	id 1nlpDp-004y2P-F1; Tue, 03 May 2022 09:53:33 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlp9a-004vz3-PE; Tue, 03 May 2022 09:49:13 +0000
-X-UUID: 189a924c5a994701ae696c465b1e9d67-20220503
+ id 1nlp9d-004vxP-6z; Tue, 03 May 2022 09:49:14 +0000
+X-UUID: b63a04adca064af6b4a2d1574bf60539-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:bdaf30a5-720e-4875-b80a-207dcf276e0f, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:f238a6a7-29f3-45a6-84d4-36048102bac2, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:833b50c7-85ee-4ac1-ac05-bd3f1e72e732,
+X-CID-META: VersionHash:faefae9, CLOUDID:db3b50c7-85ee-4ac1-ac05-bd3f1e72e732,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 189a924c5a994701ae696c465b1e9d67-20220503
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: b63a04adca064af6b4a2d1574bf60539-20220503
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 216979347; Tue, 03 May 2022 02:49:04 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 02:48:49 -0700
+ with ESMTP id 400243425; Tue, 03 May 2022 02:49:06 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 02:39:04 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Tue, 3 May 2022 17:48:47 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 3 May 2022 17:48:47 +0800
-Message-ID: <528f8b2528d694dd4742c2b0b439bb30474c911c.camel@mediatek.com>
-Subject: Re: [PATCH v5 1/4] dt-bindings: display: mediatek: dsi: Convert
- dsi_dtbinding to .yaml
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 17:39:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 3 May 2022 17:39:00 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
- <chunkuang.hu@kernel.org>, <jitao.shi@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <airlied@linux.ie>,
- <krzysztof.kozlowski+dt@linaro.org>, <daniel@ffwll.ch>,
- <xinlei.lee@mediatek.com>, <devicetree@vger.kernel.org>,
- <p.zabel@pengutronix.de>, <linux-mediatek@lists.infradead.org>,
- <dri-devel@lists.freedesktop.org>, <cellopoint.kai@gmail.com>
-Date: Tue, 3 May 2022 17:48:47 +0800
-In-Reply-To: <YmxFRuBWmPaCyw0I@robh.at.kernel.org>
-References: <20220428133753.8348-1-rex-bc.chen@mediatek.com>
- <20220428133753.8348-2-rex-bc.chen@mediatek.com>
- <1651177993.334386.220464.nullmailer@robh.at.kernel.org>
- <9f601c458bd3401b216992e8dd72485a10f34597.camel@mediatek.com>
- <YmxFRuBWmPaCyw0I@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+To: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
+ <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
+CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
+ <chun-jie.chen@mediatek.com>, <wenst@chromium.org>,
+ <runyang.chen@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-clk@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH v6 16/16] arm64: dts: mediatek: Add infra #reset-cells
+ property for MT8195
+Date: Tue, 3 May 2022 17:38:56 +0800
+Message-ID: <20220503093856.22250-17-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
+References: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_024910_853082_474509F8 
-X-CRM114-Status: GOOD (  28.79  )
+X-CRM114-CacheID: sfid-20220503_024913_290625_E8818712 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,175 +85,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-04-29 at 15:06 -0500, Rob Herring wrote:
-> On Fri, Apr 29, 2022 at 09:55:37AM +0800, Rex-BC Chen wrote:
-> > On Thu, 2022-04-28 at 15:33 -0500, Rob Herring wrote:
-> > > On Thu, 28 Apr 2022 21:37:50 +0800, Rex-BC Chen wrote:
-> > > > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > > > 
-> > > > Convert mediatek,dsi.txt to mediatek,dsi.yaml format
-> > > > 
-> > > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > > > ---
-> > > >  .../display/mediatek/mediatek,dsi.txt         |  62 ---------
-> > > >  .../display/mediatek/mediatek,dsi.yaml        | 122
-> > > > ++++++++++++++++++
-> > > >  2 files changed, 122 insertions(+), 62 deletions(-)
-> > > >  delete mode 100644
-> > > > Documentation/devicetree/bindings/display/mediatek/mediatek,dsi
-> > > > .txt
-> > > >  create mode 100644
-> > > > Documentation/devicetree/bindings/display/mediatek/mediatek,dsi
-> > > > .yam
-> > > > l
-> > > > 
-> > > 
-> > > Running 'make dtbs_check' with the schema in this patch gives the
-> > > following warnings. Consider if they are expected or the schema
-> > > is
-> > > incorrect. These may not be new warnings.
-> > > 
-> > > Note that it is not yet a requirement to have 0 warnings for
-> > > dtbs_check.
-> > > This will change in the future.
-> > > 
-> > > Full log is available here: 
-> > > 
-https://urldefense.com/v3/__https://patchwork.ozlabs.org/patch/__;!!CTRNKA9wMg0ARbw!wKbRsUmeUS_4mtOwj1t30buVNEilHYYhsUmEd5MvZ7P9VyDXg6cikERof47mkwETQzFL$
-> > >  
-> > > 
-> > > 
-> > > dsi@1400c000: compatible: ['mediatek,mt7623-dsi',
-> > > 'mediatek,mt2701-
-> > > dsi'] is too long
-> > > 	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
-> > > 	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
-> > > 
-> > > dsi@14014000: #address-cells:0:0: 2 was expected
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-
-> > > sku2.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku1.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku6.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku7.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-
-> > > sku16.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> > > sku0.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> > > sku1.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-> > > 
-> > > dsi@14014000: 'port' is a required property
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-evb.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-
-> > > sku2.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku1.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku6.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku7.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-
-> > > sku16.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> > > sku0.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> > > sku1.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-> > > 
-> > > dsi@14014000: #size-cells:0:0: 2 was expected
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-
-> > > sku2.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku1.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku6.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> > > sku7.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-
-> > > sku16.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> > > sku0.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> > > sku1.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu-sku22.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dtb
-> > > 
-> > > dsi@1401b000: 'port' is a required property
-> > > 	arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb
-> > > 	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dtb
-> > > 
-> > 
-> > Hello Rob,
-> > 
-> > Thanks for your comments.
-> > The purpose of this series is not to fix dts for previous SoCs.
-> > Therefore, if there is a chance, we could send another series to
-> > fix
-> > them.
-> 
-> Conversions often find that the actual dts files vary a bit more
-> than 
-> the binding doc said. You should look at the warnings and decide if
-> they 
-> should be fixed or the schema relaxed. It's a judgement call. I have
-> no 
-> idea if you did that already or not, so I send this out on
-> conversions. 
-> The check runs automatically, but sending it I review briefly.
-> 
-> Rob
+We will use mediatek clock reset as infracfg_ao reset instead of
+ti-syscon. To support this, remove property of ti reset and add
+property of #reset-cells for mediatek clock reset.
 
-Hello Rob,
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
 
-Thanks for your explanation!
-In addition, do you have any suggestion for this conversion?
-
-BRs,
-Rex
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index b57e620c2c72..8e5ac11b19f1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -10,7 +10,6 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+-#include <dt-bindings/reset/ti-syscon.h>
+ 
+ / {
+ 	compatible = "mediatek,mt8195";
+@@ -295,17 +294,7 @@
+ 			compatible = "mediatek,mt8195-infracfg_ao", "syscon", "simple-mfd";
+ 			reg = <0 0x10001000 0 0x1000>;
+ 			#clock-cells = <1>;
+-
+-			infracfg_rst: reset-controller {
+-				compatible = "ti,syscon-reset";
+-				#reset-cells = <1>;
+-				ti,reset-bits = <
+-					0x140 18 0x144 18 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* pcie */
+-					0x120 0  0x124 0  0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* thermal */
+-					0x730 10 0x734 10 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* thermal */
+-					0x150 5  0x154 5  0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* svs gpu */
+-				>;
+-			};
++			#reset-cells = <1>;
+ 		};
+ 
+ 		pericfg: syscon@10003000 {
+-- 
+2.18.0
 
 
 _______________________________________________
