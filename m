@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7CF9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D07C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:40:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tGBKr3V3ueeAakRTHCb670U8gM5j32H6Dbl+XDMntOY=; b=OgZrvRKhp5Pn66
-	MZ+m8lFID8+BfzJS+oxu09raA0SUQe9cBlrgTGTq2PyxMWEcwG4gTnOD6TUyMlEdhj4P9swDS/Q+g
-	FvXjgZFts2PyjNN9saD+D9Cv8Cce7/2v4Itgo455Gs/PsIvqCjG2WoG8LuDVJZ1FrczjgzlTuZJa+
-	To2ilw0+VoxiuiRfhjsK6mdkPaLkqV2hbi7P6hnqAo9SZcAMC6iIB1Z6JULumYo6BGMo8x2EvWtur
-	GFVhNI2GmrkFVIFod9tui8tB13EWThnbjyYJ6l9YEavSbXzM0rK+nbDG/tjgU5enHEaB1wHWVULUs
-	WEEcOkKXGN/5bL7AF8sw==;
+	List-Owner; bh=5HXESV7onEHEGzIWhRWoNIIJUG1S8AlrAKZZIvAnBVM=; b=n1NCkzK9OSxPno
+	Xu5MR7qX/AvIGSUGdCGDeDMZjEtmsscMNKOMW3isF0UTWGz1nan3C4LZGSRcmoaICwtTNornjYnnW
+	GBrLgKkhQY0HQN4AD2uhJNfsn/pC47MuIJnTQaCoRbCPHZjjwYtonEVzrDikv9AhLTubQiaXqxWf+
+	vM+M1QX/rjYRKS6d1SgbE7UaHdMPcIL8uk0EM6OR5T8JX7GyqWqgvLAJ+KBXvve98Qm34ReLM0BFX
+	hH/ViRJymPUbKDXeFW1BAwdgOpjuYtTNOB6ZALVD0VogIKaNoAH09Pe3vOAu76pt+TInkMmZ84t1Y
+	cSze6vuJZdrZ71mLhzmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nln7j-004LzC-2I; Tue, 03 May 2022 07:39:07 +0000
+	id 1nln8x-004Mbk-F4; Tue, 03 May 2022 07:40:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlmuw-004Fwa-2z; Tue, 03 May 2022 07:25:55 +0000
-X-UUID: a522c6a5914c47f2aba1b0eb185e0147-20220503
+ id 1nlmuw-004Fws-Aw; Tue, 03 May 2022 07:25:55 +0000
+X-UUID: b40923f0eb0f4fe28ff762925614f07d-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:370574f2-fab5-4bd6-b7a9-3ceaca4c2fc2, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:e337e234-21a2-45da-9ad9-d5d69239359e, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-12
-X-CID-META: VersionHash:faefae9, CLOUDID:de0c4bc7-85ee-4ac1-ac05-bd3f1e72e732,
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:e00c4bc7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: a522c6a5914c47f2aba1b0eb185e0147-20220503
+X-UUID: b40923f0eb0f4fe28ff762925614f07d-20220503
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1508612221; Tue, 03 May 2022 00:25:45 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ with ESMTP id 1981052432; Tue, 03 May 2022 00:25:45 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 00:15:43 -0700
+ 15.0.1497.2; Tue, 3 May 2022 00:18:28 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 3 May 2022 15:15:41 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 3 May 2022 15:18:26 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 3 May 2022 15:15:40 +0800
+ Transport; Tue, 3 May 2022 15:18:25 +0800
 From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
+To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
 CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
@@ -61,18 +61,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v7 07/36] iommu/mediatek: Add mutex for m4u_group and m4u_dom
- in data
-Date: Tue, 3 May 2022 15:13:58 +0800
-Message-ID: <20220503071427.2285-8-yong.wu@mediatek.com>
+Subject: [PATCH v7 27/36] iommu/mediatek: Remove mtk_iommu.h
+Date: Tue, 3 May 2022 15:14:18 +0800
+Message-ID: <20220503071427.2285-28-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
 References: <20220503071427.2285-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_002554_160092_5291E8BB 
-X-CRM114-Status: GOOD (  19.15  )
+X-CRM114-CacheID: sfid-20220503_002554_445147_BCBB4772 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,95 +88,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a mutex to protect the data in the structure mtk_iommu_data,
-like ->"m4u_group" ->"m4u_dom". For the internal data, we should
-protect it in ourselves driver. Add a mutex for this.
-This could be a fix for the multi-groups support.
+Currently there is a suspend structure in the header file. It's no need
+to keep a header file only for this. Move these into the c file and rm
+this header file.
 
-Fixes: c3045f39244e ("iommu/mediatek: Support for multi domains")
-Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 13 +++++++++++--
- drivers/iommu/mtk_iommu.h |  2 ++
- 2 files changed, 13 insertions(+), 2 deletions(-)
+ drivers/iommu/mtk_iommu.c    | 14 +++++++++++++-
+ drivers/iommu/mtk_iommu.h    | 32 --------------------------------
+ drivers/iommu/mtk_iommu_v1.c | 11 ++++++++---
+ 3 files changed, 21 insertions(+), 36 deletions(-)
+ delete mode 100644 drivers/iommu/mtk_iommu.h
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 81b8db450eac..3413cc98e57e 100644
+index 7383a5df6021..349640bcbd01 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -464,15 +464,16 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 		dom->data = data;
- 	}
+@@ -14,6 +14,7 @@
+ #include <linux/io.h>
+ #include <linux/iommu.h>
+ #include <linux/iopoll.h>
++#include <linux/io-pgtable.h>
+ #include <linux/list.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+@@ -30,7 +31,7 @@
+ #include <asm/barrier.h>
+ #include <soc/mediatek/smi.h>
  
-+	mutex_lock(&data->mutex);
- 	if (!data->m4u_dom) { /* Initialize the M4U HW */
- 		ret = pm_runtime_resume_and_get(m4udev);
- 		if (ret < 0)
--			return ret;
-+			goto err_unlock;
+-#include "mtk_iommu.h"
++#include <dt-bindings/memory/mtk-memory-port.h>
  
- 		ret = mtk_iommu_hw_init(data);
- 		if (ret) {
- 			pm_runtime_put(m4udev);
--			return ret;
-+			goto err_unlock;
- 		}
- 		data->m4u_dom = dom;
- 		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
-@@ -480,9 +481,14 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 
- 		pm_runtime_put(m4udev);
- 	}
-+	mutex_unlock(&data->mutex);
- 
- 	mtk_iommu_config(data, dev, true, domid);
- 	return 0;
-+
-+err_unlock:
-+	mutex_unlock(&data->mutex);
-+	return ret;
- }
- 
- static void mtk_iommu_detach_device(struct iommu_domain *domain,
-@@ -622,6 +628,7 @@ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- 	if (domid < 0)
- 		return ERR_PTR(domid);
- 
-+	mutex_lock(&data->mutex);
- 	group = data->m4u_group[domid];
- 	if (!group) {
- 		group = iommu_group_alloc();
-@@ -630,6 +637,7 @@ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- 	} else {
- 		iommu_group_ref_get(group);
- 	}
-+	mutex_unlock(&data->mutex);
- 	return group;
- }
- 
-@@ -910,6 +918,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	}
- 
- 	platform_set_drvdata(pdev, data);
-+	mutex_init(&data->mutex);
- 
- 	ret = iommu_device_sysfs_add(&data->iommu, dev, NULL,
- 				     "mtk-iommu.%pa", &ioaddr);
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index b742432220c5..5e8da947affc 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -80,6 +80,8 @@ struct mtk_iommu_data {
- 
- 	struct dma_iommu_mapping	*mapping; /* For mtk_iommu_v1.c */
- 
-+	struct mutex			mutex; /* Protect m4u_group/m4u_dom above */
-+
- 	struct list_head		list;
- 	struct mtk_smi_larb_iommu	larb_imu[MTK_LARB_NR_MAX];
+ #define REG_MMU_PT_BASE_ADDR			0x000
+ #define MMU_PT_ADDR_MASK			GENMASK(31, 7)
+@@ -166,6 +167,17 @@ struct mtk_iommu_iova_region {
+ 	unsigned long long	size;
  };
+ 
++struct mtk_iommu_suspend_reg {
++	u32			misc_ctrl;
++	u32			dcm_dis;
++	u32			ctrl_reg;
++	u32			int_control0;
++	u32			int_main_control;
++	u32			ivrp_paddr;
++	u32			vld_pa_rng;
++	u32			wr_len_ctrl;
++};
++
+ struct mtk_iommu_plat_data {
+ 	enum mtk_iommu_plat	m4u_plat;
+ 	u32			flags;
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+deleted file mode 100644
+index 305243e18aa9..000000000000
+--- a/drivers/iommu/mtk_iommu.h
++++ /dev/null
+@@ -1,32 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0-only */
+-/*
+- * Copyright (c) 2015-2016 MediaTek Inc.
+- * Author: Honghui Zhang <honghui.zhang@mediatek.com>
+- */
+-
+-#ifndef _MTK_IOMMU_H_
+-#define _MTK_IOMMU_H_
+-
+-#include <linux/device.h>
+-#include <linux/io.h>
+-#include <linux/io-pgtable.h>
+-#include <linux/iommu.h>
+-#include <linux/spinlock.h>
+-#include <soc/mediatek/smi.h>
+-#include <dt-bindings/memory/mtk-memory-port.h>
+-
+-struct mtk_iommu_suspend_reg {
+-	union {
+-		u32			standard_axi_mode;/* v1 */
+-		u32			misc_ctrl;/* v2 */
+-	};
+-	u32				dcm_dis;
+-	u32				ctrl_reg;
+-	u32				int_control0;
+-	u32				int_main_control;
+-	u32				ivrp_paddr;
+-	u32				vld_pa_rng;
+-	u32				wr_len_ctrl;
+-};
+-
+-#endif
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 6d1c09c91e1f..3d1f0897d1cc 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -7,7 +7,6 @@
+  *
+  * Based on driver/iommu/mtk_iommu.c
+  */
+-#include <linux/memblock.h>
+ #include <linux/bug.h>
+ #include <linux/clk.h>
+ #include <linux/component.h>
+@@ -28,10 +27,9 @@
+ #include <linux/spinlock.h>
+ #include <asm/barrier.h>
+ #include <asm/dma-iommu.h>
+-#include <linux/init.h>
++#include <dt-bindings/memory/mtk-memory-port.h>
+ #include <dt-bindings/memory/mt2701-larb-port.h>
+ #include <soc/mediatek/smi.h>
+-#include "mtk_iommu.h"
+ 
+ #define REG_MMU_PT_BASE_ADDR			0x000
+ 
+@@ -87,6 +85,13 @@
+  */
+ #define M2701_IOMMU_PGT_SIZE			SZ_4M
+ 
++struct mtk_iommu_suspend_reg {
++	u32			standard_axi_mode;
++	u32			dcm_dis;
++	u32			ctrl_reg;
++	u32			int_control0;
++};
++
+ struct mtk_iommu_data {
+ 	void __iomem			*base;
+ 	int				irq;
 -- 
 2.18.0
 
