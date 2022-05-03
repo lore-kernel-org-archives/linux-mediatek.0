@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD7DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:22:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98AA0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:22:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SmmUdFTXHHyjAkHR/UpXFkGxMTYFr2M+M39bnivpxQk=; b=hKl2ks1upmcI0E
-	HOlVVuXEiIGQq6VOmLluuoReeW72E7Ym8k3TFIj2vfxLYVFLNKDAj5ZZw1AJpqm1E3Vit9wmBD4+E
-	9UsTRkiqEW434sEd3aTdYYjquRepbtfVLWp3v6BkV8TPvLMIp2VfDjl/ExOgWV4b6OxFvIqYm3rAU
-	snInTZyfEtY42j5P/grKsIR8CGBP3BipCLW8wDztcCXkeQuNnianUH5oK4UONWgx4GJaPlcU6AHbz
-	etQXmzK4fg9ean8H38JTSwpYmoOMwQEtqMhilVcc0K3AD23itVObAsCcXHuMwNEAhEe9s/veZnBTA
-	9cFoJHQBv2HVzcLy4J8A==;
+	List-Owner; bh=FB6FIBXAyIZGKG2CVquJyGe1q2ATV4oKw9g1N/ZlGAM=; b=KMBW23EY4NEU2r
+	AF/JE4Jr2dOjearjjs56GBd3K40XqU1i5Jv96zD0mWwFDoYVgxfKH8ZWgB3eQR4apLGoVwroKghM1
+	6zZC6ntLeOufGXkZ7bl6LXroBmf2Z3P7OZ+mKIeUc4LrAZs0vcvTTVjEFrcv9aClWSs6H8Ng9oucv
+	XlJF3ta3NxvZVqxf7ZL+B7tqNRy3Op/AVY5m3qphGGBmgA/MrSA4dv39zz+MySO1FrHtMtq2lK8mz
+	GT6TkJiHGWFTc50LEXsSS8buYjzhNVgVcy/y81Sg2+SDsE94H7zvjc6LG+dhDkcmL+n7h47zGsl+v
+	MSxGFuLADPk4XPlhPhmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlmrC-004DpI-PA; Tue, 03 May 2022 07:22:02 +0000
+	id 1nlmrj-004EC6-OI; Tue, 03 May 2022 07:22:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlmnq-004Bkz-S6; Tue, 03 May 2022 07:18:36 +0000
-X-UUID: 2ac2c67211cc4b2597dacd5b892473c9-20220503
+ id 1nlmns-004Bkz-N4; Tue, 03 May 2022 07:18:38 +0000
+X-UUID: 6c18df99357f4636ab80a7a7747098e3-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:92308853-296d-4d3c-bb5f-c43019e4f960, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:80316cdb-d293-4c72-8672-ecec12ba02bd, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:3ed04ac7-85ee-4ac1-ac05-bd3f1e72e732,
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:2cd04ac7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 2ac2c67211cc4b2597dacd5b892473c9-20220503
+X-UUID: 6c18df99357f4636ab80a7a7747098e3-20220503
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 315704545; Tue, 03 May 2022 00:18:29 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1322377511; Tue, 03 May 2022 00:18:29 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 00:17:06 -0700
+ 15.0.1497.2; Tue, 3 May 2022 00:15:36 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 15:17:04 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 15:15:35 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 3 May 2022 15:17:03 +0800
+ Transport; Tue, 3 May 2022 15:15:34 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -60,17 +60,18 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v7 16/36] iommu/mediatek: Add IOMMU_TYPE flag
-Date: Tue, 3 May 2022 15:14:07 +0800
-Message-ID: <20220503071427.2285-17-yong.wu@mediatek.com>
+Subject: [PATCH v7 06/36] iommu/mediatek: Remove clk_disable in
+ mtk_iommu_remove
+Date: Tue, 3 May 2022 15:13:57 +0800
+Message-ID: <20220503071427.2285-7-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
 References: <20220503071427.2285-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_001834_952194_663B6063 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20220503_001836_798051_45C3044E 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +88,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add IOMMU_TYPE definition. In the mt8195, we have another IOMMU_TYPE:
-infra iommu, also there will be another APU_IOMMU, thus, use 2bits for the
-IOMMU_TYPE.
+After the commit b34ea31fe013 ("iommu/mediatek: Always enable the clk on
+resume"), the iommu clock is controlled by the runtime callback.
+thus remove the clk control in the mtk_iommu_remove.
 
+Otherwise, it will warning like:
+
+echo 14018000.iommu > /sys/bus/platform/drivers/mtk-iommu/unbind
+
+[   51.413044] ------------[ cut here ]------------
+[   51.413648] vpp0_smi_iommu already disabled
+[   51.414233] WARNING: CPU: 2 PID: 157 at */v5.15-rc1/kernel/mediatek/
+                          drivers/clk/clk.c:952 clk_core_disable+0xb0/0xb8
+[   51.417174] Hardware name: MT8195V/C(ENG) (DT)
+[   51.418635] pc : clk_core_disable+0xb0/0xb8
+[   51.419177] lr : clk_core_disable+0xb0/0xb8
+...
+[   51.429375] Call trace:
+[   51.429694]  clk_core_disable+0xb0/0xb8
+[   51.430193]  clk_core_disable_lock+0x24/0x40
+[   51.430745]  clk_disable+0x20/0x30
+[   51.431189]  mtk_iommu_remove+0x58/0x118
+[   51.431705]  platform_remove+0x28/0x60
+[   51.432197]  device_release_driver_internal+0x110/0x1f0
+[   51.432873]  device_driver_detach+0x18/0x28
+[   51.433418]  unbind_store+0xd4/0x108
+[   51.433886]  drv_attr_store+0x24/0x38
+[   51.434363]  sysfs_kf_write+0x40/0x58
+[   51.434843]  kernfs_fop_write_iter+0x164/0x1e0
+
+Fixes: b34ea31fe013 ("iommu/mediatek: Always enable the clk on resume")
+Reported-by: Hsin-Yi Wang <hsinyi@chromium.org>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ drivers/iommu/mtk_iommu.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 937478cd8966..b5b95d9a372e 100644
+index e4b4ebbcb73f..81b8db450eac 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -126,9 +126,17 @@
- #define SHARE_PGTABLE			BIT(10) /* 2 HW share pgtable */
- #define DCM_DISABLE			BIT(11)
- #define STD_AXI_MODE			BIT(12) /* For non MM iommu */
-+/* 2 bits: iommu type */
-+#define MTK_IOMMU_TYPE_MM		(0x0 << 13)
-+#define MTK_IOMMU_TYPE_INFRA		(0x1 << 13)
-+#define MTK_IOMMU_TYPE_MASK		(0x3 << 13)
+@@ -957,7 +957,6 @@ static int mtk_iommu_remove(struct platform_device *pdev)
  
--#define MTK_IOMMU_HAS_FLAG(pdata, _x) \
--		((((pdata)->flags) & (_x)) == (_x))
-+#define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
-+				((((pdata)->flags) & (mask)) == (_x))
-+
-+#define MTK_IOMMU_HAS_FLAG(pdata, _x)	MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, _x)
-+#define MTK_IOMMU_IS_TYPE(pdata, _x)	MTK_IOMMU_HAS_FLAG_MASK(pdata, _x,\
-+							MTK_IOMMU_TYPE_MASK)
+ 	list_del(&data->list);
  
- struct mtk_iommu_domain {
- 	struct io_pgtable_cfg		cfg;
+-	clk_disable_unprepare(data->bclk);
+ 	device_link_remove(data->smicomm_dev, &pdev->dev);
+ 	pm_runtime_disable(&pdev->dev);
+ 	devm_free_irq(&pdev->dev, data->irq, data);
 -- 
 2.18.0
 
