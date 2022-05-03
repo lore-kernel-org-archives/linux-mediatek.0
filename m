@@ -4,75 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A917C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 14:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8A4AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 14:19:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W4E6Cki9HfqGSDVbiD52Vp3nRo20dh1MtOK1VNICT48=; b=O28RXRPnprDmvi
-	kCVcV9nj4gR572tR+zP5R/yutEDnF05Z6aglbXXiyo68DMPEmD3oeqYcn+lyE8sKvtuuEYZBM5o6J
-	/s4D24bFKtSab7ixDlp0zLfyoTjWySc22m+9wfvOwHlStBJlNEKbBqlNnjummavKCG7NjTYiWNHus
-	NjiNoYg01japDgIIZYXHATtw19EAztGJmlVQNDUd4CqmezFKWwkD0ZCWrRdlYKo6rPiBCd1xTZFlc
-	R25TQhXO+1a3ZeBmlCKh+y8s+aCfa5thh/l+/uEdau60zi89w6SQd05AYCbCESajZk/xN39Y0MM/l
-	ZcnVfyuvsckxumsP230Q==;
+	List-Owner; bh=kNbkhUUsOg+qafJTriERo8az6VV54s/5PpdQ6KovPMk=; b=Y4GvCqWzqtP3sf
+	11ScHxIT/ejIIpCij91JymzwpVJHSDGs7XrRnAJ46H4RUbUqiuvifBEplqoqZ5T2JQvqoLiFZ+kvV
+	5dG2tU9mSxBQIM4O3djH9di0lnbDTtyrxvVtrPlel0yF/xsEC6I8xTq+XZYLX8qVhfFimiL1/q8qm
+	EcZ0q6IvQGYsEjm7QcdktmGNKbpdftG8HaWY3rpjnQZDpuFn9lMPlUwosKaTf8dMquBAbz7o8mmi0
+	hUxy5FaEOBIrROuOy4981u/YmUkeAWC8k0pjgJlLLArw1jTm76ILwIIz+9h1WfztTud4yy4ONJqI9
+	I4Wxh1D2Zzgv9M10eiVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nltKb-006CVH-K0; Tue, 03 May 2022 14:16:49 +0000
-Received: from mail-oi1-f176.google.com ([209.85.167.176])
+	id 1nltMh-006DVJ-To; Tue, 03 May 2022 14:18:59 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nltKY-006CTH-Ly; Tue, 03 May 2022 14:16:48 +0000
-Received: by mail-oi1-f176.google.com with SMTP id e189so18283570oia.8;
- Tue, 03 May 2022 07:16:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=ovnSXO2ai7NY/FkSGEqe8YZBBuc5/87pe4zQahwdIPY=;
- b=KMPRf8XJoYLeZY+8eTjn6tvJPNgGs7IarUluxSzVuPyqfCPKuHCT3StmcOTR2u+Bp8
- 4fpeZ9tElf7GcOvWC2MTxVQIQU+MVchfU6GyEN0GkSu1ogxOVFRz4IN2zjC3MMCkfY8c
- AkqZVWBZvDLcOg3k1XAM/62S6iid7GA2qVLw6Ii6gmyAf4Lw8qOzveE0Gc/fqoUaXLXh
- zG7B+LcrMs+c0m6UwcuZ2e+/HVt+2A4RqNWEmY0G1QaR1dX50A7xx/erc87dpWeZ8H6C
- 15NyEvwTSqNSFaVJkSJzA6S7Woad3BppuFlmqyzSBvmDsAK02DU7R7WDQ4EtqcNLjc4/
- 9z3Q==
-X-Gm-Message-State: AOAM533GDRmfqBx8hDmAor9SXrRfydQ2HEowxZQ6OwMUPfk7ZBWT2Ick
- UPB7777qHH3jHMY9hhl/WQ==
-X-Google-Smtp-Source: ABdhPJzzZUL47cd3wp/QQrD1PTtAZ/Rx3sEuLc36LxZ460xFml881B1M+erBIePNQvzpcbDCmo/R3w==
-X-Received: by 2002:aca:da83:0:b0:325:432a:b45c with SMTP id
- r125-20020acada83000000b00325432ab45cmr1993812oig.11.1651587404241; 
- Tue, 03 May 2022 07:16:44 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- 13-20020aca0d0d000000b00325d7b6cab8sm3013442oin.16.2022.05.03.07.16.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 May 2022 07:16:43 -0700 (PDT)
-Received: (nullmailer pid 3572067 invoked by uid 1000);
- Tue, 03 May 2022 14:16:42 -0000
-Date: Tue, 3 May 2022 09:16:42 -0500
-From: Rob Herring <robh@kernel.org>
-To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+ id 1nltMP-006DIF-0P; Tue, 03 May 2022 14:18:42 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id D4B381F43BCC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651587519;
+ bh=tdv2h2YB7zXn+XefewHbbfpKCqa1mzg1E2iD1t5Fl0Q=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=W/X2MZsTr5pSE6d87lpmbCbBlJC9AMs64S21CzIf3kd2N/0cR07RkdqQ8c1rOjCr7
+ GWa59KAOqnXJRQOUvDSwkMRr0s9D0TbhacQJjMQZSjy3ZYz9mVtrMgJ3eKGF58mWDS
+ ygmQz1eLM80QUkZxErkCqhtwBMTSROdyODJzCbCvpii961xIzSelnbE1kwTU+JGQGX
+ YPeTiHtz20KhkJLlact+A2AOMpJQzL4IVMq/vP9+7KCyvBwkq5WVeFI8/SoaRndo0k
+ xjnl7B9fvC0D57pMzgYrphqtVwRhtz8RfFmXdXjnCib9wEFKQCU0xzhu62pMJgkVzq
+ Xitg5vdLU9OZw==
+Message-ID: <9a6ad743-b8c8-9ac1-824e-63295d03498a@collabora.com>
+Date: Tue, 3 May 2022 16:18:36 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v2 2/2] dt-bindings: remoteproc: mediatek: Add optional
+ memory-region to mtk,scp
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
 Cc: Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
  Mathieu Poirier <mathieu.poirier@linaro.org>, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org,
- Bjorn Andersson <bjorn.andersson@linaro.org>, linux-remoteproc@vger.kernel.org,
- Tinghan Shen <tinghan.shen@mediatek.com>, kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH v2 2/2] dt-bindings: remoteproc: mediatek: Add optional
- memory-region to mtk,scp
-Message-ID: <YnE5Sq8H6juQHpbM@robh.at.kernel.org>
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-remoteproc@vger.kernel.org, Tinghan Shen <tinghan.shen@mediatek.com>,
+ kernel@collabora.com, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
 References: <20220502192420.2548512-1-nfraprado@collabora.com>
  <20220502192420.2548512-3-nfraprado@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220502192420.2548512-3-nfraprado@collabora.com>
+ <YnE5Sq8H6juQHpbM@robh.at.kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <YnE5Sq8H6juQHpbM@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_071646_754049_B4BB5EA1 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20220503_071841_230132_94027532 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,37 +72,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 02 May 2022 15:24:20 -0400, N=EDcolas F. R. A. Prado wrote:
-> The SCP co-processor can optionally be passed a reserved memory region
-> to use. Add this property in the dt-binding.
-> =
-
-> Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-> =
-
-> ---
-> I left out Angelo's R-b since of the 3 lines in the patch from v1, only
-> 1 is left.
-> =
-
-> Changes in v2:
-> - Dropped type and description since it's a well-known property
-> - Set maxItems to 1
-> =
-
->  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 3 +++
->  1 file changed, 3 insertions(+)
-> =
-
-
-Acked-by: Rob Herring <robh@kernel.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWwgMDMvMDUvMjIgMTY6MTYsIFJvYiBIZXJyaW5nIGhhIHNjcml0dG86Cj4gT24gTW9uLCAwMiBN
+YXkgMjAyMiAxNToyNDoyMCAtMDQwMCwgTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gd3JvdGU6Cj4+
+IFRoZSBTQ1AgY28tcHJvY2Vzc29yIGNhbiBvcHRpb25hbGx5IGJlIHBhc3NlZCBhIHJlc2VydmVk
+IG1lbW9yeSByZWdpb24KPj4gdG8gdXNlLiBBZGQgdGhpcyBwcm9wZXJ0eSBpbiB0aGUgZHQtYmlu
+ZGluZy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFw
+cmFkb0Bjb2xsYWJvcmEuY29tPgo+Pgo+PiAtLS0KPj4gSSBsZWZ0IG91dCBBbmdlbG8ncyBSLWIg
+c2luY2Ugb2YgdGhlIDMgbGluZXMgaW4gdGhlIHBhdGNoIGZyb20gdjEsIG9ubHkKPj4gMSBpcyBs
+ZWZ0Lgo+Pgo+PiBDaGFuZ2VzIGluIHYyOgo+PiAtIERyb3BwZWQgdHlwZSBhbmQgZGVzY3JpcHRp
+b24gc2luY2UgaXQncyBhIHdlbGwta25vd24gcHJvcGVydHkKPj4gLSBTZXQgbWF4SXRlbXMgdG8g
+MQo+Pgo+PiAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9yZW1vdGVwcm9jL210
+ayxzY3AueWFtbCB8IDMgKysrCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKQo+
+Pgo+IAo+IEFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgoKClJldmlld2Vk
+LWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdu
+b0Bjb2xsYWJvcmEuY29tPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1tZWRpYXRlawo=
