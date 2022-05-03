@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B208C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 13:33:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1486C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 13:54:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qHAMgpDPxLm0gJOHLJJX6HZrKEXSCAbkXxbJf2XtM7M=; b=u6fdfQzs1di1b9
-	sqn3AMlJmQkQfruvDgZyfxSexqgj9/VGIO82iA2mTs09kz93wB5MxJOS/zwmu29+KKpSNcYpbLvSI
-	Umffij4ARAQx3+l1lixt2hL2Ym/V0YtChxIHFU/IzEJT7na+Y8Wo3k3uY5U1qMh8HxS7/g5MsG0mo
-	3zMpDjouinqZTBCay3NxA5aAEiHI0p3tz7GUjMuncgFSg1NDvYFLFK1JzNXHRl1FaIYNK8h1Jvm9i
-	jl4mITVa/U2sLXpwU6XM1h/BR5wbvEvIETURwuQTzGbo8jCPmPlJElkPYsa1ZPlun2A5KbRTYwTyv
-	FDUrbeO6Uvjj7+xiPeHg==;
+	List-Owner; bh=cmzRXjsuCt8oyPasgSZ7m9c+xeTrNS0YK3X2Q4TfwdY=; b=fBP1rxn+iVuoGO
+	PZaWmqjMlbcMgfU0RBChPOQLO3D7mzUGhddpXp/ATsh7m1bftE5JnAhY+aNpcuzQKuZiCW3eZHKpc
+	MbJ0qNUxVFlbl+jA1ixwcaET1YBxfWrY0xCDl9B31e1oss90Yg5MurLmYhygJVTwKiHxJzb7u7h25
+	9E2Nf1BXbg6lgQfaoVRMRVY6u/NT0gPjxcjS2FZ7sPtocJgrCnJxax+hdrYKdRUXDBmv/Sm5aNCO/
+	JL6fFNtMwCMdl/9eIdDZX2GKN1WcRVBLQVmJgtZVlEyfG/8zGOWoBJTt1hWbZrdXbY4oOH2+9H5bP
+	c4lpHfbdljTEgg+p4D0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlseE-00632P-KR; Tue, 03 May 2022 13:33:02 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1nlsz5-0067N6-EU; Tue, 03 May 2022 13:54:35 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlse2-0062xV-Si; Tue, 03 May 2022 13:32:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651584770; x=1683120770;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=JlxBmqr/aIao9xFMLDsFN5AI8Tah43lYMJLHQyXhOXQ=;
- b=U+KhQqt5bsuDY0F9PPGvaBhwnf2deVcJXYpUL5Mr3sAmUjXtdEDMl14Z
- ommOWbdUgMyCAQb9yE1xTN8Oa3Np6lTPGuWamfd0BKq7RLmXFEDVwiwpq
- 8/5JlE5Jg3zqlR8om+8A1o8FWBPCursxeEa9cIMBqP0bevrEEnaNpGte8
- 44CRHD+ZQwVcUudo2FzCehiYLfm44V9Ffpaloj/ALhoJgl9CjbEgeuECd
- oB3HEkQXbrKBd7SOgN07zUYFmlgAoVdKLL9GB9IDuXBXhtF/NliVSgT/8
- QQvtHptciBX0C5SVEqDZLs5Wvf92mznMlvCKyj0q7JtKpZRnAL3PmQoW5 w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10335"; a="248021254"
-X-IronPort-AV: E=Sophos;i="5.91,195,1647327600"; d="scan'208";a="248021254"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 May 2022 06:32:46 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,195,1647327600"; d="scan'208";a="599070638"
-Received: from lkp-server01.sh.intel.com (HELO 5056e131ad90) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 03 May 2022 06:32:44 -0700
-Received: from kbuild by 5056e131ad90 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nlsdv-000AUZ-Cs;
- Tue, 03 May 2022 13:32:43 +0000
-Date: Tue, 3 May 2022 21:32:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- sean.wang@mediatek.com
-Cc: kbuild-all@lists.01.org, vkoul@kernel.org, matthias.bgg@gmail.com,
- dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, nfraprado@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 1/2] dmaengine: mediatek-cqdma: Add SoC-specific match data
-Message-ID: <202205032104.sDnKlXcO-lkp@intel.com>
-References: <20220503105328.54755-2-angelogioacchino.delregno@collabora.com>
+ id 1nlsyt-0067KI-RG; Tue, 03 May 2022 13:54:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id CC0FD1F429C0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651586062;
+ bh=60swnXhouY6PcOi5RAAWpQb5+gqiaMIVdjfxOdCzA8w=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=ecw4pkZJpi0xotAJ+xOHs9Rrnrn6BlJAx4V2ioTkFTjfVj+Hj/W5GC39c6T5FfLYb
+ JY7NlM6EkH/GvJyCApvCJxn9fyZ5+P6cUYUo+IzxR1v85HEZGa0MMm6++G+piVdu1X
+ gYFxGBsi582miZ6WMTht2yN9vMYU9LXza2+UBQCvc5pcli05uTrr2HUrfuefRfM3tw
+ 3spbmXGsuF+euVVGx4LOxhG7TDS0HJAQFoC5OGGvEUkHLEOSjXiKixPMxikuP1hgIy
+ Wg/gSOTWngwe7z2he2dBqCXTPdjj/FZbPi0MgKL0r08ygkGPDe6jkveogodbXQAKXA
+ aus7uEcW72Q1Q==
+Message-ID: <df85d52f-569b-69a6-4310-e38631b533f5@collabora.com>
+Date: Tue, 3 May 2022 15:54:19 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220503105328.54755-2-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH] mtd: nand: ecc-mtk: add external ecc engine support
+Content-Language: en-US
+To: Chuanhong Guo <gch981213@gmail.com>, linux-mtd@lists.infradead.org
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+References: <20220430164021.537668-1-gch981213@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220430164021.537668-1-gch981213@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_063250_982375_22A0A7D7 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20220503_065424_224744_7C187521 
+X-CRM114-Status: GOOD (  34.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,114 +69,319 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+Il 30/04/22 18:40, Chuanhong Guo ha scritto:
+> This adds support for using ecc-mtk as an external ECC engine.
+> 
+> The implemented OOB layout follows the convention to put all ECC data
+> at the end of OOB. As a result, the data layout is incompatible with
+> MTK NFI piplined ECC mode.
+> 
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+> ---
+>   drivers/mtd/nand/ecc-mtk.c | 335 ++++++++++++++++++++++++++++++++++++-
+>   1 file changed, 331 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
+> index 9f9b201fe706..998276ada671 100644
+> --- a/drivers/mtd/nand/ecc-mtk.c
+> +++ b/drivers/mtd/nand/ecc-mtk.c
+> @@ -15,6 +15,7 @@
+>   #include <linux/of.h>
+>   #include <linux/of_platform.h>
+>   #include <linux/mutex.h>
+> +#include <linux/mtd/nand.h>
+>   #include <linux/mtd/nand-ecc-mtk.h>
+>   
+>   #define ECC_IDLE_MASK		BIT(0)
+> @@ -26,12 +27,14 @@
+>   #define ECC_ENCCON		(0x00)
+>   #define ECC_ENCCNFG		(0x04)
+>   #define		ECC_MS_SHIFT		(16)
+> +#define		ECC_MAX_MS		(8191)
+>   #define ECC_ENCDIADDR		(0x08)
+>   #define ECC_ENCIDLE		(0x0C)
+>   #define ECC_DECCON		(0x100)
+>   #define ECC_DECCNFG		(0x104)
+>   #define		DEC_EMPTY_EN		BIT(31)
+>   #define		DEC_CNFG_CORRECT	(0x3 << 12)
+> +#define ECC_DECDIADDR		(0x108)
+>   #define ECC_DECIDLE		(0x10C)
+>   #define ECC_DECENUM0		(0x114)
+>   
+> @@ -59,11 +62,23 @@ struct mtk_ecc {
+>   
+>   	struct completion done;
+>   	struct mutex lock;
+> +	struct nand_ecc_engine ecc_eng;
+>   	u32 sectors;
+> +	u32 refcnt;
 
-Thank you for the patch! Perhaps something to improve:
+Please always use signed values for refcounts.
 
-[auto build test WARNING on vkoul-dmaengine/next]
-[also build test WARNING on v5.18-rc5 next-20220503]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+>   
+>   	u8 *eccdata;
+>   };
+>   
+> +struct mtk_ecc_host_ctx {
+> +	struct mtk_ecc_config cfg;
+> +	struct nand_ecc_req_tweak_ctx req_ctx;
+> +	u8 *buf;
+> +	dma_addr_t buf_dma;
+> +	u32 free_len;
+> +	u32 parity_len;
+> +	u32 steps;
+> +};
+> +
+>   /* ecc strength that each IP supports */
+>   static const u8 ecc_strength_mt2701[] = {
+>   	4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36,
+> @@ -75,6 +90,8 @@ static const u8 ecc_strength_mt2712[] = {
+>   	40, 44, 48, 52, 56, 60, 68, 72, 80
+>   };
+>   
+> +static const u8 ecc_strength_mt7621[] = { 4 };
+Please remove this one.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/MediaTek-Helio-X10-MT6795-CQDMA-driver/20220503-185610
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/vkoul/dmaengine.git next
-config: mips-allyesconfig (https://download.01.org/0day-ci/archive/20220503/202205032104.sDnKlXcO-lkp@intel.com/config)
-compiler: mips-linux-gcc (GCC) 11.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/1516c04b4553b4a3037e86dada37c202af23e4b3
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/MediaTek-Helio-X10-MT6795-CQDMA-driver/20220503-185610
-        git checkout 1516c04b4553b4a3037e86dada37c202af23e4b3
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=mips SHELL=/bin/bash drivers/dma/mediatek/
+> +
+>   static const u8 ecc_strength_mt7622[] = {
+>   	4, 6, 8, 10, 12
+>   };
+> @@ -115,6 +132,13 @@ static int mt7622_ecc_regs[] = {
+>   	[ECC_DECIRQ_STA] =      0x144,
+>   };
+>   
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+..snip..
 
-All warnings (new ones prefixed by >>):
+> @@ -239,8 +268,14 @@ EXPORT_SYMBOL(mtk_ecc_get_stats);
+>   
+>   void mtk_ecc_release(struct mtk_ecc *ecc)
+>   {
+> -	clk_disable_unprepare(ecc->clk);
+> -	put_device(ecc->dev);
+> +	mutex_lock(&ecc->lock);
+> +
+> +	ecc->refcnt--;
+> +	if (!ecc->refcnt) {
 
-   drivers/dma/mediatek/mtk-cqdma.c: In function 'mtk_cqdma_start':
-   drivers/dma/mediatek/mtk-cqdma.c:243:42: error: implicit declaration of function 'to_cqma_dev'; did you mean 'to_cqdma_dev'? [-Werror=implicit-function-declaration]
-     243 |         struct mtk_cqdma_device *cqdma = to_cqma_dev(cvd->ch);
-         |                                          ^~~~~~~~~~~
-         |                                          to_cqdma_dev
->> drivers/dma/mediatek/mtk-cqdma.c:243:42: warning: initialization of 'struct mtk_cqdma_device *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-   drivers/dma/mediatek/mtk-cqdma.c:259:30: error: 'struct mtk_cqdma_device' has no member named 'plat'
-     259 |         mtk_dma_set(pc, cqdma->plat->reg_src2, 0);
-         |                              ^~
-   drivers/dma/mediatek/mtk-cqdma.c:267:30: error: 'struct mtk_cqdma_device' has no member named 'plat'
-     267 |         mtk_dma_set(pc, cqdma->plat->reg_dst2, 0);
-         |                              ^~
-   drivers/dma/mediatek/mtk-cqdma.c: At top level:
-   drivers/dma/mediatek/mtk-cqdma.c:754:54: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
-     754 | static const struct mtk_cqdma_plat_data cqdma_mt6765 {
-         |                                                      ^
-   drivers/dma/mediatek/mtk-cqdma.c:760:59: error: 'cqdma_mt6765' undeclared here (not in a function)
-     760 |         { .compatible = "mediatek,mt6765-cqdma", .data = &cqdma_mt6765 },
-         |                                                           ^~~~~~~~~~~~
-   drivers/dma/mediatek/mtk-cqdma.c: In function 'mtk_cqdma_probe':
-   drivers/dma/mediatek/mtk-cqdma.c:777:14: error: 'struct mtk_cqdma_device' has no member named 'plat'
-     777 |         cqdma->plat = device_get_match_data(&pdev->dev);
-         |              ^~
-   drivers/dma/mediatek/mtk-cqdma.c:778:18: error: 'struct mtk_cqdma_device' has no member named 'plat'
-     778 |         if (cqdma->plat)
-         |                  ^~
-   cc1: some warnings being treated as errors
+For the sake of readability, be explicit here.
+
+	if (ecc->refcnt == 0)
+
+...also, for safety (since we're talking about data here) it may be worth to add a
+
+	WARN((ecc->refcnt < 0), "sensible warning message here");
+		
+
+> +		clk_disable_unprepare(ecc->clk);
+> +		put_device(ecc->dev);
+> +	}
+> +	mutex_unlock(&ecc->lock);
+>   }
+>   EXPORT_SYMBOL(mtk_ecc_release);
+>   
 
 
-vim +243 drivers/dma/mediatek/mtk-cqdma.c
+> +
+> +static int mtk_ecc_host_init_ctx(struct nand_device *nand)
+> +{
+> +	struct mtk_ecc *ecc = nand_to_mtk_ecc(nand);
+> +	struct nand_ecc_props *conf = &nand->ecc.ctx.conf;
+> +	struct nand_ecc_props *reqs = &nand->ecc.requirements;
+> +	struct nand_ecc_props *user = &nand->ecc.user_conf;
+> +	struct mtd_info *mtd = nanddev_to_mtd(nand);
+> +	const u8 *ecc_strength = ecc->caps->ecc_strength;
 
-   239	
-   240	static void mtk_cqdma_start(struct mtk_cqdma_pchan *pc,
-   241				    struct mtk_cqdma_vdesc *cvd)
-   242	{
- > 243		struct mtk_cqdma_device *cqdma = to_cqma_dev(cvd->ch);
-   244	
-   245		/* wait for the previous transaction done */
-   246		if (mtk_cqdma_poll_engine_done(pc, true) < 0)
-   247			dev_err(cqdma2dev(to_cqdma_dev(cvd->ch)), "cqdma wait transaction timeout\n");
-   248	
-   249		/* warm reset the dma engine for the new transaction */
-   250		mtk_dma_set(pc, MTK_CQDMA_RESET, MTK_CQDMA_WARM_RST_BIT);
-   251		if (mtk_cqdma_poll_engine_done(pc, true) < 0)
-   252			dev_err(cqdma2dev(to_cqdma_dev(cvd->ch)), "cqdma warm reset timeout\n");
-   253	
-   254		/* setup the source */
-   255		mtk_dma_set(pc, MTK_CQDMA_SRC, cvd->src & MTK_CQDMA_ADDR_LIMIT);
-   256	#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
-   257		mtk_dma_set(pc, cqdma->plat->reg_src2, cvd->src >> MTK_CQDMA_ADDR2_SHFIT);
-   258	#else
-   259		mtk_dma_set(pc, cqdma->plat->reg_src2, 0);
-   260	#endif
-   261	
-   262		/* setup the destination */
-   263		mtk_dma_set(pc, MTK_CQDMA_DST, cvd->dest & MTK_CQDMA_ADDR_LIMIT);
-   264	#ifdef CONFIG_ARCH_DMA_ADDR_T_64BIT
-   265		mtk_dma_set(pc, cqdma->plat->reg_dst2, cvd->dest >> MTK_CQDMA_ADDR2_SHFIT);
-   266	#else
-   267		mtk_dma_set(pc, cqdma->plat->reg_dst2, 0);
-   268	#endif
-   269	
-   270		/* setup the length */
-   271		mtk_dma_set(pc, MTK_CQDMA_LEN1, cvd->len);
-   272	
-   273		/* start dma engine */
-   274		mtk_dma_set(pc, MTK_CQDMA_EN, MTK_CQDMA_EN_BIT);
-   275	}
-   276	
+struct mtk_ecc_host_ctx *ctx; belongs here.
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+> +	int step_size = 0, strength = 0;
+> +	int ret = 0;
+> +	struct mtk_ecc_host_ctx *ctx;
+
+...not here.
+
+> +	int steps, parity_len;
+> +	int i;
+> +	u32 parity_bits;
+> +
+
+..snip..
+
+> +
+> +	dev_info(ecc->dev, "OOB: free: %u bytes, ECC: %u bytes", ctx->free_len,
+> +		 ctx->parity_len * ctx->steps);
+> +	dev_info(ecc->dev, "ECC strength: %d bits per %d bytes\n", strength,
+> +		 step_size);
+
+I'm not sure that this should really be a dev_info(), or at least not both.. as
+I don't think that this is that much informative anyway.
+
+I'd go for dev_dbg() instead.
+
+> +	return 0;
+> +free_buf:
+> +	dma_free_coherent(ecc->dev, step_size + parity_len, ctx->buf,
+> +			  ctx->buf_dma);
+> +free_ctx:
+> +	kfree(ctx);
+> +	return ret;
+> +}
+> +
+
+..snip..
+
+> +static int mtk_ecc_host_prepare_io_req(struct nand_device *nand,
+> +				       struct nand_page_io_req *req)
+> +{
+> +	struct mtk_ecc *ecc = nand_to_mtk_ecc(nand);
+> +	struct mtd_info *mtd = nanddev_to_mtd(nand);
+> +	struct mtk_ecc_host_ctx *ctx = nand_to_ecc_ctx(nand);
+> +	int ret, step;
+> +
+> +	if (req->mode == MTD_OPS_RAW)
+> +		return 0;
+> +
+> +	nand_ecc_tweak_req(&ctx->req_ctx, req);
+> +
+> +	if (req->type == NAND_PAGE_READ)
+> +		return 0;
+> +
+> +	ctx->cfg.op = ECC_ENCODE;
+> +
+> +	for (step = 0; step < ctx->steps; step++) {
+> +		ctx->cfg.addr = dma_map_single(
+> +			ecc->dev, (u8 *)req->databuf.out + step * ctx->cfg.len,
+> +			ctx->cfg.len, DMA_TO_DEVICE);
+> +		ret = dma_mapping_error(ecc->dev, ctx->cfg.addr);
+> +		if (ret) {
+> +			dev_err(ecc->dev, "DMA mapping failed.\n");
+> +			return ret;
+> +		}
+> +		ret = mtk_ecc_enable(ecc, &ctx->cfg);
+> +		if (ret) {
+> +			dma_unmap_single(ecc->dev, ctx->cfg.addr, ctx->cfg.len,
+> +					 DMA_TO_DEVICE);
+> +			return ret;
+> +		}
+> +
+> +		ret = mtk_ecc_wait_done(ecc, ECC_ENCODE);
+> +		if (ret) {
+> +			mtk_ecc_disable(ecc);
+> +			dma_unmap_single(ecc->dev, ctx->cfg.addr, ctx->cfg.len,
+> +					 DMA_TO_DEVICE);
+> +			return ret;
+> +		}
+> +
+> +		mtk_ecc_wait_idle(ecc, ECC_ENCODE);
+> +		dma_unmap_single(ecc->dev, ctx->cfg.addr, ctx->cfg.len,
+> +				 DMA_TO_DEVICE);
+> +		__ioread32_copy(ecc->eccdata,
+> +				ecc->regs + ecc->caps->ecc_regs[ECC_ENCPAR00],
+> +				round_up(ctx->parity_len, 4));
+> +		mtd_ooblayout_set_eccbytes(mtd, ecc->eccdata,
+> +					   (void *)req->oobbuf.out,
+> +					   ctx->parity_len * step,
+> +					   ctx->parity_len);
+> +		mtk_ecc_disable(ecc);
+> +	}
+> +
+> +	return ret;
+
+You have addressed all of the error conditions, so return 0 here.
+
+> +}
+> +
+> +static int mtk_ecc_host_finish_io_req(struct nand_device *nand,
+> +				      struct nand_page_io_req *req)
+> +{
+> +	struct mtk_ecc *ecc = nand_to_mtk_ecc(nand);
+> +	struct mtd_info *mtd = nanddev_to_mtd(nand);
+> +	struct mtk_ecc_host_ctx *ctx = nand_to_ecc_ctx(nand);
+> +	u32 bitflips = 0, failed = 0;
+> +	int ret, step, i;
+
+> +	u32 err;
+
+It would be more appropriate to call this variable "val" or "regval".
+
+Also, please reorder the variables, you can do it by name...
+
+struct mtk_ecc_host_ctx *ctx = nand_to_ecc_ctx(nand);
+struct mtk_ecc *ecc = nand_to_mtk_ecc(nand);
+struct mtd_info *mtd = nanddev_to_mtd(nand);
+u32 bitflips = 0, failed = 0, regval;
+int ret, step, i;
+
+Please also do the same for the other instances of that.
+
+> +
+> +	/* Nothing to do for a raw operation */
+> +	if (req->mode == MTD_OPS_RAW)
+> +		return 0;
+> +
+> +	/* This engine does not provide BBM/free OOB bytes protection */
+> +	if (!req->datalen)
+> +		return 0;
+> +
+> +	/* No more preparation for page write */
+> +	if (req->type == NAND_PAGE_WRITE) {
+> +		nand_ecc_restore_req(&ctx->req_ctx, req);
+> +		return 0;
+> +	}
+> +
+> +	ctx->cfg.op = ECC_DECODE;
+> +	ctx->cfg.addr = ctx->buf_dma;
+> +
+> +	for (step = 0; step < ctx->steps; step++) {
+> +		memcpy(ctx->buf, req->databuf.in + step * ctx->cfg.len,
+> +		       ctx->cfg.len);
+> +		mtd_ooblayout_get_eccbytes(mtd, ctx->buf + ctx->cfg.len,
+> +					   req->oobbuf.in,
+> +					   ctx->parity_len * step,
+> +					   ctx->parity_len);
+> +
+> +		ret = mtk_ecc_enable(ecc, &ctx->cfg);
+> +		if (ret)
+> +			break;
+> +
+> +		ret = mtk_ecc_wait_done(ecc, ECC_DECODE);
+> +		if (ret)
+
+I think that you forgot to revert the enablement here; translation:
+you probably forgot to call mtk_ecc_disable(ecc).
+Or is there any particular and valid reason to not do that here?
+
+If there is, you should add a comment explaining why.
+
+> +			break;
+> +
+> +		mtk_ecc_wait_idle(ecc, ECC_DECODE);
+> +
+> +		memcpy(req->databuf.in + step * ctx->cfg.len, ctx->buf,
+> +		       ctx->cfg.len);
+
+You can avoid breaking this line, as this results in 87 cols, which is fine.
+Same for the other memcpy before that one, and all other instances.
+
+> +		mtd_ooblayout_set_eccbytes(mtd, ctx->buf + ctx->cfg.len,
+> +					   req->oobbuf.in,
+> +					   ctx->parity_len * step,
+> +					   ctx->parity_len);
+> +		err = readl(ecc->regs + ECC_DECENUM0);
+> +		err &= ecc->caps->err_mask;
+> +		if (err == ecc->caps->err_mask) {
+> +			// skip empty page
+
+C-style comments please. /* */
+
+
+Regards,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
