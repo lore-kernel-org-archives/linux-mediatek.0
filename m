@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C34C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 15:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12086C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 15:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/V1b8fe7wLovyyAW2rY5ocDNDEEamWJ3ppL5pPv7l4Q=; b=r7ZjttcXGED+2X
-	4wBNd8L/MXRHco2uLfOJBY4evjGHMYUb37q2/fuyN9tCmE+PMRHrxBt1xDiovV2jdOviCxrpEZABc
-	rzYjHudO8Bzw5t1M+ES2lF/BEaYKrz8VlDqFYj6FBz4ePLhNiLZp730s8X5LHTvveF+H6lg6e4crf
-	cFCKtUi3hPwO+DltFMi34WSK9enxH8Ttae6KeeX+nzJqZ02JqIDPQeESuTJ6zMeSF2NBkHCzjqCYg
-	fPFNIYoAPxabSUHtdG09eyzJhLg9bV66Uk9b1XeJEtwp5xo6qJkIDAUAdAj7+uzaBdtgJizsPQNL8
-	V2TbkSBhJwHILgXA58gQ==;
+	List-Owner; bh=F/mV69hoiA4dMq31JWJSK6GGJXc7mgqL5lEfovf8D14=; b=UaEwlKcp1Ao7PM
+	SKHyIBFVlW4/M65D55EujOLsd10UNRMwqLYFuanD+lFE55R5zsawNmIXbeUA7RdII6nvy2ybbGM8d
+	Xz/At6txwswa8VKhwOWkZwpZg5MfTBTQN973y69k5TogorGYNEXh2mzX+BfPWIoZHZ1m0NMUyONcb
+	vc/MeobIOvittHXKfLZDaHF7ta4hvRzI35WbnBM1RSAgqvEwBH21E6csD1dmpr3DTqv652xUE9OI3
+	bGdd6CDHxHk+JSbvh5XZNQnWAFs0r7X4wDOMUxTjqJSd3S6vWC1EwPpHgYcAHDbS+qOlhWTng1Fgc
+	FaTpwf0Ztl4Ca9AAorwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlu5s-006Oys-67; Tue, 03 May 2022 15:05:40 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1nlufv-006Ylq-Ls; Tue, 03 May 2022 15:42:55 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlu5f-006OwD-9u; Tue, 03 May 2022 15:05:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1651590197;
- bh=OcpafLIt0jbneUh+lh/+Hat5tB4rpXqh9esglhCE1PA=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=J+keRjufRwAUUf2PcbgLNwiW6Tczw23s5ydI8twe+7t3Mv59Ff6aSzKs9u07oxywi
- Wk6ZesMMLwLbGHLKaxKQcEO3xbbnQOkAAWWAqyLeoKc4BgJa2uyq4unTIvuXPVb/gp
- 783cO9vUh9S4925R1yr4Im5fSD4PSBBq1AyF9Tkw=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.79.168] ([80.245.79.168]) by web-mail.gmx.net
- (3c-app-gmx-bap25.server.lan [172.19.172.95]) (via HTTP); Tue, 3 May 2022
- 17:03:17 +0200
+ id 1nlufs-006YhT-GU; Tue, 03 May 2022 15:42:54 +0000
+Received: by mail-wr1-x436.google.com with SMTP id u3so23950320wrg.3;
+ Tue, 03 May 2022 08:42:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=XDylvy7QE0kYD97hsx4drglUv8+IINBzIZbB9OPqGXE=;
+ b=ZJYwAxzSGuKry0eJEW053CQ3oAluqeMsuTU14GRLW87JrLEj87UUdoPmmw7tk1XGoD
+ pCRoW39Vy/AfTPYvcxFrpvSgEn782zg/+C35/mvCs4EueKcWcnFj/gVwUswX5R0UHd6L
+ xCmZN/3n2B993Zbm/EaaIMAhGm9S6L7Itjb5q0SonKluuQDklES1idhgBYDpKFNoC/KI
+ xWqYCeH7QOXogOLeRs31Mz+PvUW534/PjZDSEJRGGz1IvikdIN+VL0C1+M9ZOczUxbkT
+ +lhBMwARAq+YifD+YhSd2ltvLkLpeleVyA71PwXhhrzEAy9Dn6m2YicXWoFGDp4qdbR9
+ uOtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=XDylvy7QE0kYD97hsx4drglUv8+IINBzIZbB9OPqGXE=;
+ b=aXC4CJwGqbc1kiwxzs2pbrx+pg8WFcKXNtzy4rmldp4jO/OfPVPdSuk1FenuDntGh/
+ CZTKCuzSI82imuV3OtqW9dgb6fk/NYZ7pE647r+9Rg/8KiXT8cTGordph1aQ3aZnPES3
+ NJKXk90NQmoYhWVtZbjUhK+uEMxSuvttWcWWlZrAXUzWP5L+Smg2AZEsqzSEAvsqXG9P
+ XNzJnVclXN+Y7J1kcANqPqSmgU3qnFZw3bJ8JM85JFxgjodVD8BCOBriEuFUcBHtstB4
+ 061MnleStxzlm7aUEvFizYnDQQ8xTwP4m8l4qJey5/tDOZVu/bY4XEYIbWyRaPPJnCAh
+ 5Lpw==
+X-Gm-Message-State: AOAM5324gQbrNWQaJyhdxRYWm54a+h2luwX7cMU4IbnHIgkLOp27YK+u
+ YhHcd89jyOpTZNxJwmyzlVM=
+X-Google-Smtp-Source: ABdhPJwLLvLMdvhxJHphyb/0OfT7WhR6rKov3KwUfnfYP9M4/JSvhMG6BrphlKUfnuLfVwFUtofWKQ==
+X-Received: by 2002:a05:6000:381:b0:20c:5e07:f75f with SMTP id
+ u1-20020a056000038100b0020c5e07f75fmr5977802wrf.678.1651592569137; 
+ Tue, 03 May 2022 08:42:49 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+ by smtp.gmail.com with ESMTPSA id
+ s8-20020adfa288000000b0020c6b78eb5asm3971282wra.68.2022.05.03.08.42.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 May 2022 08:42:48 -0700 (PDT)
+Message-ID: <b82985d5-984b-4de7-35f2-57b2085d9dc7@gmail.com>
+Date: Tue, 3 May 2022 17:42:44 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-213ab6b1-ccff-4429-b76c-623c529f6f73-1651590197578@3c-app-gmx-bap25>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Greg Ungerer <gerg@kernel.org>, =?UTF-8?Q?Ren=C3=A9_van_Dorst?=
- <opensource@vdorst.com>, Mauro Carvalho Chehab
- <mchehab+samsung@kernel.org>, Frank Wunderlich <linux@fw-web.de>, Andrew
- Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian
- Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v7 00/36] MT8195 and MT8186 IOMMU SUPPORT
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Aw: Re:  Re: [RFC v1] dt-bindings: net: dsa: convert binding for
- mediatek switches
-Date: Tue, 3 May 2022 17:03:17 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <10770ff5-c9b1-7364-4276-05fa0c393d3b@linaro.org>
-References: <20220502153238.85090-1-linux@fw-web.de>
- <d29637f8-87ff-b5f0-9604-89b51a2ba7c1@linaro.org>
- <trinity-cda3b94f-8556-4b83-bc34-d2c215f93bcd-1651587032669@3c-app-gmx-bap25>
- <10770ff5-c9b1-7364-4276-05fa0c393d3b@linaro.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:412/kqjZIklGXFr8Vb2bmPU4hB0IuTBE1tkzXvY79SrJpQxz416SoaFKK9pphNaVQjsGu
- +NYzxSyHxPy7LiC3qq3uB3vzyIBI/nY/NfEzZyMlGIwwT90CqICKvGnqSx2s6zIXRIiOJ8QI2/e1
- 0AVFBKhNZu99fXfWQjowWBjl5KXHacNsn4d+6nRmUVcNxmQVnhQDg/5UXTyyTknC7Z8NEcXChH58
- z+P1lQU2p3e+hftjX6Fgx1aFIdzbOG8cw/GnDmhl74bqbMwBQIzuxngEO2+m7vQk8+u+o8ZBDfrs
- fY=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:G5iULIMJIC8=:XNcQJK0m65jKrYRh25eIDF
- vOw5QoWubiN+Zt1sI06nKCoJpcZhNCUK481x7/qfN/hGPMMlVdQaT86tx9UfubYPZie4vGvtv
- wnZ5Mms/fLO6JJniRxh2Pu7jpf9eGUNf95XWtaRTX7X4PonWaQO8iHAv01/PtNRpeRO29Dh0L
- vIZ44nsJemkhKfLEjqtKnV4us0ziwZT5QPrXsND3oxu4CFCDG3yphLmvc1RiwaAlDU+oo8tSA
- BJMiZ7q1m84x1JwU50qkDWneljoJNkVWFFLCxalfYvRByUaIU5pEfUUKLgn1XGNic+Gc9Ee+l
- 1Oxa0Nbn6kJtpCAuo92BVrUFJbdOQr++ObLshQMJjmWwvXCMyWwiInfaouS0/eknxAtskf0y8
- 25Bn1anR2lzhSHYyNgyIlSP3meNQGALOoUzI3rs0ytYL+wfsKZefI2uHFuHh0I8D31X+ba2TH
- TADCSQMPc/yOoD+I6Ph2LgtQTbMvzWl3GChFNAAglSzimsUjrnFjljKsEx/kj2IjJH3whV8Xs
- RxSqenpWcSt49bOg6VOYhNWfYmTYGzhTDDFJjgCrPBGrTa8JCEHpnjN6Tyj5RIR4jga/pDbp8
- p8h5dBGmbNZ3xZ3VL02DCQ4e4ayNke/7dBgMeS1fQ+T/w/Fz3ZMNQanfLH5xd5XOiosneuxBC
- BPtn6fm4McxhXhaFmvfLxzZvuB71tW8n507yRlYeqDHUOhMOFstIl0a3X8HQAx24v4FJJ0qMM
- oRM99ONN3VmdVN3VrQmNlF9yL+eBwKeTHHOfw0sDOBC9h3MoMxv5XNfjhJu4N9G0EOXTyP0c2
- /+xbhxqNS5NfALhHs01R7/gvKbOl3G5A7u4HAy1oLEDUYsCwVPt7ZmImJatya7TizhSbZ9UuV
- lzs4ytH07TRehx8rDqiw==
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
+ yen-chang.chen@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
+ chengci.xu@mediatek.com
+References: <20220503071427.2285-1-yong.wu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_080527_666366_784D8DBE 
-X-CRM114-Status: GOOD (  43.81  )
+X-CRM114-CacheID: sfid-20220503_084252_619593_DD00A5AF 
+X-CRM114-Status: GOOD (  32.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,272 +95,158 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-> Gesendet: Dienstag, 03. Mai 2022 um 16:40 Uhr
-> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> Betreff: Re: Aw: Re: [RFC v1] dt-bindings: net: dsa: convert binding for mediatek switches
->
-> On 03/05/2022 16:10, Frank Wunderlich wrote:
-> > Hi,
-> >
-> > thank you for first review.
-> >
-> >> Gesendet: Dienstag, 03. Mai 2022 um 14:05 Uhr
-> >> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> >> Betreff: Re: [RFC v1] dt-bindings: net: dsa: convert binding for mediatek switches
-> >>
-> >> On 02/05/2022 17:32, Frank Wunderlich wrote:
-> >>> From: Frank Wunderlich <frank-w@public-files.de>
-> >>>
-> >>> Convert txt binding to yaml binding for Mediatek switches.
-> >>>
-> >>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> >>> ---
-> >>>  .../devicetree/bindings/net/dsa/mediatek.yaml | 435 ++++++++++++++++++
-> >>>  .../devicetree/bindings/net/dsa/mt7530.txt    | 327 -------------
-> >>>  2 files changed, 435 insertions(+), 327 deletions(-)
-> >>>  create mode 100644 Documentation/devicetree/bindings/net/dsa/mediatek.yaml
-> >>>  delete mode 100644 Documentation/devicetree/bindings/net/dsa/mt7530.txt
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek.yaml
-> >>> new file mode 100644
-> >>> index 000000000000..c1724809d34e
-> >>> --- /dev/null
-> >>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek.yaml
-> >>
-> >> Specific name please, so previous (with vendor prefix) was better:
-> >> mediatek,mt7530.yaml
-> >
-> > ok, named it mediatek only because mt7530 is only one possible chip and driver handles 3 different "variants".
-> >
-> >>> @@ -0,0 +1,435 @@
-> >>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> >>
-> >> You should CC previous contributors and get their acks on this. You
-> >> copied here a lot of description.
-> >
-> > added 3 Persons that made commits to txt before to let them know about this change
-> >
-> > and yes, i tried to define at least the phy-mode requirement as yaml-depency, but failed because i cannot match
-> > compatible in subnode.
->
-> I don't remember such syntax.
->
-> (...)
-
-have not posted this version as it was failing in dtbs_check, this was how i tried:
-
-https://github.com/frank-w/BPI-R2-4.14/blob/8f2033eb6fcae273580263c3f0b31f0d48821740/Documentation/devicetree/bindings/net/dsa/mediatek.yaml#L177
 
 
-> >>> if defined, indicates that either MT7530 is the part
-> >>> +      on multi-chip module belong to MT7623A has or the remotely standalone
-> >>> +      chip as the function MT7623N reference board provided for.
-> >>> +
-> >>> +  reset-gpios:
-> >>> +    description: |
-> >>> +      Should be a gpio specifier for a reset line.
-> >>> +    maxItems: 1
-> >>> +
-> >>> +  reset-names:
-> >>> +    description: |
-> >>> +      Should be set to "mcm".
-> >>> +    const: mcm
-> >>> +
-> >>> +  resets:
-> >>> +    description: |
-> >>> +      Phandle pointing to the system reset controller with
-> >>> +      line index for the ethsys.
-> >>> +    maxItems: 1
-> >>> +
-> >>> +required:
-> >>> +  - compatible
-> >>> +  - reg
-> >>
-> >> What about address/size cells?
-> >
-> > you're right even if they are const to a value they need to be set
-> >
-> >>> +
-> >>> +allOf:
-> >>> +  - $ref: "dsa.yaml#"
-> >>> +  - if:
-> >>> +      required:
-> >>> +        - mediatek,mcm
-> >>
-> >> Original bindings had this reversed.
-> >
-> > i know, but i think it is better readable and i will drop the else-part later.
-> > Driver supports optional reset ("mediatek,mcm" unset and without reset-gpios)
-> > as this is needed if there is a shared reset-line for gmac and switch like on R2 Pro.
-> >
-> > i left this as separate commit to be posted later to have a nearly 1:1 conversion here.
->
-> Ah, I missed that actually your syntax is better. No need to
-> reverse/negate and the changes do not have to be strict 1:1.
+On 03/05/2022 09:13, Yong Wu wrote:
+> This patchset adds MT8195 and MT8186 iommu support.
+> 
+> MT8195 have 3 IOMMU HWs. 2 IOMMU HW is for multimedia, and 1 IOMMU HW is
+> for infra-master, like PCIe/USB.
+> 
+> About the 2 MM IOMMU HW, something like this:
+> 
+>          IOMMU(VDO)          IOMMU(VPP)
+>             |                   |
+>        SMI_COMMON(VDO)      SMI_COMMON(VPP)
+>        ---------------     ----------------
+>        |      |   ...      |      |     ...
+>      larb0 larb2  ...    larb1 larb3    ...
+> 
+> these two MM IOMMU HW share a pgtable.
+> 
+> About the INFRA IOMMU, it don't have larbs, the master connects the iommu
+> directly. It use a independent pgtable.
+> 
+> Also, mt8195 IOMMU bank supports. Normally the IOMMU register size only
+> is 0x1000. In this IOMMU HW, the register size is 5 * 0x1000. each 0x1000
+> is a bank. the banks' register look like this:
+>       ----------------------------------------
+>       |bank0  | bank1 | bank2 | bank3 | bank4|
+>       ----------------------------------------
+>       |global |
+>       |control|         null
+>       |regs   |
+>       -----------------------------------------
+>       |bank   |bank   |bank   |bank   |bank   |
+>       |regs   |regs   |regs   |regs   |regs   |
+>       |       |       |       |       |       |
+>       -----------------------------------------
+> All the banks share some global control registers, and each bank have its
+> special bank registers, like pgtable base register, tlb operation registers,
+> the fault status registers.
+>   
+> In mt8195, we enable this bank feature for infra iommu, We put PCIe in bank0
+> and USB in bank4. they have independent pgtable.
+> 
+> MT8186 is based on MT8195, it just has two patches.
+> 
+> Change note:
+> v7: 1) Update the changes from Matthias. like add a new function for readability.
+>      2) Add mt8186 into this patchset, It may be helpful for maintainer to apply.
 
-yes, but a conversion implies same meaning, so changing things later ;)
+For the whole series:
 
-> >>> +    then:
-> >>> +      required:
-> >>> +        - resets
-> >>> +        - reset-names
-> >>> +    else:
-> >>> +      required:
-> >>> +        - reset-gpios
-> >>> +
-> >>> +  - if:
-> >>> +      required:
-> >>> +        - interrupt-controller
-> >>> +    then:
-> >>> +      required:
-> >>> +        - "#interrupt-cells"
-> >>
-> >> This should come from dt schema already...
-> >
-> > so i should drop (complete block for interrupt controller)?
->
-> The interrupts you need. What I mean, you can skip requirement of cells.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-ok, i drop only the #interrupt-cells
-
-> >>> +        - interrupts
-> >>> +
-> >>> +  - if:
-> >>> +      properties:
-> >>> +        compatible:
-> >>> +          items:
-> >>> +            - const: mediatek,mt7530
-> >>> +    then:
-> >>> +      required:
-> >>> +        - core-supply
-> >>> +        - io-supply
-> >>> +
-> >>> +
-> >>> +patternProperties:
-> >>> +  "^ports$":
-> >>
-> >> It''s not a pattern, so put it under properties, like regular property.
-> >
-> > can i then make the subnodes match? so the full block will move above required between "mediatek,mcm" and "reset-gpios"
->
-> Yes, subnodes stay with patternProperties.
->
-> >
-> >   ports:
-> >     type: object
-> >
-> >     patternProperties:
-> >       "^port@[0-9]+$":
-> >         type: object
-> >         description: Ethernet switch ports
-> >
-> >         properties:
-> >           reg:
-> >             description: |
-> >               Port address described must be 5 or 6 for CPU port and from 0 to 5 for user ports.
-> >
-> >         unevaluatedProperties: false
-> >
-> >         allOf:
-> >           - $ref: dsa-port.yaml#
-> >           - if:
-> > ....
-> >
-> > basicly this "ports"-property should be required too, right?
->
-> Previous binding did not enforce it, I think, but it is reasonable to
-> require ports.
-
-basicly it is required in dsa.yaml, so it will be redundant here
-
-https://elixir.bootlin.com/linux/v5.18-rc5/source/Documentation/devicetree/bindings/net/dsa/dsa.yaml#L55
-
-this defines it as pattern "^(ethernet-)?ports$" and should be processed by dsa-core. so maybe changing it to same pattern instead of moving up as normal property?
-
-> >>> +    type: object
-> >>> +
-> >>> +    patternProperties:
-> >>> +      "^port@[0-9]+$":
-> >>> +        type: object
-> >>> +        description: Ethernet switch ports
-> >>> +
-> >>> +        $ref: dsa-port.yaml#
-> >>
-> >> This should go to allOf below.
-> >
-> > see above
-> >
-> >>> +
-> >>> +        properties:
-> >>> +          reg:
-> >>> +            description: |
-> >>> +              Port address described must be 6 for CPU port and from 0 to 5 for user ports.
-> >>> +
-> >>> +        unevaluatedProperties: false
-> >>> +
-> >>> +        allOf:
-> >>> +          - if:
-> >>> +              properties:
-> >>> +                label:
-> >>> +                  items:
-> >>> +                    - const: cpu
-> >>> +            then:
-> >>> +              required:
-> >>> +                - reg
-> >>> +                - phy-mode
-> >>> +
-> >>> +unevaluatedProperties: false
-> >>> +
-> >>> +examples:
-> >>> +  - |
-> >>> +    mdio0 {
-> >>
-> >> Just mdio
-> >
-> > ok
-> >
-> >>> +        #address-cells = <1>;
-> >>> +        #size-cells = <0>;
-> >>> +        switch@0 {
-> >>> +            compatible = "mediatek,mt7530";
-> >>> +            #address-cells = <1>;
-> >>> +            #size-cells = <0>;
-> >>> +            reg = <0>;
-> >>> +
-> >>> +            core-supply = <&mt6323_vpa_reg>;
-> >>> +            io-supply = <&mt6323_vemc3v3_reg>;
-> >>> +            reset-gpios = <&pio 33 0>;
-> >>
-> >> Use GPIO flag define/constant.
-> >
-> > this example seems to be taken from bpi-r2 (i had taken it from the txt). In dts for this board there are no
-> > constants too.
-> >
-> > i guess
-> > include/dt-bindings/gpio/gpio.h:14:#define GPIO_ACTIVE_HIGH 0
-> >
-> > for 33 there seem no constant..all other references to pio node are with numbers too and there seem no binding
-> > header defining the gpio pins (only functions in include/dt-bindings/pinctrl/mt7623-pinfunc.h)
->
-> ok, then my comment
-
-you mean adding a comment to the example that GPIO-flags/constants should be used instead of magic numbers?
-
-> Best regards,
-> Krzysztof
-
-this is how it looks like without the port-property-change:
-https://github.com/frank-w/BPI-R2-4.14/blob/5.18-mt7531-mainline/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-
-regards Frank
-
+> 
+> v6: https://lore.kernel.org/linux-iommu/20220407075726.17771-1-yong.wu@mediatek.com/
+>      Rebase on v5.18-rc1.
+> 
+> v5: https://lore.kernel.org/linux-iommu/20220217113453.13658-1-yong.wu@mediatek.com
+>     1) Base on next-20220216
+>     2) Remove a patch for kmalloc for protect buffer. keep the kzalloc for it.
+>     3) minor fix from AngeloGioacchino, like rename the error label name
+>     (data_unlock to err_unlock).
+>     Note, keep the TODO for component compare_of[26/34].
+> 
+> v4: https://lore.kernel.org/linux-iommu/20220125085634.17972-1-yong.wu@mediatek.com/
+>     1) Base on v5.16-rc1
+>     2) Base on tlb logic 2 patchset, some patches in v3 has already gone
+>     through that patchset.
+>     3) Due to the unreadable union for v1/v2(comment in 26/33 of v3), I
+>     separate mtk_iommu_data for v1 and v2 totally, then remove mtk_iommu.h.
+>     please see patch[26/35][27/35].
+>     4) add two mutex for the internal data. patch[6/35][7/35].
+>     5) add a new flag PM_CLK_AO.
+> 
+> v3: https://lore.kernel.org/linux-mediatek/20210923115840.17813-1-yong.wu@mediatek.com/
+>      1) base on v5.15-rc1
+>      2) Adjust devlink with smi-common, not use the property(sub-sommon).
+>      3) Adjust tlb_flush_all flow,
+>         a) Fix tlb_flush_all only is supported in bank0.
+>         b) add tlb-flush-all in the resume callback.
+>         c) remove the pm status checking in tlb-flush-all.
+>         The reason are showed in the commit message.
+>      4) Allow IOMMU_DOMAIN_UNMANAGED since PCIe VFIO use that.
+>      5) Fix a clk warning and a null abort when unbind the iommu driver.
+> 
+> v2: https://lore.kernel.org/linux-mediatek/20210813065324.29220-1-yong.wu@mediatek.com/
+>      1) Base on v5.14-rc1.
+>      2) Fix build fail for arm32.
+>      3) Fix dt-binding issue from Rob.
+>      4) Fix the bank issue when tlb flush. v1 always use bank->base.
+>      5) adjust devlink with smi-common since the node may be smi-sub-common.
+>      6) other changes: like reword some commit message(removing many
+>         "This patch..."); seperate serveral patches.
+> 
+> v1: https://lore.kernel.org/linux-mediatek/20210630023504.18177-1-yong.wu@mediatek.com/
+>      Base on v5.13-rc1
+> 
+> Yong Wu (36):
+>    dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
+>    dt-bindings: mediatek: mt8195: Add binding for infra IOMMU
+>    dt-bindings: mediatek: mt8186: Add binding for MM iommu
+>    iommu/mediatek: Fix 2 HW sharing pgtable issue
+>    iommu/mediatek: Add list_del in mtk_iommu_remove
+>    iommu/mediatek: Remove clk_disable in mtk_iommu_remove
+>    iommu/mediatek: Add mutex for m4u_group and m4u_dom in data
+>    iommu/mediatek: Add mutex for data in the mtk_iommu_domain
+>    iommu/mediatek: Adapt sharing and non-sharing pgtable case
+>    iommu/mediatek: Add 12G~16G support for multi domains
+>    iommu/mediatek: Add a flag DCM_DISABLE
+>    iommu/mediatek: Add a flag STD_AXI_MODE
+>    iommu/mediatek: Remove the granule in the tlb flush
+>    iommu/mediatek: Always enable output PA over 32bits in isr
+>    iommu/mediatek: Add SUB_COMMON_3BITS flag
+>    iommu/mediatek: Add IOMMU_TYPE flag
+>    iommu/mediatek: Contain MM IOMMU flow with the MM TYPE
+>    iommu/mediatek: Adjust device link when it is sub-common
+>    iommu/mediatek: Allow IOMMU_DOMAIN_UNMANAGED for PCIe VFIO
+>    iommu/mediatek: Add a PM_CLK_AO flag for infra iommu
+>    iommu/mediatek: Add infra iommu support
+>    iommu/mediatek: Add PCIe support
+>    iommu/mediatek: Add mt8195 support
+>    iommu/mediatek: Only adjust code about register base
+>    iommu/mediatek: Just move code position in hw_init
+>    iommu/mediatek: Separate mtk_iommu_data for v1 and v2
+>    iommu/mediatek: Remove mtk_iommu.h
+>    iommu/mediatek-v1: Just rename mtk_iommu to mtk_iommu_v1
+>    iommu/mediatek: Add mtk_iommu_bank_data structure
+>    iommu/mediatek: Initialise bank HW for each a bank
+>    iommu/mediatek: Change the domid to iova_region_id
+>    iommu/mediatek: Get the proper bankid for multi banks
+>    iommu/mediatek: Initialise/Remove for multi bank dev
+>    iommu/mediatek: Backup/restore regsiters for multi banks
+>    iommu/mediatek: mt8195: Enable multi banks for infra iommu
+>    iommu/mediatek: Add mt8186 iommu support
+> 
+>   .../bindings/iommu/mediatek,iommu.yaml        |  24 +-
+>   drivers/iommu/mtk_iommu.c                     | 974 +++++++++++++-----
+>   drivers/iommu/mtk_iommu.h                     | 101 --
+>   drivers/iommu/mtk_iommu_v1.c                  | 235 +++--
+>   .../dt-bindings/memory/mt8186-memory-port.h   | 217 ++++
+>   .../dt-bindings/memory/mt8195-memory-port.h   | 408 ++++++++
+>   include/dt-bindings/memory/mtk-memory-port.h  |   2 +
+>   7 files changed, 1485 insertions(+), 476 deletions(-)
+>   delete mode 100644 drivers/iommu/mtk_iommu.h
+>   create mode 100644 include/dt-bindings/memory/mt8186-memory-port.h
+>   create mode 100644 include/dt-bindings/memory/mt8195-memory-port.h
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
