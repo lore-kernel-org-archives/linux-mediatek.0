@@ -4,47 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B890C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 09:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 700E2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 09:40:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WeDMWkPDB0mZ6RGAgQ/fA+/G2uLWc3a4w6Vgk9ATEFI=; b=QxCxr/xD5FTMEI
-	ciuehTQk4ObS+wapP96lxqpY/szr0aGCm4eASGxq5UfvveRQffN0I+ZOUd6tM9CLQjAcvH6GFQ6Ap
-	TiAZkJ0ctE919uWnSDNPbF7R4lFU/48YVPgzDyPNTbhoahyZsD59vdOcyegOjxQJdBs9HVFpE7SKQ
-	SGVYaRqB7hZ7tkTuRS3PBxR9ScC9M1I+HrGbaQoqWDPFj1TnV0mn8H3wiXhHmBdwhOzclYvZSd1yA
-	aDV6JgSdaCLXFoD+ak+CCwzH2yPtXy7iR9O//8uScJw4CeDc8ifzdnhMEYRoshOZKdHNY53wKqSDE
-	ah7jX376vOoo0hZ/x9+Q==;
+	List-Owner; bh=izEtM/VeIRjnUxXlEZJR6OwPixA6jML1xGSpfHWwtSw=; b=mkVKmVXY+TiULP
+	586NADPAdwP5VHIsnOuvY8NCvdKscNlxl+BNR91Qf+rG4ivqrpT90QbBOWcFNjCJbmTI5yRxrxIvE
+	MhZ8nR50kGTUafc7hflpmr9F7APfBzErqxYM9cX7KHRg6Bzw9z2u5hU4xj+NkR1F5CzZ8n/q22nkC
+	8u2QqWJsZ//wwKqJhHGsLqpF+dHXtVIQS0tzK5ALG7IAqHzP1ZkewoCqa6MisJD4WGAeWF4Enr8XE
+	Mu57hKQrP2QvlLzD4F/jkiReii4N8Lnv2AQxhVRey7d/pZm5EdgHnk/AZ8eCKOvNpF9FzLtRhi6Ni
+	HA+K3HUdSio+SiqeDJCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlp1L-004rAQ-3r; Tue, 03 May 2022 09:40:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nlp1M-004rAs-6A; Tue, 03 May 2022 09:40:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlozu-004qGM-3K; Tue, 03 May 2022 09:39:11 +0000
-X-UUID: 2df71b7013ed4d85959017ccaa1bf472-20220503
+ id 1nlozt-004qGx-4Z; Tue, 03 May 2022 09:39:11 +0000
+X-UUID: 76cabfed17974838a93999ce17c39642-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:77418e4c-4e4a-4e57-b1a8-bdbfc509efd4, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:2ca7f184-c8da-48ef-acb6-e140aa42990a, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:7be5872f-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:b7e4872f-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 2df71b7013ed4d85959017ccaa1bf472-20220503
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+X-UUID: 76cabfed17974838a93999ce17c39642-20220503
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1479152666; Tue, 03 May 2022 02:39:03 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1497178714; Tue, 03 May 2022 02:39:02 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 02:39:02 -0700
+ 15.0.1497.2; Tue, 3 May 2022 02:39:01 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Tue, 3 May 2022 17:38:59 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 17:38:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.3 via Frontend Transport; Tue, 3 May 2022 17:38:59 +0800
@@ -58,18 +57,19 @@ CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH v6 11/16] clk: mediatek: reset: Add reset support for simple
- probe
-Date: Tue, 3 May 2022 17:38:51 +0800
-Message-ID: <20220503093856.22250-12-rex-bc.chen@mediatek.com>
+Subject: [PATCH v6 04/16] clk: mediatek: reset: Extract common drivers to
+ update function
+Date: Tue, 3 May 2022 17:38:44 +0800
+Message-ID: <20220503093856.22250-5-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
 References: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_023910_184478_5537DF22 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20220503_023909_242704_E6FFC133 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,46 +86,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Add a pointer of "mtk_clk_rst_desc" to "mtk_clk_desc".
-- Add register reset with device function in mtk_clk_simple_probe().
+To make drivers more clear and readable, we extract common code
+within assert and deassert to mtk_reset_update_set_clr() and
+mtk_reset_update().
 
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mtk.c | 7 +++++++
- drivers/clk/mediatek/clk-mtk.h | 1 +
- 2 files changed, 8 insertions(+)
+ drivers/clk/mediatek/reset.c | 38 +++++++++++++++++++++---------------
+ 1 file changed, 22 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index b4063261cf56..2c72e5839d50 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -453,6 +453,13 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index 5cbbcc22a4fc..22fa9f09752c 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -12,24 +12,27 @@
  
- 	platform_set_drvdata(pdev, clk_data);
+ #include "reset.h"
  
-+	if (mcd->rst_desc) {
-+		r = mtk_register_reset_controller_with_dev(&pdev->dev,
-+							   mcd->rst_desc);
-+		if (r)
-+			goto unregister_clks;
-+	}
+-static int mtk_reset_assert(struct reset_controller_dev *rcdev,
+-			    unsigned long id)
++static int mtk_reset_update(struct reset_controller_dev *rcdev,
++			    unsigned long id, bool deassert)
+ {
+ 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
++	unsigned int val = deassert ? 0 : ~0;
+ 
+ 	return regmap_update_bits(data->regmap,
+ 				  data->regofs + ((id / 32) << 2),
+-				  BIT(id % 32), ~0);
++				  BIT(id % 32), val);
++}
 +
- 	return r;
++static int mtk_reset_assert(struct reset_controller_dev *rcdev,
++			    unsigned long id)
++{
++	return mtk_reset_update(rcdev, id, false);
+ }
  
- unregister_clks:
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index a6d0f24c62fa..2c7800bcb1a2 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -195,6 +195,7 @@ struct clk *mtk_clk_register_ref2usb_tx(const char *name,
- struct mtk_clk_desc {
- 	const struct mtk_gate *clks;
- 	size_t num_clks;
-+	const struct mtk_clk_rst_desc *rst_desc;
- };
+ static int mtk_reset_deassert(struct reset_controller_dev *rcdev,
+ 			      unsigned long id)
+ {
+-	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
+-
+-	return regmap_update_bits(data->regmap,
+-				  data->regofs + ((id / 32) << 2),
+-				  BIT(id % 32), 0);
++	return mtk_reset_update(rcdev, id, true);
+ }
  
- int mtk_clk_simple_probe(struct platform_device *pdev);
+ static int mtk_reset(struct reset_controller_dev *rcdev, unsigned long id)
+@@ -43,24 +46,27 @@ static int mtk_reset(struct reset_controller_dev *rcdev, unsigned long id)
+ 	return mtk_reset_deassert(rcdev, id);
+ }
+ 
+-static int mtk_reset_assert_set_clr(struct reset_controller_dev *rcdev,
+-				    unsigned long id)
++static int mtk_reset_update_set_clr(struct reset_controller_dev *rcdev,
++				    unsigned long id, bool deassert)
+ {
+ 	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
++	unsigned int deassert_ofs = deassert ? 0x4 : 0;
+ 
+ 	return regmap_write(data->regmap,
+-			    data->regofs + ((id / 32) << 4),
++			    data->regofs + ((id / 32) << 4) + deassert_ofs,
+ 			    BIT(id % 32));
+ }
+ 
++static int mtk_reset_assert_set_clr(struct reset_controller_dev *rcdev,
++				    unsigned long id)
++{
++	return mtk_reset_update_set_clr(rcdev, id, false);
++}
++
+ static int mtk_reset_deassert_set_clr(struct reset_controller_dev *rcdev,
+ 				      unsigned long id)
+ {
+-	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
+-
+-	return regmap_write(data->regmap,
+-			    data->regofs + ((id / 32) << 4) + 0x4,
+-			    BIT(id % 32));
++	return mtk_reset_update_set_clr(rcdev, id, true);
+ }
+ 
+ static int mtk_reset_set_clr(struct reset_controller_dev *rcdev,
 -- 
 2.18.0
 
