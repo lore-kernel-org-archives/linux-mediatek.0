@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58625C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 17:19:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98848C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 17:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0NAd5Gm2i7z9F24I5grKJDv4Ygxj3zz3ITLKIsKxczg=; b=cf98hUG5dk7oM0
-	IQfWgaeIFJk0bUtTaQX4/PbEAaPg3QEcvweW5OiJT5SwgJ78gZTeElWPduEm+JkA2pFuqW3NzzIzy
-	P3OsI5MScy7Mxzeb8LIJVmFAZujhB/uh195Oa3TfMA+tqbbyQva8wEkNBaWKmPcRwVvtAH1b+7cCN
-	0yDAaAQmY6QKOyqxRNTQ65XRpEFgz5dBly07jJzzmrBrySLan3cc5XahKEXJgEuFIHJE9hXzGZQI4
-	7CkdB1sRYKydUENQMvsviYRNG5cQBBcGnGSe2NGFCB9imsQXGYv0jXKmGlNIBZpVHn0yKV+bUh/RU
-	9HXSaoew07YV05bZFubQ==;
+	List-Owner; bh=pgOtzCMYoc/KcMRJsNMlpxTDw6ZAtfQtHYgkWlAFvbs=; b=IvPL054NMS9edV
+	RtaOw/+DH8+hSljo9vzCm2gCsRgOQi1uIz0R4EoHUCNjgewO2hXEqRwwtkkItqgHsglHsyJiCXsDa
+	Hs7fIjfaj7D/teTQ6XIZuj9Tw4Dq9/dvlLi0Ofglb2Sfj+QkIqSXGJpDtO+Y2w0QJoMZkAmAg+Fkc
+	B46R3MwHAiyjsGLPFnuUvUKtoYyqzZmcG/mK+r9mZIFUsHVml4d+W157Ft6WTCfurEURTBXzinhkM
+	0iVZc3XY+tE9lZgYhaTr+U5GqZVNq4RUeEGsuS+pSxZbM6JPASTHVN/Y96ts6Fz8h0l6S79Rxi1Xn
+	QEaAIl7G7O8e23/4g9TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlwB7-006zBK-OP; Tue, 03 May 2022 17:19:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nlwcN-0074sI-Tj; Tue, 03 May 2022 17:47:23 +0000
+Received: from mail-ot1-f44.google.com ([209.85.210.44])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlwAv-006z2t-A4; Tue, 03 May 2022 17:19:04 +0000
-X-UUID: f3fea122351f4665b334d298a8ca71ea-20220503
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:fd6efacf-64f0-4e58-8808-c09b9643b18d, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:211d912f-6199-437e-8ab4-9920b4bc5b76,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: f3fea122351f4665b334d298a8ca71ea-20220503
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 661274859; Tue, 03 May 2022 10:18:51 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 10:18:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Wed, 4 May 2022 01:18:48 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 4 May 2022 01:18:48 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <yf.wang@mediatek.com>
-CC: <Libo.Kang@mediatek.com>, <Yong.Wu@mediatek.com>,
- <iommu@lists.linux-foundation.org>, <isaacm@codeaurora.org>,
- <joro@8bytes.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <ning.li@mediatek.com>,
- <quic_c_gdjako@quicinc.com>, <robin.murphy@arm.com>,
- <stable@vger.kernel.org>, <sven@svenpeter.dev>, <will@kernel.org>,
- <wsd_upstream@mediatek.com>
-Subject: Re: [PATCH 1/2] iommu/io-pgtable-arm-v7s: Add a quirk to support TTBR
- up to 35bit for MediaTek
-Date: Wed, 4 May 2022 01:18:48 +0800
-Message-ID: <20220503171848.24992-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220429143411.7640-2-yf.wang@mediatek.com>
-References: <20220429143411.7640-2-yf.wang@mediatek.com>
+ id 1nlwcB-0074nj-Nh; Tue, 03 May 2022 17:47:13 +0000
+Received: by mail-ot1-f44.google.com with SMTP id
+ i25-20020a9d6259000000b00605df9afea7so11779360otk.1; 
+ Tue, 03 May 2022 10:47:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=aO1OGtoH2etVzYDvjSj5yfVREBvoZxIuagbUCkaDNyQ=;
+ b=0A+ZnLcyxB2/m32lU3BqG415evRt4rvdnr2yBxVZuM0qFQ7o9GHPJE8JXv0/kt+wKl
+ CnVWWJe+LB3K9bkj40yWGEuCa4ZTkqhOwDdSEByMOmnmi1baTQnVQdxTenvKso4sa4PR
+ 96YoToJbXn+q51dQEkzFc/kZ/OVUf9EVjiuBUTeeS5BSpgMMTYYSRMjqbuR/ZxTML+18
+ SJhrtGvja1ZGDKnm9+eDa1CgslcGz2YDFFc0PtdV+AQLvpRpXlVnFWumRrgsxHA1LpJx
+ sA6eZPrT7ywZKSN5F3B1XBKxu4RWqTnp35m5G/jijBB1NQoDGqM1j30FtZNk4DKg8/MV
+ l9cQ==
+X-Gm-Message-State: AOAM5323I6xkGwn2XaN7HyKo2YrZL47oCLQpV/lCMWmC9ZIW3Tgksc3b
+ E/DsF36TXj4V7C1150SuVw==
+X-Google-Smtp-Source: ABdhPJze3Fkqbmp2HHrsmVNQEF4ygGLxm/5otqwB5/dtD+F7rMTjhoKQLjNh01bIzTUwlBzUvEcyZg==
+X-Received: by 2002:a05:6830:14d4:b0:606:cc5:32cd with SMTP id
+ t20-20020a05683014d400b006060cc532cdmr5173680otq.359.1651600030474; 
+ Tue, 03 May 2022 10:47:10 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ x10-20020a056830408a00b006063f1f05dfsm395787ott.18.2022.05.03.10.47.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 May 2022 10:47:09 -0700 (PDT)
+Received: (nullmailer pid 3943569 invoked by uid 1000);
+ Tue, 03 May 2022 17:47:08 -0000
+Date: Tue, 3 May 2022 12:47:08 -0500
+From: Rob Herring <robh@kernel.org>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Alexandre Courbot <acourbot@chromium.org>, tfiga@chromium.org,
+ drinkcat@chromium.org, pihsun@chromium.org, hsinyi@google.com, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, 
+ allen-kh.cheng@mediatek.com, xiandong.wang@mediatek.com, 
+ randy.wu@mediatek.com, jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com, 
+ river.cheng@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v14 1/3] dt-binding: mediatek: add bindings for MediaTek
+ MDP3 components
+Message-ID: <YnFqnEI16B+xrxdQ@robh.at.kernel.org>
+References: <20220427070514.10355-1-moudy.ho@mediatek.com>
+ <20220427070514.10355-2-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220427070514.10355-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_101901_398637_07E255C1 
-X-CRM114-Status: GOOD (  23.80  )
+X-CRM114-CacheID: sfid-20220503_104711_814835_1A74D962 
+X-CRM114-Status: GOOD (  22.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,132 +99,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi YF,
-
-> The calling to kmem_cache_alloc for level 2 page table allocation may
-> run in atomic context, and it fails sometimes when DMA32 zone runs out
-> of memory.
+On Wed, Apr 27, 2022 at 03:05:12PM +0800, Moudy Ho wrote:
+> This patch adds DT binding documents for Media Data Path 3 (MDP3)
+> a unit in multimedia system combined with several components and
+> used for scaling and color format convert.
 > 
-> Since Mediatek IOMMU hardware support at most 35bit PA in page table,
-
-s/Mediatek/MediaTek/
-s/support/supports/
-
-> so add a quirk to allow the PA of level 2 pgtable support bit35.
-
-35bits PA, right?
-
->
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  .../bindings/media/mediatek,mdp3-rdma.yaml    | 82 +++++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-rsz.yaml     | 61 ++++++++++++++
+>  .../bindings/media/mediatek,mdp3-wrot.yaml    | 66 +++++++++++++++
+>  .../bindings/soc/mediatek/mediatek,ccorr.yaml | 54 ++++++++++++
+>  .../bindings/soc/mediatek/mediatek,wdma.yaml  | 67 +++++++++++++++
+>  5 files changed, 330 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 > 
-
-...snip...
-
->  
->  	phys = virt_to_phys(table);
-> -	if (phys != (arm_v7s_iopte)phys) {
-> +	if (phys != (arm_v7s_iopte)phys &&
-> +	    !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)) {
-
-I have one question while reading this.
-
-If IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT is set, it means that the phys can be up to 35 bits.
-In aarch64, kmalloc() could return up to 52 bits PA (e.g., ARM64_PA_BITS_52=y)
-
-How do we guarantee that phys is safe (<= 35 bits) in this case?
-For example:
-When IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT is set, the platform guarantees its PAs are at most
-35 bits?
-
-
-Thanks,
-Miles
->  		/* Doesn't fit in PTE */
->  		dev_err(dev, "Page table does not fit in PTE: %pa", &phys);
->  		goto out_free;
-> @@ -457,9 +464,14 @@ static arm_v7s_iopte arm_v7s_install_table(arm_v7s_iopte *table,
->  					   arm_v7s_iopte curr,
->  					   struct io_pgtable_cfg *cfg)
->  {
-> +	phys_addr_t phys = virt_to_phys(table);
->  	arm_v7s_iopte old, new;
->  
-> -	new = virt_to_phys(table) | ARM_V7S_PTE_TYPE_TABLE;
-> +	new = phys | ARM_V7S_PTE_TYPE_TABLE;
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> new file mode 100644
+> index 000000000000..ce24eda14cb6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> @@ -0,0 +1,82 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-> +		new = to_iopte_mtk(phys, new, cfg);
+> +title: Mediatek Read Direct Memory Access
 > +
->  	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_NS)
->  		new |= ARM_V7S_ATTR_NS_TABLE;
->  
-> @@ -778,6 +790,7 @@ static phys_addr_t arm_v7s_iova_to_phys(struct io_pgtable_ops *ops,
->  static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
->  						void *cookie)
->  {
-> +	slab_flags_t slab_flag = ARM_V7S_TABLE_SLAB_FLAGS;
->  	struct arm_v7s_io_pgtable *data;
->  
->  	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
-> @@ -788,7 +801,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
->  
->  	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
->  			    IO_PGTABLE_QUIRK_NO_PERMS |
-> -			    IO_PGTABLE_QUIRK_ARM_MTK_EXT))
-> +			    IO_PGTABLE_QUIRK_ARM_MTK_EXT |
-> +			    IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT))
->  		return NULL;
->  
->  	/* If ARM_MTK_4GB is enabled, the NO_PERMS is also expected. */
-> @@ -801,10 +815,12 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
->  		return NULL;
->  
->  	spin_lock_init(&data->split_lock);
-> +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-> +		slab_flag = 0;
->  	data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
->  					    ARM_V7S_TABLE_SIZE(2, cfg),
->  					    ARM_V7S_TABLE_SIZE(2, cfg),
-> -					    ARM_V7S_TABLE_SLAB_FLAGS, NULL);
-> +					    slab_flag, NULL);
->  	if (!data->l2_tables)
->  		goto out_free_data;
->  
-> diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
-> index 86af6f0a00a2..7ed15ad4710c 100644
-> --- a/include/linux/io-pgtable.h
-> +++ b/include/linux/io-pgtable.h
-> @@ -74,17 +74,22 @@ struct io_pgtable_cfg {
->  	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
->  	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
->  	 *
-> +	 * IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT: (ARM v7s format) MediaTek IOMMUs
-> +	 *	extend the translation table support up to 35 bits PA, the
-> +	 *	encoding format is same with IO_PGTABLE_QUIRK_ARM_MTK_EXT.
-> +	 *
->  	 * IO_PGTABLE_QUIRK_ARM_TTBR1: (ARM LPAE format) Configure the table
->  	 *	for use in the upper half of a split address space.
->  	 *
->  	 * IO_PGTABLE_QUIRK_ARM_OUTER_WBWA: Override the outer-cacheability
->  	 *	attributes set in the TCR for a non-coherent page-table walker.
->  	 */
-> -	#define IO_PGTABLE_QUIRK_ARM_NS		BIT(0)
-> -	#define IO_PGTABLE_QUIRK_NO_PERMS	BIT(1)
-> -	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT	BIT(3)
-> -	#define IO_PGTABLE_QUIRK_ARM_TTBR1	BIT(5)
-> -	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA	BIT(6)
-> +	#define IO_PGTABLE_QUIRK_ARM_NS			BIT(0)
-> +	#define IO_PGTABLE_QUIRK_NO_PERMS		BIT(1)
-> +	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT		BIT(3)
-> +	#define IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT	BIT(4)
-> +	#define IO_PGTABLE_QUIRK_ARM_TTBR1		BIT(5)
-> +	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA		BIT(6)
->  	unsigned long			quirks;
->  	unsigned long			pgsize_bitmap;
->  	unsigned int			ias;
-> -- 
-> 2.18.0
-> 
-> 
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> +
+> +description: |
+> +  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
+> +  It contains one line buffer to store the sufficient pixel data, and
+> +  must be siblings to the central MMSYS_CONFIG node.
+> +  For a description of the MMSYS_CONFIG binding, see
+> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> +  for details.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt8183-mdp3-rdma
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  mediatek,gce-client-reg:
+> +    $ref: '/schemas/types.yaml#/definitions/phandle-array'
+> +    maxItems: 1
+
+Like your other patches this needs 'items' describing each cell.
+
+> +    description: |
+> +      The register of client driver can be configured by gce with
+> +      4 arguments defined in this property, such as phandle of gce, subsys id,
+> +      register offset and size. Each GCE subsys id is mapping to a client
+> +      defined in the header include/dt-bindings/gce/<chip>-gce.h.
+
+Other than other cases of this property, the rest looks fine.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
