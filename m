@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDC4DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 21:49:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6202AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 22:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X2IJFcfDYAL020Yir3w61NI84mSlubLLLiZeZG0taV0=; b=pih6wJKJVNl7oY
-	QkwPJhDPEv9wpbr5VHHt4SUTL7Chp+RyLTmDN36u6pATo/iwa+e1672RgQP2Uh+kD4tDWP3GkxQhz
-	6FKeZ/Nng9rNsjsDR30Bs6wSRIcxqjYhjVfQCmJ2SDAUyvq2oRWAieIbIbuiXF5RFWIZAi7kRYX4p
-	XmwrzFx4dY7T4PJNVGM2FIeVWQKYsHA1Ebsf+YcpuayInG1foSPc0dn8RxVFvpELPwOfU9UyTG2RY
-	mPUek7S1QkLPlKiY+6YOR5gClxt+MAhdDKdaK2/3CjYURrnWNKzGDKCBtek6wssVJCjd3fOXDczF4
-	zqIVvS2a7gjqqLTuD74Q==;
+	List-Owner; bh=Q2BYgrDUs4uLqE+xzyhlgzLyrxWoVpnDZrL3vS/MAYA=; b=x3XTk0tBaTUbt9
+	cZHrZQtYO2kf7sbNOCyUQjl8itqUNiek9xz1TzRHiy1npmnEuNcQor8eFPo6f/dNMFaui/GlHK8DZ
+	fmS3SSzZWWh87ZlPnpl1QjuGzVvCzshqg8moASwhfHoL86Ghscr86qHGrQ37P9XbR+M2Clzq2Fn/u
+	5uSC1DRCXZVhv1KNIe3DZwpUaJlgxqpifKX8edLdXVJYY7oxQW16wGUcGq+ki9EEvdzCBk8RdUyf5
+	PZAwCBvHV589rfzVRA38cuTir7t6t1FQ1H4Wv143DdQwRwJpHBhFeleEv6uzQ2yauvF4om49hHZ8J
+	+QJc09hxEPDv7xnSmyCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nm0OH-007rYX-Vi; Tue, 03 May 2022 21:49:06 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1nm0uP-007wcS-DQ; Tue, 03 May 2022 22:22:17 +0000
+Received: from mail-oi1-f181.google.com ([209.85.167.181])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nm0OE-007rVJ-1o; Tue, 03 May 2022 21:49:05 +0000
-Received: by mail-oi1-f174.google.com with SMTP id l16so12318539oil.6;
- Tue, 03 May 2022 14:48:59 -0700 (PDT)
+ id 1nm0u5-007wUq-6d; Tue, 03 May 2022 22:21:58 +0000
+Received: by mail-oi1-f181.google.com with SMTP id l16so12390346oil.6;
+ Tue, 03 May 2022 15:21:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=PMK6sujVThrZqgCpTOHtQZPh22N0TVlCzqEoQCk6YC0=;
- b=wus4XLt3Q1/zvvCor/GUQWbX9LTiyq/acP6hXaDRS/zZA0uscyTViJEwz7v/8vjMJg
- dih0WNfQ9mSzGIN7HIQnojAggoqk/9bJ1mvU9f37qnQQ1xGqM5iI8N8qSM+MXrugbsLG
- 57cDliryGIGqrdPL/yn1Zy9PDLflvRQPpVcw8GriaftJXW86q/h7+dcah0Q73tuiHKy8
- xOyc1FE9LBNFLD0eh1t9kU+5KOi61M30KEmBpIXpY9fquXgJp5coNwnC348/YOWIdCuN
- N4hdm0ZC2eaJD1/fudHVLzAwKh2mzbnDKDkqnSy0EjbDUIYDovhWQF5GDPqltzjgr7ti
- gP/A==
-X-Gm-Message-State: AOAM530QTVDucoJ8y0nNvLi/AN3QDRQsZuZjI0a+6dO9tDj5mg19rcC+
- 651vrtJ36BVBRPd7mAJraA==
-X-Google-Smtp-Source: ABdhPJyXG3Qb+wCY6PcVesYD78Lvr1fJPRxuDGrnHOap6UmNMid5rtVdvpuNP3xxFfMNVRKy3LDlTQ==
-X-Received: by 2002:aca:2403:0:b0:325:6dae:a63b with SMTP id
- n3-20020aca2403000000b003256daea63bmr2595593oic.230.1651614538887; 
- Tue, 03 May 2022 14:48:58 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=AYzqDCKsTIUNQSFUA88IsjM5tVXZRYkNm2IzoI0SdEc=;
+ b=V4+6Tglo7QZLzlBgO0dReoe2ggyzN8oiyz/g9XooY4LnS+wq0eNwBPiT5YE/Qkfove
+ N35QxLGkPpjmBIqI+CM9G3wub1uF/CkYBff/dRVcwpn2Otjxc9ehGJtMg9PCbZkoCr5X
+ EdTLe4cMxq5Km3k4Uc9LDW3KXMSz+76V1y9KLbJvyDJ8gXRyjt+jDVzlfFPnGKbLq+3F
+ UupC8Q9/RqUAxCOzGshFhXOCyqHJj9+8w6u5QqRgElPwQW1NXdgGqEzXqfGBIB3Iw/BD
+ rithiU6mL/Lc+bK8HQUkHoea5qWbhcXtBV42ScRZHNolzdS38o+6EUoqffSz/EwZgkjO
+ HL9w==
+X-Gm-Message-State: AOAM532Bcud16T9Mu9aiHbXTr8zHkxMAv3SqG3y3vaNUKOEhNiuQ/YRp
+ 4FPziEdDX8bBNXeOsVd61luoONrzig==
+X-Google-Smtp-Source: ABdhPJzn/rfeIWO5DHbfNPeuF8m9ikdAA2XqhXdqzdxa0Z5LXZ/l9fkqrmw7YUHe4HECh0PvVs466Q==
+X-Received: by 2002:a05:6808:d4c:b0:322:e7de:fffe with SMTP id
+ w12-20020a0568080d4c00b00322e7defffemr2726225oik.107.1651616515316; 
+ Tue, 03 May 2022 15:21:55 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
  [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- a11-20020a4a9b0b000000b0035ec65ac944sm4941869ook.16.2022.05.03.14.48.57
+ n7-20020a9d64c7000000b006060322125csm4564785otl.44.2022.05.03.15.21.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 May 2022 14:48:58 -0700 (PDT)
-Received: (nullmailer pid 91855 invoked by uid 1000);
- Tue, 03 May 2022 21:48:57 -0000
-Date: Tue, 3 May 2022 16:48:57 -0500
+ Tue, 03 May 2022 15:21:54 -0700 (PDT)
+Received: (nullmailer pid 139788 invoked by uid 1000);
+ Tue, 03 May 2022 22:21:51 -0000
 From: Rob Herring <robh@kernel.org>
-To: matthias.bgg@kernel.org
-Cc: mturquette@baylibre.com, sboyd@kernel.org, allen-kh.cheng@mediatek.com,
- weiyi.lu@mediatek.com, chun-jie.chen@mediatek.com,
- linux-kernel@vger.kernel.org, ikjn@chromium.org, miles.chen@mediatek.com,
- linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: ARM: Mediatek: Remove msdc binding
- of MT8192 clock
-Message-ID: <YnGjScfQA9axBYBO@robh.at.kernel.org>
-References: <20220429123133.28869-1-matthias.bgg@kernel.org>
- <20220429123133.28869-2-matthias.bgg@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220429123133.28869-2-matthias.bgg@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org,
+ kernel@collabora.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, sean.wang@kernel.org,
+ linus.walleij@linaro.org, linux-gpio@vger.kernel.org, nfraprado@collabora.com,
+ matthias.bgg@gmail.com, krzysztof.kozlowski+dt@linaro.org,
+ devicetree@vger.kernel.org
+In-Reply-To: <20220503142537.152499-2-angelogioacchino.delregno@collabora.com>
+References: <20220503142537.152499-1-angelogioacchino.delregno@collabora.com>
+ <20220503142537.152499-2-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: Add MediaTek MT6795 pinctrl
+ bindings
+Date: Tue, 03 May 2022 17:21:51 -0500
+Message-Id: <1651616511.157901.139787.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_144902_156076_9D9837B3 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20220503_152157_288332_148A66EE 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,59 +79,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 29, 2022 at 02:31:31PM +0200, matthias.bgg@kernel.org wrote:
-> From: Matthias Brugger <matthias.bgg@gmail.com>
+On Tue, 03 May 2022 16:25:36 +0200, AngeloGioacchino Del Regno wrote:
+> Add devicetree and pinfunc bindings for MediaTek Helio X10 MT6795.
 > 
-> The msdc gate is part of the MMC driver. Delete the binding description
-> of this node.
-
-An ABI break is okay because ...?
-
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
+>  .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 224 +++++
+>  include/dt-bindings/pinctrl/mt6795-pinfunc.h  | 908 ++++++++++++++++++
+>  2 files changed, 1132 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
+>  create mode 100644 include/dt-bindings/pinctrl/mt6795-pinfunc.h
 > 
-> Changes in v2:
-> - Delete compatible in binding descprition as well
-> 
->  .../bindings/arm/mediatek/mediatek,mt8192-clock.yaml      | 8 --------
->  1 file changed, 8 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
-> index c8c67c033f8c..b57cc2e69efb 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
-> @@ -24,7 +24,6 @@ properties:
->            - mediatek,mt8192-imp_iic_wrap_w
->            - mediatek,mt8192-imp_iic_wrap_n
->            - mediatek,mt8192-msdc_top
-> -          - mediatek,mt8192-msdc
->            - mediatek,mt8192-mfgcfg
->            - mediatek,mt8192-imgsys
->            - mediatek,mt8192-imgsys2
-> @@ -107,13 +106,6 @@ examples:
->          #clock-cells = <1>;
->      };
->  
-> -  - |
-> -    msdc: clock-controller@11f60000 {
-> -        compatible = "mediatek,mt8192-msdc";
-> -        reg = <0x11f60000 0x1000>;
-> -        #clock-cells = <1>;
-> -    };
-> -
->    - |
->      mfgcfg: clock-controller@13fbf000 {
->          compatible = "mediatek,mt8192-mfgcfg";
-> -- 
-> 2.34.1
-> 
-> 
+
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+./Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml: $id: relative path/filename doesn't match actual path or filename
+	expected: http://devicetree.org/schemas/pinctrl/mediatek,pinctrl-mt6795.yaml#
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
