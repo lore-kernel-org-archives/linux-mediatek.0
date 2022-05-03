@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B360C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC512C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pvnljSsWx85NsMS43y5HDV0DvZN2LW2yjnhCqycAODE=; b=A+TFKnG+dLmDUf
-	YwGotgCe9umr1OXNK4BBce9At6Deytfcalx3cptJDjzCykTe50Nm21H3n2uaWUgUmNO92fcBTCPQ2
-	ROvMIGni5P50nOfS+izi5OGGET3dqDU2YSCO3cflCji7eUC8I/kAE3JqFhy3BqehEe36o+oKZHb1I
-	EBGZPtkstfl/Y45UGm+cp+TkByG8dFCpz0Rhv3hFnIRI+rZSMLhtfvxjk/gSDUI5E7L5BIKu3Pch2
-	KH1NgFKPH6Py2FLKydhlKP58RXMdcbLPlYfvscQK25j8pq48gZkkMplzGcUe8B2+sXnOCmgx7FRAR
-	DTKO/Nemad2J4v/Y6Kkw==;
+	List-Owner; bh=Jl7QsujhybDxC/y9dqRaTUTF8fagUO7hA0tsHL0Z71Y=; b=MsJirhtrQIhQnb
+	/4D70ZNf9E5maIvmjyySAJSL/yDLkd7BYQRc33aA0DR9aMorqnlWmd9blGVI4eeKaEVPNL5a6EZQd
+	ye9ZZH4JrG1Mq9Kov36RW52iDRGhHUwLCVbcs3sBAWjRfmkdolEiWeXaFl88K5wnQ+wpQmFoCIOuu
+	LNVJbFMrBA4mwT1ziB9IDgJapEcA1ngK+BTD1x6BhozyMJu5WauQ44hm09zmsFY/0rLlRtVybqEPA
+	BEXXJ6+zOa2dqRI9uM0HO+b1XCwOVcYdXbOSH06lqqiZUOV0sRDlYqpmqPlGgVB+DZrkqOpUJq6cI
+	QYaw67S/ebS+vE2WuANA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlmpT-004Crc-S1; Tue, 03 May 2022 07:20:15 +0000
+	id 1nlmqh-004DWP-2G; Tue, 03 May 2022 07:21:31 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlmnr-004Blg-Bl; Tue, 03 May 2022 07:18:37 +0000
-X-UUID: f52efc9157694f5692f56b746d337ca8-20220503
+ id 1nlmnu-004Bkz-9w; Tue, 03 May 2022 07:18:39 +0000
+X-UUID: 2ff6747a560b40d7932d03f7df08dd44-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:b7a95cde-3f1f-4095-981d-70d017adfb05, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:c874b8fc-4d88-44ee-b876-b99853bee126, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:2bd04ac7-85ee-4ac1-ac05-bd3f1e72e732,
+ B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-12
+X-CID-META: VersionHash:faefae9, CLOUDID:31d04ac7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: f52efc9157694f5692f56b746d337ca8-20220503
+X-UUID: 2ff6747a560b40d7932d03f7df08dd44-20220503
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1344025163; Tue, 03 May 2022 00:18:29 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1197843023; Tue, 03 May 2022 00:18:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 00:16:16 -0700
+ 15.0.1497.2; Tue, 3 May 2022 00:17:46 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 3 May 2022 15:16:14 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 3 May 2022 15:17:44 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 3 May 2022 15:16:13 +0800
+ Transport; Tue, 3 May 2022 15:17:43 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -61,17 +61,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v7 10/36] iommu/mediatek: Add 12G~16G support for multi domains
-Date: Tue, 3 May 2022 15:14:01 +0800
-Message-ID: <20220503071427.2285-11-yong.wu@mediatek.com>
+Subject: [PATCH v7 22/36] iommu/mediatek: Add PCIe support
+Date: Tue, 3 May 2022 15:14:13 +0800
+Message-ID: <20220503071427.2285-23-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
 References: <20220503071427.2285-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_001835_444119_F4C1C3CA 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20220503_001838_402413_4A2C5953 
+X-CRM114-Status: GOOD (  20.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,41 +88,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt8192, we preassign 0-4G; 4G-8G; 8G-12G for different multimedia
-engines. This depends on the "dma-ranges=" in the iommu consumer's dtsi
-node.
+Currently the code for of_iommu_configure_dev_id is like this:
 
-Adds 12G-16G region here. and reword the previous comment. we don't limit
-which master locate in which region.
+static int of_iommu_configure_dev_id(struct device_node *master_np,
+                                     struct device *dev,
+                                     const u32 *id)
+{
+       struct of_phandle_args iommu_spec = { .args_count = 1 };
 
-CCU still is 8G-12G. Don't change it here.
+       err = of_map_id(master_np, *id, "iommu-map",
+                       "iommu-map-mask", &iommu_spec.np,
+                       iommu_spec.args);
+...
+}
+
+It supports only one id output. BUT our PCIe HW has two ID(one is for
+writing, the other is for reading). I'm not sure if we should change
+of_map_id to support output MAX_PHANDLE_ARGS.
+
+Here add the solution in ourselve drivers. If it's pcie case, enable one
+more bit.
+
+Not all infra iommu support PCIe, thus add a PCIe support flag here.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/iommu/mtk_iommu.c | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 1b8e4405dd0f..d91a0c138536 100644
+index ff48506b480c..d63fe28c1403 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -180,10 +180,12 @@ static const struct mtk_iommu_iova_region single_domain[] = {
- };
+@@ -20,6 +20,7 @@
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
++#include <linux/pci.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+@@ -134,6 +135,7 @@
+ #define MTK_IOMMU_TYPE_MASK		(0x3 << 13)
+ /* PM and clock always on. e.g. infra iommu */
+ #define PM_CLK_AO			BIT(15)
++#define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
  
- static const struct mtk_iommu_iova_region mt8192_multi_dom[] = {
--	{ .iova_base = 0x0,		.size = SZ_4G},		/* disp: 0 ~ 4G */
-+	{ .iova_base = 0x0,		.size = SZ_4G},		/* 0 ~ 4G */
- 	#if IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT)
--	{ .iova_base = SZ_4G,		.size = SZ_4G},		/* vdec: 4G ~ 8G */
--	{ .iova_base = SZ_4G * 2,	.size = SZ_4G},		/* CAM/MDP: 8G ~ 12G */
-+	{ .iova_base = SZ_4G,		.size = SZ_4G},		/* 4G ~ 8G */
-+	{ .iova_base = SZ_4G * 2,	.size = SZ_4G},		/* 8G ~ 12G */
-+	{ .iova_base = SZ_4G * 3,	.size = SZ_4G},		/* 12G ~ 16G */
-+
- 	{ .iova_base = 0x240000000ULL,	.size = 0x4000000},	/* CCU0 */
- 	{ .iova_base = 0x244000000ULL,	.size = 0x4000000},	/* CCU1 */
- 	#endif
+ #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
+ 				((((pdata)->flags) & (mask)) == (_x))
+@@ -420,8 +422,11 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
+ 				larb_mmu->mmu &= ~MTK_SMI_MMU_EN(portid);
+ 		} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
+ 			peri_mmuen_msk = BIT(portid);
+-			peri_mmuen = enable ? peri_mmuen_msk : 0;
++			/* PCI dev has only one output id, enable the next writing bit for PCIe */
++			if (dev_is_pci(dev))
++				peri_mmuen_msk |= BIT(portid + 1);
+ 
++			peri_mmuen = enable ? peri_mmuen_msk : 0;
+ 			ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
+ 						 peri_mmuen_msk, peri_mmuen);
+ 			if (ret)
+@@ -1054,6 +1059,15 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 		ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
+ 		if (ret)
+ 			goto out_bus_set_null;
++	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
++		   MTK_IOMMU_HAS_FLAG(data->plat_data, IFA_IOMMU_PCIE_SUPPORT)) {
++#ifdef CONFIG_PCI
++		if (!iommu_present(&pci_bus_type)) {
++			ret = bus_set_iommu(&pci_bus_type, &mtk_iommu_ops);
++			if (ret) /* PCIe fail don't affect platform_bus. */
++				goto out_list_del;
++		}
++#endif
+ 	}
+ 	return ret;
+ 
+@@ -1084,6 +1098,11 @@ static int mtk_iommu_remove(struct platform_device *pdev)
+ 	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
+ 		device_link_remove(data->smicomm_dev, &pdev->dev);
+ 		component_master_del(&pdev->dev, &mtk_iommu_com_ops);
++	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
++		   MTK_IOMMU_HAS_FLAG(data->plat_data, IFA_IOMMU_PCIE_SUPPORT)) {
++#ifdef CONFIG_PCI
++		bus_set_iommu(&pci_bus_type, NULL);
++#endif
+ 	}
+ 	pm_runtime_disable(&pdev->dev);
+ 	devm_free_irq(&pdev->dev, data->irq, data);
 -- 
 2.18.0
 
