@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC47C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 06:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50412C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:15:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DVFujHXapu+i0fOkXdAKfBY3LACf1n9FdJL68+qiIzE=; b=s1JRAjhEzLKxJw
-	AiR8sWherNCpq1UHlBqDJJQX4c1plOm2nH9HMIy70SHB0eXUrd7l5lv5nb1NU7DtptZtX1wQoy3wB
-	izqVaEs2DOUj6+HCpSeokUy2S3TPBP/tw/06ICmhgJZ8kYCJBycxTU852QfCXwkVFoTxd6jFLp8lj
-	dUSD6baIOMFGLwoS9QmItyMCNIfjcbhbYKTHWKDlfZb2kzvg9DRV/YcP/BJTKxUSdCWOAQi381RCi
-	Dbl0ZpfBStg/R6HiGuWSZL7zIRPaMNlgJjMbA0+bFlfT28/eGw7RWOUdDI6pSL8Bgmkr/BCbEw9Wm
-	Ds2LOc1u6MviV6iQrKXw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CWUctN4ZCYPd0dud0H2WrrimEXIURCk8Hd2Z7E6xpz0=; b=v4HO2JO445x/AR
+	EQd14MSVJeQG6EWBRfx4QjC1Gy+5lnxPYMNS5bv1TjNmeJmf0AFM/pjqv++CXnkDik4D+JrAuQ0jo
+	Y3I3hFL/lPTsLpy03y3ltQZICtKkMW/BhPzmRA3+IbB8I72N68kW5XpZotqE1jyXvS4acfrxQPnRw
+	EywYCBe17XFZP2Yp0CXisM2FEqhrNmrWBdrB6Be70xSLDZ9ER0NOk3AMJwbgUluOy2JP8trgoPbnQ
+	gWBwB4RpZiyApnlgy+oEIZbvnvwf+uw5tYgkX+Ecc7jTuUyNyKGnNZUjfCR6kqvOBlRfGKy4x7CIT
+	McSE6Cy0qYmSgfQ3ivZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlm2I-003z3S-Ss; Tue, 03 May 2022 06:29:26 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1nlmkj-0049k2-6A; Tue, 03 May 2022 07:15:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlm26-003yyh-FH; Tue, 03 May 2022 06:29:16 +0000
-Received: by mail-pf1-x433.google.com with SMTP id p8so13989273pfh.8;
- Mon, 02 May 2022 23:29:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1ommot/0z42sf3SBGFHfrVoBq7JJGjmk6km0fRERgWs=;
- b=BBZqsvfXLQMcxnvVKu19OiXFrM/hVM4VZ+TB4sAzS++ZfbcsGgC3gaIgYi3V/CxVyI
- hTagtqcDHop40+tn6XHh1FfNWGj1H2zX197W8q7SH3W2UjSFujx/4tRPHDTBTJonNB59
- 1acUkA2RmNGSJP1O2DsYwghR/BvCSDcHfrbhet3gqQjaohsHzguix3TUsxF8g5UuVNDN
- 42cX0PSkBmTTHScDbzKPD4gcE3amRx4DyJ4OrQdKRsblQHnC4eplMz5oadgNU2TWSllT
- Pp8ervTrj4BAOPhqAW0uVhaHRyGYWeIwN+OPWaAZNksm0dutDNUEiCZKv8LtEObohI0k
- fxbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=1ommot/0z42sf3SBGFHfrVoBq7JJGjmk6km0fRERgWs=;
- b=UHcUOSkfcpQWj0wu7+wQ+Z8bC91noVIaQeay8JPuzBBk3/0gSPWloHMVAdHFjzGq1N
- XJ2SkQXvRn/KNOm7a8yEnLUKbP73y3TMTX4m05vw/XlOg51kK/WIRi0sjE5YP4ErJ7ro
- j4c+FqSqscV6JuFF+pA1AiZeuEH2PPexmFtwKwdP6kYHB20q28qK3OQOOp7OEM0tzDhr
- EbSZfc1+IvzBT62yRcd1ZIZs6bfzdOsL829CjUpYn+9wc7FPJRlBG0rEyprxXnp1b/YL
- tVUNpAokY18TEujFByh4uhiPBGU8sZrU8hg65A9CcMtoOFoEzxVXqGxS8JXJKjvdzCRH
- wVTg==
-X-Gm-Message-State: AOAM531F+rISpJ1cqBXB6Ar/yIy2ec8Gp1U7L/WgP7P8mi/K7Oy0hU1J
- 02+ijPy4gnk8AMyi9CVjYBkYvmiWzFKJ3Q==
-X-Google-Smtp-Source: ABdhPJwVmWB/+4ZbUnTbaekuYC8MZ5UU5EvCLiYkYU2agpKq050H3bedHlbNmKr5ciuIuhR85HqFzw==
-X-Received: by 2002:a63:87c1:0:b0:3ab:1a17:35b7 with SMTP id
- i184-20020a6387c1000000b003ab1a1735b7mr12716214pge.313.1651559350797; 
- Mon, 02 May 2022 23:29:10 -0700 (PDT)
-Received: from genechen-System-Product-Name.richtek.com
- ([2402:7500:469:f77c:e84b:f663:23:a6cf])
- by smtp.gmail.com with ESMTPSA id
- j14-20020a63fc0e000000b003c260491adesm1313800pgi.82.2022.05.02.23.29.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 May 2022 23:29:10 -0700 (PDT)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: lee.jones@linaro.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- gene_chen@richtek.com, cy_huang@richtek.com
-Subject: [PATCH] dt-bindings: mfd: Add bindings child nodes for the Mediatek
- MT6360
-Date: Tue,  3 May 2022 14:28:43 +0800
-Message-Id: <20220503062843.12516-1-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ id 1nlmkW-0049bP-QQ; Tue, 03 May 2022 07:15:10 +0000
+X-UUID: cf2ebe8d8a5c45dcbbc9bb857a9aff20-20220503
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:410cc1d8-352d-49d0-a67f-23e0330e8507, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:87a2822f-6199-437e-8ab4-9920b4bc5b76,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: cf2ebe8d8a5c45dcbbc9bb857a9aff20-20220503
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 131011431; Tue, 03 May 2022 00:15:03 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 00:15:01 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 3 May 2022 15:15:00 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 3 May 2022 15:14:58 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
+CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
+ <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ <yong.wu@mediatek.com>, <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <xueqi.zhang@mediatek.com>, <yen-chang.chen@mediatek.com>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>,
+ <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
+ <chengci.xu@mediatek.com>
+Subject: [PATCH v7 02/36] dt-bindings: mediatek: mt8195: Add binding for infra
+ IOMMU
+Date: Tue, 3 May 2022 15:13:53 +0800
+Message-ID: <20220503071427.2285-3-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
+References: <20220503071427.2285-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220502_232914_599625_117F97BA 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20220503_001508_884774_24E07FA4 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,248 +89,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
+In mt8195, we have a new IOMMU that is for INFRA IOMMU. its masters
+mainly are PCIe and USB. Different with MM IOMMU, all these masters
+connect with IOMMU directly, there is no mediatek,larbs property for
+infra IOMMU.
 
-Add bindings child nodes for the Mediatek MT6360
+Another thing is about PCIe ports. currently the function
+"of_iommu_configure_dev_id" only support the id number is 1, But our
+PCIe have two ports, one is for reading and the other is for writing.
+see more about the PCIe patch in this patchset. Thus, I only list
+the reading id here and add the other id in our driver.
 
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
-Link: https://lore.kernel.org/all/YmqTzlrVL5KaVPuz@robh.at.kernel.org/
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/mfd/mediatek,mt6360.yaml         | 212 +++++++++++++++++-
- 1 file changed, 201 insertions(+), 11 deletions(-)
+ .../bindings/iommu/mediatek,iommu.yaml         | 13 ++++++++++++-
+ .../dt-bindings/memory/mt8195-memory-port.h    | 18 ++++++++++++++++++
+ include/dt-bindings/memory/mtk-memory-port.h   |  2 ++
+ 3 files changed, 32 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-index 4d8769f3748c..b3eecf661bc1 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-@@ -37,6 +37,18 @@ properties:
-     description:
-       The first cell is the IRQ number.
+diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+index 2223408e91a9..eed59ec00e78 100644
+--- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
++++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+@@ -79,6 +79,7 @@ properties:
+           - mediatek,mt8192-m4u  # generation two
+           - mediatek,mt8195-iommu-vdo        # generation two
+           - mediatek,mt8195-iommu-vpp        # generation two
++          - mediatek,mt8195-iommu-infra      # generation two
  
-+  regulators:
-+    $ref: ../regulator/mt6360-regulator.yaml
-+
-+  charger:
-+    $ref: ../power/supply/mt6360_charger.yaml
-+
-+  tcpc:
-+    $ref: ../usb/mediatek,mt6360-tcpc.yaml
-+
-+  led-controller:
-+    $ref: ../leds/leds-mt6360.yaml
-+
- required:
+       - description: mt7623 generation one
+         items:
+@@ -131,7 +132,6 @@ required:
    - compatible
    - reg
-@@ -51,17 +63,195 @@ examples:
-   - |
-     #include <dt-bindings/interrupt-controller/irq.h>
-     #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
-+    #include <dt-bindings/leds/common.h>
-+    #include <dt-bindings/usb/pd.h>
-     i2c {
--        #address-cells = <1>;
--        #size-cells = <0>;
--
--        pmic@34 {
--            compatible = "mediatek,mt6360";
--            reg = <0x34>;
--            wakeup-source;
--            interrupts-extended = <&gpio26 0 IRQ_TYPE_LEVEL_LOW>;
--            interrupt-names = "IRQB";
--            interrupt-controller;
--            #interrupt-cells = <1>;
-+      #address-cells = <1>;
-+      #size-cells = <0>;
+   - interrupts
+-  - mediatek,larbs
+   - '#iommu-cells'
+ 
+ allOf:
+@@ -163,6 +163,17 @@ allOf:
+       required:
+         - power-domains
+ 
++  - if: # The IOMMUs don't have larbs.
++      not:
++        properties:
++          compatible:
++            contains:
++              const: mediatek,mt8195-iommu-infra
 +
-+      mt6360@34 {
-+        compatible = "mediatek,mt6360";
-+        reg = <0x34>;
-+        wakeup-source;
-+        interrupts-extended = <&gpio26 0 IRQ_TYPE_LEVEL_LOW>;
-+        interrupt-names = "IRQB";
-+        interrupt-controller;
-+        #interrupt-cells = <1>;
++    then:
++      required:
++        - mediatek,larbs
 +
-+        mt6360_charger: charger {
-+          compatible = "mediatek,mt6360-chg";
-+          richtek,vinovp-microvolt = <14500000>;
+ additionalProperties: false
+ 
+ examples:
+diff --git a/include/dt-bindings/memory/mt8195-memory-port.h b/include/dt-bindings/memory/mt8195-memory-port.h
+index c10e8b61f1e8..70ba9f498eeb 100644
+--- a/include/dt-bindings/memory/mt8195-memory-port.h
++++ b/include/dt-bindings/memory/mt8195-memory-port.h
+@@ -387,4 +387,22 @@
+ #define M4U_PORT_L28_CAM_DRZS4NO_R1		MTK_M4U_ID(28, 5)
+ #define M4U_PORT_L28_CAM_TNCSO_R1		MTK_M4U_ID(28, 6)
+ 
++/* Infra iommu ports */
++/* PCIe1: read: BIT16; write BIT17. */
++#define IOMMU_PORT_INFRA_PCIE1			MTK_IFAIOMMU_PERI_ID(16)
++/* PCIe0: read: BIT18; write BIT19. */
++#define IOMMU_PORT_INFRA_PCIE0			MTK_IFAIOMMU_PERI_ID(18)
++#define IOMMU_PORT_INFRA_SSUSB_P3_R		MTK_IFAIOMMU_PERI_ID(20)
++#define IOMMU_PORT_INFRA_SSUSB_P3_W		MTK_IFAIOMMU_PERI_ID(21)
++#define IOMMU_PORT_INFRA_SSUSB_P2_R		MTK_IFAIOMMU_PERI_ID(22)
++#define IOMMU_PORT_INFRA_SSUSB_P2_W		MTK_IFAIOMMU_PERI_ID(23)
++#define IOMMU_PORT_INFRA_SSUSB_P1_1_R		MTK_IFAIOMMU_PERI_ID(24)
++#define IOMMU_PORT_INFRA_SSUSB_P1_1_W		MTK_IFAIOMMU_PERI_ID(25)
++#define IOMMU_PORT_INFRA_SSUSB_P1_0_R		MTK_IFAIOMMU_PERI_ID(26)
++#define IOMMU_PORT_INFRA_SSUSB_P1_0_W		MTK_IFAIOMMU_PERI_ID(27)
++#define IOMMU_PORT_INFRA_SSUSB2_R		MTK_IFAIOMMU_PERI_ID(28)
++#define IOMMU_PORT_INFRA_SSUSB2_W		MTK_IFAIOMMU_PERI_ID(29)
++#define IOMMU_PORT_INFRA_SSUSB_R		MTK_IFAIOMMU_PERI_ID(30)
++#define IOMMU_PORT_INFRA_SSUSB_W		MTK_IFAIOMMU_PERI_ID(31)
 +
-+          otg_vbus_regulator: usb-otg-vbus-regulator {
-+            regulator-compatible = "usb-otg-vbus";
-+            regulator-name = "usb-otg-vbus";
-+            regulator-min-microvolt = <4425000>;
-+            regulator-max-microvolt = <5825000>;
-+          };
-+        };
+ #endif
+diff --git a/include/dt-bindings/memory/mtk-memory-port.h b/include/dt-bindings/memory/mtk-memory-port.h
+index 7d64103209af..2f68a0511a25 100644
+--- a/include/dt-bindings/memory/mtk-memory-port.h
++++ b/include/dt-bindings/memory/mtk-memory-port.h
+@@ -12,4 +12,6 @@
+ #define MTK_M4U_TO_LARB(id)		(((id) >> 5) & 0x1f)
+ #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
+ 
++#define MTK_IFAIOMMU_PERI_ID(port)	MTK_M4U_ID(0, port)
 +
-+        led-controller {
-+          compatible = "mediatek,mt6360-led";
-+          #address-cells = <1>;
-+          #size-cells = <0>;
-+
-+          multi-led@0 {
-+            reg = <0>;
-+            function = LED_FUNCTION_INDICATOR;
-+            color = <LED_COLOR_ID_RGB>;
-+            led-max-microamp = <24000>;
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+            led@0 {
-+              reg = <0>;
-+              color = <LED_COLOR_ID_RED>;
-+            };
-+            led@1 {
-+              reg = <1>;
-+              color = <LED_COLOR_ID_GREEN>;
-+            };
-+            led@2 {
-+              reg = <2>;
-+              color = <LED_COLOR_ID_BLUE>;
-+            };
-+          };
-+          led@3 {
-+            reg = <3>;
-+            function = LED_FUNCTION_INDICATOR;
-+            color = <LED_COLOR_ID_WHITE>;
-+            led-max-microamp = <150000>;
-+          };
-+          led@4 {
-+            reg = <4>;
-+            function = LED_FUNCTION_FLASH;
-+            color = <LED_COLOR_ID_WHITE>;
-+            function-enumerator = <1>;
-+            led-max-microamp = <200000>;
-+            flash-max-microamp = <500000>;
-+            flash-max-timeout-us = <1024000>;
-+          };
-+          led@5 {
-+            reg = <5>;
-+            function = LED_FUNCTION_FLASH;
-+            color = <LED_COLOR_ID_WHITE>;
-+            function-enumerator = <2>;
-+            led-max-microamp = <200000>;
-+            flash-max-microamp = <500000>;
-+            flash-max-timeout-us = <1024000>;
-+          };
-+        };
-+
-+        regulators {
-+          compatible = "mediatek,mt6360-regulator";
-+          LDO_VIN3-supply = <&BUCK2>;
-+          buck1 {
-+            regulator-compatible = "BUCK1";
-+            regulator-name = "mt6360,buck1";
-+            regulator-min-microvolt = <300000>;
-+            regulator-max-microvolt = <1300000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP
-+                 MT6360_OPMODE_ULP>;
-+          };
-+          BUCK2: buck2 {
-+            regulator-compatible = "BUCK2";
-+            regulator-name = "mt6360,buck2";
-+            regulator-min-microvolt = <300000>;
-+            regulator-max-microvolt = <1300000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP
-+                 MT6360_OPMODE_ULP>;
-+          };
-+          ldo6 {
-+            regulator-compatible = "LDO6";
-+            regulator-name = "mt6360,ldo6";
-+            regulator-min-microvolt = <500000>;
-+            regulator-max-microvolt = <2100000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP>;
-+          };
-+          ldo7 {
-+            regulator-compatible = "LDO7";
-+            regulator-name = "mt6360,ldo7";
-+            regulator-min-microvolt = <500000>;
-+            regulator-max-microvolt = <2100000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP>;
-+          };
-+          ldo1 {
-+            regulator-compatible = "LDO1";
-+            regulator-name = "mt6360,ldo1";
-+            regulator-min-microvolt = <1200000>;
-+            regulator-max-microvolt = <3600000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP>;
-+          };
-+            ldo2 {
-+            regulator-compatible = "LDO2";
-+            regulator-name = "mt6360,ldo2";
-+            regulator-min-microvolt = <1200000>;
-+            regulator-max-microvolt = <3600000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP>;
-+          };
-+          ldo3 {
-+            regulator-compatible = "LDO3";
-+            regulator-name = "mt6360,ldo3";
-+            regulator-min-microvolt = <1200000>;
-+            regulator-max-microvolt = <3600000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP>;
-+          };
-+          ldo5 {
-+            regulator-compatible = "LDO5";
-+            regulator-name = "mt6360,ldo5";
-+            regulator-min-microvolt = <2700000>;
-+            regulator-max-microvolt = <3600000>;
-+            regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                 MT6360_OPMODE_LP>;
-+          };
-         };
-+
-+        tcpc {
-+          compatible = "mediatek,mt6360-tcpc";
-+          interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
-+          interrupt-names = "PD_IRQB";
-+
-+          connector {
-+            compatible = "usb-c-connector";
-+            label = "USB-C";
-+            data-role = "dual";
-+            power-role = "dual";
-+            try-power-role = "sink";
-+            source-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+            sink-pdos = <PDO_FIXED(5000, 2000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+            op-sink-microwatt = <10000000>;
-+
-+            ports {
-+              #address-cells = <1>;
-+              #size-cells = <0>;
-+
-+              port@0 {
-+                reg = <0>;
-+                endpoint {
-+                  remote-endpoint = <&usb_hs>;
-+                };
-+              };
-+              port@1 {
-+                reg = <1>;
-+                endpoint {
-+                  remote-endpoint = <&usb_ss>;
-+                };
-+              };
-+              port@2 {
-+                reg = <2>;
-+                endpoint {
-+                  remote-endpoint = <&dp_aux>;
-+                };
-+              };
-+            };
-+          };
-+        };
-+
-+      };
-     };
+ #endif
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
