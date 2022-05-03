@@ -4,87 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFCCBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 12:27:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4D5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 12:33:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5oZF2+Fgp3Og4YMohExJHPPcoydXY6hREeVtQLCDE9M=; b=CHRtzlUW+Vlxtw
-	hXgrF9Vkq7O5Tmn/Nq1Ep35ObyXAAe0lK7noFcYV5eTXrqHwhKhoG11ib4B+8Id+jMNVXJu4ZEOHC
-	nj/QMNFCh8Md82OZgnqaxKvOcistlQh+X7brv26RncE4BfOq/eDSC1tcYQ9D0Lu7wPJ87R/vVx4Cm
-	NIQm7W6rczhqK2ZmDyAjd/PewMrQNzqWNHw1vZk9G+L/37W3wS1pzD6NJRRudA8tZGFqUDeDVdoGs
-	ik1qtOWIgvfaW+n4qjlo1lO2TeqOP74pC8sDw6Rdm56IeIcX7QGkxZnagGftFLpZk3u0EB76+nIrq
-	P4PCSHiAvME9ypLqYLbQ==;
+	List-Owner; bh=ilirZXqmOJLU4jSS41YU1AYw565EEHepngHLadyybkQ=; b=FGkU9hVwCRZwtS
+	mb3SY4NjLETy0uxxffH2hbae5OypySedahv/x3SKrCYF7JEIO4vUfnUl9JsIs+xOZonvn7fnzjR3V
+	GZp/8NzXWwls7hdyguIHt2NNYpl9RTeRqg2iqvtgv2NJSm96Aw9oVYbp9B9I1XwXzY4rBs7q9Ev7N
+	aEkfpgwDnJrV7qmTw8hw15o4lLEF/5IvbPqzPNgghCovEi0PL60F9ZDH1VMSoBLl5D+cM2VdeTky8
+	Onj2KjVwbc4mAiTIx2m712qRwZOAhBq2WyVLCQ5vRksUwrRQjmGxu/wrHLKqm+H2vRGtsoUNGddT8
+	bqsr0Rum3ldsmrv030pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlrce-005mDw-Ct; Tue, 03 May 2022 12:27:20 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1nlri7-005nn7-Nc; Tue, 03 May 2022 12:32:59 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlrcR-005m5i-4G
- for linux-mediatek@lists.infradead.org; Tue, 03 May 2022 12:27:08 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id g6so33156706ejw.1
- for <linux-mediatek@lists.infradead.org>; Tue, 03 May 2022 05:27:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=3v4789HnPrfyXLlbi4TVrwsRga5l4AtBHsLanAodRHg=;
- b=tOyrcEqYRqwaatbWkdvtYKd4xy6bH1Z+GOzXIo+D5G+HJjDP+TfVdYblY3sEMayIy7
- xLZEGk7z2ekyGYFLKjX42MH2El3J73RzKd7iPBYfjrJcsRlkJImmwNwMqaXk4E3Fsj1L
- 8XfvZeoQ65NL1Ju6JOlIxX2P2fF9BoG4iIo4sH1JSUzBAIUYjBXEGmzazDNhFXZu0fXr
- 7+XNSdPIdkzyiklnKlm47RWsIJIyvSywc8+ojhDYRJY6ZuYOp36gbejaqYlAHRClXGgf
- 4tLefzK5LxSerPrMwRN3PHqfwyymPdkVZdBJMDiLQ/hdabTPGF81c2gWHvYjapxlcbzg
- 2iJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3v4789HnPrfyXLlbi4TVrwsRga5l4AtBHsLanAodRHg=;
- b=jNVMqnOZ+GCMy0mE+6raE7g0PJOaP1aCMvH5tlj2jbZ1TKZuEpd85etMq8YxuaGEst
- ZdOevnSEJuFas0fBDhYrYE01rWfys76q0QNVytAXub4HfbfpeW+6LevYGKZbcH/jRiaC
- xizy006xjERz7Onv5TOqFtsmyxzFY2N+OrVN207RFWWOpE+jEgzYMka8dpaEc0nQP0xg
- a/7EjceRE0x0AOwCbbFeM3rINo+fLmedpbyFIFwn2hD/Hqo1VqFB9Y+mtXg6mXr+Lbfz
- RbhPYce+IBSjt5qf2I7B3/awBH0FCdyYt6tu34F45aL3t+FDjVOL5+4WzYAWaW943ZpK
- DkWw==
-X-Gm-Message-State: AOAM530XsET5YSBSpjTZ0F6r5i1UabK+A/zAtvHpLDa2lnDDwBnKxllI
- 0XKSsK5SC8Og6XRYr7ZY6mMFSQ==
-X-Google-Smtp-Source: ABdhPJz1R4QiNsUY3ftHoYu9rTkjTJu3dFEsS0UonNJRNjbK/2iYu1E8Jz/5btp8OLo7mKGT9jFoNg==
-X-Received: by 2002:a17:907:9705:b0:6f0:2b25:784e with SMTP id
- jg5-20020a170907970500b006f02b25784emr15455246ejc.76.1651580823976; 
- Tue, 03 May 2022 05:27:03 -0700 (PDT)
-Received: from [192.168.0.203] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- hx8-20020a170906846800b006f3ef214dd0sm4515214ejc.54.2022.05.03.05.27.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 May 2022 05:27:02 -0700 (PDT)
-Message-ID: <1699e161-ca41-3a01-6cf2-11e7d5dd2152@linaro.org>
-Date: Tue, 3 May 2022 14:27:01 +0200
+ id 1nlrhw-005niU-JN; Tue, 03 May 2022 12:32:50 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 451221F42C92
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651581166;
+ bh=qxbwIud/z0dkgi/rqpCFxK4Db8RLK0j+LCYn27SBNtA=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=DE56hFw4/S2R6lSczDYKbM/I2R4smmMDXxQaukD7P9b0dzmlXOfvp1JgQMUu8IYJB
+ D4nUan73wyKjV6sD6Wz15zOrCrfJ5Uk8yxJRPQJLXqXYgFR8g9mR8zW7jazlvQoXI/
+ tiNSxB96wtyzwh0smXgCyuU67mJ8iTsIun1yEc+9UECcZO106YtWzZoUoICl3ZTQm6
+ xSdobzynER0B41xDE4UuPPEsCWvSr1LKx7WCwu75muaNWliR5P5AcZWS9AnKZ/qqbV
+ +1YyyR3BFyLvIkIPSDSEWUvkDYhWIqwT4+byLxnFD6noQ3E/qedtKEJg1qpEdz/oSV
+ +RoNpDORyJ3fw==
+Message-ID: <07889dc4-4198-086b-4df6-e02b65daff10@collabora.com>
+Date: Tue, 3 May 2022 14:32:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH v6 13/16] dt-bindings: reset: mediatek: Add infra_ao reset
- index for MT8192/MT8195
+Subject: Re: [PATCH 2/2] dt-bindings: pinctrl: Add MediaTek MT6795 pinctrl
+ bindings
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, mturquette@baylibre.com,
- sboyd@kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
- chun-jie.chen@mediatek.com, wenst@chromium.org, runyang.chen@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
- <20220503093856.22250-14-rex-bc.chen@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220503093856.22250-14-rex-bc.chen@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Cc: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, sean.wang@kernel.org, matthias.bgg@gmail.com,
+ linus.walleij@linaro.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, nfraprado@collabora.com,
+ kernel@collabora.com
+References: <20220503105317.54696-1-angelogioacchino.delregno@collabora.com>
+ <20220503105317.54696-3-angelogioacchino.delregno@collabora.com>
+ <1651579140.664800.3296827.nullmailer@robh.at.kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <1651579140.664800.3296827.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_052707_181992_6430C434 
-X-CRM114-Status: UNSURE (   7.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220503_053248_832072_A75B1692 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,23 +70,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/05/2022 11:38, Rex-BC Chen wrote:
-> To support reset of infra_ao, add the index of infra_ao reset of
-> thermal/svs/pcei for MT8192 and thermal/svs for MT8195.
+Il 03/05/22 13:59, Rob Herring ha scritto:
+> On Tue, 03 May 2022 12:53:17 +0200, AngeloGioacchino Del Regno wrote:
+>> Add devicetree and pinfunc bindings for MediaTek Helio X10 MT6795.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 224 +++++
+>>   include/dt-bindings/pinctrl/mt6795-pinfunc.h  | 908 ++++++++++++++++++
+>>   2 files changed, 1132 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
+>>   create mode 100644 include/dt-bindings/pinctrl/mt6795-pinfunc.h
+>>
 > 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> 
+> yamllint warnings/errors:
+> ./Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml:100:14: [error] syntax error: expected <block end>, but found '<block mapping start>' (syntax)
+> 
 
+Oops. I'm sorry for that, apparently I've sent the wrong version of this series.
+Luckily, only the yaml file had issues in that version.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+I'll send a v2 soon. Sorry for the noise.
 
-
-Best regards,
-Krzysztof
+Regards,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
