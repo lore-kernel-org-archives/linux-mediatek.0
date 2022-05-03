@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FFB6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 02:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03D2AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 02:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SKJn56kL//6KWF2rdt9gKFKR7ognOjF1vlGGi0Secmk=; b=lTJyInMFj51avm
-	AnsvEtXc7zm7JFQWC3KkafAK83dc73Hi79J2QnBJDAUKxpbJaiBFSvmuRzbtjpBEBtVLN/aRomNDp
-	L35YbB1c+nDrQCjp7zOMu3DwIlk6SUnuWRdUI2X0ma5P2eilQ02FA2PZEgjpkTbWkoA3ap1PeQmyT
-	SHf0ot6Lc7vl9zoao5Q8aeeqqHFUqr2e7xuieL1vx6a+Q9Lv37HxYZkze5UukZLiUmsnIpBzBUVtH
-	b0kqVU3O7rH+nSqLsRFCF61Hai+q0yYZuWeRzdylqV3owjNSzLq+3p5Jv8eE7SNUhWu2xZo2KMg7H
-	OyQ6eL26axAqG7FyYHhA==;
+	List-Owner; bh=vHJoXrptmx1MqN0u1PXgXAoXkUJaDHn/XPVr7CNnsJo=; b=KzRVFcq1oUsGtN
+	4GzB99cjIKTNkDmnflQWm06RhkcEYIq6kXYpxKtwLdDKmepgol4DpGo+6TyB2ALdFqRGQpkhnqS70
+	nk8HukUG9NhR35uOE2mFJHGoab0jJXxNlH466jjIyJl3ZtLjtMaE423484dN7BIMs33wZOcQFNj2X
+	XXfOHSPv9d1OVKga48fnc+GFxnZ6RmVNOpd+nsMBz955sDfrPe0BbK2KXqe471ZaxoPlD9G6O6bvW
+	znn6cEhY/0zOoKf47thnM0/kZb2PSf2mR7RY76DgOlhTo46XUwkXhaotRkK+/+3sXYZm24YaKOTcm
+	i1+6sRgMWC5zhV4GAGlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nliYj-003TSr-1l; Tue, 03 May 2022 02:46:41 +0000
+	id 1nlifl-003UVw-5n; Tue, 03 May 2022 02:53:57 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nliYf-003TQu-Q5; Tue, 03 May 2022 02:46:39 +0000
-X-UUID: 90a66203c9e542aab03a000d19e8e5a3-20220502
+ id 1nlifh-003UTm-49; Tue, 03 May 2022 02:53:56 +0000
+X-UUID: f2ae0603b09a46f1a9c69b07b10b80cf-20220502
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:44f92a0c-4fce-4c33-bd14-2cebe6bb8140, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:a7189110-1299-4753-990f-f351f15446e6, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:73a4792f-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:8dec41c7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 90a66203c9e542aab03a000d19e8e5a3-20220502
+X-UUID: f2ae0603b09a46f1a9c69b07b10b80cf-20220502
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 22173206; Mon, 02 May 2022 19:46:26 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 2 May 2022 19:46:24 -0700
+ with ESMTP id 1564961679; Mon, 02 May 2022 19:53:03 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 2 May 2022 19:53:01 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 3 May 2022 10:46:22 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 10:52:59 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 3 May 2022 10:46:22 +0800
-Message-ID: <0e01b8bbed83777e5babae4fb52b02eeaa6be931.camel@mediatek.com>
-Subject: Re: [PATCH v18 05/21] soc: mediatek: add mtk-mmsys config API for
- mt8195 vdosys1
+ Transport; Tue, 3 May 2022 10:52:59 +0800
+Message-ID: <47f043d8ee35509bcdd8e34d5c43145f00bb6171.camel@mediatek.com>
+Subject: Re: [PATCH v18 07/21] soc: mediatek: mmsys: modify reset controller
+ for MT8195 vdosys1
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "Matthias
  Brugger" <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -65,17 +64,17 @@ CC: <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
  Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 3 May 2022 10:46:22 +0800
-In-Reply-To: <3495576e99dae8aea9e5814849d896fe1dd8d831.camel@mediatek.com>
+Date: Tue, 3 May 2022 10:52:59 +0800
+In-Reply-To: <e413eebc2b4a48ba2e7119951e99f9823773c92a.camel@mediatek.com>
 References: <20220428105408.11189-1-nancy.lin@mediatek.com>
- <20220428105408.11189-6-nancy.lin@mediatek.com>
- <3495576e99dae8aea9e5814849d896fe1dd8d831.camel@mediatek.com>
+ <20220428105408.11189-8-nancy.lin@mediatek.com>
+ <e413eebc2b4a48ba2e7119951e99f9823773c92a.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220502_194637_927759_98615A8C 
-X-CRM114-Status: GOOD (  31.77  )
+X-CRM114-CacheID: sfid-20220502_195353_200791_C6D2396B 
+X-CRM114-Status: GOOD (  30.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,165 +95,212 @@ Hi CK,
 
 Thanks for the review.
 
-On Fri, 2022-04-29 at 16:40 +0800, CK Hu wrote:
+On Fri, 2022-04-29 at 17:05 +0800, CK Hu wrote:
 > Hi, Nancy:
 > 
 > On Thu, 2022-04-28 at 18:53 +0800, Nancy.Lin wrote:
-> > Add four mmsys config APIs. The config APIs are used for config
-> > mmsys reg. Some mmsys regs need to be set according to the
-> > HW engine binding to the mmsys simultaneously.
-> > 
-> > 1. mtk_mmsys_merge_async_config: config merge async width/height.
-> >    async is used for cross-clock domain synchronization.
-> > 2. mtk_mmsys_hdr_confing: config hdr backend async width/height.
-> > 3. mtk_mmsys_mixer_in_config and mtk_mmsys_mixer_in_config:
-> >    config mixer related settings.
+> > MT8195 vdosys1 has more than 32 reset bits and a different reset
+> > base
+> > than other chips. Modify mmsys for support 64 bit and different
+> > reset
+> > base. Add the number of reset bits in mmsys private data and move
+> > the
+> > whole "reset register code section" behind the "get mmsys->data"
+> > code
+> > section for getting the num_resets in mmsys->data.
+> 
+> It's better to break this patch into two patches.
+> 
+> 1. mmsys support 64 reset bits.
+> 2. add mt8195 mmsys reset support.
+> 
+> Regards,
+> CK
+> 
+OK, I will separate the patch.
+
+Regards,
+Nancy
 > > 
 > > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 > > Reviewed-by: AngeloGioacchino Del Regno <
 > > angelogioacchino.delregno@collabora.com>
 > > ---
-> >  drivers/soc/mediatek/mt8195-mmsys.h    |  6 ++++
-> >  drivers/soc/mediatek/mtk-mmsys.c       | 43
-> > ++++++++++++++++++++++++++
-> >  include/linux/soc/mediatek/mtk-mmsys.h |  9 ++++++
-> >  3 files changed, 58 insertions(+)
+> >  drivers/soc/mediatek/mt8195-mmsys.h |  1 +
+> >  drivers/soc/mediatek/mtk-mmsys.c    | 39 ++++++++++++++++++-------
+> > --
+> > --
+> >  drivers/soc/mediatek/mtk-mmsys.h    |  1 +
+> >  3 files changed, 27 insertions(+), 14 deletions(-)
 > > 
 > > diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
 > > b/drivers/soc/mediatek/mt8195-mmsys.h
-> > index 51031d75e81e..5469073e3073 100644
+> > index 5469073e3073..0a286fa5a824 100644
 > > --- a/drivers/soc/mediatek/mt8195-mmsys.h
 > > +++ b/drivers/soc/mediatek/mt8195-mmsys.h
-> > @@ -139,6 +139,12 @@
+> > @@ -139,6 +139,7 @@
 > >  #define MT8195_VDO1_MIXER_SOUT_SEL_IN				
 > > 0xf68
 > >  #define MT8195_MIXER_SOUT_SEL_IN_FROM_DISP_MIXER			
 > > 0
 > >  
-> > +#define MT8195_VDO1_MERGE0_ASYNC_CFG_WD	0xe30
-> > +#define MT8195_VDO1_HDRBE_ASYNC_CFG_WD	0xe70
-> > +#define MT8195_VDO1_HDR_TOP_CFG		0xd00
-> > +#define MT8195_VDO1_MIXER_IN1_ALPHA	0xd30
-> > +#define MT8195_VDO1_MIXER_IN1_PAD	0xd40
-> 
-> I would like to sort these by value.
-> 
-OK. I will refine it.
-
-> > +
-> >  static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[]
-> > =
-> > {
-> >  	{
-> >  		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+> > +#define MT8195_VDO1_SW0_RST_B		0x1d0
+> >  #define MT8195_VDO1_MERGE0_ASYNC_CFG_WD	0xe30
+> >  #define MT8195_VDO1_HDRBE_ASYNC_CFG_WD	0xe70
+> >  #define MT8195_VDO1_HDR_TOP_CFG		0xd00
 > > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
 > > b/drivers/soc/mediatek/mtk-mmsys.c
-> > index 03c75a82c8d3..7b262cefef85 100644
+> > index 0315813b7df6..5fae31e3316f 100644
 > > --- a/drivers/soc/mediatek/mtk-mmsys.c
 > > +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> > @@ -280,6 +280,49 @@ static const struct reset_control_ops
-> > mtk_mmsys_reset_ops = {
-> >  	.reset = mtk_mmsys_reset,
+> > @@ -20,6 +20,8 @@
+> >  #include "mt8195-mmsys.h"
+> >  #include "mt8365-mmsys.h"
+> >  
+> > +#define MMSYS_SW_RESET_PER_REG 32
+> > +
+> >  static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data
+> > =
+> > {
+> >  	.clk_driver = "clk-mt2701-mm",
+> >  	.routes = mmsys_default_routing_table,
+> > @@ -86,6 +88,7 @@ static const struct mtk_mmsys_driver_data
+> > mt8173_mmsys_driver_data = {
+> >  	.routes = mmsys_default_routing_table,
+> >  	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+> >  	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> > +	.num_resets = 32,
 > >  };
 > >  
-> > +static void mtk_mmsys_write_reg(struct device *dev, u32 offset,
-> > u32
-> > mask, u32 val)
-> > +{
-> > +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-> > +	u32 tmp;
-> > +
-> > +	tmp = readl(mmsys->regs + offset);
-> > +	tmp = (tmp & ~mask) | val;
-> > +	writel(tmp, mmsys->regs + offset);
-> > +}
-> 
-> It looks like that mtk_mmsys_ddp_connect() and
-> mtk_mmsys_ddp_disconnect() could call this function to simplify code.
-> So I would like this function to be an independent patch which also
-> simplify mtk_mmsys_ddp_connect() and mtk_mmsys_ddp_disconnect().
-> 
-> Regards,
-> CK
-> 
-OK, I will separate the mtk_mmsys_write_reg function to another patch.
-
-Regards,
-Nancy
-
-> > +
-> > +void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
-> > width, int height)
-> > +{
-> > +	mtk_mmsys_write_reg(dev, MT8195_VDO1_MERGE0_ASYNC_CFG_WD + 0x10
-> > * idx,
-> > +			    ~0, height << 16 | width);
-> > +}
-> > +EXPORT_SYMBOL_GPL(mtk_mmsys_merge_async_config);
-> > +
-> > +void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
-> > be_height)
-> > +{
-> > +	mtk_mmsys_write_reg(dev, MT8195_VDO1_HDRBE_ASYNC_CFG_WD, ~0,
-> > +			    be_height << 16 | be_width);
-> > +}
-> > +EXPORT_SYMBOL_GPL(mtk_mmsys_hdr_confing);
-> > +
-> > +void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool
-> > alpha_sel, u16 alpha,
-> > +			       u8 mode, u32 biwidth)
-> > +{
-> > +	mtk_mmsys_write_reg(dev, MT8195_VDO1_MIXER_IN1_ALPHA + (idx -
-> > 1) * 4, ~0,
-> > +			    alpha << 16 | alpha);
-> > +	mtk_mmsys_write_reg(dev, MT8195_VDO1_HDR_TOP_CFG, BIT(19 +
-> > idx),
-> > +			    alpha_sel << (19 + idx));
-> > +	mtk_mmsys_write_reg(dev, MT8195_VDO1_MIXER_IN1_PAD + (idx - 1)
-> > * 4,
-> > +			    GENMASK(31, 16) | GENMASK(1, 0), biwidth <<
-> > 16 | mode);
-> > +}
-> > +EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_config);
-> > +
-> > +void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
-> > bool channel_swap)
-> > +{
-> > +	mtk_mmsys_write_reg(dev, MT8195_VDO1_MIXER_IN1_PAD + (idx - 1)
-> > * 4, BIT(4),
-> > +			    channel_swap << 4);
-> > +}
-> > +EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_channel_swap);
-> > +
-> >  static int mtk_mmsys_probe(struct platform_device *pdev)
-> >  {
-> >  	struct device *dev = &pdev->dev;
-> > diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
-> > b/include/linux/soc/mediatek/mtk-mmsys.h
-> > index b4388ba43341..fe620929b0f9 100644
-> > --- a/include/linux/soc/mediatek/mtk-mmsys.h
-> > +++ b/include/linux/soc/mediatek/mtk-mmsys.h
-> > @@ -73,4 +73,13 @@ void mtk_mmsys_ddp_disconnect(struct device
-> > *dev,
-> >  			      enum mtk_ddp_comp_id cur,
-> >  			      enum mtk_ddp_comp_id next);
+> >  static const struct mtk_mmsys_match_data mt8173_mmsys_match_data =
+> > {
+> > @@ -100,6 +103,7 @@ static const struct mtk_mmsys_driver_data
+> > mt8183_mmsys_driver_data = {
+> >  	.routes = mmsys_mt8183_routing_table,
+> >  	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+> >  	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> > +	.num_resets = 32,
+> >  };
 > >  
-> > +void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
-> > width, int height);
+> >  static const struct mtk_mmsys_match_data mt8183_mmsys_match_data =
+> > {
+> > @@ -114,6 +118,7 @@ static const struct mtk_mmsys_driver_data
+> > mt8186_mmsys_driver_data = {
+> >  	.routes = mmsys_mt8186_routing_table,
+> >  	.num_routes = ARRAY_SIZE(mmsys_mt8186_routing_table),
+> >  	.sw0_rst_offset = MT8186_MMSYS_SW0_RST_B,
+> > +	.num_resets = 32,
+> >  };
+> >  
+> >  static const struct mtk_mmsys_match_data mt8186_mmsys_match_data =
+> > {
+> > @@ -148,6 +153,8 @@ static const struct mtk_mmsys_driver_data
+> > mt8195_vdosys1_driver_data = {
+> >  	.clk_driver = "clk-mt8195-vdo1",
+> >  	.routes = mmsys_mt8195_routing_table,
+> >  	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
+> > +	.sw0_rst_offset = MT8195_VDO1_SW0_RST_B,
+> > +	.num_resets = 64,
+> >  };
+> >  
+> >  static const struct mtk_mmsys_match_data mt8195_mmsys_match_data =
+> > {
+> > @@ -234,18 +241,22 @@ static int mtk_mmsys_reset_update(struct
+> > reset_controller_dev *rcdev, unsigned l
+> >  {
+> >  	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys,
+> > rcdev);
+> >  	unsigned long flags;
+> > +	u32 offset;
+> >  	u32 reg;
+> >  
+> > +	offset = (id / MMSYS_SW_RESET_PER_REG) * sizeof(u32);
+> > +	id = id % MMSYS_SW_RESET_PER_REG;
 > > +
-> > +void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
-> > be_height);
+> >  	spin_lock_irqsave(&mmsys->lock, flags);
+> >  
+> > -	reg = readl_relaxed(mmsys->regs + mmsys->data->sw0_rst_offset);
+> > +	reg = readl_relaxed(mmsys->regs + mmsys->data->sw0_rst_offset +
+> > offset);
+> >  
+> >  	if (assert)
+> >  		reg &= ~BIT(id);
+> >  	else
+> >  		reg |= BIT(id);
+> >  
+> > -	writel_relaxed(reg, mmsys->regs + mmsys->data->sw0_rst_offset);
+> > +	writel_relaxed(reg, mmsys->regs + mmsys->data->sw0_rst_offset +
+> > offset);
+> >  
+> >  	spin_unlock_irqrestore(&mmsys->lock, flags);
+> >  
+> > @@ -358,18 +369,6 @@ static int mtk_mmsys_probe(struct
+> > platform_device *pdev)
+> >  		return ret;
+> >  	}
+> >  
+> > -	spin_lock_init(&mmsys->lock);
+> > -
+> > -	mmsys->rcdev.owner = THIS_MODULE;
+> > -	mmsys->rcdev.nr_resets = 32;
+> > -	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+> > -	mmsys->rcdev.of_node = pdev->dev.of_node;
+> > -	ret = devm_reset_controller_register(&pdev->dev, &mmsys-
+> > > rcdev);
+> > 
+> > -	if (ret) {
+> > -		dev_err(&pdev->dev, "Couldn't register mmsys reset
+> > controller: %d\n", ret);
+> > -		return ret;
+> > -	}
+> > -
+> >  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> >  	if (!res) {
+> >  		dev_err(dev, "Couldn't get mmsys resource\n");
+> > @@ -391,6 +390,18 @@ static int mtk_mmsys_probe(struct
+> > platform_device *pdev)
+> >  		mmsys->data = match_data->drv_data[0];
+> >  	}
+> >  
+> > +	spin_lock_init(&mmsys->lock);
 > > +
-> > +void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool
-> > alpha_sel, u16 alpha,
-> > +			       u8 mode, u32 biwidth);
+> > +	mmsys->rcdev.owner = THIS_MODULE;
+> > +	mmsys->rcdev.nr_resets = mmsys->data->num_resets;
+> > +	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+> > +	mmsys->rcdev.of_node = pdev->dev.of_node;
+> > +	ret = devm_reset_controller_register(&pdev->dev, &mmsys-
+> > > rcdev);
+> > 
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Couldn't register mmsys reset
+> > controller: %d\n", ret);
+> > +		return ret;
+> > +	}
 > > +
-> > +void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
-> > bool channel_swap);
-> > +
-> >  #endif /* __MTK_MMSYS_H */
+> >  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+> >  	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
+> >  	if (ret)
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.h
+> > b/drivers/soc/mediatek/mtk-mmsys.h
+> > index f01ba206481d..20a271b80b3b 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.h
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> > @@ -92,6 +92,7 @@ struct mtk_mmsys_driver_data {
+> >  	const struct mtk_mmsys_routes *routes;
+> >  	const unsigned int num_routes;
+> >  	const u16 sw0_rst_offset;
+> > +	const u32 num_resets;
+> >  };
+> >  
+> >  struct mtk_mmsys_match_data {
 > 
 > 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> 
+https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!37A2w0NcqLEmnOjlfkwXBc6vFYTa1jdCaXf-l36j6UEkMcirkUnkVuNLUgDaEjX4$
+>  
 
 
 _______________________________________________
