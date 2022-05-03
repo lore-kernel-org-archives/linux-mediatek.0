@@ -4,81 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 014C3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 09:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64E2AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 09:50:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jPndSUq6Jpy0rjYPqHXADjR2f0NNFrqqkuYqQOOy04o=; b=hHMpoiyMLSijIp
-	4YizWBY2Aw0dlXNrts6QyXgHla286ZVWFy1elBIKhG7B5W4GEYSTu0BVeKn/mC7EjXiXzFMzbX6es
-	C5YiSBtibEVGB6lbwJYPfHpDePXnA/imtSziYokjemU2S4y4oJ5VdPmW0DHWpJZUy9RWo7nEPZWmn
-	2q+F3JyrcZwtT4xmj/2hJGc/IZjIT3vt9GNxoUipYT7GyK3p06mlpqEExJ+zKqPqb2ry82sahSc79
-	44QZLnRcJPdubQcjIY9bcSdgNEobmv3e1/kTpKkI0UV3mDt6TS3jF5AHqfubPGaSHEbMswVA1w1t/
-	DprJY/OYeIWy9PNko1oA==;
+	List-Owner; bh=BNn7ujL71lWzmtourghoblGbX/M0xyIJjfWbE4I+jOQ=; b=spHCSDJwLMiojS
+	3X4dyvGCDhkCW3NcKC+YxnUFGX9m+9CpSimPa6G9jSwbfmGV17Yh1RlhyxuRUPUeaoolioMV9GE6t
+	0DQHhBwMMv8CHjxsz/6mlFo2otr/UMlbc+x7gasxRnQlo01Se8JQ5O/p+SH2R7uKl8889ezkz88Rn
+	b8H0HBChEZc50oHNEkjyAgHbAMyVVTC+J2GHp9ncvSVlUGXBAGk+3PM1mNs3sz/m7apATuKb1ssis
+	IIppvpdPx9Pdp3e1J07MwIbtADzOodHIm9xzYzac2XZ7N95fTag+kBYw4fjn49ylYpA2r4+p3TmHm
+	+TQilPb0SDjBM7hg++zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlp9b-004vzr-Ap; Tue, 03 May 2022 09:49:11 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1nlpAg-004wZj-LN; Tue, 03 May 2022 09:50:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlp8f-004vUQ-Ew
- for linux-mediatek@lists.infradead.org; Tue, 03 May 2022 09:48:17 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id a21so19241799edb.1
- for <linux-mediatek@lists.infradead.org>; Tue, 03 May 2022 02:48:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=ia83NWe8LX9zGfMIBGWxWbf+jhXbsrN3kDN4N4rBK0Y=;
- b=hk7HN11Jv7N88CzppbvASPBZp9ZpBdDXCQRf7G19x30QvRcEuhRcRQRGepvwNsHqla
- 6RplJLMdOo3CBysoleUkcwEEqJl+yKoLf9sYQYZgcMWXAelOe2j8KYMjSpN4uQ28V9Iy
- 4Mu5J8SCb4o3E5zHKXxoM2AJM9GN+lI5+P6IWawVR+alB7/EKQgk75UMPnIthh0hXhd0
- ezeHYwD1TAyg0Av7SQ9QBPhdm7LGuXkytGf9vjGi3SYsKphKXgpWvUoaObK7FRTGOV/R
- krXVbyJgO5MfS5GzgkJMsvBArVpW9kaVWxEAr4Yf+qifdZehj+WNx+mQLO65MixBl8bL
- 6hHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=ia83NWe8LX9zGfMIBGWxWbf+jhXbsrN3kDN4N4rBK0Y=;
- b=CD4mAOFjw6x0XpVY68CuEaoMa8UF1EvacMB0UjyugfUurU0DQJN4yXH5QI/eo8/Est
- SrjQmbCk/H+XhEwS8nZQHV1QQK+WsdD7+g42jDkYWY5cmclpJ+dobXYJuES+c80ys5lX
- Bs4Q4mX6exMomG7vyH/IUfiETAaEq7SQWd307kRG/nD4mk5tCtFIvfjoa37V8lbMAvdT
- ulASldhEE3zf3BETUccLEryuwSLRW566feVigquWBIiWgGO7iEkQPkrJ4XK5SdsEVrv+
- lB57Hf2GQx2CbEz0dGwPJul+xuMYEePcUPrb5lZEPsJXBcDI/HZ0a5IORxUE1i4dFHnU
- jVbw==
-X-Gm-Message-State: AOAM531naWnvErlS8fpooG0Yz4FfDibffh9pdN+Kqjja132sXl1Z0RAX
- 181mXTXDgOQhi7m2bDMdGw3cog==
-X-Google-Smtp-Source: ABdhPJyRBzzlCNn9yAoYuCi1t/fyhNT55q/wMox/p3Nsux+wm2joqDdAE60nwyosH7YQ3InoEUEoQw==
-X-Received: by 2002:a05:6402:28b1:b0:425:c39e:b773 with SMTP id
- eg49-20020a05640228b100b00425c39eb773mr16587869edb.237.1651571291277; 
- Tue, 03 May 2022 02:48:11 -0700 (PDT)
-Received: from [192.168.0.201] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- zp1-20020a17090684e100b006f3ef214defsm4408678ejb.85.2022.05.03.02.48.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 May 2022 02:48:10 -0700 (PDT)
-Message-ID: <9110244a-9e75-40e6-4c82-d2ef149e0e6a@linaro.org>
-Date: Tue, 3 May 2022 11:48:09 +0200
+ id 1nlp9Y-004vxP-JF; Tue, 03 May 2022 09:49:10 +0000
+X-UUID: 03c6c757c7504602a7b942355b2f391c-20220503
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:70a26dc5-60d1-416a-93e3-334d4173512c, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:e12a882f-6199-437e-8ab4-9920b4bc5b76,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 03c6c757c7504602a7b942355b2f391c-20220503
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 310338116; Tue, 03 May 2022 02:49:03 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 02:39:01 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 3 May 2022 17:39:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 3 May 2022 17:39:00 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
+ <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
+CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
+ <chun-jie.chen@mediatek.com>, <wenst@chromium.org>,
+ <runyang.chen@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-clk@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH v6 12/16] dt-bindings: arm: mediatek: Add #reset-cells
+ property for MT8192/MT8195
+Date: Tue, 3 May 2022 17:38:52 +0800
+Message-ID: <20220503093856.22250-13-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
+References: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH] dt-bindings: mfd: Add bindings child nodes for the
- Mediatek MT6360
-Content-Language: en-US
-To: Gene Chen <gene.chen.richtek@gmail.com>, lee.jones@linaro.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- gene_chen@richtek.com, cy_huang@richtek.com
-References: <20220503062843.12516-1-gene.chen.richtek@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220503062843.12516-1-gene.chen.richtek@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_024813_584540_CAE6CA3B 
-X-CRM114-Status: GOOD (  18.34  )
+X-CRM114-CacheID: sfid-20220503_024908_681061_BC67042C 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,97 +86,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/05/2022 08:28, Gene Chen wrote:
-> From: Gene Chen <gene_chen@richtek.com>
-> 
-> Add bindings child nodes for the Mediatek MT6360
-> 
-> Signed-off-by: Gene Chen <gene_chen@richtek.com>
-> Link: https://lore.kernel.org/all/YmqTzlrVL5KaVPuz@robh.at.kernel.org/
-> ---
->  .../bindings/mfd/mediatek,mt6360.yaml         | 212 +++++++++++++++++-
->  1 file changed, 201 insertions(+), 11 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-> index 4d8769f3748c..b3eecf661bc1 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-> @@ -37,6 +37,18 @@ properties:
->      description:
->        The first cell is the IRQ number.
->  
-> +  regulators:
-> +    $ref: ../regulator/mt6360-regulator.yaml
-> +
-> +  charger:
-> +    $ref: ../power/supply/mt6360_charger.yaml
-> +
-> +  tcpc:
-> +    $ref: ../usb/mediatek,mt6360-tcpc.yaml
-> +
-> +  led-controller:
-> +    $ref: ../leds/leds-mt6360.yaml
+We will use the infra_ao reset which is defined in mt8192-sys-clock
+and mt8195-sys-clock.
+The value of reset-cells is 1.
 
-Full paths everywhere here, so:
-/schemas/leds/leds-mt6360.yaml#
+Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml       | 3 +++
+ .../bindings/arm/mediatek/mediatek,mt8195-sys-clock.yaml       | 3 +++
+ 2 files changed, 6 insertions(+)
 
-> +
->  required:
->    - compatible
->    - reg
-> @@ -51,17 +63,195 @@ examples:
->    - |
->      #include <dt-bindings/interrupt-controller/irq.h>
->      #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
-> +    #include <dt-bindings/leds/common.h>
-> +    #include <dt-bindings/usb/pd.h>
->      i2c {
-> -        #address-cells = <1>;
-> -        #size-cells = <0>;
-> -
-> -        pmic@34 {
-> -            compatible = "mediatek,mt6360";
-> -            reg = <0x34>;
-> -            wakeup-source;
-> -            interrupts-extended = <&gpio26 0 IRQ_TYPE_LEVEL_LOW>;
-> -            interrupt-names = "IRQB";
-> -            interrupt-controller;
-> -            #interrupt-cells = <1>;
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+index 5705bcf1fe47..27f79175c678 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+@@ -29,6 +29,9 @@ properties:
+   '#clock-cells':
+     const: 1
+ 
++  '#reset-cells':
++    const: 1
++
+ required:
+   - compatible
+   - reg
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-sys-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-sys-clock.yaml
+index 57a1503d95fe..95b6bdf99936 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-sys-clock.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8195-sys-clock.yaml
+@@ -37,6 +37,9 @@ properties:
+   '#clock-cells':
+     const: 1
+ 
++  '#reset-cells':
++    const: 1
++
+ required:
+   - compatible
+   - reg
+-- 
+2.18.0
 
-Previous indentation was correct, don't change it from 4 spaces.
-
-> +      #address-cells = <1>;
-> +      #size-cells = <0>;
-> +
-> +      mt6360@34 {
-
-What is the reason to change correct name to wrong name when adding ONLY
-child nodes?
-
-Please split any unrelated changes to separate patches, if they are
-reasonable. Using wrong node name is not reasonable.
-
-(...)
-
-> +              port@2 {
-> +                reg = <2>;
-> +                endpoint {
-> +                  remote-endpoint = <&dp_aux>;
-> +                };
-> +              };
-> +            };
-> +          };
-> +        };
-> +
-
-no need for blank line
-
-> +      };
->      };
-
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
