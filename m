@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D07C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 933CAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 07:41:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5HXESV7onEHEGzIWhRWoNIIJUG1S8AlrAKZZIvAnBVM=; b=n1NCkzK9OSxPno
-	Xu5MR7qX/AvIGSUGdCGDeDMZjEtmsscMNKOMW3isF0UTWGz1nan3C4LZGSRcmoaICwtTNornjYnnW
-	GBrLgKkhQY0HQN4AD2uhJNfsn/pC47MuIJnTQaCoRbCPHZjjwYtonEVzrDikv9AhLTubQiaXqxWf+
-	vM+M1QX/rjYRKS6d1SgbE7UaHdMPcIL8uk0EM6OR5T8JX7GyqWqgvLAJ+KBXvve98Qm34ReLM0BFX
-	hH/ViRJymPUbKDXeFW1BAwdgOpjuYtTNOB6ZALVD0VogIKaNoAH09Pe3vOAu76pt+TInkMmZ84t1Y
-	cSze6vuJZdrZ71mLhzmg==;
+	List-Owner; bh=5x5ORV7Ajc9THUfLv/rpHEG2ixg+WrQp4Wx30SdY17A=; b=H+bf1Rl5qut+Bm
+	cMeqjB18B59YguDMyiV2PduQd15m1qzulp9VDI2CBu0FP2nV87xls4iLtYf3aArlR+6Wxg89da5Yw
+	YNXeNWkuvsq8jCo07KLBhVnpvYvRiQcOeOaNVOARknsbfDtVHPaYYE+VHx9EPzhtOvnuaQ7OWK7lq
+	6LwSO4fb095dr6xWItB8XYQtwsprXHim4Lvlam2SSqYYP8MeSm+s5nTMWhnIY3mzPgJJZNUmQkoAU
+	EbPWgaQgsS2AAPmBuCfzpkjZ0ykBy6ThXXv5lQL4pgQ30A2I8wCiIwia4dgbshasP/XYAbiWq21H5
+	OcMNagCG8n/bxSKBRTJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nln8x-004Mbk-F4; Tue, 03 May 2022 07:40:23 +0000
+	id 1nlnAM-004NF8-AA; Tue, 03 May 2022 07:41:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlmuw-004Fws-Aw; Tue, 03 May 2022 07:25:55 +0000
-X-UUID: b40923f0eb0f4fe28ff762925614f07d-20220503
+ id 1nlmux-004Fwa-MJ; Tue, 03 May 2022 07:25:57 +0000
+X-UUID: 9f15b42e219345a9be506685f226eac5-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:e337e234-21a2-45da-9ad9-d5d69239359e, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:9a0f3785-d5d5-48b6-890f-2146088de3b9, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:e00c4bc7-85ee-4ac1-ac05-bd3f1e72e732,
+X-CID-META: VersionHash:faefae9, CLOUDID:df0c4bc7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: b40923f0eb0f4fe28ff762925614f07d-20220503
+X-UUID: 9f15b42e219345a9be506685f226eac5-20220503
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1981052432; Tue, 03 May 2022 00:25:45 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1109954024; Tue, 03 May 2022 00:25:45 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 00:18:28 -0700
+ 15.0.1497.2; Tue, 3 May 2022 00:19:03 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 3 May 2022 15:18:26 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 3 May 2022 15:19:02 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 3 May 2022 15:18:25 +0800
+ Transport; Tue, 3 May 2022 15:19:00 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
  Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
@@ -61,17 +61,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
  Del Regno" <angelogioacchino.delregno@collabora.com>,
  <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>, 
  <chengci.xu@mediatek.com>
-Subject: [PATCH v7 27/36] iommu/mediatek: Remove mtk_iommu.h
-Date: Tue, 3 May 2022 15:14:18 +0800
-Message-ID: <20220503071427.2285-28-yong.wu@mediatek.com>
+Subject: [PATCH v7 32/36] iommu/mediatek: Get the proper bankid for multi banks
+Date: Tue, 3 May 2022 15:14:23 +0800
+Message-ID: <20220503071427.2285-33-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
 References: <20220503071427.2285-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_002554_445147_BCBB4772 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20220503_002555_762093_85512F5A 
+X-CRM114-Status: GOOD (  23.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,134 +88,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently there is a suspend structure in the header file. It's no need
-to keep a header file only for this. Move these into the c file and rm
-this header file.
+We preassign some ports in a special bank via the new defined
+banks_portmsk. Put it in the plat_data means it is not expected to be
+adjusted dynamically.
+
+If the iommu id in the iommu consumer's dtsi node is inside this
+banks_portmsk, then we switch it to this special iommu bank, and
+initialise the IOMMU bank HW.
+
+Each bank has the independent pgtable(4GB iova range). Each bank
+is a independent iommu domain/group. Currently we don't separate different
+iova ranges inside a bank.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c    | 14 +++++++++++++-
- drivers/iommu/mtk_iommu.h    | 32 --------------------------------
- drivers/iommu/mtk_iommu_v1.c | 11 ++++++++---
- 3 files changed, 21 insertions(+), 36 deletions(-)
- delete mode 100644 drivers/iommu/mtk_iommu.h
+ drivers/iommu/mtk_iommu.c | 55 ++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 48 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 7383a5df6021..349640bcbd01 100644
+index 023bb7d3ffb2..5f3e88c44514 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -14,6 +14,7 @@
- #include <linux/io.h>
- #include <linux/iommu.h>
- #include <linux/iopoll.h>
-+#include <linux/io-pgtable.h>
- #include <linux/list.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-@@ -30,7 +31,7 @@
- #include <asm/barrier.h>
- #include <soc/mediatek/smi.h>
+@@ -191,6 +191,7 @@ struct mtk_iommu_plat_data {
  
--#include "mtk_iommu.h"
-+#include <dt-bindings/memory/mtk-memory-port.h>
- 
- #define REG_MMU_PT_BASE_ADDR			0x000
- #define MMU_PT_ADDR_MASK			GENMASK(31, 7)
-@@ -166,6 +167,17 @@ struct mtk_iommu_iova_region {
- 	unsigned long long	size;
+ 	u8                  banks_num;
+ 	bool                banks_enable[MTK_IOMMU_BANK_MAX];
++	unsigned int        banks_portmsk[MTK_IOMMU_BANK_MAX];
+ 	unsigned char       larbid_remap[MTK_LARB_COM_MAX][MTK_LARB_SUBCOM_MAX];
  };
  
-+struct mtk_iommu_suspend_reg {
-+	u32			misc_ctrl;
-+	u32			dcm_dis;
-+	u32			ctrl_reg;
-+	u32			int_control0;
-+	u32			int_main_control;
-+	u32			ivrp_paddr;
-+	u32			vld_pa_rng;
-+	u32			wr_len_ctrl;
-+};
+@@ -467,6 +468,30 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++static unsigned int mtk_iommu_get_bank_id(struct device *dev,
++					  const struct mtk_iommu_plat_data *plat_data)
++{
++	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
++	unsigned int i, portmsk = 0, bankid = 0;
 +
- struct mtk_iommu_plat_data {
- 	enum mtk_iommu_plat	m4u_plat;
- 	u32			flags;
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-deleted file mode 100644
-index 305243e18aa9..000000000000
---- a/drivers/iommu/mtk_iommu.h
-+++ /dev/null
-@@ -1,32 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0-only */
--/*
-- * Copyright (c) 2015-2016 MediaTek Inc.
-- * Author: Honghui Zhang <honghui.zhang@mediatek.com>
-- */
--
--#ifndef _MTK_IOMMU_H_
--#define _MTK_IOMMU_H_
--
--#include <linux/device.h>
--#include <linux/io.h>
--#include <linux/io-pgtable.h>
--#include <linux/iommu.h>
--#include <linux/spinlock.h>
--#include <soc/mediatek/smi.h>
--#include <dt-bindings/memory/mtk-memory-port.h>
--
--struct mtk_iommu_suspend_reg {
--	union {
--		u32			standard_axi_mode;/* v1 */
--		u32			misc_ctrl;/* v2 */
--	};
--	u32				dcm_dis;
--	u32				ctrl_reg;
--	u32				int_control0;
--	u32				int_main_control;
--	u32				ivrp_paddr;
--	u32				vld_pa_rng;
--	u32				wr_len_ctrl;
--};
--
--#endif
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 6d1c09c91e1f..3d1f0897d1cc 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -7,7 +7,6 @@
-  *
-  * Based on driver/iommu/mtk_iommu.c
-  */
--#include <linux/memblock.h>
- #include <linux/bug.h>
- #include <linux/clk.h>
- #include <linux/component.h>
-@@ -28,10 +27,9 @@
- #include <linux/spinlock.h>
- #include <asm/barrier.h>
- #include <asm/dma-iommu.h>
--#include <linux/init.h>
-+#include <dt-bindings/memory/mtk-memory-port.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
- #include <soc/mediatek/smi.h>
--#include "mtk_iommu.h"
- 
- #define REG_MMU_PT_BASE_ADDR			0x000
- 
-@@ -87,6 +85,13 @@
-  */
- #define M2701_IOMMU_PGT_SIZE			SZ_4M
- 
-+struct mtk_iommu_suspend_reg {
-+	u32			standard_axi_mode;
-+	u32			dcm_dis;
-+	u32			ctrl_reg;
-+	u32			int_control0;
-+};
++	if (plat_data->banks_num == 1)
++		return bankid;
 +
- struct mtk_iommu_data {
- 	void __iomem			*base;
- 	int				irq;
++	for (i = 0; i < fwspec->num_ids; i++)
++		portmsk |= BIT(MTK_M4U_TO_PORT(fwspec->ids[i]));
++
++	for (i = 0; i < plat_data->banks_num && i < MTK_IOMMU_BANK_MAX; i++) {
++		if (!plat_data->banks_enable[i])
++			continue;
++
++		if (portmsk & plat_data->banks_portmsk[i]) {
++			bankid = i;
++			break;
++		}
++	}
++	return bankid; /* default is 0 */
++}
++
+ static int mtk_iommu_get_iova_region_id(struct device *dev,
+ 					const struct mtk_iommu_plat_data *plat_data)
+ {
+@@ -619,13 +644,14 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 	struct list_head *hw_list = data->hw_list;
+ 	struct device *m4udev = data->dev;
+ 	struct mtk_iommu_bank_data *bank;
+-	unsigned int bankid = 0;
++	unsigned int bankid;
+ 	int ret, region_id;
+ 
+ 	region_id = mtk_iommu_get_iova_region_id(dev, data->plat_data);
+ 	if (region_id < 0)
+ 		return region_id;
+ 
++	bankid = mtk_iommu_get_bank_id(dev, data->plat_data);
+ 	mutex_lock(&dom->mutex);
+ 	if (!dom->bank) {
+ 		/* Data is in the frstdata in sharing pgtable case. */
+@@ -797,27 +823,42 @@ static void mtk_iommu_release_device(struct device *dev)
+ 	iommu_fwspec_free(dev);
+ }
+ 
++static int mtk_iommu_get_group_id(struct device *dev, const struct mtk_iommu_plat_data *plat_data)
++{
++	unsigned int bankid;
++
++	/*
++	 * If the bank function is enabled, each bank is a iommu group/domain.
++	 * Otherwise, each iova region is a iommu group/domain.
++	 */
++	bankid = mtk_iommu_get_bank_id(dev, plat_data);
++	if (bankid)
++		return bankid;
++
++	return mtk_iommu_get_iova_region_id(dev, plat_data);
++}
++
+ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+ {
+ 	struct mtk_iommu_data *c_data = dev_iommu_priv_get(dev), *data;
+ 	struct list_head *hw_list = c_data->hw_list;
+ 	struct iommu_group *group;
+-	int regionid;
++	int groupid;
+ 
+ 	data = mtk_iommu_get_frst_data(hw_list);
+ 	if (!data)
+ 		return ERR_PTR(-ENODEV);
+ 
+-	regionid = mtk_iommu_get_iova_region_id(dev, data->plat_data);
+-	if (regionid < 0)
+-		return ERR_PTR(regionid);
++	groupid = mtk_iommu_get_group_id(dev, data->plat_data);
++	if (groupid < 0)
++		return ERR_PTR(groupid);
+ 
+ 	mutex_lock(&data->mutex);
+-	group = data->m4u_group[regionid];
++	group = data->m4u_group[groupid];
+ 	if (!group) {
+ 		group = iommu_group_alloc();
+ 		if (!IS_ERR(group))
+-			data->m4u_group[regionid] = group;
++			data->m4u_group[groupid] = group;
+ 	} else {
+ 		iommu_group_ref_get(group);
+ 	}
 -- 
 2.18.0
 
