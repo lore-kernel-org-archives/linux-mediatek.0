@@ -4,86 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12086C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 15:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FB62C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 15:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F/mV69hoiA4dMq31JWJSK6GGJXc7mgqL5lEfovf8D14=; b=UaEwlKcp1Ao7PM
-	SKHyIBFVlW4/M65D55EujOLsd10UNRMwqLYFuanD+lFE55R5zsawNmIXbeUA7RdII6nvy2ybbGM8d
-	Xz/At6txwswa8VKhwOWkZwpZg5MfTBTQN973y69k5TogorGYNEXh2mzX+BfPWIoZHZ1m0NMUyONcb
-	vc/MeobIOvittHXKfLZDaHF7ta4hvRzI35WbnBM1RSAgqvEwBH21E6csD1dmpr3DTqv652xUE9OI3
-	bGdd6CDHxHk+JSbvh5XZNQnWAFs0r7X4wDOMUxTjqJSd3S6vWC1EwPpHgYcAHDbS+qOlhWTng1Fgc
-	FaTpwf0Ztl4Ca9AAorwA==;
+	List-Owner; bh=iKN5jxG+e3trMMCMnDB+oU3EUmRjJHV1wPYNwQutpYQ=; b=ZOTdey0Y10M5lm
+	DP1x3sCfyQI2CgNC3vazmZvqlO6m4aCn7EZxNwnktgh8iDj6NTvrGKNQX2geDsnDgBvpEHhnwxheQ
+	7oUW6CvooA2A55pu650E9Kv6AOQt0ucxnL0eFx36+Zbz7gbIw7z5ZKYZV9TtjqGxNcPhuzYeQnF4T
+	ou4mvNdIzyCY9NAA7pOIIc9LGtaaJ94jnwKzztz4ZZrD1Susy+QHLsbKV4xG3cI+tNqE5nE/cKLfj
+	5iJLcNDm4hwMXEDm/mOVvOYhOXCHM8Jq0gLbWgPHHPsKblsnPvmwcPb/RDhgaDnSu7iaCIeIcS0F4
+	5ayxMWchxB1WcssmZ0Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlufv-006Ylq-Ls; Tue, 03 May 2022 15:42:55 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1nluo8-006b3O-Nq; Tue, 03 May 2022 15:51:24 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlufs-006YhT-GU; Tue, 03 May 2022 15:42:54 +0000
-Received: by mail-wr1-x436.google.com with SMTP id u3so23950320wrg.3;
- Tue, 03 May 2022 08:42:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=XDylvy7QE0kYD97hsx4drglUv8+IINBzIZbB9OPqGXE=;
- b=ZJYwAxzSGuKry0eJEW053CQ3oAluqeMsuTU14GRLW87JrLEj87UUdoPmmw7tk1XGoD
- pCRoW39Vy/AfTPYvcxFrpvSgEn782zg/+C35/mvCs4EueKcWcnFj/gVwUswX5R0UHd6L
- xCmZN/3n2B993Zbm/EaaIMAhGm9S6L7Itjb5q0SonKluuQDklES1idhgBYDpKFNoC/KI
- xWqYCeH7QOXogOLeRs31Mz+PvUW534/PjZDSEJRGGz1IvikdIN+VL0C1+M9ZOczUxbkT
- +lhBMwARAq+YifD+YhSd2ltvLkLpeleVyA71PwXhhrzEAy9Dn6m2YicXWoFGDp4qdbR9
- uOtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=XDylvy7QE0kYD97hsx4drglUv8+IINBzIZbB9OPqGXE=;
- b=aXC4CJwGqbc1kiwxzs2pbrx+pg8WFcKXNtzy4rmldp4jO/OfPVPdSuk1FenuDntGh/
- CZTKCuzSI82imuV3OtqW9dgb6fk/NYZ7pE647r+9Rg/8KiXT8cTGordph1aQ3aZnPES3
- NJKXk90NQmoYhWVtZbjUhK+uEMxSuvttWcWWlZrAXUzWP5L+Smg2AZEsqzSEAvsqXG9P
- XNzJnVclXN+Y7J1kcANqPqSmgU3qnFZw3bJ8JM85JFxgjodVD8BCOBriEuFUcBHtstB4
- 061MnleStxzlm7aUEvFizYnDQQ8xTwP4m8l4qJey5/tDOZVu/bY4XEYIbWyRaPPJnCAh
- 5Lpw==
-X-Gm-Message-State: AOAM5324gQbrNWQaJyhdxRYWm54a+h2luwX7cMU4IbnHIgkLOp27YK+u
- YhHcd89jyOpTZNxJwmyzlVM=
-X-Google-Smtp-Source: ABdhPJwLLvLMdvhxJHphyb/0OfT7WhR6rKov3KwUfnfYP9M4/JSvhMG6BrphlKUfnuLfVwFUtofWKQ==
-X-Received: by 2002:a05:6000:381:b0:20c:5e07:f75f with SMTP id
- u1-20020a056000038100b0020c5e07f75fmr5977802wrf.678.1651592569137; 
- Tue, 03 May 2022 08:42:49 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
- by smtp.gmail.com with ESMTPSA id
- s8-20020adfa288000000b0020c6b78eb5asm3971282wra.68.2022.05.03.08.42.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 May 2022 08:42:48 -0700 (PDT)
-Message-ID: <b82985d5-984b-4de7-35f2-57b2085d9dc7@gmail.com>
-Date: Tue, 3 May 2022 17:42:44 +0200
+ id 1nluo6-006b2J-AL
+ for linux-mediatek@lists.infradead.org; Tue, 03 May 2022 15:51:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id B9441B81F52;
+ Tue,  3 May 2022 15:51:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A422C385A9;
+ Tue,  3 May 2022 15:51:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1651593077;
+ bh=iTiarTkByZ5RFQ9pQrV9iuj93cpQAxWxhkeao7MmLRY=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=oQLRr72ENUz0DJtAhTaDsSR5JQg0UUhqNY1z+mBh/J9QSVRMHq3PRd4+R0Uf0ZRYR
+ wvYXr7t4DqXElh0fWn+cV3KGPdz1EhPUvX42E0g5ScW0L03HtsHVTzQrBdTUM8Dl+I
+ slMVp9SF2zkRjLaubne8yTvOS7I9BEj1BHJiJdODXmgdP7TJNiHF7shbrJ+3tvSFTV
+ PO7dl2Qxu/tOu5b6RHspmYJ/i1ueBI4JQCN3H9qUqmoHHzW8hqQ5Yhz8X0/ReKrXDb
+ TSh5EkMwWPY5R+tMx/k2d1MrAbhfred1l7jiWM+KfwRKQ1V5OfB0W+1+1VP8Jg6obu
+ uOUJMjfGzjwAw==
+From: Mark Brown <broonie@kernel.org>
+To: dan.carpenter@oracle.com, gch981213@gmail.com
+Cc: linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-spi@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ gch981213@gmail.com
+In-Reply-To: <YmwjUcTKyQNrrn2g@kili>
+References: <YmwjUcTKyQNrrn2g@kili>
+Subject: Re: [PATCH] spi: mtk-snfi: preserve dma_mapping_error() error codes
+Message-Id: <165159307628.184303.16325175750153523597.b4-ty@kernel.org>
+Date: Tue, 03 May 2022 16:51:16 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v7 00/36] MT8195 and MT8186 IOMMU SUPPORT
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>, Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
- <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
- yen-chang.chen@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
- chengci.xu@mediatek.com
-References: <20220503071427.2285-1-yong.wu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_084252_619593_DD00A5AF 
-X-CRM114-Status: GOOD (  32.71  )
+X-CRM114-CacheID: sfid-20220503_085122_532923_0B2BE1B9 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,158 +67,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 29 Apr 2022 20:41:37 +0300, Dan Carpenter wrote:
+> Return -ENOMEM of there is a dma mapping error.  Do not return success.
+> 
+> 
 
+Applied to
 
-On 03/05/2022 09:13, Yong Wu wrote:
-> This patchset adds MT8195 and MT8186 iommu support.
-> 
-> MT8195 have 3 IOMMU HWs. 2 IOMMU HW is for multimedia, and 1 IOMMU HW is
-> for infra-master, like PCIe/USB.
-> 
-> About the 2 MM IOMMU HW, something like this:
-> 
->          IOMMU(VDO)          IOMMU(VPP)
->             |                   |
->        SMI_COMMON(VDO)      SMI_COMMON(VPP)
->        ---------------     ----------------
->        |      |   ...      |      |     ...
->      larb0 larb2  ...    larb1 larb3    ...
-> 
-> these two MM IOMMU HW share a pgtable.
-> 
-> About the INFRA IOMMU, it don't have larbs, the master connects the iommu
-> directly. It use a independent pgtable.
-> 
-> Also, mt8195 IOMMU bank supports. Normally the IOMMU register size only
-> is 0x1000. In this IOMMU HW, the register size is 5 * 0x1000. each 0x1000
-> is a bank. the banks' register look like this:
->       ----------------------------------------
->       |bank0  | bank1 | bank2 | bank3 | bank4|
->       ----------------------------------------
->       |global |
->       |control|         null
->       |regs   |
->       -----------------------------------------
->       |bank   |bank   |bank   |bank   |bank   |
->       |regs   |regs   |regs   |regs   |regs   |
->       |       |       |       |       |       |
->       -----------------------------------------
-> All the banks share some global control registers, and each bank have its
-> special bank registers, like pgtable base register, tlb operation registers,
-> the fault status registers.
->   
-> In mt8195, we enable this bank feature for infra iommu, We put PCIe in bank0
-> and USB in bank4. they have independent pgtable.
-> 
-> MT8186 is based on MT8195, it just has two patches.
-> 
-> Change note:
-> v7: 1) Update the changes from Matthias. like add a new function for readability.
->      2) Add mt8186 into this patchset, It may be helpful for maintainer to apply.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-For the whole series:
+Thanks!
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+[1/1] spi: mtk-snfi: preserve dma_mapping_error() error codes
+      commit: 73c1a5153ec8c53100b13bccafbb29cd502ee086
 
-> 
-> v6: https://lore.kernel.org/linux-iommu/20220407075726.17771-1-yong.wu@mediatek.com/
->      Rebase on v5.18-rc1.
-> 
-> v5: https://lore.kernel.org/linux-iommu/20220217113453.13658-1-yong.wu@mediatek.com
->     1) Base on next-20220216
->     2) Remove a patch for kmalloc for protect buffer. keep the kzalloc for it.
->     3) minor fix from AngeloGioacchino, like rename the error label name
->     (data_unlock to err_unlock).
->     Note, keep the TODO for component compare_of[26/34].
-> 
-> v4: https://lore.kernel.org/linux-iommu/20220125085634.17972-1-yong.wu@mediatek.com/
->     1) Base on v5.16-rc1
->     2) Base on tlb logic 2 patchset, some patches in v3 has already gone
->     through that patchset.
->     3) Due to the unreadable union for v1/v2(comment in 26/33 of v3), I
->     separate mtk_iommu_data for v1 and v2 totally, then remove mtk_iommu.h.
->     please see patch[26/35][27/35].
->     4) add two mutex for the internal data. patch[6/35][7/35].
->     5) add a new flag PM_CLK_AO.
-> 
-> v3: https://lore.kernel.org/linux-mediatek/20210923115840.17813-1-yong.wu@mediatek.com/
->      1) base on v5.15-rc1
->      2) Adjust devlink with smi-common, not use the property(sub-sommon).
->      3) Adjust tlb_flush_all flow,
->         a) Fix tlb_flush_all only is supported in bank0.
->         b) add tlb-flush-all in the resume callback.
->         c) remove the pm status checking in tlb-flush-all.
->         The reason are showed in the commit message.
->      4) Allow IOMMU_DOMAIN_UNMANAGED since PCIe VFIO use that.
->      5) Fix a clk warning and a null abort when unbind the iommu driver.
-> 
-> v2: https://lore.kernel.org/linux-mediatek/20210813065324.29220-1-yong.wu@mediatek.com/
->      1) Base on v5.14-rc1.
->      2) Fix build fail for arm32.
->      3) Fix dt-binding issue from Rob.
->      4) Fix the bank issue when tlb flush. v1 always use bank->base.
->      5) adjust devlink with smi-common since the node may be smi-sub-common.
->      6) other changes: like reword some commit message(removing many
->         "This patch..."); seperate serveral patches.
-> 
-> v1: https://lore.kernel.org/linux-mediatek/20210630023504.18177-1-yong.wu@mediatek.com/
->      Base on v5.13-rc1
-> 
-> Yong Wu (36):
->    dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
->    dt-bindings: mediatek: mt8195: Add binding for infra IOMMU
->    dt-bindings: mediatek: mt8186: Add binding for MM iommu
->    iommu/mediatek: Fix 2 HW sharing pgtable issue
->    iommu/mediatek: Add list_del in mtk_iommu_remove
->    iommu/mediatek: Remove clk_disable in mtk_iommu_remove
->    iommu/mediatek: Add mutex for m4u_group and m4u_dom in data
->    iommu/mediatek: Add mutex for data in the mtk_iommu_domain
->    iommu/mediatek: Adapt sharing and non-sharing pgtable case
->    iommu/mediatek: Add 12G~16G support for multi domains
->    iommu/mediatek: Add a flag DCM_DISABLE
->    iommu/mediatek: Add a flag STD_AXI_MODE
->    iommu/mediatek: Remove the granule in the tlb flush
->    iommu/mediatek: Always enable output PA over 32bits in isr
->    iommu/mediatek: Add SUB_COMMON_3BITS flag
->    iommu/mediatek: Add IOMMU_TYPE flag
->    iommu/mediatek: Contain MM IOMMU flow with the MM TYPE
->    iommu/mediatek: Adjust device link when it is sub-common
->    iommu/mediatek: Allow IOMMU_DOMAIN_UNMANAGED for PCIe VFIO
->    iommu/mediatek: Add a PM_CLK_AO flag for infra iommu
->    iommu/mediatek: Add infra iommu support
->    iommu/mediatek: Add PCIe support
->    iommu/mediatek: Add mt8195 support
->    iommu/mediatek: Only adjust code about register base
->    iommu/mediatek: Just move code position in hw_init
->    iommu/mediatek: Separate mtk_iommu_data for v1 and v2
->    iommu/mediatek: Remove mtk_iommu.h
->    iommu/mediatek-v1: Just rename mtk_iommu to mtk_iommu_v1
->    iommu/mediatek: Add mtk_iommu_bank_data structure
->    iommu/mediatek: Initialise bank HW for each a bank
->    iommu/mediatek: Change the domid to iova_region_id
->    iommu/mediatek: Get the proper bankid for multi banks
->    iommu/mediatek: Initialise/Remove for multi bank dev
->    iommu/mediatek: Backup/restore regsiters for multi banks
->    iommu/mediatek: mt8195: Enable multi banks for infra iommu
->    iommu/mediatek: Add mt8186 iommu support
-> 
->   .../bindings/iommu/mediatek,iommu.yaml        |  24 +-
->   drivers/iommu/mtk_iommu.c                     | 974 +++++++++++++-----
->   drivers/iommu/mtk_iommu.h                     | 101 --
->   drivers/iommu/mtk_iommu_v1.c                  | 235 +++--
->   .../dt-bindings/memory/mt8186-memory-port.h   | 217 ++++
->   .../dt-bindings/memory/mt8195-memory-port.h   | 408 ++++++++
->   include/dt-bindings/memory/mtk-memory-port.h  |   2 +
->   7 files changed, 1485 insertions(+), 476 deletions(-)
->   delete mode 100644 drivers/iommu/mtk_iommu.h
->   create mode 100644 include/dt-bindings/memory/mt8186-memory-port.h
->   create mode 100644 include/dt-bindings/memory/mt8195-memory-port.h
-> 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
