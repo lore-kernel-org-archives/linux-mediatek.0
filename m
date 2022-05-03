@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFF6DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 10:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7431C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 10:24:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vvuBRoOxMZewPpt2ZPO/S/I9A1dmxluH3hbHYCeafHM=; b=nCeElSAczldW14
-	05i/R3mn6esyihLWsqLHwnkfVzdPrYKLGEKYKPKifKSjzpUSNh3QEUHjOAQZzsBN1ujg128oS9pOq
-	F7Wi6bIy77VPHldHXQ6T26LUm7WUbug5A0vjUexbHQO13UBvZf48p6HSseFb8xPbhMDhk11Il8Y1V
-	h/AfWmI1WqrM/XvBtl4B/xKVs3SxUUIjZaudtHUKjYVucxLXCT/4lEYar3eEg/4bIs7lx0jiCCS5k
-	ZbEYQj3Muz943/wgK6xOuHSrjJhJOSPYUomrRY8UfHu42OPt+AVH6S2ZfUu1L+jal3QczCqZJG46Z
-	1dOFFjuUtcabH5VIXBAQ==;
+	List-Owner; bh=HBe3HVl97p1lRO/P4lFZta7Bf3Hguuf/fxd5OFf2D/o=; b=1tQ2fy4O8S3j1b
+	fj3oNfanJNBy18mZDv4CeHFg8bdaAmpUj702XCL9cI1Sldv2W5TA5smFQRn81EiKq5qzKwlX/US25
+	DEmdFmx8ZWjh/tb0u94DI8S++VQME7moZUkufxl9jPqk0tQFqktU/oZupKFgGAJHqjUsjY72SxTkF
+	o6otZj8isFWydrTUdRD3U7s/M3bhffL1qceiRHZ+R28cal2DMgbB3ypfmh50vskP6ylZr/cxiKJKD
+	X57tFIE9APSj9hSTmOP+T73c43gZSwB4tLHoaho8pD9YcSyga6JMuTrOQb2a48oHgNgmaSxP9MRad
+	19g5D1gZ1xCA7RdJ/lrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nlphp-0058aP-2V; Tue, 03 May 2022 10:24:33 +0000
+	id 1nlphs-0058do-SO; Tue, 03 May 2022 10:24:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nlphE-0058Bq-IL; Tue, 03 May 2022 10:23:58 +0000
-X-UUID: 911de93f637a4f3399c29582b6149641-20220503
+ id 1nlphG-0058BP-OB; Tue, 03 May 2022 10:24:00 +0000
+X-UUID: aa59607ca7bd485387ee5ea584cd199d-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:e1961513-a31a-4713-9c6d-0a1974ba33a2, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:dc5c33cf-101a-4c86-9f40-aabee7776bc0, OB:0,
  LO
- B:0,IP:0,URL:25,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,A
- CTION:release,TS:5
-X-CID-META: VersionHash:faefae9, CLOUDID:f03051c7-85ee-4ac1-ac05-bd3f1e72e732,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:171f892f-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 911de93f637a4f3399c29582b6149641-20220503
+X-UUID: aa59607ca7bd485387ee5ea584cd199d-20220503
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1137533982; Tue, 03 May 2022 03:23:49 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 03:23:48 -0700
+ with ESMTP id 2099210423; Tue, 03 May 2022 03:23:51 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 03:23:49 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 18:23:46 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 3 May 2022 18:23:47 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 3 May 2022 18:23:46 +0800
+ 15.2.792.3 via Frontend Transport; Tue, 3 May 2022 18:23:47 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -61,18 +62,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
  <singo.chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v19 01/25] dt-bindings: mediatek: add vdosys1 RDMA definition
- for mt8195
-Date: Tue, 3 May 2022 18:23:21 +0800
-Message-ID: <20220503102345.22817-2-nancy.lin@mediatek.com>
+Subject: [PATCH v19 08/25] soc: mediatek: add cmdq support of mtk-mmsys config
+ API for mt8195 vdosys1
+Date: Tue, 3 May 2022 18:23:28 +0800
+Message-ID: <20220503102345.22817-9-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220503102345.22817-1-nancy.lin@mediatek.com>
 References: <20220503102345.22817-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_032356_662634_8407D723 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20220503_032358_829578_3846AF13 
+X-CRM114-Status: GOOD (  19.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,115 +90,189 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add vdosys1 RDMA definition.
+Add cmdq support for mtk-mmsys config API.
+The mmsys config register settings need to take effect with the other
+HW settings(like OVL_ADAPTOR...) at the same vblanking time.
+
+If we use CPU to write the mmsys reg, we can't guarantee all the
+settings can be written in the same vblanking time.
+Cmdq is used for this purpose. We prepare all the related HW settings
+in one cmdq packet. The first command in the packet is "wait stream done",
+and then following with all the HW settings. After the cmdq packet is
+flush to GCE HW. The GCE waits for the "stream done event" to coming
+and then starts flushing all the HW settings. This can guarantee all
+the settings flush in the same vblanking.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../display/mediatek/mediatek,mdp-rdma.yaml   | 94 +++++++++++++++++++
- 1 file changed, 94 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+ drivers/soc/mediatek/mtk-mmsys.c       | 52 ++++++++++++++++++--------
+ include/linux/soc/mediatek/mtk-mmsys.h | 15 ++++++--
+ 2 files changed, 48 insertions(+), 19 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
-new file mode 100644
-index 000000000000..ca31accb0a95
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
-@@ -0,0 +1,94 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 199503dd544a..cd92db3d36fa 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -177,6 +177,7 @@ struct mtk_mmsys {
+ 	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
+ 	struct reset_controller_dev rcdev;
+ 	phys_addr_t io_start;
++	struct cmdq_client_reg cmdq_base;
+ };
+ 
+ static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
+@@ -191,10 +192,20 @@ static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
+ 	return -EINVAL;
+ }
+ 
+-static void mtk_mmsys_write_reg(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val)
++static void mtk_mmsys_write_reg(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val,
++				struct cmdq_pkt *cmdq_pkt)
+ {
+ 	u32 tmp;
+ 
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	if (cmdq_pkt && mmsys->cmdq_base.size) {
++		cmdq_pkt_write_mask(cmdq_pkt, mmsys->cmdq_base.subsys,
++				    mmsys->cmdq_base.offset + offset, val,
++				    mask);
++		return;
++	}
++#endif
 +
-+title: MediaTek MDP RDMA
+ 	tmp = readl_relaxed(mmsys->regs + offset);
+ 	tmp = (tmp & ~mask) | val;
+ 	writel_relaxed(tmp, mmsys->regs + offset);
+@@ -210,7 +221,8 @@ void mtk_mmsys_ddp_connect(struct device *dev,
+ 
+ 	for (i = 0; i < mmsys->data->num_routes; i++)
+ 		if (cur == routes[i].from_comp && next == routes[i].to_comp)
+-			mtk_mmsys_write_reg(mmsys, routes[i].addr, routes[i].mask, routes[i].val);
++			mtk_mmsys_write_reg(mmsys, routes[i].addr, routes[i].mask, routes[i].val,
++					    NULL);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_connect);
+ 
+@@ -224,42 +236,46 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+ 
+ 	for (i = 0; i < mmsys->data->num_routes; i++)
+ 		if (cur == routes[i].from_comp && next == routes[i].to_comp)
+-			mtk_mmsys_write_reg(mmsys, routes[i].addr, routes[i].mask, 0);
++			mtk_mmsys_write_reg(mmsys, routes[i].addr, routes[i].mask, 0, NULL);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
+ 
+-void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width, int height)
++void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width, int height,
++				  struct cmdq_pkt *cmdq_pkt)
+ {
+ 	mtk_mmsys_write_reg(dev_get_drvdata(dev), MT8195_VDO1_MERGE0_ASYNC_CFG_WD + 0x10 * idx,
+-			    ~0, height << 16 | width);
++			    ~0, height << 16 | width, cmdq_pkt);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_merge_async_config);
+ 
+-void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height)
++void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height,
++			   struct cmdq_pkt *cmdq_pkt)
+ {
+ 	mtk_mmsys_write_reg(dev_get_drvdata(dev), MT8195_VDO1_HDRBE_ASYNC_CFG_WD, ~0,
+-			    be_height << 16 | be_width);
++			    be_height << 16 | be_width, cmdq_pkt);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_hdr_confing);
+ 
+ void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool alpha_sel, u16 alpha,
+-			       u8 mode, u32 biwidth)
++			       u8 mode, u32 biwidth, struct cmdq_pkt *cmdq_pkt)
+ {
+ 	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+ 
+ 	mtk_mmsys_write_reg(mmsys, MT8195_VDO1_MIXER_IN1_ALPHA + (idx - 1) * 4, ~0,
+-			    alpha << 16 | alpha);
++			    alpha << 16 | alpha, cmdq_pkt);
+ 	mtk_mmsys_write_reg(mmsys, MT8195_VDO1_HDR_TOP_CFG, BIT(19 + idx),
+-			    alpha_sel << (19 + idx));
++			    alpha_sel << (19 + idx), cmdq_pkt);
+ 	mtk_mmsys_write_reg(mmsys, MT8195_VDO1_MIXER_IN1_PAD + (idx - 1) * 4,
+-			    GENMASK(31, 16) | GENMASK(1, 0), biwidth << 16 | mode);
++			    GENMASK(31, 16) | GENMASK(1, 0),
++			    biwidth << 16 | mode, cmdq_pkt);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_config);
+ 
+-void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap)
++void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap,
++				     struct cmdq_pkt *cmdq_pkt)
+ {
+ 	mtk_mmsys_write_reg(dev_get_drvdata(dev), MT8195_VDO1_MIXER_IN1_PAD + (idx - 1) * 4,
+-			    BIT(4), channel_swap << 4);
++			    BIT(4), channel_swap << 4, cmdq_pkt);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_channel_swap);
+ 
+@@ -272,9 +288,9 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
+ 	spin_lock_irqsave(&mmsys->lock, flags);
+ 
+ 	if (assert)
+-		mtk_mmsys_write_reg(mmsys, mmsys->data->sw0_rst_offset, BIT(id), 0);
++		mtk_mmsys_write_reg(mmsys, mmsys->data->sw0_rst_offset, BIT(id), 0, NULL);
+ 	else
+-		mtk_mmsys_write_reg(mmsys, mmsys->data->sw0_rst_offset, BIT(id), BIT(id));
++		mtk_mmsys_write_reg(mmsys, mmsys->data->sw0_rst_offset, BIT(id), BIT(id), NULL);
+ 
+ 	spin_unlock_irqrestore(&mmsys->lock, flags);
+ 
+@@ -364,6 +380,12 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 		mmsys->data = match_data->drv_data[0];
+ 	}
+ 
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
++	if (ret)
++		dev_dbg(dev, "No mediatek,gce-client-reg!\n");
++#endif
 +
-+maintainers:
-+  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-+  - Philipp Zabel <p.zabel@pengutronix.de>
+ 	platform_set_drvdata(pdev, mmsys);
+ 
+ 	clks = platform_device_register_data(&pdev->dev, mmsys->data->clk_driver,
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index fe620929b0f9..7a73305390ba 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -6,6 +6,10 @@
+ #ifndef __MTK_MMSYS_H
+ #define __MTK_MMSYS_H
+ 
++#include <linux/mailbox_controller.h>
++#include <linux/mailbox/mtk-cmdq-mailbox.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
 +
-+description:
-+  The MediaTek MDP RDMA stands for Read Direct Memory Access.
-+  It provides real time data to the back-end panel driver, such as DSI,
-+  DPI and DP_INTF.
-+  It contains one line buffer to store the sufficient pixel data.
-+  RDMA device node must be siblings to the central MMSYS_CONFIG node.
-+  For a description of the MMSYS_CONFIG binding, see
-+  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8195-vdo1-rdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  power-domains:
-+    description: A phandle and PM domain specifier as defined by bindings of
-+      the power controller specified by phandle. See
-+      Documentation/devicetree/bindings/power/power-domain.yaml for details.
-+
-+  clocks:
-+    items:
-+      - description: RDMA Clock
-+
-+  iommus:
-+    description:
-+      This property should point to the respective IOMMU block with master port as argument,
-+      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-+
-+  mediatek,gce-client-reg:
-+    description:
-+      The register of display function block to be set by gce. There are 4 arguments,
-+      such as gce node, subsys id, offset and register size. The subsys id that is
-+      mapping to the register of display function blocks is defined in the gce header
-+      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - power-domains
-+  - clocks
-+  - iommus
-+  - mediatek,gce-client-reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/power/mt8195-power.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+    #include <dt-bindings/memory/mt8195-memory-port.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        vdo1_rdma0: mdp-rdma@1c104000 {
-+            compatible = "mediatek,mt8195-vdo1-rdma";
-+            reg = <0 0x1c104000 0 0x1000>;
-+            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
-+            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-+            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
-+            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
-+        };
-+    };
+ enum mtk_ddp_comp_id;
+ struct device;
+ 
+@@ -73,13 +77,16 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+ 			      enum mtk_ddp_comp_id cur,
+ 			      enum mtk_ddp_comp_id next);
+ 
+-void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width, int height);
++void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width,
++				  int height, struct cmdq_pkt *cmdq_pkt);
+ 
+-void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height);
++void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height,
++			   struct cmdq_pkt *cmdq_pkt);
+ 
+ void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool alpha_sel, u16 alpha,
+-			       u8 mode, u32 biwidth);
++			       u8 mode, u32 biwidth, struct cmdq_pkt *cmdq_pkt);
+ 
+-void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap);
++void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap,
++				     struct cmdq_pkt *cmdq_pkt);
+ 
+ #endif /* __MTK_MMSYS_H */
 -- 
 2.18.0
 
