@@ -4,83 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE96C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7799FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2EIPiyRzka6c37S0qXvacCjgqISKQOuqcHZLqfavYh0=; b=MOzRB6VYsMXW5X
-	NTSdOnrW6Wj0iKxLkc8HqOnann/gesTsMC1tsB/GMqN2NJRAeCrgvXvPYQrI5VA5/OjW0/6id/jLg
-	3g9KB/G4Kh9uRn4Sszt4nnBsZ9DGmc2OGkwOpNgXo7N0O6rxy3DdLqO4nVt6RmWfrtkgIU8u70Afm
-	nXSU1NqakqB7Vr6ogC5ixjB1vOGwdu7TOPRhSQ5671UPysDFcZMd5eAwtvK0Zd+OTmfOvIzZ6xBWG
-	iuFRFXjiEUgXT5SDfvf/eIXIWV9R70U3mkKzReQLt2kyc6f/akw6HMEmGSu3yvIuyV48GMlW9L7Ik
-	1SJVOvlFH3PAWmav8aNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Se5J/NBpb0C0kBgRaSxAUQOT+LaUgAc2yeOCCdIGC3k=; b=S9Ikk0gWLAMTUL
+	9SsmQuQLrsIhAROzysQMHC0UP4jDyEPycjdlWK96K1gG5MwvrnCNaaq52jUxMABMXkLTspn8gfxEm
+	UjSV1VdGKT8zxm10sp3VR0x9UswlPGvNB0MRxmK9vO9AYOm1Mp0vwTC7AtFhvh5kRYqLLyzHEQLPa
+	HcqEm0kFIIXIpm5PMi9GB6Idk213VEz2ao7k3bcpiFDCWitideBOsTOZZiVHc4oscTDLa4nNouzP8
+	xOeqCB7xuKH1ItXi4UfWXUGxCiLupGN5PfWeGv51WDHHlFjSi7wU5F2cxCunN97+4mBY2hTQ/sBtc
+	PpFvV+Dv7HA2dm05TqQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmABf-009Rm5-Qu; Wed, 04 May 2022 08:16:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nmAGk-009UTM-Jd; Wed, 04 May 2022 08:21:58 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmABd-009Rjk-3Y; Wed, 04 May 2022 08:16:43 +0000
-X-UUID: 52116cf89463404b8fcadb4dc4691ab3-20220504
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:dba2d1cd-f603-47e0-8438-6ad6632883cf, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:08ba71c7-85ee-4ac1-ac05-bd3f1e72e732,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 52116cf89463404b8fcadb4dc4691ab3-20220504
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 601311461; Wed, 04 May 2022 01:16:29 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 01:16:27 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 16:16:26 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 4 May 2022 16:16:25 +0800
-Message-ID: <8e134aac15528d0fe39e898270c8207c9cf67955.camel@mediatek.com>
-Subject: Re: [PATCH v14 1/3] dt-binding: mediatek: add bindings for MediaTek
- MDP3 components
-From: moudy.ho <moudy.ho@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Alexandre Courbot
- <acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
- <pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
- <randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <cellopoint.kai@gmail.com>
-Date: Wed, 4 May 2022 16:16:26 +0800
-In-Reply-To: <YnFqnEI16B+xrxdQ@robh.at.kernel.org>
-References: <20220427070514.10355-1-moudy.ho@mediatek.com>
- <20220427070514.10355-2-moudy.ho@mediatek.com>
- <YnFqnEI16B+xrxdQ@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nmAGV-009UKR-Ed
+ for linux-mediatek@lists.infradead.org; Wed, 04 May 2022 08:21:45 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id
+ t11-20020a17090ad50b00b001d95bf21996so4578039pju.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 04 May 2022 01:21:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DGHn8biVzkArfif1A3GGDNCCNtu9nk8kwnWV4EieXww=;
+ b=ovuglYP6XIUlR99cJzmFGcviclvTUlrxiDBD5INA8pVtqhRoQM6hLt+Cff8YnmJkDa
+ j1sZc375hNN0vGZXiwU3NCy5HBOt9CXrOjV8Lzs81sgXN/HjEi6lmPYAeTa3mxkqFIPc
+ 2GrKSv4JCXh6SwJMPQXFdmbalWFKhhK6BSDzuCu50kWn/usf3Fb3+3HwOZT6fdH/fyuy
+ ipNn57BZf//zwh64eqnCaXAnV3mcPv2uvTgtbikkakLbcl6AisH+9L53vcXDJ9AwKDpi
+ sdqxB4n8Xo+gV63I/b/PjIFLYcQ680Neg6R6HKhX0WDy2qDVbbcpRt+Kt+58Y9NsxZbs
+ Px9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DGHn8biVzkArfif1A3GGDNCCNtu9nk8kwnWV4EieXww=;
+ b=gnHTGXaOq8EBa6mc7CquLz0fFOR39BhAz4CzC9XOxU7voQHo+v6B5E4tKKnPwD3Ezg
+ jO9cx/PZc5090uExqGfj7JcUDLA6F59Ak2ZN6NZlthYzPWcRZ9U53c+6gdtvbj//xLjC
+ s1urTCgQjv+zoF45SDp153roRTfbnZMVqnFA7eSl1dyYhOgip7z1snFx90ZA6BRLf8bE
+ PTpdNUpNN3zagWj2HBIQe0/5bUVaptGB+sHVHOeWU5QdGeNEpurFuMZ3j9QTaR1vm/4p
+ mudCmybOjGHIeXcy0sOD9eALAqL+Fi7psMLeWqdd2bive3vy2a+llD1H1h/mkEM7BJji
+ rnBA==
+X-Gm-Message-State: AOAM532gvbgFf2ZDyOjtYI1r6P54r4eAkCICRm/NXGLCuJ08MouSokjU
+ oPiMKVI5+gT46fr0DV3oH/H9WA==
+X-Google-Smtp-Source: ABdhPJy+Ar/gTjEhiBq3udBPTLyLW/kvpVmkDs3NrFb1w1kzCGG7xkVwWss2TJ8eHql/kS8ynEH0bQ==
+X-Received: by 2002:a17:902:a406:b0:158:260d:1ed2 with SMTP id
+ p6-20020a170902a40600b00158260d1ed2mr20541941plq.49.1651652501758; 
+ Wed, 04 May 2022 01:21:41 -0700 (PDT)
+Received: from localhost ([122.162.207.161]) by smtp.gmail.com with ESMTPSA id
+ b10-20020a17090a550a00b001d954837197sm2639962pji.22.2022.05.04.01.21.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 May 2022 01:21:41 -0700 (PDT)
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Rafael Wysocki <rjw@rjwysocki.net>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH] cpufreq: Avoid unnecessary frequency updates due to mismatch
+Date: Wed,  4 May 2022 13:51:35 +0530
+Message-Id: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
+X-Mailer: git-send-email 2.31.1.272.g89b43f80a514
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_011641_205478_A1B0758A 
-X-CRM114-Status: GOOD (  29.22  )
+X-CRM114-CacheID: sfid-20220504_012143_523183_33DA5B14 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,104 +91,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-05-03 at 12:47 -0500, Rob Herring wrote:
-> On Wed, Apr 27, 2022 at 03:05:12PM +0800, Moudy Ho wrote:
-> > This patch adds DT binding documents for Media Data Path 3 (MDP3)
-> > a unit in multimedia system combined with several components and
-> > used for scaling and color format convert.
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >  .../bindings/media/mediatek,mdp3-rdma.yaml    | 82
-> > +++++++++++++++++++
-> >  .../bindings/media/mediatek,mdp3-rsz.yaml     | 61 ++++++++++++++
-> >  .../bindings/media/mediatek,mdp3-wrot.yaml    | 66 +++++++++++++++
-> >  .../bindings/soc/mediatek/mediatek,ccorr.yaml | 54 ++++++++++++
-> >  .../bindings/soc/mediatek/mediatek,wdma.yaml  | 67 +++++++++++++++
-> >  5 files changed, 330 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rdma.yaml
-> > new file mode 100644
-> > index 000000000000..ce24eda14cb6
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rdma.yaml
-> > @@ -0,0 +1,82 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!2ZkBLXX14r9e8AIV0EcYM2X7ieBFW03uG4e9g_yiJr1TtTG-E49qn4Tl6ff5icHx$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!2ZkBLXX14r9e8AIV0EcYM2X7ieBFW03uG4e9g_yiJr1TtTG-E49qn4Tl6VXfd4m8$
-> >  
-> > +
-> > +title: Mediatek Read Direct Memory Access
-> > +
-> > +maintainers:
-> > +  - Matthias Brugger <matthias.bgg@gmail.com>
-> > +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> > +
-> > +description: |
-> > +  Mediatek Read Direct Memory Access(RDMA) component used to do
-> > read DMA.
-> > +  It contains one line buffer to store the sufficient pixel data,
-> > and
-> > +  must be siblings to the central MMSYS_CONFIG node.
-> > +  For a description of the MMSYS_CONFIG binding, see
-> > +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya
-> > ml
-> > +  for details.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - const: mediatek,mt8183-mdp3-rdma
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  mediatek,gce-client-reg:
-> > +    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-> > +    maxItems: 1
-> 
-> Like your other patches this needs 'items' describing each cell.
-> 
-> > +    description: |
-> > +      The register of client driver can be configured by gce with
-> > +      4 arguments defined in this property, such as phandle of
-> > gce, subsys id,
-> > +      register offset and size. Each GCE subsys id is mapping to a
-> > client
-> > +      defined in the header include/dt-bindings/gce/<chip>-gce.h.
-> 
-> Other than other cases of this property, the rest looks fine.
-> 
-> Rob
+For some platforms, the frequency returned by hardware may be slightly
+different from what is provided in the frequency table. For example,
+hardware may return 499 MHz instead of 500 MHz. In such cases it is
+better to avoid getting into unnecessary frequency updates, as we may
+end up switching policy->cur between the two and sending unnecessary
+pre/post update notifications, etc.
 
-Hi Rob,
+This patch has chosen allows the hardware frequency and table frequency
+to deviate by 1 MHz for now, we may want to increase it a bit later on
+if someone still complains.
 
-Thanks for the reminder, I'll sync the description from the patch
-listed below to this property and extend to other yaml files in this
-series.
+Reported-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+---
+ drivers/cpufreq/cpufreq.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20220427064425.30383-5-moudy.ho@mediatek.com/
-
-Regards,
-Moudy
+diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
+index 0d58b0f8f3af..233e8af48848 100644
+--- a/drivers/cpufreq/cpufreq.c
++++ b/drivers/cpufreq/cpufreq.c
+@@ -28,6 +28,7 @@
+ #include <linux/suspend.h>
+ #include <linux/syscore_ops.h>
+ #include <linux/tick.h>
++#include <linux/units.h>
+ #include <trace/events/power.h>
+ 
+ static LIST_HEAD(cpufreq_policy_list);
+@@ -1708,6 +1709,16 @@ static unsigned int cpufreq_verify_current_freq(struct cpufreq_policy *policy, b
+ 		return new_freq;
+ 
+ 	if (policy->cur != new_freq) {
++		/*
++		 * For some platforms, the frequency returned by hardware may be
++		 * slightly different from what is provided in the frequency
++		 * table, for example hardware may return 499 MHz instead of 500
++		 * MHz. In such cases it is better to avoid getting into
++		 * unnecessary frequency updates.
++		 */
++		if (abs(policy->cur - new_freq) < HZ_PER_MHZ)
++			return policy->cur;
++
+ 		cpufreq_out_of_sync(policy, new_freq);
+ 		if (update)
+ 			schedule_work(&policy->update);
+-- 
+2.31.1.272.g89b43f80a514
 
 
 _______________________________________________
