@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCA0C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 09:22:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EF4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 09:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jzjdb0dFRiJUs8tDyEh4gCqyfEl112KLIlqBhEanH6E=; b=VqginmKTQDyM6T
-	ReNsljZo8iSSCSUmyJcO4lsNUzGI8yJJtwTEPpBtHBOAATOdF6lEqYAqovKWxf/kVITUbNyrK/gc1
-	LHKjvZNbJ1b8a6y48nkg+JQ4RORVRmtntyQ2zsVFK7gB8E+4RKA5QF5GU1Fvl8mMlpWZhD3gbx3hK
-	ZwB6VJOn5DBIGarTprDxZECXpQtYCL954Mj36AbhhTsDdmwd9VwRwcULFSzsnOuw2lp9j3IAf2b8j
-	qTspnAo12LL+cySpOSA4lW1Lr8WoN35bLpxV1FIwTQ4BqLgkaMc7XzitLHJogfN+QGI5+DBNMxLeO
-	VrJ0153Cs1+96V5Tkm5A==;
+	List-Owner; bh=dxfHEv6RtGA7vRr0FuZHOxCZ/SQMQf6Uv3DMleckesQ=; b=35yzI5QH+JgnEk
+	G08xZtB5qU3jVKiV4P8WXtoAJHo2dn4cHqi77Oz0ddfLQDszl5tBptYUx+T+bXHydEI6c/eahcrRd
+	fKe2HdotEQw6r/tASJaw7tXJL2OCgiChI5Lz+yQ3d8sG4KuSJITbPNyE7xFKGwSVrC2aUdHlAPl/8
+	A+xHOvuEL7YVwaFS5Mm9sMktnzAWOTWgc6hn1B2q2/+tj8G7uJrQoMqLQFbPiVlXXvM27zM9VBHMM
+	ck9kcrHuvs0YwAYWXWNyqoNzsedGdIVDpsET45c8xRPGoJvbNeKUqvGggcORDCoTqwTrNOKlGMY7X
+	Qx5XZcK2ypbIkPhLXYdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmBD0-009nmx-EK; Wed, 04 May 2022 09:22:10 +0000
+	id 1nmBGK-009pip-2q; Wed, 04 May 2022 09:25:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmB85-009kkj-HI; Wed, 04 May 2022 09:17:07 +0000
-X-UUID: 95c232f8a7e04fb98c875026fda13937-20220504
+ id 1nmB87-009kkj-9u; Wed, 04 May 2022 09:17:09 +0000
+X-UUID: 9e2994fd50b3412a9440f8d473c5b5bf-20220504
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:80961b9e-235f-4a9f-87a6-f9103941ee90, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:1272a263-abe1-4313-945a-aac67664dc78, OB:0,
  LO
  B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-12
-X-CID-META: VersionHash:faefae9, CLOUDID:d57eac2f-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:d67eac2f-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 95c232f8a7e04fb98c875026fda13937-20220504
+X-UUID: 9e2994fd50b3412a9440f8d473c5b5bf-20220504
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1082468766; Wed, 04 May 2022 02:17:00 -0700
+ with ESMTP id 863196533; Wed, 04 May 2022 02:17:00 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 02:14:50 -0700
+ 15.0.1497.2; Wed, 4 May 2022 02:14:48 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 17:14:45 +0800
+ 15.0.1497.2; Wed, 4 May 2022 17:14:44 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 4 May 2022 17:14:45 +0800
+ 15.2.792.3 via Frontend Transport; Wed, 4 May 2022 17:14:44 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -61,18 +61,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
  <singo.chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v20 14/25] drm/mediatek: add display merge advance config API
- for MT8195
-Date: Wed, 4 May 2022 17:14:29 +0800
-Message-ID: <20220504091440.2052-15-nancy.lin@mediatek.com>
+Subject: [PATCH v20 09/25] soc: mediatek: mmsys: add mmsys for support 64
+ reset bits
+Date: Wed, 4 May 2022 17:14:24 +0800
+Message-ID: <20220504091440.2052-10-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220504091440.2052-1-nancy.lin@mediatek.com>
 References: <20220504091440.2052-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_021705_624038_ED969202 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20220504_021707_445742_C7768C57 
+X-CRM114-Status: GOOD (  17.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,127 +89,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add merge new advance config API. The original merge API is
-mtk_ddp_comp_funcs function prototype. The API interface parameters
-cannot be modified, so add a new config API for extension. This is
-the preparation for ovl_adaptor merge control.
+Add mmsys for support 64 reset bits. It is a preparation for MT8195
+vdosys1 HW reset. MT8195 vdosys1 has more than 32 reset bits.
+
+1. Add the number of reset bits in mmsys private data
+2. move the whole "reset register code section" behind the
+"get mmsys->data" code section for getting the num_resets in mmsys->data.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  3 ++
- drivers/gpu/drm/mediatek/mtk_disp_merge.c | 52 ++++++++++++++++++++---
- 2 files changed, 48 insertions(+), 7 deletions(-)
+ drivers/soc/mediatek/mtk-mmsys.c | 39 ++++++++++++++++++++------------
+ drivers/soc/mediatek/mtk-mmsys.h |  1 +
+ 2 files changed, 26 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index bb91518cdc93..53aa988dde3b 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -63,6 +63,9 @@ void mtk_merge_config(struct device *dev, unsigned int width,
- 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
- void mtk_merge_start(struct device *dev);
- void mtk_merge_stop(struct device *dev);
-+void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
-+			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
-+			      struct cmdq_pkt *cmdq_pkt);
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 43bb8026e6d5..417f2520be58 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -20,6 +20,8 @@
+ #include "mt8195-mmsys.h"
+ #include "mt8365-mmsys.h"
  
- void mtk_ovl_bgclr_in_on(struct device *dev);
- void mtk_ovl_bgclr_in_off(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index 45face638153..40da0555416d 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -17,6 +17,7 @@
- #define DISP_REG_MERGE_CTRL		0x000
- #define MERGE_EN				1
- #define DISP_REG_MERGE_CFG_0		0x010
-+#define DISP_REG_MERGE_CFG_1		0x014
- #define DISP_REG_MERGE_CFG_4		0x020
- #define DISP_REG_MERGE_CFG_10		0x038
- /* no swap */
-@@ -25,9 +26,12 @@
- #define DISP_REG_MERGE_CFG_12		0x040
- #define CFG_10_10_1PI_2PO_BUF_MODE		6
- #define CFG_10_10_2PI_2PO_BUF_MODE		8
-+#define CFG_11_10_1PI_2PO_MERGE			18
- #define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
- #define DISP_REG_MERGE_CFG_24		0x070
- #define DISP_REG_MERGE_CFG_25		0x074
-+#define DISP_REG_MERGE_CFG_26		0x078
-+#define DISP_REG_MERGE_CFG_27		0x07c
- #define DISP_REG_MERGE_CFG_36		0x0a0
- #define ULTRA_EN				BIT(0)
- #define PREULTRA_EN				BIT(4)
-@@ -98,12 +102,19 @@ static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
- void mtk_merge_config(struct device *dev, unsigned int w,
- 		      unsigned int h, unsigned int vrefresh,
- 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	mtk_merge_advance_config(dev, w, 0, h, vrefresh, bpc, cmdq_pkt);
-+}
++#define MMSYS_SW_RESET_PER_REG 32
 +
-+void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
-+			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
-+			      struct cmdq_pkt *cmdq_pkt)
+ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt2701-mm",
+ 	.routes = mmsys_default_routing_table,
+@@ -86,6 +88,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+ 	.routes = mmsys_default_routing_table,
+ 	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+ 	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
++	.num_resets = 32,
+ };
+ 
+ static const struct mtk_mmsys_match_data mt8173_mmsys_match_data = {
+@@ -100,6 +103,7 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+ 	.routes = mmsys_mt8183_routing_table,
+ 	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+ 	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
++	.num_resets = 32,
+ };
+ 
+ static const struct mtk_mmsys_match_data mt8183_mmsys_match_data = {
+@@ -114,6 +118,7 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+ 	.routes = mmsys_mt8186_routing_table,
+ 	.num_routes = ARRAY_SIZE(mmsys_mt8186_routing_table),
+ 	.sw0_rst_offset = MT8186_MMSYS_SW0_RST_B,
++	.num_resets = 32,
+ };
+ 
+ static const struct mtk_mmsys_match_data mt8186_mmsys_match_data = {
+@@ -287,13 +292,19 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
  {
- 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
- 	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
+ 	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
+ 	unsigned long flags;
++	u32 offset;
++
++	offset = (id / MMSYS_SW_RESET_PER_REG) * sizeof(u32);
++	id = id % MMSYS_SW_RESET_PER_REG;
  
--	if (!h || !w) {
--		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
-+	if (!h || !l_w) {
-+		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, l_w, h);
- 		return;
+ 	spin_lock_irqsave(&mmsys->lock, flags);
+ 
+ 	if (assert)
+-		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), 0, NULL);
++		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset + offset, BIT(id),
++				      0, NULL);
+ 	else
+-		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), BIT(id), NULL);
++		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset + offset, BIT(id),
++				      BIT(id), NULL);
+ 
+ 	spin_unlock_irqrestore(&mmsys->lock, flags);
+ 
+@@ -350,18 +361,6 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 		return ret;
  	}
  
-@@ -112,14 +123,41 @@ void mtk_merge_config(struct device *dev, unsigned int w,
- 		mode = CFG_10_10_2PI_2PO_BUF_MODE;
+-	spin_lock_init(&mmsys->lock);
+-
+-	mmsys->rcdev.owner = THIS_MODULE;
+-	mmsys->rcdev.nr_resets = 32;
+-	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+-	mmsys->rcdev.of_node = pdev->dev.of_node;
+-	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
+-	if (ret) {
+-		dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
+-		return ret;
+-	}
+-
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	if (!res) {
+ 		dev_err(dev, "Couldn't get mmsys resource\n");
+@@ -383,6 +382,18 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 		mmsys->data = match_data->drv_data[0];
  	}
  
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+	if (r_w)
-+		mode = CFG_11_10_1PI_2PO_MERGE;
++	spin_lock_init(&mmsys->lock);
 +
-+	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CFG_0);
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_1);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | (l_w + r_w), &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CFG_4);
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+	/*
-+	 * DISP_REG_MERGE_CFG_24 is merge SRAM0 w/h
-+	 * DISP_REG_MERGE_CFG_25 is merge SRAM1 w/h.
-+	 * If r_w > 0, the merge is in merge mode (input0 and input1 merge together),
-+	 * the input0 goes to SRAM0, and input1 goes to SRAM1.
-+	 * If r_w = 0, the merge is in buffer mode, the input goes through SRAM0 and
-+	 * then to SRAM1. Both SRAM0 and SRAM1 are set to the same size.
-+	 */
-+	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CFG_24);
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
--		      DISP_REG_MERGE_CFG_25);
-+	if (r_w)
-+		mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
-+			      DISP_REG_MERGE_CFG_25);
-+	else
-+		mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
-+			      DISP_REG_MERGE_CFG_25);
++	mmsys->rcdev.owner = THIS_MODULE;
++	mmsys->rcdev.nr_resets = mmsys->data->num_resets;
++	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
++	mmsys->rcdev.of_node = pdev->dev.of_node;
++	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
++	if (ret) {
++		dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
++		return ret;
++	}
 +
-+	/*
-+	 * DISP_REG_MERGE_CFG_26 and DISP_REG_MERGE_CFG_27 is only used in LR merge.
-+	 * Only take effect when the merge is setting to merge mode.
-+	 */
-+	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_26);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_27);
-+
- 	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
- 			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
- 	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
+ 	if (ret)
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index f01ba206481d..20a271b80b3b 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -92,6 +92,7 @@ struct mtk_mmsys_driver_data {
+ 	const struct mtk_mmsys_routes *routes;
+ 	const unsigned int num_routes;
+ 	const u16 sw0_rst_offset;
++	const u32 num_resets;
+ };
+ 
+ struct mtk_mmsys_match_data {
 -- 
 2.18.0
 
