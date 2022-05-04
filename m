@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED6BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 05:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 089B8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 05:56:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=th+GkrHbb//dtDwOwW7xg38b7zc6kf/Pib/95+9LdYI=; b=il3gnD6/oKnBj3
-	FhHhKoog1xPe6SM4f7kp24lzolbn+hvD3wTNvW7PpSPB05BIe2OG/5wyGciNe/p2tfOx4cx2DufEX
-	uz70w1JdNEBcBHz+saW60ZnlK4JBo28njOA6tG1u/6btNfjRo02ucZ2uoFEGGfbmg0FiUJsYs+Pec
-	4ZX0Dj32Wc6me3W7qrWX4Gcq10BRDqnASP4Kt2dnzuv2Rpf+86QNFCSfHpwtE31rbLor1NEwst4fa
-	adqAkgywAoQ/yPPEt9G9N6mGfEY/wohYi38yrd5+LNHLPzN12b6t/B2UwWTuRu6ZEUNd4fpwUcLiH
-	xeStQwe2UihlHPjv7LXA==;
+	List-Owner; bh=y3Ip3LHDHq46ekOc+omUBKC4KQbkw5KKe8q+iBr09JM=; b=shRJWMCK+UXUHg
+	nrTBRBuxeXlE9IAqms6Ee/MQkf1pCyshMbIwCAyZ8fZIiC+pK6md9OwOn4e1eYv73zrq21tYD+W+F
+	uH6PeaXHSIY55jofDMwsU1JsyNsokfcZeA9KqmqjXOg4RcFwsVPwY8GQIrpxhDc1fUcdOiHm//VLd
+	HDJuWLrAqkPJWXEXcoflEKmQSyL8rfbMHNUIozzyK/VSLBWPDvSVvMnHRaqRx5QNZSQOLjWlQFJ/b
+	0tixO50PVO3ga9lhyqdKKUfpiSXEAm3zKkhyjqMrkE8F+UWLvdb/QlCbEkuF9KDVrFasbYimPaaZN
+	m2Jgi7n1Dnst0t1FQ/IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nm7xN-008tSV-9h; Wed, 04 May 2022 05:53:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nm805-008tuC-O7; Wed, 04 May 2022 05:56:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nm7xK-008tRm-3S; Wed, 04 May 2022 05:53:47 +0000
-X-UUID: 5aa84a7440324f61be710f3106a7ebcd-20220503
+ id 1nm803-008tt2-Bl; Wed, 04 May 2022 05:56:36 +0000
+X-UUID: ebcc99ec905548d08c7bf95a41cf30b9-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:7a1259f2-b6f6-4ffe-8978-574980780cf7, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:b023c986-75ab-4ab0-b793-6231d7c6fe85, OB:0,
  LO
  B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:527fa32f-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:6696a32f-6199-437e-8ab4-9920b4bc5b76,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 5aa84a7440324f61be710f3106a7ebcd-20220503
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+X-UUID: ebcc99ec905548d08c7bf95a41cf30b9-20220503
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 543459759; Tue, 03 May 2022 22:53:41 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 22:53:39 -0700
+ with ESMTP id 688604882; Tue, 03 May 2022 22:56:32 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 May 2022 22:55:46 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 13:53:37 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 May 2022 13:55:45 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 4 May 2022 13:53:37 +0800
-Message-ID: <d4bc41d36a70bc451ca4ab771004588a3626e511.camel@mediatek.com>
-Subject: Re: [PATCH v19 11/25] soc: mediatek: add mtk-mutex component -
- dp_intf1
+ Transport; Wed, 4 May 2022 13:55:45 +0800
+Message-ID: <865a3f263b4c73a77b256311c2759b9eb9b4b123.camel@mediatek.com>
+Subject: Re: [PATCH v19 12/25] soc: mediatek: add mtk-mutex support for
+ mt8195 vdosys1
 From: CK Hu <ck.hu@mediatek.com>
 To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
@@ -64,16 +64,16 @@ CC: <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
  Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 4 May 2022 13:53:37 +0800
-In-Reply-To: <20220503102345.22817-12-nancy.lin@mediatek.com>
+Date: Wed, 4 May 2022 13:55:45 +0800
+In-Reply-To: <20220503102345.22817-13-nancy.lin@mediatek.com>
 References: <20220503102345.22817-1-nancy.lin@mediatek.com>
- <20220503102345.22817-12-nancy.lin@mediatek.com>
+ <20220503102345.22817-13-nancy.lin@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_225346_196600_E33764ED 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20220503_225635_432063_BAB33CA6 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +93,76 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Nancy:
 
 On Tue, 2022-05-03 at 18:23 +0800, Nancy.Lin wrote:
-> Add mtk-mutex DDP_COMPONENT_DP_INTF1 component. The MT8195 vdosys1
-> path
-> component contains ovl_adaptor, merge5, and dp_intf1. It is a
-> preparation
-> for adding support for MT8195 vdosys1 path component.
+> Add mtk-mutex support for mt8195 vdosys1.
+> The vdosys1 path component contains ovl_adaptor, merge5,
+> and dp_intf1. Ovl_adaptor is composed of several sub-elements
+> which include MDP_RDMA0~7, MERGE0~3, and ETHDR.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
 > 
 > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/soc/mediatek/mtk-mutex.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>  drivers/soc/mediatek/mtk-mutex.c | 33
+> ++++++++++++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-mutex.c
 > b/drivers/soc/mediatek/mtk-mutex.c
-> index 981d56967e7a..4721f0b74d9b 100644
+> index 4721f0b74d9b..78197ebf5595 100644
 > --- a/drivers/soc/mediatek/mtk-mutex.c
 > +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -498,6 +498,9 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
->  	case DDP_COMPONENT_DP_INTF0:
->  		sof_id = MUTEX_SOF_DP_INTF0;
->  		break;
-> +	case DDP_COMPONENT_DP_INTF1:
-> +		sof_id = MUTEX_SOF_DP_INTF1;
-> +		break;
->  	default:
->  		if (mtx->data->mutex_mod[id] < 32) {
->  			offset = DISP_REG_MUTEX_MOD(mtx->data-
-> >mutex_mod_reg,
-> @@ -538,6 +541,7 @@ void mtk_mutex_remove_comp(struct mtk_mutex
-> *mutex,
->  	case DDP_COMPONENT_DPI0:
->  	case DDP_COMPONENT_DPI1:
->  	case DDP_COMPONENT_DP_INTF0:
-> +	case DDP_COMPONENT_DP_INTF1:
->  		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
->  			       mtx->regs +
->  			       DISP_REG_MUTEX_SOF(mtx->data-
-> >mutex_sof_reg,
+> @@ -110,6 +110,24 @@
+>  #define MT8195_MUTEX_MOD_DISP_DP_INTF0		21
+>  #define MT8195_MUTEX_MOD_DISP_PWM0		27
+>  
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA0	0
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA1	1
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA2	2
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA3	3
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA4	4
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA5	5
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA6	6
+> +#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA7	7
+> +#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE0	8
+> +#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE1	9
+> +#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE2	10
+> +#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE3	11
+> +#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE4	12
+> +#define MT8195_MUTEX_MOD_DISP1_DISP_MIXER	18
+> +#define MT8195_MUTEX_MOD_DISP1_DPI0		25
+> +#define MT8195_MUTEX_MOD_DISP1_DPI1		26
+> +#define MT8195_MUTEX_MOD_DISP1_DP_INTF0		27
+> +
+>  #define MT2712_MUTEX_MOD_DISP_PWM2		10
+>  #define MT2712_MUTEX_MOD_DISP_OVL0		11
+>  #define MT2712_MUTEX_MOD_DISP_OVL1		12
+> @@ -313,6 +331,21 @@ static const unsigned int
+> mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+>  	[DDP_COMPONENT_DSI0] = MT8195_MUTEX_MOD_DISP_DSI0,
+>  	[DDP_COMPONENT_PWM0] = MT8195_MUTEX_MOD_DISP_PWM0,
+>  	[DDP_COMPONENT_DP_INTF0] = MT8195_MUTEX_MOD_DISP_DP_INTF0,
+> +	[DDP_COMPONENT_MDP_RDMA0] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA0,
+> +	[DDP_COMPONENT_MDP_RDMA1] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA1,
+> +	[DDP_COMPONENT_MDP_RDMA2] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA2,
+> +	[DDP_COMPONENT_MDP_RDMA3] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA3,
+> +	[DDP_COMPONENT_MDP_RDMA4] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA4,
+> +	[DDP_COMPONENT_MDP_RDMA5] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA5,
+> +	[DDP_COMPONENT_MDP_RDMA6] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA6,
+> +	[DDP_COMPONENT_MDP_RDMA7] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA7,
+> +	[DDP_COMPONENT_MERGE1] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE0,
+> +	[DDP_COMPONENT_MERGE2] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE1,
+> +	[DDP_COMPONENT_MERGE3] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE2,
+> +	[DDP_COMPONENT_MERGE4] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE3,
+> +	[DDP_COMPONENT_ETHDR_MIXER] =
+> MT8195_MUTEX_MOD_DISP1_DISP_MIXER,
+> +	[DDP_COMPONENT_MERGE5] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE4,
+> +	[DDP_COMPONENT_DP_INTF1] = MT8195_MUTEX_MOD_DISP1_DP_INTF0,
+>  };
+>  
+>  static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
 
 
 _______________________________________________
