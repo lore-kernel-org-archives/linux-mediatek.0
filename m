@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3AB0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 15:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77FC7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 15:22:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EVlO8aeNRCoKyr+BFBzrT0kCxE/6KOYCebj3QaOmRUY=; b=jRuMEvVr1wszor
-	EQjl49PJpVW0ANyKAIF9MklraoAbz3t6euk1SiFbK32YTZ0zDctlHz0w3mjPA9y1DlR93p5zX9hsd
-	JTf1Di6p9q+wFs/hbUZUddjbxmcirngkm9JHO0QKUz8g3KHq9Z7BHm3LUh87rf1NUkGkhSd3IhsEa
-	dQK6iii5pTnZlfXkUYiMYy8PcT/QINXJhwVd7Z8PLLWRxODSZiJam/NRo8Wvc3qD6/QZ6jGaucd+i
-	EqU5r0Co+BrayP3gP6niBK0rNAcQRje5NuToJJGucmMXjpie/ynWh5Y3Qv7UuHLrQ2ODaJSLcybkE
-	hlasOEz+DyDeCE1Yxn3A==;
+	List-Owner; bh=ehe0YjbrcxN6a+rrWXH7iauGdt8+h/gCeZXPsAHB37w=; b=jORcM6TZugnmZO
+	R8S92hemugIbnmlLC7uR5HxskSkgp/w0/FE9O2Js/WMP4+35iajPR1Q6QMNYt5Wy/xfhEvvjnQlxk
+	POOOpJfmDBwyR/tckrE1ACy79064pnZjs2Vzq+pyo4KDYw1+qCuujUYzJzrHfaHQpqLmqVuhk7Gpx
+	x5U0ZsQpNjmfvGdUM6IhzgnWzJ1Y86qOe06EqiALPnAvPbvoE+w0nJLsjtyP0tk4rd6fWjVdhdg6u
+	h63KshDEq9kCrBfMkPu4D/YaoaYwyVco6aKn7Tl5ze63V5QnigQPWZIfE5kebnZNedQhnGSlntf9N
+	UjcEECWMRMbzZ76dLF2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmGp5-00BPoN-2m; Wed, 04 May 2022 15:21:51 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1nmGpe-00BQ63-1w; Wed, 04 May 2022 15:22:26 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmGp2-00BPlW-Sb; Wed, 04 May 2022 15:21:50 +0000
-Received: by mail-ed1-x536.google.com with SMTP id ba17so2092552edb.5;
- Wed, 04 May 2022 08:21:48 -0700 (PDT)
+ id 1nmGpa-00BQ2a-6w; Wed, 04 May 2022 15:22:24 +0000
+Received: by mail-ed1-x534.google.com with SMTP id be20so2064734edb.12;
+ Wed, 04 May 2022 08:22:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=dcuxN/s/TF+UjXWXLcTcHKDiCpnRwTqpk9ocbRhIwGc=;
- b=KQwyzQb52bLg7yCZAC5vdmlTels11FH3BMnN3OsEVle/iBZbpXoBYEg9dt73Jly5on
- OY/6ku75FiXnmJCWsVbtf+Y+JNchz/f9Hj8TSyx3f3bGAEmcvPDbqfTSLlh64M3Xzqi3
- k5UsA+LdWdlRO5jhTCbKWyL96+rAn95UOIqPTVjsZD9nFiWk1GKrYWcRZMEnGcUIx0ZT
- +JUrRUAE04pKlXizrcb3R+WRNQUljSjiADIHPd/So+K7oqChNITFem+GylwzGphH43g0
- QjhqByqYAeOpPtdkBxqHUOdxpSfuhe7JSpsmkno5SwxUZ2D4yLOmY1eWyV17RgozbWxV
- WmCQ==
+ bh=xTYBUgx4sIq3qSVsjgl0przbRExfOFSCf3/4HQ5y1Uc=;
+ b=Tg8Bx/C6xSkcoO2dnyBeqWLtw2X4t7JrowzuBljo19KkSRX3m38bUXkupa3z1LKIYj
+ lDc8dTcPIaGDiX8W5KxFNIyHS5gvtVITsZz5B0sxg6t6qFqj8XmvaUZKitBipDise3vG
+ zloRxSRT4SrmBSzVIvtpBZBpluOGNuOOCbkwR9MDxZxTkD56RomzQqgffTRXpUBZ8ege
+ EWkhyLiMvel0CWoo7osXQxbTKp1qYa/QYtC3hy4j59fctlVsilNKhTrkP7lM+JRKigJF
+ OGROArQqHuYpH/tamBr4G2HaA24v8QKypOjDCBqglcJNUxpg+C9EJEyksuZJ2hV58FKV
+ GXRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=dcuxN/s/TF+UjXWXLcTcHKDiCpnRwTqpk9ocbRhIwGc=;
- b=z5YD+3wLDg0kjIUq6dUz40KwWfLS3m258EoZHWDJkM9XiVBYLc3ab2sWrYEkccAki/
- DIw1TnEeOYf/SHLiZtkvWTzuWsDJGfkq4llEuvAWbZb/Rmfnk/uTgFjU6w+iwSOKP9sV
- csgB5F2sCNhLE3PLZfBRqwCpyZp+OinZfltjrVPS04dho6kmsrXo/kcfLZuhvkheObGR
- NuWm60jXX8LQHKjGKC3TqWXGSEfD11Vcn2yugau4oVvQBdQyK0b0jvfqODAJ7UOyqnqi
- IvbwM3faj9tATxqiTfB1L7auQ8b9gqUZK15RMMJKJZChQ4fwoM0w9PvRy1vKtZ6iWxBp
- k94Q==
-X-Gm-Message-State: AOAM530fgoe3SdFbzxOS/tlxCWCOBR1uZjrrIg0fCsXG5LqLyLPkLflm
- 60BoDAttN3tNC9iqkpXdfQI=
-X-Google-Smtp-Source: ABdhPJzVqI1eVM2qoHGN5broejw/H+cnupEB+0ZS0oE2wsW33FaVBX9JMvjSWqGf4SyjU4PBLBhDMw==
-X-Received: by 2002:a05:6402:190a:b0:427:efb7:bd81 with SMTP id
- e10-20020a056402190a00b00427efb7bd81mr7535993edz.63.1651677707090; 
- Wed, 04 May 2022 08:21:47 -0700 (PDT)
+ bh=xTYBUgx4sIq3qSVsjgl0przbRExfOFSCf3/4HQ5y1Uc=;
+ b=uOK5IekRPq6Q3kx2e25wwvlIXxsgwjzntWBpg17kTfFyZiZzahn/P3OLxWR1PlFo6A
+ ccvmPGYeyz4W1ZkkgSabmsZXVupIublfBiybQaHRoJyoaHyiQY5ctCxDt1sH2vBnhn4l
+ dz9SZav6IKJujHqJy8ijbVBcW62fddDE7YcZ/p+uze33nSkwaIlRKnt8na7o+AcqGWx/
+ Ahb48QL9SKiHkeRgWtbBcXunJcKGSW0JAkPuDzawere6WoDzRK6m2OcwDZB5MTlnnM78
+ UPrZbnd1cNriS9Ai08wwh0gqpf0TCpZ2Jz2g28+xmidqO9qSsmsyRPGRA0A3657YQK7o
+ qFRQ==
+X-Gm-Message-State: AOAM533WcSffS6oKZoc7FrAJ09hPfv0I7SZ5NHoTPJops28U8e5WRYC3
+ KtYDVvyvo9fCR37I+LfDK4U=
+X-Google-Smtp-Source: ABdhPJwQSHC3W2lpy/MOReI9kMJhEDuuR09hgP0Zb7GTtVs88FaRrxHsHhn/RqOQZsC5VpzSXtF99w==
+X-Received: by 2002:a05:6402:12cd:b0:426:16f:c135 with SMTP id
+ k13-20020a05640212cd00b00426016fc135mr23796449edx.297.1651677738235; 
+ Wed, 04 May 2022 08:22:18 -0700 (PDT)
 Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
- zp1-20020a17090684e100b006f3ef214df0sm5802549ejb.86.2022.05.04.08.21.45
+ jx4-20020a170907760400b006f3ef214da3sm5739421ejc.9.2022.05.04.08.22.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 08:21:46 -0700 (PDT)
-Date: Wed, 4 May 2022 18:21:44 +0300
+ Wed, 04 May 2022 08:22:17 -0700 (PDT)
+Date: Wed, 4 May 2022 18:22:16 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [RFC v2 2/4] net: dsa: mt7530: rework mt753[01]_setup
-Message-ID: <20220504152144.zqxme7xflv54exaw@skbuf>
+Subject: Re: [RFC v2 3/4] net: dsa: mt7530: get cpu-port via dp->cpu_dp
+ instead of constant
+Message-ID: <20220504152216.747ckl3km7vbep4s@skbuf>
 References: <20220430130347.15190-1-linux@fw-web.de>
- <20220430130347.15190-3-linux@fw-web.de>
+ <20220430130347.15190-4-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220430130347.15190-3-linux@fw-web.de>
+In-Reply-To: <20220430130347.15190-4-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_082148_958630_E6FBA11E 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220504_082222_325499_113B9940 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,10 +98,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Apr 30, 2022 at 03:03:45PM +0200, Frank Wunderlich wrote:
+On Sat, Apr 30, 2022 at 03:03:46PM +0200, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Enumerate available cpu-ports instead of using hardcoded constant.
+> Replace last occurences of hardcoded cpu-port by cpu_dp member of
+> dsa_port struct.
+> 
+> Now the constant can be dropped.
 > 
 > Suggested-by: Vladimir Oltean <olteanv@gmail.com>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
