@@ -4,58 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8750C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 17:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88161C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 17:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SREhi9dMbeSHsfPZB971GMbL0umyyl7p4T6BxAH+MZw=; b=IJkVy0RnJV0zdb
-	29+ifxyQqa+J5wchabteCM7Iesv9HXfUL6UcM/Z1oAt2YTQfzYU6Emcf6D7r+PWqJez72y58KbUya
-	5uoIum3Behx11C+gVBuHY2OtcKfdPtZWTfw2KR+01mUQ/37vw1hwEARaZfxN+iuzif0pmI9ut+mYl
-	WeDt8UIrwivlKuqf93zIsf9Bu5EAbNJm6ixy+5KLtlDF2WeZA8TnLPM7YeGldqXlpWuf+RrDeugMC
-	IUdwBq1NYe6tGY61oM54w1R9nY9/v2wB1DdmPf3Ou2NJ+9JyxGQfOfTWLPPcAwYMazqrf45/hZnBl
-	0ps2uRMM0VAC98ZplzFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WHHoO7fyMXFXCq8dmadY3XfJnEoPU/AT+8B7JmRo8uE=; b=H67N8vd2oL+do1iPyftwxWMbvm
+	J7zZ/5ROLuuKpgvlXsXFntGD5WW9LJa9OXRYkt+tLcmu7ekPLGRNpBp4pt/x7/p6US4/OSKjj5HcN
+	aEWSlP30Cqns2Y/+rozjNVudOJSe00BM3G+W0n0Zm0lLoYF04k62fVKlkxrFo5pCxRBdzNpj5+OnE
+	qqnMaMFIlnULV+LQfVhxbvpYKpbQa3ciJq/y2kcJuu3cbJbWKhPwmHUUp1nLzllRuQEIg7VNx2Jge
+	JgslOunLeUGp/64JS+qqgN/4pUCYWJaclHOcxLV30vEqWykGYFQPMbcG+9t0QBK3lHjelplHXX34P
+	8GbWIuCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmIh4-00BvW5-8y; Wed, 04 May 2022 17:21:42 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1nmJFE-00C3Xk-FT; Wed, 04 May 2022 17:57:00 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmIh1-00BvVN-1P; Wed, 04 May 2022 17:21:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject
- :Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=OkLWA35yCfirCuaQDiFaSQT4Boa4urpvOuCCHvvJHYY=; b=Ljz2K44kbkEWAxWCVMms4dlq58
- Zf1GNhVarsNZg5PEr4tVA2F/hWLZZ363qtIsvRrZlSHxPdFg+XbEoGrzvZsTN1Mb2Js49thPtdpdQ
- o09qHJ4QZPvawQpzqwEU2yG+0hi8VZe0VlG06ePUNMcj9siU9ZxcUkhgG4Ay8/j1je9I=;
-Received: from p200300daa70ef200891a2ae4514fd280.dip0.t-ipconnect.de
- ([2003:da:a70e:f200:891a:2ae4:514f:d280] helo=Maecks.lan)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nmIgs-0004Fq-Nr; Wed, 04 May 2022 19:21:30 +0200
-From: Felix Fietkau <nbd@nbd.name>
-To: Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3] PCI: mediatek-gen3: Change driver name to mtk-pcie-gen3
-Date: Wed,  4 May 2022 19:21:27 +0200
-Message-Id: <20220504172128.27489-1-nbd@nbd.name>
-X-Mailer: git-send-email 2.35.1
+ id 1nmJF2-00C3UP-VE; Wed, 04 May 2022 17:56:50 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+ id 606581C0BA5; Wed,  4 May 2022 19:56:47 +0200 (CEST)
+Date: Wed, 4 May 2022 19:56:47 +0200
+From: Pavel Machek <pavel@ucw.cz>
+To: Rob Herring <robh@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Gene Chen <gene_chen@richtek.com>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: leds-mt6360: Drop redundant
+ 'unevaluateProperties'
+Message-ID: <20220504175647.GE8725@duo.ucw.cz>
+References: <20220426133508.1849580-1-robh@kernel.org>
+ <YmmLldJcJ2tOOCO7@robh.at.kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <YmmLldJcJ2tOOCO7@robh.at.kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_102139_260258_408D80E7 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20220504_105649_192547_FB30542D 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,38 +57,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5984803108047462939=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-driver_register() will refuse to register another driver with the same name.
-This change allows pcie-mediatek-gen3 to coexist with pcie-mediatek built into
-the kernel.
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--===============5984803108047462939==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="2hMgfIw2X+zgXrFs"
+Content-Disposition: inline
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 3e8d70bfabc6..2e665cd7e735 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -1021,7 +1021,7 @@ static struct platform_driver mtk_pcie_driver = {
- 	.probe = mtk_pcie_probe,
- 	.remove = mtk_pcie_remove,
- 	.driver = {
--		.name = "mtk-pcie",
-+		.name = "mtk-pcie-gen3",
- 		.of_match_table = mtk_pcie_of_match,
- 		.pm = &mtk_pcie_pm_ops,
- 	},
--- 
-2.35.1
 
+--2hMgfIw2X+zgXrFs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed 2022-04-27 13:29:41, Rob Herring wrote:
+> On Tue, 26 Apr 2022 08:35:08 -0500, Rob Herring wrote:
+> > The binding has both 'unevaluateProperties: false' and
+> > 'additionalProperties: false' which is redundant. 'additionalProperties'
+> > is the stricter of the two, so drop 'unevaluateProperties'.
+> >=20
+> > Fixes: e05cab34e417 ("dt-bindings: leds: Add bindings for MT6360 LED")
+> > Signed-off-by: Rob Herring <robh@kernel.org>
+> > ---
+> >  Documentation/devicetree/bindings/leds/leds-mt6360.yaml | 2 --
+> >  1 file changed, 2 deletions(-)
+> >=20
+>=20
+> Applied
+
+Thank you!
+							Pavel
+--=20
+People of Russia, stop Putin before his war on Ukraine escalates.
+
+--2hMgfIw2X+zgXrFs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCYnK+XwAKCRAw5/Bqldv6
+8uKUAJ4mu8CeqxEjsLFjOzdUAjXUoBBgEQCgpeK3/QYfQACi2vQAk8BrArf+WJU=
+=SuN2
+-----END PGP SIGNATURE-----
+
+--2hMgfIw2X+zgXrFs--
+
+
+--===============5984803108047462939==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5984803108047462939==--
+
