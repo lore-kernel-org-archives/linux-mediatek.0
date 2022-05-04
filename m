@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE70C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 12:34:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFCD3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 12:35:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xr7aSIe0sGjg/Qtsy/Ol+Q/Eg1dmvZ4QoamMybXoRng=; b=Ocx2+YTz9r5D4w
-	rWVsm8ExFdk72RySxoOy6BCmatbfGzalXnBSTb4KDuZDiPTJRQyBeqiKYnjYcihCfX05xDVOGVKU7
-	aZ8soS60ejy+nYHsxAF2+n618nTbfLg+QzU1Vd4dYA3gHp6VVjtyA31r9Ygj8aaFS8ZKlRXobjFhU
-	D9XsWAGw34jJIF5avibTXtb5xnJrIMBGW46AETNKALgGEm4VN+UGN2nKADCYtoKqrWl9w8X6r+2RH
-	c4i2//S2jmDBFfItFLlJllu+IbYKjaEso+S8zSIRaDDa4PK1j3rO0Y8RQT1aU4bPpERyjF2baw9aO
-	qv5sMQjovfsDAtoMz8Ew==;
+	List-Owner; bh=+fQVP8SaIAs7hh2AFRs81X4PAVE7r6y73zEt5F1rhUI=; b=Jaa4AN+O8saCQG
+	Tu7C9cAF5NWL05utoWnAfRQSq8lTMDcVCE5q05J0VrhnOpDleA2WP4Q20xzcB7ZOccN+FS5gXr9uu
+	Ebiiqmk+KDjihyZBIkhqAlzVGvijSOdsziHd9Gn0IbMY/D1oC/gT1j/iRQ/l/AZGJgQMyLHlXxqi7
+	EGrAP8LsY4XNXROQQjnevXEUJ16AM28pnijLenQL18QNzZpSlBKsWuro9+fx7+2h+2N0fIOvLNHyl
+	UCfDcMr/AA3jl/1VtBL4ggRhxYBqkHl56WYuw37iPRwsgO0O/wMD1uZzpjo7LlWWBfZ6ECDARI7XC
+	IcacrBDWF0a8iJ1UUYIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmEDP-00AkaP-65; Wed, 04 May 2022 12:34:47 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1nmEE4-00Akvy-2d; Wed, 04 May 2022 12:35:28 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmEBc-00AjP9-B8; Wed, 04 May 2022 12:32:57 +0000
-Received: by mail-ej1-x631.google.com with SMTP id l7so2615682ejn.2;
- Wed, 04 May 2022 05:32:53 -0700 (PDT)
+ id 1nmEBg-00AjT9-Lp; Wed, 04 May 2022 12:33:02 +0000
+Received: by mail-ed1-x530.google.com with SMTP id z19so1511489edx.9;
+ Wed, 04 May 2022 05:32:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=PUVxfJrhsniJtnQ7nz0gUaC/9RR8AYztqQ8GdhvVU68=;
- b=HEJn9ahozroDJ2MNeRspCwpjwGh54adJdjlEW5nC2Z4kGL8cZKo2DhcvGKBTAJSEq+
- R1crI71Geo4C7IwGhUVxJLo/jffNS4jwOcK8ynC95bgwCQlFUVbpdfFsMBZEc35eUUQ1
- J7pfHqMr71Ju+L/evYzQBx+CBku6/iL+J2uSxz6mvXp4033IYEYHhB6FqhK2uBNssh4p
- uIch3cnITzd7PoJ3rC+LV8h284zjM/qVws//9XfPYbc/CgAlSygl7IPwy9wmVGCHrnpZ
- WwEfAC/WMnMeNGvwUb6bJqeEUlast7AGBB2VWksrXwsnt72Zy3hbGoqEtE4mzNYrUUS0
- iB+A==
+ bh=aPFSi/mWYMYdcINHgbvPpjSUWnzyR9p2rv5umtn3cjI=;
+ b=UEFVed+rgiC1aLFETWO3cJXmKIhCocpF3HO/nI8utDBVg39ruLl5QFVsv4iuKvsveR
+ 5qATWQ8FXfIGg/WmYfD4hppEDR+bjU9R2cpZK2b80cZj7hMm+DyQg4GkyCqvOrn9a6Hn
+ Jf33IeqUyVSd18068d9DNkH5Ci1mOYNBziuQ4Kaaevxnfjp8ORdU3Y25YF4pBNcjVqPh
+ K8jQg1FaR/BuZ27aXWahyAQCbLO6jopxmHRzaaxQPMilhwrwlBSIB0tsiMLKv1NQ4Njf
+ ekXwbKBISFCg5eZx9ktY6Ge82DA4gMnJYoZ6k/x/ApvaQftQjfV5cP8tDj0Y4xVYp4Jy
+ sDnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=PUVxfJrhsniJtnQ7nz0gUaC/9RR8AYztqQ8GdhvVU68=;
- b=I6hn77aHWsUfnFv9cQ302ScixHWzVGqkkzcfyvK3LjVSxqhFCtY/USTCkA0/BB3Y25
- B6rHUokOVQ4PxaXo4yasop3hGQX5TFLOzk97FVuZ/s7NpkDAREtj+ZnsdDO2NWly9FyD
- ouTx1kK0rAEnSVoadLZxn6n3vb6Cicg8LNuLbL7KRytst7ayDU2C3o6vxfb4jiDlaRY7
- yIeyWOkt4B8lXqYf3OkC383W1S97ZToH7TD4EIr8zI0EMu+eegJIKmewgTNo1vT+cWdC
- vuuDcUEUcGnBkG5O6QJFoZtJlWWCJyoCmRJOiogwfFiWUCBqPH7lE7BxkrrGvvCJUcnv
- OcfA==
-X-Gm-Message-State: AOAM533U12gA8KlM+CUFybLyO23hoQqSySDmxenxBRpIumsEtSp8FVDi
- R6+wA68gNBa/mSqqqjoY9pE=
-X-Google-Smtp-Source: ABdhPJysMRSbHfcoJzQlOOSojNDvkOkjioWOUaFZqOEhre5gzFXjpjw3ryjINkEIAXIBd/cSPm5NNw==
-X-Received: by 2002:a17:907:761c:b0:6d6:e553:7bd1 with SMTP id
- jx28-20020a170907761c00b006d6e5537bd1mr19590051ejc.5.1651667572462; 
- Wed, 04 May 2022 05:32:52 -0700 (PDT)
+ bh=aPFSi/mWYMYdcINHgbvPpjSUWnzyR9p2rv5umtn3cjI=;
+ b=l4QrNsUek6lND0OLYyrAgOr5OpJRU7bmEDfoz6gVknRm0lnUIphmXQghpUPbrwVUtr
+ 6MYdmLZu1PCdlXvPmRQ5xkphu7j26Q2JFjySqRPWCBpIwgYl94ncDeJ67+pCDIkxh30Z
+ Kos4AkHNqZiM/qouRXCjIpSo9NeErCrhOtXGu86WwA/5ZKM5po+8hJOi5Xv5U3qXg+UD
+ dXpyU8uO69oPJpcayUt8hwQvlr8mmgLn6sT2LKhzoP94dkUwhfh8uFTvEH8Wd/c38PUD
+ 5mv9Ijnn/KKQrMSGzMZCLn8+OEq2TDu4UPx7NH+O34QM3gVWKHOrwDDLn8cHxo3RWwkv
+ VtVQ==
+X-Gm-Message-State: AOAM531cKPdvSX7Rfv6Ls0IZEheP/zFioV5QMbRlwDrZ5r+ArJWymgn0
+ Kf6QdVW+LqoLLgF0vcFUSWA=
+X-Google-Smtp-Source: ABdhPJw1ji77MznXPOLUih012rHNfyRY1v0DSI/u5kQreEXOVa6/qDVm+wA0fswuDakV4xVmX1s1FA==
+X-Received: by 2002:aa7:c318:0:b0:426:4aae:de6d with SMTP id
+ l24-20020aa7c318000000b004264aaede6dmr22660856edq.208.1651667578090; 
+ Wed, 04 May 2022 05:32:58 -0700 (PDT)
 Received: from localhost.localdomain
  (185-177-124-12.hosted-by-worldstream.net. [185.177.124.12])
  by smtp.gmail.com with ESMTPSA id
- ig1-20020a1709072e0100b006f3ef214e7asm5688693ejc.224.2022.05.04.05.32.48
+ ig1-20020a1709072e0100b006f3ef214e7asm5688693ejc.224.2022.05.04.05.32.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 05:32:52 -0700 (PDT)
+ Wed, 04 May 2022 05:32:57 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
@@ -77,17 +77,17 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 08/13] clk: mediatek: gate: Export
- mtk_clk_register_gates_with_dev
-Date: Wed,  4 May 2022 16:25:57 +0400
-Message-Id: <20220504122601.335495-9-y.oudjana@protonmail.com>
+Subject: [PATCH 09/13] clk: mediatek: reset: Export
+ mtk_register_reset_controller symbols
+Date: Wed,  4 May 2022 16:25:58 +0400
+Message-Id: <20220504122601.335495-10-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220504122601.335495-1-y.oudjana@protonmail.com>
 References: <20220504122601.335495-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_053256_469143_AD9E8B7A 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20220504_053300_808934_0115F1CE 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,25 +106,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-This allows it to be used in drivers built as modules.
+Export mtk_register_reset_controller and
+mtk_register_reset_controller_set_clr to support building reset
+drivers as modules.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 ---
- drivers/clk/mediatek/clk-gate.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/clk/mediatek/reset.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index da52023f8455..8af907b82f8f 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -261,6 +261,7 @@ int mtk_clk_register_gates_with_dev(struct device_node *node,
- 
- 	return PTR_ERR(clk);
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index bcec4b89f449..6c2effe6afef 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -129,6 +129,7 @@ void mtk_register_reset_controller(struct device_node *np,
+ 	mtk_register_reset_controller_common(np, num_regs, regofs,
+ 		&mtk_reset_ops);
  }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_gates_with_dev);
++EXPORT_SYMBOL_GPL(mtk_register_reset_controller);
  
- int mtk_clk_register_gates(struct device_node *node,
- 			   const struct mtk_gate *clks, int num,
+ void mtk_register_reset_controller_set_clr(struct device_node *np,
+ 	unsigned int num_regs, int regofs)
+@@ -136,5 +137,6 @@ void mtk_register_reset_controller_set_clr(struct device_node *np,
+ 	mtk_register_reset_controller_common(np, num_regs, regofs,
+ 		&mtk_reset_ops_set_clr);
+ }
++EXPORT_SYMBOL_GPL(mtk_register_reset_controller_set_clr);
+ 
+ MODULE_LICENSE("GPL");
 -- 
 2.36.0
 
