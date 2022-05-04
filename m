@@ -4,79 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68BF3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 12:06:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACDBDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 12:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jl03iB+NtMv9/gyH6tRQtWys/pC6WbSIjnEuQc2WsK0=; b=EwinJT2pIAhVjO
-	30bOyI0p0uZEn8dZNuEOOCjhBOWhYz5Mlz0jlUBDmJE7B3ElT95qtEi3zrtI52A0eylEn+aL8tXOn
-	2ydKyzzkHvb7JhMkOGfjNqIknHgxLVQsgsi0cJ3Ezf/JgpxEZEsuhGcuTvyVbPn9NR5JcV4KyG4q1
-	vOS5gKAscZ/ofGDuaAAI++wKaTZyHTZjwbpFWrV4kCY+Brv9od7C9M6DmDrzrOIPwZjLFBKbTk3yN
-	i6XTbAvX/MA6tY+69tA3aVnFSjgZvBwhL8L5m9oiBXYiWHpz/FZDcoJHvfnymNYXsB+bnkXOeK4Db
-	QeTwlbPMBUZW4gsZrmFg==;
+	List-Owner; bh=BkmL/Dr/a5KJLh3lqVSgp0q7cewTXgC6GvkwINqQDxc=; b=l3z384HJAw8qaW
+	Za30ZgCN/p5vvaLHFier3l9d6peht7ZBCngmBdpRCMDLfO8Q0szhHKwkMEpRr9vKzMcpy6qRcVDOh
+	fd8FlF4DW/4tm7k7HNbXNXNY8QoaYS0abqgrzpzkxk/orKau0ulNb95lR9L9564l4wiVdhdJl4zFw
+	ntH+kWaCkuHT98wBbpVmqXRejK/qhq2EAC97TO0bXpKH+ipu8k87fCDsD9M4NvIKmTr0XaEujv5oM
+	hCdOoW+L7yl5yXBmbJ5PtgsTh5h5VTqBjVcoeWRlqkUPgt6me9+sYpGPsPo3WZX35vAuxyxBc6Rwd
+	raVoeqfwl9r1ElVxGmNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmDlm-00AdDe-I7; Wed, 04 May 2022 12:06:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nmDn8-00Ae0r-NO; Wed, 04 May 2022 12:07:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmDlQ-00Ad0t-6i; Wed, 04 May 2022 12:05:56 +0000
-X-UUID: 5612ce2165a64384bb34c8e2565513c5-20220504
+ id 1nmDmF-00AdWL-Vu; Wed, 04 May 2022 12:06:45 +0000
+X-UUID: ec3da4464e7e48f2b33665e9a72b268c-20220504
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:e357f476-118c-4089-8784-b31e10bc0aa2, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:42047d95-3154-4679-9375-233083735fa1, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:0e278bb2-56b5-4c9e-8d83-0070b288eb6a,
+X-CID-META: VersionHash:faefae9, CLOUDID:be2d8bb2-56b5-4c9e-8d83-0070b288eb6a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 5612ce2165a64384bb34c8e2565513c5-20220504
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+X-UUID: ec3da4464e7e48f2b33665e9a72b268c-20220504
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1029092982; Wed, 04 May 2022 05:05:43 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1584963687; Wed, 04 May 2022 05:06:41 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 05:03:28 -0700
+ 15.0.1497.2; Wed, 4 May 2022 05:06:39 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 20:03:26 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Wed, 4 May 2022 20:06:38 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 4 May 2022 20:03:26 +0800
-Message-ID: <d2427c54c4e56cb6b4d4cdf16d9aedfd211ba748.camel@mediatek.com>
-Subject: Re: [PATCH V4 07/14] cpufreq: mediatek: Add .get function
+ Transport; Wed, 4 May 2022 20:06:38 +0800
+Message-ID: <af5d30f36092f387e4de7e4c09ca09f9de0478ba.camel@mediatek.com>
+Subject: Re: [PATCH] cpufreq: Avoid unnecessary frequency updates due to
+ mismatch
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Viresh Kumar <viresh.kumar@linaro.org>
-CC: <rafael@kernel.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>,
- <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>,
- <roger.lu@mediatek.com>, <hsinyi@google.com>, <khilman@baylibre.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 4 May 2022 20:03:26 +0800
-In-Reply-To: <20220504115826.5qqj22x4c7jldfxz@vireshk-i7>
-References: <20220425053548.72w2jh2g6lpzgz6g@vireshk-i7>
- <64c690e8edf493ec0a4a14e0fdaad2d8e88e6da7.camel@mediatek.com>
- <20220425100058.4kbvmpi63ygni6k5@vireshk-i7>
- <078b1f9b39690da98cbd3c4528ba28374a097083.camel@mediatek.com>
- <20220427031141.or2owu5wrh2cadfo@vireshk-i7>
- <346736a339bed576817179ded3795d61f71fa06a.camel@mediatek.com>
- <20220428114835.3ktimyz2tzzqdcbg@vireshk-i7>
- <27a5dddd91b3dcbd69f08c10108cdec808237ace.camel@mediatek.com>
- <20220504082249.anrvkf2ssbxyzz5m@vireshk-i7>
- <332f8adec6601f97ab2814d06330883a251e41ec.camel@mediatek.com>
- <20220504115826.5qqj22x4c7jldfxz@vireshk-i7>
+To: Viresh Kumar <viresh.kumar@linaro.org>, Rafael Wysocki
+ <rjw@rjwysocki.net>, "Rafael J. Wysocki" <rafael@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: <linux-pm@vger.kernel.org>, Vincent Guittot <vincent.guittot@linaro.org>, 
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <jia-wei.chang@mediatek.com>
+Date: Wed, 4 May 2022 20:06:38 +0800
+In-Reply-To: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
+References: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_050552_288050_0AC26E21 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20220504_050644_092226_67C71468 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,20 +83,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-05-04 at 17:28 +0530, Viresh Kumar wrote:
-> On 04-05-22, 19:57, Rex-BC Chen wrote:
-> > Thanks a lot! It helps to fix this issue.
-> > And I will drop this patch in the next version.
+On Wed, 2022-05-04 at 13:51 +0530, Viresh Kumar wrote:
+> For some platforms, the frequency returned by hardware may be
+> slightly
+> different from what is provided in the frequency table. For example,
+> hardware may return 499 MHz instead of 500 MHz. In such cases it is
+> better to avoid getting into unnecessary frequency updates, as we may
+> end up switching policy->cur between the two and sending unnecessary
+> pre/post update notifications, etc.
 > 
-> Please provide your Tested-by in that thread then, it will help.
+> This patch has chosen allows the hardware frequency and table
+> frequency
+> to deviate by 1 MHz for now, we may want to increase it a bit later
+> on
+> if someone still complains.
+> 
+> Reported-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+> ---
 > 
 
 Hello Viresh,
 
-The verification is done by Jia-wei.
-I will help him to provide Tested-by.
+Thanks for your help!
+Jia-wei verified this patch in his device, and I help him to add this.
 
-Thanks.
+Tested-by: Jia-wei Chang <jia-wei.chang@mediatek.com>
 
 BRs,
 Rex
