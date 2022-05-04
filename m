@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1CDFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 12:32:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A45FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 12:32:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CnhrhiJ3cSR7TRf4rHyw+jmPqJUWGZO3FAiJyQ9JLvI=; b=Re/uDXEZDbaJoU
-	sLcOPsVVo2JNvt/NN/DXxH60FKmFxeLrnmnOoqhUTyufGy3I/fVH/V8czq0xHVuKTO7HqkbeelaSF
-	iEUZQh7yPJWUmJa8j3pg5KcYKGWA9ECzEt3k5kW/Y82BKRkFf6fQKDV7rhK5PF9mITypja5oMob3l
-	4Knx5fZjtqKl1zpnQf6+GtuRaQQ4FVCxb05G01Ubn9bp0x+ZmFyviYjN8AsXOxwmw+S4nYC2ZNydm
-	mQHOCALLLIHfpl9qD0xabeHUSZcHt4HnX11oq8QAyefFPBJWs62rHEfwYn+YOTAOSe1/oBvwzMcdj
-	5PE+5eAfTcq6uDJGSiXg==;
+	List-Owner; bh=T122RgRGLSZgUB12TJoCpzRuUF1ZCK08xICv1sgjEJY=; b=IngCr7n0QTfKLh
+	jYO+XKLZngRBT40PCJC2rOiq+RsFrD/j7rzBFwLCT+Gm47dgC0o+hDwdGAsF/Yga3pYJBDhLP2asH
+	31oDRovv1ZyxPIou8OqMDb5nJCnpTrJ/+bFENmX27L3HtlKD1eLzIx+3jgpRoiNg2lZ61wIWBtoXz
+	LavGD7TvKC9/pbb4OLWSKUts0fhHjwVezc+hX27464OyEJQZgR+vMrxllVNNGVyuPCe/Nf98Z+qQg
+	1o52xEqjYteToFvr+qOU5yBfUVVt3Me+g5d/kHcIfRHTssDDJS7GuLI/hpLpM6c8FN5P5ilR3ELgw
+	seP+LWOVHUxpPmRNoIwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmEBC-00AjAf-Lb; Wed, 04 May 2022 12:32:30 +0000
+	id 1nmEBO-00AjHR-Kq; Wed, 04 May 2022 12:32:42 +0000
 Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmEB8-00Aj7T-9D; Wed, 04 May 2022 12:32:27 +0000
-Received: by mail-ej1-x634.google.com with SMTP id i27so2570316ejd.9;
- Wed, 04 May 2022 05:32:24 -0700 (PDT)
+ id 1nmEBI-00AjCZ-Ce; Wed, 04 May 2022 12:32:37 +0000
+Received: by mail-ej1-x634.google.com with SMTP id bv19so2586731ejb.6;
+ Wed, 04 May 2022 05:32:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=tQb6i3JLN4afiayNb9b2ZXTM0vOnQttR7jIOROP3G/Y=;
- b=aHsdTT0i4b+/rqquEcasEwbRp4vMI3Q/epZoFwj34h2xL8rLbYyhjwsHaeXj2w6q6b
- LfiN265tlqSl+XbGmfUaltU98rUUgb1SSvHf5jrzEuFnsz0IDoRdbiurn2lyfMb22uCm
- F+I+MLHKaNmCUmGNqKPlb4hlNpB4IZjX0pldxi9H9kIbs4A/1PIgvdt/YwAkMo3IBS8z
- BMxALBRT/zIndRVeMc7UgmtzeK/8nRuIyMcK74pXOk2BNu2T5E58qsymc12ENMAKmQj9
- DwthCm2/9M/0ZAap2kNe9PU037opvy9r0Gaxv65kmtaZRmrQI3pMmVMovMIQuEjlw7tH
- e3Fw==
+ bh=CNKzAxju2H5F78AxmBtE86NJhowOrzcymru33IBzxRo=;
+ b=fhgI+VpoueobRqvh9tlA+tLmknI0/GBMBlZVChuFNtle9pQIpmqvLOhKfM6Dmjr1xw
+ R3/4j2ipVTMcLVfcdiFVhPLlaPqRNY5t3H+rxBSFArOYE5xwpZxH3Jq/6mwZQVR5g5nH
+ DS3m+OPLGiWRLFkR1OgFSMe8XxRKuEH9W86Sit7CTWaS36IS1BcjrV89ZJ+WtFIIoN5V
+ SMHkwP1Nl0jDUWaKx2biMH+3mBhtuY+mAxeY2i82RlP9W3AZmkdHxsVek7a/DNULJQMK
+ QeOxtBznr+PojfyE1rhzKOyrX/n2xr6Tt/U/VTGSbiKJy7ewUjeVFX4fuW8b/wFLsQHw
+ dYPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=tQb6i3JLN4afiayNb9b2ZXTM0vOnQttR7jIOROP3G/Y=;
- b=Mig04CO2ctEFCA0frRH25l3DSbXqLUpA7tc6LZdCBKSprxVuxefp5UygfL4Ogcsrvu
- Em3Srj40zLseikNxgX4V+wjoAbXLzgY/KUl9vyodSAsJQgj7Mn1CLKfax7i1poVTFujs
- GLNMesP/Adk9YYzUwltA14+neOhOb+AZK1FbapW1UFvoJss4HpNrgH5gQIKkUDPrjow5
- s4nDGV/dTwBCS8kw+l0/+yIx4XMN28wq6iM2DwF5Dd3T1TIOiEsNxPTX7M2ZT4Jr3JvR
- sZTXswI/SCHDP9pDx032hl+mXsSXpK7IS1m3FCEmlHlqDyea8Ju60zcs8O0m7svjZ+R7
- uiHA==
-X-Gm-Message-State: AOAM533a2jKTSi/wi8J2Jq57VFyIpnYb+lGX9REAcHCELyae9RPTZS5s
- W4V6y8GQAXe9MxODa9YXVGM=
-X-Google-Smtp-Source: ABdhPJzNBv4cEDn9Jph+56mXidHah4kYetwQwPrK8Clz9ddS7VIxbIJcMRjEj4lpElEiNV5dFKT2NQ==
-X-Received: by 2002:a17:907:3f16:b0:6f4:c54:2700 with SMTP id
- hq22-20020a1709073f1600b006f40c542700mr20296404ejc.615.1651667543019; 
- Wed, 04 May 2022 05:32:23 -0700 (PDT)
+ bh=CNKzAxju2H5F78AxmBtE86NJhowOrzcymru33IBzxRo=;
+ b=mHekafLLu27iiTijTvKVvris6dR3vg/SQ/wRNiBp6YGHVKP2LP9tNT2wSLgEWgU7uU
+ ExMNCyWEBlez397dOmPGTo73fm9NstPA7NdWd1EEjMI1E22rzX6VMBhlnmT5K6YU6AE+
+ 2SbHzHupKAvzQp1Bw5u853s/SDYeTH4esdxYVAv4ItpW3pIhXSEFDQQ9tdtPQ4zs0YON
+ ae40523Tu8rLcnvIWRUVLxHbnMR9uaycJALZ2b79+fEBwM4jd1vHiuEZMAIqtnWWAoUX
+ mMo81gSVjBQDueZ6AtiNB4zMByyKrssegieK2WgzVYidwZ6MZMfNFUTWihSNlZNGYqEk
+ DWJA==
+X-Gm-Message-State: AOAM533Sj+TPenBnLCMOMiGODcJpXTrhFInUQYERPd087bHPcRkP3Xlj
+ 7hDKMEyDKEwnWtktW3kInHbwoF1xL28=
+X-Google-Smtp-Source: ABdhPJz1LfNQyXPrgPpEVU72LKcwzEzy3aEBePRzfJCjCXhN8ogrNFGeDXHVMFOxKgDBPTqeQGtifQ==
+X-Received: by 2002:a17:907:980d:b0:6d6:f910:513a with SMTP id
+ ji13-20020a170907980d00b006d6f910513amr18770753ejc.643.1651667555088; 
+ Wed, 04 May 2022 05:32:35 -0700 (PDT)
 Received: from localhost.localdomain
  (185-177-124-12.hosted-by-worldstream.net. [185.177.124.12])
  by smtp.gmail.com with ESMTPSA id
- ig1-20020a1709072e0100b006f3ef214e7asm5688693ejc.224.2022.05.04.05.32.18
+ ig1-20020a1709072e0100b006f3ef214e7asm5688693ejc.224.2022.05.04.05.32.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 05:32:22 -0700 (PDT)
+ Wed, 04 May 2022 05:32:34 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
@@ -77,17 +77,16 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 03/13] dt-bindings: arm: mediatek: Add MT6735 clock controller
- compatibles
-Date: Wed,  4 May 2022 16:25:52 +0400
-Message-Id: <20220504122601.335495-4-y.oudjana@protonmail.com>
+Subject: [PATCH 05/13] clk: mediatek: Export mtk_free_clk_data
+Date: Wed,  4 May 2022 16:25:54 +0400
+Message-Id: <20220504122601.335495-6-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.36.0
 In-Reply-To: <20220504122601.335495-1-y.oudjana@protonmail.com>
 References: <20220504122601.335495-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_053226_389176_043F9CA4 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20220504_053236_490640_4CEB98FD 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,99 +105,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Add compatible strings for MT6735 apmixedsys, topckgen, infracfg
-and pericfg.
+Export mtk_free_clk_data to allow using it in clock drivers
+built as modules.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 ---
- .../bindings/arm/mediatek/mediatek,infracfg.yaml          | 8 +++++---
- .../bindings/arm/mediatek/mediatek,pericfg.yaml           | 1 +
- .../devicetree/bindings/clock/mediatek,apmixedsys.yaml    | 4 +++-
- .../devicetree/bindings/clock/mediatek,topckgen.yaml      | 4 +++-
- 4 files changed, 12 insertions(+), 5 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-index 8681b785ed6d..aa1bb13e0d67 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-@@ -11,9 +11,10 @@ maintainers:
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index b4063261cf56..0746b0f5beda 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -52,6 +52,7 @@ void mtk_free_clk_data(struct clk_onecell_data *clk_data)
+ 	kfree(clk_data->clks);
+ 	kfree(clk_data);
+ }
++EXPORT_SYMBOL_GPL(mtk_free_clk_data);
  
- description:
-   The Mediatek infracfg controller provides various clocks and reset outputs
--  to the system. The clock values can be found in <dt-bindings/clock/mt*-clk.h>,
--  and reset values in <dt-bindings/reset/mt*-reset.h> and
--  <dt-bindings/reset/mt*-resets.h>.
-+  to the system. The clock values can be found in <dt-bindings/clock/mt*-clk.h>
-+  and <dt-bindings/clock/mediatek,mt6735-infracfg.h>, and reset values in
-+  <dt-bindings/reset/mt*-reset.h>, <dt-bindings/reset/mt*-resets.h> and
-+  <dt-bindings/reset/mediatek,mt6735-infracfg.h>.
- 
- properties:
-   compatible:
-@@ -22,6 +23,7 @@ properties:
-           - enum:
-               - mediatek,mt2701-infracfg
-               - mediatek,mt2712-infracfg
-+              - mediatek,mt6735-infracfg
-               - mediatek,mt6765-infracfg
-               - mediatek,mt6779-infracfg_ao
-               - mediatek,mt6797-infracfg
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-index 611f666f359d..94e5e003e60e 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-@@ -20,6 +20,7 @@ properties:
-           - enum:
-               - mediatek,mt2701-pericfg
-               - mediatek,mt2712-pericfg
-+              - mediatek,mt6735-pericfg
-               - mediatek,mt6765-pericfg
-               - mediatek,mt7622-pericfg
-               - mediatek,mt7629-pericfg
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-index 770546195fb5..3a186621e7a9 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-@@ -12,7 +12,8 @@ maintainers:
- 
- description:
-   The Mediatek apmixedsys controller provides PLLs to the system.
--  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
-+  The clock values can be found in <dt-bindings/clock/mt*-clk.h>
-+  and <dt-bindings/clock/mediatek,mt6735-apmixedsys.h>.
- 
- properties:
-   compatible:
-@@ -32,6 +33,7 @@ properties:
-           - enum:
-               - mediatek,mt2701-apmixedsys
-               - mediatek,mt2712-apmixedsys
-+              - mediatek,mt6735-apmixedsys
-               - mediatek,mt6765-apmixedsys
-               - mediatek,mt6779-apmixedsys
-               - mediatek,mt7629-apmixedsys
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
-index 5b8b37a2e594..920bf0828d58 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
-@@ -12,7 +12,8 @@ maintainers:
- 
- description:
-   The Mediatek topckgen controller provides various clocks to the system.
--  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
-+  The clock values can be found in <dt-bindings/clock/mt*-clk.h> and
-+  <dt-bindings/clock/mediatek,mt6735-topckgen.h>.
- 
- properties:
-   compatible:
-@@ -31,6 +32,7 @@ properties:
-           - enum:
-               - mediatek,mt2701-topckgen
-               - mediatek,mt2712-topckgen
-+              - mediatek,mt6735-topckgen
-               - mediatek,mt6765-topckgen
-               - mediatek,mt6779-topckgen
-               - mediatek,mt7629-topckgen
+ int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+ 				struct clk_onecell_data *clk_data)
 -- 
 2.36.0
 
