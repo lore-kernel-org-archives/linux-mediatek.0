@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17022C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 07:49:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B47BBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:07:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iJNmK0iEIkRq8Mwe0WROTnsKge2U1rYAQPFEOGSBz+0=; b=f9to+BvPG2wZbJ
-	NR9YNeKYxzvMLdVO13Rvx2rOtzhHspbsce/+Fu69rYJm8NPTxw9d7z98fMx2GxkGfmJZMLofn1SOn
-	Ec6xDd6ykUb1y0Q+T2bHK+lgN0wqCSVgyCwgj5s0nF5NEikO0l7yBZM8gn07ukNpWC29SMN4wpg7L
-	ne0d3tSt0sPzM9jHC2ZLp8VVM7aBm9zS8RSO4lgnYuNLjDjoxUoRMJpkk2mGQKgCfZtvrl4GiGKPd
-	tRoC4P+DlmoYkPZ+Qal5KLiKIyyNPdMN0eET6b8U9oTi5b7mIUQzHgCEPNwgpiBxVRXcR3adLayb8
-	qzhTadghGvoDzqCReJ0Q==;
+	List-Owner; bh=r9tITbDfDczceNDrSP6Xy/urZHYsKt/KVizFVcdT7hs=; b=xSCQ5OCWI+5HT7
+	7//Am2oJ1YyaYdzhCpJEiARmBU2tXJxy2U1tv3UlQRByDVIKSfBKW59pGAXcfTWtM8Qn17LHCFBse
+	wHYaBGsxNSRHLh7ZxlR2VJSwbb70UdPcsDDfFwIdMSLZNTau96V8rnv6FXu6oMizuocxjixB5CFgE
+	1sWJ/HNXEQsff9rvK9GyYCfLdMB8QUZe7OOcJ4Sno5MxQrlEkL4Yb5v+WNGtVd1KQCtXqFFf5mtDa
+	IjQPhcooe08rW/v1mcGpjURbZ/p5awwkeVWuRWbAZtkEfLUpuU4PrqTq0P+z5oUItzVeR6n+dXd+k
+	Uv/Hqj4vraTI7DbA5Fag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nm9lb-009KN9-7B; Wed, 04 May 2022 07:49:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nmA2F-009PqH-MF; Wed, 04 May 2022 08:06:59 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nm9lR-009KH8-KO; Wed, 04 May 2022 07:49:39 +0000
-X-UUID: 85cdbb15beb34ca1bd53f5607349d825-20220504
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:da799ac3-3f5b-42eb-8c5d-9c59f65b34fb, OB:0,
- LO
- B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:9f89a82f-6199-437e-8ab4-9920b4bc5b76,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 85cdbb15beb34ca1bd53f5607349d825-20220504
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 136985814; Wed, 04 May 2022 00:49:33 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 00:49:31 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Wed, 4 May 2022 15:49:30 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 4 May 2022 15:49:30 +0800
-Message-ID: <41eb4b05c703d0377b7139ad0868cebea8f6fc47.camel@mediatek.com>
-Subject: Re: [PATCH -next] drm: mediatek: mtk_dsi: Remove unnecessary print
- function dev_err()
-From: CK Hu <ck.hu@mediatek.com>
-To: Yang Li <yang.lee@linux.alibaba.com>, <matthias.bgg@gmail.com>
-CC: <chunkuang.hu@kernel.org>, <airlied@linux.ie>, Abaci Robot
- <abaci@linux.alibaba.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 4 May 2022 15:49:30 +0800
-In-Reply-To: <20220224012318.84935-1-yang.lee@linux.alibaba.com>
-References: <20220224012318.84935-1-yang.lee@linux.alibaba.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nmA24-009Pmm-I3; Wed, 04 May 2022 08:06:50 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 2BA181F43E10
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651651606;
+ bh=g4o2JNm4Ctpm5k1rvLgGc8KPep2McYePUQzlec3QBWk=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=b/wlNUz6s3DO+++GsE2ms8gl75kjfDcHwqg0VE1PAi8+0eGfY9Hgd+U3h0xCQexaw
+ onor0VkEbaFunBBtN0TyEFGreN1HUquBgcnuphdhihUaG2/gFDLi+ygm/T+Hdm7qsF
+ Q8L0HyrMwPuC6TtwBQgOd8Yf/yESF3rkq+9+w4mebNjM9RHr2DTlT3pHLCrE8mJsTV
+ E5aP3PfpTUcIRjN5mET63+Lb44KYzvrSkizpzqPphT13AWjMJjGm8q/psEcy5P25G1
+ QDvWmIrpGxqdYpADcFcwY5F8oDdedjsnxnNOGL4l+qPaD3bMNF9qjK1egW74egsodG
+ kTQkLFtbDO3TQ==
+Message-ID: <a387728e-94f0-ccd0-3936-977db545efb7@collabora.com>
+Date: Wed, 4 May 2022 10:06:42 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 4/4] drm/mediatek: Add MT8186 DSI compatible for
+ mtk_drm_drv.c
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de
+Cc: airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com,
+ jitao.shi@mediatek.com, xinlei.lee@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20220428133753.8348-1-rex-bc.chen@mediatek.com>
+ <20220428133753.8348-5-rex-bc.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220428133753.8348-5-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_004937_761142_B3D288DD 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20220504_010648_850340_BD88CFB2 
+X-CRM114-Status: UNSURE (   6.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,45 +71,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Yang:
-
-On Thu, 2022-02-24 at 09:23 +0800, Yang Li wrote:
-> The print function dev_err() is redundant because platform_get_irq()
-> already prints an error.
+Il 28/04/22 15:37, Rex-BC Chen ha scritto:
+> The compatible "mediatek,mt8186-dsi" is used by MT8186 DSI, so
+> add it to mtk_ddp_comp_dt_ids in mtk_drm_drv.c.
 > 
-> Eliminate the follow coccicheck warning:
-> ./drivers/gpu/drm/mediatek/mtk_dsi.c:1092:2-9: line 1092 is redundant
-> because platform_get_irq() already prints an error
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> 
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index bced4c7d668e..704252ee1198 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -1089,7 +1089,6 @@ static int mtk_dsi_probe(struct platform_device
-> *pdev)
->  
->  	irq_num = platform_get_irq(pdev, 0);
->  	if (irq_num < 0) {
-> -		dev_err(&pdev->dev, "failed to get dsi irq_num: %d\n",
-> irq_num);
->  		ret = irq_num;
->  		goto err_unregister_host;
->  	}
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 _______________________________________________
