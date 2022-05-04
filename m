@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F1EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 09:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BE1DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 09:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qSCE1XAZvVKYLxN6ypcg5Y1nLxlIA3pJLjGDOD+2cRw=; b=anhSj02lOaUZNc
-	omWMfU8vR9U4zAAKkAkOu1S0L6MWdcn88n97xKJHvkGsXHF4jBQbNAGCcIi9W1fsfZhToqxgYsTq5
-	1kNaxBbem7dRY8nXUATukFWPByBRdC88aMIkMrYO3J6ZmwXkQfx0uLQk8QsCowxXzH40PDT53Y5J+
-	Sf+tg7xCyh3IyhjTYGKP8igfiAaj0UmKPUdUKGYnFw5kVgJNPSo7GHe3dwotiDCWBS21T7Nra5kAR
-	Vt4Z3dmnplHr80fdrKMBDsX+f/l98LV8PSgWXq9w6J5yMr62RsiUYKI4JQodjO2QlK2fUMga1U9Ne
-	sDZ11D2NIM/Xkj+VGfGA==;
+	List-Owner; bh=BgcdPUNKeFxJTenPHylD4KcWfAqrxlUAL/jODWw+Rhs=; b=dwoaNcIFFmNuHi
+	Fi9dDFc0ul+YtvYcdqbO9dSaVo006r4he8R746abb54MaNqFXeTzBuRhUt5JO9IzNvvJglN249CTk
+	o8BrF579j6HPxbiX9ExoGk4T1NbrI+e5D14c4gEr3ldKlmQFp6SH0kJv5FmIisfzV2qGxn9hUdpRr
+	EoUcxsI4fDoCxBXHJNG6hEJzGr29GK83mlWJzqlLgRBDKV2qoXZWq51z5jF6E2jcOVNoxfvYpfLmo
+	DWfmBI6xomi3IvE6QfUqm0EYgXjL8L3XQiUJ5mrfbvFPKaF2cIfjrmO2nJiAzUS3NjFJ5TtRpO9QF
+	/przf8rmoo0S7K1TT1qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmBLp-009siu-0Y; Wed, 04 May 2022 09:31:17 +0000
+	id 1nmBLs-009slF-Vg; Wed, 04 May 2022 09:31:21 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmB8B-009klS-QA; Wed, 04 May 2022 09:17:13 +0000
-X-UUID: d3d198ff181e4a758ce1a26e32507588-20220504
+ id 1nmB8D-009klS-O2; Wed, 04 May 2022 09:17:15 +0000
+X-UUID: 40b45d4eac2a4c9c87bac8ace7239059-20220504
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:d0e5e1c8-ff9c-498d-aa6d-b50938ed3330, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:c7b24427-6b0a-47e6-8d24-7811a8631cff, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:dba174c7-85ee-4ac1-ac05-bd3f1e72e732,
+ B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:8
+X-CID-META: VersionHash:faefae9, CLOUDID:e3a174c7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: d3d198ff181e4a758ce1a26e32507588-20220504
+X-UUID: 40b45d4eac2a4c9c87bac8ace7239059-20220504
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2087235983; Wed, 04 May 2022 02:17:00 -0700
+ with ESMTP id 1491406065; Wed, 04 May 2022 02:17:00 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 02:14:47 -0700
+ 15.0.1497.2; Wed, 4 May 2022 02:14:52 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 17:14:44 +0800
+ 15.0.1497.2; Wed, 4 May 2022 17:14:46 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 4 May 2022 17:14:44 +0800
+ 15.2.792.3 via Frontend Transport; Wed, 4 May 2022 17:14:46 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -61,18 +61,17 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
  <singo.chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v20 08/25] soc: mediatek: add cmdq support of mtk-mmsys config
- API for mt8195 vdosys1
-Date: Wed, 4 May 2022 17:14:23 +0800
-Message-ID: <20220504091440.2052-9-nancy.lin@mediatek.com>
+Subject: [PATCH v20 21/25] drm/mediatek: add dma dev get function
+Date: Wed, 4 May 2022 17:14:36 +0800
+Message-ID: <20220504091440.2052-22-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220504091440.2052-1-nancy.lin@mediatek.com>
 References: <20220504091440.2052-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_021711_941966_50F141DB 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20220504_021713_833945_618BFFC1 
+X-CRM114-Status: GOOD (  17.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,191 +88,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add cmdq support for mtk-mmsys config API.
-The mmsys config register settings need to take effect with the other
-HW settings(like OVL_ADAPTOR...) at the same vblanking time.
-
-If we use CPU to write the mmsys reg, we can't guarantee all the
-settings can be written in the same vblanking time.
-Cmdq is used for this purpose. We prepare all the related HW settings
-in one cmdq packet. The first command in the packet is "wait stream done",
-and then following with all the HW settings. After the cmdq packet is
-flush to GCE HW. The GCE waits for the "stream done event" to coming
-and then starts flushing all the HW settings. This can guarantee all
-the settings flush in the same vblanking.
+This is a preparation for adding support for the ovl_adaptor sub driver
+Ovl_adaptor is a DRM sub driver, which doesn't have dma dev. Add
+dma_dev_get function for getting representative dma dev in ovl_adaptor.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioachino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-mmsys.c       | 54 +++++++++++++++++++-------
- include/linux/soc/mediatek/mtk-mmsys.h | 15 +++++--
- 2 files changed, 50 insertions(+), 19 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 15 +++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  8 ++++++++
+ 3 files changed, 24 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 1b9b44e0d9d9..43bb8026e6d5 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -177,6 +177,7 @@ struct mtk_mmsys {
- 	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
- 	struct reset_controller_dev rcdev;
- 	phys_addr_t io_start;
-+	struct cmdq_client_reg cmdq_base;
- };
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index f24b21eb03cd..5c2c21958325 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -59,6 +59,7 @@ struct mtk_drm_crtc {
+ #endif
  
- static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
-@@ -191,10 +192,24 @@ static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
- 	return -EINVAL;
+ 	struct device			*mmsys_dev;
++	struct device			*dma_dev;
+ 	struct mtk_mutex		*mutex;
+ 	unsigned int			ddp_comp_nr;
+ 	struct mtk_ddp_comp		**ddp_comp;
+@@ -865,6 +866,13 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 	return 0;
  }
  
--static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val)
-+static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val,
-+				  struct cmdq_pkt *cmdq_pkt)
- {
- 	u32 tmp;
- 
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	if (cmdq_pkt) {
-+		if (mmsys->cmdq_base.size == 0) {
-+			pr_err("mmsys lose gce property, failed to update mmsys bits with cmdq");
-+			return;
-+		}
-+		cmdq_pkt_write_mask(cmdq_pkt, mmsys->cmdq_base.subsys,
-+				    mmsys->cmdq_base.offset + offset, val,
-+				    mask);
-+		return;
-+	}
-+#endif
++struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
++{
++	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
 +
- 	tmp = readl_relaxed(mmsys->regs + offset);
- 	tmp = (tmp & ~mask) | val;
- 	writel_relaxed(tmp, mmsys->regs + offset);
-@@ -211,7 +226,7 @@ void mtk_mmsys_ddp_connect(struct device *dev,
- 	for (i = 0; i < mmsys->data->num_routes; i++)
- 		if (cur == routes[i].from_comp && next == routes[i].to_comp)
- 			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask,
--					      routes[i].val);
-+					      routes[i].val, NULL);
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_connect);
- 
-@@ -225,42 +240,45 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
- 
- 	for (i = 0; i < mmsys->data->num_routes; i++)
- 		if (cur == routes[i].from_comp && next == routes[i].to_comp)
--			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask, 0);
-+			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask, 0, NULL);
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
- 
--void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width, int height)
-+void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width, int height,
-+				  struct cmdq_pkt *cmdq_pkt)
++	return mtk_crtc->dma_dev;
++}
++
+ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			const enum mtk_ddp_comp_id *path, unsigned int path_len)
  {
- 	mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8195_VDO1_MERGE0_ASYNC_CFG_WD + 0x10 * idx,
--			      ~0, height << 16 | width);
-+			      ~0, height << 16 | width, cmdq_pkt);
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_merge_async_config);
- 
--void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height)
-+void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height,
-+			   struct cmdq_pkt *cmdq_pkt)
- {
- 	mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8195_VDO1_HDRBE_ASYNC_CFG_WD, ~0,
--			      be_height << 16 | be_width);
-+			      be_height << 16 | be_width, cmdq_pkt);
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_hdr_confing);
- 
- void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool alpha_sel, u16 alpha,
--			       u8 mode, u32 biwidth)
-+			       u8 mode, u32 biwidth, struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
- 
- 	mtk_mmsys_update_bits(mmsys, MT8195_VDO1_MIXER_IN1_ALPHA + (idx - 1) * 4, ~0,
--			      alpha << 16 | alpha);
-+			      alpha << 16 | alpha, cmdq_pkt);
- 	mtk_mmsys_update_bits(mmsys, MT8195_VDO1_HDR_TOP_CFG, BIT(19 + idx),
--			      alpha_sel << (19 + idx));
-+			      alpha_sel << (19 + idx), cmdq_pkt);
- 	mtk_mmsys_update_bits(mmsys, MT8195_VDO1_MIXER_IN1_PAD + (idx - 1) * 4,
--			      GENMASK(31, 16) | GENMASK(1, 0), biwidth << 16 | mode);
-+			      GENMASK(31, 16) | GENMASK(1, 0), biwidth << 16 | mode, cmdq_pkt);
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_config);
- 
--void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap)
-+void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap,
-+				     struct cmdq_pkt *cmdq_pkt)
- {
- 	mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8195_VDO1_MIXER_IN1_PAD + (idx - 1) * 4,
--			      BIT(4), channel_swap << 4);
-+			      BIT(4), channel_swap << 4, cmdq_pkt);
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_channel_swap);
- 
-@@ -273,9 +291,9 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
- 	spin_lock_irqsave(&mmsys->lock, flags);
- 
- 	if (assert)
--		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), 0);
-+		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), 0, NULL);
- 	else
--		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), BIT(id));
-+		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), BIT(id), NULL);
- 
- 	spin_unlock_irqrestore(&mmsys->lock, flags);
- 
-@@ -365,6 +383,12 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 		mmsys->data = match_data->drv_data[0];
+@@ -953,6 +961,13 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			return ret;
  	}
  
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
-+	if (ret)
-+		dev_dbg(dev, "No mediatek,gce-client-reg!\n");
-+#endif
++	/*
++	 * Default to use the first component as the dma dev.
++	 * In the case of ovl_adaptor sub driver, it needs to use the
++	 * dma_dev_get function to get representative dma dev.
++	 */
++	mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(&priv->ddp_comp[path[0]]);
 +
- 	platform_set_drvdata(pdev, mmsys);
+ 	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
+ 	if (ret < 0)
+ 		return ret;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+index cb9a36c48d4f..f5a6e80c5265 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+@@ -22,5 +22,6 @@ int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			     struct mtk_plane_state *state);
+ void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			       struct drm_atomic_state *plane_state);
++struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc);
  
- 	clks = platform_device_register_data(&pdev->dev, mmsys->data->clk_driver,
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index fe620929b0f9..7a73305390ba 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -6,6 +6,10 @@
- #ifndef __MTK_MMSYS_H
- #define __MTK_MMSYS_H
+ #endif /* MTK_DRM_CRTC_H */
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index a43d82c12a9a..b04e656cb251 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -70,6 +70,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*bgclr_in_off)(struct device *dev);
+ 	void (*ctm_set)(struct device *dev,
+ 			struct drm_crtc_state *state);
++	struct device * (*dma_dev_get)(struct device *dev);
+ };
  
-+#include <linux/mailbox_controller.h>
-+#include <linux/mailbox/mtk-cmdq-mailbox.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
+ struct mtk_ddp_comp {
+@@ -202,6 +203,13 @@ static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
+ 		comp->funcs->ctm_set(comp->dev, state);
+ }
+ 
++static inline struct device *mtk_ddp_comp_dma_dev_get(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->dma_dev_get)
++		return comp->funcs->dma_dev_get(comp->dev);
++	return comp->dev;
++}
 +
- enum mtk_ddp_comp_id;
- struct device;
- 
-@@ -73,13 +77,16 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
- 			      enum mtk_ddp_comp_id cur,
- 			      enum mtk_ddp_comp_id next);
- 
--void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width, int height);
-+void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width,
-+				  int height, struct cmdq_pkt *cmdq_pkt);
- 
--void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height);
-+void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int be_height,
-+			   struct cmdq_pkt *cmdq_pkt);
- 
- void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool alpha_sel, u16 alpha,
--			       u8 mode, u32 biwidth);
-+			       u8 mode, u32 biwidth, struct cmdq_pkt *cmdq_pkt);
- 
--void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap);
-+void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx, bool channel_swap,
-+				     struct cmdq_pkt *cmdq_pkt);
- 
- #endif /* __MTK_MMSYS_H */
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type);
+ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
 -- 
 2.18.0
 
