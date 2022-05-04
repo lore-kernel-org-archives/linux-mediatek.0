@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD06C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 03:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD46AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 05:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zayoxcky2gYGolL3vBk2wdf7gyzOXZHTP0nnIdOJsyE=; b=1xUJCCgoXXgGQw
-	EVtnmiSngVVu/k89EELU7ca4p9Y8GYyWCnwfemnBsn9MOOIPCNISgsiV6DwXdJKh0jYLdKLxf7ZNg
-	9VITSDlcyoFRn7IdQuy/6SC3kzodJCQk3jj13gze97dmQwx1QzTlwVhl3stZIzQEI7pZucuoL3lQR
-	Hy3C5ST2k1tfRJukuB1gHvwK4n/R0VWXSxsEia/jAJWS9J+8H9+4iHNipU3DVVcbY6z+yos6MnRuW
-	yPvraNphHpdlixDxBXsEVvHu7fyWdeOGHaD1SrQ9EgFaiulgvkaJYmce6HRzhGVSbZ6su6c4QCr2q
-	ZFzLgr3ifaR82z3bdB6w==;
+	List-Owner; bh=o1w/QOpgbTtXSX5979OMrDUAX/Aq9yD+MlKmdoroom8=; b=peRtKyL/ohSXkw
+	aqtPLLN4xVZzKD/zjTQtX2mbmmtOldwunsBVC4jAXSOGrOs2AOWdWU3WZV/ZL99ukrDMj7wLWS7tp
+	rlrQvdBD+wviwKRg/CRTzYKArjNPPGgYuGiuGSxxgpwSsM+oWUYqO6GgBxuLX3DNhfJAwpo4mCjm8
+	EOdT+U3hlDr3qL/rPKh4Ozh5O8jxThbdWDwuUSa9lvMRYuSYAd/NraLXCuwE5DFhrzLEBIUMlpDuC
+	v4AxvQjKYQFAjxLmY7WBSuFJ+4kSSgiUZY40bHQl5skPe0M06701Yh+JW/vUNvbF9SHYMExbFhCFB
+	wK8m1XzPDwgh+dph/FlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nm66y-008ivE-2W; Wed, 04 May 2022 03:55:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nm7Cj-008naL-Da; Wed, 04 May 2022 05:05:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nm66v-008iuT-RX; Wed, 04 May 2022 03:55:35 +0000
-X-UUID: aa4898ffed26457284840358c7b6bdc1-20220503
+ id 1nm7Cg-008nZD-D1; Wed, 04 May 2022 05:05:36 +0000
+X-UUID: 791d599b26c24122ade009263347971c-20220503
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:ae8843c6-f1b1-4b8a-93ef-a89e2eb9d8a3, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:26c6b17f-a078-4674-b3af-a39311806c26, OB:0,
  LO
  B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:cb779f2f-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:2eb769c7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: aa4898ffed26457284840358c7b6bdc1-20220503
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+X-UUID: 791d599b26c24122ade009263347971c-20220503
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 268543550; Tue, 03 May 2022 20:55:27 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 868201391; Tue, 03 May 2022 22:05:26 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 May 2022 20:45:25 -0700
+ 15.0.1497.2; Tue, 3 May 2022 22:05:25 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 11:45:23 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Wed, 4 May 2022 13:05:23 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 4 May 2022 11:45:23 +0800
-Message-ID: <de091078d417618e8d9c76447d4e6ed43ea398f8.camel@mediatek.com>
-Subject: Re: [PATCH v19 05/25] soc: mediatek: add mtk-mmsys support for
+ Transport; Wed, 4 May 2022 13:05:23 +0800
+Message-ID: <dd0648c549886a82156dabf73335d396df292628.camel@mediatek.com>
+Subject: Re: [PATCH v19 07/25] soc: mediatek: add mtk-mmsys config API for
  mt8195 vdosys1
 From: CK Hu <ck.hu@mediatek.com>
 To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
@@ -64,16 +65,16 @@ CC: <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
  Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 4 May 2022 11:45:23 +0800
-In-Reply-To: <20220503102345.22817-6-nancy.lin@mediatek.com>
+Date: Wed, 4 May 2022 13:05:23 +0800
+In-Reply-To: <20220503102345.22817-8-nancy.lin@mediatek.com>
 References: <20220503102345.22817-1-nancy.lin@mediatek.com>
- <20220503102345.22817-6-nancy.lin@mediatek.com>
+ <20220503102345.22817-8-nancy.lin@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_205533_905285_2992664A 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20220503_220534_495068_35EF4A64 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,7 +94,15 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Nancy:
 
 On Tue, 2022-05-03 at 18:23 +0800, Nancy.Lin wrote:
-> Add mt8195 vdosys1 routing table to the driver data of mtk-mmsys.
+> Add four mmsys config APIs. The config APIs are used for config
+> mmsys reg. Some mmsys regs need to be set according to the
+> HW engine binding to the mmsys simultaneously.
+> 
+> 1. mtk_mmsys_merge_async_config: config merge async width/height.
+>    async is used for cross-clock domain synchronization.
+> 2. mtk_mmsys_hdr_confing: config hdr backend async width/height.
+> 3. mtk_mmsys_mixer_in_config and mtk_mmsys_mixer_in_config:
+>    config mixer related settings.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
@@ -101,14 +110,120 @@ Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <
 > angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > ---
->  drivers/soc/mediatek/mt8195-mmsys.h | 139
-> ++++++++++++++++++++++++++++
->  drivers/soc/mediatek/mtk-mmsys.c    |   2 +
->  2 files changed, 141 insertions(+)
+>  drivers/soc/mediatek/mt8195-mmsys.h    |  6 +++++
+>  drivers/soc/mediatek/mtk-mmsys.c       | 35
+> ++++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-mmsys.h |  9 +++++++
+>  3 files changed, 50 insertions(+)
 > 
-> 
+> diff --git a/drivers/soc/mediatek/mt8195-mmsys.h
+> b/drivers/soc/mediatek/mt8195-mmsys.h
+> index fd7b455bd675..454944a9409c 100644
+> --- a/drivers/soc/mediatek/mt8195-mmsys.h
+> +++ b/drivers/soc/mediatek/mt8195-mmsys.h
+> @@ -75,6 +75,12 @@
+>  #define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 <<
+> 16)
+>  #define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			
+> (3 << 16)
+>  
+> +#define MT8195_VDO1_MERGE0_ASYNC_CFG_WD				
+> 0xe30
+> +#define MT8195_VDO1_HDRBE_ASYNC_CFG_WD				
+> 0xe70
+> +#define MT8195_VDO1_HDR_TOP_CFG					
+> 0xd00
+> +#define MT8195_VDO1_MIXER_IN1_ALPHA				0xd30
+> +#define MT8195_VDO1_MIXER_IN1_PAD				0xd40
+> +
+>  #define MT8195_VDO1_VPP_MERGE0_P0_SEL_IN			0xf04
+>  #define MT8195_VPP_MERGE0_P0_SEL_IN_FROM_MDP_RDMA0			
+> 1
+>  
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> b/drivers/soc/mediatek/mtk-mmsys.c
+> index 3e2e5e3f721d..199503dd544a 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -228,6 +228,41 @@ void mtk_mmsys_ddp_disconnect(struct device
+> *dev,
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
+>  
+> +void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
+> width, int height)
+> +{
+> +	mtk_mmsys_write_reg(dev_get_drvdata(dev),
+> MT8195_VDO1_MERGE0_ASYNC_CFG_WD + 0x10 * idx,
+> +			    ~0, height << 16 | width);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_merge_async_config);
+> +
+> +void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
+> be_height)
+> +{
+> +	mtk_mmsys_write_reg(dev_get_drvdata(dev),
+> MT8195_VDO1_HDRBE_ASYNC_CFG_WD, ~0,
+> +			    be_height << 16 | be_width);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_hdr_confing);
+> +
+> +void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool
+> alpha_sel, u16 alpha,
+> +			       u8 mode, u32 biwidth)
+> +{
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +
+> +	mtk_mmsys_write_reg(mmsys, MT8195_VDO1_MIXER_IN1_ALPHA + (idx -
+> 1) * 4, ~0,
+> +			    alpha << 16 | alpha);
+> +	mtk_mmsys_write_reg(mmsys, MT8195_VDO1_HDR_TOP_CFG, BIT(19 +
+> idx),
+> +			    alpha_sel << (19 + idx));
+> +	mtk_mmsys_write_reg(mmsys, MT8195_VDO1_MIXER_IN1_PAD + (idx -
+> 1) * 4,
+> +			    GENMASK(31, 16) | GENMASK(1, 0), biwidth <<
+> 16 | mode);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_config);
+> +
+> +void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
+> bool channel_swap)
+> +{
+> +	mtk_mmsys_write_reg(dev_get_drvdata(dev),
+> MT8195_VDO1_MIXER_IN1_PAD + (idx - 1) * 4,
+> +			    BIT(4), channel_swap << 4);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_mixer_in_channel_swap);
+> +
+>  static int mtk_mmsys_reset_update(struct reset_controller_dev
+> *rcdev, unsigned long id,
+>  				  bool assert)
+>  {
+> diff --git a/include/linux/soc/mediatek/mtk-mmsys.h
+> b/include/linux/soc/mediatek/mtk-mmsys.h
+> index b4388ba43341..fe620929b0f9 100644
+> --- a/include/linux/soc/mediatek/mtk-mmsys.h
+> +++ b/include/linux/soc/mediatek/mtk-mmsys.h
+> @@ -73,4 +73,13 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+>  			      enum mtk_ddp_comp_id cur,
+>  			      enum mtk_ddp_comp_id next);
+>  
+> +void mtk_mmsys_merge_async_config(struct device *dev, int idx, int
+> width, int height);
+> +
+> +void mtk_mmsys_hdr_confing(struct device *dev, int be_width, int
+> be_height);
+> +
+> +void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool
+> alpha_sel, u16 alpha,
+> +			       u8 mode, u32 biwidth);
+> +
+> +void mtk_mmsys_mixer_in_channel_swap(struct device *dev, int idx,
+> bool channel_swap);
+> +
+>  #endif /* __MTK_MMSYS_H */
 
 
 _______________________________________________
