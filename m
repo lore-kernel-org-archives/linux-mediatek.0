@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EF4DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 20:20:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2708C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 20:36:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IOjM5erfxZGt1CYwu8VSFpzv0Go0W6f6a+rnstf1WtE=; b=NeLbw/u1TR0fQw2Ow4PgDTva8v
-	bbrDXsdlGzMFL1iYkzp8IAwUXkP59I5QKm6UDZEpXrmGPzKrpmwB1M4nlaV8Ekp4HuiF03x9Ojicd
-	IK7XZ9sc8XaIQWhdevH/IqCsPwqRVJi5Mhup2D2JZ1+rdMytIz/L9koRCfSX7WK8PTl3lrQBjNEfC
-	bG0fpbS6y9rkU4ImJaDVP9SbaU6U+oE8UyIMW6bbrHcQvcPLshz1M4Txrz/R+NbhMxOnYOZSoaMTR
-	1Ynl02HvIpol8P7jhJkgDBn6XHhAPd6X7yvWbhxcpSIJCnghr7cA9LZUChq8FhVAKP0yLnY2uT95x
-	JpwwOrRw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HwtiQSBGDCKgPpXZmKmdLl7wSYQ9MTdd3VacFCcvgPs=; b=r9HpQ5/Iu+jLDB
+	E9tRpTVLSSpTmwgmF+6QAXk00O9df+Eywa+ISmXiyBsCl4N3FKZ28V8j3/nfoWzGf9hZs/XHoBRTx
+	h201oXh8iM44QUjiYKKYfaIPvMN0nF7FNc4+Q7FIsnS0zrBLcll5UqZF44xWwnil/tUZFHyPA1aFe
+	N7SWSwfnlNGXrcrmJ1ntII265VrIfZVV26GYA/O6OKGJL7wdvP57Bn8KYsYihmd3IuLv2qwQuiW9P
+	MxzViQfs31LRO8nbwDCqyGMoIQqLdMUCvcyxldcNDiBWNHyngHcUTqSdLgYc3YDQEbpmCwu2Dishf
+	uhbIH0FQBgHPMfL1iTcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmLUC-00CWVZ-BM; Wed, 04 May 2022 20:20:36 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nmLjo-00Cb3K-Hm; Wed, 04 May 2022 20:36:44 +0000
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmLTx-00CWSl-7r; Wed, 04 May 2022 20:20:25 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 3A095B82833;
- Wed,  4 May 2022 20:20:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67909C385A5;
- Wed,  4 May 2022 20:20:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651695617;
- bh=geFDPzJVs0HcYSkqypzjcAX2q1cZeSSqsEdLgxt9m4c=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=vAssURayg6u+1d5DYrK98zrlfYG4mss9BlIK5WGwuqi/GOKAILD1wDfdEScQcGDUc
- tEe+a3NLWvGXj4q/+WoPWIedr+uk0b8vIsAcerK5Cpw9CTrbgbpHfJZT9DUj4QfkFP
- lM3nOL+rHKLsgam8M+WE+iYBQM06EARaFd4IGdqacXARLIzVhsmOecIUjj/0QM+FYU
- xzGZwKTcupqTKkEe4Wcm9rWrh5zTpZKihIa9XSpcuXhSkFlCAZENRFgMiVWzbjVKRL
- XBllzpeZ/9ag9XzVbmHJqEF5yijYgZknxOx32i9n60Im/pTck9vwMU2ikIl/9oGP0d
- aPO8Z4Q6/Bfzw==
-Date: Wed, 4 May 2022 22:20:13 +0200
-From: Wolfram Sang <wsa@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: qii.wang@mediatek.com, matthias.bgg@gmail.com,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- nfraprado@collabora.com, kernel@collabora.com
-Subject: Re: [PATCH v2] i2c: mediatek: Optimize master_xfer() and avoid
- circular locking
-Message-ID: <YnLf/QdSIm0/B+me@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+ id 1nmLjW-00Cas5-Uo; Wed, 04 May 2022 20:36:28 +0000
+Received: by mail-oi1-f175.google.com with SMTP id r8so2379624oib.5;
+ Wed, 04 May 2022 13:36:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=a+rDeQbRoNWpsCJ5GSOxdZJdeB0rbOuF0Fqaf+ynwHQ=;
+ b=0oCUN7yuHkg8VsBsFmml9NJvB2JjKBu244INXcUQCiKMq4M1PlppKvRhjsFIhn/iSN
+ MX+RmIoguTsXIK6Jz7dhMhxd0/R2cDSV5X3PjgzCY5Tju42YCesG6uxnqnmK1MIQbgP/
+ 2q6kfRTHzZe9juU/13aAJzQc1nLzgvv06oOqZSB9XW9bMxkTW0IFGLs8JIKIsO7CM9kk
+ bFNdc7kq7odyU0v2ziqz1vSCdTQWPoNhS9Gd1g07O6iIF+I9HyuFUzYKUg8qdyB+GQEC
+ 20CrTAdFsVEaA55TS5QXMB6//3jFWF6n2DQ57Pqvzfiub90xZas7oHVBChXDNmZaeoMN
+ f/Ug==
+X-Gm-Message-State: AOAM533BnZRLENlTpzcVXw0AF+GzLIPTD1qedStX3oXuHHVOMXnCCuzi
+ MRJa/IixwCVn599v0d+aFA==
+X-Google-Smtp-Source: ABdhPJwq8I7lPc9yVfmwk94hDaWO5KRPEC6aW2xVAAkXg9GPwtParUvYL1QsoU/8Bqov8n+SdNPpqQ==
+X-Received: by 2002:a05:6808:21a6:b0:326:54ae:8d1f with SMTP id
+ be38-20020a05680821a600b0032654ae8d1fmr690049oib.210.1651696584585; 
+ Wed, 04 May 2022 13:36:24 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ 95-20020a9d0668000000b0060626a8e5a4sm3047394otn.74.2022.05.04.13.36.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 May 2022 13:36:24 -0700 (PDT)
+Received: (nullmailer pid 2183622 invoked by uid 1000);
+ Wed, 04 May 2022 20:36:23 -0000
+Date: Wed, 4 May 2022 15:36:23 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Cc: kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- qii.wang@mediatek.com, matthias.bgg@gmail.com,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- nfraprado@collabora.com, kernel@collabora.com
-References: <20220411132107.136369-1-angelogioacchino.delregno@collabora.com>
+ Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-mediatek@lists.infradead.org, Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] dt-bindings: regulator: mt6315: Enforce
+ regulator-compatible, not name
+Message-ID: <YnLjx72gEGD8FSBM@robh.at.kernel.org>
+References: <20220429201325.2205799-1-nfraprado@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20220411132107.136369-1-angelogioacchino.delregno@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20220429201325.2205799-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_132021_611280_C71691A2 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20220504_133627_035747_C2B3B580 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,92 +83,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0440944130132329218=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 29 Apr 2022 16:13:24 -0400, N=EDcolas F. R. A. Prado wrote:
+> The MT6315 PMIC dt-binding should enforce that one of the valid
+> regulator-compatible is set in each regulator node. However it was
+> mistakenly matching against regulator-name instead.
+> =
 
---===============0440944130132329218==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="+Ffh0zQ3V8hTbmod"
-Content-Disposition: inline
+> Fix the typo. This not only fixes the compatible verification, but also
+> lifts the regulator-name restriction, so that more meaningful names can
+> be set for each platform.
+> =
 
+> Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> =
 
---+Ffh0zQ3V8hTbmod
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> ---
+> =
 
-On Mon, Apr 11, 2022 at 03:21:07PM +0200, AngeloGioacchino Del Regno wrote:
-> Especially (but not only) during probe, it may happen that multiple
-> devices are communicating via i2c (or multiple i2c busses) and
-> sometimes while others are probing asynchronously.
-> For example, a Cr50 TPM may be filling entropy (or userspace may be
-> reading random data) while the rt5682 (i2c) codec driver reads/sets
-> some registers, like while getting/setting a clock's rate, which
-> happens both during probe and during system operation.
->=20
-> In this driver, the mtk_i2c_transfer() function (which is the i2c
-> .master_xfer() callback) was granularly managing the clocks by
-> performing a clk_bulk_prepare_enable() to start them and its inverse.
-> This is not only creating possible circular locking dependencies in
-> the some cases (like former explanation), but it's also suboptimal,
-> as clk_core prepare/unprepare operations are using mutex locking,
-> which creates a bit of unwanted overhead (for example, i2c trackpads
-> will call master_xfer() every few milliseconds!).
->=20
-> With this commit, we avoid both the circular locking and additional
-> overhead by changing how we handle the clocks in this driver:
-> - Prepare the clocks during probe (and PM resume)
-> - Enable/disable clocks in mtk_i2c_transfer()
-> - Unprepare the clocks only for driver removal (and PM suspend)
->=20
-> For the sake of providing a full explanation: during probe, the
-> clocks are not only prepared but also enabled, as this is needed
-> for some hardware initialization but, after that, we are disabling
-> but not unpreparing them, leaving an expected state for the
-> aforementioned clock handling strategy.
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> Tested-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-
-Applied to for-next, thanks!
+>  .../devicetree/bindings/regulator/mt6315-regulator.yaml         | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> =
 
 
---+Ffh0zQ3V8hTbmod
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmJy3/0ACgkQFA3kzBSg
-KbZSgg/+OcspNsB71GsrUFefU76o8S9qJdpJSijNT4pBMxh0uuNqFyyyPDrbC34S
-5MJ1viEhDqP3FCzLH5UUnf9Jy5DAVUuaPKXJAbJy/LMHyCiDK7eMZFur4gDbyXdH
-w9IcR+CGYSoBonwTGjigl2EbihwVCPSx83a1Qp2Apxz0gmeZpvphiGjACjCsotZG
-rWrU7kQsFObAiRncEvyL5frJu1uVNYbQlguUr/u67Ntn2mcNSWuttxLOenZQyYZE
-ppRBD4wQh6xK77orTjI1H7qgiUvr8lnw0ftgcUqP+RlOxUX6/gBEOchKX1gVHPkD
-VLOhkY/j3D6eNedBBtdVAGYI4zpQe3gk2+ywT2u+S7+Cibj4NKjQCvQj6cXENNhY
-+arC6eYbfZaghRbetcJQKKA4ekYa87ahQji095sVNikrhrdheusuPjiGA7ZMfx/O
-er7cXUN0ImrPaCIiS+uDD3AlMAwXSnVXTI+3N6PmPOKue3e34H4QEKfozAWGUg4X
-nRbR0l4IqjL18nvQEIEj7kFkQ67ZaJr3Th2Fksk3Es2Rhu98ktuNlsrMvILOvBZe
-Y33YKB/sFySOvJ2hL0y5gqbL4TTeXh7crLCc+9lvpYlCGn5VtsgpB2lAqw/cHi8j
-L7ooc0q+PcfPhJgnKfFby0ytn8Q/3kJK3N3xPJyPxMz6s6Agrs0=
-=Znzh
------END PGP SIGNATURE-----
-
---+Ffh0zQ3V8hTbmod--
-
-
---===============0440944130132329218==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0440944130132329218==--
-
