@@ -4,90 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82869C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:23:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D63DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B0Ii99+1fea6RnvVpOxbbb0Y79DhdMBkXnkBq09rJww=; b=tlkVavceHvT+Nm
-	eYQJqPcAqD/KBmCVJ/wjYoNZu0c9qxv28k+eimuclenE6ZIff4SD9ECCZvtCX2sDzoXetzTYVIcim
-	+RmgrUMd5DW1lrs4EgWUV2wEVlIN5Mgk5B/zhDBSyV5UtKFjOHm9DlZsuy/xK4n5yxTNTqSShGr8D
-	53ahh9BX4+2llTByTWc/V3yu1wLafTSxQLuAAjnURwfh/FOXIj7OomfeGhocpLmUD/X0U5PJU/oB6
-	VQ4K9NAPJy5YLehg+vhXt2DaCTVy+47bNUG4B1UhxRsyJZE4SRsUHDny+YA51/7SoQ73W06m9UmO+
-	UjirQweiLL9FqrDOuaDA==;
+	List-Owner; bh=3T6KbLkLaEKEA915f8bGS2KBqKEZ4HsRVOlK5wUNpl8=; b=vXaAl8Z76SaJsF
+	hIncDwKSztY6J94McFuFqJRfG8+Hty8mPJkWIBxiLCtFNqBNfV9Dkp58zj3x2vwGbJOdecehmZvsV
+	8ca2yII7x+RRgUdwqePOodmdTMCnYw5DE1N9GcBXah0AkUYJDgn9Ub32BMTgwpyTQLAUH9AKzvBkO
+	bgZ4IyEIdCnlgpUfeq/wEh6+DpwKNmIDJ6jifrU9/h2rDwvXHctLKlYnTmt5yQvGw26rVLku6lHYc
+	BV2Ud7fbLXN/04oRQFKkrsTK6BQEkvRnulyfPI2Um9OkwSwhZrZiitGZInM3caURGGrf3eaxewxpP
+	AuJLiIws8lfU+pmDnXMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmAHf-009V1Y-BW; Wed, 04 May 2022 08:22:55 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1nmAZ2-009cAi-Nt; Wed, 04 May 2022 08:40:52 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmAHc-009UzN-NJ
- for linux-mediatek@lists.infradead.org; Wed, 04 May 2022 08:22:54 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id z16so594353pfh.3
- for <linux-mediatek@lists.infradead.org>; Wed, 04 May 2022 01:22:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=SdK0VTClXf0YNc37VM3s8fuaeXHi8SET3pp3ZISSadQ=;
- b=kI3XGnNupu3SzP3j+gsgoUyARk2Wrt2S+bwMeFoftnnsUUT/IKfAPwJBbymvvv7sKI
- MtZiTor/k7fZWZr/pOd91PQ32xe8gk7O8UluhjaoD80iCQq5KR0ElvLOv/+jc5Sk3mTp
- f97GhVWt/tC5JoVDdHJkcpwOFJU+HmA1gUkCOkTFU/nEj4A1jik9+4unIxwkoLU3AM4U
- sB9N2gr+d+eo/1Yc/QkRtRvFlPcxYxsL1WUXNERbUCluf9OeiK43keT2zDGB8ybGKtnJ
- dxk67XdrwEwuYFABcrd90pMCJDxKfIwcmp0BVvmdZgG32cqOH4V+rcUsOte9Mo8V12Mb
- xaZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=SdK0VTClXf0YNc37VM3s8fuaeXHi8SET3pp3ZISSadQ=;
- b=iljF6/1FV4S6/sANWHW+dSk3ElJDMuOWN1XSmKg/oVNqgH98JHgK4QcK/nh/g7sKXo
- b+Tewth/mF+nkwGpH4mVKzHlMdL0qghG/bFDIdalWj57PEfhTe/ejkat00AIWI7+NpDr
- dWCy1FYT+DHHYM85gK1bUwrd78CYWL8c1Arlf5C4KLqsZ9fBVxSzP1q+Jhym2J5L17zc
- MCYilwcS368JfMT2dAckC8QVd5YMnxb3SssP8TT/ak6q/WGnMRg6rREXi8deMVE1S4kS
- CsohJNn9QseYkcBraJN6Q00iXGAJrDGAZbIvXsnc7ePgzMIG1I1i774tBNggW4H+VF30
- JQmw==
-X-Gm-Message-State: AOAM532IRnqkNpwko9MjwEsKH/K5+qMNlOnv0Tu5rMzgGxOyIWlZIucE
- 0KeZYF7qaGU8q4QewOAbCNxqiA==
-X-Google-Smtp-Source: ABdhPJwfha0ZWyhE1MyC7JONGEsucCB5kCwPDXSeGpREJK9mLcP9oTgoHlBBtf6lTMLv8gsdZ0zvRQ==
-X-Received: by 2002:aa7:82d9:0:b0:4fa:2c7f:41e with SMTP id
- f25-20020aa782d9000000b004fa2c7f041emr20107812pfn.1.1651652571708; 
- Wed, 04 May 2022 01:22:51 -0700 (PDT)
-Received: from localhost ([122.162.207.161]) by smtp.gmail.com with ESMTPSA id
- az12-20020a170902a58c00b0015e8d4eb27esm7653617plb.200.2022.05.04.01.22.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 01:22:51 -0700 (PDT)
-Date: Wed, 4 May 2022 13:52:49 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: rafael@kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
- roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com,
- angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH V4 07/14] cpufreq: mediatek: Add .get function
-Message-ID: <20220504082249.anrvkf2ssbxyzz5m@vireshk-i7>
-References: <20220422075239.16437-1-rex-bc.chen@mediatek.com>
- <20220422075239.16437-8-rex-bc.chen@mediatek.com>
- <20220425053548.72w2jh2g6lpzgz6g@vireshk-i7>
- <64c690e8edf493ec0a4a14e0fdaad2d8e88e6da7.camel@mediatek.com>
- <20220425100058.4kbvmpi63ygni6k5@vireshk-i7>
- <078b1f9b39690da98cbd3c4528ba28374a097083.camel@mediatek.com>
- <20220427031141.or2owu5wrh2cadfo@vireshk-i7>
- <346736a339bed576817179ded3795d61f71fa06a.camel@mediatek.com>
- <20220428114835.3ktimyz2tzzqdcbg@vireshk-i7>
- <27a5dddd91b3dcbd69f08c10108cdec808237ace.camel@mediatek.com>
+ id 1nmAYR-009bw5-JN; Wed, 04 May 2022 08:40:18 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id C65FF7EE; Wed,  4 May 2022 10:40:08 +0200 (CEST)
+Date: Wed, 4 May 2022 10:40:07 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, youlin.pei@mediatek.com,
+ anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
+ yen-chang.chen@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com,
+ libo.kang@mediatek.com, chengci.xu@mediatek.com
+Subject: Re: [PATCH v7 00/36] MT8195 and MT8186 IOMMU SUPPORT
+Message-ID: <YnI751zEqTjrVuuz@8bytes.org>
+References: <20220503071427.2285-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <27a5dddd91b3dcbd69f08c10108cdec808237ace.camel@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+In-Reply-To: <20220503071427.2285-1-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_012252_785743_34CFEFB7 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220504_014015_865953_8870AAB3 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,28 +68,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03-05-22, 19:33, Rex-BC Chen wrote:
-> Our observation tells us cpufreq_online is setting only once at boot
-> for one cpu cluster.
-> But we can see the problem repeatly occurs once cpufreq_get is invoked.
-> 
-> e.g.
-> [ 71.154560] cpufreq: Warning: CPU frequency out of sync: cpufreq and
-> timing core thinks of 500000, is 499999 kHz
-> [ 71.155880] cpufreq: notification 0 of frequency transition to 499999
-> kHz
-> [ 71.156777] cpufreq: notification 1 of frequency transition to 499999
-> kHz
-> [ 71.187241] cpufreq: target for CPU 0: 500000 kHz, relation 0,
-> requested 500000 kHz
-> [ 71.188246] cpufreq: target_freq/policy->cur: 500000/499999 kHz
+On Tue, May 03, 2022 at 03:13:51PM +0800, Yong Wu wrote:
+> Yong Wu (36):
+>   dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
+>   dt-bindings: mediatek: mt8195: Add binding for infra IOMMU
+>   dt-bindings: mediatek: mt8186: Add binding for MM iommu
+>   iommu/mediatek: Fix 2 HW sharing pgtable issue
+>   iommu/mediatek: Add list_del in mtk_iommu_remove
+>   iommu/mediatek: Remove clk_disable in mtk_iommu_remove
+>   iommu/mediatek: Add mutex for m4u_group and m4u_dom in data
+>   iommu/mediatek: Add mutex for data in the mtk_iommu_domain
+>   iommu/mediatek: Adapt sharing and non-sharing pgtable case
+>   iommu/mediatek: Add 12G~16G support for multi domains
+>   iommu/mediatek: Add a flag DCM_DISABLE
+>   iommu/mediatek: Add a flag STD_AXI_MODE
+>   iommu/mediatek: Remove the granule in the tlb flush
+>   iommu/mediatek: Always enable output PA over 32bits in isr
+>   iommu/mediatek: Add SUB_COMMON_3BITS flag
+>   iommu/mediatek: Add IOMMU_TYPE flag
+>   iommu/mediatek: Contain MM IOMMU flow with the MM TYPE
+>   iommu/mediatek: Adjust device link when it is sub-common
+>   iommu/mediatek: Allow IOMMU_DOMAIN_UNMANAGED for PCIe VFIO
+>   iommu/mediatek: Add a PM_CLK_AO flag for infra iommu
+>   iommu/mediatek: Add infra iommu support
+>   iommu/mediatek: Add PCIe support
+>   iommu/mediatek: Add mt8195 support
+>   iommu/mediatek: Only adjust code about register base
+>   iommu/mediatek: Just move code position in hw_init
+>   iommu/mediatek: Separate mtk_iommu_data for v1 and v2
+>   iommu/mediatek: Remove mtk_iommu.h
+>   iommu/mediatek-v1: Just rename mtk_iommu to mtk_iommu_v1
+>   iommu/mediatek: Add mtk_iommu_bank_data structure
+>   iommu/mediatek: Initialise bank HW for each a bank
+>   iommu/mediatek: Change the domid to iova_region_id
+>   iommu/mediatek: Get the proper bankid for multi banks
+>   iommu/mediatek: Initialise/Remove for multi bank dev
+>   iommu/mediatek: Backup/restore regsiters for multi banks
+>   iommu/mediatek: mt8195: Enable multi banks for infra iommu
+>   iommu/mediatek: Add mt8186 iommu support
 
-Lemme know if this helps:
-
-https://lore.kernel.org/lkml/39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org/
-
--- 
-viresh
+Applied, thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
