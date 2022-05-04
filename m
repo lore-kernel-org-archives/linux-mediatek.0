@@ -4,48 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88161C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 17:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7604C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 18:15:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WHHoO7fyMXFXCq8dmadY3XfJnEoPU/AT+8B7JmRo8uE=; b=H67N8vd2oL+do1iPyftwxWMbvm
-	J7zZ/5ROLuuKpgvlXsXFntGD5WW9LJa9OXRYkt+tLcmu7ekPLGRNpBp4pt/x7/p6US4/OSKjj5HcN
-	aEWSlP30Cqns2Y/+rozjNVudOJSe00BM3G+W0n0Zm0lLoYF04k62fVKlkxrFo5pCxRBdzNpj5+OnE
-	qqnMaMFIlnULV+LQfVhxbvpYKpbQa3ciJq/y2kcJuu3cbJbWKhPwmHUUp1nLzllRuQEIg7VNx2Jge
-	JgslOunLeUGp/64JS+qqgN/4pUCYWJaclHOcxLV30vEqWykGYFQPMbcG+9t0QBK3lHjelplHXX34P
-	8GbWIuCw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SyPn2l9b8SCtckhRDDOadsRk80OONKQO9g0BAZpBCQU=; b=4mrOzvIEkuoIXh
+	LJUsrtiSIUjiUbX0yW5RJLnUhGQO1OJzPHbOE/SNJkPT7OhFb39MKoyllF1ZDqjGB4aSo0F++epYG
+	8274U1FFTmMoBcYo/LaN6cwnRXBmaVTxlyjucPvDwLcfQTWNhl8k6dBpGenOHu7ORhWHllB07B9cb
+	cEFyQbLaO/g97iMMxTl0JUVtcR+yO+a09zu4VBOh1hMYMNYMFSEOx5Ieg7iAxlaA2ydsWoVwqfKRl
+	i9ZxIgJaR2ahh5BB4eE+3WPTibowgN8e0H7k8K4rO5+qzjqV4Ssaqe1YDW4hJRXcEYgT6Ax9EuflB
+	vMArdYQSJyrdWymC5H9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmJFE-00C3Xk-FT; Wed, 04 May 2022 17:57:00 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1nmJXD-00C6gk-Kb; Wed, 04 May 2022 18:15:35 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25]
+ helo=mx0b-001ae601.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmJF2-00C3UP-VE; Wed, 04 May 2022 17:56:50 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
- id 606581C0BA5; Wed,  4 May 2022 19:56:47 +0200 (CEST)
-Date: Wed, 4 May 2022 19:56:47 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Gene Chen <gene_chen@richtek.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: leds-mt6360: Drop redundant
- 'unevaluateProperties'
-Message-ID: <20220504175647.GE8725@duo.ucw.cz>
-References: <20220426133508.1849580-1-robh@kernel.org>
- <YmmLldJcJ2tOOCO7@robh.at.kernel.org>
+ id 1nmIVz-00Bqcy-Ud
+ for linux-mediatek@lists.infradead.org; Wed, 04 May 2022 17:10:17 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+ by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2446CVq6001835;
+ Wed, 4 May 2022 12:09:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=PODMain02222019;
+ bh=HZmO1OnwQXAp7/s2ExSbIHOMoxHBUvMGS9cdRFhNW1A=;
+ b=ebDV4MbsVuAgNJpFAuiNBWxEfgfXQYf5U5ezrLR1Q+gGjmvUKqccCTXcdxTaOsRplIxk
+ sOahzEjhP6lxSEXKeo1ewhVkk58UUP/3qjaBarQpjIQ50R2P+loKWVq+XZRQyK/MCM9B
+ /wwBJS5hQCzlnxZtkgE3E/2xNxs0s1ATTh+k/QVeVpiiFrbraWutEOGyyEIql2c1ehd7
+ R0wfV8y7Jr7k7pUMKZ5fsc+K1KHrko00f/R0lRGKIL6zbdWV6+TPDEioCbnbZ4BmThVh
+ Eb9qac9/dkIgGdCYQTe8lsXKt9Og0761rBzSARsqX2M54g2+KW8QQLlwUiRSz29rW7Wf Fg== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+ by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3fs2h2d8fp-4
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Wed, 04 May 2022 12:09:09 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 4 May
+ 2022 18:09:05 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
+ Frontend Transport; Wed, 4 May 2022 18:09:05 +0100
+Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 8657711D1;
+ Wed,  4 May 2022 17:09:05 +0000 (UTC)
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <codrin.ciubotariu@microchip.com>,
+ <lars@metafoo.de>, <cychiang@chromium.org>, <tzungbi@google.com>,
+ <bleung@chromium.org>, <matthias.bgg@gmail.com>,
+ <kmarinushkin@birdec.com>, <oder_chiou@realtek.com>,
+ <steven.eckhoff.opensource@gmail.com>,
+ <srinivas.kandagatla@linaro.org>, <alexandre.belloni@bootlin.com>,
+ <kuninori.morimoto.gx@renesas.com>, <jiaxin.yu@mediatek.com>,
+ <alsa-devel@alsa-project.org>, <chrome-platform@lists.linux.dev>,
+ <linux-mediatek@lists.infradead.org>, <patches@opensource.cirrus.com>
+Subject: [PATCH 06/38] ASoC: cs4349: Remove redundant big endian formats
+Date: Wed, 4 May 2022 18:08:33 +0100
+Message-ID: <20220504170905.332415-7-ckeepax@opensource.cirrus.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220504170905.332415-1-ckeepax@opensource.cirrus.com>
+References: <20220504170905.332415-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-In-Reply-To: <YmmLldJcJ2tOOCO7@robh.at.kernel.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Proofpoint-ORIG-GUID: QYIdNY-qxuwQWjtZPkvrLS_np4c8s9hJ
+X-Proofpoint-GUID: QYIdNY-qxuwQWjtZPkvrLS_np4c8s9hJ
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_105649_192547_FB30542D 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20220504_101016_047050_DBE4BF80 
+X-CRM114-Status: GOOD (  13.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,65 +88,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5984803108047462939=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The CODEC already provides the endianness flag on its
+snd_soc_component_driver structure, specifying it is ambivalent
+to endian. The core will expand the formats to cover both
+endian types, as such remove the redundant specification of both
+endians.
 
---===============5984803108047462939==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="2hMgfIw2X+zgXrFs"
-Content-Disposition: inline
+Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+---
+ sound/soc/codecs/cs4349.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
+diff --git a/sound/soc/codecs/cs4349.c b/sound/soc/codecs/cs4349.c
+index 4ec4bed9ee08b..7069e9b548576 100644
+--- a/sound/soc/codecs/cs4349.c
++++ b/sound/soc/codecs/cs4349.c
+@@ -223,12 +223,9 @@ static const struct snd_soc_dapm_route cs4349_routes[] = {
+ 	{"OutputB", NULL, "HiFi DAC"},
+ };
+ 
+-#define CS4349_PCM_FORMATS (SNDRV_PCM_FMTBIT_S8  | \
+-			SNDRV_PCM_FMTBIT_S16_LE  | SNDRV_PCM_FMTBIT_S16_BE  | \
+-			SNDRV_PCM_FMTBIT_S18_3LE | SNDRV_PCM_FMTBIT_S18_3BE | \
+-			SNDRV_PCM_FMTBIT_S20_3LE | SNDRV_PCM_FMTBIT_S20_3BE | \
+-			SNDRV_PCM_FMTBIT_S24_3LE | SNDRV_PCM_FMTBIT_S24_3BE | \
+-			SNDRV_PCM_FMTBIT_S24_LE  | SNDRV_PCM_FMTBIT_S24_BE  | \
++#define CS4349_PCM_FORMATS (SNDRV_PCM_FMTBIT_S8  | SNDRV_PCM_FMTBIT_S16_LE  | \
++			SNDRV_PCM_FMTBIT_S18_3LE | SNDRV_PCM_FMTBIT_S20_3LE | \
++			SNDRV_PCM_FMTBIT_S24_3LE | SNDRV_PCM_FMTBIT_S24_LE  | \
+ 			SNDRV_PCM_FMTBIT_S32_LE)
+ 
+ #define CS4349_PCM_RATES SNDRV_PCM_RATE_8000_192000
+-- 
+2.30.2
 
---2hMgfIw2X+zgXrFs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed 2022-04-27 13:29:41, Rob Herring wrote:
-> On Tue, 26 Apr 2022 08:35:08 -0500, Rob Herring wrote:
-> > The binding has both 'unevaluateProperties: false' and
-> > 'additionalProperties: false' which is redundant. 'additionalProperties'
-> > is the stricter of the two, so drop 'unevaluateProperties'.
-> >=20
-> > Fixes: e05cab34e417 ("dt-bindings: leds: Add bindings for MT6360 LED")
-> > Signed-off-by: Rob Herring <robh@kernel.org>
-> > ---
-> >  Documentation/devicetree/bindings/leds/leds-mt6360.yaml | 2 --
-> >  1 file changed, 2 deletions(-)
-> >=20
->=20
-> Applied
-
-Thank you!
-							Pavel
---=20
-People of Russia, stop Putin before his war on Ukraine escalates.
-
---2hMgfIw2X+zgXrFs
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCYnK+XwAKCRAw5/Bqldv6
-8uKUAJ4mu8CeqxEjsLFjOzdUAjXUoBBgEQCgpeK3/QYfQACi2vQAk8BrArf+WJU=
-=SuN2
------END PGP SIGNATURE-----
-
---2hMgfIw2X+zgXrFs--
-
-
---===============5984803108047462939==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5984803108047462939==--
-
