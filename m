@@ -4,60 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7078C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 20:37:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E9BFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 20:39:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8TVH7H+9S3Arg2idy1fSj0olGnqhAokCEejtf/7zgvk=; b=Dw478oihO36cBt
-	HQID5cJRbdJJE5WOMrcPDIN6iIYcYglkILJYE875bQKmsMzem8gvTzr68HscBXq7eR31vKiEyJbYf
-	X9CPGZP6DoWO++faXyKSTX/sBHDlN5mWUaqmRvkztAQXAto6XrzGJ2qa6HXGuCmsZE7z3ReVbAgQt
-	95GRbmzVK7hGBcgtZ5VBfl/JCVUqekuh/yc2oE+OraPiNWvxo0Y1a0KvZ5a5q0ak4wKbwSe0lYhs7
-	sjjg40hSirU1rOFow1WmB+KPpdeYXFZrhCJmDCPCbI++6qz7j8svniTMbb7bFwfEAkYZ6SFWRVGju
-	GtNW08GxePORHYrh8A9Q==;
+	List-Owner; bh=vcwrs2sbEho37GmcM0p6X84lk8DyhYAAHF5XVg42thc=; b=NoLcgwlXRniwRK
+	JRHMoX5BiAO7dwxIgzpFPVQZXpdqiYqoTUgo95wkl93fSeCdfd2gn2t/jMa9EaC6zQJv9WvZ/moxt
+	FFfsa9e8PEO+0rcJ48O7AeUKwwqmVUEN15zM363gQxgl2RkUfb6K6U3m8p+1v0yab6Xa5mquYyOom
+	rP787xnCOicQdIAE8fVt+mQdr0S+67GTcpnf/9Zc/kcKQKYrgmNeuEk2o9E9b0fTstz4Wf6MOe0tO
+	415xEmz1dj7dRN8+iYrgBPKYmYVEGc0JvwERGxThlC+153RyjKtDzhOO8ZCLys2BBEbhVlSslnCfY
+	ps+YXRP5ljOXXyJ41svQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmLka-00CbWt-Sa; Wed, 04 May 2022 20:37:32 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nmLm9-00CcGw-VL; Wed, 04 May 2022 20:39:10 +0000
+Received: from mail-oi1-f171.google.com ([209.85.167.171])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmLkF-00CbIz-PK; Wed, 04 May 2022 20:37:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 185D3617A8;
- Wed,  4 May 2022 20:37:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3457AC385A5;
- Wed,  4 May 2022 20:37:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651696630;
- bh=rvGFtzDUMdxkwhX/QNE/Ypl5Aws2l6MReGUI5o+GqFA=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=YL9ninoW5G4S5NnKRM9YU5i27m74E5PiA2pszB2EL6uBlt6P2nVSpYeBYXHj+FLFf
- c+TThsNBYtNJHD+kMnhIp065fv5jj3hslWi65PUVqyhJfUTJSqXfK+kMt3WKETZhun
- joDcYqFo53p6fPcLvbCKD96laCXHRZcCUMD4oZiyH9Wv9qvKPGH8VxgKdSnR1ssSVI
- F1YvdOrHi4wGcgSUMCY4MZLKiVSjny6i/8X8oewxMdxsjt1/1RMyrbolAqk73T0SOG
- o4cgehrMTC0MoL3dczTmu/aC6AI0muCUm/t7lndLCY/yBxEKWvxN5WboQ9AKLUA1y/
- 1LhhsxWdtKkEQ==
-From: Mark Brown <broonie@kernel.org>
-To: nfraprado@collabora.com
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- hsin-hsiung.wang@mediatek.com, krzysztof.kozlowski+dt@linaro.org,
- robh+dt@kernel.org, kernel@collabora.com, linux-mediatek@lists.infradead.org,
- lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220429201325.2205799-1-nfraprado@collabora.com>
-References: <20220429201325.2205799-1-nfraprado@collabora.com>
-Subject: Re: [PATCH] dt-bindings: regulator: mt6315: Enforce
- regulator-compatible, not name
-Message-Id: <165169662791.1744767.17732308037249256443.b4-ty@kernel.org>
-Date: Wed, 04 May 2022 21:37:07 +0100
+ id 1nmLly-00CcBH-6W; Wed, 04 May 2022 20:38:59 +0000
+Received: by mail-oi1-f171.google.com with SMTP id l203so2412651oif.0;
+ Wed, 04 May 2022 13:38:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=AcpEU69sAJkwiV3catvTf9Ba2Nirs+uxT6TgvfUDezQ=;
+ b=yXHxV2oxpp1zNKlRUkWWV8rm6GxIMyPd8nTe8s+KDYEyaDPaSKhh7vVff7aTxqOCKh
+ ZK6LRVuE4RXZm1HEkOpItcu/YZLtWuBIrXK4UlK7xcGh38XesVMlCiC0bTeoASWW3IT3
+ XulYrynJNthWDtTDXNJkX5ZIfJj49g+7N2BbRWYEs22zsNgNFpgb5vcB1o4DX7zsPxUD
+ 7he5SkaPHQIXHGobmnwuhMDr5ZCmtn4XebW1w1WwcncxvDP8W1K1ffqPUoZQp135BADh
+ hS+l/E8bGRKAdwEBptm9KN7lLXtXdm4Pl0/1SpCWqyRxXDXgHoYRPJ9t6M68SxiSq8fb
+ folA==
+X-Gm-Message-State: AOAM530PTjxPTDngrOqp1VNrG4ja0YP1uArBO74Tc6QoUTz/8h3ic6BX
+ wLKFoOYyBqCtX1/CLq4eCA==
+X-Google-Smtp-Source: ABdhPJxqGL2rYGTLd4lmJ9hpkXvtgU1omEZJ82uy+vc3bVbntykS23hu/PcAgWaMqP8CbQy4JAssJw==
+X-Received: by 2002:aca:545:0:b0:325:6e7:992d with SMTP id
+ 66-20020aca0545000000b0032506e7992dmr673969oif.244.1651696737433; 
+ Wed, 04 May 2022 13:38:57 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ dv2-20020a056870d88200b000e93d386d97sm8387005oab.31.2022.05.04.13.38.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 May 2022 13:38:57 -0700 (PDT)
+Received: (nullmailer pid 2187220 invoked by uid 1000);
+ Wed, 04 May 2022 20:38:56 -0000
+Date: Wed, 4 May 2022 15:38:56 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Cc: Mark Brown <broonie@kernel.org>, kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
+ properties
+Message-ID: <YnLkYKmJ0TJ8uyjC@robh.at.kernel.org>
+References: <20220429203039.2207848-1-nfraprado@collabora.com>
+ <20220429203039.2207848-2-nfraprado@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220429203039.2207848-2-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_133711_907081_3925BD57 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20220504_133858_300431_DE876856 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,37 +84,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyOSBBcHIgMjAyMiAxNjoxMzoyNCAtMDQwMCwgTsOtY29sYXMgRi4gUi4gQS4gUHJh
-ZG8gd3JvdGU6Cj4gVGhlIE1UNjMxNSBQTUlDIGR0LWJpbmRpbmcgc2hvdWxkIGVuZm9yY2UgdGhh
-dCBvbmUgb2YgdGhlIHZhbGlkCj4gcmVndWxhdG9yLWNvbXBhdGlibGUgaXMgc2V0IGluIGVhY2gg
-cmVndWxhdG9yIG5vZGUuIEhvd2V2ZXIgaXQgd2FzCj4gbWlzdGFrZW5seSBtYXRjaGluZyBhZ2Fp
-bnN0IHJlZ3VsYXRvci1uYW1lIGluc3RlYWQuCj4gCj4gRml4IHRoZSB0eXBvLiBUaGlzIG5vdCBv
-bmx5IGZpeGVzIHRoZSBjb21wYXRpYmxlIHZlcmlmaWNhdGlvbiwgYnV0IGFsc28KPiBsaWZ0cyB0
-aGUgcmVndWxhdG9yLW5hbWUgcmVzdHJpY3Rpb24sIHNvIHRoYXQgbW9yZSBtZWFuaW5nZnVsIG5h
-bWVzIGNhbgo+IGJlIHNldCBmb3IgZWFjaCBwbGF0Zm9ybS4KPiAKPiBbLi4uXQoKQXBwbGllZCB0
-bwoKICAgaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvYnJv
-b25pZS9yZWd1bGF0b3IuZ2l0IGZvci1uZXh0CgpUaGFua3MhCgpbMS8xXSBkdC1iaW5kaW5nczog
-cmVndWxhdG9yOiBtdDYzMTU6IEVuZm9yY2UgcmVndWxhdG9yLWNvbXBhdGlibGUsIG5vdCBuYW1l
-CiAgICAgIGNvbW1pdDogNmQ0MzVhOTRiYTViYjRmMmFkMzgxYzA4MjhmYmFlODljNjZiNTBmZQoK
-QWxsIGJlaW5nIHdlbGwgdGhpcyBtZWFucyB0aGF0IGl0IHdpbGwgYmUgaW50ZWdyYXRlZCBpbnRv
-IHRoZSBsaW51eC1uZXh0CnRyZWUgKHVzdWFsbHkgc29tZXRpbWUgaW4gdGhlIG5leHQgMjQgaG91
-cnMpIGFuZCBzZW50IHRvIExpbnVzIGR1cmluZwp0aGUgbmV4dCBtZXJnZSB3aW5kb3cgKG9yIHNv
-b25lciBpZiBpdCBpcyBhIGJ1ZyBmaXgpLCBob3dldmVyIGlmCnByb2JsZW1zIGFyZSBkaXNjb3Zl
-cmVkIHRoZW4gdGhlIHBhdGNoIG1heSBiZSBkcm9wcGVkIG9yIHJldmVydGVkLgoKWW91IG1heSBn
-ZXQgZnVydGhlciBlLW1haWxzIHJlc3VsdGluZyBmcm9tIGF1dG9tYXRlZCBvciBtYW51YWwgdGVz
-dGluZwphbmQgcmV2aWV3IG9mIHRoZSB0cmVlLCBwbGVhc2UgZW5nYWdlIHdpdGggcGVvcGxlIHJl
-cG9ydGluZyBwcm9ibGVtcyBhbmQKc2VuZCBmb2xsb3d1cCBwYXRjaGVzIGFkZHJlc3NpbmcgYW55
-IGlzc3VlcyB0aGF0IGFyZSByZXBvcnRlZCBpZiBuZWVkZWQuCgpJZiBhbnkgdXBkYXRlcyBhcmUg
-cmVxdWlyZWQgb3IgeW91IGFyZSBzdWJtaXR0aW5nIGZ1cnRoZXIgY2hhbmdlcyB0aGV5CnNob3Vs
-ZCBiZSBzZW50IGFzIGluY3JlbWVudGFsIHVwZGF0ZXMgYWdhaW5zdCBjdXJyZW50IGdpdCwgZXhp
-c3RpbmcKcGF0Y2hlcyB3aWxsIG5vdCBiZSByZXBsYWNlZC4KClBsZWFzZSBhZGQgYW55IHJlbGV2
-YW50IGxpc3RzIGFuZCBtYWludGFpbmVycyB0byB0aGUgQ0NzIHdoZW4gcmVwbHlpbmcKdG8gdGhp
-cyBtYWlsLgoKVGhhbmtzLApNYXJrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Fri, Apr 29, 2022 at 04:30:37PM -0400, N=EDcolas F. R. A. Prado wrote:
+> The Mediatek AFE PCM controller for MT8192 allows sharing of an I2S bus
+> between two busses. Add a pattern for these properties in the
+> dt-binding.
+> =
+
+> Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> =
+
+> ---
+> =
+
+>  Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> =
+
+> diff --git a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml =
+b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+> index 7a25bc9b8060..5b03c8dbf318 100644
+> --- a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+> @@ -54,6 +54,11 @@ properties:
+>        - const: aud_infra_clk
+>        - const: aud_infra_26m_clk
+>  =
+
+> +patternProperties:
+> +  "^i2s[0-35-9]-share$":
+> +    description: Name of the I2S bus that is shared with this bus
+> +    pattern: "^I2S[0-35-9]$"
+
+Why not a phandle to the the other bus? That would be the DT way to do =
+
+it. But I'm not sure I really understand who is sharing what here.
+
+> +
+>  required:
+>    - compatible
+>    - interrupts
+> -- =
+
+> 2.36.0
+> =
+
+> =
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
