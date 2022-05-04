@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4336EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF0DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gbOZqTeJn7oV3s6zANbah2x+SL7PaAJig1+gqtbNygA=; b=PyHb8Mh8k0de+z
-	QsIvdTKkTe99iUTLBM7OnYnBISQj9d1ioWtY3DSQUvrWFXEthBRAMZl9pmOKfmRuSKShQ8Qge0ikD
-	sK93JXRzPThJ/zMzo4MX/Umr+JOr6BDd8hf5MjdEpTXsHE4ajKGXWBu3nYd0b3Kd2HWK2fUyQVULN
-	OylpoxJXJgy+7IJnY2XCEePZYFLCYoMKX8sDSkI0YQnVNWUQ3TlVEGuwIl3KmZ6RNX4y3bpkA2s9X
-	YUPV1vhbjjl28ZzTo7fJj6YiISYaK0u4aSjeOoP11c77jOWRjcLobxg2U72YzJaAC2XdAEz9O0CBM
-	rNy78aWtSNY4MlRIYn0g==;
+	List-Owner; bh=wIp0rvp31OZBzRXqwqaQvNHs4AmNdIDvCUpRBpXqG2I=; b=znsq+a7ezyABH3
+	ALkqEHWl1Nz5zeCX+lgqqZH9qw+taidZt9N2EYosS2t3H6w96d70MfeNLGITd7kLXf56Y00Q8Zs/R
+	6Bo3CuIQRwaJMo6k+bfK2vxWZJUIZ7H1YSarHHry3D4bT/qctGl3aCZoN43Z5ZckfcV8MhxmzL6Il
+	1fUZSc+9Z+SuZVmqmojgzwjX9pMVJsGO8JMgOdDI/BsLDKpTtKhmIutFXbW/Y8nHUcmkiS5RO/JTJ
+	UaZyuAnOPbt1iUy0/JzfXGmBkDxYjt01MReN1kC2+SPNDhRCtDBu2l5+xmkQ+8Lt8WzTDaLB0Is0E
+	xZ9vZNBIDKdRfKxbvGKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmA6J-009QLI-Un; Wed, 04 May 2022 08:11:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nmAB9-009RbS-2A; Wed, 04 May 2022 08:16:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmA6F-009QJL-Uc; Wed, 04 May 2022 08:11:09 +0000
-X-UUID: 22cdb46074c247878db5b9aa620ca112-20220504
+ id 1nmAB5-009Ra6-92; Wed, 04 May 2022 08:16:09 +0000
+X-UUID: f6d367478ba54d9eb3160ad140123d5d-20220504
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:40b408a0-62bf-4462-a2d7-112d2c194a8a, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:80ceee6a-d40b-46b1-9d76-feea6b1cbdb0, OB:0,
  LO
  B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:5f60a92f-6199-437e-8ab4-9920b4bc5b76,
+X-CID-META: VersionHash:faefae9, CLOUDID:92b471c7-85ee-4ac1-ac05-bd3f1e72e732,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 22cdb46074c247878db5b9aa620ca112-20220504
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+X-UUID: f6d367478ba54d9eb3160ad140123d5d-20220504
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 808442659; Wed, 04 May 2022 01:11:00 -0700
+ with ESMTP id 940170773; Wed, 04 May 2022 01:16:02 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 May 2022 01:05:59 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 May 2022 01:15:55 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Wed, 4 May 2022 16:05:58 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 4 May 2022 16:05:58 +0800
-Message-ID: <fa84e8e0e71cc483f9bef3714cce1622c17bcfb2.camel@mediatek.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 4 May 2022 16:15:53 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 4 May 2022 16:15:53 +0800
+Message-ID: <003b87fabbedc776d74c0a542dc3ae5bcb0bbdf2.camel@mediatek.com>
 Subject: Re: [PATCH v5 1/4] dt-bindings: display: mediatek: dsi: Convert
  dsi_dtbinding to .yaml
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
@@ -59,7 +59,7 @@ CC: <krzysztof.kozlowski+dt@linaro.org>, <chunkuang.hu@kernel.org>,
  <xinlei.lee@mediatek.com>, <dri-devel@lists.freedesktop.org>,
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 4 May 2022 16:05:58 +0800
+Date: Wed, 4 May 2022 16:15:53 +0800
 In-Reply-To: <YnFt5vL+6uVioqsf@robh.at.kernel.org>
 References: <20220428133753.8348-1-rex-bc.chen@mediatek.com>
  <20220428133753.8348-2-rex-bc.chen@mediatek.com>
@@ -68,8 +68,8 @@ X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_011108_019984_C8569EE7 
-X-CRM114-Status: GOOD (  30.33  )
+X-CRM114-CacheID: sfid-20220504_011607_350684_D13E0461 
+X-CRM114-Status: GOOD (  28.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -276,13 +276,6 @@ On Tue, 2022-05-03 at 13:01 -0500, Rob Herring wrote:
 > > +
 > 
 > 1 blank line
-
-Hello Rob,
-
-Thanks for your review.
-
-ok. I will do this in next version.
-
 > 
 > > +  "#address-cells":
 > > +    const: 2
@@ -294,9 +287,18 @@ ok. I will do this in next version.
 > dsi-controller.yaml.
 > 
 
-We have some mistake.
-There will not be any sub node for mediatek dsi, so I will drop this
-modification in next version.
+Hello Rob,
+
+Sorry, I response something wrong in previous letter.
+We could have sub nodes in mediatek dsi.
+But we do not need to define this:
+  "#address-cells":
+    const: 2
+
+  "#size-cells":
+    const: 2
+
+I will drop them. Thanks!
 
 BRs,
 Rex
