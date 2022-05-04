@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6202AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 May 2022 22:22:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9460AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 00:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q2BYgrDUs4uLqE+xzyhlgzLyrxWoVpnDZrL3vS/MAYA=; b=x3XTk0tBaTUbt9
-	cZHrZQtYO2kf7sbNOCyUQjl8itqUNiek9xz1TzRHiy1npmnEuNcQor8eFPo6f/dNMFaui/GlHK8DZ
-	fmS3SSzZWWh87ZlPnpl1QjuGzVvCzshqg8moASwhfHoL86Ghscr86qHGrQ37P9XbR+M2Clzq2Fn/u
-	5uSC1DRCXZVhv1KNIe3DZwpUaJlgxqpifKX8edLdXVJYY7oxQW16wGUcGq+ki9EEvdzCBk8RdUyf5
-	PZAwCBvHV589rfzVRA38cuTir7t6t1FQ1H4Wv143DdQwRwJpHBhFeleEv6uzQ2yauvF4om49hHZ8J
-	+QJc09hxEPDv7xnSmyCQ==;
+	List-Owner; bh=I8ep5VE4Jd/b4r4ogljlZOm7D2uXLnypsbAAMjxbfpQ=; b=trIZUiFXCSzupA
+	APLZetVfLZf0l6hHbOgeTH6mT7eUxZ2wfWR889vc1VElMTeLUwl+a5kOupvI0HQ+zYYJU+BMVXJDB
+	zRjp0FihqqEtHbL/znGiv1aM22Nxb25bdrKvgw710b6Iz0aRmVLgwLU7WVGQ7h5rhIJzpJjRBhhcf
+	/qbnP8bzdC/8ZZ4JU8AY0UMa7LPer/W7fIfiDf+8eslouVcgeqs1qY7a36Ozn2zef4xJH11LH0Mh5
+	Kk8AGQBAZNIyyUN0x/0tLRO59MYO6bs6J+Knfw6nqkwY75W/ccp2JAKXdLJXyhMo75oRrMcNDETvV
+	ibVSPJ2WIakAJwzHr9AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nm0uP-007wcS-DQ; Tue, 03 May 2022 22:22:17 +0000
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
+	id 1nm2xs-008E0V-3B; Wed, 04 May 2022 00:34:00 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nm0u5-007wUq-6d; Tue, 03 May 2022 22:21:58 +0000
-Received: by mail-oi1-f181.google.com with SMTP id l16so12390346oil.6;
- Tue, 03 May 2022 15:21:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=AYzqDCKsTIUNQSFUA88IsjM5tVXZRYkNm2IzoI0SdEc=;
- b=V4+6Tglo7QZLzlBgO0dReoe2ggyzN8oiyz/g9XooY4LnS+wq0eNwBPiT5YE/Qkfove
- N35QxLGkPpjmBIqI+CM9G3wub1uF/CkYBff/dRVcwpn2Otjxc9ehGJtMg9PCbZkoCr5X
- EdTLe4cMxq5Km3k4Uc9LDW3KXMSz+76V1y9KLbJvyDJ8gXRyjt+jDVzlfFPnGKbLq+3F
- UupC8Q9/RqUAxCOzGshFhXOCyqHJj9+8w6u5QqRgElPwQW1NXdgGqEzXqfGBIB3Iw/BD
- rithiU6mL/Lc+bK8HQUkHoea5qWbhcXtBV42ScRZHNolzdS38o+6EUoqffSz/EwZgkjO
- HL9w==
-X-Gm-Message-State: AOAM532Bcud16T9Mu9aiHbXTr8zHkxMAv3SqG3y3vaNUKOEhNiuQ/YRp
- 4FPziEdDX8bBNXeOsVd61luoONrzig==
-X-Google-Smtp-Source: ABdhPJzn/rfeIWO5DHbfNPeuF8m9ikdAA2XqhXdqzdxa0Z5LXZ/l9fkqrmw7YUHe4HECh0PvVs466Q==
-X-Received: by 2002:a05:6808:d4c:b0:322:e7de:fffe with SMTP id
- w12-20020a0568080d4c00b00322e7defffemr2726225oik.107.1651616515316; 
- Tue, 03 May 2022 15:21:55 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- n7-20020a9d64c7000000b006060322125csm4564785otl.44.2022.05.03.15.21.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 May 2022 15:21:54 -0700 (PDT)
-Received: (nullmailer pid 139788 invoked by uid 1000);
- Tue, 03 May 2022 22:21:51 -0000
-From: Rob Herring <robh@kernel.org>
+ id 1nm2xf-008Dxg-BV; Wed, 04 May 2022 00:33:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 85EF91F444CA
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651624424;
+ bh=TylGFKA0mcDRkdBchYF01blEZNeR3QM7S0kr0QFnDGg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Vq6G2DgbhFyEjIpWgnVbtXcEPE2N76ZLLeMs5umG13ZdJRuxX48zw3XoQfYnVbVad
+ fhuowVUpQVkRfXZnhOzP9Ywe9uOtTbwnnGuK/CfGBV5DUodZq0bZfRZ4kj/f4s40iJ
+ Z3XJgU1ycDccCFAw8+LLasM0x1wjreyEF5RT6W3D3Bko9zNddR8vm1mUdyni4Fbe52
+ lKHStXiEzoLqM7ONLuro3r2oyKhJSOhvZmcdCUdSeVLlabhGlVp216B0V3L+M2F8vU
+ mWYEzlu5sfKdahIhTHRTyyPWWnkxVXkJt++9GYV/nc7A5QNOYs6Rw1l9xZlfJ0jz6K
+ QpDHiWLBqeckA==
+Date: Tue, 3 May 2022 20:33:40 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, sean.wang@kernel.org,
- linus.walleij@linaro.org, linux-gpio@vger.kernel.org, nfraprado@collabora.com,
- matthias.bgg@gmail.com, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org
-In-Reply-To: <20220503142537.152499-2-angelogioacchino.delregno@collabora.com>
-References: <20220503142537.152499-1-angelogioacchino.delregno@collabora.com>
- <20220503142537.152499-2-angelogioacchino.delregno@collabora.com>
+Cc: linus.walleij@linaro.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ sean.wang@kernel.org, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
 Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: Add MediaTek MT6795 pinctrl
  bindings
-Date: Tue, 03 May 2022 17:21:51 -0500
-Message-Id: <1651616511.157901.139787.nullmailer@robh.at.kernel.org>
+Message-ID: <20220504003340.224exvr33qevi3sj@notapiano>
+References: <20220503142537.152499-1-angelogioacchino.delregno@collabora.com>
+ <20220503142537.152499-2-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220503142537.152499-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220503_152157_288332_148A66EE 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20220503_173347_641869_386ECAAA 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,48 +67,125 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 03 May 2022 16:25:36 +0200, AngeloGioacchino Del Regno wrote:
+Hi Angelo,
+
+On Tue, May 03, 2022 at 04:25:36PM +0200, AngeloGioacchino Del Regno wrote:
 > Add devicetree and pinfunc bindings for MediaTek Helio X10 MT6795.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> =
+
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 > ---
 >  .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 224 +++++
 >  include/dt-bindings/pinctrl/mt6795-pinfunc.h  | 908 ++++++++++++++++++
 >  2 files changed, 1132 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,pi=
+nctrl-mt6795.yaml
 >  create mode 100644 include/dt-bindings/pinctrl/mt6795-pinfunc.h
-> 
+> =
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-yamllint warnings/errors:
+...
 
-dtschema/dtc warnings/errors:
-./Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml: $id: relative path/filename doesn't match actual path or filename
-	expected: http://devicetree.org/schemas/pinctrl/mediatek,pinctrl-mt6795.yaml#
+> +
+> +          bias-pull-down:
+> +            oneOf:
+> +              - type: boolean
+> +              - enum: [100, 101, 102, 103]
+> +                description: mt6795 pull down PUPD/R0/R1 type define val=
+ue.
+> +            description: |
+> +               For normal pull down type, it is not necessary to specify=
+ R1R0
+> +               values; When pull down type is PUPD/R0/R1, adding R1R0 de=
+fines
+> +               will set different resistance values.
+> +
+> +          bias-pull-up:
+> +            oneOf:
+> +              - type: boolean
+> +              - enum: [100, 101, 102, 103]
+> +                description: mt6795 pull up PUPD/R0/R1 type define value.
+> +            description: |
+> +               For normal pull up type, it is not necessary to specify R=
+1R0
+> +               values; When pull up type is PUPD/R0/R1, adding R1R0 defi=
+nes
+> +               will set different resistance values.
+> +
+> +          bias-disable: true
+> +
+> +          output-high: true
+> +
+> +          output-low: true
+> +
+> +          input-enable: true
+> +
+> +          input-disable: true
+> +
+> +          input-schmitt-enable: true
+> +
+> +          input-schmitt-disable: true
+> +
+> +          mediatek,pull-up-adv:
+> +            description: |
+> +              Pull up setings for 2 pull resistors, R0 and R1. User can
+> +              configure those special pins. Valid arguments are describe=
+d as below:
+> +              0: (R1, R0) =3D (0, 0) which means R1 disabled and R0 disa=
+bled.
+> +              1: (R1, R0) =3D (0, 1) which means R1 disabled and R0 enab=
+led.
+> +              2: (R1, R0) =3D (1, 0) which means R1 enabled and R0 disab=
+led.
+> +              3: (R1, R0) =3D (1, 1) which means R1 enabled and R0 enabl=
+ed.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1, 2, 3]
+> +
+> +          mediatek,pull-down-adv:
+> +            description: |
+> +              Pull down settings for 2 pull resistors, R0 and R1. User c=
+an
+> +              configure those special pins. Valid arguments are describe=
+d as below:
+> +              0: (R1, R0) =3D (0, 0) which means R1 disabled and R0 disa=
+bled.
+> +              1: (R1, R0) =3D (0, 1) which means R1 disabled and R0 enab=
+led.
+> +              2: (R1, R0) =3D (1, 0) which means R1 enabled and R0 disab=
+led.
+> +              3: (R1, R0) =3D (1, 1) which means R1 enabled and R0 enabl=
+ed.
+> +            $ref: /schemas/types.yaml#/definitions/uint32
+> +            enum: [0, 1, 2, 3]
 
-doc reference errors (make refcheckdocs):
+I'm actually myself trying to figure out why there are two ways of setting
+R0/R1 in the dt-binding (and which should preferred for mt8192 and others):
+1. passing 0-3 to mediatek,pull-{up,down}-adv
+2. passing one of the MTK_PUPD_SET_R1R0_** flags to bias-pull-{up,down}
 
-See https://patchwork.ozlabs.org/patch/
+When the pin is of type MTK_PULL_PUPD_R1R0_TYPE (which should be the only c=
+ase
+in which it makes sense to consider mediatek,pull-{up,down}-adv AFAIU), the=
+y end
+up doing the same thing, it's:
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+mtk_pinconf_bias_set_combo() -> mtk_pinconf_bias_set_pupd_r1_r0()
+vs
+mtk_pinconf_adv_pull_set()
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+... and they write to the same registers.
 
-pip3 install dtschema --upgrade
+Unless I'm missing something here.
 
-Please check and re-submit.
-
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
