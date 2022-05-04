@@ -4,77 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7799FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 858B8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 08:22:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Se5J/NBpb0C0kBgRaSxAUQOT+LaUgAc2yeOCCdIGC3k=; b=S9Ikk0gWLAMTUL
-	9SsmQuQLrsIhAROzysQMHC0UP4jDyEPycjdlWK96K1gG5MwvrnCNaaq52jUxMABMXkLTspn8gfxEm
-	UjSV1VdGKT8zxm10sp3VR0x9UswlPGvNB0MRxmK9vO9AYOm1Mp0vwTC7AtFhvh5kRYqLLyzHEQLPa
-	HcqEm0kFIIXIpm5PMi9GB6Idk213VEz2ao7k3bcpiFDCWitideBOsTOZZiVHc4oscTDLa4nNouzP8
-	xOeqCB7xuKH1ItXi4UfWXUGxCiLupGN5PfWeGv51WDHHlFjSi7wU5F2cxCunN97+4mBY2hTQ/sBtc
-	PpFvV+Dv7HA2dm05TqQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GrhRyY+54eX6CFzbqycGM8ovXfJNulVWrDqgitIUgwY=; b=1nvmP8kGJC1Ey7
+	6MICHRySpmuniqPe9APKvlCRGKRPv+Tzq/f7ztWyNnoAuyRdXQmu22onA1ddETEojQrvJ7tkN0b8/
+	IYXq9fU9sgqaomLdRaXAChDJLvEKJegL4dbajhU54wGlSkdDC0wx6Pj5oggqbdFLnZ781a2O2ZtqC
+	J2/rZ8RzKv979PwgmdeFo95ei5SCuTXmxVqJFn+TAUIZNNIs+mbvANY+0smW5r9uKX3jjQ0+cQZ3K
+	sVUQN2ynXWep+zrtdVDaXq/toLhCbBlsZo8Lgn9q4Wi6BrxnqfUMk/okv1t+oArv588b9Hx72k5fL
+	ids4KAiJWKKYi9ms/fsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmAGk-009UTM-Jd; Wed, 04 May 2022 08:21:58 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1nmAGw-009Uak-Vc; Wed, 04 May 2022 08:22:11 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmAGV-009UKR-Ed
- for linux-mediatek@lists.infradead.org; Wed, 04 May 2022 08:21:45 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- t11-20020a17090ad50b00b001d95bf21996so4578039pju.2
- for <linux-mediatek@lists.infradead.org>; Wed, 04 May 2022 01:21:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DGHn8biVzkArfif1A3GGDNCCNtu9nk8kwnWV4EieXww=;
- b=ovuglYP6XIUlR99cJzmFGcviclvTUlrxiDBD5INA8pVtqhRoQM6hLt+Cff8YnmJkDa
- j1sZc375hNN0vGZXiwU3NCy5HBOt9CXrOjV8Lzs81sgXN/HjEi6lmPYAeTa3mxkqFIPc
- 2GrKSv4JCXh6SwJMPQXFdmbalWFKhhK6BSDzuCu50kWn/usf3Fb3+3HwOZT6fdH/fyuy
- ipNn57BZf//zwh64eqnCaXAnV3mcPv2uvTgtbikkakLbcl6AisH+9L53vcXDJ9AwKDpi
- sdqxB4n8Xo+gV63I/b/PjIFLYcQ680Neg6R6HKhX0WDy2qDVbbcpRt+Kt+58Y9NsxZbs
- Px9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DGHn8biVzkArfif1A3GGDNCCNtu9nk8kwnWV4EieXww=;
- b=gnHTGXaOq8EBa6mc7CquLz0fFOR39BhAz4CzC9XOxU7voQHo+v6B5E4tKKnPwD3Ezg
- jO9cx/PZc5090uExqGfj7JcUDLA6F59Ak2ZN6NZlthYzPWcRZ9U53c+6gdtvbj//xLjC
- s1urTCgQjv+zoF45SDp153roRTfbnZMVqnFA7eSl1dyYhOgip7z1snFx90ZA6BRLf8bE
- PTpdNUpNN3zagWj2HBIQe0/5bUVaptGB+sHVHOeWU5QdGeNEpurFuMZ3j9QTaR1vm/4p
- mudCmybOjGHIeXcy0sOD9eALAqL+Fi7psMLeWqdd2bive3vy2a+llD1H1h/mkEM7BJji
- rnBA==
-X-Gm-Message-State: AOAM532gvbgFf2ZDyOjtYI1r6P54r4eAkCICRm/NXGLCuJ08MouSokjU
- oPiMKVI5+gT46fr0DV3oH/H9WA==
-X-Google-Smtp-Source: ABdhPJy+Ar/gTjEhiBq3udBPTLyLW/kvpVmkDs3NrFb1w1kzCGG7xkVwWss2TJ8eHql/kS8ynEH0bQ==
-X-Received: by 2002:a17:902:a406:b0:158:260d:1ed2 with SMTP id
- p6-20020a170902a40600b00158260d1ed2mr20541941plq.49.1651652501758; 
- Wed, 04 May 2022 01:21:41 -0700 (PDT)
-Received: from localhost ([122.162.207.161]) by smtp.gmail.com with ESMTPSA id
- b10-20020a17090a550a00b001d954837197sm2639962pji.22.2022.05.04.01.21.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 01:21:41 -0700 (PDT)
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Rafael Wysocki <rjw@rjwysocki.net>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] cpufreq: Avoid unnecessary frequency updates due to mismatch
-Date: Wed,  4 May 2022 13:51:35 +0530
-Message-Id: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
-X-Mailer: git-send-email 2.31.1.272.g89b43f80a514
+ id 1nmAGg-009UPU-3c; Wed, 04 May 2022 08:21:56 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id D09521F44426
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651652512;
+ bh=wLY3OPe2cPx9sjjXymFeSQ30btBG+lIdXmj7Vs9jaaA=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=WvOUWCBy881OxEE4xdYZk3bLRUDSJr5QL3FgWhIW/X8GzYC5cdFJydQ1fnFh+N8xv
+ IhoRIq5l/L+PjirhfyF7X+u+zaQENLaG1+0RySMzPAz4vUpwNr5JMTgpCqToCAY8d4
+ ZsYOUifC9FNl8qzwFaPOlPR2Xug87YGpn7cy/BOlJcYGt7FuRJylGDeOEUvhZ+qzx6
+ RYCgaCH3p/ZcEI4piCqTl2nTdmDbbL3IFzWNNbKhs7W+qvcv5SJR0Lj4oUY0S5Qhi1
+ cKgjHI9Vy6bzeBMuNypwrwoZvBvlIyxS14E0q1LHNAUJ4lWJ149VNxs74cb4vEGfVk
+ 2trn26fQwWucA==
+Message-ID: <73a52782-ba8b-2ef6-2044-1ceaad17d31c@collabora.com>
+Date: Wed, 4 May 2022 10:21:49 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v3 1/2] dt-bindings: remoteproc: mediatek: Make l1tcm reg
+ optional for mtk,scp
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>
+Cc: kernel@collabora.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
+References: <20220503211114.2656099-1-nfraprado@collabora.com>
+ <20220503211114.2656099-2-nfraprado@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220503211114.2656099-2-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_012143_523183_33DA5B14 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20220504_012154_332336_EF211273 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,62 +71,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For some platforms, the frequency returned by hardware may be slightly
-different from what is provided in the frequency table. For example,
-hardware may return 499 MHz instead of 500 MHz. In such cases it is
-better to avoid getting into unnecessary frequency updates, as we may
-end up switching policy->cur between the two and sending unnecessary
-pre/post update notifications, etc.
-
-This patch has chosen allows the hardware frequency and table frequency
-to deviate by 1 MHz for now, we may want to increase it a bit later on
-if someone still complains.
-
-Reported-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- drivers/cpufreq/cpufreq.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
-index 0d58b0f8f3af..233e8af48848 100644
---- a/drivers/cpufreq/cpufreq.c
-+++ b/drivers/cpufreq/cpufreq.c
-@@ -28,6 +28,7 @@
- #include <linux/suspend.h>
- #include <linux/syscore_ops.h>
- #include <linux/tick.h>
-+#include <linux/units.h>
- #include <trace/events/power.h>
- 
- static LIST_HEAD(cpufreq_policy_list);
-@@ -1708,6 +1709,16 @@ static unsigned int cpufreq_verify_current_freq(struct cpufreq_policy *policy, b
- 		return new_freq;
- 
- 	if (policy->cur != new_freq) {
-+		/*
-+		 * For some platforms, the frequency returned by hardware may be
-+		 * slightly different from what is provided in the frequency
-+		 * table, for example hardware may return 499 MHz instead of 500
-+		 * MHz. In such cases it is better to avoid getting into
-+		 * unnecessary frequency updates.
-+		 */
-+		if (abs(policy->cur - new_freq) < HZ_PER_MHZ)
-+			return policy->cur;
-+
- 		cpufreq_out_of_sync(policy, new_freq);
- 		if (update)
- 			schedule_work(&policy->update);
--- 
-2.31.1.272.g89b43f80a514
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWwgMDMvMDUvMjIgMjM6MTEsIE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIGhhIHNjcml0dG86Cj4g
+VGhlIFNDUCBoYXMgdGhyZWUgbWVtb3J5IHJlZ2lvbnM6IHNyYW0sIGNmZyBhbmQgbDF0Y20uIFdo
+aWxlIHRoZSBmaXJzdAo+IHR3byBhcmUgcmVxdWlyZWQsIGwxdGNtIGlzIG9wdGlvbmFsLiBGaXgg
+dGhlIGR0LWJpbmRpbmcgc28gdGhhdCBpdCBjYW4KPiBiZSBvbWl0dGVkIGFuZCB1cGRhdGUgdGhl
+IGRlc2NyaXB0aW9uLiBUaGlzIGdldHMgcmlkIG9mIGR0YnNfY2hlY2sKPiB3YXJuaW5ncyBmb3Ig
+ZGV2aWNldHJlZXMgd2hlcmUgdGhlIGwxdGNtIHJlZyBpcyBtaXNzaW5nIGxpa2UgbXQ4MTgzLgo+
+IAo+IFNpZ25lZC1vZmYtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIDxuZnJhcHJhZG9AY29s
+bGFib3JhLmNvbT4KClJldmlld2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5n
+ZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgoKPiAKPiAtLS0KPiAKPiBDaGFu
+Z2VzIGluIHYzOgo+IC0gTWFkZSB0aGUgY2ZnIHJlZyByZXF1aXJlZCBhZ2Fpbi4gQWZ0ZXIgbG9v
+a2luZyBhZ2FpbiBpbnRvIHRoZSBtdGstc2NwCj4gICAgZHJpdmVyLCBvbmx5IGwxdGNtIGlzIG9w
+dGlvbmFsLgo+IC0gQWRkZWQgbWVudGlvbiB0aGF0IGEgZHRic19jaGVjayB3YXJuaW5nIGdldHMg
+Zml4ZWQgYnkgcGF0Y2ggaW4gY29tbWl0Cj4gICAgbWVzc2FnZS4KPiAKPiAgIERvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9yZW1vdGVwcm9jL210ayxzY3AueWFtbCB8IDYgKysrKy0t
+Cj4gICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+
+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcmVtb3RlcHJv
+Yy9tdGssc2NwLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcmVtb3Rl
+cHJvYy9tdGssc2NwLnlhbWwKPiBpbmRleCA4MjNhMjM2MjQyZGUuLmVlZWE4NDM3OWExZSAxMDA2
+NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcmVtb3RlcHJvYy9t
+dGssc2NwLnlhbWwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcmVt
+b3RlcHJvYy9tdGssc2NwLnlhbWwKPiBAQCAtMjMsMTEgKzIzLDEzIEBAIHByb3BlcnRpZXM6Cj4g
+ICAKPiAgICAgcmVnOgo+ICAgICAgIGRlc2NyaXB0aW9uOgo+IC0gICAgICBTaG91bGQgY29udGFp
+biB0aGUgYWRkcmVzcyByYW5nZXMgZm9yIG1lbW9yeSByZWdpb25zIFNSQU0sIENGRywgYW5kCj4g
+LSAgICAgIEwxVENNLgo+ICsgICAgICBTaG91bGQgY29udGFpbiB0aGUgYWRkcmVzcyByYW5nZXMg
+Zm9yIG1lbW9yeSByZWdpb25zIFNSQU0sIENGRywgYW5kLAo+ICsgICAgICBvcHRpb25hbGx5LCBM
+MVRDTS4KPiArICAgIG1pbkl0ZW1zOiAyCj4gICAgICAgbWF4SXRlbXM6IDMKPiAgIAo+ICAgICBy
+ZWctbmFtZXM6Cj4gKyAgICBtaW5JdGVtczogMgo+ICAgICAgIGl0ZW1zOgo+ICAgICAgICAgLSBj
+b25zdDogc3JhbQo+ICAgICAgICAgLSBjb25zdDogY2ZnCgoKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
