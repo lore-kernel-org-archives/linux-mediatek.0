@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE00DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 17:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0180FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 May 2022 17:10:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iR3a9D8aRvwLsoWdrZ6Icx0ABil0OrI/KMIKsiG69UQ=; b=SLjVBJ6lwNGDFm
-	SKFQb7/5M6IZCskm1SGmhDPqaBroCaXkL+yWE74Fp1Au3WMLNL1nroMzwkzZ+fLjQtxW2wYiaH7QZ
-	1i+554Bnb4NGHIcF3ZFnFLcwGodZo988PeMdDDpY9mA7q+OFt7x9xlRtP0S6TiFPwae+6C+lTH7AP
-	g0O/TpL0V1AjDBpNcx50ly4Mzb2zERlcCvRoPyMwcrVduusPRZwFjEQn68mXoh2woVjvWt00kHkj2
-	jf3zncJK9vHA0Vke2zZMMQd9tdshISzGw32FFiFKeh4Bxpx/DBQxDSrupR+k93a2oiyfSX68QKTiE
-	j5CE0GDyObsPtaJvMwQg==;
+	List-Owner; bh=iR0VAN8j0348bozhxwVRWLrrfJnKn8gdelpK0rky/RY=; b=1RGGInDSxJ86o9
+	HHHTEuIB2zsIcxFCfntO8XxZFueQ5SfrWD4LqvArsQIPMkR14GbPjUV3rGzwn4BVdN0zN6gVRmaSJ
+	efXsbo4xzAkTogoHBS8sSrz91ohnTtxpzorkmSdA0HWRFnH0kjqMKfVF8uIJ+9bhXuHxCvSrci3Fy
+	0fNqRYVFLdmWKrOaMx6aCxChnMjBTzW4D0qXYkvoKIhJ30IVZ0lrD42OorDufBpmoeL6kfj1ovoAn
+	65X2SmcEvo8eYXT6Di/Lx/OvASytZ2sYCrFdgtER5D0sGA/AMedElmk1F05KIFCjS41OKhbwYZ8MG
+	NqvEFGmLqdoQZNFTtzVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmIWG-00Bqwo-HY; Wed, 04 May 2022 17:10:32 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25]
- helo=mx0b-001ae601.pphosted.com)
+	id 1nmIWI-00Br03-Pd; Wed, 04 May 2022 17:10:34 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmIW1-00Bqgo-8Q
- for linux-mediatek@lists.infradead.org; Wed, 04 May 2022 17:10:19 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
- by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2446CVq4001835;
- Wed, 4 May 2022 12:09:08 -0500
+ id 1nmIW1-00Bqgi-K4
+ for linux-mediatek@lists.infradead.org; Wed, 04 May 2022 17:10:20 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2446EsAC021058;
+ Wed, 4 May 2022 12:09:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=EI90RMcyBIAi4FClwD/aIfZyhedVb/sh3OETIn8Up8w=;
- b=FWKhKdqwQmaHr1od8bZHvQv0X26JEVVSXN+3qltM3MbLE0Q7+aVOI5DEs6phZER8N5M6
- 1UdYBmVZQssJ0vjKHu1h3fgjw5Q7Ji7WMLcBZrxkiAkvF89oKpLwD/ZxeIjSk6UY4jL+
- lYGdbv8vGd+04jfFn1De5+9yv9ndKJO7jJg0bew1dhUz464UoX8d/BxY8/3UG3DKxCgg
- OODTEmb3gVRJLOCtiljMBFxVEiA/0TDTbk0ROU6R/TwmSmuxISl3Zg2kq7lJ0VQHaC6V
- cERkusEFLuizU5vFmlKOSs6FCF1tOA1n2Re0yv1DSGceHLo57i9O23xp75lp+L5vZlKA Ew== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
- by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3fs2h2d8fp-2
+ bh=EQBSsrCK9FmninMk7VLEQxuA9XpRsxALxOeewRZQoao=;
+ b=b1he2BCMq3FrQjZKSafgv/Cet68iZiUXQW6JRiIJhhcT+gXdaYGFoH5mmlNOpoBX4/w7
+ C4GjhltbmMDNBh9AyA4uNAidf8TQsuNP8BD9734eRc57ZKMbyinlhNYzFONOmsFpMyMP
+ nMz/gKqYSaX8LY07dYUukpc26thBKd9Fi0ErBGk/If1B0/pA7BiJReVAiBTI2Y5FtxDp
+ xaE1okeqgYjtR+EVuXkpmWuN+7GJxfmDjCZGqDtiO0Z5xvxMcfe7VimW+E3H7S2wIwqg
+ 8BSaBVwu30cXGp05rMSgPiZ+TiBFQqDV3yJRJtkD4SWnptkXgZAclL8KBc4Rt6GkIcEf /w== 
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3fs1hpcxs0-8
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Wed, 04 May 2022 12:09:08 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ Wed, 04 May 2022 12:09:15 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 4 May
- 2022 18:09:05 +0100
+ 2022 18:09:06 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Wed, 4 May 2022 18:09:05 +0100
+ Frontend Transport; Wed, 4 May 2022 18:09:06 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 493E511D3;
- Wed,  4 May 2022 17:09:05 +0000 (UTC)
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 49873459;
+ Wed,  4 May 2022 17:09:06 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <codrin.ciubotariu@microchip.com>,
@@ -64,20 +63,20 @@ CC: <lgirdwood@gmail.com>, <codrin.ciubotariu@microchip.com>,
  <kuninori.morimoto.gx@renesas.com>, <jiaxin.yu@mediatek.com>,
  <alsa-devel@alsa-project.org>, <chrome-platform@lists.linux.dev>,
  <linux-mediatek@lists.infradead.org>, <patches@opensource.cirrus.com>
-Subject: [PATCH 02/38] ASoC: atmel-pdmic: Remove endianness flag on pdmic
- component
-Date: Wed, 4 May 2022 18:08:29 +0100
-Message-ID: <20220504170905.332415-3-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 19/38] ASoC: mt6359: Add endianness flag in
+ snd_soc_component_driver
+Date: Wed, 4 May 2022 18:08:46 +0100
+Message-ID: <20220504170905.332415-20-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220504170905.332415-1-ckeepax@opensource.cirrus.com>
 References: <20220504170905.332415-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-ORIG-GUID: Dl2PnAZgHnN7DisnkOvXW_Y4Hvvsj-yz
-X-Proofpoint-GUID: Dl2PnAZgHnN7DisnkOvXW_Y4Hvvsj-yz
+X-Proofpoint-ORIG-GUID: TEWLsLzxhXQI-4fyguL2DG0N1DDYdZav
+X-Proofpoint-GUID: TEWLsLzxhXQI-4fyguL2DG0N1DDYdZav
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_101017_322221_AD6B9146 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20220504_101017_851180_6903DFB7 
+X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,35 +93,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The endianness flag should have been removed when the driver was
-ported across from having both a CODEC and CPU side component, to
-just having a CPU component and using the dummy for the CODEC. The
-endianness flag is used to indicate that the device is completely
-ambivalent to the endianness of the data, typically due to the
-endianness being lost over the hardware link (ie. the link defines
-bit ordering). It's usage didn't have any effect when the driver
-had both a CPU and CODEC component, since the union of those equals
-the CPU side settings, but now causes the driver to falsely report
-it supports big endian. Correct this by removing the flag.
+The endianness flag is used on the CODEC side to specify an
+ambivalence to endian, typically because it is lost over the hardware
+link. This device receives audio over an I2S DAI and as such should
+have endianness applied.
 
-Fixes: f3c668074a04 ("ASoC: atmel-pdmic: remove codec component")
+As the core will now expand the formats to cover both endian types,
+remove the redundant manual specification of both.
+
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/atmel/atmel-pdmic.c | 1 -
- 1 file changed, 1 deletion(-)
+ sound/soc/codecs/mt6359.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/sound/soc/atmel/atmel-pdmic.c b/sound/soc/atmel/atmel-pdmic.c
-index 42117de299e74..ea34efac2fff5 100644
---- a/sound/soc/atmel/atmel-pdmic.c
-+++ b/sound/soc/atmel/atmel-pdmic.c
-@@ -481,7 +481,6 @@ static const struct snd_soc_component_driver atmel_pdmic_cpu_dai_component = {
- 	.num_controls		= ARRAY_SIZE(atmel_pdmic_snd_controls),
- 	.idle_bias_on		= 1,
- 	.use_pmdown_time	= 1,
--	.endianness		= 1,
+diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
+index f8532aa7e4aa0..23709b180409c 100644
+--- a/sound/soc/codecs/mt6359.c
++++ b/sound/soc/codecs/mt6359.c
+@@ -2576,12 +2576,9 @@ static const struct snd_soc_dai_ops mt6359_codec_dai_ops = {
+ 	.shutdown = mt6359_codec_dai_shutdown,
  };
  
- /* ASoC sound card */
+-#define MT6359_FORMATS (SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S16_BE |\
+-			SNDRV_PCM_FMTBIT_U16_LE | SNDRV_PCM_FMTBIT_U16_BE |\
+-			SNDRV_PCM_FMTBIT_S24_LE | SNDRV_PCM_FMTBIT_S24_BE |\
+-			SNDRV_PCM_FMTBIT_U24_LE | SNDRV_PCM_FMTBIT_U24_BE |\
+-			SNDRV_PCM_FMTBIT_S32_LE | SNDRV_PCM_FMTBIT_S32_BE |\
+-			SNDRV_PCM_FMTBIT_U32_LE | SNDRV_PCM_FMTBIT_U32_BE)
++#define MT6359_FORMATS (SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_U16_LE |\
++			SNDRV_PCM_FMTBIT_S24_LE | SNDRV_PCM_FMTBIT_U24_LE |\
++			SNDRV_PCM_FMTBIT_S32_LE | SNDRV_PCM_FMTBIT_U32_LE)
+ 
+ static struct snd_soc_dai_driver mt6359_dai_driver[] = {
+ 	{
+@@ -2739,6 +2736,7 @@ static const struct snd_soc_component_driver mt6359_soc_component_driver = {
+ 	.num_dapm_widgets = ARRAY_SIZE(mt6359_dapm_widgets),
+ 	.dapm_routes = mt6359_dapm_routes,
+ 	.num_dapm_routes = ARRAY_SIZE(mt6359_dapm_routes),
++	.endianness = 1,
+ };
+ 
+ static int mt6359_parse_dt(struct mt6359_priv *priv)
 -- 
 2.30.2
 
