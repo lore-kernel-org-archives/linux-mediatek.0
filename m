@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AA12C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 08:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B610C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 08:26:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vAb+e6wHU6lKW4xTTC3837yh/xsF4z3tGHaK/Nrmp/0=; b=r3S7uzy9cD89Mk
-	XuXr/WwKkl7oUTOg/2jUZCAObgJ1wCCcesKvflS+kgaEmy8ByzWZ/aAc5qUQTf4W2LOC5DSPGgzBr
-	WhUazaYp4KBEEpiLpUlcYq9W9uc2fpHQI47lRGK7iKX85MwhPmHCU3U8hbKatZuHKyh502xcc97JV
-	5FxJwyRxuhR5Uv5YSv4ZxV6Q7hJFlykAwRk8VVDtdBuPHnJbffCYa3mTJ1yxl8lc/8NAWN3WMVkdk
-	2wlnV0SkukvzF957aSC0QikmNEs7mjkWlYpRIfZh0gGiLFbsOvWW+dkU6G4H0xWQEUxtwFFncA7z4
-	lXbyYx5jnmG5nO1rh6wA==;
+	List-Owner; bh=Yb6TSg1odExnNfcDJVYvjtcC3cuBiX2NF48eWa42adw=; b=Kuz1FQuzNUGCw/
+	FKT+632VpWkhi31TTfG4HnOXBiQRiwRASXAFro6u/gVBHTB7mYAO4ZCo0HkYPzyTz8doTLupZcK4o
+	p0JmcEQ+a0MKmCWMps/zgKCnC0eWHE3PNVUdAaXeKG48/Rgd1mbGyMH77vHpFmTkIzhyWvUJ8bEiB
+	FmSlVEMENoMYELQ1cu4EZrv9HAI5SU7hcEcrjdKeff2p1iGCozd76YSPPVD4ABF7wZrt3c3+Vgjwr
+	HDea2Rzz/CPWBBzornh7CllXHvCiw/6SnNE915VULH3Lp08ZjuID5jF9oLc7zDjCQth9LT8Zjssqt
+	f0Kyu5liS1ycYo5R3okA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmWjo-00EePw-0Y; Thu, 05 May 2022 08:21:28 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1nmWoQ-00Efkz-Pr; Thu, 05 May 2022 08:26:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmWjc-00EeMP-Ps
- for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 08:21:18 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-2f7c424c66cso40617267b3.1
- for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 01:21:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KWHwsHAH/QNPAWhLW8VZQ58/vBlErs9/usiIXf3KUrM=;
- b=gfOnepr9p4T6e4DX9fXIsS/lXlfXLPOIMboG7QC7AhvSQqXD9OUAMPpF0z3/waGD0D
- XeQghg5wasvlfwxOCcj1rq9vEqnZIz3MmdkM/lmUPiNgpIs29AEmze8LbdMbZjG6Ppl6
- 990cMEYj3x/t49XSKjftcWTDQn/E5JEpgrRT0u9kzb0//RgKeNF0xOmu9sYKwX8ShEPq
- hFM/BtKmE6wilxejb0d/p4INQ2MlR3IqynuzdsiDhc+m6cs/zCnQPmRssYb1J/Dt3g5o
- BUVFbMbCW93dS5zoMWZdOjlnAr2xmD0pCgGD+c7QRrbEmXlo4/wFaHNxx58GA4nDLwsR
- xPuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KWHwsHAH/QNPAWhLW8VZQ58/vBlErs9/usiIXf3KUrM=;
- b=bPrOZ5Fce0Gg88A3ImJ+Pkq4L9Vh5kAHtHbVKte/e2gx2vy+6uA5NH5wvvzk77RugP
- VBfCROStF6MtS4JJT1qdUEE/QkB4HSm88KB+SqKDooX+mtIwKuwnwtutQ+euChkFF9+Z
- nGz2+6ZhpV4Fj5JYEaBWvoR5KP8vQ4enVLD3QMgh88bUrak77SMOLwzR1XBlN6N6aNTJ
- NxAjtYloovvxwQwa+TJYtgJy+8QdIfI+fl9itVGBu52Q/EVBRFp6j+z3/MZqwSERwDfp
- psGhgdS3xTkqb5wixzjb6O849LwtBTyrK8RSw649LqD78OXB/d/5/xVn9VGjzMlsO06g
- uXrA==
-X-Gm-Message-State: AOAM530WEbEj2tsxVhW9yq7w0pwcz0yPiKdyUGegayC9ZDvqwIQFXfTo
- j6IBRLvjJOL/5bMJ4Q6e0kcj5DWJEjDWWgB5LCrH9w==
-X-Google-Smtp-Source: ABdhPJzui0KnZztjb5KstyzUpmWxsYAZfym4/bUssFwP1MMh4zPXCOqTOLPEIjR0Y/5C69tQGwJC+KpVlnbcmXo2J/Q=
-X-Received: by 2002:a81:6189:0:b0:2eb:deb5:9f63 with SMTP id
- v131-20020a816189000000b002ebdeb59f63mr21498742ywb.319.1651738873208; Thu, 05
- May 2022 01:21:13 -0700 (PDT)
+ id 1nmWoL-00Efgp-9k
+ for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 08:26:11 +0000
+X-UUID: 7be5ea364a534e7fa734d7db038f84b2-20220505
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:c0781e6d-931b-42ff-84f2-e0ada57ed5d0, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:a7294b16-2e53-443e-b81a-655c13977218,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 7be5ea364a534e7fa734d7db038f84b2-20220505
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chui-hao.chiu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1151993428; Thu, 05 May 2022 01:25:59 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 May 2022 01:25:58 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 May 2022 16:25:56 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 5 May 2022 16:25:56 +0800
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Ryder Lee
+ <ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH 4/4] mt76: mt7915: limit minimum twt duration
+Date: Thu, 5 May 2022 16:25:54 +0800
+Message-ID: <20220505082554.16656-4-chui-hao.chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220505082554.16656-1-chui-hao.chiu@mediatek.com>
+References: <20220505082554.16656-1-chui-hao.chiu@mediatek.com>
 MIME-Version: 1.0
-References: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
- <CAKfTPtDbsd+RLwY+0ZfnNWkQD+jOHmoX2K+ZfsOMnEH81ouVjw@mail.gmail.com>
- <20220505074408.ayzmd5kdbw2fagbq@vireshk-i7>
-In-Reply-To: <20220505074408.ayzmd5kdbw2fagbq@vireshk-i7>
-From: Vincent Guittot <vincent.guittot@linaro.org>
-Date: Thu, 5 May 2022 10:21:01 +0200
-Message-ID: <CAKfTPtCuJGsrsBJ2jACr_YeKN3RXNVMkgRgo+cw9t7CAyGwHWQ@mail.gmail.com>
-Subject: Re: [PATCH] cpufreq: Avoid unnecessary frequency updates due to
- mismatch
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: Rafael Wysocki <rjw@rjwysocki.net>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, 
- Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_012116_903229_61C9DEC3 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20220505_012609_506196_B83B32F1 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,48 +82,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 5 May 2022 at 09:44, Viresh Kumar <viresh.kumar@linaro.org> wrote:
->
-> On 05-05-22, 09:28, Vincent Guittot wrote:
-> > On Wed, 4 May 2022 at 10:21, Viresh Kumar <viresh.kumar@linaro.org> wrote:
-> > >
-> > > For some platforms, the frequency returned by hardware may be slightly
-> > > different from what is provided in the frequency table. For example,
-> >
-> > Do you have more details ?
->
-> This is where the problem was discussed.
->
-> https://lore.kernel.org/lkml/20220422075239.16437-8-rex-bc.chen@mediatek.com/
+The minimum twt duration supported by mt7915 is 64 according to hardware
+design. Reply station with TWT_SETUP_CMD_DICTATE if min_twt_dur smaller
+than 64.
 
-Thanks for the link
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
->
-> > Do you mean that between 2 consecutives reads you can get either
-> > 500Mhz or 499Mhz ?
->
-> No, the hardware always returns something like 499,999,726 Hz, but the
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index ff60a3d2d26d..e912ecacb578 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -2633,6 +2633,7 @@ void mt7915_mac_add_twt_setup(struct ieee80211_hw *hw,
+ 			      struct ieee80211_sta *sta,
+ 			      struct ieee80211_twt_setup *twt)
+ {
++#define MT7915_MIN_TWT_DUR 64
+ 	enum ieee80211_twt_setup_cmd setup_cmd = TWT_SETUP_CMD_REJECT;
+ 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
+ 	struct ieee80211_twt_params *twt_agrt = (void *)twt->params;
+@@ -2654,6 +2655,12 @@ void mt7915_mac_add_twt_setup(struct ieee80211_hw *hw,
+ 	if (hweight8(msta->twt.flowid_mask) == ARRAY_SIZE(msta->twt.flow))
+ 		goto unlock;
+ 
++	if (twt_agrt->min_twt_dur < MT7915_MIN_TWT_DUR) {
++		setup_cmd = TWT_SETUP_CMD_DICTATE;
++		twt_agrt->min_twt_dur = MT7915_MIN_TWT_DUR;
++		goto unlock;
++	}
++
+ 	flowid = ffs(~msta->twt.flowid_mask) - 1;
+ 	le16p_replace_bits(&twt_agrt->req_type, flowid,
+ 			   IEEE80211_TWT_REQTYPE_FLOWID);
+-- 
+2.18.0
 
-Part of your problem is that cpufreq use khz whereas clock uses hz
-
-Would it be better to do something like below in cpufreq_generic_get
-
-(clk_get_rate(policy->clk) + 500) / 1000
-
-so you round to closest instead of always floor rounding
-
-
-> OPP table contains the value 500 MHz. The field policy->cur is set
-> based on opp table eventually (target_index) and so contains 500MHz,
-> almost always. But when cpufreq_get() is called, it finds the current
-> freq is 499 MHz, instead of 500 MHz. And so the issue.
->
-> > Or is it a fixed mismatch between the table and the freq returned by HW ?
->
-> Yes.
->
-> --
-> viresh
 
 _______________________________________________
 Linux-mediatek mailing list
