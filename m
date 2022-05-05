@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77988C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 07:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2CDEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 07:28:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dFa+GEtZ7pyxmBIVv/eim1quIMe+jl+v64VD0RMPscw=; b=4G8g33r/2Llp3b
-	h5vvdkNit+q5St7EB6KHQ4tiz0Cyv0AKscFAHi+dN+/NNPkfCt6WEztz9+9PDRQAG4IFGkqbVcJJq
-	fPwN0fXE7IaSBc2m9vC5mSDD1dOz8iUb4DmWSuEgLW2b2VfhqEeoJf4Q7a/tRhLUENWGffCUErmlD
-	NYj44A+HkYcGsm2uU7Ix3kVABybtWkWavoWaz/laj3m8ZMFRkK8ihp/95k0q5e327yeIzLQFeCdVk
-	147Ww1Cj/9TWOXcpo0Bu8GqK3hpDOOQwWr42KcND9N2rbP3YjybWlMCnOAjIy03jdbnQkOuAEV5u6
-	quITgqJ3kyb5eHtIH2xA==;
+	List-Owner; bh=LxgndIPO4xz2xWLcXykQwyU3SRCYpOwsmv2lhAGWyx8=; b=qOO52d11VlS7ZP
+	cMwTfWsE42AW9Mvqiamu2PT5mS9TqNE6mxURyHjgfyp2yBj0uydq0xE85bKtlHcLH5ONdXF5g5md3
+	/9C3ZC8GNnV9PIEdw8QqV1YgBaeRV8IHpcaGsli4buV3vKbU2BObowbuA3XRuz/9zEeF9I+ASXM1v
+	cuOgM9DCayQyzMjlwxzV8xITvqCLbExeoWJmrNSwIqxNRytAmbFZsjUlUlS7pxh1Yb761atSUDVLH
+	E2qVu7RSOxWPYU6MP/FjtnGVe8dU9cNEx22RRxXZq7N8M8AkPxTEebgnTVHXZFsyRifAwVbf7Muhc
+	aO1ri25TLjciRjUU7mFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmVdn-00ELI4-PI; Thu, 05 May 2022 07:11:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nmVuZ-00EP5w-F7; Thu, 05 May 2022 07:28:31 +0000
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmVdc-00ELG9-Ne
- for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 07:11:02 +0000
-X-UUID: d4e7448fc1414f3b9d4a2451910e76f4-20220505
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:8e445bab-829f-4a0a-8313-0eaf94e74659, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:3b72a6b2-56b5-4c9e-8d83-0070b288eb6a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: d4e7448fc1414f3b9d4a2451910e76f4-20220505
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1472802039; Thu, 05 May 2022 00:10:56 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 May 2022 00:08:44 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 May 2022 15:08:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 5 May 2022 15:08:43 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH 3/3] mt76: mt7915: move MT_INT_MASK_CSR to init.c
-Date: Thu, 5 May 2022 15:08:36 +0800
-Message-ID: <7bfbc431f07401f73f51566ce347fca01cbaa98b.1651722608.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <40f31a4550ff357468798a5950a62ceec396cbeb.1651722608.git.ryder.lee@mediatek.com>
-References: <40f31a4550ff357468798a5950a62ceec396cbeb.1651722608.git.ryder.lee@mediatek.com>
+ id 1nmVuW-00EP3o-29
+ for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 07:28:29 +0000
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-2f7c57ee6feso39488707b3.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 00:28:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=48+VPlemZJQL+qvD7CaffUbdWdX7cgwHukCbmFSwzDA=;
+ b=DlDNwa0ZgSuGFaPb9/5V4xdJuzdc1qvt84MDes0CBs0+t3E5jO2bQtLFtvOgOGVpY/
+ K3EDNQt/lzJdGsDI2h1TldQhtUIJQXkflCiTjhHmgu7gIFp7yHW3fsp2Hy8uIf+2HBRV
+ hoWXI70o7DYT+XVPsNsYYbmiaqG27BxNGD54j5VBu8oR9Bf5oY8ITksM2oLOiBgsP7JK
+ 4PnpFjptob373B7FmzkOO64UL0fF4fWokILUdrWeQb/9YKAQGLi36glJ1Tcqkox4VwDO
+ kH48CKYKvfxteTh4CzEZxOUG6UN3tO4j0xfpWcogcQz0PXcxEY2jA5/ZuqOrYtquWhF0
+ bobA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=48+VPlemZJQL+qvD7CaffUbdWdX7cgwHukCbmFSwzDA=;
+ b=20/hyvOs8BycPCMu7YSwBkbnYDzcD8074GHgi+78+ZEcb0JX7VUz44H4tBkfnu/G4d
+ ixHTNQ10dHPanMR6QY7YhfXxmWiqbXNKVSBWGEyS47UMbp26jeAEOm8Y7WowF0z9EzUM
+ oyuQ6TfHSnRUg0kbPMpnA8wzxCHjYylBNdzw67qt7qna4+l7rHOOsuCE6J8kLn6Nt+It
+ mRMfJg0kpj14xnVQl0gj/c4dvGNK7UMQujgeQliIuPIBiMDzPwYYl6srW1UgTjuxJhoN
+ MFYQuFAs90fjJy8dLPWdxz9tE2kp8F3dXok6UbGbGDRg5LoxNAmjy2Zrzo69I4J5CPwH
+ AvRQ==
+X-Gm-Message-State: AOAM530kEBp2NBnP2014UYX0aJjYM2f6VzQHNpHmdRhUu5lEEPzny51j
+ K4F7aGxJQgaSjbKwIv9ihIin5+spGsvwN4kxFFV0KQ==
+X-Google-Smtp-Source: ABdhPJySMA4IYtf0tSy4AlHAEslsKT1Sgz5FwyhMbz396ZGiZIF5CHRLdSW+QVBf1xsup+mUhFKCXMJ8YCqPwplVMDA=
+X-Received: by 2002:a81:6189:0:b0:2eb:deb5:9f63 with SMTP id
+ v131-20020a816189000000b002ebdeb59f63mr21387188ywb.319.1651735705105; Thu, 05
+ May 2022 00:28:25 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
+In-Reply-To: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
+From: Vincent Guittot <vincent.guittot@linaro.org>
+Date: Thu, 5 May 2022 09:28:13 +0200
+Message-ID: <CAKfTPtDbsd+RLwY+0ZfnNWkQD+jOHmoX2K+ZfsOMnEH81ouVjw@mail.gmail.com>
+Subject: Re: [PATCH] cpufreq: Avoid unnecessary frequency updates due to
+ mismatch
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Rafael Wysocki <rjw@rjwysocki.net>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, 
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_001100_839154_827C625F 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20220505_002828_224718_35C0E2CC 
+X-CRM114-Status: GOOD (  23.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,69 +86,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To avoid redundant MT_INT_MASK_CSR settings.
+On Wed, 4 May 2022 at 10:21, Viresh Kumar <viresh.kumar@linaro.org> wrote:
+>
+> For some platforms, the frequency returned by hardware may be slightly
+> different from what is provided in the frequency table. For example,
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/init.c | 1 +
- drivers/net/wireless/mediatek/mt76/mt7915/mmio.c | 2 --
- drivers/net/wireless/mediatek/mt76/mt7915/pci.c  | 2 --
- drivers/net/wireless/mediatek/mt76/mt7915/soc.c  | 1 -
- 4 files changed, 1 insertion(+), 5 deletions(-)
+Do you have more details ?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index aa93aeab5634..db6904448063 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -649,6 +649,7 @@ mt7915_init_hardware(struct mt7915_dev *dev, struct mt7915_phy *phy2)
- {
- 	int ret, idx;
- 
-+	mt76_wr(dev, MT_INT_MASK_CSR, 0);
- 	mt76_wr(dev, MT_INT_SOURCE_CSR, ~0);
- 
- 	INIT_WORK(&dev->init_work, mt7915_init_work);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 229d40826c9b..3c55d4cebbf2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -668,8 +668,6 @@ struct mt7915_dev *mt7915_mmio_probe(struct device *pdev,
- 
- 	tasklet_setup(&dev->irq_tasklet, mt7915_irq_tasklet);
- 
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--
- 	return dev;
- 
- error:
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-index 6f819c41a4c4..a9d4b3fced53 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-@@ -138,8 +138,6 @@ static int mt7915_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		goto free_irq_vector;
- 
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--
- 	/* master switch of PCIe tnterrupt enable */
- 	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-index 04e62d569599..b91f5485f97a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-@@ -1168,7 +1168,6 @@ static int mt7986_wmac_probe(struct platform_device *pdev)
- 		goto free_irq;
- 
- 	mt7915_wfsys_reset(dev);
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
- 
- 	ret = mt7915_register_device(dev);
- 	if (ret)
--- 
-2.29.2
+Do you mean that between 2 consecutives reads you can get either
+500Mhz or 499Mhz ?
 
+Or is it a fixed mismatch between the table and the freq returned by HW ?
+
+> hardware may return 499 MHz instead of 500 MHz. In such cases it is
+> better to avoid getting into unnecessary frequency updates, as we may
+> end up switching policy->cur between the two and sending unnecessary
+> pre/post update notifications, etc.
+>
+> This patch has chosen allows the hardware frequency and table frequency
+> to deviate by 1 MHz for now, we may want to increase it a bit later on
+> if someone still complains.
+>
+> Reported-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+> ---
+>  drivers/cpufreq/cpufreq.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+>
+> diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
+> index 0d58b0f8f3af..233e8af48848 100644
+> --- a/drivers/cpufreq/cpufreq.c
+> +++ b/drivers/cpufreq/cpufreq.c
+> @@ -28,6 +28,7 @@
+>  #include <linux/suspend.h>
+>  #include <linux/syscore_ops.h>
+>  #include <linux/tick.h>
+> +#include <linux/units.h>
+>  #include <trace/events/power.h>
+>
+>  static LIST_HEAD(cpufreq_policy_list);
+> @@ -1708,6 +1709,16 @@ static unsigned int cpufreq_verify_current_freq(struct cpufreq_policy *policy, b
+>                 return new_freq;
+>
+>         if (policy->cur != new_freq) {
+> +               /*
+> +                * For some platforms, the frequency returned by hardware may be
+> +                * slightly different from what is provided in the frequency
+> +                * table, for example hardware may return 499 MHz instead of 500
+> +                * MHz. In such cases it is better to avoid getting into
+> +                * unnecessary frequency updates.
+> +                */
+> +               if (abs(policy->cur - new_freq) < HZ_PER_MHZ)
+> +                       return policy->cur;
+> +
+>                 cpufreq_out_of_sync(policy, new_freq);
+>                 if (update)
+>                         schedule_work(&policy->update);
+> --
+> 2.31.1.272.g89b43f80a514
+>
 
 _______________________________________________
 Linux-mediatek mailing list
