@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65818C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 13:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A135C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 13:40:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2kfU8BAbaAdhDfLJGwz54G7zAfFAXwF7q/VaKToWCVk=; b=1EQmp04aJus1nL
-	r6c4EQSg1YBj+VDmD7J6TFAXMYfUCQr2aL6dWQXzt6FcMgQrfCHYBg/Jr5LBKyJE6bsTu1wQ3U+Qy
-	kvb0RE8KfywA4JW5CvR2xoE9lJ/yu9a1/d5kNc/jFYCYctbrqYi65K5hxwouCKgxzDvGKHrWNGoX8
-	DzUfxoN34NqQW+AlDSc/CdfsTQrEoVcPN5fgQ23hrW9/RQTGH7lkUiuOXEGqh4JKkuR2nYXukBFPE
-	NEjZlyyStVS5bF95+N/DUhnafZPNAG83On4J/XZt5R8qoVIL9NuZeZQFyfvwSExmmxQoUolFvPwX3
-	w0xP+GaAzMRhlS0we55w==;
+	List-Owner; bh=Pe5A09lKhTFtX59HVXsBnkcKTSvlzWFXbMQ95PgBJfk=; b=PUK1peUFFICNPi
+	tBVywmXXV2L/0bQZgmxUvkJoAGpV9UVSyoIhpJsIESxZzxtzXIjkh6AhoaB0OSM4JmhYj2us57pNL
+	OIO2Nsl5XQMTsz7XetLmMe3cZr48vnFWgRXfWTcqQ3DFwTOXXv4Udhwdf9NULZ+eAhmci5tPrJOSS
+	7uJn0h0Wtyixlq8wYZHRdgrokBULd1DnvcgFi/P2KO2QpI1GxrCJ8qOXOGCv2pXM9ws0kHr0xgHM9
+	UydkhmvgxMD5jzF3mgpcYq3bwjiDVSbxcRnCI6zff5/rqvbXv//Jb7La4v5aPPPsZA7wiRcxFgL3f
+	sifX4N2QrG7dVab6Nygg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmbaZ-00G3Gv-Tk; Thu, 05 May 2022 13:32:15 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1nmbiN-00G5Rz-PB; Thu, 05 May 2022 13:40:19 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmbaK-00G37f-Ux; Thu, 05 May 2022 13:32:02 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id b19so6119142wrh.11;
- Thu, 05 May 2022 06:31:57 -0700 (PDT)
+ id 1nmbiB-00G5OK-SW; Thu, 05 May 2022 13:40:09 +0000
+Received: by mail-wr1-x436.google.com with SMTP id j15so6188305wrb.2;
+ Thu, 05 May 2022 06:40:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=5pSUK+NARKQGP0RSfhMDxUAusxVl8fziSm0RmmnAc6E=;
- b=bretBRaPEZmVMji52YIT2cPIghpPUcOUPpBAKJc5YUPDThrBkg42K5pCLeNarY+bxW
- 17Kof9p/ykq91o+GLZ6upG204f288SaZmouWEERoOkA3JVyL/+I8lYCAsxCsvXAzSiK6
- YQUZs7GQZed3srmxxNEKyXoD3mjbkSwvELw5yX4A/0hQ1wTlNAaF7hRs6nIkEPjBaRli
- UydZcr4EHMgsFPIt0gvmmkM8PK1ZWa5Dzkl4UUTAFCoW6d9puNs82UtG8dHweLdcGeU8
- pcIoKLh9o2TiGNDb9LdiQtI9TP7L6G6A3wIjD4EFRVJ7c0VR1oKEKYzvhUH28cxyeHfd
- FmVw==
+ bh=Z1RR59cI7xuB4wHEsyPKJMalbJOLkbwR60Nf/1GYehA=;
+ b=ndpgFCn1qTpGhnYt6AJHLLEWJlQPdUMvg62egEiojKObjEKE6FEJzqy6ysaSTXnW+c
+ 39A4IXst24GMi+5AuVkfQN15o6O1nTSncpaAri2VwU//cHQS/1y1bpHqkwxymohUQsMy
+ S7wxs09NfXgyGf1uoENAa54UlPTrAtVVdsaV2CffmVoIcn+umOfBQRugbByiyd3Hjen9
+ 0rC61Vzo7wsAW4hDQHGMPdb+cscQM5+HptSwTHt4KPxmOiNjKnA4tWJtqnmNEHdrlti3
+ fq39KCHk4Z4/01z2TpJrV0KDpn7/FCGgSJ3ktpOfCsY2b+g0urMPWeLPnVmWZg6p5Mrj
+ D5Ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=5pSUK+NARKQGP0RSfhMDxUAusxVl8fziSm0RmmnAc6E=;
- b=O59fAoUcSmKF8TV/Y5ZYRRB6lhMAVucHfGRNJWlZT3q86SfcNfUgGpUEuZiWGKdGl/
- Qvx+nHkF/oKTP9y8QJIiRFAGqhaGzFZqNLE86Xirv7bSojimTl+QQs13vtOWZCr+YFEN
- FWvg1YN+qM08R7lHNaDXIVJQVdSRBpQQgDB8YazKNs6A1m3bzDr2NyAlFetOyyGiFaJm
- uaQq2YEDdtFU5adQRwMSCimx6Qk3TkNi595JjQYJIXbm8pSupbq6d6wYxheoGw29Hv/9
- ojUGjRcTRhuKCUWM3VwKRf2ts7nO0qIk1XqMmIO5TbiKuo57N58pqJku1b4a+EWEPDWt
- fGlg==
-X-Gm-Message-State: AOAM533hh9tUDaH1UW8HMZ2CQviwnIEb4BtUDffxsmeuHElp+vL11hwq
- gSQloQOqXjE2rwWO1L4NtvMus7uBIOtF1A==
-X-Google-Smtp-Source: ABdhPJy6T3JY2QzQ/ndLAhrjpHqo9Ok+/mi3IOHf5OfKw5JxhwBq4ViMM7UYjpOnxVCjgszbhN88aw==
-X-Received: by 2002:a05:6000:100c:b0:20a:c68a:e9a with SMTP id
- a12-20020a056000100c00b0020ac68a0e9amr21047454wrx.314.1651757516554; 
- Thu, 05 May 2022 06:31:56 -0700 (PDT)
+ bh=Z1RR59cI7xuB4wHEsyPKJMalbJOLkbwR60Nf/1GYehA=;
+ b=PnWIB6N6u1qCjkoRskYPmVIfrNGW2AO+hbuPHYBQl1E/j5RanqDFqt+jqFyFSIk/LH
+ MkfqI35t+sAi3JKJkvDTFVjz4NvudtYokpF4qo3zRdyE/4jrcZdIq6eiU0fsgzGANYre
+ l3JKemw3KQY5B+g8IkvD0M4brumN948+zYWEzr6JnX62E9OtQ175gXrJZWEJmU9yZAKP
+ 9BG1XckCqf7hcq7a4XC9OVRnlcIv/LSTZovRKMLtcNdKacrVGFCJt+MzmkXR58YqgM8M
+ q2metM4gvy6ca8LuCrQFM1iBTkS79Gi0lui7gBIG3T0IjeSRZJEE3AKX0VSb5OiaC4GJ
+ 1PxQ==
+X-Gm-Message-State: AOAM531hzQf9eyEG/J7CYhSKUhKLFyG2ssvIjqPe94Wj4ATffl1SyUYy
+ sfZSc3tOvp12ZTK0TVaormY=
+X-Google-Smtp-Source: ABdhPJyHaFZllmZOyM64fdf7fRq3DCLuUeYU8LlG4ML06VUn++MVFboIpiIVZAXJFIk1tqRN2CMwlQ==
+X-Received: by 2002:adf:e40f:0:b0:20a:d221:b00c with SMTP id
+ g15-20020adfe40f000000b0020ad221b00cmr20911209wrm.11.1651758005257; 
+ Thu, 05 May 2022 06:40:05 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- b15-20020a7bc24f000000b003942a244ecfsm1422829wmj.20.2022.05.05.06.31.55
+ t16-20020a05600c2f9000b003942a244f50sm6912572wmn.41.2022.05.05.06.40.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 May 2022 06:31:56 -0700 (PDT)
-Message-ID: <0b9e332d-f479-ed3d-78ce-6386383d827b@gmail.com>
-Date: Thu, 5 May 2022 15:31:54 +0200
+ Thu, 05 May 2022 06:40:04 -0700 (PDT)
+Message-ID: <1b42b5aa-2020-b545-72ab-96ec14ef454a@gmail.com>
+Date: Thu, 5 May 2022 15:40:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.1
-Subject: Re: [PATCH] cpufreq: Avoid unnecessary frequency updates due to
- mismatch
+Subject: Re: [PATCH v2] arm64: dts: mt8192: Follow binding order for SCP
+ registers
 Content-Language: en-US
-To: Viresh Kumar <viresh.kumar@linaro.org>, Rafael Wysocki
- <rjw@rjwysocki.net>, "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220504214516.2957504-1-nfraprado@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
+In-Reply-To: <20220504214516.2957504-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_063201_060418_6E7E7AF3 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20220505_064007_971640_DB0FC077 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,65 +91,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 04/05/2022 10:21, Viresh Kumar wrote:
-> For some platforms, the frequency returned by hardware may be slightly
-> different from what is provided in the frequency table. For example,
-> hardware may return 499 MHz instead of 500 MHz. In such cases it is
-> better to avoid getting into unnecessary frequency updates, as we may
-> end up switching policy->cur between the two and sending unnecessary
-> pre/post update notifications, etc.
-> 
-> This patch has chosen allows the hardware frequency and table frequency
-> to deviate by 1 MHz for now, we may want to increase it a bit later on
-> if someone still complains.
-> 
-> Reported-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->   drivers/cpufreq/cpufreq.c | 11 +++++++++++
->   1 file changed, 11 insertions(+)
-> 
-> diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
-> index 0d58b0f8f3af..233e8af48848 100644
-> --- a/drivers/cpufreq/cpufreq.c
-> +++ b/drivers/cpufreq/cpufreq.c
-> @@ -28,6 +28,7 @@
->   #include <linux/suspend.h>
->   #include <linux/syscore_ops.h>
->   #include <linux/tick.h>
-> +#include <linux/units.h>
->   #include <trace/events/power.h>
->   
->   static LIST_HEAD(cpufreq_policy_list);
-> @@ -1708,6 +1709,16 @@ static unsigned int cpufreq_verify_current_freq(struct cpufreq_policy *policy, b
->   		return new_freq;
->   
->   	if (policy->cur != new_freq) {
-> +		/*
-> +		 * For some platforms, the frequency returned by hardware may be
-> +		 * slightly different from what is provided in the frequency
-> +		 * table, for example hardware may return 499 MHz instead of 500
-> +		 * MHz. In such cases it is better to avoid getting into
-> +		 * unnecessary frequency updates.
-> +		 */
-> +		if (abs(policy->cur - new_freq) < HZ_PER_MHZ)
-> +			return policy->cur;
-> +
->   		cpufreq_out_of_sync(policy, new_freq);
->   		if (update)
->   			schedule_work(&policy->update);
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAwNC8wNS8yMDIyIDIzOjQ1LCBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyB3cm90ZToKPiBU
+aGUgZHQtYmluZGluZyBmb3IgU0NQIGRvY3VtZW50cyB0aGUgcmVnLW5hbWVzIG9yZGVyIGFzIHNy
+YW0sIGNmZywKPiBsMXRjbS4gVXBkYXRlIHRoZSBTQ1Agbm9kZSBvbiB0aGUgbXQ4MTkyIGRldmlj
+ZXRyZWUgdG8gZm9sbG93IHRoYXQKPiBvcmRlciwgd2hpY2ggZ2V0cyByaWQgb2YgYSBkdGJzX2No
+ZWNrIHdhcm5pbmcuIFRoaXMgZG9lc24ndCBjaGFuZ2UgYW55Cj4gYmVoYXZpb3Igc2luY2UgdGhl
+IFNDUCBkcml2ZXIgYWNjZXNzZXMgdGhlIG1lbW9yeSByZWdpb25zIHRocm91Z2ggdGhlCj4gbmFt
+ZXMgYW55d2F5Lgo+IAo+IEZpeGVzOiBjNjM1NTZlYzZiZmUgKCJhcm02NDogZHRzOiBtdDgxOTI6
+IEFkZCBTQ1Agbm9kZSIpCj4gU2lnbmVkLW9mZi1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8g
+PG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgo+IAoKQXBwbGllZCB0aGFua3MhCgo+IC0tLQo+IAo+
+IENoYW5nZXMgaW4gdjI6Cj4gLSBBZGRlZCBtaXNzaW5nIEZpeGVzIHRhZwo+IAo+ICAgYXJjaC9h
+cm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxOTIuZHRzaSB8IDYgKysrLS0tCj4gICAxIGZpbGUg
+Y2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQg
+YS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi5kdHNpIGIvYXJjaC9hcm02NC9i
+b290L2R0cy9tZWRpYXRlay9tdDgxOTIuZHRzaQo+IGluZGV4IDI2ZGJlOWVjYzUyOC4uNzMzYWVj
+MmU3Zjc3IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTky
+LmR0c2kKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi5kdHNpCj4g
+QEAgLTY5OSw5ICs2OTksOSBAQCBzcGk3OiBzcGlAMTEwMWUwMDAgewo+ICAgCQlzY3A6IHNjcEAx
+MDUwMDAwMCB7Cj4gICAJCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE5Mi1zY3AiOwo+ICAg
+CQkJcmVnID0gPDAgMHgxMDUwMDAwMCAwIDB4MTAwMDAwPiwKPiAtCQkJICAgICAgPDAgMHgxMDcw
+MDAwMCAwIDB4ODAwMD4sCj4gLQkJCSAgICAgIDwwIDB4MTA3MjAwMDAgMCAweGUwMDAwPjsKPiAt
+CQkJcmVnLW5hbWVzID0gInNyYW0iLCAibDF0Y20iLCAiY2ZnIjsKPiArCQkJICAgICAgPDAgMHgx
+MDcyMDAwMCAwIDB4ZTAwMDA+LAo+ICsJCQkgICAgICA8MCAweDEwNzAwMDAwIDAgMHg4MDAwPjsK
+PiArCQkJcmVnLW5hbWVzID0gInNyYW0iLCAiY2ZnIiwgImwxdGNtIjsKPiAgIAkJCWludGVycnVw
+dHMgPSA8R0lDX1NQSSA0MzUgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPiAgIAkJCWNsb2NrcyA9
+IDwmaW5mcmFjZmcgQ0xLX0lORlJBX1NDUFNZUz47Cj4gICAJCQljbG9jay1uYW1lcyA9ICJtYWlu
+IjsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsK
