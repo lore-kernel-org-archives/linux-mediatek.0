@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29EF5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 00:42:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79CF6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 02:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7ZXHAVpAUIt4zd3X/klpAzhLtvEhSKbOPVXegPoBvaw=; b=2AWGTFyyKVfQSg
-	2yCAP4s/1PV2bmpIurcWo0UuNSwBt0sKKlIsdeONYtE5hGMmuCdorABqyP41c1X17opgesAwku7Vo
-	EZasJbaKbQ3BxaRSnG3iUmyblOQ45qHV17MPUWBdPNeYiHiUgE01FznA82viXllgykIaVae33Pl65
-	kuRFG6iJfWtO6L8+ZS93xnuBRe5ix4dhvEW+/GH3IYLQ9foC16BAdFhbFzWzz5W2PM46biTfqT1ct
-	qEzdLXV7N0Gi9iSiYujfjsjJvVN3MOtyuhgKeGtlon/cE7B+XzgDgUBar25SyhIZXjY+6jZQkU5cJ
-	ELxApDwo2zdOuO2bkuAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ruByWk/FZ0mtCo6WOtEalfCDZpqeYKIA3c5TIG2wEbM=; b=h8UVnv06IEHpfm
+	v9bwnPvWnwBX9GglfhFm0oCbZySg89eiYCgRSJr4f17JGa7tUo5aZHjYX1xDfuWBudsuYodGharBK
+	Hm8uoPdlpQ1iqQ//TXuWU9EO0fuItt9PeJEW77iEgRo0uQNhUrglkdPDP+LcLGOZJjKFo+9WHyxhe
+	Mom1hJc8XKAmyWFgGK9K3wpf2i6a81knXgSSHm807sRyx6YurQp62D8qv2SY3jWgIVJXxZhDLH5d1
+	DAKMoQtvKxyR525C+NBFqydln7WxmfEd76BBcIDazgQR06y7fga1D2pqOoeHTn8xRvToGROlqCc86
+	s99EMFw1sQSMf4BjxinQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmPZZ-00DM2R-7K; Thu, 05 May 2022 00:42:25 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nmR4a-00DahX-V3; Thu, 05 May 2022 02:18:32 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmPZN-00DLt0-D7; Thu, 05 May 2022 00:42:14 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dmitry.osipenko) with ESMTPSA id 5D6FE1F40A4D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651711327;
- bh=MyOm9L9WGRdUCHRglVPQ6r+0Az2kPrdmLi4U0cgQB+M=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=OzGMoesSvl76vDw/rGqLDlidJ30q+2p8JVEemntpZj/HiFybMjDA64LAQlAuBXCDv
- ddHuD/R0AiRd0qGdMOQU3IKMpL6cUYyiB31hXaFcPGYOYx15QobmdbztD8c/AXll9M
- lYER4eSv4WHNv/f/509FCX0O9Ua8VzNlrO6VQRjlHwPvWSWIsgIebs3WMHvGbp8N7o
- 0lFvG17/neKrcP9HzEJoUMcWLxIwEsnUcmqyLhU9MLmB+usJiGbxRms1is1I5UqkFm
- jgzYyWq1GtDPthuLF7d3zG6wxigGxTqKdnuXjSx809hL8eBmphREbxwV2r+4VMyHZx
- Q8lrF5JxdXuTw==
-Message-ID: <dfda7666-7325-f4a1-69b1-6b3cb9701b62@collabora.com>
-Date: Thu, 5 May 2022 03:42:03 +0300
+ id 1nmR4Q-00Dadv-AU; Thu, 05 May 2022 02:18:23 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id 7so2563895pga.12;
+ Wed, 04 May 2022 19:18:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pIXDVokFolVKrzalTPKUm2CP3QVEc7PDIydFuy2ELrg=;
+ b=VTMfiv/xxi6fGdCelW3OOBaUHSCm7CuZK+BQdtEUII66q8gebxTf/i43wtPpxuwg46
+ 5OXvSyTPQJ4h5XCfeXHkYuEyDfjap7ZqgOq+130hL11jSuDpUzvwjrVjbo/uTaqtGsPe
+ msDZ7TOhh6Q62Cl41WK66/t5wy29qmqTdjeeo0wWa9CP411/IOJ8EcHvJgal+ZwepiMK
+ 4HRNPzZWvsiVxGNUZQsbHKlaiwdWDw7d6hKuwuyNnQ6j8RCQGl7JYJvIbvHdXCSkg+hk
+ ARyfUqXY63VnGRzvh4aa/DJntuX5ziUFLzXtAGQOWXALdGZDcweQepSrO1tTJNUvo6W7
+ vfHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pIXDVokFolVKrzalTPKUm2CP3QVEc7PDIydFuy2ELrg=;
+ b=13qoMnC8Zj+AewiZkRZVK25jAJNqlbLDDAuguBbXIhybH8jwRsP9+sB35AzuI8npyU
+ yAI8XEjDOW4Nl7J2gBI/IccH5lVuCDQyO5sfn5S6+C9hC5EvPPeezbQPSyS1WkvcfEeO
+ jmrgkr7jE3dv7N3MqxuFFUdgYCg804S/sNPDaIpW+rqJgObWjdmHoNfwS8vlP81qEKO1
+ Q9Gfn5Vz/XcyFjqFy1KqahTRfwkiLZJm99clJq45CCmZDI9nD0B05RFvNTNA4D1vFQ1P
+ K1wK5fVjh4NTyzMMUD+fBFAHYxlAG4sGjhX5+zM/7fmxcfbeaB8O/3/sjaLtbdeCe/6M
+ r9Bg==
+X-Gm-Message-State: AOAM5337oJh2dOHRaRITQdg5E4RX9KRFoMz5/wHtik4pNfY+GOEF5PAd
+ KjGpWgoPaBaeO2mvmPRKrfc=
+X-Google-Smtp-Source: ABdhPJzWZdSl8kCzaGbBSh6IuuBwK7I7BYee0kVZukFZY0T4WG5+0idnYzYBVwUf4sMRTt4ffT1k1Q==
+X-Received: by 2002:a65:6cc9:0:b0:399:26da:29af with SMTP id
+ g9-20020a656cc9000000b0039926da29afmr20022746pgw.489.1651717092863; 
+ Wed, 04 May 2022 19:18:12 -0700 (PDT)
+Received: from localhost.localdomain ([193.203.214.57])
+ by smtp.gmail.com with ESMTPSA id
+ m1-20020a17090aab0100b001cd4989fecesm3967290pjq.26.2022.05.04.19.18.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 May 2022 19:18:12 -0700 (PDT)
+From: cgel.zte@gmail.com
+X-Google-Original-From: chi.minghao@zte.com.cn
+To: lgirdwood@gmail.com
+Cc: broonie@kernel.org, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Minghao Chi <chi.minghao@zte.com.cn>,
+ Zeal Robot <zealci@zte.com.cn>
+Subject: [PATCH] ASoC: mediatek: simplify the return expression of
+ mtk_dai_pcm_prepare()
+Date: Thu,  5 May 2022 02:18:08 +0000
+Message-Id: <20220505021808.54337-1-chi.minghao@zte.com.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v4 05/24] media: h264: Use v4l2_h264_reference for reflist
-Content-Language: en-US
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Dmitry Osipenko <digetx@gmail.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: nicolas@ndufresne.ca, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220426125751.108293-1-nicolas.dufresne@collabora.com>
- <20220426125751.108293-6-nicolas.dufresne@collabora.com>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <20220426125751.108293-6-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_174213_605951_16F48129 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20220504_191822_390348_29C8612B 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,41 +91,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/26/22 15:57, Nicolas Dufresne wrote:
->  static int tegra_vde_wait_mbe(struct tegra_vde *vde)
-> @@ -768,7 +768,7 @@ static int tegra_vde_h264_setup_frames(struct tegra_ctx *ctx,
->  	struct h264_reflists reflists;
->  	struct vb2_buffer *ref;
->  	unsigned int i;
-> -	u8 *dpb_id;
-> +	struct v4l2_h264_reference *dpb_id;
+From: Minghao Chi <chi.minghao@zte.com.cn>
 
-nit: will be nice to preserve to reverse Xmas coding style, but only if
-you'll need to make v5 with more important changes
+Simplify the return expression.
 
->  	int err;
->  
->  	/*
-> @@ -811,14 +811,16 @@ static int tegra_vde_h264_setup_frames(struct tegra_ctx *ctx,
->  	}
->  
->  	for (i = 0; i < b.num_valid; i++) {
-> -		ref = get_ref_buf(ctx, dst, dpb_id[i]);
-> +		int dpb_idx = dpb_id[i].index;
->  
-> -		err = tegra_vde_h264_setup_frame(ctx, h264, &b, ref, dpb_id[i],
-> +		ref = get_ref_buf(ctx, dst, dpb_idx);
-> +
-> +		err = tegra_vde_h264_setup_frame(ctx, h264, &b, ref, dpb_idx,
->  						 h264->dpb_frames_nb++);
->  		if (err)
->  			return err;
->  
-> -		if (b.refs[dpb_id[i]].pic_order_count < b.cur_pic_order_count)
-> +		if (b.refs[dpb_idx].top_field_order_cnt < b.cur_pic_order_count)
->  			h264->dpb_ref_frames_with_earlier_poc_nb++;
+Reported-by: Zeal Robot <zealci@zte.com.cn>
+Signed-off-by: Minghao Chi <chi.minghao@zte.com.cn>
+---
+ sound/soc/mediatek/mt8195/mt8195-dai-pcm.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+diff --git a/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c b/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
+index 151914c873ac..12644ded83d5 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
++++ b/sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
+@@ -213,8 +213,6 @@ static int mtk_dai_pcm_configure(struct snd_pcm_substream *substream,
+ static int mtk_dai_pcm_prepare(struct snd_pcm_substream *substream,
+ 			       struct snd_soc_dai *dai)
+ {
+-	int ret;
+-
+ 	dev_dbg(dai->dev, "%s(), id %d, stream %d, widget active p %d, c %d\n",
+ 		__func__, dai->id, substream->stream,
+ 		dai->playback_widget->active, dai->capture_widget->active);
+@@ -222,11 +220,7 @@ static int mtk_dai_pcm_prepare(struct snd_pcm_substream *substream,
+ 	if (dai->playback_widget->active || dai->capture_widget->active)
+ 		return 0;
+ 
+-	ret = mtk_dai_pcm_configure(substream, dai);
+-	if (ret)
+-		return ret;
+-
+-	return 0;
++	return mtk_dai_pcm_configure(substream, dai);
+ }
+ 
+ static int mtk_dai_pcm_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+-- 
+2.25.1
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
