@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C20C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 20:29:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C019FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 22:21:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lk/yZLqccSwxU4merZm009mCL/pannqRMxO4Dsfk+Ns=; b=ql1A15e2+0QLO7
-	awG2m23A8iWOQa2qvI+WkTe23kH3zSvDF8k4n6NFbL7PHdXex5zCm+w345+7GesS4nioxZRkWnzP1
-	Fu7I1x8RnMf/cUNb9VXmU3ER3mTxZp1agWeLrovqHGIBavhNcuiX5MyCePfscUQ/Jqbyn81P+jBiD
-	01zP5wSb0AVn1TzPQukmxzPxma65wt8Hm4Ce0t0/fKe0oJPLAaW85caHWj/QyQFCbt2Trli8i3jOW
-	47RWunRq+Raeitobgof/FPoiRT0IebfGKG0NGNGzrYtSQlpAukq+GitbJYZGVMtCzcIK6KP56rwSI
-	YqcWT0yLinFOTkNrCKbg==;
+	List-Owner; bh=rO++eh06RfvOULD/MkcKiamjr7fSDk61HKvQkq+XD7g=; b=jUo2RLU6hDKvST
+	t9I6ieDaqteooUDPdDSScJv2BlS/6eLBJVGaxxEz4zY393FJZ5CEOoz7xBycB9MHy+8aMbKw01aCi
+	WEn47BfoKSfYdO/mendFp34kr5MhuBp4XDzLxU7Vld2Yl2fH74R93LS1hKz8KxEtKpZiH1kdvDHRB
+	1xoHwmxCcbQYTmc2WhFuSmBCtjniNfLaB/e/cQwqBmoXAno2MKmU64mJBQlgtqauTKPfzdQVo0htc
+	US5IS6X6jcMRXEGo/vuMp02b39Reza30DknlK+tA3u6Nb/dIH+p1V1TMeG+TjppLr51t5QSFxcbUJ
+	iHyQ+Pc4yI59jsv/96dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmi6Z-000Brm-2t; Thu, 05 May 2022 20:29:43 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1nmjqJ-000OFI-Ne; Thu, 05 May 2022 22:21:03 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmi6O-000Bnm-Rb
- for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 20:29:34 +0000
-Received: by mail-wm1-x330.google.com with SMTP id
- p7-20020a05600c358700b00393e80c59daso4482563wmq.0
- for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 13:29:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Nhiu0fngZGCp2SeeUlWWgcjMH+09fel050MQuuk+CH0=;
- b=c1oSeU4BaXTY3ReYOr/uFAyO9izBH2dG1Qlnf+8Hr8Uw3vUsoKOHenuz7wpGz1G3lv
- ym40wpjP1R1uTQtgYd8gikEnTIRqUlXoWrvkAnzPHg8AGFpeocUHG2kgkwMQX9NL3etq
- +mxfkjnSDJDdW3HnR8hp/i6C1WPmJXk+LFZvFqsi3IRZIzWwmnN90bnnpRzXLIKPG6Zc
- eHtIJrBosNasWd3p+NDNF3vx4pBQ+ez3FTfArfU5wI/onzupOfKc35+xFiIfqWc6qqRh
- q7Ut2jUxdfhmab/DvgF8OIAbxIYnzwpEPb49AiYU/N0TsdomVI/zvfwD+IaQxuFI+dnI
- g5xw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Nhiu0fngZGCp2SeeUlWWgcjMH+09fel050MQuuk+CH0=;
- b=Sd3VHXmqrPLrGdxwfIEDNthDb0aUgYy41wc/THwULp4wcq7sHEY5as1uedLmOJ1n23
- hIVbYRQAOVs5UbNuotEDOuFAhXhyB6IGLgvVf0gUH2lJdwPizW++qo6YBlilB/jiBoVR
- zvBHT/ySKvPtKxJ2RTPqo7VZNQlXfFSwnzIzWZQp51ldj+k2VqYX2l3QCHhW+cDZFRsY
- jAv6D3ewn84Xj/Iw1kH4sfU+wIbKpe7yPTY/2CE26NWwfX4fRpWCJntWF/ykNSx5YHGS
- /p4iLnuDH51HgBJE3eeeh+gDSqbhy4CjEhpP/n4vP/8e8ZqzZ5K5Fn3NEzKktDP7uq/q
- FWBQ==
-X-Gm-Message-State: AOAM532anptRCLnuXsAkDawbUSpc0zIzm38oIn0Hqrz5+oWKNA1MjXJ5
- HwkSUTnRXyeaHpoMdLHx2Lda4Q==
-X-Google-Smtp-Source: ABdhPJyTndqxOkEr/uFOGU4QF0R1aF80DfUbLWNbePR/UUOLh1w33usRsZPRT7oIn/7Jas5VFkmrmQ==
-X-Received: by 2002:a7b:cd15:0:b0:394:497d:ad1c with SMTP id
- f21-20020a7bcd15000000b00394497dad1cmr35505wmj.182.1651782570542; 
- Thu, 05 May 2022 13:29:30 -0700 (PDT)
-Received: from [192.168.0.222] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- n13-20020a056000170d00b0020c5253d911sm2035574wrc.93.2022.05.05.13.29.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 May 2022 13:29:30 -0700 (PDT)
-Message-ID: <6d45f060-85e6-f3ff-ef00-6c68a2ada7a1@linaro.org>
-Date: Thu, 5 May 2022 22:29:28 +0200
+ id 1nmjq9-000OAV-3f; Thu, 05 May 2022 22:20:54 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 795391F40EB1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651789245;
+ bh=IqgWrsQ7M1kiyWJK+KEWncQxxmyl40O17cMv2BeJAZM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=WINl7o4+WequxxSytUZt4txWZtOiVzMn8Oe/yw0ywq6gSVx8l6UxrDz3v0PpGlt6h
+ UDitxFADuW19fZXUk/LzhWjSZwChusaokfIOVdXRSsgUprvXqPj9+sN1EJwgxueAdc
+ OukGQCfmhJINyB7ZUJpneAtEaNF4dvpH2QC+lL3rXrSsUBosL08zBz6cPUdHd8p4xd
+ cT2/UstKbK9OqDqqMn0QtVP/CaD8SkagtmZzuD+Mb1LTLangCsE9DGEfHyxdj/TD2+
+ 5x5tU/6u3gd7b7E/O12Lbkbb8xJmSvT4QwhrRHN8g7lusGir0xHHUoKh6HMYy/9lO4
+ kOrFUb8fajxWQ==
+Date: Thu, 5 May 2022 18:20:34 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Alexandre Courbot <acourbot@chromium.org>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
+ George Sun <george.sun@mediatek.com>,
+ Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Irui Wang <irui.wang@mediatek.com>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v10, 16/17] media: mediatek: vcodec: support stateless
+ VP9 decoding
+Message-ID: <20220505222034.fxw6y7wdf7wy3qi4@notapiano>
+References: <20220426100828.13429-1-yunfei.dong@mediatek.com>
+ <20220426100828.13429-17-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [RFC v2] dt-bindings: net: dsa: convert binding for mediatek
- switches
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-References: <20220505150008.126627-1-linux@fw-web.de>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220505150008.126627-1-linux@fw-web.de>
+Content-Disposition: inline
+In-Reply-To: <20220426100828.13429-17-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_132932_923129_F2862E79 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20220505_152053_308111_667DE508 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,181 +80,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, netdev@vger.kernel.org,
- Greg Ungerer <gerg@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Vivien Didelot <vivien.didelot@gmail.com>, DENG Qingfang <dqfext@gmail.com>,
- devicetree@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/05/2022 17:00, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Convert txt binding to yaml binding for Mediatek switches.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+On Tue, Apr 26, 2022 at 06:08:27PM +0800, Yunfei Dong wrote:
+> Add support for VP9 decoding using the stateless API,
+> as supported by MT8192. And the drivers is lat and core architecture.
+> =
 
-Thank you for your patch. There is something to discuss/improve.
-
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
-> +  core-supply:
-> +    description: |
-
-Drop | everywhere where it is not needed (so in all places, AFAICT)
-
-> +      Phandle to the regulator node necessary for the core power.
-> +
-> +  "#gpio-cells":
-> +    description: |
-> +      Must be 2 if gpio-controller is defined.
-
-Skip description, it's obvious from the GPIO controller schema.
-
-> +    const: 2
-> +
-> +  gpio-controller:
-> +    type: boolean
-> +    description: |
-> +      if defined, MT7530's LED controller will run on GPIO mode.
-> +
-> +  "#interrupt-cells":
-> +    const: 1
-> +
-> +  interrupt-controller:
-> +    type: boolean
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  io-supply:
-> +    description: |
-> +      Phandle to the regulator node necessary for the I/O power.
-> +      See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-> +      for details for the regulator setup on these boards.
-> +
-> +  mediatek,mcm:
-> +    type: boolean
-> +    description: |
-> +      if defined, indicates that either MT7530 is the part on multi-chip
-> +      module belong to MT7623A has or the remotely standalone chip as the
-> +      function MT7623N reference board provided for.
-> +
-> +  reset-gpios:
-> +    description: |
-> +      Should be a gpio specifier for a reset line.
-
-Skip description.
-
-> +    maxItems: 1
-> +
-> +  reset-names:
-> +    description: |
-> +      Should be set to "mcm".
-
-Skip description.
-
-> +    const: mcm
-> +
-> +  resets:
-> +    description: |
-> +      Phandle pointing to the system reset controller with line index for
-> +      the ethsys.
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +allOf:
-> +  - $ref: "dsa.yaml#"
-> +  - if:
-> +      required:
-> +        - mediatek,mcm
-> +    then:
-> +      required:
-> +        - resets
-> +        - reset-names
-> +    else:
-> +      required:
-> +        - reset-gpios
-> +
-> +  - if:
-> +      required:
-> +        - interrupt-controller
-> +    then:
-> +      required:
-> +        - interrupts
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          items:
-> +            - const: mediatek,mt7530
-> +    then:
-> +      required:
-> +        - core-supply
-> +        - io-supply
-> +
-> +
-> +patternProperties:
-
-patternProperties go before allOf, just after regular properties.
-
-> +  "^(ethernet-)?ports$":
-> +    type: object
-
-Also on this level:
-    unevaluatedProperties: false
-
-> +
-> +    patternProperties:
-> +      "^(ethernet-)?port@[0-9]+$":
-> +        type: object
-> +        description: Ethernet switch ports
-> +
-> +        properties:
-> +          reg:
-> +            description: |
-> +              Port address described must be 6 for CPU port and from 0 to 5 for user ports.
-
-This looks like not wrapped @80 character.
-
-> +
-> +        unevaluatedProperties: false
-> +
-> +        allOf:
-> +          - $ref: dsa-port.yaml#
-> +          - if:
-> +              properties:
-> +                label:
-> +                  items:
-> +                    - const: cpu
-> +            then:
-> +              required:
-> +                - reg
-> +                - phy-mode
-> +
-> +unevaluatedProperties: false
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Signed-off-by: George Sun <george.sun@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> ---
+>  .../media/platform/mediatek/vcodec/Makefile   |    1 +
+>  .../vcodec/mtk_vcodec_dec_stateless.c         |   26 +-
+>  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |    1 +
+>  .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 2031 +++++++++++++++++
+>  .../platform/mediatek/vcodec/vdec_drv_if.c    |    4 +
+>  .../platform/mediatek/vcodec/vdec_drv_if.h    |    1 +
+>  6 files changed, 2061 insertions(+), 3 deletions(-)
+>  create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_=
+req_lat_if.c
+> =
 
 
+...
 
+> +		use_128 =3D !frame_is_intra && !vsi->frame.uh.last_frame_type;
+> +		v4l2_vp9_adapt_coef_probs(pre_frame_ctx_helper,
+> +					  counts_helper,
+> +					  use_128,
+> +					  frame_is_intra);
 
-Best regards,
-Krzysztof
+Hi Yunfei,
+
+I'm getting
+
+ERROR: modpost: "v4l2_vp9_adapt_noncoef_probs" [drivers/media/platform/medi=
+atek/vcodec/mtk-vcodec-dec.ko] undefined!
+ERROR: modpost: "v4l2_vp9_adapt_coef_probs" [drivers/media/platform/mediate=
+k/vcodec/mtk-vcodec-dec.ko] undefined!
+
+when building this series.
+
+Adding
+	select V4L2_VP9
+to
+	config VIDEO_MEDIATEK_VCODEC
+solved the issue.
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
