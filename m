@@ -4,79 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55822C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 08:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD2BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 09:06:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:From:CC:To:Subject
+	:MIME-Version:References:In-Reply-To:Date:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2rBLy7kkiAm+DHXAYe0d7guGLb+JAi4mlkF826RQs1o=; b=inv8jcJSsujPxG
-	3gdM1eHFOEfwjZgxZCyteBgHroC3+Q3kKTDD+DV5GsyDlPXY2lzqqM8zXyumC16XEOOIdNkHQUFHW
-	hrPB9NBzjycHxtbU/x4ZK/SANcwCC/HuogCIEiyn1BhVw6wKShN6FqJnbdGsNfjfQOXVCc5Lbzh5Y
-	ATeykdbeN+o/JjEQbQpj3BODfSD6n3uu+vwKQNejyZo2Mxc9ydlk2q4rBViJO3X4HkbdY4WEkG5Z3
-	PQu369Uv4OSqAfgJuETq9SBL2ZxMcWGB3b0RQo5A3Hmt2ZyIFZUVMoiJ9SWwaJgmHMOn+UT++XUtz
-	2mvvk0/I8AY3wWbNDbgg==;
+	List-Owner; bh=r17r9TxV1N7vF+N6HhbKlV4724SzTYZJGqS8U4bKaew=; b=rWFonzzJSg1720
+	eNCdMZq/Lm+tgZh6OL7B6YJ5kLUWfp8fOCfX+diuwb+e5qKUXrskNmJXPTBfuwBnPlvCJm2VgjQYQ
+	sc5dfZ1vfGd0ujH9VDMzGzaLq0TtnwrukjtKDBsdZhpuCYH/i23pFPzZajxZN2ydn+02fuRL7nLVD
+	SL0UUTHOTPvBWWHg9KnPjL9OKAEvpdI7As2yj8kPlLOiG4M0er9UhrcsANsr+XSCRtgQFcP7FQyyQ
+	EU6+vhEScVh1QnwffI+o2Fwu0DqT73exLCnB2rkQHxWR8/n1YIszFsK8nQzxeIEuAn4RqBvQ23Hdq
+	ecOEDrAxd33BrkqrxY0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmXH9-00EsGE-RF; Thu, 05 May 2022 08:55:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nmXRi-00EvDF-Mu; Thu, 05 May 2022 09:06:50 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmXGx-00Es9g-82; Thu, 05 May 2022 08:55:44 +0000
-X-UUID: 48aff3e158de4a6b8ba534d40a15e9f8-20220505
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=afr5MfrTc3qYPdyQ9wc+DX7n5KFDq6kRR9KCPokSo1o=; 
- b=M/rFHfdXZXXuNjnjwpr8bzyctIEcdGxj2UykNSQ2mYBZCTt0VRhf2lli1hoKwBohQH6+ZUpmdwbBciManSIlVUGPSZJZUdjZIextXxRADWUIppTxdtJ7lGPDfitmIxzqGh7Frl/6lYo2kHN8jD+brru3rlOutUQ8bRcxrjnzNMc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:a302aae3-ef5c-480e-bb60-f6fd6c225e3f, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:deb54c16-2e53-443e-b81a-655c13977218,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 48aff3e158de4a6b8ba534d40a15e9f8-20220505
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1388769521; Thu, 05 May 2022 01:55:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 May 2022 01:48:33 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 5 May 2022 16:48:32 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 5 May 2022 16:48:31 +0800
-Message-ID: <cbf2fcbae25408b95875278eb37e829bf4671430.camel@mediatek.com>
-Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
- properties
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>, "Mark
- Brown" <broonie@kernel.org>
-CC: <kernel@collabora.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Shane Chien <shane.chien@mediatek.com>, <alsa-devel@alsa-project.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Thu, 5 May 2022 16:48:31 +0800
-In-Reply-To: <4826c824-40ce-5726-ed95-5be069233ca7@collabora.com>
-References: <20220429203039.2207848-1-nfraprado@collabora.com>
- <20220429203039.2207848-2-nfraprado@collabora.com>
- <4826c824-40ce-5726-ed95-5be069233ca7@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nmXRe-00EvBG-FT; Thu, 05 May 2022 09:06:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1651741573;
+ bh=PE49ljxOaJbEZXi8zE0UMbSilxTIkum0Hyl9KtNCWhk=;
+ h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
+ CC:From;
+ b=VUzb45/7jJ0QvY1LxJ8fGd5PIAHk5tdZv7WCsWGN7HfaLTECfsZkWen2XvyKS2Gcj
+ 8kH0TsJ3fjICqkzk+WMAkUiLt9Bn1doMlT+h/XRlLyxtX+9DYHnXTl42I6LxeNibw+
+ Z5m/D4xAVI5EUTEwdTqGLboOd5OI7EtfGKKkEX84=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from frank-s9 ([217.61.145.208]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MO9z7-1nSWYG34kz-00OWh0; Thu, 05
+ May 2022 11:06:13 +0200
+Date: Thu, 05 May 2022 11:06:05 +0200
+User-Agent: K-9 Mail for Android
+In-Reply-To: <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
+References: <20220430130347.15190-1-linux@fw-web.de>
+ <20220430130347.15190-5-linux@fw-web.de>
+ <20220504152450.cs2afa4hwkqp5b5m@skbuf>
+ <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
+ <20220504154720.62cwrz7frjkjbb7u@skbuf>
+ <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
 MIME-Version: 1.0
-X-MTK: N
+Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
+ BPI-R2-Pro board
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Vladimir Oltean <olteanv@gmail.com>
+CC: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+From: Frank Wunderlich <frank-w@public-files.de>
+Message-ID: <D201CE50-280C-4089-BB9F-053FEA28FE9A@public-files.de>
+X-Provags-ID: V03:K1:fswHZVyF/lRZd8JVwCdyHBJTeHXeAmwGzgMDMSGIdz0hDXO4adf
+ 6DNQ7Hdu1vjFnafdsMjLokD96/xSHtW4P+JlwGF2ydVvccgeJQBGyVtf7/ZDzMAqCho34s6
+ sqGM3PaZ3PFndCo6VMXLcocAJLEHxA55eeaTeLXVgZvDzQ8Eq5RrHCw/S+odtiUpd+qjGwv
+ hU0vAPDjw5yIm6bXegJYA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:j9Ro5GzlgnE=:y3PubMXQ+/zpI4KYSQDupN
+ oJQ4JRWONcKWVYZCKX5H33jQSFgLL0YuSvZjmf5jpfD9ZjxI1yRt3sXo5C6rRn34aoaYXcKP5
+ /4H0dcXerNyfkv11BLsVwX2VgZQOxaQjNLpXLl3aGa3zNBYwqcSzz/EdExVhA9cuEf8sEgCfn
+ 0wnFgq+SwuViwDNEq/HpuRQQaFDuxy1QDlx+o2nvYr3Hz788H0tqJwVfEMaWelJU+mtfwaBe6
+ NzkUsrZ2U2B9dvCi+VSuW/GkhIMUw1KQlWZ4UKCNFtJAZmcwrMSIxIFOvJPEwDUaXgtE10z50
+ 7Fiv/v8B6y2qiSGvW/ReSyVbVgmgZhe1YtU8E2XzI5TXrt7rFOQw87hJkp/crzLFShocXerQ7
+ zm4WJks0YVv+1oltOdPUFIspJjubkzbv6XYiF6BdA+1CMEaKHrstBYrKXswB30nDsqcWhzjrw
+ /kfzpB34G2xm9xqFsI5fuR9s77kfUsVeA4d6UFGAhBhHRaclbOsFaHtbFhSIhSHIwg9bwKVIh
+ 92vmwoTI+2PqW/yiSDF3TKfSwd/vsdlZzF0+C3hwSi8Ko6/PFLXSWUVCWgA6nexfzcs1aVEqx
+ 0I4/Z32mTAh00UsfdTLvjzeqkIgzoNRB74Sjxg+mFyaD/zrL38u74bF3LB109QcvBTTxYlG9y
+ NKZZ0Zue4kRVXXJ6jMvnCicYjwWrdHSKgW4nTT6d0Q9LhQb0mHnA0HN/m+BJRQLa7q2oQQHKz
+ 0lwS8B3plWBqraGPjKNqjhvTh/56cN9zvWWnXKNGA62Iayo5NAHKrVcuLPVUF1JFtbX4RVL3+
+ rYbffYZn8AWErO/QSmfeoOWLPRiCSw5iQs214Qy7h2QgFe2mQb+BXSiZxLW1fQag1q+c3QUwT
+ JRy7cyct7nh15eyCpady/PJZVyrV2v1SdKAZz2u5iF4aPZfy1qvV5C/lyUwqqEz/Q3Uael2IP
+ M5nkUJKzCP6lIJUeLYU0LtyfFwZAAF/cyKyNAcZ3UvmQ8Rh1OFJadwYuyxLyRXiP3Wi6XDTAT
+ gia7QCQap4UUaPAopLvQFtwWb0Gm66A9uYYycp2oQfnUWkuMSVGRNbufUVlKGNuB9pIvr8uQE
+ 88aNqbN5kytPzg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_015543_371365_308459C7 
-X-CRM114-Status: GOOD (  26.45  )
+X-CRM114-CacheID: sfid-20220505_020646_882857_2BD48D65 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,57 +99,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: frank-w@public-files.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA1LTA1IGF0IDEwOjA4ICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
-ZWdubyB3cm90ZToNCj4gSWwgMjkvMDQvMjIgMjI6MzAsIE7DrWNvbGFzIEYuIFIuIEEuIFByYWRv
-IGhhIHNjcml0dG86DQo+ID4gVGhlIE1lZGlhdGVrIEFGRSBQQ00gY29udHJvbGxlciBmb3IgTVQ4
-MTkyIGFsbG93cyBzaGFyaW5nIG9mIGFuIEkyUw0KPiA+IGJ1cw0KPiA+IGJldHdlZW4gdHdvIGJ1
-c3Nlcy4gQWRkIGEgcGF0dGVybiBmb3IgdGhlc2UgcHJvcGVydGllcyBpbiB0aGUNCj4gPiBkdC1i
-aW5kaW5nLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRv
-IDxuZnJhcHJhZG9AY29sbGFib3JhLmNvbT4NCj4gPiAtLS0NCj4gPiANCj4gPiAgIERvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9tdDgxOTItYWZlLXBjbS55YW1sIHwgNQ0K
-PiA+ICsrKysrDQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspDQo+ID4gDQo+
-ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9t
-dDgxOTItYWZlLQ0KPiA+IHBjbS55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL3NvdW5kL210ODE5Mi1hZmUtDQo+ID4gcGNtLnlhbWwNCj4gPiBpbmRleCA3YTI1YmM5Yjgw
-NjAuLjViMDNjOGRiZjMxOCAxMDA2NDQNCj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3Mvc291bmQvbXQ4MTkyLWFmZS1wY20ueWFtbA0KPiA+ICsrKyBiL0RvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9tdDgxOTItYWZlLXBjbS55YW1sDQo+ID4g
-QEAgLTU0LDYgKzU0LDExIEBAIHByb3BlcnRpZXM6DQo+ID4gICAgICAgICAtIGNvbnN0OiBhdWRf
-aW5mcmFfY2xrDQo+ID4gICAgICAgICAtIGNvbnN0OiBhdWRfaW5mcmFfMjZtX2Nsaw0KPiA+ICAg
-DQo+ID4gK3BhdHRlcm5Qcm9wZXJ0aWVzOg0KPiA+ICsgICJeaTJzWzAtMzUtOV0tc2hhcmUkIjoN
-Cj4gPiArICAgIGRlc2NyaXB0aW9uOiBOYW1lIG9mIHRoZSBJMlMgYnVzIHRoYXQgaXMgc2hhcmVk
-IHdpdGggdGhpcyBidXMNCj4gPiArICAgIHBhdHRlcm46ICJeSTJTWzAtMzUtOV0kIg0KPiA+ICsN
-Cj4gPiAgIHJlcXVpcmVkOg0KPiA+ICAgICAtIGNvbXBhdGlibGUNCj4gPiAgICAgLSBpbnRlcnJ1
-cHRzDQo+ID4gDQo+IA0KPiBUaGUgb25seSBvdGhlciB3YXkgb2YgZG9pbmcgdGhpcyB3b3VsZCBi
-ZSB0byBjb21wbGljYXRlIHRoaXMgaW4gdGhlDQo+IGRyaXZlcg0KPiBzbyB0aGF0IHdlIGNhbiBk
-byBzb21ldGhpbmcgbGlrZQ0KPiANCj4gImkycy1zaGFyZSA9IDwwIDI+IjsgIGluc3RlYWQgb2Yg
-IGkyczAtc2hhcmUgPSAiSTJTMiI7DQo+IA0KPiAuLi5hbmQgSSBkb24ndCB0aGluayB0aGF0IHRo
-aXMgd291bGQgYmUgYW55IG1vcmUgc3RyYWlnaHRmb3J3YXJkIHRoYW4NCj4gdGhlDQo+IHByb3Zp
-ZGVkIHdheS4NCj4gDQo+IFRoZXJlJ3MgYW4gaW1wcm92ZW1lbnQgdGhhdCB3ZSBjYW4gZG8gdG8g
-dGhhdCBwYXR0ZXJuIGRlc2NyaXB0aW9uDQo+IHRob3VnaCwNCj4gd2hpY2ggd291bGQgYmUgZXhw
-bGFpbmluZyB0aGF0IGRlY2xhcmluZyAnaTJzMC1zaGFyZSA9ICJJMlMyIicgbWVhbnMNCj4gdGhh
-dA0KPiBJMlMyJ3MgZGF0YSBwaW4gd2lsbCBiZSB1c2VkIGFzIERBVEEtT1VULCB3aGlsZSBpMnMw
-IGlzIERBVEEtSU4uDQo+IA0KPiBBbm90aGVyIHRoaW5nIHRoYXQgY29tZXMgdG8gbWluZCBoZXJl
-IGlzIHRoYXQgdGhpcyBpcyBhIE1lZGlhVGVrDQo+IHNwZWNpZmljDQo+IHByb3BlcnR5IGFuZCAq
-bm90KiBhIGdlbmVyaWMgb25lLCB3aGljaCBtZWFucyB0aGF0IGJvdGggdGhlIGRyaXZlcg0KPiBh
-bmQNCj4gdGhpcyBiaW5kaW5nIHNob3VsZCBiZSBmaXhlZCB0byBnZXQgYSAibWVkaWF0ZWssIiBw
-cmVmaXgsIHNvLCB0aGlzDQo+IHByb3BlcnR5DQo+IHNob3VsZCAtIGluIHJlYWxpdHkgLSBiZSAi
-bWVkaWF0ZWssaTJzWzAtMzUtOV0tc2hhcmUiIGluc3RlYWQuDQo+IA0KPiBJIHRoaW5rIHRoYXQg
-ZXZlcnlvbmUgYWdyZWVzIGFib3V0IHRoYXQsIGJ1dCBsZXQncyBzZWUgd2hhdCB0aGUNCj4gb3Ro
-ZXJzIHNheS4NCj4gDQo+IENoZWVycywNCj4gQW5nZWxvDQoNCkhpIEFuZ2VsbywNCg0KJ2kyczAt
-c2hhcmUgPSAiSTJTMiInIG1lYW5zIHRoYXQgaWYgd2Ugd2FudCB1c2UgSTJTMCwgdGhlcmUgbmVl
-ZCBvcGVuDQpJMlMyIHRvIHByb3ZpZGUgY2xvY2suIENvbnZlcnNlbHksIGlmIHdlIHdhbnQgdG8g
-dXNlIEkyUzIsIHdlIGRvbid0DQpuZWVkIHRvIG9wZW4gSTJTMC4gSG93ZXZlciwgTWVkaWFUZWsg
-STJTMCBhbmQgSTJTMiBoYXJkd2FyZSBhcmUNCmdlbmVyYWxseSBkZXNpZ25lZCBhcyBpbnB1dC4g
-U28gdXN1YWxseSB3ZSB1c2UgJ2kyczAtc2hhcmUgPSAiSTJTMSInLg0KRXZlbiBudW1iZXJzIHJl
-cHJlc2VudCBpbnB1dCwgb2RkIG51bWJlcnMgcmVwcmVzZW50IG91dHB1dC4NCg0KWWVzLCBJIHRo
-aW5rIGFkZGluZyB0aGUgIm1lZGlhdGVrLCIgcHJlZml4IGlzIHRoZSByaWdodCB3YXkgdG8gZGVm
-aW5lIGENCm5vbi1nZW5lcmljIHByb3BlcnR5Lg0KDQpCZXN0IFJlZ2FyZHMsDQpKaWF4aW4gWXUN
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
-ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Am 5. Mai 2022 10:46:55 MESZ schrieb Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>:
+>On 04/05/2022 17:47, Vladimir Oltean wrote:
+>>>
+>>> current device-tree nodes using "switch" and "ports"
+>>>
+>>> see discussioon here about make it fixed to "ports" property instead
+>of PatternProperties including optional "ethernet-"
+>>>
+>>>
+>https://patchwork.kernel.org/project/linux-mediatek/patch/20220502153238.85090-1-linux@fw-web.de/#24843155
+>> 
+>> Hmm, I don't get why Krzysztof said to just keep what is used in
+>> existing device trees. The schema validator should describe what is
+>> valid, 
+>
+>These were talks about bindings which describe hardware. The node name,
+>except Devicetree spec asking for generic names, does not matter here
+>actually.
+>
+>> and since the mt7530 driver does not care one way or another
+>> (some drivers do explicitly parse the "ports"/"ethernet-ports" node),
+>> then whatever is valid for the DSA core is also valid for the mt7530
+>> bindings. And "ethernet-ports" is valid too, so I think it should be
+>> accepted by mediatek.yaml...
+>
+>You can make it "(ethernet-)?ports" as well. My comment was purely to
+>make it simpler, for bindings (goes into properties, not
+>patternProperties) and for us. If you prefer to keep it like DSA core,
+>also fine.
+
+Ok, i'm also thinking, the dsa-definition will be the right way (pattern-properties with optional "ethernet-") in binding.
+
+Should i use "ethernet-ports" instead of "ports" here? Current dts with mt7530/mt7531 switches using "ports" so i would use it here too. If dsa prefer ethernet-ports now it should be changed in other files too.
+
+>Best regards,
+>Krzysztof
+
+Hi,
+regards Frank
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
