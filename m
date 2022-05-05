@@ -4,59 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D02C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 19:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C20C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 20:29:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Seik8+1PgC52cCKETsh94n/cvqnfAjrTcrjaPPYtZ8=; b=f1Lv30Vx8qk0Nt
-	6VS5cT1L3aimh1npbK6H9CXie6XQPttpWmelk2ZxRw8HOHIZ1FSf9B4CVuWAnXZloVEp7Tm68Ddej
-	AZSctlfp2xJJzTCaHyiHETWMQBqWekio/+VfWS9yGhRN/B8ZdVDx5jJEmJZytIiJPaQv8M5ZV7lne
-	ye13WrG6iT7d9eYSbtDxkCsdJ/jWVqFDja2pSn/ATcKJuWmNJzrGAJ8i9vYLkz+VlltpC7law6T0l
-	3L5NJek0tBKSSH8gpWa/YNvYqyxpOvK1g4Psvh3m/1T6b8UyuzbtHRTOhyS5q2wdOJbSYDjVwNND0
-	xMg6F2QKVMgpZz4SVs7Q==;
+	List-Owner; bh=Lk/yZLqccSwxU4merZm009mCL/pannqRMxO4Dsfk+Ns=; b=ql1A15e2+0QLO7
+	awG2m23A8iWOQa2qvI+WkTe23kH3zSvDF8k4n6NFbL7PHdXex5zCm+w345+7GesS4nioxZRkWnzP1
+	Fu7I1x8RnMf/cUNb9VXmU3ER3mTxZp1agWeLrovqHGIBavhNcuiX5MyCePfscUQ/Jqbyn81P+jBiD
+	01zP5wSb0AVn1TzPQukmxzPxma65wt8Hm4Ce0t0/fKe0oJPLAaW85caHWj/QyQFCbt2Trli8i3jOW
+	47RWunRq+Raeitobgof/FPoiRT0IebfGKG0NGNGzrYtSQlpAukq+GitbJYZGVMtCzcIK6KP56rwSI
+	YqcWT0yLinFOTkNrCKbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmhWC-0000b0-Ix; Thu, 05 May 2022 19:52:08 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nmi6Z-000Brm-2t; Thu, 05 May 2022 20:29:43 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmhRG-00HY6R-9W; Thu, 05 May 2022 19:47:04 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id A6FE71F45CD3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651780021;
- bh=riKUyF3QA26FPC6IN4C9exUYKfoEiGvXUwpYMcRDj7M=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=IEVITc3sCSDV2yoTf1mQwuHfgdj8nF+d/X2n/ZXKi5YwM4pS/WjEOl1DDvuWwo0cX
- HRjoOZee/WLN0iYDbwq3L9ydeRrTcCQoKLpcx3sD6uXW+L9di4gL1P7yjES8JrRTZW
- /PIYVbLAV0WClG+LBhsMYiLY/8LzDaRruJ/whCVuUVJngCTA1WixTyslwdSff4daGY
- S1mjJ6Uv2yolUv3Wcyb5cKE92j4ate6tCwKPdN+rxgyrb2k6tY1s/Lt5JHd2DrTKJ1
- F4I3r5vPy3rqobPCxOvXQ9V6zXFeE1WG9wn3UTDOOPczbAqri0k0AX1IX5CBw5MNrz
- 5qD5Q98uEZ7nQ==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com, Chen-Yu Tsai <wenst@chromium.org>,
- =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 16/16] arm64: dts: mediatek: asurada: Add SPMI regulators
-Date: Thu,  5 May 2022 15:45:50 -0400
-Message-Id: <20220505194550.3094656-17-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.36.0
-In-Reply-To: <20220505194550.3094656-1-nfraprado@collabora.com>
-References: <20220505194550.3094656-1-nfraprado@collabora.com>
+ id 1nmi6O-000Bnm-Rb
+ for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 20:29:34 +0000
+Received: by mail-wm1-x330.google.com with SMTP id
+ p7-20020a05600c358700b00393e80c59daso4482563wmq.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 13:29:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=Nhiu0fngZGCp2SeeUlWWgcjMH+09fel050MQuuk+CH0=;
+ b=c1oSeU4BaXTY3ReYOr/uFAyO9izBH2dG1Qlnf+8Hr8Uw3vUsoKOHenuz7wpGz1G3lv
+ ym40wpjP1R1uTQtgYd8gikEnTIRqUlXoWrvkAnzPHg8AGFpeocUHG2kgkwMQX9NL3etq
+ +mxfkjnSDJDdW3HnR8hp/i6C1WPmJXk+LFZvFqsi3IRZIzWwmnN90bnnpRzXLIKPG6Zc
+ eHtIJrBosNasWd3p+NDNF3vx4pBQ+ez3FTfArfU5wI/onzupOfKc35+xFiIfqWc6qqRh
+ q7Ut2jUxdfhmab/DvgF8OIAbxIYnzwpEPb49AiYU/N0TsdomVI/zvfwD+IaQxuFI+dnI
+ g5xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Nhiu0fngZGCp2SeeUlWWgcjMH+09fel050MQuuk+CH0=;
+ b=Sd3VHXmqrPLrGdxwfIEDNthDb0aUgYy41wc/THwULp4wcq7sHEY5as1uedLmOJ1n23
+ hIVbYRQAOVs5UbNuotEDOuFAhXhyB6IGLgvVf0gUH2lJdwPizW++qo6YBlilB/jiBoVR
+ zvBHT/ySKvPtKxJ2RTPqo7VZNQlXfFSwnzIzWZQp51ldj+k2VqYX2l3QCHhW+cDZFRsY
+ jAv6D3ewn84Xj/Iw1kH4sfU+wIbKpe7yPTY/2CE26NWwfX4fRpWCJntWF/ykNSx5YHGS
+ /p4iLnuDH51HgBJE3eeeh+gDSqbhy4CjEhpP/n4vP/8e8ZqzZ5K5Fn3NEzKktDP7uq/q
+ FWBQ==
+X-Gm-Message-State: AOAM532anptRCLnuXsAkDawbUSpc0zIzm38oIn0Hqrz5+oWKNA1MjXJ5
+ HwkSUTnRXyeaHpoMdLHx2Lda4Q==
+X-Google-Smtp-Source: ABdhPJyTndqxOkEr/uFOGU4QF0R1aF80DfUbLWNbePR/UUOLh1w33usRsZPRT7oIn/7Jas5VFkmrmQ==
+X-Received: by 2002:a7b:cd15:0:b0:394:497d:ad1c with SMTP id
+ f21-20020a7bcd15000000b00394497dad1cmr35505wmj.182.1651782570542; 
+ Thu, 05 May 2022 13:29:30 -0700 (PDT)
+Received: from [192.168.0.222] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ n13-20020a056000170d00b0020c5253d911sm2035574wrc.93.2022.05.05.13.29.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 May 2022 13:29:30 -0700 (PDT)
+Message-ID: <6d45f060-85e6-f3ff-ef00-6c68a2ada7a1@linaro.org>
+Date: Thu, 5 May 2022 22:29:28 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [RFC v2] dt-bindings: net: dsa: convert binding for mediatek
+ switches
+Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+References: <20220505150008.126627-1-linux@fw-web.de>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220505150008.126627-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_124702_520386_FC7BA8B3 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20220505_132932_923129_F2862E79 
+X-CRM114-Status: GOOD (  17.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,48 +87,183 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, netdev@vger.kernel.org,
+ Greg Ungerer <gerg@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Vivien Didelot <vivien.didelot@gmail.com>, DENG Qingfang <dqfext@gmail.com>,
+ devicetree@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+ =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-VGhlIEFzdXJhZGEgcGxhdGZvcm0gdXNlcyByZWd1bGF0b3JzIGZyb20gTVQ2MzE1IFBNSUNzIGFj
-ZXNzaWJsZSB0aHJvdWdoClNQTUkuIEFkZCBzdXBwb3J0IGZvciB0aGVtLgoKU2lnbmVkLW9mZi1i
-eTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgpSZXZp
-ZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVs
-cmVnbm9AY29sbGFib3JhLmNvbT4KCi0tLQoKQ2hhbmdlcyBpbiB2MjoKLSBBZGRlZCB0aGlzIHBh
-dGNoCgogLi4uL2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi1hc3VyYWRhLmR0c2kgICAgIHwgNDkg
-KysrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDQ5IGluc2VydGlvbnMoKykKCmRp
-ZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi1hc3VyYWRhLmR0
-c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi1hc3VyYWRhLmR0c2kKaW5k
-ZXggYTlmZmE3NGIyNzY0Li43ZjRjZWU5MjhmNzEgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLWFzdXJhZGEuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL21lZGlhdGVrL210ODE5Mi1hc3VyYWRhLmR0c2kKQEAgLTcsNiArNyw3IEBACiAjaW5jbHVk
-ZSAibXQ4MTkyLmR0c2kiCiAjaW5jbHVkZSAibXQ2MzU5LmR0c2kiCiAjaW5jbHVkZSA8ZHQtYmlu
-ZGluZ3MvZ3Bpby9ncGlvLmg+CisjaW5jbHVkZSA8ZHQtYmluZGluZ3Mvc3BtaS9zcG1pLmg+CiAK
-IC8gewogCWFsaWFzZXMgewpAQCAtNjgzLDYgKzY4NCw1NCBAQCBjcjUwQDAgewogCX07CiB9Owog
-Cismc3BtaSB7CisJI2FkZHJlc3MtY2VsbHMgPSA8Mj47CisJI3NpemUtY2VsbHMgPSA8MD47CisK
-KwltdDYzMTVfNjogcG1pY0A2IHsKKwkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDYzMTUtcmVn
-dWxhdG9yIjsKKwkJcmVnID0gPDB4NiBTUE1JX1VTSUQ+OworCisJCXJlZ3VsYXRvcnMgeworCQkJ
-bXQ2MzE1XzZfdmJ1Y2sxOiB2YnVjazEgeworCQkJCXJlZ3VsYXRvci1jb21wYXRpYmxlID0gInZi
-dWNrMSI7CisJCQkJcmVndWxhdG9yLW5hbWUgPSAiVmJjcHUiOworCQkJCXJlZ3VsYXRvci1taW4t
-bWljcm92b2x0ID0gPDMwMDAwMD47CisJCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTE5
-Mzc1MD47CisJCQkJcmVndWxhdG9yLWVuYWJsZS1yYW1wLWRlbGF5ID0gPDI1Nj47CisJCQkJcmVn
-dWxhdG9yLWFsbG93ZWQtbW9kZXMgPSA8MCAxIDI+OworCQkJCXJlZ3VsYXRvci1hbHdheXMtb247
-CisJCQl9OworCisJCQltdDYzMTVfNl92YnVjazM6IHZidWNrMyB7CisJCQkJcmVndWxhdG9yLWNv
-bXBhdGlibGUgPSAidmJ1Y2szIjsKKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJWbGNwdSI7CisJCQkJ
-cmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzAwMDAwPjsKKwkJCQlyZWd1bGF0b3ItbWF4LW1p
-Y3Jvdm9sdCA9IDwxMTkzNzUwPjsKKwkJCQlyZWd1bGF0b3ItZW5hYmxlLXJhbXAtZGVsYXkgPSA8
-MjU2PjsKKwkJCQlyZWd1bGF0b3ItYWxsb3dlZC1tb2RlcyA9IDwwIDEgMj47CisJCQkJcmVndWxh
-dG9yLWFsd2F5cy1vbjsKKwkJCX07CisJCX07CisJfTsKKworCW10NjMxNV83OiBwbWljQDcgewor
-CQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10NjMxNS1yZWd1bGF0b3IiOworCQlyZWcgPSA8MHg3
-IFNQTUlfVVNJRD47CisKKwkJcmVndWxhdG9ycyB7CisJCQltdDYzMTVfN192YnVjazE6IHZidWNr
-MSB7CisJCQkJcmVndWxhdG9yLWNvbXBhdGlibGUgPSAidmJ1Y2sxIjsKKwkJCQlyZWd1bGF0b3It
-bmFtZSA9ICJWZ3B1IjsKKwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwzMDAwMDA+Owor
-CQkJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDExOTM3NTA+OworCQkJCXJlZ3VsYXRvci1l
-bmFibGUtcmFtcC1kZWxheSA9IDwyNTY+OworCQkJCXJlZ3VsYXRvci1hbGxvd2VkLW1vZGVzID0g
-PDAgMSAyPjsKKwkJCX07CisJCX07CisJfTsKK307CisKICZ1YXJ0MCB7CiAJc3RhdHVzID0gIm9r
-YXkiOwogfTsKLS0gCjIuMzYuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+On 05/05/2022 17:00, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Convert txt binding to yaml binding for Mediatek switches.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+
+Thank you for your patch. There is something to discuss/improve.
+
+> +    const: 1
+> +
+> +  "#size-cells":
+> +    const: 0
+> +
+> +  core-supply:
+> +    description: |
+
+Drop | everywhere where it is not needed (so in all places, AFAICT)
+
+> +      Phandle to the regulator node necessary for the core power.
+> +
+> +  "#gpio-cells":
+> +    description: |
+> +      Must be 2 if gpio-controller is defined.
+
+Skip description, it's obvious from the GPIO controller schema.
+
+> +    const: 2
+> +
+> +  gpio-controller:
+> +    type: boolean
+> +    description: |
+> +      if defined, MT7530's LED controller will run on GPIO mode.
+> +
+> +  "#interrupt-cells":
+> +    const: 1
+> +
+> +  interrupt-controller:
+> +    type: boolean
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  io-supply:
+> +    description: |
+> +      Phandle to the regulator node necessary for the I/O power.
+> +      See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+> +      for details for the regulator setup on these boards.
+> +
+> +  mediatek,mcm:
+> +    type: boolean
+> +    description: |
+> +      if defined, indicates that either MT7530 is the part on multi-chip
+> +      module belong to MT7623A has or the remotely standalone chip as the
+> +      function MT7623N reference board provided for.
+> +
+> +  reset-gpios:
+> +    description: |
+> +      Should be a gpio specifier for a reset line.
+
+Skip description.
+
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    description: |
+> +      Should be set to "mcm".
+
+Skip description.
+
+> +    const: mcm
+> +
+> +  resets:
+> +    description: |
+> +      Phandle pointing to the system reset controller with line index for
+> +      the ethsys.
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +allOf:
+> +  - $ref: "dsa.yaml#"
+> +  - if:
+> +      required:
+> +        - mediatek,mcm
+> +    then:
+> +      required:
+> +        - resets
+> +        - reset-names
+> +    else:
+> +      required:
+> +        - reset-gpios
+> +
+> +  - if:
+> +      required:
+> +        - interrupt-controller
+> +    then:
+> +      required:
+> +        - interrupts
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          items:
+> +            - const: mediatek,mt7530
+> +    then:
+> +      required:
+> +        - core-supply
+> +        - io-supply
+> +
+> +
+> +patternProperties:
+
+patternProperties go before allOf, just after regular properties.
+
+> +  "^(ethernet-)?ports$":
+> +    type: object
+
+Also on this level:
+    unevaluatedProperties: false
+
+> +
+> +    patternProperties:
+> +      "^(ethernet-)?port@[0-9]+$":
+> +        type: object
+> +        description: Ethernet switch ports
+> +
+> +        properties:
+> +          reg:
+> +            description: |
+> +              Port address described must be 6 for CPU port and from 0 to 5 for user ports.
+
+This looks like not wrapped @80 character.
+
+> +
+> +        unevaluatedProperties: false
+> +
+> +        allOf:
+> +          - $ref: dsa-port.yaml#
+> +          - if:
+> +              properties:
+> +                label:
+> +                  items:
+> +                    - const: cpu
+> +            then:
+> +              required:
+> +                - reg
+> +                - phy-mode
+> +
+> +unevaluatedProperties: false
+
+
+
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
