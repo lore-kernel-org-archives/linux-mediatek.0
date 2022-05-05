@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D0DBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 15:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387E5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 16:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6aWq5UzQh6IGv56YVN3e36IpNvazv2Zgi4d+dW8EGSI=; b=Qs9jtKWw8DJdJ/
-	ryL7sXP1Lb/YfXQNe5Ekk6sIVwCbKZy+w4cQDSLcNjP2xrYKxWe1sYd+TrrTBvcxupgsLU1IusGo3
-	cwhcPVjv2s0uwstQp+/2t9z+0IjjCP6sBT0nzh/Z1Z0g0ObokKMpjx956Kftjj78BkEzYYjdCvJXD
-	F6CPj/eZhVzznsYIVo7ZGa+DzkB8D0MXQPVB+29AdaCVedXrYkr0wmSRikIXiSv2DPJN5JN/9c8b1
-	6yzPUdv4BDZq9Pqi93z9WHQPRM1t0h2akY5Yz3o5LUhPZjffGYg6HJkhmf5zhpp6w9brd5ezQRTxp
-	I5Unnaphy1n+wX5n4kyQ==;
+	List-Owner; bh=kuWJDYgLGAVFE5UppwTp34lFvqNLPsjwl+wBKbhFdwk=; b=n/CmMZxFMayxtE
+	OVcYe2nLstn3w7usUVu2dhXW8F/qRd0I25t5Wm3bwy0AJWbJGKnjpYV9P/RnQgEHJjw1exnLKj4NR
+	NTPcXQSgS5eDVkck/BbAAAuILs53BIt94zzBl2gXhiyDfD+QmfPjM5ux6IVTJGnDf2Cx7r7ph8w0M
+	4vQNqw295e6YjDheV7u6ekymDddyHI/Q2JYfi/opQuGuIybB7JfZ4wOu/Abf1B5prAN1XwZyAglt1
+	JqqfpM0by9WGQNF2Q+uUFMgimJEGXfgFYfRJEV6FHy6pKx1VirTfdicjVJYXmHg8/tXHL19nKSj0q
+	4HHTrt56JgUnqi2+5Tlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmdJx-00GdL5-8j; Thu, 05 May 2022 15:23:13 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1nmeIf-00Gqet-LI; Thu, 05 May 2022 16:25:57 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmdJn-00GdHF-5E
- for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 15:23:04 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id
- w17-20020a17090a529100b001db302efed6so4387304pjh.4
- for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 08:23:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=networkplumber-org.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=HJq/qvj4FZwE6s96MeqFpqf47Ys+qQjfKC+Vl3h47kk=;
- b=0ZXwdSgZILgbSfTpRkGbOJLVKuFNZdzEMsvyDK9VwGYCP4HAvpLQqNRHaQFb347qjx
- sMhXEbywu0DRM8W+2CmTVBhZiERNFd466mUcCNFBvbbLb0hgAvd4AlPdm2Nrd7zOXoPX
- GDR3wBK5Lwh/pzItEnf7XXi4WfM0GqS0ElL49JvpA+EKoV+e8mRvVOQlhWkWKYrcu+P+
- D8D/diMJGVSskmjPOWEB46Jypy6v9lxrQus7d4p9hc9c0kTFrBl4pa+BE4bOIrKm5DpW
- D9Vz4bytZ/mBDRg/dbwbTK7ZK+vc69do+KtwVbP7CzWumFO6LpcTZdp/ZCY0XSrHe/GA
- d/Uw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=HJq/qvj4FZwE6s96MeqFpqf47Ys+qQjfKC+Vl3h47kk=;
- b=1cbLZqrli3DtFs2MGuIIhAUoqeYumvuixoAFpTWPVfHL6dLPXlja+4tUzCWqMlREPE
- qp7mDgTv2JLDqoirxomH6RVktQSyXjxb4oPa+3GOnOLpSN2n4puGm4K4kdK/ECQ2kD7b
- BBA0JH3Q6NIfPg8r7LVt/+t0B8BuyABipy82Iyy9li90iEXKnpOQBPOzwW9RSc7GctJl
- O9b5bTwNuSld0MU5V4aSLB6U3SVZHwaK8qQaaj+/UIfRQcRebrREN5bwKEoMTDEkV7uT
- fKmmKLSsrb7BtthWnQI+a0flmaryZIROOWI+K6uYml7ZiOdxR4gP5BR3s5e5UBgJln17
- skvA==
-X-Gm-Message-State: AOAM530GTXNA0ic++KdMUT50WvwNncjJDkN8TtqLKeTBZYAVtKbu1FeT
- SC80dj4uAe2/g7zz5MynUPAaag==
-X-Google-Smtp-Source: ABdhPJzxxrHLaaFrj4SdCqEuXu2hYIOTSHOTO75S5Lm125KA7NuKgtEdnmV4IUFHvVLXOo11hjpJ1w==
-X-Received: by 2002:a17:903:1d1:b0:15e:9607:d4c9 with SMTP id
- e17-20020a17090301d100b0015e9607d4c9mr24712752plh.41.1651764179686; 
- Thu, 05 May 2022 08:22:59 -0700 (PDT)
-Received: from hermes.local (204-195-112-199.wavecable.com. [204.195.112.199])
- by smtp.gmail.com with ESMTPSA id
- i14-20020a62870e000000b0050dc76281ecsm1496229pfe.198.2022.05.05.08.22.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 08:22:59 -0700 (PDT)
-Date: Thu, 5 May 2022 08:22:56 -0700
-From: Stephen Hemminger <stephen@networkplumber.org>
-To: Gonsolo <gonsolo@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: Suspend/resume error with AWUS036ACM
-Message-ID: <20220505082256.72c9ee43@hermes.local>
-In-Reply-To: <CANL0fFQRBZiVcEM0OOxkLqiAKf=rFssGetrwN6vWj5SsxX__mA@mail.gmail.com>
-References: <CANL0fFQRBZiVcEM0OOxkLqiAKf=rFssGetrwN6vWj5SsxX__mA@mail.gmail.com>
+ id 1nmeIU-00Gqb7-6O; Thu, 05 May 2022 16:25:48 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 393751F45ABD
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651767943;
+ bh=us6VQcZonVRZDNCqwnPC3/ZUDrCZ5LkU3g8yGafttv4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=DsrqAmPPKwC1WvZxKzkbXTRjRJEiP/WizLShBmIu304hhlhhHNQSz9qLISwTIbG4W
+ v+6C9yOSV7c/7M3TEtnFvJe94HChoUgbpjOn6Wq2SqjrQtu0kwsVmCwnUlmEmIBirc
+ Po88xEbIChaOX6eNz/QE3ZfTlD8UWv0968oKjyBsx0JJoQrR9SVC1tIhACa4HxuwZG
+ WLyeqN2LlBDs+gUf5pcSTlu3ulu/pfIYCtS/nxaM7Dy24gZUCy/W8KtsAuNrOhSj8m
+ PA8F2q4XiLyQWx9Yhov61BeZXMt2Dkpy3lcK9Bvw6Uo5MNELIFEBZRKrFFCt+7MaRc
+ BmlcLSapwch7g==
+Date: Thu, 5 May 2022 12:25:37 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Jiaxin Yu <jiaxin.yu@mediatek.com>, Mark Brown <broonie@kernel.org>,
+ kernel@collabora.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
+ properties
+Message-ID: <20220505162537.byiwfe2ghomxhezl@notapiano>
+References: <20220429203039.2207848-1-nfraprado@collabora.com>
+ <20220429203039.2207848-2-nfraprado@collabora.com>
+ <4826c824-40ce-5726-ed95-5be069233ca7@collabora.com>
+ <cbf2fcbae25408b95875278eb37e829bf4671430.camel@mediatek.com>
+ <d1c548bb-8a36-79bf-498d-c909bf7e7679@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <d1c548bb-8a36-79bf-498d-c909bf7e7679@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_082303_225832_0CCF12D1 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20220505_092546_618795_9FD32EE8 
+X-CRM114-Status: GOOD (  43.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,50 +73,162 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 5 May 2022 08:29:52 +0200
-Gonsolo <gonsolo@gmail.com> wrote:
+On Thu, May 05, 2022 at 10:52:45AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 05/05/22 10:48, Jiaxin Yu ha scritto:
+> > On Thu, 2022-05-05 at 10:08 +0200, AngeloGioacchino Del Regno wrote:
+> > > Il 29/04/22 22:30, N=EDcolas F. R. A. Prado ha scritto:
+> > > > The Mediatek AFE PCM controller for MT8192 allows sharing of an I2S
+> > > > bus
+> > > > between two busses. Add a pattern for these properties in the
+> > > > dt-binding.
+> > > > =
 
-> Hi all.
-> 
-> After a resume I get the following error:
-> 
->  +0,000007] UBSAN: invalid-load in
-> /build/linux-lowlatency-fSdu7c/linux-lowlatency-5.15.0/net/mac80211/status.c:1164:21
-> [  +0,000004] load of value 255 is not a valid value for type '_Bool'
-> [  +0,000004] CPU: 22 PID: 387 Comm: kworker/u256:5 Tainted: P
->   OE     5.15.0-27-lowlatency #28-Ubuntu
-> [  +0,000004] Hardware name: To Be Filled By O.E.M. To Be Filled By
-> O.E.M./X399 Phantom Gaming 6, BIOS P1.31 01/14/2021
-> [  +0,000003] Workqueue: phy0 mt76x02_mac_work [mt76x02_lib]
-> [  +0,000014] Call Trace:
-> [  +0,000003]  <TASK>
-> [  +0,000003]  show_stack+0x52/0x58
-> [  +0,000006]  dump_stack_lvl+0x4a/0x5f
-> [  +0,000007]  dump_stack+0x10/0x12
-> [  +0,000003]  ubsan_epilogue+0x9/0x45
-> [  +0,000002]  __ubsan_handle_load_invalid_value.cold+0x44/0x49
-> [  +0,000004]  ieee80211_tx_status_ext.cold+0x4e/0x5f [mac80211]
-> [  +0,000068]  mt76_tx_status_unlock+0x111/0x160 [mt76]
-> [  +0,000010]  mt76_tx_status_check+0x68/0x90 [mt76]
-> [  +0,000009]  mt76x02_mac_work+0x14b/0x240 [mt76x02_lib]
-> [  +0,000008]  process_one_work+0x222/0x3f0
-> [  +0,000006]  worker_thread+0x50/0x3f0
-> [  +0,000004]  ? process_one_work+0x3f0/0x3f0
-> [  +0,000004]  kthread+0x13b/0x160
-> [  +0,000003]  ? set_kthread_struct+0x50/0x50
-> [  +0,000004]  ret_from_fork+0x22/0x30
-> [  +0,000006]  </TASK>
-> [  +0,000001] ================================================================================
-> 
-> This is a stock Ubuntu Jammy lowlatency kernel (with Nvidia drivers).
+> > > > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> > > > ---
+> > > > =
 
-Contact Ubuntu.  The rule for upstream is if you load out of tree drivers
-than that kernel is unsupported.
+> > > >    Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml | 5
+> > > > +++++
+> > > >    1 file changed, 5 insertions(+)
+> > > > =
+
+> > > > diff --git a/Documentation/devicetree/bindings/sound/mt8192-afe-
+> > > > pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-afe-
+> > > > pcm.yaml
+> > > > index 7a25bc9b8060..5b03c8dbf318 100644
+> > > > --- a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+> > > > +++ b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+> > > > @@ -54,6 +54,11 @@ properties:
+> > > >          - const: aud_infra_clk
+> > > >          - const: aud_infra_26m_clk
+> > > > +patternProperties:
+> > > > +  "^i2s[0-35-9]-share$":
+> > > > +    description: Name of the I2S bus that is shared with this bus
+> > > > +    pattern: "^I2S[0-35-9]$"
+> > > > +
+> > > >    required:
+> > > >      - compatible
+> > > >      - interrupts
+> > > > =
+
+> > > =
+
+> > > The only other way of doing this would be to complicate this in the
+> > > driver
+> > > so that we can do something like
+> > > =
+
+> > > "i2s-share =3D <0 2>";  instead of  i2s0-share =3D "I2S2";
+> > > =
+
+> > > ...and I don't think that this would be any more straightforward than
+> > > the
+> > > provided way.
+> > > =
+
+> > > There's an improvement that we can do to that pattern description
+> > > though,
+> > > which would be explaining that declaring 'i2s0-share =3D "I2S2"' means
+> > > that
+> > > I2S2's data pin will be used as DATA-OUT, while i2s0 is DATA-IN.
+> > > =
+
+> > > Another thing that comes to mind here is that this is a MediaTek
+> > > specific
+> > > property and *not* a generic one, which means that both the driver
+> > > and
+> > > this binding should be fixed to get a "mediatek," prefix, so, this
+> > > property
+> > > should - in reality - be "mediatek,i2s[0-35-9]-share" instead.
+> > > =
+
+> > > I think that everyone agrees about that, but let's see what the
+> > > others say.
+> > > =
+
+> > > Cheers,
+> > > Angelo
+> > =
+
+> > Hi Angelo,
+> > =
+
+> > 'i2s0-share =3D "I2S2"' means that if we want use I2S0, there need open
+> > I2S2 to provide clock. Conversely, if we want to use I2S2, we don't
+> > need to open I2S0. However, MediaTek I2S0 and I2S2 hardware are
+> > generally designed as input. So usually we use 'i2s0-share =3D "I2S1"'.
+> > Even numbers represent input, odd numbers represent output.
+> > =
+
+> > Yes, I think adding the "mediatek," prefix is the right way to define a
+> > non-generic property.
+> > =
+
+
+Hi Jiaxin,
+
+thank you for the insights.
+
+> =
+
+> Hello Jiaxin,
+> =
+
+> if I get this correctly, i2s0-share =3D "I2S2" would be *invalid*... as y=
+ou
+> just explained, i2sX, where:
+> =
+
+> X =3D even number -> always DATA IN
+> X =3D odd number  -> always DATA OUT
+> =
+
+> ...this means that the dt-binding needs a pattern to specify that only odd
+> can be assigned to only even.
+
+So, the situation seems different at least on mt8192-asurada-spherion.
+Here, I2S8 is used for the headset microphone and I2S9 for the headset audi=
+o.
+Even for input and odd for output agree with Jiaxin's description. However,=
+ the
+input bus seems to be the main one, that is, disabling I2S8:
+
+	amixer cset name=3D'UL2_CH1 I2S8_CH1' 0
+	amixer cset name=3D'UL2_CH2 I2S8_CH2' 0
+
+not only disables the microphone but also the audio on the headset. If I ad=
+d =
+
+
+	i2s9-share =3D "I2S8";
+
+on the DT, then everything works, I can disable I2S8 without impacting the
+headset audio. So the pattern for the property on this platform is the oppo=
+site
+that Jiaxin mentioned. This tells me that we should keep the binding more
+generic (not assume where odds and evens go). I will still apply the other
+suggestions mentioned though.
+
+Thanks,
+N=EDcolas
+
+> =
+
+> Nicolas, take note! :-) :-)
+> =
+
+> Thanks,
+> Angelo
+> =
+
+> -- =
+
+> To unsubscribe, send mail to kernel-unsubscribe@lists.collabora.co.uk.
 
 _______________________________________________
 Linux-mediatek mailing list
