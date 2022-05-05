@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 128C7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 08:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C92C6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 08:53:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MGk007+wKrDTcd4/y/MdxS8Z93QcL/WWSEcjnTVnUnY=; b=MB/pLGYPDlW2Zr
-	szyJxzf/f/teULGyUfajljYaBzdGagt5kNoTSGzGX79QUbgBkn58Jz9bc6lXWqkUtx0CUYKJgIK2a
-	SA/urt56FhMBl9X9XNFOH7bFXonPyw8BWaRDDBc/EfPvAKRBmFpd+o662ynO0doKaBFffGS4WOF2S
-	nGUXCavSPyQNffGbZumOcLSX7Ij4q+2P9Ktu8rvJ0AShcVC5j+FMzJceqkh3q9JM3ghNRm55b5aDq
-	FyWARS3kBKbxKTph9w2s4F/JPyNV795fM+6iMePR7dAqaYHCEoQ4jk4KHwkmYSQ+o4pSYc0XeEc+0
-	ovHGhYlAwO98whYo0mJw==;
+	List-Owner; bh=i34FDYsK0ILRvPSLQo42//Fn0T5WVhWYvf38w/cGORI=; b=nF3giZDMOnWZlM
+	B0OLprj2o10Eh1oJ0BN3uxQNrRHlA72sQAeG04cMfJIv/eTsUhmciNa6gORdOb8zNtlQd1KW0xoVy
+	OzXWjBcqjvQc7sjPWo9ViaaehKVkR4QvIdx+rXhDLjavOVNdbnPHu1Dtydxj7VUfzQGsr2CSdc/RF
+	lk83O61s/RCUgmgfvJFR/v+FBUSKI1RYjn01WbO3hxXzh1CcXlfLD83t21B6fnOfMIHxMTg3Lk5bk
+	3zn0M1IpfKHZwHcBMupqT0LjMz/V5baCRu8jNMyYNsIEUWLV54XJ6gQbAPy/dzyAu6i8iOR77zHZr
+	HsIGjmf7IT/7d5eR0uGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmXDU-00EqYc-1W; Thu, 05 May 2022 08:52:08 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1nmXEQ-00Eqw6-CP; Thu, 05 May 2022 08:53:06 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmXDQ-00EqX5-Tp
- for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 08:52:06 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id x52so3126078pfu.11
- for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 01:52:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=VwylQrsAGt1pODen6Yx6oRq8wvZvaler6x63zFeemjM=;
- b=FLu+4l5iq0cTeLr34zKB+dJcpMejhiqqpJlsKL9ttR0QigpelBGLyPCSnIiiYBYtJp
- FiSsehmGfYEfP26CgXR5ITrso79t6PMhZZdZxDgOzriJkuqaIcihgMEK1V0LsM5JQWnj
- NHnlhIVY7wuiefZxsOq09VdkARxruo5m2Btb5kNqAsGvwkvOA2c8A+dz267Ynxib8cU8
- wU9drjRMI3Gs6R15w7QzDYZgXjkampL0mUOPGHHItEHsCmbUeGcwEAhaqiNTViWg64ot
- 5nO4va1yn8R+3MdvLQYLJn+QcbBnPttDYE2ckse3S93AJijv4o0T3wXJGieEdtntUnHZ
- k04Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=VwylQrsAGt1pODen6Yx6oRq8wvZvaler6x63zFeemjM=;
- b=MG2NMxzXEo/SFAlW7bBfcxKQbxUQ+FsMz6rXOJojUMF3wZQJo0H1Cj+BWPrbr2DoIv
- duzGGlFqOVZ7+615wbKwRAwaHDMnO+vrQm2p2MvC5TTNPJP+ro904yamNRJljS4TbYcD
- wOVyd7L+PW32/omCgfaXvNCjE//sGSCivtnfRhz6QUfqhWwuVi0eAHbt3BfQB+VbPmC/
- O8CixaClvN+aUEimfbaVM0tus+kMszN8Gpekf0q+lKZGl2pVVa5ZLcNRdnUOaA8Jun5N
- 6sOdzFPYUKQjvGQaNsDi3eRUYQ3P7jysWwDhjchejCj0aWA3yEFKlI8svG9caFYbVqpy
- 6nKA==
-X-Gm-Message-State: AOAM533G4IdsrGZve6NppUb842i5piwNDg3cptcCaTyQOzC9KBJMwJxp
- Suegh7e845jHyNfVP9nA9JdSVA==
-X-Google-Smtp-Source: ABdhPJxSKwaqeGfh4/f+8ZXuLhUKlJ82K+YgosKX484l1tnWZUJol0h9AeYMEr7O9PHzGEm836Zk4w==
-X-Received: by 2002:a65:614e:0:b0:380:bfd9:d4ea with SMTP id
- o14-20020a65614e000000b00380bfd9d4eamr21079682pgv.92.1651740723313; 
- Thu, 05 May 2022 01:52:03 -0700 (PDT)
-Received: from localhost ([122.162.234.2]) by smtp.gmail.com with ESMTPSA id
- h16-20020a170902f55000b0015e8d4eb2cbsm938677plf.277.2022.05.05.01.52.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 May 2022 01:52:02 -0700 (PDT)
-Date: Thu, 5 May 2022 14:22:00 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: rafael@kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
- roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com,
- angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v5 3/9] cpufreq: mediatek: Move voltage limits to
- platform data
-Message-ID: <20220505085200.rzwzblirsprkvcz7@vireshk-i7>
-References: <20220504130540.5902-1-rex-bc.chen@mediatek.com>
- <20220504130540.5902-4-rex-bc.chen@mediatek.com>
+ id 1nmXEA-00Eqov-8L; Thu, 05 May 2022 08:52:51 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id CF7DE1F44DA3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651740768;
+ bh=gL+MfgXtaLijztUn2+qpxh5p8GDURmo5rL/MwSHGVsY=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=c98MzQTxkRnVSk9Y+nNeRtpz2nU6xrCYIWJQimUmRSwW9uenjftZc1eD/cOee1MHQ
+ 5G4/Tk1+ijKUdhRWjM0GwzWnHyRH5DEBBoTOD4wohGtfF8RI8OyOwzmVTKxwo1OPdg
+ nrpq3cmNtYz0A4e3l37u8C/zJnM15A7vecvSz6Y9905FFqr11PRWSzjFIm10ioAVjA
+ ftTVjEkvzvzTHsQfDU2ZgSuFOUWmQq//X0GizA5alJKjzMMlPAtzWrbD984EFnXcaA
+ QiLKc9AgGbD0SnN9CLz+SyVzjakLqDOfvJR4dymNugj36+afvQyhQH11aK+tCLaAVx
+ VXIhzovJg2miQ==
+Message-ID: <d1c548bb-8a36-79bf-498d-c909bf7e7679@collabora.com>
+Date: Thu, 5 May 2022 10:52:45 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220504130540.5902-4-rex-bc.chen@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
+ properties
+Content-Language: en-US
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Mark Brown <broonie@kernel.org>
+Cc: kernel@collabora.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220429203039.2207848-1-nfraprado@collabora.com>
+ <20220429203039.2207848-2-nfraprado@collabora.com>
+ <4826c824-40ce-5726-ed95-5be069233ca7@collabora.com>
+ <cbf2fcbae25408b95875278eb37e829bf4671430.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <cbf2fcbae25408b95875278eb37e829bf4671430.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_015205_039149_E4116FC9 
-X-CRM114-Status: GOOD (  31.03  )
+X-CRM114-CacheID: sfid-20220505_015250_483434_884A8BF2 
+X-CRM114-Status: GOOD (  22.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,262 +74,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04-05-22, 21:05, Rex-BC Chen wrote:
-> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> 
-> Voltages and shifts are defined as macros originally.
-> There are different requirements of these values for each MediaTek SoCs.
-> Therefore, we add the platform data and move these values into it.
-> 
-> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 90 ++++++++++++++++++++----------
->  1 file changed, 61 insertions(+), 29 deletions(-)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 363ebecb2c80..80a3d4cd49ed 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -10,15 +10,21 @@
->  #include <linux/cpumask.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> +#include <linux/of_platform.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_opp.h>
->  #include <linux/regulator/consumer.h>
->  
-> -#define MIN_VOLT_SHIFT		(100000)
-> -#define MAX_VOLT_SHIFT		(200000)
-> -#define MAX_VOLT_LIMIT		(1150000)
->  #define VOLT_TOL		(10000)
->  
-> +struct mtk_cpufreq_platform_data {
-> +	int min_volt_shift;
-> +	int max_volt_shift;
-> +	int proc_max_volt;
-> +	int sram_min_volt;
-> +	int sram_max_volt;
-> +};
-> +
->  /*
->   * The struct mtk_cpu_dvfs_info holds necessary information for doing CPU DVFS
->   * on each CPU power/clock domain of Mediatek SoCs. Each CPU cluster in
-> @@ -46,8 +52,11 @@ struct mtk_cpu_dvfs_info {
->  	struct notifier_block opp_nb;
->  	unsigned int opp_cpu;
->  	unsigned long opp_freq;
-> +	const struct mtk_cpufreq_platform_data *soc_data;
->  };
->  
-> +static struct platform_device *cpufreq_pdev;
-> +
->  static LIST_HEAD(dvfs_info_list);
->  
->  static struct mtk_cpu_dvfs_info *mtk_cpu_dvfs_info_lookup(int cpu)
-> @@ -65,6 +74,7 @@ static struct mtk_cpu_dvfs_info *mtk_cpu_dvfs_info_lookup(int cpu)
->  static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
->  					int new_vproc)
->  {
-> +	const struct mtk_cpufreq_platform_data *soc_data = info->soc_data;
->  	struct regulator *proc_reg = info->proc_reg;
->  	struct regulator *sram_reg = info->sram_reg;
->  	int pre_vproc, pre_vsram, new_vsram, vsram, vproc, ret;
-> @@ -76,7 +86,8 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
->  		return pre_vproc;
->  	}
->  	/* Vsram should not exceed the maximum allowed voltage of SoC. */
-> -	new_vsram = min(new_vproc + MIN_VOLT_SHIFT, MAX_VOLT_LIMIT);
-> +	new_vsram = min(new_vproc + soc_data->min_volt_shift,
-> +			soc_data->sram_max_volt);
->  
->  	if (pre_vproc < new_vproc) {
->  		/*
-> @@ -99,10 +110,11 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
->  				return pre_vproc;
->  			}
->  
-> -			vsram = min(new_vsram, pre_vproc + MAX_VOLT_SHIFT);
-> +			vsram = min(new_vsram,
-> +				    pre_vproc + soc_data->min_volt_shift);
->  
-> -			if (vsram + VOLT_TOL >= MAX_VOLT_LIMIT) {
-> -				vsram = MAX_VOLT_LIMIT;
-> +			if (vsram + VOLT_TOL >= soc_data->sram_max_volt) {
-> +				vsram = soc_data->sram_max_volt;
->  
->  				/*
->  				 * If the target Vsram hits the maximum voltage,
-> @@ -120,7 +132,7 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
->  				ret = regulator_set_voltage(sram_reg, vsram,
->  							    vsram + VOLT_TOL);
->  
-> -				vproc = vsram - MIN_VOLT_SHIFT;
-> +				vproc = vsram - soc_data->min_volt_shift;
->  			}
->  			if (ret)
->  				return ret;
-> @@ -154,7 +166,8 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
->  				return pre_vsram;
->  			}
->  
-> -			vproc = max(new_vproc, pre_vsram - MAX_VOLT_SHIFT);
-> +			vproc = max(new_vproc,
-> +				    pre_vsram - soc_data->max_volt_shift);
->  			ret = regulator_set_voltage(proc_reg, vproc,
->  						    vproc + VOLT_TOL);
->  			if (ret)
-> @@ -163,10 +176,11 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
->  			if (vproc == new_vproc)
->  				vsram = new_vsram;
->  			else
-> -				vsram = max(new_vsram, vproc + MIN_VOLT_SHIFT);
-> +				vsram = max(new_vsram,
-> +					    vproc + soc_data->min_volt_shift);
->  
-> -			if (vsram + VOLT_TOL >= MAX_VOLT_LIMIT) {
-> -				vsram = MAX_VOLT_LIMIT;
-> +			if (vsram + VOLT_TOL >= soc_data->sram_max_volt) {
-> +				vsram = soc_data->sram_max_volt;
->  
->  				/*
->  				 * If the target Vsram hits the maximum voltage,
-> @@ -197,13 +211,14 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
->  
->  static int mtk_cpufreq_set_voltage(struct mtk_cpu_dvfs_info *info, int vproc)
->  {
-> +	const struct mtk_cpufreq_platform_data *soc_data = info->soc_data;
->  	int ret;
->  
->  	if (info->need_voltage_tracking)
->  		ret = mtk_cpufreq_voltage_tracking(info, vproc);
->  	else
->  		ret = regulator_set_voltage(info->proc_reg, vproc,
-> -					    MAX_VOLT_LIMIT);
-> +					    soc_data->proc_max_volt);
->  	if (!ret)
->  		info->pre_vproc = vproc;
->  
-> @@ -583,9 +598,17 @@ static struct cpufreq_driver mtk_cpufreq_driver = {
->  
->  static int mtk_cpufreq_probe(struct platform_device *pdev)
->  {
-> +	const struct of_device_id *match;
->  	struct mtk_cpu_dvfs_info *info, *tmp;
->  	int cpu, ret;
->  
-> +	match = dev_get_platdata(&pdev->dev);
-> +	if (!match || !match->data) {
-> +		dev_err(&pdev->dev,
-> +			"failed to get mtk cpufreq platform data\n");
-> +		return -ENODEV;
-> +	}
-> +
->  	for_each_possible_cpu(cpu) {
->  		info = mtk_cpu_dvfs_info_lookup(cpu);
->  		if (info)
-> @@ -597,6 +620,7 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
->  			goto release_dvfs_info_list;
->  		}
->  
-> +		info->soc_data = match->data;
->  		ret = mtk_cpu_dvfs_info_init(info, cpu);
->  		if (ret) {
->  			dev_err(&pdev->dev,
-> @@ -632,20 +656,27 @@ static struct platform_driver mtk_cpufreq_platdrv = {
->  	.probe		= mtk_cpufreq_probe,
->  };
->  
-> +static const struct mtk_cpufreq_platform_data mt2701_platform_data = {
-> +	.min_volt_shift = 100000,
-> +	.max_volt_shift = 200000,
-> +	.proc_max_volt = 1150000,
-> +	.sram_min_volt = 0,
-> +	.sram_max_volt = 1150000,
-> +};
-> +
->  /* List of machines supported by this driver */
->  static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
-> -	{ .compatible = "mediatek,mt2701", },
-> -	{ .compatible = "mediatek,mt2712", },
-> -	{ .compatible = "mediatek,mt7622", },
-> -	{ .compatible = "mediatek,mt7623", },
-> -	{ .compatible = "mediatek,mt8167", },
-> -	{ .compatible = "mediatek,mt817x", },
-> -	{ .compatible = "mediatek,mt8173", },
-> -	{ .compatible = "mediatek,mt8176", },
-> -	{ .compatible = "mediatek,mt8183", },
-> -	{ .compatible = "mediatek,mt8365", },
-> -	{ .compatible = "mediatek,mt8516", },
-> -
-> +	{ .compatible = "mediatek,mt2701", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt2712", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt7622", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt7623", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt8167", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt817x", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt8173", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt8176", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt8183", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt8365", .data = &mt2701_platform_data },
-> +	{ .compatible = "mediatek,mt8516", .data = &mt2701_platform_data },
->  	{ }
->  };
->  MODULE_DEVICE_TABLE(of, mtk_cpufreq_machines);
-> @@ -654,7 +685,6 @@ static int __init mtk_cpufreq_driver_init(void)
->  {
->  	struct device_node *np;
->  	const struct of_device_id *match;
-> -	struct platform_device *pdev;
->  	int err;
->  
->  	np = of_find_node_by_path("/");
-> @@ -678,11 +708,12 @@ static int __init mtk_cpufreq_driver_init(void)
->  	 * and the device registration codes are put here to handle defer
->  	 * probing.
->  	 */
-> -	pdev = platform_device_register_simple("mtk-cpufreq", -1, NULL, 0);
-> -	if (IS_ERR(pdev)) {
-> +	cpufreq_pdev = platform_device_register_data(NULL, "mtk-cpufreq", -1,
-> +						     match, sizeof(*match));
-
-Why pass match here instead of just the data ?
-
-> +	if (IS_ERR(cpufreq_pdev)) {
->  		pr_err("failed to register mtk-cpufreq platform device\n");
->  		platform_driver_unregister(&mtk_cpufreq_platdrv);
-> -		return PTR_ERR(pdev);
-> +		return PTR_ERR(cpufreq_pdev);
->  	}
->  
->  	return 0;
-> @@ -691,6 +722,7 @@ module_init(mtk_cpufreq_driver_init)
->  
->  static void __exit mtk_cpufreq_driver_exit(void)
->  {
-> +	platform_device_unregister(cpufreq_pdev);
-
-You fixed a bug silently :)
-
-That's not right.
-
->  	platform_driver_unregister(&mtk_cpufreq_platdrv);
->  }
->  module_exit(mtk_cpufreq_driver_exit)
-> -- 
-> 2.18.0
-
--- 
-viresh
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWwgMDUvMDUvMjIgMTA6NDgsIEppYXhpbiBZdSBoYSBzY3JpdHRvOgo+IE9uIFRodSwgMjAyMi0w
+NS0wNSBhdCAxMDowOCArMDIwMCwgQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gd3JvdGU6Cj4+
+IElsIDI5LzA0LzIyIDIyOjMwLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyBoYSBzY3JpdHRvOgo+
+Pj4gVGhlIE1lZGlhdGVrIEFGRSBQQ00gY29udHJvbGxlciBmb3IgTVQ4MTkyIGFsbG93cyBzaGFy
+aW5nIG9mIGFuIEkyUwo+Pj4gYnVzCj4+PiBiZXR3ZWVuIHR3byBidXNzZXMuIEFkZCBhIHBhdHRl
+cm4gZm9yIHRoZXNlIHByb3BlcnRpZXMgaW4gdGhlCj4+PiBkdC1iaW5kaW5nLgo+Pj4KPj4+IFNp
+Z25lZC1vZmYtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIDxuZnJhcHJhZG9AY29sbGFib3Jh
+LmNvbT4KPj4+IC0tLQo+Pj4KPj4+ICAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9zb3VuZC9tdDgxOTItYWZlLXBjbS55YW1sIHwgNQo+Pj4gKysrKysKPj4+ICAgIDEgZmlsZSBj
+aGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvdW5kL210ODE5Mi1hZmUtCj4+PiBwY20ueWFtbCBiL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9tdDgxOTItYWZlLQo+Pj4gcGNt
+LnlhbWwKPj4+IGluZGV4IDdhMjViYzliODA2MC4uNWIwM2M4ZGJmMzE4IDEwMDY0NAo+Pj4gLS0t
+IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvdW5kL210ODE5Mi1hZmUtcGNt
+LnlhbWwKPj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9t
+dDgxOTItYWZlLXBjbS55YW1sCj4+PiBAQCAtNTQsNiArNTQsMTEgQEAgcHJvcGVydGllczoKPj4+
+ICAgICAgICAgIC0gY29uc3Q6IGF1ZF9pbmZyYV9jbGsKPj4+ICAgICAgICAgIC0gY29uc3Q6IGF1
+ZF9pbmZyYV8yNm1fY2xrCj4+PiAgICAKPj4+ICtwYXR0ZXJuUHJvcGVydGllczoKPj4+ICsgICJe
+aTJzWzAtMzUtOV0tc2hhcmUkIjoKPj4+ICsgICAgZGVzY3JpcHRpb246IE5hbWUgb2YgdGhlIEky
+UyBidXMgdGhhdCBpcyBzaGFyZWQgd2l0aCB0aGlzIGJ1cwo+Pj4gKyAgICBwYXR0ZXJuOiAiXkky
+U1swLTM1LTldJCIKPj4+ICsKPj4+ICAgIHJlcXVpcmVkOgo+Pj4gICAgICAtIGNvbXBhdGlibGUK
+Pj4+ICAgICAgLSBpbnRlcnJ1cHRzCj4+Pgo+Pgo+PiBUaGUgb25seSBvdGhlciB3YXkgb2YgZG9p
+bmcgdGhpcyB3b3VsZCBiZSB0byBjb21wbGljYXRlIHRoaXMgaW4gdGhlCj4+IGRyaXZlcgo+PiBz
+byB0aGF0IHdlIGNhbiBkbyBzb21ldGhpbmcgbGlrZQo+Pgo+PiAiaTJzLXNoYXJlID0gPDAgMj4i
+OyAgaW5zdGVhZCBvZiAgaTJzMC1zaGFyZSA9ICJJMlMyIjsKPj4KPj4gLi4uYW5kIEkgZG9uJ3Qg
+dGhpbmsgdGhhdCB0aGlzIHdvdWxkIGJlIGFueSBtb3JlIHN0cmFpZ2h0Zm9yd2FyZCB0aGFuCj4+
+IHRoZQo+PiBwcm92aWRlZCB3YXkuCj4+Cj4+IFRoZXJlJ3MgYW4gaW1wcm92ZW1lbnQgdGhhdCB3
+ZSBjYW4gZG8gdG8gdGhhdCBwYXR0ZXJuIGRlc2NyaXB0aW9uCj4+IHRob3VnaCwKPj4gd2hpY2gg
+d291bGQgYmUgZXhwbGFpbmluZyB0aGF0IGRlY2xhcmluZyAnaTJzMC1zaGFyZSA9ICJJMlMyIicg
+bWVhbnMKPj4gdGhhdAo+PiBJMlMyJ3MgZGF0YSBwaW4gd2lsbCBiZSB1c2VkIGFzIERBVEEtT1VU
+LCB3aGlsZSBpMnMwIGlzIERBVEEtSU4uCj4+Cj4+IEFub3RoZXIgdGhpbmcgdGhhdCBjb21lcyB0
+byBtaW5kIGhlcmUgaXMgdGhhdCB0aGlzIGlzIGEgTWVkaWFUZWsKPj4gc3BlY2lmaWMKPj4gcHJv
+cGVydHkgYW5kICpub3QqIGEgZ2VuZXJpYyBvbmUsIHdoaWNoIG1lYW5zIHRoYXQgYm90aCB0aGUg
+ZHJpdmVyCj4+IGFuZAo+PiB0aGlzIGJpbmRpbmcgc2hvdWxkIGJlIGZpeGVkIHRvIGdldCBhICJt
+ZWRpYXRlaywiIHByZWZpeCwgc28sIHRoaXMKPj4gcHJvcGVydHkKPj4gc2hvdWxkIC0gaW4gcmVh
+bGl0eSAtIGJlICJtZWRpYXRlayxpMnNbMC0zNS05XS1zaGFyZSIgaW5zdGVhZC4KPj4KPj4gSSB0
+aGluayB0aGF0IGV2ZXJ5b25lIGFncmVlcyBhYm91dCB0aGF0LCBidXQgbGV0J3Mgc2VlIHdoYXQg
+dGhlCj4+IG90aGVycyBzYXkuCj4+Cj4+IENoZWVycywKPj4gQW5nZWxvCj4gCj4gSGkgQW5nZWxv
+LAo+IAo+ICdpMnMwLXNoYXJlID0gIkkyUzIiJyBtZWFucyB0aGF0IGlmIHdlIHdhbnQgdXNlIEky
+UzAsIHRoZXJlIG5lZWQgb3Blbgo+IEkyUzIgdG8gcHJvdmlkZSBjbG9jay4gQ29udmVyc2VseSwg
+aWYgd2Ugd2FudCB0byB1c2UgSTJTMiwgd2UgZG9uJ3QKPiBuZWVkIHRvIG9wZW4gSTJTMC4gSG93
+ZXZlciwgTWVkaWFUZWsgSTJTMCBhbmQgSTJTMiBoYXJkd2FyZSBhcmUKPiBnZW5lcmFsbHkgZGVz
+aWduZWQgYXMgaW5wdXQuIFNvIHVzdWFsbHkgd2UgdXNlICdpMnMwLXNoYXJlID0gIkkyUzEiJy4K
+PiBFdmVuIG51bWJlcnMgcmVwcmVzZW50IGlucHV0LCBvZGQgbnVtYmVycyByZXByZXNlbnQgb3V0
+cHV0Lgo+IAo+IFllcywgSSB0aGluayBhZGRpbmcgdGhlICJtZWRpYXRlaywiIHByZWZpeCBpcyB0
+aGUgcmlnaHQgd2F5IHRvIGRlZmluZSBhCj4gbm9uLWdlbmVyaWMgcHJvcGVydHkuCj4gCgpIZWxs
+byBKaWF4aW4sCgppZiBJIGdldCB0aGlzIGNvcnJlY3RseSwgaTJzMC1zaGFyZSA9ICJJMlMyIiB3
+b3VsZCBiZSAqaW52YWxpZCouLi4gYXMgeW91Cmp1c3QgZXhwbGFpbmVkLCBpMnNYLCB3aGVyZToK
+ClggPSBldmVuIG51bWJlciAtPiBhbHdheXMgREFUQSBJTgpYID0gb2RkIG51bWJlciAgLT4gYWx3
+YXlzIERBVEEgT1VUCgouLi50aGlzIG1lYW5zIHRoYXQgdGhlIGR0LWJpbmRpbmcgbmVlZHMgYSBw
+YXR0ZXJuIHRvIHNwZWNpZnkgdGhhdCBvbmx5IG9kZApjYW4gYmUgYXNzaWduZWQgdG8gb25seSBl
+dmVuLgoKTmljb2xhcywgdGFrZSBub3RlISA6LSkgOi0pCgpUaGFua3MsCkFuZ2VsbwoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
+bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
