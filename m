@@ -4,94 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F1FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 08:47:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 128C7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 08:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=62q2pfSjmvTXeZxIEFgfhmO/D5RwsjJxlNg939hTrxQ=; b=PG0+t7+zPZgbNj
-	2wZaMYen0VmgpbYxWnror8CdRcQNGuaGTjk0UqirdR9el7ePCkQFGdE/6SbOgR9+kGLd9l+otS6sU
-	tM4cY/2V4fbOBi98Dzh2CeKrgKGi7KZXVxS7wKKUQBHjViFzahFbeWRbwLn4DHMrWrLjGfXbwAqtJ
-	p9wJSRnHGdye8+thoX0AX/E3iLdsCToSsRbIMvRWfG94I7Er91EdTnX/ETm77xLk4kAZhBBKvrbmC
-	0te/pNA+TJaUK/D3tG0mKHHaZSAjLqMM9eRYP/w3HCjnJxyfhGd3gE6U0SYAT46pv7XfiinMrEvAr
-	iPax+FczWyWsT6lXJqiA==;
+	List-Owner; bh=MGk007+wKrDTcd4/y/MdxS8Z93QcL/WWSEcjnTVnUnY=; b=MB/pLGYPDlW2Zr
+	szyJxzf/f/teULGyUfajljYaBzdGagt5kNoTSGzGX79QUbgBkn58Jz9bc6lXWqkUtx0CUYKJgIK2a
+	SA/urt56FhMBl9X9XNFOH7bFXonPyw8BWaRDDBc/EfPvAKRBmFpd+o662ynO0doKaBFffGS4WOF2S
+	nGUXCavSPyQNffGbZumOcLSX7Ij4q+2P9Ktu8rvJ0AShcVC5j+FMzJceqkh3q9JM3ghNRm55b5aDq
+	FyWARS3kBKbxKTph9w2s4F/JPyNV795fM+6iMePR7dAqaYHCEoQ4jk4KHwkmYSQ+o4pSYc0XeEc+0
+	ovHGhYlAwO98whYo0mJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmX8o-00Eotx-3U; Thu, 05 May 2022 08:47:18 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1nmXDU-00EqYc-1W; Thu, 05 May 2022 08:52:08 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmX8Y-00EoiP-MZ
- for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 08:47:05 +0000
-Received: by mail-wr1-x434.google.com with SMTP id q23so5153189wra.1
- for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 01:46:58 -0700 (PDT)
+ id 1nmXDQ-00EqX5-Tp
+ for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 08:52:06 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id x52so3126078pfu.11
+ for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 01:52:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=KAi9SgYYEJZdQCddUzbx52lypx3cIglFyl/qHafebhw=;
- b=tkNfdzaaxw1oNzzHEFi5PsCP9pSRB2g18WUgVkc6DnnNJz4opSwgzEVFoUUkq98Kud
- DmFNXaVYExw1NuJr8DqujznLa2az0lWDiTc0qWvNUCAP5r5OW9iSR8QEqSlWZJONTS4P
- F30VkUEk9v9uHoJqLqcvFr87lcceheNYz87udcrXOAHtFnIyEOvlcZaxaIZkOdNhT30Y
- dB4ud6EWIxegH+EYbtLr/2s0zJ21Uw2TaCRSfxNT1dPyuAPqkA2Ti2WZXu8bcR/8mxNC
- eMgh7vO/iGZwuEnOROZ+GPB0E6E/imyXgauO3i4m/vz/qEwWxwP3ttMVK1mz2Ist0shg
- sbpQ==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=VwylQrsAGt1pODen6Yx6oRq8wvZvaler6x63zFeemjM=;
+ b=FLu+4l5iq0cTeLr34zKB+dJcpMejhiqqpJlsKL9ttR0QigpelBGLyPCSnIiiYBYtJp
+ FiSsehmGfYEfP26CgXR5ITrso79t6PMhZZdZxDgOzriJkuqaIcihgMEK1V0LsM5JQWnj
+ NHnlhIVY7wuiefZxsOq09VdkARxruo5m2Btb5kNqAsGvwkvOA2c8A+dz267Ynxib8cU8
+ wU9drjRMI3Gs6R15w7QzDYZgXjkampL0mUOPGHHItEHsCmbUeGcwEAhaqiNTViWg64ot
+ 5nO4va1yn8R+3MdvLQYLJn+QcbBnPttDYE2ckse3S93AJijv4o0T3wXJGieEdtntUnHZ
+ k04Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=KAi9SgYYEJZdQCddUzbx52lypx3cIglFyl/qHafebhw=;
- b=eC+qX0iRlbTqUOWzRvW9MtghvnG6t8B8xqiyr12qlJiUxRr0VUEzg3nxPn0lYafyAJ
- iFdpkuNMD/6zLdzw/0LqCDw2yi4FtcuQDfs5oVzSVUzyFePfX/8v02niq4cLNcDLXXjq
- YRncRb581m7xrNrSP4HJZoveCVdZ56hp5zNzA30DbHudJPKfw5Q33DgorpKUUkMSiyOI
- 1GLpdpux6bATR39gx4qsvbv3er9XrOyLVVmADhUCKGw/9MxOGx0+9b0KbcIke9AIpAxM
- g6qMeMJ+fGcXw7sWSb7ocENMtdg3T3MtR0cafRtoTL3JLRskTA2zz03FOkATbB0XVUSW
- ir8g==
-X-Gm-Message-State: AOAM532Zc/0oOFn2B/zGww08ZGY9vnC86Xu62d7CmynjJyTRYBf3JKjY
- z6IdIeZIGwcZmD7LqFYW0UHLIA==
-X-Google-Smtp-Source: ABdhPJx0cG82J35HyxF+U/lAjaHUyieUfdukDsGukXiyDflYgKWosvfKkWmN+5Kvijh4a8XoYMPHpw==
-X-Received: by 2002:a5d:6551:0:b0:20a:e23c:a7fa with SMTP id
- z17-20020a5d6551000000b0020ae23ca7famr19657153wrv.535.1651740417622; 
- Thu, 05 May 2022 01:46:57 -0700 (PDT)
-Received: from [192.168.0.217] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- 67-20020a1c1946000000b003942a244f2csm6771728wmz.5.2022.05.05.01.46.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 May 2022 01:46:57 -0700 (PDT)
-Message-ID: <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
-Date: Thu, 5 May 2022 10:46:55 +0200
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=VwylQrsAGt1pODen6Yx6oRq8wvZvaler6x63zFeemjM=;
+ b=MG2NMxzXEo/SFAlW7bBfcxKQbxUQ+FsMz6rXOJojUMF3wZQJo0H1Cj+BWPrbr2DoIv
+ duzGGlFqOVZ7+615wbKwRAwaHDMnO+vrQm2p2MvC5TTNPJP+ro904yamNRJljS4TbYcD
+ wOVyd7L+PW32/omCgfaXvNCjE//sGSCivtnfRhz6QUfqhWwuVi0eAHbt3BfQB+VbPmC/
+ O8CixaClvN+aUEimfbaVM0tus+kMszN8Gpekf0q+lKZGl2pVVa5ZLcNRdnUOaA8Jun5N
+ 6sOdzFPYUKQjvGQaNsDi3eRUYQ3P7jysWwDhjchejCj0aWA3yEFKlI8svG9caFYbVqpy
+ 6nKA==
+X-Gm-Message-State: AOAM533G4IdsrGZve6NppUb842i5piwNDg3cptcCaTyQOzC9KBJMwJxp
+ Suegh7e845jHyNfVP9nA9JdSVA==
+X-Google-Smtp-Source: ABdhPJxSKwaqeGfh4/f+8ZXuLhUKlJ82K+YgosKX484l1tnWZUJol0h9AeYMEr7O9PHzGEm836Zk4w==
+X-Received: by 2002:a65:614e:0:b0:380:bfd9:d4ea with SMTP id
+ o14-20020a65614e000000b00380bfd9d4eamr21079682pgv.92.1651740723313; 
+ Thu, 05 May 2022 01:52:03 -0700 (PDT)
+Received: from localhost ([122.162.234.2]) by smtp.gmail.com with ESMTPSA id
+ h16-20020a170902f55000b0015e8d4eb2cbsm938677plf.277.2022.05.05.01.52.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 May 2022 01:52:02 -0700 (PDT)
+Date: Thu, 5 May 2022 14:22:00 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: rafael@kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
+ roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com,
+ angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v5 3/9] cpufreq: mediatek: Move voltage limits to
+ platform data
+Message-ID: <20220505085200.rzwzblirsprkvcz7@vireshk-i7>
+References: <20220504130540.5902-1-rex-bc.chen@mediatek.com>
+ <20220504130540.5902-4-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
- BPI-R2-Pro board
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
-References: <20220430130347.15190-1-linux@fw-web.de>
- <20220430130347.15190-5-linux@fw-web.de>
- <20220504152450.cs2afa4hwkqp5b5m@skbuf>
- <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
- <20220504154720.62cwrz7frjkjbb7u@skbuf>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220504154720.62cwrz7frjkjbb7u@skbuf>
+Content-Disposition: inline
+In-Reply-To: <20220504130540.5902-4-rex-bc.chen@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_014702_803414_87BF77F7 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20220505_015205_039149_E4116FC9 
+X-CRM114-Status: GOOD (  31.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,35 +96,255 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/05/2022 17:47, Vladimir Oltean wrote:
->>
->> current device-tree nodes using "switch" and "ports"
->>
->> see discussioon here about make it fixed to "ports" property instead of PatternProperties including optional "ethernet-"
->>
->> https://patchwork.kernel.org/project/linux-mediatek/patch/20220502153238.85090-1-linux@fw-web.de/#24843155
+On 04-05-22, 21:05, Rex-BC Chen wrote:
+> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > 
-> Hmm, I don't get why Krzysztof said to just keep what is used in
-> existing device trees. The schema validator should describe what is
-> valid, 
+> Voltages and shifts are defined as macros originally.
+> There are different requirements of these values for each MediaTek SoCs.
+> Therefore, we add the platform data and move these values into it.
+> 
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 90 ++++++++++++++++++++----------
+>  1 file changed, 61 insertions(+), 29 deletions(-)
+> 
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index 363ebecb2c80..80a3d4cd49ed 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -10,15 +10,21 @@
+>  #include <linux/cpumask.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+> +#include <linux/of_platform.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_opp.h>
+>  #include <linux/regulator/consumer.h>
+>  
+> -#define MIN_VOLT_SHIFT		(100000)
+> -#define MAX_VOLT_SHIFT		(200000)
+> -#define MAX_VOLT_LIMIT		(1150000)
+>  #define VOLT_TOL		(10000)
+>  
+> +struct mtk_cpufreq_platform_data {
+> +	int min_volt_shift;
+> +	int max_volt_shift;
+> +	int proc_max_volt;
+> +	int sram_min_volt;
+> +	int sram_max_volt;
+> +};
+> +
+>  /*
+>   * The struct mtk_cpu_dvfs_info holds necessary information for doing CPU DVFS
+>   * on each CPU power/clock domain of Mediatek SoCs. Each CPU cluster in
+> @@ -46,8 +52,11 @@ struct mtk_cpu_dvfs_info {
+>  	struct notifier_block opp_nb;
+>  	unsigned int opp_cpu;
+>  	unsigned long opp_freq;
+> +	const struct mtk_cpufreq_platform_data *soc_data;
+>  };
+>  
+> +static struct platform_device *cpufreq_pdev;
+> +
+>  static LIST_HEAD(dvfs_info_list);
+>  
+>  static struct mtk_cpu_dvfs_info *mtk_cpu_dvfs_info_lookup(int cpu)
+> @@ -65,6 +74,7 @@ static struct mtk_cpu_dvfs_info *mtk_cpu_dvfs_info_lookup(int cpu)
+>  static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  					int new_vproc)
+>  {
+> +	const struct mtk_cpufreq_platform_data *soc_data = info->soc_data;
+>  	struct regulator *proc_reg = info->proc_reg;
+>  	struct regulator *sram_reg = info->sram_reg;
+>  	int pre_vproc, pre_vsram, new_vsram, vsram, vproc, ret;
+> @@ -76,7 +86,8 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  		return pre_vproc;
+>  	}
+>  	/* Vsram should not exceed the maximum allowed voltage of SoC. */
+> -	new_vsram = min(new_vproc + MIN_VOLT_SHIFT, MAX_VOLT_LIMIT);
+> +	new_vsram = min(new_vproc + soc_data->min_volt_shift,
+> +			soc_data->sram_max_volt);
+>  
+>  	if (pre_vproc < new_vproc) {
+>  		/*
+> @@ -99,10 +110,11 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  				return pre_vproc;
+>  			}
+>  
+> -			vsram = min(new_vsram, pre_vproc + MAX_VOLT_SHIFT);
+> +			vsram = min(new_vsram,
+> +				    pre_vproc + soc_data->min_volt_shift);
+>  
+> -			if (vsram + VOLT_TOL >= MAX_VOLT_LIMIT) {
+> -				vsram = MAX_VOLT_LIMIT;
+> +			if (vsram + VOLT_TOL >= soc_data->sram_max_volt) {
+> +				vsram = soc_data->sram_max_volt;
+>  
+>  				/*
+>  				 * If the target Vsram hits the maximum voltage,
+> @@ -120,7 +132,7 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  				ret = regulator_set_voltage(sram_reg, vsram,
+>  							    vsram + VOLT_TOL);
+>  
+> -				vproc = vsram - MIN_VOLT_SHIFT;
+> +				vproc = vsram - soc_data->min_volt_shift;
+>  			}
+>  			if (ret)
+>  				return ret;
+> @@ -154,7 +166,8 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  				return pre_vsram;
+>  			}
+>  
+> -			vproc = max(new_vproc, pre_vsram - MAX_VOLT_SHIFT);
+> +			vproc = max(new_vproc,
+> +				    pre_vsram - soc_data->max_volt_shift);
+>  			ret = regulator_set_voltage(proc_reg, vproc,
+>  						    vproc + VOLT_TOL);
+>  			if (ret)
+> @@ -163,10 +176,11 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  			if (vproc == new_vproc)
+>  				vsram = new_vsram;
+>  			else
+> -				vsram = max(new_vsram, vproc + MIN_VOLT_SHIFT);
+> +				vsram = max(new_vsram,
+> +					    vproc + soc_data->min_volt_shift);
+>  
+> -			if (vsram + VOLT_TOL >= MAX_VOLT_LIMIT) {
+> -				vsram = MAX_VOLT_LIMIT;
+> +			if (vsram + VOLT_TOL >= soc_data->sram_max_volt) {
+> +				vsram = soc_data->sram_max_volt;
+>  
+>  				/*
+>  				 * If the target Vsram hits the maximum voltage,
+> @@ -197,13 +211,14 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+>  
+>  static int mtk_cpufreq_set_voltage(struct mtk_cpu_dvfs_info *info, int vproc)
+>  {
+> +	const struct mtk_cpufreq_platform_data *soc_data = info->soc_data;
+>  	int ret;
+>  
+>  	if (info->need_voltage_tracking)
+>  		ret = mtk_cpufreq_voltage_tracking(info, vproc);
+>  	else
+>  		ret = regulator_set_voltage(info->proc_reg, vproc,
+> -					    MAX_VOLT_LIMIT);
+> +					    soc_data->proc_max_volt);
+>  	if (!ret)
+>  		info->pre_vproc = vproc;
+>  
+> @@ -583,9 +598,17 @@ static struct cpufreq_driver mtk_cpufreq_driver = {
+>  
+>  static int mtk_cpufreq_probe(struct platform_device *pdev)
+>  {
+> +	const struct of_device_id *match;
+>  	struct mtk_cpu_dvfs_info *info, *tmp;
+>  	int cpu, ret;
+>  
+> +	match = dev_get_platdata(&pdev->dev);
+> +	if (!match || !match->data) {
+> +		dev_err(&pdev->dev,
+> +			"failed to get mtk cpufreq platform data\n");
+> +		return -ENODEV;
+> +	}
+> +
+>  	for_each_possible_cpu(cpu) {
+>  		info = mtk_cpu_dvfs_info_lookup(cpu);
+>  		if (info)
+> @@ -597,6 +620,7 @@ static int mtk_cpufreq_probe(struct platform_device *pdev)
+>  			goto release_dvfs_info_list;
+>  		}
+>  
+> +		info->soc_data = match->data;
+>  		ret = mtk_cpu_dvfs_info_init(info, cpu);
+>  		if (ret) {
+>  			dev_err(&pdev->dev,
+> @@ -632,20 +656,27 @@ static struct platform_driver mtk_cpufreq_platdrv = {
+>  	.probe		= mtk_cpufreq_probe,
+>  };
+>  
+> +static const struct mtk_cpufreq_platform_data mt2701_platform_data = {
+> +	.min_volt_shift = 100000,
+> +	.max_volt_shift = 200000,
+> +	.proc_max_volt = 1150000,
+> +	.sram_min_volt = 0,
+> +	.sram_max_volt = 1150000,
+> +};
+> +
+>  /* List of machines supported by this driver */
+>  static const struct of_device_id mtk_cpufreq_machines[] __initconst = {
+> -	{ .compatible = "mediatek,mt2701", },
+> -	{ .compatible = "mediatek,mt2712", },
+> -	{ .compatible = "mediatek,mt7622", },
+> -	{ .compatible = "mediatek,mt7623", },
+> -	{ .compatible = "mediatek,mt8167", },
+> -	{ .compatible = "mediatek,mt817x", },
+> -	{ .compatible = "mediatek,mt8173", },
+> -	{ .compatible = "mediatek,mt8176", },
+> -	{ .compatible = "mediatek,mt8183", },
+> -	{ .compatible = "mediatek,mt8365", },
+> -	{ .compatible = "mediatek,mt8516", },
+> -
+> +	{ .compatible = "mediatek,mt2701", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt2712", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt7622", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt7623", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt8167", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt817x", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt8173", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt8176", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt8183", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt8365", .data = &mt2701_platform_data },
+> +	{ .compatible = "mediatek,mt8516", .data = &mt2701_platform_data },
+>  	{ }
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_cpufreq_machines);
+> @@ -654,7 +685,6 @@ static int __init mtk_cpufreq_driver_init(void)
+>  {
+>  	struct device_node *np;
+>  	const struct of_device_id *match;
+> -	struct platform_device *pdev;
+>  	int err;
+>  
+>  	np = of_find_node_by_path("/");
+> @@ -678,11 +708,12 @@ static int __init mtk_cpufreq_driver_init(void)
+>  	 * and the device registration codes are put here to handle defer
+>  	 * probing.
+>  	 */
+> -	pdev = platform_device_register_simple("mtk-cpufreq", -1, NULL, 0);
+> -	if (IS_ERR(pdev)) {
+> +	cpufreq_pdev = platform_device_register_data(NULL, "mtk-cpufreq", -1,
+> +						     match, sizeof(*match));
 
-These were talks about bindings which describe hardware. The node name,
-except Devicetree spec asking for generic names, does not matter here
-actually.
+Why pass match here instead of just the data ?
 
-> and since the mt7530 driver does not care one way or another
-> (some drivers do explicitly parse the "ports"/"ethernet-ports" node),
-> then whatever is valid for the DSA core is also valid for the mt7530
-> bindings. And "ethernet-ports" is valid too, so I think it should be
-> accepted by mediatek.yaml...
+> +	if (IS_ERR(cpufreq_pdev)) {
+>  		pr_err("failed to register mtk-cpufreq platform device\n");
+>  		platform_driver_unregister(&mtk_cpufreq_platdrv);
+> -		return PTR_ERR(pdev);
+> +		return PTR_ERR(cpufreq_pdev);
+>  	}
+>  
+>  	return 0;
+> @@ -691,6 +722,7 @@ module_init(mtk_cpufreq_driver_init)
+>  
+>  static void __exit mtk_cpufreq_driver_exit(void)
+>  {
+> +	platform_device_unregister(cpufreq_pdev);
 
-You can make it "(ethernet-)?ports" as well. My comment was purely to
-make it simpler, for bindings (goes into properties, not
-patternProperties) and for us. If you prefer to keep it like DSA core,
-also fine.
+You fixed a bug silently :)
 
-Best regards,
-Krzysztof
+That's not right.
+
+>  	platform_driver_unregister(&mtk_cpufreq_platdrv);
+>  }
+>  module_exit(mtk_cpufreq_driver_exit)
+> -- 
+> 2.18.0
+
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
