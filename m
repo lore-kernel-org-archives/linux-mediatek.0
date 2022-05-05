@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C019FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 22:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0AE7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 22:35:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rO++eh06RfvOULD/MkcKiamjr7fSDk61HKvQkq+XD7g=; b=jUo2RLU6hDKvST
-	t9I6ieDaqteooUDPdDSScJv2BlS/6eLBJVGaxxEz4zY393FJZ5CEOoz7xBycB9MHy+8aMbKw01aCi
-	WEn47BfoKSfYdO/mendFp34kr5MhuBp4XDzLxU7Vld2Yl2fH74R93LS1hKz8KxEtKpZiH1kdvDHRB
-	1xoHwmxCcbQYTmc2WhFuSmBCtjniNfLaB/e/cQwqBmoXAno2MKmU64mJBQlgtqauTKPfzdQVo0htc
-	US5IS6X6jcMRXEGo/vuMp02b39Reza30DknlK+tA3u6Nb/dIH+p1V1TMeG+TjppLr51t5QSFxcbUJ
-	iHyQ+Pc4yI59jsv/96dg==;
+	List-Owner; bh=b1FN70ugZ3KQbPW7bBnwSlnnsrfImJHgrgX/SAgLLDo=; b=foWNYwmpiCZoLV
+	N8Gc/2yQeC/x4RIFdWGZFCDtgqwR3htUMPwkVNeYbXAoFdH1AheKJnqdpD+sgXiGlqbyc5mTWm5CR
+	xcRu+soB0bHNbhQF9zZ3p6cwIp01IlV83t8gBM58g2HLCp8wVja0oB85U+KWt0KKSVh8sgCFNOMbE
+	e/VjjsV7wviUZAwZNQv93B69ukdBPeLTpkaYjAA9SV76O3PTQ5Mbdkw2kMNGM6aAffrR8MrfsiNje
+	DtCcw2VYN7cyuAKbLefmkm4+h74k9rK3Vfd0qowW67oFP4Y6LYg0IVJ5psSy4NUB5JyZ8R96Pnxa3
+	r2AgzajxkukvUjPbQQ+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmjqJ-000OFI-Ne; Thu, 05 May 2022 22:21:03 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nmk3k-000Q6e-9Y; Thu, 05 May 2022 22:34:56 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmjq9-000OAV-3f; Thu, 05 May 2022 22:20:54 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 795391F40EB1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651789245;
- bh=IqgWrsQ7M1kiyWJK+KEWncQxxmyl40O17cMv2BeJAZM=;
+ id 1nmk3Z-000Q2u-1e; Thu, 05 May 2022 22:34:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 3CB3761F50;
+ Thu,  5 May 2022 22:34:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA4FAC385A4;
+ Thu,  5 May 2022 22:34:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1651790084;
+ bh=fIcmMOB4OTzUhPRJw5zxd1he8Ws9Ea91j5a5noC1OwA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=WINl7o4+WequxxSytUZt4txWZtOiVzMn8Oe/yw0ywq6gSVx8l6UxrDz3v0PpGlt6h
- UDitxFADuW19fZXUk/LzhWjSZwChusaokfIOVdXRSsgUprvXqPj9+sN1EJwgxueAdc
- OukGQCfmhJINyB7ZUJpneAtEaNF4dvpH2QC+lL3rXrSsUBosL08zBz6cPUdHd8p4xd
- cT2/UstKbK9OqDqqMn0QtVP/CaD8SkagtmZzuD+Mb1LTLangCsE9DGEfHyxdj/TD2+
- 5x5tU/6u3gd7b7E/O12Lbkbb8xJmSvT4QwhrRHN8g7lusGir0xHHUoKh6HMYy/9lO4
- kOrFUb8fajxWQ==
-Date: Thu, 5 May 2022 18:20:34 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ b=dDjiqn3iXIxsl95pJLRm9hrJchx4WfXEocyDn8SVGogcQ5ZgMmKnU384LgZ4FZvGP
+ cjgJqRC9zMQbrvZDuSbZJQboS77aP9g4SNbH88A0AC0dxpNfh0xc6f9SX6tp/JwV94
+ q2boySmrpnWmzzZqy8AB0OIdh4Qd7DbjWk6tC+fI=
+Date: Thu, 5 May 2022 23:10:43 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Javier Martinez Canillas <javierm@redhat.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Sudeep Holla <sudeep.holla@arm.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Borislav Petkov <bp@suse.de>, Michal Suchanek <msuchanek@suse.de>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Etienne Carriere <etienne.carriere@linaro.org>,
+ Arnd Bergmann <arnd@arndb.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ Simon Trimmer <simont@opensource.cirrus.com>,
+ John Stultz <john.stultz@linaro.org>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>,
- Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ YC Hung <yc.hung@mediatek.com>, Tzung-Bi Shih <tzungbi@google.com>,
+ Curtis Malainey <cujomalainey@chromium.org>,
+ Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v10, 16/17] media: mediatek: vcodec: support stateless
- VP9 decoding
-Message-ID: <20220505222034.fxw6y7wdf7wy3qi4@notapiano>
-References: <20220426100828.13429-1-yunfei.dong@mediatek.com>
- <20220426100828.13429-17-yunfei.dong@mediatek.com>
+Subject: Re: [RESEND PATCH v7 1/1] firmware: mediatek: add adsp ipc protocol
+ interface
+Message-ID: <YnQ9UzeyMTkmyGgD@kroah.com>
+References: <20220505053048.13804-1-tinghan.shen@mediatek.com>
+ <20220505053048.13804-2-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220426100828.13429-17-yunfei.dong@mediatek.com>
+In-Reply-To: <20220505053048.13804-2-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_152053_308111_667DE508 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20220505_153445_206090_33C31E1C 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,60 +83,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 26, 2022 at 06:08:27PM +0800, Yunfei Dong wrote:
-> Add support for VP9 decoding using the stateless API,
-> as supported by MT8192. And the drivers is lat and core architecture.
-> =
-
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Signed-off-by: George Sun <george.sun@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+On Thu, May 05, 2022 at 01:30:48PM +0800, Tinghan Shen wrote:
+> From: TingHan Shen <tinghan.shen@mediatek.com>
+> 
+> Some of mediatek processors contain
+> the Tensilica HiFix DSP for audio processing.
+> 
+> The communication between Host CPU and DSP firmware is
+> taking place using a shared memory area for message passing.
+> 
+> ADSP IPC protocol offers (send/recv) interfaces using
+> mediatek-mailbox APIs.
+> 
+> We use two mbox channels to implement a request-reply protocol.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Signed-off-by: TingHan Shen <tinghan.shen@mediatek.com>
+> Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+> Reviewed-by: Curtis Malainey <cujomalainey@chromium.org>
+> Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+> Reviewed-by: YC Hung <yc.hung@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../media/platform/mediatek/vcodec/Makefile   |    1 +
->  .../vcodec/mtk_vcodec_dec_stateless.c         |   26 +-
->  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |    1 +
->  .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 2031 +++++++++++++++++
->  .../platform/mediatek/vcodec/vdec_drv_if.c    |    4 +
->  .../platform/mediatek/vcodec/vdec_drv_if.h    |    1 +
->  6 files changed, 2061 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_=
-req_lat_if.c
-> =
+>  drivers/firmware/Kconfig                      |   1 +
+>  drivers/firmware/Makefile                     |   1 +
+>  drivers/firmware/mediatek/Kconfig             |   9 +
+>  drivers/firmware/mediatek/Makefile            |   2 +
+>  drivers/firmware/mediatek/mtk-adsp-ipc.c      | 161 ++++++++++++++++++
+>  .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++
+>  6 files changed, 239 insertions(+)
+>  create mode 100644 drivers/firmware/mediatek/Kconfig
+>  create mode 100644 drivers/firmware/mediatek/Makefile
+>  create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
+>  create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
 
+Why do you have a .h file, and export symbols in your .c file, yet you
+have no user of these symbols or header file?
 
-...
+Without a user, we can not take this, sorry.
 
-> +		use_128 =3D !frame_is_intra && !vsi->frame.uh.last_frame_type;
-> +		v4l2_vp9_adapt_coef_probs(pre_frame_ctx_helper,
-> +					  counts_helper,
-> +					  use_128,
-> +					  frame_is_intra);
+This should just be one single .c file.
 
-Hi Yunfei,
+Also, why a whole subdirectory for just one .c file?
 
-I'm getting
+thanks,
 
-ERROR: modpost: "v4l2_vp9_adapt_noncoef_probs" [drivers/media/platform/medi=
-atek/vcodec/mtk-vcodec-dec.ko] undefined!
-ERROR: modpost: "v4l2_vp9_adapt_coef_probs" [drivers/media/platform/mediate=
-k/vcodec/mtk-vcodec-dec.ko] undefined!
-
-when building this series.
-
-Adding
-	select V4L2_VP9
-to
-	config VIDEO_MEDIATEK_VCODEC
-solved the issue.
-
-Thanks,
-N=EDcolas
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
