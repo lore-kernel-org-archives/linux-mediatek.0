@@ -4,61 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E90ADC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 12:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA61C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 12:39:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CDwIc5hSYuzoTNhzROoEzmexiIT5k2+a7HEOgRBFDDE=; b=UCd2vVWPW6eSVD
-	YVeVOn2L4W6wfXvTqatx2+RFLu3omGWDXkjIKv4DuqB6WLFBhfeXvIBktW4pxnsGCsCvL3vl5ExXE
-	7MwPBB9/zuViEs63svrUIeLShPUm3grHl0/LXSi/rePmytRymmAyW6R8wwSoG1bEPYB8Sg5Aj1hPe
-	3k6lBuN0VeOajCGK33zmBKjKTUobviJDncvNXRpgCOIwJNl1nt9wDSJKMwRZgB+oVvi826yPlRJXw
-	uhQkKn72ghOOsicCuwAeOy8fvcQNnygxZ4lGWKy6fNAQDtQjM3KsbkFh+cXw7bNVLDvSKOjZIKs9Z
-	EuhNaOIS9SJSlJl9WASQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZezMd55tnfQM9J7k3nyI7MXFPGjONJrGiuKcqMoBYwU=; b=QPMfXqdQka/VP8
+	gz9f2wjra5SXR/YKS6hSGpH2kx/xfJmKeFwkuoPG3hAKwds1xKbST3bfxZV8Lb4am949byWDp6vWm
+	oR2vA2dDzjcZNudQNf6mCjwzzs4iDUxKnumXpSY3KXGVI4uHFQok/EEIm6rsVAIdWLohgWRyCyIkb
+	Lv0bnpBZPeImxfYuuX8zPEZHQ6meQN327EeghZKke+uO9yJ1pwmMyrqdH7DVRCaPhbjUWPqOdJwcm
+	9i/4p3HTXHBmOgioqkt2hj/n1+0ZmS2imqEiLGPLH49k4fafopnLA6TMrkBRK/qkFvAhGfif4L/2E
+	VxQ4jMQ3rrLmLJMxMgEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmaax-00FoI0-G4; Thu, 05 May 2022 12:28:35 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1nmalI-00FqPZ-90; Thu, 05 May 2022 12:39:16 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmaau-00FoH1-Hu
- for linux-mediatek@lists.infradead.org; Thu, 05 May 2022 12:28:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
- References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=l9mYgL4Ih0Yrkw4dha3tbuPVN2YYKfqSw+M0+XnKe/c=; b=Y6ttzwXghX0dur3EIohKOXTOcl
- Cf91TuaDvT8o+R2KUlGxL+2JpWgietScqpJ2O/A3479E8gPG5X3IVQEmaAwL391QNB2Hv1J5bf87q
- 9P5ztXIHKVBL+hsNpUIoatAouqd55hfbuJjDKkC6ierJ34JpsUy4St3bUqquLw+ysqh8=;
-Received: from p200300daa70ef200412f484bca3869cd.dip0.t-ipconnect.de
- ([2003:da:a70e:f200:412f:484b:ca38:69cd] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nmaan-0001Ds-UU; Thu, 05 May 2022 14:28:25 +0200
-Message-ID: <f8502bac-9b02-ac0d-3d0c-759fbddfa1fc@nbd.name>
-Date: Thu, 5 May 2022 14:28:25 +0200
+ id 1nmal6-00FqMC-Rr; Thu, 05 May 2022 12:39:06 +0000
+Received: from dggpemm500022.china.huawei.com (unknown [172.30.72.54])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4KvCqM4BhTzGpTN;
+ Thu,  5 May 2022 20:36:15 +0800 (CST)
+Received: from dggpemm500007.china.huawei.com (7.185.36.183) by
+ dggpemm500022.china.huawei.com (7.185.36.162) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Thu, 5 May 2022 20:38:59 +0800
+Received: from huawei.com (10.175.103.91) by dggpemm500007.china.huawei.com
+ (7.185.36.183) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 5 May
+ 2022 20:38:58 +0800
+From: Yang Yingliang <yangyingliang@huawei.com>
+To: <linux-kernel@vger.kernel.org>, <linux-rtc@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+CC: <eddie.huang@mediatek.com>, <sean.wang@mediatek.com>,
+ <a.zummo@towertech.it>, <alexandre.belloni@bootlin.com>,
+ <lee.jones@linaro.org>
+Subject: [PATCH] rtc: mt6397: check return value after calling
+ platform_get_resource()
+Date: Thu, 5 May 2022 20:50:43 +0800
+Message-ID: <20220505125043.1594771-1-yangyingliang@huawei.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.9.0
-Subject: Re: [PATCH 4/4] mt76: mt7915: limit minimum twt duration
-Content-Language: en-US
-To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: Ryder Lee <ryder.Lee@mediatek.com>, Evelyn Tsai
- <evelyn.tsai@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220505082554.16656-1-chui-hao.chiu@mediatek.com>
- <20220505082554.16656-4-chui-hao.chiu@mediatek.com>
- <YnPBz8uB6A5kAPRs@lore-desk>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <YnPBz8uB6A5kAPRs@lore-desk>
+X-Originating-IP: [10.175.103.91]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemm500007.china.huawei.com (7.185.36.183)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_052832_801501_C1D517C7 
-X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-CacheID: sfid-20220505_053905_139404_73D7001A 
+X-CRM114-Status: UNSURE (   7.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,36 +66,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05.05.22 14:23, Lorenzo Bianconi wrote:
->> The minimum twt duration supported by mt7915 is 64 according to hardware
->> design. Reply station with TWT_SETUP_CMD_DICTATE if min_twt_dur smaller
->> than 64.
->> 
->> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
->> ---
->>  drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 7 +++++++
->>  1 file changed, 7 insertions(+)
->> 
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
->> index ff60a3d2d26d..e912ecacb578 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
->> @@ -2633,6 +2633,7 @@ void mt7915_mac_add_twt_setup(struct ieee80211_hw *hw,
->>  			      struct ieee80211_sta *sta,
->>  			      struct ieee80211_twt_setup *twt)
->>  {
->> +#define MT7915_MIN_TWT_DUR 64
-> 
-> nit: can you please move MT7915_MIN_TWT_DUR in mt7915.h since we have other twt
-> defs there?
-Fixed in my tree.
+It will cause null-ptr-deref if platform_get_resource() returns NULL,
+we need check the return value.
 
-- Felix
+Fixes: fc2979118f3f ("rtc: mediatek: Add MT6397 RTC driver")
+Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+---
+ drivers/rtc/rtc-mt6397.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 80dc479a6ff0..1d297af80f87 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -269,6 +269,8 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res)
++		return -EINVAL;
+ 	rtc->addr_base = res->start;
+ 
+ 	rtc->data = of_device_get_match_data(&pdev->dev);
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
