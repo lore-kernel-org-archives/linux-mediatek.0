@@ -4,64 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387E5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 16:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E92E4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 May 2022 16:47:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kuWJDYgLGAVFE5UppwTp34lFvqNLPsjwl+wBKbhFdwk=; b=n/CmMZxFMayxtE
-	OVcYe2nLstn3w7usUVu2dhXW8F/qRd0I25t5Wm3bwy0AJWbJGKnjpYV9P/RnQgEHJjw1exnLKj4NR
-	NTPcXQSgS5eDVkck/BbAAAuILs53BIt94zzBl2gXhiyDfD+QmfPjM5ux6IVTJGnDf2Cx7r7ph8w0M
-	4vQNqw295e6YjDheV7u6ekymDddyHI/Q2JYfi/opQuGuIybB7JfZ4wOu/Abf1B5prAN1XwZyAglt1
-	JqqfpM0by9WGQNF2Q+uUFMgimJEGXfgFYfRJEV6FHy6pKx1VirTfdicjVJYXmHg8/tXHL19nKSj0q
-	4HHTrt56JgUnqi2+5Tlw==;
+	List-Owner; bh=zQyl09KlJloEdEBqQvzLME/FpSxQBXsXA9LgutQFqVM=; b=3YscPpSA8tXsuA
+	8iwRpLHl7NEWdYnmZ6fQUP2qbbd7PJU8Be819MniDvzWgJ2oRXy+PoT7nBzTrEa6oOPaX9tZrgnjO
+	bjEQ8iouZo1TAFWLffTZwwLJL4s6fDRMDZkEV4WQK4sgnOb8ZG+xGC2M2lQySnBiICBr+U8CSV7Im
+	jaxyaTrYMtBDxzJd23ptvqcQN5riKowSG8RzJRyIzM1Pnb+YNe1N6Ee8FL5VyAh5iVGz6EngdAzrD
+	HIIDxBR3aQ6WmF5MSqZsd9RZsvGVbTwQwPoxI7Ko72RPXE/XDztgBL2wn47DfEljIxutl1Tijf5do
+	5I4WBThRdsRW34OvVPaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmeIf-00Gqet-LI; Thu, 05 May 2022 16:25:57 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nmedg-00Gv3R-DG; Thu, 05 May 2022 16:47:40 +0000
+Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmeIU-00Gqb7-6O; Thu, 05 May 2022 16:25:48 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 393751F45ABD
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651767943;
- bh=us6VQcZonVRZDNCqwnPC3/ZUDrCZ5LkU3g8yGafttv4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=DsrqAmPPKwC1WvZxKzkbXTRjRJEiP/WizLShBmIu304hhlhhHNQSz9qLISwTIbG4W
- v+6C9yOSV7c/7M3TEtnFvJe94HChoUgbpjOn6Wq2SqjrQtu0kwsVmCwnUlmEmIBirc
- Po88xEbIChaOX6eNz/QE3ZfTlD8UWv0968oKjyBsx0JJoQrR9SVC1tIhACa4HxuwZG
- WLyeqN2LlBDs+gUf5pcSTlu3ulu/pfIYCtS/nxaM7Dy24gZUCy/W8KtsAuNrOhSj8m
- PA8F2q4XiLyQWx9Yhov61BeZXMt2Dkpy3lcK9Bvw6Uo5MNELIFEBZRKrFFCt+7MaRc
- BmlcLSapwch7g==
-Date: Thu, 5 May 2022 12:25:37 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Jiaxin Yu <jiaxin.yu@mediatek.com>, Mark Brown <broonie@kernel.org>,
- kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
- properties
-Message-ID: <20220505162537.byiwfe2ghomxhezl@notapiano>
-References: <20220429203039.2207848-1-nfraprado@collabora.com>
- <20220429203039.2207848-2-nfraprado@collabora.com>
- <4826c824-40ce-5726-ed95-5be069233ca7@collabora.com>
- <cbf2fcbae25408b95875278eb37e829bf4671430.camel@mediatek.com>
- <d1c548bb-8a36-79bf-498d-c909bf7e7679@collabora.com>
+ id 1nmede-00Gv2h-0R; Thu, 05 May 2022 16:47:39 +0000
+Received: by mail-oo1-xc31.google.com with SMTP id
+ l9-20020a4abe09000000b0035eb3d4a2aeso818351oop.0; 
+ Thu, 05 May 2022 09:47:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=mZ1v1Dle2stU/b+5xs8mW34KpIG2CizYWSGqBNU2Bz8=;
+ b=kIU1IzWI2h67CczNZjDrAqOu+7amMiU9BNzBUsm9+8eUorQIgmZj8BUaj81G12rNlE
+ 68e+vrj64mqY2psH6XqJCnztqqa0PQYdUiFVwlZFCUdnB10Eq3yPNuX2et/Qb7IiyrBz
+ y4P4CTgj9qHdFctipJQQLZooa5lZ6p9+t/FJlW5OsvmErxS/8SHDugMU5U/PNC8J3vyD
+ 1HBZIl3MmaWUixyDAUco2zkiEwyySzadAX4fbQwpaHfhPJt5wbSxkV0ayhNZoX6n7e5a
+ HyZWZIVKJQiHg1IN3LnTM/Yup1dPA9d0emXF3/6nbwpE3BNPdT1+QaKsJavswdrAetPZ
+ rYkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=mZ1v1Dle2stU/b+5xs8mW34KpIG2CizYWSGqBNU2Bz8=;
+ b=XD7ghkC3Qt2g6XJNEeofxFLNwfH+XT28HJXmi4kqrYLr17BmUXnUj++WDXMoE6j3Dp
+ lGhuZgHZ7U4M66UM62atRpPfGFnrss40TQPO3fRSzAXhj67iz+DHp2Zjj2J0E/YGaVEq
+ v8tvECeZaQSGPNz8sBXBaEVFHFiMN+sMJ7KTdLVZA6wUyeO+ujf/KpfRoDB/VU+QuiH0
+ O5/pFObbxMVsrmJX9n+FvS3GTuUkULZTKKMpnHVWKSvO/tfY5++nU31bDZgm2QYyT6hk
+ r9oazqluklQm6RUigtdkJGZwq2ssjllgVGSnvi9+TmIKoec/Huwpzy4rqKPnXBfZc9nq
+ DXPg==
+X-Gm-Message-State: AOAM531Rxe+CVt+gExdqKscVsTOgnhBzTQd9dwgdSuaEVppQCG5tM3jZ
+ hSrtAuXdD5kNKpR7OHe8Fr0=
+X-Google-Smtp-Source: ABdhPJx/mBD6xFVnxfzAwXo9hN2FbyZEsHhGERFB1m4oe7WTeGkz/+OsH6gYEs3iDqleRPT+1WANlg==
+X-Received: by 2002:a4a:b289:0:b0:35e:7d6e:97eb with SMTP id
+ k9-20020a4ab289000000b0035e7d6e97ebmr9583599ooo.57.1651769255626; 
+ Thu, 05 May 2022 09:47:35 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+ by smtp.gmail.com with ESMTPSA id
+ t28-20020a05683019fc00b0060603221260sm799519ott.48.2022.05.05.09.47.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 May 2022 09:47:35 -0700 (PDT)
+Message-ID: <26c2fb0c-e58a-5864-4256-f60f948ca634@gmail.com>
+Date: Thu, 5 May 2022 18:47:30 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <d1c548bb-8a36-79bf-498d-c909bf7e7679@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v2 1/2] dt-bindings: ARM: Mediatek: Remove msdc binding of
+ MT8192 clock
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, matthias.bgg@kernel.org
+Cc: mturquette@baylibre.com, sboyd@kernel.org, allen-kh.cheng@mediatek.com,
+ weiyi.lu@mediatek.com, chun-jie.chen@mediatek.com,
+ linux-kernel@vger.kernel.org, ikjn@chromium.org, miles.chen@mediatek.com,
+ linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
+References: <20220429123133.28869-1-matthias.bgg@kernel.org>
+ <20220429123133.28869-2-matthias.bgg@kernel.org>
+ <YnGjScfQA9axBYBO@robh.at.kernel.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <YnGjScfQA9axBYBO@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_092546_618795_9FD32EE8 
-X-CRM114-Status: GOOD (  43.05  )
+X-CRM114-CacheID: sfid-20220505_094738_100516_116B6388 
+X-CRM114-Status: GOOD (  13.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,162 +95,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 05, 2022 at 10:52:45AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 05/05/22 10:48, Jiaxin Yu ha scritto:
-> > On Thu, 2022-05-05 at 10:08 +0200, AngeloGioacchino Del Regno wrote:
-> > > Il 29/04/22 22:30, N=EDcolas F. R. A. Prado ha scritto:
-> > > > The Mediatek AFE PCM controller for MT8192 allows sharing of an I2S
-> > > > bus
-> > > > between two busses. Add a pattern for these properties in the
-> > > > dt-binding.
-> > > > =
-
-> > > > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-> > > > ---
-> > > > =
-
-> > > >    Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml | 5
-> > > > +++++
-> > > >    1 file changed, 5 insertions(+)
-> > > > =
-
-> > > > diff --git a/Documentation/devicetree/bindings/sound/mt8192-afe-
-> > > > pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-afe-
-> > > > pcm.yaml
-> > > > index 7a25bc9b8060..5b03c8dbf318 100644
-> > > > --- a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> > > > +++ b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
-> > > > @@ -54,6 +54,11 @@ properties:
-> > > >          - const: aud_infra_clk
-> > > >          - const: aud_infra_26m_clk
-> > > > +patternProperties:
-> > > > +  "^i2s[0-35-9]-share$":
-> > > > +    description: Name of the I2S bus that is shared with this bus
-> > > > +    pattern: "^I2S[0-35-9]$"
-> > > > +
-> > > >    required:
-> > > >      - compatible
-> > > >      - interrupts
-> > > > =
-
-> > > =
-
-> > > The only other way of doing this would be to complicate this in the
-> > > driver
-> > > so that we can do something like
-> > > =
-
-> > > "i2s-share =3D <0 2>";  instead of  i2s0-share =3D "I2S2";
-> > > =
-
-> > > ...and I don't think that this would be any more straightforward than
-> > > the
-> > > provided way.
-> > > =
-
-> > > There's an improvement that we can do to that pattern description
-> > > though,
-> > > which would be explaining that declaring 'i2s0-share =3D "I2S2"' means
-> > > that
-> > > I2S2's data pin will be used as DATA-OUT, while i2s0 is DATA-IN.
-> > > =
-
-> > > Another thing that comes to mind here is that this is a MediaTek
-> > > specific
-> > > property and *not* a generic one, which means that both the driver
-> > > and
-> > > this binding should be fixed to get a "mediatek," prefix, so, this
-> > > property
-> > > should - in reality - be "mediatek,i2s[0-35-9]-share" instead.
-> > > =
-
-> > > I think that everyone agrees about that, but let's see what the
-> > > others say.
-> > > =
-
-> > > Cheers,
-> > > Angelo
-> > =
-
-> > Hi Angelo,
-> > =
-
-> > 'i2s0-share =3D "I2S2"' means that if we want use I2S0, there need open
-> > I2S2 to provide clock. Conversely, if we want to use I2S2, we don't
-> > need to open I2S0. However, MediaTek I2S0 and I2S2 hardware are
-> > generally designed as input. So usually we use 'i2s0-share =3D "I2S1"'.
-> > Even numbers represent input, odd numbers represent output.
-> > =
-
-> > Yes, I think adding the "mediatek," prefix is the right way to define a
-> > non-generic property.
-> > =
 
 
-Hi Jiaxin,
+On 03/05/2022 23:48, Rob Herring wrote:
+> On Fri, Apr 29, 2022 at 02:31:31PM +0200, matthias.bgg@kernel.org wrote:
+>> From: Matthias Brugger <matthias.bgg@gmail.com>
+>>
+>> The msdc gate is part of the MMC driver. Delete the binding description
+>> of this node.
+> 
+> An ABI break is okay because ...?
+> 
 
-thank you for the insights.
+Because the code controlling the clock gate was moved to the consumer. This node 
+did never ever represent any working implementation of a peripheral. Just a 
+lonely clock gate that wasn't used.
 
-> =
+Regards,
+Matthias
 
-> Hello Jiaxin,
-> =
-
-> if I get this correctly, i2s0-share =3D "I2S2" would be *invalid*... as y=
-ou
-> just explained, i2sX, where:
-> =
-
-> X =3D even number -> always DATA IN
-> X =3D odd number  -> always DATA OUT
-> =
-
-> ...this means that the dt-binding needs a pattern to specify that only odd
-> can be assigned to only even.
-
-So, the situation seems different at least on mt8192-asurada-spherion.
-Here, I2S8 is used for the headset microphone and I2S9 for the headset audi=
-o.
-Even for input and odd for output agree with Jiaxin's description. However,=
- the
-input bus seems to be the main one, that is, disabling I2S8:
-
-	amixer cset name=3D'UL2_CH1 I2S8_CH1' 0
-	amixer cset name=3D'UL2_CH2 I2S8_CH2' 0
-
-not only disables the microphone but also the audio on the headset. If I ad=
-d =
-
-
-	i2s9-share =3D "I2S8";
-
-on the DT, then everything works, I can disable I2S8 without impacting the
-headset audio. So the pattern for the property on this platform is the oppo=
-site
-that Jiaxin mentioned. This tells me that we should keep the binding more
-generic (not assume where odds and evens go). I will still apply the other
-suggestions mentioned though.
-
-Thanks,
-N=EDcolas
-
-> =
-
-> Nicolas, take note! :-) :-)
-> =
-
-> Thanks,
-> Angelo
-> =
-
-> -- =
-
-> To unsubscribe, send mail to kernel-unsubscribe@lists.collabora.co.uk.
+>> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - Delete compatible in binding descprition as well
+>>
+>>   .../bindings/arm/mediatek/mediatek,mt8192-clock.yaml      | 8 --------
+>>   1 file changed, 8 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+>> index c8c67c033f8c..b57cc2e69efb 100644
+>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+>> @@ -24,7 +24,6 @@ properties:
+>>             - mediatek,mt8192-imp_iic_wrap_w
+>>             - mediatek,mt8192-imp_iic_wrap_n
+>>             - mediatek,mt8192-msdc_top
+>> -          - mediatek,mt8192-msdc
+>>             - mediatek,mt8192-mfgcfg
+>>             - mediatek,mt8192-imgsys
+>>             - mediatek,mt8192-imgsys2
+>> @@ -107,13 +106,6 @@ examples:
+>>           #clock-cells = <1>;
+>>       };
+>>   
+>> -  - |
+>> -    msdc: clock-controller@11f60000 {
+>> -        compatible = "mediatek,mt8192-msdc";
+>> -        reg = <0x11f60000 0x1000>;
+>> -        #clock-cells = <1>;
+>> -    };
+>> -
+>>     - |
+>>       mfgcfg: clock-controller@13fbf000 {
+>>           compatible = "mediatek,mt8192-mfgcfg";
+>> -- 
+>> 2.34.1
+>>
+>>
 
 _______________________________________________
 Linux-mediatek mailing list
