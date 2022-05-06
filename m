@@ -4,82 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7494C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 11:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 552E4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 11:41:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C74ePUt0VL8Ah2bijZEzOmhwLIYG/ryQpg3YtDQTRYY=; b=bnTo1xlkXlxoM0
-	n29m8atb4tLsob8FACDP90T25zBgR+yE3ANMuCifV6lWKnB9E1T9xg5IOYqrEeJi3IVm3vXwzSsRf
-	KcyYjNrNQDb2YnkxMdW8Tujgv+3Jjryd/lFnnVgvsBmpWxIk3iELe1ahvXiOP2Lw0F7XVIE8CbFeY
-	bmcFAQrid22y90Qj+kwJNeeuaoUvESVot96bfYs7CDM8aJBYn0wFdXBprSBje4dPxDqDoifaO2HVY
-	6/WLWp920fevc+yubx+eC2xfdNVdGocGBOg7PJkPl2bnqeNOFJwKCkXA+MAQ49gbCKBvQXJTlZNC8
-	QlvCEPyGGb+mEV+BuW3Q==;
+	List-Owner; bh=cnPQ6vBcpdpT2F7q6ahfeKgY9yKbihaC5kmBd6tf3KU=; b=AXmA43NeetrvZ9
+	zSlUHyMcK4ri7Epyul+FXFhEmThjbvDegvGljc7OcPwhjpGDPBpwgYvR9BaLnoZq24bwVBGYV/Nko
+	WvvnJSL9ZAOxGZWtFgnqTqXLbE9YYMwCOKM+4nYgWuhF90gRyYCrWB7WntmubatgMkKJhgNVvQ3KR
+	/Hd0QlGaMtLrXiCa869OzjbYEWaHd8gMdYSqzCar00BB6Myn4VZZaW8p1qVsk+3/6QDynu+Dze5vV
+	46XFKjf++toOqk8/6k75vF1l7Nw6eqczwpKW/lbWeg2TeTkoBhC6UywRBECw2hUv5RlQBqX3A01m4
+	uUTDnkVU2ZzAoZD3XD6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmwJ8-002wlM-Qe; Fri, 06 May 2022 11:39:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nmwL9-002xSq-RB; Fri, 06 May 2022 11:41:43 +0000
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmwJ5-002wkW-MJ; Fri, 06 May 2022 11:39:37 +0000
-X-UUID: c230bec5945d43a5bf95d6ff218a6c7e-20220506
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:54f504ca-9fdb-4942-a658-427e38ade7b8, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:da16d8b2-56b5-4c9e-8d83-0070b288eb6a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: c230bec5945d43a5bf95d6ff218a6c7e-20220506
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 88929400; Fri, 06 May 2022 04:39:27 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 May 2022 04:39:26 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 6 May 2022 19:39:24 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 6 May 2022 19:39:24 +0800
-Message-ID: <ef0c621760d63c28ad97d4b7e8bef34660ea079c.camel@mediatek.com>
-Subject: Re: [RESEND PATCH v7 1/1] firmware: mediatek: add adsp ipc protocol
- interface
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Javier Martinez Canillas
- <javierm@redhat.com>, Thomas Zimmermann <tzimmermann@suse.de>, Sudeep Holla
- <sudeep.holla@arm.com>, Bjorn Andersson <bjorn.andersson@linaro.org>,
- Borislav Petkov <bp@suse.de>, Michal Suchanek <msuchanek@suse.de>, "Cristian
- Marussi" <cristian.marussi@arm.com>, Etienne Carriere
- <etienne.carriere@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Daniel Vetter
- <daniel.vetter@ffwll.ch>, Simon Trimmer <simont@opensource.cirrus.com>, "John
- Stultz" <john.stultz@linaro.org>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Allen-KH Cheng
- <allen-kh.cheng@mediatek.com>, YC Hung <yc.hung@mediatek.com>, Tzung-Bi Shih
- <tzungbi@google.com>, Curtis Malainey <cujomalainey@chromium.org>, Mark Brown
- <broonie@kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <alsa-devel@alsa-project.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 6 May 2022 19:39:24 +0800
-In-Reply-To: <YnQ9h6k0yFN8f+Ui@kroah.com>
-References: <20220505053048.13804-1-tinghan.shen@mediatek.com>
- <20220505053048.13804-2-tinghan.shen@mediatek.com>
- <YnQ9h6k0yFN8f+Ui@kroah.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nmwKy-002xOS-OE
+ for linux-mediatek@lists.infradead.org; Fri, 06 May 2022 11:41:34 +0000
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-2f7c424c66cso78380437b3.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 06 May 2022 04:41:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=l0caGRAl6tw98ep9A0EoSsPJFbAnWVPHA21Iq4Niy6I=;
+ b=SmlsDeNuaHifgGa++k4eP2Y4cdx/p/7EZIENJ+7s92pwcvF2WjC3gxgdsF54R5R5DC
+ 4PH4Ea/RXCuBKQE7XpREllSwlcRgOF8zh6Mq2T8oFE7nkIJkmgaxbgo0tcPsqfbw8sIY
+ cqqw8+SzX/McYAnngsSqWYYMUKuAfyaXUfjnY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=l0caGRAl6tw98ep9A0EoSsPJFbAnWVPHA21Iq4Niy6I=;
+ b=qEhDu8D8ixys7JKlklOwfsyUmAhIaameo5RpHiaefENVVezMXMBwzKvNJfljUXedTU
+ VdR4LpMYOS3TxGi8I0pXuxOV42vQgZ5VB8NAD4f2NB6fzBrI7+jQCCZiZWhlFtDN5o5K
+ bO9ujB8ZMKv9w0VS0slTEY336ZASde4Cc+K6STxAIAtAhvlIl5uS/CsRD6CjJjRv6QRZ
+ hbJux539Ak58SjaJrG99gQvfcmiH5sFfcZ02aek+ipuLQDXU62FagY6cgP6VLs1I69di
+ hNI4/ambPbUuMPBQKBuj4ExN7yGdpoXvQzIdjB/zOVjwdzOOytlB5fc9KO5QJlnKdfh6
+ ZraQ==
+X-Gm-Message-State: AOAM531ms85YQRugj6ceVYa5C6ZC/rpqYv8NhZ8yevgxbWIcyCFJ2CXj
+ bRIzYDivBwti/rpEWidc967X72t8BqoXruyMl6DOfw==
+X-Google-Smtp-Source: ABdhPJzbQ+rVlJvom3mfGzvQGXbWH7u6TQrd+Edczzu9Qcicwk8aE3ctLPVfCmRvvhVM+kMa2a1e2gMRNjVctbIkgO4=
+X-Received: by 2002:a05:690c:110:b0:2ec:2d79:eee1 with SMTP id
+ bd16-20020a05690c011000b002ec2d79eee1mr2266620ywb.21.1651837290727; Fri, 06
+ May 2022 04:41:30 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220505194550.3094656-1-nfraprado@collabora.com>
+In-Reply-To: <20220505194550.3094656-1-nfraprado@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 6 May 2022 19:41:19 +0800
+Message-ID: <CAGXv+5Hk2u+1zkVjNEt7wdwAJyoB+-PMAuh7UKWEkDeYxp5zUQ@mail.gmail.com>
+Subject: Re: [PATCH v2 00/16] Introduce support for MediaTek MT8192 Google
+ Chromebooks
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Luca Weiss <luca@z3ntu.xyz>, 
+ Maxim Kutnij <gtk3@inbox.ru>, Rob Herring <robh+dt@kernel.org>,
+ Sam Shih <sam.shih@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_043935_784555_6E4C49C4 
-X-CRM114-Status: GOOD (  31.14  )
+X-CRM114-CacheID: sfid-20220506_044132_815765_8AE8F1A3 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,165 +86,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Greg,
-
-On Thu, 2022-05-05 at 23:11 +0200, Greg Kroah-Hartman wrote:
-> On Thu, May 05, 2022 at 01:30:48PM +0800, Tinghan Shen wrote:
-> > From: TingHan Shen <tinghan.shen@mediatek.com>
-> > 
-> > Some of mediatek processors contain
-> > the Tensilica HiFix DSP for audio processing.
-> > 
-> > The communication between Host CPU and DSP firmware is
-> > taking place using a shared memory area for message passing.
-> > 
-> > ADSP IPC protocol offers (send/recv) interfaces using
-> > mediatek-mailbox APIs.
-> > 
-> > We use two mbox channels to implement a request-reply protocol.
-> > 
-> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > Signed-off-by: TingHan Shen <tinghan.shen@mediatek.com>
-> > Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-> > Reviewed-by: Curtis Malainey <cujomalainey@chromium.org>
-> > Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-> > Reviewed-by: YC Hung <yc.hung@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > ---
-> >  drivers/firmware/Kconfig                      |   1 +
-> >  drivers/firmware/Makefile                     |   1 +
-> >  drivers/firmware/mediatek/Kconfig             |   9 +
-> >  drivers/firmware/mediatek/Makefile            |   2 +
-> >  drivers/firmware/mediatek/mtk-adsp-ipc.c      | 161 ++++++++++++++++++
-> >  .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++
-> >  6 files changed, 239 insertions(+)
-> >  create mode 100644 drivers/firmware/mediatek/Kconfig
-> >  create mode 100644 drivers/firmware/mediatek/Makefile
-> >  create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
-> >  create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
-> > 
-> > diff --git a/drivers/firmware/Kconfig b/drivers/firmware/Kconfig
-> > index d65964996e8d..c4d149b28944 100644
-> > --- a/drivers/firmware/Kconfig
-> > +++ b/drivers/firmware/Kconfig
-> > @@ -300,6 +300,7 @@ source "drivers/firmware/cirrus/Kconfig"
-> >  source "drivers/firmware/google/Kconfig"
-> >  source "drivers/firmware/efi/Kconfig"
-> >  source "drivers/firmware/imx/Kconfig"
-> > +source "drivers/firmware/mediatek/Kconfig"
-> >  source "drivers/firmware/meson/Kconfig"
-> >  source "drivers/firmware/psci/Kconfig"
-> >  source "drivers/firmware/smccc/Kconfig"
-> > diff --git a/drivers/firmware/Makefile b/drivers/firmware/Makefile
-> > index 4e58cb474a68..88fbdc110100 100644
-> > --- a/drivers/firmware/Makefile
-> > +++ b/drivers/firmware/Makefile
-> > @@ -34,6 +34,7 @@ obj-$(CONFIG_GOOGLE_FIRMWARE)	+= google/
-> >  obj-$(CONFIG_EFI)		+= efi/
-> >  obj-$(CONFIG_UEFI_CPER)		+= efi/
-> >  obj-y				+= imx/
-> > +obj-y				+= mediatek/
-> >  obj-y				+= psci/
-> >  obj-y				+= smccc/
-> >  obj-y				+= tegra/
-> > diff --git a/drivers/firmware/mediatek/Kconfig b/drivers/firmware/mediatek/Kconfig
-> > new file mode 100644
-> > index 000000000000..6d1e580b967b
-> > --- /dev/null
-> > +++ b/drivers/firmware/mediatek/Kconfig
-> > @@ -0,0 +1,9 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only
-> > +config MTK_ADSP_IPC
-> > +	tristate "MTK ADSP IPC Protocol driver"
-> > +	depends on MTK_ADSP_MBOX
-> > +	help
-> > +	  Say yes here to add support for the MediaTek ADSP IPC
-> > +	  between host AP (Linux) and the firmware running on ADSP.
-> > +	  ADSP exists on some mtk processors.
-> > +	  Client might use shared memory to exchange information with ADSP side.
-> > diff --git a/drivers/firmware/mediatek/Makefile b/drivers/firmware/mediatek/Makefile
-> > new file mode 100644
-> > index 000000000000..4e840b65650d
-> > --- /dev/null
-> > +++ b/drivers/firmware/mediatek/Makefile
-> > @@ -0,0 +1,2 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +obj-$(CONFIG_MTK_ADSP_IPC)		+= mtk-adsp-ipc.o
-> > diff --git a/drivers/firmware/mediatek/mtk-adsp-ipc.c b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-> > new file mode 100644
-> > index 000000000000..87cee61dbf32
-> > --- /dev/null
-> > +++ b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-> > @@ -0,0 +1,161 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Copyright (c) 2022 MediaTek Corporation. All rights reserved.
-> > + * Author: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > + */
-> > +
-> > +#include <linux/firmware/mediatek/mtk-adsp-ipc.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/mailbox_client.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_platform.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/slab.h>
-> > +
-> > +/*
-> > + * mtk_adsp_ipc_send - send ipc cmd to MTK ADSP
-> > + *
-> > + * @ipc: ADSP IPC handle
-> > + * @idx: index of the mailbox channel
-> > + * @msg: IPC cmd (reply or request)
-> > + *
-> > + * Returns zero for success from mbox_send_message
-> > + * negative value for error
-> > + */
-> > +int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx, uint32_t msg)
-> > +{
-> > +	struct mtk_adsp_chan *adsp_chan;
-> > +	int ret;
-> > +
-> > +	if (idx >= MTK_ADSP_MBOX_NUM)
-> > +		return -EINVAL;
-> > +
-> > +	adsp_chan = &ipc->chans[idx];
-> > +	ret = mbox_send_message(adsp_chan->ch, &msg);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	/*
-> > +	 * mbox_send_message returns non-negative value on success,
-> > +	 * return zero for success
-> > +	 */
-> > +	return 0;
-> 
-> You already said this up in the function comments, no need to duplicate
-> it again.
-> 
-> > +}
-> > +EXPORT_SYMBOL(mtk_adsp_ipc_send);
-> 
-> EXPORT_SYMBOL_GPL()?  I have to ask, sorry.
-> 
-> thanks,
-> 
-> greg k-h
-
-I'll update these parts in next version.
-Thank you!
-
-
-Best regards,
-TingHan
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCBNYXkgNiwgMjAyMiBhdCAzOjQ2IEFNIE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvCjxu
+ZnJhcHJhZG9AY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4KPgo+IFRoaXMgc2VyaWVzIGludHJvZHVj
+ZXMgRGV2aWNldHJlZXMgZm9yIHRoZSBNVDgxOTItYmFzZWQgQXN1cmFkYSBwbGF0Zm9ybQo+IGFz
+IHdlbGwgYXMgQXN1cmFkYSBTcGhlcmlvbiBhbmQgQXN1cmFkYSBIYXlhdG8gYm9hcmRzLgo+Cj4g
+U3VwcG9ydCBmb3IgdGhlIGJvYXJkcyBpcyBhZGRlZCB0byB0aGUgZXh0ZW50IHRoYXQgaXMgY3Vy
+cmVudGx5IGVuYWJsZWQKPiBpbiB0aGUgbXQ4MTkyLmR0c2ksIGFzIHRvIG5vdCBhZGQgYW55IGRl
+cGVuZGVuY2llcyB0byB0aGlzIHNlcmllcy4KPgo+IEJlc2lkZXMgdGhlIG90aGVyIGR0LWJpbmRp
+bmcgZml4ZXMgYWxyZWFkeSBvbiBsaW51eC1uZXh0IHRvIGF2b2lkIG5ldwo+IHdhcm5pbmdzIGJ5
+IHRoaXMgc2VyaWVzLCBbMV0gaXMgYWxyZWFkeSBtZXJnZWQgYnV0IG5vdCBvbiBuZXh0IHlldC4K
+Pgo+IFRoaXMgc2VyaWVzIHdhcyBwZWVyLXJldmlld2VkIGludGVybmFsbHkgYmVmb3JlIHN1Ym1p
+c3Npb24uCj4KPiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjIwNDI5MjAxMzI1
+LjIyMDU3OTktMS1uZnJhcHJhZG9AY29sbGFib3JhLmNvbS8KPgo+IHYxOiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9hbGwvMjAyMjAzMTYxNTEzMjcuNTY0MjE0LTEtbmZyYXByYWRvQGNvbGxhYm9y
+YS5jb20vCj4KPiBDaGFuZ2VzIGluIHYyOgo+IC0gQWRkZWQgcGF0Y2hlcyAxLTIgZm9yIE1lZGlh
+dGVrIGJvYXJkIGR0LWJpbmRpbmdzCj4gLSBBZGRlZCBwYXRjaGVzIDEzLTE2IGVuYWJsaW5nIGhh
+cmR3YXJlIGZvciBBc3VyYWRhIHRoYXQgaGFzIHNpbmNlIGJlZW4KPiAgIGVuYWJsZWQgb24gbXQ4
+MTkyLmR0c2kKPgo+IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvICgxNik6Cj4gICBkdC1iaW5kaW5n
+czogYXJtNjQ6IGR0czogbWVkaWF0ZWs6IEFkZCBtdDgxOTItYXN1cmFkYS1zcGhlcmlvbgo+ICAg
+ZHQtYmluZGluZ3M6IGFybTY0OiBkdHM6IG1lZGlhdGVrOiBBZGQgbXQ4MTkyLWFzdXJhZGEtaGF5
+YXRvCj4gICBhcm02NDogZHRzOiBtZWRpYXRlazogSW50cm9kdWNlIE1UODE5Mi1iYXNlZCBBc3Vy
+YWRhIGJvYXJkIGZhbWlseQo+ICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IGFzdXJhZGE6IERvY3Vt
+ZW50IEdQSU8gbmFtZXMKPiAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBhc3VyYWRhOiBBZGQgc3lz
+dGVtLXdpZGUgcG93ZXIgc3VwcGxpZXMKPiAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBhc3VyYWRh
+OiBFbmFibGUgYW5kIGNvbmZpZ3VyZSBJMkMgYW5kIFNQSSBidXNzZXMKPiAgIGFybTY0OiBkdHM6
+IG1lZGlhdGVrOiBhc3VyYWRhOiBBZGQgQ2hyb21lT1MgRUMKPiAgIGFybTY0OiBkdHM6IG1lZGlh
+dGVrOiBhc3VyYWRhOiBBZGQga2V5Ym9hcmQgbWFwcGluZyBmb3IgdGhlIHRvcCByb3cKPiAgIGFy
+bTY0OiBkdHM6IG1lZGlhdGVrOiBhc3VyYWRhOiBBZGQgQ3I1MCBUUE0KPiAgIGFybTY0OiBkdHM6
+IG1lZGlhdGVrOiBhc3VyYWRhOiBBZGQgRWxhbiBlS1RIMzAwMCBJMkMgdHJhY2twYWQKPiAgIGFy
+bTY0OiBkdHM6IG1lZGlhdGVrOiBhc3VyYWRhOiBBZGQgSTJDIHRvdWNoc2NyZWVuCj4gICBhcm02
+NDogZHRzOiBtZWRpYXRlazogc3BoZXJpb246IEFkZCBrZXlib2FyZCBiYWNrbGlnaHQKPiAgIGFy
+bTY0OiBkdHM6IG1lZGlhdGVrOiBhc3VyYWRhOiBFbmFibGUgWEhDSQo+ICAgYXJtNjQ6IGR0czog
+bWVkaWF0ZWs6IGFzdXJhZGE6IEVuYWJsZSBQQ0llIGFuZCBhZGQgV2lGaQo+ICAgYXJtNjQ6IGR0
+czogbWVkaWF0ZWs6IGFzdXJhZGE6IEFkZCBNVDYzNTkgUE1JQwo+ICAgYXJtNjQ6IGR0czogbWVk
+aWF0ZWs6IGFzdXJhZGE6IEFkZCBTUE1JIHJlZ3VsYXRvcnMKClRlc3RlZC1ieTogQ2hlbi1ZdSBU
+c2FpIDx3ZW5zdEBjaHJvbWl1bS5vcmc+CgpJIHRlc3RlZCBhbGwgdGhlIGV4dGVybmFsIHBlcmlw
+aGVyYWxzLCBpbmNsdWRpbmcgdG91Y2hwYWQsIHRvdWNoc2NyZWVuLAprZXlib2FyZCAod2hpY2gg
+bmVlZHMgYSBmaXgpLCBVU0IsIFdpRmkgb24gYm90aCBtb2RlbHMsIGFuZCB0aGUga2V5Ym9hcmQK
+YmFja2xpZ2h0IGFuZCAoVVNCLWJhc2VkKSBCbHVldG9vdGggb24gU3BoZXJpb24uCgpDb3VsZCB5
+b3UgYWxzbyBlbmFibGUgdGhlIFNDUD8gT3RoZXJ3aXNlIHRoZSB2Y29kZWMgZ2VuZXJhdGVzIGJp
+ZyB3YXJuaW5ncwp3aGVuIGl0IHByb2Jlcy4KCkFuZCBhbHNvIHdvdWxkIGxpa2UgdG8gc2VlIE1N
+Qy4gOikKCgpUaGFua3MKQ2hlbll1CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
