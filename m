@@ -4,53 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A77E7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 02:27:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72FE1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 03:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TWpQz9H0mOh8dp3xSkquB/h3ccfD7l3IWkOyb42Vd+c=; b=A3MXKdlJzFYK4+
-	VEK5m2WcRIg5de1kLWLX1+0su4TQ1EiD6y06w0fJKskTD6FleMFKNfSYaV4MK1GPpoEzsUwjgNsZj
-	tHPPe0FzKs/+HwCzNGC9cMTTN1dcR0M5nMgYrYxmKCoWvli0AlMOi6hCan2EPX7wXzrqPo4ivTWrs
-	bjtfXqF77rLuB7M3tFH6i7Crdhltazg+b0tko4SFneSZGJgYvkb+yhi7kiTqQoMQBhJ1uLwZuy1y/
-	jy6EQDhj+5uOEodW8q+g2jr88lbdSVX79zuwDSWz1DES0VLpZIm7LX1wnpB8sgV1FvYwDVNvRGRzA
-	l5QKQm5HZKktPMntCsXg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zAuX579dHlTn2p/gcSRgy6Fb20Hmaq3mhKh1HyWPGd8=; b=gggRSUPlY7flJZ
+	FCkm6eulZKRShOKD262xYfOXMQYwcPxoIa6BNREnqRu+SC9VV+YBXebtillZZ/ZeTxkARbF/UAoXM
+	fd7ZCTibn9zHAZgV+M7ZzqNkOkH2TQQtlznc6doi54MzLy9Qj+7Fhui3x/0IE9eyIIJYifBGOFAhG
+	8PKos7ynEdsztm2CpsUiemf3cQ6zpgDvGZpBUyZwwJhee9bbtVoBp0X6x5it4Kw8A78mJS2x+qu29
+	lZDvO6lg+QJT0R459Tu7tp6O7h2e8nWigbzkmdgZ6XTmLBWuagtXGevLY0V0wvX/CHw8T5EcU5RJr
+	hwPCkvDqGAcLMk9YsSDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmngI-000yNc-Sv; Fri, 06 May 2022 02:26:58 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1nmoYg-0015x0-He; Fri, 06 May 2022 03:23:10 +0000
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmng7-000yK0-RJ; Fri, 06 May 2022 02:26:49 +0000
-Received: from canpemm500007.china.huawei.com (unknown [172.30.72.54])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4KvZ854dLhzNkTG;
- Fri,  6 May 2022 10:21:57 +0800 (CST)
-Received: from localhost (10.174.179.215) by canpemm500007.china.huawei.com
- (7.192.104.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 6 May
- 2022 10:26:39 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
- <tiwai@suse.com>, <matthias.bgg@gmail.com>, <tzungbi@google.com>,
- <angelogioacchino.delregno@collabora.com>, <trevor.wu@mediatek.com>
-CC: <alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- YueHaibing <yuehaibing@huawei.com>
-Subject: [PATCH -next] ASoC: mediatek: mt8195: Fix build warning without
- CONFIG_OF
-Date: Fri, 6 May 2022 10:26:38 +0800
-Message-ID: <20220506022638.15864-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.10.2.windows.1
+ id 1nmoYV-0015sm-6a
+ for linux-mediatek@lists.infradead.org; Fri, 06 May 2022 03:23:01 +0000
+Received: by mail-yb1-xb31.google.com with SMTP id f38so10853132ybi.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 05 May 2022 20:22:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=sYeOKYw6kwfaILJY6bEHCOKM5bFjhmE1ze1/LSaaovw=;
+ b=BLsVEaTG9U91396ZOP2b2MwVake7ojEipUon5OHt1Gy89SB9TslU1tsdVRhaxC4q/1
+ jR53S2m613SbxCgxn+k3UaVkQWznyQ9jxkBYcSvw3h+ZKQN0sfVfZucfjoplsMN+OlSp
+ oj3a/RwNhQcS0xIC9KsOHEHLYceThRr9bvcs0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=sYeOKYw6kwfaILJY6bEHCOKM5bFjhmE1ze1/LSaaovw=;
+ b=klcuivhsBOYD/AKrdxllwMrm0svM8DHSeTk+yX63thWD97k5BRcO/wi5lDJsY/Jzr3
+ eyAq1AXBceRTI1rBPw3KmokTF4EuZcN1AT9+kI5gpWaucYDWaZDqDQI69gQWmqpKGqUA
+ E/HToqfi9op72TsicJQ6a4ifEuG9Hwy3ZmJ2Zf8vmHoomv451L0nkBja3v2Y+H7IYYBz
+ gCXyDkplOGCq1x8nwZO3/RQ0istLi9S5qKiYjEvh2+ci83m9AuZ2PrdYhbhyuDe7+P4Y
+ jTzr01hgjUmshVx8kN5b/6wmCXE6lJjU1mOUCTm15ZniVvqHKythTobVJiPzH5EKEFO2
+ 8zcQ==
+X-Gm-Message-State: AOAM5305ecIw9fNVJ4rsKvsWJT9FQersZL4nIqbHqjZZ/XRqXw0CwA5c
+ cGd/236/UmWft6g9QGTY/xiwviQ6CZFz5lUMLkFUqQ==
+X-Google-Smtp-Source: ABdhPJzFrU6lJVs+NCit9LuyTEGNDWdMffiHdTCFRjgdhz+G0uAPff2R6owz9lUHYA3QGONqEJvI6agU3HSeStN62Qk=
+X-Received: by 2002:a25:4c2:0:b0:648:6a77:5da0 with SMTP id
+ 185-20020a2504c2000000b006486a775da0mr867811ybe.203.1651807376928; Thu, 05
+ May 2022 20:22:56 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [10.174.179.215]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- canpemm500007.china.huawei.com (7.192.104.62)
-X-CFilter-Loop: Reflected
+References: <20220505115226.20130-1-rex-bc.chen@mediatek.com>
+ <20220505115226.20130-6-rex-bc.chen@mediatek.com>
+ <89dc58a34ea080ca50a94187e24cabc22aba3304.camel@mediatek.com>
+In-Reply-To: <89dc58a34ea080ca50a94187e24cabc22aba3304.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 6 May 2022 11:22:45 +0800
+Message-ID: <CAGXv+5EOdXFjwbtZWY4_KBdp6BaQdp389JqUS18ifAgdcQiAtQ@mail.gmail.com>
+Subject: Re: [PATCH v6 05/10] cpufreq: mediatek: Add opp notification support
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: rafael@kernel.org, viresh.kumar@linaro.org, robh+dt@kernel.org, 
+ krzk+dt@kernel.org, matthias.bgg@gmail.com, jia-wei.chang@mediatek.com, 
+ roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com, 
+ angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ "Andrew-sh . Cheng" <andrew-sh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_192648_072149_27546407 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20220505_202259_303523_174C250C 
+X-CRM114-Status: GOOD (  34.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,46 +82,252 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-c291bmQvc29jL21lZGlhdGVrL210ODE5NS9tdDgxOTUtbXQ2MzU5LmM6MTYzOTozMjogd2Fybmlu
-Zzog4oCYbXQ4MTk1X210NjM1OV9tYXg5ODM5MF9ydDU2ODJfY2FyZOKAmSBkZWZpbmVkIGJ1dCBu
-b3QgdXNlZCBbLVd1bnVzZWQtdmFyaWFibGVdCiAxNjM5IHwgc3RhdGljIHN0cnVjdCBtdDgxOTVf
-Y2FyZF9kYXRhIG10ODE5NV9tdDYzNTlfbWF4OTgzOTBfcnQ1NjgyX2NhcmQgPSB7CiAgICAgIHwg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn4Kc291bmQvc29jL21lZGlhdGVrL210ODE5NS9tdDgxOTUtbXQ2MzU5LmM6MTYzNDoz
-Mjogd2FybmluZzog4oCYbXQ4MTk1X210NjM1OV9ydDEwMTFfcnQ1NjgyX2NhcmTigJkgZGVmaW5l
-ZCBidXQgbm90IHVzZWQgWy1XdW51c2VkLXZhcmlhYmxlXQogMTYzNCB8IHN0YXRpYyBzdHJ1Y3Qg
-bXQ4MTk1X2NhcmRfZGF0YSBtdDgxOTVfbXQ2MzU5X3J0MTAxMV9ydDU2ODJfY2FyZCA9IHsKICAg
-ICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn4Kc291bmQvc29jL21lZGlhdGVrL210ODE5NS9tdDgxOTUtbXQ2MzU5LmM6MTYy
-OTozMjogd2FybmluZzog4oCYbXQ4MTk1X210NjM1OV9ydDEwMTlfcnQ1NjgyX2NhcmTigJkgZGVm
-aW5lZCBidXQgbm90IHVzZWQgWy1XdW51c2VkLXZhcmlhYmxlXQogMTYyOSB8IHN0YXRpYyBzdHJ1
-Y3QgbXQ4MTk1X2NhcmRfZGF0YSBtdDgxOTVfbXQ2MzU5X3J0MTAxOV9ydDU2ODJfY2FyZCA9IHsK
-ICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn4KClRoZXNlIHZhcmlhYmxlcyBpcyBvbmx5IHVzZWQgd2l0aCBDT05GSUdf
-T0YsIG1vdmUgaXQgaW50byB0aGUgaWZkZWYgYmxvY2suCgpGaXhlczogODZhNmI5YzlkZmZmICgi
-QVNvQzogbWVkaWF0ZWs6IG10ODE5NTogYWRkIG1hY2hpbmUgc3VwcG9ydCBmb3IgbWF4OTgzOTAg
-YW5kIHJ0NTY4MiIpClNpZ25lZC1vZmYtYnk6IFl1ZUhhaWJpbmcgPHl1ZWhhaWJpbmdAaHVhd2Vp
-LmNvbT4KLS0tCiBzb3VuZC9zb2MvbWVkaWF0ZWsvbXQ4MTk1L210ODE5NS1tdDYzNTkuYyB8IDIg
-Ky0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAt
-LWdpdCBhL3NvdW5kL3NvYy9tZWRpYXRlay9tdDgxOTUvbXQ4MTk1LW10NjM1OS5jIGIvc291bmQv
-c29jL21lZGlhdGVrL210ODE5NS9tdDgxOTUtbXQ2MzU5LmMKaW5kZXggM2UzMmZlODAxYjNjLi5m
-OTA2NzVmMTRkNjAgMTAwNjQ0Ci0tLSBhL3NvdW5kL3NvYy9tZWRpYXRlay9tdDgxOTUvbXQ4MTk1
-LW10NjM1OS5jCisrKyBiL3NvdW5kL3NvYy9tZWRpYXRlay9tdDgxOTUvbXQ4MTk1LW10NjM1OS5j
-CkBAIC0xNjI2LDYgKzE2MjYsNyBAQCBzdGF0aWMgaW50IG10ODE5NV9tdDYzNTlfZGV2X3Byb2Jl
-KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAJcmV0dXJuIHJldDsKIH0KIAorI2lmZGVm
-IENPTkZJR19PRgogc3RhdGljIHN0cnVjdCBtdDgxOTVfY2FyZF9kYXRhIG10ODE5NV9tdDYzNTlf
-cnQxMDE5X3J0NTY4Ml9jYXJkID0gewogCS5uYW1lID0gIm10ODE5NV9yMTAxOV81NjgyIiwKIAku
-cXVpcmsgPSBSVDEwMTlfU1BFQUtFUl9BTVBfUFJFU0VOVCwKQEAgLTE2NDEsNyArMTY0Miw2IEBA
-IHN0YXRpYyBzdHJ1Y3QgbXQ4MTk1X2NhcmRfZGF0YSBtdDgxOTVfbXQ2MzU5X21heDk4MzkwX3J0
-NTY4Ml9jYXJkID0gewogCS5xdWlyayA9IE1BWDk4MzkwX1NQRUFLRVJfQU1QX1BSRVNFTlQsCiB9
-OwogCi0jaWZkZWYgQ09ORklHX09GCiBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBt
-dDgxOTVfbXQ2MzU5X2R0X21hdGNoW10gPSB7CiAJewogCQkuY29tcGF0aWJsZSA9ICJtZWRpYXRl
-ayxtdDgxOTVfbXQ2MzU5X3J0MTAxOV9ydDU2ODIiLAotLSAKMi4xNy4xCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Fri, May 6, 2022 at 9:56 AM Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
+>
+> On Thu, 2022-05-05 at 19:52 +0800, Rex-BC Chen wrote:
+> > From this opp notifier, cpufreq should listen to opp notification and
+> > do
+>
+> Hello Viresh,
+>
+> There is still ">" in this patch...
+> I think the root cause could be the "From" word in the beginning of
+> this message.
+> I will not use "From" in next version..
+
+Could this be a bug in lore?
+
+I'm not seeing this extra ">" in either the email in my inbox, viewed
+raw, nor the patch downloaded from patchwork [1].
+
+
+ChenYu
+
+[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20220505115226.20130-6-rex-bc.chen@mediatek.com/mbox/
+
+
+>
+> BRs,
+> Rex
+>
+> > proper actions when receiving events of disable and voltage
+> > adjustment.
+> >
+> > One of the user for this opp notifier is MediaTek SVS.
+> > The MediaTek Smart Voltage Scaling (SVS) is a hardware which
+> > calculates
+> > suitable SVS bank voltages to OPP voltage table.
+> >
+> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/cpufreq/mediatek-cpufreq.c | 91 +++++++++++++++++++++++++++-
+> > --
+> >  1 file changed, 83 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/drivers/cpufreq/mediatek-cpufreq.c
+> > b/drivers/cpufreq/mediatek-cpufreq.c
+> > index fe205eca657d..06d80ee06bbf 100644
+> > --- a/drivers/cpufreq/mediatek-cpufreq.c
+> > +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> > @@ -46,6 +46,11 @@ struct mtk_cpu_dvfs_info {
+> >       int intermediate_voltage;
+> >       bool need_voltage_tracking;
+> >       int pre_vproc;
+> > +     /* Avoid race condition for regulators between notify and
+> > policy */
+> > +     struct mutex reg_lock;
+> > +     struct notifier_block opp_nb;
+> > +     unsigned int opp_cpu;
+> > +     unsigned long opp_freq;
+> >       const struct mtk_cpufreq_platform_data *soc_data;
+> >       int vtrack_max;
+> >  };
+> > @@ -182,6 +187,8 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >
+> >       pre_freq_hz = clk_get_rate(cpu_clk);
+> >
+> > +     mutex_lock(&info->reg_lock);
+> > +
+> >       if (unlikely(info->pre_vproc <= 0))
+> >               pre_vproc = regulator_get_voltage(info->proc_reg);
+> >       else
+> > @@ -214,7 +221,7 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >                       dev_err(cpu_dev,
+> >                               "cpu%d: failed to scale up voltage!\n",
+> > policy->cpu);
+> >                       mtk_cpufreq_set_voltage(info, pre_vproc);
+> > -                     return ret;
+> > +                     goto out;
+> >               }
+> >       }
+> >
+> > @@ -224,8 +231,7 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >               dev_err(cpu_dev,
+> >                       "cpu%d: failed to re-parent cpu clock!\n",
+> > policy->cpu);
+> >               mtk_cpufreq_set_voltage(info, pre_vproc);
+> > -             WARN_ON(1);
+> > -             return ret;
+> > +             goto out;
+> >       }
+> >
+> >       /* Set the original PLL to target rate. */
+> > @@ -235,7 +241,7 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >                       "cpu%d: failed to scale cpu clock rate!\n",
+> > policy->cpu);
+> >               clk_set_parent(cpu_clk, armpll);
+> >               mtk_cpufreq_set_voltage(info, pre_vproc);
+> > -             return ret;
+> > +             goto out;
+> >       }
+> >
+> >       /* Set parent of CPU clock back to the original PLL. */
+> > @@ -244,8 +250,7 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >               dev_err(cpu_dev,
+> >                       "cpu%d: failed to re-parent cpu clock!\n",
+> > policy->cpu);
+> >               mtk_cpufreq_set_voltage(info, inter_vproc);
+> > -             WARN_ON(1);
+> > -             return ret;
+> > +             goto out;
+> >       }
+> >
+> >       /*
+> > @@ -260,15 +265,72 @@ static int mtk_cpufreq_set_target(struct
+> > cpufreq_policy *policy,
+> >                       clk_set_parent(cpu_clk, info->inter_clk);
+> >                       clk_set_rate(armpll, pre_freq_hz);
+> >                       clk_set_parent(cpu_clk, armpll);
+> > -                     return ret;
+> > +                     goto out;
+> >               }
+> >       }
+> >
+> > -     return 0;
+> > +     info->opp_freq = freq_hz;
+> > +
+> > +out:
+> > +     mutex_unlock(&info->reg_lock);
+> > +
+> > +     return ret;
+> >  }
+> >
+> >  #define DYNAMIC_POWER "dynamic-power-coefficient"
+> >
+> > +static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+> > +                                 unsigned long event, void *data)
+> > +{
+> > +     struct dev_pm_opp *opp = data;
+> > +     struct dev_pm_opp *new_opp;
+> > +     struct mtk_cpu_dvfs_info *info;
+> > +     unsigned long freq, volt;
+> > +     struct cpufreq_policy *policy;
+> > +     int ret = 0;
+> > +
+> > +     info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+> > +
+> > +     if (event == OPP_EVENT_ADJUST_VOLTAGE) {
+> > +             freq = dev_pm_opp_get_freq(opp);
+> > +
+> > +             mutex_lock(&info->reg_lock);
+> > +             if (info->opp_freq == freq) {
+> > +                     volt = dev_pm_opp_get_voltage(opp);
+> > +                     ret = mtk_cpufreq_set_voltage(info, volt);
+> > +                     if (ret)
+> > +                             dev_err(info->cpu_dev,
+> > +                                     "failed to scale voltage:
+> > %d\n", ret);
+> > +             }
+> > +             mutex_unlock(&info->reg_lock);
+> > +     } else if (event == OPP_EVENT_DISABLE) {
+> > +             freq = dev_pm_opp_get_freq(opp);
+> > +
+> > +             /* case of current opp item is disabled */
+> > +             if (info->opp_freq == freq) {
+> > +                     freq = 1;
+> > +                     new_opp = dev_pm_opp_find_freq_ceil(info-
+> > >cpu_dev,
+> > +                                                         &freq);
+> > +                     if (IS_ERR(new_opp)) {
+> > +                             dev_err(info->cpu_dev,
+> > +                                     "all opp items are
+> > disabled\n");
+> > +                             ret = PTR_ERR(new_opp);
+> > +                             return notifier_from_errno(ret);
+> > +                     }
+> > +
+> > +                     dev_pm_opp_put(new_opp);
+> > +                     policy = cpufreq_cpu_get(info->opp_cpu);
+> > +                     if (policy) {
+> > +                             cpufreq_driver_target(policy, freq /
+> > 1000,
+> > +                                                   CPUFREQ_RELATION_
+> > L);
+> > +                             cpufreq_cpu_put(policy);
+> > +                     }
+> > +             }
+> > +     }
+> > +
+> > +     return notifier_from_errno(ret);
+> > +}
+> > +
+> >  static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info,
+> > int cpu)
+> >  {
+> >       struct device *cpu_dev;
+> > @@ -357,6 +419,18 @@ static int mtk_cpu_dvfs_info_init(struct
+> > mtk_cpu_dvfs_info *info, int cpu)
+> >       info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
+> >       dev_pm_opp_put(opp);
+> >
+> > +     mutex_init(&info->reg_lock);
+> > +
+> > +     info->opp_cpu = cpu;
+> > +     info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
+> > +     ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
+> > +     if (ret) {
+> > +             dev_err(cpu_dev, "cpu%d: failed to register opp
+> > notifier\n", cpu);
+> > +             goto out_disable_inter_clock;
+> > +     }
+> > +
+> > +     info->opp_freq = clk_get_rate(info->cpu_clk);
+> > +
+> >       /*
+> >        * If SRAM regulator is present, software "voltage tracking" is
+> > needed
+> >        * for this CPU power domain.
+> > @@ -421,6 +495,7 @@ static void mtk_cpu_dvfs_info_release(struct
+> > mtk_cpu_dvfs_info *info)
+> >       }
+> >
+> >       dev_pm_opp_of_cpumask_remove_table(&info->cpus);
+> > +     dev_pm_opp_unregister_notifier(info->cpu_dev, &info->opp_nb);
+> >  }
+> >
+> >  static int mtk_cpufreq_init(struct cpufreq_policy *policy)
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
