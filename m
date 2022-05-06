@@ -4,88 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A44DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 14:10:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 126D3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 14:10:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:From:CC:To:Subject
-	:MIME-Version:References:In-Reply-To:Date:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UMNBNmn5Y1fSgtN561SMaNs6vRqtJwm/NmtTtUBu60M=; b=0+gRuD5j4gcI+L
-	f0Gln4dqL/Yu018w+U1fOeVr80Rx8FOHsHyx9utodw8UnjfkC2ngIHmWG2PzPlMVUZ+0BQMIijH0I
-	ljO8Ut6I+ctoNxlkZl+kQeAY63rJPJHVhw1JkJifYoRUMq9+uEXBeMnAxtkQvnRdx8/hdA5mOejMF
-	dy16yfcvnNE1//1zaIT2AIWU/PW82LibxBQLa+6bUV6rPw5HMLxq/2UQAmFx31kfXuczUI00wdm/O
-	7W74OgjgX+4unRrTmeefBhOoBX1hSQ2pC7Tko+lcP9QooNPhIFJfijEFd2LPl+MAmFSmwRrl+LYv8
-	zmEHBxIFxrFaZYkIpJhA==;
+	List-Owner; bh=mgZFEZKEWzwtsZcuBZdgTNzhNNvXa9W2Jgau+cMnd28=; b=0Bjm/kDX33Cw0u
+	Dh64Vvhj1HaIYqpn4jUlliXXjuJ92O7EdhF9H7K0Bs3aW4mgEXNEMr8GMuL5Vz2o8MpYIrJvOhwYm
+	Ttjs4d7sM/nmjj2amWoQtOhkI8ckPcnhfIKKGyx7K6BUBl941cZe94uj07xGTGwbus0UeEW437Zqh
+	fwNI9JI5irm9ZPU6q9Q/tgATiR4c/VW2/TUPruRWh6ajYFmQSyYgfBdd8NfGubguKEzpMeHUsxHQz
+	998TU4lwyWrg/Ku8u6RS5WC5UkQbk/QjWWppVJHquJ5LQiKRkcNKwS8IdNPxOfqRyxuq/oRhOt1ZV
+	Si06fa0Ts10cIeK3kgKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmyed-003gbO-Lg; Fri, 06 May 2022 14:09:59 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1nmyfR-003h6M-4c; Fri, 06 May 2022 14:10:49 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmydY-003frX-Fq; Fri, 06 May 2022 14:08:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1651846105;
- bh=WgytZKjmiBQFX7uZ/jjhSIBiJAj8t5XglcXcRrxeF8Q=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
- CC:From;
- b=ZxddAxjw4ulOs6jvFgCz850BHQBqwBs2xNTCt3dcLrC9w5PnoSTdnQJ1L03hIwWHQ
- pUuf0nkXavc93/GJW3DSgT40dOcGB7oJxiBTm166dhP0rV2y3rK5pH5s+SgoMwwikq
- 6V4CzMHxAHwRU0E5MRb1s6R531VcUhcE1Z6CAaJ0=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-s9 ([80.245.76.19]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MAwbz-1ng3gO1qMD-00BMAI; Fri, 06
- May 2022 16:08:25 +0200
-Date: Fri, 06 May 2022 16:08:17 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <ac70ae6d-7e1a-d6b9-e33e-793035d5606e@linaro.org>
-References: <20220505150008.126627-1-linux@fw-web.de>
- <6d45f060-85e6-f3ff-ef00-6c68a2ada7a1@linaro.org>
- <trinity-12061c77-38b6-4b56-bccd-3b54cf9dc0e8-1651819574078@3c-app-gmx-bs21>
- <ac70ae6d-7e1a-d6b9-e33e-793035d5606e@linaro.org>
-MIME-Version: 1.0
-Subject: Re: Aw: Re: [RFC v2] dt-bindings: net: dsa: convert binding for
- mediatek switches
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-CC: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ id 1nmyem-003gey-SX; Fri, 06 May 2022 14:10:11 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 41D7C1F46710
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651846204;
+ bh=QSTdVIDTGCXlezHmH2+oiqQf0IZ7PXGw1SaggBY6/uM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fyh+VtUygnb9GB7tGAWE4+/MmdI32xBXFoaASg1PnEtQoRWab9mtk6k+P8QH6cfE1
+ MHt6Y246yXFhWyR2aOF13HlK0p2eb75MplA47CCmiD3Hu4zQX0Y24bM4Dalz3rbfQC
+ HYI1wi3TbjH/5aQfWcOpqZKMSYgCdwzvGzidOEISocIxo8uASRjmWIVs8XxHQ9djDZ
+ tXVhdn+r7znUVnA4CgEqFbN7D8bGaIxJGNsj2AINkxxlF9anY3TqiIu1qb6606ByUt
+ rJRsg/FlGHNlS51Njw+KBR3ffLbd+xaBOjVs38VQ6Ng7vsTjCxU+C/7Fzsor2mb6/3
+ HYxPGh5huYPJg==
+Date: Fri, 6 May 2022 10:09:59 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Mark Brown <broonie@kernel.org>, kernel@collabora.com,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Greg Ungerer <gerg@kernel.org>,
- =?ISO-8859-1?Q?Ren=E9_van_Dorst?= <opensource@vdorst.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <04062F03-43DC-4B92-8C39-2F84ABDE2DE4@public-files.de>
-X-Provags-ID: V03:K1:T2On2gkE0ziiZBeVVFwz7HVvt6s28DOg5a5fA6wmtL/dbrZEuhj
- Lc6jEaasYReZ2Th3WG9V3OdBFSGLkGFhxjMiEPCQvTEG1WRCcqaUTZMhy2NnvA9H34jRsa6
- qFVirmd8FSVISD+xDX0OLaoJ58TUm8CgS26ZNmsFg6t9dgkRTpmDwPuiDVIGqnRkLnIACT+
- I9AxXwRJo8n/w6uDoj2zg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wLNzKAt24Gs=:9cXTi89Mx1jhPI9X1MTGb5
- 2FtlAU0g62zkWejjYg3duxYKExkF8b1BKvybOIwO5PCED+wMAkU0VUcld1JJ5W+o6RxK8rk3X
- IY4IBtl/Haee4H1h/n2d6ouprEK1lAaQfGirHOihtyfKcWfYc9Q9M7g3iLDdSTpPusWvJh3Ow
- 0cLYOxQcU4YzBzw3+RPuRv9LjXXb/6UlezyNZGKjCpVbNirIV39c6I6uSm58e5lvYBGibs1X0
- rfgvE9Tux3JjJ9jtEOmCBD3lSkn5NsK167A6X3CpRUH9OEhKRTiQZpI4k/mvzCT31LStYNBcx
- vWK/hw+5lG9W8th0sWDjSN9/CR23hYaOQUnwlHw2eJpKd5dlyaZztl9EbLRBne2eUUsNV9Ncd
- 2IyLcYQXm6crYBI3L5gnrTDB6T4qbDv3PbPbWSF33moVo5WuopCgF+05MXVpRF4wSI2yGZERd
- 60JKjqOz4fVYbD3UQGpA0TYjUfeSweEuvBIjZhhgLeRSwFIrUqsDfReWlt4JyfFAyewgqYd8N
- SIUrgTwTeDc3rvPDPn6Bt5n7z/uW9m0gULvr/IPsjwy4kORCKDHKuQ8HX6u8Lif/q3iX5w2Uc
- Aprol01yvwJ4e00aYhh64WS5G4PfE1Kh/x5tFkvSqpyRoCGpPmzx5X4J8dJxfJw3Jsxtl3qwt
- d18BPoo1xDyLtYYZ8Fzk1GmuDQGJy5dpkGcbuUh1MzOsPFWA/UKNxwo/7O/TmUZwmQyrT5kFd
- c9HihY7GMsBKO8BQR9G5Y+LYzuryLVPuj/exy5QSz9pMUR0kgiBCTpfhgLAdrWJhwanRB1G2t
- swnQPpv5l1IvZOIG///twmFl91e5bACtQR1y1CDMc4Bo3Xcxu3g/zGqx6oXkuphm4ZEqKlXmA
- FuW4fvoxNXAm2oXj2BbM9zF0te5Wc/hBafKPJMTe+G4NQ0sEaskKFmIXo49cwABeSFgH43mz/
- zNch3CAozA0grXMaOGIHAYR8RCScF01TDR2WS1bWI1bno9hdxUSe2hL2PCUtxOdjbCHqCRt6o
- qpLPtz4IavtR/x0mifFRSP07o6/Y2BcDiRXQsDxULMKEg537m0x+ATBus+Nc+BAAE/OC5J9bz
- zYvdaugEn1ns7Y=
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
+ properties
+Message-ID: <20220506140959.ldy32lyf5jbkkqj2@notapiano>
+References: <20220429203039.2207848-1-nfraprado@collabora.com>
+ <20220429203039.2207848-2-nfraprado@collabora.com>
+ <4826c824-40ce-5726-ed95-5be069233ca7@collabora.com>
+ <cbf2fcbae25408b95875278eb37e829bf4671430.camel@mediatek.com>
+ <d1c548bb-8a36-79bf-498d-c909bf7e7679@collabora.com>
+ <20220505162537.byiwfe2ghomxhezl@notapiano>
+ <559a1e189613484b8528dc4eaf19099e9162fcc6.camel@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <559a1e189613484b8528dc4eaf19099e9162fcc6.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_070853_005075_937B1C32 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20220506_071009_325059_D4852C6A 
+X-CRM114-Status: GOOD (  55.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,81 +75,241 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 6. Mai 2022 09:15:12 MESZ schrieb Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>:
->On 06/05/2022 08:46, Frank Wunderlich wrote:
->>>> +    const: 1
->>>> +
->>>> +  "#size-cells":
->>>> +    const: 0
->>>> +
->>>> +  core-supply:
->>>> +    description: |
->>>
->>> Drop | everywhere where it is not needed (so in all places, AFAICT)
->> 
->> is it necessary for multiline-descriptions or is indentation enough?
->
->It's necessary only when YAML syntax characters appear in description
->or
->when you want specific formatting.
->
->https://elixir.bootlin.com/linux/v5.18-rc5/source/Documentation/devicetree/bindings/example-schema.yaml#L97
->
->https://yaml-multiline.info/
+On Fri, May 06, 2022 at 01:45:24PM +0800, Jiaxin Yu wrote:
+> On Thu, 2022-05-05 at 12:25 -0400, N=EDcolas F. R. A. Prado wrote:
+> > > =
 
-Ok then i drop all except on examples
+> =
 
->>>> +
->>>> +patternProperties:
->>>
->>> patternProperties go before allOf, just after regular properties.
->> 
->> after required, right?
->
->properties do not go after required, so neither patternProperties
->should. Something like: propertes -> patternProperties -> dependencies
->-> required -> allOf -> additionalProperties -> examples
+> > On Thu, May 05, 2022 at 10:52:45AM +0200, AngeloGioacchino Del Regno
+> > wrote:
+> > > Il 05/05/22 10:48, Jiaxin Yu ha scritto:
+> > > > On Thu, 2022-05-05 at 10:08 +0200, AngeloGioacchino Del Regno
+> > > > wrote:
+> > > > > Il 29/04/22 22:30, N=EDcolas F. R. A. Prado ha scritto:
+> > > > > > The Mediatek AFE PCM controller for MT8192 allows sharing of
+> > > > > > an I2S
+> > > > > > bus
+> > > > > > between two busses. Add a pattern for these properties in the
+> > > > > > dt-binding.
+> > > > > > =
 
-Thx for explanation
+> > > > > > Signed-off-by: N=EDcolas F. R. A. Prado <
+> > > > > > nfraprado@collabora.com>
+> > > > > > ---
+> > > > > > =
 
-So i end up like this:
+> > > > > >    Documentation/devicetree/bindings/sound/mt8192-afe-
+> > > > > > pcm.yaml | 5
+> > > > > > +++++
+> > > > > >    1 file changed, 5 insertions(+)
+> > > > > > =
 
-https://github.com/frank-w/BPI-R2-4.14/blob/5.18-mt7531-mainline/Documentation/devicetree/bindings/net/dsa/mediatek%2Cmt7530.yaml
+> > > > > > diff --git a/Documentation/devicetree/bindings/sound/mt8192-
+> > > > > > afe-
+> > > > > > pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-
+> > > > > > afe-
+> > > > > > pcm.yaml
+> > > > > > index 7a25bc9b8060..5b03c8dbf318 100644
+> > > > > > --- a/Documentation/devicetree/bindings/sound/mt8192-afe-
+> > > > > > pcm.yaml
+> > > > > > +++ b/Documentation/devicetree/bindings/sound/mt8192-afe-
+> > > > > > pcm.yaml
+> > > > > > @@ -54,6 +54,11 @@ properties:
+> > > > > >          - const: aud_infra_clk
+> > > > > >          - const: aud_infra_26m_clk
+> > > > > > +patternProperties:
+> > > > > > +  "^i2s[0-35-9]-share$":
+> > > > > > +    description: Name of the I2S bus that is shared with
+> > > > > > this bus
+> > > > > > +    pattern: "^I2S[0-35-9]$"
+> > > > > > +
+> > > > > >    required:
+> > > > > >      - compatible
+> > > > > >      - interrupts
+> > > > > > =
 
-Including followup (remove reset-gpios and add rgmii for mt7531).
+> > > > > =
 
->> 
->>>> +  "^(ethernet-)?ports$":
->>>> +    type: object
->>>
->>> Also on this level:
->>>     unevaluatedProperties: false
->> 
->> this is imho a bit redundant because in dsa.yaml (which is included
->now after patternProperties)
->> it is already set on both levels.
->
->dsa.yaml does not set it on ethernet-ports.
->
->> Adding it here will fail in examples because of size/address-cells
->which are already defined in dsa.yaml...
->> so i need to define them here again.
->
->You're right, it cannot be set here.
+> > > > > The only other way of doing this would be to complicate this in
+> > > > > the
+> > > > > driver
+> > > > > so that we can do something like
+> > > > > =
 
-So i make no change here,right?
+> > > > > "i2s-share =3D <0 2>";  instead of  i2s0-share =3D "I2S2";
+> > > > > =
 
->Best regards,
->Krzysztof
+> > > > > ...and I don't think that this would be any more
+> > > > > straightforward than
+> > > > > the
+> > > > > provided way.
+> > > > > =
 
+> > > > > There's an improvement that we can do to that pattern
+> > > > > description
+> > > > > though,
+> > > > > which would be explaining that declaring 'i2s0-share =3D "I2S2"'
+> > > > > means
+> > > > > that
+> > > > > I2S2's data pin will be used as DATA-OUT, while i2s0 is DATA-
+> > > > > IN.
+> > > > > =
 
-regards Frank
+> > > > > Another thing that comes to mind here is that this is a
+> > > > > MediaTek
+> > > > > specific
+> > > > > property and *not* a generic one, which means that both the
+> > > > > driver
+> > > > > and
+> > > > > this binding should be fixed to get a "mediatek," prefix, so,
+> > > > > this
+> > > > > property
+> > > > > should - in reality - be "mediatek,i2s[0-35-9]-share" instead.
+> > > > > =
+
+> > > > > I think that everyone agrees about that, but let's see what the
+> > > > > others say.
+> > > > > =
+
+> > > > > Cheers,
+> > > > > Angelo
+> > > > =
+
+> > > > Hi Angelo,
+> > > > =
+
+> > > > 'i2s0-share =3D "I2S2"' means that if we want use I2S0, there need
+> > > > open
+> > > > I2S2 to provide clock. Conversely, if we want to use I2S2, we
+> > > > don't
+> > > > need to open I2S0. However, MediaTek I2S0 and I2S2 hardware are
+> > > > generally designed as input. So usually we use 'i2s0-share =3D
+> > > > "I2S1"'.
+> > > > Even numbers represent input, odd numbers represent output.
+> > > > =
+
+> > > > Yes, I think adding the "mediatek," prefix is the right way to
+> > > > define a
+> > > > non-generic property.
+> > > > =
+
+> > =
+
+> > Hi Jiaxin,
+> > =
+
+> > thank you for the insights.
+> > =
+
+> > > =
+
+> > > Hello Jiaxin,
+> > > =
+
+> > > if I get this correctly, i2s0-share =3D "I2S2" would be *invalid*...
+> > > as you
+> > > just explained, i2sX, where:
+> > > =
+
+> > > X =3D even number -> always DATA IN
+> > > X =3D odd number  -> always DATA OUT
+> > > =
+
+> > > ...this means that the dt-binding needs a pattern to specify that
+> > > only odd
+> > > can be assigned to only even.
+> > =
+
+> > So, the situation seems different at least on mt8192-asurada-
+> > spherion.
+> > Here, I2S8 is used for the headset microphone and I2S9 for the
+> > headset audio.
+> > Even for input and odd for output agree with Jiaxin's description.
+> > However, the
+> > input bus seems to be the main one, that is, disabling I2S8:
+> > =
+
+> > 	amixer cset name=3D'UL2_CH1 I2S8_CH1' 0
+> > 	amixer cset name=3D'UL2_CH2 I2S8_CH2' 0
+> > =
+
+> > not only disables the microphone but also the audio on the headset.
+> > If I add =
+
+> > =
+
+> > 	i2s9-share =3D "I2S8";
+> > =
+
+> > on the DT, then everything works, I can disable I2S8 without
+> > impacting the
+> > headset audio. So the pattern for the property on this platform is
+> > the opposite
+> > that Jiaxin mentioned. This tells me that we should keep the binding
+> > more
+> > generic (not assume where odds and evens go). I will still apply the
+> > other
+> > suggestions mentioned though.
+> > =
+
+> > Thanks,
+> > N=EDcolas
+> > =
+
+> Hi N=EDcolas,
+> =
+
+> From software point, I2S8 and I2S9 belong to different hardware, so if
+> you turn off I2S8 with CMD1, of course it will not affect I2S9.
+> =
+
+> CMD1:
+> amixer cset name=3D'UL2_CH1 I2S8_CH1' 0
+> amixer cset name=3D'UL2_CH2 I2S8_CH2' 0
+> =
+
+> Frome hardware point, I2S9 will use(share) I2S8's clock. If we don't
+> want the user to perceive this, the driver need to help do something.
+> So this property 'i2s9-share =3D "I2S8";' will be added to inform the
+> driver.
+
+Hi Jiaxin,
+
+yes, that's what I figured. What I was saying is that for the binding, your
+example was
+
+i2s0-share =3D "I2S1"
+   ^ even,input  ^ odd,output
+
+while on mt8192-asurada-spherion the use case is
+
+i2s9-share =3D "I2S8";
+   ^ odd,output  ^ even,input
+
+So Angelo's idea to require in the dt-binding that the left side is always =
+even
+(input) and the right side always odd (based on your example), wouldn't wor=
+k for
+my use case.
+
+Basically it's a question of whether the input always shares the clock from=
+ an
+output (your example), or if output always shares the clock from an input (=
+my
+use case), or if both are valid. I'm taking from this that both are valid, =
+so I
+won't add any such restriction in the dt-binding in the following version, =
+but
+do let me know if this is not the case.
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
