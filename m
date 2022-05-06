@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 126D3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 14:10:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB5CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 14:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mgZFEZKEWzwtsZcuBZdgTNzhNNvXa9W2Jgau+cMnd28=; b=0Bjm/kDX33Cw0u
-	Dh64Vvhj1HaIYqpn4jUlliXXjuJ92O7EdhF9H7K0Bs3aW4mgEXNEMr8GMuL5Vz2o8MpYIrJvOhwYm
-	Ttjs4d7sM/nmjj2amWoQtOhkI8ckPcnhfIKKGyx7K6BUBl941cZe94uj07xGTGwbus0UeEW437Zqh
-	fwNI9JI5irm9ZPU6q9Q/tgATiR4c/VW2/TUPruRWh6ajYFmQSyYgfBdd8NfGubguKEzpMeHUsxHQz
-	998TU4lwyWrg/Ku8u6RS5WC5UkQbk/QjWWppVJHquJ5LQiKRkcNKwS8IdNPxOfqRyxuq/oRhOt1ZV
-	Si06fa0Ts10cIeK3kgKg==;
+	List-Owner; bh=xAcdG7P+4/Q9v0LiuIJGwae1+brO+jv3hzW82EjqJLk=; b=DO3nF0wZae3Ucj
+	1HoaOPHoTs3W3Jnog9LViCJoNpBxG4u/04IWpLEhM+Sq6851DFBvRtkDsom51l9Ph3DE7rgvkdlnd
+	w99mFGwFNpUdTgV7Sj+mpGn3YHj10+XPc8NMRZU2pMVje1iFjt1qCLbiZ1KVzbWTRi2HokAr7GYlJ
+	x061efCKEbal/ZRLTJ8gdsEhJY77M4wFZa1BR8+SPBfjetzVFawG5f7daoN/kzICJZH8ZkivuUXat
+	WNQju1ntu/dfk7Q9LkEeVok17/YsTlg5GRl4uhltaVKA+JoDHqyhp/aEg/q6HwqX0g97ydLQj+vdi
+	GQSO8NqqvtZXNvBDtSjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmyfR-003h6M-4c; Fri, 06 May 2022 14:10:49 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nmzLU-003uT3-K4; Fri, 06 May 2022 14:54:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmyem-003gey-SX; Fri, 06 May 2022 14:10:11 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 41D7C1F46710
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651846204;
- bh=QSTdVIDTGCXlezHmH2+oiqQf0IZ7PXGw1SaggBY6/uM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fyh+VtUygnb9GB7tGAWE4+/MmdI32xBXFoaASg1PnEtQoRWab9mtk6k+P8QH6cfE1
- MHt6Y246yXFhWyR2aOF13HlK0p2eb75MplA47CCmiD3Hu4zQX0Y24bM4Dalz3rbfQC
- HYI1wi3TbjH/5aQfWcOpqZKMSYgCdwzvGzidOEISocIxo8uASRjmWIVs8XxHQ9djDZ
- tXVhdn+r7znUVnA4CgEqFbN7D8bGaIxJGNsj2AINkxxlF9anY3TqiIu1qb6606ByUt
- rJRsg/FlGHNlS51Njw+KBR3ffLbd+xaBOjVs38VQ6Ng7vsTjCxU+C/7Fzsor2mb6/3
- HYxPGh5huYPJg==
-Date: Fri, 6 May 2022 10:09:59 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mark Brown <broonie@kernel.org>, kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+ id 1nmzLI-003uQT-Et; Fri, 06 May 2022 14:54:07 +0000
+X-UUID: 1ef667830f144c19b8fc7b863a4da235-20220506
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=nAtrq9RSotWo2dSQ357pYzaGdCyyqj4s+vz9Ff3CNC0=; 
+ b=hm6GG9AaRH0AE2pNt2W1jA64JeWDELOXqG9nYvvle+ftLz28LaIXCtVdia07vhlMwLljlHHZVGl89iZexYavRECCPjA1uzypP48zeBHufyswaG1VJjRxxoG09IK5rY7uI0dx8RD+WrkV1VRdzm6PE5ChUk4B6LPtBelJBTzIR24=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:d26d0fe3-168a-4fde-80c1-a32fb6f26cad, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:36c07c16-2e53-443e-b81a-655c13977218,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 1ef667830f144c19b8fc7b863a4da235-20220506
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jiaxin.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1517220424; Fri, 06 May 2022 07:53:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 May 2022 07:44:25 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Fri, 6 May 2022 22:44:24 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Fri, 6 May 2022 22:44:23 +0800
+Message-ID: <21a51ce08e44d325e0682409e181f178b2689517.camel@mediatek.com>
 Subject: Re: [PATCH 1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
  properties
-Message-ID: <20220506140959.ldy32lyf5jbkkqj2@notapiano>
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Mark Brown" <broonie@kernel.org>, <kernel@collabora.com>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Shane Chien <shane.chien@mediatek.com>,
+ <alsa-devel@alsa-project.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Fri, 6 May 2022 22:44:23 +0800
+In-Reply-To: <20220506140959.ldy32lyf5jbkkqj2@notapiano>
 References: <20220429203039.2207848-1-nfraprado@collabora.com>
  <20220429203039.2207848-2-nfraprado@collabora.com>
  <4826c824-40ce-5726-ed95-5be069233ca7@collabora.com>
@@ -58,12 +75,13 @@ References: <20220429203039.2207848-1-nfraprado@collabora.com>
  <d1c548bb-8a36-79bf-498d-c909bf7e7679@collabora.com>
  <20220505162537.byiwfe2ghomxhezl@notapiano>
  <559a1e189613484b8528dc4eaf19099e9162fcc6.camel@mediatek.com>
+ <20220506140959.ldy32lyf5jbkkqj2@notapiano>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <559a1e189613484b8528dc4eaf19099e9162fcc6.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_071009_325059_D4852C6A 
-X-CRM114-Status: GOOD (  55.57  )
+X-CRM114-CacheID: sfid-20220506_075404_552998_C8F8389E 
+X-CRM114-Status: GOOD (  59.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,243 +93,144 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 06, 2022 at 01:45:24PM +0800, Jiaxin Yu wrote:
-> On Thu, 2022-05-05 at 12:25 -0400, N=EDcolas F. R. A. Prado wrote:
-> > > =
-
-> =
-
-> > On Thu, May 05, 2022 at 10:52:45AM +0200, AngeloGioacchino Del Regno
-> > wrote:
-> > > Il 05/05/22 10:48, Jiaxin Yu ha scritto:
-> > > > On Thu, 2022-05-05 at 10:08 +0200, AngeloGioacchino Del Regno
-> > > > wrote:
-> > > > > Il 29/04/22 22:30, N=EDcolas F. R. A. Prado ha scritto:
-> > > > > > The Mediatek AFE PCM controller for MT8192 allows sharing of
-> > > > > > an I2S
-> > > > > > bus
-> > > > > > between two busses. Add a pattern for these properties in the
-> > > > > > dt-binding.
-> > > > > > =
-
-> > > > > > Signed-off-by: N=EDcolas F. R. A. Prado <
-> > > > > > nfraprado@collabora.com>
-> > > > > > ---
-> > > > > > =
-
-> > > > > >    Documentation/devicetree/bindings/sound/mt8192-afe-
-> > > > > > pcm.yaml | 5
-> > > > > > +++++
-> > > > > >    1 file changed, 5 insertions(+)
-> > > > > > =
-
-> > > > > > diff --git a/Documentation/devicetree/bindings/sound/mt8192-
-> > > > > > afe-
-> > > > > > pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-
-> > > > > > afe-
-> > > > > > pcm.yaml
-> > > > > > index 7a25bc9b8060..5b03c8dbf318 100644
-> > > > > > --- a/Documentation/devicetree/bindings/sound/mt8192-afe-
-> > > > > > pcm.yaml
-> > > > > > +++ b/Documentation/devicetree/bindings/sound/mt8192-afe-
-> > > > > > pcm.yaml
-> > > > > > @@ -54,6 +54,11 @@ properties:
-> > > > > >          - const: aud_infra_clk
-> > > > > >          - const: aud_infra_26m_clk
-> > > > > > +patternProperties:
-> > > > > > +  "^i2s[0-35-9]-share$":
-> > > > > > +    description: Name of the I2S bus that is shared with
-> > > > > > this bus
-> > > > > > +    pattern: "^I2S[0-35-9]$"
-> > > > > > +
-> > > > > >    required:
-> > > > > >      - compatible
-> > > > > >      - interrupts
-> > > > > > =
-
-> > > > > =
-
-> > > > > The only other way of doing this would be to complicate this in
-> > > > > the
-> > > > > driver
-> > > > > so that we can do something like
-> > > > > =
-
-> > > > > "i2s-share =3D <0 2>";  instead of  i2s0-share =3D "I2S2";
-> > > > > =
-
-> > > > > ...and I don't think that this would be any more
-> > > > > straightforward than
-> > > > > the
-> > > > > provided way.
-> > > > > =
-
-> > > > > There's an improvement that we can do to that pattern
-> > > > > description
-> > > > > though,
-> > > > > which would be explaining that declaring 'i2s0-share =3D "I2S2"'
-> > > > > means
-> > > > > that
-> > > > > I2S2's data pin will be used as DATA-OUT, while i2s0 is DATA-
-> > > > > IN.
-> > > > > =
-
-> > > > > Another thing that comes to mind here is that this is a
-> > > > > MediaTek
-> > > > > specific
-> > > > > property and *not* a generic one, which means that both the
-> > > > > driver
-> > > > > and
-> > > > > this binding should be fixed to get a "mediatek," prefix, so,
-> > > > > this
-> > > > > property
-> > > > > should - in reality - be "mediatek,i2s[0-35-9]-share" instead.
-> > > > > =
-
-> > > > > I think that everyone agrees about that, but let's see what the
-> > > > > others say.
-> > > > > =
-
-> > > > > Cheers,
-> > > > > Angelo
-> > > > =
-
-> > > > Hi Angelo,
-> > > > =
-
-> > > > 'i2s0-share =3D "I2S2"' means that if we want use I2S0, there need
-> > > > open
-> > > > I2S2 to provide clock. Conversely, if we want to use I2S2, we
-> > > > don't
-> > > > need to open I2S0. However, MediaTek I2S0 and I2S2 hardware are
-> > > > generally designed as input. So usually we use 'i2s0-share =3D
-> > > > "I2S1"'.
-> > > > Even numbers represent input, odd numbers represent output.
-> > > > =
-
-> > > > Yes, I think adding the "mediatek," prefix is the right way to
-> > > > define a
-> > > > non-generic property.
-> > > > =
-
-> > =
-
-> > Hi Jiaxin,
-> > =
-
-> > thank you for the insights.
-> > =
-
-> > > =
-
-> > > Hello Jiaxin,
-> > > =
-
-> > > if I get this correctly, i2s0-share =3D "I2S2" would be *invalid*...
-> > > as you
-> > > just explained, i2sX, where:
-> > > =
-
-> > > X =3D even number -> always DATA IN
-> > > X =3D odd number  -> always DATA OUT
-> > > =
-
-> > > ...this means that the dt-binding needs a pattern to specify that
-> > > only odd
-> > > can be assigned to only even.
-> > =
-
-> > So, the situation seems different at least on mt8192-asurada-
-> > spherion.
-> > Here, I2S8 is used for the headset microphone and I2S9 for the
-> > headset audio.
-> > Even for input and odd for output agree with Jiaxin's description.
-> > However, the
-> > input bus seems to be the main one, that is, disabling I2S8:
-> > =
-
-> > 	amixer cset name=3D'UL2_CH1 I2S8_CH1' 0
-> > 	amixer cset name=3D'UL2_CH2 I2S8_CH2' 0
-> > =
-
-> > not only disables the microphone but also the audio on the headset.
-> > If I add =
-
-> > =
-
-> > 	i2s9-share =3D "I2S8";
-> > =
-
-> > on the DT, then everything works, I can disable I2S8 without
-> > impacting the
-> > headset audio. So the pattern for the property on this platform is
-> > the opposite
-> > that Jiaxin mentioned. This tells me that we should keep the binding
-> > more
-> > generic (not assume where odds and evens go). I will still apply the
-> > other
-> > suggestions mentioned though.
-> > =
-
-> > Thanks,
-> > N=EDcolas
-> > =
-
-> Hi N=EDcolas,
-> =
-
-> From software point, I2S8 and I2S9 belong to different hardware, so if
-> you turn off I2S8 with CMD1, of course it will not affect I2S9.
-> =
-
-> CMD1:
-> amixer cset name=3D'UL2_CH1 I2S8_CH1' 0
-> amixer cset name=3D'UL2_CH2 I2S8_CH2' 0
-> =
-
-> Frome hardware point, I2S9 will use(share) I2S8's clock. If we don't
-> want the user to perceive this, the driver need to help do something.
-> So this property 'i2s9-share =3D "I2S8";' will be added to inform the
-> driver.
-
-Hi Jiaxin,
-
-yes, that's what I figured. What I was saying is that for the binding, your
-example was
-
-i2s0-share =3D "I2S1"
-   ^ even,input  ^ odd,output
-
-while on mt8192-asurada-spherion the use case is
-
-i2s9-share =3D "I2S8";
-   ^ odd,output  ^ even,input
-
-So Angelo's idea to require in the dt-binding that the left side is always =
-even
-(input) and the right side always odd (based on your example), wouldn't wor=
-k for
-my use case.
-
-Basically it's a question of whether the input always shares the clock from=
- an
-output (your example), or if output always shares the clock from an input (=
-my
-use case), or if both are valid. I'm taking from this that both are valid, =
-so I
-won't add any such restriction in the dt-binding in the following version, =
-but
-do let me know if this is not the case.
-
-Thanks,
-N=EDcolas
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAyMDIyLTA1LTA2IGF0IDEwOjA5IC0wNDAwLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFk
+byB3cm90ZToNCj4gT24gRnJpLCBNYXkgMDYsIDIwMjIgYXQgMDE6NDU6MjRQTSArMDgwMCwgSmlh
+eGluIFl1IHdyb3RlOg0KPiA+IE9uIFRodSwgMjAyMi0wNS0wNSBhdCAxMjoyNSAtMDQwMCwgTsOt
+Y29sYXMgRi4gUi4gQS4gUHJhZG8gd3JvdGU6DQo+ID4gPiA+IA0KPiA+ID4gT24gVGh1LCBNYXkg
+MDUsIDIwMjIgYXQgMTA6NTI6NDVBTSArMDIwMCwgQW5nZWxvR2lvYWNjaGlubyBEZWwNCj4gPiA+
+IFJlZ25vDQo+ID4gPiB3cm90ZToNCj4gPiA+ID4gSWwgMDUvMDUvMjIgMTA6NDgsIEppYXhpbiBZ
+dSBoYSBzY3JpdHRvOg0KPiA+ID4gPiA+IE9uIFRodSwgMjAyMi0wNS0wNSBhdCAxMDowOCArMDIw
+MCwgQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8NCj4gPiA+ID4gPiB3cm90ZToNCj4gPiA+ID4g
+PiA+IElsIDI5LzA0LzIyIDIyOjMwLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyBoYSBzY3JpdHRv
+Og0KPiA+ID4gPiA+ID4gPiBUaGUgTWVkaWF0ZWsgQUZFIFBDTSBjb250cm9sbGVyIGZvciBNVDgx
+OTIgYWxsb3dzIHNoYXJpbmcNCj4gPiA+ID4gPiA+ID4gb2YNCj4gPiA+ID4gPiA+ID4gYW4gSTJT
+DQo+ID4gPiA+ID4gPiA+IGJ1cw0KPiA+ID4gPiA+ID4gPiBiZXR3ZWVuIHR3byBidXNzZXMuIEFk
+ZCBhIHBhdHRlcm4gZm9yIHRoZXNlIHByb3BlcnRpZXMgaW4NCj4gPiA+ID4gPiA+ID4gdGhlDQo+
+ID4gPiA+ID4gPiA+IGR0LWJpbmRpbmcuDQo+ID4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gPiBT
+aWduZWQtb2ZmLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8DQo+ID4gPiA+ID4gPiA+IG5m
+cmFwcmFkb0Bjb2xsYWJvcmEuY29tPg0KPiA+ID4gPiA+ID4gPiAtLS0NCj4gPiA+ID4gPiA+ID4g
+DQo+ID4gPiA+ID4gPiA+ICAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3Vu
+ZC9tdDgxOTItYWZlLQ0KPiA+ID4gPiA+ID4gPiBwY20ueWFtbCB8IDUNCj4gPiA+ID4gPiA+ID4g
+KysrKysNCj4gPiA+ID4gPiA+ID4gICAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQ0K
+PiA+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ID4gZGlmZiAtLWdpdA0KPiA+ID4gPiA+ID4gPiBh
+L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9tdDgxOTItDQo+ID4gPiA+
+ID4gPiA+IGFmZS0NCj4gPiA+ID4gPiA+ID4gcGNtLnlhbWwNCj4gPiA+ID4gPiA+ID4gYi9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc291bmQvbXQ4MTkyLQ0KPiA+ID4gPiA+ID4g
+PiBhZmUtDQo+ID4gPiA+ID4gPiA+IHBjbS55YW1sDQo+ID4gPiA+ID4gPiA+IGluZGV4IDdhMjVi
+YzliODA2MC4uNWIwM2M4ZGJmMzE4IDEwMDY0NA0KPiA+ID4gPiA+ID4gPiAtLS0gYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc291bmQvbXQ4MTkyLWFmZS0NCj4gPiA+ID4gPiA+
+ID4gcGNtLnlhbWwNCj4gPiA+ID4gPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL3NvdW5kL210ODE5Mi1hZmUtDQo+ID4gPiA+ID4gPiA+IHBjbS55YW1sDQo+ID4g
+PiA+ID4gPiA+IEBAIC01NCw2ICs1NCwxMSBAQCBwcm9wZXJ0aWVzOg0KPiA+ID4gPiA+ID4gPiAg
+ICAgICAgICAtIGNvbnN0OiBhdWRfaW5mcmFfY2xrDQo+ID4gPiA+ID4gPiA+ICAgICAgICAgIC0g
+Y29uc3Q6IGF1ZF9pbmZyYV8yNm1fY2xrDQo+ID4gPiA+ID4gPiA+ICtwYXR0ZXJuUHJvcGVydGll
+czoNCj4gPiA+ID4gPiA+ID4gKyAgIl5pMnNbMC0zNS05XS1zaGFyZSQiOg0KPiA+ID4gPiA+ID4g
+PiArICAgIGRlc2NyaXB0aW9uOiBOYW1lIG9mIHRoZSBJMlMgYnVzIHRoYXQgaXMgc2hhcmVkIHdp
+dGgNCj4gPiA+ID4gPiA+ID4gdGhpcyBidXMNCj4gPiA+ID4gPiA+ID4gKyAgICBwYXR0ZXJuOiAi
+XkkyU1swLTM1LTldJCINCj4gPiA+ID4gPiA+ID4gKw0KPiA+ID4gPiA+ID4gPiAgICByZXF1aXJl
+ZDoNCj4gPiA+ID4gPiA+ID4gICAgICAtIGNvbXBhdGlibGUNCj4gPiA+ID4gPiA+ID4gICAgICAt
+IGludGVycnVwdHMNCj4gPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IFRo
+ZSBvbmx5IG90aGVyIHdheSBvZiBkb2luZyB0aGlzIHdvdWxkIGJlIHRvIGNvbXBsaWNhdGUNCj4g
+PiA+ID4gPiA+IHRoaXMgaW4NCj4gPiA+ID4gPiA+IHRoZQ0KPiA+ID4gPiA+ID4gZHJpdmVyDQo+
+ID4gPiA+ID4gPiBzbyB0aGF0IHdlIGNhbiBkbyBzb21ldGhpbmcgbGlrZQ0KPiA+ID4gPiA+ID4g
+DQo+ID4gPiA+ID4gPiAiaTJzLXNoYXJlID0gPDAgMj4iOyAgaW5zdGVhZCBvZiAgaTJzMC1zaGFy
+ZSA9ICJJMlMyIjsNCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gLi4uYW5kIEkgZG9uJ3QgdGhp
+bmsgdGhhdCB0aGlzIHdvdWxkIGJlIGFueSBtb3JlDQo+ID4gPiA+ID4gPiBzdHJhaWdodGZvcndh
+cmQgdGhhbg0KPiA+ID4gPiA+ID4gdGhlDQo+ID4gPiA+ID4gPiBwcm92aWRlZCB3YXkuDQo+ID4g
+PiA+ID4gPiANCj4gPiA+ID4gPiA+IFRoZXJlJ3MgYW4gaW1wcm92ZW1lbnQgdGhhdCB3ZSBjYW4g
+ZG8gdG8gdGhhdCBwYXR0ZXJuDQo+ID4gPiA+ID4gPiBkZXNjcmlwdGlvbg0KPiA+ID4gPiA+ID4g
+dGhvdWdoLA0KPiA+ID4gPiA+ID4gd2hpY2ggd291bGQgYmUgZXhwbGFpbmluZyB0aGF0IGRlY2xh
+cmluZyAnaTJzMC1zaGFyZSA9DQo+ID4gPiA+ID4gPiAiSTJTMiInDQo+ID4gPiA+ID4gPiBtZWFu
+cw0KPiA+ID4gPiA+ID4gdGhhdA0KPiA+ID4gPiA+ID4gSTJTMidzIGRhdGEgcGluIHdpbGwgYmUg
+dXNlZCBhcyBEQVRBLU9VVCwgd2hpbGUgaTJzMCBpcw0KPiA+ID4gPiA+ID4gREFUQS0NCj4gPiA+
+ID4gPiA+IElOLg0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4gPiBBbm90aGVyIHRoaW5nIHRoYXQg
+Y29tZXMgdG8gbWluZCBoZXJlIGlzIHRoYXQgdGhpcyBpcyBhDQo+ID4gPiA+ID4gPiBNZWRpYVRl
+aw0KPiA+ID4gPiA+ID4gc3BlY2lmaWMNCj4gPiA+ID4gPiA+IHByb3BlcnR5IGFuZCAqbm90KiBh
+IGdlbmVyaWMgb25lLCB3aGljaCBtZWFucyB0aGF0IGJvdGggdGhlDQo+ID4gPiA+ID4gPiBkcml2
+ZXINCj4gPiA+ID4gPiA+IGFuZA0KPiA+ID4gPiA+ID4gdGhpcyBiaW5kaW5nIHNob3VsZCBiZSBm
+aXhlZCB0byBnZXQgYSAibWVkaWF0ZWssIiBwcmVmaXgsDQo+ID4gPiA+ID4gPiBzbywNCj4gPiA+
+ID4gPiA+IHRoaXMNCj4gPiA+ID4gPiA+IHByb3BlcnR5DQo+ID4gPiA+ID4gPiBzaG91bGQgLSBp
+biByZWFsaXR5IC0gYmUgIm1lZGlhdGVrLGkyc1swLTM1LTldLXNoYXJlIg0KPiA+ID4gPiA+ID4g
+aW5zdGVhZC4NCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gSSB0aGluayB0aGF0IGV2ZXJ5b25l
+IGFncmVlcyBhYm91dCB0aGF0LCBidXQgbGV0J3Mgc2VlIHdoYXQNCj4gPiA+ID4gPiA+IHRoZQ0K
+PiA+ID4gPiA+ID4gb3RoZXJzIHNheS4NCj4gPiA+ID4gPiA+IA0KPiA+ID4gPiA+ID4gQ2hlZXJz
+LA0KPiA+ID4gPiA+ID4gQW5nZWxvDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gSGkgQW5nZWxvLA0K
+PiA+ID4gPiA+IA0KPiA+ID4gPiA+ICdpMnMwLXNoYXJlID0gIkkyUzIiJyBtZWFucyB0aGF0IGlm
+IHdlIHdhbnQgdXNlIEkyUzAsIHRoZXJlDQo+ID4gPiA+ID4gbmVlZA0KPiA+ID4gPiA+IG9wZW4N
+Cj4gPiA+ID4gPiBJMlMyIHRvIHByb3ZpZGUgY2xvY2suIENvbnZlcnNlbHksIGlmIHdlIHdhbnQg
+dG8gdXNlIEkyUzIsIHdlDQo+ID4gPiA+ID4gZG9uJ3QNCj4gPiA+ID4gPiBuZWVkIHRvIG9wZW4g
+STJTMC4gSG93ZXZlciwgTWVkaWFUZWsgSTJTMCBhbmQgSTJTMiBoYXJkd2FyZQ0KPiA+ID4gPiA+
+IGFyZQ0KPiA+ID4gPiA+IGdlbmVyYWxseSBkZXNpZ25lZCBhcyBpbnB1dC4gU28gdXN1YWxseSB3
+ZSB1c2UgJ2kyczAtc2hhcmUgPQ0KPiA+ID4gPiA+ICJJMlMxIicuDQo+ID4gPiA+ID4gRXZlbiBu
+dW1iZXJzIHJlcHJlc2VudCBpbnB1dCwgb2RkIG51bWJlcnMgcmVwcmVzZW50IG91dHB1dC4NCj4g
+PiA+ID4gPiANCj4gPiA+ID4gPiBZZXMsIEkgdGhpbmsgYWRkaW5nIHRoZSAibWVkaWF0ZWssIiBw
+cmVmaXggaXMgdGhlIHJpZ2h0IHdheQ0KPiA+ID4gPiA+IHRvDQo+ID4gPiA+ID4gZGVmaW5lIGEN
+Cj4gPiA+ID4gPiBub24tZ2VuZXJpYyBwcm9wZXJ0eS4NCj4gPiA+ID4gPiANCj4gPiA+IA0KPiA+
+ID4gSGkgSmlheGluLA0KPiA+ID4gDQo+ID4gPiB0aGFuayB5b3UgZm9yIHRoZSBpbnNpZ2h0cy4N
+Cj4gPiA+IA0KPiA+ID4gPiANCj4gPiA+ID4gSGVsbG8gSmlheGluLA0KPiA+ID4gPiANCj4gPiA+
+ID4gaWYgSSBnZXQgdGhpcyBjb3JyZWN0bHksIGkyczAtc2hhcmUgPSAiSTJTMiIgd291bGQgYmUN
+Cj4gPiA+ID4gKmludmFsaWQqLi4uDQo+ID4gPiA+IGFzIHlvdQ0KPiA+ID4gPiBqdXN0IGV4cGxh
+aW5lZCwgaTJzWCwgd2hlcmU6DQo+ID4gPiA+IA0KPiA+ID4gPiBYID0gZXZlbiBudW1iZXIgLT4g
+YWx3YXlzIERBVEEgSU4NCj4gPiA+ID4gWCA9IG9kZCBudW1iZXIgIC0+IGFsd2F5cyBEQVRBIE9V
+VA0KPiA+ID4gPiANCj4gPiA+ID4gLi4udGhpcyBtZWFucyB0aGF0IHRoZSBkdC1iaW5kaW5nIG5l
+ZWRzIGEgcGF0dGVybiB0byBzcGVjaWZ5DQo+ID4gPiA+IHRoYXQNCj4gPiA+ID4gb25seSBvZGQN
+Cj4gPiA+ID4gY2FuIGJlIGFzc2lnbmVkIHRvIG9ubHkgZXZlbi4NCj4gPiA+IA0KPiA+ID4gU28s
+IHRoZSBzaXR1YXRpb24gc2VlbXMgZGlmZmVyZW50IGF0IGxlYXN0IG9uIG10ODE5Mi1hc3VyYWRh
+LQ0KPiA+ID4gc3BoZXJpb24uDQo+ID4gPiBIZXJlLCBJMlM4IGlzIHVzZWQgZm9yIHRoZSBoZWFk
+c2V0IG1pY3JvcGhvbmUgYW5kIEkyUzkgZm9yIHRoZQ0KPiA+ID4gaGVhZHNldCBhdWRpby4NCj4g
+PiA+IEV2ZW4gZm9yIGlucHV0IGFuZCBvZGQgZm9yIG91dHB1dCBhZ3JlZSB3aXRoIEppYXhpbidz
+DQo+ID4gPiBkZXNjcmlwdGlvbi4NCj4gPiA+IEhvd2V2ZXIsIHRoZQ0KPiA+ID4gaW5wdXQgYnVz
+IHNlZW1zIHRvIGJlIHRoZSBtYWluIG9uZSwgdGhhdCBpcywgZGlzYWJsaW5nIEkyUzg6DQo+ID4g
+PiANCj4gPiA+IAlhbWl4ZXIgY3NldCBuYW1lPSdVTDJfQ0gxIEkyUzhfQ0gxJyAwDQo+ID4gPiAJ
+YW1peGVyIGNzZXQgbmFtZT0nVUwyX0NIMiBJMlM4X0NIMicgMA0KPiA+ID4gDQo+ID4gPiBub3Qg
+b25seSBkaXNhYmxlcyB0aGUgbWljcm9waG9uZSBidXQgYWxzbyB0aGUgYXVkaW8gb24gdGhlDQo+
+ID4gPiBoZWFkc2V0Lg0KPiA+ID4gSWYgSSBhZGQgDQo+ID4gPiANCj4gPiA+IAlpMnM5LXNoYXJl
+ID0gIkkyUzgiOw0KPiA+ID4gDQo+ID4gPiBvbiB0aGUgRFQsIHRoZW4gZXZlcnl0aGluZyB3b3Jr
+cywgSSBjYW4gZGlzYWJsZSBJMlM4IHdpdGhvdXQNCj4gPiA+IGltcGFjdGluZyB0aGUNCj4gPiA+
+IGhlYWRzZXQgYXVkaW8uIFNvIHRoZSBwYXR0ZXJuIGZvciB0aGUgcHJvcGVydHkgb24gdGhpcyBw
+bGF0Zm9ybQ0KPiA+ID4gaXMNCj4gPiA+IHRoZSBvcHBvc2l0ZQ0KPiA+ID4gdGhhdCBKaWF4aW4g
+bWVudGlvbmVkLiBUaGlzIHRlbGxzIG1lIHRoYXQgd2Ugc2hvdWxkIGtlZXAgdGhlDQo+ID4gPiBi
+aW5kaW5nDQo+ID4gPiBtb3JlDQo+ID4gPiBnZW5lcmljIChub3QgYXNzdW1lIHdoZXJlIG9kZHMg
+YW5kIGV2ZW5zIGdvKS4gSSB3aWxsIHN0aWxsIGFwcGx5DQo+ID4gPiB0aGUNCj4gPiA+IG90aGVy
+DQo+ID4gPiBzdWdnZXN0aW9ucyBtZW50aW9uZWQgdGhvdWdoLg0KPiA+ID4gDQo+ID4gPiBUaGFu
+a3MsDQo+ID4gPiBOw61jb2xhcw0KPiA+ID4gDQo+ID4gDQo+ID4gSGkgTsOtY29sYXMsDQo+ID4g
+DQo+ID4gRnJvbSBzb2Z0d2FyZSBwb2ludCwgSTJTOCBhbmQgSTJTOSBiZWxvbmcgdG8gZGlmZmVy
+ZW50IGhhcmR3YXJlLCBzbw0KPiA+IGlmDQo+ID4geW91IHR1cm4gb2ZmIEkyUzggd2l0aCBDTUQx
+LCBvZiBjb3Vyc2UgaXQgd2lsbCBub3QgYWZmZWN0IEkyUzkuDQo+ID4gDQo+ID4gQ01EMToNCj4g
+PiBhbWl4ZXIgY3NldCBuYW1lPSdVTDJfQ0gxIEkyUzhfQ0gxJyAwDQo+ID4gYW1peGVyIGNzZXQg
+bmFtZT0nVUwyX0NIMiBJMlM4X0NIMicgMA0KPiA+IA0KPiA+IEZyb21lIGhhcmR3YXJlIHBvaW50
+LCBJMlM5IHdpbGwgdXNlKHNoYXJlKSBJMlM4J3MgY2xvY2suIElmIHdlDQo+ID4gZG9uJ3QNCj4g
+PiB3YW50IHRoZSB1c2VyIHRvIHBlcmNlaXZlIHRoaXMsIHRoZSBkcml2ZXIgbmVlZCB0byBoZWxw
+IGRvDQo+ID4gc29tZXRoaW5nLg0KPiA+IFNvIHRoaXMgcHJvcGVydHkgJ2kyczktc2hhcmUgPSAi
+STJTOCI7JyB3aWxsIGJlIGFkZGVkIHRvIGluZm9ybSB0aGUNCj4gPiBkcml2ZXIuDQo+IA0KPiBI
+aSBKaWF4aW4sDQo+IA0KPiB5ZXMsIHRoYXQncyB3aGF0IEkgZmlndXJlZC4gV2hhdCBJIHdhcyBz
+YXlpbmcgaXMgdGhhdCBmb3IgdGhlDQo+IGJpbmRpbmcsIHlvdXINCj4gZXhhbXBsZSB3YXMNCj4g
+DQo+IGkyczAtc2hhcmUgPSAiSTJTMSINCj4gICAgXiBldmVuLGlucHV0ICBeIG9kZCxvdXRwdXQN
+Cj4gDQo+IHdoaWxlIG9uIG10ODE5Mi1hc3VyYWRhLXNwaGVyaW9uIHRoZSB1c2UgY2FzZSBpcw0K
+PiANCj4gaTJzOS1zaGFyZSA9ICJJMlM4IjsNCj4gICAgXiBvZGQsb3V0cHV0ICBeIGV2ZW4saW5w
+dXQNCj4gDQo+IFNvIEFuZ2VsbydzIGlkZWEgdG8gcmVxdWlyZSBpbiB0aGUgZHQtYmluZGluZyB0
+aGF0IHRoZSBsZWZ0IHNpZGUgaXMNCj4gYWx3YXlzIGV2ZW4NCj4gKGlucHV0KSBhbmQgdGhlIHJp
+Z2h0IHNpZGUgYWx3YXlzIG9kZCAoYmFzZWQgb24geW91ciBleGFtcGxlKSwNCj4gd291bGRuJ3Qg
+d29yayBmb3INCj4gbXkgdXNlIGNhc2UuDQo+IA0KPiBCYXNpY2FsbHkgaXQncyBhIHF1ZXN0aW9u
+IG9mIHdoZXRoZXIgdGhlIGlucHV0IGFsd2F5cyBzaGFyZXMgdGhlDQo+IGNsb2NrIGZyb20gYW4N
+Cj4gb3V0cHV0ICh5b3VyIGV4YW1wbGUpLCBvciBpZiBvdXRwdXQgYWx3YXlzIHNoYXJlcyB0aGUg
+Y2xvY2sgZnJvbSBhbg0KPiBpbnB1dCAobXkNCj4gdXNlIGNhc2UpLCBvciBpZiBib3RoIGFyZSB2
+YWxpZC4gSSdtIHRha2luZyBmcm9tIHRoaXMgdGhhdCBib3RoIGFyZQ0KPiB2YWxpZCwgc28gSQ0K
+PiB3b24ndCBhZGQgYW55IHN1Y2ggcmVzdHJpY3Rpb24gaW4gdGhlIGR0LWJpbmRpbmcgaW4gdGhl
+IGZvbGxvd2luZw0KPiB2ZXJzaW9uLCBidXQNCj4gZG8gbGV0IG1lIGtub3cgaWYgdGhpcyBpcyBu
+b3QgdGhlIGNhc2UuDQo+IA0KPiBUaGFua3MsDQo+IE7DrWNvbGFzDQoNCkhpIE7DrWNvbGFzLA0K
+DQpZZXMsIHlvdSBhcmUgcmlnaHQuIFRoZXkgY29tcGxldGVseSBkZXBlbmQgb24gd2hpY2ggc2V0
+IG9mIEkyUyBjbG9jaw0KYXJlIHVzZWQgb24gdGhlIHBsYXRmb3JtIGhhcmR3YXJlLg0KDQogaTJz
+OS1zaGFyZSA9ICJJMlM4Ig0KID09PiBUaGUgSTJTOCBhbmQgdGhlIEkyUzkgY29tYmluZSBpbnRv
+IG9uZSBzZXQgb2Ygc3RhbmRhcmQgSTJTLCBhbmQNCnVzZSBJMlM4J3MgY2xvY2suDQoNCiBpMnM4
+LXNoYXJlID0gIkkyUzkiDQogPT0+IFRoZSBJMlM4IGFuZCB0aGUgSTJTOSBjb21iaW5lIGludG8g
+b25lIHNldCBvZiBzdGFuZGFyZCBJMlMsIGFuZA0KdXNlIEkyUzkncyBjbG9jay4NCg0KQmVzdCBS
+ZWdhcmRzLA0KSmlheGluIFl1DQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LW1lZGlhdGVrCg==
