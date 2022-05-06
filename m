@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A4AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 12:03:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC002C43217
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 12:31:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=us+FWmAftcZV7BXrHMePESVqy9rOlNUSBgnUd3vLxgs=; b=Sk3Ch7jexkM/oY
-	ZPPBVybhOuwS1xmaeYKk0rQuv/cTerChxARuNifQQWOWFbhd0kvy8Gs6rf4OPLigRY4VSi38xF8zO
-	/UC39q3f96jyFbW1/z57sBkoW552nXvOdvaUggTnowQ6/D0CVIdSDB4MqqCeX0LAS01aeugd/YyO7
-	8U35qzZvqwxOhzyxYqGqrKOmDtfIbVUIiZEYGkqIxw14V8mAM9nAJqp/6U6/y0yjdyvWQWRE7qPOV
-	q2zm3I11PTwD2PLhQbl+rEUSOg1cDG9YLMYPBVxamVZpm2ksMvD3CPnE2Q1JLHezpbXMguawwI+at
-	KUerLbAqi9aFVFx8T8ig==;
+	List-Owner; bh=gZdnwlB8Qoi3xXzQG1d4deXMNCMueh1y1ttEOgaGR2Y=; b=cpd42bf2jk6Reh
+	XHVxd5LuOLQhZ986D4wQ1GL0KWNzSZiFLmIbUrWTPq4xKPbcF0b7VHvpNoL5HJQDEBlg+YnYrB2+N
+	68N831IDFQL1ZJC8swksjYFn3EuHSRly40TmhX7uuguc7pz+PmEnWK3RB8Lt5bLvBP5r/8hC2nuNJ
+	3DZlXZeyGwhN6lcwB++kiepH59bYbRtm5/8DnRrcD2ODTai/ZZo+fEzC0bIzLKiPcK16iEIp6cTd/
+	QvQ43XOYsxIT7wy98P02m+njkfxR2p0iVM0UxlVQPUjAwY1LmyG5CMdpD258EsBdgKIjsUxs9J/4M
+	TxIGFhKNhpqmpu11I+kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmwgQ-0034QZ-3m; Fri, 06 May 2022 12:03:42 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1nmx77-003B7b-3h; Fri, 06 May 2022 12:31:17 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmwgE-0034OO-2b
- for linux-mediatek@lists.infradead.org; Fri, 06 May 2022 12:03:32 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id y2so12437663ybi.7
- for <linux-mediatek@lists.infradead.org>; Fri, 06 May 2022 05:03:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uJe61iFzcBkDHHBgwbqNO2U+CJ7UpSh7Y5S1j727pJ0=;
- b=IxK4YTNfmwgHKR7FTZ20P2HVFQz/yuwiqdIwfXox3nUVWYczPlpm6PFaN1ZimtwW7Q
- U/F/Z9ntCYv9PMOnLePu/tNoYaOZEgfH/kueSoaY/OPM9iQm9hULzFhmLGkrSr26cgNb
- 6plXOvVcG4cMeLA4KkpmZuIRLkw0VRRXNKoLA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uJe61iFzcBkDHHBgwbqNO2U+CJ7UpSh7Y5S1j727pJ0=;
- b=UywQEE6RlI2Kga7uU+gKExs0TyXkuDuuPPp4xA59sYp91c9Nruuj1vbS9cnWrbg9FB
- rGVMx0JRbgcH3Rm3Hk62gEPTwP7d/Xh4jlSneEUvrZJE8Wixowc/WHDlO0g4lvrt+Stz
- QNDs0rzzcUVXBPxyNs/UIBx6Qzw5ql3cmcUhRL+pdBIysbRKSepNFXbd6SOxobVFBBGd
- wF3ii5hbBDA4thegGdFENv4FjTMoN/yao1fAgCtPgMfMzHs/79JhnFM+IsQLSf/pXPmk
- rl0U9qY7q76KYU2xq842yGb053WUBSUmirdmhir5zT2YyYUsbpsbw3J2Lmv2Qzok7Ga0
- I6Nw==
-X-Gm-Message-State: AOAM531ULIzdwF33Ol5tW0VfN14BgafkjST8Cycb0dDjlwDkTNnxdsHQ
- y7WIsvh+muUl7kHvGN/u0olUWsJJVmGr47+cw9uZcg==
-X-Google-Smtp-Source: ABdhPJx9Axl6G6Vn89Khu54TfUr+9woAZDpNbcGfw1wHALNejHYK/qeoxm9wPu0kPDc+oQU03cSeWaDg0HqV6PFxk5c=
-X-Received: by 2002:a25:4c2:0:b0:648:6a77:5da0 with SMTP id
- 185-20020a2504c2000000b006486a775da0mr1878515ybe.203.1651838608247; Fri, 06
- May 2022 05:03:28 -0700 (PDT)
+ id 1nmx72-003B5w-VB
+ for linux-mediatek@lists.infradead.org; Fri, 06 May 2022 12:31:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 6E8C661EDF;
+ Fri,  6 May 2022 12:31:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96C7DC385B0;
+ Fri,  6 May 2022 12:31:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1651840272;
+ bh=e3HwAJgXFgwZGADyox9TBD3Y9WV6JkXcZIW+MQUu/l0=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=GyKQ+Z/2iNSsacZdxEB+bSaKGYt8+oGUl3W40JLVbXszHsGFZLQJBYtQhjo5fhqMf
+ /Axfzylm7GypmnWx2HzPFDYqNak/SN0T2+ATJ6c3zFk0ekHk50FX2XGeSmNGYQZcZw
+ XGFbWoede4bNXwfAs+gxwHdzuikaRhd+ThoMjs2uBRofqydmq5R3GYZEfA4+cYb/UK
+ 1hzGY8RmmmysbS4UcTBbQvzXjDxrQRkOzAtarTFeDM43k3R5uLIWdY8Ph3XLyAh8g+
+ 3seQ/+btLGMnMu9WOGBopJuoDv0uUL8oAvn3oi62vx2rxASK9vcjCf3N0goEGQlDaT
+ odl4NelENn6+Q==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, Sam.Shih@mediatek.com,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ robh@kernel.org
+Subject: [PATCH net-next 01/14] arm64: dts: mediatek: mt7986: introduce
+ ethernet nodes
+Date: Fri,  6 May 2022 14:30:18 +0200
+Message-Id: <1d555fbbac820e9b580da3e8c0db30e7d003c4b6.1651839494.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1651839494.git.lorenzo@kernel.org>
+References: <cover.1651839494.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-References: <20220425125546.4129-3-johnson.wang@mediatek.com>
- <202204271737.oAuTwqZH-lkp@intel.com>
- <a72b6333be0d8a2065477e47222c309a0d520fd4.camel@mediatek.com>
- <abc836d8-b7da-c9da-6936-567df7206ca5@intel.com>
-In-Reply-To: <abc836d8-b7da-c9da-6936-567df7206ca5@intel.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 6 May 2022 20:03:17 +0800
-Message-ID: <CAGXv+5Hpcm12h0LNPaQ+svdtCa5AaMkC=qS8WaShWQc2oxQfJg@mail.gmail.com>
-Subject: Re: [kbuild-all] Re: [PATCH v3 2/2] PM / devfreq: mediatek: Introduce
- MediaTek CCI devfreq driver
-To: "Chen, Rong A" <rong.a.chen@intel.com>
-Cc: Johnson Wang <johnson.wang@mediatek.com>, kernel test robot <lkp@intel.com>,
- cw00.choi@samsung.com, 
- krzk+dt@kernel.org, robh+dt@kernel.org, kyungmin.park@samsung.com, 
- llvm@lists.linux.dev, kbuild-all@lists.01.org, linux-pm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_050330_155621_CEF35DB8 
-X-CRM114-Status: GOOD (  25.40  )
+X-CRM114-CacheID: sfid-20220506_053113_115950_2ABD2561 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,304 +77,276 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 28, 2022 at 7:39 PM Chen, Rong A <rong.a.chen@intel.com> wrote:
-> On 4/27/2022 6:11 PM, Johnson Wang wrote:
-> > On Wed, 2022-04-27 at 17:25 +0800, kernel test robot wrote:
-> >> Hi Johnson,
-> >>
-> >> Thank you for the patch! Perhaps something to improve:
-> >>
-> >> [auto build test WARNING on robh/for-next]
-> >> [also build test WARNING on linus/master v5.18-rc4 next-20220427]
-> >> [If your patch is applied to the wrong git tree, kindly drop us a
-> >> note.
-> >> And when submitting patch, we suggest to use '--base' as documented
-> >> in
-> >>
-> > https://urldefense.com/v3/__https://git-scm.com/docs/git-format-patch__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMS_s9zEZ$
-> >>   ]
-> >>
-> >> url:
-> >> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commits/Johnson-Wang/Introduce-MediaTek-CCI-devfreq-driver/20220425-205820__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMc1U_tqz$
-> >>
-> >> base:
-> >> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMUzTprof$
-> >>    for-next
-> >> config: hexagon-allyesconfig (
-> >> https://urldefense.com/v3/__https://download.01.org/0day-ci/archive/20220427/202204271737.oAuTwqZH-lkp@intel.com/config__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMaVRzbSL$
-> >>   )
-> >> compiler: clang version 15.0.0 (
-> >> https://urldefense.com/v3/__https://github.com/llvm/llvm-project__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMRqw5IY-$
-> >> $  1cddcfdc3c683b393df1a5c9063252eb60e52818)
-> >> reproduce (this is a W=1 build):
-> >>          wget
-> >> https://urldefense.com/v3/__https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMQLiD-i9$
-> >>    -O ~/bin/make.cross
-> >>          chmod +x ~/bin/make.cross
-> >>          #
-> >> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commit/98b34c0587837b0e5b880b11a52433f8f0eee19f__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMU5yd7Y2$
-> >>
-> >>          git remote add linux-review
-> >> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux__;!!CTRNKA9wMg0ARbw!wdyoWXNLBcYM97vMuNFQXZ9BaajEp-Kmh5-xrvU2Rlmb0o-b9tRvCD0cPzbLMW4ldtnH$
-> >>
-> >>          git fetch --no-tags linux-review Johnson-Wang/Introduce-
-> >> MediaTek-CCI-devfreq-driver/20220425-205820
-> >>          git checkout 98b34c0587837b0e5b880b11a52433f8f0eee19f
-> >>          # save the config file
-> >>          mkdir build_dir && cp config build_dir/.config
-> >>          COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross
-> >> W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash block/partitions/
-> >> drivers/devfreq/ drivers/iio/imu/ drivers/misc/lkdtm/
-> >>
-> >> If you fix the issue, kindly add following tag as appropriate
-> >> Reported-by: kernel test robot <lkp@intel.com>
-> >>
-> >> All warnings (new ones prefixed by >>):
-> >>
-> >>     drivers/devfreq/mtk-cci-devfreq.c:372:16: error: no member named
-> >> 'parent_type' in 'struct devfreq_passive_data'
-> >>             passive_data->parent_type = CPUFREQ_PARENT_DEV;
-> >>             ~~~~~~~~~~~~  ^
-> >>     drivers/devfreq/mtk-cci-devfreq.c:372:30: error: use of undeclared
-> >> identifier 'CPUFREQ_PARENT_DEV'
-> >>             passive_data->parent_type = CPUFREQ_PARENT_DEV;
-> >>                                         ^
-> >>>> drivers/devfreq/mtk-cci-devfreq.c:379:4: warning: format
-> >>>> specifies type 'int' but the argument has type 'long' [-Wformat]
-> >>
-> >>                             PTR_ERR(drv->devfreq));
-> >>                             ^~~~~~~~~~~~~~~~~~~~~
-> >>     include/linux/dev_printk.h:144:65: note: expanded from macro
-> >> 'dev_err'
-> >>             dev_printk_index_wrap(_dev_err, KERN_ERR, dev,
-> >> dev_fmt(fmt), ##__VA_ARGS__)
-> >>                                                                    ~~~
-> >>       ^~~~~~~~~~~
-> >>     include/linux/dev_printk.h:110:23: note: expanded from macro
-> >> 'dev_printk_index_wrap'
-> >>                     _p_func(dev, fmt,
-> >> ##__VA_ARGS__);                       \
-> >>                                  ~~~    ^~~~~~~~~~~
-> >>     1 warning and 2 errors generated.
-> >>
-> >>
-> >> vim +379 drivers/devfreq/mtk-cci-devfreq.c
-> >>
-> >>     255
-> >>     256      static int mtk_ccifreq_probe(struct platform_device
-> >> *pdev)
-> >>     257      {
-> >>     258              struct device *dev = &pdev->dev;
-> >>     259              struct mtk_ccifreq_drv *drv;
-> >>     260              struct devfreq_passive_data *passive_data;
-> >>     261              struct dev_pm_opp *opp;
-> >>     262              unsigned long rate, opp_volt;
-> >>     263              int ret;
-> >>     264
-> >>     265              drv = devm_kzalloc(dev, sizeof(*drv),
-> >> GFP_KERNEL);
-> >>     266              if (!drv)
-> >>     267                      return -ENOMEM;
-> >>     268
-> >>     269              drv->dev = dev;
-> >>     270              drv->soc_data = (const struct
-> >> mtk_ccifreq_platform_data *)
-> >>     271                                      of_device_get_match_dat
-> >> a(&pdev->dev);
-> >>     272              mutex_init(&drv->reg_lock);
-> >>     273              platform_set_drvdata(pdev, drv);
-> >>     274
-> >>     275              drv->cci_clk = devm_clk_get(dev, "cci");
-> >>     276              if (IS_ERR(drv->cci_clk)) {
-> >>     277                      ret = PTR_ERR(drv->cci_clk);
-> >>     278                      return dev_err_probe(dev, ret,
-> >>     279                                           "failed to get cci
-> >> clk: %d\n", ret);
-> >>     280              }
-> >>     281
-> >>     282              drv->inter_clk = devm_clk_get(dev,
-> >> "intermediate");
-> >>     283              if (IS_ERR(drv->inter_clk)) {
-> >>     284                      ret = PTR_ERR(drv->inter_clk);
-> >>     285                      dev_err_probe(dev, ret,
-> >>     286                                    "failed to get
-> >> intermediate clk: %d\n", ret);
-> >>     287                      goto out_free_resources;
-> >>     288              }
-> >>     289
-> >>     290              drv->proc_reg =
-> >> devm_regulator_get_optional(dev, "proc");
-> >>     291              if (IS_ERR(drv->proc_reg)) {
-> >>     292                      ret = PTR_ERR(drv->proc_reg);
-> >>     293                      dev_err_probe(dev, ret,
-> >>     294                                    "failed to get proc
-> >> regulator: %d\n", ret);
-> >>     295                      goto out_free_resources;
-> >>     296              }
-> >>     297
-> >>     298              ret = regulator_enable(drv->proc_reg);
-> >>     299              if (ret) {
-> >>     300                      dev_err(dev, "failed to enable proc
-> >> regulator\n");
-> >>     301                      goto out_free_resources;
-> >>     302              }
-> >>     303
-> >>     304              drv->sram_reg = regulator_get_optional(dev,
-> >> "sram");
-> >>     305              if (IS_ERR(drv->sram_reg))
-> >>     306                      drv->sram_reg = NULL;
-> >>     307              else {
-> >>     308                      ret = regulator_enable(drv->sram_reg);
-> >>     309                      if (ret) {
-> >>     310                              dev_err(dev, "failed to enable
-> >> sram regulator\n");
-> >>     311                              goto out_free_resources;
-> >>     312                      }
-> >>     313              }
-> >>     314
-> >>     315              /*
-> >>     316               * We assume min voltage is 0 and tracking
-> >> target voltage using
-> >>     317               * min_volt_shift for each iteration.
-> >>     318               * The retry_max is 3 times of expeted
-> >> iteration count.
-> >>     319               */
-> >>     320              drv->vtrack_max = 3 * DIV_ROUND_UP(max(drv-
-> >>> soc_data->sram_max_volt,
-> >>     321                                                     drv-
-> >>> soc_data->proc_max_volt),
-> >>     322                                                 drv-
-> >>> soc_data->min_volt_shift);
-> >>     323
-> >>     324              ret = clk_prepare_enable(drv->cci_clk);
-> >>     325              if (ret)
-> >>     326                      goto out_free_resources;
-> >>     327
-> >>     328              ret = clk_prepare_enable(drv->inter_clk);
-> >>     329              if (ret)
-> >>     330                      goto out_disable_cci_clk;
-> >>     331
-> >>     332              ret = dev_pm_opp_of_add_table(dev);
-> >>     333              if (ret) {
-> >>     334                      dev_err(dev, "failed to add opp table:
-> >> %d\n", ret);
-> >>     335                      goto out_disable_inter_clk;
-> >>     336              }
-> >>     337
-> >>     338              rate = clk_get_rate(drv->inter_clk);
-> >>     339              opp = dev_pm_opp_find_freq_ceil(dev, &rate);
-> >>     340              if (IS_ERR(opp)) {
-> >>     341                      ret = PTR_ERR(opp);
-> >>     342                      dev_err(dev, "failed to get
-> >> intermediate opp: %d\n", ret);
-> >>     343                      goto out_remove_opp_table;
-> >>     344              }
-> >>     345              drv->inter_voltage =
-> >> dev_pm_opp_get_voltage(opp);
-> >>     346              dev_pm_opp_put(opp);
-> >>     347
-> >>     348              rate = U32_MAX;
-> >>     349              opp = dev_pm_opp_find_freq_floor(drv->dev,
-> >> &rate);
-> >>     350              if (IS_ERR(opp)) {
-> >>     351                      dev_err(dev, "failed to get opp\n");
-> >>     352                      ret = PTR_ERR(opp);
-> >>     353                      goto out_remove_opp_table;
-> >>     354              }
-> >>     355
-> >>     356              opp_volt = dev_pm_opp_get_voltage(opp);
-> >>     357              dev_pm_opp_put(opp);
-> >>     358              ret = mtk_ccifreq_set_voltage(drv, opp_volt);
-> >>     359              if (ret) {
-> >>     360                      dev_err(dev, "failed to scale to
-> >> highest voltage %lu in proc_reg\n",
-> >>     361                              opp_volt);
-> >>     362                      goto out_remove_opp_table;
-> >>     363              }
-> >>     364
-> >>     365              passive_data = devm_kzalloc(dev, sizeof(struct
-> >> devfreq_passive_data),
-> >>     366                                          GFP_KERNEL);
-> >>     367              if (!passive_data) {
-> >>     368                      ret = -ENOMEM;
-> >>     369                      goto out_remove_opp_table;
-> >>     370              }
-> >>     371
-> >>     372              passive_data->parent_type = CPUFREQ_PARENT_DEV;
-> >>     373              drv->devfreq = devm_devfreq_add_device(dev,
-> >> &mtk_ccifreq_profile,
-> >>     374                                                     DEVFREQ_
-> >> GOV_PASSIVE,
-> >>     375                                                     passive_
-> >> data);
-> >>     376              if (IS_ERR(drv->devfreq)) {
-> >>     377                      ret = -EPROBE_DEFER;
-> >>     378                      dev_err(dev, "failed to add devfreq
-> >> device: %d\n",
-> >>   > 379                              PTR_ERR(drv->devfreq));
-> >>     380                      goto out_remove_opp_table;
-> >>     381              }
-> >>     382
-> >>     383              drv->opp_nb.notifier_call =
-> >> mtk_ccifreq_opp_notifier;
-> >>     384              ret = dev_pm_opp_register_notifier(dev, &drv-
-> >>> opp_nb);
-> >>     385              if (ret) {
-> >>     386                      dev_err(dev, "failed to register opp
-> >> notifier: %d\n", ret);
-> >>     387                      goto out_remove_devfreq_device;
-> >>     388              }
-> >>     389              return 0;
-> >>     390
-> >>     391      out_remove_devfreq_device:
-> >>     392              devm_devfreq_remove_device(dev, drv->devfreq);
-> >>     393
-> >>     394      out_remove_opp_table:
-> >>     395              dev_pm_opp_of_remove_table(dev);
-> >>     396
-> >>     397      out_disable_inter_clk:
-> >>     398              clk_disable_unprepare(drv->inter_clk);
-> >>     399
-> >>     400      out_disable_cci_clk:
-> >>     401              clk_disable_unprepare(drv->cci_clk);
-> >>     402
-> >>     403      out_free_resources:
-> >>     404              if (regulator_is_enabled(drv->proc_reg))
-> >>     405                      regulator_disable(drv->proc_reg);
-> >>     406              if (drv->sram_reg && regulator_is_enabled(drv-
-> >>> sram_reg))
-> >>     407                      regulator_disable(drv->sram_reg);
-> >>     408
-> >>     409              if (!IS_ERR(drv->proc_reg))
-> >>     410                      regulator_put(drv->proc_reg);
-> >>     411              if (!IS_ERR(drv->sram_reg))
-> >>     412                      regulator_put(drv->sram_reg);
-> >>     413              if (!IS_ERR(drv->cci_clk))
-> >>     414                      clk_put(drv->cci_clk);
-> >>     415              if (!IS_ERR(drv->inter_clk))
-> >>     416                      clk_put(drv->inter_clk);
-> >>     417
-> >>     418              return ret;
-> >>     419      }
-> >>     420
-> >>
-> >
-> > Hi "kernel test robot",
-> >
-> > Thanks for your review.
-> >
-> > This patch is based on chanwoo/devfreq-testing[1]
-> > [1]
-> > https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing
->
-> Hi Johnson,
->
-> Thanks for the feedback, we'll take a look too.
+Introduce ethernet nodes in mt7986 bindings in order to
+enable mt7986a/mt7986b ethernet support.
 
-I think the last patch on that branch might be broken.
+Co-developed-by: Sam Shih <sam.shih@mediatek.com>
+Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 95 ++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 39 ++++++++
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 91 +++++++++++++++++++
+ 3 files changed, 225 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+index 21e420829572..c5a4e999234c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+@@ -25,6 +25,101 @@ memory@40000000 {
+ 	};
+ };
+ 
++&eth {
++	status = "okay";
++
++	gmac0: mac@0 {
++		compatible = "mediatek,eth-mac";
++		reg = <0>;
++		phy-mode = "2500base-x";
++
++		fixed-link {
++			speed = <2500>;
++			full-duplex;
++			pause;
++		};
++	};
++
++	gmac1: mac@1 {
++		compatible = "mediatek,eth-mac";
++		reg = <1>;
++		phy-mode = "2500base-x";
++
++		fixed-link {
++			speed = <2500>;
++			full-duplex;
++			pause;
++		};
++	};
++
++	mdio: mdio-bus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++	};
++};
++
++&mdio {
++	phy5: phy@5 {
++		compatible = "ethernet-phy-id67c9.de0a";
++		reg = <5>;
++		reset-gpios = <&pio 6 1>;
++		reset-deassert-us = <20000>;
++		phy-mode = "2500base-x";
++	};
++
++	phy6: phy@6 {
++		compatible = "ethernet-phy-id67c9.de0a";
++		reg = <6>;
++		phy-mode = "2500base-x";
++	};
++
++	switch: switch@0 {
++		compatible = "mediatek,mt7531";
++		reg = <31>;
++		reset-gpios = <&pio 5 0>;
++	};
++};
++
++&switch {
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			label = "lan0";
++		};
++
++		port@1 {
++			reg = <1>;
++			label = "lan1";
++		};
++
++		port@2 {
++			reg = <2>;
++			label = "lan2";
++		};
++
++		port@3 {
++			reg = <3>;
++			label = "lan3";
++		};
++
++		port@6 {
++			reg = <6>;
++			label = "cpu";
++			ethernet = <&gmac0>;
++			phy-mode = "2500base-x";
++
++			fixed-link {
++				speed = <2500>;
++				full-duplex;
++				pause;
++			};
++		};
++	};
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 694acf8f5b70..d2636a0ed152 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -222,6 +222,45 @@ ethsys: syscon@15000000 {
+ 			 #reset-cells = <1>;
+ 		};
+ 
++		eth: ethernet@15100000 {
++			compatible = "mediatek,mt7986-eth";
++			reg = <0 0x15100000 0 0x80000>;
++			interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 199 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&ethsys CLK_ETH_FE_EN>,
++				 <&ethsys CLK_ETH_GP2_EN>,
++				 <&ethsys CLK_ETH_GP1_EN>,
++				 <&ethsys CLK_ETH_WOCPU1_EN>,
++				 <&ethsys CLK_ETH_WOCPU0_EN>,
++				 <&sgmiisys0 CLK_SGMII0_TX250M_EN>,
++				 <&sgmiisys0 CLK_SGMII0_RX250M_EN>,
++				 <&sgmiisys0 CLK_SGMII0_CDR_REF>,
++				 <&sgmiisys0 CLK_SGMII0_CDR_FB>,
++				 <&sgmiisys1 CLK_SGMII1_TX250M_EN>,
++				 <&sgmiisys1 CLK_SGMII1_RX250M_EN>,
++				 <&sgmiisys1 CLK_SGMII1_CDR_REF>,
++				 <&sgmiisys1 CLK_SGMII1_CDR_FB>,
++				 <&topckgen CLK_TOP_NETSYS_SEL>,
++				 <&topckgen CLK_TOP_NETSYS_500M_SEL>;
++			clock-names = "fe", "gp2", "gp1", "wocpu1", "wocpu0",
++				      "sgmii_tx250m", "sgmii_rx250m",
++				      "sgmii_cdr_ref", "sgmii_cdr_fb",
++				      "sgmii2_tx250m", "sgmii2_rx250m",
++				      "sgmii2_cdr_ref", "sgmii2_cdr_fb",
++				      "netsys0", "netsys1";
++			assigned-clocks = <&topckgen CLK_TOP_NETSYS_2X_SEL>,
++					  <&topckgen CLK_TOP_SGM_325M_SEL>;
++			assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>,
++						 <&apmixedsys CLK_APMIXED_SGMPLL>;
++			mediatek,ethsys = <&ethsys>;
++			mediatek,sgmiisys = <&sgmiisys0>, <&sgmiisys1>;
++			#reset-cells = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "disabled";
++		};
+ 	};
+ 
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+index d73467ea3641..5ed275dcd3dc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+@@ -28,3 +28,94 @@ memory@40000000 {
+ &uart0 {
+ 	status = "okay";
+ };
++
++&eth {
++	status = "okay";
++
++	gmac0: mac@0 {
++		compatible = "mediatek,eth-mac";
++		reg = <0>;
++		phy-mode = "2500base-x";
++
++		fixed-link {
++			speed = <2500>;
++			full-duplex;
++			pause;
++		};
++	};
++
++	gmac1: mac@1 {
++		compatible = "mediatek,eth-mac";
++		reg = <1>;
++		phy-mode = "2500base-x";
++
++		fixed-link {
++			speed = <2500>;
++			full-duplex;
++			pause;
++		};
++	};
++
++	mdio: mdio-bus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		phy5: phy@5 {
++			compatible = "ethernet-phy-id67c9.de0a";
++			reg = <5>;
++			reset-gpios = <&pio 6 1>;
++			reset-deassert-us = <20000>;
++			phy-mode = "2500base-x";
++		};
++
++		phy6: phy@6 {
++			compatible = "ethernet-phy-id67c9.de0a";
++			reg = <6>;
++			phy-mode = "2500base-x";
++		};
++
++		switch@0 {
++			compatible = "mediatek,mt7531";
++			reg = <31>;
++			reset-gpios = <&pio 5 0>;
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++					label = "lan0";
++				};
++
++				port@1 {
++					reg = <1>;
++					label = "lan1";
++				};
++
++				port@2 {
++					reg = <2>;
++					label = "lan2";
++				};
++
++				port@3 {
++					reg = <3>;
++					label = "lan3";
++				};
++
++				port@6 {
++					reg = <6>;
++					label = "cpu";
++					ethernet = <&gmac0>;
++					phy-mode = "2500base-x";
++
++					fixed-link {
++						speed = <2500>;
++						full-duplex;
++						pause;
++					};
++				};
++			};
++		};
++	};
++};
+-- 
+2.35.1
 
-ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
