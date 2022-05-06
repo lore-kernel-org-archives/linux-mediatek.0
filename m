@@ -4,84 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B59AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 09:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F76C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 09:37:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hy5APKxwX2JHbXJJKwGjB0d+vif43zLpFZ50ebvwVcY=; b=L0oKaVwig9tMU9
-	qufaa5h/EE3uFkBU6rMm7Vr0wWhF218qdqINMjujmHVmxTz8LxiikMFGUFspmRJPSfp2+gROksfTt
-	CmvD/pGJOixAGkHluOJRQIDQb81H4ApDCQIO9O6UPM/LtJdaWzchLxcV/b3lmjfcMw1MS7+9BBHJ5
-	8/m9Bg4JteaprmjPJU07cLLEqGmsFGb1CWh3b4QsH/km7uAzLDspfcGfucwICMlYdvkzuZgAB+Un2
-	682n7CG3e//ZOJy/E68IDZS4x/+1P+sj0dZtbvfV+PdJoBExV9+3YVP+RdT+UUlcXDJ1x4LeH2FUd
-	FTmsfOOQMTlblqJ68IBg==;
+	List-Owner; bh=mcb7lT8Bn634BO1cVncdVszHX/DTa1CaVPNyVXwGLHk=; b=uwpraKjAFuo2Tl
+	KYhxKD27i+G4SoKnBn6gA5PnIDR4LYCVfx2+VVjD/6Sj3plKrHeR+zrhSFwzrnszvjXl/V8yWK/Rf
+	axaDHE2rpnly4qys/QPs3rBZNHJtORzPEMdItEcx20VBArRIMGQEE0y3dOlLyC0GF1wZrmVVSapVM
+	oXqQi0xKE6CD/rIlft2HQ830EBbNGUJGeBjJnG7m7eUQyPOagE6BRYJeMiZ4OKCiDWU539nmH4KDo
+	VS2bsT0BM3JNMK7dw0sAFE+tqfkNN8mwiEA5ozJrzhlishxDMME09ZuW1V6dMGWOCeKzPQwt1BRd9
+	2M+Wb8p5BRdQxV7392Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmuOP-002PZj-UB; Fri, 06 May 2022 09:36:57 +0000
+	id 1nmuOT-002Pbh-8X; Fri, 06 May 2022 09:37:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmuKp-002Nb4-7Y; Fri, 06 May 2022 09:33:17 +0000
-X-UUID: 63cbd9695e254896ad0e439f22663d75-20220506
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=lMAYQMhsellIbjVKQ3Vn+nqzwRXOJ6u05IIy3B2NE6A=; 
- b=sNbyC2Xqx/d1Gm+7ZBc06nnkhN91nnxWAMh1ntbPheqhrc1bkjgFCAan9lCElzoutC6xWZWwh8n66CQoSwoooYLMHnI7bkbEqEQOZINv0epp7yRBLPLJny9AlgJimp4bGikx4VxjklBtrDroQiNCTt1I4jMOK7frp/wDyyV98Nc=;
+ id 1nmuKq-002Nb5-NS; Fri, 06 May 2022 09:33:18 +0000
+X-UUID: 1fbb411f8806435580a9ee800c75983d-20220506
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:29575219-db63-4bcc-b254-ad0ca2fb1129, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:23111034-703b-42a4-8b3f-24ce6f835138, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-12
-X-CID-META: VersionHash:faefae9, CLOUDID:af395cfd-e8ba-4988-a28f-dc105bbdc74f,
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:15ad7416-2e53-443e-b81a-655c13977218,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 63cbd9695e254896ad0e439f22663d75-20220506
+X-UUID: 1fbb411f8806435580a9ee800c75983d-20220506
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1102671753; Fri, 06 May 2022 02:33:08 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ with ESMTP id 3061802; Fri, 06 May 2022 02:33:08 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 May 2022 02:26:31 -0700
+ 15.0.1497.2; Fri, 6 May 2022 02:29:12 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 6 May 2022 17:26:29 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ Fri, 6 May 2022 17:29:11 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 6 May 2022 17:26:28 +0800
-Message-ID: <e02ab5098878f4c59cecb84a277fb89fb5ca9da1.camel@mediatek.com>
-Subject: Re: [DKIM] [PATCH v10, 00/15] media: mtk-vcodec: support for M8192
- decoder
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Alexandre Courbot
- <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+ Transport; Fri, 6 May 2022 17:29:09 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
+ Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
 CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
  <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
  Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 6 May 2022 17:26:27 +0800
-In-Reply-To: <4334520e-af49-fe32-fb23-ef9af6388529@xs4all.nl>
-References: <20220426100828.13429-1-yunfei.dong@mediatek.com>
- <4334520e-af49-fe32-fb23-ef9af6388529@xs4all.nl>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+Subject: [PATCH v11,
+ 08/17] media: mediatek: vcodec: Getting supported decoder format types
+Date: Fri, 6 May 2022 17:28:46 +0800
+Message-ID: <20220506092855.22940-9-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220506092855.22940-1-yunfei.dong@mediatek.com>
+References: <20220506092855.22940-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_023315_348374_40F5D847 
-X-CRM114-Status: GOOD (  22.18  )
+X-CRM114-CacheID: sfid-20220506_023316_807238_89B08B32 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,366 +93,180 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+Getting supported output and capture queue format types according
+to decoder capability.
 
-Thanks for your suggestion.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../vcodec/mtk_vcodec_dec_stateless.c         | 118 +++++++++++++-----
+ 1 file changed, 84 insertions(+), 34 deletions(-)
 
-I will fix below check fails in patch v11.
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+index 0034b2ee9259..5101322f4fe9 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+@@ -81,34 +81,23 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
+ 
+ #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
+ 
+-static const struct mtk_video_fmt mtk_video_formats[] = {
+-	{
+-		.fourcc = V4L2_PIX_FMT_H264_SLICE,
+-		.type = MTK_FMT_DEC,
+-		.num_planes = 1,
+-	},
+-	{
+-		.fourcc = V4L2_PIX_FMT_MM21,
+-		.type = MTK_FMT_FRAME,
+-		.num_planes = 2,
+-	},
+-};
+-
+-static const unsigned int num_supported_formats = ARRAY_SIZE(mtk_video_formats);
+-
+-#define DEFAULT_OUT_FMT_IDX    0
+-#define DEFAULT_CAP_FMT_IDX    1
+-
+-static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
+-	{
+-		.fourcc	= V4L2_PIX_FMT_H264_SLICE,
+-		.stepwise = {  MTK_VDEC_MIN_W, MTK_VDEC_MAX_W, 16,
+-				MTK_VDEC_MIN_H, MTK_VDEC_MAX_H, 16 },
+-	},
++static struct mtk_video_fmt mtk_video_formats[2];
++static struct mtk_codec_framesizes mtk_vdec_framesizes[1];
++
++static struct mtk_video_fmt default_out_format;
++static struct mtk_video_fmt default_cap_format;
++static unsigned int num_formats;
++static unsigned int num_framesizes;
++
++static struct v4l2_frmsize_stepwise stepwise_fhd = {
++	.min_width = MTK_VDEC_MIN_W,
++	.max_width = MTK_VDEC_MAX_W,
++	.step_width = 16,
++	.min_height = MTK_VDEC_MIN_H,
++	.max_height = MTK_VDEC_MAX_H,
++	.step_height = 16
+ };
+ 
+-static const unsigned int num_supported_framesize = ARRAY_SIZE(mtk_vdec_framesizes);
+-
+ static void mtk_vdec_stateless_cap_to_disp(struct mtk_vcodec_ctx *ctx, int error,
+ 					   struct media_request *src_buf_req)
+ {
+@@ -323,6 +312,62 @@ const struct media_device_ops mtk_vcodec_media_ops = {
+ 	.req_queue	= v4l2_m2m_request_queue,
+ };
+ 
++static void mtk_vcodec_add_formats(unsigned int fourcc,
++				   struct mtk_vcodec_ctx *ctx)
++{
++	struct mtk_vcodec_dev *dev = ctx->dev;
++	const struct mtk_vcodec_dec_pdata *pdata = dev->vdec_pdata;
++	int count_formats = *pdata->num_formats;
++	int count_framesizes = *pdata->num_framesizes;
++
++	switch (fourcc) {
++	case V4L2_PIX_FMT_H264_SLICE:
++		mtk_video_formats[count_formats].fourcc = fourcc;
++		mtk_video_formats[count_formats].type = MTK_FMT_DEC;
++		mtk_video_formats[count_formats].num_planes = 1;
++
++		mtk_vdec_framesizes[count_framesizes].fourcc = fourcc;
++		mtk_vdec_framesizes[count_framesizes].stepwise = stepwise_fhd;
++		num_framesizes++;
++		break;
++	case V4L2_PIX_FMT_MM21:
++		mtk_video_formats[count_formats].fourcc = fourcc;
++		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
++		mtk_video_formats[count_formats].num_planes = 2;
++		break;
++	default:
++		mtk_v4l2_err("Can not add unsupported format type");
++		return;
++	}
++
++	num_formats++;
++	mtk_v4l2_debug(3, "num_formats: %d num_frames:%d dec_capability: 0x%x",
++		       count_formats, count_framesizes, ctx->dev->dec_capability);
++}
++
++static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_ctx *ctx)
++{
++	int cap_format_count = 0, out_format_count = 0;
++
++	if (num_formats && num_framesizes)
++		return;
++
++	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MM21) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
++		cap_format_count++;
++	}
++	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_H264_SLICE) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_H264_SLICE, ctx);
++		out_format_count++;
++	}
++
++	if (cap_format_count)
++		default_cap_format = mtk_video_formats[cap_format_count - 1];
++	if (out_format_count)
++		default_out_format =
++			mtk_video_formats[cap_format_count + out_format_count - 1];
++}
++
+ static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
+ {
+ 	struct vb2_queue *src_vq;
+@@ -330,6 +375,11 @@ static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
+ 	src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
+ 				 V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
+ 
++	if (!ctx->dev->vdec_pdata->is_subdev_supported)
++		ctx->dev->dec_capability |=
++			MTK_VDEC_FORMAT_H264_SLICE | MTK_VDEC_FORMAT_MM21;
++	mtk_vcodec_get_supported_formats(ctx);
++
+ 	/* Support request api for output plane */
+ 	src_vq->supports_requests = true;
+ 	src_vq->requires_requests = true;
+@@ -363,11 +413,11 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata = {
+ 	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
+ 	.vdec_vb2_ops = &mtk_vdec_request_vb2_ops,
+ 	.vdec_formats = mtk_video_formats,
+-	.num_formats = &num_supported_formats,
+-	.default_out_fmt = &mtk_video_formats[DEFAULT_OUT_FMT_IDX],
+-	.default_cap_fmt = &mtk_video_formats[DEFAULT_CAP_FMT_IDX],
++	.num_formats = &num_formats,
++	.default_out_fmt = &default_out_format,
++	.default_cap_fmt = &default_cap_format,
+ 	.vdec_framesizes = mtk_vdec_framesizes,
+-	.num_framesizes = &num_supported_framesize,
++	.num_framesizes = &num_framesizes,
+ 	.uses_stateless_api = true,
+ 	.worker = mtk_vdec_worker,
+ 	.flush_decoder = mtk_vdec_flush_decoder,
+@@ -383,11 +433,11 @@ const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata = {
+ 	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
+ 	.vdec_vb2_ops = &mtk_vdec_request_vb2_ops,
+ 	.vdec_formats = mtk_video_formats,
+-	.num_formats = &num_supported_formats,
+-	.default_out_fmt = &mtk_video_formats[DEFAULT_OUT_FMT_IDX],
+-	.default_cap_fmt = &mtk_video_formats[DEFAULT_CAP_FMT_IDX],
++	.num_formats = &num_formats,
++	.default_out_fmt = &default_out_format,
++	.default_cap_fmt = &default_cap_format,
+ 	.vdec_framesizes = mtk_vdec_framesizes,
+-	.num_framesizes = &num_supported_framesize,
++	.num_framesizes = &num_framesizes,
+ 	.uses_stateless_api = true,
+ 	.worker = mtk_vdec_worker,
+ 	.flush_decoder = mtk_vdec_flush_decoder,
+-- 
+2.18.0
 
-Best Regards,
-Yunfei Dong
-On Fri, 2022-04-29 at 11:44 +0200, Hans Verkuil wrote:
-> Hi Yunfei,
-> 
-> On 26/04/2022 12:08, Yunfei Dong wrote:
-> > This series adds support for mt8192 h264/vp8/vp9 decoder drivers.
-> > Firstly, refactor
-> > power/clock/interrupt interfaces for mt8192 is lat and core
-> > architecture.
-> > 
-> > Secondly, add new functions to get frame buffer size and resolution
-> > according
-> > to decoder capability from scp side. Then add callback function to
-> > get/put
-> > capture buffer in order to enable lat and core decoder in parallel,
-> > need to
-> > adjust GStreamer at the same time. 
-> > 
-> > Then add to support MT21C compressed mode and fix v4l2-compliance
-> > fail.
-> > 
-> > Next, extract H264 request api driver to let mt8183 and mt8192 use
-> > the same
-> > code, and adds mt8192 frame based h264 driver for stateless
-> > decoder.
-> > 
-> > Lastly, add vp8 and vp9 stateless decoder drivers.
-> > 
-> > Patches 1 refactor power/clock/interrupt interface.
-> > Patches 2~4 get frame buffer size and resolution according to
-> > decoder capability.
-> > Patches 5 set capture queue bytesused.
-> > Patches 6 adjust GStreamer.
-> > Patch 7~11 add to support MT21C compressed mode and fix v4l2-
-> > compliance fail.
-> > patch 12 record capture queue format type.
-> > Patch 13~14 extract h264 driver and add mt8192 frame based driver
-> > for h264 decoder.
-> > Patch 15~16 add vp8 and vp9 stateless decoder drivers.
-> > Patch 17 prevent kernel crash when rmmod mtk-vcodec-dec.ko
-> 
-> I'm getting loads of sparse and smatch warnings/errors:
-> 
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.
-> c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.
-> c:20:28: warning: incorrect type in argument 1 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.
-> c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.
-> c:176:21: warning: incorrect type in argument 1 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.
-> c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.
-> c:179:21: warning: incorrect type in argument 1 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:463:26: warning: incorrect type in argument 1 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:647:60: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:723:30: warning: incorrect type in argument 1 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:740:48: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :1995:44: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :532:34: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :673:40: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :674:48: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :675:45: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :678:37: warning: incorrect type in argument 2 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :684:21: warning: incorrect type in argument 1 (different address
-> spaces)
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :1912:45: warning: Using plain integer as NULL pointer
-> SPARSE:/home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :1924:44: warning: incorrect type in argument 2 (different address
-> spaces)
-> 
-> 
-> smatch: ERRORS
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :1192 vdec_vp9_slice_map_counts_eob_coef() error: buffer overflow
-> 'counts->coef_probs[i][j][k]->band_0'
-> 3 <= 5
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :1194 vdec_vp9_slice_map_counts_eob_coef() error: buffer overflow
-> 'counts->eob_branch[i][j][k]->band_0'
-> 3 <= 5
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :1196 vdec_vp9_slice_map_counts_eob_coef() error: buffer overflow
-> 'counts->coef_probs[i][j][k]->band_0'
-> 3 <= 5
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> :2018 vdec_vp9_slice_core_decode() error: we previously assumed 'pfc'
-> could be null (see line 1963)
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:700 vdec_h264_slice_single_decode() warn: unsigned
-> 'nal_start_idx' is never less than zero.
-> 
-> And also one compile warning when compiling on a 32 bit platform
-> (i.e. arm or i686):
-> 
-> In file included from /home/hans/work/build/media-
-> git/include/linux/kernel.h:29,
->                  from /home/hans/work/build/media-
-> git/include/linux/cpumask.h:10,
->                  from /home/hans/work/build/media-
-> git/include/linux/mm_types_task.h:14,
->                  from /home/hans/work/build/media-
-> git/include/linux/mm_types.h:5,
->                  from /home/hans/work/build/media-
-> git/include/linux/buildid.h:5,
->                  from /home/hans/work/build/media-
-> git/include/linux/module.h:14,
->                  from /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:7:
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c: In function 'vdec_h264_slice_single_decode':
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:684:76: warning: cast from pointer to integer of different size
-> [-Wpointer-to-int-cast]
->   684 |                          inst->ctx->decoded_frame_cnt,
-> y_fb_dma, c_fb_dma, (u64)fb);
->       |                                                              
->               ^
-> /home/hans/work/build/media-git/include/linux/printk.h:418:33: note:
-> in definition of macro 'printk_index_wrap'
->   418 |                 _p_func(_fmt,
-> ##__VA_ARGS__);                           \
->       |                                 ^~~~~~~~~~~
-> /home/hans/work/build/media-git/include/linux/printk.h:132:17: note:
-> in expansion of macro 'printk'
->   132 |                 printk(fmt, ##__VA_ARGS__);             \
->       |                 ^~~~~~
-> /home/hans/work/build/media-git/include/linux/printk.h:576:9: note:
-> in expansion of macro 'no_printk'
->   576 |         no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
->       |         ^~~~~~~~~
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/../mtk_vcodec_util.h:
-> 45:9: note: in expansion of macro 'pr_debug'
->    45 |         pr_debug("[MTK_VCODEC][%d]: " fmt
-> "\n",                 \
->       |         ^~~~~~~~
-> /home/hans/work/build/media-
-> git/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
-> f.c:683:9: note: in expansion of macro 'mtk_vcodec_debug'
->   683 |         mtk_vcodec_debug(inst, "+ [%d] FB y_dma=%llx
-> c_dma=%llx va=0x%llx",
->       |         ^~~~~~~~~~~~~~~~
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> > ---
-> > changes compared with v9:
-> > - fix kernel robot build fail for patch 16
-> > changes compared with v8:
-> > - fix vp9 build error
-> > - fix kernel-doc fail
-> > changes compared with v7:
-> > - adjust GStreamer, separate src buffer done with
-> > v4l2_ctrl_request_complete for patch 6.
-> > - remove v4l2_m2m_set_dst_buffered.
-> > - add new patch to set each plane bytesused in buf prepare for
-> > patch 5.
-> > - using upstream interface to update vp9 prob tables for patch 16.
-> > - fix maintainer comments.
-> > - test the driver with chrome VD and GStreamer(H264/VP9/VP8/AV1).
-> > changes compared with v6:
-> > - rebase to the latest media stage and fix conficts
-> > - fix memcpy to memcpy_fromio or memcpy_toio
-> > - fix h264 crash when test field bitstream
-> > changes compared with v5:
-> > - fix vp9 comments for patch 15
-> > - fix vp8 comments for patch 14.
-> > - fix comments for patch 12.
-> > - fix build errors.
-> > changes compared with v4:
-> > - fix checkpatch.pl fail.
-> > - fix kernel-doc fail.
-> > - rebase to the latest media codec driver.
-> > changes compared with v3:
-> > - remove enum mtk_chip for patch 2.
-> > - add vp8 stateless decoder drivers for patch 14.
-> > - add vp9 stateless decoder drivers for patch 15.
-> > changes compared with v2:
-> > - add new patch 11 to record capture queue format type.
-> > - separate patch 4 according to tzung-bi's suggestion.
-> > - re-write commit message for patch 5 according to tzung-bi's
-> > suggestion.
-> > changes compared with v1:
-> > - rewrite commit message for patch 12.
-> > - rewrite cover-letter message.
-> > ---
-> > Yunfei Dong (17):
-> >   media: mediatek: vcodec: Add vdec enable/disable hardware helpers
-> >   media: mediatek: vcodec: Using firmware type to separate
-> > different
-> >     firmware architecture
-> >   media: mediatek: vcodec: get capture queue buffer size from scp
-> >   media: mediatek: vcodec: Read max resolution from dec_capability
-> >   media: mediatek: vcodec: set each plane bytesused in buf prepare
-> >   media: mediatek: vcodec: Refactor get and put capture buffer flow
-> >   media: mediatek: vcodec: Refactor supported vdec formats and
-> >     framesizes
-> >   media: mediatek: vcodec: Getting supported decoder format types
-> >   media: mediatek: vcodec: Add format to support MT21C
-> >   media: mediatek: vcodec: disable vp8 4K capability
-> >   media: mediatek: vcodec: Fix v4l2-compliance fail
-> >   media: mediatek: vcodec: record capture queue format type
-> >   media: mediatek: vcodec: Extract H264 common code
-> >   media: mediatek: vcodec: support stateless H.264 decoding for
-> > mt8192
-> >   media: mediatek: vcodec: support stateless VP8 decoding
-> >   media: mediatek: vcodec: support stateless VP9 decoding
-> >   media: mediatek: vcodec: prevent kernel crash when rmmod
-> >     mtk-vcodec-dec.ko
-> > 
-> >  .../media/platform/mediatek/vcodec/Makefile   |    4 +
-> >  .../platform/mediatek/vcodec/mtk_vcodec_dec.c |   62 +-
-> >  .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |    8 +-
-> >  .../mediatek/vcodec/mtk_vcodec_dec_pm.c       |  166 +-
-> >  .../mediatek/vcodec/mtk_vcodec_dec_pm.h       |    6 +-
-> >  .../mediatek/vcodec/mtk_vcodec_dec_stateful.c |   19 +-
-> >  .../vcodec/mtk_vcodec_dec_stateless.c         |  257 ++-
-> >  .../platform/mediatek/vcodec/mtk_vcodec_drv.h |   41 +-
-> >  .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |    5 -
-> >  .../platform/mediatek/vcodec/mtk_vcodec_fw.c  |    6 +
-> >  .../platform/mediatek/vcodec/mtk_vcodec_fw.h  |    1 +
-> >  .../vcodec/vdec/vdec_h264_req_common.c        |  310 +++
-> >  .../vcodec/vdec/vdec_h264_req_common.h        |  274 +++
-> >  .../mediatek/vcodec/vdec/vdec_h264_req_if.c   |  438 +---
-> >  .../vcodec/vdec/vdec_h264_req_multi_if.c      |  626 +++++
-> >  .../mediatek/vcodec/vdec/vdec_vp8_req_if.c    |  437 ++++
-> >  .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 2031
-> > +++++++++++++++++
-> >  .../platform/mediatek/vcodec/vdec_drv_if.c    |   37 +-
-> >  .../platform/mediatek/vcodec/vdec_drv_if.h    |    3 +
-> >  .../platform/mediatek/vcodec/vdec_ipi_msg.h   |   36 +
-> >  .../platform/mediatek/vcodec/vdec_msg_queue.c |    2 +
-> >  .../platform/mediatek/vcodec/vdec_msg_queue.h |    2 +
-> >  .../platform/mediatek/vcodec/vdec_vpu_if.c    |   53 +-
-> >  .../platform/mediatek/vcodec/vdec_vpu_if.h    |   15 +
-> >  .../platform/mediatek/vcodec/venc_vpu_if.c    |    2 +-
-> >  include/linux/remoteproc/mtk_scp.h            |    2 +
-> >  26 files changed, 4242 insertions(+), 601 deletions(-)
-> >  create mode 100644
-> > drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c
-> >  create mode 100644
-> > drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
-> >  create mode 100644
-> > drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.
-> > c
-> >  create mode 100644
-> > drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
-> >  create mode 100644
-> > drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-> > 
-> 
-> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
