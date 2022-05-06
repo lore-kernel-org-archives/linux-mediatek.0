@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6695AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 18:58:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4874C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 20:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ejAcdKypKOolKeTSDTYupj0clUzuHke18Kpc27Y08SY=; b=ZhDvcIlP+iQHBd
-	zDfgctH7nnqworQfmEf9Iiuq68W6PFx3fXV7Xotm2qSOCNCPskwTBmqv9bzxrvJiUSLGfMMAju+U7
-	w35CfNNYwX88fe0Bfs6Pv4CAnCqvysjCW7AJ3t9Cqisuci68rP8Ah57zmY002YV2ZqXEtBhIm4c8d
-	qk7LVU0pdLogG/2OsUFaKWRjeirzBsjJyX19xhjTQmI9AI63EofpNrCWw6ZZm06/+I8Sdi+MR60k3
-	s0+FFRpNy7O1VRbaKY8A+vHH99EUajxBFXXvc32o2pOGgrsFtfdrmwqOEBuAwBLgm/3ykmUuozChh
-	frroADU9mmoJPhK3BX9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tPWaKayD6x6Z0H4LY8UDGdAaOis+ClzlIvPQcbaYbgk=; b=lR/IFiub0Antp1sNl/Wx4tvA51
+	OY6EnS1bbOSF91CzVrBlx7QQYgLO0umcz9Jp/xBau0+i70AOZ/5/4a7qaBlRxez2l1t3mIEti29/k
+	DZjRZHEd0UiQQoA2xW+0kgWF/RC8Homa/DULLeJrkgdfGkHUqoSrxlcrjWdmoccKrGdCA0k0iX3QQ
+	WDb3dVq2i5l/AnKVIxrnZAhGYGIcJtqkVySOE8fspgY26WedN6EdQcOmme0xpUiZc47eGajceSj7W
+	mcFqZ2ICnBXHVVuvKExpjLE5tmLV/8NCmq3fWaAUVvuT/S/vVEHbTqmsSR92an/gEy0KEWparR60Y
+	drohLXRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nn39Y-004lJA-7M; Fri, 06 May 2022 18:58:12 +0000
-Received: from mail-yw1-f174.google.com ([209.85.128.174])
+	id 1nn4Sa-004y0g-5s; Fri, 06 May 2022 20:21:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nn39L-004lDp-Ty; Fri, 06 May 2022 18:58:01 +0000
-Received: by mail-yw1-f174.google.com with SMTP id
- 00721157ae682-2f7d621d1caso91069807b3.11; 
- Fri, 06 May 2022 11:57:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QxlPrmLfCbB332ULeV+CNmlFte+BFEYMZyJdYeXRAX4=;
- b=0AFNNlDslHHyZ0lDNpR3Wx3Z4Zfo5HNUuXRLWnXcIcnV560S3zdpB+49Pjp0fAcEqW
- B2Wd+iHdtfaFQMMB5oQG/T49CgpCitjx+5J83T2rqNjoFU7uen5gQ9gPxL6B1ZbEhdEb
- anagUZ3KCOyZg7iHNfqE6FD/r6IvmfRltsgim/F8Od+NU2oZhTQD5qVmwR64dpwawAtD
- gXg1J7+OJJ3hTLhoIYElScbA4DJR7ESLvAu408lJpXBdc44D+f/XgixRdCc3wIf3xvnm
- qZR2uY5t1pzYDEjT9DH2EPAPIik73l4sMyn9XzZRJ8v9x0/kFoXX1dP/tE3y3v+rgESl
- bM9A==
-X-Gm-Message-State: AOAM5303Q+UaV6ERm91QqRhusrx2OswsE3lbreHVn+Pbuq6f1tfzCjne
- g4VZXxL4x9Dw0I+mk5iR9GBMT8RfRkBj86axBl0=
-X-Google-Smtp-Source: ABdhPJwgiEChSGf9qvyjy1T6zYSy5XNdQbCamYh3pl5CMGsNXjJNpyDK30nh70IBONDR0lTHUw8ZW6bTd6FXqI7qopY=
-X-Received: by 2002:a81:2f4e:0:b0:2fb:2c97:d66f with SMTP id
- v75-20020a812f4e000000b002fb2c97d66fmr4072572ywv.196.1651863475864; Fri, 06
- May 2022 11:57:55 -0700 (PDT)
+ id 1nn4SW-004y06-QN
+ for linux-mediatek@lists.infradead.org; Fri, 06 May 2022 20:21:54 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 928266221F;
+ Fri,  6 May 2022 20:21:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B945C385A9;
+ Fri,  6 May 2022 20:21:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1651868511;
+ bh=cLKLhRbbocol9rJIAJIP4JoIO/mWUJ8WKXroVZt+kQk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Kje+/43WAxiwcb2Qs2nxC7Bo1eaZoYyUrU3tYkZIFYt+oGj9BMUX1rH6eMjtR1Ry2
+ Ujsvc/k4GpYTqKGjnf6pKT8whfbJLLNn3l9nq31cZnF01Uuyryv8V2eC65WzrEfF9d
+ +TdESfWPWp4arAqXE8YEP4VQ12T7LtEw3cLToR9wqpofr1DTCAjRHkfluOcY2FS3lg
+ k85hoPlcIaGX957zVhthJdUGGuIlPbmLRSI2QrutAE/DiHj0W/8AnwZr63RRi3zO/w
+ Z+8/tOvmaAOwF/N3o7lqEWBp9uKw1wDL5JCDTcXrMRBGFce8/CVkb1dDltN9Kw5RSl
+ 57ty5sYUXIB2A==
+Date: Fri, 6 May 2022 22:21:45 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+ sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+ davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+ Sam.Shih@mediatek.com, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, robh@kernel.org
+Subject: Re: [PATCH net-next 11/14] net: ethernet: mtk_eth_soc: add SRAM soc
+ capability
+Message-ID: <YnWDWU5wqgfcWND1@lore-desk>
+References: <cover.1651839494.git.lorenzo@kernel.org>
+ <97298a5aeaa7498893a46103de929d0a7df26e8a.1651839494.git.lorenzo@kernel.org>
+ <20220506104109.63388e33@kernel.org>
 MIME-Version: 1.0
-References: <39e39a7d30c8ee6af81fb64670a330abeb87402e.1651652493.git.viresh.kumar@linaro.org>
- <0b9e332d-f479-ed3d-78ce-6386383d827b@gmail.com>
-In-Reply-To: <0b9e332d-f479-ed3d-78ce-6386383d827b@gmail.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 6 May 2022 20:57:44 +0200
-Message-ID: <CAJZ5v0itm1CmdVoO3kiwuLteuNqAvt7TqcMDOpYnBRM=yf4n9Q@mail.gmail.com>
-Subject: Re: [PATCH] cpufreq: Avoid unnecessary frequency updates due to
- mismatch
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Viresh Kumar <viresh.kumar@linaro.org>
-Cc: Rafael Wysocki <rjw@rjwysocki.net>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Linux PM <linux-pm@vger.kernel.org>,
- Vincent Guittot <vincent.guittot@linaro.org>, 
- Rex-BC Chen <rex-bc.chen@mediatek.com>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+In-Reply-To: <20220506104109.63388e33@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_115759_991122_65426A6F 
-X-CRM114-Status: GOOD (  25.43  )
+X-CRM114-CacheID: sfid-20220506_132152_933468_C16E733A 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,69 +72,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3005695611045369900=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 5, 2022 at 3:32 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
->
->
-> On 04/05/2022 10:21, Viresh Kumar wrote:
-> > For some platforms, the frequency returned by hardware may be slightly
-> > different from what is provided in the frequency table. For example,
-> > hardware may return 499 MHz instead of 500 MHz. In such cases it is
-> > better to avoid getting into unnecessary frequency updates, as we may
-> > end up switching policy->cur between the two and sending unnecessary
-> > pre/post update notifications, etc.
-> >
-> > This patch has chosen allows the hardware frequency and table frequency
-> > to deviate by 1 MHz for now, we may want to increase it a bit later on
-> > if someone still complains.
-> >
-> > Reported-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
->
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
->
-> > ---
-> >   drivers/cpufreq/cpufreq.c | 11 +++++++++++
-> >   1 file changed, 11 insertions(+)
-> >
-> > diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
-> > index 0d58b0f8f3af..233e8af48848 100644
-> > --- a/drivers/cpufreq/cpufreq.c
-> > +++ b/drivers/cpufreq/cpufreq.c
-> > @@ -28,6 +28,7 @@
-> >   #include <linux/suspend.h>
-> >   #include <linux/syscore_ops.h>
-> >   #include <linux/tick.h>
-> > +#include <linux/units.h>
-> >   #include <trace/events/power.h>
-> >
-> >   static LIST_HEAD(cpufreq_policy_list);
-> > @@ -1708,6 +1709,16 @@ static unsigned int cpufreq_verify_current_freq(struct cpufreq_policy *policy, b
-> >               return new_freq;
-> >
-> >       if (policy->cur != new_freq) {
-> > +             /*
-> > +              * For some platforms, the frequency returned by hardware may be
-> > +              * slightly different from what is provided in the frequency
-> > +              * table, for example hardware may return 499 MHz instead of 500
-> > +              * MHz. In such cases it is better to avoid getting into
-> > +              * unnecessary frequency updates.
-> > +              */
-> > +             if (abs(policy->cur - new_freq) < HZ_PER_MHZ)
-> > +                     return policy->cur;
-> > +
-> >               cpufreq_out_of_sync(policy, new_freq);
-> >               if (update)
-> >                       schedule_work(&policy->update);
 
-Applied as 5.19 material, thanks!
+--===============3005695611045369900==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="rLjMcV4QepMwlsrM"
+Content-Disposition: inline
+
+
+--rLjMcV4QepMwlsrM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On May 06, Jakub Kicinski wrote:
+> On Fri,  6 May 2022 14:30:28 +0200 Lorenzo Bianconi wrote:
+> > Introduce SRAM capability for devices that relies on SRAM memory
+> > for DMA descriptors.
+> > This is a preliminary patch to add mt7986 ethernet support.
+>=20
+> sparse says boo. I think you dropped an __iomem somewhere.
+
+ack, I will fix it in v2.
+
+>=20
+> Please heed the 24h rule.
+
+ack :)
+
+Regards,
+Lorenzo
+
+--rLjMcV4QepMwlsrM
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYnWDWQAKCRA6cBh0uS2t
+rD/pAQD0oGK1X3Ef9v8e3M4KKsaCWTwRUYRgX0rto1i3rbWRAAD/T97NIrVlJ2SF
+KYk5kgfnn9NS4QDPqcXK8oG3nI37iQE=
+=no2d
+-----END PGP SIGNATURE-----
+
+--rLjMcV4QepMwlsrM--
+
+
+--===============3005695611045369900==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============3005695611045369900==--
+
