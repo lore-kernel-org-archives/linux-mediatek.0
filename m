@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E393C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 09:30:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FB37C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 09:30:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MMv8orezYYJiIoL8q/reTGh7n70MevdJxz+at1FxjTU=; b=j8Ajvbd1l3y7XU
-	2Qw1aw5TS/2FF7/IWRoFuZty09Xe3DAee7bQuHq/44suXYN7qGXInp1MGpfNYlHY8AjUwTU9LjEeR
-	8cewR/IujjxOKinlwZIjf+jfmO0/07geQuDzL7+WFTaYgZ4mcP7SNN8iaA+g18JRrA5WzKVVFbKpM
-	qHOjF2xBVKJepgfRp4+bfCtR1X+1qFRyb/2ByUDvBV5klZKjocCT6F7wX6OwqcLC2S4zK8qClHj5s
-	p0yIS+4BIb35r3y62IUX3zvJLhXOn0uCrWWbbBRFXIcPk76EjSwNrB7xBH5L/iC0lRAZPIUJLcUVj
-	kseS+An3m7gcM1y7lQPQ==;
+	List-Owner; bh=s1HHv3+vLAHBL/GvhAD70+4Bje6LO3YdS7jUuD0FqwY=; b=LfulnYntREX9Sj
+	zDdyk8Pp1dnZaDNAcsifqBWUJ5d03+2HX3uo/uxWltuscoGjAGWuTSrNbT0TGX/y4uqbm1kjioeLs
+	LALgudnw8fZkART9z9lMtqj0gxqFWz4XD9i6X32z7mL06gfI4yOnjSeLuTVq0jr7483Is9HYX9yPH
+	7bat0vrHlkDXF44yIdu9WctwxlPHMPzVzBm60WfL89m9UDoeduwh1M3oJrysxkQOjU6p8GBXEAOXW
+	NerUhw+Y93F3nPFsQAzbRwjKLyCIIfNpWSAaphHQq0NgbhE1UZl0BUUuVv2axMG5k3SaupVhFXtPQ
+	nhwYY84Zovy2vDB1xKDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmuHn-002Lrv-MW; Fri, 06 May 2022 09:30:07 +0000
+	id 1nmuI7-002M0k-MW; Fri, 06 May 2022 09:30:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmuHZ-002Lgp-Mz; Fri, 06 May 2022 09:29:55 +0000
-X-UUID: c67f543d5bad46a4b4ac4e55ad48c211-20220506
+ id 1nmuHb-002Lgp-4Z; Fri, 06 May 2022 09:29:56 +0000
+X-UUID: 7f04b3ddb54c4d4bac6e14ffeec434f8-20220506
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:430a0edd-5dfc-408b-ba98-b6f773389996, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:508d513d-9705-428e-9c17-6b33e81e6c39, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:2b6b7416-2e53-443e-b81a-655c13977218,
+ B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-20
+X-CID-META: VersionHash:faefae9, CLOUDID:8b15d4b2-56b5-4c9e-8d83-0070b288eb6a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: c67f543d5bad46a4b4ac4e55ad48c211-20220506
+X-UUID: 7f04b3ddb54c4d4bac6e14ffeec434f8-20220506
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 706608167; Fri, 06 May 2022 02:29:41 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1510907273; Fri, 06 May 2022 02:29:41 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 May 2022 02:29:16 -0700
+ 15.0.1497.2; Fri, 6 May 2022 02:29:14 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 6 May 2022 17:29:14 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 May 2022 17:29:12 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 6 May 2022 17:29:12 +0800
+ Transport; Fri, 6 May 2022 17:29:11 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -65,17 +64,18 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v11, 10/17] media: mediatek: vcodec: disable vp8 4K capability
-Date: Fri, 6 May 2022 17:28:48 +0800
-Message-ID: <20220506092855.22940-11-yunfei.dong@mediatek.com>
+Subject: [PATCH v11,
+ 09/17] media: mediatek: vcodec: Add format to support MT21C
+Date: Fri, 6 May 2022 17:28:47 +0800
+Message-ID: <20220506092855.22940-10-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220506092855.22940-1-yunfei.dong@mediatek.com>
 References: <20220506092855.22940-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_022953_780854_E4C551C3 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20220506_022955_212979_EADF56F6 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,27 +92,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For vp8 not support 4K, need to disable it.
+Needs to use mediatek compressed mode for mt8192 decoder.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c    | 7 ++++++-
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h    | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index 1fb49a779c5d..dab6acb3158c 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -446,7 +446,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 	if (fmt == NULL)
- 		return -EINVAL;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+index 5101322f4fe9..d5c69f94d28e 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+@@ -81,7 +81,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
  
--	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
-+	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED) &&
-+	    fmt->fourcc != V4L2_PIX_FMT_VP8_FRAME) {
- 		mtk_v4l2_debug(3, "4K is enabled");
- 		ctx->max_width = VCODEC_DEC_4K_CODED_WIDTH;
- 		ctx->max_height = VCODEC_DEC_4K_CODED_HEIGHT;
+ #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
+ 
+-static struct mtk_video_fmt mtk_video_formats[2];
++static struct mtk_video_fmt mtk_video_formats[3];
+ static struct mtk_codec_framesizes mtk_vdec_framesizes[1];
+ 
+ static struct mtk_video_fmt default_out_format;
+@@ -331,6 +331,7 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
+ 		num_framesizes++;
+ 		break;
+ 	case V4L2_PIX_FMT_MM21:
++	case V4L2_PIX_FMT_MT21C:
+ 		mtk_video_formats[count_formats].fourcc = fourcc;
+ 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
+ 		mtk_video_formats[count_formats].num_planes = 2;
+@@ -356,6 +357,10 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_ctx *ctx)
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
+ 		cap_format_count++;
+ 	}
++	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MT21C) {
++		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
++		cap_format_count++;
++	}
+ 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_H264_SLICE) {
+ 		mtk_vcodec_add_formats(V4L2_PIX_FMT_H264_SLICE, ctx);
+ 		out_format_count++;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+index d74a9e0e74fe..75a1c6df6594 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+@@ -350,6 +350,7 @@ enum mtk_vdec_hw_arch {
+  */
+ enum mtk_vdec_format_types {
+ 	MTK_VDEC_FORMAT_MM21 = 0x20,
++	MTK_VDEC_FORMAT_MT21C = 0x40,
+ 	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
+ };
+ 
 -- 
 2.18.0
 
