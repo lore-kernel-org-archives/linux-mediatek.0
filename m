@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D35C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 09:43:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EB77C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 09:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d2RtKVrLLLuNLpC96az88GWFtsH5ccovfGSOvpCzNFM=; b=MMFoDUjGzVdewU
-	xB8gtuCuRJ5bIwLqfSRmOqQpiqerQFLGKbEQert2P0/+l0Qfu4PlpKcPeomi6Cn5HbcKz1S63xB19
-	fd9FUU6bJd8B2ztq5rvPB7mGYroUFQpWTvDnz9CAgGUOXyMTUBhyAbJThUv3ZslA68f8QnNj+tnHi
-	liB3r/xmOyASGCsbmMhu3OhC1aImtGype3GLwFXNtE6B+YPe5WUvRyjTQCxRMsYCJLqvmhwMCu/0o
-	+/1R0RUJbqJsHaTsfwiQvWdqvAOe9pAH3jjQLrS5lT4FH+xYTLEzwhDl3vRd4VVLOVFsjxpl4X74J
-	vnzT+MfOJo1p0+i1iAgA==;
+	List-Owner; bh=1BF7VweDhSQawq2jLwYHeQPqaq3hi1dnt8xmfPNXSIs=; b=g0Y4wrhXEWrYMl
+	bFPJI2X4sPARzkYpBa8vUNk8WC4lBFPnUxQt9OAgFhvLYZt9/i15QetbM4vJX5micaXClfv/vKNzv
+	Fj46YV8PGQmtGSstPH3g4wcCF3wAUAlpKvWPAMAgfOOwkkyYpkd83jaxtzpW1bYg15uH1MFw/O3LD
+	uDclNTOgJ+8qFXdYVYtGtVbeKy/+ERIaQaWAouWXpGo+N7MS+ZZhyRmJlHtCeo9BlX5ERzu0NK6mg
+	DXMu738kLDGlBxf+hRtu+Xp1fG5EkVFD1vD9XXbkWTN4kdRqQrokUXGntFkC4u82pwTqRz5IaN63F
+	rod9b5G5tbZvXxiOP7VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmuUv-002TI9-0f; Fri, 06 May 2022 09:43:41 +0000
+	id 1nmuW0-002TrR-KA; Fri, 06 May 2022 09:44:48 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmuMx-002Oi2-Ci; Fri, 06 May 2022 09:35:28 +0000
-X-UUID: b516f2cece4b4ca390b74390d82d9bac-20220506
+ id 1nmuMx-002Oi1-BZ; Fri, 06 May 2022 09:35:30 +0000
+X-UUID: 6484dd769f514d77a22796e30220a08f-20220506
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=C6X/5UnFAMnbFhYpAmeaR8YkFNuHEyX4hjYc9zMyZvk=; 
+ b=Jli32r+yPl0lRVtopZWQRGevM99MTCLsMCID7yUnXX6u7GrCj/VhOAeVVUfWh6ucHw3hhY/8aukkcZEz2ZLbr6j7Bdh2QPyKtsICN8ZXeG5b6iT74MaSQnfgvrPpx+IXfBelcz9al/7LYYVctsixgvmImQvqal/Jk4VoWdIA7tg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:93ec2785-922e-4ef1-9ca5-75dd5cdeab44, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:c99d6e5b-90c4-498d-9b15-2b83fcb6ba08, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-12
-X-CID-META: VersionHash:faefae9, CLOUDID:4f525cfd-e8ba-4988-a28f-dc105bbdc74f,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:05c67416-2e53-443e-b81a-655c13977218,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: b516f2cece4b4ca390b74390d82d9bac-20220506
+X-UUID: 6484dd769f514d77a22796e30220a08f-20220506
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 725082228; Fri, 06 May 2022 02:35:22 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1385907860; Fri, 06 May 2022 02:35:22 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 May 2022 02:29:34 -0700
+ 15.0.1497.2; Fri, 6 May 2022 02:25:20 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 6 May 2022 17:29:32 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 May 2022 17:25:18 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 6 May 2022 17:29:30 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ Transport; Fri, 6 May 2022 17:25:17 +0800
+Message-ID: <18560bd9efbcf77bc6b2dc6d2956d7993fcdde85.camel@mediatek.com>
+Subject: Re: [PATCH v10, 16/17] media: mediatek: vcodec: support stateless
+ VP9 decoding
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: Alexandre Courbot <acourbot@chromium.org>, Nicolas Dufresne
+ <nicolas@ndufresne.ca>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
+ George Sun <george.sun@mediatek.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, 
+ Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v11,
- 17/17] media: mediatek: vcodec: prevent kernel crash when rmmod
- mtk-vcodec-dec.ko
-Date: Fri, 6 May 2022 17:28:55 +0800
-Message-ID: <20220506092855.22940-18-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220506092855.22940-1-yunfei.dong@mediatek.com>
-References: <20220506092855.22940-1-yunfei.dong@mediatek.com>
+Date: Fri, 6 May 2022 17:25:17 +0800
+In-Reply-To: <20220505222034.fxw6y7wdf7wy3qi4@notapiano>
+References: <20220426100828.13429-1-yunfei.dong@mediatek.com>
+ <20220426100828.13429-17-yunfei.dong@mediatek.com>
+ <20220505222034.fxw6y7wdf7wy3qi4@notapiano>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_023527_501056_729D856E 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20220506_023527_546150_8A360D11 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,72 +94,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the driver support subdev mode, the parameter "dev->pm.dev" will be
-NULL in mtk_vcodec_dec_remove. Kernel will crash when try to rmmod
-mtk-vcodec-dec.ko.
-
-[ 4380.702726] pc : do_raw_spin_trylock+0x4/0x80
-[ 4380.707075] lr : _raw_spin_lock_irq+0x90/0x14c
-[ 4380.711509] sp : ffff80000819bc10
-[ 4380.714811] x29: ffff80000819bc10 x28: ffff3600c03e4000 x27: 0000000000000000
-[ 4380.721934] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
-[ 4380.729057] x23: ffff3600c0f34930 x22: ffffd5e923549000 x21: 0000000000000220
-[ 4380.736179] x20: 0000000000000208 x19: ffffd5e9213e8ebc x18: 0000000000000020
-[ 4380.743298] x17: 0000002000000000 x16: ffffd5e9213e8e90 x15: 696c346f65646976
-[ 4380.750420] x14: 0000000000000000 x13: 0000000000000001 x12: 0000000000000040
-[ 4380.757542] x11: 0000000000000000 x10: 0000000000000000 x9 : 0000000000000000
-[ 4380.764664] x8 : 0000000000000000 x7 : ffff3600c7273ae8 x6 : ffffd5e9213e8ebc
-[ 4380.771786] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 0000000000000000
-[ 4380.778908] x2 : 0000000000000000 x1 : ffff3600c03e4000 x0 : 0000000000000208
-[ 4380.786031] Call trace:
-[ 4380.788465]  do_raw_spin_trylock+0x4/0x80
-[ 4380.792462]  __pm_runtime_disable+0x2c/0x1b0
-[ 4380.796723]  mtk_vcodec_dec_remove+0x5c/0xa0 [mtk_vcodec_dec]
-[ 4380.802466]  platform_remove+0x2c/0x60
-[ 4380.806204]  __device_release_driver+0x194/0x250
-[ 4380.810810]  driver_detach+0xc8/0x15c
-[ 4380.814462]  bus_remove_driver+0x5c/0xb0
-[ 4380.818375]  driver_unregister+0x34/0x64
-[ 4380.822288]  platform_driver_unregister+0x18/0x24
-[ 4380.826979]  mtk_vcodec_dec_driver_exit+0x1c/0x888 [mtk_vcodec_dec]
-[ 4380.833240]  __arm64_sys_delete_module+0x190/0x224
-[ 4380.838020]  invoke_syscall+0x48/0x114
-[ 4380.841760]  el0_svc_common.constprop.0+0x60/0x11c
-[ 4380.846540]  do_el0_svc+0x28/0x90
-[ 4380.849844]  el0_svc+0x4c/0x100
-[ 4380.852975]  el0t_64_sync_handler+0xec/0xf0
-[ 4380.857148]  el0t_64_sync+0x190/0x194
-[ 4380.860801] Code: 94431515 17ffffca d503201f d503245f (b9400004)
-
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-index a84df6596aaa..5da4572c5b14 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-@@ -482,7 +482,8 @@ static int mtk_vcodec_dec_remove(struct platform_device *pdev)
- 		video_unregister_device(dev->vfd_dec);
- 
- 	v4l2_device_unregister(&dev->v4l2_dev);
--	pm_runtime_disable(dev->pm.dev);
-+	if (!dev->vdec_pdata->is_subdev_supported)
-+		pm_runtime_disable(dev->pm.dev);
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return 0;
- }
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgTmljb2xhcywNCg0KVGhhbmtzIGZvciB5b3VyIHN1Z2dlc3Rpb24uDQoNCk9uIFRodSwgMjAy
+Mi0wNS0wNSBhdCAxODoyMCAtMDQwMCwgTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gd3JvdGU6DQo+
+IE9uIFR1ZSwgQXByIDI2LCAyMDIyIGF0IDA2OjA4OjI3UE0gKzA4MDAsIFl1bmZlaSBEb25nIHdy
+b3RlOg0KPiA+IEFkZCBzdXBwb3J0IGZvciBWUDkgZGVjb2RpbmcgdXNpbmcgdGhlIHN0YXRlbGVz
+cyBBUEksDQo+ID4gYXMgc3VwcG9ydGVkIGJ5IE1UODE5Mi4gQW5kIHRoZSBkcml2ZXJzIGlzIGxh
+dCBhbmQgY29yZQ0KPiA+IGFyY2hpdGVjdHVyZS4NCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBZ
+dW5mZWkgRG9uZyA8eXVuZmVpLmRvbmdAbWVkaWF0ZWsuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6
+IEdlb3JnZSBTdW4gPGdlb3JnZS5zdW5AbWVkaWF0ZWsuY29tPg0KPiA+IFJldmlld2VkLWJ5OiBB
+bmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8DQo+ID4gYW5nZWxvZ2lvYWNjaGluby5kZWxyZWdu
+b0Bjb2xsYWJvcmEuY29tPg0KPiA+IC0tLQ0KPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbWVkaWF0
+ZWsvdmNvZGVjL01ha2VmaWxlICAgfCAgICAxICsNCj4gPiAgLi4uL3Zjb2RlYy9tdGtfdmNvZGVj
+X2RlY19zdGF0ZWxlc3MuYyAgICAgICAgIHwgICAyNiArLQ0KPiA+ICAuLi4vcGxhdGZvcm0vbWVk
+aWF0ZWsvdmNvZGVjL210a192Y29kZWNfZHJ2LmggfCAgICAxICsNCj4gPiAgLi4uL3Zjb2RlYy92
+ZGVjL3ZkZWNfdnA5X3JlcV9sYXRfaWYuYyAgICAgICAgIHwgMjAzMQ0KPiA+ICsrKysrKysrKysr
+KysrKysrDQo+ID4gIC4uLi9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvdmRlY19kcnZfaWYuYyAg
+ICB8ICAgIDQgKw0KPiA+ICAuLi4vcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL3ZkZWNfZHJ2X2lm
+LmggICAgfCAgICAxICsNCj4gPiAgNiBmaWxlcyBjaGFuZ2VkLCAyMDYxIGluc2VydGlvbnMoKyks
+IDMgZGVsZXRpb25zKC0pDQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NA0KPiA+IGRyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL3ZkZWMvdmRlY192cDlfcmVxX2xhdF9pZi5jDQo+
+ID4gDQo+IA0KPiAuLi4NCj4gDQo+ID4gKwkJdXNlXzEyOCA9ICFmcmFtZV9pc19pbnRyYSAmJiAh
+dnNpLQ0KPiA+ID5mcmFtZS51aC5sYXN0X2ZyYW1lX3R5cGU7DQo+ID4gKwkJdjRsMl92cDlfYWRh
+cHRfY29lZl9wcm9icyhwcmVfZnJhbWVfY3R4X2hlbHBlciwNCj4gPiArCQkJCQkgIGNvdW50c19o
+ZWxwZXIsDQo+ID4gKwkJCQkJICB1c2VfMTI4LA0KPiA+ICsJCQkJCSAgZnJhbWVfaXNfaW50cmEp
+Ow0KPiANCj4gSGkgWXVuZmVpLA0KPiANCj4gSSdtIGdldHRpbmcNCj4gDQo+IEVSUk9SOiBtb2Rw
+b3N0OiAidjRsMl92cDlfYWRhcHRfbm9uY29lZl9wcm9icyINCj4gW2RyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vbWVkaWF0ZWsvdmNvZGVjL210ay12Y29kZWMtZGVjLmtvXSB1bmRlZmluZWQhDQo+IEVS
+Uk9SOiBtb2Rwb3N0OiAidjRsMl92cDlfYWRhcHRfY29lZl9wcm9icyINCj4gW2RyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL210ay12Y29kZWMtZGVjLmtvXSB1bmRlZmluZWQh
+DQo+IA0KPiB3aGVuIGJ1aWxkaW5nIHRoaXMgc2VyaWVzLg0KPiANCj4gQWRkaW5nDQo+IAlzZWxl
+Y3QgVjRMMl9WUDkNCj4gdG8NCj4gCWNvbmZpZyBWSURFT19NRURJQVRFS19WQ09ERUMNCj4gc29s
+dmVkIHRoZSBpc3N1ZS4NCj4gDQo+IFRoYW5rcywNCj4gTsOtY29sYXMNCkkgd2lsbCBmaXggaXQg
+aW4gbmV4dCBwYXRjaA0KDQpCZXN0IFJlZ2FyZHMsDQpZdW5mZWkgRG9uZw0KX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
