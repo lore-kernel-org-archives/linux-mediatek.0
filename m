@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06E77C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 12:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B1AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 May 2022 12:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gL6JNkOZTwritZShkbUj63kvgm6y21qiMdNMKRGHdmc=; b=CgzzBYh9KGOTlR
-	Cl9MnqtSzOO21XAdmWET4IL1hQlpKq6Zi6OPiQUV2FpxLmAr48Oiz4QYQ6Ka7iZdW//3ciJz2cv2n
-	c+GUat1SSUoE2xImVrDe3JPS4s+oz7fDXeMi7ax2/fp9B+7gjf+EaVah1PYkIPH4OK4l87fdG1rGE
-	MAFYusgiceMpUW5UwsEuRLwpmZpcTio+C4iTsAtdnfrTUNrqIRfllPt8UvA2GnW9JVJsf0E1mSaQP
-	wdk7rOgIdoVHv6XpkxW8WmzmmzarlbtUxKh9tD0FX5WnRnvOvvWtCJ4HHtv3z48J9AUCnhaYnJ3XS
-	N9BgPGoZfNM0eQfc+wfw==;
+	List-Owner; bh=Pe6Ula5dz+evCUIIJdR5ZoAcmu/nC1xkD+7JH6WVB44=; b=dlZJd0c2GUc/jo
+	E2ZlpDU2ENZCwYRJBoDAA/rbmVzxCCxIvWFBpX0H4jPil3EeG4C7DZ6zXAVBrPBY7BYdW7Yr1G5VB
+	mDZi6ofdfNygRYLRYVRj2D8ChkoG4h2oYMYgpmTgsSAnYAjKYT8hpYQUf4zTDNT1HRcVDSGuH0mqm
+	DqS1p7fG2Yvr+SyusL9UOy1WHPC+zw0UKt68fkKCqKqEBBjwlim3h58cItoh1iPou0RpUbhRAjIo8
+	OCesB7Woy4xrOaS2DujX3iqkpePycUvRX86BzSErxTyL/VfLPQCSHo4QKNmhE9IhXBlBxoq+nwyeu
+	Feai1eHrh97LlCe1KZuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmx7J-003BFk-Nh; Fri, 06 May 2022 12:31:29 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nmx7L-003BHx-L4; Fri, 06 May 2022 12:31:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmx7G-003BCH-MX
- for linux-mediatek@lists.infradead.org; Fri, 06 May 2022 12:31:28 +0000
+ id 1nmx7J-003BF1-7Z
+ for linux-mediatek@lists.infradead.org; Fri, 06 May 2022 12:31:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 08B39B835AA;
- Fri,  6 May 2022 12:31:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A95EC385B0;
- Fri,  6 May 2022 12:31:21 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5ECED61FE6;
+ Fri,  6 May 2022 12:31:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27AAAC385A8;
+ Fri,  6 May 2022 12:31:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1651840284;
- bh=RQ2pKyhqP4+cvFQTD1olLB4CtveOrAiVBuGvfLCvOzg=;
+ s=k20201202; t=1651840287;
+ bh=7mqAuh+F4hB++eFxWT4777VV/Pd+PivBh9QIDzyTqRk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=c6nqKl7HugR6VpqMv6a0ipr3QmA+JlazWwMxF6nHl/FBlqFWGcGTfkUAxlh1a0YT8
- nAUTsrbbruCQcytzJzKtgtKd6hEA74qtDNIwJeZimMtvx9EkDVee5kxWZtoF3CjFQ7
- 8wyk2A8aWpU1PkEDjjRMZ7k/RmwHIWJqJR7vWC1H7FsovhRGd1auqpWDUtiDabZdge
- wIJ9VPAofh+t9AZWD1HfmXXiG3LXRpGGp8fCUhGt0gNqxVEI4I6+FhrBq349z1zH1x
- MyuPq6N0vVovG0HqmqP2aiRvRSidrlTZ/Ig+c0iQpIelfqkHCX2qsFfNMPIaUVTICK
- AdUhLg6ZEjBPw==
+ b=dxrXavAPjdTwuNcfe1/aznQF371oD619oRADefopAmP0yblvpn5PbdqKXb2DVRa6V
+ D3xAYQ7GgOKvdsufRPOnWwSlDR//6dzySKGE20+MOPk8JF33igX8XvbAYIsVJfNGby
+ VIZs5r43YzS8yLJqFkKht/zr3IMrK52s+Xfv2W4qgyJ2R//H+Gp92G+WsQjnSWCK0X
+ N8q4V+WIqGLN7wkGWq9AnwVSWu5/A6F8ronKFS5hDVCr81dpevLQ0cz5h6865CCmG+
+ l0Z8w3+qID5rZp9UbTnq3JDwrpVWC1rIaq0QeO//n+fp7TWQHd6AnDAIowwtmHPpBz
+ 2qshi87GT/BWw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
@@ -49,17 +49,17 @@ Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
  kuba@kernel.org, pabeni@redhat.com, Sam.Shih@mediatek.com,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
  robh@kernel.org
-Subject: [PATCH net-next 05/14] net: ethernet: mtk_eth_soc: rely on txd_size
- in mtk_tx_alloc/mtk_tx_clean
-Date: Fri,  6 May 2022 14:30:22 +0200
-Message-Id: <90867cfe15acb6580fc44bccb0f8aed0f3423ca9.1651839494.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 06/14] net: ethernet: mtk_eth_soc: rely on txd_size
+ in mtk_desc_to_tx_buf
+Date: Fri,  6 May 2022 14:30:23 +0200
+Message-Id: <41062b85a49a26b18f5ccdd3a7a79da814b95e45.1651839494.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <cover.1651839494.git.lorenzo@kernel.org>
 References: <cover.1651839494.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_053127_051643_F85DF5F7 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20220506_053129_399011_7BD6E6E1 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,113 +81,108 @@ This is a preliminary patch to add mt7986 ethernet support.
 Tested-by: Sam Shih <sam.shih@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 39 ++++++++++++---------
- 1 file changed, 22 insertions(+), 17 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 26 ++++++++++++---------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index cde66463bf98..a48e93792db1 100644
+index a48e93792db1..5f0082f92cc7 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1568,25 +1568,30 @@ static int mtk_napi_rx(struct napi_struct *napi, int budget)
- 
- static int mtk_tx_alloc(struct mtk_eth *eth)
- {
-+	const struct mtk_soc_data *soc = eth->soc;
- 	struct mtk_tx_ring *ring = &eth->tx_ring;
--	int i, sz = sizeof(*ring->dma);
-+	struct mtk_tx_dma *txd;
-+	int i;
- 
- 	ring->buf = kcalloc(MTK_DMA_SIZE, sizeof(*ring->buf),
- 			       GFP_KERNEL);
- 	if (!ring->buf)
- 		goto no_tx_mem;
- 
--	ring->dma = dma_alloc_coherent(eth->dma_dev, MTK_DMA_SIZE * sz,
-+	ring->dma = dma_alloc_coherent(eth->dma_dev,
-+				       MTK_DMA_SIZE * soc->txrx.txd_size,
- 				       &ring->phys, GFP_ATOMIC);
- 	if (!ring->dma)
- 		goto no_tx_mem;
- 
- 	for (i = 0; i < MTK_DMA_SIZE; i++) {
- 		int next = (i + 1) % MTK_DMA_SIZE;
--		u32 next_ptr = ring->phys + next * sz;
-+		u32 next_ptr = ring->phys + next * soc->txrx.txd_size;
- 
--		ring->dma[i].txd2 = next_ptr;
--		ring->dma[i].txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
-+		txd = (void *)ring->dma + i * soc->txrx.txd_size;
-+		txd->txd2 = next_ptr;
-+		txd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
-+		txd->txd4 = 0;
- 	}
- 
- 	/* On MT7688 (PDMA only) this driver uses the ring->dma structs
-@@ -1594,9 +1599,9 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 	 * descriptors in ring->dma_pdma.
- 	 */
- 	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA)) {
--		ring->dma_pdma = dma_alloc_coherent(eth->dma_dev, MTK_DMA_SIZE * sz,
--						    &ring->phys_pdma,
--						    GFP_ATOMIC);
-+		ring->dma_pdma = dma_alloc_coherent(eth->dma_dev,
-+				MTK_DMA_SIZE * soc->txrx.txd_size,
-+				&ring->phys_pdma, GFP_ATOMIC);
- 		if (!ring->dma_pdma)
- 			goto no_tx_mem;
- 
-@@ -1609,8 +1614,9 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 	ring->dma_size = MTK_DMA_SIZE;
- 	atomic_set(&ring->free_count, MTK_DMA_SIZE - 2);
- 	ring->next_free = &ring->dma[0];
--	ring->last_free = &ring->dma[MTK_DMA_SIZE - 1];
--	ring->last_free_ptr = (u32)(ring->phys + ((MTK_DMA_SIZE - 1) * sz));
-+	ring->last_free = (void *)txd;
-+	ring->last_free_ptr = (u32)(ring->phys +
-+				    (MTK_DMA_SIZE - 1) * soc->txrx.txd_size);
- 	ring->thresh = MAX_SKB_FRAGS;
- 
- 	/* make sure that all changes to the dma ring are flushed before we
-@@ -1622,7 +1628,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 		mtk_w32(eth, ring->phys, MTK_QTX_CTX_PTR);
- 		mtk_w32(eth, ring->phys, MTK_QTX_DTX_PTR);
- 		mtk_w32(eth,
--			ring->phys + ((MTK_DMA_SIZE - 1) * sz),
-+			ring->phys + (MTK_DMA_SIZE - 1) * soc->txrx.txd_size,
- 			MTK_QTX_CRX_PTR);
- 		mtk_w32(eth, ring->last_free_ptr, MTK_QTX_DRX_PTR);
- 		mtk_w32(eth, (QDMA_RES_THRES << 8) | QDMA_RES_THRES,
-@@ -1642,6 +1648,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 
- static void mtk_tx_clean(struct mtk_eth *eth)
- {
-+	const struct mtk_soc_data *soc = eth->soc;
- 	struct mtk_tx_ring *ring = &eth->tx_ring;
- 	int i;
- 
-@@ -1654,17 +1661,15 @@ static void mtk_tx_clean(struct mtk_eth *eth)
- 
- 	if (ring->dma) {
- 		dma_free_coherent(eth->dma_dev,
--				  MTK_DMA_SIZE * sizeof(*ring->dma),
--				  ring->dma,
--				  ring->phys);
-+				  MTK_DMA_SIZE * soc->txrx.txd_size,
-+				  ring->dma, ring->phys);
- 		ring->dma = NULL;
- 	}
- 
- 	if (ring->dma_pdma) {
- 		dma_free_coherent(eth->dma_dev,
--				  MTK_DMA_SIZE * sizeof(*ring->dma_pdma),
--				  ring->dma_pdma,
--				  ring->phys_pdma);
-+				  MTK_DMA_SIZE * soc->txrx.txd_size,
-+				  ring->dma_pdma, ring->phys_pdma);
- 		ring->dma_pdma = NULL;
- 	}
+@@ -837,10 +837,11 @@ static inline void *mtk_qdma_phys_to_virt(struct mtk_tx_ring *ring, u32 desc)
+ 	return ret + (desc - ring->phys);
  }
+ 
+-static inline struct mtk_tx_buf *mtk_desc_to_tx_buf(struct mtk_tx_ring *ring,
+-						    struct mtk_tx_dma *txd)
++static struct mtk_tx_buf *mtk_desc_to_tx_buf(struct mtk_tx_ring *ring,
++					     struct mtk_tx_dma *txd,
++					     u32 txd_size)
+ {
+-	int idx = txd - ring->dma;
++	int idx = ((void *)txd - (void *)ring->dma) / txd_size;
+ 
+ 	return &ring->buf[idx];
+ }
+@@ -962,6 +963,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 	};
+ 	struct mtk_mac *mac = netdev_priv(dev);
+ 	struct mtk_eth *eth = mac->hw;
++	const struct mtk_soc_data *soc = eth->soc;
+ 	struct mtk_tx_dma *itxd, *txd;
+ 	struct mtk_tx_dma *itxd_pdma, *txd_pdma;
+ 	struct mtk_tx_buf *itx_buf, *tx_buf;
+@@ -973,7 +975,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 	if (itxd == ring->last_free)
+ 		return -ENOMEM;
+ 
+-	itx_buf = mtk_desc_to_tx_buf(ring, itxd);
++	itx_buf = mtk_desc_to_tx_buf(ring, itxd, soc->txrx.txd_size);
+ 	memset(itx_buf, 0, sizeof(*itx_buf));
+ 
+ 	txd_info.addr = dma_map_single(eth->dma_dev, skb->data, txd_info.size,
+@@ -1001,7 +1003,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 		while (frag_size) {
+ 			bool new_desc = true;
+ 
+-			if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA) ||
++			if (MTK_HAS_CAPS(soc->caps, MTK_QDMA) ||
+ 			    (i & 0x1)) {
+ 				txd = mtk_qdma_phys_to_virt(ring, txd->txd2);
+ 				txd_pdma = qdma_to_pdma(ring, txd);
+@@ -1025,7 +1027,8 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 
+ 			mtk_tx_set_dma_desc(dev, txd, &txd_info);
+ 
+-			tx_buf = mtk_desc_to_tx_buf(ring, txd);
++			tx_buf = mtk_desc_to_tx_buf(ring, txd,
++						    soc->txrx.txd_size);
+ 			if (new_desc)
+ 				memset(tx_buf, 0, sizeof(*tx_buf));
+ 			tx_buf->skb = (struct sk_buff *)MTK_DMA_DUMMY_DESC;
+@@ -1044,7 +1047,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 	/* store skb to cleanup */
+ 	itx_buf->skb = skb;
+ 
+-	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA)) {
++	if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA)) {
+ 		if (k & 0x1)
+ 			txd_pdma->txd2 |= TX_DMA_LS0;
+ 		else
+@@ -1062,7 +1065,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 	 */
+ 	wmb();
+ 
+-	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA)) {
++	if (MTK_HAS_CAPS(soc->caps, MTK_QDMA)) {
+ 		if (netif_xmit_stopped(netdev_get_tx_queue(dev, 0)) ||
+ 		    !netdev_xmit_more())
+ 			mtk_w32(eth, txd->txd2, MTK_QTX_CTX_PTR);
+@@ -1076,13 +1079,13 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 
+ err_dma:
+ 	do {
+-		tx_buf = mtk_desc_to_tx_buf(ring, itxd);
++		tx_buf = mtk_desc_to_tx_buf(ring, itxd, soc->txrx.txd_size);
+ 
+ 		/* unmap dma */
+ 		mtk_tx_unmap(eth, tx_buf, false);
+ 
+ 		itxd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
+-		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
++		if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA))
+ 			itxd_pdma->txd2 = TX_DMA_DESP2_DEF;
+ 
+ 		itxd = mtk_qdma_phys_to_virt(ring, itxd->txd2);
+@@ -1393,7 +1396,8 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 		if ((desc->txd3 & TX_DMA_OWNER_CPU) == 0)
+ 			break;
+ 
+-		tx_buf = mtk_desc_to_tx_buf(ring, desc);
++		tx_buf = mtk_desc_to_tx_buf(ring, desc,
++					    eth->soc->txrx.txd_size);
+ 		if (tx_buf->flags & MTK_TX_FLAGS_FPORT1)
+ 			mac = 1;
+ 
 -- 
 2.35.1
 
