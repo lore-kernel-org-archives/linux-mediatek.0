@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0CEEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 08:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 104EDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 08:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KQN7JSnc3YcjKfEMF61n+I6+GdNsxdgSnpQ/OCX0QsQ=; b=PmQ18YGE3ba8xS
-	0rrzFyvrc0Hzq/JHfYeP4Pa235ljSDJchapFj05RyMTuZVwKGyVK9IwJ7/cypFGwRPbmhdZdiItDW
-	QmOU9f4d0wXRCFCdCbyyT7gZnYc5ot9NBXJnRpoX7bL8qa+Y3Vk8/nznt0/+kYaiDQHYx/B72VTFY
-	iY4X2YRAv3NazWM2oU1wWK+cF+JyM+prc+ekS2gGDwKIhH/MLBvGtuabV0XawOSJaYGZxUJyYT5M1
-	dBjO/TvBM91S/7qQzFEChDZvy2tG8F3cX2AUgKWcpOvsyFzr4Z83eFsHxAPUzJmTHyffYTLeWMGDR
-	j/Tm+O9n66y5WnFI5AIg==;
+	List-Owner; bh=cVVDeQc/1nZuBHmzu2DDRPtQM7Pbg8O+aJeGPtQbBxc=; b=q4CBfdXs6sbTfT
+	7HLBsvjmyQg/zgqxpEPwkFTrJ2XFrk0/YMdEpQ/R7We3kfk8lqoSrY4DoThZqBDrrE1ymqDc+iK2p
+	QKv1dcyeRszuL51tIhDP3+KI6xgKgRboevDCAWxcbFJxvwian2YwLjUUKgw6qunbbVLyjYYQ6RDaJ
+	nV2mKEubzNB3yaZCxu6jeeoFUuYM+ZoKsELNf6M0cBu40+asMnbyL3cw1tgEfDlTJZAcUmdpKsl4e
+	iBfUH1ZXUlaEnjWN9Yqgih64rt4IioSzqWVlalKl1dtrmoI9+iNqHVM68wUbtf8BThFSWXQ6o0qTh
+	ttizAt+1shrCACCDTGIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnG2j-006WlS-Vt; Sat, 07 May 2022 08:44:02 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nnGHG-006Z15-Qk; Sat, 07 May 2022 08:59:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnG2b-006Wib-0K
- for linux-mediatek@lists.infradead.org; Sat, 07 May 2022 08:43:54 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1nnG2W-0003ZA-VT; Sat, 07 May 2022 10:43:49 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nnG2W-000rna-UN; Sat, 07 May 2022 10:43:47 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1nnG2U-00885o-Rb; Sat, 07 May 2022 10:43:46 +0200
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH] pwm: mediatek: Implement .apply() callback
-Date: Sat,  7 May 2022 10:43:37 +0200
-Message-Id: <20220507084337.167890-1-u.kleine-koenig@pengutronix.de>
-X-Mailer: git-send-email 2.35.1
+ id 1nnGH4-006YxS-FK; Sat, 07 May 2022 08:58:51 +0000
+X-UUID: 208e29a0cc9542efaa88b32e50138165-20220507
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:508286f9-6ef8-4fc1-b384-b12f453febff, OB:0,
+ LO
+ B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-12
+X-CID-META: VersionHash:faefae9, CLOUDID:02798b16-2e53-443e-b81a-655c13977218,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 208e29a0cc9542efaa88b32e50138165-20220507
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yf.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 225382058; Sat, 07 May 2022 01:58:40 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 7 May 2022 01:58:38 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 7 May 2022 16:58:37 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 7 May 2022 16:58:35 +0800
+From: <yf.wang@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Logan Gunthorpe <logang@deltatee.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
+ <yong.wu@mediatek.com>, Ning Li <Ning.Li@mediatek.com>, Yunfei Wang
+ <yf.wang@mediatek.com>, <stable@vger.kernel.org>
+Subject: [PATCH] iommu/dma: Fix iova map result check bug
+Date: Sat, 7 May 2022 16:52:03 +0800
+Message-ID: <20220507085204.16914-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1612; h=from:subject;
- bh=1KW6ty6GQ2hPJLt+FmKcTNmj+Zi8+DqoBiVLGQsCtaQ=;
- b=owEBbQGS/pANAwAKAcH8FHityuwJAcsmYgBidjE1BE8QaAG8kut8vuwP3pNWJ+MbI0NoKyRVRwrT
- LZ5Sk6WJATMEAAEKAB0WIQR+cioWkBis/z50pAvB/BR4rcrsCQUCYnYxNQAKCRDB/BR4rcrsCYnLB/
- 0XT4bvhgerT8ZpBENu+CGRC0wyQ+GST9QmS1RA5dA1PSPitenhwiNFwL1Rem7vYeIvWjGlHcyZGHPo
- DGqv9AWug1qGxkwfMxeqvS7xIQSw4GLpchoUPsTyXybkc1cR95A88G0gq6dRRhOBOljAY5sfrRuE0I
- 2C2BVUUziHMnlSXvk1EsvJydBAstYrb8s2Bh6OOxvDAXaqVCW1CuVCtss5ICgRaz2Vzlt2n+qo/8TS
- Aoj0U69s/WVdkNCyWb4vVqRBc6nh4unYb8cDzecKToI2/jCZvC4m9yAB6u20XmIFMI9rHq3t8+Zjak
- xTjBBVwblUZzAx6cY7FUhH5i7rUB/l
-X-Developer-Key: i=u.kleine-koenig@pengutronix.de; a=openpgp;
- fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220507_014353_049925_5A58F399 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20220507_015850_571829_3A2EB041 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,39 +78,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-VG8gZXZlbnR1YWxseSBnZXQgcmlkIG9mIGFsbCBsZWdhY3kgZHJpdmVycyBjb252ZXJ0IHRoaXMg
-ZHJpdmVyIHRvIHRoZQptb2Rlcm4gd29ybGQgaW1wbGVtZW50aW5nIC5hcHBseSgpLgpUaGlzIGp1
-c3QgcHVzaGVkIGEgdmFyaWFudCBvZiBwd21fYXBwbHlfbGVnYWN5KCkgaW50byB0aGUgZHJpdmVy
-IHRoYXQgd2FzCnNsaWdodGx5IHNpbXBsaWZpZWQgYmVjYXVzZSB0aGUgZHJpdmVyIGRvZXNuJ3Qg
-cHJvdmlkZSBhIC5zZXRfcG9sYXJpdHkoKQpjYWxsYmFjay4KClNpZ25lZC1vZmYtYnk6IFV3ZSBL
-bGVpbmUtS8O2bmlnIDx1LmtsZWluZS1rb2VuaWdAcGVuZ3V0cm9uaXguZGU+Ci0tLQogZHJpdmVy
-cy9wd20vcHdtLW1lZGlhdGVrLmMgfCAyOSArKysrKysrKysrKysrKysrKysrKysrKysrKy0tLQog
-MSBmaWxlIGNoYW5nZWQsIDI2IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCgpkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9wd20vcHdtLW1lZGlhdGVrLmMgYi9kcml2ZXJzL3B3bS9wd20tbWVkaWF0
-ZWsuYwppbmRleCA1NjhiMTNhNDg3MTcuLmUyNjRiYjc0ZmRkZSAxMDA2NDQKLS0tIGEvZHJpdmVy
-cy9wd20vcHdtLW1lZGlhdGVrLmMKKysrIGIvZHJpdmVycy9wd20vcHdtLW1lZGlhdGVrLmMKQEAg
-LTE5OCwxMCArMTk4LDMzIEBAIHN0YXRpYyB2b2lkIHB3bV9tZWRpYXRla19kaXNhYmxlKHN0cnVj
-dCBwd21fY2hpcCAqY2hpcCwgc3RydWN0IHB3bV9kZXZpY2UgKnB3bSkKIAlwd21fbWVkaWF0ZWtf
-Y2xrX2Rpc2FibGUoY2hpcCwgcHdtKTsKIH0KIAorc3RhdGljIGludCBwd21fbWVkaWF0ZWtfYXBw
-bHkoc3RydWN0IHB3bV9jaGlwICpjaGlwLCBzdHJ1Y3QgcHdtX2RldmljZSAqcHdtLAorCQkJICAg
-ICAgY29uc3Qgc3RydWN0IHB3bV9zdGF0ZSAqc3RhdGUpCit7CisJaW50IGVycjsKKworCWlmIChz
-dGF0ZS0+cG9sYXJpdHkgIT0gUFdNX1BPTEFSSVRZX05PUk1BTCkKKwkJcmV0dXJuIC1FSU5WQUw7
-CisKKwlpZiAoIXN0YXRlLT5lbmFibGVkKSB7CisJCWlmIChwd20tPnN0YXRlLmVuYWJsZWQpCisJ
-CQlwd21fbWVkaWF0ZWtfZGlzYWJsZShjaGlwLCBwd20pOworCisJCXJldHVybiAwOworCX0KKwor
-CWVyciA9IHB3bV9tZWRpYXRla19jb25maWcocHdtLT5jaGlwLCBwd20sIHN0YXRlLT5kdXR5X2N5
-Y2xlLCBzdGF0ZS0+cGVyaW9kKTsKKwlpZiAoZXJyKQorCQlyZXR1cm4gZXJyOworCisJaWYgKCFw
-d20tPnN0YXRlLmVuYWJsZWQpCisJCWVyciA9IHB3bV9tZWRpYXRla19lbmFibGUoY2hpcCwgcHdt
-KTsKKworCXJldHVybiBlcnI7Cit9CisKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcHdtX29wcyBwd21f
-bWVkaWF0ZWtfb3BzID0gewotCS5jb25maWcgPSBwd21fbWVkaWF0ZWtfY29uZmlnLAotCS5lbmFi
-bGUgPSBwd21fbWVkaWF0ZWtfZW5hYmxlLAotCS5kaXNhYmxlID0gcHdtX21lZGlhdGVrX2Rpc2Fi
-bGUsCisJLmFwcGx5ID0gcHdtX21lZGlhdGVrX2FwcGx5LAogCS5vd25lciA9IFRISVNfTU9EVUxF
-LAogfTsKIAoKYmFzZS1jb21taXQ6IDJiZjhlZTBmYWE5ODhiNWNlYzM1MDNlYmYyZjk3MGEwZTg0
-ZDI0ZWUKLS0gCjIuMzUuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtbWVkaWF0ZWsK
+From: Yunfei Wang <yf.wang@mediatek.com>
+
+The data type of the return value of the iommu_map_sg_atomic
+is ssize_t, but the data type of iova size is size_t,
+e.g. one is int while the other is unsigned int.
+
+When iommu_map_sg_atomic return value is compared with iova size,
+it will force the signed int to be converted to unsigned int, if
+iova map fails and iommu_map_sg_atomic return error code is less
+than 0, then (ret < iova_len) is false, which will to cause not
+do free iova, and the master can still successfully get the iova
+of map fail, which is not expected.
+
+Therefore, we need to check the return value of iommu_map_sg_atomic
+in two cases according to whether it is less than 0.
+
+Fixes: ad8f36e4b6b1 ("iommu: return full error code from iommu_map_sg[_atomic]()")
+Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+Cc: <stable@vger.kernel.org> # 5.15.*
+---
+ drivers/iommu/dma-iommu.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+index 09f6e1c0f9c0..2932281e93fc 100644
+--- a/drivers/iommu/dma-iommu.c
++++ b/drivers/iommu/dma-iommu.c
+@@ -776,6 +776,7 @@ static struct page **__iommu_dma_alloc_noncontiguous(struct device *dev,
+ 	unsigned int count, min_size, alloc_sizes = domain->pgsize_bitmap;
+ 	struct page **pages;
+ 	dma_addr_t iova;
++	ssize_t ret;
+ 
+ 	if (static_branch_unlikely(&iommu_deferred_attach_enabled) &&
+ 	    iommu_deferred_attach(dev, domain))
+@@ -813,8 +814,8 @@ static struct page **__iommu_dma_alloc_noncontiguous(struct device *dev,
+ 			arch_dma_prep_coherent(sg_page(sg), sg->length);
+ 	}
+ 
+-	if (iommu_map_sg_atomic(domain, iova, sgt->sgl, sgt->orig_nents, ioprot)
+-			< size)
++	ret = iommu_map_sg_atomic(domain, iova, sgt->sgl, sgt->orig_nents, ioprot);
++	if (ret < 0 || ret < size)
+ 		goto out_free_sg;
+ 
+ 	sgt->sgl->dma_address = iova;
+@@ -1209,7 +1210,7 @@ static int iommu_dma_map_sg(struct device *dev, struct scatterlist *sg,
+ 	 * implementation - it knows better than we do.
+ 	 */
+ 	ret = iommu_map_sg_atomic(domain, iova, sg, nents, prot);
+-	if (ret < iova_len)
++	if (ret < 0 || ret < iova_len)
+ 		goto out_free_iova;
+ 
+ 	return __finalise_sg(dev, sg, nents, iova);
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
