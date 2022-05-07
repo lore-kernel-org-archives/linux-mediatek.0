@@ -4,58 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C93DEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 14:05:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD454C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 14:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I+MpWgqtSiNbhjanck5dim7q6X/caRbaHNj2e4mmjr4=; b=eqQa/ahTitXaVj
-	nBsSz/yGQwIFF7yuP/LXx36v211N4Ythsd67YG/Gzb1gqgt74+6x4XJLaoRO1yKuPCLSdumoExxmX
-	/UpXjjn7Z6bLoYARmtxyhbYzwJAExh75ofFWRGZMqtZVh6ZHFiB/Q660jFqBCzgWlSAopr/fgCW3F
-	XXhv9LHBYle8HdiVHS5XwBmTLwfGrnyriaoN2p4PFztg3PKrn2FEQ7e0RBw3L9apxk8T6vowTOWOm
-	bfnJZ9O5jhdPg5ZpDRrJ4zfLqsMq72VyQd07TDm4ajXzndLqLxrATs9w1tk62Qa3tGKMJop2WpdAo
-	fV4UQS4vpDGE2lMHkSsQ==;
+	List-Owner; bh=FqoPZgggatgD9IsECC4UO5TB1H4ThHU1dtXjZAdgpPU=; b=1p7cIqdkHGpjYj
+	VTUbxFcOK8xs3z/mu2FLZp9HRV+ZAjUYrDYryU+jlEbw9LGaIaBYjaWVywmwiOpnpnMIj5UZJwXBe
+	Fu+NI7W5/tujojBteTcswVZbxi43AOjk1tZHGtzhb/ic471Rz5epXhSlY6dqCOUd/+GtmlKofUGBn
+	KPWgm7SnQz9uFBnIUaYU+L148ci7biqnMKPanCR9CssG4cnrjpNOy/nic41IB1q5r/z/PxbV658PT
+	LKj8nF99LcjRViR6hsmIGYHQuproLiPcfWzuaGbqygDvqAOCRjOgp4BvbTZVEIjjFVjnqS6aD+/Vz
+	l+ZJNtkcziAH4f8YT/Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnL42-007MDb-Ue; Sat, 07 May 2022 14:05:42 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1nnLZe-007QEO-P8; Sat, 07 May 2022 14:38:22 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnL40-007MCT-5o
- for linux-mediatek@lists.infradead.org; Sat, 07 May 2022 14:05:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=SA7qkXZuV41B3WfSgZ/KJe71MU3xebR7H7qSnvsYy+s=; b=cWNQ1mLJKGI2Z7gfrNaID/JMQ2
- 1Jj0Ve2NZO9bAnjgYi+gaYUI5gCUjTlAu3380072SOgUkXhkkIjiZbLN9RZHJ0ZvZ0KTiKEhdmYZb
- EaLZtlj02p9jn9FWDPTrxb7Ktv3VG5Q7qwTZJAIAa0CUk06FDH30TDp2yxRRwKO4oDlg=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1nnL3j-001fIg-QW; Sat, 07 May 2022 16:05:23 +0200
-Date: Sat, 7 May 2022 16:05:23 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, Sam.Shih@mediatek.com,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- robh@kernel.org
-Subject: Re: [PATCH net-next 01/14] arm64: dts: mediatek: mt7986: introduce
- ethernet nodes
-Message-ID: <YnZ8o46pPdKMCbUF@lunn.ch>
-References: <cover.1651839494.git.lorenzo@kernel.org>
- <1d555fbbac820e9b580da3e8c0db30e7d003c4b6.1651839494.git.lorenzo@kernel.org>
+ id 1nnLZT-007QAx-5p; Sat, 07 May 2022 14:38:12 +0000
+Received: by mail-oi1-x234.google.com with SMTP id r1so10635237oie.4;
+ Sat, 07 May 2022 07:38:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nJOPPb18Oo0+/K8yxoE5qod8LtCarDUSMpTNksvDWi4=;
+ b=GVV1i2BDnyYYHDVrrTnPogQxFlVZ9SsU5k0irmRzJYyV9F+pJr9Vf2QfJib/h0rqD1
+ hqd8mkYqj1CuqHbmTeuDqcGbW+7p2f7tPKvLEHFMmaahz7UndB78VgyC8tb1HCT1Vh5H
+ qR7mcqcxtfWiiLv7rC6wNzgzWx8Mn8oA/HLs66h4RISTdErs2Lv/1bOYAPbXn485Zq4K
+ t+bipdYo041zCBNNhZarjT3sYpKGgRtHFnesTcz8/Ak1reKr7Tah5KxyYI51kH5gVCmv
+ eh2/6rRud9GVjxtubgqW7Ya4zsh7DTRI0ujv39JzSBsmqW2h/eGF56VAY+zAag1Q44kL
+ qlIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nJOPPb18Oo0+/K8yxoE5qod8LtCarDUSMpTNksvDWi4=;
+ b=Et/bnQrTaJW/TAcqGFZ3GzrRi+t13Ai7Wr5h1t9k7ON/4ve0m2i/SDqiWu6NjbBvch
+ 8tAvKh9Lq3l/GM0oD8LVYnHgwZMJuJVepKGO52cfE9YEs330THJ6IdEZHpRVPP1SLgVD
+ i5gNZfpGQqlXK3VOX09vjKvagXBB4veKm+uFo33aa31+8uOlKhUy3F5/FV9Qaouj5RoF
+ jeqhdn9SDBwwL8uFSpxwaT6k7V6Wmun50xfj0O82UyDM2s99e2DxKrOsh1Ou9gYF0Lsa
+ zlqgBWKoWm/TS0MgtvLZGZs66D/hw/hFsy7bVFcwmhpAZxLjLNKnvqyHfx13sSEbIZxO
+ MVZA==
+X-Gm-Message-State: AOAM5325TdpTHFc8hn2ShrXyEhm9r7AwbPjPUFucoRNwPl9LxeAdHHUd
+ cU4KQSvXTBUNgS5eAddVk3WjyDNdU++h9Qx/9rI=
+X-Google-Smtp-Source: ABdhPJxz2rDTHCIEhTyFmyrx8ADw8gfmFf8WPj575Q5NKkjoOnYOtow2/B+cPd6ER9LiwFlNn74HdnAL+hPDmO21C70=
+X-Received: by 2002:a05:6808:11c3:b0:2f9:62e0:ebe with SMTP id
+ p3-20020a05680811c300b002f962e00ebemr3805925oiv.22.1651934289041; Sat, 07 May
+ 2022 07:38:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1d555fbbac820e9b580da3e8c0db30e7d003c4b6.1651839494.git.lorenzo@kernel.org>
+References: <CANL0fFQRBZiVcEM0OOxkLqiAKf=rFssGetrwN6vWj5SsxX__mA@mail.gmail.com>
+ <20220505082256.72c9ee43@hermes.local>
+In-Reply-To: <20220505082256.72c9ee43@hermes.local>
+From: Gonsolo <gonsolo@gmail.com>
+Date: Sat, 7 May 2022 16:37:58 +0200
+Message-ID: <CANL0fFSmqR4F=9bFgVRaKXyCDocwwhxySUBo5x=12900fhWn6A@mail.gmail.com>
+Subject: Re: Suspend/resume error with AWUS036ACM
+To: Stephen Hemminger <stephen@networkplumber.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, 
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220507_070540_256644_ECDBC277 
-X-CRM114-Status: UNSURE (   5.13  )
+X-CRM114-CacheID: sfid-20220507_073811_280028_941B8663 
+X-CRM114-Status: UNSURE (   8.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,37 +90,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +&eth {
-> +	status = "okay";
-> +
-> +	gmac0: mac@0 {
-> +		compatible = "mediatek,eth-mac";
-> +		reg = <0>;
-> +		phy-mode = "2500base-x";
-> +
-> +		fixed-link {
-> +			speed = <2500>;
-> +			full-duplex;
-> +			pause;
-> +		};
-> +	};
-> +
-> +	gmac1: mac@1 {
-> +		compatible = "mediatek,eth-mac";
-> +		reg = <1>;
-> +		phy-mode = "2500base-x";
-> +
-> +		fixed-link {
-> +			speed = <2500>;
-> +			full-duplex;
-> +			pause;
-> +		};
-> +	};
+Dear Stephen,
 
-Are both connected to the switch? It just seems unusual two have two
-fixed-link ports.
+> Contact Ubuntu.  The rule for upstream is if you load out of tree drivers
+> than that kernel is unsupported.
 
-	   Andrew
+I compiled a stock 5.17.5 kernel from git.kernel.org, installed
+without kernel headers (forcing dkms to not build proprietary drivers)
+and get the following errors *at boot time* (not suspend/resume):
+
+  +0,000386] wlx00c0cab022a0: associate with 8c:6a:8d:9e:2a:88 (try 1/3)
+[  +0,001118] ================================================================================
+[  +0,000005] UBSAN: invalid-load in net/mac80211/status.c:1164:21
+[  +0,000004] load of value 255 is not a valid value for type '_Bool'
+[  +0,000003] CPU: 10 PID: 380 Comm: kworker/u256:5 Not tainted 5.17.5 #3
+[  +0,000004] Hardware name: To Be Filled By O.E.M. To Be Filled By
+O.E.M./X399 Phantom Gaming 6, BIOS P1.31 01/14/2021
+[  +0,000003] Workqueue: mt76 mt76u_tx_status_data [mt76_usb]
+[  +0,000009] Call Trace:
+[  +0,000002]  <TASK>
+[  +0,000003]  dump_stack_lvl+0x4c/0x63
+[  +0,000009]  dump_stack+0x10/0x12
+[  +0,000004]  ubsan_epilogue+0x9/0x45
+[  +0,000003]  __ubsan_handle_load_invalid_value.cold+0x44/0x49
+[  +0,000004]  ieee80211_tx_status_ext.cold+0x1e/0xb8 [mac80211]
+[  +0,000058]  ? __radix_tree_delete+0x91/0x100
+[  +0,000006]  mt76_tx_status_unlock+0x119/0x170 [mt76]
+[  +0,000011]  mt76x02_send_tx_status+0x1af/0x420 [mt76x02_lib]
+[  +0,000009]  mt76x02_tx_status_data+0x47/0x70 [mt76x02_lib]
+[  +0,000007]  mt76u_tx_status_data+0x67/0xc0 [mt76_usb]
+[  +0,000005]  process_one_work+0x21f/0x3f0
+[  +0,000005]  worker_thread+0x50/0x3d0
+[  +0,000004]  ? rescuer_thread+0x390/0x390
+[  +0,000003]  kthread+0xee/0x120
+[  +0,000003]  ? kthread_complete_and_exit+0x20/0x20
+[  +0,000004]  ret_from_fork+0x22/0x30
+[  +0,000005]  </TASK>
+[  +0,000001] ================================================================================
+[  +0,003098] wlx00c0cab022a0: RX AssocResp from 8c:6a:8d:9e:2a:88
+(capab=0x1411 status=0 aid=16)
+
+I sent the first email because I suspected that the above (locking?)
+problem was totally unrelated to the GPU driver.
+I hope that this is more helpful.
+
+-- 
+g
 
 _______________________________________________
 Linux-mediatek mailing list
