@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00F8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 04:59:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA622C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 06:06:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hC7U4NhQmUaha+AcC6rerzFFWxOY6k8cCtQgXJxpuDE=; b=JxvtmOyNZvmxf8
-	ue8l6jgN69NZeLFuJerUS6dnINPuJUlx75RvF/sVZvpGHURyWpDhaQY2O2qqrgvDvU8rNVenruE6j
-	H0KQe3ehUJ+Sh8HHA5HI3f+bckaVowrgUf2FIRDjEFBtWRpGCf95/XAZ53S5+5UhpjpqSYAA7inGN
-	yN8Ufn4R30SE/KsnZILTGizQSDiP7A63DrwwAnFLOWBMzvIoUWcwTP7/xvzHNt3nqGDppUqXDZru5
-	YiUDGcLEcypCo7zwAMvBfVpFZD6baEB4ecgfar9QZRnVuvGIArnS8TB1hkMdhvSdT7esA8HaV5Fa9
-	DKF0c0XKGQTeLHgA6nqg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tiqYSgdaF58eaJT81b+j8CVXzD9xWSJ2hbELVt5EvM4=; b=alApOUeRncq5eI
+	zfEMTPiKnmRDCodeYo4rD2gc+ngJV+Q9x0SEAjQzf3o1K/SrakiP2tfNg8h+iU9v/bDwHK5e6ML72
+	ppsJS/xlLdN6VHlJNxhajp4soJtozOaUUGdETqNI0E/a4mFiyelisqU4P+MJTR3Yt/JMi6yNlgeYc
+	WqHLRSjSr88EI9rfb0tl6YfQMSqH5cpTGO4/Z70dPaYvVtigGJNGrz996QwSENAOfXI4gOd5XWnf+
+	5BYoitMswtzaML9ZigXI7jcewJr0laqO36mmSIXawsiTYxtN6TzEhn6/d+1R5p2o2laV0X/jUCrLS
+	UeDdrkSz+gDKM95XwCMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnCXA-0061pR-1G; Sat, 07 May 2022 04:59:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nnDaV-006AIt-GR; Sat, 07 May 2022 06:06:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnCWz-0061mU-3y; Sat, 07 May 2022 04:59:03 +0000
-X-UUID: 63b7e51094ed418b89058bb189255c97-20220506
+ id 1nnDaT-006AIF-0A; Sat, 07 May 2022 06:06:42 +0000
+X-UUID: 7df2ebcf14544e4ea72e94d804740d18-20220506
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:cf4827a1-69ef-4ded-87d9-240af1901bf8, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:15b45c2d-1092-4044-8a8d-5edcfc70f9ac, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:3edee7b2-56b5-4c9e-8d83-0070b288eb6a,
+ B:0,IP:0,URL:8,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-12
+X-CID-META: VersionHash:faefae9, CLOUDID:ebbce8b2-56b5-4c9e-8d83-0070b288eb6a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 63b7e51094ed418b89058bb189255c97-20220506
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <powen.kao@mediatek.com>)
+X-UUID: 7df2ebcf14544e4ea72e94d804740d18-20220506
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2116827289; Fri, 06 May 2022 21:58:54 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 May 2022 21:58:52 -0700
+ with ESMTP id 559711576; Fri, 06 May 2022 23:06:34 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 May 2022 23:06:32 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Sat, 7 May 2022 12:58:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Sat, 7 May 2022 12:58:50 +0800
-From: Po-Wen Kao <powen.kao@mediatek.com>
-To: <j-young.choi@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, "Avri
- Altman" <avri.altman@wdc.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>, Steven Rostedt
- <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>, Matthias Brugger
- <matthias.bgg@gmail.com>
-CC: <wsd_upstream@mediatek.com>, <peter.wang@mediatek.com>,
- <stanley.chu@mediatek.com>, <powen.kao@mediatek.com>,
- <alice.chao@mediatek.com>, <chun-hung.wu@mediatek.com>,
- <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
- <jiajie.hao@mediatek.com>, <linux-scsi@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2] scsi: ufs: add clock-scalable property for clk scaling
-Date: Sat, 7 May 2022 12:57:30 +0800
-Message-ID: <20220507045731.19495-1-powen.kao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220507045223.14775-1-powen.kao@mediatek.com>
-References: <20220507045223.14775-1-powen.kao@mediatek.com>
+ Sat, 7 May 2022 14:06:31 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Sat, 7 May 2022 14:06:30 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+ <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
+ <krzk@kernel.org>
+CC: Wei-Shun Chang <weishunc@google.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <rex-bc.chen@mediatek.com>, <randy.wu@mediatek.com>,
+ <jieyy.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
+ <qizhong.cheng@mediatek.com>, <jian.yang@mediatek.com>
+Subject: [PATCH v8 0/2] phy: mediatek: Add PCIe PHY driver
+Date: Sat, 7 May 2022 14:06:19 +0800
+Message-ID: <20220507060621.32252-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_215901_210515_9323B4D2 
-X-CRM114-Status: GOOD (  23.91  )
+X-CRM114-CacheID: sfid-20220506_230641_089562_1A8D8653 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,361 +87,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In clk scaling, clk_set_rate is invoked to set dedicated PLL clk rate
-on scale up and down. On some MTK platform, scaling is only possible
-by switching parent of a mux, therefore we introduce a new
-"clock-scalable" property to gain fine control over which clock rate can
-be scaled by calling clk_set_rate. If a clock is defined as non-scalable,
-clk_set_rate won't be invoked while clki->current_rate is still updated
-if min/max freq is defined. Customized clk operation may be embedded in
-pre/post change of hba->vops->clk_scale_notify.
+These series patches add support for PCIe PHY driver on MediaTek chipsets.
 
-All clocks in dts without "clock-scalable" property defined are assumed
-scalable and works as usual. There is no neeed to make change on existing
-dts.
+Changes in v8:
+1. Use "device_property_present()" to increase human readability;
+2. Use "GPL" instead of "GPL v2" in MODULE_LICENSE as suggested in
+   checkpatch.pl.
 
-To specify scalable property, one may define dts as follow
+Changes in v7:
+1. Add bitfield.h header to fix the build error on non-arm64 platforms.
 
-&ufshci {
-    clocks =
-        <clk1>,
-        <clk2>,
-        ...
-        <clkn>;
+Changes in v6:
+1. Remove unnecessary header files;
+2. Use FILELD_PREP in bitfield.h to set value.
 
-    clock-names =
-        "clk1",
-        "clk2",
-        ...
-        "clkn";
+Changes in v5:
+1. Fix typo in kerneldoc: "eFues" => "eFuse".
 
-    freq-table-hz =
-        <1000 2000>,
-        <0 0>,
-        ...
-        <0 0>;
+Changes in v4:
+1. Fix no return when calling dev_err_probe.
 
-    clock-scalable =
-        <0
-         0
-         ...
-         0
-        >;
-};
+Changes in v3:
+1. Add introductions for structure members;
+2. Add SoC dependent data;
+3. Dynamically allocate efuse data;
+4. Check return value if it's an -EPROBE_DEFER.
 
-Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
----
- drivers/scsi/ufs/ufshcd-pltfrm.c | 96 +++++++++++++++++++++++---------
- drivers/scsi/ufs/ufshcd.c        | 54 +++++++-----------
- drivers/scsi/ufs/ufshcd.h        |  2 +
- include/trace/events/ufs.h       | 16 +++---
- 4 files changed, 102 insertions(+), 66 deletions(-)
+Changes in v2:
+1. Add specific compatible name;
+2. Read NVMEM data at probe time;
+3. Fix typos.
 
-diff --git a/drivers/scsi/ufs/ufshcd-pltfrm.c b/drivers/scsi/ufs/ufshcd-pltfrm.c
-index 87975d1a21c8..5f95bb519485 100644
---- a/drivers/scsi/ufs/ufshcd-pltfrm.c
-+++ b/drivers/scsi/ufs/ufshcd-pltfrm.c
-@@ -18,6 +18,56 @@
- 
- #define UFSHCD_DEFAULT_LANES_PER_DIRECTION		2
- 
-+/**
-+ * ufshcd_get_clk_u32_array - Resolve property in dts to u32 array with
-+ * shape check.
-+ * @hba: per-adapter instance
-+ * @propname: name of property
-+ * @cols: column count
-+ * @rows: calculated row count with given cols
-+ * @array: u32 array pointer of property data with propname
-+ */
-+static int ufshcd_get_clk_u32_array(struct ufs_hba *hba, const char *propname,
-+				    size_t cols, size_t *rows, u32 **array)
-+{
-+	struct device *dev = hba->dev;
-+	struct device_node *np = dev->of_node;
-+	int len = 0, ret = 0;
-+	int _rows = 0;
-+
-+	if (!of_get_property(np, propname, &len)) {
-+		dev_warn(dev, "%s property not specified.\n", propname);
-+		return -EINVAL;
-+	}
-+
-+	len = len / sizeof(**array);
-+	if (!cols || !len || len % cols != 0) {
-+		dev_warn(dev, "%s property define error.\n", propname);
-+		return -EINVAL;
-+	}
-+	_rows = len / cols;
-+
-+	*array = devm_kcalloc(dev, len, sizeof(**array), GFP_KERNEL);
-+	if (!*array) {
-+		ret = -ENOMEM;
-+		goto out;
-+	}
-+
-+	ret = of_property_read_u32_array(np, propname, *array, len);
-+	if (ret) {
-+		dev_err(dev, "%s: error reading array %d\n",
-+			propname, ret);
-+		goto out;
-+	}
-+
-+	*rows = _rows;
-+
-+	return 0;
-+out:
-+	devm_kfree(dev, *array);
-+	return ret;
-+}
-+
- static int ufshcd_parse_clock_info(struct ufs_hba *hba)
- {
- 	int ret = 0;
-@@ -27,13 +77,14 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
- 	struct device_node *np = dev->of_node;
- 	char *name;
- 	u32 *clkfreq = NULL;
-+	u32 *scalable = NULL;
- 	struct ufs_clk_info *clki;
--	int len = 0;
- 	size_t sz = 0;
- 
- 	if (!np)
- 		goto out;
- 
-+	/* clock-names */
- 	cnt = of_property_count_strings(np, "clock-names");
- 	if (!cnt || (cnt == -EINVAL)) {
- 		dev_info(dev, "%s: Unable to find clocks, assuming enabled\n",
-@@ -47,37 +98,29 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
- 	if (cnt <= 0)
- 		goto out;
- 
--	if (!of_get_property(np, "freq-table-hz", &len)) {
--		dev_info(dev, "freq-table-hz property not specified\n");
-+	/* clock-scalable (optional) */
-+	ret = ufshcd_get_clk_u32_array(hba, "clock-scalable", 1, &sz, &scalable);
-+	if (ret) {
-+		dev_warn(dev, "Optional property %s load failed. Assume all clocks scalable.\n",
-+			 "clock-scalable");
-+	} else if (sz != cnt) {
-+		dev_err(dev, "%s len mismatch\n", "clock-scalable");
-+		ret = -EINVAL;
- 		goto out;
- 	}
- 
--	if (len <= 0)
-+	/* freq-table-hz */
-+	ret = ufshcd_get_clk_u32_array(hba, "freq-table-hz", 2, &sz, &clkfreq);
-+	if (ret) {
-+		dev_err(dev, "Property %s load failed.", "freq-table-hz");
- 		goto out;
--
--	sz = len / sizeof(*clkfreq);
--	if (sz != 2 * cnt) {
-+	} else if (sz != cnt) {
- 		dev_err(dev, "%s len mismatch\n", "freq-table-hz");
- 		ret = -EINVAL;
- 		goto out;
- 	}
- 
--	clkfreq = devm_kcalloc(dev, sz, sizeof(*clkfreq),
--			       GFP_KERNEL);
--	if (!clkfreq) {
--		ret = -ENOMEM;
--		goto out;
--	}
--
--	ret = of_property_read_u32_array(np, "freq-table-hz",
--			clkfreq, sz);
--	if (ret && (ret != -EINVAL)) {
--		dev_err(dev, "%s: error reading array %d\n",
--				"freq-table-hz", ret);
--		return ret;
--	}
--
--	for (i = 0; i < sz; i += 2) {
-+	for (i = 0; i < cnt * 2; i += 2) {
- 		ret = of_property_read_string_index(np,
- 				"clock-names", i/2, (const char **)&name);
- 		if (ret)
-@@ -92,6 +135,7 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
- 		clki->min_freq = clkfreq[i];
- 		clki->max_freq = clkfreq[i+1];
- 		clki->name = devm_kstrdup(dev, name, GFP_KERNEL);
-+		clki->scalable = scalable ? !!scalable[i / 2] : true;
- 		if (!clki->name) {
- 			ret = -ENOMEM;
- 			goto out;
-@@ -99,11 +143,13 @@ static int ufshcd_parse_clock_info(struct ufs_hba *hba)
- 
- 		if (!strcmp(name, "ref_clk"))
- 			clki->keep_link_active = true;
--		dev_dbg(dev, "%s: min %u max %u name %s\n", "freq-table-hz",
--				clki->min_freq, clki->max_freq, clki->name);
-+		dev_dbg(dev, "clk %s: scalable(%u), min(%u), max(%u)\n",
-+			clki->name, clki->scalable, clki->min_freq, clki->max_freq);
- 		list_add_tail(&clki->list, &hba->clk_list_head);
- 	}
- out:
-+	devm_kfree(dev, scalable);
-+	devm_kfree(dev, clkfreq);
- 	return ret;
- }
- 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index eea5af5fa166..8dbae2f73329 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -939,6 +939,11 @@ static bool ufshcd_is_unipro_pa_params_tuning_req(struct ufs_hba *hba)
- 		return false;
- }
- 
-+static inline int ufshcd_clk_set_rate(struct ufs_clk_info *clki, unsigned long rate)
-+{
-+	return clki->scalable ? clk_set_rate(clki->clk, rate) : 0;
-+}
-+
- /**
-  * ufshcd_set_clk_freq - set UFS controller clock frequencies
-  * @hba: per adapter instance
-@@ -950,6 +955,7 @@ static bool ufshcd_is_unipro_pa_params_tuning_req(struct ufs_hba *hba)
- static int ufshcd_set_clk_freq(struct ufs_hba *hba, bool scale_up)
- {
- 	int ret = 0;
-+	u32 target_rate = 0;
- 	struct ufs_clk_info *clki;
- 	struct list_head *head = &hba->clk_list_head;
- 
-@@ -958,41 +964,23 @@ static int ufshcd_set_clk_freq(struct ufs_hba *hba, bool scale_up)
- 
- 	list_for_each_entry(clki, head, list) {
- 		if (!IS_ERR_OR_NULL(clki->clk)) {
--			if (scale_up && clki->max_freq) {
--				if (clki->curr_freq == clki->max_freq)
--					continue;
--
--				ret = clk_set_rate(clki->clk, clki->max_freq);
--				if (ret) {
--					dev_err(hba->dev, "%s: %s clk set rate(%dHz) failed, %d\n",
--						__func__, clki->name,
--						clki->max_freq, ret);
--					break;
--				}
--				trace_ufshcd_clk_scaling(dev_name(hba->dev),
--						"scaled up", clki->name,
--						clki->curr_freq,
--						clki->max_freq);
--
--				clki->curr_freq = clki->max_freq;
-+			target_rate = scale_up ? clki->max_freq : clki->min_freq;
- 
--			} else if (!scale_up && clki->min_freq) {
--				if (clki->curr_freq == clki->min_freq)
--					continue;
-+			if (!target_rate || clki->curr_freq == target_rate)
-+				continue;
- 
--				ret = clk_set_rate(clki->clk, clki->min_freq);
--				if (ret) {
--					dev_err(hba->dev, "%s: %s clk set rate(%dHz) failed, %d\n",
--						__func__, clki->name,
--						clki->min_freq, ret);
--					break;
--				}
--				trace_ufshcd_clk_scaling(dev_name(hba->dev),
--						"scaled down", clki->name,
--						clki->curr_freq,
--						clki->min_freq);
--				clki->curr_freq = clki->min_freq;
-+			ret = ufshcd_clk_set_rate(clki, target_rate);
-+			if (ret) {
-+				dev_err(hba->dev, "%s: %s clk set rate(%dHz) failed, %d\n",
-+					__func__, clki->name,
-+					target_rate, ret);
-+				break;
- 			}
-+			trace_ufshcd_clk_scaling(dev_name(hba->dev),
-+						 clki->name, scale_up,
-+						 clki->curr_freq,
-+						 target_rate);
-+			clki->curr_freq = target_rate;
- 		}
- 		dev_dbg(hba->dev, "%s: clk: %s, rate: %lu\n", __func__,
- 				clki->name, clk_get_rate(clki->clk));
-@@ -8364,7 +8352,7 @@ static int ufshcd_init_clocks(struct ufs_hba *hba)
- 			ufshcd_parse_dev_ref_clk_freq(hba, clki->clk);
- 
- 		if (clki->max_freq) {
--			ret = clk_set_rate(clki->clk, clki->max_freq);
-+			ret = ufshcd_clk_set_rate(clki, clki->max_freq);
- 			if (ret) {
- 				dev_err(hba->dev, "%s: %s clk set rate(%dHz) failed, %d\n",
- 					__func__, clki->name,
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 1637f5cc1420..eaa3d6c5b9ab 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -260,6 +260,7 @@ struct ufs_dev_cmd {
-  * @keep_link_active: indicates that the clk should not be disabled if
- 		      link is active
-  * @enabled: variable to check against multiple enable/disable
-+ * @scalable: indicates if clk is scalable in clk scaling
-  */
- struct ufs_clk_info {
- 	struct list_head list;
-@@ -270,6 +271,7 @@ struct ufs_clk_info {
- 	u32 curr_freq;
- 	bool keep_link_active;
- 	bool enabled;
-+	bool scalable;
- };
- 
- enum ufs_notify_change_status {
-diff --git a/include/trace/events/ufs.h b/include/trace/events/ufs.h
-index 599739ee7b20..780c964e52c2 100644
---- a/include/trace/events/ufs.h
-+++ b/include/trace/events/ufs.h
-@@ -103,30 +103,30 @@ TRACE_EVENT(ufshcd_clk_gating,
- 
- TRACE_EVENT(ufshcd_clk_scaling,
- 
--	TP_PROTO(const char *dev_name, const char *state, const char *clk,
--		u32 prev_state, u32 curr_state),
-+	TP_PROTO(const char *dev_name, const char *clk,
-+		 bool up, u32 prev_state, u32 curr_state),
- 
--	TP_ARGS(dev_name, state, clk, prev_state, curr_state),
-+	TP_ARGS(dev_name, clk, up, prev_state, curr_state),
- 
- 	TP_STRUCT__entry(
- 		__string(dev_name, dev_name)
--		__string(state, state)
- 		__string(clk, clk)
-+		__field(bool, up)
- 		__field(u32, prev_state)
- 		__field(u32, curr_state)
- 	),
- 
- 	TP_fast_assign(
- 		__assign_str(dev_name, dev_name);
--		__assign_str(state, state);
- 		__assign_str(clk, clk);
-+		__entry->up = up;
- 		__entry->prev_state = prev_state;
- 		__entry->curr_state = curr_state;
- 	),
- 
--	TP_printk("%s: %s %s from %u to %u Hz",
--		__get_str(dev_name), __get_str(state), __get_str(clk),
--		__entry->prev_state, __entry->curr_state)
-+	TP_printk("%s: scaled %s %s from %u to %u Hz",
-+		  __get_str(dev_name), __entry->up ? "up" : "down", __get_str(clk),
-+		  __entry->prev_state, __entry->curr_state)
- );
- 
- TRACE_EVENT(ufshcd_auto_bkops_state,
+Jianjun Wang (2):
+  dt-bindings: phy: mediatek: Add YAML schema for PCIe PHY
+  phy: mediatek: Add PCIe PHY driver
+
+ .../bindings/phy/mediatek,pcie-phy.yaml       |  75 +++++
+ drivers/phy/mediatek/Kconfig                  |  11 +
+ drivers/phy/mediatek/Makefile                 |   1 +
+ drivers/phy/mediatek/phy-mtk-pcie.c           | 267 ++++++++++++++++++
+ 4 files changed, 354 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+ create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+
 -- 
 2.18.0
 
