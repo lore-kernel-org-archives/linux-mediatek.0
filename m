@@ -4,54 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 639ACC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 17:05:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69ACCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 May 2022 17:05:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FZ4REJPKlehAiBVv8/qWuYbjB5ttxeS/pSvwaYaXpqQ=; b=kgD4HvqEOe2j3+
-	FNkOn3OyEHlG8Yn7Kn/IV3dHT8mC7BB9w5WzURpU+bgvs3dSoas5PpaBSshDTwGN5z3EZe+j+Y/ji
-	F9oQHIBrLEkDFJW7mCOzpWsmGqP8A2ygKS20ELdSmhyN2hEDg41+9ikuFzy8nqBylkvLn/O3gU3Qg
-	IsIN4VZSwRHFv/RXwDUUGxmVh6mPDUXVvdaYyH49FI8MO4hJSarmFYdzKZ0z1yxyJy2yLsfR8H0jB
-	U3NKUqJC09bFZsylI/ut1GjDAQowwqQebH45pIUUy+IIvaDZ+lfGRuV4+dImLtNNXhXE31KPPW+D5
-	FmMbDykud9ZGKpzLmfGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JftbZwszAERFETNyBvzrx7nS7Sov277leoLpkFS5E68=; b=tlcaexMKZfvUoD
+	X950BapOBMbZn6uzZM9n1+gg89qtib5yUZJcG5MfLCeBJBmSIDKczNjOvJQt+fnlTRig90n0oSYGh
+	FSH6dbB2gmy+181LSy0O+PhTdoiQ537HtuKgJoJFtdr7FhJTqgB693V5dD0vd0IHl/5tEQHgiakiv
+	gYZ2BUhCmr4+8Cx4KQeoXdxOmvBNV2nc3EdADFRycL7f1UAftDSRI3l6MrgOeQSnPA07Fn9IfPF3r
+	mx8V12sDKt+JFH20kCGXMVJGFMWYjTZvVdfc73Lbygtx5zu8jGivRQepLY65DMuT2RWvGlnAiPSpj
+	Vou07e0P4TR3DFV9MJtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnNrs-007ktD-KK; Sat, 07 May 2022 17:05:20 +0000
+	id 1nnNrt-007ktO-BO; Sat, 07 May 2022 17:05:21 +0000
 Received: from mxout3.routing.net ([2a03:2900:1:a::8])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnNrW-007klS-9D; Sat, 07 May 2022 17:04:59 +0000
+ id 1nnNrW-007klJ-A9; Sat, 07 May 2022 17:04:59 +0000
 Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
- by mxout3.routing.net (Postfix) with ESMTP id A35D2604E9;
- Sat,  7 May 2022 17:04:50 +0000 (UTC)
+ by mxout3.routing.net (Postfix) with ESMTP id 7F3A66055D;
+ Sat,  7 May 2022 17:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1651943090;
+ s=20200217; t=1651943092;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=EjaSzJO2uUUmd5uhe8Cz84DcqNwhDvLFMPUk6p2YS/w=;
- b=u7ml8eB1fN+vbtefw+qMcmyX+1x1u+VpRfN7Qm4QGQK3PfOjiFFDhbtiKiHKpl3ITd/h/f
- 3aJN4bZopDwRZfuHzZy/qQEA5AQxmoyTD1CcKIv7wBHwEBVy1G72nkZG2/GWbkQ3Mb1+Qa
- P6XeQOfNH4/HylmPQdkCehDTQoFB7xY=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ix14kKhkfGJ0LxMzmCAvLzUtN0qvLqOmhQQPbdvCsFI=;
+ b=uzvPR9IL9rUuL6JyIRAxn1pjcNMQFBeFUYh8m75mxHhALtCwkHuG/oErktCF4Rwix518dx
+ 1ilapP1rpHha2rdfg/9iCjQgts91aGy9Pv33Ij5mJ5s5qX+bK9IVLfNX556pjCpcqiCFwy
+ np+GpdURPQMTWvTN4ItDN2ZZPHACcfQ=
 Received: from localhost.localdomain (fttx-pool-80.245.74.2.bambit.de
  [80.245.74.2])
- by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 376E2800AB;
- Sat,  7 May 2022 17:04:49 +0000 (UTC)
+ by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 702A1800AB;
+ Sat,  7 May 2022 17:04:51 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 0/6] Support mt7531 on BPI-R2 Pro
-Date: Sat,  7 May 2022 19:04:34 +0200
-Message-Id: <20220507170440.64005-1-linux@fw-web.de>
+Subject: [PATCH v3 2/6] net: dsa: mt7530: rework mt7530_hw_vlan_{add,del}
+Date: Sat,  7 May 2022 19:04:36 +0200
+Message-Id: <20220507170440.64005-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220507170440.64005-1-linux@fw-web.de>
+References: <20220507170440.64005-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: da758d6d-308b-42e9-967d-54e70fb985a9
+X-Mail-ID: d260aa6b-fd71-45f7-beb2-17018c2f97a8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220507_100458_538010_4BA2E233 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20220507_100458_541438_25353B5E 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +86,90 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-This Series add Support for the mt7531 switch on Bananapi R2 Pro board.
+Rework vlan_add/vlan_del functions in preparation for dynamic cpu port.
 
-This board uses port5 of the switch to conect to the gmac0 of the
-rk3568 SoC.
+Currently BIT(MT7530_CPU_PORT) is added to new_members, even though
+mt7530_port_vlan_add() will be called on the CPU port too.
 
-Currently CPU-Port is hardcoded in the mt7530 driver to port 6.
+Let DSA core decide when to call port_vlan_add for the CPU port, rather
+than doing it implicitly.
 
-Compared to v1 the reset-Patch was dropped as it was not needed and
-CPU-Port-changes are completely rewriten based on suggestions/code from
-Vladimir Oltean (many thanks to this).
-In DTS Patch i only dropped the status-property that was not
-needed/ignored by driver.
+We can do autonomous forwarding in a certain VLAN, but not add br0 to that
+VLAN and avoid flooding the CPU with those packets, if software knows it
+doesn't need to process them.
 
-Due to the Changes i also made a regression Test on mt7623 bpi-r2 using
-mt7530 with cpu-port 6. Tests were done directly (ipv4 config on dsa user
-port) and with vlan-aware bridge including vlan that was tagged outgoing
-on dsa user port.
+Suggested-by: Vladimir Oltean <olteanv@gmail.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+---
+v2: new patch
+---
+ drivers/net/dsa/mt7530.c | 30 ++++++++++++------------------
+ 1 file changed, 12 insertions(+), 18 deletions(-)
 
-Main change is that i now include the binding-changes into the patchset which
-i posted separately.
-
-Frank Wunderlich (6):
-  dt-bindings: net: dsa: convert binding for mediatek switches
-  net: dsa: mt7530: rework mt7530_hw_vlan_{add,del}
-  net: dsa: mt7530: rework mt753[01]_setup
-  net: dsa: mt7530: get cpu-port via dp->cpu_dp instead of constant
-  dt-bindings: net: dsa: make reset optional and add rgmii-mode to
-    mt7531
-  arm64: dts: rockchip: Add mt7531 dsa node to BPI-R2-Pro board
-
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 421 ++++++++++++++++++
- .../devicetree/bindings/net/dsa/mt7530.txt    | 327 --------------
- .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   |  48 ++
- drivers/net/dsa/mt7530.c                      |  82 ++--
- drivers/net/dsa/mt7530.h                      |   1 -
- 5 files changed, 522 insertions(+), 357 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
- delete mode 100644 Documentation/devicetree/bindings/net/dsa/mt7530.txt
-
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 19f0035d4410..46dee0714382 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1522,11 +1522,11 @@ static void
+ mt7530_hw_vlan_add(struct mt7530_priv *priv,
+ 		   struct mt7530_hw_vlan_entry *entry)
+ {
++	struct dsa_port *dp = dsa_to_port(priv->ds, entry->port);
+ 	u8 new_members;
+ 	u32 val;
+ 
+-	new_members = entry->old_members | BIT(entry->port) |
+-		      BIT(MT7530_CPU_PORT);
++	new_members = entry->old_members | BIT(entry->port);
+ 
+ 	/* Validate the entry with independent learning, create egress tag per
+ 	 * VLAN and joining the port as one of the port members.
+@@ -1537,22 +1537,20 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
+ 
+ 	/* Decide whether adding tag or not for those outgoing packets from the
+ 	 * port inside the VLAN.
+-	 */
+-	val = entry->untagged ? MT7530_VLAN_EGRESS_UNTAG :
+-				MT7530_VLAN_EGRESS_TAG;
+-	mt7530_rmw(priv, MT7530_VAWD2,
+-		   ETAG_CTRL_P_MASK(entry->port),
+-		   ETAG_CTRL_P(entry->port, val));
+-
+-	/* CPU port is always taken as a tagged port for serving more than one
++	 * CPU port is always taken as a tagged port for serving more than one
+ 	 * VLANs across and also being applied with egress type stack mode for
+ 	 * that VLAN tags would be appended after hardware special tag used as
+ 	 * DSA tag.
+ 	 */
++	if (dsa_port_is_cpu(dp))
++		val = MT7530_VLAN_EGRESS_STACK;
++	else if (entry->untagged)
++		val = MT7530_VLAN_EGRESS_UNTAG;
++	else
++		val = MT7530_VLAN_EGRESS_TAG;
+ 	mt7530_rmw(priv, MT7530_VAWD2,
+-		   ETAG_CTRL_P_MASK(MT7530_CPU_PORT),
+-		   ETAG_CTRL_P(MT7530_CPU_PORT,
+-			       MT7530_VLAN_EGRESS_STACK));
++		   ETAG_CTRL_P_MASK(entry->port),
++		   ETAG_CTRL_P(entry->port, val));
+ }
+ 
+ static void
+@@ -1571,11 +1569,7 @@ mt7530_hw_vlan_del(struct mt7530_priv *priv,
+ 		return;
+ 	}
+ 
+-	/* If certain member apart from CPU port is still alive in the VLAN,
+-	 * the entry would be kept valid. Otherwise, the entry is got to be
+-	 * disabled.
+-	 */
+-	if (new_members && new_members != BIT(MT7530_CPU_PORT)) {
++	if (new_members) {
+ 		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
+ 		      VLAN_VALID;
+ 		mt7530_write(priv, MT7530_VAWD1, val);
 -- 
 2.25.1
 
