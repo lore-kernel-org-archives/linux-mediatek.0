@@ -4,88 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFF8DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 May 2022 12:13:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B9AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 May 2022 16:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cyYIrOGbqV2W1wMTiXnmWiOSmi3rOZTfwZwVi3VVhmU=; b=Wu8XbwJIS0Npqw
-	qOiCTRd5A1DJGRAl5IycCzY7v7a3oeiJngG7xU91ejSBiUvGF6VAPHNrkT98iI68sQ0DCCWcLU396
-	cKZ3f4Abfb8M3gh0QM9Ljz2k1m8ToA/RCF72UN4NVYkgx+qemWZ35LtLnrx6c/0QyyPu2pgvM0TZd
-	9ePKTiyVqEaRzKWn1foSwGfQ+0hfjxwFswohYqZewEeEb1IeBZmRXCDMbVY91fpqrklurpjGct8L4
-	w483eL9dx8oFegY43dFIJ1cq69gAEQs+f9ko0ZrhQWrsdJDY08FvvFyaLsW2MphYsuJ++ygrjaOGV
-	0EvV0SlsaxjQYnLczLYA==;
+	List-Owner; bh=DLpX++2dlPJ/DF9kbUoU+yWcol+EjuYDVOxPfvzkiAY=; b=xqKaiWTog+z30s
+	k5iQ4nWIT2r79TbeyQD3KQVJWWhR2WPpr6rN4/jPqUeuGfpf5Sfe5tBej6SaRvIwxPJhmPbzuiG+f
+	G3fcojDSf4muvY1Q5UODFUDh0q3lBIBEr/0NkB7cSLyG2YWxIgWs+EjtXHI08ZOuGn6SJwvtxxbCC
+	VL0cC1jOZx4zrUaxcfuYwvtwpJKIuDFogjkBIjMNCE9izXdVbPoigtrqqUbyi99LEghQRg0zytRiw
+	WIZHdq13QgXGSAwYu9mnRN3xDHbMziTVS0FRcB8t9oJCI+CiCA3gqJfXD0cRg4J9WBcrI2n44maRa
+	mRvenaJkJ8EE5yx/n/XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnfmP-00A5Ih-7N; Sun, 08 May 2022 12:12:53 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1nnjLn-00AZJW-NR; Sun, 08 May 2022 16:01:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnfmM-00A5F7-3J; Sun, 08 May 2022 12:12:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1652011928;
- bh=urf/6grh3HJinL6V+chc5QjAaSNuRTaSFnBMrsEERZQ=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=dp3haL9EMAb+d40ThGLw2NcWomb7pYltQytDtNfkzAZ5gbjPBwiMDhhB4553s+/q0
- Pxh1T0BrletMfoS6DkhrAbGjRG4PG0gsNFQWX7e5yKIwBy618RmnHkIIlK0h1I4HcI
- H85tzNqlGG9U35ba2U7mUc0CTXvpFE96DppUj+wg=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.158.76] ([217.61.158.76]) by web-mail.gmx.net
- (3c-app-gmx-bap68.server.lan [172.19.172.68]) (via HTTP); Sun, 8 May 2022
- 14:12:08 +0200
+ id 1nnjLc-00AZGw-6e; Sun, 08 May 2022 16:01:31 +0000
+X-UUID: 61b4c5fcab484e1f9d94337095125224-20220508
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:aecdf64a-d128-4998-a51f-8d6a989dfefe, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:a860a016-2e53-443e-b81a-655c13977218,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
+ l
+X-UUID: 61b4c5fcab484e1f9d94337095125224-20220508
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 874954249; Sun, 08 May 2022 09:01:19 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 8 May 2022 09:01:17 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 9 May 2022 00:01:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 9 May 2022 00:01:15 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <yf.wang@mediatek.com>
+CC: <Libo.Kang@mediatek.com>, <Ning.Li@mediatek.com>,
+ <iommu@lists.linux-foundation.org>, <joro@8bytes.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <logang@deltatee.com>,
+ <matthias.bgg@gmail.com>, <stable@vger.kernel.org>, <will@kernel.org>,
+ <wsd_upstream@mediatek.com>, <yong.wu@mediatek.com>
+Subject: Re: [PATCH] iommu/dma: Fix iova map result check bug
+Date: Mon, 9 May 2022 00:01:15 +0800
+Message-ID: <20220508160115.4851-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220507085204.16914-1-yf.wang@mediatek.com>
+References: <20220507085204.16914-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-7f04b598-0300-4f3c-80e7-0c2145e8ba8f-1652011928036@3c-app-gmx-bap68>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, Frank Wunderlich <linux@fw-web.de>,
- linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
- Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Peter Geis
- <pgwipeout@gmail.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Greg
- Ungerer <gerg@kernel.org>, =?UTF-8?Q?Ren=C3=A9_van_Dorst?=
- <opensource@vdorst.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: Aw: Re: [PATCH v3 5/6] dt-bindings: net: dsa: make reset optional
- and add rgmii-mode to mt7531
-Date: Sun, 8 May 2022 14:12:08 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <2509116.Lt9SDvczpP@phil>
-References: <20220507170440.64005-1-linux@fw-web.de>
- <06157623-4b9c-6f26-e963-432c75cfc9e5@linaro.org>
- <DC0D3996-DFFE-4E71-B843-8D34C613D498@public-files.de>
- <2509116.Lt9SDvczpP@phil>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:5zepZXQ7VM3wRIvl1omrRkcQYRbWljpPdOn3rctdJ68EDLRb/Q24a0AfByhcEpmThRrM9
- XDXoxnndTJTTB8ftDLsJbKlbc/RsJfe6tPnM5q19yQJOp+qsA7fAHwMjuCMXI9X42gFBFwc9hJ1n
- MClWkUTW6eDQ9zRklCIDhuiIkrkRWPrpwjuJCghQ4jaxS14SEjcpUFVvsttTXFg/v+izpHP9rjHG
- 5K8t4XzErdhMlTCH/eYhANMQV5xXm3aJlb+YL7E9gNFRtINKVGPK7vVv/4Tn/zZ3M303CC9DAAen
- ZY=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kpgB8WD7jB0=:31o1l/JqXaifC2Kwk5BnA5
- VGzswJjo2yL+aKgrRVCfdD4clXFY0s+2dA8zSb0Vh49KYvyC17eChYgUHcpi8OIef/2dV+w/9
- Pn58j/Uc6nV6fII/bnOQ0NZIANmW21dXO6FgCMPHzMtNZPfONtGm+Pewx4XryZ0xFc0rqeUQw
- j4VlKJzc3cdZR3uPToufdhdpNVStsXL6BwLujp9kNQM5aPO/CZuZrlrM9rrWj2s23czwi53mv
- /wsWJzP+pUbjpqYXhr/8Pn1vU3L8HugYQBKVTHjAFBWf1p41wBY9xHvR/Mkzgj2nefCXPQtNn
- RLjR/a+3JA7eKzEBPDgduFS4gW1pL6rNKcBowGKzAWDOvM2rxJnd+TqmduYBthZcoyfw4r2QW
- N8oLlea5BdJN8H19WlnIrG/pQd5AsuPzHhUjS2hJehG+cbKqy/m0KCJroKtJ1mAMl+0PpIdQA
- Mb5eH9x+wFs/kUo73f3RuX+rGzXWV3CQjX2V88tuFVK85Y+XIxIYZ6rIFT3zjAe2nUcltGX6K
- mYYsBLQNqpnBuz7V5tHDOtWTM8MqDxTNy/7oZl8M/ngQO1Q8HZbxBYBXnBE+AmOFclPa5Rut9
- KEzRKol37E3i7GDtMH1woyZoLJVzFHMvU0o1/C9NFlnqyxtVAKNlOnSHfzOesXq8iCFwrcQlU
- vST0akrfSHJYXuZwP1YJoC25O+/6mSWBhtfyyzDO55reVS3f1ojxNGEhm7+W8hQgyq5nGJa9W
- lT8FIVab+rrge0tW0xSpkVXBLFFiI1lo0YLKzu/jhjzzMSCQKKlUo5AKOn89KsW1W4q7cCnVx
- igaLZ1o
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220508_051250_724310_8BD50DAE 
-X-CRM114-Status: GOOD (  31.03  )
+X-CRM114-CacheID: sfid-20220508_090128_287912_E6308651 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,68 +84,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko
+> The data type of the return value of the iommu_map_sg_atomic
+> is ssize_t, but the data type of iova size is size_t,
+> e.g. one is int while the other is unsigned int.
+> 
+> When iommu_map_sg_atomic return value is compared with iova size,
+> it will force the signed int to be converted to unsigned int, if
+> iova map fails and iommu_map_sg_atomic return error code is less
+> than 0, then (ret < iova_len) is false, which will to cause not
+> do free iova, and the master can still successfully get the iova
+> of map fail, which is not expected.
+> 
+> Therefore, we need to check the return value of iommu_map_sg_atomic
+> in two cases according to whether it is less than 0.
+> 
+> Fixes: ad8f36e4b6b1 ("iommu: return full error code from iommu_map_sg[_atomic]()")
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
 
-> Gesendet: Sonntag, 08. Mai 2022 um 11:41 Uhr
-> Von: "Heiko Stuebner" <heiko@sntech.de>
-> Am Sonntag, 8. Mai 2022, 08:24:37 CEST schrieb Frank Wunderlich:
-> > Am 7. Mai 2022 22:01:22 MESZ schrieb Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>:
-> > >On 07/05/2022 19:04, Frank Wunderlich wrote:
-> > >> From: Frank Wunderlich <frank-w@public-files.de>
-> > >>
-> > >> Make reset optional as driver already supports it,
-> > >
-> > >I do not see the connection between hardware needing or not needing a
-> > >reset GPIO and a driver supporting it or not... What does it mean?
-> >
-> > My board has a shared gpio-reset between gmac and switch, so both will resetted if it
-> > is asserted. Currently it is set to the gmac and is aquired exclusive. Adding it to switch results in 2 problems:
-> >
-> > - due to exclusive and already mapped to gmac, switch driver exits as it cannot get the reset-gpio again.
-> > - if i drop the reset from gmac and add to switch, it resets the gmac and this takes too long for switch
-> > to get up. Of course i can increase the wait time after reset,but dropping reset here was the easier way.
-> >
-> > Using reset only on gmac side brings the switch up.
+Yes, we have to make sure ssize_t >= 0 before comparing ssize_t and size_t.
+
+Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
 >
-> I think the issue is more for the description itself.
->
-> Devicetree is only meant to describe the hardware and does in general don't
-> care how any firmware (Linux-kernel, *BSD, etc) handles it. So going with
-> "the kernel does it this way" is not a valid reason for a binding change ;-) .
->
-> Instead in general want to reason that there are boards without this reset
-> facility and thus make it optional for those.
-
-if only the wording is the problem i try to rephrase it from hardware PoV.
-
-maybe something like this?
-
-https://github.com/frank-w/BPI-R2-4.14/commits/5.18-mt7531-mainline2/Documentation/devicetree/bindings/net/dsa/mediatek%2Cmt7530.yaml
-
-Another way is maybe increasing the delay after the reset (to give more time all
-come up again), but imho it is no good idea resetting the gmac/mdio-bus from the
-child device.
-
-have not looked into the gmac driver if this always  does the initial reset to
-have a "clean state". In this initial reset the switch will be resetted too
-and does not need an additional one which needs the gmac/mdio initialization
-to be done again.
-
-> > >> allow port 5 as
-> > >> cpu-port
-> > >
-> > >How do you allow it here?
-> >
-> > Argh, seems i accidentally removed this part and have not recognized while checking :(
-> >
-> > It should only change description of reg for ports to:
-> >
-> > "Port address described must be 5 or 6 for CPU port and from 0 to 5 for user ports."
-
-noticed that the target-phase is not removed but squashed in the first bindings-patch.
-This was a rebasing error and not intented...will fix in next version.
-
-regards Frank
+> Cc: <stable@vger.kernel.org> # 5.15.*
 
 _______________________________________________
 Linux-mediatek mailing list
