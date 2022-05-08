@@ -4,70 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B9AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 May 2022 16:01:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C3FDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 May 2022 17:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DLpX++2dlPJ/DF9kbUoU+yWcol+EjuYDVOxPfvzkiAY=; b=xqKaiWTog+z30s
-	k5iQ4nWIT2r79TbeyQD3KQVJWWhR2WPpr6rN4/jPqUeuGfpf5Sfe5tBej6SaRvIwxPJhmPbzuiG+f
-	G3fcojDSf4muvY1Q5UODFUDh0q3lBIBEr/0NkB7cSLyG2YWxIgWs+EjtXHI08ZOuGn6SJwvtxxbCC
-	VL0cC1jOZx4zrUaxcfuYwvtwpJKIuDFogjkBIjMNCE9izXdVbPoigtrqqUbyi99LEghQRg0zytRiw
-	WIZHdq13QgXGSAwYu9mnRN3xDHbMziTVS0FRcB8t9oJCI+CiCA3gqJfXD0cRg4J9WBcrI2n44maRa
-	mRvenaJkJ8EE5yx/n/XA==;
+	List-Owner; bh=GE3EwP0NwmfsIeX2W0kZMl2XGOKhSCDzncU4xt1VuCU=; b=1HCetPznAh0DFM
+	0yhQuRlUusHvl8TgNuBqeySdre1Sut333XGXxkgrJ5m19/AVfOGfvfA+v+c0Z36ENWYch1HNWb7Bk
+	IJLsdEbBRm8PNSWpCRCa4aWAWYQIRIdjYvCZLBS5dVu/cmVIXiz95iwTP4QQBbbSu9JXAkrFWFMDW
+	Tb6l+Kn0b+gBei4S+oNqXxlv4P9Fp0ilZU6pjoSweKJMSNladyHLPnuO19v984uuuONnFTPd6Uibg
+	Hbr6MmsQNB1h2MVIlYFHs2dFWqR+GeZ9ayxjb0qprU4Z2873vdXRjMch6WyutHwkuYaN35FqzpUG+
+	+p6ImOJ99uyb3arg0GUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnjLn-00AZJW-NR; Sun, 08 May 2022 16:01:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nnkLI-00Ahkj-Mu; Sun, 08 May 2022 17:05:12 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnjLc-00AZGw-6e; Sun, 08 May 2022 16:01:31 +0000
-X-UUID: 61b4c5fcab484e1f9d94337095125224-20220508
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:aecdf64a-d128-4998-a51f-8d6a989dfefe, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:a860a016-2e53-443e-b81a-655c13977218,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
- l
-X-UUID: 61b4c5fcab484e1f9d94337095125224-20220508
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 874954249; Sun, 08 May 2022 09:01:19 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 8 May 2022 09:01:17 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 9 May 2022 00:01:15 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 9 May 2022 00:01:15 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <yf.wang@mediatek.com>
-CC: <Libo.Kang@mediatek.com>, <Ning.Li@mediatek.com>,
- <iommu@lists.linux-foundation.org>, <joro@8bytes.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <logang@deltatee.com>,
- <matthias.bgg@gmail.com>, <stable@vger.kernel.org>, <will@kernel.org>,
- <wsd_upstream@mediatek.com>, <yong.wu@mediatek.com>
-Subject: Re: [PATCH] iommu/dma: Fix iova map result check bug
-Date: Mon, 9 May 2022 00:01:15 +0800
-Message-ID: <20220508160115.4851-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220507085204.16914-1-yf.wang@mediatek.com>
-References: <20220507085204.16914-1-yf.wang@mediatek.com>
+ id 1nnkLF-00Ahjl-TX; Sun, 08 May 2022 17:05:11 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id j2so21164928ybu.0;
+ Sun, 08 May 2022 10:05:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=W7Hl8BOx+adgs6geATfRW0o3lLPBvMogTGQ28EqLWaA=;
+ b=lkgMS1iIMVf9Fy72wcDl3MPVgbNj/S+8G4i7KuAJf12aCIWl55+lPEek3+Cenow8nR
+ 9MKVshPKYtnCcMk0rVsRWXFDArby9lCwKFGx4DgqDTMfaDG5QVPNOwZkTwC9Jxkj/nIJ
+ Fk8j//X0r1kVv6Hg9udaF6oXWF5ny36hAwfrx01HEKaXznS6k51vQHJcyrclwvM51Y4F
+ P8dDk9/UJdLMJqBB3t106A3sIj91Zja4D7bj+rVDqRf4X/8WxBR2+t5oR05XYbHwr0OD
+ gMrsjh8hipq/WHjgIOHvgegA/bDIyxTeulYWnzhA1fAHcwgksc4HHVHiPW2o6Mx4XIQL
+ KsfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=W7Hl8BOx+adgs6geATfRW0o3lLPBvMogTGQ28EqLWaA=;
+ b=pTcPnZAhedekuvu04aqDUO3v9w8VbZHwfjJpZTZiYZIJ7lpfnlHZGv6WBco0AQzMGU
+ IgYGoAK+BLlgm4LERfAbLlEBUSw0Ux4qoOtP77RPGT+jXQXFsQ+tGxWKadxdx+Q50VDo
+ kx2iBF9cgXl7r19zOrIam4CYICMHMN08FFWhSbAS07rAbYmc9I4XEuRfvXO6i0bjViPd
+ cjjm5xvZkguKq4z4CnzmBVID7z8yJk94jMAMPNuCCx1WwNVgcsOB7v5OKvGepYRNQbEg
+ HrzPDgUqlQUXU3Jw0rRQpsI4zCcCW2YsEDwYNF2+/xNDD9lMxn2aex9oEWDIBsRwD3db
+ sRmQ==
+X-Gm-Message-State: AOAM533Mln4SLIu4YrUnr3fMrxhoeLpkG1f8vop2KdxzUfLRaXwI3bTE
+ N+6KgTMTYi/odHxUsRLSCL2jsLNFPh44V0NsTEQ=
+X-Google-Smtp-Source: ABdhPJy+9aAnBuxa0JfhTFZ4aaqwddQqqO8njeM70HqTBYBOqN1hLMd22aoooSxKWRQg+5rhDWM0uUI6VEpipsrsGMI=
+X-Received: by 2002:a05:6902:143:b0:628:7cf1:f2a9 with SMTP id
+ p3-20020a056902014300b006287cf1f2a9mr9464807ybh.51.1652029508882; Sun, 08 May
+ 2022 10:05:08 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220507170440.64005-1-linux@fw-web.de>
+ <06157623-4b9c-6f26-e963-432c75cfc9e5@linaro.org>
+ <DC0D3996-DFFE-4E71-B843-8D34C613D498@public-files.de>
+ <2509116.Lt9SDvczpP@phil>
+ <trinity-7f04b598-0300-4f3c-80e7-0c2145e8ba8f-1652011928036@3c-app-gmx-bap68>
+In-Reply-To: <trinity-7f04b598-0300-4f3c-80e7-0c2145e8ba8f-1652011928036@3c-app-gmx-bap68>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Sun, 8 May 2022 13:04:56 -0400
+Message-ID: <CAMdYzYrG8bK-Yo15RjhhCQKS4ZQW53ePu1q4gbGxVVNKPJHBWg@mail.gmail.com>
+Subject: Re: Re: [PATCH v3 5/6] dt-bindings: net: dsa: make reset optional and
+ add rgmii-mode to mt7531
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Frank Wunderlich <linux@fw-web.de>, 
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, 
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
+ Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Greg Ungerer <gerg@kernel.org>, 
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>, 
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220508_090128_287912_E6308651 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20220508_100509_998295_62C98750 
+X-CRM114-Status: GOOD (  38.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,28 +104,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> The data type of the return value of the iommu_map_sg_atomic
-> is ssize_t, but the data type of iova size is size_t,
-> e.g. one is int while the other is unsigned int.
-> 
-> When iommu_map_sg_atomic return value is compared with iova size,
-> it will force the signed int to be converted to unsigned int, if
-> iova map fails and iommu_map_sg_atomic return error code is less
-> than 0, then (ret < iova_len) is false, which will to cause not
-> do free iova, and the master can still successfully get the iova
-> of map fail, which is not expected.
-> 
-> Therefore, we need to check the return value of iommu_map_sg_atomic
-> in two cases according to whether it is less than 0.
-> 
-> Fixes: ad8f36e4b6b1 ("iommu: return full error code from iommu_map_sg[_atomic]()")
-> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
-
-Yes, we have to make sure ssize_t >= 0 before comparing ssize_t and size_t.
-
-Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
+On Sun, May 8, 2022 at 8:12 AM Frank Wunderlich <frank-w@public-files.de> wrote:
 >
-> Cc: <stable@vger.kernel.org> # 5.15.*
+> Hi Heiko
+>
+> > Gesendet: Sonntag, 08. Mai 2022 um 11:41 Uhr
+> > Von: "Heiko Stuebner" <heiko@sntech.de>
+> > Am Sonntag, 8. Mai 2022, 08:24:37 CEST schrieb Frank Wunderlich:
+> > > Am 7. Mai 2022 22:01:22 MESZ schrieb Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>:
+> > > >On 07/05/2022 19:04, Frank Wunderlich wrote:
+> > > >> From: Frank Wunderlich <frank-w@public-files.de>
+> > > >>
+> > > >> Make reset optional as driver already supports it,
+> > > >
+> > > >I do not see the connection between hardware needing or not needing a
+> > > >reset GPIO and a driver supporting it or not... What does it mean?
+> > >
+> > > My board has a shared gpio-reset between gmac and switch, so both will resetted if it
+> > > is asserted. Currently it is set to the gmac and is aquired exclusive. Adding it to switch results in 2 problems:
+> > >
+> > > - due to exclusive and already mapped to gmac, switch driver exits as it cannot get the reset-gpio again.
+> > > - if i drop the reset from gmac and add to switch, it resets the gmac and this takes too long for switch
+> > > to get up. Of course i can increase the wait time after reset,but dropping reset here was the easier way.
+> > >
+> > > Using reset only on gmac side brings the switch up.
+> >
+> > I think the issue is more for the description itself.
+> >
+> > Devicetree is only meant to describe the hardware and does in general don't
+> > care how any firmware (Linux-kernel, *BSD, etc) handles it. So going with
+> > "the kernel does it this way" is not a valid reason for a binding change ;-) .
+> >
+> > Instead in general want to reason that there are boards without this reset
+> > facility and thus make it optional for those.
+>
+> if only the wording is the problem i try to rephrase it from hardware PoV.
+>
+> maybe something like this?
+>
+> https://github.com/frank-w/BPI-R2-4.14/commits/5.18-mt7531-mainline2/Documentation/devicetree/bindings/net/dsa/mediatek%2Cmt7530.yaml
+>
+> Another way is maybe increasing the delay after the reset (to give more time all
+> come up again), but imho it is no good idea resetting the gmac/mdio-bus from the
+> child device.
+>
+> have not looked into the gmac driver if this always  does the initial reset to
+> have a "clean state". In this initial reset the switch will be resetted too
+> and does not need an additional one which needs the gmac/mdio initialization
+> to be done again.
+
+For clarification, the reset gpio line is purely to reset the phy.
+If having the switch driver own the reset gpio instead of the gmac
+breaks initialization that means there's a bug in the gmac driver
+handling phy init.
+In testing I've seen issues moving the reset line to the mdio node
+with other phys and the stmmac gmac driver, so I do believe this is
+the case.
+
+>
+> > > >> allow port 5 as
+> > > >> cpu-port
+> > > >
+> > > >How do you allow it here?
+> > >
+> > > Argh, seems i accidentally removed this part and have not recognized while checking :(
+> > >
+> > > It should only change description of reg for ports to:
+> > >
+> > > "Port address described must be 5 or 6 for CPU port and from 0 to 5 for user ports."
+>
+> noticed that the target-phase is not removed but squashed in the first bindings-patch.
+> This was a rebasing error and not intented...will fix in next version.
+>
+> regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
