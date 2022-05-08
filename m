@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD9A4C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1487C433FE
 	for <linux-mediatek@archiver.kernel.org>; Sun,  8 May 2022 05:25:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YkDRWz8XYHM+HoQGsnHMHQqHYJwhyE6aMq4OT6xD2D8=; b=GAYlOH4RLmsSOh
-	sgzKSYcCB2CnoXBYCZ1g0N9jvdRvhePIvKD9VAw9XxdhxjKTW2OQeOumTve/C0sqaviJnrD+9cePk
-	EeVj8SOCE+e9acWKP8sxi/CuBWQKsJVCMNPDC9y+AF35o0KSWdu7d2lWCkeb1PDWJIhKrUmTajDKx
-	39TAsLOKGknclko6nrkh/RvIPkSOwFNbUV/O3Q+PPPnHdXX1Kk+fOegpIOdggCPdFPLFBMpSGyXuQ
-	6V22HElTJNRUo756ecBR5lUpiWxD4ZiBAK5dywFmIWNMarHlh+hxlkdsZ58ifvSLxAGCGGxgM698J
-	GjYRiJ0PRQhESEp6WQog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iaKXfFN6W3sFq6ndrHrqiWjGwwasSZbwO+FfPfqQbDc=; b=HHKMGgmb5OHmGF
+	j5yHxtL86/XnYNQ1ZE+FiStGh5/uT/6cN3h7TuxyEzvjUaatSVUGe3mGKAPQePkFTj8idybBY9jEz
+	ej0uFsXSf7K/GKxcrHIRSBaHBQ9zPISxEuI3kJuppWeLRYQdz6TAKrLaN4h593HN4F/4EDAoTbEFe
+	f3W1hJlhVW1wKS1sHEOsOyrMK62NAKucfeOAotnpqyw6Jh4+3GAr7x5UdEJfadlMadL1IRyJ6rl84
+	6Fa78F29LHzW9KyEp+nJNthlaImVhew2swp9hR316sSOIjmW6au7WVQXjOPWDwARSGD3FgdG0JMMm
+	5f2YrNPjndbQDYs7Bk7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnZPo-009AU7-Pp; Sun, 08 May 2022 05:25:08 +0000
+	id 1nnZPp-009AUD-Eu; Sun, 08 May 2022 05:25:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnZPk-009ASs-UT
+ id 1nnZPk-009ASp-UT
  for linux-mediatek@lists.infradead.org; Sun, 08 May 2022 05:25:08 +0000
-X-UUID: fa7f23e117a742d4be1212319a894005-20220507
+X-UUID: 3075e507777448a5ace1e880f7e4e509-20220507
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:0c86a526-a59a-4f7d-b61b-a39879185086, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:01c932d0-b3b6-4e6e-871b-b627220e6f50, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:33909916-2e53-443e-b81a-655c13977218,
+X-CID-META: VersionHash:faefae9, CLOUDID:1640f9b2-56b5-4c9e-8d83-0070b288eb6a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: fa7f23e117a742d4be1212319a894005-20220507
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+X-UUID: 3075e507777448a5ace1e880f7e4e509-20220507
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1199872557; Sat, 07 May 2022 22:24:59 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 467999931; Sat, 07 May 2022 22:24:59 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sat, 7 May 2022 22:24:57 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Sun, 8 May 2022 13:24:56 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sun, 8 May 2022 13:24:56 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 8 May 2022 13:24:56 +0800
+ Frontend Transport; Sun, 8 May 2022 13:24:55 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Ryder
  Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v2 2/2] mt76: mt7915: add more statistics from fw_util debugfs
- knobs
-Date: Sun, 8 May 2022 13:24:54 +0800
-Message-ID: <b3957480ad74444b7170f3f9f124bd043e1a0ce8.1651983999.git.ryder.lee@mediatek.com>
+Subject: [PATCH v2 1/2] mt76: mt7915: improve error handling for fw_debug knobs
+Date: Sun, 8 May 2022 13:24:53 +0800
+Message-ID: <210119c0737d72aa049c113dac48e22a4d84d689.1651983999.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <210119c0737d72aa049c113dac48e22a4d84d689.1651983999.git.ryder.lee@mediatek.com>
-References: <210119c0737d72aa049c113dac48e22a4d84d689.1651983999.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220507_222505_051759_89536AE7 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220507_222505_051944_DE3E11FE 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,122 +80,183 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Print out exception state and program counters of WA/WM MCUs.
+In case fw.debug_wm/wa might be unavailable.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7915/debugfs.c    |  8 ++++++++
- drivers/net/wireless/mediatek/mt76/mt7915/mmio.c   |  3 +++
- drivers/net/wireless/mediatek/mt76/mt7915/regs.h   | 14 ++++++++++----
- 3 files changed, 21 insertions(+), 4 deletions(-)
+changes since v2:
+- add exception state and split original patch into two pieces.
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 53 +++++++++++--------
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  9 ++--
+ 2 files changed, 37 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 656f3ffccf4b..6edbbce92926 100644
+index 875f17ff33a9..656f3ffccf4b 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -597,6 +597,12 @@ mt7915_fw_util_wm_show(struct seq_file *file, void *data)
+@@ -447,20 +447,20 @@ mt7915_fw_debug_wm_set(void *data, u64 val)
+ 	bool tx, rx, en;
+ 	int ret;
+ 
+-	dev->fw_debug_wm = val ? MCU_FW_LOG_TO_HOST : 0;
++	dev->fw.debug_wm = val ? MCU_FW_LOG_TO_HOST : 0;
+ 
+-	if (dev->fw_debug_bin)
++	if (dev->fw.debug_bin)
+ 		val = 16;
+ 	else
+-		val = dev->fw_debug_wm;
++		val = dev->fw.debug_wm;
+ 
+-	tx = dev->fw_debug_wm || (dev->fw_debug_bin & BIT(1));
+-	rx = dev->fw_debug_wm || (dev->fw_debug_bin & BIT(2));
+-	en = dev->fw_debug_wm || (dev->fw_debug_bin & BIT(0));
++	tx = dev->fw.debug_wm || (dev->fw.debug_bin & BIT(1));
++	rx = dev->fw.debug_wm || (dev->fw.debug_bin & BIT(2));
++	en = dev->fw.debug_wm || (dev->fw.debug_bin & BIT(0));
+ 
+ 	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WM, val);
+ 	if (ret)
+-		return ret;
++		goto out;
+ 
+ 	for (debug = DEBUG_TXCMD; debug <= DEBUG_RPT_RX; debug++) {
+ 		if (debug == DEBUG_RPT_RX)
+@@ -470,16 +470,20 @@ mt7915_fw_debug_wm_set(void *data, u64 val)
+ 
+ 		ret = mt7915_mcu_fw_dbg_ctrl(dev, debug, val);
+ 		if (ret)
+-			return ret;
++			goto out;
+ 	}
+ 
+ 	/* WM CPU info record control */
+ 	mt76_clear(dev, MT_CPU_UTIL_CTRL, BIT(0));
+-	mt76_wr(dev, MT_DIC_CMD_REG_CMD, BIT(2) | BIT(13) | !dev->fw_debug_wm);
++	mt76_wr(dev, MT_DIC_CMD_REG_CMD, BIT(2) | BIT(13) | !dev->fw.debug_wm);
+ 	mt76_wr(dev, MT_MCU_WM_CIRQ_IRQ_MASK_CLR_ADDR, BIT(5));
+ 	mt76_wr(dev, MT_MCU_WM_CIRQ_IRQ_SOFT_ADDR, BIT(5));
+ 
+-	return 0;
++out:
++	if (ret)
++		dev->fw.debug_wm = 0;
++
++	return ret;
+ }
+ 
+ static int
+@@ -487,7 +491,7 @@ mt7915_fw_debug_wm_get(void *data, u64 *val)
+ {
+ 	struct mt7915_dev *dev = data;
+ 
+-	*val = dev->fw_debug_wm;
++	*val = dev->fw.debug_wm;
+ 
+ 	return 0;
+ }
+@@ -501,14 +505,19 @@ mt7915_fw_debug_wa_set(void *data, u64 val)
+ 	struct mt7915_dev *dev = data;
+ 	int ret;
+ 
+-	dev->fw_debug_wa = val ? MCU_FW_LOG_TO_HOST : 0;
++	dev->fw.debug_wa = val ? MCU_FW_LOG_TO_HOST : 0;
++
++	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, dev->fw.debug_wa);
++	if (ret)
++		goto out;
+ 
+-	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, dev->fw_debug_wa);
++	ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
++				MCU_WA_PARAM_PDMA_RX, !!dev->fw.debug_wa, 0);
++out:
+ 	if (ret)
+-		return ret;
++		dev->fw.debug_wa = 0;
+ 
+-	return mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET), MCU_WA_PARAM_PDMA_RX,
+-				 !!dev->fw_debug_wa, 0);
++	return ret;
+ }
+ 
+ static int
+@@ -516,7 +525,7 @@ mt7915_fw_debug_wa_get(void *data, u64 *val)
+ {
+ 	struct mt7915_dev *dev = data;
+ 
+-	*val = dev->fw_debug_wa;
++	*val = dev->fw.debug_wa;
+ 
+ 	return 0;
+ }
+@@ -563,11 +572,11 @@ mt7915_fw_debug_bin_set(void *data, u64 val)
+ 	if (!dev->relay_fwlog)
+ 		return -ENOMEM;
+ 
+-	dev->fw_debug_bin = val;
++	dev->fw.debug_bin = val;
+ 
+ 	relay_reset(dev->relay_fwlog);
+ 
+-	return mt7915_fw_debug_wm_set(dev, dev->fw_debug_wm);
++	return mt7915_fw_debug_wm_set(dev, dev->fw.debug_wm);
+ }
+ 
+ static int
+@@ -575,7 +584,7 @@ mt7915_fw_debug_bin_get(void *data, u64 *val)
+ {
+ 	struct mt7915_dev *dev = data;
+ 
+-	*val = dev->fw_debug_bin;
++	*val = dev->fw.debug_bin;
+ 
+ 	return 0;
+ }
+@@ -588,7 +597,7 @@ mt7915_fw_util_wm_show(struct seq_file *file, void *data)
  {
  	struct mt7915_dev *dev = file->private;
  
-+	seq_printf(file, "Program counter: 0x%x\n", mt76_rr(dev, MT_WM_MCU_PC));
-+	seq_printf(file, "Exception state: 0x%x\n",
-+		   is_mt7915(&dev->mt76) ?
-+		   mt76_get_field(dev, MT_FW_EXCEPTION, GENMASK(15, 8)) :
-+		   mt76_get_field(dev, MT_FW_EXCEPTION, GENMASK(7, 0)));
-+
- 	if (dev->fw.debug_wm) {
+-	if (dev->fw_debug_wm) {
++	if (dev->fw.debug_wm) {
  		seq_printf(file, "Busy: %u%%  Peak busy: %u%%\n",
  			   mt76_rr(dev, MT_CPU_UTIL_BUSY_PCT),
-@@ -616,6 +622,8 @@ mt7915_fw_util_wa_show(struct seq_file *file, void *data)
+ 			   mt76_rr(dev, MT_CPU_UTIL_PEAK_BUSY_PCT));
+@@ -607,7 +616,7 @@ mt7915_fw_util_wa_show(struct seq_file *file, void *data)
  {
  	struct mt7915_dev *dev = file->private;
  
-+	seq_printf(file, "Program counter: 0x%x\n", mt76_rr(dev, MT_WA_MCU_PC));
-+
- 	if (dev->fw.debug_wa)
+-	if (dev->fw_debug_wa)
++	if (dev->fw.debug_wa)
  		return mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(QUERY),
  					 MCU_WA_PARAM_CPU_UTIL, 0, 0);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 3c55d4cebbf2..d95c32c7bd53 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -22,6 +22,7 @@ static const u32 mt7915_reg[] = {
- 	[WFDMA_EXT_CSR_ADDR]	= 0xd7000,
- 	[CBTOP1_PHY_END]	= 0x77ffffff,
- 	[INFRA_MCU_ADDR_END]	= 0x7c3fffff,
-+	[FW_EXCEPTION_ADDR]	= 0x219848,
- 	[SWDEF_BASE_ADDR]	= 0x41f200,
- };
  
-@@ -37,6 +38,7 @@ static const u32 mt7916_reg[] = {
- 	[WFDMA_EXT_CSR_ADDR]	= 0xd7000,
- 	[CBTOP1_PHY_END]	= 0x7fffffff,
- 	[INFRA_MCU_ADDR_END]	= 0x7c085fff,
-+	[FW_EXCEPTION_ADDR]	= 0x022050bc,
- 	[SWDEF_BASE_ADDR]	= 0x411400,
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 42e195dded01..72be5bceeb50 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -311,15 +311,18 @@ struct mt7915_dev {
+ 	bool flash_mode;
+ 	bool muru_debug;
+ 	bool ibf;
+-	u8 fw_debug_wm;
+-	u8 fw_debug_wa;
+-	u8 fw_debug_bin;
  
-@@ -52,6 +54,7 @@ static const u32 mt7986_reg[] = {
- 	[WFDMA_EXT_CSR_ADDR]	= 0x27000,
- 	[CBTOP1_PHY_END]	= 0x7fffffff,
- 	[INFRA_MCU_ADDR_END]	= 0x7c085fff,
-+	[FW_EXCEPTION_ADDR]	= 0x02204ffc,
- 	[SWDEF_BASE_ADDR]	= 0x411400,
- };
+ 	struct dentry *debugfs_dir;
+ 	struct rchan *relay_fwlog;
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index 7415118f6399..eb8891c53e9c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -30,6 +30,7 @@ enum reg_rev {
- 	WFDMA_EXT_CSR_ADDR,
- 	CBTOP1_PHY_END,
- 	INFRA_MCU_ADDR_END,
-+	FW_EXCEPTION_ADDR,
- 	SWDEF_BASE_ADDR,
- 	__MT_REG_MAX,
- };
-@@ -922,6 +923,8 @@ enum offs_rev {
- #define MT_ADIE_TYPE_MASK		BIT(1)
+ 	void *cal;
  
- /* FW MODE SYNC */
-+#define MT_FW_EXCEPTION		__REG(FW_EXCEPTION_ADDR)
++	struct {
++		u8 debug_wm;
++		u8 debug_wa;
++		u8 debug_bin;
++	} fw;
 +
- #define MT_SWDEF_BASE			__REG(SWDEF_BASE_ADDR)
- 
- #define MT_SWDEF(ofs)			(MT_SWDEF_BASE + (ofs))
-@@ -987,10 +990,6 @@ enum offs_rev {
- #define MT_TOP_MISC			MT_TOP(0xf0)
- #define MT_TOP_MISC_FW_STATE		GENMASK(2, 0)
- 
--#define MT_HW_BOUND			0x70010020
--#define MT_HW_REV			0x70010204
--#define MT_WF_SUBSYS_RST		0x70002600
--
- #define MT_TOP_WFSYS_WAKEUP		MT_TOP(0x1a4)
- #define MT_TOP_WFSYS_WAKEUP_MASK	BIT(0)
- 
-@@ -1052,6 +1051,10 @@ enum offs_rev {
- #define MT_MCU_BUS_DBG_TIMEOUT_CK_EN_MASK BIT(3)
- #define MT_MCU_BUS_DBG_TIMEOUT_EN_MASK	BIT(2)
- 
-+#define MT_HW_BOUND			0x70010020
-+#define MT_HW_REV			0x70010204
-+#define MT_WF_SUBSYS_RST		0x70002600
-+
- /* PCIE MAC */
- #define MT_PCIE_MAC_BASE		0x74030000
- #define MT_PCIE_MAC(ofs)		(MT_PCIE_MAC_BASE + (ofs))
-@@ -1060,6 +1063,9 @@ enum offs_rev {
- #define MT_PCIE1_MAC_INT_ENABLE		0x74020188
- #define MT_PCIE1_MAC_INT_ENABLE_MT7916	0x74090188
- 
-+#define MT_WM_MCU_PC			0x7c060204
-+#define MT_WA_MCU_PC			0x7c06020c
-+
- /* PP TOP */
- #define MT_WF_PP_TOP_BASE		0x820cc000
- #define MT_WF_PP_TOP(ofs)		(MT_WF_PP_TOP_BASE + (ofs))
+ 	struct {
+ 		u8 table_mask;
+ 		u8 n_agrt;
 -- 
 2.29.2
 
