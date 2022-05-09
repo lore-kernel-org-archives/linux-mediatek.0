@@ -4,63 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D68C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 15:07:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 820D1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 15:46:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dImyyYt/fJc1c8/UHf2weRseYb46i1XjiNtcVekQVIQ=; b=HlvXIsBSZ5Mf9y
-	YvCnkFyGShgW3BqWQdTNaacsktpq/D82AMa6xldfQIgUXK8VVodc5nBTWW0F2Ka/kQzmwBdVVVXA2
-	b2xmJY2Rk2squeW6fPYmqJzu00QyY/sqXg57DI5mdWsfPbX0DiYU1Bble7fSon18Hy4yHRfA3gMLs
-	Ex1e+bhTg9/zux/tzyNr0p1NRP/utj5S4uUUVR31P6pc7gsxV+sVepU6ZWmgpxWCzOFydE1tiD/9W
-	esEQPlE3bEZWI+hr3K5J8kM8zgaHw9fm+cq41Oi2/rhGR1pX61R5IvC9OubW7m9yd8ymkPnKlZf02
-	TAOqS6hmSuHEifYgpl7w==;
+	List-Owner; bh=sXCbVMPfKsR1VpDeq0jtLSY4elGX0QVNzhaYW3gHlvw=; b=k6lfE/Fc16hV1l
+	NIjQrn08BeDKytyLax+bjC9bj5YDJd9Q70Z6O2U2aM0Wvvx5XExHj/OUgV/DYv/TB1RwNcEdASfkL
+	8JlpmickVDSCc9PnZMUA4EClrc1D8qgmhxDoXWcukJzxJG8K9TdIyGfnhLFThapaGHwRt7FAfwwqf
+	t2PqNWGhS4L14hGQP/PeuRm8hqJrnlG2fTOQuWYzCn7tMvfK+RrS7ve7olVKyek9niaUEgGgwkWHA
+	N+eprkh63yQ82uBUuTwe8qOLtrpIR+IuArHiuF2OZQOPW8wmfycO1GtuyxxrxgH/AqrrwZpDOTC08
+	pGTOydtPmruH8B02YdIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no4yl-00F0Fc-KE; Mon, 09 May 2022 15:07:19 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1no5aO-00FB9d-GE; Mon, 09 May 2022 15:46:12 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no4x1-00Ez8f-6I; Mon, 09 May 2022 15:05:32 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 9355F1F441A4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652108725;
- bh=jwx7aoAOlo/IJzWJjPvpl/xGpjbHcHsD07r0sZmj1yw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=n/4nJIvMOj5TT2NzwztqbxeysgjE5CI478h4wmebsMpDRzoIVTxsDchO+oiTYWCiI
- Bzg4sk/GWak+7NvQQ42YzSfavD5nj0lANWuukpPi+bepSoaSP78RTUbh/uZB1XC4kN
- aLQld3NcAGSH55Sc67tAAZBAmAJybBE6JktNuTKhLRJgJNHeqW9q7jKCbGT+tTZ9Wg
- CdoTa1kCmp49YK82c/w4GWdbvHVh3ctGY54Yx421gzvUqlEKfPi0Zl83OtvsqsQak1
- RaPU151VNrRhR2Aoe+NfL8U/7vR+VMqVvc/jqe8JsKUyzuojOiE0Ma5Pw2MTWcOCOY
- nuW65r2mHlW3A==
-Date: Mon, 9 May 2022 11:05:17 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Tzung-Bi Shih <tzungbi@google.com>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Tinghan Shen <tinghan.shen@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-remoteproc@vger.kernel.org
-Subject: Re: [PATCH v4 1/2] dt-bindings: remoteproc: mediatek: Make l1tcm reg
- exclusive to mt819x
-Message-ID: <20220509150517.ij5lev2mlcem2epx@notapiano>
-References: <20220506213226.257859-1-nfraprado@collabora.com>
- <20220506213226.257859-2-nfraprado@collabora.com>
- <CA+Px+wXQjys8xvTSSJkLXoGp4yQnANbKWBtfuxiYi0UX6DH0jw@mail.gmail.com>
+ id 1no5a4-00FB27-Ge; Mon, 09 May 2022 15:45:54 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id D38A4CE19A2;
+ Mon,  9 May 2022 15:45:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFB82C385B2;
+ Mon,  9 May 2022 15:45:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1652111141;
+ bh=CrQ0/ckWEfkQpNpOlG4urFcVG9MU01f9luLgk3xayCw=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=IN9glv31dJR7fqENxy/LCDLC2pYcHK+AF0DM3+q+KDWhAym3fbo0tp048BRPR/IHt
+ 1TMwlaey9GDbWC+x7VVcNY99YleePiKoD8PkeGX1VzKCGKh1ArehVAbgobMumRROQC
+ eozZYfroUnnA4I21SZKXRcbAURT+cUGD3Na3rJW8UjnN+7HnTdbGAHUh6uSA+r4NFj
+ 5L5nTQt+LPFkjOSNmeREoFMhUUFXh1z3IC+yKdItaKvZKj2gR7P66FaePUZz6crOtC
+ 7PMKpPN/VjoqI0qxGAMWpUkKFQ8V/NQXiHhj2hnKONLzo5D7kp3rWmH11ZUCvh/Ju0
+ dFR0iJvOhATdQ==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, cgel.zte@gmail.com
+Cc: chi.minghao@zte.com.cn, zealci@zte.com.cn,
+ linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20220505021808.54337-1-chi.minghao@zte.com.cn>
+References: <20220505021808.54337-1-chi.minghao@zte.com.cn>
+Subject: Re: [PATCH] ASoC: mediatek: simplify the return expression of
+ mtk_dai_pcm_prepare()
+Message-Id: <165211113943.774487.12508036435286420554.b4-ty@kernel.org>
+Date: Mon, 09 May 2022 16:45:39 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CA+Px+wXQjys8xvTSSJkLXoGp4yQnANbKWBtfuxiYi0UX6DH0jw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_080531_492167_4F8C18B3 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20220509_084552_778945_879FFB9A 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +67,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 09, 2022 at 10:27:18AM +0800, Tzung-Bi Shih wrote:
-> On Sat, May 7, 2022 at 5:32 AM N=EDcolas F. R. A. Prado
-> <nfraprado@collabora.com> wrote:
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          enum:
-> > +            - mediatek,mt8192-scp
-> > +            - mediatek,mt8195-scp
-> > +    then:
-> > +      properties:
-> > +        reg:
-> > +          minItems: 3
-> > +          maxItems: 3
-> > +        reg-names:
-> > +          items:
-> > +            - const: sram
-> > +            - const: cfg
-> > +            - const: l1tcm
-> =
+On Thu, 5 May 2022 02:18:08 +0000, cgel.zte@gmail.com wrote:
+> From: Minghao Chi <chi.minghao@zte.com.cn>
+> 
+> Simplify the return expression.
+> 
+> 
 
-> "l1tcm" should be optional.  Does it make more sense by using "minItems: =
-2"?
+Applied to
 
-Hi Tzung-Bi,
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-thank you for the information. I did notice from the driver code that l1tcm=
- was
-treated as optional for mt8192, but since I wasn't sure if that was intende=
-d, I
-kept it as required for the mt8192/mt8195 binding, since making it optional
-later wouldn't break the ABI, but the opposite would.
+Thanks!
 
-But yes, since it is indeed optional for those platforms, I will lower minI=
-tems
-to 2 for them in the next version.
+[1/1] ASoC: mediatek: simplify the return expression of mtk_dai_pcm_prepare()
+      commit: 74eaa8126f50e52a19f055eed002cc76cf3122dc
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
-N=EDcolas
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
