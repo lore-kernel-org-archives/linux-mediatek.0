@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B21C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F859C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:16:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JWS0KqtfnbEfcnIN9eVvFpjWYOh4A9Sk4tpR7a5HUWA=; b=xWzuPzozsXlKSr
-	jlD5eFY8mQmR5y50d77lvX4MY0FYBjOBgqZhuXZpdSwZVe98QrD/piaZvPAWQgbYRyjkCHrphRJFj
-	KPOrj44rEGCcBU9N/R94K7ElDPn/dTMKfMFAfwxBwdAJy5aqlr542rqAwVNyUQBQTRnRH1rDiYi6G
-	OFvJpIxlYkHPYWn8S5WBU/nGjLW91OhS0Z7gNc0W4eOzP8VfBrTMjJmWDy5tMw5GASbepq8PXa86B
-	Rslpm04Smqsj49XHv6ZoB/D9z04dG7TUkjoly/9nCP55dmXQTVmOA/Zbx82pu0Qxr0jqJ6qdi+aLa
-	doxJtDAK36HGx+x56ZGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5gjwHkcu5nl0SjH4bWuxxaHLGKDY3IFef1vNIXH3hXI=; b=t42ziTchtpyoGjHnsSRSbQ6B7d
+	TQ4Dk9/njP5xI2mcvA1qNiavvfB3tjt5e6XCRkAVeaTU44Bv0eC6u63atWHRT8ieKP6kUeyfMPepo
+	FSqi7cE0+ij5TPiVbrikkY4JRZWYVM050wp+cIcmb0JoR5xm7pXm0gomkNn36GJvTDwCmk9/81lIz
+	qHqfXU+BW8neXCjJGXA+WWroVEWo0INI1s7HodcKoOlFPRoQKKWd6lXDeSx5cu2QFhUx9WKkRm+H2
+	TaDA/gV9mGRnDCx5nAVdxn4vlrjnP1zg1bFFUGXUJp4UtwcLrzzFOVcN30nv+BKCPRtzf8TXIu7jY
+	8Ueh+GYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no7mZ-00Fklh-Ii; Mon, 09 May 2022 18:06:55 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1no7vl-00Fnry-DG; Mon, 09 May 2022 18:16:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no7lE-00Fk2K-4w; Mon, 09 May 2022 18:05:35 +0000
+ id 1no7vZ-00Fnqh-SG; Mon, 09 May 2022 18:16:15 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id BC209B818D0;
- Mon,  9 May 2022 18:05:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15C6FC385B4;
- Mon,  9 May 2022 18:05:26 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 21370615EF;
+ Mon,  9 May 2022 18:16:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B63DC385B2;
+ Mon,  9 May 2022 18:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652119529;
- bh=GNYW0f/0zhn3bNQV9q7pmTN0Wu2f6KlNa5abquY9vdA=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=NacPhBskHAN4/3dE2A/9GW4Of2q4u87w654c1DT0X2jVS1stteLCl3si0gz3hWTAN
- IkuNw42c1oEwSNPAQi3OqpUvAuasU+IkNiOLiGlhUEKNajPqWUPuPcHT/Hof+VnphJ
- HgwcQXnCdmIPE9eXPEJAdnRySH5v7mueDVP26yCtj9T9D0reRkQNpQmlvK6CSPAket
- DMh5p6PRNzBP6Zsc3wN2l4Q7Z4kShMr0iTjLxO3v/ap3ZeFjQ8gvXb645tMyevJ0vV
- lwig9qFOd5yR6yURhawMB1gsSMxMo/nfOzDdiSuE7bsfVyT4g+XIhJ/jT23fMG2Wm1
- VkyOnNyGw5CWw==
+ s=k20201202; t=1652120171;
+ bh=fityjqx3LAPgs6j3Ab+RUFq57LrBU7RECIxpxYVKf7A=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=JFGu9zPByEWxEeLaLwZAOINXLVIUCBbJaslnR53O9GQPouETdtWGpGVcBhp6qezf6
+ U8ow/sPecgR/+KSxLwLaGpJIYv/yoH4gt9n8w5RgibLvq3FQswUuie8l6F07YmGkk1
+ /XLZHlEqU6zkhqQ1z8Gma7eCZw7hE4Y2V6YuD4OLI9uggbweCU5TLBLr/z1s0JGOqG
+ ZTWT/I8eFw7AmqV4mT3mwKA6cVuKCv37Zo6Ul/zaBuiT7zkNEYYrVGQx4odDr2DB6i
+ b9ddTb/r2eFavRJ4OXNELb59dhgU21QSzi0UvequrCT3cdt5JVqn/XpAwc/jWm0p26
+ GRGGjZZTH4TNw==
+Date: Mon, 9 May 2022 19:16:06 +0100
 From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, yuehaibing@huawei.com, Arnd Bergmann <arnd@arndb.de>,
- angelogioacchino.delregno@collabora.com, perex@perex.cz, tzungbi@google.com,
- matthias.bgg@gmail.com, trevor.wu@mediatek.com, tiwai@suse.com
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org
-In-Reply-To: <20220507021424.12180-1-yuehaibing@huawei.com>
-References: <20220507021424.12180-1-yuehaibing@huawei.com>
-Subject: Re: [PATCH v2 -next] ASoC: mediatek: mt8195: Fix build warning
- without CONFIG_OF
-Message-Id: <165211952680.1181242.3361665632308552172.b4-ty@kernel.org>
-Date: Mon, 09 May 2022 19:05:26 +0100
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernelci-results@groups.io, bot@kernelci.org, gtucker@collabora.com,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org
+Subject: Re: next/pending-fixes bisection: baseline.login on mt8173-elm-hana
+Message-ID: <YnlaZgJfGASYwO8Y@sirena.org.uk>
+References: <62793d83.1c69fb81.71b96.033e@mx.google.com>
+ <YnlBAoZTJ6WbM394@sirena.org.uk>
 MIME-Version: 1.0
+In-Reply-To: <YnlBAoZTJ6WbM394@sirena.org.uk>
+X-Cookie: Do not apply to broken skin.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_110532_400988_32EE3B86 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20220509_111613_985830_F1436A63 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,45 +70,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7102691740715827721=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCA3IE1heSAyMDIyIDEwOjE0OjI0ICswODAwLCBZdWVIYWliaW5nIHdyb3RlOgo+IHNv
-dW5kL3NvYy9tZWRpYXRlay9tdDgxOTUvbXQ4MTk1LW10NjM1OS5jOjE2Mzk6MzI6IHdhcm5pbmc6
-IOKAmG10ODE5NV9tdDYzNTlfbWF4OTgzOTBfcnQ1NjgyX2NhcmTigJkgZGVmaW5lZCBidXQgbm90
-IHVzZWQgWy1XdW51c2VkLXZhcmlhYmxlXQo+ICAxNjM5IHwgc3RhdGljIHN0cnVjdCBtdDgxOTVf
-Y2FyZF9kYXRhIG10ODE5NV9tdDYzNTlfbWF4OTgzOTBfcnQ1NjgyX2NhcmQgPSB7Cj4gICAgICAg
-fCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fgo+IHNvdW5kL3NvYy9tZWRpYXRlay9tdDgxOTUvbXQ4MTk1LW10NjM1OS5jOjE2
-MzQ6MzI6IHdhcm5pbmc6IOKAmG10ODE5NV9tdDYzNTlfcnQxMDExX3J0NTY4Ml9jYXJk4oCZIGRl
-ZmluZWQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC12YXJpYWJsZV0KPiAgMTYzNCB8IHN0YXRpYyBz
-dHJ1Y3QgbXQ4MTk1X2NhcmRfZGF0YSBtdDgxOTVfbXQ2MzU5X3J0MTAxMV9ydDU2ODJfY2FyZCA9
-IHsKPiAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fgo+IHNvdW5kL3NvYy9tZWRpYXRlay9tdDgxOTUvbXQ4MTk1LW10
-NjM1OS5jOjE2Mjk6MzI6IHdhcm5pbmc6IOKAmG10ODE5NV9tdDYzNTlfcnQxMDE5X3J0NTY4Ml9j
-YXJk4oCZIGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC12YXJpYWJsZV0KPiAgMTYyOSB8
-IHN0YXRpYyBzdHJ1Y3QgbXQ4MTk1X2NhcmRfZGF0YSBtdDgxOTVfbXQ2MzU5X3J0MTAxOV9ydDU2
-ODJfY2FyZCA9IHsKPiAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fgo+IAo+IFsuLi5dCgpBcHBsaWVkIHRvCgogICBo
-dHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9icm9vbmllL3Nv
-dW5kLmdpdCBmb3ItbmV4dAoKVGhhbmtzIQoKWzEvMV0gQVNvQzogbWVkaWF0ZWs6IG10ODE5NTog
-Rml4IGJ1aWxkIHdhcm5pbmcgd2l0aG91dCBDT05GSUdfT0YKICAgICAgY29tbWl0OiAwZTYzYTJi
-ZTU2NTFlMmIzNGU1YzI1MDU5OTJlNThiZTBlOWM0YmIxCgpBbGwgYmVpbmcgd2VsbCB0aGlzIG1l
-YW5zIHRoYXQgaXQgd2lsbCBiZSBpbnRlZ3JhdGVkIGludG8gdGhlIGxpbnV4LW5leHQKdHJlZSAo
-dXN1YWxseSBzb21ldGltZSBpbiB0aGUgbmV4dCAyNCBob3VycykgYW5kIHNlbnQgdG8gTGludXMg
-ZHVyaW5nCnRoZSBuZXh0IG1lcmdlIHdpbmRvdyAob3Igc29vbmVyIGlmIGl0IGlzIGEgYnVnIGZp
-eCksIGhvd2V2ZXIgaWYKcHJvYmxlbXMgYXJlIGRpc2NvdmVyZWQgdGhlbiB0aGUgcGF0Y2ggbWF5
-IGJlIGRyb3BwZWQgb3IgcmV2ZXJ0ZWQuCgpZb3UgbWF5IGdldCBmdXJ0aGVyIGUtbWFpbHMgcmVz
-dWx0aW5nIGZyb20gYXV0b21hdGVkIG9yIG1hbnVhbCB0ZXN0aW5nCmFuZCByZXZpZXcgb2YgdGhl
-IHRyZWUsIHBsZWFzZSBlbmdhZ2Ugd2l0aCBwZW9wbGUgcmVwb3J0aW5nIHByb2JsZW1zIGFuZApz
-ZW5kIGZvbGxvd3VwIHBhdGNoZXMgYWRkcmVzc2luZyBhbnkgaXNzdWVzIHRoYXQgYXJlIHJlcG9y
-dGVkIGlmIG5lZWRlZC4KCklmIGFueSB1cGRhdGVzIGFyZSByZXF1aXJlZCBvciB5b3UgYXJlIHN1
-Ym1pdHRpbmcgZnVydGhlciBjaGFuZ2VzIHRoZXkKc2hvdWxkIGJlIHNlbnQgYXMgaW5jcmVtZW50
-YWwgdXBkYXRlcyBhZ2FpbnN0IGN1cnJlbnQgZ2l0LCBleGlzdGluZwpwYXRjaGVzIHdpbGwgbm90
-IGJlIHJlcGxhY2VkLgoKUGxlYXNlIGFkZCBhbnkgcmVsZXZhbnQgbGlzdHMgYW5kIG1haW50YWlu
-ZXJzIHRvIHRoZSBDQ3Mgd2hlbiByZXBseWluZwp0byB0aGlzIG1haWwuCgpUaGFua3MsCk1hcmsK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
-ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+
+--===============7102691740715827721==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Lqwda+yZWhdsDg4f"
+Content-Disposition: inline
+
+
+--Lqwda+yZWhdsDg4f
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, May 09, 2022 at 05:27:51PM +0100, Mark Brown wrote:
+> On Mon, May 09, 2022 at 09:12:51AM -0700, KernelCI bot wrote:
+>=20
+> The KernelCI bisection bot found a boot regression on mt8173-elm-hana
+> which bisected to 6f81fdded0d02 ("serial: 8250_mtk: Make sure to select
+> the right FEATURE_SEL").  With the patch the output terminates at:
+
+There was also a similar report on mt8183-kukui-jacuzzi-juniper-sku16.
+
+--Lqwda+yZWhdsDg4f
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJ5WmUACgkQJNaLcl1U
+h9BEsQf7BsIqfG+ZeTzFwFvRnTzgzhjZoANmgE0Yqr9ZAj7cW0QJLFmm73HrG4g9
+e7Xz3NpznH7ymkVkOHOqtRIZm5ZvaetcbFe9JBUQUdH8rluaa7FVHHAHYH16q66M
+Y2SyeVl1TDCbvTSP5B1LQZO01cRhEFhe1tLvUj8DnuH8R0H9rzk4OTeSCK3vQFyA
+MKLHQyvKd+q7WqfYHOcz7Ni/LDOe4NJyRXuVBBUqpriE53naLMq1DERUIBVOs4Kk
+VhKChrQWLZ5XXhjw3y4Hv6Hq10f3YdBGNr1xt8/g+iTy5ACCrZ3GYpUJGbmA7vui
++iIt0EV6rKpz7PmrSG72jFDTcbL/1Q==
+=n5eN
+-----END PGP SIGNATURE-----
+
+--Lqwda+yZWhdsDg4f--
+
+
+--===============7102691740715827721==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7102691740715827721==--
+
