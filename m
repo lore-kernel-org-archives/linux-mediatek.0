@@ -4,41 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B5AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:16:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E13C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:19:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nhEtVoKYd7AccubjPrxj/1tVyfWAxKxmR0+K8P4ufCA=; b=vGA/wh0sfCJyXN
-	IqBp6tEJBDcp8kE335GJmAjMaYNtZbpvTjWXYghdkfYc9j1gtxF00C90NugVqJl7QE/gOjcNuwxOh
-	9b+zP7WPOw+SKMa9zu9HXcBXoA6IGDEpfEakgLHQh9k2yHXNpWG/1LVpDD9zXsJXhwOo8FwcnvO1b
-	d7v3S7K06QFxeeM1+fdp0+oWAF7/SooJTpf5bedSgb2qFKiWFAgNEj3/cOgnDEtzSiKnAgBovoQ32
-	U9ULZWZ8FUinB03nFBYfdRh5+7n9CMrbIErJpfZ1eXFFKbPcJ8pxDpdoEkUHccBn2p5hK4YMtSagz
-	2q9v/OQRJpxPoBofQd+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6UF8WEZEcceJ6Yoeaig0e0BPinx0Ou4udYxI0DMDjX4=; b=N8KUUVZE1BlJUQTqJtXMUfU9mH
+	CTaSedR5kztj7f7EVItSYuxGxcTgSrZiNOHBXSCW9d6X4QvviYYFk21niJpSD8pY/q4HWzi4l1HfL
+	++9LtCklp24zDg7Dovx1JFt3vRPi0+WjF6/8fs5CYy2u112kNiuUboPDeGe19g+TL9YL6l/KGHSiG
+	n3GqCuL374l7Qus+WpVvenJlVnwYEwKSbRbCO+GbsERxqpbB2nW/ckZRIXpJLXURurufz4neEsymb
+	Xb8W7E65FFAuKgAGmAM0HLsxib+tHzyS6w0xOtuIR7Y082JeXueCQkjLa8SJhSk5yXsyRq0bl8bSk
+	JfYiGjvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no7w8-00FnzX-Hd; Mon, 09 May 2022 18:16:48 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1no7z6-00Fow7-BD; Mon, 09 May 2022 18:19:52 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no7vx-00FnuQ-Hi; Mon, 09 May 2022 18:16:39 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id A1A081F43FBF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652120196;
- bh=0esjJrezivP9EYp59dd6OuPM+PGc8UvFALjMsvmFKsw=;
+ id 1no7yt-00For9-Qg; Mon, 09 May 2022 18:19:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 494A2B818CE;
+ Mon,  9 May 2022 18:19:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D3FBC385B2;
+ Mon,  9 May 2022 18:19:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1652120377;
+ bh=sEtyjmgOrjIs5NYv5HPC0xk/tdYrRW3tbsJDYBclXYk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mUh3KDx8N16l+rXRuTIRBtKHsGvmr01Muo2U74eUROqwiqIK9TdjItLT2iPA+pFdw
- ZfEWl/b+6xDzqzGV3Z6Ogh7UxvtzVCTDXt7fNxonKzjLDb4w4GmV+S//PNbGOkP2H0
- +ymJQljlQM1pjjU89yEWu9EMflqiwD7Q2U2oUuTaMDWYS+AtJm8okAb00IzpJD3uGx
- 4ORjyRbtV1v6k8OoJ+iHNw8ZRI8gENXeoq1K2bTGTpIAIFzNkmYn9e6GH/dMxLCFLm
- KOQLwgDqJcID6J2UAyWB5UAvWDA12sWsTEb4JJmPOHXvBumyYeQLBjHIZEweYrUive
- 9rJIooEZD9GfQ==
-Date: Mon, 9 May 2022 14:16:29 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Mark Brown <broonie@kernel.org>
+ b=QxjxEobBOscR/f/wqE5KqFFibxHBYEbMltpkRKBAnS7TIDyAfo31CyGMDkGQg/3J2
+ CSgYm/b4Um//Ob7QXYzVoPwq7Z+JBR8dbsnNgYaeueJZy8t17DNMQygwvpK3Ztd4sp
+ iqilsKMgPqHknWIpd4XUmv70r9KdcevXWafnn9Kxcc4NQn0UAwBjC7LxSYF0TC0gmK
+ qL4VqlqrmaY02ut3JmWVbdGokASWh1yIDvabGmSm3M115Vb5a1oR0FMSqdD65VgbO7
+ atMKHSrq1S2Ghayfh4VZYne1f6GlRhNOm8OTjChJMqHU6gc4Hf6nbzZyDnK2jaYSap
+ Q7aUkUZatZjPA==
+Date: Mon, 9 May 2022 19:19:30 +0100
+From: Mark Brown <broonie@kernel.org>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
 Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org,
  krzysztof.kozlowski+dt@linaro.org, jiaxin.yu@mediatek.com,
  angelogioacchino.delregno@collabora.com,
@@ -48,15 +53,16 @@ Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org,
  robh+dt@kernel.org, kernel@collabora.com, tzungbi@google.com
 Subject: Re: [PATCH 0/3] Add missing dt-binding properties for audio
  components on mt8192-asurada
-Message-ID: <20220509181629.ettskdxfvwvqaq76@notapiano>
+Message-ID: <YnlbMjTEORFSbxXS@sirena.org.uk>
 References: <20220429203039.2207848-1-nfraprado@collabora.com>
  <165211666198.1065748.1151009730882312510.b4-ty@kernel.org>
+ <20220509181629.ettskdxfvwvqaq76@notapiano>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <165211666198.1065748.1151009730882312510.b4-ty@kernel.org>
+In-Reply-To: <20220509181629.ettskdxfvwvqaq76@notapiano>
+X-Cookie: Boycott meat -- suck your thumb.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_111637_757446_6E48C5FB 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20220509_111940_048003_EB70E623 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,56 +74,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============0997563616491435096=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 09, 2022 at 06:17:41PM +0100, Mark Brown wrote:
-> On Fri, 29 Apr 2022 16:30:36 -0400, N=EDcolas F. R. A. Prado wrote:
-> > These patches add properties that were missing on the dt-bindings of the
-> > audio components used by mt8192-asurada. Namely the i2s-share
-> > properties for the sound platform and the #sound-dai-cells on the
-> > rt1015p and rt5682 codecs when they're referenced by the machine sound
-> > node.
-> > =
 
-> > =
-
-> > [...]
-> =
-
-> Applied to
-> =
-
->    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-=
-next
-> =
-
-> Thanks!
-> =
-
-> [1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share properties
->       commit: e056cf4341ae3f856f1e38da02b27cb04de4c69b
-> [2/3] ASoC: dt-bindings: rt1015p: Add #sound-dai-cells
->       commit: 2f45536587e53a7a22024e12fbe97ef13598e623
-> [3/3] ASoC: dt-bindings: rt5682: Add #sound-dai-cells
->       commit: 0adccaf1eac91a2c2ee6a54a6de042affe9860f4
-
-Hi Mark,
-
-this series wasn't supposed to be merged yet, I'm in the process of prepari=
-ng
-and sending a v2. Well, for patch 1 at least, which needs some improvements
-still. Patches 2 and 3 weren't going to be changed, so those would be fine =
-to
-keep merged if you want. =
+--===============0997563616491435096==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4y1TD9hR4+zXz6BZ"
+Content-Disposition: inline
 
 
-Thanks,
-N=EDcolas
+--4y1TD9hR4+zXz6BZ
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, May 09, 2022 at 02:16:29PM -0400, N=EDcolas F. R. A. Prado wrote:
+
+> this series wasn't supposed to be merged yet, I'm in the process of prepa=
+ring
+> and sending a v2. Well, for patch 1 at least, which needs some improvemen=
+ts
+> still. Patches 2 and 3 weren't going to be changed, so those would be fin=
+e to
+> keep merged if you want.=20
+
+Please send a revert for the first patch with appropriate changelog if
+you want it dropping.
+
+--4y1TD9hR4+zXz6BZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJ5WzIACgkQJNaLcl1U
+h9DR5Af/TprbNPs5eG3YL7V+LKRWqR7r5/vg4Mv3tT5GnibQHJMnJKNy2UouZxTo
+rkacxPv3r1VyUUeK8zHUkyzJrNx2E3UkAlpZ1lwC/HERm66keB5ugaBQpSDEj9/p
+ACsF6I1K/fAJq4cwI0vhDWWUXG5Ha0veDao+qfUaTVOyn4EsHCB21OBnsJFRTuLN
+26cIS9fHHyxKc055J2rLi4LqpTdxVOuuuJXkD4ScZmflZkEfH1Nea8JMeCnPnXXy
+AANm+RFzCi2lMMAO8BCv8PQCbuDxJHXCbx71WenqSS0Cd+r3VlGv5u19fZRGuv0z
+k8nbklED1MQtWoNvx67Kz6aY9MpB1w==
+=BxKV
+-----END PGP SIGNATURE-----
+
+--4y1TD9hR4+zXz6BZ--
+
+
+--===============0997563616491435096==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0997563616491435096==--
+
