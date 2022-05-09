@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F859C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:16:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B5AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:16:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5gjwHkcu5nl0SjH4bWuxxaHLGKDY3IFef1vNIXH3hXI=; b=t42ziTchtpyoGjHnsSRSbQ6B7d
-	TQ4Dk9/njP5xI2mcvA1qNiavvfB3tjt5e6XCRkAVeaTU44Bv0eC6u63atWHRT8ieKP6kUeyfMPepo
-	FSqi7cE0+ij5TPiVbrikkY4JRZWYVM050wp+cIcmb0JoR5xm7pXm0gomkNn36GJvTDwCmk9/81lIz
-	qHqfXU+BW8neXCjJGXA+WWroVEWo0INI1s7HodcKoOlFPRoQKKWd6lXDeSx5cu2QFhUx9WKkRm+H2
-	TaDA/gV9mGRnDCx5nAVdxn4vlrjnP1zg1bFFUGXUJp4UtwcLrzzFOVcN30nv+BKCPRtzf8TXIu7jY
-	8Ueh+GYw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nhEtVoKYd7AccubjPrxj/1tVyfWAxKxmR0+K8P4ufCA=; b=vGA/wh0sfCJyXN
+	IqBp6tEJBDcp8kE335GJmAjMaYNtZbpvTjWXYghdkfYc9j1gtxF00C90NugVqJl7QE/gOjcNuwxOh
+	9b+zP7WPOw+SKMa9zu9HXcBXoA6IGDEpfEakgLHQh9k2yHXNpWG/1LVpDD9zXsJXhwOo8FwcnvO1b
+	d7v3S7K06QFxeeM1+fdp0+oWAF7/SooJTpf5bedSgb2qFKiWFAgNEj3/cOgnDEtzSiKnAgBovoQ32
+	U9ULZWZ8FUinB03nFBYfdRh5+7n9CMrbIErJpfZ1eXFFKbPcJ8pxDpdoEkUHccBn2p5hK4YMtSagz
+	2q9v/OQRJpxPoBofQd+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no7vl-00Fnry-DG; Mon, 09 May 2022 18:16:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1no7w8-00FnzX-Hd; Mon, 09 May 2022 18:16:48 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no7vZ-00Fnqh-SG; Mon, 09 May 2022 18:16:15 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 21370615EF;
- Mon,  9 May 2022 18:16:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B63DC385B2;
- Mon,  9 May 2022 18:16:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652120171;
- bh=fityjqx3LAPgs6j3Ab+RUFq57LrBU7RECIxpxYVKf7A=;
+ id 1no7vx-00FnuQ-Hi; Mon, 09 May 2022 18:16:39 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id A1A081F43FBF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652120196;
+ bh=0esjJrezivP9EYp59dd6OuPM+PGc8UvFALjMsvmFKsw=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JFGu9zPByEWxEeLaLwZAOINXLVIUCBbJaslnR53O9GQPouETdtWGpGVcBhp6qezf6
- U8ow/sPecgR/+KSxLwLaGpJIYv/yoH4gt9n8w5RgibLvq3FQswUuie8l6F07YmGkk1
- /XLZHlEqU6zkhqQ1z8Gma7eCZw7hE4Y2V6YuD4OLI9uggbweCU5TLBLr/z1s0JGOqG
- ZTWT/I8eFw7AmqV4mT3mwKA6cVuKCv37Zo6Ul/zaBuiT7zkNEYYrVGQx4odDr2DB6i
- b9ddTb/r2eFavRJ4OXNELb59dhgU21QSzi0UvequrCT3cdt5JVqn/XpAwc/jWm0p26
- GRGGjZZTH4TNw==
-Date: Mon, 9 May 2022 19:16:06 +0100
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernelci-results@groups.io, bot@kernelci.org, gtucker@collabora.com,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org
-Subject: Re: next/pending-fixes bisection: baseline.login on mt8173-elm-hana
-Message-ID: <YnlaZgJfGASYwO8Y@sirena.org.uk>
-References: <62793d83.1c69fb81.71b96.033e@mx.google.com>
- <YnlBAoZTJ6WbM394@sirena.org.uk>
+ b=mUh3KDx8N16l+rXRuTIRBtKHsGvmr01Muo2U74eUROqwiqIK9TdjItLT2iPA+pFdw
+ ZfEWl/b+6xDzqzGV3Z6Ogh7UxvtzVCTDXt7fNxonKzjLDb4w4GmV+S//PNbGOkP2H0
+ +ymJQljlQM1pjjU89yEWu9EMflqiwD7Q2U2oUuTaMDWYS+AtJm8okAb00IzpJD3uGx
+ 4ORjyRbtV1v6k8OoJ+iHNw8ZRI8gENXeoq1K2bTGTpIAIFzNkmYn9e6GH/dMxLCFLm
+ KOQLwgDqJcID6J2UAyWB5UAvWDA12sWsTEb4JJmPOHXvBumyYeQLBjHIZEweYrUive
+ 9rJIooEZD9GfQ==
+Date: Mon, 9 May 2022 14:16:29 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, jiaxin.yu@mediatek.com,
+ angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, shane.chien@mediatek.com,
+ linux-mediatek@lists.infradead.org, lgirdwood@gmail.com,
+ linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+ robh+dt@kernel.org, kernel@collabora.com, tzungbi@google.com
+Subject: Re: [PATCH 0/3] Add missing dt-binding properties for audio
+ components on mt8192-asurada
+Message-ID: <20220509181629.ettskdxfvwvqaq76@notapiano>
+References: <20220429203039.2207848-1-nfraprado@collabora.com>
+ <165211666198.1065748.1151009730882312510.b4-ty@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <YnlBAoZTJ6WbM394@sirena.org.uk>
-X-Cookie: Do not apply to broken skin.
+Content-Disposition: inline
+In-Reply-To: <165211666198.1065748.1151009730882312510.b4-ty@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_111613_985830_F1436A63 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20220509_111637_757446_6E48C5FB 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,59 +68,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7102691740715827721=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, May 09, 2022 at 06:17:41PM +0100, Mark Brown wrote:
+> On Fri, 29 Apr 2022 16:30:36 -0400, N=EDcolas F. R. A. Prado wrote:
+> > These patches add properties that were missing on the dt-bindings of the
+> > audio components used by mt8192-asurada. Namely the i2s-share
+> > properties for the sound platform and the #sound-dai-cells on the
+> > rt1015p and rt5682 codecs when they're referenced by the machine sound
+> > node.
+> > =
 
---===============7102691740715827721==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Lqwda+yZWhdsDg4f"
-Content-Disposition: inline
+> > =
+
+> > [...]
+> =
+
+> Applied to
+> =
+
+>    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-=
+next
+> =
+
+> Thanks!
+> =
+
+> [1/3] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share properties
+>       commit: e056cf4341ae3f856f1e38da02b27cb04de4c69b
+> [2/3] ASoC: dt-bindings: rt1015p: Add #sound-dai-cells
+>       commit: 2f45536587e53a7a22024e12fbe97ef13598e623
+> [3/3] ASoC: dt-bindings: rt5682: Add #sound-dai-cells
+>       commit: 0adccaf1eac91a2c2ee6a54a6de042affe9860f4
+
+Hi Mark,
+
+this series wasn't supposed to be merged yet, I'm in the process of prepari=
+ng
+and sending a v2. Well, for patch 1 at least, which needs some improvements
+still. Patches 2 and 3 weren't going to be changed, so those would be fine =
+to
+keep merged if you want. =
 
 
---Lqwda+yZWhdsDg4f
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, May 09, 2022 at 05:27:51PM +0100, Mark Brown wrote:
-> On Mon, May 09, 2022 at 09:12:51AM -0700, KernelCI bot wrote:
->=20
-> The KernelCI bisection bot found a boot regression on mt8173-elm-hana
-> which bisected to 6f81fdded0d02 ("serial: 8250_mtk: Make sure to select
-> the right FEATURE_SEL").  With the patch the output terminates at:
-
-There was also a similar report on mt8183-kukui-jacuzzi-juniper-sku16.
-
---Lqwda+yZWhdsDg4f
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJ5WmUACgkQJNaLcl1U
-h9BEsQf7BsIqfG+ZeTzFwFvRnTzgzhjZoANmgE0Yqr9ZAj7cW0QJLFmm73HrG4g9
-e7Xz3NpznH7ymkVkOHOqtRIZm5ZvaetcbFe9JBUQUdH8rluaa7FVHHAHYH16q66M
-Y2SyeVl1TDCbvTSP5B1LQZO01cRhEFhe1tLvUj8DnuH8R0H9rzk4OTeSCK3vQFyA
-MKLHQyvKd+q7WqfYHOcz7Ni/LDOe4NJyRXuVBBUqpriE53naLMq1DERUIBVOs4Kk
-VhKChrQWLZ5XXhjw3y4Hv6Hq10f3YdBGNr1xt8/g+iTy5ACCrZ3GYpUJGbmA7vui
-+iIt0EV6rKpz7PmrSG72jFDTcbL/1Q==
-=n5eN
------END PGP SIGNATURE-----
-
---Lqwda+yZWhdsDg4f--
-
-
---===============7102691740715827721==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7102691740715827721==--
-
