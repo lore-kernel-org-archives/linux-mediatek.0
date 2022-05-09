@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F3F6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B21C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 18:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xQ4jiKBbiZAIIGcmHKVxnG47wt8d8hkMxnPRWg8cXp8=; b=z30ENZnRgNi0/4
-	p2FilhvK4HmCb30F9UaroJrz/6xqbKCoO+Fvp2wH6FNQHVxSEItepTEMaWNfyAumtGyfJXUPC7Fuo
-	qUaXzyLj4NeRRPT6XkqWfiaw8cqhWNbYECc9EJIUUuSC3HXKXqTX631epOLgIWRMQWkS+xxFw55sn
-	AVFiPirRXLjoZHxbYRwigRo75D0MNDekTD+SymMhhOVG84oMJo3hzjKeVY8ql9Or5jBsMEepce2wq
-	O6+bomEw8GH9gb1cdZCezIWdUEn0YJLqQ1NJhlag1UhVa4cTqcZTSlBC34/UXaAa7iyLAt5XarKrA
-	q+Q6QVMTmnLV770C3fvQ==;
+	List-Owner; bh=JWS0KqtfnbEfcnIN9eVvFpjWYOh4A9Sk4tpR7a5HUWA=; b=xWzuPzozsXlKSr
+	jlD5eFY8mQmR5y50d77lvX4MY0FYBjOBgqZhuXZpdSwZVe98QrD/piaZvPAWQgbYRyjkCHrphRJFj
+	KPOrj44rEGCcBU9N/R94K7ElDPn/dTMKfMFAfwxBwdAJy5aqlr542rqAwVNyUQBQTRnRH1rDiYi6G
+	OFvJpIxlYkHPYWn8S5WBU/nGjLW91OhS0Z7gNc0W4eOzP8VfBrTMjJmWDy5tMw5GASbepq8PXa86B
+	Rslpm04Smqsj49XHv6ZoB/D9z04dG7TUkjoly/9nCP55dmXQTVmOA/Zbx82pu0Qxr0jqJ6qdi+aLa
+	doxJtDAK36HGx+x56ZGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no7mX-00FkkX-AT; Mon, 09 May 2022 18:06:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1no7mZ-00Fklh-Ii; Mon, 09 May 2022 18:06:55 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no7lF-00Fk3X-Lk; Mon, 09 May 2022 18:05:35 +0000
+ id 1no7lE-00Fk2K-4w; Mon, 09 May 2022 18:05:35 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 0209D612C8;
- Mon,  9 May 2022 18:05:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECFC9C385B2;
- Mon,  9 May 2022 18:05:29 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BC209B818D0;
+ Mon,  9 May 2022 18:05:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15C6FC385B4;
+ Mon,  9 May 2022 18:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652119532;
- bh=Kf5T/f0XKjbYWD/C6hVkJzR5NvVs2HNYRz/qFkL+TjE=;
+ s=k20201202; t=1652119529;
+ bh=GNYW0f/0zhn3bNQV9q7pmTN0Wu2f6KlNa5abquY9vdA=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=kMNw81pkTL4sG8Wuk7JEHYFIO0qbaJknS/iK55lckBFARqfzLyO6pRMx4Z1wC9nzN
- 8OQjcYHu+N+N8P8AoDXEnFDQhFR+sGvoJ3K9iLyyPB50yvudUUWumkIQiA6a4pjzo0
- FgwGKfxKug410pw97pmvs9Uj34mBsW+I1ypxepI6ExayyeoroF2hi9in6IWkDQ5A3w
- dJrY5Kr3tOowIVUTem+dISVXh0zxSzHoFoEYpcd8xDG8+gJyRULyANdH/dsU6cKkgb
- n25kFx++efiOYW/1kJ1vjP8oec7wpSj2aOQIgQQ774ByTG8Ys94XJRq9Ybyd3wy+Cz
- 11gWG0Ntne4dw==
+ b=NacPhBskHAN4/3dE2A/9GW4Of2q4u87w654c1DT0X2jVS1stteLCl3si0gz3hWTAN
+ IkuNw42c1oEwSNPAQi3OqpUvAuasU+IkNiOLiGlhUEKNajPqWUPuPcHT/Hof+VnphJ
+ HgwcQXnCdmIPE9eXPEJAdnRySH5v7mueDVP26yCtj9T9D0reRkQNpQmlvK6CSPAket
+ DMh5p6PRNzBP6Zsc3wN2l4Q7Z4kShMr0iTjLxO3v/ap3ZeFjQ8gvXb645tMyevJ0vV
+ lwig9qFOd5yR6yURhawMB1gsSMxMo/nfOzDdiSuE7bsfVyT4g+XIhJ/jT23fMG2Wm1
+ VkyOnNyGw5CWw==
 From: Mark Brown <broonie@kernel.org>
 To: lgirdwood@gmail.com, yuehaibing@huawei.com, Arnd Bergmann <arnd@arndb.de>,
  angelogioacchino.delregno@collabora.com, perex@perex.cz, tzungbi@google.com,
  matthias.bgg@gmail.com, trevor.wu@mediatek.com, tiwai@suse.com
 Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org
-In-Reply-To: <20220509120918.9000-1-yuehaibing@huawei.com>
-References: <20220509120918.9000-1-yuehaibing@huawei.com>
-Subject: Re: [PATCH v3 -next] ASoC: mediatek: mt8195: Fix build warning
+In-Reply-To: <20220507021424.12180-1-yuehaibing@huawei.com>
+References: <20220507021424.12180-1-yuehaibing@huawei.com>
+Subject: Re: [PATCH v2 -next] ASoC: mediatek: mt8195: Fix build warning
  without CONFIG_OF
-Message-Id: <165211952969.1181242.10041450382891029022.b4-ty@kernel.org>
-Date: Mon, 09 May 2022 19:05:29 +0100
+Message-Id: <165211952680.1181242.3361665632308552172.b4-ty@kernel.org>
+Date: Mon, 09 May 2022 19:05:26 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_110533_774603_70E33AB3 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20220509_110532_400988_32EE3B86 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,7 +73,7 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCA5IE1heSAyMDIyIDIwOjA5OjE4ICswODAwLCBZdWVIYWliaW5nIHdyb3RlOgo+IHNv
+T24gU2F0LCA3IE1heSAyMDIyIDEwOjE0OjI0ICswODAwLCBZdWVIYWliaW5nIHdyb3RlOgo+IHNv
 dW5kL3NvYy9tZWRpYXRlay9tdDgxOTUvbXQ4MTk1LW10NjM1OS5jOjE2Mzk6MzI6IHdhcm5pbmc6
 IOKAmG10ODE5NV9tdDYzNTlfbWF4OTgzOTBfcnQ1NjgyX2NhcmTigJkgZGVmaW5lZCBidXQgbm90
 IHVzZWQgWy1XdW51c2VkLXZhcmlhYmxlXQo+ICAxNjM5IHwgc3RhdGljIHN0cnVjdCBtdDgxOTVf
