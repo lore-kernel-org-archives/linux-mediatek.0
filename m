@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A917C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 22:36:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDE00C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 23:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XWOOAXRvMIn3nmdoRTAsM6gMSIFiVMl8rg0+vLOcNWw=; b=1yrcZzEz0+rum+
-	P9XbyJrypczbFWIzVtQ04LUvh6PA1rN6Nel4+csrLXttxB7AQkyvOUdHJDhmroC2LkGCWz9XVO0av
-	HHog6sk2PQ5/jNbWzWfoY10ZvSQRsGg9Wug7sybIdBD0RaV151Gl6rSqSvjZMn2kjy1tKRjJrmwtq
-	yAisMKhbAVOgM1vLuYi3sy+Rq8kT9b/v9hOv/roCijgxUI5fZTgzCyQbSvps0LRnEjvUr2I2eqNhI
-	pc/FLUM1nU6cpBx8OrW8dJkywacvjuKiD61YV9TNmGKKYYXELcsOBUN48faqfavcqEpOJD/9gr5lx
-	Nfkf9Fc9eHplL9mPYReA==;
+	List-Owner; bh=F6+OosjlTwVl3LBVhD7TPb0YXWo2TjQ96qMxDP3l+3I=; b=wYNs7Fomq8u2/P
+	aLYc69n3xtwk6+5KJTqZNHL4J3W/kpHvi1yrmeCJy2pabce+3J74jOe/lOjy/Br+jFdhvY7HN4gEW
+	qlOJ82K4ysEz+7yqf7p1IDbMfaeixFYMe45kN82260yLmMWZyGYYJo91qXEjbKjnJi6rThfsFSESU
+	NbgnQHjo+cH/ZmD8i4dxex2TwGJOShIVo7LjxDH3ljH5shF92/TtPNGYkzmlRigb6LSUXHGTJi1IM
+	QJNFsnaoCWPdeCs27NqzILyXQbMffWa6BPYVUoB1i5pSVAljoK6H91k1FR2i23nQ2s2Uiagh6sVv0
+	Go6sB6A7rvfwMpy42Mgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noBzS-00GagB-W3; Mon, 09 May 2022 22:36:31 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1noCoA-00GiaA-9W; Mon, 09 May 2022 23:28:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noBzI-00Gaby-0J; Mon, 09 May 2022 22:36:21 +0000
-Received: by mail-oi1-f179.google.com with SMTP id e189so16746364oia.8;
- Mon, 09 May 2022 15:36:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=c1M6wqhWWv3BpYBqrk6no0d2EvsycYmqX1VGhpzRGEI=;
- b=PbcqbSNEWKUc6aOODA880Yqifz7CinsNWORYZECRBxJJLvOQAIKEOIBqC/zgWVpR5C
- tbEJ5fRGbwAPx8vgIqc4H3iWu1F8vhp66z5rUTl8EXGmWFThLp7gJPWhV+KaDdAFRtZu
- DByQRoaYNwyW0DLlSItk3wOIDU9GXiO+NZHCROVsWWrTMm4j2NoiEqvWAo+TanF2ekwq
- AOvL6uO3OkMtFugRDzRWofKeMUHwF1HVAtNW7sa7uACLqYJICpelOcA3l3kQGJlifMN9
- Y0R+2njlQpxF6Hi04ITvxWKiBypVG+qy4SsDTf0XRz4uzickk/TkKlKxw/vdNAyIeAkf
- fYpg==
-X-Gm-Message-State: AOAM5314UH7GIfcpN4KsQ4FLNW28HXbVx6wEOdvOuyUrP1onYPPYG5ft
- vAShzB74HIq+QHS4BiRFKQ==
-X-Google-Smtp-Source: ABdhPJwSvKg6NdOMWBJFDdtLoIBBQirxE56XmsbpySMSeXjq7HMZUZDlUFltYh7Kr/XklHJvznIbgg==
-X-Received: by 2002:a05:6808:11c4:b0:2d9:c395:f15e with SMTP id
- p4-20020a05680811c400b002d9c395f15emr11975287oiv.47.1652135776986; 
- Mon, 09 May 2022 15:36:16 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- g4-20020a9d6184000000b0060603221250sm5139319otk.32.2022.05.09.15.36.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 May 2022 15:36:16 -0700 (PDT)
-Received: (nullmailer pid 335215 invoked by uid 1000);
- Mon, 09 May 2022 22:36:15 -0000
-Date: Mon, 9 May 2022 17:36:15 -0500
-From: Rob Herring <robh@kernel.org>
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: allen-kh.cheng@mediatek.com, angelogioacchino.delregno@collabora.com,
- chun-jie.chen@mediatek.com, devicetree@vger.kernel.org, ikjn@chromium.org,
- krzk+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, matthias.bgg@kernel.org, mturquette@baylibre.com,
- sboyd@kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: ARM: Mediatek: Remove msdc binding
- of mt8192 clock
-Message-ID: <YnmXX0DldjhmbjY3@robh.at.kernel.org>
-References: <YnGjScfQA9axBYBO@robh.at.kernel.org>
- <20220505053111.13924-1-miles.chen@mediatek.com>
+ id 1noCnx-00GiMj-NJ; Mon, 09 May 2022 23:28:44 +0000
+X-UUID: 4f3a8186dae94161ac608d42526d06d7-20220509
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:c95cbf6a-92ed-4824-b162-7d97c8d75fc4, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:586dcb16-2e53-443e-b81a-655c13977218,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 4f3a8186dae94161ac608d42526d06d7-20220509
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1745187795; Mon, 09 May 2022 16:28:33 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 May 2022 16:18:31 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Tue, 10 May 2022 07:18:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 10 May 2022 07:18:08 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <robh@kernel.org>
+CC: <allen-kh.cheng@mediatek.com>, <angelogioacchino.delregno@collabora.com>, 
+ <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
+ <ikjn@chromium.org>, <krzk+dt@kernel.org>,
+ <krzysztof.kozlowski+dt@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <matthias.bgg@kernel.org>, <miles.chen@mediatek.com>,
+ <mturquette@baylibre.com>, <sboyd@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: ARM: Mediatek: Remove msdc binding of
+ mt8192 clock
+Date: Tue, 10 May 2022 07:18:08 +0800
+Message-ID: <20220509231808.7657-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <YnmXX0DldjhmbjY3@robh.at.kernel.org>
+References: <YnmXX0DldjhmbjY3@robh.at.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220505053111.13924-1-miles.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_153620_087788_E070B44C 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20220509_162841_788152_0C590500 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,29 +86,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 05, 2022 at 01:31:11PM +0800, Miles Chen wrote:
-> Hi Rob,
-> 
-> >> From: Matthias Brugger <matthias.bgg@gmail.com>
-> >> 
-> >> The msdc gate is part of the MMC driver. Delete the binding description
-> >> of this node.
-> > 
-> >An ABI break is okay because ...?
-> 
-> Sorry for that, 
-> 
-> If the mediatek,mt8192-msdc part is removed from the driver, 
+Hi Rob,
 
-That's an ABI break too. You just need to explain why as Matthias did in 
-the commit message if the ABI break is okay.
+>On Thu, May 05, 2022 at 01:31:11PM +0800, Miles Chen wrote:
+>> Hi Rob,
+>> 
+>> >> From: Matthias Brugger <matthias.bgg@gmail.com>
+>> >> 
+>> >> The msdc gate is part of the MMC driver. Delete the binding description
+>> >> of this node.
+>> > 
+>> >An ABI break is okay because ...?
+>> 
+>> Sorry for that, 
+>> 
+>> If the mediatek,mt8192-msdc part is removed from the driver, 
+>
+>That's an ABI break too. You just need to explain why as Matthias did in 
+>the commit message if the ABI break is okay.
 
-> Is it ok to keep "mediatek,mt8192-msdc" in the binding document? or 
-> we should add '# deprecated' to "mediatek,mt8192-msdc" and keep the example.
+Thanks for your explanation.
 
-We do that sometimes, but depends on the situation.
+I would like to learn more about this. In this case
+If there was a user (say xxx.c) but the user was removed, can I remove mediatek,mt8192-msdc?
 
-Rob
+thanks,
+Miles
+
+>
+>> Is it ok to keep "mediatek,mt8192-msdc" in the binding document? or 
+>> we should add '# deprecated' to "mediatek,mt8192-msdc" and keep the example.
+>
+>We do that sometimes, but depends on the situation.
+>
+>Rob
+
 
 _______________________________________________
 Linux-mediatek mailing list
