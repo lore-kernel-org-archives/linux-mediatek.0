@@ -4,59 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B43B7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 10:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA52C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 10:45:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sORdB9nWZOOgabv1TuMrh4Kb6rGj+v1PAlpyEzXddlo=; b=ylFFhpQ5FzLTO8
-	VlfaJZVe8jgqjTq1cQ0uWiaU9s2XE/FbiPdbf98yWU6nrIaAdlKSxDavXisfW91Xu8ItxdjJACRBP
-	9Xr9pg6bOIsx4Q4Ue40HgCRjI2wPEJgNOhgq6Xnpqoj2vFJ3+7UPSTYoWPT4I6zZwPbkkOg8KiPh0
-	+NGQuopt0ui2NuFzbhvP7x8hc+IeMFllkAXThM6Pj2VsEnFvJWuEE7bvBQX8MN8k67xuAL7hJvN/y
-	b5gSqxcvqX+4omPsm5Csr4ojo2reOGx+F4WkMQ8c7BT6+3bJKB3HYn+W5oIxluXvDWy4BI0lrF/gP
-	koZhYMO8AziXx5h2+FHA==;
+	List-Owner; bh=Hxprw1r2/UqZGBGaM1xAFJJELWbaKdv9l9vJWfPvwvk=; b=TMhXEboGgWGWRq
+	myoZ3AZYSJCiPzcoP+1SnvvfLmV0cmgSQjMEHHqSljHtxZvsjJxCtUgvXckItS1Q/+dh1TKWcDG3m
+	4xmG0PeslryKh1zyFtS+LuWx5kPEuTRgARLu7ONirE+6WoglH0U2KrXlK6Yrwqk4PsGFF+jQR11nO
+	0bO/nokvCMYvdJAJCwRu4fzt/Ql1csl30QsfU5ABe7zZ1V+HL9Zd2sgK6725Qt561EpzKspQTs1+i
+	UA/HbCTyzyM8l87hEbpvXyGerXlw2yFls6NxJLwLQ4aCKTwXuuCKL/JjzE9/Kw5pCf8sH0E5MQng4
+	YYpearRyKAqfxMalfQ5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no0X9-00DjeE-PX; Mon, 09 May 2022 10:22:31 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1no0sz-00DqMr-HI; Mon, 09 May 2022 10:45:05 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no0Vr-00Dj2T-TQ; Mon, 09 May 2022 10:21:16 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id CC5BA1F43775
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652091670;
- bh=N/xFCvKpoAZh2zlF3Dq+42C4SMmmwu82wr+2m9ru8DI=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=K1fUD82gaTaVnXZwBd5AmniwgMGLLSxTb3Lo6efhswnak254z65tHgqpYHX1hs/FI
- WWA9K+ZUbzVg3Qy8NUOjX36ky77R0rGW1Wt7ivpxrgy6G2hhuNUwTC9UIPsC04byve
- Hx4ZUvB0kbvlB4j/ybfE8b2dr5k7/3m5IzqYwWzRo7KR1GVhUEMebitfs/4B7fQeoX
- LgiJYuNmgjRG6377OqwYtAmOlY2/VzpytNednxZa/ENYUF+FqRPnWlc7j5PQRpj3XC
- qOm5xhaGf3pkqw11qxuAdzAfOmMQMRzu/J7ZpRI+d8BssyHeKAoL9ucKfWRn9J2F0A
- yVyAkMmdePjxQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: daniel.lezcano@linaro.org
-Cc: tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, konrad.dybcio@somainline.org,
- marijn.suijten@somainline.org, martin.botka@somainline.org,
- ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
- paul.bouchara@somainline.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 2/2] clocksource/drivers/timer-mediatek: Implement CPUXGPT
- timers
-Date: Mon,  9 May 2022 12:20:58 +0200
-Message-Id: <20220509102058.3064215-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220509102058.3064215-1-angelogioacchino.delregno@collabora.com>
-References: <20220509102058.3064215-1-angelogioacchino.delregno@collabora.com>
+ id 1no0sj-00DqFV-0d
+ for linux-mediatek@lists.infradead.org; Mon, 09 May 2022 10:44:54 +0000
+Received: by mail-ed1-x531.google.com with SMTP id g23so15757944edy.13
+ for <linux-mediatek@lists.infradead.org>; Mon, 09 May 2022 03:44:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=M2N9dAOBTm5M6ZFIRAQY9u+xLQ0LwoCVpAUO7hGxwek=;
+ b=Pk61C9v83GjAFziN/8+zsxk25G08lVx7cudhCioDNnXyrKIV1KL4djTZVp1DChfx5p
+ FcWhQhBnsOAoooH2GOHBO8y+b5gmnYM8odQNXrQhYNxHTYOQi+WHI88u0Du0Fs77HD5A
+ HbqcS7wB3CVVilddsZh45uc1iu1GSP6fDMRjYfoK0Mp9G6/Cw1qpGJP23+cUTOUBSMuN
+ EVU+x8T8/cT/LL02P0M9oWcT8go75notJSjcBirQkdAt8Jegk1EbMEzBnBdiExmn+RuY
+ WwEBLj5ehki+d0K/MTG8ep6LT9iuLqfT8LcjJGXlEaWzS5zi3GnytzfmpMn5jup/xEcI
+ Xp8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=M2N9dAOBTm5M6ZFIRAQY9u+xLQ0LwoCVpAUO7hGxwek=;
+ b=1I4oTfHtgMEDvvowbhkniNSCobKL7y9aa/3l2wDG2EPvY0JvyeLrPdtfgoLpkSWgBK
+ EqYt2yQh5Ae2rp9b6Siax1s5ltCoReG+pN9Zr0iXCIoJpCypvUcLWjlweGhrmGKp0xDY
+ 1eAnBPVCeQl1xx1dlTVjrjgyLagUbRCDGtiinc3Mdbmv3weyZzxFgcVKqdVDxHZ9D/Kz
+ N/Vge/G712roimZLYSqO8JCeTeGYpEX7rxWNAuZSaZuyM2g9WuxMgZvB05VKnS0x9/fl
+ EAibpRii/1Ifx7rnXXpnwdxdfXZ0mvf9Yn4WAAkvWFare6x+tmqq68AodmehWZKgTinU
+ YcsA==
+X-Gm-Message-State: AOAM530GL3PbJ89Pqup0wbSZp+2Cczzvdmepmh18uNSPNuZ+GhNHekDR
+ DFhM+V8MK9BaHEPbhm5FsjqZhw==
+X-Google-Smtp-Source: ABdhPJzzU6EC/aUpRD8D0fRRVVTzWv0vos1RTFGbs9TdRMKFyYlif1jkB+mJxvflJy3XSnfkDqFDeA==
+X-Received: by 2002:a05:6402:2397:b0:426:4967:8574 with SMTP id
+ j23-20020a056402239700b0042649678574mr15621823eda.197.1652093085832; 
+ Mon, 09 May 2022 03:44:45 -0700 (PDT)
+Received: from [192.168.0.243] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ e15-20020a50e44f000000b0042617ba63c7sm6152351edm.81.2022.05.09.03.44.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 May 2022 03:44:45 -0700 (PDT)
+Message-ID: <98505974-afad-9639-d4f2-814097b0523b@linaro.org>
+Date: Mon, 9 May 2022 12:44:44 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v2 3/3] dt-bindings: mediatek: add ethdr definition for
+ mt8195
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>
+Cc: "airlied@linux.ie" <airlied@linux.ie>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20220509044302.27878-1-rex-bc.chen@mediatek.com>
+ <20220509044302.27878-4-rex-bc.chen@mediatek.com>
+ <46bc32df-e4e8-ac47-426d-8056714f0d5c@linaro.org>
+ <5462209c5afb0a638ed777ec1829bb2717c8d76e.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <5462209c5afb0a638ed777ec1829bb2717c8d76e.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_032112_283490_105711E9 
-X-CRM114-Status: GOOD (  25.84  )
+X-CRM114-CacheID: sfid-20220509_034449_097844_61FC712F 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,216 +107,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some MediaTek platforms with a buggy TrustZone ATF firmware will not
-initialize the AArch64 System Timer correctly: in these cases, the
-System Timer address is correctly programmed, as well as the CNTFRQ_EL0
-register (reading 13MHz, as it should be), but the assigned hardware
-timers are never started before (or after) booting Linux.
-
-In this condition, any call to function get_cycles() will be returning
-zero, as CNTVCT_EL0 will always read zero.
-
-One common critical symptom of that is trying to use the udelay()
-function (calling __delay()), which executes the following loop:
-
-            start = get_cycles();
-            while ((get_cycles() - start) < cycles)
-                    cpu_relax();
-
-which, when CNTVCT_EL0 always reads zero, translates to:
-
-            while((0 - 0) < 0)  ==> while(0 < 0)
-
-... generating an infinite loop, even though zero is never less
-than zero, but always equal to it (this has to be researched,
-but it's out of the scope of this commit).
-
-To fix this issue on the affected MediaTek platforms, the solution
-is to simply start the timers that are designed to be System Timer(s).
-These timers, downstream, are called "CPUXGPT" and there is one
-timer per CPU core; luckily, it is not necessary to set a start bit
-on each CPUX General Purpose Timer, but it's conveniently enough to:
- - Set the clock divider (input = 26MHz, divider = 2, output = 13MHz);
- - Set the ENABLE bit on a global register (starts all CPUX timers).
-
-The only small hurdle with this setup is that it's all done through
-the MCUSYS wrapper, where it is needed, for each read or write, to
-select a register address (by writing it to an index register) and
-then to perform any R/W on a "CON" register.
-
-For example, writing "0x1" to the CPUXGPT register offset 0x4:
-- Write 0x4 to mcusys INDEX register
-- Write 0x1 to mcusys CON register
-
-Reading from CPUXGPT register offset 0x4:
-- Write 0x4 to mcusys INDEX register
-- Read mcusys CON register.
-
-Finally, starting this timer makes platforms affected by this issue
-to work correctly.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clocksource/timer-mediatek.c | 118 +++++++++++++++++++++++++++
- 1 file changed, 118 insertions(+)
-
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 7bcb4a3f26fb..52120bba29c4 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -22,6 +22,19 @@
- 
- #define TIMER_SYNC_TICKS        (3)
- 
-+/* cpux mcusys wrapper */
-+#define CPUX_CON_REG		0x0
-+#define CPUX_IDX_REG		0x4
-+
-+/* cpux */
-+#define CPUX_IDX_GLOBAL_CTRL	0x0
-+ #define CPUX_ENABLE		BIT(0)
-+ #define CPUX_CLK_DIV_MASK	GENMASK(10, 8)
-+ #define CPUX_CLK_DIV1		BIT(8)
-+ #define CPUX_CLK_DIV2		BIT(9)
-+ #define CPUX_CLK_DIV4		BIT(10)
-+#define CPUX_IDX_GLOBAL_IRQ	0x30
-+
- /* gpt */
- #define GPT_IRQ_EN_REG          0x00
- #define GPT_IRQ_ENABLE(val)     BIT((val) - 1)
-@@ -72,6 +85,56 @@
- 
- static void __iomem *gpt_sched_reg __read_mostly;
- 
-+static u32 mtk_cpux_readl(u32 reg_idx, struct timer_of *to)
-+{
-+	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-+	return readl(timer_of_base(to) + CPUX_CON_REG);
-+}
-+
-+static void mtk_cpux_writel(u32 val, u32 reg_idx, struct timer_of *to)
-+{
-+	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-+	writel(val, timer_of_base(to) + CPUX_CON_REG);
-+}
-+
-+static void mtk_cpux_disable_irq(struct timer_of *to)
-+{
-+	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
-+	u32 val;
-+
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
-+	val &= ~(*irq_mask);
-+}
-+
-+static void mtk_cpux_enable_irq(struct timer_of *to)
-+{
-+	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
-+	u32 val;
-+
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
-+	val |= *irq_mask;
-+	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
-+}
-+
-+static int mtk_cpux_clkevt_shutdown(struct clock_event_device *clkevt)
-+{
-+	/* Clear any irq */
-+	mtk_cpux_disable_irq(to_timer_of(clkevt));
-+
-+	/*
-+	 * Disabling CPUXGPT timer will crash the platform, especially
-+	 * if Trusted Firmware is using it (usually, for sleep states),
-+	 * so we only mask the IRQ and call it a day.
-+	 */
-+	return 0;
-+}
-+
-+static int mtk_cpux_clkevt_resume(struct clock_event_device *clkevt)
-+{
-+	mtk_cpux_enable_irq(to_timer_of(clkevt));
-+	return 0;
-+}
-+
- static void mtk_syst_ack_irq(struct timer_of *to)
- {
- 	/* Clear and disable interrupt */
-@@ -281,6 +344,60 @@ static struct timer_of to = {
- 	},
- };
- 
-+static int __init mtk_cpux_init(struct device_node *node)
-+{
-+	static struct timer_of to_cpux;
-+	u32 freq, val;
-+	int ret;
-+
-+	/*
-+	 * There are per-cpu interrupts for the CPUX General Purpose Timer
-+	 * but since this timer feeds the AArch64 System Timer we can rely
-+	 * on the CPU timer PPIs as well, so we don't declare TIMER_OF_IRQ.
-+	 */
-+	to_cpux.flags = TIMER_OF_BASE | TIMER_OF_CLOCK;
-+	to_cpux.clkevt.name = "mtk-cpuxgpt";
-+	to_cpux.clkevt.rating = 10;
-+	to_cpux.clkevt.cpumask = cpu_possible_mask;
-+	to_cpux.clkevt.set_state_shutdown = mtk_cpux_clkevt_shutdown;
-+	to_cpux.clkevt.tick_resume = mtk_cpux_clkevt_resume;
-+
-+	/* If this fails, bad things are about to happen... */
-+	ret = timer_of_init(node, &to_cpux);
-+	if (ret) {
-+		WARN(1, "Cannot start CPUX timers.\n");
-+		return ret;
-+	}
-+
-+	/*
-+	 * Check if we're given a clock with the right frequency for this
-+	 * timer, otherwise warn but keep going with the setup anyway, as
-+	 * that makes it possible to still boot the kernel, even though
-+	 * it may not work correctly (random lockups, etc).
-+	 * The reason behind this is that having an early UART may not be
-+	 * possible for everyone and this gives a chance to retrieve kmsg
-+	 * for eventual debugging even on consumer devices.
-+	 */
-+	freq = timer_of_rate(&to_cpux);
-+	if (freq > 13000000)
-+		WARN(1, "Requested unsupported timer frequency %u\n", freq);
-+
-+	/* Clock input is 26MHz, set DIV2 to achieve 13MHz clock */
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+	val &= ~CPUX_CLK_DIV_MASK;
-+	val |= CPUX_CLK_DIV2;
-+	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+
-+	/* Enable all CPUXGPT timers */
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+	mtk_cpux_writel(val | CPUX_ENABLE, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+
-+	clockevents_config_and_register(&to_cpux.clkevt, timer_of_rate(&to_cpux),
-+					TIMER_SYNC_TICKS, 0xffffffff);
-+
-+	return 0;
-+}
-+
- static int __init mtk_syst_init(struct device_node *node)
- {
- 	int ret;
-@@ -339,3 +456,4 @@ static int __init mtk_gpt_init(struct device_node *node)
- }
- TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
- TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
-+TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
--- 
-2.35.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMDkvMDUvMjAyMiAxMDo1NCwgUmV4LUJDIENoZW4gd3JvdGU6Cj4+PiArICAgIHNvYyB7Cj4+
+PiArICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwyPjsKPj4+ICsgICAgICAgICNzaXplLWNlbGxz
+ID0gPDI+Owo+Pj4gKwo+Pj4gKyAgICAgICAgZGlzcF9ldGhkckAxYzExNDAwMCB7Cj4+Cj4+IE5v
+IHVuZGVyc2NvcmVzIGluIG5vZGUgbmFtZS4gR2VuZXJpYyBub2RlIG5hbWVzLCBzbyBkaXNwbGF5
+LQo+PiBjb250cm9sbGVyPwo+Pgo+IAo+IE9LLCB3ZSB3aWxsIGNoYW5nZSB0aGUgbm9kZSBuYW1l
+IHRvIGV0aGRyIGxpa2UgaW4gZHRzCj4gbGlrZSB0aGlzOgo+IGV0aGRyMDogZXRoZHJAMWMxMTQw
+MDAgewo+IC4uLgo+IH0KCklzICJldGhkciIgYSBnZW5lcmljIG5hbWU/IElzIGl0IGFuIGFiYnJl
+dmlhdGlvbiBvZiAiRW5lcmd5VHJhY2XihKIgSGlnaApEeW5hbWljIFJhbmdlIj8gSWYgeWVzLCBp
+dCBhbHNvIGxvb2tzIHNwZWNpZmljIHRvIFRleGFzIEluc3RydW1lbnRzLi4uCgpCZXN0IHJlZ2Fy
+ZHMsCktyenlzenRvZgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1tZWRpYXRlawo=
