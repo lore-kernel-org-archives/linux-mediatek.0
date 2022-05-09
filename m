@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E061EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 17:16:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6430C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 May 2022 17:18:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=iAZ2uKafLh7vncr8neGoEbZEaYHmA4lUx1CEYvDHGQQ=; b=OAjxhaf0irnJla
-	fobUoYasw6m5TbIoH/Sks+i2iewacviosT1JmACV1A8lANlM+QRTQULvVHZYrCnG/CHgYxVS6GtzO
-	C30wn2acUE9x8L6IiXMPxEJLpWbWAQomUKroHV6KvtyhRQfmFOITJ9fXdFhnwxIwk/PzxkYz9NTV2
-	dhmvQPqwq++QNIjUfmS0R3h2p+3o0wB8eS8WK0kXdu8XBznRzPXkF9DIhSQqjuJhsfo91mUG50PZQ
-	MJG15w8nimXRWlJ73dSv+RDFX6GYYYZYkvfXZV/Cj5krmDwgrWSyoua9piuHZtyOkCFVvp5d6IyFX
-	gUXctDxUbZ3Ri6uB9HwQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=B+47WPBwlvQHrzgATBp55lJaZWWyUmk0PVrpCrIPe6Y=; b=KjwLOhZ5YJlroK
+	AxPhT397nz1k0RukaA2wWW1NcQXKFCr5VQ0hdjTTmAAGMSXAkq3xxPgQeEdaeBcWuAlV9rYXnNhjZ
+	9UC+hSFaKSjbBTi/Jca/96kiAlvEAC0H4+eCIj0w0sObyiVoTr5FoGmes9fqULuCX/1a1YWpGoBuK
+	8pBesjT1rT8aR3GEzHtkRFpji1UJHEzfuH/MR4IziR4Li58vzVhgKGe9oBkRDJG6dWckkT0AG6f0i
+	aq62HtJ+dPAr3LKBuMPAk1BZ+2wjfm33rbUNAp63y1rxTwLvTUmuZbrxkWjSUUdZHJq/jDmFhdnBl
+	cCtP8ZIFwI7pTr13UI9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no705-00FY7c-07; Mon, 09 May 2022 17:16:49 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1no71D-00FYQf-AO; Mon, 09 May 2022 17:17:59 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no6zt-00FY4d-P8; Mon, 09 May 2022 17:16:39 +0000
+ id 1no712-00FYN3-10; Mon, 09 May 2022 17:17:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 5847DB8115E;
- Mon,  9 May 2022 17:16:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1E4DC385B1;
- Mon,  9 May 2022 17:16:33 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 675B6B81160;
+ Mon,  9 May 2022 17:17:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4641CC385B2;
+ Mon,  9 May 2022 17:17:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652116594;
- bh=VSzgCF1Rw8sMVNfysp7EwT6li5M6fLIKaI2QYnijb/0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=FSTsxsO1k3B5Qc/U+PoXFX+u19YKgFPoHZ0L6LSA5MOtkoPk3Xz548eE1KSBwA/Z+
- MHmjBMYSfqEvDlhzasgnCqpvFxHmd9G+HtPxg/5G+XjW0RF7Cl/GeHZDYmaIZ3Nnmw
- 9hO0u7YtUlQFC+8kzyYKRmZUpZF62W4BgIfTlJgJnpbZo825OLTQUfKrBVIfOtmYP+
- me741ygsBkakT00RU6qw02wJTcm6RA6QQelt5YUgt+2NSdWwmkqkwCV1tO/PvtqRqD
- duKQVM/LRdAuRCSsnRlm2IyRUP2rfUb+OJYmSB4OHGnjY1qj0zxDPTnkSWFruEf85t
- 2NxGAzNjfwQgg==
-Date: Mon, 9 May 2022 12:16:31 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
- lorenzo.pieralisi@arm.com, robh@kernel.org, kw@linux.com,
- bhelgaas@google.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, nfraprado@collabora.com
-Subject: Re: [PATCH] PCI: mediatek-gen3: Assert resets to ensure expected
- init state
-Message-ID: <20220509171631.GA605998@bhelgaas>
+ s=k20201202; t=1652116665;
+ bh=/vK4hUOw5XVzRCz9/q9BHaDHH7etX4k7UQOvk8DgWS8=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=gCsrO0C+bYZ/fHs1oJCf4AMGfTrJSzwOMuhCfjt/XmGRTrgzPIR+B6p9NmeMLZLCD
+ 4LudReQE+eKCtnC9S7sQ3LZ3xJwwh9xwHEUCqWGLixZsWJR/WwX9nfkEjBGwSQ4Cx4
+ Wwo3bqP0R3R45UaLPOeLY4um28DSZm8LC7AA2kU3pPnxayOW3zvdRnXQGWLW5Rjrm2
+ PwLjzvdU67ApymHm6qL8R0fes/Bhkw73qWkujPLE0gIVrVfxA6XYzo/ZfE02zriWpa
+ vMKnO8zadPBp46V5WSXYRGii3ty1lYnyuehqGWxEcWlbY/YAZ1tRRR4RxaSYWHkVUY
+ IcChFz6cpW/mw==
+From: Mark Brown <broonie@kernel.org>
+To: nfraprado@collabora.com
+Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, jiaxin.yu@mediatek.com,
+ angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
+ shane.chien@mediatek.com, linux-mediatek@lists.infradead.org,
+ lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org,
+ alsa-devel@alsa-project.org, robh+dt@kernel.org, kernel@collabora.com,
+ tzungbi@google.com
+In-Reply-To: <20220429203039.2207848-1-nfraprado@collabora.com>
+References: <20220429203039.2207848-1-nfraprado@collabora.com>
+Subject: Re: [PATCH 0/3] Add missing dt-binding properties for audio
+ components on mt8192-asurada
+Message-Id: <165211666198.1065748.1151009730882312510.b4-ty@kernel.org>
+Date: Mon, 09 May 2022 18:17:41 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e9839acf-e334-d73d-a0b3-57d951fb8796@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_101638_000654_A4722E42 
-X-CRM114-Status: GOOD (  24.45  )
+X-CRM114-CacheID: sfid-20220509_101748_246192_124B76B0 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,64 +71,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 09, 2022 at 02:18:34PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 04/04/22 16:48, AngeloGioacchino Del Regno ha scritto:
-> > The controller may have been left out of reset by the bootloader,
-> > in which case, before the powerup sequence, the controller will be
-> > found preconfigured with values that were set before booting the
-> > kernel: this produces a controller failure, with the result of
-> > a failure during the mtk_pcie_startup_port() sequence as the PCIe
-> > link never gets up.
-> > 
-> > To ensure that we get a clean start in an expected state, assert
-> > both the PHY and MAC resets before executing the controller
-> > power-up sequence.
-> > 
-> > Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192")
-> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> Friendly ping for an important fix :-)
-
-d3bf75b579b9 appeared in v5.13-rc1 (May 2021, a year ago), so I assume
-this is important for v5.19, but not urgent enough to require being in
-v5.18.  Right?
-
-> > ---
-> >   drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++++++
-> >   1 file changed, 8 insertions(+)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > index f7048ea4c020..dccdfce12b1c 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -838,6 +838,14 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
-> >   	if (err)
-> >   		return err;
-> > +	/*
-> > +	 * The controller may have been left out of reset by the bootloader
-> > +	 * so make sure that we get a clean start by asserting resets here.
-> > +	 */
-> > +	reset_control_assert(pcie->phy_reset);
-> > +	reset_control_assert(pcie->mac_reset);
-> > +	usleep_range(10, 20);
-> > +
-> >   	/* Don't touch the hardware registers before power up */
-> >   	err = mtk_pcie_power_up(pcie);
-> >   	if (err)
-> 
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAyOSBBcHIgMjAyMiAxNjozMDozNiAtMDQwMCwgTsOtY29sYXMgRi4gUi4gQS4gUHJh
+ZG8gd3JvdGU6Cj4gVGhlc2UgcGF0Y2hlcyBhZGQgcHJvcGVydGllcyB0aGF0IHdlcmUgbWlzc2lu
+ZyBvbiB0aGUgZHQtYmluZGluZ3Mgb2YgdGhlCj4gYXVkaW8gY29tcG9uZW50cyB1c2VkIGJ5IG10
+ODE5Mi1hc3VyYWRhLiBOYW1lbHkgdGhlIGkycy1zaGFyZQo+IHByb3BlcnRpZXMgZm9yIHRoZSBz
+b3VuZCBwbGF0Zm9ybSBhbmQgdGhlICNzb3VuZC1kYWktY2VsbHMgb24gdGhlCj4gcnQxMDE1cCBh
+bmQgcnQ1NjgyIGNvZGVjcyB3aGVuIHRoZXkncmUgcmVmZXJlbmNlZCBieSB0aGUgbWFjaGluZSBz
+b3VuZAo+IG5vZGUuCj4gCj4gCj4gWy4uLl0KCkFwcGxpZWQgdG8KCiAgIGh0dHBzOi8vZ2l0Lmtl
+cm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2Jyb29uaWUvc291bmQuZ2l0IGZvci1u
+ZXh0CgpUaGFua3MhCgpbMS8zXSBBU29DOiBkdC1iaW5kaW5nczogbWVkaWF0ZWs6IG10ODE5Mjog
+QWRkIGkycy1zaGFyZSBwcm9wZXJ0aWVzCiAgICAgIGNvbW1pdDogZTA1NmNmNDM0MWFlM2Y4NTZm
+MWUzOGRhMDJiMjdjYjA0ZGU0YzY5YgpbMi8zXSBBU29DOiBkdC1iaW5kaW5nczogcnQxMDE1cDog
+QWRkICNzb3VuZC1kYWktY2VsbHMKICAgICAgY29tbWl0OiAyZjQ1NTM2NTg3ZTUzYTdhMjIwMjRl
+MTJmYmU5N2VmMTM1OThlNjIzClszLzNdIEFTb0M6IGR0LWJpbmRpbmdzOiBydDU2ODI6IEFkZCAj
+c291bmQtZGFpLWNlbGxzCiAgICAgIGNvbW1pdDogMGFkY2NhZjFlYWM5MWEyYzJlZTZhNTRhNmRl
+MDQyYWZmZTk4NjBmNAoKQWxsIGJlaW5nIHdlbGwgdGhpcyBtZWFucyB0aGF0IGl0IHdpbGwgYmUg
+aW50ZWdyYXRlZCBpbnRvIHRoZSBsaW51eC1uZXh0CnRyZWUgKHVzdWFsbHkgc29tZXRpbWUgaW4g
+dGhlIG5leHQgMjQgaG91cnMpIGFuZCBzZW50IHRvIExpbnVzIGR1cmluZwp0aGUgbmV4dCBtZXJn
+ZSB3aW5kb3cgKG9yIHNvb25lciBpZiBpdCBpcyBhIGJ1ZyBmaXgpLCBob3dldmVyIGlmCnByb2Js
+ZW1zIGFyZSBkaXNjb3ZlcmVkIHRoZW4gdGhlIHBhdGNoIG1heSBiZSBkcm9wcGVkIG9yIHJldmVy
+dGVkLgoKWW91IG1heSBnZXQgZnVydGhlciBlLW1haWxzIHJlc3VsdGluZyBmcm9tIGF1dG9tYXRl
+ZCBvciBtYW51YWwgdGVzdGluZwphbmQgcmV2aWV3IG9mIHRoZSB0cmVlLCBwbGVhc2UgZW5nYWdl
+IHdpdGggcGVvcGxlIHJlcG9ydGluZyBwcm9ibGVtcyBhbmQKc2VuZCBmb2xsb3d1cCBwYXRjaGVz
+IGFkZHJlc3NpbmcgYW55IGlzc3VlcyB0aGF0IGFyZSByZXBvcnRlZCBpZiBuZWVkZWQuCgpJZiBh
+bnkgdXBkYXRlcyBhcmUgcmVxdWlyZWQgb3IgeW91IGFyZSBzdWJtaXR0aW5nIGZ1cnRoZXIgY2hh
+bmdlcyB0aGV5CnNob3VsZCBiZSBzZW50IGFzIGluY3JlbWVudGFsIHVwZGF0ZXMgYWdhaW5zdCBj
+dXJyZW50IGdpdCwgZXhpc3RpbmcKcGF0Y2hlcyB3aWxsIG5vdCBiZSByZXBsYWNlZC4KClBsZWFz
+ZSBhZGQgYW55IHJlbGV2YW50IGxpc3RzIGFuZCBtYWludGFpbmVycyB0byB0aGUgQ0NzIHdoZW4g
+cmVwbHlpbmcKdG8gdGhpcyBtYWlsLgoKVGhhbmtzLApNYXJrCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
