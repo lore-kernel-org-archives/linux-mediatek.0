@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF79C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 14:52:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30B22C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 15:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qSZwRpJhuUJqdwcEUcMNcxIrkgsEOrQMWDHKcXEVUys=; b=rRz8TEsDjYTI+C
-	+Ix6zS8fzLTZ6cgE6IwwnqPuvKAxScp41WgWHF3ePfcI3NHXRlY+G7z97rQBV2YibpeWMKhzQ2Lps
-	trPC/8UHG7pGlO2TJFcoIv5s3pf+TFUJznxIsZuiWwLkp/uwXxZfdI92X9jBYHQNij1xV4XAOgIek
-	HPa0BUDI/tRRjhVi83B+LpddaAR4YHqbG4mCwcy1sXJ7U8KhYBoHo7HxlOE1KZMokwPj1h5AoECU0
-	ohShF9D0vbaH5A2W3gJL6ys0Gv8zB+1TKBoFVsqVe5nS91i1jhIyHi8DRuaIJrBnz/mCkeuTCZzO0
-	tfc/odByL+nwA8kkU+dw==;
+	List-Owner; bh=O/3Xf5HlAjx2cdXR1pbYVn6O8tzN8SBoZin9JOqhJuE=; b=TqSmiDesh+bUNb
+	hnsYD/R6dm4VeLs76vkN6W8oqC5OQ7B8n5+8B4VmNiUMdMbpur03BUOLXk+rkspC/9SrdcHkCjgQc
+	HFbdgNlCYdI+AoFUJrn4k2M81P1mxeh0hnoBYaqxS8YiEmtWVhgnQNqnvv/q/05ncSE0qlq04nOAo
+	MjpafK46EDC9DIxT0rHnD3SPNGZT/eN6A1qCdQgIdmc1FCGMBkldQYHfx7BOxlsEl4YqvEiXWMibN
+	473cMoNPJ/g0Ix79fi04BVimCqumPsMAsJOiLBcl0AmgW6lJ6vxpvW9h1cGKTmc75H4R9VBRCz4ve
+	pLZElR3ACKBGrXemUF8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noREE-002bjX-8M; Tue, 10 May 2022 14:52:46 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1noRoM-002jTY-Oy; Tue, 10 May 2022 15:30:06 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noRE2-002bg6-Lo; Tue, 10 May 2022 14:52:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
- References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=x1CTARxTCcBRmbOr4xdk6jXfgn0v4S9YKk4prgzATyE=; b=UleV9ZTWCCUELqwT4Zl/Uyh1D8
- h/koyeCGeQ+PSs1/86JHD39OsfbdjRYromqJT11p00JgkD4b42U9LBVnjjKZ58nBoQPc2+J+U+kJR
- uX0yVmQsX/X7GqwdEQ9UZT5Bl7c69a5CH0LsBaf5A8DrLsVJUpLiQpWRlHHxHOxta6Pk=;
-Received: from p200300daa70ef200fccd1f935f1cf3cd.dip0.t-ipconnect.de
- ([2003:da:a70e:f200:fccd:1f93:5f1c:f3cd] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1noRDl-0000yY-5w; Tue, 10 May 2022 16:52:17 +0200
-Message-ID: <5959946d-1d34-49b9-1abe-9f9299cc194e@nbd.name>
-Date: Tue, 10 May 2022 16:52:16 +0200
+ id 1noRoA-002jMr-0D; Tue, 10 May 2022 15:29:55 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id F34F21F424D6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652196583;
+ bh=uJRHaCeOEBQcOZ0I5YodDyMVQnV4u4MF2nMkQyoDrmg=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=b8jMcQgCtA/xqIWPX4KqwUbHiEE9vt7wnr/RsMKkR7UGTITO5Lb7eQC4g0FIndVoP
+ /gDyg3b66kVa77mYqnjFbNWKhWp0QtsnCp7lW3N4h1dvwRrWGeDfrxy4Lx3gTX0xwp
+ cQEhX1tqiHZtyHdMIMWY0iYfKUOBTOCwRh/re781GYdsQB0HMb5/sIdEwqFkV8Sy2L
+ 2nStvk0DaQEoXJaUcFu5sdxaMXH286Hh+Jdqxaf/evE3/WtS1tP4+h9FACEEvJbuok
+ C/HcYwGTqC6C3JQIir1vk4K/xQ48bpETkXImRkvKLC/jbrhHSUtO5Ga3WNRrnhDkjB
+ GFDwJp+nDwB4w==
+Message-ID: <63169e65-cbfa-d495-754f-023dc8befa42@collabora.com>
+Date: Tue, 10 May 2022 17:29:40 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.9.0
-Subject: Re: [PATCH v2] net: dsa: tag_mtk: add padding for tx packets
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH] Revert "serial: 8250_mtk: Make sure to select the right
+ FEATURE_SEL"
 Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220510094014.68440-1-nbd@nbd.name>
- <20220510123724.i2xqepc56z4eouh2@skbuf>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <20220510123724.i2xqepc56z4eouh2@skbuf>
+To: Mark Brown <broonie@kernel.org>
+Cc: gregkh@linuxfoundation.org, jirislaby@kernel.org, matthias.bgg@gmail.com, 
+ zhiyong.tao@mediatek.com, colin.king@intel.com,
+ linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ wenst@chromium.org
+References: <20220510122620.150342-1-angelogioacchino.delregno@collabora.com>
+ <YnpeYGbo7JJK0lDk@sirena.org.uk>
+ <b13b019f-f766-60df-3764-d375f64ea7d3@collabora.com>
+ <YnphFjs4E4EYafT4@sirena.org.uk>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <YnphFjs4E4EYafT4@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_075235_008670_98F07327 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20220510_082954_300069_9EC0894D 
+X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +76,18 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On 10.05.22 14:37, Vladimir Oltean wrote:
-> On Tue, May 10, 2022 at 11:40:13AM +0200, Felix Fietkau wrote:
->> Padding for transmitted packets needs to account for the special tag.
->> With not enough padding, garbage bytes are inserted by the switch at the
->> end of small packets.
+Il 10/05/22 14:56, Mark Brown ha scritto:
+> On Tue, May 10, 2022 at 02:46:28PM +0200, AngeloGioacchino Del Regno wrote:
 > 
-> I don't think padding bytes are guaranteed to be zeroes. Aren't they
-> discarded? What is the issue?
-With the broken padding, ARP requests are silently discarded on the 
-receiver side in my test. Adding the padding explicitly fixes the issue.
+>> Sorry for missing this tag, and also I'm sorry for the noise.
+> 
+> Hey, if nobody broke anything all this testing stuff wouldn't be worth
+> it!
 
-- Felix
+
+Haha! That's true :-)
+
+Thank you!
 
 _______________________________________________
 Linux-mediatek mailing list
