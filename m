@@ -4,71 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34954C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 16:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87888C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 16:51:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BQgx0ccNrbrgMsWXsBFX1wv/DhtC8Szp/8K1g/JGfCw=; b=1l2yY8QOttkm21
-	33BRLO73lDDYchENPXP+/+xGUnRaYpgMDWLTlhT4m6NdS0eG8NFKEIrgMHa/K0CKkgyFZpTdDiFFy
-	mqKbv4v6sVq2t8ylO9YLzQqy8aeNK93rKND3jm5VlBV90psQrnGz8Dm9TjQ9FDCmFAremm7IFgn8u
-	hjDT3dss+n9S8pGsgnD0aMaQgnonbg50M7CriY2DN0Adm0lBqrn5ziyOr7Yz1VGU1TA56zz+4hq6r
-	0TUjfKWr9H8Q5EumtEkaRVHOcZnfnrqJ0JgydNPmUf1XHUQ0lTI2SDssZsVhxI88FFxbywN04I/0A
-	oqoval7tnuz8dMAdUzLA==;
+	List-Owner; bh=fhPBWvBv5kEvAMtpsRiVyomF8xiyaXra4FOCdeyLLsY=; b=rj4JhG8nL1W4Li
+	hZ3EQOHgSb3v1FultFJh+jQ1JX4hgF0aebmBYaE2bHPLAxYb1L7lOZYwkL48heobwngEYTdH0k/wi
+	fdZPq63O2OTeaz5X6NAQURCauALOx/sC0rNyWOKAhkMhiDDJHLVNdvAtkfwI+DJ6hy0CLQO8pUdd3
+	+ztBP8l6mJr6SN+yntQYyyiteS9b9zpdi808cHzVwl4yvup4wXBjJwgdhz3/5f7TEyp+0h7c0wOUE
+	/QfT9xjcbJXummK9twOA+49+vwvOdTFC84JbSJoiMwuONd/Va00Ql4OA6eifyOkjtA27/+f+NcG4l
+	TG/lgTPNnCPq8dpQtk1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noSeG-0032vl-DA; Tue, 10 May 2022 16:23:44 +0000
-Received: from mail-oi1-f170.google.com ([209.85.167.170])
+	id 1noT58-003DSE-TK; Tue, 10 May 2022 16:51:30 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noSeC-0032r6-AL
- for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 16:23:41 +0000
-Received: by mail-oi1-f170.google.com with SMTP id i66so6536730oia.11
- for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 09:23:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=AsmH6qO9HwkmcMOMbobeK/VdQk8dmPZzzT3Cf0QWRWs=;
- b=PnAMPEDlYG8ofl1H71bohM4MxxS9NOZ0pODouxgIK5pcl8Z+poXZ89FxJJ9dZZmAzd
- 31zchEzNWxjQIW5/z41b+ynkLvWpRA3EhFbTFh1sQktOEceGibr8UK83HrvVUX9gPlsJ
- QBnU0RguESwJPQoaSTiQvA9S2mp0DBa5BieCe4tosLjq/qsQFbkSAtZtkIy/4HjX1/tn
- /7cpazIKm/Xs1IpSIOMJpul/efvE5wdy651oplOHDcgpRxoFHUPj6i/Kqv5nlF/RVE7k
- sk8qgne/3ZjkunvmlMMSq9pM2Tv8SoIPhpw16M685YMcLDqLo9AaesFdORJK3qI/RXm9
- ZDFQ==
-X-Gm-Message-State: AOAM533HUfLEs0Yuyvg+C40WBFWZbk46Nj9UlNSVDlLDIE272tiEdvgd
- SnX73OZ9yJBvU9BrGZiqTQ==
-X-Google-Smtp-Source: ABdhPJxrg0B07y3+mX7CtbGGxImTXRMtKDadJvvZD01n75pgpAm1PYwoLukdXANtBtPD9rUYwcPUeQ==
-X-Received: by 2002:a05:6808:ec8:b0:2f9:6119:d6ed with SMTP id
- q8-20020a0568080ec800b002f96119d6edmr415268oiv.215.1652199817829; 
- Tue, 10 May 2022 09:23:37 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- m33-20020a056870562100b000edf80be4ecsm5603899oao.58.2022.05.10.09.23.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 May 2022 09:23:37 -0700 (PDT)
-Received: (nullmailer pid 2135880 invoked by uid 1000);
- Tue, 10 May 2022 16:23:36 -0000
-Date: Tue, 10 May 2022 11:23:36 -0500
-From: Rob Herring <robh@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, Sam.Shih@mediatek.com,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next 02/14] dt-bindings: net: mediatek,net: add
- mt7986-eth binding
-Message-ID: <YnqRiEvS8OV20NSY@robh.at.kernel.org>
-References: <cover.1651839494.git.lorenzo@kernel.org>
- <ce9e2975645e81758558201337f50c6693143fd8.1651839494.git.lorenzo@kernel.org>
+ id 1noT47-003CmM-40; Tue, 10 May 2022 16:50:29 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 5AB901F43174
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652201421;
+ bh=ZLNmt5sdQew7yKceknoOpRxb0cIfVFzschzGJ6r+zG4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=nhtj6M/AUwaJD8Ja7FlZFjsiFaIu+2p9Y8N17iQhM04EmemSlHuQtSp8lR+/4GUC0
+ CWJEYllptB8/qbDjjto0Pgc1nwfyhkmVcDGy1mhD5zMSnBNb0EYejN7YBX23Jn77Wn
+ TnbYfjal0cvdRR1du/7jQqsr/jA2bbPJWEYSmJIOuxHAj7NNpVnrffixXnYSMasmmz
+ gGsC0WhZbmPh7RsyqSedZNvXaPp4v3hcNKNPdnUmG+SVhSV5am9JLmtEmD/sWfg/G6
+ ob+7yyeog/yNcM2NbUOKZMXvFJW7+gLulAG5RJc6cZNbFNYureITmBWy1qtZxyl6Cq
+ MRyAvkHgirvqA==
+Date: Tue, 10 May 2022 12:50:16 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Tinghan Shen <tinghan.shen@mediatek.com>,
+ Tzung-Bi Shih <tzungbi@google.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
+Subject: Re: [PATCH v4 1/2] dt-bindings: remoteproc: mediatek: Make l1tcm reg
+ exclusive to mt819x
+Message-ID: <20220510165016.r7nyck2abt5m4djp@notapiano>
+References: <20220506213226.257859-1-nfraprado@collabora.com>
+ <20220506213226.257859-2-nfraprado@collabora.com>
+ <d3e027ca-9ccf-cf91-2414-85d2b9b680f0@linaro.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ce9e2975645e81758558201337f50c6693143fd8.1651839494.git.lorenzo@kernel.org>
+In-Reply-To: <d3e027ca-9ccf-cf91-2414-85d2b9b680f0@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_092340_422610_18624911 
-X-CRM114-Status: GOOD (  18.09  )
+X-CRM114-CacheID: sfid-20220510_095027_343502_0EB2D98A 
+X-CRM114-Status: GOOD (  23.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,207 +72,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 06, 2022 at 02:30:19PM +0200, Lorenzo Bianconi wrote:
-> Introduce dts bindings for mt7986 soc in mediatek,net.yaml.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/net/mediatek,net.yaml | 133 +++++++++++++++++-
->  1 file changed, 131 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> index 43cc4024ef98..da1294083eeb 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> @@ -21,6 +21,7 @@ properties:
->        - mediatek,mt7623-eth
->        - mediatek,mt7622-eth
->        - mediatek,mt7629-eth
-> +      - mediatek,mt7986-eth
->        - ralink,rt5350-eth
->  
->    reg:
-> @@ -28,7 +29,7 @@ properties:
->  
->    interrupts:
->      minItems: 3
-> -    maxItems: 3
-> +    maxItems: 4
+On Sat, May 07, 2022 at 06:33:31PM +0200, Krzysztof Kozlowski wrote:
+> On 06/05/2022 23:32, N=EDcolas F. R. A. Prado wrote:
+> > Commit ca23ecfdbd44 ("remoteproc/mediatek: support L1TCM") added support
+> > for the l1tcm memory region on the MT8192 SCP, adding a new da_to_va
+> > callback that handles l1tcm while keeping the old one for
+> > back-compatibility with MT8183. However, since the mt8192 compatible was
+> > missing from the dt-binding, the accompanying dt-binding commit
+> > 503c64cc42f1 ("dt-bindings: remoteproc: mediatek: add L1TCM memory regi=
+on")
+> > mistakenly added this reg as if it were for mt8183. And later
+> > it became common to all platforms as their compatibles were added.
+> > =
 
-What's the new interrupt? This should describe what each entry is.
+> > Fix the dt-binding so that the l1tcm reg can, and must, be present only
+> > on the supported platforms: mt8192 and mt8195.
+> > =
 
-If the mt7986-eth must have all 4 interrupts, then the if/then needs a 
-'minItems: 4'.
+> > Fixes: 503c64cc42f1 ("dt-bindings: remoteproc: mediatek: add L1TCM memo=
+ry region")
+> > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> > =
 
->  
->    power-domains:
->      maxItems: 1
-> @@ -189,6 +190,43 @@ allOf:
->            minItems: 2
->            maxItems: 2
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt7986-eth
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 15
-> +          maxItems: 15
-> +
-> +        clock-names:
-> +          items:
-> +            - const: fe
-> +            - const: gp2
-> +            - const: gp1
-> +            - const: wocpu1
-> +            - const: wocpu0
-> +            - const: sgmii_tx250m
-> +            - const: sgmii_rx250m
-> +            - const: sgmii_cdr_ref
-> +            - const: sgmii_cdr_fb
-> +            - const: sgmii2_tx250m
-> +            - const: sgmii2_rx250m
-> +            - const: sgmii2_cdr_ref
-> +            - const: sgmii2_cdr_fb
-> +            - const: netsys0
-> +            - const: netsys1
-> +
-> +        mediatek,sgmiisys:
-> +          minItems: 2
-> +          maxItems: 2
-> +
+> > ---
+> > The if:then: branches became rather long since it seems that it's not
+> > possible to override the properties in them, only add new ones. That is,
+> > I couldn't leave the items definition for all three regs in the global
+> > reg-names and just decrease minItems and maxItems to 2 for
+> > mt8183/mt8186.
+> > =
 
-> +        assigned-clocks: true
-> +
-> +        assigned-clock-parents: true
+> > Also I had to add a description to the global reg-names, since it
+> > couldn't be neither missing nor empty.
+> =
 
-These are automatically allowed on any node with 'clocks' (and now 
-#clock-cells), so you can drop them.
+> It is possible:
+> https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/b=
+indings/example-schema.yaml#L91
+> =
 
-> +
->  patternProperties:
->    "^mac@[0-1]$":
->      type: object
-> @@ -219,7 +257,6 @@ required:
->    - interrupts
->    - clocks
->    - clock-names
-> -  - power-domains
+> Keep constraints and list of names in properties. Then in allOf:if:then
+> raise minItems or lower maxItems, depending on the variant.
 
-Is that because this chip doesn't have power domains, or support for 
-them hasn't been added? In the latter case, then you should keep this. 
+Hi Krzysztof,
 
->    - mediatek,ethsys
->  
->  unevaluatedProperties: false
-> @@ -295,3 +332,95 @@ examples:
->          };
->        };
->      };
-> +
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/clock/mt7622-clk.h>
-> +
-> +    soc {
-> +      #address-cells = <2>;
-> +      #size-cells = <2>;
-> +
-> +      eth: ethernet@15100000 {
-> +        #define CLK_ETH_FE_EN            0
-> +        #define CLK_ETH_WOCPU1_EN        3
-> +        #define CLK_ETH_WOCPU0_EN        4
-> +        #define CLK_TOP_NETSYS_SEL      43
-> +        #define CLK_TOP_NETSYS_500M_SEL 44
-> +        #define CLK_TOP_NETSYS_2X_SEL   46
-> +        #define CLK_TOP_SGM_325M_SEL    47
-> +        #define CLK_APMIXED_NET2PLL      1
-> +        #define CLK_APMIXED_SGMPLL       3
-> +
-> +        compatible = "mediatek,mt7986-eth";
-> +        reg = <0 0x15100000 0 0x80000>;
-> +        interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH>,
-> +                     <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH>,
-> +                     <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH>,
-> +                     <GIC_SPI 199 IRQ_TYPE_LEVEL_HIGH>;
-> +        clocks = <&ethsys CLK_ETH_FE_EN>,
-> +                 <&ethsys CLK_ETH_GP2_EN>,
-> +                 <&ethsys CLK_ETH_GP1_EN>,
-> +                 <&ethsys CLK_ETH_WOCPU1_EN>,
-> +                 <&ethsys CLK_ETH_WOCPU0_EN>,
-> +                 <&sgmiisys0 CLK_SGMII_TX250M_EN>,
-> +                 <&sgmiisys0 CLK_SGMII_RX250M_EN>,
-> +                 <&sgmiisys0 CLK_SGMII_CDR_REF>,
-> +                 <&sgmiisys0 CLK_SGMII_CDR_FB>,
-> +                 <&sgmiisys1 CLK_SGMII_TX250M_EN>,
-> +                 <&sgmiisys1 CLK_SGMII_RX250M_EN>,
-> +                 <&sgmiisys1 CLK_SGMII_CDR_REF>,
-> +                 <&sgmiisys1 CLK_SGMII_CDR_FB>,
-> +                 <&topckgen CLK_TOP_NETSYS_SEL>,
-> +                 <&topckgen CLK_TOP_NETSYS_SEL>;
-> +        clock-names = "fe", "gp2", "gp1", "wocpu1", "wocpu0",
-> +                      "sgmii_tx250m", "sgmii_rx250m",
-> +                      "sgmii_cdr_ref", "sgmii_cdr_fb",
-> +                      "sgmii2_tx250m", "sgmii2_rx250m",
-> +                      "sgmii2_cdr_ref", "sgmii2_cdr_fb",
-> +                      "netsys0", "netsys1";
-> +        mediatek,ethsys = <&ethsys>;
-> +        mediatek,sgmiisys = <&sgmiisys0>, <&sgmiisys1>;
-> +        assigned-clocks = <&topckgen CLK_TOP_NETSYS_2X_SEL>,
-> +                          <&topckgen CLK_TOP_SGM_325M_SEL>;
-> +        assigned-clock-parents = <&apmixedsys CLK_APMIXED_NET2PLL>,
-> +                                 <&apmixedsys CLK_APMIXED_SGMPLL>;
-> +
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        mdio: mdio-bus {
-> +          #address-cells = <1>;
-> +          #size-cells = <0>;
-> +
-> +          phy5: ethernet-phy@0 {
-> +            compatible = "ethernet-phy-id67c9.de0a";
-> +            phy-mode = "2500base-x";
-> +            reset-gpios = <&pio 6 1>;
-> +            reset-deassert-us = <20000>;
-> +            reg = <5>;
-> +          };
-> +
-> +          phy6: ethernet-phy@1 {
-> +            compatible = "ethernet-phy-id67c9.de0a";
-> +            phy-mode = "2500base-x";
-> +            reg = <6>;
-> +          };
-> +        };
-> +
-> +        mac0: mac@0 {
-> +          compatible = "mediatek,eth-mac";
-> +          phy-mode = "2500base-x";
-> +          phy-handle = <&phy5>;
-> +          reg = <0>;
-> +        };
-> +
-> +        mac1: mac@1 {
-> +          compatible = "mediatek,eth-mac";
-> +          phy-mode = "2500base-x";
-> +          phy-handle = <&phy6>;
-> +          reg = <1>;
-> +        };
-> +      };
-> +    };
-> -- 
-> 2.35.1
-> 
-> 
+that example only shows setting minItems to override the default value, but=
+ the
+issue here is that it's not possible to override minItems/maxItems (after
+they're already set, even if implicitly) with a different value in the if.
+
+That is:
+
+	properties:
+	  reg-names:
+	    items:
+	      - const: sram
+	      - const: cfg
+	      - const: l1tcm
+
+	if:
+	  properties:
+	    compatible:
+	      enum:
+		- mediatek,mt8183-scp
+		- mediatek,mt8186-scp
+	then:
+	  properties:
+	    reg-names:
+	      minItems: 2
+	      maxItems: 2
+
+Generates the error on dtbs_check:
+
+/home/nfraprado/ext/git/linux/arch/arm64/boot/dts/mediatek/mt8183-kukui-kak=
+adu.dtb: scp@10500000: reg-names: ['sram', 'cfg'] is too short
+
+I believe the tooling is implicitly adding
+
+	      minItems: 3
+	      maxItems: 3
+
+to the common reg-names, and since it's not possible to override them, the
+override to 2 doesn't work so they are kept at 3, causing the error.
+
+Moving the minItems/maxItems to the common reg-names as a test gives:
+
+/home/nfraprado/ext/git/linux/Documentation/devicetree/bindings/remoteproc/=
+mtk,scp.yaml: properties:reg-names: {'minItems': 2, 'maxItems': 2, 'items':=
+ [{'const': 'sram'}, {'const': 'cfg'}, {'const': 'l1tcm'}]} should not be v=
+alid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+
+That error, plus looking in the items meta-schema, suggests me that maxItems
+isn't supposed to be set lower then the length of items. So even if the
+minItems/maxItems override is fixed, there's still this issue. It seems like
+defining the reg-names list separetely in each if branch is indeed the righ=
+t way
+to go.
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
