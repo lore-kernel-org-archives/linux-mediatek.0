@@ -4,101 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC55C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 10:57:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45C3CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 11:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LQjqWxPLHITGHyqkO6YA1j86gunAzOjonUjodcYsF20=; b=vFNqZruvLg8lzu
-	qd6fJmfqriVWIZq1G3A9OvDsZ8EAfaRNWTdBQn4YCw59R37zGrbm+5VmzG2Y/iHJbu/PclUFkQ92h
-	Qh3XrOwxoHbblzewOZ0oKNjGQHj1kMySzwmPh5ky1Wu5+j6dBItbdPbZxB6Trh5UktVfxbmGkw8My
-	art5BBGd/el6vU0PiGxry5LiwBAV/swZzxysmbKMC2iMXah0KXHfYH45tcxV15JpWUQDmje/eAwOx
-	tlUxaO5I/JX8QuoliwCEpJOhmonZvzKtSWc8h1/QGrYbdEnZLh7wrx+/I1b0GDqEBFX3lMVHtLcvX
-	bkbBhGW9peeD5J9kq5Pw==;
+	List-Owner; bh=ZhFuZtpnf5MuWf1qqXmaI4EebpHBqimDI6nuiBKbpxk=; b=ZqVsmBHNn/8es0
+	JPEN8BG3jAvLWtFD3nwo0IMzFDJk9akqjgNjTH/pgPO/Hy35U9EtRsHUUaYMF/RDTHEiIYABV2zc6
+	T6vEpSysT3URyEu6kxw874tAuJw1yr+6YWXH1yhBuvvcYkJqi6XoHy+IiVQLZKQyAQwMr7BAWiiyp
+	keSfCmmVORw4qF9DDEcp1J/y2nULnbE8l9goOLMXocNrKCJRisKBR5XPSTTU4V615lnjWhEx6KtWS
+	OoicQ8Jf5qf0damsfbyOUkpbFffEMvTJ/WSYwFDuV2we6jTgqRmZnaAg619CYKOcH4J0YInvuE/J7
+	FiNc30k/4Xms0F40nFcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noNYk-001N7w-Aq; Tue, 10 May 2022 10:57:42 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1noNez-001OlA-IH; Tue, 10 May 2022 11:04:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noNYJ-001Myg-TN
- for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 10:57:18 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id a21so19522638edb.1
- for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 03:57:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=hP5Qt4iyca+XwfT38e5QSOL60aC/HqAALnLY/TUKCos=;
- b=AEfURBdjsXwWF/lcnLtglije6dm0motmFUJ3sHf/KkiBswiXy9ufjlvwlDrR8WN4PL
- XMuEpKM07Pqu9NcReVRuZc3A+BIweN6yHXQr1S3nbr8pUlcuHYBz38kRdm64sycaSvXE
- OXg1rzHEXLqcL9QRpUYewLWV2+dKqOxqw1TLTEQmvpx43S2ZTDtTH6ky3U1jzkqcqGC8
- AcKmC8TZWXCmrP/cm6i9xBgI0MmH4YIDvYb11g3Pi26OkoxNETSWljjEqQL+GQRrHofK
- YlsS4Ju/BRl2euM7KPii2RrZs+NzRZf+Ogd1545zbmABGq5xffHTMxTib7OexD0VCOaC
- Nsyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=hP5Qt4iyca+XwfT38e5QSOL60aC/HqAALnLY/TUKCos=;
- b=1r7x4zYovsYcTDeyGcyfj56TBuv2GOCqAF3A2IeBsKOajz0Mz2YOzZGOmH7l2OjcU0
- CbOsNcPXlTaqeD6uzNJ+6iUNni1HIs1rXf5UEKYvttRBfZcwscKEpSNr9GGPQqDfVvI4
- uLnDF3nAT3zX/scqT4gfLL3fp9KL+I2ilNcmIId13lUqadH7G3eq/C5eiXUiuL1c1Vfr
- cyrQnKb+tETlFKvbYU9HQwSX2nlJ/2IcxpsEXz0dqcQbMLtl4XUYA4zFDnCAi5Ukw6TL
- P38emIz7agX/l5ogSbNhSdo+vdbBhzrvRSf66DymId+N6sdVmwc0WATOwSlA3T9/394s
- adLQ==
-X-Gm-Message-State: AOAM531EA7gbRjc55Hd0MrZds9YWB/Z206Y2nroRndwWjdmsyclck2y+
- g7R25Oy+ipaVYvt+n6ef0w1s1A==
-X-Google-Smtp-Source: ABdhPJwV2FoRMmaQQWsKESFLsiexggF0TXhfn9LN0RLxYk94n+1r1hcpoWyyOn26z4+WeOxzmE6bzA==
-X-Received: by 2002:a05:6402:b2e:b0:425:d3f7:4c1a with SMTP id
- bo14-20020a0564020b2e00b00425d3f74c1amr21827716edb.366.1652180232182; 
- Tue, 10 May 2022 03:57:12 -0700 (PDT)
-Received: from [192.168.0.251] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- t3-20020a05640203c300b00428aafb23d0sm1351992edw.57.2022.05.10.03.57.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 May 2022 03:57:11 -0700 (PDT)
-Message-ID: <0686125d-4984-5dcd-32ca-4eeece09d7c3@linaro.org>
-Date: Tue, 10 May 2022 12:57:10 +0200
+ id 1noNem-001Oem-0H; Tue, 10 May 2022 11:03:57 +0000
+X-UUID: f09fdebf0f0c46c9ba20dc7c39560dd0-20220510
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=6OxFz0g9u+YzOSW36SUqzu7pbeU+IChmobMWiJLZg54=; 
+ b=u5hCJx/2j0NBjS0ylEuHEO7yRt12kWaKnBZVWsElRV4VOooJC5NhKTBosaVTaCBHxe2Dwuhi46EwJ4hrmZhZUn0wSuyfImZgkQqcL2YQQUljvBQ3TN90egWLw72XY69uolWRc9XUiHF/T8kTDPZD8yqNq9Fgox5moEZdlIyxDtE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:3eca3a05-20b6-4e46-a337-fd3b59ccfe33, OB:0,
+ LO
+ B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:8
+X-CID-META: VersionHash:faefae9, CLOUDID:520f47b3-56b5-4c9e-8d83-0070b288eb6a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: f09fdebf0f0c46c9ba20dc7c39560dd0-20220510
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 747072813; Tue, 10 May 2022 04:03:40 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 10 May 2022 04:03:38 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 10 May 2022 19:03:37 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 10 May 2022 19:03:34 +0800
+Message-ID: <b1dc5dbd2f84b068bde5c49b25026b5756841fd2.camel@mediatek.com>
+Subject: Re: [PATCH v2 4/4] arm64: dts: mediatek: mt8195: enable usb remote
+ wakeup
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Macpaul Lin <macpaul.lin@mediatek.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>, 
+ <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Tianping Fang <tianping.fang@mediatek.com>,
+ Eddie Hung <eddie.hung@mediatek.com>, Fabien Parent <fparent@baylibre.com>
+Date: Tue, 10 May 2022 19:03:34 +0800
+In-Reply-To: <1f2ed3a2054c4ab707beb48aca4f3d6e7c601218.camel@mediatek.com>
+References: <20220128062902.26273-1-chunfeng.yun@mediatek.com>
+ <20220128062902.26273-4-chunfeng.yun@mediatek.com>
+ <6707a581-b42c-de13-c8d6-0528955d0218@collabora.com>
+ <1f2ed3a2054c4ab707beb48aca4f3d6e7c601218.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v2 1/3] dt-bindings: mediatek: add vdosys1 RDMA definition
- for mt8195
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rex-BC Chen <rex-bc.chen@mediatek.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "airlied@linux.ie" <airlied@linux.ie>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-References: <20220509044302.27878-1-rex-bc.chen@mediatek.com>
- <20220509044302.27878-2-rex-bc.chen@mediatek.com>
- <a5c9e7ad-c4b5-e757-cd6d-f79de47d1ff3@linaro.org>
- <fbbbc7e6a951bdde648ddd896f1fa163dafa16f1.camel@mediatek.com>
- <1c3fd336-1450-9b68-df81-2f01cc2ba32f@linaro.org>
- <CAGXv+5EHFjqiVQbXgcJWCo+TmaTU_z4e0g85beMLCNjyx5qJcw@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAGXv+5EHFjqiVQbXgcJWCo+TmaTU_z4e0g85beMLCNjyx5qJcw@mail.gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_035715_998848_1D0F9F08 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20220510_040356_100549_7B334C57 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,29 +93,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/05/2022 12:37, Chen-Yu Tsai wrote:
->> Use a generic node name, as Devicetree spec asks:
->> "The name of a node should be somewhat generic, reflecting the function
->> of the device and not its precise programming
->>
->> model. If appropriate, the name should be one of the following choices:"
->>
->> I proposed dma-controller, but feel free to find better generic node name.
+On Tue, 2022-05-10 at 11:47 +0800, Macpaul Lin wrote:
+> On Mon, 2022-01-31 at 10:59 +0100, AngeloGioacchino Del Regno wrote:
+> > Il 28/01/22 07:29, Chunfeng Yun ha scritto:
+> > > Enable USB remote wakeup of all four xHCI controllers
+> > > 
+> > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > 
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > 
 > 
-> dma-controller is covered by dma-controller.yaml, which references
-> dma-common.yaml in its entirety, so I don't think that would work.
+> This patch doesn't apply to 'for-next' branch to MediaTek's repo.
 > 
-> What about "blitter"? I think that is a generic term that is/was commonly
-> used with display hardware and sort of describes the function of the RDMA
-> & WDMA blocks, and if only one side is memory and the other is the display
-> pipeline.
+> 
+https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
+> 
+> Dear Chunfeng, could
+>  you please update a new version?
+Ok, I'll send it out this week.
 
-Sure, sounds fine!
-
-
-Best regards,
-Krzysztof
-
+> 
+> Thanks
+> Macpaul Lin
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
