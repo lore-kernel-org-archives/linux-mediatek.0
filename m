@@ -4,70 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23A69C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 07:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE90DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 07:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wQ3Z5AdxYmLaSUhsHseubqTIvL+kaC/YW7UmJ/1w1wc=; b=Pp/8tg6u/hUdjn
-	qttzsmX9grxP5xvkwOoRmekjAXzZSdojYJWVEjwmn0UL78nJuqfougXGRXu7aKcejA+oKZllTZ3e5
-	5MdpJnqlpMNpswveogEjsj3b1G/gm7ZOs882AmTID6gdvHs8+Zyz/mE6fT96eVBq1bIXRq0wA7TcV
-	r0t79qa8e9ftmKAs67BsfOQjjXiulylGdhezBzpB033k9jagZ471YV1/drwLiy6E1ItLxRW2+M6wy
-	RdkOyVAZEJmWcwdpdAtDu5VpAB8kW32Z2iNMS5BIoVTwMTwUKPTvy6qkgk2ymQAjdCC50mpnH2wvU
-	r7fJe+/W0WSZ9pBqXI5A==;
+	List-Owner; bh=rm5Ex6ht9DJHEfh4332bWwu9u/AlndJaFO0I81Krli0=; b=DU1NBzEY9HPdAS
+	YCiSDd5QZWiGOWfmaDgSObq8RJlyYXaO0reNnLi5G+Ks1OcYpJ8KoVHE3e73RIG+FvIwICezkKA+x
+	GTUcVPQoSSSMlHos4Grs4vKgmuHbDzY3IAJpi9FkhAzSXW6p/HpJM5jDQDKFEVW30T8DrdinB2uzD
+	aqDmmwkt+8NtZw1XdCJ9AMJQknfu2v7WSZVS9zSXS7os9aymTRETmCm9Z8GYP5BaPkOv6yuvJ2oFo
+	vHZrRd+xSgtpVtm/S5UVWts9fMqlPxUsZc3hrQ7Hy89OReYYUpaFx7tQnWqinPz1FJST4Lj0FVZvE
+	SEKmnEfx54DWVJ4FiC3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noKgL-000SAM-Cf; Tue, 10 May 2022 07:53:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1noKmX-000TuE-Ms; Tue, 10 May 2022 07:59:45 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noKfp-000RuW-Gs; Tue, 10 May 2022 07:52:51 +0000
-X-UUID: f3858e8af8aa4f5482b2b8888f5c62a3-20220510
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:f511997c-e923-46a4-b203-98c4827fec2e, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:b752df16-2e53-443e-b81a-655c13977218,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: f3858e8af8aa4f5482b2b8888f5c62a3-20220510
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1543770739; Tue, 10 May 2022 00:52:41 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 00:52:40 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Tue, 10 May 2022 15:52:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 10 May 2022 15:52:38 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- <hsinyi@chromium.org>, Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v10 1/4] dt-bindings: timer: Add compatible for Mediatek MT8186
-Date: Tue, 10 May 2022 15:52:30 +0800
-Message-ID: <20220510075233.5426-2-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220510075233.5426-1-allen-kh.cheng@mediatek.com>
-References: <20220510075233.5426-1-allen-kh.cheng@mediatek.com>
+ id 1noKmH-000ToS-PX; Tue, 10 May 2022 07:59:31 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id A101C1F43DAF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652169565;
+ bh=0/8USldqeWAsxzFJkTMe/8nTLoFf3bblkE2WDOxfPaA=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=QsSJbWxROhDdXBTTpKGk8WfomsV9vGvfl5NVqtQMOcuI4iJMx4XMSIXTGNnpEzlLp
+ LWdFgEckcYsR0PXF27dkvzglxnwhf3XmzbaARO41Bd1v7NLCYZG9vkSkbTqPRsr3l8
+ 7aNGkc2g6uhsfHplnw12egiZBdv8eSYeXYzKWHvgyKXJNC58znt2w92Leeli4C1+GV
+ HisD8QyimlyMsqzky7MFckxo7NhS1/LPbtz1gLNL0pkmj9MeZWap9Su26u99S1ExPZ
+ +76bFGfHVMTL/okru8zzb9WqInBShKFX8TpFnde4UfnAh/oj277gTFn5RedoDfAdW+
+ UycI7AxSIvj4w==
+Message-ID: <5f61f655-e5bc-9e70-ce11-431b630a5331@collabora.com>
+Date: Tue, 10 May 2022 09:59:22 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH] PCI: mediatek-gen3: Assert resets to ensure expected init
+ state
+Content-Language: en-US
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+ lorenzo.pieralisi@arm.com, robh@kernel.org, kw@linux.com,
+ bhelgaas@google.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, nfraprado@collabora.com
+References: <20220509171631.GA605998@bhelgaas>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220509171631.GA605998@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_005249_635375_C8979B4B 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220510_005930_130252_7778E907 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,36 +68,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Il 09/05/22 19:16, Bjorn Helgaas ha scritto:
+> On Mon, May 09, 2022 at 02:18:34PM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 04/04/22 16:48, AngeloGioacchino Del Regno ha scritto:
+>>> The controller may have been left out of reset by the bootloader,
+>>> in which case, before the powerup sequence, the controller will be
+>>> found preconfigured with values that were set before booting the
+>>> kernel: this produces a controller failure, with the result of
+>>> a failure during the mtk_pcie_startup_port() sequence as the PCIe
+>>> link never gets up.
+>>>
+>>> To ensure that we get a clean start in an expected state, assert
+>>> both the PHY and MAC resets before executing the controller
+>>> power-up sequence.
+>>>
+>>> Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192")
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>
+>> Friendly ping for an important fix :-)
+> 
+> d3bf75b579b9 appeared in v5.13-rc1 (May 2021, a year ago), so I assume
+> this is important for v5.19, but not urgent enough to require being in
+> v5.18.  Right?
+> 
 
-This commit adds dt-binding documentation of timer for Mediatek MT8186 SoC
-Platform.
+Hello Bjorn,
+no it's not *very* urgent, as MediaTek devices that do require this will be
+in v5.19 anyway...
 
-Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
----
- Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-index fbd76a8e023b..6f1f9dba6e88 100644
---- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-+++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-@@ -23,6 +23,7 @@ Required properties:
- 
- 	For those SoCs that use SYST
- 	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
-+	* "mediatek,mt8186-timer" for MT8186 compatible timers (SYST)
- 	* "mediatek,mt8192-timer" for MT8192 compatible timers (SYST)
- 	* "mediatek,mt8195-timer" for MT8195 compatible timers (SYST)
- 	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
--- 
-2.18.0
-
+Thanks,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
