@@ -4,144 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54887C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 08:26:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5D0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 08:51:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1w5jLLTylFeiCQ2VtJRAE4RqAJwLruXDAPviJBGyeUI=; b=hnhaX4DDxw9Y9HaG6uU2YUhkPq
-	zv4u9czckWfthw/KWkDBaGyeIXHzGg71+LXCd+pL4fpzF/loaIMedrXOC/m7X1drQLIh4Psd1GRQz
-	9RzB7tnu3EgxZ/LC+eFnzBTwo81NCZ9JTlV8RS5F9VEcBSo+IKzPdN2XokbLlmyiMV9Htcfcd0VAP
-	4F70rISuUbS30ifNLHsxlyjFfUMHHua0dnznwKzJb4Up+rP1XWloC39obzykaqx30Mf6zB9jU5lEm
-	VVwk3OEmMRBzDyGLjWgghQn9UOXOGG14sVJGDs4rMYA7oD+/EgwnIXhHG7XW63sBfVRzbjCwRnTfu
-	Mu7AyPag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uC41WYPN8xpOOPLn9zsciAVNF5nyeZXYeYRRJgVrd70=; b=qfL9Fh3aB/gdET
+	2ZMFu+0iW0VMMMhkd/gAKVSckiBpD2Cmr5lsiPh8j9cJ/MgScTben1ODrKMQ0UunlSmlUEX0sQsDO
+	mh0u3i022s751qcVoBZB46oBQOLUAO1rSg+mh36dFwcfhLVHQjm5mpKkEM1SS+ll0sJmhsc0cLRAR
+	4cmWgT3wo1Z6BzS6rQsZqaeSeRkNvAiCa1nZv75XUU3rBndwJFAJdn0hBaYvzKWlq+0+923CNiTCN
+	EvxX0GerP/1VzUT0bA/j4TUawPB/DrZBLwCDCAdUuEeJP/yOnZqqdXxwqOHBVPNH379PLfJgiQg6s
+	HdCXupfS+6+pPuCAABaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noLCL-000cJe-I0; Tue, 10 May 2022 08:26:25 +0000
-Received: from mail-tyzapc01on20707.outbound.protection.outlook.com
- ([2a01:111:f403:704b::707]
- helo=APC01-TYZ-obe.outbound.protection.outlook.com)
+	id 1noLa3-000hko-Ns; Tue, 10 May 2022 08:50:55 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noLC9-000cGE-UF; Tue, 10 May 2022 08:26:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XeQJRbgQ0b3YSyDGlFwCmO/z6fcit/p2CkvwD4YRoenqA4daqEZToacfAqxgOHP+PvFxBefUXKVHcQAS1KsAEx1fCuxWFpL6FGfbmJVYh4xlbmYjILGjnWE+WIsmcwA4uAYgELTh5Xw3fLvrtfStHhxHnJ0ocxN1puOKswYGZnx0fCZy0kGpkTsZHIiH9utd13tbPdqPoISsdi/t0YYSusKxe04S0b77o3tWTu9cNNUXG4gMx9Buei4eQsn3HDKTQLVr5kLr4cwTxTaxSyTCp61EsbHf1caIV9/DS1h3sp8VrJZpy4e/qIe6mUhpBZVZlF0L73aVcYV4NRGHoFLZUA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=knkxT1M2h6JzFJrJl6pTr9vsHrZv6/y7t97q9o6FSAo=;
- b=IQTnuDVtL47AEri5TOJUvajLUtUO7Ivv0aQZTJipZEDCN1r32ujLtWg5pzOQ8Rw5/2Ev4dnaG4lFBkr7u1W8ew/vYM+plXyDudCpgX1Q6afloeT4cJs6mnFAp6B+KHNBp3anTWTo4GIxBQ+gPDfdcD+qqH6GZ3rslIdB6lnPq0nQuJ0lz13gk9om4X4aEnzSqUGpZ9eNq8jWNEyo5HGyCKt4saoMAGG9k3vWjZemRHKbtoQzdc5gkbdnWa7mp50KpWya7I/gQyk25ZwXRJ1OMv0TXbZhYzB1d9Z+j0nJD8NunNGHOXCu+qmHyBrgoImrZFDV9Ds8H7dAtQXyC0wxvA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com; 
- s=selector2-vivo0-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=knkxT1M2h6JzFJrJl6pTr9vsHrZv6/y7t97q9o6FSAo=;
- b=IKvNnUHZnzjYa0FjSSbWWbQGc7Rp7RPYDzYJJNMIpixr8+MvpMQCnvk8WSUv6j3df0X5TpZI3nR4/4Ess1MuJkNQmaJWK1/E5r0ucwA4A0DXnmeoAJnzlCjrX7P2pwwA1pXsK/McWmfco4Fd+u/0ZYp+ZFvJl3gFvMHmQ405W30=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from SG2PR06MB3367.apcprd06.prod.outlook.com (2603:1096:4:78::19) by
- TY2PR06MB3359.apcprd06.prod.outlook.com (2603:1096:404:103::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5227.21; Tue, 10 May
- 2022 08:26:07 +0000
-Received: from SG2PR06MB3367.apcprd06.prod.outlook.com
- ([fe80::4591:4f3e:f951:6c8c]) by SG2PR06MB3367.apcprd06.prod.outlook.com
- ([fe80::4591:4f3e:f951:6c8c%7]) with mapi id 15.20.5227.022; Tue, 10 May 2022
- 08:26:07 +0000
-Message-ID: <61a4b23f-9740-6fb4-abd0-640d3353e788@vivo.com>
-Date: Tue, 10 May 2022 16:26:02 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH] cpufreq: mediatek: Fix potential deadlock problem in
- mtk_cpufreq_set_target
-Content-Language: en-US
-To: Viresh Kumar <viresh.kumar@linaro.org>
+ id 1noLa1-000hkK-62
+ for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 08:50:54 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id e24so15314760pjt.2
+ for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 01:50:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=23XI7omNPu4Ww2mwP5OeT/CtOKTWQPLI279EMdZEl8I=;
+ b=pAkf0vZXQUl7z39Mvm0va/etmp8fu6PH9u8QnPryN0wiLXCnJABlTzMSyA1vX3ufsd
+ 1NwpI4qHxfOjcijIcVJhXTnUyNexYug0j+ElYm4cIsoghJ+NFodEYzmqMIg0iwGq2sOh
+ IYMUG6mCbzmWSWr8F3zuIh+27WF/B7hQV9+aanx16CvGGbq1sbVmxt2FWWKhkPyBRTMV
+ OOSaopJdw6cqzqBOvlc8kWKvGJgjUxBC0+BdcA1Brs2jH982g/uKojUD9UdUhgYG6592
+ aS6U2Mze/PcfS32raLNpyKL1T3xq+CMGvh8nDeryMuuriTKiCsqcFlW2+78zx13+QcCl
+ baYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=23XI7omNPu4Ww2mwP5OeT/CtOKTWQPLI279EMdZEl8I=;
+ b=4eHky9mPm5zSZKdL9cQHi3J8sSWjXjQFH9XQ5LwfjVxQSP65AFDFf98PwlC22UEUni
+ S3TmCe/yfQbdd//sCZWbgMyNbXGoNWJExNS2KeXyuT44R2qQlLNi1hOsSfFu6/KnxmZM
+ PaArY1vO0Ksr7ygcmdOi4PcEchdgKrIwP/a51+KTjlQGZ11hV0G2GL7txzHARq5QlX0h
+ ryCSDt4FbFwlrhH+9i6a9CIs0jBzinervw+AcGCn2+8rCO4Hu3ZlS1s8D0UR5DuoIcfB
+ boiAA+ZAu830o942WYtAb5foisoBumLtD1OzYBEaFrPN/mWAjt7Ju0zgoBB0bY21nbHe
+ 3xBA==
+X-Gm-Message-State: AOAM532BbdebXBflUJoVuzb3Ty8MnnPq36uaDHjv35fy6uD6TzObR2Wk
+ cgpGmGb/wvBRF+o2LbhPt3TnFQ==
+X-Google-Smtp-Source: ABdhPJwXvUI+FMSIeZJnNlTMMqe93GAbMnaxp4pldVeXwi/DjAEPWwiYdnWfkXRdlr5EKGrPbXGY8Q==
+X-Received: by 2002:a17:902:8501:b0:15f:173:40e1 with SMTP id
+ bj1-20020a170902850100b0015f017340e1mr12562515plb.74.1652172652504; 
+ Tue, 10 May 2022 01:50:52 -0700 (PDT)
+Received: from localhost ([122.162.234.2]) by smtp.gmail.com with ESMTPSA id
+ q65-20020a17090a4fc700b001daac75511esm1230698pjh.51.2022.05.10.01.50.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 May 2022 01:50:52 -0700 (PDT)
+Date: Tue, 10 May 2022 14:20:50 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Jiabing Wan <wanjiabing@vivo.com>
 Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Rex-BC Chen <rex-bc.chen@mediatek.com>,
  "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>,
- Jia-Wei Chang <jia-wei.chang@mediatek.com>, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+ Jia-Wei Chang <jia-wei.chang@mediatek.com>,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] cpufreq: mediatek: Fix potential deadlock problem in
+ mtk_cpufreq_set_target
+Message-ID: <20220510085050.tza6rjvdkjsrhrjv@vireshk-i7>
 References: <20220510080136.11950-1-wanjiabing@vivo.com>
  <20220510081232.4u25qgryszzqblho@vireshk-i7>
-From: Jiabing Wan <wanjiabing@vivo.com>
-Organization: vivo
-In-Reply-To: <20220510081232.4u25qgryszzqblho@vireshk-i7>
-X-ClientProxiedBy: HK2PR04CA0071.apcprd04.prod.outlook.com
- (2603:1096:202:15::15) To SG2PR06MB3367.apcprd06.prod.outlook.com
- (2603:1096:4:78::19)
+ <61a4b23f-9740-6fb4-abd0-640d3353e788@vivo.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: aa246d00-83ef-4295-6e24-08da325ebac6
-X-MS-TrafficTypeDiagnostic: TY2PR06MB3359:EE_
-X-Microsoft-Antispam-PRVS: <TY2PR06MB3359676489AE13ADD79F5FA2ABC99@TY2PR06MB3359.apcprd06.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: r0Ht0tJ5b/je0u24xyILutPusg5V+ua+SgVJioF9rsDqnwVa9M3RsPKl/yETn0LKdQ8nuLZokh1GJdLzoAU05Eeon/X47OivCGlwDru5jMs1SBDqHpwgDDzsZKUTHYySjmfZ5shnj550dCp5hCxuzKaT3BaUH1El/8yY9VgHrXotdFe0KAXWSZMxlXP2JJUi7ruwWuZkn4v+jKt0o5rj+0sn31+ON1f3ONcm1WuLeZjsDYGnqZVetctHB2Vi3cDEscdJPRzf+omn/9iTMtOpOHLKBqZYiqhs+nN5Cj0DAmEJPLUDskLikGQefKw8WEya9HpeIUzXts3rkLb7Y1XhUGJBGA4vNTlHc2OxGngqatIZNddCux5ZHIeOcapKTOUp/l2vHBsu+etPeZcNl/jbJ9WZEitIdgET61Hh+aXOLQqFSvGcBGWl+q6l1QelW7GcBePTgbogZbEZj+7aDGx9sw6HUOwa7mUGQxz4RtYpiFtQzA0VEP2CuX5CdfvUqP45kq9b5/GaqwjIY+iZbh8RkEbCa2xDDDi3jGg6QGpg6ewsqr4qC0ptEflv+vcSslGHxzXQLDcC89K6XFTo7m3p42AaTKqBtlCBxT1yyoyBWg8+YGPZakV1LXIi79wQgxj1weZ0p+bfGf+DZGYOaTmNd6CauEW1mi+Lqo9kyZhqLXsyYtrYv2RDCnHD0/jKyRUVcWafVIgGLOCWvBJ2PxdcCh596VEsZ/+nBdpxNp6+kd61VaSpkYMd5ZRPiBREryLFlI69w5AkbvmfzFwEKHPwLN1OtctajvtHatULzyUu2wc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SG2PR06MB3367.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(8936002)(38350700002)(36756003)(53546011)(86362001)(6506007)(2616005)(38100700002)(66476007)(36916002)(66556008)(52116002)(54906003)(66946007)(6666004)(316002)(6916009)(4326008)(8676002)(2906002)(508600001)(83380400001)(6486002)(31696002)(49246003)(5660300002)(7416002)(6512007)(26005)(186003)(31686004)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MnJ2dm1OcG1nRlFpa3d2WVBISllxU0w2ZTcwSExzWCtZN3V2S24wbml5d3NU?=
- =?utf-8?B?NWZFVnd6ZG5RYnRsUkxOb0lEUkNraThLVmhGYjJXYVZFQ1YzL01JNjhVWjRF?=
- =?utf-8?B?dWJkcUpZVVNwY0NXY1VtZ1o3NDBOWk1FOUpKUlVGU1ZjQzd2T0FvRUwycWM5?=
- =?utf-8?B?Z1h0ZVVrVGw1WDJYRUlwcWRoTzQzZGc5c2ZkRk85cnBlU1dKSENYYXlyRXRz?=
- =?utf-8?B?RUF6TVlzSGIrODEyRWNlcFNIelczUXJSdStBNjR6RVpuOTJCZVJNUlg0U1ow?=
- =?utf-8?B?VzdwbEFOUFE0UzVOYnB1OERwZkZHUlRoOXU5NHlMQVBxL3ZwbFFKajJMZ0xy?=
- =?utf-8?B?QzJMMjBTZHVhWTF2S2YvRWxqK0MwYVNjRmUvaUVoSlFGdTZGdGRUVTVIbjlw?=
- =?utf-8?B?K2FWa01DM3IvVzljLzRDWEt2QVJKYjVnekNIOGIzQk8rSVVHb2RnYUV4QkxQ?=
- =?utf-8?B?WUtFTnZDMkZIUnRGTXR0RWhEcE95Y1JuYllDRjcyZDluRzZjeXJqOHVSMFVE?=
- =?utf-8?B?YUowM2tqNFZBbnVLRHlpcURDcnh1c1p1ZnFoamRESTkzRW5JNCsyQkRiRmgw?=
- =?utf-8?B?MmNLNERMUWFVS2lRVHNEMUd1RndRNVNRZS81a2haVm9pUk5kdmFiSXA2VSto?=
- =?utf-8?B?a0lWWWR0LzRQY2VFR1lsWkxPdHFqVnB4MDJTeFFWMWEzeTVGMFJnREo0bldo?=
- =?utf-8?B?NUxOUmJpZW84STcxV0tpemxEcXlWOGRFb3UvSDd1UURuVisyYzZGY2ljY0x6?=
- =?utf-8?B?ZVgyOUltaHZ1a0d5T0JmZzNwNm82MUNwWFlIRUxRdEM4WGtRKzVsR1g3bjZm?=
- =?utf-8?B?dHljaFFCclJIb3pjYnUzNUFKZ2ZaelpjRFE5YTU2eXA5QThza09SWUVrL2l1?=
- =?utf-8?B?UFg1c2h4MzllUHdsWHRXQjk4b0h6UnlpMWVKYkl2VUN2Y29mejkwWk91NXd1?=
- =?utf-8?B?OS9EZFhiTEkzQVlLUnRjTFNUbnJPd25SN1hGZTlPbDZOZGhtYytvY2F0TkVs?=
- =?utf-8?B?NjFYYjVrNlQ4T3F1TjNIQzgxQ29zVW1NN2FrK1ZRUjJyVGFKM1E1NTJGVWN6?=
- =?utf-8?B?b2Y1UURNQ053WFdNbnBzam01NTZwQVpQNEdRYVdBaXlOeTVXVGtJU3E4VDFW?=
- =?utf-8?B?Nzk2RHZ4L1FDVWVDMXh3YTNlSFEzOWdyY1NOWEtGSVprMXpQdVdjS0c0dGRa?=
- =?utf-8?B?VkFvQTZZdnpvTFppaXNJNUx6d2RnK0pyV2RGWHdvUVhZTWtZOVcrZHBjQVp0?=
- =?utf-8?B?SFZuUEVONm1PYmRJbkdCRktyNk8vOXpjQ3ZkNk1haEUyWVRwNVBqUEY4WG9w?=
- =?utf-8?B?SHgzU0o5V1VyZDk0QVRRSHh1cElPL2d3V2dYd1ZLNENva01XR1p6MzhhNHV2?=
- =?utf-8?B?cXpaZENJc0gvelowMWdNQXpGREtXeWJFeHpKaVRwQThRbXdFWVhkbkg5YTBB?=
- =?utf-8?B?VzYrMWJqUVlhNHowem5EQ3NLZ2swNitwWVRQRHU5SjFQSkFDeEtISXhQS2xy?=
- =?utf-8?B?N2t4ZERyY0pJTGhWYjZtZUc0Qm5qYkZEOGtMaEhqWEVXSHErUVF1RHNCemdz?=
- =?utf-8?B?R1cyWlV5K1BBSkZyTkpKYU9OVXppUDBVWURIeFdrZXp6UVNvWXcxVHAyRTJj?=
- =?utf-8?B?SlZlby9vcmN3K21QemszcGJXdGo3ZmZVeWZqbDI4TldhcXRCYld6N1FxQ0Jk?=
- =?utf-8?B?MUpQbHo3M0s4WENGN0VOMENHdGE0VU9jZlpLcGt2VXQrdGVZMnpmY2FQakUw?=
- =?utf-8?B?dDRYbk1iSGliQnVCRytLdCtYY1dIbHhWaVJwUmVFYW82UUFnR0c5dmt5WUxu?=
- =?utf-8?B?ZGxUVzhTMzNFMEM0WlVLVWhtbTR0amEvMENRNzB2M3dFbDI1azM1dHFSMDJl?=
- =?utf-8?B?RFBoeUZHNVJ6Vlp3aUQwcWlkbEJjRHZnVzVjUVdjaWdkWU9wU2hrcjR5OUpM?=
- =?utf-8?B?aUdOQUEweG8wRkNNbTIzMVpoWGRZU2lwUURYVmtLbjQrNEhQTmU4VHZqUE9L?=
- =?utf-8?B?T25QZEJEeFUzT3JJbFVLdm4rNTFVZ1ZIdmJsZU1Pc3FLbjFMOVNqTnZXSit3?=
- =?utf-8?B?SFpubjJncDZuc3FjN2s5Tk1rS0ZXK1pTeVQ4eVAzNk15ZnVVUVhkU3M0cjdj?=
- =?utf-8?B?N0dKMFlkTGI4UkVobVI1aGgyWUZ2RFk4OTRKTU9rT040Q1hiek95R1FZcnpX?=
- =?utf-8?B?eTBKVVMwSk55Zml4OHhoem9KSmlUOGk2QnhSbW9jWmMzajBhMVpNMHVSSDJu?=
- =?utf-8?B?L0Z6TkI4Rnp0b1luOWNwVUJONStqMEFXTlhxMm1vU3U2ZzhBeWNUYWJjQjJ6?=
- =?utf-8?B?TFAzalVLaXgwc3BwdWJjUjZMYkhUdE9EeUJyZkVNcEw5U0xmRk8wUT09?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aa246d00-83ef-4295-6e24-08da325ebac6
-X-MS-Exchange-CrossTenant-AuthSource: SG2PR06MB3367.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 May 2022 08:26:07.0258 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QgY2fKN0/H5Ihqsc9F25J2Dx12sjrIhii+O8J6aEV/IQOG6APJ1M6b7HEoBb+NvVrTwYbsf44sjmQhAc2/6jdw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY2PR06MB3359
+Content-Disposition: inline
+In-Reply-To: <61a4b23f-9740-6fb4-abd0-640d3353e788@vivo.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_012614_033737_B5316296 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20220510_015053_331993_58AF3AF9 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,69 +93,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Viresh Kumar
+On 10-05-22, 16:26, Jiabing Wan wrote:
+> Hi, Viresh Kumar
+> 
+> On 2022/5/10 16:12, Viresh Kumar wrote:
+> > On 10-05-22, 16:01, Wan Jiabing wrote:
+> > > Fix following coccichek error:
+> > > ./drivers/cpufreq/mediatek-cpufreq.c:199:2-8: preceding lock on line
+> > > ./drivers/cpufreq/mediatek-cpufreq.c:208:2-8: preceding lock on line
+> > > 
+> > > mutex_lock is acquired but not released before return.
+> > > Use 'goto out' to help releasing the mutex_lock.
+> > > 
+> > > Fixes: c210063b40ac ("cupful: mediatek: Add opp notification support")
+> > cupful ??
+> 
+> Sorry for the typo...
 
-On 2022/5/10 16:12, Viresh Kumar wrote:
-> On 10-05-22, 16:01, Wan Jiabing wrote:
->> Fix following coccichek error:
->> ./drivers/cpufreq/mediatek-cpufreq.c:199:2-8: preceding lock on line
->> ./drivers/cpufreq/mediatek-cpufreq.c:208:2-8: preceding lock on line
->>
->> mutex_lock is acquired but not released before return.
->> Use 'goto out' to help releasing the mutex_lock.
->>
->> Fixes: c210063b40ac ("cupful: mediatek: Add opp notification support")
-> cupful ??
+Did you write this line by hand or generate it with Git ? There shouldn't be a
+typo here.
 
-Sorry for the typo...
+> By the way, is this patch correct?
+> 
+> I am not sure whether it should return with the mutex_lock.
+> But IMO, it should release the lock before return.
 
-By the way, is this patch correct?
+Yes, we need to release the lock.
 
-I am not sure whether it should return with the mutex_lock.
-But IMO, it should release the lock before return.
-
-If correct, I'll fix this typo in v2.
-
-Thanks,
-
-Wan Jiabing
->> Signed-off-by: Wan Jiabing <wanjiabing@vivo.com>
->> ---
->>   drivers/cpufreq/mediatek-cpufreq.c | 6 ++++--
->>   1 file changed, 4 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
->> index 75bf21ddf61f..4c6d53c99d79 100644
->> --- a/drivers/cpufreq/mediatek-cpufreq.c
->> +++ b/drivers/cpufreq/mediatek-cpufreq.c
->> @@ -196,7 +196,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->>   
->>   	if (pre_vproc < 0) {
->>   		dev_err(cpu_dev, "invalid Vproc value: %d\n", pre_vproc);
->> -		return pre_vproc;
->> +		ret = pre_vproc;
->> +		goto out;
->>   	}
->>   
->>   	freq_hz = freq_table[index].frequency * 1000;
->> @@ -205,7 +206,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->>   	if (IS_ERR(opp)) {
->>   		dev_err(cpu_dev, "cpu%d: failed to find OPP for %ld\n",
->>   			policy->cpu, freq_hz);
->> -		return PTR_ERR(opp);
->> +		ret = PTR_ERR(opp);
->> +		goto out;
->>   	}
->>   	vproc = dev_pm_opp_get_voltage(opp);
->>   	dev_pm_opp_put(opp);
->> -- 
->> 2.35.1
-
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
