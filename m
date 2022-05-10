@@ -4,83 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3463C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 08:12:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8773C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 08:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QpkUiv0lStcI6myKvePn2hxsPU7aGvSca03/mrEOCr8=; b=tSuCwwDyVLg1Sq
-	PbK+HXlY4T5w1P4mUEQv24iCv1Pi3TUgMcNPdV6z5rELza5kySqXD3SOEazJ//sYIA75wfQk1J37M
-	kUP0Zox4aOYsTDpXBLon3j6NYjJHm2iav1Q5lYTChW7UZptIKnAtxAYfmJ1gYC5zl6+9iLBA0JUu5
-	2fqD+6Sli+BflpApUzEqBwYFDtmQAdzkhmMgiw38mtBuYGED6mexIzj5gTfd7/oJTRfKlhBRmYcmU
-	P+uDUlxcWJstP+1Zlv6cWAUEiqnsheVxk2vSNGT4VNAvyPVXzWfau6n9f4Zm2dzjNqGHpJlv5BasS
-	xUDoeiobKSi2+V5F2ZZQ==;
+	List-Owner; bh=I5aJeysnm+FzYm2DGS0lDQaDp4EBtUisD2x2xtrzJc0=; b=Eg33Nc2n6q1cHL
+	bJXogG8GhFAxZCuCjGGm6hAtm2siCv8H8G7ofPk9fe1B5Ixz4jbFnCyh0UMq8IQduUsgeM99F36gm
+	SlnJZnbTQ1Axt/tQZF7hXzj4WTFwBC99ik7Qo5DrCFTBpkwqxOKOEx3OPJYDit53uya4S7vOY0zcF
+	VFrKR0aGapMx05F/0e41+2gdrO9sZEXKxasPye/q1mO+xwC2C9rb8TKaF+Zi//FZdMvj9WK8RJmBT
+	zrPS+KIDz4OQz12lL3EFcMa8yVqtBTlymh6+jba7E+u+5HDQ/v9zoIS/rP25XXjDW/b1k+G6TBhRF
+	cAVZvulpq1NGxsOitDEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noKzG-000YWI-Go; Tue, 10 May 2022 08:12:54 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1noL2f-000ZKY-Dv; Tue, 10 May 2022 08:16:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noKz2-000YP2-0l
- for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 08:12:41 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id
- j10-20020a17090a94ca00b001dd2131159aso1448363pjw.0
- for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 01:12:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=GgyywbUmtILgp/wvvcsqELPk8sbdswIe5sEtYfMivvE=;
- b=rNbeIahNNjFADBiapx76jRbHbwNwPqBjvbS/yGH4r1iAKLOzpPaEC9ZDc8hkixik73
- P5uD0eZRQv8jWs5/sV+8UV3bidqToM98pKnpRIuUkYOfhfstIwTJoPBxA/uz2PdvEQ9I
- K/m0YsAXA7u2zeUHjBxT7KL5oi8XIhwNZDjqLOxOEEC1GmumbHrC0W6UmwAJ5Nq6F40H
- ZneAzcK3oab6uJyxJMXx4u1MPuEDb9svPJ0VmuW/xJ2DAjoofz7pBDNWSY6YvAdglEAt
- GYPDfTst6IAi1aUPvylXif9IxulGpqXGh7TuOP3YdX/TJEfrA/GDsOodVmyIoqrMEjBt
- kBOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=GgyywbUmtILgp/wvvcsqELPk8sbdswIe5sEtYfMivvE=;
- b=ZvErEmLKOxVjKsDooh1gxhAt3q/mz2W4q+hG3M1pYh3r4Ytrbg5g4hVxJPjactNzwf
- wYC7iI9VS87Wv7+I58jmbIeotWxyUADzrZ7GiuwWkY9lGWcDA5Ce8bl14R8R49b2oPbG
- kqNRT7Im4nXHFWhTDN+EpIWPXmFl2EFH8WeuMrJpS1zl+48BKLQn/6ED+maw9J0uL0yu
- RIFfBRpPyUO6GpqW9qTTH7XkO2MxJlTcwyXchqLe5JM8nKWalWyoCTZAE43SaNcLjHbI
- i+znKYgP/6/35VvH1Gdy85FgN8jeoDqSGd5TAMwA3Jf7P6J8pgsctQn+XAGFBNfLXR9c
- aN3A==
-X-Gm-Message-State: AOAM533ie3AOzlcjml6TWNh2FaqW7W2EoDcPBOjxNSGbdsjm1+WyeWrq
- gHD6GI/gmUpOPUmA9tgEb8lk6g==
-X-Google-Smtp-Source: ABdhPJwcv12Soh8pLojrYlMpwtpxb8N7+SLb4GnvbtYHqs/lqRSoCcmiAtufKplJ/GKYTHrtAaj0QA==
-X-Received: by 2002:a17:903:410b:b0:15c:fd57:aa34 with SMTP id
- r11-20020a170903410b00b0015cfd57aa34mr19368857pld.82.1652170354409; 
- Tue, 10 May 2022 01:12:34 -0700 (PDT)
-Received: from localhost ([122.162.234.2]) by smtp.gmail.com with ESMTPSA id
- b15-20020a056a0002cf00b0050dc762814dsm10011525pft.39.2022.05.10.01.12.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 May 2022 01:12:33 -0700 (PDT)
-Date: Tue, 10 May 2022 13:42:32 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Wan Jiabing <wanjiabing@vivo.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>,
- "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>,
- Jia-Wei Chang <jia-wei.chang@mediatek.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+ id 1noL2T-000ZIc-VM; Tue, 10 May 2022 08:16:15 +0000
+X-UUID: 7aa258fc35eb45d8912ba809ea780fc3-20220510
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:334ab75d-aa7c-4568-8cab-02f541f98695, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:e282e016-2e53-443e-b81a-655c13977218,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 7aa258fc35eb45d8912ba809ea780fc3-20220510
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 119926431; Tue, 10 May 2022 01:16:08 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 10 May 2022 01:09:24 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 10 May 2022 16:09:23 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 10 May 2022 16:09:23 +0800
+Message-ID: <304e7eefbb57e9c938737b64fbb515201c7944b8.camel@mediatek.com>
 Subject: Re: [PATCH] cpufreq: mediatek: Fix potential deadlock problem in
  mtk_cpufreq_set_target
-Message-ID: <20220510081232.4u25qgryszzqblho@vireshk-i7>
-References: <20220510080136.11950-1-wanjiabing@vivo.com>
-MIME-Version: 1.0
-Content-Disposition: inline
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Wan Jiabing <wanjiabing@vivo.com>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Andrew-sh.Cheng
+ <andrew-sh.cheng@mediatek.com>, Jia-Wei Chang <jia-wei.chang@mediatek.com>,
+ <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Tue, 10 May 2022 16:09:23 +0800
 In-Reply-To: <20220510080136.11950-1-wanjiabing@vivo.com>
-User-Agent: NeoMutt/20180716-391-311a52
+References: <20220510080136.11950-1-wanjiabing@vivo.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_011240_074039_27A25166 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20220510_011614_065809_B8FA4D21 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,7 +84,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10-05-22, 16:01, Wan Jiabing wrote:
+On Tue, 2022-05-10 at 16:01 +0800, Wan Jiabing wrote:
 > Fix following coccichek error:
 > ./drivers/cpufreq/mediatek-cpufreq.c:199:2-8: preceding lock on line
 > ./drivers/cpufreq/mediatek-cpufreq.c:208:2-8: preceding lock on line
@@ -105,30 +92,32 @@ On 10-05-22, 16:01, Wan Jiabing wrote:
 > mutex_lock is acquired but not released before return.
 > Use 'goto out' to help releasing the mutex_lock.
 > 
-> Fixes: c210063b40ac ("cupful: mediatek: Add opp notification support")
-
-cupful ??
-
+> Fixes: c210063b40ac ("cupful: mediatek: Add opp notification
+> support")
 > Signed-off-by: Wan Jiabing <wanjiabing@vivo.com>
 > ---
 >  drivers/cpufreq/mediatek-cpufreq.c | 6 ++++--
 >  1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c
+> b/drivers/cpufreq/mediatek-cpufreq.c
 > index 75bf21ddf61f..4c6d53c99d79 100644
 > --- a/drivers/cpufreq/mediatek-cpufreq.c
 > +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -196,7 +196,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+> @@ -196,7 +196,8 @@ static int mtk_cpufreq_set_target(struct
+> cpufreq_policy *policy,
 >  
 >  	if (pre_vproc < 0) {
->  		dev_err(cpu_dev, "invalid Vproc value: %d\n", pre_vproc);
+>  		dev_err(cpu_dev, "invalid Vproc value: %d\n",
+> pre_vproc);
 > -		return pre_vproc;
 > +		ret = pre_vproc;
 > +		goto out;
 >  	}
 >  
 >  	freq_hz = freq_table[index].frequency * 1000;
-> @@ -205,7 +206,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+> @@ -205,7 +206,8 @@ static int mtk_cpufreq_set_target(struct
+> cpufreq_policy *policy,
 >  	if (IS_ERR(opp)) {
 >  		dev_err(cpu_dev, "cpu%d: failed to find OPP for %ld\n",
 >  			policy->cpu, freq_hz);
@@ -138,11 +127,18 @@ cupful ??
 >  	}
 >  	vproc = dev_pm_opp_get_voltage(opp);
 >  	dev_pm_opp_put(opp);
-> -- 
-> 2.35.1
 
--- 
-viresh
+Hello Wan,
+
+Thanks for checking this issue.
+I did not notice this issue when I am asked to move the mutex lock here
+in my patch.
+
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+
+BRs,
+Rex
+
 
 _______________________________________________
 Linux-mediatek mailing list
