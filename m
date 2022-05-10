@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5D0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 08:51:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D48E0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 08:54:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uC41WYPN8xpOOPLn9zsciAVNF5nyeZXYeYRRJgVrd70=; b=qfL9Fh3aB/gdET
-	2ZMFu+0iW0VMMMhkd/gAKVSckiBpD2Cmr5lsiPh8j9cJ/MgScTben1ODrKMQ0UunlSmlUEX0sQsDO
-	mh0u3i022s751qcVoBZB46oBQOLUAO1rSg+mh36dFwcfhLVHQjm5mpKkEM1SS+ll0sJmhsc0cLRAR
-	4cmWgT3wo1Z6BzS6rQsZqaeSeRkNvAiCa1nZv75XUU3rBndwJFAJdn0hBaYvzKWlq+0+923CNiTCN
-	EvxX0GerP/1VzUT0bA/j4TUawPB/DrZBLwCDCAdUuEeJP/yOnZqqdXxwqOHBVPNH379PLfJgiQg6s
-	HdCXupfS+6+pPuCAABaw==;
+	List-Owner; bh=rgETQUQ5KEqwvDkvRQi1wbsY7EQYeDy6Cj1WcyYzmyc=; b=Vc6MvSkiygEpxu
+	l8cNqs9C8HlZgR4aikErNswrGSelbH/DR2/ZAOgSlZU7o1OdowL81uE/CeubNab2i5OH40nm7B7QC
+	uY9fFqr4vI/d/JvT8aXo3gPtKXm0MPZWLyvBKR1G5zSHdk+ALDqMIKoTzkQSEXBLfuKbS04eqOw6d
+	EAHnLWSuFemGrAFRLy/lXkVws7xUOcda5kzDp3nKkXfoGt+rn34pPjxUCcZvmb6JQEP+zV/EAobJG
+	TiR8oEK6rfkScNnhmUYQcVWMUqoIVOFkrDqtpIh57KFy/nViu20ujN2xZ57gMIdD1v9iPxijeoWT7
+	PL5/fDeI8c8L9E/Piw4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noLa3-000hko-Ns; Tue, 10 May 2022 08:50:55 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1noLdY-000iTO-DT; Tue, 10 May 2022 08:54:32 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noLa1-000hkK-62
- for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 08:50:54 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id e24so15314760pjt.2
- for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 01:50:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=23XI7omNPu4Ww2mwP5OeT/CtOKTWQPLI279EMdZEl8I=;
- b=pAkf0vZXQUl7z39Mvm0va/etmp8fu6PH9u8QnPryN0wiLXCnJABlTzMSyA1vX3ufsd
- 1NwpI4qHxfOjcijIcVJhXTnUyNexYug0j+ElYm4cIsoghJ+NFodEYzmqMIg0iwGq2sOh
- IYMUG6mCbzmWSWr8F3zuIh+27WF/B7hQV9+aanx16CvGGbq1sbVmxt2FWWKhkPyBRTMV
- OOSaopJdw6cqzqBOvlc8kWKvGJgjUxBC0+BdcA1Brs2jH982g/uKojUD9UdUhgYG6592
- aS6U2Mze/PcfS32raLNpyKL1T3xq+CMGvh8nDeryMuuriTKiCsqcFlW2+78zx13+QcCl
- baYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=23XI7omNPu4Ww2mwP5OeT/CtOKTWQPLI279EMdZEl8I=;
- b=4eHky9mPm5zSZKdL9cQHi3J8sSWjXjQFH9XQ5LwfjVxQSP65AFDFf98PwlC22UEUni
- S3TmCe/yfQbdd//sCZWbgMyNbXGoNWJExNS2KeXyuT44R2qQlLNi1hOsSfFu6/KnxmZM
- PaArY1vO0Ksr7ygcmdOi4PcEchdgKrIwP/a51+KTjlQGZ11hV0G2GL7txzHARq5QlX0h
- ryCSDt4FbFwlrhH+9i6a9CIs0jBzinervw+AcGCn2+8rCO4Hu3ZlS1s8D0UR5DuoIcfB
- boiAA+ZAu830o942WYtAb5foisoBumLtD1OzYBEaFrPN/mWAjt7Ju0zgoBB0bY21nbHe
- 3xBA==
-X-Gm-Message-State: AOAM532BbdebXBflUJoVuzb3Ty8MnnPq36uaDHjv35fy6uD6TzObR2Wk
- cgpGmGb/wvBRF+o2LbhPt3TnFQ==
-X-Google-Smtp-Source: ABdhPJwXvUI+FMSIeZJnNlTMMqe93GAbMnaxp4pldVeXwi/DjAEPWwiYdnWfkXRdlr5EKGrPbXGY8Q==
-X-Received: by 2002:a17:902:8501:b0:15f:173:40e1 with SMTP id
- bj1-20020a170902850100b0015f017340e1mr12562515plb.74.1652172652504; 
- Tue, 10 May 2022 01:50:52 -0700 (PDT)
-Received: from localhost ([122.162.234.2]) by smtp.gmail.com with ESMTPSA id
- q65-20020a17090a4fc700b001daac75511esm1230698pjh.51.2022.05.10.01.50.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 May 2022 01:50:52 -0700 (PDT)
-Date: Tue, 10 May 2022 14:20:50 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Jiabing Wan <wanjiabing@vivo.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>,
- "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>,
- Jia-Wei Chang <jia-wei.chang@mediatek.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] cpufreq: mediatek: Fix potential deadlock problem in
- mtk_cpufreq_set_target
-Message-ID: <20220510085050.tza6rjvdkjsrhrjv@vireshk-i7>
-References: <20220510080136.11950-1-wanjiabing@vivo.com>
- <20220510081232.4u25qgryszzqblho@vireshk-i7>
- <61a4b23f-9740-6fb4-abd0-640d3353e788@vivo.com>
+ id 1noLdV-000iSF-NJ
+ for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 08:54:31 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24A5TVOj021012;
+ Tue, 10 May 2022 03:53:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=PODMain02222019;
+ bh=nKGRBqzibSjez+vkONFFLwJr7PwxcpIyPYxlptEvWM0=;
+ b=J+FbisA9A5Ze1z9aIrpEfHLUTg2gVXj7H7bSN4nrbhkPEBboTmt3Eui6mhY1FcfWo3wg
+ 0ja8/ZGMBTxBAf6RHoIxDsSdWKDymtUu2voXPGzoF029dQVFZaXPgKdvvgnygoWIQZhs
+ EzZM2VuXgaAkLLBopTuUdtrrTTYGBym1gl0nbwUXAVuBK8gd6C4vmfaubAS1Bkrwcozz
+ R6C4LwavDOL8wUkzOacujJn6OSpm1G4Wj9Ha213yUycjW+hELkniZ6MRMsTYjvzzAVKh
+ v2l2bEhj1d1Uux/LmR373M2GHfgDKffMkq2KPWQQSVz4+cHVAo30bqwsFW8g+ztEs+Iy bA== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3fwn6nuthy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Tue, 10 May 2022 03:53:25 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Tue, 10 May
+ 2022 09:53:24 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
+ Frontend Transport; Tue, 10 May 2022 09:53:24 +0100
+Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id E3A4411D1;
+ Tue, 10 May 2022 08:53:23 +0000 (UTC)
+Date: Tue, 10 May 2022 08:53:23 +0000
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: Kirill Marinushkin <kmarinushkin@birdec.com>
+CC: <broonie@kernel.org>, <lgirdwood@gmail.com>,
+ <codrin.ciubotariu@microchip.com>, <lars@metafoo.de>,
+ <cychiang@chromium.org>, <tzungbi@google.com>, <bleung@chromium.org>,
+ <matthias.bgg@gmail.com>, <oder_chiou@realtek.com>,
+ <steven.eckhoff.opensource@gmail.com>,
+ <srinivas.kandagatla@linaro.org>, <alexandre.belloni@bootlin.com>,
+ <kuninori.morimoto.gx@renesas.com>, <jiaxin.yu@mediatek.com>,
+ <alsa-devel@alsa-project.org>, <chrome-platform@lists.linux.dev>,
+ <linux-mediatek@lists.infradead.org>, <patches@opensource.cirrus.com>
+Subject: Re: [PATCH 01/38] ASoC: soc-component: Add comment for the
+ endianness flag
+Message-ID: <20220510085323.GA38351@ediswmail.ad.cirrus.com>
+References: <20220504170905.332415-1-ckeepax@opensource.cirrus.com>
+ <20220504170905.332415-2-ckeepax@opensource.cirrus.com>
+ <ec86bdc6-b3c4-e595-02c8-e0687c442fd3@birdec.com>
+ <20220509083729.GX38351@ediswmail.ad.cirrus.com>
+ <901cb995-4a82-741e-00ea-a1c0b22ae749@birdec.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <61a4b23f-9740-6fb4-abd0-640d3353e788@vivo.com>
-User-Agent: NeoMutt/20180716-391-311a52
+In-Reply-To: <901cb995-4a82-741e-00ea-a1c0b22ae749@birdec.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Proofpoint-ORIG-GUID: Ji6ym588hfSzcX_mLm0yOhu-5A0irDxe
+X-Proofpoint-GUID: Ji6ym588hfSzcX_mLm0yOhu-5A0irDxe
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_015053_331993_58AF3AF9 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20220510_015429_965659_E6E2A11F 
+X-CRM114-Status: GOOD (  35.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,35 +98,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10-05-22, 16:26, Jiabing Wan wrote:
-> Hi, Viresh Kumar
+On Mon, May 09, 2022 at 09:22:42PM +0200, Kirill Marinushkin wrote:
+> On 5/9/22 10:37 AM, Charles Keepax wrote:
+> >On Sun, May 08, 2022 at 10:34:12PM +0200, Kirill Marinushkin wrote:
+> >This sounds like an error on the CPU side of the DAI link rather
+> >than the CODEC side of the DAI link. The formats that will be
+> >supported on the link are the union of the CPU and CODEC supported
+> >formats, ie. a format must be supported on both for the DAI to
+> >support it.
 > 
-> On 2022/5/10 16:12, Viresh Kumar wrote:
-> > On 10-05-22, 16:01, Wan Jiabing wrote:
-> > > Fix following coccichek error:
-> > > ./drivers/cpufreq/mediatek-cpufreq.c:199:2-8: preceding lock on line
-> > > ./drivers/cpufreq/mediatek-cpufreq.c:208:2-8: preceding lock on line
-> > > 
-> > > mutex_lock is acquired but not released before return.
-> > > Use 'goto out' to help releasing the mutex_lock.
-> > > 
-> > > Fixes: c210063b40ac ("cupful: mediatek: Add opp notification support")
-> > cupful ??
+> Yes, agree, both sides of the DAI link should provide only
+> endianness they support.
 > 
-> Sorry for the typo...
+> This works currently, but, from my understending, it will break,
+> after we set `endianness = 1`.
 
-Did you write this line by hand or generate it with Git ? There shouldn't be a
-typo here.
+It will break if the CPU side claims it supports endians which it
+doesn't which I believe is what you have in your system.
 
-> By the way, is this patch correct?
+> As soon as we start setting `endianness = 1`, the function
+> `convert_endianness_formats()` will extend LE to (LE | BE), right?
+
+Correct.
+
+> If so, setting `endianness = 1` is the source of an error, right?
+
+No, potentially it exposes an error but it is not the source of the
+error. Endian should have no meaning once you cross an I2S bus.
+
+> >If this is not the case then
+> >the host I2S controller is claiming to support an endian it does
+> >not, and the problem should be fixed on that side by removing the
+> >supported endian.
 > 
-> I am not sure whether it should return with the mutex_lock.
-> But IMO, it should release the lock before return.
+> I think we have a misundersanding of my example.
+> 
+> In my example, i don't mean, that my CPU part of the DAI link is broken.
 
-Yes, we need to release the lock.
+Why are you sure the CPU part of the DAI link isn't broken? I2S
+defines the order bits should be sent out on the bus, this means if
+the CPU side recieves big endian or little endian data it doesn't
+matter, the actual bus signals should be identical in both cases.
+If only one endian works the actual signals on the bus must have
+been different depending on which endian you played in which case
+the host side doesn't match the I2S specification.
 
--- 
-viresh
+My point is that what you are seeing is exactly what you get if
+your CPU DAI claimed to support both big and little endian but
+just puts that data directly out on the bus, rather than adapting
+to the endian of data it receives.
+
+And to be fair this is exactly what I am trying to tackle with this
+series. The fact we have so many CODECs that are incorrectly not
+specifying the endianness flag means that it is very easy for the
+host side guys to do testing and not realise that the CODEC is the
+one limiting the supported endians on the DAI link and thus miss
+they have claimed to support endians they don't.
+
+I believe you are right that there is a reasonable chance will see
+some breakage after these patches, but that breakage should be
+exposing host side bugs which we need to fix anyway.
+
+> What i tried to demonstrate - is that if i set the unsupported
+> endianness, i wouldn't expect that "the CODEC probably can care
+> about the endian", as the message in [PATCH 00/38] suggests.
+
+That comment in my original post was in respect to CODECs that
+recieve/transmit audio directly over a SPI bus rather than a
+normal audio bus. The is no standard governing how audio data is
+transmitted over the SPI bus, thus endian could be important,
+although I need to do some more work to analyse how people are
+using these links. Often they are implemented effectively as a
+CPU side DAI anyway.
+
+Thanks,
+Charles
 
 _______________________________________________
 Linux-mediatek mailing list
