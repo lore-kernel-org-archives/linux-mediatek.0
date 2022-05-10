@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A590C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 01:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ABE9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 03:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I0KpaH44VyzeyXsAlHHtGF0vXcjRzPvsO9V39NIIJwY=; b=RewVau4+upYKDL
-	reh2aa0QNuMbqOx/lLcvlZ0KMbgqc3iBVDnEJdtx+KlUc0U5dkYQfaimIzb4/UzyCjAQyrKL0nshV
-	5Q2syio4bMufDbjGyAFSWrb4n3N6KeOxXR0APw+pivpUGiHxhXlpqbkN5Eu/w9/NsaWZ3KSpWed8p
-	fU7V7qGfyHVk6Chbae6hOwXtdo5gVq5QK4q8XdPAGE/GeCqqDmbd1olluN3VmmRMReZzEDZVbJqcm
-	Bl2JXCX69T5cKUgNztw/Msk/Eu/RnzYKxlWlei/Uh7fijG3RoaYmt0iUw5B/3qPmoB6MjZBvXsDCp
-	YrMTPnJ6660CU1wFppYA==;
+	List-Owner; bh=Xi1RMIPAso9FAFxVPGfHC6hhymzA/soW8io7lRR8pLo=; b=KjI84LoVOJKCNx
+	icKXKxUBD6/JRgHJSONzFj1DzAGrDej6VZTWNS0o4jAtsN8kuFZXUu8bB5oSlHKO2zGRp4Q1rYOw8
+	Kk6GizhFXl2rP2dCMonYTsftxNrKKxjUEboW3cWqHZhRsyxHWuuNeiD9EALoqP+HUTRMTKvaJxXHg
+	m/yTwQaCZRviCHmWNF6qGIV+aCFcHUBLrJ1AJwy6HXP+aeR9a2gxafUi33FvmpgQvsoecRfP3VJs5
+	uOtyOHuD7KHKJdZYXbxXYiy5lBxTKhLxbVGQ3wR+3O27Ewroko38B72QRyhCH3UdlLKWoOEjbkzbz
+	SDFtUKJ4kPnkx3wL9MQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noExZ-00H2bj-Ty; Tue, 10 May 2022 01:46:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1noG6W-00HDQ1-9A; Tue, 10 May 2022 03:00:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noExX-00H2a2-5n; Tue, 10 May 2022 01:46:44 +0000
-X-UUID: 865979c7dfbc46d698e73ee13375def6-20220509
+ id 1noG6E-00HDK7-KE; Tue, 10 May 2022 02:59:50 +0000
+X-UUID: f802b4c9c1094bafab3f282c418e2baf-20220509
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:0b6eaa1e-b002-44c4-9258-3c1fccf02443, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:a5bb670c-d64e-4e31-accf-6c7320236f01, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:c0e6cf16-2e53-443e-b81a-655c13977218,
+ B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:8
+X-CID-META: VersionHash:faefae9, CLOUDID:73e532b3-56b5-4c9e-8d83-0070b288eb6a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 865979c7dfbc46d698e73ee13375def6-20220509
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: f802b4c9c1094bafab3f282c418e2baf-20220509
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <johnson.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1288499458; Mon, 09 May 2022 18:46:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 May 2022 18:46:29 -0700
+ with ESMTP id 918251185; Mon, 09 May 2022 19:59:40 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 May 2022 19:59:38 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 10 May 2022 09:46:28 +0800
+ Tue, 10 May 2022 10:59:36 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 10 May 2022 09:46:27 +0800
-Message-ID: <2a480ca0cf640e59a12d55435d02cb3892035a35.camel@mediatek.com>
-Subject: Re: [PATCH v2 3/3] dt-bindings: mediatek: add ethdr definition for
- mt8195
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "robh+dt@kernel.org"
- <robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
- <krzysztof.kozlowski+dt@linaro.org>, "chunkuang.hu@kernel.org"
- <chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>
-CC: "airlied@linux.ie" <airlied@linux.ie>, "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>, Jason-JH Lin
- =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?= <Jason-JH.Lin@mediatek.com>,
- Nancy Lin =?UTF-8?Q?=28=E6=9E=97=E6=AC=A3=E8=9E=A2=29?=
- <Nancy.Lin@mediatek.com>, "devicetree@vger.kernel.org"
- <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org"
- <dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+ Transport; Tue, 10 May 2022 10:59:36 +0800
+Message-ID: <e8124721a4ecd591ffea2c4d70853c1f89c83975.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: interconnect: Add MediaTek CCI
+ dt-bindings
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: Chanwoo Choi <cwchoi00@gmail.com>, <cw00.choi@samsung.com>,
+ <krzk+dt@kernel.org>, <robh+dt@kernel.org>, <kyungmin.park@samsung.com>
+CC: <khilman@kernel.org>, <linux-pm@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <jia-wei.chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 10 May 2022 09:46:26 +0800
-In-Reply-To: <85fcdcd0-e7c5-5192-9113-c69f9c3a6385@collabora.com>
-References: <20220509044302.27878-1-rex-bc.chen@mediatek.com>
- <20220509044302.27878-4-rex-bc.chen@mediatek.com>
- <46bc32df-e4e8-ac47-426d-8056714f0d5c@linaro.org>
- <5462209c5afb0a638ed777ec1829bb2717c8d76e.camel@mediatek.com>
- <98505974-afad-9639-d4f2-814097b0523b@linaro.org>
- <85fcdcd0-e7c5-5192-9113-c69f9c3a6385@collabora.com>
+Date: Tue, 10 May 2022 10:59:36 +0800
+In-Reply-To: <94efefab-918d-2367-4b74-076dd6f23936@gmail.com>
+References: <20220425125546.4129-1-johnson.wang@mediatek.com>
+ <20220425125546.4129-2-johnson.wang@mediatek.com>
+ <94efefab-918d-2367-4b74-076dd6f23936@gmail.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_184643_245411_6682A66D 
-X-CRM114-Status: GOOD (  19.12  )
+X-CRM114-CacheID: sfid-20220509_195946_717859_1712184B 
+X-CRM114-Status: GOOD (  31.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +81,234 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIyLTA1LTA5IGF0IDE4OjUwICswODAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
-ZWdubyB3cm90ZToKPiBJbCAwOS8wNS8yMiAxMjo0NCwgS3J6eXN6dG9mIEtvemxvd3NraSBoYSBz
-Y3JpdHRvOgo+ID4gT24gMDkvMDUvMjAyMiAxMDo1NCwgUmV4LUJDIENoZW4gd3JvdGU6Cj4gPiA+
-ID4gPiArICAgIHNvYyB7Cj4gPiA+ID4gPiArICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwyPjsK
-PiA+ID4gPiA+ICsgICAgICAgICNzaXplLWNlbGxzID0gPDI+Owo+ID4gPiA+ID4gKwo+ID4gPiA+
-ID4gKyAgICAgICAgZGlzcF9ldGhkckAxYzExNDAwMCB7Cj4gPiA+ID4gCj4gPiA+ID4gTm8gdW5k
-ZXJzY29yZXMgaW4gbm9kZSBuYW1lLiBHZW5lcmljIG5vZGUgbmFtZXMsIHNvIGRpc3BsYXktCj4g
-PiA+ID4gY29udHJvbGxlcj8KPiA+ID4gPiAKPiA+ID4gCj4gPiA+IE9LLCB3ZSB3aWxsIGNoYW5n
-ZSB0aGUgbm9kZSBuYW1lIHRvIGV0aGRyIGxpa2UgaW4gZHRzCj4gPiA+IGxpa2UgdGhpczoKPiA+
-ID4gZXRoZHIwOiBldGhkckAxYzExNDAwMCB7Cj4gPiA+IC4uLgo+ID4gPiB9Cj4gPiAKPiA+IElz
-ICJldGhkciIgYSBnZW5lcmljIG5hbWU/IElzIGl0IGFuIGFiYnJldmlhdGlvbiBvZiAiRW5lcmd5
-VHJhY2XihKIKPiA+IEhpZ2gKPiA+IER5bmFtaWMgUmFuZ2UiPyBJZiB5ZXMsIGl0IGFsc28gbG9v
-a3Mgc3BlY2lmaWMgdG8gVGV4YXMKPiA+IEluc3RydW1lbnRzLi4uCj4gPiAKPiA+IEJlc3QgcmVn
-YXJkcywKPiA+IEtyenlzenRvZgo+IAo+IAo+IFRoYXQncyBtZWRpYXRlay1kcm0sIGFuZCB0aGlz
-IHJlZmVycyB0byB0aGUgSERSIGJsb2NrIGluIHRoZSBkaXNwbGF5Cj4gSVAuLi4KPiAKPiBUaG91
-Z2gsIEkgaGF2ZSBubyBpZGVhIG9mIHdoYXQgIkVUIiBzdGFuZHMgZm9yIGluICJFVEhEUiIsIHNv
-LCBpdAo+IHdvdWxkIGJlCj4gZGVmaW5pdGVseSBuaWNlIGlmIE1lZGlhVGVrIGNhbiB3cml0ZSB0
-aGUgbWVhbmluZyBpbiB0aGUgZGVzY3JpcHRpb24sCj4gbGlrZQo+IAo+IGRlc2NyaXB0aW9uOgo+
-ICAgIEVUSERSIChFPz8/IFQ/Pz8gSGlnaCBEeW5hbWljIFJhbmdlKSBpcyBkZXNpZ25lZCBmb3Ig
-SERSIHZpZGVvIGFuZAo+IC4uLmJsYWgKPiAKPiBDaGVlcnMsCj4gQW5nZWxvCgpIZWxsbyBLcnp5
-c3p0b2YgYW5kIEFuZ2VsbywKCiJFVCIgaXMgYWN0dWFsbHkgbWVhbmluZ2xlc3MuCkVUIGlzIG9u
-ZSBvZiBtZWRpYXRlayBkZXBhcnRtZW50cyBhbmQgaXQncyB3aGVyZSB0aGUgZW5naW5lIGZyb20u
-ClRoZXJlZm9yZSwgSSB0aGluayB3ZSB3aWxsIGFkZCBkZXNjcmlwdGlvbiBsaWtlIHRoaXM6Cj4g
-RVRIRFIgKEVUIEhpZ2ggRHluYW1pYyBSYW5nZSkgaXMgYSBNZWRpYVRlayBpbnRlcm5hbCBIRFIg
-ZW5naW5lIGFuZAo+IGRlc2lnbmVkIGZvciBIRFIgdmlkZW8uLi4KCkJScywKUmV4CgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
-bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Chanwoo,
+
+On Mon, 2022-05-09 at 21:09 +0900, Chanwoo Choi wrote:
+> Hi,
+> 
+> On 22. 4. 25. 21:55, Johnson Wang wrote:
+> > Add devicetree binding of MediaTek CCI on MT8183 and MT8186.
+> > 
+> > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > ---
+> >   .../bindings/interconnect/mediatek,cci.yaml   | 139
+> > ++++++++++++++++++
+> >   1 file changed, 139 insertions(+)
+> >   create mode 100644
+> > Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > new file mode 100644
+> > index 000000000000..e5221e17d11b
+> > --- /dev/null
+> > +++
+> > b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > @@ -0,0 +1,139 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/interconnect/mediatek,cci.yaml*__;Iw!!CTRNKA9wMg0ARbw!z6ogArqzuIzPR3TYO1aW-Z-scpuZJxIriWMofdfnvrKTXAYBBLZeitAPIKyZayMYZGsR$
+> >  
+> > +$schema: 
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!z6ogArqzuIzPR3TYO1aW-Z-scpuZJxIriWMofdfnvrKTXAYBBLZeitAPIKyZa9f2pALd$
+> >  
+> > +
+> > +title: MediaTek Cache Coherent Interconnect (CCI) frequency and
+> > voltage scaling
+> > +
+> > +maintainers:
+> > +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> 
+> Why did you add your author information?
+> Please add your author information.
+
+Sorry, I don't really understand what you mean.
+Could you please explain your advice again?
+
+The author of this driver is 'Jia-Wei Chang'.
+We have added author information to the driver code and this binding
+document as above.
+
+> 
+> And add this dt-binding information to MAINTAINERS
+> as following: because I cannot catch the later patch
+> of modification.
+> 
+> cwchoi00@chanwoo:~/kernel/linux.chanwoo$ d
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index edc96cdb85e8..a11e9c1947b7 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -5698,6 +5698,7 @@ L:        linux-pm@vger.kernel.org
+>   S:     Maintained
+>   T:     git
+> git://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git
+>   F:     Documentation/devicetree/bindings/devfreq/
+> +F:     Documentation/devicetree/bindings/interconnect/mediatek,cci.y
+> aml
+>   F:     drivers/devfreq/
+>   F:     include/linux/devfreq.h
+>   F:     include/trace/events/devfreq.h
+> 
+
+I will add it in the next version.
+
+BRs,
+Johnson Wang
+> 
+> > +
+> > +description: |
+> > +  MediaTek Cache Coherent Interconnect (CCI) is a hardware engine
+> > used by
+> > +  MT8183 and MT8186 SoCs to scale the frequency and adjust the
+> > voltage in
+> > +  hardware. It can also optimize the voltage to reduce the power
+> > consumption.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - mediatek,mt8183-cci
+> > +      - mediatek,mt8186-cci
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description:
+> > +          The multiplexer for clock input of CPU cluster.
+> > +      - description:
+> > +          A parent of "cpu" clock which is used as an intermediate
+> > clock source
+> > +          when the original CPU is under transition and not stable
+> > yet.
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: cci
+> > +      - const: intermediate
+> > +
+> > +  operating-points-v2: true
+> > +  opp-table: true
+> > +
+> > +  proc-supply:
+> > +    description:
+> > +      Phandle of the regulator for CCI that provides the supply
+> > voltage.
+> > +
+> > +  sram-supply:
+> > +    description:
+> > +      Phandle of the regulator for sram of CCI that provides the
+> > supply
+> > +      voltage. When it presents, the cci devfreq driver needs to
+> > do
+> > +      "voltage tracking" to step by step scale up/down Vproc and
+> > Vsram to fit
+> > +      SoC specific needs. When absent, the voltage scaling flow is
+> > handled by
+> > +      hardware, hence no software "voltage tracking" is needed.
+> > +
+> > +required:
+> > +  - compatible
+> > +  - clocks
+> > +  - clock-names
+> > +  - operating-points-v2
+> > +  - proc-supply
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/mt8183-clk.h>
+> > +    cci: cci {
+> > +        compatible = "mediatek,mt8183-cci";
+> > +        clocks = <&mcucfg CLK_MCU_BUS_SEL>,
+> > +                 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> > +        clock-names = "cci", "intermediate";
+> > +        operating-points-v2 = <&cci_opp>;
+> > +        proc-supply = <&mt6358_vproc12_reg>;
+> > +    };
+> > +
+> > +    cci_opp: opp-table-cci {
+> > +        compatible = "operating-points-v2";
+> > +        opp-shared;
+> > +        opp2_00: opp-273000000 {
+> > +            opp-hz = /bits/ 64 <273000000>;
+> > +            opp-microvolt = <650000>;
+> > +        };
+> > +        opp2_01: opp-338000000 {
+> > +            opp-hz = /bits/ 64 <338000000>;
+> > +            opp-microvolt = <687500>;
+> > +        };
+> > +        opp2_02: opp-403000000 {
+> > +            opp-hz = /bits/ 64 <403000000>;
+> > +            opp-microvolt = <718750>;
+> > +        };
+> > +        opp2_03: opp-463000000 {
+> > +            opp-hz = /bits/ 64 <463000000>;
+> > +            opp-microvolt = <756250>;
+> > +        };
+> > +        opp2_04: opp-546000000 {
+> > +            opp-hz = /bits/ 64 <546000000>;
+> > +            opp-microvolt = <800000>;
+> > +        };
+> > +        opp2_05: opp-624000000 {
+> > +            opp-hz = /bits/ 64 <624000000>;
+> > +            opp-microvolt = <818750>;
+> > +        };
+> > +        opp2_06: opp-689000000 {
+> > +            opp-hz = /bits/ 64 <689000000>;
+> > +            opp-microvolt = <850000>;
+> > +        };
+> > +        opp2_07: opp-767000000 {
+> > +            opp-hz = /bits/ 64 <767000000>;
+> > +            opp-microvolt = <868750>;
+> > +        };
+> > +        opp2_08: opp-845000000 {
+> > +            opp-hz = /bits/ 64 <845000000>;
+> > +            opp-microvolt = <893750>;
+> > +        };
+> > +        opp2_09: opp-871000000 {
+> > +            opp-hz = /bits/ 64 <871000000>;
+> > +            opp-microvolt = <906250>;
+> > +        };
+> > +        opp2_10: opp-923000000 {
+> > +            opp-hz = /bits/ 64 <923000000>;
+> > +            opp-microvolt = <931250>;
+> > +        };
+> > +        opp2_11: opp-962000000 {
+> > +            opp-hz = /bits/ 64 <962000000>;
+> > +            opp-microvolt = <943750>;
+> > +        };
+> > +        opp2_12: opp-1027000000 {
+> > +            opp-hz = /bits/ 64 <1027000000>;
+> > +            opp-microvolt = <975000>;
+> > +        };
+> > +        opp2_13: opp-1092000000 {
+> > +            opp-hz = /bits/ 64 <1092000000>;
+> > +            opp-microvolt = <1000000>;
+> > +        };
+> > +        opp2_14: opp-1144000000 {
+> > +            opp-hz = /bits/ 64 <1144000000>;
+> > +            opp-microvolt = <1025000>;
+> > +        };
+> > +        opp2_15: opp-1196000000 {
+> > +            opp-hz = /bits/ 64 <1196000000>;
+> > +            opp-microvolt = <1050000>;
+> > +        };
+> > +    };
+> 
+> 
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
