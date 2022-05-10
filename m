@@ -4,70 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B25EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 10:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82B6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 10:28:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mCUEKeAXFq99AnfTQezIqOw8fNuYVLd0KQm6mbz1+KQ=; b=TZ0+w/CQKb4FCv
-	RE7irriKpAfm5MLIFytf21L/guZ/ubGLKts5uz7rqXGETcNGr2dB/KYwbXRKLnnazKcO43I5dNmYg
-	sDmpl4WYUT9XyWn/bCVWZJJFFUkH4lB6A4npJluFhbC88RkQQUn893ti63KbRz/ndd8BTwPoxs9bI
-	NjWcIbPHGvEYNJKrnQyD0YvD25dRg7yBySdZnxyX3HW5S3hcOSAN71fSOpvdGBMpxWPUL5sswbkPC
-	GzdlbB3CaRIL230QCHwml+fbIqSAWWeL0h5eiP/JNxzNBEUsEy+arH1jT/3QbnV0e+d0RyQ7LfGu1
-	KL1isBsA9NdnJhlcEKqw==;
+	List-Owner; bh=PoAw7Zm7SzGBEoOR9jEiGkxNS2mZoVX4WxINeGg5+kw=; b=dlNs/cVeSArVM4
+	1/US7dwyZjiDIq3skozla1cLEoxaejsa1JtVvddCNK1SbmaH5ROJqTV6FGfoMD+Cf8FYaW/bK1KFs
+	u5kGxO9ok+wClNKTXQJIHe2SkSkjc7grpcRUzuRwZrOQrIVWmRR2cxfFvbHmKt5DVTxMVbxlyo1l1
+	dU21IiyvAUYe8/lEuD4B55yRdiNYN53ls9kFSFdOVPwh7NR56Y0ZI3ypDJWq51KnSi8P6eGJZXkLK
+	OXgFLczTVxnCRVOeutz41vYNix7UieGV9DLnkwiUlc45LuR1uI2WVpcVmIdSEYkIzxWWB4HXUf61E
+	1+SjBQUzuuc9GDoQFuQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noMtq-0017PN-4c; Tue, 10 May 2022 10:15:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1noN6M-001Boz-0M; Tue, 10 May 2022 10:28:22 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noMtd-0017Kb-7d; Tue, 10 May 2022 10:15:15 +0000
-X-UUID: 65915e6ec1dd4c3d82d3b06ac176c4e0-20220510
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:cf2b5249-c2a6-46f3-ad1b-9e4d72e307f6, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:b7b345b3-56b5-4c9e-8d83-0070b288eb6a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 65915e6ec1dd4c3d82d3b06ac176c4e0-20220510
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 373396902; Tue, 10 May 2022 03:15:06 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 03:05:04 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 18:05:02 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 10 May 2022 18:05:02 +0800
-Message-ID: <2f88f72b957e73787686dfd131dac3a11a4c4341.camel@mediatek.com>
-Subject: Re: [PATCH v2] usb: typec: tcpci_mt6360: Update for BMC PHY setting
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: cy_huang <u0084500@gmail.com>, <linux@roeck-us.net>,
- <heikki.krogerus@linux.intel.com>, <gregkh@linuxfoundation.org>,
- <matthias.bgg@gmail.com>
-CC: <cy_huang@richtek.com>, <bryan_huang@richtek.com>,
- <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Fabien
- Parent" <fparent@baylibre.com>, stable <stable@vger.kernel.org>, Bear Wang
- <bear.wang@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>, Pablo Sun
- <pablo.sun@mediatek.com>
-Date: Tue, 10 May 2022 18:05:02 +0800
-In-Reply-To: <1652159580-30959-1-git-send-email-u0084500@gmail.com>
-References: <1652159580-30959-1-git-send-email-u0084500@gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1noN6J-001Blz-9J
+ for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 10:28:20 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id g23so19427524edy.13
+ for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 03:28:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=qB8tiSg9orpGv2oafVz+zb1jhV1wE750MfA0k2QQW9s=;
+ b=rhth6SprFuXZRw9NUufEJzMkPofYa5+szGIs98AV0GVIbzsAA24w4QbdhAH0k6tNsm
+ G9lbp93Qgq5wQy0+CFXT1fi5iMuYA4Cm9U/PxSd8amtshY1+WWPg3Zsj2ouQqfzpm3cT
+ kgoHRoMvtjtr0hTCFuXrxFMAPcuVScNYCBHjhvwd+K12WtE868Zm28gTKB0PPjcHEMOT
+ ul8LCqkXub36kGTu/xSmxsHDmFJH+vm3u7mGVS7NKOKyYshFVlM324rzPLNV2dHsG+Oh
+ n0LVc+nwWpXvQhRwZyGWvq87SlHXW6mR5MmehPz78ndf2YvXFubXASGRbD0PBKSD9hJO
+ nEiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=qB8tiSg9orpGv2oafVz+zb1jhV1wE750MfA0k2QQW9s=;
+ b=Ia57pOrHK3ZDmTq3OeNo9oXmyFx1eX9uAUnyE3fBF6yTwM42yi3gDqcZy0W7XqZtlf
+ 7Aowl+2dwRSTSAGCUSpmRmxPPGMu6Jf4CSOrF/szfMpaae9kK85A5kbV6TL2Eec0nF1j
+ v331I7R8pJhDTupFXorj57ufuJ1uFwV/raEp2eZfsy1oLHyWXN/ty+vMLnXEI/LircMF
+ mmDe7u63TFk/vxTxe/hSQpE7PbmaGihybSlasAlPiPGH2Gzqoovs48QwwsPht3Gy9nhV
+ JL06khS8V4taXZKN46uBmGJwM2vwNgdaEozmrCKicKMyWw8kTl9u9Q7i6VI4Tz5o+1V2
+ 90yg==
+X-Gm-Message-State: AOAM531HhEqoDdUi3HbY7l8TCW/bksxF1YdbkE0Ydqo50HntuJHTEKzC
+ wTpTSTvCCkw8hEgN5s2nRzPePg==
+X-Google-Smtp-Source: ABdhPJw5CAaM7D9q3+CFzPibPNCbcA7gMgHTzab1tVA8q065CZ3vhqKEUGpu1+K0yDXGbet+UCoR+w==
+X-Received: by 2002:a50:ed13:0:b0:426:4939:45a9 with SMTP id
+ j19-20020a50ed13000000b00426493945a9mr22748001eds.303.1652178495995; 
+ Tue, 10 May 2022 03:28:15 -0700 (PDT)
+Received: from [192.168.0.251] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ qr48-20020a1709068cb000b006f3ef214e13sm6051348ejc.121.2022.05.10.03.28.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 May 2022 03:28:15 -0700 (PDT)
+Message-ID: <1c3fd336-1450-9b68-df81-2f01cc2ba32f@linaro.org>
+Date: Tue, 10 May 2022 12:28:14 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v2 1/3] dt-bindings: mediatek: add vdosys1 RDMA definition
+ for mt8195
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>
+Cc: "airlied@linux.ie" <airlied@linux.ie>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20220509044302.27878-1-rex-bc.chen@mediatek.com>
+ <20220509044302.27878-2-rex-bc.chen@mediatek.com>
+ <a5c9e7ad-c4b5-e757-cd6d-f79de47d1ff3@linaro.org>
+ <fbbbc7e6a951bdde648ddd896f1fa163dafa16f1.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <fbbbc7e6a951bdde648ddd896f1fa163dafa16f1.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_031513_328695_F0BE8B78 
-X-CRM114-Status: GOOD (  19.35  )
+X-CRM114-CacheID: sfid-20220510_032819_382802_1E89B672 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,119 +112,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-05-10 at 13:13 +0800, cy_huang wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+On 09/05/2022 10:45, Rex-BC Chen wrote:
+>>> +    soc {
+>>> +        #address-cells = <2>;
+>>> +        #size-cells = <2>;
+>>> +
+>>> +        vdo1_rdma0: mdp-rdma@1c104000 {
+>>
+>> Generic node name. dma-controller (if it does not conflict with
+>> dma-common.yaml schema)?
 > 
-> Update MT6360 BMC PHY Tx/Rx setting for the compatibility.
-> 
-> Macpaul reported this CtoDP cable attention message cannot be
-> received from
-> MT6360 TCPC. But actually, attention message really sent from UFP_D
-> device.
-> 
-> After RD's comment, there may be BMC PHY Tx/Rx setting causes this
-> issue.
-> 
-> Below's the detailed TCPM log and DP attention message didn't
-> received from 6360
-> TCPCI.
-> [ 1206.367775] Identity: 0000:0000.0000
-> [ 1206.416570] Alternate mode 0: SVID 0xff01, VDO 1: 0x00000405
-> [ 1206.447378] AMS DFP_TO_UFP_ENTER_MODE start
-> [ 1206.447383] PD TX, header: 0x1d6f
-> [ 1206.449393] PD TX complete, status: 0
-> [ 1206.454110] PD RX, header: 0x184f [1]
-> [ 1206.456867] Rx VDM cmd 0xff018144 type 1 cmd 4 len 1
-> [ 1206.456872] AMS DFP_TO_UFP_ENTER_MODE finished
-> [ 1206.456873] cc:=4
-> [ 1206.473100] AMS STRUCTURED_VDMS start
-> [ 1206.473103] PD TX, header: 0x2f6f
-> [ 1206.475397] PD TX complete, status: 0
-> [ 1206.480442] PD RX, header: 0x2a4f [1]
-> [ 1206.483145] Rx VDM cmd 0xff018150 type 1 cmd 16 len 2
-> [ 1206.483150] AMS STRUCTURED_VDMS finished
-> [ 1206.483151] cc:=4
-> [ 1206.505643] AMS STRUCTURED_VDMS start
-> [ 1206.505646] PD TX, header: 0x216f
-> [ 1206.507933] PD TX complete, status: 0
-> [ 1206.512664] PD RX, header: 0x1c4f [1]
-> [ 1206.515456] Rx VDM cmd 0xff018151 type 1 cmd 17 len 1
-> [ 1206.515460] AMS STRUCTURED_VDMS finished
-> [ 1206.515461] cc:=4
-> 
-> Fixes: e1aefcdd394fd ("usb typec: mt6360: Add support for mt6360
-> Type-C driver")
-> Reported-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Cc: stable <stable@vger.kernel.org>
-> ---
->  drivers/usb/typec/tcpm/tcpci_mt6360.c | 26
-> ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
-> 
-> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c
-> b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-> index f1bd9e0..8a952ea 100644
-> --- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
-> +++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-> @@ -15,6 +15,9 @@
->  
->  #include "tcpci.h"
->  
-> +#define MT6360_REG_PHYCTRL1	0x80
-> +#define MT6360_REG_PHYCTRL3	0x82
-> +#define MT6360_REG_PHYCTRL7	0x86
->  #define MT6360_REG_VCONNCTRL1	0x8C
->  #define MT6360_REG_MODECTRL2	0x8F
->  #define MT6360_REG_SWRESET	0xA0
-> @@ -22,6 +25,8 @@
->  #define MT6360_REG_DRPCTRL1	0xA2
->  #define MT6360_REG_DRPCTRL2	0xA3
->  #define MT6360_REG_I2CTORST	0xBF
-> +#define MT6360_REG_PHYCTRL11	0xCA
-> +#define MT6360_REG_RXCTRL1	0xCE
->  #define MT6360_REG_RXCTRL2	0xCF
->  #define MT6360_REG_CTDCTRL2	0xEC
->  
-> @@ -106,6 +111,27 @@ static int mt6360_tcpc_init(struct tcpci *tcpci,
-> struct tcpci_data *tdata)
->  	if (ret)
->  		return ret;
->  
-> +	/* BMC PHY */
-> +	ret = mt6360_tcpc_write16(regmap, MT6360_REG_PHYCTRL1, 0x3A70);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_write(regmap, MT6360_REG_PHYCTRL3,  0x82);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_write(regmap, MT6360_REG_PHYCTRL7, 0x36);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = mt6360_tcpc_write16(regmap, MT6360_REG_PHYCTRL11,
-> 0x3C60);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_write(regmap, MT6360_REG_RXCTRL1, 0xE8);
-> +	if (ret)
-> +		return ret;
-> +
->  	/* Set shipping mode off, AUTOIDLE on */
->  	return regmap_write(regmap, MT6360_REG_MODECTRL2, 0x7A);
->  }
+> We don't understand what dma-controller you are referring to? Can you
+> help explain more? Thanks!
 
-Thanks for helping me to fix this issue.
+Use a generic node name, as Devicetree spec asks:
+"The name of a node should be somewhat generic, reflecting the function
+of the device and not its precise programming
 
-Tested-by: Macpaul Lin <macpaul.lin@mediatek.com>
+model. If appropriate, the name should be one of the following choices:"
 
-Regards,
-Macpaul Lin
+I proposed dma-controller, but feel free to find better generic node name.
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
