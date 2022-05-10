@@ -4,81 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75185C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 12:37:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 843CFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 12:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jSwaKyieaNLBHJKwwcJJr26IlHtvVHUoS2b1gHR6/Wo=; b=yasjHRje/70XNw
-	I1mRH7C/H8+/k3n4EySnRattQ8JgdFEMhQzs06jtyiZlv5eTejYTkdfJ44xS7voeGor2YxFTkQ558
-	H30qw3trxTb62ln7TF1fAhxzguM6rtVuTxBUHsrSLb+UKYNQ5U2wcJyZIYRSPTHdxxpYGaZ6ZPBi7
-	85yI7XI/dcJufbSXY5otYCN8ud6dMqvAcJa7AaMZjeQ7qbKYcw+vrBvH3H93RXzMznopS0AJvWd8q
-	hJO8tdLaZX0SyNUwd0i3jwEuBphJWdo7k0aoe87fwM6fl823zbtg3DQKe76fu2SAXEzdKro0f4TE7
-	Brp7pxC8wGDSCFaxLE+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EKxMnbRQjTOGO7CvuWVGPhJRMDLEcNdprVKoA6IaYb0=; b=rhvXNA9x2ZgGyDPnldnMW5JO4J
+	GOCfz7tQpWAGtcFQQoxRcAbOD2T7QiuuCgWuA3shumTPHcPwIQCoYb8GmCoDDSriNxqEaDg23VlHa
+	7RoyLvfD/owwA3II7FUF1XJwhL23YaQekkGzfalwdWCRFTo7WHeAe3/G/pUznrHSZGrSCQzRWv/Ap
+	omS4RYmqsj3Wk565KxJWoVyoNW3C1kg7sO7CIlk4A+2FfirZ+iWdtPx0nLauMWw1JS053aAZzEjN9
+	XmvY4wxhSdIgqIQf26Lzv3sSyVF8/6AVAOOu18YWf5+SBnkoOIexZaHk79PSJPuLapvGTvlLHfH/J
+	dNhBi68A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noP7V-001vop-QY; Tue, 10 May 2022 12:37:41 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1noPFc-001yyg-GP; Tue, 10 May 2022 12:46:04 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noP7J-001viD-Ub; Tue, 10 May 2022 12:37:31 +0000
-Received: by mail-ej1-x634.google.com with SMTP id m20so32633779ejj.10;
- Tue, 10 May 2022 05:37:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=cosidqETohHtF0bI5X8WaN3KLjN3jNK+X2ZAPFOKt/o=;
- b=q4WK37dxm2Rg4AHUGk7Wi4kVtwYOHay21u/XuI4XfzNMEyT71Bvff7CmdlnIImsooi
- L9KZIsHxZVuWcbld60k2dRE1nqPdvX9iUDQ/esPVHs7fcjwcgF7tkxvdGJpoR7XYudXS
- muSWsZuXTbqKGCFiSWFmdAHNrCg+ULsFjyrHjBA46B/e3zy9cUsu67O3uGCKSvgG133o
- 4hrnYv3h1uEIGEvcaT4O2aifRc6c/kxWAjp3TYhEdZLe/7JVVeLFsV+lyb3uIBNdTlUH
- 0kc5vhNXi72hrStZ8d+wUYkAQooUtteY91qjzO6B48GYNOdakRtplEzhT6qK2XZcu76a
- nlLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=cosidqETohHtF0bI5X8WaN3KLjN3jNK+X2ZAPFOKt/o=;
- b=E8RYMLo6W1SMSJfWVybQtYICV6/3w8YmA9ca945ZUjk/Z/B3uK9STzhCRNpa8uvMre
- ZvrpsKS5OeTWEVjc1DHWdJkkzvlgE8UqlcOvXiMoA6aWrAXj5eEJigOjiH1NEEalGCoQ
- Vt90dJ6Iyl+Nobpsw1CSqy5tDkGphFuELPqEjIhriljDy7r7fuK6cXmp3bW6jhM3Ihek
- OJ/Nc+ux2e0Qz8SSUtKHgp+xUT8yYhn0wA8PHKNKl2WIg34z16RhFRju5c6r4MVgso9p
- B78UulpQCWEONqCUBDBoZIGb68zDHTiKWZ2PX+vHVWYcNLVyyRQ1qM3uWZi45ZvhwLnh
- KDeQ==
-X-Gm-Message-State: AOAM530FwjmiFlPV+DtcwxKVHkUdi5QmsenVN49a9yVBTTwjESU64b5R
- gBkfePZBnt5A6ylBRcvExgw=
-X-Google-Smtp-Source: ABdhPJyvR8it5vxFmmtJtLeJIPRxLec58Z+2m8Tzbxt3mXDU6pHSDFlsyogmrno+6KSTWUzIH/zjyA==
-X-Received: by 2002:a17:906:3ce9:b0:6ef:a8aa:ab46 with SMTP id
- d9-20020a1709063ce900b006efa8aaab46mr19291235ejh.579.1652186247272; 
- Tue, 10 May 2022 05:37:27 -0700 (PDT)
-Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
- e15-20020a50e44f000000b0042617ba63c7sm7576578edm.81.2022.05.10.05.37.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 May 2022 05:37:26 -0700 (PDT)
-Date: Tue, 10 May 2022 15:37:24 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ id 1noPF2-001ygx-4e; Tue, 10 May 2022 12:45:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BAD98B81D0A;
+ Tue, 10 May 2022 12:45:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E830C385C2;
+ Tue, 10 May 2022 12:45:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1652186725;
+ bh=6Tfsp4itt1Mc3PO44t815pdkzz8WkX2HTQRq8Fx0SZw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=VCU5SEB1Qol28GTL2mHwXApm+Hc0wPXWT55Emw2+4xCbWXbIF6CUBSpoJ4odwKQ6V
+ 6UWFUMhHTNnNSWGciRePfWWeZ3MutAMA7f3F6rddeb1b+wHN928/a1Pz048PahIeFS
+ 2z8u5WeTBx0me0A2xRg9fhAZRqOYh8XcTgw8v/1HsIVhwHNFwWXtz/YojQjeS5wxuO
+ llX/z/N2nE42clXfqQ5HtQJs/DioaBMYnXDSDuBzXCq9g5b5+sDTZ1BsEP88SBdu9k
+ imexGaCSXnu8Orgtj0IqJHODzIdfZDuqptQIZUEpM4LaMvCLaVPMuA0ojh2e6B8sEk
+ 3XD/ygF74XGbQ==
+Date: Tue, 10 May 2022 13:45:20 +0100
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: gregkh@linuxfoundation.org, jirislaby@kernel.org,
+ matthias.bgg@gmail.com, zhiyong.tao@mediatek.com,
+ colin.king@intel.com, linux-serial@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] net: dsa: tag_mtk: add padding for tx packets
-Message-ID: <20220510123724.i2xqepc56z4eouh2@skbuf>
-References: <20220510094014.68440-1-nbd@nbd.name>
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ wenst@chromium.org
+Subject: Re: [PATCH] Revert "serial: 8250_mtk: Make sure to select the right
+ FEATURE_SEL"
+Message-ID: <YnpeYGbo7JJK0lDk@sirena.org.uk>
+References: <20220510122620.150342-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220510094014.68440-1-nbd@nbd.name>
+In-Reply-To: <20220510122620.150342-1-angelogioacchino.delregno@collabora.com>
+X-Cookie: I've read SEVEN MILLION books!!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_053730_039453_CAF631BF 
-X-CRM114-Status: GOOD (  20.46  )
+X-CRM114-CacheID: sfid-20220510_054528_385664_C8F41258 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,50 +71,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7235636243492845945=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 10, 2022 at 11:40:13AM +0200, Felix Fietkau wrote:
-> Padding for transmitted packets needs to account for the special tag.
-> With not enough padding, garbage bytes are inserted by the switch at the
-> end of small packets.
 
-I don't think padding bytes are guaranteed to be zeroes. Aren't they
-discarded? What is the issue?
+--===============7235636243492845945==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="FZQV7cHcKQJUXSUX"
+Content-Disposition: inline
 
-> 
-> Fixes: 5cd8985a1909 ("net-next: dsa: add Mediatek tag RX/TX handler")
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+
+--FZQV7cHcKQJUXSUX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, May 10, 2022 at 02:26:20PM +0200, AngeloGioacchino Del Regno wrote:
+> It was found that some MediaTek SoCs are incompatible with this
+> change. Also, this register was mistakenly understood as it was
+> related to the 16550A register layout selection but, at least
+> on some IPs, if not all, it's related to something else unknown.
+>=20
+> This reverts commit 6f81fdded0d024c7d4084d434764f30bca1cd6b1.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 > ---
->  net/dsa/tag_mtk.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
-> index 415d8ece242a..1d1f9dbd9e93 100644
-> --- a/net/dsa/tag_mtk.c
-> +++ b/net/dsa/tag_mtk.c
-> @@ -25,6 +25,14 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
->  	u8 xmit_tpid;
->  	u8 *mtk_tag;
->  
-> +	/* The Ethernet switch we are interfaced with needs packets to be at
-> +	 * least 64 bytes (including FCS) otherwise their padding might be
-> +	 * corrupted. With tags enabled, we need to make sure that packets are
-> +	 * at least 68 bytes (including FCS and tag).
-> +	 */
-> +	if (__skb_put_padto(skb, ETH_ZLEN + MTK_HDR_LEN, false))
-> +		return NULL;
-> +
->  	/* Build the special tag after the MAC Source Address. If VLAN header
->  	 * is present, it's required that VLAN header and special tag is
->  	 * being combined. Only in this way we can allow the switch can parse
-> -- 
-> 2.36.1
-> 
+
+Reported-by: "kernelci.org bot" <bot@kernelci.org>
+
+--FZQV7cHcKQJUXSUX
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmJ6Xl8ACgkQJNaLcl1U
+h9CCcgf9GdWINYkwQNpa49JWR+D4PX3vyDYOvAMhApkx2tIGvJiHQ42wCUjXN5G9
+9uGCwzkhq1g4N6ppRhhr2rHaTTHPIwi0J/KaGIGuCMEiFu2MiqmTVmPjXkZ6X9KJ
+TvlW1Q+d9qc+fAdqagKU3py8jQMVY/kEFwXTPE2s6NhUf/TxujQbuSHX4JhJ6CiU
+NtMkMsALrNPQXu0L+7WI1+u84gRGpDalpQpBcPhAZVSuCGUMFUCMKRr/J5PotKoS
+l89HHcBvjyz5IRUtaHnZ23ermw6mOrS9dEAn8jWXSIy7vqhHDHNLfoDMa/loIcMu
+/BhdI1rOs34c3ZtwqzhAT9Tk66Af0g==
+=wDoc
+-----END PGP SIGNATURE-----
+
+--FZQV7cHcKQJUXSUX--
+
+
+--===============7235636243492845945==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7235636243492845945==--
+
