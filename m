@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C94CAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 13:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60939C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 14:06:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8J4nw9cfJH7CKv1mobgvPG1x/ShvU7iqImalc+lMLmI=; b=OrvDqwdOiTW9A9
-	RKTDEtIzyKW5iOIT3aOgly76fqmtA78lEeFCWYztxLcK9JbrxC6tRJBDnOzT7jnCCZIcN217IQORI
-	hIett70JGFrdDZ1Jlevpc45qP5IBAd8i5T91YuTp6KiLVTRWrYljJQ/NNSrDx7m68zJtjDQCgGpFg
-	JSMN1v4IymAB7c8Ql7cV6rpp2Kg8vCcuXEJl+STdRnaUgt58zaxUFWO5hiKcagYxuayGlO3EWiXBF
-	47jtp5VEBOlJ7GApaEl+EE/s0OuyvAtPu9i8tAVyYDxMXe1jBPRsfW1Bad3FS89hN9sDIhOwrjpql
-	ONt+00gI4gMfN6zu15hA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5eU1GKIUi20JaVgtCEhYz3Hg6hANi2xvCfClev65gYM=; b=J2TEIT//KMzhgW
+	JLqSRtmUYPzVgATwPcsJUm82bU1/obE9JXHUrN9RG3yDXJUF9Xt/xKajybLyl4a0AZtEKuuE4DZYy
+	npyfWC5gyDPuqsxOdKXGc7Yr0U9y9DrKrhPuP77b/uv/uAIbrWqksVbYIJwkcjK/oIFeCtgZnxmJ0
+	N9dym9Gp9tEFUL0C7sf6B6E3uZr0apt1wX7Sk/lSJCwAK9X8arpkR5iSB4ihfZ8y3BT/qbUqW8Yym
+	EndZih2D04ZNYkjmm/i0e/pZ/XSI01nlZ1DkvU9YrqlKcxE8aLoHyE3WyDf3K5RIia1V8l5KiGq1D
+	BtjGS2Lg9X+jDL+T4JbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noPyI-002G4r-16; Tue, 10 May 2022 13:32:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1noQVF-002PzV-QU; Tue, 10 May 2022 14:06:17 +0000
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noPxs-002Fp9-Hm; Tue, 10 May 2022 13:31:49 +0000
-X-UUID: 017182a467de44cc81bbe25ad0ef6bfa-20220510
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:c9a374ac-6c20-4179-9b96-2f4ed5fa8c54, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:e12e4ab3-56b5-4c9e-8d83-0070b288eb6a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 017182a467de44cc81bbe25ad0ef6bfa-20220510
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1003182151; Tue, 10 May 2022 06:31:46 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 06:26:40 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 21:26:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 10 May 2022 21:26:39 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski@canonical.com>
-CC: Lala Lin <lala.lin@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Chen-Yu Tsai" <wenst@chromium.org>, Allen-kh Cheng
- <allen-kh.cheng@mediatek.corp-partner.google.com>
-Subject: [PATCH v4 0/3] dt-bindings: nvmem: mediatek: Convert efuse binding to
- YAML
-Date: Tue, 10 May 2022 21:26:34 +0800
-Message-ID: <20220510132637.5864-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1noQV3-002PtL-3E; Tue, 10 May 2022 14:06:06 +0000
+Received: by mail-oi1-x231.google.com with SMTP id w123so8073605oiw.5;
+ Tue, 10 May 2022 07:06:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=eleg/nqVC9IPDcWOxwJF+He5L8eoNl0EU11xDJq3nMY=;
+ b=Me0pcmytSTmx9JKHcssC0LoS4jX0maBApI3q98Nwb17mf3CsAAsntl2Yq17iZ/hHME
+ uRySjErlNqr/tBaIqyi26AGhyQalfYvxbRvZyQaxOdv3im/3UAtuB4CYzLBwQXXnl0za
+ CKe6lkXCnuIM4O0Pt0kCzaJM12D+hakE7SkqGAc1Oq8y13IOc1OafoHNIa8//0J+DdRF
+ FdJLFnOfh8UFWSKBJsvrE4Ob0ixj8r/L60NaHUqUnSweVI6PG1ic3/tdqLihy+L8IQ1I
+ DIXktpq5PXzcL8G6X9NziNdMO7Xkq1hKgqO7ci2EOUPo7iDfZHAe7iEsxHY6Q2JNK3VG
+ wKhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+ :subject:content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=eleg/nqVC9IPDcWOxwJF+He5L8eoNl0EU11xDJq3nMY=;
+ b=HzZVlNHjwqtn7sGe3TLrjMhMBl93som/rOyW3x5jzm1XmDqekcSGV4nibUZTRkzwoX
+ 10gqd+ZMMGdnbaS3/k2LPnBdubM5LCi/kLW7UmVp3IOiV5OOdWjUL4vti3g/9qkX6gXD
+ 6RBc3HGbo2PG03Cb4tojjT2UhQ6bvDXRX1RzsvvzdTbolaAa+So4UuSRTH3mVu4XFxeS
+ m55O9APm9WfCAJKiAaG2IGCQQYVYYPh2ZJBEzEZ2pdlKB8dP03GDBc4kaYC6r+gDxUqg
+ rel4qzh96WFTAwEPctAYwe0Yz265/wKztoMHqEzcngruN8jEWpAVJ6XnPnP0x8gKU9KG
+ G+7A==
+X-Gm-Message-State: AOAM5320Bfo29qN76OIikWrDevysAITSGMZMbWJVDSyV/FbfkJtDFJOP
+ ke0BW7bSPqrlVAQsUXcg4aM=
+X-Google-Smtp-Source: ABdhPJzXO2Z4zuueOlA/MUKFIwHtpuMgulmTw5+sB2m3ynIkNIKcY19lzmqqizXjIYboTMpC9r92lg==
+X-Received: by 2002:a05:6808:2214:b0:326:4f5b:2f3c with SMTP id
+ bd20-20020a056808221400b003264f5b2f3cmr93107oib.229.1652191562004; 
+ Tue, 10 May 2022 07:06:02 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ g15-20020a4ab80f000000b0035eb4e5a6cdsm6038190oop.35.2022.05.10.07.06.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 May 2022 07:06:01 -0700 (PDT)
+Message-ID: <8bc3bc2b-28ac-4302-a07a-6aee173108dd@roeck-us.net>
+Date: Tue, 10 May 2022 07:05:59 -0700
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v2] usb: typec: tcpci_mt6360: Update for BMC PHY setting
+Content-Language: en-US
+To: cy_huang <u0084500@gmail.com>, heikki.krogerus@linux.intel.com,
+ gregkh@linuxfoundation.org, matthias.bgg@gmail.com
+Cc: cy_huang@richtek.com, bryan_huang@richtek.com, linux-usb@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>
+References: <1652159580-30959-1-git-send-email-u0084500@gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+In-Reply-To: <1652159580-30959-1-git-send-email-u0084500@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_063148_629807_33D9AA1C 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20220510_070605_187466_1819DC3F 
+X-CRM114-Status: GOOD (  18.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +90,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
+On 5/9/22 22:13, cy_huang wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
+> 
+> Update MT6360 BMC PHY Tx/Rx setting for the compatibility.
+> 
+> Macpaul reported this CtoDP cable attention message cannot be received from
+> MT6360 TCPC. But actually, attention message really sent from UFP_D
+> device.
+> 
+> After RD's comment, there may be BMC PHY Tx/Rx setting causes this issue.
+> 
+> Below's the detailed TCPM log and DP attention message didn't received from 6360
+> TCPCI.
+> [ 1206.367775] Identity: 0000:0000.0000
+> [ 1206.416570] Alternate mode 0: SVID 0xff01, VDO 1: 0x00000405
+> [ 1206.447378] AMS DFP_TO_UFP_ENTER_MODE start
+> [ 1206.447383] PD TX, header: 0x1d6f
+> [ 1206.449393] PD TX complete, status: 0
+> [ 1206.454110] PD RX, header: 0x184f [1]
+> [ 1206.456867] Rx VDM cmd 0xff018144 type 1 cmd 4 len 1
+> [ 1206.456872] AMS DFP_TO_UFP_ENTER_MODE finished
+> [ 1206.456873] cc:=4
+> [ 1206.473100] AMS STRUCTURED_VDMS start
+> [ 1206.473103] PD TX, header: 0x2f6f
+> [ 1206.475397] PD TX complete, status: 0
+> [ 1206.480442] PD RX, header: 0x2a4f [1]
+> [ 1206.483145] Rx VDM cmd 0xff018150 type 1 cmd 16 len 2
+> [ 1206.483150] AMS STRUCTURED_VDMS finished
+> [ 1206.483151] cc:=4
+> [ 1206.505643] AMS STRUCTURED_VDMS start
+> [ 1206.505646] PD TX, header: 0x216f
+> [ 1206.507933] PD TX complete, status: 0
+> [ 1206.512664] PD RX, header: 0x1c4f [1]
+> [ 1206.515456] Rx VDM cmd 0xff018151 type 1 cmd 17 len 1
+> [ 1206.515460] AMS STRUCTURED_VDMS finished
+> [ 1206.515461] cc:=4
+> 
+> Fixes: e1aefcdd394fd ("usb typec: mt6360: Add support for mt6360 Type-C driver")
+> Reported-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Cc: stable <stable@vger.kernel.org>
 
-Convert MediaTek eFuse devicetree binding to YAML.
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
-Based on tag: next-20220510, linux-next/master
-
-Run cmds as following:
-make DT_CHECKER_FLAGS=-m dt_binding_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-
-make ARCH=arm64
-dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-
-We mark the mediatek,mt8173-efuse and mediatek,efuse as deprecated to indicate
-not use a signle compatible and should always use mediatek,efuse as generic
-fallback.
-
-change since v3:
- - use mediatek as vendor name instead of mtk
-
-changes since v2:
- - document deprecated efuse property
- - update efuse compatible fallbacks
- - add two PATCHs into series
-
-changes since v1:
-- change file name from mtk,efuse-yaml to mtk,efuse.yaml
-- add efuse in commit title
-- change compatible entries from const to enum
-
-Allen-KH Cheng (2):
-  dt-bindings: nvmem: mediatek: Convert efuse binding to YAML
-  arm64: dts: mediatek: update efuse compatible fallbacks
-
-Allen-kh Cheng (1):
-  dt-bindings: nvmem: mediatek: document deprecated efuse property
-
- .../bindings/nvmem/mediatek,efuse.yaml        | 60 +++++++++++++++++++
- .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 -------------
- arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  3 +-
- arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  3 +-
- 4 files changed, 64 insertions(+), 45 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
- delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-
--- 
-2.18.0
+> ---
+>   drivers/usb/typec/tcpm/tcpci_mt6360.c | 26 ++++++++++++++++++++++++++
+>   1 file changed, 26 insertions(+)
+> 
+> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> index f1bd9e0..8a952ea 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> @@ -15,6 +15,9 @@
+>   
+>   #include "tcpci.h"
+>   
+> +#define MT6360_REG_PHYCTRL1	0x80
+> +#define MT6360_REG_PHYCTRL3	0x82
+> +#define MT6360_REG_PHYCTRL7	0x86
+>   #define MT6360_REG_VCONNCTRL1	0x8C
+>   #define MT6360_REG_MODECTRL2	0x8F
+>   #define MT6360_REG_SWRESET	0xA0
+> @@ -22,6 +25,8 @@
+>   #define MT6360_REG_DRPCTRL1	0xA2
+>   #define MT6360_REG_DRPCTRL2	0xA3
+>   #define MT6360_REG_I2CTORST	0xBF
+> +#define MT6360_REG_PHYCTRL11	0xCA
+> +#define MT6360_REG_RXCTRL1	0xCE
+>   #define MT6360_REG_RXCTRL2	0xCF
+>   #define MT6360_REG_CTDCTRL2	0xEC
+>   
+> @@ -106,6 +111,27 @@ static int mt6360_tcpc_init(struct tcpci *tcpci, struct tcpci_data *tdata)
+>   	if (ret)
+>   		return ret;
+>   
+> +	/* BMC PHY */
+> +	ret = mt6360_tcpc_write16(regmap, MT6360_REG_PHYCTRL1, 0x3A70);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_write(regmap, MT6360_REG_PHYCTRL3,  0x82);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_write(regmap, MT6360_REG_PHYCTRL7, 0x36);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = mt6360_tcpc_write16(regmap, MT6360_REG_PHYCTRL11, 0x3C60);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_write(regmap, MT6360_REG_RXCTRL1, 0xE8);
+> +	if (ret)
+> +		return ret;
+> +
+>   	/* Set shipping mode off, AUTOIDLE on */
+>   	return regmap_write(regmap, MT6360_REG_MODECTRL2, 0x7A);
+>   }
 
 
 _______________________________________________
