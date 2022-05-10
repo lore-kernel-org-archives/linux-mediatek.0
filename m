@@ -4,64 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 630ECC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 11:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FC5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 11:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J1zEskrkQ8EHKOYwGTeP16kMXzbvyXaINdMmjrVcYos=; b=wWOLjqUSO64Bha
-	ywhnlABXPRAhUPUmCJoNJ/wyiJv8fC5MdF1/+idbMsJXUUMKbyQPK9fy1Fp4K7M+XxEVi833+y7sK
-	IWbaqOfKs6Zl5oRPyk++QtrwZ/qXrkBpjZzCiQDMEWRu4zqQU+nJRK6TZpbP/d9WDH3QECl0Mvbjy
-	VPlK8wuZ/uQCzEixs9YExu2AMoj87ZxzVYj95QBxlpbtRtVks2h8nPxv2PZvRIAqlYZTKn4bl/4xS
-	xmWGmxmW8QgjWnJU4caZpzWk8znj38KKhgYD/bdvioekov9aDWZLgFyPp8KW2JtvXg5x36MerqdYr
-	D3ZH/i7BmYO9kenb0i9g==;
+	List-Owner; bh=pfCRiD7Z+fACC7FJsohmzNNbUDIo/chub7307x4gKfU=; b=yAjW3HeCUrpifW
+	POGWZr9k+OUQk9CiUm2IlWpConJfqSGf5LGxl8cioaSCcBBkeXTDGJRyvd5H9PU1plq0TTKhTVqNv
+	BCvzkUAnpAruCrfd9HPYzpF63M1sFtkHCtQaOPRhFen+Az9/3RPwIQdZ6bLzDkUNheG+qd/MBr3N8
+	U3wGd+a4apsZbkQ6Yyvj9O6DyKxclkm/aoqMacIoYsz8vaLxVdulGNq5Xk+Mbt47j7DdQfuVyAI/S
+	PO71AR3+DOSfqHZN3MBHnkportcyxqq8P1U+9xHYsKT1GcdnD3paNEZDI5pdSDhIwhd9dVe444G3M
+	SrYaAYSoF5iqdT2YOgpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noNp3-001Se6-Ll; Tue, 10 May 2022 11:14:33 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1noNuS-001V9x-Rk; Tue, 10 May 2022 11:20:08 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noNoF-001SHb-3O
- for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 11:13:45 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 9C717618A3;
- Tue, 10 May 2022 11:13:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13DBFC385C6;
- Tue, 10 May 2022 11:13:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652181222;
- bh=yY35YDk9RI0PBtv75HOzfwiJh95q25x5cV9WWHxl4EE=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=qCo58HqPanRTwnk/T8AsGRSAJIXwBMYOzPGekrW8HFKapMQdZ51y7Gfu22/f3wDa8
- YX8TsrAV8HG/6acmRSOif8EW7PuQ3PCbQoeSoTrkndGaLXxSMem7CHz/w0dA1Lbe+3
- 5m3n7UJDTqx1xaaCF2UagutMu8hHD72qqfqvaSM44l11B2STki1A7KCMxh9IYGx9L0
- Q8erj5tt71wLZJM6ywAg4tVqUjFA0Trhgz0MQHOnSOhHjIkWwPNwiF6+NfY1jO24EZ
- 8tXGXDToprqOFL/2RtaeVd2ab0dNXc8dKIScOuqRuCzcQyMwBEbpNK3KlqmmMm1qCd
- 89Cx3RByetuxA==
-From: Mark Brown <broonie@kernel.org>
-To: ckeepax@opensource.cirrus.com
-Cc: chrome-platform@lists.linux.dev, steven.eckhoff.opensource@gmail.com,
- jiaxin.yu@mediatek.com, patches@opensource.cirrus.com, lgirdwood@gmail.com,
- codrin.ciubotariu@microchip.com, matthias.bgg@gmail.com,
- kmarinushkin@birdec.com, cychiang@chromium.org, lars@metafoo.de,
- tzungbi@google.com, bleung@chromium.org,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- alsa-devel@alsa-project.org, oder_chiou@realtek.com,
- linux-mediatek@lists.infradead.org, alexandre.belloni@bootlin.com,
- srinivas.kandagatla@linaro.org
-In-Reply-To: <20220504170905.332415-1-ckeepax@opensource.cirrus.com>
-References: <20220504170905.332415-1-ckeepax@opensource.cirrus.com>
-Subject: Re: [PATCH 00/38] Clean up usage of the endianness flag
-Message-Id: <165218121671.43065.13246450134508582073.b4-ty@kernel.org>
-Date: Tue, 10 May 2022 12:13:36 +0100
+ id 1noNu8-001Utf-9a
+ for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 11:19:49 +0000
+Received: by mail-ed1-x536.google.com with SMTP id ba17so19594249edb.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 04:19:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=u0y4f16c0SOxo3KwwVWJYxBGeIW5Ufwj7qZq0QGv9lQ=;
+ b=qNAm9YJPmxvXVHcVJ7IIPrBaO39WMBuQfahQlJMJ9xSTS9HofGYt0F36Bp4m/pxkmW
+ pJ804n8QK2Pn7+lT3YoCpvP8HCN7Q9VO2nhFI3WtK5AQfcZG8fwG8+gIVod6mSB7CeZb
+ unaEiKt9vmpUf2Z9csxvGgL85ChRlx7adWRL2PdbQcgLNz6GGnq1OWDvC8D8PDieMcxw
+ 87/fW03PFqdj1Hb9CRJr7KvOza0ejirA9qzgkV1fJdWQtglx4QfpSLmjmtrcQhFIi1QY
+ ZwfhqAWr000Qb/AU/Czz3464iHwqChSUmwpTviC7lPm024J9sUNyQlUUYvMJKIPEyGp6
+ nCxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=u0y4f16c0SOxo3KwwVWJYxBGeIW5Ufwj7qZq0QGv9lQ=;
+ b=FPyvOPwuMd+E+a/qUktUy2HA9BfxRi0UvS9Dc6pw1J26qqlIPxiiWMMDS7ElGhQHrA
+ 8qSIhV6eU+Ixw+SWsUUJcPDIcs8PaS6dXyI+7lO57T7N9pqYl4HV88TDnuk1bqL9F7ld
+ Y/GHdmKGEnLwR++d5ked5QABaO4w8R3sp891z66zYDbHm6Yas5B1PmcppHKA2a13tWHL
+ z8v06SuuCUwEg5yzH3ND3SolojeWieh2IAbLvr50Z3coOUYhF30ELwU8Z2IwA+CNESNR
+ NbK1n1pzeteY23nrq7NzJSp7UTJQ0IWxLQMNeubKw+zoS2qr2fLUGOzSLx0Ek0DmaZt2
+ aVrg==
+X-Gm-Message-State: AOAM533WUvCQcanZykDReAanHOyvgerM5kIlSoEIoREBgmqEBIz59IFx
+ FuVHAgGy+ky3O5quDIgH5Z9E4g==
+X-Google-Smtp-Source: ABdhPJwllYKDvo2bMIM/15KAP3K8yYn+Ebe9XKBiKYD5ynUUL9BMaCIYSvb+Z5nNlh+dYhulwjptHg==
+X-Received: by 2002:aa7:c6c3:0:b0:425:b13b:94f with SMTP id
+ b3-20020aa7c6c3000000b00425b13b094fmr22453853eds.313.1652181584762; 
+ Tue, 10 May 2022 04:19:44 -0700 (PDT)
+Received: from [192.168.0.251] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ c21-20020aa7c995000000b0042617ba63d2sm7391578edt.92.2022.05.10.04.19.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 May 2022 04:19:44 -0700 (PDT)
+Message-ID: <f1d477d2-13c4-2914-e520-4b2778e52e35@linaro.org>
+Date: Tue, 10 May 2022 13:19:42 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v2 3/3] dt-bindings: mediatek: add ethdr definition for
+ mt8195
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>
+Cc: "airlied@linux.ie" <airlied@linux.ie>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20220509044302.27878-1-rex-bc.chen@mediatek.com>
+ <20220509044302.27878-4-rex-bc.chen@mediatek.com>
+ <46bc32df-e4e8-ac47-426d-8056714f0d5c@linaro.org>
+ <5462209c5afb0a638ed777ec1829bb2717c8d76e.camel@mediatek.com>
+ <98505974-afad-9639-d4f2-814097b0523b@linaro.org>
+ <85fcdcd0-e7c5-5192-9113-c69f9c3a6385@collabora.com>
+ <2a480ca0cf640e59a12d55435d02cb3892035a35.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <2a480ca0cf640e59a12d55435d02cb3892035a35.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_041343_304525_2A14C93A 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20220510_041948_357252_0D0B7813 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,121 +114,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 4 May 2022 18:08:27 +0100, Charles Keepax wrote:
-> Before componentisation any part registered as a CODEC would have
-> automatically supported both little and big endian, ie. the core
-> would duplicate any supported LE or BE PCM format to support the other
-> endian as well. As componentisation removed the distinction between
-> CODEC drivers and platform drivers, a flag was added to specify
-> if this behaviour is required for a particular component. However,
-> as most systems tend to use little endian the absence of the flag
-> is rarely noticed. Also the naming of the flag "endianness" is a
-> little unobvious as to if it should be applied to a particular
-> component.
+On 10/05/2022 03:46, Rex-BC Chen wrote:
+>>
+>>
+>> That's mediatek-drm, and this refers to the HDR block in the display
+>> IP...
+>>
+>> Though, I have no idea of what "ET" stands for in "ETHDR", so, it
+>> would be
+>> definitely nice if MediaTek can write the meaning in the description,
+>> like
+>>
+>> description:
+>>    ETHDR (E??? T??? High Dynamic Range) is designed for HDR video and
+>> ...blah
+>>
+>> Cheers,
+>> Angelo
 > 
-> [...]
+> Hello Krzysztof and Angelo,
+> 
+> "ET" is actually meaningless.
+> ET is one of mediatek departments and it's where the engine from.
+> Therefore, I think we will add description like this:
+>> ETHDR (ET High Dynamic Range) is a MediaTek internal HDR engine and
+>> designed for HDR video...
 
-Applied to
+Sure, sounds good, but then the node name should not have it. Please try
+to find some more generic name (DT spec gives examples). Could be
+display-controller, "hdr-engine", "isp".
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Thanks!
-
-[01/38] ASoC: soc-component: Add comment for the endianness flag
-        commit: 5c832efdbf8651e2800a0169a870786bd85ee230
-[02/38] ASoC: atmel-pdmic: Remove endianness flag on pdmic component
-        commit: 52857c3baa0e5ddeba7b2c84e56bb71c9674e048
-[03/38] ASoC: atmel-classd: Remove endianness flag on class d component
-        commit: 0104d52a6a69b06b0e8167f7c1247e8c76aca070
-[04/38] ASoC: cs4270: Remove redundant big endian formats
-        commit: 99a4b91ae967d22158d3f4d4f9564ac63295930e
-[05/38] ASoC: cs42l51: Remove redundant big endian formats
-        commit: 2bf1e87b9338e8986f78b675a201f7f02a3c43d5
-[06/38] ASoC: cs4349: Remove redundant big endian formats
-        commit: 8a85e2fca6476968f8558163b95c2df38930e523
-[07/38] ASoC: hdmi-codec: Remove redundant big endian formats
-        commit: 6edfed8f2cce012e87277c8a1786a2de7d5cae35
-[08/38] ASoC: sta32x: Remove redundant big endian formats
-        commit: a9b5bef89a68ec45ec198e2d316cd8b9b9bf6655
-[09/38] ASoC: sta350: Remove redundant big endian formats
-        commit: 2ac5b98284b3744514dcf75909a3bb3c3d5ab7d4
-[10/38] ASoC: hdac_hda: Add endianness flag in snd_soc_component_driver
-        commit: 1324cd8d14f06ff933c825ca5a51139604bc6b97
-[11/38] ASoC: max98504: Add endianness flag in snd_soc_component_driver
-        commit: a0556e3ad0c40359d5fa3dc72de14ad2efb9dfda
-[12/38] ASoC: adau1372: Add endianness flag in snd_soc_component_driver
-        commit: ac6f26c18f2d231e4006b2f12e0e46aeb6430cbb
-[13/38] ASoC: cs4234: Add endianness flag in snd_soc_component_driver
-        commit: de88ca441a3066668cae62741a52042f0273d364
-[14/38] ASoC: cs35l41: Add endianness flag in snd_soc_component_driver
-        commit: f0688b567fb88ba7636e87a5daed8a175275aa2e
-[15/38] ASoC: cx2072x: Add endianness flag in snd_soc_component_driver
-        commit: 1c3cbc1dacecdb427b693992f1a05b5837b33a70
-[16/38] ASoC: lochnagar: Add endianness flag in snd_soc_component_driver
-        commit: ba7328f31cd508964cf2a0b62edfb0b8339c1e77
-[17/38] ASoC: mt6351: Add endianness flag in snd_soc_component_driver
-        commit: 39723d3493edd60ed41f9891391d4335b65547b9
-[18/38] ASoC: mt6358: Add endianness flag in snd_soc_component_driver
-        commit: a5f956e221e92a0e93f036651cdab80a2eb6bb18
-[19/38] ASoC: mt6359: Add endianness flag in snd_soc_component_driver
-        commit: d990af7422761fa58713e2f56664f7c8c2bf6383
-[20/38] ASoC: mt6660: Add endianness flag in snd_soc_component_driver
-        commit: 8044910bc28e06e0dc0194f160118e00964d8b6a
-[21/38] ASoC: pcm3060: Add endianness flag in snd_soc_component_driver
-        commit: f0488349c1183a3a524434958d909f38628e1d4b
-[22/38] ASoC: rt1019: Add endianness flag in snd_soc_component_driver
-        commit: 3816069538d54a9c45345f45b569bb2e42846561
-[23/38] ASoC: rt9120: Add endianness flag in snd_soc_component_driver
-        commit: 80827c123f2a5f5e0fbcc6cb33b102666acec08e
-[24/38] ASoC: tlv320adc3xxx: Add endianness flag in snd_soc_component_driver
-        commit: f5e0084b5beed00f11fb7cd1e90b8b91fcd06e9f
-[25/38] ASoC: tscs454: Add endianness flag in snd_soc_component_driver
-        commit: ff69ec96b87dccb3a29edef8cec5d4fefbbc2055
-[26/38] ASoC: cros_ec_codec: Add endianness flag in i2s_rx_component_driver
-        commit: cfacadbdca23f1a8d9c5db2a8f1bb3c6a1dd4dd8
-[27/38] ASoC: wcd934x: Add endianness flag in snd_soc_component_driver
-        commit: 6b1b1579aa9879bbf729f75c386cb3c932b1f5b3
-[28/38] ASoC: wcd9335: Add endianness flag in snd_soc_component_driver
-        commit: e230b1b1819f2941b8b31174a3839388641920f8
-[29/38] ASoC: rt700: Add endianness flag in snd_soc_component_driver
-        commit: 4982fc1def317febc74398e839dab2a4059692fa
-[30/38] ASoC: rt711: Add endianness flag in snd_soc_component_driver
-        commit: 33f06beac3ade10834a82ad4105dcd91d4b00d61
-[31/38] ASoC: rt711-sdca: Add endianness flag in snd_soc_component_driver
-        commit: 3e50a5001055d79c04ea1c79fe4b4ff937a3339c
-[32/38] ASoC: rt715: Add endianness flag in snd_soc_component_driver
-        commit: 1a6750123b5d2f05200fb55633b32c81c840f681
-[33/38] ASoC: rt715-sdca: Add endianness flag in snd_soc_component_driver
-        commit: e8f4ddcb33de9b1eaf74d150234a2cd07dddcfad
-[34/38] ASoC: rt1308-sdw: Add endianness flag in snd_soc_component_driver
-        commit: 9b536b34693c8ab9caf0612bf4fdbc09fd51f126
-[35/38] ASoC: rt1316-sdw: Add endianness flag in snd_soc_component_driver
-        commit: 7fb6f48351c896fc6c18f9d3e7b0b4fb689e73cb
-[36/38] ASoC: wcd938x: Add endianness flag in snd_soc_component_driver
-        commit: ff7f9aa523d1699663cbeec4b0e69aaeab5e6bba
-[37/38] ASoC: wsa881x: Add endianness flag in snd_soc_component_driver
-        commit: 96bc59d097047a8a013cb77b2a1215cc4877fa96
-[38/38] ASoC: sdw-mockup: Add endianness flag in snd_soc_component_driver
-        commit: e2d61f6255a26a09d4fe2458fa93a33a71db1024
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
