@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 955BFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 09:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55DFFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 May 2022 10:14:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pvfdlQplMy049QOvpMaozbDr4QMwd2UZhhH76nQY/Fw=; b=XcF4eeQjkuzmAy
-	F4k4obKfU7vXYOgk94w/cgUUS1oFandbdt3da7UhH64yv1+b9wooHgrYA6rI+jPW+N42TGE+UaVhm
-	X6MEaWyvgBbLHyHH8VAPukgYhH0JPcFY6NHVGJbYyp1+byUgaQMXMnh+hXNz4dOAQe3jx/A9aN0YP
-	J2wzstbZaQxH6iG6M+SCUjS7JwgbTVYj3/vW84iPW2eO4RAMoxm8U8wfZyD865VB1cKBg0NW0BwTe
-	YtBqsz6MdDeo1wstvCau7U9Lu6effyDik6S3s6LG8MYdkz2by1oHa4ctofchM/er06uYEBpmuDgvU
-	FUxMr9S7cCydkZbZuKHQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HcvaOke7jkvckUlxkfXNqVWcuWhusl08Nquzy0vPQtQ=; b=oI6GgHD+3g9/w9
+	zIKs+YYAtHkMC9iH71JXrnNRrAhjFNbwaBxTV4YhybJLXvTV9MZ9KKZynRBliB22qmr+PfNnaXH7E
+	AYMODjnKKvWo+btaxaHeu08nUmtIGEt0Yo3J6EspXX+rXhGW+oJuo87FvOcjCI1AvTN1mZRqRNY8S
+	WszJ1kjhjmVZ4nS13/iVVMIsLTxCnZ2iB+uDCBEV0G0fdG4/VDSLttA+sh4xI1Wk7s5JuaQgHATDO
+	s72TodcMii0cj/uLsEeFIDL0iM0i0vBdgytkTPFaVB6VRFgd63U/Tix1YpQE5AOE4ZP2hxcr3VcIC
+	ztHQG+U9mluVPLk6I53A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noMdn-0011Xd-Iq; Tue, 10 May 2022 09:58:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1noMt5-0017B6-5M; Tue, 10 May 2022 10:14:39 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noMdF-0011Df-RM
- for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 09:58:19 +0000
-X-UUID: 6d560351313e4c9ab3dbc13f697efe3a-20220510
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:7d4d5ebd-4ac8-4b34-9637-c8a44484844c, OB:0,
- LO
- B:0,IP:0,URL:38,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,A
- CTION:release,TS:18
-X-CID-META: VersionHash:faefae9, CLOUDID:107fe516-2e53-443e-b81a-655c13977218,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 6d560351313e4c9ab3dbc13f697efe3a-20220510
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 965398331; Tue, 10 May 2022 02:58:09 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 02:51:35 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 17:51:33 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 10 May 2022 17:51:34 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>, "Ming
- Yen Hsieh" <mingyen.hsieh@mediatek.com>
-Subject: [PATCH] mt76: mt7921: add ipv6 NS offload support
-Date: Tue, 10 May 2022 17:51:06 +0800
-Message-ID: <fcc11cde6d1303984e1b6184a4b67caa56576a5e.1652172509.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1noMt0-00178P-FY
+ for linux-mediatek@lists.infradead.org; Tue, 10 May 2022 10:14:36 +0000
+Received: by mail-ej1-x633.google.com with SMTP id ch13so3496710ejb.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 10 May 2022 03:14:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=dbb/ygIPwle8pAxWJvLtaKiiriFkDuqy8P36ttqmEG8=;
+ b=yycP2wQZ9HF/b/5FrlR8y2OYTYX3t/FNxIguneIPCWzzxuMa0ywg/+isW+/xZ0N47N
+ ftjZJcdDRDFJt1uCggycsLqPYeBjkUN247gzZUe+mmvza6I/+tCsx32K2B9ZCr3V9yF6
+ RKrYdcQT01qPTOa5mRH+Po281aWca4Ubd245sIIXjuRV7GQt03eS85g1ST1oyMq9hc8O
+ fDegD87KKu4LBgM39oiCem643VRaY9frJPO784Rv7P/OOIklEqi9CCoMsaGLPvvAIAwK
+ Si7cnMCsNwVQqMN4rRFLobj8ZoLw1qSoG04rGJKd4aktEiJJNk5jvixFdKG+0fFl6ZpQ
+ lDBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=dbb/ygIPwle8pAxWJvLtaKiiriFkDuqy8P36ttqmEG8=;
+ b=SxgbaRMx3jHC4Qd/g/Zhg8QG0/eWoISgb86Hc+IundbMiAuGfitWW+Kolv3CMIzVld
+ Gh2cWW5I1xcE6eiypoWamhIrCiiB75CrHy3W8zHK7W8GGi2xPE1WC2tFbJVsKuprEANi
+ E2JY5880ckBw9ksVJauDzxUA9Jf5oZO0FXGAuvHgtC0SCloOkd0mWZGvovAiq/UApm5P
+ CYenG2OYRThrOWYcxjPemLVF6SCDfK2cS7/GXD6qC3VIe00/pQf3T9n/HovRxmJWuue+
+ dK75FDRO7YA5GKsuNyI8XobGmxlSi9HjS70frW04YLcOuWgqzjYY6jmjNLUpQVDjoih2
+ CXfQ==
+X-Gm-Message-State: AOAM531JqI+G3BTWVcLnfFwTw21Nx3zTPhAKlvSqtfj9srTlIwgB5WQu
+ cOBDXR4xQLCwWLXhWPJfdJ9YQQ==
+X-Google-Smtp-Source: ABdhPJydVj8m9S+WzagJO2lkw35EdeHC09Xmn2fKUVMjIUdi8GsSf/3KkrMZdALGKxBPh4z0+VaMZw==
+X-Received: by 2002:a17:907:1c8a:b0:6e9:2a0d:d7b7 with SMTP id
+ nb10-20020a1709071c8a00b006e92a0dd7b7mr18248840ejc.572.1652177669239; 
+ Tue, 10 May 2022 03:14:29 -0700 (PDT)
+Received: from [192.168.0.251] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ w1-20020a1709064a0100b006f3ef214db4sm5972354eju.26.2022.05.10.03.14.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 May 2022 03:14:28 -0700 (PDT)
+Message-ID: <ece7675a-a386-0a16-a087-2469758917f7@linaro.org>
+Date: Tue, 10 May 2022 12:14:26 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH] dt-bindings: pmic: mt6366: add binding document
+Content-Language: en-US
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>, lee.jones@linaro.org,
+ robh+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
+ broonie@kernel.org, eddie.huang@mediatek.com, a.zummo@towertech.it,
+ alexandre.belloni@bootlin.com, fshao@chromium.org
+Cc: srv_heupstream@mediatek.com, hui.liu@mediatek.com,
+ tinghan.shen@mediatek.com, hsin-hsiung.wang@mediatek.com,
+ sean.wang@mediatek.com, macpaul.lin@mediatek.com, wen.su@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rtc@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220510064603.15920-1-zhiyong.tao@mediatek.com>
+ <20220510064603.15920-2-zhiyong.tao@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220510064603.15920-2-zhiyong.tao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_025817_958445_E6E02B06 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20220510_031434_595663_02F482C6 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,258 +101,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+On 10/05/2022 08:46, Zhiyong Tao wrote:
+> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+> 
+> The commit adds mt6366 binding document.
 
-Add ipv6 NS offload for WoWLAN state.
+https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
 
-Tested in this way:
-1. Put device-A into WoW state.
-2. ping6 from device-B to device-A.
-3. In sniffer, see Neighbour advertisement from device-A.
+> 
+> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
+> ---
+>  .../bindings/regulator/mt6366-regulator.yaml  | 405 ++++++++++++++++++
+>  1 file changed, 405 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6366-regulator.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/regulator/mt6366-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6366-regulator.yaml
+> new file mode 100644
+> index 000000000000..1f125f5ba860
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mt6366-regulator.yaml
 
-Reviewed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7921/init.c  |  4 ++
- .../net/wireless/mediatek/mt76/mt7921/mac.c   | 26 +++++++
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 67 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 44 ++++++++++++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  8 +++
- 5 files changed, 148 insertions(+), 1 deletion(-)
+Filename with vendor, so "mediatek,mt6366-regulator.yaml"
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index f9e1255bd9c7..4a8675634f80 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -264,6 +264,10 @@ int mt7921_register_device(struct mt7921_dev *dev)
- 	INIT_DELAYED_WORK(&dev->mphy.mac_work, mt7921_mac_work);
- 	INIT_DELAYED_WORK(&dev->phy.scan_work, mt7921_scan_work);
- 	INIT_DELAYED_WORK(&dev->coredump.work, mt7921_coredump_work);
-+#if IS_ENABLED(CONFIG_IPV6)
-+	INIT_WORK(&dev->ipv6_ns_work, mt7921_set_ipv6_ns_work);
-+	skb_queue_head_init(&dev->ipv6_ns_list);
-+#endif
- 	skb_queue_head_init(&dev->phy.scan_event_list);
- 	skb_queue_head_init(&dev->coredump.msg_list);
- 	INIT_LIST_HEAD(&dev->sta_poll_list);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index e67c3d17d36c..a630ddbf19e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -1726,3 +1726,29 @@ bool mt7921_usb_sdio_tx_status_data(struct mt76_dev *mdev, u8 *update)
- 	return false;
- }
- EXPORT_SYMBOL_GPL(mt7921_usb_sdio_tx_status_data);
-+
-+#if IS_ENABLED(CONFIG_IPV6)
-+void mt7921_set_ipv6_ns_work(struct work_struct *work)
-+{
-+	struct mt7921_dev *dev = container_of(work, struct mt7921_dev,
-+						ipv6_ns_work);
-+	struct sk_buff *skb;
-+	int ret = 0;
-+
-+	do {
-+		skb = skb_dequeue(&dev->ipv6_ns_list);
-+
-+		if (!skb)
-+			break;
-+
-+		mt7921_mutex_acquire(dev);
-+		ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
-+					    MCU_UNI_CMD(OFFLOAD), true);
-+		mt7921_mutex_release(dev);
-+
-+	} while (!ret);
-+
-+	if (ret)
-+		skb_queue_purge(&dev->ipv6_ns_list);
-+}
-+#endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index e3db08e3a79f..6aeb72ae7d10 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -5,6 +5,7 @@
- #include <linux/platform_device.h>
- #include <linux/pci.h>
- #include <linux/module.h>
-+#include <net/ipv6.h>
- #include "mt7921.h"
- #include "mcu.h"
- 
-@@ -1332,7 +1333,7 @@ static int mt7921_suspend(struct ieee80211_hw *hw,
- 	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
--					    mt76_connac_mcu_set_suspend_iter,
-+					    mt7921_mcu_set_suspend_iter,
- 					    &dev->mphy);
- 
- 	mt7921_mutex_release(dev);
-@@ -1407,6 +1408,67 @@ static void mt7921_sta_set_decap_offload(struct ieee80211_hw *hw,
- 					     MCU_UNI_CMD(STA_REC_UPDATE));
- }
- 
-+#if IS_ENABLED(CONFIG_IPV6)
-+static void mt7921_ipv6_addr_change(struct ieee80211_hw *hw,
-+				    struct ieee80211_vif *vif,
-+				    struct inet6_dev *idev)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mvif->phy->dev;
-+	struct inet6_ifaddr *ifa;
-+	struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
-+	struct sk_buff *skb;
-+	u8 i, idx = 0;
-+
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt76_connac_arpns_tlv arpns;
-+	} req_hdr = {
-+		.hdr = {
-+			.bss_idx = mvif->mt76.idx,
-+		},
-+		.arpns = {
-+			.tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_ND),
-+			.mode = 2,  /* update */
-+			.option = 1, /* update only */
-+		},
-+	};
-+
-+	read_lock_bh(&idev->lock);
-+	list_for_each_entry(ifa, &idev->addr_list, if_list) {
-+		if (ifa->flags & IFA_F_TENTATIVE)
-+			continue;
-+		ns_addrs[idx] = ifa->addr;
-+		if (++idx >= IEEE80211_BSS_ARP_ADDR_LIST_LEN)
-+			break;
-+	}
-+	read_unlock_bh(&idev->lock);
-+
-+	if (!idx)
-+		return;
-+
-+	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL, sizeof(req_hdr) +
-+		idx * sizeof(struct in6_addr));
-+	if (!skb)
-+		return;
-+
-+	req_hdr.arpns.ips_num = idx;
-+	req_hdr.arpns.len = cpu_to_le16(sizeof(struct mt76_connac_arpns_tlv)
-+					+ idx * sizeof(struct in6_addr));
-+	skb_put_data(skb, &req_hdr, sizeof(req_hdr));
-+
-+	for (i = 0; i < idx; i++)
-+		skb_put_data(skb, &ns_addrs[i].in6_u, sizeof(struct in6_addr));
-+
-+	skb_queue_tail(&dev->ipv6_ns_list, skb);
-+
-+	ieee80211_queue_work(dev->mt76.hw, &dev->ipv6_ns_work);
-+}
-+#endif
-+
- static int mt7921_set_sar_specs(struct ieee80211_hw *hw,
- 				const struct cfg80211_sar_specs *sar)
- {
-@@ -1452,6 +1514,9 @@ const struct ieee80211_ops mt7921_ops = {
- 	.sta_pre_rcu_remove = mt76_sta_pre_rcu_remove,
- 	.set_key = mt7921_set_key,
- 	.sta_set_decap_offload = mt7921_sta_set_decap_offload,
-+#if IS_ENABLED(CONFIG_IPV6)
-+	.ipv6_addr_change = mt7921_ipv6_addr_change,
-+#endif /* CONFIG_IPV6 */
- 	.ampdu_action = mt7921_ampdu_action,
- 	.set_rts_threshold = mt7921_set_rts_threshold,
- 	.wake_tx_queue = mt76_wake_tx_queue,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 1ecbbe4fa498..ee3c2c09cd27 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -224,6 +224,50 @@ int mt7921_mcu_fill_message(struct mt76_dev *mdev, struct sk_buff *skb,
- }
- EXPORT_SYMBOL_GPL(mt7921_mcu_fill_message);
- 
-+#ifdef CONFIG_PM
-+
-+static int
-+mt7921_mcu_set_ipv6_ns_filter(struct mt76_dev *dev,
-+			      struct ieee80211_vif *vif, bool suspend)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt76_connac_arpns_tlv arpns;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->mt76.idx,
-+		},
-+		.arpns = {
-+			.tag = cpu_to_le16(UNI_OFFLOAD_OFFLOAD_ND),
-+			.len =
-+			      cpu_to_le16(sizeof(struct mt76_connac_arpns_tlv)),
-+			.mode = suspend,
-+		},
-+	};
-+
-+	return mt76_mcu_send_msg(dev, MCU_UNI_CMD_OFFLOAD, &req, sizeof(req),
-+				 true);
-+}
-+
-+void mt7921_mcu_set_suspend_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
-+{
-+	if (IS_ENABLED(CONFIG_IPV6)) {
-+		struct mt76_phy *phy = priv;
-+
-+		mt7921_mcu_set_ipv6_ns_filter(phy->dev, vif,
-+					      !test_bit(MT76_STATE_RUNNING,
-+					      &phy->state));
-+	}
-+
-+	mt76_connac_mcu_set_suspend_iter(priv, mac, vif);
-+}
-+
-+#endif /* CONFIG_PM */
-+
- static void
- mt7921_mcu_scan_event(struct mt7921_dev *dev, struct sk_buff *skb)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index adbdb2e22934..5ca584bb2fc6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -211,6 +211,10 @@ struct mt7921_dev {
- 	struct mt76_connac_pm pm;
- 	struct mt76_connac_coredump coredump;
- 	const struct mt7921_hif_ops *hif_ops;
-+
-+	struct work_struct ipv6_ns_work;
-+	/* IPv6 addresses for WoWLAN */
-+	struct sk_buff_head ipv6_ns_list;
- };
- 
- enum {
-@@ -449,6 +453,10 @@ int mt7921s_mcu_drv_pmctrl(struct mt7921_dev *dev);
- int mt7921s_mcu_fw_pmctrl(struct mt7921_dev *dev);
- void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data);
- void mt7921_set_runtime_pm(struct mt7921_dev *dev);
-+void mt7921_mcu_set_suspend_iter(void *priv, u8 *mac,
-+				 struct ieee80211_vif *vif);
-+void mt7921_set_ipv6_ns_work(struct work_struct *work);
-+
- int mt7921_mcu_set_sniffer(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 			   bool enable);
- 
--- 
-2.18.0
+> @@ -0,0 +1,405 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/mt6366-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MT6366 Regulator from MediaTek Integrated
+> +
+> +maintainers:
+> +  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> +
+> +description: |
+> +  List of regulators provided by this controller. It is named
+> +  according to its regulator type, buck_<name> and ldo_<name>.
+> +  MT6366 regulators node should be sub node of the MT6397 MFD node.
+> +
 
+Missing properties node, missing compatible. How is it supposed to
+match? If you plan to use it as part of other binding, please send
+entire patchset (including the binding which uses this one).
+
+In current form this looks untestable, unusable.
+
+> +patternProperties:
+> +  "^buck_v(dram1|core|pa|proc11|proc12|gpu|s2|modem|s1)$":
+> +    type: object
+> +    $ref: "regulator.yaml#"
+> +
+> +    properties:
+> +      regulator-name:
+> +        pattern: "^v(dram1|core|pa|proc11|proc12|gpu|s2|modem|s1)$"
+> +
+> +    unevaluatedProperties: false
+
+Put this one after $ref (other places as well). Makes it more readable.
+
+> +
+> +  "^ldo_v(ibr|rf12|usb|camio|efuse|xo22)$":
+> +    type: object
+> +    $ref: "regulator.yaml#"
+> +
+> +    properties:
+> +      regulator-name:
+> +        pattern: "^v(ibr|rf12|usb|camio|efuse|xo22)$"
+> +
+> +    unevaluatedProperties: false
+> +
+> +  "^ldo_v(rfck|emc|a12|a09|ufs|bbck)$":
+> +    type: object
+> +    $ref: "regulator.yaml#"
+> +
+> +    properties:
+> +      regulator-name:
+> +        pattern: "^v(rfck|emc|a12|a09|ufs|bbck)$"
+> +
+> +    unevaluatedProperties: false
+> +
+> +  "^ldo_vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$":
+
+No underscores in node names.
+
+> +    type: object
+> +    $ref: "regulator.yaml#"
+> +
+> +    properties:
+> +      regulator-name:
+> +        pattern: "^vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$"
+> +
+> +    unevaluatedProperties: false
+> +
+> +  "^ldo_vsram_(proc2|others|md|proc1|others_sshub)$":
+
+No underscores in node names, in all places.
+
+> +    type: object
+> +    $ref: "regulator.yaml#"
+> +
+> +    properties:
+> +      regulator-name:
+> +        pattern: "^vsram_(proc2|others|md|proc1|others_sshub)$"
+> +
+> +    unevaluatedProperties: false
+> +
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
