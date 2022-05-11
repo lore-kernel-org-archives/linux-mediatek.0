@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DB8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 12:25:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4B18C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 12:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WNJgT3Y/XlWC8QBej2/rJrRSvOa8BxRKQbRKJFbnemE=; b=3V2fLwszpWsk+f
-	BT05PwmWxwgmOyVEg/IOIJ5lEB9s3/80+lAczXAgzy8Wfdm2qCHaLIimiid/QoZ2ZWL1Efkketn4U
-	FaOCfk0I5eiIT9Ol/uP9SRuk8Os8mJb+Ed3Oa7d03bblxdMnmkAMTfGH9LQftVX5I9IysBdqfVSmp
-	lCPtEWvU6WHCJxgm/8FlOkKSG6cwu3v83jWTPlVZ8wWazi3EFs4l3cH/m/nUHuFtu9JoyQ/3pNHlZ
-	UFNkX6D9SQ56J78SpHyc4pmzekNeE0h3CpgRoINuD3YLhqg749kRzXbS87XchibGzIXWEfJj8D5Ur
-	/r7uHj+9bpKXPMjN4/VQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:
+	MIME-Version:In-Reply-To:References:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=zkmDn3JInIZ6VPD3CyS4GrsRM3p8B9DoPWZayR409UA=; b=ftJ1J4hz7oFYj1NPpdEYRE4duN
+	gpV9RbG+YzpeR9AmNHsDz8bUebyFNUH73IWEBqR16iNj5EdOKMN0IEzIMIdrSfpUEtyxofTK7aX+N
+	5kOTMnEoCsLWEV6ERlLKzxpAMhsR0UYCfbOMP2dYzygQ/qXNQPj1ztN2wDfW0Q7lYij4VOAGrzTUq
+	7+FZopT2B1rlPwZVqO0B9kDorqOpL+tqixtvknsnzkQsmRteUjkvCggSWl/EetAZM0AwsMmM1d6Jy
+	Bl8+lDks4zrkyuQV48ln5Vs30Wh4Z5aSrcUhnpI6LbrOhWIGgWR08vgfYDRRpDdeLfrVpKNVkZcbX
+	Io44LP0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nolOe-006l38-4Y; Wed, 11 May 2022 12:24:52 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1nolak-006nXF-5I; Wed, 11 May 2022 12:37:22 +0000
+Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nolOQ-006kv7-1W; Wed, 11 May 2022 12:24:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:Subject:
- From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID
- :Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
- Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe
- :List-Post:List-Owner:List-Archive;
- bh=38uuIh30OKVDrR6I5jA5xPcpEkEz/56gljV2pGGRdg8=; b=tz1chwRZMqfXH7/+P85zCehy38
- 6my5/nWl3mAmoc9CKiBTu3TH6XEAL915uGdPGTecmhyMzAMeUw6SJSoamOk1cA4tmg4VaaWBZiPOk
- EFYidyYUDBt92YmIkIt8Xk76l1Ps/+PjErcKEfFZFf0jB+b/blyaPi/8nPOG/KBVb4FI=;
-Received: from p200300daa70ef200e12105daa054647e.dip0.t-ipconnect.de
- ([2003:da:a70e:f200:e121:5da:a054:647e] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1nolO8-00051v-Jb; Wed, 11 May 2022 14:24:20 +0200
-Message-ID: <f1aa8300-bfc9-0414-4c44-3caf384e1d06@nbd.name>
-Date: Wed, 11 May 2022 14:24:19 +0200
+ id 1nolaf-006nVa-OP
+ for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 12:37:20 +0000
+Received: by mail-vk1-xa2a.google.com with SMTP id b81so1093639vkf.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 May 2022 05:37:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:user-agent:references:in-reply-to:mime-version:date:message-id
+ :subject:to:cc;
+ bh=v9Th8rxPiWf3ZnzxeLk5F4SGsw0EdAo79OtQwsPtPNc=;
+ b=qZGqNwBdtTPSsXJ4TudOdVSft1cn0crk+rUA+BXcaAtlIIcDlbrBzGZl1G6ZvqtL0/
+ 52aPzGjkDjxenmbtmqIx6HbPYriuF0amTOjLWM4rtPHVTv/9qzizlClERaRHxX71D0ie
+ /JuDIGifRPC2mJZsXUpCyTfdP6nLePIyl87T0VN3BU/AWzRxgidSFlfa9LPoAfc+5GxY
+ LpL/W8t6FtVAAJclUgCOS+NJAgUpE/918VqAruLfHfgduNmM7bpqSwYcGW0lFDx6KmLh
+ z/P+C9mYP3Rw8n+JWR2eJ+XXz039AdpnO9kvyDW1SbdY7w98B+1jppF+iMFrluk/aUcT
+ y8Fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:user-agent:references:in-reply-to
+ :mime-version:date:message-id:subject:to:cc;
+ bh=v9Th8rxPiWf3ZnzxeLk5F4SGsw0EdAo79OtQwsPtPNc=;
+ b=kbKD9tZhFROE956ORQg70ALbHJ8Qqgz/wwSS+7C9tLjczOYt8JpyUBFQPhnD3QY+69
+ XKzjlsVOtmNIF3z7NYqriezD26txbtOgXxI6jmRofuqLAss/6oFDzS9RqCitCsRUEOxl
+ xv8c4JQlhZvdMXkDONq3JjLjVHyjPiV2cETuJp4hC7PKfBhNDIknTUfEnl8y3uN9wSoH
+ JhAKkiCpXogubks87gfFjs9XhEmtaCTAsRuY1wnAVXCMCWbl0qA3v+CuE6nSCfv92YkF
+ 9U8RtdnxmMENpGuvPjtCcDOSdPFYhUiHe5iQboibqmUfhA/jrGR4rPSkIZ0ZXhn1rliw
+ oq8w==
+X-Gm-Message-State: AOAM531Ia7BM3GsyoK7qMtCC946dx9xybAiIf8sFjbYxn8xUnclfWew4
+ kSQcQI2f0LmcBBWjRtZVKmF1FVitQd7ViygRG0GZMw==
+X-Google-Smtp-Source: ABdhPJxBn9ixvONga67IFvsidm0urKpQCjlwF7V0itqftu5rkpNVWoXNuJCCn1qTxzlSqdUM84jEJ4VrTbu4KEramCk=
+X-Received: by 2002:a05:6122:511:b0:34e:e406:a66d with SMTP id
+ x17-20020a056122051100b0034ee406a66dmr14033939vko.6.1652272634992; Wed, 11
+ May 2022 05:37:14 -0700 (PDT)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 11 May 2022 05:37:13 -0700
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: meli 0.7.2
+References: <20220327223927.20848-1-granquet@baylibre.com>
+ <20220327223927.20848-2-granquet@baylibre.com>
+ <20220422105712.bdpbwliificvon4j@houat>
+In-Reply-To: <20220422105712.bdpbwliificvon4j@houat>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.9.0
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220510094014.68440-1-nbd@nbd.name>
- <20220510123724.i2xqepc56z4eouh2@skbuf>
- <5959946d-1d34-49b9-1abe-9f9299cc194e@nbd.name>
- <20220510165233.yahsznxxb5yq6rai@skbuf>
- <bc4bde22-c2d6-1ded-884a-69465b9d1dc7@nbd.name>
- <20220510222101.od3n7gk3cofwhbks@skbuf>
- <376b13ac-d90b-24e0-37ed-a96d8e5f80da@nbd.name>
- <20220511093245.3266lqdze2b4odh5@skbuf>
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH v2] net: dsa: tag_mtk: add padding for tx packets
-In-Reply-To: <20220511093245.3266lqdze2b4odh5@skbuf>
+Date: Wed, 11 May 2022 05:37:13 -0700
+Message-ID: <CABnWg9uwMN6yK-xfCPtRsLif5yC7AU5b+OKc0xaHjLKzQ__gJA@mail.gmail.com>
+Subject: Re: [PATCH v9 01/22] dt-bindings: mediatek,
+ dpi: Add DP_INTF compatible
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: airlied@linux.ie, angelogioacchino.delregno@collabora.com, 
+ chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org, ck.hu@mediatek.com, 
+ daniel@ffwll.ch, deller@gmx.de, jitao.shi@mediatek.com, kishon@ti.com, 
+ krzk+dt@kernel.org, maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com, 
+ p.zabel@pengutronix.de, robh+dt@kernel.org, tzimmermann@suse.de, 
+ vkoul@kernel.org, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, markyacoub@google.com, 
+ Markus Schneider-Pargmann <msp@baylibre.com>, Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_052438_406687_787F68E4 
-X-CRM114-Status: GOOD (  35.88  )
+X-CRM114-CacheID: sfid-20220511_053718_037396_AB169906 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,91 +94,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 22 Apr 2022 12:57, Maxime Ripard <maxime@cerno.tech> wrote:
+>Hi,
+>
+>On Mon, Mar 28, 2022 at 12:39:06AM +0200, Guillaume Ranquet wrote:
+>> From: Markus Schneider-Pargmann <msp@baylibre.com>
+>>
+>> DP_INTF is similar to DPI but does not have the exact same feature set
+>> or register layouts.
+>>
+>> DP_INTF is the sink of the display pipeline that is connected to the
+>> DisplayPort controller and encoder unit. It takes the same clocks as
+>> DPI.
+>>
+>> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+>> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+>> Reviewed-by: Rob Herring <robh@kernel.org>
+>> ---
+>>  .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++-----
+>>  1 file changed, 6 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>> index dd2896a40ff0..2dba80ad3b18 100644
+>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>> @@ -4,16 +4,16 @@
+>>  $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+>>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>>
+>> -title: mediatek DPI Controller Device Tree Bindings
+>> +title: mediatek DPI/DP_INTF Controller
+>>
+>>  maintainers:
+>>    - CK Hu <ck.hu@mediatek.com>
+>>    - Jitao shi <jitao.shi@mediatek.com>
+>>
+>>  description: |
+>> -  The Mediatek DPI function block is a sink of the display subsystem and
+>> -  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
+>> -  output bus.
+>> +  The Mediatek DPI and DP_INTF function blocks are a sink of the display
+>> +  subsystem and provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a
+>> +  parallel output bus.
+>>
+>>  properties:
+>>    compatible:
+>> @@ -23,6 +23,7 @@ properties:
+>>        - mediatek,mt8173-dpi
+>>        - mediatek,mt8183-dpi
+>>        - mediatek,mt8192-dpi
+>> +      - mediatek,mt8195-dpintf
+>
+>It seems a bit weird to have all instances of DP_INTF with a separator
+>but the compatible doesn't have one?
+>
+>Is there a reason to not use dp-intf?
 
-On 11.05.22 11:32, Vladimir Oltean wrote:
-> On Wed, May 11, 2022 at 10:50:17AM +0200, Felix Fietkau wrote:
->> Hi Vladimir,
->> 
->> On 11.05.22 00:21, Vladimir Oltean wrote:
->> > It sounds as if this is masking a problem on the receiver end, because
->> > not only does my enetc port receive the packet, it also replies to the
->> > ARP request.
->> > 
->> > pc # sudo tcpreplay -i eth1 arp-broken.pcap
->> > root@debian:~# ip addr add 192.168.42.1/24 dev eno0
->> > root@debian:~# tcpdump -i eno0 -e -n --no-promiscuous-mode arp
->> > tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
->> > listening on eno0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
->> > 22:18:58.846753 f4:d4:88:5e:6f:d2 > ff:ff:ff:ff:ff:ff, ethertype ARP (0x0806), length 60: Request who-has 192.168.42.1 tell 192.168.42.173, length 46
->> > 22:18:58.846806 00:04:9f:05:f4:ab > f4:d4:88:5e:6f:d2, ethertype ARP (0x0806), length 42: Reply 192.168.42.1 is-at 00:04:9f:05:f4:ab, length 28
->> > ^C
->> > 2 packets captured
->> > 2 packets received by filter
->> > 0 packets dropped by kernel
->> > 
->> > What MAC/driver has trouble with these packets? Is there anything wrong
->> > in ethtool stats? Do they even reach software? You can also use
->> > "dropwatch -l kas" for some hints if they do.
->> 
->> For some reason I can't reproduce the issue of ARPs not getting replies
->> anymore.
->> The garbage data is still present in the ARP packets without my patch
->> though. So regardless of whether ARP packets are processed correctly or if
->> they just trip up on some receivers under specific conditions, I believe my
->> patch is valid and should be applied.
-> 
-> I don't have a very strong opinion regarding whether to apply the patch or not.
-> I think we've removed it from bug fix territory now, until proven otherwise.
-I strongly disagree. Without my fix we're relying on undefined behavior 
-of the hardware, since the switch requires padding that accounts for the 
-special tag.
+None that I know of, It was taken as is from the vendor tree.
+I'll use dp-intf in v10 for the sake of consistency.
 
-> I do care about the justification (commit message, comments) being
-> correct though. If you cannot reproduce now, someone one year from now
-> surely cannot reproduce it either, and won't know why the code is there.
-I think there is some misunderstanding here. I absolutely can reproduce 
-the corrupted padding reliably, and it matches what I put into commit 
-message and comments.
+Thx,
+Guillaume.
 
-The issue that I can't reproduce reliably at the moment (ARP reception 
-failure) is something that I only pointed out in a reply to this thread.
-This is what prompted me to look into the padding issue in the first 
-place, and it also matches reports about connectivity issues that I got 
-from other people.
-
-> FYI, the reason why you call __skb_put_padto() is not the reason why
-> others call __skb_put_padto().
-It matches the call in tag_brcm.c (because I copied it from there), it's 
-just that the symptoms that I'm fixing are different (undefined behavior 
-instead of hard packet drop in the switch logic).
-
->> Who knows, maybe the garbage padding even leaks some data from previous
->> packets, or some other information from within the switch.
-> 
-> I mean, the padding has to come from somewhere, no? Although I'd
-> probably imagine non-scrubbed buffer cells rather than data structures...
-> 
-> Let's see what others have to say. I've been wanting to make the policy
-> of whether to call __skb_put_padto() standardized for all tagging protocol
-> drivers (similar to what is done in dsa_realloc_skb() and below it).
-> We pad for tail taggers, maybe we can always pad and this removes a
-> conditional, and simplifies taggers. Side note, I already dislike that
-> the comment in tag_brcm.c is out of sync with the code. It says that
-> padding up to ETH_ZLEN is necessary, but proceeds to pad up until
-> ETH_ZLEN + tag len, only to add the tag len once more below via skb_push().
-> It would be nice if we could use the simple eth_skb_pad().
-> 
-> But there will be a small performance degradation for small packets due
-> to the memset in __skb_pad(), which I'm not sure is worth the change.
-I guess we have different views on this. In my opinion, correctness 
-matters more in this case than the tiny performance degradation.
-
-- Felix
+>
+>Maxime
 
 _______________________________________________
 Linux-mediatek mailing list
