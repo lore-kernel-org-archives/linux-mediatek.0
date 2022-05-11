@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B09AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 22:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C49B8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 23:06:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+48PE0qpMiV2PpXCLLdEsn0Na8PZNHbiQcMPqvQVI0Q=; b=X0VJXwq4PzU/Yj
-	VHS1Xi30aRLkNVRS97X+aTzkjPuaLIkjln6gd0EF9ZFNDZhWXAENrtXIe2Mx74F7Fl/3mwy9gZNZR
-	0Pa2urd+zFcfvJRtgadkWTJlfEEmzoVngeE8UKoqRiYTwds9AUoCCxDr0R0AsUzvZ7NCWfytrzALb
-	V/MCKhnbuCIii9hFllSud30fL1m76xlFEvdhcZLcGdYGrWcoGLb08H8VZHhkdgc1NvnLwOOGGOyE1
-	p7Cc1psY4PNvZ0xhFuB999Sq5qx17FEClW+hHOiA5ApoqTlVq0HbCbQSmWw2pdT8oG8C6dDLavmzN
-	6NEOkCHo0dd5tu8V75yg==;
+	List-Owner; bh=0NUGcR1A1QEdzkWucikMvRVFOY1mO5KBoNQe9fGu8pc=; b=bLShYk0BBx6EsF
+	e493QLsPzGVTHkRbDiXLOcDvZgHjWwA0Z7wmRXB/bb2pX0+9oDuPVh/1rInM6NSZsW/+rCVZuXAk9
+	SnrLLhLenKvO/nBCZR2uZb/HnCVpWRVKfGsBeEBQuwEErxHl+8m8nEyNMYo644/pk8y4K8BYLJphD
+	wH2RuyKsEEWGrl46378lhgq5JgKc4qdx5C7iCmM4CT7PD8HIBA042iYmbaXTszYKUdmM78dLDDUOg
+	EX9oOCVQSx51icKrxnaS3MR31J8PfLLTMEEFWjKECHBhPr3knga5u3QtsOKFTVIhdw0vjccfFytXR
+	t63a8F83/fnt4t+S9N/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nouiv-008s3h-Ss; Wed, 11 May 2022 22:22:25 +0000
+	id 1novPt-008yff-5E; Wed, 11 May 2022 23:06:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nouit-008s3N-4f
- for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 22:22:24 +0000
-X-UUID: 27e1e9e6d0dc48ff9d396f9e791443af-20220511
+ id 1novPq-008yeu-Th
+ for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 23:06:48 +0000
+X-UUID: a49e65872ef94833aff68070a7c87a0c-20220511
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:aabf082c-fd2e-49c0-a190-52e17392ae3d, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:8ae729e5-7e6e-4df2-94cb-b389bf5b7be9, OB:0,
  LO
  B:0,IP:0,URL:5,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-15
-X-CID-META: VersionHash:faefae9, CLOUDID:7c1c78b3-56b5-4c9e-8d83-0070b288eb6a,
+X-CID-META: VersionHash:faefae9, CLOUDID:cb4d24e6-38f2-431d-8de7-bf8fac490b0a,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 27e1e9e6d0dc48ff9d396f9e791443af-20220511
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: a49e65872ef94833aff68070a7c87a0c-20220511
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1144913898; Wed, 11 May 2022 15:22:20 -0700
+ with ESMTP id 1914087446; Wed, 11 May 2022 16:06:41 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 15:22:18 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 May 2022 16:06:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 May 2022 06:22:16 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 12 May 2022 06:22:16 +0800
+ 15.0.1497.2; Thu, 12 May 2022 07:06:37 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 12 May 2022 07:06:37 +0800
 From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
  <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+ <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
  <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>, 
- <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
- Yang" <yake.yang@mediatek.com>
-Subject: [PATCH v2] Bluetooth: btmtksdio: fix use-after-free at
- btmtksdio_recv_event
-Date: Thu, 12 May 2022 06:22:15 +0800
-Message-ID: <f8bf12f9682a01de8905d4c0d7a0a1ff0502ba5f.1652307131.git.objelf@gmail.com>
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v2 1/2] mt76: add gfp to mt76_mcu_msg_alloc signature
+Date: Thu, 12 May 2022 07:06:35 +0800
+Message-ID: <51d96f159ec37c2610d3c444177508ffc7781e2c.1652310294.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_152223_232384_41CCEF34 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20220511_160647_002348_27616B31 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,82 +86,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-We should not access skb buffer data anymore after hci_recv_frame was
-called.
+Introduce __mt76_mcu_msg_alloc utility routine in order to specify gfp
+flags for mcu message allocation.
 
-[   39.634809] BUG: KASAN: use-after-free in btmtksdio_recv_event+0x1b0
-[   39.634855] Read of size 1 at addr ffffff80cf28a60d by task kworker
-[   39.634962] Call trace:
-[   39.634974]  dump_backtrace+0x0/0x3b8
-[   39.634999]  show_stack+0x20/0x2c
-[   39.635016]  dump_stack_lvl+0x60/0x78
-[   39.635040]  print_address_description+0x70/0x2f0
-[   39.635062]  kasan_report+0x154/0x194
-[   39.635079]  __asan_report_load1_noabort+0x44/0x50
-[   39.635099]  btmtksdio_recv_event+0x1b0/0x1c4
-[   39.635129]  btmtksdio_txrx_work+0x6cc/0xac4
-[   39.635157]  process_one_work+0x560/0xc5c
-[   39.635177]  worker_thread+0x7ec/0xcc0
-[   39.635195]  kthread+0x2d0/0x3d0
-[   39.635215]  ret_from_fork+0x10/0x20
-[   39.635247] Allocated by task 0:
-[   39.635260] (stack is not available)
-[   39.635281] Freed by task 2392:
-[   39.635295]  kasan_save_stack+0x38/0x68
-[   39.635319]  kasan_set_track+0x28/0x3c
-[   39.635338]  kasan_set_free_info+0x28/0x4c
-[   39.635357]  ____kasan_slab_free+0x104/0x150
-[   39.635374]  __kasan_slab_free+0x18/0x28
-[   39.635391]  slab_free_freelist_hook+0x114/0x248
-[   39.635410]  kfree+0xf8/0x2b4
-[   39.635427]  skb_free_head+0x58/0x98
-[   39.635447]  skb_release_data+0x2f4/0x410
-[   39.635464]  skb_release_all+0x50/0x60
-[   39.635481]  kfree_skb+0xc8/0x25c
-[   39.635498]  hci_event_packet+0x894/0xca4 [bluetooth]
-[   39.635721]  hci_rx_work+0x1c8/0x68c [bluetooth]
-[   39.635925]  process_one_work+0x560/0xc5c
-[   39.635951]  worker_thread+0x7ec/0xcc0
-[   39.635970]  kthread+0x2d0/0x3d0
-[   39.635990]  ret_from_fork+0x10/0x20
-[   39.636021] The buggy address belongs to the object at ffffff80cf28a600
-                which belongs to the cache kmalloc-512 of size 512
-[   39.636039] The buggy address is located 13 bytes inside of
-                512-byte region [ffffff80cf28a600, ffffff80cf28a800)
-
-Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
-Co-developed-by: Yake Yang <yake.yang@mediatek.com>
-Signed-off-by: Yake Yang <yake.yang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Acked-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-v2: add Fixes tag
+v2: new created
 ---
- drivers/bluetooth/btmtksdio.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mcu.c  | 8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt76.h | 9 ++++++++-
+ 2 files changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index b6d77e04240c..4ae6631a7c29 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -379,6 +379,7 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
+diff --git a/drivers/net/wireless/mediatek/mt76/mcu.c b/drivers/net/wireless/mediatek/mt76/mcu.c
+index 3f94c37251df..914ee278e6e2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mcu.c
+@@ -6,14 +6,14 @@
+ #include "mt76.h"
+ 
+ struct sk_buff *
+-mt76_mcu_msg_alloc(struct mt76_dev *dev, const void *data,
+-		   int data_len)
++__mt76_mcu_msg_alloc(struct mt76_dev *dev, const void *data,
++		     int data_len, gfp_t gfp)
  {
- 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
- 	struct hci_event_hdr *hdr = (void *)skb->data;
-+	u8 evt = hdr->evt;
- 	int err;
+ 	const struct mt76_mcu_ops *ops = dev->mcu_ops;
+ 	int length = ops->headroom + data_len + ops->tailroom;
+ 	struct sk_buff *skb;
  
- 	/* When someone waits for the WMT event, the skb is being cloned
-@@ -396,7 +397,7 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
- 	if (err < 0)
- 		goto err_free_skb;
+-	skb = alloc_skb(length, GFP_KERNEL);
++	skb = alloc_skb(length, gfp);
+ 	if (!skb)
+ 		return NULL;
  
--	if (hdr->evt == HCI_EV_WMT) {
-+	if (evt == HCI_EV_WMT) {
- 		if (test_and_clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT,
- 				       &bdev->tx_state)) {
- 			/* Barrier to sync with other CPUs */
+@@ -25,7 +25,7 @@ mt76_mcu_msg_alloc(struct mt76_dev *dev, const void *data,
+ 
+ 	return skb;
+ }
+-EXPORT_SYMBOL_GPL(mt76_mcu_msg_alloc);
++EXPORT_SYMBOL_GPL(__mt76_mcu_msg_alloc);
+ 
+ struct sk_buff *mt76_mcu_get_response(struct mt76_dev *dev,
+ 				      unsigned long expires)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index dc0f1b0aa34a..4e8997c45c1b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1345,8 +1345,15 @@ int mt76s_rd_rp(struct mt76_dev *dev, u32 base,
+ 		struct mt76_reg_pair *data, int len);
+ 
+ struct sk_buff *
++__mt76_mcu_msg_alloc(struct mt76_dev *dev, const void *data,
++		     int data_len, gfp_t gfp);
++static inline struct sk_buff *
+ mt76_mcu_msg_alloc(struct mt76_dev *dev, const void *data,
+-		   int data_len);
++		   int data_len)
++{
++	return __mt76_mcu_msg_alloc(dev, data, data_len, GFP_KERNEL);
++}
++
+ void mt76_mcu_rx_event(struct mt76_dev *dev, struct sk_buff *skb);
+ struct sk_buff *mt76_mcu_get_response(struct mt76_dev *dev,
+ 				      unsigned long expires);
 -- 
 2.25.1
 
