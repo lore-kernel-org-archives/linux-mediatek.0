@@ -4,75 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F62C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 14:12:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DF25C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 14:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0ydV/jxGkAonq8V6tVV/rYwMWOBDyQ4+vUqUvLNHZ6E=; b=11YZnJ3R8bNaVK
-	m/MWMTkI3jeP6oHkhMiCsVMGKbg2wzbcQWBT6Yu/67AL8DZaGES+3UbBaadv+9+gCJbfYKXiTXpuz
-	e0cKg5dt3MJ6MV348oIINPB1yRzcSL5Vr0uSnqiWDj0urvbQ0iXZ9IqjyTG8mGxWqJUM7P7NIXQbB
-	hSsTP/sP36aDxHSTCrQ/xl2uX+Dlr0Se++Xf+ur0Z6Vmr0ORutUV+cF+yvGK9jWMNe7X9jUNGlju+
-	QqhFnVYlE+8DMl5oB/q28Z5mMJyp0836znkFNtgwV+az4RYGWSSQTlzVF/XhvaAUIEgQ4+ofTiTMP
-	eqxIw+E4G0LRs+gsMCLg==;
+	List-Owner; bh=4TuiSnDEiAATLI7LW7sQ4Lp0Tbos0jbi1mOixqW/PiU=; b=qeCDBb71/HjK6m
+	drCsUGQyr2pI3e4IHn679bl3Hy/NmFrvWn/66ZXApdHlO4Q0X8cbvVLkGP6ffnJYqMPL3UxESMwhd
+	c6yDKIwroXQWsbe6fkJgbd4hZoRzusKAYESWNc+B3NOy6y0nxFx9g4hx0vTl8oRgkGUGKc0bknFhR
+	VUlT3cp6CYwNkm/QISdvNC52Bi5LQMr+sn3LIE1UUz+QaE4Wspz8lkQqiDeVpZNGyY8sHsY0ZJdFs
+	Tt6UuOfSVzIFFh3ya8YJdsozwWG+u7fRhyEfDOpLl9KdqWNq10iGB7pOESJtUz6T/BIcPhdequ83M
+	0/ptq+SxDg1oWOtXcYIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1non4l-0077cR-2Z; Wed, 11 May 2022 14:12:27 +0000
-Received: from mail-oa1-f53.google.com ([209.85.160.53])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1non4i-0077as-18; Wed, 11 May 2022 14:12:25 +0000
-Received: by mail-oa1-f53.google.com with SMTP id
- 586e51a60fabf-edf9ddb312so2937010fac.8; 
- Wed, 11 May 2022 07:12:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=hVwIirk09yaLIn9W0AnvNQlwP2lkso9U6oZmurIZ4jo=;
- b=W6HuoWSEkumzWeRk44tSf6Dj0dfsgrSKLTmI2+os7RWEZw2dwW5y+r/RhEuzm6jDkL
- hjcfgEto5Ma6Gwl5FtAC4926HmlKPEQLZZttPW7nUL5466Kqdn+0AFlcjwxvjwzM+4zo
- 5wO4HO8yEBhOZ5Mw5+HpU8wOZkfVCLXcjhlqhf6zx49Ldzg4P0rv5p2ZCbAduA65XCTL
- T4ZpMagxYifXM+o1OXu75HwVccLvSo2Ay+MmcSVJ1Nd/9m+9MDacNvqfgiwwCM45e0t9
- I9avbQvUAxb60PUN+HTEfmEuVsuzuDewZAKM6TZGkTjxnxyxLJe959S81EeHTcmQDLOG
- 914w==
-X-Gm-Message-State: AOAM530kcMkNQS+dQP+HuLuHnrZ9UNvB/L5u8suti1cuf8aIC1YC5F0U
- ut+D8OBtg9FTQ37BdTkkALjw3fnAWQ==
-X-Google-Smtp-Source: ABdhPJxD+7w4jCYBXpntlQ05yu2K8ufID8l4SDZrOUeqpx/5VE6wlYHK5Le77K7bV0jyOCAjWZSOkw==
-X-Received: by 2002:a05:6870:8888:b0:e9:a3eb:a52d with SMTP id
- m8-20020a056870888800b000e9a3eba52dmr2742881oam.181.1652278339038; 
- Wed, 11 May 2022 07:12:19 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- bd28-20020a056870d79c00b000e686d1386fsm617236oab.9.2022.05.11.07.12.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 07:12:18 -0700 (PDT)
-Received: (nullmailer pid 236095 invoked by uid 1000);
- Wed, 11 May 2022 14:12:17 -0000
-Date: Wed, 11 May 2022 09:12:17 -0500
-From: Rob Herring <robh@kernel.org>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: hsinyi@chromium.org, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
- linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v10 1/4] dt-bindings: timer: Add compatible for Mediatek
- MT8186
-Message-ID: <20220511141217.GA236062-robh@kernel.org>
-References: <20220510075233.5426-1-allen-kh.cheng@mediatek.com>
- <20220510075233.5426-2-allen-kh.cheng@mediatek.com>
+	id 1nonIx-007B1g-F8; Wed, 11 May 2022 14:27:07 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nonIc-007Aqv-Ju; Wed, 11 May 2022 14:26:49 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7C256ED1;
+ Wed, 11 May 2022 07:26:41 -0700 (PDT)
+Received: from e123427-lin.arm.com (unknown [10.57.1.148])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7D14B3F66F;
+ Wed, 11 May 2022 07:26:38 -0700 (PDT)
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: ryder.lee@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, jianjun.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, robh@kernel.org, kernel@collabora.com,
+ p.zabel@pengutronix.de, matthias.bgg@gmail.com, bhelgaas@google.com,
+ nfraprado@collabora.com, kw@linux.com
+Subject: Re: [PATCH] PCI: mediatek-gen3: Assert resets to ensure expected init
+ state
+Date: Wed, 11 May 2022 15:26:27 +0100
+Message-Id: <165227916327.28061.3388397168727783283.b4-ty@arm.com>
+X-Mailer: git-send-email 2.31.0
+In-Reply-To: <20220404144858.92390-1-angelogioacchino.delregno@collabora.com>
+References: <20220404144858.92390-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220510075233.5426-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_071224_098674_C9B00C49 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20220511_072646_736903_5FB037CC 
+X-CRM114-Status: UNSURE (   7.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,19 +67,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 10 May 2022 15:52:30 +0800, Allen-KH Cheng wrote:
-> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+On Mon, 4 Apr 2022 16:48:58 +0200, AngeloGioacchino Del Regno wrote:
+> The controller may have been left out of reset by the bootloader,
+> in which case, before the powerup sequence, the controller will be
+> found preconfigured with values that were set before booting the
+> kernel: this produces a controller failure, with the result of
+> a failure during the mtk_pcie_startup_port() sequence as the PCIe
+> link never gets up.
 > 
-> This commit adds dt-binding documentation of timer for Mediatek MT8186 SoC
-> Platform.
-> 
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
+> [...]
 
-Acked-by: Rob Herring <robh@kernel.org>
+Applied to pci/mediatek, thanks!
+
+[1/1] PCI: mediatek-gen3: Assert resets to ensure expected init state
+      https://git.kernel.org/lpieralisi/pci/c/1d565935e3
+
+Thanks,
+Lorenzo
 
 _______________________________________________
 Linux-mediatek mailing list
