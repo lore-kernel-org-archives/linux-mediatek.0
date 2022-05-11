@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D0B7C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE73DC433EF
 	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 02:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OH2rZO3VsGCZgqrMmx0iXAEOCIFPhGwgeDFUMSyt5Xc=; b=VmXyCkt8axAvrV
-	KLL8ftGbwI8/hsPLMWVkbeIts4BqS8bkWDtgAsnwXZvYXxG6u6tt9D4yeJ/6bvc/1/uaQmZWZFvJL
-	lMeGXM5Vku0IcoexzUSMJGY0mLfdF/lST7EuEDOBmdZ8tXtTez4rbhufMTeSVJMPF6Qy7Sy0Ym/l+
-	qGPz3UznnzAUBNZN5obVwBgQ3FkT59kYyAPTFYrurJ4zMzxCw8nQfCM+bFuqB6TO+fF0wyFczo0T3
-	PbcTA7feeC9ew74edR1uwJADh/PurB94DTYSS2khmTuDSEdG3lgw64LCXYzmkIjWih3A3ZqNOpbSA
-	uTBu7bBa8ivs7h3Zwenw==;
+	List-Owner; bh=uT9CUgE6SCMAP0vjmjs+oDddTPpc6RXKXMG6YVpR8go=; b=0tNhOXXxf4H2Ho
+	2rwLvek0KM10xhIrOrR8r1q7PZT7WiCxy5pmeLdYhiXuSlRGxipycabENnhNXpbOqUlWCbGQgsvje
+	HBxr/pqM9rLxlcTguvGe652HVG92laQbiUpztcAoeBof3ebNTCWJoZXtvXbQhYp5rmcerLktd0g51
+	XjM5mUGj4RRiXY1XFdGDxnTVH9x0yAbcSUcsoeFHCbwWv31rKFnUBpBsHnOG6i8kJtBK+jV4OpSHe
+	mIwG64KW8prh7AMPxt0iMI7I5pWoeicR4mF8R+uBrmiKs5k/5cY1C1V2wE4Y7JK1nj1UIKKjdO2aw
+	hW9nV8jbBPl+yIbkPkxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nocMv-004rV7-Uf; Wed, 11 May 2022 02:46:29 +0000
+	id 1nocMw-004rVO-Oh; Wed, 11 May 2022 02:46:30 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nocMc-004rOp-Sx; Wed, 11 May 2022 02:46:12 +0000
-X-UUID: bff2b0db9b314d798c963c3cb92a7dbc-20220510
+ id 1nocMb-004rP2-BL; Wed, 11 May 2022 02:46:11 +0000
+X-UUID: 7a240e3ca2d14b3093b49f29184ea6e5-20220510
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:c1537b21-4244-437d-a287-66f8680b3e62, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:af0e4bd0-04fe-48f6-bef6-bec9883b15e8, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:b05f05e6-38f2-431d-8de7-bf8fac490b0a,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:79be59b3-56b5-4c9e-8d83-0070b288eb6a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: bff2b0db9b314d798c963c3cb92a7dbc-20220510
+X-UUID: 7a240e3ca2d14b3093b49f29184ea6e5-20220510
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
+ (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1200386641; Tue, 10 May 2022 19:46:05 -0700
+ with ESMTP id 328855201; Tue, 10 May 2022 19:46:05 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 19:43:15 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ 15.0.1497.2; Tue, 10 May 2022 19:36:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 10:43:14 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 11 May 2022 10:43:14 +0800
-Message-ID: <73b1feab3ecb20fef0339b322a61d63146b5790a.camel@mediatek.com>
-Subject: Re: [PATCH v4 0/3] dt-bindings: nvmem: mediatek: Convert efuse
- binding to YAML
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski@canonical.com>
-CC: Lala Lin <lala.lin@mediatek.com>,
+ 15.0.1497.2; Wed, 11 May 2022 10:36:48 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 11 May 2022 10:36:47 +0800
+From: <xinlei.lee@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+ <daniel@ffwll.ch>, <matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
- Tsai <wenst@chromium.org>, Allen-kh Cheng
- <allen-kh.cheng@mediatek.corp-partner.google.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>
-Date: Wed, 11 May 2022 10:43:14 +0800
-In-Reply-To: <20220510132637.5864-1-allen-kh.cheng@mediatek.com>
-References: <20220510132637.5864-1-allen-kh.cheng@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>, Xinlei Lee
+ <xinlei.lee@mediatek.com>
+Subject: [PATCH v5,
+ 4/5] drm/mediatek: keep dsi as LP00 before dcs cmds transfer
+Date: Wed, 11 May 2022 10:36:35 +0800
+Message-ID: <1652236596-21648-5-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1652236596-21648-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1652236596-21648-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_194610_965346_AB29BD19 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20220510_194609_439306_AF5B2EAF 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,75 +83,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi the reviewers,
+From: Jitao Shi <jitao.shi@mediatek.com>
 
-Please ignore this PATCH series.
+To comply with the panel sequence, hold the mipi signal to LP00 before the dcs cmds transmission,
+and pull the mipi signal high from LP00 to LP11 until the start of the dcs cmds transmission.
+The normal panel timing is :
+(1) pp1800 DC pull up
+(2) avdd & avee AC pull high
+(3) lcm_reset pull high -> pull low -> pull high
+(4) Pull MIPI signal high (LP11) -> initial code -> send video data(HS mode)
+The power-off sequence is reversed.
+If dsi is not in cmd mode, then dsi will pull the mipi signal high in the mtk_output_dsi_enable function.
+The delay in lane_ready func is the reaction time of dsi_rx after pulling up the mipi signal.
 
-There is anther series for efuse yaml (
-20220509014521.10248-1-chunfeng.yun@mediatek.com) by chunfeng.
+Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the drm_panel_bridge API")
 
-We will integrate together and resend again.
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 29 ++++++++++++++++++++++-------
+ 1 file changed, 22 insertions(+), 7 deletions(-)
 
-I apologize for any inconvenience caused.
-
-Best regard,
-Allen
-
-On Tue, 2022-05-10 at 21:26 +0800, Allen-KH Cheng wrote:
-> From: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com
-> >
-> 
-> Convert MediaTek eFuse devicetree binding to YAML.
-> 
-> Based on tag: next-20220510, linux-next/master
-> 
-> Run cmds as following:
-> make DT_CHECKER_FLAGS=-m dt_binding_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/nvmem/mediatek,efus
-> e.yaml
-> 
-> make ARCH=arm64
-> dtbs_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/nvmem/mediatek,efus
-> e.yaml
-> 
-> We mark the mediatek,mt8173-efuse and mediatek,efuse as deprecated to
-> indicate
-> not use a signle compatible and should always use mediatek,efuse as
-> generic
-> fallback.
-> 
-> change since v3:
->  - use mediatek as vendor name instead of mtk
-> 
-> changes since v2:
->  - document deprecated efuse property
->  - update efuse compatible fallbacks
->  - add two PATCHs into series
-> 
-> changes since v1:
-> - change file name from mtk,efuse-yaml to mtk,efuse.yaml
-> - add efuse in commit title
-> - change compatible entries from const to enum
-> 
-> Allen-KH Cheng (2):
->   dt-bindings: nvmem: mediatek: Convert efuse binding to YAML
->   arm64: dts: mediatek: update efuse compatible fallbacks
-> 
-> Allen-kh Cheng (1):
->   dt-bindings: nvmem: mediatek: document deprecated efuse property
-> 
->  .../bindings/nvmem/mediatek,efuse.yaml        | 60
-> +++++++++++++++++++
->  .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 -------------
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  3 +-
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  3 +-
->  4 files changed, 64 insertions(+), 45 deletions(-)
->  create mode 100644
-> Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
->  delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-
-> efuse.txt
-> 
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 2dee6632a541..98b7811502e7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -203,6 +203,7 @@ struct mtk_dsi {
+ 	struct mtk_phy_timing phy_timing;
+ 	int refcount;
+ 	bool enabled;
++	bool lanes_ready;
+ 	u32 irq_data;
+ 	wait_queue_head_t irq_wait_queue;
+ 	const struct mtk_dsi_driver_data *driver_data;
+@@ -666,13 +667,6 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	mtk_dsi_config_vdo_timing(dsi);
+ 	mtk_dsi_set_interrupt_enable(dsi);
+ 
+-	mtk_dsi_rxtx_control(dsi);
+-	usleep_range(30, 100);
+-	mtk_dsi_reset_dphy(dsi);
+-	mtk_dsi_clk_ulp_mode_leave(dsi);
+-	mtk_dsi_lane0_ulp_mode_leave(dsi);
+-	mtk_dsi_clk_hs_mode(dsi, 0);
+-
+ 	return 0;
+ err_disable_engine_clk:
+ 	clk_disable_unprepare(dsi->engine_clk);
+@@ -701,6 +695,24 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 	clk_disable_unprepare(dsi->digital_clk);
+ 
+ 	phy_power_off(dsi->phy);
++
++	dsi->lanes_ready = false;
++
++}
++
++static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
++{
++	if (!dsi->lanes_ready) {
++		dsi->lanes_ready = true;
++		mtk_dsi_rxtx_control(dsi);
++		usleep_range(30, 100);
++		mtk_dsi_reset_dphy(dsi);
++		mtk_dsi_clk_ulp_mode_leave(dsi);
++		mtk_dsi_lane0_ulp_mode_leave(dsi);
++		mtk_dsi_clk_hs_mode(dsi, 0);
++		msleep(20);
++		/* The reaction time after pulling up the mipi signal for dsi_rx */
++	}
+ }
+ 
+ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+@@ -708,6 +720,7 @@ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+ 	if (dsi->enabled)
+ 		return;
+ 
++	mtk_dsi_lane_ready(dsi);
+ 	mtk_dsi_set_mode(dsi);
+ 	mtk_dsi_clk_hs_mode(dsi, 1);
+ 
+@@ -1017,6 +1030,8 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	if (MTK_DSI_HOST_IS_READ(msg->type))
+ 		irq_flag |= LPRX_RD_RDY_INT_FLAG;
+ 
++	mtk_dsi_lane_ready(dsi);
++
+ 	ret = mtk_dsi_host_send_cmd(dsi, msg, irq_flag);
+ 	if (ret)
+ 		goto restore_dsi_mode;
+-- 
+2.18.0
 
 
 _______________________________________________
