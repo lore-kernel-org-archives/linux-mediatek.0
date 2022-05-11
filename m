@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8DF8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 10:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29B23C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 10:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DuH3DXOQpvPaZvfAUOcVm0XBDpNA3rDKo4Ai2xn3z1U=; b=cVfvtVgbqP0SYa
-	tyKO1B11zX2yQVcrKBLWlUrMzicTSOcFJas4/S7BQ0Mg/2kvxUykhzXGasYm5JqncjyRZqjcsis6T
-	YccJPWAIBiYHs2gI9NOQeLf+eTKWRYAVWUMv41lqBUmQNdQIaP49kk1woVlRIIx1MQRJ/YHzwmY0Y
-	LwUp3dcWOV/zBcRdlJ6RI2QxIopRIUKI06o/LcyIslEisVATtUOQPmF5xXrP+DYCreLPwd6otpEAs
-	/cMIOHYmsTY5qwqNutHsTtTQi03TI/gcO0M75Ld3FkfgM/cQtG7NtLZeGpE4wzeyIwJCvlGHzgdD/
-	GiL+ZVMm8Ra/y98bkMYw==;
+	List-Owner; bh=11mnd8IfDBu6K4rdPwapHXMXYdSBjIEsZ6UElR0JRgU=; b=od/wffQAqcCM8L
+	v0BGKRZPYfYF95tTvZgmTR6Frh6mhjJpvHrtRjXJMm9q80TjhK6g8EuxUV8z6CSEcB0CV+/u6Zw7O
+	pGjA9tmY1JjCrl2IK8RBXsREQi1r/0xTpUkcNO1/zg7yg7VIE4iRfmBZX/iTDKVlPKLAQoIHoHz5L
+	rSYSzOggIhwWkBAmr2aFgnmtviDjv9rbtBfkr3Oba57w0NsE3pH9mcJQBiSmu5IMd+zwvCfb+bNC2
+	5zGa/xjR9cUVGo5gQUC6v6wtcK8XPIvDIyfYmKmXmSvlIAuoqHhpW4W487+0XEZQ1aKJu4yyBdAla
+	qXZ+Ings7LjuGysswcAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nojQp-006KMK-0w; Wed, 11 May 2022 10:18:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nojtF-006Qrm-SG; Wed, 11 May 2022 10:48:21 +0000
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nojQm-006KKv-Gs; Wed, 11 May 2022 10:18:57 +0000
-X-UUID: e50f25636bc240c0b136add308a4701a-20220511
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Cx+NqRIlKyfbviLdo1ub3z2eAq0hVTp78b3z0CU04fA=; 
- b=Jz5k1gdro050pNueEnOpO0/X9k7VYea+BBv5tA+hn3Vaf8TukRNJ1reypDt2WSDY41Yqwq//n4gkYTTo8DW6FA1bJ3qF1iLPukfqRzeIFY7LUz6kdhhUMJAO0NaVL6WhQKC1hrzm+GzMqaKosk5cEFuWVcJnNkEskuTyJq0peV4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:22576cfc-a573-4b12-baa6-7aafa9173cbe, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:2,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:2
-X-CID-META: VersionHash:faefae9, CLOUDID:5fe917e6-38f2-431d-8de7-bf8fac490b0a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: e50f25636bc240c0b136add308a4701a-20220511
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1211154033; Wed, 11 May 2022 03:18:51 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 03:08:49 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 18:08:47 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 11 May 2022 18:08:45 +0800
-Message-ID: <07e3873240945e8f352ba252c0b9ca727a1a3c2e.camel@mediatek.com>
-Subject: Re: [PATCH v1, 1/1] drm/mediatek: fixup crtc event null pointer issue
-From: yongqiang.niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, David Airlie
- <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Dennis YC
- Hsieh" <dennis-yc.hsieh@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
-Date: Wed, 11 May 2022 18:08:45 +0800
-In-Reply-To: <9f14d6a0aa782a8f6c3e7044fe90d74b80d17ed0.camel@mediatek.com>
-References: <20220314074239.28507-1-yongqiang.niu@mediatek.com>
- <20220314074239.28507-2-yongqiang.niu@mediatek.com>
- <9f14d6a0aa782a8f6c3e7044fe90d74b80d17ed0.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nojtD-006Qr6-He
+ for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 10:48:21 +0000
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-2f7c57ee6feso16120147b3.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 May 2022 03:48:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=drfygkTowvuBLUYKKqSn7wnL9G7tj7fcltIt86mentk=;
+ b=U0Z5PRzaDD8HlY7u+vcRl3tjjLWmlEi4zx9guX+v+HnsRNi1BsPtGOFeWg7v/H8I/n
+ v8vG/2LxavvFpGWW5BtLREFEtxUtULs9eeO/YBB3EKYbe7VGIk6aT6klVarI5nC8mODC
+ 7nHyamuW4M6cY0v2L3Jr6ofjaRUER+LJwoBuk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=drfygkTowvuBLUYKKqSn7wnL9G7tj7fcltIt86mentk=;
+ b=l48WTFEo3i8Mn5FIjdEDMVwEEJEhww7+Yq4SczLnye0fDo1syirYwOBMh5vVmY9t00
+ NCUt50AFI975ObyD9UGl77tat8653mQbuHfisTWBukrCDFRuu0Frmvwjk/cphUITh6LF
+ qbH0XQ9Vy/7XgZtCBE1FP6h8Cw6NyWvJRTnS72yI3J2tNoifC0BYmxyiT0baalwN+w7h
+ rU+cmnS4yWtz5SThfa/5KDEv8uaz1J10T+z0jddyF72h4mehVKTIs9o6Zg0WuKHrMkVx
+ w1HQUOjcH0LkaAlgEfZl+Z9K6WTEIVRx0zrZgtLSimXVUzFguJVpoPggFwyjl/eyRS4O
+ QLxg==
+X-Gm-Message-State: AOAM5338RrV/WyIRKIKXAThbkDxp5ktgCGffZplA27FXRcKNVmcTfFTW
+ pdLqo8+mLLV/TdVJyYSb31A0XIoKhKTPga83s9rZgQ==
+X-Google-Smtp-Source: ABdhPJxGVBQnozICEIYWYYUmj2XDVy7Iv/cHfh2VaMsWkzahJc7RVRiArSA2H274bdeXvoIWUvYywB06XduA/JHWTxw=
+X-Received: by 2002:a81:23cc:0:b0:2f8:1a60:a215 with SMTP id
+ j195-20020a8123cc000000b002f81a60a215mr24030993ywj.295.1652266097218; Wed, 11
+ May 2022 03:48:17 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220425125546.4129-1-johnson.wang@mediatek.com>
+ <20220425125546.4129-2-johnson.wang@mediatek.com>
+ <CAGXv+5HgyN+kp86M2GgFtbruXSAMSLxsh9vf8zVE5TxRMyTyaA@mail.gmail.com>
+ <a8e5fd9de1feece9051e1624c5cf3b672131a122.camel@mediatek.com>
+In-Reply-To: <a8e5fd9de1feece9051e1624c5cf3b672131a122.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 11 May 2022 18:48:06 +0800
+Message-ID: <CAGXv+5G6Qv1JcsZNrw5=USJSzPkczW42FgXRYqAK=xS-moO6nw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: interconnect: Add MediaTek CCI
+ dt-bindings
+To: Johnson Wang <johnson.wang@mediatek.com>
+Cc: krzk+dt@kernel.org, cw00.choi@samsung.com, robh+dt@kernel.org, 
+ kyungmin.park@samsung.com, khilman@kernel.org, linux-pm@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_031856_609591_E1DC4ECE 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20220511_034819_625239_5EBA2A83 
+X-CRM114-Status: GOOD (  34.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,51 +87,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-03-28 at 17:34 +0800, CK Hu wrote:
-> Hi, Yongqiang:
-> 
-> On Mon, 2022-03-14 at 15:42 +0800, Yongqiang Niu wrote:
-> > if crtc event is null pointer, do not send vblank event
-> 
-> This is a bug-fix, so add a Fixes tag here.
+On Mon, May 9, 2022 at 8:14 PM Johnson Wang <johnson.wang@mediatek.com> wrote:
+>
+> Hi Chen-Yu,
+>
+> On Tue, 2022-04-26 at 11:18 +0800, Chen-Yu Tsai wrote:
+> > On Mon, Apr 25, 2022 at 8:56 PM Johnson Wang <
+> > johnson.wang@mediatek.com> wrote:
+> > >
+> > > Add devicetree binding of MediaTek CCI on MT8183 and MT8186.
+> > >
+> > > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> > > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > > ---
+> > >  .../bindings/interconnect/mediatek,cci.yaml   | 139
+> > > ++++++++++++++++++
+> > >  1 file changed, 139 insertions(+)
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > >
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > > b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > > new file mode 100644
+> > > index 000000000000..e5221e17d11b
+> > > --- /dev/null
+> > > +++
+> > > b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> > > @@ -0,0 +1,139 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id:
+> > > https://urldefense.com/v3/__http://devicetree.org/schemas/interconnect/mediatek,cci.yaml*__;Iw!!CTRNKA9wMg0ARbw!zuufEcqpKbditY3eqLTHpL8P8humMCyh4D4QWsximmw124tJUPE3ZBUyBqBtDlQ9pSDO$
+> > >
+> > > +$schema:
+> > > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!zuufEcqpKbditY3eqLTHpL8P8humMCyh4D4QWsximmw124tJUPE3ZBUyBqBtDoE9YHyu$
+> > >
+> > > +
+> > > +title: MediaTek Cache Coherent Interconnect (CCI) frequency and
+> > > voltage scaling
+> > > +
+> > > +maintainers:
+> > > +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > > +
+> > > +description: |
+> > > +  MediaTek Cache Coherent Interconnect (CCI) is a hardware engine
+> > > used by
+> > > +  MT8183 and MT8186 SoCs to scale the frequency and adjust the
+> > > voltage in
+> > > +  hardware. It can also optimize the voltage to reduce the power
+> > > consumption.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    enum:
+> > > +      - mediatek,mt8183-cci
+> > > +      - mediatek,mt8186-cci
+> > > +
+> > > +  clocks:
+> > > +    items:
+> > > +      - description:
+> > > +          The multiplexer for clock input of CPU cluster.
+> >
+> > of the bus, not CPU cluster.
+>
+> Thanks for your suggestion.
+> I will correct it in the next version.
+>
+> >
+> > > +      - description:
+> > > +          A parent of "cpu" clock which is used as an intermediate
+> > > clock source
+> > > +          when the original CPU is under transition and not stable
+> > > yet.
+> >
+> > This really should be handled in the clk controller, and not by every
+> > device
+> > that happens to take a clock from a mux with upstream PLLs that can
+> > change
+> > in clock rate. The end device hardware only takes one clock input.
+> > That's it.
+> >
+>
+> To make this intermediate clock works properly, this driver is also
+> responsible for handling the Vproc voltage and ensures the voltage is
+> high enough to support intermediate clock rate.
+>
+> If we move intermediate clock rate control to clock driver, then
+> intermediate voltage control may be handled by the clock driver itself
+> as well.
+>
+> We believe that is not reasonable because clock driver shouldn't handle
+> voltage control. On the other hand, DVFS driver is more suitable for
+> doing this job.
 
-Fixes tag will be added in next version.
-> 
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > index d661edf7e0fe..265fed446628 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > @@ -92,6 +92,9 @@ static void mtk_drm_crtc_finish_page_flip(struct
-> > mtk_drm_crtc *mtk_crtc)
-> >  	struct drm_crtc *crtc = &mtk_crtc->base;
-> >  	unsigned long flags;
-> >  
-> > +	if (!mtk_crtc->event)
-> > +		return;
-> > +
-> >  	spin_lock_irqsave(&crtc->dev->event_lock, flags);
-> >  	drm_crtc_send_vblank_event(crtc, mtk_crtc->event);
-> 
-> I think pending_needs_vblank is used to protect this situation. It
-> seems that pending_needs_vblank should be protected by critical
-> section.
-> 
-> Regards,
-> CK
-actually, in the NG case pending_needs_vblank is true, but crtc->event
-is null.
+Either way the DVFS driver handles the voltage change.
 
-> 
-> >  	drm_crtc_vblank_put(crtc);
-> 
-> 
+Right now the driver is doing:
+
+1. Raise voltage if scaling up
+2. Mux CCI clock over to stable clock
+3. Set rate for CCI PLL
+4. Mux CCI clock back to CCI PLL
+5. Drop voltage if scaling down
+
+I'm saying that the clock driver should handle 2+4 transparently when any
+driver requests a rate change on the CCI clock. So instead the driver would
+do:
+
+1. Raise voltage if scaling up
+2. Set rate for CCI _clock_
+   Here the clock driver would do:
+   a. Mux CCI clock over to stable clock
+   b. Change clock rate for original parent, i.e. the CCI PLL
+   c. Mux CCI clock back to original parent, i.e. the CCI PLL
+   and back to the devfreq driver ...
+3. Drop voltage if scaling down
+
+Does that make sense?
+
+
+Regards
+ChenYu
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
