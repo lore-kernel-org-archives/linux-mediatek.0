@@ -4,85 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F179AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 04:31:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8550C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 05:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TF5zNcLgkB6xJsa6qfHU+JtPoRp+obinCm+wFWn3Fz4=; b=mM6Tud5nS2gNR+
-	kmTOFz5GilZI4HNCmgQMx4ObX89+TJtx9rifLiLwv3DCge3gow74Z26ogw1qjJYtiXuL7uqt8W9Kp
-	BsLjhaHGZEzF0sF91txssQjdqG1JBdJ7GPj+rzOimW4DS+UU+z9X8WM2ob4z+xjfzGwRcqsSeC+kH
-	LPXfjH4z6dKxv90j9q2ANS/CWDwfHfgIveZpSiacAkEttKJOdktWPiiFMjWsKxnXp0xF+ChGFhWlk
-	lkYBSoYHuCz2y9XbIEtwKPcUzAwS/cGjRk7yHqSWonaHfoxCQ6SK8Sxht66YTBaysa7BmsyNXuZfr
-	SewPwnekI7e4BKDAV1Qw==;
+	List-Owner; bh=WUC3MhGNKCGqlPFCmPo0IE6gAlWTC/lEV4G9K6xJpv4=; b=eWj+2ZWzXEm7+8
+	0SdYtBxbf39+pzFBOCOaa9JU1IJqIkPMN0Oub3osBqqMcNFt5CMftBN/ZCU2+fno/k8dkvKxpY0x9
+	W3ifmY3U3gJ6LoNGtEyXRSRgi4L+wZTaRDIagDh/Cmp2Q0J9uvjZEQfLbHRt10M7MrHeK9AFOS/yF
+	A1/62PHpNi7cykmQ35c+qdJJIzToHIzzOrKEf2HJ1/LVI7wN9NIGfB6cswTN2xy6NKw4ZENJV9k0r
+	m2+r7Di26gWGSM72Pqc1Y8bIkGGjXp9095T9b7tGPyT4yRNvNfgr0hYeW4zHf+/3yjp6GRaVtpcIE
+	V2v4Frg56zRFDPaVA6zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noe0t-0059nf-HG; Wed, 11 May 2022 04:31:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1noeXs-005Dna-6x; Wed, 11 May 2022 05:05:56 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noe0h-0059ji-N8; Wed, 11 May 2022 04:31:41 +0000
-X-UUID: f9d90df779cc47ba82e4cf1e2871fc5e-20220510
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:f3f9c7ba-3548-44a4-b41d-a371c8516b50, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:38820ae6-38f2-431d-8de7-bf8fac490b0a,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: f9d90df779cc47ba82e4cf1e2871fc5e-20220510
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 564487786; Tue, 10 May 2022 21:31:34 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 21:28:03 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 12:28:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 11 May 2022 12:28:02 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
- Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Javier Martinez Canillas <javierm@redhat.com>, "Thomas
- Zimmermann" <tzimmermann@suse.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Sudeep Holla
- <sudeep.holla@arm.com>, Michal Suchanek <msuchanek@suse.de>, Shuai Xue
- <xueshuai@linux.alibaba.com>, Simon Trimmer <simont@opensource.cirrus.com>,
- Cristian Marussi <cristian.marussi@arm.com>, TingHan Shen
- <tinghan.shen@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Borislav Petkov
- <bp@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, John Stultz
- <john.stultz@linaro.org>, Curtis Malainey <cujomalainey@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>, YC Hung <yc.hung@mediatek.com>, 
- Tzung-Bi Shih <tzungbi@google.com>, Yang Yingliang
- <yangyingliang@huawei.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
- =?UTF-8?q?P=C3=A9ter=20Ujfalusi?= <peter.ujfalusi@linux.intel.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <sound-open-firmware@alsa-project.org>, 
- <alsa-devel@alsa-project.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Allen-KH Cheng
- <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v8 2/3] ASoC: SOF: mediatek: Add ipc support for mt8195
-Date: Wed, 11 May 2022 12:27:17 +0800
-Message-ID: <20220511042718.4305-3-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220511042718.4305-1-tinghan.shen@mediatek.com>
-References: <20220511042718.4305-1-tinghan.shen@mediatek.com>
+ id 1noeXm-005Dlw-M5; Wed, 11 May 2022 05:05:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+ References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=1KHuCmEjlgOiBzRGyizP/FHYHWqcewVx6BpX8+Zrej4=; b=Dq3tx9ac8TZO9AtTj5bjNGhKac
+ d3KPoOIFgwa4uzLka8SdKY9IAbXYoKgatWn1jmjegjvJfcqo6ITqydRUNGKXSxo1b0d/E4kNl3lR7
+ eye9EAj4rHQee63XqlAub4q1dRVisDZLk+ZU3o3vOb16v7JEgB6nBgSsbWr+MyAH7Uls=;
+Received: from p200300daa70ef200e12105daa054647e.dip0.t-ipconnect.de
+ ([2003:da:a70e:f200:e121:5da:a054:647e] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1noeXf-0002z2-TZ; Wed, 11 May 2022 07:05:43 +0200
+Message-ID: <596e38fd-a563-b119-c541-0370304d299b@nbd.name>
+Date: Wed, 11 May 2022 07:05:43 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.9.0
+Subject: Re: [PATCH] net: ethernet: mediatek: ppe: fix wrong size passed to
+ memset()
+Content-Language: en-US
+To: Yang Yingliang <yangyingliang@huawei.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ netdev@vger.kernel.org
+Cc: davem@davemloft.net, kuba@kernel.org
+References: <20220511030829.3308094-1-yangyingliang@huawei.com>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <20220511030829.3308094-1-yangyingliang@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_213139_806201_5E45334D 
-X-CRM114-Status: GOOD (  28.88  )
+X-CRM114-CacheID: sfid-20220510_220551_014976_512B19ED 
+X-CRM114-Status: UNSURE (   7.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,275 +68,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+On 11.05.22 05:08, Yang Yingliang wrote:
+> 'foe_table' is a pointer, the real size of struct mtk_foe_entry
+> should be pass to memset().
+> 
+> Fixes: ba37b7caf1ed ("net: ethernet: mtk_eth_soc: add support for initializing the PPE")
+> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
 
-This patch adds mt8195 IPC support by using mailbox.
+Acked-by: Felix Fietkau <nbd@nbd.name>
 
-On mt8195 resource, there are two mboxes used to handle ipc request
-and reply. We create a mtk-adsp-ipc client device to request mbox
-controllers.
+Thanks,
 
-Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
----
- sound/soc/sof/mediatek/Kconfig         |   1 +
- sound/soc/sof/mediatek/adsp_helper.h   |  12 +--
- sound/soc/sof/mediatek/mt8195/mt8195.c | 138 ++++++++++++++++++++++++-
- 3 files changed, 140 insertions(+), 11 deletions(-)
-
-diff --git a/sound/soc/sof/mediatek/Kconfig b/sound/soc/sof/mediatek/Kconfig
-index f79e76a6f3c6..c3c99a248302 100644
---- a/sound/soc/sof/mediatek/Kconfig
-+++ b/sound/soc/sof/mediatek/Kconfig
-@@ -17,6 +17,7 @@ config SND_SOC_SOF_MTK_COMMON
- 	select SND_SOC_SOF
- 	select SND_SOC_SOF_XTENSA
- 	select SND_SOC_SOF_COMPRESS
-+	depends on MTK_ADSP_IPC
- 	help
- 	  This option is not user-selectable but automagically handled by
- 	  'select' statements at a higher level
-diff --git a/sound/soc/sof/mediatek/adsp_helper.h b/sound/soc/sof/mediatek/adsp_helper.h
-index f269a2b6c26a..4ab998756bbc 100644
---- a/sound/soc/sof/mediatek/adsp_helper.h
-+++ b/sound/soc/sof/mediatek/adsp_helper.h
-@@ -7,24 +7,22 @@
- #ifndef __MTK_ADSP_HELPER_H__
- #define __MTK_ADSP_HELPER_H__
- 
-+#include <linux/firmware/mediatek/mtk-adsp-ipc.h>
-+
- /*
-  * Global important adsp data structure.
-  */
--#define DSP_MBOX_NUM	3
--
- struct mtk_adsp_chip_info {
- 	phys_addr_t pa_sram;
- 	phys_addr_t pa_dram; /* adsp dram physical base */
- 	phys_addr_t pa_shared_dram; /* adsp dram physical base */
- 	phys_addr_t pa_cfgreg;
--	phys_addr_t pa_mboxreg[DSP_MBOX_NUM];
- 	u32 sramsize;
- 	u32 dramsize;
- 	u32 cfgregsize;
- 	void __iomem *va_sram; /* corresponding to pa_sram */
- 	void __iomem *va_dram; /* corresponding to pa_dram */
- 	void __iomem *va_cfgreg;
--	void __iomem *va_mboxreg[DSP_MBOX_NUM];
- 	void __iomem *shared_sram; /* part of  va_sram */
- 	void __iomem *shared_dram; /* part of  va_dram */
- 	phys_addr_t adsp_bootup_addr;
-@@ -42,10 +40,8 @@ struct mtk_adsp_chip_info {
- struct adsp_priv {
- 	struct device *dev;
- 	struct snd_sof_dev *sdev;
--
--	/* DSP IPC handler */
--	struct mbox_controller *adsp_mbox;
--
-+	struct mtk_adsp_ipc *dsp_ipc;
-+	struct platform_device *ipc_dev;
- 	struct mtk_adsp_chip_info *adsp;
- 	struct clk **clk;
- 	u32 (*ap2adsp_addr)(u32 addr, void *data);
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index ba13e4540f7a..f4b24afb6f75 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -12,6 +12,7 @@
- #include <linux/delay.h>
- #include <linux/firmware.h>
- #include <linux/io.h>
-+#include <linux/of_platform.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
-@@ -27,6 +28,99 @@
- #include "mt8195.h"
- #include "mt8195-clk.h"
- 
-+static int mt8195_get_mailbox_offset(struct snd_sof_dev *sdev)
-+{
-+	return MBOX_OFFSET;
-+}
-+
-+static int mt8195_get_window_offset(struct snd_sof_dev *sdev, u32 id)
-+{
-+	return MBOX_OFFSET;
-+}
-+
-+static int mt8195_send_msg(struct snd_sof_dev *sdev,
-+			   struct snd_sof_ipc_msg *msg)
-+{
-+	struct adsp_priv *priv = sdev->pdata->hw_pdata;
-+
-+	sof_mailbox_write(sdev, sdev->host_box.offset, msg->msg_data,
-+			  msg->msg_size);
-+
-+	return mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_REQ, MTK_ADSP_IPC_OP_REQ);
-+}
-+
-+static void mt8195_get_reply(struct snd_sof_dev *sdev)
-+{
-+	struct snd_sof_ipc_msg *msg = sdev->msg;
-+	struct sof_ipc_reply reply;
-+	int ret = 0;
-+
-+	if (!msg) {
-+		dev_warn(sdev->dev, "unexpected ipc interrupt\n");
-+		return;
-+	}
-+
-+	/* get reply */
-+	sof_mailbox_read(sdev, sdev->host_box.offset, &reply, sizeof(reply));
-+	if (reply.error < 0) {
-+		memcpy(msg->reply_data, &reply, sizeof(reply));
-+		ret = reply.error;
-+	} else {
-+		/* reply has correct size? */
-+		if (reply.hdr.size != msg->reply_size) {
-+			dev_err(sdev->dev, "error: reply expected %zu got %u bytes\n",
-+				msg->reply_size, reply.hdr.size);
-+			ret = -EINVAL;
-+		}
-+
-+		/* read the message */
-+		if (msg->reply_size > 0)
-+			sof_mailbox_read(sdev, sdev->host_box.offset,
-+					 msg->reply_data, msg->reply_size);
-+	}
-+
-+	msg->reply_error = ret;
-+}
-+
-+static void mt8195_dsp_handle_reply(struct mtk_adsp_ipc *ipc)
-+{
-+	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->sdev->ipc_lock, flags);
-+	mt8195_get_reply(priv->sdev);
-+	snd_sof_ipc_reply(priv->sdev, 0);
-+	spin_unlock_irqrestore(&priv->sdev->ipc_lock, flags);
-+}
-+
-+static void mt8195_dsp_handle_request(struct mtk_adsp_ipc *ipc)
-+{
-+	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
-+	u32 p; /* panic code */
-+	int ret;
-+
-+	/* Read the message from the debug box. */
-+	sof_mailbox_read(priv->sdev, priv->sdev->debug_box.offset + 4,
-+			 &p, sizeof(p));
-+
-+	/* Check to see if the message is a panic code 0x0dead*** */
-+	if ((p & SOF_IPC_PANIC_MAGIC_MASK) == SOF_IPC_PANIC_MAGIC) {
-+		snd_sof_dsp_panic(priv->sdev, p, true);
-+	} else {
-+		snd_sof_ipc_msgs_rx(priv->sdev);
-+
-+		/* tell DSP cmd is done */
-+		ret = mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_RSP, MTK_ADSP_IPC_OP_RSP);
-+		if (ret)
-+			dev_err(priv->dev, "request send ipc failed");
-+	}
-+}
-+
-+static struct mtk_adsp_ipc_ops dsp_ops = {
-+	.handle_reply		= mt8195_dsp_handle_reply,
-+	.handle_request		= mt8195_dsp_handle_request,
-+};
-+
- static int platform_parse_resource(struct platform_device *pdev, void *data)
- {
- 	struct resource *mmio;
-@@ -285,15 +379,36 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
- 	}
- 
- 	sdev->bar[DSP_REG_BAR] = priv->adsp->va_cfgreg;
--	sdev->bar[DSP_MBOX0_BAR] =  priv->adsp->va_mboxreg[0];
--	sdev->bar[DSP_MBOX1_BAR] =  priv->adsp->va_mboxreg[1];
--	sdev->bar[DSP_MBOX2_BAR] =  priv->adsp->va_mboxreg[2];
- 
- 	sdev->mmio_bar = SOF_FW_BLK_TYPE_SRAM;
- 	sdev->mailbox_bar = SOF_FW_BLK_TYPE_SRAM;
- 
-+	/* set default mailbox offset for FW ready message */
-+	sdev->dsp_box.offset = mt8195_get_mailbox_offset(sdev);
-+
-+	priv->ipc_dev = platform_device_register_data(&pdev->dev, "mtk-adsp-ipc",
-+						      PLATFORM_DEVID_NONE,
-+						      pdev, sizeof(*pdev));
-+	if (IS_ERR(priv->ipc_dev)) {
-+		ret = PTR_ERR(priv->ipc_dev);
-+		dev_err(sdev->dev, "failed to register mtk-adsp-ipc device\n");
-+		goto err_adsp_sram_power_off;
-+	}
-+
-+	priv->dsp_ipc = dev_get_drvdata(&priv->ipc_dev->dev);
-+	if (!priv->dsp_ipc) {
-+		ret = -EPROBE_DEFER;
-+		dev_err(sdev->dev, "failed to get drvdata\n");
-+		goto exit_pdev_unregister;
-+	}
-+
-+	mtk_adsp_ipc_set_data(priv->dsp_ipc, priv);
-+	priv->dsp_ipc->ops = &dsp_ops;
-+
- 	return 0;
- 
-+exit_pdev_unregister:
-+	platform_device_unregister(priv->ipc_dev);
- err_adsp_sram_power_off:
- 	adsp_sram_power_on(&pdev->dev, false);
- exit_clk_disable:
-@@ -310,7 +425,9 @@ static int mt8195_dsp_shutdown(struct snd_sof_dev *sdev)
- static int mt8195_dsp_remove(struct snd_sof_dev *sdev)
- {
- 	struct platform_device *pdev = container_of(sdev->dev, struct platform_device, dev);
-+	struct adsp_priv *priv = sdev->pdata->hw_pdata;
- 
-+	platform_device_unregister(priv->ipc_dev);
- 	adsp_sram_power_on(&pdev->dev, false);
- 	adsp_clock_off(sdev);
- 
-@@ -361,6 +478,14 @@ static int mt8195_get_bar_index(struct snd_sof_dev *sdev, u32 type)
- 	return type;
- }
- 
-+static int mt8195_ipc_msg_data(struct snd_sof_dev *sdev,
-+			       struct snd_pcm_substream *substream,
-+			       void *p, size_t sz)
-+{
-+	sof_mailbox_read(sdev, sdev->dsp_box.offset, p, sz);
-+	return 0;
-+}
-+
- static struct snd_soc_dai_driver mt8195_dai[] = {
- {
- 	.name = "SOF_DL2",
-@@ -412,6 +537,13 @@ static struct snd_sof_dsp_ops sof_mt8195_ops = {
- 	.write64	= sof_io_write64,
- 	.read64		= sof_io_read64,
- 
-+	/* ipc */
-+	.send_msg		= mt8195_send_msg,
-+	.get_mailbox_offset	= mt8195_get_mailbox_offset,
-+	.get_window_offset	= mt8195_get_window_offset,
-+	.ipc_msg_data		= mt8195_ipc_msg_data,
-+	.set_stream_data_offset = sof_set_stream_data_offset,
-+
- 	/* misc */
- 	.get_bar_index	= mt8195_get_bar_index,
- 
--- 
-2.18.0
+- Felix
 
 
 _______________________________________________
