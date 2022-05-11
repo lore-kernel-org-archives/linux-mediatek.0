@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81B18C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 22:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B09AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 22:22:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JC8ciWnmZ8W3WS82PmQpzDb4+E3Da2wXbe96Is/W2Fw=; b=vClm4Am+4ZovMn
-	PUTUSe7LlIX7ePbtd+pAc+71ySBkq/M+AX2OB9OqHnGX5DVVfzvl5iw8hNybU5h6GNR8co0R/f8Tg
-	XR4kv8b3xWmcjffJbxRr54ujrCkJDOL0v0YjnoaDPeqcXDBcy2DkfDh0yBdYQSATUQhhpJ75qlBoA
-	gwzP1wdHr6skRAhTdvymRHpEA4+hHHIF9ksZ+H1zvkYsHyfEI7tMGv409+QLdgJeqIsrnUMtCA1Kg
-	6o/o5Ez8owe7SectuOjOxroRxhyc+0Sb1TNC1kojKPsVlxenbMEV0LCiHMpssrEOzUvtYl/Vdw5CM
-	QbI0fNu2AjZ1bFuv5kdg==;
+	List-Owner; bh=+48PE0qpMiV2PpXCLLdEsn0Na8PZNHbiQcMPqvQVI0Q=; b=X0VJXwq4PzU/Yj
+	VHS1Xi30aRLkNVRS97X+aTzkjPuaLIkjln6gd0EF9ZFNDZhWXAENrtXIe2Mx74F7Fl/3mwy9gZNZR
+	0Pa2urd+zFcfvJRtgadkWTJlfEEmzoVngeE8UKoqRiYTwds9AUoCCxDr0R0AsUzvZ7NCWfytrzALb
+	V/MCKhnbuCIii9hFllSud30fL1m76xlFEvdhcZLcGdYGrWcoGLb08H8VZHhkdgc1NvnLwOOGGOyE1
+	p7Cc1psY4PNvZ0xhFuB999Sq5qx17FEClW+hHOiA5ApoqTlVq0HbCbQSmWw2pdT8oG8C6dDLavmzN
+	6NEOkCHo0dd5tu8V75yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nouUf-008rRw-5o; Wed, 11 May 2022 22:07:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nouiv-008s3h-Ss; Wed, 11 May 2022 22:22:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nouUb-008rRa-Sx
- for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 22:07:39 +0000
-X-UUID: 1d88984de3324955830361327c8c445f-20220511
+ id 1nouit-008s3N-4f
+ for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 22:22:24 +0000
+X-UUID: 27e1e9e6d0dc48ff9d396f9e791443af-20220511
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:a7a305a5-9714-4a0c-952f-3cfe0a963f6d, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:aabf082c-fd2e-49c0-a190-52e17392ae3d, OB:0,
  LO
  B:0,IP:0,URL:5,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
  TION:release,TS:-15
-X-CID-META: VersionHash:faefae9, CLOUDID:649123e6-38f2-431d-8de7-bf8fac490b0a,
+X-CID-META: VersionHash:faefae9, CLOUDID:7c1c78b3-56b5-4c9e-8d83-0070b288eb6a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 1d88984de3324955830361327c8c445f-20220511
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+X-UUID: 27e1e9e6d0dc48ff9d396f9e791443af-20220511
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 821910017; Wed, 11 May 2022 15:07:29 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 15:07:28 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Thu, 12 May 2022 06:07:26 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 12 May 2022 06:07:26 +0800
+ with ESMTP id 1144913898; Wed, 11 May 2022 15:22:20 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 May 2022 15:22:18 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 06:22:16 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 12 May 2022 06:22:16 +0800
 From: <sean.wang@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -62,16 +61,16 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
  Yang" <yake.yang@mediatek.com>
-Subject: [PATCH] Bluetooth: btmtksdio: fix use-after-free at
+Subject: [PATCH v2] Bluetooth: btmtksdio: fix use-after-free at
  btmtksdio_recv_event
-Date: Thu, 12 May 2022 06:07:25 +0800
-Message-ID: <25f3428482241cd449bffa39ad964240ee28483a.1652306557.git.objelf@gmail.com>
+Date: Thu, 12 May 2022 06:22:15 +0800
+Message-ID: <f8bf12f9682a01de8905d4c0d7a0a1ff0502ba5f.1652307131.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_150737_980526_13907EA0 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20220511_152223_232384_41CCEF34 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,9 +132,12 @@ called.
 [   39.636039] The buggy address is located 13 bytes inside of
                 512-byte region [ffffff80cf28a600, ffffff80cf28a800)
 
+Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
 Co-developed-by: Yake Yang <yake.yang@mediatek.com>
 Signed-off-by: Yake Yang <yake.yang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2: add Fixes tag
 ---
  drivers/bluetooth/btmtksdio.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
