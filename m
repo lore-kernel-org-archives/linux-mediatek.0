@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D87C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 19:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 035F8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 19:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=poaebKVNyD0JAq3XLVxPpQLbYFWaJqXXhRNvuVXq3RY=; b=wca6cLCF5qWdGl
-	wlJZAg/iKatAyOIYD+HDxlIeUJHvemaI5/EVJiseruwmRdIu8ch2Po3AXCYiQ/zEgySKP55Se0lfV
-	R1j8M5Adf47UMUFLz41cIVNR9wlBeysxaTWiBhL558GS6IhjDGj8gwFr3xlUoD7GTJeeEUsvW9BwF
-	83iCbKpuEt4Byv+BntvO2J8wRgGDdLr3HBvd9Q2vj8hX0Tcqd5ddab25pzjbHhYcYvn5Y8/0E2gEo
-	KZRbuM67DIFA7zZHz/2sZixlj960Jmh5byaD4tLALllu2ooS7gTxCUqudf9T4PeoAmKzaUI0EArF0
-	rpvzJ0IFDZiI1Lu7BPuw==;
+	List-Owner; bh=Pzhg3C9S82eMNH8g6S12sXweLLGysYsARvx9kzEXozc=; b=hyj1CwiLcElRf7
+	122DU/VbaJ4HvK2fKuBYTM6OhN6TcCZSJN8Df7k2TmZpQ+mIexUSV8YDxH/3wlVFMgyJSZb1DgroO
+	A5aQ6gmyYo6PJRFBkN4xx0F5OZdjCkV+n6oRmY5wRlzTvVIUwtqgr9+uZvTa/TOVYynTYUvB9Pcwa
+	cHiblMFGgpZWRFYhsBkONXKVL9uiS1kSs8aMgyo9tkXBpyN1yAO32YJRxirzOrSSAJYiVjrFWnLfT
+	doIFkjH3j9BRh58LT+0JB4RylI5mV9YhR0b8RroP3mx87oB13aAoS0rdbYJeFdr5QELaH4NazVws6
+	5vm3Ho0nkgb60jo0mUmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nosQw-008Q28-RA; Wed, 11 May 2022 19:55:42 +0000
+	id 1nosTe-008R28-2n; Wed, 11 May 2022 19:58:30 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nosQI-008PoR-T0; Wed, 11 May 2022 19:55:05 +0000
+ id 1nosTQ-008Qxg-JE; Wed, 11 May 2022 19:58:18 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 26CCF1F42D77
+ (Authenticated sender: nfraprado) with ESMTPSA id 704CE1F42CF0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652298900;
- bh=VLQbzFLaTXEJncbmCPeLOgEPWtwIfjpqwoLXWnU3Q3E=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=XIfu0ALH+UxjUOkJvim0Bvm/Ub8bSd/PbUcqNK7FzhFLuniO8kcOJuB1RlEwxtFXu
- H2vgu5rjVBEf3nBxLW3rJJWx0eZiLVBs0l/74eRgrtj3Z7i/FC0EiAyWEEU1ijnnCl
- D7vWm+nEPZqemsIzVf/VBeX9ztquXeeXy+fg2x1at844oi+q1hO/kwCszd4zr1FVb9
- jo+s5154S+zHB3ARtdprkROY/sUEPMXmNSyd1qTRIoi1ZTY1TX6Y8mS/GLkP5967PK
- JDWs43LeW97o8lbmR/k6tCGUSLtxJE5z85UyhQod4lZHQI92JuIKReIzJFnAgtfwWN
- ufnOCKxUVtzQA==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>
-To: Bjorn Andersson <bjorn.andersson@linaro.org>
-Cc: kernel@collabora.com,
+ s=mail; t=1652299095;
+ bh=VybsRpIInZnb23XCmY8eSSZVRgUv+vJS2d+gxTZzyMg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=j8wMtlkCxSaNmzjizBSjnADY75+vjTGMWLc+zi5Fxx6sc4wJjtayy58JkRAs8fT7e
+ 4Rt8A5tKkEgNPnXQ9Ksr8bCdqHvHp+bRpyIguyfczgcj676e5hA9c6/P//4l69cE7c
+ dMAfscqTl5kKnZmPY8QPlGwqtX9jAcLEE/jwH4L3sJQu+SqNpSHccUgNdZa3BDH8E2
+ Ui7yrvHs1AaYfAYCQLZF8NObtMGIYZMpqWw0wIb5wiu69upT5wFBK+OZ8zkr2JqmMh
+ GoNP6eOXuzOblu7tVaHwB5ztD399ZdVK7hFxI8Uhd6KQ3/4S+I5a4HCChbQJUCVmot
+ SZEL6KntEyazg==
+Date: Wed, 11 May 2022 15:58:10 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>, 
+ kernel@collabora.com,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Mathieu Poirier <mathieu.poirier@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -50,17 +49,20 @@ Cc: kernel@collabora.com,
  Tzung-Bi Shih <tzungbi@google.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
-Subject: [PATCH v5 1/2] dt-bindings: remoteproc: mediatek: Make l1tcm reg
+Subject: Re: [PATCH v4 1/2] dt-bindings: remoteproc: mediatek: Make l1tcm reg
  exclusive to mt819x
-Date: Wed, 11 May 2022 15:54:51 -0400
-Message-Id: <20220511195452.871897-2-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220511195452.871897-1-nfraprado@collabora.com>
-References: <20220511195452.871897-1-nfraprado@collabora.com>
+Message-ID: <20220511195810.jgeoukpj7bz3ng2h@notapiano>
+References: <20220506213226.257859-1-nfraprado@collabora.com>
+ <20220506213226.257859-2-nfraprado@collabora.com>
+ <d3e027ca-9ccf-cf91-2414-85d2b9b680f0@linaro.org>
+ <20220510165016.r7nyck2abt5m4djp@notapiano>
+ <66796853-efe7-f661-9637-ac6cfefc68e5@linaro.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <66796853-efe7-f661-9637-ac6cfefc68e5@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_125503_109877_2D441D0A 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20220511_125816_809560_4AFF43BC 
+X-CRM114-Status: GOOD (  26.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,68 +74,143 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Q29tbWl0IGNhMjNlY2ZkYmQ0NCAoInJlbW90ZXByb2MvbWVkaWF0ZWs6IHN1cHBvcnQgTDFUQ00i
-KSBhZGRlZCBzdXBwb3J0CmZvciB0aGUgbDF0Y20gbWVtb3J5IHJlZ2lvbiBvbiB0aGUgTVQ4MTky
-IFNDUCwgYWRkaW5nIGEgbmV3IGRhX3RvX3ZhCmNhbGxiYWNrIHRoYXQgaGFuZGxlcyBsMXRjbSB3
-aGlsZSBrZWVwaW5nIHRoZSBvbGQgb25lIGZvcgpiYWNrLWNvbXBhdGliaWxpdHkgd2l0aCBNVDgx
-ODMuIEhvd2V2ZXIsIHNpbmNlIHRoZSBtdDgxOTIgY29tcGF0aWJsZSB3YXMKbWlzc2luZyBmcm9t
-IHRoZSBkdC1iaW5kaW5nLCB0aGUgYWNjb21wYW55aW5nIGR0LWJpbmRpbmcgY29tbWl0CjUwM2M2
-NGNjNDJmMSAoImR0LWJpbmRpbmdzOiByZW1vdGVwcm9jOiBtZWRpYXRlazogYWRkIEwxVENNIG1l
-bW9yeSByZWdpb24iKQptaXN0YWtlbmx5IGFkZGVkIHRoaXMgcmVnIGFzIGlmIGl0IHdlcmUgZm9y
-IG10ODE4My4gQW5kIGxhdGVyCml0IGJlY2FtZSBjb21tb24gdG8gYWxsIHBsYXRmb3JtcyBhcyB0
-aGVpciBjb21wYXRpYmxlcyB3ZXJlIGFkZGVkLgoKRml4IHRoZSBkdC1iaW5kaW5nIHNvIHRoYXQg
-dGhlIGwxdGNtIHJlZyBjYW4gYmUgcHJlc2VudCBvbmx5IG9uIHRoZQpzdXBwb3J0ZWQgcGxhdGZv
-cm1zOiBtdDgxOTIgYW5kIG10ODE5NS4KCkZpeGVzOiA1MDNjNjRjYzQyZjEgKCJkdC1iaW5kaW5n
-czogcmVtb3RlcHJvYzogbWVkaWF0ZWs6IGFkZCBMMVRDTSBtZW1vcnkgcmVnaW9uIikKU2lnbmVk
-LW9mZi1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29t
-PgoKLS0tCgpDaGFuZ2VzIGluIHY1OgotIE1hZGUgbDF0Y20gb3B0aW9uYWwgZm9yIG10ODE5Mi9t
-dDgxOTUKLSBHcmVhdGx5IHNpbXBsaWZpZWQgdGhlIGNvbnN0cmFpbnRzIG92ZXJyaWRlIGluIHRo
-ZSBpZjp0aGVuOgotIFVwZGF0ZWQgY29tbWl0IG1lc3NhZ2UKCkNoYW5nZXMgaW4gdjQ6Ci0gUmV3
-b3JrZWQgcHJlc2VuY2Ugb2YgbDF0Y20gcmVnIHRvIGJlIGlmOnRoZW46IGJhc2VkIGFuZCBwcmVz
-ZW50IG9ubHkKICBvbiBtdDgxOTIvbXQ4MTk1Ci0gUmV3cm90ZSBjb21taXQgbWVzc2FnZQotIEFk
-ZGVkIEZpeGVzIHRhZwoKQ2hhbmdlcyBpbiB2MzoKLSBNYWRlIHRoZSBjZmcgcmVnIHJlcXVpcmVk
-IGFnYWluLiBBZnRlciBsb29raW5nIGFnYWluIGludG8gdGhlIG10ay1zY3AKICBkcml2ZXIsIG9u
-bHkgbDF0Y20gaXMgb3B0aW9uYWwuCi0gQWRkZWQgbWVudGlvbiB0aGF0IGEgZHRic19jaGVjayB3
-YXJuaW5nIGdldHMgZml4ZWQgYnkgcGF0Y2ggaW4gY29tbWl0CiAgbWVzc2FnZS4KCiAuLi4vYmlu
-ZGluZ3MvcmVtb3RlcHJvYy9tdGssc2NwLnlhbWwgICAgICAgICAgfCA0NCArKysrKysrKysrKysr
-LS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgMTQgZGVsZXRpb25zKC0p
-CgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3JlbW90ZXBy
-b2MvbXRrLHNjcC55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3JlbW90
-ZXByb2MvbXRrLHNjcC55YW1sCmluZGV4IGFiYzExYWM5MjgxOC4uODMyMDY0ZDYzNWIzIDEwMDY0
-NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcmVtb3RlcHJvYy9tdGss
-c2NwLnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3JlbW90ZXBy
-b2MvbXRrLHNjcC55YW1sCkBAIC0yMywxMSArMjMsMTMgQEAgcHJvcGVydGllczoKIAogICByZWc6
-CiAgICAgZGVzY3JpcHRpb246Ci0gICAgICBTaG91bGQgY29udGFpbiB0aGUgYWRkcmVzcyByYW5n
-ZXMgZm9yIG1lbW9yeSByZWdpb25zIFNSQU0sIENGRywgYW5kCi0gICAgICBMMVRDTS4KKyAgICAg
-IFNob3VsZCBjb250YWluIHRoZSBhZGRyZXNzIHJhbmdlcyBmb3IgbWVtb3J5IHJlZ2lvbnMgU1JB
-TSwgQ0ZHLCBhbmQsCisgICAgICBvbiBzb21lIHBsYXRmb3JtcywgTDFUQ00uCisgICAgbWluSXRl
-bXM6IDIKICAgICBtYXhJdGVtczogMwogCiAgIHJlZy1uYW1lczoKKyAgICBtaW5JdGVtczogMgog
-ICAgIGl0ZW1zOgogICAgICAgLSBjb25zdDogc3JhbQogICAgICAgLSBjb25zdDogY2ZnCkBAIC01
-NywxNiArNTksMzAgQEAgcmVxdWlyZWQ6CiAgIC0gcmVnCiAgIC0gcmVnLW5hbWVzCiAKLWlmOgot
-ICBwcm9wZXJ0aWVzOgotICAgIGNvbXBhdGlibGU6Ci0gICAgICBlbnVtOgotICAgICAgICAtIG1l
-ZGlhdGVrLG10ODE4My1zY3AKLSAgICAgICAgLSBtZWRpYXRlayxtdDgxOTItc2NwCi10aGVuOgot
-ICByZXF1aXJlZDoKLSAgICAtIGNsb2NrcwotICAgIC0gY2xvY2stbmFtZXMKK2FsbE9mOgorICAt
-IGlmOgorICAgICAgcHJvcGVydGllczoKKyAgICAgICAgY29tcGF0aWJsZToKKyAgICAgICAgICBl
-bnVtOgorICAgICAgICAgICAgLSBtZWRpYXRlayxtdDgxODMtc2NwCisgICAgICAgICAgICAtIG1l
-ZGlhdGVrLG10ODE5Mi1zY3AKKyAgICB0aGVuOgorICAgICAgcmVxdWlyZWQ6CisgICAgICAgIC0g
-Y2xvY2tzCisgICAgICAgIC0gY2xvY2stbmFtZXMKKworICAtIGlmOgorICAgICAgcHJvcGVydGll
-czoKKyAgICAgICAgY29tcGF0aWJsZToKKyAgICAgICAgICBlbnVtOgorICAgICAgICAgICAgLSBt
-ZWRpYXRlayxtdDgxODMtc2NwCisgICAgICAgICAgICAtIG1lZGlhdGVrLG10ODE4Ni1zY3AKKyAg
-ICB0aGVuOgorICAgICAgcHJvcGVydGllczoKKyAgICAgICAgcmVnOgorICAgICAgICAgIG1heEl0
-ZW1zOiAyCisgICAgICAgIHJlZy1uYW1lczoKKyAgICAgICAgICBtYXhJdGVtczogMgogCiBhZGRp
-dGlvbmFsUHJvcGVydGllczoKICAgdHlwZTogb2JqZWN0CkBAIC04NiwxMCArMTAyLDEwIEBAIGFk
-ZGl0aW9uYWxQcm9wZXJ0aWVzOgogCiBleGFtcGxlczoKICAgLSB8Ci0gICAgI2luY2x1ZGUgPGR0
-LWJpbmRpbmdzL2Nsb2NrL210ODE4My1jbGsuaD4KKyAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3Mv
-Y2xvY2svbXQ4MTkyLWNsay5oPgogCiAgICAgc2NwQDEwNTAwMDAwIHsKLSAgICAgICAgY29tcGF0
-aWJsZSA9ICJtZWRpYXRlayxtdDgxODMtc2NwIjsKKyAgICAgICAgY29tcGF0aWJsZSA9ICJtZWRp
-YXRlayxtdDgxOTItc2NwIjsKICAgICAgICAgcmVnID0gPDB4MTA1MDAwMDAgMHg4MDAwMD4sCiAg
-ICAgICAgICAgICAgIDwweDEwNzAwMDAwIDB4ODAwMD4sCiAgICAgICAgICAgICAgIDwweDEwNzIw
-MDAwIDB4ZTAwMDA+OwotLSAKMi4zNi4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Wed, May 11, 2022 at 11:12:45AM +0200, Krzysztof Kozlowski wrote:
+> On 10/05/2022 18:50, N=EDcolas F. R. A. Prado wrote:
+> >>> Also I had to add a description to the global reg-names, since it
+> >>> couldn't be neither missing nor empty.
+> >>
+> >> It is possible:
+> >> https://elixir.bootlin.com/linux/latest/source/Documentation/devicetre=
+e/bindings/example-schema.yaml#L91
+> >>
+> >> Keep constraints and list of names in properties. Then in allOf:if:then
+> >> raise minItems or lower maxItems, depending on the variant.
+> > =
+
+> > Hi Krzysztof,
+> > =
+
+> > that example only shows setting minItems to override the default value,=
+ but the
+> > issue here is that it's not possible to override minItems/maxItems (aft=
+er
+> > they're already set, even if implicitly) with a different value in the =
+if.
+> =
+
+> No, this example shows exactly what you need in first step - make one
+> item on the list optional.
+> =
+
+> There are several other examples for the entire picture or different
+> aproach:
+> https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/b=
+indings/example-schema.yaml#L91
+> =
+
+> https://elixir.bootlin.com/linux/v5.18-rc2/source/Documentation/devicetre=
+e/bindings/clock/samsung,exynos7885-clock.yaml#L53
+> =
+
+> > =
+
+> > That is:
+> > =
+
+> > 	properties:
+> > 	  reg-names:
+> > 	    items:
+> > 	      - const: sram
+> > 	      - const: cfg
+> > 	      - const: l1tcm
+> =
+
+> You did not use the example I gave you. Where is the minItems?
+> =
+
+> > =
+
+> > 	if:
+> > 	  properties:
+> > 	    compatible:
+> > 	      enum:
+> > 		- mediatek,mt8183-scp
+> > 		- mediatek,mt8186-scp
+> > 	then:
+> > 	  properties:
+> > 	    reg-names:
+> > 	      minItems: 2
+> > 	      maxItems: 2
+> > =
+
+> > Generates the error on dtbs_check:
+> > =
+
+> > /home/nfraprado/ext/git/linux/arch/arm64/boot/dts/mediatek/mt8183-kukui=
+-kakadu.dtb: scp@10500000: reg-names: ['sram', 'cfg'] is too short
+> =
+
+> Missing minItems in first properties.
+> =
+
+> > =
+
+> > I believe the tooling is implicitly adding
+> > =
+
+> > 	      minItems: 3
+> > 	      maxItems: 3
+> > =
+
+> > to the common reg-names, and since it's not possible to override them, =
+the
+> > override to 2 doesn't work so they are kept at 3, causing the error.
+> > =
+
+> > Moving the minItems/maxItems to the common reg-names as a test gives:
+> =
+
+> You cannot just. You need it in both places.
+
+OK, now I get it. I sent v5 addressing this.
+
+Thanks,
+N=EDcolas
+
+> =
+
+> > =
+
+> > /home/nfraprado/ext/git/linux/Documentation/devicetree/bindings/remotep=
+roc/mtk,scp.yaml: properties:reg-names: {'minItems': 2, 'maxItems': 2, 'ite=
+ms': [{'const': 'sram'}, {'const': 'cfg'}, {'const': 'l1tcm'}]} should not =
+be valid under {'required': ['maxItems']}
+> > 	hint: "maxItems" is not needed with an "items" list
+> > =
+
+> > That error, plus looking in the items meta-schema, suggests me that max=
+Items
+> > isn't supposed to be set lower then the length of items. So even if the
+> > minItems/maxItems override is fixed, there's still this issue. It seems=
+ like
+> > defining the reg-names list separetely in each if branch is indeed the =
+right way
+> > to go.
+> =
+
+> =
+
+> =
+
+> Best regards,
+> Krzysztof
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
