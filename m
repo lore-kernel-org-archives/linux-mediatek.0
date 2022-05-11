@@ -4,60 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12501C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 15:14:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C70AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 15:17:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Di37GnfEz38LzvzUC6tMkPQp8Hc4nyU9Fai9/pDMt2o=; b=s4bKai12NmAivr
-	alzhBqbUgbwndhn7mdLmn6crBSpUB1iQkXTAI98aktCFmLzFEVgpQFWh0y2mLDn99s0m0H06P12qj
-	pccBD93YpJns5ls8uBbMlDz7IuUDhgF7yum8EuyaGUGyfwFK1TVOp1plbS9df/iYsJVsx1Ymcu7W8
-	u+MHCJKBzmQeWlDEICxKUOjCuZ36ATxoqjGhy3F54ryAHBwxqtGaHMX3IWu3CGG4p5Ja6p1mxN4Uu
-	UznlwtLNu9fGBVOABK/3QIPfOl9x/BI6imb5aVipB5TB3zwmL08c1tlK2FUA/xz9KSAqLuIK7rPeT
-	GlJj4pJZJDJPeVJV8QGQ==;
+	List-Owner; bh=My0ECp6BDAkzdzLrL993xFe39YeIdDDJx9V605Zyfdc=; b=YRAvc0FxU3TJbQ
+	LjKcJfti2AqudnNh43t5l4qDcm1TJSOokx6yeAd5xYfnOYBw2Uo5eVTHpfjWN9mpOKPEMyVgA+Xre
+	yvYWpQqnDkg2RxaOoA+dIsYZ/ZxiocMXODj2/E9C3mBFaqo4gavanDmbnZxuz4HTu3EBARJlkj6n3
+	h/oj2PYrqZ7Ri7g6NS3puy2ub2EVzPPKr6PtfO1/2IxVB+Pf95GTl+XkHb+G2MCz3YhPOvD50CSHG
+	jaKZVUFQjf2A8qQEp4y6hIRmG1L8MEJzUn1CBWEh2MqDhv2dUIa1n2bkUeWfpl4v7iqg92mPvl9tm
+	1mcfK/Pm2/eWNGi9+D5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noo2v-007TRA-Iu; Wed, 11 May 2022 15:14:37 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1noo5U-007Ucr-3J; Wed, 11 May 2022 15:17:16 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nontV-007POr-Jg; Wed, 11 May 2022 15:04:55 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E7E401F43201
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652281491;
- bh=mxWYOQgLw0CZGqfrBC0Eg5W6UfeqjHZIz/sEb1ggWik=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Nxg/uwf/s7WPIv/mqp+jozD5PuYhmwbINGe5FRHRMxcP+KnVQNuJ3QzDTmviaDqqD
- qZx70JQLfTCc50DGrfLbfKAYRvjxUYlbI/SEE8s/nozlS5wO0O5+XNbQ4bA5SSOaTD
- Q9GQImxwPwHWPGK1b06syFI0xnwdQXv/oL3a6L5AGGKAyPDdHMxjpuzsPUuFB1R5T7
- 6ZkaZILgBzQ87402zUxydp0SeXVMLNhpLaD8WGzlyZjtyT7dLyyEjUrCP1lHaGKvUB
- NJsDUCEe30J1S2UxJYlmIOA3sras6Q/yAMH8KN2O1vIqtBmzd9vc8x047FqS9Y50q4
- 8j4pmm5l5Ktbg==
-Message-ID: <20f078a8-f050-127f-b720-b5fc8c893c9c@collabora.com>
-Date: Wed, 11 May 2022 17:04:48 +0200
+ id 1noo5H-007UTZ-37
+ for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 15:17:04 +0000
+Received: by mail-ed1-x533.google.com with SMTP id ba17so2976497edb.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 May 2022 08:17:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=mJWH/lfuqaU5M9ClCLXzwM3OtS13pgUbIbBqib9/b5Q=;
+ b=ddJhLrfYUIgcxyKQaBI/0k415nx1UNPNu98YhvgC0QlOY0Ocgejj86nL2/rEb0bAn9
+ c40Yx3zPRL28IYuLwUjNLLft35OstKwrmM1bYiJS/ZqFPkRcJtw4MJBo83nyKMYzUqDS
+ qV0lGZKiLfZRCZMFLb5Ng9Qa+IAi04kOv5+cudFwOhDVUjd4mC9stNMAqP60/Y31f2oY
+ 4azTzrSqzsYxT1GynXLkRdUKqN8WX1sQqqK5qxqLOMSWKVeQ3FQDcEO2pDnsqqpoY1GL
+ kiHTYB6eyaV3HXxFPi2MidsBU/g+yN4NFoKHXHgVFoAiokwxrrPKlC5DmjDlLnG05rGU
+ YBIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=mJWH/lfuqaU5M9ClCLXzwM3OtS13pgUbIbBqib9/b5Q=;
+ b=ILNKQKzT+ANFKPRQWFTANPyh9LBSkSPyiVGA+Oz30wnn2Ry0gFrhQMgI1CouLRGoXF
+ jh0nlOLIkPL1KNUjbpcQn7mi3erNIrh+cBa9DsMFFyhuLoJPWr7gZaQ4crscgj6UET5c
+ qroXd4tKzIgiDti178qXM05OQd9bHwO9vkepbTbrW7C9zum7Zn6vzEnsI4qYNib6ukec
+ MKBpnCn8mAWVSGBWS2Pw138tFkw0tnURoHkcqIrhqURV8LmzfGcOhDzq8ZyTUu6Se6Im
+ mVyM3S5bthflwHmBsQ/VyURGZMU1uNyJoJJeoNMTASmm81m1RFdA8esnt6dA1G9hutdL
+ X9Dw==
+X-Gm-Message-State: AOAM530ro0jPZ6mmOmIkO20q8ohicSqwtsAXOBLqlcQIgTuFaT+7fU3T
+ vYgU2RtexUhNyw51fxR5xpYNBQ==
+X-Google-Smtp-Source: ABdhPJyf1gmEybUdj3DMvkaOP9NhT9SQ+0nnD2P+TaFDr2QIgSiYzka959iRA8NSpHNx7pCTN/VgTQ==
+X-Received: by 2002:a50:a6c8:0:b0:428:5b3a:6c99 with SMTP id
+ f8-20020a50a6c8000000b004285b3a6c99mr28532674edc.222.1652282219761; 
+ Wed, 11 May 2022 08:16:59 -0700 (PDT)
+Received: from [192.168.0.154] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ bw6-20020a170906c1c600b006f3ef214dc7sm1123249ejb.45.2022.05.11.08.16.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 May 2022 08:16:59 -0700 (PDT)
+Message-ID: <53da6771-b7cf-3050-abee-33d78c2ada7f@linaro.org>
+Date: Wed, 11 May 2022 17:16:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v5, 4/5] drm/mediatek: keep dsi as LP00 before dcs cmds
- transfer
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v4 1/3] dt-bindings: nvmem: mediatek: Convert efuse
+ binding to YAML
 Content-Language: en-US
-To: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
- airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, rex-bc.chen@mediatek.com,
- jitao.shi@mediatek.com
-References: <1652236596-21648-1-git-send-email-xinlei.lee@mediatek.com>
- <1652236596-21648-5-git-send-email-xinlei.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1652236596-21648-5-git-send-email-xinlei.lee@mediatek.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Lala Lin <lala.lin@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20220510132637.5864-1-allen-kh.cheng@mediatek.com>
+ <20220510132637.5864-2-allen-kh.cheng@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220510132637.5864-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_080454_020874_55C0B3AF 
-X-CRM114-Status: UNSURE (   8.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220511_081703_206485_03E4025E 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,32 +95,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/05/22 04:36, xinlei.lee@mediatek.com ha scritto:
-> From: Jitao Shi <jitao.shi@mediatek.com>
+On 10/05/2022 15:26, Allen-KH Cheng wrote:
+> Convert MediaTek eFuse devicetree binding to YAML.
 > 
-> To comply with the panel sequence, hold the mipi signal to LP00 before the dcs cmds transmission,
-> and pull the mipi signal high from LP00 to LP11 until the start of the dcs cmds transmission.
-> The normal panel timing is :
-> (1) pp1800 DC pull up
-> (2) avdd & avee AC pull high
-> (3) lcm_reset pull high -> pull low -> pull high
-> (4) Pull MIPI signal high (LP11) -> initial code -> send video data(HS mode)
-> The power-off sequence is reversed.
-> If dsi is not in cmd mode, then dsi will pull the mipi signal high in the mtk_output_dsi_enable function.
-> The delay in lane_ready func is the reaction time of dsi_rx after pulling up the mipi signal.
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> ---
+>  .../bindings/nvmem/mediatek,efuse.yaml        | 57 +++++++++++++++++++
+>  .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 --------------
+>  2 files changed, 57 insertions(+), 43 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
 > 
-> Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the drm_panel_bridge API")
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> new file mode 100644
+> index 000000000000..529f5888d93f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> @@ -0,0 +1,57 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek eFuse
+> +
+> +maintainers:
+> +  - Lala Lin <lala.lin@mediatek.com>
+> +  - Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> +
+> +allOf:
+> +  - $ref: "nvmem.yaml#"
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt8173-efuse
+> +          - mediatek,efuse
+> +        description:
+> +          Only mt8173 SoC-specific compatible with generic fallback should be
+> +          used
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I don't see changes here after our v2 discussion. In the past several
+comments were not implemented in new versions (filename, title). So this
+is one more case where you receive a comment and send a next version
+without implementing it.
 
+Can you please focus on the received comments and not loose pieces of them?
+
+https://lore.kernel.org/all/0169c4ac-fdce-29b7-553a-14dc7df532d1@linaro.org/
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
