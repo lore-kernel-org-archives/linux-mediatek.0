@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A9FCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 02:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F88FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 02:39:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j6ZI+/0SKQqFh/7mhncUk71mjKqze1Z/z5pbt9uqpgg=; b=rNFeF70nSLB3yT
-	jzpphwZV7TOg1Aai3yx7pseHy7RukRSkai4DU0vqmwu5SJrmQKWhu+jW405Hizy8fnC0nLJ4uCmqp
-	4JC5fRpel66SzAorX3H8ZsVN+w21QHSvEVFVXHWlR+q3G7V1yIGgFM1uS1apFnH6GiSTo7iHT5tkO
-	0XRJX9MUgdpRjk2z+SK8WKapnY8XoPMMcUxY+ICtTb2zBKnXEVtH6PmTjBt8lA+02u62sbrvyb3r6
-	XcgQPNqCLWhiL0HrTdmUhLBvZnQyO3Za6me1BymlzlVRKz/mI+vmIvylUpWMHobr0WEhQtTecKgdL
-	kwgeslBxjJu6St5NTf5A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=b0aPHjTs4ht0KAN5FTWOjoL+nyxqenauknp7CdesyTs=; b=xihbh7bXSZMXs7
+	XKXt2Lgj3bQRigNVMtNEythgExieDT0Gb+4FJ80Pm/UIdZj5cfq6Ivs88lsWIRVQfhudQr5yw4mvP
+	VpkHLKjHRU1xCrVid+F6QhW1iHWGzKPc7VfpPoW3/8TacMDm52LydPXxiAMpCgojGE1mVBpeUY5YM
+	G6CYr8RYYMnoVgAbExpxUXaCuAEWmEj45qYU0Vvi7b0YLIKWn/YQw889c15k3Dakt7WB5n+7pwPMo
+	GVsnZfTHtwfBgfwANrIpuUuLhkNk46r7lXMDxEgZE9tvphpaCOfLz48biyad/cLvLbT6QDYcBfTAl
+	d47XRXlmUsaN+mgrsHCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nocDs-004pjB-KP; Wed, 11 May 2022 02:37:08 +0000
+	id 1nocGS-004qY0-2e; Wed, 11 May 2022 02:39:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nocDg-004pbE-0o; Wed, 11 May 2022 02:36:57 +0000
-X-UUID: fbbe0989544c4a52a44df1faf05f866c-20220510
+ id 1nocGH-004qVL-4s; Wed, 11 May 2022 02:39:38 +0000
+X-UUID: 96471004b96b4e329873d2a22a11ca5a-20220510
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:20f70f59-31fd-4ebb-9988-868ecc51a536, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:3cd30010-1516-43b6-8b18-d78b5a9afbfe, OB:0,
  LO
- B:0,IP:0,URL:8,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:8
-X-CID-META: VersionHash:faefae9, CLOUDID:37f804e6-38f2-431d-8de7-bf8fac490b0a,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:5f1405e6-38f2-431d-8de7-bf8fac490b0a,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: fbbe0989544c4a52a44df1faf05f866c-20220510
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+X-UUID: 96471004b96b4e329873d2a22a11ca5a-20220510
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 646170274; Tue, 10 May 2022 19:36:54 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 May 2022 19:36:53 -0700
+ with ESMTP id 1109538206; Tue, 10 May 2022 19:39:33 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 10 May 2022 19:36:39 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Wed, 11 May 2022 10:36:51 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 May 2022 10:36:38 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 11 May 2022 10:36:50 +0800
+ 15.2.792.3 via Frontend Transport; Wed, 11 May 2022 10:36:37 +0800
 From: <xinlei.lee@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
  <daniel@ffwll.ch>, <matthias.bgg@gmail.com>
@@ -57,18 +56,17 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
  <rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>, Xinlei Lee
  <xinlei.lee@mediatek.com>
 Subject: [PATCH v5,
- 5/5] drm/mediatek: Add pull-down MIPI operation in mtk_dsi_poweroff
- function
-Date: Wed, 11 May 2022 10:36:36 +0800
-Message-ID: <1652236596-21648-6-git-send-email-xinlei.lee@mediatek.com>
+ 0/5] Cooperate with DSI RX devices to modify dsi funcs and delay mipi
+ high to cooperate with panel sequence
+Date: Wed, 11 May 2022 10:36:31 +0800
+Message-ID: <1652236596-21648-1-git-send-email-xinlei.lee@mediatek.com>
 X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1652236596-21648-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1652236596-21648-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_193656_105749_2B41ADD3 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20220510_193937_221253_D34320FE 
+X-CRM114-Status: UNSURE (   5.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +85,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-In the dsi_enable function, mtk_dsi_rxtx_control is to
-pull up the MIPI signal operation. Before dsi_disable,
-MIPI should also be pulled down by writing a register
-instead of disabling dsi.
+In upstream-v5.8, dsi_enable will operate panel_enable, but this
+modification has been moved in v5.9. In order to ensure the timing of
+dsi_power_on/off and the timing of pulling up/down the MIPI signal,
+the modification of v5.9 is synchronized in this series of patches.
 
-If disable dsi without pulling the mipi signal low, the value of
-the register will still maintain the setting of the mipi signal being
-pulled high.
-After resume, even if the mipi signal is not pulled high, it will still
-be in the high state.
+Changes since v4:
+1. Dsi func modified to atomic operation.
+2. Added fix tag.
+3. Removed lane_ready print statement.
 
-Fixes: 2e54c14e310f ("drm/mediatek: Add DSI sub driver")
+Changes since v3:
+1. Rebase kernel-5.18-rc1.
+2. Added dsi_enable protection.
+3. Encapsulates the dsi_lane_ready function.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
- 1 file changed, 2 insertions(+)
+Changes since v2:
+1. Rebase linux-next.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 98b7811502e7..1035fafdbf7c 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -688,6 +688,8 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
- 	mtk_dsi_reset_engine(dsi);
- 	mtk_dsi_lane0_ulp_mode_enter(dsi);
- 	mtk_dsi_clk_ulp_mode_enter(dsi);
-+	/* set the lane number as 0 to pull down mipi */
-+	writel(0, dsi->regs + DSI_TXRX_CTRL);
- 
- 	mtk_dsi_disable(dsi);
- 
+Changes since v1:
+1. Dsi sequence marked with patch adjustment.
+2. Fixes: mtk_dsi: Use the drm_panel_bridge.
+
+Jitao Shi (3):
+  drm/mediatek: Adjust the timing of mipi signal from LP00 to LP11
+  drm/mediatek: Separate poweron/poweroff from enable/disable and define
+    new funcs
+  drm/mediatek: keep dsi as LP00 before dcs cmds transfer
+
+Xinlei Lee (2):
+  drm/mediatek: Modify dsi funcs to atomic operations
+  drm/mediatek: Add pull-down MIPI operation in mtk_dsi_poweroff
+    function
+
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 94 ++++++++++++++++++++----------
+ 1 file changed, 64 insertions(+), 30 deletions(-)
+
 -- 
 2.18.0
 
