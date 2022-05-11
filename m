@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 035F8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 19:58:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81B18C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 May 2022 22:07:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pzhg3C9S82eMNH8g6S12sXweLLGysYsARvx9kzEXozc=; b=hyj1CwiLcElRf7
-	122DU/VbaJ4HvK2fKuBYTM6OhN6TcCZSJN8Df7k2TmZpQ+mIexUSV8YDxH/3wlVFMgyJSZb1DgroO
-	A5aQ6gmyYo6PJRFBkN4xx0F5OZdjCkV+n6oRmY5wRlzTvVIUwtqgr9+uZvTa/TOVYynTYUvB9Pcwa
-	cHiblMFGgpZWRFYhsBkONXKVL9uiS1kSs8aMgyo9tkXBpyN1yAO32YJRxirzOrSSAJYiVjrFWnLfT
-	doIFkjH3j9BRh58LT+0JB4RylI5mV9YhR0b8RroP3mx87oB13aAoS0rdbYJeFdr5QELaH4NazVws6
-	5vm3Ho0nkgb60jo0mUmQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JC8ciWnmZ8W3WS82PmQpzDb4+E3Da2wXbe96Is/W2Fw=; b=vClm4Am+4ZovMn
+	PUTUSe7LlIX7ePbtd+pAc+71ySBkq/M+AX2OB9OqHnGX5DVVfzvl5iw8hNybU5h6GNR8co0R/f8Tg
+	XR4kv8b3xWmcjffJbxRr54ujrCkJDOL0v0YjnoaDPeqcXDBcy2DkfDh0yBdYQSATUQhhpJ75qlBoA
+	gwzP1wdHr6skRAhTdvymRHpEA4+hHHIF9ksZ+H1zvkYsHyfEI7tMGv409+QLdgJeqIsrnUMtCA1Kg
+	6o/o5Ez8owe7SectuOjOxroRxhyc+0Sb1TNC1kojKPsVlxenbMEV0LCiHMpssrEOzUvtYl/Vdw5CM
+	QbI0fNu2AjZ1bFuv5kdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nosTe-008R28-2n; Wed, 11 May 2022 19:58:30 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nouUf-008rRw-5o; Wed, 11 May 2022 22:07:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nosTQ-008Qxg-JE; Wed, 11 May 2022 19:58:18 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 704CE1F42CF0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652299095;
- bh=VybsRpIInZnb23XCmY8eSSZVRgUv+vJS2d+gxTZzyMg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=j8wMtlkCxSaNmzjizBSjnADY75+vjTGMWLc+zi5Fxx6sc4wJjtayy58JkRAs8fT7e
- 4Rt8A5tKkEgNPnXQ9Ksr8bCdqHvHp+bRpyIguyfczgcj676e5hA9c6/P//4l69cE7c
- dMAfscqTl5kKnZmPY8QPlGwqtX9jAcLEE/jwH4L3sJQu+SqNpSHccUgNdZa3BDH8E2
- Ui7yrvHs1AaYfAYCQLZF8NObtMGIYZMpqWw0wIb5wiu69upT5wFBK+OZ8zkr2JqmMh
- GoNP6eOXuzOblu7tVaHwB5ztD399ZdVK7hFxI8Uhd6KQ3/4S+I5a4HCChbQJUCVmot
- SZEL6KntEyazg==
-Date: Wed, 11 May 2022 15:58:10 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Tinghan Shen <tinghan.shen@mediatek.com>,
- Tzung-Bi Shih <tzungbi@google.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-remoteproc@vger.kernel.org
-Subject: Re: [PATCH v4 1/2] dt-bindings: remoteproc: mediatek: Make l1tcm reg
- exclusive to mt819x
-Message-ID: <20220511195810.jgeoukpj7bz3ng2h@notapiano>
-References: <20220506213226.257859-1-nfraprado@collabora.com>
- <20220506213226.257859-2-nfraprado@collabora.com>
- <d3e027ca-9ccf-cf91-2414-85d2b9b680f0@linaro.org>
- <20220510165016.r7nyck2abt5m4djp@notapiano>
- <66796853-efe7-f661-9637-ac6cfefc68e5@linaro.org>
+ id 1nouUb-008rRa-Sx
+ for linux-mediatek@lists.infradead.org; Wed, 11 May 2022 22:07:39 +0000
+X-UUID: 1d88984de3324955830361327c8c445f-20220511
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:a7a305a5-9714-4a0c-952f-3cfe0a963f6d, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-15
+X-CID-META: VersionHash:faefae9, CLOUDID:649123e6-38f2-431d-8de7-bf8fac490b0a,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 1d88984de3324955830361327c8c445f-20220511
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 821910017; Wed, 11 May 2022 15:07:29 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 May 2022 15:07:28 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Thu, 12 May 2022 06:07:26 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 12 May 2022 06:07:26 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>, 
+ <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
+ Yang" <yake.yang@mediatek.com>
+Subject: [PATCH] Bluetooth: btmtksdio: fix use-after-free at
+ btmtksdio_recv_event
+Date: Thu, 12 May 2022 06:07:25 +0800
+Message-ID: <25f3428482241cd449bffa39ad964240ee28483a.1652306557.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <66796853-efe7-f661-9637-ac6cfefc68e5@linaro.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_125816_809560_4AFF43BC 
-X-CRM114-Status: GOOD (  26.65  )
+X-CRM114-CacheID: sfid-20220511_150737_980526_13907EA0 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,141 +83,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 11, 2022 at 11:12:45AM +0200, Krzysztof Kozlowski wrote:
-> On 10/05/2022 18:50, N=EDcolas F. R. A. Prado wrote:
-> >>> Also I had to add a description to the global reg-names, since it
-> >>> couldn't be neither missing nor empty.
-> >>
-> >> It is possible:
-> >> https://elixir.bootlin.com/linux/latest/source/Documentation/devicetre=
-e/bindings/example-schema.yaml#L91
-> >>
-> >> Keep constraints and list of names in properties. Then in allOf:if:then
-> >> raise minItems or lower maxItems, depending on the variant.
-> > =
+From: Sean Wang <sean.wang@mediatek.com>
 
-> > Hi Krzysztof,
-> > =
+We should not access skb buffer data anymore after hci_recv_frame was
+called.
 
-> > that example only shows setting minItems to override the default value,=
- but the
-> > issue here is that it's not possible to override minItems/maxItems (aft=
-er
-> > they're already set, even if implicitly) with a different value in the =
-if.
-> =
+[   39.634809] BUG: KASAN: use-after-free in btmtksdio_recv_event+0x1b0
+[   39.634855] Read of size 1 at addr ffffff80cf28a60d by task kworker
+[   39.634962] Call trace:
+[   39.634974]  dump_backtrace+0x0/0x3b8
+[   39.634999]  show_stack+0x20/0x2c
+[   39.635016]  dump_stack_lvl+0x60/0x78
+[   39.635040]  print_address_description+0x70/0x2f0
+[   39.635062]  kasan_report+0x154/0x194
+[   39.635079]  __asan_report_load1_noabort+0x44/0x50
+[   39.635099]  btmtksdio_recv_event+0x1b0/0x1c4
+[   39.635129]  btmtksdio_txrx_work+0x6cc/0xac4
+[   39.635157]  process_one_work+0x560/0xc5c
+[   39.635177]  worker_thread+0x7ec/0xcc0
+[   39.635195]  kthread+0x2d0/0x3d0
+[   39.635215]  ret_from_fork+0x10/0x20
+[   39.635247] Allocated by task 0:
+[   39.635260] (stack is not available)
+[   39.635281] Freed by task 2392:
+[   39.635295]  kasan_save_stack+0x38/0x68
+[   39.635319]  kasan_set_track+0x28/0x3c
+[   39.635338]  kasan_set_free_info+0x28/0x4c
+[   39.635357]  ____kasan_slab_free+0x104/0x150
+[   39.635374]  __kasan_slab_free+0x18/0x28
+[   39.635391]  slab_free_freelist_hook+0x114/0x248
+[   39.635410]  kfree+0xf8/0x2b4
+[   39.635427]  skb_free_head+0x58/0x98
+[   39.635447]  skb_release_data+0x2f4/0x410
+[   39.635464]  skb_release_all+0x50/0x60
+[   39.635481]  kfree_skb+0xc8/0x25c
+[   39.635498]  hci_event_packet+0x894/0xca4 [bluetooth]
+[   39.635721]  hci_rx_work+0x1c8/0x68c [bluetooth]
+[   39.635925]  process_one_work+0x560/0xc5c
+[   39.635951]  worker_thread+0x7ec/0xcc0
+[   39.635970]  kthread+0x2d0/0x3d0
+[   39.635990]  ret_from_fork+0x10/0x20
+[   39.636021] The buggy address belongs to the object at ffffff80cf28a600
+                which belongs to the cache kmalloc-512 of size 512
+[   39.636039] The buggy address is located 13 bytes inside of
+                512-byte region [ffffff80cf28a600, ffffff80cf28a800)
 
-> No, this example shows exactly what you need in first step - make one
-> item on the list optional.
-> =
+Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btmtksdio.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> There are several other examples for the entire picture or different
-> aproach:
-> https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/b=
-indings/example-schema.yaml#L91
-> =
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index b6d77e04240c..4ae6631a7c29 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -379,6 +379,7 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
+ {
+ 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
+ 	struct hci_event_hdr *hdr = (void *)skb->data;
++	u8 evt = hdr->evt;
+ 	int err;
+ 
+ 	/* When someone waits for the WMT event, the skb is being cloned
+@@ -396,7 +397,7 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
+ 	if (err < 0)
+ 		goto err_free_skb;
+ 
+-	if (hdr->evt == HCI_EV_WMT) {
++	if (evt == HCI_EV_WMT) {
+ 		if (test_and_clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT,
+ 				       &bdev->tx_state)) {
+ 			/* Barrier to sync with other CPUs */
+-- 
+2.25.1
 
-> https://elixir.bootlin.com/linux/v5.18-rc2/source/Documentation/devicetre=
-e/bindings/clock/samsung,exynos7885-clock.yaml#L53
-> =
-
-> > =
-
-> > That is:
-> > =
-
-> > 	properties:
-> > 	  reg-names:
-> > 	    items:
-> > 	      - const: sram
-> > 	      - const: cfg
-> > 	      - const: l1tcm
-> =
-
-> You did not use the example I gave you. Where is the minItems?
-> =
-
-> > =
-
-> > 	if:
-> > 	  properties:
-> > 	    compatible:
-> > 	      enum:
-> > 		- mediatek,mt8183-scp
-> > 		- mediatek,mt8186-scp
-> > 	then:
-> > 	  properties:
-> > 	    reg-names:
-> > 	      minItems: 2
-> > 	      maxItems: 2
-> > =
-
-> > Generates the error on dtbs_check:
-> > =
-
-> > /home/nfraprado/ext/git/linux/arch/arm64/boot/dts/mediatek/mt8183-kukui=
--kakadu.dtb: scp@10500000: reg-names: ['sram', 'cfg'] is too short
-> =
-
-> Missing minItems in first properties.
-> =
-
-> > =
-
-> > I believe the tooling is implicitly adding
-> > =
-
-> > 	      minItems: 3
-> > 	      maxItems: 3
-> > =
-
-> > to the common reg-names, and since it's not possible to override them, =
-the
-> > override to 2 doesn't work so they are kept at 3, causing the error.
-> > =
-
-> > Moving the minItems/maxItems to the common reg-names as a test gives:
-> =
-
-> You cannot just. You need it in both places.
-
-OK, now I get it. I sent v5 addressing this.
-
-Thanks,
-N=EDcolas
-
-> =
-
-> > =
-
-> > /home/nfraprado/ext/git/linux/Documentation/devicetree/bindings/remotep=
-roc/mtk,scp.yaml: properties:reg-names: {'minItems': 2, 'maxItems': 2, 'ite=
-ms': [{'const': 'sram'}, {'const': 'cfg'}, {'const': 'l1tcm'}]} should not =
-be valid under {'required': ['maxItems']}
-> > 	hint: "maxItems" is not needed with an "items" list
-> > =
-
-> > That error, plus looking in the items meta-schema, suggests me that max=
-Items
-> > isn't supposed to be set lower then the length of items. So even if the
-> > minItems/maxItems override is fixed, there's still this issue. It seems=
- like
-> > defining the reg-names list separetely in each if branch is indeed the =
-right way
-> > to go.
-> =
-
-> =
-
-> =
-
-> Best regards,
-> Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
