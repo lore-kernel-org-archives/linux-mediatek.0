@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C072C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 13:47:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8743CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 14:04:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eq5v6MFldhC6sV22SiZLR20CHBe14hq8KtbbOo2cg3I=; b=alK1l8v0J5/nfd
-	auQVMalMfapjuGsXoryTrxRtSb5K8eZbl6X+odmYlG7BtPxn+CGrfgMNMWX8ScIRwBkX3ZHnpzEam
-	65tRmYzlQvZW0piRXL6Taw9TmULx0YV44KxQjP3KIfqoOBd60lag2FrQmtOV/lQKRIXOyjc3vtGBv
-	owdTiLhcBnPpEW/5SXgipEO1x3oAM3Y7yM7hbZCFHxjL8MWOIPFROeUmQjimrOUoxKvZMNmN0laT4
-	XGWhs+xPwKrwMCde0FeJy8H3BjkXhYWcdBI9sQMFypZF+cuVDnasb7O+mwerPNSJOviaRh/ITuLZu
-	+O0iEueJVxWN5uSpLPxg==;
+	List-Owner; bh=dRcc1uRRpflXbiSQlr3T+slXYYax3azN8jTUtbp5dNQ=; b=tYjdg0EfIb5P3P
+	iMisStSFnKKLA/SYcHXclfvzvpJ+7VIktozG+Y4MGGxTGALAodrX8ofuf2OXj6/16iihRTsqzQaEv
+	Xo7rYQF5NXxIBoPQIZ0TwzR0wFiVSxDqY+Ifll0415uHty9VI2k4WlEnOuo4DwjzLdudaElE5am1Y
+	odKP98+DXnkk+KtI8ozA6lhSL6+oCswheehIAOwenZOLsX2/88Log/3Nfwt5yr8553jIexPHvDda9
+	a1Jkcaa/McCIQpnokyOtrKWhGT5R585aXWwtQKRGclDRqROftUQAhYuDR2QqhgjsLnW/vB3Cn6TN4
+	BsbXMhJLkptiYpMZtMKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np99u-00CAEk-9X; Thu, 12 May 2022 13:47:14 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1np9Qs-00CEKz-7Z; Thu, 12 May 2022 14:04:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np99i-00CA5m-Pz; Thu, 12 May 2022 13:47:04 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E67851F45583
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652363216;
- bh=RyPWTywraZJdJgYVK8sw+koHjhdtDXtM5n+U7hdW10g=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=Oq6GZdIajB4EoWPSLSX2K3nhCdJNatj8DY+t3QlCm7Sf2HkKgPTR1YYvAwUVv7mzQ
- CU33zLRb3MTxD4arnPjDX142ekT2S0LaNvjRhwwXOhhmY9+75ThX1kOqyOuDa7ABbF
- ROqJjmt1xcxbdt1bikcynOMY99x99v+aqGzGh7rm3j33Px/QRYloyzcMbjLhvKU8CB
- FOsorcfZyr3Bi9OBOurcWfL3i7KtQgSW17EBnResBz2MNvfyl0ugrCo83btKS6434L
- tTOOhOByAkPA6hXNjsg+s271ZNRUD+d57OOpPoTaIIu+HSdgboPTbM7sRDAIqHvVD/
- FCrABTI9+Dfyg==
-Message-ID: <174082e0-4472-9dc8-e7df-dfb45c3760ce@collabora.com>
-Date: Thu, 12 May 2022 15:46:52 +0200
+ id 1np9QX-00CECu-Jt; Thu, 12 May 2022 14:04:26 +0000
+X-UUID: d91f17af21b6448596bf12b3b7337d90-20220512
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:ba87e769-3f37-434d-be17-e372cbef96ff, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:25c513a7-eab7-4b74-a74d-5359964535a9,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
+ l
+X-UUID: d91f17af21b6448596bf12b3b7337d90-20220512
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1579493618; Thu, 12 May 2022 07:04:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 06:54:18 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 12 May 2022 21:54:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 12 May 2022 21:54:16 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <wenst@chromium.org>
+CC: <angelogioacchino.delregno@collabora.com>, <chun-jie.chen@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
+ <mturquette@baylibre.com>, <rex-bc.chen@mediatek.com>, <sboyd@kernel.org>
+Subject: Re: [PATCH v2 02/11] clk: mediatek: apmixed: Drop error message from
+ clk_register() failure
+Date: Thu, 12 May 2022 21:54:17 +0800
+Message-ID: <20220512135417.4399-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220510104804.544597-3-wenst@chromium.org>
+References: <20220510104804.544597-3-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH , v4] media: mediatek: vcodec: Fix v4l2 compliance decoder
- cmd test fail
-Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220423073531.24749-1-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220423073531.24749-1-yunfei.dong@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_064703_024562_81C6D9A3 
-X-CRM114-Status: UNSURE (   7.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220512_070425_700330_D98E918B 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,21 +79,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/04/22 09:35, Yunfei Dong ha scritto:
-> Will return -EINVAL using standard framework api when test stateless
-> decoder with cmd VIDIOC_(TRY)DECODER_CMD. Disable them to adjust v4l2
-> compliance test for user driver(GStreamer/Chrome) won't use decoder cmd.
+> mtk_clk_register_ref2usb_tx() prints an error message if clk_register()
+> fails. It doesn't if kzalloc() fails though. The caller would then tack
+> on its own error message to handle this.
 > 
-> Fixes: 8cdc3794b2e3 ("media: mtk-vcodec: vdec: support stateless API")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Also, All other clk registration functions in the MediaTek clk library
+> leave the error message printing to the bulk registration functions,
+> while the helpers that register individual clks just return error codes.
+> 
+> Drop the error message that is printed when clk_register() fails in
+> mtk_clk_register_ref2usb_tx() to make its behavior consistent both
+> across its failure modes, and with the rest of the driver library.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
 
 _______________________________________________
 Linux-mediatek mailing list
