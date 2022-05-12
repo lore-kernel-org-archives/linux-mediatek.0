@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66E66C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF8B0C433EF
 	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 13:31:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,70 +12,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v4MTG08XkN3nvL5Axpvo3wz3odCV4pxVqx29fzBhErI=; b=YBtFbRBnfbDN+M
-	7sTcmariU7nuMPdapFcoyqfgOKdwqPQrNHT7zQ7MykJbtiSnm8ep5bUYt6GhLKx7D7bDdg/cqDZb7
-	nNQs3nY54/taaXT+vJHce/KB9gmyn+Gbfhs2xaYE8cWk6/frx46eLHS6OFKWXRYx9KcSEVe10RLlw
-	ToSpTAMjkVwFJvCJFMzhYOb4yufxKYUyZoKWLOqtDeog3DaeKWybuIZxyt7xELTK/7DrYbvnheAVT
-	BiyWaqefJLxzqu5vcf38DZaotKUT/r4e5rQ54AzjfohtvccdWyBhNTlvqKtZbaL18dlpV1YHABJXP
-	xnR7yPo0lTty1WYda/FQ==;
+	List-Owner; bh=pPksM7OCPmsZ44jx2r8mFmTAlpLyEkkBzn/qs+2mO04=; b=G4LHBYfw9Bw2H1
+	d0WZKR/6BbMySdUqGi/SFGE/n9TJF6kznsyvceABsPpeAf76XP62XXnBwozlK5OP9Mu+vKQpEI2Iw
+	spQgPSuNxNqRIA/duZVJwKWNiSkShSn0TfKhIGIjAGVncaqIeTv/K4LWBEgr08n76IsM5GCB1vMp7
+	0ws9SwF7vCDn2EzFzJRR3UHQHjDxGF3Wvb4fvcdvxtDRaOGeV7WO2ituiygKmjKZuffxgzMRiyIdg
+	j3y6NbI/qDvg9GZg+N39W4LmhM3ZNigEdEXZMExpXhpDA2tJKqubtoflNkNcRy9XWjRrlsCr1Jkkk
+	issUm3Q1fNErrjW4p/7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np8uL-00C5l2-86; Thu, 12 May 2022 13:31:09 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1np8uL-00C5lL-VL; Thu, 12 May 2022 13:31:09 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np7s4-00BmJQ-4P
- for linux-mediatek@lists.infradead.org; Thu, 12 May 2022 12:24:46 +0000
-Received: by mail-wm1-x330.google.com with SMTP id
- o12-20020a1c4d0c000000b00393fbe2973dso5038176wmh.2
- for <linux-mediatek@lists.infradead.org>; Thu, 12 May 2022 05:24:42 -0700 (PDT)
+ id 1np7s4-00BmM1-U3
+ for linux-mediatek@lists.infradead.org; Thu, 12 May 2022 12:24:47 +0000
+Received: by mail-wr1-x431.google.com with SMTP id j25so6004920wrc.9
+ for <linux-mediatek@lists.infradead.org>; Thu, 12 May 2022 05:24:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=S/vo83decuajkRrKEOpC1GzPZTUXB5e+eKL6t2IioWU=;
- b=qrZVmCr4+Kam5J5VAbk3WUFfCf19Xux9cw0bcqcO04gU3ydSFxVkqFQf+wrCt3IH8n
- q/IU6+KUbiEQe0Omod83VJY4kdbiut8tJZOZ1NGloiTo4jbupWjISwtFa6nAlWQZPv1j
- /paqUE5V13OzgyVhBWVHCPVJm5OHtbCsU7Y9OtFPtkXxA5h1WdyDtdHevW49DI6SHUvf
- d8Dnz5cVV8Kvb4EykZBVWMcK6c/3igHe3lBxdFrBDF78G3hyh3fh6N6jbDrMYHz3AZlb
- wnzIj0YDS8eu05D0a6PYEgIeIQDvkT08/d7Jkw6JqVAp93r7AeiTYICwOe5HT8n7Q0S9
- K6OA==
+ bh=befZQ9FS23fWMFZgR26WPFKtinCTSI/vcnKTdqrsD2I=;
+ b=3BHa3XT/PM1d1Fqi4xdlw28bRsyHbtLMKPZ3xkV1jdTvwnDc4q2bNcQ7kJkdQqg2PG
+ ooi6aQOfiOzLrON7fQvWJQHbOEFE1bXmTqDtJfD2uhBwfqsTPcwh23AVpQ2qO0zH/O3/
+ AV4mGC+ARmcDMVCotPPZkyyvkqbjDeVluw7uOg6vG95WukWDTm76nWqLWuiqvPFZCkSK
+ a/+8/aQicU0gw32smoTPprxZLzqH5r8x5vGutquYVlUh38sRJ2K9G4S+UnfSijBUP0Ey
+ 8dlgbR/MCauaFiOLg5bBREaJz3FqgsXlqhf7Ew1Ghva9ZT6WTCSbrrZ1/N/dJBtXbpZL
+ 8+CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=S/vo83decuajkRrKEOpC1GzPZTUXB5e+eKL6t2IioWU=;
- b=QhqDqdA2cTxMnjIU7V56WI51zmAS+Jki9Dn86WSKWOaUwV+BMjnMJQJBD87UPfyx8t
- Bwq0FMkbKKwbaU9kVgT/O0tfTuZbAkCEOtZ4pmxCB/V4ycR90eLLp3GcOu2jRC8s130y
- yO2xGGVcSDa3H/E0r/zjaTxuiomCWwqIIqKjze/4FT+bBBOiChjcgGBSt2dhIGOY6nBq
- 5a8qTxzjfR/L0KEt8vZITExitbIgwnJsI6pC17ta9lZvSZUg+h/Se9BIRUnMTmKJJjMP
- T7J9Ps81T7YsnYYMo3jX6okOS7eSlQaDYsVJmKeD/yV/etCg94f6nc9hvYwPPkPo2nm4
- fG7g==
-X-Gm-Message-State: AOAM533p5Mz/T41CT91HHX39w/DuXMauqP/iTISS/ZB0HYt+L0Oeoe/V
- vTPmJW2XYXsjdqQYHBlrkY2+6Q==
-X-Google-Smtp-Source: ABdhPJyriTjj+xEsQg0Rd8dZU3OKFWfF/Q7++pVpnNRF2car0YMBp3BYa8rH7qnU6+ejyHZQ7w1hOw==
-X-Received: by 2002:a05:600c:1e89:b0:394:9587:cbe0 with SMTP id
- be9-20020a05600c1e8900b003949587cbe0mr9917994wmb.89.1652358281444; 
- Thu, 12 May 2022 05:24:41 -0700 (PDT)
+ bh=befZQ9FS23fWMFZgR26WPFKtinCTSI/vcnKTdqrsD2I=;
+ b=AILpcECJaGL+7eRtGzerWvng/H7OntGjFt74Xe15541eAhV0Svw/ze5jBRWhD9/UnQ
+ QNzmXdsA0Ghtnxme/obNJNzd1b6de/wFbkwjeEeMYktVc6w0k1ushL/z4rDsZYxEDw3m
+ tbhSDuqGOd7Xr1xtrJU2R/yUWXF1sI0zMNbH/IVd0cp5TfrW4F0YehMggCnJ4XQ38Pfr
+ Ij5S4q4KZcTRfLEWNbsb518n0JI+6i+6PAY2KAGOqeI51YvrBDdymzhNMTJ4zhecPOzl
+ En7Z3NpefJ4GwVs4X0lIENo/uZPSow1tJLYlbqBv+4q64aP0JcCkvrk25F2NVcOQ8S0m
+ tYDg==
+X-Gm-Message-State: AOAM530TtJgtTdiQcKI8qX/Uw/sxlkAyG68SkfI5sbxAXb37odW1iBHA
+ 8/UVEzJlGXPCO1U65l/mp0dDYw==
+X-Google-Smtp-Source: ABdhPJzl2RnwuKtjp0w2JW5qr0wn4jOfQ9nztXnOxQtRwboK1PADSs7vYj8oT4mnuqSVmq7o/fDkmA==
+X-Received: by 2002:a5d:47ca:0:b0:20c:72c9:d3be with SMTP id
+ o10-20020a5d47ca000000b0020c72c9d3bemr26671903wrc.114.1652358283467; 
+ Thu, 12 May 2022 05:24:43 -0700 (PDT)
 Received: from xps-9300.baylibre
  (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
  by smtp.gmail.com with ESMTPSA id
- z22-20020a7bc156000000b003942a244f30sm3047819wmi.9.2022.05.12.05.24.40
+ z22-20020a7bc156000000b003942a244f30sm3047819wmi.9.2022.05.12.05.24.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 May 2022 05:24:41 -0700 (PDT)
+ Thu, 12 May 2022 05:24:43 -0700 (PDT)
 From: Alexandre Bailon <abailon@baylibre.com>
 To: robh+dt@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com,
  p.zabel@pengutronix.de
-Subject: [PATCH v6 4/7] dt-bindings: thermal: Add binding document for mt8195
- thermal controller
-Date: Thu, 12 May 2022 14:24:30 +0200
-Message-Id: <20220512122433.1399802-5-abailon@baylibre.com>
+Subject: [PATCH v6 6/7] arm64: dts: mt8195: Add efuse node to mt8195
+Date: Thu, 12 May 2022 14:24:32 +0200
+Message-Id: <20220512122433.1399802-7-abailon@baylibre.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220512122433.1399802-1-abailon@baylibre.com>
 References: <20220512122433.1399802-1-abailon@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_052444_207613_C7B2779D 
-X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-CacheID: sfid-20220512_052445_041384_183071C7 
+X-CRM114-Status: UNSURE (   9.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,30 +97,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds binding document for mt8195 thermal controller.
+This adds the efuse node. This will be required by the thermal driver
+to get the calibration data.
 
 Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
 ---
- .../devicetree/bindings/thermal/mediatek-thermal-lvts.yaml  | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml b/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
-index 69ffe7b14c21..2e1ae00d4fd1 100644
---- a/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
-+++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal-lvts.yaml
-@@ -12,7 +12,11 @@ maintainers:
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 416d37e07324..12887fb4d0d1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -13,6 +13,7 @@
+ #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+ #include <dt-bindings/power/mt8195-power.h>
+ #include <dt-bindings/reset/ti-syscon.h>
++#include <dt-bindings/thermal/thermal.h>
  
- properties:
-   compatible:
--    const: mediatek,mt6873-lvts
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt6873-lvts
-+              - mediatek,mt8195-lvts
+ / {
+ 	compatible = "mediatek,mt8195";
+@@ -1248,6 +1249,23 @@ nor_flash: spi@1132c000 {
+ 			status = "disabled";
+ 		};
  
-   reg:
-     maxItems: 1
++		efuse: efuse@11c10000 {
++			compatible = "mediatek,efuse";
++			reg = <0 0x11c10000 0 0x1000>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++
++			lvts_e_data1: data1 {
++				reg = <0x1bc 0x14>;
++			};
++			lvts_e_data2: data1-1 {
++				reg = <0x1d0 0x38>;
++			};
++			svs_calibration: calib@580 {
++				reg = <0x580 0x64>;
++			};
++		};
++
+ 		u3phy2: t-phy@11c40000 {
+ 			compatible = "mediatek,mt8195-tphy", "mediatek,generic-tphy-v3";
+ 			#address-cells = <1>;
 -- 
 2.35.1
 
