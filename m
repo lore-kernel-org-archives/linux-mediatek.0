@@ -4,85 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4272C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 06:48:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99104C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 06:50:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NaKcdFcA6p7SKbVHdkzkXReww9ePv9FEtiNtjK30rG4=; b=WMZaQEx4e4oLbV
-	dTSOmoGiP12f1OzKvotbms6n5cllwgmm79NUeBx9ZOlVtbZBMCdMnv34pLrpgKCSvIDgI5OQ0UNk7
-	MQPa2/uKUdzhp4lutJj0AC/kZFyjuXxlpy0RKPd0k+lF+fKkZFbl1GXtv1vhvkyNlPHTyAyUDuiW/
-	QtFzbefwp5H3UtgWyJOyGw/GTVfJcYuuvMitfp15kAYSPQ9QRNnUrg9h4sdtUDiTRC/TjhUKfwitK
-	tHaW9UjIE95EeZupRHWjcaHneIowJGCLSakdU9QRz9ZSVjsoGWg3yujfWJwl7wysck7H/UmOthAO5
-	TZjzgKFnPNJ9T7J6ixEw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6BqwJrd8tAD+8lcodls6mbYWhuUUeKdloEW3qU8W7Rw=; b=Ffnw+MKL02jUOD
+	Ot+QBA+HP0g7FViSnEtxsroxWBhzpZNtc3TqIdxfTOxkhal0LtdLUTdtHHIJdnmBcXlbSpzc0OeiV
+	tfcgXjT6C2KGozRlumsbFuCsF0XsP7y3Vh0BLr3QeaZ0K/fn64/3W2ZPXA5gQclWbCyxH7Nhkw1kN
+	cdhQWZunOKUHYq/QATCJKcO1gHSpitjQxNDiYk2+GWDFDBnHOlgMe9W9nKhWn5NyIIpGqd3dKm7eW
+	3xG9kuFmSGLjj9NMRjAGDXbL55YiEi3QAEztRtpiIjGpJ9wWUxRwDW3ZC5CRihEDYK2c2mQSKMRSW
+	ZHWvDMjqpOrFP4nAyT2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np2cv-00AZna-QO; Thu, 12 May 2022 06:48:45 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1np2eO-00AaCZ-NK; Thu, 12 May 2022 06:50:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np2cj-00AZiQ-Eh; Thu, 12 May 2022 06:48:35 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id F3A0A1F8F4;
- Thu, 12 May 2022 06:48:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1652338105; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Eu9dmL37+61LEqPwl8A52yyx9mTfxqzqsNTK2LFvPLQ=;
- b=GINM0xc9jq+k+Rm9dfJBpBb5b9xYd3NSyOFAAM1GqUZofWwqRW0xafLC2TRExNkREM8Cs6
- tp/EaLSZs6qv9kdrKhLQwbLEBA4vkkcJiDOXnWZaRutFi0aM46eUBxJhHOXFEuzyd9SfaH
- 2JjjJoGuXX8RinzI5mrEB/Aj3Q/RLZ4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1652338105;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Eu9dmL37+61LEqPwl8A52yyx9mTfxqzqsNTK2LFvPLQ=;
- b=OZM1ZcPj2bCc+as8UglJ1d7CTen0JK3v7tACdsnA71o+G83xWyJcNR4pz+ISE12LF5OYqK
- Li91Qrr6y7QZjzBw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B51A013ABE;
- Thu, 12 May 2022 06:48:24 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id iagnKritfGLoVQAAMHmgww
- (envelope-from <hare@suse.de>); Thu, 12 May 2022 06:48:24 +0000
-Message-ID: <1e349868-b302-1473-188a-1a6f2bb88cd5@suse.de>
-Date: Thu, 12 May 2022 08:48:24 +0200
+ id 1np2eC-00Aa8h-Lk; Thu, 12 May 2022 06:50:06 +0000
+X-UUID: 7a3e3b9345c04fec907df6b934d07a2d-20220511
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:fbb406dc-942c-47ab-9abc-01482757e325, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:5
+X-CID-META: VersionHash:faefae9, CLOUDID:40ae05a7-eab7-4b74-a74d-5359964535a9,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 7a3e3b9345c04fec907df6b934d07a2d-20220511
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 943403302; Wed, 11 May 2022 23:49:59 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 May 2022 23:49:58 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 12 May 2022 14:49:56 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 12 May 2022 14:49:55 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Eddie
+ Hung" <eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>,
+ <stable@vger.kernel.org>
+Subject: [PATCH 1/2] usb: xhci-mtk: fix fs isoc's transfer error
+Date: Thu, 12 May 2022 14:49:30 +0800
+Message-ID: <20220512064931.31670-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Content-Language: en-US
-To: Serge Semin <Sergey.Semin@baikalelectronics.ru>,
- Damien Le Moal <damien.lemoal@opensource.wdc.com>,
- Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>
-Cc: Serge Semin <fancer.lancer@gmail.com>,
- Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
- Pavel Parkhomenko <Pavel.Parkhomenko@baikalelectronics.ru>,
- Rob Herring <robh+dt@kernel.org>, linux-ide@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220511231810.4928-1-Sergey.Semin@baikalelectronics.ru>
- <20220511231810.4928-11-Sergey.Semin@baikalelectronics.ru>
-From: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCH v3 10/23] ata: libahci_platform: Parse ports-implemented
- property in resources getter
-In-Reply-To: <20220511231810.4928-11-Sergey.Semin@baikalelectronics.ru>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_234833_677708_9B8B5BFD 
-X-CRM114-Status: GOOD (  21.47  )
+X-CRM114-CacheID: sfid-20220511_235004_757812_1F6A61BF 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,68 +76,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gNS8xMi8yMiAwMToxNywgU2VyZ2UgU2VtaW4gd3JvdGU6Cj4gVGhlIHBvcnRzLWltcGxlbWVu
-dGVkIHByb3BlcnR5IGlzIG1haW5seSB1c2VkIG9uIHRoZSBPRi1iYXNlZCBwbGF0Zm9ybXMKPiB3
-aXRoIG5vIHBvcnRzIG1hcHBpbmcgaW5pdGlhbGl6ZWQgYnkgYSBib290bG9hZGVyL0JJT1MgZmly
-bXdhcmUuIFNlZWluZwo+IHRoZSBzYW1lIG9mX3Byb3BlcnR5X3JlYWRfdTMyKCktYmFzZWQgcGF0
-dGVybiBoYXMgYWxyZWFkeSBiZWVuIGltcGxlbWVudGVkCj4gaW4gdGhlIGdlbmVyaWMgQUhDSSBM
-TEREIChnbHVlKSBkcml2ZXIgYW5kIGluIHRoZSBNZWRpYXRlaywgU3QgQUhDSQo+IGRyaXZlcnMg
-bGV0J3MgbW92ZSB0aGUgcHJvcGVydHkgcmVhZCBwcm9jZWR1cmUgdG8gdGhlIGdlbmVyaWMKPiBh
-aGNpX3BsYXRmb3JtX2dldF9yZXNvdXJjZXMoKSBtZXRob2QuIFRodXMgd2UnbGwgaGF2ZSB0aGUg
-Zm9yY2VkIHBvcnRzCj4gbWFwcGluZyBmZWF0dXJlIHN1cHBvcnRlZCBmb3IgZWFjaCBPRi1iYXNl
-ZCBwbGF0Zm9ybSB3aGljaCByZXF1aXJlcyB0aGF0LAo+IGFuZCBzdG9wIHJlLWltcGxlbWVudGlu
-ZyB0aGUgc2FtZSBwYXR0ZXJuIGluIHRoZXJlIGEgYml0IHNpbXBsaWZ5aW5nIHRoZQo+IGNvZGUu
-Cj4gCj4gU2lnbmVkLW9mZi1ieTogU2VyZ2UgU2VtaW4gPFNlcmdleS5TZW1pbkBiYWlrYWxlbGVj
-dHJvbmljcy5ydT4KPiAtLS0KPiAgIGRyaXZlcnMvYXRhL2FoY2lfbXRrLmMgICAgICAgICB8IDIg
-LS0KPiAgIGRyaXZlcnMvYXRhL2FoY2lfcGxhdGZvcm0uYyAgICB8IDMgLS0tCj4gICBkcml2ZXJz
-L2F0YS9haGNpX3N0LmMgICAgICAgICAgfCAzIC0tLQo+ICAgZHJpdmVycy9hdGEvbGliYWhjaV9w
-bGF0Zm9ybS5jIHwgMyArKysKPiAgIDQgZmlsZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA4
-IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2F0YS9haGNpX210ay5jIGIv
-ZHJpdmVycy9hdGEvYWhjaV9tdGsuYwo+IGluZGV4IDFmNmM4NWZkZTk4My4uYzA1NjM3OGUzZTcy
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvYXRhL2FoY2lfbXRrLmMKPiArKysgYi9kcml2ZXJzL2F0
-YS9haGNpX210ay5jCj4gQEAgLTExOCw4ICsxMTgsNiBAQCBzdGF0aWMgaW50IG10a19haGNpX3Bh
-cnNlX3Byb3BlcnR5KHN0cnVjdCBhaGNpX2hvc3RfcHJpdiAqaHByaXYsCj4gICAJCQkJICAgU1lT
-X0NGR19TQVRBX0VOKTsKPiAgIAl9Cj4gICAKPiAtCW9mX3Byb3BlcnR5X3JlYWRfdTMyKG5wLCAi
-cG9ydHMtaW1wbGVtZW50ZWQiLCAmaHByaXYtPmZvcmNlX3BvcnRfbWFwKTsKPiAtCj4gICAJcmV0
-dXJuIDA7Cj4gICB9Cj4gICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9y
-bS5jIGIvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9ybS5jCj4gaW5kZXggMjhhOGRlNWI0OGI5Li45
-YjU2NDkwZWNiYzMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9ybS5jCj4g
-KysrIGIvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9ybS5jCj4gQEAgLTU2LDkgKzU2LDYgQEAgc3Rh
-dGljIGludCBhaGNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAJaWYg
-KHJjKQo+ICAgCQlyZXR1cm4gcmM7Cj4gICAKPiAtCW9mX3Byb3BlcnR5X3JlYWRfdTMyKGRldi0+
-b2Zfbm9kZSwKPiAtCQkJICAgICAicG9ydHMtaW1wbGVtZW50ZWQiLCAmaHByaXYtPmZvcmNlX3Bv
-cnRfbWFwKTsKPiAtCj4gICAJaWYgKG9mX2RldmljZV9pc19jb21wYXRpYmxlKGRldi0+b2Zfbm9k
-ZSwgImhpc2lsaWNvbixoaXNpLWFoY2kiKSkKPiAgIAkJaHByaXYtPmZsYWdzIHw9IEFIQ0lfSEZM
-QUdfTk9fRkJTIHwgQUhDSV9IRkxBR19OT19OQ1E7Cj4gICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9hdGEvYWhjaV9zdC5jIGIvZHJpdmVycy9hdGEvYWhjaV9zdC5jCj4gaW5kZXggNzUyNjY1M2M4
-NDNiLi4wNjg2MjEwOTljMDAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9hdGEvYWhjaV9zdC5jCj4g
-KysrIGIvZHJpdmVycy9hdGEvYWhjaV9zdC5jCj4gQEAgLTE2OCw5ICsxNjgsNiBAQCBzdGF0aWMg
-aW50IHN0X2FoY2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgIAo+ICAg
-CXN0X2FoY2lfY29uZmlndXJlX29vYihocHJpdi0+bW1pbyk7Cj4gICAKPiAtCW9mX3Byb3BlcnR5
-X3JlYWRfdTMyKGRldi0+b2Zfbm9kZSwKPiAtCQkJICAgICAicG9ydHMtaW1wbGVtZW50ZWQiLCAm
-aHByaXYtPmZvcmNlX3BvcnRfbWFwKTsKPiAtCj4gICAJZXJyID0gYWhjaV9wbGF0Zm9ybV9pbml0
-X2hvc3QocGRldiwgaHByaXYsICZzdF9haGNpX3BvcnRfaW5mbywKPiAgIAkJCQkgICAgICAmYWhj
-aV9wbGF0Zm9ybV9zaHQpOwo+ICAgCWlmIChlcnIpIHsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9h
-dGEvbGliYWhjaV9wbGF0Zm9ybS5jIGIvZHJpdmVycy9hdGEvbGliYWhjaV9wbGF0Zm9ybS5jCj4g
-aW5kZXggNGU1NGUxOWYwN2IyLi5mN2Y5Y2FjMTBjYjEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9h
-dGEvbGliYWhjaV9wbGF0Zm9ybS5jCj4gKysrIGIvZHJpdmVycy9hdGEvbGliYWhjaV9wbGF0Zm9y
-bS5jCj4gQEAgLTUxMiw2ICs1MTIsOSBAQCBzdHJ1Y3QgYWhjaV9ob3N0X3ByaXYgKmFoY2lfcGxh
-dGZvcm1fZ2V0X3Jlc291cmNlcyhzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICAgCQln
-b3RvIGVycl9vdXQ7Cj4gICAJfQo+ICAgCj4gKwlvZl9wcm9wZXJ0eV9yZWFkX3UzMihkZXYtPm9m
-X25vZGUsCj4gKwkJCSAgICAgInBvcnRzLWltcGxlbWVudGVkIiwgJmhwcml2LT5mb3JjZV9wb3J0
-X21hcCk7Cj4gKwo+ICAgCWlmIChjaGlsZF9ub2Rlcykgewo+ICAgCQlmb3JfZWFjaF9jaGlsZF9v
-Zl9ub2RlKGRldi0+b2Zfbm9kZSwgY2hpbGQpIHsKPiAgIAkJCXUzMiBwb3J0OwoKV2hhdCBoYXBw
-ZW5zIG9uIHRoZSBvdGhlciBwbGF0Zm9ybXM/Cldvbid0IHRoZXkgcmVnaXN0ZXIgYW4gZXJyb3Ig
-aWYgdGhhdCBwcm9wZXJ0eSBpc24ndCBpbXBsZW1lbnRlZD8KCkNoZWVycywKCkhhbm5lcwotLSAK
-RHIuIEhhbm5lcyBSZWluZWNrZQkJICAgICAgICAgICBLZXJuZWwgU3RvcmFnZSBBcmNoaXRlY3QK
-aGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBT
-b2Z0d2FyZSBTb2x1dGlvbnMgR2VybWFueSBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xy
-bmJlcmcKSFJCIDM2ODA5IChBRyBOw7xybmJlcmcpLCBHRjogRmVsaXggSW1lbmTDtnJmZmVyCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
-YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Due to the scheduler allocates the optimal bandwidth for FS ISOC endpoints,
+this may be not enough actually and causes data transfer error, so come up
+with an estimate that is no less than the worst case bandwidth used for
+any one mframe, but may be an over-estimate.
+
+Fixes: 451d3912586a ("usb: xhci-mtk: update fs bus bandwidth by bw_budget_table")
+Cc: stable@vger.kernel.org
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/host/xhci-mtk-sch.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index f3139ce7b0a9..953d2cd1d4cc 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -464,7 +464,7 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
+ 		 */
+ 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
+ 			k = XHCI_MTK_BW_INDEX(base + j);
+-			tmp = tt->fs_bus_bw[k] + sch_ep->bw_budget_table[j];
++			tmp = tt->fs_bus_bw[k] + sch_ep->bw_cost_per_microframe;
+ 			if (tmp > FS_PAYLOAD_MAX)
+ 				return -ESCH_BW_OVERFLOW;
+ 		}
+@@ -538,19 +538,17 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
+ static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
+ {
+ 	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
++	int bw_updated;
+ 	u32 base;
+-	int i, j, k;
++	int i, j;
++
++	bw_updated = sch_ep->bw_cost_per_microframe * (used ? 1 : -1);
+ 
+ 	for (i = 0; i < sch_ep->num_esit; i++) {
+ 		base = sch_ep->offset + i * sch_ep->esit;
+ 
+-		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
+-			k = XHCI_MTK_BW_INDEX(base + j);
+-			if (used)
+-				tt->fs_bus_bw[k] += sch_ep->bw_budget_table[j];
+-			else
+-				tt->fs_bus_bw[k] -= sch_ep->bw_budget_table[j];
+-		}
++		for (j = 0; j < sch_ep->num_budget_microframes; j++)
++			tt->fs_bus_bw[XHCI_MTK_BW_INDEX(base + j)] += bw_updated;
+ 	}
+ 
+ 	if (used)
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
