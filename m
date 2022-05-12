@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBF5FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 02:25:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CC1DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 02:26:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JES4VbzZszHDifzKLs+mqR5HJvMZfOy0RiTaq3I+ric=; b=bhjbbgqWyBwNkH
-	nQollIKzY1o1Rr2eSwExRL22/wh2zh5lv+OV5OA/0Ld2XsWUbWPAGTk+jQEIGKo9i0gDDcwOmmSgb
-	yHekKUlo6x2eROCPHB5chYjjhe+VrAxpm/oYMky3UvnkYN/xT38c2BuZdDbo4Gzfv1o+JGvd3Al9h
-	MY7XPw9Zbfve3W6RTJcwz0Gf6V0YCrjcVYIGTvI5Ka5B8aG2RHi/2bbZQKNM/hFtxkq6tOnFs+bep
-	jWyvhIdu2O94cTNv570021gsfxcre+ic6FoNLKIfqnvWsSfqr3S8YTVU0Mv+Fjby/IaR4mCy2WgV2
-	xKcsQP43JALBmhUlH6GQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zGmJrDaNlMnGPfn1NNiGWO/n1d/V9QNQME/j68AnYp0=; b=4gaG9+cr2Lhpld
+	HL6SfzGjzMs40YYvBqmvB9FN3z3ppqH6/pWdWncTiC7IcP4Mm0KmE9yzXuqTJ0wvGdmQaU/7VRqQv
+	5R60KWu4tGQWasGaQdtYJHK1q0lulRnVxemazkvtV1Bbf7wjonTP9kEMIkQh/Q9/OSogUlBw4OKz/
+	HhxWC1MjEDiwPbXNE9TlPhsPlzepTrEm/YK3StWElLBOyvxo5pBw1m6W6oFZZEWb2QEnEzcX7aIZQ
+	f+glZT2+svgyG/rjtV1jG3fD7+Rj2lMAlHyJX6ckwYKjbotDs8l2z+MtbKKrxtyhLWi2ihqpyu0Zt
+	dzfepdt65ccKDh3sllbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noyWF-009RY1-Gf; Thu, 12 May 2022 02:25:35 +0000
+	id 1noyXI-009S2d-DV; Thu, 12 May 2022 02:26:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noyTM-009PsD-24; Thu, 12 May 2022 02:22:37 +0000
-X-UUID: 083eaaf93a8041e99a0ed2dbe6fa3572-20220511
+ id 1noyTN-009PsD-Sl; Thu, 12 May 2022 02:22:40 +0000
+X-UUID: 03866186161a4c5192172239191d5445-20220511
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:bd4e2a0f-c568-4728-833a-3f68893fc369, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:d5873ffa-b7a9-4bb3-ac90-90e1a899b715, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:99408827-a01c-4223-8f5a-12d972216e7b,
+ B:0,IP:0,URL:5,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+ TION:release,TS:-15
+X-CID-META: VersionHash:faefae9, CLOUDID:cd3b4125-b432-452e-9e03-2bf3148aed85,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 083eaaf93a8041e99a0ed2dbe6fa3572-20220511
+X-UUID: 03866186161a4c5192172239191d5445-20220511
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 519924060; Wed, 11 May 2022 19:22:32 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 791571061; Wed, 11 May 2022 19:22:32 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 19:20:00 -0700
+ 15.0.1497.2; Wed, 11 May 2022 19:19:54 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 May 2022 10:19:58 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 12 May 2022 10:19:52 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 12 May 2022 10:19:56 +0800
+ Transport; Thu, 12 May 2022 10:19:51 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -64,18 +65,15 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v12, 04/17] media: mediatek: vcodec: Read max resolution from
- dec_capability
-Date: Thu, 12 May 2022 10:19:37 +0800
-Message-ID: <20220512021950.29087-5-yunfei.dong@mediatek.com>
+Subject: [PATCH v12, 00/17] media: mtk-vcodec: support for M8192 decoder
+Date: Thu, 12 May 2022 10:19:33 +0800
+Message-ID: <20220512021950.29087-1-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220512021950.29087-1-yunfei.dong@mediatek.com>
-References: <20220512021950.29087-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_192236_158893_1E441E4F 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20220511_192237_956973_3E510615 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,163 +90,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Supported max resolution for different platforms are not the same: 2K
-or 4K, getting it according to dec_capability.
+This series adds support for mt8192 h264/vp8/vp9 decoder drivers. Firstly, refactor
+power/clock/interrupt interfaces for mt8192 is lat and core architecture.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Secondly, add new functions to get frame buffer size and resolution according
+to decoder capability from scp side. Then add callback function to get/put
+capture buffer in order to enable lat and core decoder in parallel, need to
+adjust GStreamer at the same time. 
+
+Then add to support MT21C compressed mode and fix v4l2-compliance fail.
+
+Next, extract H264 request api driver to let mt8183 and mt8192 use the same
+code, and adds mt8192 frame based h264 driver for stateless decoder.
+
+Lastly, add vp8 and vp9 stateless decoder drivers.
+
+Patches 1 refactor power/clock/interrupt interface.
+Patches 2~4 get frame buffer size and resolution according to decoder capability.
+Patches 5 set capture queue bytesused.
+Patches 6 adjust GStreamer.
+Patch 7~11 add to support MT21C compressed mode and fix v4l2-compliance fail.
+patch 12 record capture queue format type.
+Patch 13~14 extract h264 driver and add mt8192 frame based driver for h264 decoder.
+Patch 15~16 add vp8 and vp9 stateless decoder drivers.
+Patch 17 prevent kernel crash when rmmod mtk-vcodec-dec.ko
 ---
- .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 44 ++++++++++---------
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h |  4 ++
- 2 files changed, 28 insertions(+), 20 deletions(-)
+changes compared with v11:
+- fix __iomem not reasonable, align share memory to dram.
+changes compared with v10:
+- fix sparse and smatch check fail for patch 13/14/16
+- fix 32bit build fail for patch 14
+changes compared with v9:
+- fix kernel robot build fail for patch 16
+changes compared with v8:
+- fix vp9 build error
+- fix kernel-doc fail
+changes compared with v7:
+- adjust GStreamer, separate src buffer done with v4l2_ctrl_request_complete for patch 6.
+- remove v4l2_m2m_set_dst_buffered.
+- add new patch to set each plane bytesused in buf prepare for patch 5.
+- using upstream interface to update vp9 prob tables for patch 16.
+- fix maintainer comments.
+- test the driver with chrome VD and GStreamer(H264/VP9/VP8/AV1).
+changes compared with v6:
+- rebase to the latest media stage and fix conficts
+- fix memcpy to memcpy_fromio or memcpy_toio
+- fix h264 crash when test field bitstream
+changes compared with v5:
+- fix vp9 comments for patch 15
+- fix vp8 comments for patch 14.
+- fix comments for patch 12.
+- fix build errors.
+changes compared with v4:
+- fix checkpatch.pl fail.
+- fix kernel-doc fail.
+- rebase to the latest media codec driver.
+changes compared with v3:
+- remove enum mtk_chip for patch 2.
+- add vp8 stateless decoder drivers for patch 14.
+- add vp9 stateless decoder drivers for patch 15.
+changes compared with v2:
+- add new patch 11 to record capture queue format type.
+- separate patch 4 according to tzung-bi's suggestion.
+- re-write commit message for patch 5 according to tzung-bi's suggestion.
+changes compared with v1:
+- rewrite commit message for patch 12.
+- rewrite cover-letter message.
+---
+Yunfei Dong (17):
+  media: mediatek: vcodec: Add vdec enable/disable hardware helpers
+  media: mediatek: vcodec: Using firmware type to separate different
+    firmware architecture
+  media: mediatek: vcodec: get capture queue buffer size from scp
+  media: mediatek: vcodec: Read max resolution from dec_capability
+  media: mediatek: vcodec: set each plane bytesused in buf prepare
+  media: mediatek: vcodec: Refactor get and put capture buffer flow
+  media: mediatek: vcodec: Refactor supported vdec formats and
+    framesizes
+  media: mediatek: vcodec: Getting supported decoder format types
+  media: mediatek: vcodec: Add format to support MT21C
+  media: mediatek: vcodec: disable vp8 4K capability
+  media: mediatek: vcodec: Fix v4l2-compliance fail
+  media: mediatek: vcodec: record capture queue format type
+  media: mediatek: vcodec: Extract H264 common code
+  media: mediatek: vcodec: support stateless H.264 decoding for mt8192
+  media: mediatek: vcodec: support stateless VP8 decoding
+  media: mediatek: vcodec: support stateless VP9 decoding
+  media: mediatek: vcodec: prevent kernel crash when rmmod
+    mtk-vcodec-dec.ko
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index 130ecef2e766..e42d5c17d90e 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -152,13 +152,15 @@ void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_ctx *ctx)
- 	q_data->coded_height = DFT_CFG_HEIGHT;
- 	q_data->fmt = ctx->dev->vdec_pdata->default_cap_fmt;
- 	q_data->field = V4L2_FIELD_NONE;
-+	ctx->max_width = MTK_VDEC_MAX_W;
-+	ctx->max_height = MTK_VDEC_MAX_H;
- 
- 	v4l_bound_align_image(&q_data->coded_width,
- 				MTK_VDEC_MIN_W,
--				MTK_VDEC_MAX_W, 4,
-+				ctx->max_width, 4,
- 				&q_data->coded_height,
- 				MTK_VDEC_MIN_H,
--				MTK_VDEC_MAX_H, 5, 6);
-+				ctx->max_height, 5, 6);
- 
- 	q_data->sizeimage[0] = q_data->coded_width * q_data->coded_height;
- 	q_data->bytesperline[0] = q_data->coded_width;
-@@ -217,7 +219,7 @@ static int vidioc_vdec_subscribe_evt(struct v4l2_fh *fh,
- 	}
- }
- 
--static int vidioc_try_fmt(struct v4l2_format *f,
-+static int vidioc_try_fmt(struct mtk_vcodec_ctx *ctx, struct v4l2_format *f,
- 			  const struct mtk_video_fmt *fmt)
- {
- 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
-@@ -225,9 +227,9 @@ static int vidioc_try_fmt(struct v4l2_format *f,
- 	pix_fmt_mp->field = V4L2_FIELD_NONE;
- 
- 	pix_fmt_mp->width =
--		clamp(pix_fmt_mp->width, MTK_VDEC_MIN_W, MTK_VDEC_MAX_W);
-+		clamp(pix_fmt_mp->width, MTK_VDEC_MIN_W, ctx->max_width);
- 	pix_fmt_mp->height =
--		clamp(pix_fmt_mp->height, MTK_VDEC_MIN_H, MTK_VDEC_MAX_H);
-+		clamp(pix_fmt_mp->height, MTK_VDEC_MIN_H, ctx->max_height);
- 
- 	if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
- 		pix_fmt_mp->num_planes = 1;
-@@ -245,16 +247,16 @@ static int vidioc_try_fmt(struct v4l2_format *f,
- 		tmp_h = pix_fmt_mp->height;
- 		v4l_bound_align_image(&pix_fmt_mp->width,
- 					MTK_VDEC_MIN_W,
--					MTK_VDEC_MAX_W, 6,
-+					ctx->max_width, 6,
- 					&pix_fmt_mp->height,
- 					MTK_VDEC_MIN_H,
--					MTK_VDEC_MAX_H, 6, 9);
-+					ctx->max_height, 6, 9);
- 
- 		if (pix_fmt_mp->width < tmp_w &&
--			(pix_fmt_mp->width + 64) <= MTK_VDEC_MAX_W)
-+			(pix_fmt_mp->width + 64) <= ctx->max_width)
- 			pix_fmt_mp->width += 64;
- 		if (pix_fmt_mp->height < tmp_h &&
--			(pix_fmt_mp->height + 64) <= MTK_VDEC_MAX_H)
-+			(pix_fmt_mp->height + 64) <= ctx->max_height)
- 			pix_fmt_mp->height += 64;
- 
- 		mtk_v4l2_debug(0,
-@@ -294,7 +296,7 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
- 		fmt = mtk_vdec_find_format(f, dec_pdata);
- 	}
- 
--	return vidioc_try_fmt(f, fmt);
-+	return vidioc_try_fmt(ctx, f, fmt);
- }
- 
- static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
-@@ -317,7 +319,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- 		return -EINVAL;
- 	}
- 
--	return vidioc_try_fmt(f, fmt);
-+	return vidioc_try_fmt(ctx, f, fmt);
- }
- 
- static int vidioc_vdec_g_selection(struct file *file, void *priv,
-@@ -444,8 +446,14 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 	if (fmt == NULL)
- 		return -EINVAL;
- 
-+	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED)) {
-+		mtk_v4l2_debug(3, "4K is enabled");
-+		ctx->max_width = VCODEC_DEC_4K_CODED_WIDTH;
-+		ctx->max_height = VCODEC_DEC_4K_CODED_HEIGHT;
-+	}
-+
- 	q_data->fmt = fmt;
--	vidioc_try_fmt(f, q_data->fmt);
-+	vidioc_try_fmt(ctx, f, q_data->fmt);
- 	if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
- 		q_data->sizeimage[0] = pix_mp->plane_fmt[0].sizeimage;
- 		q_data->coded_width = pix_mp->width;
-@@ -529,14 +537,9 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 
- 		fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
- 		fsize->stepwise = dec_pdata->vdec_framesizes[i].stepwise;
--		if (!(ctx->dev->dec_capability &
--				VCODEC_CAPABILITY_4K_DISABLED)) {
--			mtk_v4l2_debug(3, "4K is enabled");
--			fsize->stepwise.max_width =
--					VCODEC_DEC_4K_CODED_WIDTH;
--			fsize->stepwise.max_height =
--					VCODEC_DEC_4K_CODED_HEIGHT;
--		}
-+
-+		fsize->stepwise.max_width = ctx->max_width;
-+		fsize->stepwise.max_height = ctx->max_height;
- 		mtk_v4l2_debug(1, "%x, %d %d %d %d %d %d",
- 				ctx->dev->dec_capability,
- 				fsize->stepwise.min_width,
-@@ -545,6 +548,7 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
- 				fsize->stepwise.min_height,
- 				fsize->stepwise.max_height,
- 				fsize->stepwise.step_height);
-+
- 		return 0;
- 	}
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index bb7b8e914d24..6d27e4d41ede 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -284,6 +284,8 @@ struct vdec_pic_info {
-  *	  mtk_video_dec_buf.
-  * @hw_id: hardware index used to identify different hardware.
-  *
-+ * @max_width: hardware supported max width
-+ * @max_height: hardware supported max height
-  * @msg_queue: msg queue used to store lat buffer information.
-  */
- struct mtk_vcodec_ctx {
-@@ -329,6 +331,8 @@ struct mtk_vcodec_ctx {
- 	struct mutex lock;
- 	int hw_id;
- 
-+	unsigned int max_width;
-+	unsigned int max_height;
- 	struct vdec_msg_queue msg_queue;
- };
- 
+ .../media/platform/mediatek/vcodec/Kconfig    |    1 +
+ .../media/platform/mediatek/vcodec/Makefile   |    4 +
+ .../platform/mediatek/vcodec/mtk_vcodec_dec.c |   62 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |    8 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.c       |  166 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.h       |    6 +-
+ .../mediatek/vcodec/mtk_vcodec_dec_stateful.c |   19 +-
+ .../vcodec/mtk_vcodec_dec_stateless.c         |  257 ++-
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h |   41 +-
+ .../mediatek/vcodec/mtk_vcodec_enc_drv.c      |    5 -
+ .../platform/mediatek/vcodec/mtk_vcodec_fw.c  |    6 +
+ .../platform/mediatek/vcodec/mtk_vcodec_fw.h  |    1 +
+ .../vcodec/vdec/vdec_h264_req_common.c        |  310 +++
+ .../vcodec/vdec/vdec_h264_req_common.h        |  274 +++
+ .../mediatek/vcodec/vdec/vdec_h264_req_if.c   |  438 +---
+ .../vcodec/vdec/vdec_h264_req_multi_if.c      |  626 +++++
+ .../mediatek/vcodec/vdec/vdec_vp8_req_if.c    |  437 ++++
+ .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 2030 +++++++++++++++++
+ .../platform/mediatek/vcodec/vdec_drv_if.c    |   37 +-
+ .../platform/mediatek/vcodec/vdec_drv_if.h    |    3 +
+ .../platform/mediatek/vcodec/vdec_ipi_msg.h   |   36 +
+ .../platform/mediatek/vcodec/vdec_msg_queue.c |    2 +
+ .../platform/mediatek/vcodec/vdec_msg_queue.h |    2 +
+ .../platform/mediatek/vcodec/vdec_vpu_if.c    |   53 +-
+ .../platform/mediatek/vcodec/vdec_vpu_if.h    |   15 +
+ .../platform/mediatek/vcodec/venc_vpu_if.c    |    2 +-
+ include/linux/remoteproc/mtk_scp.h            |    2 +
+ 27 files changed, 4242 insertions(+), 601 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
+ create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_vp8_req_if.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+
 -- 
 2.18.0
 
