@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A4F2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 06:22:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 932BAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 06:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7GGjyWszbIUC+khmk16QudPbmUj0O0eapV8s4XIHHKI=; b=Dhenw2q9PW+mGr
-	YVjEFG2JWD1MMkLLLjxKk7ucZDKwkY2mpuUIv58WH/2sqCLt7L6j4XrsFTgOP1tBzTWBJwlzxwwR1
-	W74u5vUQ7U+xCwcMZ1nbE2EWHTyyT7tQQEBg1xv82HkN8warv30FaPoGKsGggFKANnkn1GNvXrseD
-	vhdR57bQCqpEqmTgNjtOL88+LmMOSqmC0rf5Tqg4G1+JF7w5jkMFFk4t15s2P1pAhtJRJQ1JJX/IA
-	OHECDOQynvSshAhpMcyAMQADlIfCcZJwY54eBUavB9HRHL1vOXHt3jMidQv2H7M657g7tEH6lM7b8
-	9aF2jFEQ3bJfv0jO1k+A==;
+	List-Owner; bh=aOZ2MnkUb//naHTsytBbmytC6tEuBG7fZChX8yJfSFs=; b=wCybxIQQZYuUzx
+	A/2wHF6ONoHrAwhgQz2eza31k29fi9pMh16acZ4/v9xfOGCL2QjNt43ygcRhV8belcWzOzxVOnPjI
+	D2aKJcFPlGIWZOY0p4sr2/qHWU7GNcxrgXkTTZOTpjNVuczVQOBIKSzZD1xpnnVIcsmw9823I8nG3
+	kRmY+HuXPA+vqIJVVNR+3ZYJ//Dj4zj/k2HpwqLi6OxiFQTeMW5oactJa6kKioblRRfxu5t653vZL
+	7KnbwvysKnJ5DPi0mf09bxoqad4rB4w9tLtvxtovFhNDDugk0fNZ9PaE85sExKgubYZ0b/Yz06+jF
+	U+HQPAZ4eVtYYXp1xImg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np2D6-00ANfM-If; Thu, 12 May 2022 06:22:04 +0000
+	id 1np2HT-00AP6m-V2; Thu, 12 May 2022 06:26:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np2Cu-00ANd3-OB; Thu, 12 May 2022 06:21:55 +0000
-X-UUID: 092c99da31984115899d71772237a7a0-20220511
+ id 1np2HR-00AP5p-9U; Thu, 12 May 2022 06:26:34 +0000
+X-UUID: 365266622b5b4ad98014667d2fb8636f-20220511
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:ac1aba3d-e01b-4c67-aaef-ef7562e652a8, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:2f6587c5-b8c8-4b63-a164-f3313abf08c2, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:14e8eef1-ab23-4aed-a67b-f96514452486,
+ B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:5
+X-CID-META: VersionHash:faefae9, CLOUDID:b0c504a7-eab7-4b74-a74d-5359964535a9,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 092c99da31984115899d71772237a7a0-20220511
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: 365266622b5b4ad98014667d2fb8636f-20220511
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 748433974; Wed, 11 May 2022 23:21:45 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 459401883; Wed, 11 May 2022 23:26:27 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 23:11:43 -0700
+ 15.0.1497.2; Wed, 11 May 2022 23:26:26 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 May 2022 14:11:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 14:26:25 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 12 May 2022 14:11:41 +0800
-Message-ID: <ea3b53f234d68f993bc7cd540b33832434cf931c.camel@mediatek.com>
-Subject: Re: [PATCH v6 08/10] arm64: dts: mediatek: Add opp table and clock
- property for MT8183 cpufreq
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <matthias.bgg@gmail.com>
-CC: <jia-wei.chang@mediatek.com>, <roger.lu@mediatek.com>,
- <hsinyi@google.com>, <khilman@baylibre.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ Transport; Thu, 12 May 2022 14:26:24 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, "Andrew-sh . Cheng"
- <andrew-sh.cheng@mediatek.com>, <rafael@kernel.org>,
- <viresh.kumar@linaro.org>, <robh+dt@kernel.org>, <krzk+dt@kernel.org>
-Date: Thu, 12 May 2022 14:11:42 +0800
-In-Reply-To: <20220505115226.20130-9-rex-bc.chen@mediatek.com>
-References: <20220505115226.20130-1-rex-bc.chen@mediatek.com>
- <20220505115226.20130-9-rex-bc.chen@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <linux-kernel@vger.kernel.org>, <linux-phy@lists.infradead.org>, Eddie Hung
+ <eddie.hung@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Allen-KH Cheng
+ <allen-kh.cheng@mediatek.com>
+Subject: [PATCH next v5 2/4] dt-bindings: nvmem: mediatek: efuse: add support
+ mt8183
+Date: Thu, 12 May 2022 14:26:20 +0800
+Message-ID: <20220512062622.31484-2-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220512062622.31484-1-chunfeng.yun@mediatek.com>
+References: <20220512062622.31484-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_232152_846181_3E49BD87 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20220511_232633_369003_A37919EA 
+X-CRM114-Status: UNSURE (   7.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,417 +85,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-05-05 at 19:52 +0800, Rex-BC Chen wrote:
-> - Add cpufreq opp table.
-> - Add MediaTek cci opp table.
-> - Add property of opp table and clock fro cpufreq.
-> 
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts |  32 +++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 270
-> ++++++++++++++++++++
->  2 files changed, 302 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> index f3fd3cca23e9..8953dbf84f3e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> @@ -412,6 +412,38 @@
->  
->  };
->  
-> +&cpu0 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
-> +
-> +&cpu1 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
-> +
-> +&cpu2 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
-> +
-> +&cpu3 {
-> +	proc-supply = <&mt6358_vproc12_reg>;
-> +};
-> +
-> +&cpu4 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
-> +
-> +&cpu5 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
-> +
-> +&cpu6 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
-> +
-> +&cpu7 {
-> +	proc-supply = <&mt6358_vproc11_reg>;
-> +};
-> +
->  &uart0 {
->  	status = "okay";
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 01e650251928..cecf96b628b7 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -42,6 +42,244 @@
->  		rdma1 = &rdma1;
->  	};
->  
-> +	cluster0_opp: opp-table-cluster0 {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +		opp0-793000000 {
-> +			opp-hz = /bits/ 64 <793000000>;
-> +			opp-microvolt = <650000>;
-> +			required-opps = <&opp2_00>;
-> +		};
-> +		opp0-910000000 {
-> +			opp-hz = /bits/ 64 <910000000>;
-> +			opp-microvolt = <687500>;
-> +			required-opps = <&opp2_01>;
-> +		};
-> +		opp0-1014000000 {
-> +			opp-hz = /bits/ 64 <1014000000>;
-> +			opp-microvolt = <718750>;
-> +			required-opps = <&opp2_02>;
-> +		};
-> +		opp0-1131000000 {
-> +			opp-hz = /bits/ 64 <1131000000>;
-> +			opp-microvolt = <756250>;
-> +			required-opps = <&opp2_03>;
-> +		};
-> +		opp0-1248000000 {
-> +			opp-hz = /bits/ 64 <1248000000>;
-> +			opp-microvolt = <800000>;
-> +			required-opps = <&opp2_04>;
-> +		};
-> +		opp0-1326000000 {
-> +			opp-hz = /bits/ 64 <1326000000>;
-> +			opp-microvolt = <818750>;
-> +			required-opps = <&opp2_05>;
-> +		};
-> +		opp0-1417000000 {
-> +			opp-hz = /bits/ 64 <1417000000>;
-> +			opp-microvolt = <850000>;
-> +			required-opps = <&opp2_06>;
-> +		};
-> +		opp0-1508000000 {
-> +			opp-hz = /bits/ 64 <1508000000>;
-> +			opp-microvolt = <868750>;
-> +			required-opps = <&opp2_07>;
-> +		};
-> +		opp0-1586000000 {
-> +			opp-hz = /bits/ 64 <1586000000>;
-> +			opp-microvolt = <893750>;
-> +			required-opps = <&opp2_08>;
-> +		};
-> +		opp0-1625000000 {
-> +			opp-hz = /bits/ 64 <1625000000>;
-> +			opp-microvolt = <906250>;
-> +			required-opps = <&opp2_09>;
-> +		};
-> +		opp0-1677000000 {
-> +			opp-hz = /bits/ 64 <1677000000>;
-> +			opp-microvolt = <931250>;
-> +			required-opps = <&opp2_10>;
-> +		};
-> +		opp0-1716000000 {
-> +			opp-hz = /bits/ 64 <1716000000>;
-> +			opp-microvolt = <943750>;
-> +			required-opps = <&opp2_11>;
-> +		};
-> +		opp0-1781000000 {
-> +			opp-hz = /bits/ 64 <1781000000>;
-> +			opp-microvolt = <975000>;
-> +			required-opps = <&opp2_12>;
-> +		};
-> +		opp0-1846000000 {
-> +			opp-hz = /bits/ 64 <1846000000>;
-> +			opp-microvolt = <1000000>;
-> +			required-opps = <&opp2_13>;
-> +		};
-> +		opp0-1924000000 {
-> +			opp-hz = /bits/ 64 <1924000000>;
-> +			opp-microvolt = <1025000>;
-> +			required-opps = <&opp2_14>;
-> +		};
-> +		opp0-1989000000 {
-> +			opp-hz = /bits/ 64 <1989000000>;
-> +			opp-microvolt = <1050000>;
-> +			required-opps = <&opp2_15>;
-> +		};	};
-> +
-> +	cluster1_opp: opp-table-cluster1 {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +		opp1-793000000 {
-> +			opp-hz = /bits/ 64 <793000000>;
-> +			opp-microvolt = <700000>;
-> +			required-opps = <&opp2_00>;
-> +		};
-> +		opp1-910000000 {
-> +			opp-hz = /bits/ 64 <910000000>;
-> +			opp-microvolt = <725000>;
-> +			required-opps = <&opp2_01>;
-> +		};
-> +		opp1-1014000000 {
-> +			opp-hz = /bits/ 64 <1014000000>;
-> +			opp-microvolt = <750000>;
-> +			required-opps = <&opp2_02>;
-> +		};
-> +		opp1-1131000000 {
-> +			opp-hz = /bits/ 64 <1131000000>;
-> +			opp-microvolt = <775000>;
-> +			required-opps = <&opp2_03>;
-> +		};
-> +		opp1-1248000000 {
-> +			opp-hz = /bits/ 64 <1248000000>;
-> +			opp-microvolt = <800000>;
-> +			required-opps = <&opp2_04>;
-> +		};
-> +		opp1-1326000000 {
-> +			opp-hz = /bits/ 64 <1326000000>;
-> +			opp-microvolt = <825000>;
-> +			required-opps = <&opp2_05>;
-> +		};
-> +		opp1-1417000000 {
-> +			opp-hz = /bits/ 64 <1417000000>;
-> +			opp-microvolt = <850000>;
-> +			required-opps = <&opp2_06>;
-> +		};
-> +		opp1-1508000000 {
-> +			opp-hz = /bits/ 64 <1508000000>;
-> +			opp-microvolt = <875000>;
-> +			required-opps = <&opp2_07>;
-> +		};
-> +		opp1-1586000000 {
-> +			opp-hz = /bits/ 64 <1586000000>;
-> +			opp-microvolt = <900000>;
-> +			required-opps = <&opp2_08>;
-> +		};
-> +		opp1-1625000000 {
-> +			opp-hz = /bits/ 64 <1625000000>;
-> +			opp-microvolt = <912500>;
-> +			required-opps = <&opp2_09>;
-> +		};
-> +		opp1-1677000000 {
-> +			opp-hz = /bits/ 64 <1677000000>;
-> +			opp-microvolt = <931250>;
-> +			required-opps = <&opp2_10>;
-> +		};
-> +		opp1-1716000000 {
-> +			opp-hz = /bits/ 64 <1716000000>;
-> +			opp-microvolt = <950000>;
-> +			required-opps = <&opp2_11>;
-> +		};
-> +		opp1-1781000000 {
-> +			opp-hz = /bits/ 64 <1781000000>;
-> +			opp-microvolt = <975000>;
-> +			required-opps = <&opp2_12>;
-> +		};
-> +		opp1-1846000000 {
-> +			opp-hz = /bits/ 64 <1846000000>;
-> +			opp-microvolt = <1000000>;
-> +			required-opps = <&opp2_13>;
-> +		};
-> +		opp1-1924000000 {
-> +			opp-hz = /bits/ 64 <1924000000>;
-> +			opp-microvolt = <1025000>;
-> +			required-opps = <&opp2_14>;
-> +		};
-> +		opp1-1989000000 {
-> +			opp-hz = /bits/ 64 <1989000000>;
-> +			opp-microvolt = <1050000>;
-> +			required-opps = <&opp2_15>;
-> +		};
-> +	};
-> +
-> +	cci_opp: opp-table-cci {
-> +		compatible = "operating-points-v2";
-> +		opp-shared;
-> +		opp2_00: opp-273000000 {
-> +			opp-hz = /bits/ 64 <273000000>;
-> +			opp-microvolt = <650000>;
-> +		};
-> +		opp2_01: opp-338000000 {
-> +			opp-hz = /bits/ 64 <338000000>;
-> +			opp-microvolt = <687500>;
-> +		};
-> +		opp2_02: opp-403000000 {
-> +			opp-hz = /bits/ 64 <403000000>;
-> +			opp-microvolt = <718750>;
-> +		};
-> +		opp2_03: opp-463000000 {
-> +			opp-hz = /bits/ 64 <463000000>;
-> +			opp-microvolt = <756250>;
-> +		};
-> +		opp2_04: opp-546000000 {
-> +			opp-hz = /bits/ 64 <546000000>;
-> +			opp-microvolt = <800000>;
-> +		};
-> +		opp2_05: opp-624000000 {
-> +			opp-hz = /bits/ 64 <624000000>;
-> +			opp-microvolt = <818750>;
-> +		};
-> +		opp2_06: opp-689000000 {
-> +			opp-hz = /bits/ 64 <689000000>;
-> +			opp-microvolt = <850000>;
-> +		};
-> +		opp2_07: opp-767000000 {
-> +			opp-hz = /bits/ 64 <767000000>;
-> +			opp-microvolt = <868750>;
-> +		};
-> +		opp2_08: opp-845000000 {
-> +			opp-hz = /bits/ 64 <845000000>;
-> +			opp-microvolt = <893750>;
-> +		};
-> +		opp2_09: opp-871000000 {
-> +			opp-hz = /bits/ 64 <871000000>;
-> +			opp-microvolt = <906250>;
-> +		};
-> +		opp2_10: opp-923000000 {
-> +			opp-hz = /bits/ 64 <923000000>;
-> +			opp-microvolt = <931250>;
-> +		};
-> +		opp2_11: opp-962000000 {
-> +			opp-hz = /bits/ 64 <962000000>;
-> +			opp-microvolt = <943750>;
-> +		};
-> +		opp2_12: opp-1027000000 {
-> +			opp-hz = /bits/ 64 <1027000000>;
-> +			opp-microvolt = <975000>;
-> +		};
-> +		opp2_13: opp-1092000000 {
-> +			opp-hz = /bits/ 64 <1092000000>;
-> +			opp-microvolt = <1000000>;
-> +		};
-> +		opp2_14: opp-1144000000 {
-> +			opp-hz = /bits/ 64 <1144000000>;
-> +			opp-microvolt = <1025000>;
-> +		};
-> +		opp2_15: opp-1196000000 {
-> +			opp-hz = /bits/ 64 <1196000000>;
-> +			opp-microvolt = <1050000>;
-> +		};
-> +	};
-> +
->  	cpus {
->  		#address-cells = <1>;
->  		#size-cells = <0>;
-> @@ -85,6 +323,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  			dynamic-power-coefficient = <84>;
->  			#cooling-cells = <2>;
->  		};
-> @@ -96,6 +338,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  			dynamic-power-coefficient = <84>;
->  			#cooling-cells = <2>;
->  		};
-> @@ -107,6 +353,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  			dynamic-power-coefficient = <84>;
->  			#cooling-cells = <2>;
->  		};
-> @@ -118,6 +368,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP0>;
-> +			clocks = <&mcucfg CLK_MCU_MP0_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster0_opp>;
->  			dynamic-power-coefficient = <84>;
->  			#cooling-cells = <2>;
->  		};
-> @@ -129,6 +383,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  			dynamic-power-coefficient = <211>;
->  			#cooling-cells = <2>;
->  		};
-> @@ -140,6 +398,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  			dynamic-power-coefficient = <211>;
->  			#cooling-cells = <2>;
->  		};
-> @@ -151,6 +413,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  			dynamic-power-coefficient = <211>;
->  			#cooling-cells = <2>;
->  		};
-> @@ -162,6 +428,10 @@
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
->  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP1>;
-> +			clocks = <&mcucfg CLK_MCU_MP2_SEL>,
-> +				 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-> +			clock-names = "cpu", "intermediate";
-> +			operating-points-v2 = <&cluster1_opp>;
->  			dynamic-power-coefficient = <211>;
->  			#cooling-cells = <2>;
->  		};
+Add "mediatek,mt8183-efuse" to fix dtbs check warning.
 
-Hello Matthias,
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v5: new patch
+---
+ Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Could you give us some advice or ack for these patches of mt8183 dts?
-The drviers and dt-binding of this series are picked by Viresh, and he
-also wants to pick these three dts patches.
-
-Thanks!
-
-Viresh's branch: 
-https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/log/?h=cpufreq/arm/linux-next
-
-BRs,
-Rex
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+index f6e01ddb7499..7c7233e29ecf 100644
+--- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -28,6 +28,7 @@ properties:
+               - mediatek,mt7622-efuse
+               - mediatek,mt7623-efuse
+               - mediatek,mt8173-efuse
++              - mediatek,mt8183-efuse
+               - mediatek,mt8192-efuse
+               - mediatek,mt8195-efuse
+               - mediatek,mt8516-efuse
+-- 
+2.18.0
 
 
 _______________________________________________
