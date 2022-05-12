@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4745C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 14:20:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E0D9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 14:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fQEFBcLXgvjxJwLLkXf7UlnpAeQqrRVivFn9psiYTD4=; b=HK/6Js7uMIFu+/
-	ztSprebtkuJTG73jZHAA+nd5RwyImvkF1xr4YFUdhoyX53UDJVMBqSdNATTAMc/zyIjdJLuiOeS2i
-	fCyp7ZB0k4ZQQGDh6e2Bx1tquAGu7GDRdikdGbtC+LPoFAb7Ed/EPWpjM4czBY8T/SAwJPHQOHPfp
-	vUWI4iZDijEodtufb9ZS1LlXSy5IsZTHvT8DAVmQSEi2zH2sUCytivrRLT7S7v2HvMbGA+gVKzU2f
-	oZKTW3gOHG2uZQtUeUJ6afWi7W6VoBR0bI4Vq9oLS2xj4mLjBOEDYEnBHSM1F+KFeR4cMkVePCxzf
-	L/G75vREtJ1GTlvlwEMA==;
+	List-Owner; bh=xVsrCFk8zLoVK56HWbWli3HTg0J0ZxrDQQChm5OgQ/I=; b=GYjbHbtil442CJ
+	/0B0zP44X507rjp3H0iZlYYh6RCutB6GcBTLGsdnCXEwaJt2+pdQcPwFHwUJ6JjT0dL/gOdsMQzIC
+	+D+MK5vNuWCmdcmvdcLT+5VgqWk9sG/zYXdkhDsAM9LbX8S6lH7v3WuUSO2BGU55xV1bgdM9T8Yhp
+	k9StLDHUpma+6w1iTsmmY65K9XQmv+rSGpMJ7+Kh24ZnsSsdFi96D+iBLr9LoUQl9gtESlyhY1MhR
+	TeLBqzvvcfCleavdBBylo4DBTPiobfeIZL4nnXCs8ZZJl5Fu2cS2DpGXxHSkJa6JRFgsKUw44CP4X
+	tsqRixSa5w0uuqNnthOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np9gC-00CKUg-HY; Thu, 12 May 2022 14:20:36 +0000
+	id 1np9jU-00CLwe-CH; Thu, 12 May 2022 14:24:00 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np9fy-00CKPi-1V; Thu, 12 May 2022 14:20:23 +0000
-X-UUID: 0cf3390443ec42c8b040c21d69fb98aa-20220512
+ id 1np9jQ-00CLvN-Cc; Thu, 12 May 2022 14:23:59 +0000
+X-UUID: 8143e1745be747edac7e603cd72b6275-20220512
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:61efb0d0-e1f6-4912-a08a-6184626f1888, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:7b8540fc-8446-440f-9815-33f6c8b6fd0c, OB:0,
  LO
- B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:5
-X-CID-META: VersionHash:faefae9, CLOUDID:911114a7-eab7-4b74-a74d-5359964535a9,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:f62414a7-eab7-4b74-a74d-5359964535a9,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 0cf3390443ec42c8b040c21d69fb98aa-20220512
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,File:nil,QS:0,BEC:ni
+ l
+X-UUID: 8143e1745be747edac7e603cd72b6275-20220512
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yf.wang@mediatek.com>)
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 680316332; Thu, 12 May 2022 07:20:16 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 May 2022 07:10:15 -0700
+ with ESMTP id 367792040; Thu, 12 May 2022 07:23:52 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 07:18:52 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 12 May 2022 22:10:13 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas10.mediatek.inc
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 22:18:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 12 May 2022 22:10:12 +0800
-From: <yf.wang@mediatek.com>
-To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Joerg
- Roedel" <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Georgi Djakov" <quic_c_gdjako@quicinc.com>, "Isaac J. Manjarres"
- <isaacm@codeaurora.org>, Yunfei Wang <yf.wang@mediatek.com>, Sven Peter
- <sven@svenpeter.dev>, "moderated list:ARM SMMU DRIVERS"
- <linux-arm-kernel@lists.infradead.org>, "open list:IOMMU DRIVERS"
- <iommu@lists.linux-foundation.org>, open list <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
- <Yong.Wu@mediatek.com>, Ning Li <ning.li@mediatek.com>
-Subject: [PATCH v2 1/2] iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable
- PA up to 35bit
-Date: Thu, 12 May 2022 22:03:29 +0800
-Message-ID: <20220512140331.17778-2-yf.wang@mediatek.com>
+ Frontend Transport; Thu, 12 May 2022 22:18:51 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <wenst@chromium.org>
+CC: <angelogioacchino.delregno@collabora.com>, <chun-jie.chen@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
+ <mturquette@baylibre.com>, <rex-bc.chen@mediatek.com>, <sboyd@kernel.org>
+Subject: Re: [PATCH v2 04/11] clk: mediatek: Replace 'struct clk' with 'struct
+ clk_hw'
+Date: Thu, 12 May 2022 22:18:51 +0800
+Message-ID: <20220512141851.18252-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220512140331.17778-1-yf.wang@mediatek.com>
-References: <20220512140331.17778-1-yf.wang@mediatek.com>
+In-Reply-To: <20220510104804.544597-5-wenst@chromium.org>
+References: <20220510104804.544597-5-wenst@chromium.org>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_072022_119621_04CFC124 
-X-CRM114-Status: GOOD (  21.40  )
+X-CRM114-CacheID: sfid-20220512_072356_481064_0DF343CD 
+X-CRM114-Status: GOOD (  23.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,207 +83,586 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yunfei Wang <yf.wang@mediatek.com>
+> As part of the effort to improve the MediaTek clk drivers, the next step
+> is to switch from the old 'struct clk' clk prodivder APIs to the new
+> 'struct clk_hw' ones.
+> 
+> Instead of adding new APIs to the MediaTek clk driver library mirroring
+> the existing ones, moving all drivers to the new APIs, and then removing
+> the old ones, just migrate everything at the same time. This involves
+> replacing 'struct clk' with 'struct clk_hw', and 'struct clk_onecell_data'
+> with 'struct clk_hw_onecell_data', and fixing up all usages.
+> 
+> This is done with the following coccinelle script.
+> 
+> To avoid a really large patch, the changes have been split into multiple
+> ones. This patch covers the common MediaTek clk library.
+> 
+>     // Replace type
 
-The calling to kmem_cache_alloc for level 2 pgtable allocation may run
-in atomic context, and it fails sometimes when DMA32 zone runs out of
-memory.
+...snip...
 
-Since Mediatek IOMMU hardware support at most 35bit PA in pgtable,
-so add a quirk to allow the PA of pgtables support up to bit35.
+> +++ b/drivers/clk/mediatek/clk-mtk.c
+> @@ -21,7 +21,7 @@
+>  struct clk_hw_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
+>  {
+>  	int i;
+> -	struct clk_onecell_data *clk_data;
+> +	struct clk_hw_onecell_data *clk_data;
 
-Signed-off-by: Ning Li <ning.li@mediatek.com>
-Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
----
- drivers/iommu/io-pgtable-arm-v7s.c | 56 ++++++++++++++++++++++--------
- include/linux/io-pgtable.h         | 15 +++++---
- 2 files changed, 52 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index be066c1503d3..57455ae052ac 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -149,6 +149,10 @@
- #define ARM_V7S_TTBR_IRGN_ATTR(attr)					\
- 	((((attr) & 0x1) << 6) | (((attr) & 0x2) >> 1))
- 
-+/* Mediatek extend ttbr bits[2:0] for PA bits[34:32] */
-+#define ARM_V7S_TTBR_35BIT_PA(ttbr, pa)					\
-+	((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
-+
- #ifdef CONFIG_ZONE_DMA32
- #define ARM_V7S_TABLE_GFP_DMA GFP_DMA32
- #define ARM_V7S_TABLE_SLAB_FLAGS SLAB_CACHE_DMA32
-@@ -182,14 +186,8 @@ static bool arm_v7s_is_mtk_enabled(struct io_pgtable_cfg *cfg)
- 		(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT);
- }
- 
--static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
--				    struct io_pgtable_cfg *cfg)
-+static arm_v7s_iopte to_iopte_mtk(phys_addr_t paddr, arm_v7s_iopte pte)
- {
--	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
--
--	if (!arm_v7s_is_mtk_enabled(cfg))
--		return pte;
--
- 	if (paddr & BIT_ULL(32))
- 		pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
- 	if (paddr & BIT_ULL(33))
-@@ -199,6 +197,17 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
- 	return pte;
- }
- 
-+static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
-+				    struct io_pgtable_cfg *cfg)
-+{
-+	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
-+
-+	if (!arm_v7s_is_mtk_enabled(cfg))
-+		return pte;
-+
-+	return to_iopte_mtk(paddr, pte);
-+}
-+
- static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
- 				  struct io_pgtable_cfg *cfg)
- {
-@@ -234,6 +243,7 @@ static arm_v7s_iopte *iopte_deref(arm_v7s_iopte pte, int lvl,
- static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
- 				   struct arm_v7s_io_pgtable *data)
- {
-+	gfp_t gfp_l1 = __GFP_ZERO | ARM_V7S_TABLE_GFP_DMA;
- 	struct io_pgtable_cfg *cfg = &data->iop.cfg;
- 	struct device *dev = cfg->iommu_dev;
- 	phys_addr_t phys;
-@@ -241,9 +251,11 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
- 	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
- 	void *table = NULL;
- 
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		gfp_l1 = __GFP_ZERO;
-+
- 	if (lvl == 1)
--		table = (void *)__get_free_pages(
--			__GFP_ZERO | ARM_V7S_TABLE_GFP_DMA, get_order(size));
-+		table = (void *)__get_free_pages(gfp_l1, get_order(size));
- 	else if (lvl == 2)
- 		table = kmem_cache_zalloc(data->l2_tables, gfp);
- 
-@@ -251,7 +263,8 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
- 		return NULL;
- 
- 	phys = virt_to_phys(table);
--	if (phys != (arm_v7s_iopte)phys) {
-+	if (phys != (arm_v7s_iopte)phys &&
-+	    !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)) {
- 		/* Doesn't fit in PTE */
- 		dev_err(dev, "Page table does not fit in PTE: %pa", &phys);
- 		goto out_free;
-@@ -457,9 +470,14 @@ static arm_v7s_iopte arm_v7s_install_table(arm_v7s_iopte *table,
- 					   arm_v7s_iopte curr,
- 					   struct io_pgtable_cfg *cfg)
- {
-+	phys_addr_t phys = virt_to_phys(table);
- 	arm_v7s_iopte old, new;
- 
--	new = virt_to_phys(table) | ARM_V7S_PTE_TYPE_TABLE;
-+	new = phys | ARM_V7S_PTE_TYPE_TABLE;
-+
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		new = to_iopte_mtk(phys, new);
-+
- 	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_NS)
- 		new |= ARM_V7S_ATTR_NS_TABLE;
- 
-@@ -778,7 +796,9 @@ static phys_addr_t arm_v7s_iova_to_phys(struct io_pgtable_ops *ops,
- static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 						void *cookie)
- {
-+	slab_flags_t slab_flag = ARM_V7S_TABLE_SLAB_FLAGS;
- 	struct arm_v7s_io_pgtable *data;
-+	phys_addr_t paddr;
- 
- 	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
- 		return NULL;
-@@ -788,7 +808,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 
- 	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
- 			    IO_PGTABLE_QUIRK_NO_PERMS |
--			    IO_PGTABLE_QUIRK_ARM_MTK_EXT))
-+			    IO_PGTABLE_QUIRK_ARM_MTK_EXT |
-+			    IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT))
- 		return NULL;
- 
- 	/* If ARM_MTK_4GB is enabled, the NO_PERMS is also expected. */
-@@ -801,10 +822,12 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 		return NULL;
- 
- 	spin_lock_init(&data->split_lock);
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		slab_flag = 0;
- 	data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
- 					    ARM_V7S_TABLE_SIZE(2, cfg),
- 					    ARM_V7S_TABLE_SIZE(2, cfg),
--					    ARM_V7S_TABLE_SLAB_FLAGS, NULL);
-+					    slab_flag, NULL);
- 	if (!data->l2_tables)
- 		goto out_free_data;
- 
-@@ -850,12 +873,17 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 	wmb();
- 
- 	/* TTBR */
--	cfg->arm_v7s_cfg.ttbr = virt_to_phys(data->pgd) | ARM_V7S_TTBR_S |
-+	paddr = virt_to_phys(data->pgd);
-+	cfg->arm_v7s_cfg.ttbr = paddr | ARM_V7S_TTBR_S |
- 				(cfg->coherent_walk ? (ARM_V7S_TTBR_NOS |
- 				 ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_WBWA) |
- 				 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_WBWA)) :
- 				(ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_NC) |
- 				 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_NC)));
-+
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		cfg->arm_v7s_cfg.ttbr =
-+			ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
- 	return &data->iop;
- 
- out_free_data:
-diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
-index 86af6f0a00a2..7ed15ad4710c 100644
---- a/include/linux/io-pgtable.h
-+++ b/include/linux/io-pgtable.h
-@@ -74,17 +74,22 @@ struct io_pgtable_cfg {
- 	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
- 	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
- 	 *
-+	 * IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT: (ARM v7s format) MediaTek IOMMUs
-+	 *	extend the translation table support up to 35 bits PA, the
-+	 *	encoding format is same with IO_PGTABLE_QUIRK_ARM_MTK_EXT.
-+	 *
- 	 * IO_PGTABLE_QUIRK_ARM_TTBR1: (ARM LPAE format) Configure the table
- 	 *	for use in the upper half of a split address space.
- 	 *
- 	 * IO_PGTABLE_QUIRK_ARM_OUTER_WBWA: Override the outer-cacheability
- 	 *	attributes set in the TCR for a non-coherent page-table walker.
- 	 */
--	#define IO_PGTABLE_QUIRK_ARM_NS		BIT(0)
--	#define IO_PGTABLE_QUIRK_NO_PERMS	BIT(1)
--	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT	BIT(3)
--	#define IO_PGTABLE_QUIRK_ARM_TTBR1	BIT(5)
--	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA	BIT(6)
-+	#define IO_PGTABLE_QUIRK_ARM_NS			BIT(0)
-+	#define IO_PGTABLE_QUIRK_NO_PERMS		BIT(1)
-+	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT		BIT(3)
-+	#define IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT	BIT(4)
-+	#define IO_PGTABLE_QUIRK_ARM_TTBR1		BIT(5)
-+	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA		BIT(6)
- 	unsigned long			quirks;
- 	unsigned long			pgsize_bitmap;
- 	unsigned int			ias;
--- 
-2.18.0
+oh, clk_onecell_data is converted to clk_hw_onecell_data here
 
+Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
+>  
+>  	clk_data = kzalloc(struct_size(clk_data, hws, clk_num), GFP_KERNEL);
+>  	if (!clk_data)
+> @@ -43,7 +43,7 @@ void mtk_free_clk_data(struct clk_hw_onecell_data *clk_data)
+>  EXPORT_SYMBOL_GPL(mtk_free_clk_data);
+>  
+>  int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+> -				struct clk_onecell_data *clk_data)
+> +				struct clk_hw_onecell_data *clk_data)
+>  {
+>  	int i;
+>  	struct clk *clk;
+> @@ -54,7 +54,7 @@ int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_fixed_clk *rc = &clks[i];
+>  
+> -		if (!IS_ERR_OR_NULL(clk_data->clks[rc->id])) {
+> +		if (!IS_ERR_OR_NULL(clk_data->hws[rc->id])) {
+>  			pr_warn("Trying to register duplicate clock ID: %d\n", rc->id);
+>  			continue;
+>  		}
+> @@ -67,7 +67,7 @@ int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+>  			goto err;
+>  		}
+>  
+> -		clk_data->clks[rc->id] = clk;
+> +		clk_data->hws[rc->id] = __clk_get_hw(clk);
+>  	}
+>  
+>  	return 0;
+> @@ -76,11 +76,11 @@ int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+>  	while (--i >= 0) {
+>  		const struct mtk_fixed_clk *rc = &clks[i];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[rc->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[rc->id]))
+>  			continue;
+>  
+> -		clk_unregister_fixed_rate(clk_data->clks[rc->id]);
+> -		clk_data->clks[rc->id] = ERR_PTR(-ENOENT);
+> +		clk_unregister_fixed_rate(clk_data->hws[rc->id]->clk);
+> +		clk_data->hws[rc->id] = ERR_PTR(-ENOENT);
+>  	}
+>  
+>  	return PTR_ERR(clk);
+> @@ -88,7 +88,7 @@ int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+>  EXPORT_SYMBOL_GPL(mtk_clk_register_fixed_clks);
+>  
+>  void mtk_clk_unregister_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+> -				   struct clk_onecell_data *clk_data)
+> +				   struct clk_hw_onecell_data *clk_data)
+>  {
+>  	int i;
+>  
+> @@ -98,17 +98,17 @@ void mtk_clk_unregister_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+>  	for (i = num; i > 0; i--) {
+>  		const struct mtk_fixed_clk *rc = &clks[i - 1];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[rc->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[rc->id]))
+>  			continue;
+>  
+> -		clk_unregister_fixed_rate(clk_data->clks[rc->id]);
+> -		clk_data->clks[rc->id] = ERR_PTR(-ENOENT);
+> +		clk_unregister_fixed_rate(clk_data->hws[rc->id]->clk);
+> +		clk_data->hws[rc->id] = ERR_PTR(-ENOENT);
+>  	}
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_clk_unregister_fixed_clks);
+>  
+>  int mtk_clk_register_factors(const struct mtk_fixed_factor *clks, int num,
+> -			     struct clk_onecell_data *clk_data)
+> +			     struct clk_hw_onecell_data *clk_data)
+>  {
+>  	int i;
+>  	struct clk *clk;
+> @@ -119,7 +119,7 @@ int mtk_clk_register_factors(const struct mtk_fixed_factor *clks, int num,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_fixed_factor *ff = &clks[i];
+>  
+> -		if (!IS_ERR_OR_NULL(clk_data->clks[ff->id])) {
+> +		if (!IS_ERR_OR_NULL(clk_data->hws[ff->id])) {
+>  			pr_warn("Trying to register duplicate clock ID: %d\n", ff->id);
+>  			continue;
+>  		}
+> @@ -132,7 +132,7 @@ int mtk_clk_register_factors(const struct mtk_fixed_factor *clks, int num,
+>  			goto err;
+>  		}
+>  
+> -		clk_data->clks[ff->id] = clk;
+> +		clk_data->hws[ff->id] = __clk_get_hw(clk);
+>  	}
+>  
+>  	return 0;
+> @@ -141,11 +141,11 @@ int mtk_clk_register_factors(const struct mtk_fixed_factor *clks, int num,
+>  	while (--i >= 0) {
+>  		const struct mtk_fixed_factor *ff = &clks[i];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[ff->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[ff->id]))
+>  			continue;
+>  
+> -		clk_unregister_fixed_factor(clk_data->clks[ff->id]);
+> -		clk_data->clks[ff->id] = ERR_PTR(-ENOENT);
+> +		clk_unregister_fixed_factor(clk_data->hws[ff->id]->clk);
+> +		clk_data->hws[ff->id] = ERR_PTR(-ENOENT);
+>  	}
+>  
+>  	return PTR_ERR(clk);
+> @@ -153,7 +153,7 @@ int mtk_clk_register_factors(const struct mtk_fixed_factor *clks, int num,
+>  EXPORT_SYMBOL_GPL(mtk_clk_register_factors);
+>  
+>  void mtk_clk_unregister_factors(const struct mtk_fixed_factor *clks, int num,
+> -				struct clk_onecell_data *clk_data)
+> +				struct clk_hw_onecell_data *clk_data)
+>  {
+>  	int i;
+>  
+> @@ -163,11 +163,11 @@ void mtk_clk_unregister_factors(const struct mtk_fixed_factor *clks, int num,
+>  	for (i = num; i > 0; i--) {
+>  		const struct mtk_fixed_factor *ff = &clks[i - 1];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[ff->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[ff->id]))
+>  			continue;
+>  
+> -		clk_unregister_fixed_factor(clk_data->clks[ff->id]);
+> -		clk_data->clks[ff->id] = ERR_PTR(-ENOENT);
+> +		clk_unregister_fixed_factor(clk_data->hws[ff->id]->clk);
+> +		clk_data->hws[ff->id] = ERR_PTR(-ENOENT);
+>  	}
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_clk_unregister_factors);
+> @@ -287,7 +287,7 @@ static void mtk_clk_unregister_composite(struct clk *clk)
+>  
+>  int mtk_clk_register_composites(const struct mtk_composite *mcs, int num,
+>  				void __iomem *base, spinlock_t *lock,
+> -				struct clk_onecell_data *clk_data)
+> +				struct clk_hw_onecell_data *clk_data)
+>  {
+>  	struct clk *clk;
+>  	int i;
+> @@ -298,7 +298,7 @@ int mtk_clk_register_composites(const struct mtk_composite *mcs, int num,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_composite *mc = &mcs[i];
+>  
+> -		if (!IS_ERR_OR_NULL(clk_data->clks[mc->id])) {
+> +		if (!IS_ERR_OR_NULL(clk_data->hws[mc->id])) {
+>  			pr_warn("Trying to register duplicate clock ID: %d\n",
+>  				mc->id);
+>  			continue;
+> @@ -311,7 +311,7 @@ int mtk_clk_register_composites(const struct mtk_composite *mcs, int num,
+>  			goto err;
+>  		}
+>  
+> -		clk_data->clks[mc->id] = clk;
+> +		clk_data->hws[mc->id] = __clk_get_hw(clk);
+>  	}
+>  
+>  	return 0;
+> @@ -320,11 +320,11 @@ int mtk_clk_register_composites(const struct mtk_composite *mcs, int num,
+>  	while (--i >= 0) {
+>  		const struct mtk_composite *mc = &mcs[i];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[mcs->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[mcs->id]))
+>  			continue;
+>  
+> -		mtk_clk_unregister_composite(clk_data->clks[mc->id]);
+> -		clk_data->clks[mc->id] = ERR_PTR(-ENOENT);
+> +		mtk_clk_unregister_composite(clk_data->hws[mc->id]->clk);
+> +		clk_data->hws[mc->id] = ERR_PTR(-ENOENT);
+>  	}
+>  
+>  	return PTR_ERR(clk);
+> @@ -332,7 +332,7 @@ int mtk_clk_register_composites(const struct mtk_composite *mcs, int num,
+>  EXPORT_SYMBOL_GPL(mtk_clk_register_composites);
+>  
+>  void mtk_clk_unregister_composites(const struct mtk_composite *mcs, int num,
+> -				   struct clk_onecell_data *clk_data)
+> +				   struct clk_hw_onecell_data *clk_data)
+>  {
+>  	int i;
+>  
+> @@ -342,18 +342,18 @@ void mtk_clk_unregister_composites(const struct mtk_composite *mcs, int num,
+>  	for (i = num; i > 0; i--) {
+>  		const struct mtk_composite *mc = &mcs[i - 1];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[mc->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[mc->id]))
+>  			continue;
+>  
+> -		mtk_clk_unregister_composite(clk_data->clks[mc->id]);
+> -		clk_data->clks[mc->id] = ERR_PTR(-ENOENT);
+> +		mtk_clk_unregister_composite(clk_data->hws[mc->id]->clk);
+> +		clk_data->hws[mc->id] = ERR_PTR(-ENOENT);
+>  	}
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_clk_unregister_composites);
+>  
+>  int mtk_clk_register_dividers(const struct mtk_clk_divider *mcds, int num,
+>  			      void __iomem *base, spinlock_t *lock,
+> -			      struct clk_onecell_data *clk_data)
+> +			      struct clk_hw_onecell_data *clk_data)
+>  {
+>  	struct clk *clk;
+>  	int i;
+> @@ -364,7 +364,7 @@ int mtk_clk_register_dividers(const struct mtk_clk_divider *mcds, int num,
+>  	for (i = 0; i <  num; i++) {
+>  		const struct mtk_clk_divider *mcd = &mcds[i];
+>  
+> -		if (!IS_ERR_OR_NULL(clk_data->clks[mcd->id])) {
+> +		if (!IS_ERR_OR_NULL(clk_data->hws[mcd->id])) {
+>  			pr_warn("Trying to register duplicate clock ID: %d\n",
+>  				mcd->id);
+>  			continue;
+> @@ -379,7 +379,7 @@ int mtk_clk_register_dividers(const struct mtk_clk_divider *mcds, int num,
+>  			goto err;
+>  		}
+>  
+> -		clk_data->clks[mcd->id] = clk;
+> +		clk_data->hws[mcd->id] = __clk_get_hw(clk);
+>  	}
+>  
+>  	return 0;
+> @@ -388,18 +388,18 @@ int mtk_clk_register_dividers(const struct mtk_clk_divider *mcds, int num,
+>  	while (--i >= 0) {
+>  		const struct mtk_clk_divider *mcd = &mcds[i];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[mcd->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[mcd->id]))
+>  			continue;
+>  
+> -		mtk_clk_unregister_composite(clk_data->clks[mcd->id]);
+> -		clk_data->clks[mcd->id] = ERR_PTR(-ENOENT);
+> +		mtk_clk_unregister_composite(clk_data->hws[mcd->id]->clk);
+> +		clk_data->hws[mcd->id] = ERR_PTR(-ENOENT);
+>  	}
+>  
+>  	return PTR_ERR(clk);
+>  }
+>  
+>  void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
+> -				 struct clk_onecell_data *clk_data)
+> +				 struct clk_hw_onecell_data *clk_data)
+>  {
+>  	int i;
+>  
+> @@ -409,18 +409,18 @@ void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
+>  	for (i = num; i > 0; i--) {
+>  		const struct mtk_clk_divider *mcd = &mcds[i - 1];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[mcd->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[mcd->id]))
+>  			continue;
+>  
+> -		clk_unregister_divider(clk_data->clks[mcd->id]);
+> -		clk_data->clks[mcd->id] = ERR_PTR(-ENOENT);
+> +		clk_unregister_divider(clk_data->hws[mcd->id]->clk);
+> +		clk_data->hws[mcd->id] = ERR_PTR(-ENOENT);
+>  	}
+>  }
+>  
+>  int mtk_clk_simple_probe(struct platform_device *pdev)
+>  {
+>  	const struct mtk_clk_desc *mcd;
+> -	struct clk_onecell_data *clk_data;
+> +	struct clk_hw_onecell_data *clk_data;
+>  	struct device_node *node = pdev->dev.of_node;
+>  	int r;
+>  
+> @@ -436,7 +436,7 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+>  	if (r)
+>  		goto free_data;
+>  
+> -	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> +	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+>  	if (r)
+>  		goto unregister_clks;
+>  
+> @@ -454,7 +454,7 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+>  int mtk_clk_simple_remove(struct platform_device *pdev)
+>  {
+>  	const struct mtk_clk_desc *mcd = of_device_get_match_data(&pdev->dev);
+> -	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
+> +	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+>  	struct device_node *node = pdev->dev.of_node;
+>  
+>  	of_clk_del_provider(node);
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index 787fdeb1bd93..e736420170a2 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -35,9 +35,9 @@ struct mtk_fixed_clk {
+>  	}
+>  
+>  int mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+> -				struct clk_onecell_data *clk_data);
+> +				struct clk_hw_onecell_data *clk_data);
+>  void mtk_clk_unregister_fixed_clks(const struct mtk_fixed_clk *clks, int num,
+> -				   struct clk_onecell_data *clk_data);
+> +				   struct clk_hw_onecell_data *clk_data);
+>  
+>  struct mtk_fixed_factor {
+>  	int id;
+> @@ -56,9 +56,9 @@ struct mtk_fixed_factor {
+>  	}
+>  
+>  int mtk_clk_register_factors(const struct mtk_fixed_factor *clks, int num,
+> -			     struct clk_onecell_data *clk_data);
+> +			     struct clk_hw_onecell_data *clk_data);
+>  void mtk_clk_unregister_factors(const struct mtk_fixed_factor *clks, int num,
+> -				struct clk_onecell_data *clk_data);
+> +				struct clk_hw_onecell_data *clk_data);
+>  
+>  struct mtk_composite {
+>  	int id;
+> @@ -149,9 +149,9 @@ struct mtk_composite {
+>  
+>  int mtk_clk_register_composites(const struct mtk_composite *mcs, int num,
+>  				void __iomem *base, spinlock_t *lock,
+> -				struct clk_onecell_data *clk_data);
+> +				struct clk_hw_onecell_data *clk_data);
+>  void mtk_clk_unregister_composites(const struct mtk_composite *mcs, int num,
+> -				   struct clk_onecell_data *clk_data);
+> +				   struct clk_hw_onecell_data *clk_data);
+>  
+>  struct mtk_clk_divider {
+>  	int id;
+> @@ -177,9 +177,9 @@ struct mtk_clk_divider {
+>  
+>  int mtk_clk_register_dividers(const struct mtk_clk_divider *mcds, int num,
+>  			      void __iomem *base, spinlock_t *lock,
+> -			      struct clk_onecell_data *clk_data);
+> +			      struct clk_hw_onecell_data *clk_data);
+>  void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
+> -				 struct clk_onecell_data *clk_data);
+> +				 struct clk_hw_onecell_data *clk_data);
+>  
+>  struct clk_hw_onecell_data *mtk_alloc_clk_data(unsigned int clk_num);
+>  void mtk_free_clk_data(struct clk_hw_onecell_data *clk_data);
+> diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+> index 21ad5a4afd65..2f47e59cc528 100644
+> --- a/drivers/clk/mediatek/clk-mux.c
+> +++ b/drivers/clk/mediatek/clk-mux.c
+> @@ -193,7 +193,7 @@ static void mtk_clk_unregister_mux(struct clk *clk)
+>  int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+>  			   int num, struct device_node *node,
+>  			   spinlock_t *lock,
+> -			   struct clk_onecell_data *clk_data)
+> +			   struct clk_hw_onecell_data *clk_data)
+>  {
+>  	struct regmap *regmap;
+>  	struct clk *clk;
+> @@ -208,7 +208,7 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_mux *mux = &muxes[i];
+>  
+> -		if (!IS_ERR_OR_NULL(clk_data->clks[mux->id])) {
+> +		if (!IS_ERR_OR_NULL(clk_data->hws[mux->id])) {
+>  			pr_warn("%pOF: Trying to register duplicate clock ID: %d\n",
+>  				node, mux->id);
+>  			continue;
+> @@ -221,7 +221,7 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+>  			goto err;
+>  		}
+>  
+> -		clk_data->clks[mux->id] = clk;
+> +		clk_data->hws[mux->id] = __clk_get_hw(clk);
+>  	}
+>  
+>  	return 0;
+> @@ -230,11 +230,11 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+>  	while (--i >= 0) {
+>  		const struct mtk_mux *mux = &muxes[i];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[mux->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[mux->id]))
+>  			continue;
+>  
+> -		mtk_clk_unregister_mux(clk_data->clks[mux->id]);
+> -		clk_data->clks[mux->id] = ERR_PTR(-ENOENT);
+> +		mtk_clk_unregister_mux(clk_data->hws[mux->id]->clk);
+> +		clk_data->hws[mux->id] = ERR_PTR(-ENOENT);
+>  	}
+>  
+>  	return PTR_ERR(clk);
+> @@ -242,7 +242,7 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+>  EXPORT_SYMBOL_GPL(mtk_clk_register_muxes);
+>  
+>  void mtk_clk_unregister_muxes(const struct mtk_mux *muxes, int num,
+> -			      struct clk_onecell_data *clk_data)
+> +			      struct clk_hw_onecell_data *clk_data)
+>  {
+>  	int i;
+>  
+> @@ -252,11 +252,11 @@ void mtk_clk_unregister_muxes(const struct mtk_mux *muxes, int num,
+>  	for (i = num; i > 0; i--) {
+>  		const struct mtk_mux *mux = &muxes[i - 1];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[mux->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[mux->id]))
+>  			continue;
+>  
+> -		mtk_clk_unregister_mux(clk_data->clks[mux->id]);
+> -		clk_data->clks[mux->id] = ERR_PTR(-ENOENT);
+> +		mtk_clk_unregister_mux(clk_data->hws[mux->id]->clk);
+> +		clk_data->hws[mux->id] = ERR_PTR(-ENOENT);
+>  	}
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_clk_unregister_muxes);
+> diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
+> index 903a3c937959..6539c58f5d7d 100644
+> --- a/drivers/clk/mediatek/clk-mux.h
+> +++ b/drivers/clk/mediatek/clk-mux.h
+> @@ -11,7 +11,7 @@
+>  #include <linux/types.h>
+>  
+>  struct clk;
+> -struct clk_onecell_data;
+> +struct clk_hw_onecell_data;
+>  struct clk_ops;
+>  struct device_node;
+>  
+> @@ -84,9 +84,9 @@ extern const struct clk_ops mtk_mux_gate_clr_set_upd_ops;
+>  int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+>  			   int num, struct device_node *node,
+>  			   spinlock_t *lock,
+> -			   struct clk_onecell_data *clk_data);
+> +			   struct clk_hw_onecell_data *clk_data);
+>  
+>  void mtk_clk_unregister_muxes(const struct mtk_mux *muxes, int num,
+> -			      struct clk_onecell_data *clk_data);
+> +			      struct clk_hw_onecell_data *clk_data);
+>  
+>  #endif /* __DRV_CLK_MTK_MUX_H */
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index ccaa2085ab4d..89350a1a158c 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -379,7 +379,7 @@ static void mtk_clk_unregister_pll(struct clk *clk)
+>  
+>  int mtk_clk_register_plls(struct device_node *node,
+>  			  const struct mtk_pll_data *plls, int num_plls,
+> -			  struct clk_onecell_data *clk_data)
+> +			  struct clk_hw_onecell_data *clk_data)
+>  {
+>  	void __iomem *base;
+>  	int i;
+> @@ -394,7 +394,7 @@ int mtk_clk_register_plls(struct device_node *node,
+>  	for (i = 0; i < num_plls; i++) {
+>  		const struct mtk_pll_data *pll = &plls[i];
+>  
+> -		if (!IS_ERR_OR_NULL(clk_data->clks[pll->id])) {
+> +		if (!IS_ERR_OR_NULL(clk_data->hws[pll->id])) {
+>  			pr_warn("%pOF: Trying to register duplicate clock ID: %d\n",
+>  				node, pll->id);
+>  			continue;
+> @@ -407,7 +407,7 @@ int mtk_clk_register_plls(struct device_node *node,
+>  			goto err;
+>  		}
+>  
+> -		clk_data->clks[pll->id] = clk;
+> +		clk_data->hws[pll->id] = __clk_get_hw(clk);
+>  	}
+>  
+>  	return 0;
+> @@ -416,8 +416,8 @@ int mtk_clk_register_plls(struct device_node *node,
+>  	while (--i >= 0) {
+>  		const struct mtk_pll_data *pll = &plls[i];
+>  
+> -		mtk_clk_unregister_pll(clk_data->clks[pll->id]);
+> -		clk_data->clks[pll->id] = ERR_PTR(-ENOENT);
+> +		mtk_clk_unregister_pll(clk_data->hws[pll->id]->clk);
+> +		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
+>  	}
+>  
+>  	iounmap(base);
+> @@ -426,17 +426,16 @@ int mtk_clk_register_plls(struct device_node *node,
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
+>  
+> -static __iomem void *mtk_clk_pll_get_base(struct clk *clk,
+> +static __iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
+>  					  const struct mtk_pll_data *data)
+>  {
+> -	struct clk_hw *hw = __clk_get_hw(clk);
+>  	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+>  
+>  	return pll->base_addr - data->reg;
+>  }
+>  
+>  void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+> -			     struct clk_onecell_data *clk_data)
+> +			     struct clk_hw_onecell_data *clk_data)
+>  {
+>  	__iomem void *base = NULL;
+>  	int i;
+> @@ -447,7 +446,7 @@ void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+>  	for (i = num_plls; i > 0; i--) {
+>  		const struct mtk_pll_data *pll = &plls[i - 1];
+>  
+> -		if (IS_ERR_OR_NULL(clk_data->clks[pll->id]))
+> +		if (IS_ERR_OR_NULL(clk_data->hws[pll->id]))
+>  			continue;
+>  
+>  		/*
+> @@ -456,10 +455,10 @@ void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+>  		 * pointer to the I/O region base address. We have to fetch
+>  		 * it from one of the registered clks.
+>  		 */
+> -		base = mtk_clk_pll_get_base(clk_data->clks[pll->id], pll);
+> +		base = mtk_clk_pll_get_base(clk_data->hws[pll->id], pll);
+>  
+> -		mtk_clk_unregister_pll(clk_data->clks[pll->id]);
+> -		clk_data->clks[pll->id] = ERR_PTR(-ENOENT);
+> +		mtk_clk_unregister_pll(clk_data->hws[pll->id]->clk);
+> +		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
+>  	}
+>  
+>  	iounmap(base);
+> diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
+> index bf06e44caef9..fe3199715688 100644
+> --- a/drivers/clk/mediatek/clk-pll.h
+> +++ b/drivers/clk/mediatek/clk-pll.h
+> @@ -10,7 +10,7 @@
+>  #include <linux/types.h>
+>  
+>  struct clk_ops;
+> -struct clk_onecell_data;
+> +struct clk_hw_onecell_data;
+>  struct device_node;
+>  
+>  struct mtk_pll_div_table {
+> @@ -50,8 +50,8 @@ struct mtk_pll_data {
+>  
+>  int mtk_clk_register_plls(struct device_node *node,
+>  			  const struct mtk_pll_data *plls, int num_plls,
+> -			  struct clk_onecell_data *clk_data);
+> +			  struct clk_hw_onecell_data *clk_data);
+>  void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+> -			     struct clk_onecell_data *clk_data);
+> +			     struct clk_hw_onecell_data *clk_data);
+>  
+>  #endif /* __DRV_CLK_MTK_PLL_H */
+> -- 
+> 2.36.0.512.ge40c2bad7a-goog
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
