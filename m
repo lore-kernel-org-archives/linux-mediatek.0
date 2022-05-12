@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C39DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 05:21:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88652C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 05:27:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zJPdab5YCClxm5d/vTMsTiiOg8jtxnjMdxSfrqkq0WA=; b=ONc1f9wOyXExhj
-	ckQPqohvvym/SV5s8Ms+FstXuEIK3/42UMwXz6eB89wX6UUDh+zXEdwq5X6bbre749OYRCrs89zhq
-	0pT43TfSKvXUtEOyglT887AQlRfkAIF0CSDe57yBuW1cGlnrkkeKg+AjKztrLCSnuvFWK4Asft90z
-	GY/Xn2Ri5Xh30lsbwyJEOa3hPHMeLouXparuKEDQEN19s2zZ7gzaX936TLUGR5TUebulcUrW3f1Oa
-	6bjydhBB+QaGz18S+8iH8OYdtQ5uYETYe5SkqEon47GdZsuQCpcm9DUVtDpLM+9xXqSLkmOQZcM8A
-	6iYUoaJnozACYLD6NLSw==;
+	List-Owner; bh=1BlR1R4rujDaUm7GANhbPyARyzJiUGR7DjAdWh5YwCo=; b=ZLiBNip+/+8eNw
+	ASgmbHrrECEeaKa+RhceH+1ONBmHTbxcvmmzIdWOpbPpvZXUCxYRirtylPcZdqVrFttJonvQ1DHLe
+	TWn6jfOco6ThmexbYYXWv0UEjcg5ZlTo3e2xFZSMRrcNMWv3t2/mxfNxEulmLaUoQ1z54Ydw1dsHT
+	L/Bd3NaseX2ra+D8u2RdX1XhKNhs4l4if/gpLrNjWAFB3hCmOmoGi0TsLyx6Wsz8veZwjEBuo19oY
+	7Od+EwcU5QgsCgIhOjLXi/t/WPqdHDxhOGJfdG1He5EnLAd5VJmeWiAI5+3S1wkdMeE4HQ2EczTr7
+	hVRaJxTU3kTDw73S7L3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np1GE-00A3f6-Cw; Thu, 12 May 2022 05:21:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1np1MS-00A570-IR; Thu, 12 May 2022 05:27:40 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np1GB-00A3eC-IM; Thu, 12 May 2022 05:21:13 +0000
-X-UUID: 5ad816581e5a458d919a1ed0a89c0ad7-20220511
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:e3428830-cc9a-4736-a0fd-29d5f9a9437e, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:582427f6-13a6-4067-b017-3b2864319134,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 5ad816581e5a458d919a1ed0a89c0ad7-20220511
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 207780230; Wed, 11 May 2022 22:20:55 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 22:20:53 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Thu, 12 May 2022 13:20:51 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 12 May 2022 13:20:51 +0800
-Message-ID: <a7d3f0d90e45e7845735663d07a8c505113fd789.camel@mediatek.com>
-Subject: Re: [PATCH v1, 1/1] drm/mediatek: fixup crtc event null pointer issue
-From: CK Hu <ck.hu@mediatek.com>
-To: yongqiang.niu <yongqiang.niu@mediatek.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>
-CC: <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, David Airlie
- <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Dennis YC
- Hsieh" <dennis-yc.hsieh@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, <linux-mediatek@lists.infradead.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
-Date: Thu, 12 May 2022 13:20:51 +0800
-In-Reply-To: <07e3873240945e8f352ba252c0b9ca727a1a3c2e.camel@mediatek.com>
-References: <20220314074239.28507-1-yongqiang.niu@mediatek.com>
- <20220314074239.28507-2-yongqiang.niu@mediatek.com>
- <9f14d6a0aa782a8f6c3e7044fe90d74b80d17ed0.camel@mediatek.com>
- <07e3873240945e8f352ba252c0b9ca727a1a3c2e.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1np1MP-00A55e-Bk
+ for linux-mediatek@lists.infradead.org; Thu, 12 May 2022 05:27:38 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id q76so3614361pgq.10
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 May 2022 22:27:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=gRX0Ygzn0dg0e+70kr3m3IwBrYrMdQ1DQ/I+WXCJSvg=;
+ b=qJ4KiVHH2rMmMzxaLh80DfGXnszrMQ43AKcvzJ4sxmCmOQHxbuHKloqpOXBMA2gFzq
+ JctWdsEodVTpAPAmqX2PujOnIsHVmElZ3U5bWU7FgIFINRyDDriwR843JzqXV3BggJnj
+ 8cabiBskEd25W/8zfQbOVn4F2Wd88kW8sWZrOn3KWTaaIu12aPfYUTjjKLpkwb/I6dzk
+ 3RRViu4JGHvu7cHbr7Lgf9d0RDAuBuI7WGhc2/p5n/34xtfhGROPg81entmzf/nT2Fl6
+ rNrwqIKxIX9rA0NZhJKABgxnVS09ra14kvAN1JeZD4CA/xUHw7LjlxgyQogLAWb/QF8G
+ 9dNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=gRX0Ygzn0dg0e+70kr3m3IwBrYrMdQ1DQ/I+WXCJSvg=;
+ b=WisETBCFdZTu5bWXXR+YpTWyLDh5ZnfpPLESq+HK9Jt+yzNJmEFDL/YIbQ1hdoZoO5
+ 9n8Ci8MQboD2FWBgs7VtVn2+pQ7PjLWcamKpTOrWAHu/6JtVrNE1z18DPSLrrcOoZVYI
+ KfzndwR5Y2mO6jhrGCpFt7FEyBPcOSO5o3szWt+MZAHhQ9P/UeeeDO89H46OTkjtLvSU
+ UDkJJrw6y2ZF+pp20X+nSpoqIuWL7LdDGb6zduuZ8ceVWJgMuxayEV0HE/LF2l7kBRxy
+ 5TXUTn2GashaIWIeZB0a2BVNY3ANSy1XiAxLpsMVy4DS/q7++sH9AwMo0GhqnSqqAAcW
+ 8G9g==
+X-Gm-Message-State: AOAM533TYh6d664bOs++IdO4YF58ts0cCSg4TPwzDP+yQjz5DdmHYZ1S
+ /eFqbbRyk8aDFPjY9NjbKz6uWg==
+X-Google-Smtp-Source: ABdhPJwH8eYDeF7eTsAmzfIYKUwyKfpVinxgHer5RNdfSqN+NQK5HaJzocJuaIgksr1FKM5eMoFmCQ==
+X-Received: by 2002:a63:3144:0:b0:3c1:457c:bc18 with SMTP id
+ x65-20020a633144000000b003c1457cbc18mr23993540pgx.582.1652333255605; 
+ Wed, 11 May 2022 22:27:35 -0700 (PDT)
+Received: from localhost ([122.162.234.2]) by smtp.gmail.com with ESMTPSA id
+ p6-20020a17090a930600b001cd4989fed3sm862658pjo.31.2022.05.11.22.27.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 May 2022 22:27:34 -0700 (PDT)
+Date: Thu, 12 May 2022 10:57:32 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: rafael@kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
+ matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
+ roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com,
+ angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v6 00/10] cpufreq: mediatek: Cleanup and support MT8183
+ and MT8186
+Message-ID: <20220512052732.iqphgpveoyrqjlqg@vireshk-i7>
+References: <20220505115226.20130-1-rex-bc.chen@mediatek.com>
+ <20220506042004.hqzpb66shak4y7rz@vireshk-i7>
+ <86851bd03128cc61082d516ebff929d3637063cb.camel@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <86851bd03128cc61082d516ebff929d3637063cb.camel@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_222111_637506_352A5909 
-X-CRM114-Status: GOOD (  26.87  )
+X-CRM114-CacheID: sfid-20220511_222737_473252_16F459D7 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +98,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Yongqiang:
+On 06-05-22, 14:32, Rex-BC Chen wrote:
+> As for rest patch:
+> The cci series [1] is still under reviewing and it depends on chanwoo's
+> series [2].
+> Therefore, I think it won't be so quick to be acked for these patches
+> in my series.
 
-On Wed, 2022-05-11 at 18:08 +0800, yongqiang.niu wrote:
-> On Mon, 2022-03-28 at 17:34 +0800, CK Hu wrote:
-> > Hi, Yongqiang:
-> > 
-> > On Mon, 2022-03-14 at 15:42 +0800, Yongqiang Niu wrote:
-> > > if crtc event is null pointer, do not send vblank event
-> > 
-> > This is a bug-fix, so add a Fixes tag here.
-> 
-> Fixes tag will be added in next version.
-> > 
-> > > 
-> > > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 +++
-> > >  1 file changed, 3 insertions(+)
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > > b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > > index d661edf7e0fe..265fed446628 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > > @@ -92,6 +92,9 @@ static void
-> > > mtk_drm_crtc_finish_page_flip(struct
-> > > mtk_drm_crtc *mtk_crtc)
-> > >  	struct drm_crtc *crtc = &mtk_crtc->base;
-> > >  	unsigned long flags;
-> > >  
-> > > +	if (!mtk_crtc->event)
-> > > +		return;
-> > > +
-> > >  	spin_lock_irqsave(&crtc->dev->event_lock, flags);
-> > >  	drm_crtc_send_vblank_event(crtc, mtk_crtc->event);
-> > 
-> > I think pending_needs_vblank is used to protect this situation. It
-> > seems that pending_needs_vblank should be protected by critical
-> > section.
-> > 
-> > Regards,
-> > CK
-> 
-> actually, in the NG case pending_needs_vblank is true, but crtc-
-> >event
-> is null.
+I have applied 1, 6-7 now. I hope it is safe to apply them ? What about other
+three, can you get them acked now ?
 
-It looks like that other driver access an invalid address which store
-mtk_crtc->event, so mediatek drm driver has no bug and we should fix
-the bug from other driver. This work around does not fix bug but just
-hide the bug. So try to fix this bug in other driver.
-
-Regards,
-CK
-
-> 
-> > 
-> > >  	drm_crtc_vblank_put(crtc);
-> > 
-> > 
-> 
-> 
-
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
