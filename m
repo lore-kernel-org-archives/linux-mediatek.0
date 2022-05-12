@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB1FEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 08:23:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD096C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 08:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XhykNSOZiD2fWlpKAMU38/+4FX0FAJLWr9VqYJvMX0A=; b=eKxE/kF/zRlSON
-	ruJsVjPcIr8bz8T+3efuPdjZGRWNsYaeq2h+E3ubtvQIcdQA8TWsxEoO7gTtGM4m7W89z7YrgemTU
-	yN24jNZzimJc5J1o7HbMKlGq6zItu9DteYz6NEzQK/8C53S9lofU4H4rFwMwFc4I30J39ZNoPy95P
-	NFh+YjRWi2WZKWKFAOCSG1+UfR0OafYm/47KZdKo5P+qhlCfXxXHIf3MSxhWGIkP4R0Ektsm9IKx0
-	v+4Anp5wWb7n0DY2oxHtnnU9LKM/WmxKyPLaIZqMVmi8Ip5u/wXeGzGuqTzMXb9cMvjKhbiINmRUQ
-	fvPaEX8bCGPUsGJJ8GMQ==;
+	List-Owner; bh=nZ21fm2LlxMJoLZKtzg+8sdBsqxlzIn3TSTZGnjxzsY=; b=4uW+8anmNWz/FV
+	qZtwMdceRP8N5NzxKmO0aWLD0/+0E2ik9T/oGn2AZUTgRWtSaQlSEQrBmJkYIWIWnintE737qEfmX
+	/Io1wP7j1QcW+K94qp0uCUMTqp8T4p6UgNoIg0RWbW0I0qSDntczsfgo+gdsy82QwYt1GdVzzZmZ1
+	hBjJyUntMEm2T/z4BgpxAW+UQS00QyLD1RakVaZFj4zwKTtCTxqH8nJJfzogTe+Nuq36Gv5pSsBM4
+	lC0taxAvBSYrrRNQ7FJeqUm0l9j6L/aV4lqbIPWXKbWTadBS3YS11RNXZRalu85ntE3JqNSHOa2F5
+	CLKRMvPHOJskh82qZIrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np46O-00Avp6-G9; Thu, 12 May 2022 08:23:16 +0000
+	id 1np4OO-00B1Oe-MC; Thu, 12 May 2022 08:41:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np45k-00AvXT-CL; Thu, 12 May 2022 08:22:41 +0000
-X-UUID: 75bcdef412f24139beb3775d5ebbc5a2-20220512
+ id 1np4OL-00B1Nn-Vq; Thu, 12 May 2022 08:41:51 +0000
+X-UUID: e0870678e8864ee6b0715dac7342a78a-20220512
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:5506c1ae-3a8e-4a26-b120-430fe1ef473b, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:b9761d5e-4bf6-4232-b205-77e019610f33, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-20
-X-CID-META: VersionHash:faefae9, CLOUDID:8275f4f1-ab23-4aed-a67b-f96514452486,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:da300ba7-eab7-4b74-a74d-5359964535a9,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 75bcdef412f24139beb3775d5ebbc5a2-20220512
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
+X-UUID: e0870678e8864ee6b0715dac7342a78a-20220512
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 953129980; Thu, 12 May 2022 01:22:30 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 May 2022 01:22:28 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Thu, 12 May 2022 16:22:27 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 12 May 2022 16:22:27 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
- Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Javier Martinez Canillas <javierm@redhat.com>, "Thomas
- Zimmermann" <tzimmermann@suse.de>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Sudeep Holla
- <sudeep.holla@arm.com>, Michal Suchanek <msuchanek@suse.de>, Shuai Xue
- <xueshuai@linux.alibaba.com>, Simon Trimmer <simont@opensource.cirrus.com>,
- Cristian Marussi <cristian.marussi@arm.com>, TingHan Shen
- <tinghan.shen@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Borislav Petkov
- <bp@suse.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, John Stultz
- <john.stultz@linaro.org>, Curtis Malainey <cujomalainey@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>, YC Hung <yc.hung@mediatek.com>, 
- Tzung-Bi Shih <tzungbi@google.com>, Yang Yingliang
- <yangyingliang@huawei.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
- =?UTF-8?q?P=C3=A9ter=20Ujfalusi?= <peter.ujfalusi@linux.intel.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <sound-open-firmware@alsa-project.org>, 
- <alsa-devel@alsa-project.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Allen-KH Cheng
- <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v9 2/3] ASoC: SOF: mediatek: Add ipc support for mt8195
-Date: Thu, 12 May 2022 16:22:14 +0800
-Message-ID: <20220512082215.3018-3-tinghan.shen@mediatek.com>
+ with ESMTP id 1875032825; Thu, 12 May 2022 01:41:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 01:41:42 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 12 May 2022 16:41:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 12 May 2022 16:41:40 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Alexandre Courbot
+ <acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+ <pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+ <randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+ <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+ <river.cheng@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <cellopoint.kai@gmail.com>
+Subject: [PATCH v18 2/6] soc: mediatek: mutex: add 8183 MUTEX MOD settings for
+ MDP
+Date: Thu, 12 May 2022 16:41:35 +0800
+Message-ID: <20220512084139.15086-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220512082215.3018-1-tinghan.shen@mediatek.com>
-References: <20220512082215.3018-1-tinghan.shen@mediatek.com>
+In-Reply-To: <20220512084139.15086-1-moudy.ho@mediatek.com>
+References: <20220512084139.15086-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_012236_527722_F18D5A1A 
-X-CRM114-Status: GOOD (  30.05  )
+X-CRM114-CacheID: sfid-20220512_014150_071275_FB8C4DA9 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,268 +97,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+For the purpose of module independence, related settings should be moved
+from MDP to the corresponding driver.
+This patch adds 8183 MUTEX MOD settings for MDP.
 
-This patch adds mt8195 IPC support by using mailbox.
-
-On mt8195 resource, there are two mboxes used to handle ipc request
-and reply. We create a mtk-adsp-ipc client device to request mbox
-controllers.
-
-Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- sound/soc/sof/mediatek/Kconfig         |   1 +
- sound/soc/sof/mediatek/adsp_helper.h   |  12 +--
- sound/soc/sof/mediatek/mt8195/mt8195.c | 138 ++++++++++++++++++++++++-
- 3 files changed, 140 insertions(+), 11 deletions(-)
+ drivers/soc/mediatek/mtk-mutex.c | 33 ++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/sound/soc/sof/mediatek/Kconfig b/sound/soc/sof/mediatek/Kconfig
-index f79e76a6f3c6..f1fa15c41891 100644
---- a/sound/soc/sof/mediatek/Kconfig
-+++ b/sound/soc/sof/mediatek/Kconfig
-@@ -33,6 +33,7 @@ config SND_SOC_SOF_MT8186
- config SND_SOC_SOF_MT8195
- 	tristate "SOF support for MT8195 audio DSP"
- 	select SND_SOC_SOF_MTK_COMMON
-+	depends on MTK_ADSP_IPC
- 	help
- 	  This adds support for Sound Open Firmware for Mediatek platforms
- 	  using the mt8195 processors.
-diff --git a/sound/soc/sof/mediatek/adsp_helper.h b/sound/soc/sof/mediatek/adsp_helper.h
-index f269a2b6c26a..4ab998756bbc 100644
---- a/sound/soc/sof/mediatek/adsp_helper.h
-+++ b/sound/soc/sof/mediatek/adsp_helper.h
-@@ -7,24 +7,22 @@
- #ifndef __MTK_ADSP_HELPER_H__
- #define __MTK_ADSP_HELPER_H__
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index a62ac1811419..92afdee14d43 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -80,6 +80,15 @@
+ #define MT8183_MUTEX_MOD_DISP_GAMMA0		16
+ #define MT8183_MUTEX_MOD_DISP_DITHER0		17
  
-+#include <linux/firmware/mediatek/mtk-adsp-ipc.h>
++#define MT8183_MUTEX_MOD_MDP_RDMA0		2
++#define MT8183_MUTEX_MOD_MDP_RSZ0		4
++#define MT8183_MUTEX_MOD_MDP_RSZ1		5
++#define MT8183_MUTEX_MOD_MDP_TDSHP0		6
++#define MT8183_MUTEX_MOD_MDP_WROT0		7
++#define MT8183_MUTEX_MOD_MDP_WDMA		8
++#define MT8183_MUTEX_MOD_MDP_AAL0		23
++#define MT8183_MUTEX_MOD_MDP_CCORR0		24
 +
- /*
-  * Global important adsp data structure.
-  */
--#define DSP_MBOX_NUM	3
--
- struct mtk_adsp_chip_info {
- 	phys_addr_t pa_sram;
- 	phys_addr_t pa_dram; /* adsp dram physical base */
- 	phys_addr_t pa_shared_dram; /* adsp dram physical base */
- 	phys_addr_t pa_cfgreg;
--	phys_addr_t pa_mboxreg[DSP_MBOX_NUM];
- 	u32 sramsize;
- 	u32 dramsize;
- 	u32 cfgregsize;
- 	void __iomem *va_sram; /* corresponding to pa_sram */
- 	void __iomem *va_dram; /* corresponding to pa_dram */
- 	void __iomem *va_cfgreg;
--	void __iomem *va_mboxreg[DSP_MBOX_NUM];
- 	void __iomem *shared_sram; /* part of  va_sram */
- 	void __iomem *shared_dram; /* part of  va_dram */
- 	phys_addr_t adsp_bootup_addr;
-@@ -42,10 +40,8 @@ struct mtk_adsp_chip_info {
- struct adsp_priv {
- 	struct device *dev;
- 	struct snd_sof_dev *sdev;
--
--	/* DSP IPC handler */
--	struct mbox_controller *adsp_mbox;
--
-+	struct mtk_adsp_ipc *dsp_ipc;
-+	struct platform_device *ipc_dev;
- 	struct mtk_adsp_chip_info *adsp;
- 	struct clk **clk;
- 	u32 (*ap2adsp_addr)(u32 addr, void *data);
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index ba13e4540f7a..f4b24afb6f75 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -12,6 +12,7 @@
- #include <linux/delay.h>
- #include <linux/firmware.h>
- #include <linux/io.h>
-+#include <linux/of_platform.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
-@@ -27,6 +28,99 @@
- #include "mt8195.h"
- #include "mt8195-clk.h"
+ #define MT8173_MUTEX_MOD_DISP_OVL0		11
+ #define MT8173_MUTEX_MOD_DISP_OVL1		12
+ #define MT8173_MUTEX_MOD_DISP_RDMA0		13
+@@ -245,6 +254,17 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_WDMA0] = MT8183_MUTEX_MOD_DISP_WDMA0,
+ };
  
-+static int mt8195_get_mailbox_offset(struct snd_sof_dev *sdev)
-+{
-+	return MBOX_OFFSET;
-+}
-+
-+static int mt8195_get_window_offset(struct snd_sof_dev *sdev, u32 id)
-+{
-+	return MBOX_OFFSET;
-+}
-+
-+static int mt8195_send_msg(struct snd_sof_dev *sdev,
-+			   struct snd_sof_ipc_msg *msg)
-+{
-+	struct adsp_priv *priv = sdev->pdata->hw_pdata;
-+
-+	sof_mailbox_write(sdev, sdev->host_box.offset, msg->msg_data,
-+			  msg->msg_size);
-+
-+	return mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_REQ, MTK_ADSP_IPC_OP_REQ);
-+}
-+
-+static void mt8195_get_reply(struct snd_sof_dev *sdev)
-+{
-+	struct snd_sof_ipc_msg *msg = sdev->msg;
-+	struct sof_ipc_reply reply;
-+	int ret = 0;
-+
-+	if (!msg) {
-+		dev_warn(sdev->dev, "unexpected ipc interrupt\n");
-+		return;
-+	}
-+
-+	/* get reply */
-+	sof_mailbox_read(sdev, sdev->host_box.offset, &reply, sizeof(reply));
-+	if (reply.error < 0) {
-+		memcpy(msg->reply_data, &reply, sizeof(reply));
-+		ret = reply.error;
-+	} else {
-+		/* reply has correct size? */
-+		if (reply.hdr.size != msg->reply_size) {
-+			dev_err(sdev->dev, "error: reply expected %zu got %u bytes\n",
-+				msg->reply_size, reply.hdr.size);
-+			ret = -EINVAL;
-+		}
-+
-+		/* read the message */
-+		if (msg->reply_size > 0)
-+			sof_mailbox_read(sdev, sdev->host_box.offset,
-+					 msg->reply_data, msg->reply_size);
-+	}
-+
-+	msg->reply_error = ret;
-+}
-+
-+static void mt8195_dsp_handle_reply(struct mtk_adsp_ipc *ipc)
-+{
-+	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->sdev->ipc_lock, flags);
-+	mt8195_get_reply(priv->sdev);
-+	snd_sof_ipc_reply(priv->sdev, 0);
-+	spin_unlock_irqrestore(&priv->sdev->ipc_lock, flags);
-+}
-+
-+static void mt8195_dsp_handle_request(struct mtk_adsp_ipc *ipc)
-+{
-+	struct adsp_priv *priv = mtk_adsp_ipc_get_data(ipc);
-+	u32 p; /* panic code */
-+	int ret;
-+
-+	/* Read the message from the debug box. */
-+	sof_mailbox_read(priv->sdev, priv->sdev->debug_box.offset + 4,
-+			 &p, sizeof(p));
-+
-+	/* Check to see if the message is a panic code 0x0dead*** */
-+	if ((p & SOF_IPC_PANIC_MAGIC_MASK) == SOF_IPC_PANIC_MAGIC) {
-+		snd_sof_dsp_panic(priv->sdev, p, true);
-+	} else {
-+		snd_sof_ipc_msgs_rx(priv->sdev);
-+
-+		/* tell DSP cmd is done */
-+		ret = mtk_adsp_ipc_send(priv->dsp_ipc, MTK_ADSP_IPC_RSP, MTK_ADSP_IPC_OP_RSP);
-+		if (ret)
-+			dev_err(priv->dev, "request send ipc failed");
-+	}
-+}
-+
-+static struct mtk_adsp_ipc_ops dsp_ops = {
-+	.handle_reply		= mt8195_dsp_handle_reply,
-+	.handle_request		= mt8195_dsp_handle_request,
++static const unsigned int mt8183_mutex_table_mod[MUTEX_TABLE_IDX_MAX] = {
++	[MUTEX_TABLE_IDX_MDP_RDMA0] = MT8183_MUTEX_MOD_MDP_RDMA0,
++	[MUTEX_TABLE_IDX_MDP_RSZ0] = MT8183_MUTEX_MOD_MDP_RSZ0,
++	[MUTEX_TABLE_IDX_MDP_RSZ1] = MT8183_MUTEX_MOD_MDP_RSZ1,
++	[MUTEX_TABLE_IDX_MDP_TDSHP0] = MT8183_MUTEX_MOD_MDP_TDSHP0,
++	[MUTEX_TABLE_IDX_MDP_WROT0] = MT8183_MUTEX_MOD_MDP_WROT0,
++	[MUTEX_TABLE_IDX_MDP_WDMA] = MT8183_MUTEX_MOD_MDP_WDMA,
++	[MUTEX_TABLE_IDX_MDP_AAL0] = MT8183_MUTEX_MOD_MDP_AAL0,
++	[MUTEX_TABLE_IDX_MDP_CCORR0] = MT8183_MUTEX_MOD_MDP_CCORR0,
 +};
 +
- static int platform_parse_resource(struct platform_device *pdev, void *data)
- {
- 	struct resource *mmio;
-@@ -285,15 +379,36 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
- 	}
+ static const unsigned int mt8186_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8186_MUTEX_MOD_DISP_AAL0,
+ 	[DDP_COMPONENT_CCORR] = MT8186_MUTEX_MOD_DISP_CCORR0,
+@@ -296,6 +316,17 @@ static const unsigned int mt8183_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
+ 	[MUTEX_SOF_DPI0] = MT8183_MUTEX_SOF_DPI0 | MT8183_MUTEX_EOF_DPI0,
+ };
  
- 	sdev->bar[DSP_REG_BAR] = priv->adsp->va_cfgreg;
--	sdev->bar[DSP_MBOX0_BAR] =  priv->adsp->va_mboxreg[0];
--	sdev->bar[DSP_MBOX1_BAR] =  priv->adsp->va_mboxreg[1];
--	sdev->bar[DSP_MBOX2_BAR] =  priv->adsp->va_mboxreg[2];
- 
- 	sdev->mmio_bar = SOF_FW_BLK_TYPE_SRAM;
- 	sdev->mailbox_bar = SOF_FW_BLK_TYPE_SRAM;
- 
-+	/* set default mailbox offset for FW ready message */
-+	sdev->dsp_box.offset = mt8195_get_mailbox_offset(sdev);
++static const unsigned int mt8183_mutex_table_sof[MUTEX_TABLE_IDX_MAX] = {
++	[MUTEX_TABLE_IDX_MDP_RDMA0] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_TABLE_IDX_MDP_RSZ0] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_TABLE_IDX_MDP_RSZ1] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_TABLE_IDX_MDP_TDSHP0] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_TABLE_IDX_MDP_WROT0] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_TABLE_IDX_MDP_WDMA] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_TABLE_IDX_MDP_AAL0] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_TABLE_IDX_MDP_CCORR0] = MUTEX_SOF_SINGLE_MODE,
++};
 +
-+	priv->ipc_dev = platform_device_register_data(&pdev->dev, "mtk-adsp-ipc",
-+						      PLATFORM_DEVID_NONE,
-+						      pdev, sizeof(*pdev));
-+	if (IS_ERR(priv->ipc_dev)) {
-+		ret = PTR_ERR(priv->ipc_dev);
-+		dev_err(sdev->dev, "failed to register mtk-adsp-ipc device\n");
-+		goto err_adsp_sram_power_off;
-+	}
-+
-+	priv->dsp_ipc = dev_get_drvdata(&priv->ipc_dev->dev);
-+	if (!priv->dsp_ipc) {
-+		ret = -EPROBE_DEFER;
-+		dev_err(sdev->dev, "failed to get drvdata\n");
-+		goto exit_pdev_unregister;
-+	}
-+
-+	mtk_adsp_ipc_set_data(priv->dsp_ipc, priv);
-+	priv->dsp_ipc->ops = &dsp_ops;
-+
- 	return 0;
- 
-+exit_pdev_unregister:
-+	platform_device_unregister(priv->ipc_dev);
- err_adsp_sram_power_off:
- 	adsp_sram_power_on(&pdev->dev, false);
- exit_clk_disable:
-@@ -310,7 +425,9 @@ static int mt8195_dsp_shutdown(struct snd_sof_dev *sdev)
- static int mt8195_dsp_remove(struct snd_sof_dev *sdev)
- {
- 	struct platform_device *pdev = container_of(sdev->dev, struct platform_device, dev);
-+	struct adsp_priv *priv = sdev->pdata->hw_pdata;
- 
-+	platform_device_unregister(priv->ipc_dev);
- 	adsp_sram_power_on(&pdev->dev, false);
- 	adsp_clock_off(sdev);
- 
-@@ -361,6 +478,14 @@ static int mt8195_get_bar_index(struct snd_sof_dev *sdev, u32 type)
- 	return type;
- }
- 
-+static int mt8195_ipc_msg_data(struct snd_sof_dev *sdev,
-+			       struct snd_pcm_substream *substream,
-+			       void *p, size_t sz)
-+{
-+	sof_mailbox_read(sdev, sdev->dsp_box.offset, p, sz);
-+	return 0;
-+}
-+
- static struct snd_soc_dai_driver mt8195_dai[] = {
- {
- 	.name = "SOF_DL2",
-@@ -412,6 +537,13 @@ static struct snd_sof_dsp_ops sof_mt8195_ops = {
- 	.write64	= sof_io_write64,
- 	.read64		= sof_io_read64,
- 
-+	/* ipc */
-+	.send_msg		= mt8195_send_msg,
-+	.get_mailbox_offset	= mt8195_get_mailbox_offset,
-+	.get_window_offset	= mt8195_get_window_offset,
-+	.ipc_msg_data		= mt8195_ipc_msg_data,
-+	.set_stream_data_offset = sof_set_stream_data_offset,
-+
- 	/* misc */
- 	.get_bar_index	= mt8195_get_bar_index,
+ static const unsigned int mt8186_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MT8186_MUTEX_SOF_DSI0 | MT8186_MUTEX_EOF_DSI0,
+@@ -336,6 +367,8 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
+ 	.mutex_sof = mt8183_mutex_sof,
+ 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
+ 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
++	.mutex_table_mod = mt8183_mutex_table_mod,
++	.mutex_table_sof = mt8183_mutex_table_sof,
+ 	.no_clk = true,
+ };
  
 -- 
 2.18.0
