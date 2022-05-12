@@ -4,47 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AB6FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 05:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B34AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 05:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QhWrcozjFChXNPWDDILoQTVUdH1rqACnRK53/J+vceg=; b=DrDveCEhpaeRbc
-	R71l0ryG1dGvSsJEUCb+Zza/Y1Q6togYmv5Mf5bgPoBIGLvKvA6gIxESXARCa9pqKeB0nSGwoibub
-	mt4BnIdv7vxvtTc7KmNoJXJgsCdTMj1N1Xtnmb46+ASNPonVLyz+lb4UEGJd+awJz0W3n5cK2+C5s
-	9pQWgM9/zNyvV908m82hCGxSPjpDTJDnLpGGsOr3ijRrUpwQbn8dcHT8pNaXiXZw5XzL6fDzOCAi4
-	ZRxi4V8WRT11DdM169VV26n9/RXrI+6bSPfJP0ScNF2NYc3g2iBuOjrfXilRIFeJG8pTSROSPpMe8
-	bmpa+VcMOiyLqNV/RVbQ==;
+	List-Owner; bh=NaRnlsrxVXmsfuFwyao0Y7ERTwUUDehgAra83IC1Ljo=; b=dGLeggHzreX4aJ
+	usPHWYN+hlcNREqNy3vZxcmoJiqrc9MFfXrOXTo2Q+iju3IqaqXf3pk+oydUuozilJA5DrMKRsBr+
+	1w6eYuPa8MYDleQLNc8Y4zWzt3cxmTTllVnFI5M247vwXtGzchVc5keV+we7Po9cMNfjh5chd9WW7
+	/e96OiKcccxTqI72dH+feyr8WgInOsBBKE0KicY6O5zBT+l2pPu95Rp0rMEFotkwC3Y27ZySQSBK6
+	l6AoDKsVHSRNmfXivArsoo9/OT8EmirWpz+e1tZab3Q9nQbHbgy0wM716/+EMBldusQ5VV+jTK3BN
+	LkjCK6yJcanlavwx/UYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np1WN-00A9Qh-Io; Thu, 12 May 2022 05:37:55 +0000
+	id 1np1cA-00ACFl-6g; Thu, 12 May 2022 05:43:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np1UV-00A8Rj-59; Thu, 12 May 2022 05:36:00 +0000
-X-UUID: b47c2581d30d43be815cb85011452d8c-20220511
+ id 1np1a4-00ABFN-GI; Thu, 12 May 2022 05:41:46 +0000
+X-UUID: 0737fed421ca446086697ae10db755a6-20220511
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:dd58c610-8313-4c06-b997-661be24d6c0a, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:ee4f50c5-1ab2-4b25-965d-085eb0b7834a, OB:0,
  LO
- B:0,IP:0,URL:5,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-15
-X-CID-META: VersionHash:faefae9, CLOUDID:b01f5348-e22d-4f1a-9d3f-55c4a2b00ea4,
+ B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:5
+X-CID-META: VersionHash:faefae9, CLOUDID:4a6c5348-e22d-4f1a-9d3f-55c4a2b00ea4,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: b47c2581d30d43be815cb85011452d8c-20220511
+X-UUID: 0737fed421ca446086697ae10db755a6-20220511
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1454687256; Wed, 11 May 2022 22:35:51 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 22:31:38 -0700
+ with ESMTP id 362194924; Wed, 11 May 2022 22:41:41 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 May 2022 22:31:39 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 12 May 2022 13:31:37 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 13:31:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Thu, 12 May 2022 13:31:36 +0800
@@ -62,18 +61,19 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  <dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
  <singo.chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v21 10/25] soc: mediatek: mmsys: add reset control for MT8195
+Subject: [PATCH v21 12/25] soc: mediatek: add mtk-mutex support for mt8195
  vdosys1
-Date: Thu, 12 May 2022 13:31:13 +0800
-Message-ID: <20220512053128.31415-11-nancy.lin@mediatek.com>
+Date: Thu, 12 May 2022 13:31:15 +0800
+Message-ID: <20220512053128.31415-13-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220512053128.31415-1-nancy.lin@mediatek.com>
 References: <20220512053128.31415-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_223559_229777_C69A80B6 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20220511_224144_597528_E45C23D8 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +90,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8195 vdosys1 has more than 32 reset bits and a different reset base
-than other chips. Add the number of reset bits and reset base in mmsys
-private data.
+Add mtk-mutex support for mt8195 vdosys1.
+The vdosys1 path component contains ovl_adaptor, merge5,
+and dp_intf1. Ovl_adaptor is composed of several sub-elements
+which include MDP_RDMA0~7, MERGE0~3, and ETHDR.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/soc/mediatek/mt8195-mmsys.h | 1 +
- drivers/soc/mediatek/mtk-mmsys.c    | 2 ++
- 2 files changed, 3 insertions(+)
+ drivers/soc/mediatek/mtk-mutex.c | 33 ++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
-index 454944a9409c..a6652ae63431 100644
---- a/drivers/soc/mediatek/mt8195-mmsys.h
-+++ b/drivers/soc/mediatek/mt8195-mmsys.h
-@@ -75,6 +75,7 @@
- #define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 << 16)
- #define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			(3 << 16)
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index 4721f0b74d9b..78197ebf5595 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -110,6 +110,24 @@
+ #define MT8195_MUTEX_MOD_DISP_DP_INTF0		21
+ #define MT8195_MUTEX_MOD_DISP_PWM0		27
  
-+#define MT8195_VDO1_SW0_RST_B					0x1d0
- #define MT8195_VDO1_MERGE0_ASYNC_CFG_WD				0xe30
- #define MT8195_VDO1_HDRBE_ASYNC_CFG_WD				0xe70
- #define MT8195_VDO1_HDR_TOP_CFG					0xd00
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 417f2520be58..5e396c9c50b9 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -153,6 +153,8 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
- 	.clk_driver = "clk-mt8195-vdo1",
- 	.routes = mmsys_mt8195_vdo1_routing_table,
- 	.num_routes = ARRAY_SIZE(mmsys_mt8195_vdo1_routing_table),
-+	.sw0_rst_offset = MT8195_VDO1_SW0_RST_B,
-+	.num_resets = 64,
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA0	0
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA1	1
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA2	2
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA3	3
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA4	4
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA5	5
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA6	6
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA7	7
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE0	8
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE1	9
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE2	10
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE3	11
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE4	12
++#define MT8195_MUTEX_MOD_DISP1_DISP_MIXER	18
++#define MT8195_MUTEX_MOD_DISP1_DPI0		25
++#define MT8195_MUTEX_MOD_DISP1_DPI1		26
++#define MT8195_MUTEX_MOD_DISP1_DP_INTF0		27
++
+ #define MT2712_MUTEX_MOD_DISP_PWM2		10
+ #define MT2712_MUTEX_MOD_DISP_OVL0		11
+ #define MT2712_MUTEX_MOD_DISP_OVL1		12
+@@ -313,6 +331,21 @@ static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DSI0] = MT8195_MUTEX_MOD_DISP_DSI0,
+ 	[DDP_COMPONENT_PWM0] = MT8195_MUTEX_MOD_DISP_PWM0,
+ 	[DDP_COMPONENT_DP_INTF0] = MT8195_MUTEX_MOD_DISP_DP_INTF0,
++	[DDP_COMPONENT_MDP_RDMA0] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA0,
++	[DDP_COMPONENT_MDP_RDMA1] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA1,
++	[DDP_COMPONENT_MDP_RDMA2] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA2,
++	[DDP_COMPONENT_MDP_RDMA3] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA3,
++	[DDP_COMPONENT_MDP_RDMA4] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA4,
++	[DDP_COMPONENT_MDP_RDMA5] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA5,
++	[DDP_COMPONENT_MDP_RDMA6] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA6,
++	[DDP_COMPONENT_MDP_RDMA7] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA7,
++	[DDP_COMPONENT_MERGE1] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE0,
++	[DDP_COMPONENT_MERGE2] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE1,
++	[DDP_COMPONENT_MERGE3] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE2,
++	[DDP_COMPONENT_MERGE4] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE3,
++	[DDP_COMPONENT_ETHDR_MIXER] = MT8195_MUTEX_MOD_DISP1_DISP_MIXER,
++	[DDP_COMPONENT_MERGE5] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE4,
++	[DDP_COMPONENT_DP_INTF1] = MT8195_MUTEX_MOD_DISP1_DP_INTF0,
  };
  
- static const struct mtk_mmsys_match_data mt8195_mmsys_match_data = {
+ static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
 -- 
 2.18.0
 
