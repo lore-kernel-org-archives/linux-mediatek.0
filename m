@@ -4,70 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8248FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 08:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5E4CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 08:51:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EWAauMHQxj4U8H/Tv2CJ7pI+TV/EYdp92r5kVOwlGds=; b=jc00cg3+UjkcRe
-	oJzsJVxVqyyU6Cd8Et5EpJUoOsX6tGYZPRg2j2DaZec2OFI9192cRQBusbAs4iFGMjPQ8geDxzJbr
-	/DHlrKGpTcdVCrNVpwGo6zPr1vXtq86j5qnqr36TvMfnkyJc2udyXnP5vsGOpGaKzrvpRG0tX5gRa
-	Oi/6OjLuADrU+Qj/hyN7qo2xdERa2kbf+9wdktELWtwLrBSRjT/uQN5XFQibwhx9Wda83DDWprepc
-	fwR8iMvCzUI/XXs3TwOAGYCO8PoM0nDGw5nCNSQfGEs9kOCYfcnFrFU1k+yWy8Dyu+K44oWBJvlCu
-	a+1x/GX2DT4AQR9maqGQ==;
+	List-Owner; bh=rvBjDPck8ecJJbQMcbWXOGSkaCfff99PpoTkRQ/d8zs=; b=WweAot7LbiZ37p
+	CgTIo0tkE+zfBNBDXTFhQ+9gFhUCCaL/BajQqMVzAPJsqVKlklAtDRypWu9DeWO9/+D6Ggx9Jb82L
+	m/SAb3Ns0Bnd3pBO71IDMTmMMFKBMxQzT2Fbu6XyNyckD2+oCS1XcoHSXL87PRRI4Aw4Qx1RyMWEA
+	Kcvz7zXz6CH9Eq5lO7UlsxH3iOjIPGYFxtNlCUGqBJpXPBc8LnkUHiK4B5A/+Qy/eGFGHIGaI35G0
+	xVBMXk02W92ggcNkDNIwOF0ZQMfqQU8jhZUb43mKxjLNU0hQb2WDEi4hWbCt3xl+Hpgtj14ZKt27L
+	5tTgqNGhFtb77ddP05sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np4Xk-00B3mz-BR; Thu, 12 May 2022 08:51:32 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1np4Y3-00B3wU-Ui; Thu, 12 May 2022 08:51:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np4XZ-00B3ke-7u; Thu, 12 May 2022 08:51:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:Subject:
- From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID
- :Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
- Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe
- :List-Post:List-Owner:List-Archive;
- bh=xx9m5dm8MmD9z6KyI04KVvncdp5gOEhfIk9XzqJfOxg=; b=eRgiK+ggyPqj6IGjUVzf59mDDq
- XpWwjL7Vau9dZb/Lwy3EXBhz8YWsnZ62iBAo3kpWt03/kIwEeOr/fw48fHnUimA0TGDpB6J0e0F0Y
- 2HTjAmNI2g5ljskIURDyyufHxpJCi6dSKIuH6K+GETZqT/FG/Bp+6ikLtW9SniX5egb4=;
-Received: from p200300daa70ef20035fe11ecec42601a.dip0.t-ipconnect.de
- ([2003:da:a70e:f200:35fe:11ec:ec42:601a] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1np4XI-0001va-5j; Thu, 12 May 2022 10:51:04 +0200
-Message-ID: <0ef1e0c2-1623-070d-fbf5-e7f09fc199ca@nbd.name>
-Date: Thu, 12 May 2022 10:51:03 +0200
+ id 1np4Y1-00B3tu-RF; Thu, 12 May 2022 08:51:51 +0000
+X-UUID: da1405ae5cb54c9dbedeec6e6262ec7e-20220512
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:e8d0edd7-fb19-4617-a6e3-9507e4fcdb1b, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:5
+X-CID-META: VersionHash:faefae9, CLOUDID:e70df6f1-ab23-4aed-a67b-f96514452486,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: da1405ae5cb54c9dbedeec6e6262ec7e-20220512
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <moudy.ho@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2007230965; Thu, 12 May 2022 01:51:45 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 01:41:43 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 12 May 2022 16:41:41 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 12 May 2022 16:41:41 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Alexandre Courbot
+ <acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+ <pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+ <randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+ <jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+ <river.cheng@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <cellopoint.kai@gmail.com>
+Subject: [PATCH v18 4/6] dt-bindings: soc: mediatek: add gce-client-reg for
+ MUTEX
+Date: Thu, 12 May 2022 16:41:37 +0800
+Message-ID: <20220512084139.15086-5-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220512084139.15086-1-moudy.ho@mediatek.com>
+References: <20220512084139.15086-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.9.0
-Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220510094014.68440-1-nbd@nbd.name>
- <20220510123724.i2xqepc56z4eouh2@skbuf>
- <5959946d-1d34-49b9-1abe-9f9299cc194e@nbd.name>
- <20220510165233.yahsznxxb5yq6rai@skbuf>
- <bc4bde22-c2d6-1ded-884a-69465b9d1dc7@nbd.name>
- <20220510222101.od3n7gk3cofwhbks@skbuf>
- <376b13ac-d90b-24e0-37ed-a96d8e5f80da@nbd.name>
- <20220511093245.3266lqdze2b4odh5@skbuf> <YnvJFmX+BRscJOtm@lunn.ch>
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH v2] net: dsa: tag_mtk: add padding for tx packets
-In-Reply-To: <YnvJFmX+BRscJOtm@lunn.ch>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_015121_571627_17F00FCD 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20220512_015149_901112_60082BA7 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +92,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In order to allow modules with latency requirements such as MDP3
+to set registers through CMDQ, add the relevant GCE property.
 
-On 11.05.22 16:32, Andrew Lunn wrote:
->> Let's see what others have to say. I've been wanting to make the policy
->> of whether to call __skb_put_padto() standardized for all tagging protocol
->> drivers (similar to what is done in dsa_realloc_skb() and below it).
->> We pad for tail taggers, maybe we can always pad and this removes a
->> conditional, and simplifies taggers. Side note, I already dislike that
->> the comment in tag_brcm.c is out of sync with the code. It says that
->> padding up to ETH_ZLEN is necessary, but proceeds to pad up until
->> ETH_ZLEN + tag len, only to add the tag len once more below via skb_push().
->> It would be nice if we could use the simple eth_skb_pad().
-> 
-> There are some master devices which will perform padding on their own,
-> in hardware. So for taggers which insert the header at the head,
-> forcing such padding would be a waste of CPU time.
-> 
-> For tail taggers, padding short packets by default does however make
-> sense. The master device is probably going to pad in the wrong way if
-> it does padding.
-I just ran some more tests, here's what I found:
-The switch automatically pads all forwarded packets to 64 bytes.
-When packets are forwarded from one external port to another, the 
-padding is all zero.
-Only when packets are sent from a CPU port to an external port, the last 
-4 bytes contain garbage. The garbage bytes are different for every 
-packet, and I can't tell if it's leaking contents of previous packets or 
-what else is in there.
-Based on that, I'm pretty sure that the hardware simply has a quirk 
-where it does not account for the special tag when generating its own 
-padding internally.
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/soc/mediatek/mediatek,mutex.yaml        | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-I found that replacing my __skb_put_padto call with eth_skb_pad also 
-works, so I'm going to send v3 with that and an updated comment.
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+index 40598243c84d..e4399e1f9b1c 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+@@ -60,6 +60,18 @@ properties:
+       include/dt-bindings/gce/<chip>-gce.h of each chips.
+     $ref: /schemas/types.yaml#/definitions/uint32-array
+ 
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
+ required:
+   - compatible
+   - reg
+-- 
+2.18.0
 
-- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
