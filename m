@@ -4,87 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76C0FC4321E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 05:51:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 295C1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 06:01:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+3ASLZIghjZZWEINuftCEEYOfo6RX0QGBFaQyVHC+9c=; b=giQL+1slk2QlH2
-	ie1sriaGF+VI4YDb5xz2B+6nACJ/MPSDrSJpD36wa4rUwqNd6A6N8b+oBCaoRv7Ez2TSCGOuwyJV4
-	nB/kmvzkXZnvzdI7YLWpzwxtfjcmc57RYC8bRMKOYCoqSl/yNqoulmGsD0lOh/6B5yCRgbsLNTYhP
-	a41l7nZMTh/qOZ41o9ZshfcJiGKDpzKis8fNi0HR0Xdqi/Upr/3zGxYNVl2yKAYU0IaCBu9TKevgN
-	xnRtVn351EtMIQbtkl/TwxCn8MsTh0NKy+/PB5xwC4/6hRx+B7O2vjOklTl8Eome+HR1eF2QnJvBm
-	uk6crPJjMRkQ08elZ7fw==;
+	List-Owner; bh=hg17fcRTlXE66gFKm6czUuEhVt3ZQiQ7Qjw5c9ZeHIc=; b=Sy6lKGntTqginp
+	QSaEXfucAQOlJNuaGj7NVLJOQg1gYtUIUE6/JRntGCbILJIp4bToXmLK97E4FjfAsBMHUg/yqnMCu
+	TIIaSyb8I/UhUPYHD6H1+REiSAe8m2KAWNyxRMpd+i77DyiZNewuTe2uASRjBJuqBlg97nplSMKwI
+	FY/Wc2tzKSPTEz89jaRArRQnGznFWDnUIU+sm1oxgv6wmRWCfJ09U4hxi5UIOh/5tZ/Iw6YGPPPh+
+	mShEIWn5jQvc1rYZ8gRkIvGknRF0AoS2yw+3kewtde2gMdqhDZGpqPVz57Fb3x4XNTEIWC8Dtts1+
+	2PfqViHNpwe/z2RFPDmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np1jM-00AGZl-DO; Thu, 12 May 2022 05:51:20 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1np1tM-00AK2p-Gt; Thu, 12 May 2022 06:01:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np1ge-00AEsR-Cq
- for linux-mediatek@lists.infradead.org; Thu, 12 May 2022 05:48:33 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id
- cx11-20020a17090afd8b00b001d9fe5965b3so6855166pjb.3
- for <linux-mediatek@lists.infradead.org>; Wed, 11 May 2022 22:48:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Xuxuada9VjQWUI1huyzXxe5QzMXan59Iyu/e0FTIM3E=;
- b=ASJQRBuMuNpLQOOTO1/95U8uONu/PxLK1NQwtEc5uIIinPwbzZ+EiMTqvJW4QuLzs5
- Dvqj2QCJsNx8sPa/tDARlduwW3wdhQ0FGWnBcOUYQPrLWhXtmvZ6L3lTWYbNMl4MuYAf
- A/PyOdptPDjw6TlGMudLwSFxHjVnS2Te9OSnDg+gxoZsDP/tNurbNk44BFro9n430bhV
- vCHyXSBVgahfrymdhsL+5cRgGU7FA/ts3WzupsI2VR2OSHHZ3vUiHxnlMmFDF5i3eP0d
- +FD1eSppYkkUwZIlNxuO6EhS0yW5e5kxoU1rlLL/KgKIpZGwrK/dbcF9nIeuXBhIBiHy
- o7dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Xuxuada9VjQWUI1huyzXxe5QzMXan59Iyu/e0FTIM3E=;
- b=KyDzYmyj2MxZk3Db/gxURUXRSv1s2qSozGXj/JkZPTxdjIxLHWyzAYXxjWq6qveHFh
- L1seUvuHfN8sb2y8AAQ7pWr4W7/3Ttlq+z8Gf9z/4cq3KPDxgiXJdgeUTVw0zm9cBtFv
- ITCEqldkEXrHC9NUCTw0NhzzbQwA3Umms7rSkK03YkDbRb/iJNrvB9a8haxqh0llYXU3
- t5xOPs1orFAsJH+Ng1NRekRskLehCCGIDjvFAYT7ec9JYNQi/TKIl7HsVuRNCxcbJRNF
- IMySZh6KvpZqw/ohCHt2aGrsSb+kCkYv95y5EKjPY3NUx8WhtvZsHRC/nwjCHTkP3lCY
- Iecg==
-X-Gm-Message-State: AOAM530BQw+wYh4rVrZHSiv0CLmJNfxZD3A54lLPNUVxvpEuE1DHsDSv
- CjIN0gFdlyIn2h2Hvkyl8VTyfQ==
-X-Google-Smtp-Source: ABdhPJy/83UwXF9qp2QmxMhj6rkiPyZePvTFVEifIrC1Ee9PJQriq+WUh+dvyq4lN3UFDvlBYmDWUg==
-X-Received: by 2002:a17:902:e989:b0:15f:1545:326d with SMTP id
- f9-20020a170902e98900b0015f1545326dmr16902177plb.119.1652334509123; 
- Wed, 11 May 2022 22:48:29 -0700 (PDT)
-Received: from localhost ([122.162.234.2]) by smtp.gmail.com with ESMTPSA id
- p21-20020a1709028a9500b0015e8d4eb245sm2868086plo.143.2022.05.11.22.48.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 22:48:28 -0700 (PDT)
-Date: Thu, 12 May 2022 11:18:25 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: rafael@kernel.org, robh+dt@kernel.org, krzk+dt@kernel.org,
- matthias.bgg@gmail.com, jia-wei.chang@mediatek.com,
- roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com,
- angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 00/10] cpufreq: mediatek: Cleanup and support MT8183
- and MT8186
-Message-ID: <20220512054825.aqe4g4lupuqj3rcq@vireshk-i7>
-References: <20220505115226.20130-1-rex-bc.chen@mediatek.com>
- <20220506042004.hqzpb66shak4y7rz@vireshk-i7>
- <86851bd03128cc61082d516ebff929d3637063cb.camel@mediatek.com>
- <20220512052732.iqphgpveoyrqjlqg@vireshk-i7>
- <af82434adea0b648d74ed5ffd123e0faaaac6508.camel@mediatek.com>
+ id 1np1tA-00AJz4-Us; Thu, 12 May 2022 06:01:30 +0000
+X-UUID: 82a7229be2c44ada866733e0684c1428-20220511
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=YJEmSRrre3cFsZoTBO2J0tq3rmoNzL+aaV1W++9tFLY=; 
+ b=SBFW5OPRleCnWo11p92ud8KctWkgKOHxv8XOvSYJ7esgnjKxRzaVfrSCvSv4BbUs/YEZtHxo2v2cB1EvKgVsZ+t96ZAyH5HeGYGtdsdCzYfuZOY1Tc96tVSv/bj7Tq8GNN/ZOgfmGpv6rrGvf2j6OBftt6aXpBg+DhFKnlu2enk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:80ea514a-fb4c-4b28-b94f-e765e1a0ede3, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:9,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:14
+X-CID-META: VersionHash:faefae9, CLOUDID:d4245448-e22d-4f1a-9d3f-55c4a2b00ea4,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 82a7229be2c44ada866733e0684c1428-20220511
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 983197911; Wed, 11 May 2022 23:01:22 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 May 2022 22:51:20 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 12 May 2022 13:51:12 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 12 May 2022 13:51:11 +0800
+Message-ID: <2ff41b86a7f7c7ce73cf800a7c1ecb531b835786.camel@mediatek.com>
+Subject: Re: [PATCH] iommu/dma: Fix iova map result check bug
+From: Yong Wu <yong.wu@mediatek.com>
+To: <yf.wang@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon
+ <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Logan
+ Gunthorpe" <logang@deltatee.com>, "open list:IOMMU DRIVERS"
+ <iommu@lists.linux-foundation.org>, open list <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Ning Li
+ <Ning.Li@mediatek.com>, <stable@vger.kernel.org>
+Date: Thu, 12 May 2022 13:51:11 +0800
+In-Reply-To: <20220507085204.16914-1-yf.wang@mediatek.com>
+References: <20220507085204.16914-1-yf.wang@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <af82434adea0b648d74ed5ffd123e0faaaac6508.camel@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_224832_492383_C3FF00EE 
-X-CRM114-Status: UNSURE (   7.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220511_230129_043283_BAFA039F 
+X-CRM114-Status: GOOD (  26.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,15 +90,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12-05-22, 13:33, Rex-BC Chen wrote:
-> Matthias is not the member of mediatek, so I think we still need his
-> feedback for these three patches.
+On Sat, 2022-05-07 at 16:52 +0800, yf.wang@mediatek.com wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
+> 
+> The data type of the return value of the iommu_map_sg_atomic
+> is ssize_t, but the data type of iova size is size_t,
+> e.g. one is int while the other is unsigned int.
+> 
+> When iommu_map_sg_atomic return value is compared with iova size,
+> it will force the signed int to be converted to unsigned int, if
+> iova map fails and iommu_map_sg_atomic return error code is less
+> than 0, then (ret < iova_len) is false, which will to cause not
+> do free iova, and the master can still successfully get the iova
+> of map fail, which is not expected.
+> 
+> Therefore, we need to check the return value of iommu_map_sg_atomic
+> in two cases according to whether it is less than 0.
+> 
+> Fixes: ad8f36e4b6b1 ("iommu: return full error code from
+> iommu_map_sg[_atomic]()")
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> Cc: <stable@vger.kernel.org> # 5.15.*
+> ---
+>  drivers/iommu/dma-iommu.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+> index 09f6e1c0f9c0..2932281e93fc 100644
+> --- a/drivers/iommu/dma-iommu.c
+> +++ b/drivers/iommu/dma-iommu.c
+> @@ -776,6 +776,7 @@ static struct page
+> **__iommu_dma_alloc_noncontiguous(struct device *dev,
+>  	unsigned int count, min_size, alloc_sizes = domain-
+> >pgsize_bitmap;
+>  	struct page **pages;
+>  	dma_addr_t iova;
+> +	ssize_t ret;
+>  
+>  	if (static_branch_unlikely(&iommu_deferred_attach_enabled) &&
+>  	    iommu_deferred_attach(dev, domain))
+> @@ -813,8 +814,8 @@ static struct page
+> **__iommu_dma_alloc_noncontiguous(struct device *dev,
+>  			arch_dma_prep_coherent(sg_page(sg), sg-
+> >length);
+>  	}
+>  
+> -	if (iommu_map_sg_atomic(domain, iova, sgt->sgl, sgt-
+> >orig_nents, ioprot)
+> -			< size)
+> +	ret = iommu_map_sg_atomic(domain, iova, sgt->sgl, sgt-
+> >orig_nents, ioprot);
+> +	if (ret < 0 || ret < size)
 
-Please ping him and ask for his feedback then.
+        if (IS_ERR_VALUE(ret) || ret < size) for readable?
 
--- 
-viresh
-
+>  		goto out_free_sg;
+>  
+>  	sgt->sgl->dma_address = iova;
+> @@ -1209,7 +1210,7 @@ static int iommu_dma_map_sg(struct device *dev,
+> struct scatterlist *sg,
+>  	 * implementation - it knows better than we do.
+>  	 */
+>  	ret = iommu_map_sg_atomic(domain, iova, sg, nents, prot);
+> -	if (ret < iova_len)
+> +	if (ret < 0 || ret < iova_len)
+>  		goto out_free_iova;
+>  
+>  	return __finalise_sg(dev, sg, nents, iova);
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
