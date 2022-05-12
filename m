@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A175C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 02:22:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56BBDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 02:23:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d2RtKVrLLLuNLpC96az88GWFtsH5ccovfGSOvpCzNFM=; b=NOB6aMSWQUKzSi
-	k+KhrcO8idRbtlJGJErxiNQrdN0SVUa3CpFWC4+9gX5hlO9f7ZS7GR11tWDTVF8g72n+7F5MUHYeN
-	sfQVUh4tuvoZyB8FFuMDsxjfTT8AHuuNF2dlQL0CnqZWLVG82GWLuXuGTWe9psF39KeeEALpRFpgK
-	SDYKvrpVIQB8Dmk/M2A1eAVYkTFRIEJB/H/+NqAoY9DuC+5mGydd4ZYyrOYbw/iMOeRqGkXP4F4O/
-	q1ed2qOiUxNIdVzsmR2UeuqMF3nYnrlSNcwtwmCQ3Mx6u16vBk8w5k9mqxWgqsuwa86ckYiyvnbYN
-	486FleeSATCm0mlcjLOA==;
+	List-Owner; bh=5aoonLv/MdHzabK2rsVrdfMOxMwO2rVbaK/tnKBIaqc=; b=iBmbdwHJG8F/UZ
+	kCaeYPmkD59GPKXCfxb3k0Zqu+M0LfII/4Wy3adwVxmm5rgrJNJxqZdO+E7j7oNamkdGjuNDjShuW
+	HjVAaKJzAucY/Csox9qgOTKPgNKtjhxp14aipxuwPijRt39/crfFzn2J6P60/uZ8mXiMaqfc6SugP
+	yAyPmAZWfQu/Xen25R6sGnp1FxZYe60ozJ8eyg/Hp5fp3iIsZpuO7nrFG9gQKU5cZkCkC6aYA3PER
+	2kqKrMg8zpyoUawH2BQnM7gn9ExblXdu+r+H0nzpVDDDYG7tgZ0pxLhQdhnZLVPm8ppBOJASpdrLt
+	HjUNCnKuxVdTP01phIcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noyTF-009Pnc-MG; Thu, 12 May 2022 02:22:29 +0000
+	id 1noyUM-009QPS-QT; Thu, 12 May 2022 02:23:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noyRi-009Oko-6Z; Thu, 12 May 2022 02:20:55 +0000
-X-UUID: d115aad465ff47f186bd62c8a37b79df-20220511
+ id 1noyRk-009Okc-96; Thu, 12 May 2022 02:20:57 +0000
+X-UUID: deb091ff89d24fc59123d13b739ebe26-20220511
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:fba083f0-fa50-4ca6-8c86-41580056b50f, OB:0,
+X-CID-O-INFO: VERSION:1.1.4, REQID:c50fd90b-359b-4850-baec-92320fc07489, OB:0,
  LO
- B:0,IP:0,URL:5,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
- TION:release,TS:-15
-X-CID-META: VersionHash:faefae9, CLOUDID:8f254125-b432-452e-9e03-2bf3148aed85,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:a3254125-b432-452e-9e03-2bf3148aed85,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: d115aad465ff47f186bd62c8a37b79df-20220511
+X-UUID: deb091ff89d24fc59123d13b739ebe26-20220511
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
+ (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 127978648; Wed, 11 May 2022 19:20:43 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ with ESMTP id 1513960803; Wed, 11 May 2022 19:20:43 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 19:20:24 -0700
+ 15.0.1497.2; Wed, 11 May 2022 19:13:22 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 12 May 2022 10:20:22 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ Thu, 12 May 2022 10:13:21 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 12 May 2022 10:20:21 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v12,
- 17/17] media: mediatek: vcodec: prevent kernel crash when rmmod
- mtk-vcodec-dec.ko
-Date: Thu, 12 May 2022 10:19:50 +0800
-Message-ID: <20220512021950.29087-18-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220512021950.29087-1-yunfei.dong@mediatek.com>
-References: <20220512021950.29087-1-yunfei.dong@mediatek.com>
+ Transport; Thu, 12 May 2022 10:13:21 +0800
+Message-ID: <1277a1395d37de582223c9d56f8e25ee20d7bd47.camel@mediatek.com>
+Subject: Re: [PATCH v4 2/3] dt-bindings: nvmem: mediatek: document
+ deprecated efuse property
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "Srinivas
+ Kandagatla" <srinivas.kandagatla@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski@canonical.com>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, "; Lala Lin"
+ <lala.lin@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Chen-Yu Tsai" <wenst@chromium.org>, Allen-kh Cheng
+ <allen-kh.cheng@mediatek.corp-partner.google.com>
+Date: Thu, 12 May 2022 10:13:21 +0800
+In-Reply-To: <78cc1d8a-e8c4-bb6a-1058-ab912b90ebe4@linaro.org>
+References: <20220510132637.5864-1-allen-kh.cheng@mediatek.com>
+ <20220510132637.5864-3-allen-kh.cheng@mediatek.com>
+ <78cc1d8a-e8c4-bb6a-1058-ab912b90ebe4@linaro.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_192054_278082_29D8D3A0 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20220511_192056_354732_3906EBEC 
+X-CRM114-Status: GOOD (  24.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,64 +89,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the driver support subdev mode, the parameter "dev->pm.dev" will be
-NULL in mtk_vcodec_dec_remove. Kernel will crash when try to rmmod
-mtk-vcodec-dec.ko.
+Hi Krzysztof,
 
-[ 4380.702726] pc : do_raw_spin_trylock+0x4/0x80
-[ 4380.707075] lr : _raw_spin_lock_irq+0x90/0x14c
-[ 4380.711509] sp : ffff80000819bc10
-[ 4380.714811] x29: ffff80000819bc10 x28: ffff3600c03e4000 x27: 0000000000000000
-[ 4380.721934] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
-[ 4380.729057] x23: ffff3600c0f34930 x22: ffffd5e923549000 x21: 0000000000000220
-[ 4380.736179] x20: 0000000000000208 x19: ffffd5e9213e8ebc x18: 0000000000000020
-[ 4380.743298] x17: 0000002000000000 x16: ffffd5e9213e8e90 x15: 696c346f65646976
-[ 4380.750420] x14: 0000000000000000 x13: 0000000000000001 x12: 0000000000000040
-[ 4380.757542] x11: 0000000000000000 x10: 0000000000000000 x9 : 0000000000000000
-[ 4380.764664] x8 : 0000000000000000 x7 : ffff3600c7273ae8 x6 : ffffd5e9213e8ebc
-[ 4380.771786] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 0000000000000000
-[ 4380.778908] x2 : 0000000000000000 x1 : ffff3600c03e4000 x0 : 0000000000000208
-[ 4380.786031] Call trace:
-[ 4380.788465]  do_raw_spin_trylock+0x4/0x80
-[ 4380.792462]  __pm_runtime_disable+0x2c/0x1b0
-[ 4380.796723]  mtk_vcodec_dec_remove+0x5c/0xa0 [mtk_vcodec_dec]
-[ 4380.802466]  platform_remove+0x2c/0x60
-[ 4380.806204]  __device_release_driver+0x194/0x250
-[ 4380.810810]  driver_detach+0xc8/0x15c
-[ 4380.814462]  bus_remove_driver+0x5c/0xb0
-[ 4380.818375]  driver_unregister+0x34/0x64
-[ 4380.822288]  platform_driver_unregister+0x18/0x24
-[ 4380.826979]  mtk_vcodec_dec_driver_exit+0x1c/0x888 [mtk_vcodec_dec]
-[ 4380.833240]  __arm64_sys_delete_module+0x190/0x224
-[ 4380.838020]  invoke_syscall+0x48/0x114
-[ 4380.841760]  el0_svc_common.constprop.0+0x60/0x11c
-[ 4380.846540]  do_el0_svc+0x28/0x90
-[ 4380.849844]  el0_svc+0x4c/0x100
-[ 4380.852975]  el0t_64_sync_handler+0xec/0xf0
-[ 4380.857148]  el0t_64_sync+0x190/0x194
-[ 4380.860801] Code: 94431515 17ffffca d503201f d503245f (b9400004)
+On Wed, 2022-05-11 at 17:20 +0200, Krzysztof Kozlowski wrote:
+> On 10/05/2022 15:26, Allen-KH Cheng wrote:
+> > From: Allen-kh Cheng <
+> > allen-kh.cheng@mediatek.corp-partner.google.com>
+> > 
+> > We mark mediatek,mt8173-efuse and mediatek,efuse as deprecated to
+> > prevent them from being the single compatible in the future.
+> > 
+> > The mediatek,efuse compatible should be used as generic fallback
+> > for
+> > all MediaTek chipsets.
+> > 
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/nvmem/mediatek,efuse.yaml | 15 +++++++++
+> > ------
+> >  1 file changed, 9 insertions(+), 6 deletions(-)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> > b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> > index 529f5888d93f..04ecf5980b2e 100644
+> > --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> > +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> > @@ -16,16 +16,18 @@ allOf:
+> >  properties:
+> >    compatible:
+> >      oneOf:
+> > -      - enum:
+> > -          - mediatek,mt8173-efuse
+> > -          - mediatek,efuse
+> > +      - const: mediatek,mt8173-efuse # Don't use this in new dts
+> > files
+> > +        deprecated: true
+> > +      - const: mediatek,efuse
+> > +        deprecated: true
+> >          description:
+> > -          Only mt8173 SoC-specific compatible with generic
+> > fallback should be
+> > -          used
+> > +          Please use mediatek,efuse as generic fallback to enable
+> > the MediaTek
+> > +          eFuse support.
+> 
+> Now I see the change, it's a bit surprising to have it in separate
+> patch, but ok. In such case, in your first patch don't add this
+> description. There is no point to add a description which immediately
+> you change in next patch.
+> 
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+I think I misunderstand "Actually I would prefer to deprecate it in
+second patch." in preivues reply. It would be great to put all change
+in one PATCH.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-index a84df6596aaa..5da4572c5b14 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-@@ -482,7 +482,8 @@ static int mtk_vcodec_dec_remove(struct platform_device *pdev)
- 		video_unregister_device(dev->vfd_dec);
- 
- 	v4l2_device_unregister(&dev->v4l2_dev);
--	pm_runtime_disable(dev->pm.dev);
-+	if (!dev->vdec_pdata->is_subdev_supported)
-+		pm_runtime_disable(dev->pm.dev);
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return 0;
- }
--- 
-2.18.0
+On the other hand, in order to not check the same mediatek efuse yaml
+schema in [1] to cause any conflicts.
+
+Chunfeng will integrate with me and resed again in series [1].
+[1] 
+https://lore.kernel.org/all/5847417d-921c-7fca-f5de-00e8a550dcb8@linaro.org/
+
+Thanks,
+Allen
+
+> 
+> Best regards,
+> Krzysztof
 
 
 _______________________________________________
