@@ -4,59 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14A52C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 21:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BEF9C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 21:48:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/4oc+L2HHAjLwYLFbLrnNMiR3MrTdyRITmH84UrQXD4=; b=oGfLu/OrgTvUAm
-	NnSRjMbTNuKrJx5wcWewbuNBxpTBYS4aQqaa66yU6V0Qu9oPq5+eoNPTTuAQznkAGXsH0BM9aseTe
-	oswBmF3s5YNMvU1flA4c+jg0YRlxg0JFY/fd5TXjNofk4hNcTiDCNQf1n9B7kNXwaPvuLak/aUB3c
-	gs3zYzHc03y+/E8om3c9ukrQFPGzVuchLo37jLKh5zTiR3gJyqaJnGWG8k0DnJwa+4M0V9Kt3KCX6
-	C3tmj7Yq/dL/BwBbXY1QaearDR+Nx+td64mKhNjZCn3c2gzDNnBOtArMQAcr44AsmHYBfLyt7TdW+
-	YV0x7MGDEnPhzoSXhZGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gAvrxyFmyDgifcAhL5gW4xkrFk1dhhKsjs65Zh85vEo=; b=CZPSi4Lqd/hbPQ
+	dMVadWE1bkn40uZcZY24B7pX3XZ48/2U0YLZqqtK1883F0kwb0SIVdoJrvCrfv+jExXIuaEgxh8zt
+	FgJB+30Xj4zMW9L06zSTD2jqrnPEN6mRX7WFrn9wuQq6inXxrPqh+eSNfTkw/0AJuqOqkHGYV1nu1
+	hK9aIYSkVSGLBfSoe9b2Zuqww6uDJvB0BsGhSsn2vl1g30QU97SNFSQfQwvT1g/3wwUNorMBkQObf
+	TnbrIIYOilqL7kfY5YBrYqLAXgl5F8qr+d45TOlnRrSELvQtFpQ/Nmqs5cGLSX5dlVyFwXC0iqgNy
+	k3YlSTu8I+UBdBT+xm8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npFyQ-00DVUa-P6; Thu, 12 May 2022 21:03:50 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1npGfb-00DftC-6e; Thu, 12 May 2022 21:48:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npFrd-00DRRX-9g; Thu, 12 May 2022 20:56:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 49C271F45AAC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652389008;
- bh=u3bgLWaqCDtC2cPlVcV31sMjvrL2SuIojgozTZcaWa0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=JBsnrd14WnmJAEI02AwFqisQMF9YA8XYqDzyAdJr46KoE/v/2XAsmbrVHng3EQzbJ
- RFWIqYBWD+mV5oeOvMTYsBj9SVMaCmJdA7dujGMygxD8mkkeFUYn9GboiImLMHEQ8P
- 5yeItut/AoW9HDg/pfnhwopKp1MZrhyZGkdDGlDMndFWWVbRiPoYj6N6BVDR6RJCIB
- ZLNqF5+oUV/sjp0Gclam+8rjVV/MPbWsmSAKEOkCHdxlPUDEpqeAoJkcG6Q0PNciY0
- qvFmIfcR7vekar7Ka9Hpd4/kitSeLQZ0uFhN5DGOv/WeJal4TVCnPsbW3U8OdWuFGV
- iwp3qLR3/JFqw==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
- <nfraprado@collabora.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 16/16] arm64: dts: mediatek: asurada: Add SPMI regulators
-Date: Thu, 12 May 2022 16:56:02 -0400
-Message-Id: <20220512205602.158273-17-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220512205602.158273-1-nfraprado@collabora.com>
-References: <20220512205602.158273-1-nfraprado@collabora.com>
+ id 1npGfY-00DfsS-MS
+ for linux-mediatek@lists.infradead.org; Thu, 12 May 2022 21:48:26 +0000
+X-UUID: 2457f34b45af41cd85d3e10b0dd4c589-20220512
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:cb43ece5-bca8-49bd-85c9-9416e9e6690f, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:55,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:60
+X-CID-META: VersionHash:faefae9, CLOUDID:d5961aa7-eab7-4b74-a74d-5359964535a9,
+ C
+ OID:IGNORED,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 2457f34b45af41cd85d3e10b0dd4c589-20220512
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 805009109; Thu, 12 May 2022 14:48:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 14:38:15 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 13 May 2022 05:38:14 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 13 May 2022 05:38:13 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>, 
+ <shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Yake
+ Yang" <yake.yang@mediatek.com>
+Subject: [PATCH 1/2] Bluetooth: btmtksdio: fix the reset takes too long
+Date: Fri, 13 May 2022 05:38:11 +0800
+Message-ID: <e26167a3fcefdeae1151162e8676c9a467a8100d.1652390894.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_135649_511700_4BB76EF5 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20220512_144824_789304_ACDF8F1F 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,49 +82,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-VGhlIEFzdXJhZGEgcGxhdGZvcm0gdXNlcyByZWd1bGF0b3JzIGZyb20gTVQ2MzE1IFBNSUNzIGFj
-ZXNzaWJsZSB0aHJvdWdoClNQTUkuIEFkZCBzdXBwb3J0IGZvciB0aGVtLgoKU2lnbmVkLW9mZi1i
-eTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgpSZXZp
-ZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVs
-cmVnbm9AY29sbGFib3JhLmNvbT4KVGVzdGVkLWJ5OiBDaGVuLVl1IFRzYWkgPHdlbnN0QGNocm9t
-aXVtLm9yZz4KCi0tLQoKKG5vIGNoYW5nZXMgc2luY2UgdjIpCgpDaGFuZ2VzIGluIHYyOgotIEFk
-ZGVkIHRoaXMgcGF0Y2gKCiAuLi4vYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLWFzdXJhZGEuZHRz
-aSAgICAgfCA0OSArKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgNDkgaW5zZXJ0
-aW9ucygrKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTky
-LWFzdXJhZGEuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLWFzdXJh
-ZGEuZHRzaQppbmRleCBhNTNmNzM1MmYwNmUuLmQ2NmIwMDhjMDFhYiAxMDA2NDQKLS0tIGEvYXJj
-aC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxOTItYXN1cmFkYS5kdHNpCisrKyBiL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLWFzdXJhZGEuZHRzaQpAQCAtNyw2ICs3LDcg
-QEAKICNpbmNsdWRlICJtdDgxOTIuZHRzaSIKICNpbmNsdWRlICJtdDYzNTkuZHRzaSIKICNpbmNs
-dWRlIDxkdC1iaW5kaW5ncy9ncGlvL2dwaW8uaD4KKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9zcG1p
-L3NwbWkuaD4KIAogLyB7CiAJYWxpYXNlcyB7CkBAIC02ODMsNiArNjg0LDU0IEBAIGNyNTBAMCB7
-CiAJfTsKIH07CiAKKyZzcG1pIHsKKwkjYWRkcmVzcy1jZWxscyA9IDwyPjsKKwkjc2l6ZS1jZWxs
-cyA9IDwwPjsKKworCW10NjMxNV82OiBwbWljQDYgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10NjMxNS1yZWd1bGF0b3IiOworCQlyZWcgPSA8MHg2IFNQTUlfVVNJRD47CisKKwkJcmVndWxh
-dG9ycyB7CisJCQltdDYzMTVfNl92YnVjazE6IHZidWNrMSB7CisJCQkJcmVndWxhdG9yLWNvbXBh
-dGlibGUgPSAidmJ1Y2sxIjsKKwkJCQlyZWd1bGF0b3ItbmFtZSA9ICJWYmNwdSI7CisJCQkJcmVn
-dWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzAwMDAwPjsKKwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jv
-dm9sdCA9IDwxMTkzNzUwPjsKKwkJCQlyZWd1bGF0b3ItZW5hYmxlLXJhbXAtZGVsYXkgPSA8MjU2
-PjsKKwkJCQlyZWd1bGF0b3ItYWxsb3dlZC1tb2RlcyA9IDwwIDEgMj47CisJCQkJcmVndWxhdG9y
-LWFsd2F5cy1vbjsKKwkJCX07CisKKwkJCW10NjMxNV82X3ZidWNrMzogdmJ1Y2szIHsKKwkJCQly
-ZWd1bGF0b3ItY29tcGF0aWJsZSA9ICJ2YnVjazMiOworCQkJCXJlZ3VsYXRvci1uYW1lID0gIlZs
-Y3B1IjsKKwkJCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwzMDAwMDA+OworCQkJCXJlZ3Vs
-YXRvci1tYXgtbWljcm92b2x0ID0gPDExOTM3NTA+OworCQkJCXJlZ3VsYXRvci1lbmFibGUtcmFt
-cC1kZWxheSA9IDwyNTY+OworCQkJCXJlZ3VsYXRvci1hbGxvd2VkLW1vZGVzID0gPDAgMSAyPjsK
-KwkJCQlyZWd1bGF0b3ItYWx3YXlzLW9uOworCQkJfTsKKwkJfTsKKwl9OworCisJbXQ2MzE1Xzc6
-IHBtaWNANyB7CisJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ2MzE1LXJlZ3VsYXRvciI7CisJ
-CXJlZyA9IDwweDcgU1BNSV9VU0lEPjsKKworCQlyZWd1bGF0b3JzIHsKKwkJCW10NjMxNV83X3Zi
-dWNrMTogdmJ1Y2sxIHsKKwkJCQlyZWd1bGF0b3ItY29tcGF0aWJsZSA9ICJ2YnVjazEiOworCQkJ
-CXJlZ3VsYXRvci1uYW1lID0gIlZncHUiOworCQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0g
-PDMwMDAwMD47CisJCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTE5Mzc1MD47CisJCQkJ
-cmVndWxhdG9yLWVuYWJsZS1yYW1wLWRlbGF5ID0gPDI1Nj47CisJCQkJcmVndWxhdG9yLWFsbG93
-ZWQtbW9kZXMgPSA8MCAxIDI+OworCQkJfTsKKwkJfTsKKwl9OworfTsKKwogJnVhcnQwIHsKIAlz
-dGF0dXMgPSAib2theSI7CiB9OwotLSAKMi4zNi4xCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
-LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+From: Sean Wang <sean.wang@mediatek.com>
+
+Sending WMT command during the reset in progress is invalid and would get
+no response from firmware until the reset is complete, so we ignore the WMT
+command here to resolve the issue which causes the whole reset process
+taking too long.
+
+Fixes: 8fafe702253d ("Bluetooth: mt7921s: support bluetooth reset mechanism")
+Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btmtksdio.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index 4ae6631a7c29..26e27fd79a21 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -1189,6 +1189,10 @@ static int btmtksdio_shutdown(struct hci_dev *hdev)
+ 	 */
+ 	pm_runtime_get_sync(bdev->dev);
+ 
++	/* wmt command only works until the reset is complete */
++	if (test_bit(BTMTKSDIO_HW_RESET_ACTIVE, &bdev->tx_state))
++		goto ignore_wmt_cmd;
++
+ 	/* Disable the device */
+ 	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+ 	wmt_params.flag = 0;
+@@ -1202,6 +1206,7 @@ static int btmtksdio_shutdown(struct hci_dev *hdev)
+ 		return err;
+ 	}
+ 
++ignore_wmt_cmd:
+ 	pm_runtime_put_noidle(bdev->dev);
+ 	pm_runtime_disable(bdev->dev);
+ 
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
