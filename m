@@ -4,68 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A391AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 07:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1629C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 07:45:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5me0pAh4y5Fyi6PWLUOeEmmxHKnd4vrOWiVwZ63n640=; b=CUK+GqOas5KHNn
-	+2btuslj/RUN/I/3h+NGSGQdc+utiNBSKZsP5Kac1Eh5qcSwSoMokixP85huJSxK7awD2+o+Ofpi1
-	IK1eHAI9vcfIQqVOCcEyWpdMbxZvpRrUCNYhwFS5xGTjZHB4gxG0lGoaUChxMeURFMZHwwm7U6Ry5
-	X4j7kBnanNcdLTxVNFQz4q+yraw+3HyP8ngpNvbvSvfvKBrXpUqcEZS7zDnalZy7fiCRXG6c00ImG
-	X+td+mVBd+EYS8EAB8im+tKRVVlSBaUGjam5EPoW009yUCIK8eL6tjIzqn8ZBb/LqBxmAzUeKcLxl
-	1ElT6VzNigNApR/bvohQ==;
+	List-Owner; bh=IBZQxtRWCM6VFlsdTsiahNloGA9LcA5H7W9Mgp+NRqg=; b=3ZKdl71qLDGSSA
+	HcnjO73Y/iOLHbvA6Y4p2vHwFNpz6pJRl0E7iH9U/KXgV2AFCkAqUIpF74hZS+Ivq9mDvioaKGzEU
+	aRBydgFWebCLHJZuq7ZrWKgTfZA/7OzCPSKCEojuXlhqYY8gyTDcJdEEZvsiwIWAnItNccLDIO3rT
+	CaFfYtbbUUSbycyXS2NGFTYnGWJQrD8uTBakhY7KYC2xQ/rSzOt4Hll0zwwaKTXN0l9IKfw9fWXoz
+	kFAX27kCAJGGVCUEGJlid4iSQBL5Dojn69JMJgxp6ctwemL1zdtf0OU5Zz6TPiQVDOLYHkJVrp7XH
+	psnyi51F80smlyxT6BCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np2oT-00AbvR-6z; Thu, 12 May 2022 07:00:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1np3VX-00Anux-SC; Thu, 12 May 2022 07:45:11 +0000
+Received: from wnew4-smtp.messagingengine.com ([64.147.123.18])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np2oH-00Absb-Sa; Thu, 12 May 2022 07:00:31 +0000
-X-UUID: d5e0bc0f47c84633b37d90734e3c5c02-20220512
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:417ef97a-a2e6-4156-8b7f-8f4c79e323e1, OB:0,
- LO
- B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:5
-X-CID-META: VersionHash:faefae9, CLOUDID:e91106a7-eab7-4b74-a74d-5359964535a9,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: d5e0bc0f47c84633b37d90734e3c5c02-20220512
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 323144472; Thu, 12 May 2022 00:00:01 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 23:49:58 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 12 May 2022 14:49:57 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 12 May 2022 14:49:56 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Eddie
- Hung" <eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>
-Subject: [PATCH 2/2] usb: xhci-mtk: remove bandwidth budget table
-Date: Thu, 12 May 2022 14:49:31 +0800
-Message-ID: <20220512064931.31670-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220512064931.31670-1-chunfeng.yun@mediatek.com>
-References: <20220512064931.31670-1-chunfeng.yun@mediatek.com>
+ id 1np3VL-00Anr5-MM; Thu, 12 May 2022 07:45:02 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.west.internal (Postfix) with ESMTP id DB9CC2B059AE;
+ Thu, 12 May 2022 03:44:50 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Thu, 12 May 2022 03:44:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+ :cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1652341490; x=
+ 1652348690; bh=F/3C1V38ahUzifyHzEs+CWDQJfKIOWf16zUshCZyYK4=; b=f
+ oyo14B5q77HWBztYyB6jy0JiEQ9Ii/BiEb6AG0JsU2fDxdZqUcK68yNGAC7EoaS0
+ MLdiGoW2wTpmdb51vgwhwQiNWtPftgTIU60n5uuzPE360fUVgjTUAya9IPqnwNKb
+ BnviiRI1bsbrEa+UsHZFVi+kJ9LICkw7R3oWYCMgAfhrwml2d5eev3yTn9skCxBg
+ VH8/RSJY4M5b81xtpsc+F9ey0/umPWOxbsk7XMP+7d9G9PDaBbhhl/f5taTsz5RB
+ 6dmN6bGq0hhSJ7jW2s6IqG39WvMgsRgpCq0P2vXnglINSYJVGREHl0DALEPDRllK
+ ioGt2OrO1hw7MXf06E+fg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; t=1652341490; x=1652348690; bh=F/3C1V38ahUzi
+ fyHzEs+CWDQJfKIOWf16zUshCZyYK4=; b=PwYCoCpllwsaeQDZ/UbNYqufIcU3D
+ ZUWgY8F7k7Saqv2O6zyjaOoYF5xcDIWEnLSGiwdoo9z8lCBMr/tHJh5b0zfeFWE6
+ /Z2RCJLc+r2pnrvNhImcW02ht7w/mv4bgobAnb9k0gXLDcWXAQYuz3K1z9POKN/y
+ S/eqJzDh+501oGPp9exuG3dzomL2dp5vuGlGULmmWXC8cqRqYHf4z9q8S2BE/UHo
+ 6LyF8q2ZC7+aDXKLXASdRi94nP7is08wABRLovnl/szz04ritVADLELl1cAAm1+2
+ 90qcou1rCuxePxCOn11vTIOW78qBQGe0KsUAxnEyD9NN9GYZScntiuXrg==
+X-ME-Sender: <xms:8bp8YqcK-fdwBudEcm5H1P_35GB8Y7LkLxZ4zJkH7TKJFPY--ts9wQ>
+ <xme:8bp8YkOvhUAnmlQU_F1xaAbi92HOEjaEU2MhKVss9NVtJC1EMVj_Hk3wd-nXqt7XK
+ R68JXUE9Mg8QkPMOf4>
+X-ME-Received: <xmr:8bp8Yrgphjel3L9AUZeENPZqw0iDm42eTLMqQ_jugzMVv5Ex1vLAqdXFGcdo-J9RZVw2IZo3EkihHmK8LVQqL50inCCR6S8SR81EWos>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrgeeigdduvdduucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggugfgjsehtqhertddttddvnecuhfhrohhmpeforgig
+ ihhmvgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrf
+ grthhtvghrnhepheejffefgefgieevjedvfffgvdfghedtgfdvueejvdejgfffvdeuteei
+ vedufedvnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecuvehluhhsthgvrhfuih
+ iivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordht
+ vggthh
+X-ME-Proxy: <xmx:8bp8Yn9_Hnhd8voI202NNd_FlS4bmUHGt3SBFFkI5a5B-1Sfmlps8Q>
+ <xmx:8bp8Ymsn4HLY6Dqe7h0m9lGhr8Ulxluora9B7319zC42M3vRgIlJhg>
+ <xmx:8bp8YuGGZe5sCyNbypDOt_k8OycLAKInPJrliLcAmGL5wufwJB_p0w>
+ <xmx:8rp8Yu2wRlaVZOp8yBGYU65RItWFtHlRMmFrvZtBCrOu7SA0hzrdwpMFxjs>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 12 May 2022 03:44:48 -0400 (EDT)
+Date: Thu, 12 May 2022 09:44:46 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Guillaume Ranquet <granquet@baylibre.com>
+Cc: airlied@linux.ie, angelogioacchino.delregno@collabora.com,
+ chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org,
+ ck.hu@mediatek.com, daniel@ffwll.ch, deller@gmx.de,
+ jitao.shi@mediatek.com, kishon@ti.com, krzk+dt@kernel.org,
+ maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com,
+ p.zabel@pengutronix.de, robh+dt@kernel.org, tzimmermann@suse.de,
+ vkoul@kernel.org, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, markyacoub@google.com,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH v9 18/22] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+Message-ID: <20220512074446.ihilbbnbuwesxbbg@houat>
+References: <20220327223927.20848-1-granquet@baylibre.com>
+ <20220327223927.20848-19-granquet@baylibre.com>
+ <20220429083933.q3w75q3zuyyuvo4w@houat>
+ <CABnWg9tzhZjrdKT4chkDrY-uH8BMUoxyNLUSwfuG6Sv1J+8ddg@mail.gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CABnWg9tzhZjrdKT4chkDrY-uH8BMUoxyNLUSwfuG6Sv1J+8ddg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_000029_960087_411FF9E1 
-X-CRM114-Status: GOOD (  22.01  )
+X-CRM114-CacheID: sfid-20220512_004500_313292_EC3548B9 
+X-CRM114-Status: GOOD (  30.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,203 +116,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The bandwidth budget table is introduced to trace ideal bandwidth used
-by each INT/ISOC endpoint, but in fact the endpoint may consume more
-bandwidth and cause data transfer error, so it's better to leave some
-margin. Obviously it's difficult to find the best margin for all cases,
-instead take use of the worst-case scenario.
+Hi,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk-sch.c | 74 ++++++---------------------------
- drivers/usb/host/xhci-mtk.h     |  2 -
- 2 files changed, 12 insertions(+), 64 deletions(-)
+On Wed, May 11, 2022 at 05:59:13AM -0700, Guillaume Ranquet wrote:
+> >> +#include <drm/drm_atomic_helper.h>
+> >> +#include <drm/drm_bridge.h>
+> >> +#include <drm/drm_crtc.h>
+> >> +#include <drm/dp/drm_dp_helper.h>
+> >> +#include <drm/drm_edid.h>
+> >> +#include <drm/drm_of.h>
+> >> +#include <drm/drm_panel.h>
+> >> +#include <drm/drm_print.h>
+> >> +#include <drm/drm_probe_helper.h>
+> >> +#include <linux/arm-smccc.h>
+> >> +#include <linux/clk.h>
+> >> +#include <linux/delay.h>
+> >> +#include <linux/errno.h>
+> >> +#include <linux/kernel.h>
+> >> +#include <linux/mfd/syscon.h>
+> >> +#include <linux/nvmem-consumer.h>
+> >> +#include <linux/of.h>
+> >> +#include <linux/of_irq.h>
+> >> +#include <linux/of_platform.h>
+> >> +#include <linux/phy/phy.h>
+> >> +#include <linux/platform_device.h>
+> >> +#include <linux/pm_runtime.h>
+> >> +#include <linux/regmap.h>
+> >> +#include <sound/hdmi-codec.h>
+> >> +#include <video/videomode.h>
+> >> +
+> >> +#include "mtk_dp_reg.h"
+> >> +
+> >> +#define MTK_DP_AUX_WAIT_REPLY_COUNT 20
+> >> +#define MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT 3
+> >> +
+> >> +//TODO: platform/device data or dts?
+> >
+> >DTS :)
+> 
+> It's probably going to be a platform_data struct for v10...
+> If I have time, I'll change it to a dts property for v10.
 
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 953d2cd1d4cc..06a6b19acaae 100644
---- a/drivers/usb/host/xhci-mtk-sch.c
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -19,11 +19,6 @@
- #define HS_BW_BOUNDARY	6144
- /* usb2 spec section11.18.1: at most 188 FS bytes per microframe */
- #define FS_PAYLOAD_MAX 188
--/*
-- * max number of microframes for split transfer,
-- * for fs isoc in : 1 ss + 1 idle + 7 cs
-- */
--#define TT_MICROFRAMES_MAX 9
- 
- #define DBG_BUF_EN	64
- 
-@@ -242,28 +237,17 @@ static void drop_tt(struct usb_device *udev)
- 
- static struct mu3h_sch_ep_info *
- create_sch_ep(struct xhci_hcd_mtk *mtk, struct usb_device *udev,
--	      struct usb_host_endpoint *ep, struct xhci_ep_ctx *ep_ctx)
-+	      struct usb_host_endpoint *ep)
- {
- 	struct mu3h_sch_ep_info *sch_ep;
- 	struct mu3h_sch_bw_info *bw_info;
- 	struct mu3h_sch_tt *tt = NULL;
--	u32 len_bw_budget_table;
- 
- 	bw_info = get_bw_info(mtk, udev, ep);
- 	if (!bw_info)
- 		return ERR_PTR(-ENODEV);
- 
--	if (is_fs_or_ls(udev->speed))
--		len_bw_budget_table = TT_MICROFRAMES_MAX;
--	else if ((udev->speed >= USB_SPEED_SUPER)
--			&& usb_endpoint_xfer_isoc(&ep->desc))
--		len_bw_budget_table = get_esit(ep_ctx);
--	else
--		len_bw_budget_table = 1;
--
--	sch_ep = kzalloc(struct_size(sch_ep, bw_budget_table,
--				     len_bw_budget_table),
--			 GFP_KERNEL);
-+	sch_ep = kzalloc(sizeof(*sch_ep), GFP_KERNEL);
- 	if (!sch_ep)
- 		return ERR_PTR(-ENOMEM);
- 
-@@ -295,8 +279,6 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 	u32 mult;
- 	u32 esit_pkts;
- 	u32 max_esit_payload;
--	u32 *bwb_table = sch_ep->bw_budget_table;
--	int i;
- 
- 	ep_type = CTX_TO_EP_TYPE(le32_to_cpu(ep_ctx->ep_info2));
- 	maxpkt = MAX_PACKET_DECODED(le32_to_cpu(ep_ctx->ep_info2));
-@@ -332,7 +314,6 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 		 */
- 		sch_ep->pkts = max_burst + 1;
- 		sch_ep->bw_cost_per_microframe = maxpkt * sch_ep->pkts;
--		bwb_table[0] = sch_ep->bw_cost_per_microframe;
- 	} else if (sch_ep->speed >= USB_SPEED_SUPER) {
- 		/* usb3_r1 spec section4.4.7 & 4.4.8 */
- 		sch_ep->cs_count = 0;
-@@ -349,7 +330,6 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 		if (ep_type == INT_IN_EP || ep_type == INT_OUT_EP) {
- 			sch_ep->pkts = esit_pkts;
- 			sch_ep->num_budget_microframes = 1;
--			bwb_table[0] = maxpkt * sch_ep->pkts;
- 		}
- 
- 		if (ep_type == ISOC_IN_EP || ep_type == ISOC_OUT_EP) {
-@@ -366,15 +346,8 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 				DIV_ROUND_UP(esit_pkts, sch_ep->pkts);
- 
- 			sch_ep->repeat = !!(sch_ep->num_budget_microframes > 1);
--			sch_ep->bw_cost_per_microframe = maxpkt * sch_ep->pkts;
--
--			for (i = 0; i < sch_ep->num_budget_microframes - 1; i++)
--				bwb_table[i] = sch_ep->bw_cost_per_microframe;
--
--			/* last one <= bw_cost_per_microframe */
--			bwb_table[i] = maxpkt * esit_pkts
--				       - i * sch_ep->bw_cost_per_microframe;
- 		}
-+		sch_ep->bw_cost_per_microframe = maxpkt * sch_ep->pkts;
- 	} else if (is_fs_or_ls(sch_ep->speed)) {
- 		sch_ep->pkts = 1; /* at most one packet for each microframe */
- 
-@@ -384,28 +357,7 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 		 */
- 		sch_ep->cs_count = DIV_ROUND_UP(maxpkt, FS_PAYLOAD_MAX);
- 		sch_ep->num_budget_microframes = sch_ep->cs_count;
--		sch_ep->bw_cost_per_microframe =
--			(maxpkt < FS_PAYLOAD_MAX) ? maxpkt : FS_PAYLOAD_MAX;
--
--		/* init budget table */
--		if (ep_type == ISOC_OUT_EP) {
--			for (i = 0; i < sch_ep->num_budget_microframes; i++)
--				bwb_table[i] =	sch_ep->bw_cost_per_microframe;
--		} else if (ep_type == INT_OUT_EP) {
--			/* only first one consumes bandwidth, others as zero */
--			bwb_table[0] = sch_ep->bw_cost_per_microframe;
--		} else { /* INT_IN_EP or ISOC_IN_EP */
--			bwb_table[0] = 0; /* start split */
--			bwb_table[1] = 0; /* idle */
--			/*
--			 * due to cs_count will be updated according to cs
--			 * position, assign all remainder budget array
--			 * elements as @bw_cost_per_microframe, but only first
--			 * @num_budget_microframes elements will be used later
--			 */
--			for (i = 2; i < TT_MICROFRAMES_MAX; i++)
--				bwb_table[i] =	sch_ep->bw_cost_per_microframe;
--		}
-+		sch_ep->bw_cost_per_microframe = min_t(u32, maxpkt, FS_PAYLOAD_MAX);
- 	}
- }
- 
-@@ -422,7 +374,7 @@ static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
- 
- 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
- 			k = XHCI_MTK_BW_INDEX(base + j);
--			bw = sch_bw->bus_bw[k] + sch_ep->bw_budget_table[j];
-+			bw = sch_bw->bus_bw[k] + sch_ep->bw_cost_per_microframe;
- 			if (bw > max_bw)
- 				max_bw = bw;
- 		}
-@@ -433,18 +385,16 @@ static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
- static void update_bus_bw(struct mu3h_sch_bw_info *sch_bw,
- 	struct mu3h_sch_ep_info *sch_ep, bool used)
- {
-+	int bw_updated;
- 	u32 base;
--	int i, j, k;
-+	int i, j;
-+
-+	bw_updated = sch_ep->bw_cost_per_microframe * (used ? 1 : -1);
- 
- 	for (i = 0; i < sch_ep->num_esit; i++) {
- 		base = sch_ep->offset + i * sch_ep->esit;
--		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
--			k = XHCI_MTK_BW_INDEX(base + j);
--			if (used)
--				sch_bw->bus_bw[k] += sch_ep->bw_budget_table[j];
--			else
--				sch_bw->bus_bw[k] -= sch_ep->bw_budget_table[j];
--		}
-+		for (j = 0; j < sch_ep->num_budget_microframes; j++)
-+			sch_bw->bus_bw[XHCI_MTK_BW_INDEX(base + j)] += bw_updated;
- 	}
- }
- 
-@@ -708,7 +658,7 @@ static int add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 
- 	xhci_dbg(xhci, "%s %s\n", __func__, decode_ep(ep, udev->speed));
- 
--	sch_ep = create_sch_ep(mtk, udev, ep, ep_ctx);
-+	sch_ep = create_sch_ep(mtk, udev, ep);
- 	if (IS_ERR_OR_NULL(sch_ep))
- 		return -ENOMEM;
- 
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index ffd4b493b4ba..1174a510dd38 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -83,7 +83,6 @@ struct mu3h_sch_bw_info {
-  *		times; 1: distribute the (bMaxBurst+1)*(Mult+1) packets
-  *		according to @pkts and @repeat. normal mode is used by
-  *		default
-- * @bw_budget_table: table to record bandwidth budget per microframe
-  */
- struct mu3h_sch_ep_info {
- 	u32 esit;
-@@ -109,7 +108,6 @@ struct mu3h_sch_ep_info {
- 	u32 pkts;
- 	u32 cs_count;
- 	u32 burst_mode;
--	u32 bw_budget_table[];
- };
- 
- #define MU3C_U3_PORT_MAX 4
--- 
-2.18.0
+I can't really imagine a case where we would need platform_data
+nowadays. If you have a device tree, then it should be part of the
+binding.
 
+What issue would you like to address by using a platform_data?
+
+> >> +static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+> >> +{
+> >> +	return connector_status_connected;
+> >> +}
+> >
+> >I'm not quite sure what's going on there. You seem to have some support
+> >for HPD interrupts above, but you always report the display as
+> >connected?
+> >
+> >I'd assume that either you don't have HPD support and then always report
+> >it as connected, or you have HPD support and report the current status
+> >in detect, but that combination seems weird.
+> 
+> The HPD logic needs more work, some things have been broken when I split
+> the driver into three patches eDP - DP - Audio
+> The assumption at first was that eDP didn't need any HPD handling... but it
+> seems I was wrong and the eDP driver needs to be reworked.
+
+That can be made into a patch of its own if you prefer.
+
+You first introduce the driver without status reporting (always
+returning connected or unknown), and then add the needed bits for HPD.
+
+However, that first patch shouldn't contain the interrupt plumbing and
+so on, it's just confusing.
+
+> >> +static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+> >> +				    struct drm_connector *connector)
+> >> +{
+> >> +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+> >> +	bool enabled = mtk_dp->enabled;
+> >> +	struct edid *new_edid = NULL;
+> >> +
+> >> +	if (!enabled)
+> >> +		drm_bridge_chain_pre_enable(bridge);
+> >> +
+> >> +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
+> >> +	usleep_range(2000, 5000);
+> >> +
+> >> +	if (mtk_dp_plug_state(mtk_dp))
+> >> +		new_edid = drm_get_edid(connector, &mtk_dp->aux.ddc);
+> >> +
+> >> +	if (!enabled)
+> >> +		drm_bridge_chain_post_disable(bridge);
+> >
+> >Are you sure we can't get a mode set while get_edid is called?
+> >
+> >If we can, then you could end up disabling the device while it's being
+> >powered on.
+> 
+> I'm a bit unsure, I need to spend more time in the drm stack to make sure.
+> I'll get back to you when I have a definitive answer.
+
+So, it looks like it's ok.
+
+get_edid is your implementation of get_modes, which is called by
+drm_helper_probe_single_connector_modes
+
+https://elixir.bootlin.com/linux/latest/source/drivers/gpu/drm/drm_probe_helper.c#L416
+
+This is the standard implemantion of fill_modes, which is called
+whenever the get_connector ioctl is called (or similar paths, like
+drm_client_modeset_probe)
+
+drm_helper_probe_single_connector_modes is under the assumption that the
+mode_config.mutex is held though, and that the big lock. So it should be
+serialized there.
+
+Just for future proofing though, it would be better to use refcounting
+there. Would runtime_pm work for you there?
+
+> >> +static void mtk_dp_parse_drm_mode_timings(struct mtk_dp *mtk_dp,
+> >> +					  struct drm_display_mode *mode)
+> >> +{
+> >> +	struct mtk_dp_timings *timings = &mtk_dp->info.timings;
+> >> +
+> >> +	drm_display_mode_to_videomode(mode, &timings->vm);
+> >> +	timings->frame_rate = mode->clock * 1000 / mode->htotal / mode->vtotal;
+> >
+> >drm_mode_vrefresh()
+> >
+> >> +	timings->htotal = mode->htotal;
+> >> +	timings->vtotal = mode->vtotal;
+> >> +}
+> >
+> >It's not really clear to me why you need to duplicate drm_display_mode
+> >here?
+> >
+> It's saved to be re-used in mtk_dp_set_msa().
+> It's not ideal, I'll check if I can get the mode directly from mtk_dp_set_msa()
+
+Yeah, it looks like mtk_dp_set_msa() uses fairly straightforward values,
+this will be just as easy with drm_display_mode.
+
+Maxime
 
 _______________________________________________
 Linux-mediatek mailing list
