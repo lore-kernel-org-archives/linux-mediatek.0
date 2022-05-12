@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8A73C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 06:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4272C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 06:48:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lSdVdQrpI0tYqdAMk1qVnOidfFaBMn+kXlmI6mHayiw=; b=45i9fEmLVnBL29
-	PnxkNIeRpF01PbjtCyA0b24ZtNQyafILzte/Hm6JWAajeWz3pc5Rjo4kwlcRb9hLMGUuw/Q+Wcinw
-	9lQRzIk0crteY8d6nfWJJDTuywoi9B7w5zjWT15nYMrfQG0SY8XQydqCRGYLyEdaxZ1oAH5twaPEj
-	On4DBEgEl8QQ/QY+wviBt6Jxxn/soYRY4AJi/vu2NX3O9Go4Ib+vrm/ZA+gaBf9X4LYlVnQCaon+w
-	t+XH5UWSPwGN8pR7G5EZL4ai9QzK2wCgKCE7bN5Yp6RLHf606iCPHK0FYKrccl65TmF2CYVedwa4o
-	6usu5CvkFAFSMMSL64AQ==;
+	List-Owner; bh=NaKcdFcA6p7SKbVHdkzkXReww9ePv9FEtiNtjK30rG4=; b=WMZaQEx4e4oLbV
+	dTSOmoGiP12f1OzKvotbms6n5cllwgmm79NUeBx9ZOlVtbZBMCdMnv34pLrpgKCSvIDgI5OQ0UNk7
+	MQPa2/uKUdzhp4lutJj0AC/kZFyjuXxlpy0RKPd0k+lF+fKkZFbl1GXtv1vhvkyNlPHTyAyUDuiW/
+	QtFzbefwp5H3UtgWyJOyGw/GTVfJcYuuvMitfp15kAYSPQ9QRNnUrg9h4sdtUDiTRC/TjhUKfwitK
+	tHaW9UjIE95EeZupRHWjcaHneIowJGCLSakdU9QRz9ZSVjsoGWg3yujfWJwl7wysck7H/UmOthAO5
+	TZjzgKFnPNJ9T7J6ixEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np2Rx-00AVLw-6X; Thu, 12 May 2022 06:37:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1np2cv-00AZna-QO; Thu, 12 May 2022 06:48:45 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np2Rt-00AVJr-G3; Thu, 12 May 2022 06:37:22 +0000
-X-UUID: 118892c4d3d44885aa89ba26d32e6d4e-20220511
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.4, REQID:2749d688-aeaa-454f-aa65-506a3b80f274, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:faefae9, CLOUDID:ff3005a7-eab7-4b74-a74d-5359964535a9,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
-X-UUID: 118892c4d3d44885aa89ba26d32e6d4e-20220511
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <xinlei.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1734189738; Wed, 11 May 2022 23:37:13 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 May 2022 23:30:20 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 12 May 2022 14:30:18 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 12 May 2022 14:30:16 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>, <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <rex-bc.chen@mediatek.com>, <jitao.shi@mediatek.com>, Xinlei Lee
- <xinlei.lee@mediatek.com>
-Subject: [PATCH v6,1/4] drm/mediatek: Modify dsi funcs to atomic operations
-Date: Thu, 12 May 2022 14:30:09 +0800
-Message-ID: <1652337012-9053-2-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1652337012-9053-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1652337012-9053-1-git-send-email-xinlei.lee@mediatek.com>
+ id 1np2cj-00AZiQ-Eh; Thu, 12 May 2022 06:48:35 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id F3A0A1F8F4;
+ Thu, 12 May 2022 06:48:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1652338105; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Eu9dmL37+61LEqPwl8A52yyx9mTfxqzqsNTK2LFvPLQ=;
+ b=GINM0xc9jq+k+Rm9dfJBpBb5b9xYd3NSyOFAAM1GqUZofWwqRW0xafLC2TRExNkREM8Cs6
+ tp/EaLSZs6qv9kdrKhLQwbLEBA4vkkcJiDOXnWZaRutFi0aM46eUBxJhHOXFEuzyd9SfaH
+ 2JjjJoGuXX8RinzI5mrEB/Aj3Q/RLZ4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1652338105;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Eu9dmL37+61LEqPwl8A52yyx9mTfxqzqsNTK2LFvPLQ=;
+ b=OZM1ZcPj2bCc+as8UglJ1d7CTen0JK3v7tACdsnA71o+G83xWyJcNR4pz+ISE12LF5OYqK
+ Li91Qrr6y7QZjzBw==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B51A013ABE;
+ Thu, 12 May 2022 06:48:24 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+ by imap2.suse-dmz.suse.de with ESMTPSA id iagnKritfGLoVQAAMHmgww
+ (envelope-from <hare@suse.de>); Thu, 12 May 2022 06:48:24 +0000
+Message-ID: <1e349868-b302-1473-188a-1a6f2bb88cd5@suse.de>
+Date: Thu, 12 May 2022 08:48:24 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Content-Language: en-US
+To: Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+ Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+ Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>
+Cc: Serge Semin <fancer.lancer@gmail.com>,
+ Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
+ Pavel Parkhomenko <Pavel.Parkhomenko@baikalelectronics.ru>,
+ Rob Herring <robh+dt@kernel.org>, linux-ide@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220511231810.4928-1-Sergey.Semin@baikalelectronics.ru>
+ <20220511231810.4928-11-Sergey.Semin@baikalelectronics.ru>
+From: Hannes Reinecke <hare@suse.de>
+Subject: Re: [PATCH v3 10/23] ata: libahci_platform: Parse ports-implemented
+ property in resources getter
+In-Reply-To: <20220511231810.4928-11-Sergey.Semin@baikalelectronics.ru>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_233721_600106_26733A71 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220511_234833_677708_9B8B5BFD 
+X-CRM114-Status: GOOD (  21.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,61 +94,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
-
-Because .enable & .disable are deprecated.
-Use .atomic_enable & .atomic_disable instead.
-
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index bd3f5b485085..f880136cec09 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -763,14 +763,16 @@ static void mtk_dsi_bridge_mode_set(struct drm_bridge *bridge,
- 	drm_display_mode_to_videomode(adjusted, &dsi->vm);
- }
- 
--static void mtk_dsi_bridge_disable(struct drm_bridge *bridge)
-+static void mtk_dsi_bridge_atomic_disable(struct drm_bridge *bridge,
-+					  struct drm_bridge_state *old_bridge_state)
- {
- 	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
- 
- 	mtk_output_dsi_disable(dsi);
- }
- 
--static void mtk_dsi_bridge_enable(struct drm_bridge *bridge)
-+static void mtk_dsi_bridge_atomic_enable(struct drm_bridge *bridge,
-+					 struct drm_bridge_state *old_bridge_state)
- {
- 	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
- 
-@@ -779,8 +781,8 @@ static void mtk_dsi_bridge_enable(struct drm_bridge *bridge)
- 
- static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
- 	.attach = mtk_dsi_bridge_attach,
--	.disable = mtk_dsi_bridge_disable,
--	.enable = mtk_dsi_bridge_enable,
-+	.atomic_disable = mtk_dsi_bridge_atomic_disable,
-+	.atomic_enable = mtk_dsi_bridge_atomic_enable,
- 	.mode_set = mtk_dsi_bridge_mode_set,
- };
- 
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gNS8xMi8yMiAwMToxNywgU2VyZ2UgU2VtaW4gd3JvdGU6Cj4gVGhlIHBvcnRzLWltcGxlbWVu
+dGVkIHByb3BlcnR5IGlzIG1haW5seSB1c2VkIG9uIHRoZSBPRi1iYXNlZCBwbGF0Zm9ybXMKPiB3
+aXRoIG5vIHBvcnRzIG1hcHBpbmcgaW5pdGlhbGl6ZWQgYnkgYSBib290bG9hZGVyL0JJT1MgZmly
+bXdhcmUuIFNlZWluZwo+IHRoZSBzYW1lIG9mX3Byb3BlcnR5X3JlYWRfdTMyKCktYmFzZWQgcGF0
+dGVybiBoYXMgYWxyZWFkeSBiZWVuIGltcGxlbWVudGVkCj4gaW4gdGhlIGdlbmVyaWMgQUhDSSBM
+TEREIChnbHVlKSBkcml2ZXIgYW5kIGluIHRoZSBNZWRpYXRlaywgU3QgQUhDSQo+IGRyaXZlcnMg
+bGV0J3MgbW92ZSB0aGUgcHJvcGVydHkgcmVhZCBwcm9jZWR1cmUgdG8gdGhlIGdlbmVyaWMKPiBh
+aGNpX3BsYXRmb3JtX2dldF9yZXNvdXJjZXMoKSBtZXRob2QuIFRodXMgd2UnbGwgaGF2ZSB0aGUg
+Zm9yY2VkIHBvcnRzCj4gbWFwcGluZyBmZWF0dXJlIHN1cHBvcnRlZCBmb3IgZWFjaCBPRi1iYXNl
+ZCBwbGF0Zm9ybSB3aGljaCByZXF1aXJlcyB0aGF0LAo+IGFuZCBzdG9wIHJlLWltcGxlbWVudGlu
+ZyB0aGUgc2FtZSBwYXR0ZXJuIGluIHRoZXJlIGEgYml0IHNpbXBsaWZ5aW5nIHRoZQo+IGNvZGUu
+Cj4gCj4gU2lnbmVkLW9mZi1ieTogU2VyZ2UgU2VtaW4gPFNlcmdleS5TZW1pbkBiYWlrYWxlbGVj
+dHJvbmljcy5ydT4KPiAtLS0KPiAgIGRyaXZlcnMvYXRhL2FoY2lfbXRrLmMgICAgICAgICB8IDIg
+LS0KPiAgIGRyaXZlcnMvYXRhL2FoY2lfcGxhdGZvcm0uYyAgICB8IDMgLS0tCj4gICBkcml2ZXJz
+L2F0YS9haGNpX3N0LmMgICAgICAgICAgfCAzIC0tLQo+ICAgZHJpdmVycy9hdGEvbGliYWhjaV9w
+bGF0Zm9ybS5jIHwgMyArKysKPiAgIDQgZmlsZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA4
+IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2F0YS9haGNpX210ay5jIGIv
+ZHJpdmVycy9hdGEvYWhjaV9tdGsuYwo+IGluZGV4IDFmNmM4NWZkZTk4My4uYzA1NjM3OGUzZTcy
+IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvYXRhL2FoY2lfbXRrLmMKPiArKysgYi9kcml2ZXJzL2F0
+YS9haGNpX210ay5jCj4gQEAgLTExOCw4ICsxMTgsNiBAQCBzdGF0aWMgaW50IG10a19haGNpX3Bh
+cnNlX3Byb3BlcnR5KHN0cnVjdCBhaGNpX2hvc3RfcHJpdiAqaHByaXYsCj4gICAJCQkJICAgU1lT
+X0NGR19TQVRBX0VOKTsKPiAgIAl9Cj4gICAKPiAtCW9mX3Byb3BlcnR5X3JlYWRfdTMyKG5wLCAi
+cG9ydHMtaW1wbGVtZW50ZWQiLCAmaHByaXYtPmZvcmNlX3BvcnRfbWFwKTsKPiAtCj4gICAJcmV0
+dXJuIDA7Cj4gICB9Cj4gICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9y
+bS5jIGIvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9ybS5jCj4gaW5kZXggMjhhOGRlNWI0OGI5Li45
+YjU2NDkwZWNiYzMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9ybS5jCj4g
+KysrIGIvZHJpdmVycy9hdGEvYWhjaV9wbGF0Zm9ybS5jCj4gQEAgLTU2LDkgKzU2LDYgQEAgc3Rh
+dGljIGludCBhaGNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAJaWYg
+KHJjKQo+ICAgCQlyZXR1cm4gcmM7Cj4gICAKPiAtCW9mX3Byb3BlcnR5X3JlYWRfdTMyKGRldi0+
+b2Zfbm9kZSwKPiAtCQkJICAgICAicG9ydHMtaW1wbGVtZW50ZWQiLCAmaHByaXYtPmZvcmNlX3Bv
+cnRfbWFwKTsKPiAtCj4gICAJaWYgKG9mX2RldmljZV9pc19jb21wYXRpYmxlKGRldi0+b2Zfbm9k
+ZSwgImhpc2lsaWNvbixoaXNpLWFoY2kiKSkKPiAgIAkJaHByaXYtPmZsYWdzIHw9IEFIQ0lfSEZM
+QUdfTk9fRkJTIHwgQUhDSV9IRkxBR19OT19OQ1E7Cj4gICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9hdGEvYWhjaV9zdC5jIGIvZHJpdmVycy9hdGEvYWhjaV9zdC5jCj4gaW5kZXggNzUyNjY1M2M4
+NDNiLi4wNjg2MjEwOTljMDAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9hdGEvYWhjaV9zdC5jCj4g
+KysrIGIvZHJpdmVycy9hdGEvYWhjaV9zdC5jCj4gQEAgLTE2OCw5ICsxNjgsNiBAQCBzdGF0aWMg
+aW50IHN0X2FoY2lfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgIAo+ICAg
+CXN0X2FoY2lfY29uZmlndXJlX29vYihocHJpdi0+bW1pbyk7Cj4gICAKPiAtCW9mX3Byb3BlcnR5
+X3JlYWRfdTMyKGRldi0+b2Zfbm9kZSwKPiAtCQkJICAgICAicG9ydHMtaW1wbGVtZW50ZWQiLCAm
+aHByaXYtPmZvcmNlX3BvcnRfbWFwKTsKPiAtCj4gICAJZXJyID0gYWhjaV9wbGF0Zm9ybV9pbml0
+X2hvc3QocGRldiwgaHByaXYsICZzdF9haGNpX3BvcnRfaW5mbywKPiAgIAkJCQkgICAgICAmYWhj
+aV9wbGF0Zm9ybV9zaHQpOwo+ICAgCWlmIChlcnIpIHsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9h
+dGEvbGliYWhjaV9wbGF0Zm9ybS5jIGIvZHJpdmVycy9hdGEvbGliYWhjaV9wbGF0Zm9ybS5jCj4g
+aW5kZXggNGU1NGUxOWYwN2IyLi5mN2Y5Y2FjMTBjYjEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9h
+dGEvbGliYWhjaV9wbGF0Zm9ybS5jCj4gKysrIGIvZHJpdmVycy9hdGEvbGliYWhjaV9wbGF0Zm9y
+bS5jCj4gQEAgLTUxMiw2ICs1MTIsOSBAQCBzdHJ1Y3QgYWhjaV9ob3N0X3ByaXYgKmFoY2lfcGxh
+dGZvcm1fZ2V0X3Jlc291cmNlcyhzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICAgCQln
+b3RvIGVycl9vdXQ7Cj4gICAJfQo+ICAgCj4gKwlvZl9wcm9wZXJ0eV9yZWFkX3UzMihkZXYtPm9m
+X25vZGUsCj4gKwkJCSAgICAgInBvcnRzLWltcGxlbWVudGVkIiwgJmhwcml2LT5mb3JjZV9wb3J0
+X21hcCk7Cj4gKwo+ICAgCWlmIChjaGlsZF9ub2Rlcykgewo+ICAgCQlmb3JfZWFjaF9jaGlsZF9v
+Zl9ub2RlKGRldi0+b2Zfbm9kZSwgY2hpbGQpIHsKPiAgIAkJCXUzMiBwb3J0OwoKV2hhdCBoYXBw
+ZW5zIG9uIHRoZSBvdGhlciBwbGF0Zm9ybXM/Cldvbid0IHRoZXkgcmVnaXN0ZXIgYW4gZXJyb3Ig
+aWYgdGhhdCBwcm9wZXJ0eSBpc24ndCBpbXBsZW1lbnRlZD8KCkNoZWVycywKCkhhbm5lcwotLSAK
+RHIuIEhhbm5lcyBSZWluZWNrZQkJICAgICAgICAgICBLZXJuZWwgU3RvcmFnZSBBcmNoaXRlY3QK
+aGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBT
+b2Z0d2FyZSBTb2x1dGlvbnMgR2VybWFueSBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xy
+bmJlcmcKSFJCIDM2ODA5IChBRyBOw7xybmJlcmcpLCBHRjogRmVsaXggSW1lbmTDtnJmZmVyCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
+YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
