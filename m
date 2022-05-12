@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AF29C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 08:00:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7E2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 May 2022 08:05:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3a3UV1X2UmffBpisQHW6UxgxbDTO66J3I41B6UHQJ5g=; b=ox32o+btWqR12C
-	RkHglcGve4CEKBVcAaUyelkY7D7Tkd5yP8wcdi5AWAE5P65F3l3WEs/8QiHnocGRhTHo3NC5Dya5d
-	y5mjxP8J8M1E+QkZXjfhnQkkYKO+80SaO3sHbr+ctDLS9nBShlmL6C38WfaULI8WKTRG8g93gVUtC
-	MoQihdRYdaswUGRxeO/RxrD+vrITHiuPnnz4rURAnadvKBd8V/5OWiPHHsC0c6YFq+dOvSqWHvQlM
-	XosDVyDywSzlZhJiwBvs2EksAzQgD+CCjkJoypuAIPP/2n1IZbEoNgp3ORcgw5SoEAZZ5QAMWkZ0K
-	02cbIIZ3mEsTiVwxy+mg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XtEqmLTKNHS53w/wHetMxxS0Y2unkeTfvb7YbKg1Q1U=; b=MzaFI6F9cJgn34
+	mE57yq2mePXisKIp5ZOWU6hmkrQBL1RYr6kJ65SvI65frAwJeMenB9Q4rI0IJCP3Iu9yP+cSC0vGo
+	GQiK29T4eda86w82qvN63fiiCttQ4POzTDFPxyj9vp9m66ed3Fxno6wOAFD4AvtlOzQxeUNc0jP8m
+	AtbA9E8NDmjJggnRzKmv9tOGmxCslDE2mSWs/aw9hU2iNf6dEC9FI3D9cPNWkOASDJ7p2oct+CPdW
+	7XGb9jZW5rL7AOvK/jaqVIsEzhFHM+mk0hVfGRocQn4nozjjVIgeTKYv71kWsP1NlWhM/0msA0icF
+	eMgqYyyZd89KHys0ijDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np3kK-00AqXC-Ob; Thu, 12 May 2022 08:00:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1np3pM-00Argh-M5; Thu, 12 May 2022 08:05:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np3k9-00AqTY-Ic; Thu, 12 May 2022 08:00:18 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 1F8D961F03;
- Thu, 12 May 2022 08:00:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 514E0C34113;
- Thu, 12 May 2022 08:00:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652342412;
- bh=gNpLYA0CVJo+44QjEOzPtR7Xpn/S46BHQXAcJmGmc+g=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=KVzTM/PZ2Nb9gxqx7Mb8Ztk2peiZX1GYuUdzV1Cw4ddlm3fkBXLMkXlD4iauHfLus
- vSkDGPsNDc1wPj20DK5pHT6PI347LU0GLJ8yHHKpjqk3XMqpQNE6FklfOmnzui06jQ
- mwlHh9GSmSk+9M4NVDxLVTIRn0YMqQPhy0tiJBv1Go7JfkxOqK7+SOvPZMbS8qexvI
- oFdJ18k0KcX0HiBjZdiz0YdPrnK2E4nsg/tj62DiOOAJ5DiuGrtoSLg++DsI5bb70p
- SDn6uRC5ryG2D7szqCKpv/8BnZfke/7MJjw367nPoBD8rM3SwjPDH7G+zj5LQUCowu
- 7DzPcYTIyu9iw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 2EC24F03935; Thu, 12 May 2022 08:00:12 +0000 (UTC)
+ id 1np3pH-00Ardg-Ta; Thu, 12 May 2022 08:05:39 +0000
+X-UUID: 2e219ae6c1f54e1f921b1503d6eee6c0-20220512
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.4, REQID:ea61d7c0-1ba6-4e7b-8255-19be77cffc7f, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:faefae9, CLOUDID:a13309a7-eab7-4b74-a74d-5359964535a9,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,File:nil,QS:0,BEC:nil
+X-UUID: 2e219ae6c1f54e1f921b1503d6eee6c0-20220512
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1436257211; Thu, 12 May 2022 01:05:28 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 01:05:27 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 May 2022 16:05:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 12 May 2022 16:05:24 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>
+CC: <airlied@linux.ie>, <matthias.bgg@gmail.com>,
+ <angelogioacchino.delregno@collabora.com>, <jason-jh.lin@mediatek.com>,
+ <nancy.lin@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [PATCH v3 0/3] MediaTek MT8195 display binding
+Date: Thu, 12 May 2022 16:05:20 +0800
+Message-ID: <20220512080523.25082-1-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Subject: Re: [PATCH] net: ethernet: mediatek: ppe: fix wrong size passed to
- memset()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <165234241218.23640.3865091641010227800.git-patchwork-notify@kernel.org>
-Date: Thu, 12 May 2022 08:00:12 +0000
-References: <20220511030829.3308094-1-yangyingliang@huawei.com>
-In-Reply-To: <20220511030829.3308094-1-yangyingliang@huawei.com>
-To: Yang Yingliang <yangyingliang@huawei.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, nbd@nbd.name,
- davem@davemloft.net, kuba@kernel.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_010017_687903_0EF2435E 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20220512_010536_013710_5AD9A0DB 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +83,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Add this series to present MediaTek display binding for MT8195.
+The reason I send this series is Jason and Nancy's binding patches are
+never received by devicetree mail server.
+Therefore, I help them to resend binding patches.
 
-This patch was applied to netdev/net.git (master)
-by Paolo Abeni <pabeni@redhat.com>:
+Changes for v3:
+1. Fix rdma and ethdr binding doc.
+2. Nancy's series: [1].
+3. This series is based on linux-next: next-20220511.
 
-On Wed, 11 May 2022 11:08:29 +0800 you wrote:
-> 'foe_table' is a pointer, the real size of struct mtk_foe_entry
-> should be pass to memset().
-> 
-> Fixes: ba37b7caf1ed ("net: ethernet: mtk_eth_soc: add support for initializing the PPE")
-> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_ppe.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Changes for v2:
+1. This patch is based on linux next-20220506.
+2. Jason's patches are accepted and I drop them.
 
-Here is the summary with links:
-  - net: ethernet: mediatek: ppe: fix wrong size passed to memset()
-    https://git.kernel.org/netdev/net/c/00832b1d1a39
+[1]: https://lore.kernel.org/all/20220512053128.31415-1-nancy.lin@mediatek.com/
 
-You are awesome, thank you!
+Nancy.Lin (3):
+  dt-bindings: mediatek: add vdosys1 RDMA definition for mt8195
+  dt-bindings: reset: mt8195: add vdosys1 reset control bit
+  dt-bindings: mediatek: add ethdr definition for mt8195
+
+ .../display/mediatek/mediatek,ethdr.yaml      | 188 ++++++++++++++++++
+ .../display/mediatek/mediatek,mdp-rdma.yaml   |  88 ++++++++
+ include/dt-bindings/reset/mt8195-resets.h     |  45 +++++
+ 3 files changed, 321 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.18.0
 
 
 _______________________________________________
