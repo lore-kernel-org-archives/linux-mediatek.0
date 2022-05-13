@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A16F0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 09:27:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF46C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 09:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=15hMRtKc2efd4v9lAkDJCG2uDnA3jElqEA4HulHCaBM=; b=4yCFQkkub0YmAv
-	pweYOCAVY6OVlLDad0NMvmHc2rEBcy1ZRxIasrD8QEVn2A0fQfkXcabMYMMaI92/N9vo+hVUBiJtw
-	e6niBncDr169D3uVLhlwFS/pJzKUbvtHCJMSsBu0f5SRm9nOjydVHNm+54fxjZUkVVFi/T7W8m4KL
-	OTcKSg7nyEIxDIyj4c00+TAk6VcBuh9ZXpr5EbiN5B9jZcL7TlSI5J9r11MMXMJQvRPb8Up0HEd0p
-	+GLpk0LFUBP36/PBmVhuC9vK+AaJOoUeowRK1IP8HRUwNUOBxhm93E7Pymtj7XKKrz1VuhpY05joi
-	vtu/bFPOwvgW4NRUKLfQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=evhQkEJbaZ55iSzjisIEAPPO763boOfu6UFr+ci9Zq0=; b=Cr45gmaU+AhNKj
+	I67Sa7F8YcvDTX7cBBkgJviWodFsq7MK1c/owSp98zDgxEDIJp+MvaNqmlLke6PIm3loKBSYRuuQN
+	D8FnB33B6JeC9N7HSUOnwvqF2oX7drsB4xUOQZzuYBpeAoKM6tAvshoPrXGOLUlmpEdqggS7RJgME
+	LoZIIXolNNFHYXA0tEKd2CBk8lDcT9thzZvECK2gm61YvHERfCvya4XayXsqMisLtHq6orsikPfCL
+	yOojwXO5ZiwBeCRUB3HFt0WSF3CiZtPmmV2U3kyrT5kCy2R2RWlSSrbrIXxr0tyjT2IjCBAwFj4WY
+	SErp4A8lznS32ZlquofQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npRaN-00FJF7-6w; Fri, 13 May 2022 09:27:47 +0000
+	id 1npRaO-00FJFz-HX; Fri, 13 May 2022 09:27:48 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npRZS-00FIfM-Mh; Fri, 13 May 2022 09:26:52 +0000
-X-UUID: 7766a9eac75d4ff8845a8e7ff398f9a3-20220513
+ id 1npRZT-00FIeS-1q; Fri, 13 May 2022 09:26:52 +0000
+X-UUID: 1a5e7faefb47457a91f61071a856cf12-20220513
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:5ac2943a-0992-4481-8582-8f632fc92c4a, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:1e8e9d8f-8a13-48f1-9a28-4359dad76763, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
- ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09, CLOUDID:b53e32a7-eab7-4b74-a74d-5359964535a9,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:b63e32a7-eab7-4b74-a74d-5359964535a9,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: 7766a9eac75d4ff8845a8e7ff398f9a3-20220513
+X-UUID: 1a5e7faefb47457a91f61071a856cf12-20220513
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1506411918; Fri, 13 May 2022 02:26:46 -0700
+ with ESMTP id 2021616035; Fri, 13 May 2022 02:26:46 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 May 2022 02:25:30 -0700
+ 15.0.1497.2; Fri, 13 May 2022 02:25:44 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 May 2022 17:25:28 +0800
+ 15.0.1497.2; Fri, 13 May 2022 17:25:42 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 13 May 2022 17:25:26 +0800
+ Transport; Fri, 13 May 2022 17:25:40 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -65,15 +65,19 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v6, 0/7] support mt8195 decoder
-Date: Fri, 13 May 2022 17:25:19 +0800
-Message-ID: <20220513092526.9670-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v6,
+ 6/7] media: mediatek: vcodec: prevent kernel crash when scp ipi
+ timeout
+Date: Fri, 13 May 2022 17:25:25 +0800
+Message-ID: <20220513092526.9670-7-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220513092526.9670-1-yunfei.dong@mediatek.com>
+References: <20220513092526.9670-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_022650_759887_8FFC1E35 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20220513_022651_141204_B58942E1 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,54 +94,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Firstly, add mt8195 soc lat hardware and compatible, then add documents.
-For vp8 only support MM21 mode, H264/vp9 support MT21C, need to separate
-them. Lastly, enable H264 inner racing mode to reduce hardware latency.
+When SCP timeout during playing video, kernel crashes with following
+message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
+This patch doesn't solve the root cause of NULL pointer, but merely
+prevent kernel crashed when encounter the NULL pointer.
 
-Patch 1~4 add mt8195 soc lat hardware and compatible, then add documents.
-Patch 5 using different format for different codecs.
-Patch 6 prevent kernel crash when scp reboot.
-Patch 7 enable H264 inner racing mode to reduce hardware latency.
+After applied this patch, kernel keeps alive, only the video player turns
+to green screen.
+
+[67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
+[67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
+18000000.vcodec_dec decoder [135]
+[67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
+[67242.065540] sp : ffffffbb4207fb10
+[67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
+[67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
+[67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
+[67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
+[67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
+[67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
+[67242.065758] x17: 0000000000000000 x16: ffffffd042022094
+[67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
+[67242.065824] x13: 0000000000000000 x12: 0000000000000000
+[67242.065857] x11: 0000000000000000 x10: dfffffd000000001
+[67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
+[67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
+[67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
+[67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
+[67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
+[67242.066055] Call trace:
+[67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
+12220d230d83a7426fc38c56b3e7bc6066955bae]
+[67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066200]  irq_thread_fn+0x84/0xf8
+[67242.066220]  irq_thread+0x170/0x1ec
+[67242.066242]  kthread+0x2f8/0x3b8
+[67242.066264]  ret_from_fork+0x10/0x30
+[67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
+
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
-This patch depends on "add h264 decoder driver for mt8186"[1]
+ drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-[1]  https://patchwork.kernel.org/project/linux-mediatek/cover/20220512034620.30500-1-yunfei.dong@mediatek.com/
----
-changed with v5:
-- fix __iomem not reasonable, align share memory to dram.
-changed with v4:
-- fix sparse and smatch check fail for patch 7.
-changed with v3:
-- rebase driver to the latest media_stage.
-changed with v2:
-- add detail explanation for lat soc hardware for patch 1.
-changed with v1:
-- separate "Init VP9 stateless decode params" patch and remove it to another one.
-- add reviewed-by in patch v3/v4/v6
----
-Yunfei Dong (7):
-  dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for lat
-    soc
-  media: mediatek: vcodec: Add to support lat soc hardware
-  dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for
-    mt8195
-  media: mediatek: vcodec: Adds compatible for mt8195
-  media: mediatek: vcodec: Different codec using different capture
-    format
-  media: mediatek: vcodec: prevent kernel crash when scp ipi timeout
-  media: mediatek: vcodec: Add to support H264 inner racing mode
-
- .../media/mediatek,vcodec-subdev-decoder.yaml | 52 +++++++++++++------
- .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 41 +++++++++++++++
- .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |  8 +++
- .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 12 +++--
- .../mediatek/vcodec/mtk_vcodec_dec_hw.h       |  2 +
- .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 50 ++++++++++++++++++
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h | 12 +++++
- .../vcodec/vdec/vdec_h264_req_multi_if.c      | 25 +++++++--
- .../platform/mediatek/vcodec/vdec_vpu_if.c    |  5 ++
- 9 files changed, 183 insertions(+), 24 deletions(-)
-
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
+index 35f4d5583084..1041dd663e76 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
+@@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
+ 					(unsigned long)msg->ap_inst_addr;
+ 
++	if (!vpu) {
++		mtk_v4l2_err("ap_inst_addr is NULL");
++		return;
++	}
++
+ 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
+ 
+ 	vpu->failure = msg->status;
 -- 
 2.18.0
 
