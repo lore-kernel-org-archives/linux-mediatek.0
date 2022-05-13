@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 711D6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 02:19:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30508C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 02:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LmghSgrHPZZ6CMfYu32TBHMHzTeWks/vH8LZ0sjZ+U8=; b=mR0Alc4f3qEwWw
-	NjBhDkXFpsECD9Vj4ebwQW8DkPE2KT6MqxHSo/BPFLhLzqNkl/ZmZ1NdbYDWwdeoghtNxwaSyPzRu
-	OidvCG7n4IBk0Za3tHavdwISIIavAVVZyhgHj+wpMUDD6KebJLStL9uecatpSMIqOFjzK9uSLTPPt
-	yADRPZuWoyBL1Q9G+FeeWu/dSyO23Wit+yEQ5BtNX3XjSeg4yOW5hQHPgNofQBv7UQBr7r1Hx43F7
-	/QmjKAHLuvplHurtbw2sKc98g170BGVNDYlq+GH+8H4NVZQ9EaoXt7sQNdADAdTfaZMr7EK4tfR7C
-	aG5ISjTETuC06hN1wRZQ==;
+	List-Owner; bh=NkTFYkP5we8drghtsS2QfuOHkGbESBWHUSH02RMyUA0=; b=uv0MHGuEar08Lg
+	z2998+yA2kath+yHbutDSVzpPJLJQ7ObXFEDZ7djw+tWb+78ozHXGsR+oXvuSRMghlQgC0oDlok4y
+	COKsn25cSQvB7zH+k55Ixlseev8JnLC/ny752znZeS1t2av8JgqTmhWD6OlyoagCpy+k1kI1KlfKp
+	F05M4FStOe1rfE0fhZjDcZcGCfgJE+uDyxZewJWeH6PLwFbcwmFUilo3XM/YfMBQqcBfbhnghWHMC
+	ckN8PNxrTeDe/8AO6I8bEifPdJZghYcY+NZu7udKaXEFsvhJTtmdPrkkDhNmK6zx32MmI73/t8/ul
+	b1j5IJihl8ozTXk0ZuKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npKtV-00EAR5-9k; Fri, 13 May 2022 02:19:05 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1npLHM-00EDFo-2j; Fri, 13 May 2022 02:43:44 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npKtI-00EANA-Pb; Fri, 13 May 2022 02:18:54 +0000
+ id 1npLHA-00EDDb-OU; Fri, 13 May 2022 02:43:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1652408332; x=1683944332;
+ t=1652409812; x=1683945812;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=0G2giUeHgl7Bqq7hugqN69frj33hzfoNoWg6XUWTPfk=;
- b=eLLqFg3pii6hPp515vtbp5j9cJazFzhzUkfCUVCuGAyfb6IcaSXqN2eQ
- lRdJ6O7jrSnjIoOQi4AmVBtdGPs4XBi9xBbeHrmHKJ3nLgr5pQ1ZRaHUG
- rGmKwtdK6LoGIMW96hzHr/Q3mL2TYaCaFsRrQDcvDpj8J+0GnoiS3y6j2
- lskILn+r8Tu6asGV9mauVFpjmQS6//CiQSbCMZ0YNPtGRGFkJjbasXfTk
- qwnkpRFPQOMkFaaa+aJjVpN203y9iTrdR/6SzDGFWJ10j6naa+LZ2ijEj
- F8YSFRo8l+nSNpXp3PuFsveOV8cKCBvJfUUAA+j9cf8tuqXOxbKiOeKQi Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10345"; a="270127184"
-X-IronPort-AV: E=Sophos;i="5.91,221,1647327600"; d="scan'208";a="270127184"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2022 19:18:34 -0700
+ bh=+cUtYQK4Km2C++rGq/ah79HG9mDpGf2y1yRstGxDmSo=;
+ b=FwAv7Mh+CORvgIgtpRzVIGkls8J/m+M1bLqEizEG64cJXZZvEBNZn9p6
+ c0RlqmDopKXUoLUCv0UP5HLW9xbHHIpQSKmDYnivBUXFBjX86pQNY0QGT
+ ASCC4yhuVElKLmQWKcQHy/kvV7ixVsO5NRqkJlXWNB+S4XpOGKCz/KSys
+ zR74CAxT1+oD+v+t2mOgqFbgq/9FA61lQ7ftoGNgp1PPqoW1PZuf6DNER
+ JirwMay0Ratv1hD6Hk6cHExpr/w2stOdsZF84eqC6GSHElI2s9Ky6aKEL
+ uds3wYNpgxP/G/BfAw0BMbOo7SDPnHxzwbo/UqEEkRGk3Rrc3otawj627 A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10345"; a="333230778"
+X-IronPort-AV: E=Sophos;i="5.91,221,1647327600"; d="scan'208";a="333230778"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 May 2022 19:43:30 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,221,1647327600"; d="scan'208";a="594988159"
+X-IronPort-AV: E=Sophos;i="5.91,221,1647327600"; d="scan'208";a="566987110"
 Received: from lkp-server01.sh.intel.com (HELO 5056e131ad90) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 12 May 2022 19:18:30 -0700
+ by orsmga007.jf.intel.com with ESMTP; 12 May 2022 19:43:26 -0700
 Received: from kbuild by 5056e131ad90 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1npKsq-000LBw-Il;
- Fri, 13 May 2022 02:18:24 +0000
-Date: Fri, 13 May 2022 10:18:14 +0800
+ (envelope-from <lkp@intel.com>) id 1npLH3-000LCz-Bl;
+ Fri, 13 May 2022 02:43:25 +0000
+Date: Fri, 13 May 2022 10:43:03 +0800
 From: kernel test robot <lkp@intel.com>
 To: yf.wang@mediatek.com, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
@@ -59,19 +59,19 @@ To: yf.wang@mediatek.com, Will Deacon <will@kernel.org>,
  "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
  open list <linux-kernel@vger.kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org,
- wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
- Yong Wu <Yong.Wu@mediatek.com>, Ning Li <ning.li@mediatek.com>
+Cc: kbuild-all@lists.01.org, wsd_upstream@mediatek.com,
+ Libo Kang <Libo.Kang@mediatek.com>, Yong Wu <Yong.Wu@mediatek.com>,
+ Ning Li <ning.li@mediatek.com>
 Subject: Re: [PATCH v3 1/2] iommu/io-pgtable-arm-v7s: Add a quirk to allow
  pgtable PA up to 35bit
-Message-ID: <202205131016.Ati0kpNR-lkp@intel.com>
+Message-ID: <202205131021.3GskEbg2-lkp@intel.com>
 References: <20220512144557.18025-2-yf.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20220512144557.18025-2-yf.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_191852_906123_77F77AC8 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20220512_194332_884887_E1ED8B6F 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,7 +93,7 @@ Hi,
 Thank you for the patch! Perhaps something to improve:
 
 [auto build test WARNING on arm-perf/for-next/perf]
-[also build test WARNING on linus/master v5.18-rc6 next-20220512]
+[also build test WARNING on linus/master v5.18-rc6]
 [cannot apply to joro-iommu/next]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
@@ -101,8 +101,8 @@ https://git-scm.com/docs/git-format-patch]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/yf-wang-mediatek-com/iommu-io-pgtable-arm-v7s-Add-a-quirk-to-allow-pgtable-PA-up-to-35bit/20220512-234603
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/will/linux.git for-next/perf
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20220513/202205131016.Ati0kpNR-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 9519dacab7b8afd537811fc2abaceb4d14f4e16a)
+config: arm-qcom_defconfig (https://download.01.org/0day-ci/archive/20220513/202205131021.3GskEbg2-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 11.3.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
@@ -112,148 +112,65 @@ reproduce (this is a W=1 build):
         git checkout 916a5fc41cbb8ddfe343193598f250d06b09e3fa
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash drivers/iommu/ drivers/rtc/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/iommu/
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
 All warnings (new ones prefixed by >>):
 
->> drivers/iommu/io-pgtable-arm-v7s.c:886:4: warning: shift count >= width of type [-Wshift-count-overflow]
-                           ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
-                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/iommu/io-pgtable-arm-v7s.c:154:39: note: expanded from macro 'ARM_V7S_TTBR_35BIT_PA'
-           ((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
-                                                ^~~~~~~~~~~~~~~
-   include/linux/bits.h:38:31: note: expanded from macro 'GENMASK'
-           (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
-                                        ^~~~~~~~~~~~~~~
-   include/linux/bits.h:35:22: note: expanded from macro '__GENMASK'
-           (((~UL(0)) - (UL(1) << (l)) + 1) & \
-                               ^  ~~~
->> drivers/iommu/io-pgtable-arm-v7s.c:886:4: warning: shift count is negative [-Wshift-count-negative]
-                           ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
-                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/iommu/io-pgtable-arm-v7s.c:154:39: note: expanded from macro 'ARM_V7S_TTBR_35BIT_PA'
-           ((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
-                                                ^~~~~~~~~~~~~~~
-   include/linux/bits.h:38:31: note: expanded from macro 'GENMASK'
-           (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
-                                        ^~~~~~~~~~~~~~~
-   include/linux/bits.h:36:11: note: expanded from macro '__GENMASK'
-            (~UL(0) >> (BITS_PER_LONG - 1 - (h))))
-                    ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/iommu/io-pgtable-arm-v7s.c:886:4: warning: shift count >= width of type [-Wshift-count-overflow]
-                           ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
-                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/iommu/io-pgtable-arm-v7s.c:154:56: note: expanded from macro 'ARM_V7S_TTBR_35BIT_PA'
-           ((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
-                                                                 ^  ~~
-   3 warnings generated.
+   In file included from include/linux/ratelimit_types.h:5,
+                    from include/linux/ratelimit.h:5,
+                    from include/linux/dev_printk.h:16,
+                    from include/linux/device.h:15,
+                    from include/linux/dma-mapping.h:7,
+                    from drivers/iommu/io-pgtable-arm-v7s.c:25:
+   drivers/iommu/io-pgtable-arm-v7s.c: In function 'arm_v7s_alloc_pgtable':
+   include/linux/bits.h:35:29: warning: left shift count >= width of type [-Wshift-count-overflow]
+      35 |         (((~UL(0)) - (UL(1) << (l)) + 1) & \
+         |                             ^~
+   include/linux/bits.h:38:38: note: in expansion of macro '__GENMASK'
+      38 |         (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
+         |                                      ^~~~~~~~~
+   drivers/iommu/io-pgtable-arm-v7s.c:154:46: note: in expansion of macro 'GENMASK'
+     154 |         ((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
+         |                                              ^~~~~~~
+   drivers/iommu/io-pgtable-arm-v7s.c:886:25: note: in expansion of macro 'ARM_V7S_TTBR_35BIT_PA'
+     886 |                         ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
+         |                         ^~~~~~~~~~~~~~~~~~~~~
+   include/linux/bits.h:36:18: warning: right shift count is negative [-Wshift-count-negative]
+      36 |          (~UL(0) >> (BITS_PER_LONG - 1 - (h))))
+         |                  ^~
+   include/linux/bits.h:38:38: note: in expansion of macro '__GENMASK'
+      38 |         (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
+         |                                      ^~~~~~~~~
+   drivers/iommu/io-pgtable-arm-v7s.c:154:46: note: in expansion of macro 'GENMASK'
+     154 |         ((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
+         |                                              ^~~~~~~
+   drivers/iommu/io-pgtable-arm-v7s.c:886:25: note: in expansion of macro 'ARM_V7S_TTBR_35BIT_PA'
+     886 |                         ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
+         |                         ^~~~~~~~~~~~~~~~~~~~~
+>> drivers/iommu/io-pgtable-arm-v7s.c:154:63: warning: right shift count >= width of type [-Wshift-count-overflow]
+     154 |         ((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
+         |                                                               ^~
+   drivers/iommu/io-pgtable-arm-v7s.c:886:25: note: in expansion of macro 'ARM_V7S_TTBR_35BIT_PA'
+     886 |                         ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
+         |                         ^~~~~~~~~~~~~~~~~~~~~
 
 
-vim +886 drivers/iommu/io-pgtable-arm-v7s.c
+vim +154 drivers/iommu/io-pgtable-arm-v7s.c
 
-   795	
-   796	static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
-   797							void *cookie)
-   798	{
-   799		slab_flags_t slab_flag = ARM_V7S_TABLE_SLAB_FLAGS;
-   800		struct arm_v7s_io_pgtable *data;
-   801		phys_addr_t paddr;
-   802	
-   803		if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
-   804			return NULL;
-   805	
-   806		if (cfg->oas > (arm_v7s_is_mtk_enabled(cfg) ? 35 : ARM_V7S_ADDR_BITS))
-   807			return NULL;
-   808	
-   809		if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
-   810				    IO_PGTABLE_QUIRK_NO_PERMS |
-   811				    IO_PGTABLE_QUIRK_ARM_MTK_EXT |
-   812				    IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT))
-   813			return NULL;
-   814	
-   815		/* If ARM_MTK_4GB is enabled, the NO_PERMS is also expected. */
-   816		if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT &&
-   817		    !(cfg->quirks & IO_PGTABLE_QUIRK_NO_PERMS))
-   818				return NULL;
-   819	
-   820		data = kmalloc(sizeof(*data), GFP_KERNEL);
-   821		if (!data)
-   822			return NULL;
-   823	
-   824		spin_lock_init(&data->split_lock);
-   825		if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-   826			slab_flag = 0;
-   827		data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
-   828						    ARM_V7S_TABLE_SIZE(2, cfg),
-   829						    ARM_V7S_TABLE_SIZE(2, cfg),
-   830						    slab_flag, NULL);
-   831		if (!data->l2_tables)
-   832			goto out_free_data;
-   833	
-   834		data->iop.ops = (struct io_pgtable_ops) {
-   835			.map		= arm_v7s_map,
-   836			.map_pages	= arm_v7s_map_pages,
-   837			.unmap		= arm_v7s_unmap,
-   838			.unmap_pages	= arm_v7s_unmap_pages,
-   839			.iova_to_phys	= arm_v7s_iova_to_phys,
-   840		};
-   841	
-   842		/* We have to do this early for __arm_v7s_alloc_table to work... */
-   843		data->iop.cfg = *cfg;
-   844	
-   845		/*
-   846		 * Unless the IOMMU driver indicates supersection support by
-   847		 * having SZ_16M set in the initial bitmap, they won't be used.
-   848		 */
-   849		cfg->pgsize_bitmap &= SZ_4K | SZ_64K | SZ_1M | SZ_16M;
-   850	
-   851		/* TCR: T0SZ=0, EAE=0 (if applicable) */
-   852		cfg->arm_v7s_cfg.tcr = 0;
-   853	
-   854		/*
-   855		 * TEX remap: the indices used map to the closest equivalent types
-   856		 * under the non-TEX-remap interpretation of those attribute bits,
-   857		 * excepting various implementation-defined aspects of shareability.
-   858		 */
-   859		cfg->arm_v7s_cfg.prrr = ARM_V7S_PRRR_TR(1, ARM_V7S_PRRR_TYPE_DEVICE) |
-   860					ARM_V7S_PRRR_TR(4, ARM_V7S_PRRR_TYPE_NORMAL) |
-   861					ARM_V7S_PRRR_TR(7, ARM_V7S_PRRR_TYPE_NORMAL) |
-   862					ARM_V7S_PRRR_DS0 | ARM_V7S_PRRR_DS1 |
-   863					ARM_V7S_PRRR_NS1 | ARM_V7S_PRRR_NOS(7);
-   864		cfg->arm_v7s_cfg.nmrr = ARM_V7S_NMRR_IR(7, ARM_V7S_RGN_WBWA) |
-   865					ARM_V7S_NMRR_OR(7, ARM_V7S_RGN_WBWA);
-   866	
-   867		/* Looking good; allocate a pgd */
-   868		data->pgd = __arm_v7s_alloc_table(1, GFP_KERNEL, data);
-   869		if (!data->pgd)
-   870			goto out_free_data;
-   871	
-   872		/* Ensure the empty pgd is visible before any actual TTBR write */
-   873		wmb();
-   874	
-   875		/* TTBR */
-   876		paddr = virt_to_phys(data->pgd);
-   877		cfg->arm_v7s_cfg.ttbr = paddr | ARM_V7S_TTBR_S |
-   878					(cfg->coherent_walk ? (ARM_V7S_TTBR_NOS |
-   879					 ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_WBWA) |
-   880					 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_WBWA)) :
-   881					(ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_NC) |
-   882					 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_NC)));
-   883	
-   884		if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-   885			cfg->arm_v7s_cfg.ttbr =
- > 886				ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
-   887		return &data->iop;
-   888	
-   889	out_free_data:
-   890		kmem_cache_destroy(data->l2_tables);
-   891		kfree(data);
-   892		return NULL;
-   893	}
-   894	
+   145	
+   146	#define ARM_V7S_TTBR_S			BIT(1)
+   147	#define ARM_V7S_TTBR_NOS		BIT(5)
+   148	#define ARM_V7S_TTBR_ORGN_ATTR(attr)	(((attr) & 0x3) << 3)
+   149	#define ARM_V7S_TTBR_IRGN_ATTR(attr)					\
+   150		((((attr) & 0x1) << 6) | (((attr) & 0x2) >> 1))
+   151	
+   152	/* Mediatek extend ttbr bits[2:0] for PA bits[34:32] */
+   153	#define ARM_V7S_TTBR_35BIT_PA(ttbr, pa)					\
+ > 154		((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK(34, 32)) >> 32))
+   155	
 
 -- 
 0-DAY CI Kernel Test Service
