@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF46C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 09:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E8CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 09:31:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=evhQkEJbaZ55iSzjisIEAPPO763boOfu6UFr+ci9Zq0=; b=Cr45gmaU+AhNKj
-	I67Sa7F8YcvDTX7cBBkgJviWodFsq7MK1c/owSp98zDgxEDIJp+MvaNqmlLke6PIm3loKBSYRuuQN
-	D8FnB33B6JeC9N7HSUOnwvqF2oX7drsB4xUOQZzuYBpeAoKM6tAvshoPrXGOLUlmpEdqggS7RJgME
-	LoZIIXolNNFHYXA0tEKd2CBk8lDcT9thzZvECK2gm61YvHERfCvya4XayXsqMisLtHq6orsikPfCL
-	yOojwXO5ZiwBeCRUB3HFt0WSF3CiZtPmmV2U3kyrT5kCy2R2RWlSSrbrIXxr0tyjT2IjCBAwFj4WY
-	SErp4A8lznS32ZlquofQ==;
+	List-Owner; bh=S2Nr5Xesft0Ue7HbwIGnOjPwUQZIG0nr48dT6/SlqPU=; b=WtkdciDHfTEm2S
+	euKUm6PwzhEcqAdktI/w62lx/JZUVDSJ0c5Rb4zk+A/AEyHdVgmwCQCcz2gEN8yHybzSwBU3tjDfM
+	SCzBJC7yY4X3qSkan0rQ09zKZ2dZ5MMZ2g0tYyF8ZyKMpbGm9t7+FlGvaajTFjk2DRskMUCai+Gat
+	8//EJJp2n2zLOkRLsGUty3MNFZVqDVaO58+ylLfQghUC3DLbkSupDa1JMbImATjARRiW5NqYh6zRf
+	rX+FROetoEECURNEZkgUX31tyEkBAIqMiRN/mWi/69yJIAXyNGT7BYm2Sj7gcypZkNhHQQjdJuIeI
+	V/Uo7+ilzZ3OSRZJ4pMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npRaO-00FJFz-HX; Fri, 13 May 2022 09:27:48 +0000
+	id 1npReA-00FKvc-S6; Fri, 13 May 2022 09:31:42 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npRZT-00FIeS-1q; Fri, 13 May 2022 09:26:52 +0000
-X-UUID: 1a5e7faefb47457a91f61071a856cf12-20220513
+ id 1npRda-00FKku-NK; Fri, 13 May 2022 09:31:09 +0000
+X-UUID: 340f54b633384754acd91fb4a1d7bb20-20220513
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:1e8e9d8f-8a13-48f1-9a28-4359dad76763, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:086fb7a0-0654-46af-b0a6-2bacf5976942, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:b63e32a7-eab7-4b74-a74d-5359964535a9,
+ B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09, CLOUDID:626532a7-eab7-4b74-a74d-5359964535a9,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: 1a5e7faefb47457a91f61071a856cf12-20220513
+X-UUID: 340f54b633384754acd91fb4a1d7bb20-20220513
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2021616035; Fri, 13 May 2022 02:26:46 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 May 2022 02:25:44 -0700
+ with ESMTP id 15915329; Fri, 13 May 2022 02:31:00 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 13 May 2022 02:25:32 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 May 2022 17:25:42 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 13 May 2022 17:25:30 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 13 May 2022 17:25:40 +0800
+ Transport; Fri, 13 May 2022 17:25:28 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -66,18 +67,18 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v6,
- 6/7] media: mediatek: vcodec: prevent kernel crash when scp ipi
- timeout
-Date: Fri, 13 May 2022 17:25:25 +0800
-Message-ID: <20220513092526.9670-7-yunfei.dong@mediatek.com>
+ 1/7] dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings
+ for lat soc
+Date: Fri, 13 May 2022 17:25:20 +0800
+Message-ID: <20220513092526.9670-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220513092526.9670-1-yunfei.dong@mediatek.com>
 References: <20220513092526.9670-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_022651_141204_B58942E1 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20220513_023106_786946_925F70AA 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,72 +95,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When SCP timeout during playing video, kernel crashes with following
-message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
-This patch doesn't solve the root cause of NULL pointer, but merely
-prevent kernel crashed when encounter the NULL pointer.
+Adds decoder dt-bindings for compatible "mediatek,mtk-vcodec-lat-soc".
 
-After applied this patch, kernel keeps alive, only the video player turns
-to green screen.
-
-[67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
-[67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
-18000000.vcodec_dec decoder [135]
-[67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
-[67242.065540] sp : ffffffbb4207fb10
-[67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
-[67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
-[67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
-[67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
-[67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
-[67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
-[67242.065758] x17: 0000000000000000 x16: ffffffd042022094
-[67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
-[67242.065824] x13: 0000000000000000 x12: 0000000000000000
-[67242.065857] x11: 0000000000000000 x10: dfffffd000000001
-[67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
-[67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
-[67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
-[67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
-[67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
-[67242.066055] Call trace:
-[67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
-12220d230d83a7426fc38c56b3e7bc6066955bae]
-[67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066200]  irq_thread_fn+0x84/0xf8
-[67242.066220]  irq_thread+0x170/0x1ec
-[67242.066242]  kthread+0x2f8/0x3b8
-[67242.066264]  ret_from_fork+0x10/0x30
-[67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
-
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../media/mediatek,vcodec-subdev-decoder.yaml | 51 +++++++++++++------
+ 1 file changed, 35 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-index 35f4d5583084..1041dd663e76 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-@@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
- 					(unsigned long)msg->ap_inst_addr;
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+index 6415c9f29130..6854e7f2ce9f 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+@@ -17,20 +17,20 @@ description: |
  
-+	if (!vpu) {
-+		mtk_v4l2_err("ap_inst_addr is NULL");
-+		return;
-+	}
+   About the Decoder Hardware Block Diagram, please check below:
+ 
+-    +---------------------------------+------------------------------------+
+-    |                                 |                                    |
+-    | input -> lat HW -> lat buffer --|--> lat buffer -> core HW -> output |
+-    |            ||                   |                     ||             |
+-    +------------||-------------------+---------------------||-------------+
+-              lat workqueue           |              core workqueue     <parent>
+-    -------------||-----------------------------------------||------------------
+-                 ||                                         ||          <child>
+-                 \/ <----------------HW index-------------->\/
+-           +------------------------------------------------------+
+-           |                    enable/disable                    |
+-           |           clk     power    irq    iommu              |
+-           |                 (lat/lat soc/core0/core1)            |
+-           +------------------------------------------------------+
++    +------------------------------------------------+-------------------------------------+
++    |                                                |                                     |
++    |  input -> lat soc HW -> lat HW -> lat buffer --|--> lat buffer -> core HW -> output  |
++    |            ||             ||                   |                     ||              |
++    +------------||-------------||-------------------+---------------------||--------------+
++                 ||     lat     ||                   |               core workqueue  <parent>
++    -------------||-------------||-------------------|---------------------||---------------
++                 ||<------------||----------------HW index---------------->||        <child>
++                 \/             \/                                         \/
++               +-------------------------------------------------------------+
++               |                          enable/disable                     |
++               |                 clk     power    irq    iommu               |
++               |                   (lat/lat soc/core0/core1)                 |
++               +-------------------------------------------------------------+
+ 
+   As above, there are parent and child devices, child mean each hardware. The child device
+   controls the information of each hardware independent which include clk/power/irq.
+@@ -45,6 +45,13 @@ description: |
+   For the smi common may not the same for each hardware, can't combine all hardware in one node,
+   or leading to iommu fault when access dram data.
+ 
++  Lat soc is a hardware which is related with some larb(local arbiter) ports. For mt8195
++  platform, there are some ports like RDMA, UFO in lat soc larb, need to enable its power and
++  clock when lat start to work, don't have interrupt.
 +
- 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
++  mt8195: lat soc HW + lat HW + core HW
++  mt8192: lat HW + core HW
++
+ properties:
+   compatible:
+     enum:
+@@ -88,7 +95,9 @@ patternProperties:
  
- 	vpu->failure = msg->status;
+     properties:
+       compatible:
+-        const: mediatek,mtk-vcodec-lat
++        enum:
++          - mediatek,mtk-vcodec-lat
++          - mediatek,mtk-vcodec-lat-soc
+ 
+       reg:
+         maxItems: 1
+@@ -126,7 +135,6 @@ patternProperties:
+     required:
+       - compatible
+       - reg
+-      - interrupts
+       - iommus
+       - clocks
+       - clock-names
+@@ -197,6 +205,17 @@ required:
+   - dma-ranges
+   - ranges
+ 
++if:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - mediatek,mtk-vcodec-lat
++
++then:
++  required:
++    - interrupts
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.18.0
 
