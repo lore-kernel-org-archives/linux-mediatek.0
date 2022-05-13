@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3946FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 12:12:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EB5C43217
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 12:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A+oU6+DUzv0AempwM2dV+CThVzv+GdUeZiJh+xp5ybU=; b=jgbpUo5LX+ub6m
-	QRl+JMU005+1H5YkuaQC8DZISPh1MidZc3JT5B2R73//I1qsUmkM156XQQ7GTY3LvuKSK+bme9V59
-	2nd+bTAAgVUVZt7DMmy9DS9QADGxpEtRCq3cLiRyOZp8O2dHYndKlpGui53kopOPJ/J0nWVpr0rhW
-	q4NtFq/vJZy0LSmxT2cey4ejKq/N69jXdnjwff51La4mzMRseH6pk0QnNv5sIx/ttEjotyyC/s3lg
-	YRm8RNHS117waCP5suxghgCTi4UqL7/ybIw59uwuzymM4t5MoYGdjBOslYJfCjIKCr3cNWmFEKuO7
-	DGrQu7om9Xj8FG1VWaxA==;
+	List-Owner; bh=mDiXqq3oE/ickuwxapiGyw0s3UUCnP1MGVBeP9pBcO4=; b=sQNUcFsNlHWEGi
+	q0h4kYgDiD/Amv8c5jTTdSjZ+hDN3rwRfwBQqKNkAh+4BE1AgLE2bQKLLKhaO+CtbiNYO51wz1TDk
+	RNcH1rFGF5kMoWKD7wsLJicpWeuxGw659O7/ParLHRXnOWhzA2dmRlVM7TAyjK/EX3jHTGn9X4Ore
+	jI2iqZ1Bqe+N6jxjGuuqc1Dnz3SCeSfgTy3Kg6IXVcEiYnIU2HNcjDoMuci2bWi2gk9ubkYNLqg/k
+	fj4V1OuUHRhXMxDSDMvD1c9EAPW1gfsNyxe9Cc41EgBufwEfOxAJ9/qtu4tcpOAsBMBr4AQ51Q7Qu
+	Uf0KyKo0/s0o5awMtUBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npU9m-00Fx9M-Ad; Fri, 13 May 2022 12:12:30 +0000
-Received: from mout.kundenserver.de ([212.227.126.133])
+	id 1npUUG-00G2G5-DI; Fri, 13 May 2022 12:33:40 +0000
+Received: from mail-oi1-f172.google.com ([209.85.167.172])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npU9a-00Fx55-5O; Fri, 13 May 2022 12:12:19 +0000
-Received: from mail-yb1-f173.google.com ([209.85.219.173]) by
- mrelayeu.kundenserver.de (mreue012 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1MXGSU-1nGoXg3zdm-00YhPN; Fri, 13 May 2022 14:12:15 +0200
-Received: by mail-yb1-f173.google.com with SMTP id y76so15014138ybe.1;
- Fri, 13 May 2022 05:12:14 -0700 (PDT)
-X-Gm-Message-State: AOAM532/lz+igJEf06Ww2e6Wb3gumUhS9MIPL7p52Ry7LZeLLG2ID9Te
- O7DpVafmYjgF/DBJC1PAlGMZLC4gxbWJXlAeeVM=
-X-Google-Smtp-Source: ABdhPJxfSXlHQiGp7nrwso72I/95P47eTph2XTKWx941GNdu4mVPGKCRC9whxXixu0RskwZlxcjV+W7Q9bXxryN7UkU=
-X-Received: by 2002:a25:31c2:0:b0:641:660f:230f with SMTP id
- x185-20020a2531c2000000b00641660f230fmr4509779ybx.472.1652443933446; Fri, 13
- May 2022 05:12:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <b4383f23-0adc-b9de-a1d9-abd1c2f82b27@gmail.com>
-In-Reply-To: <b4383f23-0adc-b9de-a1d9-abd1c2f82b27@gmail.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Fri, 13 May 2022 14:11:57 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a0iFq3X6PrLggc=Av9GdWnJU=US659jaUXqH+X4GnbYTA@mail.gmail.com>
-Message-ID: <CAK8P3a0iFq3X6PrLggc=Av9GdWnJU=US659jaUXqH+X4GnbYTA@mail.gmail.com>
-Subject: Re: [GIT PULL] arm: mediatek: DT updates for v5.19
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Yong Wu <yong.wu@mediatek.com>
-X-Provags-ID: V03:K1:jYi8MElG/U3RQ1+iv7gyNNxd72GWq5Tw1dpSuzSFMEIyJBtLuyi
- JneUvf3wM5Yc/ZEBrlC7efnsQVhNe8amIHPlhOO00Cj+jrACVjDSXH3r6qG30mBjiV850Em
- +1L3MnunuYko5z1duspGjS+SSvyp1aEIF2xN7KMdDR5coGRufvn54kRTW6S1pC0JWN1BLbz
- YbMo56fTFdvw6yGiphhow==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2AV5i9Lgso0=:CyQLP/rtuh3daqRjJgTsOc
- M0W6+Y8qJVTiUQA5EX87KXiTPndvS+bNiMmYquoRfG5BMHObYLWiA7upyUurAlBWF3IMscYVc
- 0za9TS3XSlllwXOPIncs10AS4sypN8cuC7fMfyOoSU7k1Ko71S20YyTzKgLEmK7+pIzVDSf2R
- lp8wVh0GCUQ+yaZ0bdW3D5iFT0q4wxCEfRKZ/IdL+pyRrp+g7xjy4aGBsXxGzOSsGrnSL9hiK
- od/zfOnXhvWRW6EqkBTax59sCy/E3VkzxjPhN8hstPGfQivLyVctlTeyDm7OGBbrBWXD4pYLi
- ml7IQCRIIsnenY8Qa0CQf94vTZwLv89koMZNJNyMTEH7dD5cYSzX0AoLU+2vvoynsUC+pXcJy
- wEV85GsCMr0LUWv4SoZQVUXG7IgMtkb7TY8eK7Z0E+hXAFKpWMvTqGJqH2Ao9mlwTMtZ11QUs
- p/2ooszviTotopJe29xBbUxLnlKR+v6xW5pP588Yb2T22ewPluh9aj3cq4k+PKXnPV0a99MZW
- rmI4hot3mOATP5sZSsqoVsM2OCimY7ceCvwcuX8SfHajoBZWWDplQ2XjW1S4qv3ptioWW8sah
- 2hmVBW5KaN6d0EtYAR+eC5AZlMRiXW1xRnMLDYxna9rCmaRnqMObqgp96aHFgBpsGz/Y//pii
- Kby57vkDJWDqwkFDB3cK2evFj5f5VW5UhvqZF/J9nJFVeakXBpzRtevol8LXUKqQENPB2MBz0
- ZbI5sgpuFv1Ov3QgQy53e2n57R4ZC9J5LI+zlcT2hbje2bQy2CexbCHeZWpzdkwDykxC2LX0f
- kPE3h67LDUoqsSzEkhbXLxPp17MQjZvynkAFDoYxqSBDnsi/DE=
+ id 1npUU1-00G26g-Nm; Fri, 13 May 2022 12:33:27 +0000
+Received: by mail-oi1-f172.google.com with SMTP id r1so9947571oie.4;
+ Fri, 13 May 2022 05:33:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=buZCjK/zEXixkrBZxaDQw6YBg7oqOrxcHQhY9x47DBY=;
+ b=ZMpc6I/a6SJnpY5iOSABty7AipHFl28jTyIDk9qM/GWMidMARAc1f4+2TzsS510+S8
+ D/SGSPb62nnohQctvzgJUnQ+80+SouGkWIS1jPA0RYaK6M4KYURXzYdMTKwrhD8uDgUn
+ ia2kJvzO7sst8Z3ESgnkFZCyUhxuAzEVot6mhCbbBQIClF+4/FB/iHHalZSVavWC5RhI
+ YlPcWqShM14gyQ6CN4+nQKVvbfmWToBN09xHpz7dSfpTxxhpofrLl1QEUvABUp+sc45Q
+ XibVXYr8gO9etjWM5vNdqEWrpP+C9D9GiGf9wZogPFb2QKION5hruPiGIDLxOsDEwrLR
+ eR4g==
+X-Gm-Message-State: AOAM531/eInj1vEHkjkqwmXSqegmn1N9fQMLGrmdg0QvuLYJtcgMKDsp
+ //rpNensnOsQqE6k6bvyTw==
+X-Google-Smtp-Source: ABdhPJw7upKKDoDgfZ+8DZ0CWGKjhxTuOLrapQu7ccyksWW8Kk1fXfQ/lZ4uAKurnleTew8Xzr+gOw==
+X-Received: by 2002:a05:6808:1206:b0:2d7:65a8:65e with SMTP id
+ a6-20020a056808120600b002d765a8065emr2225633oil.107.1652445202398; 
+ Fri, 13 May 2022 05:33:22 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ c24-20020a9d6858000000b00606ad72bdcbsm880686oto.38.2022.05.13.05.33.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 May 2022 05:33:21 -0700 (PDT)
+Received: (nullmailer pid 85827 invoked by uid 1000);
+ Fri, 13 May 2022 12:33:21 -0000
+From: Rob Herring <robh@kernel.org>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, p.zabel@pengutronix.de,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, airlied@linux.ie,
+ nancy.lin@mediatek.com, dri-devel@lists.freedesktop.org,
+ chunkuang.hu@kernel.org, jason-jh.lin@mediatek.com
+In-Reply-To: <20220512080523.25082-2-rex-bc.chen@mediatek.com>
+References: <20220512080523.25082-1-rex-bc.chen@mediatek.com>
+ <20220512080523.25082-2-rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: mediatek: add vdosys1 RDMA definition
+ for mt8195
+Date: Fri, 13 May 2022 07:33:21 -0500
+Message-Id: <1652445201.069924.85826.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_051218_545572_FC2FB6D0 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20220513_053325_830463_884C5EF7 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,30 +80,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 13, 2022 at 1:21 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
-> Hi Arnd and Olof,
->
-> Please have a look on the below 32 bit DT updates for v5.19. Apologies for the
-> late pull request but I got sick and needed my time to recover.
+On Thu, 12 May 2022 16:05:21 +0800, Rex-BC Chen wrote:
+> From: "Nancy.Lin" <nancy.lin@mediatek.com>
+> 
+> Add vdosys1 RDMA definition.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../display/mediatek/mediatek,mdp-rdma.yaml   | 88 +++++++++++++++++++
+>  1 file changed, 88 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+> 
 
-> Yong Wu (1):
->        arm: dts: mediatek: Get rid of mediatek, larb for MM nodes
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Can you clarify what this means for backwards compatibility? I see old kernels
-used to parse these properties, does that mean that the updated DT is no
-longer compatible with them?
+yamllint warnings/errors:
 
-If you break compatibility, this should only be done for exceptional reasons,
-and explain the tradeoffs. What is the oldest kernel that is still compatible
-with the updated DT files, and why can't we just keep the properties around?
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml: properties:compatible: [{'const': 'mediatek,mt8195-vdo1-rdma'}] is not of type 'object', 'boolean'
+	from schema $id: http://json-schema.org/draft-07/schema#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml: ignoring, error in schema: properties: compatible
+Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.example.dts:25:18: fatal error: dt-bindings/memory/mt8195-memory-port.h: No such file or directory
+   25 |         #include <dt-bindings/memory/mt8195-memory-port.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.lib:364: Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.example.dtb] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1401: dt_binding_check] Error 2
 
-       Arnd
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
