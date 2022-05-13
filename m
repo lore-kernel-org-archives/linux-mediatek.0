@@ -4,84 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0ABFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 11:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D7EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 11:45:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:Subject:From:Cc:To:MIME-Version:Date:Message-ID:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=D4n1D4Lsqb4Xgq9AJSTvMnYmtpU0EZNy62416OHonAg=; b=EzUgOBk+DhBuCT2aRRxSDt/M9N
-	9kokzeiG4ApRPUBXJIG9QoBpBnOSJxhp3UwoP910yFf1iPNbShOZkoswPiXwajbWqM8mfVdR2hRR1
-	gDcUyqxHGoo1yIO/vXCFJ5gMad3nP37/gRT1O1OpLkPD63HAW2fQ+yBUs3Wwd0Si3PjHNHlyAG8dl
-	tcM2pNYoH7uvSoC7jcKyJG9YRUcdaqWqvupAtBgT8dDqtTUdTDQMHOIP4yuOwuLkUKBo4e03sh5oi
-	yBrYJZDxcuER0MsBXhpbluY3i3WTZcNUxNQdjTo9lDGjbj5VHQd+X8/YwB163hSVVUeFbTeHSwPMo
-	sHa3PFxQ==;
+	bh=190erTR3ZI3UlUWIz1iMhDHVZhRCCzYvUaRfgOsxv/4=; b=TBt7XT4+L7VkritVrEQC2+DYHH
+	VAkmt4nFa3/xcY/OEc3YLGNzTneQc/natn59dRfxbOPYDH4NmetAbdA1go+zBXeC9fSk2kLlYi10m
+	SybGu+kG7dWrOHPl+RdmpN8qd4sBCpzKgmvNKLnpA28r3EmLvH3GVYusAPfLIu1zrKLM7j89+zRgN
+	ec0ko/QFvtE43ltU96GGRCDeZnAYSYZ0fBiPkTVQL/hWrwAenUhitQmf3kRViUv4ldvMAOB99aY2I
+	zXhRhUFgF6ZgWwUQyIQ2ciQZdILOiViF53qBuQ5LnthbjcFi9fpBQRb2H5oaadVgisb8NdQZeqqan
+	WXDX0zIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npTdX-00FohN-Sk; Fri, 13 May 2022 11:39:11 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1npTjM-00FpnY-Oc; Fri, 13 May 2022 11:45:12 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npTdU-00Foh0-KB; Fri, 13 May 2022 11:39:10 +0000
-Received: by mail-wr1-x430.google.com with SMTP id w4so11029028wrg.12;
- Fri, 13 May 2022 04:39:05 -0700 (PDT)
+ id 1npTjA-00FpjC-QH; Fri, 13 May 2022 11:45:02 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id m62so4640459wme.5;
+ Fri, 13 May 2022 04:45:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:content-language:to:cc:from
  :subject:content-transfer-encoding;
- bh=+rNyRXg/6PtDjr8H+pru93r+wkFlZAX93k/DxKpYPQ0=;
- b=bcLSJ90vLqIdqH7tf9FBMsU1CZG5jpcIVtwTkoXNwjSnDgz6+b0GRUwK1UvL7qU0FS
- UGpkdjhmXChTV/MZqGpP7GThmwnl9ITjAaS/2xD535KiTNd62C58smuUnLH+abCufsFP
- JSdIX/grka1x/V4OT1i2V1fsLOiHl4fGAvmjOZ82m5HbWov/rit7NZ6iazrxmAx5esfp
- B45KQGWqukJT/cLDbv57JWuR53BKls1bk6B2MCPZB0KTpoygPTxXi1LhftFxEUCNpUer
- 7hyZsExeV4MdiiFps32HuN3WPzMrjvKAlYuHo86/QFKRRPJUEw7HzkFvjbM0WLd1rP2N
- fUBw==
+ bh=X5VInsnTlUTFXM4a+ZiHNfR7V1Xk1EraPGvAG2jFB7k=;
+ b=e21VeYHXRXJcA15h0Ue5ysMUIj3/H6k/LTP7OB1IGYRjaGpghk4XE0XnT9NCHLJVjB
+ Eo0vdYGYHOf5vEDFSDpX/b7taHhiTNNyxcre1E1cwVnWtkx8tSJbufABQ1bpqFGvmikE
+ ZFE4+OrKFu3XnV8AFGaTU5sb3AB+FgSIvJdo25hmhmR4lyTp4zVTY6Xg5Oxh3OOIfYut
+ oA8SDmW4tnQwQauxQyuyLX8tqIRqVtyrmbcrvufNWO9VSEz7wRkW+wib64Q6RRZENRWH
+ M/GTgrNeMNYx77XknoPKRXgvOsQnUm5hzrdHxRJYfHSb3KFl9viTfji8AnNUxy/dUxKJ
+ X39w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent
  :content-language:to:cc:from:subject:content-transfer-encoding;
- bh=+rNyRXg/6PtDjr8H+pru93r+wkFlZAX93k/DxKpYPQ0=;
- b=JDCkGARbi8cwXtrQxjmkFD3lBdE7bE/GQq28dZNB+EerQHF2x5WI6tSzmY3WOHjhQa
- +4I5GP+p/YJrlRLykD5MxwaKbnmCX3Feo+WMJb2oyVieQrgfwWIPqdKDqUz3tkDKW0DX
- DUx6BIy8r3cwoQBBFEl/uhjCPB53PAyWhHEFx5ioTh6tEucV3aV4g9pjV76N6761c6X6
- yZylowEK2MVJ1+b+PrSYjcL594KCGjNB5yiZNNrQ9RFRlPL7i7kuOClZUIhXvSwUtLgW
- 9qYwVFJTc7IowLZm83HTYmnp72xrhDnk7VoJyeetpiPHcTIKkOxDwxJ9B6rjit5//IVN
- X6bw==
-X-Gm-Message-State: AOAM531A68hP3fOx5MCIQMGbaTexUZmjYxRTyNSATBmofJXVLorYuH+r
- 2LI7qLI5AlDfu2MscVHj6k3kkIQXHnMrIA==
-X-Google-Smtp-Source: ABdhPJzxCyA9CQQjrzZI5u1ByJwH/i7XyyAY8JL/5V5tuS64Uevf4hKO8erQ1XhvoIj6UKvXtofJJA==
-X-Received: by 2002:a05:6000:186b:b0:20c:d9bf:250c with SMTP id
- d11-20020a056000186b00b0020cd9bf250cmr3830380wri.2.1652441944001; 
- Fri, 13 May 2022 04:39:04 -0700 (PDT)
+ bh=X5VInsnTlUTFXM4a+ZiHNfR7V1Xk1EraPGvAG2jFB7k=;
+ b=YWjxBuU7M6qAAARZo1ypVAmAbm6DR4XRTf28HCeTOAkleJppA4TI8O2XkG8GR5Ids5
+ jwgkIp/rD82wljNVouxHDNJRm9KU3LR8rMnobmaDqyWRIbwQpdJQ06Z6LQ/+uJdxSan3
+ HPTtMjyS8z6trLSrGGU6a0J/+ZTu5WU3qhHN254/1xbVhUArB6KTkvC8Dn/ahwzmBpIk
+ haoo0FsYpW6iisj85DoNU6B+P6yebYEHsE4go42J7ZhO7hILHhBTndQ4Rap7oPUAchZ1
+ Av3ElRXgyi4p7FDDEW89mvlyGKZuiFiplFuuEpX0muS6lMvChlUwq8I2r7JF//C3THpr
+ tLKg==
+X-Gm-Message-State: AOAM530S2rgIgKfX2Oy9eV84jIZqahxy4/4y+YSayGLBJyk6EDU9tNbx
+ 1OgHHeEpzp+cU7cQOERAjvs=
+X-Google-Smtp-Source: ABdhPJz2tKjwkrTa0NPsAS5bP/EIdFegjgq/+MzbdDJ7sHEfFyfsW6YyNfpY3niPS2gU7dOsyUUIMg==
+X-Received: by 2002:a7b:cd97:0:b0:38f:f785:ff8 with SMTP id
+ y23-20020a7bcd97000000b0038ff7850ff8mr14445008wmj.44.1652442299333; 
+ Fri, 13 May 2022 04:44:59 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
  by smtp.gmail.com with ESMTPSA id
- e15-20020adfa74f000000b0020c5253d8e5sm1894601wrd.49.2022.05.13.04.39.02
+ l5-20020adfa385000000b0020ce015ed48sm1914945wrb.103.2022.05.13.04.44.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 May 2022 04:39:03 -0700 (PDT)
-Message-ID: <2cd90ca7-7541-d47a-fec6-b0c64cf74fa3@gmail.com>
-Date: Fri, 13 May 2022 13:39:01 +0200
+ Fri, 13 May 2022 04:44:58 -0700 (PDT)
+Message-ID: <6412eecf-a4c3-cf06-55ff-9df8b0656d21@gmail.com>
+Date: Fri, 13 May 2022 13:44:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.1
 Content-Language: en-US
-To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
+To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
+Cc: "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>,
- "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chuanhong Guo <gch981213@gmail.com>, Dang Huynh <danct12@riseup.net>,
- Fabien Parent <fparent@baylibre.com>, Hui Liu <hui.liu@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Rui Salvaterra <rsalvaterra@gmail.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ "jason-jh.lin" <jason-jh.lin@mediatek.com>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: mediatek: DT updates for v5.19
+Subject: [GIT PULL] soc: mediatek: driver changes for v5.19
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_043908_727058_CF2C60A9 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20220513_044500_916513_7044E2B9 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,108 +89,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgT2xvZiBhbmQgQXJuZCwKClBsZWFzZSBoYXZlIGEgbG9vayBvbiB0aGUgNjQgYml0IERUIHVw
-ZGF0ZXMgZm9yIE1lZGlhdGVrLiBNb3N0IG5vdGFibHkgd2UgYWRkIApzdXBwb3J0IGZvciB0d28g
-TVQ4MTk1IGJhc2VkIGJvYXJkcywgdGhlIEVWQiBhbmQgdGhlIGRlbW8gYm9hcmQuIEFwYXJ0IGZy
-b20gdGhhdCAKd2UgZ290IHRoZSBldmFsdXRhdGlvbiBib2FyZCBmb3IgTVQ4MTkyIGFkZGVkIGFu
-ZCB3aXRoIGl0IHF1aXRlIHNvbWUgZGV2aWNlIHN1cHBvcnQuCgpTb3JyeSBmb3IgdGhlIGRlbGF5
-IHdpdGggdGhlIHB1bGwgcmVxdWVzdC4KClJlZ2FyZHMsCk1hdHRoaWFzCgotLS0KClRoZSBmb2xs
-b3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgMzEyMzEwOTI4NDE3NmIxNTMyODc0NTkxZjdjODFm
-MzgzN2JiZGMxNzoKCiAgIExpbnV4IDUuMTgtcmMxICgyMDIyLTA0LTAzIDE0OjA4OjIxIC0wNzAw
-KQoKYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6CgogICBodHRwczovL2dp
-dC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9tYXR0aGlhcy5iZ2cvbGludXgu
-Z2l0LyAKdGFncy92NS4xOC1uZXh0LWR0czY0Cgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAg
-dG8gYzc1MTA0NzYyZGRhY2U1OTczZGViNGVhNTRkMzViZjJiNjRiYmE5ODoKCiAgIGFybTY0OiBk
-dHM6IG10ODE5MjogRm9sbG93IGJpbmRpbmcgb3JkZXIgZm9yIFNDUCByZWdpc3RlcnMgKDIwMjIt
-MDUtMTMgCjEzOjI3OjQwICswMjAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpNVDgxOTU6Ci0gYWRkIGV2YWx1YXRpb24g
-YW5kIGRlbW8gYm9hcmQKCk1UODE5MjoKLSBhZGQgbmV3IG5vZGVzOiBwd3JhcCwgUE1JQywgc2Nw
-LCBVU0IsIGVmdXNlLCBJT01NVSwgc21pLCBEUEksIFBDSWUsCiAgIFNQTUksIGF1ZGlvIHN5c3Rl
-bSwgTU1DIGFuZCB2aWRlbyBlbmNvbmRlcgotIGFkZCBldmFsdWF0aW9uIGJvYXJkCgpNVDgxODM6
-Ci0gZml4IGR0c2NoZW1hIGlzc3VlcwotIHVwZGF0ZSBjb21wYXRpYmxlIGZvciB0aGUgZGlzcGxh
-eSBhbWJpZW50IGxpZ2h0IHByb2Nlc3NvciAoZGlzcC1hYWwpCi0gZml4IGR0c2NoZW1hIHdhcm5p
-bmcgZm9yIHRoZSBwdW1wa2kgYm9hcmQKCk1UODE3MzoKLSBhZGQgcG93ZXIgZG9tYWlucyB0byB0
-aGUgdmlkZW8gZW5jb25kZXIgbm9kZXMKLSBhZGQgR0NFIHN1cHBvcnQgdG8gdGhlIGRpc3BsYXkg
-bXV0ZXggbm9kZQoKTVQ3NjIyOgotIHNwZWNpZnkgbnVtYmVyIG9mIERNQSByZXF1ZXN0cyBleHBs
-aWNpdGVseQotIHNwZWNpZnkgbGV2ZWwgMiBjYWNoZSB0b3BvbG9neQotIGFkZCBTUEktTkFORCBm
-bGFzaCBkZXZpY2UKLSBmaXggZHRzY2hlbWEgd2FybmluZ3MgZm9yIHRoZSBTeXN0ZW0gQ29tcGFu
-aW9uIFByb2Nlc3NvciAoU0NQKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpBbGxlbi1LSCBDaGVuZyAoMTYpOgogICAgICAg
-YXJtNjQ6IGR0czogbXQ4MTkyOiBBZGQgcHdyYXAgbm9kZQogICAgICAgYXJtNjQ6IGR0czogbXQ4
-MTkyOiBBZGQgU0NQIG5vZGUKICAgICAgIGFybTY0OiBkdHM6IG10ODE5MjogQWRkIHVzYi1waHkg
-bm9kZQogICAgICAgYXJtNjQ6IGR0czogbXQ4MTkyOiBBZGQgeGhjaSBub2RlCiAgICAgICBhcm02
-NDogZHRzOiBtdDgxOTI6IEZpeCBub3JfZmxhc2ggc3RhdHVzIGRpc2FibGUgdHlwbwogICAgICAg
-YXJtNjQ6IGR0czogbXQ4MTkyOiBBZGQgZWZ1c2Ugbm9kZQogICAgICAgYXJtNjQ6IGR0czogbXQ4
-MTkyOiBBZGQgbTR1IGFuZCBzbWkgbm9kZXMKICAgICAgIGFybTY0OiBkdHM6IG10ODE5MjogQWRk
-IHRoZSBtbXN5cyByZXNldCBiaXQgdG8gcmVzZXQgdGhlIGRzaTAKICAgICAgIGFybTY0OiBkdHM6
-IG10ODE5MjogQWRkIGRwaSBub2RlCiAgICAgICBhcm02NDogZHRzOiBtdDgxOTI6IEFkZCBQQ0ll
-IG5vZGUKICAgICAgIGFybTY0OiBkdHM6IG10ODE5MjogQWRkIEgyNjQgdmVuYyBkZXZpY2Ugbm9k
-ZQogICAgICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IG10ODE3MzogQWRkIHBvd2VyIGRvbWFpbiB0
-byBlbmNvZGVyIG5vZGVzCiAgICAgICBkdC1iaW5kaW5nczogYXJtOiBBZGQgY29tcGF0aWJsZSBm
-b3IgTWVkaWF0ZWsgTVQ4MTkyCiAgICAgICBhcm02NDogZHRzOiBtdDgxOTI6IEFkZCBzcG1pIG5v
-ZGUKICAgICAgIGFybTY0OiBkdHM6IG10ODE5MjogQWRkIGF1ZGlvLXJlbGF0ZWQgbm9kZXMKICAg
-ICAgIGFybTY0OiBkdHM6IG10ODE5MjogQWRkIG1tYyBkZXZpY2Ugbm9kZXMKCkFuZ2Vsb0dpb2Fj
-Y2hpbm8gRGVsIFJlZ25vICgxKToKICAgICAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBtdDgxNzM6
-IEFkZCBnY2UtY2xpZW50LXJlZyBoYW5kbGUgdG8gZGlzcC1tdXRleAoKQ2h1YW5ob25nIEd1byAo
-MSk6CiAgICAgICBhcm02NDogZHRzOiBtZWRpYXRlazogYWRkIG10ay1zbmZpIGZvciBtdDc2MjIK
-CkRhbmcgSHV5bmggKDEpOgogICAgICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IHB1bXBraW46IFJl
-bW92ZSBpbnB1dC1uYW1lIHByb3BlcnR5CgpGYWJpZW4gUGFyZW50ICg1KToKICAgICAgIGR0LWJp
-bmRpbmdzOiBhcm02NDogZHRzOiBtZWRpYXRlazogQWRkIG10ODE5NS1kZW1vIGJvYXJkCiAgICAg
-ICBhcm02NDogZHRzOiBtZWRpYXRlazogQWRkIGRldmljZS10cmVlIGZvciBNVDgxOTUgRGVtbyBi
-b2FyZAogICAgICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IG10ODE4My1wdW1wa2luOiBmaXggYmFk
-IHRoZXJtaXN0b3Igbm9kZSBuYW1lCiAgICAgICBhcm02NDogZHRzOiBtZWRpYXRlazogbXQ4MTk1
-LWRlbW86IFJlbW92ZSBpbnB1dC1uYW1lIHByb3BlcnR5CiAgICAgICBhcm02NDogZHRzOiBtZWRp
-YXRlazogbXQ4MTk1LWRlbW86IGVuYWJsZSB1YXJ0MQoKSHVpIExpdSAoMSk6CiAgICAgICBhcm02
-NDogZHRzOiBtdDYzNTk6IGFkZCBQTUlDIE1UNjM1OSByZWxhdGVkIG5vZGVzCgpLcnp5c3p0b2Yg
-S296bG93c2tpICg0KToKICAgICAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBtdDgxODM6IGFsaWdu
-IEdvb2dsZSBDUk9TIEVDIFBXTSBub2RlIG5hbWUgd2l0aCAKZHRzY2hlbWEKICAgICAgIGFybTY0
-OiBkdHM6IG1lZGlhdGVrOiBhbGlnbiBvcGVyYXRpbmctcG9pbnRzIHRhYmxlIG5hbWUgd2l0aCBk
-dHNjaGVtYQogICAgICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IGFsaWduIHRoZXJtYWwgem9uZSBu
-b2RlIG5hbWVzIHdpdGggZHRzY2hlbWEKICAgICAgIGFybTY0OiBkdHM6IG10ODE4My1rdWt1aTog
-YWxpZ24gU1BJIE5PUiBub2RlIG5hbWUgd2l0aCBkdHNjaGVtYQoKTsOtY29sYXMgRi4gUi4gQS4g
-UHJhZG8gKDIpOgogICAgICAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6IEZvcm1hdCBtZWRpYXRlayxs
-YXJicyBhcyBhbiBhcnJheSBvZiBwaGFuZGxlcwogICAgICAgYXJtNjQ6IGR0czogbXQ4MTkyOiBG
-b2xsb3cgYmluZGluZyBvcmRlciBmb3IgU0NQIHJlZ2lzdGVycwoKUmV4LUJDIENoZW4gKDEpOgog
-ICAgICAgYXJtNjQ6IGR0czogbXQ4MTgzOiBVcGRhdGUgZGlzcF9hYWwgbm9kZSBjb21wYXRpYmxl
-CgpSdWkgU2FsdmF0ZXJyYSAoMik6CiAgICAgICBhcm02NDogZHRzOiBtdDc2MjI6IHNwZWNpZnkg
-dGhlIG51bWJlciBvZiBETUEgcmVxdWVzdHMKICAgICAgIGFybTY0OiBkdHM6IG10NzYyMjogc3Bl
-Y2lmeSB0aGUgTDIgY2FjaGUgdG9wb2xvZ3kKClRpbmdoYW4gU2hlbiAoMik6CiAgICAgICBkdC1i
-aW5kaW5nczogYXJtOiBtZWRpYXRlazogQWRkIG10ODE5NSBwZXJpY2ZnIGNvbXBhdGlibGUKICAg
-ICAgIGFybTY0OiBkdHM6IEFkZCBtZWRpYXRlayBTb0MgbXQ4MTk1IGFuZCBldmFsdWF0aW9uIGJv
-YXJkCgpZb25nIFd1ICgxKToKICAgICAgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBHZXQgcmlkIG9m
-IG1lZGlhdGVrLCBsYXJiIGZvciBNTSBub2RlcwoKICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9h
-cm0vbWVkaWF0ZWsueWFtbCAgICAgICAgICB8ICAgIDUgKwogIC4uLi9iaW5kaW5ncy9hcm0vbWVk
-aWF0ZWsvbWVkaWF0ZWsscGVyaWNmZy55YW1sICAgIHwgICAgMSArCiAgYXJjaC9hcm02NC9ib290
-L2R0cy9tZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgICAgfCAgICAyICsKICBhcmNoL2FybTY0
-L2Jvb3QvZHRzL21lZGlhdGVrL210MjcxMmUuZHRzaSAgICAgICAgICB8ICAgMTAgKy0KICBhcmNo
-L2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210NjM1OS5kdHNpICAgICAgICAgICB8ICAyOTggKysr
-KysrCiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaSAgICAgICAgICAg
-fCAgIDIwICsKICBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE2Ny5kdHNpICAgICAg
-ICAgICB8ICAgIDIgKy0KICBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My5kdHNp
-ICAgICAgICAgICB8ICAgMjkgKy0KICAuLi4vYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3Vp
-LWphY3V6emkuZHRzaSAgICB8ICAgIDIgKy0KICBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
-L210ODE4My1rdWt1aS5kdHNpICAgICB8ICAgIDIgKy0KICBhcmNoL2FybTY0L2Jvb3QvZHRzL21l
-ZGlhdGVrL210ODE4My1wdW1wa2luLmR0cyAgICB8ICAgIDIgKy0KICBhcmNoL2FybTY0L2Jvb3Qv
-ZHRzL21lZGlhdGVrL210ODE4My5kdHNpICAgICAgICAgICB8ICAgMTcgKy0KICBhcmNoL2FybTY0
-L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi1ldmIuZHRzICAgICAgICB8ICAgIDEgKwogIGFyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kgICAgICAgICAgIHwgIDUyNiArKysr
-KysrKystCiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxOTUtZGVtby5kdHMgICAg
-ICAgfCAgNDUwICsrKysrKysrKwogIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTk1
-LWV2Yi5kdHMgICAgICAgIHwgIDE4MSArKysrCiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
-ay9tdDgxOTUuZHRzaSAgICAgICAgICAgfCAxMDQ1ICsrKysrKysrKysrKysrKysrKysrCiAgYXJj
-aC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9wdW1wa2luLWNvbW1vbi5kdHNpICAgfCAgICAxIC0K
-ICBpbmNsdWRlL2R0LWJpbmRpbmdzL3Jlc2V0L210ODE5Mi1yZXNldHMuaCAgICAgICAgICB8ICAg
-IDMgKwogIDE5IGZpbGVzIGNoYW5nZWQsIDI1NDUgaW5zZXJ0aW9ucygrKSwgNTIgZGVsZXRpb25z
-KC0pCiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ2
-MzU5LmR0c2kKICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
-ay9tdDgxOTUtZGVtby5kdHMKICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0
-cy9tZWRpYXRlay9tdDgxOTUtZXZiLmR0cwogIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0
-L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5NS5kdHNpCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
-bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi Olof,
+Hi Arnd,
+
+Please have a look at the driver changes for the MediaTek SoCs. Most important 
+change is that we got support for the display mutex and vdosys0 of MT8195. We 
+still need to figure out which is the best way to add support for vdosys1. That 
+will hopefully ready for the next round. Fingers crossed.
+
+Best regards,
+Matthias
+
+---
+
+The following changes since commit 3123109284176b1532874591f7c81f3837bbdc17:
+
+   Linux 5.18-rc1 (2022-04-03 14:08:21 -0700)
+
+are available in the Git repository at:
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
+tags/v5.18-next-soc
+
+for you to fetch changes up to 537f8ffbdf4b9e47e2e21eb8548cdf9cc254c936:
+
+   soc: mediatek: mutex: remove mt8195 MOD0 and SOF0 definition (2022-04-25 
+12:46:13 +0200)
+
+----------------------------------------------------------------
+mmsys:
+- add SW reset to MT8192
+- add support for MT8195
+
+pmic wrapper:
+- update binding description needed for future MT8195 support
+
+mutex:
+- add support for MT8195
+
+cmdq helper:
+- remove legacy callback
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (1):
+       soc: mediatek: mmsys: Add sw0_rst_offset for MT8192
+
+Chun-Kuang Hu (1):
+       soc: mediatek: cmdq: Use mailbox rx_callback instead of cmdq_task_cb
+
+Jason-JH.Lin (1):
+       soc: mediatek: mutex: remove mt8195 MOD0 and SOF0 definition
+
+Matthias Brugger (1):
+       Merge tag 'v5.18-next-vdso0-stable-tag' into v5.18-next/soc
+
+Zhiyong.Tao (1):
+       dt-bindings: pwrap: mediatek: Update pwrap document for mt8195
+
+jason-jh.lin (5):
+       dt-bindings: arm: mediatek: mmsys: add power and gce properties
+       dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding
+       soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+       soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+       soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for mt8195 vdosys0
+
+  .../bindings/arm/mediatek/mediatek,mmsys.yaml      |  32 ++
+  .../devicetree/bindings/soc/mediatek/pwrap.txt     |  10 +-
+  drivers/soc/mediatek/mt8167-mmsys.h                |   2 +-
+  drivers/soc/mediatek/mt8183-mmsys.h                |   2 +-
+  drivers/soc/mediatek/mt8186-mmsys.h                |   4 +-
+  drivers/soc/mediatek/mt8192-mmsys.h                |   4 +-
+  drivers/soc/mediatek/mt8195-mmsys.h                | 370 +++++++++++++++++++++
+  drivers/soc/mediatek/mt8365-mmsys.h                |   4 +-
+  drivers/soc/mediatek/mtk-cmdq-helper.c             |  25 +-
+  drivers/soc/mediatek/mtk-mmsys.c                   | 153 ++++++++-
+  drivers/soc/mediatek/mtk-mmsys.h                   |   6 +
+  drivers/soc/mediatek/mtk-mutex.c                   |  92 ++++-
+  include/linux/soc/mediatek/mtk-cmdq.h              |   5 +-
+  include/linux/soc/mediatek/mtk-mmsys.h             |  12 +
+  14 files changed, 662 insertions(+), 59 deletions(-)
+  create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
