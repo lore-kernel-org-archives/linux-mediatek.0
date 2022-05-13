@@ -4,60 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EF0CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 17:19:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0738C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 20:17:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lq1LrDfU7PKrNV/gx4opdtLsxly2u+zqM3dodOcCbXk=; b=YmEuJR0j2iL43y
-	3b2VdnpVoN9tngOsKpgBVLrQKIhjcQAGDurrQRvBNJmrturNNT46WNnsNxkzmHPzs9UY0NrKu2kdK
-	S9JX8RZ5NbiAvkHLutuXhETujCBe0KAK3gTVT4qonFYw/pmoU9NiOi+b8x2H36QvBly0O4xwGO1Z1
-	DXd1PdVVAPF7px7l0jE74f2mZhd+w3x2/IzUsX/i5CxvRxlRyWiac0kdlsJPCJUjdUFL2t7VFrIjD
-	Jk3xFJzl47/K6SkbCTLc64MtNmv1wtqyRscyjQ4sZd+D9i/rNdbwpzVtPGhykbY8JJuOWNw1sQ88y
-	We3rANrOCojryhQhF8ng==;
+	List-Owner; bh=YVJ/1c1gEpkd9KwdeCE2bn66p396EmRFaZ1eZgV6VFQ=; b=jhL56E9tWZEdVA
+	q5bZ8aIYFTX2MK6UhTj5Y9onL1gzcsYjwQ2P0ERTTujOaOXbC7dP9u3b22uhOSf/5sHb5uOANFOp0
+	yQzKjTZpDRhIyepalEFVSN/EV0/QIOYc0/JeRDP/82ztY3NX6f8LPdRQqc7hF77nLY2O7MCkQka6I
+	ixTyuSIecxOxtAQ4wJ6lH8CrBKzrsgY1YwuvPTDMEl3tXZmPggNyWjXGlDn+ndpLbT9gYmW8lL8R8
+	8voxFzCvhgVqUf9YSXJpKcJtlNclS1TWUom1/RMpy7OinpMQfiGfGLppcxO7JJ+IIBA+KTzeVowWJ
+	6ggCcUKrrOHlGeiv8nvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npYwM-00H2Ru-Nw; Fri, 13 May 2022 17:18:58 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1npbiz-00HPfL-8M; Fri, 13 May 2022 20:17:21 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npYu9-00H0yf-0J; Fri, 13 May 2022 17:16:42 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 275411F463B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652462198;
- bh=u2SRqTpnqi7EaYL6hrMeHhetZF1DSjSsk+5BaLSaDYU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZeWZhdG9YtV3hpkjxhdOPtmSe3qvvFh+9VjDugbUZDzCglh5Qperba9fLxK7mMFZW
- A/fCGOvGjD08wpU9biJQVkR8gLlVlZB6kAcRKQ+9InH+sShRXLKiPWJmiB8kLVD/SS
- rGVz4MqGzv8s1yiQQINsRHigYZ3BcYkP7QQvt//GCRcg+blgNV2BPhCeeZUiEF8S7N
- nXEwS3yWdbS42g1dHcHU9gOxhcqePwK0loK1h90mkVj3HzG/qpYXYmfhOfQWGk12ou
- 1to3/yU4wjy+BqpkH70qwqhBWJ9ckOz/vbkpkB9stSxMydRV7JFWYNwGd12/qDDyVo
- rLmJ4ye5ggRVw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ id 1npbin-00HPbW-8X; Fri, 13 May 2022 20:17:11 +0000
+Received: by mail-wr1-x429.google.com with SMTP id j25so11758771wrc.9;
+ Fri, 13 May 2022 13:17:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=AH3Twv2cDKO4PnwItSWLy467GPyS13DYbuX6H4dtOfk=;
+ b=gZ4GGp7LpiiHosXavOc8gQ/wUPUiQj9fbZZjdwD0cURk3Ze+2P9fWptU9fM9qyJjsg
+ 74yfGFR5mW5laQwboTv4At62yatCI0s56djwGszugjJp6wQbwFc9dQoYp/9sKJe45c82
+ yHtV5VT+ajmDOd4S1LNp+9shkEDbvwkz3zYkF7Te7G/58AASlHJhMYFOnda+Vd1tCkF+
+ 1E2S5FUVl3My8VlUPVjb8cj1KQHZO6MhP6BatO7j7FIHTL2lQavWBuvAacW7RT2fH5Aw
+ RUbMRN9ibXaufcqynaycNgjsDwASXyoDkvZG7hyDrcGhCMcBih0M2qdcVJBgozv25mp5
+ SBMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AH3Twv2cDKO4PnwItSWLy467GPyS13DYbuX6H4dtOfk=;
+ b=BSKhCnL0TpHGyqnTnUVJewYzoMp0kHglMC3QdA2qHG64NYDcnHWbUM51cZESzF5NM+
+ dRl/FuU91y9IqhiDtaPNv43s+w5YsLQ2z0pHRPvJ3I/mrIkljgqAOivPM1l7N4TL7f24
+ 2k1+8rbfwszu2qKi1epu5aAyY8wUOq/FYa3ANMSWtNB7Nbq9pI9oy4qhYzK5ydp633qg
+ k2Gg36+QDgX76ffcPNjBo5Nmvo/AFYWAFr+JLym+9+W/UYj1UcCQpr1kXythYtOaJ1wC
+ EuMkOBkRjvFHmG2YIOS0mgnWQgpO0rRxjT2bZ3AakLOM8ylpvy2N17LuYQbi7ZCb1c8L
+ lVSQ==
+X-Gm-Message-State: AOAM531tkpTzBbNci2dH+eU/E+fzc+fWQ0sUq5YzoISUu/gvpfEwJP/B
+ biIN0kPKK4r/ZKPghAaPEmI=
+X-Google-Smtp-Source: ABdhPJyG5Xx+Y28S93TTQKppba6xLMMvszgaMdDm4GqbQvAsQvT2sU2IJ4cKFUTCElb9JxcRPTEg6Q==
+X-Received: by 2002:a05:6000:1e09:b0:20c:dbc7:e391 with SMTP id
+ bj9-20020a0560001e0900b0020cdbc7e391mr5392412wrb.218.1652473025236; 
+ Fri, 13 May 2022 13:17:05 -0700 (PDT)
+Received: from localhost.localdomain ([2001:1670:c:db50:2f51:85b4:f668:c64f])
+ by smtp.gmail.com with ESMTPSA id
+ x15-20020adfcc0f000000b0020c5253d923sm3064224wrh.111.2022.05.13.13.17.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 May 2022 13:17:04 -0700 (PDT)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yassine Oudjana <yassine.oudjana@gmail.com>, daniel.lezcano@linaro.org,
+ tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
- kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 7/7] arm64: dts: mediatek: mt6795: Add ARM CCI-400 node and
- assign to CPUs
-Date: Fri, 13 May 2022 19:16:17 +0200
-Message-Id: <20220513171617.504430-8-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220513171617.504430-1-angelogioacchino.delregno@collabora.com>
-References: <20220513171617.504430-1-angelogioacchino.delregno@collabora.com>
+ linux-mediatek@lists.infradead.org, konrad.dybcio@somainline.org,
+ marijn.suijten@somainline.org, martin.botka@somainline.org,
+ ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
+ paul.bouchara@somainline.org
+Subject: Re: [PATCH v2 2/2] clocksource/drivers/timer-mediatek: Implement
+ CPUXGPT timers
+Date: Sat, 14 May 2022 00:14:42 +0400
+Message-Id: <20220513201442.13569-1-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220509210741.12020-3-angelogioacchino.delregno@collabora.com>
+References: 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_101641_256247_2E4AB7B7 
-X-CRM114-Status: UNSURE (   8.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220513_131709_368630_FDB7C184 
+X-CRM114-Status: GOOD (  48.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,128 +96,246 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This SoC features an ARM CCI-400 IP: add the required node and
-assign the cci control ports to the CPU cores.
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 44 ++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+On Mon,  9 May 2022 23:07:40 +0200, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+> Some MediaTek platforms with a buggy TrustZone ATF firmware will not
+> initialize the AArch64 System Timer correctly: in these cases, the
+> System Timer address is correctly programmed, as well as the CNTFRQ_EL0
+> register (reading 13MHz, as it should be), but the assigned hardware
+> timers are never started before (or after) booting Linux.
+> 
+> In this condition, any call to function get_cycles() will be returning
+> zero, as CNTVCT_EL0 will always read zero.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index 217d99621558..db1f24b3b9a9 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -34,6 +34,7 @@ cpu0: cpu@0 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x000>;
-+			cci-control-port = <&cci_control2>;
- 			next-level-cache = <&l2_0>;
- 		};
- 
-@@ -42,6 +43,7 @@ cpu1: cpu@1 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x001>;
-+			cci-control-port = <&cci_control2>;
- 			next-level-cache = <&l2_0>;
- 		};
- 
-@@ -50,6 +52,7 @@ cpu2: cpu@2 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x002>;
-+			cci-control-port = <&cci_control2>;
- 			next-level-cache = <&l2_0>;
- 		};
- 
-@@ -58,6 +61,7 @@ cpu3: cpu@3 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x003>;
-+			cci-control-port = <&cci_control2>;
- 			next-level-cache = <&l2_0>;
- 		};
- 
-@@ -66,6 +70,7 @@ cpu4: cpu@100 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x100>;
-+			cci-control-port = <&cci_control1>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -74,6 +79,7 @@ cpu5: cpu@101 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x101>;
-+			cci-control-port = <&cci_control1>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -82,6 +88,7 @@ cpu6: cpu@102 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x102>;
-+			cci-control-port = <&cci_control1>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -90,6 +97,7 @@ cpu7: cpu@103 {
- 			compatible = "arm,cortex-a53";
- 			enable-method = "psci";
- 			reg = <0x103>;
-+			cci-control-port = <&cci_control1>;
- 			next-level-cache = <&l2_1>;
- 		};
- 
-@@ -226,6 +234,42 @@ gic: interrupt-controller@10221000 {
- 			      <0 0x10226000 0 0x2000>;
- 		};
- 
-+		cci: cci@10390000 {
-+			compatible = "arm,cci-400";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			reg = <0 0x10390000 0 0x1000>;
-+			ranges = <0 0 0x10390000 0x10000>;
-+
-+			cci_control0: slave-if@1000 {
-+				compatible = "arm,cci-400-ctrl-if";
-+				interface-type = "ace-lite";
-+				reg = <0x1000 0x1000>;
-+			};
-+
-+			cci_control1: slave-if@4000 {
-+				compatible = "arm,cci-400-ctrl-if";
-+				interface-type = "ace";
-+				reg = <0x4000 0x1000>;
-+			};
-+
-+			cci_control2: slave-if@5000 {
-+				compatible = "arm,cci-400-ctrl-if";
-+				interface-type = "ace";
-+				reg = <0x5000 0x1000>;
-+			};
-+
-+			pmu@9000 {
-+				compatible = "arm,cci-400-pmu,r1";
-+				reg = <0x9000 0x5000>;
-+				interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 61 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
-+			};
-+		};
-+
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt6795-uart",
- 				     "mediatek,mt6577-uart";
--- 
-2.35.1
+I spent a lot of time trying to figure out why the arch timer didn't
+work on MT6737T and never got any results. Turns out this is why...
 
+I ended up using the GPT (@ 0x10004000) as a system timer and it
+worked fine.
+
+With this patch the arch timer started to work finally. Thanks for
+the fix! See below for one comment on this patch. 
+
+> One common critical symptom of that is trying to use the udelay()
+> function (calling __delay()), which executes the following loop:
+> 
+>             start = get_cycles();
+>             while ((get_cycles() - start) < cycles)
+>                     cpu_relax();
+> 
+> which, when CNTVCT_EL0 always reads zero, translates to:
+> 
+>             while((0 - 0) < 0)  ==> while(0 < 0)
+> 
+> ... generating an infinite loop, even though zero is never less
+> than zero, but always equal to it (this has to be researched,
+> but it's out of the scope of this commit).
+> 
+> To fix this issue on the affected MediaTek platforms, the solution
+> is to simply start the timers that are designed to be System Timer(s).
+> These timers, downstream, are called "CPUXGPT" and there is one
+> timer per CPU core; luckily, it is not necessary to set a start bit
+> on each CPUX General Purpose Timer, but it's conveniently enough to:
+>  - Set the clock divider (input = 26MHz, divider = 2, output = 13MHz);
+>  - Set the ENABLE bit on a global register (starts all CPUX timers).
+> 
+> The only small hurdle with this setup is that it's all done through
+> the MCUSYS wrapper, where it is needed, for each read or write, to
+> select a register address (by writing it to an index register) and
+> then to perform any R/W on a "CON" register.
+> 
+> For example, writing "0x1" to the CPUXGPT register offset 0x4:
+> - Write 0x4 to mcusys INDEX register
+> - Write 0x1 to mcusys CON register
+> 
+> Reading from CPUXGPT register offset 0x4:
+> - Write 0x4 to mcusys INDEX register
+> - Read mcusys CON register.
+> 
+> Finally, starting this timer makes platforms affected by this issue
+> to work correctly.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/clocksource/timer-mediatek.c | 119 +++++++++++++++++++++++++++
+>  1 file changed, 119 insertions(+)
+> 
+> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+> index 7bcb4a3f26fb..a3e90047f9ac 100644
+> --- a/drivers/clocksource/timer-mediatek.c
+> +++ b/drivers/clocksource/timer-mediatek.c
+> @@ -22,6 +22,19 @@
+>  
+>  #define TIMER_SYNC_TICKS        (3)
+>  
+> +/* cpux mcusys wrapper */
+> +#define CPUX_CON_REG		0x0
+> +#define CPUX_IDX_REG		0x4
+> +
+> +/* cpux */
+> +#define CPUX_IDX_GLOBAL_CTRL	0x0
+> + #define CPUX_ENABLE		BIT(0)
+> + #define CPUX_CLK_DIV_MASK	GENMASK(10, 8)
+> + #define CPUX_CLK_DIV1		BIT(8)
+> + #define CPUX_CLK_DIV2		BIT(9)
+> + #define CPUX_CLK_DIV4		BIT(10)
+> +#define CPUX_IDX_GLOBAL_IRQ	0x30
+> +
+>  /* gpt */
+>  #define GPT_IRQ_EN_REG          0x00
+>  #define GPT_IRQ_ENABLE(val)     BIT((val) - 1)
+> @@ -72,6 +85,57 @@
+>  
+>  static void __iomem *gpt_sched_reg __read_mostly;
+>  
+> +static u32 mtk_cpux_readl(u32 reg_idx, struct timer_of *to)
+> +{
+> +	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
+> +	return readl(timer_of_base(to) + CPUX_CON_REG);
+> +}
+> +
+> +static void mtk_cpux_writel(u32 val, u32 reg_idx, struct timer_of *to)
+> +{
+> +	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
+> +	writel(val, timer_of_base(to) + CPUX_CON_REG);
+> +}
+> +
+> +static void mtk_cpux_disable_irq(struct timer_of *to)
+> +{
+> +	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
+> +	u32 val;
+> +
+> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
+> +	val &= ~(*irq_mask);
+> +	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
+> +}
+> +
+> +static void mtk_cpux_enable_irq(struct timer_of *to)
+> +{
+> +	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
+> +	u32 val;
+> +
+> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
+> +	val |= *irq_mask;
+> +	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
+> +}
+> +
+> +static int mtk_cpux_clkevt_shutdown(struct clock_event_device *clkevt)
+> +{
+> +	/* Clear any irq */
+> +	mtk_cpux_disable_irq(to_timer_of(clkevt));
+> +
+> +	/*
+> +	 * Disabling CPUXGPT timer will crash the platform, especially
+> +	 * if Trusted Firmware is using it (usually, for sleep states),
+> +	 * so we only mask the IRQ and call it a day.
+> +	 */
+> +	return 0;
+> +}
+> +
+> +static int mtk_cpux_clkevt_resume(struct clock_event_device *clkevt)
+> +{
+> +	mtk_cpux_enable_irq(to_timer_of(clkevt));
+> +	return 0;
+> +}
+> +
+>  static void mtk_syst_ack_irq(struct timer_of *to)
+>  {
+>  	/* Clear and disable interrupt */
+> @@ -281,6 +345,60 @@ static struct timer_of to = {
+>  	},
+>  };
+>  
+> +static int __init mtk_cpux_init(struct device_node *node)
+> +{
+> +	static struct timer_of to_cpux;
+> +	u32 freq, val;
+> +	int ret;
+> +
+> +	/*
+> +	 * There are per-cpu interrupts for the CPUX General Purpose Timer
+> +	 * but since this timer feeds the AArch64 System Timer we can rely
+> +	 * on the CPU timer PPIs as well, so we don't declare TIMER_OF_IRQ.
+> +	 */
+> +	to_cpux.flags = TIMER_OF_BASE | TIMER_OF_CLOCK;
+> +	to_cpux.clkevt.name = "mtk-cpuxgpt";
+> +	to_cpux.clkevt.rating = 10;
+> +	to_cpux.clkevt.cpumask = cpu_possible_mask;
+> +	to_cpux.clkevt.set_state_shutdown = mtk_cpux_clkevt_shutdown;
+> +	to_cpux.clkevt.tick_resume = mtk_cpux_clkevt_resume;
+> +
+> +	/* If this fails, bad things are about to happen... */
+> +	ret = timer_of_init(node, &to_cpux);
+> +	if (ret) {
+> +		WARN(1, "Cannot start CPUX timers.\n");
+> +		return ret;
+> +	}
+> +
+> +	/*
+> +	 * Check if we're given a clock with the right frequency for this
+> +	 * timer, otherwise warn but keep going with the setup anyway, as
+> +	 * that makes it possible to still boot the kernel, even though
+> +	 * it may not work correctly (random lockups, etc).
+> +	 * The reason behind this is that having an early UART may not be
+> +	 * possible for everyone and this gives a chance to retrieve kmsg
+> +	 * for eventual debugging even on consumer devices.
+> +	 */
+> +	freq = timer_of_rate(&to_cpux);
+> +	if (freq > 13000000)
+
+Input clock is 26MHz and is then divided by 2 in CPUXGPT, so shouldn't
+this be 26000000 instead? I get a warning here with 26MHz system clock
+supplied:
+
+clocks {
+	...
+	clk26m: clk26m {
+		compatible = "fixed-clock";
+		clock-frequency = <26000000>;
+		#clock-cells = <0>;
+	};
+	...
+};
+...
+soc {
+	...
+	cpuxgpt: timer@10200670 {
+		compatible = "mediatek,mt6795-systimer";
+		reg = <0 0x10200670 0 0x8>;
+		clocks = <&clk26m>;
+	};
+	...
+};
+
+> +		WARN(1, "Requested unsupported timer frequency %u\n", freq);
+> +
+> +	/* Clock input is 26MHz, set DIV2 to achieve 13MHz clock */
+> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
+> +	val &= ~CPUX_CLK_DIV_MASK;
+> +	val |= CPUX_CLK_DIV2;
+> +	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
+> +
+> +	/* Enable all CPUXGPT timers */
+> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
+> +	mtk_cpux_writel(val | CPUX_ENABLE, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
+> +
+> +	clockevents_config_and_register(&to_cpux.clkevt, timer_of_rate(&to_cpux),
+> +					TIMER_SYNC_TICKS, 0xffffffff);
+> +
+> +	return 0;
+> +}
+> +
+>  static int __init mtk_syst_init(struct device_node *node)
+>  {
+>  	int ret;
+> @@ -339,3 +457,4 @@ static int __init mtk_gpt_init(struct device_node *node)
+>  }
+>  TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
+>  TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
+> +TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
+> -- 
+> 2.35.1
 
 _______________________________________________
 Linux-mediatek mailing list
