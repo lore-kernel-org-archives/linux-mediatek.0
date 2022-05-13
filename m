@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0738C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 20:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08FBEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 20:40:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YVJ/1c1gEpkd9KwdeCE2bn66p396EmRFaZ1eZgV6VFQ=; b=jhL56E9tWZEdVA
-	q5bZ8aIYFTX2MK6UhTj5Y9onL1gzcsYjwQ2P0ERTTujOaOXbC7dP9u3b22uhOSf/5sHb5uOANFOp0
-	yQzKjTZpDRhIyepalEFVSN/EV0/QIOYc0/JeRDP/82ztY3NX6f8LPdRQqc7hF77nLY2O7MCkQka6I
-	ixTyuSIecxOxtAQ4wJ6lH8CrBKzrsgY1YwuvPTDMEl3tXZmPggNyWjXGlDn+ndpLbT9gYmW8lL8R8
-	8voxFzCvhgVqUf9YSXJpKcJtlNclS1TWUom1/RMpy7OinpMQfiGfGLppcxO7JJ+IIBA+KTzeVowWJ
-	6ggCcUKrrOHlGeiv8nvw==;
+	List-Owner; bh=yDdMT2iGZ2KEMJ5KA3Jtr8DWX5mXW5lmV0gw97bhaYU=; b=IHFRiAypczcbmG
+	Yslb1naLO8+sUMCG+PFQ1U4dqtCYg9Bu6VZBP1T/c0opK8sd20ma5TtgYa0bGAaJ4EdBmHJXqbhf4
+	ZGBkqSnUODu4AzrXWwhiqpzL6TtGb9Wr7zMuJPp0lU9xdltW1RNn2NZ1WABj/donKefFbzTN+yJvz
+	AW3E372Tfp4DQWooy5NIwP0swQRDhnA9/ptW66h18dPPm+JQf+502Toa1sOjaArqP5G1sTBcrXHyd
+	WtkBccf4zCFRiWiA163vJLz4e1NEanbw4rY07KTinKStgyZH3eocgT5DO/xB65dY0cGmbuFSCI8H4
+	icwrWKpPFEF9+F3I05zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npbiz-00HPfL-8M; Fri, 13 May 2022 20:17:21 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1npc5c-00HZx0-F7; Fri, 13 May 2022 20:40:44 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npbin-00HPbW-8X; Fri, 13 May 2022 20:17:11 +0000
-Received: by mail-wr1-x429.google.com with SMTP id j25so11758771wrc.9;
- Fri, 13 May 2022 13:17:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=AH3Twv2cDKO4PnwItSWLy467GPyS13DYbuX6H4dtOfk=;
- b=gZ4GGp7LpiiHosXavOc8gQ/wUPUiQj9fbZZjdwD0cURk3Ze+2P9fWptU9fM9qyJjsg
- 74yfGFR5mW5laQwboTv4At62yatCI0s56djwGszugjJp6wQbwFc9dQoYp/9sKJe45c82
- yHtV5VT+ajmDOd4S1LNp+9shkEDbvwkz3zYkF7Te7G/58AASlHJhMYFOnda+Vd1tCkF+
- 1E2S5FUVl3My8VlUPVjb8cj1KQHZO6MhP6BatO7j7FIHTL2lQavWBuvAacW7RT2fH5Aw
- RUbMRN9ibXaufcqynaycNgjsDwASXyoDkvZG7hyDrcGhCMcBih0M2qdcVJBgozv25mp5
- SBMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=AH3Twv2cDKO4PnwItSWLy467GPyS13DYbuX6H4dtOfk=;
- b=BSKhCnL0TpHGyqnTnUVJewYzoMp0kHglMC3QdA2qHG64NYDcnHWbUM51cZESzF5NM+
- dRl/FuU91y9IqhiDtaPNv43s+w5YsLQ2z0pHRPvJ3I/mrIkljgqAOivPM1l7N4TL7f24
- 2k1+8rbfwszu2qKi1epu5aAyY8wUOq/FYa3ANMSWtNB7Nbq9pI9oy4qhYzK5ydp633qg
- k2Gg36+QDgX76ffcPNjBo5Nmvo/AFYWAFr+JLym+9+W/UYj1UcCQpr1kXythYtOaJ1wC
- EuMkOBkRjvFHmG2YIOS0mgnWQgpO0rRxjT2bZ3AakLOM8ylpvy2N17LuYQbi7ZCb1c8L
- lVSQ==
-X-Gm-Message-State: AOAM531tkpTzBbNci2dH+eU/E+fzc+fWQ0sUq5YzoISUu/gvpfEwJP/B
- biIN0kPKK4r/ZKPghAaPEmI=
-X-Google-Smtp-Source: ABdhPJyG5Xx+Y28S93TTQKppba6xLMMvszgaMdDm4GqbQvAsQvT2sU2IJ4cKFUTCElb9JxcRPTEg6Q==
-X-Received: by 2002:a05:6000:1e09:b0:20c:dbc7:e391 with SMTP id
- bj9-20020a0560001e0900b0020cdbc7e391mr5392412wrb.218.1652473025236; 
- Fri, 13 May 2022 13:17:05 -0700 (PDT)
-Received: from localhost.localdomain ([2001:1670:c:db50:2f51:85b4:f668:c64f])
- by smtp.gmail.com with ESMTPSA id
- x15-20020adfcc0f000000b0020c5253d923sm3064224wrh.111.2022.05.13.13.17.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 May 2022 13:17:04 -0700 (PDT)
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yassine Oudjana <yassine.oudjana@gmail.com>, daniel.lezcano@linaro.org,
- tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, konrad.dybcio@somainline.org,
- marijn.suijten@somainline.org, martin.botka@somainline.org,
- ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
- paul.bouchara@somainline.org
-Subject: Re: [PATCH v2 2/2] clocksource/drivers/timer-mediatek: Implement
- CPUXGPT timers
-Date: Sat, 14 May 2022 00:14:42 +0400
-Message-Id: <20220513201442.13569-1-y.oudjana@protonmail.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220509210741.12020-3-angelogioacchino.delregno@collabora.com>
-References: 
+ id 1npbut-00HV12-Ld; Fri, 13 May 2022 20:29:44 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id 9909C1F46481
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652473774;
+ bh=Sp4NALpVvxuZpnUtnlafMWQU3cvt1hsOH3okI6KMqBg=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=D6FJR6emnD7kC2ErYClSk16G0/d8/pH7wK/5sIy3AcRhPGwm6F6WKjeUgfXW8zafY
+ 6jJaYWqKXJEKhpES/ROj7He010Iz+oKUvONEN7cJhea7VUR0NX9dCzbOkA0+/jrKml
+ 1F8NJSG8IQ2ov7aSS67jNEuUYE4mD8YkrvqIIumUhK7UV7uDZbfZa1vVit5tmpU0zH
+ rM9vs/rOWmFrvGMRPH5qGg7DQeYScGRDLZW3N8rAIS//VYIZEkT1GH7fJCbYku6e4A
+ EwqdaoY3SwgypOfpA3vwKt0t5xx4XqkiRSW8ZRUaKHtw2bKaDZ7kMO/OMdchbSG5Q1
+ 97zhwuf388xZg==
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Dmitry Osipenko <digetx@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: nicolas@ndufresne.ca, linux-media@vger.kernel.org,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-kernel@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH v5 01/20] media: h264: Use v4l2_h264_reference for reflist
+Date: Fri, 13 May 2022 16:29:03 -0400
+Message-Id: <20220513202922.13846-2-nicolas.dufresne@collabora.com>
+X-Mailer: git-send-email 2.34.3
+In-Reply-To: <20220513202922.13846-1-nicolas.dufresne@collabora.com>
+References: <20220513202922.13846-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_131709_368630_FDB7C184 
-X-CRM114-Status: GOOD (  48.62  )
+X-CRM114-CacheID: sfid-20220513_132940_139074_9B9EB795 
+X-CRM114-Status: GOOD (  21.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,246 +79,655 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
+In preparation for adding field decoding support, convert the byte arrays
+for reflist into array of struct v4l2_h264_reference. That struct will
+allow us to mark which field of the reference picture is being referenced.
 
-On Mon,  9 May 2022 23:07:40 +0200, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
-> Some MediaTek platforms with a buggy TrustZone ATF firmware will not
-> initialize the AArch64 System Timer correctly: in these cases, the
-> System Timer address is correctly programmed, as well as the CNTFRQ_EL0
-> register (reading 13MHz, as it should be), but the assigned hardware
-> timers are never started before (or after) booting Linux.
-> 
-> In this condition, any call to function get_cycles() will be returning
-> zero, as CNTVCT_EL0 will always read zero.
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+[hverkuil: top_field_order_cnt -> pic_order_count]
+---
+ .../vcodec/vdec/vdec_h264_req_common.c        | 21 +++-
+ .../vcodec/vdec/vdec_h264_req_common.h        | 11 ++-
+ .../mediatek/vcodec/vdec/vdec_h264_req_if.c   | 15 ++-
+ .../vcodec/vdec/vdec_h264_req_multi_if.c      | 27 +++--
+ .../media/platform/nvidia/tegra-vde/h264.c    | 19 ++--
+ drivers/media/v4l2-core/v4l2-h264.c           | 33 ++++---
+ .../staging/media/hantro/hantro_g1_h264_dec.c | 38 +++----
+ drivers/staging/media/hantro/hantro_hw.h      |  6 +-
+ .../media/hantro/rockchip_vpu2_hw_h264_dec.c  | 98 +++++++++----------
+ drivers/staging/media/rkvdec/rkvdec-h264.c    | 12 +--
+ include/media/v4l2-h264.h                     | 19 ++--
+ 11 files changed, 167 insertions(+), 132 deletions(-)
 
-I spent a lot of time trying to figure out why the arch timer didn't
-work on MT6737T and never got any results. Turns out this is why...
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c
+index 3c75a7b4e845..b6931729e4ea 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.c
+@@ -12,11 +12,24 @@
+ #define GET_MTK_VDEC_PARAM(param) \
+ 	{ dst_param->param = src_param->param; }
+ 
+-/*
+- * The firmware expects unused reflist entries to have the value 0x20.
+- */
+-void mtk_vdec_h264_fixup_ref_list(u8 *ref_list, size_t num_valid)
++void mtk_vdec_h264_get_ref_list(u8 *ref_list,
++				const struct v4l2_h264_reference * v4l2_ref_list,
++				int num_valid)
+ {
++	u32 i;
++
++	/*
++	 * TODO The firmware does not support field decoding. Future
++	 * implementation must use v4l2_ref_list[i].fields to obtain
++	 * the reference field parity.
++	 */
++
++	for (i = 0; i < num_valid; i++)
++		ref_list[i] = v4l2_ref_list[i].index;
++
++	/*
++	 * The firmware expects unused reflist entries to have the value 0x20.
++	 */
+ 	memset(&ref_list[num_valid], 0x20, 32 - num_valid);
+ }
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
+index 0113f380b491..416277c70af3 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_common.h
+@@ -164,12 +164,15 @@ struct h264_fb {
+ };
+ 
+ /**
+- * mtk_vdec_h264_fixup_ref_list - fixup unused reference to 0x20.
++ * mtk_vdec_h264_get_ref_list - translate V4L2 reference list
+  *
+- * @ref_list:	reference picture list
+- * @num_valid:	used reference number
++ * @ref_list:		Mediatek reference picture list
++ * @v4l2_ref_list:	V4L2 reference picture list
++ * @num_valid:		used reference number
+  */
+-void mtk_vdec_h264_fixup_ref_list(u8 *ref_list, size_t num_valid);
++void mtk_vdec_h264_get_ref_list(u8 *ref_list,
++				const struct v4l2_h264_reference * v4l2_ref_list,
++				int num_valid);
+ 
+ /**
+  * mtk_vdec_h264_get_ctrl_ptr - get each CID contrl address.
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+index b055ceea481d..4bc05ab5afea 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_if.c
+@@ -102,6 +102,9 @@ static int get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 	const struct v4l2_ctrl_h264_scaling_matrix *scaling_matrix;
+ 	struct mtk_h264_dec_slice_param *slice_param = &inst->h264_slice_param;
+ 	struct v4l2_h264_reflist_builder reflist_builder;
++	struct v4l2_h264_reference v4l2_p0_reflist[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference v4l2_b0_reflist[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference v4l2_b1_reflist[V4L2_H264_REF_LIST_LEN];
+ 	u8 *p0_reflist = slice_param->decode_params.ref_pic_list_p0;
+ 	u8 *b0_reflist = slice_param->decode_params.ref_pic_list_b0;
+ 	u8 *b1_reflist = slice_param->decode_params.ref_pic_list_b1;
+@@ -137,12 +140,14 @@ static int get_vdec_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 	/* Build the reference lists */
+ 	v4l2_h264_init_reflist_builder(&reflist_builder, dec_params, sps,
+ 				       inst->dpb);
+-	v4l2_h264_build_p_ref_list(&reflist_builder, p0_reflist);
+-	v4l2_h264_build_b_ref_lists(&reflist_builder, b0_reflist, b1_reflist);
++	v4l2_h264_build_p_ref_list(&reflist_builder, v4l2_p0_reflist);
++	v4l2_h264_build_b_ref_lists(&reflist_builder, v4l2_b0_reflist,
++				    v4l2_b1_reflist);
++
+ 	/* Adapt the built lists to the firmware's expectations */
+-	mtk_vdec_h264_fixup_ref_list(p0_reflist, reflist_builder.num_valid);
+-	mtk_vdec_h264_fixup_ref_list(b0_reflist, reflist_builder.num_valid);
+-	mtk_vdec_h264_fixup_ref_list(b1_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(p0_reflist, v4l2_p0_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(b0_reflist, v4l2_b0_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(b1_reflist, v4l2_b1_reflist, reflist_builder.num_valid);
+ 
+ 	memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
+ 	       sizeof(inst->vsi_ctx.h264_slice_params));
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+index 1d9e753cf894..784d01f8bd50 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_if.c
+@@ -222,6 +222,9 @@ static int get_vdec_sig_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 	const struct v4l2_ctrl_h264_scaling_matrix *scaling_matrix;
+ 	struct vdec_h264_slice_lat_dec_param *slice_param = &inst->h264_slice_param;
+ 	struct v4l2_h264_reflist_builder reflist_builder;
++	struct v4l2_h264_reference v4l2_p0_reflist[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference v4l2_b0_reflist[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference v4l2_b1_reflist[V4L2_H264_REF_LIST_LEN];
+ 	u8 *p0_reflist = slice_param->decode_params.ref_pic_list_p0;
+ 	u8 *b0_reflist = slice_param->decode_params.ref_pic_list_b0;
+ 	u8 *b1_reflist = slice_param->decode_params.ref_pic_list_b1;
+@@ -256,13 +259,14 @@ static int get_vdec_sig_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 
+ 	/* Build the reference lists */
+ 	v4l2_h264_init_reflist_builder(&reflist_builder, dec_params, sps, inst->dpb);
+-	v4l2_h264_build_p_ref_list(&reflist_builder, p0_reflist);
++	v4l2_h264_build_p_ref_list(&reflist_builder, v4l2_p0_reflist);
++	v4l2_h264_build_b_ref_lists(&reflist_builder, v4l2_b0_reflist, v4l2_b1_reflist);
+ 
+-	v4l2_h264_build_b_ref_lists(&reflist_builder, b0_reflist, b1_reflist);
+ 	/* Adapt the built lists to the firmware's expectations */
+-	mtk_vdec_h264_fixup_ref_list(p0_reflist, reflist_builder.num_valid);
+-	mtk_vdec_h264_fixup_ref_list(b0_reflist, reflist_builder.num_valid);
+-	mtk_vdec_h264_fixup_ref_list(b1_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(p0_reflist, v4l2_p0_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(b0_reflist, v4l2_b0_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(b1_reflist, v4l2_b1_reflist, reflist_builder.num_valid);
++
+ 	memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
+ 	       sizeof(inst->vsi_ctx.h264_slice_params));
+ 
+@@ -276,6 +280,9 @@ static void vdec_h264_slice_fill_decode_reflist(struct vdec_h264_slice_inst *ins
+ 	struct v4l2_ctrl_h264_decode_params *dec_params = &share_info->dec_params;
+ 	struct v4l2_ctrl_h264_sps *sps = &share_info->sps;
+ 	struct v4l2_h264_reflist_builder reflist_builder;
++	struct v4l2_h264_reference v4l2_p0_reflist[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference v4l2_b0_reflist[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference v4l2_b1_reflist[V4L2_H264_REF_LIST_LEN];
+ 	u8 *p0_reflist = slice_param->decode_params.ref_pic_list_p0;
+ 	u8 *b0_reflist = slice_param->decode_params.ref_pic_list_b0;
+ 	u8 *b1_reflist = slice_param->decode_params.ref_pic_list_b1;
+@@ -291,13 +298,13 @@ static void vdec_h264_slice_fill_decode_reflist(struct vdec_h264_slice_inst *ins
+ 	/* Build the reference lists */
+ 	v4l2_h264_init_reflist_builder(&reflist_builder, dec_params, sps,
+ 				       inst->dpb);
+-	v4l2_h264_build_p_ref_list(&reflist_builder, p0_reflist);
+-	v4l2_h264_build_b_ref_lists(&reflist_builder, b0_reflist, b1_reflist);
++	v4l2_h264_build_p_ref_list(&reflist_builder, v4l2_p0_reflist);
++	v4l2_h264_build_b_ref_lists(&reflist_builder, v4l2_b0_reflist, v4l2_b1_reflist);
+ 
+ 	/* Adapt the built lists to the firmware's expectations */
+-	mtk_vdec_h264_fixup_ref_list(p0_reflist, reflist_builder.num_valid);
+-	mtk_vdec_h264_fixup_ref_list(b0_reflist, reflist_builder.num_valid);
+-	mtk_vdec_h264_fixup_ref_list(b1_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(p0_reflist, v4l2_p0_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(b0_reflist, v4l2_b0_reflist, reflist_builder.num_valid);
++	mtk_vdec_h264_get_ref_list(b1_reflist, v4l2_b1_reflist, reflist_builder.num_valid);
+ }
+ 
+ static int vdec_h264_slice_alloc_mv_buf(struct vdec_h264_slice_inst *inst,
+diff --git a/drivers/media/platform/nvidia/tegra-vde/h264.c b/drivers/media/platform/nvidia/tegra-vde/h264.c
+index d8e5534e80c8..4fb0aaad16d6 100644
+--- a/drivers/media/platform/nvidia/tegra-vde/h264.c
++++ b/drivers/media/platform/nvidia/tegra-vde/h264.c
+@@ -45,9 +45,9 @@ struct tegra_vde_h264_decoder_ctx {
+ };
+ 
+ struct h264_reflists {
+-	u8 p[V4L2_H264_NUM_DPB_ENTRIES];
+-	u8 b0[V4L2_H264_NUM_DPB_ENTRIES];
+-	u8 b1[V4L2_H264_NUM_DPB_ENTRIES];
++	struct v4l2_h264_reference p[V4L2_H264_NUM_DPB_ENTRIES];
++	struct v4l2_h264_reference b0[V4L2_H264_NUM_DPB_ENTRIES];
++	struct v4l2_h264_reference b1[V4L2_H264_NUM_DPB_ENTRIES];
+ };
+ 
+ static int tegra_vde_wait_mbe(struct tegra_vde *vde)
+@@ -765,10 +765,10 @@ static int tegra_vde_h264_setup_frames(struct tegra_ctx *ctx,
+ 	struct tegra_m2m_buffer *tb = vb_to_tegra_buf(&dst->vb2_buf);
+ 	struct tegra_ctx_h264 *h = &ctx->h264;
+ 	struct v4l2_h264_reflist_builder b;
++	struct v4l2_h264_reference *dpb_id;
+ 	struct h264_reflists reflists;
+ 	struct vb2_buffer *ref;
+ 	unsigned int i;
+-	u8 *dpb_id;
+ 	int err;
+ 
+ 	/*
+@@ -811,14 +811,16 @@ static int tegra_vde_h264_setup_frames(struct tegra_ctx *ctx,
+ 	}
+ 
+ 	for (i = 0; i < b.num_valid; i++) {
+-		ref = get_ref_buf(ctx, dst, dpb_id[i]);
++		int dpb_idx = dpb_id[i].index;
+ 
+-		err = tegra_vde_h264_setup_frame(ctx, h264, &b, ref, dpb_id[i],
++		ref = get_ref_buf(ctx, dst, dpb_idx);
++
++		err = tegra_vde_h264_setup_frame(ctx, h264, &b, ref, dpb_idx,
+ 						 h264->dpb_frames_nb++);
+ 		if (err)
+ 			return err;
+ 
+-		if (b.refs[dpb_id[i]].pic_order_count < b.cur_pic_order_count)
++		if (b.refs[dpb_idx].pic_order_count < b.cur_pic_order_count)
+ 			h264->dpb_ref_frames_with_earlier_poc_nb++;
+ 	}
+ 
+@@ -880,6 +882,9 @@ static int tegra_vde_h264_setup_context(struct tegra_ctx *ctx,
+ 	if (h->pps->flags & V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE)
+ 		return -EOPNOTSUPP;
+ 
++	if (h->decode_params->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC)
++		return -EOPNOTSUPP;
++
+ 	if (h->sps->profile_idc == 66)
+ 		h264->baseline_profile = 1;
+ 
+diff --git a/drivers/media/v4l2-core/v4l2-h264.c b/drivers/media/v4l2-core/v4l2-h264.c
+index ac47519a9fbe..afbfcf78efe4 100644
+--- a/drivers/media/v4l2-core/v4l2-h264.c
++++ b/drivers/media/v4l2-core/v4l2-h264.c
+@@ -75,12 +75,12 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+ 			pic_order_count = dpb[i].top_field_order_cnt;
+ 
+ 		b->refs[i].pic_order_count = pic_order_count;
+-		b->unordered_reflist[b->num_valid] = i;
++		b->unordered_reflist[b->num_valid].index = i;
+ 		b->num_valid++;
+ 	}
+ 
+ 	for (i = b->num_valid; i < ARRAY_SIZE(b->unordered_reflist); i++)
+-		b->unordered_reflist[i] = i;
++		b->unordered_reflist[i].index = i;
+ }
+ EXPORT_SYMBOL_GPL(v4l2_h264_init_reflist_builder);
+ 
+@@ -90,8 +90,8 @@ static int v4l2_h264_p_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	const struct v4l2_h264_reflist_builder *builder = data;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -125,8 +125,8 @@ static int v4l2_h264_b0_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	s32 poca, pocb;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -170,8 +170,8 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+ 	s32 poca, pocb;
+ 	u8 idxa, idxb;
+ 
+-	idxa = *((u8 *)ptra);
+-	idxb = *((u8 *)ptrb);
++	idxa = ((struct v4l2_h264_reference *)ptra)->index;
++	idxb = ((struct v4l2_h264_reference *)ptrb)->index;
+ 
+ 	if (WARN_ON(idxa >= V4L2_H264_NUM_DPB_ENTRIES ||
+ 		    idxb >= V4L2_H264_NUM_DPB_ENTRIES))
+@@ -212,8 +212,8 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16-bytes array used to store the P reference list. Each entry
+- *	     is an index in the DPB
++ * @reflist: 16 sized array used to store the P reference list. Each entry
++ *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+  * section '8.2.4 Decoding process for reference picture lists construction'
+@@ -222,7 +222,7 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+  */
+ void
+ v4l2_h264_build_p_ref_list(const struct v4l2_h264_reflist_builder *builder,
+-			   u8 *reflist)
++			   struct v4l2_h264_reference *reflist)
+ {
+ 	memcpy(reflist, builder->unordered_reflist,
+ 	       sizeof(builder->unordered_reflist[0]) * builder->num_valid);
+@@ -235,10 +235,10 @@ EXPORT_SYMBOL_GPL(v4l2_h264_build_p_ref_list);
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16-bytes array used to store the B0 reference list. Each entry
+- *		is an index in the DPB
+- * @b1_reflist: 16-bytes array used to store the B1 reference list. Each entry
+- *		is an index in the DPB
++ * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ *		is a v4l2_h264_reference structure
++ * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+  * in section '8.2.4 Decoding process for reference picture lists construction'
+@@ -247,7 +247,8 @@ EXPORT_SYMBOL_GPL(v4l2_h264_build_p_ref_list);
+  */
+ void
+ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+-			    u8 *b0_reflist, u8 *b1_reflist)
++			    struct v4l2_h264_reference *b0_reflist,
++			    struct v4l2_h264_reference *b1_reflist)
+ {
+ 	memcpy(b0_reflist, builder->unordered_reflist,
+ 	       sizeof(builder->unordered_reflist[0]) * builder->num_valid);
+diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+index f49dbfb8a843..9de7f05eff2a 100644
+--- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+@@ -126,7 +126,7 @@ static void set_params(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *src_buf)
+ 
+ static void set_ref(struct hantro_ctx *ctx)
+ {
+-	const u8 *b0_reflist, *b1_reflist, *p_reflist;
++	const struct v4l2_h264_reference *b0_reflist, *b1_reflist, *p_reflist;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	int reg_num;
+ 	u32 reg;
+@@ -157,12 +157,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 */
+ 	reg_num = 0;
+ 	for (i = 0; i < 15; i += 3) {
+-		reg = G1_REG_BD_REF_PIC_BINIT_RLIST_F0(b0_reflist[i]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_F1(b0_reflist[i + 1]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_F2(b0_reflist[i + 2]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B0(b1_reflist[i]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B1(b1_reflist[i + 1]) |
+-		      G1_REG_BD_REF_PIC_BINIT_RLIST_B2(b1_reflist[i + 2]);
++		reg = G1_REG_BD_REF_PIC_BINIT_RLIST_F0(b0_reflist[i].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_F1(b0_reflist[i + 1].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_F2(b0_reflist[i + 2].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B0(b1_reflist[i].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B1(b1_reflist[i + 1].index) |
++		      G1_REG_BD_REF_PIC_BINIT_RLIST_B2(b1_reflist[i + 2].index);
+ 		vdpu_write_relaxed(vpu, reg, G1_REG_BD_REF_PIC(reg_num++));
+ 	}
+ 
+@@ -171,12 +171,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 * of forward and backward reference picture lists and first 4 entries
+ 	 * of P forward picture list.
+ 	 */
+-	reg = G1_REG_BD_P_REF_PIC_BINIT_RLIST_F15(b0_reflist[15]) |
+-	      G1_REG_BD_P_REF_PIC_BINIT_RLIST_B15(b1_reflist[15]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F0(p_reflist[0]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F1(p_reflist[1]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F2(p_reflist[2]) |
+-	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F3(p_reflist[3]);
++	reg = G1_REG_BD_P_REF_PIC_BINIT_RLIST_F15(b0_reflist[15].index) |
++	      G1_REG_BD_P_REF_PIC_BINIT_RLIST_B15(b1_reflist[15].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F0(p_reflist[0].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F1(p_reflist[1].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F2(p_reflist[2].index) |
++	      G1_REG_BD_P_REF_PIC_PINIT_RLIST_F3(p_reflist[3].index);
+ 	vdpu_write_relaxed(vpu, reg, G1_REG_BD_P_REF_PIC);
+ 
+ 	/*
+@@ -185,12 +185,12 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	 */
+ 	reg_num = 0;
+ 	for (i = 4; i < HANTRO_H264_DPB_SIZE; i += 6) {
+-		reg = G1_REG_FWD_PIC_PINIT_RLIST_F0(p_reflist[i]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F1(p_reflist[i + 1]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F2(p_reflist[i + 2]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F3(p_reflist[i + 3]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F4(p_reflist[i + 4]) |
+-		      G1_REG_FWD_PIC_PINIT_RLIST_F5(p_reflist[i + 5]);
++		reg = G1_REG_FWD_PIC_PINIT_RLIST_F0(p_reflist[i].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F1(p_reflist[i + 1].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F2(p_reflist[i + 2].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F3(p_reflist[i + 3].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F4(p_reflist[i + 4].index) |
++		      G1_REG_FWD_PIC_PINIT_RLIST_F5(p_reflist[i + 5].index);
+ 		vdpu_write_relaxed(vpu, reg, G1_REG_FWD_PIC(reg_num++));
+ 	}
+ 
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 04844bbcbd36..3608e463290e 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -69,9 +69,9 @@ struct hantro_h264_dec_ctrls {
+  * @b1:		B1 reflist
+  */
+ struct hantro_h264_dec_reflists {
+-	u8 p[HANTRO_H264_DPB_SIZE];
+-	u8 b0[HANTRO_H264_DPB_SIZE];
+-	u8 b1[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference b0[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference b1[HANTRO_H264_DPB_SIZE];
+ };
+ 
+ /**
+diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
+index 64a6330475eb..46c1a83bcc4e 100644
+--- a/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
++++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_h264_dec.c
+@@ -298,7 +298,7 @@ static void set_params(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *src_buf)
+ 
+ static void set_ref(struct hantro_ctx *ctx)
+ {
+-	const u8 *b0_reflist, *b1_reflist, *p_reflist;
++	const struct v4l2_h264_reference *b0_reflist, *b1_reflist, *p_reflist;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	u32 reg;
+ 	int i;
+@@ -307,20 +307,20 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	b1_reflist = ctx->h264_dec.reflists.b1;
+ 	p_reflist = ctx->h264_dec.reflists.p;
+ 
+-	reg = VDPU_REG_PINIT_RLIST_F9(p_reflist[9]) |
+-	      VDPU_REG_PINIT_RLIST_F8(p_reflist[8]) |
+-	      VDPU_REG_PINIT_RLIST_F7(p_reflist[7]) |
+-	      VDPU_REG_PINIT_RLIST_F6(p_reflist[6]) |
+-	      VDPU_REG_PINIT_RLIST_F5(p_reflist[5]) |
+-	      VDPU_REG_PINIT_RLIST_F4(p_reflist[4]);
++	reg = VDPU_REG_PINIT_RLIST_F9(p_reflist[9].index) |
++	      VDPU_REG_PINIT_RLIST_F8(p_reflist[8].index) |
++	      VDPU_REG_PINIT_RLIST_F7(p_reflist[7].index) |
++	      VDPU_REG_PINIT_RLIST_F6(p_reflist[6].index) |
++	      VDPU_REG_PINIT_RLIST_F5(p_reflist[5].index) |
++	      VDPU_REG_PINIT_RLIST_F4(p_reflist[4].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(74));
+ 
+-	reg = VDPU_REG_PINIT_RLIST_F15(p_reflist[15]) |
+-	      VDPU_REG_PINIT_RLIST_F14(p_reflist[14]) |
+-	      VDPU_REG_PINIT_RLIST_F13(p_reflist[13]) |
+-	      VDPU_REG_PINIT_RLIST_F12(p_reflist[12]) |
+-	      VDPU_REG_PINIT_RLIST_F11(p_reflist[11]) |
+-	      VDPU_REG_PINIT_RLIST_F10(p_reflist[10]);
++	reg = VDPU_REG_PINIT_RLIST_F15(p_reflist[15].index) |
++	      VDPU_REG_PINIT_RLIST_F14(p_reflist[14].index) |
++	      VDPU_REG_PINIT_RLIST_F13(p_reflist[13].index) |
++	      VDPU_REG_PINIT_RLIST_F12(p_reflist[12].index) |
++	      VDPU_REG_PINIT_RLIST_F11(p_reflist[11].index) |
++	      VDPU_REG_PINIT_RLIST_F10(p_reflist[10].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(75));
+ 
+ 	reg = VDPU_REG_REFER1_NBR(hantro_h264_get_ref_nbr(ctx, 1)) |
+@@ -355,54 +355,54 @@ static void set_ref(struct hantro_ctx *ctx)
+ 	      VDPU_REG_REFER14_NBR(hantro_h264_get_ref_nbr(ctx, 14));
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(83));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F5(b0_reflist[5]) |
+-	      VDPU_REG_BINIT_RLIST_F4(b0_reflist[4]) |
+-	      VDPU_REG_BINIT_RLIST_F3(b0_reflist[3]) |
+-	      VDPU_REG_BINIT_RLIST_F2(b0_reflist[2]) |
+-	      VDPU_REG_BINIT_RLIST_F1(b0_reflist[1]) |
+-	      VDPU_REG_BINIT_RLIST_F0(b0_reflist[0]);
++	reg = VDPU_REG_BINIT_RLIST_F5(b0_reflist[5].index) |
++	      VDPU_REG_BINIT_RLIST_F4(b0_reflist[4].index) |
++	      VDPU_REG_BINIT_RLIST_F3(b0_reflist[3].index) |
++	      VDPU_REG_BINIT_RLIST_F2(b0_reflist[2].index) |
++	      VDPU_REG_BINIT_RLIST_F1(b0_reflist[1].index) |
++	      VDPU_REG_BINIT_RLIST_F0(b0_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(100));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F11(b0_reflist[11]) |
+-	      VDPU_REG_BINIT_RLIST_F10(b0_reflist[10]) |
+-	      VDPU_REG_BINIT_RLIST_F9(b0_reflist[9]) |
+-	      VDPU_REG_BINIT_RLIST_F8(b0_reflist[8]) |
+-	      VDPU_REG_BINIT_RLIST_F7(b0_reflist[7]) |
+-	      VDPU_REG_BINIT_RLIST_F6(b0_reflist[6]);
++	reg = VDPU_REG_BINIT_RLIST_F11(b0_reflist[11].index) |
++	      VDPU_REG_BINIT_RLIST_F10(b0_reflist[10].index) |
++	      VDPU_REG_BINIT_RLIST_F9(b0_reflist[9].index) |
++	      VDPU_REG_BINIT_RLIST_F8(b0_reflist[8].index) |
++	      VDPU_REG_BINIT_RLIST_F7(b0_reflist[7].index) |
++	      VDPU_REG_BINIT_RLIST_F6(b0_reflist[6].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(101));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_F15(b0_reflist[15]) |
+-	      VDPU_REG_BINIT_RLIST_F14(b0_reflist[14]) |
+-	      VDPU_REG_BINIT_RLIST_F13(b0_reflist[13]) |
+-	      VDPU_REG_BINIT_RLIST_F12(b0_reflist[12]);
++	reg = VDPU_REG_BINIT_RLIST_F15(b0_reflist[15].index) |
++	      VDPU_REG_BINIT_RLIST_F14(b0_reflist[14].index) |
++	      VDPU_REG_BINIT_RLIST_F13(b0_reflist[13].index) |
++	      VDPU_REG_BINIT_RLIST_F12(b0_reflist[12].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(102));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B5(b1_reflist[5]) |
+-	      VDPU_REG_BINIT_RLIST_B4(b1_reflist[4]) |
+-	      VDPU_REG_BINIT_RLIST_B3(b1_reflist[3]) |
+-	      VDPU_REG_BINIT_RLIST_B2(b1_reflist[2]) |
+-	      VDPU_REG_BINIT_RLIST_B1(b1_reflist[1]) |
+-	      VDPU_REG_BINIT_RLIST_B0(b1_reflist[0]);
++	reg = VDPU_REG_BINIT_RLIST_B5(b1_reflist[5].index) |
++	      VDPU_REG_BINIT_RLIST_B4(b1_reflist[4].index) |
++	      VDPU_REG_BINIT_RLIST_B3(b1_reflist[3].index) |
++	      VDPU_REG_BINIT_RLIST_B2(b1_reflist[2].index) |
++	      VDPU_REG_BINIT_RLIST_B1(b1_reflist[1].index) |
++	      VDPU_REG_BINIT_RLIST_B0(b1_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(103));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B11(b1_reflist[11]) |
+-	      VDPU_REG_BINIT_RLIST_B10(b1_reflist[10]) |
+-	      VDPU_REG_BINIT_RLIST_B9(b1_reflist[9]) |
+-	      VDPU_REG_BINIT_RLIST_B8(b1_reflist[8]) |
+-	      VDPU_REG_BINIT_RLIST_B7(b1_reflist[7]) |
+-	      VDPU_REG_BINIT_RLIST_B6(b1_reflist[6]);
++	reg = VDPU_REG_BINIT_RLIST_B11(b1_reflist[11].index) |
++	      VDPU_REG_BINIT_RLIST_B10(b1_reflist[10].index) |
++	      VDPU_REG_BINIT_RLIST_B9(b1_reflist[9].index) |
++	      VDPU_REG_BINIT_RLIST_B8(b1_reflist[8].index) |
++	      VDPU_REG_BINIT_RLIST_B7(b1_reflist[7].index) |
++	      VDPU_REG_BINIT_RLIST_B6(b1_reflist[6].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(104));
+ 
+-	reg = VDPU_REG_BINIT_RLIST_B15(b1_reflist[15]) |
+-	      VDPU_REG_BINIT_RLIST_B14(b1_reflist[14]) |
+-	      VDPU_REG_BINIT_RLIST_B13(b1_reflist[13]) |
+-	      VDPU_REG_BINIT_RLIST_B12(b1_reflist[12]);
++	reg = VDPU_REG_BINIT_RLIST_B15(b1_reflist[15].index) |
++	      VDPU_REG_BINIT_RLIST_B14(b1_reflist[14].index) |
++	      VDPU_REG_BINIT_RLIST_B13(b1_reflist[13].index) |
++	      VDPU_REG_BINIT_RLIST_B12(b1_reflist[12].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(105));
+ 
+-	reg = VDPU_REG_PINIT_RLIST_F3(p_reflist[3]) |
+-	      VDPU_REG_PINIT_RLIST_F2(p_reflist[2]) |
+-	      VDPU_REG_PINIT_RLIST_F1(p_reflist[1]) |
+-	      VDPU_REG_PINIT_RLIST_F0(p_reflist[0]);
++	reg = VDPU_REG_PINIT_RLIST_F3(p_reflist[3].index) |
++	      VDPU_REG_PINIT_RLIST_F2(p_reflist[2].index) |
++	      VDPU_REG_PINIT_RLIST_F1(p_reflist[1].index) |
++	      VDPU_REG_PINIT_RLIST_F0(p_reflist[0].index);
+ 	vdpu_write_relaxed(vpu, reg, VDPU_SWREG(106));
+ 
+ 	reg = VDPU_REG_REFER_LTERM_E(ctx->h264_dec.dpb_longterm);
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 951e19231da2..3c7f3d87fab4 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -100,9 +100,9 @@ struct rkvdec_h264_priv_tbl {
+ #define RKVDEC_H264_DPB_SIZE 16
+ 
+ struct rkvdec_h264_reflists {
+-	u8 p[RKVDEC_H264_DPB_SIZE];
+-	u8 b0[RKVDEC_H264_DPB_SIZE];
+-	u8 b1[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference b0[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference b1[RKVDEC_H264_DPB_SIZE];
+ 	u8 num_valid;
+ };
+ 
+@@ -767,13 +767,13 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 
+ 			switch (j) {
+ 			case 0:
+-				idx = h264_ctx->reflists.p[i];
++				idx = h264_ctx->reflists.p[i].index;
+ 				break;
+ 			case 1:
+-				idx = h264_ctx->reflists.b0[i];
++				idx = h264_ctx->reflists.b0[i].index;
+ 				break;
+ 			case 2:
+-				idx = h264_ctx->reflists.b1[i];
++				idx = h264_ctx->reflists.b1[i].index;
+ 				break;
+ 			}
+ 
+diff --git a/include/media/v4l2-h264.h b/include/media/v4l2-h264.h
+index 4b1c71c935e0..ef9a894e3c32 100644
+--- a/include/media/v4l2-h264.h
++++ b/include/media/v4l2-h264.h
+@@ -37,7 +37,7 @@ struct v4l2_h264_reflist_builder {
+ 		u16 longterm : 1;
+ 	} refs[V4L2_H264_NUM_DPB_ENTRIES];
+ 	s32 cur_pic_order_count;
+-	u8 unordered_reflist[V4L2_H264_NUM_DPB_ENTRIES];
++	struct v4l2_h264_reference unordered_reflist[V4L2_H264_NUM_DPB_ENTRIES];
+ 	u8 num_valid;
+ };
+ 
+@@ -51,10 +51,10 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16-bytes array used to store the B0 reference list. Each entry
+- *		is an index in the DPB
+- * @b1_reflist: 16-bytes array used to store the B1 reference list. Each entry
+- *		is an index in the DPB
++ * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ *		is a v4l2_h264_reference structure
++ * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+  * in section '8.2.4 Decoding process for reference picture lists construction'
+@@ -63,14 +63,15 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+  */
+ void
+ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+-			    u8 *b0_reflist, u8 *b1_reflist);
++			    struct v4l2_h264_reference *b0_reflist,
++			    struct v4l2_h264_reference *b1_reflist);
+ 
+ /**
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16-bytes array used to store the P reference list. Each entry
+- *	     is an index in the DPB
++ * @reflist: 16 sized array used to store the P reference list. Each entry
++ *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+  * section '8.2.4 Decoding process for reference picture lists construction'
+@@ -79,6 +80,6 @@ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+  */
+ void
+ v4l2_h264_build_p_ref_list(const struct v4l2_h264_reflist_builder *builder,
+-			   u8 *reflist);
++			   struct v4l2_h264_reference *reflist);
+ 
+ #endif /* _MEDIA_V4L2_H264_H */
+-- 
+2.34.3
 
-I ended up using the GPT (@ 0x10004000) as a system timer and it
-worked fine.
-
-With this patch the arch timer started to work finally. Thanks for
-the fix! See below for one comment on this patch. 
-
-> One common critical symptom of that is trying to use the udelay()
-> function (calling __delay()), which executes the following loop:
-> 
->             start = get_cycles();
->             while ((get_cycles() - start) < cycles)
->                     cpu_relax();
-> 
-> which, when CNTVCT_EL0 always reads zero, translates to:
-> 
->             while((0 - 0) < 0)  ==> while(0 < 0)
-> 
-> ... generating an infinite loop, even though zero is never less
-> than zero, but always equal to it (this has to be researched,
-> but it's out of the scope of this commit).
-> 
-> To fix this issue on the affected MediaTek platforms, the solution
-> is to simply start the timers that are designed to be System Timer(s).
-> These timers, downstream, are called "CPUXGPT" and there is one
-> timer per CPU core; luckily, it is not necessary to set a start bit
-> on each CPUX General Purpose Timer, but it's conveniently enough to:
->  - Set the clock divider (input = 26MHz, divider = 2, output = 13MHz);
->  - Set the ENABLE bit on a global register (starts all CPUX timers).
-> 
-> The only small hurdle with this setup is that it's all done through
-> the MCUSYS wrapper, where it is needed, for each read or write, to
-> select a register address (by writing it to an index register) and
-> then to perform any R/W on a "CON" register.
-> 
-> For example, writing "0x1" to the CPUXGPT register offset 0x4:
-> - Write 0x4 to mcusys INDEX register
-> - Write 0x1 to mcusys CON register
-> 
-> Reading from CPUXGPT register offset 0x4:
-> - Write 0x4 to mcusys INDEX register
-> - Read mcusys CON register.
-> 
-> Finally, starting this timer makes platforms affected by this issue
-> to work correctly.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/clocksource/timer-mediatek.c | 119 +++++++++++++++++++++++++++
->  1 file changed, 119 insertions(+)
-> 
-> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-> index 7bcb4a3f26fb..a3e90047f9ac 100644
-> --- a/drivers/clocksource/timer-mediatek.c
-> +++ b/drivers/clocksource/timer-mediatek.c
-> @@ -22,6 +22,19 @@
->  
->  #define TIMER_SYNC_TICKS        (3)
->  
-> +/* cpux mcusys wrapper */
-> +#define CPUX_CON_REG		0x0
-> +#define CPUX_IDX_REG		0x4
-> +
-> +/* cpux */
-> +#define CPUX_IDX_GLOBAL_CTRL	0x0
-> + #define CPUX_ENABLE		BIT(0)
-> + #define CPUX_CLK_DIV_MASK	GENMASK(10, 8)
-> + #define CPUX_CLK_DIV1		BIT(8)
-> + #define CPUX_CLK_DIV2		BIT(9)
-> + #define CPUX_CLK_DIV4		BIT(10)
-> +#define CPUX_IDX_GLOBAL_IRQ	0x30
-> +
->  /* gpt */
->  #define GPT_IRQ_EN_REG          0x00
->  #define GPT_IRQ_ENABLE(val)     BIT((val) - 1)
-> @@ -72,6 +85,57 @@
->  
->  static void __iomem *gpt_sched_reg __read_mostly;
->  
-> +static u32 mtk_cpux_readl(u32 reg_idx, struct timer_of *to)
-> +{
-> +	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-> +	return readl(timer_of_base(to) + CPUX_CON_REG);
-> +}
-> +
-> +static void mtk_cpux_writel(u32 val, u32 reg_idx, struct timer_of *to)
-> +{
-> +	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-> +	writel(val, timer_of_base(to) + CPUX_CON_REG);
-> +}
-> +
-> +static void mtk_cpux_disable_irq(struct timer_of *to)
-> +{
-> +	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
-> +	u32 val;
-> +
-> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
-> +	val &= ~(*irq_mask);
-> +	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
-> +}
-> +
-> +static void mtk_cpux_enable_irq(struct timer_of *to)
-> +{
-> +	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
-> +	u32 val;
-> +
-> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
-> +	val |= *irq_mask;
-> +	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
-> +}
-> +
-> +static int mtk_cpux_clkevt_shutdown(struct clock_event_device *clkevt)
-> +{
-> +	/* Clear any irq */
-> +	mtk_cpux_disable_irq(to_timer_of(clkevt));
-> +
-> +	/*
-> +	 * Disabling CPUXGPT timer will crash the platform, especially
-> +	 * if Trusted Firmware is using it (usually, for sleep states),
-> +	 * so we only mask the IRQ and call it a day.
-> +	 */
-> +	return 0;
-> +}
-> +
-> +static int mtk_cpux_clkevt_resume(struct clock_event_device *clkevt)
-> +{
-> +	mtk_cpux_enable_irq(to_timer_of(clkevt));
-> +	return 0;
-> +}
-> +
->  static void mtk_syst_ack_irq(struct timer_of *to)
->  {
->  	/* Clear and disable interrupt */
-> @@ -281,6 +345,60 @@ static struct timer_of to = {
->  	},
->  };
->  
-> +static int __init mtk_cpux_init(struct device_node *node)
-> +{
-> +	static struct timer_of to_cpux;
-> +	u32 freq, val;
-> +	int ret;
-> +
-> +	/*
-> +	 * There are per-cpu interrupts for the CPUX General Purpose Timer
-> +	 * but since this timer feeds the AArch64 System Timer we can rely
-> +	 * on the CPU timer PPIs as well, so we don't declare TIMER_OF_IRQ.
-> +	 */
-> +	to_cpux.flags = TIMER_OF_BASE | TIMER_OF_CLOCK;
-> +	to_cpux.clkevt.name = "mtk-cpuxgpt";
-> +	to_cpux.clkevt.rating = 10;
-> +	to_cpux.clkevt.cpumask = cpu_possible_mask;
-> +	to_cpux.clkevt.set_state_shutdown = mtk_cpux_clkevt_shutdown;
-> +	to_cpux.clkevt.tick_resume = mtk_cpux_clkevt_resume;
-> +
-> +	/* If this fails, bad things are about to happen... */
-> +	ret = timer_of_init(node, &to_cpux);
-> +	if (ret) {
-> +		WARN(1, "Cannot start CPUX timers.\n");
-> +		return ret;
-> +	}
-> +
-> +	/*
-> +	 * Check if we're given a clock with the right frequency for this
-> +	 * timer, otherwise warn but keep going with the setup anyway, as
-> +	 * that makes it possible to still boot the kernel, even though
-> +	 * it may not work correctly (random lockups, etc).
-> +	 * The reason behind this is that having an early UART may not be
-> +	 * possible for everyone and this gives a chance to retrieve kmsg
-> +	 * for eventual debugging even on consumer devices.
-> +	 */
-> +	freq = timer_of_rate(&to_cpux);
-> +	if (freq > 13000000)
-
-Input clock is 26MHz and is then divided by 2 in CPUXGPT, so shouldn't
-this be 26000000 instead? I get a warning here with 26MHz system clock
-supplied:
-
-clocks {
-	...
-	clk26m: clk26m {
-		compatible = "fixed-clock";
-		clock-frequency = <26000000>;
-		#clock-cells = <0>;
-	};
-	...
-};
-...
-soc {
-	...
-	cpuxgpt: timer@10200670 {
-		compatible = "mediatek,mt6795-systimer";
-		reg = <0 0x10200670 0 0x8>;
-		clocks = <&clk26m>;
-	};
-	...
-};
-
-> +		WARN(1, "Requested unsupported timer frequency %u\n", freq);
-> +
-> +	/* Clock input is 26MHz, set DIV2 to achieve 13MHz clock */
-> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-> +	val &= ~CPUX_CLK_DIV_MASK;
-> +	val |= CPUX_CLK_DIV2;
-> +	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-> +
-> +	/* Enable all CPUXGPT timers */
-> +	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-> +	mtk_cpux_writel(val | CPUX_ENABLE, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-> +
-> +	clockevents_config_and_register(&to_cpux.clkevt, timer_of_rate(&to_cpux),
-> +					TIMER_SYNC_TICKS, 0xffffffff);
-> +
-> +	return 0;
-> +}
-> +
->  static int __init mtk_syst_init(struct device_node *node)
->  {
->  	int ret;
-> @@ -339,3 +457,4 @@ static int __init mtk_gpt_init(struct device_node *node)
->  }
->  TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
->  TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
-> +TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
-> -- 
-> 2.35.1
 
 _______________________________________________
 Linux-mediatek mailing list
