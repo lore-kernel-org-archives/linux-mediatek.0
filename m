@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5561C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 17:16:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D649C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 17:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n3KxD9DF210MX4Yr/vvM46jrmb0uSouzAKaygRgrsqE=; b=B41/jVerpf9NaF
-	XNMOCojZXG55R3+fsnDKg9EI80eq0i8UtiwDEgCRV1Arb9H/WVzMoF177Bai4ASfpY73ikahmDJws
-	Pb+BbNgMQIdpsczVXqNzic6eUtbBProE9IP106ardNUKHXvUDhjR8aF0VgZzoi0gKcZqTtLY6MYSk
-	ovvK6LGC/ZFidsQzAjaLBKGF9h3h09+nid351cZso3552ymwY68AML6oE7TvBc8CQiosPxNsqWO1s
-	bUZwPB6yXefHoOlyM/8yqG+M/DJwdiEuLExt/JHXBl4H81tf/1LyBV7DVZr7loirpDCfISFCi0mBx
-	/4vNx1m2Z7voqmwbMusA==;
+	List-Owner; bh=IsEY1rCCN/BibJ4jnzzezCsvCgOXXlPzWSujcPX5x1E=; b=VSVs8TG+3ePR4V
+	E9yIoisJVvMdTw9uvZx73A8VUyOeGraC/y8uyfePCigHv0gUePTh95T1fL1IuOUNCfwfubmO8lA6Q
+	t/d/Ay5BYs/OxR8uVIzKXp7cbWRYTcg22Ij/O3lHdbI/YVDlVa1l4nEjX04//2LShKCoyb5QCIFGN
+	dzpL30NXhZ2ab6+fiVM2vsrFiczoT6tV+zvleVf9gLlluBysv0o7cxvfL9oB7tgDltMoW1nck/KAM
+	Xq2f3zjA59POQuR/Qmw9J/rDI8kkXs/h5KhWuUiVkWPB5A1xpKMKHtIXK5Jgw6iShQqIriOOorCjl
+	Gf0GSBz15tMipWFW0UMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npYuL-00H17B-Lp; Fri, 13 May 2022 17:16:53 +0000
+	id 1npYub-00H1HQ-SA; Fri, 13 May 2022 17:17:09 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npYts-00H0rU-98; Fri, 13 May 2022 17:16:26 +0000
+ id 1npYtt-00H0rv-7J; Fri, 13 May 2022 17:16:26 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 5AB5E1F463B2
+ (Authenticated sender: kholk11) with ESMTPSA id 4B9C61F463B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652462183;
- bh=BzU2sp5uWjhJVZc+Pbqb4F7Rd9WBetm2NBJji/SvJBY=;
+ s=mail; t=1652462184;
+ bh=6b5Fn00QFN3S8pk3LiXp3oowU6+YetKGNFXGTWU1NeQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OJc97YFlkTW3xxg3GtC7OakusKIMZYM+wuXAKWighauBw2uJyGzcfsqcZsz5VqAFV
- RWishoAgfjZz2c6TXEZNMSIdNs+CdyUZq4pOwkTSmAWDwR7mlPxF06Ms0g4FvKVO2f
- vufJLWmDKnassIyseehNSh9pnQItHF4Ey6NLn0MpTqGGDMdX1PZviBrxkfrwOiDQAz
- gg76nc47QF79upQAdOhoce2wBekySwSMBh1LptMzI5CT/bV1vtJDymEgo78rIZZsYS
- r2q4xDGBHHNcTGYr2AwhPET+H9AeuKw80Ff/tt8gh7iZ/s+HG81g5spjKk/fCsUB7J
- sJ/QYWoHK2ijg==
+ b=S5rfzoUU1xMstwvoem9aQMqhyD6+D+l3IzMQ2gv3FhEHZWP3irW9F1hY5Z1u8Ge2b
+ rhu8YwtB/1D5un8uqnNgU7CvrQRvgFRAXXc/LZnuBb3tZ5gEkRa8NRCvd502VTygfH
+ T+b7LhLPTB60WIS2Kfwm62TMUPcYw9tY5p2C4B4seDTSnwiJ8Exy9NymG7b3HV/oM0
+ eQ+UAANxW41CqUsPR8XZRzcw18NyQbGSP7MUpTwtUflaIMwYf/qvJX6gEhASghzPF9
+ ZJyveqBm5OhnjoyeEYmq0/PwID7d9/u7Qm/dkJZFRV0Tg9cvCc1TLZmOiqTrnbRxWr
+ dBldG/nYsyYWA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
@@ -46,17 +46,16 @@ Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
  phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
  kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 1/7] arm64: dts: mediatek: mt6795: Create soc bus node and
- move mmio devices
-Date: Fri, 13 May 2022 19:16:11 +0200
-Message-Id: <20220513171617.504430-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/7] arm64: dts: mediatek: mt6795: Add cpu-map and L2 cache
+Date: Fri, 13 May 2022 19:16:12 +0200
+Message-Id: <20220513171617.504430-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220513171617.504430-1-angelogioacchino.delregno@collabora.com>
 References: <20220513171617.504430-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_101624_478796_744F505E 
-X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-CacheID: sfid-20220513_101625_470412_7F672533 
+X-CRM114-Status: UNSURE (   7.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,136 +73,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MMIO devices should be inside of a soc bus node, as it's done for the
-vast majority of ARM64 devicetrees, and for almost all MTK devicetrees.
-Create a simple-bus soc node and move all devices with a MMIO address
-space in there.
+This SoC is HMP and has two clusters with four Cortex-A53 cores each:
+declare a cpu map and, while at it, also add the next-level-cache
+properties.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 105 ++++++++++++-----------
- 1 file changed, 56 insertions(+), 49 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 56 ++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index c85659d0ff5d..167f90bd991a 100644
+index 167f90bd991a..1456b9035336 100644
 --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -117,59 +117,66 @@ timer {
- 			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
- 	};
+@@ -34,6 +34,7 @@ cpu0: cpu@0 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x000>;
++			next-level-cache = <&l2_0>;
+ 		};
  
--	sysirq: intpol-controller@10200620 {
--		compatible = "mediatek,mt6795-sysirq",
--			     "mediatek,mt6577-sysirq";
--		interrupt-controller;
--		#interrupt-cells = <3>;
--		interrupt-parent = <&gic>;
--		reg = <0 0x10200620 0 0x20>;
--	};
-+	soc {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		compatible = "simple-bus";
-+		ranges;
+ 		cpu1: cpu@1 {
+@@ -41,6 +42,7 @@ cpu1: cpu@1 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x001>;
++			next-level-cache = <&l2_0>;
+ 		};
+ 
+ 		cpu2: cpu@2 {
+@@ -48,6 +50,7 @@ cpu2: cpu@2 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x002>;
++			next-level-cache = <&l2_0>;
+ 		};
+ 
+ 		cpu3: cpu@3 {
+@@ -55,6 +58,7 @@ cpu3: cpu@3 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x003>;
++			next-level-cache = <&l2_0>;
+ 		};
+ 
+ 		cpu4: cpu@100 {
+@@ -62,6 +66,7 @@ cpu4: cpu@100 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x100>;
++			next-level-cache = <&l2_1>;
+ 		};
+ 
+ 		cpu5: cpu@101 {
+@@ -69,6 +74,7 @@ cpu5: cpu@101 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x101>;
++			next-level-cache = <&l2_1>;
+ 		};
+ 
+ 		cpu6: cpu@102 {
+@@ -76,6 +82,7 @@ cpu6: cpu@102 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x102>;
++			next-level-cache = <&l2_1>;
+ 		};
+ 
+ 		cpu7: cpu@103 {
+@@ -83,6 +90,55 @@ cpu7: cpu@103 {
+ 			compatible = "arm,cortex-a53";
+ 			enable-method = "psci";
+ 			reg = <0x103>;
++			next-level-cache = <&l2_1>;
++		};
 +
-+		sysirq: intpol-controller@10200620 {
-+			compatible = "mediatek,mt6795-sysirq",
-+				     "mediatek,mt6577-sysirq";
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			reg = <0 0x10200620 0 0x20>;
++		cpu-map {
++			cluster0 {
++				core0 {
++					cpu = <&cpu0>;
++				};
++
++				core1 {
++					cpu = <&cpu1>;
++				};
++
++				core2 {
++					cpu = <&cpu2>;
++				};
++
++				core3 {
++					cpu = <&cpu3>;
++				};
++			};
++
++			cluster1 {
++				core0 {
++					cpu = <&cpu4>;
++				};
++
++				core1 {
++					cpu = <&cpu5>;
++				};
++
++				core2 {
++					cpu = <&cpu6>;
++				};
++
++				core3 {
++					cpu = <&cpu7>;
++				};
++			};
 +		};
- 
--	gic: interrupt-controller@10221000 {
--		compatible = "arm,gic-400";
--		#interrupt-cells = <3>;
--		interrupt-parent = <&gic>;
--		interrupt-controller;
--		reg = <0 0x10221000 0 0x1000>,
--		      <0 0x10222000 0 0x2000>,
--		      <0 0x10224000 0 0x2000>,
--		      <0 0x10226000 0 0x2000>;
--	};
-+		gic: interrupt-controller@10221000 {
-+			compatible = "arm,gic-400";
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0x10221000 0 0x1000>,
-+			      <0 0x10222000 0 0x2000>,
-+			      <0 0x10224000 0 0x2000>,
-+			      <0 0x10226000 0 0x2000>;
++
++		l2_0: l2-cache0 {
++			compatible = "cache";
++			cache-level = <2>;
 +		};
- 
--	uart0: serial@11002000 {
--		compatible = "mediatek,mt6795-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0 0x11002000 0 0x400>;
--		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
--	};
-+		uart0: serial@11002000 {
-+			compatible = "mediatek,mt6795-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11002000 0 0x400>;
-+			interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
- 
--	uart1: serial@11003000 {
--		compatible = "mediatek,mt6795-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0 0x11003000 0 0x400>;
--		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
--	};
-+		uart1: serial@11003000 {
-+			compatible = "mediatek,mt6795-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11003000 0 0x400>;
-+			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
- 
--	uart2: serial@11004000 {
--		compatible = "mediatek,mt6795-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0 0x11004000 0 0x400>;
--		interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
--	};
-+		uart2: serial@11004000 {
-+			compatible = "mediatek,mt6795-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11004000 0 0x400>;
-+			interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
- 
--	uart3: serial@11005000 {
--		compatible = "mediatek,mt6795-uart",
--			     "mediatek,mt6577-uart";
--		reg = <0 0x11005000 0 0x400>;
--		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
--		status = "disabled";
-+		uart3: serial@11005000 {
-+			compatible = "mediatek,mt6795-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11005000 0 0x400>;
-+			interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			status = "disabled";
-+		};
++
++		l2_1: l2-cache1 {
++			compatible = "cache";
++			cache-level = <2>;
+ 		};
  	};
- };
+ 
 -- 
 2.35.1
 
