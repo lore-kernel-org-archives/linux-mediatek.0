@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4508C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 20:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 212F1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 21:09:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H6KjajT9aAGxIxQaIB8MLY42WNe3gMqD+wisBkVZnvc=; b=AnP+UFBj4EmLbv
-	jqNLv4+QVmjXSG9moTlbKwfRxoY6egl7iWyKuRgdqV1uROc+KctZZC6ZbbKv6g5M6BcbESGeiuy1p
-	AtrtMoUEPwdp41qfC1NM92RleV5Ts5+5VM46BgQMoOg6s96PLBEQAaiadoRWMUxkCKHC4RE//6uRb
-	f8moOKuBbzNph7WmX1Yp/ZS2nHuxLd5m3ZoSg987I+wJA/6jRe9knGLJQS547M/FkJt6YunmcOYnc
-	QgWIlQx6vnF7/haj/x5V0VZmuzz4P0/QMBN9FAcUiVRr6ldYSu0EbxcpPjJiyy0BzktPfPe6jy33u
-	EWj6nE+ufOpuNkc0wjZw==;
+	List-Owner; bh=HdQICgm9fF0QkdML1A4s2RZEyiAqEo9WpwJKeEgLoN0=; b=4uxsYqe2Sox0OJ
+	+/r76k3aW2xeE6E67KLHB1lnAk6ESRIBJimwe0aqMeBeP/cGqDKlz37wJ+gkiC6TjFeqBu5svkqUj
+	KuJGvDrwgcNVSQQE9e1IFpwTxHZDt7+6bPknk5lSeyj8xAFyrqLzbU6w0z2wDBVPKW/DXljRLaHIL
+	U0UMBNb7LwqXm9PlpherDWGT4db7avH72YhXFlzPflNz70sq9QMubUSpqJ+D3HyXfkUCTzNqbLHEH
+	zfnazeIbG8nJEST7CA2mkGCHiPXglZ76u892h9SWAra+eC6UQaKkdFkerJtp1FEwHBnfpQIMhz5qb
+	6vGrbXNbZGjqpcuD2ZPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npcDP-00029Y-6C; Fri, 13 May 2022 20:48:47 +0000
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
+	id 1npcWv-0004D9-96; Fri, 13 May 2022 21:08:57 +0000
+Received: from mout.kundenserver.de ([212.227.17.13])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npcDL-00024u-V9; Fri, 13 May 2022 20:48:45 +0000
-Received: by mail-oi1-f182.google.com with SMTP id v66so11559614oib.3;
- Fri, 13 May 2022 13:48:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=X3TQnSjdMn1h88B2hKWq4Vtc4t9dgcXCcu4yQAA388I=;
- b=DAbZtCG9Y01CY9ytq+yLrb37r5FVwXw+vd2JPTp5XHv8/ZGSt/xQaHI3MTQOtS7KJK
- CBKTtUSoAkCKMhLI/7BGHY4czwPx6cDZChZUtx8n5798QqZXLPolbyK4R4qL8hl7Leyj
- ow9kIolj/RhZbe9/iT63QxUzqq1UFr2sY5cDxhCuumz8T4LCVDIH0+WjpIje/bgre4pq
- 8TIAn1vD4j7Kbp5bXhAdmdZRWR2hwxtODdobNhjFSCvOC6AoGlgSUXOF5Qu5ScILMfRa
- SEq28lobS5jSDQ1yzMMw43a2U6ddsR3KdSpTRpvnBOgURdEHX58L+dRRU/io4FAeKcca
- GJEw==
-X-Gm-Message-State: AOAM531qxFkoWGtfFIM003ELZJ2cx8nl0bqmBeI0pV51AYaPYNjLUhBc
- mUflzEEzt7e7squsK04eVw==
-X-Google-Smtp-Source: ABdhPJwP+9t58/HsOC+vMOmnRUgE5YnXus5JIhh/6Mv2y+iU8XBnzrtKM2mxN6osLdIL8Ofj/qN0yw==
-X-Received: by 2002:aca:aa42:0:b0:325:61e3:1726 with SMTP id
- t63-20020acaaa42000000b0032561e31726mr8474090oie.57.1652474915995; 
- Fri, 13 May 2022 13:48:35 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- e2-20020a056870a60200b000e99b1909d4sm1426285oam.25.2022.05.13.13.48.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 May 2022 13:48:35 -0700 (PDT)
-Received: (nullmailer pid 894559 invoked by uid 1000);
- Fri, 13 May 2022 20:48:33 -0000
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-clk@vger.kernel.org, kernel@collabora.com, ikjn@chromium.org,
- krzysztof.kozlowski+dt@linaro.org, miles.chen@mediatek.com,
- sam.shih@mediatek.com, fparent@baylibre.com, wenst@chromium.org,
- robh+dt@kernel.org, ck.hu@mediatek.com, mturquette@baylibre.com,
- linux-kernel@vger.kernel.org, p.zabel@pengutronix.de,
- martin.botka@somainline.org, linux-mediatek@lists.infradead.org,
- marijn.suijten@somainline.org, weiyi.lu@mediatek.com, rex-bc.chen@mediatek.com,
- jason-jh.lin@mediatek.com, y.oudjana@protonmail.com,
- phone-devel@vger.kernel.org, bgolaszewski@baylibre.com, sboyd@kernel.org,
- konrad.dybcio@somainline.org, tinghan.shen@mediatek.com,
- ~postmarketos/upstreaming@lists.sr.ht, paul.bouchara@somainline.org,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- chun-jie.chen@mediatek.com, devicetree@vger.kernel.org
-In-Reply-To: <20220513165050.500831-5-angelogioacchino.delregno@collabora.com>
-References: <20220513165050.500831-1-angelogioacchino.delregno@collabora.com>
- <20220513165050.500831-5-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 4/5] dt-bindings: arm: mediatek: Add clock driver bindings
- for MT6795
-Date: Fri, 13 May 2022 15:48:33 -0500
-Message-Id: <1652474913.760163.894558.nullmailer@robh.at.kernel.org>
+ id 1npcWs-0004C3-GF; Fri, 13 May 2022 21:08:56 +0000
+Received: from mail-yb1-f174.google.com ([209.85.219.174]) by
+ mrelayeu.kundenserver.de (mreue107 [213.165.67.113]) with ESMTPSA (Nemesis)
+ id 1MYe6H-1nKX7C1keJ-00VknR; Fri, 13 May 2022 23:08:49 +0200
+Received: by mail-yb1-f174.google.com with SMTP id j2so17452498ybu.0;
+ Fri, 13 May 2022 14:08:49 -0700 (PDT)
+X-Gm-Message-State: AOAM531O4aHRp7xSAHndTEiJ89ssj2qTovt9O3ANWWnB3cneKRypqAWZ
+ 22wGyuAUb8bstwf3BHNP1MpZcFu4J6dUjOlZgpc=
+X-Google-Smtp-Source: ABdhPJxGsYcgRxijDnAxnaZBV41piMiw2krrZa+hZlLUYVk0W4WHqmiRXBg7o8Dt3FWJGLxvwNMsBXyok0kIZoLSF2c=
+X-Received: by 2002:a25:d3c2:0:b0:645:74df:f43d with SMTP id
+ e185-20020a25d3c2000000b0064574dff43dmr6794203ybf.394.1652476128026; Fri, 13
+ May 2022 14:08:48 -0700 (PDT)
+MIME-Version: 1.0
+References: <b4383f23-0adc-b9de-a1d9-abd1c2f82b27@gmail.com>
+ <CAK8P3a0iFq3X6PrLggc=Av9GdWnJU=US659jaUXqH+X4GnbYTA@mail.gmail.com>
+ <942eb0ea-3376-f891-e8b2-a57123ddccd7@gmail.com>
+In-Reply-To: <942eb0ea-3376-f891-e8b2-a57123ddccd7@gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Fri, 13 May 2022 23:08:31 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a3-zN3Dn8LeWTDMszGdh0ogAt+t45Z4vyVqi2csFJWaEA@mail.gmail.com>
+Message-ID: <CAK8P3a3-zN3Dn8LeWTDMszGdh0ogAt+t45Z4vyVqi2csFJWaEA@mail.gmail.com>
+Subject: Re: [GIT PULL] arm: mediatek: DT updates for v5.19
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Yong Wu <yong.wu@mediatek.com>, 
+ Rob Herring <robh+dt@kernel.org>, arm-soc <arm@kernel.org>,
+ SoC Team <soc@kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Evan Green <evgreen@chromium.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hans Verkuil <hverkuil@xs4all.nl>, 
+ Rob Herring <robh@kernel.org>, DTML <devicetree@vger.kernel.org>
+X-Provags-ID: V03:K1:y1bL1edFM3BPU9xUWbq2/OPJU1RqPljSPdJGMfWkqPiFrqp+vIj
+ nNwVfOYrjMohLeaazFq1GtIcl08TXqZVtNxvKlo+KdmJ7pCNH2sCU8l2RAATKGm4m5xZzGp
+ iXyU4OmyM/WRewkC4LDcD49JenO9zwIEqYhXjVsj3VsmeUkLGo6b6hjRabO9oHfZfK/4S+v
+ mHFeXyLOMznVzcKWXGXbA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Oq97sB4CtGo=:LolnxOHv9LLpJKGRshudBA
+ bpROnmehlZmDujTJRh+JXSL6+DLnby9OdC7f+OwncQeZRzwEItFvzH8MeQXzzXnyK3pbo1LoP
+ 3zv7dyvu4vdfR2Qe1fI/EnQp95uDuQK8fp1ViwkQtWFBTdwOjaudynKYKcnRVTfwA1vs2Hwg8
+ OW2P6zG+Pw90XPT9RDMPkUr4r3dkaUXetiigkQbNBozI7XNaqtX/9mQuWFLKcR3sSh1Bc3nY3
+ fPmOMyKXTUVVMQbqAFp8Cp89qyUp1/Gklp2FmJrw2Ciy/LxLE96ygxDQCZPrlCDUah++J9nFm
+ XTRRiZ2uBV+BINu0V1hYPOU4fYy3+e5OfCLUx3czn5e+zdweMAEwiZPqf49G4k8Id7iToC5wM
+ GXh57nQ5rNFpCqO6doXJR0bJoL4zV/NmN6/bWUgZHslCFol5T5KLouh10lH2b8aFkYb0cYk31
+ Y9Ah+Q+YQDAXWyZuD2JSo7XGB1UVHXdkc6ncCNAo3EZzTK680z/ddJouaAy3JS9VlSfsZqCD8
+ VMPfTWIdP9zTEB2XB66ZsglIPiHrz65gj1x04IkQnXMvAUUXB6eQJebAztBQoTrf/Y/zzRWNh
+ ASrOpMB4TmBy4l4zqtfBO+wj1MellKLTLYNW1DXpoQG8NQ9d/vrb6zAMMvJHSRU0qrrkSFJHI
+ FJbB0udp/hE1RcfBhCyYKjyyii9MXOb05ZNt+zWtLkH4f1HQSaTgN6Qlj2f0R+2rCcBnWtCEN
+ oOHwZcbaXnqPMk0uBx2ipuz3aSniwuNyydzcJh397N1iUJD86h70zGfiHjpYbzc7RzknFel+J
+ ssLOcJEkZIb5iYn/LjNHWw6iCQcCaV3YL/A+qKlOTytdwuOLkk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_134844_101116_F04AA7C5 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20220513_140854_870173_504BE18C 
+X-CRM114-Status: GOOD (  38.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,53 +86,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 13 May 2022 18:50:49 +0200, AngeloGioacchino Del Regno wrote:
-> Add the bindings for the clock drivers of the MediaTek Helio X10
-> MT6795 SoC.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../arm/mediatek/mediatek,mt6795-clock.yaml   | 67 +++++++++++++++++
->  .../mediatek/mediatek,mt6795-sys-clock.yaml   | 73 +++++++++++++++++++
->  2 files changed, 140 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt6795-clock.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt6795-sys-clock.yaml
-> 
+On Fri, May 13, 2022 at 6:06 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> On 13/05/2022 14:11, Arnd Bergmann wrote:
+> > On Fri, May 13, 2022 at 1:21 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >> Please have a look on the below 32 bit DT updates for v5.19. Apologies for the
+> >> late pull request but I got sick and needed my time to recover.
+> >
+> >> Yong Wu (1):
+> >>         arm: dts: mediatek: Get rid of mediatek, larb for MM nodes
+> >
+> > Can you clarify what this means for backwards compatibility? I see old kernels
+> > used to parse these properties, does that mean that the updated DT is no
+> > longer compatible with them?
+> >
+>
+> My understanding is, that backwards compatibility is given when using older DT
+> with newer kernel. This should be the common case, normally you update your
+> software but nearly never your FW. No compatibility is given when using older
+> kernel with newer DT.
+>
+> I think that's an ongoing debate if we should provide backwards compatibility
+> for both kernel and DT.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+I agree that the case of old dt with new kernel is more important, but I still
+want to hear about it when the other case (new dt on old kernel) breaks,
+and why it's done.  There are clearly use cases for both forms of compatibility,
+and there are reasons for ignoring them, the key is to communicate it clearly.
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/arm/mediatek/mediatek,mt6795-clock.yaml:67:1: [warning] too many blank lines (2 > 1) (empty-lines)
+> > If you break compatibility, this should only be done for exceptional reasons,
+> > and explain the tradeoffs. What is the oldest kernel that is still compatible
+> > with the updated DT files, and why can't we just keep the properties around?
+> >
+>
+> First kernel version that does not work with the old DT will be v5.18. This
+> patch is the outcome of a change in the yaml file [1] which has a Acked-by from
+> Rob. I double checked and I wasn't able to find the mail where Rob did give his
+> Acked-by... Yong, can you provide a link to that email? I can see you added the
+> Acked-by in v2 of the series.
+>
+> One thing that comes to mind, that we mark the larb phandle as deprecated in the
+> yaml file, instead of deleting it. Then we could keep that in the DT files,
+> although newer kernels won't work with that. Another option is, to add the code
+> deleted by
+> ba3cd6714aed ("media: mtk-jpeg: Get rid of mtk_smi_larb_get/put")
+>
+> back as fallback for older DTs. Although I fear there is much more things to fix
+> in a lot of drivers. DRM, mdp and memory/mtk-smi.c are some that I found in a
+> 'quick' look at the problem.
+>
+> Taking into account that and the fact that we are talking mainly about
+> chromebooks and the Bananapi R2 as public available HW, I think we can live with
+> the compatibility breakage of newer DTs not working with older kernels.
 
-dtschema/dtc warnings/errors:
-Error: Documentation/devicetree/bindings/arm/mediatek/mediatek,mt6795-sys-clock.example.dts:35.13-21 syntax error
-FATAL ERROR: Unable to parse input tree
-make[1]: *** [scripts/Makefile.lib:364: Documentation/devicetree/bindings/arm/mediatek/mediatek,mt6795-sys-clock.example.dtb] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1401: dt_binding_check] Error 2
+I'm less worried about the dts files that ship with the kernel than I am about
+others that have custom dtbs built into the boot loader but are able to
+run mainline kernels. Upgrading kernel and bootloader together is painful
+here when you have limited compatibility with older versions, in particular
+when you cannot dual-boot multiple kernel versions with the same dtb.
 
-doc reference errors (make refcheckdocs):
+> Anyway as you can see, this patch is just the tip of the ice-berg. So if you
+> feel that's something unacceptable we will need to chase people to fix backward
+> compatibility.
 
-See https://patchwork.ozlabs.org/patch/
+After some more clarification on IRC, I found that this series has been
+in progress since 2019 [2], and as you said, the changes to break compatibility
+with pre-5.18 DTB files are getting merged through other trees, so I suppose
+also breaking compatibility with old kernels isn't making it much worse.
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+I'll try to capture this in the merge log.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+> [1]
+> https://lore.kernel.org/linux-mediatek/20220117070510.17642-2-yong.wu@mediatek.com/
 
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+[2] https://lore.kernel.org/lkml/1546318276-18993-2-git-send-email-yong.wu@mediatek.com/
 
 _______________________________________________
 Linux-mediatek mailing list
