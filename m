@@ -4,50 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D4F5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 12:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3946FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 May 2022 12:12:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yjuAZlZvOy+9Pj9YyduJwQSYAlb1UV1XiOqorQMskm0=; b=Ru5yy/tv/bWS1R
-	oiYCnULrWJAq/GPAJTNqW6MK8pVsB+k52c0AjSIlf6LCBa4mYg+qnoLAShBtu+Ikvw6XzEALNtijC
-	neZuZYwd2qNK+Fzn047QJcXtJGz4yZPaCtduh4/B83UtgHIA8m1e0YdjSLJVJV1CuqsAjgqquWcwX
-	lK6bwakdmk4Ae8qs528KIywepvo/0d0dAXxCsvh3tzH/aeVlH3d7d7UCkGti2npPE9z7LxDb4sSNM
-	jW5I6gqAPI3V5/1OYSLdKSNjbyMfT1dyv8d2Qa3dNc+2T9VImii/93VrF6tsyislKtZAs4xVE4cu9
-	9nM6KU5TW0LPVkWc21fQ==;
+	List-Owner; bh=A+oU6+DUzv0AempwM2dV+CThVzv+GdUeZiJh+xp5ybU=; b=jgbpUo5LX+ub6m
+	QRl+JMU005+1H5YkuaQC8DZISPh1MidZc3JT5B2R73//I1qsUmkM156XQQ7GTY3LvuKSK+bme9V59
+	2nd+bTAAgVUVZt7DMmy9DS9QADGxpEtRCq3cLiRyOZp8O2dHYndKlpGui53kopOPJ/J0nWVpr0rhW
+	q4NtFq/vJZy0LSmxT2cey4ejKq/N69jXdnjwff51La4mzMRseH6pk0QnNv5sIx/ttEjotyyC/s3lg
+	YRm8RNHS117waCP5suxghgCTi4UqL7/ybIw59uwuzymM4t5MoYGdjBOslYJfCjIKCr3cNWmFEKuO7
+	DGrQu7om9Xj8FG1VWaxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npU5T-00Fw0d-Ma; Fri, 13 May 2022 12:08:03 +0000
-Received: from mout-u-107.mailbox.org ([80.241.59.207])
+	id 1npU9m-00Fx9M-Ad; Fri, 13 May 2022 12:12:30 +0000
+Received: from mout.kundenserver.de ([212.227.126.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npU5I-00Fvwq-Fa; Fri, 13 May 2022 12:07:53 +0000
-Received: from smtp202.mailbox.org (unknown [91.198.250.118])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by mout-u-107.mailbox.org (Postfix) with ESMTPS id 4L06pl62Lhz9spV;
- Fri, 13 May 2022 14:07:43 +0200 (CEST)
-Message-ID: <1da97e8e-c819-c089-1fe1-07915ec37898@denx.de>
-Date: Fri, 13 May 2022 14:07:42 +0200
+ id 1npU9a-00Fx55-5O; Fri, 13 May 2022 12:12:19 +0000
+Received: from mail-yb1-f173.google.com ([209.85.219.173]) by
+ mrelayeu.kundenserver.de (mreue012 [213.165.67.97]) with ESMTPSA (Nemesis) id
+ 1MXGSU-1nGoXg3zdm-00YhPN; Fri, 13 May 2022 14:12:15 +0200
+Received: by mail-yb1-f173.google.com with SMTP id y76so15014138ybe.1;
+ Fri, 13 May 2022 05:12:14 -0700 (PDT)
+X-Gm-Message-State: AOAM532/lz+igJEf06Ww2e6Wb3gumUhS9MIPL7p52Ry7LZeLLG2ID9Te
+ O7DpVafmYjgF/DBJC1PAlGMZLC4gxbWJXlAeeVM=
+X-Google-Smtp-Source: ABdhPJxfSXlHQiGp7nrwso72I/95P47eTph2XTKWx941GNdu4mVPGKCRC9whxXixu0RskwZlxcjV+W7Q9bXxryN7UkU=
+X-Received: by 2002:a25:31c2:0:b0:641:660f:230f with SMTP id
+ x185-20020a2531c2000000b00641660f230fmr4509779ybx.472.1652443933446; Fri, 13
+ May 2022 05:12:13 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [PATCH -next 2/2] i2c: mt7621: Use
- devm_platform_get_and_ioremap_resource()
-Content-Language: en-US
-To: Yang Yingliang <yangyingliang@huawei.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-i2c@vger.kernel.org
-Cc: matthias.bgg@gmail.com, wsa@the-dreams.de
-References: <20220513100819.2711845-1-yangyingliang@huawei.com>
- <20220513100819.2711845-2-yangyingliang@huawei.com>
-From: Stefan Roese <sr@denx.de>
-In-Reply-To: <20220513100819.2711845-2-yangyingliang@huawei.com>
-X-Rspamd-Queue-Id: 4L06pl62Lhz9spV
+References: <b4383f23-0adc-b9de-a1d9-abd1c2f82b27@gmail.com>
+In-Reply-To: <b4383f23-0adc-b9de-a1d9-abd1c2f82b27@gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Fri, 13 May 2022 14:11:57 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a0iFq3X6PrLggc=Av9GdWnJU=US659jaUXqH+X4GnbYTA@mail.gmail.com>
+Message-ID: <CAK8P3a0iFq3X6PrLggc=Av9GdWnJU=US659jaUXqH+X4GnbYTA@mail.gmail.com>
+Subject: Re: [GIT PULL] arm: mediatek: DT updates for v5.19
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Yong Wu <yong.wu@mediatek.com>
+X-Provags-ID: V03:K1:jYi8MElG/U3RQ1+iv7gyNNxd72GWq5Tw1dpSuzSFMEIyJBtLuyi
+ JneUvf3wM5Yc/ZEBrlC7efnsQVhNe8amIHPlhOO00Cj+jrACVjDSXH3r6qG30mBjiV850Em
+ +1L3MnunuYko5z1duspGjS+SSvyp1aEIF2xN7KMdDR5coGRufvn54kRTW6S1pC0JWN1BLbz
+ YbMo56fTFdvw6yGiphhow==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2AV5i9Lgso0=:CyQLP/rtuh3daqRjJgTsOc
+ M0W6+Y8qJVTiUQA5EX87KXiTPndvS+bNiMmYquoRfG5BMHObYLWiA7upyUurAlBWF3IMscYVc
+ 0za9TS3XSlllwXOPIncs10AS4sypN8cuC7fMfyOoSU7k1Ko71S20YyTzKgLEmK7+pIzVDSf2R
+ lp8wVh0GCUQ+yaZ0bdW3D5iFT0q4wxCEfRKZ/IdL+pyRrp+g7xjy4aGBsXxGzOSsGrnSL9hiK
+ od/zfOnXhvWRW6EqkBTax59sCy/E3VkzxjPhN8hstPGfQivLyVctlTeyDm7OGBbrBWXD4pYLi
+ ml7IQCRIIsnenY8Qa0CQf94vTZwLv89koMZNJNyMTEH7dD5cYSzX0AoLU+2vvoynsUC+pXcJy
+ wEV85GsCMr0LUWv4SoZQVUXG7IgMtkb7TY8eK7Z0E+hXAFKpWMvTqGJqH2Ao9mlwTMtZ11QUs
+ p/2ooszviTotopJe29xBbUxLnlKR+v6xW5pP588Yb2T22ewPluh9aj3cq4k+PKXnPV0a99MZW
+ rmI4hot3mOATP5sZSsqoVsM2OCimY7ceCvwcuX8SfHajoBZWWDplQ2XjW1S4qv3ptioWW8sah
+ 2hmVBW5KaN6d0EtYAR+eC5AZlMRiXW1xRnMLDYxna9rCmaRnqMObqgp96aHFgBpsGz/Y//pii
+ Kby57vkDJWDqwkFDB3cK2evFj5f5VW5UhvqZF/J9nJFVeakXBpzRtevol8LXUKqQENPB2MBz0
+ ZbI5sgpuFv1Ov3QgQy53e2n57R4ZC9J5LI+zlcT2hbje2bQy2CexbCHeZWpzdkwDykxC2LX0f
+ kPE3h67LDUoqsSzEkhbXLxPp17MQjZvynkAFDoYxqSBDnsi/DE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_050752_696802_B6FBC74E 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20220513_051218_545572_FC2FB6D0 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,49 +79,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13.05.22 12:08, Yang Yingliang wrote:
-> Use devm_platform_get_and_ioremap_resource() to simplify
-> code.
-> 
-> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
-> ---
->   drivers/i2c/busses/i2c-mt7621.c | 5 +----
->   1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-> index f117c3d9ca19..0d849379a236 100644
-> --- a/drivers/i2c/busses/i2c-mt7621.c
-> +++ b/drivers/i2c/busses/i2c-mt7621.c
-> @@ -270,18 +270,15 @@ static void mtk_i2c_init(struct mtk_i2c *i2c)
->   
->   static int mtk_i2c_probe(struct platform_device *pdev)
->   {
-> -	struct resource *res;
->   	struct mtk_i2c *i2c;
->   	struct i2c_adapter *adap;
->   	int ret;
->   
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -
->   	i2c = devm_kzalloc(&pdev->dev, sizeof(struct mtk_i2c), GFP_KERNEL);
->   	if (!i2c)
->   		return -ENOMEM;
->   
-> -	i2c->base = devm_ioremap_resource(&pdev->dev, res);
-> +	i2c->base = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
->   	if (IS_ERR(i2c->base))
->   		return PTR_ERR(i2c->base);
->   
+On Fri, May 13, 2022 at 1:21 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>
+> Hi Arnd and Olof,
+>
+> Please have a look on the below 32 bit DT updates for v5.19. Apologies for the
+> late pull request but I got sick and needed my time to recover.
 
-Reviewed-by: Stefan Roese <sr@denx.de>
+> Yong Wu (1):
+>        arm: dts: mediatek: Get rid of mediatek, larb for MM nodes
 
-Thanks,
-Stefan
+Can you clarify what this means for backwards compatibility? I see old kernels
+used to parse these properties, does that mean that the updated DT is no
+longer compatible with them?
+
+If you break compatibility, this should only be done for exceptional reasons,
+and explain the tradeoffs. What is the oldest kernel that is still compatible
+with the updated DT files, and why can't we just keep the properties around?
+
+       Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
