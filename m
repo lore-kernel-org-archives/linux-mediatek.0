@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF1FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 May 2022 17:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 582E5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 May 2022 17:14:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SShfpjg58zK30/+wZeLgGqk/F2KvyGpPESsNDEEktcE=; b=OWGLMhp0SJq0zW
-	+WJox2dDha0tg5njKF4JK1+R7jfgSIfhnC2h62biLzcScGbJtSSMWdQYjdSd6L7Nhq32/+OUF072V
-	umNKe4fcT8boaFccc9bDeYh1mDVRdQq7hOAFh8i4mQWTwBsNB7fxs8V1jWcKh+fv5NQmqdeQJBGRL
-	eH06sS6KE5ULnHy8jYlUB4r9snzlKSP8rThjj+SUMA4il/lzgiOwFro0VMg2yP8L/d8V1fe0iswzP
-	z/YmHdYgf3UETLPw8LBBig27ebZ35VOKK0rUtVd/MvaQYbujeSgHBBVAURY0BSiLyjPEZb313gRaw
-	A2Pk/AW5zDnUx7q17dpQ==;
+	List-Owner; bh=6IaKulJQHLZc5kHpxiciQM5uoCRqOGdBkr3iHb0GAZ4=; b=Tr5kV0MYDlEr3j
+	dftD6oWy755i82YAW8YZVbtOdXWvmZYH7C44bzRVLQ8ApgI7UckGzHAYdaZqBBsiYDG/V/+XXfdNT
+	SfwzILJSS4jYnQU6aSbto5EJVKror1/0FYD205osikOIHdrwWaSuobIHQaOYT1b/vXrxIjwjRoGZ1
+	w8rAdppOmmm5MP+Gdl1LXduTvdoe55VluMsIVByJrpIeH2pb4qp7I7oDqoNNGfukei9DWQo3LPY2O
+	E+8zqVOZEb6n3NOv3m7/2BywmfPz3ntS4Xw0y5lFeHsoryc6NAsckM0nj6wxjAjxtVbQnTnbdEpx6
+	J96Dla00lThxG9K3sqmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npvLU-001uL2-LN; Sat, 14 May 2022 17:14:24 +0000
+	id 1npvLg-001uOs-4Y; Sat, 14 May 2022 17:14:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npvLB-001uHH-EG; Sat, 14 May 2022 17:14:06 +0000
-X-UUID: a47012ccc0d04f809f1191bc490c444d-20220514
+ id 1npvLC-001uHj-7C; Sat, 14 May 2022 17:14:07 +0000
+X-UUID: e83337bacc1348e380f51c51c1d34092-20220514
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:b0b67027-dc08-45b0-9310-2514a383b198, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:1c384b81-167d-44ba-ba1a-bca5bb016aa3, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:09f237f2-ab23-4aed-a67b-f96514452486,
+X-CID-META: VersionHash:2a19b09, CLOUDID:ef974da7-eab7-4b74-a74d-5359964535a9,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,IP:nil,URL:0,File:ni
  l,QS:0,BEC:nil
-X-UUID: a47012ccc0d04f809f1191bc490c444d-20220514
+X-UUID: e83337bacc1348e380f51c51c1d34092-20220514
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1657731714; Sat, 14 May 2022 10:13:59 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 14 May 2022 10:03:57 -0700
+ with ESMTP id 1019463787; Sat, 14 May 2022 10:13:59 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sun, 15 May 2022 01:03:56 +0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 14 May 2022 10:11:15 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Sun, 15 May 2022 01:11:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Sun, 15 May 2022 01:03:55 +0800
+ 15.2.792.3 via Frontend Transport; Sun, 15 May 2022 01:11:13 +0800
 From: Miles Chen <miles.chen@mediatek.com>
-To: <wenst@chromium.org>
-CC: <angelogioacchino.delregno@collabora.com>, <chun-jie.chen@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
- <mturquette@baylibre.com>, <rex-bc.chen@mediatek.com>, <sboyd@kernel.org>
-Subject: Re: [PATCH v2 07/11] clk: mediatek: mt7xxx: Replace 'struct clk' with
- 'struct clk_hw'
-Date: Sun, 15 May 2022 01:03:55 +0800
-Message-ID: <20220514170355.27993-1-miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <chun-jie.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <miles.chen@mediatek.com>, <mturquette@baylibre.com>,
+ <rex-bc.chen@mediatek.com>, <sboyd@kernel.org>, <wenst@chromium.org>
+Subject: Re: [PATCH v2 00/11] clk: mediatek: Move to struct clk_hw provider
+ APIs
+Date: Sun, 15 May 2022 01:11:13 +0800
+Message-ID: <20220514171113.32747-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220510104804.544597-8-wenst@chromium.org>
-References: <20220510104804.544597-8-wenst@chromium.org>
+In-Reply-To: <18fee6fe-2378-391e-993d-425c887ba40a@collabora.com>
+References: <18fee6fe-2378-391e-993d-425c887ba40a@collabora.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220514_101405_535542_545394D1 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20220514_101406_466134_82EC4108 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,23 +84,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> As part of the effort to improve the MediaTek clk drivers, the next step
-> is to switch from the old 'struct clk' clk prodivder APIs to the new
-> 'struct clk_hw' ones.
+> Hi everyone,
 > 
-> Instead of adding new APIs to the MediaTek clk driver library mirroring
-> the existing ones, moving all drivers to the new APIs, and then removing
-> the old ones, just migrate everything at the same time. This involves
-> replacing 'struct clk' with 'struct clk_hw', and 'struct clk_onecell_data'
-> with 'struct clk_hw_onecell_data', and fixing up all usages.
+> This is v2 of part 2 of my proposed MediaTek clk driver cleanup work [1].
 > 
-> This is done with the following coccinelle script.
+> Changes since v1:
+> - Rebased and added coverage of new MT8186 clk drivers
+> - Split patch "clk: mediatek: Replace 'struct clk' with 'struct clk_hw'"
+>    into arbitrary pieces so that they don't bounce from the mailing lists
+> 
+> This was tested on MT8183 Juniper. Apppreciate any help testing on non-
+> ChromeOS devices.
+>
 
-...
+> For the entire series:
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> ...and this entire series was tested on:
+> MT8173/92/95 and MT6795 (Sony Xperia M5 smartphone, clock drivers not sent
+> upstream yet), so you also get my:
+> 
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested on: MT6779
 
-Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
+Tested-by: Miles Chen <miles.chen@mediatek.com> 
+
+> 
+> ...and last, but not least:
+> 
+> Thank you! :-)
+
 
 _______________________________________________
 Linux-mediatek mailing list
