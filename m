@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E17BEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 09:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18272C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 09:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zs23Mxvg81GOchN336D6T13V0z2DZX+Ah/e7IJEZmfs=; b=dMW7drblFwcppF
-	BYYm8nZQAcedaNZ34OwZ0EKxOWTvEhMT7fB80Hz/nFqcoKFUtFGVsGMFpneSy837orZQ9vq011aAp
-	KuWoN8u01Af+BhBIzZL6vOXvYeE0JAoYUzYv+ykySeLp2hEOMQjMR6vDURdj80ec/QN+bHiHyQ4uK
-	PiCqYI3rRd6F2Lu4Ffey+21bZIX0GUcv0RIgreIZ0Fo6xlYfWubF5ByYPa9yY245iUidUo17kLn/I
-	IEhBDPENdIUdQi3Ey8dfYD/Mfx4suPO8kwWuAODocYm1T/T2T+qUH4i+H0Yuwz0Vo4Dnk+YKtcUig
-	IN5ZGKUOUz6XgYy5O/vw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0X+fMuPwqOFU0I67Vp2UGNErNt4nBI+/R5vIlpI51o4=; b=SZeVDWngbPNR2j
+	5Qi23R3Vdmk3/uvrJZ/X8LBHoySeP8ELY8itHsEF8oSQ3kw2K37iEtAhEL+5qy5TDMR8iyzRGIQRz
+	KOTGDIK4C0/oqutVKTp3DScDNCpoYU+FwxWzA191Cg+MNp/59xrr9mDcC0TRhl4Ya6AIDVKWK/Obh
+	albfdwWOtb6sUqHhjXPk4Ftm0u/oY2Dqe99/B7IPkBkwk6hiva2ab7AlLlnjFUIgVEx7LYB+dJrK6
+	8EB95emMceWaUOWBjL9CbQ8CBnxsx0MO08DTJzCityJTNg1WhMfENYmBeJ8CHWxw1iJ7lg/AkYQz/
+	qkXrmw5zo17NOI3uagYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqXFc-006vir-Bw; Mon, 16 May 2022 09:42:52 +0000
+	id 1nqXFb-006viN-LQ; Mon, 16 May 2022 09:42:51 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqXFH-006vcV-NV; Mon, 16 May 2022 09:42:33 +0000
+ id 1nqXFH-006vcN-NV; Mon, 16 May 2022 09:42:33 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 0DD0B1F427D0
+ (Authenticated sender: kholk11) with ESMTPSA id A064D1F427AC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652694149;
- bh=4mIF+ychqwYJm8NY5gdtpfE5cKMCOU+a1wS2818V+qo=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eYgTkNrcd4N5IVPGgb1LKWPB9xap3fAhms20vvS9IXta7ijFxGyBuMOD5Sn7uD2i8
- kK9eOJtgRQDs7rKaFCTHR2jCoazmuyKhUC1/TFvnw9JOCQWwISlh6islxLaKyEE5nL
- ns6tqtXyTQKHTurEL7Ad70sRt44a0PV2SdNTfvc7h3jXC0hI1GOABzSoDgS5y7il9e
- z0pMd5fOvX15fyGr5WB3m/BO9+NuJwwzZmZfL+ytmm09ORGtU/Z+st3YcZaSiYq3zS
- Zq6TSRlEBoPAFntG3f6EcvE7hLJSp7LfKTsS3xg9IMCMrwfyTltjIxtRLAIsMWyDfz
- SuBJeBY05BYlg==
+ s=mail; t=1652694148;
+ bh=c1ydz49i6C3IsJ96xkSmOp1z24weTIOHYM24+DkxGaU=;
+ h=From:To:Cc:Subject:Date:From;
+ b=THpfRNpOqui6zvR+BYZmkkqsaw+HmfKIjK2d64FkVNdSUzpMVw63wqDSxFaC+OJra
+ klxciMwyLwKGQ4fYzMgWlLs/e/phiHKepxmPw+Elh00bIY1U7h60uFRN5nEaFEKCKy
+ X1FDAuQFO0dpAcvPvPWP8pyeQXh7DVhjKS+l4u1VTp8GVVapxyvaqCqHM5GcUz3hy2
+ OedzLWz2OHGtO2y8v6DXA4aknaD9TTWVfSQyCfqr2yeAoIFlGOKXmjIw1WnnXaogWL
+ mCiqn5t/s6uWtQJOJRJmwau05eDgz65PUZ5edK+EWtHuam5cIeHsXk0zvEoyEk4ZPC
+ EQ1N10/H/fP4w==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sean.wang@mediatek.com
 Cc: pavel@ucw.cz, matthias.bgg@gmail.com, linux-leds@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 2/3] leds: leds-mt6323: Open code and drop MT6323_CAL_HW_DUTY
- macro
-Date: Mon, 16 May 2022 11:42:21 +0200
-Message-Id: <20220516094222.30414-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/3] leds-mt6323: Make driver flexible and cleanups
+Date: Mon, 16 May 2022 11:42:19 +0200
+Message-Id: <20220516094222.30414-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220516094222.30414-1-angelogioacchino.delregno@collabora.com>
-References: <20220516094222.30414-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_024232_017825_83BF62D2 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20220516_024232_018981_49058064 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,40 +67,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is only one instance of using this macro and it's anyway not
-simplifying the flow, or increasing the readability of this driver.
+MT6323 is not the only PMIC that has a LEDs controller IP and it was
+found that the others do have a compatible register layout, except
+for some register offsets.
+The logic contained in this driver can be totally reused for other
+PMICs as well, so I can't see any reason to keep this specific to
+the MT6323 part.
 
-Drop this macro by open coding it in mt6323_led_set_blink().
+This series brings meaningful platform data to this driver, giving
+it flexibility and making it possible and straightforward to add
+support for other (older, or newer!) PMICs.
 
-No functional changes.
+AngeloGioacchino Del Regno (3):
+  leds: leds-mt6323: Specify registers and specs in platform data
+  leds: leds-mt6323: Open code and drop MT6323_CAL_HW_DUTY macro
+  leds: leds-mt6323: Drop MT6323_ prefix from macros and defines
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/leds/leds-mt6323.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/leds/leds-mt6323.c | 258 ++++++++++++++++++++++++-------------
+ 1 file changed, 166 insertions(+), 92 deletions(-)
 
-diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
-index a7d1ed370969..fa9d251e9efa 100644
---- a/drivers/leds/leds-mt6323.c
-+++ b/drivers/leds/leds-mt6323.c
-@@ -62,8 +62,6 @@
- #define MT6323_ISINK_CH_EN(i)		BIT(i)
- 
- #define MAX_SUPPORTED_LEDS		8
--#define MT6323_CAL_HW_DUTY(o, p, u)	DIV_ROUND_CLOSEST((o) * 100000ul,\
--					(p) * (u))
- 
- struct mt6323_leds;
- 
-@@ -321,7 +319,7 @@ static int mt6323_led_set_blink(struct led_classdev *cdev,
- 	 * Calculate duty_hw based on the percentage of period during
- 	 * which the led is ON.
- 	 */
--	duty_hw = MT6323_CAL_HW_DUTY(*delay_on, period, spec->unit_duty);
-+	duty_hw = DIV_ROUND_CLOSEST(*delay_on * 100000ul, period * spec->unit_duty);
- 
- 	/* hardware doesn't support zero duty cycle. */
- 	if (!duty_hw)
 -- 
 2.35.1
 
