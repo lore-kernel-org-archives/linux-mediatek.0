@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AB2AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 12:48:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5854C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 12:48:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vp5RhigpIR529On9hcjdyGdvk2VCl4hlOcc9VLrIas0=; b=hFFSvd4a/RekBC
-	6G5Oi6fHekWPomBa38elyrfsLINSjENG7Qkic4rtinWVV3IgkBjDCm5NcpVcO3tnv0SAk7lXYaT67
-	H+edqFo9rAt52KQHgGIxqp9JmPPIj34YWRZJpWAhHXRG1yVSVFmKl77m9m6CoDZQHL89VL1Rf7WaQ
-	cWlecT5WSk2zE7Rv8Z5qEcJDdBGFYfP6F/oftgI4k1nHTQRk9nmH2hn7hrnWQUl+vRFpOTaxRa7Jr
-	lXUIYpIkYU/uEshGVTq6MW6urspu4nP95N5RoNoKNR358DUN9wnnCgfyCcNn0EODZxjFv/DB0d0fB
-	LYSqGl1R0BbD4wpZHsZA==;
+	List-Owner; bh=xoDrbLhexvwLOswZqw6cPYLkzDI8rkEF8WZm5oyZpNs=; b=VnyVTXJ/+BqnRW
+	ACJ/N50s71qkhGmWfZfUVVaDWQCWnym+gS31PApT3/nqx2gmkgqWjWtqhYBJl05p7J5+Bv0aNAlsx
+	lgZuEhlZ/W6ERAQP3GZG2IClarqPZdXK16CsFse45h1y9cPK3O3eZuo+mo+CxLWYPUwMSEF3CLC8V
+	Kt297Ao0g8kr06sJsOp11RZSoNcbD/2voRiFst0y343/4TSmTX4aigCEsS6Hl5Q4Us3uIPDPrcZKw
+	iEvhGdyh+EicqqxXyIFelI2HZ3MewYW8QS3bXMue92cxFWm2U1EWBxGRrgsWA/P04eUQ9nnjj5UyI
+	rlr5X/osYdCfSSpB+qOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqa9C-007hMD-M7; Mon, 16 May 2022 12:48:26 +0000
+	id 1nqa9R-007hYd-NG; Mon, 16 May 2022 12:48:41 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqa7y-007gl2-FO; Mon, 16 May 2022 12:47:14 +0000
+ id 1nqa81-007gmu-Ex; Mon, 16 May 2022 12:47:15 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id C54871F42F4E
+ (Authenticated sender: kholk11) with ESMTPSA id 61CCE1F42F51
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652705225;
- bh=ALr3bte5ObWK9QXi4TwG41I7mS1thOAooIulWi4FCTA=;
+ s=mail; t=1652705228;
+ bh=xO6aHuo6qr2U+3Pw1vJl92VTpaOmj3hu2VdgDueiOp4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lQGztHSJ2tpk2rKbZFcJL4FE2NxgvoXChGVLXlxO8whXjmjUxTlCD0sDZ1lZPucoh
- Vcg7uPrFNNgwJyoJFsqMElRod4OvlYhd4sDaSs9Vapj5AsnyUcK1cwzrkewRvPAi0/
- zVxTesjdnD6dhABiqP51kngmvKzhl1xAq4T1e0gGVC7XrploNqhPULOibH2q9/pdsR
- rO1FQkfqCIdOOe1NoMFjC6rc5VvpgYwkBWuHd8Ls4Zf8501fHfOD8GFlCBmjut+deQ
- qev/5NSWDSBOnwwDGlecMlG//eKZVZM3CYQ4K0WcLDtpgxFaCdFLBNksgb4mkBJ31X
- n0ic5NrBVL0rw==
+ b=LAVwhi5fVzB511R2xm2K0fSzYH9ARO0hXPuFthBl2c1kESQLvsYx3vUWdSjGbI41p
+ 7r1L0SCFCDiF8s04Ggl1ADsjZpb+cVYvfYd8heJUczYJ1jjclBVnWocymXxC/A8PMx
+ Rxm3tllXWSSxBQ6lmZZ2Jg9I6sCSEQmK7zFG+WkSsh7dV0LX8iMEjc5USrCi9kdA66
+ /XXpo+24TNtv5eUQow4276ox7idic3MfG5UIFC6V7wsc5kWFw+7o08GKQk8JTj90t8
+ 4uV/ko+iM5fq45UN6VNkoc2J5l3QvF5vef8XrOouY2eT6sMUpvSGx/ToxNXSmGbajo
+ owEq5I26yn5rQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, nfraprado@collabora.com,
  rex-bc.chen@mediatek.com, zhiyong.tao@mediatek.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 1/5] soc: mediatek: pwrap: Use readx_poll_timeout() instead
- of custom function
-Date: Mon, 16 May 2022 14:46:55 +0200
-Message-Id: <20220516124659.69484-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 5/5] soc: mediatek: pwrap: Compress of_device_id entries to
+ one line
+Date: Mon, 16 May 2022 14:46:59 +0200
+Message-Id: <20220516124659.69484-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220516124659.69484-1-angelogioacchino.delregno@collabora.com>
 References: <20220516124659.69484-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_054710_841217_D23D410C 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20220516_054713_692593_0DA9BB92 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,129 +64,132 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnVuY3Rpb24gcHdyYXBfd2FpdF9mb3Jfc3RhdGUoKSBpcyBhIGZ1bmN0aW9uIHRoYXQgcG9sbHMg
-YW4gYWRkcmVzcwp0aHJvdWdoIGEgaGVscGVyIGZ1bmN0aW9uLCBidXQgdGhpcyBpcyB0aGUgdmVy
-eSBzYW1lIG9wZXJhdGlvbiB0aGF0CnRoZSByZWFkeF9wb2xsX3RpbWVvdXQgbWFjcm8gbWVhbnMg
-dG8gZG8uCkNvbnZlcnQgYWxsIGluc3RhbmNlcyBvZiBjYWxsaW5nIHB3cmFwX3dhaXRfZm9yX3N0
-YXRlKCkgdG8gaW5zdGVhZAp1c2UgdGhlIHJlYWRfcG9sbF90aW1lb3V0IG1hY3JvLgoKU2lnbmVk
-LW9mZi1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVs
-cmVnbm9AY29sbGFib3JhLmNvbT4KUmV2aWV3ZWQtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRv
-IDxuZnJhcHJhZG9AY29sbGFib3JhLmNvbT4KVGVzdGVkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQ
-cmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Ci0tLQogZHJpdmVycy9zb2MvbWVkaWF0ZWsv
-bXRrLXBtaWMtd3JhcC5jIHwgNjAgKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLQogMSBmaWxl
-IGNoYW5nZWQsIDMzIGluc2VydGlvbnMoKyksIDI3IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1wbWljLXdyYXAuYyBiL2RyaXZlcnMvc29jL21lZGlh
-dGVrL210ay1wbWljLXdyYXAuYwppbmRleCBiZjM5YTY0ZjNlY2MuLjU0YTUzMDBhYjcyYiAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLXBtaWMtd3JhcC5jCisrKyBiL2RyaXZl
-cnMvc29jL21lZGlhdGVrL210ay1wbWljLXdyYXAuYwpAQCAtMTMsNiArMTMsOSBAQAogI2luY2x1
-ZGUgPGxpbnV4L3JlZ21hcC5oPgogI2luY2x1ZGUgPGxpbnV4L3Jlc2V0Lmg+CiAKKyNkZWZpbmUg
-UFdSQVBfUE9MTF9ERUxBWV9VUwkxMAorI2RlZmluZSBQV1JBUF9QT0xMX1RJTUVPVVRfVVMJMTAw
-MDAKKwogI2RlZmluZSBQV1JBUF9NVDgxMzVfQlJJREdFX0lPUkRfQVJCX0VOCQkweDQKICNkZWZp
-bmUgUFdSQVBfTVQ4MTM1X0JSSURHRV9XQUNTM19FTgkJMHgxMAogI2RlZmluZSBQV1JBUF9NVDgx
-MzVfQlJJREdFX0lOSVRfRE9ORTMJCTB4MTQKQEAgLTEyNDEsMjcgKzEyNDQsMTQgQEAgc3RhdGlj
-IGJvb2wgcHdyYXBfaXNfZnNtX2lkbGVfYW5kX3N5bmNfaWRsZShzdHJ1Y3QgcG1pY193cmFwcGVy
-ICp3cnApCiAJCSh2YWwgJiBQV1JBUF9TVEFURV9TWU5DX0lETEUwKTsKIH0KIAotc3RhdGljIGlu
-dCBwd3JhcF93YWl0X2Zvcl9zdGF0ZShzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnAsCi0JCWJvb2wg
-KCpmcCkoc3RydWN0IHBtaWNfd3JhcHBlciAqKSkKLXsKLQl1bnNpZ25lZCBsb25nIHRpbWVvdXQ7
-Ci0KLQl0aW1lb3V0ID0gamlmZmllcyArIHVzZWNzX3RvX2ppZmZpZXMoMTAwMDApOwotCi0JZG8g
-ewotCQlpZiAodGltZV9hZnRlcihqaWZmaWVzLCB0aW1lb3V0KSkKLQkJCXJldHVybiBmcCh3cnAp
-ID8gMCA6IC1FVElNRURPVVQ7Ci0JCWlmIChmcCh3cnApKQotCQkJcmV0dXJuIDA7Ci0JfSB3aGls
-ZSAoMSk7Ci19Ci0KIHN0YXRpYyBpbnQgcHdyYXBfcmVhZDE2KHN0cnVjdCBwbWljX3dyYXBwZXIg
-KndycCwgdTMyIGFkciwgdTMyICpyZGF0YSkKIHsKKwlib29sIHRtcDsKIAlpbnQgcmV0OwogCXUz
-MiB2YWw7CiAKLQlyZXQgPSBwd3JhcF93YWl0X2Zvcl9zdGF0ZSh3cnAsIHB3cmFwX2lzX2ZzbV9p
-ZGxlKTsKKwlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQocHdyYXBfaXNfZnNtX2lkbGUsIHdycCwg
-dG1wLCB0bXAsCisJCQkJIFBXUkFQX1BPTExfREVMQVlfVVMsIFBXUkFQX1BPTExfVElNRU9VVF9V
-Uyk7CiAJaWYgKHJldCkgewogCQlwd3JhcF9sZWF2ZV9mc21fdmxkY2xyKHdycCk7CiAJCXJldHVy
-biByZXQ7CkBAIC0xMjczLDcgKzEyNjMsOCBAQCBzdGF0aWMgaW50IHB3cmFwX3JlYWQxNihzdHJ1
-Y3QgcG1pY193cmFwcGVyICp3cnAsIHUzMiBhZHIsIHUzMiAqcmRhdGEpCiAJCXZhbCA9IChhZHIg
-Pj4gMSkgPDwgMTY7CiAJcHdyYXBfd3JpdGVsKHdycCwgdmFsLCBQV1JBUF9XQUNTMl9DTUQpOwog
-Ci0JcmV0ID0gcHdyYXBfd2FpdF9mb3Jfc3RhdGUod3JwLCBwd3JhcF9pc19mc21fdmxkY2xyKTsK
-KwlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQocHdyYXBfaXNfZnNtX3ZsZGNsciwgd3JwLCB0bXAs
-IHRtcCwKKwkJCQkgUFdSQVBfUE9MTF9ERUxBWV9VUywgUFdSQVBfUE9MTF9USU1FT1VUX1VTKTsK
-IAlpZiAocmV0KQogCQlyZXR1cm4gcmV0OwogCkBAIC0xMjkwLDExICsxMjgxLDE0IEBAIHN0YXRp
-YyBpbnQgcHdyYXBfcmVhZDE2KHN0cnVjdCBwbWljX3dyYXBwZXIgKndycCwgdTMyIGFkciwgdTMy
-ICpyZGF0YSkKIAogc3RhdGljIGludCBwd3JhcF9yZWFkMzIoc3RydWN0IHBtaWNfd3JhcHBlciAq
-d3JwLCB1MzIgYWRyLCB1MzIgKnJkYXRhKQogeworCWJvb2wgdG1wOwogCWludCByZXQsIG1zYjsK
-IAogCSpyZGF0YSA9IDA7CiAJZm9yIChtc2IgPSAwOyBtc2IgPCAyOyBtc2IrKykgewotCQlyZXQg
-PSBwd3JhcF93YWl0X2Zvcl9zdGF0ZSh3cnAsIHB3cmFwX2lzX2ZzbV9pZGxlKTsKKwkJcmV0ID0g
-cmVhZHhfcG9sbF90aW1lb3V0KHB3cmFwX2lzX2ZzbV9pZGxlLCB3cnAsIHRtcCwgdG1wLAorCQkJ
-CQkgUFdSQVBfUE9MTF9ERUxBWV9VUywgUFdSQVBfUE9MTF9USU1FT1VUX1VTKTsKKwogCQlpZiAo
-cmV0KSB7CiAJCQlwd3JhcF9sZWF2ZV9mc21fdmxkY2xyKHdycCk7CiAJCQlyZXR1cm4gcmV0OwpA
-QCAtMTMwMyw3ICsxMjk3LDggQEAgc3RhdGljIGludCBwd3JhcF9yZWFkMzIoc3RydWN0IHBtaWNf
-d3JhcHBlciAqd3JwLCB1MzIgYWRyLCB1MzIgKnJkYXRhKQogCQlwd3JhcF93cml0ZWwod3JwLCAo
-KG1zYiA8PCAzMCkgfCAoYWRyIDw8IDE2KSksCiAJCQkgICAgIFBXUkFQX1dBQ1MyX0NNRCk7CiAK
-LQkJcmV0ID0gcHdyYXBfd2FpdF9mb3Jfc3RhdGUod3JwLCBwd3JhcF9pc19mc21fdmxkY2xyKTsK
-KwkJcmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KHB3cmFwX2lzX2ZzbV92bGRjbHIsIHdycCwgdG1w
-LCB0bXAsCisJCQkJCSBQV1JBUF9QT0xMX0RFTEFZX1VTLCBQV1JBUF9QT0xMX1RJTUVPVVRfVVMp
-OwogCQlpZiAocmV0KQogCQkJcmV0dXJuIHJldDsKIApAQCAtMTMyMyw5ICsxMzE4LDExIEBAIHN0
-YXRpYyBpbnQgcHdyYXBfcmVhZChzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnAsIHUzMiBhZHIsIHUz
-MiAqcmRhdGEpCiAKIHN0YXRpYyBpbnQgcHdyYXBfd3JpdGUxNihzdHJ1Y3QgcG1pY193cmFwcGVy
-ICp3cnAsIHUzMiBhZHIsIHUzMiB3ZGF0YSkKIHsKKwlib29sIHRtcDsKIAlpbnQgcmV0OwogCi0J
-cmV0ID0gcHdyYXBfd2FpdF9mb3Jfc3RhdGUod3JwLCBwd3JhcF9pc19mc21faWRsZSk7CisJcmV0
-ID0gcmVhZHhfcG9sbF90aW1lb3V0KHB3cmFwX2lzX2ZzbV9pZGxlLCB3cnAsIHRtcCwgdG1wLAor
-CQkJCSBQV1JBUF9QT0xMX0RFTEFZX1VTLCBQV1JBUF9QT0xMX1RJTUVPVVRfVVMpOwogCWlmIChy
-ZXQpIHsKIAkJcHdyYXBfbGVhdmVfZnNtX3ZsZGNscih3cnApOwogCQlyZXR1cm4gcmV0OwpAQCAt
-MTM0NCwxMCArMTM0MSwxMiBAQCBzdGF0aWMgaW50IHB3cmFwX3dyaXRlMTYoc3RydWN0IHBtaWNf
-d3JhcHBlciAqd3JwLCB1MzIgYWRyLCB1MzIgd2RhdGEpCiAKIHN0YXRpYyBpbnQgcHdyYXBfd3Jp
-dGUzMihzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnAsIHUzMiBhZHIsIHUzMiB3ZGF0YSkKIHsKKwli
-b29sIHRtcDsKIAlpbnQgcmV0LCBtc2IsIHJkYXRhOwogCiAJZm9yIChtc2IgPSAwOyBtc2IgPCAy
-OyBtc2IrKykgewotCQlyZXQgPSBwd3JhcF93YWl0X2Zvcl9zdGF0ZSh3cnAsIHB3cmFwX2lzX2Zz
-bV9pZGxlKTsKKwkJcmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KHB3cmFwX2lzX2ZzbV9pZGxlLCB3
-cnAsIHRtcCwgdG1wLAorCQkJCQkgUFdSQVBfUE9MTF9ERUxBWV9VUywgUFdSQVBfUE9MTF9USU1F
-T1VUX1VTKTsKIAkJaWYgKHJldCkgewogCQkJcHdyYXBfbGVhdmVfZnNtX3ZsZGNscih3cnApOwog
-CQkJcmV0dXJuIHJldDsKQEAgLTEzODgsNiArMTM4Nyw3IEBAIHN0YXRpYyBpbnQgcHdyYXBfcmVn
-bWFwX3dyaXRlKHZvaWQgKmNvbnRleHQsIHUzMiBhZHIsIHUzMiB3ZGF0YSkKIAogc3RhdGljIGlu
-dCBwd3JhcF9yZXNldF9zcGlzbGF2ZShzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnApCiB7CisJYm9v
-bCB0bXA7CiAJaW50IHJldCwgaTsKIAogCXB3cmFwX3dyaXRlbCh3cnAsIDAsIFBXUkFQX0hJUFJJ
-T19BUkJfRU4pOwpAQCAtMTQwNyw3ICsxNDA3LDggQEAgc3RhdGljIGludCBwd3JhcF9yZXNldF9z
-cGlzbGF2ZShzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnApCiAJCXB3cmFwX3dyaXRlbCh3cnAsIHdy
-cC0+bWFzdGVyLT5zcGlfdyB8IFBXUkFQX01BTl9DTURfT1BfT1VUUywKIAkJCQlQV1JBUF9NQU5f
-Q01EKTsKIAotCXJldCA9IHB3cmFwX3dhaXRfZm9yX3N0YXRlKHdycCwgcHdyYXBfaXNfc3luY19p
-ZGxlKTsKKwlyZXQgPSByZWFkeF9wb2xsX3RpbWVvdXQocHdyYXBfaXNfc3luY19pZGxlLCB3cnAs
-IHRtcCwgdG1wLAorCQkJCSBQV1JBUF9QT0xMX0RFTEFZX1VTLCBQV1JBUF9QT0xMX1RJTUVPVVRf
-VVMpOwogCWlmIChyZXQpIHsKIAkJZGV2X2Vycih3cnAtPmRldiwgIiVzIGZhaWwsIHJldD0lZFxu
-IiwgX19mdW5jX18sIHJldCk7CiAJCXJldHVybiByZXQ7CkBAIC0xNDU4LDE0ICsxNDU5LDE1IEBA
-IHN0YXRpYyBpbnQgcHdyYXBfaW5pdF9zaWRseShzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnApCiBz
-dGF0aWMgaW50IHB3cmFwX2luaXRfZHVhbF9pbyhzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnApCiB7
-CiAJaW50IHJldDsKKwlib29sIHRtcDsKIAl1MzIgcmRhdGE7CiAKIAkvKiBFbmFibGUgZHVhbCBJ
-TyBtb2RlICovCiAJcHdyYXBfd3JpdGUod3JwLCB3cnAtPnNsYXZlLT5kZXdfcmVnc1tQV1JBUF9E
-RVdfRElPX0VOXSwgMSk7CiAKIAkvKiBDaGVjayBJRExFICYgSU5JVF9ET05FIGluIGFkdmFuY2Ug
-Ki8KLQlyZXQgPSBwd3JhcF93YWl0X2Zvcl9zdGF0ZSh3cnAsCi0JCQkJICAgcHdyYXBfaXNfZnNt
-X2lkbGVfYW5kX3N5bmNfaWRsZSk7CisJcmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KHB3cmFwX2lz
-X2ZzbV9pZGxlX2FuZF9zeW5jX2lkbGUsIHdycCwgdG1wLCB0bXAsCisJCQkJIFBXUkFQX1BPTExf
-REVMQVlfVVMsIFBXUkFQX1BPTExfVElNRU9VVF9VUyk7CiAJaWYgKHJldCkgewogCQlkZXZfZXJy
-KHdycC0+ZGV2LCAiJXMgZmFpbCwgcmV0PSVkXG4iLCBfX2Z1bmNfXywgcmV0KTsKIAkJcmV0dXJu
-IHJldDsKQEAgLTE1NzAsNiArMTU3Miw3IEBAIHN0YXRpYyBib29sIHB3cmFwX2lzX3BtaWNfY2lw
-aGVyX3JlYWR5KHN0cnVjdCBwbWljX3dyYXBwZXIgKndycCkKIHN0YXRpYyBpbnQgcHdyYXBfaW5p
-dF9jaXBoZXIoc3RydWN0IHBtaWNfd3JhcHBlciAqd3JwKQogewogCWludCByZXQ7CisJYm9vbCB0
-bXA7CiAJdTMyIHJkYXRhID0gMDsKIAogCXB3cmFwX3dyaXRlbCh3cnAsIDB4MSwgUFdSQVBfQ0lQ
-SEVSX1NXUlNUKTsKQEAgLTE2MjQsMTQgKzE2MjcsMTYgQEAgc3RhdGljIGludCBwd3JhcF9pbml0
-X2NpcGhlcihzdHJ1Y3QgcG1pY193cmFwcGVyICp3cnApCiAJfQogCiAJLyogd2FpdCBmb3IgY2lw
-aGVyIGRhdGEgcmVhZHlAQVAgKi8KLQlyZXQgPSBwd3JhcF93YWl0X2Zvcl9zdGF0ZSh3cnAsIHB3
-cmFwX2lzX2NpcGhlcl9yZWFkeSk7CisJcmV0ID0gcmVhZHhfcG9sbF90aW1lb3V0KHB3cmFwX2lz
-X2NpcGhlcl9yZWFkeSwgd3JwLCB0bXAsIHRtcCwKKwkJCQkgUFdSQVBfUE9MTF9ERUxBWV9VUywg
-UFdSQVBfUE9MTF9USU1FT1VUX1VTKTsKIAlpZiAocmV0KSB7CiAJCWRldl9lcnIod3JwLT5kZXYs
-ICJjaXBoZXIgZGF0YSByZWFkeUBBUCBmYWlsLCByZXQ9JWRcbiIsIHJldCk7CiAJCXJldHVybiBy
-ZXQ7CiAJfQogCiAJLyogd2FpdCBmb3IgY2lwaGVyIGRhdGEgcmVhZHlAUE1JQyAqLwotCXJldCA9
-IHB3cmFwX3dhaXRfZm9yX3N0YXRlKHdycCwgcHdyYXBfaXNfcG1pY19jaXBoZXJfcmVhZHkpOwor
-CXJldCA9IHJlYWR4X3BvbGxfdGltZW91dChwd3JhcF9pc19wbWljX2NpcGhlcl9yZWFkeSwgd3Jw
-LCB0bXAsIHRtcCwKKwkJCQkgUFdSQVBfUE9MTF9ERUxBWV9VUywgUFdSQVBfUE9MTF9USU1FT1VU
-X1VTKTsKIAlpZiAocmV0KSB7CiAJCWRldl9lcnIod3JwLT5kZXYsCiAJCQkidGltZW91dCB3YWl0
-aW5nIGZvciBjaXBoZXIgZGF0YSByZWFkeUBQTUlDXG4iKTsKQEAgLTE2NDAsNyArMTY0NSw4IEBA
-IHN0YXRpYyBpbnQgcHdyYXBfaW5pdF9jaXBoZXIoc3RydWN0IHBtaWNfd3JhcHBlciAqd3JwKQog
-CiAJLyogd2FpdCBmb3IgY2lwaGVyIG1vZGUgaWRsZSAqLwogCXB3cmFwX3dyaXRlKHdycCwgd3Jw
-LT5zbGF2ZS0+ZGV3X3JlZ3NbUFdSQVBfREVXX0NJUEhFUl9NT0RFXSwgMHgxKTsKLQlyZXQgPSBw
-d3JhcF93YWl0X2Zvcl9zdGF0ZSh3cnAsIHB3cmFwX2lzX2ZzbV9pZGxlX2FuZF9zeW5jX2lkbGUp
-OworCXJldCA9IHJlYWR4X3BvbGxfdGltZW91dChwd3JhcF9pc19mc21faWRsZV9hbmRfc3luY19p
-ZGxlLCB3cnAsIHRtcCwgdG1wLAorCQkJCSBQV1JBUF9QT0xMX0RFTEFZX1VTLCBQV1JBUF9QT0xM
-X1RJTUVPVVRfVVMpOwogCWlmIChyZXQpIHsKIAkJZGV2X2Vycih3cnAtPmRldiwgImNpcGhlciBt
-b2RlIGlkbGUgZmFpbCwgcmV0PSVkXG4iLCByZXQpOwogCQlyZXR1cm4gcmV0OwotLSAKMi4zNS4x
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
-awo=
+Compress each entry of the of_device_id tables in this driver to one
+line instead of three, as they fit just fine in a single line.
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 90 ++++++++--------------------
+ 1 file changed, 24 insertions(+), 66 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 7d02e1d4faf4..c018092e6cbe 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -1960,33 +1960,17 @@ static const struct pwrap_slv_type pmic_mt6397 = {
+ };
+ 
+ static const struct of_device_id of_slave_match_tbl[] = {
+-	{
+-		.compatible = "mediatek,mt6323",
+-		.data = &pmic_mt6323,
+-	}, {
+-		.compatible = "mediatek,mt6351",
+-		.data = &pmic_mt6351,
+-	}, {
+-		.compatible = "mediatek,mt6357",
+-		.data = &pmic_mt6357,
+-	}, {
+-		.compatible = "mediatek,mt6358",
+-		.data = &pmic_mt6358,
+-	}, {
+-		.compatible = "mediatek,mt6359",
+-		.data = &pmic_mt6359,
+-	}, {
+-		/* The MT6380 PMIC only implements a regulator, so we bind it
+-		 * directly instead of using a MFD.
+-		 */
+-		.compatible = "mediatek,mt6380-regulator",
+-		.data = &pmic_mt6380,
+-	}, {
+-		.compatible = "mediatek,mt6397",
+-		.data = &pmic_mt6397,
+-	}, {
+-		/* sentinel */
+-	}
++	{ .compatible = "mediatek,mt6323", .data = &pmic_mt6323 },
++	{ .compatible = "mediatek,mt6351", .data = &pmic_mt6351 },
++	{ .compatible = "mediatek,mt6357", .data = &pmic_mt6357 },
++	{ .compatible = "mediatek,mt6358", .data = &pmic_mt6358 },
++	{ .compatible = "mediatek,mt6359", .data = &pmic_mt6359 },
++	/* The MT6380 PMIC only implements a regulator, so we bind it
++	 * directly instead of using a MFD.
++	 */
++	{ .compatible = "mediatek,mt6380-regulator", .data = &pmic_mt6380 },
++	{ .compatible = "mediatek,mt6397", .data = &pmic_mt6397 },
++	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, of_slave_match_tbl);
+ 
+@@ -2145,45 +2129,19 @@ static struct pmic_wrapper_type pwrap_mt8186 = {
+ };
+ 
+ static const struct of_device_id of_pwrap_match_tbl[] = {
+-	{
+-		.compatible = "mediatek,mt2701-pwrap",
+-		.data = &pwrap_mt2701,
+-	}, {
+-		.compatible = "mediatek,mt6765-pwrap",
+-		.data = &pwrap_mt6765,
+-	}, {
+-		.compatible = "mediatek,mt6779-pwrap",
+-		.data = &pwrap_mt6779,
+-	}, {
+-		.compatible = "mediatek,mt6797-pwrap",
+-		.data = &pwrap_mt6797,
+-	}, {
+-		.compatible = "mediatek,mt6873-pwrap",
+-		.data = &pwrap_mt6873,
+-	}, {
+-		.compatible = "mediatek,mt7622-pwrap",
+-		.data = &pwrap_mt7622,
+-	}, {
+-		.compatible = "mediatek,mt8135-pwrap",
+-		.data = &pwrap_mt8135,
+-	}, {
+-		.compatible = "mediatek,mt8173-pwrap",
+-		.data = &pwrap_mt8173,
+-	}, {
+-		.compatible = "mediatek,mt8183-pwrap",
+-		.data = &pwrap_mt8183,
+-	}, {
+-		.compatible = "mediatek,mt8186-pwrap",
+-		.data = &pwrap_mt8186,
+-	}, {
+-		.compatible = "mediatek,mt8195-pwrap",
+-		.data = &pwrap_mt8195,
+-	}, {
+-		.compatible = "mediatek,mt8516-pwrap",
+-		.data = &pwrap_mt8516,
+-	}, {
+-		/* sentinel */
+-	}
++	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
++	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
++	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
++	{ .compatible = "mediatek,mt6797-pwrap", .data = &pwrap_mt6797 },
++	{ .compatible = "mediatek,mt6873-pwrap", .data = &pwrap_mt6873 },
++	{ .compatible = "mediatek,mt7622-pwrap", .data = &pwrap_mt7622 },
++	{ .compatible = "mediatek,mt8135-pwrap", .data = &pwrap_mt8135 },
++	{ .compatible = "mediatek,mt8173-pwrap", .data = &pwrap_mt8173 },
++	{ .compatible = "mediatek,mt8183-pwrap", .data = &pwrap_mt8183 },
++	{ .compatible = "mediatek,mt8186-pwrap", .data = &pwrap_mt8186 },
++	{ .compatible = "mediatek,mt8195-pwrap", .data = &pwrap_mt8195 },
++	{ .compatible = "mediatek,mt8516-pwrap", .data = &pwrap_mt8516 },
++	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
+ 
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
