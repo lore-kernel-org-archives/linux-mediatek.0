@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D78C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 05:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB87AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 05:43:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xJeSGW1NKbzAi7kHJIz4kQ2ngfXCLLeH81l7WJkI0vk=; b=VaGnaEjc42pECp
-	XEdQ0eg/tCO+8opHm/UaSCCvkcq8dCtINMsgeekjo2YpFl6UeS9j6S/1W9wTmL1ql9Yt4KbVQ7cfG
-	rtzY09tK5EQVKfLQaUJakMyd8+3wN/jmmMdKCiWYp4YkGIUwtEVrGibw8J1QYq0vgGBy9P44ix2Dh
-	hvP2butQSxz8CG1YUXhXEwdfhC+GrPa2N19qBjOQlTnLe8nRuQ30Bh3JpWPWM9w0RaP5m/fyx6lLC
-	2GacRDgxUAolg4wnsenhm7TSKgGQcPXsrNLDt45pWTuzlKBAqhUxQbUrmTlAPAyra5NAtDz1jEsc9
-	uWx3DAmHMYXCaLsuOXDw==;
+	List-Owner; bh=3OtbBOOnUmjIkgASERY38HdkQGNQfJFZe8ZHh1Uw8Do=; b=jKhqX6O4MB+X86
+	uvt4trWzWpV33bT4/PV2MbXwlRUn2HT1bLcBhYjDZMshMM6SDEoAD4Ml0pg1syKVKacXGOELZ0/NA
+	M+5rZ3PRgenEwmukb3sfb2+hW2+2jUZ+8FgzoabWyXsZudxtiaQbCyJ7sPutIK0iATh+SeSx1udYD
+	uUTrd0B9WgoydUnPp76CTBd/NO0fhlHGLcnF7x3cp6WGMDLKj1VOUwieAS4dS1S2L0bqp9M038VK0
+	xB0vCrxASdm3BZUrauzm9sJYGlx23s9o+lCPb4iVVTV3Qpn7712HQ+bEOhc2VwEhfptNGoQUV6DO0
+	8jJiqgP15wO8AZZD/FoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqTOM-0062XU-TD; Mon, 16 May 2022 05:35:38 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1nqTVs-0063l5-1E; Mon, 16 May 2022 05:43:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqTOJ-0062WH-GJ
- for linux-mediatek@lists.infradead.org; Mon, 16 May 2022 05:35:37 +0000
-Received: by mail-ed1-x534.google.com with SMTP id g12so1479836edq.4
- for <linux-mediatek@lists.infradead.org>; Sun, 15 May 2022 22:35:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=c/IovKeDQ5OmYImuaDKw85Gvkz+g6dB9ube8wouUX0E=;
- b=GGajIGxKz4a1kdgVCnNp3TVY4oWNsaMBX25vD2wNxJjdlfjW0K2HSomOmhtNf8KlII
- I/KzDUxpS795xfRF8NdRofQwNVP/BcZW3gRgq5wCMrBCZXhJNS+FRleC+mG3irXz/3aO
- +mT31wgaBGkXLx4Qfi9CCUwCaASTGFEm4O6+Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=c/IovKeDQ5OmYImuaDKw85Gvkz+g6dB9ube8wouUX0E=;
- b=yb3moJOh6T14ikIJMHRO4rxJuLjlAMl7PH9iM8QX/sruS2TWMSPj5wo0DAoNKR9TKB
- UzqF9F88Dh3u1Qsca3a4ma2jIgQ8rQTszFtGbRvSaQzBgKR3NDQH8kv+QrcVs9bLWX/4
- CU4x6VHquOOXCnmXo1pFA+y7fDJlDnzwYzUr01vQ3WBUrDz8bjb22aDRi+mbt+NLVtzR
- 6ASOhsB+NJ0NR22sXuSzq/hMlc2xsWL/SkjVsAsvnMqbqhz+C/ReyWSv+OT9UYieh1jx
- 4o9kMizipu5OC+3jToZ/7srnFB0NJtu7wWrAd9JoWvLf5R/6VXUPqk5yEqnZFLNSQ6KO
- I2JA==
-X-Gm-Message-State: AOAM53162MWKNvZ38FyU+rLsb+qWyt0IoDYPf70yl5iTNRhekraKiJoc
- HCehwGWBxbIHdxMx73NJEa49xyFzGKD/fEeSGyluMA==
-X-Google-Smtp-Source: ABdhPJxkaaQU1pxAn/HNEptaZ1FK3UV5eSAHcvlMeQ1pJimMFp8UJ4ll80vonmeQUOiLh7XTmmmV9IDAbxXEwPO61wM=
-X-Received: by 2002:a05:6402:11cd:b0:427:bda5:542f with SMTP id
- j13-20020a05640211cd00b00427bda5542fmr11486167edw.290.1652679329459; Sun, 15
- May 2022 22:35:29 -0700 (PDT)
+ id 1nqTVd-0063h2-WC; Mon, 16 May 2022 05:43:14 +0000
+X-UUID: a97f87e0d5eb4bc690f4813d61112de9-20220515
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:1d65870d-f9c6-4f4a-a710-510aa5dbd32c, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:b14b5df2-ab23-4aed-a67b-f96514452486,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: a97f87e0d5eb4bc690f4813d61112de9-20220515
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1515484460; Sun, 15 May 2022 22:43:04 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 15 May 2022 22:43:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Mon, 16 May 2022 13:43:01 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 16 May 2022 13:43:01 +0800
+Message-ID: <7c996c665a57fdd9ba8d6df4dc085f70afc1b933.camel@mediatek.com>
+Subject: Re: [PATCH] soc: mediatek: mtk-mmsys: Add support for MT6795 Helio X10
+From: CK Hu <ck.hu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <matthias.bgg@gmail.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <konrad.dybcio@somainline.org>, <marijn.suijten@somainline.org>,
+ <martin.botka@somainline.org>, <~postmarketos/upstreaming@lists.sr.ht>,
+ <phone-devel@vger.kernel.org>, <paul.bouchara@somainline.org>,
+ <kernel@collabora.com>
+Date: Mon, 16 May 2022 13:43:01 +0800
+In-Reply-To: <20220513170350.502501-1-angelogioacchino.delregno@collabora.com>
+References: <20220513170350.502501-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220505115226.20130-1-rex-bc.chen@mediatek.com>
- <20220505115226.20130-10-rex-bc.chen@mediatek.com>
-In-Reply-To: <20220505115226.20130-10-rex-bc.chen@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 16 May 2022 13:35:18 +0800
-Message-ID: <CAGXv+5FW59B1Dq8eH=5KjEdTxgT64GuvYZHZ9LnnTuaVrK3XpQ@mail.gmail.com>
-Subject: Re: [PATCH v6 09/10] arm64: dts: mediatek: Add MediaTek CCI node for
- MT8183
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: rafael@kernel.org, viresh.kumar@linaro.org, robh+dt@kernel.org, 
- krzk+dt@kernel.org, matthias.bgg@gmail.com, jia-wei.chang@mediatek.com, 
- roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com, 
- angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- "Andrew-sh . Cheng" <andrew-sh.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220515_223535_600276_5E6446B9 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20220515_224310_092075_89A51EF5 
+X-CRM114-Status: GOOD (  20.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,87 +85,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 5, 2022 at 8:04 PM Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
->
-> Add MediaTek CCI devfreq node for MT8183.
->
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi, Angelo:
+
+On Fri, 2022-05-13 at 19:03 +0200, AngeloGioacchino Del Regno wrote:
+> Add MM support for the MT6795 SoC, using the mmsys default routing
+> table.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts    | 4 ++++
->  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 7 +++++++
->  3 files changed, 15 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> index 8953dbf84f3e..7ac9864db9de 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-> @@ -412,6 +412,10 @@
->
+> 
+> In order for this patch to have any meaning and functionality, it is
+> required to also have in-tree the [1] MT6795 clocks series, even
+> though that's not required to actually compile this code.
+> 
+> [1] 
+> https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/list/?series=641493__;!!CTRNKA9wMg0ARbw!ywDb_Gj4oV0iYHK_PbtJSNejzsJGlFVjX-1O0G1mR0vZX_5VeMtlZJ_AS6K_Mg$
+>  
+> 
+>  drivers/soc/mediatek/mtk-mmsys.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> b/drivers/soc/mediatek/mtk-mmsys.c
+> index 06d8e83a2cb5..38b36b881a3b 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -57,6 +57,13 @@ static const struct mtk_mmsys_match_data
+> mt6779_mmsys_match_data = {
+>  	},
 >  };
->
-> +&cci {
-> +       proc-supply = <&mt6358_vproc12_reg>;
+>  
+> +static const struct mtk_mmsys_driver_data mt6795_mmsys_driver_data =
+> {
+> +	.clk_driver = "clk-mt6795-mm",
+> +	.routes = mmsys_default_routing_table,
+
+mt6795 should have its own routing table instead of default one. The
+default one is used for mt8173, mt2701, mt2712 which no one knows how
+to separate them. If you don't know the routing table of mt6795, just
+left this as NULL.
+
+Regards,
+CK
+
+> +	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+> +	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
 > +};
 > +
->  &cpu0 {
->         proc-supply = <&mt6358_vproc12_reg>;
+>  static const struct mtk_mmsys_driver_data mt6797_mmsys_driver_data =
+> {
+>  	.clk_driver = "clk-mt6797-mm",
 >  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> index 8d5bf73a9099..b035e06840e6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -230,6 +230,10 @@
->         status = "okay";
->  };
->
-> +&cci {
-> +       proc-supply = <&mt6358_vproc12_reg>;
-> +};
-> +
->  &cpu0 {
->         proc-supply = <&mt6358_vproc12_reg>;
->  };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index cecf96b628b7..11caf3dd85cd 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -280,6 +280,13 @@
->                 };
->         };
->
-> +       cci: cci {
-> +               compatible = "mediatek,mt8183-cci";
-> +               clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
-> +               clock-names = "cci_clock";
+> @@ -363,6 +370,10 @@ static const struct of_device_id
+> of_match_mtk_mmsys[] = {
+>  		.compatible = "mediatek,mt6779-mmsys",
+>  		.data = &mt6779_mmsys_match_data,
+>  	},
+> +	{
+> +		.compatible = "mediatek,mt6795-mmsys",
+> +		.data = &mt6795_mmsys_driver_data,
+> +	},
+>  	{
+>  		.compatible = "mediatek,mt6797-mmsys",
+>  		.data = &mt6797_mmsys_match_data,
 
-Binding says there should be two clocks: the actual clock that drives
-CCI, and a stable "intermediate" clock to switch to during clock rate
-changes. So I think this should look like:
-
-    clocks = <&mcucfg CLK_MCU_BUS_SEL>,
-             <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
-    clock-names = "cci", "intermediate";
-
-
-ChenYu
-
-> +               operating-points-v2 = <&cci_opp>;
-> +       };
-> +
->         cpus {
->                 #address-cells = <1>;
->                 #size-cells = <0>;
-> --
-> 2.18.0
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
