@@ -4,78 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6653C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 06:21:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632D1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 06:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZiZ2gjUhvxUP8BYOHfnT84nsjVYZIVSYU0+1+9zrdH0=; b=xcmoLQAo1+2oI/
-	oHZnB2DbItczlHxL8lF/DT2E50H2P5asKfYlFkJ9owQdUg6e/TaM44AWOxLKr53njOZuhDKuwh9XT
-	01tI1EQdaFBaIoiSO864EvsSB5BDUb0rivxf3+V5MAyE9lgeSXHZNZHpftgQOeMKCeDupoE9x/n0K
-	TW83VpS0bsj8ZBNVrm5UAG/Wdm66T52IBb1OIpHHJ+isYAVhgbSR3kclo7L2MBijIjp9dEXZ7amKv
-	whD1/W3qUvkdbItY4OZCAK0BxWVhtYJsJDgZ8k95yTUVpoZEYJ4K/2GdpPaopUo45TgSvpDj6pjia
-	d9u+xvNsG2SkdhHZSg6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3nuYm+oapdx5wWtqW68bj7xpLAcihST5uUYuGmtWolk=; b=vaxt1Yx2qRrDuZ
+	8xKMZrIUjsppaQsUBo6+tZI9XqbSfGcvO+ChERa9z4e9mXF+gNxBCvXPCcEGNpUC1gTgfEeoyG132
+	tYaYvaGzwDWZvROBQsAlZk2CroBHp99x3tuccAlj4XR78jzPwerkMo+3AEEK128cah7245hgM38uB
+	yq8+fHyhbqWsbUQ7afW2ZU93uTTWnRUlWa/1n7S3+drgiVs2CdLPT+KuMyyXNGlLxQwY62KKadBmQ
+	FjYiSf5qGzY8gILkgm24P6WLDZqZOwYuj/XLhk9lFUthzdwoZ56+wMpNPj1pgRkDOcA1cFzJ0e/Xv
+	hPH9hCAJJ07hKfYY0sKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqU71-006AX5-RE; Mon, 16 May 2022 06:21:47 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1nqUBf-006BdA-3p; Mon, 16 May 2022 06:26:35 +0000
+Received: from mout-u-107.mailbox.org ([91.198.250.252])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqU6p-006AUV-Ec; Mon, 16 May 2022 06:21:37 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- qe3-20020a17090b4f8300b001dc24e4da73so12150886pjb.1; 
- Sun, 15 May 2022 23:21:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2XQvQdTgnCwDfmHkTZtajXuRMAeapjHZEvNeUkViza8=;
- b=ZLrZuXWGhglqCmNncstz6ccn5vDYbYWzH2VkXAZA1887OQvrY9eWeB0/8UQQgwWSGB
- pVzZi6ep4Ax9nm3l099qIlairb6gML7KBNuKERwrzUYQKU5NB+Chh4uwnt1fUGD3DE0v
- UVgcdupbcev1+NvQClM6qz9BVECcYIcbIAc2jk+cxmDVvMnR1sraxFf/z4kVM62+mgmr
- YG0sv49pzekIRo8vFDi2WXwQkJUYsQ4dyp/aZReuOOSbOFLpNQgBchkiWCIzyH9ZSWww
- 0vH4RNk6R8t4fh5r6JasX81Clk/MpWUx0Ft4/SLtqC8ha+FyAKf7T2imbZHL04MZ9fsN
- zzNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2XQvQdTgnCwDfmHkTZtajXuRMAeapjHZEvNeUkViza8=;
- b=pbXU8LQMGHcXx2PPaEzsPxTLdDoFRrZhLhaMv07qjU7aFxWemZqNJtKYl5638v1KwY
- zUC05QDMG0HYY2WRC/xZKjs+IlELkM33SraoHz7xy4V7MByXlYkrpVGifnP91iUYJCA2
- CJnl1f5MjG2ytxlHsAAA5rgzmlSrNX9w2BaELz0Quqa0vAFOQu0w+wx/OEMIco9liMm3
- 63PNWG5E6jzQ2XaJK6E4f5yyJaKRuibYGfev2Klut4F+OriOjMkk5yBgZvJTpPCSbde0
- 0EKpvR/mr9SAJOVTNxUsAm6ZlCwAcucOdPJ5MOTe4XvNBiuUM1s0Tvwn0rx5K2aKbPoi
- AMkw==
-X-Gm-Message-State: AOAM531ZuB3m0K1ZUaky6KTQk8N7uJ1uamPmzt0EHuQ33ZNtt9ynkcnQ
- Z6/6v3pWrJAQiv0CQ1SPRpY=
-X-Google-Smtp-Source: ABdhPJydDWCC0cImtGR3ApozIWoml6FLqAUUWtzPeE7bW1eJQ3xAFnItpbdPcy3zKpfDYwU75NnssA==
-X-Received: by 2002:a17:902:7593:b0:15e:fe5d:58e1 with SMTP id
- j19-20020a170902759300b0015efe5d58e1mr16364570pll.102.1652682093885; 
- Sun, 15 May 2022 23:21:33 -0700 (PDT)
-Received: from genechen-System-Product-Name.richtek.com
- ([2402:7500:469:4645:1448:44e0:4d9f:8e5b])
- by smtp.gmail.com with ESMTPSA id
- v15-20020a17090ad58f00b001d840f4eee0sm7597337pju.20.2022.05.15.23.21.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 15 May 2022 23:21:33 -0700 (PDT)
-From: Gene Chen <gene.chen.richtek@gmail.com>
-To: lee.jones@linaro.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- gene_chen@richtek.com, cy_huang@richtek.com
-Subject: [PATCH v2] dt-bindings: mfd: Add bindings child nodes for the
- Mediatek MT6360
-Date: Mon, 16 May 2022 14:21:27 +0800
-Message-Id: <20220516062127.99647-1-gene.chen.richtek@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ id 1nqUBd-006BZl-3c
+ for linux-mediatek@lists.infradead.org; Mon, 16 May 2022 06:26:34 +0000
+Received: from smtp102.mailbox.org (smtp102.mailbox.org
+ [IPv6:2001:67c:2050:b231:465::102])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mout-u-107.mailbox.org (Postfix) with ESMTPS id 4L1q5V1TT4z9sy0;
+ Mon, 16 May 2022 08:26:22 +0200 (CEST)
+Message-ID: <fe4d398e-978c-6784-e3f6-01b83da3f249@denx.de>
+Date: Mon, 16 May 2022 08:26:20 +0200
 MIME-Version: 1.0
+Subject: Re: [PATCH -next v2 1/2] i2c: mt7621: fix missing
+ clk_disable_unprepare() on error in mtk_i2c_probe()
+Content-Language: en-US
+To: Yang Yingliang <yangyingliang@huawei.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-i2c@vger.kernel.org
+Cc: matthias.bgg@gmail.com, wsa@the-dreams.de, christophe.jaillet@wanadoo.fr
+References: <20220514023148.305457-1-yangyingliang@huawei.com>
+From: Stefan Roese <sr@denx.de>
+In-Reply-To: <20220514023148.305457-1-yangyingliang@huawei.com>
+X-Rspamd-Queue-Id: 4L1q5V1TT4z9sy0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220515_232135_539496_B52F9743 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220515_232633_336004_5E04C338 
+X-CRM114-Status: GOOD (  19.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,239 +60,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gene Chen <gene_chen@richtek.com>
-
-Add bindings child nodes for the Mediatek MT6360
-
-Signed-off-by: Gene Chen <gene_chen@richtek.com>
-Link: https://lore.kernel.org/all/YmqTzlrVL5KaVPuz@robh.at.kernel.org/
----
- .../bindings/mfd/mediatek,mt6360.yaml         | 189 ++++++++++++++++++
- 1 file changed, 189 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-index 4d8769f3748c..28eee02441ee 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6360.yaml
-@@ -37,6 +37,18 @@ properties:
-     description:
-       The first cell is the IRQ number.
- 
-+  regulators:
-+    $ref: /schemas/regulator/mt6360-regulator.yaml#
-+
-+  charger:
-+    $ref: /schemas/power/supply/mt6360_charger.yaml#
-+
-+  tcpc:
-+    $ref: /schemas/usb/mediatek,mt6360-tcpc.yaml#
-+
-+  led-controller:
-+    $ref: /schemas/leds/leds-mt6360.yaml#
-+
- required:
-   - compatible
-   - reg
-@@ -51,6 +63,8 @@ examples:
-   - |
-     #include <dt-bindings/interrupt-controller/irq.h>
-     #include <dt-bindings/regulator/mediatek,mt6360-regulator.h>
-+    #include <dt-bindings/leds/common.h>
-+    #include <dt-bindings/usb/pd.h>
-     i2c {
-         #address-cells = <1>;
-         #size-cells = <0>;
-@@ -63,5 +77,180 @@ examples:
-             interrupt-names = "IRQB";
-             interrupt-controller;
-             #interrupt-cells = <1>;
-+
-+            mt6360_charger: charger {
-+                compatible = "mediatek,mt6360-chg";
-+                richtek,vinovp-microvolt = <14500000>;
-+
-+                otg_vbus_regulator: usb-otg-vbus-regulator {
-+                    regulator-compatible = "usb-otg-vbus";
-+                    regulator-name = "usb-otg-vbus";
-+                    regulator-min-microvolt = <4425000>;
-+                    regulator-max-microvolt = <5825000>;
-+                };
-+            };
-+
-+            led-controller {
-+                compatible = "mediatek,mt6360-led";
-+                #address-cells = <1>;
-+                #size-cells = <0>;
-+
-+                multi-led@0 {
-+                    reg = <0>;
-+                    function = LED_FUNCTION_INDICATOR;
-+                    color = <LED_COLOR_ID_RGB>;
-+                    led-max-microamp = <24000>;
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+                    led@0 {
-+                        reg = <0>;
-+                        color = <LED_COLOR_ID_RED>;
-+                    };
-+                    led@1 {
-+                        reg = <1>;
-+                        color = <LED_COLOR_ID_GREEN>;
-+                    };
-+                    led@2 {
-+                        reg = <2>;
-+                        color = <LED_COLOR_ID_BLUE>;
-+                    };
-+                };
-+                led@3 {
-+                    reg = <3>;
-+                    function = LED_FUNCTION_INDICATOR;
-+                    color = <LED_COLOR_ID_WHITE>;
-+                    led-max-microamp = <150000>;
-+                };
-+                led@4 {
-+                    reg = <4>;
-+                    function = LED_FUNCTION_FLASH;
-+                    color = <LED_COLOR_ID_WHITE>;
-+                    function-enumerator = <1>;
-+                    led-max-microamp = <200000>;
-+                    flash-max-microamp = <500000>;
-+                    flash-max-timeout-us = <1024000>;
-+                };
-+                led@5 {
-+                    reg = <5>;
-+                    function = LED_FUNCTION_FLASH;
-+                    color = <LED_COLOR_ID_WHITE>;
-+                    function-enumerator = <2>;
-+                    led-max-microamp = <200000>;
-+                    flash-max-microamp = <500000>;
-+                    flash-max-timeout-us = <1024000>;
-+                };
-+            };
-+
-+            regulators {
-+                compatible = "mediatek,mt6360-regulator";
-+                LDO_VIN3-supply = <&BUCK2>;
-+                buck1 {
-+                    regulator-compatible = "BUCK1";
-+                    regulator-name = "mt6360,buck1";
-+                    regulator-min-microvolt = <300000>;
-+                    regulator-max-microvolt = <1300000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP
-+                         MT6360_OPMODE_ULP>;
-+                };
-+                BUCK2: buck2 {
-+                    regulator-compatible = "BUCK2";
-+                    regulator-name = "mt6360,buck2";
-+                    regulator-min-microvolt = <300000>;
-+                    regulator-max-microvolt = <1300000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP
-+                         MT6360_OPMODE_ULP>;
-+                };
-+                ldo6 {
-+                    regulator-compatible = "LDO6";
-+                    regulator-name = "mt6360,ldo6";
-+                    regulator-min-microvolt = <500000>;
-+                    regulator-max-microvolt = <2100000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP>;
-+                };
-+                ldo7 {
-+                    regulator-compatible = "LDO7";
-+                    regulator-name = "mt6360,ldo7";
-+                    regulator-min-microvolt = <500000>;
-+                    regulator-max-microvolt = <2100000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP>;
-+                };
-+                ldo1 {
-+                    regulator-compatible = "LDO1";
-+                    regulator-name = "mt6360,ldo1";
-+                    regulator-min-microvolt = <1200000>;
-+                    regulator-max-microvolt = <3600000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP>;
-+                };
-+                ldo2 {
-+                    regulator-compatible = "LDO2";
-+                    regulator-name = "mt6360,ldo2";
-+                    regulator-min-microvolt = <1200000>;
-+                    regulator-max-microvolt = <3600000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP>;
-+                };
-+                ldo3 {
-+                    regulator-compatible = "LDO3";
-+                    regulator-name = "mt6360,ldo3";
-+                    regulator-min-microvolt = <1200000>;
-+                    regulator-max-microvolt = <3600000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP>;
-+                };
-+                ldo5 {
-+                    regulator-compatible = "LDO5";
-+                    regulator-name = "mt6360,ldo5";
-+                    regulator-min-microvolt = <2700000>;
-+                    regulator-max-microvolt = <3600000>;
-+                    regulator-allowed-modes = <MT6360_OPMODE_NORMAL
-+                         MT6360_OPMODE_LP>;
-+                };
-+            };
-+
-+            tcpc {
-+                compatible = "mediatek,mt6360-tcpc";
-+                interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
-+                interrupt-names = "PD_IRQB";
-+
-+                connector {
-+                    compatible = "usb-c-connector";
-+                    label = "USB-C";
-+                    data-role = "dual";
-+                    power-role = "dual";
-+                    try-power-role = "sink";
-+                    source-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+                    sink-pdos = <PDO_FIXED(5000, 2000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+                    op-sink-microwatt = <10000000>;
-+
-+                    ports {
-+                        #address-cells = <1>;
-+                        #size-cells = <0>;
-+
-+                        port@0 {
-+                            reg = <0>;
-+                            endpoint {
-+                                remote-endpoint = <&usb_hs>;
-+                            };
-+                        };
-+                        port@1 {
-+                            reg = <1>;
-+                            endpoint {
-+                                remote-endpoint = <&usb_ss>;
-+                          };
-+                        };
-+                        port@2 {
-+                            reg = <2>;
-+                            endpoint {
-+                                remote-endpoint = <&dp_aux>;
-+                            };
-+                        };
-+                    };
-+                };
-+            };
-         };
-     };
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMTQuMDUuMjIgMDQ6MzEsIFlhbmcgWWluZ2xpYW5nIHdyb3RlOgo+IEZpeCB0aGUgbWlzc2lu
+ZyBjbGtfZGlzYWJsZV91bnByZXBhcmUoKSBiZWZvcmUgcmV0dXJuCj4gZnJvbSBtdGtfaTJjX3By
+b2JlKCkgaW4gdGhlIGVycm9yIGhhbmRsaW5nIGNhc2UuCj4gCj4gRml4ZXM6IGQwNDkxM2VjNWY4
+OSAoImkyYzogbXQ3NjIxOiBBZGQgTWVkaWFUZWsgTVQ3NjIxLzc2MjgvNzY4OCBJMkMgZHJpdmVy
+IikKPiBTaWduZWQtb2ZmLWJ5OiBZYW5nIFlpbmdsaWFuZyA8eWFuZ3lpbmdsaWFuZ0BodWF3ZWku
+Y29tPgoKUmV2aWV3ZWQtYnk6IFN0ZWZhbiBSb2VzZSA8c3JAZGVueC5kZT4KClRoYW5rcywKU3Rl
+ZmFuCgo+IC0tLQo+ICAgICB2MjogYWRkIHJldHVybiAwIGluIG5vcm1hbCBwYXRoLgo+IC0tLQo+
+ICAgZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDc2MjEuYyB8IDEwICsrKysrKysrLS0KPiAgIDEg
+ZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvaTJjL2J1c3Nlcy9pMmMtbXQ3NjIxLmMgYi9kcml2ZXJzL2kyYy9idXNz
+ZXMvaTJjLW10NzYyMS5jCj4gaW5kZXggNDVmZTRhN2ZlMGMwLi45MDFmMGZiMDRmZWUgMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDc2MjEuYwo+ICsrKyBiL2RyaXZlcnMv
+aTJjL2J1c3Nlcy9pMmMtbXQ3NjIxLmMKPiBAQCAtMzA0LDcgKzMwNCw4IEBAIHN0YXRpYyBpbnQg
+bXRrX2kyY19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAgCj4gICAJaWYg
+KGkyYy0+YnVzX2ZyZXEgPT0gMCkgewo+ICAgCQlkZXZfd2FybihpMmMtPmRldiwgImNsb2NrLWZy
+ZXF1ZW5jeSAwIG5vdCBzdXBwb3J0ZWRcbiIpOwo+IC0JCXJldHVybiAtRUlOVkFMOwo+ICsJCXJl
+dCA9IC1FSU5WQUw7Cj4gKwkJZ290byBlcnJfZGlzYWJsZV9jbGs7Cj4gICAJfQo+ICAgCj4gICAJ
+YWRhcCA9ICZpMmMtPmFkYXA7Cj4gQEAgLTMyMiwxMCArMzIzLDE1IEBAIHN0YXRpYyBpbnQgbXRr
+X2kyY19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAgCj4gICAJcmV0ID0g
+aTJjX2FkZF9hZGFwdGVyKGFkYXApOwo+ICAgCWlmIChyZXQgPCAwKQo+IC0JCXJldHVybiByZXQ7
+Cj4gKwkJZ290byBlcnJfZGlzYWJsZV9jbGs7Cj4gICAKPiAgIAlkZXZfaW5mbygmcGRldi0+ZGV2
+LCAiY2xvY2sgJXUga0h6XG4iLCBpMmMtPmJ1c19mcmVxIC8gMTAwMCk7Cj4gICAKPiArCXJldHVy
+biAwOwo+ICsKPiArZXJyX2Rpc2FibGVfY2xrOgo+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGky
+Yy0+Y2xrKTsKPiArCj4gICAJcmV0dXJuIHJldDsKPiAgIH0KPiAgIAoKVmllbGUgR3LDvMOfZSwK
+U3RlZmFuIFJvZXNlCgotLSAKREVOWCBTb2Z0d2FyZSBFbmdpbmVlcmluZyBHbWJILCAgICAgIE1h
+bmFnaW5nIERpcmVjdG9yOiBXb2xmZ2FuZyBEZW5rCkhSQiAxNjUyMzUgTXVuaWNoLCBPZmZpY2U6
+IEtpcmNoZW5zdHIuNSwgRC04MjE5NCBHcm9lYmVuemVsbCwgR2VybWFueQpQaG9uZTogKCs0OSkt
+ODE0Mi02Njk4OS01MSBGYXg6ICgrNDkpLTgxNDItNjY5ODktODAgRW1haWw6IHNyQGRlbnguZGUK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
+ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
