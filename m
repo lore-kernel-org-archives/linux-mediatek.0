@@ -4,55 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A543C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 09:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C601C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 09:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WRKwIhYjuMoUtBJ9rDuTOibXeIPTCUtNNygdY6N2jos=; b=AmZWqf7d8Is3E/
-	sr2NvcY+1JSDlzYnol292kSCHm5v7JPkZ3oVK49Pr7vWI4RqmjPgBlF3hXDuqFIsX5ZDrD1ux7xO8
-	5u7SPOenmRyANHpBf+o6AhZkVIIgm/dIgECEXSE5RQ1SvWkl6VhbNWkMMbT275Angpc4gGdOh6G87
-	BD3gfvOgatoz8xN0uIKqWQcdJIu7Oglpv7T+bM1lL1hIEUc7UNbddqZaCa/jVJnHV0pmOwRerxvOp
-	T/2ZUsynB5eqRMAwbfWcva9scq4ODS71HfCeYkcst1riVP9aCzws4XOwx5f1ZJMT0hjwJAb4yaMXZ
-	odAAddtDotgUucAnz1vA==;
+	List-Owner; bh=wxrs3VuQVytUW3NUc+8cZn90cUHSXVv71EVbSt8uOhk=; b=OtprVpfgzQeGtL
+	hG7ANELPdXY4eYUpfNMchw/uUzfDnwyxwlWQX0R4qJc4JpnyV0nLjXW9y3lfK1Ddq55HZFMRJdCRR
+	1BZk6kmHgy7uTOGbiiJNZezapqVG4Ilyt+AL7HzwY5EcgZHZeXPmtSqgcNGzbLhbtKuf4BTHozyi7
+	xjE5Tscz4+OoS94beb7xmxVtKKCx4F+gLFanSBWE87Ob56LFk7FWkgJ7tYE5LYr2maGXi9UJKYQkc
+	SnLzUUhzQYcMCBQ/SZV9sTqJw+eCjRQhlKC0YWfUUHkAZJeONtHaSkn1DeijvtObxOgUaA5msWpKb
+	toTEB8faXytCUq2umZqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqXFx-006vtM-EN; Mon, 16 May 2022 09:43:13 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nqXNj-006yJI-LW; Mon, 16 May 2022 09:51:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqXFH-006vcR-NW; Mon, 16 May 2022 09:42:35 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 585BB1F427B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652694148;
- bh=Hl3w008ZhbQE4PyKEsD6C+F1wr747Bq/DKIVVPzlE/4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UJK6+7768rvsbX4MwXP3nwkmK/Eu8gYbFs8Mlg4EyhP+c+/X0ObHXnOgpjT0w/I7Y
- Q4Dk5QHlvFU10YncsDh6udSDerWiYYr9xT+/kVi+VJHVy1fZFwwLM+d5x9BMoe8MVo
- WSc6wExRXkxx9LuYXErvNCpudY7TbaEcxIfq3JVJiEhfvwTEP2ld0n+GZgqPgliLZJ
- hnEoFVhARf+/rdqp4Mrrv+SLhCyVSXDvTnw26nb6GtLQcdWLD1pnueuR+I6Stl8ChZ
- YGDq9kVK7SVu6avEV97ps51lcW/G8AgW+JECmXB8bHR1AR2vUTqqO4hWHx/Vhaa10M
- IZzzy1jusFCcA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sean.wang@mediatek.com
-Cc: pavel@ucw.cz, matthias.bgg@gmail.com, linux-leds@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 1/3] leds: leds-mt6323: Specify registers and specs in
- platform data
-Date: Mon, 16 May 2022 11:42:20 +0200
-Message-Id: <20220516094222.30414-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220516094222.30414-1-angelogioacchino.delregno@collabora.com>
-References: <20220516094222.30414-1-angelogioacchino.delregno@collabora.com>
+ id 1nqXNW-006yGs-9j; Mon, 16 May 2022 09:51:06 +0000
+X-UUID: 56a8fdd12da74befb379de6fa15f8984-20220516
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:c37a8acc-a752-4c67-9405-2302d4dc7106, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:b4f82c94-563e-4fc2-8a0d-fda4821947ab,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 56a8fdd12da74befb379de6fa15f8984-20220516
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1350817678; Mon, 16 May 2022 02:50:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 May 2022 02:50:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Mon, 16 May 2022 17:50:40 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 16 May 2022 17:50:40 +0800
+Message-ID: <4b5d6607b90f3e36fce7e61e1768da55693546aa.camel@mediatek.com>
+Subject: Re: [PATCH] soc: mediatek: mtk-mmsys: Add support for MT6795 Helio X10
+From: CK Hu <ck.hu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <matthias.bgg@gmail.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <konrad.dybcio@somainline.org>, <marijn.suijten@somainline.org>,
+ <martin.botka@somainline.org>, <~postmarketos/upstreaming@lists.sr.ht>,
+ <phone-devel@vger.kernel.org>, <paul.bouchara@somainline.org>,
+ <kernel@collabora.com>
+Date: Mon, 16 May 2022 17:50:39 +0800
+In-Reply-To: <a7afc559-4e0a-6552-190c-19e58851ce68@collabora.com>
+References: <20220513170350.502501-1-angelogioacchino.delregno@collabora.com>
+ <7c996c665a57fdd9ba8d6df4dc085f70afc1b933.camel@mediatek.com>
+ <a7afc559-4e0a-6552-190c-19e58851ce68@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_024232_101626_674FDA33 
-X-CRM114-Status: GOOD (  23.96  )
+X-CRM114-CacheID: sfid-20220516_025102_394455_96F2B43C 
+X-CRM114-Status: GOOD (  33.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,395 +87,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to enhance the flexibility of this driver and let it support
-more than just one MediaTek LEDs IP for more than just one PMIC,
-add platform data structure specifying the register offsets and
-data that commonly varies between different IPs.
+On Mon, 2022-05-16 at 10:44 +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/05/22 07:43, CK Hu ha scritto:
+> > Hi, Angelo:
+> > 
+> > On Fri, 2022-05-13 at 19:03 +0200, AngeloGioacchino Del Regno
+> > wrote:
+> > > Add MM support for the MT6795 SoC, using the mmsys default
+> > > routing
+> > > table.
+> > > 
+> > > Signed-off-by: AngeloGioacchino Del Regno <
+> > > angelogioacchino.delregno@collabora.com>
+> > > ---
+> > > 
+> > > In order for this patch to have any meaning and functionality, it
+> > > is
+> > > required to also have in-tree the [1] MT6795 clocks series, even
+> > > though that's not required to actually compile this code.
+> > > 
+> > > [1]
+> > > 
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/list/?series=641493__;!!CTRNKA9wMg0ARbw!ywDb_Gj4oV0iYHK_PbtJSNejzsJGlFVjX-1O0G1mR0vZX_5VeMtlZJ_AS6K_Mg$
+> > >   
+> > > 
+> > >   drivers/soc/mediatek/mtk-mmsys.c | 11 +++++++++++
+> > >   1 file changed, 11 insertions(+)
+> > > 
+> > > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > > b/drivers/soc/mediatek/mtk-mmsys.c
+> > > index 06d8e83a2cb5..38b36b881a3b 100644
+> > > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > > @@ -57,6 +57,13 @@ static const struct mtk_mmsys_match_data
+> > > mt6779_mmsys_match_data = {
+> > >   	},
+> > >   };
+> > >   
+> > > +static const struct mtk_mmsys_driver_data
+> > > mt6795_mmsys_driver_data =
+> > > {
+> > > +	.clk_driver = "clk-mt6795-mm",
+> > > +	.routes = mmsys_default_routing_table,
+> > 
+> > mt6795 should have its own routing table instead of default one.
+> > The
+> > default one is used for mt8173, mt2701, mt2712 which no one knows
+> > how
+> > to separate them. If you don't know the routing table of mt6795,
+> > just
+> > left this as NULL.
+> > 
+> 
+> Hello CK,
+> 
+> I agree with you, in fact the first test that I've done was with
+> leaving
+> routes to NULL, but that did not work (I couldn't get the display to
+> work),
+> while assigning the default routing table resulted in having a
+> working
+> internal (DSI) display et al, which is why I have done that.
+> 
+> I am sure that this may be a quirk that is required due to my
+> platform's
+> bootloader, but still, it won't work otherwise.
+> 
+> If anyone from MediaTek wants to help with providing a better
+> solution for
+> that, you're welcome to - but otherwise, my proposal is to configure
+> MT6795
+> with that default routing table and eventually come back to this
+> later if
+> any issue with this gets discovered... I couldn't find any, though.
 
-This commit brings no functional changes.
+So you have a drm driver which support mt6795 and it would call
+mtk_mmsys_ddp_connect() to setup routing routing register. You could
+generate mt6795 routing table from default one by partial element that
+you use in mt6795. I think this table would be smaller than the default
+one.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/leds/leds-mt6323.c | 145 ++++++++++++++++++++++++++++---------
- 1 file changed, 112 insertions(+), 33 deletions(-)
+Regards,
+CK
 
-diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
-index f59e0e8bda8b..a7d1ed370969 100644
---- a/drivers/leds/leds-mt6323.c
-+++ b/drivers/leds/leds-mt6323.c
-@@ -37,18 +37,16 @@
-  * Register for MT6323_ISINK_CON0 to setup the
-  * duty cycle of the blink.
-  */
--#define MT6323_ISINK_CON0(i)		(MT6323_ISINK0_CON0 + 0x8 * (i))
-+#define MT6323_ISINK_CON(r, i)		(r + 0x8 * (i))
- #define MT6323_ISINK_DIM_DUTY_MASK	(0x1f << 8)
- #define MT6323_ISINK_DIM_DUTY(i)	(((i) << 8) & \
- 					MT6323_ISINK_DIM_DUTY_MASK)
- 
--/* Register to setup the period of the blink. */
--#define MT6323_ISINK_CON1(i)		(MT6323_ISINK0_CON1 + 0x8 * (i))
-+/* ISINK_CON1: Register to setup the period of the blink. */
- #define MT6323_ISINK_DIM_FSEL_MASK	(0xffff)
- #define MT6323_ISINK_DIM_FSEL(i)	((i) & MT6323_ISINK_DIM_FSEL_MASK)
- 
--/* Register to control the brightness. */
--#define MT6323_ISINK_CON2(i)		(MT6323_ISINK0_CON2 + 0x8 * (i))
-+/* ISINK_CON2: Register to control the brightness. */
- #define MT6323_ISINK_CH_STEP_SHIFT	12
- #define MT6323_ISINK_CH_STEP_MASK	(0x7 << 12)
- #define MT6323_ISINK_CH_STEP(i)		(((i) << 12) & \
-@@ -63,12 +61,9 @@
- #define MT6323_ISINK_CH_EN_MASK(i)	BIT(i)
- #define MT6323_ISINK_CH_EN(i)		BIT(i)
- 
--#define MT6323_MAX_PERIOD		10000
--#define MT6323_MAX_LEDS			4
--#define MT6323_MAX_BRIGHTNESS		6
--#define MT6323_UNIT_DUTY		3125
--#define MT6323_CAL_HW_DUTY(o, p)	DIV_ROUND_CLOSEST((o) * 100000ul,\
--					(p) * MT6323_UNIT_DUTY)
-+#define MAX_SUPPORTED_LEDS		8
-+#define MT6323_CAL_HW_DUTY(o, p, u)	DIV_ROUND_CLOSEST((o) * 100000ul,\
-+					(p) * (u))
- 
- struct mt6323_leds;
- 
-@@ -86,12 +81,59 @@ struct mt6323_led {
- 	enum led_brightness	current_brightness;
- };
- 
-+/**
-+ * struct mt6323_regs - register spec for the LED device
-+ * @top_ckpdn:		Offset to ISINK_CKPDN[0..x] registers
-+ * @num_top_ckpdn:	Number of ISINK_CKPDN registers
-+ * @top_ckcon:		Offset to ISINK_CKCON[0..x] registers
-+ * @num_top_ckcon:	Number of ISINK_CKCON registers
-+ * @isink_con:		Offset to ISINKx_CON[0..x] registers
-+ * @num_isink_con:	Number of ISINKx_CON registers
-+ * @isink_max_regs:	Number of ISINK[0..x] registers
-+ * @isink_en_ctrl:	Offset to ISINK_EN_CTRL register
-+ */
-+struct mt6323_regs {
-+	const u16 *top_ckpdn;
-+	u8 num_top_ckpdn;
-+	const u16 *top_ckcon;
-+	u8 num_top_ckcon;
-+	const u16 *isink_con;
-+	u8 num_isink_con;
-+	u8 isink_max_regs;
-+	u16 isink_en_ctrl;
-+};
-+
-+/**
-+ * struct mt6323_hwspec - hardware specific parameters
-+ * @max_period:		Maximum period for all LEDs
-+ * @max_leds:		Maximum number of supported LEDs
-+ * @max_brightness:	Maximum brightness for all LEDs
-+ * @unit_duty:		Steps of duty per period
-+ */
-+struct mt6323_hwspec {
-+	u16 max_period;
-+	u8 max_leds;
-+	u16 max_brightness;
-+	u16 unit_duty;
-+};
-+
-+/**
-+ * struct mt6323_data - device specific data
-+ * @regs:		Register spec for this device
-+ * @spec:		Hardware specific parameters
-+ */
-+struct mt6323_data {
-+	const struct mt6323_regs *regs;
-+	const struct mt6323_hwspec *spec;
-+};
-+
- /**
-  * struct mt6323_leds -	state container for holding LED controller
-  *			of the driver
-  * @dev:		the device pointer
-  * @hw:			the underlying hardware providing shared
-  *			bus for the register operations
-+ * @pdata:		device specific data
-  * @lock:		the lock among process context
-  * @led:		the array that contains the state of individual
-  *			LED device
-@@ -99,9 +141,10 @@ struct mt6323_led {
- struct mt6323_leds {
- 	struct device		*dev;
- 	struct mt6397_chip	*hw;
-+	const struct mt6323_data *pdata;
- 	/* protect among process context */
- 	struct mutex		lock;
--	struct mt6323_led	*led[MT6323_MAX_LEDS];
-+	struct mt6323_led	*led[MAX_SUPPORTED_LEDS];
- };
- 
- static int mt6323_led_hw_brightness(struct led_classdev *cdev,
-@@ -109,6 +152,7 @@ static int mt6323_led_hw_brightness(struct led_classdev *cdev,
- {
- 	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
- 	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
- 	struct regmap *regmap = leds->hw->regmap;
- 	u32 con2_mask = 0, con2_val = 0;
- 	int ret;
-@@ -124,7 +168,7 @@ static int mt6323_led_hw_brightness(struct led_classdev *cdev,
- 		     MT6323_ISINK_SFSTR0_TC(2) |
- 		     MT6323_ISINK_SFSTR0_EN;
- 
--	ret = regmap_update_bits(regmap, MT6323_ISINK_CON2(led->id),
-+	ret = regmap_update_bits(regmap, MT6323_ISINK_CON(regs->isink_con[2], led->id),
- 				 con2_mask, con2_val);
- 	return ret;
- }
-@@ -133,18 +177,19 @@ static int mt6323_led_hw_off(struct led_classdev *cdev)
- {
- 	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
- 	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
- 	struct regmap *regmap = leds->hw->regmap;
- 	unsigned int status;
- 	int ret;
- 
- 	status = MT6323_ISINK_CH_EN(led->id);
--	ret = regmap_update_bits(regmap, MT6323_ISINK_EN_CTRL,
-+	ret = regmap_update_bits(regmap, regs->isink_en_ctrl,
- 				 MT6323_ISINK_CH_EN_MASK(led->id), ~status);
- 	if (ret < 0)
- 		return ret;
- 
- 	usleep_range(100, 300);
--	ret = regmap_update_bits(regmap, MT6323_TOP_CKPDN2,
-+	ret = regmap_update_bits(regmap, regs->top_ckpdn[2],
- 				 MT6323_RG_ISINK_CK_PDN_MASK(led->id),
- 				 MT6323_RG_ISINK_CK_PDN(led->id));
- 	if (ret < 0)
-@@ -158,25 +203,26 @@ mt6323_get_led_hw_brightness(struct led_classdev *cdev)
- {
- 	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
- 	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
- 	struct regmap *regmap = leds->hw->regmap;
- 	unsigned int status;
- 	int ret;
- 
--	ret = regmap_read(regmap, MT6323_TOP_CKPDN2, &status);
-+	ret = regmap_read(regmap, regs->top_ckpdn[2], &status);
- 	if (ret < 0)
- 		return ret;
- 
- 	if (status & MT6323_RG_ISINK_CK_PDN_MASK(led->id))
- 		return 0;
- 
--	ret = regmap_read(regmap, MT6323_ISINK_EN_CTRL, &status);
-+	ret = regmap_read(regmap, regs->isink_en_ctrl, &status);
- 	if (ret < 0)
- 		return ret;
- 
- 	if (!(status & MT6323_ISINK_CH_EN(led->id)))
- 		return 0;
- 
--	ret = regmap_read(regmap, MT6323_ISINK_CON2(led->id), &status);
-+	ret = regmap_read(regmap, MT6323_ISINK_CON(regs->isink_con[2], led->id), &status);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -189,6 +235,7 @@ static int mt6323_led_hw_on(struct led_classdev *cdev,
- {
- 	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
- 	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
- 	struct regmap *regmap = leds->hw->regmap;
- 	unsigned int status;
- 	int ret;
-@@ -198,13 +245,13 @@ static int mt6323_led_hw_on(struct led_classdev *cdev,
- 	 * clock and channel and let work with continuous blink as
- 	 * the default.
- 	 */
--	ret = regmap_update_bits(regmap, MT6323_TOP_CKCON1,
-+	ret = regmap_update_bits(regmap, regs->top_ckcon[1],
- 				 MT6323_RG_ISINK_CK_SEL_MASK(led->id), 0);
- 	if (ret < 0)
- 		return ret;
- 
- 	status = MT6323_RG_ISINK_CK_PDN(led->id);
--	ret = regmap_update_bits(regmap, MT6323_TOP_CKPDN2,
-+	ret = regmap_update_bits(regmap, regs->top_ckpdn[2],
- 				 MT6323_RG_ISINK_CK_PDN_MASK(led->id),
- 				 ~status);
- 	if (ret < 0)
-@@ -212,7 +259,7 @@ static int mt6323_led_hw_on(struct led_classdev *cdev,
- 
- 	usleep_range(100, 300);
- 
--	ret = regmap_update_bits(regmap, MT6323_ISINK_EN_CTRL,
-+	ret = regmap_update_bits(regmap, regs->isink_en_ctrl,
- 				 MT6323_ISINK_CH_EN_MASK(led->id),
- 				 MT6323_ISINK_CH_EN(led->id));
- 	if (ret < 0)
-@@ -222,13 +269,13 @@ static int mt6323_led_hw_on(struct led_classdev *cdev,
- 	if (ret < 0)
- 		return ret;
- 
--	ret = regmap_update_bits(regmap, MT6323_ISINK_CON0(led->id),
-+	ret = regmap_update_bits(regmap, MT6323_ISINK_CON(regs->isink_con[0], led->id),
- 				 MT6323_ISINK_DIM_DUTY_MASK,
- 				 MT6323_ISINK_DIM_DUTY(31));
- 	if (ret < 0)
- 		return ret;
- 
--	ret = regmap_update_bits(regmap, MT6323_ISINK_CON1(led->id),
-+	ret = regmap_update_bits(regmap, MT6323_ISINK_CON(regs->isink_con[1], led->id),
- 				 MT6323_ISINK_DIM_FSEL_MASK,
- 				 MT6323_ISINK_DIM_FSEL(1000));
- 	if (ret < 0)
-@@ -243,6 +290,8 @@ static int mt6323_led_set_blink(struct led_classdev *cdev,
- {
- 	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
- 	struct mt6323_leds *leds = led->parent;
-+	const struct mt6323_regs *regs = leds->pdata->regs;
-+	const struct mt6323_hwspec *spec = leds->pdata->spec;
- 	struct regmap *regmap = leds->hw->regmap;
- 	unsigned long period;
- 	u8 duty_hw;
-@@ -265,14 +314,14 @@ static int mt6323_led_set_blink(struct led_classdev *cdev,
- 	 */
- 	period = *delay_on + *delay_off;
- 
--	if (period > MT6323_MAX_PERIOD)
-+	if (period > spec->max_period)
- 		return -EINVAL;
- 
- 	/*
- 	 * Calculate duty_hw based on the percentage of period during
- 	 * which the led is ON.
- 	 */
--	duty_hw = MT6323_CAL_HW_DUTY(*delay_on, period);
-+	duty_hw = MT6323_CAL_HW_DUTY(*delay_on, period, spec->unit_duty);
- 
- 	/* hardware doesn't support zero duty cycle. */
- 	if (!duty_hw)
-@@ -290,13 +339,13 @@ static int mt6323_led_set_blink(struct led_classdev *cdev,
- 		led->current_brightness = cdev->max_brightness;
- 	}
- 
--	ret = regmap_update_bits(regmap, MT6323_ISINK_CON0(led->id),
-+	ret = regmap_update_bits(regmap, MT6323_ISINK_CON(regs->isink_con[0], led->id),
- 				 MT6323_ISINK_DIM_DUTY_MASK,
- 				 MT6323_ISINK_DIM_DUTY(duty_hw - 1));
- 	if (ret < 0)
- 		goto out;
- 
--	ret = regmap_update_bits(regmap, MT6323_ISINK_CON1(led->id),
-+	ret = regmap_update_bits(regmap, MT6323_ISINK_CON(regs->isink_con[1], led->id),
- 				 MT6323_ISINK_DIM_FSEL_MASK,
- 				 MT6323_ISINK_DIM_FSEL(period - 1));
- out:
-@@ -369,6 +418,8 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 	struct mt6397_chip *hw = dev_get_drvdata(dev->parent);
- 	struct mt6323_leds *leds;
- 	struct mt6323_led *led;
-+	const struct mt6323_regs *regs;
-+	const struct mt6323_hwspec *spec;
- 	int ret;
- 	unsigned int status;
- 	u32 reg;
-@@ -379,6 +430,9 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, leds);
- 	leds->dev = dev;
-+	leds->pdata = device_get_match_data(dev);
-+	regs = leds->pdata->regs;
-+	spec = leds->pdata->spec;
- 
- 	/*
- 	 * leds->hw points to the underlying bus for the register
-@@ -388,11 +442,11 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 	mutex_init(&leds->lock);
- 
- 	status = MT6323_RG_DRV_32K_CK_PDN;
--	ret = regmap_update_bits(leds->hw->regmap, MT6323_TOP_CKPDN0,
-+	ret = regmap_update_bits(leds->hw->regmap, regs->top_ckpdn[0],
- 				 MT6323_RG_DRV_32K_CK_PDN_MASK, ~status);
- 	if (ret < 0) {
- 		dev_err(leds->dev,
--			"Failed to update MT6323_TOP_CKPDN0 Register\n");
-+			"Failed to update TOP_CKPDN0 Register\n");
- 		return ret;
- 	}
- 
-@@ -405,7 +459,8 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 			goto put_child_node;
- 		}
- 
--		if (reg >= MT6323_MAX_LEDS || leds->led[reg]) {
-+		if (reg >= spec->max_leds || reg >= MAX_SUPPORTED_LEDS ||
-+		    leds->led[reg]) {
- 			dev_err(dev, "Invalid led reg %u\n", reg);
- 			ret = -EINVAL;
- 			goto put_child_node;
-@@ -419,7 +474,7 @@ static int mt6323_led_probe(struct platform_device *pdev)
- 
- 		leds->led[reg] = led;
- 		leds->led[reg]->id = reg;
--		leds->led[reg]->cdev.max_brightness = MT6323_MAX_BRIGHTNESS;
-+		leds->led[reg]->cdev.max_brightness = spec->max_brightness;
- 		leds->led[reg]->cdev.brightness_set_blocking =
- 					mt6323_led_set_brightness;
- 		leds->led[reg]->cdev.blink_set = mt6323_led_set_blink;
-@@ -454,13 +509,14 @@ static int mt6323_led_probe(struct platform_device *pdev)
- static int mt6323_led_remove(struct platform_device *pdev)
- {
- 	struct mt6323_leds *leds = platform_get_drvdata(pdev);
-+	const struct mt6323_regs *regs = leds->pdata->regs;
- 	int i;
- 
- 	/* Turn the LEDs off on driver removal. */
- 	for (i = 0 ; leds->led[i] ; i++)
- 		mt6323_led_hw_off(&leds->led[i]->cdev);
- 
--	regmap_update_bits(leds->hw->regmap, MT6323_TOP_CKPDN0,
-+	regmap_update_bits(leds->hw->regmap, regs->top_ckpdn[0],
- 			   MT6323_RG_DRV_32K_CK_PDN_MASK,
- 			   MT6323_RG_DRV_32K_CK_PDN);
- 
-@@ -469,8 +525,31 @@ static int mt6323_led_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static const struct mt6323_regs mt6323_registers = {
-+	.top_ckpdn = (const u16[]){ 0x102, 0x106, 0x10e },
-+	.num_top_ckpdn = 3,
-+	.top_ckcon = (const u16[]){ 0x120, 0x126 },
-+	.num_top_ckcon = 2,
-+	.isink_con = (const u16[]){ 0x330, 0x332, 0x334 },
-+	.num_isink_con = 3,
-+	.isink_max_regs = 4, /* ISINK[0..3] */
-+	.isink_en_ctrl = 0x356,
-+};
-+
-+static const struct mt6323_hwspec mt6323_spec = {
-+	.max_period = 10000,
-+	.max_leds = 4,
-+	.max_brightness = 6,
-+	.unit_duty = 3125,
-+};
-+
-+static const struct mt6323_data mt6323_pdata = {
-+	.regs = &mt6323_registers,
-+	.spec = &mt6323_spec,
-+};
-+
- static const struct of_device_id mt6323_led_dt_match[] = {
--	{ .compatible = "mediatek,mt6323-led" },
-+	{ .compatible = "mediatek,mt6323-led", .data = &mt6323_pdata},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mt6323_led_dt_match);
--- 
-2.35.1
+> 
+> Cheers,
+> Angelo
+> 
 
 
 _______________________________________________
