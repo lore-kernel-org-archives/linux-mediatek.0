@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508ECC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 00:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219D9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 00:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KxqFvpEkalB9exd1JDKHoY7HHuG7MrX+jcIGjZ0eef0=; b=oDLrLXVLpz4I0C
-	ZUFj5knHtfpZGs30VzYxwrwrMzHmjCT/xDZSjq6CkapHYHrES+luEQYa1a3C7efSBbQcz3hkJyXQG
-	rt72ziKffkW0HPeY0cz1uXRlcozExT5Ps8UJlAyd/NGpzXNjO8PB/B17s3CIhddVpqpSWeQN/v5Km
-	rWyfs+NIqCzjr4+DGGnhy90J/sN7ASrh+B3oQgJwOPkLZyPPd81pRFyeCULFY1f17JuHb4CqhyNP9
-	u14+OHYGHsgsbhlt6Jp8u6JQXCdSstzF9zvIPyxYuZbPXokaSash/Azo6IojERdHMmd38+Zi0UKuB
-	0guiaqbOkjAMiaHxXPXQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=haU8EfG7puwewqtygf/2h9LwodLhh5Zif4NOQS9uFmM=; b=CNyU64IV00IAMC
+	PkGPkMmgalOgz8c43QQWpbmMc4EeL56xUVCqRt4m963TwoG0hIsWmHERep+f7IemSqXQc/Et6yNMZ
+	0Ow2US8FjEoecp0RSB6Yo79ySQI8YhG4aHb9Yevst6fPvdB/o1vsj6vcdx1iu+eImJ/WoB6GkeA5S
+	rKkew8rZbH6EH4pv/U2H54L/n2xcGX9dMWgblLK6l/LGvH+2RPY6W2HQkbV+6PXW2+6oQz2lk94/S
+	0FaZ+u0Rzv/y6tqlwPa2oomgXPQeMDHOeWd3KOSIJBw1yLLc3V+pqzlrwLU2WbJV2YbUhT/QuIX/3
+	TrRIJ6ZlJNl1KC57Hjcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqOpj-005OiF-SV; Mon, 16 May 2022 00:43:35 +0000
+	id 1nqOpt-005Omg-Jz; Mon, 16 May 2022 00:43:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqOpY-005OfL-2I; Mon, 16 May 2022 00:43:26 +0000
-X-UUID: 66f03e57f1a74025a8f037d4bd76b494-20220515
+ id 1nqOpb-005Ofw-2g; Mon, 16 May 2022 00:43:28 +0000
+X-UUID: b115246107b24e6fb49298b71fee8806-20220515
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:75e7c5b2-4263-488e-b3f1-1c4284846b81, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:8d2931f5-30bb-4d06-a9ad-85f8b9df1b66, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:0c7c4ff2-ab23-4aed-a67b-f96514452486,
+ B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:652465a7-eab7-4b74-a74d-5359964535a9,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
  ,QS:0,BEC:nil
-X-UUID: 66f03e57f1a74025a8f037d4bd76b494-20220515
+X-UUID: b115246107b24e6fb49298b71fee8806-20220515
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 216658360; Sun, 15 May 2022 17:43:16 -0700
+ with ESMTP id 1542669177; Sun, 15 May 2022 17:43:22 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 15 May 2022 17:43:13 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 15 May 2022 17:43:20 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 May 2022 08:43:12 +0800
+ 15.0.1497.2; Mon, 16 May 2022 08:43:18 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 16 May 2022 08:43:11 +0800
+ Frontend Transport; Mon, 16 May 2022 08:43:18 +0800
 From: Roger Lu <roger.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
  <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
@@ -61,15 +61,18 @@ CC: Fan Chen <fan.chen@mediatek.com>, Charles Yang
  <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
  <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>
-Subject: [PATCH v25 0/7] soc: mediatek: SVS: introduce MTK SVS
-Date: Mon, 16 May 2022 08:43:04 +0800
-Message-ID: <20220516004311.18358-1-roger.lu@mediatek.com>
+Subject: [PATCH v25 2/7] arm64: dts: mt8183: add svs device information
+Date: Mon, 16 May 2022 08:43:06 +0800
+Message-ID: <20220516004311.18358-3-roger.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220516004311.18358-1-roger.lu@mediatek.com>
+References: <20220516004311.18358-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220515_174324_159221_09AA3154 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20220515_174327_187342_0E82CC5B 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,134 +89,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Smart Voltage Scaling(SVS) engine is a piece of hardware
-which calculates suitable SVS bank voltages to OPP voltage table.
-Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
-when receiving OPP_EVENT_ADJUST_VOLTAGE.
+Add compatible/reg/irq/clock/efuse setting in svs node.
 
-1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
-2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
-After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Kevin Hilman <khilman@baylibre.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
-
-Change since v24:
-- Rebase to Linux 5.18-rc6
-- Show specific fail log in svs_platform_probe() to help catch which step fails quickly
-- Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
-
-Test in below environment:
-SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
-HW: mt8183-Krane
-
-[4] https://github.com/wens/linux/commits/mt8183-cpufreq-cci-svs-test
-[5] https://patchwork.kernel.org/project/linux-pm/patch/20210820095206.30981-1-ben.tseng@mediatek.com
-
-Boots up log:
-[    4.447369]  SVSB_CPU_LITTLE: svs_init01_isr_handler: VDN74~30:0x141e262e~0x33373c42, DC:0x02f3010b
-[    4.447623]  SVSB_CPU_BIG: svs_init01_isr_handler: VDN74~30:0x151f2830~0x363a4046, DC:0x02f90141
-[    4.447872]  SVSB_CCI: svs_init01_isr_handler: VDN74~30:0x141a232b~0x30363d42, DC:0x02ed00d5
-[    4.448119]  SVSB_GPU: svs_init01_isr_handler: VDN74~30:0x1416171a~0x1d202327, DC:0x02f7012f
-[    4.448239]  SVSB_CPU_LITTLE: svs_init02_isr_handler: VOP74~30:0x1b252d35~0x3a3e4349, DC:0x02f30000
-[    4.448343]  SVSB_CPU_BIG: svs_init02_isr_handler: VOP74~30:0x1c262f37~0x3d41474d, DC:0x02f90000
-[    4.448400]  SVSB_CCI: svs_init02_isr_handler: VOP74~30:0x1b212a32~0x373d4449, DC:0x02ed0000
-[    4.448499]  SVSB_GPU: svs_init02_isr_handler: VOP74~30:0x1618191c~0x1f222529, DC:0x02f70000
-
-SVS commands log:
-localhost ~ # cat /sys/kernel/debug/svs/*/*
-init2
-SVSB_CCI: temperature ignore, turn_pt = 0
-opp_freq[00]: 1196000000, opp_volt[00]: 968750, svsb_volt[00]: 0x4b, freq_pct[00]: 100
-opp_freq[01]: 1144000000, opp_volt[01]: 956250, svsb_volt[01]: 0x49, freq_pct[01]: 96
-opp_freq[02]: 1092000000, opp_volt[02]: 937500, svsb_volt[02]: 0x46, freq_pct[02]: 92
-opp_freq[03]: 1027000000, opp_volt[03]: 918750, svsb_volt[03]: 0x43, freq_pct[03]: 86
-opp_freq[04]: 962000000, opp_volt[04]: 893750, svsb_volt[04]: 0x3f, freq_pct[04]: 81
-opp_freq[05]: 923000000, opp_volt[05]: 881250, svsb_volt[05]: 0x3d, freq_pct[05]: 78
-opp_freq[06]: 871000000, opp_volt[06]: 856250, svsb_volt[06]: 0x39, freq_pct[06]: 73
-opp_freq[07]: 845000000, opp_volt[07]: 850000, svsb_volt[07]: 0x38, freq_pct[07]: 71
-opp_freq[08]: 767000000, opp_volt[08]: 825000, svsb_volt[08]: 0x34, freq_pct[08]: 65
-opp_freq[09]: 689000000, opp_volt[09]: 800000, svsb_volt[09]: 0x30, freq_pct[09]: 58
-opp_freq[10]: 624000000, opp_volt[10]: 775000, svsb_volt[10]: 0x2c, freq_pct[10]: 53
-opp_freq[11]: 546000000, opp_volt[11]: 750000, svsb_volt[11]: 0x28, freq_pct[11]: 46
-opp_freq[12]: 463000000, opp_volt[12]: 718750, svsb_volt[12]: 0x23, freq_pct[12]: 39
-opp_freq[13]: 403000000, opp_volt[13]: 700000, svsb_volt[13]: 0x20, freq_pct[13]: 34
-opp_freq[14]: 338000000, opp_volt[14]: 681250, svsb_volt[14]: 0x1d, freq_pct[14]: 29
-opp_freq[15]: 273000000, opp_volt[15]: 650000, svsb_volt[15]: 0x1a, freq_pct[15]: 23
-init2
-SVSB_CPU_BIG: temperature ignore, turn_pt = 0
-opp_freq[00]: 1989000000, opp_volt[00]: 1050000, svsb_volt[00]: 0x59, freq_pct[00]: 100
-opp_freq[01]: 1924000000, opp_volt[01]: 1025000, svsb_volt[01]: 0x57, freq_pct[01]: 97
-opp_freq[02]: 1846000000, opp_volt[02]: 1000000, svsb_volt[02]: 0x53, freq_pct[02]: 93
-opp_freq[03]: 1781000000, opp_volt[03]: 975000, svsb_volt[03]: 0x50, freq_pct[03]: 90
-opp_freq[04]: 1716000000, opp_volt[04]: 950000, svsb_volt[04]: 0x4d, freq_pct[04]: 87
-opp_freq[05]: 1677000000, opp_volt[05]: 931250, svsb_volt[05]: 0x4c, freq_pct[05]: 85
-opp_freq[06]: 1625000000, opp_volt[06]: 912500, svsb_volt[06]: 0x49, freq_pct[06]: 82
-opp_freq[07]: 1586000000, opp_volt[07]: 900000, svsb_volt[07]: 0x47, freq_pct[07]: 80
-opp_freq[08]: 1508000000, opp_volt[08]: 875000, svsb_volt[08]: 0x43, freq_pct[08]: 76
-opp_freq[09]: 1417000000, opp_volt[09]: 850000, svsb_volt[09]: 0x40, freq_pct[09]: 72
-opp_freq[10]: 1326000000, opp_volt[10]: 825000, svsb_volt[10]: 0x3b, freq_pct[10]: 67
-opp_freq[11]: 1248000000, opp_volt[11]: 800000, svsb_volt[11]: 0x38, freq_pct[11]: 63
-opp_freq[12]: 1131000000, opp_volt[12]: 775000, svsb_volt[12]: 0x32, freq_pct[12]: 57
-opp_freq[13]: 1014000000, opp_volt[13]: 750000, svsb_volt[13]: 0x2d, freq_pct[13]: 51
-opp_freq[14]: 910000000, opp_volt[14]: 725000, svsb_volt[14]: 0x28, freq_pct[14]: 46
-opp_freq[15]: 793000000, opp_volt[15]: 700000, svsb_volt[15]: 0x23, freq_pct[15]: 40
-init2
-SVSB_CPU_LITTLE: temperature ignore, turn_pt = 0
-opp_freq[00]: 1989000000, opp_volt[00]: 968750, svsb_volt[00]: 0x4b, freq_pct[00]: 100
-opp_freq[01]: 1924000000, opp_volt[01]: 956250, svsb_volt[01]: 0x49, freq_pct[01]: 97
-opp_freq[02]: 1846000000, opp_volt[02]: 931250, svsb_volt[02]: 0x45, freq_pct[02]: 93
-opp_freq[03]: 1781000000, opp_volt[03]: 918750, svsb_volt[03]: 0x43, freq_pct[03]: 90
-opp_freq[04]: 1716000000, opp_volt[04]: 900000, svsb_volt[04]: 0x40, freq_pct[04]: 87
-opp_freq[05]: 1677000000, opp_volt[05]: 893750, svsb_volt[05]: 0x3f, freq_pct[05]: 85
-opp_freq[06]: 1625000000, opp_volt[06]: 875000, svsb_volt[06]: 0x3c, freq_pct[06]: 82
-opp_freq[07]: 1586000000, opp_volt[07]: 868750, svsb_volt[07]: 0x3b, freq_pct[07]: 80
-opp_freq[08]: 1508000000, opp_volt[08]: 843750, svsb_volt[08]: 0x37, freq_pct[08]: 76
-opp_freq[09]: 1417000000, opp_volt[09]: 825000, svsb_volt[09]: 0x34, freq_pct[09]: 72
-opp_freq[10]: 1326000000, opp_volt[10]: 793750, svsb_volt[10]: 0x2f, freq_pct[10]: 67
-opp_freq[11]: 1248000000, opp_volt[11]: 775000, svsb_volt[11]: 0x2c, freq_pct[11]: 63
-opp_freq[12]: 1131000000, opp_volt[12]: 743750, svsb_volt[12]: 0x27, freq_pct[12]: 57
-opp_freq[13]: 1014000000, opp_volt[13]: 712500, svsb_volt[13]: 0x22, freq_pct[13]: 51
-opp_freq[14]: 910000000, opp_volt[14]: 681250, svsb_volt[14]: 0x1d, freq_pct[14]: 46
-opp_freq[15]: 793000000, opp_volt[15]: 650000, svsb_volt[15]: 0x18, freq_pct[15]: 40
-mon mode
-SVSB_GPU: temperature = 33492, turn_pt = 0
-opp_freq[00]: 800000000, opp_volt[00]: 743750, svsb_volt[00]: 0x27, freq_pct[00]: 100
-opp_freq[01]: 743000000, opp_volt[01]: 731250, svsb_volt[01]: 0x25, freq_pct[01]: 93
-opp_freq[02]: 698000000, opp_volt[02]: 718750, svsb_volt[02]: 0x23, freq_pct[02]: 88
-opp_freq[03]: 653000000, opp_volt[03]: 712500, svsb_volt[03]: 0x22, freq_pct[03]: 82
-opp_freq[04]: 620000000, opp_volt[04]: 700000, svsb_volt[04]: 0x20, freq_pct[04]: 78
-opp_freq[05]: 580000000, opp_volt[05]: 693750, svsb_volt[05]: 0x1f, freq_pct[05]: 73
-opp_freq[06]: 540000000, opp_volt[06]: 681250, svsb_volt[06]: 0x1d, freq_pct[06]: 68
-opp_freq[07]: 500000000, opp_volt[07]: 675000, svsb_volt[07]: 0x1c, freq_pct[07]: 63
-opp_freq[08]: 460000000, opp_volt[08]: 662500, svsb_volt[08]: 0x1a, freq_pct[08]: 58
-opp_freq[09]: 420000000, opp_volt[09]: 656250, svsb_volt[09]: 0x19, freq_pct[09]: 53
-opp_freq[10]: 400000000, opp_volt[10]: 643750, svsb_volt[10]: 0x17, freq_pct[10]: 50
-opp_freq[11]: 380000000, opp_volt[11]: 643750, svsb_volt[11]: 0x17, freq_pct[11]: 48
-opp_freq[12]: 360000000, opp_volt[12]: 637500, svsb_volt[12]: 0x16, freq_pct[12]: 45
-opp_freq[13]: 340000000, opp_volt[13]: 637500, svsb_volt[13]: 0x16, freq_pct[13]: 43
-opp_freq[14]: 320000000, opp_volt[14]: 625000, svsb_volt[14]: 0x14, freq_pct[14]: 40
-opp_freq[15]: 300000000, opp_volt[15]: 625000, svsb_volt[15]: 0x14, freq_pct[15]: 38
-
-Roger Lu (7):
-  [v25,1/7] dt-bindings: soc: mediatek: add mtk svs dt-bindings
-  [v25,2/7] arm64: dts: mt8183: add svs device information
-  [v25,3/7] soc: mediatek: SVS: introduce MTK SVS engine
-  [v25,4/7] soc: mediatek: SVS: add monitor mode
-  [v25,5/7] soc: mediatek: SVS: add debug commands
-  [v25,6/7] dt-bindings: soc: mediatek: add mt8192 svs dt-bindings
-  [v25,7/7] soc: mediatek: SVS: add mt8192 SVS GPU driver
-
- .../bindings/soc/mediatek/mtk-svs.yaml        |   91 +
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   16 +
- drivers/soc/mediatek/Kconfig                  |   10 +
- drivers/soc/mediatek/Makefile                 |    1 +
- drivers/soc/mediatek/mtk-svs.c                | 2399 +++++++++++++++++
- 5 files changed, 2517 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
- create mode 100644 drivers/soc/mediatek/mtk-svs.c
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 4b08691ed39e..e8901cbbdf38 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -807,6 +807,18 @@
+ 			status = "disabled";
+ 		};
+ 
++		svs: svs@1100b000 {
++			compatible = "mediatek,mt8183-svs";
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&infracfg CLK_INFRA_THERM>;
++			clock-names = "main";
++			nvmem-cells = <&svs_calibration>,
++				      <&thermal_calibration>;
++			nvmem-cell-names = "svs-calibration-data",
++					   "t-calibration-data";
++		};
++
+ 		thermal: thermal@1100b000 {
+ 			#thermal-sensor-cells = <1>;
+ 			compatible = "mediatek,mt8183-thermal";
+@@ -1325,6 +1337,10 @@
+ 			mipi_tx_calibration: calib@190 {
+ 				reg = <0x190 0xc>;
+ 			};
++
++			svs_calibration: calib@580 {
++				reg = <0x580 0x64>;
++			};
+ 		};
+ 
+ 		u3phy: t-phy@11f40000 {
+-- 
+2.18.0
 
 
 _______________________________________________
