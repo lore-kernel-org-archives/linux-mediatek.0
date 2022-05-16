@@ -4,75 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 877A2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 14:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76682C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 14:31:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z4RplzIzIsYK0xhPzQ7KKQCDubqXgt9QBgKIcVO0OX0=; b=TPBXopytbNhNtb
-	mgX4IOkGbcadKVuQs3XL+O1SjGYtW9AU1J8AEieuCdFgguOW1hnLP5mVQvB9xce6hCpZZSKkypWPm
-	90lN2+fJBoP3AoexM6b4m8JCCero8uocYBbQsJvnUOter3YwXByS1d1Ck1wHWrWXZdIPIlpFoFw5D
-	CIJinQ2MIHQQO6DZR3n5Y281bKc7fDluHpPkeoqfSFE83UFqbwg8TGZWhEBZ2OyOs577LmrmBZQjs
-	Qd4rlU78g/TbfbXoccUmltsrhX2ooULL95AQuV9ouIaZq6TI+ycUeXjvJOcwTHf6d2nGYDMWiEKNc
-	ozVAG9K9RKQMcIpON0dQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
+	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hVrJt86g73U89Z4usqIpdKENkavh+sWnPlC0Txrdebk=; b=JaUm24le4Oa6sItLOV6hf/HhHY
+	5xTMZRKFr2vY9W9upeU4VcgkOVhKgJ9NdfTrVGkpFKzFhxg0DSi0r412/T/xobnpg3DfwBWmdrR2U
+	IpkpRTWTfc/VKMMncQdac7Al+coQaUKc+8dPUnUBJyn8ocFC0/TrK2YsN5ZpqONDGVFWAyInVJD42
+	avPqiFU0aRj6TUGvw6FevylaIx+OLSsJmJWb8i69miChJYtRW9y02ZCu00L/8wHX7NJqYEfgBs6U6
+	AK9XJTxLeDMie6O5FRU02Vj5dc2loGzYcMwnVHWcUVJc46hXg4YQbhE8P4+7klj5rklrCIya8dJqh
+	wvZu0zjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqbdM-008KIq-U5; Mon, 16 May 2022 14:23:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nqbkY-008MpT-2t; Mon, 16 May 2022 14:31:06 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqbci-008JtB-To; Mon, 16 May 2022 14:23:04 +0000
-X-UUID: a356c8fca1c44077b6afbf7340e7714f-20220516
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:fdf89b68-0bd8-4c95-ad50-c80b48df5e97, OB:0,
- LO
- B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:5
-X-CID-META: VersionHash:2a19b09, CLOUDID:b443c4b9-9f46-4d76-a271-164488ed79f1,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
- ,QS:0,BEC:nil
-X-UUID: a356c8fca1c44077b6afbf7340e7714f-20220516
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yf.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 229033810; Mon, 16 May 2022 07:22:54 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 May 2022 07:22:52 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Mon, 16 May 2022 22:22:50 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 16 May 2022 22:22:49 +0800
-From: <yf.wang@mediatek.com>
-To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Joerg
- Roedel" <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Georgi Djakov" <quic_c_gdjako@quicinc.com>, "Isaac J. Manjarres"
- <isaacm@codeaurora.org>, Ning Li <ning.li@mediatek.com>, Yunfei Wang
- <yf.wang@mediatek.com>, Sven Peter <sven@svenpeter.dev>, "moderated list:ARM
- SMMU DRIVERS" <linux-arm-kernel@lists.infradead.org>, "open list:IOMMU
- DRIVERS" <iommu@lists.linux-foundation.org>, open list
- <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
- <Yong.Wu@mediatek.com>
-Subject: [PATCH v5 1/2] iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable
- PA up to 35bit
-Date: Mon, 16 May 2022 22:16:06 +0800
-Message-ID: <20220516141608.11709-2-yf.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220516141608.11709-1-yf.wang@mediatek.com>
-References: <20220516141608.11709-1-yf.wang@mediatek.com>
+ id 1nqbkK-008Mhf-3k; Mon, 16 May 2022 14:30:53 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id g17so2652213wrb.11;
+ Mon, 16 May 2022 07:30:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:subject:to:cc:message-id:in-reply-to:references
+ :mime-version; bh=SkI9j+PV+1mmvxHb7GKlSLP3Y+qTblf8gX9dnYFmiFM=;
+ b=APIp0gdbezfYXpzOnG3h2kFGrduy6yci+HMh3Q2Y1I46Bj2dPmiihp0n1JKneFnPTP
+ yacOwcuxlO6u/kS0o+Ek48MJz+iALhTfSyUeuNZMTkYEBxtcSAJ7ocxy000Xwr1Sb6Cf
+ uZOW7yh3chlhbbGPLX59DzHzC0YLVH3gSyHrhcpGXWzuDd44pQaA8+96GZ2HyUBCn/ou
+ eoLTsl02PuZwGxjjs++Jyy2g3Vj6FpBewWEB1BOnpzOLc0tTCALmRLgcH6x/QFBkGfAX
+ /eYV5U48mLoH41rqys27cZKnRCUExHqkn/AcZ8e4tqLL0YHdxR5VdTNEesL51Xh54fj7
+ oRmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:subject:to:cc:message-id:in-reply-to
+ :references:mime-version;
+ bh=SkI9j+PV+1mmvxHb7GKlSLP3Y+qTblf8gX9dnYFmiFM=;
+ b=c3qyGnY638uKlCZ8RpiYYoepouX4HO/O88Br10uBhXvHXyZaDG9z2cly6ncL/hCT2b
+ vkt7zvlQUhm+0fYQhsJpDvG/rPjLm43Uzw1maF+ebYQnv2pMYBfRRwiTvv13JWzFc3Sf
+ Y+OYqOLnrBZkuA3T2DHPoINiTM1TZvNL9Y/soOsQ3nzIWIZIwWphs0GfiOOMatzANx8o
+ ka82mP8C75wVypTejg5FA5ZMcY9iso+Vx3mlYTq4NDlazFMKTLblhRB37tZV92ccCtiD
+ egFlujoPitdk/JOrTsYn/GhKcU9CTREncioZ/WqZntUAGRdxoaZeJtavpgP91fPGV7Bz
+ waeQ==
+X-Gm-Message-State: AOAM531f2O/bNEnuDKUAJbzPv13vaVDZu87tp8HWcal+Q2+CWwnX/d+y
+ k1sCs5836B/jDnZo/wVeXjg=
+X-Google-Smtp-Source: ABdhPJxgO5KhCZCHlnN5ffu2hoLwZBCjWnLCX08taD9hP3OlxbZq2lHIPrqpxxC1BD8HOp8ozvF6RA==
+X-Received: by 2002:adf:e80b:0:b0:20d:7e1:5c81 with SMTP id
+ o11-20020adfe80b000000b0020d07e15c81mr5053529wrm.147.1652711449169; 
+ Mon, 16 May 2022 07:30:49 -0700 (PDT)
+Received: from [192.168.82.247] ([138.199.7.159])
+ by smtp.gmail.com with ESMTPSA id
+ n4-20020a5d5984000000b0020c77f36b13sm9985206wri.100.2022.05.16.07.30.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 May 2022 07:30:48 -0700 (PDT)
+Date: Mon, 16 May 2022 18:30:33 +0400
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+Subject: Re: [PATCH v2 2/2] clocksource/drivers/timer-mediatek: Implement
+ CPUXGPT timers
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: daniel.lezcano@linaro.org, tglx@linutronix.de, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
+ martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
+ phone-devel@vger.kernel.org, paul.bouchara@somainline.org
+Message-Id: <XACZBR.6DH6TON0H9IO@gmail.com>
+In-Reply-To: <7d4caab4-bb70-8e32-dc06-5edd51dbeea5@collabora.com>
+References: <20220513201442.13569-1-y.oudjana@protonmail.com>
+ <7d4caab4-bb70-8e32-dc06-5edd51dbeea5@collabora.com>
+X-Mailer: geary/40.0
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_072301_049232_5D94F924 
-X-CRM114-Status: GOOD (  21.55  )
+X-CRM114-CacheID: sfid-20220516_073052_216061_00C300A7 
+X-CRM114-Status: GOOD (  52.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,211 +89,224 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yunfei Wang <yf.wang@mediatek.com>
 
-The calling to kmem_cache_alloc for level 2 pgtable allocation may run
-in atomic context, and it fails sometimes when DMA32 zone runs out of
-memory.
+On Mon, May 16 2022 at 10:31:12 +0200, AngeloGioacchino Del Regno 
+<angelogioacchino.delregno@collabora.com> wrote:
+> Il 13/05/22 22:14, Yassine Oudjana ha scritto:
+>> From: Yassine Oudjana <yassine.oudjana@gmail.com>
+>> 
+>> On Mon,  9 May 2022 23:07:40 +0200, AngeloGioacchino Del Regno 
+>> <angelogioacchino.delregno@collabora.com> wrote:
+>>> Some MediaTek platforms with a buggy TrustZone ATF firmware will not
+>>> initialize the AArch64 System Timer correctly: in these cases, the
+>>> System Timer address is correctly programmed, as well as the 
+>>> CNTFRQ_EL0
+>>> register (reading 13MHz, as it should be), but the assigned hardware
+>>> timers are never started before (or after) booting Linux.
+>>> 
+>>> In this condition, any call to function get_cycles() will be 
+>>> returning
+>>> zero, as CNTVCT_EL0 will always read zero.
+>> 
+>> I spent a lot of time trying to figure out why the arch timer didn't
+>> work on MT6737T and never got any results. Turns out this is why...
+>> 
+>> I ended up using the GPT (@ 0x10004000) as a system timer and it
+>> worked fine.
+>> 
+>> With this patch the arch timer started to work finally. Thanks for
+>> the fix! See below for one comment on this patch.
+>> 
+> 
+> Hello Yassine,
+> 
+> yes this is a common quirk that's present on all (or almost all?) 
+> older
+> MediaTek platforms - as I explained, due to TZ doing only partial init
+> for these timers.
+> 
+> I'm happy to read that this is working out as expected: I saw you 
+> pushing
+> some patches for older MTK SoCs, so I started researching about what 
+> the
+> community was blocked on with the upstreaming of these, and learnt 
+> about
+> such major blocker.
+> 
+> There's more, though: you also need to initialize the CPU MTCMOS at 
+> early
+> boot in order for SMP to work on (some?) old platforms, or at least 
+> this
+> is true for MT6795.
 
-Since Mediatek IOMMU hardware support at most 35bit PA in pgtable,
-so add a quirk to allow the PA of pgtables support up to bit35.
+Oh I'm actually having trouble with SMP. I tried to do a bunch of
+things downstream does but the CPUs just kept refusing to come up.
+This might be the reason.
 
-Signed-off-by: Ning Li <ning.li@mediatek.com>
-Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
----
- drivers/iommu/io-pgtable-arm-v7s.c | 56 ++++++++++++++++++++++--------
- include/linux/io-pgtable.h         | 15 +++++---
- 2 files changed, 52 insertions(+), 19 deletions(-)
+> Since it looks like you're interested in giving love to old SoCs, I 
+> will
+> anticipate to you that I *do* have a local implementation for a 
+> correct
+> initialization of the MTCMOS for the non-boot cores... that needs to 
+> be
+> cleaned up a bit before I push that upstream though.
 
-diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
-index be066c1503d3..668500798fb9 100644
---- a/drivers/iommu/io-pgtable-arm-v7s.c
-+++ b/drivers/iommu/io-pgtable-arm-v7s.c
-@@ -149,6 +149,10 @@
- #define ARM_V7S_TTBR_IRGN_ATTR(attr)					\
- 	((((attr) & 0x1) << 6) | (((attr) & 0x2) >> 1))
- 
-+/* Mediatek extend ttbr bits[2:0] for PA bits[34:32] */
-+#define ARM_V7S_TTBR_35BIT_PA(ttbr, pa)					\
-+	((ttbr & ((u32)(~0U << 3))) | ((pa & GENMASK_ULL(34, 32)) >> 32))
-+
- #ifdef CONFIG_ZONE_DMA32
- #define ARM_V7S_TABLE_GFP_DMA GFP_DMA32
- #define ARM_V7S_TABLE_SLAB_FLAGS SLAB_CACHE_DMA32
-@@ -182,14 +186,8 @@ static bool arm_v7s_is_mtk_enabled(struct io_pgtable_cfg *cfg)
- 		(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT);
- }
- 
--static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
--				    struct io_pgtable_cfg *cfg)
-+static arm_v7s_iopte to_iopte_mtk(phys_addr_t paddr, arm_v7s_iopte pte)
- {
--	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
--
--	if (!arm_v7s_is_mtk_enabled(cfg))
--		return pte;
--
- 	if (paddr & BIT_ULL(32))
- 		pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
- 	if (paddr & BIT_ULL(33))
-@@ -199,6 +197,17 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
- 	return pte;
- }
- 
-+static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
-+				    struct io_pgtable_cfg *cfg)
-+{
-+	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
-+
-+	if (!arm_v7s_is_mtk_enabled(cfg))
-+		return pte;
-+
-+	return to_iopte_mtk(paddr, pte);
-+}
-+
- static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
- 				  struct io_pgtable_cfg *cfg)
- {
-@@ -234,6 +243,7 @@ static arm_v7s_iopte *iopte_deref(arm_v7s_iopte pte, int lvl,
- static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
- 				   struct arm_v7s_io_pgtable *data)
- {
-+	gfp_t gfp_l1 = __GFP_ZERO | ARM_V7S_TABLE_GFP_DMA;
- 	struct io_pgtable_cfg *cfg = &data->iop.cfg;
- 	struct device *dev = cfg->iommu_dev;
- 	phys_addr_t phys;
-@@ -241,9 +251,11 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
- 	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
- 	void *table = NULL;
- 
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		gfp_l1 = __GFP_ZERO;
-+
- 	if (lvl == 1)
--		table = (void *)__get_free_pages(
--			__GFP_ZERO | ARM_V7S_TABLE_GFP_DMA, get_order(size));
-+		table = (void *)__get_free_pages(gfp_l1, get_order(size));
- 	else if (lvl == 2)
- 		table = kmem_cache_zalloc(data->l2_tables, gfp);
- 
-@@ -251,7 +263,8 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
- 		return NULL;
- 
- 	phys = virt_to_phys(table);
--	if (phys != (arm_v7s_iopte)phys) {
-+	if (phys != (arm_v7s_iopte)phys &&
-+	    !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)) {
- 		/* Doesn't fit in PTE */
- 		dev_err(dev, "Page table does not fit in PTE: %pa", &phys);
- 		goto out_free;
-@@ -457,9 +470,14 @@ static arm_v7s_iopte arm_v7s_install_table(arm_v7s_iopte *table,
- 					   arm_v7s_iopte curr,
- 					   struct io_pgtable_cfg *cfg)
- {
-+	phys_addr_t phys = virt_to_phys(table);
- 	arm_v7s_iopte old, new;
- 
--	new = virt_to_phys(table) | ARM_V7S_PTE_TYPE_TABLE;
-+	new = phys | ARM_V7S_PTE_TYPE_TABLE;
-+
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		new = to_iopte_mtk(phys, new);
-+
- 	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_NS)
- 		new |= ARM_V7S_ATTR_NS_TABLE;
- 
-@@ -778,7 +796,9 @@ static phys_addr_t arm_v7s_iova_to_phys(struct io_pgtable_ops *ops,
- static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 						void *cookie)
- {
-+	slab_flags_t slab_flag = ARM_V7S_TABLE_SLAB_FLAGS;
- 	struct arm_v7s_io_pgtable *data;
-+	phys_addr_t paddr;
- 
- 	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
- 		return NULL;
-@@ -788,7 +808,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 
- 	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
- 			    IO_PGTABLE_QUIRK_NO_PERMS |
--			    IO_PGTABLE_QUIRK_ARM_MTK_EXT))
-+			    IO_PGTABLE_QUIRK_ARM_MTK_EXT |
-+			    IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT))
- 		return NULL;
- 
- 	/* If ARM_MTK_4GB is enabled, the NO_PERMS is also expected. */
-@@ -801,10 +822,12 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 		return NULL;
- 
- 	spin_lock_init(&data->split_lock);
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		slab_flag = 0;
- 	data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
- 					    ARM_V7S_TABLE_SIZE(2, cfg),
- 					    ARM_V7S_TABLE_SIZE(2, cfg),
--					    ARM_V7S_TABLE_SLAB_FLAGS, NULL);
-+					    slab_flag, NULL);
- 	if (!data->l2_tables)
- 		goto out_free_data;
- 
-@@ -850,12 +873,17 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
- 	wmb();
- 
- 	/* TTBR */
--	cfg->arm_v7s_cfg.ttbr = virt_to_phys(data->pgd) | ARM_V7S_TTBR_S |
-+	paddr = virt_to_phys(data->pgd);
-+	cfg->arm_v7s_cfg.ttbr = paddr | ARM_V7S_TTBR_S |
- 				(cfg->coherent_walk ? (ARM_V7S_TTBR_NOS |
- 				 ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_WBWA) |
- 				 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_WBWA)) :
- 				(ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_NC) |
- 				 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_NC)));
-+
-+	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
-+		cfg->arm_v7s_cfg.ttbr =
-+			ARM_V7S_TTBR_35BIT_PA(cfg->arm_v7s_cfg.ttbr, paddr);
- 	return &data->iop;
- 
- out_free_data:
-diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
-index 86af6f0a00a2..7ed15ad4710c 100644
---- a/include/linux/io-pgtable.h
-+++ b/include/linux/io-pgtable.h
-@@ -74,17 +74,22 @@ struct io_pgtable_cfg {
- 	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
- 	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
- 	 *
-+	 * IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT: (ARM v7s format) MediaTek IOMMUs
-+	 *	extend the translation table support up to 35 bits PA, the
-+	 *	encoding format is same with IO_PGTABLE_QUIRK_ARM_MTK_EXT.
-+	 *
- 	 * IO_PGTABLE_QUIRK_ARM_TTBR1: (ARM LPAE format) Configure the table
- 	 *	for use in the upper half of a split address space.
- 	 *
- 	 * IO_PGTABLE_QUIRK_ARM_OUTER_WBWA: Override the outer-cacheability
- 	 *	attributes set in the TCR for a non-coherent page-table walker.
- 	 */
--	#define IO_PGTABLE_QUIRK_ARM_NS		BIT(0)
--	#define IO_PGTABLE_QUIRK_NO_PERMS	BIT(1)
--	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT	BIT(3)
--	#define IO_PGTABLE_QUIRK_ARM_TTBR1	BIT(5)
--	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA	BIT(6)
-+	#define IO_PGTABLE_QUIRK_ARM_NS			BIT(0)
-+	#define IO_PGTABLE_QUIRK_NO_PERMS		BIT(1)
-+	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT		BIT(3)
-+	#define IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT	BIT(4)
-+	#define IO_PGTABLE_QUIRK_ARM_TTBR1		BIT(5)
-+	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA		BIT(6)
- 	unsigned long			quirks;
- 	unsigned long			pgsize_bitmap;
- 	unsigned int			ias;
--- 
-2.18.0
+Any chance I can give it an early test? Having only one working
+CPU kind of sucks...
+
+> 
+>>> One common critical symptom of that is trying to use the udelay()
+>>> function (calling __delay()), which executes the following loop:
+>>> 
+>>>              start = get_cycles();
+>>>              while ((get_cycles() - start) < cycles)
+>>>                      cpu_relax();
+>>> 
+>>> which, when CNTVCT_EL0 always reads zero, translates to:
+>>> 
+>>>              while((0 - 0) < 0)  ==> while(0 < 0)
+>>> 
+>>> ... generating an infinite loop, even though zero is never less
+>>> than zero, but always equal to it (this has to be researched,
+>>> but it's out of the scope of this commit).
+>>> 
+>>> To fix this issue on the affected MediaTek platforms, the solution
+>>> is to simply start the timers that are designed to be System 
+>>> Timer(s).
+>>> These timers, downstream, are called "CPUXGPT" and there is one
+>>> timer per CPU core; luckily, it is not necessary to set a start bit
+>>> on each CPUX General Purpose Timer, but it's conveniently enough to:
+>>>   - Set the clock divider (input = 26MHz, divider = 2, output = 
+>>> 13MHz);
+>>>   - Set the ENABLE bit on a global register (starts all CPUX 
+>>> timers).
+>>> 
+>>> The only small hurdle with this setup is that it's all done through
+>>> the MCUSYS wrapper, where it is needed, for each read or write, to
+>>> select a register address (by writing it to an index register) and
+>>> then to perform any R/W on a "CON" register.
+>>> 
+>>> For example, writing "0x1" to the CPUXGPT register offset 0x4:
+>>> - Write 0x4 to mcusys INDEX register
+>>> - Write 0x1 to mcusys CON register
+>>> 
+>>> Reading from CPUXGPT register offset 0x4:
+>>> - Write 0x4 to mcusys INDEX register
+>>> - Read mcusys CON register.
+>>> 
+>>> Finally, starting this timer makes platforms affected by this issue
+>>> to work correctly.
+>>> 
+>>> Signed-off-by: AngeloGioacchino Del Regno 
+>>> <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>   drivers/clocksource/timer-mediatek.c | 119 
+>>> +++++++++++++++++++++++++++
+>>>   1 file changed, 119 insertions(+)
+>>> 
+>>> diff --git a/drivers/clocksource/timer-mediatek.c 
+>>> b/drivers/clocksource/timer-mediatek.c
+>>> index 7bcb4a3f26fb..a3e90047f9ac 100644
+>>> --- a/drivers/clocksource/timer-mediatek.c
+>>> +++ b/drivers/clocksource/timer-mediatek.c
+> 
+> ..snip..
+> 
+>>> +
+>>> +	/*
+>>> +	 * Check if we're given a clock with the right frequency for this
+>>> +	 * timer, otherwise warn but keep going with the setup anyway, as
+>>> +	 * that makes it possible to still boot the kernel, even though
+>>> +	 * it may not work correctly (random lockups, etc).
+>>> +	 * The reason behind this is that having an early UART may not be
+>>> +	 * possible for everyone and this gives a chance to retrieve kmsg
+>>> +	 * for eventual debugging even on consumer devices.
+>>> +	 */
+>>> +	freq = timer_of_rate(&to_cpux);
+>>> +	if (freq > 13000000)
+>> 
+>> Input clock is 26MHz and is then divided by 2 in CPUXGPT, so 
+>> shouldn't
+>> this be 26000000 instead? I get a warning here with 26MHz system 
+>> clock
+>> supplied:
+>> 
+> 
+> This may seem to be counter intuitive... I had two ways to implement 
+> this:
+> 1. Design this driver to take "clk26m" as a clock input and make it so
+>    that it reads the expected frequency from CNTFRQ_EL0, then setup 
+> the
+>    dividers based on that reading; or
+> 2. Take "clk13m" as input and refuse to take anything else.
+> 
+> Keeping in mind that:
+> 1. There's no way (that I know, at least) to set a different clock 
+> source for
+>    the CPUXGPT timers, and
+> 2. There's no platform (I've been researching on that) that uses a 
+> different
+>    frequency for these timers...
+> 
+> ...there will never be any platform that outputs a clock that's not 
+> 13MHz,
+> hence I chose to follow path 2 and take the 13MHz "System Clock", 
+> which is
+> something that is present downstream as well.
+> 
+> In any case, now that you make me think about that, it may indeed be 
+> more
+> logical to assign the 26MHz clock to this node... my intention was to 
+> force
+> knowledge on this outputting 13MHz instead but, I realize, this may 
+> be the
+> wrong way of doing that.
+
+Maybe it is a better idea to use clock-frequency = <13000000> to
+show the timer frequency?
+
+> 
+>> clocks {
+>> 	...
+>> 	clk26m: clk26m {
+>> 		compatible = "fixed-clock";
+>> 		clock-frequency = <26000000>;
+>> 		#clock-cells = <0>;
+>> 	};
+>> 	...
+>> };
+>> ...
+>> soc {
+>> 	...
+>> 	cpuxgpt: timer@10200670 {
+>> 		compatible = "mediatek,mt6795-systimer";
+>> 		reg = <0 0x10200670 0 0x8>;
+> 
+> My congratulations on this timer node: you're a smart person!
+> I was expecting people complaining about "this doesn't work" and 
+> having
+> to explain that 0x10200000 is not the right iostart for this node, but
+> I didn't have to.
+> 
+> Hats off.
+
+Thanks :)
+
+I actually figured that out because I had topckgen incorrectly
+placed at 0x10200000 in my device tree, which made me check
+the datasheet, downstream dts and the timer driver to realize
+that the correct address for tockgen is 0x10210000, 0x10200000
+is mcusys and the timer driver has the XGPT registers defined
+starting from 0, meaning I had to add their offset in dts.
+
+Regards,
+Yassine
+
 
 
 _______________________________________________
