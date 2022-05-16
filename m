@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19911C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 16:09:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2A9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 16:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sMKuIrUnW0Ee8ynaEJIX81TicbW2BAhqz4H7EqZP3Gw=; b=y1EZ8NO5y16jzr
-	YlKQT0LARyqxl9BpncqleD5H0vHrzLmdn3jFwXfQwiSmyEhJWv8Ro3LQSm3PModxfPVZwvZuTZ2aI
-	gtp6Iz5KmQP+ouwAyoHNbbrVjNah1usJZpb/Ev8PfBlTqbM1QHTawcLF49CNrPU5vqT4QJKPcYP2S
-	pJ3le5/4RCaeoHX8j+7a+SuvCU6TzWymJlflTSe4e6lqMy72fyJkZfPp4abYGHSyEnCR+UvoN0ZIN
-	X93zGxehbeK5VnDfujEqAKEUh7MGoy0grjIL6unHCpUNm92vK2ipDTngUr0pN0DfML61yLAt4N9zY
-	mXhDN10J5gnbWipZaqIw==;
+	List-Owner; bh=TRqQseqIDy0i3ymg4Pl939OGN0ZX/cGHtYMsu6lA3bc=; b=Lxyjuk1/acHoAy
+	wLtuR4BC9kfg8ovJlHfeln9UcLCgF9nWJ7T6xnD6O71TILFSH9RRidmlUUpEIldqCzbJdpyqgKZPn
+	d4Jmmh+Lxs6FGE64H+aYiyAIFaHHKuIvhuJAK3UCyHSth4txZG6BmC1UNfhf4cqjmupOwmVrftbRx
+	UpvNBizRshCArCLAcmaa2OU6CNidys1j66+sXGpy3QPWfe9eV7m4ir8maVrAAbLjl8Hd+63LckoNB
+	5RT24it/sFOBrPfnmJaMyf+uCWi//GRo3i5rsy7TyTC3KFoTRCjerb6ysweOq44WFaKmHek2fo5WK
+	BgRybAs86dMiMqqaFTRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqdHs-008sXh-Gu; Mon, 16 May 2022 16:09:36 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nqdXP-008xrh-Qj; Mon, 16 May 2022 16:25:39 +0000
+Received: from mail-ot1-f47.google.com ([209.85.210.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqdGp-008rdU-Da
- for linux-mediatek@lists.infradead.org; Mon, 16 May 2022 16:08:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 13C02B81262;
- Mon, 16 May 2022 16:08:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E46D9C385AA;
- Mon, 16 May 2022 16:08:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652717308;
- bh=uM3ccAJWdxDoSZRLhAr0NaFqOgPx8bqnk2xxzO/IuVI=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=oO4zdUWmjDwrudVQk++1yhWHpuI30+WM5WktqlkYfCcNzj6W4Oe7NHz0BdvW0fj3G
- jJn551vhucEYa8Mb1+qKJdXOZRDWLF00DFr12zsxVmLF/21LeCQu2lkODd2NCR6U1m
- pCKtSLJ6twW+Mh+wftLj2j4+dkG5OgDtDIOOQax59mamKsLkiIZ6XbKpDXcg17tPap
- 5oeW295IHSZztTsRxmwT/ELdvhbY0l6+iVlcnhJf4iIBzeI0PBi6gwk9kkJmxGFuqe
- 7YPSOx3uWQmFoyHq+Se1l6JXTElwjfRH2Fg6+s4ONwqWhPenAl0CwgygP6kLcMqLCk
- Rhm338CZyo8SA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, Sam.Shih@mediatek.com,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- robh@kernel.org, lorenzo.bianconi@redhat.com
-Subject: [PATCH v2 net-next 15/15] net: ethernet: mtk_eth_soc: introduce
- support for mt7986 chipset
-Date: Mon, 16 May 2022 18:06:42 +0200
-Message-Id: <5b8e9a0256bd1da216ff508d70bd5a8b9f3113f1.1652716741.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <cover.1652716741.git.lorenzo@kernel.org>
-References: <cover.1652716741.git.lorenzo@kernel.org>
+ id 1nqdXC-008xjI-Hl; Mon, 16 May 2022 16:25:27 +0000
+Received: by mail-ot1-f47.google.com with SMTP id
+ y14-20020a9d460e000000b00605ee347da1so10407737ote.8; 
+ Mon, 16 May 2022 09:25:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=K5njaV69c/xpUdcIluz+60lzV8MqdGOZB2Dl54ng57I=;
+ b=qquIcpkIPS25Nq0hTl+mJ1+5/fwDCCWEPQrjIeQI7lmaqiG0ulTNv/mb+F/nK716Ps
+ HAuREK6pY3qKoaMezdShbPJWZwjuMM6tJbArwcyIv3jbAa6HVOTDAaekQwebMsyeCsu8
+ YClYx63LTwmosCF2PRFyAJo2fxLYKwVBeyMXQBsE18salC/7U8JAez+t7UHrGwRuk1Zr
+ Orq3kuepbemXzJJ5+pRXx6hYDIrUIgsh7j0Tf4AVggAGgZ52Znk/0Z4PjIbNb+WSANUR
+ kWbl1s4TpHa82wQA3JpN0pYc2KfJodjb63r0vAzjFtZbQ8PBNwvT1nDUYhSX2oK6lR2y
+ 3h9g==
+X-Gm-Message-State: AOAM532C/WJUOwnaG+42iViCQrotJPHvOI2fCTSkBQxBp0f6BPSu8bi9
+ /DCmhu+rWDfktFlvwrWFLZDwoeYdZg==
+X-Google-Smtp-Source: ABdhPJxjRAZExXDXIcmckfL11VmInJI+EIKA0G0IRSMqE7F83ThjrKdv3SpNxwvw1tbseXG+V7GGvw==
+X-Received: by 2002:a9d:740b:0:b0:606:21eb:8f93 with SMTP id
+ n11-20020a9d740b000000b0060621eb8f93mr6427106otk.330.1652718324452; 
+ Mon, 16 May 2022 09:25:24 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ u30-20020a056871009e00b000e686d13883sm5467949oaa.29.2022.05.16.09.25.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 May 2022 09:25:23 -0700 (PDT)
+Received: (nullmailer pid 2789731 invoked by uid 1000);
+ Mon, 16 May 2022 16:25:22 -0000
+Date: Mon, 16 May 2022 11:25:22 -0500
+From: Rob Herring <robh@kernel.org>
+To: Gene Chen <gene.chen.richtek@gmail.com>
+Cc: devicetree@vger.kernel.org, lee.jones@linaro.org, pavel@ucw.cz,
+ gene_chen@richtek.com, linux-arm-kernel@lists.infradead.org,
+ krzysztof.kozlowski+dt@linaro.org, cy_huang@richtek.com,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, robh+dt@kernel.org
+Subject: Re: [PATCH v2] dt-bindings: mfd: Add bindings child nodes for the
+ Mediatek MT6360
+Message-ID: <20220516162522.GA2789107-robh@kernel.org>
+References: <20220516062127.99647-1-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220516062127.99647-1-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_090831_804973_696B1C61 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20220516_092526_622591_0C918BF9 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,122 +85,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for mt7986-eth driver available on mt7986 soc.
+On Mon, 16 May 2022 14:21:27 +0800, Gene Chen wrote:
+> From: Gene Chen <gene_chen@richtek.com>
+> 
+> Add bindings child nodes for the Mediatek MT6360
+> 
+> Signed-off-by: Gene Chen <gene_chen@richtek.com>
+> Link: https://lore.kernel.org/all/YmqTzlrVL5KaVPuz@robh.at.kernel.org/
+> ---
+>  .../bindings/mfd/mediatek,mt6360.yaml         | 189 ++++++++++++++++++
+>  1 file changed, 189 insertions(+)
+> 
 
-Tested-by: Sam Shih <sam.shih@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 29 ++++++++++++++++++++-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 18 +++++++++++++
- 2 files changed, 46 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 373d9733e66f..ce3c242f14fa 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -45,6 +45,17 @@ static const u32 mtk_reg_map[] = {
- 	[MTK_PDMA_RSS_GLO_BASE]			= 0x3000,
- };
- 
-+static const u32 mt7986_reg_map[] = {
-+	[MTK_PDMA_BASE]				= 0x6000,
-+	[MTK_PDMA_LRO_CTRL]			= 0x6408,
-+	[MTK_PDMA_ALT_SCORE_DELTA_BASE]		= 0x641c,
-+	[MTK_PDMA_LRO_RX_RING_DIP_BASE]		= 0x6414,
-+	[MTK_PDMA_LRO_RX_RING_CTRL_BASE]	= 0x6438,
-+	[MTK_QDMA_BASE]				= 0x4400,
-+	[MTK_GDM1_TX_STAT_BASE]			= 0x1c00,
-+	[MTK_PDMA_RSS_GLO_BASE]			= 0x6800,
-+};
-+
- /* strings used by ethtool */
- static const struct mtk_ethtool_stats {
- 	char str[ETH_GSTRING_LEN];
-@@ -68,7 +79,7 @@ static const char * const mtk_clks_source_name[] = {
- 	"ethif", "sgmiitop", "esw", "gp0", "gp1", "gp2", "fe", "trgpll",
- 	"sgmii_tx250m", "sgmii_rx250m", "sgmii_cdr_ref", "sgmii_cdr_fb",
- 	"sgmii2_tx250m", "sgmii2_rx250m", "sgmii2_cdr_ref", "sgmii2_cdr_fb",
--	"sgmii_ck", "eth2pll",
-+	"sgmii_ck", "eth2pll", "wocpu0", "wocpu1", "netsys0", "netsys1"
- };
- 
- void mtk_w32(struct mtk_eth *eth, u32 val, unsigned reg)
-@@ -3625,6 +3636,21 @@ static const struct mtk_soc_data mt7629_data = {
- 	},
- };
- 
-+static const struct mtk_soc_data mt7986_data = {
-+	.reg_map = mt7986_reg_map,
-+	.ana_rgc3 = 0x128,
-+	.caps = MT7986_CAPS,
-+	.required_clks = MT7986_CLKS_BITMAP,
-+	.required_pctl = false,
-+	.txrx = {
-+		.txd_size = sizeof(struct mtk_tx_dma_v2),
-+		.rxd_size = sizeof(struct mtk_rx_dma_v2),
-+		.rx_irq_done_mask = MTK_RX_DONE_INT_V2,
-+		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
-+		.dma_len_offset = 8,
-+	},
-+};
-+
- static const struct mtk_soc_data rt5350_data = {
- 	.reg_map = mtk_reg_map,
- 	.caps = MT7628_CAPS,
-@@ -3647,6 +3673,7 @@ const struct of_device_id of_mtk_match[] = {
- 	{ .compatible = "mediatek,mt7622-eth", .data = &mt7622_data},
- 	{ .compatible = "mediatek,mt7623-eth", .data = &mt7623_data},
- 	{ .compatible = "mediatek,mt7629-eth", .data = &mt7629_data},
-+	{ .compatible = "mediatek,mt7986-eth", .data = &mt7986_data},
- 	{ .compatible = "ralink,rt5350-eth", .data = &rt5350_data},
- 	{},
- };
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index d955af42ad93..1972bc18af0c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -763,6 +763,10 @@ enum mtk_clks_map {
- 	MTK_CLK_SGMII2_CDR_FB,
- 	MTK_CLK_SGMII_CK,
- 	MTK_CLK_ETH2PLL,
-+	MTK_CLK_WOCPU0,
-+	MTK_CLK_WOCPU1,
-+	MTK_CLK_NETSYS0,
-+	MTK_CLK_NETSYS1,
- 	MTK_CLK_MAX
- };
- 
-@@ -793,6 +797,16 @@ enum mtk_clks_map {
- 				 BIT(MTK_CLK_SGMII2_CDR_FB) | \
- 				 BIT(MTK_CLK_SGMII_CK) | \
- 				 BIT(MTK_CLK_ETH2PLL) | BIT(MTK_CLK_SGMIITOP))
-+#define MT7986_CLKS_BITMAP	(BIT(MTK_CLK_FE) | BIT(MTK_CLK_GP2) | BIT(MTK_CLK_GP1) | \
-+				 BIT(MTK_CLK_WOCPU1) | BIT(MTK_CLK_WOCPU0) | \
-+				 BIT(MTK_CLK_SGMII_TX_250M) | \
-+				 BIT(MTK_CLK_SGMII_RX_250M) | \
-+				 BIT(MTK_CLK_SGMII_CDR_REF) | \
-+				 BIT(MTK_CLK_SGMII_CDR_FB) | \
-+				 BIT(MTK_CLK_SGMII2_TX_250M) | \
-+				 BIT(MTK_CLK_SGMII2_RX_250M) | \
-+				 BIT(MTK_CLK_SGMII2_CDR_REF) | \
-+				 BIT(MTK_CLK_SGMII2_CDR_FB))
- 
- enum mtk_dev_state {
- 	MTK_HW_INIT,
-@@ -991,6 +1005,10 @@ enum mkt_eth_capabilities {
- 		      MTK_MUX_U3_GMAC2_TO_QPHY | \
- 		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA)
- 
-+#define MT7986_CAPS  (MTK_GMAC1_SGMII | MTK_GMAC2_SGMII | \
-+		      MTK_MUX_GMAC12_TO_GEPHY_SGMII | MTK_QDMA | \
-+		      MTK_NETSYS_V2 | MTK_RSTCTRL_PPE1)
-+
- struct mtk_tx_dma_desc_info {
- 	dma_addr_t addr;
- 	u32 size;
--- 
-2.35.3
-
+As the dependency is in my tree, applied, thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
