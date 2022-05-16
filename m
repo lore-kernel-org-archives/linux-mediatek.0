@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5854C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 12:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64BF0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 14:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xoDrbLhexvwLOswZqw6cPYLkzDI8rkEF8WZm5oyZpNs=; b=VnyVTXJ/+BqnRW
-	ACJ/N50s71qkhGmWfZfUVVaDWQCWnym+gS31PApT3/nqx2gmkgqWjWtqhYBJl05p7J5+Bv0aNAlsx
-	lgZuEhlZ/W6ERAQP3GZG2IClarqPZdXK16CsFse45h1y9cPK3O3eZuo+mo+CxLWYPUwMSEF3CLC8V
-	Kt297Ao0g8kr06sJsOp11RZSoNcbD/2voRiFst0y343/4TSmTX4aigCEsS6Hl5Q4Us3uIPDPrcZKw
-	iEvhGdyh+EicqqxXyIFelI2HZ3MewYW8QS3bXMue92cxFWm2U1EWBxGRrgsWA/P04eUQ9nnjj5UyI
-	rlr5X/osYdCfSSpB+qOw==;
+	List-Owner; bh=+W0nl+WE2kX6E6z71gBdYkk9nwkj8ezHrT3PuG8UFwg=; b=WLLUWZ3TeoaWqp
+	I0qpMHIDnj6aZtO4GtfQeV+owWIY+ottrjXubv08e+ZXHXcFFRCT3+nl7xwY7yWgVqbAH381dvInt
+	itJyD2K8Ha213LFZQoQ7NNOGp4tFEjaVO0d5evfXTjNuYEjOVSE4lpxxlyV8+Gxuc+jxJCRz25fuR
+	1sCGRNas8r6r59+mFvt/UG7tglrJD9CuGzr9mnM0pyvHJ+ZC1nHHmeS0uN2lzzC5+a2j6Kb9Iq/wP
+	2CqIPpdtdPYi3+2G5XsmnDL6CvksSi/hWCUHs6YBy7tiPlSxN44BDd03vSn14zwQdIFqb1owRCmwg
+	ItK3icj9r771zH7irJpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqa9R-007hYd-NG; Mon, 16 May 2022 12:48:41 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nqbZ3-008Hzr-Uu; Mon, 16 May 2022 14:19:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqa81-007gmu-Ex; Mon, 16 May 2022 12:47:15 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 61CCE1F42F51
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652705228;
- bh=xO6aHuo6qr2U+3Pw1vJl92VTpaOmj3hu2VdgDueiOp4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LAVwhi5fVzB511R2xm2K0fSzYH9ARO0hXPuFthBl2c1kESQLvsYx3vUWdSjGbI41p
- 7r1L0SCFCDiF8s04Ggl1ADsjZpb+cVYvfYd8heJUczYJ1jjclBVnWocymXxC/A8PMx
- Rxm3tllXWSSxBQ6lmZZ2Jg9I6sCSEQmK7zFG+WkSsh7dV0LX8iMEjc5USrCi9kdA66
- /XXpo+24TNtv5eUQow4276ox7idic3MfG5UIFC6V7wsc5kWFw+7o08GKQk8JTj90t8
- 4uV/ko+iM5fq45UN6VNkoc2J5l3QvF5vef8XrOouY2eT6sMUpvSGx/ToxNXSmGbajo
- owEq5I26yn5rQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, nfraprado@collabora.com,
- rex-bc.chen@mediatek.com, zhiyong.tao@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 5/5] soc: mediatek: pwrap: Compress of_device_id entries to
- one line
-Date: Mon, 16 May 2022 14:46:59 +0200
-Message-Id: <20220516124659.69484-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220516124659.69484-1-angelogioacchino.delregno@collabora.com>
-References: <20220516124659.69484-1-angelogioacchino.delregno@collabora.com>
+ id 1nqbYc-008HoD-L8; Mon, 16 May 2022 14:18:51 +0000
+X-UUID: 0cdcf442d04546189a57626e626493ea-20220516
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:d33d85cd-1d8b-4b1f-adeb-5f967d2abe86, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:5
+X-CID-META: VersionHash:2a19b09, CLOUDID:642fc4b9-9f46-4d76-a271-164488ed79f1,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 0cdcf442d04546189a57626e626493ea-20220516
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yf.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 162229171; Mon, 16 May 2022 07:18:39 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 May 2022 07:18:37 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Mon, 16 May 2022 22:18:35 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 16 May 2022 22:18:35 +0800
+From: <yf.wang@mediatek.com>
+To: <yong.wu@mediatek.com>
+CC: <Libo.Kang@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <wsd_upstream@mediatek.com>, <yf.wang@mediatek.com>
+Subject: Re: [PATCH v3 0/2] MediaTek TTBR up to 35bit support
+Date: Mon, 16 May 2022 22:12:02 +0800
+Message-ID: <20220516141202.11650-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <65a0a606e5a53a4ca8dddbe59388c78280d60dd1.camel@mediatek.com>
+References: <65a0a606e5a53a4ca8dddbe59388c78280d60dd1.camel@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_054713_692593_0DA9BB92 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20220516_071846_760385_64360D64 
+X-CRM114-Status: GOOD (  14.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,125 +81,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compress each entry of the of_device_id tables in this driver to one
-line instead of three, as they fit just fine in a single line.
+On Sat, 2022-05-14 at 10:09 +0800, Yong Wu wrote:
+> On Thu, 2022-05-12 at 22:45 +0800, yf.wang@mediatek.com wrote:
+> > This patchset adds MediaTek TTBR up to 35bit support.
+> > 
+> > 
+> > Changes in v3:
+> > - Add version changes description, there is No new code change in
+> > V3.
+> > 
+> > Changes in v2:
+> > - Update patch and commit message
+> >   - Add Level 1 pgtable PA up to 35bit.
+> 
+> Why add this for lvl1 pgtable? Did you get real problem?
+> 
+> lvl2 pgtable is allocated/freed dynamically, it may be allocated
+> failed
+> in ZONE_DMA32 when burning test. But the lvl1 pgtable only is
+> allocated
+> once after bootup. I think this is no need for lvl1 pgtable.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 90 ++++++++--------------------
- 1 file changed, 24 insertions(+), 66 deletions(-)
+Hi Yong,
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 7d02e1d4faf4..c018092e6cbe 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1960,33 +1960,17 @@ static const struct pwrap_slv_type pmic_mt6397 = {
- };
- 
- static const struct of_device_id of_slave_match_tbl[] = {
--	{
--		.compatible = "mediatek,mt6323",
--		.data = &pmic_mt6323,
--	}, {
--		.compatible = "mediatek,mt6351",
--		.data = &pmic_mt6351,
--	}, {
--		.compatible = "mediatek,mt6357",
--		.data = &pmic_mt6357,
--	}, {
--		.compatible = "mediatek,mt6358",
--		.data = &pmic_mt6358,
--	}, {
--		.compatible = "mediatek,mt6359",
--		.data = &pmic_mt6359,
--	}, {
--		/* The MT6380 PMIC only implements a regulator, so we bind it
--		 * directly instead of using a MFD.
--		 */
--		.compatible = "mediatek,mt6380-regulator",
--		.data = &pmic_mt6380,
--	}, {
--		.compatible = "mediatek,mt6397",
--		.data = &pmic_mt6397,
--	}, {
--		/* sentinel */
--	}
-+	{ .compatible = "mediatek,mt6323", .data = &pmic_mt6323 },
-+	{ .compatible = "mediatek,mt6351", .data = &pmic_mt6351 },
-+	{ .compatible = "mediatek,mt6357", .data = &pmic_mt6357 },
-+	{ .compatible = "mediatek,mt6358", .data = &pmic_mt6358 },
-+	{ .compatible = "mediatek,mt6359", .data = &pmic_mt6359 },
-+	/* The MT6380 PMIC only implements a regulator, so we bind it
-+	 * directly instead of using a MFD.
-+	 */
-+	{ .compatible = "mediatek,mt6380-regulator", .data = &pmic_mt6380 },
-+	{ .compatible = "mediatek,mt6397", .data = &pmic_mt6397 },
-+	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, of_slave_match_tbl);
- 
-@@ -2145,45 +2129,19 @@ static struct pmic_wrapper_type pwrap_mt8186 = {
- };
- 
- static const struct of_device_id of_pwrap_match_tbl[] = {
--	{
--		.compatible = "mediatek,mt2701-pwrap",
--		.data = &pwrap_mt2701,
--	}, {
--		.compatible = "mediatek,mt6765-pwrap",
--		.data = &pwrap_mt6765,
--	}, {
--		.compatible = "mediatek,mt6779-pwrap",
--		.data = &pwrap_mt6779,
--	}, {
--		.compatible = "mediatek,mt6797-pwrap",
--		.data = &pwrap_mt6797,
--	}, {
--		.compatible = "mediatek,mt6873-pwrap",
--		.data = &pwrap_mt6873,
--	}, {
--		.compatible = "mediatek,mt7622-pwrap",
--		.data = &pwrap_mt7622,
--	}, {
--		.compatible = "mediatek,mt8135-pwrap",
--		.data = &pwrap_mt8135,
--	}, {
--		.compatible = "mediatek,mt8173-pwrap",
--		.data = &pwrap_mt8173,
--	}, {
--		.compatible = "mediatek,mt8183-pwrap",
--		.data = &pwrap_mt8183,
--	}, {
--		.compatible = "mediatek,mt8186-pwrap",
--		.data = &pwrap_mt8186,
--	}, {
--		.compatible = "mediatek,mt8195-pwrap",
--		.data = &pwrap_mt8195,
--	}, {
--		.compatible = "mediatek,mt8516-pwrap",
--		.data = &pwrap_mt8516,
--	}, {
--		/* sentinel */
--	}
-+	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
-+	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
-+	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
-+	{ .compatible = "mediatek,mt6797-pwrap", .data = &pwrap_mt6797 },
-+	{ .compatible = "mediatek,mt6873-pwrap", .data = &pwrap_mt6873 },
-+	{ .compatible = "mediatek,mt7622-pwrap", .data = &pwrap_mt7622 },
-+	{ .compatible = "mediatek,mt8135-pwrap", .data = &pwrap_mt8135 },
-+	{ .compatible = "mediatek,mt8173-pwrap", .data = &pwrap_mt8173 },
-+	{ .compatible = "mediatek,mt8183-pwrap", .data = &pwrap_mt8183 },
-+	{ .compatible = "mediatek,mt8186-pwrap", .data = &pwrap_mt8186 },
-+	{ .compatible = "mediatek,mt8195-pwrap", .data = &pwrap_mt8195 },
-+	{ .compatible = "mediatek,mt8516-pwrap", .data = &pwrap_mt8516 },
-+	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
- 
--- 
-2.35.1
+There is no DMA32 zone in some mediatek smartphone chip.
 
+Thanks,
+Yunfei.
 
 _______________________________________________
 Linux-mediatek mailing list
