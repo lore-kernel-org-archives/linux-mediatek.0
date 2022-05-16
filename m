@@ -4,60 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DCE5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 10:07:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9593DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 10:41:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vswKS2kVm4Ja3JJFKlq+7x8cT6rwQvJVREWt162HFv4=; b=AjChCKnFKMVkTY
-	RFjU8gJGSiLa5JV4U2rJ/KSiZEb1Ki9ChVa8w47tkfgr9lno+TVJzxogXly+thpoACzjLrwSdfP4D
-	o4qWUbPfnM0sCDaFaGYYJ1KkKRscGqqbOxgWQMeUe4jnOj2nd6OiCcTY+l40EtinXgiYGMaBl3fEC
-	zaAZK/d3Pxwj0YCzzkkNLbvntqg+vdZm5zzOJIvxm4HRA5gHwSCJ5UTAfMCdmObY6MXSIKKAAAgUD
-	PwcwjjebkKn521A53sJJn2d9CA555YOMUfP90y9ASpK73m3/WPONn9fLrHQyNAeQlZ0kpi2eqHNhr
-	zXNT/pebHdCDKJbOWuwg==;
+	List-Owner; bh=a4rVcPlOiwzwXRluquNwqpc6Qka4xGpRQEEtmIgD5dk=; b=gN/Vux89b1stSZ
+	Pn9+W2AzRfxWzWjjBIJBW5Wxh1oLm6fRTMg5RnKEGwquFk+QQY1XubENSgB8WopBFcMkBadePXSE+
+	5MvUPM4JpLxFHN2JYpQfDOt3T1UFq12P9VqixqyOiZcSGFQ36ETIiuo2Q6s9p/RBnuwZ5I3LDRpij
+	aXsS+CiGq4TbzWFfLobu/P7RV1+JokA7u0nni1pcELBTAQBWgjsbWc7A6DTkiHcs7X6iKJ2wDQ/yG
+	N4oq+vlMjPqHktu9AXUR7+bqqRIlypbNj4eEyW93h56t6MQJHWjzNrDyURd5Co+1X3LEU6TtNc+Ip
+	dWHS4Z5BghZhpAwRHrDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqXdB-0071t7-3J; Mon, 16 May 2022 10:07:13 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nqYAa-0079Yj-Dc; Mon, 16 May 2022 10:41:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqXcz-0071qp-OF; Mon, 16 May 2022 10:07:03 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 58EF61F42B2B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652695620;
- bh=f6jwulb2NLULA/5oaTqgRp/7nSTOiexmXap/G6mpgmQ=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=K3sXLj7fAWivUuYK3E1gThr/SRZt6RsQxqFySXNUH9sG3uZ73T3VYxUpGWDlTLHgG
- dTR4g96sT+ayvxJVZalEkVc5f+s2mQrd+R7OQ3f2r4YPE9u4pFV+f3ipZTQx+0FTkD
- dywnvP7JfxbKkFL/vgoK7NzkSRvHwhcQPCR4T0tTrrnbEmzzB7RrBcJn3d1GoDr//c
- Dt32cFurWFMVJNN3/cXqLBMLhJ6zP/MVIBAUex9o+5q7ttnJijAroA/7QdvdOZwici
- Q7foSG414T8SIjIMG81oDq9cxwcFyCu2d+vtCFxpxy//dcvaqvzdEVXAQMHMLkmvt/
- 7pBs8xU9fUqdA==
-Message-ID: <1c0b5dfc-4eb0-aa9d-cf38-657124022ed5@collabora.com>
-Date: Mon, 16 May 2022 12:06:56 +0200
+ id 1nqYAX-0079YB-7A; Mon, 16 May 2022 10:41:43 +0000
+X-UUID: ad8e48139f4f46a78050b1d1e9e07760-20220516
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:b524547c-c8cd-497a-bf7c-ed476eea1a8c, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:acbb2e94-563e-4fc2-8a0d-fda4821947ab,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: ad8e48139f4f46a78050b1d1e9e07760-20220516
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1274211; Mon, 16 May 2022 03:41:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 May 2022 03:41:33 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 16 May 2022 18:41:31 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 16 May 2022 18:41:31 +0800
+Message-ID: <e1dffbf98c034b99b1d7fd10aa009a645812abdc.camel@mediatek.com>
+Subject: Re: [PATCH v6 09/10] arm64: dts: mediatek: Add MediaTek CCI node
+ for MT8183
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <robh+dt@kernel.org>,
+ <krzk+dt@kernel.org>, <matthias.bgg@gmail.com>, <jia-wei.chang@mediatek.com>, 
+ <roger.lu@mediatek.com>, <hsinyi@google.com>, <khilman@baylibre.com>,
+ <angelogioacchino.delregno@collabora.com>, <linux-pm@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, "Andrew-sh . Cheng"
+ <andrew-sh.cheng@mediatek.com>
+Date: Mon, 16 May 2022 18:41:31 +0800
+In-Reply-To: <CAGXv+5FW59B1Dq8eH=5KjEdTxgT64GuvYZHZ9LnnTuaVrK3XpQ@mail.gmail.com>
+References: <20220505115226.20130-1-rex-bc.chen@mediatek.com>
+ <20220505115226.20130-10-rex-bc.chen@mediatek.com>
+ <CAGXv+5FW59B1Dq8eH=5KjEdTxgT64GuvYZHZ9LnnTuaVrK3XpQ@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH] soc: mediatek: mtk-mmsys: Add support for MT6795 Helio X10
-Content-Language: en-US
-To: CK Hu <ck.hu@mediatek.com>, matthias.bgg@gmail.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, konrad.dybcio@somainline.org,
- marijn.suijten@somainline.org, martin.botka@somainline.org,
- ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
- paul.bouchara@somainline.org, kernel@collabora.com
-References: <20220513170350.502501-1-angelogioacchino.delregno@collabora.com>
- <7c996c665a57fdd9ba8d6df4dc085f70afc1b933.camel@mediatek.com>
- <a7afc559-4e0a-6552-190c-19e58851ce68@collabora.com>
- <4b5d6607b90f3e36fce7e61e1768da55693546aa.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <4b5d6607b90f3e36fce7e61e1768da55693546aa.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_030701_971668_8BF4B5D7 
-X-CRM114-Status: GOOD (  21.64  )
+X-CRM114-CacheID: sfid-20220516_034141_315522_B8471E2E 
+X-CRM114-Status: GOOD (  20.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,97 +84,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/05/22 11:50, CK Hu ha scritto:
-> On Mon, 2022-05-16 at 10:44 +0200, AngeloGioacchino Del Regno wrote:
->> Il 16/05/22 07:43, CK Hu ha scritto:
->>> Hi, Angelo:
->>>
->>> On Fri, 2022-05-13 at 19:03 +0200, AngeloGioacchino Del Regno
->>> wrote:
->>>> Add MM support for the MT6795 SoC, using the mmsys default
->>>> routing
->>>> table.
->>>>
->>>> Signed-off-by: AngeloGioacchino Del Regno <
->>>> angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>
->>>> In order for this patch to have any meaning and functionality, it
->>>> is
->>>> required to also have in-tree the [1] MT6795 clocks series, even
->>>> though that's not required to actually compile this code.
->>>>
->>>> [1]
->>>>
-> https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/list/?series=641493__;!!CTRNKA9wMg0ARbw!ywDb_Gj4oV0iYHK_PbtJSNejzsJGlFVjX-1O0G1mR0vZX_5VeMtlZJ_AS6K_Mg$
->>>>    
->>>>
->>>>    drivers/soc/mediatek/mtk-mmsys.c | 11 +++++++++++
->>>>    1 file changed, 11 insertions(+)
->>>>
->>>> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
->>>> b/drivers/soc/mediatek/mtk-mmsys.c
->>>> index 06d8e83a2cb5..38b36b881a3b 100644
->>>> --- a/drivers/soc/mediatek/mtk-mmsys.c
->>>> +++ b/drivers/soc/mediatek/mtk-mmsys.c
->>>> @@ -57,6 +57,13 @@ static const struct mtk_mmsys_match_data
->>>> mt6779_mmsys_match_data = {
->>>>    	},
->>>>    };
->>>>    
->>>> +static const struct mtk_mmsys_driver_data
->>>> mt6795_mmsys_driver_data =
->>>> {
->>>> +	.clk_driver = "clk-mt6795-mm",
->>>> +	.routes = mmsys_default_routing_table,
->>>
->>> mt6795 should have its own routing table instead of default one.
->>> The
->>> default one is used for mt8173, mt2701, mt2712 which no one knows
->>> how
->>> to separate them. If you don't know the routing table of mt6795,
->>> just
->>> left this as NULL.
->>>
->>
->> Hello CK,
->>
->> I agree with you, in fact the first test that I've done was with
->> leaving
->> routes to NULL, but that did not work (I couldn't get the display to
->> work),
->> while assigning the default routing table resulted in having a
->> working
->> internal (DSI) display et al, which is why I have done that.
->>
->> I am sure that this may be a quirk that is required due to my
->> platform's
->> bootloader, but still, it won't work otherwise.
->>
->> If anyone from MediaTek wants to help with providing a better
->> solution for
->> that, you're welcome to - but otherwise, my proposal is to configure
->> MT6795
->> with that default routing table and eventually come back to this
->> later if
->> any issue with this gets discovered... I couldn't find any, though.
+On Mon, 2022-05-16 at 13:35 +0800, Chen-Yu Tsai wrote:
+> On Thu, May 5, 2022 at 8:04 PM Rex-BC Chen <rex-bc.chen@mediatek.com>
+> wrote:
+> > 
+> > Add MediaTek CCI devfreq node for MT8183.
+> > 
+> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-evb.dts    | 4 ++++
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 7 +++++++
+> >  3 files changed, 15 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> > index 8953dbf84f3e..7ac9864db9de 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> > @@ -412,6 +412,10 @@
+> > 
+> >  };
+> > 
+> > +&cci {
+> > +       proc-supply = <&mt6358_vproc12_reg>;
+> > +};
+> > +
+> >  &cpu0 {
+> >         proc-supply = <&mt6358_vproc12_reg>;
+> >  };
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> > index 8d5bf73a9099..b035e06840e6 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> > @@ -230,6 +230,10 @@
+> >         status = "okay";
+> >  };
+> > 
+> > +&cci {
+> > +       proc-supply = <&mt6358_vproc12_reg>;
+> > +};
+> > +
+> >  &cpu0 {
+> >         proc-supply = <&mt6358_vproc12_reg>;
+> >  };
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index cecf96b628b7..11caf3dd85cd 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -280,6 +280,13 @@
+> >                 };
+> >         };
+> > 
+> > +       cci: cci {
+> > +               compatible = "mediatek,mt8183-cci";
+> > +               clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
+> > +               clock-names = "cci_clock";
 > 
-> So you have a drm driver which support mt6795 and it would call
-> mtk_mmsys_ddp_connect() to setup routing routing register. You could
-> generate mt6795 routing table from default one by partial element that
-> you use in mt6795. I think this table would be smaller than the default
-> one.
+> Binding says there should be two clocks: the actual clock that drives
+> CCI, and a stable "intermediate" clock to switch to during clock rate
+> changes. So I think this should look like:
+> 
+>     clocks = <&mcucfg CLK_MCU_BUS_SEL>,
+>              <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+>     clock-names = "cci", "intermediate";
+> 
+> 
+> ChenYu
 > 
 
-Okay, that makes a lot of sense: I'll try following this advice.
+Hello Chen-Yu,
 
-Regards,
-Angelo
+Thanks for your reminder.
+I will update this and sned next version.
+
+BRs,
+Rex
+
+> > +               operating-points-v2 = <&cci_opp>;
+> > +       };
+> > +
+> >         cpus {
+> >                 #address-cells = <1>;
+> >                 #size-cells = <0>;
+> > --
+> > 2.18.0
+> > 
+> > 
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 
 _______________________________________________
 Linux-mediatek mailing list
