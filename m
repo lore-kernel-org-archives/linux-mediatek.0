@@ -4,80 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA552C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 05:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D78C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 May 2022 05:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C5yJC0w1FIXqWyZjQPoJzHvT35CknQ4vwBmgFYiWfe0=; b=BOfplZnj6dbLgQ
-	gU9h57yCJv4P4G9MQ8ABQ5Uc6eUqPeiCYZ1v7W+JMWb9VAZuqdCTFCBB+v+9wwQWtaiDrKVgJcS4n
-	+aY04tiO4XwLFtHOYFiDfBQNAa8Gm34uEMkJTN0tWXxoWgyCBybpqlw/938OU2qac8hsavaXPu9TZ
-	OZbskLAfwZCPjgqkQ9kHz6Us2A4tjmrFsOxTL/bYqYUubHNVDkPlFNkSu/zVVZd+8Rr2L/cWFIX2V
-	/lC/xA7iKzDUGAviC/bIVa9CZzKPn6RYLTE9dOYl7AMr7iMX7CuDrKJQJP5KeiH3zLJ42s8Imynms
-	FUNQTVRuN/dcdj+PAfHA==;
+	List-Owner; bh=xJeSGW1NKbzAi7kHJIz4kQ2ngfXCLLeH81l7WJkI0vk=; b=VaGnaEjc42pECp
+	XEdQ0eg/tCO+8opHm/UaSCCvkcq8dCtINMsgeekjo2YpFl6UeS9j6S/1W9wTmL1ql9Yt4KbVQ7cfG
+	rtzY09tK5EQVKfLQaUJakMyd8+3wN/jmmMdKCiWYp4YkGIUwtEVrGibw8J1QYq0vgGBy9P44ix2Dh
+	hvP2butQSxz8CG1YUXhXEwdfhC+GrPa2N19qBjOQlTnLe8nRuQ30Bh3JpWPWM9w0RaP5m/fyx6lLC
+	2GacRDgxUAolg4wnsenhm7TSKgGQcPXsrNLDt45pWTuzlKBAqhUxQbUrmTlAPAyra5NAtDz1jEsc9
+	uWx3DAmHMYXCaLsuOXDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqTD7-00617C-BA; Mon, 16 May 2022 05:24:01 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1nqTOM-0062XU-TD; Mon, 16 May 2022 05:35:38 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqTD4-00616P-MP; Mon, 16 May 2022 05:24:00 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id 137so13079423pgb.5;
- Sun, 15 May 2022 22:23:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=6PufeeVIY6YSnadgeYG6zxOdddyECj0hpjiQUnd1/t4=;
- b=HXqji3771EgifHiGomNpniwrIU+ie9rPF52m3Bz4BQcn7sqCTp7S1iV+Y5kWMUlt3h
- 7zmKbpBp8RzyOzLVM3nmTgVQHvzAj19rVzn3CG6Rat3aJb0MpWeOGvGWxc6FZIRcRp7n
- eFblSscpwDkQTdQ4RUtIFpemDca2zBXo51d0w96cjsykN10TuqFb07S+RZh4TxwGr3oY
- 96Mv3wK92ijQRj294jEpoqzpb+AAgYv2mMGnDns47Bf2IUAZErK5CQpUcOxR0rCSzumi
- ms7j9FhBJdnmmHalv37s1T6nrDL/u2JmjpuIreZYqhoqulCuo7a6RwJV5voIaGTZBWAl
- ud3w==
+ id 1nqTOJ-0062WH-GJ
+ for linux-mediatek@lists.infradead.org; Mon, 16 May 2022 05:35:37 +0000
+Received: by mail-ed1-x534.google.com with SMTP id g12so1479836edq.4
+ for <linux-mediatek@lists.infradead.org>; Sun, 15 May 2022 22:35:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=c/IovKeDQ5OmYImuaDKw85Gvkz+g6dB9ube8wouUX0E=;
+ b=GGajIGxKz4a1kdgVCnNp3TVY4oWNsaMBX25vD2wNxJjdlfjW0K2HSomOmhtNf8KlII
+ I/KzDUxpS795xfRF8NdRofQwNVP/BcZW3gRgq5wCMrBCZXhJNS+FRleC+mG3irXz/3aO
+ +mT31wgaBGkXLx4Qfi9CCUwCaASTGFEm4O6+Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=6PufeeVIY6YSnadgeYG6zxOdddyECj0hpjiQUnd1/t4=;
- b=qRx08ceJAev5gDzLFa6nnR9obpv0CBmVoCLu4sou7Cj/qPZM94Lwv8jYdova616ROf
- ut2gpdaIbBbpot+tjOgECsftvT+TBXXZ+27DLeXk97rxsAkzk9RJ3Ek5uj75jSPyRPTz
- fMR7dBZtck3Ci+JrkXaxepsmqB73dpurtVWA+9+JAwD1OMiFO7zu2pOEQQGxp4R7Zy+C
- 54Yx4r/tFEX/MJu0uIt9qSe341OEs9ISoB/t/A9kv62GZi0FhrWLWOX+LBicZkWi9FdF
- ewKq3l6mrjICYdpuWEFRy5ixk/6hYgQorI9OCARTtcq0wKqqGonqEjGSwTwfTNiuFhEu
- WImg==
-X-Gm-Message-State: AOAM5320hcLS9PodCre0S9tifan3Ad/cD3BP05Nasng4i/mNhf2Y3a4D
- XWFatik/hhW8EnNAB3tsQ50=
-X-Google-Smtp-Source: ABdhPJwDBnSEJgdLkGyJZBgruCIVaEPEvPbCPt3kcBKVapG9xK8NmPEHCF5GM3lkGMq6D5n5u9NRkg==
-X-Received: by 2002:a62:1687:0:b0:50d:3364:46d4 with SMTP id
- 129-20020a621687000000b0050d336446d4mr15786672pfw.74.1652678637338; 
- Sun, 15 May 2022 22:23:57 -0700 (PDT)
-Received: from google.com ([2620:15c:202:201:586d:4807:54a6:b6a0])
- by smtp.gmail.com with ESMTPSA id
- bb8-20020a170902bc8800b0015e8d4eb1d9sm5990342plb.35.2022.05.15.22.23.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 15 May 2022 22:23:56 -0700 (PDT)
-Date: Sun, 15 May 2022 22:23:53 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Kevin Hilman <khilman@baylibre.com>,
- Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RESEND PATCH 1/2] Input: mt6779-keypad - fix hardware code
- mapping
-Message-ID: <YoHf6Z4HTfh4Y+bn@google.com>
-References: <20220513151845.2802795-1-mkorpershoek@baylibre.com>
- <20220513151845.2802795-2-mkorpershoek@baylibre.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=c/IovKeDQ5OmYImuaDKw85Gvkz+g6dB9ube8wouUX0E=;
+ b=yb3moJOh6T14ikIJMHRO4rxJuLjlAMl7PH9iM8QX/sruS2TWMSPj5wo0DAoNKR9TKB
+ UzqF9F88Dh3u1Qsca3a4ma2jIgQ8rQTszFtGbRvSaQzBgKR3NDQH8kv+QrcVs9bLWX/4
+ CU4x6VHquOOXCnmXo1pFA+y7fDJlDnzwYzUr01vQ3WBUrDz8bjb22aDRi+mbt+NLVtzR
+ 6ASOhsB+NJ0NR22sXuSzq/hMlc2xsWL/SkjVsAsvnMqbqhz+C/ReyWSv+OT9UYieh1jx
+ 4o9kMizipu5OC+3jToZ/7srnFB0NJtu7wWrAd9JoWvLf5R/6VXUPqk5yEqnZFLNSQ6KO
+ I2JA==
+X-Gm-Message-State: AOAM53162MWKNvZ38FyU+rLsb+qWyt0IoDYPf70yl5iTNRhekraKiJoc
+ HCehwGWBxbIHdxMx73NJEa49xyFzGKD/fEeSGyluMA==
+X-Google-Smtp-Source: ABdhPJxkaaQU1pxAn/HNEptaZ1FK3UV5eSAHcvlMeQ1pJimMFp8UJ4ll80vonmeQUOiLh7XTmmmV9IDAbxXEwPO61wM=
+X-Received: by 2002:a05:6402:11cd:b0:427:bda5:542f with SMTP id
+ j13-20020a05640211cd00b00427bda5542fmr11486167edw.290.1652679329459; Sun, 15
+ May 2022 22:35:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220513151845.2802795-2-mkorpershoek@baylibre.com>
+References: <20220505115226.20130-1-rex-bc.chen@mediatek.com>
+ <20220505115226.20130-10-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220505115226.20130-10-rex-bc.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 16 May 2022 13:35:18 +0800
+Message-ID: <CAGXv+5FW59B1Dq8eH=5KjEdTxgT64GuvYZHZ9LnnTuaVrK3XpQ@mail.gmail.com>
+Subject: Re: [PATCH v6 09/10] arm64: dts: mediatek: Add MediaTek CCI node for
+ MT8183
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: rafael@kernel.org, viresh.kumar@linaro.org, robh+dt@kernel.org, 
+ krzk+dt@kernel.org, matthias.bgg@gmail.com, jia-wei.chang@mediatek.com, 
+ roger.lu@mediatek.com, hsinyi@google.com, khilman@baylibre.com, 
+ angelogioacchino.delregno@collabora.com, linux-pm@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ "Andrew-sh . Cheng" <andrew-sh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220515_222358_769504_09ED6807 
-X-CRM114-Status: GOOD (  25.13  )
+X-CRM114-CacheID: sfid-20220515_223535_600276_5E6446B9 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,84 +87,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 13, 2022 at 05:18:44PM +0200, Mattijs Korpershoek wrote:
-> In mt6779_keypad_irq_handler(), we
-> 1. Read a hardware code from KPD_MEM1 -> KPD_MEM5
-> 2. Use that hardware code to compute columns/rows for the standard
->    keyboard matrix.
-> 
-> According to the (non-public) datasheet, the
-> map between the hardware code and the cols/rows is:
-> 
->         |(0)  |(1)  |(2)
->     ----*-----*-----*-----
->         |     |     |
->         |(9)  |(10) |(11)
->     ----*-----*-----*-----
->         |     |     |
->         |(18) |(19) |(20)
->     ----*-----*-----*-----
->         |     |     |
-> 
-> This brings us to another formula:
-> -> row = code / 9;
-> -> col = code % 3;
-
-What if there are more than 3 columns?
-
-> 
-> Implement this mapping in bitnr_to_col_row() to fetch the
-> correct input event from keypad->input_dev->keycode and report that
-> back to userspace.
-> 
-> Fixes: f28af984e771 ("Input: mt6779-keypad - add MediaTek keypad driver")
-> Co-developed-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+On Thu, May 5, 2022 at 8:04 PM Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
+>
+> Add MediaTek CCI devfreq node for MT8183.
+>
+> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/input/keyboard/mt6779-keypad.c | 16 ++++++++++++++--
->  1 file changed, 14 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
-> index 2e7c9187c10f..23360de20da5 100644
-> --- a/drivers/input/keyboard/mt6779-keypad.c
-> +++ b/drivers/input/keyboard/mt6779-keypad.c
-> @@ -36,6 +36,19 @@ static const struct regmap_config mt6779_keypad_regmap_cfg = {
->  	.max_register = 36,
+>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts    | 4 ++++
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 7 +++++++
+>  3 files changed, 15 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> index 8953dbf84f3e..7ac9864db9de 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+> @@ -412,6 +412,10 @@
+>
 >  };
->  
-> +/*
-> + * | hardware key code | col0 | col1 | col2|
-> + * | ----------------- | -----| ---- | --- |
-> + * | row0              | 0    | 1    | 2   |
-> + * | row1              | 9    | 10   | 11  |
-> + * | row2              | 18   | 19   | 20  |
-> + */
-> +static void bitnr_to_col_row(int bit_nr, int *col, int *row)
-> +{
-> +	*row = bit_nr / 9;
-> +	*col = bit_nr % 3;
-> +}
+>
+> +&cci {
+> +       proc-supply = <&mt6358_vproc12_reg>;
+> +};
 > +
->  static irqreturn_t mt6779_keypad_irq_handler(int irq, void *dev_id)
->  {
->  	struct mt6779_keypad *keypad = dev_id;
-> @@ -61,8 +74,7 @@ static irqreturn_t mt6779_keypad_irq_handler(int irq, void *dev_id)
->  		if (bit_nr % 32 >= 16)
->  			continue;
->  
-> -		row = bit_nr / 32;
-> -		col = bit_nr % 32;
-> +		bitnr_to_col_row(bit_nr, &col, &row);
->  		scancode = MATRIX_SCAN_CODE(row, col, row_shift);
->  		/* 1: not pressed, 0: pressed */
->  		pressed = !test_bit(bit_nr, new_state);
-> -- 
-> 2.32.0
-> 
+>  &cpu0 {
+>         proc-supply = <&mt6358_vproc12_reg>;
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index 8d5bf73a9099..b035e06840e6 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -230,6 +230,10 @@
+>         status = "okay";
+>  };
+>
+> +&cci {
+> +       proc-supply = <&mt6358_vproc12_reg>;
+> +};
+> +
+>  &cpu0 {
+>         proc-supply = <&mt6358_vproc12_reg>;
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index cecf96b628b7..11caf3dd85cd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -280,6 +280,13 @@
+>                 };
+>         };
+>
+> +       cci: cci {
+> +               compatible = "mediatek,mt8183-cci";
+> +               clocks = <&apmixedsys CLK_APMIXED_CCIPLL>;
+> +               clock-names = "cci_clock";
 
--- 
-Dmitry
+Binding says there should be two clocks: the actual clock that drives
+CCI, and a stable "intermediate" clock to switch to during clock rate
+changes. So I think this should look like:
+
+    clocks = <&mcucfg CLK_MCU_BUS_SEL>,
+             <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+    clock-names = "cci", "intermediate";
+
+
+ChenYu
+
+> +               operating-points-v2 = <&cci_opp>;
+> +       };
+> +
+>         cpus {
+>                 #address-cells = <1>;
+>                 #size-cells = <0>;
+> --
+> 2.18.0
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
