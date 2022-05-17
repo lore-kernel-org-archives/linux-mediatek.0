@@ -4,84 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D7F5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 11:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 025A7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 11:49:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MCHRnF/Kwk4o5bionri4gxWNJbhKCrygZo5EiWxUnR8=; b=vKHqiNIp5sOP+d
-	o5abFvPUGLTNz1k4E0+w8Ty2vPZ5bjF6uP6Tlmi67YI76nfLM/BdBKndLmjInAUcpixjFEJCwOasD
-	wgs7nplvbqtIGO8Ez+Y3j/YzsSpJ92JvjmtHAoLXZW1rDxRKJrOFd1sK0ZzJgD2zPZGvYQkUBshMR
-	mR3XiTWDarStjXNkGuBzU2FP1aOiqdJ/DP4SRl2TnCT1ft6NNbKQLr4aPuFqylP5KUcPckUThOWHe
-	w5l0EEk9YqA/tMJswqIPZFz8tvlngxk80Y1gr4lutKYX+y1jpQFTqZ9g6j9uchR3GcEacTzHFJo9G
-	EQI8Ez5snAO82WJ66E+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZEH1Br5XSfC7o7gySrf6EWjV9BVhV7EMkHfV8xp3Cok=; b=jj0CHuuN/wR6VW
+	20miK48aY96rm5yYGOhfDY1E1hjPQzQr0tiUEIGEYLYE31iJxw6Oo0neMAtvfCmTjg/QdqLD02aQW
+	WpCgIIdR9vxW+q/GP8lbVgUgmrALwGRX7tJc1IlyZbDZP3GNkF4vs39kdCRKsCqZXgIDunyniWd5g
+	TiqNlNB4RX42pF+eO3hjMsddsI7ru320U9Z+UbRMYWGP8IA348Q0v+9XtGpq79x3CGNdNIO+aNNhT
+	cvSmk9sBmSRllc+v29t2tnKYgj9ks7Ao62N43ggrGZYEhV9e/KoNDzZpjixEnUASbxhpYL0Fx9XFF
+	lYr0cwbJutu+m+AigAbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqvKH-00DLz6-KO; Tue, 17 May 2022 11:25:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nqvhk-00DPt4-T2; Tue, 17 May 2022 11:49:32 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqvKC-00DLxo-TZ; Tue, 17 May 2022 11:25:16 +0000
-X-UUID: 9f8c0e46d60841c8aba06fef45cd90e7-20220517
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:72706705-ae1c-438f-941e-58ecd8784f27, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:2ea17ee2-edbf-4bd4-8a34-dfc5f7bb086d,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
- ,QS:0,BEC:nil
-X-UUID: 9f8c0e46d60841c8aba06fef45cd90e7-20220517
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1578645435; Tue, 17 May 2022 04:25:03 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 May 2022 04:25:01 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Tue, 17 May 2022 19:24:59 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 17 May 2022 19:24:59 +0800
-Message-ID: <789773e86ff45705a7b87d8aa13e315903b5ad69.camel@mediatek.com>
-Subject: Re: [PATCH v15 3/3] media: platform: mtk-mdp3: add Mediatek MDP3
- driver
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Alexandre Courbot
- <acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
- <pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
- <randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <cellopoint.kai@gmail.com>
-Date: Tue, 17 May 2022 19:24:59 +0800
-In-Reply-To: <20220512092306.6895-4-moudy.ho@mediatek.com>
-References: <20220512092306.6895-1-moudy.ho@mediatek.com>
- <20220512092306.6895-4-moudy.ho@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nqvhi-00DPrN-Aa
+ for linux-mediatek@lists.infradead.org; Tue, 17 May 2022 11:49:31 +0000
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24HAiQw6023720;
+ Tue, 17 May 2022 11:49:26 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=hYK91miCF3MwdBrJQXpDeTPggOvIAUBIe0qqtO2glQA=;
+ b=v0mWIbZL1DOZFcgDrCkD0EUIHm3RXiqefnLX+Ez90g/6IzoYtK2wh5+ySEfuSZFaF6mx
+ jtrhN+4ssS/D+HjUEd0UKrYkaGd4zCntJuKLf6xk1PGzudGqlv8K9rW2mX5t7apV3Lfy
+ +m6IEslF1Dt6BIbwueI56c6QO7oK8AzKOHbQCtq4fYJ84sMvurYAirOergzVhR/BodZ6
+ GtshWk6UrJNLVDFZF8Qcf7elX2qGb/A6mij571g3J+7Uq3HS0qLtUYin2jBDZhfFjFPr
+ acdJkNilBUsqxHDYLR9l9NdESQKp+sehdULAoMr/DKE8DnfvS6cC09ZeHvXQjfdozDox 4g== 
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3g2371x1v9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 17 May 2022 11:49:26 +0000
+Received: from pps.filterd
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
+ with SMTP id 24HBjfXI005481; Tue, 17 May 2022 11:49:25 GMT
+Received: from nam11-bn8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11lp2173.outbound.protection.outlook.com [104.47.58.173])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
+ 3g37cp9ten-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 17 May 2022 11:49:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CkdT0CNdbgDG4plSDGmfPedN20+PJFDkifaCZmI0DuaVz9Cy8Sr8IFej46aj2SPdzQfyRWcy3YwSBOmrc46jI0bAd3vDjErZX8Zx1bphQE/+g2VU8Fo24cjyht5IzWr2qCGGX9eu5nMRhGPxt2PehvnHz0eFMSwU5xJ06EbeeTPVVtwG9tjQTqEhFJ6+ldTEAxviBwOjP9ZaveOm7wqWoOLy8h1gFZVM/+LsYERUcueFwz97EGuzCehStKzwH9dF1PUXAJGGnTfGizH9EwIB0eIuE5mFeXPRLzxdk8Y595smx3xcGurTzNNR960Qhzw1mtRWDvUMWC+6YUZVShVmOg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hYK91miCF3MwdBrJQXpDeTPggOvIAUBIe0qqtO2glQA=;
+ b=jmz+uJC3LsIPb2ogiaXrVb07yv2Wafsfvdr25FyWUR3COE9+7wq9EwsxwqxlQOSh3a5gJN91uVy/4FvpmuRibAZLmBchl08+M85/oFNlZIBev/y6YAd0XvHJCUQMV2guwZpWM5+mHiuIp7yTaYZpU7QkeJ4+mQrwOcpahXlUfKguyMCWm+lTponAh8Vpnl72mP/LYlOTkuuHerh19fmQAWscvSt2U+HEK1/UykJB/pGkXyZ6iSzXaNLOMq4lTc80gVDJgeEhrgg5c3dQ/8mmPSqPp93g8nPTvm5qphOXHn/3croEOPEMn1SVjjEvjk6qAAhvFLdyrvmaYtUKXeW3tw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hYK91miCF3MwdBrJQXpDeTPggOvIAUBIe0qqtO2glQA=;
+ b=PV0TMPp3LLMg9qRUcsog97cWEfAwZN6GyqDhYoaTUinJgcrUqq1hkb7pzU4ql1UV1yWJoiYQeYRqxTfQ8yW3YBNaMVr5o5t601Eow8dGqYZBlqaQvNprWA0QBegN3w6Ia1bOAG+NAWne7vC1DM3eSbaH5LzAjigA7TFxaRUrjQM=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by MW5PR10MB5739.namprd10.prod.outlook.com
+ (2603:10b6:303:19c::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5206.13; Tue, 17 May
+ 2022 11:49:23 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::c053:117c:bd99:89ba]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::c053:117c:bd99:89ba%5]) with mapi id 15.20.5250.018; Tue, 17 May 2022
+ 11:49:22 +0000
+Date: Tue, 17 May 2022 14:49:13 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: haijun.liu@mediatek.com
+Cc: linux-mediatek@lists.infradead.org
+Subject: [bug report] net: wwan: t7xx: Data path HW layer
+Message-ID: <YoOLubp7ZUz4Sngw@kili>
+Content-Disposition: inline
+X-ClientProxiedBy: ZR0P278CA0152.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:41::10) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e69ce5d1-a2bf-424a-8c72-08da37fb48d8
+X-MS-TrafficTypeDiagnostic: MW5PR10MB5739:EE_
+X-Microsoft-Antispam-PRVS: <MW5PR10MB5739F120FFA5F32710A3D8AA8ECE9@MW5PR10MB5739.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: OrL7QYdGeR97h5WuzCmtUPiE9okg6G5RAa0yPbdlIfWPf5UG93VZ+jSVNTmLH0cMd05oJkVK2AXzzilTTqFg+K+P9KiyOvDD0i9vsrT43cFfmCK9IH+IdrnlfqdzFOsW2AZ9sCre8XqHMYhkE4lMV2rXrlvYEqAfn0ccQeq3u6LqVjXut0vIUPuSi7ewiYecO6KsBgsK9eOrGWQ57TMsevh7Hmj83UenZyxhT10DYOHRFWGnJy3uC48teqjj+1ceUzksYiqvI6nOjna2N0Wbp/0K/ijl+kIOCCGVAbNXhZzUdjhzgNzhdx+mnFD3MxmFNM5zoCCoIfsy0By1nqdi4e2L1MyMKmh/NB97+7Xdswwglm4pAzqN8IMGafZCS7j7mIUhx6/TvptkcQCefhl1LMsimouc9YUQQAszBECdX/9DK7NcYs++qZlBr+bQVtKk244Ltm4kic+CN94RPyV/NFzHxQAdEFOEss15U4qm8KDbXtp/gCzVNmDVft5tx88EWe/Z2nEitIIXCkyWSJek0Cp8L/LtPvkWkzsI8DipBlCgHvbSJFlCSl+jiww7WJCtGwVVXSkIFPMvc92v5u7umLlAmOFlWQ0b8AC0nLuO6Zdx26ALMa/udgFq0UzxKHQYZAvfSYzqcur+2pccLeQmogBeOe8eBaqPCb2lE+DOLNSXMTjDw1GQKY9WNzJ6F0XOey/Ci7TDKUwf2DrJM6eWfA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(366004)(186003)(83380400001)(33716001)(8676002)(66946007)(38100700002)(316002)(4326008)(66476007)(66556008)(8936002)(6916009)(5660300002)(52116002)(6666004)(44832011)(508600001)(9686003)(6512007)(26005)(6506007)(86362001)(4744005)(6486002)(2906002)(38350700002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?v2LAtRm5WSIAKDzDLPYnI5LUoSPhtrqzdwRuQjYzAGfnRVDSmsJvL3sptr8Q?=
+ =?us-ascii?Q?u47EAUnDY3FheEIrQrJOrKoZIBviF0SFiPd9pszlJmJ6WuJM2xmuUP4Uu7ot?=
+ =?us-ascii?Q?zWCAodhNHGwQ1QfrITAdDN73yEhk67HFvgMIyeBdTULYwq/GO33fFS0/kyNa?=
+ =?us-ascii?Q?ZVEvrLBXbL1WBrjIVvQLWpdKAZW+R3bKA5GGHn6fF+Xv/pTgSb9MGIXcxbZ8?=
+ =?us-ascii?Q?t0k3FxTR/QdFUW6ew2ZLPMRNMaY7O4/zcc4ej2aD+lkXOE/itlmE/pkx+p6F?=
+ =?us-ascii?Q?vx0r3YRkL36QlMvTe0zQXIUDMl6p7VLpKAIuYVbBmVled3Y3d1znXXluHclS?=
+ =?us-ascii?Q?6egQcOtwMwZSLS1ySf+sisFuGStDGN10/rr7r+Idmr4tkpEulT/8fLag31e0?=
+ =?us-ascii?Q?3KI+Om0paxQoaWeYs8geIQg1tTq+Y5fsFkEEHbhI4zW13VOSX8VCK/DQ+5fX?=
+ =?us-ascii?Q?wMJbKgMMfOvivt1H2QhDBrisTxWLpHZE9vDDWEN9vysVqoDDQpnDrD6Q4AG6?=
+ =?us-ascii?Q?F7Wwkuzlif7ANJXxPnU2wE6HEisUYTVDmZVnhycXBP6PeZw58Sx3WbSDl76D?=
+ =?us-ascii?Q?8AaUFkI53nW956Ypjjm3sbb4K+nUTU5gR0f0G0zyeHEWTTpMgEBqNiD865JB?=
+ =?us-ascii?Q?SM4V/c9WnqKo//3mmedmRRatBikkoQv1rCITHnvS9Rn/YYVjKSchJh+UoCv8?=
+ =?us-ascii?Q?m3ta18w6iPWEIEHr8iEFoE1rPFswvRn+sqFXGj4SJsN+uY43WVn/BNpN6LL8?=
+ =?us-ascii?Q?p2HLpyhD+s1tM2WRhp8fXLSEIg2dE7B3lE1SFn98957StVdaI+VfqWK9dFst?=
+ =?us-ascii?Q?ATfDqvPdOw02p1+KQnaPS1St2A2iUOVdKO3wR72IL5OfEnJ4rt+wemXyMF/S?=
+ =?us-ascii?Q?c45VGchimy9HGfYMjBFSa8tzRog8O7aBhi4BgkdeDQk/UE++O6NRJX+Wkzhg?=
+ =?us-ascii?Q?B2vTD4d0ohSRbrGb+xixw+T806uXulva7vPlrjnDnB0Vdc2fYyiPzMEppSbE?=
+ =?us-ascii?Q?Y7ZcVEfgHPcP5NyZlzAFq7OwLaae31xiwkfbz9B2ubLGexva84LvKiek8pna?=
+ =?us-ascii?Q?iqHYIacHC3QnfHpQTt3Ikpzfcl8aifw3fivctZiaOKWn3VoyqNchzsi0oHQj?=
+ =?us-ascii?Q?hOgwC3HYIlury6tEcvxATyiCTNpw/cN92sgy4ucSlmH4WnCsi+GwD/XsKevs?=
+ =?us-ascii?Q?5G63qjlOC8wOmKkImmCEHB9MSZ3kBapXqNVfyqlwEDm3kTyGu3+q952NoIMu?=
+ =?us-ascii?Q?XD8s5lIRFjTqMLDblqmlLl6a24ZQtKFo+Blc/JGyjjJqEO7aBILhTkBN0Ypg?=
+ =?us-ascii?Q?RiKmfRE59PrpgPP9dH5S3D26CzHCZJb/JoXss2SXOddLynSGDutZT3JlSdab?=
+ =?us-ascii?Q?U7JeZN9HMasPysU2iuNgDzsvldyjftJyVGeqaNduypxt64GxpVDvR1QFxfE0?=
+ =?us-ascii?Q?M2I9fmVfXtOG9OhbROgBDJRJKh3P6Een50qn69p2C2MEytOO7Ncll1njtexq?=
+ =?us-ascii?Q?kaDHe/INUs6+J44/r/vjBSb5qSxAAb4B+qpYlYHXTysQyv+Dy8550xj1ZBMH?=
+ =?us-ascii?Q?h2m19diQjrt0YXmh6r6fymByXanj4kWbUzYCVSt/SP3mFJLKcVOntStRLiIN?=
+ =?us-ascii?Q?OXT3YlCN/4FfxJ5JxMH2A19yI8T3pQNWFha7jy0km14tGRcpNkNsxYyU9aA6?=
+ =?us-ascii?Q?v1DkaBzqzfBC9Tcv+uNJTlX1FaOcENAdA6grDghAR7ENbmSnZO7NPCwrySCa?=
+ =?us-ascii?Q?8mx+Fe6VGWrmKBvRfZgzk2yDNQX73d0=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e69ce5d1-a2bf-424a-8c72-08da37fb48d8
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 May 2022 11:49:22.6066 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HRDSau8YvMVVN4sg++k6RhRWGGST46GJXpTSOs4apX9ZHvvXpFvQFY6tpbU3IWr5FRNbrul5SSYfSpzifYp5EbExoAcyS2RcUMGvN6wsKzo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR10MB5739
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486, 18.0.874
+ definitions=2022-05-17_02:2022-05-17,
+ 2022-05-17 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ malwarescore=0 mlxscore=0
+ phishscore=0 bulkscore=0 mlxlogscore=558 adultscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
+ definitions=main-2205170071
+X-Proofpoint-GUID: zkqgGC35JpzdtCc9HdCOo_5h5yhKevBG
+X-Proofpoint-ORIG-GUID: zkqgGC35JpzdtCc9HdCOo_5h5yhKevBG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_042512_993780_7CDB050E 
-X-CRM114-Status: GOOD (  16.80  )
+X-CRM114-CacheID: sfid-20220517_044930_534720_3D17C9FA 
+X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,448 +170,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-05-12 at 17:23 +0800, Moudy Ho wrote:
-> This patch adds driver for Mediatek's Media Data Path ver.3 (MDP3).
-> It provides the following functions:
->   color transform, format conversion, resize, crop, rotate, flip
->   and additional image quality enhancement.
-> 
-> The MDP3 driver is mainly used for Google Chromebook products to
-> import the new architecture to set the HW settings as shown below:
->   User -> V4L2 framework
->     -> MDP3 driver -> SCP (setting calculations)
->       -> MDP3 driver -> CMDQ (GCE driver) -> HW
-> 
-> Each modules' related operation control is sited in mtk-mdp3-comp.c
-> Each modules' register table is defined in file with "mdp_reg_"
-> prefix
-> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> Probe, power, suspend/resume, system level functions are defined in
-> mtk-mdp3-core.c
-> 
-> v4l2-compliance 1.22.1, 32 bits, 32-bit time_t
-> 
-> Compliance test for mtk-mdp3 device /dev/video2:
-> 
-> Driver Info:
-> 	Driver name      : mtk-mdp3
-> 	Card type        : 14001000.mdp3-rdma0
-> 	Bus info         : platform:mtk-mdp3
-> 	Driver version   : 5.18.0
-> 	Capabilities     : 0x84204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-> 		Device Capabilities
-> 	Device Caps      : 0x04204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-> 
-> Required ioctls:
-> 	test VIDIOC_QUERYCAP: OK
-> 	test invalid ioctls: OK
-> 
-> Allow for multiple opens:
-> 	test second /dev/video2 open: OK
-> 	test VIDIOC_QUERYCAP: OK
-> 	test VIDIOC_G/S_PRIORITY: OK
-> 	test for unlimited opens: OK
-> 
-> Debug ioctls:
-> 	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-> 	test VIDIOC_LOG_STATUS: OK (Not Supported)
-> 
-> Input ioctls:
-> 	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-> 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-> 	test VIDIOC_ENUMAUDIO: OK (Not Supported)
-> 	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-> 	test VIDIOC_G/S_AUDIO: OK (Not Supported)
-> 	Inputs: 0 Audio Inputs: 0 Tuners: 0
-> 
-> Output ioctls:
-> 	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-> 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-> 	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-> 	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-> 	Outputs: 0 Audio Outputs: 0 Modulators: 0
-> 
-> Input/Output configuration ioctls:
-> 	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-> 	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-> 	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-> 	test VIDIOC_G/S_EDID: OK (Not Supported)
-> 
-> Control ioctls:
-> 	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-> 	test VIDIOC_QUERYCTRL: OK
-> 	test VIDIOC_G/S_CTRL: OK
-> 	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-> 	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-> 	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-> 	Standard Controls: 4 Private Controls: 0
-> 
-> Format ioctls:
-> 	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> 	test VIDIOC_G/S_PARM: OK (Not Supported)
-> 	test VIDIOC_G_FBUF: OK (Not Supported)
-> 	test VIDIOC_G_FMT: OK
-> 	test VIDIOC_TRY_FMT: OK
-> 	test VIDIOC_S_FMT: OK
-> 	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-> 	test Cropping: OK
-> 	test Composing: OK
-> 	test Scaling: OK
-> 
-> Codec ioctls:
-> 	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-> 	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-> 	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-> 
-> Buffer ioctls:
-> 	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-> 	test VIDIOC_EXPBUF: OK
-> 	test Requests: OK (Not Supported)
-> 	test TIME32/64: OK
-> 
-> Test input 0:
-> 
-> Streaming ioctls:
-> 	test read/write: OK (Not Supported)
-> 	test blocking wait: OK
-> 
-> 	Video Output Multiplanar: Frame #002
-> 	Video Output Multiplanar: Frame #003
-> 	Video Output Multiplanar: Frame #004
-> 	Video Output Multiplanar: Frame #005
-> 	Video Output Multiplanar: Frame #006
-> 	Video Output Multiplanar: Frame #007
-> 	Video Output Multiplanar: Frame #008
-> 	Video Output Multiplanar: Frame #009
-> 	Video Output Multiplanar: Frame #010
-> 	Video Output Multiplanar: Frame #011
-> 	Video Output Multiplanar: Frame #012
-> 	Video Output Multiplanar: Frame #013
-> 	Video Output Multiplanar: Frame #014
-> 	Video Output Multiplanar: Frame #015
-> 	Video Output Multiplanar: Frame #016
-> 	Video Output Multiplanar: Frame #017
-> 	Video Output Multiplanar: Frame #018
-> 	Video Output Multiplanar: Frame #019
-> 	Video Output Multiplanar: Frame #020
-> 	Video Output Multiplanar: Frame #021
-> 	Video Output Multiplanar: Frame #022
-> 	Video Output Multiplanar: Frame #023
-> 	Video Output Multiplanar: Frame #024
-> 	Video Output Multiplanar: Frame #025
-> 	Video Output Multiplanar: Frame #026
-> 	Video Output Multiplanar: Frame #027
-> 	Video Output Multiplanar: Frame #028
-> 	Video Output Multiplanar: Frame #029
-> 	Video Output Multiplanar: Frame #030
-> 	Video Output Multiplanar: Frame #031
-> 	Video Output Multiplanar: Frame #032
-> 	Video Output Multiplanar: Frame #033
-> 	Video Output Multiplanar: Frame #034
-> 	Video Output Multiplanar: Frame #035
-> 	Video Output Multiplanar: Frame #036
-> 	Video Output Multiplanar: Frame #037
-> 	Video Output Multiplanar: Frame #038
-> 	Video Output Multiplanar: Frame #039
-> 	Video Output Multiplanar: Frame #040
-> 	Video Output Multiplanar: Frame #041
-> 	Video Output Multiplanar: Frame #042
-> 	Video Output Multiplanar: Frame #043
-> 	Video Output Multiplanar: Frame #044
-> 	Video Output Multiplanar: Frame #045
-> 	Video Output Multiplanar: Frame #046
-> 	Video Output Multiplanar: Frame #047
-> 	Video Output Multiplanar: Frame #048
-> 	Video Output Multiplanar: Frame #049
-> 	Video Output Multiplanar: Frame #050
-> 	Video Output Multiplanar: Frame #051
-> 	Video Output Multiplanar: Frame #052
-> 	Video Output Multiplanar: Frame #053
-> 	Video Output Multiplanar: Frame #054
-> 	Video Output Multiplanar: Frame #055
-> 	Video Output Multiplanar: Frame #056
-> 	Video Output Multiplanar: Frame #057
-> 	Video Output Multiplanar: Frame #058
-> 	Video Output Multiplanar: Frame #059
-> 
-> 	Video Capture Multiplanar: Captured 58 buffers
-> 	test MMAP (no poll): OK
-> 
-> 	Video Output Multiplanar: Frame #002 (select)
-> 	Video Output Multiplanar: Frame #003 (select)
-> 	Video Output Multiplanar: Frame #004 (select)
-> 	Video Output Multiplanar: Frame #005 (select)
-> 	Video Output Multiplanar: Frame #006 (select)
-> 	Video Output Multiplanar: Frame #007 (select)
-> 	Video Output Multiplanar: Frame #008 (select)
-> 	Video Output Multiplanar: Frame #009 (select)
-> 	Video Output Multiplanar: Frame #010 (select)
-> 	Video Output Multiplanar: Frame #011 (select)
-> 	Video Output Multiplanar: Frame #012 (select)
-> 	Video Output Multiplanar: Frame #013 (select)
-> 	Video Output Multiplanar: Frame #014 (select)
-> 	Video Output Multiplanar: Frame #015 (select)
-> 	Video Output Multiplanar: Frame #016 (select)
-> 	Video Output Multiplanar: Frame #017 (select)
-> 	Video Output Multiplanar: Frame #018 (select)
-> 	Video Output Multiplanar: Frame #019 (select)
-> 	Video Output Multiplanar: Frame #020 (select)
-> 	Video Output Multiplanar: Frame #021 (select)
-> 	Video Output Multiplanar: Frame #022 (select)
-> 	Video Output Multiplanar: Frame #023 (select)
-> 	Video Output Multiplanar: Frame #024 (select)
-> 	Video Output Multiplanar: Frame #025 (select)
-> 	Video Output Multiplanar: Frame #026 (select)
-> 	Video Output Multiplanar: Frame #027 (select)
-> 	Video Output Multiplanar: Frame #028 (select)
-> 	Video Output Multiplanar: Frame #029 (select)
-> 	Video Output Multiplanar: Frame #030 (select)
-> 	Video Output Multiplanar: Frame #031 (select)
-> 	Video Output Multiplanar: Frame #032 (select)
-> 	Video Output Multiplanar: Frame #033 (select)
-> 	Video Output Multiplanar: Frame #034 (select)
-> 	Video Output Multiplanar: Frame #035 (select)
-> 	Video Output Multiplanar: Frame #036 (select)
-> 	Video Output Multiplanar: Frame #037 (select)
-> 	Video Output Multiplanar: Frame #038 (select)
-> 	Video Output Multiplanar: Frame #039 (select)
-> 	Video Output Multiplanar: Frame #040 (select)
-> 	Video Output Multiplanar: Frame #041 (select)
-> 	Video Output Multiplanar: Frame #042 (select)
-> 	Video Output Multiplanar: Frame #043 (select)
-> 	Video Output Multiplanar: Frame #044 (select)
-> 	Video Output Multiplanar: Frame #045 (select)
-> 	Video Output Multiplanar: Frame #046 (select)
-> 	Video Output Multiplanar: Frame #047 (select)
-> 	Video Output Multiplanar: Frame #048 (select)
-> 	Video Output Multiplanar: Frame #049 (select)
-> 	Video Output Multiplanar: Frame #050 (select)
-> 	Video Output Multiplanar: Frame #051 (select)
-> 	Video Output Multiplanar: Frame #052 (select)
-> 	Video Output Multiplanar: Frame #053 (select)
-> 	Video Output Multiplanar: Frame #054 (select)
-> 	Video Output Multiplanar: Frame #055 (select)
-> 	Video Output Multiplanar: Frame #056 (select)
-> 	Video Output Multiplanar: Frame #057 (select)
-> 	Video Output Multiplanar: Frame #058 (select)
-> 	Video Output Multiplanar: Frame #059 (select)
-> 
-> 	Video Capture Multiplanar: Captured 58 buffers
-> 	test MMAP (select): OK
-> 
-> 	Video Output Multiplanar: Frame #002 (epoll)
-> 	Video Output Multiplanar: Frame #003 (epoll)
-> 	Video Output Multiplanar: Frame #004 (epoll)
-> 	Video Output Multiplanar: Frame #005 (epoll)
-> 	Video Output Multiplanar: Frame #006 (epoll)
-> 	Video Output Multiplanar: Frame #007 (epoll)
-> 	Video Output Multiplanar: Frame #008 (epoll)
-> 	Video Output Multiplanar: Frame #009 (epoll)
-> 	Video Output Multiplanar: Frame #010 (epoll)
-> 	Video Output Multiplanar: Frame #011 (epoll)
-> 	Video Output Multiplanar: Frame #012 (epoll)
-> 	Video Output Multiplanar: Frame #013 (epoll)
-> 	Video Output Multiplanar: Frame #014 (epoll)
-> 	Video Output Multiplanar: Frame #015 (epoll)
-> 	Video Output Multiplanar: Frame #016 (epoll)
-> 	Video Output Multiplanar: Frame #017 (epoll)
-> 	Video Output Multiplanar: Frame #018 (epoll)
-> 	Video Output Multiplanar: Frame #019 (epoll)
-> 	Video Output Multiplanar: Frame #020 (epoll)
-> 	Video Output Multiplanar: Frame #021 (epoll)
-> 	Video Output Multiplanar: Frame #022 (epoll)
-> 	Video Output Multiplanar: Frame #023 (epoll)
-> 	Video Output Multiplanar: Frame #024 (epoll)
-> 	Video Output Multiplanar: Frame #025 (epoll)
-> 	Video Output Multiplanar: Frame #026 (epoll)
-> 	Video Output Multiplanar: Frame #027 (epoll)
-> 	Video Output Multiplanar: Frame #028 (epoll)
-> 	Video Output Multiplanar: Frame #029 (epoll)
-> 	Video Output Multiplanar: Frame #030 (epoll)
-> 	Video Output Multiplanar: Frame #031 (epoll)
-> 	Video Output Multiplanar: Frame #032 (epoll)
-> 	Video Output Multiplanar: Frame #033 (epoll)
-> 	Video Output Multiplanar: Frame #034 (epoll)
-> 	Video Output Multiplanar: Frame #035 (epoll)
-> 	Video Output Multiplanar: Frame #036 (epoll)
-> 	Video Output Multiplanar: Frame #037 (epoll)
-> 	Video Output Multiplanar: Frame #038 (epoll)
-> 	Video Output Multiplanar: Frame #039 (epoll)
-> 	Video Output Multiplanar: Frame #040 (epoll)
-> 	Video Output Multiplanar: Frame #041 (epoll)
-> 	Video Output Multiplanar: Frame #042 (epoll)
-> 	Video Output Multiplanar: Frame #043 (epoll)
-> 	Video Output Multiplanar: Frame #044 (epoll)
-> 	Video Output Multiplanar: Frame #045 (epoll)
-> 	Video Output Multiplanar: Frame #046 (epoll)
-> 	Video Output Multiplanar: Frame #047 (epoll)
-> 	Video Output Multiplanar: Frame #048 (epoll)
-> 	Video Output Multiplanar: Frame #049 (epoll)
-> 	Video Output Multiplanar: Frame #050 (epoll)
-> 	Video Output Multiplanar: Frame #051 (epoll)
-> 	Video Output Multiplanar: Frame #052 (epoll)
-> 	Video Output Multiplanar: Frame #053 (epoll)
-> 	Video Output Multiplanar: Frame #054 (epoll)
-> 	Video Output Multiplanar: Frame #055 (epoll)
-> 	Video Output Multiplanar: Frame #056 (epoll)
-> 	Video Output Multiplanar: Frame #057 (epoll)
-> 	Video Output Multiplanar: Frame #058 (epoll)
-> 	Video Output Multiplanar: Frame #059 (epoll)
-> 
-> 	Video Capture Multiplanar: Captured 58 buffers
-> 	test MMAP (epoll): OK
-> 	test USERPTR (no poll): OK (Not Supported)
-> 	test USERPTR (select): OK (Not Supported)
-> 	test DMABUF: Cannot test, specify --expbuf-device
-> 
-> Total for mtk-mdp3 device /dev/video2: 53, Succeeded: 53, Failed: 0,
-> Warnings: 0
-> 
-> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  drivers/media/platform/mediatek/Kconfig       |   1 +
->  drivers/media/platform/mediatek/Makefile      |   1 +
->  drivers/media/platform/mediatek/mdp3/Kconfig  |  20 +
->  drivers/media/platform/mediatek/mdp3/Makefile |   6 +
->  .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |  19 +
->  .../platform/mediatek/mdp3/mdp_reg_rdma.h     |  65 ++
->  .../platform/mediatek/mdp3/mdp_reg_rsz.h      |  39 +
->  .../platform/mediatek/mdp3/mdp_reg_wdma.h     |  47 +
->  .../platform/mediatek/mdp3/mdp_reg_wrot.h     |  55 +
->  .../platform/mediatek/mdp3/mtk-img-ipi.h      | 290 +++++
->  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 486 +++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  48 +
->  .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 987
-> ++++++++++++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-comp.h    | 185 ++++
->  .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 379 +++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  95 ++
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     | 772 ++++++++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |  48 +
->  .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 736 +++++++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-regs.h    | 370 +++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     | 312 ++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |  78 ++
->  22 files changed, 5039 insertions(+)
->  create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
->  create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
->  create mode 100644
-> drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
->  create mode 100644
-> drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
->  create mode 100644
-> drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
->  create mode 100644
-> drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
->  create mode 100644
-> drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-
-> ipi.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> cmdq.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> cmdq.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> comp.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> comp.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> core.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> core.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> m2m.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> m2m.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> regs.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> regs.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> vpu.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> vpu.h
-> 
-> diff --git a/drivers/media/platform/mediatek/Kconfig
-> b/drivers/media/platform/mediatek/Kconfig
-> index af47d9888552..84104e2cd024 100644
-> --- a/drivers/media/platform/mediatek/Kconfig
-> +++ b/drivers/media/platform/mediatek/Kconfig
-> @@ -6,3 +6,4 @@ source "drivers/media/platform/mediatek/jpeg/Kconfig"
->  source "drivers/media/platform/mediatek/mdp/Kconfig"
->  source "drivers/media/platform/mediatek/vcodec/Kconfig"
->  source "drivers/media/platform/mediatek/vpu/Kconfig"
-> +source "drivers/media/platform/mediatek/mdp3/Kconfig"
-> diff --git a/drivers/media/platform/mediatek/Makefile
-> b/drivers/media/platform/mediatek/Makefile
-> index d3850a13f128..38e6ba917fe5 100644
-> --- a/drivers/media/platform/mediatek/Makefile
-> +++ b/drivers/media/platform/mediatek/Makefile
-> @@ -3,3 +3,4 @@ obj-y += jpeg/
->  obj-y += mdp/
->  obj-y += vcodec/
->  obj-y += vpu/
-> +obj-y += mdp3/
-> diff --git a/drivers/media/platform/mediatek/mdp3/Kconfig
-> b/drivers/media/platform/mediatek/mdp3/Kconfig
-> new file mode 100644
-> index 000000000000..6640763c7c5e
-> --- /dev/null
-> +++ b/drivers/media/platform/mediatek/mdp3/Kconfig
-> @@ -0,0 +1,20 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config VIDEO_MEDIATEK_MDP3
-> +	tristate "Mediatek MDP v3 driver"
-> +	depends on MTK_IOMMU || COMPLIE_TEST
-> +	depends on VIDEO_DEV
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on MTK_MMSYS
-> +	depends on HAS_DMA
-> +	select VIDEOBUF2_DMA_CONTIG
-> +	select V4L2_MEM2MEM_DEV
-> +	select VIDEO_MEDIATEK_VPU
-> +	select MTK_CMDQ
-> +	select MTK_SCP
-> +	default n
-> +	help
-> +	    It is a v4l2 driver and present in Mediatek MT8183 SoC.
-> +	    The driver supports for scaling and color space conversion.
-> +
-> +	    To compile this driver as a module, choose M here: the
-> +	    module will be called mtk-mdp3.
-> diff --git a/drivers/media/platform/mediatek/mdp3/Makefile
-> b/drivers/media/platform/mediatek/mdp3/Makefile
-> new file mode 100644
-> index 000000000000..8772f5ac2867
-> --- /dev/null
-> +++ b/drivers/media/platform/mediatek/mdp3/Makefile
-> @@ -0,0 +1,6 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +mtk-mdp3-y += mtk-mdp3-core.o mtk-mdp3-vpu.o mtk-mdp3-regs.o
-> +mtk-mdp3-y += mtk-mdp3-m2m.o
-> +mtk-mdp3-y += mtk-mdp3-comp.o mtk-mdp3-cmdq.o
-> +
-> +obj-$(CONFIG_VIDEO_MEDIATEK_MDP3) += mtk-mdp3.o
-> \ No newline at end of file
+Hello Haijun Liu,
 
-Hello Moudy,
+The patch 33f78ab5a38a: "net: wwan: t7xx: Data path HW layer" from
+May 6, 2022, leads to the following Smatch static checker warning:
 
-I think you should fix "\ No newline at end of file".
+	drivers/net/wwan/t7xx/t7xx_dpmaif.c:1054 t7xx_dl_add_timedout()
+	warn: signedness bug returning '(-110)'
 
-BRs,
-Rex
+drivers/net/wwan/t7xx/t7xx_dpmaif.c
+    1046 static bool t7xx_dl_add_timedout(struct dpmaif_hw_info *hw_info)
+                ^^^^
+    1047 {
+    1048         u32 value;
+    1049         int ret;
+    1050 
+    1051         ret = ioread32_poll_timeout_atomic(hw_info->pcie_base + DPMAIF_DL_BAT_ADD,
+    1052                                            value, !(value & DPMAIF_DL_ADD_NOT_READY), 0,
+    1053                                            DPMAIF_CHECK_TIMEOUT_US);
+--> 1054         return ret;
 
+Returning negative error codes to bool is non-standard but, in this
+case, harmless.
+
+    1055 }
+
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-mediatek mailing list
