@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F42C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 10:16:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4029DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 10:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t4zog41QWDI15OpoT22HFJCkFe5UGbpm6zZURhOaUSo=; b=GaOjtFyeMHs+xw
-	ckmEowzn97RnqdTwDKs3oPJ4EHO9fDyJJ+fZ3sf6ERuvoQAONCgGjtRK+RYj/JvFuGcGGfFXs6Dbx
-	TRJw2P/VA4LaradnrX3WSIZfTyC1AZvD7mcdb97R/dk3h2HRwJuBA6nlGLnt24EHlUrKBsxhm+iZP
-	JQhlNMHWKPL4D932d4ID9ru19wkO3LExDmoZWcblm9bJ/5TjmeL71a/tEmCGOpto37jRsZ4uZCiak
-	wWFz2hz5Pp1hx6xxFOrnquiijQYAnwd5JUesOOGX39SqV5sVyhWbW/+DQLuC+qyY0mU7kK8MkMqe2
-	JwSwgH2RiVpf0zyGrfEw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=J1jMXeHAZNQeDPkkHLGn/XEL0zC17daD3a+hD4vcgHI=; b=MmbylahMFeqH19
+	rd8WlXp0hGzTTrZsYMHqu3hbymenR9BAl5FdFQ31Vvv78kkuaH3vajRoD0JAkNiQTDZpCGONYHC2y
+	tIRC9VBcJbQWbheFx16YVceTxfBtcrupDDEECSbtb2GJYizZ4VkWjL0xREEUpMbbBeJDNfpvINkb6
+	4/Ff8YFVt4yMmR4GhpBay5/gtUYJdhGMBYfaInZSjMaeWfeaks6qvygUG0dfb8+S4BUxvzbzNZzjS
+	gkr8p26HFzoTx7ut86ejNKc+LLHAewPqliLlfOXDyW3XExVmSe6/AU810WnH3dOJjNLn3EdaByP6r
+	KIs11femz8kZvTWtffjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nquFG-00Czfi-8X; Tue, 17 May 2022 10:16:02 +0000
+	id 1nquFH-00CzgL-SJ; Tue, 17 May 2022 10:16:03 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nquEb-00CzM7-Nn; Tue, 17 May 2022 10:15:23 +0000
+ id 1nquEb-00CzLb-Nl; Tue, 17 May 2022 10:15:23 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id B30531F443BA
+ (Authenticated sender: kholk11) with ESMTPSA id E48A91F443AD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652782520;
- bh=yD0K1LzG4sl17Wt8hLcimPzliudGfQA7GrWMkET9a1g=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Y2VeW1mF5P+bz0Wp52qj1JfvQcWLqA1g13V0NcabygswWM+vcSxj+O1EhPYfx9tiF
- MRaFMLCHDkw3LCLqZ3CU3fK0wOGEgw6AjVbXyCJrkKx95BzfWgugBbRg1TeTLku7Yx
- dndIBqlaxPVq8PS3NzqSkrNv20/v87VOqIPDP4b7D6dObkx6qXCh+uEeK3STrAu1ND
- Sp2JCxYrWRDfOXPHTIPyPTRZVhgNOfk2CZTO5CkAuafegW3TanXw8+KoFTL+Z52MqO
- Blam74p/7Xgx8M8JKaR4JmWcfQG/KUIk4YhU8dP7OfXHOlBQbg+eDCl/ZbosxgP+wB
- b9UmsnZufNlbA==
+ s=mail; t=1652782519;
+ bh=/ybxZchoatmstITV+vbv8WNDUQQ26yVZNo8ucCimxO0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Lat5GG2dhJTa99ZFin3wL/unvgIMD5hfspmaBRa8DIOeK40XUqL++OACY+H9T+M4K
+ W2KVp2peUKJROJsBHpPClT2DiZ2v0d6lJWjPbqEl28kSS5s2FpTauqtmdpKkMAud5j
+ XK5SzJ++3DY+1cNWfuBuBVVJPrLXakcuBSPgf7l/bWw9w0PiTsMK00ckQhC68ozM/c
+ 4hg47ViypSbwevMtvor9ucs3m0zt7dW9/JNl3lWZLciPZTWzncL28rY5JBVw0TClmj
+ JHJQ6hOksP0XdMPEJg/OGmHWOIGT1ufiyxK3zCAWARnzK7TzelTp5wS/7g88NBFm52
+ UB7cXDcQRDctg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
@@ -43,17 +43,14 @@ Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
  chun-jie.chen@mediatek.com, rex-bc.chen@mediatek.com, wenst@chromium.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/6] dt-bindings: arm: mt8186-clock: Remove unnecessary
- 'items' and fix formatting
-Date: Tue, 17 May 2022 12:15:09 +0200
-Message-Id: <20220517101514.21639-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/6] dt-bindings: arm: MediaTek: Fix clock bindings
+Date: Tue, 17 May 2022 12:15:08 +0200
+Message-Id: <20220517101514.21639-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220517101514.21639-1-angelogioacchino.delregno@collabora.com>
-References: <20220517101514.21639-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_031522_014419_DBCD645C 
-X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-CacheID: sfid-20220517_031522_037776_1BF2A762 
+X-CRM114-Status: UNSURE (   8.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,54 +68,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There's no need for 'items' when there's only one item; while at it,
-also fix formatting by adding a blank line before specifying 'reg'.
+As per Rob Herring's review [1] on my mt6795 clocks bindings patches, for
+which I've used the already upstreamed ones as a base, it was found that
+these bindings have some issues.
+This series is addressing the issues that were found by Rob on my series,
+which are present on all of the already merged bindings.
 
-Fixes: f113a51aa2cf ("dt-bindings: ARM: MediaTek: Add new document bindings of MT8186 clock")
-Signed-off-by: AngeloGioacchino	Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../arm/mediatek/mediatek,mt8186-clock.yaml   | 28 +++++++++----------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20220513165050.500831-5-angelogioacchino.delregno@collabora.com/#24859953
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml
-index cf1002c3efa6..371eace6780b 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml
-@@ -21,20 +21,20 @@ description: |
- 
- properties:
-   compatible:
--    items:
--      - enum:
--          - mediatek,mt8186-imp_iic_wrap
--          - mediatek,mt8186-mfgsys
--          - mediatek,mt8186-wpesys
--          - mediatek,mt8186-imgsys1
--          - mediatek,mt8186-imgsys2
--          - mediatek,mt8186-vdecsys
--          - mediatek,mt8186-vencsys
--          - mediatek,mt8186-camsys
--          - mediatek,mt8186-camsys_rawa
--          - mediatek,mt8186-camsys_rawb
--          - mediatek,mt8186-mdpsys
--          - mediatek,mt8186-ipesys
-+    enum:
-+      - mediatek,mt8186-imp_iic_wrap
-+      - mediatek,mt8186-mfgsys
-+      - mediatek,mt8186-wpesys
-+      - mediatek,mt8186-imgsys1
-+      - mediatek,mt8186-imgsys2
-+      - mediatek,mt8186-vdecsys
-+      - mediatek,mt8186-vencsys
-+      - mediatek,mt8186-camsys
-+      - mediatek,mt8186-camsys_rawa
-+      - mediatek,mt8186-camsys_rawb
-+      - mediatek,mt8186-mdpsys
-+      - mediatek,mt8186-ipesys
-+
-   reg:
-     maxItems: 1
- 
+AngeloGioacchino Del Regno (6):
+  dt-bindings: arm: mt8186-clock: Remove unnecessary 'items' and fix
+    formatting
+  dt-bindings: arm: mt8186: Set #clock-cells as required property
+  dt-bindings: arm: mt8195-clock: Remove unnecessary 'items' and fix
+    formatting
+  dt-bindings: arm: mt8195: Set #clock-cells as required property
+  dt-bindings: arm: mt8192-clock: Remove unnecessary 'items'
+  dt-bindings: arm: mt8192: Set #clock-cells as required property
+
+ .../arm/mediatek/mediatek,mt8186-clock.yaml   | 29 ++++-----
+ .../mediatek/mediatek,mt8186-sys-clock.yaml   |  1 +
+ .../arm/mediatek/mediatek,mt8192-clock.yaml   | 46 +++++++--------
+ .../mediatek/mediatek,mt8192-sys-clock.yaml   |  1 +
+ .../arm/mediatek/mediatek,mt8195-clock.yaml   | 59 ++++++++++---------
+ .../mediatek/mediatek,mt8195-sys-clock.yaml   |  1 +
+ 6 files changed, 71 insertions(+), 66 deletions(-)
+
 -- 
 2.35.1
 
