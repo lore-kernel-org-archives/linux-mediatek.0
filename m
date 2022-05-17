@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31249C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48671C4332F
 	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 13:33:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KXFzhK+bFaP4Pe6tXNZtCZu85iJt/cxKMioFkuEBwnA=; b=jAqQgdKELtcoiZ
-	dzs59Pogxf8I1KUWNPT0ZrCCq4TO3yV49lFJxwBPHzpa+YaPOSV0O8wSJNnOIkUKopSx9hTBdsYOH
-	1OIe+rzGKeS6KQc/NB8Jb8l/dyBIq5IblBzFILqbO3M0tqZQEtM7mRSsBssPOODyNQUkvtZoaxxiN
-	icN1YmXhhVBUsnwuh+8HrmWEuDSS3hxvCKVvoblUhT4YPTb3YwMYmJER1yJF/Fq7dnbPBQEYThvWj
-	b86sUsG4EHgKJdq4sugGeyZn8D79kS6gx9VaQb+ta8eCOZfRzBnOJcwWMInoGwxV86830s+8aNl0v
-	c8sH95vdsmcGBJ35zlsA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=R4Vt38ffSwp93hSnttbl7YVJZ+4nCz6YyNcaMWN4sbY=; b=JtQcd4wP6RZPKa
+	d2cZw6nOE0pc1pSpb+OHolis3NayLdHEP5cRyN0prDBZYlUQPjAkjRdbWO3yRsc6+NBomfViqg0Ua
+	3D1u2l+bKnunPTEeCT0TzzcIm+DcL7DDqkNorCw8lOn8vXZZpObBxdsKt5BvO/zmNyvj+jmwoa3iE
+	2Jb4ID+4eqOBvcVQFL6DHOGZyMy9KHUtrW/9pxMPbHpffRy8xYI/7iNJU5vQmjOc28aIRpyPLW5f1
+	NcGzRNbUReT0D1hgrLTWtLfGvrrX426xAnQxGJGFFLeJW6/1xrdazOZimkUgtsSVqNklGzIB7UDYE
+	pnxLYGAcQJpCj+gwffTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqxKc-00DwfK-Hw; Tue, 17 May 2022 13:33:46 +0000
+	id 1nqxKg-00DwhR-1A; Tue, 17 May 2022 13:33:50 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqx8V-00DrvQ-Jk; Tue, 17 May 2022 13:21:17 +0000
+ id 1nqx8U-00Drus-Co; Tue, 17 May 2022 13:21:16 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A3DBA1F433FF
+ (Authenticated sender: kholk11) with ESMTPSA id EEE141F433D9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652793674;
- bh=zgem76efQxZUsv0+gxSAdax2+eWd0SIKK8QhJzI9GfA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UwZHe+b3rbERTkOYjzLsihRgzCDI8+g/UKuWoGQdTbDi7TjDhMchWr1XqW7hsGSPt
- m2WnLw0WxEnnGn1kwZeQ/jqHE3toj79JSEZ2MnDO4SDfjvznYD4NqRLrbWZV9OGY3J
- IH3VNuFDZinAh4E0jV0An355buG1pdMEqw0MWql+qysQ7Sm2jNhBl/3U1o8/6SvwKr
- furguRab2t3P3IpJ9Dz2LEP7fIXy2HYKpMhPit9cgaLS2Vp/04eNwV2x5hPvKsdPBL
- rAlIt1staZ+yp+BSTzsJiv+nWx+kynp3yCprJq1qWZJH6Gtf7LXLzO3+CpPYC9FVRF
- tQL2IZuBMJsaA==
+ s=mail; t=1652793672;
+ bh=OVAmupcImeep7rSBDHFhNuaLOusX/y6qibNhNwPjm9g=;
+ h=From:To:Cc:Subject:Date:From;
+ b=AwQWRiA+XZoWp6LVlmA0BAa4UYFfmEJsptnY3ren35hQka/i6zRgZXvpgsQzjpt7o
+ tKbi05/UA3sjchbZCztyRXBUFY5zEV8qCVxKtO+ow+R6/4S+wFZ+g6RVZ4YISiQdYD
+ 4cPHeE0fnt8VsvWCPzKeLRV0gavS7ryrQcZKaQMDlKkLiApzWTlrnuM5ypulvAL0qX
+ NdvHicWqqcA1Ra9blXd1sFv1ZUx75CgWBKHwXWrrZGKvf8dQfxUUdTMAbv6DhhnqGu
+ xRwVn/xG7gkVp7hmnjrC4BzL3YIFeRK9Bwi4xPsIACLJ40hq+3PyAHjQ0nMcIZNOUz
+ FyBcYgIh7C5Pg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: yong.wu@mediatek.com
 Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
@@ -44,17 +44,15 @@ Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 2/8] iommu: mtk_iommu: Lookup phandle to retrieve syscon to
- infracfg
-Date: Tue, 17 May 2022 15:21:01 +0200
-Message-Id: <20220517132107.195932-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/8] mtk_iommu: Specify phandles to infracfg and pericfg
+Date: Tue, 17 May 2022 15:20:59 +0200
+Message-Id: <20220517132107.195932-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220517132107.195932-1-angelogioacchino.delregno@collabora.com>
-References: <20220517132107.195932-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_062115_830538_33F49ABA 
-X-CRM114-Status: GOOD (  15.67  )
+X-CRM114-CacheID: sfid-20220517_062114_642073_0A58704F 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,75 +69,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This driver will get support for more SoCs and the list of infracfg
-compatibles is expected to grow: in order to prevent getting this
-situation out of control and see a long list of compatible strings,
-add support to retrieve a handle to infracfg's regmap through a
-new "mediatek,infracfg" phandle.
+The IOMMU has registers in the infracfg and/or pericfg iospaces: as
+for the currently supported SoCs, MT2712 and MT8173 need a phandle to
+infracfg, while MT8195 needs one to pericfg.
 
-In order to keep retrocompatibility with older devicetrees, the old
-way is kept in place, but also a dev_warn() was added to advertise
-this change in hope that the user will see it and eventually update
-the devicetree if this is possible.
+Before this change, the driver was checking for a SoC-specific infra/peri
+compatible but, sooner or later, these lists are going to grow a lot...
+...and this is why it was chosen to add phandles (as it was done with
+some other drivers already - look at mtk-pm-domains, mt8192-afe
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/iommu/mtk_iommu.c | 40 +++++++++++++++++++++++++--------------
- 1 file changed, 26 insertions(+), 14 deletions(-)
+Please note that, while it was necessary to update the devicetrees for
+MT8173 and MT2712e, there was no update for MT8195 because there is no
+IOMMU node in there yet.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 71b2ace74cd6..cfaaa98d2b50 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1134,22 +1134,34 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
- 
- 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
--		switch (data->plat_data->m4u_plat) {
--		case M4U_MT2712:
--			p = "mediatek,mt2712-infracfg";
--			break;
--		case M4U_MT8173:
--			p = "mediatek,mt8173-infracfg";
--			break;
--		default:
--			p = NULL;
-+		infracfg = syscon_regmap_lookup_by_phandle(dev->of_node, "mediatek,infracfg");
-+		if (IS_ERR(infracfg)) {
-+			dev_warn(dev, "Cannot find phandle to mediatek,infracfg:"
-+				      " Please update your devicetree.\n");
-+			/*
-+			 * Legacy devicetrees will not specify a phandle to
-+			 * mediatek,infracfg: in that case, we use the older
-+			 * way to retrieve a syscon to infra.
-+			 *
-+			 * This is for retrocompatibility purposes only, hence
-+			 * no more compatibles shall be added to this.
-+			 */
-+			switch (data->plat_data->m4u_plat) {
-+			case M4U_MT2712:
-+				p = "mediatek,mt2712-infracfg";
-+				break;
-+			case M4U_MT8173:
-+				p = "mediatek,mt8173-infracfg";
-+				break;
-+			default:
-+				p = NULL;
-+			}
-+
-+			infracfg = syscon_regmap_lookup_by_compatible(p);
-+			if (IS_ERR(infracfg))
-+				return PTR_ERR(infracfg);
- 		}
- 
--		infracfg = syscon_regmap_lookup_by_compatible(p);
--
--		if (IS_ERR(infracfg))
--			return PTR_ERR(infracfg);
--
- 		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
- 		if (ret)
- 			return ret;
+AngeloGioacchino Del Regno (8):
+  dt-bindings: iommu: mediatek: Add mediatek,infracfg phandle
+  iommu: mtk_iommu: Lookup phandle to retrieve syscon to infracfg
+  dt-bindings: iommu: mediatek: Add mediatek,pericfg phandle
+  iommu: mtk_iommu: Lookup phandle to retrieve syscon to pericfg
+  arm64: dts: mediatek: mt8173: Add mediatek,infracfg phandle for IOMMU
+  arm64: dts: mediatek: mt2712e: Add mediatek,infracfg phandle for IOMMU
+  dt-bindings: iommu: mediatek: Require mediatek,infracfg for
+    mt2712/8173
+  dt-bindings: iommu: mediatek: Require mediatek,pericfg for
+    mt8195-infra
+
+ .../bindings/iommu/mediatek,iommu.yaml        | 30 +++++++++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  2 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  1 +
+ drivers/iommu/mtk_iommu.c                     | 66 ++++++++++++-------
+ 4 files changed, 75 insertions(+), 24 deletions(-)
+
 -- 
 2.35.1
 
