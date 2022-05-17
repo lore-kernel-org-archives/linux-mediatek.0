@@ -4,60 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0AE5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 08:34:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FB7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 08:40:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lyOACkmpqd35DtSD43A5malVFs6NwEhSJUyNtUP59tY=; b=MJh6AeFX8xMoNv
-	u82JlZpfMbsHDas1uohQQ3KInC7cAO3ynpnUaDlFyInm0kpgPZIp1y0dtHndZMpqhMDo4P2WAZXap
-	Wi9wIVfWJdOkaqc68H7X7mVBuMom1cRdt9a7k0TWEVknQqq22QA8pF3o2KIu96pEH16BCCmoQEm3Z
-	LTwe8PUMZwoQVG72f4+KO8ElF7S5tV5ml42lEoiWQ92RMMvw+9fyKmHv/5b9Xk9JTljqESM3jlkFj
-	8x4SHUv9vjg8s/kFDlendQlGy4kKnkL6vMJGd6eqg1HIDplDSfRBW0q2+2Fb4bzw3cFnjKFs8WddJ
-	XJ2xnjCcurmMEY6JjKkw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Jsp23ffZtbX1VR/X/iZjS2I9GEbhEqI9DJfz9pltxZ4=; b=yfxJfCPlNv6pbc
+	crcRPck3PoWiIEniyb7wp71WXUeS6YYy3nINAIyQGpTr9CXV7LN4AuH+5D5pMkVKOHwK0/dnrmuHc
+	LDuPrIwmOdooKgNRH7bn4y0ioz/pD4YbrknnqBUi7yegDICo8a0b4/SQDwGcZXutV7fdfDdvpkDqU
+	BbVY/zqs0Og/euzZbC72cNq+uVEw/9YUCNXWM4BjdTHxowpBFki+U5c0NE5oBetxLoHt/kN+qv8uQ
+	+wT/vEB1HJ02xD8Ov4esyoh/segdejHSXpUzMGrYzm4tGkkWiKFVDFbej9IyS/T3h3x3rt2NLTbNl
+	bwuTrkod8d+47zVPRHnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqses-00CUF9-Pr; Tue, 17 May 2022 08:34:22 +0000
+	id 1nqskf-00CVhw-6F; Tue, 17 May 2022 08:40:21 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqseh-00CUB9-Rq; Tue, 17 May 2022 08:34:13 +0000
+ id 1nqskR-00CVbx-9q; Tue, 17 May 2022 08:40:08 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 2B88F1F41ECB
+ (Authenticated sender: kholk11) with ESMTPSA id 14AC71F442B2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652776448;
- bh=LCe72gf7Q6QuyRU8/hNAkV44/40CUOPrEMqg9amSQ6k=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=mWuOx6AFAnuY4LuC4el83eJaIr8+U3BZJlHbPUYkQtJljV6YtNFTt7BsfuUSe0+Be
- Kkt1sSbONVTRTrxKUd3jMN1iqIOJ7woU8CjO16EYzUO4NPpj5Sq9lW2srgPc27jPUM
- D+jR1YYzKTzx8Zz4tr+OuxurKqpxGJdEhi4gzziD+eKoRCMRHXJxK2rvyUx1hAxThA
- pJlf75oPSboAcQlnABY1MKvccRmjm2CogQqQW9bqiUmw2HwzHWltElzn17Pf9oh5hD
- KCJ1+roGMSkFEiwkxb87NuoGWHbfsaMMKlrs3CCswLO9CealVlEVy1DMqNeAJbCb3R
- Pi/bAk0pq/VYA==
-Message-ID: <ca40156f-5bc1-ef3a-517e-6ad61e9bf3df@collabora.com>
-Date: Tue, 17 May 2022 10:34:05 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v3 1/2] dt-bindings: pinctrl: Add MediaTek MT6795 pinctrl
- bindings
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: linus.walleij@linaro.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, sean.wang@kernel.org, linux-gpio@vger.kernel.org,
+ s=mail; t=1652776802;
+ bh=ejXGkWEU9/h8Gq6inz9Xqi8NHp2mWLXGwzZX33ZE2hk=;
+ h=From:To:Cc:Subject:Date:From;
+ b=M7+lCY12v+Sz9bXV5nqYxR3B4j9JgL50K17F45jPhYbkgWyrJsYxhxxz2jwfRxQbf
+ YbeaCq8YQzHeEvaZ3wfQ2KT+OhftqhbdGoCzMhZETL2K9sjQbTkwboRcZY7cHJ7mG/
+ Qj9USxiVhvmPjUVeFSu/BIud9YeHh6cbHwuuUTM7QrpGjyToQHKQ491tIRznfQGVe5
+ 2VeEYar8c8mab0T+UCJXNR6U8vPXN0eQrYkOuZOMGYY05pzhpjT4rKg0/jUuhtkJll
+ bd392YPj3HLcUddBjUjl9+DR+88gpaAUZZOhoBPxoz+Mln7sbeOFqO2Uv572MMfho3
+ BeHOYnm0URvsA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: linus.walleij@linaro.org
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, sean.wang@kernel.org,
+ angelogioacchino.delregno@collabora.com, linux-gpio@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  kernel@collabora.com, nfraprado@collabora.com
-References: <20220505083757.11288-1-angelogioacchino.delregno@collabora.com>
- <20220505083757.11288-2-angelogioacchino.delregno@collabora.com>
- <20220517000657.GA3609297-robh@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220517000657.GA3609297-robh@kernel.org>
+Subject: [PATCH v4 0/2] MediaTek Helio X10 MT6795 - Pinctrl driver
+Date: Tue, 17 May 2022 10:39:55 +0200
+Message-Id: <20220517083957.11816-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_013412_078152_EC3FEFE7 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20220517_014007_600830_FE5166CC 
+X-CRM114-Status: UNSURE (   9.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,47 +64,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/05/22 02:06, Rob Herring ha scritto:
-> On Thu, May 05, 2022 at 10:37:56AM +0200, AngeloGioacchino Del Regno wrote:
->> Add devicetree and pinfunc bindings for MediaTek Helio X10 MT6795.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../pinctrl/mediatek,pinctrl-mt6795.yaml      | 224 +++++
->>   include/dt-bindings/pinctrl/mt6795-pinfunc.h  | 908 ++++++++++++++++++
->>   2 files changed, 1132 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
->>   create mode 100644 include/dt-bindings/pinctrl/mt6795-pinfunc.h
->>
+In an effort to give some love to the apparently forgotten MT6795 SoC,
+I am upstreaming more components that are necessary to support platforms
+powered by this one apart from a simple boot to serial console.
 
-..snip..
+This series introduces a pinctrl driver for the Helio X10 SoC.
 
->> diff --git a/include/dt-bindings/pinctrl/mt6795-pinfunc.h b/include/dt-bindings/pinctrl/mt6795-pinfunc.h
->> new file mode 100644
->> index 000000000000..4888bb7fb9cf
->> --- /dev/null
->> +++ b/include/dt-bindings/pinctrl/mt6795-pinfunc.h
->> @@ -0,0 +1,908 @@
->> +/* SPDX-License-Identifier: GPL-2.0-only */
-> 
-> Dual license please.
-> 
+Tested on a Sony Xperia M5 (codename "Holly") smartphone.
 
-Whoooops!
+Changes in v4:
+ - Changed license of mt6795-pinfunc.h to (GPL-2.0-only OR BSD-2-Clause)
 
-Sorry, my intention was to indeed put (GPL-2.0-only OR BSD-3-Clause) here,
-like I've done for the others.
-I'm sending a v4 with the right license right away.
+Changes in v3:
+ - Fixed $id in yaml file
 
-Thanks for making me notice this unintentional mistake.
+Changes in v2:
+ - Reordered commits, dt-bindings first, driver last
+ - Fixed yaml issues
 
-Regards,
-Angelo
+AngeloGioacchino Del Regno (2):
+  dt-bindings: pinctrl: Add MediaTek MT6795 pinctrl bindings
+  pinctrl: mediatek: Add pinctrl driver for MT6795 Helio X10
+
+ .../pinctrl/mediatek,pinctrl-mt6795.yaml      |  224 +++
+ drivers/pinctrl/mediatek/Kconfig              |    7 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6795.c     |  623 ++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6795.h | 1698 +++++++++++++++++
+ include/dt-bindings/pinctrl/mt6795-pinfunc.h  |  908 +++++++++
+ 6 files changed, 3461 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,pinctrl-mt6795.yaml
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt6795.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6795.h
+ create mode 100644 include/dt-bindings/pinctrl/mt6795-pinfunc.h
+
+-- 
+2.35.1
 
 
 _______________________________________________
