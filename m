@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E636C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 15:59:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C33BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 17:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NI1ZefZYhswcuaVWJe76T+088rucZYI6kmotIqmTutM=; b=G4ysIylDy+NYM/
-	jorWuqOmGHqmbaCDx7r6ic7Ec+lA4g5alhrqiYnrNoSqnPk8xO8TCM9gGawfKc6kz9WDkDdo0Kv5r
-	Xt8A0c65hbQXW1GwcZJyEBTPgchgDP7FiBmbxQOzMzCunpe8SJ6zTNbzdLsBK/j6j1kMwUYnGar/x
-	VhRLQmpxW2Rwb10t4TpfQhPfbwZfbQVLF+XLlStd675sIuhYQuIzspqzH10SwN1hcEVEaXqU3qfDR
-	K0wIFNpswypYerZX8OV8kvqwHMI1Aj90g2BMk5UJ2/nfscKtzdqyyCAe/mit+otMEWwuo4Gs1JN8X
-	GJLxH7kF0WAZMWa5CiGg==;
+	List-Owner; bh=JbsO26MP6Z43ICSrlFD81KW3/kezloUdL+XLjU8iYe0=; b=fgrT1w4jOVEHxv
+	93oX2A4aRGNB36vAO23LcCITeM2KjayjuajOXbsPXtmPZ9VGmF05HzAPlYSe2rT+ISv5rwWJ0iKyf
+	828lFzZRmlJjuFMb3N0e6NZW8OlWDgYn5Wye9vjRfplOst95LfbY4i3h0Zg9eNzS4lBcr17uNny5X
+	QVnZNRZrkD5n5wqdEjV3J6BKDnVkv9bL1q5aOSAyOoPbJj+8yXjCSDwkRlBBB4giV7HvwKSTx0LyV
+	mfqB4NpCx7opB8R49SrUHxGw/UOm7QfTtZ2giK2gmchgFeNxuZ6KKI0y7juHig6f2QB+ofZgRmSc2
+	UUsuy3gZd6TOZWetPQhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqzbm-00Emzd-Gt; Tue, 17 May 2022 15:59:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nr1OT-00F7NZ-Fx; Tue, 17 May 2022 17:54:01 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqzba-00EmwF-LP; Tue, 17 May 2022 15:59:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C211960EC7;
- Tue, 17 May 2022 15:59:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EF9AC385B8;
- Tue, 17 May 2022 15:59:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652803165;
- bh=qB+Y2b64SyCD76/3XYAEBdye3lfRy7RB0EKRB7eIy44=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=Ic77VlduGWC/bBx4kKkKWri6PpIr+WNQkfPakgMeHzOYKy/3leM0YedDNBvNKlxCD
- otWAQX0IiJfU+Wv52iV+tqz/8Scfzy+wn90H09iQ6aHMq/5xfRkAQdjTWu/3FQ60OA
- NE1TeWbfVRjKp6Clclo+taeyj9mzoHZ/mYJ+ygbLq/hPhiddlJftI8a6/tK2uJhSMH
- ICMD1PCKO4WuSEPs+2muB6YeZlDylFHoqHFPQKpeghUGK+KCmqcbAr8f3LFkwyRRnV
- kOk0b550GvXmG3KUmVgwz0ngaIjb6xnj8l1DGqMUt4bBIKBRlqQPKGFCRVROvSEtEy
- //2+hgNIPKTFg==
-From: Mark Brown <broonie@kernel.org>
-To: cujomalainey@chromium.org, tinghan.shen@mediatek.com,
- john.stultz@linaro.org, javierm@redhat.com, cristian.marussi@arm.com,
- peter.ujfalusi@linux.intel.com, pierre-louis.bossart@linux.intel.com,
- geert+renesas@glider.be, yc.hung@mediatek.com, tzimmermann@suse.de,
- lgirdwood@gmail.com, perex@perex.cz, kai.vehmanen@linux.intel.com,
- tzungbi@google.com, bp@suse.de, ranjani.sridharan@linux.intel.com,
- bjorn.andersson@linaro.org, gregkh@linuxfoundation.org, tiwai@suse.com,
- Arnd Bergmann <arnd@arndb.de>, simont@opensource.cirrus.com,
- daniel.baluta@nxp.com, xueshuai@linux.alibaba.com, msuchanek@suse.de,
- yangyingliang@huawei.com, sudeep.holla@arm.com, allen-kh.cheng@mediatek.com,
- matthias.bgg@gmail.com, daniel.vetter@ffwll.ch,
- angelogioacchino.delregno@collabora.com
-Cc: alsa-devel@alsa-project.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- sound-open-firmware@alsa-project.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20220512082215.3018-1-tinghan.shen@mediatek.com>
-References: <20220512082215.3018-1-tinghan.shen@mediatek.com>
-Subject: Re: [PATCH v9 0/3] firmware: mtk: add adsp ipc protocol for SOF
-Message-Id: <165280315828.1635268.5394864574806411839.b4-ty@kernel.org>
-Date: Tue, 17 May 2022 16:59:18 +0100
+ id 1nr1OR-00F7MA-1i; Tue, 17 May 2022 17:54:00 +0000
+Received: by mail-oi1-f173.google.com with SMTP id e189so23200252oia.8;
+ Tue, 17 May 2022 10:53:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=YsDesghEDI/0tS5NHJX5qsEzOQ4O5WyEDYrAlt3mmLs=;
+ b=XyYXYgdwQlaTe6jxqrEe4I1rDil6NLw8pvIcadjcAKKaebBnXDJY79lbiCeE2Dtjq9
+ 6OIRLYRw+MT3vte0UMSfNfRgLz5j+Sx4Q9VaRYp1iJxgPgHI46Yg2WCPOuwj2AVH9VqB
+ F6TIkNmAPIXTt4bC0a/kdUGwMFHfEH8NsOyeQcwdilE0Yz4KFLnFdeOsaUVkeGBORZX7
+ 1maXKQ0yuNgAbxM6bB4jb5iJMzeGjh4/5nejgff5eFTJW9RGOZU3WzdJO5oxqAdFJcwT
+ iOEFRyQyfvgQVIrLBk+ZsKfPBFAfiNhoH5O8U8FRO4BKsnR6Hs2GCMesl2iKGgJDOJ94
+ 9D3A==
+X-Gm-Message-State: AOAM530Sb3sounhMJuxEhgCDm905GjFoyoeETiwroh2RCiwH1yl0W82m
+ /lN3Wel97+6bk9iTKRZW4g==
+X-Google-Smtp-Source: ABdhPJwljlblhzDw8zaW7HVqTSFpVeLgpJoxWDJdz7BuwXhztpSN+kRl6+3UUY5tJXYbETz/hauMvQ==
+X-Received: by 2002:a05:6808:1302:b0:326:dbcf:a2d0 with SMTP id
+ y2-20020a056808130200b00326dbcfa2d0mr16468689oiv.106.1652810034896; 
+ Tue, 17 May 2022 10:53:54 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ p9-20020a05683019c900b0060603221276sm60670otp.70.2022.05.17.10.53.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 May 2022 10:53:54 -0700 (PDT)
+Received: (nullmailer pid 1316050 invoked by uid 1000);
+ Tue, 17 May 2022 17:53:52 -0000
+Date: Tue, 17 May 2022 12:53:52 -0500
+From: Rob Herring <robh@kernel.org>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: drinkcat@chromium.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ cellopoint.kai@gmail.com, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Rob Landley <rob@landley.net>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, randy.wu@mediatek.com, 
+ xiandong.wang@mediatek.com, linux-media@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ linux-arm-kernel@lists.infradead.org, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-kernel@vger.kernel.org, 
+ Alexandre Courbot <acourbot@chromium.org>, Rob Herring <robh+dt@kernel.org>,
+ allen-kh.cheng@mediatek.com, 
+ daoyuan huang <daoyuan.huang@mediatek.com>, pihsun@chromium.org,
+ hsinyi@google.com, jason-jh.lin@mediatek.com, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, river.cheng@mediatek.com, 
+ roy-cw.yeh@mediatek.com, tfiga@chromium.org, devicetree@vger.kernel.org, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: Re: [PATCH v15 1/3] dt-binding: mediatek: add bindings for MediaTek
+ MDP3 components
+Message-ID: <20220517175352.GA1315998-robh@kernel.org>
+References: <20220512092306.6895-1-moudy.ho@mediatek.com>
+ <20220512092306.6895-2-moudy.ho@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220512092306.6895-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_085926_774598_A26C0656 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20220517_105359_127313_C79A982F 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +101,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 12 May 2022 16:22:12 +0800, Tinghan Shen wrote:
-> This patch provides mediatek adsp ipc support for SOF.
-> ADSP IPC protocol offers (send/recv) interfaces using
-> mediatek-mailbox APIs.
+On Thu, 12 May 2022 17:23:04 +0800, Moudy Ho wrote:
+> This patch adds DT binding documents for Media Data Path 3 (MDP3)
+> a unit in multimedia system combined with several components and
+> used for scaling and color format convert.
 > 
-> This patch was tested and confirmed to work with SOF fw on
-> MT8195 cherry board and MT8186 krabby board.
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  .../bindings/media/mediatek,mdp3-rdma.yaml    | 85 +++++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-rsz.yaml     | 65 ++++++++++++++
+>  .../bindings/media/mediatek,mdp3-wrot.yaml    | 70 +++++++++++++++
+>  .../bindings/soc/mediatek/mediatek,ccorr.yaml | 58 +++++++++++++
+>  .../bindings/soc/mediatek/mediatek,wdma.yaml  | 71 ++++++++++++++++
+>  5 files changed, 349 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 > 
-> [...]
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/3] firmware: mediatek: Add adsp ipc protocol interface
-      commit: 9db69df4bdd37eb1f65b6931ee067fb15b9a4d5c
-[2/3] ASoC: SOF: mediatek: Add ipc support for mt8195
-      commit: aea9350108ed1627f8610c93de44578162b3ee91
-[3/3] ASoC: SOF: mediatek: Add mt8186 ipc support
-      commit: e0100bfd383c7d994d2e957e85ca56a5fe5a3f43
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
