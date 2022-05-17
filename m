@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55C83C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 13:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9CD4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 14:13:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hLNniTLsVjVFe51xTeEVPpQMx3+vlhhL7bOFV/xbsIw=; b=jHnsW1TjVK3w0d
-	XBSzy8BAu+39wNem+KkBC4wUPyDzJBnJeV/VMuD20pokgIoDHmm0XQ/29dH+DRzP6LtdwCaGTxGfk
-	Pk+7v0TV5w0EMpQ5tsT4Tx2D1PC2rb20INlQ31RuOooBmMkWacaz6sjM+7BaxDYpOMKBAq+Bcg1hg
-	rOkha8EXVVDuqlo6BXSqiQkizGaedkljar5HSxBA5bEMjgCCzsfC0N3dg+RfaoiLg3zlR6uX9mykC
-	nvGsbhcfFJhReR7vwkQY7XkS1TxkJ57snqKMrCWTUYRQjyEENNlkYLKgwXbNmHeqWDPFLa8q6aad+
-	8hPT5879fI3H6fTAYdrQ==;
+	List-Owner; bh=+2b/d3jmNb7KfTip96eSKEi8fSKHGbagtdvD1WFCeH0=; b=q6s/6zEJ3UMhdR
+	l6qerI7MfEzqmdH6pZK50Xb6xX2r/+Dbjv/d+/KIG1BF6m+Fg/E33Y0fLwCc5OgpR38UEZ7TTcaWy
+	oN2nFfkoPcL0kpuBTbWKpALwIT6z3/Cbmwi2b1ZTQpWq7SqA7M1s9RN1ZhwjmwBRciav7pxkSZXWE
+	qCNDtsFV/HMudFZ4L/tWDrQkzpop2TwnANZ/JOy4ZdlROetLqi/Gb+R1KblvsEuB++R+CfpApmATF
+	fZepg1BKGYSO0O6VzubM3ezcFJl3EgXjZwrQeaEDEaKgFlZ86mCgsgqOMN1kzSHBeLrg3n/yYREWT
+	Mx4F1J2DZEdvAEFCBRLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqxbE-00E4pw-Cx; Tue, 17 May 2022 13:50:56 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqxUL-00E18B-7m; Tue, 17 May 2022 13:43:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 003711F444FA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652795027;
- bh=+vxAUI6qKyUQAmObp8ZvzIBwGFIgr6ojIgBi09Xt4YM=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=aAhhin3zWwGwST2l5CGT5EBMXYau3h/7LjM8C7QMtUBkMoSQmLPDrlI8TM4gNUkhx
- 95LdjA07hdX49lW/mb9NQWTPNX2sCDNmVGnd7WBpvr8pMqlZfpiDSwkg2ODpwPhGdi
- fg6d/IW5XbbzLEo2AJTYk8H8Zvor7jSPviWugyVEdUMWRP6Mdi3/VOSE+eXAQtcfxl
- RSu7P1Oh3VTL/oHBmTIJnpvUOBunvX1aDn0itF6moexJ6tIVzBXnb5jBZzQITyq92s
- akuTAxQ0KDTfHbbnm0Mce0Rt5RTxvZLdI5MXW+yUD5vhOlcR1ecD+d6QKER1FwISoF
- 5BEwdKulF4KzQ==
-Message-ID: <7f1660f4-63bd-8f24-4c7a-4b92f0d38e16@collabora.com>
-Date: Tue, 17 May 2022 15:43:44 +0200
+	id 1nqxwd-00EFVM-Vk; Tue, 17 May 2022 14:13:04 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nqxw0-00EFBg-5P; Tue, 17 May 2022 14:12:27 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C8B2B1042;
+ Tue, 17 May 2022 07:12:22 -0700 (PDT)
+Received: from [10.57.82.55] (unknown [10.57.82.55])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 02C113F718;
+ Tue, 17 May 2022 07:12:20 -0700 (PDT)
+Message-ID: <16fb07d9-28d8-5c73-1eb5-ec13544d22e5@arm.com>
+Date: Tue, 17 May 2022 15:12:16 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH 0/6] dt-bindings: arm: MediaTek: Fix clock bindings
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>, robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org,
- chun-jie.chen@mediatek.com, rex-bc.chen@mediatek.com, wenst@chromium.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220517101514.21639-1-angelogioacchino.delregno@collabora.com>
- <21581440-a65c-ee8c-95e4-0e179c2838dd@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <21581440-a65c-ee8c-95e4-0e179c2838dd@gmail.com>
+Subject: Re: [PATCH 2/8] iommu: mtk_iommu: Lookup phandle to retrieve syscon
+ to infracfg
+Content-Language: en-GB
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ yong.wu@mediatek.com
+Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20220517132107.195932-1-angelogioacchino.delregno@collabora.com>
+ <20220517132107.195932-3-angelogioacchino.delregno@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220517132107.195932-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_064349_448356_4430C7EE 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20220517_071224_369106_EC4ED586 
+X-CRM114-Status: GOOD (  29.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,47 +63,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMTcvMDUvMjIgMTU6MzksIE1hdHRoaWFzIEJydWdnZXIgaGEgc2NyaXR0bzoKPiAKPiAKPiBP
-biAxNy8wNS8yMDIyIDEyOjE1LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToKPj4g
-QXMgcGVyIFJvYiBIZXJyaW5nJ3MgcmV2aWV3IFsxXSBvbiBteSBtdDY3OTUgY2xvY2tzIGJpbmRp
-bmdzIHBhdGNoZXMsIGZvcgo+PiB3aGljaCBJJ3ZlIHVzZWQgdGhlIGFscmVhZHkgdXBzdHJlYW1l
-ZCBvbmVzIGFzIGEgYmFzZSwgaXQgd2FzIGZvdW5kIHRoYXQKPj4gdGhlc2UgYmluZGluZ3MgaGF2
-ZSBzb21lIGlzc3Vlcy4KPj4gVGhpcyBzZXJpZXMgaXMgYWRkcmVzc2luZyB0aGUgaXNzdWVzIHRo
-YXQgd2VyZSBmb3VuZCBieSBSb2Igb24gbXkgc2VyaWVzLAo+PiB3aGljaCBhcmUgcHJlc2VudCBv
-biBhbGwgb2YgdGhlIGFscmVhZHkgbWVyZ2VkIGJpbmRpbmdzLgo+Pgo+PiBbMV06IAo+PiBodHRw
-czovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvcGF0Y2gvMjAy
-MjA1MTMxNjUwNTAuNTAwODMxLTUtYW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEu
-Y29tLyMyNDg1OTk1MyAKPj4KPiAKPiBJIHdvdWxkIHNheSB3ZSBjb3VsZCBzcXVhc2ggcGF0Y2hl
-cyBoZXJlIGFuZCBtYWtlIGl0IDMgaW5zdGVhZCBvZiA2Lgo+IEluIGFueSBjYXNlIGZvciB0aGUg
-d2hvbGUgc2VyaWVzOgo+IAo+IFJldmlld2VkLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlh
-cy5iZ2dAZ21haWwuY29tPgo+IAoKSSBoYWQgdGhlIHNhbWUgaW5pdGlhbCBpZGVhLCBidXQgY2hv
-c2UgdG8gZG8gaXQgaW4gNiBwYXRjaGVzIGJlY2F1c2Ugb3RoZXJ3aXNlCnRoZSB0aXRsZXMgd291
-bGQgYmUgdG9vIGdlbmVyaWMgYW5kIG5vdCByZWFsbHkgZWZmZWN0dWFsIGluIHRoZSBlbmQuLi4K
-CklmIGFueW9uZSB3YW50cyB0aGVtIHNxdWFzaGVkLCBub3cgeW91IGtub3cgd2hhdCB3YXMgbXkg
-ZGlmZmljdWx0eSBhbmQgbXkKcmVhc29ucyA6LSkKCkJ5IHRoZSB3YXksIHRoYW5rIHlvdSEKCj4+
-Cj4+IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vICg2KToKPj4gwqDCoCBkdC1iaW5kaW5nczog
-YXJtOiBtdDgxODYtY2xvY2s6IFJlbW92ZSB1bm5lY2Vzc2FyeSAnaXRlbXMnIGFuZCBmaXgKPj4g
-wqDCoMKgwqAgZm9ybWF0dGluZwo+PiDCoMKgIGR0LWJpbmRpbmdzOiBhcm06IG10ODE4NjogU2V0
-ICNjbG9jay1jZWxscyBhcyByZXF1aXJlZCBwcm9wZXJ0eQo+PiDCoMKgIGR0LWJpbmRpbmdzOiBh
-cm06IG10ODE5NS1jbG9jazogUmVtb3ZlIHVubmVjZXNzYXJ5ICdpdGVtcycgYW5kIGZpeAo+PiDC
-oMKgwqDCoCBmb3JtYXR0aW5nCj4+IMKgwqAgZHQtYmluZGluZ3M6IGFybTogbXQ4MTk1OiBTZXQg
-I2Nsb2NrLWNlbGxzIGFzIHJlcXVpcmVkIHByb3BlcnR5Cj4+IMKgwqAgZHQtYmluZGluZ3M6IGFy
-bTogbXQ4MTkyLWNsb2NrOiBSZW1vdmUgdW5uZWNlc3NhcnkgJ2l0ZW1zJwo+PiDCoMKgIGR0LWJp
-bmRpbmdzOiBhcm06IG10ODE5MjogU2V0ICNjbG9jay1jZWxscyBhcyByZXF1aXJlZCBwcm9wZXJ0
-eQo+Pgo+PiDCoCAuLi4vYXJtL21lZGlhdGVrL21lZGlhdGVrLG10ODE4Ni1jbG9jay55YW1swqDC
-oCB8IDI5ICsrKystLS0tLQo+PiDCoCAuLi4vbWVkaWF0ZWsvbWVkaWF0ZWssbXQ4MTg2LXN5cy1j
-bG9jay55YW1swqDCoCB8wqAgMSArCj4+IMKgIC4uLi9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssbXQ4
-MTkyLWNsb2NrLnlhbWzCoMKgIHwgNDYgKysrKysrKy0tLS0tLS0tCj4+IMKgIC4uLi9tZWRpYXRl
-ay9tZWRpYXRlayxtdDgxOTItc3lzLWNsb2NrLnlhbWzCoMKgIHzCoCAxICsKPj4gwqAgLi4uL2Fy
-bS9tZWRpYXRlay9tZWRpYXRlayxtdDgxOTUtY2xvY2sueWFtbMKgwqAgfCA1OSArKysrKysrKysr
-LS0tLS0tLS0tCj4+IMKgIC4uLi9tZWRpYXRlay9tZWRpYXRlayxtdDgxOTUtc3lzLWNsb2NrLnlh
-bWzCoMKgIHzCoCAxICsKPj4gwqAgNiBmaWxlcyBjaGFuZ2VkLCA3MSBpbnNlcnRpb25zKCspLCA2
-NiBkZWxldGlvbnMoLSkKPj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LW1lZGlhdGVrCg==
+On 2022-05-17 14:21, AngeloGioacchino Del Regno wrote:
+> This driver will get support for more SoCs and the list of infracfg
+> compatibles is expected to grow: in order to prevent getting this
+> situation out of control and see a long list of compatible strings,
+> add support to retrieve a handle to infracfg's regmap through a
+> new "mediatek,infracfg" phandle.
+> 
+> In order to keep retrocompatibility with older devicetrees, the old
+> way is kept in place, but also a dev_warn() was added to advertise
+> this change in hope that the user will see it and eventually update
+> the devicetree if this is possible.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 40 +++++++++++++++++++++++++--------------
+>   1 file changed, 26 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 71b2ace74cd6..cfaaa98d2b50 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1134,22 +1134,34 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
+>   
+>   	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
+> -		switch (data->plat_data->m4u_plat) {
+> -		case M4U_MT2712:
+> -			p = "mediatek,mt2712-infracfg";
+> -			break;
+> -		case M4U_MT8173:
+> -			p = "mediatek,mt8173-infracfg";
+> -			break;
+> -		default:
+> -			p = NULL;
+> +		infracfg = syscon_regmap_lookup_by_phandle(dev->of_node, "mediatek,infracfg");
+> +		if (IS_ERR(infracfg)) {
+> +			dev_warn(dev, "Cannot find phandle to mediatek,infracfg:"
+> +				      " Please update your devicetree.\n");
+
+Is this really a dev_warn-level problem? There's no functional impact, 
+given that we can't stop supporting the original binding any time soon, 
+if ever, so I suspect this is more likely to just annoy users and CI 
+systems than effect any significant change.
+
+> +			/*
+> +			 * Legacy devicetrees will not specify a phandle to
+> +			 * mediatek,infracfg: in that case, we use the older
+> +			 * way to retrieve a syscon to infra.
+> +			 *
+> +			 * This is for retrocompatibility purposes only, hence
+> +			 * no more compatibles shall be added to this.
+> +			 */
+> +			switch (data->plat_data->m4u_plat) {
+> +			case M4U_MT2712:
+> +				p = "mediatek,mt2712-infracfg";
+> +				break;
+> +			case M4U_MT8173:
+> +				p = "mediatek,mt8173-infracfg";
+> +				break;
+> +			default:
+> +				p = NULL;
+> +			}
+> +
+> +			infracfg = syscon_regmap_lookup_by_compatible(p);
+
+Would it not make sense to punt this over to the same mechanism as for 
+pericfg, such that it simplifies down to something like:
+
+	if (IS_ERR(infracfg) && plat_data->infracfg) {
+		infracfg = syscon_regmap_lookup_by_compatible(plat_data->infracfg);
+		...
+	}
+
+?
+
+TBH if we're still going to have a load of per-SoC data in the driver 
+anyway then I don't see that we really gain much by delegating one 
+aspect of it to DT, but meh. I would note that with the phandle 
+approach, you still need some *other* flag in the driver to know whether 
+a phandle is expected to be present or not, whereas a NULL vs. non-NULL 
+string is at least neatly self-describing.
+
+Robin.
+
+> +			if (IS_ERR(infracfg))
+> +				return PTR_ERR(infracfg);
+>   		}
+>   
+> -		infracfg = syscon_regmap_lookup_by_compatible(p);
+> -
+> -		if (IS_ERR(infracfg))
+> -			return PTR_ERR(infracfg);
+> -
+>   		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
+>   		if (ret)
+>   			return ret;
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
