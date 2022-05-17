@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC7D1C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 09:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C30A3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 09:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EfJ8gcCueyOhEDAQN0qm2f5G5KXw79kCoEbB5ucm7Ac=; b=G+zCk8XIj9Mp6A
-	p8qhjlrorzTNWWpBIcm7fidf+FfrbWJLQETjObkzfegMs5KX5H2qQhdDl+xJdIISgrrrMCLlK+jVl
-	+n0Zhp+4DNuC6wnu1BZZh57QkowG26acCRPwLckrvZMazqy7wEJTIE/UV3lauUoeTTe6r/qKeApfl
-	Kuzm15Svc2g/sFlUckc/zslPHVb8nH4D5PEH5oz4vOXvvyzTKLzJadfk5UJVqvmfJKpg+AGtIx9Oa
-	gohh4zwvcy3CykLy8aNG8pcYpPA2aOisMoQk61Q8qWg9/OP8JsPN2d9MVoeFgiHKmF9vNv0hGipK/
-	HZALZJols5e5BCe6S/0Q==;
+	List-Owner; bh=z5iIwAfvl2azEkaAMgNbaYwjsmDEW673utSXk77BZjc=; b=eYKOueLHbUyFpO
+	WpXFm7c4+Am81hlD3CvLBm1DUPHmPFXRXZLqDR1ajVN91ZmEGzNRkJkaCmxNSaxAzbpuapVNueiLn
+	o2zewHTXLsxZrNEMKUmgzzsiL/BtAvNF19gBqSyYTtCGBSF2yPMehLVNz0o/BOZ5UJfIPpWlq4mVh
+	F/Yt/ST4bRX7MuKNaUmaPKtBVEtkMNjPLj+VXPk33G/GdxwPn5nxdMXBygpzEJS2yTtCMJbNvCpPB
+	DrSBQlyOPo5Y6IWPWPKDp9ILim4Tiy+Vpo2rP2vi4BdQ9czZieBowc9IcuNPskwtJnAeOCWlrKtu4
+	GiD4MuqjnwyBIR94+nkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqtkp-00CqKB-0u; Tue, 17 May 2022 09:44:35 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1nqtld-00CqlP-RB; Tue, 17 May 2022 09:45:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqtkX-00CqCg-Gp; Tue, 17 May 2022 09:44:19 +0000
-Received: by mail-wr1-x433.google.com with SMTP id h14so4274797wrc.6;
- Tue, 17 May 2022 02:44:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=xFt28KVBptJqZXZcy2j7vQR/cUjdtAD4JIr71r3m1NI=;
- b=E3m6vwrzu9qqznwzVA6PVPYb0KrMeGUMjSVxkZTqsqkoJETD7P+FMkRP8hxAtwJf1T
- +JTlB6ue1pkmf/C+vau3LD0gVzqZLmR1DfBgexd16Y44930jLZJskv8nOuaqrl5eOfX9
- 2DYv9H5vhLA0P7Mfed8XHdlgeJi+BHdgZdLGv4+kQ5mYbH/u5R6/tHjUgEC4hUYDMZi9
- RA/brVdCvFYAEmssuCwhR5OYP3rDKXwTBgb51nTZXq9wOoQIWWBOt4wm7YM4e/H4Op5H
- +eOKx1Fwv70DJaN8+a7zqwiTAP+CR8cLE7ZN9Et7o3ZnfWDGfCc9hqn4QHD8u/vNuoNB
- mEPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=xFt28KVBptJqZXZcy2j7vQR/cUjdtAD4JIr71r3m1NI=;
- b=hPesM/4ehrrJL12zPfO5h9Z14OrFyGKRYsqolYV5z3Pn6cbmslX9JanKs9mHHoIEKB
- b8BTXBy/3eyPbtJo/EQL8YFo9NprMvEFH9Fjg4myqQhg7lVZjcYXGsZDG33fdmu+o/5t
- NmwrJM69CJtG8/0pFGV4fFYqDr1wo46AETiHEhUtB7nx2smB6lxCLtxUi4Gq1ZcFF4Nk
- jg31rywbhD7NYTLtavsM4A6iQeCLqy9s9+Y+YuV/APcsNSOvwVb81D2QFvAA3pYkoo3T
- 4d8tcJx2PnlgrnKOIzIrwB09TAeqi1FiebHHtvT8DBDeC2glBqftQER0hHU11DMxKf7t
- YrTg==
-X-Gm-Message-State: AOAM530eeoL9YI/kGr2Pn1QqYY3vvrBuQ9WtySt26KtTuw1g51XxszO0
- SmJJI3bIB0ZhrXUt27p4d48=
-X-Google-Smtp-Source: ABdhPJx1GUr9fffSpx1lpZSn/YrvUVjYuNV7SxnP1mMQRxq4bK1KUpckqXBE/b8Ru/y+ysz1Jxm1MA==
-X-Received: by 2002:a05:6000:10d0:b0:20d:7d3:9972 with SMTP id
- b16-20020a05600010d000b0020d07d39972mr8625180wrx.554.1652780653881; 
- Tue, 17 May 2022 02:44:13 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
- by smtp.gmail.com with ESMTPSA id
- c22-20020a05600c0a5600b00396fbf6f524sm1471019wmq.1.2022.05.17.02.44.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 May 2022 02:44:13 -0700 (PDT)
-Message-ID: <a8bd608c-d94c-f4a2-e3b1-3381c9098caf@gmail.com>
-Date: Tue, 17 May 2022 11:44:12 +0200
+ id 1nqtl8-00CqT1-1C; Tue, 17 May 2022 09:44:56 +0000
+X-UUID: aac93f753d684ad38bc96b86306f6a15-20220517
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Ma36yLP9p/j5AvIYHVoskDEZp6o7fQ6qHAbJ/vbGOck=; 
+ b=YsTJwFcc+R7ycBEWpu1yV/vc7Z/Rm45WLVAJDx+qUe9jWs7X9wFis4XHqkxeaAMynPPmoIPusVlh/sD24cyUt8fXBJjrb443AlUxp2JGQdOy4rf15RKVZvQc4LXoTimSvYv97ArCcJKh+N6afk0SgBziVEhFp0Nma+optBGmCp0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:dc8d892e-9521-4ea8-b801-a1957f7863f8, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:5aec8b79-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: aac93f753d684ad38bc96b86306f6a15-20220517
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 761702314; Tue, 17 May 2022 02:44:48 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 May 2022 02:44:10 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 May 2022 17:44:09 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 17 May 2022 17:44:07 +0800
+Message-ID: <9f290b2bbdfd4b9d46b81d3ab02c2f50999e95e5.camel@mediatek.com>
+Subject: Re: [PATCH v2 2/2] memory: mtk-smi: Add support for MT6795 Helio X10
+From: Yong Wu <yong.wu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+CC: <krzysztof.kozlowski@linaro.org>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <konrad.dybcio@somainline.org>,
+ <marijn.suijten@somainline.org>, <martin.botka@somainline.org>,
+ <~postmarketos/upstreaming@lists.sr.ht>, <phone-devel@vger.kernel.org>,
+ <paul.bouchara@somainline.org>, <kernel@collabora.com>,
+ <yi.kuo@mediatek.com>, <anthony.huang@mediatek.com>,
+ <wendy-st.lin@mediatek.com>
+Date: Tue, 17 May 2022 17:44:07 +0800
+In-Reply-To: <f222e1c5-4ce1-a42d-ceef-a292136d8b61@collabora.com>
+References: <20220513150633.387200-1-angelogioacchino.delregno@collabora.com>
+ <20220513150633.387200-3-angelogioacchino.delregno@collabora.com>
+ <cf2442b9c7124ebf1ce62ae5df597f003fa447d7.camel@mediatek.com>
+ <f222e1c5-4ce1-a42d-ceef-a292136d8b61@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v3 1/5] soc: mediatek: pwrap: Use readx_poll_timeout()
- instead of custom function
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, nfraprado@collabora.com,
- rex-bc.chen@mediatek.com, zhiyong.tao@mediatek.com
-References: <20220516124659.69484-1-angelogioacchino.delregno@collabora.com>
- <20220516124659.69484-2-angelogioacchino.delregno@collabora.com>
- <f8acbc75-970c-62fb-ad0d-914e512104a7@gmail.com>
- <9f197c69-fe04-b636-afb7-8474763c8a3a@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <9f197c69-fe04-b636-afb7-8474763c8a3a@collabora.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_024417_604756_55F46140 
-X-CRM114-Status: GOOD (  20.66  )
+X-CRM114-CacheID: sfid-20220517_024454_135230_755CA3D9 
+X-CRM114-Status: GOOD (  37.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,66 +90,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAxNy8wNS8yMDIyIDExOjQxLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToK
-PiBJbCAxNy8wNS8yMiAxMToyNSwgTWF0dGhpYXMgQnJ1Z2dlciBoYSBzY3JpdHRvOgo+Pgo+Pgo+
-PiBPbiAxNi8wNS8yMDIyIDE0OjQ2LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToK
-Pj4+IEZ1bmN0aW9uIHB3cmFwX3dhaXRfZm9yX3N0YXRlKCkgaXMgYSBmdW5jdGlvbiB0aGF0IHBv
-bGxzIGFuIGFkZHJlc3MKPj4+IHRocm91Z2ggYSBoZWxwZXIgZnVuY3Rpb24sIGJ1dCB0aGlzIGlz
-IHRoZSB2ZXJ5IHNhbWUgb3BlcmF0aW9uIHRoYXQKPj4+IHRoZSByZWFkeF9wb2xsX3RpbWVvdXQg
-bWFjcm8gbWVhbnMgdG8gZG8uCj4+PiBDb252ZXJ0IGFsbCBpbnN0YW5jZXMgb2YgY2FsbGluZyBw
-d3JhcF93YWl0X2Zvcl9zdGF0ZSgpIHRvIGluc3RlYWQKPj4+IHVzZSB0aGUgcmVhZF9wb2xsX3Rp
-bWVvdXQgbWFjcm8uCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwg
-UmVnbm8gCj4+PiA8YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgo+Pj4g
-UmV2aWV3ZWQtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIDxuZnJhcHJhZG9AY29sbGFib3Jh
-LmNvbT4KPj4+IFRlc3RlZC1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bj
-b2xsYWJvcmEuY29tPgo+Pj4gLS0tCj4+PiDCoCBkcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstcG1p
-Yy13cmFwLmMgfCA2MCArKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tCj4+PiDCoCAxIGZpbGUg
-Y2hhbmdlZCwgMzMgaW5zZXJ0aW9ucygrKSwgMjcgZGVsZXRpb25zKC0pCj4+Pgo+Pj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1wbWljLXdyYXAuYyAKPj4+IGIvZHJpdmVy
-cy9zb2MvbWVkaWF0ZWsvbXRrLXBtaWMtd3JhcC5jCj4+PiBpbmRleCBiZjM5YTY0ZjNlY2MuLjU0
-YTUzMDBhYjcyYiAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1wbWlj
-LXdyYXAuYwo+Pj4gKysrIGIvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLXBtaWMtd3JhcC5jCj4+
-PiBAQCAtMTMsNiArMTMsOSBAQAo+Pj4gwqAgI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+Pj4g
-wqAgI2luY2x1ZGUgPGxpbnV4L3Jlc2V0Lmg+Cj4+PiArI2RlZmluZSBQV1JBUF9QT0xMX0RFTEFZ
-X1VTwqDCoMKgIDEwCj4+PiArI2RlZmluZSBQV1JBUF9QT0xMX1RJTUVPVVRfVVPCoMKgwqAgMTAw
-MDAKPj4+ICsKPj4+IMKgICNkZWZpbmUgUFdSQVBfTVQ4MTM1X0JSSURHRV9JT1JEX0FSQl9FTsKg
-wqDCoMKgwqDCoMKgIDB4NAo+Pj4gwqAgI2RlZmluZSBQV1JBUF9NVDgxMzVfQlJJREdFX1dBQ1Mz
-X0VOwqDCoMKgwqDCoMKgwqAgMHgxMAo+Pj4gwqAgI2RlZmluZSBQV1JBUF9NVDgxMzVfQlJJREdF
-X0lOSVRfRE9ORTPCoMKgwqDCoMKgwqDCoCAweDE0Cj4+PiBAQCAtMTI0MSwyNyArMTI0NCwxNCBA
-QCBzdGF0aWMgYm9vbCBwd3JhcF9pc19mc21faWRsZV9hbmRfc3luY19pZGxlKHN0cnVjdCAKPj4+
-IHBtaWNfd3JhcHBlciAqd3JwKQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgICh2YWwgJiBQV1JBUF9T
-VEFURV9TWU5DX0lETEUwKTsKPj4+IMKgIH0KPj4+IC1zdGF0aWMgaW50IHB3cmFwX3dhaXRfZm9y
-X3N0YXRlKHN0cnVjdCBwbWljX3dyYXBwZXIgKndycCwKPj4+IC3CoMKgwqDCoMKgwqDCoCBib29s
-ICgqZnApKHN0cnVjdCBwbWljX3dyYXBwZXIgKikpCj4+PiAtewo+Pj4gLcKgwqDCoCB1bnNpZ25l
-ZCBsb25nIHRpbWVvdXQ7Cj4+PiAtCj4+PiAtwqDCoMKgIHRpbWVvdXQgPSBqaWZmaWVzICsgdXNl
-Y3NfdG9famlmZmllcygxMDAwMCk7Cj4+PiAtCj4+PiAtwqDCoMKgIGRvIHsKPj4+IC3CoMKgwqDC
-oMKgwqDCoCBpZiAodGltZV9hZnRlcihqaWZmaWVzLCB0aW1lb3V0KSkKPj4+IC3CoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHJldHVybiBmcCh3cnApID8gMCA6IC1FVElNRURPVVQ7Cj4+PiAtwqDCoMKg
-wqDCoMKgwqAgaWYgKGZwKHdycCkpCj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4g
-MDsKPj4+IC3CoMKgwqAgfSB3aGlsZSAoMSk7Cj4+PiAtfQo+Pj4gLQo+Pj4gwqAgc3RhdGljIGlu
-dCBwd3JhcF9yZWFkMTYoc3RydWN0IHBtaWNfd3JhcHBlciAqd3JwLCB1MzIgYWRyLCB1MzIgKnJk
-YXRhKQo+Pj4gwqAgewo+Pj4gK8KgwqDCoCBib29sIHRtcDsKPj4+IMKgwqDCoMKgwqAgaW50IHJl
-dDsKPj4+IMKgwqDCoMKgwqAgdTMyIHZhbDsKPj4+IC3CoMKgwqAgcmV0ID0gcHdyYXBfd2FpdF9m
-b3Jfc3RhdGUod3JwLCBwd3JhcF9pc19mc21faWRsZSk7Cj4+PiArwqDCoMKgIHJldCA9IHJlYWR4
-X3BvbGxfdGltZW91dChwd3JhcF9pc19mc21faWRsZSwgd3JwLCB0bXAsIHRtcCwKPj4KPj4gaG0s
-IGlmIHdlIG1ha2UgdGhlIGNvbmQgKHRtcCA+IDApIHRoYXQgd291bGQgaGVscCB0byB1bmRlcnN0
-YW5kIHRoZSBjb2RlLiBBdCAKPj4gbGVhc3QgSSBoYWQgdG8gdGhpbmsgYWJvdXQgaXQgZm9yIGEg
-bW9tZW50LiBCdXQgSSBsZWF2ZSBpdCB0byB5b3UgaWYgeW91IHRoaW5rIAo+PiBpdCdzIHdvcnRo
-IHRoZSBlZmZvcnQuCj4+Cj4gCj4gSSB3b3VsZCBwcmVmZXIgc2l6ZSBvdmVyIHJlYWRhYmlsaXR5
-IGluIHRoaXMgY2FzZS4uLiBpZiB3ZSBkbyAodG1wID4gMCksIGl0IHdvdWxkCj4gYmUgaW5jb3Jy
-ZWN0IHRvIGtlZXAgdG1wIGFzIGEgYGJvb2xgLCB3ZSB3b3VsZCBoYXZlIHRvIHNldCBpdCBhcyBh
-biBpbnRlZ2VyIHZhciwKPiB3aGljaCBpcyB1bm5lY2Vzc2FyaWx5IGJpZ2dlciAodGhhdCdzIHRo
-ZSByZWFzb24gd2h5IEkgd3JvdGUgaXQgbGlrZSBzbyEpLgo+IAo+IEFub3RoZXIgd2F5IHRvIGlu
-Y3JlYXNlIGh1bWFuIHJlYWRhYmlsaXR5IHdvdWxkIGJlIHRvIGRvICh0bXAgPT0gdHJ1ZSksIGJ1
-dCBpdAo+IGxvb2tzIGEgYml0IHdlaXJkIHRvIG1lLCBkb2Vzbid0IGl0Pwo+IElmIHlvdSBkaXNh
-Z3JlZSBhYm91dCB0aGF0IGxvb2tpbmcgd2VpcmQsIHRob3VnaCwgSSBjYW4gZ28gd2l0aCB0aGF0
-IG9uZSwgcGVyaGFwcyEKPiAKCllvdSBhcmUgcmlnaHQsIGp1c3QgbGVhdmUgaXQgYXMgaXQgaXMu
-CgpSZWdhcmRzLApNYXR0aGlhcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1tZWRpYXRlawo=
+On Tue, 2022-05-17 at 10:27 +0200, AngeloGioacchino Del Regno wrote:
+> Il 17/05/22 08:37, Yong Wu ha scritto:
+> > On Fri, 2022-05-13 at 17:06 +0200, AngeloGioacchino Del Regno
+> > wrote:
+> > > The MediaTek Helio X10 (MT6795) SoC has 5 LARBs and one common
+> > > SMI
+> > > instance without any sub-common and without GALS.
+> > > 
+> > > While the smi-common configuration is specific to this SoC, on
+> > > the
+> > > LARB side, this is similar to MT8173, in the sense that it
+> > > doesn't
+> > > need the port in LARB, and the register layout is also compatible
+> > > with that one, which makes us able to fully reuse the smi-larb
+> > > platform data struct that was introduced for MT8173.
+> > > 
+> > > Signed-off-by: AngeloGioacchino Del Regno <
+> > > angelogioacchino.delregno@collabora.com>
+> > > ---
+> > >   drivers/memory/mtk-smi.c | 17 +++++++++++++++++
+> > >   1 file changed, 17 insertions(+)
+> > > 
+> > > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> > > index 86a3d34f418e..7e7c3ede19e4 100644
+> > > --- a/drivers/memory/mtk-smi.c
+> > > +++ b/drivers/memory/mtk-smi.c
+> > > @@ -21,11 +21,13 @@
+> > >   /* SMI COMMON */
+> > >   #define SMI_L1LEN			0x100
+> > >   
+> > > +#define SMI_L1_ARB			0x200
+> > >   #define SMI_BUS_SEL			0x220
+> > >   #define SMI_BUS_LARB_SHIFT(larbid)	((larbid) << 1)
+> > >   /* All are MMU0 defaultly. Only specialize mmu1 here. */
+> > >   #define F_MMU1_LARB(larbid)		(0x1 <<
+> > > SMI_BUS_LARB_SHIFT(larbid))
+> > >   
+> > > +#define SMI_FIFO_TH0			0x230
+> > 
+> > Does the name come from the coda you got?
+> > It is called SMI_READ_FIFO_TH in my coda.
+> > 
+> 
+> Documentation for this SoC is not public and I have no access to it,
+> so
+> everything that you see here comes from reading downstream kernel
+> code :-(
+> 
+> I'll change the name to SMI_READ_FIFO_TH as suggested, thanks!
+> 
+> > >   #define SMI_M4U_TH			0x234
+> > >   #define SMI_FIFO_TH1			0x238
+> > >   #define SMI_FIFO_TH2			0x23c
+> > > @@ -360,6 +362,7 @@ static const struct of_device_id
+> > > mtk_smi_larb_of_ids[] = {
+> > >   	{.compatible = "mediatek,mt2701-smi-larb", .data =
+> > > &mtk_smi_larb_mt2701},
+> > >   	{.compatible = "mediatek,mt2712-smi-larb", .data =
+> > > &mtk_smi_larb_mt2712},
+> > >   	{.compatible = "mediatek,mt6779-smi-larb", .data =
+> > > &mtk_smi_larb_mt6779},
+> > > +	{.compatible = "mediatek,mt6795-smi-larb", .data =
+> > > &mtk_smi_larb_mt8173},
+> > >   	{.compatible = "mediatek,mt8167-smi-larb", .data =
+> > > &mtk_smi_larb_mt8167},
+> > >   	{.compatible = "mediatek,mt8173-smi-larb", .data =
+> > > &mtk_smi_larb_mt8173},
+> > >   	{.compatible = "mediatek,mt8183-smi-larb", .data =
+> > > &mtk_smi_larb_mt8183},
+> > > @@ -541,6 +544,13 @@ static struct platform_driver
+> > > mtk_smi_larb_driver = {
+> > >   	}
+> > >   };
+> > >   
+> > > +static const struct mtk_smi_reg_pair
+> > > mtk_smi_common_mt6795_init[SMI_COMMON_INIT_REGS_NR] = {
+> > > +	{SMI_L1_ARB, 0x1b},
+> > > +	{SMI_M4U_TH, 0xce810c85},
+> > > +	{SMI_FIFO_TH1, 0x43214c8},
+> > > +	{SMI_FIFO_TH0, 0x191f},
+> > > +};
+> > > +
+> > >   static const struct mtk_smi_reg_pair
+> > > mtk_smi_common_mt8195_init[SMI_COMMON_INIT_REGS_NR] = {
+> > >   	{SMI_L1LEN, 0xb},
+> > >   	{SMI_M4U_TH, 0xe100e10},
+> > > @@ -565,6 +575,12 @@ static const struct mtk_smi_common_plat
+> > > mtk_smi_common_mt6779 = {
+> > >   		    F_MMU1_LARB(5) | F_MMU1_LARB(6) |
+> > > F_MMU1_LARB(7),
+> > >   };
+> > >   
+> > > +static const struct mtk_smi_common_plat mtk_smi_common_mt6795 =
+> > > {
+> > > +	.type	  = MTK_SMI_GEN2,
+> > > +	.bus_sel  = BIT(0),
+> > 
+> > Like the other larbs, use F_MMU1_LARB(0) here?
+> > 
+> 
+> I agree that F_MMU1_LARB(0) == (1 << (0 << 1)) == BIT(0), but that
+> would
+> not be correct and induce other people to mistake, I think?
+
+F_MMU1_LARB(x) means larbx enter MMU1. this is correct for me.
+
+OK. Maybe the macro name is not good. About the macro background,
+please see:
+567e58cf96dd (memory: mtk-smi: Add bus_sel for mt8183)
+
+If you have better name for this, please tell me:)
+
+> Downstream doesn't do MMU1 bits, but MMU0 in this case... but if you
+> can
+> check on internal documentation and confirm that the downstream
+> kernel's
+> logic is wrong on that - and that you've verified that this should 
+
+I don't know the detailed downstream code, But I find a internal branch
+about this SoC. I see the bus_sel did set to 0x1 as you did here. thus
+I don't think the downstream kernel is wrong. 0x1 means larb0 enter
+MMU1 while the others still enter MMU0. we could use F_MMU1_LARB(0)
+here.
+
+> indeed
+> be F_MMU1_LARB(x), you'll get a big(bigger) thank you from me :-)
+> 
+> Meanwhile...
+> 
+> Thanks!
+> Angelo
+> 
+> > 
+> > After the two changes,
+> > 
+> > Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+> > 
+> > Thanks.
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
