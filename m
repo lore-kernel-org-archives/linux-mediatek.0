@@ -4,82 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED716C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:16:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCDDDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:24:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zex5UlufS6BOrcXLMlmxbs2VcRGRCTPYbQ+freXeg1Y=; b=1p/T65R4rcf3rX
-	yFqVhaNGsd1CedLdMg39dLFODP5KrhraHa6sUJQ/NL/IgrYE/+j0xyphH6W18A7bJqN7mhVG7h9oE
-	tHYhwo4l9raWw2rOjE9uXSlYJWNIhVS+OzRJAyPy+uyJ1lPjUc4s85p7PEEsx4GaQnU+KyhV1bD7+
-	L+Uod1bxE+DHhShmkSR7xdjHRfj9Wz7vE3lY982MGN0gDqYnACR1MEa8qnymHpY8nx+IBRYDWWzcZ
-	caN3sHnClS6p+8+ssW22nCBa01bYNlOJruxJxiuzlhHgxg/T7AIJ8fyFxyhfodQgSRxh49zbSi9i5
-	nfACkszn3MWjZmD7Eezw==;
+	List-Owner; bh=1mB4ZKosQSQnZ3Oe69MyP6vM6GThtVb2uPmFa9i/284=; b=Uka3M7SgJnTOV8
+	GKIi9iDQaisg8shAxCFDSTwjZiSYhXdtdIstUOPdAWXgJUxa4AyDKH8oDXkvnpHRKHmTUrHBz7ixs
+	N6vBHdw7USHNLPKAG83cqnhXYQwDIFHB7Jbuu+LRh7A+c3zWcfh/DLbWtXfBMWZYXZAKlZnbNQ2vS
+	vO3e2EIIAO4/o1HhLt+7cPK76ydmNilIhGFqw0V1d68TAZ2nWzhNTdAqIMMCzBX++7UwHInkceyKa
+	nhYoDmdDd53QyAOgNgkjRJeLY+JxQG9KWPsr3DlrprfFLjc1dQkM56nlfXgLlrYm55MPF7FSZFJxM
+	mGZuRW/jDJcuXHv7+zzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrFnH-000o16-5h; Wed, 18 May 2022 09:16:35 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1nrFv3-000zLb-CY; Wed, 18 May 2022 09:24:37 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrFnE-000nx7-D2; Wed, 18 May 2022 09:16:33 +0000
-Received: by mail-wr1-x432.google.com with SMTP id r23so1795917wrr.2;
- Wed, 18 May 2022 02:16:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=AJ/PeRbastM8KtwKP00d5Dtpk6YYbHWpbi26hK6kis8=;
- b=Sb6MUDzpI3Do12SoVOog4trxfn9HkOWzjeJE76NDXkSoA5+fRAmSg1quRuL0EaHHMq
- m6AxmVYU7qZ4kUOuIhQsD2r+4H7X/eY9MdaLsZClCj+chZ/DoiVRhX9q9MC9cVk+qB2u
- rKLz50JW6LMpRFFumwP9Jdf2NLUMxYBb39/m7I1paORnMA76t7UYktiptr2D7kQNW9fM
- Ilp+EyfIAquY2zUojfnFJBq50LF3ol0dyv8ykoL/ce1uU9ZpB3AJf2RGUb5yvijmFIHy
- vhOOAZG3Pzx1dZuw2baXFhCQfbnqUvTEPayqaYHkt2lviWQdjqQoRKNEAeblCa+BKcYt
- CR+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=AJ/PeRbastM8KtwKP00d5Dtpk6YYbHWpbi26hK6kis8=;
- b=4ftgRc72650yXS5/zs0zOegvxhAzf15Z+16rqaynmiFF6SsuQoPB8d1aoHdUQa2cI3
- n6ddfBJz2U/Gh0tzX1x7m/Yxo931G9jgyu8xEm41mg3hT+I/tQoe3ta1WMbNYSVkb0t1
- /zU/DiHM+NB0LhQR8WND3yQcW/xwDw+kGm2uQFTCNzuDE/JQjrp9byKlVjVmeMzC7DFc
- WyAyzY4mzt6YIdlzUdCcXAOyHqNfhEKtQ9pEAC3eb/qHbYfDIZQctiHIMQDe/fpm29b+
- Gy8K1cfQXhGCl1ZC8/J2gXDN/cFD/VdowPO9CXv39EOp0s0oXR6cfb9tijENrP8SCP8k
- UA+g==
-X-Gm-Message-State: AOAM532XuAJdS73OqOutB0XT1XiwC37unfYBSkBp45pA7jziCmaZBlVA
- W+v4xm78ceg2gPL+aIiImYk=
-X-Google-Smtp-Source: ABdhPJwEWT0S1cQNRyp2Os4DAQEhukNT425BpsOswVM115DyQwaHDTQ4H/1aAl9xuumtGy5hK18drg==
-X-Received: by 2002:a05:6000:1a45:b0:20e:6164:d86c with SMTP id
- t5-20020a0560001a4500b0020e6164d86cmr1405752wry.561.1652865390262; 
- Wed, 18 May 2022 02:16:30 -0700 (PDT)
-Received: from [192.168.0.36] ([5.225.216.194])
- by smtp.gmail.com with ESMTPSA id
- p18-20020a05600c1d9200b00397122e63b6sm1227595wms.29.2022.05.18.02.16.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 May 2022 02:16:29 -0700 (PDT)
-Message-ID: <ad4aac8a-ef1b-d4eb-7045-a46bd39ad3fc@gmail.com>
-Date: Wed, 18 May 2022 11:16:28 +0200
+ id 1nrFus-000zGa-57; Wed, 18 May 2022 09:24:27 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id C7FA11F422B2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652865864;
+ bh=1M8epVbbhrfB5k/OezZImU9QLYUkLMpwpTMw3zQrCrU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=O5+PqTxz/Us7pmb2QEwNAgTmsE8DICn3Cyx1r3kVPknydLuln1vHIiuFVlriMchZv
+ SgA3HnMXkFxPXQGgR2P8D+Z9cyw7nGGVw7GdHxbBQapAjqJTyeDQN0fJE90yDOTnQc
+ Bx9G08IYG2xlxYAUIbc2/skaG1SpFCP97KOOdoncXf58acKHglWFqjIvB38efhklGA
+ Ha4qjHCXtKuxjiHMb/IsLr5rYJ17kPlUz024EcKXzTNw4qN/z3uVa261OZwBZ7bZah
+ 9x7xGeR3od5os0By7OZc8jn9KyuzW5d1uJxp3HcNjF+c+hchYg6NqI9Ncg6nkeB3Tl
+ ATsAtZ8T+t80Q==
+Message-ID: <5100b851-6787-fed8-a40f-7e6e64a123d8@collabora.com>
+Date: Wed, 18 May 2022 11:24:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH 1/8] dt-bindings: iommu: mediatek: Add mediatek,infracfg
- phandle
+ Thunderbird/91.9.0
+Subject: Re: [PATCH 2/6] dt-bindings: arm: mt8186: Set #clock-cells as
+ required property
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- yong.wu@mediatek.com
-Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20220517132107.195932-1-angelogioacchino.delregno@collabora.com>
- <20220517132107.195932-2-angelogioacchino.delregno@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220517132107.195932-2-angelogioacchino.delregno@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ sboyd@kernel.org, chun-jie.chen@mediatek.com, rex-bc.chen@mediatek.com,
+ wenst@chromium.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220517101514.21639-1-angelogioacchino.delregno@collabora.com>
+ <20220517101514.21639-3-angelogioacchino.delregno@collabora.com>
+ <1cec6a09-9d80-99e7-ccc4-c918c6be7dbb@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <1cec6a09-9d80-99e7-ccc4-c918c6be7dbb@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_021632_496165_8B625639 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20220518_022426_373292_1507EFF1 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,38 +74,33 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 17/05/2022 15:21, AngeloGioacchino Del Regno wrote:
-> Add property "mediatek,infracfg" to let the mtk_iommu driver retrieve
-> a phandle to the infracfg syscon instead of performing a per-soc
-> compatible lookup.
+Il 17/05/22 16:34, Krzysztof Kozlowski ha scritto:
+> On 17/05/2022 12:15, AngeloGioacchino Del Regno wrote:
+>> This is a clock-controller binding, so it needs #clock-cells, or
+>> it would be of no use: add that to the list of required properties.
+>>
+>> Fixes: f113a51aa2cf ("dt-bindings: ARM: MediaTek: Add new document bindings of MT8186 clock")
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../devicetree/bindings/arm/mediatek/mediatek,mt8186-clock.yaml  | 1 +
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 4 ++++
->   1 file changed, 4 insertions(+)
+> If these are clock controllers and new bindings, why they were added to
+> "arm" directory? arm is only for top-level stuff, not for devices.
 > 
-> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> index 2ae3bbad7f1a..78c72c22740b 100644
-> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> @@ -101,6 +101,10 @@ properties:
->       items:
->         - const: bclk
->   
-> +  mediatek,infracfg:
-> +    $ref: "/schemas/types.yaml#/definitions/phandle"
-> +    description: The phandle to the mediatek infracfg syscon
-> +
->     mediatek,larbs:
->       $ref: /schemas/types.yaml#/definitions/phandle-array
->       minItems: 1
+> In the future please put your bindings in respective subsystem matching
+> the hardware. Fallback is soc directory, not arm.
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
 
-I think we can squash patch 7 in here. Same holds for pericfg
+Hello Krzysztof,
+
+I agree with you about these bindings belonging to the clock directory.
+Should I add a patch to this series that moves all of the mtxxxx-clock
+and mtxxxx-sys-clock yaml files to the clock directory?
 
 Regards,
-Matthias
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
