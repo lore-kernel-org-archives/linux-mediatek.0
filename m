@@ -4,87 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC9FFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC80C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ADyPxJeVbtTRC9SGQjoPvthQCpjVEoJSiMuV1wy2MYA=; b=nip59kmm5cStV2
-	z5P12TjsMFoQFW48u7v7NQjFZUc7MD2XjO2GdUm2bEbGUEejvAbKcKEMn9OZbWY1cK2NjiebfYyZU
-	NJZBh6nMHvOpd7v+WzuS5CmR/lA+Nw1rHEt5TiB+M7AdtsXQcZOfoGavn2HChXggKoboKgvdAGYtD
-	8mLhVk/pjLJOG7vxqwfW8S8a4U/7FwGyHo9QsiG10kwOwCNUIdGf19VYUs+dYUW3i4uCjRyhwoFFa
-	Mt2Lv4Dreh/q+sveK8igAfjN99/01h62sIs0YaQNzrJXrGNw1nIvc7dzQcDr/IDemiZf8vDmAM6sA
-	vEY4i7D3dkvV2BnWUjOA==;
+	List-Owner; bh=V6gi4tEb+3/WAgTZFkwQBdtVc2Yet6kuGCXPw7I0NPA=; b=iio2o3PjoBK8Pj
+	OLoHya3c2eZKjYblALLXZiPysfrJtCzZigQok+IACBA2fJDXqTTGbWH1l3eGcTEKSQ1pZ0Twl25uK
+	f91HYmld6ggoLU45kwdODuHWLIpMMcsWGtiNaFseAHa43MIleeX/sn/mgI3Ak/1kBVLOLMpM+oNAd
+	nY89PVvpxKSR9H32vY6QSsaAHGRsuo22VKf/SXqXmrOAYOZcCdpuNVqDdJU1xjDO9XM+eNBTKioDN
+	oa+78WVFn0sopSY0jn5og6GRke9wj6rwVee6rPxjXgrfku7DwZ62QG3ZVvfLGUEF77v6s8+7vHWXl
+	lLRdkqwxmKzhx4sRfG0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrISU-001kl3-II; Wed, 18 May 2022 12:07:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nrIaS-001xLv-4k; Wed, 18 May 2022 12:15:32 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrISI-001kf1-Ci; Wed, 18 May 2022 12:07:08 +0000
-X-UUID: 9fd1b9474648439eb0ac2312398add34-20220518
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=qjFhNdYXSX2a0bMwJHpyfZio+1rXDavLHe9Tb09h/n0=; 
- b=TACOe1pq5j1+rgzxZOaJ/ld/4jRPWPR3WxzVTY7Vv7HGCELFhQI1ndV9m1UpEvFA2aPDqSLxfHcPQYgB678QK/gKDugGpeuy8hW5aZy7+pSwqpwEO1rfrZanYgAJYCCu7tqV9KHj7tftJUlJZQ8tNB1n9EAPnoy5K+Sb29IQ6vc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:2a70a6bd-34d2-4211-9ea0-01c4aaa9f830, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:10c7b679-5ef6-470b-96c9-bdb8ced32786,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
- ,QS:0,BEC:nil
-X-UUID: 9fd1b9474648439eb0ac2312398add34-20220518
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2098979314; Wed, 18 May 2022 05:06:53 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 May 2022 05:06:51 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 May 2022 20:06:49 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 18 May 2022 20:06:48 +0800
-Message-ID: <d101876a72e6248c77ee5de0d1dc52687e225629.camel@mediatek.com>
-Subject: Re: [PATCH v6, 6/7] media: mediatek: vcodec: prevent kernel crash
- when scp ipi timeout
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Alexandre Courbot
- <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 18 May 2022 20:06:48 +0800
-In-Reply-To: <31992c67-400e-8e14-38c2-4655995886f5@xs4all.nl>
-References: <20220513092526.9670-1-yunfei.dong@mediatek.com>
- <20220513092526.9670-7-yunfei.dong@mediatek.com>
- <ea9a04fb-368d-daca-96ae-9366253a5e91@xs4all.nl>
- <f26d5225fc8c499226c297ed86feb5ee20e8f3d3.camel@mediatek.com>
- <31992c67-400e-8e14-38c2-4655995886f5@xs4all.nl>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nrIaD-001wwr-R2; Wed, 18 May 2022 12:15:19 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id C929E1F45027
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652876116;
+ bh=FtVu2AuXw/AthOSnF4m9ZOeWkCS8FD3CfCIxTGildz4=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=aW57lKMy568QDyibKHFp8KIuYtoEcTU9ZlysDg7TgOISJeQkR21ZzG6i6rm7EdkXp
+ imamVhyO/QUhVa/GJhgXyfjHbhKOAWr7n0NB13CmQGEkiW6E8fmUXOy3Rl0Mc7A01I
+ dUeRGME6DL6YM55g6xEdzyawSTicaFE99npv3YmHrfNlSDiqE32AIrR2uu6uO8ZE1C
+ sC1bgLitM8tZY4IOPt1yeCXAtgs6YIG6WBneFohHm2TH9xUuQPXOsUbjE+qARBVU4l
+ 5tHC/JSN11roernrhQW2ggVmJnnDtWG3KVXUhO9RhmT+9G1lN04eNRIvS0EUkNSUo9
+ pAkVqgogKF3jw==
+Message-ID: <ead37cb0-c841-df1a-ca10-a396b5e9951c@collabora.com>
+Date: Wed, 18 May 2022 14:15:13 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH] clk: mediatek: Fix unused 'ops' field in mtk_pll_data
+Content-Language: en-US
+To: Boris Lysov <arz65xx@gmail.com>, arzamas-16@mail.ee,
+ mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+ wenst@chromium.org, miles.chen@mediatek.com
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220515122409.13423-1-arzamas-16@mail.ee>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220515122409.13423-1-arzamas-16@mail.ee>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_050706_477723_E39573C3 
-X-CRM114-Status: GOOD (  34.52  )
+X-CRM114-CacheID: sfid-20220518_051518_075769_5B995528 
+X-CRM114-Status: GOOD (  25.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,105 +65,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Hans,
+Il 15/05/22 14:24, Boris Lysov ha scritto:
+> From: Boris Lysov <arzamas-16@mail.ee>
+> 
+> Allow to specify optional clk_ops in mtk_pll_data which will be picked up in
+> mtk_clk_register_pll. So far no already supported Mediatek SoC needs
+> non-default clk_ops for PLLs but instead of removing this field it will be
+> actually used in the future for supporting older SoCs (see [1] for details)
+> with quirky PLLs.
+> 
 
-Thanks for your suggestion.
+Hello Boris,
 
-On Wed, 2022-05-18 at 13:34 +0200, Hans Verkuil wrote:
-> 
-> On 5/18/22 13:29, yunfei.dong@mediatek.com wrote:
-> > Dear Hans,
-> > 
-> > Thanks for your review.
-> > On Wed, 2022-05-18 at 11:37 +0200, Hans Verkuil wrote:
-> > > Hi Yunfei,
-> > > 
-> > > On 5/13/22 11:25, Yunfei Dong wrote:
-> > > > When SCP timeout during playing video, kernel crashes with
-> > > > following
-> > > > message. It's caused by accessing NULL pointer in
-> > > > vpu_dec_ipi_handler.
-> > > > This patch doesn't solve the root cause of NULL pointer, but
-> > > > merely
-> > > > prevent kernel crashed when encounter the NULL pointer.
-> > > 
-> > > Is the root cause being addressed as well? Where is the root
-> > > cause?
-> > > Is it
-> > > in this driver or in the scp (i.e. the remoteproc) driver?
-> > > 
-> > > I need a bit more information to decide whether this series is
-> > > ready
-> > > to
-> > > be merged for 5.20 or not.
-> > > 
-> > > Regards,
-> > > 
-> > > 	Hans
-> > > 
-> > 
-> > Vpu will be NUll when scp(micro processor) is hang or crash. Need
-> > to
-> > keep kernel works well , so add this patch.
-> 
-> OK, I think this should be stated in the commit log, and also in the
-> code
-> (see below).
-> 
-> > 
-> > Best Regards,
-> > Yunfei Dong
-> 
-> <snip>
-> 
-> > > > diff --git
-> > > > a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-> > > > b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-> > > > index 35f4d5583084..1041dd663e76 100644
-> > > > --- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-> > > > +++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-> > > > @@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data,
-> > > > unsigned int len, void *priv)
-> > > >  	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
-> > > >  					(unsigned long)msg-
-> > > > > ap_inst_addr;
-> > > > 
-> > > >  
-> > > > +	if (!vpu) {
-> > > > +		mtk_v4l2_err("ap_inst_addr is NULL");
-> 
-> E.g., either add a comment here or perhaps change the error message
-> to:
-> 
-> "ap_inst_addr is NULL, did the SCP hang?"
-> 
-> Or something along those lines.
-> 
-I will change the message in next patch like below.
+I disagree about this change and would rather see the ops pointer removed
+with fire.
 
-mtk_v4l2_err("ap_inst_addr is NULL, did the SCP hang or crash?");
+I got that you're trying to do something about "quirky PLLs", but is it
+really about the PLLs that you're mentioning being "quirky", or are they
+simply a different IP?
 
-> Shouldn't there be a \n at the end of this message as well? Or does
-> mtk_v4l2_err add that?
+Also, if it's just about a bit inversion and a bigger delay:
+1. Bigger delay: Depending on how bigger, we may simply delay more by default
+    for all PLLs, even the ones that aren't requiring us to wait for longer...
+    ...after all, if it's about waiting for 10/20 *microseconds* more, that's
+    really not going to affect anyone's UX, nor make things slower for real,
+    as the .prepare() ops for MediaTek PLLs are seldom called.. and even if
+    that wasn't true, I don't think that a total of 30uS would be that much
+    detrimental to the system's overall operation latency.
+    Besides, if you see a case of a PLL not just switching on and off, but
+    preparing and unpreparing continuously, there must be some big issue in
+    some driver, or in the clock framework somewhere (and that ain't the case);
+
+2. Bit inversion: that can be solved simply with a flag in the prepare/unprepare
+    ops for this driver... and if you want something that performs even better,
+    sparing you a nanosecond or two, you can always assign an "inverted" callback
+    for managing that single bit;
+
+3. Different IP: mtk_clk_register_(name-of-the-new-ip)_pll() - I don't think that
+    there's anything to explain to that one.
+
+Regards,
+Angelo
+
+> This patch depends on series "clk: mediatek: Move to struct clk_hw provider
+> APIs" [2] by Chen-Yu Tsai.
 > 
-mtk_v4l2_err add '\n' in the end.
-> Regards,
+> [1] https://lists.infradead.org/pipermail/linux-mediatek/2022-February/035093.html
+> [2] https://lists.infradead.org/pipermail/linux-mediatek/2022-May/040921.html
 > 
-> 	Hans
+> Signed-off-by: Boris Lysov <arzamas-16@mail.ee>
+> ---
+>   drivers/clk/mediatek/clk-pll.c | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
 > 
-Best Regards,
-Yunfei Dong
-> > > > +		return;
-> > > > +	}
-> > > > +
-> > > >  	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
-> > > >  
-> > > >  	vpu->failure = msg->status;
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index cabdf25a27f3..509959a325f0 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -347,7 +347,10 @@ static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
+>   
+>   	init.name = data->name;
+>   	init.flags = (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
+> -	init.ops = &mtk_pll_ops;
+> +	if (data->ops)
+> +		init.ops = data->ops;
+> +	else
+> +		init.ops = &mtk_pll_ops;
+>   	if (data->parent_name)
+>   		init.parent_names = &data->parent_name;
+>   	else
+> 
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
