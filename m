@@ -4,59 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECFD5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 11:35:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C24C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 11:35:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6qdhy3Qz99kDAo+GPfHZKHkz761Xssfg3nJMihnaekA=; b=v0RVqdOLnfVObV
-	x4qeBTBKsJIx51weMtuPx8p+Q/4Q0KWeJjqgTOfovEmrqwHHqmljWWpb6hMmYJ5DSB4+NLIHxJa//
-	ebMfQI9YQa/B52p/mYhFpDM/pPkc4mMIlnnUjl+YZdqVdte1abPESolEUND4iw46IU61tR8XzgzLy
-	dyjKCHch3eImupKC3dnsTtyPuFh6HGkf7pdH49PKyrIvYeDXSClaGZ1ZF0XjrdZ5F7R0H1eGOXz9Y
-	QCw3p8iI+N57tKiYX4kJ+7B1ENm2QqKDtZyyUDfWYzgKOtnFHpYYmKdyVTJRAnZDc+KDf3GP8dQvD
-	BVxcJXinNFS9aav5QJow==;
+	List-Owner; bh=MdxxxNf8/C9DHGNvjV9Gv4cDV8K399+6RuyVcvNPrQI=; b=xPo4haCAsSv92E
+	SUFTJiL4pY4ohCCegnsrLmjgUEbv5Ii6X/G0T6d7IViBcKB4qnj0uw22jIY03220bSyyRW9rVg20F
+	9AYVPWWIPrlHWZXt0368KPIN++C1sYVx87a403jGP5ixUWL+jdGPDVj9jqliRHNnB/1MSFlOEc5Re
+	BjFORnnhF5LwzSdOGZ/RXl2frlMKrHKPwW/3n2gM5ULhMbLYgrXwHKhX6lXOxZvAYcLJrfgEgy3Si
+	KepUkxXIILopttgr9ZNdrPwttc0rsPWAm7VJzmvXNlNJUkSJ5pX864KfVxIC9jNgXT2XKId+VwkNE
+	vOkdasad4xtJEl9lsXUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrHxd-001aNQ-FR; Wed, 18 May 2022 11:35:25 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nrHxx-001aam-VV; Wed, 18 May 2022 11:35:46 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrHnI-001Voj-7w; Wed, 18 May 2022 11:24:47 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 192281F41F20
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652873082;
- bh=1SFt756w7GtqyPP5cDDnWfuMpr+mUeNHOiSxkXTUU34=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gGkqEkjfc+/IFT1/KGscjq/03TS2gAHBlAGLGfryV27d7lTmKkrgctk0ueFcvdR8d
- jGR2xco5IbzNFjjRF8dIE1GP7afy2apU/grsUmXtmQJFYkzH0pa222icIqqU6LSLLl
- IrAcIRcKXuoYTsjHfclf5PPjTvsrUWgsghjTLq+ptC2kEHq7vcxEMzqvasYpTmHlnc
- 4us9xI4ZlOqpehlmFlqD+HLGEgIINIxJ+OcrMmzUo/Qe1qNqfKgE4Wn1j4I2sR4YY/
- QK4HYJGwgcj51dutnYyHbeot93oks2SysFtCTYpnulLTKE9zDplf+0iC+svVzpHmK2
- AoUg1kMVOUt3w==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: daniel.lezcano@linaro.org
-Cc: tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, konrad.dybcio@somainline.org,
- marijn.suijten@somainline.org, martin.botka@somainline.org,
- ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
- paul.bouchara@somainline.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 2/2] clocksource/drivers/timer-mediatek: Implement CPUXGPT
- timers
-Date: Wed, 18 May 2022 13:24:35 +0200
-Message-Id: <20220518112435.241116-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220518112435.241116-1-angelogioacchino.delregno@collabora.com>
-References: <20220518112435.241116-1-angelogioacchino.delregno@collabora.com>
+ id 1nrHrq-001XmQ-1J; Wed, 18 May 2022 11:29:27 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id
+ i20-20020a05600c355400b0039456976dcaso2179418wmq.1; 
+ Wed, 18 May 2022 04:29:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=uFIsWxhH+SfWDbQeGJib3EffwTOsdWgNhmP3BKg6cTI=;
+ b=GIk1v/SP46GpQB2aa29XniHa4XWAzmRQTBwJvI2ojRUnPlE+MqZBO6G6nMAupnb8W+
+ G2EA2unw0FCDCoBzqtVzORAZzUFAFXx+Kdr8mqijkt1cl3qR20Nu7ks1Ou4EEIyvLfG1
+ BKNUqHtpdNg9JkHJn34prfdFRVXewGK/0aMoRwE31kjLG9CzM4rhFuUz60WAX4Xx4Qtf
+ Iw5hAdG4s9z4F6oM41gnCOxtwot5uL5itCKcTOqR+V3kIeqKyCtmTTLGt5h7TbNeBK4l
+ 1nRGHnUOJvvntrUCPXJu1pJXgzrO3r0Q2kDfNl8uDHZhwRBCu9LgjhUgB/igxBzXk6Dk
+ Y+OA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=uFIsWxhH+SfWDbQeGJib3EffwTOsdWgNhmP3BKg6cTI=;
+ b=bRAHFgjPcWHQTe8xK4ACsJo0jx1g6DcSLFBjMlvsdu9wd3gA5cWmT7D3kl/Aa17Tbv
+ U2+yDtZV+SaPgIh6PyzUb+LxFh/xVvOJWtB1pg3agld/bx3d+K8DJPq9KhSh4ifp5BrD
+ 2QViQMbwQHZtcGCBbJ9qreUiCqE+ZGw9xhRH0SR2tlTtX8uwrCGkFeDrUWpXQ/L0w0+F
+ kWJYQTGGR6/nK9usV9Bc3BOutwCWQ4mS+REhbOPn0Olouc3JSXElUMO3/2A4izfLxY/b
+ 3uRj02gEmsHUTkEacGr8yokB9WmPPGWLdLGaKQqKrBzkKg7iYgiyRkASD9mOHJSkDM/5
+ 1GIA==
+X-Gm-Message-State: AOAM533UOV9XrAMKGsclcJPEKUkZdUID0SSE9K7qO/gh4mbrzpvQNLsS
+ d1N1LS0Zx+NUeDgOo22kL90=
+X-Google-Smtp-Source: ABdhPJwmMEJmW+CILoBoRlmxrlpjiQs7Ka6eyFZQusCiGX6OE9WPle9wfc8RX8mJ6nniBuuCC/UxRQ==
+X-Received: by 2002:a05:600c:3549:b0:394:89ba:e1be with SMTP id
+ i9-20020a05600c354900b0039489bae1bemr25309861wmq.181.1652873364178; 
+ Wed, 18 May 2022 04:29:24 -0700 (PDT)
+Received: from [192.168.0.36] ([5.225.216.194])
+ by smtp.gmail.com with ESMTPSA id
+ v65-20020a1cac44000000b003947b59dfdesm5121659wme.36.2022.05.18.04.29.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 May 2022 04:29:23 -0700 (PDT)
+Message-ID: <4cfbc8dd-83d3-80df-630d-6f8fb2efb9fd@gmail.com>
+Date: Wed, 18 May 2022 13:29:22 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v2 1/7] dt-bindings: iommu: mediatek: Add phandles for
+ mediatek infra/pericfg
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ yong.wu@mediatek.com
+Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ krzysztof.kozlowski@linaro.org
+References: <20220518100503.37279-1-angelogioacchino.delregno@collabora.com>
+ <20220518100503.37279-2-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220518100503.37279-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_042444_600205_B9044E6A 
-X-CRM114-Status: GOOD (  26.12  )
+X-CRM114-CacheID: sfid-20220518_042926_125551_C9A07543 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,210 +93,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some MediaTek platforms with a buggy TrustZone ATF firmware will not
-initialize the AArch64 System Timer correctly: in these cases, the
-System Timer address is correctly programmed, as well as the CNTFRQ_EL0
-register (reading 13MHz, as it should be), but the assigned hardware
-timers are never started before (or after) booting Linux.
 
-In this condition, any call to function get_cycles() will be returning
-zero, as CNTVCT_EL0 will always read zero.
 
-One common critical symptom of that is trying to use the udelay()
-function (calling __delay()), which executes the following loop:
+On 18/05/2022 12:04, AngeloGioacchino Del Regno wrote:
+> Add properties "mediatek,infracfg" and "mediatek,pericfg" to let the
+> mtk_iommu driver retrieve phandles to the infracfg and pericfg syscon(s)
+> instead of performing a per-soc compatible lookup.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   .../devicetree/bindings/iommu/mediatek,iommu.yaml         | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> index 2ae3bbad7f1a..c4af41947593 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -101,6 +101,10 @@ properties:
+>       items:
+>         - const: bclk
+>   
+> +  mediatek,infracfg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle to the mediatek infracfg syscon
+> +
+>     mediatek,larbs:
+>       $ref: /schemas/types.yaml#/definitions/phandle-array
+>       minItems: 1
+> @@ -112,6 +116,10 @@ properties:
+>         Refer to bindings/memory-controllers/mediatek,smi-larb.yaml. It must sort
+>         according to the local arbiter index, like larb0, larb1, larb2...
+>   
+> +  mediatek,pericfg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle to the mediatek pericfg syscon
+> +
 
-            start = get_cycles();
-            while ((get_cycles() - start) < cycles)
-                    cpu_relax();
+I didn't explain myself. What I was suguesting was to squash the patch that add 
+requiered mediatek,infracfg with the patch that adds mediatk,infracfg to the 
+binding description. And then squash the both patches adding pericfg as well.
 
-which, when CNTVCT_EL0 always reads zero, translates to:
+Regards,
+Matthias
 
-            while((0 - 0) < 0)  ==> while(0 < 0)
 
-... generating an infinite loop, even though zero is never less
-than zero, but always equal to it (this has to be researched,
-but it's out of the scope of this commit).
-
-To fix this issue on the affected MediaTek platforms, the solution
-is to simply start the timers that are designed to be System Timer(s).
-These timers, downstream, are called "CPUXGPT" and there is one
-timer per CPU core; luckily, it is not necessary to set a start bit
-on each CPUX General Purpose Timer, but it's conveniently enough to:
- - Set the clock divider (input = 26MHz, divider = 2, output = 13MHz);
- - Set the ENABLE bit on a global register (starts all CPUX timers).
-
-The only small hurdle with this setup is that it's all done through
-the MCUSYS wrapper, where it is needed, for each read or write, to
-select a register address (by writing it to an index register) and
-then to perform any R/W on a "CON" register.
-
-For example, writing "0x1" to the CPUXGPT register offset 0x4:
-- Write 0x4 to mcusys INDEX register
-- Write 0x1 to mcusys CON register
-
-Reading from CPUXGPT register offset 0x4:
-- Write 0x4 to mcusys INDEX register
-- Read mcusys CON register.
-
-Finally, starting this timer makes platforms affected by this issue
-to work correctly.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clocksource/timer-mediatek.c | 114 +++++++++++++++++++++++++++
- 1 file changed, 114 insertions(+)
-
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 7bcb4a3f26fb..d5b29fd03ca2 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -22,6 +22,19 @@
- 
- #define TIMER_SYNC_TICKS        (3)
- 
-+/* cpux mcusys wrapper */
-+#define CPUX_CON_REG		0x0
-+#define CPUX_IDX_REG		0x4
-+
-+/* cpux */
-+#define CPUX_IDX_GLOBAL_CTRL	0x0
-+ #define CPUX_ENABLE		BIT(0)
-+ #define CPUX_CLK_DIV_MASK	GENMASK(10, 8)
-+ #define CPUX_CLK_DIV1		BIT(8)
-+ #define CPUX_CLK_DIV2		BIT(9)
-+ #define CPUX_CLK_DIV4		BIT(10)
-+#define CPUX_IDX_GLOBAL_IRQ	0x30
-+
- /* gpt */
- #define GPT_IRQ_EN_REG          0x00
- #define GPT_IRQ_ENABLE(val)     BIT((val) - 1)
-@@ -72,6 +85,52 @@
- 
- static void __iomem *gpt_sched_reg __read_mostly;
- 
-+static u32 mtk_cpux_readl(u32 reg_idx, struct timer_of *to)
-+{
-+	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-+	return readl(timer_of_base(to) + CPUX_CON_REG);
-+}
-+
-+static void mtk_cpux_writel(u32 val, u32 reg_idx, struct timer_of *to)
-+{
-+	writel(reg_idx, timer_of_base(to) + CPUX_IDX_REG);
-+	writel(val, timer_of_base(to) + CPUX_CON_REG);
-+}
-+
-+static void mtk_cpux_set_irq(struct timer_of *to, bool enable)
-+{
-+	const unsigned long *irq_mask = cpumask_bits(cpu_possible_mask);
-+	u32 val;
-+
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_IRQ, to);
-+
-+	if (enable)
-+		val |= *irq_mask;
-+	else
-+		val &= ~(*irq_mask);
-+
-+	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_IRQ, to);
-+}
-+
-+static int mtk_cpux_clkevt_shutdown(struct clock_event_device *clkevt)
-+{
-+	/* Clear any irq */
-+	mtk_cpux_set_irq(to_timer_of(clkevt), false);
-+
-+	/*
-+	 * Disabling CPUXGPT timer will crash the platform, especially
-+	 * if Trusted Firmware is using it (usually, for sleep states),
-+	 * so we only mask the IRQ and call it a day.
-+	 */
-+	return 0;
-+}
-+
-+static int mtk_cpux_clkevt_resume(struct clock_event_device *clkevt)
-+{
-+	mtk_cpux_set_irq(to_timer_of(clkevt), true);
-+	return 0;
-+}
-+
- static void mtk_syst_ack_irq(struct timer_of *to)
- {
- 	/* Clear and disable interrupt */
-@@ -281,6 +340,60 @@ static struct timer_of to = {
- 	},
- };
- 
-+static int __init mtk_cpux_init(struct device_node *node)
-+{
-+	static struct timer_of to_cpux;
-+	u32 freq, val;
-+	int ret;
-+
-+	/*
-+	 * There are per-cpu interrupts for the CPUX General Purpose Timer
-+	 * but since this timer feeds the AArch64 System Timer we can rely
-+	 * on the CPU timer PPIs as well, so we don't declare TIMER_OF_IRQ.
-+	 */
-+	to_cpux.flags = TIMER_OF_BASE | TIMER_OF_CLOCK;
-+	to_cpux.clkevt.name = "mtk-cpuxgpt";
-+	to_cpux.clkevt.rating = 10;
-+	to_cpux.clkevt.cpumask = cpu_possible_mask;
-+	to_cpux.clkevt.set_state_shutdown = mtk_cpux_clkevt_shutdown;
-+	to_cpux.clkevt.tick_resume = mtk_cpux_clkevt_resume;
-+
-+	/* If this fails, bad things are about to happen... */
-+	ret = timer_of_init(node, &to_cpux);
-+	if (ret) {
-+		WARN(1, "Cannot start CPUX timers.\n");
-+		return ret;
-+	}
-+
-+	/*
-+	 * Check if we're given a clock with the right frequency for this
-+	 * timer, otherwise warn but keep going with the setup anyway, as
-+	 * that makes it possible to still boot the kernel, even though
-+	 * it may not work correctly (random lockups, etc).
-+	 * The reason behind this is that having an early UART may not be
-+	 * possible for everyone and this gives a chance to retrieve kmsg
-+	 * for eventual debugging even on consumer devices.
-+	 */
-+	freq = timer_of_rate(&to_cpux);
-+	if (freq > 13000000)
-+		WARN(1, "Requested unsupported timer frequency %u\n", freq);
-+
-+	/* Clock input is 26MHz, set DIV2 to achieve 13MHz clock */
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+	val &= ~CPUX_CLK_DIV_MASK;
-+	val |= CPUX_CLK_DIV2;
-+	mtk_cpux_writel(val, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+
-+	/* Enable all CPUXGPT timers */
-+	val = mtk_cpux_readl(CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+	mtk_cpux_writel(val | CPUX_ENABLE, CPUX_IDX_GLOBAL_CTRL, &to_cpux);
-+
-+	clockevents_config_and_register(&to_cpux.clkevt, timer_of_rate(&to_cpux),
-+					TIMER_SYNC_TICKS, 0xffffffff);
-+
-+	return 0;
-+}
-+
- static int __init mtk_syst_init(struct device_node *node)
- {
- 	int ret;
-@@ -339,3 +452,4 @@ static int __init mtk_gpt_init(struct device_node *node)
- }
- TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
- TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
-+TIMER_OF_DECLARE(mtk_mt6795, "mediatek,mt6795-systimer", mtk_cpux_init);
--- 
-2.35.1
-
+>     '#iommu-cells':
+>       const: 1
+>       description: |
 
 _______________________________________________
 Linux-mediatek mailing list
