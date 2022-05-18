@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82B66C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:33:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EB88C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:35:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=v/31oH11VJ3VJKiHD4cGuCQ21Vaufw3icnYh0Ny0Ce4=; b=RPRmo9tvXEUPfr
-	DXhpw1WCz6yFmGvJuoqKb4joIJTWnGo9g4ffqwdNCqX0Aplost/I9o5cgEZH7niNJaTmmL6xo5LIV
-	FXsMZWayflzpNU8gPFZapGd71qB11/ckLDakmDXme3jhGbh7KqPeyqr6dhV1EoepF+HfegAsPQvzs
-	ItrlFh/iV1HUIPIRYhdk5wSd9lHhtOHLh/PBt6UDho+GFuaDp3dRNZvQZaE7xu6NlTuzvZzKnT1mi
-	mLSRaq0MDIqwdvRjQs2E48KE4NXexleYLcroXf5VbGGCeBXcT4kuI2o3FFrGnuItl/Sk3TmRNn2jr
-	s7o4ikunVkXV1tghfZGg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zZmP9YVaNFci9TucLPRdc+RUM+7pwaG0b8EPR0SdKY8=; b=nolXSaZKhLKcYd
+	cZBU0xNqyOIuS7/7K7Ci5l0jLppQLJycGRhqirOwBj3Uilcy525DU/s7JmsCqoTj3TQJAbMjaZ28j
+	Hw+sugVLP2HLpD8k0hDegVKv4AZm8nsQuDOsyGCl6d5wlnaBjd5qCtM3V/goNDajuf4kM9k+6cfo4
+	H0TWaUSeLcHLLMrvC50Zgi0VtxN3rj4qN3qL1XpnK2+wXWtumJ13KtiScAXUGJkpKc3Wo/LxWJZbz
+	6q9M3lq9vm0eARH7sm1t3mHdTZ+55XrrkOUPJKxcriIK3+u7GIOjRerB7qXxu3t7D6p3r20pS2Odt
+	Q9MQXgl8/HtvVZ/dMSXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrIs8-00245B-QU; Wed, 18 May 2022 12:33:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nrIty-00259R-N1; Wed, 18 May 2022 12:35:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrIof-00222D-Te; Wed, 18 May 2022 12:30:16 +0000
-X-UUID: 24515b8cfd624605a9c864c28b9e380d-20220518
+ id 1nrIol-00225k-6O; Wed, 18 May 2022 12:30:20 +0000
+X-UUID: 711ae99d6686458bbad680673c4333bb-20220518
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:96e8dc59-a3f3-4516-a21d-1a790c1f75fe, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:4a06cf20-c9c5-49e9-825a-e5fd7b4b4e9a, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
  ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09, CLOUDID:2d4ba7e2-edbf-4bd4-8a34-dfc5f7bb086d,
+X-CID-META: VersionHash:2a19b09, CLOUDID:d84ba7e2-edbf-4bd4-8a34-dfc5f7bb086d,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: 24515b8cfd624605a9c864c28b9e380d-20220518
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+X-UUID: 711ae99d6686458bbad680673c4333bb-20220518
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1778917022; Wed, 18 May 2022 05:30:10 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1041311820; Wed, 18 May 2022 05:30:13 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 May 2022 05:30:08 -0700
+ 15.0.1497.2; Wed, 18 May 2022 05:30:11 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 18 May 2022 20:30:07 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 May 2022 20:30:09 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 18 May 2022 20:30:05 +0800
+ Transport; Wed, 18 May 2022 20:30:08 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -66,15 +65,18 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7, 0/7] support mt8195 decoder
-Date: Wed, 18 May 2022 20:29:57 +0800
-Message-ID: <20220518123004.18286-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v7,
+ 2/7] media: mediatek: vcodec: Add to support lat soc hardware
+Date: Wed, 18 May 2022 20:29:59 +0800
+Message-ID: <20220518123004.18286-3-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220518123004.18286-1-yunfei.dong@mediatek.com>
+References: <20220518123004.18286-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_053014_015651_A046D850 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20220518_053019_337233_2F6FA45B 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,56 +93,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Firstly, add mt8195 soc lat hardware and compatible, then add documents.
-For vp8 only support MM21 mode, H264/vp9 support MT21C, need to separate
-them. Lastly, enable H264 inner racing mode to reduce hardware latency.
+Add lat soc compatible and to support lat soc power/clk helper.
 
-Patch 1~4 add mt8195 soc lat hardware and compatible, then add documents.
-Patch 5 using different format for different codecs.
-Patch 6 prevent kernel crash when scp reboot.
-Patch 7 enable H264 inner racing mode to reduce hardware latency.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
-This patch depends on "add h264 decoder driver for mt8186"[1]
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.c | 12 +++++++++---
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.h |  2 ++
+ .../platform/mediatek/vcodec/mtk_vcodec_dec_pm.c | 16 ++++++++++++++++
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h    |  1 +
+ 4 files changed, 28 insertions(+), 3 deletions(-)
 
-[1]  https://patchwork.kernel.org/project/linux-mediatek/cover/20220512034620.30500-1-yunfei.dong@mediatek.com/
----
-changed with v6:
-- add detail error message in patch 6.
-changed with v5:
-- fix __iomem not reasonable, align share memory to dram.
-changed with v4:
-- fix sparse and smatch check fail for patch 7.
-changed with v3:
-- rebase driver to the latest media_stage.
-changed with v2:
-- add detail explanation for lat soc hardware for patch 1.
-changed with v1:
-- separate "Init VP9 stateless decode params" patch and remove it to another one.
-- add reviewed-by in patch v3/v4/v6
----
-Yunfei Dong (7):
-  dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for lat
-    soc
-  media: mediatek: vcodec: Add to support lat soc hardware
-  dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for
-    mt8195
-  media: mediatek: vcodec: Adds compatible for mt8195
-  media: mediatek: vcodec: Different codec using different capture
-    format
-  media: mediatek: vcodec: prevent kernel crash when scp ipi timeout
-  media: mediatek: vcodec: Add to support H264 inner racing mode
-
- .../media/mediatek,vcodec-subdev-decoder.yaml | 52 +++++++++++++------
- .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 41 +++++++++++++++
- .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |  8 +++
- .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 12 +++--
- .../mediatek/vcodec/mtk_vcodec_dec_hw.h       |  2 +
- .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 50 ++++++++++++++++++
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h | 12 +++++
- .../vcodec/vdec/vdec_h264_req_multi_if.c      | 25 +++++++--
- .../platform/mediatek/vcodec/vdec_vpu_if.c    |  5 ++
- 9 files changed, 183 insertions(+), 24 deletions(-)
-
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+index 14bed2bd4283..376db0e433d7 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
+@@ -28,6 +28,10 @@ static const struct of_device_id mtk_vdec_hw_match[] = {
+ 		.compatible = "mediatek,mtk-vcodec-core",
+ 		.data = (void *)MTK_VDEC_CORE,
+ 	},
++	{
++		.compatible = "mediatek,mtk-vcodec-lat-soc",
++		.data = (void *)MTK_VDEC_LAT_SOC,
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_vdec_hw_match);
+@@ -166,9 +170,11 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
+ 	subdev_dev->reg_base[VDEC_HW_SYS] = main_dev->reg_base[VDEC_HW_SYS];
+ 	set_bit(subdev_dev->hw_idx, main_dev->subdev_bitmap);
+ 
+-	ret = mtk_vdec_hw_init_irq(subdev_dev);
+-	if (ret)
+-		goto err;
++	if (IS_SUPPORT_VDEC_HW_IRQ(hw_idx)) {
++		ret = mtk_vdec_hw_init_irq(subdev_dev);
++		if (ret)
++			goto err;
++	}
+ 
+ 	subdev_dev->reg_base[VDEC_HW_MISC] =
+ 		devm_platform_ioremap_resource(pdev, 0);
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+index a63e4b1b81c3..36faa8d9d681 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
+@@ -17,6 +17,8 @@
+ #define VDEC_IRQ_CLR 0x10
+ #define VDEC_IRQ_CFG_REG 0xa4
+ 
++#define IS_SUPPORT_VDEC_HW_IRQ(hw_idx) ((hw_idx) != MTK_VDEC_LAT_SOC)
++
+ /**
+  * enum mtk_vdec_hw_reg_idx - subdev hardware register base index
+  * @VDEC_HW_SYS : vdec soc register index
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+index 0fb7e5ba635b..d69faa463d04 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
+@@ -174,6 +174,14 @@ static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dev *vdec_dev,
+ 		mtk_vcodec_dec_pw_on(pm);
+ 		mtk_vcodec_dec_clock_on(pm);
+ 	}
++
++	if (hw_idx == MTK_VDEC_LAT0) {
++		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
++		if (pm) {
++			mtk_vcodec_dec_pw_on(pm);
++			mtk_vcodec_dec_clock_on(pm);
++		}
++	}
+ }
+ 
+ static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
+@@ -186,6 +194,14 @@ static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
+ 		mtk_vcodec_dec_clock_off(pm);
+ 		mtk_vcodec_dec_pw_off(pm);
+ 	}
++
++	if (hw_idx == MTK_VDEC_LAT0) {
++		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
++		if (pm) {
++			mtk_vcodec_dec_clock_off(pm);
++			mtk_vcodec_dec_pw_off(pm);
++		}
++	}
+ }
+ 
+ void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+index a29041a0b7e0..0e3db8ccb398 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+@@ -104,6 +104,7 @@ enum mtk_vdec_hw_id {
+ 	MTK_VDEC_CORE,
+ 	MTK_VDEC_LAT0,
+ 	MTK_VDEC_LAT1,
++	MTK_VDEC_LAT_SOC,
+ 	MTK_VDEC_HW_MAX,
+ };
+ 
 -- 
 2.18.0
 
