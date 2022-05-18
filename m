@@ -4,71 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13E88C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:14:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED716C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:16:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b1uyoshhEOQxMsAZQx5PFdPeppg/T3Sm0iiGdy20dg0=; b=dADfn5YjIXCS6P
-	rmfF0uEVqMQBlA0umeIySAOP0lcgb0gAYRvI14prcwJWQ7V3+OnboKpOfK5n1eULru4Jo2z/ZB0Xn
-	irCvIGkJ1X2bHgFONGb9/lpS2w8/V8cFoZxw738KIUbmuE9tNjGqs5EmHLteFj7BKeYnimp4403jt
-	4oqmM1+o17bmeliyzBglLjg39utVJplgnTEY4OkcrBDAs66n73n6w5zxI04afohA5X86tDQV5TXd4
-	+YI+I/fGDua3h3mp7L7B+GsWG94QfNMRoguE/V682qOAl1Td+kBuvNXsevon/7XjNisTK9lRzwnrF
-	xy1KRaBIQXO1bhO31iqQ==;
+	List-Owner; bh=zex5UlufS6BOrcXLMlmxbs2VcRGRCTPYbQ+freXeg1Y=; b=1p/T65R4rcf3rX
+	yFqVhaNGsd1CedLdMg39dLFODP5KrhraHa6sUJQ/NL/IgrYE/+j0xyphH6W18A7bJqN7mhVG7h9oE
+	tHYhwo4l9raWw2rOjE9uXSlYJWNIhVS+OzRJAyPy+uyJ1lPjUc4s85p7PEEsx4GaQnU+KyhV1bD7+
+	L+Uod1bxE+DHhShmkSR7xdjHRfj9Wz7vE3lY982MGN0gDqYnACR1MEa8qnymHpY8nx+IBRYDWWzcZ
+	caN3sHnClS6p+8+ssW22nCBa01bYNlOJruxJxiuzlhHgxg/T7AIJ8fyFxyhfodQgSRxh49zbSi9i5
+	nfACkszn3MWjZmD7Eezw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrFlN-000mLX-Ea; Wed, 18 May 2022 09:14:37 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1nrFnH-000o16-5h; Wed, 18 May 2022 09:16:35 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrFlL-000mHr-CQ
- for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 09:14:36 +0000
-Received: by mail-pg1-x532.google.com with SMTP id h186so1607130pgc.3
- for <linux-mediatek@lists.infradead.org>; Wed, 18 May 2022 02:14:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GjvQwPM1daZo8+jCqWpaTz2mh/pEzt/6tEe1yGu9dLM=;
- b=eQ6HR9gNmBjFbYML7Gui5OzZdhQ1ZJrrout1YiW/OYAgfXojWKCDuV86ePsOqi8nHc
- Q/zJMR8PLB4HUUvyQg60hVOtESQhHMagFOehN8Q+EZPU1tRYuO8ZMApeTCpvwtJHq/De
- I2AeL1NGadVpwvZU+UvRBmdFjJMVp+Wyrmw8BDFcLXdZAlyrOUA74BPZYYkT1C6LuOIm
- BOLQMyqpWZRz28NR53+azrOdFnIrUTeZ0IwvuFe0KwKlb7Q0ARYbekaBm3N4i61x5x9V
- +Ifyw1XogMpMIz4lWf9qMZRD3kLrTlp63mTXaxQHJ+9ErEVtg26/R+1HHAPNpPO8cg9i
- TLgg==
+ id 1nrFnE-000nx7-D2; Wed, 18 May 2022 09:16:33 +0000
+Received: by mail-wr1-x432.google.com with SMTP id r23so1795917wrr.2;
+ Wed, 18 May 2022 02:16:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=AJ/PeRbastM8KtwKP00d5Dtpk6YYbHWpbi26hK6kis8=;
+ b=Sb6MUDzpI3Do12SoVOog4trxfn9HkOWzjeJE76NDXkSoA5+fRAmSg1quRuL0EaHHMq
+ m6AxmVYU7qZ4kUOuIhQsD2r+4H7X/eY9MdaLsZClCj+chZ/DoiVRhX9q9MC9cVk+qB2u
+ rKLz50JW6LMpRFFumwP9Jdf2NLUMxYBb39/m7I1paORnMA76t7UYktiptr2D7kQNW9fM
+ Ilp+EyfIAquY2zUojfnFJBq50LF3ol0dyv8ykoL/ce1uU9ZpB3AJf2RGUb5yvijmFIHy
+ vhOOAZG3Pzx1dZuw2baXFhCQfbnqUvTEPayqaYHkt2lviWQdjqQoRKNEAeblCa+BKcYt
+ CR+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GjvQwPM1daZo8+jCqWpaTz2mh/pEzt/6tEe1yGu9dLM=;
- b=Hg9FCrMIdiWq5WtTFXgWPzGxwSJcsOq9KVIyImgc/ZjD9gqCR+uYi6OlY9VkyKoJe/
- HjkibMA/lDPUeNoAX9HL3J4WBfZBKsZglezCXHcBrK+C/LtAXioxKKWrvNVUPnQIY5SG
- PumcirbA89Z/vSPgKb7FQc59544fypq/aY/qYhen6QJkfzYiTu9zYc0/AobSdoutj8yk
- 8hmxtyI6qsKhVUNTrQhJBRlNqJenuLWbZIDgmJ04+T1abyCq16q99zbDI0zVvaf+0KGs
- kjvEUkuUs3qPbMDtZHQvQ//4n/HgRaqaPAEFqx6C573AySDsqjIiC+EyhlvTSj07snv0
- Pz1Q==
-X-Gm-Message-State: AOAM532+tC1TRZw1vgPIjVxJCXlyNrUqCG//5+b0t1YxSNG6Kki29/Ip
- 5fB2JrNAy//K93lV3V+DYOhj23NGLklT2RLbetI+vg==
-X-Google-Smtp-Source: ABdhPJympDV8mO/7wcUhujZ0IVK8Fi+T7b+h4c4ApG6fzgAOF2agcfhcnphsmdMxge90eiicfp3r24uSzxyxcZv9/dU=
-X-Received: by 2002:a63:111f:0:b0:3da:ed0d:7623 with SMTP id
- g31-20020a63111f000000b003daed0d7623mr23285972pgl.586.1652865272760; Wed, 18
- May 2022 02:14:32 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=AJ/PeRbastM8KtwKP00d5Dtpk6YYbHWpbi26hK6kis8=;
+ b=4ftgRc72650yXS5/zs0zOegvxhAzf15Z+16rqaynmiFF6SsuQoPB8d1aoHdUQa2cI3
+ n6ddfBJz2U/Gh0tzX1x7m/Yxo931G9jgyu8xEm41mg3hT+I/tQoe3ta1WMbNYSVkb0t1
+ /zU/DiHM+NB0LhQR8WND3yQcW/xwDw+kGm2uQFTCNzuDE/JQjrp9byKlVjVmeMzC7DFc
+ WyAyzY4mzt6YIdlzUdCcXAOyHqNfhEKtQ9pEAC3eb/qHbYfDIZQctiHIMQDe/fpm29b+
+ Gy8K1cfQXhGCl1ZC8/J2gXDN/cFD/VdowPO9CXv39EOp0s0oXR6cfb9tijENrP8SCP8k
+ UA+g==
+X-Gm-Message-State: AOAM532XuAJdS73OqOutB0XT1XiwC37unfYBSkBp45pA7jziCmaZBlVA
+ W+v4xm78ceg2gPL+aIiImYk=
+X-Google-Smtp-Source: ABdhPJwEWT0S1cQNRyp2Os4DAQEhukNT425BpsOswVM115DyQwaHDTQ4H/1aAl9xuumtGy5hK18drg==
+X-Received: by 2002:a05:6000:1a45:b0:20e:6164:d86c with SMTP id
+ t5-20020a0560001a4500b0020e6164d86cmr1405752wry.561.1652865390262; 
+ Wed, 18 May 2022 02:16:30 -0700 (PDT)
+Received: from [192.168.0.36] ([5.225.216.194])
+ by smtp.gmail.com with ESMTPSA id
+ p18-20020a05600c1d9200b00397122e63b6sm1227595wms.29.2022.05.18.02.16.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 May 2022 02:16:29 -0700 (PDT)
+Message-ID: <ad4aac8a-ef1b-d4eb-7045-a46bd39ad3fc@gmail.com>
+Date: Wed, 18 May 2022 11:16:28 +0200
 MIME-Version: 1.0
-References: <20220518090738.2694556-1-yangyingliang@huawei.com>
-In-Reply-To: <20220518090738.2694556-1-yangyingliang@huawei.com>
-From: Loic Poulain <loic.poulain@linaro.org>
-Date: Wed, 18 May 2022 11:13:56 +0200
-Message-ID: <CAMZdPi9uvh4E70-AXpGrdzkgh35mfWQbhL8Kxw_o9_DsfL2gbw@mail.gmail.com>
-Subject: Re: [PATCH -next] net: wwan: t7xx: use GFP_ATOMIC under spin lock in
- t7xx_cldma_gpd_set_next_ptr()
-To: Yang Yingliang <yangyingliang@huawei.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, 
- haijun.liu@mediatek.com, chandrashekar.devegowda@intel.com, 
- ricardo.martinez@linux.intel.com, davem@davemloft.net, kuba@kernel.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH 1/8] dt-bindings: iommu: mediatek: Add mediatek,infracfg
+ phandle
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ yong.wu@mediatek.com
+Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20220517132107.195932-1-angelogioacchino.delregno@collabora.com>
+ <20220517132107.195932-2-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220517132107.195932-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_021435_448518_22D08F28 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20220518_021632_496165_8B625639 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,79 +91,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yang,
 
-On Wed, 18 May 2022 at 10:57, Yang Yingliang <yangyingliang@huawei.com> wrote:
->
-> Sometimes t7xx_cldma_gpd_set_next_ptr() is called under spin lock,
-> so add a parameter in t7xx_cldma_gpd_set_next_ptr() to make if it
-> use GFP_ATOMIC flag.
->
-> Fixes: 39d439047f1d ("net: wwan: t7xx: Add control DMA interface")
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+
+On 17/05/2022 15:21, AngeloGioacchino Del Regno wrote:
+> Add property "mediatek,infracfg" to let the mtk_iommu driver retrieve
+> a phandle to the infracfg syscon instead of performing a per-soc
+> compatible lookup.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/net/wwan/t7xx/t7xx_hif_cldma.c | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/net/wwan/t7xx/t7xx_hif_cldma.c b/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
-> index 0c52801ed0de..1fa9bb763831 100644
-> --- a/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
-> +++ b/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
-> @@ -91,9 +91,12 @@ static void t7xx_cldma_gpd_set_next_ptr(struct cldma_gpd *gpd, dma_addr_t next_p
->  }
->
->  static int t7xx_cldma_alloc_and_map_skb(struct cldma_ctrl *md_ctrl, struct cldma_request *req,
-> -                                       size_t size)
-> +                                       size_t size, bool is_atomic)
+>   Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> index 2ae3bbad7f1a..78c72c22740b 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -101,6 +101,10 @@ properties:
+>       items:
+>         - const: bclk
+>   
+> +  mediatek,infracfg:
+> +    $ref: "/schemas/types.yaml#/definitions/phandle"
+> +    description: The phandle to the mediatek infracfg syscon
+> +
+>     mediatek,larbs:
+>       $ref: /schemas/types.yaml#/definitions/phandle-array
+>       minItems: 1
 
-Would be simpler to directly pass the gfp_mask as a parameter.
+I think we can squash patch 7 in here. Same holds for pericfg
 
-
->  {
-> -       req->skb = __dev_alloc_skb(size, GFP_KERNEL);
-> +       if (is_atomic)
-> +               req->skb = __dev_alloc_skb(size, GFP_ATOMIC);
-> +       else
-> +               req->skb = __dev_alloc_skb(size, GFP_KERNEL);
->         if (!req->skb)
->                 return -ENOMEM;
->
-> @@ -174,7 +177,7 @@ static int t7xx_cldma_gpd_rx_from_q(struct cldma_queue *queue, int budget, bool
->                 spin_unlock_irqrestore(&queue->ring_lock, flags);
->                 req = queue->rx_refill;
->
-> -               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, queue->tr_ring->pkt_size);
-> +               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, queue->tr_ring->pkt_size, false);
->                 if (ret)
->                         return ret;
->
-> @@ -402,7 +405,7 @@ static struct cldma_request *t7xx_alloc_rx_request(struct cldma_ctrl *md_ctrl, s
->         if (!req->gpd)
->                 goto err_free_req;
->
-> -       val = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, pkt_size);
-> +       val = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, pkt_size, false);
->         if (val)
->                 goto err_free_pool;
->
-> @@ -801,7 +804,7 @@ static int t7xx_cldma_clear_rxq(struct cldma_ctrl *md_ctrl, int qnum)
->                 if (req->skb)
->                         continue;
->
-> -               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, rxq->tr_ring->pkt_size);
-> +               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, rxq->tr_ring->pkt_size, true);
->                 if (ret)
->                         break;
->
-> --
-> 2.25.1
->
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
