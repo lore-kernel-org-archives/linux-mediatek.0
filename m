@@ -4,62 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43ACEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 01:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD9C5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 01:55:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=So0Pws6grI4hVd1v7O1BJ5DD3CJakLczpQVLAbeLbbk=; b=HxH6OgeCwRNWtA
-	Elul4seTDPqPdpzVYj2gBE4qrinoA+nQqweIfOA79hVBjGZKb9ldUnCsYoJ3nP2OWg6PbVfREofFF
-	Byzwwy0K2u2xEfkf2dQTMy4BMSGGDxExFiZj25KiGBNER99fZgLov25blEPhhQA9QGve+WIwKRSf8
-	RrPdbLhGZPk+XZf0Df3LjsNDfvwhn4Ko6yrLjlvovMDMWZegUHZBpEKcNuU1UDF24iHbprlyF7NKu
-	+JzDHI38D1RD98bfmN7tX7wxEUCj4qTa6NbOpkebFoebvlD2TZiBqnEN7hx76OTyXv2MzIjhitCSM
-	fD93mpZAETtgR8GguSnA==;
+	List-Owner; bh=r9kEHh2uqEcTxay8IXJpj7B8eZqE5bmy8Lxw7NCJ7XA=; b=D4dSaL888nA5JC
+	KKurQBBiMUObuMQzlJzElgcws4ulh5XBLmt68TtPtwAhqJW64Hb4K1ydyk4JQGnY0wj5In2fuq43J
+	tvojIIkDKOVdklm/G2XGs33FvaSxShog4KlYnFT9Ob7P+2t709sHKSVr05fXtElalOYvpn0IRbTsc
+	Dgxtdn2IS2Kd04FZgnhLbISR1o6V8YwU9E3zhJK9xXGKvSdfZ+dN7SaoQN7FLLtOtpMvia/Poi6bh
+	Mo5fvYleKOZL6VLizzeVzsQeMV7AgIDp5DUIxhmEYk5aMg3VZf6AVr5ax5SJI9eevUttVrj2GeoSC
+	oxatJfEImBAOjVUrzEIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nr8k0-00GclA-HK; Wed, 18 May 2022 01:44:44 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nr8u4-00Ge1b-Dl; Wed, 18 May 2022 01:55:08 +0000
+Received: from mail-oi1-f181.google.com ([209.85.167.181])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nr8jx-00Gci2-QQ
- for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 01:44:43 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 04A51B81DF4;
- Wed, 18 May 2022 01:44:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70FC5C385B8;
- Wed, 18 May 2022 01:44:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652838275;
- bh=jw9WY5TGpI68KaNjv0zfL25huNIRIdW/P8Q6Phay5WY=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=bwbAFNG6xWVALg36Hiu/dCS79vtJ58HL/feVRzcheNQxr0TEnRxrY4LTkxR7ZvgXy
- avQUnmmtrAYBOg0rHUWidg0oF8/GX4sZG0g5wXIV3ap15nG0W8JSgVKISuARYcoZ6x
- Yv9cCmoyJQ8XY9mnTqm31Bhvo7v618hXtIxeA2njxKGFLjS5E+VhsoPHjUd92+V6GE
- M6WClZNtNMxr6v3CBrVDRfZjAc271LL+vmLyzt3zvRUFpY9chkIg4tU8MwCoaAPq/B
- WzXv4RyyHz94Aa3FT8O0FCq708qOutTIuWeP0HcIZSbCp90KilK3kcJIA9+mGCU2Ns
- Xd5mWhI8Kp81Q==
-Date: Tue, 17 May 2022 18:44:33 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, Sam.Shih@mediatek.com,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- robh@kernel.org, lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH v2 net-next 12/15] net: ethernet: mtk_eth_soc: introduce
- MTK_NETSYS_V2 support
-Message-ID: <20220517184433.3cb2fd5a@kernel.org>
-In-Reply-To: <cc1bd411e3028e2d6b0365ed5d29f3cea66223f8.1652716741.git.lorenzo@kernel.org>
-References: <cover.1652716741.git.lorenzo@kernel.org>
- <cc1bd411e3028e2d6b0365ed5d29f3cea66223f8.1652716741.git.lorenzo@kernel.org>
+ id 1nr8u0-00Gdzx-HB; Wed, 18 May 2022 01:55:06 +0000
+Received: by mail-oi1-f181.google.com with SMTP id r1so1070870oie.4;
+ Tue, 17 May 2022 18:55:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ckNmPcl7fe5xiocWvQwlJ3B7sjwM65UrQXbcw0Qh69c=;
+ b=m6GLs5gffp7GD50qyo1IpclDTMkFTXIEeCaKGK8aoCO2vHwow1UVzV2uC1d6WKY+2S
+ 6rdDO56Cuoaink6LYyXuM0fQpCj8p6jUY0k4cq/Pb6/HdSO+Ez1JUgQB+wuv2z0Kj9lP
+ sir44WPky3sY+lJ0Wdq5svs0ynrxJ71KwMN+9Y7K8iuZXt/mKt0fYHAeqPiW0P4YZn2c
+ bGNlefZgX2pdy2xchNQj8ZYR3oiJgQafxe4vWM+8lmLUJ+okmuaPRlgI7mMcx9En9Xvj
+ DK+PMAUvHocrA0HDM2v+Kwj10oQamKOdcvFUGILOlpwhttvPm6P9RIWdsNYMgyJWG6Pc
+ euQg==
+X-Gm-Message-State: AOAM532XnYWr4fHej7Royxngo91ToGMhOYCjVVD0ykmaJ0LCqp/Bvm6C
+ N2qT0ftaJshlxuBD422rzQ==
+X-Google-Smtp-Source: ABdhPJwKaRtIBExfohDctD5F8a5l+hdyd55lfF+Tzt7FpFR639U7gZCg8kE/+Q4JuJyS7fUtDHEamA==
+X-Received: by 2002:a05:6808:188a:b0:326:7f5f:985c with SMTP id
+ bi10-20020a056808188a00b003267f5f985cmr11975649oib.210.1652838901111; 
+ Tue, 17 May 2022 18:55:01 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ b11-20020acab20b000000b00326414c1bb7sm362362oif.35.2022.05.17.18.54.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 May 2022 18:55:00 -0700 (PDT)
+Received: (nullmailer pid 2063166 invoked by uid 1000);
+ Wed, 18 May 2022 01:54:59 -0000
+Date: Tue, 17 May 2022 20:54:59 -0500
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Greg Ungerer <gerg@kernel.org>,
+ =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Subject: Re: Re: [PATCH v3 1/6] dt-bindings: net: dsa: convert binding for
+ mediatek switches
+Message-ID: <20220518015459.GB2049643-robh@kernel.org>
+References: <20220507170440.64005-1-linux@fw-web.de>
+ <20220507170440.64005-2-linux@fw-web.de>
+ <YnqymzCbabEjV7GQ@robh.at.kernel.org>
+ <trinity-68761fe5-fcca-456b-ba50-ead759f0fb54-1652256165646@3c-app-gmx-bap47>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <trinity-68761fe5-fcca-456b-ba50-ead759f0fb54-1652256165646@3c-app-gmx-bap47>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_184442_039361_B1CDD807 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20220517_185504_612727_CEEB26D8 
+X-CRM114-Status: GOOD (  22.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,46 +97,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 May 2022 18:06:39 +0200 Lorenzo Bianconi wrote:
-> +	struct mtk_mac *mac = netdev_priv(dev);
-> +	struct mtk_tx_dma_v2 *desc = txd;
-> +	struct mtk_eth *eth = mac->hw;
-> +	u32 data;
-> +
-> +	WRITE_ONCE(desc->txd1, info->addr);
-> +
-> +	data = TX_DMA_PLEN0(info->size);
-> +	if (info->last)
-> +		data |= TX_DMA_LS0;
-> +	WRITE_ONCE(desc->txd3, data);
-> +
-> +	if (!info->qid && mac->id)
-> +		info->qid = MTK_QDMA_GMAC2_QID;
-> +
-> +	data = (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
-> +	data |= TX_DMA_SWC_V2 | QID_BITS_V2(info->qid);
-> +	WRITE_ONCE(desc->txd4, data);
-> +
-> +	data = 0;
-> +	if (info->first) {
-> +		if (info->gso)
-> +			data |= TX_DMA_TSO_V2;
-> +		/* tx checksum offload */
-> +		if (info->csum)
-> +			data |= TX_DMA_CHKSUM_V2;
-> +	}
-> +	WRITE_ONCE(desc->txd5, data);
-> +
-> +	data = 0;
-> +	if (info->first && info->vlan)
-> +		data |= TX_DMA_INS_VLAN_V2 | info->vlan_tci;
-> +	WRITE_ONCE(desc->txd6, data);
-> +
-> +	WRITE_ONCE(desc->txd7, 0);
-> +	WRITE_ONCE(desc->txd8, 0);
+On Wed, May 11, 2022 at 10:02:45AM +0200, Frank Wunderlich wrote:
+> Hi
+> 
+> thanks for review
+> 
+> > Gesendet: Dienstag, 10. Mai 2022 um 20:44 Uhr
+> > Von: "Rob Herring" <robh@kernel.org>
+> > On Sat, May 07, 2022 at 07:04:35PM +0200, Frank Wunderlich wrote:
+> > > From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> > > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> 
+> > > +properties:
+> > > +  compatible:
+> > > +    enum:
+> > > +      - mediatek,mt7530
+> > > +      - mediatek,mt7531
+> > > +      - mediatek,mt7621
+> > > +
+> >
+> > > +  "#address-cells":
+> > > +    const: 1
+> > > +
+> > > +  "#size-cells":
+> > > +    const: 0
+> >
+> > I don't see any child nodes with addresses, so these can be removed.
+> 
+> dropping this (and address-cells/size-cells from examples) causes errors like this (address-/size-cells set in mdio
+> node, so imho it should inherite):
 
-Why all the WRITE_ONCE()? Don't you just need a barrier between writing
-the descriptor and kicking the HW? 
+I think you are off a level.
+
+
+> Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.example.dts:34.25-35: Warning (reg_format):
+> /example-0/mdio/switch@0/ports/port@0:reg: property has invalid length (4 bytes) (#address-cells == 2, #size-cells == 1)
+
+That's for yet another level where 'ports' node need the properties.
+
+> Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.example.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+> 
+> > > +  interrupt-controller:
+> > > +    type: boolean
+> >
+> > Already has a type. Just:
+> >
+> > interrupt-controller: true
+> >
+> > > +
+> > > +  interrupts:
+> > > +    maxItems: 1
+> 
+> > > +patternProperties:
+> > > +  "^(ethernet-)?ports$":
+> > > +    type: object
+> >
+> >        additionalProperties: false
+> 
+> imho this will block address-/size-cells from this level too. looks like it is needed here too (for port-regs).
+> 
+> > > +
+> > > +    patternProperties:
+> > > +      "^(ethernet-)?port@[0-9]+$":
+> > > +        type: object
+> > > +        description: Ethernet switch ports
+> > > +
+> > > +        unevaluatedProperties: false
+> > > +
+> > > +        properties:
+> > > +          reg:
+> > > +            description:
+> > > +              Port address described must be 5 or 6 for CPU port and from 0
+> > > +              to 5 for user ports.
+> > > +
+> > > +        allOf:
+> > > +          - $ref: dsa-port.yaml#
+> > > +          - if:
+> > > +              properties:
+> > > +                label:
+> > > +                  items:
+> > > +                    - const: cpu
+> > > +            then:
+> > > +              required:
+> > > +                - reg
+> > > +                - phy-mode
+> > > +
+> 
+> > > +  - if:
+> > > +      required:
+> > > +        - interrupt-controller
+> > > +    then:
+> > > +      required:
+> > > +        - interrupts
+> >
+> > This can be expressed as:
+> >
+> > dependencies:
+> >   interrupt-controller: [ interrupts ]
+> 
+> ok, i will change this
+> 
+> > > +            ports {
+> >
+> > Use the preferred form: ethernet-ports
+> 
+> current implementation in all existing dts and examples from old binding are "ports" only.
+> should they changed too?
+
+They don't have to be the schema allows both, but the example should be 
+best practice.
+
+Rob
+
 
 _______________________________________________
 Linux-mediatek mailing list
