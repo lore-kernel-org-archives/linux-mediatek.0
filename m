@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14533C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:48:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0869C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:53:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1FhwugJK5hduP+K2TzUeyyEPOEnljVWN7ev2XrceL+Y=; b=tDZmMjMAMZIICTq56yvpEeZ0gA
-	ik8L29tOPw1hziVj/tnRfAY0B+3fh2MTE4n5WxpYUbjWLoKX468gAQVKjIDRr4D/rv2DN5Zqz5yQp
-	KQbnzPQEPYgxPrYiPXbca/nC+aYq1lxLhsA49h1XvcGYDax5afnJxLKiEh82kMDSzKWhdVj5VUBfi
-	d5yg0jRLpWXiYBGJ9VqxH0vKZlMmFitNXBOXZOuxSmHM/oDoGuLhuQab8I6cNxZ/tkxRbvuoFKuLH
-	B+yNYg5CwYjpQW95MgMf4xzT2ZUsHIz9u+jOsTj1mHPkumC27NjOBJgGG9fHIopDi+V+pWOYpVIac
-	RyO8jxEw==;
+	bh=ZMa0kJjbDp/RHRHSQL0NuquNsxt+1w7ne9NO5Vk64hc=; b=RdatBuVL+/T8aDBaXY8KfkQLPw
+	Wgu6qN4Vi607/56wekQvp4lnbh2SLrTu3lSElNspIPmqZmyEOF2LFZoWYUkd2aFrEcVhM0Yk3Gxn+
+	uhDUNJQYuV8+Y8IGnuji2/iU1FPvKgBwMoPhi4C/QLn5Xdj8y764uI0iPJygtKku8QW74y6wPUucz
+	JfVLI9Mgcvvz9qliA4rXYPccfTFCeiaz8SRM6rljZS60xRSdzU8Yn8QhjqKgY9AKZ0AOPEWn0y99L
+	7eAL3KqKPgHNYR4DvZ3GOzfuLa4VUCen7+Q+7kGoLkvp1avT4MQKHpJ/k/o/vtELSfZKr8z1swgwE
+	e/3vF8Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrGIV-001Aig-D6; Wed, 18 May 2022 09:48:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nrGMt-001CSq-M6; Wed, 18 May 2022 09:53:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrGIS-001Agx-3f
- for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 09:48:49 +0000
+ id 1nrGMq-001CQl-Oh
+ for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 09:53:22 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 99AA8617B4;
- Wed, 18 May 2022 09:48:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84DABC385AA;
- Wed, 18 May 2022 09:48:46 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id BADE7617B2;
+ Wed, 18 May 2022 09:53:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAFF4C385AA;
+ Wed, 18 May 2022 09:53:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652867327;
- bh=lv4HBe8Wz66POFUcjOZzWjCJJ3a3Qv9oZQxybybs8dg=;
+ s=k20201202; t=1652867596;
+ bh=5gqBzS4hqEVHVcDeIKJ/pK7OHoUOClp7PDlQPjda0Io=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CIMawBjVDfDDMMhlmDCJY/yrMAjt2SSIwXqnjmd3tS4PdMgks21T0Sb6ttzXYbv61
- ULL2ftPjteTxt9snhY1aNU+9QrGFzq9f2avl9qq7E0jjkdybiSx2aco92RtJvox8kl
- UHRcpGdK98VxAq7GWNdyW4+lb8OWliGnccgw0CUsu2uJ4xDcnlZOFMSc/1uJ7Q0G3f
- RcUYVRTIIURdnL16sRNHJSM6dvGwnHL0sciJDyez5yNyAv/zoibfWOrDepzySmtscb
- qL5m6AAxgncPSWOGmnWCuWpbSe/S+03MJS+L5g1DZIJuujbyRcTZOvrzDE16wyfDQ4
- giEeVFhaZBmmQ==
-Date: Wed, 18 May 2022 11:48:43 +0200
+ b=VQu+0AvIuaLFj51kcWbrHdXMufiGQ8dLdZrQMZlv9ew+7v1D5kCkTR+/hu9ihcKRJ
+ Q8px1Mla06YbjbT0IYMlCndab+4tc1Wali8zfU/D2vwDHHaQar0KFyR4Fsyp6xRiCT
+ Ufr2GX85FcQZwHyCv9SmbfCwsmqX72RWWHQyYFdybHhO2TKHVtiXoG8lFfw7ggQLvB
+ sLfGqKxL+I43O2k8lhETvuFZSIGP5V+5beoQkSqPKXxiVb7DmdP/GiiGd3tgk1DJY+
+ CbsK1PHAAC7Fvc8cFPELPKLIpO9Tpa5oSWfiizfdmLgai29x6qrPVNjA7PKMeNrqDi
+ 38tZC1y7ziuWg==
+Date: Wed, 18 May 2022 11:53:12 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
@@ -50,17 +50,17 @@ Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
  davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
  Sam.Shih@mediatek.com, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, robh@kernel.org, lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH v2 net-next 11/15] net: ethernet: mtk_eth_soc: introduce
- device register map
-Message-ID: <YoTA+5gLC4zhoQ0F@lore-desk>
+Subject: Re: [PATCH v2 net-next 12/15] net: ethernet: mtk_eth_soc: introduce
+ MTK_NETSYS_V2 support
+Message-ID: <YoTCCAKpE5ijiom0@lore-desk>
 References: <cover.1652716741.git.lorenzo@kernel.org>
- <78e8c6ed230130b75aae77e6d05a9b35e298860a.1652716741.git.lorenzo@kernel.org>
- <20220517184122.522ed708@kernel.org>
+ <cc1bd411e3028e2d6b0365ed5d29f3cea66223f8.1652716741.git.lorenzo@kernel.org>
+ <20220517184433.3cb2fd5a@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20220517184122.522ed708@kernel.org>
+In-Reply-To: <20220517184433.3cb2fd5a@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_024848_219559_467F2FE4 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20220518_025320_884540_7DEEEE2E 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,56 +72,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7870843203566672541=="
+Content-Type: multipart/mixed; boundary="===============0709371471657925407=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============7870843203566672541==
+--===============0709371471657925407==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yGUCWlv2qAlCwbOl"
+	protocol="application/pgp-signature"; boundary="py/BeQuNQzkJfHTN"
 Content-Disposition: inline
 
 
---yGUCWlv2qAlCwbOl
+--py/BeQuNQzkJfHTN
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Mon, 16 May 2022 18:06:38 +0200 Lorenzo Bianconi wrote:
-> >  /* PDMA RX Base Pointer Register */
-> > -#define MTK_PRX_BASE_PTR0	0x900
-> > +#define MTK_PRX_BASE_PTR0	(eth->soc->reg_map[MTK_PDMA_BASE] + 0x100)
-> >  #define MTK_PRX_BASE_PTR_CFG(x)	(MTK_PRX_BASE_PTR0 + (x * 0x10))
+On May 17, Jakub Kicinski wrote:
+> On Mon, 16 May 2022 18:06:39 +0200 Lorenzo Bianconi wrote:
+> > +	struct mtk_mac *mac =3D netdev_priv(dev);
+> > +	struct mtk_tx_dma_v2 *desc =3D txd;
+> > +	struct mtk_eth *eth =3D mac->hw;
+> > +	u32 data;
+> > +
+> > +	WRITE_ONCE(desc->txd1, info->addr);
+> > +
+> > +	data =3D TX_DMA_PLEN0(info->size);
+> > +	if (info->last)
+> > +		data |=3D TX_DMA_LS0;
+> > +	WRITE_ONCE(desc->txd3, data);
+> > +
+> > +	if (!info->qid && mac->id)
+> > +		info->qid =3D MTK_QDMA_GMAC2_QID;
+> > +
+> > +	data =3D (mac->id + 1) << TX_DMA_FPORT_SHIFT_V2; /* forward port */
+> > +	data |=3D TX_DMA_SWC_V2 | QID_BITS_V2(info->qid);
+> > +	WRITE_ONCE(desc->txd4, data);
+> > +
+> > +	data =3D 0;
+> > +	if (info->first) {
+> > +		if (info->gso)
+> > +			data |=3D TX_DMA_TSO_V2;
+> > +		/* tx checksum offload */
+> > +		if (info->csum)
+> > +			data |=3D TX_DMA_CHKSUM_V2;
+> > +	}
+> > +	WRITE_ONCE(desc->txd5, data);
+> > +
+> > +	data =3D 0;
+> > +	if (info->first && info->vlan)
+> > +		data |=3D TX_DMA_INS_VLAN_V2 | info->vlan_tci;
+> > +	WRITE_ONCE(desc->txd6, data);
+> > +
+> > +	WRITE_ONCE(desc->txd7, 0);
+> > +	WRITE_ONCE(desc->txd8, 0);
 >=20
-> Implicit macro arguments are really unpleasant for people doing
-> tree-wide changes or otherwise unfamiliar with the driver.
->=20
-> Nothing we can do to avoid this?
+> Why all the WRITE_ONCE()? Don't you just need a barrier between writing
+> the descriptor and kicking the HW?=20
 
-I used this approach in order to have just few changes in the codebase. I g=
-uess the best
-option would be to explicitly add eth parameter to the register macros, wha=
-t do you think?
+I used this approach just to be aligned with current codebase:
+https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/mediatek=
+/mtk_eth_soc.c#L1006
+https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/mediatek=
+/mtk_eth_soc.c#L1031
+
+but I guess we can even convert the code to use barrier instead. Agree?
 
 Regards,
 Lorenzo
 
---yGUCWlv2qAlCwbOl
+--py/BeQuNQzkJfHTN
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYoTA+gAKCRA6cBh0uS2t
-rKu7AQCqZ6gTV/nH6swFYufh/JvGdCvn+Ju4SVI9ORYBZxNvLgEA0u4maXWDKZI0
-eaenqEJ2bXJPNuae7fRx9qniJRt97gQ=
-=/+Hi
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYoTCCAAKCRA6cBh0uS2t
+rFcEAPsEE4SH1pWFhrUuCVVh5wJ9R0iCDZrsIRMA13UFQ1FqcAEA/i7P7a2wwN3o
+b/PBY5gsePzROcyMFUtToLos6mKsrwg=
+=kZTh
 -----END PGP SIGNATURE-----
 
---yGUCWlv2qAlCwbOl--
+--py/BeQuNQzkJfHTN--
 
 
---===============7870843203566672541==
+--===============0709371471657925407==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -132,5 +166,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============7870843203566672541==--
+--===============0709371471657925407==--
 
