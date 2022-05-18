@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1757C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 11:38:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73AD0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 11:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BuMBTa61v12hxeI656aASwJ4F5QwcXNXM+uc4JAhj6A=; b=KjFdPQqNifthPM
-	vQUvJRpJIrIYQIo5VgyF2N5WrcoWCGXfyg+Q5PnOgV4KKu39omnDK3s32wwSEHkPcqDW8DRRIUi86
-	AA2vAMCEUBiRQNujZW2lrNsg9tDTsqo+qPe/sgA5duLXDmGnG8JK8CL6Yyx2SDa5zr2J6R4n9AlzF
-	Iq/8HUE4GdzFZuCc+bA/6SSFOjsCEtB5mIK6TBBfqWeBmrNF/JeLIqRMYci7IHVCiQB+6j5lsmoXZ
-	nv+/+RXz3aJCio397LuZgrgkJSbavTJLDzQPNV7EH4btgiXa5M4un5ru/HHN3lq5T0hXK9UOgsyZg
-	j6bYyXUk7J6GIkIJ8zOQ==;
+	List-Owner; bh=hw6Pnzec1p2ILtp5DtLTJ5TIVMczp+QivAwnxiNKW+Q=; b=jds9naMU3CHAlK
+	EGxOc/aeNpf32KJ38PsPCE+aP77QmBJyI7VO9tVOUOHWNvDiUxA896t/OiFATJHZ3vXK+62gWhsgK
+	yfjhuD7Z8371SCH9w0t2VHodAVd3fbsCS7cK8Kh78QRGGJ08Kh4tMf8TlY80XOU+rzNlnAmEthmEc
+	qJAhNI4Ltnhy2x5Qmx49NglZyeeC8OicmW0W4MOwlFD9Q2E7Hn4mSgdEByX5a42pg26tRUIoiPWcD
+	6OfFwAByU/UwoVs4joZE7S+1F1rH6e7olPf9IFzUNP9o7R/4MQZAf8+A9Fu4SosdSYdMK+GadMoBO
+	mZe637qO/lROq2/5OkSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrI0l-001cHx-Qm; Wed, 18 May 2022 11:38:39 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nrI4m-001e3k-DP; Wed, 18 May 2022 11:42:48 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrHwb-001Zqy-5b; Wed, 18 May 2022 11:34:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 552F960C94;
- Wed, 18 May 2022 11:34:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41CA7C385A5;
- Wed, 18 May 2022 11:34:15 +0000 (UTC)
-Message-ID: <31992c67-400e-8e14-38c2-4655995886f5@xs4all.nl>
-Date: Wed, 18 May 2022 13:34:13 +0200
+ id 1nrI4P-001dtr-TL; Wed, 18 May 2022 11:42:27 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 8C8FD1F44EFE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652874144;
+ bh=qf83SX+V7kjrLVMgax0hyCtsQnOzDUfXGrMJugntals=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=eCcwRurnQ+5GicCiLUfL2+f27Skpz0cRymPx++02Gs/+Bm9y8LvMU+6E4zFbDOBbB
+ aDxYHbubVrbCA+S5TsXAoq4U9wHNl9b0zGYGbzhdodANtmEmBbhrYx9e+w3rh5TOFb
+ Vyps2S9Wcz1EzWXTa9lJTlDZFDQkW3J3QJ9bGZjEJEc85hByE99hCsirLDdS7SoW0w
+ B66eXlc+ED801BFn9pFvgK96TKw7BuU6+8dsSUCijtBn62fPvpsJc8uT9XlYafrff6
+ yV7b+39Yhj9HoBc5e05dpy412rFo6AmY0TE60FsflL/CVdY2d2PZVklvXG9KaoqU2t
+ FAGEC8vUE9EJw==
+Message-ID: <2550039f-1cfc-eb5d-bbc9-bf82666e9abd@collabora.com>
+Date: Wed, 18 May 2022 13:42:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Subject: Re: [PATCH v6, 6/7] media: mediatek: vcodec: prevent kernel crash
- when scp ipi timeout
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v2 1/7] dt-bindings: iommu: mediatek: Add phandles for
+ mediatek infra/pericfg
 Content-Language: en-US
-To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+To: Matthias Brugger <matthias.bgg@gmail.com>, yong.wu@mediatek.com
+Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220513092526.9670-1-yunfei.dong@mediatek.com>
- <20220513092526.9670-7-yunfei.dong@mediatek.com>
- <ea9a04fb-368d-daca-96ae-9366253a5e91@xs4all.nl>
- <f26d5225fc8c499226c297ed86feb5ee20e8f3d3.camel@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <f26d5225fc8c499226c297ed86feb5ee20e8f3d3.camel@mediatek.com>
+ krzysztof.kozlowski@linaro.org
+References: <20220518100503.37279-1-angelogioacchino.delregno@collabora.com>
+ <20220518100503.37279-2-angelogioacchino.delregno@collabora.com>
+ <4cfbc8dd-83d3-80df-630d-6f8fb2efb9fd@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <4cfbc8dd-83d3-80df-630d-6f8fb2efb9fd@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_043421_367311_D72721B6 
-X-CRM114-Status: GOOD (  23.30  )
+X-CRM114-CacheID: sfid-20220518_044226_141690_0A221893 
+X-CRM114-Status: GOOD (  16.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,88 +69,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 5/18/22 13:29, yunfei.dong@mediatek.com wrote:
-> Dear Hans,
-> 
-> Thanks for your review.
-> On Wed, 2022-05-18 at 11:37 +0200, Hans Verkuil wrote:
->> Hi Yunfei,
->>
->> On 5/13/22 11:25, Yunfei Dong wrote:
->>> When SCP timeout during playing video, kernel crashes with
->>> following
->>> message. It's caused by accessing NULL pointer in
->>> vpu_dec_ipi_handler.
->>> This patch doesn't solve the root cause of NULL pointer, but merely
->>> prevent kernel crashed when encounter the NULL pointer.
->>
->> Is the root cause being addressed as well? Where is the root cause?
->> Is it
->> in this driver or in the scp (i.e. the remoteproc) driver?
->>
->> I need a bit more information to decide whether this series is ready
->> to
->> be merged for 5.20 or not.
->>
->> Regards,
->>
->> 	Hans
->>
-> Vpu will be NUll when scp(micro processor) is hang or crash. Need to
-> keep kernel works well , so add this patch.
-
-OK, I think this should be stated in the commit log, and also in the code
-(see below).
-
-> 
-> Best Regards,
-> Yunfei Dong
-
-<snip>
-
->>> diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
->>> b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
->>> index 35f4d5583084..1041dd663e76 100644
->>> --- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
->>> +++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
->>> @@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data,
->>> unsigned int len, void *priv)
->>>  	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
->>>  					(unsigned long)msg-
->>>> ap_inst_addr;
->>>  
->>> +	if (!vpu) {
->>> +		mtk_v4l2_err("ap_inst_addr is NULL");
-
-E.g., either add a comment here or perhaps change the error message to:
-
-"ap_inst_addr is NULL, did the SCP hang?"
-
-Or something along those lines.
-
-Shouldn't there be a \n at the end of this message as well? Or does
-mtk_v4l2_err add that?
-
-Regards,
-
-	Hans
-
->>> +		return;
->>> +	}
->>> +
->>>  	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
->>>  
->>>  	vpu->failure = msg->status;
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWwgMTgvMDUvMjIgMTM6MjksIE1hdHRoaWFzIEJydWdnZXIgaGEgc2NyaXR0bzoKPiAKPiAKPiBP
+biAxOC8wNS8yMDIyIDEyOjA0LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToKPj4g
+QWRkIHByb3BlcnRpZXMgIm1lZGlhdGVrLGluZnJhY2ZnIiBhbmQgIm1lZGlhdGVrLHBlcmljZmci
+IHRvIGxldCB0aGUKPj4gbXRrX2lvbW11IGRyaXZlciByZXRyaWV2ZSBwaGFuZGxlcyB0byB0aGUg
+aW5mcmFjZmcgYW5kIHBlcmljZmcgc3lzY29uKHMpCj4+IGluc3RlYWQgb2YgcGVyZm9ybWluZyBh
+IHBlci1zb2MgY29tcGF0aWJsZSBsb29rdXAuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEFuZ2Vsb0dp
+b2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5j
+b20+Cj4+IC0tLQo+PiDCoCAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9pb21tdS9tZWRpYXRlayxp
+b21tdS55YW1swqDCoMKgwqDCoMKgwqDCoCB8IDggKysrKysrKysKPj4gwqAgMSBmaWxlIGNoYW5n
+ZWQsIDggaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2lvbW11L21lZGlhdGVrLGlvbW11LnlhbWwgCj4+IGIvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2lvbW11L21lZGlhdGVrLGlvbW11LnlhbWwKPj4gaW5k
+ZXggMmFlM2JiYWQ3ZjFhLi5jNGFmNDE5NDc1OTMgMTAwNjQ0Cj4+IC0tLSBhL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9pb21tdS9tZWRpYXRlayxpb21tdS55YW1sCj4+ICsrKyBi
+L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9pb21tdS9tZWRpYXRlayxpb21tdS55
+YW1sCj4+IEBAIC0xMDEsNiArMTAxLDEwIEBAIHByb3BlcnRpZXM6Cj4+IMKgwqDCoMKgwqAgaXRl
+bXM6Cj4+IMKgwqDCoMKgwqDCoMKgIC0gY29uc3Q6IGJjbGsKPj4gK8KgIG1lZGlhdGVrLGluZnJh
+Y2ZnOgo+PiArwqDCoMKgICRyZWY6IC9zY2hlbWFzL3R5cGVzLnlhbWwjL2RlZmluaXRpb25zL3Bo
+YW5kbGUKPj4gK8KgwqDCoCBkZXNjcmlwdGlvbjogVGhlIHBoYW5kbGUgdG8gdGhlIG1lZGlhdGVr
+IGluZnJhY2ZnIHN5c2Nvbgo+PiArCj4+IMKgwqDCoCBtZWRpYXRlayxsYXJiczoKPj4gwqDCoMKg
+wqDCoCAkcmVmOiAvc2NoZW1hcy90eXBlcy55YW1sIy9kZWZpbml0aW9ucy9waGFuZGxlLWFycmF5
+Cj4+IMKgwqDCoMKgwqAgbWluSXRlbXM6IDEKPj4gQEAgLTExMiw2ICsxMTYsMTAgQEAgcHJvcGVy
+dGllczoKPj4gwqDCoMKgwqDCoMKgwqAgUmVmZXIgdG8gYmluZGluZ3MvbWVtb3J5LWNvbnRyb2xs
+ZXJzL21lZGlhdGVrLHNtaS1sYXJiLnlhbWwuIEl0IG11c3Qgc29ydAo+PiDCoMKgwqDCoMKgwqDC
+oCBhY2NvcmRpbmcgdG8gdGhlIGxvY2FsIGFyYml0ZXIgaW5kZXgsIGxpa2UgbGFyYjAsIGxhcmIx
+LCBsYXJiMi4uLgo+PiArwqAgbWVkaWF0ZWsscGVyaWNmZzoKPj4gK8KgwqDCoCAkcmVmOiAvc2No
+ZW1hcy90eXBlcy55YW1sIy9kZWZpbml0aW9ucy9waGFuZGxlCj4+ICvCoMKgwqAgZGVzY3JpcHRp
+b246IFRoZSBwaGFuZGxlIHRvIHRoZSBtZWRpYXRlayBwZXJpY2ZnIHN5c2Nvbgo+PiArCj4gCj4g
+SSBkaWRuJ3QgZXhwbGFpbiBteXNlbGYuIFdoYXQgSSB3YXMgc3VndWVzdGluZyB3YXMgdG8gc3F1
+YXNoIHRoZSBwYXRjaCB0aGF0IGFkZCAKPiByZXF1aWVyZWQgbWVkaWF0ZWssaW5mcmFjZmcgd2l0
+aCB0aGUgcGF0Y2ggdGhhdCBhZGRzIG1lZGlhdGssaW5mcmFjZmcgdG8gdGhlIAo+IGJpbmRpbmcg
+ZGVzY3JpcHRpb24uIEFuZCB0aGVuIHNxdWFzaCB0aGUgYm90aCBwYXRjaGVzIGFkZGluZyBwZXJp
+Y2ZnIGFzIHdlbGwuCgpTb3JyeSBNYXR0aGlhcywgSSdtIG5vdCBzdXJlIC4uLiBJIHRoaW5rIEkn
+bSBtaXN1bmRlcnN0YW5kaW5nIHlvdSBhZ2Fpbi4uLgouLi5idXQgaWYgSSdtIG5vdCwgSSBkb24n
+dCB0aGluayB0aGF0IHNxdWFzaGluZyBhY3R1YWwgY29kZSBhbmQgYmluZGluZ3MgdG9nZXRoZXIK
+aXMgc29tZXRoaW5nIGFjY2VwdGFibGU/CgpJJ3ZlIG1hZGUgdGhhdCBraW5kIG9mIG1pc3Rha2Ug
+aW4gdGhlIHBhc3QgYW5kIEkgd2FzIHRvbGQgbXVsdGlwbGUgdGltZXMgdGhhdApkdC1iaW5kaW5n
+cyBjaGFuZ2VzIHNoYWxsIGJlIHNlbnQgc2VwYXJhdGVseSBmcm9tIHRoZSBhY3R1YWwgZHJpdmVy
+IGNoYW5nZXMuCgpDaGVlcnMsCkFuZ2VsbwoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1l
+ZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
