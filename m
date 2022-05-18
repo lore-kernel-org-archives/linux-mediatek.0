@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B7DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 00:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12568C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 00:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8QTQwfqfnH3DhdPlXL7qJ0PdkVyvcUZunHT2JJoIqB0=; b=byiiBDyCc9gIfV
-	1Wli4+UVBJuXCkYdJILDg7gO4slkvSaVriH6bKiTQW2sGCS+l3oJw3BEauxKan+sUmILMG5lMgXqs
-	jxVLeUXPOrjf5QduPoGVsxIbBwuV2E3pJ+6VA7oc5xnkrDSG2bokROfB+eLidh71Av4GP3HA35dZF
-	Dnx+tjRthc6xKGYXpvumwqGCp02O7PepGaSr2YTyTKOi2hSwDvTTTc4rJ4Jon3auk5SO7vEaFZZfS
-	rG6tlRDfvB9YaBhzhhtG+bfLZ9kS6vDglZYzI2kmoCSTQfwc44rHxMKDy3QtxyorznyCumjRbBqYW
-	sD5IbIQW0KZfqDWF/KgA==;
+	List-Owner; bh=RBl9LCWCqwRTdr+LNLxUKTm0jFpQsB6sAILa1XWsmsM=; b=bn1bV7RHORFHEZ
+	AILpl+VWeG9BVpfBnb2rh4elv0RbjG4YeGTW4U5gzrI20BCDDdOjsMjY1B0vCUfW/KaTzsnrKafxT
+	G69QWFGD3rN4p4B7zbS1OO1qD8DvaM/OcsuKH7zskpYi2+S25iWr9vJaUOqnuyXvba+re1QeQM5n4
+	/OBH3obfgcq5jLSsQ774yv1Gqnalx6mY8fMWSly9gZbUgRQ54XpkB24iT2LKpJ2s+8qcwPeCqRp9o
+	SV/VZp/AkoYjU6Um4IUztb0befuzas7/BvchxpV3bUp2wjOV0vnuD1olWKueuvSpUlAWcOqR79TpA
+	WozlV2YG9Xu9oJPsvx3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nr7AK-00GKAf-2W; Wed, 18 May 2022 00:03:48 +0000
-Received: from mail-pg1-f169.google.com ([209.85.215.169])
+	id 1nr7Z7-00GNEW-Iz; Wed, 18 May 2022 00:29:25 +0000
+Received: from mail-oa1-f45.google.com ([209.85.160.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nr7AG-00GK8c-4N
- for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 00:03:45 +0000
-Received: by mail-pg1-f169.google.com with SMTP id r71so685352pgr.0
- for <linux-mediatek@lists.infradead.org>; Tue, 17 May 2022 17:03:42 -0700 (PDT)
+ id 1nr7Z4-00GNDE-Q5
+ for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 00:29:23 +0000
+Received: by mail-oa1-f45.google.com with SMTP id
+ 586e51a60fabf-f189b07f57so762714fac.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 17 May 2022 17:29:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=pZZ1RAN9cPRk/Qge3KkDOqi4GWvevp8ef2NrscIFKTQ=;
- b=xbfjfZNcuIt3DQBvh0Jw0wNtZRjYNYhO3s9RKNOTx3j/9cdE+xf8cSLyGxtXfaudZE
- Qu68p6MkQQIDN/UMnplKrJd/844jNWNKEUHdJaET+uZjAkUHlTL1MTGNXBWFp4f6a7Cx
- IgLGThbOHG7SBCa++p62cQDZWm31haCX7w2xg7s4bSOgpHdtFL9ZzcX67POq4hD+pFpj
- Fyv7PPHj1LXutwJgj9WELEoNiBwBi2sJQv9BgLUvgmhiPzjdFqHLJU7YBx1nP9v5cWA1
- calDJrrFELXx9UBkOC+QxjZnqz8EbJaX/Y+mGjfquEzNyzP4OOPy9St+hszq741s/vAQ
- CJ3w==
-X-Gm-Message-State: AOAM533pW25PAML0mSXLsDDppNH5OHOOBeIX8q0itfs6ilvycyOgjNTe
- Sg8Lan6TVwhzy5ZHRrVL5iF13A==
-X-Google-Smtp-Source: ABdhPJze71LfyHGtUryYts/K86VvVcJZneqITDpkKyXA3xjg1dVRUvhbpblPTygFKPW2vZo9qVVDSQ==
-X-Received: by 2002:a05:6a00:23ca:b0:50e:827:9253 with SMTP id
- g10-20020a056a0023ca00b0050e08279253mr24812900pfc.20.1652832221811; 
- Tue, 17 May 2022 17:03:41 -0700 (PDT)
-Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
- [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
- r25-20020a634419000000b003c66480613esm116531pga.80.2022.05.17.17.03.40
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=9TKojzwNIl5X+kje0PBkzlv5STasDpTP+imoZvsmhsU=;
+ b=RSVXBX8LbYdpj6MjF+OilV8Nqwd3eQWQS/dudYxYPRh1z/UWUftCDZeCRBbFrqlTuC
+ 7fNMK6y2vv1mQMcAJwp/SBIYEiOZqTJoIz80tMOnuv49xpxuYjVQLctEXJo+MK/YLrds
+ knd3KcDiDV1Cs7LUBKZwvtRHV+aHen8exvijlNrDNDM8SdzcgE0lYkPXrY4iciDXuQ8E
+ 5+jBrAvktGhl29SKqW2wZjjenG3/hU7t0+nIhLJeD/VIQbrovv0Sa4fCRM66uOkeoK1O
+ bvAJnc9nfSANtAgp3RQ8KSvt3lpgq0lfGF0GmA3pxK8JiL8019oCC5SjzqLR5O7WBGOJ
+ yK5w==
+X-Gm-Message-State: AOAM533HVYbZ0nYh6pfBjo3B9E2WqPJpjx+b7VefGZUBagb7x6ZPYEhX
+ TfVPIkhXsrUVDGi2lyXnRg==
+X-Google-Smtp-Source: ABdhPJw0Bh/BWJ55dEGhve1trL4okx867sRjI5p9REaX9Ukyz4WwvXnocm5Eu0uHWgDBTYJ5+CGv4Q==
+X-Received: by 2002:a05:6870:4201:b0:e6:47c4:e104 with SMTP id
+ u1-20020a056870420100b000e647c4e104mr20277606oac.257.1652833758611; 
+ Tue, 17 May 2022 17:29:18 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ a3-20020a056830008300b006060322126esm306653oto.62.2022.05.17.17.29.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 May 2022 17:03:41 -0700 (PDT)
-From: Kevin Hilman <khilman@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>, Roger Lu <roger.lu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
- <eballetbo@gmail.com>, Rob Herring <robh+dt@kernel.org>, Nicolas Boichat
- <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Fan Chen <fan.chen@mediatek.com>, Charles Yang
- <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, Mark
- Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, Guenter Roeck
- <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>,
- =?utf-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <rex-bc.chen@mediatek.com>
-Subject: Re: [PATCH v25 0/7] soc: mediatek: SVS: introduce MTK SVS
-In-Reply-To: <7h4k1ndaui.fsf@baylibre.com>
-References: <20220516004311.18358-1-roger.lu@mediatek.com>
- <CAGXv+5GSdWPZe3fNpBJ_WW0zCL8Skg6fHx9ATxaKU1hyMEt2Ww@mail.gmail.com>
- <7h4k1ndaui.fsf@baylibre.com>
-Date: Tue, 17 May 2022 17:03:40 -0700
-Message-ID: <7hy1yzbtb7.fsf@baylibre.com>
+ Tue, 17 May 2022 17:29:17 -0700 (PDT)
+Received: (nullmailer pid 1939467 invoked by uid 1000);
+ Wed, 18 May 2022 00:29:16 -0000
+Date: Tue, 17 May 2022 19:29:16 -0500
+From: Rob Herring <robh@kernel.org>
+To: Peter Chiu <chui-hao.chiu@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ linux-wireless@vger.kernel.org, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ Ryder Lee <ryder.Lee@mediatek.com>, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH] dt-bindings: net: wireless: mt76: add clock description
+ for MT7986.
+Message-ID: <20220518002916.GA1939404-robh@kernel.org>
+References: <20220512043859.406-1-chui-hao.chiu@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220512043859.406-1-chui-hao.chiu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_170344_203019_80CD3713 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20220517_172922_879352_48E1420F 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,119 +88,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Kevin Hilman <khilman@kernel.org> writes:
+On Thu, 12 May 2022 12:38:59 +0800, Peter Chiu wrote:
+> Add clocks and clock-names for MT7986.
+> 
+> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> ---
+>  .../bindings/net/wireless/mediatek,mt76.yaml        | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+> 
 
-> Chen-Yu Tsai <wenst@chromium.org> writes:
->
->> On Mon, May 16, 2022 at 8:43 AM Roger Lu <roger.lu@mediatek.com> wrote:
->>>
->>> The Smart Voltage Scaling(SVS) engine is a piece of hardware
->>> which calculates suitable SVS bank voltages to OPP voltage table.
->>> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
->>> when receiving OPP_EVENT_ADJUST_VOLTAGE.
->>>
->>> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
->>> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
->>> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
->>>
->>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
->>> [2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
->>> [3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
->>>
->>> Change since v24:
->>> - Rebase to Linux 5.18-rc6
->>> - Show specific fail log in svs_platform_probe() to help catch which step fails quickly
->>> - Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
->>>
->>> Test in below environment:
->>> SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
->>> HW: mt8183-Krane
->>>
->>> [4] https://github.com/wens/linux/commits/mt8183-cpufreq-cci-svs-test
->>
->> I've updated my branch to include all the latest versions of the relevant
->> patch series:
->>
->> - anx7625 DPI bus type series v2 (so the display works)
->> - MT8183 thermal series v9 (this seems to have been overlooked by the
->> maintainer)
->> - MTK SVS driver series v25
->> - devfreq: cpu based scaling support to passive governor series v5
->> - MTK CCI devfreq series v4
->> - MT8183 cpufreq series v7
->> - Additional WIP patches for panfrost MTK devfreq
->
-> Thanks for preparing an integration branch Chen-Yu.
->
-> I'm testing this on mt8183-pumpkin with one patch to add the CCI
-> regulator[1], and the defconfig you posted in a previous rev of this
-> series, but the CCI driver still causes a fault on boot[2] on my
-> platform.
->
-> I mentioned in earlier reviews that I think there's potentially a race
-> between CCI and SVS loading since they are co-dependent.  My hunch is
-> that this is still not being handled properly.
-
-Ah, actually it's crashing when I try to boot the platform with
-`maxcpus=4` on the cmdline (which I have to do because mt8183-pumpkin is
-unstable upstream with the 2nd cluster enabled.)
-
-The CCI driver should be a bit more robust about detecting
-available/online CPUs
-
-If I boot with both clusters, I see SVS probing[1], and I see CCI 
-doing transitions[2]
-
-Kevin
-
-
-[1]
-# dmesg |grep -i svs
-[    0.739298] mtk-svs 1100b000.svs: M_HW_RES0: 0x00120090
-[    0.739315] mtk-svs 1100b000.svs: M_HW_RES1: 0xa6fdfb5b
-[    0.739318] mtk-svs 1100b000.svs: M_HW_RES2: 0x47cb47cb
-[    0.739321] mtk-svs 1100b000.svs: M_HW_RES3: 0xa6fdfb5b
-[    0.739324] mtk-svs 1100b000.svs: M_HW_RES4: 0xa6fde4ad
-[    0.739326] mtk-svs 1100b000.svs: M_HW_RES5: 0x47f84b80
-[    0.739328] mtk-svs 1100b000.svs: M_HW_RES6: 0xa6fd87a6
-[    0.739331] mtk-svs 1100b000.svs: M_HW_RES7: 0xa6fddf4a
-[    0.739333] mtk-svs 1100b000.svs: M_HW_RES8: 0x4bf84be5
-[    0.739335] mtk-svs 1100b000.svs: M_HW_RES9: 0xa6fd3267
-[    0.739338] mtk-svs 1100b000.svs: M_HW_RES14: 0x9696d5ab
-[    0.739340] mtk-svs 1100b000.svs: M_HW_RES15: 0x015a0015
-[    0.739343] mtk-svs 1100b000.svs: M_HW_RES16: 0xa6fdf05d
-[    0.739345] mtk-svs 1100b000.svs: M_HW_RES17: 0x47f847e5
-[    0.739347] mtk-svs 1100b000.svs: M_HW_RES18: 0xa6fdc240
-[    0.741890]  SVSB_CPU_LITTLE: svs_init01_isr_handler: VDN74~30:0x141c242a~0x2f32373c, DC:0x0316ff30
-[    0.742165]  SVSB_CPU_BIG: svs_init01_isr_handler: VDN74~30:0x141e262e~0x33373c42, DC:0x031aff50
-[    0.742431]  SVSB_CCI: svs_init01_isr_handler: VDN74~30:0x13192128~0x2d31383c, DC:0x0314ff20
-[    0.742696]  SVSB_GPU: svs_init01_isr_handler: VDN74~30:0x1416181a~0x1d202428, DC:0x030efef0
-[    0.742875]  SVSB_CPU_LITTLE: svs_init02_isr_handler: VOP74~30:0x1d252c33~0x373b3f45, DC:0x031600d0
-[    0.742989]  SVSB_CPU_BIG: svs_init02_isr_handler: VOP74~30:0x1d262e36~0x3b3f444a, DC:0x031a00b0
-[    0.743060]  SVSB_CCI: svs_init02_isr_handler: VOP74~30:0x1c222a31~0x353a4045, DC:0x031400e0
-[    0.743176]  SVSB_GPU: svs_init02_isr_handler: VOP74~30:0x181a1c1e~0x2125282c, DC:0x030e0110
-
-[2]
-# cat /sys/class/devfreq/cci/trans_stat 
-     From  :   To
-           : 273000000 338000000 403000000 463000000 546000000 624000000 689000000 767000000 845000000 871000000 923000000 9620000001027000000109200000011440000001196000000   time(ms)
-  273000000:         0        77        11        10        34         8         6         8         3         3         0         0         4         1         2        12    135675
-  338000000:        90         0        32         4         7         2         1         0         0         0         0         0         0         0         0         2       664
-  403000000:        20        45         0        35         7         2         0         0         0         0         0         0         0         0         0         0       509
-  463000000:        13         7        53         0        46         4         1         1         1         2         0         1         2         0         0         1       568
-  546000000:        12         5        10        63         0        55         3         3         3         1         3         2         8         3         1        35       858
-* 624000000:         4         0         2        10        50         0        49         1         1         0         0         1         3         2         0         7       407
-  689000000:         6         1         0         2        18        36         0        47         5         3         1         0         1         0         0        10       388
-  767000000:         2         1         0         3         5        11        42         0        35         4         1         1         2         0         1        23       486
-  845000000:         3         0         0         0         1         0         9        27         0        37         8         1         0         0         2        23       290
-  871000000:         2         0         0         1         0         0         3         9        19         0        29         5         1         1         1        12       179
-  923000000:         0         0         0         0         0         2         2         7        10        13         0        31         1         1         0         4       154
-  962000000:         0         0         0         0         0         1         0         4         3         4        14         0        27         1         0         2       123
- 1027000000:         2         0         0         1         2         2         3         2         1         1         7        11         0        24         2         1       182
- 1092000000:         1         0         0         0         3         2         0         1         2         0         0         1         5         0        25         5       123
- 1144000000:         2         0         0         0         0         0         0         0         2         0         1         1         2         7         0        38       193
- 1196000000:        22         2         1         3        34         6        11        21        26        15         7         1         3         5        19         0      1621
-Total transition : 1810
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
