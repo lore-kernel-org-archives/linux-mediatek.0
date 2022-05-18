@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC590C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FC6EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9S5hOpcICkE2RwRknZGLgcEhsnw/9ngNlnMj1MfaJ8I=; b=rWch1JQD5LmkFt
-	30+pO4m2LlMc6kOCLbkFPEyN20HO2pvUmKhomv3h6otdGR4xtuxfM6+w9u2ShhM8xZPZnLE8grNUH
-	OWehGPIcoSfM5C6YbnPbJJetBU8oEwYEX7uq+Bh9gAgPCKq9rSM6gkrWMvOpqx/8aYdQ3KIDGZBmh
-	BX99LkSDJqfBi48h/Q6BLVV8aI0ZbSTenRQCDqCSFzJN9jrmY+vuTDOeYPTyV6Z1KBlBSQwDr1DGt
-	jGTXEZeDzlNsaPT/qGNkTTw+mHo+4VoRJlFrj5nKBfdXaPmWDIg239hSoDC0EDMVGuHoih0s0EdFA
-	8SxcVcDIuyR/YIx6dK/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OBKNrrKC6fOoiC5qB2jxwhTZYTzJ7r2ZAHvAL6k8hT8=; b=VOCAe+Bh2XIWfe
+	oR133QJLy2+TbO0uZ/f/iCauzqJOm3FmZFeXvoF1PG2qXpt4lUOqDVDT2lTrJ0arUylXN8iuRONNR
+	qGL9uISnI7vLmENPJSacl8xm+L96fvD9gZYoZscUyCIludbHkQpwCXEXb0fJIAVUxvMaKi03Whgxv
+	z5SfLQ9KazTZXNpJcevMjtYcO+ykyMN+ifrYpffOwCVcQ6/m7u2M12diDrEby8mR7dScNldoUuoJh
+	382sn1sBvs6zJXjzQVgNJNmbfrdhbEHc3z5FzDGmRwKbQB3wnZIC0ldyaL9oAfD5acAxDx0T1josu
+	Vrfol5zXb6F4t5v3USSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrFiF-000kiS-2l; Wed, 18 May 2022 09:11:23 +0000
+	id 1nrFiF-000kir-OK; Wed, 18 May 2022 09:11:23 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrFhh-000kM6-CC; Wed, 18 May 2022 09:10:51 +0000
+ id 1nrFhh-000kMe-CV; Wed, 18 May 2022 09:10:51 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 7582D1F44320
+ (Authenticated sender: kholk11) with ESMTPSA id 51E3C1F4432B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652865043;
- bh=LKd4nhweRL3PcJXv3k2/EPSlF7AzYrSo5zfC/TMbjbo=;
- h=From:To:Cc:Subject:Date:From;
- b=g59waOirYWM562xaFzCb669fxfE5fA50a4H99jC2/aoPZwvbIMIJ3SzmCAbpwjAGo
- tZSuqYUG6sMDZSdWVff79EmGogsGDkRUd4h5OsMew9u4nvLNEmBE2JxpDkxU7ZNIZI
- s+zmHaMBJgan6S4SObYPX9w85MLyMYP82BCMS4dkaTVBUZALGcYgpp19/y7jJzFVs0
- dyWQUhtXRusELOI55sXqq+JU6DRkep/JVU9ZfD5tNeWdoaurMOuEQwTGO8W1GpK208
- bAfNS/wlMtEIa+byZrJxtQjWFuw2Iamt13nk8g9atS+AGYg4Z6t/EIpCqiX2LSp+li
- zgjskR8Y7jgsg==
+ s=mail; t=1652865045;
+ bh=FlrKwEJaWOEcsQb+NEXsjeQ2j8JFEBDbmFMsL5Q5hK8=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Wqi00/h/rLUy4nZRdCsCz6bv47BFhnhvAHEc1mXljIaU1uSOjfKZGIDCOJhrMZGzd
+ K6uLVba1kIshyPketkRmAvCOlNRsDSe3zDvtqQI/w5CtcnZ2Ht5C5ZgCRQS3rThAGg
+ 8wUMyY3AbTkdu177rskNbUU3CpbG1RaIdjbMlMN2F7TZX6c7Sy8qTy8r1QqNq2Du2V
+ pdhc0PWm1xnUFAYxob5AKbjlZXIx8rwEgX1nShxlGy55seZaOQ1hxukhPYoOXbz/8T
+ Ai3s2ZaIA6YjcnRhrlFtNhTilI5ZVOBFatqH8P5+ywsIc4w2YQa7FslrRay9qOmhKq
+ RE2aTol+pl3Vg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: yong.wu@mediatek.com
 Cc: krzysztof.kozlowski@linaro.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
@@ -46,15 +46,16 @@ Cc: krzysztof.kozlowski@linaro.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
  phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
  kernel@collabora.com,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 0/2] MediaTek Helio X10 MT6795 - SMI Support
-Date: Wed, 18 May 2022 11:10:36 +0200
-Message-Id: <20220518091038.22380-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 2/2] memory: mtk-smi: Add support for MT6795 Helio X10
+Date: Wed, 18 May 2022 11:10:38 +0200
+Message-Id: <20220518091038.22380-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220518091038.22380-1-angelogioacchino.delregno@collabora.com>
+References: <20220518091038.22380-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_021049_613310_33555C92 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220518_021049_648075_EDE3A305 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,30 +72,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In an effort to give some love to the apparently forgotten MT6795 SoC,
-I am upstreaming more components that are necessary to support platforms
-powered by this one apart from a simple boot to serial console.
+The MediaTek Helio X10 (MT6795) SoC has 5 LARBs and one common SMI
+instance without any sub-common and without GALS.
 
-This series introduces support for the SMI common and LARBs, found in
-this SoC.
+While the smi-common configuration is specific to this SoC, on the
+LARB side, this is similar to MT8173, in the sense that it doesn't
+need the port in LARB, and the register layout is also compatible
+with that one, which makes us able to fully reuse the smi-larb
+platform data struct that was introduced for MT8173.
 
-Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+---
+ drivers/memory/mtk-smi.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-Changes in v3:
- - Applied Yong Wu's review comments (thanks!) on patch [2/2]
-
-Changes in v2:
- - Added forgotten new definitions
-
-AngeloGioacchino Del Regno (2):
-  dt-bindings: memory: mtk-smi: Add MT6795 Helio X10 bindings
-  memory: mtk-smi: Add support for MT6795 Helio X10
-
- .../memory-controllers/mediatek,smi-common.yaml |  1 +
- .../memory-controllers/mediatek,smi-larb.yaml   |  1 +
- drivers/memory/mtk-smi.c                        | 17 +++++++++++++++++
- 3 files changed, 19 insertions(+)
-
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index 86a3d34f418e..7d26bc3485fd 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -21,11 +21,13 @@
+ /* SMI COMMON */
+ #define SMI_L1LEN			0x100
+ 
++#define SMI_L1_ARB			0x200
+ #define SMI_BUS_SEL			0x220
+ #define SMI_BUS_LARB_SHIFT(larbid)	((larbid) << 1)
+ /* All are MMU0 defaultly. Only specialize mmu1 here. */
+ #define F_MMU1_LARB(larbid)		(0x1 << SMI_BUS_LARB_SHIFT(larbid))
+ 
++#define SMI_READ_FIFO_TH		0x230
+ #define SMI_M4U_TH			0x234
+ #define SMI_FIFO_TH1			0x238
+ #define SMI_FIFO_TH2			0x23c
+@@ -360,6 +362,7 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
+ 	{.compatible = "mediatek,mt2701-smi-larb", .data = &mtk_smi_larb_mt2701},
+ 	{.compatible = "mediatek,mt2712-smi-larb", .data = &mtk_smi_larb_mt2712},
+ 	{.compatible = "mediatek,mt6779-smi-larb", .data = &mtk_smi_larb_mt6779},
++	{.compatible = "mediatek,mt6795-smi-larb", .data = &mtk_smi_larb_mt8173},
+ 	{.compatible = "mediatek,mt8167-smi-larb", .data = &mtk_smi_larb_mt8167},
+ 	{.compatible = "mediatek,mt8173-smi-larb", .data = &mtk_smi_larb_mt8173},
+ 	{.compatible = "mediatek,mt8183-smi-larb", .data = &mtk_smi_larb_mt8183},
+@@ -541,6 +544,13 @@ static struct platform_driver mtk_smi_larb_driver = {
+ 	}
+ };
+ 
++static const struct mtk_smi_reg_pair mtk_smi_common_mt6795_init[SMI_COMMON_INIT_REGS_NR] = {
++	{SMI_L1_ARB, 0x1b},
++	{SMI_M4U_TH, 0xce810c85},
++	{SMI_FIFO_TH1, 0x43214c8},
++	{SMI_READ_FIFO_TH, 0x191f},
++};
++
+ static const struct mtk_smi_reg_pair mtk_smi_common_mt8195_init[SMI_COMMON_INIT_REGS_NR] = {
+ 	{SMI_L1LEN, 0xb},
+ 	{SMI_M4U_TH, 0xe100e10},
+@@ -565,6 +575,12 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt6779 = {
+ 		    F_MMU1_LARB(5) | F_MMU1_LARB(6) | F_MMU1_LARB(7),
+ };
+ 
++static const struct mtk_smi_common_plat mtk_smi_common_mt6795 = {
++	.type	  = MTK_SMI_GEN2,
++	.bus_sel  = F_MMU1_LARB(0),
++	.init     = mtk_smi_common_mt6795_init,
++};
++
+ static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
+ 	.type     = MTK_SMI_GEN2,
+ 	.has_gals = true,
+@@ -609,6 +625,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
+ 	{.compatible = "mediatek,mt2701-smi-common", .data = &mtk_smi_common_gen1},
+ 	{.compatible = "mediatek,mt2712-smi-common", .data = &mtk_smi_common_gen2},
+ 	{.compatible = "mediatek,mt6779-smi-common", .data = &mtk_smi_common_mt6779},
++	{.compatible = "mediatek,mt6795-smi-common", .data = &mtk_smi_common_mt6795},
+ 	{.compatible = "mediatek,mt8167-smi-common", .data = &mtk_smi_common_gen2},
+ 	{.compatible = "mediatek,mt8173-smi-common", .data = &mtk_smi_common_gen2},
+ 	{.compatible = "mediatek,mt8183-smi-common", .data = &mtk_smi_common_mt8183},
 -- 
 2.35.1
 
