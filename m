@@ -4,58 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FC6EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13E88C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:14:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OBKNrrKC6fOoiC5qB2jxwhTZYTzJ7r2ZAHvAL6k8hT8=; b=VOCAe+Bh2XIWfe
-	oR133QJLy2+TbO0uZ/f/iCauzqJOm3FmZFeXvoF1PG2qXpt4lUOqDVDT2lTrJ0arUylXN8iuRONNR
-	qGL9uISnI7vLmENPJSacl8xm+L96fvD9gZYoZscUyCIludbHkQpwCXEXb0fJIAVUxvMaKi03Whgxv
-	z5SfLQ9KazTZXNpJcevMjtYcO+ykyMN+ifrYpffOwCVcQ6/m7u2M12diDrEby8mR7dScNldoUuoJh
-	382sn1sBvs6zJXjzQVgNJNmbfrdhbEHc3z5FzDGmRwKbQB3wnZIC0ldyaL9oAfD5acAxDx0T1josu
-	Vrfol5zXb6F4t5v3USSA==;
+	List-Owner; bh=b1uyoshhEOQxMsAZQx5PFdPeppg/T3Sm0iiGdy20dg0=; b=dADfn5YjIXCS6P
+	rmfF0uEVqMQBlA0umeIySAOP0lcgb0gAYRvI14prcwJWQ7V3+OnboKpOfK5n1eULru4Jo2z/ZB0Xn
+	irCvIGkJ1X2bHgFONGb9/lpS2w8/V8cFoZxw738KIUbmuE9tNjGqs5EmHLteFj7BKeYnimp4403jt
+	4oqmM1+o17bmeliyzBglLjg39utVJplgnTEY4OkcrBDAs66n73n6w5zxI04afohA5X86tDQV5TXd4
+	+YI+I/fGDua3h3mp7L7B+GsWG94QfNMRoguE/V682qOAl1Td+kBuvNXsevon/7XjNisTK9lRzwnrF
+	xy1KRaBIQXO1bhO31iqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrFiF-000kir-OK; Wed, 18 May 2022 09:11:23 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nrFlN-000mLX-Ea; Wed, 18 May 2022 09:14:37 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrFhh-000kMe-CV; Wed, 18 May 2022 09:10:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 51E3C1F4432B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652865045;
- bh=FlrKwEJaWOEcsQb+NEXsjeQ2j8JFEBDbmFMsL5Q5hK8=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Wqi00/h/rLUy4nZRdCsCz6bv47BFhnhvAHEc1mXljIaU1uSOjfKZGIDCOJhrMZGzd
- K6uLVba1kIshyPketkRmAvCOlNRsDSe3zDvtqQI/w5CtcnZ2Ht5C5ZgCRQS3rThAGg
- 8wUMyY3AbTkdu177rskNbUU3CpbG1RaIdjbMlMN2F7TZX6c7Sy8qTy8r1QqNq2Du2V
- pdhc0PWm1xnUFAYxob5AKbjlZXIx8rwEgX1nShxlGy55seZaOQ1hxukhPYoOXbz/8T
- Ai3s2ZaIA6YjcnRhrlFtNhTilI5ZVOBFatqH8P5+ywsIc4w2YQa7FslrRay9qOmhKq
- RE2aTol+pl3Vg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: yong.wu@mediatek.com
-Cc: krzysztof.kozlowski@linaro.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
- kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 2/2] memory: mtk-smi: Add support for MT6795 Helio X10
-Date: Wed, 18 May 2022 11:10:38 +0200
-Message-Id: <20220518091038.22380-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220518091038.22380-1-angelogioacchino.delregno@collabora.com>
-References: <20220518091038.22380-1-angelogioacchino.delregno@collabora.com>
+ id 1nrFlL-000mHr-CQ
+ for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 09:14:36 +0000
+Received: by mail-pg1-x532.google.com with SMTP id h186so1607130pgc.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 18 May 2022 02:14:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=GjvQwPM1daZo8+jCqWpaTz2mh/pEzt/6tEe1yGu9dLM=;
+ b=eQ6HR9gNmBjFbYML7Gui5OzZdhQ1ZJrrout1YiW/OYAgfXojWKCDuV86ePsOqi8nHc
+ Q/zJMR8PLB4HUUvyQg60hVOtESQhHMagFOehN8Q+EZPU1tRYuO8ZMApeTCpvwtJHq/De
+ I2AeL1NGadVpwvZU+UvRBmdFjJMVp+Wyrmw8BDFcLXdZAlyrOUA74BPZYYkT1C6LuOIm
+ BOLQMyqpWZRz28NR53+azrOdFnIrUTeZ0IwvuFe0KwKlb7Q0ARYbekaBm3N4i61x5x9V
+ +Ifyw1XogMpMIz4lWf9qMZRD3kLrTlp63mTXaxQHJ+9ErEVtg26/R+1HHAPNpPO8cg9i
+ TLgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=GjvQwPM1daZo8+jCqWpaTz2mh/pEzt/6tEe1yGu9dLM=;
+ b=Hg9FCrMIdiWq5WtTFXgWPzGxwSJcsOq9KVIyImgc/ZjD9gqCR+uYi6OlY9VkyKoJe/
+ HjkibMA/lDPUeNoAX9HL3J4WBfZBKsZglezCXHcBrK+C/LtAXioxKKWrvNVUPnQIY5SG
+ PumcirbA89Z/vSPgKb7FQc59544fypq/aY/qYhen6QJkfzYiTu9zYc0/AobSdoutj8yk
+ 8hmxtyI6qsKhVUNTrQhJBRlNqJenuLWbZIDgmJ04+T1abyCq16q99zbDI0zVvaf+0KGs
+ kjvEUkuUs3qPbMDtZHQvQ//4n/HgRaqaPAEFqx6C573AySDsqjIiC+EyhlvTSj07snv0
+ Pz1Q==
+X-Gm-Message-State: AOAM532+tC1TRZw1vgPIjVxJCXlyNrUqCG//5+b0t1YxSNG6Kki29/Ip
+ 5fB2JrNAy//K93lV3V+DYOhj23NGLklT2RLbetI+vg==
+X-Google-Smtp-Source: ABdhPJympDV8mO/7wcUhujZ0IVK8Fi+T7b+h4c4ApG6fzgAOF2agcfhcnphsmdMxge90eiicfp3r24uSzxyxcZv9/dU=
+X-Received: by 2002:a63:111f:0:b0:3da:ed0d:7623 with SMTP id
+ g31-20020a63111f000000b003daed0d7623mr23285972pgl.586.1652865272760; Wed, 18
+ May 2022 02:14:32 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220518090738.2694556-1-yangyingliang@huawei.com>
+In-Reply-To: <20220518090738.2694556-1-yangyingliang@huawei.com>
+From: Loic Poulain <loic.poulain@linaro.org>
+Date: Wed, 18 May 2022 11:13:56 +0200
+Message-ID: <CAMZdPi9uvh4E70-AXpGrdzkgh35mfWQbhL8Kxw_o9_DsfL2gbw@mail.gmail.com>
+Subject: Re: [PATCH -next] net: wwan: t7xx: use GFP_ATOMIC under spin lock in
+ t7xx_cldma_gpd_set_next_ptr()
+To: Yang Yingliang <yangyingliang@huawei.com>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, 
+ haijun.liu@mediatek.com, chandrashekar.devegowda@intel.com, 
+ ricardo.martinez@linux.intel.com, davem@davemloft.net, kuba@kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_021049_648075_EDE3A305 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20220518_021435_448518_22D08F28 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,86 +85,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek Helio X10 (MT6795) SoC has 5 LARBs and one common SMI
-instance without any sub-common and without GALS.
+Hi Yang,
 
-While the smi-common configuration is specific to this SoC, on the
-LARB side, this is similar to MT8173, in the sense that it doesn't
-need the port in LARB, and the register layout is also compatible
-with that one, which makes us able to fully reuse the smi-larb
-platform data struct that was introduced for MT8173.
+On Wed, 18 May 2022 at 10:57, Yang Yingliang <yangyingliang@huawei.com> wrote:
+>
+> Sometimes t7xx_cldma_gpd_set_next_ptr() is called under spin lock,
+> so add a parameter in t7xx_cldma_gpd_set_next_ptr() to make if it
+> use GFP_ATOMIC flag.
+>
+> Fixes: 39d439047f1d ("net: wwan: t7xx: Add control DMA interface")
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+> ---
+>  drivers/net/wwan/t7xx/t7xx_hif_cldma.c | 13 ++++++++-----
+>  1 file changed, 8 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/net/wwan/t7xx/t7xx_hif_cldma.c b/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
+> index 0c52801ed0de..1fa9bb763831 100644
+> --- a/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
+> +++ b/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
+> @@ -91,9 +91,12 @@ static void t7xx_cldma_gpd_set_next_ptr(struct cldma_gpd *gpd, dma_addr_t next_p
+>  }
+>
+>  static int t7xx_cldma_alloc_and_map_skb(struct cldma_ctrl *md_ctrl, struct cldma_request *req,
+> -                                       size_t size)
+> +                                       size_t size, bool is_atomic)
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/memory/mtk-smi.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Would be simpler to directly pass the gfp_mask as a parameter.
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 86a3d34f418e..7d26bc3485fd 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -21,11 +21,13 @@
- /* SMI COMMON */
- #define SMI_L1LEN			0x100
- 
-+#define SMI_L1_ARB			0x200
- #define SMI_BUS_SEL			0x220
- #define SMI_BUS_LARB_SHIFT(larbid)	((larbid) << 1)
- /* All are MMU0 defaultly. Only specialize mmu1 here. */
- #define F_MMU1_LARB(larbid)		(0x1 << SMI_BUS_LARB_SHIFT(larbid))
- 
-+#define SMI_READ_FIFO_TH		0x230
- #define SMI_M4U_TH			0x234
- #define SMI_FIFO_TH1			0x238
- #define SMI_FIFO_TH2			0x23c
-@@ -360,6 +362,7 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
- 	{.compatible = "mediatek,mt2701-smi-larb", .data = &mtk_smi_larb_mt2701},
- 	{.compatible = "mediatek,mt2712-smi-larb", .data = &mtk_smi_larb_mt2712},
- 	{.compatible = "mediatek,mt6779-smi-larb", .data = &mtk_smi_larb_mt6779},
-+	{.compatible = "mediatek,mt6795-smi-larb", .data = &mtk_smi_larb_mt8173},
- 	{.compatible = "mediatek,mt8167-smi-larb", .data = &mtk_smi_larb_mt8167},
- 	{.compatible = "mediatek,mt8173-smi-larb", .data = &mtk_smi_larb_mt8173},
- 	{.compatible = "mediatek,mt8183-smi-larb", .data = &mtk_smi_larb_mt8183},
-@@ -541,6 +544,13 @@ static struct platform_driver mtk_smi_larb_driver = {
- 	}
- };
- 
-+static const struct mtk_smi_reg_pair mtk_smi_common_mt6795_init[SMI_COMMON_INIT_REGS_NR] = {
-+	{SMI_L1_ARB, 0x1b},
-+	{SMI_M4U_TH, 0xce810c85},
-+	{SMI_FIFO_TH1, 0x43214c8},
-+	{SMI_READ_FIFO_TH, 0x191f},
-+};
-+
- static const struct mtk_smi_reg_pair mtk_smi_common_mt8195_init[SMI_COMMON_INIT_REGS_NR] = {
- 	{SMI_L1LEN, 0xb},
- 	{SMI_M4U_TH, 0xe100e10},
-@@ -565,6 +575,12 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt6779 = {
- 		    F_MMU1_LARB(5) | F_MMU1_LARB(6) | F_MMU1_LARB(7),
- };
- 
-+static const struct mtk_smi_common_plat mtk_smi_common_mt6795 = {
-+	.type	  = MTK_SMI_GEN2,
-+	.bus_sel  = F_MMU1_LARB(0),
-+	.init     = mtk_smi_common_mt6795_init,
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
- 	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
-@@ -609,6 +625,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
- 	{.compatible = "mediatek,mt2701-smi-common", .data = &mtk_smi_common_gen1},
- 	{.compatible = "mediatek,mt2712-smi-common", .data = &mtk_smi_common_gen2},
- 	{.compatible = "mediatek,mt6779-smi-common", .data = &mtk_smi_common_mt6779},
-+	{.compatible = "mediatek,mt6795-smi-common", .data = &mtk_smi_common_mt6795},
- 	{.compatible = "mediatek,mt8167-smi-common", .data = &mtk_smi_common_gen2},
- 	{.compatible = "mediatek,mt8173-smi-common", .data = &mtk_smi_common_gen2},
- 	{.compatible = "mediatek,mt8183-smi-common", .data = &mtk_smi_common_mt8183},
--- 
-2.35.1
 
+>  {
+> -       req->skb = __dev_alloc_skb(size, GFP_KERNEL);
+> +       if (is_atomic)
+> +               req->skb = __dev_alloc_skb(size, GFP_ATOMIC);
+> +       else
+> +               req->skb = __dev_alloc_skb(size, GFP_KERNEL);
+>         if (!req->skb)
+>                 return -ENOMEM;
+>
+> @@ -174,7 +177,7 @@ static int t7xx_cldma_gpd_rx_from_q(struct cldma_queue *queue, int budget, bool
+>                 spin_unlock_irqrestore(&queue->ring_lock, flags);
+>                 req = queue->rx_refill;
+>
+> -               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, queue->tr_ring->pkt_size);
+> +               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, queue->tr_ring->pkt_size, false);
+>                 if (ret)
+>                         return ret;
+>
+> @@ -402,7 +405,7 @@ static struct cldma_request *t7xx_alloc_rx_request(struct cldma_ctrl *md_ctrl, s
+>         if (!req->gpd)
+>                 goto err_free_req;
+>
+> -       val = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, pkt_size);
+> +       val = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, pkt_size, false);
+>         if (val)
+>                 goto err_free_pool;
+>
+> @@ -801,7 +804,7 @@ static int t7xx_cldma_clear_rxq(struct cldma_ctrl *md_ctrl, int qnum)
+>                 if (req->skb)
+>                         continue;
+>
+> -               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, rxq->tr_ring->pkt_size);
+> +               ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, rxq->tr_ring->pkt_size, true);
+>                 if (ret)
+>                         break;
+>
+> --
+> 2.25.1
+>
 
 _______________________________________________
 Linux-mediatek mailing list
