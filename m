@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A7C6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 14:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DC05C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 14:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jeSJFeaehOoB7EeKxfLnJQzZA7c6ptg27HRnNbtRS6g=; b=Hg0wx53oSjCjgT
-	Lb9h3iDIzlaakj7Lj2LHXwmL2OoJtZV9gJOaxoVJQfxoKWf00nQieKKSQ8tIwFm4wT4h/3NNN8Bl8
-	hTF1LJ5N3t9xKQk//wmwO18TysKQ9NxJmev1ang2iknOebZrms8TppYXcFA4LK++IKq5E7Fmbjzft
-	GDPWmfkgF/APW1AdxQnvGq0n62+zvRrpZYREVIJNmakXk4L042Akqce5cCiXuamGX8hfHpVxMF6F3
-	Uclz+BlfmSPy4MNfnl+o/3gUQFHGhWIh/eQwKmTHwK7wsCbePA/1sGyJrA+4CGy62vhoOXtKWtl3/
-	47QyuWdODCKMbxoBjPhw==;
+	List-Owner; bh=bC8yyYnLcNk/KRV3da2Z0aLUsDXd1pNXdhQvK/ykKp4=; b=iDCdTILYfZ8hBd
+	WEWpEvocyehKGc/TxXJlm42B5uBKQgMqf75aXqD/6bbzDdf81MzYisZVrt1tOTNmpZbhycKckZ5d4
+	Fz2q8gm12xsPXWWZfGPtAxh4p0C5y81+oiBFRGH7fm6nxEdc4GniS/sSQRmrHCMriYiPrvPCwSOMi
+	pJrry4VOEFdjVaTT+SkJD0Cs94xVHX46m+xt7pN2CsXd/ZHzIghxlDlwv9P54rIOnM2CRUHPc736M
+	BFqGbTQdGTdnzgAfmumNBrW2rG4WaHy9w0eD+F7Zcxq6uhw+rNHBtP2XalanWPcnRur+FmUTyQEYA
+	sKgWq426ctFTXaAY+qtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrL8V-002f8X-UD; Wed, 18 May 2022 14:58:51 +0000
+	id 1nrL8v-002fO3-7A; Wed, 18 May 2022 14:59:17 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrL57-002d11-Jn; Wed, 18 May 2022 14:55:25 +0000
+ id 1nrL5C-002d3E-N7; Wed, 18 May 2022 14:55:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
  Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
  In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=JQJfZSE9kledh/qBXxdYmqroe+XEFKxmmVfowX+wP4c=; b=MrZxYcYU+qewDWLhSICZfotgt5
- cvpwzKz6YyrUsQujcUw4PVKbanRrcQ8bqVvjL4AvKEK+X1W5Z3SxsHOAlKO1Y2eLnYDp9xxUA+P/4
- zpYYlCoD9ST0fenW5VtTXEtp7yvEVG5lnTeKPt0SlHVPz5CrgR88ZDBowwNB+ZN2Gop/mYzXNNO15
- GiIGvmAfy5F0embGoI3R2t7GdkMFNyhzXgsIBNA9MCAJiH8/AOZZ80okvTD9scZnOGslCN3U+SRFE
- ZLOnG0JWcWsZsC40hVKHcl97nv04sVsTkeH3T36tQsp/HCBoOZ2GMCXm+lc04EICqHFbEFzD4ABnr
- isuAIKPQ==;
+ bh=J5CTxYXsUvYDq7ri8Aw+CPmE+xQrei/nY6OOqFLwWgU=; b=EG7aJwmexVLtkNmNAR+pyK0jM6
+ hD6tM6xBOrvqMpZg2qdESvQLdDSxoJAETnOkPOaP1RV9N/BHpY/Ujtp3Y7f4mpbWCM7j/5/s7REfz
+ R1KHhtdQMKmaRo1eVG4hWiJTeTftHr8YK38e6k0McDNY9YJnEu3cmEteazV6NxHohNw2R2A90oq8k
+ HaGgC2RI1PX1UZY87jvjaucWJyNIi2l4M8c8g8Ji1enETognyv3K9bMDLmd28n9Bk5OPf8bWQk7ph
+ 4uhZshNjzSgs/53QJicqJMiGZ3c0rQR7+8YpjlzLqxauLhIrM+ZZxHKoHr7KXgn53DZrOlswnzAWr
+ clgXHfeg==;
 Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:38628 helo=rmk-PC.armlinux.org.uk)
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:38630 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1nrL53-0002Gb-UA; Wed, 18 May 2022 15:55:18 +0100
+ id 1nrL59-0002Gr-1a; Wed, 18 May 2022 15:55:23 +0100
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
  (envelope-from <rmk@rmk-PC.armlinux.org.uk>)
- id 1nrL53-00AM5X-QI; Wed, 18 May 2022 15:55:17 +0100
+ id 1nrL58-00AM5d-U9; Wed, 18 May 2022 15:55:22 +0100
 In-Reply-To: <YoUIX+BN/ZbyXzTT@shell.armlinux.org.uk>
 References: <YoUIX+BN/ZbyXzTT@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -56,15 +56,15 @@ Cc: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
  Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
  Eric Dumazet <edumazet@google.com>
-Subject: [PATCH net-next 10/12] net: mtk_eth_soc: move restoration of SYSCFG0
- to mac_finish()
+Subject: [PATCH net-next 11/12] net: mtk_eth_soc: convert code structure to
+ suit split PCS support
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1nrL53-00AM5X-QI@rmk-PC.armlinux.org.uk>
-Date: Wed, 18 May 2022 15:55:17 +0100
+Message-Id: <E1nrL58-00AM5d-U9@rmk-PC.armlinux.org.uk>
+Date: Wed, 18 May 2022 15:55:22 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_075521_733536_C03A360C 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20220518_075526_959779_0A7A466E 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +81,257 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SGMIISYS configuration is performed while ETHSYS_SYSCFG0 is in a
-disabled state. In order to preserve this when we switch to phylink_pcs
-we need to move the restoration of this register to the mac_finish()
-callback.
+Provide a mtk_pcs structure which encapsulates everything that the PCS
+functions need (the regmap and ana_rgc3 offset), and use this in the
+PCS functions. Provide shim functions to convert from the existing
+"mtk_sgmii_*" interface to the converted PCS functions.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 11 +++++++++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  15 ++-
+ drivers/net/ethernet/mediatek/mtk_sgmii.c   | 123 +++++++++++---------
+ 2 files changed, 79 insertions(+), 59 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index d9947faa2cd3..6dca98de0067 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -400,8 +400,8 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
- 		if (err)
- 			goto init_err;
- 
--		regmap_update_bits(eth->ethsys, ETHSYS_SYSCFG0,
--				   SYSCFG0_SGMII_MASK, val);
-+		/* Save the syscfg0 value for mac_finish */
-+		mac->syscfg0 = val;
- 	} else if (phylink_autoneg_inband(mode)) {
- 		dev_err(eth->dev,
- 			"In-band mode not supported in non SGMII mode!\n");
-@@ -425,8 +425,15 @@ static int mtk_mac_finish(struct phylink_config *config, unsigned int mode,
- {
- 	struct mtk_mac *mac = container_of(config, struct mtk_mac,
- 					   phylink_config);
-+	struct mtk_eth *eth = mac->hw;
- 	u32 mcr_cur, mcr_new;
- 
-+	/* Enable SGMII */
-+	if (interface == PHY_INTERFACE_MODE_SGMII ||
-+	    phy_interface_mode_is_8023z(interface))
-+		regmap_update_bits(eth->ethsys, ETHSYS_SYSCFG0,
-+				   SYSCFG0_SGMII_MASK, mac->syscfg0);
-+
- 	/* Setup gmac */
- 	mcr_cur = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
- 	mcr_new = mcr_cur;
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index fa3c085bf7ed..1ad5c26f01fb 100644
+index 1ad5c26f01fb..8bf2d53cbec8 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1001,6 +1001,7 @@ struct mtk_mac {
- 	struct mtk_hw_stats		*hw_stats;
- 	__be32				hwlro_ip[MTK_MAX_LRO_IP_CNT];
- 	int				hwlro_ip_cnt;
-+	unsigned int			syscfg0;
+@@ -869,16 +869,23 @@ struct mtk_soc_data {
+ /* currently no SoC has more than 2 macs */
+ #define MTK_MAX_DEVS			2
+ 
+-/* struct mtk_sgmii -  This is the structure holding sgmii regmap and its
+- *                     characteristics
++/* struct mtk_pcs -    This structure holds each sgmii regmap and associated
++ *                     data
+  * @regmap:            The register map pointing at the range used to setup
+  *                     SGMII modes
+  * @ana_rgc3:          The offset refers to register ANA_RGC3 related to regmap
+  */
++struct mtk_pcs {
++	struct regmap	*regmap;
++	u32             ana_rgc3;
++};
+ 
++/* struct mtk_sgmii -  This is the structure holding sgmii regmap and its
++ *                     characteristics
++ * @pcs                Array of individual PCS structures
++ */
+ struct mtk_sgmii {
+-	struct regmap   *regmap[MTK_MAX_DEVS];
+-	u32             ana_rgc3;
++	struct mtk_pcs	pcs[MTK_MAX_DEVS];
  };
  
- /* the struct describing the SoC. these are declared in the soc_xyz.c files */
+ /* struct mtk_eth -	This is the main datasructure for holding the state
+diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+index 4defc1ca41b6..7f257f492926 100644
+--- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
++++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
+@@ -9,90 +9,71 @@
+ 
+ #include <linux/mfd/syscon.h>
+ #include <linux/of.h>
++#include <linux/phylink.h>
+ #include <linux/regmap.h>
+ 
+ #include "mtk_eth_soc.h"
+ 
+-int mtk_sgmii_init(struct mtk_sgmii *ss, struct device_node *r, u32 ana_rgc3)
+-{
+-	struct device_node *np;
+-	int i;
+-
+-	ss->ana_rgc3 = ana_rgc3;
+-
+-	for (i = 0; i < MTK_MAX_DEVS; i++) {
+-		np = of_parse_phandle(r, "mediatek,sgmiisys", i);
+-		if (!np)
+-			break;
+-
+-		ss->regmap[i] = syscon_node_to_regmap(np);
+-		of_node_put(np);
+-		if (IS_ERR(ss->regmap[i]))
+-			return PTR_ERR(ss->regmap[i]);
+-	}
+-
+-	return 0;
+-}
+-
+ /* For SGMII interface mode */
+-static int mtk_sgmii_setup_mode_an(struct mtk_sgmii *ss, int id)
++static int mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
+ {
+ 	unsigned int val;
+ 
+-	if (!ss->regmap[id])
++	if (!mpcs->regmap)
+ 		return -EINVAL;
+ 
+ 	/* Setup the link timer and QPHY power up inside SGMIISYS */
+-	regmap_write(ss->regmap[id], SGMSYS_PCS_LINK_TIMER,
++	regmap_write(mpcs->regmap, SGMSYS_PCS_LINK_TIMER,
+ 		     SGMII_LINK_TIMER_DEFAULT);
+ 
+-	regmap_read(ss->regmap[id], SGMSYS_SGMII_MODE, &val);
++	regmap_read(mpcs->regmap, SGMSYS_SGMII_MODE, &val);
+ 	val |= SGMII_REMOTE_FAULT_DIS;
+-	regmap_write(ss->regmap[id], SGMSYS_SGMII_MODE, val);
++	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
+ 
+-	regmap_read(ss->regmap[id], SGMSYS_PCS_CONTROL_1, &val);
++	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
+ 	val |= SGMII_AN_RESTART;
+-	regmap_write(ss->regmap[id], SGMSYS_PCS_CONTROL_1, val);
++	regmap_write(mpcs->regmap, SGMSYS_PCS_CONTROL_1, val);
+ 
+-	regmap_read(ss->regmap[id], SGMSYS_QPHY_PWR_STATE_CTRL, &val);
++	regmap_read(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, &val);
+ 	val &= ~SGMII_PHYA_PWD;
+-	regmap_write(ss->regmap[id], SGMSYS_QPHY_PWR_STATE_CTRL, val);
++	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, val);
+ 
+ 	return 0;
++
+ }
+ 
+ /* For 1000BASE-X and 2500BASE-X interface modes, which operate at a
+  * fixed speed.
+  */
+-static int mtk_sgmii_setup_mode_force(struct mtk_sgmii *ss, int id,
+-				      phy_interface_t interface)
++static int mtk_pcs_setup_mode_force(struct mtk_pcs *mpcs,
++				    phy_interface_t interface)
+ {
+ 	unsigned int val;
+ 
+-	if (!ss->regmap[id])
++	if (!mpcs->regmap)
+ 		return -EINVAL;
+ 
+-	regmap_read(ss->regmap[id], ss->ana_rgc3, &val);
++	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
+ 	val &= ~RG_PHY_SPEED_MASK;
+ 	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+ 		val |= RG_PHY_SPEED_3_125G;
+-	regmap_write(ss->regmap[id], ss->ana_rgc3, val);
++	regmap_write(mpcs->regmap, mpcs->ana_rgc3, val);
+ 
+ 	/* Disable SGMII AN */
+-	regmap_read(ss->regmap[id], SGMSYS_PCS_CONTROL_1, &val);
++	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
+ 	val &= ~SGMII_AN_ENABLE;
+-	regmap_write(ss->regmap[id], SGMSYS_PCS_CONTROL_1, val);
++	regmap_write(mpcs->regmap, SGMSYS_PCS_CONTROL_1, val);
+ 
+ 	/* Set the speed etc but leave the duplex unchanged */
+-	regmap_read(ss->regmap[id], SGMSYS_SGMII_MODE, &val);
++	regmap_read(mpcs->regmap, SGMSYS_SGMII_MODE, &val);
+ 	val &= SGMII_DUPLEX_FULL | ~SGMII_IF_MODE_MASK;
+ 	val |= SGMII_SPEED_1000;
+-	regmap_write(ss->regmap[id], SGMSYS_SGMII_MODE, val);
++	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
+ 
+ 	/* Release PHYA power down state */
+-	regmap_read(ss->regmap[id], SGMSYS_QPHY_PWR_STATE_CTRL, &val);
++	regmap_read(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, &val);
+ 	val &= ~SGMII_PHYA_PWD;
+-	regmap_write(ss->regmap[id], SGMSYS_QPHY_PWR_STATE_CTRL, val);
++	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, val);
+ 
+ 	return 0;
+ }
+@@ -100,44 +81,76 @@ static int mtk_sgmii_setup_mode_force(struct mtk_sgmii *ss, int id,
+ int mtk_sgmii_config(struct mtk_sgmii *ss, int id, unsigned int mode,
+ 		     phy_interface_t interface)
+ {
++	struct mtk_pcs *mpcs = &ss->pcs[id];
+ 	int err = 0;
+ 
+ 	/* Setup SGMIISYS with the determined property */
+ 	if (interface != PHY_INTERFACE_MODE_SGMII)
+-		err = mtk_sgmii_setup_mode_force(ss, id, interface);
++		err = mtk_pcs_setup_mode_force(mpcs, interface);
+ 	else if (phylink_autoneg_inband(mode))
+-		err = mtk_sgmii_setup_mode_an(ss, id);
++		err = mtk_pcs_setup_mode_an(mpcs);
+ 
+ 	return err;
+ }
+ 
+-/* For 1000BASE-X and 2500BASE-X interface modes */
+-void mtk_sgmii_link_up(struct mtk_sgmii *ss, int id, int speed, int duplex)
++static void mtk_pcs_restart_an(struct mtk_pcs *mpcs)
++{
++	unsigned int val;
++
++	if (!mpcs->regmap)
++		return;
++
++	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
++	val |= SGMII_AN_RESTART;
++	regmap_write(mpcs->regmap, SGMSYS_PCS_CONTROL_1, val);
++}
++
++static void mtk_pcs_link_up(struct mtk_pcs *mpcs, int speed, int duplex)
+ {
+ 	unsigned int val;
+ 
+ 	/* SGMII force duplex setting */
+-	regmap_read(ss->regmap[id], SGMSYS_SGMII_MODE, &val);
++	regmap_read(mpcs->regmap, SGMSYS_SGMII_MODE, &val);
+ 	val &= ~SGMII_DUPLEX_FULL;
+ 	if (duplex == DUPLEX_FULL)
+ 		val |= SGMII_DUPLEX_FULL;
+ 
+-	regmap_write(ss->regmap[id], SGMSYS_SGMII_MODE, val);
++	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
++}
++
++/* For 1000BASE-X and 2500BASE-X interface modes */
++void mtk_sgmii_link_up(struct mtk_sgmii *ss, int id, int speed, int duplex)
++{
++	mtk_pcs_link_up(&ss->pcs[id], speed, duplex);
++}
++
++int mtk_sgmii_init(struct mtk_sgmii *ss, struct device_node *r, u32 ana_rgc3)
++{
++	struct device_node *np;
++	int i;
++
++	for (i = 0; i < MTK_MAX_DEVS; i++) {
++		np = of_parse_phandle(r, "mediatek,sgmiisys", i);
++		if (!np)
++			break;
++
++		ss->pcs[i].ana_rgc3 = ana_rgc3;
++		ss->pcs[i].regmap = syscon_node_to_regmap(np);
++		of_node_put(np);
++		if (IS_ERR(ss->pcs[i].regmap))
++			return PTR_ERR(ss->pcs[i].regmap);
++	}
++
++	return 0;
+ }
+ 
+ void mtk_sgmii_restart_an(struct mtk_eth *eth, int mac_id)
+ {
+-	struct mtk_sgmii *ss = eth->sgmii;
+-	unsigned int val, sid;
++	unsigned int sid;
+ 
+ 	/* Decide how GMAC and SGMIISYS be mapped */
+ 	sid = (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_SGMII)) ?
+ 	       0 : mac_id;
+ 
+-	if (!ss->regmap[sid])
+-		return;
+-
+-	regmap_read(ss->regmap[sid], SGMSYS_PCS_CONTROL_1, &val);
+-	val |= SGMII_AN_RESTART;
+-	regmap_write(ss->regmap[sid], SGMSYS_PCS_CONTROL_1, val);
++	mtk_pcs_restart_an(&eth->sgmii->pcs[sid]);
+ }
 -- 
 2.30.2
 
