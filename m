@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCD8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 08:30:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27A7AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 08:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2rHU+ExRHlNnlPS/jgQiwkHI/+YvIBph8nebVdB/9P4=; b=CiH4Ny7O/2VXiP2KF8DKHOSJit
-	w8d7TzdaAZYl/+dILSGbo57KzSOrEwazOlmkd04kBV4X1pl4rFlL+kOV0V7eC9Tc9MLv2o/mxc/aQ
-	WQAD388glvHIS1J5smupspmIwbH7HkpiVHf60hkBwlB6JwC+oEG6Rb9GAUPsNtUHKsikCzhdWPThO
-	QKTx+rN+ZX5i910RYapAakkwAqAi6Z8mfkhkoMp42Pur74FeCKkJ8yhgD8PDC/isH/FtkhxWBzocN
-	tLZzeXUay7BDkQwLPC9QFSaeHZQ/vRDFwjI9xzjnyeT1dedx0A4sGuWNaUlujZ/cwzilR77fUTwgU
-	UUrLr0Wg==;
+	bh=JvMan7UlXYI8iuzMrpadfHtRVuiI1Esl7G1CZydmysU=; b=h0LFZvZu0HUAIvCgWV1nBA8t7e
+	UchUzbA9rmOFaL52XGdbzxcXoOlR9SNBmh82/StJU21tYk6SxDRD/RbkdXSMQiMgFuuXwmPFf12cW
+	I9QNQeCd8IdDdMk4/P9uoX7y2kYbsmw/0sHzRER5eAnIa1FaijDHTqfesnYkKukY6vA+HgcMJoCLL
+	cj40vt0p4TbbJwgqGH4lBAX94+UISNNmE6xcmODH7gdDCPebXA9DG4ejv/qnVHwqOJ5PJjlm8KuuP
+	b4AFuSVnHodyzTRtNVDqbPosJqJKFSCfBr1phLqYdEh8IYCbSaJbX3Qi1k0bW1a239bYG30kpztAI
+	rYqCAgkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrF4B-000bYO-7X; Wed, 18 May 2022 08:29:59 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nrF52-000buq-Qg; Wed, 18 May 2022 08:30:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrF48-000bWP-As
- for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 08:29:57 +0000
+ id 1nrF50-000btd-T4
+ for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 08:30:52 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 0B954B81EE6;
- Wed, 18 May 2022 08:29:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 487EBC385AA;
- Wed, 18 May 2022 08:29:52 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id ACBFB6165A;
+ Wed, 18 May 2022 08:30:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE2B5C385A5;
+ Wed, 18 May 2022 08:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652862592;
- bh=0abp1pszzsRBx5y5nc3egC4D4HkrMKsciN1YVkpNL6g=;
+ s=k20201202; t=1652862649;
+ bh=mJJb/4OQ3K+BXo8Cd+L/PAtvSVNE3XIPsK9mQ+9dwiE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=IzQG4rxQryyz4XT24Lc3jCcLIMgpq3o5cM4Kw8JjxTBlkVJpFu7k+W8D71NpvrgFJ
- OQ/jjI3WaTLFvRI26qQ3nw1elquXdpbzm2vrzoSuo/59jHnWoD50iYgo1yQ+A3ZVNc
- ykQwWV4ptWmohUAA62Inkgc4rFpkgqTJomn+dQhqDc9YkxgKrAsSVN7lILAQvn/AwH
- MDByP5EQlmIr67oIZU/eVRG7k0rpwe0QqvTj1QNE/+QizdlCPUEFti+DuMBBnPryfB
- LLrxHxcnb+mJC+LX+EEhLaih3EsAzeaIsmV9HkPQIKIIcrbK9NYIX5tAQ5qLxNO2g5
- gxVLUGa7S5QOQ==
-Date: Wed, 18 May 2022 10:29:48 +0200
+ b=X+zdutIv5p2k+3B4+X900Urieq9PE2vgPA5T07eaOphbN3Jm8Wt1SsLzTLuxexhBK
+ Bg2E2RQyKJHSpPZ+CVmGq+ReG9+2zvTKmFYn/3N7cOXAUtVYJT+awRHQ3FLXKhklsp
+ SDR2NugJg2Xy8XgacCJs8DShSm1sfz/Fk6AmSEAHwPGvZPMHmYW+xhj23z8+tVDW47
+ 4VWlnI9yT4hnE+niavzZn4whQjvWVrsIowl0uzBRXaQXGAYsqr4XzosnKe7cVyONov
+ RFj8LKyWsqeG5oDeScqstSRsGUTC9uf/GBfGybaOYxphBUUB7HANbALWVHrJgwznqS
+ VHDv/+hxLN+iQ==
+Date: Wed, 18 May 2022 10:30:45 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
@@ -50,17 +50,17 @@ Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
  davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
  Sam.Shih@mediatek.com, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, robh@kernel.org, lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH v2 net-next 04/15] net: ethernet: mtk_eth_soc: add
- txd_size to mtk_soc_data
-Message-ID: <YoSufPWnGPdtVYZ+@lore-desk>
+Subject: Re: [PATCH v2 net-next 10/15] net: ethernet: mtk_eth_soc: rely on
+ rxd_size field in mtk_rx_alloc/mtk_rx_clean
+Message-ID: <YoSutfDP5CXzgFNQ@lore-desk>
 References: <cover.1652716741.git.lorenzo@kernel.org>
- <22bd1bd88c09205b9bf83ea4c3ab030d5dc6e670.1652716741.git.lorenzo@kernel.org>
- <20220517183311.3d4c76fe@kernel.org>
+ <eca56ab1af7f4bbedc4a6d0990a10ff58911d842.1652716741.git.lorenzo@kernel.org>
+ <20220517183935.6863ddc7@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20220517183311.3d4c76fe@kernel.org>
+In-Reply-To: <20220517183935.6863ddc7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_012956_558011_76B5AF67 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20220518_013051_037532_88B31B0E 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,58 +72,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9050456981048647854=="
+Content-Type: multipart/mixed; boundary="===============8495285461567962155=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============9050456981048647854==
+--===============8495285461567962155==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kza9CdNu8v+g1M7c"
+	protocol="application/pgp-signature"; boundary="nOj9tn/EqN8+0tSv"
 Content-Disposition: inline
 
 
---kza9CdNu8v+g1M7c
+--nOj9tn/EqN8+0tSv
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Mon, 16 May 2022 18:06:31 +0200 Lorenzo Bianconi wrote:
-> >  	eth->scratch_ring =3D dma_alloc_coherent(eth->dma_dev,
-> > -					       cnt * sizeof(struct mtk_tx_dma),
-> > +					       cnt * soc->txrx.txd_size,
-> >  					       &eth->phy_scratch_ring,
-> >  					       GFP_ATOMIC);
-> >  	if (unlikely(!eth->scratch_ring))
-> >  		return -ENOMEM;
+> On Mon, 16 May 2022 18:06:37 +0200 Lorenzo Bianconi wrote:
+> > +
+> > +		rxd =3D (void *)ring->dma + i * eth->soc->txrx.rxd_size;
+> > +		rxd->rxd1 =3D (unsigned int)dma_addr;
 > > =20
-> > -	eth->scratch_head =3D kcalloc(cnt, MTK_QDMA_PAGE_SIZE,
-> > -				    GFP_KERNEL);
-> > +	eth->scratch_head =3D kcalloc(cnt, MTK_QDMA_PAGE_SIZE, GFP_KERNEL);
+> >  		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
+> > -			ring->dma[i].rxd2 =3D RX_DMA_LSO;
+> > +			rxd->rxd2 =3D RX_DMA_LSO;
+> >  		else
+> > -			ring->dma[i].rxd2 =3D RX_DMA_PLEN0(ring->buf_size);
+> > +			rxd->rxd2 =3D RX_DMA_PLEN0(ring->buf_size);
+> > +
+> > +		rxd->rxd3 =3D 0;
+> > +		rxd->rxd4 =3D 0;
 >=20
-> Unrelated, but GFP_ATOMIC right next to GFP_KERNEL caught my attention.
+> The clearing of rxd3/rxd4 should probably have been mentioned in the
+> commit message. It does not seem related to descriptor size.
 
-ack, mtk_init_fq_dma() is run by mtk_open() so it is ok to use GFP_KERNEL. I
-will fix it in v3.
+ack, I will do it in v3.
 
 Regards,
 Lorenzo
 
---kza9CdNu8v+g1M7c
+--nOj9tn/EqN8+0tSv
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYoSufAAKCRA6cBh0uS2t
-rFYlAQC2wAg1jYAWiba7EodXO/uiiufplKyBb3ecXPYBR62etAD+ND4ZonW4brDP
-P3P5htwp0JlPey9fJNA1452zhxCQOgs=
-=0Wh0
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYoSutQAKCRA6cBh0uS2t
+rDkrAPsFgjPlPYku7AlPv0qwt1GuK/wxa9vPkdKHgYEApUD5aAEA8fu7ZkWQFlby
+2oNBn54QPPhGqhBRykcs6nvv39DhpAQ=
+=EFN3
 -----END PGP SIGNATURE-----
 
---kza9CdNu8v+g1M7c--
+--nOj9tn/EqN8+0tSv--
 
 
---===============9050456981048647854==
+--===============8495285461567962155==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -134,5 +136,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============9050456981048647854==--
+--===============8495285461567962155==--
 
