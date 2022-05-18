@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE77C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 08:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74DC4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 08:11:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vSmNF2eIsX8pnDfoe7QaZTdFmgpEfw5tcmYrsguEWOQ=; b=IfhYO18pRR1SGQ
-	b9le7m/Ezp23geUJ2WmT0AfKR8EJD7NoQFqK+fH6bw/cXvjuqWpmPIU5qLDtFs+IjvYJmChLs6gw7
-	EY4Yg4M7fwakaydeqQBHLdYue+NEElr+23/O6HmxXujktdKlglVh4Mr1/eiB47PEfX4mGcAOFBktp
-	B2OGCUBRvgaAA9eQkCLVD32MHOF3bkKpKQHr/ZCXz5ROm6ZA2Sb77ME6ygxoiZPgB1fF9xuSjs+Ty
-	isUNFn0s6GPW5A3SBoMdF6nyUuJLfWHC2b/DJvdG2DUmtqkw0kNcQB+XynSHBycSGa9entWykhjL/
-	n+kyTVPN5s/5aJiYDk/w==;
+	List-Owner; bh=zGiyzs65/dTO+B6+0/GeT5MjzznPvsjw61lLY2/g5I8=; b=w5TkWMEFsnamR8
+	H6e5748rruFIlBMhn0RAGOBfzsKgmfvkm2orf1PRpYIjmhT0EUXsZhIi5SlQYAvqC75VKE+lYiWU0
+	iZrfNqTOAyU52il9DQudy1+W4JURILnFLCEMePZ2Et2A7mo3OceiNiHt+87Ywa4U/47J1g+aeV/sS
+	1TY3upKBTp75LzV874eqURPnrUQYT3K46OnixRgefc/uPAznNsKgb0eonopw1IpsSO4ZGx3AcNuQq
+	yX13h9yrKVqa102KJehjZMdC7lsZeXRrPrqWZytzTe88wiciViV34E6Xjd3P8cIWVVApb41DqHD/i
+	2CV9Q9W6zZrK8qcQfNtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrEls-000QoB-BF; Wed, 18 May 2022 08:11:04 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1nrEm6-000QxI-Tk; Wed, 18 May 2022 08:11:18 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrEaS-000JkJ-8e
+ id 1nrEaT-000Jkg-Ee
  for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 07:59:19 +0000
-Received: by mail-wr1-x430.google.com with SMTP id u3so1472045wrg.3
+Received: by mail-wm1-x335.google.com with SMTP id
+ o12-20020a1c4d0c000000b00393fbe2973dso2685400wmh.2
  for <linux-mediatek@lists.infradead.org>; Wed, 18 May 2022 00:59:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dds68n4eVAqNb9Nh1GkmgUmrWiZNicCAFfz37bcPi/E=;
- b=q0S94H1GhZQls0QplGXXaQ20xyUhPJfSw9jx5Z1yMH4JNQDn2qssApG6YIhSC1Ahcl
- H//p6eK6yYHKF1mQCiWr5xMditxAExDaHTPHhjYdKpAP6mj+fBp5/4sczfa2Cw9/A5Se
- O3z+eoS/q5Y1ymj92c+ivFjdF4mUYtghiB3iVIGWIAV/Mlw7DCc6JVlJek/HwFN+fvMk
- 8owS92GwrYaNr+e/mJFp+fywqy2sZDTd6P66ONYa5JRYMkgRk0shA6mWCBnD+//UnpIx
- P5I2FZkLKWZdCnkzEedKx1IqaiO9os3cDWOE1+7Hxq0n/LFz4ogFuZNx5v0Oj4UJVD0J
- 1LWQ==
+ bh=n37OLhluDeZRZjQV8gqjswMetHIVJY0WAfxFDmSPshs=;
+ b=BW34tKuFY3dYsRa6d9qALrie8sssLLFboJeX2+kC6OJrQ5TfgGTzIBKQQHohBfcNZk
+ bYIds93O59FlA8sQcuxILI1lv/ktt5LDnb0xCg/vN8RCdU5jFzrMPI4ZVWofVgfVOsUd
+ 14331uJXaQoHYkESFOFgCKOw4Yk8JLeXG4DAaKZPhY0QDFpmf6gI+cGlkIP/YlU6y0TF
+ F66rGc4GOx7GT55IR5uFokoMlaFReP33WcQoRNqlwsjhbv7PpkgYT7jrnL5sbuA5Fi1j
+ Xy9cu3XfAK4+kwJt+NAT0KPQMCQfFAjUGIj8AFfgVGqJoTw5Ox8ZnRJCXX+jUCeNhQj4
+ xmSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dds68n4eVAqNb9Nh1GkmgUmrWiZNicCAFfz37bcPi/E=;
- b=XADI3n98UACM+14TWYA2BPb5ZOUj8xwa8AKwqg3m4QA7cuFM470NYCpNVbcONU0N/w
- j+JIGFWk6j7P32Z1RlFjV+FHlnGHxNBSZ319xQLpH0VdMVa1UBfN0SxLDhzlFk/V8AVd
- t4TFkgsxQC8jvROSBKrszdwdFfnsZpvQ2ud2fktZNTaxlN0YQdJ7OGZDmXfTKisUjtEt
- ndFA7zv5nlh55un4U7v7xe1/ub0cTMd5XHIa2DYDK9qVBEfYbCCV22zDxzCqWxxb02HX
- YKNaUwnNUXqTRJeWWUzALv7dJUeijM+RSgNFP1quudkNZODMJJ+6Te4KOSwxQ8Gjv76Z
- N1Hw==
-X-Gm-Message-State: AOAM5336EgozmzUhHh7aAziVwvwS5STjBJSx4hDf+70WCFfR8kz1VsY8
- WTLjCdwlhnLJudFzYkQf0sFngA==
-X-Google-Smtp-Source: ABdhPJwXGZwgKt2xBN/YHUpTFYOWitejVIgIv8v5y8RaS6IUg2o89e7OYU3thoshzpsYoCAbw7r/OQ==
-X-Received: by 2002:a05:6000:15c1:b0:20c:5825:f043 with SMTP id
- y1-20020a05600015c100b0020c5825f043mr21710401wry.261.1652860753963; 
- Wed, 18 May 2022 00:59:13 -0700 (PDT)
+ bh=n37OLhluDeZRZjQV8gqjswMetHIVJY0WAfxFDmSPshs=;
+ b=rfF7b+3Pl/JrXgiOuC9DnTYoeUFp8oHUP0hWxSoxcLrlUNiGENCYfMK6NNmalxfTfp
+ u4ZnAkLyomCwIoNOf0SAFRyCqhASW1qEXEBagQbmSvlt9ZFHsQZGEf3x93nX56ssBagW
+ 5yBcupLY/akQ/7IZFL9Bx+A23ks2Gk1wLfEh4HlnE1UD6hu4Caue47jMzpyKcdCv9XpZ
+ zTGmm/P7Ir2xxbU2RtegGY0km5GiwgFN+tatqnUXksb/wa8AGT9VZKJtE2R+KovMeDx6
+ r3/6RQHwB13WOvn/6KuENON08IzsvcqdBgITAKn7S602HZT6zpIJdnsJxVk1zcKemtzf
+ Wi+w==
+X-Gm-Message-State: AOAM533KYPr7Zo0PbXMnxEK77UocKoKlihlk7KVmL7t2nvkFyuVbKHB1
+ Y4XDyE8yiVu0idTPtx49EIro7A==
+X-Google-Smtp-Source: ABdhPJyEDKmFLRtJYfnFPvmAhLChghVgJ7rMcWed6hs0AcueTZLx1tLS3abGpGneOm6CWaHFi8gqag==
+X-Received: by 2002:a1c:2c3:0:b0:38f:f280:caa3 with SMTP id
+ 186-20020a1c02c3000000b0038ff280caa3mr24284284wmc.14.1652860754650; 
+ Wed, 18 May 2022 00:59:14 -0700 (PDT)
 Received: from groot.home ([2a01:cb19:85e6:1900:bda6:8356:4db1:4539])
  by smtp.gmail.com with ESMTPSA id
- ay1-20020a05600c1e0100b0039706782e06sm1041300wmb.33.2022.05.18.00.59.13
+ ay1-20020a05600c1e0100b0039706782e06sm1041300wmb.33.2022.05.18.00.59.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 May 2022 00:59:13 -0700 (PDT)
+ Wed, 18 May 2022 00:59:14 -0700 (PDT)
 From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
@@ -68,16 +69,16 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
  linux-input@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Subject: [PATCH v2 1/2] Input: mt6779-keypad - fix hardware code mapping
-Date: Wed, 18 May 2022 09:59:08 +0200
-Message-Id: <20220518075909.180629-2-mkorpershoek@baylibre.com>
+Subject: [PATCH v2 2/2] Input: mt6779-keypad - implement row/column selection
+Date: Wed, 18 May 2022 09:59:09 +0200
+Message-Id: <20220518075909.180629-3-mkorpershoek@baylibre.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220518075909.180629-1-mkorpershoek@baylibre.com>
 References: <20220518075909.180629-1-mkorpershoek@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_005916_401833_A9F4C240 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20220518_005917_558054_EFB74E72 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,75 +95,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt6779_keypad_irq_handler(), we
-1. Read a hardware code from KPD_MEM1 -> KPD_MEM5
-2. Use that hardware code to compute columns/rows for the standard
-   keyboard matrix.
+The MediaTek keypad has a total of 6 input rows and 6 input columns.
+By default, rows/columns 0-2 are enabled.
 
-According to the (non-public) datasheet, the
-map between the hardware code and the cols/rows is:
+This is controlled by the KP_SEL register:
+- bits[9:4]   control row selection
+- bits[15:10] control column selection
 
-        |(0)  |(1)  |(2)
-    ----*-----*-----*-----
-        |     |     |
-        |(9)  |(10) |(11)
-    ----*-----*-----*-----
-        |     |     |
-        |(18) |(19) |(20)
-    ----*-----*-----*-----
-        |     |     |
+Each bit enables the corresponding row/column number (e.g KP_SEL[4]
+enables ROW0)
 
-This brings us to another formula:
--> row = code / 9;
--> col = code % 3;
+Depending on how the keypad is wired, this may result in wrong readings
+of the keypad state.
 
-Implement this mapping in bitnr_to_col_row() to fetch the
-correct input event from keypad->input_dev->keycode and report that
-back to userspace.
+Program the KP_SEL register to limit the key detection to n_rows,
+n_cols we retrieve from the device tree.
 
-Fixes: f28af984e771 ("Input: mt6779-keypad - add MediaTek keypad driver")
-Co-developed-by: Fabien Parent <fparent@baylibre.com>
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
 Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/input/keyboard/mt6779-keypad.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ drivers/input/keyboard/mt6779-keypad.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
-index 2e7c9187c10f..23360de20da5 100644
+index 23360de20da5..9a8133970f5b 100644
 --- a/drivers/input/keyboard/mt6779-keypad.c
 +++ b/drivers/input/keyboard/mt6779-keypad.c
-@@ -36,6 +36,19 @@ static const struct regmap_config mt6779_keypad_regmap_cfg = {
- 	.max_register = 36,
- };
+@@ -17,6 +17,11 @@
+ #define MTK_KPD_DEBOUNCE	0x0018
+ #define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
+ #define MTK_KPD_DEBOUNCE_MAX_MS	256
++#define MTK_KPD_SEL		0x0020
++#define MTK_KPD_SEL_COL	GENMASK(15, 10)
++#define MTK_KPD_SEL_ROW	GENMASK(9, 4)
++#define MTK_KPD_SEL_COLMASK(c)	GENMASK((c) + 9, 10)
++#define MTK_KPD_SEL_ROWMASK(r)	GENMASK((r) + 3, 4)
+ #define MTK_KPD_NUM_MEMS	5
+ #define MTK_KPD_NUM_BITS	136	/* 4*32+8 MEM5 only use 8 BITS */
  
-+/*
-+ * | hardware key code | col0 | col1 | col2|
-+ * | ----------------- | -----| ---- | --- |
-+ * | row0              | 0    | 1    | 2   |
-+ * | row1              | 9    | 10   | 11  |
-+ * | row2              | 18   | 19   | 20  |
-+ */
-+static void bitnr_to_col_row(int bit_nr, int *col, int *row)
-+{
-+	*row = bit_nr / 9;
-+	*col = bit_nr % 3;
-+}
+@@ -171,6 +176,11 @@ static int mt6779_keypad_pdrv_probe(struct platform_device *pdev)
+ 	regmap_write(keypad->regmap, MTK_KPD_DEBOUNCE,
+ 		     (debounce * (1 << 5)) & MTK_KPD_DEBOUNCE_MASK);
+ 
++	regmap_update_bits(keypad->regmap, MTK_KPD_SEL, MTK_KPD_SEL_ROW,
++			   MTK_KPD_SEL_ROWMASK(keypad->n_rows));
++	regmap_update_bits(keypad->regmap, MTK_KPD_SEL, MTK_KPD_SEL_COL,
++			   MTK_KPD_SEL_COLMASK(keypad->n_cols));
 +
- static irqreturn_t mt6779_keypad_irq_handler(int irq, void *dev_id)
- {
- 	struct mt6779_keypad *keypad = dev_id;
-@@ -61,8 +74,7 @@ static irqreturn_t mt6779_keypad_irq_handler(int irq, void *dev_id)
- 		if (bit_nr % 32 >= 16)
- 			continue;
- 
--		row = bit_nr / 32;
--		col = bit_nr % 32;
-+		bitnr_to_col_row(bit_nr, &col, &row);
- 		scancode = MATRIX_SCAN_CODE(row, col, row_shift);
- 		/* 1: not pressed, 0: pressed */
- 		pressed = !test_bit(bit_nr, new_state);
+ 	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
+ 	if (IS_ERR(keypad->clk))
+ 		return PTR_ERR(keypad->clk);
 -- 
 2.34.1
 
