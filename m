@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB29C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82B66C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:33:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XNQizkvJsvn83utzgYDSK3AeL+x0FyrQ+Vjd6SIl5dM=; b=tGns1F10Dvmsd5
-	3tS4tZoVal7rq+LVy56ZG68K3FBoY5d5QlqNHGCzxBZR7KGQOylJAwhs3hiEoysNSSgo1yM4gDoVv
-	SwhwBEjxw/av9cL1WTIft4bo7WhgV7Zpxru8W9Wq2HlvPgjEhWsXOqjHG3wuc7XNbEcw2SYoXr7Rd
-	ifle9XAjTAy6nRSfLMNT8pSi+VAd6q1EC+JW7LOOylc5eZ/sL3ab1RgeIm3rSrZXYLnts5EZVNGg7
-	ZIzn+GVeUQV9sXf/HviFHeaC+Crps9KqjlWicoS+vCe7cmUq7rzPEByhtLVdkRH/bKxE950qvYoeP
-	gG4woOEoyiPGcfRb1J2g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=v/31oH11VJ3VJKiHD4cGuCQ21Vaufw3icnYh0Ny0Ce4=; b=RPRmo9tvXEUPfr
+	DXhpw1WCz6yFmGvJuoqKb4joIJTWnGo9g4ffqwdNCqX0Aplost/I9o5cgEZH7niNJaTmmL6xo5LIV
+	FXsMZWayflzpNU8gPFZapGd71qB11/ckLDakmDXme3jhGbh7KqPeyqr6dhV1EoepF+HfegAsPQvzs
+	ItrlFh/iV1HUIPIRYhdk5wSd9lHhtOHLh/PBt6UDho+GFuaDp3dRNZvQZaE7xu6NlTuzvZzKnT1mi
+	mLSRaq0MDIqwdvRjQs2E48KE4NXexleYLcroXf5VbGGCeBXcT4kuI2o3FFrGnuItl/Sk3TmRNn2jr
+	s7o4ikunVkXV1tghfZGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrInI-0021El-65; Wed, 18 May 2022 12:28:48 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nrIs8-00245B-QU; Wed, 18 May 2022 12:33:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrImo-0020ur-89; Wed, 18 May 2022 12:28:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E1707B81FBB;
- Wed, 18 May 2022 12:28:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFD6CC385AA;
- Wed, 18 May 2022 12:28:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652876895;
- bh=59034JlVFmmJqNI8BkjyG9GauHmmps4h9zRtuWOswGM=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Uv25hGStdhTcomC6evrU4/Oy1SN0Hl8b1yldSYZPt+X2MixOT2Efn7Kz/KpzP2+ms
- XmLetg56rTQqPgmDGApj0Mvig9mNMTqnwGA1K1ct3YL2mWiyecZiPMOTC4Xo3wXbpS
- yd+3vVM2hJuzz8Daubri9ArMKpUs4z51LILDpjbFHLAkfmiuRkhx+/uh4kweW4RPPF
- aADhyu1CCtocf+9g9g77dsIJOlOo+dhYDk3rD/F+3xlmlcJUFfciBK05/HZIT418t1
- Y+P9eQOIGGVn4Raw+vMSPYbK0sTabBROj5nYdBDF0/YRMswIwBEsb4JH4BDGU1Jjas
- U74sq2WIpSqhQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Lina Wang <lina.wang@mediatek.com>,
- "David S . Miller" <davem@davemloft.net>, Sasha Levin <sashal@kernel.org>,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, ast@kernel.org, daniel@iogearbox.net,
- andrii@kernel.org, ilias.apalodimas@linaro.org, vasily.averin@linux.dev,
- luiz.von.dentz@intel.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bpf@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.15 08/17] net: fix wrong network header length
-Date: Wed, 18 May 2022 08:27:42 -0400
-Message-Id: <20220518122753.342758-8-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220518122753.342758-1-sashal@kernel.org>
-References: <20220518122753.342758-1-sashal@kernel.org>
+ id 1nrIof-00222D-Te; Wed, 18 May 2022 12:30:16 +0000
+X-UUID: 24515b8cfd624605a9c864c28b9e380d-20220518
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:96e8dc59-a3f3-4516-a21d-1a790c1f75fe, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09, CLOUDID:2d4ba7e2-edbf-4bd4-8a34-dfc5f7bb086d,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 24515b8cfd624605a9c864c28b9e380d-20220518
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1778917022; Wed, 18 May 2022 05:30:10 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 May 2022 05:30:08 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 18 May 2022 20:30:07 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 18 May 2022 20:30:05 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
+ Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v7, 0/7] support mt8195 decoder
+Date: Wed, 18 May 2022 20:29:57 +0800
+Message-ID: <20220518123004.18286-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_052818_610886_E20963CC 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20220518_053014_015651_A046D850 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,71 +91,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lina Wang <lina.wang@mediatek.com>
+Firstly, add mt8195 soc lat hardware and compatible, then add documents.
+For vp8 only support MM21 mode, H264/vp9 support MT21C, need to separate
+them. Lastly, enable H264 inner racing mode to reduce hardware latency.
 
-[ Upstream commit cf3ab8d4a797960b4be20565abb3bcd227b18a68 ]
-
-When clatd starts with ebpf offloaing, and NETIF_F_GRO_FRAGLIST is enable,
-several skbs are gathered in skb_shinfo(skb)->frag_list. The first skb's
-ipv6 header will be changed to ipv4 after bpf_skb_proto_6_to_4,
-network_header\transport_header\mac_header have been updated as ipv4 acts,
-but other skbs in frag_list didnot update anything, just ipv6 packets.
-
-udp_queue_rcv_skb will call skb_segment_list to traverse other skbs in
-frag_list and make sure right udp payload is delivered to user space.
-Unfortunately, other skbs in frag_list who are still ipv6 packets are
-updated like the first skb and will have wrong transport header length.
-
-e.g.before bpf_skb_proto_6_to_4,the first skb and other skbs in frag_list
-has the same network_header(24)& transport_header(64), after
-bpf_skb_proto_6_to_4, ipv6 protocol has been changed to ipv4, the first
-skb's network_header is 44,transport_header is 64, other skbs in frag_list
-didnot change.After skb_segment_list, the other skbs in frag_list has
-different network_header(24) and transport_header(44), so there will be 20
-bytes different from original,that is difference between ipv6 header and
-ipv4 header. Just change transport_header to be the same with original.
-
-Actually, there are two solutions to fix it, one is traversing all skbs
-and changing every skb header in bpf_skb_proto_6_to_4, the other is
-modifying frag_list skb's header in skb_segment_list. Considering
-efficiency, adopt the second one--- when the first skb and other skbs in
-frag_list has different network_header length, restore them to make sure
-right udp payload is delivered to user space.
-
-Signed-off-by: Lina Wang <lina.wang@mediatek.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Patch 1~4 add mt8195 soc lat hardware and compatible, then add documents.
+Patch 5 using different format for different codecs.
+Patch 6 prevent kernel crash when scp reboot.
+Patch 7 enable H264 inner racing mode to reduce hardware latency.
 ---
- net/core/skbuff.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+This patch depends on "add h264 decoder driver for mt8186"[1]
 
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index e4badc189e37..7ef0f5a8ab03 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -3873,7 +3873,7 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
- 	unsigned int delta_len = 0;
- 	struct sk_buff *tail = NULL;
- 	struct sk_buff *nskb, *tmp;
--	int err;
-+	int len_diff, err;
- 
- 	skb_push(skb, -skb_network_offset(skb) + offset);
- 
-@@ -3913,9 +3913,11 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
- 		skb_push(nskb, -skb_network_offset(nskb) + offset);
- 
- 		skb_release_head_state(nskb);
-+		len_diff = skb_network_header_len(nskb) - skb_network_header_len(skb);
- 		__copy_skb_header(nskb, skb);
- 
- 		skb_headers_offset_update(nskb, skb_headroom(nskb) - skb_headroom(skb));
-+		nskb->transport_header += len_diff;
- 		skb_copy_from_linear_data_offset(skb, -tnl_hlen,
- 						 nskb->data - tnl_hlen,
- 						 offset + tnl_hlen);
+[1]  https://patchwork.kernel.org/project/linux-mediatek/cover/20220512034620.30500-1-yunfei.dong@mediatek.com/
+---
+changed with v6:
+- add detail error message in patch 6.
+changed with v5:
+- fix __iomem not reasonable, align share memory to dram.
+changed with v4:
+- fix sparse and smatch check fail for patch 7.
+changed with v3:
+- rebase driver to the latest media_stage.
+changed with v2:
+- add detail explanation for lat soc hardware for patch 1.
+changed with v1:
+- separate "Init VP9 stateless decode params" patch and remove it to another one.
+- add reviewed-by in patch v3/v4/v6
+---
+Yunfei Dong (7):
+  dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for lat
+    soc
+  media: mediatek: vcodec: Add to support lat soc hardware
+  dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for
+    mt8195
+  media: mediatek: vcodec: Adds compatible for mt8195
+  media: mediatek: vcodec: Different codec using different capture
+    format
+  media: mediatek: vcodec: prevent kernel crash when scp ipi timeout
+  media: mediatek: vcodec: Add to support H264 inner racing mode
+
+ .../media/mediatek,vcodec-subdev-decoder.yaml | 52 +++++++++++++------
+ .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 41 +++++++++++++++
+ .../mediatek/vcodec/mtk_vcodec_dec_drv.c      |  8 +++
+ .../mediatek/vcodec/mtk_vcodec_dec_hw.c       | 12 +++--
+ .../mediatek/vcodec/mtk_vcodec_dec_hw.h       |  2 +
+ .../mediatek/vcodec/mtk_vcodec_dec_pm.c       | 50 ++++++++++++++++++
+ .../platform/mediatek/vcodec/mtk_vcodec_drv.h | 12 +++++
+ .../vcodec/vdec/vdec_h264_req_multi_if.c      | 25 +++++++--
+ .../platform/mediatek/vcodec/vdec_vpu_if.c    |  5 ++
+ 9 files changed, 183 insertions(+), 24 deletions(-)
+
 -- 
-2.35.1
+2.18.0
 
 
 _______________________________________________
