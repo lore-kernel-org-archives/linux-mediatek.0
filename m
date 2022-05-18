@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CE5EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 May 2022 22:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B7DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 00:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
 	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YVo1nfOouUMpDX7PUezFDAxO7f0ov5P7ytT4LL9hCLM=; b=AuDl2P0JpRC2Zt
-	kgAU9+qjve3vrC6eRuIi+29OxGsyOZ8YcSGpqV7XKr+dkbO0AwpJFokKW/S1FdxIYNUnDMccF5JA8
-	qMuGtYnHYgtOLMH+AwkRBOocC4fjx4dSppnZniw3zJlmSepTWiZPv6Uh1B5rYoNEfUJDYTLJ4OLtK
-	hZAn0eTt4qT/70Vn9xXuTeEk5M6ZWMVaRkoLWeQwXhBg8zc/i2QdE0L3bHQNB9qFEn4jM7nqchys0
-	22s3V8yD2Gc7wlRI9vve9vhpQWLutAdNol9/G8WdTb32sHaM2EA5nzYu8MuSnf6Yhbu+6MomU0B5T
-	JstNZ3Qa0WpRtOSS0FyA==;
+	List-Owner; bh=8QTQwfqfnH3DhdPlXL7qJ0PdkVyvcUZunHT2JJoIqB0=; b=byiiBDyCc9gIfV
+	1Wli4+UVBJuXCkYdJILDg7gO4slkvSaVriH6bKiTQW2sGCS+l3oJw3BEauxKan+sUmILMG5lMgXqs
+	jxVLeUXPOrjf5QduPoGVsxIbBwuV2E3pJ+6VA7oc5xnkrDSG2bokROfB+eLidh71Av4GP3HA35dZF
+	Dnx+tjRthc6xKGYXpvumwqGCp02O7PepGaSr2YTyTKOi2hSwDvTTTc4rJ4Jon3auk5SO7vEaFZZfS
+	rG6tlRDfvB9YaBhzhhtG+bfLZ9kS6vDglZYzI2kmoCSTQfwc44rHxMKDy3QtxyorznyCumjRbBqYW
+	sD5IbIQW0KZfqDWF/KgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nr6AH-00GB5K-TN; Tue, 17 May 2022 22:59:41 +0000
-Received: from mail-pf1-f172.google.com ([209.85.210.172])
+	id 1nr7AK-00GKAf-2W; Wed, 18 May 2022 00:03:48 +0000
+Received: from mail-pg1-f169.google.com ([209.85.215.169])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nr6AF-00GB3u-9q
- for linux-mediatek@lists.infradead.org; Tue, 17 May 2022 22:59:41 +0000
-Received: by mail-pf1-f172.google.com with SMTP id v11so455888pff.6
- for <linux-mediatek@lists.infradead.org>; Tue, 17 May 2022 15:59:36 -0700 (PDT)
+ id 1nr7AG-00GK8c-4N
+ for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 00:03:45 +0000
+Received: by mail-pg1-f169.google.com with SMTP id r71so685352pgr.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 17 May 2022 17:03:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
  :message-id:mime-version;
- bh=SFZAX6CF7VprZqunQRHj3YaVJFxCaUMeDSdvMtjiSEo=;
- b=JTzI6jdkV/dfhlq+G/k9RINsF6ugc2CArM5htiwjMFY9OEV4WNIkwhf+GVpHuI/4BI
- LLj9LZtFddkKlBJYJdkI8+TCMP/zO6EoRma+ZMTfIz+O2/of4gcjPbtlMLSYxQzRG/jw
- u4urkcC4KFR5fPOsJJkf/oKdM86XlQkS+5jU9SKQseDsvsE8FUHWm4fD5MRSOkCZSpe6
- b6EWCxd19hmhuzs1qE0xPDfkhpgcyptYfL8rCLEzinXs1nMsb2z03jwVZX6iNaZ8it37
- ExZlphP6ht4rQI87xmpQA6TgfU63FXR6FzMolfL7WHe2MHdmUcWKdqFKjIEdwuqx6I3N
- +h7w==
-X-Gm-Message-State: AOAM531dfeenVIfMzj8LvaJqW8oSdr5TErJ/FhdUVKb1RqmKi1flGEBt
- tvFuhwbPqwFDr8sJXHcw4J0MyQ==
-X-Google-Smtp-Source: ABdhPJyvNQ5asf1XcCdJM73Mbtn+CEHo9iog3gMB8ROwnc2CSr3dYRpOS9NqM2BmZAx5+CE3vB/LmA==
-X-Received: by 2002:a65:5acd:0:b0:399:24bc:bbfd with SMTP id
- d13-20020a655acd000000b0039924bcbbfdmr21528594pgt.323.1652828376002; 
- Tue, 17 May 2022 15:59:36 -0700 (PDT)
+ bh=pZZ1RAN9cPRk/Qge3KkDOqi4GWvevp8ef2NrscIFKTQ=;
+ b=xbfjfZNcuIt3DQBvh0Jw0wNtZRjYNYhO3s9RKNOTx3j/9cdE+xf8cSLyGxtXfaudZE
+ Qu68p6MkQQIDN/UMnplKrJd/844jNWNKEUHdJaET+uZjAkUHlTL1MTGNXBWFp4f6a7Cx
+ IgLGThbOHG7SBCa++p62cQDZWm31haCX7w2xg7s4bSOgpHdtFL9ZzcX67POq4hD+pFpj
+ Fyv7PPHj1LXutwJgj9WELEoNiBwBi2sJQv9BgLUvgmhiPzjdFqHLJU7YBx1nP9v5cWA1
+ calDJrrFELXx9UBkOC+QxjZnqz8EbJaX/Y+mGjfquEzNyzP4OOPy9St+hszq741s/vAQ
+ CJ3w==
+X-Gm-Message-State: AOAM533pW25PAML0mSXLsDDppNH5OHOOBeIX8q0itfs6ilvycyOgjNTe
+ Sg8Lan6TVwhzy5ZHRrVL5iF13A==
+X-Google-Smtp-Source: ABdhPJze71LfyHGtUryYts/K86VvVcJZneqITDpkKyXA3xjg1dVRUvhbpblPTygFKPW2vZo9qVVDSQ==
+X-Received: by 2002:a05:6a00:23ca:b0:50e:827:9253 with SMTP id
+ g10-20020a056a0023ca00b0050e08279253mr24812900pfc.20.1652832221811; 
+ Tue, 17 May 2022 17:03:41 -0700 (PDT)
 Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
  [71.197.186.152]) by smtp.gmail.com with ESMTPSA id
- 5-20020a170902e9c500b0015e8d4eb1efsm151717plk.57.2022.05.17.15.59.34
+ r25-20020a634419000000b003c66480613esm116531pga.80.2022.05.17.17.03.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 May 2022 15:59:34 -0700 (PDT)
+ Tue, 17 May 2022 17:03:41 -0700 (PDT)
 From: Kevin Hilman <khilman@kernel.org>
 To: Chen-Yu Tsai <wenst@chromium.org>, Roger Lu <roger.lu@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
@@ -64,15 +64,16 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
  <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>,
  =?utf-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <rex-bc.chen@mediatek.com>
 Subject: Re: [PATCH v25 0/7] soc: mediatek: SVS: introduce MTK SVS
-In-Reply-To: <CAGXv+5GSdWPZe3fNpBJ_WW0zCL8Skg6fHx9ATxaKU1hyMEt2Ww@mail.gmail.com>
+In-Reply-To: <7h4k1ndaui.fsf@baylibre.com>
 References: <20220516004311.18358-1-roger.lu@mediatek.com>
  <CAGXv+5GSdWPZe3fNpBJ_WW0zCL8Skg6fHx9ATxaKU1hyMEt2Ww@mail.gmail.com>
-Date: Tue, 17 May 2022 15:59:33 -0700
-Message-ID: <7h4k1ndaui.fsf@baylibre.com>
+ <7h4k1ndaui.fsf@baylibre.com>
+Date: Tue, 17 May 2022 17:03:40 -0700
+Message-ID: <7hy1yzbtb7.fsf@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_155939_381545_1287B0C9 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20220517_170344_203019_80CD3713 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,124 +90,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Chen-Yu Tsai <wenst@chromium.org> writes:
+Kevin Hilman <khilman@kernel.org> writes:
 
-> On Mon, May 16, 2022 at 8:43 AM Roger Lu <roger.lu@mediatek.com> wrote:
->>
->> The Smart Voltage Scaling(SVS) engine is a piece of hardware
->> which calculates suitable SVS bank voltages to OPP voltage table.
->> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
->> when receiving OPP_EVENT_ADJUST_VOLTAGE.
->>
->> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
->> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
->> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
->>
->> [1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
->> [2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
->> [3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
->>
->> Change since v24:
->> - Rebase to Linux 5.18-rc6
->> - Show specific fail log in svs_platform_probe() to help catch which step fails quickly
->> - Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
->>
->> Test in below environment:
->> SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
->> HW: mt8183-Krane
->>
->> [4] https://github.com/wens/linux/commits/mt8183-cpufreq-cci-svs-test
+> Chen-Yu Tsai <wenst@chromium.org> writes:
 >
-> I've updated my branch to include all the latest versions of the relevant
-> patch series:
+>> On Mon, May 16, 2022 at 8:43 AM Roger Lu <roger.lu@mediatek.com> wrote:
+>>>
+>>> The Smart Voltage Scaling(SVS) engine is a piece of hardware
+>>> which calculates suitable SVS bank voltages to OPP voltage table.
+>>> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
+>>> when receiving OPP_EVENT_ADJUST_VOLTAGE.
+>>>
+>>> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
+>>> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
+>>> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
+>>>
+>>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
+>>> [2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
+>>> [3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
+>>>
+>>> Change since v24:
+>>> - Rebase to Linux 5.18-rc6
+>>> - Show specific fail log in svs_platform_probe() to help catch which step fails quickly
+>>> - Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
+>>>
+>>> Test in below environment:
+>>> SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
+>>> HW: mt8183-Krane
+>>>
+>>> [4] https://github.com/wens/linux/commits/mt8183-cpufreq-cci-svs-test
+>>
+>> I've updated my branch to include all the latest versions of the relevant
+>> patch series:
+>>
+>> - anx7625 DPI bus type series v2 (so the display works)
+>> - MT8183 thermal series v9 (this seems to have been overlooked by the
+>> maintainer)
+>> - MTK SVS driver series v25
+>> - devfreq: cpu based scaling support to passive governor series v5
+>> - MTK CCI devfreq series v4
+>> - MT8183 cpufreq series v7
+>> - Additional WIP patches for panfrost MTK devfreq
 >
-> - anx7625 DPI bus type series v2 (so the display works)
-> - MT8183 thermal series v9 (this seems to have been overlooked by the
-> maintainer)
-> - MTK SVS driver series v25
-> - devfreq: cpu based scaling support to passive governor series v5
-> - MTK CCI devfreq series v4
-> - MT8183 cpufreq series v7
-> - Additional WIP patches for panfrost MTK devfreq
+> Thanks for preparing an integration branch Chen-Yu.
+>
+> I'm testing this on mt8183-pumpkin with one patch to add the CCI
+> regulator[1], and the defconfig you posted in a previous rev of this
+> series, but the CCI driver still causes a fault on boot[2] on my
+> platform.
+>
+> I mentioned in earlier reviews that I think there's potentially a race
+> between CCI and SVS loading since they are co-dependent.  My hunch is
+> that this is still not being handled properly.
 
-Thanks for preparing an integration branch Chen-Yu.
+Ah, actually it's crashing when I try to boot the platform with
+`maxcpus=4` on the cmdline (which I have to do because mt8183-pumpkin is
+unstable upstream with the 2nd cluster enabled.)
 
-I'm testing this on mt8183-pumpkin with one patch to add the CCI
-regulator[1], and the defconfig you posted in a previous rev of this
-series, but the CCI driver still causes a fault on boot[2] on my
-platform.
+The CCI driver should be a bit more robust about detecting
+available/online CPUs
 
-I mentioned in earlier reviews that I think there's potentially a race
-between CCI and SVS loading since they are co-dependent.  My hunch is
-that this is still not being handled properly.
+If I boot with both clusters, I see SVS probing[1], and I see CCI 
+doing transitions[2]
 
 Kevin
 
-[1]
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index af0abadca803..59822a283ba2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -384,6 +384,10 @@ &mfg {
- 	domain-supply = <&mt6358_vgpu_reg>;
- };
- 
-+&cci {
-+	proc-supply = <&mt6358_vproc12_reg>;
-+};
-+
- &cpu0 {
- 	proc-supply = <&mt6358_vproc12_reg>;
- };
 
+[1]
+# dmesg |grep -i svs
+[    0.739298] mtk-svs 1100b000.svs: M_HW_RES0: 0x00120090
+[    0.739315] mtk-svs 1100b000.svs: M_HW_RES1: 0xa6fdfb5b
+[    0.739318] mtk-svs 1100b000.svs: M_HW_RES2: 0x47cb47cb
+[    0.739321] mtk-svs 1100b000.svs: M_HW_RES3: 0xa6fdfb5b
+[    0.739324] mtk-svs 1100b000.svs: M_HW_RES4: 0xa6fde4ad
+[    0.739326] mtk-svs 1100b000.svs: M_HW_RES5: 0x47f84b80
+[    0.739328] mtk-svs 1100b000.svs: M_HW_RES6: 0xa6fd87a6
+[    0.739331] mtk-svs 1100b000.svs: M_HW_RES7: 0xa6fddf4a
+[    0.739333] mtk-svs 1100b000.svs: M_HW_RES8: 0x4bf84be5
+[    0.739335] mtk-svs 1100b000.svs: M_HW_RES9: 0xa6fd3267
+[    0.739338] mtk-svs 1100b000.svs: M_HW_RES14: 0x9696d5ab
+[    0.739340] mtk-svs 1100b000.svs: M_HW_RES15: 0x015a0015
+[    0.739343] mtk-svs 1100b000.svs: M_HW_RES16: 0xa6fdf05d
+[    0.739345] mtk-svs 1100b000.svs: M_HW_RES17: 0x47f847e5
+[    0.739347] mtk-svs 1100b000.svs: M_HW_RES18: 0xa6fdc240
+[    0.741890]  SVSB_CPU_LITTLE: svs_init01_isr_handler: VDN74~30:0x141c242a~0x2f32373c, DC:0x0316ff30
+[    0.742165]  SVSB_CPU_BIG: svs_init01_isr_handler: VDN74~30:0x141e262e~0x33373c42, DC:0x031aff50
+[    0.742431]  SVSB_CCI: svs_init01_isr_handler: VDN74~30:0x13192128~0x2d31383c, DC:0x0314ff20
+[    0.742696]  SVSB_GPU: svs_init01_isr_handler: VDN74~30:0x1416181a~0x1d202428, DC:0x030efef0
+[    0.742875]  SVSB_CPU_LITTLE: svs_init02_isr_handler: VOP74~30:0x1d252c33~0x373b3f45, DC:0x031600d0
+[    0.742989]  SVSB_CPU_BIG: svs_init02_isr_handler: VOP74~30:0x1d262e36~0x3b3f444a, DC:0x031a00b0
+[    0.743060]  SVSB_CCI: svs_init02_isr_handler: VOP74~30:0x1c222a31~0x353a4045, DC:0x031400e0
+[    0.743176]  SVSB_GPU: svs_init02_isr_handler: VOP74~30:0x181a1c1e~0x2125282c, DC:0x030e0110
 
 [2]
-[...]
-[    0.439273] mtk-msdc 11230000.mmc: using lookup tables for GPIO lookup
-[    0.439276] mtk-msdc 11230000.mmc: No GPIO consumer wp found
-[    0.445542] ------------[ cut here ]------------
-[    0.445554] WARNING: CPU: 0 PID: 1 at drivers/devfreq/governor_passive.c:339 devfreq_passive_event_handler+0x1a4/0x2d8
-[    0.445577] Modules linked in:
-[    0.445587] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.18.0-rc6-next-20220516-12233-ged53129ed440-dirty #71 653f6e79e530940612a5c2dd77876f403a48161d
-[    0.445596] Hardware name: Pumpkin MT8183 (DT)
-[    0.445600] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[    0.445606] pc : devfreq_passive_event_handler+0x1a4/0x2d8
-[    0.445614] lr : devfreq_passive_event_handler+0x1a0/0x2d8
-[    0.445621] sp : ffffffc00808ba90
-[    0.445623] x29: ffffffc00808ba90 x28: ffffff80033e8d80 x27: 0000000000000000
-[    0.445633] x26: ffffffc009522218 x25: ffffff800335a7b8 x24: ffffffc009522420
-[    0.445642] x23: ffffff8002606410 x22: 0000000000000004 x21: ffffff800335a780
-[    0.445651] x20: ffffff8003216000 x19: 00000000fffffdfb x18: 00000000a662b0a1
-[    0.445661] x17: 0000000000000001 x16: 0000000100000000 x15: 0000000100000001
-[    0.445670] x14: 0000000000000000 x13: 0000000000000030 x12: 0000000000000004
-[    0.445679] x11: 0000000000000001 x10: 0000000000000bb0 x9 : ffffffc008b0e8e8
-[    0.445688] x8 : ffffff8001e1ac90 x7 : 00000000c0000000 x6 : 0000000000000000
-[    0.445696] x5 : ffffff80033909d8 x4 : 0000000000000000 x3 : 0000000000000001
-[    0.445705] x2 : 0000000000000008 x1 : 0000000000000008 x0 : 00000000ffffffea
-[    0.445715] Call trace:
-[    0.445718]  devfreq_passive_event_handler+0x1a4/0x2d8
-[    0.445726]  devfreq_add_device+0x498/0x534
-[    0.445734]  devm_devfreq_add_device+0x6c/0xb8
-[    0.445740]  mtk_ccifreq_probe+0x384/0x418
-[    0.445748]  platform_probe+0x70/0xc0
-[    0.445756]  really_probe+0x14c/0x288
-[    0.445761]  __driver_probe_device+0xc8/0xe0
-[    0.445767]  driver_probe_device+0x4c/0xe4
-[    0.445772]  __driver_attach+0xe8/0xf8
-[    0.445777]  bus_for_each_dev+0x78/0xc4
-[    0.445786]  driver_attach+0x2c/0x38
-[    0.445791]  bus_add_driver+0x178/0x1c0
-[    0.445795]  driver_register+0xbc/0xf4
-[    0.445801]  __platform_driver_register+0x30/0x3c
-[    0.445807]  mtk_ccifreq_platdrv_init+0x24/0x30
-[    0.445817]  do_one_initcall+0xa0/0x1f8
-[    0.445824]  kernel_init_freeable+0x288/0x2a8
-[    0.445831]  kernel_init+0x2c/0x130
-[    0.445838]  ret_from_fork+0x10/0x20
-[    0.445844] ---[ end trace 0000000000000000 ]---
-[    0.445853] mtk-ccifreq cci: devfreq_add_device: Unable to start governor for the device
-[    0.449511] ------------[ cut here ]------------
-
+# cat /sys/class/devfreq/cci/trans_stat 
+     From  :   To
+           : 273000000 338000000 403000000 463000000 546000000 624000000 689000000 767000000 845000000 871000000 923000000 9620000001027000000109200000011440000001196000000   time(ms)
+  273000000:         0        77        11        10        34         8         6         8         3         3         0         0         4         1         2        12    135675
+  338000000:        90         0        32         4         7         2         1         0         0         0         0         0         0         0         0         2       664
+  403000000:        20        45         0        35         7         2         0         0         0         0         0         0         0         0         0         0       509
+  463000000:        13         7        53         0        46         4         1         1         1         2         0         1         2         0         0         1       568
+  546000000:        12         5        10        63         0        55         3         3         3         1         3         2         8         3         1        35       858
+* 624000000:         4         0         2        10        50         0        49         1         1         0         0         1         3         2         0         7       407
+  689000000:         6         1         0         2        18        36         0        47         5         3         1         0         1         0         0        10       388
+  767000000:         2         1         0         3         5        11        42         0        35         4         1         1         2         0         1        23       486
+  845000000:         3         0         0         0         1         0         9        27         0        37         8         1         0         0         2        23       290
+  871000000:         2         0         0         1         0         0         3         9        19         0        29         5         1         1         1        12       179
+  923000000:         0         0         0         0         0         2         2         7        10        13         0        31         1         1         0         4       154
+  962000000:         0         0         0         0         0         1         0         4         3         4        14         0        27         1         0         2       123
+ 1027000000:         2         0         0         1         2         2         3         2         1         1         7        11         0        24         2         1       182
+ 1092000000:         1         0         0         0         3         2         0         1         2         0         0         1         5         0        25         5       123
+ 1144000000:         2         0         0         0         0         0         0         0         2         0         1         1         2         7         0        38       193
+ 1196000000:        22         2         1         3        34         6        11        21        26        15         7         1         3         5        19         0      1621
+Total transition : 1810
 
 _______________________________________________
 Linux-mediatek mailing list
