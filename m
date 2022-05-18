@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EB88C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:35:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED608C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:35:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zZmP9YVaNFci9TucLPRdc+RUM+7pwaG0b8EPR0SdKY8=; b=nolXSaZKhLKcYd
-	cZBU0xNqyOIuS7/7K7Ci5l0jLppQLJycGRhqirOwBj3Uilcy525DU/s7JmsCqoTj3TQJAbMjaZ28j
-	Hw+sugVLP2HLpD8k0hDegVKv4AZm8nsQuDOsyGCl6d5wlnaBjd5qCtM3V/goNDajuf4kM9k+6cfo4
-	H0TWaUSeLcHLLMrvC50Zgi0VtxN3rj4qN3qL1XpnK2+wXWtumJ13KtiScAXUGJkpKc3Wo/LxWJZbz
-	6q9M3lq9vm0eARH7sm1t3mHdTZ+55XrrkOUPJKxcriIK3+u7GIOjRerB7qXxu3t7D6p3r20pS2Odt
-	Q9MQXgl8/HtvVZ/dMSXw==;
+	List-Owner; bh=wnEw8PEGVLlLrLaW3hS6E/1bi0FX+9sDnbeopJIF2+U=; b=EJbQwCDlVez+cn
+	bE5jppA+v5bWudPT+KM74c0XQEPzwRFh9pi4rUgrVGhqkT7IFMGXjgaaEs07z187rtJwYlSzgGm1q
+	x1gZ2hdOnIrXYU63uMS+L1tudhxj7kFmaf2vrPm00tqvMYwSsOVbzETozWe+8YrQbiDjuuyDDPFCd
+	5MA2bI3a/Lgvv/hNvZiZu8T/r45EQODhfTiRZFz3IZveQ3rBGun1nUKJeLwzl6urSQTnbL31O7hNa
+	htA0PDtWHrWroQFgJBJb3aix8tkiL7QAi+eUiIM+Q7lW2uFja1S0xN2GujPVJihUYfYaMi+Fb0Qgm
+	PqLUsRusA8ZPiaqTJOVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrIty-00259R-N1; Wed, 18 May 2022 12:35:42 +0000
+	id 1nrIu2-0025Br-Lh; Wed, 18 May 2022 12:35:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrIol-00225k-6O; Wed, 18 May 2022 12:30:20 +0000
-X-UUID: 711ae99d6686458bbad680673c4333bb-20220518
+ id 1nrIol-002259-6N; Wed, 18 May 2022 12:30:20 +0000
+X-UUID: 2f07ad84204045718560feaf218b2758-20220518
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:4a06cf20-c9c5-49e9-825a-e5fd7b4b4e9a, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:0aa76ec0-4e01-4fb0-96ef-0cc4c4910025, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
- ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09, CLOUDID:d84ba7e2-edbf-4bd4-8a34-dfc5f7bb086d,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:e95bb779-5ef6-470b-96c9-bdb8ced32786,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: 711ae99d6686458bbad680673c4333bb-20220518
+X-UUID: 2f07ad84204045718560feaf218b2758-20220518
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1041311820; Wed, 18 May 2022 05:30:13 -0700
+ with ESMTP id 1234128160; Wed, 18 May 2022 05:30:13 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 May 2022 05:30:11 -0700
+ 15.0.1497.2; Wed, 18 May 2022 05:30:12 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 May 2022 20:30:09 +0800
+ 15.0.1497.2; Wed, 18 May 2022 20:30:11 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 18 May 2022 20:30:08 +0800
+ Transport; Wed, 18 May 2022 20:30:09 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
@@ -66,17 +66,19 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v7,
- 2/7] media: mediatek: vcodec: Add to support lat soc hardware
-Date: Wed, 18 May 2022 20:29:59 +0800
-Message-ID: <20220518123004.18286-3-yunfei.dong@mediatek.com>
+ 3/7] dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings
+ for mt8195
+Date: Wed, 18 May 2022 20:30:00 +0800
+Message-ID: <20220518123004.18286-4-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220518123004.18286-1-yunfei.dong@mediatek.com>
 References: <20220518123004.18286-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_053019_337233_2F6FA45B 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20220518_053019_341616_765B957B 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,105 +95,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add lat soc compatible and to support lat soc power/clk helper.
+Adds decoder dt-bindings for mt8195.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.c | 12 +++++++++---
- .../platform/mediatek/vcodec/mtk_vcodec_dec_hw.h |  2 ++
- .../platform/mediatek/vcodec/mtk_vcodec_dec_pm.c | 16 ++++++++++++++++
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h    |  1 +
- 4 files changed, 28 insertions(+), 3 deletions(-)
+ .../bindings/media/mediatek,vcodec-subdev-decoder.yaml           | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-index 14bed2bd4283..376db0e433d7 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.c
-@@ -28,6 +28,10 @@ static const struct of_device_id mtk_vdec_hw_match[] = {
- 		.compatible = "mediatek,mtk-vcodec-core",
- 		.data = (void *)MTK_VDEC_CORE,
- 	},
-+	{
-+		.compatible = "mediatek,mtk-vcodec-lat-soc",
-+		.data = (void *)MTK_VDEC_LAT_SOC,
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vdec_hw_match);
-@@ -166,9 +170,11 @@ static int mtk_vdec_hw_probe(struct platform_device *pdev)
- 	subdev_dev->reg_base[VDEC_HW_SYS] = main_dev->reg_base[VDEC_HW_SYS];
- 	set_bit(subdev_dev->hw_idx, main_dev->subdev_bitmap);
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+index 6854e7f2ce9f..ca6a00be815a 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+@@ -57,6 +57,7 @@ properties:
+     enum:
+       - mediatek,mt8192-vcodec-dec
+       - mediatek,mt8186-vcodec-dec
++      - mediatek,mt8195-vcodec-dec
  
--	ret = mtk_vdec_hw_init_irq(subdev_dev);
--	if (ret)
--		goto err;
-+	if (IS_SUPPORT_VDEC_HW_IRQ(hw_idx)) {
-+		ret = mtk_vdec_hw_init_irq(subdev_dev);
-+		if (ret)
-+			goto err;
-+	}
- 
- 	subdev_dev->reg_base[VDEC_HW_MISC] =
- 		devm_platform_ioremap_resource(pdev, 0);
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
-index a63e4b1b81c3..36faa8d9d681 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_hw.h
-@@ -17,6 +17,8 @@
- #define VDEC_IRQ_CLR 0x10
- #define VDEC_IRQ_CFG_REG 0xa4
- 
-+#define IS_SUPPORT_VDEC_HW_IRQ(hw_idx) ((hw_idx) != MTK_VDEC_LAT_SOC)
-+
- /**
-  * enum mtk_vdec_hw_reg_idx - subdev hardware register base index
-  * @VDEC_HW_SYS : vdec soc register index
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-index 0fb7e5ba635b..d69faa463d04 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_pm.c
-@@ -174,6 +174,14 @@ static void mtk_vcodec_dec_child_dev_on(struct mtk_vcodec_dev *vdec_dev,
- 		mtk_vcodec_dec_pw_on(pm);
- 		mtk_vcodec_dec_clock_on(pm);
- 	}
-+
-+	if (hw_idx == MTK_VDEC_LAT0) {
-+		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
-+		if (pm) {
-+			mtk_vcodec_dec_pw_on(pm);
-+			mtk_vcodec_dec_clock_on(pm);
-+		}
-+	}
- }
- 
- static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
-@@ -186,6 +194,14 @@ static void mtk_vcodec_dec_child_dev_off(struct mtk_vcodec_dev *vdec_dev,
- 		mtk_vcodec_dec_clock_off(pm);
- 		mtk_vcodec_dec_pw_off(pm);
- 	}
-+
-+	if (hw_idx == MTK_VDEC_LAT0) {
-+		pm = mtk_vcodec_dec_get_pm(vdec_dev, MTK_VDEC_LAT_SOC);
-+		if (pm) {
-+			mtk_vcodec_dec_clock_off(pm);
-+			mtk_vcodec_dec_pw_off(pm);
-+		}
-+	}
- }
- 
- void mtk_vcodec_dec_enable_hardware(struct mtk_vcodec_ctx *ctx, int hw_idx)
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index a29041a0b7e0..0e3db8ccb398 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -104,6 +104,7 @@ enum mtk_vdec_hw_id {
- 	MTK_VDEC_CORE,
- 	MTK_VDEC_LAT0,
- 	MTK_VDEC_LAT1,
-+	MTK_VDEC_LAT_SOC,
- 	MTK_VDEC_HW_MAX,
- };
- 
+   reg:
+     maxItems: 1
 -- 
 2.18.0
 
