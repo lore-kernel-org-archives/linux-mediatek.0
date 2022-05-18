@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA73CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB29C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 12:28:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+XQX6NgQWd8GIPUa9BLq/x+QL/Opwsct0lmscHxqwEE=; b=cAr8cUUf2KLKIc
-	sK9fattyAPSQL2aOkU30R4ACEWDAYL5UtmVe7u4VVfJ2AoC5xXIULLE85Rsa3x/75WR7tnVNz2AAg
-	aKk9IfpV9WBENb/0REuK055m4trpxRsWSKAuXkDEiOICwOjAQPy8YsmUzS0nZRDTvyaE/tLbmuZ9j
-	kxA2mKlvQcJ0s4InY2lkDmwZU4kLee+d8fa+WHjBivbEu8d2E3fi/ixQd6tjtF7+e9nS4wBsyfrgo
-	SZw2KRVJfaxVKuw4W7mTTcqvaCG3yk+X2S2jxMgP/aVfnUMiWl3LHdXhWdmvNhZOwu+lMRAk5PTI+
-	IHKqvhrOnICRG/O0X0Bg==;
+	List-Owner; bh=XNQizkvJsvn83utzgYDSK3AeL+x0FyrQ+Vjd6SIl5dM=; b=tGns1F10Dvmsd5
+	3tS4tZoVal7rq+LVy56ZG68K3FBoY5d5QlqNHGCzxBZR7KGQOylJAwhs3hiEoysNSSgo1yM4gDoVv
+	SwhwBEjxw/av9cL1WTIft4bo7WhgV7Zpxru8W9Wq2HlvPgjEhWsXOqjHG3wuc7XNbEcw2SYoXr7Rd
+	ifle9XAjTAy6nRSfLMNT8pSi+VAd6q1EC+JW7LOOylc5eZ/sL3ab1RgeIm3rSrZXYLnts5EZVNGg7
+	ZIzn+GVeUQV9sXf/HviFHeaC+Crps9KqjlWicoS+vCe7cmUq7rzPEByhtLVdkRH/bKxE950qvYoeP
+	gG4woOEoyiPGcfRb1J2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrImF-0020Z2-Az; Wed, 18 May 2022 12:27:43 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nrInI-0021El-65; Wed, 18 May 2022 12:28:48 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrIly-0020Qp-97; Wed, 18 May 2022 12:27:29 +0000
+ id 1nrImo-0020ur-89; Wed, 18 May 2022 12:28:19 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E51D0B81FB8;
- Wed, 18 May 2022 12:27:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FA0FC36AE3;
- Wed, 18 May 2022 12:27:21 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E1707B81FBB;
+ Wed, 18 May 2022 12:28:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFD6CC385AA;
+ Wed, 18 May 2022 12:28:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652876843;
- bh=kxOZ5QqWCnpmv5KQaoJ4TOsadG16Vztf+q4rTiMkJ3E=;
+ s=k20201202; t=1652876895;
+ bh=59034JlVFmmJqNI8BkjyG9GauHmmps4h9zRtuWOswGM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Umit11Mac3n7EFrWi5vz93Vy/DmAFIE5ZX28dqxdFCNvpjmxYi3gtyh6q+ZMFG3Hy
- WHVb6G1689lubJcoCxpjyvC1YyBfvtv2doUxNJw85CgqF+06CQm/dzDzsNgzYdn9QZ
- 6DOqopQyvO0HwZAkCOUGfQ6cWa2gUQ7B/lw0BYpylWX914Iz4OVgUhthM6GdtbkWhP
- BrvsdpTg2xO5f446fEsxAGYSyoeRaSIEq1FvsK/qBz/NtaSz2XByyW4/3ZwWZJgZ8N
- PacclyS9foGpKN5di0JCbXuMBMhN0HvlzOXHejsqq9FrE9pipf5pZ24faJVkjBetgY
- CaeMm1ZRSq4Rg==
+ b=Uv25hGStdhTcomC6evrU4/Oy1SN0Hl8b1yldSYZPt+X2MixOT2Efn7Kz/KpzP2+ms
+ XmLetg56rTQqPgmDGApj0Mvig9mNMTqnwGA1K1ct3YL2mWiyecZiPMOTC4Xo3wXbpS
+ yd+3vVM2hJuzz8Daubri9ArMKpUs4z51LILDpjbFHLAkfmiuRkhx+/uh4kweW4RPPF
+ aADhyu1CCtocf+9g9g77dsIJOlOo+dhYDk3rD/F+3xlmlcJUFfciBK05/HZIT418t1
+ Y+P9eQOIGGVn4Raw+vMSPYbK0sTabBROj5nYdBDF0/YRMswIwBEsb4JH4BDGU1Jjas
+ U74sq2WIpSqhQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -52,17 +52,17 @@ Cc: Lina Wang <lina.wang@mediatek.com>,
  luiz.von.dentz@intel.com, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  bpf@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.17 14/23] net: fix wrong network header length
-Date: Wed, 18 May 2022 08:26:27 -0400
-Message-Id: <20220518122641.342120-14-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 08/17] net: fix wrong network header length
+Date: Wed, 18 May 2022 08:27:42 -0400
+Message-Id: <20220518122753.342758-8-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220518122641.342120-1-sashal@kernel.org>
-References: <20220518122641.342120-1-sashal@kernel.org>
+In-Reply-To: <20220518122753.342758-1-sashal@kernel.org>
+References: <20220518122753.342758-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_052726_673631_C556C44E 
+X-CRM114-CacheID: sfid-20220518_052818_610886_E20963CC 
 X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -119,10 +119,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 180fa6a26ad4..708cc9b1b176 100644
+index e4badc189e37..7ef0f5a8ab03 100644
 --- a/net/core/skbuff.c
 +++ b/net/core/skbuff.c
-@@ -3896,7 +3896,7 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
+@@ -3873,7 +3873,7 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
  	unsigned int delta_len = 0;
  	struct sk_buff *tail = NULL;
  	struct sk_buff *nskb, *tmp;
@@ -131,7 +131,7 @@ index 180fa6a26ad4..708cc9b1b176 100644
  
  	skb_push(skb, -skb_network_offset(skb) + offset);
  
-@@ -3936,9 +3936,11 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
+@@ -3913,9 +3913,11 @@ struct sk_buff *skb_segment_list(struct sk_buff *skb,
  		skb_push(nskb, -skb_network_offset(nskb) + offset);
  
  		skb_release_head_state(nskb);
