@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E49B3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 01:35:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06420C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 01:36:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sJyhfWLUUJbMEAuadpwHNC5FgDpTdTY+A0+kzOXIyUQ=; b=hwHMMZbCeUvFew
-	EUyErp1/FQwcJPQvixm4s5XwEQhLWr/Dyf6mcPXiHbX3/e5y9OQ8KU+esoFhPeyxD5GVgsSDYFk80
-	NiDn+ZqaAG1iZhv4dmMED+USgdgFAIbWrzrhuHZ00TbzeCp6IsaflBXntscNnaMz7UlbgxbxRoCiT
-	KQK8Kc0NUsbU8+Q0Nija6B2yYs+qxHarOMxD/HCgHbyemv6x8hcw/8MQ24amLrJ9pq9R4nDwepVWJ
-	rrkS88LliQvyeTOljRAwTCH/c1GUxAiF6YgkjEC3lvs232snmjl8RTUN9SzwCCssVTt4l40Rh3jV4
-	JDX4DSPd27W0YcmrALeQ==;
+	List-Owner; bh=1qC4MwagFenH91oEOF/LLcRwbrLiOIGTJ03KF/4pf6o=; b=vVU3ILHtzwmM+g
+	qTTfJpNef2d9YPZ4bVyZT8d1/rSe6rTHi7vgh0tXn3Dydonq95nhX0xplwxMI+lRnqtCpzT487oh6
+	otfyBSJ6iT4xJ+pcmfZABQJmEwB2p+aReJ8OSi8E/1fvZmfZKLDTJEpkZL/y9jE0FCw2MfeMJKhMF
+	9ehjEVOkJ7QEGMSBD0a7F7UDui8TAGsLMbgCH/Uc7ZOBfl8CwGe8dwiPacGuyB9e5q8ubJuS3FbBC
+	R8F5jb68n5sYkLFlLEMEg/UBIDvwQ8Fk+sh9ZKCO0UjeLw1LtC6/6x/a84kWtWSyrpJ3Wv3WzOu57
+	XZqL3by77d5b+2mWDdrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nr8b4-00GbBW-9O; Wed, 18 May 2022 01:35:30 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nr8cF-00GbLl-VK; Wed, 18 May 2022 01:36:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nr8b1-00GbB2-J2
- for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 01:35:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E755BB81BE5;
- Wed, 18 May 2022 01:35:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37F08C385B8;
- Wed, 18 May 2022 01:35:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652837724;
- bh=eejmgDeuegMldE1NuLPI6JWdYtBkX+d0FP7BFTmWlno=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=LeX6/giq7LE48APMFpUdl5WeU82P9kRhmyYa9J5KgwWOFBsULnsJMkZ35rvTmPPKv
- D5UUk2mHJzCycYNiVoT/nl3Mj4YbF3G3sQ9yxfFe/ww8com89z+gJhVb4vhL1j4136
- cMdGPjf0QjM92lCyQCKVarQIrNPOxRgedQKSvnXix6LpUp5HpJImdHDhwt7/+YsYfm
- hjh7i6RRDgcle8sO7nnPM97yyxxQfKupusd5SI5YW+aTpLu7i8UemyPCh1AiOpyIh0
- axsPK4eTnF5y7NFeglnXSeU4/wzr1hn9+lY/FRl4ecOWjLqi7MmY2LHqBeTkxHEuqQ
- ysp4oWZM219+w==
-Date: Tue, 17 May 2022 18:35:22 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, Sam.Shih@mediatek.com,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- robh@kernel.org, lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH v2 net-next 05/15] net: ethernet: mtk_eth_soc: rely on
- txd_size in mtk_tx_alloc/mtk_tx_clean
-Message-ID: <20220517183522.4a585885@kernel.org>
-In-Reply-To: <c5228daa3d277cd71a134a1062525bc19b34fa2f.1652716741.git.lorenzo@kernel.org>
-References: <cover.1652716741.git.lorenzo@kernel.org>
- <c5228daa3d277cd71a134a1062525bc19b34fa2f.1652716741.git.lorenzo@kernel.org>
+ id 1nr8c4-00GbKZ-WB; Wed, 18 May 2022 01:36:34 +0000
+X-UUID: 508e7a8435fe4ff7834898ac1331466f-20220517
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:f8fc1360-df1e-49b4-8228-63f6d4b9707e, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:03b69d79-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 508e7a8435fe4ff7834898ac1331466f-20220517
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 48121969; Tue, 17 May 2022 18:36:29 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 May 2022 18:36:27 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 May 2022 09:36:26 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 18 May 2022 09:36:26 +0800
+Message-ID: <2b46032a99e6f8994d402ebbf34d9174135993c4.camel@mediatek.com>
+Subject: Re: [PATCH -next] cpufreq: mediatek: fix error return code in
+ mtk_cpu_dvfs_info_init()
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Yang Yingliang <yangyingliang@huawei.com>, <linux-kernel@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>
+CC: <jia-wei.chang@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <khilman@baylibre.com>, <viresh.kumar@linaro.org>
+Date: Wed, 18 May 2022 09:36:26 +0800
+In-Reply-To: <20220517133450.2266243-1-yangyingliang@huawei.com>
+References: <20220517133450.2266243-1-yangyingliang@huawei.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_183527_820843_C23304D8 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20220517_183633_087520_28D89359 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +82,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 May 2022 18:06:32 +0200 Lorenzo Bianconi wrote:
->  static int mtk_tx_alloc(struct mtk_eth *eth)
->  {
-> +	const struct mtk_soc_data *soc = eth->soc;
->  	struct mtk_tx_ring *ring = &eth->tx_ring;
-> -	int i, sz = sizeof(*ring->dma);
+On Tue, 2022-05-17 at 21:34 +0800, Yang Yingliang wrote:
+> If regulator_get_voltage() fails, it should return the error code in
+> mtk_cpu_dvfs_info_init().
+> 
+> Fixes: 0daa47325bae ("cpufreq: mediatek: Link CCI device to CPU")
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+> ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c
+> b/drivers/cpufreq/mediatek-cpufreq.c
+> index 37a1eb20f5ba..3a2be4552020 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -474,6 +474,7 @@ static int mtk_cpu_dvfs_info_init(struct
+> mtk_cpu_dvfs_info *info, int cpu)
+>  	if (info->soc_data->ccifreq_supported) {
+>  		info->vproc_on_boot = regulator_get_voltage(info-
+> >proc_reg);
+>  		if (info->vproc_on_boot < 0) {
+> +			ret = info->vproc_on_boot;
+>  			dev_err(info->cpu_dev,
+>  				"invalid Vproc value: %d\n", info-
+> >vproc_on_boot);
+>  			goto out_disable_inter_clock;
 
-The change would be smaller if you left sz in place. 
-I guess you have a reason not to?
+Thanks for fix this!
 
-> +	struct mtk_tx_dma *txd;
-> +	int i;
->  
->  	ring->buf = kcalloc(MTK_DMA_SIZE, sizeof(*ring->buf),
->  			       GFP_KERNEL);
->  	if (!ring->buf)
->  		goto no_tx_mem;
->  
-> -	ring->dma = dma_alloc_coherent(eth->dma_dev, MTK_DMA_SIZE * sz,
-> +	ring->dma = dma_alloc_coherent(eth->dma_dev,
-> +				       MTK_DMA_SIZE * soc->txrx.txd_size,
->  				       &ring->phys, GFP_ATOMIC);
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 
-Another GFP nugget.
 
 _______________________________________________
 Linux-mediatek mailing list
