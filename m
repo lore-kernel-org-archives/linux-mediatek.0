@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B0ACC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14533C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hjju9v4E4JiqKFfS2WsI9NhyT4VdMGSrn6Uh8zD1LYQ=; b=0VglBOND7OzMEI
-	/296erjBDJ4gFNEP1OnA4zt3yr+nW5MTFzGIwv1QUBzvvAVn0wSzwqowrmBh4w0CQ6SV/rfvyNQ64
-	vPeP9oDLbN6on3e/MbRIzWBvD6UUVrI7xdp5s4h615Q55KneejE11Hzj63IzJDAXiCd+aArwq3k7t
-	+cE2JXAQTi6TpRfH9jWEstyR6yKvQ2c5WgNvtZTzLsBJDfKBUI28nUpbtzZc+j4QIo8ICGRdozS4L
-	F/Hr7ckH1hbHGSSB2yFIBJCx3MPzLWg2gLSZn681bjo0Kf493OfZfrF9smmSltvptN/aQO9VPVLm6
-	t07MnBL6eBs+1ZmI9mtg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1FhwugJK5hduP+K2TzUeyyEPOEnljVWN7ev2XrceL+Y=; b=tDZmMjMAMZIICTq56yvpEeZ0gA
+	ik8L29tOPw1hziVj/tnRfAY0B+3fh2MTE4n5WxpYUbjWLoKX468gAQVKjIDRr4D/rv2DN5Zqz5yQp
+	KQbnzPQEPYgxPrYiPXbca/nC+aYq1lxLhsA49h1XvcGYDax5afnJxLKiEh82kMDSzKWhdVj5VUBfi
+	d5yg0jRLpWXiYBGJ9VqxH0vKZlMmFitNXBOXZOuxSmHM/oDoGuLhuQab8I6cNxZ/tkxRbvuoFKuLH
+	B+yNYg5CwYjpQW95MgMf4xzT2ZUsHIz9u+jOsTj1mHPkumC27NjOBJgGG9fHIopDi+V+pWOYpVIac
+	RyO8jxEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrGB5-0017Bh-Te; Wed, 18 May 2022 09:41:11 +0000
+	id 1nrGIV-001Aig-D6; Wed, 18 May 2022 09:48:51 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrG7b-00154c-IJ; Wed, 18 May 2022 09:37:37 +0000
+ id 1nrGIS-001Agx-3f
+ for linux-mediatek@lists.infradead.org; Wed, 18 May 2022 09:48:49 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 71B196178B;
- Wed, 18 May 2022 09:37:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF0D1C385AA;
- Wed, 18 May 2022 09:37:29 +0000 (UTC)
-Message-ID: <ea9a04fb-368d-daca-96ae-9366253a5e91@xs4all.nl>
-Date: Wed, 18 May 2022 11:37:28 +0200
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 99AA8617B4;
+ Wed, 18 May 2022 09:48:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84DABC385AA;
+ Wed, 18 May 2022 09:48:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1652867327;
+ bh=lv4HBe8Wz66POFUcjOZzWjCJJ3a3Qv9oZQxybybs8dg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=CIMawBjVDfDDMMhlmDCJY/yrMAjt2SSIwXqnjmd3tS4PdMgks21T0Sb6ttzXYbv61
+ ULL2ftPjteTxt9snhY1aNU+9QrGFzq9f2avl9qq7E0jjkdybiSx2aco92RtJvox8kl
+ UHRcpGdK98VxAq7GWNdyW4+lb8OWliGnccgw0CUsu2uJ4xDcnlZOFMSc/1uJ7Q0G3f
+ RcUYVRTIIURdnL16sRNHJSM6dvGwnHL0sciJDyez5yNyAv/zoibfWOrDepzySmtscb
+ qL5m6AAxgncPSWOGmnWCuWpbSe/S+03MJS+L5g1DZIJuujbyRcTZOvrzDE16wyfDQ4
+ giEeVFhaZBmmQ==
+Date: Wed, 18 May 2022 11:48:43 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+ sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+ davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+ Sam.Shih@mediatek.com, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, robh@kernel.org, lorenzo.bianconi@redhat.com
+Subject: Re: [PATCH v2 net-next 11/15] net: ethernet: mtk_eth_soc: introduce
+ device register map
+Message-ID: <YoTA+5gLC4zhoQ0F@lore-desk>
+References: <cover.1652716741.git.lorenzo@kernel.org>
+ <78e8c6ed230130b75aae77e6d05a9b35e298860a.1652716741.git.lorenzo@kernel.org>
+ <20220517184122.522ed708@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Subject: Re: [PATCH v6, 6/7] media: mediatek: vcodec: prevent kernel crash
- when scp ipi timeout
-Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220513092526.9670-1-yunfei.dong@mediatek.com>
- <20220513092526.9670-7-yunfei.dong@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20220513092526.9670-7-yunfei.dong@mediatek.com>
+In-Reply-To: <20220517184122.522ed708@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_023735_729157_02E7F188 
-X-CRM114-Status: GOOD (  21.21  )
+X-CRM114-CacheID: sfid-20220518_024848_219559_467F2FE4 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,93 +72,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7870843203566672541=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei,
 
-On 5/13/22 11:25, Yunfei Dong wrote:
-> When SCP timeout during playing video, kernel crashes with following
-> message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
-> This patch doesn't solve the root cause of NULL pointer, but merely
-> prevent kernel crashed when encounter the NULL pointer.
+--===============7870843203566672541==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yGUCWlv2qAlCwbOl"
+Content-Disposition: inline
 
-Is the root cause being addressed as well? Where is the root cause? Is it
-in this driver or in the scp (i.e. the remoteproc) driver?
 
-I need a bit more information to decide whether this series is ready to
-be merged for 5.20 or not.
+--yGUCWlv2qAlCwbOl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> On Mon, 16 May 2022 18:06:38 +0200 Lorenzo Bianconi wrote:
+> >  /* PDMA RX Base Pointer Register */
+> > -#define MTK_PRX_BASE_PTR0	0x900
+> > +#define MTK_PRX_BASE_PTR0	(eth->soc->reg_map[MTK_PDMA_BASE] + 0x100)
+> >  #define MTK_PRX_BASE_PTR_CFG(x)	(MTK_PRX_BASE_PTR0 + (x * 0x10))
+>=20
+> Implicit macro arguments are really unpleasant for people doing
+> tree-wide changes or otherwise unfamiliar with the driver.
+>=20
+> Nothing we can do to avoid this?
+
+I used this approach in order to have just few changes in the codebase. I g=
+uess the best
+option would be to explicitly add eth parameter to the register macros, wha=
+t do you think?
 
 Regards,
+Lorenzo
 
-	Hans
+--yGUCWlv2qAlCwbOl
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> 
-> After applied this patch, kernel keeps alive, only the video player turns
-> to green screen.
-> 
-> [67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
-> [67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
-> 18000000.vcodec_dec decoder [135]
-> [67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
-> [67242.065540] sp : ffffffbb4207fb10
-> [67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
-> [67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
-> [67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
-> [67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
-> [67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
-> [67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
-> [67242.065758] x17: 0000000000000000 x16: ffffffd042022094
-> [67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
-> [67242.065824] x13: 0000000000000000 x12: 0000000000000000
-> [67242.065857] x11: 0000000000000000 x10: dfffffd000000001
-> [67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
-> [67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
-> [67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
-> [67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
-> [67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
-> [67242.066055] Call trace:
-> [67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
-> 12220d230d83a7426fc38c56b3e7bc6066955bae]
-> [67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
-> 8fb69c2ef141dd3192518b952b65aba35627b8bf]
-> [67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
-> 8fb69c2ef141dd3192518b952b65aba35627b8bf]
-> [67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
-> 8fb69c2ef141dd3192518b952b65aba35627b8bf]
-> [67242.066200]  irq_thread_fn+0x84/0xf8
-> [67242.066220]  irq_thread+0x170/0x1ec
-> [67242.066242]  kthread+0x2f8/0x3b8
-> [67242.066264]  ret_from_fork+0x10/0x30
-> [67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-> index 35f4d5583084..1041dd663e76 100644
-> --- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-> @@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
->  	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
->  					(unsigned long)msg->ap_inst_addr;
->  
-> +	if (!vpu) {
-> +		mtk_v4l2_err("ap_inst_addr is NULL");
-> +		return;
-> +	}
-> +
->  	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
->  
->  	vpu->failure = msg->status;
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYoTA+gAKCRA6cBh0uS2t
+rKu7AQCqZ6gTV/nH6swFYufh/JvGdCvn+Ju4SVI9ORYBZxNvLgEA0u4maXWDKZI0
+eaenqEJ2bXJPNuae7fRx9qniJRt97gQ=
+=/+Hi
+-----END PGP SIGNATURE-----
+
+--yGUCWlv2qAlCwbOl--
+
+
+--===============7870843203566672541==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7870843203566672541==--
+
