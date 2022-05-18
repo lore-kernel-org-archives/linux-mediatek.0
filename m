@@ -4,56 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E359CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 08:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9953AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 09:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Fhvx0q2/wWfwHPon9KBs40gBiWDfkpgF2X8+upr+8bs=; b=BMnIGOUKsk5w6O
-	n4bIFAiiOL2sneiyLEHf8IKTFNKuhogYa4V4uf1IJEuGzXhVQO2g35bTezeuMfHU1c1LeGs5ZRgdc
-	GA0LLsF+UPc74iZ5Y2reT9zfh/GAWmunBTJSvfekj3IK/4FzGaMcGoiLtJe7m926ZDcYmgIPLPCVO
-	c/Z0oSGzIoxNE1GLezJgxu8r1571hEBZ75SmY2a0njugCK3HTc6Nskd/h0iSauNzzA3Ae494bnun/
-	RIFDBLNyfPrgGJlYq7efsjYFBZvs7064M9J7jIEd7Ll/Fmj9A63Ddw8CFeCijDYruectMEFDq17cu
-	61q1nvgjrrm66PVTy+kA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=or+in2zS+QswbLcNQuhtmqltdjffPPkMvNRrkHSM9go=; b=ca09xBbhNjpoQI
+	nNSQfwK0O7HDiQqW0rT1Qox8kzTgi74k6jUH6Vtp2n4MeZ/kQjEKne4FCYlN5Eba4NTlLPTKUtXZE
+	Jex7jo2uhKFwk3U1CSXAh94oDQBj4xBW/E7Ad9Wf1LuCIuulJct9BG1w1ZOT1r3Evu117c3kfOAv3
+	0vbLhqMIyhJbE8Xod8SwpR6RsSdAruL9jOJhgi5SP8XEOKKIFCBNiuPztvCLwhlJbFtwAFhkt1Ml2
+	zerM/auIPW5Jgfl4dL3ETIDSuLAKKWTvJcwoUiPWC5b9l9gw5QQPMOXNCPowbix6NYr4G9GshUGJ1
+	B0ffc8kg1hXsTamhQsMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrFUh-000hOt-AK; Wed, 18 May 2022 08:57:23 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1nrFi4-000kaf-GW; Wed, 18 May 2022 09:11:12 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrFUS-000hHt-DR; Wed, 18 May 2022 08:57:10 +0000
-Received: from dggpemm500022.china.huawei.com (unknown [172.30.72.53])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4L36Dh1kP4zCsmj;
- Wed, 18 May 2022 16:52:04 +0800 (CST)
-Received: from dggpemm500007.china.huawei.com (7.185.36.183) by
- dggpemm500022.china.huawei.com (7.185.36.162) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Wed, 18 May 2022 16:56:59 +0800
-Received: from huawei.com (10.175.103.91) by dggpemm500007.china.huawei.com
- (7.185.36.183) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 18 May
- 2022 16:56:58 +0800
-From: Yang Yingliang <yangyingliang@huawei.com>
-To: <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <netdev@vger.kernel.org>
-CC: <haijun.liu@mediatek.com>, <chandrashekar.devegowda@intel.com>,
- <ricardo.martinez@linux.intel.com>, <loic.poulain@linaro.org>,
- <davem@davemloft.net>, <kuba@kernel.org>
-Subject: [PATCH -next] net: wwan: t7xx: use GFP_ATOMIC under spin lock in
- t7xx_cldma_gpd_set_next_ptr()
-Date: Wed, 18 May 2022 17:07:38 +0800
-Message-ID: <20220518090738.2694556-1-yangyingliang@huawei.com>
-X-Mailer: git-send-email 2.25.1
+ id 1nrFhh-000kMC-Bk; Wed, 18 May 2022 09:10:50 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 5BE131F44326
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652865044;
+ bh=afdb+1TfXd6qwENq3V5dNU9RdSnEK8LSSEZN5IIt8uQ=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=eLohPUClPo2OIDzvAU4J/4MiQkgec/VtFIxiubt6g5ookUgGfP6jxWSQlv/3C44FL
+ 7Mu/yD14Ak8RsU7fmdWkNISsS4JTLT1OlCOMKA1kVymjQYuPuY9COdDsgy9mQ215dn
+ 3zvo2+F1sLsgvvJvPleedL6y6nRfnC3fjvs89VCVuDVEqK6Igjpt7Uawkg5xcpGPMj
+ FvuW6wzDRCd1Br0/H2R16im8m2JGNU1SVnP0OjuciYKwk+s23XG6RZ2Uy1vnYaPS0V
+ vaBb2JL137wFIQ1W5F3aGEG4GwTdx6yleQGlrVUIp9n4bop/8GCbzpzqeQp825tstc
+ z1qYvV3tovMBw==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: yong.wu@mediatek.com
+Cc: krzysztof.kozlowski@linaro.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
+ martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
+ phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
+ kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>
+Subject: [PATCH v3 1/2] dt-bindings: memory: mtk-smi: Add MT6795 Helio X10
+ bindings
+Date: Wed, 18 May 2022 11:10:37 +0200
+Message-Id: <20220518091038.22380-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220518091038.22380-1-angelogioacchino.delregno@collabora.com>
+References: <20220518091038.22380-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.175.103.91]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- dggpemm500007.china.huawei.com (7.185.36.183)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_015708_687317_CBB9C15E 
-X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-CacheID: sfid-20220518_021049_608480_EFE592EC 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,65 +75,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sometimes t7xx_cldma_gpd_set_next_ptr() is called under spin lock,
-so add a parameter in t7xx_cldma_gpd_set_next_ptr() to make if it
-use GFP_ATOMIC flag.
+Add SMI bindings for the MediaTek Helio X10 (MT6795) SoC
 
-Fixes: 39d439047f1d ("net: wwan: t7xx: Add control DMA interface")
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/net/wwan/t7xx/t7xx_hif_cldma.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ .../bindings/memory-controllers/mediatek,smi-common.yaml         | 1 +
+ .../bindings/memory-controllers/mediatek,smi-larb.yaml           | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/drivers/net/wwan/t7xx/t7xx_hif_cldma.c b/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
-index 0c52801ed0de..1fa9bb763831 100644
---- a/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
-+++ b/drivers/net/wwan/t7xx/t7xx_hif_cldma.c
-@@ -91,9 +91,12 @@ static void t7xx_cldma_gpd_set_next_ptr(struct cldma_gpd *gpd, dma_addr_t next_p
- }
- 
- static int t7xx_cldma_alloc_and_map_skb(struct cldma_ctrl *md_ctrl, struct cldma_request *req,
--					size_t size)
-+					size_t size, bool is_atomic)
- {
--	req->skb = __dev_alloc_skb(size, GFP_KERNEL);
-+	if (is_atomic)
-+		req->skb = __dev_alloc_skb(size, GFP_ATOMIC);
-+	else
-+		req->skb = __dev_alloc_skb(size, GFP_KERNEL);
- 	if (!req->skb)
- 		return -ENOMEM;
- 
-@@ -174,7 +177,7 @@ static int t7xx_cldma_gpd_rx_from_q(struct cldma_queue *queue, int budget, bool
- 		spin_unlock_irqrestore(&queue->ring_lock, flags);
- 		req = queue->rx_refill;
- 
--		ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, queue->tr_ring->pkt_size);
-+		ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, queue->tr_ring->pkt_size, false);
- 		if (ret)
- 			return ret;
- 
-@@ -402,7 +405,7 @@ static struct cldma_request *t7xx_alloc_rx_request(struct cldma_ctrl *md_ctrl, s
- 	if (!req->gpd)
- 		goto err_free_req;
- 
--	val = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, pkt_size);
-+	val = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, pkt_size, false);
- 	if (val)
- 		goto err_free_pool;
- 
-@@ -801,7 +804,7 @@ static int t7xx_cldma_clear_rxq(struct cldma_ctrl *md_ctrl, int qnum)
- 		if (req->skb)
- 			continue;
- 
--		ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, rxq->tr_ring->pkt_size);
-+		ret = t7xx_cldma_alloc_and_map_skb(md_ctrl, req, rxq->tr_ring->pkt_size, true);
- 		if (ret)
- 			break;
- 
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index a98b359bf909..71bc5cefb49c 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -32,6 +32,7 @@ properties:
+           - mediatek,mt2701-smi-common
+           - mediatek,mt2712-smi-common
+           - mediatek,mt6779-smi-common
++          - mediatek,mt6795-smi-common
+           - mediatek,mt8167-smi-common
+           - mediatek,mt8173-smi-common
+           - mediatek,mt8183-smi-common
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index c886681f62a7..59dcd163668f 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -20,6 +20,7 @@ properties:
+           - mediatek,mt2701-smi-larb
+           - mediatek,mt2712-smi-larb
+           - mediatek,mt6779-smi-larb
++          - mediatek,mt6795-smi-larb
+           - mediatek,mt8167-smi-larb
+           - mediatek,mt8173-smi-larb
+           - mediatek,mt8183-smi-larb
 -- 
-2.25.1
+2.35.1
 
 
 _______________________________________________
