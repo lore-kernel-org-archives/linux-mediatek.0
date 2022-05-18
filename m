@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD63CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 11:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 114C1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 May 2022 11:35:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FHoVU9gXDy/TsRxsnYfSIytwGGozZJjonOkiT9k3XQI=; b=F/NH2KV7sDNm+1
-	FCaxjLxt5XoqRgrAGU7vPxTILSO4OBWuSGT52TB1SzfexDYft4dvmwA4bghfkQxRv3xx5qAmZ/2RE
-	4ck8TDOubjNW+n5qDMUWMnwqOTziXvJwOtFrOy6gYe1AKDVM8C6bvfSYJn3tkmaWYSd8/+xNGMqUA
-	hCqHelgAGt90EbEMDMYreD3Fj7iH2rSwkCSNnxN2KudZCk1K7aXqrY3bKtjIgnBF0R2PNjRcc+t2U
-	IhwgA5hWGGOSw/nxA+X0n/tJncqxqWELBf9HQB6JLENrc+J34hk2r2WuSG0s5WUgtRPJpOXbAUU2b
-	vLcP8NNGaLqsobzoT/ow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1L5xtX+SoNws3fPPb7wPe90Uis8oTJ8Q2QOVbiNU+g8=; b=kmBwWgOqtiy9Xk
+	LIdN0Z57/bS7DpQzIhlWdo8Xg37bRmWNGxO5DHPQL0PrJvd6V17baw3aC9bhCuwLblcLNYa0pcYC8
+	N0t3KYTHYRFW2t3+67cQggGr9qIw1ofa+HsZydXycEAi/R5A+gWD16kQ09kUm2TP1b6qrn+enIc2I
+	k8Csyq6FSS3UDwjhHyrRoqZ6oSTlb9DZmvercGVYbUXZ3rz8B2KpYQ8bQC+tNKO954qs1KccbAPmb
+	/0Ugv2dIs+P0j2PIRSQQiqOwlnui/Mydix7/MDQS4BmI683nvpEngw1oYSrC4Ddr1sF/Q2au6tb3w
+	rFP1eLNxvo6yPxVZMNjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrHx0-001a3X-LB; Wed, 18 May 2022 11:34:46 +0000
+	id 1nrHxa-001aM6-UF; Wed, 18 May 2022 11:35:22 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrHnI-001VoT-7n; Wed, 18 May 2022 11:24:45 +0000
+ id 1nrHnI-001Vng-7x; Wed, 18 May 2022 11:24:45 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id F16C51F41F11
+ (Authenticated sender: kholk11) with ESMTPSA id D609C1F41EF8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652873080;
- bh=A9HSqY7N5tc05EjY65ztCb/z2+4AYlU8OBtRhwBVeKQ=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eVeP3KgyWZPtLKbKdoAEbgrDQeJPkxwa+ZZMxQOn0di5Y+dA9XUMb0e1cCvlJAMoJ
- 4d7X1ZxswdrxNEEWWoIjypf2862J8HeY6tATnfK5pzAhYLHrlS8b6q110pwSu4Y9a5
- H8MVAeX7RO8JvhK0UpTkiDTuOTKDrD5Xl1bSr6k3OILWCOSBrFAsmC25ajVryCp5XF
- +3esnx9JlRZdgQv3OL+66KoKnVgUBAnOSwasyseQYfb7KoJ43q6IYqvo2is94HzQv/
- y3OfZokt2f+m6MUOXbi6j4zPfMy0oQQDhvJ7PEcyvBcgNRM6yJbcIu0bl6wTaqKbs0
- hdfU6FeNql8ug==
+ s=mail; t=1652873079;
+ bh=aTNle9KArjSkwZPxjRCPDIWdKxMDxqxTEvqJionGghc=;
+ h=From:To:Cc:Subject:Date:From;
+ b=aJkxOINb39+ULvOjftDlYIQVRTrztYqukxC1mEgvjUtBREtipWw29uol/pDyCTag2
+ trU/E5tPrjfQwZrBZ5o/W1HkUrT21ydS7jenfqe//H75xu9h9Vl+Z9JEqTw0eQ5C8D
+ rsMdHQPVHY7Sm4Y/VfoR9jzknYZwntyc62st+LUbsmGJRkQGZ+6igQf5VDlRnlUsWl
+ FTQIXLVmcCVnktgXA7xrgls7nxSgTa3pWpbF0weX6HvXPlDT64/AeOt/whrzPC27Av
+ exl9VPA9A5baloYidCdkpHcFBkwVWMj4uqIXWIU4QHZ63eLNrRElfG0Aly710MCDIi
+ V0klT+Dd2EmNQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: daniel.lezcano@linaro.org
 Cc: tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
@@ -46,17 +46,14 @@ Cc: tglx@linutronix.de, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
  ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
  paul.bouchara@somainline.org,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 1/2] dt-bindings: timer: mediatek: Add CPUX System Timer
- and MT6795 compatible
-Date: Wed, 18 May 2022 13:24:34 +0200
-Message-Id: <20220518112435.241116-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 0/2] MediaTek SoC ARM/ARM64 System Timer
+Date: Wed, 18 May 2022 13:24:33 +0200
+Message-Id: <20220518112435.241116-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220518112435.241116-1-angelogioacchino.delregno@collabora.com>
-References: <20220518112435.241116-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_042444_548194_DC9EE8F8 
-X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-CacheID: sfid-20220518_042444_554599_7E6555E6 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,36 +71,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the "CPUXGPT" CPU General Purpose Timer, used as ARM/ARM64
-System Timer on MediaTek platforms and add the MT6795 compatible for it.
+In an effort to give some love to the apparently forgotten MT6795 SoC,
+I am upstreaming more components that are necessary to support platforms
+powered by this one apart from a simple boot to serial console.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/timer/mediatek,mtk-timer.txt          | 4 ++++
- 1 file changed, 4 insertions(+)
+This series introduces support to start the System Timer for the CPU
+cores found in various MediaTek SoCs including, but not limited to the
+MT6795 Helio X10 - and will most probably unblock many developers for
+the upstreaming of various platforms.
 
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-index 6f1f9dba6e88..49706cbef45d 100644
---- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-+++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-@@ -2,6 +2,7 @@ MediaTek Timers
- ---------------
- 
- MediaTek SoCs have two different timers on different platforms,
-+- CPUX (ARM/ARM64 System Timer)
- - GPT (General Purpose Timer)
- - SYST (System Timer)
- 
-@@ -29,6 +30,9 @@ Required properties:
- 	* "mediatek,mt7629-timer" for MT7629 compatible timers (SYST)
- 	* "mediatek,mt6765-timer" for MT6765 and all above compatible timers (SYST)
- 
-+	For those SoCs that use CPUX
-+	* "mediatek,mt6795-systimer" for MT6795 compatible timers (CPUX)
-+
- - reg: Should contain location and length for timer register.
- - clocks: Should contain system clock.
- 
+For a broad overview of why/what/when, please look at the description
+of patch [2/2] in this series.
+
+Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+
+Changes in v3:
+ - Merged mtk_cpux_{enable,disable}_irq() as one mtk_cpux_set_irq() function
+   as suggested by Matthias
+
+Changes in v2:
+ - Added back a lost line in commit 2/2 (sorry, commit didn't get amended...!)
+ - Tested again for safety
+
+AngeloGioacchino Del Regno (2):
+  dt-bindings: timer: mediatek: Add CPUX System Timer and MT6795
+    compatible
+  clocksource/drivers/timer-mediatek: Implement CPUXGPT timers
+
+ .../bindings/timer/mediatek,mtk-timer.txt     |   4 +
+ drivers/clocksource/timer-mediatek.c          | 114 ++++++++++++++++++
+ 2 files changed, 118 insertions(+)
+
 -- 
 2.35.1
 
