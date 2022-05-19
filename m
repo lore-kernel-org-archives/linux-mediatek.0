@@ -4,163 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D49F5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:08:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B8A3C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:09:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gp08qP6fFlA8rA7xjmmTSFmF4oZ/XT/NfLlRNcbPfdM=; b=eJVpqm7BXfNYYa
-	0gjxcrbBonNURskcPsZY8GsU62WNSBoFpqYi1EEo+fGJpZ293RHISUCSrKYm94hDZ/Kwh+FP0X5ZD
-	IUryGPmxY22W6+3g+7evRo1X79FhgA8EHLhAzJLogGrn59PDogP6viN9bUXXsuvARleoAzmfE+63J
-	7DtHxLRFVaztSNz4qyhcOeIkG/YJ53FksVb95Vc+Ry85YHu2XqN/GpEv+y2w0JaltG6jvW5Y/ND5W
-	gHGO+Isp02f+TLAapGoqHA7U44+92ahco6gJI6FPU1M2lrL/5TlJeF6GeYAfkU+QXGa/ideK1mKVU
-	bXZ8onzMn/yCgo4E9n2A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+IdN0taBodJ2pogh5HusqeB93vjdXKqduQb/ABgEH9I=; b=z3GAdBw/ODzn9g
+	Z45L097N0xVf0qiPxQvzW14J1VJAIOdMiXU149iy2Vc/4YELiJtahYZQpuMkS+BoFCBYVw2Zpx4D5
+	DLZc3CwbOng/P2oWMr004RUr0mFehu5F2DmSFYMMbf5WtTaICa1Y4SztRUHma0NSEP5Fgk1LkU3aM
+	8KpDPbm3LgUVRglnYk/x5aDkEjWwwo0ZKQGnsuH2foUJ0p/A+FOkn/7S75Zkql9s5DZUvvOPLvqt1
+	oVsMAikqygIlHM92rdJXslDrDluA+HBi+hCU4FqjEvnWejnAjTaM7xc3ieVP1idn/bdwGeeoRQPMv
+	0fC9ZK6XHe4o8OSIrhhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrhkq-007jsV-Pk; Thu, 19 May 2022 15:07:56 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1nrhmE-007ka5-9p; Thu, 19 May 2022 15:09:22 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrgpG-007Gho-EB
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 14:08:28 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24JCp19L027449;
- Thu, 19 May 2022 14:08:17 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=oyL4sjCVA99zjLQ8ykrA9DZhGha3aqLKxWmTSPZxw4o=;
- b=dSwLSMrLBBFZ0OLtDWvbTEUtilHxRLDDbkj7ytSD3CzKzhBMGT+8vphjeMq1BVMWD7C2
- 8PKz+diQFjfruhkK3tfoOXXKl3DijrvdwCwcpjTt+08dbpx23cXVTQAFg5q3broaklN7
- d46xrKTaLvVIgsvWIzkqmCmN7Av+9ASJZoH+W7BJpLO1HnDTSc8ZRpVSw7wm3zDKesaw
- I7PPP2YxGgrOD7TYLk9spvnch0FQrgOoDB0AEOoXJgiJXjQWdxRQuQrv2VK84yUuatxc
- LKDauSIexJ8n5qepqK1x42Wcqjzis03iLsBj8AY6pj6Hc1eJobxnlpg2vhI26i51jyJE Bw== 
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3g241scbqk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 19 May 2022 14:08:17 +0000
-Received: from pps.filterd
- (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
- with SMTP id 24JE1mas029431; Thu, 19 May 2022 14:08:16 GMT
-Received: from nam12-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam12lp2177.outbound.protection.outlook.com [104.47.59.177])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
- 3g37crfnyf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 19 May 2022 14:08:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HbwZc5smbLVjR84Ja7uPhXdsAG5vq8y1jmvJfZCllau/muNIg/qFtXcAQ1HOzvVTNxPoWS73TMoqFFcI6zzbaq855YgG6yQQRTvRkT+IXdtH/xHJWN+50ONht21UTjWUHt0TXiORpMN4y0p30MbdNukkxrUUHXCu6y+5NLoesxvJOd9KPeGVyaVmQzTG56M4ya7+n3mnygLgfC+8BeY6RuFz79ld/gOldLXQ83qU4HA3qm1FEnxzLdH1fkNusAzAWnAlj/Ic87reXQHjcchURKdy8dspgkhhKrjd/RAw1LtHCGt6A2lw/A1up1Tk/HlLH9YtYKPXdiGudtcuLD8XRQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=oyL4sjCVA99zjLQ8ykrA9DZhGha3aqLKxWmTSPZxw4o=;
- b=n0auprqEu6+EoMpFLEUpGBaYI+z2ZaaIjNzecASDWJHZ/bbuPte2f2X6k/IUbRPmdKwXeIDPGijK6yhkelPu5FBwvWginFmQniMEGdB+QiDunBMmp1ssH6EQWws/n/y/KreyL5WEOjF2/NMfURIV0gxbvFmff9PH+9XN+RqnDcggXfQEh+hNlvji8F1dPwwYdQnz7AVkXAOd6R40Aag61gRSCeJjNX0DkOZVnVCK5VuxGIspQlmWGydYXekvH1WvfnSBT+xYeJQfkRh/zqQF6mO7d0JTKaLZh5NDPHNbgtQUg1tY0aZ0atL2MIw388101g4RIaVpT1SVkKUrulyXeQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oyL4sjCVA99zjLQ8ykrA9DZhGha3aqLKxWmTSPZxw4o=;
- b=TTooHPCUSRXB9+omfAOlDQd1DRdQlB9GRNTHMoEJfoAc4H5NeYDAfkjBLjEoiuB/Gm17JKK4cahJTktoLrK2aWZsvBaU8P1XoEtJ34hCmqdpW7xddT6Da54G2EuqjvNeM/TC7dxEdyNLZfzs2M4Sx6QQEfRQq0HRRBl32R2LAa4=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by DM5PR1001MB2362.namprd10.prod.outlook.com
- (2603:10b6:4:32::39) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.16; Thu, 19 May
- 2022 14:08:13 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::86f:81ba:9951:5a7e]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::86f:81ba:9951:5a7e%2]) with mapi id 15.20.5273.014; Thu, 19 May 2022
- 14:08:13 +0000
-Date: Thu, 19 May 2022 17:08:00 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: fix error code in
- mtk_flow_offload_replace()
-Message-ID: <YoZPQNFPTQI/6ZhP@kili>
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-ClientProxiedBy: ZR0P278CA0082.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::15) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1nrgwz-007Kh1-Qy; Thu, 19 May 2022 14:16:27 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id C206B1F45D2E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652969781;
+ bh=XbAw2pqdCdBIkgqghfc0hWUSQub6dtMpVtqgjfj/UEI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=WhooF1ket7xkncwQFrVakvcjQz5Cnqvyn17ORhSJ1X1ouQpSeqoIEl54SKARlaAUQ
+ XDB3L3hEfaQ3zJgJZS9sJOiWSg9TivMcVCyCyg2e290tkoiopeKV+xMfTfEIzWtclI
+ IUKwk6LxPyBb5doe6T20ga9qzlBqN10pZROpBhOmzCLv+3Y8LiddH1y3myjkKcEZ8x
+ 0JBCuuHpH+8asdc3gg6CNCY5hNZQJ9DLqOYeXO1OlqBfh3TcneYMBeMaJSlbt2lCbr
+ 0VSeYgTwtYfQxJoO9ePC5wzLSMPUtTrUQ7NNMyqdKA5m73pRl3b/+4FGmbSCkVgSwz
+ sU3cJTdzjkxZw==
+Date: Thu, 19 May 2022 10:16:15 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Maxim Kutnij <gtk3@inbox.ru>, Rob Herring <robh+dt@kernel.org>,
+ Sam Shih <sam.shih@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 00/16] Introduce support for MediaTek MT8192 Google
+ Chromebooks
+Message-ID: <20220519141615.2ojp3pihvmwgg5zs@notapiano>
+References: <20220512205602.158273-1-nfraprado@collabora.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 1397eac2-df86-4435-4501-08da39a102ff
-X-MS-TrafficTypeDiagnostic: DM5PR1001MB2362:EE_
-X-Microsoft-Antispam-PRVS: <DM5PR1001MB236222D96E1113FDBD719AE88ED09@DM5PR1001MB2362.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: yw+egIatM0qzXRo7p7WIwakeJJJ2AbjexoK0c9J+hGZxKsli1HCwZtMdMkfAqvsOVnn21WC9B4WUmpTn9spfAxmKtZDv5hJAjPlw3X/yrDTKlcFgOiMlnAXrT1BtyxKeCygw22SiBKcysPGpVzC6AUdoQFEpsc/dnhib72pKMRmAyiKDIRnkWHd1sMf42WPfBESVaRKpgXLFdc7yhBI1oS1qoBWN/Fd6/PT25XKHF3dqYJx4ygGN3lmHf7zuneTpTiwXrIbHb6nGn4hMf0gJWeWk9fqu9Hg74wS5O0Z4Vpm3OLstGio5hk4llxS+FfJDy7cD1n5LXASFNtFdO9RDHdMqRkN/WbxvVsPSH5bDQccmfT3H/snEZuihIbXBHRVKqrYE1kORWZPXomj9iQ/ethOv3SKeqkRnAaLfG30k+a1oitRHi02xDt6jYhaB2Gyhbiqe4GvbWR1AaHwoUFufufe2d6Fg7g8feLBXUl+nF0GnbcUzEMrXwfKG/ZK+yqAZgC1re6QdTZu5kteEzq3614B1xlOz8LOw7HzRaaLilujfWeP9WzQSoB1UYZiI7olVrGGAk6BBjEdeoAIeHR4ALYOtWvJS6nr+IzjQoizSajzkE9bJc2/aBcTBtgTbHvHJYrQDRbOAGXBtfNw7G3v3nRof7/uRx8a5nsVe+p1VlPk6rFhLZwmAfguhLQyiGlIh+RyZxkXcyda770PTepl/yg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(52116002)(7416002)(5660300002)(86362001)(6916009)(186003)(54906003)(316002)(44832011)(83380400001)(9686003)(2906002)(508600001)(6512007)(4326008)(8676002)(38100700002)(38350700002)(6666004)(26005)(33716001)(8936002)(66556008)(6486002)(66476007)(66946007)(6506007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?EzHZpu45rBCLT2+UgP8aycqOCUTqGAT49IVBCy9nKuiILowsdYGqjgaPMyxa?=
- =?us-ascii?Q?+Z1XOtHHremtuyS6Vr8oydvVLsB2/wWDYYlh7Fn0pp6pA591y8KU322z8MV0?=
- =?us-ascii?Q?0hMPHYhK7pq2bOhelLtPrGKU5j5E1rKB4wztVmJNEu6XEWpHtoFF4BuEXtnG?=
- =?us-ascii?Q?FvZezxuKyRFSlShnf6gqrM9Yce4weRMOC+SKUK5eXtkpHnE3EU4PvgEQKET1?=
- =?us-ascii?Q?0KswpmWoZG52/klOZz/Mc3DiJ3Glu9ymwZSH25budYSwnc8cqCRjc37nQJIi?=
- =?us-ascii?Q?r327c45ikMArHIfVO7mrKqYTEO5h8kS31/rzEGp2UTibF6hatjgVre3vbo8M?=
- =?us-ascii?Q?l4JAhBLNC+w0RdskD1i6b0sfnv5Kr2vbYWMpzfWzFvP+3eId2sT4ZORpt0q3?=
- =?us-ascii?Q?Qy+7w/8qBZQMNyfTOw57IH23VX5AYVzfWHBjdZmeUVzHj4yTQS2cYR/D2tB/?=
- =?us-ascii?Q?3Wt45891aWZtwakL99KuspqcQC7lixlTEP1pk0kMVMYP73jScHmBF9gVReeH?=
- =?us-ascii?Q?cQLnHWVATFAvRka5pEcVzDPltdPskdk7zTcd44Oxes1XqSzNXF9OqN8SnOVX?=
- =?us-ascii?Q?MoXCIBGEkqfbt3pd5C72WkPC3Ks22pBifkVlTXqDAF4nkwl7MRQLS3i82vjX?=
- =?us-ascii?Q?sNprwGsLSafVPI3f/LKaLNT6K8UmhIs9g10clGAuKrxR+mLUIv9OC+cvqWNl?=
- =?us-ascii?Q?pGVmQc1xhE/gmTqqRRJ4GkejsFNBoG7tWx6CQlNLBpaXbhVc6nSAwlcbrplQ?=
- =?us-ascii?Q?h+gKv076y0JFLnVAbpnH15rvpdK5BalhFWtSrLQ3w4JIsuOksZvlwi3Gv6aF?=
- =?us-ascii?Q?4Ho4/Mv7n+oa0ec/DCN+izy7mm1iCpicbAT2XEN+o6Pfdl1jAcclXmlrhrlv?=
- =?us-ascii?Q?8NzDi9sa21tohCiBWdbCy5jnSnQfSznuuD9jQdUI1BSUWHunEHMY7pQUfVZC?=
- =?us-ascii?Q?3pF2nIz3a/kb2oYhRz9qAwAdRq4uR21dpL1m9VnlH/WCBfH+uA/EHs5oaZid?=
- =?us-ascii?Q?s95XsSL9RTfLyh0/3zcSGSTvaCpC6yHkLZq3rwlQEHq58VHRfv8B7T+RnTZ6?=
- =?us-ascii?Q?+wKxzOZ3H6Ywlm9nx2m+kgGEiPLXDI4ygazeo5AQhL6/pfdcMjZTDYf8BUjp?=
- =?us-ascii?Q?Cl+zPRHeA6Ee5vYJ8tJ30bEfvFiUX3zfq7rY1Z/dVefdiAQWm50+cd/M8M/p?=
- =?us-ascii?Q?rLEfu8BJX2pn8XzLhQjy3oyL6ltsBB7ZcvowfTLAx1Mml5vKtpKiLl0nP7Xp?=
- =?us-ascii?Q?Xl55CexhW5WpIjaEW5JDc+UKZH0djce/zO4rYmMA8mhxLjx1NzzzHhKsrdbb?=
- =?us-ascii?Q?Fiaf3QyXvW+lHRN/rRk2i4vyIkGMvii2fUqfK/QDokk7Nb6oz6C/iNsPums3?=
- =?us-ascii?Q?5zLHb3ymP9PT0ccPy7fJjymPdLh67z2W+ly2aWBKbtug1qxMUp6fu3+D2mW0?=
- =?us-ascii?Q?5dQQtEefGuDyj/sRHgQPJTBjEOvWvJIu/FvSAIHzfwttYCHCQfA+jKFe5fV9?=
- =?us-ascii?Q?y1TS0HQQWHwZVwYtXg3/wgyTahV+jREKJN2yVGXYZWS/IbWCDwTZI+LFSwTE?=
- =?us-ascii?Q?IYShyMO7kSEB7uVcayhIHPyN1fpOmRRt5gasgBPzIcsjR9fYkTnOiPWa6wOP?=
- =?us-ascii?Q?X13DSosz0B5MX4Bzc8i7r2I9Hrm3QyDsTulmMWNkdQ6EEHK6JHHRtQYTq5+P?=
- =?us-ascii?Q?lJA7BnlTJZnJI+2OQtnEEwVWlhqBvLh4VYANSgI5YEZGadLJ7d3YJCb0guAu?=
- =?us-ascii?Q?Q61DpFmLSsUEjuOcrphG+3tSE6Fjn5Q=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1397eac2-df86-4435-4501-08da39a102ff
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2022 14:08:13.0085 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: f/Qlf55NAqbyh7QL1ZE9WKPucRxdAdbPl6kVGeA7YzLjWil5Tms4E8X+87nmzkFVo4LG7PYcULTUd9lv76eJgL+yefBaG6JhaFF8tu9Y1qQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR1001MB2362
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486, 18.0.874
- definitions=2022-05-19_04:2022-05-19,
- 2022-05-19 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- malwarescore=0 mlxscore=0
- phishscore=0 bulkscore=0 mlxlogscore=999 adultscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
- definitions=main-2205190082
-X-Proofpoint-GUID: iFm_nQWfzKW68TWHdv1x__qNhBZZEBj2
-X-Proofpoint-ORIG-GUID: iFm_nQWfzKW68TWHdv1x__qNhBZZEBj2
+Content-Disposition: inline
+In-Reply-To: <20220512205602.158273-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_070826_906445_3F0B3B63 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20220519_071626_150061_4703ADCC 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,41 +70,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Preserve the error code from mtk_foe_entry_commit().  Do not return
-success.
+On Thu, May 12, 2022 at 04:55:46PM -0400, N=EDcolas F. R. A. Prado wrote:
+> =
 
-Fixes: c4f033d9e03e ("net: ethernet: mtk_eth_soc: rework hardware flow table management")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
-The original code used to preserve the error code.  I'm pretty sure
-returning an error is the correct thing.  I guess please double check
-this patch.
+> This series introduces Devicetrees for the MT8192-based Asurada platform
+> as well as Asurada Spherion and Asurada Hayato boards.
+> =
 
- drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+> Support for the boards is added to the extent that is currently enabled
+> in the mt8192.dtsi, as to not add any dependencies to this series.
+> =
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 1fe31058b0f2..a641a44323a9 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -434,7 +434,8 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 	memcpy(&entry->data, &foe, sizeof(entry->data));
- 	entry->wed_index = wed_index;
- 
--	if (mtk_foe_entry_commit(eth->ppe, entry) < 0)
-+	err = mtk_foe_entry_commit(eth->ppe, entry);
-+	if (err < 0)
- 		goto free;
- 
- 	err = rhashtable_insert_fast(&eth->flow_table, &entry->node,
--- 
-2.35.1
+> This series was peer-reviewed internally before submission.
 
+Hi,
+
+it was noticed that there are some inconsistencies in the pinctrl-mt8192.c
+driver and patches will be sent to fix them. Since this series would add the
+first users for the mt8192 pinctrl, let's hold off this series for now, in =
+order
+to avoid any ABI breakage. After the pinctrl patches land, I'll do any upda=
+tes
+needed in the DT and send a new version for this series.
+
+Thanks,
+N=EDcolas
+
+> =
+
+> v2: https://lore.kernel.org/all/20220505194550.3094656-1-nfraprado@collab=
+ora.com/
+> v1: https://lore.kernel.org/all/20220316151327.564214-1-nfraprado@collabo=
+ra.com/
+> =
+
+> Changes in v3:
+> - Renamed regulator nodes to be generic
+> - Fixed keyboard layout for Hayato
+> =
+
+> Changes in v2:
+> - Added patches 1-2 for Mediatek board dt-bindings
+> - Added patches 13-16 enabling hardware for Asurada that has since been
+>   enabled on mt8192.dtsi
+> =
+
+> N=EDcolas F. R. A. Prado (16):
+>   dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-spherion
+>   dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-hayato
+>   arm64: dts: mediatek: Introduce MT8192-based Asurada board family
+>   arm64: dts: mediatek: asurada: Document GPIO names
+>   arm64: dts: mediatek: asurada: Add system-wide power supplies
+>   arm64: dts: mediatek: asurada: Enable and configure I2C and SPI busses
+>   arm64: dts: mediatek: asurada: Add ChromeOS EC
+>   arm64: dts: mediatek: asurada: Add keyboard mapping for the top row
+>   arm64: dts: mediatek: asurada: Add Cr50 TPM
+>   arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
+>   arm64: dts: mediatek: asurada: Add I2C touchscreen
+>   arm64: dts: mediatek: spherion: Add keyboard backlight
+>   arm64: dts: mediatek: asurada: Enable XHCI
+>   arm64: dts: mediatek: asurada: Enable PCIe and add WiFi
+>   arm64: dts: mediatek: asurada: Add MT6359 PMIC
+>   arm64: dts: mediatek: asurada: Add SPMI regulators
+> =
+
+>  .../devicetree/bindings/arm/mediatek.yaml     |  13 +
+>  arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>  .../dts/mediatek/mt8192-asurada-hayato-r1.dts |  47 ++
+>  .../mediatek/mt8192-asurada-spherion-r0.dts   |  62 ++
+>  .../boot/dts/mediatek/mt8192-asurada.dtsi     | 748 ++++++++++++++++++
+>  5 files changed, 872 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1=
+.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-=
+r0.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> =
+
+> -- =
+
+> 2.36.1
 
 _______________________________________________
 Linux-mediatek mailing list
