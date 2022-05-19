@@ -4,74 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A34C5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 13:18:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5106C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 13:19:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZpztIzOUweCMDiklxcq8aILJ4Uv//aqOB6NGxeltMTE=; b=osydaUCvqxklE4
-	npaRcnafB+7cWQXgchmYe0bVtHsXb61MMa9YDQxlft8gRB3EIUxUMBBiIn2+rfmXUdFs0LbclCSpV
-	apcynguChEEgAdiocnJ1CjCNazKBUgVUL411uEt4TAf5BPeysoiJDaqleWA/KohqdkhaiYPI+Hb9Q
-	h9Sa3nENvmydNiSXvL0GLdQQ5u7NDjwPJ85QkihhdWd0d0gv+kMBhcysNXWQr9w95t6S3oh07FCYi
-	X4Pgm6+26Bz6uNkrBHt1QnMG7HjDObGozXgGzUqz8pzu02QugQpZ1C3KFc+KUZuRYAmsBXrwubCMZ
-	BduhslVox6bwt7Bjw9HQ==;
+	List-Owner; bh=rQhJ2ie7A+CKtBwvwOsJ1bIqUkffAmxUOIF/7rb0FxQ=; b=UzfmYl4qBYdVky
+	WaLH1CRhWzght+c5gtq37KcgPV6uhgq/1St230Wo7iancdhK9OgILHeICUjn05yD1J7jhvvw9Clsd
+	IKb2V0nbHCfieNvkp/Dd6qSZVMevu9tfjfLPY+ZkfcwUax9hKi6ssGL1/FZ8g71cvcxyPkP0Dm98h
+	UcoSzTICSh5QX0jmJ1WwBZ15J8973kKECzkc1IzJeAPNWCnbT8R42mLGyMcfLstmSqO1YJ/BG0LgL
+	XfPvqOx00rloIjORs7vTNmHNsElFlaNc525YUYhwgnEmWMtQcUFmBF5giXmbFIJ4AQ6/3TQR/MKX5
+	wxxp1OJcUrTbbaGoa/cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrg2w-006ykn-Hd; Thu, 19 May 2022 13:18:30 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1nrg3f-006z8L-6A; Thu, 19 May 2022 13:19:15 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrfyR-006wMp-Tz
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 13:13:53 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id o80so9014980ybg.1
- for <linux-mediatek@lists.infradead.org>; Thu, 19 May 2022 06:13:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pU36f99eaZPxWc0unxPX9BsTsHo3kBMFnigWJpZIqUk=;
- b=NkuSkM4NnbBU4jIXuNzuDcd7T3EznqprgLSY+0J5GlXq39Kk/bVSP2ZVAEVvwGrui2
- DWUDMGpDhK45ebpEZjbwyxZCpJ6XPoMR2m8bdehall8m/mNmGrMaHTDV4r5lrvX4KhC3
- Szvu3aRZptzycSbdxytyx8zvTOfVLF5U40bgGBUvLv5YDO80Cbaw2EgPT7GG84ybLcFQ
- VK6n8/IGKs7sF47Ctc6cgtp7FbgE097cQFfmAvwe9Ao/egbTPxoPRzsyIcpPwZc0bJUX
- YyEi2MzopnelF92IZeXztApu885ZF4fBJty99yI94ZXpkdRsbxd/oc66q65lVBwMLd+h
- t+VA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pU36f99eaZPxWc0unxPX9BsTsHo3kBMFnigWJpZIqUk=;
- b=V1YVb7J47Et6petRw7oWpX15cRJ28sOy+Tw1NE/etfbjUzQ5ZAPemhVirSEqpndIrp
- zyWL0WtL3uaYiCCbo2vPI6HywZ1vf9GKbOdgTC4f3dF6kewb4l7Gv0Dcu2IqDKmbx9k2
- DiYktQD9fxt7GqVN7BYoNXKkBZn9OCEj+Eurnlw/EQAp3b8y2wezpFb9399+fHdQYh5u
- 7h6PPdaktvD9TQeMtPkItljZJPFV9AoGz5iRd5sa7b0mdzRdDjaIyVZSYVwr8oNYBXzV
- mlHgE5TdQHb8isNInL+k/lULTSk7KIZwCQylwAIK3TgtwkNOPwuBoFtpIZhG1tNtrzGT
- XoJQ==
-X-Gm-Message-State: AOAM532PSqt8Zal1hFiIV4Qk1bGYEqd7jsntL+sWQrmY1Y2UFDTOIGKT
- sJtnjo3idc6ZVQUC/poRXtmRIMDo8qDQ0JQ56ixwMQ==
-X-Google-Smtp-Source: ABdhPJyJIP7Hag/4KdBY4u76XwIRxLNZPBE8+9JcpJlpRiGV0RoIBhT0aDk8kici5QeY4pJPkV2i1OGCVw41LmNy610=
-X-Received: by 2002:a05:6902:704:b0:64d:f270:22b0 with SMTP id
- k4-20020a056902070400b0064df27022b0mr4392907ybt.626.1652966022951; Thu, 19
- May 2022 06:13:42 -0700 (PDT)
+ id 1nrfzb-006wzt-Uk; Thu, 19 May 2022 13:15:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=1Qau8N189c6qQ1DvRBrKCoXkXc1SDys4onw+5HcpY5E=; b=fcDupoRAlyaVYJq+I47XWhkzlj
+ 6WSik0t0jWw6bEJbJ8K6IS8g+pPNRZfPo2b9CE5dH8ULDL9XeXn2X3tPp+9zJRWkQ+UG7xHz2OLlG
+ eS8lksWeyKEULSEXCW0T8BNsyBhIl9EHRHZZydwa35qv8lXv8zUnR+8N8gAeMc7B/x47PraXHowS5
+ KKh8zkxkGOGv+fZbEqNbzXI2WHm9Ip9xuIK8tp+UGFRzGzIBBHQXpBJyrX+w11iUv7X+QAjTvBaw3
+ 9pngOvaUDh2w/ptQUfGR3CC8Z//WWDiHBJ10a9Ygo09cBObNZEVeWEQE5+/nhq3lpLbD02+R5KYid
+ qtrcc84Q==;
+Received: from j217100.upc-j.chello.nl ([24.132.217.100]
+ helo=worktop.programming.kicks-ass.net)
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nrfzT-00CkKT-0P; Thu, 19 May 2022 13:14:55 +0000
+Received: by worktop.programming.kicks-ass.net (Postfix, from userid 1000)
+ id 8B351980E0B; Thu, 19 May 2022 15:14:52 +0200 (CEST)
+Date: Thu, 19 May 2022 15:14:52 +0200
+From: Peter Zijlstra <peterz@infradead.org>
+To: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+Cc: Daniel Bristot de Oliveira <bristot@redhat.com>,
+ Valentin Schneider <vschneid@redhat.com>, tglx@linutronix.de,
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Jonathan.JMChen@mediatek.com,
+ "chris.redpath@arm.com" <chris.redpath@arm.com>,
+ Dietmar Eggemann <dietmar.eggemann@arm.com>,
+ Vincent Donnefort <vdonnefort@gmail.com>,
+ Ingo Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
+ Vincent Guittot <vincent.guittot@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>,
+ Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+ Christian Brauner <brauner@kernel.org>
+Subject: Re: [Bug] Race condition between CPU hotplug off flow and
+ __sched_setscheduler()
+Message-ID: <20220519131452.GG2578@worktop.programming.kicks-ass.net>
+References: <4a0aa13c99ffd6aea6426f83314aa2a91bc8933f.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20220517083957.11816-1-angelogioacchino.delregno@collabora.com>
- <20220517083957.11816-2-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220517083957.11816-2-angelogioacchino.delregno@collabora.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 19 May 2022 15:13:31 +0200
-Message-ID: <CACRpkdaj42rcQdX1+dVWyHmexrq4UDQHB0JLHgfREY9kn0zv2A@mail.gmail.com>
-Subject: Re: [PATCH v4 1/2] dt-bindings: pinctrl: Add MediaTek MT6795 pinctrl
- bindings
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
- matthias.bgg@gmail.com, sean.wang@kernel.org, linux-gpio@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, nfraprado@collabora.com
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_061351_996472_89A162B7 
-X-CRM114-Status: UNSURE (   8.41  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <4a0aa13c99ffd6aea6426f83314aa2a91bc8933f.camel@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,23 +79,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 17, 2022 at 10:40 AM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Thu, May 19, 2022 at 08:53:15PM +0800, Jing-Ting Wu wrote:
+> Hi all
+> 
+> 
+> There is a race condition between CPU hotplug off flow and
+> __sched_setscheduler(), which will cause hang-up in CPU hotplug off
+> flow.
 
-> Add devicetree and pinfunc bindings for MediaTek Helio X10 MT6795.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Patch applied, along with patch 2.
-
-BTW nice work on the X10!!
-I can see from the feature matrix here:
-https://wiki.postmarketos.org/wiki/Mediatek
-that this enables a whole slew of cheapo phones and tablets to be used
-with PostmarketOS.
-
-Yours,
-Linus Walleij
+Oooh, you're using core scheduling and the A/B are SMT siblings?
 
 _______________________________________________
 Linux-mediatek mailing list
