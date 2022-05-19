@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5106C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 13:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B098C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 13:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rQhJ2ie7A+CKtBwvwOsJ1bIqUkffAmxUOIF/7rb0FxQ=; b=UzfmYl4qBYdVky
-	WaLH1CRhWzght+c5gtq37KcgPV6uhgq/1St230Wo7iancdhK9OgILHeICUjn05yD1J7jhvvw9Clsd
-	IKb2V0nbHCfieNvkp/Dd6qSZVMevu9tfjfLPY+ZkfcwUax9hKi6ssGL1/FZ8g71cvcxyPkP0Dm98h
-	UcoSzTICSh5QX0jmJ1WwBZ15J8973kKECzkc1IzJeAPNWCnbT8R42mLGyMcfLstmSqO1YJ/BG0LgL
-	XfPvqOx00rloIjORs7vTNmHNsElFlaNc525YUYhwgnEmWMtQcUFmBF5giXmbFIJ4AQ6/3TQR/MKX5
-	wxxp1OJcUrTbbaGoa/cA==;
+	List-Owner; bh=sLwrYClcFEw4d4GPWhf9CzGEbNC2zGJ2rFhFeHHg+wQ=; b=rbTNdQGp6UYuBS
+	hOwClJ9QrfzHUiYobyUtcJaFi79dKIMWF4GQHhVwLbnzHIoKNMjNsozSRr3g25xHEbSwyOu0x/iTY
+	+/75ggPX9LkPS4QvBnqDt+F0DN7ul0dfEt1kvOHjSP9wVy25vQNnXtEba6H72/XajgA8DCMK/NCBX
+	uzc7/l61dG0XEpwivBj+v4vFGgsNXjoBxT5kQg1+CSj907qjZfHWHNjuUAmMpSamzfutA5drMBvtI
+	wUHkyj/xnTuebEFVFMtitV3aNfgAzsuhYooO1YptY7AMzDo1LU9ft8rqrxluCbDn7t0iCLRQiq9GD
+	o97eZ7IHMGPyphqYA8uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrg3f-006z8L-6A; Thu, 19 May 2022 13:19:15 +0000
+	id 1nrg5k-0070Jg-1I; Thu, 19 May 2022 13:21:24 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrfzb-006wzt-Uk; Thu, 19 May 2022 13:15:03 +0000
+ id 1nrg3t-006zGJ-KB; Thu, 19 May 2022 13:19:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=1Qau8N189c6qQ1DvRBrKCoXkXc1SDys4onw+5HcpY5E=; b=fcDupoRAlyaVYJq+I47XWhkzlj
- 6WSik0t0jWw6bEJbJ8K6IS8g+pPNRZfPo2b9CE5dH8ULDL9XeXn2X3tPp+9zJRWkQ+UG7xHz2OLlG
- eS8lksWeyKEULSEXCW0T8BNsyBhIl9EHRHZZydwa35qv8lXv8zUnR+8N8gAeMc7B/x47PraXHowS5
- KKh8zkxkGOGv+fZbEqNbzXI2WHm9Ip9xuIK8tp+UGFRzGzIBBHQXpBJyrX+w11iUv7X+QAjTvBaw3
- 9pngOvaUDh2w/ptQUfGR3CC8Z//WWDiHBJ10a9Ygo09cBObNZEVeWEQE5+/nhq3lpLbD02+R5KYid
- qtrcc84Q==;
+ bh=l7xioVIlid5Wh7WU7WZik6lZur+fLsYpq5g+mTWR0Pk=; b=b7a17+X2himp3SfbrlHjutD4cj
+ ceQv50Quxzo5sFDHtR7tWwnE83YvGYTrixHxz328sN1rnEAvZKhNgxCOAlJbEHAT3ZAhtqjzNN/3k
+ SzoBUjE8nyON1GXKlkJQsqh5cky8daxU89PvFipgxtLiZUoNVgQ6IFeYm2ZCjYuDSABhTKytHLj2n
+ FlPEw5KRtN+zrftwcAr4u1OQKbe2dxpuzW1qp8iAMrxHO9nvapnp0lNY6d+7qc55rP4MwkbDMbLiK
+ xMqPIlpTfzV3ax22Rlp+KvjVyUDSh51FI6vF1QO6EH/xqWpqf8EmN3A8fqcHXyZ0XYTgKRdjju2Dn
+ Wj4cF9kw==;
 Received: from j217100.upc-j.chello.nl ([24.132.217.100]
  helo=worktop.programming.kicks-ass.net)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrfzT-00CkKT-0P; Thu, 19 May 2022 13:14:55 +0000
+ id 1nrg3r-00CkWv-Cc; Thu, 19 May 2022 13:19:27 +0000
 Received: by worktop.programming.kicks-ass.net (Postfix, from userid 1000)
- id 8B351980E0B; Thu, 19 May 2022 15:14:52 +0200 (CEST)
-Date: Thu, 19 May 2022 15:14:52 +0200
+ id EBE42980E0B; Thu, 19 May 2022 15:19:26 +0200 (CEST)
+Date: Thu, 19 May 2022 15:19:26 +0200
 From: Peter Zijlstra <peterz@infradead.org>
 To: Jing-Ting Wu <jing-ting.wu@mediatek.com>
 Cc: Daniel Bristot de Oliveira <bristot@redhat.com>,
@@ -58,11 +58,12 @@ Cc: Daniel Bristot de Oliveira <bristot@redhat.com>,
  Christian Brauner <brauner@kernel.org>
 Subject: Re: [Bug] Race condition between CPU hotplug off flow and
  __sched_setscheduler()
-Message-ID: <20220519131452.GG2578@worktop.programming.kicks-ass.net>
+Message-ID: <20220519131926.GB6479@worktop.programming.kicks-ass.net>
 References: <4a0aa13c99ffd6aea6426f83314aa2a91bc8933f.camel@mediatek.com>
+ <20220519131452.GG2578@worktop.programming.kicks-ass.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <4a0aa13c99ffd6aea6426f83314aa2a91bc8933f.camel@mediatek.com>
+In-Reply-To: <20220519131452.GG2578@worktop.programming.kicks-ass.net>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,15 +80,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 19, 2022 at 08:53:15PM +0800, Jing-Ting Wu wrote:
-> Hi all
+On Thu, May 19, 2022 at 03:14:52PM +0200, Peter Zijlstra wrote:
+> On Thu, May 19, 2022 at 08:53:15PM +0800, Jing-Ting Wu wrote:
+> > Hi all
+> > 
+> > 
+> > There is a race condition between CPU hotplug off flow and
+> > __sched_setscheduler(), which will cause hang-up in CPU hotplug off
+> > flow.
 > 
-> 
-> There is a race condition between CPU hotplug off flow and
-> __sched_setscheduler(), which will cause hang-up in CPU hotplug off
-> flow.
+> Oooh, you're using core scheduling and the A/B are SMT siblings?
 
-Oooh, you're using core scheduling and the A/B are SMT siblings?
+Hmm, no.. lemme try again.
 
 _______________________________________________
 Linux-mediatek mailing list
