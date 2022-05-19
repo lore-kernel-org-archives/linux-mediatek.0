@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F99C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 14:52:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18704C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 14:53:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8fCSoUX1G06o8K7Vg4QPIMYP04W4UcksNo8hbismHDs=; b=fYZYwka9wWTuPb
-	YIusxtHOEJPnLNSHXM3hBN0ko/lwmM2IW7Zui3+IgAAfYOuQWXq1z2sZNCY5pQ9pXAATaYggYYs62
-	GCv5AsFLvm9/ty+Ijrj5fdggTokb4uX93kjXACzr7oSBu+hn4cSVKw3xRffcjVkqVCfoxLfgG88Z2
-	kXPonUdqydcGqiNEcFloip82EdR8OwVNzMAkhl5R0P/6RUHQoBt3qofF7vGA/0swGi1MHT7P3XuXF
-	mwo7N/hi1zGkEx/Dy2jORNuZjWfLuYGGb8hyRuEX8jtt/KLSxHAcuMfc/NGqVOdE+1YHveaavwHbD
-	l1GoWtzlYIGe240M1pMg==;
+	List-Owner; bh=hlqG35gOh4DQblRbtqhEPEjcaguF1jicbjBVCBuwzlo=; b=xUoUsGYU0T6t0Q
+	qLUrnLAKfrvbzo7yc89FHvsHCqfEJOrypZbeTZuPUW9oyEtBA3a1/MMdn1sK4vYcjDave6Q7lIYRv
+	rgf8ZT6GSiwLDES4CzyyHIfSM1AGKEnQ0CeI+DdeIRiGle+B3ydOY4YPsfG32eMql/V74dd97vEJ8
+	ZXZuLNjH4Lo8xiv0lXnIFm7UrSMY2lcj9VPBjw6uZTIadLAxGrlHO0xE0YnnhRJrY3NLxEa2WH8qo
+	M18uqdSIAGBYSlSv2FDY8zqEFqnUKMiwzmkYDTh23UQuVSzZPnNpe/4gxqpNDClMCKYyFIUCMAEZA
+	Nz/8ByEakf1mPVc5FO6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrhVM-007ba5-2j; Thu, 19 May 2022 14:51:56 +0000
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+	id 1nrhWp-007cOW-Jp; Thu, 19 May 2022 14:53:27 +0000
+Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrgWr-0078Oo-Gm; Thu, 19 May 2022 13:49:27 +0000
-Received: by mail-qv1-xf31.google.com with SMTP id ej7so4590934qvb.13;
- Thu, 19 May 2022 06:49:23 -0700 (PDT)
+ id 1nrgWz-0078TJ-Bz; Thu, 19 May 2022 13:49:36 +0000
+Received: by mail-qk1-x734.google.com with SMTP id 135so2213154qkm.4;
+ Thu, 19 May 2022 06:49:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0XR4ztzwAfmurkh92tXKLFkllUmpZEqqatJbPeBbcOM=;
- b=m+kywaRl9XQL9PMsizCVDjVI4pa4msSwSGHHkLzTxeizpWwebWTLOtp0fGGy7zcdA3
- JNUQc3vk1MYM56qDik0bw+s1rFMdPA5/2s5l7IdzpbBj1Nno28ggt0dM2M84iU4cW+ba
- 7mtzTUMAGu0K/k8LTaw9Cz27HE6mHrCe32yDTj5h3kXfwxm0rPqC+v7p4u8PacpXGYLQ
- vgR6fF+OG3mt4jYAZGiESEB3mqlZLGN6vFHJ5yJZLJpB+bAXjxGF5cvaZ68tNTt5pRfo
- 8mMnPQIy0Dqtei/2DeV72q+PmDLnmTUtuUYlYtdB25xJ7LryAD8n08vvKC00fnOz31H5
- rwIw==
+ bh=wwBfJw5/BJNtRay4oCR2RSqvzBCGfp1734JkjgoOzz4=;
+ b=fs/uXmWU4zDYd3zoUKnpovlsFnqcRqmWaXzoviY7wwM2pBe5X5WKqiF/JoNVYlXgqo
+ rd1qd9Pca064uvXp6jBK8L6PO0tKPNYhFtemVkpvOinxgzdQf0reeVTqxBroIjdI8lmf
+ ZzbDvr1GK9OPkNPRntI+WIQdO1NsTUvp0M820JOhdvjqfpLhrBarf+F33e5PcPb7lYDY
+ aeIsjzgla1dh87peoGViai6UGzX3IduUt7quVBqvOuii60owMzU8tZxKvEiAoV9zIiC0
+ LdnZ1xo8sWe6VpuZbVWl7fRERJF+yx+H4Qo43BuOxWLGcsKb9O58JZGN9087LAfxSO/S
+ asyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0XR4ztzwAfmurkh92tXKLFkllUmpZEqqatJbPeBbcOM=;
- b=xE5kC3H8cyvrD12XevMBOh44bN1ag6WHoTOCCzzkiPCcAvIqKRCl3kVfIGxNUi179g
- s6+P4ClqTZfIseHP04KH3ek69RAA8ZOV/MOYJ5ssRdNEaS8MIQZs6y4E6OscW85FbLDs
- f/MVthvxp2KEuLHKuu72UwykpIo3EmJ1kn6ZWroEqGYwUeYTjKcCRlihEgUelGJTxLmH
- LrcEtJmq5yHU9zK5JxiZfuR07eayE55Z3FjSQfqKLrm8QwLT9NhRFRlsTXCM42UKpcsf
- z74wQAeCMlyr8EWGs2cUPTW95xtLqscrzsSd41RWSbhal1/YswJ+ayuEBypj6lbOqt8g
- 1J/Q==
-X-Gm-Message-State: AOAM532WTw71fPdkSSnmU9eqoZ4r/dySxZbCf6BdCQ5QuWGBDq2rLiG2
- xcRWnO2A42Ue+TW8psQ7V0icmMwjYLonYtJe4GY=
-X-Google-Smtp-Source: ABdhPJz3B+e46dXhNUkl2WT1y31axELp3CqGKGpHA3AN7h3CTzl9SjS7mKx+1xlBV234PR20g/oMdw==
-X-Received: by 2002:a05:6214:e4a:b0:45a:dfa5:404a with SMTP id
- o10-20020a0562140e4a00b0045adfa5404amr3973844qvc.126.1652968163004; 
- Thu, 19 May 2022 06:49:23 -0700 (PDT)
+ bh=wwBfJw5/BJNtRay4oCR2RSqvzBCGfp1734JkjgoOzz4=;
+ b=NSp0suTKBlkn7UHdCT9MmCsCqQWrq6GrAm+MbO5PXh9Gy4BqqQK/jlBXG1blY7z45E
+ qPjAQJUkxaE+q2gLmcMJIqbjkUIiiYam6Ak0KMiikBdjgxPgwBC1NTy/xehJzPIqC/TN
+ LZV8FcuMp/nnOWM+fk3MCOoV/+sZt8OlyS25V5emzg3ahx7K2/k0QEUD62Wp+EKaOyUI
+ VbS8vQIvGPVMhWsp49HCrRFLDrVWfmggh/6Gnfq5WChJF36kek63yBeATTig8ens3pMM
+ yA6SkEPNIMFoNOYse3Y7+Sgtb2dWGEQ2xEQLdsQu9TVLKr8C/O/FuHYzqFPXgXJYMLF/
+ CaQg==
+X-Gm-Message-State: AOAM5329gQ51An8qAQTZLaeEowmqraqXwDIbBVHh+NbqKt2THycCqX82
+ YbPD3vL7NIggCfpZSEJD+n4=
+X-Google-Smtp-Source: ABdhPJxXOzQEfbshSAFTXW/WKDfXcuWSh8vP79n1R4ztS9+cKHzly2gJ9NajNbLKHmij01cQOZXqDA==
+X-Received: by 2002:a05:620a:258b:b0:680:f66e:3381 with SMTP id
+ x11-20020a05620a258b00b00680f66e3381mr2961492qko.291.1652968170786; 
+ Thu, 19 May 2022 06:49:30 -0700 (PDT)
 Received: from localhost.localdomain ([217.138.206.82])
  by smtp.gmail.com with ESMTPSA id
- i186-20020a3754c3000000b0069fc13ce23dsm1315024qkb.110.2022.05.19.06.49.17
+ i186-20020a3754c3000000b0069fc13ce23dsm1315024qkb.110.2022.05.19.06.49.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 May 2022 06:49:22 -0700 (PDT)
+ Thu, 19 May 2022 06:49:30 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Michael Turquette <mturquette@baylibre.com>,
@@ -73,17 +73,17 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
  linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  ~postmarketos/upstreaming@lists.sr.ht
-Subject: [PATCH 1/6] clk: mediatek: gate: Export
- mtk_clk_register_gates_with_dev
-Date: Thu, 19 May 2022 17:47:23 +0400
-Message-Id: <20220519134728.456643-2-y.oudjana@protonmail.com>
+Subject: [PATCH 2/6] clk: mediatek: Use mtk_clk_register_gates_with_dev in
+ simple probe
+Date: Thu, 19 May 2022 17:47:24 +0400
+Message-Id: <20220519134728.456643-3-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220519134728.456643-1-y.oudjana@protonmail.com>
 References: <20220519134728.456643-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_064925_590560_5C3AF940 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20220519_064933_466586_7D5CCB4D 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,7 +102,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-This allows it to be used in drivers built as modules.
+Register gates with dev in mtk_clk_simple_probe.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 ---
@@ -114,21 +114,23 @@ Dependencies:
 - Export required symbols to compile clk drivers as module (single patch)
   https://patchwork.kernel.org/project/linux-mediatek/patch/20220518111652.223727-7-angelogioacchino.delregno@collabora.com/
 
- drivers/clk/mediatek/clk-gate.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/clk/mediatek/clk-mtk.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index 421806236228..0c867136e49d 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -261,6 +261,7 @@ int mtk_clk_register_gates_with_dev(struct device_node *node,
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 41e60a7e8ff9..3a8875b6c37f 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -434,7 +434,8 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+ 	if (!clk_data)
+ 		return -ENOMEM;
  
- 	return PTR_ERR(hw);
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_gates_with_dev);
+-	r = mtk_clk_register_gates(node, mcd->clks, mcd->num_clks, clk_data);
++	r = mtk_clk_register_gates_with_dev(node, mcd->clks, mcd->num_clks,
++					    clk_data, &pdev->dev);
+ 	if (r)
+ 		goto free_data;
  
- int mtk_clk_register_gates(struct device_node *node,
- 			   const struct mtk_gate *clks, int num,
 -- 
 2.36.1
 
