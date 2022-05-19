@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FEC8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:56:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDFD2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 16:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6A9VAzDsx/oCaJOdShsAdqfalTr//16Bp3GASO9dDD8=; b=aacBtbZ1P771Eh
-	C8HCAx9HC2RLXDM9PYu0+D5+x1msIatu5wkuOCfVqRMO9tgHGo3ncWBcy1psCjLPVvlX92GYEAxGg
-	fkGvl4/rmIoAZYHpvSc0C47I9wOa4uQJx3BnBS/NdYgv2r5oGKg7rgZFIBdV6eXtQ93TIyvhAHLbm
-	Thhtwp+k5FCHryihT/GTGgw36AC1hOlvDDyF+dH/gzpG7qDX5O27SNE+2NjQAmy71X7A8roA51yO/
-	ZPmoI43DGPXwzBII9DxhSQ0jHD+tX26/5pUeFmLvOftICOQTiuNEcjxTvlHlN+vMmrhyxw3u9E5sX
-	LPpKD+KaRlREOQ65Ag5Q==;
+	List-Owner; bh=PDrUmNntmJR9SQkseGEYnSLFQnnMPsHfaa1+cGik7Os=; b=BNIG4R28dSKlg/
+	jBFPDZ/KLOpyBm9OBWuhv1C678xKuEHlcrpRWu3Diq+RmMieBaBTI5+8muO3Hkr+NQlcZ8v3veKjk
+	rnSwUzqMkYR5RVTPJzJT7XTW5ljj3O16yISc+3Zj/rAF3JrImxMyfi3b6CBpljGeRqInOwT/9ssBO
+	nacGLv+N7T8Biz2NNxbMDjgiSLsoscQd+D6P+5kJT8s5X2o8XzwGi7yP3ciOJhTU4Z2nzH15y7XEu
+	RAP3mQeOtK1Wlml/Up5OOJUQ57gNrDlNvtGp/iZdF21lajVPWpf1KAJc7IMwsumzf1UV2P9+ElWwW
+	3Vyv7vjnM+ss5LcWbjiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriVr-008FZJ-P3; Thu, 19 May 2022 15:56:31 +0000
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38])
+	id 1nriZD-008Gz3-PM; Thu, 19 May 2022 15:59:59 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriQQ-008A0c-0X
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 15:50:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1652975454; x=1684511454;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=VcoL5apGOXcnE01xUyfbtZsy4dcNNKNxkr9YNCjFz7M=;
- b=V7ZRasAGQd/G9DrlXOP+QsZd3B0Si1eIZyfbShSRTQ/MRXK27IwY9c9h
- xVijZKQcYPsCiM6hFkHCENdtDdA0cFJHIvXu9ualXSbDSpDUwEk61VoKF
- 2brKtaz479LMeRLa2bP2ci4NN1614WA/MMMJvnUBJUZBGKZ1InMCJt56o s=;
-Received: from unknown (HELO ironmsg-SD-alpha.qualcomm.com) ([10.53.140.30])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 19 May 2022 08:50:50 -0700
-X-QCInternal: smtphost
-Received: from nasanex01c.na.qualcomm.com ([10.47.97.222])
- by ironmsg-SD-alpha.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2022 08:50:49 -0700
-Received: from nalasex01a.na.qualcomm.com (10.47.209.196) by
- nasanex01c.na.qualcomm.com (10.47.97.222) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Thu, 19 May 2022 08:50:49 -0700
-Received: from [10.110.66.23] (10.80.80.8) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Thu, 19 May
- 2022 08:50:47 -0700
-Message-ID: <36c36cfb-7b0b-db32-2ef3-fddeef10d729@quicinc.com>
-Date: Thu, 19 May 2022 08:50:45 -0700
+ id 1nriZ9-008GwH-Dm; Thu, 19 May 2022 15:59:56 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J66mWA012194;
+ Thu, 19 May 2022 10:43:37 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=PODMain02222019;
+ bh=c2+cG73vCd3ZtcOrElqPXQG3PA9cVuDIrD3DkXQoQOI=;
+ b=kYiTa6s7OhECxUGugwXh/S0xT8I331IBL7AaJiT9MZuPnM0oawRJtgiw+6kSSD51VwY3
+ fCbBB7VxKZ0rF2v0OFq6L/AeuGYhl/wA9KWLwZ0mLX/WBOMS/hCLklPRQBWM2HlMaTOS
+ sPU/Zo+AMIgjpl+TPyPDJt4UBvlNjJbUD7vYvxHL5iTx1zoGkOu1GRbbMQfyUD09ahGw
+ vAys9axnuDLntx+8Zzpe/+Hw9oghvc4ubuIx+DGTq74XpH5dsgv8w2JNhjNmlafeNDhT
+ Pj8kRPfqUmJMKlDE8YeGKCdqvLgw4YG3IEZRLm7WVSAhjofxXOVquVPOvKwTNUyYrHMB Ow== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dn-13
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Thu, 19 May 2022 10:43:37 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
+ 2022 16:43:21 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
+ Frontend Transport; Thu, 19 May 2022 16:43:21 +0100
+Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 677AF11D3;
+ Thu, 19 May 2022 15:43:21 +0000 (UTC)
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
+ <nicolas.ferre@microchip.com>, <nsaenz@kernel.org>,
+ <shawnguo@kernel.org>, <linux-imx@nxp.com>,
+ <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
+ <linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-amlogic@lists.infradead.org>, <daniel@zonque.org>,
+ <srinivas.kandagatla@linaro.org>, <linux-rockchip@lists.infradead.org>,
+ <krzk@kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+ <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
+ <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
+ <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
+ <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
+ <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
+Subject: [PATCH 42/56] ASoC: mxs-saif: Rename set_fmt_new back to set_fmt
+Date: Thu, 19 May 2022 16:43:04 +0100
+Message-ID: <20220519154318.2153729-43-ckeepax@opensource.cirrus.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 1/3] mt76: add 6G band support in mt76_sar_freq_ranges
-Content-Language: en-US
-To: Deren Wu <Deren.Wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>, "Lorenzo
- Bianconi" <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
- Robin Chiu
- <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun
- <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, Stella Chang
- <Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
- Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>
-References: <cover.1652941276.git.deren.wu@mediatek.com>
- <4be64135fe9925fa052d63edf8c253e3586a2e2f.1652941276.git.deren.wu@mediatek.com>
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-In-Reply-To: <4be64135fe9925fa052d63edf8c253e3586a2e2f.1652941276.git.deren.wu@mediatek.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
+X-Proofpoint-GUID: QYVBx5ki8U-lmoaNPnTwr6-Exi_OPvNF
+X-Proofpoint-ORIG-GUID: QYVBx5ki8U-lmoaNPnTwr6-Exi_OPvNF
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_085054_135947_3419B608 
-X-CRM114-Status: UNSURE (   3.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220519_085955_596412_8B62488F 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,13 +90,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-suggest you s/6G/6 GHz/ in the patch subject to avoid confusion between 
-"gigahertz" and "generation"
+Now the core has been migrated across to the new direct clock
+specification we can move the drivers back to the normal set_fmt
+callback.
+
+Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+---
+ sound/soc/mxs/mxs-saif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/mxs/mxs-saif.c b/sound/soc/mxs/mxs-saif.c
+index 38de46ba1583a..467b0f2ce0bb1 100644
+--- a/sound/soc/mxs/mxs-saif.c
++++ b/sound/soc/mxs/mxs-saif.c
+@@ -642,7 +642,7 @@ static const struct snd_soc_dai_ops mxs_saif_dai_ops = {
+ 	.prepare = mxs_saif_prepare,
+ 	.hw_params = mxs_saif_hw_params,
+ 	.set_sysclk = mxs_saif_set_dai_sysclk,
+-	.set_fmt_new = mxs_saif_set_dai_fmt,
++	.set_fmt = mxs_saif_set_dai_fmt,
+ };
+ 
+ static struct snd_soc_dai_driver mxs_saif_dai = {
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
