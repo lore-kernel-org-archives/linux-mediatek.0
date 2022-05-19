@@ -4,70 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 727D6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 10:15:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85565C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 10:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AS5ZHYpf7pMEhfyL2zlG5yHMZvIGVPl3yuS3qmDjTXs=; b=BMmG0qUTjhsrvQ
-	hljVmYgL+Ds6n2MQwQQ4lfyJ6beUIHOWwuVFnyshnYaMxHtt7HPHAXnEM7eEZkgbC30qkdJK1utIb
-	HWdX58CKsHFDAzsUXcOpzoQiickdss+Ep7GeaAAa1Y4ZPmEc4iYuQkUrkiPxKS3YQtfXRJixZ2KY5
-	EebTu+wJcC+KabwI3UeAVi+C8HSZ9kVeiBC8i6kzyormCpeyCHKb0TO7n0kK9ed14WFjW8InLyKJW
-	CO1ammv/7L/Rodh6+HP8X5k7okfWKR6yfNEk8e4j2H1fab9Nv/tsSu1IQ1tGq9sRBNH41cGsQKVr2
-	JyvO4tsUPIfH5XiDeHzw==;
+	List-Owner; bh=O/3oUkmmfMDR5H3MQGajQeyMBS08NsNUcEytG3EqF7o=; b=caYmQpcodr61G+
+	aeaicUEDtnhqZqDMvNdTzeTfq3Yd+vFa42f/OID6C9zyx402h70p0fEhHR8f0DHfekxbjDWv90czD
+	6YK8RqLjK8B3kbsYQ3qPr0cXYs5fZ07/+fDClLO9oeUx6SbIVMitJCKxChw57aSwJAUlzJVSelYeC
+	S2b02/63MysSpqeAUNAi+oK+Q9qPMgkGFY7hNKIWPSdH6ugSYY3MVbLdhdIBEAsR8oYeWsjudNFfy
+	VuiJ35n92L04dxGfTFjBkIxElxLiPV6kqBjnhonhDtnBeOsg//SOB7Rl2mLwSkUjiUHZo2b4v7KEs
+	CmZY36BlJ5YKBET1S1wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrdBw-006F9i-6z; Thu, 19 May 2022 10:15:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nrdEk-006FiZ-8w; Thu, 19 May 2022 10:18:30 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrdBr-006F8V-Lq; Thu, 19 May 2022 10:15:34 +0000
-X-UUID: 7f3e057e237f40c98d9d0637d673cf50-20220519
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:78039d5d-58d1-4f9f-bd75-92144b5328d1,
- OB:-327
- 68,LOB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:-32768,FILE:0,RULE:Relea
- se_Ham,ACTION:release,TS:-5
-X-CID-META: VersionHash:2a19b09, CLOUDID:dac4cbe2-edbf-4bd4-8a34-dfc5f7bb086d,
- C
- OID:nil,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,QS:
- 0,BEC:nil
-X-UUID: 7f3e057e237f40c98d9d0637d673cf50-20220519
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <james.lo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1169189366; Thu, 19 May 2022 03:15:06 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 May 2022 03:10:47 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 May 2022 18:10:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 19 May 2022 18:10:46 +0800
-From: James Lo <james.lo@mediatek.com>
-To: "Rafael J . Wysocki" <rafael@kernel.org>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-pm@vger.kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Fan Chen
- <fan.chen@mediatek.com>, Louis Yu <louis.yu@mediatek.com>, Michael Kao
- <michael.kao@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Ben Tseng
- <ben.tseng@mediatek.com>, James Lo <james.lo@mediatek.com>
-Subject: [v10 1/1] thermal: mediatek: add another get_temp ops for thermal
- sensors
-Date: Thu, 19 May 2022 18:10:44 +0800
-Message-ID: <20220519101044.16765-1-james.lo@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1nrdEX-006Fex-Ro; Thu, 19 May 2022 10:18:20 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id DF3511F45A06
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652955492;
+ bh=elCw2GMrP8XUYjnKjTriaCAevspHDdoKTgv83FjGUQU=;
+ h=From:To:Cc:Subject:Date:From;
+ b=nAMtX5wELFg2hOQVO1y45d6Jnkm2Xjzqzw8l7ncUlQmQzG2Z9r4PZE8CyUZJ054Dn
+ mKhxljLL5HVBu4OQCCj5dYlsTPL8o6Kxt31hQvZTi5xf5hRutyOSv6X4seoX3kKoMc
+ nYa0Gt0zSDykj76rSHcB8QdkIYrGxsjQxE5swhZ0YH9LOuE9GOChIVowhKKiVGvNLC
+ njiS7HoQiodiUIlaY2e99UZ5o5gpGrN7IayPYU8ZfnShMHgb5ZO12JPKOC/QC4k+mO
+ OS3rz1wd4UfNqcPN9VIRG+R7GxXtz43D5t+SrrkI3CIDroP4r1ag0P4biKVG+/xJDW
+ 8U6TDDJhKBV/w==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: jassisinghbrar@gmail.com, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, houlong.wei@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] dt-bindings: mailbox: mtk-gce: Convert txt to json-schema
+Date: Thu, 19 May 2022 12:18:06 +0200
+Message-Id: <20220519101806.18097-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_031531_749315_32046E1A 
-X-CRM114-Status: GOOD (  27.45  )
+X-CRM114-CacheID: sfid-20220519_031818_190978_8AC7555E 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,306 +67,227 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Provide thermal zone to read thermal sensor
-in the SoC. We can read all the thermal sensors
-value in the SoC by the node /sys/class/thermal/
+Convert the mtk-gce documentation from freeform text format to a
+json-schema.
 
-In mtk_thermal_bank_temperature, return -EAGAIN instead of -EACCESS
-on the first read of sensor that often are bogus values.
-This can avoid following warning on boot:
-
-  thermal thermal_zone6: failed to read out thermal zone (-13)
-
-Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-Signed-off-by: James Lo <james.lo@mediatek.com>
-
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-Changes in V10:
-    - Rebase to kernel-v5.18-rc7
-    - Resend
+ .../bindings/mailbox/mediatek,gce-mbox.yaml   | 114 ++++++++++++++++++
+ .../devicetree/bindings/mailbox/mtk-gce.txt   |  82 -------------
+ 2 files changed, 114 insertions(+), 82 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gce-mbox.yaml
+ delete mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
 
-Changes in V9:
-    - Rebase to kernel-v5.14-rc1
-    - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
-      data of struct mtk_thermal_data
-    - Remove duplicate struct 'mtk_thermal_bank'
-    - Remove unnecessary if condition check
-    - Return error if any thermal zone fail to register
-
-Changes in V8:
-    - Rebase to kernel-v5.13-rc1
-    - Resend
-
-Changes in v7:
-    - Fix build error in v6.
-
-Changes in v6:
-    - Rebase to kernel-5.11-rc1.
-    - [1/3]
-        - add interrupts property.
-    - [2/3]
-        - add the Tested-by in the commit message.
-    - [3/3]
-        - use the mt->conf->msr[id] instead of conf->msr[id] in the
-          _get_sensor_temp and mtk_thermal_bank_temperature.
-        - remove the redundant space in _get_sensor_temp and
-          mtk_read_sensor_temp.
-        - change kmalloc to dev_kmalloc in mtk_thermal_probe.
-
-Changes in v5:
-    - Rebase to kernel-5.9-rc1.
-    - Revise the title of cover letter.
-    - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
-    - [2/2]
-        -  Add the judgement to the version of raw_to_mcelsius.
-
-Changes in v4:
-    - Rebase to kernel-5.6-rc1.
-    - [1/7]
-        - Squash thermal zone settings in the dtsi from [v3,5/8]
-          arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
-        - Remove the property of interrupts and mediatek,hw-reset-temp.
-    - [2/7]
-        - Correct commit message.
-    - [4/7]
-        - Change the target temperature to the 80C and change the commit message.
-    - [6/7]
-        - Adjust newline alignment.
-        - Fix the judgement on the return value of registering thermal zone.
-
-Changes in v3:
-    - Rebase to kernel-5.5-rc1.
-    - [1/8]
-        - Update sustainable power of cpu, tzts1~5 and tztsABB.
-    - [7/8]
-        - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
-          in dts, which is normal for mt8173, so prompt a warning here instead of
-          failing.
-
-    Return -EAGAIN instead of -EACCESS on the first read of sensor that
-        often are bogus values. This can avoid following warning on boot:
-
-          thermal thermal_zone6: failed to read out thermal zone (-13)
-
-Changes in v2:
-    - [1/8]
-        - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
-    - [4/8]
-        - Add the min opp of cpu throttle.
-
-Matthias Kaehlcke (1):
-  arm64: dts: mt8183: Configure CPU cooling
-
-Michael Kao (2):
-  thermal: mediatek: add another get_temp ops for thermal sensors
-  arm64: dts: mt8183: add thermal zone node
----
-
----
- drivers/thermal/mtk_thermal.c | 95 ++++++++++++++++++++++++++---------
- 1 file changed, 70 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index ede94eadddda..8bb0bb26113f 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -271,6 +271,7 @@ struct mtk_thermal_data {
- 	bool need_switch_bank;
- 	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
- 	enum mtk_thermal_version version;
-+	int (*raw_to_mcelsius)(struct mtk_thermal *mt, int sensno, s32 raw);
- };
- 
- struct mtk_thermal {
-@@ -294,6 +295,9 @@ struct mtk_thermal {
- 	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
- };
- 
-+static int raw_to_mcelsius_v1(struct mtk_thermal *mt, int sensno, s32 raw);
-+static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw);
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mbox.yaml
+new file mode 100644
+index 000000000000..750391b4038c
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mbox.yaml
+@@ -0,0 +1,114 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mailbox/mediatek,gce-mbox.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- /* MT8183 thermal sensor data */
- static const int mt8183_bank_data[MT8183_NUM_SENSORS] = {
- 	MT8183_TS1, MT8183_TS2, MT8183_TS3, MT8183_TS4, MT8183_TS5, MT8183_TSABB
-@@ -427,6 +431,7 @@ static const struct mtk_thermal_data mt8173_thermal_data = {
- 	.adcpnp = mt8173_adcpnp,
- 	.sensor_mux_values = mt8173_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /*
-@@ -458,6 +463,7 @@ static const struct mtk_thermal_data mt2701_thermal_data = {
- 	.adcpnp = mt2701_adcpnp,
- 	.sensor_mux_values = mt2701_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /*
-@@ -489,6 +495,7 @@ static const struct mtk_thermal_data mt2712_thermal_data = {
- 	.adcpnp = mt2712_adcpnp,
- 	.sensor_mux_values = mt2712_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /*
-@@ -514,6 +521,7 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
- 	.adcpnp = mt7622_adcpnp,
- 	.sensor_mux_values = mt7622_mux_values,
- 	.version = MTK_THERMAL_V2,
-+	.raw_to_mcelsius = raw_to_mcelsius_v2,
- };
- 
- /*
-@@ -547,6 +555,7 @@ static const struct mtk_thermal_data mt8183_thermal_data = {
- 	.adcpnp = mt8183_adcpnp,
- 	.sensor_mux_values = mt8183_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /**
-@@ -639,6 +648,27 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
- 		mutex_unlock(&mt->lock);
- }
- 
-+static u32 _get_sensor_temp(struct mtk_thermal *mt, int id)
-+{
-+	u32 raw;
-+	int temp;
++title: MediaTek Global Command Engine (GCE) mailbox
 +
-+	raw = readl(mt->thermal_base + mt->conf->msr[id]);
++maintainers:
++  - Houlong Wei <houlong.wei@mediatek.com>
 +
-+	temp = mt->conf->raw_to_mcelsius(mt, id, raw);
++description: |
++  The Global Command Engine (GCE) is used to help read/write registers
++  with critical time limitation, such as updating display configuration
++  during the vblank.
++  The GCE can be used to implement the Command Queue (CMDQ) driver.
 +
-+	/*
-+	 * The first read of a sensor often contains very high bogus
-+	 * temperature value. Filter these out so that the system does
-+	 * not immediately shut down.
-+	 */
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6779-gce
++      - mediatek,mt8173-gce
++      - mediatek,mt8183-gce
++      - mediatek,mt8186-gce
++      - mediatek,mt8192-gce
++      - mediatek,mt8195-gce
 +
-+	if (temp > 200000)
-+		return -EAGAIN;
-+	else
-+		return temp;
-+}
++  reg:
++    maxItems: 1
 +
- /**
-  * mtk_thermal_bank_temperature - get the temperature of a bank
-  * @bank:	The bank
-@@ -649,28 +679,11 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
- static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
- {
- 	struct mtk_thermal *mt = bank->mt;
--	const struct mtk_thermal_data *conf = mt->conf;
- 	int i, temp = INT_MIN, max = INT_MIN;
--	u32 raw;
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    items:
++      - const: gce
++
++  '#mbox-cells':
++    description: |
++      The first cell describes the mailbox channel, which is the GCE Thread ID;
++      The second cell describes the priority of the GCE thread.
++    const: 2
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - '#mbox-cells'
++
++additionalProperties: false
++
++allOf:
++  - if:
++      properties:
++        compatible:
++          enum:
++            - mediatek,mt8195-gce
++    then:
++      properties:
++        clocks:
++          maxItems: 2
++
++        clock-names:
++          items:
++            - const: gce0
++            - const: gce1
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/gce/mt8173-gce.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        gce: mailbox@10212000 {
++            compatible = "mediatek,mt8173-gce";
++            reg = <0 0x10212000 0 0x1000>;
++            interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
++            clocks = <&infracfg CLK_INFRA_GCE>;
++            clock-names = "gce";
++            #mbox-cells = <2>;
++        };
++
++        /* Client device using a GCE Thread */
++        mmsys: syscon@14000000 {
++            compatible = "mediatek,mt8173-mmsys", "syscon";
++            reg = <0 0x14000000 0 0x1000>;
++            mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
++                     <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
++            mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
++            #clock-cells = <1>;
++            #reset-cells = <1>;
++        };
++
++        /* Client device listening to specific GCE Events */
++        mutex: mutex@14020000 {
++            compatible = "mediatek,mt8173-disp-mutex";
++            reg = <0 0x14020000 0 0x1000>;
++            interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
++            power-domains = <&spm 1>;
++            clocks = <&mmsys CLK_MM_MUTEX_32K>;
++            mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
++                                  <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+deleted file mode 100644
+index c2aeba63bd47..000000000000
+--- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
++++ /dev/null
+@@ -1,82 +0,0 @@
+-MediaTek GCE
+-===============
 -
--	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
--		raw = readl(mt->thermal_base + conf->msr[i]);
- 
--		if (mt->conf->version == MTK_THERMAL_V1) {
--			temp = raw_to_mcelsius_v1(
--				mt, conf->bank_data[bank->id].sensors[i], raw);
--		} else {
--			temp = raw_to_mcelsius_v2(
--				mt, conf->bank_data[bank->id].sensors[i], raw);
--		}
-+	for (i = 0; i < mt->conf->bank_data[bank->id].num_sensors; i++) {
- 
--		/*
--		 * The first read of a sensor often contains very high bogus
--		 * temperature value. Filter these out so that the system does
--		 * not immediately shut down.
--		 */
--		if (temp > 200000)
--			temp = 0;
-+		temp = _get_sensor_temp(mt, i);
- 
- 		if (temp > max)
- 			max = temp;
-@@ -681,7 +694,8 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
- 
- static int mtk_read_temp(void *data, int *temperature)
- {
--	struct mtk_thermal *mt = data;
-+	struct mtk_thermal_bank *tz = data;
-+	struct mtk_thermal *mt = tz->mt;
- 	int i;
- 	int tempmax = INT_MIN;
- 
-@@ -700,10 +714,25 @@ static int mtk_read_temp(void *data, int *temperature)
- 	return 0;
- }
- 
-+static int mtk_read_sensor_temp(void *data, int *temperature)
-+{
-+	struct mtk_thermal_bank *tz = data;
-+	struct mtk_thermal *mt = tz->mt;
-+	int id = tz->id - 1;
-+
-+	*temperature = _get_sensor_temp(mt, id);
-+
-+	return 0;
-+}
-+
- static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
- 	.get_temp = mtk_read_temp,
- };
- 
-+static const struct thermal_zone_of_device_ops mtk_thermal_sensor_ops = {
-+	.get_temp = mtk_read_sensor_temp,
-+};
-+
- static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
- 				  u32 apmixed_phys_base, u32 auxadc_phys_base,
- 				  int ctrl_id)
-@@ -994,6 +1023,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 	u64 auxadc_phys_base, apmixed_phys_base;
- 	struct thermal_zone_device *tzdev;
- 	void __iomem *apmixed_base, *auxadc_base;
-+	struct mtk_thermal_bank *tz;
- 
- 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
- 	if (!mt)
-@@ -1082,11 +1112,26 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, mt);
- 
--	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
--						     &mtk_thermal_ops);
--	if (IS_ERR(tzdev)) {
--		ret = PTR_ERR(tzdev);
--		goto err_disable_clk_peri_therm;
-+	for (i = 0; i < mt->conf->num_sensors + 1; i++) {
-+		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
-+		if (!tz)
-+			return -ENOMEM;
-+
-+		tz->mt = mt;
-+		tz->id = i;
-+
-+		tzdev = devm_thermal_zone_of_sensor_register(
-+						&pdev->dev, i, tz, (i == 0) ?
-+						&mtk_thermal_ops :
-+						&mtk_thermal_sensor_ops);
-+
-+		if (IS_ERR(tzdev)) {
-+			ret = PTR_ERR(tzdev);
-+			dev_err(&pdev->dev,
-+				"Error: Failed to register thermal zone %d, ret = %d\n",
-+				i, ret);
-+			goto err_disable_clk_peri_therm;
-+		}
- 	}
- 
- 	ret = devm_thermal_add_hwmon_sysfs(tzdev);
+-The Global Command Engine (GCE) is used to help read/write registers with
+-critical time limitation, such as updating display configuration during the
+-vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
+-
+-CMDQ driver uses mailbox framework for communication. Please refer to
+-mailbox.txt for generic information about mailbox device-tree bindings.
+-
+-Required properties:
+-- compatible: can be "mediatek,mt8173-gce", "mediatek,mt8183-gce",
+-  "mediatek,mt8186-gce", "mediatek,mt8192-gce", "mediatek,mt8195-gce" or
+-  "mediatek,mt6779-gce".
+-- reg: Address range of the GCE unit
+-- interrupts: The interrupt signal from the GCE block
+-- clock: Clocks according to the common clock binding
+-- clock-names: Must be "gce" to stand for GCE clock
+-- #mbox-cells: Should be 2.
+-	<&phandle channel priority>
+-	phandle: Label name of a gce node.
+-	channel: Channel of mailbox. Be equal to the thread id of GCE.
+-	priority: Priority of GCE thread.
+-
+-Required properties for a client device:
+-- mboxes: Client use mailbox to communicate with GCE, it should have this
+-  property and list of phandle, mailbox specifiers.
+-Optional properties for a client device:
+-- mediatek,gce-client-reg: Specify the sub-system id which is corresponding
+-  to the register address, it should have this property and list of phandle,
+-  sub-system specifiers.
+-  <&phandle subsys_number start_offset size>
+-  phandle: Label name of a gce node.
+-  subsys_number: specify the sub-system id which is corresponding
+-                 to the register address.
+-  start_offset: the start offset of register address that GCE can access.
+-  size: the total size of register address that GCE can access.
+-
+-Optional properties for a client mutex node:
+-- mediatek,gce-events: GCE events used by clients. The event numbers are
+-  defined in 'dt-bindings/gce/<chip>-gce.h'.
+-
+-Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h',
+-'dt-bindings/gce/mt8183-gce.h', 'dt-bindings/gce/mt8186-gce.h'
+-'dt-bindings/gce/mt8192-gce.h', 'dt-bindings/gce/mt8195-gce.h' or
+-'dt-bindings/gce/mt6779-gce.h'.
+-Such as sub-system ids, thread priority, event ids.
+-
+-Example:
+-
+-	gce: gce@10212000 {
+-		compatible = "mediatek,mt8173-gce";
+-		reg = <0 0x10212000 0 0x1000>;
+-		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&infracfg CLK_INFRA_GCE>;
+-		clock-names = "gce";
+-		#mbox-cells = <2>;
+-	};
+-
+-Example for a client device:
+-
+-	mmsys: clock-controller@14000000 {
+-		compatible = "mediatek,mt8173-mmsys";
+-		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST>,
+-			 <&gce 1 CMDQ_THR_PRIO_LOWEST>;
+-		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+-				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+-		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
+-					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
+-		...
+-	};
+-
+-Example for a client mutex node:
+-	mutex: mutex@14020000 {
+-		compatible = "mediatek,mt8173-disp-mutex";
+-		reg = <0 0x14020000 0 0x1000>;
+-		interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		clocks = <&mmsys CLK_MM_MUTEX_32K>;
+-		mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
+-				      <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+-	};
 -- 
-2.18.0
+2.35.1
 
 
 _______________________________________________
