@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BD89C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 07:16:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D36C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 07:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G4TIX5Lbmsf8aXpBXl2IfuVlAji3mRbxj2Lc/urBL7M=; b=u2JUnbuulqwEAk
-	wQs+VlqSZm3mdsX0ihCZ41hwPMCW1V96YQ86thM/kFGLS3yOZ7tLux4rt+bhNvlIWrVybUCf/AKG5
-	svlJkK9bQRLd8ncrv4D0D3NHXPHmbQ1f9cWhFHwmhJ2nuQwbtv8fhFZQ+u6r/Ks97kemQB1qtK6Id
-	zXBXw9TV0+fWKDRf5SYVZ/NlP3uiNCQSp/ylIYCTWXDmcUavgEoo59EXQMrwXbatbmMtgUypOTHfj
-	sV0FgfqRpPW2RS1c9c/i+JbiCxijpWDBd0LTVrWrOeez/3MkUgLyW18oWVV31LNhN4Tb62k/UYeAK
-	TxrI0nhVl1QlWK15BVjA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EAcYI/CYLMOX4av0b8XpGkBWaSTgZoZZDskRGhxULD8=; b=Og9CmfBGw9CTk3
+	WqEJAOG3IiG8XX8ATMw8JBnoqZ1RkS3Lm+QB1WTk/N/80WUFUGIojFR6l8ej9ywbjdcA3ZaviSwjS
+	YJECul9ukAWcIVSCe5ZBOT7+iY5B4f3fc9eiHOuffAUGEhuudA/q5wk1i+w0KzhBT7iemhYIqS8oI
+	8aqKYLFklY1ImZ1ibCWfYjBuNN6k3RymlO3Q0mE2kq3NT22+JXGsG2eROw2eIbxZGL2SJ3OKGoDdI
+	EQ6rl5sa1f5PKZwL76grm7IrlKRMCw7Ni/yCsgMdSmuSQRs1gMnJkQRRtyiz9FEc8aTr1+k34g16p
+	FBDjHxrQwvyZsLhhnKwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nraOq-005TNI-IO; Thu, 19 May 2022 07:16:44 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1nraOr-005TO9-Kw; Thu, 19 May 2022 07:16:45 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nraOm-005TKC-Lc
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 07:16:42 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id
- t11-20020a17090a6a0b00b001df6f318a8bso7965970pjj.4
- for <linux-mediatek@lists.infradead.org>; Thu, 19 May 2022 00:16:40 -0700 (PDT)
+ id 1nraOm-005TJ0-Am
+ for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 07:16:43 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 137so4298983pgb.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 19 May 2022 00:16:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=cH79WtLzMOqFUUnK2kn/1tBt8ZjWnYQCRSDHn3B7YcA=;
- b=mWw/D457X0Ra2tdW+bQE0qt7AbOAi0il9BcFHlNgdw4z3xU/xF+mYqyaE2xe2mhqSW
- JgR1HJ/GoTcPWVyLJN1rBYXb88vP+BmlwCw9elnK+5/r1evMK7N9E9aIADZrIjM8Uvy3
- muBGEfyPKu2NLuCCSnTKV7ThZXW2Z0knpC5D8=
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=oyJfxiPIz8g8A3U05r86isMDJTb4tby+2gyocMXQ0s0=;
+ b=P8TJy0mWCyHIFuEVpcIwt+YXcwED7Y8P5hREbHFHwcEUK7qW67KgOICo3B9h2Zdhu/
+ Nd/YRCcS/7Nn677WsvLvjvU6iC65Lnh6Kzqg0no+LMb/QjT8OpEUPtEuNp6ViU2TbhIr
+ nIJw9ZbMMn849lWy2dTHbMtZPiWk2+4Rbk1Ps=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=cH79WtLzMOqFUUnK2kn/1tBt8ZjWnYQCRSDHn3B7YcA=;
- b=HcRmw+rIk/G1Vzjf5S6zBp/aGjFCD1enhcZW7VI9d7AJQBPID75Vin8SzKiKMMzsuU
- HBH7B3LJyBRtBhNIi9o7/c/crI0A6Ukj1sQO73m8lJIpjkkWHct5maFnCoq6S4gxfaZ5
- HlXtBT9t2MkP6qGclN2Pcuu4bpMVpXRKwNEzWpQkxAoauHTTarCB9H5kMoGMT8coRASw
- XWjvyijuXXxvhkaj2cXL7lKJAkccZNM5E+ypEltkxmm5m/gEXHPi6PExy9hYK2h249BV
- OLoSwO1qR4+qU8zYEY1uDBmb/rtekP0rihDapiFkwqtbwHQCNCmbQQcYDLaS1XMa3VBC
- /1UQ==
-X-Gm-Message-State: AOAM530goOObS3BVsySGC4tKIAwQ6OPPrlI4srSnL44IlUQMIIUBoiFp
- rhETZ/tfFWO164JOXR+ywbM/fw==
-X-Google-Smtp-Source: ABdhPJxerj/ScUFseL5P7Tfgjpgxs9ptQdEZ57VVfGNEbvfGEhzOVSdem6eKxcdXMOdcDG1cBo0esA==
-X-Received: by 2002:a17:902:8696:b0:15d:946:2f98 with SMTP id
- g22-20020a170902869600b0015d09462f98mr3479433plo.82.1652944599940; 
- Thu, 19 May 2022 00:16:39 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=oyJfxiPIz8g8A3U05r86isMDJTb4tby+2gyocMXQ0s0=;
+ b=KOLVEuqrV2JIJEiYEQ6bzkCrRbjmoCAva9/fv1zrt84mLU7avmAIH6/WwVThv8VJex
+ AFWHgOFCyYDHy+voGWvGtWNoss3gI1bK3owdBkuguNfKGEAgF0839a6drvX7J/FO6ow9
+ WDvReuuXKdd1uKpCIZoDWFnHEQU6ei13F585RhJGmvmYG/IPfEjdMQZl+k2HAwhZbYah
+ GajcWiAJowwnv9DmyokHASV5ugA5RMiXVIZ9IHmt9EAR014WikwgZcsquTQn5EnbqyEE
+ MOdUFjLf7qUv5ElIKHTdREx/mxfmcxDykmeOrs4KAX31xk3I7LAOi7wVobPbMN5IdJvi
+ wqBg==
+X-Gm-Message-State: AOAM533zE9ce9QHrcy+OtU6UqdyEVVtwvQ4TunFF+z9bRfq7Fzreh5t1
+ k4LQd5T05cgqwgcClt25A66qCw==
+X-Google-Smtp-Source: ABdhPJyJQpD7kleyvNScef5SwunEcTily4VJr1/gxKpX7bJKMyn2Kvf4NYxv5cje6E66J3T38zAvfg==
+X-Received: by 2002:a05:6a00:e8e:b0:518:287c:ce82 with SMTP id
+ bo14-20020a056a000e8e00b00518287cce82mr3516187pfb.4.1652944597421; 
+ Thu, 19 May 2022 00:16:37 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:2338:2871:9320:bed0])
  by smtp.gmail.com with ESMTPSA id
- q2-20020a170902dac200b00160c970eeb7sm2972945plx.234.2022.05.19.00.16.37
+ q2-20020a170902dac200b00160c970eeb7sm2972945plx.234.2022.05.19.00.16.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 May 2022 00:16:39 -0700 (PDT)
+ Thu, 19 May 2022 00:16:36 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Michael Turquette <mturquette@baylibre.com>,
  Stephen Boyd <sboyd@kernel.org>
@@ -69,16 +68,14 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/5] clk: mediatek: Make mtk_clk_register_composite() static
-Date: Thu, 19 May 2022 15:16:06 +0800
-Message-Id: <20220519071610.423372-2-wenst@chromium.org>
+Subject: [PATCH v3 0/5] clk: mediatek: Move to struct clk_hw provider APIs
+Date: Thu, 19 May 2022 15:16:05 +0800
+Message-Id: <20220519071610.423372-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.36.1.124.g0e6072fb45-goog
-In-Reply-To: <20220519071610.423372-1-wenst@chromium.org>
-References: <20220519071610.423372-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_001640_741676_6CA9BF97 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20220519_001640_457322_EA22F297 
+X-CRM114-Status: GOOD (  18.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,49 +92,174 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_clk_register_composite() is not used anywhere outside of the file it
-is defined.
+Hi everyone,
 
-Make it static.
+This is v3 of part 2 of my proposed MediaTek clk driver cleanup work [1].
+This is the final squashed version that is ready to be merged. If you
+don't see all the patches on the mailing list, it's because the third
+patch is over 100K and gets blocked by LAKML and linux-clk. Please
+check LKML on lore.
 
-Fixes: 9741b1a68035 ("clk: mediatek: Add initial common clock support for Mediatek SoCs.")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: Miles Chen <miles.chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Miles Chen <miles.chen@mediatek.com>
----
- drivers/clk/mediatek/clk-mtk.c | 2 +-
- drivers/clk/mediatek/clk-mtk.h | 3 ---
- 2 files changed, 1 insertion(+), 4 deletions(-)
+The version is based on next-20220518. A couple non-clk patches that
+fix usage for MT8183 Juniper were included in my branch, hence the
+different base hash.
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index b4063261cf56..52bacce5dadd 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -183,7 +183,7 @@ void mtk_clk_unregister_factors(const struct mtk_fixed_factor *clks, int num,
- }
- EXPORT_SYMBOL_GPL(mtk_clk_unregister_factors);
- 
--struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
-+static struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
- 		void __iomem *base, spinlock_t *lock)
- {
- 	struct clk *clk;
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index bf6565aa7319..9577084790dc 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -147,9 +147,6 @@ struct mtk_composite {
- 		.flags = 0,						\
- 	}
- 
--struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
--		void __iomem *base, spinlock_t *lock);
--
- int mtk_clk_register_composites(const struct mtk_composite *mcs, int num,
- 				void __iomem *base, spinlock_t *lock,
- 				struct clk_onecell_data *clk_data);
+Changes since v2:
+- Squahed patches 3~8 as one, and 9~10 as one
+
+Changes since v1:
+- Rebased and added coverage of new MT8186 clk drivers
+- Split patch "clk: mediatek: Replace 'struct clk' with 'struct clk_hw'"
+  into arbitrary pieces so that they don't bounce from the mailing lists
+
+This was tested on MT8183 Juniper by me. Angelo tested on MT8173/92/95
+and MT6795 devices, while Miles tested on MT6779.
+
+Original cover letter from v1, with patch numbers fixed:
+
+Part 2 involves moving the whole MediaTek clk driver library from the
+old `struct clk` provider API to the new `struct clk_hw` provider API.
+
+Parts of this series were done with coccinelle scripts, while others
+were done by hand. To facilitate review, these parts are currently split
+into different patches. As a result however, this series is not fully
+bisectable. Later on, the related parts should be squashed together.
+
+Patch 1 and 2 are minor cleanups around code that is touched by later
+patches.
+
+Patch 3 switches of the underlying data structure used to hold clocks
+from `struct clk_onecell_data` to `struct clk_hw_onecell_data`.
+This part is done partly by hand, and partly with coccinelle scripts.
+The helpers used to allocate the data structures are changed, but none
+of the actual call sites, nor the clk provider API usage.
+
+Patch 4 moves most of the MediaTek clk driver library from clk_register*()
+to clk_hw_register*, including all intermediate helpers, using
+coccinelle scripts. A call site not covered is fixed by hand.
+
+Patch 5 converts the last usage of clk_register*() in the MediaTek clk
+drivers.
+
+This series will likely conflict with Rex's "Cleanup MediaTek clk reset
+drivers" that was posted earlier today. We'll see how these work out.
+
+The next phase of the cleanup/improvement shall be to introduce some
+variant of `struct clk_parent_data` to describe clk relationships
+efficiently.
+
+Please have a look and merge.
+
+
+Thanks
+ChenYu
+
+[1] https://lore.kernel.org/linux-clk/20220122091731.283592-1-wenst@chromium.org/
+
+Chen-Yu Tsai (5):
+  clk: mediatek: Make mtk_clk_register_composite() static
+  clk: mediatek: apmixed: Drop error message from clk_register() failure
+  clk: mediatek: Replace 'struct clk' with 'struct clk_hw'
+  clk: mediatek: Switch to clk_hw provider APIs
+  clk: mediatek: mt8173: Switch to clk_hw provider APIs
+
+ drivers/clk/mediatek/clk-apmixed.c           |  12 +-
+ drivers/clk/mediatek/clk-cpumux.c            |  50 +++---
+ drivers/clk/mediatek/clk-cpumux.h            |   6 +-
+ drivers/clk/mediatek/clk-gate.c              |  52 +++---
+ drivers/clk/mediatek/clk-gate.h              |   8 +-
+ drivers/clk/mediatek/clk-mt2701-aud.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2701-bdp.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2701-eth.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2701-g3d.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2701-hif.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2701-img.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2701-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt2701-vdec.c       |   4 +-
+ drivers/clk/mediatek/clk-mt2701.c            |  26 +--
+ drivers/clk/mediatek/clk-mt2712-bdp.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2712-img.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2712-jpgdec.c     |   4 +-
+ drivers/clk/mediatek/clk-mt2712-mfg.c        |   4 +-
+ drivers/clk/mediatek/clk-mt2712-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt2712-vdec.c       |   4 +-
+ drivers/clk/mediatek/clk-mt2712-venc.c       |   4 +-
+ drivers/clk/mediatek/clk-mt2712.c            |  28 +--
+ drivers/clk/mediatek/clk-mt6765-audio.c      |   4 +-
+ drivers/clk/mediatek/clk-mt6765-cam.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6765-img.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6765-mipi0a.c     |   4 +-
+ drivers/clk/mediatek/clk-mt6765-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt6765-vcodec.c     |   4 +-
+ drivers/clk/mediatek/clk-mt6765.c            |  12 +-
+ drivers/clk/mediatek/clk-mt6779-aud.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6779-cam.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6779-img.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6779-ipe.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6779-mfg.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6779-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt6779-vdec.c       |   4 +-
+ drivers/clk/mediatek/clk-mt6779-venc.c       |   4 +-
+ drivers/clk/mediatek/clk-mt6779.c            |  12 +-
+ drivers/clk/mediatek/clk-mt6797-img.c        |   4 +-
+ drivers/clk/mediatek/clk-mt6797-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt6797-vdec.c       |   4 +-
+ drivers/clk/mediatek/clk-mt6797-venc.c       |   4 +-
+ drivers/clk/mediatek/clk-mt6797.c            |  22 +--
+ drivers/clk/mediatek/clk-mt7622-aud.c        |   4 +-
+ drivers/clk/mediatek/clk-mt7622-eth.c        |   8 +-
+ drivers/clk/mediatek/clk-mt7622-hif.c        |   8 +-
+ drivers/clk/mediatek/clk-mt7622.c            |  30 ++--
+ drivers/clk/mediatek/clk-mt7629-eth.c        |   8 +-
+ drivers/clk/mediatek/clk-mt7629-hif.c        |   8 +-
+ drivers/clk/mediatek/clk-mt7629.c            |  30 ++--
+ drivers/clk/mediatek/clk-mt7986-apmixed.c    |   6 +-
+ drivers/clk/mediatek/clk-mt7986-eth.c        |  12 +-
+ drivers/clk/mediatek/clk-mt7986-infracfg.c   |   4 +-
+ drivers/clk/mediatek/clk-mt7986-topckgen.c   |  16 +-
+ drivers/clk/mediatek/clk-mt8135.c            |  18 +-
+ drivers/clk/mediatek/clk-mt8167-aud.c        |   4 +-
+ drivers/clk/mediatek/clk-mt8167-img.c        |   4 +-
+ drivers/clk/mediatek/clk-mt8167-mfgcfg.c     |   4 +-
+ drivers/clk/mediatek/clk-mt8167-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt8167-vdec.c       |   4 +-
+ drivers/clk/mediatek/clk-mt8167.c            |  12 +-
+ drivers/clk/mediatek/clk-mt8173-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt8173.c            |  69 ++++----
+ drivers/clk/mediatek/clk-mt8183-audio.c      |   4 +-
+ drivers/clk/mediatek/clk-mt8183-cam.c        |   4 +-
+ drivers/clk/mediatek/clk-mt8183-img.c        |   4 +-
+ drivers/clk/mediatek/clk-mt8183-ipu0.c       |   4 +-
+ drivers/clk/mediatek/clk-mt8183-ipu1.c       |   4 +-
+ drivers/clk/mediatek/clk-mt8183-ipu_adl.c    |   4 +-
+ drivers/clk/mediatek/clk-mt8183-ipu_conn.c   |   4 +-
+ drivers/clk/mediatek/clk-mt8183-mfgcfg.c     |   4 +-
+ drivers/clk/mediatek/clk-mt8183-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt8183-vdec.c       |   4 +-
+ drivers/clk/mediatek/clk-mt8183-venc.c       |   4 +-
+ drivers/clk/mediatek/clk-mt8183.c            |  25 +--
+ drivers/clk/mediatek/clk-mt8186-apmixedsys.c |   6 +-
+ drivers/clk/mediatek/clk-mt8186-mcu.c        |   6 +-
+ drivers/clk/mediatek/clk-mt8186-mm.c         |   6 +-
+ drivers/clk/mediatek/clk-mt8186-topckgen.c   |   6 +-
+ drivers/clk/mediatek/clk-mt8192-aud.c        |   4 +-
+ drivers/clk/mediatek/clk-mt8192-mm.c         |   4 +-
+ drivers/clk/mediatek/clk-mt8192.c            |  21 +--
+ drivers/clk/mediatek/clk-mt8195-apmixedsys.c |   6 +-
+ drivers/clk/mediatek/clk-mt8195-apusys_pll.c |   6 +-
+ drivers/clk/mediatek/clk-mt8195-topckgen.c   |   6 +-
+ drivers/clk/mediatek/clk-mt8195-vdo0.c       |   6 +-
+ drivers/clk/mediatek/clk-mt8195-vdo1.c       |   6 +-
+ drivers/clk/mediatek/clk-mt8516-aud.c        |   4 +-
+ drivers/clk/mediatek/clk-mt8516.c            |  12 +-
+ drivers/clk/mediatek/clk-mtk.c               | 173 +++++++++----------
+ drivers/clk/mediatek/clk-mtk.h               |  25 ++-
+ drivers/clk/mediatek/clk-mux.c               |  50 +++---
+ drivers/clk/mediatek/clk-mux.h               |   6 +-
+ drivers/clk/mediatek/clk-pll.c               |  52 +++---
+ drivers/clk/mediatek/clk-pll.h               |   6 +-
+ 95 files changed, 543 insertions(+), 554 deletions(-)
+
 -- 
 2.36.1.124.g0e6072fb45-goog
 
