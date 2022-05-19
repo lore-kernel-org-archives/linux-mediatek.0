@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 832A3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:44:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FED8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n/Vs9Cr8NFId+lQ70kofUmB1EMms01c0jauO1wrHRtw=; b=UE8Zoh6mvUd1dj
-	+HUZ+NxQuqBuncIlvlSSOn5G5AL9O4FiAvs5NKcdhBP+W382pHa7SektWE1OetTrYsFffi1NdHhoX
-	w9nzbtrHOPK6qYyr64Ly3weJC2NKIqCsfJmSS1V26O69YB8urt/8XkcJEWYX3Yidz4r09LCwWEJpx
-	B/28xOke4OwYxordR1VPy63j2lX2EHOp2fhzkYCL/2G1cSaZwaphq7AoKLA61byFL9rWdQeM6aoGv
-	eVNUIl4ROJAmU4++TsVnLnYpMQ/h6aPcTgUzNuSa2W8VKrqsRT8p4MtBFa9+Jwc/seBxvlznJ8NXm
-	KUdF/Ju6OZkkjXLb6t+Q==;
+	List-Owner; bh=2GNjMtMznVEBLB9kAudD35v9EwHAiAC74z3eAWqLgEY=; b=2yLIN/Cxea4Ss5
+	GNrVlpE13Mw+RNcDi0+cn6rCCUDV4y5uqc6BbksIPoerbOZMuNsEWmCjlAVFbMOUzCScMHuubj/1h
+	kr85ZZBF+f1jwjPJmYVaz2RpQi+cxWJ0EWFLm2C3gE2NhR128iUGwNHi79YlY1cn1NWq7V5uRaSkk
+	MMJ66ThIiGkN9M17c/mR/YTjWZgclDkragqUzr5tErKz2w/72hfAssblwGR2GbrcNSSEPz2ZRtWYs
+	LbVm9orPBLwrSgWV/xa0/K1pV13m9eZDQLL2A0uEiMTHW2ooKpLBhAxyDsiT+k3mFcXEy0lMvdaJq
+	fmCt47tN4Vz3xvXrfdpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriKZ-00847k-CK; Thu, 19 May 2022 15:44:51 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1nriKc-0084BF-UG; Thu, 19 May 2022 15:44:54 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25]
+ helo=mx0b-001ae601.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJY-00839G-GV; Thu, 19 May 2022 15:43:51 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24JBHtaZ024228;
- Thu, 19 May 2022 10:43:23 -0500
+ id 1nriJZ-0083Bs-6U; Thu, 19 May 2022 15:43:51 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+ by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J6k11t002261;
+ Thu, 19 May 2022 10:43:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=9hTCMyfEH93APH26QOcIiezb1QO1saOb5PENw49CR74=;
- b=IVAUWGpXnToI2Qlse/ywXO4ytzB0dHKmVz9XzjkPYqoulPBXo2+fOaQueAcpIvqc88AE
- kCARWlA4yQHXD7mIIEz+VWk8UtKX84BadtX82YCajvrxmG+YeCWvDVklauFb+/0wzsWF
- SvGLHJ1SbThZuICa10jHu1OKm/tERlSi3lDDW2rm2Fn52IsaHdLoYwg8PCfIJ3cvrMzp
- MFFewo2rGYJ38Y1OpGu1d+aXWxp2COohvS9xRHaAGbxVFd4NEHg9Li0vYOLOeoJ3s8KP
- Z2bFtgH7wnqf77sqqND0UfofhYWGFGN2xkP2/aNB+rq3KpHqazFykb4dMtmW2E1VQYgn pw== 
-Received: from ediex01.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dm-1
+ bh=ehkEzwiLd3q83xWm71iaowmNtSdgNw5jxD9S047EITQ=;
+ b=RbHLrHthSV3jyUf+HbAT4o7ua0Nt0o9hI0nntMAYP+N6WR9mjJV8BsYg/VVDsffTEVxA
+ JjRNmAEi7RdDvbyotOZIEc5qBAVJFO/ieuGVH1PTgZdspzv3iPf6Dv3o1SexdxyO5Xyr
+ cvcZcQbm9j4LWWr4F5inO/akSCZ6VOXDWtyLe7J5eQWL1nrHQIHRuGT5GIwoadYFWh4X
+ gujPnie/7Xcd3JlcaFufjHROV69Ygrgo9Q7yWPjnL7BKfGtesRZqM+OzgLPHamlN4UgW
+ z5FpCVZhPU7pjXP5+I7nMKpvTi2m2y2EkKi5PtzATJv2ewAB+d+3I9Adben32hIc0WGd Ug== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+ by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3g29u37mcg-5
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 19 May 2022 10:43:23 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+ Thu, 19 May 2022 10:43:34 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
- 2022 16:43:18 +0100
+ 2022 16:43:20 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Thu, 19 May 2022 16:43:18 +0100
+ Frontend Transport; Thu, 19 May 2022 16:43:20 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 5D89D11D1;
- Thu, 19 May 2022 15:43:18 +0000 (UTC)
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 6DD0711D3;
+ Thu, 19 May 2022 15:43:20 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -66,20 +67,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
  <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
  <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
  <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: [PATCH 01/56] ASoC: core: Add set_fmt_new callback that directly
- specifies provider
-Date: Thu, 19 May 2022 16:42:23 +0100
-Message-ID: <20220519154318.2153729-2-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 29/56] ASoC: amd: vangogh: Rename set_fmt_new back to set_fmt
+Date: Thu, 19 May 2022 16:42:51 +0100
+Message-ID: <20220519154318.2153729-30-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: b5isdzNm3eaa-uDVVX3v3im0W1VfdPaS
-X-Proofpoint-ORIG-GUID: b5isdzNm3eaa-uDVVX3v3im0W1VfdPaS
+X-Proofpoint-GUID: dXew_Pq7nQ1SHSoS_07-yO7Z5xPHZ9F-
+X-Proofpoint-ORIG-GUID: dXew_Pq7nQ1SHSoS_07-yO7Z5xPHZ9F-
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_084348_780857_B57CC369 
-X-CRM114-Status: GOOD (  18.62  )
+X-CRM114-CacheID: sfid-20220519_084349_302313_BD5E7342 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,78 +96,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The original set_fmt callback always passes clock provider/consumer
-with respect to the CODEC. This made sense when the framework was
-directly broken down into platforms and CODECs. Now everything is
-componentised it simplifies things if each side of the link is
-just told if it is provider or consumer of the clocks. To start
-this migration add a new callback that can be used to receive a
-direct specification of clocking. As there are more CODEC drivers
-than platform drivers, we make the new flags identical to the old
-CODEC flags meaning CODEC drivers will not require an update.
+Now the core has been migrated across to the new direct clock
+specification we can move the drivers back to the normal set_fmt
+callback.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- include/sound/soc-dai.h | 7 +++++++
- sound/soc/soc-core.c    | 3 ++-
- sound/soc/soc-dai.c     | 5 ++++-
- 3 files changed, 13 insertions(+), 2 deletions(-)
+ sound/soc/amd/vangogh/acp5x-i2s.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/sound/soc-dai.h b/include/sound/soc-dai.h
-index bbd821d2df9ca..9c1d92d5a3738 100644
---- a/include/sound/soc-dai.h
-+++ b/include/sound/soc-dai.h
-@@ -124,6 +124,12 @@ struct snd_compr_stream;
- #define SND_SOC_DAIFMT_CBM_CFS		SND_SOC_DAIFMT_CBP_CFC
- #define SND_SOC_DAIFMT_CBS_CFS		SND_SOC_DAIFMT_CBC_CFC
+diff --git a/sound/soc/amd/vangogh/acp5x-i2s.c b/sound/soc/amd/vangogh/acp5x-i2s.c
+index 40fbd0bc77fde..72c8c68e59336 100644
+--- a/sound/soc/amd/vangogh/acp5x-i2s.c
++++ b/sound/soc/amd/vangogh/acp5x-i2s.c
+@@ -339,7 +339,7 @@ static int acp5x_i2s_trigger(struct snd_pcm_substream *substream,
+ static const struct snd_soc_dai_ops acp5x_i2s_dai_ops = {
+ 	.hw_params = acp5x_i2s_hwparams,
+ 	.trigger = acp5x_i2s_trigger,
+-	.set_fmt_new = acp5x_i2s_set_fmt,
++	.set_fmt = acp5x_i2s_set_fmt,
+ 	.set_tdm_slot = acp5x_i2s_set_tdm_slot,
+ };
  
-+/* when passed to set_fmt directly indicate if the device is provider or consumer */
-+#define SND_SOC_DAIFMT_BP_FP		SND_SOC_DAIFMT_CBP_CFP
-+#define SND_SOC_DAIFMT_BC_FP		SND_SOC_DAIFMT_CBC_CFP
-+#define SND_SOC_DAIFMT_BP_FC		SND_SOC_DAIFMT_CBP_CFC
-+#define SND_SOC_DAIFMT_BC_FC		SND_SOC_DAIFMT_CBC_CFC
-+
- /* Describes the possible PCM format */
- #define SND_SOC_POSSIBLE_DAIFMT_CLOCK_PROVIDER_SHIFT	48
- #define SND_SOC_POSSIBLE_DAIFMT_CLOCK_PROVIDER_MASK	(0xFFFFULL << SND_SOC_POSSIBLE_DAIFMT_CLOCK_PROVIDER_SHIFT)
-@@ -282,6 +288,7 @@ struct snd_soc_dai_ops {
- 	 * Called by soc_card drivers, normally in their hw_params.
- 	 */
- 	int (*set_fmt)(struct snd_soc_dai *dai, unsigned int fmt);
-+	int (*set_fmt_new)(struct snd_soc_dai *dai, unsigned int fmt);
- 	int (*xlate_tdm_slot_mask)(unsigned int slots,
- 		unsigned int *tx_mask, unsigned int *rx_mask);
- 	int (*set_tdm_slot)(struct snd_soc_dai *dai,
-diff --git a/sound/soc/soc-core.c b/sound/soc/soc-core.c
-index 9574f86dd4de2..90f4265bea501 100644
---- a/sound/soc/soc-core.c
-+++ b/sound/soc/soc-core.c
-@@ -1235,7 +1235,8 @@ int snd_soc_runtime_set_dai_fmt(struct snd_soc_pcm_runtime *rtd,
- 	for_each_rtd_cpu_dais(rtd, i, cpu_dai) {
- 		unsigned int fmt = dai_fmt;
- 
--		if (snd_soc_component_is_codec(cpu_dai->component))
-+		if (cpu_dai->driver->ops->set_fmt_new ||
-+		    snd_soc_component_is_codec(cpu_dai->component))
- 			fmt = inv_dai_fmt;
- 
- 		ret = snd_soc_dai_set_fmt(cpu_dai, fmt);
-diff --git a/sound/soc/soc-dai.c b/sound/soc/soc-dai.c
-index 6078afe335f88..996712f4d9bfd 100644
---- a/sound/soc/soc-dai.c
-+++ b/sound/soc/soc-dai.c
-@@ -209,7 +209,10 @@ int snd_soc_dai_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
- 	int ret = -ENOTSUPP;
- 
- 	if (dai->driver->ops &&
--	    dai->driver->ops->set_fmt)
-+	    dai->driver->ops->set_fmt_new)
-+		ret = dai->driver->ops->set_fmt_new(dai, fmt);
-+	else if (dai->driver->ops &&
-+		 dai->driver->ops->set_fmt)
- 		ret = dai->driver->ops->set_fmt(dai, fmt);
- 
- 	return soc_dai_ret(dai, ret);
 -- 
 2.30.2
 
