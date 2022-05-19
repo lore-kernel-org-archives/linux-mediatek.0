@@ -4,60 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6479C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:20:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C486C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ENsuVYlYFjHSkLXQt+JTSiUmbiFQ5UjkGBT3m0T34UY=; b=RT7ddRsG6WGoBh
-	og/4rrHH6Pgv6GuQippzMaxQOuQ4x3a/zXQip+YejRZWSrWQrkUl4/pURGg+M8jjUKdf2S5bQJ1YT
-	xgrEet5xnv8L5F+5HaxAU9ixui0lrpaEYF75nkl+QmMBzHEs3ZueY48pgaM33FBIG4qaap8gUz2kr
-	E4BmVZTiCFKc6r9nJr0S4HKIVEs/wJnjcCKQgcQfsgGPpzbINZZiNrXtIiHcTbzfXseGcah3w8IlI
-	8rvM2YDaWtdaP84npAeFH7LPgYLP009YVNhOnssDMq1du1vF7pmnHJiDfVztOialrRymJbFRcjeM8
-	Y5ANRR4r0hAu854DzxlQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EFS37drrBHjH15CGJ6QQXuZCRgDuawFSHsWeMybrU5Q=; b=ovA+ETFeVkiw92
+	CdIC4eDfvlhRT5MGcnNV7vf1b8xApqev7qSLi+IdeJVBWVulrZ+Da90EnSFxzS6g7KZPcCuS6CQFL
+	qVY8tPI6Ch4zUA/WvRnqadRQWvp8S2IjkXGtCMdINOq1X40XS5hPC2oOrPph4RSvKLsfj9FThg6Wo
+	hBu4p9pQKHgeJN6XeWGumkDTMQIZY8meFIBcDrwovE1GvB8OIYJgvu5UXujppgWPqR/9lfrvg/KRh
+	/mA7zKb2YDSLyJiAnVbEHV7nny/LqKOoQ6hpzs9YF4cnRtm3p8H1gvFvUkB62VUSXOE7ndYwxp9Gw
+	rKMRTqaDilE1Da9El/kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrhx0-007sc2-96; Thu, 19 May 2022 15:20:30 +0000
+	id 1nri6Z-007xdu-B0; Thu, 19 May 2022 15:30:23 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrhbw-007eon-Bh; Thu, 19 May 2022 14:58:48 +0000
+ id 1nri02-007uSm-6e; Thu, 19 May 2022 15:23:40 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 0AADC1F44EC7
+ (Authenticated sender: kholk11) with ESMTPSA id 157861F45DE5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652972322;
- bh=Um2t/mQTT0Dfq5mGxwYI25I8sQfayys0cBiO/aP38w4=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=LdfZwN5W6GT9WmGChNKa2aESgz37yUfbtnVDS6og+GqOBa53Qwpc+CCVFJtLhuLcq
- /DAfg6JwEvY1KuxMLzketpMx9FiAKSxxZKKil5+D3iZ+PZKEKmIIYyw43k9ETR03Vu
- bZ8iSTGJPaNrUjQ4mmCV80y3zhdRym/Ir02fTIzgW9bRRNy8ilj5JzAtDdlDCKYjm9
- GC8fzeFrtkA/q6MEP5JdryG+TlLCS3lzkn2Rm21/GPtdOi0FwLVCYOE05ySIIukvch
- v0N58JWyVSHRMyGvzgshdNk41n9pkic10Nh8PYR6GzVowVJjXKpXF2cTDEkQs76GsV
- LHXLTrnSU0AgA==
-Message-ID: <3f3dd71b-6e5c-4e19-c8d6-ece88c7e0eb4@collabora.com>
-Date: Thu, 19 May 2022 16:58:39 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v4 1/2] dt-bindings: pinctrl: Add MediaTek MT6795 pinctrl
- bindings
-Content-Language: en-US
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, sean.wang@kernel.org, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, nfraprado@collabora.com
-References: <20220517083957.11816-1-angelogioacchino.delregno@collabora.com>
- <20220517083957.11816-2-angelogioacchino.delregno@collabora.com>
- <CACRpkdaj42rcQdX1+dVWyHmexrq4UDQHB0JLHgfREY9kn0zv2A@mail.gmail.com>
+ s=mail; t=1652973814;
+ bh=xWc+axcD/uWFzdlFw1pWb5QQCccJg4clTtiNxJyGAQE=;
+ h=From:To:Cc:Subject:Date:From;
+ b=EplFyVNZqw+jA2X1zm+N2KTSqHUx8DqS9/mhW06PW3zizqB8a3zFWUIqI2qbjagTh
+ c2S8qerZD/7Gzw5aVehuh+suhcNDEG/kJ8M+nhfBYEkeYOX0K7OA4kTnzz3Vh9HBkg
+ QjnMNO4q1t0Zf2+vx57thaa+kihKvX+PffH2NAOpr5e/lZ26pkAhgaLuoY+K5bK/n8
+ ercfEm9BZuuElevSDb09QZWaZ9fG+wr/0p1xIselKQ9YsJQJXhgncDgkj85zcbO9RB
+ vJS4nzb1iXNuAz/lIpHGi/OtDmMha/z7Gep8k6rh8/XnFV3g1T/k4c0gBF3Pwcir/B
+ ayCfbn6s9S0Cg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CACRpkdaj42rcQdX1+dVWyHmexrq4UDQHB0JLHgfREY9kn0zv2A@mail.gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, linux-serial@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2] dt-bindings: serial: mtk-uart: Convert txt to json-schema
+Date: Thu, 19 May 2022 17:23:29 +0200
+Message-Id: <20220519152329.55028-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_075844_620562_6A8828B9 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20220519_082338_644915_315B7394 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,38 +62,219 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/05/22 15:13, Linus Walleij ha scritto:
-> On Tue, May 17, 2022 at 10:40 AM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> 
->> Add devicetree and pinfunc bindings for MediaTek Helio X10 MT6795.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> Patch applied, along with patch 2.
-> 
-> BTW nice work on the X10!!
-> I can see from the feature matrix here:
-> https://wiki.postmarketos.org/wiki/Mediatek
-> that this enables a whole slew of cheapo phones and tablets to be used
-> with PostmarketOS.
-> 
+Convert the mtk-uart documentation from freeform text to a json-schema.
 
-I'm really happy to see that you appreciate this effort!
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 
-Unfortunately though, the PostmarketOS wiki contains just a small subset of
-Helio X10 devices, there's many more around!!
+v2: Changed to also accept just "mediatek,mt6577-uart" as compatible.
 
-I'll start the trend with a Sony Xperia M5, hoping that someone else starts
-following up with some more :)))
 
-Cheers,
-Angelo
+ .../bindings/serial/mediatek,uart.yaml        | 121 ++++++++++++++++++
+ .../devicetree/bindings/serial/mtk-uart.txt   |  59 ---------
+ 2 files changed, 121 insertions(+), 59 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+ delete mode 100644 Documentation/devicetree/bindings/serial/mtk-uart.txt
+
+diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+new file mode 100644
+index 000000000000..7929aa123487
+--- /dev/null
++++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+@@ -0,0 +1,121 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/serial/mediatek,uart.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Universal Asynchronous Receiver/Transmitter (UART)
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++allOf:
++  - $ref: serial.yaml#
++
++description: |+
++  The MediaTek UART is based on the basic 8250 UART and compatible
++  with 16550A, with enhancements for high speed baud rates and
++  support for DMA.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt6577-uart
++      - items:
++          - enum:
++              - mediatek,mt2701-uart
++              - mediatek,mt2712-uart
++              - mediatek,mt6580-uart
++              - mediatek,mt6582-uart
++              - mediatek,mt6589-uart
++              - mediatek,mt6755-uart
++              - mediatek,mt6765-uart
++              - mediatek,mt6779-uart
++              - mediatek,mt6795-uart
++              - mediatek,mt6797-uart
++              - mediatek,mt7622-uart
++              - mediatek,mt7623-uart
++              - mediatek,mt7629-uart
++              - mediatek,mt7986-uart
++              - mediatek,mt8127-uart
++              - mediatek,mt8135-uart
++              - mediatek,mt8173-uart
++              - mediatek,mt8183-uart
++              - mediatek,mt8186-uart
++              - mediatek,mt8192-uart
++              - mediatek,mt8195-uart
++              - mediatek,mt8516-uart
++          - const: mediatek,mt6577-uart
++
++  reg:
++    description: The base address of the UART register bank
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++    items:
++      - description: The clock the baudrate is derived from
++      - description: The bus clock for register accesses
++
++  clock-names:
++    minItems: 1
++    items:
++      - const: baud
++      - const: bus
++
++  dmas:
++    items:
++      - description: phandle to TX DMA
++      - description: phandle to RX DMA
++
++  dma-names:
++    items:
++      - const: tx
++      - const: rx
++
++  interrupts:
++    minItems: 1
++    maxItems: 2
++
++  interrupt-names:
++    description:
++      The UART interrupt and optionally the RX in-band wakeup interrupt.
++    minItems: 1
++    items:
++      - const: uart
++      - const: wakeup
++
++  pinctrl-0: true
++  pinctrl-1: true
++
++  pinctrl-names:
++    minItems: 1
++    items:
++      - const: default
++      - const: sleep
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - interrupts
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    serial@11006000 {
++        compatible = "mediatek,mt6589-uart", "mediatek,mt6577-uart";
++        reg = <0x11006000 0x400>;
++        interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>,
++                     <GIC_SPI 52 IRQ_TYPE_EDGE_FALLING>;
++        interrupt-names = "uart", "wakeup";
++        clocks = <&uart_clk>, <&bus_clk>;
++        clock-names = "baud", "bus";
++        pinctrl-0 = <&uart_pin>;
++        pinctrl-1 = <&uart_pin_sleep>;
++        pinctrl-names = "default", "sleep";
++    };
+diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+deleted file mode 100644
+index 113b5d6a2245..000000000000
+--- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
++++ /dev/null
+@@ -1,59 +0,0 @@
+-* MediaTek Universal Asynchronous Receiver/Transmitter (UART)
+-
+-Required properties:
+-- compatible should contain:
+-  * "mediatek,mt2701-uart" for MT2701 compatible UARTS
+-  * "mediatek,mt2712-uart" for MT2712 compatible UARTS
+-  * "mediatek,mt6580-uart" for MT6580 compatible UARTS
+-  * "mediatek,mt6582-uart" for MT6582 compatible UARTS
+-  * "mediatek,mt6589-uart" for MT6589 compatible UARTS
+-  * "mediatek,mt6755-uart" for MT6755 compatible UARTS
+-  * "mediatek,mt6765-uart" for MT6765 compatible UARTS
+-  * "mediatek,mt6779-uart" for MT6779 compatible UARTS
+-  * "mediatek,mt6795-uart" for MT6795 compatible UARTS
+-  * "mediatek,mt6797-uart" for MT6797 compatible UARTS
+-  * "mediatek,mt7622-uart" for MT7622 compatible UARTS
+-  * "mediatek,mt7623-uart" for MT7623 compatible UARTS
+-  * "mediatek,mt7629-uart" for MT7629 compatible UARTS
+-  * "mediatek,mt7986-uart", "mediatek,mt6577-uart" for MT7986 compatible UARTS
+-  * "mediatek,mt8127-uart" for MT8127 compatible UARTS
+-  * "mediatek,mt8135-uart" for MT8135 compatible UARTS
+-  * "mediatek,mt8173-uart" for MT8173 compatible UARTS
+-  * "mediatek,mt8183-uart", "mediatek,mt6577-uart" for MT8183 compatible UARTS
+-  * "mediatek,mt8186-uart", "mediatek,mt6577-uart" for MT8183 compatible UARTS
+-  * "mediatek,mt8192-uart", "mediatek,mt6577-uart" for MT8192 compatible UARTS
+-  * "mediatek,mt8195-uart", "mediatek,mt6577-uart" for MT8195 compatible UARTS
+-  * "mediatek,mt8516-uart" for MT8516 compatible UARTS
+-  * "mediatek,mt6577-uart" for MT6577 and all of the above
+-
+-- reg: The base address of the UART register bank.
+-
+-- interrupts:
+-  index 0: an interrupt specifier for the UART controller itself
+-  index 1: optional, an interrupt specifier with edge sensitivity on Rx pin to
+-           support Rx in-band wake up. If one would like to use this feature,
+-           one must create an addtional pinctrl to reconfigure Rx pin to normal
+-           GPIO before suspend.
+-
+-- clocks : Must contain an entry for each entry in clock-names.
+-  See ../clocks/clock-bindings.txt for details.
+-- clock-names:
+-  - "baud": The clock the baudrate is derived from
+-  - "bus": The bus clock for register accesses (optional)
+-
+-For compatibility with older device trees an unnamed clock is used for the
+-baud clock if the baudclk does not exist. Do not use this for new designs.
+-
+-Example:
+-
+-	uart0: serial@11006000 {
+-		compatible = "mediatek,mt6589-uart", "mediatek,mt6577-uart";
+-		reg = <0x11006000 0x400>;
+-		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>,
+-			     <GIC_SPI 52 IRQ_TYPE_EDGE_FALLING>;
+-		clocks = <&uart_clk>, <&bus_clk>;
+-		clock-names = "baud", "bus";
+-		pinctrl-names = "default", "sleep";
+-		pinctrl-0 = <&uart_pin>;
+-		pinctrl-1 = <&uart_pin_sleep>;
+-	};
+-- 
+2.35.1
 
 
 _______________________________________________
