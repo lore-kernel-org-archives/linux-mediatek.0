@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DFF1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 06:49:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52888C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 06:49:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ad8EBiUPXUEUOd3azTrwRT3slmb8cyg3H8qB6w5f/Ig=; b=jFJpkUdWjV9Amn
-	doixQb68dk4jqe6V+IAjVqN6hDNGlGofEOWQAjFPH9DbgC/H46YqkOK4fraH9DEPNSE5L47W3gwjY
-	Za5/pS/1WRylpAs0f+BkmyvEcOXfaCEjrIcIlNtPC7A1QENMGViq0Sy2w5bHcHh6dAR5U4eS5PoOR
-	f8CH4kmsXXFaODUK8SqpkZ7/xaLW41ruw8MMtzTeWY8pu9VnA4ivasM7EpglYqzzdGcvs2cNSIADb
-	htURgiAL/ozZ/My1/F/MMucIhFCxUNVMqtFRg8u3/ZZ3ry2jTWOx6KRvSOMPYCqdok4ENeiBAbyRL
-	TVyJ1Ht4FHJgRWtRW4Tg==;
+	List-Owner; bh=iDvGaArqMajxrSPcYKUDPW85hYCH4Vh4EVOf1iPKBD0=; b=fAm+e4jSpP7S/m
+	Kmaw3fmbTl4bfcJrmFcEkN0eWYYwjg4BC4wi/8FCGSVDbcehzbI17bu2x0zqYcDWIiFeOphmY51sF
+	Qj8TXWLY9yf8t5E4zR1a3EROdmo2NImjLdLogxz4MhDbGBr/0qNMlenpAnw6jIpoKavRy+uw0mZCx
+	K5Wg8CN5i8JbtFurbTXfAVNr7WTNBVeEntzujOPmFF+xBv/N+gORbuhNowWys+gAZonMN6M0dX45Q
+	IN59PncLvk8w2VZ7GsqCTpb13QLNesH7RJbCQ2HFARGq1fmni9aMUvAyS/XNzZupJUXm23ea5xX/A
+	jWQJp5567zsALDJns3fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrZxv-005MSt-W6; Thu, 19 May 2022 06:48:56 +0000
+	id 1nrZxx-005MTO-6C; Thu, 19 May 2022 06:48:57 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrZxs-005MQg-OG
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 06:48:54 +0000
-X-UUID: d5fb9a9bc3f14d91aec8e2b7e706f386-20220518
+ id 1nrZxs-005MQh-OP; Thu, 19 May 2022 06:48:54 +0000
+X-UUID: 318d6dc38bdf424ab1b423799e5759f0-20220518
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=WdEMr2PK9t6w2N1+jhlKySDIa+M6QgnX2ZXSsHcV2Rw=; 
+ b=IVGo2PLHNJO9A+BRsnUnIbNrYu3+okkp3H8wxOBIy9jRSDuVyVRPgt1ergghfMVRTHUIEnLrm2lt/ckwbNUIeheVcXzKljOz6LjhaX7xFpI+2cMA4ri0zJN/yGEHKPBUebewDB/dWA9489dvSWPGu8s7Hpch9Apgy4brNM4fCKU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:94a5b8d4-8b2e-4ec6-b61d-787608450354, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:3db00ccf-51fe-487c-9125-aac4b774ca8c, OB:0,
  LO
- B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:5
-X-CID-META: VersionHash:2a19b09, CLOUDID:0849d379-5ef6-470b-96c9-bdb8ced32786,
+ B:0,IP:0,URL:0,TC:0,Content:2,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:2
+X-CID-META: VersionHash:2a19b09, CLOUDID:0949d379-5ef6-470b-96c9-bdb8ced32786,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: d5fb9a9bc3f14d91aec8e2b7e706f386-20220518
+X-UUID: 318d6dc38bdf424ab1b423799e5759f0-20220518
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
+ (envelope-from <xinlei.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 751233047; Wed, 18 May 2022 23:48:47 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1420857037; Wed, 18 May 2022 23:48:47 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 May 2022 23:39:03 -0700
+ 15.0.1497.2; Wed, 18 May 2022 23:38:45 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 May 2022 14:39:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 19 May 2022 14:39:01 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 1/3] mt76: add 6G band support in mt76_sar_freq_ranges
-Date: Thu, 19 May 2022 14:38:22 +0800
-Message-ID: <4be64135fe9925fa052d63edf8c253e3586a2e2f.1652941276.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <cover.1652941276.git.deren.wu@mediatek.com>
-References: <cover.1652941276.git.deren.wu@mediatek.com>
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 19 May 2022 14:38:44 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 19 May 2022 14:38:43 +0800
+Message-ID: <c84c9392c048e6108c22f3ab3e1f635acea659bb.camel@mediatek.com>
+Subject: Re: [PATCH v6, 2/4] drm/mediatek: Separate poweron/poweroff from
+ enable/disable and define new funcs
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <matthias.bgg@gmail.com>
+CC: <jitao.shi@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>, <rex-bc.chen@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>
+Date: Thu, 19 May 2022 14:39:29 +0800
+In-Reply-To: <1bad78e79feb40a2e1e5b09e70438b15aff379ab.camel@mediatek.com>
+References: <1652337012-9053-1-git-send-email-xinlei.lee@mediatek.com>
+ <1652337012-9053-3-git-send-email-xinlei.lee@mediatek.com>
+ <1bad78e79feb40a2e1e5b09e70438b15aff379ab.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_234852_877846_E3293D02 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220518_234852_882893_9327AA75 
+X-CRM114-Status: GOOD (  29.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +93,170 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+On Wed, 2022-05-18 at 11:39 +0800, CK Hu wrote:
+> Hi, Xinlei:
+> 
+> On Thu, 2022-05-12 at 14:30 +0800, xinlei.lee@mediatek.com wrote:
+> > From: Jitao Shi <jitao.shi@mediatek.com>
+> > 
+> > In order to match the changes of "Use the drm_panel_bridge API",
+> > the poweron/poweroff of dsi is extracted from enable/disable and
+> > defined as new funcs (atomic_pre_enable/atomic_post_disable).
+> > 
+> > Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the
+> > drm_panel_bridge
+> > API")
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 53 +++++++++++++++++++-------
+> > --
+> > --
+> >  1 file changed, 34 insertions(+), 19 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > index f880136cec09..d9a6b928dba8 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > @@ -691,16 +691,6 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> > *dsi)
+> >  	if (--dsi->refcount != 0)
+> >  		return;
+> >  
+> > -	/*
+> > -	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> > -	 * mtk_dsi_stop() should be called after
+> > mtk_drm_crtc_atomic_disable(),
+> > -	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> > irq.
+> > -	 * mtk_dsi_start() needs to be called in
+> > mtk_output_dsi_enable(),
+> > -	 * after dsi is fully set.
+> > -	 */
+> > -	mtk_dsi_stop(dsi);
+> > -
+> > -	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+> >  	mtk_dsi_reset_engine(dsi);
+> >  	mtk_dsi_lane0_ulp_mode_enter(dsi);
+> >  	mtk_dsi_clk_ulp_mode_enter(dsi);
+> > @@ -715,17 +705,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi
+> > *dsi)
+> >  
+> >  static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+> >  {
+> > -	int ret;
+> > -
+> >  	if (dsi->enabled)
+> >  		return;
+> >  
+> > -	ret = mtk_dsi_poweron(dsi);
+> > -	if (ret < 0) {
+> > -		DRM_ERROR("failed to power on dsi\n");
+> > -		return;
+> > -	}
+> > -
+> >  	mtk_dsi_set_mode(dsi);
+> >  	mtk_dsi_clk_hs_mode(dsi, 1);
+> >  
+> > @@ -739,7 +721,16 @@ static void mtk_output_dsi_disable(struct
+> > mtk_dsi *dsi)
+> >  	if (!dsi->enabled)
+> >  		return;
+> >  
+> > -	mtk_dsi_poweroff(dsi);
+> > +	/*
+> > +	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
+> > +	 * mtk_dsi_stop() should be called after
+> > mtk_drm_crtc_atomic_disable(),
+> > +	 * which needs irq for vblank, and mtk_dsi_stop() will disable
+> > irq.
+> > +	 * mtk_dsi_start() needs to be called in
+> > mtk_output_dsi_enable(),
+> > +	 * after dsi is fully set.
+> > +	 */
+> > +	mtk_dsi_stop(dsi);
+> > +
+> > +	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+> >  
+> >  	dsi->enabled = false;
+> >  }
+> > @@ -776,13 +767,37 @@ static void
+> > mtk_dsi_bridge_atomic_enable(struct
+> > drm_bridge *bridge,
+> >  {
+> >  	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> >  
+> > +	if (dsi->refcount == 0)
+> > +		return;
+> 
+> This seems not related to pre_enable()/post_disable(). So separate
+> this
+> to another patch.
+> 
+> Regards,
+> CK
+> 
+> > +
+> >  	mtk_output_dsi_enable(dsi);
+> >  }
+> >  
+> > +static void mtk_dsi_bridge_atomic_pre_enable(struct drm_bridge
+> > *bridge,
+> > +					     struct drm_bridge_state
+> > *old_bridge_state)
+> > +{
+> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > +	int ret;
+> > +
+> > +	ret = mtk_dsi_poweron(dsi);
+> > +	if (ret < 0)
+> > +		DRM_ERROR("failed to power on dsi\n");
+> > +}
+> > +
+> > +static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge
+> > *bridge,
+> > +					       struct drm_bridge_state
+> > *old_bridge_state)
+> > +{
+> > +	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
+> > +
+> > +	mtk_dsi_poweroff(dsi);
+> > +}
+> > +
+> >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
+> >  	.attach = mtk_dsi_bridge_attach,
+> >  	.atomic_disable = mtk_dsi_bridge_atomic_disable,
+> >  	.atomic_enable = mtk_dsi_bridge_atomic_enable,
+> > +	.atomic_pre_enable = mtk_dsi_bridge_atomic_pre_enable,
+> > +	.atomic_post_disable = mtk_dsi_bridge_atomic_post_disable,
+> >  	.mode_set = mtk_dsi_bridge_mode_set,
+> >  };
+> >  
+> 
+> 
 
-Add new frequencies support in mt76_sar_freq_ranges[]
-* 5945 - 6165
-* 6165 - 6405
-* 6405 - 6525
-* 6525 - 6705
-* 6705 - 6865
-* 6865 - 7125
+Hi CK:
+Thanks for your review.
 
-Reviewed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mac80211.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+The modification here is related to pre_enable()/post_disable().
+Because in the previous dsi_enable function, dsi_poweron will be
+executed first and then the dsi register will be operated.
+But the current modification will move dsi_poweron to the pre_enable
+function, and the pre_enable is of void type, when dsi_poweron fails,
+an error log will be printed, but the dsi register will be operated in
+dsi_enable later , it may cause bus hang.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 18b5de55334c..5515e1698b27 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -178,6 +178,12 @@ static const struct cfg80211_sar_freq_ranges mt76_sar_freq_ranges[] = {
- 	{ .start_freq = 5350, .end_freq = 5470, },
- 	{ .start_freq = 5470, .end_freq = 5725, },
- 	{ .start_freq = 5725, .end_freq = 5950, },
-+	{ .start_freq = 5945, .end_freq = 6165, },
-+	{ .start_freq = 6165, .end_freq = 6405, },
-+	{ .start_freq = 6405, .end_freq = 6525, },
-+	{ .start_freq = 6525, .end_freq = 6705, },
-+	{ .start_freq = 6705, .end_freq = 6865, },
-+	{ .start_freq = 6865, .end_freq = 7125, },
- };
- 
- static const struct cfg80211_sar_capa mt76_sar_capa = {
--- 
-2.18.0
+Therefore, dsi_poweron is judged in the dsi_enable function to avoid
+the above situation.
+I'll add that description in the comments on the next edition.
 
-
+Best Regards!
+xinlei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
