@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03975C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C945C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:12:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nu/GyWGPzhGRnLpDBjd0L2P2RQXHWY3LpT8n2Ru61K4=; b=A/1BklrQz16hNa
-	c7UL4aDNUa6Aq7fLO+cNTjrZEeo59bqZmtnZVTHjThV+CpShVtuvgMgt1dzXRv0QwsbmoXvxxVneU
-	zFgQm0BaT8nRNMRi8VTxG8tt1tqwFwG7xrIEYyNc5hT0hP/4c12pfAP39LRr4310XdO7vyxIrRLWn
-	5OPv5ppzuTsJ6C5OesFwOwBBWrCEW2KLiGJ48VaTEM8YJF5BO/I4qooS0Vtqpiz8t32S6yqs9fDfU
-	kSa0eRM5liSehaCkcyEO2ZEkCVATRYMA7/ekvCS/zFSryLlMELwL8t+SKN0KHdLHg6yGipKYKbIMl
-	PF0GhWvbn5nkCLvgofqA==;
+	List-Owner; bh=6WRdhYc/DU6QJk3repe3iRw69p+uB2lvg19fSykpYbg=; b=ooWmPhgHEqPPuN
+	eTe5iYnyz3r/niqSnleIaxKnjNazwWUslC30mao1FirYc2Ks6tJTiPE0xGnOqQ6ITNmZewGcpGLhZ
+	z+aD9COFYyUSCRYBTwN28IXsvEpyxwraNzBR/EYw5fWIMMn3MK6i5w+c545wNbzK64pS/QRGANb8d
+	88RthxKJQEsRpqJpkvgd2XCNZa8K+tZKS/LbUFw9+TwAxo1ZKlvHV1JYZcjcfdGgBHsEbUP4OaM7V
+	jL/x4xBqSxOBpaZRkQFj7FXm9XR2kwrQm1TRauRW/xfxQdZ8ah5QzrGKQsegFTI3feIc6iMv4qXkL
+	5gSKX8Hdony+h3iqDnfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrhnx-007lzp-2N; Thu, 19 May 2022 15:11:09 +0000
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
+	id 1nrhp4-007mj8-30; Thu, 19 May 2022 15:12:18 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrh4V-007OAW-Ve; Thu, 19 May 2022 14:24:14 +0000
-Received: by mail-qk1-x72e.google.com with SMTP id i68so3574866qke.11;
- Thu, 19 May 2022 07:24:09 -0700 (PDT)
+ id 1nrh4f-007OH9-PY; Thu, 19 May 2022 14:24:23 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id dm17so4706463qvb.2;
+ Thu, 19 May 2022 07:24:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=AoC9q7cvfnd7EIJadA1kEw/o8A7aPnNrZiatZkduF8M=;
- b=W2c8prILdEbbbVv9PLjE1Lr42AbeD7zvhQVZfzqttwrWO4tIXnFiddS4Z1SUC8utkf
- 3aowIUXgl22vr8eOMVw642BGCDDS+OzljTFEXw7gigyIe1DLTNXxMxqz1cUuVQm4Uuij
- WYlHb4R9SyjqddO9oBpiNP7S46UmiEyXVBCH4BBVx+m7bhLRzONoLcB+pEBMLKa/zLHQ
- NfvdZcRsYXRb4VJqAx5Xn+A9phoLzkcaBT2ZnvBwjYHFO1VMj0KJj2bL0BQIDfqW/w+9
- Y/qA5AcIVvtRAJWKXyy8CHOY5SrNnJoW//tqYL3zWzCcSt5592yeIxzQBBqdrGnAS+R2
- n2/w==
+ bh=/F1u/RnNvoSA5Fg84LsZu/d0EEbrb1hnUkkpK7Edzrk=;
+ b=FHsawpHykc055tRH2+HvevhWPIukCAcHue8zJygAKob7t8ucVvvdXBmgcJN07r0thP
+ ojaGiV2ycq+q/opTKNIuHFf18i0iUZMsjsS8CqrEUwFEnlW130W6f8Eyw8wumLjrM2wO
+ l2f21/PGYyjZITV1es+WcwgNMOAiqaALUydqevrS2w02O9ttnInXoymmHW7j9bgO+Eit
+ sP6GyviQW1vVWPS/1lqBNsK//9qCQfcemYkx8D1ur4Iur/t0BuOrZA/jd+l19vo7VWQv
+ DF8Ifw9VAHnqr7y6oXj2s4uGOZOkFaJkeaHu1aBPuplzpnYf56hQGS5n5Ds11+I8oWEw
+ Z2cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AoC9q7cvfnd7EIJadA1kEw/o8A7aPnNrZiatZkduF8M=;
- b=8QlwpJ1TLlu9l8oXmylyPW7+wA7jLWG8X8YcJjMm6csLgNHU51Z1ijDaRmT638XRfX
- bI/xHZajaYXLRn828q/+5Xy8KJ32c/HUrh+nntiPgZu+A6BwvwP1bTZmRJHOGjAw92ui
- Ft+u5d/YJqsEXRMye9ulJ+FaHyFiaJPwnewOHsKzkTAz1MnjvExYxZEHTYE1spI0xmbG
- ASjCgj4E+geo98ZKQ6CQqsX26lvQXMYeTEzF9BX9ez9Ci01cp6GTZZBN9ZGxwpYK8jo9
- dP6dBVmaRe6MKsJTSHL+4IhRQdjUOt7L73aNKiiUij+n6zUcgpZuTD8U3eQt4XLIDWrM
- kLrA==
-X-Gm-Message-State: AOAM530DR+yXf0SPTqp1NNmyfLCiLbjTalLKhOwOIgg2v7mdxW0P+z1e
- ZUmm3qgdV1gHoDgFb/Pr9G4=
-X-Google-Smtp-Source: ABdhPJyY2Jlww0kNaOXMHCPJbz7OaTbwMLNHERG4ccYfF60NPojhO4W5NyBfkEbYnlotM9w1NNVIEQ==
-X-Received: by 2002:a05:620a:3724:b0:6a0:162e:48c0 with SMTP id
- de36-20020a05620a372400b006a0162e48c0mr3188348qkb.720.1652970248835; 
- Thu, 19 May 2022 07:24:08 -0700 (PDT)
+ bh=/F1u/RnNvoSA5Fg84LsZu/d0EEbrb1hnUkkpK7Edzrk=;
+ b=OMjvezLbtsGtkZZ5HPpuk5XbNS0fe5NSMp5Ix2YVwFE/vhrSOpxBfzsH1ovmaZ323I
+ H/im1Xu1lYH7NbYlshpLR57m8P4ePJ5f/3QDyeIVaJGiRxJtu529BWifKOL9QZKbhllb
+ 8EVjU0wJd7RvzHCTfCD8wLRp4lTVQnS6iWssn7CHCUHS+7pZCx/0g6soEr6KBSVqSBmT
+ 5JXQBdyXgQDdrH0D7ix5axhJpfXFe3hEv/OCra7nIGkixN7JWXivUYiNNHEHelCVEXNf
+ TLc84a1ZDp7kuH7tKZQuz1mUEc8R9r+vw04yjTbuA5gfXzYoVioWpPysUnvHSZuuaH9P
+ cunA==
+X-Gm-Message-State: AOAM5321CCb+fPnNlfmNrxDi4e4XpTCTeW9hv7yel19fttN7FPf95JdX
+ YmES7mW2fmA8grR2Rnwpvl4=
+X-Google-Smtp-Source: ABdhPJwE5m/Py9T4+bhXUWHIeIFP3YAlsSzC0KWD4LbPYUa0sn3pNxKup3C9qwGpQHmEFnzA1rdEtw==
+X-Received: by 2002:ad4:49b1:0:b0:461:f0fb:685 with SMTP id
+ u17-20020ad449b1000000b00461f0fb0685mr4198310qvx.22.1652970259763; 
+ Thu, 19 May 2022 07:24:19 -0700 (PDT)
 Received: from localhost.localdomain ([217.138.206.82])
  by smtp.gmail.com with ESMTPSA id
- c15-20020ac85a8f000000b002f39b99f697sm1539342qtc.49.2022.05.19.07.24.00
+ c15-20020ac85a8f000000b002f39b99f697sm1539342qtc.49.2022.05.19.07.24.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 May 2022 07:24:08 -0700 (PDT)
+ Thu, 19 May 2022 07:24:19 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Michael Turquette <mturquette@baylibre.com>,
@@ -76,16 +76,16 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
  linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  ~postmarketos/upstreaming@lists.sr.ht, Rob Herring <robh@kernel.org>
-Subject: [PATCH v2 1/4] dt-bindings: clock: Add Mediatek MT6735 clock bindings
-Date: Thu, 19 May 2022 18:22:08 +0400
-Message-Id: <20220519142211.458336-2-y.oudjana@protonmail.com>
+Subject: [PATCH v2 2/4] dt-bindings: reset: Add MT6735 reset bindings
+Date: Thu, 19 May 2022 18:22:09 +0400
+Message-Id: <20220519142211.458336-3-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220519142211.458336-1-y.oudjana@protonmail.com>
 References: <20220519142211.458336-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_072412_214006_C7989DBE 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20220519_072421_948602_4861C5D2 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,223 +104,104 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Add clock definitions for Mediatek MT6735 clocks provided by
-apmixedsys, topckgen, infracfg and pericfg.
+Add reset definitions for Mediatek MT6735 resets provided by
+infracfg and pericfg.
 
 Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 Acked-by: Rob Herring <robh@kernel.org>
 ---
- MAINTAINERS                                   | 10 +++
- .../clock/mediatek,mt6735-apmixedsys.h        | 16 ++++
- .../clock/mediatek,mt6735-infracfg.h          | 25 ++++++
- .../clock/mediatek,mt6735-pericfg.h           | 37 +++++++++
- .../clock/mediatek,mt6735-topckgen.h          | 79 +++++++++++++++++++
- 5 files changed, 167 insertions(+)
- create mode 100644 include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
- create mode 100644 include/dt-bindings/clock/mediatek,mt6735-infracfg.h
- create mode 100644 include/dt-bindings/clock/mediatek,mt6735-pericfg.h
- create mode 100644 include/dt-bindings/clock/mediatek,mt6735-topckgen.h
+ MAINTAINERS                                   |  2 ++
+ .../reset/mediatek,mt6735-infracfg.h          | 31 +++++++++++++++++++
+ .../reset/mediatek,mt6735-pericfg.h           | 31 +++++++++++++++++++
+ 3 files changed, 64 insertions(+)
+ create mode 100644 include/dt-bindings/reset/mediatek,mt6735-infracfg.h
+ create mode 100644 include/dt-bindings/reset/mediatek,mt6735-pericfg.h
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 6516f9c6d28e..a59069263cfb 100644
+index a59069263cfb..1c0af554a7b6 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -12494,6 +12494,16 @@ S:	Maintained
- F:	Documentation/devicetree/bindings/mmc/mtk-sd.yaml
- F:	drivers/mmc/host/mtk-sd.c
+@@ -12503,6 +12503,8 @@ F:	include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
+ F:	include/dt-bindings/clock/mediatek,mt6735-infracfg.h
+ F:	include/dt-bindings/clock/mediatek,mt6735-pericfg.h
+ F:	include/dt-bindings/clock/mediatek,mt6735-topckgen.h
++F:	include/dt-bindings/reset/mediatek,mt6735-infracfg.h
++F:	include/dt-bindings/reset/mediatek,mt6735-pericfg.h
  
-+MEDIATEK MT6735 CLOCK DRIVERS
-+M:	Yassine Oudjana <y.oudjana@protonmail.com>
-+L:	linux-clk@vger.kernel.org
-+L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-+S:	Maintained
-+F:	include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
-+F:	include/dt-bindings/clock/mediatek,mt6735-infracfg.h
-+F:	include/dt-bindings/clock/mediatek,mt6735-pericfg.h
-+F:	include/dt-bindings/clock/mediatek,mt6735-topckgen.h
-+
  MEDIATEK MT76 WIRELESS LAN DRIVER
  M:	Felix Fietkau <nbd@nbd.name>
- M:	Lorenzo Bianconi <lorenzo@kernel.org>
-diff --git a/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h b/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
+diff --git a/include/dt-bindings/reset/mediatek,mt6735-infracfg.h b/include/dt-bindings/reset/mediatek,mt6735-infracfg.h
 new file mode 100644
-index 000000000000..3dda719fd5d5
+index 000000000000..86448f946568
 --- /dev/null
-+++ b/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
-@@ -0,0 +1,16 @@
++++ b/include/dt-bindings/reset/mediatek,mt6735-infracfg.h
+@@ -0,0 +1,31 @@
 +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
 +
-+#ifndef _DT_BINDINGS_CLK_MT6735_APMIXEDSYS_H
-+#define _DT_BINDINGS_CLK_MT6735_APMIXEDSYS_H
++#ifndef _DT_BINDINGS_RST_MT6735_INFRACFG_H
++#define _DT_BINDINGS_RST_MT6735_INFRACFG_H
 +
-+#define ARMPLL				0
-+#define MAINPLL				1
-+#define UNIVPLL				2
-+#define MMPLL				3
-+#define MSDCPLL				4
-+#define VENCPLL				5
-+#define TVDPLL				6
-+#define APLL1				7
-+#define APLL2				8
++#define EMI_REG_RST			0
++#define DRAMC0_AO_RST			1
++#define AP_CIRQ_EINT_RST		3
++#define APXGPT_RST			4
++#define SCPSYS_RST			5
++#define KP_RST				6
++#define PMIC_WRAP_RST			7
++#define CLDMA_AO_TOP_RST		8
++#define EMI_RST				16
++#define CCIF_RST			17
++#define DRAMC0_RST			18
++#define EMI_AO_REG_RST			19
++#define CCIF_AO_RST			20
++#define TRNG_RST			21
++#define SYS_CIRQ_RST			22
++#define GCE_RST				23
++#define MM_IOMMU_RST			24
++#define CCIF1_RST			25
++#define CLDMA_TOP_PD_RST		26
++#define CBIP_P2P_MFG			27
++#define CBIP_P2P_APMIXED		28
++#define CBIP_P2P_CKSYS			29
++#define CBIP_P2P_MIPI			30
++#define CBIP_P2P_DDRPHY			31
 +
 +#endif
-diff --git a/include/dt-bindings/clock/mediatek,mt6735-infracfg.h b/include/dt-bindings/clock/mediatek,mt6735-infracfg.h
+diff --git a/include/dt-bindings/reset/mediatek,mt6735-pericfg.h b/include/dt-bindings/reset/mediatek,mt6735-pericfg.h
 new file mode 100644
-index 000000000000..979a174ff8b6
+index 000000000000..6cdfaa7ddadf
 --- /dev/null
-+++ b/include/dt-bindings/clock/mediatek,mt6735-infracfg.h
-@@ -0,0 +1,25 @@
++++ b/include/dt-bindings/reset/mediatek,mt6735-pericfg.h
+@@ -0,0 +1,31 @@
 +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
 +
-+#ifndef _DT_BINDINGS_CLK_MT6735_INFRACFG_H
-+#define _DT_BINDINGS_CLK_MT6735_INFRACFG_H
++#ifndef _DT_BINDINGS_RST_MT6735_PERICFG_H
++#define _DT_BINDINGS_RST_MT6735_PERICFG_H
 +
-+#define DBGCLK				0
-+#define GCE				1
-+#define TRBG				2
-+#define CPUM				3
-+#define DEVAPC				4
-+#define AUDIO				5
-+#define GCPU				6
-+#define L2C_SRAM			7
-+#define M4U				8
-+#define CLDMA				9
-+#define CONNMCU_BUS			10
-+#define KP				11
-+#define APXGPT				12
-+#define SEJ				13
-+#define CCIF0_AP			14
-+#define CCIF1_AP			15
-+#define PMIC_SPI			16
-+#define PMIC_WRAP			17
++#define UART0_SW_RST			0
++#define UART1_SW_RST			1
++#define UART2_SW_RST			2
++#define UART3_SW_RST			3
++#define UART4_SW_RST			4
++#define BTIF_SW_RST			6
++#define DISP_PWM_SW_RST			7
++#define PWM_SW_RST			8
++#define AUXADC_SW_RST			10
++#define DMA_SW_RST			11
++#define IRDA_SW_RST			12
++#define IRTX_SW_RST			13
++#define THERM_SW_RST			16
++#define MSDC2_SW_RST			17
++#define MSDC3_SW_RST			17
++#define MSDC0_SW_RST			19
++#define MSDC1_SW_RST			20
++#define I2C0_SW_RST			22
++#define I2C1_SW_RST			23
++#define I2C2_SW_RST			24
++#define I2C3_SW_RST			25
++#define USB_SW_RST			28
 +
-+#endif
-diff --git a/include/dt-bindings/clock/mediatek,mt6735-pericfg.h b/include/dt-bindings/clock/mediatek,mt6735-pericfg.h
-new file mode 100644
-index 000000000000..16f3c6a9a772
---- /dev/null
-+++ b/include/dt-bindings/clock/mediatek,mt6735-pericfg.h
-@@ -0,0 +1,37 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+
-+#ifndef _DT_BINDINGS_CLK_MT6735_PERICFG_H
-+#define _DT_BINDINGS_CLK_MT6735_PERICFG_H
-+
-+#define DISP_PWM			0
-+#define THERM				1
-+#define PWM1				2
-+#define PWM2				3
-+#define PWM3				4
-+#define PWM4				5
-+#define PWM5				6
-+#define PWM6				7
-+#define PWM7				8
-+#define PWM				9
-+#define USB0				10
-+#define IRDA				11
-+#define APDMA				12
-+#define MSDC30_0			13
-+#define MSDC30_1			14
-+#define MSDC30_2			15
-+#define MSDC30_3			16
-+#define UART0				17
-+#define UART1				18
-+#define UART2				19
-+#define UART3				20
-+#define UART4				21
-+#define BTIF				22
-+#define I2C0				23
-+#define I2C1				24
-+#define I2C2				25
-+#define I2C3				26
-+#define AUXADC				27
-+#define SPI0				28
-+#define IRTX				29
-+
-+#endif
-diff --git a/include/dt-bindings/clock/mediatek,mt6735-topckgen.h b/include/dt-bindings/clock/mediatek,mt6735-topckgen.h
-new file mode 100644
-index 000000000000..a771910a4b8a
---- /dev/null
-+++ b/include/dt-bindings/clock/mediatek,mt6735-topckgen.h
-@@ -0,0 +1,79 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+
-+#ifndef _DT_BINDINGS_CLK_MT6735_TOPCKGEN_H
-+#define _DT_BINDINGS_CLK_MT6735_TOPCKGEN_H
-+
-+#define AD_SYS_26M_CK			0
-+#define CLKPH_MCK_O			1
-+#define DMPLL				2
-+#define DPI_CK				3
-+#define WHPLL_AUDIO_CK			4
-+
-+#define SYSPLL_D2			5
-+#define SYSPLL_D3			6
-+#define SYSPLL_D5			7
-+#define SYSPLL1_D2			8
-+#define SYSPLL1_D4			9
-+#define SYSPLL1_D8			10
-+#define SYSPLL1_D16			11
-+#define SYSPLL2_D2			12
-+#define SYSPLL2_D4			13
-+#define SYSPLL3_D2			14
-+#define SYSPLL3_D4			15
-+#define SYSPLL4_D2			16
-+#define SYSPLL4_D4			17
-+#define UNIVPLL_D2			18
-+#define UNIVPLL_D3			19
-+#define UNIVPLL_D5			20
-+#define UNIVPLL_D26			21
-+#define UNIVPLL1_D2			22
-+#define UNIVPLL1_D4			23
-+#define UNIVPLL1_D8			24
-+#define UNIVPLL2_D2			25
-+#define UNIVPLL2_D4			26
-+#define UNIVPLL2_D8			27
-+#define UNIVPLL3_D2			28
-+#define UNIVPLL3_D4			29
-+#define MSDCPLL_D2			30
-+#define MSDCPLL_D4			31
-+#define MSDCPLL_D8			32
-+#define MSDCPLL_D16			33
-+#define VENCPLL_D3			34
-+#define TVDPLL_D2			35
-+#define TVDPLL_D4			36
-+#define DMPLL_D2			37
-+#define DMPLL_D4			38
-+#define DMPLL_D8			39
-+#define AD_SYS_26M_D2			40
-+
-+#define AXI_SEL				41
-+#define MEM_SEL				42
-+#define DDRPHY_SEL			43
-+#define MM_SEL				44
-+#define PWM_SEL				45
-+#define VDEC_SEL			46
-+#define MFG_SEL				47
-+#define CAMTG_SEL			48
-+#define UART_SEL			49
-+#define SPI_SEL				50
-+#define USB20_SEL			51
-+#define MSDC50_0_SEL			52
-+#define MSDC30_0_SEL			53
-+#define MSDC30_1_SEL			54
-+#define MSDC30_2_SEL			55
-+#define MSDC30_3_SEL			56
-+#define AUDIO_SEL			57
-+#define AUDINTBUS_SEL			58
-+#define PMICSPI_SEL			59
-+#define SCP_SEL				60
-+#define ATB_SEL				61
-+#define DPI0_SEL			62
-+#define SCAM_SEL			63
-+#define MFG13M_SEL			64
-+#define AUD1_SEL			65
-+#define AUD2_SEL			66
-+#define IRDA_SEL			67
-+#define IRTX_SEL			68
-+#define DISPPWM_SEL			69
++#define SPI0_SW_RST			33
 +
 +#endif
 -- 
