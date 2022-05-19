@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E3FAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:46:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88723C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:46:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eR/gz6/YlMcXPvmqjC+/GziDKC3oPReTMlcWLLQ3zEU=; b=puXzmsb34ni4xe
-	EQcO05tHqq86RYmsPAkqX7Vj8tW5OOFf1ucFQLEeW9BOuX0x7g8NywT8a2OjhEKR/0ZPLGA7ba9c2
-	y3XdJ5b8CT8tCccKWsCz2uwgjUTj7pjykgX9QK/fJXXlHQrfO+P/YCkaDSRuI4ut9yr8R7hN1ZgCx
-	F9YfYfz4zEr9Ntxo7l61pIWvAplIrzrsjYfTwmazY3eO0Ew4oxR/PB6WyU6cb34Y9qZQIsD/XQDXz
-	qWV3rTJ9WjW19aaIA/cLxHEgBU+MHOLmpU7Mm63FYQpWLEgshsKT+spUJ6pUJt+SHr5RjXi/XY2gf
-	odIC3FXIbeOlmVcst0XQ==;
+	List-Owner; bh=pnm4Z+FpZMj7IE9PsnxpdwLPNRuY+7leKpS026cFQjs=; b=lJBopWCHB0R7+Z
+	kK1KvtoIFqxoXaPMPHoEmOqHMISTCGYwumX+UcJQLTfC1dtjTB9DvlT7HJEiLbZMf9AitzFMcqgi+
+	hIHstt23kOkhddC6xoaLzxcBnG0fZ0omKPCkG5wMkEkbdqrb7RCMcfxB/Q1q02UDK45VAqVjwVH8F
+	Xgd1yoPmPUw4+ZMbJRhkpZgOEXKCmvlKsnBKWjdzC0P9vTJhZxmK+DNr/UFUBf1V8HFxk5oDCS1Iw
+	2aUjEJ6AAkhyW4KiXrk7TQA0c+IMtWRJT5E8GmJ6qCQihos59roiD8PUamWzHJbq7ZfkiCDIXfAhX
+	/T1r4uToGmeDfRi9haTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriLn-0085GZ-3M; Thu, 19 May 2022 15:46:07 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1nriLs-0085Kw-OT; Thu, 19 May 2022 15:46:12 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25]
+ helo=mx0b-001ae601.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJa-0083D5-CF; Thu, 19 May 2022 15:43:54 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24JBHtaf024228;
- Thu, 19 May 2022 10:43:31 -0500
+ id 1nriJa-0083DT-JO; Thu, 19 May 2022 15:43:54 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+ by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J6k11o002261;
+ Thu, 19 May 2022 10:43:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=Pm3jjMaWxVpEIkKWLVm3yxKbzzbb30dvl/zIGbtUrP8=;
- b=YxhVrsQAg0fjF21c2EO9zIhWCpnRCHxgUI7rdcfp0X5ddAsfui0t4gVq1h19vCJWqckQ
- s0RT1SS/XTw1/mVSvQuUDcvkIoXaWAzuesU7hVP6GAjF3FEOUCmI9F6k2m83Rv1jHqTe
- eKPushTrUwgNbSD3UR8sH7bHjfBk7m7t/UXoOQtAD6iOw1jrTQBMYoq4yY9Jq8D5d7tF
- zxHxl/ddpAILBNjs7jK1lHJuiEG+0lI57IOKLVpQgk8mnSNLZU6P8pNH17xHW4i7olVJ
- JVI7tsdidRsJ6iJV48fSpJuud5KLi5N40whMnZy3ou+HF70jSx7M9mHODZKsVrx0LzlS IA== 
-Received: from ediex01.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dm-7
+ bh=tjnD/juqDx0r9lwGe7Wq0UvP1XDXAhB0eJFtnk9DZ0Y=;
+ b=DrR83HdM1bvgprtkGM1OGxUmf50LWqPhMWyR0tKTPhaY7G4FA/VONpKYHrElSfsyj900
+ LOY6kl2/Av2BMzqD8Eog09oPRTvQWXYeq9VXS6kzwPh3jGkysMEl8px3CCoYoW72KmKV
+ AWy0KW6uDAtH4UxoesbKx63F/RF5rLUvwZl8qQ7fHyRjoYr0h2EtC2gwc57LBfeBvBHQ
+ hKiS9QDGOUxZWq0OMHnB2hpL3tG9t05ySMeXSYZvoAAQpCZjHp++jBvG39UH0qxkcuBK
+ k6leIRTXN4GSoWgMM0mdDUR8Vc2x8dGFLKeP0+ZMcjvTqw6PX2cKN5GwRSOTJ+mWbVIs rw== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+ by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3g29u37mcg-3
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 19 May 2022 10:43:31 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+ Thu, 19 May 2022 10:43:32 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
- 2022 16:43:19 +0100
+ 2022 16:43:20 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Thu, 19 May 2022 16:43:19 +0100
+ Frontend Transport; Thu, 19 May 2022 16:43:20 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 393CB11D3;
- Thu, 19 May 2022 15:43:19 +0000 (UTC)
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 023BD476;
+ Thu, 19 May 2022 15:43:20 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -66,19 +67,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
  <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
  <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
  <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: [PATCH 12/56] ASoC: js4740-i2s: Update to use set_fmt_new callback
-Date: Thu, 19 May 2022 16:42:34 +0100
-Message-ID: <20220519154318.2153729-13-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 22/56] ASoC: sunxi: Update to use set_fmt_new callback
+Date: Thu, 19 May 2022 16:42:44 +0100
+Message-ID: <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: 5h7eLRo3hYvdU-IIdSldPGyTiV9e14zM
-X-Proofpoint-ORIG-GUID: 5h7eLRo3hYvdU-IIdSldPGyTiV9e14zM
+X-Proofpoint-GUID: KaEXYmEwQEaUYiBbVtR-BjOHPaOE3Qq8
+X-Proofpoint-ORIG-GUID: KaEXYmEwQEaUYiBbVtR-BjOHPaOE3Qq8
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_084350_657278_FA801581 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20220519_084350_713359_A7973F49 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,51 +97,107 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 As part of updating the core to directly tell drivers if they are clock
-provider or consumer update this CPU side driver to use the new direct
+provider or consumer update these CPU side drivers to use the new direct
 callback.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/jz4740/jz4740-i2s.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ sound/soc/sunxi/sun4i-i2s.c   | 20 ++++++++++----------
+ sound/soc/sunxi/sun8i-codec.c |  8 ++++----
+ 2 files changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/sound/soc/jz4740/jz4740-i2s.c b/sound/soc/jz4740/jz4740-i2s.c
-index 7ad5d9a924d80..2c9dee2417783 100644
---- a/sound/soc/jz4740/jz4740-i2s.c
-+++ b/sound/soc/jz4740/jz4740-i2s.c
-@@ -206,18 +206,18 @@ static int jz4740_i2s_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+diff --git a/sound/soc/sunxi/sun4i-i2s.c b/sound/soc/sunxi/sun4i-i2s.c
+index 7047f71629ab3..872838d3e0a94 100644
+--- a/sound/soc/sunxi/sun4i-i2s.c
++++ b/sound/soc/sunxi/sun4i-i2s.c
+@@ -702,13 +702,13 @@ static int sun4i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+ 			   SUN4I_I2S_FMT0_FMT_MASK, val);
  
- 	conf &= ~(JZ_AIC_CONF_BIT_CLK_MASTER | JZ_AIC_CONF_SYNC_CLK_MASTER);
- 
+ 	/* DAI clock master masks */
 -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
 -	case SND_SOC_DAIFMT_CBS_CFS:
 +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
 +	case SND_SOC_DAIFMT_BP_FP:
- 		conf |= JZ_AIC_CONF_BIT_CLK_MASTER | JZ_AIC_CONF_SYNC_CLK_MASTER;
- 		format |= JZ_AIC_I2S_FMT_ENABLE_SYS_CLK;
+ 		/* BCLK and LRCLK master */
+ 		val = SUN4I_I2S_CTRL_MODE_MASTER;
  		break;
--	case SND_SOC_DAIFMT_CBM_CFS:
-+	case SND_SOC_DAIFMT_BC_FP:
- 		conf |= JZ_AIC_CONF_SYNC_CLK_MASTER;
- 		break;
--	case SND_SOC_DAIFMT_CBS_CFM:
-+	case SND_SOC_DAIFMT_BP_FC:
- 		conf |= JZ_AIC_CONF_BIT_CLK_MASTER;
- 		break;
+ 
 -	case SND_SOC_DAIFMT_CBM_CFM:
 +	case SND_SOC_DAIFMT_BC_FC:
+ 		/* BCLK and LRCLK slave */
+ 		val = SUN4I_I2S_CTRL_MODE_SLAVE;
+ 		break;
+@@ -802,13 +802,13 @@ static int sun8i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+ 			   SUN8I_I2S_TX_CHAN_OFFSET(offset));
+ 
+ 	/* DAI clock master masks */
+-	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+-	case SND_SOC_DAIFMT_CBS_CFS:
++	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
++	case SND_SOC_DAIFMT_BP_FP:
+ 		/* BCLK and LRCLK master */
+ 		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
+ 		break;
+ 
+-	case SND_SOC_DAIFMT_CBM_CFM:
++	case SND_SOC_DAIFMT_BC_FC:
+ 		/* BCLK and LRCLK slave */
+ 		val = 0;
+ 		break;
+@@ -909,13 +909,13 @@ static int sun50i_h6_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+ 			   SUN50I_H6_I2S_TX_CHAN_SEL_OFFSET(offset));
+ 
+ 	/* DAI clock master masks */
+-	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+-	case SND_SOC_DAIFMT_CBS_CFS:
++	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
++	case SND_SOC_DAIFMT_BP_FP:
+ 		/* BCLK and LRCLK master */
+ 		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
+ 		break;
+ 
+-	case SND_SOC_DAIFMT_CBM_CFM:
++	case SND_SOC_DAIFMT_BC_FC:
+ 		/* BCLK and LRCLK slave */
+ 		val = 0;
+ 		break;
+@@ -1081,7 +1081,7 @@ static int sun4i_i2s_set_tdm_slot(struct snd_soc_dai *dai,
+ 
+ static const struct snd_soc_dai_ops sun4i_i2s_dai_ops = {
+ 	.hw_params	= sun4i_i2s_hw_params,
+-	.set_fmt	= sun4i_i2s_set_fmt,
++	.set_fmt_new	= sun4i_i2s_set_fmt,
+ 	.set_sysclk	= sun4i_i2s_set_sysclk,
+ 	.set_tdm_slot	= sun4i_i2s_set_tdm_slot,
+ 	.trigger	= sun4i_i2s_trigger,
+diff --git a/sound/soc/sunxi/sun8i-codec.c b/sound/soc/sunxi/sun8i-codec.c
+index 0bea2162f68d9..6e9ef948d6621 100644
+--- a/sound/soc/sunxi/sun8i-codec.c
++++ b/sound/soc/sunxi/sun8i-codec.c
+@@ -286,11 +286,11 @@ static int sun8i_codec_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+ 	u32 dsp_format, format, invert, value;
+ 
+ 	/* clock masters */
+-	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+-	case SND_SOC_DAIFMT_CBS_CFS: /* Codec slave, DAI master */
++	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
++	case SND_SOC_DAIFMT_BP_FP: /* Codec slave, DAI master */
+ 		value = 0x1;
+ 		break;
+-	case SND_SOC_DAIFMT_CBM_CFM: /* Codec Master, DAI slave */
++	case SND_SOC_DAIFMT_BC_FC: /* Codec Master, DAI slave */
+ 		value = 0x0;
  		break;
  	default:
- 		return -EINVAL;
-@@ -433,7 +433,7 @@ static const struct snd_soc_dai_ops jz4740_i2s_dai_ops = {
- 	.shutdown = jz4740_i2s_shutdown,
- 	.trigger = jz4740_i2s_trigger,
- 	.hw_params = jz4740_i2s_hw_params,
--	.set_fmt = jz4740_i2s_set_fmt,
-+	.set_fmt_new = jz4740_i2s_set_fmt,
- 	.set_sysclk = jz4740_i2s_set_sysclk,
- };
+@@ -630,7 +630,7 @@ static int sun8i_codec_hw_free(struct snd_pcm_substream *substream,
+ }
  
+ static const struct snd_soc_dai_ops sun8i_codec_dai_ops = {
+-	.set_fmt	= sun8i_codec_set_fmt,
++	.set_fmt_new	= sun8i_codec_set_fmt,
+ 	.set_tdm_slot	= sun8i_codec_set_tdm_slot,
+ 	.startup	= sun8i_codec_startup,
+ 	.hw_params	= sun8i_codec_hw_params,
 -- 
 2.30.2
 
