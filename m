@@ -4,84 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED02C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 03:17:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B14C4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 03:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ln1KyzvlK/4/mCmQC3smtf0KtGQ/mQQ38bvZbuVq8aI=; b=w4EfjeDscOS/La
-	hr/RfFkOHFu8u13aMzK49Ml2g9BwXXDQ4Ww9vGlmpbrN93xJvRZZHXp9j0PGOwtuSbvtotc943E3h
-	JIGHX1VsytRhmj4BMg4Lkt6j5mMkpKva52Y/3sMSnvKmj39jda4z+jzeX9Or7bAt9L/97B87Pm23r
-	cl+wDmkxwHMD0yNeljmBD7hN9JAEI9ABxu6DIKyQwLkq6mBJXlP/uEnf/Bis3vCgNS5115I6jhMug
-	n0CVpNYxEM7nm1BHE9KEIp0p/SBTqQYA+0XZsKMCVlK0D957Lq7NN2VrNfx3/2K2Sp9eH2jSZCXlq
-	0wb+gCWBfj9snIaH1B/Q==;
+	List-Owner; bh=3CRknswrU/QZWK6SS6LtpTtVMjflK9ZMGx0VDTdAaOs=; b=gmGV88tOrIvmV2
+	95H2PzFhMPCbrhv+QMsuftX95L7Hw96Azc/5jhbl5Ah+MuOf2nGsIdM79Bi9qdKlBR2ggsQRyQh8q
+	L1TPHShSZvhnYE2uVTiep9CbRl+AXKEVZyRFRdPTpZ6Uiwg4NuB2YF6Ed2prrWQqf4nRLKRPdSSQ1
+	NmMSMwQydyYbN2Cgc6BK7uF0BfJndD8gsl11MnXI4/QqPbLBtdOP4/6vfT1M/MbVM3vuuDrn5m7J+
+	eopcTzq7u9lvCWJoj2g3Y9HBRUwMQwZDl0SAmjWEULohJGHad9PqXVgJxEcagRz89gDX+oWQC4NGo
+	9trBDG3XJkVPjeSf0w/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrWfV-004q1S-9s; Thu, 19 May 2022 03:17:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nrWmk-004s01-FO; Thu, 19 May 2022 03:25:10 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrWfI-004pxu-Os; Thu, 19 May 2022 03:17:31 +0000
-X-UUID: 68d48a25890941ea849e8278c91d6aaa-20220518
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:f0b10d3e-9be4-461f-b7f5-6af53fc31704, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:460cca79-5ef6-470b-96c9-bdb8ced32786,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
- ,QS:0,BEC:nil
-X-UUID: 68d48a25890941ea849e8278c91d6aaa-20220518
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1990040781; Wed, 18 May 2022 20:17:23 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 May 2022 20:07:21 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 May 2022 11:07:19 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 19 May 2022 11:07:19 +0800
-Message-ID: <f67eb4c573784e0c2d8bc75e9b66a44d188132c1.camel@mediatek.com>
-Subject: Re: [PATCH v15 3/3] media: platform: mtk-mdp3: add Mediatek MDP3
- driver
-From: moudy.ho <moudy.ho@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Alexandre Courbot
- <acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
- <pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
- <randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <cellopoint.kai@gmail.com>
-Date: Thu, 19 May 2022 11:07:19 +0800
-In-Reply-To: <789773e86ff45705a7b87d8aa13e315903b5ad69.camel@mediatek.com>
-References: <20220512092306.6895-1-moudy.ho@mediatek.com>
- <20220512092306.6895-4-moudy.ho@mediatek.com>
- <789773e86ff45705a7b87d8aa13e315903b5ad69.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nrWmZ-004rwN-DQ
+ for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 03:25:01 +0000
+Received: by mail-ed1-x530.google.com with SMTP id fd25so5390351edb.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 18 May 2022 20:24:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=S2HqOHyCOH+aXecOw9Zv3ZMvUKUSfSNo8l4zI5iNzrk=;
+ b=LiQobTU3TNZL9SkrZb+rYBVaCidXLtBkzOdKK7CSr24zY71YZLV0YNxq3dwIJ5wTaf
+ 8pCQSw/rWZHX0FxmQa5erNJ59dr7+y63GelWm2bR9bgn6vk5w7JO7k4faAr3F7pmbZdt
+ zf+qN1kgIQ7EP6Xm0UkF1JR2NWlNl/uVUFR3c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=S2HqOHyCOH+aXecOw9Zv3ZMvUKUSfSNo8l4zI5iNzrk=;
+ b=wSQpwXTyJCl+jpxOQmyLhoGrXb+rgH4vn6J2ROrjIajnM+qKKmpSYVMdgzxon2I7N8
+ 7roRKKr5PJ00BgGY5KiplRIDYBkvMFXU3+zmeuUGpQDbQkFHHLuEbHMrv80PmJBaZrvE
+ creYx49qZzizbnsUkfHaH0lNBQdripIOrsJFVlFIP+sjVPfVlsw9A0g9JPJpPcd1gZmD
+ SV9ySCcWpMz5B9qfkcfYdXB3AJtblCPkVQsfymliSlVZNU9dBBC0qmzJgNGANExPbHQ1
+ TjMnCq7lNqY0kuPAJPLcpPLOQIPC5mEk8kti+ERm5+asc6FwFGKgql3ktsO+2yXTp87F
+ 8KEw==
+X-Gm-Message-State: AOAM533DOlbqHOcouZ8hQO/4anEH5QrC+PYM5TaL/QUM8A4U/HzaB6v4
+ p0eKF50IxbKFvkjWngoZHLXCapQnEn+LcywIxLbIEA==
+X-Google-Smtp-Source: ABdhPJycC/kcMRqj9Yp+21KxOPFPUKt1x2Mn3Ucbk4t8W/c6rs7YDemtgJmq33uTNBuI33Ko9RYP2l459pqKQI6OybU=
+X-Received: by 2002:a05:6402:290e:b0:42a:e401:6a07 with SMTP id
+ ee14-20020a056402290e00b0042ae4016a07mr2977441edb.99.1652930694760; Wed, 18
+ May 2022 20:24:54 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220513032832.17645-1-johnson.wang@mediatek.com>
+ <20220513032832.17645-3-johnson.wang@mediatek.com>
+ <CAGXv+5Em2eq8g8phC7MVcEP-sCsSsKa9FQjOra2UN3pib_psLA@mail.gmail.com>
+ <7eec74e32bb482ba6984c6789f598ee9965f49b3.camel@mediatek.com>
+In-Reply-To: <7eec74e32bb482ba6984c6789f598ee9965f49b3.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 19 May 2022 11:24:43 +0800
+Message-ID: <CAGXv+5G-88zWSnic-AY2ANF9BYWCsZk29CeLxp+VuFKE_LH5Ug@mail.gmail.com>
+Subject: Re: [RESEND v4 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
+ devfreq driver
+To: Johnson Wang <johnson.wang@mediatek.com>
+Cc: cw00.choi@samsung.com, krzk+dt@kernel.org, robh+dt@kernel.org, 
+ kyungmin.park@samsung.com, djakov@kernel.org, khilman@kernel.org, 
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, jia-wei.chang@mediatek.com, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_201728_850294_2C9DDCEF 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20220518_202459_479181_85B3FADD 
+X-CRM114-Status: GOOD (  34.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,459 +87,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-05-17 at 19:24 +0800, Rex-BC Chen wrote:
-> On Thu, 2022-05-12 at 17:23 +0800, Moudy Ho wrote:
-> > This patch adds driver for Mediatek's Media Data Path ver.3 (MDP3).
-> > It provides the following functions:
-> >   color transform, format conversion, resize, crop, rotate, flip
-> >   and additional image quality enhancement.
-> > 
-> > The MDP3 driver is mainly used for Google Chromebook products to
-> > import the new architecture to set the HW settings as shown below:
-> >   User -> V4L2 framework
-> >     -> MDP3 driver -> SCP (setting calculations)
-> >       -> MDP3 driver -> CMDQ (GCE driver) -> HW
-> > 
-> > Each modules' related operation control is sited in mtk-mdp3-comp.c
-> > Each modules' register table is defined in file with "mdp_reg_"
-> > prefix
-> > GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> > V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> > Probe, power, suspend/resume, system level functions are defined in
-> > mtk-mdp3-core.c
-> > 
-> > v4l2-compliance 1.22.1, 32 bits, 32-bit time_t
-> > 
-> > Compliance test for mtk-mdp3 device /dev/video2:
-> > 
-> > Driver Info:
-> > 	Driver name      : mtk-mdp3
-> > 	Card type        : 14001000.mdp3-rdma0
-> > 	Bus info         : platform:mtk-mdp3
-> > 	Driver version   : 5.18.0
-> > 	Capabilities     : 0x84204000
-> > 		Video Memory-to-Memory Multiplanar
-> > 		Streaming
-> > 		Extended Pix Format
-> > 		Device Capabilities
-> > 	Device Caps      : 0x04204000
-> > 		Video Memory-to-Memory Multiplanar
-> > 		Streaming
-> > 		Extended Pix Format
-> > 
-> > Required ioctls:
-> > 	test VIDIOC_QUERYCAP: OK
-> > 	test invalid ioctls: OK
-> > 
-> > Allow for multiple opens:
-> > 	test second /dev/video2 open: OK
-> > 	test VIDIOC_QUERYCAP: OK
-> > 	test VIDIOC_G/S_PRIORITY: OK
-> > 	test for unlimited opens: OK
-> > 
-> > Debug ioctls:
-> > 	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-> > 	test VIDIOC_LOG_STATUS: OK (Not Supported)
-> > 
-> > Input ioctls:
-> > 	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-> > 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> > 	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-> > 	test VIDIOC_ENUMAUDIO: OK (Not Supported)
-> > 	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-> > 	test VIDIOC_G/S_AUDIO: OK (Not Supported)
-> > 	Inputs: 0 Audio Inputs: 0 Tuners: 0
-> > 
-> > Output ioctls:
-> > 	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-> > 	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> > 	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-> > 	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-> > 	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-> > 	Outputs: 0 Audio Outputs: 0 Modulators: 0
-> > 
-> > Input/Output configuration ioctls:
-> > 	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-> > 	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-> > 	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-> > 	test VIDIOC_G/S_EDID: OK (Not Supported)
-> > 
-> > Control ioctls:
-> > 	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-> > 	test VIDIOC_QUERYCTRL: OK
-> > 	test VIDIOC_G/S_CTRL: OK
-> > 	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-> > 	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-> > 	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-> > 	Standard Controls: 4 Private Controls: 0
-> > 
-> > Format ioctls:
-> > 	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> > 	test VIDIOC_G/S_PARM: OK (Not Supported)
-> > 	test VIDIOC_G_FBUF: OK (Not Supported)
-> > 	test VIDIOC_G_FMT: OK
-> > 	test VIDIOC_TRY_FMT: OK
-> > 	test VIDIOC_S_FMT: OK
-> > 	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-> > 	test Cropping: OK
-> > 	test Composing: OK
-> > 	test Scaling: OK
-> > 
-> > Codec ioctls:
-> > 	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-> > 	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-> > 	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-> > 
-> > Buffer ioctls:
-> > 	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-> > 	test VIDIOC_EXPBUF: OK
-> > 	test Requests: OK (Not Supported)
-> > 	test TIME32/64: OK
-> > 
-> > Test input 0:
-> > 
-> > Streaming ioctls:
-> > 	test read/write: OK (Not Supported)
-> > 	test blocking wait: OK
-> > 
-> > 	Video Output Multiplanar: Frame #002
-> > 	Video Output Multiplanar: Frame #003
-> > 	Video Output Multiplanar: Frame #004
-> > 	Video Output Multiplanar: Frame #005
-> > 	Video Output Multiplanar: Frame #006
-> > 	Video Output Multiplanar: Frame #007
-> > 	Video Output Multiplanar: Frame #008
-> > 	Video Output Multiplanar: Frame #009
-> > 	Video Output Multiplanar: Frame #010
-> > 	Video Output Multiplanar: Frame #011
-> > 	Video Output Multiplanar: Frame #012
-> > 	Video Output Multiplanar: Frame #013
-> > 	Video Output Multiplanar: Frame #014
-> > 	Video Output Multiplanar: Frame #015
-> > 	Video Output Multiplanar: Frame #016
-> > 	Video Output Multiplanar: Frame #017
-> > 	Video Output Multiplanar: Frame #018
-> > 	Video Output Multiplanar: Frame #019
-> > 	Video Output Multiplanar: Frame #020
-> > 	Video Output Multiplanar: Frame #021
-> > 	Video Output Multiplanar: Frame #022
-> > 	Video Output Multiplanar: Frame #023
-> > 	Video Output Multiplanar: Frame #024
-> > 	Video Output Multiplanar: Frame #025
-> > 	Video Output Multiplanar: Frame #026
-> > 	Video Output Multiplanar: Frame #027
-> > 	Video Output Multiplanar: Frame #028
-> > 	Video Output Multiplanar: Frame #029
-> > 	Video Output Multiplanar: Frame #030
-> > 	Video Output Multiplanar: Frame #031
-> > 	Video Output Multiplanar: Frame #032
-> > 	Video Output Multiplanar: Frame #033
-> > 	Video Output Multiplanar: Frame #034
-> > 	Video Output Multiplanar: Frame #035
-> > 	Video Output Multiplanar: Frame #036
-> > 	Video Output Multiplanar: Frame #037
-> > 	Video Output Multiplanar: Frame #038
-> > 	Video Output Multiplanar: Frame #039
-> > 	Video Output Multiplanar: Frame #040
-> > 	Video Output Multiplanar: Frame #041
-> > 	Video Output Multiplanar: Frame #042
-> > 	Video Output Multiplanar: Frame #043
-> > 	Video Output Multiplanar: Frame #044
-> > 	Video Output Multiplanar: Frame #045
-> > 	Video Output Multiplanar: Frame #046
-> > 	Video Output Multiplanar: Frame #047
-> > 	Video Output Multiplanar: Frame #048
-> > 	Video Output Multiplanar: Frame #049
-> > 	Video Output Multiplanar: Frame #050
-> > 	Video Output Multiplanar: Frame #051
-> > 	Video Output Multiplanar: Frame #052
-> > 	Video Output Multiplanar: Frame #053
-> > 	Video Output Multiplanar: Frame #054
-> > 	Video Output Multiplanar: Frame #055
-> > 	Video Output Multiplanar: Frame #056
-> > 	Video Output Multiplanar: Frame #057
-> > 	Video Output Multiplanar: Frame #058
-> > 	Video Output Multiplanar: Frame #059
-> > 
-> > 	Video Capture Multiplanar: Captured 58 buffers
-> > 	test MMAP (no poll): OK
-> > 
-> > 	Video Output Multiplanar: Frame #002 (select)
-> > 	Video Output Multiplanar: Frame #003 (select)
-> > 	Video Output Multiplanar: Frame #004 (select)
-> > 	Video Output Multiplanar: Frame #005 (select)
-> > 	Video Output Multiplanar: Frame #006 (select)
-> > 	Video Output Multiplanar: Frame #007 (select)
-> > 	Video Output Multiplanar: Frame #008 (select)
-> > 	Video Output Multiplanar: Frame #009 (select)
-> > 	Video Output Multiplanar: Frame #010 (select)
-> > 	Video Output Multiplanar: Frame #011 (select)
-> > 	Video Output Multiplanar: Frame #012 (select)
-> > 	Video Output Multiplanar: Frame #013 (select)
-> > 	Video Output Multiplanar: Frame #014 (select)
-> > 	Video Output Multiplanar: Frame #015 (select)
-> > 	Video Output Multiplanar: Frame #016 (select)
-> > 	Video Output Multiplanar: Frame #017 (select)
-> > 	Video Output Multiplanar: Frame #018 (select)
-> > 	Video Output Multiplanar: Frame #019 (select)
-> > 	Video Output Multiplanar: Frame #020 (select)
-> > 	Video Output Multiplanar: Frame #021 (select)
-> > 	Video Output Multiplanar: Frame #022 (select)
-> > 	Video Output Multiplanar: Frame #023 (select)
-> > 	Video Output Multiplanar: Frame #024 (select)
-> > 	Video Output Multiplanar: Frame #025 (select)
-> > 	Video Output Multiplanar: Frame #026 (select)
-> > 	Video Output Multiplanar: Frame #027 (select)
-> > 	Video Output Multiplanar: Frame #028 (select)
-> > 	Video Output Multiplanar: Frame #029 (select)
-> > 	Video Output Multiplanar: Frame #030 (select)
-> > 	Video Output Multiplanar: Frame #031 (select)
-> > 	Video Output Multiplanar: Frame #032 (select)
-> > 	Video Output Multiplanar: Frame #033 (select)
-> > 	Video Output Multiplanar: Frame #034 (select)
-> > 	Video Output Multiplanar: Frame #035 (select)
-> > 	Video Output Multiplanar: Frame #036 (select)
-> > 	Video Output Multiplanar: Frame #037 (select)
-> > 	Video Output Multiplanar: Frame #038 (select)
-> > 	Video Output Multiplanar: Frame #039 (select)
-> > 	Video Output Multiplanar: Frame #040 (select)
-> > 	Video Output Multiplanar: Frame #041 (select)
-> > 	Video Output Multiplanar: Frame #042 (select)
-> > 	Video Output Multiplanar: Frame #043 (select)
-> > 	Video Output Multiplanar: Frame #044 (select)
-> > 	Video Output Multiplanar: Frame #045 (select)
-> > 	Video Output Multiplanar: Frame #046 (select)
-> > 	Video Output Multiplanar: Frame #047 (select)
-> > 	Video Output Multiplanar: Frame #048 (select)
-> > 	Video Output Multiplanar: Frame #049 (select)
-> > 	Video Output Multiplanar: Frame #050 (select)
-> > 	Video Output Multiplanar: Frame #051 (select)
-> > 	Video Output Multiplanar: Frame #052 (select)
-> > 	Video Output Multiplanar: Frame #053 (select)
-> > 	Video Output Multiplanar: Frame #054 (select)
-> > 	Video Output Multiplanar: Frame #055 (select)
-> > 	Video Output Multiplanar: Frame #056 (select)
-> > 	Video Output Multiplanar: Frame #057 (select)
-> > 	Video Output Multiplanar: Frame #058 (select)
-> > 	Video Output Multiplanar: Frame #059 (select)
-> > 
-> > 	Video Capture Multiplanar: Captured 58 buffers
-> > 	test MMAP (select): OK
-> > 
-> > 	Video Output Multiplanar: Frame #002 (epoll)
-> > 	Video Output Multiplanar: Frame #003 (epoll)
-> > 	Video Output Multiplanar: Frame #004 (epoll)
-> > 	Video Output Multiplanar: Frame #005 (epoll)
-> > 	Video Output Multiplanar: Frame #006 (epoll)
-> > 	Video Output Multiplanar: Frame #007 (epoll)
-> > 	Video Output Multiplanar: Frame #008 (epoll)
-> > 	Video Output Multiplanar: Frame #009 (epoll)
-> > 	Video Output Multiplanar: Frame #010 (epoll)
-> > 	Video Output Multiplanar: Frame #011 (epoll)
-> > 	Video Output Multiplanar: Frame #012 (epoll)
-> > 	Video Output Multiplanar: Frame #013 (epoll)
-> > 	Video Output Multiplanar: Frame #014 (epoll)
-> > 	Video Output Multiplanar: Frame #015 (epoll)
-> > 	Video Output Multiplanar: Frame #016 (epoll)
-> > 	Video Output Multiplanar: Frame #017 (epoll)
-> > 	Video Output Multiplanar: Frame #018 (epoll)
-> > 	Video Output Multiplanar: Frame #019 (epoll)
-> > 	Video Output Multiplanar: Frame #020 (epoll)
-> > 	Video Output Multiplanar: Frame #021 (epoll)
-> > 	Video Output Multiplanar: Frame #022 (epoll)
-> > 	Video Output Multiplanar: Frame #023 (epoll)
-> > 	Video Output Multiplanar: Frame #024 (epoll)
-> > 	Video Output Multiplanar: Frame #025 (epoll)
-> > 	Video Output Multiplanar: Frame #026 (epoll)
-> > 	Video Output Multiplanar: Frame #027 (epoll)
-> > 	Video Output Multiplanar: Frame #028 (epoll)
-> > 	Video Output Multiplanar: Frame #029 (epoll)
-> > 	Video Output Multiplanar: Frame #030 (epoll)
-> > 	Video Output Multiplanar: Frame #031 (epoll)
-> > 	Video Output Multiplanar: Frame #032 (epoll)
-> > 	Video Output Multiplanar: Frame #033 (epoll)
-> > 	Video Output Multiplanar: Frame #034 (epoll)
-> > 	Video Output Multiplanar: Frame #035 (epoll)
-> > 	Video Output Multiplanar: Frame #036 (epoll)
-> > 	Video Output Multiplanar: Frame #037 (epoll)
-> > 	Video Output Multiplanar: Frame #038 (epoll)
-> > 	Video Output Multiplanar: Frame #039 (epoll)
-> > 	Video Output Multiplanar: Frame #040 (epoll)
-> > 	Video Output Multiplanar: Frame #041 (epoll)
-> > 	Video Output Multiplanar: Frame #042 (epoll)
-> > 	Video Output Multiplanar: Frame #043 (epoll)
-> > 	Video Output Multiplanar: Frame #044 (epoll)
-> > 	Video Output Multiplanar: Frame #045 (epoll)
-> > 	Video Output Multiplanar: Frame #046 (epoll)
-> > 	Video Output Multiplanar: Frame #047 (epoll)
-> > 	Video Output Multiplanar: Frame #048 (epoll)
-> > 	Video Output Multiplanar: Frame #049 (epoll)
-> > 	Video Output Multiplanar: Frame #050 (epoll)
-> > 	Video Output Multiplanar: Frame #051 (epoll)
-> > 	Video Output Multiplanar: Frame #052 (epoll)
-> > 	Video Output Multiplanar: Frame #053 (epoll)
-> > 	Video Output Multiplanar: Frame #054 (epoll)
-> > 	Video Output Multiplanar: Frame #055 (epoll)
-> > 	Video Output Multiplanar: Frame #056 (epoll)
-> > 	Video Output Multiplanar: Frame #057 (epoll)
-> > 	Video Output Multiplanar: Frame #058 (epoll)
-> > 	Video Output Multiplanar: Frame #059 (epoll)
-> > 
-> > 	Video Capture Multiplanar: Captured 58 buffers
-> > 	test MMAP (epoll): OK
-> > 	test USERPTR (no poll): OK (Not Supported)
-> > 	test USERPTR (select): OK (Not Supported)
-> > 	test DMABUF: Cannot test, specify --expbuf-device
-> > 
-> > Total for mtk-mdp3 device /dev/video2: 53, Succeeded: 53, Failed:
-> > 0,
-> > Warnings: 0
-> > 
-> > Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> > Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >  drivers/media/platform/mediatek/Kconfig       |   1 +
-> >  drivers/media/platform/mediatek/Makefile      |   1 +
-> >  drivers/media/platform/mediatek/mdp3/Kconfig  |  20 +
-> >  drivers/media/platform/mediatek/mdp3/Makefile |   6 +
-> >  .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |  19 +
-> >  .../platform/mediatek/mdp3/mdp_reg_rdma.h     |  65 ++
-> >  .../platform/mediatek/mdp3/mdp_reg_rsz.h      |  39 +
-> >  .../platform/mediatek/mdp3/mdp_reg_wdma.h     |  47 +
-> >  .../platform/mediatek/mdp3/mdp_reg_wrot.h     |  55 +
-> >  .../platform/mediatek/mdp3/mtk-img-ipi.h      | 290 +++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 486 +++++++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  48 +
-> >  .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 987
-> > ++++++++++++++++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-comp.h    | 185 ++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 379 +++++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  95 ++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     | 772 ++++++++++++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |  48 +
-> >  .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 736 +++++++++++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-regs.h    | 370 +++++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     | 312 ++++++
-> >  .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |  78 ++
-> >  22 files changed, 5039 insertions(+)
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
-> >  create mode 100644
-> > drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
-> >  create mode 100644
-> > drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
-> >  create mode 100644
-> > drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
-> >  create mode 100644
-> > drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
-> >  create mode 100644
-> > drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-
-> > ipi.h
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > cmdq.c
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > cmdq.h
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > comp.c
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > comp.h
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > core.c
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > core.h
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > m2m.c
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > m2m.h
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > regs.c
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > regs.h
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > vpu.c
-> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
-> > vpu.h
-> > 
-> > diff --git a/drivers/media/platform/mediatek/Kconfig
-> > b/drivers/media/platform/mediatek/Kconfig
-> > index af47d9888552..84104e2cd024 100644
-> > --- a/drivers/media/platform/mediatek/Kconfig
-> > +++ b/drivers/media/platform/mediatek/Kconfig
-> > @@ -6,3 +6,4 @@ source
-> > "drivers/media/platform/mediatek/jpeg/Kconfig"
-> >  source "drivers/media/platform/mediatek/mdp/Kconfig"
-> >  source "drivers/media/platform/mediatek/vcodec/Kconfig"
-> >  source "drivers/media/platform/mediatek/vpu/Kconfig"
-> > +source "drivers/media/platform/mediatek/mdp3/Kconfig"
-> > diff --git a/drivers/media/platform/mediatek/Makefile
-> > b/drivers/media/platform/mediatek/Makefile
-> > index d3850a13f128..38e6ba917fe5 100644
-> > --- a/drivers/media/platform/mediatek/Makefile
-> > +++ b/drivers/media/platform/mediatek/Makefile
-> > @@ -3,3 +3,4 @@ obj-y += jpeg/
-> >  obj-y += mdp/
-> >  obj-y += vcodec/
-> >  obj-y += vpu/
-> > +obj-y += mdp3/
-> > diff --git a/drivers/media/platform/mediatek/mdp3/Kconfig
-> > b/drivers/media/platform/mediatek/mdp3/Kconfig
-> > new file mode 100644
-> > index 000000000000..6640763c7c5e
-> > --- /dev/null
-> > +++ b/drivers/media/platform/mediatek/mdp3/Kconfig
-> > @@ -0,0 +1,20 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only
-> > +config VIDEO_MEDIATEK_MDP3
-> > +	tristate "Mediatek MDP v3 driver"
-> > +	depends on MTK_IOMMU || COMPLIE_TEST
-> > +	depends on VIDEO_DEV
-> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > +	depends on MTK_MMSYS
-> > +	depends on HAS_DMA
-> > +	select VIDEOBUF2_DMA_CONTIG
-> > +	select V4L2_MEM2MEM_DEV
-> > +	select VIDEO_MEDIATEK_VPU
-> > +	select MTK_CMDQ
-> > +	select MTK_SCP
-> > +	default n
-> > +	help
-> > +	    It is a v4l2 driver and present in Mediatek MT8183 SoC.
-> > +	    The driver supports for scaling and color space conversion.
-> > +
-> > +	    To compile this driver as a module, choose M here: the
-> > +	    module will be called mtk-mdp3.
-> > diff --git a/drivers/media/platform/mediatek/mdp3/Makefile
-> > b/drivers/media/platform/mediatek/mdp3/Makefile
-> > new file mode 100644
-> > index 000000000000..8772f5ac2867
-> > --- /dev/null
-> > +++ b/drivers/media/platform/mediatek/mdp3/Makefile
-> > @@ -0,0 +1,6 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only
-> > +mtk-mdp3-y += mtk-mdp3-core.o mtk-mdp3-vpu.o mtk-mdp3-regs.o
-> > +mtk-mdp3-y += mtk-mdp3-m2m.o
-> > +mtk-mdp3-y += mtk-mdp3-comp.o mtk-mdp3-cmdq.o
-> > +
-> > +obj-$(CONFIG_VIDEO_MEDIATEK_MDP3) += mtk-mdp3.o
-> > \ No newline at end of file
-> 
-> Hello Moudy,
-> 
-> I think you should fix "\ No newline at end of file".
-> 
-> BRs,
-> Rex
-> 
+On Wed, May 18, 2022 at 8:19 PM Johnson Wang <johnson.wang@mediatek.com> wrote:
+>
+> Hi Chen-Yu,
+>
+> On Fri, 2022-05-13 at 11:54 +0800, Chen-Yu Tsai wrote:
+> > On Fri, May 13, 2022 at 11:31 AM Johnson Wang <
+> > johnson.wang@mediatek.com> wrote:
+> > >
+> > > We introduce a devfreq driver for the MediaTek Cache Coherent
+> > > Interconnect
+> > > (CCI) used by some MediaTek SoCs.
+> > >
+> > > In this driver, we use the passive devfreq driver to get target
+> > > frequencies
+> > > and adjust voltages accordingly. In MT8183 and MT8186, the MediaTek
+> > > CCI
+> > > is supplied by the same regulators with the little core CPUs.
+> > >
+> > > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> > > Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+> > > ---
+> > > This patch depends on "devfreq-testing"[1].
+> > > [1]
+> > > https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing__;!!CTRNKA9wMg0ARbw!zzOSoso9udvDV3h6kYlmizFtbn3ACA5aS2jCAjKyvtu4z0fobv1mD5uF9YbPSme8l_NnR05unTxkZfDdzohu8asWZQ$
+> > >
+> > > ---
+> > >  drivers/devfreq/Kconfig           |  10 +
+> > >  drivers/devfreq/Makefile          |   1 +
+> > >  drivers/devfreq/mtk-cci-devfreq.c | 474
+> > > ++++++++++++++++++++++++++++++
+> > >  3 files changed, 485 insertions(+)
+> > >  create mode 100644 drivers/devfreq/mtk-cci-devfreq.c
+> > >
+> > > diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
+> > > index 87eb2b837e68..9754d8b31621 100644
+> > > --- a/drivers/devfreq/Kconfig
+> > > +++ b/drivers/devfreq/Kconfig
+> > > @@ -120,6 +120,16 @@ config ARM_TEGRA_DEVFREQ
+> > >           It reads ACTMON counters of memory controllers and
+> > > adjusts the
+> > >           operating frequencies and voltages with OPP support.
+> > >
+> > > +config ARM_MEDIATEK_CCI_DEVFREQ
+> > > +       tristate "MEDIATEK CCI DEVFREQ Driver"
+> > > +       depends on ARM_MEDIATEK_CPUFREQ || COMPILE_TEST
+> > > +       select DEVFREQ_GOV_PASSIVE
+> > > +       help
+> > > +         This adds a devfreq driver for MediaTek Cache Coherent
+> > > Interconnect
+> > > +         which is shared the same regulators with the cpu cluster.
+> > > It can track
+> > > +         buck voltages and update a proper CCI frequency. Use the
+> > > notification
+> > > +         to get the regulator status.
+> > > +
+> > >  config ARM_RK3399_DMC_DEVFREQ
+> > >         tristate "ARM RK3399 DMC DEVFREQ Driver"
+> > >         depends on (ARCH_ROCKCHIP && HAVE_ARM_SMCCC) || \
+> > > diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
+> > > index 0b6be92a25d9..bf40d04928d0 100644
+> > > --- a/drivers/devfreq/Makefile
+> > > +++ b/drivers/devfreq/Makefile
+> > > @@ -11,6 +11,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)     +=
+> > > governor_passive.o
+> > >  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)   += exynos-bus.o
+> > >  obj-$(CONFIG_ARM_IMX_BUS_DEVFREQ)      += imx-bus.o
+> > >  obj-$(CONFIG_ARM_IMX8M_DDRC_DEVFREQ)   += imx8m-ddrc.o
+> > > +obj-$(CONFIG_ARM_MEDIATEK_CCI_DEVFREQ) += mtk-cci-devfreq.o
+> > >  obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)   += rk3399_dmc.o
+> > >  obj-$(CONFIG_ARM_SUN8I_A33_MBUS_DEVFREQ)       += sun8i-a33-mbus.o
+> > >  obj-$(CONFIG_ARM_TEGRA_DEVFREQ)                += tegra30-
+> > > devfreq.o
+> > > diff --git a/drivers/devfreq/mtk-cci-devfreq.c
+> > > b/drivers/devfreq/mtk-cci-devfreq.c
+> > > new file mode 100644
+> > > index 000000000000..aa8c37eb4a06
+> > > --- /dev/null
+> > > +++ b/drivers/devfreq/mtk-cci-devfreq.c
+> > > @@ -0,0 +1,474 @@
 
-Hi Rex,
+[...]
 
-Thanks for the reminder, I'll fix it in the next version.
+> > > +       if (IS_ERR(drv->sram_reg))
+> > > +               drv->sram_reg = NULL;
+> > > +       else {
+> > > +               ret = regulator_enable(drv->sram_reg);
+> > > +               if (ret) {
+> > > +                       dev_err(dev, "failed to enable sram
+> > > regulator\n");
+> > > +                       goto out_free_resources;
+> > > +               }
+> > > +       }
+> > > +
+> > > +       /*
+> > > +        * We assume min voltage is 0 and tracking target voltage
+> > > using
+> > > +        * min_volt_shift for each iteration.
+> > > +        * The retry_max is 3 times of expeted iteration count.
+> >
+> > expected?
+> >
+> Maybe "the maximum" will be more appropriate?
 
-Regards,
-Moudy
 
+I was merely pointing out a typo in "expeted".
+
+Looking at it again, I'm not sure why retry attempts are tied to the voltage.
+
+
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
