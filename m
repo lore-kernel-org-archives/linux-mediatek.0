@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4C08C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF866C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:44:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cblowanlKhB68wYx3PD+HbInE8XheAwmJOEXLath/D8=; b=3IdQQc9XzjBDL+
-	+9A1tpYjqSs3wC8OVwus+gAlmcMwiBEyGxdJ97bj62/t9eaRNhuN1TuKVghOTsccjNFrbZHVDeG89
-	uKVs9GeoWLAPxrNNVhDwYzp0LV2DqCPHm/eF6u8G151A6Tru17+CC0HiVHYlIFsd7JecXMzRcR/25
-	PPGSo7g548UgLL0cumU5RR/SpziKKGj85xgRJDfnsOFdk3MzVdGzJvRkRR5xWQNgwsK0EldbgIfg9
-	7nrfrTY49/ZRGxXZqFGLw5tPHIpN22kSvoucgAy3nmednOf2q39fxw7o1BiiFcT9Gai/22jG6vHqs
-	217q26v+N5GZHCfTff0g==;
+	List-Owner; bh=l5oCgoPEmpF3FVQ8D/6r/MGCzRAAve7Pm+tNj77vVc0=; b=NKD2EdBVAaspwG
+	D5uauzUWa1L9Hxk39mXPwh9/8CRpT0o7C21sEO8N6WpiHhCDxnBAxSIsQyIDIqzAIJ3PoiWecA2Nx
+	vS8r4qbmk/3nG4Ku2uhl5JOvpnxyl0iLmltxTs9mlZP0p7iOE9S6LaEERdiwjJTy1nzi01QKlt42H
+	2E7KxJl1eYkp6P8DTwQTHGpWf2YFJZuEmdQFPZwOtBZ0+G7r/ytTMCLKoiNTYUiLqWEGxNFUVakql
+	6cb7wDiODF+9CnnQdkqttZG/Xx/gf9kI+yxB8cOc+7Gjp8KawN3eChURprDxX6dSydG7SDP5PcLV5
+	4Tq86BgTdYJBT4whokBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriFG-0081wG-PY; Thu, 19 May 2022 15:39:22 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1nriJg-0083If-EG; Thu, 19 May 2022 15:43:56 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriFB-0081t7-0t
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 15:39:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1652974756; x=1684510756;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=5pN9YlqPJGeHqkLkBYr55j46/Tl8Z331tSxQqGH5Ir4=;
- b=VcXW5AZ5E/MfOb3nkOZRyC97MGwj6FQyfOGL62M2ceV/Kyt9pPf4R9/D
- EcDFNRC6xsHgZqdjY9ZPGS2xJOhvV6yuAYkfZtELaCEQA6DYrAB9as06G
- uRIPfEPrSwRzCI67vZOfnzkkUZeBj0FDYTK5mcwLatBP1sbLDpc7qAlVo
- bf6mBWiEkgyvf9mMeaqoIfMdwn+E1N0Ui597qbhJnoZMceuWukDiua8Cw
- kaA949LKHeZwjN8ukXT2hDu8IxBJOkKYa6bqMCAcThh0nUp0isdp3Imrz
- J0thxZtASr3UwN6BPGH+X9vUnJFdK54EE58naHk+06+S04x9dHb6QiGKf A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="272376812"
-X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="272376812"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2022 08:39:13 -0700
-X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="570280511"
-Received: from rmarti10-mobl2.amr.corp.intel.com (HELO [10.209.36.13])
- ([10.209.36.13])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2022 08:39:13 -0700
-Message-ID: <d1c35205-7674-b88d-5cc5-52b73dee36a9@linux.intel.com>
-Date: Thu, 19 May 2022 08:39:13 -0700
+ id 1nriJY-00839F-Gg; Thu, 19 May 2022 15:43:50 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J66mW6012194;
+ Thu, 19 May 2022 10:43:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=PODMain02222019;
+ bh=hL6lfxK+JTiss7s+GosQaz6BMBYNmT6Il+oFSRdL23o=;
+ b=Hu/rV+zsXTFHHh+rCI4kKGnjxTFrhffkouPrWrtApZaIUA+dS1E1KaUfrlRiozyWqkEc
+ 9WMwVT/1/ZokDJeNaaD1CkknDWgwu+zQc0Ys2m2LkE7Rbz29EqgGT9Wxyi6DB2yd+SMH
+ 8ZaFYnh/rU+Q0f8ZmfoEI5mU3mCvTYIQSP4P8GYbYYXPWqOcKEmpr26e5DYzKEBSDp5z
+ mmY5WT0D2UTKjVLYhQ34eJT5Hj1W6GQz4bO1XwOkOfMaWvv54mY5TdyHKScupMKCVBfq
+ HVSOOulS6g5W379dmi+5SGfAiFcNdqVkM0h2T0JitF2zKN8QjABwrGIFvl4mx+YX4NKd xQ== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dn-9
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Thu, 19 May 2022 10:43:33 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
+ 2022 16:43:20 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
+ Frontend Transport; Thu, 19 May 2022 16:43:20 +0100
+Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 5199211DA;
+ Thu, 19 May 2022 15:43:20 +0000 (UTC)
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
+ <nicolas.ferre@microchip.com>, <nsaenz@kernel.org>,
+ <shawnguo@kernel.org>, <linux-imx@nxp.com>,
+ <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
+ <linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-amlogic@lists.infradead.org>, <daniel@zonque.org>,
+ <srinivas.kandagatla@linaro.org>, <linux-rockchip@lists.infradead.org>,
+ <krzk@kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+ <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
+ <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
+ <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
+ <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
+ <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
+Subject: [PATCH 27/56] ASoC: xtensa: Update to use set_fmt_new callback
+Date: Thu, 19 May 2022 16:42:49 +0100
+Message-ID: <20220519154318.2153729-28-ckeepax@opensource.cirrus.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [bug report] net: wwan: t7xx: Add control port
-Content-Language: en-US
-To: =?UTF-8?B?SGFpanVuIExpdSAo5YiY5rW35YabKQ==?= <haijun.liu@mediatek.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-References: <YoOL505vRMBGxX45@kili>
- <KL1PR03MB58335FE9D2D6595FABD14996E4D19@KL1PR03MB5833.apcprd03.prod.outlook.com>
-From: "Martinez, Ricardo" <ricardo.martinez@linux.intel.com>
-In-Reply-To: <KL1PR03MB58335FE9D2D6595FABD14996E4D19@KL1PR03MB5833.apcprd03.prod.outlook.com>
+X-Proofpoint-GUID: FuQkjqCkMNYZ7gtMy5ikdmUthD9mU6_g
+X-Proofpoint-ORIG-GUID: FuQkjqCkMNYZ7gtMy5ikdmUthD9mU6_g
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_083917_180113_B3F96A11 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20220519_084348_763306_CE7C777E 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,105 +90,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksCgpGaXhlcyBzdWJtaXR0ZWQgdG8gbmV0LW5leHQ6CgpodHRwczovL2xvcmUua2VybmVsLm9y
-Zy9uZXRkZXYvMjAyMjA1MTgxOTU1MjkuMTI2MjQ2LTEtcmljYXJkby5tYXJ0aW5lekBsaW51eC5p
-bnRlbC5jb20vCgoKVGhhbmtzLAoKUmljYXJkbwoKT24gNS8xNy8yMDIyIDY6MjMgUE0sIEhhaWp1
-biBMaXUgKOWImOa1t+WGmykgd3JvdGU6Cj4gRGVhciBEYW4sCj4gVGhhbmtzIQo+Cj4gRGVhciBS
-aWNhcmRvLAo+IE1heSB3ZSBoZWxwIHRvIGNoZWNrIHRoZSBTbWF0Y2ggY2hlY2tlciB3YXJuaW5n
-Pwo+IFNlZW1zIGFsc28gaGFwcGVuZWQgb24gRE1BL0RhdGEgcGF0aCBIVyBwYXRjaH4KPgo+IEJS
-Cj4gSGFpanVuCj4KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+IEZyb206IERhbiBDYXJw
-ZW50ZXIgPGRhbi5jYXJwZW50ZXJAb3JhY2xlLmNvbT4KPiBTZW50OiBUdWVzZGF5LCBNYXkgMTcs
-IDIwMjIgNzo1MCBQTQo+IFRvOiBIYWlqdW4gTGl1ICjliJjmtbflhpspIDxoYWlqdW4ubGl1QG1l
-ZGlhdGVrLmNvbT4KPiBDYzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IFN1
-YmplY3Q6IFtidWcgcmVwb3J0XSBuZXQ6IHd3YW46IHQ3eHg6IEFkZCBjb250cm9sIHBvcnQKPgo+
-IEhlbGxvIEhhaWp1biBMaXUsCj4KPiBUaGUgcGF0Y2ggZGE0NWQyNTY2YTFkOiAibmV0OiB3d2Fu
-OiB0N3h4OiBBZGQgY29udHJvbCBwb3J0IiBmcm9tIE1heSA2LCAyMDIyLCBsZWFkcyB0byB0aGUg
-Zm9sbG93aW5nIFNtYXRjaCBzdGF0aWMgY2hlY2tlciB3YXJuaW5nOgo+Cj4gZHJpdmVycy9uZXQv
-d3dhbi90N3h4L3Q3eHhfbW9kZW1fb3BzLmM6NDk5IHQ3eHhfY29yZV9oa19oYW5kbGVyKCkKPiBl
-cnJvcjogcG90ZW50aWFsbHkgZGVyZWZlcmVuY2luZyB1bmluaXRpYWxpemVkICdldmVudCcuCj4K
-PiBkcml2ZXJzL25ldC93d2FuL3Q3eHgvdDd4eF9tb2RlbV9vcHMuYwo+ICAgICAgNDU3IHN0YXRp
-YyB2b2lkIHQ3eHhfY29yZV9oa19oYW5kbGVyKHN0cnVjdCB0N3h4X21vZGVtICptZCwgc3RydWN0
-IHQ3eHhfZnNtX2N0bCAqY3RsLAo+ICAgICAgNDU4ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIGVudW0gdDd4eF9mc21fZXZlbnRfc3RhdGUgZXZlbnRfaWQsCj4gICAgICA0NTkgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZW51bSB0N3h4X2ZzbV9ldmVudF9zdGF0ZSBl
-cnJfZGV0ZWN0KQo+ICAgICAgNDYwIHsKPiAgICAgIDQ2MSAgICAgICAgIHN0cnVjdCB0N3h4X3N5
-c19pbmZvICpjb3JlX2luZm8gPSAmbWQtPmNvcmVfbWQ7Cj4gICAgICA0NjIgICAgICAgICBzdHJ1
-Y3QgZGV2aWNlICpkZXYgPSAmbWQtPnQ3eHhfZGV2LT5wZGV2LT5kZXY7Cj4gICAgICA0NjMgICAg
-ICAgICBzdHJ1Y3QgdDd4eF9mc21fZXZlbnQgKmV2ZW50LCAqZXZlbnRfbmV4dDsKPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXl5eXl4KPgo+Cj4gICAgICA0NjQgICAg
-ICAgICB1bnNpZ25lZCBsb25nIGZsYWdzOwo+ICAgICAgNDY1ICAgICAgICAgaW50IHJldDsKPiAg
-ICAgIDQ2Ngo+ICAgICAgNDY3ICAgICAgICAgdDd4eF9wcmVwYXJlX2hvc3RfcnRfZGF0YV9xdWVy
-eShjb3JlX2luZm8pOwo+ICAgICAgNDY4Cj4gICAgICA0NjkgICAgICAgICB3aGlsZSAoIWt0aHJl
-YWRfc2hvdWxkX3N0b3AoKSkgewo+ICAgICAgICAgICAgICAgICAgICAgICAgICBeXl5eXl5eXl5e
-Xl5eXl5eXl5eXl4gV2hhdCBhYm91dCB0aGlzIGlzIHRydWUgb24gdGhlIGZpcnN0IGl0ZXJhdGlv
-biB0aHJvdWdoIHRoZSBsb29wPwo+Cj4gICAgICA0NzAgICAgICAgICAgICAgICAgIGJvb2wgZXZl
-bnRfcmVjZWl2ZWQgPSBmYWxzZTsKPiAgICAgIDQ3MQo+ICAgICAgNDcyICAgICAgICAgICAgICAg
-ICBzcGluX2xvY2tfaXJxc2F2ZSgmY3RsLT5ldmVudF9sb2NrLCBmbGFncyk7Cj4gICAgICA0NzMg
-ICAgICAgICAgICAgICAgIGxpc3RfZm9yX2VhY2hfZW50cnlfc2FmZShldmVudCwgZXZlbnRfbmV4
-dCwgJmN0bC0+ZXZlbnRfcXVldWUsIGVudHJ5KSB7Cj4gICAgICA0NzQgICAgICAgICAgICAgICAg
-ICAgICAgICAgaWYgKGV2ZW50LT5ldmVudF9pZCA9PSBlcnJfZGV0ZWN0KSB7Cj4gICAgICA0NzUg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsaXN0X2RlbCgmZXZlbnQtPmVudHJ5KTsK
-PiAgICAgIDQ3NiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNwaW5fdW5sb2NrX2ly
-cXJlc3RvcmUoJmN0bC0+ZXZlbnRfbG9jaywgZmxhZ3MpOwo+ICAgICAgNDc3ICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgZGV2X2VycihkZXYsICJDb3JlIGhhbmRzaGFrZSBlcnJvciBl
-dmVudCByZWNlaXZlZFxuIik7Cj4gICAgICA0NzggICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBnb3RvIGVycl9mcmVlX2V2ZW50Owo+ICAgICAgNDc5ICAgICAgICAgICAgICAgICAgICAg
-ICAgIH0gZWxzZSBpZiAoZXZlbnQtPmV2ZW50X2lkID09IGV2ZW50X2lkKSB7Cj4gICAgICA0ODAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsaXN0X2RlbCgmZXZlbnQtPmVudHJ5KTsK
-PiAgICAgIDQ4MSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGV2ZW50X3JlY2VpdmVk
-ID0gdHJ1ZTsKPiAgICAgIDQ4MiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFr
-Owo+ICAgICAgNDgzICAgICAgICAgICAgICAgICAgICAgICAgIH0KPiAgICAgIDQ4NCAgICAgICAg
-ICAgICAgICAgfQo+ICAgICAgNDg1ICAgICAgICAgICAgICAgICBzcGluX3VubG9ja19pcnFyZXN0
-b3JlKCZjdGwtPmV2ZW50X2xvY2ssIGZsYWdzKTsKPiAgICAgIDQ4Ngo+ICAgICAgNDg3ICAgICAg
-ICAgICAgICAgICBpZiAoZXZlbnRfcmVjZWl2ZWQpCj4gICAgICA0ODggICAgICAgICAgICAgICAg
-ICAgICAgICAgYnJlYWs7Cj4gICAgICA0ODkKPiAgICAgIDQ5MCAgICAgICAgICAgICAgICAgd2Fp
-dF9ldmVudF9pbnRlcnJ1cHRpYmxlKGN0bC0+ZXZlbnRfd3EsICFsaXN0X2VtcHR5KCZjdGwtPmV2
-ZW50X3F1ZXVlKSB8fAo+ICAgICAgNDkxICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAga3RocmVhZF9zaG91bGRfc3RvcCgpKTsKPiAgICAgIDQ5MiAgICAgICAgICAgICAg
-ICAgaWYgKGt0aHJlYWRfc2hvdWxkX3N0b3AoKSkKPiAgICAgIDQ5MyAgICAgICAgICAgICAgICAg
-ICAgICAgICBnb3RvIGVycl9mcmVlX2V2ZW50Owo+ICAgICAgNDk0ICAgICAgICAgfQo+ICAgICAg
-NDk1Cj4gICAgICA0OTYgICAgICAgICBpZiAoY3RsLT5leHBfZmxnKQo+ICAgICAgNDk3ICAgICAg
-ICAgICAgICAgICBnb3RvIGVycl9mcmVlX2V2ZW50Owo+ICAgICAgICAgICAgICAgICAgICAgICAg
-ICBeXl5eXl5eXl5eXl5eXl5eXl5eIFVuaW5pdGlhbGl6ZWQgb24gdGhpcyBwYXRoIHRvby4KPgo+
-ICAgICAgNDk4Cj4gLS0+IDQ5OSAgICAgICAgIHJldCA9IHQ3eHhfcGFyc2VfaG9zdF9ydF9kYXRh
-KGN0bCwgY29yZV9pbmZvLCBkZXYsIGV2ZW50LT5kYXRhLCBldmVudC0+bGVuZ3RoKTsKPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIF5eXl5eXl4gVW5pbml0aWFsaXplZD8KPgo+ICAgICAgNTAwICAgICAgICAgaWYgKHJl
-dCkgewo+ICAgICAgNTAxICAgICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgIkhvc3QgZmFpbHVy
-ZSBwYXJzaW5nIHJ1bnRpbWUgZGF0YTogJWRcbiIsIHJldCk7Cj4gICAgICA1MDIgICAgICAgICAg
-ICAgICAgIGdvdG8gZXJyX2ZyZWVfZXZlbnQ7Cj4gICAgICA1MDMgICAgICAgICB9Cj4gICAgICA1
-MDQKPiAgICAgIDUwNSAgICAgICAgIGlmIChjdGwtPmV4cF9mbGcpCj4gICAgICA1MDYgICAgICAg
-ICAgICAgICAgIGdvdG8gZXJyX2ZyZWVfZXZlbnQ7Cj4gICAgICA1MDcKPiAgICAgIDUwOCAgICAg
-ICAgIHJldCA9IHQ3eHhfcHJlcGFyZV9kZXZpY2VfcnRfZGF0YShjb3JlX2luZm8sIGRldiwgZXZl
-bnQtPmRhdGEpOwo+ICAgICAgNTA5ICAgICAgICAgaWYgKHJldCkgewo+ICAgICAgNTEwICAgICAg
-ICAgICAgICAgICBkZXZfZXJyKGRldiwgIkRldmljZSBmYWlsdXJlIHBhcnNpbmcgcnVudGltZSBk
-YXRhOiAlZCIsIHJldCk7Cj4gICAgICA1MTEgICAgICAgICAgICAgICAgIGdvdG8gZXJyX2ZyZWVf
-ZXZlbnQ7Cj4gICAgICA1MTIgICAgICAgICB9Cj4gICAgICA1MTMKPiAgICAgIDUxNCAgICAgICAg
-IGNvcmVfaW5mby0+cmVhZHkgPSB0cnVlOwo+ICAgICAgNTE1ICAgICAgICAgY29yZV9pbmZvLT5o
-YW5kc2hha2Vfb25nb2luZyA9IGZhbHNlOwo+ICAgICAgNTE2ICAgICAgICAgd2FrZV91cCgmY3Rs
-LT5hc3luY19oa193cSk7Cj4gICAgICA1MTcgZXJyX2ZyZWVfZXZlbnQ6Cj4gICAgICA1MTggICAg
-ICAgICBrZnJlZShldmVudCk7Cj4gICAgICA1MTkgfQo+Cj4gcmVnYXJkcywKPiBkYW4gY2FycGVu
-dGVyCj4KPiAqKioqKioqKioqKioqIE1FRElBVEVLIENvbmZpZGVudGlhbGl0eSBOb3RpY2UgKioq
-KioqKioqKioqKioqKioqKioKPiBUaGUgaW5mb3JtYXRpb24gY29udGFpbmVkIGluIHRoaXMgZS1t
-YWlsIG1lc3NhZ2UgKGluY2x1ZGluZyBhbnkKPiBhdHRhY2htZW50cykgbWF5IGJlIGNvbmZpZGVu
-dGlhbCwgcHJvcHJpZXRhcnksIHByaXZpbGVnZWQsIG9yIG90aGVyd2lzZQo+IGV4ZW1wdCBmcm9t
-IGRpc2Nsb3N1cmUgdW5kZXIgYXBwbGljYWJsZSBsYXdzLiBJdCBpcyBpbnRlbmRlZCB0byBiZQo+
-IGNvbnZleWVkIG9ubHkgdG8gdGhlIGRlc2lnbmF0ZWQgcmVjaXBpZW50KHMpLiBBbnkgdXNlLCBk
-aXNzZW1pbmF0aW9uLAo+IGRpc3RyaWJ1dGlvbiwgcHJpbnRpbmcsIHJldGFpbmluZyBvciBjb3B5
-aW5nIG9mIHRoaXMgZS1tYWlsIChpbmNsdWRpbmcgaXRzCj4gYXR0YWNobWVudHMpIGJ5IHVuaW50
-ZW5kZWQgcmVjaXBpZW50KHMpIGlzIHN0cmljdGx5IHByb2hpYml0ZWQgYW5kIG1heQo+IGJlIHVu
-bGF3ZnVsLiBJZiB5b3UgYXJlIG5vdCBhbiBpbnRlbmRlZCByZWNpcGllbnQgb2YgdGhpcyBlLW1h
-aWwsIG9yIGJlbGlldmUKPiB0aGF0IHlvdSBoYXZlIHJlY2VpdmVkIHRoaXMgZS1tYWlsIGluIGVy
-cm9yLCBwbGVhc2Ugbm90aWZ5IHRoZSBzZW5kZXIKPiBpbW1lZGlhdGVseSAoYnkgcmVwbHlpbmcg
-dG8gdGhpcyBlLW1haWwpLCBkZWxldGUgYW55IGFuZCBhbGwgY29waWVzIG9mCj4gdGhpcyBlLW1h
-aWwgKGluY2x1ZGluZyBhbnkgYXR0YWNobWVudHMpIGZyb20geW91ciBzeXN0ZW0sIGFuZCBkbyBu
-b3QKPiBkaXNjbG9zZSB0aGUgY29udGVudCBvZiB0aGlzIGUtbWFpbCB0byBhbnkgb3RoZXIgcGVy
-c29uLiBUaGFuayB5b3UhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LW1lZGlhdGVrCg==
+As part of updating the core to directly tell drivers if they are clock
+provider or consumer update this CPU side driver to use the new direct
+callback.
+
+Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+---
+ sound/soc/xtensa/xtfpga-i2s.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/xtensa/xtfpga-i2s.c b/sound/soc/xtensa/xtfpga-i2s.c
+index aeb4b2c4d1d35..72935f491901f 100644
+--- a/sound/soc/xtensa/xtfpga-i2s.c
++++ b/sound/soc/xtensa/xtfpga-i2s.c
+@@ -339,7 +339,7 @@ static int xtfpga_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
+ {
+ 	if ((fmt & SND_SOC_DAIFMT_INV_MASK) != SND_SOC_DAIFMT_NB_NF)
+ 		return -EINVAL;
+-	if ((fmt & SND_SOC_DAIFMT_MASTER_MASK) != SND_SOC_DAIFMT_CBS_CFS)
++	if ((fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) != SND_SOC_DAIFMT_BP_FP)
+ 		return -EINVAL;
+ 	if ((fmt & SND_SOC_DAIFMT_FORMAT_MASK) != SND_SOC_DAIFMT_I2S)
+ 		return -EINVAL;
+@@ -487,7 +487,7 @@ static const struct snd_soc_component_driver xtfpga_i2s_component = {
+ static const struct snd_soc_dai_ops xtfpga_i2s_dai_ops = {
+ 	.startup	= xtfpga_i2s_startup,
+ 	.hw_params      = xtfpga_i2s_hw_params,
+-	.set_fmt        = xtfpga_i2s_set_fmt,
++	.set_fmt_new	= xtfpga_i2s_set_fmt,
+ };
+ 
+ static struct snd_soc_dai_driver xtfpga_i2s_dai[] = {
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
