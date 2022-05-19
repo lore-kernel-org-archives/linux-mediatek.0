@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A895CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 08:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4C3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 08:44:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d2aVSx4CwA3UeCeGrWLaLSOqhpXy2fFXhSQPoexG9O4=; b=rPKeBmUuWhR3o9
-	tH89moy05q+RSfOiUMX7u3P3ucG6//c5TJAbw/HzotITT/8hcA4MUAEUEKwj0nhJ3sEtxi8GTeMdt
-	FbmuErWn/wIzlxyUMcl5WeKiOVWQv2oXfUGUktI2OaBNhFdUL821cf6hysjAQaKzPrdsOgxIv6J2W
-	czxOpTaDsXiGW2Pydn9ivD6XscXruAhbKhDr+mV10TMgtk2qBqoLtu2t0xAG5LBR8wE8SXzSSQ13N
-	wgP7IR4KtetZsmykOjLIS/mYywe/8bj5Yn/9VHGOqE5A39dFpdkr6jdkBZnN5WrmlvvWtFKI0Tj/L
-	457Z6Op5WCApgKzs5N8w==;
+	List-Owner; bh=WNp9yKY/iW7Y348Q+qe2FeY1WBikCng27vJ7LHiIXWg=; b=aLl0HNGDEOcbbG
+	z9dbl6FebQ45wwoEDspXJ4oeEZr1hk8mCpRjK+4gxnGTM8my4GeYu5TvjWE6vdE9jpO1IHiyjirS/
+	EkxLEosREDFoMAnWMbgbf6t1z65qJ6abYWq2RagNB1euntF3AUMjvfoGWUDiPmm1rkBIi8MSx877T
+	nmIfSY5jMZQxCXCtsOTow0gJZYvycZ/lxh3Old3/lNYtXZdjKxljJairmuDkIOAMg1b/KmEh8zd0T
+	sOONlI9wpZW0rF81UtMbOSPQoGtPFeAn4OP4OXI4KIm7JijN3rLxUJ18/Vhv4ll5uQQESz8oUkTpR
+	OQWn1N8dh+OuP/YuYimg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrbfR-005uAC-7J; Thu, 19 May 2022 08:37:57 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1nrblE-005wCo-V7; Thu, 19 May 2022 08:43:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrbfF-005u4W-Sn
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 08:37:47 +0000
-Received: by mail-ej1-x636.google.com with SMTP id ch13so8437563ejb.12
- for <linux-mediatek@lists.infradead.org>; Thu, 19 May 2022 01:37:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mcaKm7hSkDe1Yx1fdIcH1uCHiW8h1SPpMhUlJx4epu0=;
- b=CU7CeC622rXFO63/zglREfjGV716nrCj4Pq1ASrVLqn5U06fDc6o0f3GPmPyx3C9ze
- s0xVyCxabU+69hwaJvtwKM3slwK4GpIeCEFBL0xX425xrnbvDIKROEH2eKG0QvQeGP/+
- XH7muyxG5Baaob651nyFjrYWwtYd+78IaTbPA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mcaKm7hSkDe1Yx1fdIcH1uCHiW8h1SPpMhUlJx4epu0=;
- b=TAB0PervbXBnKtW6ykbACv7XEzfZ2Ki6IjxFONCO3xKNoArQQaWcCvpwuW+nG+IkRF
- pdU525d3mK3Dc0qhcOw22/4B/j8IFjP0giL3Zx98ZqUxn5as9nfd8YAjax6DLo6Asn5D
- 4/1JfXkShYDIFDS/zHSm9KYLFZoaX949rNYMizGAZn3iL3iVq6q7tfj89hdFfhlDrQh0
- kTgElt+YMKSWsEY9GKxpuQPHIk2MJejEDm7kLYuYmsZ4WkCvJWkY33LFo/M+YnBvp9+s
- Em86yJYPktwK406opejmn8EgRzS9oeDHJNbiq8P7m2ar6WKcbvR2yp0CQBBbYvjDWJRN
- 6bAg==
-X-Gm-Message-State: AOAM5319xDD6Sh9asoRkk/OyIPh7JCSOVdz7kBASUOMZVVtTHsbJY9fA
- OorgJuOdvK2pGJcGuqZ97BmOR5R5OwjN2VPR+GooOg==
-X-Google-Smtp-Source: ABdhPJxiPnjQ5bGwx97AQgiyzheAJ2m1/CzUGaTdLMcg/HC1NcBZUt8qYvEdlyLjdsC6Q4YB6W1oOvw2N4Fukaps7M4=
-X-Received: by 2002:a17:907:961e:b0:6f4:b201:6629 with SMTP id
- gb30-20020a170907961e00b006f4b2016629mr3259570ejc.152.1652949462440; Thu, 19
- May 2022 01:37:42 -0700 (PDT)
+ id 1nrbkz-005w5q-E6; Thu, 19 May 2022 08:43:42 +0000
+X-UUID: 7d719ff44e6843398e5bb0afd17cecc1-20220519
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:b4b3656a-f7dc-4d87-ac22-d115910886a2, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:dc43d879-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 7d719ff44e6843398e5bb0afd17cecc1-20220519
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 7589712; Thu, 19 May 2022 01:43:34 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 May 2022 01:43:32 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 19 May 2022 16:43:30 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 19 May 2022 16:43:30 +0800
+Message-ID: <769fc1d52e2401b389f5611cb5d74d5e99ce9639.camel@mediatek.com>
+Subject: Re: [V1,2/2] media: media: jpegenc: set bit mask for jpegenc
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: kyrie.wu <kyrie.wu@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih
+ <tzungbi@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+ <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
+ <srv_heupstream@mediatek.com>
+Date: Thu, 19 May 2022 16:43:30 +0800
+In-Reply-To: <1652948174-7123-3-git-send-email-kyrie.wu@mediatek.com>
+References: <1652948174-7123-1-git-send-email-kyrie.wu@mediatek.com>
+ <1652948174-7123-3-git-send-email-kyrie.wu@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220518111652.223727-8-angelogioacchino.delregno@collabora.com>
- <20220519045340.11198-1-miles.chen@mediatek.com>
- <11bf21cd-85c4-f64c-2af7-7695e71aee07@collabora.com>
-In-Reply-To: <11bf21cd-85c4-f64c-2af7-7695e71aee07@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 19 May 2022 16:37:31 +0800
-Message-ID: <CAGXv+5H4gF5GXzfk8mjkG4Kry8uCs1CQbKoViBuc9LC+XdHH=A@mail.gmail.com>
-Subject: Re: [PATCH v2 7/7] clk: mediatek: Add MediaTek Helio X10 MT6795 clock
- drivers
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Miles Chen <miles.chen@mediatek.com>, bgolaszewski@baylibre.com, 
- chun-jie.chen@mediatek.com, ck.hu@mediatek.com, devicetree@vger.kernel.org, 
- fparent@baylibre.com, ikjn@chromium.org, jason-jh.lin@mediatek.com, 
- kernel@collabora.com, konrad.dybcio@somainline.org, 
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, marijn.suijten@somainline.org, 
- martin.botka@somainline.org, matthias.bgg@gmail.com, mturquette@baylibre.com, 
- p.zabel@pengutronix.de, paul.bouchara@somainline.org, 
- phone-devel@vger.kernel.org, rex-bc.chen@mediatek.com, robh+dt@kernel.org, 
- sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com, 
- weiyi.lu@mediatek.com, y.oudjana@protonmail.com, 
- ~postmarketos/upstreaming@lists.sr.ht
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_013745_960189_92CE11BA 
-X-CRM114-Status: GOOD (  35.08  )
+X-CRM114-CacheID: sfid-20220519_014341_520897_1DA1BF87 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,122 +89,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 19, 2022 at 4:17 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 19/05/22 06:53, Miles Chen ha scritto:
-> >
-> > Hi Angelo,
-> >
-> >> Add the clock drivers for the entire clock tree of MediaTek Helio X10
-> >> MT6795, including system clocks (apmixedsys, infracfg, pericfg, topckgen)
-> >> and multimedia clocks (mmsys, mfg, vdecsys, vencsys).
-> >>
-> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> >> ---
-> >> drivers/clk/mediatek/Kconfig                 |  37 ++
-> >> drivers/clk/mediatek/Makefile                |   6 +
-> >> drivers/clk/mediatek/clk-mt6795-apmixedsys.c | 157 +++++
-> >> drivers/clk/mediatek/clk-mt6795-infracfg.c   | 148 +++++
-> >> drivers/clk/mediatek/clk-mt6795-mfg.c        |  50 ++
-> >> drivers/clk/mediatek/clk-mt6795-mm.c         | 106 ++++
-> >> drivers/clk/mediatek/clk-mt6795-pericfg.c    | 160 +++++
-> >> drivers/clk/mediatek/clk-mt6795-topckgen.c   | 611 +++++++++++++++++++
-> >> drivers/clk/mediatek/clk-mt6795-vdecsys.c    |  55 ++
-> >> drivers/clk/mediatek/clk-mt6795-vencsys.c    |  50 ++
-> >> 10 files changed, 1380 insertions(+)
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
-> >> create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
-> >>
-> >> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> >> index d5936cfb3bee..da8142dff3c3 100644
-> >> --- a/drivers/clk/mediatek/Kconfig
-> >> +++ b/drivers/clk/mediatek/Kconfig
-> >> @@ -259,6 +259,43 @@ config COMMON_CLK_MT6779_AUDSYS
-> >>      help
-> >>        This driver supports Mediatek MT6779 audsys clocks.
-> >>
-> >> +config COMMON_CLK_MT6795
-> >> +    tristate "Clock driver for MediaTek MT6795"
-> >> +    depends on ARCH_MEDIATEK || COMPILE_TEST
-> >> +    select COMMON_CLK_MEDIATEK
-> >> +    default ARCH_MEDIATEK
-> >> +    help
-> >> +      This driver supports MediaTek MT6795 basic clocks and clocks
-> >> +      required for various peripherals found on MediaTek.
-> >
-> > Thanks for doing this, I was wondering if we can use only COMMON_CLK_MT6795 to build all
-> > clk-mt6795-*? like CONFIG_COMMON_CLK_MT8195 style:
-> >
-> > obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o clk-mt8195-topckgen.o \
-> >                                  clk-mt8195-peri_ao.o clk-mt8195-infra_ao.o \
-> >                                  clk-mt8195-cam.o clk-mt8195-ccu.o clk-mt8195-img.o \
-> >                                  clk-mt8195-ipe.o clk-mt8195-mfg.o clk-mt8195-scp_adsp.o \
-> >                                  clk-mt8195-vdec.o clk-mt8195-vdo0.o clk-mt8195-vdo1.o \
-> >                                  clk-mt8195-venc.o clk-mt8195-vpp0.o clk-mt8195-vpp1.o \
-> >                                  clk-mt8195-wpe.o clk-mt8195-imp_iic_wrap.o \
-> >                                  clk-mt8195-apusys_pll.o
-> >
-> > So we do not have to keep other COMMON_CLK_MT6795_* configs.
-> >
->
-> I don't think that this would bring any benefit - it's the opposite, if anything!
->
-> Think about platforms that don't need any ISP functionality, or are headless (hence
-> not requiring anything for dsi/hdmi/dp and display and/or media generally): what
-> I've done is splitting the clock drivers that are critical for any functionality
-> of the SoC to the ones that are enabling "facultative" functionality.
->
-> Hence, the usecases for this kind of splitting are:
-> 1. Somewhat rare (corner) cases: someone may not want to compile in any of the
->     mm/venc/vdec/mfg clock drivers because they don't need the functionality at
->     all (probably, including the other related drivers), or;
-> 2. It would be possible to compile as built-in only the "main" drivers (apmixed,
->     infra, peri, topck) to achieve a boot (ex.: you need eMMC to boot, at least)
->     and then compile the mm/venc/vdec/mfg as modules to be loaded after mounting
->     a rootfs (where you probably also have mediatek-drm, vcodec, etc as modules).
+On Thu, 2022-05-19 at 16:16 +0800, kyrie.wu wrote:
+> From: kyrie wu <kyrie.wu@mediatek.com>
+> 
+> set bit mask for jpeg encode
+> 
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> ---
+>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index bc5b0a0168ec..87685a62a5c2 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1369,6 +1369,9 @@ static int mtk_jpeg_probe(struct
+> platform_device *pdev)
+>  	jpeg->vdev->device_caps = V4L2_CAP_STREAMING |
+>  				  V4L2_CAP_VIDEO_M2M_MPLANE;
+>  
+> +	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
+> +		dma_set_mask_and_coherent(&pdev->dev,
+> DMA_BIT_MASK(34));
+> +
+>  	ret = video_register_device(jpeg->vdev, VFL_TYPE_VIDEO, -1);
+>  	if (ret) {
+>  		v4l2_err(&jpeg->v4l2_dev, "Failed to register video
+> device\n");
 
-I assume you mean split them into two groups:
+Hello Kyrie,
 
-  - essential for booting to a state capable of loading modules from storage
-    So apmixedsys + topckgen + infra_ao + peri_ao + imp_iic_wrap (maybe?)
-  - everything else
+if you want to add this property in dts, you need to add a new property
+description to descript this.
 
-The whole MT8195 clock driver suite is roughly 70KB, with half of that for
-the four essential clock drivers.
+BRs,
+Rex
 
-If the system is really that limited in storage, you probably are already
-running a highly customized config and build system. And kind of doesn't
-make sense that that is a real limitation for the larger chips like the
-MT8195.
-
-IMO having two Kconfig symbols for one chip is still much better than
-having ten though.
-
-> For this reason, I would propose to actually split the MT8195 clocks as well
-> and the ones for other models to achieve what I explained so that, in the future,
-> when this entire framework will fully support (read: fully tested) modularity,
-> we will be able to set these to compile as module by default, which would greatly
-> reduce the kernel size.
-> That's important, not only for MediaTek SoCs, but also for others (nxp, qcom, etc)
-> that don't need MediaTek clock drivers at all, since upstream we build one kernel
-> image for all, and not specialized images.
-
-AFAIK the upstream defconfig was never intended for end users to directly
-consume. It is only there for all the automated testing. End users should
-either generate their own config, or have their distros come up with
-something sane, like building everything as modules. The soc maintainers
-(if not Linus) were quite clear about this.
-
-
-Regards
-ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
