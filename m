@@ -4,164 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15260C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A5FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 15:06:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=s1KnJRBbZjCVrb3f+8oMFUeXa9b/uOcoIOTCtJ/fpwM=; b=smBf8lT2CFyo9b
-	CytsR5bxujas6VnbIKm+plB4EV7fC2QZV1q/wQa1Ol+mkfo+8Jg1zftpSIG5de8b2x6KUL7NI6ZoF
-	2EM0mtCqiBwac3VlLIgHZJozpV/2Y7UTWs9mWFFWgrNw42rGb4LKT4YhOme/jwd1icEh4pDi/4O7p
-	RP0PtRhl/5IVNdbE6lefRFF3eb4YLaGAmf6VL2WKjjZGUo27koBJHgaq9JNhdgRjLG8Zxhv30j7Ls
-	+9zBuCcn+bL7JPLgrDJCqzUmj0/zU6R6GPnO7XOfIR6NI3Rx/Jdsh7sQ0PEgM6oIBSHawmlRrQbEs
-	Uyj7QTnQpeFm+fp3+ZAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
+	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ngs2ArSHINdN7HFAwASbFD5WBQZlXmfDRuyax3LPwmI=; b=elYZmuxKeyTf2McMNKtAQadwel
+	oWPvlk0AIoFOUtkH1DiJD0MIuClgTdgRw6jyPnFOGpt5Ov8E7P9M4O4TCfBkMDsJHQlr9yEhjMvHj
+	iWvOcdnMlzrjoIjiMPoKR4qmSAGEDd7f2ConCytqwrHn35Xu6l/oPnLdPA7ubSkwm6b65xmZ7vFW2
+	G5O73d1qmL0aHa2QoRuL53UXDI2LsJPuuMo96PozWn6hxLG+LzUL+UN4eRKDElVB8ay9XL7sogjGq
+	odIgDz+gR087UzMfpn8o6eav2Nxv8OkCwIwVSzAClD7FTCA2CI8OFggupxVuAd4ENkJSg7Psx3xEW
+	d3CoDYEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrhjE-007isU-DJ; Thu, 19 May 2022 15:06:16 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1nrhjP-007j0N-Tu; Thu, 19 May 2022 15:06:27 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrgfe-007CGj-Gs
- for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 13:58:33 +0000
-Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24JCxsds009233;
- Thu, 19 May 2022 13:58:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=OPLKH6QRLHnZLvghbm6oc6FwmL7O2t0XVxH1l2nLSys=;
- b=SyIqKVcXoef6OFjOUVlYUxp0hNxkFtzspZ5KU9sQ7EqelJ56xl/1rBe6NWZKvIn57r+i
- +tfO/2lgmThnUmB5pdXNzrjYJYOT0KHbRFgtcV6+PBBgo22OlU/rq72h+ByFCKOJLZAM
- ZawUKGgtb0tjBNEmOI1yhw1PSkjP3F7IWC8ZwMZSYod/SzUQfDuxQ8n/4A61FF8PIbVL
- 0M0ygffdo0FrJB5j947AoEwNsg2+iUleHikF9TIOHmLfRUNnVqEiC1gof8ffrVjIpVxx
- hkPKZ9DD5bIVjVWXoRJ9pdc3g3BnXHPDWkPVbLw6OuvP1hn5HAS3UcsfQ/c/0NSgFOUD qg== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3g2310vaw7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 19 May 2022 13:58:16 +0000
-Received: from pps.filterd
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
- with SMTP id 24JDtqPQ025119; Thu, 19 May 2022 13:58:16 GMT
-Received: from nam02-bn1-obe.outbound.protection.outlook.com
- (mail-bn1nam07lp2047.outbound.protection.outlook.com [104.47.51.47])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id
- 3g22v5fp6r-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 19 May 2022 13:58:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=blfH+vLZN9gbmBkBF1+0YUpPZn6dyMFVYQ3Cu334fNi8L2aPUdkXG/4i8GMvf2dNbNo/5zrZSJpxgYWLF8Av6qVRJ8jyvjN6sU0lVVQOcnaXqvey2ni5/BYaBPjz/SYZq8zP2k4MqMFnqjFHWG3DHbYlUvYpb2f8zw2wVgyaynlF5smhQLtuAd8EiO9dxZT82zQp3XuHgEHp0eVZjriF1E5E8WAzQiG4spDcRubLSKDIApJZn8v14b06mfb/Vaz7w7LhMbwKzsNaASkXPtQzIvFPtiDuQgXQn1+Y+PGKs3x6vgy1hIUi+iiMx7rNuhV0FhKPdv/+jlUh4khuXWYffg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OPLKH6QRLHnZLvghbm6oc6FwmL7O2t0XVxH1l2nLSys=;
- b=jNt5OysMkRFH+qfYHWVFC0fHkSzOG1jZvPe+Yo8/H6nATcwscBA/m/8IkZUu24m+eoVYgQaxHbMSdFfArR6ZvbSKgQ0twIPGeZB47tuoXZGWCFOO1qQj0gDWaOe+FHyJbTbwUZ3S3C/0bfXIvfmnlcH1lNgt7K8hxf9tNgtYPRphkJPrQt/ivgr1Q7E2SWVSrlf7Ko13N7UqYaXvudZAC8gxvoD3Y7n17gYW/6+i2ri31+QV7iZixAnDdAoszRExhoiTCuUPaYVtcIrptmG5PRmKZ99V03jznbLYJ536FzhFw6sun+zEMsiiggfjJ7WvWMkY5UD0kzlHV1uyUKqsPA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OPLKH6QRLHnZLvghbm6oc6FwmL7O2t0XVxH1l2nLSys=;
- b=VPOQ/zmMIPCRKltISI68N+yfC46cs9+0VzkDJrU6T248C6IK1pqHBnM234gqoMvKC1X/wxNFD/vzTwiWbOCR7CUU1CuGs91Hlm/FXnUKEldf+JMVQWnwH6JL6jxhfSCJTkKqcsmqn7Tg/DXW1nEyWbpXZea2vvQLKOrzRWCZ+OQ=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by SN6PR10MB3023.namprd10.prod.outlook.com
- (2603:10b6:805:d2::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5273.16; Thu, 19 May
- 2022 13:58:13 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::86f:81ba:9951:5a7e]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::86f:81ba:9951:5a7e%2]) with mapi id 15.20.5273.014; Thu, 19 May 2022
- 13:58:13 +0000
-Date: Thu, 19 May 2022 16:57:22 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Bo Jiao <Bo.Jiao@mediatek.com>,
- MeiChia Chiu <meichia.chiu@mediatek.com>,
- Ben Greear <greearb@candelatech.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- kernel-janitors@vger.kernel.org
-Subject: [PATCH] mt76: mt7915: fix endian bug in mt7915_rf_regval_set()
-Message-ID: <YoZMwqVnZYUprg6u@kili>
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-ClientProxiedBy: ZRAP278CA0005.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:10::15) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1nrgkf-007Ea2-KB; Thu, 19 May 2022 14:03:43 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id i19so10125110eja.11;
+ Thu, 19 May 2022 07:03:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:subject:to:cc:message-id:in-reply-to:references
+ :mime-version; bh=qWNcKlbHWt+buYUPc86j5JlNPnGvKXkUMAum0oQSfJ0=;
+ b=LcE9bEgfBwTo+FP+bLoachNEfeucJ1OepYalzxu7uc6jEmRley8APjmdkai6m/XVAc
+ Ya75wYu2NMpfUANb1K7kUDHYWCcXkmTEbT8b7eC6obk6nmJdBqKhFhrN0XlEGUOS38va
+ 4ldMm/u49lHcF+2IBH75a8sAghe0xurqgbWccyAqO4mLCKlrctVwIpqpzjLDyGQzcirk
+ n7m5dGw5dWTOgBJbZYpl3B7KJMFjTe8NedjJ7o/o2Y1HzA1yOOepTTvUkxg1N4L8fNYZ
+ ifLUQ4h2MYsaO+czOwRsRl85AqrCFL8vjJcLLAtxcS5VB2E6d1Yw/qOO6W6fRmbYAr3h
+ YCgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:subject:to:cc:message-id:in-reply-to
+ :references:mime-version;
+ bh=qWNcKlbHWt+buYUPc86j5JlNPnGvKXkUMAum0oQSfJ0=;
+ b=bPfnKP/dBvBh1EP5Tl/NvNKYDpwEcr6fMsgFK1+7TseMyuvsBY7yqCwR3hMHSVCwge
+ QMf2KKha3Rn+GxLJwNWU3vfkhpYyvPI7fwc6qNdWoH0f6RC1pI3FKgBR4eSAX9QzIGa9
+ jRsv2Qu8BYCW7L4E0D+zraEbqdpm968ECYGcVAJo9XyiEgXY9Wd+Ut+XNqZHaiefQxGw
+ TRh+Gquy/sPzMszmeUhuBBvr/ZnY44q6xUXKfnGx0DH9+rG61NKoHDZrDjpr4wrijfOW
+ UnIVtNyxYvKvUEfIS7YpdNVhn6HGMfBO62EgzmTaUxp1MRoOTPUDMj8b6fdw0P32QJMO
+ 7stw==
+X-Gm-Message-State: AOAM530dKYJLJRpj4Sd3kwKJnX+uWG+S16giTkP9Mn1OMI0b8PrOlNcg
+ bLR/HfoE7fB8kv/9GWmEnN8=
+X-Google-Smtp-Source: ABdhPJyhieqoXKbfvsM8fh2dawCAGVx37vJQhD8YjDO0OoeyTXCFh58t3tmMrLP80r47m9bY8FV3oQ==
+X-Received: by 2002:a17:907:7b85:b0:6fd:d799:ef4e with SMTP id
+ ne5-20020a1709077b8500b006fdd799ef4emr4492401ejc.319.1652969017544; 
+ Thu, 19 May 2022 07:03:37 -0700 (PDT)
+Received: from [192.168.52.247] ([217.138.206.82])
+ by smtp.gmail.com with ESMTPSA id
+ m13-20020a17090672cd00b006f3ef214e3esm2097890ejl.164.2022.05.19.07.03.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 May 2022 07:03:37 -0700 (PDT)
+Date: Thu, 19 May 2022 18:03:14 +0400
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+Subject: Re: [PATCH 0/6] clk: mediatek: Improvements to simple probe/remove
+ and reset controller unregistration
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ =?iso-8859-1?q?Jos=E9_Exp=F3sito?= <jose.exposito89@gmail.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+Message-Id: <E1V4CR.LC9T17R2IY1M2@gmail.com>
+In-Reply-To: <20220519134728.456643-1-y.oudjana@protonmail.com>
+References: <20220519134728.456643-1-y.oudjana@protonmail.com>
+X-Mailer: geary/40.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 0170193d-0170-4ac1-f9da-08da399f9d60
-X-MS-TrafficTypeDiagnostic: SN6PR10MB3023:EE_
-X-Microsoft-Antispam-PRVS: <SN6PR10MB3023AFE8118CF7E732DC2F488ED09@SN6PR10MB3023.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: h3c7r58lPXmgWMYsTPosvIg6YWGRby5wv6Sz2VZ64SmaKrDwhpVeIq58hdwgqysJRKKZ0EZJbWwLMjAKB1LzFkZc8222nUYeDndqq1LybuwKXgBVUf41EXhhiFCJFjIEu2cESkxNbA8+KYE+tYh37gqIii5wx+B5ZJqyyRI4+FwfvoH/cdKxx+cCS5uM8K+6spCSXGRUgT+Q0tvthy0XQZ9wf9kumYTAe8kS3cL6yvHcZ6+VH/aFHNqwvcrvwqqZVbOxh9l1ueAXv24CpRsbglCsZChGDp+rLqjHX7iaMvwhdUPyAiPRMrNJ6r5hHn+aJ5VeX20ARoO6LmGXFQhk7N7JVqIQfO1Zanhz5zuOFgarKNGwX07q9RpPt6s9f2XEMgyRFtlItINmYw5mwmqVn1QC04eC+tkysFIvRwIfKmZZUH6FfO3XC79Fac7baNM0sARe2uqaCxf7mu604dVFxJwx7IH9PaFwC+bOTY+2J65EvVTbwLfp+f9ZT/y/0L+ksO9+OSLyEBfI32GM4t1TWaYJ+vi3YUphf6vcM8xvNwF/pz1ePpwLZAJ2Jl3XnVpgadaRt067jQkEz3XrcPHHBW3FhMRANQtNO4ceAK+/fmDe6J1CZzO1J8eDcudFNbfS3alDVKHMKZh1b2MPHJaCBKlK99cLlc+5WCD8ES6dPVs/pefVmVXOBCFw9G/6z65VZw0r2HDD5CuSqeUuIWxqsg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(86362001)(54906003)(4326008)(6916009)(6486002)(66476007)(8676002)(66946007)(5660300002)(316002)(66556008)(83380400001)(44832011)(4744005)(7416002)(508600001)(8936002)(33716001)(186003)(26005)(2906002)(52116002)(38100700002)(6506007)(9686003)(38350700002)(6666004)(6512007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4fHaYD3iA569RI1pFCDkO44Ws8R3XtqgzidJtzPC1JpFgfJ/4rZ/qJz0pa6u?=
- =?us-ascii?Q?YsmzUeXTFAYnKz1iIyFE9AmnMWKLGuWXjy4thxKv7153hNRoKTsOr2rYWniq?=
- =?us-ascii?Q?GfMZpZ3uzy0nIdE7RBYCPBVIHByWqV7kPXVZTfpcsAuoR7aNkXIOo81jvQDw?=
- =?us-ascii?Q?/XGrGw24/n1mJx2ObOV0K8Q2wcVNZQmMgMnIZJ9n0tNhsE5Zb8GPg6wCDvYS?=
- =?us-ascii?Q?myDNAvX9TOw4oLuGRtSrnDVFoH/hh9UJPJ2tREorbP+TSiNKZq/frIIn2Sfy?=
- =?us-ascii?Q?V33HN79gThOAYGE7vJk3K8BaJWeh9ImGCPy08DmDgafUl3oy/j2SBiNlpqhE?=
- =?us-ascii?Q?sJ1v7YbqQZeZpB5BAue7ZEO/ryK3IJm9FCpkM9IE03yYsbDpwoz1VkTTSlkR?=
- =?us-ascii?Q?B7HbofG+rGoAaDDj3LAwY/PXKyofBLdBnwgfe6m+PYSFJFJP4zFBf08bD+jA?=
- =?us-ascii?Q?+8fWVBlEyA4yo0MyPldXsUAqJr2wUnGlF4SqAEEgIggxHff2cyo0fxvyfTMa?=
- =?us-ascii?Q?tRcqDJXd2Hdo3F/9jdJDA6WG3c9DFVnSrlWTgiUyT3HQzgr2bpc0UQD+wVx+?=
- =?us-ascii?Q?/tYh26MTQDVkIdSL93VuoVNmOapbs1vjNJbnEg1ajnQThWJOkobz8myg1ho2?=
- =?us-ascii?Q?5TSNdr3WziqLEm5d6k9xAoCYScqvmDQeJ3gmM+xw8OKL4CLr3cjhTWfHo5Gv?=
- =?us-ascii?Q?1m73CeBRbdy9BQGxPqxxOBwNlPUdRPD04HNv+WIbxe12vRf+zaHdeb6V/TJp?=
- =?us-ascii?Q?OuoUdOvbkxN/JOZ/5L90dxZBF1PBJuol6nDChndeZ52xtMxrQM2fDTo9jB6h?=
- =?us-ascii?Q?/6sNRu0iBiVFHm9HOIChvl7TJdqryBgjag5Xt/7H9AT3zE/mAQpGMUVYiPaH?=
- =?us-ascii?Q?R9lW+78iDVg20kK62izQwD49ARS1DAYIWrBXUZMteTjNLKC9YGBV1azaU7d8?=
- =?us-ascii?Q?zd5kXFk+GR5u7b4F4lAcOfRoFntfcA6+0h2YChZF6gb0xiDyeTseNi2WCe29?=
- =?us-ascii?Q?ngcqw8Zg5EsBhC/w85kcPBE90WG/JMzMcVEYPB7CQYg8r1C5xk1gqmQVqMfL?=
- =?us-ascii?Q?q+epU1HSt/aUvdtw4jjRgK4ntb/d+W0g8c4S0ssFkvj+J1y9/u8Tx2Aah+qs?=
- =?us-ascii?Q?w9prAdyJXrj86EcXUc/rYwRNHsS682P8vB5caI6his3nFo1xn5HDNQbj7xUM?=
- =?us-ascii?Q?m2cxyP8r976hVjf+AVeAXVE90fZ3tOnlPDU87d8ssch/pfLnZ4QzMK5KIsRi?=
- =?us-ascii?Q?smaOj1belF4w789vE/o5WxG1+xfk0XCmoTSLpCA6BITpEtFKNcrTcESlijik?=
- =?us-ascii?Q?wnBbtzKYWT9rqRDo2Z+c5xh55HOQiYl7Tqv6qCXGED+t9lzc07Kq7m0deCp8?=
- =?us-ascii?Q?LCjObox+FauMsf4uF/WLOM5sF1sOPVA8662XOwYJRMF5MU+T5tY7h3aEyI13?=
- =?us-ascii?Q?etCI0FmxIJllkgDCzIXIEq9BGxCvvQrfewPzB5dECmpJCWU/9Ef1CabIfJMi?=
- =?us-ascii?Q?iBwBUu5aTEhciahq4QTO7vXAW4vg4AQ8vAYwxxeGsDoYRJop/Lz9GW5Z3TfC?=
- =?us-ascii?Q?QUUJGgYa+HlpH64tW2Q9vMGK6A6qU149pVrZNRp1YWuAjGe8TOItpr8R1DjK?=
- =?us-ascii?Q?aS1D6Wz4LO2bcuLDs23HhBIusUCGnTlqBBoltOXXX9wBC7sk3KUOkv5/6q9g?=
- =?us-ascii?Q?P/J54voFPWy22xg79kJG5QrR+OnXZZ4HD2eJe42lLTCkYPY3WdT275Bp58I2?=
- =?us-ascii?Q?2HmSLR7amTq72jQ5VqIYWzQJd2P+bHY=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0170193d-0170-4ac1-f9da-08da399f9d60
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2022 13:58:13.0401 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YnxRJWbw//At5A7rSZRwAOpgC+5FGtM05iqosGpdhjKzkuQKU18U348tEE09U6sc8nixgBN+C+xbuQtEtF5BGDYMm+gfB9g1FYSIPfNbQa4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR10MB3023
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486, 18.0.874
- definitions=2022-05-19_04:2022-05-19,
- 2022-05-19 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0
- mlxlogscore=999 spamscore=0 suspectscore=0 malwarescore=0 mlxscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2202240000 definitions=main-2205190081
-X-Proofpoint-ORIG-GUID: xp_zIaBwmZZyiyguDtc1jXlF5gWdYZLu
-X-Proofpoint-GUID: xp_zIaBwmZZyiyguDtc1jXlF5gWdYZLu
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_065830_611237_55D1D4B7 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20220519_070341_734301_963B9BE1 
+X-CRM114-Status: GOOD (  18.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,37 +91,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This code is supposed to set a u32 value, but casting will not work on
-big endian systems.
 
-Fixes: 0a17329ae9c1 ("mt76: mt7915: add debugfs knob for RF registers read/write")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On Thu, May 19 2022 at 17:47:22 +0400, Yassine Oudjana 
+<yassine.oudjana@gmail.com> wrote:
+> This series started as part of an earlier series adding support for 
+> the main
+> clock controllers on MediaTek MT6735[1]. It has since been split off 
+> and
+> expanded. It adds a new function to unregister a reset controller and 
+> expands
+> the mtk_clk_simple_probe/remove functions to support the main 5 types 
+> of clocks:
+> - PLLs		(new)
+> - Fixed clocks	(new)
+> - Fixed factors	(new)
+> - Muxes		(new)
+> - Gates		(supported previously)
+> This should allow it to be used in most clock drivers, resulting in 
+> reduced
+> code duplication. It will be used in MT6735 clock drivers in the 
+> upcoming v2
+> of the MT6735 main clock controller series.
+> 
+> Dependencies:
+> - clk: mediatek: Move to struct clk_hw provider APIs (series)
+>   
+> https://patchwork.kernel.org/project/linux-mediatek/cover/20220510104804.544597-1-wenst@chromium.org/
+> - Cleanup MediaTek clk reset drivers and support MT8192/MT8195 
+> (series)
+>   
+> https://patchwork.kernel.org/project/linux-mediatek/cover/20220503093856.22250-1-rex-bc.chen@mediatek.com/
+> - Export required symbols to compile clk drivers as module (single 
+> patch)
+>   
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220518111652.223727-7-angelogioacchino.delregno@collabora.com/
+> 
+> Yassine Oudjana (6):
+>   clk: mediatek: gate: Export mtk_clk_register_gates_with_dev
+>   clk: mediatek: Use mtk_clk_register_gates_with_dev in simple probe
+>   clk: mediatek: reset: Return reset data pointer on register
+>   clk: mediatek: reset: Implement mtk_unregister_reset_controller() 
+> API
+>   clk: mediatek: Unregister reset controller on simple remove
+>   clk: mediatek: Add support for other clock types in simple
+>     probe/remove
+> 
+>  drivers/clk/mediatek/clk-gate.c   |   1 +
+>  drivers/clk/mediatek/clk-mt8192.c |   7 +-
+>  drivers/clk/mediatek/clk-mtk.c    | 123 
+> +++++++++++++++++++++++++-----
+>  drivers/clk/mediatek/clk-mtk.h    |  22 +++++-
+>  drivers/clk/mediatek/reset.c      |  41 ++++++----
+>  drivers/clk/mediatek/reset.h      |  20 +++--
+>  6 files changed, 167 insertions(+), 47 deletions(-)
+> 
+> --
+> 2.36.1
+> 
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index cab6e02e1f8c..5dc8ef8cec83 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -985,8 +985,9 @@ static int
- mt7915_rf_regval_set(void *data, u64 val)
- {
- 	struct mt7915_dev *dev = data;
-+	u32 val32 = val;
- 
--	return mt7915_mcu_rf_regval(dev, dev->mt76.debugfs_reg, (u32 *)&val, true);
-+	return mt7915_mcu_rf_regval(dev, dev->mt76.debugfs_reg, &val32, true);
- }
- 
- DEFINE_DEBUGFS_ATTRIBUTE(fops_rf_regval, mt7915_rf_regval_get,
--- 
-2.35.1
+Replying since there is a missing reference:
+
+[1] 
+https://patchwork.kernel.org/project/linux-clk/cover/20220504122601.335495-1-y.oudjana@protonmail.com/
+
 
 
 _______________________________________________
