@@ -4,76 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91848C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 19:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A5CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 23:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GueKbiN+PCcqPPLhIVKjQ9Dyk5aiBGwAnQBgIKKPYFU=; b=mVQp9PbWzV81L8
-	9G81arv3QHjTsERXzEW9WQ/BUJbUrNZXnYcQRA8+JCXUemBC9oSHt0EuCoj61Q9A8COd3Tarc06nK
-	O13GBXf2hxzEpwPgj73eL8JVA6tway/t3jk7Q0r2xu4M4/imjATpLzs+urr+ulMzV5naLiOlbitIa
-	xrdYAZc8jOiRtNLRAFx+7vTKE0r8tA32E8KUCa/we5SouKuq7obRAvjoYpqljdI21XY1I53L+wEmr
-	eYn02buAEuQE3rdqWLXuEuPVG8W593tIlYtwVMeO5vj61/OOo8i7hw/RWKDp2hDmx0ULF1cQ7V9jg
-	b2glTXqD1vy8XEyRJmVw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Q5epgPWvsDEYKSks6QE4YRtjoXkbSa7ZuNz9MHb6OPU=; b=RqxVPIeQbra9jMUpTNhcgM16Ef
+	dwBw5N/z0vENG2ybLEDkPfnUYzND0lWJh/cndJs7iOVnZdRSoViawPbQpoi/oNRcAR27thBoNbELN
+	RactUhrvQdvjNms8fN33dT54WQgHssEYL32aRT3DeuRU3xfYQJc44gp2/d36wEbHvfWpn12LhMX6c
+	p13IQAEpzKV6B5RtYL0x6thiNAeCRKBUceid6RKygMAxsr1xOxkpixV18f1Xd35iIX8Y/vHXyDmD5
+	fcL1Ib9iAu4g3K3Icrb+MCt9evzgdgeI536AZsdCbZawVeow5jmZw7Jzl5i+kEOEAC+xDKQ443v/j
+	KJvEkhCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrloz-0098G2-6i; Thu, 19 May 2022 19:28:29 +0000
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
+	id 1nrpkn-009hZ6-6R; Thu, 19 May 2022 23:40:25 +0000
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrlol-009892-C8; Thu, 19 May 2022 19:28:17 +0000
-Received: by mail-lj1-x244.google.com with SMTP id a23so7358676ljd.9;
- Thu, 19 May 2022 12:28:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=PvLDd8wcJFaP4wZyvv4PEwUuTP3SB9YVSkYVMPVbzng=;
- b=Uc22x0NuV1MkOVz0+q7VLbrtNVzEVaPlEPu3pEhpU7LqfUx9jvflGzbiYKOBjQ75Nl
- 7VAnBHEm9RfJk2ExH9HbaYlWGEgdnBspOXY+CoAJWgn32j6WiY8Ew2A532ksAWLZtyqD
- C50PQ3WXXMw0cvivqkROWDW7F9rQ3XY2qX/vWWOIdxVOWyVtXaKusQvl3o6PNJaEXCLI
- rd1zSWev0Wmj8W9tZ1TSAOrrEs5lmyHFhQla6ikf2Am/fiLO2iE3KTCLbtskuetpLExV
- 3h6x2d/pb13i+Pn3M6gp+UxtGq73frFVbuPWITK8sUoY3hdl4Gistpkzlb2YgXKKfD+O
- fLZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=PvLDd8wcJFaP4wZyvv4PEwUuTP3SB9YVSkYVMPVbzng=;
- b=wxrdAiUvg6Istoo6LcDnJ+kRWjUn2MwxYMlHiSVJHxKfAB7VKBlirMI978Zwbf63La
- D6GM/fRI/fbbv6gF6HVqSnorL3wp70sPq0FMaxtRG/gjFVU4dZnGh1khE2fGaw2dUsYX
- VNrnJSeQ8toleGTYPZzOFGrye43RgAzmjfP+7sNvbj0JCYOqqBTxIvZOVnDsPnuDGayU
- sESpPTCkvmeRSSpgtRZQspR+aZJoF+JzLswLGoNx3vkd82Oax4/iA0wZ/fHaGOQZvo5I
- ov4589sd8jDmsqKfn3naAQCoB4ZmLp9/kAFTwvjYgQbEZ1NOyeYt2GfvAvR8764slXRv
- GQrQ==
-X-Gm-Message-State: AOAM533DKRLjS7eTg51uOzS/uLC83cWjNpq6RR/eQ/l9K0gIDRz6IOH2
- zhdf60y/xogHsXSZlyk/oPU=
-X-Google-Smtp-Source: ABdhPJxuxey6xeuyOaq/PdkiNBWjHJmK9mtssV6mSSRvv0EZysXovJkSn7t3gEN0fYV8lzwSLqrJdQ==
-X-Received: by 2002:a05:651c:102c:b0:253:d15e:dd12 with SMTP id
- w12-20020a05651c102c00b00253d15edd12mr3392798ljm.220.1652988492002; 
- Thu, 19 May 2022 12:28:12 -0700 (PDT)
-Received: from pc ([104.28.198.246]) by smtp.gmail.com with ESMTPSA id
- y27-20020ac255bb000000b0047255d21132sm378876lfg.97.2022.05.19.12.28.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 May 2022 12:28:11 -0700 (PDT)
-Date: Thu, 19 May 2022 22:27:55 +0300
-From: Boris Lysov <arz65xx@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: arzamas-16@mail.ee, mturquette@baylibre.com, sboyd@kernel.org,
- matthias.bgg@gmail.com, wenst@chromium.org, miles.chen@mediatek.com,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] clk: mediatek: Fix unused 'ops' field in mtk_pll_data
-Message-ID: <20220519222755.127ebbb8@pc>
-In-Reply-To: <ead37cb0-c841-df1a-ca10-a396b5e9951c@collabora.com>
-References: <20220515122409.13423-1-arzamas-16@mail.ee>
- <ead37cb0-c841-df1a-ca10-a396b5e9951c@collabora.com>
-X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1nrpkj-009hY1-IU; Thu, 19 May 2022 23:40:23 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 568E05C023E;
+ Thu, 19 May 2022 19:40:15 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Thu, 19 May 2022 19:40:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
+ cc:cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1653003615; x=
+ 1653090015; bh=iqHByxP/PP0RV5Kp27EEtrVjbBff5eU8E6iDfYSzvlo=; b=v
+ WvrghW/tnB2wQQZ7H1BtAjOy1RhwPLZpgzo98sCQvJhYWwor/HzjJNsV/LVOFbsE
+ YSiG6I57bor0I2nDEC6ZNocpWKkv71xzTjDYt6ZfZ8NcTOw4uLTbONYN6bKYH0PY
+ ZXLXErKuqY/OVSt1aiUR4bNuR2iEWFiDRXePo8UJrjuv+NMyWc7SgXvTTXZClSjS
+ xX/9GfMLAZ8ZS2t+SmXFzd5bG9/XZqH4LhunRvn1mAKETHqh9PDqXC25nNdQWczb
+ Ozc+ESgOxLy8gZ1sJC+Wq7Am0HXvT/m2QJQsf+liwgR8ULL+hRLTOVRO4mvNvxjd
+ KHsL6W3LPExCEUM/TygiQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1653003615; x=
+ 1653090015; bh=iqHByxP/PP0RV5Kp27EEtrVjbBff5eU8E6iDfYSzvlo=; b=k
+ pRbno/Gt6gUXFzSSorr0j6sxajaPEN+rwHFd8+jcnA6Sce0eyMe1DAfgUIuR5rln
+ yyI3d7qfzMsS8JltiVQrFJi7K/ZoDyKheaneInXoIGCdVSulwqOTjJorhLCu2Gw7
+ IoRXmbGJ3trZhAv+ZBVHrxN0gMC5BalsJ/SKUO/9f+9Ut6HKvwFdvvQ8z8xsuHUk
+ fxcCGXOOf/BbfqT8Y8VSjsuEJ6GBj8XDHJJ8IRfvpiEixjiRTsOTlez4NEgoU/2g
+ W4aJu6F/kQHejyjCH6arZw/g+aNM+9HBFIdRKkeEFQw/69yhZyT9EcMBkfbZV9md
+ 9NuahsBfHX2ficK+iYbDQ==
+X-ME-Sender: <xms:XdWGYgUGUf75UPVgls83XPWiF6A-tBj4e3s97Kb34YKu5oXO3A13_Q>
+ <xme:XdWGYkkqej7Sw873SF-tPbdbpAwSLvqaubcCTMpPfIOnD1JzRCeaEf8RmHncNciRB
+ jroNjyXsoqZ4PKpkg>
+X-ME-Received: <xmr:XdWGYkbvrZwpUnOM1O4-_2tYjgJTQpjZPqXkpDEw0EpgcjUMjLmwhmRAdevmUe4wB8Y-f3nIrmriP-19jvjm7O0yy8ouh7KCEVebaavF9pBHI4yR_-4r_4bKXQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedriedvgddviecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefuvfevfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepufgrmhhu
+ vghlucfjohhllhgrnhguuceoshgrmhhuvghlsehshhholhhlrghnugdrohhrgheqnecugg
+ ftrfgrthhtvghrnhepffdtveekvdegkeeuueetgfetffeileevudekuefhheelvdfhiedt
+ heduhfduhefhnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
+ homhepshgrmhhuvghlsehshhholhhlrghnugdrohhrgh
+X-ME-Proxy: <xmx:XdWGYvUwc4jVKeqPla_0-WQCIkx0RnvqDhfHPs1ZzAd8QctkVgY8fQ>
+ <xmx:XdWGYqm6J2stCQX-STAMuroIUM4y_rHHyhG_yTajyWgKhMRCq9JK7Q>
+ <xmx:XdWGYkfsUHQ4XlJCEJ_vR0OyzJAV_JKQMFS6xef23lbxi7aCuM1zAg>
+ <xmx:X9WGYo3IuYUdLigJsZOLgqfeufUYTAN7skI0dQ2vQGpXXTD2m7p_Gw>
+Feedback-ID: i0ad843c9:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 19 May 2022 19:40:12 -0400 (EDT)
+Subject: Re: [PATCH 22/56] ASoC: sunxi: Update to use set_fmt_new callback
+To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
+Cc: lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
+ nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
+ linux-imx@nxp.com, cezary.rojewski@intel.com,
+ pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ daniel@zonque.org, srinivas.kandagatla@linaro.org,
+ linux-rockchip@lists.infradead.org, krzk@kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-xtensa@linux-xtensa.org, peter.ujfalusi@gmail.com,
+ jarkko.nikula@bitmer.com, heiko@sntech.de, jbrunet@baylibre.com,
+ kernel@pengutronix.de, alsa-devel@alsa-project.org,
+ patches@opensource.cirrus.com
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+ <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
+From: Samuel Holland <samuel@sholland.org>
+Message-ID: <948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org>
+Date: Thu, 19 May 2022 18:40:11 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
+In-Reply-To: <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_122815_444405_2C4F2994 
-X-CRM114-Status: GOOD (  39.18  )
+X-CRM114-CacheID: sfid-20220519_164021_976898_609AADB2 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,113 +117,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello, Angelo! 
-
-On Wed, 18 May 2022 14:15:13 +0200
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
-
-> Il 15/05/22 14:24, Boris Lysov ha scritto:
-> > From: Boris Lysov <arzamas-16@mail.ee>
-> > 
-> > Allow to specify optional clk_ops in mtk_pll_data which will be picked up in
-> > mtk_clk_register_pll. So far no already supported Mediatek SoC needs
-> > non-default clk_ops for PLLs but instead of removing this field it will be
-> > actually used in the future for supporting older SoCs (see [1] for details)
-> > with quirky PLLs.
-> > 
+On 5/19/22 10:42 AM, Charles Keepax wrote:
+> As part of updating the core to directly tell drivers if they are clock
+> provider or consumer update these CPU side drivers to use the new direct
+> callback.
 > 
-> Hello Boris,
+> Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+> ---
+>  sound/soc/sunxi/sun4i-i2s.c   | 20 ++++++++++----------
+>  sound/soc/sunxi/sun8i-codec.c |  8 ++++----
+>  2 files changed, 14 insertions(+), 14 deletions(-)
 > 
-> I disagree about this change and would rather see the ops pointer removed
-> with fire.
-> 
-> I got that you're trying to do something about "quirky PLLs", but is it
-> really about the PLLs that you're mentioning being "quirky", or are they
-> simply a different IP?
+> diff --git a/sound/soc/sunxi/sun4i-i2s.c b/sound/soc/sunxi/sun4i-i2s.c
+> index 7047f71629ab3..872838d3e0a94 100644
+> --- a/sound/soc/sunxi/sun4i-i2s.c
+> +++ b/sound/soc/sunxi/sun4i-i2s.c
+> @@ -702,13 +702,13 @@ static int sun4i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+>  			   SUN4I_I2S_FMT0_FMT_MASK, val);
+>  
+>  	/* DAI clock master masks */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS:
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP:
+>  		/* BCLK and LRCLK master */
+>  		val = SUN4I_I2S_CTRL_MODE_MASTER;
+>  		break;
+>  
+> -	case SND_SOC_DAIFMT_CBM_CFM:
+> +	case SND_SOC_DAIFMT_BC_FC:
+>  		/* BCLK and LRCLK slave */
+>  		val = SUN4I_I2S_CTRL_MODE_SLAVE;
+>  		break;
+> @@ -802,13 +802,13 @@ static int sun8i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+>  			   SUN8I_I2S_TX_CHAN_OFFSET(offset));
+>  
+>  	/* DAI clock master masks */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS:
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP:
+>  		/* BCLK and LRCLK master */
+>  		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
+>  		break;
+>  
+> -	case SND_SOC_DAIFMT_CBM_CFM:
+> +	case SND_SOC_DAIFMT_BC_FC:
+>  		/* BCLK and LRCLK slave */
+>  		val = 0;
+>  		break;
+> @@ -909,13 +909,13 @@ static int sun50i_h6_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+>  			   SUN50I_H6_I2S_TX_CHAN_SEL_OFFSET(offset));
+>  
+>  	/* DAI clock master masks */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS:
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP:
+>  		/* BCLK and LRCLK master */
+>  		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
+>  		break;
+>  
+> -	case SND_SOC_DAIFMT_CBM_CFM:
+> +	case SND_SOC_DAIFMT_BC_FC:
+>  		/* BCLK and LRCLK slave */
+>  		val = 0;
+>  		break;
+> @@ -1081,7 +1081,7 @@ static int sun4i_i2s_set_tdm_slot(struct snd_soc_dai *dai,
+>  
+>  static const struct snd_soc_dai_ops sun4i_i2s_dai_ops = {
+>  	.hw_params	= sun4i_i2s_hw_params,
+> -	.set_fmt	= sun4i_i2s_set_fmt,
+> +	.set_fmt_new	= sun4i_i2s_set_fmt,
+>  	.set_sysclk	= sun4i_i2s_set_sysclk,
+>  	.set_tdm_slot	= sun4i_i2s_set_tdm_slot,
+>  	.trigger	= sun4i_i2s_trigger,
+> diff --git a/sound/soc/sunxi/sun8i-codec.c b/sound/soc/sunxi/sun8i-codec.c
+> index 0bea2162f68d9..6e9ef948d6621 100644
+> --- a/sound/soc/sunxi/sun8i-codec.c
+> +++ b/sound/soc/sunxi/sun8i-codec.c
+> @@ -286,11 +286,11 @@ static int sun8i_codec_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+>  	u32 dsp_format, format, invert, value;
+>  
+>  	/* clock masters */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS: /* Codec slave, DAI master */
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP: /* Codec slave, DAI master */
 
-To be honest I don't know exactly. mt6577 seems to share some common IP
-patterns such as splitting the entire clock system into few smaller subsystems
-such as apmixed (PLLs), topckgen (mux control), infra- and pericfg (internal
-and peripheral gate control). On the other hand, mt6577 is quite an old SoC
-(more on that in the end) and there are some differences about its operation
-compared to modern SoCs and their drivers.
+This is a codec driver, and it is only ever used on the codec end of a link, so
+I would not expect it to be changed.
 
-> Also, if it's just about a bit inversion and a bigger delay:
-> 1. Bigger delay: Depending on how bigger, we may simply delay more by default
->     for all PLLs, even the ones that aren't requiring us to wait for longer...
->     ...after all, if it's about waiting for 10/20 *microseconds* more
-> { snip }
+Regards,
+Samuel
 
-According to the mt6577 datasheet the largest settling time is 10
-*milli*seconds for AUDPLL [1]. In my opinion this is way too much to be set as
-default for all mediatek devices.
-
-> 2. Bit inversion: that can be solved simply with a flag in the
-> prepare/unprepare ops for this driver... and if you want something that
-> performs even better, sparing you a nanosecond or two, you can always assign
-> an "inverted" callback for managing that single bit;
-
-Not all mt6577 PLLs need bit inversion. 2 PLLs follow the common flow (set a
-CON0_PWR_ON bit to start). 6 PLLs set this bit to 0 to start. And 1 PLL (which
-is actually a DDS) needs to write a magic value to specific register (in
-apmixed region) to start.
-Is very unfortunate that I can't directly link the vomit-inducing downstream
-code to prove the PLL situation due to its licensing but it's publicly
-available on the internet [2] as a part of device manufacturers' obligations to
-publish source code.
-
-> 3. Different IP: mtk_clk_register_(name-of-the-new-ip)_pll() - I don't think
-> that there's anything to explain to that one.
-In my opinion this would introduce more duplicate code than just letting a
-developer set custom clk_ops for a specific platform.
-
-Huge thanks for your feedback!
-
-P.S As I said above, mt6577 is old and in its current state [3] it's closer to
-being a personal project than a serious mainlining attempt. I share and agree
-with your opinion [4] on e-waste and is why I'm trying to put an effort into it.
-What I don't have enough of is time and, sadly, expertise. Maybe it'd be better
-for me to stay on github.
-
-[1] MT6577 HSPA Smartphone Application Processor Datasheet v0.94, page 1200
-[2] any linux v3.4 mt6577 kernel on github, see the 'enable_pll_op' function in
-mediatek/platform/mt6577/kernel/core/mt6577_clock_manager.c 
-[3] https://github.com/arzam16/linux-mt6577
-[4] https://lists.infradead.org/pipermail/linux-mediatek/2022-May/041498.html
-
-> Regards,
-> Angelo
-> 
-> > This patch depends on series "clk: mediatek: Move to struct clk_hw provider
-> > APIs" [2] by Chen-Yu Tsai.
-> > 
-> > [1]
-> > https://lists.infradead.org/pipermail/linux-mediatek/2022-February/035093.html
-> > [2]
-> > https://lists.infradead.org/pipermail/linux-mediatek/2022-May/040921.html
-> > 
-> > Signed-off-by: Boris Lysov <arzamas-16@mail.ee>
-> > ---
-> >   drivers/clk/mediatek/clk-pll.c | 5 ++++-
-> >   1 file changed, 4 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> > index cabdf25a27f3..509959a325f0 100644
-> > --- a/drivers/clk/mediatek/clk-pll.c
-> > +++ b/drivers/clk/mediatek/clk-pll.c
-> > @@ -347,7 +347,10 @@ static struct clk_hw *mtk_clk_register_pll(const
-> > struct mtk_pll_data *data, 
-> >   	init.name = data->name;
-> >   	init.flags = (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
-> > -	init.ops = &mtk_pll_ops;
-> > +	if (data->ops)
-> > +		init.ops = data->ops;
-> > +	else
-> > +		init.ops = &mtk_pll_ops;
-> >   	if (data->parent_name)
-> >   		init.parent_names = &data->parent_name;
-> >   	else
-> > 
+>  		value = 0x1;
+>  		break;
+> -	case SND_SOC_DAIFMT_CBM_CFM: /* Codec Master, DAI slave */
+> +	case SND_SOC_DAIFMT_BC_FC: /* Codec Master, DAI slave */
+>  		value = 0x0;
+>  		break;
+>  	default:
+> @@ -630,7 +630,7 @@ static int sun8i_codec_hw_free(struct snd_pcm_substream *substream,
+>  }
+>  
+>  static const struct snd_soc_dai_ops sun8i_codec_dai_ops = {
+> -	.set_fmt	= sun8i_codec_set_fmt,
+> +	.set_fmt_new	= sun8i_codec_set_fmt,
+>  	.set_tdm_slot	= sun8i_codec_set_tdm_slot,
+>  	.startup	= sun8i_codec_startup,
+>  	.hw_params	= sun8i_codec_hw_params,
 > 
 
 
