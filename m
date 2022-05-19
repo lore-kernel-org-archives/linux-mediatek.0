@@ -4,75 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4C3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 08:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1BDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 08:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WNp9yKY/iW7Y348Q+qe2FeY1WBikCng27vJ7LHiIXWg=; b=aLl0HNGDEOcbbG
-	z9dbl6FebQ45wwoEDspXJ4oeEZr1hk8mCpRjK+4gxnGTM8my4GeYu5TvjWE6vdE9jpO1IHiyjirS/
-	EkxLEosREDFoMAnWMbgbf6t1z65qJ6abYWq2RagNB1euntF3AUMjvfoGWUDiPmm1rkBIi8MSx877T
-	nmIfSY5jMZQxCXCtsOTow0gJZYvycZ/lxh3Old3/lNYtXZdjKxljJairmuDkIOAMg1b/KmEh8zd0T
-	sOONlI9wpZW0rF81UtMbOSPQoGtPFeAn4OP4OXI4KIm7JijN3rLxUJ18/Vhv4ll5uQQESz8oUkTpR
-	OQWn1N8dh+OuP/YuYimg==;
+	List-Owner; bh=4f29PO2+StOj0Br/bbzJ6Alj2Y100GwFklzAeXwTEh0=; b=ctif1fjbAs8v7Y
+	2J+zyHLWiPXjEBCzp2+FFkWRb8KgbFcMhhWs7gQWNdEaN933ncoYYn8rI/hXn/26gsc3cI1UxacFj
+	ckA495NhZou9JcFv2F1f8o/gmRHh9zbb5GpzmGCoOicU3c1a6Eq2eqO6zPA10KwucIXGyBC7iqoks
+	3QLwOGMjY0BEQOxoojs3uMboQjw4IJ+ernnjdgz6KmQY97BPVEsSzizPwVR77kjvORDnQvu2K7pbP
+	U0qWOFJM+vnWHKMFASeIJQleyqkgbv8N3wGhMs1925uAYMtJ1fUs9vvK0IXlxNfN56u6FjBxTe+aV
+	vBxE253CN3uz1Mogo1/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrblE-005wCo-V7; Thu, 19 May 2022 08:43:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nrbnM-005xCf-Qp; Thu, 19 May 2022 08:46:08 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrbkz-005w5q-E6; Thu, 19 May 2022 08:43:42 +0000
-X-UUID: 7d719ff44e6843398e5bb0afd17cecc1-20220519
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:b4b3656a-f7dc-4d87-ac22-d115910886a2, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:dc43d879-5ef6-470b-96c9-bdb8ced32786,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
- ,QS:0,BEC:nil
-X-UUID: 7d719ff44e6843398e5bb0afd17cecc1-20220519
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 7589712; Thu, 19 May 2022 01:43:34 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 May 2022 01:43:32 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 19 May 2022 16:43:30 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 19 May 2022 16:43:30 +0800
-Message-ID: <769fc1d52e2401b389f5611cb5d74d5e99ce9639.camel@mediatek.com>
-Subject: Re: [V1,2/2] media: media: jpegenc: set bit mask for jpegenc
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: kyrie.wu <kyrie.wu@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih
- <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
- <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
- <srv_heupstream@mediatek.com>
-Date: Thu, 19 May 2022 16:43:30 +0800
-In-Reply-To: <1652948174-7123-3-git-send-email-kyrie.wu@mediatek.com>
-References: <1652948174-7123-1-git-send-email-kyrie.wu@mediatek.com>
- <1652948174-7123-3-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nrbnJ-005xB3-7Z
+ for linux-mediatek@lists.infradead.org; Thu, 19 May 2022 08:46:07 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id gi33so54628ejc.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 19 May 2022 01:46:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=R1UJqj/pkW+UdftCSNcz+tgzAZ+j9Z8JSlJihPFE/pE=;
+ b=Kz0T+20kWI33J+8FREY+GO/jU52aA83gMmXXey3+lFJzzs4O6V55QaiqvIstUHyQp1
+ LFOpLQVAvfwww80/2wWjU8Nyrn998ft8ttoPN5yHiU1mLAAlea+LeHO6AH/hpitrWFdo
+ M7LdSSJ+y6US+7h0GY5q/D+fqR/XPO74W2AaA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=R1UJqj/pkW+UdftCSNcz+tgzAZ+j9Z8JSlJihPFE/pE=;
+ b=5y+lE0EIM5dQ/W4YmEs/fgLlYJFBQKeh9RP60D9qx2JhJezzogtRDsmwss3vyPHZLo
+ ppm6jT+0rx7g+9VDXvodaZBoPC6OHNAROvIqHMXmam3588Csxj368g2sdiPzCWC3Ttu6
+ Hp78M2YWpiiim3v7MMfVPQto1D4Klp6L1LOMCdXmnD1GrSOKk2QGtuAbjbvo7LKXLfUt
+ 2N5+J99XOEghndmPg9m4pUlIy61Fj1G5MSO6sXYQPCFiBcXaKHinEm4K3n6HusI9wgs9
+ GYOa+LoIUWcnZoo2fw438KAIz0jH/AYqbwe/ODTRbRuPb0ZlycK0IXmMxLXZrUMgIqzo
+ MWJg==
+X-Gm-Message-State: AOAM5316JBS6T+XWojEPOmdJeLoJJkkCihKYPY3WpVI6+gWXiiyRnPpS
+ QBAle5qpK5eMumgvMzDBYn5PJNAH+4Yj1AehETlksQ==
+X-Google-Smtp-Source: ABdhPJzhCok9mwoNFwX8hp+iq4r0zfazXJkBtazp/ZX0YjRO6MxlH2JwTaSCzcg8S2ZUKdpfU7r0yMDH869rIqV1Gh8=
+X-Received: by 2002:a17:906:a10e:b0:6f3:e70b:b572 with SMTP id
+ t14-20020a170906a10e00b006f3e70bb572mr3104969ejy.546.1652949963623; Thu, 19
+ May 2022 01:46:03 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220518111652.223727-7-angelogioacchino.delregno@collabora.com>
+ <20220519044153.11078-1-miles.chen@mediatek.com>
+ <7e60b63c-2bf7-a77e-fe0f-a891efa77a47@collabora.com>
+ <CAGXv+5FiteAu7in-CnmVUkDKy=ub1X6etyK1--PHPYKO3FPa=w@mail.gmail.com>
+ <3981552b-2153-1b87-f345-2b1f9be6c56f@collabora.com>
+In-Reply-To: <3981552b-2153-1b87-f345-2b1f9be6c56f@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 19 May 2022 16:45:52 +0800
+Message-ID: <CAGXv+5GwqLKvM3yReZMW92ZC3nDwdbD+_x8ROBOjppgnsgGkyw@mail.gmail.com>
+Subject: Re: [PATCH v2 6/7] clk: mediatek: Export required symbols to compile
+ clk drivers as module
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Miles Chen <miles.chen@mediatek.com>, bgolaszewski@baylibre.com, 
+ chun-jie.chen@mediatek.com, ck.hu@mediatek.com, devicetree@vger.kernel.org, 
+ fparent@baylibre.com, ikjn@chromium.org, jason-jh.lin@mediatek.com, 
+ kernel@collabora.com, konrad.dybcio@somainline.org, 
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, marijn.suijten@somainline.org, 
+ martin.botka@somainline.org, matthias.bgg@gmail.com, mturquette@baylibre.com, 
+ p.zabel@pengutronix.de, paul.bouchara@somainline.org, 
+ phone-devel@vger.kernel.org, rex-bc.chen@mediatek.com, robh+dt@kernel.org, 
+ sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com, 
+ weiyi.lu@mediatek.com, y.oudjana@protonmail.com, 
+ ~postmarketos/upstreaming@lists.sr.ht
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_014341_520897_1DA1BF87 
-X-CRM114-Status: GOOD (  16.57  )
+X-CRM114-CacheID: sfid-20220519_014605_335710_0C4EDA2D 
+X-CRM114-Status: GOOD (  28.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +95,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-05-19 at 16:16 +0800, kyrie.wu wrote:
-> From: kyrie wu <kyrie.wu@mediatek.com>
-> 
-> set bit mask for jpeg encode
-> 
-> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-> ---
->  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index bc5b0a0168ec..87685a62a5c2 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1369,6 +1369,9 @@ static int mtk_jpeg_probe(struct
-> platform_device *pdev)
->  	jpeg->vdev->device_caps = V4L2_CAP_STREAMING |
->  				  V4L2_CAP_VIDEO_M2M_MPLANE;
->  
-> +	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
-> +		dma_set_mask_and_coherent(&pdev->dev,
-> DMA_BIT_MASK(34));
-> +
->  	ret = video_register_device(jpeg->vdev, VFL_TYPE_VIDEO, -1);
->  	if (ret) {
->  		v4l2_err(&jpeg->v4l2_dev, "Failed to register video
-> device\n");
+On Thu, May 19, 2022 at 4:26 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+> Il 19/05/22 10:15, Chen-Yu Tsai ha scritto:
+> > On Thu, May 19, 2022 at 4:05 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Il 19/05/22 06:41, Miles Chen ha scritto:
+> >>>
+> >>> Hi Angelo,
+> >>>
+> >>>> In order to compile the clock drivers for various MediaTek SoCs as
+> >>>> modules, it is necessary to export a few functions from the MediaTek
+> >>>> specific clocks (and reset) libraries.
+> >>>>
+> >>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >>>> ---
+> >>>> drivers/clk/mediatek/clk-apmixed.c | 1 +
+> >>>> drivers/clk/mediatek/clk-cpumux.c  | 2 ++
+> >>>> drivers/clk/mediatek/clk-mtk.c     | 2 ++
+> >>>> drivers/clk/mediatek/reset.c       | 1 +
+> >>>> 4 files changed, 6 insertions(+)
+> >>>>
+> >>>> diff --git a/drivers/clk/mediatek/clk-apmixed.c b/drivers/clk/mediatek/clk-apmixed.c
+> >>>> index 6b0ab0a346e8..f126da693a7f 100644
+> >>>> --- a/drivers/clk/mediatek/clk-apmixed.c
+> >>>> +++ b/drivers/clk/mediatek/clk-apmixed.c
+> >>>> @@ -98,5 +98,6 @@ struct clk_hw *mtk_clk_register_ref2usb_tx(const char *name,
+> >>>>
+> >>>>       return &tx->hw;
+> >>>> }
+> >>>> +EXPORT_SYMBOL_GPL(mtk_clk_register_ref2usb_tx);
+> >>>>
+> >>>> MODULE_LICENSE("GPL");
+> >>>> diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+> >>>> index 2b5d48591738..25618eff6f2a 100644
+> >>>> --- a/drivers/clk/mediatek/clk-cpumux.c
+> >>>> +++ b/drivers/clk/mediatek/clk-cpumux.c
+> >>>> @@ -150,6 +150,7 @@ int mtk_clk_register_cpumuxes(struct device_node *node,
+> >>>>
+> >>>>       return PTR_ERR(hw);
+> >>>> }
+> >>>> +EXPORT_SYMBOL_GPL(mtk_clk_register_cpumuxes);
+> >>>>
+> >>>> void mtk_clk_unregister_cpumuxes(const struct mtk_composite *clks, int num,
+> >>>>                                struct clk_hw_onecell_data *clk_data)
+> >>>> @@ -166,5 +167,6 @@ void mtk_clk_unregister_cpumuxes(const struct mtk_composite *clks, int num,
+> >>>>               clk_data->hws[mux->id] = ERR_PTR(-ENOENT);
+> >>>>       }
+> >>>> }
+> >>>> +EXPORT_SYMBOL_GPL(mtk_clk_unregister_cpumuxes);
+> >>>>
+> >>>> MODULE_LICENSE("GPL");
+> >>>> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+> >>>> index 05a188c62119..41e60a7e8ff9 100644
+> >>>> --- a/drivers/clk/mediatek/clk-mtk.c
+> >>>> +++ b/drivers/clk/mediatek/clk-mtk.c
+> >>>> @@ -459,6 +459,7 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+> >>>>       mtk_free_clk_data(clk_data);
+> >>>>       return r;
+> >>>> }
+> >>>> +EXPORT_SYMBOL_GPL(mtk_clk_simple_probe);
+> >>>>
+> >>>> int mtk_clk_simple_remove(struct platform_device *pdev)
+> >>>> {
+> >>>> @@ -472,5 +473,6 @@ int mtk_clk_simple_remove(struct platform_device *pdev)
+> >>>>
+> >>>>       return 0;
+> >>>> }
+> >>>> +EXPORT_SYMBOL_GPL(mtk_clk_simple_remove);
+> >>>
+> >>> Thanks, I need this too. I am preparing a patch to use mtk_clk_simple_remove/mtk_clk_simple_probe
+> >>> for MT6779 clks first and maybe I can apply this to all MediaTek clk drivers.
+> >>>
+> >>> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+> >>
+> >> Hello Miles,
+> >>
+> >> thanks for telling me, because my next step would have been exactly what
+> >> you're doing, for all MediaTek clk drivers... otherwise we'd be doing
+> >> redundant work going afterwards.
+> >
+> > Should we consider using symbol namespaces (EXPORT_SYMBOL_NS)?
+> >
+>
+> I don't think we should... I don't know if any module in the common clock
+> framework is doing that, but if we want some symbol namespace separation,
+> we would want that "at least" on the entire MediaTek framework, right? :-)
 
-Hello Kyrie,
+The sunxi-ng clk driver recently started doing this. See:
 
-if you want to add this property in dts, you need to add a new property
-description to descript this.
+    http://git.kernel.org/torvalds/c/551b62b1e4cb64d3b42da0fbfdcd26a5fcd684be
 
-BRs,
-Rex
+And it's being done for all kinds of common driver libraries.
 
+I agree that it would be done for the entire MediaTek framework.
+
+> In that case, we can simply keep using EXPORT_SYMBOL_GPL() and change the
+> Makefile in this directory to add:
+>
+>         ccflags-y += -DDEFAULT_SYMBOL_NAMESPACE=COMMON_CLK_MEDIATEK
+
+Oh, I didn't know of this trick. Nice. :D
+
+I think we still need to add MODULE_IMPORT_NS() statements, right?
+
+> ...but that's surely out of scope for this specific patch series.
+>
+> What do you think?
+
+It's definitely out of scope, but nice to have, to reduce the size of the
+default symbol table, and limit the usage of the symbols the driver exports.
+
+Regards
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
