@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A519C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 14:46:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34FF1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 14:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EQ+TWSaOKdcOzuSmNf7mMGWPrEUHCOUfLMCeLYasEjI=; b=XxbY9zxBjdu2sxojEeSSpcamWC
-	LwDM37//h6GgA0Prh9x7ya5FHfXcYfi996eBspv/GTiGaSV8+GaZANrpnap0x357cUzY6rCF0uS8p
-	qE2OeuUe/NDByzcJ6nrg1Nds0B11v1PzXhH1LV8NdtcEIdETZYXtq3T+tCv9YAOUDxsxB3YgKLwFS
-	/ILeT72gPAinYrZXWAahPIW7IJGCwH18v7VbFYSI6o3v9o5a+4vtpNjzQPzW7XWiifJGR+lOk3+tJ
-	iFEtPbnYRpFKvLX/fjhfkjRajgGDqv9no5TtxImyQX/GBBOVKPBvCG/GP0v9fUxHQlQ3dhVfyg1SL
-	I3I3Zm6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sTPB435/Dyy1U+JnD/B1SBFnB+98atBPyXV6oN1votk=; b=jTjJy+xftXy0GT
+	8hiL76paRx9LnVwPeoqRLQZh2CZ68gjDmNyGZuGq7WWfNDCyh4Q+HHGkcpsFYpgHY93PJUueViUaE
+	v3hPCZCaIZJjD1NKJXa09/nBqvGbHoKh9yc2BX51BV0cHvMBbQh/MXLFDAQDYi4/DUuhHCaKYx/lT
+	4Lt2HVb6Z9Htzh3WyFAhMLzu8PETVpOl0AevSbZKXS9zc/fWYsarWy+UuNDVNpgZlH0woA9F99CAP
+	lFmUSxmpObKOE7t1IT7RhSGT1TpD09qP30nrAA0pHBfKsRWLkMI/YncM+9xBDPkI4Z4t4+xvgAzL1
+	+fvbp6lFeqPE2GYh3D1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns3t3-00CyWJ-DK; Fri, 20 May 2022 14:45:53 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ns43E-00D0lT-9N; Fri, 20 May 2022 14:56:24 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns3so-00CySi-5b; Fri, 20 May 2022 14:45:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 05FF7B82BFE;
- Fri, 20 May 2022 14:45:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE8C1C385A9;
- Fri, 20 May 2022 14:45:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1653057934;
- bh=eyy20eLaoZHHhlcdY5b3GARHaDk/Ynm0A8xek9N7alE=;
+ id 1ns42s-00D0f9-LK; Fri, 20 May 2022 14:56:07 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id AACB51F46542
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1653058557;
+ bh=jxX878QWawgfvMOXk/YfULJcGJes7LLWJjg8hH9kCTI=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hmtDN6rzpqT+fYQz7hSlNwVBz6PdgaCRI/+fJz0yhqebalgYoTqztGhfml4F5z/XW
- gs67hODZJYg7mmnma+XHmFxHpsoU24dDBPX6Ryslvk4ir075rW0zF3LS7fKUzlg8Tt
- 8XbL1UbUZTCMK/JkbAWRdsAXAhq/iC5E9b01q4tAhBjTSNBcsKg0XfeK7HXhwBOsoi
- QUI1RzLfxraasVYNWRBQxspfvrbtit1S8xkfcQ4XDe77dNw2qIPogeoEUOJfRoCYRP
- Tu/TCg7LwF7BjrwIgHVkXJAJvYsmjICk3xMhO2CtF7Mqtbj75oFSVNcXC0n0Cbfttd
- LYWcH0eTSLc/w==
-Date: Fri, 20 May 2022 15:45:29 +0100
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lgirdwood@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/4] regulator: Add driver for MT6331 PMIC regulators
-Message-ID: <YoepiTUfdhkYByo7@sirena.org.uk>
-References: <20220520133305.265310-1-angelogioacchino.delregno@collabora.com>
- <20220520133305.265310-3-angelogioacchino.delregno@collabora.com>
+ b=Qp+eGoXC12xS0US+up3AlAeSEDKDGEXAPjch3KWyCwzTClULych8zz0ibHqnTODRR
+ G4rG2kxigej4l/KJ0XIgq5nph59Dym7LEXSDLoqZ7WdA9BJL2jAdofZS+0UiB7P7GK
+ UQ8hg2zb7DWeq0g/pElSQw1ktp2ekGitloZsfJ0Xzznf7LsGa9zimN5TcwVFR/C7ib
+ TI9pOyWzqApc7fhRwNSI815uGNqXDLnXsWajfm93QhDnkksdfKGXkAQtKmGdQ5cvWg
+ w8tB+P+d2GF10vgVOHyflekvmgd9D60EqKj1xMxVE7lQjZMcr0rZwYZSJbmUicXt0W
+ T5nUb3G2ru02w==
+Date: Fri, 20 May 2022 10:55:51 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
+ chun-jie.chen@mediatek.com, wenst@chromium.org,
+ runyang.chen@mediatek.com, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v7 04/19] clk: mediatek: reset: Extract common drivers to
+ update function
+Message-ID: <20220520145551.b2sqheaizkegna3n@notapiano>
+References: <20220519125527.18544-1-rex-bc.chen@mediatek.com>
+ <20220519125527.18544-5-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20220520133305.265310-3-angelogioacchino.delregno@collabora.com>
-X-Cookie: Happy feast of the pig!
+Content-Disposition: inline
+In-Reply-To: <20220519125527.18544-5-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_074538_529205_2E729A49 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20220520_075602_949515_BB762DD3 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,97 +69,131 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3516698269099770250=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, May 19, 2022 at 08:55:12PM +0800, Rex-BC Chen wrote:
+> To make drivers more clear and readable, we extract common code
+> within assert and deassert to mtk_reset_update_set_clr() and
+> mtk_reset_update().
+> =
 
---===============3516698269099770250==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="p7DW/tPgeQFzSu9V"
-Content-Disposition: inline
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> ---
+>  drivers/clk/mediatek/reset.c | 38 +++++++++++++++++++++---------------
+>  1 file changed, 22 insertions(+), 16 deletions(-)
+> =
 
+> diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+> index 5cbbcc22a4fc..22fa9f09752c 100644
+> --- a/drivers/clk/mediatek/reset.c
+> +++ b/drivers/clk/mediatek/reset.c
+> @@ -12,24 +12,27 @@
+>  =
 
---p7DW/tPgeQFzSu9V
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+>  #include "reset.h"
+>  =
 
-On Fri, May 20, 2022 at 03:33:03PM +0200, AngeloGioacchino Del Regno wrote:
+> -static int mtk_reset_assert(struct reset_controller_dev *rcdev,
+> -			    unsigned long id)
+> +static int mtk_reset_update(struct reset_controller_dev *rcdev,
+> +			    unsigned long id, bool deassert)
 
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2022 Collabora Ltd.
-> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> + *
+I'd have called the bool 'assert', and then passed true on assert and false=
+ on
+deassert, as I think that's slightly more intuitive, but that's just person=
+al
+preference. It's fine like this as well.
 
-Please make the entire comment a C++ one so things look more
-intentional.
+Thanks,
+N=EDcolas
 
-> +static const unsigned int ldo_volt_table10[] = {
-> +	1200000, 1300000, 1500000, 1800000,
-> +	1200000, 1300000, 1500000, 1800000,
-> +	1200000, 1300000, 1500000, 1800000,
-> +	1200000, 1300000, 1500000, 1800000,
-> +};
+>  {
+>  	struct mtk_reset *data =3D container_of(rcdev, struct mtk_reset, rcdev);
+> +	unsigned int val =3D deassert ? 0 : ~0;
+>  =
 
-So the top bits of the voltate selection field just get ignored?  Might
-be easier to just write the code to not include the top bits.
-
-> +static int mt6331_get_status(struct regulator_dev *rdev)
-> +{
-> +	struct mt6331_regulator_info *info = rdev_get_drvdata(rdev);
-> +	u32 reg, en_mask, regval;
-> +	int ret;
+>  	return regmap_update_bits(data->regmap,
+>  				  data->regofs + ((id / 32) << 2),
+> -				  BIT(id % 32), ~0);
+> +				  BIT(id % 32), val);
+> +}
 > +
-> +	if (info->qi > 0) {
-> +		reg = info->desc.enable_reg;
-> +		en_mask = info->qi;
-
-If the regulator doesn't have status readback it shouldn't provide a
-get_status() operation.
-
-> +static int mt6331_ldo_set_mode(struct regulator_dev *rdev, unsigned int mode)
+> +static int mtk_reset_assert(struct reset_controller_dev *rcdev,
+> +			    unsigned long id)
 > +{
-> +	int ret, val = 0;
-> +	struct mt6331_regulator_info *info = rdev_get_drvdata(rdev);
+> +	return mtk_reset_update(rcdev, id, false);
+>  }
+>  =
+
+>  static int mtk_reset_deassert(struct reset_controller_dev *rcdev,
+>  			      unsigned long id)
+>  {
+> -	struct mtk_reset *data =3D container_of(rcdev, struct mtk_reset, rcdev);
+> -
+> -	return regmap_update_bits(data->regmap,
+> -				  data->regofs + ((id / 32) << 2),
+> -				  BIT(id % 32), 0);
+> +	return mtk_reset_update(rcdev, id, true);
+>  }
+>  =
+
+>  static int mtk_reset(struct reset_controller_dev *rcdev, unsigned long i=
+d)
+> @@ -43,24 +46,27 @@ static int mtk_reset(struct reset_controller_dev *rcd=
+ev, unsigned long id)
+>  	return mtk_reset_deassert(rcdev, id);
+>  }
+>  =
+
+> -static int mtk_reset_assert_set_clr(struct reset_controller_dev *rcdev,
+> -				    unsigned long id)
+> +static int mtk_reset_update_set_clr(struct reset_controller_dev *rcdev,
+> +				    unsigned long id, bool deassert)
+>  {
+>  	struct mtk_reset *data =3D container_of(rcdev, struct mtk_reset, rcdev);
+> +	unsigned int deassert_ofs =3D deassert ? 0x4 : 0;
+>  =
+
+>  	return regmap_write(data->regmap,
+> -			    data->regofs + ((id / 32) << 4),
+> +			    data->regofs + ((id / 32) << 4) + deassert_ofs,
+>  			    BIT(id % 32));
+>  }
+>  =
+
+> +static int mtk_reset_assert_set_clr(struct reset_controller_dev *rcdev,
+> +				    unsigned long id)
+> +{
+> +	return mtk_reset_update_set_clr(rcdev, id, false);
+> +}
 > +
-> +	if (!info->modeset_mask) {
-> +		dev_err(&rdev->dev, "regulator %s doesn't support set_mode\n",
-> +			info->desc.name);
-> +		return -EINVAL;
-> +	}
+>  static int mtk_reset_deassert_set_clr(struct reset_controller_dev *rcdev,
+>  				      unsigned long id)
+>  {
+> -	struct mtk_reset *data =3D container_of(rcdev, struct mtk_reset, rcdev);
+> -
+> -	return regmap_write(data->regmap,
+> -			    data->regofs + ((id / 32) << 4) + 0x4,
+> -			    BIT(id % 32));
+> +	return mtk_reset_update_set_clr(rcdev, id, true);
+>  }
+>  =
 
-Just don't provide the operation for these regulators then.  That'll
-mean a separate ops struct but that's fine.
+>  static int mtk_reset_set_clr(struct reset_controller_dev *rcdev,
+> -- =
 
---p7DW/tPgeQFzSu9V
-Content-Type: application/pgp-signature; name="signature.asc"
+> 2.18.0
+> =
 
------BEGIN PGP SIGNATURE-----
+> =
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmKHqYgACgkQJNaLcl1U
-h9CxpAf8Dcb0LgYJswtynhjrPmCXq5dYmagsB3EUxbEJcZXLX4uvOC2xRrQ8qv1F
-COwjJwhrHEDaeQGrX0LjxykTeI3RGn4fZGaIOgXtPrqAxETrp25ihtDuIU90LKAr
-cWrj82iP0HLYuKvPlkUh1uWlSMZ6vGh2WsJHhpNUIvZHd6swxslp3AXbS5L3hiTz
-K8Vq+Vw0TI800vnGy2PysQVb9bM5C7XUtnDOdyrYUl8PEDuJdnuLwiKNF+wZ1WpB
-R9ieqffSRUpsFsbJlWueKBcB/8UcHLJ+joI5/SYiL28Xz2fyM6ICUf6tHTARD++r
-JM7ueL0Tht/hfeIyuPT987jU5lqPJg==
-=7pHa
------END PGP SIGNATURE-----
-
---p7DW/tPgeQFzSu9V--
-
-
---===============3516698269099770250==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3516698269099770250==--
-
