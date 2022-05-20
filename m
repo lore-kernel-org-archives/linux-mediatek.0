@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC595C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 15:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1BBEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 15:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qisVAoQAmpbgxJunY+foH2sPJRUC7z7rfSRTjlCdzbQ=; b=crfdnWdgvL4eng
-	C9NDyvQRFqU0rvgxjqkwfu50gOjeV/czFJUWLE5qB5c5GNCRu4E4d+TlLuklpR+MwnGSSxxzaekuZ
-	V5ZE1PWKifWC7gW0O8FzttIzNYQBr+xKP6lcW5oRQgU0JxZyKtEO3lS36WLabf96mHXL+HhWA8heU
-	H2XB0BqHCum1QMMD2iyZ6bF2Zo0ub+xGtoq+tYgghVopUjIVO27xjjxGxHtiII7KI0OzTB2KW1u4K
-	WLILj53di8k+lbJRtecilOhiDRTmPoet9iGNJcgmD6BHvmoLXQHaMkfVyePU0k5jYdvtGgYH5xVhb
-	hi+Lqh62Y/oopMOfabEA==;
+	List-Owner; bh=QissCHLI1zzHOpH7SEP5pDR4dM58lMjUF+w9de1XaG0=; b=nBb3vy9DLWTAho
+	XCpcRFXWyWZWuu1vOcqCvgka/CdbfFCAjmZAg4QPNHqUwoUaMudn5iSn9tZmsb9RsxNHripD72ALl
+	mxocudaTIVLJHTH3ZjkRCcINR6dw993XKA5QNPoTLxcSrcj5KFGZIKZtBZJe581jMtLyQf90EBJTm
+	tUDPNi478Ukj/iISlpD8KsCqx83VYSiOZZjAgYferN0aNGYxb7or5kUlf1h482KEueDDPw0LX1R+C
+	j+2bJ85mjmtBIVMHb4e0yAXmWiMT798wQRqjJmXDs0cInwiLrpJ0KqlW/hqH29yb/GhRnMPweDwUY
+	S5Mwsf3V2bo6qsn9liFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns4Iq-00D6H7-VU; Fri, 20 May 2022 15:12:33 +0000
+	id 1ns4PH-00D88X-UU; Fri, 20 May 2022 15:19:11 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns4Ic-00D6CZ-VI; Fri, 20 May 2022 15:12:22 +0000
+ id 1ns4P7-00D863-I8; Fri, 20 May 2022 15:19:02 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id D6FFA1F46045
+ (Authenticated sender: nfraprado) with ESMTPSA id 5B1971F46586
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653059537;
- bh=dM+dtww2MjUV3EO6VLGR/tvde0qsMUnXBPbKpDoQ3xs=;
+ s=mail; t=1653059940;
+ bh=YQ31OR4ZEDVzd2CcVyEsIJ0oD9usN7dRjGllBd1TqMc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Qb5Bkom9rqi1bHDGk7du6o4c58uBM1hqdlfe6uY6M8LUyEPi0b0iRFKmGxRuFys2K
- 3Y08v7welt57mQDEjS39tiRdSCgWKjg6fyJ5/zCAqmQOX5PPdadT3M1kKC0hJsV0QM
- w+b/obwU3zIlURh1ygNWq8N5vFknX5CbNXEHXmRBXK3ukBEEjCIIw0gb5pblqxRamw
- 3pFxM4XT7j8NJcslhc7NVxqLw2NAlwQ2y7KS5L2+WUSssjEb7lSgNb7X55gY+H4bkE
- GIVPivKRFAudr52IE85Wf/gyHaAdljblNbtuUmtWbrIGe/r8KmIlo5zDWv1nlJZRmR
- 10X6f+xMkcmUQ==
-Date: Fri, 20 May 2022 11:12:12 -0400
+ b=I9k2T7C3tWF2Q3ecHJRuck5leEQwLkSwMo5DGMerg1mS8Fr1EogfPo6jonnSsp4g7
+ Xw/fpwTKwWh1esgVSCvVPbiZTYPUKvdEDFGGTZ6wvbSRWULRyV9d6KMSqc5vhK7GUZ
+ URBfBdk9fvBJiiMUTml9XZzIW+It09ZGGGev+NcCA6uVo5/B10pF6kU3JA8nIoZPNQ
+ R5aQ98ClKg4IaWUZHu8WvxcXjOWN3SPxm942NPVV1Gh6ynm+Xc1T+iytkEIiMtyT6G
+ ml7WR6OSxIvUhUcjkWkYci1HAMrMp6UHqOJRwIcj3BWXnEbBfC9UCMo1DIwqkQhF17
+ HkK472iVQYwtQ==
+Date: Fri, 20 May 2022 11:18:54 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Rex-BC Chen <rex-bc.chen@mediatek.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
@@ -47,17 +47,17 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
  devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v7 05/19] clk: mediatek: reset: Merge and revise reset
- register function
-Message-ID: <20220520151212.rrrtekst7uhnojds@notapiano>
+Subject: Re: [PATCH v7 07/19] clk: mediatek: reset: Support nonsequence base
+ offsets of reset registers
+Message-ID: <20220520151854.kkr2tezmrfniks4j@notapiano>
 References: <20220519125527.18544-1-rex-bc.chen@mediatek.com>
- <20220519125527.18544-6-rex-bc.chen@mediatek.com>
+ <20220519125527.18544-8-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220519125527.18544-6-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220519125527.18544-8-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_081219_218987_2CDF801E 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20220520_081901_772242_E8510A44 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +76,17 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Rex,
 
-On Thu, May 19, 2022 at 08:55:13PM +0800, Rex-BC Chen wrote:
-> There are two versions for clock reset register control for MediaTek
-> SoCs. The old hardware is one bit per reset control, and does not
-> have separate registers for bit set, clear and read-back operations.
-> This matches the scheme supported by the simple reset driver.
+On Thu, May 19, 2022 at 08:55:15PM +0800, Rex-BC Chen wrote:
+> The bank offsets are not serial for all reset registers.
+> For example, there are five infra reset banks for MT8192: 0x120, 0x130,
+> 0x140, 0x150 and 0x730.
 > =
 
-> However, because we need to use different data structure from
-> reset_simple_data, we can not use the operation of simple reset
-> driver.
-> For this reason, we keep the original functions and name this version
-> as "MTK_RST_SIMPLE".
-> =
-
-> In this patch:
-> - Add a version enumeration to separate different reset hardware.
-> - Merge the reset register function of simple and set_clr into one
->   function "mtk_register_reset_controller".
-> - Rename input variable "num_regs" to "rst_bank_nr" to avoid
->   confusion. This variable is used to define the quantity of reset bank.
-> - Document mtk_reset_version and mtk_register_reset_controller.
+> To support this,
+> - Change reg_ofs to rst_bank_ofs which is a pointer to base offsets of
+>   the reset register.
+> - Add a new define RST_NR_PER_BANK to define reset number for each
+>   reset bank.
 > =
 
 > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
@@ -106,52 +96,19 @@ ora.com>
 
 <snip>
 
-> index 764a8affe206..2a39eec9cff7 100644
-> --- a/drivers/clk/mediatek/reset.h
-> +++ b/drivers/clk/mediatek/reset.h
-> @@ -9,16 +9,32 @@
->  #include <linux/reset-controller.h>
->  #include <linux/types.h>
->  =
-
-> +/**
-> + * enum mtk_reset_version - Version of MediaTek clock reset controller.
-> + * @MTK_RST_SIMPLE: Use the same registers for bit set and clear.
-> + * @MTK_RST_SET_CLR: Use separate registers for bit set and clear.
-> + * @MTK_RST_MAX: Total quantity of version for MediaTek clock reset cont=
-roller.
-> + */
-> +enum mtk_reset_version {
-> +	MTK_RST_SIMPLE =3D 0,
-> +	MTK_RST_SET_CLR,
-> +	MTK_RST_MAX,
-> +};
-> +
->  struct mtk_reset {
->  	struct regmap *regmap;
->  	int regofs;
->  	struct reset_controller_dev rcdev;
+> diff --git a/drivers/clk/mediatek/clk-mt2701-g3d.c b/drivers/clk/mediatek=
+/clk-mt2701-g3d.c
+> index 9cfd589939e5..5cbc5c42204d 100644
+> --- a/drivers/clk/mediatek/clk-mt2701-g3d.c
+> +++ b/drivers/clk/mediatek/clk-mt2701-g3d.c
+> @@ -35,10 +35,12 @@ static const struct mtk_gate g3d_clks[] =3D {
+>  	GATE_G3D(CLK_G3DSYS_CORE, "g3d_core", "mfg_sel", 0),
 >  };
 >  =
 
-> +/**
-> + * mtk_register_reset_controller - Register MediaTek clock reset control=
-ler
-> + * @np: Pointer to device node.
-> + * @rst_bank_nr: Quantity of reset bank.
-> + * @reg_ofs: Base offset of the reset register.
-> + * @version: Version of MediaTek clock reset controller.
-> + */
->  void mtk_register_reset_controller(struct device_node *np,
-> -				   unsigned int num_regs, int regofs);
-> -
-> -void mtk_register_reset_controller_set_clr(struct device_node *np,
-> -					   unsigned int num_regs, int regofs);
-> +				   u32 rst_bank_nr, u16 reg_ofs, u8 version);
+> +static u16 rst_ofs[] =3D { 0xC, };
 
-Why not use 'enum mtk_reset_version' instead of a generic u8? Same thing wh=
-en
-you move it to a struct in patch 6.
+Very nitpicky, but you could have left the hex lowercase '0xc'.
 
 Thanks,
 N=EDcolas
