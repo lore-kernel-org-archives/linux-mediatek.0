@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F266C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 09:08:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 382D4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 09:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yvX5P8dnGeTN2jgK1hp10eUgXAo2z+GHiFr+9Lgy7zU=; b=G0dHCRFeVnNkbr
-	zSwo2ZP6pWiXB7mZ2LUAXjp894FCT0zyCXJPuhp1fjjTyJQ5uw3cenYKtZ3ZbdgiEeCc1IALYWH3J
-	xtVf51ZknmRTGW3EHKhNdSwxYcSeg2cCTzXVHO86WsjNWhbhiqbyzLW82uQTo2rmUhJuYU4vwNNVw
-	LT77vGBfKD3U09tEgMuq57NJ6ZCFBSSN45Kb+bb9ZfbcWxrgDY8Gr3IDBqfaL/4BTxY6n+F4Eld6V
-	SV1PQAqsP8oKLScUB2v1corlUzhIeW59rQ3ulwhDFzQEWnp1G+Fy0+rzAVCipYFwH3+MvRFQCkvbR
-	vdCbLqRdhEB3KxxLIlvA==;
+	List-Owner; bh=V0OyIr1TkIqOxnm3lHdzeiup8AP3gXXhxajVI80RL7Q=; b=b2q4jVpRjJnHya
+	Qf59msfx0rf17H92B0g/68RSTNV0gyOI8TBo8CXFs+kvhFxjvsCbp/PVLlz7tlqYs1Y4OOLLkEFhk
+	Dp1/RR5u5G3sBUGHDQLPq3ISFxWPIlCM6ZXX6+CPgwWDFg40yssc1E2JKqHYqBiYydaHUIFEkhTf3
+	WHD/zwVpHpOg5s6N6Eo+X+8of7P7kgDPiCou2tMeEb/VoQaVZdCWHPAdK4bP1bLlZ0fYbARmoXxCf
+	sVFSXAI2GWe+Ux5r+JL7UpZvcrR8oGkWKwY12Xt+N10ERAhW2SMEdrNBAvpRQtAMP08KNHvoDWXj6
+	5jM65sJhM9WSnIAWeAdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrycv-00BTVG-2U; Fri, 20 May 2022 09:08:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nrydw-00BU6o-Dp; Fri, 20 May 2022 09:09:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrych-00BTQ1-C3; Fri, 20 May 2022 09:08:40 +0000
-X-UUID: da40a988fa6a4b47a5e09ba570abed63-20220520
+ id 1nrydd-00BTvY-1c; Fri, 20 May 2022 09:09:38 +0000
+X-UUID: 805b2741a85842ab8d7642ffa4709977-20220520
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:c2ac67ff-db7b-4d5b-8435-306c181b28fe, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:eb836619-829b-4eb8-b03f-1e3467cedb2b, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:cf45efe2-edbf-4bd4-8a34-dfc5f7bb086d,
+X-CID-META: VersionHash:2a19b09, CLOUDID:324fff79-5ef6-470b-96c9-bdb8ced32786,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,IP:nil,URL:0,File:ni
- l,QS:0,BEC:nil
-X-UUID: da40a988fa6a4b47a5e09ba570abed63-20220520
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 805b2741a85842ab8d7642ffa4709977-20220520
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1382684378; Fri, 20 May 2022 02:08:37 -0700
+ with ESMTP id 594165056; Fri, 20 May 2022 02:09:33 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 May 2022 02:08:35 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 May 2022 01:59:31 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Fri, 20 May 2022 17:08:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 20 May 2022 17:08:34 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <angelogioacchino.delregno@collabora.com>
-CC: <chun-jie.chen@mediatek.com>, <jose.exposito89@gmail.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
- <mturquette@baylibre.com>, <p.zabel@pengutronix.de>,
- <rex-bc.chen@mediatek.com>, <sboyd@kernel.org>, <wenst@chromium.org>,
- <y.oudjana@protonmail.com>, <yassine.oudjana@gmail.com>,
- <~postmarketos/upstreaming@lists.sr.ht>
-Subject: Re: [PATCH 3/6] clk: mediatek: reset: Return reset data pointer on
- register
-Date: Fri, 20 May 2022 17:08:34 +0800
-Message-ID: <20220520090834.28515-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <5b5f6656-8694-dc78-ef42-7ce301849aa4@collabora.com>
-References: <5b5f6656-8694-dc78-ef42-7ce301849aa4@collabora.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 20 May 2022 16:59:30 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 20 May 2022 16:59:29 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>, Hsin-Yi Wang
+ <hsinyi@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+ <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
+ <kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [RESEND V1, 1/2] media: media: jpegenc: add mediatek,
+ mt8186-jpgenc compatible
+Date: Fri, 20 May 2022 16:59:09 +0800
+Message-ID: <20220520085910.28839-2-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220520085910.28839-1-irui.wang@mediatek.com>
+References: <20220520085910.28839-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_020839_452908_F4A5C361 
-X-CRM114-Status: GOOD (  26.37  )
+X-CRM114-CacheID: sfid-20220520_020937_099986_8EB70554 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,58 +88,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Il 19/05/22 15:47, Yassine Oudjana ha scritto:
-> > From: Yassine Oudjana <y.oudjana@protonmail.com>
-> > 
-> > Return a struct mtk_clk_rst_data * when registering a reset
-> > controller in preparation for adding an unregister helper
-> > that will take it as an argument. Make the necessary changes
-> > in drivers that do not currently discard the return value
-> > of register functions.
-> > 
-> > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> 
-> Hello Yassine,
-> 
-> Thanks for your efforts on helping to make the MediaTek clocks better - I agree
-> (and I'm not the only one..) that there's a lot of work to do on this side.
-> 
-> Though... I don't think that this is the right direction: you're right about
-> properly unregistering (in patch 4/6) the reset controllers on rmmod/failure
-> but I'm not sure that this kind of noise brings any benefit.
-> 
-> Explaining:
-> You definitely saw that there's a new register _with_dev, which uses devm ops
-> and that's going to automatically cleanup in case of removal/failure.
-> This is what we should do.
-> 
-> Hence, my proposal is to drop patch 3/6, 4/6, 5/6 and (slowly, steadily) migrate
-> all of the MediaTek clocks from CLK_OF_DECLARE() to platform drivers (which also
-> means that we can eventually change them to tristate!), so that we slowly remove
-> all users of all functions that are not "_with_dev", and that we finally remove
-> all of these then-unused functions as well.
-> 
-> Making sure that I don't get misunderstood:
->       I'm not implying that this huge migration work is on your shoulders!
-> 
-> P.S.: Chen-Yu, Miles: do you also agree? :-)
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Agreed. 3/6, 4/6, 5/6 introduce mtk_simple_clk_controller, but we just got
-ChenYu's patch merged to clk-next to switch to clk_hw_onecell_data, and
-hoplefully we can test them in v5.18 or v5.19.
-So I think we should wait for ChenYu's cleanup.
+Add mediatek,mt8186-jpgenc compatible to binding document.
 
--	struct clk_hw_onecell_data *clk_data;
-+	struct mtk_simple_clk_controller *clk_ctrl;
+MT8186 iommu support 0~16GB iova. We separate it to four banks:
+0~4G; 4G~8G; 8G~12G; 12G~16G.
 
-thanks,
-Miles
+The "dma-ranges" could be used to adjust the bank we locate.
+If we don't set this property. The default range always is 0~4G.
 
-> 
-> Cheers,
-> Angelo
-> 
-> 
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+---
+ .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml    | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+index 8bfdfdfaba59..4fd390c042a9 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+@@ -18,6 +18,7 @@ properties:
+       - enum:
+           - mediatek,mt2701-jpgenc
+           - mediatek,mt8183-jpgenc
++          - mediatek,mt8186-jpgenc
+       - const: mediatek,mtk-jpgenc
+   reg:
+     maxItems: 1
+@@ -42,6 +43,11 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
+ 
++  dma-ranges:
++    maxItems: 1
++    description: |
++      Describes the physical address space of IOMMU maps to memory.
++
+ required:
+   - compatible
+   - reg
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
