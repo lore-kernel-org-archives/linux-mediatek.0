@@ -4,97 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F410C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 10:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45AB0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:01:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gs7Abw6v+2w2OmJNHm6fqhSIhlztni3IHF71bJXp5Q4=; b=A5dmwg50Rs5/bu
-	hxSsMNM9ikKGfjiNFUsRibwMgJjDUQ48LlfkUABnvBnYwx3UPmtVOVtsERbObKxrReJUdBIsH+wuZ
-	T3svj+RtAOmNzxRfEEIGn12ap3qSgcTLUACffBVc4K1XxYgE9nrFsu48zY4JOytF6hX3dVtVu/qoj
-	cBGe4f0kj6Dni84NSTzCSC2sePbkOIHntCCujp1otVRHGY1TJ4zELrriQKHJmA6I2BEJIS8k/5P0P
-	T+jDx0nOKx5Bhy/xpM7m2ct77TLWZ0uxo4W2ftVgadRtfEMyJZfXnxhWaXWOX89F8GQRvCPO0G0BI
-	kWL6R2Jl0j5bikOTRakw==;
+	List-Owner; bh=yliAjHq6n25g9UFXTAD7LPP47zwpa23+eHky81XoY/g=; b=K93H6ihGWQCH2x
+	5FOS7hXO0GpbP7rUakK6ax81ZikvToJVTYNhBOk+Ic4rScyCALAqp7MGhRzoc5UrqpVmxfmUx90ua
+	kXXdu9XkvAU1IVrybalmoIH4Jvx9f6/GHePfAuFgcm/QJKUGxb4ey0mbdOQNvHXCUNXWlK8iEZsKw
+	SCrnLayAOUm/RvRZ1kk2v/uYQVfHk2tSMHv14bkoGnQ6E2Gxs1JaNwZBnM4suHPucfaHfd5FP3Igp
+	SL3cOgBoq0F1EcglwPTGEHY+LBYXxg61PYPSBA/sSLpx4/JlFEkHPJ/7UD+BkPE0exRt8rDUdSC17
+	Jik+VPJX5xsqYGKa2wVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrzor-00BsOi-3E; Fri, 20 May 2022 10:25:17 +0000
+	id 1ns0NR-00BwlX-0x; Fri, 20 May 2022 11:01:01 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzop-00BsMw-IA; Fri, 20 May 2022 10:25:15 +0000
+ id 1nrzIf-00Bi6D-Js; Fri, 20 May 2022 09:52:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:CC:To:From:Date:Sender:Reply-To:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=WSOvhMBIg+CnexC+Y8X+ZG7BYMkoKeetiZYSiJmE0cw=; b=EOoktUHChXRYEYWKii5MVDtiyi
- kS+dAPJ6Ekg5JNdq1mEhTUSUYvxSProQ9DM1LfwfVLYm0V6/djh5F6aCoswLJTh2BXFGKZgRFGsCM
- vRWlX3xtLjoiGT7Yrpe+aIubWp+q58YH+G6yHpvxomkBykyH/6hV46yxR1V7bq5OtknIHwuAgUDiH
- NNE5pSzb33dNJFoaD/ayO1UjFh2sA8dgFBS+mKa2Yx8gQ9g7zh87iTVPShBkYwjFqLG6/51mVHtO9
- wULbVakzYssjMprd26LEupA6EXdq9XcTSqZQ+2JNOXPlhEeF84qKwt81Rs+Gz6iFjCzU1WGQDxpbx
- KsVYRJTA==;
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+ bh=0EDYX6/jlsKjCqfkxKgPdol0lZ2Drp928yPwi4paSLQ=; b=LFW8yIOQ3TimZR59Go2F8jMnzw
+ CBTCI88UtBLrPQ8BNqLRw/rez8zefbkSJg8dCfAi5n6ZW1xNNnC4tOasKQ7eKUDyNQNCr6O3cQzqv
+ CTGpAuSN7s+d2WbnMxm0zyBZTi0/+KQR/rwPkk0/l/cPP/Cvj/MYhM/sx+FypE5DFeWClpGEHqAOg
+ Rfz6Bd7xry7bfCtnlvOcXQrj4+uO9EaLreSAmBIWCvqfibZ2FLZ6JwvxAf/Wc5x8zKbd7e1EgYoz4
+ ZFO81/y8N6sUecl26BKHv9TDy6w2X5Mh2skIrkWb82wo6/WVz/5XnwScaP8hxEy3K8hKN2YlOWCtf
+ vQqvZNZA==;
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzoh-002JLT-0u; Fri, 20 May 2022 10:25:09 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24K5UCxB026795;
- Fri, 20 May 2022 05:24:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=PODMain02222019;
- bh=WSOvhMBIg+CnexC+Y8X+ZG7BYMkoKeetiZYSiJmE0cw=;
- b=E3MDFwXsbJRiBaE4OT2ai+JBwbYdqbCNDnTM5WTrjlOXZlrikeuJ1tiL+m5bGqsZo03j
- hZNgysmRG2QNG9jfqt9CJyU1HKdQikMi9FpVUiaR7mHeBwbTedb07Mex56RR9EocUbFP
- vjQtPAGfK1wk5RM/9IUs9D/tVUYW0yOqIgk1qYoeQRhBJEla3nFqJiatKvzERFcXHqSI
- Q+/Hno0xMo5/BjF4Kn3iHQ0QMOXFJX9/9GuLbAmIRVv9J84ewdgkmDjMuNAiVSG2dbUO
- otHvJplf8L8ZVHcLm7hZgWu0kIHYmP+5RyytltwUsoK/TaAybqvdQMM8AE7gkhiA4klo dQ== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upg6de-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Fri, 20 May 2022 05:24:48 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 20 May
- 2022 11:24:47 +0100
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Fri, 20 May 2022 11:24:47 +0100
-Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 20F84458;
- Fri, 20 May 2022 10:24:47 +0000 (UTC)
-Date: Fri, 20 May 2022 10:24:47 +0000
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-CC: <broonie@kernel.org>, <lgirdwood@gmail.com>, <nicolas.ferre@microchip.com>,
- <nsaenz@kernel.org>, <shawnguo@kernel.org>, <linux-imx@nxp.com>,
- <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
- <linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-amlogic@lists.infradead.org>, <daniel@zonque.org>,
- <srinivas.kandagatla@linaro.org>, <linux-rockchip@lists.infradead.org>,
- <krzk@kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
- <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
- <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
- <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
- <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
- <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: Re: [PATCH 56/56] ASoC: simple-card-utils: Move
- snd_soc_component_is_codec to be local
-Message-ID: <20220520102447.GL38351@ediswmail.ad.cirrus.com>
-References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
- <20220519154318.2153729-57-ckeepax@opensource.cirrus.com>
- <87czg98193.wl-kuninori.morimoto.gx@renesas.com>
+ id 1nrzER-002IUK-FK; Fri, 20 May 2022 09:47:41 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out2.suse.de (Postfix) with ESMTP id 02A571F99B;
+ Fri, 20 May 2022 09:47:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+ t=1653040058; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=0EDYX6/jlsKjCqfkxKgPdol0lZ2Drp928yPwi4paSLQ=;
+ b=GsRkmokRG8jMr2vvJlveZSJsxyDD0gdysvsOlHzRO6nawaGMCacKesz3nKhzFGIrXCT7O4
+ QkJnIO5CeoLCZr01MrYO4ZxjGX/iAKWb9nnKmyZTxnA3DKcfPWofoLQAult89v3jpyKQSe
+ qP8vVQpSn5xrwiweHnkSnl9hnN8jHSE=
+Received: from suse.cz (unknown [10.100.201.202])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by relay2.suse.de (Postfix) with ESMTPS id 746C02C141;
+ Fri, 20 May 2022 09:47:37 +0000 (UTC)
+Date: Fri, 20 May 2022 11:47:37 +0200
+From: Petr Mladek <pmladek@suse.com>
+To: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, acme@kernel.org,
+ akpm@linux-foundation.org, alexander.shishkin@linux.intel.com,
+ catalin.marinas@arm.com, davem@davemloft.net, jolsa@redhat.com,
+ jthierry@redhat.com, keescook@chromium.org, kernelfans@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
+ masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
+ mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
+ nixiaoming@huawei.com, peterz@infradead.org,
+ sparclinux@vger.kernel.org, sumit.garg@linaro.org,
+ wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
+Subject: Re: [PATCH v4 6/6] arm64: Enable perf events based hard lockup
+ detector
+Message-ID: <YodjucHQ3Nab5J/f@alley>
+References: <20220427161340.8518-1-lecopzer.chen@mediatek.com>
+ <20220427161340.8518-7-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <87czg98193.wl-kuninori.morimoto.gx@renesas.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Proofpoint-GUID: EewLKkNvojqM2gQAbwrh9EQ5fKjwiv7u
-X-Proofpoint-ORIG-GUID: EewLKkNvojqM2gQAbwrh9EQ5fKjwiv7u
-X-Proofpoint-Spam-Reason: safe
+In-Reply-To: <20220427161340.8518-7-lecopzer.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_112507_643729_1CA32371 
-X-CRM114-Status: GOOD (  27.63  )
+X-CRM114-CacheID: sfid-20220520_104739_998293_7F997B02 
+X-CRM114-Status: GOOD (  18.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,68 +94,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 20, 2022 at 01:02:33AM +0000, Kuninori Morimoto wrote:
+On Thu 2022-04-28 00:13:40, Lecopzer Chen wrote:
+> With the recent feature added to enable perf events to use pseudo NMIs
+> as interrupts on platforms which support GICv3 or later, its now been
+> possible to enable hard lockup detector (or NMI watchdog) on arm64
+> platforms. So enable corresponding support.
 > 
-> Hi
+> One thing to note here is that normally lockup detector is initialized
+> just after the early initcalls but PMU on arm64 comes up much later as
+> device_initcall(). To cope with that, overriding watchdog_nmi_probe() to
+> let the watchdog framework know PMU not ready, and inform the framework
+> to re-initialize lockup detection once PMU has been initialized.
 > 
-> This is not related to this patch, but...
+> [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
 > 
-> > -static inline int snd_soc_component_is_codec(struct snd_soc_component *component)
-> > -{
-> > -	return component->driver->non_legacy_dai_naming;
-> > -}
-> (snip)
-> > +static inline int asoc_simple_component_is_codec(struct snd_soc_component *component)
-> > +{
-> > +	return component->driver->endianness;
-> > +}
-> 
-> I have added "endianness" "non_legacy_dai_naming" to component
-> when convert old "Codec style" into current "Component style".
-> All codec needs to have these 2.
-> 
-> 	69941bab7c7aeaa7bf7e84397e294c17f0b7c6df
-> 	("ASoC: snd_soc_component_driver has non_legacy_dai_naming")
-> 
-> 	273d778ef38a8861f880e9df5799029dc82bd55d
-> 	("ASoC: snd_soc_component_driver has endianness")
-> 
-> The reason why I didn't use "codec" was that try to keep
-> original style as much as possible.
-> But it seems this is good time to use "codec" for it ?
-> I think the code will be more understandable.
-> 
-> -	.endianness
-> -	.non_legacy_dai_naming
-> +	.is_codec
+> --- a/arch/arm64/kernel/perf_event.c
+> +++ b/arch/arm64/kernel/perf_event.c
+> @@ -1390,10 +1391,15 @@ static struct platform_driver armv8_pmu_driver = {
+>  
+>  static int __init armv8_pmu_driver_init(void)
+>  {
+> +	int ret;
+> +
+>  	if (acpi_disabled)
+> -		return platform_driver_register(&armv8_pmu_driver);
+> +		ret = platform_driver_register(&armv8_pmu_driver);
+>  	else
+> -		return arm_pmu_acpi_probe(armv8_pmuv3_pmu_init);
+> +		ret = arm_pmu_acpi_probe(armv8_pmuv3_pmu_init);
+> +
+> +	retry_lockup_detector_init();
 
-Yeah I considered this but it didn't really feel like the right
-way to go to me. Firstly, at this stage we almost certainly need
-to keep the endianness and non_legacy_dai_naming flags, there are
-corner cases when endianness probably shouldn't be applied to CODECs
-(as noted in my endianness series), and there are platform drivers
-that use non_legacy_dai_naming.
+Does it makes sense to call retry_lockup_detector_init() when
+the above returned an error? Should it be?
 
-We could add an is_codec flag along side the other two. But it
-means a whole extra flag and means the the core is still requiring
-a concept of what is a CODEC driver, which really we want to get
-rid of as part of componentisation.
+	if (!ret)
+		retry_lockup_detector_init();
 
-My thinking was that, whilst making this function local to the
-driver isn't perfect, simple card will be used with simple CODECs
-that are likely to exist on a standard audio bus, and thus have
-endianness and the newer graph cards don't require specific
-identification of what is a CODEC driver. So it probably works as
-a solution for now.
+> +	return ret;
+>  }
+>  device_initcall(armv8_pmu_driver_init)
 
-> 
-> Thank you for your help !!
 
-Absolutely no problem, thank you for all the work you have done
-on this over the years.
+I am not qualified to ack the arm-specific code. But otherwise
+the change looks reasonable.
 
-Thanks,
-Charles
+Best Regards,
+Petr
 
 _______________________________________________
 Linux-mediatek mailing list
