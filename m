@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1CC9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 22:22:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0472C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 22:32:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g7eSmjyRbQIZyS4UrQ8YvAFtfQfIQzP2or66fXkJ6JI=; b=cQUxKQAI8DbDVK
-	rBAXwfR/7oqc+9TX9gDsK6i4qkKB/gRU4yYfwSkvepSVLJ2Mx63OkEBvjUssoOzG07Q2YKxWE+Mip
-	+JIJtGTaRDuxb2PMRFcKBiVc2V7N+AW9YYpUizjAEhnwVzyvqItCBs2yRyGJ5gsGP/SXLMo55teLK
-	lqwm7fXpVFhYgFo+te4aIG44HSUkqn3MHCjbqj5RlEnUfCzq5eiDbvPOOD5L9+VltBjijC6f3amo4
-	1Lt7MxVeK+TSMsvTf/01uL/JtcZci8x5h4Uxpv+UIrIEadb2latoiOdwJDgc8gZpjRik6Jl/Y7iEc
-	dnND0tzxwfLygzMw79DQ==;
+	List-Owner; bh=LfTcRkT+/ny2n/w7yKl5AKSi4f6I3IeqAOmIKrwaMPU=; b=ixR/zHIGc0djcc
+	v66sLCSQ9Ord1gP4m+vE5t5pQ5R80r4G+5RahfeZiHOlzTY2//FJQvcbwyb4I9GWYrSEvwfxYKMnQ
+	m0ABKyZP2L9Agr9viwYIQ5uNTQylwHMbXsowUKSLTk3vHpuo0bsD6WnUYcoyHCTeS2KPF3q4CFnsr
+	xWMOgyur9gT9TTYg4p93CoE1rm5J0aPdFQ9uiY3oLQy/C4a5jNn/r7C6pQLRTASOjcjVKGm+jNMm6
+	A80HbJfKzDohfcC8QI90s53LBpDEldzJa92ZnijdDrtjEQtd+vCkSRXU83FDWA7mTxQNioOJkF2or
+	xICN0oOrfC9m5RQijlHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nsB0N-00EkDa-NZ; Fri, 20 May 2022 22:21:55 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nsBA9-00EmR3-9L; Fri, 20 May 2022 22:32:01 +0000
+Received: from mail-oa1-f54.google.com ([209.85.160.54])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nsB0B-00Ek9F-VP; Fri, 20 May 2022 22:21:45 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 79367B82E17;
- Fri, 20 May 2022 22:21:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EA73C385A9;
- Fri, 20 May 2022 22:21:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1653085299;
- bh=qJwASo9Th0s9B1XSYYW0kv0RCtC/qm3SNe5fIxpPzqk=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=ldtVo39yD8ihAPF/im536M8gIymZBYh4K7JvPCFy9MwHQ1MODy1tspqewrOnr7c0U
- RtKekES6aGdfhgfcnzAxm7wHIFFWWvoQ6N+jZ0WryofsBO0v8+P9v6UtMo0n8FEmCE
- jg6DlQ+aJqG67s7H1PiZxCNedhzVcANf9R5epbGCawA6p+4u4RuVPZMO6khfuLavHU
- 7RLfyiGGkQSEjz6RWf7AzEqIe7PsvkcWuK/3FHFHWuIJNOLnVvYsOYIfY54Wzfj9qc
- UBSEyU1AuabTZujmTiUbI+N0P8u1E4Ma+v8C7DlRE2mgtHq9BehLu/bNv3zdxYAcYa
- xrl6PYvCgsv5w==
+ id 1nsB9y-00EmOf-I4; Fri, 20 May 2022 22:31:51 +0000
+Received: by mail-oa1-f54.google.com with SMTP id
+ 586e51a60fabf-e93bbb54f9so11810129fac.12; 
+ Fri, 20 May 2022 15:31:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ggCgD+ecJUNc304fvLo33dXBGBOItGeeTMTlvKmJ6V8=;
+ b=q3vDQcJTyoLD8y1+R0a+tivI8N48i9V6V5cskNlkUcf16eQAQosJHsi+gQQbPDAV+4
+ +QQ00ReP4A7sGvhp6U0IkFSXFzvVO4avs5s0nQh5SBKK5b09BYcbtW+qhcpJRCwIM1/J
+ 4FjBs8nTbKxwqC1giOKGZFMbwgsfZyBGSyA+BEibRoCMOiEN4D5jRDRxtfYP2py6GJ3N
+ 4q+RdJUzWObZsONUVsPIjRDzzSUvB0Mke22ZApcD8eT3/SpX6zND/IhdQPfalzDzonZ2
+ EaOSZ5vurfX6bI8l0AkKLYffwKXAkTExyim2RB0Xf4+jJ+VFxg21z1g/mpFq/XRDX9At
+ 8K/A==
+X-Gm-Message-State: AOAM532rFKEbG7dF1V/QlavPB5JUNxQ7gR23S4s9GxjffIsN3lYVhrQo
+ 1K4H4XVKts7/vemdgLZjFQ==
+X-Google-Smtp-Source: ABdhPJxOBzEWcjzqY1jgrge+hg8TP2rhGj/XCO23lR/mV1xoV5nDbiL0wG8OasuLd+XsdY+e9N694g==
+X-Received: by 2002:a05:6870:f713:b0:d2:8adb:aaeb with SMTP id
+ ej19-20020a056870f71300b000d28adbaaebmr7118602oab.111.1653085908584; 
+ Fri, 20 May 2022 15:31:48 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ j5-20020a9d7685000000b0060afaae0e34sm690705otl.0.2022.05.20.15.31.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 May 2022 15:31:47 -0700 (PDT)
+Received: (nullmailer pid 371624 invoked by uid 1000);
+ Fri, 20 May 2022 22:31:46 -0000
+Date: Fri, 20 May 2022 17:31:46 -0500
+From: Rob Herring <robh@kernel.org>
+To: Tim Chang <jia-wei.chang@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Kevin Hilman <khilman@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@google.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, Roger Lu <roger.lu@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 3/4] dt-bindings: soc: mediatek: add mt8195 svs
+ dt-bindings
+Message-ID: <20220520223146.GA371569-robh@kernel.org>
+References: <20220519060924.13493-1-jia-wei.chang@mediatek.com>
+ <20220519060924.13493-4-jia-wei.chang@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <26c2fb0c-e58a-5864-4256-f60f948ca634@gmail.com>
-References: <20220429123133.28869-1-matthias.bgg@kernel.org>
- <20220429123133.28869-2-matthias.bgg@kernel.org>
- <YnGjScfQA9axBYBO@robh.at.kernel.org>
- <26c2fb0c-e58a-5864-4256-f60f948ca634@gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: ARM: Mediatek: Remove msdc binding of
- MT8192 clock
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: mturquette@baylibre.com, allen-kh.cheng@mediatek.com, weiyi.lu@mediatek.com,
- chun-jie.chen@mediatek.com, linux-kernel@vger.kernel.org, ikjn@chromium.org,
- miles.chen@mediatek.com, linux-mediatek@lists.infradead.org,
- krzysztof.kozlowski+dt@linaro.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- matthias.bgg@kernel.org
-Date: Fri, 20 May 2022 15:21:37 -0700
-User-Agent: alot/0.10
-Message-Id: <20220520222139.2EA73C385A9@smtp.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20220519060924.13493-4-jia-wei.chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_152144_203072_B0C8FB32 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20220520_153150_631734_F79CC89A 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,24 +90,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Matthias Brugger (2022-05-05 09:47:30)
+On Thu, 19 May 2022 14:09:23 +0800, Tim Chang wrote:
+> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > 
+> Add mt8195 svs compatible in dt-bindings.
 > 
-> On 03/05/2022 23:48, Rob Herring wrote:
-> > On Fri, Apr 29, 2022 at 02:31:31PM +0200, matthias.bgg@kernel.org wrote:
-> >> From: Matthias Brugger <matthias.bgg@gmail.com>
-> >>
-> >> The msdc gate is part of the MMC driver. Delete the binding description
-> >> of this node.
-> > 
-> > An ABI break is okay because ...?
-> > 
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Because the code controlling the clock gate was moved to the consumer. This node 
-> did never ever represent any working implementation of a peripheral. Just a 
-> lonely clock gate that wasn't used.
 
-Can you add that to the description and resend?
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
