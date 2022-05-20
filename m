@@ -4,103 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A5CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 May 2022 23:40:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CFEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 00:37:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Q5epgPWvsDEYKSks6QE4YRtjoXkbSa7ZuNz9MHb6OPU=; b=RqxVPIeQbra9jMUpTNhcgM16Ef
-	dwBw5N/z0vENG2ybLEDkPfnUYzND0lWJh/cndJs7iOVnZdRSoViawPbQpoi/oNRcAR27thBoNbELN
-	RactUhrvQdvjNms8fN33dT54WQgHssEYL32aRT3DeuRU3xfYQJc44gp2/d36wEbHvfWpn12LhMX6c
-	p13IQAEpzKV6B5RtYL0x6thiNAeCRKBUceid6RKygMAxsr1xOxkpixV18f1Xd35iIX8Y/vHXyDmD5
-	fcL1Ib9iAu4g3K3Icrb+MCt9evzgdgeI536AZsdCbZawVeow5jmZw7Jzl5i+kEOEAC+xDKQ443v/j
-	KJvEkhCA==;
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pe9VNh9DSYW2+8zw+18xsvijqkSJvDSyk8ZNRJldc4A=; b=Vc8bBjh9+oEY1f
+	NSvFEQYgWVDGoeC4h3irxr7Nz6X8OkoOPxeurkjr/L4w2Ns2Rl6nMwwj4yVaVhJRypYceF9eDyMsS
+	eUkcRdEa6Hyd0RiMeatS7Gxe88gY0FxFZ6AXDBbDvyzbCQHnYT1pECXLMKOZkXf0zhY344wo2N6s4
+	30BMbhVSkvtOnJqd4lS3XtY3nb5zdUc/LzES4hjl14wjnqZtDaY3Q8S5iG14n1fAOknNYJ3VhjfOa
+	dqLIYt5NyFA0bB4gFgFpcGxjSPuteVbyeSGSQhswS3AiCRwt+Q/nzT/9DoELNSWyHNqTySmoabX8t
+	etziYLqRZ0seAqhj0u8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrpkn-009hZ6-6R; Thu, 19 May 2022 23:40:25 +0000
-Received: from out5-smtp.messagingengine.com ([66.111.4.29])
+	id 1nrqdm-009p7U-VE; Fri, 20 May 2022 00:37:14 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrpkj-009hY1-IU; Thu, 19 May 2022 23:40:23 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 568E05C023E;
- Thu, 19 May 2022 19:40:15 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Thu, 19 May 2022 19:40:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
- cc:cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm2; t=1653003615; x=
- 1653090015; bh=iqHByxP/PP0RV5Kp27EEtrVjbBff5eU8E6iDfYSzvlo=; b=v
- WvrghW/tnB2wQQZ7H1BtAjOy1RhwPLZpgzo98sCQvJhYWwor/HzjJNsV/LVOFbsE
- YSiG6I57bor0I2nDEC6ZNocpWKkv71xzTjDYt6ZfZ8NcTOw4uLTbONYN6bKYH0PY
- ZXLXErKuqY/OVSt1aiUR4bNuR2iEWFiDRXePo8UJrjuv+NMyWc7SgXvTTXZClSjS
- xX/9GfMLAZ8ZS2t+SmXFzd5bG9/XZqH4LhunRvn1mAKETHqh9PDqXC25nNdQWczb
- Ozc+ESgOxLy8gZ1sJC+Wq7Am0HXvT/m2QJQsf+liwgR8ULL+hRLTOVRO4mvNvxjd
- KHsL6W3LPExCEUM/TygiQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1653003615; x=
- 1653090015; bh=iqHByxP/PP0RV5Kp27EEtrVjbBff5eU8E6iDfYSzvlo=; b=k
- pRbno/Gt6gUXFzSSorr0j6sxajaPEN+rwHFd8+jcnA6Sce0eyMe1DAfgUIuR5rln
- yyI3d7qfzMsS8JltiVQrFJi7K/ZoDyKheaneInXoIGCdVSulwqOTjJorhLCu2Gw7
- IoRXmbGJ3trZhAv+ZBVHrxN0gMC5BalsJ/SKUO/9f+9Ut6HKvwFdvvQ8z8xsuHUk
- fxcCGXOOf/BbfqT8Y8VSjsuEJ6GBj8XDHJJ8IRfvpiEixjiRTsOTlez4NEgoU/2g
- W4aJu6F/kQHejyjCH6arZw/g+aNM+9HBFIdRKkeEFQw/69yhZyT9EcMBkfbZV9md
- 9NuahsBfHX2ficK+iYbDQ==
-X-ME-Sender: <xms:XdWGYgUGUf75UPVgls83XPWiF6A-tBj4e3s97Kb34YKu5oXO3A13_Q>
- <xme:XdWGYkkqej7Sw873SF-tPbdbpAwSLvqaubcCTMpPfIOnD1JzRCeaEf8RmHncNciRB
- jroNjyXsoqZ4PKpkg>
-X-ME-Received: <xmr:XdWGYkbvrZwpUnOM1O4-_2tYjgJTQpjZPqXkpDEw0EpgcjUMjLmwhmRAdevmUe4wB8Y-f3nIrmriP-19jvjm7O0yy8ouh7KCEVebaavF9pBHI4yR_-4r_4bKXQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedriedvgddviecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefuvfevfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepufgrmhhu
- vghlucfjohhllhgrnhguuceoshgrmhhuvghlsehshhholhhlrghnugdrohhrgheqnecugg
- ftrfgrthhtvghrnhepffdtveekvdegkeeuueetgfetffeileevudekuefhheelvdfhiedt
- heduhfduhefhnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
- homhepshgrmhhuvghlsehshhholhhlrghnugdrohhrgh
-X-ME-Proxy: <xmx:XdWGYvUwc4jVKeqPla_0-WQCIkx0RnvqDhfHPs1ZzAd8QctkVgY8fQ>
- <xmx:XdWGYqm6J2stCQX-STAMuroIUM4y_rHHyhG_yTajyWgKhMRCq9JK7Q>
- <xmx:XdWGYkfsUHQ4XlJCEJ_vR0OyzJAV_JKQMFS6xef23lbxi7aCuM1zAg>
- <xmx:X9WGYo3IuYUdLigJsZOLgqfeufUYTAN7skI0dQ2vQGpXXTD2m7p_Gw>
-Feedback-ID: i0ad843c9:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 19 May 2022 19:40:12 -0400 (EDT)
-Subject: Re: [PATCH 22/56] ASoC: sunxi: Update to use set_fmt_new callback
-To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
-Cc: lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
- nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
- linux-imx@nxp.com, cezary.rojewski@intel.com,
- pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- daniel@zonque.org, srinivas.kandagatla@linaro.org,
- linux-rockchip@lists.infradead.org, krzk@kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-xtensa@linux-xtensa.org, peter.ujfalusi@gmail.com,
- jarkko.nikula@bitmer.com, heiko@sntech.de, jbrunet@baylibre.com,
- kernel@pengutronix.de, alsa-devel@alsa-project.org,
- patches@opensource.cirrus.com
-References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
- <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
-From: Samuel Holland <samuel@sholland.org>
-Message-ID: <948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org>
-Date: Thu, 19 May 2022 18:40:11 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ id 1nrqdb-009p58-O0; Fri, 20 May 2022 00:37:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 30B7FB8293E;
+ Fri, 20 May 2022 00:37:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5182C385AA;
+ Fri, 20 May 2022 00:37:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1653007021;
+ bh=gvgyiR4nm40hdy8JYiEAaMyY8X8o/o9DlmkPBGAkQUU=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=WudWJUfXP+mktm9kZee6vsDLSvX5C1a5PoJCzx2p/xCfk27AqCC9Ay/qZU/6sTHk3
+ Cmyje746N9XWWFpxjVbRPERDRCAhDIu0TDTbHyhjI1g1FjealQZ/170sPl0JpHokwL
+ x/S98/tyrueVqzyT5cseyROcdRZ7DSEWWypejkQazOBVQQowQfW0GliUMZwTvzxem3
+ jQF6t3xm6z6iebvvreCki2OY+PzazDYHEqXadJtkMCIWSEBe9O5Pt9sOeS/cdqvXcb
+ cgUtCHizBZr9TZR3wK92CjCV0/fstJEeeI/4mmrrFSfJFX4OcmCBkwMaa6X7BpJiDH
+ tn1wdx7RepjNg==
 MIME-Version: 1.0
-In-Reply-To: <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
-Content-Language: en-US
+In-Reply-To: <20220519071610.423372-2-wenst@chromium.org>
+References: <20220519071610.423372-1-wenst@chromium.org>
+ <20220519071610.423372-2-wenst@chromium.org>
+Subject: Re: [PATCH v3 1/5] clk: mediatek: Make mtk_clk_register_composite()
+ static
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Michael Turquette <mturquette@baylibre.com>
+Date: Thu, 19 May 2022 17:36:58 -0700
+User-Agent: alot/0.10
+Message-Id: <20220520003700.E5182C385AA@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_164021_976898_609AADB2 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20220519_173703_968548_09C67654 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,118 +80,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/19/22 10:42 AM, Charles Keepax wrote:
-> As part of updating the core to directly tell drivers if they are clock
-> provider or consumer update these CPU side drivers to use the new direct
-> callback.
+Quoting Chen-Yu Tsai (2022-05-19 00:16:06)
+> mtk_clk_register_composite() is not used anywhere outside of the file it
+> is defined.
 > 
-> Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+> Make it static.
+> 
+> Fixes: 9741b1a68035 ("clk: mediatek: Add initial common clock support for Mediatek SoCs.")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: Miles Chen <miles.chen@mediatek.com>
 > ---
->  sound/soc/sunxi/sun4i-i2s.c   | 20 ++++++++++----------
->  sound/soc/sunxi/sun8i-codec.c |  8 ++++----
->  2 files changed, 14 insertions(+), 14 deletions(-)
-> 
-> diff --git a/sound/soc/sunxi/sun4i-i2s.c b/sound/soc/sunxi/sun4i-i2s.c
-> index 7047f71629ab3..872838d3e0a94 100644
-> --- a/sound/soc/sunxi/sun4i-i2s.c
-> +++ b/sound/soc/sunxi/sun4i-i2s.c
-> @@ -702,13 +702,13 @@ static int sun4i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
->  			   SUN4I_I2S_FMT0_FMT_MASK, val);
->  
->  	/* DAI clock master masks */
-> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-> -	case SND_SOC_DAIFMT_CBS_CFS:
-> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
-> +	case SND_SOC_DAIFMT_BP_FP:
->  		/* BCLK and LRCLK master */
->  		val = SUN4I_I2S_CTRL_MODE_MASTER;
->  		break;
->  
-> -	case SND_SOC_DAIFMT_CBM_CFM:
-> +	case SND_SOC_DAIFMT_BC_FC:
->  		/* BCLK and LRCLK slave */
->  		val = SUN4I_I2S_CTRL_MODE_SLAVE;
->  		break;
-> @@ -802,13 +802,13 @@ static int sun8i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
->  			   SUN8I_I2S_TX_CHAN_OFFSET(offset));
->  
->  	/* DAI clock master masks */
-> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-> -	case SND_SOC_DAIFMT_CBS_CFS:
-> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
-> +	case SND_SOC_DAIFMT_BP_FP:
->  		/* BCLK and LRCLK master */
->  		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
->  		break;
->  
-> -	case SND_SOC_DAIFMT_CBM_CFM:
-> +	case SND_SOC_DAIFMT_BC_FC:
->  		/* BCLK and LRCLK slave */
->  		val = 0;
->  		break;
-> @@ -909,13 +909,13 @@ static int sun50i_h6_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
->  			   SUN50I_H6_I2S_TX_CHAN_SEL_OFFSET(offset));
->  
->  	/* DAI clock master masks */
-> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-> -	case SND_SOC_DAIFMT_CBS_CFS:
-> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
-> +	case SND_SOC_DAIFMT_BP_FP:
->  		/* BCLK and LRCLK master */
->  		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
->  		break;
->  
-> -	case SND_SOC_DAIFMT_CBM_CFM:
-> +	case SND_SOC_DAIFMT_BC_FC:
->  		/* BCLK and LRCLK slave */
->  		val = 0;
->  		break;
-> @@ -1081,7 +1081,7 @@ static int sun4i_i2s_set_tdm_slot(struct snd_soc_dai *dai,
->  
->  static const struct snd_soc_dai_ops sun4i_i2s_dai_ops = {
->  	.hw_params	= sun4i_i2s_hw_params,
-> -	.set_fmt	= sun4i_i2s_set_fmt,
-> +	.set_fmt_new	= sun4i_i2s_set_fmt,
->  	.set_sysclk	= sun4i_i2s_set_sysclk,
->  	.set_tdm_slot	= sun4i_i2s_set_tdm_slot,
->  	.trigger	= sun4i_i2s_trigger,
-> diff --git a/sound/soc/sunxi/sun8i-codec.c b/sound/soc/sunxi/sun8i-codec.c
-> index 0bea2162f68d9..6e9ef948d6621 100644
-> --- a/sound/soc/sunxi/sun8i-codec.c
-> +++ b/sound/soc/sunxi/sun8i-codec.c
-> @@ -286,11 +286,11 @@ static int sun8i_codec_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
->  	u32 dsp_format, format, invert, value;
->  
->  	/* clock masters */
-> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-> -	case SND_SOC_DAIFMT_CBS_CFS: /* Codec slave, DAI master */
-> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
-> +	case SND_SOC_DAIFMT_BP_FP: /* Codec slave, DAI master */
 
-This is a codec driver, and it is only ever used on the codec end of a link, so
-I would not expect it to be changed.
-
-Regards,
-Samuel
-
->  		value = 0x1;
->  		break;
-> -	case SND_SOC_DAIFMT_CBM_CFM: /* Codec Master, DAI slave */
-> +	case SND_SOC_DAIFMT_BC_FC: /* Codec Master, DAI slave */
->  		value = 0x0;
->  		break;
->  	default:
-> @@ -630,7 +630,7 @@ static int sun8i_codec_hw_free(struct snd_pcm_substream *substream,
->  }
->  
->  static const struct snd_soc_dai_ops sun8i_codec_dai_ops = {
-> -	.set_fmt	= sun8i_codec_set_fmt,
-> +	.set_fmt_new	= sun8i_codec_set_fmt,
->  	.set_tdm_slot	= sun8i_codec_set_tdm_slot,
->  	.startup	= sun8i_codec_startup,
->  	.hw_params	= sun8i_codec_hw_params,
-> 
-
+Applied to clk-next
 
 _______________________________________________
 Linux-mediatek mailing list
