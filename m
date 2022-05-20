@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F67C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99344C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:01:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6UCmKe2/5EgCQjcm3+aG4Qjvk0MOymsdPiYRWzduGqg=; b=ij+gLd7+fXY5Fe
-	VpdPclnMde1PrCDRdg+jZjxX7gc664Cr4MrWtDBB4T477Ra3torhM8dwl/2msAvw2TFXLVf730jzJ
-	jnv6PagJzozPwdV4HkvCA89qcEs9bblcmiWhC6ncqbs6SXGLUuSChZ1NBXhfP1gJ50pNH6RSivV9k
-	PgXfjM0OCoPjCts6hExqcx8wRtAeTgwd9vLcsqN5iI3QE0auruy+gmTOdcRntIaea18d2XMzI7pjM
-	C+QlHhk/vvPxfPMG/oMikpYEb04P0FwiA1L9+1XrngsrOdcDo4ezBCWYw9z59HtFOX2y3N5WzBDwo
-	7pLIQYNAlztB1KgsgwAQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7f5KuUQLbY74lGswsgfdb62MmZ/G3yTIup2xojBY1Kw=; b=U9gmAQx8O604NA
+	4yLrBDisf81Ax+A27Q6RnBhkSqfy4jsp1eLvI+ipFrH3zquklsXWqbslSSUWciIzcGU19LXg+oMoW
+	GYPzXueZ3IK3NYBm71FfGAQJmUeBV2Pj/B+PNCW26poElsSgFUBuddEGr+uyEfAKnBo5nBiA9zUs2
+	D3AoJ5NOZRc9s5J/GrvIY6kUj4fHhHnjCXV2RwGdGYPMlRmQCFRo3DY+W9z+vGASiW+pC/qorb2Rm
+	hKWAJFVsGP8ZmRWeJhKdlXdFu6sf5Hr9vfWiM4aAS55NPZTpnrP+KUlFU5/Sn2yfo9/Euut5YCVk7
+	OA68Wgqbh1xWVw+Ns1gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns0Nm-00Bwv6-KN; Fri, 20 May 2022 11:01:22 +0000
+	id 1ns0Nn-00BwvZ-HB; Fri, 20 May 2022 11:01:23 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzIy-00Bi6D-6s
- for linux-mediatek@bombadil.infradead.org; Fri, 20 May 2022 09:52:20 +0000
+ id 1nrzIz-00Bi6D-HZ
+ for linux-mediatek@bombadil.infradead.org; Fri, 20 May 2022 09:52:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=ISg/8xMPMfr1lZg9uez8+LcDvNEZDPUAQ4cjw7mzFfk=; b=cZZJWSt29aTO/QbnIprLQKHF8r
- /Ar3pmXPTUGCnVpHgHVoEuLXbnREP3R9fFqglSy8Rk6o/zNHLjgskHHLAWoXuIBsDYx4qA+exDp/I
- 7plx3CXG5Ox5EwRUy1CEUOD8p6kRd1bBjnnos6a3oHhUc8afPOmwvd+Fgb7SxiRxLx7MPNqEA9f3c
- ejbseLDAXUMMrudopultxMO6jhpbPvXgGmRce9RmlX0aiwYXCmTK2TVpB7UHf8GHjgIrp71fmr+Hi
- 3JF3HWRll98rMXFkLxDvMfH69sg63Qf+aGlCThBC5xAhZGgDd/doLhaK4w/wU2xAozpe2fM4OUjda
- Vj+2dEZw==;
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=N537kmXnIFF/B5MPYA58NfVjnsyjLkZ7UggoyVApuvw=; b=joely41bfsAyoKbVSI4gQV9yiF
+ o14nACP5brxWHpOoAqauC5GqBqaQ0Plnh3AIu2i+m9zwjotqP6Aofqx1Ri4gREVpg6Tv7MKslzzqf
+ zWWeEhVvpaSYdbRo5KRV/q3RbicSxJOzi7NI3CE8h5oVtLGmKPDbdrWRl5VEQjvbP0f0X3HMCgMqm
+ zl2yK0q9m2S+OAa1NGU3USv9jQ7/aBGukI/HH3GOITug+bUw+28HTch63L/CvAlg4vahx7SaRi75M
+ o45JhBNfgfULVS15odFYUTwVZiX5u9MyXmzK1/MfQpqjKvA6MlCfg4lKbwshYrGaYuoiRsxOHeifL
+ SFcDwSlw==;
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzAy-002IL2-Fg
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 09:44:11 +0000
-Received: by mail-pl1-x629.google.com with SMTP id c2so6943767plh.2
- for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 02:43:54 -0700 (PDT)
+ id 1nrzAx-002IL8-PU
+ for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 09:44:08 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id n8so6945273plh.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 02:43:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ISg/8xMPMfr1lZg9uez8+LcDvNEZDPUAQ4cjw7mzFfk=;
- b=GwV6FZzfJb4ectmQh1Tv2YE7JL/cAmzGrnb7G6ggB2qJ06d7/Cx4fOAm6tnhSfzCc5
- fLGymIpxWMM5AWSPgfMGH3YVPyPRoJAYsFvW94d0nDzmbO/Mmdtals0dE5ABxSVAFvXP
- f8CIF/z2jE/MOX+9Wf7LLVB3ztYV56Z8aDP6Q=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=N537kmXnIFF/B5MPYA58NfVjnsyjLkZ7UggoyVApuvw=;
+ b=KC3c/8wyL3TWVMhL+5tSUJIk8jM4TdkimQNEt+YUcV/P3D4O9WrDmYeovQCEcsR1r5
+ XWSNKSVZ0WFawguQMabuNh3CoUu73KSTIFVsEoNKpo4D3eBbpFm0c9d9ubGLXmEXW5GW
+ lQhnaIvUaUXAm8W1h0p1CQJLswQ7ZYLzUoC5w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ISg/8xMPMfr1lZg9uez8+LcDvNEZDPUAQ4cjw7mzFfk=;
- b=ysv2I7Mwm8/P3aaxKOqmw2a2uOLWmzEuQNVnmv05upmnrNYigLslCQVPvmCsWI9+TO
- Knhb0HGZpyAZ0gs5bz5rABRWPA7P2nTxx00OLkB06uXpDdaUZgj6O8ZwsadAJcZ8LklW
- Ypwahj7kXyBY8g1Q1XlyEStIANNalvYTqcjjrtPIL+IPuyV6ulxIJCvjT7b7BQN5Ibbk
- k9/Q+/Q/hRC85B9AnG6WAuDMwaWyRwNhxYsYHI2zLp7CQ/AKedvPbUxxh/QUJC1VmKzi
- iRn6iMD3duK9+mZUVKmz7oHRJTPDQzjZ1JgKL5sOqXoaFbAZjwD10i8ov/0RTSKX1qiO
- aJ4g==
-X-Gm-Message-State: AOAM533jk49SdrQOZhxeue1xwp0i2uRtG3M4qYfif2HxBVP3aCfgfw3m
- d04BJSQLwWsAwuRkfvSoHQDOxg==
-X-Google-Smtp-Source: ABdhPJy43LUtdN+xEWvgtRwLWdIsN389lpZaprg3R4KGqXqmkxm/vSRHdq0C/UG39gRhRdKmr/CD6w==
-X-Received: by 2002:a17:90b:3649:b0:1db:a201:5373 with SMTP id
- nh9-20020a17090b364900b001dba2015373mr10116081pjb.175.1653039832597; 
- Fri, 20 May 2022 02:43:52 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=N537kmXnIFF/B5MPYA58NfVjnsyjLkZ7UggoyVApuvw=;
+ b=Kf9Xg3tzmBTv8Rc4PJyImXcW/QIqm1+Xo49KK/+U2vEmLU4B3RKI4RS87I0ov97HED
+ ZZZ0xFcWxvqBpjGnyHtEookdhLTGWz0LJ186M4rX85hC/jKh36GrRJUr93CCOnjjUgPI
+ bA1v3iOWowY17J/5Lu8pS69OGA6bX4Vom3wXg4fk0wsmBGvN/3bZVlaw6U1DT+YvWMU6
+ Oa3FuZxWDwahDunHrcCwYSoYFn0kV+bzHzaD96yQGtmjt/Pm8XW8t2ItsSP4rNFfbaRu
+ uQSVkcZK8l7K5Ar+hUemn9V22l4/Rwl+9QWKpY1b39QajTaF2Zj6T29ID7ByJ3E1Dlp3
+ pRNw==
+X-Gm-Message-State: AOAM532gL//s4q70PtAmDoLCjjlam6hVMSPAAR7K4UbEBSCNzUX7kr2f
+ 4Kx9F8pVNtuAJbQ2iBFeT14OAQ==
+X-Google-Smtp-Source: ABdhPJx3Qh3cpJC+oik5Y71LHH8R8PjCzSbTcq79RW9UtXYQoOStcvHrjZaDjBr8UJjUlGm3KiM5lg==
+X-Received: by 2002:a17:90b:1e04:b0:1dc:9252:efbc with SMTP id
+ pg4-20020a17090b1e0400b001dc9252efbcmr10148535pjb.39.1653039835451; 
+ Fri, 20 May 2022 02:43:55 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:ec49:9912:894:222d])
  by smtp.gmail.com with ESMTPSA id
- 23-20020aa79217000000b0050dc76281bfsm1290597pfo.153.2022.05.20.02.43.50
+ 23-20020aa79217000000b0050dc76281bfsm1290597pfo.153.2022.05.20.02.43.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 May 2022 02:43:52 -0700 (PDT)
+ Fri, 20 May 2022 02:43:55 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Michael Turquette <mturquette@baylibre.com>,
  Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -82,14 +82,16 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh+dt@kernel.org>,
  linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 0/4] clk: mediatek: mt8183: Fix GPU/MFG clock rate changing
-Date: Fri, 20 May 2022 17:43:19 +0800
-Message-Id: <20220520094323.754971-1-wenst@chromium.org>
+Subject: [PATCH 1/4] arm64: dts: mt8183: Fix Mali GPU clock
+Date: Fri, 20 May 2022 17:43:20 +0800
+Message-Id: <20220520094323.754971-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.36.1.124.g0e6072fb45-goog
+In-Reply-To: <20220520094323.754971-1-wenst@chromium.org>
+References: <20220520094323.754971-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_104405_550100_506D7BB8 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20220520_104404_762145_99456369 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,53 +108,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+The actual clock feeding into the Mali GPU on the MT8183 is from the
+clock gate in the MFGCFG block, not CLK_TOP_MFGPLL_CK from the TOPCKGEN
+block, which itself is simply a pass-through placeholder for the MFGPLL
+in the APMIXEDSYS block.
 
-This series fixes the clock rate changing for the GPU. This work came
-about as part of adding DVFS support for the Mali GPU on MT8183, to
-support efforts in testing the SVS patches [1] on MT8183.
+Fix the hardware description with the correct clock reference.
 
-This series fixes a couple things:
+Fixes: a8168cebf1bc ("arm64: dts: mt8183: Add node for the Mali GPU")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-1. Fix the clock reference for the GPU. The device tree incorrectly
-   references the top level PLL, when in fact it is fed from the clock
-   gate in the MFGCFG block. Fixed in patch 1.
-
-2. Clock rate requests on the MFG clock gate aren't propagated up the
-   tree. Fixed in patch 2 by adding CLK_SET_RATE_PARENT.
-
-3. MFG clock needs to be temporarily muxed away from MFG PLL during PLL
-   reconfiguration, to avoid glitches. This is done using a notifier.
-   The framework is added in patch 3, and added to the driver in patch 4.
-
-This is based on my "clk: mediatek: Move to struct clk_hw provider APIs"
-series version 3 [2], which was just merged.
-
-Please have a look.
-
-The GPU DVFS stuff will be sent separately, as that part is a bit more
-contentious, and the changes span more subsystems.
-
-
-Regards
-ChenYu
-
-[1] https://lore.kernel.org/linux-mediatek/20220516004311.18358-1-roger.lu@mediatek.com/
-[2] https://lore.kernel.org/linux-mediatek/20220519071610.423372-1-wenst@chromium.org/
-
-Chen-Yu Tsai (4):
-  arm64: dts: mt8183: Fix Mali GPU clock
-  clk: mediatek: mt8183: mfgcfg: Propagate rate changes to parent
-  clk: mediatek: mux: add clk notifier functions
-  clk: mediatek: mt8183: Add clk mux notifier for MFG mux
-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi |  2 +-
- drivers/clk/mediatek/clk-mt8183-mfgcfg.c |  6 ++--
- drivers/clk/mediatek/clk-mt8183.c        | 21 ++++++++++++
- drivers/clk/mediatek/clk-mux.c           | 42 ++++++++++++++++++++++++
- drivers/clk/mediatek/clk-mux.h           | 15 +++++++++
- 5 files changed, 82 insertions(+), 4 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 01e650251928..6ced76a60aab 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1368,7 +1368,7 @@ gpu: gpu@13040000 {
+ 				<GIC_SPI 278 IRQ_TYPE_LEVEL_LOW>;
+ 			interrupt-names = "job", "mmu", "gpu";
+ 
+-			clocks = <&topckgen CLK_TOP_MFGPLL_CK>;
++			clocks = <&mfgcfg CLK_MFG_BG3D>;
+ 
+ 			power-domains =
+ 				<&spm MT8183_POWER_DOMAIN_MFG_CORE0>,
 -- 
 2.36.1.124.g0e6072fb45-goog
 
