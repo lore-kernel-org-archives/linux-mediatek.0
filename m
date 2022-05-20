@@ -4,76 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 404ECC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2A98C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:03:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hq3vmW4ufB4rVbDUozcj55BlzglPNQZnCleRbCcAY8s=; b=2HVfRudQ213KrG
-	XZggqLptizwr8wL8lN2BsmvHEZGcWbUvzqS+qaUG2RJXM+KzDFDQnak7dGf2FxBswyp/m/aohI0as
-	3iHVCxGnF8Q8wMl+zJKqB1Q/+BcI3A0oJI7coQXrr8Tgcs5720+xQIGiMeTI1FZcQ7l2jQZ0KPxEo
-	J6GSOiJeaH2surxrTuEJFQE+ilDprj6fUmRe9IyvEPZki0vmLEF2vl8q1rFNFzVzAT3s6G8ZAJkzr
-	t9qP+6BcTguQibRFlnx8+xCUKFP36MjPk79+5VBKJRsQVl84Dj7h9WsayrcrW4osQQ3gQBtxT75Qz
-	KA23IsE1hli+uhXnHKQA==;
+	List-Owner; bh=VdQdc0eBkbJhTdbE5k6VJj+aTi26uxwJ+OCz6r788co=; b=3bKnhg5wayrMtd
+	E+fjISNmwhQz3SY2DDdt1/ogFiH9k5ZWVrziKeIGGid6RIfRx2BfhICwqk9JS3aKH4WeHDpcv0G/L
+	AjgruotW0FPyBMi//Oj3GFP3PsHbFUjJGZBR6lyQrOjs2SqdPvHOk0IBiODoe6O6FNTd4xyPcjWHN
+	jfxKx1YASA1Hjx81VVicVjDAcsCXQetqLrO5n+SulUpHdR3ySTBfedA0WCgm3fHY3EYzTNGIzZbh0
+	7Bvj29eyUnZLfhk2LT1Taz6llxdi5Q0vUm8AoCJrbzqgDYl5EaPKjajnfARuF4TAHkeIHDo61eb5w
+	ezEUG+P+qPQZ6CajGxZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns0Q1-00ByID-Nl; Fri, 20 May 2022 11:03:41 +0000
+	id 1ns0Q4-00ByKB-Kv; Fri, 20 May 2022 11:03:44 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns0OB-00Bx9k-1W; Fri, 20 May 2022 11:01:47 +0000
+ id 1ns0OP-00BxEJ-F6; Fri, 20 May 2022 11:02:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=JDBwHrPbTJ4tpt77w2LqDDOJJbykW5Zyzao/0qPmwms=; b=Sz7ZNtXBGjyf2pVjOMm6Wuq8Uh
- tHPqBt53ptetctJ/cfzqlYwPHD0BHWHxROB4/EyLSkApyo90+Uwn3OlcELzWos+O+W78m+mjyLlm7
- geLivpuy3hVUXGAv2msgIU7ZC+3Iox8vqth8Y3WKEvYm9Y+xSV2K8MHESDjLQB8GYTHI/Mn1Jrcuk
- xRSpS4zFswZGo2riljh3VArfR8v6mycZAdigjCXfFGKkDu8NTPRyYc8RI1+yHEtFXD2g3A9czNzWj
- tYq6d7FqdETzM7iwVfzmmA2WZPrctbWUM9yH9/drolvEgl73guK9ZvyCEdvpoY00kt576gwsrPiZR
- UaYK337Q==;
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+ d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:CC:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=OE6raZbucX9LQfP+TUClB+u691iV9kBCVX1IaiFUTRE=; b=GBAc4E+d890dACNmy1V5iNzH7n
+ XiCNsIPrBp13FTu7pC6+wuJsXxCv1rn6JpntHwSs6wURzXy19oVinvyco81H1KmEiUtpuKQgfv7In
+ MABC0AapBKLeyHuQCLzjhR/9LsPi7aQ18mtEAM1n4WwuOQBdGAoOSSPt09RUiq4lpizu6RweK+I0E
+ 4XKx7dc9KjuAnOybVmZ6+HcB8RUT4aukfFU2RAgifDkDAKuxV8FUjsrNZrsgqOCoXmyzNJmZmv4YD
+ DRZxFKfX9KKJXDUtnF25AXcbhZiWZXxsTh8c20Z4exSyZXZvTLEAM0og+xCthbEmLNy1IUnZjgMdg
+ e6Wp0PoQ==;
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzq3-002JNl-RG; Fri, 20 May 2022 10:26:34 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 321991F46241
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653042389;
- bh=HDf0MWYOCR8r+DZXQalTBiAOnmPm5YoK5f5O0omhcKw=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=mdAaBJ/ldoxoFkOrLMDVKqWZzcLoxCeB7GE3uaRVXxTozO8Y5+Hp6X5lUigIWNr7J
- Ktc7zWDmESvVXtv2Iad6ze8Kgxdg2WAsPRxKwZN+IPNJjbKZInkZDd2mV5ih49Z67M
- XGN+NHSZr59Q4aDq3Zytr23c5wpGqtrewmWFxkoqJ2UkmvdNHFw7qnVk9yUd+BKAHc
- /oT1lON2DU9i2X04vG27EVMGu2kvfSCyrhA2Eo/Ij66jU4RO4TRI1h3sFvHlRB1j6A
- 33qLkIzS/BpuXD0hf1mRa5PSa1hrhF4FCjI51q6AQKa9lzIUyAHlQSyQ8xjT2cT/uG
- sv+GathARu3Mw==
-Message-ID: <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
-Date: Fri, 20 May 2022 12:26:25 +0200
+ id 1nrzNm-002Inw-EU; Fri, 20 May 2022 09:57:22 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24K5UCw9026795;
+ Fri, 20 May 2022 04:56:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=PODMain02222019;
+ bh=OE6raZbucX9LQfP+TUClB+u691iV9kBCVX1IaiFUTRE=;
+ b=OZjWqUg2GB9AJ9JqFusRILLr+RJoWNaMdCe9RA8DZ3zC+BqhasJKotr9r087ufLn2CfT
+ ImDGP7AQdM1dEhMs05cuGKULUV2UMVhWKhwv1lv9aIYxP58hsADDle5oYJD73+1i/5E/
+ DJ4PIeWt9ouGrMRIwpVZYIv2N+Hl3NLhwUKoEL7upZzJBlhj+H8WMUIA+0c0utHrFXib
+ 6St0njUEwySoagUHdfOhKQMIhve6czUMiuHZthPtAEsJdIL2UVkqXmo+S/ET4vQeKKCR
+ eK2EWlTLp4WJJ/WhIR7yVYO0bDmrZEz1nQCC+kwy9kogs86oLbScSXA9l5o3Xs/ta2/U LQ== 
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upg5ms-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Fri, 20 May 2022 04:56:55 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 20 May
+ 2022 10:56:54 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
+ Frontend Transport; Fri, 20 May 2022 10:56:54 +0100
+Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 42FB3476;
+ Fri, 20 May 2022 09:56:54 +0000 (UTC)
+Date: Fri, 20 May 2022 09:56:54 +0000
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: Samuel Holland <samuel@sholland.org>
+CC: <broonie@kernel.org>, <lgirdwood@gmail.com>,
+ <kuninori.morimoto.gx@renesas.com>, <nicolas.ferre@microchip.com>,
+ <nsaenz@kernel.org>, <shawnguo@kernel.org>, <linux-imx@nxp.com>,
+ <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
+ <linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-amlogic@lists.infradead.org>, <daniel@zonque.org>,
+ <srinivas.kandagatla@linaro.org>, <linux-rockchip@lists.infradead.org>,
+ <krzk@kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+ <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
+ <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
+ <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
+ <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
+ <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
+Subject: Re: [PATCH 22/56] ASoC: sunxi: Update to use set_fmt_new callback
+Message-ID: <20220520095654.GK38351@ediswmail.ad.cirrus.com>
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+ <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
+ <948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v2 4/4] clk: mediatek: Add drivers for MediaTek MT6735
- main clock drivers
-Content-Language: en-US
-To: Miles Chen <miles.chen@mediatek.com>, yassine.oudjana@gmail.com
-Cc: bgolaszewski@baylibre.com, chun-jie.chen@mediatek.com,
- devicetree@vger.kernel.org, ikjn@chromium.org,
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- mturquette@baylibre.com, p.zabel@pengutronix.de, robh+dt@kernel.org,
- sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com,
- weiyi.lu@mediatek.com, wenst@chromium.org, y.oudjana@protonmail.com,
- ~postmarketos/upstreaming@lists.sr.ht
-References: <NJC6CR.M4CF312LSXXV1@gmail.com>
- <20220520093501.28758-1-miles.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220520093501.28758-1-miles.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Proofpoint-GUID: 0o2bd6ilE3N_-d0xNvYBerQp3pGSYvGE
+X-Proofpoint-ORIG-GUID: 0o2bd6ilE3N_-d0xNvYBerQp3pGSYvGE
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_112632_329216_85B310EB 
-X-CRM114-Status: GOOD (  25.42  )
+X-CRM114-CacheID: sfid-20220520_105720_162570_4BAEA60F 
+X-CRM114-Status: GOOD (  20.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,83 +106,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/05/22 11:35, Miles Chen ha scritto:
+On Thu, May 19, 2022 at 06:40:11PM -0500, Samuel Holland wrote:
+> On 5/19/22 10:42 AM, Charles Keepax wrote:
+> > As part of updating the core to directly tell drivers if they are clock
+> > provider or consumer update these CPU side drivers to use the new direct
+> > callback.
+> > 
+> > Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+> > ---
+> >  sound/soc/sunxi/sun4i-i2s.c   | 20 ++++++++++----------
+> >  sound/soc/sunxi/sun8i-codec.c |  8 ++++----
+> >  2 files changed, 14 insertions(+), 14 deletions(-)
+> > diff --git a/sound/soc/sunxi/sun8i-codec.c b/sound/soc/sunxi/sun8i-codec.c
+> > index 0bea2162f68d9..6e9ef948d6621 100644
+> > --- a/sound/soc/sunxi/sun8i-codec.c
+> > +++ b/sound/soc/sunxi/sun8i-codec.c
+> > @@ -286,11 +286,11 @@ static int sun8i_codec_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+> >  	u32 dsp_format, format, invert, value;
+> >  
+> >  	/* clock masters */
+> > -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> > -	case SND_SOC_DAIFMT_CBS_CFS: /* Codec slave, DAI master */
+> > +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> > +	case SND_SOC_DAIFMT_BP_FP: /* Codec slave, DAI master */
 > 
->>>
->>> Thanks for submitting this patch.
->>>
->>> I compare this with drivers/clk/mediatek/clk-mt7986-apmixed.c,
->>> and other clk files are using macros to make the mtk_pll_data array
->>> more readable.
->>
->> I'd actually argue that macros make it less readable. While reading
->> other drivers I had a lot of trouble figuring out which argument
->> is which field of the struct, and had to constantly go back to the
->> macro definitions and count arguments to find it. Having it this
->> way, each value is labeled clearly with the field it's in. I think
->> the tradeoff between line count and readability here is worth it.
-> 
-> It is easier for multiple developers to work together if we have a common style.
-> 
-> How do you think?
+> This is a codec driver, and it is only ever used on the codec end of a link, so
+> I would not expect it to be changed.
 > 
 
-In my opinion, Yassine is definitely right about this one: unrolling these macros
-will make the code more readable, even though this has the side effect of making
-it bigger in the source code form (obviously, when compiled, it's going to be the
-exact same size).
+Thanks for spotting that, silly mistake on my part. Will fix for
+a rev 2.
 
-I wouldn't mind getting this clock driver in without the usage of macros, as much
-as I wouldn't mind converting all of the existing drivers to open-code everything
-instead of using macros that you have to find in various headers... this practice
-was done in multiple drivers (clock or elsewhere), so I don't think that it would
-actually be a bad idea to do it here on MediaTek too, even though I'm not aware of
-any *rule* that may want us to do that: if you check across drivers/clk/*, there's
-a big split in how drivers are made, where some are using macros (davinci, renesas,
-samsung, sprd, etc), and some are not (bcm, sunxi-ng, qcom, tegra, versatile, etc),
-so it's really "do it as you wish"...
-
-... *but:*
-
-Apart from that, I also don't think that it is a good idea to convert the other
-MTK clock drivers right now, as this would make the upstreaming of MediaTek clock
-drivers harder for some of the community in this moment... especially when we look
-at how many MTK SoCs are out there in the wild, and how many we have upstream:
-something like 10% of them, or less.
-
-I see the huge benefit of having a bigger community around MediaTek platforms as
-that's beneficial to get a way better support and solidity for all SoCs as they
-are sharing the same drivers and same framework, and expanding the support to more
-of them will only make it better with highly valuable community contributions.
-
-
-That said, Yassine, you should've understood that you have my full support on
-unrolling these macros - but it's not time to do that yet: you definitely know
-that MediaTek clock drivers are going through a big cleanup phase which is, at
-this point, unavoidable... if we are able to get the aid of scripts (cocci and
-others), that will make our life easier in this cleanup, and will also make us
-able to perform the entire cleanup with less effort and in less overall time.
-
-With that, I'm sad but I have to support Miles' decision on this one, and I also
-have to ask you to use macros in this driver.
-
-
-I am sure - and it is my wish - to see MediaTek clock drivers open-coding stuff
-instead of using macros, but that's something for the future - which will happen
-after the more important cleanups.
-
-After all, it will be just about running "gcc -E xxxx.c" and copy-pasting the
-unrolled macros to the clock drivers, which will be pretty fast and straightforward.
-
-Sorry for the wall of text, by the way.
-
-Cheers,
-Angelo
+Thanks,
+Charles
 
 _______________________________________________
 Linux-mediatek mailing list
