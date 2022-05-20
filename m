@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32BEFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 15:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A080C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 15:38:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hqk1UbyQSOBVDt7P7ztDgmoqDikcoSySTXhJJXcVF9w=; b=ujTnHGVmY/Vel3
-	1FxbhQ7YbtPqCUCzhv5KUyZ88UwMEUgPGfEpWR0J/JCzJV1N1GN7SOAZsro5l5zd/9bdCAexLadR6
-	breZCM8z4f4Hou8Mx14TGedHSm/cgyR4MpC1PFT+SC1x8wrCCBRxZsIcKT+eg2aRSsAR/2+qydnE1
-	aMof/4GA0u3AWK82Zzcef418VDGOVGIV88YKEIdinH/t9Rj5u5/c4FcKLM/07X8hjlREQln8c+fw3
-	8uQ/pCm+H7U2b7DorCTsTj1TI8PQOePt/2f+YY0XnwE+w98KXjKFABP5Xgj9kI9nJSVENh7+jZsEU
-	twGIQnXakMsc/veFqpPg==;
+	List-Owner; bh=CzAp7qEs+Xui8/vauOUe0sWAdt1w6NDpYgKEpCn3sfQ=; b=YEJtGvrtMCWgXL
+	WU8LRKAw921a9D8H0n0MhzDOe0Hpzjm7LnM9BhCZulduHrLv8h5Z2DOI9SFTHLaq1ENv3hJyJSeFs
+	VdpuTaelkJh7T8EEF02DAwvQ/Dk0wvaltn1RLj83CLutbEVhx8HrtdX7tHY2LAEFg8POIePj+J4Gz
+	1sXG+W9poP0LzF41Rhbzn8gz7qCf9ndNJInyOs8L6cK3AF+ifoZ6Mzfolpndquu+Ht3b3atkl67GB
+	csEegfO0Fl0BPvqzLpyoSZYjbOo2rRmZQy1JjBq7hrjIjKZMWaFV+6J7zxtq/BjjaOQv7PwuAAr89
+	zu7yUhn9RfbfEk7eeMfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns4b3-00DDtA-P4; Fri, 20 May 2022 15:31:21 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ns4i2-00DGqI-O1; Fri, 20 May 2022 15:38:34 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns4aP-00DDaU-PP; Fri, 20 May 2022 15:30:43 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 39C971F465BE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653060640;
- bh=dmXpaV9RK7EYK65SYc1PAFlcJQ/aHD8qMN7i1zER+tw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VbyuiG1v+Mr9AKQMrqb8TVYlX4tVx7W+7mp5NVMkcvS7/CV2JBCyyMIhembjTUTyn
- +fgiKAhdfvgKszDd68j3idCylD1QNocFstG5dNF6NTIqAtyrQN4e/MQw54XJp9ZbWK
- LcyvU0i9eK7N664xdkRKg+W2NewfLLjDRwszIDtO7w1ABcHtRQM/Ko91NtJAxNeGXL
- FPztcYtRiMJrq7cK+fumdCIx84uxWK7f4f/ofJpvf6ODDOK8csLOIZubgIf9Dugeio
- f1rJfNYAZGff3BTfJT+DK4ApT76g9CObBvliJB/fpmhRZpKcyVau9C0ZIXQ4unJhDJ
- MA2b3jVHh+BpQ==
-Date: Fri, 20 May 2022 11:30:34 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
- chun-jie.chen@mediatek.com, wenst@chromium.org,
- runyang.chen@mediatek.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v7 16/19] arm64: dts: mediatek: Add infra #reset-cells
- property for MT8195
-Message-ID: <20220520153034.v4dvh4bn2pon6nnr@notapiano>
-References: <20220519125527.18544-1-rex-bc.chen@mediatek.com>
- <20220519125527.18544-17-rex-bc.chen@mediatek.com>
+ id 1ns4hy-00DGne-5G
+ for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 15:38:33 +0000
+Received: by mail-wm1-x329.google.com with SMTP id k126so4721128wme.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 08:38:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=KlTBSZCWETh0qqX3A/oaLoFw8iSftzDLWzA01akJKxg=;
+ b=YKQx/qpV28LqgncJMSUr4z1xp9nkwl2mmdiicFVWyHjq92MnczTC/9mXrmsn93wyCy
+ wFCR0QsE+x7Esb45znQTf84kFvBGBHoN0ilIJYwu/2trDcd7udMjYtAJDrA4YX/smL+F
+ rBRJ3v2mnr+4wMuXjedjiXUKGWacQuP/F+H4met3+hNYDdLaKudMdXAFuPqGTli7O0rJ
+ 8+NsmNyH7PI4U/QVjRUxcZ80FxF+A7BXpAmyA6cwmw6+LRg+UcGyEQfyAN+0yzos67Ib
+ DpPB333O6TzICix4LxHyO3zc8/Di6Qqpqfc4DjvfdwI0L1GZIl60I9fgHUkrw4ctsbtx
+ aNeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=KlTBSZCWETh0qqX3A/oaLoFw8iSftzDLWzA01akJKxg=;
+ b=vjV9f1gnjrxH7e6QRD1TpAJsFVBH+STJUgouzb7SEdSx3Lx0izZNBNOxzaXhubRV5D
+ VEeflavlrGhmliVglBhGXfPIbRnogs/OGkLOpog6Al8+IG5hO5F+2MtkLZe0g04xkKHJ
+ DMHhYo6ZwLHhlUQfZafrNsjjvnxS2rOHsdobIv8ObDkHHgaFIF30tsXwjG74gH7Vett6
+ ssnaFwVyEgg8RiGkQjFdwldPcBrwips62D8NJ+yb4TpPOSSW7AT6ffATstQ9neKoTB/Q
+ CIsHWgHLMECBgiJJhze0pFJVBJZYt7mFMw9P218Bn4x+a4zNEQt3g/tf76ObPv/Xjs82
+ btbQ==
+X-Gm-Message-State: AOAM5319EGDKd8dC95ukZ3mHIe0ahdodTAoT0SOqR+IV8Fh7DhqXLsT0
+ orc3wTCkbsgN3QVHN+q1yYH9Jw==
+X-Google-Smtp-Source: ABdhPJwvNeH+3EcmO9Gjw9QylbVZH6UgN/87pGUvZeHn8yPRnsZtjsWDiANEQFEqqO5/56LsMdfETw==
+X-Received: by 2002:a7b:c20d:0:b0:397:335e:dc7b with SMTP id
+ x13-20020a7bc20d000000b00397335edc7bmr6556391wmi.93.1653061106496; 
+ Fri, 20 May 2022 08:38:26 -0700 (PDT)
+Received: from localhost ([2a01:cb19:85e6:1900:41e3:1219:c56c:30b8])
+ by smtp.gmail.com with ESMTPSA id
+ o4-20020a05600c338400b00394708a3d7dsm2266641wmp.15.2022.05.20.08.38.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 May 2022 08:38:25 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dmitry.torokhov@gmail.com
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/5] Input: mtk-pmic-keys - Add kerneldoc to driver
+ structures
+In-Reply-To: <20220520125132.229191-2-angelogioacchino.delregno@collabora.com>
+References: <20220520125132.229191-1-angelogioacchino.delregno@collabora.com>
+ <20220520125132.229191-2-angelogioacchino.delregno@collabora.com>
+Date: Fri, 20 May 2022 17:38:25 +0200
+Message-ID: <877d6gkydq.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220519125527.18544-17-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_083042_007764_810393D9 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20220520_083830_456988_D34A947C 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,81 +87,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rex,
+On ven., mai 20, 2022 at 14:51, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
 
-On Thu, May 19, 2022 at 08:55:24PM +0800, Rex-BC Chen wrote:
-> We will use mediatek clock reset as infracfg_ao reset instead of
-> ti-syscon. To support this, remove property of ti reset and add
-> property of #reset-cells for mediatek clock reset.
-> =
+> To enhance human readability, add kerneldoc to all driver structs.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 13 +------------
->  1 file changed, 1 insertion(+), 12 deletions(-)
-> =
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8195.dtsi
-> index b57e620c2c72..8e5ac11b19f1 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -10,7 +10,6 @@
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
-> -#include <dt-bindings/reset/ti-syscon.h>
->  =
-
->  / {
->  	compatible =3D "mediatek,mt8195";
-> @@ -295,17 +294,7 @@
->  			compatible =3D "mediatek,mt8195-infracfg_ao", "syscon", "simple-mfd";
-
-I believe the 'simple-mfd' compatible was added only to make the
-reset-controller subnode probe (at least this was the case for mt8192), so =
-it
-might make sense to drop it here as well.
-
-Thanks,
-N=EDcolas
-
->  			reg =3D <0 0x10001000 0 0x1000>;
->  			#clock-cells =3D <1>;
-> -
-> -			infracfg_rst: reset-controller {
-> -				compatible =3D "ti,syscon-reset";
-> -				#reset-cells =3D <1>;
-> -				ti,reset-bits =3D <
-> -					0x140 18 0x144 18 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
-pcie */
-> -					0x120 0  0x124 0  0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
-thermal */
-> -					0x730 10 0x734 10 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
-thermal */
-> -					0x150 5  0x154 5  0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
-svs gpu */
-> -				>;
-> -			};
-> +			#reset-cells =3D <1>;
->  		};
->  =
-
->  		pericfg: syscon@10003000 {
-> -- =
-
-> 2.18.0
-> =
-
-> =
-
+>  drivers/input/keyboard/mtk-pmic-keys.c | 30 +++++++++++++++++++++++++-
+>  1 file changed, 29 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+> index c31ab4368388..8e4fa7cd16e6 100644
+> --- a/drivers/input/keyboard/mtk-pmic-keys.c
+> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
+> @@ -34,6 +34,13 @@
+>  #define MTK_PMIC_HOMEKEY_INDEX	1
+>  #define MTK_PMIC_MAX_KEY_COUNT	2
+>  
+> +/**
+> + * struct mtk_pmic_keys_regs - PMIC keys per-key registers
+> + * @deb_reg:             Debounced key status register
+> + * @deb_mask:            Bitmask of this key in status register
+> + * @intsel_reg:          Interrupt selector register
+> + * @intsel_mask:         Bitmask of this key in interrupt selector
+> + */
+>  struct mtk_pmic_keys_regs {
+>  	u32 deb_reg;
+>  	u32 deb_mask;
+> @@ -50,6 +57,11 @@ struct mtk_pmic_keys_regs {
+>  	.intsel_mask		= _intsel_mask,		\
+>  }
+>  
+> +/**
+> + * struct mtk_pmic_regs - PMIC Keys registers
+> + * @keys_regs:           Specific key registers
+> + * @pmic_rst_reg:        PMIC Keys reset register
+> + */
+>  struct mtk_pmic_regs {
+>  	const struct mtk_pmic_keys_regs keys_regs[MTK_PMIC_MAX_KEY_COUNT];
+>  	u32 pmic_rst_reg;
+> @@ -85,15 +97,31 @@ static const struct mtk_pmic_regs mt6358_regs = {
+>  	.pmic_rst_reg = MT6358_TOP_RST_MISC,
+>  };
+>  
+> +/**
+> + * struct mtk_pmic_keys_info - PMIC Keys per-key params
+> + * @keys:                Pointer to main driver structure
+> + * @regs:                Register offsets/masks for this key
+> + * @keycode:             Key code for this key
+> + * @irq:                 Keypress or press/release interrupt
+> + * @irq_r:               Key release interrupt (optional)
+> + * @wakeup:              Indicates whether to use this key as a wakeup source
+> + */
+>  struct mtk_pmic_keys_info {
+>  	struct mtk_pmic_keys *keys;
+>  	const struct mtk_pmic_keys_regs *regs;
+>  	unsigned int keycode;
+>  	int irq;
+> -	int irq_r; /* optional: release irq if different */
+> +	int irq_r;
+>  	bool wakeup:1;
+>  };
+>  
+> +/**
+> + * struct mtk_pmic_keys - Main driver structure
+> + * @input_dev:           Input device pointer
+> + * @dev:                 Device pointer
+> + * @regmap:              Regmap handle
+> + * @keys:                Per-key parameters
+> + */
+>  struct mtk_pmic_keys {
+>  	struct input_dev *input_dev;
+>  	struct device *dev;
+> -- 
+> 2.35.1
 
 _______________________________________________
 Linux-mediatek mailing list
