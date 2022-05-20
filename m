@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28781C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 03:18:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 845E8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 04:50:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r6yUDwSS5qKghBV/6nBeVG79DgvhaFwwNqENOTvKHd0=; b=fcGb6Bl+QqiNbT
-	rxGvPju7/G5QSdRChD+qBDbP3qVGTvcmlOa8X2cq59q0zeyse9sw38d7wLQn+8twHn3HKS+ki0KFr
-	RkGmQIvqWiJd0Wm/Syym8Z+fdM0L939ODx1SenVqAhOhqIKyYMXAsAVYbESGHP5ioJVpMNEOjTe1K
-	D6htbLyG0TVbRlYosdXHC8l97t6cMJ2k95KcLv5lGzjTdnwoIgVugHeYU+Ry08OXtH25E4WHNLkmL
-	xGsSfEfiDzDehTLrcS1c7/J8aX/sPgtQGTNXgwrX8ZY1WbmBIDfZZDKG2rg+7X/r53EjWFyIgOln5
-	2BGQ/OIIT9ETB1U1viLQ==;
+	List-Owner; bh=nMw+UMSQ4TE5upCLwYVM8e4uxVIPBxcgxH/5ZJ5W6zo=; b=1Gqnkg5HnBO1FL
+	bx/6m7eoOegaMYVUduQ5U0G5JRk9UOw+PXibtCTZ2T1evxrC851R1Hp3IqTsJMzqcYoBRM0WvX1Ra
+	SeofsQMu+eMIZiD6bDH/8B2tXw9hY6qgefN+F4iiN1EwRjfRAyCT9D5isHUzEhqL0VvaIWFQlNDKS
+	QSPs5aHz3LWNX3FBpN/Ux3tF3vTT5Jfi+fVwiyA0uoh/RjXf78tubhw6YEP9xyJgBgJ19I1Dx/cRm
+	t+bkWJ1TF/vzje3xu1lWpOew+EpyHGQfNvdCqqmNlSok25ptlplBKhOZ7odb5qoz4iz7L+hjgwapW
+	rNlpWuRhZpiYfhnRGeTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrt9L-00AG3v-RP; Fri, 20 May 2022 03:17:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nruaS-00AUs7-6g; Fri, 20 May 2022 04:50:04 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrt99-00AFxO-1B; Fri, 20 May 2022 03:17:48 +0000
-X-UUID: 4d8b63ecf3c8485ea2bf29ca46ac73d6-20220519
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:1fdb63a5-b9b9-478e-88d3-c70861919331, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:14,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
- ION:release,TS:14
-X-CID-META: VersionHash:2a19b09, CLOUDID:b4dee1e2-edbf-4bd4-8a34-dfc5f7bb086d,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,IP:nil,URL:0,File:nil
- ,QS:0,BEC:nil
-X-UUID: 4d8b63ecf3c8485ea2bf29ca46ac73d6-20220519
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1692161880; Thu, 19 May 2022 20:17:40 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 May 2022 20:17:39 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 May 2022 11:17:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 20 May 2022 11:17:37 +0800
-Message-ID: <319484715f582c210c275ef23d020e802579c738.camel@mediatek.com>
-Subject: Re: [PATCH v7,3/4] drm/mediatek: keep dsi as LP00 before dcs cmds
- transfer
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
- <p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
- <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <jitao.shi@mediatek.com>, "# 5 . 10 . x : b255d51e3967 : sched : Modify dsi
- funcs to atomic	  operations" <stable@vger.kernel.org>
-Date: Fri, 20 May 2022 11:17:36 +0800
-In-Reply-To: <1653012007-11854-4-git-send-email-xinlei.lee@mediatek.com>
-References: <1653012007-11854-1-git-send-email-xinlei.lee@mediatek.com>
- <1653012007-11854-4-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nruaG-00AUn4-Ho
+ for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 04:49:53 +0000
+Received: by mail-ej1-x634.google.com with SMTP id n10so13478422ejk.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 19 May 2022 21:49:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=G+rF6dhHbqvrEHl1JWCO7qzVBXB368ohsf4MuiTQiGc=;
+ b=ZOuuxSvg8cjtrSjVsHC3HrcS4loCp7wFy+f6Np3AgYS0CzySnmkUv+4mYG9zHnv8ne
+ 1vAVNQiWeEr2Yn9HphkCERYB38suK9P+DcVnterVzxpYuv4Mq+IVxpVVS1J/MIuFojpQ
+ /y4nqyfZ1QbwjMIy5PtGCH35SRYTPqk9OI9B4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=G+rF6dhHbqvrEHl1JWCO7qzVBXB368ohsf4MuiTQiGc=;
+ b=H/DJLZQROSOBVeK5HTmxEHdv4LDXLuE68rzfR+PaSMSi+YSy2SG9pygbMhWunfZs/l
+ dgG32ULe97v/86jOWwSJqpaXihfq3XVRcswf2qZX/tylFj4/n5PThHU4431s3+t53kt0
+ 8aiwWqednH50+LLUfjDSDQcQqHvF9q3oF/f92yUcC5EUF2rSgHn5dzei8ipP+NRh01M7
+ Uj2tyWrKQZgsNu1repT8E1gcFzCKXctExLENYgV2u9+D3TYSfNWx900jTh7zYLmAQ3jJ
+ GWOTFuMUpdQWA141ct+dI2ninl0v/QAqyfdl4Cw83VFUrkz5nrLxk4d11rmHL012Qxu/
+ XJwQ==
+X-Gm-Message-State: AOAM531irfrU9W38tju0lGW/3MeZzvOnek5nWJ0kNNimoVTZdU0+NBBi
+ sPGp+UuWHtidCjPL6lZCEpGasGjtSM2Ba60GE2+85Q==
+X-Google-Smtp-Source: ABdhPJzGKNfnnGJBNEgXcSGNHSdo0I8dXA7F0rfAVqQ9CybvOQZe8592uBcZxReyMAUCaispAKzhJxf4iQLyBJlbE0s=
+X-Received: by 2002:a17:906:c142:b0:6da:9781:ae5d with SMTP id
+ dp2-20020a170906c14200b006da9781ae5dmr6803613ejc.73.1653022189315; Thu, 19
+ May 2022 21:49:49 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220519134728.456643-1-y.oudjana@protonmail.com>
+ <20220519134728.456643-3-y.oudjana@protonmail.com>
+In-Reply-To: <20220519134728.456643-3-y.oudjana@protonmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 20 May 2022 12:49:38 +0800
+Message-ID: <CAGXv+5GnjY1DOWHx-B4PZqNi5tnWOgYQ_TCk6YzhtEnPQnVVnA@mail.gmail.com>
+Subject: Re: [PATCH 2/6] clk: mediatek: Use mtk_clk_register_gates_with_dev in
+ simple probe
+To: Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Yassine Oudjana <y.oudjana@protonmail.com>,
+ Miles Chen <miles.chen@mediatek.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ =?UTF-8?B?Sm9zw6kgRXhww7NzaXRv?= <jose.exposito89@gmail.com>, 
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, 
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_201747_112935_7FFD4BBA 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20220519_214952_682012_841BAE58 
+X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,41 +92,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-05-20 at 10:00 +0800, xinlei.lee@mediatek.com wrote:
-> From: Jitao Shi <jitao.shi@mediatek.com>
-> 
-> To comply with the panel sequence, hold the mipi signal to LP00
-> before the dcs cmds transmission,
-> and pull the mipi signal high from LP00 to LP11 until the start of
-> the dcs cmds transmission.
-> The normal panel timing is :
-> (1) pp1800 DC pull up
-> (2) avdd & avee AC pull high
-> (3) lcm_reset pull high -> pull low -> pull high
-> (4) Pull MIPI signal high (LP11) -> initial code -> send video
-> data(HS mode)
-> The power-off sequence is reversed.
-> If dsi is not in cmd mode, then dsi will pull the mipi signal high in
-> the mtk_output_dsi_enable function.
-> The delay in lane_ready func is the reaction time of dsi_rx after
-> pulling up the mipi signal.
-> 
-> Fixes: 2dd8075d2185 ("drm/mediatek: mtk_dsi: Use the drm_panel_bridge
-> API")
-> 
-> Cc: <stable@vger.kernel.org> # 5.10.x: b255d51e3967: sched: Modify
-> dsi funcs to atomic operations
-> Cc: <stable@vger.kernel.org> # 5.10.x: 72c69c977502: sched: Separate
-> poweron/poweroff from enable/disable and define new funcs
-> Cc: <stable@vger.kernel.org> # 5.10.x
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
+On Thu, May 19, 2022 at 9:49 PM Yassine Oudjana
+<yassine.oudjana@gmail.com> wrote:
+>
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
+>
+> Register gates with dev in mtk_clk_simple_probe.
+>
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
 _______________________________________________
 Linux-mediatek mailing list
