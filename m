@@ -4,77 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8964C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 09:02:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 795C1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 09:04:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DbNzE6S16pm4OYvkc5oVwcgIxIJqhJ2Qi5eYrHX/AWw=; b=V1x0UmoViNxxpa
-	GCW+iaBqFgWE0AK5SfJgVOEKgp4SRisQ11+LblM4SlYDxwNfD/1wUY9RYblZaW2PVNd/mi/T/vL2Q
-	1lsxrTbz6zDIPqp0n+E2dmrn4LP4iawGVGt/1y6cOmCwJPIGESUvN9KMBSj/dP+v02DZB27me9bDw
-	dk1I6VaIRNnmY6lSWXEMvTjwDJzMZpOKDBclltuxd6yFVNRhooyAyJHNIdFV/I5jXh9NSZyH6Ynhm
-	U4Z8bE4V8qDYJshge8hWLb4iIcPNQKxZsf8hlQMp/Li3m0zbyTHASc2P2B2DIBCZEWwl3boHB9LY6
-	7L3aaWCrTfNaBDPbfqgA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zwd2sB3bmnEj1l8viwZm/54zNJyahA9T2E+s3g22WWM=; b=zJT3gAdOASRXiJ
+	Owt1M03GfZNJ12GtwBDZ76+FD9Mlx3x4qRRx89/HjRnkGrsJPJOGs5qWCpqGTSJ1TiVsievtc717x
+	+6NoSoRR7vKRgzFelwJmhhJwr6UgGgCCpAjYAhktkl0oug5x4exkl9BFL81e37An9uCJQQBK7KmAl
+	BEWda8rISJISOOdc6gdiJRdOXIeDW2bx/GVx1lltXqKgkjOstvu7GESm0pCeONAws2/aCqURD3BRI
+	aYSXpfd+lbTolPmJ24vxZi1KBwxXlL63+9GvPAtrB0vhWXQEDhY605RKfJBusOcDbB9QhmChIAqkF
+	wAf2B3anbNHXPM492bIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nryX5-00BRDM-Te; Fri, 20 May 2022 09:02:51 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1nryYJ-00BRXJ-Lb; Fri, 20 May 2022 09:04:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nryWr-00BR85-I9
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 09:02:38 +0000
-Received: by mail-ej1-x631.google.com with SMTP id kq17so14417359ejb.4
- for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 02:02:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QKmUJF1anHWjOfPQl6wU+ROhTyxsa1Rv/nGtZdce0GY=;
- b=YUHoJjWZPLdgkjzdP8yFhlkh/fh/W2URfrIKZyDrXfA1Bbwfb3Vkeydu7AHkve/yZM
- K2TPKdjupVnpwoirGeGJtiabsY6Jrq3mcqM3sngTxRG62LujWuPRdYQACiNgcg6YuTK0
- eZ29ANkx/HQ/SyIt0dGah38NRE5SQbWbaD6Wg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QKmUJF1anHWjOfPQl6wU+ROhTyxsa1Rv/nGtZdce0GY=;
- b=znw4naxk49scTmhcrq7YeQ5tTwsausuHCYmpUkhrUjud8drFfR0HWoRVvKDlW3ru79
- mcGCI3ePEzgkW+gdsnK/umFO/qWWZvjbj25Ec8g4XAzVUEzfda15Ffs8dVkrRs0DGZI1
- fkaILwDUxt8egbfQ8Cc4iRwOvZnWYDoAwb5m4W8MuEg27WnduX7PBpBIcw+GzCfmLgwk
- QkQqKyJMiua1TkaCvdP5qeGA0QuHTQSIsIodNu5a0k8yru1Olk/RWDLnojFaijD3kIxX
- apNPKzQgWQ+kqy2mYFJ4yzd7BFGoVzPRLuKkHuTVbu2ZEUY84HRrGz703uDQqukbmZ/S
- 5RDQ==
-X-Gm-Message-State: AOAM530xW4RiEe7xyqjYHm0jcbn2VmHwBV/Ag5xjMbtS/EhGff4J1/8a
- sI2RDMZa4+7b3OrPrfLFjzXa4XoLNIGNJOrs44wjUw==
-X-Google-Smtp-Source: ABdhPJy95aZ+LA7wg0UbIA4EUwveKTOJRq5Oon3TiS6zl/rD/L/kL0uHtmwU2QuvyiPu4lRoZ8ho7gdJeThP+nOnQz8=
-X-Received: by 2002:a17:906:a10e:b0:6f3:e70b:b572 with SMTP id
- t14-20020a170906a10e00b006f3e70bb572mr7549904ejy.546.1653037353979; Fri, 20
- May 2022 02:02:33 -0700 (PDT)
+ id 1nryYH-00BRVR-Az; Fri, 20 May 2022 09:04:06 +0000
+X-UUID: eb8f39d033e8483eb151218f5542a03b-20220520
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:6b62b358-9d4c-49dc-bacf-b553a1bf4d33, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:8613efe2-edbf-4bd4-8a34-dfc5f7bb086d,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: eb8f39d033e8483eb151218f5542a03b-20220520
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <irui.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 174777451; Fri, 20 May 2022 02:03:59 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 May 2022 01:59:29 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 May 2022 16:59:27 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 20 May 2022 16:59:26 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>, Hsin-Yi Wang
+ <hsinyi@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+ <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
+ <kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [RESEND V1,0/2] Enable hardware jpeg encoder for MT8186
+Date: Fri, 20 May 2022 16:59:08 +0800
+Message-ID: <20220520085910.28839-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20220519134728.456643-1-y.oudjana@protonmail.com>
- <20220519134728.456643-4-y.oudjana@protonmail.com>
- <5b5f6656-8694-dc78-ef42-7ce301849aa4@collabora.com>
-In-Reply-To: <5b5f6656-8694-dc78-ef42-7ce301849aa4@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 20 May 2022 17:02:22 +0800
-Message-ID: <CAGXv+5HDA1QACKrzgWFFboCtK1pz7UeaE7XK4o_tMofy68EyVQ@mail.gmail.com>
-Subject: Re: [PATCH 3/6] clk: mediatek: reset: Return reset data pointer on
- register
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yassine Oudjana <yassine.oudjana@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- Yassine Oudjana <y.oudjana@protonmail.com>, 
- Miles Chen <miles.chen@mediatek.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, 
- =?UTF-8?B?Sm9zw6kgRXhww7NzaXRv?= <jose.exposito89@gmail.com>, 
- Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, 
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_020237_631545_B0FB7B09 
-X-CRM114-Status: GOOD (  29.46  )
+X-CRM114-CacheID: sfid-20220520_020405_384286_6514E6BD 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,73 +84,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 20, 2022 at 4:42 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 19/05/22 15:47, Yassine Oudjana ha scritto:
-> > From: Yassine Oudjana <y.oudjana@protonmail.com>
-> >
-> > Return a struct mtk_clk_rst_data * when registering a reset
-> > controller in preparation for adding an unregister helper
-> > that will take it as an argument. Make the necessary changes
-> > in drivers that do not currently discard the return value
-> > of register functions.
-> >
-> > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->
-> Hello Yassine,
->
-> Thanks for your efforts on helping to make the MediaTek clocks better - I agree
-> (and I'm not the only one..) that there's a lot of work to do on this side.
->
-> Though... I don't think that this is the right direction: you're right about
-> properly unregistering (in patch 4/6) the reset controllers on rmmod/failure
-> but I'm not sure that this kind of noise brings any benefit.
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Since Rex is working on cleaning up the reset bits, maybe also coordinate
-with him?
+This series adds support for MT8186 hardware jpeg encoding.
 
-> Explaining:
-> You definitely saw that there's a new register _with_dev, which uses devm ops
-> and that's going to automatically cleanup in case of removal/failure.
+This series has been tested with both MT8186.
+Encoding worked for this chip.
 
-I don't think they use devres at the moment. They should, but I haven't
-gotten that far with my improvements. *wink*
+Patches 1 Adds jpeg encoder dt-bindings for mt8186
 
-> This is what we should do.
->
-> Hence, my proposal is to drop patch 3/6, 4/6, 5/6 and (slowly, steadily) migrate
-> all of the MediaTek clocks from CLK_OF_DECLARE() to platform drivers (which also
-> means that we can eventually change them to tristate!), so that we slowly remove
-> all users of all functions that are not "_with_dev", and that we finally remove
-> all of these then-unused functions as well.
+Patches 2 set bit mask for jpegenc to support 34bits iova space,
+	which means iova rangement from 0 to 16GB.
 
-I agree with moving all the drivers off of CLK_OF_DECLARE() if possible.
-There are definitely going to be a few ARM32 ones that can't be converted,
-likely because they don't have the ARM arch timer, and need a clock
-registered before the timers. Been there.
+kyrie wu (2):
+  media: media: jpegenc: add mediatek,mt8186-jpgenc compatible
+  media: media: jpegenc: set bit mask for jpegenc
 
-And there's a whole lot of work to be done for all the old drivers so that
-they clean up after themselves.
+ .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml       | 1 +
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c           | 3 +++
+ 2 files changed, 4 insertions(+)
 
-My desire is to clean up the API (the naming and the parameters) so that
-they more closely match up with the underlying CCF APIs they call. We can
-then add devres variants (and of_ ones for the unfortunate platforms that
-need them).
+-- 
+2.18.0
 
-> Making sure that I don't get misunderstood:
->       I'm not implying that this huge migration work is on your shoulders!
-
-Yeah. I'll likely take up quite a bit of it after all my currently planned
-cleanup work is done. Unless of course someone beats me to it.
-
-> P.S.: Chen-Yu, Miles: do you also agree? :-)
-
-Yes.
-
-
-Regards
-ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
