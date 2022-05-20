@@ -4,141 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31477C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 01:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53107C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 01:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JDUzRJPe5Dpm5qJNxGXbAMQ5PvU44lGsJgJ4FnV1WC8=; b=198YpYoN6S6PSk
-	G9/55ZnFmlCIkeu4p+d0qWBlNRJ+S7kgFCOrMtKH4DGDFFMFlF0KVNJVkyKB5r/GSWGR2fzyjskOf
-	pU1HKY5dIZwxcOzx1qQh102yxKR2SJfP+qr0B5uN+RR1vogpIMubjptC/f78xO30JT8g5di3R5VNj
-	cvmFGDWgm0dv19mP9cpBqNPEoox9NHwXWg886UIXkTNB+Ww4nITpy9U8MLhAzUWfFWn7GnKyj0ry+
-	YSJ+CuAkQs8KMIegXWVY2nHNrfFnL8HOqbjElWCUMEEXF8IyiXCNxq7fwXQKt8pwbgT/IIV+t9kWb
-	VTRM4LCj4JHZLcrIWbWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Fb1DYqGaz/SzGqkhAXs0YyorAPDB3Qxk0tzIkohJnfk=; b=jx6d2x9fsINJXw
+	ZM0nrzB83NtS2tWOWk2OKVY8GN+hsm6JAWJiQ1dS3FkKsektxzIhfZx3sRnkOSADOKyxz2qSocB3p
+	S6sdS3kcKz0a4KNL2JXEB/OPGSRqBo//ulP3n3O/tlJcKo436KPurP1nPsAoHYt84Je3cxT6Ciuq7
+	GjzL0t6SAhqQLKNDyewVcC6Z256lGEVd5Pbg4FMEKh8oCovXVlT+JfG7yxeQZzQIa4DRLvVrI+Hwb
+	L6EtC1GH7FNbU7plPvo0oNg3pzLGi66sxPSo/n7kUvSdY1Rl2gjokYsPzrDK0Tu41KYAN6vI1FCa4
+	HPusmLcrBwvAd2Pe2jxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrrRl-009ySJ-JT; Fri, 20 May 2022 01:28:53 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1nrrVt-009zJg-0d; Fri, 20 May 2022 01:33:09 +0000
+Received: from mail-tyzapc01on20717.outbound.protection.outlook.com
+ ([2a01:111:f403:704b::717]
+ helo=APC01-TYZ-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrrRY-009yM0-VJ
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 01:28:45 +0000
-Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20220520012832epoutp039006d3112b928eb4101bfdfce664afe7~wq-B5fVVw2359223592epoutp03-
- for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 01:28:32 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20220520012832epoutp039006d3112b928eb4101bfdfce664afe7~wq-B5fVVw2359223592epoutp03-
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1653010112;
- bh=twiM4nG0XN/IUozHsDktNZyZ2toUSdhZtbW2WtXJVBc=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=qiPvgqtBfZ4TLcHEJiO27tGhxsQpdt91F8up45SHy4sqEf+x+Jsoi7r/1u2+3RltH
- RB/4XBSSZZo6rxZtvSNvjn36sqbaeb9/yNLveF6HpaHwpmiSFxIuUFY3Z1w5vbAosJ
- 9dOo7E+UGBGPiaNswu5VkZSPHQg7PZywLnQBdKBQ=
-Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
- epcas1p3.samsung.com (KnoxPortal) with ESMTP id
- 20220520012832epcas1p3e8f58526d0971fc256847bb7086f09e0~wq-BYR-Yo3128131281epcas1p3M;
- Fri, 20 May 2022 01:28:32 +0000 (GMT)
-Received: from epsmges1p3.samsung.com (unknown [182.195.38.235]) by
- epsnrtp2.localdomain (Postfix) with ESMTP id 4L48Hy4C8sz4x9QB; Fri, 20 May
- 2022 01:28:30 +0000 (GMT)
-Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
- epsmges1p3.samsung.com (Symantec Messaging Gateway) with SMTP id
- 24.1A.10038.EBEE6826; Fri, 20 May 2022 10:28:30 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20220520012830epcas1p11bffd5f9b19f4267232f005a867c176f~wq_-ouLDq1281212812epcas1p11;
- Fri, 20 May 2022 01:28:30 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20220520012830epsmtrp24f2ab9b7b0e738784b2b64ff7b023cc4~wq_-naWSn1570315703epsmtrp2j;
- Fri, 20 May 2022 01:28:30 +0000 (GMT)
-X-AuditID: b6c32a37-111ff70000002736-4d-6286eebe6e68
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- 55.F1.11276.DBEE6826; Fri, 20 May 2022 10:28:29 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20220520012829epsmtip29a57e9b7706d44b3d50c22d2bf3ef24b~wq_-LA16Q0122901229epsmtip2F;
- Fri, 20 May 2022 01:28:29 +0000 (GMT)
-Subject: Re: [PATCH v25 0/7] soc: mediatek: SVS: introduce MTK SVS
-To: Kevin Hilman <khilman@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Roger Lu <roger.lu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Enric Balletbo Serra <eballetbo@gmail.com>, Rob
- Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen
- Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Fan Chen
- <fan.chen@mediatek.com>, Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
- <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Nishanth
- Menon <nm@ti.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, Guenter Roeck
- <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>,
- =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <rex-bc.chen@mediatek.com>
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <5a1767dc-ba2d-4de5-d8fe-2f308d3318a9@samsung.com>
-Date: Fri, 20 May 2022 10:54:48 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
+ id 1nrrVf-009zGn-VD; Fri, 20 May 2022 01:32:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=L+BG9GAkmayG0BavPT1cviwaOj58ZcBcKcD9lW9TkA2j2TcXlFkLIIGvBHz48pTZ9knnhojl3/8U5alCjT3gfy6NWYi+6JcbZvwDA+O1i1QBYQmVQSO1Ggi5eU2cHRWaIYE37dV7cBFpKsBeh/UQB2DGvCU9B69HAyGiI6if3I1pGH93QjY4sRWA4izHMV8Quiv+TKXhI26a5ulzsY8kboIOA/gS7te0Wrz2S1A4k/0KSREmox96e2FWQsZRth2yjx4XCYdGbo1LJQdtidIAS3rGY+mm3eYDETYHT4TgQtElKDxfo2C7i4F3QO5CjpUInYtiAKXx5oGJQqWENoZjqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0MyFlSWzlvdTUJ9cMwaeyW8c7lk6mo8wQYVZ7jQ5lWQ=;
+ b=W91JISL+zjHixoAEOXw2H2l4ny0fFxyi1PoDcO3fxF/EyHd1ayb7rptmSpLlsczugDGgaeaEoXEmr3Pa9/AZxvHlsbltSBS+7L1w2PxkkHdJJWSqJTfdF9qjzpPBnUYu6aTwx7920LaWsTh5dbKwHXhE2N+401pyUD3Vmwy9CI4Y1tLmbMNprcWmMP+6QoHJOLB5O9iLesuHP+V7m2Z0Cpzf+ThyEM6zcz2hulvHtjQgkDVhr1fV8nZTLxsCIJyooRPiqoMqzTSPdYYVWEFyiO76l8kYOXebJXVtdSXQwyB2YVUhmxCJWGCvXAzGqzyLSIIazhjlxtw2VPNqFm1ZTA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com; 
+ s=selector2-vivo0-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0MyFlSWzlvdTUJ9cMwaeyW8c7lk6mo8wQYVZ7jQ5lWQ=;
+ b=SIn9bShqshACZNTab/8EtD3FCvGZgzsjcGaqB1ysDOPcbeAohFA4piLxUvToQd2uVxPxMx86Vj3F2qRVfafdmNc3BesKY3WEiWGgGH3+X+tUhTm+vvpiYH5vqg2Jghw1IlnCvb5rJQq0rzIrflkjBxehKSx2Hyv9T0RQ4KK+74g=
+Received: from PSAPR06MB4021.apcprd06.prod.outlook.com (2603:1096:301:37::11)
+ by PU1PR06MB2328.apcprd06.prod.outlook.com (2603:1096:803:3a::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5250.18; Fri, 20 May
+ 2022 01:32:47 +0000
+Received: from PSAPR06MB4021.apcprd06.prod.outlook.com
+ ([fe80::4dea:1528:e16a:bad4]) by PSAPR06MB4021.apcprd06.prod.outlook.com
+ ([fe80::4dea:1528:e16a:bad4%7]) with mapi id 15.20.5273.017; Fri, 20 May 2022
+ 01:32:47 +0000
+From: =?gb2312?B?1dS+/L/8?= <bernard@vivo.com>
+To: Kalle Valo <kvalo@kernel.org>
+CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder
+ Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean
+ Wang <sean.wang@mediatek.com>, "David S. Miller" <davem@davemloft.net>,
+ Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "linux-wireless@vger.kernel.org"
+ <linux-wireless@vger.kernel.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "zhaojunkui2008@126.com"
+ <zhaojunkui2008@126.com>
+Subject: Reply: [PATCH] mediatek/mt76: cleanup the code a bit
+Thread-Topic: Reply: [PATCH] mediatek/mt76: cleanup the code a bit
+Thread-Index: Adhr6RjdAX8K6c5RQCGrrf8vv/jUHg==
+Date: Fri, 20 May 2022 01:32:46 +0000
+Message-ID: <PSAPR06MB4021205461AA996200FC5C92DFD39@PSAPR06MB4021.apcprd06.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: d69745c4-4404-486d-0a45-08da3a00a51b
+x-ms-traffictypediagnostic: PU1PR06MB2328:EE_
+x-microsoft-antispam-prvs: <PU1PR06MB23288075B4D48E88135DDD41DFD39@PU1PR06MB2328.apcprd06.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: Dulgwb/0WFYmtziDv6qE3KPeMbcdfmfkfP2OkejdLbN0eYpWIPIx3l3ZHVyxqicS7yH73O0jRHLts8zUMB2LR7543Q/O4zJPBiUaJiQ3ZJaatMq8JA4g2Tg3ljtnAd6jnFpKCUpVd2pK9YbRmAWp+CYBk9sSJZn0BFHZp85rkzhEtYsfY9GVX3Bjd/XEMXxwNbQLqx9KuUZMynXCSzZA60FEMZaJ+vRjtW8oGu28n/gvszkrz4S5xJaVLSjD/e0mqulJHyOZTjyU3Rcxfr0n7pG2hnoU4Npe0JdalmmGD2kTxZMP1yW7rTrZoHbuMF50P1mfS3jnRmDqDRuXvf63tFEc1z+4p/B0bBZyB3JbJCJwvo0dRLiADDj9IhKAnUTF+gsfG5CFsAjGAozk5k8g05WTWdZFvynzjIieAIHRZ8zwUXZPvul4moPXTonVv3leMGERTgqIMBV1F1geblgpyId8yGN5OHyaAVXMmG6tRmCxSrIcqPsVkmB8RqGa7pQWHJ1/SZ2HB30Lq3a+zeQS91UFOeaI9bBtjqefSIEbr0MWox7YuXFKktzZSJ0LaTs8Y94HyRoL1CQVkbMsNfXqEw1zPWImx2+NkyvGqRmRVI8fLVvOGPJfuMEc13JgSIyp579sftRcrC1Pb6YMV/0bfI48jFfblG3r6bc/3DATGPf3mRFm5dZG1Z60/Pxn57PeLWImAtLksXW3/YgNXa7iSXrdZeYDShqveeMPedS9tDs05f2ohojOF0BMwyQXjKjzu+eGSX6+9QrzxL1X5YO68g==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PSAPR06MB4021.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(316002)(66446008)(6916009)(52536014)(5660300002)(66476007)(64756008)(9686003)(26005)(186003)(6506007)(122000001)(38070700005)(38100700002)(2906002)(33656002)(8676002)(76116006)(508600001)(4326008)(966005)(8936002)(7416002)(85182001)(55016003)(7696005)(66946007)(66556008)(71200400001)(54906003)(86362001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?gb2312?B?VmRBUzdkcEloU2VnSitWMHdUTEpZV0pzRWtlbjlFdWR5clQ5aXRxOGpRS2FD?=
+ =?gb2312?B?VjNwbUh3YTk1RzluZFFiWU5SRXRSc3pqdDBDL3lXbE8vRmlHZEVGL0dEaEtu?=
+ =?gb2312?B?YlRJa1pZQWpydXUxdnQ2NWtVSnlRaXhUVHB1M0ZoV0FWQmk4amtTaDZhaFdD?=
+ =?gb2312?B?ZFRsMWR3VjJxZEthbk1PLzJzbnp5UWVxQWlWQjQ4MlQ3ZytaWFVuYTZ1WEpo?=
+ =?gb2312?B?dGZCeUt0L0JnNUZyY0RkQ0NTK0sxUzNTNGNrZzdLV1ZZVXZlaXByektMOEZO?=
+ =?gb2312?B?clNBL2FiODg3eldLZ2FYN21NSm1IbXk0MC9rWmxtWTFVcUVjdmU0SGwwa2NV?=
+ =?gb2312?B?V1hyL2owTkdPT3JWeFczSjFIdnRVdU5leXU5bmhPT25rczV6c0pBcGZ4ZmFH?=
+ =?gb2312?B?a3NLK0tyeHBMSmdDbEVaUTdSWUVBQ003T2NleDl6YjlydElTRCtKTHY3UjdL?=
+ =?gb2312?B?L1pBa0xyOE4zTzdheWRvWnR6OFlodk9PZ3lvbHAzZmViZTJGdVVpUDQrY1V3?=
+ =?gb2312?B?OWsyczdtZDhna1ZGcXAzL2lXYWRsMUF3clpwY045RUlBUHd6dVhkMU5sSXRs?=
+ =?gb2312?B?KzVGTmpGWTZVV1U3bnJTZVN0bDBhamFIaEIrSzNrLzVrRmZ1YzFGWGo0UjRu?=
+ =?gb2312?B?aUoyWkNKR09GTjdiY0NlQkpGQ3NRSmozYUhKOTlsUU9iZXp4QlFpMDZ4ZStq?=
+ =?gb2312?B?MmpESHZqMHExZ1RkeWk0VVNWa2lucWxnNTZZd0h6cEZldVdDNVJBQjhTRGZ3?=
+ =?gb2312?B?b1BXck9ma0VIaUU0SmRlcG1uUUxMMmJCcVZEK0ZKZ3NBTDF1NnNYNTl0aVh5?=
+ =?gb2312?B?U1EwQnlWVytZU29VU1E1VlBoWVNBdStYTjh6dUhjVGZpQVVaRHRPMzk1RGlS?=
+ =?gb2312?B?WkdTY1dsdENZZ0xhbzFHUThxYnhuTk9DZTIxOURzMWwvM2ZsaEIwMWd2SjlS?=
+ =?gb2312?B?RHpNV1ZuMlRYQ054ejZRdkV6czJIWW16bWFpLytGUEhlQnlkbFR5UFh4TUpC?=
+ =?gb2312?B?VUNZMWJIRmFScUt2T1VKSnQvYWwweVAzaEhqNDlqQVZTRllkUmR2ME5mVytp?=
+ =?gb2312?B?U3J6aTZLbTFVM0JkMDA4Qm1VcTVRRkhyZGQ4a1pWTnNXaDlwR0pTSzNOL2l4?=
+ =?gb2312?B?S1NOK0tYTUkyQTBzT0JGZUdjS3d1MCtGQyttSVlZUTVLNkQrd1RaU3FibHJy?=
+ =?gb2312?B?a2tkaHEvNEN0eEpHSGJlQndRRzB3RHRUQnJ5Qi9LaXJIN3pRRHVlQmtEN3Fi?=
+ =?gb2312?B?dHc0aEw5azFtUmptLzRqSGptWTZiU2YrR2M1bGNQcDRoME9LMVN0eFYzQW9j?=
+ =?gb2312?B?d1ExT2dKcVB1OGhCVm50YWlnQnl2Y3pOSlFGUmxtVy9TL1pKNXFIUEdISnJi?=
+ =?gb2312?B?ME8yL2tNMG9ZV0NVUHpXWHZMSTJJMFpUS044U0R1NVpudXorSTJXUXZiZlRa?=
+ =?gb2312?B?d2E0M1hsK0l6UGZtdnRGSUNDSlNhdkhjNmJ0clFselhnSU5xNmdJc0R0VzN2?=
+ =?gb2312?B?SWh6RHRqcnlKYmF4c3NhdHkrVnpFeExocTF5Qkw2Y0ZscW4yaDJmU0dzdU5G?=
+ =?gb2312?B?blRBTnJYSE5KdTNiSGhIT0ZvdEdIc1lVSHZoNWZWYVBIcElHVkN3OHA2ZTlw?=
+ =?gb2312?B?SHRKTHVvblVzSW1BS250Z2g0blRhc2RrYk9SelJzamluMDdUOUxvNFFDUkkz?=
+ =?gb2312?B?NHB2L093MVZRK2MrcWpnVFlpdVArUEVKUjVWNjFLRkFhK0V4RE9qMU5aZ25Z?=
+ =?gb2312?B?UUdNWm93eDFnbTFoRTFaTTd4Mm9GL1o0cTlWMHJkNDlnNk1zU3JzRU5FNkxB?=
+ =?gb2312?B?TnpyK3UrbXhYbFlhbnNVeDBMc1QwdCtqZmxiaHB1YnlQOHZSdnZ6ejNIOUNL?=
+ =?gb2312?B?N2doUXdkajVWeTJjbmNnUzZFSXBIS2oyLzREY28yenNjaDg2SGpDWGtJMFlT?=
+ =?gb2312?B?Si9UaW5IcG1vQlVpWlM5QUQ3NGNVS0YzM3FRRTA5WVBGVjBGNlBVMzBXTlk1?=
+ =?gb2312?B?SVF2L1JlTS8yL1VRNUVFcUtBdmlGK3VFallkUkFqU2JEc2dkMjg3Q3laQTJ2?=
+ =?gb2312?B?SmRpZnM4eE1kdVZzdU0wQlhjTHIxV3RyQWU5cXpmdFdFUTI2cHNSWVkzOE5n?=
+ =?gb2312?B?ZndZL2RIUkxaUmtCMXdpdDYzMXVPaTh4SVRGanJWZGYvUGFDRktEVHdtVlNw?=
+ =?gb2312?B?eHdWb2FmY3d1S05HS2VadFFMZ0IzQlR6T0d2Q1FiZFlaMjFkdndka3hMbWx3?=
+ =?gb2312?B?ZzlsMVYxQ0hJR3RlT2J2MHJWeVhoTTllRnVPWmJGY3B4Sjlzc1dEZEFVWnB2?=
+ =?gb2312?Q?5q8/I66lUzGxNNJp7f?=
 MIME-Version: 1.0
-In-Reply-To: <7hmtfdbcsc.fsf@baylibre.com>
-Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Te0xTZxTPd++lLW7YS3l9QmDQbYkwHi1Q+HjGObJcnW4kBLcZtRR6B0hp
- ax97RUMd5SHxAZswqAoYYAbCY7YOgQklCAOiLpAONDzUpSjgBJmEgmEza3vdxn+/c87vd875
- nS8fB+fp2L6cXLmGVsklMj5rG9F5MzgirG+5OFNQe8YfrZ9sYKO1ah2B6gZ/dUGWqTUcjW02
- s5BtZhNDw+ZGNnpksmLIaJ20V3suspClcByg1TODAM1dvo2hprvjGPpGH4WebtzB0Oz9EQI9
- by8lUN+t73FU1DvIRhbrVRZ6OXmVQNXFFpddPlRrbSugLujGCarbMMum6o1aythyikWZGgso
- /aiZoM79LaC613VsavjedYxaNQakvnYwLzGHlkhpVSAtz1JIc+XZSfwP0sTviUUxAmGYMA7F
- 8gPlknw6iZ+yLzXs/VyZ3TA/8HOJTGtPpUrUan5EcqJKodXQgTkKtSaJTyulMqVIGa6W5Ku1
- 8uxwOa2JFwoEkSI7MSMv54HtuLJr55c/97RgOrAZVAY4HEhGQ/2LT8rANg6P7AKwzPaIzQTP
- AZyYXHIpA672wAagcfmIAzsEbb//hTH5XgD1lw4xgmcA3p2uB46CB7kbTpvnWQ7sSVLwl85v
- WQ4STvax4JWGAcJRYJEh0Lxwz0nikkFwYsPqFLuRydBmnsQdmCDfhu0nm5xbeJEH4Gin/hXH
- HY7WzDn7uNr7WCuHnX1w0gdOzdVhDH4DXl+6iDNbm1xhiS6dwSlwybCBMdgDPhm+xmawL1xd
- 7nUuCslCAHUL04AJTgM49PgswbCioLnpO8xxPJwMhh09EUw6CHZvXgLM4O1wee20C3NfN1ha
- zGMob0LLw9lXc3fAhpJTrHLAN2yxY9hiwbDFguH/YfWAaAHetFKdn02rhcqo/946S5FvBM6v
- EBLbBaqWVsIHAMYBAwBycL6nG8jXZ/LcpJKvvqZVCrFKK6PVA0BkP3AF7uuVpbD/JblGLIyO
- E0THREZFI2GMkO/j1lJ1S8IjsyUaOo+mlbTqXx3GcfXVYUfSTNKaO/uPH1gI/yiAfKetz/dc
- 0Zjp2U/vijruH/yjNaG6Y+gQkeYDrLz9i9RDRe9Kumj+Zt8Nv7UHzSfG3SsON2fvS/izP/Nj
- /0SYES6dj+tcLMA7X48Pruw1Vxd5B/pljPTsFrt/8WJnHVfUNlVQKxbqo/SFOyrSSjXcHyTx
- 9XnjK8nlCi4ILS+tarxSPKf38cbJwsKUyMbYmdkLU3v7Zz4s+/Gltb2b6z4Rf7l/TOXnZT7/
- ZE+LjVW5R8N9izdU8lTmUZGAHR0JXWSf2CXvsPRfSw9N3msyHfs0afthz/OZWGiNxw35Z6bf
- Qvybuv084hJutx87uu6/0vo4QLucxyfUORJhCK5SS/4BDb/h95MEAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SWUwTURhGuTPDdChWh4LhoglIXVgSK1Wj16jEqNFJNG4PosaFApOWSJd0
- qAtxqVJEcENFxUrABSNWJdIqa0oNiwiIUtGKCxgtCA9gcGtREKVtTHg7yXfOf18uhQsHiClU
- sjKV1SilKSKST5TVicJmW74cS4gprlmCXEdu8NDPPB2BCuuf+aL2tz9x1DZ8m0TO98MYarQW
- 8VCP2YEhk8M+tlblk6g93QbQ91P1AHVfe4qhm69tGDqqn4f6h1ox1Nn1hEDfSo4TqKblEo4y
- LPU81O4oJdGovZRAecfafZcFM3cL7gLmis5GMJWGTh5z1aRlTMYskjEXHWb0TVaCOfMnhql0
- 6XhMY0c5xnw3hW7w38ZfksSmJO9hNXNi4/nyD84D6orIfdVVRkwHhsOzgR8F6fnw3scRLBvw
- KSFdDWBXYwvpHULgRVsDng2oMQ6EdXWc1xkAMH3Y6Ot2Aunl8J211+MH0Qx8XHaOdEs4XUvC
- S1UdhLf4jcEfj62Y2yLpaGjt6/AUk+hw+GrIAdwsoGOh02rH3UzQM2HJkZueFybTm2FlkQPz
- OgGw6XI34Wa/sTuOC42eOzgdAUcKXuBeDoZvuwsxL4fB8oF8PAcEGsblhnGJYVxiGJdcBYQR
- hLBqTiFTcBK1RMnuFXNSBadVysSJKoUJeH5EdFQFKDcOimsBRoFaAClcFCQACn2CUJAk3Z/G
- alS7NNoUlqsFUylCFCxoy27aJaRl0lR2N8uqWc3/FaP8puiwVFmOKy8xtHnhJuEas+F+7L6V
- yfszX+RG1Mi1vfZD+R/KsxKuT5tUqnoZd+F8fVqDZR3/uHaLM6zoXfqDdLDC9TzJf6N5QxvY
- 2r36a0DE3D9Ppf3FPotDU6iX/SbV4DX74cidR3NGrQ/OxGl4t5cu1K+aJVnTrMc+hS+KEWzt
- /NwiWXDiSQ/cFLT6x2m5qHj0xJ4dorUNvaqT9ISsnlvxJRmgWRwZr1wakzYxYXprnNisQibn
- hL5cSp35iDb7c/K+v9W2zKG8VtGj5pE2l561fK1cnz+oi+qifTLuFKSenaEttMiYeEXdXuHp
- 5V0rNecORs8I+fWm6WEa32d7kiqgU0RwcqkkGtdw0n+123gWgAMAAA==
-X-CMS-MailID: 20220520012830epcas1p11bffd5f9b19f4267232f005a867c176f
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20220519182512epcas1p3020bd4713580c9244f759971b8bd2c3a
-References: <20220516004311.18358-1-roger.lu@mediatek.com>
- <CAGXv+5GSdWPZe3fNpBJ_WW0zCL8Skg6fHx9ATxaKU1hyMEt2Ww@mail.gmail.com>
- <7h4k1ndaui.fsf@baylibre.com> <7hy1yzbtb7.fsf@baylibre.com>
- <CAGXv+5GT=3m=pVPwUOWR42BR=emCpBXvvoAiRV7YKt2kEKWdAQ@mail.gmail.com>
- <CGME20220519182512epcas1p3020bd4713580c9244f759971b8bd2c3a@epcas1p3.samsung.com>
- <7hmtfdbcsc.fsf@baylibre.com>
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR06MB4021.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d69745c4-4404-486d-0a45-08da3a00a51b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 May 2022 01:32:47.0145 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: bxbrSBJWnHenSrPI1LcT38aNwuzGcKXLZML+XRZbXjzbi/9l5IpUbE00V2u8E1UyoPuOWr2sw7FadrYJeKzuEg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1PR06MB2328
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_182841_418523_9FDFA436 
-X-CRM114-Status: GOOD (  34.19  )
+X-CRM114-CacheID: sfid-20220519_183256_212394_E3FEE433 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,124 +152,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kevin, Chen-Yu,
-
-On 5/20/22 3:25 AM, Kevin Hilman wrote:
-> Chen-Yu Tsai <wenst@chromium.org> writes:
-> 
->> n Wed, May 18, 2022 at 8:03 AM Kevin Hilman <khilman@kernel.org> wrote:
->>>
->>> Kevin Hilman <khilman@kernel.org> writes:
->>>
->>>> Chen-Yu Tsai <wenst@chromium.org> writes:
->>>>
->>>>> On Mon, May 16, 2022 at 8:43 AM Roger Lu <roger.lu@mediatek.com> wrote:
->>>>>>
->>>>>> The Smart Voltage Scaling(SVS) engine is a piece of hardware
->>>>>> which calculates suitable SVS bank voltages to OPP voltage table.
->>>>>> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
->>>>>> when receiving OPP_EVENT_ADJUST_VOLTAGE.
->>>>>>
->>>>>> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
->>>>>> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
->>>>>> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
->>>>>>
->>>>>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
->>>>>> [2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
->>>>>> [3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
->>>>>>
->>>>>> Change since v24:
->>>>>> - Rebase to Linux 5.18-rc6
->>>>>> - Show specific fail log in svs_platform_probe() to help catch which step fails quickly
->>>>>> - Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
->>>>>>
->>>>>> Test in below environment:
->>>>>> SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
->>>>>> HW: mt8183-Krane
->>>>>>
->>>>>> [4] https://protect2.fireeye.com/v1/url?k=847bae75-e5f0bb43-847a253a-000babff9b5d-0b6f42041b9dea1d&q=1&e=37a26c43-8564-4808-9701-dc76d1ebbb27&u=https%3A%2F%2Fgithub.com%2Fwens%2Flinux%2Fcommits%2Fmt8183-cpufreq-cci-svs-test
->>>>>
->>>>> I've updated my branch to include all the latest versions of the relevant
->>>>> patch series:
->>>>>
->>>>> - anx7625 DPI bus type series v2 (so the display works)
->>>>> - MT8183 thermal series v9 (this seems to have been overlooked by the
->>>>> maintainer)
->>>>> - MTK SVS driver series v25
->>>>> - devfreq: cpu based scaling support to passive governor series v5
->>>>> - MTK CCI devfreq series v4
->>>>> - MT8183 cpufreq series v7
->>>>> - Additional WIP patches for panfrost MTK devfreq
->>>>
->>>> Thanks for preparing an integration branch Chen-Yu.
->>>>
->>>> I'm testing this on mt8183-pumpkin with one patch to add the CCI
->>>> regulator[1], and the defconfig you posted in a previous rev of this
->>>> series, but the CCI driver still causes a fault on boot[2] on my
->>>> platform.
->>>>
->>>> I mentioned in earlier reviews that I think there's potentially a race
->>>> between CCI and SVS loading since they are co-dependent.  My hunch is
->>>> that this is still not being handled properly.
->>>
->>> Ah, actually it's crashing when I try to boot the platform with
->>> `maxcpus=4` on the cmdline (which I have to do because mt8183-pumpkin is
->>> unstable upstream with the 2nd cluster enabled.)
-
-This warning message is printed by 'WARN_ON(cpufreq_passive_unregister_notifier(devfreq))'
-on devfreq passive governor. 
-
-If the cpufreq drivers are not probed before of probing cci devfreq driver
-with passive governor, passive governor shows this warning message.
-Because passive governor with CPUFREQ_PARENT_DEV depends on the cpufreq driver
-in order to get 'struct cpufreq_policy'[2].
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n339
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n282
-
-But, as I knew, this message might not stop the kernel. Just show the warning
-message and then return -EPROBE_DEFER error. It means that maybe try to
-probe the cci devfreq driver on late time of kernel booting
-and then will be working. But, I need the full kernel booting log
-and the booting sequence of between cpufreq and cci devfreq driver.
-
-In order to fix your issue, could you share the full booting log?
-And if possible, please explain the more detailed something about this.
-
->>>
->>> The CCI driver should be a bit more robust about detecting
->>> available/online CPUs
->>
->> This all seems to be handled in the devfreq passive governor.
-> 
-> Well, that's the initial crash.  But the SVS driver will also go through
-> its svs_mt8183_banks[] array (including both big & little clusters) and
-> try to init SVS, so presumably that will have some problems also if only
-> one cluster is enabled.
-> 
->> And presumably we'd like to have CCI devfreq running even if just one
->> core was booted.
-> 
-> Yes, I assume so also.
-> 
->> Added Chanwoo for more ideas.
-> 
-> OK, thanks.
-> 
-> Kevin
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+DQoNCi0tLS0t08q8/tStvP4tLS0tLQ0Kt6K8/sjLOiBLYWxsZSBWYWxvIDxrdmFsb0BrZXJuZWwu
+b3JnPiANCreiy83KsbzkOiAyMDIyxOo11MIxOMjVIDEzOjExDQrK1bz+yMs6INXUvvy//CA8YmVy
+bmFyZEB2aXZvLmNvbT4NCrOty806IEZlbGl4IEZpZXRrYXUgPG5iZEBuYmQubmFtZT47IExvcmVu
+em8gQmlhbmNvbmkgPGxvcmVuem9Aa2VybmVsLm9yZz47IFJ5ZGVyIExlZSA8cnlkZXIubGVlQG1l
+ZGlhdGVrLmNvbT47IFNoYXluZSBDaGVuIDxzaGF5bmUuY2hlbkBtZWRpYXRlay5jb20+OyBTZWFu
+IFdhbmcgPHNlYW4ud2FuZ0BtZWRpYXRlay5jb20+OyBEYXZpZCBTLiBNaWxsZXIgPGRhdmVtQGRh
+dmVtbG9mdC5uZXQ+OyBKYWt1YiBLaWNpbnNraSA8a3ViYUBrZXJuZWwub3JnPjsgUGFvbG8gQWJl
+bmkgPHBhYmVuaUByZWRoYXQuY29tPjsgTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdt
+YWlsLmNvbT47IGxpbnV4LXdpcmVsZXNzQHZnZXIua2VybmVsLm9yZzsgbmV0ZGV2QHZnZXIua2Vy
+bmVsLm9yZzsgbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1tZWRp
+YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnOyB6
+aGFvanVua3VpMjAwOEAxMjYuY29tDQrW98ziOiBSZTogW1BBVENIXSBtZWRpYXRlay9tdDc2OiBj
+bGVhbnVwIHRoZSBjb2RlIGEgYml0DQoNCj4gQmVybmFyZCBaaGFvIDxiZXJuYXJkQHZpdm8uY29t
+PiB3cml0ZXM6DQoNCj4gPiBGdW5jdGlvbiBtdDc2X3JlZ2lzdGVyX2RlYnVnZnMganVzdCBjYWxs
+IG10NzZfcmVnaXN0ZXJfZGVidWdmc19mb3BzIA0KPiA+IHdpdGggTlVMTCBvcCBwYXJhbWV0ZXIu
+DQo+ID4gVGhpcyBjaGFuZ2UgaXMgdG8gY2xlYW51cCB0aGUgY29kZSBhIGJpdCwgZWxldGUgdGhl
+IG1lYW5pbmdsZXNzIA0KPiA+IG10NzZfcmVnaXN0ZXJfZGVidWdmcywgYW5kIGFsbCBjYWxsIG10
+NzZfcmVnaXN0ZXJfZGVidWdmc19mb3BzLg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogQmVybmFy
+ZCBaaGFvIDxiZXJuYXJkQHZpdm8uY29tPg0KDQo+IFBsZWFzZSBtYWtlIHRoZSB0aXRsZSBtb3Jl
+IGluZm9ybWF0aXZlIGFuZCBkb24ndCB1c2UgbWVkaWF0ZWsgaW4gdGhlIHRpdGxlLCBmb3IgZXhh
+bXBsZSBzb21ldGhpbmcgbGlrZSB0aGlzOg0KDQo+IG10NzY6IHJlbW92ZSBzaW1wbGUgbXQ3Nl9y
+ZWdpc3Rlcl9kZWJ1Z2ZzKCkgZnVuY3Rpb24NCg0KPiBNb3JlIGluZm86DQoNCj4gaHR0cHM6Ly93
+aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9kb2N1bWVudGF0aW9uL3N1Ym1p
+dHRpbmdwYXRjaGVzI2NvbW1pdF90aXRsZV9pc193cm9uZw0KSGkgS2FsbGUgVmFsbzoNCg0KR290
+IHRoaXMsIEkgd291bGQgcmVzdWJtaXQgYSBwYXRjaCBvZiBWMiB2ZXJzaW9uLCB0aGFuayB5b3Ug
+dmVyeSBtdWNoIQ0KDQpCUi8vQmVybmFyZA0KPiAtLQ0KPiBodHRwczovL3BhdGNod29yay5rZXJu
+ZWwub3JnL3Byb2plY3QvbGludXgtd2lyZWxlc3MvbGlzdC8NCg0KPiBodHRwczovL3dpcmVsZXNz
+Lndpa2kua2VybmVsLm9yZy9lbi9kZXZlbG9wZXJzL2RvY3VtZW50YXRpb24vc3VibWl0dGluZ3Bh
+dGNoZXMNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
+aWF0ZWsK
