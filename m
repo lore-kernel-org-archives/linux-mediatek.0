@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1BBEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 15:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32BEFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 15:31:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QissCHLI1zzHOpH7SEP5pDR4dM58lMjUF+w9de1XaG0=; b=nBb3vy9DLWTAho
-	XCpcRFXWyWZWuu1vOcqCvgka/CdbfFCAjmZAg4QPNHqUwoUaMudn5iSn9tZmsb9RsxNHripD72ALl
-	mxocudaTIVLJHTH3ZjkRCcINR6dw993XKA5QNPoTLxcSrcj5KFGZIKZtBZJe581jMtLyQf90EBJTm
-	tUDPNi478Ukj/iISlpD8KsCqx83VYSiOZZjAgYferN0aNGYxb7or5kUlf1h482KEueDDPw0LX1R+C
-	j+2bJ85mjmtBIVMHb4e0yAXmWiMT798wQRqjJmXDs0cInwiLrpJ0KqlW/hqH29yb/GhRnMPweDwUY
-	S5Mwsf3V2bo6qsn9liFw==;
+	List-Owner; bh=hqk1UbyQSOBVDt7P7ztDgmoqDikcoSySTXhJJXcVF9w=; b=ujTnHGVmY/Vel3
+	1FxbhQ7YbtPqCUCzhv5KUyZ88UwMEUgPGfEpWR0J/JCzJV1N1GN7SOAZsro5l5zd/9bdCAexLadR6
+	breZCM8z4f4Hou8Mx14TGedHSm/cgyR4MpC1PFT+SC1x8wrCCBRxZsIcKT+eg2aRSsAR/2+qydnE1
+	aMof/4GA0u3AWK82Zzcef418VDGOVGIV88YKEIdinH/t9Rj5u5/c4FcKLM/07X8hjlREQln8c+fw3
+	8uQ/pCm+H7U2b7DorCTsTj1TI8PQOePt/2f+YY0XnwE+w98KXjKFABP5Xgj9kI9nJSVENh7+jZsEU
+	twGIQnXakMsc/veFqpPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns4PH-00D88X-UU; Fri, 20 May 2022 15:19:11 +0000
+	id 1ns4b3-00DDtA-P4; Fri, 20 May 2022 15:31:21 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns4P7-00D863-I8; Fri, 20 May 2022 15:19:02 +0000
+ id 1ns4aP-00DDaU-PP; Fri, 20 May 2022 15:30:43 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nfraprado) with ESMTPSA id 5B1971F46586
+ (Authenticated sender: nfraprado) with ESMTPSA id 39C971F465BE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653059940;
- bh=YQ31OR4ZEDVzd2CcVyEsIJ0oD9usN7dRjGllBd1TqMc=;
+ s=mail; t=1653060640;
+ bh=dmXpaV9RK7EYK65SYc1PAFlcJQ/aHD8qMN7i1zER+tw=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=I9k2T7C3tWF2Q3ecHJRuck5leEQwLkSwMo5DGMerg1mS8Fr1EogfPo6jonnSsp4g7
- Xw/fpwTKwWh1esgVSCvVPbiZTYPUKvdEDFGGTZ6wvbSRWULRyV9d6KMSqc5vhK7GUZ
- URBfBdk9fvBJiiMUTml9XZzIW+It09ZGGGev+NcCA6uVo5/B10pF6kU3JA8nIoZPNQ
- R5aQ98ClKg4IaWUZHu8WvxcXjOWN3SPxm942NPVV1Gh6ynm+Xc1T+iytkEIiMtyT6G
- ml7WR6OSxIvUhUcjkWkYci1HAMrMp6UHqOJRwIcj3BWXnEbBfC9UCMo1DIwqkQhF17
- HkK472iVQYwtQ==
-Date: Fri, 20 May 2022 11:18:54 -0400
+ b=VbyuiG1v+Mr9AKQMrqb8TVYlX4tVx7W+7mp5NVMkcvS7/CV2JBCyyMIhembjTUTyn
+ +fgiKAhdfvgKszDd68j3idCylD1QNocFstG5dNF6NTIqAtyrQN4e/MQw54XJp9ZbWK
+ LcyvU0i9eK7N664xdkRKg+W2NewfLLjDRwszIDtO7w1ABcHtRQM/Ko91NtJAxNeGXL
+ FPztcYtRiMJrq7cK+fumdCIx84uxWK7f4f/ofJpvf6ODDOK8csLOIZubgIf9Dugeio
+ f1rJfNYAZGff3BTfJT+DK4ApT76g9CObBvliJB/fpmhRZpKcyVau9C0ZIXQ4unJhDJ
+ MA2b3jVHh+BpQ==
+Date: Fri, 20 May 2022 11:30:34 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Rex-BC Chen <rex-bc.chen@mediatek.com>
 Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
@@ -47,17 +47,17 @@ Cc: mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
  devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v7 07/19] clk: mediatek: reset: Support nonsequence base
- offsets of reset registers
-Message-ID: <20220520151854.kkr2tezmrfniks4j@notapiano>
+Subject: Re: [PATCH v7 16/19] arm64: dts: mediatek: Add infra #reset-cells
+ property for MT8195
+Message-ID: <20220520153034.v4dvh4bn2pon6nnr@notapiano>
 References: <20220519125527.18544-1-rex-bc.chen@mediatek.com>
- <20220519125527.18544-8-rex-bc.chen@mediatek.com>
+ <20220519125527.18544-17-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220519125527.18544-8-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220519125527.18544-17-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_081901_772242_E8510A44 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20220520_083042_007764_810393D9 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,42 +76,74 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Rex,
 
-On Thu, May 19, 2022 at 08:55:15PM +0800, Rex-BC Chen wrote:
-> The bank offsets are not serial for all reset registers.
-> For example, there are five infra reset banks for MT8192: 0x120, 0x130,
-> 0x140, 0x150 and 0x730.
-> =
-
-> To support this,
-> - Change reg_ofs to rst_bank_ofs which is a pointer to base offsets of
->   the reset register.
-> - Add a new define RST_NR_PER_BANK to define reset number for each
->   reset bank.
+On Thu, May 19, 2022 at 08:55:24PM +0800, Rex-BC Chen wrote:
+> We will use mediatek clock reset as infracfg_ao reset instead of
+> ti-syscon. To support this, remove property of ti reset and add
+> property of #reset-cells for mediatek clock reset.
 > =
 
 > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
 ora.com>
 > ---
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 13 +------------
+>  1 file changed, 1 insertion(+), 12 deletions(-)
+> =
 
-<snip>
-
-> diff --git a/drivers/clk/mediatek/clk-mt2701-g3d.c b/drivers/clk/mediatek=
-/clk-mt2701-g3d.c
-> index 9cfd589939e5..5cbc5c42204d 100644
-> --- a/drivers/clk/mediatek/clk-mt2701-g3d.c
-> +++ b/drivers/clk/mediatek/clk-mt2701-g3d.c
-> @@ -35,10 +35,12 @@ static const struct mtk_gate g3d_clks[] =3D {
->  	GATE_G3D(CLK_G3DSYS_CORE, "g3d_core", "mfg_sel", 0),
->  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8195.dtsi
+> index b57e620c2c72..8e5ac11b19f1 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -10,7 +10,6 @@
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/phy/phy.h>
+>  #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+> -#include <dt-bindings/reset/ti-syscon.h>
 >  =
 
-> +static u16 rst_ofs[] =3D { 0xC, };
+>  / {
+>  	compatible =3D "mediatek,mt8195";
+> @@ -295,17 +294,7 @@
+>  			compatible =3D "mediatek,mt8195-infracfg_ao", "syscon", "simple-mfd";
 
-Very nitpicky, but you could have left the hex lowercase '0xc'.
+I believe the 'simple-mfd' compatible was added only to make the
+reset-controller subnode probe (at least this was the case for mt8192), so =
+it
+might make sense to drop it here as well.
 
 Thanks,
 N=EDcolas
+
+>  			reg =3D <0 0x10001000 0 0x1000>;
+>  			#clock-cells =3D <1>;
+> -
+> -			infracfg_rst: reset-controller {
+> -				compatible =3D "ti,syscon-reset";
+> -				#reset-cells =3D <1>;
+> -				ti,reset-bits =3D <
+> -					0x140 18 0x144 18 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
+pcie */
+> -					0x120 0  0x124 0  0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
+thermal */
+> -					0x730 10 0x734 10 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
+thermal */
+> -					0x150 5  0x154 5  0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* =
+svs gpu */
+> -				>;
+> -			};
+> +			#reset-cells =3D <1>;
+>  		};
+>  =
+
+>  		pericfg: syscon@10003000 {
+> -- =
+
+> 2.18.0
+> =
+
+> =
+
 
 _______________________________________________
 Linux-mediatek mailing list
