@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5580FC43217
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40CB1C4332F
 	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 08:32:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZYfNWB+zKvDpJ9jysd0E0h6dUlqzrO9eCjAhSj5mphE=; b=RfshGGt4shLRHu
-	Y8eevbMHjV85YStv7p2Is37TldQAaJs/dvxSMugKWmwPFvmoq7jxiwh9b40CTnuho92tznDg4Nuhr
-	WFzCbdBTrd9X9BpIdhPPJ/KDtwmISLNJQwQN7UEvPJwcYFvIXW2GW6O2/72feSAI4I6oUdiCdmPNC
-	UOwFUf8PC2AUUI3NA3B+JpLcH+js80k6B+WZCScd5R6IAYsCQv3aeWYbHPBic9DXzKBp61UuwnwKD
-	xdZ/jZ9HMZHtZbo76HjTuhiDg+FvdJIpyRxa8E/mO6HqR9wSJ2osY4a0K3m11JMwt6hgkj4WJYIWS
-	HR9IJ5wt1FsTCJ+L9KVA==;
+	List-Owner; bh=fFgFM8JcWTYecytI7vnGGezSscZunUPxTKm3LQGorQ0=; b=Yz59sLRyYtHyye
+	ITIDPUFP2YzUXNU7ItNEyeTzv4zwvjk5VWrMf+alRbW49OkeVJezxa3KPzg+dtd+BmMPIM6g/bW0y
+	n5kpe2pnaYbBG6f7hjiQXkGvgkaXbbh9Q91BRjJah/jDteopykfO3exirh/Qww/cfg2E4kdKi22GG
+	QGJ3pd4m4aQS5KzZfdfTs3eRWoUrcoM5WDMgoA02RZLYZb9jVc9YaZBZunjjKupZinAXSxN7VyS8b
+	9C5sYwee8hl/haZDq5MFfGYw0+siUFQH1rG1jaLJOyCLr+FRGoGOM8h7Ghj0MXss+pFOfkolkW+Iy
+	WFWNrXfCZ2Tn5QDdzd6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nry3h-00BHsi-Vi; Fri, 20 May 2022 08:32:30 +0000
+	id 1nry3h-00BHs4-9E; Fri, 20 May 2022 08:32:29 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nry38-00BHXP-O5; Fri, 20 May 2022 08:31:57 +0000
+ id 1nry37-00BHWR-GC; Fri, 20 May 2022 08:31:56 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id CD68B1F46109
+ (Authenticated sender: kholk11) with ESMTPSA id 1C7681F46108
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653035513;
- bh=51+7BPKulYL2gm7Dg44YrhEuMxIFwunP0Dh2hJ2F+Vg=;
+ s=mail; t=1653035512;
+ bh=QRFxM5xnexzlS51zoP6W7RzQXPnornFvrWlpoug6lkM=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=edaY0hsXE2q9RWflpd3Vr9auiF97lpONXWPn0LyP1UVSaUltdRNqSJryM2AEPR8RN
- CRWvgTch9DXZf8npx6lnyv8lWiItP1g4+7GBzDjBq0m5FrbUEOWuhiUEsxlogxkJjA
- 1svlc2yVvkce5WyNWlFEF7yo96D4FN3wQZrqMchPx/BUzTng6AUrJ68Hgz9HKPrkvV
- kDVyJt5KJDF0CzyAU+aV9HCw3rIaSKnhpBaPbMLOoB8bL2VSUFpNHUdEqt6yt603Qz
- d3UtEiw9LdZLgNuHMZRrp/IS30bfdNrSfSQMutoV8sBEFpgkWK4/ZBBEarBAXTheE+
- KDb6eAJ1QdGlQ==
-Message-ID: <2bf50acb-3183-b860-ae31-bd1c6e2dc7c8@collabora.com>
-Date: Fri, 20 May 2022 10:31:50 +0200
+ b=An3qIq16ZokHIpyt0U5J8hp8A37HfFC8qTPcSum+dVEkQWYWzWAi112LA7A18DTDV
+ oKtn5ik1JNUz1RWNBQ6duQy9MzT7cuAj5zwwopbR+bGtsI8JE+9gvJ830z0yCDVJ60
+ W873v4TsN8LHjxGefnFIx/sYKuEOBYnJ2lHF6Y34sqrEagrTT+T5jj+Gt1C053ricX
+ QxfE6hcSdp69583+3ale3LG6eSPsMyhlvO98IThkVy8z01SZAZHVexp6D5vLAGw+hg
+ PuDNWuPIbLQ5gklay2nAqpqZQ110h4n46KGkwRp38+CWHO2BFDd94Dmvhnho9XznOR
+ 6+6+dta7/ePkw==
+Message-ID: <13f49bf1-6623-eea8-0563-466876db4eb3@collabora.com>
+Date: Fri, 20 May 2022 10:31:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH 2/6] clk: mediatek: Use mtk_clk_register_gates_with_dev in
- simple probe
+Subject: Re: [PATCH 1/6] clk: mediatek: gate: Export
+ mtk_clk_register_gates_with_dev
 Content-Language: en-US
 To: Yassine Oudjana <yassine.oudjana@gmail.com>,
  Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
@@ -56,12 +56,12 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
  linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
 References: <20220519134728.456643-1-y.oudjana@protonmail.com>
- <20220519134728.456643-3-y.oudjana@protonmail.com>
+ <20220519134728.456643-2-y.oudjana@protonmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220519134728.456643-3-y.oudjana@protonmail.com>
+In-Reply-To: <20220519134728.456643-2-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_013154_956327_1190F3FD 
-X-CRM114-Status: UNSURE (   6.45  )
+X-CRM114-CacheID: sfid-20220520_013153_787085_13148A88 
+X-CRM114-Status: UNSURE (   7.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,9 +82,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 19/05/22 15:47, Yassine Oudjana ha scritto:
 > From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> Register gates with dev in mtk_clk_simple_probe.
+> This allows it to be used in drivers built as modules.
 > 
 > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+
+Thumbs up!
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
