@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15198C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 18:12:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC11C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 18:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cP+QrieLPn2qlFRitCP3B3CX3ExZDpyhLXwfGxd+I04=; b=NmSgIOq6fwkEZL
-	7yWyI0eihktx6thatu2wineqF3Fvr4IqFL0dyOeupsO+PfX8fh6oa/Mnu/PjWLrSJd0AMYpyMs4OO
-	ynd6els1bLEEuRU7US1eRtFW9DvOTJy4tEpnFYcHyETP7N8aMfhf4+mI/JoG1ALYF7oXQJNP9Fr4A
-	Po/g0cDBYunRg3GZ1nYhQOgi16/WxsWUDa1KEo5F6AMI0TRNTK220SnvbqlRmXIIkzijPyzmMVjuu
-	rz+jribaVVGmZEAKpdVvf8/2DYk7h2d6cTNK9BJfe4L9yLoj0c9MyMRIZRmvytELXKPC/x4F5GanW
-	bUKvwALzmaxbr49Z4DvA==;
+	List-Owner; bh=3ogc27m16C71D8ITzCJfUYrQqpPPv3PW+lJrfABkL+g=; b=3PjBLwXneJDAXY
+	yHR3elqHwTTUx88KKRlE0p2lW4TbNLaChSXpNv7CpTsLdJs6a+Pmu7JzgK3P/U+mj8eZNBWpU+5zz
+	kV+E5AstRrp/o5Y+u9ZWbtoV09340JR3WDs37Whc7aFhezR1lt7r6jKJ3x0m03H9K3a1IIdPhnVM4
+	DHEjT5nsHutnY9dZbMhU95DflKXbZ32qE0R3eHU5z1XT2m4yjIrc+/FTi4fown1IJ1CQz6qeyxSvf
+	YiyjyjsaEZxGT5R1udkw7JvZzhhajmV1Qs63cFK61qwXjZqr+mziu/bIi5Q8Ya6/T7fZgf7lkgTF/
+	Eyna0V8so2NwmpbM8vog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns77N-00E173-H3; Fri, 20 May 2022 18:12:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ns77Q-00E1Ae-Jd; Fri, 20 May 2022 18:12:56 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns77J-00E12r-54
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 18:12:50 +0000
+ id 1ns77N-00E16I-GV
+ for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 18:12:55 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id AD7DC60FF1;
- Fri, 20 May 2022 18:12:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C07A1C385A9;
- Fri, 20 May 2022 18:12:44 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 22DE8B82A55;
+ Fri, 20 May 2022 18:12:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 150D3C3411A;
+ Fri, 20 May 2022 18:12:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1653070367;
- bh=+IZMGA7q81QWtnP8o5Y0D9cC9JaYvk8r7G2oLMll/EY=;
+ s=k20201202; t=1653070370;
+ bh=K+DrRmpRVXepET5twu9KU4kHTQjdvJrEkgES8lPb8SM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=YcGn28r1VbhZYFeRVT6nbcD/5vCLR2yOhdLo1tEeYR3QLGosuBEOsawjoSuTa6rUm
- pKjenIwjoUho4Elkv7FuzWjKQqscx4jzTGVZgMMv2Jo+fZMnbW0kcwpb2aqYGVSAPV
- nmqqcyboGocxNLGq3mIlbm8ofzIwVp5JFHg0gRkPtjIWZuXmj7DggQ11NvZ4m80oKN
- rIua+B6XQATdEYVcyw0SntcLEx7lTa3CJrjz5nnHTxn2881+5Q+wYw0sa6wnD8XBfu
- uQAxUF9+Faaua52J22jC5ToHX5NHtevkMxAf6JFPwLuvOk71Fy5464c9KH8hgqlQTo
- k4Euu5Bcj5Igw==
+ b=di7nb890nAdVs661MY3ArhaorebCvREmDch9fcVeCypR5Y79eINRqbbEkmyLdySv8
+ s1TkRpOL8iZV2jYbUEPl2SEJH0w+TYSPb3wY6WrMayh0D+keTVkiX4t2ojd5nKUYGh
+ tIE9AYATvi1vkjxAbcmXDTvDtQvFZfmQWhnro7y1x4YK0AgNaIbAq7ta5Ic7MMegLQ
+ yhos6Lg1FPKn/rNn+9bvuDbVbzGvDTsWSayu5fYK6uEqTrDrHYsG7x3jbs+5y9vW7L
+ 80poTZrfVeodcasojYGiPoG3PHvsVQ/cpqn8bRL/hWguotzMTgCt1MTIDII7WqV8+W
+ lvtXgF8eU9xMA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
@@ -49,17 +49,17 @@ Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
  kuba@kernel.org, pabeni@redhat.com, Sam.Shih@mediatek.com,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
  robh@kernel.org, lorenzo.bianconi@redhat.com
-Subject: [PATCH v3 net-next 09/16] net: ethernet: mtk_eth_soc: add rxd_size to
- mtk_soc_data
-Date: Fri, 20 May 2022 20:11:32 +0200
-Message-Id: <970f29fe5af213e643e1a5e6aec4006f1d6d693c.1653069056.git.lorenzo@kernel.org>
+Subject: [PATCH v3 net-next 10/16] net: ethernet: mtk_eth_soc: rely on
+ txd_size field in mtk_poll_tx/mtk_poll_rx
+Date: Fri, 20 May 2022 20:11:33 +0200
+Message-Id: <6b20d0ac8cde94c6f5057004a60bde2b3ae37702.1653069056.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <cover.1653069056.git.lorenzo@kernel.org>
 References: <cover.1653069056.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_111249_304783_D1051CE0 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20220520_111253_767761_3C2C3AB2 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,109 +76,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to tx counterpart, introduce rxd_size in mtk_soc_data data
-structure.
-This is a preliminary patch to add mt7986 ethernet support.
+This is a preliminary to ad mt7986 ethernet support.
 
 Tested-by: Sam Shih <sam.shih@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 13 +++++++++----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  2 ++
- 2 files changed, 11 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 1bf5edd9eb44..7c4e63cc7c2a 100644
+index 7c4e63cc7c2a..c7820dbc75f1 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1740,7 +1740,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
- 	}
+@@ -1235,9 +1235,12 @@ static struct mtk_rx_ring *mtk_get_rx_ring(struct mtk_eth *eth)
+ 		return &eth->rx_ring[0];
  
- 	ring->dma = dma_alloc_coherent(eth->dma_dev,
--				       rx_dma_size * sizeof(*ring->dma),
-+				       rx_dma_size * eth->soc->txrx.rxd_size,
- 				       &ring->phys, GFP_KERNEL);
- 	if (!ring->dma)
- 		return -ENOMEM;
-@@ -1798,9 +1798,8 @@ static void mtk_rx_clean(struct mtk_eth *eth, struct mtk_rx_ring *ring)
+ 	for (i = 0; i < MTK_MAX_RX_RING_NUM; i++) {
++		struct mtk_rx_dma *rxd;
++
+ 		ring = &eth->rx_ring[i];
+ 		idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
+-		if (ring->dma[idx].rxd2 & RX_DMA_DONE) {
++		rxd = (void *)ring->dma + idx * eth->soc->txrx.rxd_size;
++		if (rxd->rxd2 & RX_DMA_DONE) {
+ 			ring->calc_idx_update = true;
+ 			return ring;
+ 		}
+@@ -1288,7 +1291,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			goto rx_done;
  
- 	if (ring->dma) {
- 		dma_free_coherent(eth->dma_dev,
--				  ring->dma_size * sizeof(*ring->dma),
--				  ring->dma,
--				  ring->phys);
-+				  ring->dma_size * eth->soc->txrx.rxd_size,
-+				  ring->dma, ring->phys);
- 		ring->dma = NULL;
- 	}
- }
-@@ -3388,6 +3387,7 @@ static const struct mtk_soc_data mt2701_data = {
- 	.required_pctl = true,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
-+		.rxd_size = sizeof(struct mtk_rx_dma),
- 	},
- };
+ 		idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
+-		rxd = &ring->dma[idx];
++		rxd = (void *)ring->dma + idx * eth->soc->txrx.rxd_size;
+ 		data = ring->data[idx];
  
-@@ -3399,6 +3399,7 @@ static const struct mtk_soc_data mt7621_data = {
- 	.offload_version = 2,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
-+		.rxd_size = sizeof(struct mtk_rx_dma),
- 	},
- };
+ 		if (!mtk_rx_get_desc(&trxd, rxd))
+@@ -1477,7 +1480,7 @@ static int mtk_poll_tx_pdma(struct mtk_eth *eth, int budget,
  
-@@ -3411,6 +3412,7 @@ static const struct mtk_soc_data mt7622_data = {
- 	.offload_version = 2,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
-+		.rxd_size = sizeof(struct mtk_rx_dma),
- 	},
- };
+ 		mtk_tx_unmap(eth, tx_buf, true);
  
-@@ -3422,6 +3424,7 @@ static const struct mtk_soc_data mt7623_data = {
- 	.offload_version = 2,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
-+		.rxd_size = sizeof(struct mtk_rx_dma),
- 	},
- };
- 
-@@ -3433,6 +3436,7 @@ static const struct mtk_soc_data mt7629_data = {
- 	.required_pctl = false,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
-+		.rxd_size = sizeof(struct mtk_rx_dma),
- 	},
- };
- 
-@@ -3443,6 +3447,7 @@ static const struct mtk_soc_data rt5350_data = {
- 	.required_pctl = false,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
-+		.rxd_size = sizeof(struct mtk_rx_dma),
- 	},
- };
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 7a5ad14b8be6..dcbf4b5c70e0 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -868,6 +868,7 @@ struct mtk_tx_dma_desc_info {
-  * @required_pctl		A bool value to show whether the SoC requires
-  *				the extra setup for those pins used by GMAC.
-  * @txd_size			Tx DMA descriptor size.
-+ * @rxd_size			Rx DMA descriptor size.
-  */
- struct mtk_soc_data {
- 	u32             ana_rgc3;
-@@ -878,6 +879,7 @@ struct mtk_soc_data {
- 	netdev_features_t hw_features;
- 	struct {
- 		u32	txd_size;
-+		u32	rxd_size;
- 	} txrx;
- };
+-		desc = &ring->dma[cpu];
++		desc = (void *)ring->dma + cpu * eth->soc->txrx.txd_size;
+ 		ring->last_free = desc;
+ 		atomic_inc(&ring->free_count);
  
 -- 
 2.35.3
