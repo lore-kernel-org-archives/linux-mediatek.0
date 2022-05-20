@@ -4,158 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A6E5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:02:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 404ECC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:03:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OQ/JGBTn0ZOa1VpYTvngY1DBdi/hfxJ15xie9Fqja8U=; b=VTPBB4mPMocC8x
-	TaU8i8cnPN4k+SJu9IDkpcpxuWjFbtFRVVeaU3m524YRQyAzbO+B/aj/lF++lYB5C5/D49bt1HIfH
-	o4N8/WLkLXsfTMsZOHK7+wz6eODLLmfYcQ8dia3rUyGuBf1KoXDwWaJKeIXEqIGL8s6cape5WKXJ3
-	QbeB/Io6t/S1+yCMM8+7hgr8rj8P5n1rlVn6HS6bPoYHKM+0qM0sQqVqz2FEU88F0wQzTk6mf4/iC
-	+yqmOa3v4cvKfssMlt9NPUpIJtI6ckqZOuNQTU0r0UQxwt3UlKS+Jd9Woco51MnDzePqBvRjpAf/8
-	fgQa6rSB3JfAf1xvV1gw==;
+	List-Owner; bh=hq3vmW4ufB4rVbDUozcj55BlzglPNQZnCleRbCcAY8s=; b=2HVfRudQ213KrG
+	XZggqLptizwr8wL8lN2BsmvHEZGcWbUvzqS+qaUG2RJXM+KzDFDQnak7dGf2FxBswyp/m/aohI0as
+	3iHVCxGnF8Q8wMl+zJKqB1Q/+BcI3A0oJI7coQXrr8Tgcs5720+xQIGiMeTI1FZcQ7l2jQZ0KPxEo
+	J6GSOiJeaH2surxrTuEJFQE+ilDprj6fUmRe9IyvEPZki0vmLEF2vl8q1rFNFzVzAT3s6G8ZAJkzr
+	t9qP+6BcTguQibRFlnx8+xCUKFP36MjPk79+5VBKJRsQVl84Dj7h9WsayrcrW4osQQ3gQBtxT75Qz
+	KA23IsE1hli+uhXnHKQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns0PH-00Bxph-GE; Fri, 20 May 2022 11:02:55 +0000
+	id 1ns0Q1-00ByID-Nl; Fri, 20 May 2022 11:03:41 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzKP-00Biuu-RD
- for linux-mediatek@bombadil.infradead.org; Fri, 20 May 2022 09:53:50 +0000
+ id 1ns0OB-00Bx9k-1W; Fri, 20 May 2022 11:01:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=References:Content-Type:
- Content-Transfer-Encoding:In-Reply-To:MIME-Version:Date:Message-ID:From:Cc:To
- :Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=nbJ7UWW7ivT1HIaQuG8XTTy89+C6/yNHA4oAaEHtNqs=; b=PtXuv4x4mb6RRaEf2ZgogZ3X5Q
- F7CeuDXWRVjeZ4x82KnkPnp+bb9gNOBLKulsZL1M1anD8RCyrmxp300kKOdcf6hXZ5u7qK4hSpa9n
- Og4bZq1S77JwHdxx8OUfYJ2s/r+3uQWRQqdBCwhvFjgyIZA8wK5ky0oexsq0mnhair9qgStgzQUQd
- zVq6wXKR4on7Zx4zZ3ialCsgHvheffmj5YeO/S8u5PStgwfTaCOuh3z7UPv7BZ58Z18Kmbkr5pSHe
- g2y+y6eWyKiA0cedicpOyMhOVZMwGegcEj9FoaUKBvSa6JavMlLo1NKZJU+oNDAQnLMb0H1/GJJNc
- 4075gY9w==;
-Received: from mailout2.samsung.com ([203.254.224.25])
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+ :In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=JDBwHrPbTJ4tpt77w2LqDDOJJbykW5Zyzao/0qPmwms=; b=Sz7ZNtXBGjyf2pVjOMm6Wuq8Uh
+ tHPqBt53ptetctJ/cfzqlYwPHD0BHWHxROB4/EyLSkApyo90+Uwn3OlcELzWos+O+W78m+mjyLlm7
+ geLivpuy3hVUXGAv2msgIU7ZC+3Iox8vqth8Y3WKEvYm9Y+xSV2K8MHESDjLQB8GYTHI/Mn1Jrcuk
+ xRSpS4zFswZGo2riljh3VArfR8v6mycZAdigjCXfFGKkDu8NTPRyYc8RI1+yHEtFXD2g3A9czNzWj
+ tYq6d7FqdETzM7iwVfzmmA2WZPrctbWUM9yH9/drolvEgl73guK9ZvyCEdvpoY00kt576gwsrPiZR
+ UaYK337Q==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzKG-002Ihy-Hk
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 09:53:44 +0000
-Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
- by mailout2.samsung.com (KnoxPortal) with ESMTP id
- 20220520095328epoutp02f0ceb1af80fe625b0719059c1f50824a~wx34wq4RH2061720617epoutp02h
- for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 09:53:28 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
- 20220520095328epoutp02f0ceb1af80fe625b0719059c1f50824a~wx34wq4RH2061720617epoutp02h
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1653040408;
- bh=nbJ7UWW7ivT1HIaQuG8XTTy89+C6/yNHA4oAaEHtNqs=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=V3JzrirJotMovsJofUdAh95aoFGDv3Kvn5zXNx7JDz+7J43qyRV2YJU2gRNboMSfC
- JOKcO1SfBzpXldnGoD8kTdh6NfJR/nBpNwd39r9qILovB01stwutnnAPQNj31Enkf9
- gv36hxnWgZvNuImeIoYZMJwinbHnWKine5qhLKgg=
-Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
- epcas1p3.samsung.com (KnoxPortal) with ESMTP id
- 20220520095327epcas1p351ae2febf4395766a8d314ee8534e14e~wx34RoyZu3084430844epcas1p3T;
- Fri, 20 May 2022 09:53:27 +0000 (GMT)
-Received: from epsmges1p1.samsung.com (unknown [182.195.36.136]) by
- epsnrtp2.localdomain (Postfix) with ESMTP id 4L4MVZ1NhVz4x9Q0; Fri, 20 May
- 2022 09:53:26 +0000 (GMT)
-Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
- epsmges1p1.samsung.com (Symantec Messaging Gateway) with SMTP id
- E1.23.10063.51567826; Fri, 20 May 2022 18:53:26 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas1p4.samsung.com (KnoxPortal) with ESMTPA id
- 20220520095325epcas1p4ad7d5c5e4cff944f6f67a5bd0ba9af87~wx32YnA131083610836epcas1p47;
- Fri, 20 May 2022 09:53:25 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20220520095325epsmtrp2eb3f663933e317e81df6ef23884b9aa4~wx32WOKXk2199021990epsmtrp2Q;
- Fri, 20 May 2022 09:53:25 +0000 (GMT)
-X-AuditID: b6c32a35-1f1ff7000000274f-55-628765154624
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- 21.46.11276.51567826; Fri, 20 May 2022 18:53:25 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20220520095324epsmtip27687a67ded3390f89917c98115a2612e~wx31xvksN0376803768epsmtip2g;
- Fri, 20 May 2022 09:53:24 +0000 (GMT)
-Subject: Re: [PATCH v25 0/7] soc: mediatek: SVS: introduce MTK SVS
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Kevin Hilman <khilman@kernel.org>, Roger Lu <roger.lu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
- <eballetbo@gmail.com>, Rob Herring <robh+dt@kernel.org>, Nicolas Boichat
- <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Fan Chen <fan.chen@mediatek.com>, Charles Yang
- <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, Mark
- Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
- Guenter Roeck <linux@roeck-us.net>, Jia-wei Chang
- <jia-wei.chang@mediatek.com>, =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?=
- <rex-bc.chen@mediatek.com>
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <eacf7a67-bc64-a764-e23d-c733a4666b8a@samsung.com>
-Date: Fri, 20 May 2022 19:20:00 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
+ id 1nrzq3-002JNl-RG; Fri, 20 May 2022 10:26:34 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 321991F46241
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1653042389;
+ bh=HDf0MWYOCR8r+DZXQalTBiAOnmPm5YoK5f5O0omhcKw=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=mdAaBJ/ldoxoFkOrLMDVKqWZzcLoxCeB7GE3uaRVXxTozO8Y5+Hp6X5lUigIWNr7J
+ Ktc7zWDmESvVXtv2Iad6ze8Kgxdg2WAsPRxKwZN+IPNJjbKZInkZDd2mV5ih49Z67M
+ XGN+NHSZr59Q4aDq3Zytr23c5wpGqtrewmWFxkoqJ2UkmvdNHFw7qnVk9yUd+BKAHc
+ /oT1lON2DU9i2X04vG27EVMGu2kvfSCyrhA2Eo/Ij66jU4RO4TRI1h3sFvHlRB1j6A
+ 33qLkIzS/BpuXD0hf1mRa5PSa1hrhF4FCjI51q6AQKa9lzIUyAHlQSyQ8xjT2cT/uG
+ sv+GathARu3Mw==
+Message-ID: <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
+Date: Fri, 20 May 2022 12:26:25 +0200
 MIME-Version: 1.0
-In-Reply-To: <CAGXv+5EsgiXCpe-8H0cQ=qm_Nq+yfM_a4b1L=hOFP6mcwfZymw@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v2 4/4] clk: mediatek: Add drivers for MediaTek MT6735
+ main clock drivers
 Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Tf1BUVRTHu28f+wNm9bXy47JqwlNrpIBd2aXLAmbpyHOsicbqD2cMH/Bg
- d9hf7Y8mf1RbECyGCjEEgiEKGpEhrMSvYBkJW4jQcBUVWrRZDIEQExcRstplsfjve+75nHvO
- 9945XJYgkyPkKtQGRqemlSTbF2/8YUNkeCCTkyxquIehhx9XcpCrxISj410XfZB90MVCv8x/
- zUYzv85jyNZRxUG3zzkxZHEOuLOtx9jIntkP0PShLoBGTvyMoVPX+jH0SVYU+mO2D0OO4W4c
- 3a8148jaW8xCn7Z3cZDdWc9Gfw/U46gk2+6zOYg6U34GUGWmfpxqKXVwqAqLkbLU5LKpc1Uf
- UVk9HTh15LGIanlo4lC2600YNW15JtFvV0acnKFTGV0Io07RpCrU6fHkjp1JW5Kk0SJxuDgG
- vUiGqGkVE09ufTUxfJtC6TZMhrxHK43uo0RarycjN8XpNEYDEyLX6A3xJKNNVWql2gg9rdIb
- 1ekRasYgE4tEG6VucE+GvG/4Aa4tlLxf9VuVjwl0P38Q8LiQkMDvy0+Ag8CXKyCaASyrb8G9
- wX0Ac1y1i5kZAMfqRjlPSj6vdrI9WkC0A3ijguuFpgAcsOYvJFYQr8ChjlG35nL9ifWwtW2l
- h2ERTjZ0uBpxD8MmwmDHnesL/HIiFF6ddQKP5hOb4Mz4aR+Pxt21RQ7bAhNAvA17GrMWmadh
- z9GRhXt4xBvw5g3vcCwiCA6OHMe8eg1smjzG8jSGRBMPftNdj3kdbIVjjiOLblbAcVvDohbC
- 6bvtbG9BJoCmO0PAG+QBeOH3w7iXioIdpwoxjzUWsQGebY30HofClvkvgbfzMnjXlefjQSDB
- h+ZsgRdZC+23HIszBMPKnFx2PiBLl/gpXeKhdImH0v+bVQC8BgQyWr0qndGLteL/vjtFo7KA
- hW0IkzaDgsl7EZ0A44JOALks0p8PVFnJAn4qvXcfo9Mk6YxKRt8JpO4XLmAJA1I07nVSG5LE
- khiRJHpjlASJo8VkEL/mi15aQKTTBiaDYbSM7kkdxuUJTRhD15kTRMIPFRPpia2vxc6NzTVs
- W5ZA7/7rhVV1Mrbv/urpbwvXxV147JpYK/hn7Cr1YGi1ZM2W2uL8tFnZ4YwDlyb+7F3nGqwp
- j5nIV2Szz4cro3ekJXzl985N3+jtO+tsac9dCjqbrH4rvSCsrUHRV9C564OiXL7xO2vfnK16
- dHPsT8+e16mQ+U1EBBeVBfvfqtt+bVA2+bJs97tiILHe9ivMazOHvq7jXUyLuHK6uUTZH9eO
- hTqNllj71KNHJ1f+iPZM4nq1YIalKM6RFq+SZ/UIzcvrM6OeCjR1W0asq6+s/0w63Ht5/5T1
- pQOu4TX79soukwFHx08ylXNBvvJA3gSJ6+W0OIyl09P/Aj40N/eWBAAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrLIsWRmVeSWpSXmKPExsWy7bCSvK5oanuSwfKvghbfGxezW3yd0cBi
- Mf/IOVaLy7e+Mltc+L2SzeLbnd9MFsf3L2G3eLr5MZPFpsfXgLK75rBZXG6+yGjxufcIo8WT
- hWeYLJZev8hk0dRibPHmx1kmi7v3TrBYfFrXwWKx7/R0ZovWvUfYLS4/3shm8e/aRhaLGW2X
- WR3EPdbMW8PoMbvhIovHzll32T0WbCr12LSqk81j85J6j5aT+1k8+v8aeOz83sDucfzGdiaP
- z5vkArijuGxSUnMyy1KL9O0SuDLO3vvCUjDZpGLJwyWsDYwntLsYOTkkBEwkJq14zNbFyMUh
- JLCbUeLbvgWsEAlJiWkXjzJ3MXIA2cIShw8XQ9S8ZZSYOOELC0iNsICTxO39z9lAakQEVCV2
- 7ZEGqWEWeMomcfXTARaIhm/MEvuerGAHaWAT0JLY/+IGG4jNL6AocfXHY0YQm1fATuLbq2Vg
- i1mABk29exysRlQgTGLnksdMEDWCEidnPgFbzCkQKHH/5nOwmcwC6hJ/5l1ihrDFJW49mc8E
- YctLbH87h3kCo/AsJO2zkLTMQtIyC0nLAkaWVYySqQXFuem5xYYFhnmp5XrFibnFpXnpesn5
- uZsYwSlCS3MH4/ZVH/QOMTJxMB5ilOBgVhLhZcxtSRLiTUmsrEotyo8vKs1JLT7EKM3BoiTO
- e6HrZLyQQHpiSWp2ampBahFMlomDU6qBKfSI4fM6my61S51vP8jOkus+Z+iXWtfuuDLOYZ0z
- w4z0px2qnOcsMn9rzrs6Z0P3YU3XIHuZTznT96qcK0tmlNuw1Wfro9dtzdPYZA73feWPadVN
- WDvxnLq5U6iU66/0vb7zgtPqpyQlF61Mm1jHXc2hYvtZ2S+5bWqo0I5wdYb8me/PHU0v4wnb
- 6Oqn4Ox9udtq2+4t/doBEet7fUpP5nmdqT2aLa82ralnRqzdh1VzlghdWsCcKqV74fubLxGe
- XwIrWydxWkUePrDnvCuvh3yQyotre79YvTqfNmFzYvQUC6YFwWneotxp5l2f+R277ed9uufX
- ncvvzHOyMWz29IfZtxJyhVZNEL4XGKLEUpyRaKjFXFScCABX1kywgAMAAA==
-X-CMS-MailID: 20220520095325epcas1p4ad7d5c5e4cff944f6f67a5bd0ba9af87
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20220519182512epcas1p3020bd4713580c9244f759971b8bd2c3a
-References: <20220516004311.18358-1-roger.lu@mediatek.com>
- <CAGXv+5GSdWPZe3fNpBJ_WW0zCL8Skg6fHx9ATxaKU1hyMEt2Ww@mail.gmail.com>
- <7h4k1ndaui.fsf@baylibre.com> <7hy1yzbtb7.fsf@baylibre.com>
- <CAGXv+5GT=3m=pVPwUOWR42BR=emCpBXvvoAiRV7YKt2kEKWdAQ@mail.gmail.com>
- <CGME20220519182512epcas1p3020bd4713580c9244f759971b8bd2c3a@epcas1p3.samsung.com>
- <7hmtfdbcsc.fsf@baylibre.com>
- <5a1767dc-ba2d-4de5-d8fe-2f308d3318a9@samsung.com>
- <CAGXv+5EsgiXCpe-8H0cQ=qm_Nq+yfM_a4b1L=hOFP6mcwfZymw@mail.gmail.com>
+To: Miles Chen <miles.chen@mediatek.com>, yassine.oudjana@gmail.com
+Cc: bgolaszewski@baylibre.com, chun-jie.chen@mediatek.com,
+ devicetree@vger.kernel.org, ikjn@chromium.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ mturquette@baylibre.com, p.zabel@pengutronix.de, robh+dt@kernel.org,
+ sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com,
+ weiyi.lu@mediatek.com, wenst@chromium.org, y.oudjana@protonmail.com,
+ ~postmarketos/upstreaming@lists.sr.ht
+References: <NJC6CR.M4CF312LSXXV1@gmail.com>
+ <20220520093501.28758-1-miles.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220520093501.28758-1-miles.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_105341_488733_7BC08ABC 
-X-CRM114-Status: GOOD (  38.46  )
+X-CRM114-CacheID: sfid-20220520_112632_329216_85B310EB 
+X-CRM114-Status: GOOD (  25.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,158 +85,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kevin,
-
-On 5/20/22 11:42 AM, Chen-Yu Tsai wrote:
-> On Fri, May 20, 2022 at 9:28 AM Chanwoo Choi <cw00.choi@samsung.com> wrote:
+Il 20/05/22 11:35, Miles Chen ha scritto:
+> 
+>>>
+>>> Thanks for submitting this patch.
+>>>
+>>> I compare this with drivers/clk/mediatek/clk-mt7986-apmixed.c,
+>>> and other clk files are using macros to make the mtk_pll_data array
+>>> more readable.
 >>
->> Hi Kevin, Chen-Yu,
->>
->> On 5/20/22 3:25 AM, Kevin Hilman wrote:
->>> Chen-Yu Tsai <wenst@chromium.org> writes:
->>>
->>>> n Wed, May 18, 2022 at 8:03 AM Kevin Hilman <khilman@kernel.org> wrote:
->>>>>
->>>>> Kevin Hilman <khilman@kernel.org> writes:
->>>>>
->>>>>> Chen-Yu Tsai <wenst@chromium.org> writes:
->>>>>>
->>>>>>> On Mon, May 16, 2022 at 8:43 AM Roger Lu <roger.lu@mediatek.com> wrote:
->>>>>>>>
->>>>>>>> The Smart Voltage Scaling(SVS) engine is a piece of hardware
->>>>>>>> which calculates suitable SVS bank voltages to OPP voltage table.
->>>>>>>> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
->>>>>>>> when receiving OPP_EVENT_ADJUST_VOLTAGE.
->>>>>>>>
->>>>>>>> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
->>>>>>>> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
->>>>>>>> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
->>>>>>>>
->>>>>>>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
->>>>>>>> [2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
->>>>>>>> [3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
->>>>>>>>
->>>>>>>> Change since v24:
->>>>>>>> - Rebase to Linux 5.18-rc6
->>>>>>>> - Show specific fail log in svs_platform_probe() to help catch which step fails quickly
->>>>>>>> - Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
->>>>>>>>
->>>>>>>> Test in below environment:
->>>>>>>> SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
->>>>>>>> HW: mt8183-Krane
->>>>>>>>
->>>>>>>> [4] https://protect2.fireeye.com/v1/url?k=847bae75-e5f0bb43-847a253a-000babff9b5d-0b6f42041b9dea1d&q=1&e=37a26c43-8564-4808-9701-dc76d1ebbb27&u=https%3A%2F%2Fgithub.com%2Fwens%2Flinux%2Fcommits%2Fmt8183-cpufreq-cci-svs-test
->>>>>>>
->>>>>>> I've updated my branch to include all the latest versions of the relevant
->>>>>>> patch series:
->>>>>>>
->>>>>>> - anx7625 DPI bus type series v2 (so the display works)
->>>>>>> - MT8183 thermal series v9 (this seems to have been overlooked by the
->>>>>>> maintainer)
->>>>>>> - MTK SVS driver series v25
->>>>>>> - devfreq: cpu based scaling support to passive governor series v5
->>>>>>> - MTK CCI devfreq series v4
->>>>>>> - MT8183 cpufreq series v7
->>>>>>> - Additional WIP patches for panfrost MTK devfreq
->>>>>>
->>>>>> Thanks for preparing an integration branch Chen-Yu.
->>>>>>
->>>>>> I'm testing this on mt8183-pumpkin with one patch to add the CCI
->>>>>> regulator[1], and the defconfig you posted in a previous rev of this
->>>>>> series, but the CCI driver still causes a fault on boot[2] on my
->>>>>> platform.
->>>>>>
->>>>>> I mentioned in earlier reviews that I think there's potentially a race
->>>>>> between CCI and SVS loading since they are co-dependent.  My hunch is
->>>>>> that this is still not being handled properly.
->>>>>
->>>>> Ah, actually it's crashing when I try to boot the platform with
->>>>> `maxcpus=4` on the cmdline (which I have to do because mt8183-pumpkin is
->>>>> unstable upstream with the 2nd cluster enabled.)
->>
->> This warning message is printed by 'WARN_ON(cpufreq_passive_unregister_notifier(devfreq))'
->> on devfreq passive governor.
->>
->> If the cpufreq drivers are not probed before of probing cci devfreq driver
->> with passive governor, passive governor shows this warning message.
->> Because passive governor with CPUFREQ_PARENT_DEV depends on the cpufreq driver
->> in order to get 'struct cpufreq_policy'[2].
->>
->> [1] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n339
->> [2] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n282
->>
->> But, as I knew, this message might not stop the kernel. Just show the warning
->> message and then return -EPROBE_DEFER error. It means that maybe try to
->> probe the cci devfreq driver on late time of kernel booting
->> and then will be working. But, I need the full kernel booting log
->> and the booting sequence of between cpufreq and cci devfreq driver.
+>> I'd actually argue that macros make it less readable. While reading
+>> other drivers I had a lot of trouble figuring out which argument
+>> is which field of the struct, and had to constantly go back to the
+>> macro definitions and count arguments to find it. Having it this
+>> way, each value is labeled clearly with the field it's in. I think
+>> the tradeoff between line count and readability here is worth it.
 > 
-> Maybe just use a standard dev_warn() instead? WARN_ON causes all sorts
-> of panicking in developers' minds. :p
+> It is easier for multiple developers to work together if we have a common style.
 > 
->> In order to fix your issue, could you share the full booting log?
->> And if possible, please explain the more detailed something about this.
+> How do you think?
 > 
-> The shortened version is that on an 8 core system, with maxcpus=4,
-> only the first four cores are booted and have cpufreq associated.
-> I've not actually used this mechanism, so I don't really know what
-> happens if the other cores are brought up later with hotplug. Is
-> cpufreq expected to attach to them?
-> 
-> Maybe Kevin can add some more details.
-> 
-> 
-> ChenYu
-> 
-> 
->>>>>
->>>>> The CCI driver should be a bit more robust about detecting
->>>>> available/online CPUs
->>>>
->>>> This all seems to be handled in the devfreq passive governor.
->>>
->>> Well, that's the initial crash.  But the SVS driver will also go through
->>> its svs_mt8183_banks[] array (including both big & little clusters) and
->>> try to init SVS, so presumably that will have some problems also if only
->>> one cluster is enabled.
->>>
->>>> And presumably we'd like to have CCI devfreq running even if just one
->>>> core was booted.
->>>
->>> Yes, I assume so also.
->>>
->>>> Added Chanwoo for more ideas.
->>>
->>> OK, thanks.
->>>
->>> Kevin
+
+In my opinion, Yassine is definitely right about this one: unrolling these macros
+will make the code more readable, even though this has the side effect of making
+it bigger in the source code form (obviously, when compiled, it's going to be the
+exact same size).
+
+I wouldn't mind getting this clock driver in without the usage of macros, as much
+as I wouldn't mind converting all of the existing drivers to open-code everything
+instead of using macros that you have to find in various headers... this practice
+was done in multiple drivers (clock or elsewhere), so I don't think that it would
+actually be a bad idea to do it here on MediaTek too, even though I'm not aware of
+any *rule* that may want us to do that: if you check across drivers/clk/*, there's
+a big split in how drivers are made, where some are using macros (davinci, renesas,
+samsung, sprd, etc), and some are not (bcm, sunxi-ng, qcom, tegra, versatile, etc),
+so it's really "do it as you wish"...
+
+... *but:*
+
+Apart from that, I also don't think that it is a good idea to convert the other
+MTK clock drivers right now, as this would make the upstreaming of MediaTek clock
+drivers harder for some of the community in this moment... especially when we look
+at how many MTK SoCs are out there in the wild, and how many we have upstream:
+something like 10% of them, or less.
+
+I see the huge benefit of having a bigger community around MediaTek platforms as
+that's beneficial to get a way better support and solidity for all SoCs as they
+are sharing the same drivers and same framework, and expanding the support to more
+of them will only make it better with highly valuable community contributions.
 
 
-I tested the passive governor with my temporary test code
-on odroid-xu3 which contains the big.LITTLE cluster (Octa-core).
+That said, Yassine, you should've understood that you have my full support on
+unrolling these macros - but it's not time to do that yet: you definitely know
+that MediaTek clock drivers are going through a big cleanup phase which is, at
+this point, unavoidable... if we are able to get the aid of scripts (cocci and
+others), that will make our life easier in this cleanup, and will also make us
+able to perform the entire cleanup with less effort and in less overall time.
+
+With that, I'm sad but I have to support Miles' decision on this one, and I also
+have to ask you to use macros in this driver.
 
 
-[Sequence of cpufreq/devfreq driver]
-1. Turn on all cpus
-2. Probed cpufreq driver
-3. Probed devfreq driver using passive governor with CPUFREQ_PARENT_DEV
+I am sure - and it is my wish - to see MediaTek clock drivers open-coding stuff
+instead of using macros, but that's something for the future - which will happen
+after the more important cleanups.
 
-In my test case, there are no warning message during kernel booting.
-Also when scaling the cpu frequency of cpus of big.LITTLE clusters,
-temporary devfreq driver receives the notfication and then
-calculate the target frequency of devfreq device by iterating online cpu.
+After all, it will be just about running "gcc -E xxxx.c" and copy-pasting the
+unrolled macros to the clock drivers, which will be pretty fast and straightforward.
 
-If there are any h/w constraints on your case, please let me know.
+Sorry for the wall of text, by the way.
 
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+Cheers,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
