@@ -4,88 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F3C2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E61FC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=stOu0vV75hjqKIHmX6qQ872xQFa7faQYrwtF6v3KqHg=; b=zeevyuYI8OI2sP
-	pLKQYspdMRj0m72mxM4FaE4fxXFPPtus6cj6bNnuTvNY64WMutOdlCUxtrPICauukvf20KGcmX2uo
-	78SzoxOP98YnMXZWgZrvwm2+NWD67qpxa7X6B5wBFPZc8U5HfXcIs3Xqu8KgZ+OjQScJoV/ChTprN
-	vsK85BPAIyam+OQTm7RkD8g/KSWKEhXNpU4L/xiMf3Lojh3hdm0t7HPQwKXLt5jfD5NSPme8cx+5d
-	uTPu6DZ7Mx1xkEAshhupFh4IxR3fphPt6CWbEcJB/lkIR/XViDorSR0g/H2PlZdHeRzsVjXEossnF
-	7/c1DmtB5V4/VnTV0AYg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
+	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9sFtDS+BzlaTNsXv4oal+Ow5XjZIaGUPB0EolMcJqqM=; b=exI+wQqnVtHeDGLTEiu/dbMwKu
+	wmXpuiPjuE/9JgWh48IZnTjYX3sR7Icwn/6q4yMEzMNRTXuFio23/b6r6Pdl//e4XmrgBmktHAiWd
+	0HcRF9ey1RFcBwoz4md6mhQbR1JOJd0YqIxFCUKyq8i8iqRLdHnoip00YE2wtzOJmpKHna5iXyBKf
+	471706kExtDtvp7pKrpkYgOz87K3np+29HD21aBhwYsvYq2nizKH5fQcSLgQXZRP7fzyl+q4/tVyr
+	Zu9WBsEM9TlfysgEpIifu4TLPsnHJGpDNUXmJf15xvP+bIa57gXZa8nrEib0V0ZODiaNUJtSoCW6q
+	Gvlxuq1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns0O0-00Bx4B-7s; Fri, 20 May 2022 11:01:36 +0000
+	id 1ns0O1-00Bx4W-08; Fri, 20 May 2022 11:01:37 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzJM-00Bi6D-D2; Fri, 20 May 2022 09:52:44 +0000
+ id 1nrzJN-00Bi6D-04; Fri, 20 May 2022 09:52:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=8w6Ffk7p0BzoP+iDHRNhypGp9sYRj/f/AaiEoduI6Co=; b=XZyhPK6Z5PyMjYfUyf0Clqv7iy
- zK9A4iquETiO/RBYDPo5LCuAYgRE/82vA7DnvG7+k7EFbzNCQXSiTIsGcIx9ekBD2Laxn+/vp4DEU
- rCHV6drHg+EqLfzx4W5rpGMoqdb1KSK24UJ7w3GfBiMqX/FsV0OLYZYofE8Lo68o+fzB6RGpGMYyW
- 5uGz+reUDUc6C/4UzHeWwAUOyJztGpjFVNSMbJl/ELq/1BoVkA4bk1a/XTX4Luy7fZRtoNX+t+Ges
- ow6O+2RuNIjyGU4ANAdOPEoRgQaw2NbL5V4ZPywPa1KnwxrqC99aQcMcw5ybkVfN/jgew3n0GaAkw
- rLdnScJw==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+ In-Reply-To:Message-Id:Cc:To:Subject:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=+Q0QiA7ru6i8BsA9kJw7SZPGcwHJrhsZ4QvZNcEI9Dg=; b=lusa4XabNN/DJKc/s0wsxB2JBj
+ I33KcD8q1wzZSVXPvkx9162/UvWnna0yJiCE/RcejlaveRfclwnaj0CfB45I8Kknp3awxgJyNqqMH
+ kbQKlu9XMQ8BU4DB7PwQS1dvD5Khz047O3Yz9e4x/LFr92hILuFHeNNlpiqVDkzn6MbngQ/Pm7snG
+ xdjR7tyHGULXpvPI+zedRp3Xo8jGfgwGUyaiXHa2/q8QMilt9f3Lr6qxObBpw33DG5QspJBCUEmp6
+ N5uGYwfgfSNhAA6HdRd4iLW880voFLsc1fwEjdaxF/w1/vT34JtOzbrMPXGr/iD1vL3GvSzaiBwcD
+ V1SRBGVg==;
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrz8r-002IAt-Gl; Fri, 20 May 2022 09:41:56 +0000
-X-UUID: 1598df6fca5e4780903691137aaac686-20220520
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:a658dd5f-89bb-40f7-a3ce-e8f2c0948e1f, OB:0,
- LO
- B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:5
-X-CID-META: VersionHash:2a19b09, CLOUDID:1f91f0e2-edbf-4bd4-8a34-dfc5f7bb086d,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
- ,QS:0,BEC:nil
-X-UUID: 1598df6fca5e4780903691137aaac686-20220520
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <johnson.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1382522339; Fri, 20 May 2022 02:41:39 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 May 2022 02:41:37 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 20 May 2022 17:41:36 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 20 May 2022 17:41:35 +0800
-Message-ID: <47da3ed20b7f3c082a6bf38de2ba291b7dd67ecc.camel@mediatek.com>
-Subject: Re: [RESEND v4 2/2] PM / devfreq: mediatek: Introduce MediaTek CCI
- devfreq driver
-From: Johnson Wang <johnson.wang@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-CC: <cw00.choi@samsung.com>, <krzk+dt@kernel.org>, <robh+dt@kernel.org>,
- <kyungmin.park@samsung.com>, <djakov@kernel.org>, <khilman@kernel.org>,
- <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <jia-wei.chang@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 20 May 2022 17:41:35 +0800
-In-Reply-To: <CAGXv+5G-88zWSnic-AY2ANF9BYWCsZk29CeLxp+VuFKE_LH5Ug@mail.gmail.com>
-References: <20220513032832.17645-1-johnson.wang@mediatek.com>
- <20220513032832.17645-3-johnson.wang@mediatek.com>
- <CAGXv+5Em2eq8g8phC7MVcEP-sCsSsKa9FQjOra2UN3pib_psLA@mail.gmail.com>
- <7eec74e32bb482ba6984c6789f598ee9965f49b3.camel@mediatek.com>
- <CAGXv+5G-88zWSnic-AY2ANF9BYWCsZk29CeLxp+VuFKE_LH5Ug@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nrz8r-002IAv-7U; Fri, 20 May 2022 09:41:56 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id n10so14578391ejk.5;
+ Fri, 20 May 2022 02:41:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:subject:to:cc:message-id:in-reply-to:references
+ :mime-version; bh=+Q0QiA7ru6i8BsA9kJw7SZPGcwHJrhsZ4QvZNcEI9Dg=;
+ b=qx0h4A1phm5nsIroUsJwfajaIeD7n912JaN0mRC5EAn8j78j6xSyKlsylTXxCMZuKu
+ eJvfLlqevQHJrDbbh7RkFrgnPLbVyOxA6T9kGy/6LI16CeXYpHply9dWKVG9qsadXonh
+ oan7RSXE4Ywm7kwFwLR7qTXKKepqKeKLatdAyrw8LsA0D3fkmQoEcENyBFUc0pgNnUzv
+ TUhQ/gF8jQ2uG8pFukE4tFlIdVmD2EMpRZTmNRVm5JXZTwwTbDOJSagsWkk/d9WtHaaD
+ AlY40bQ44f2z94SYbbgiGUKxRMvQI2lfY23GPi27X4wixARlyi6KppYRTutH5kuyy17j
+ w/Ng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:subject:to:cc:message-id:in-reply-to
+ :references:mime-version;
+ bh=+Q0QiA7ru6i8BsA9kJw7SZPGcwHJrhsZ4QvZNcEI9Dg=;
+ b=ED2KNzSQPtJ76GQHaVm3M6GQspgbEhPIUsnQdj1vSr7688kgWoqJG5sLrycUTLvN0f
+ KqXf73NBLcMBoklyynO2FU+23fbXtUIyV0+A6D6GPgFcXFQtrFCQsPAj/bqUdDWsqNUc
+ dNnmQbBB4cFBdjJ4NgyCohueGVTSEcIaxckrdeY23h33I6sO783G9ssvt1dU5wz2CiMc
+ 9zJ9c95FVsT+WE5B3SC8xzoMKXqOtgCBRaB+q6MosWNjuX5FaFyWZb70qTiQwGFPt+Ya
+ XPQAhC/lRrDV26k7TmFbdc4KXANDrTxmD+EWi3AyWGLMi80dyGO1TuxIgBN/VEsugc5W
+ 8+ew==
+X-Gm-Message-State: AOAM5321eaK3FuzNHIlu61GXCZYN7ZHEV7kQCrddVUQpU373pakF7M+G
+ 4hEsCVX1yaOhyCUdibGUUIg=
+X-Google-Smtp-Source: ABdhPJx8KoctJFPDI79r21gvLJwl+tekVa1UwU2OiLxDKk1gsbX922JsgN+mWcLDYdoCB7xhEaRD/A==
+X-Received: by 2002:a17:906:1f52:b0:6f4:ebc2:da82 with SMTP id
+ d18-20020a1709061f5200b006f4ebc2da82mr8207315ejk.176.1653039705676; 
+ Fri, 20 May 2022 02:41:45 -0700 (PDT)
+Received: from [192.168.151.247] ([138.199.7.159])
+ by smtp.gmail.com with ESMTPSA id
+ z22-20020a170906435600b006f4c4330c49sm2937723ejm.57.2022.05.20.02.41.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 May 2022 02:41:45 -0700 (PDT)
+Date: Fri, 20 May 2022 13:41:33 +0400
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+Subject: Re: [PATCH 3/6] clk: mediatek: reset: Return reset data pointer on
+ register
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Yassine Oudjana <y.oudjana@protonmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ =?iso-8859-1?q?Jos=E9_Exp=F3sito?= <jose.exposito89@gmail.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+Message-Id: <9LD6CR.FM55IKDYS0IC2@gmail.com>
+In-Reply-To: <5b5f6656-8694-dc78-ef42-7ce301849aa4@collabora.com>
+References: <20220519134728.456643-1-y.oudjana@protonmail.com>
+ <20220519134728.456643-4-y.oudjana@protonmail.com>
+ <5b5f6656-8694-dc78-ef42-7ce301849aa4@collabora.com>
+X-Mailer: geary/40.0
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_104154_210727_58963B7E 
-X-CRM114-Status: GOOD (  38.80  )
+X-CRM114-CacheID: sfid-20220520_104153_834092_ACA75DF0 
+X-CRM114-Status: GOOD (  27.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,147 +105,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-05-19 at 11:24 +0800, Chen-Yu Tsai wrote:
-> On Wed, May 18, 2022 at 8:19 PM Johnson Wang <
-> johnson.wang@mediatek.com> wrote:
-> > 
-> > Hi Chen-Yu,
-> > 
-> > On Fri, 2022-05-13 at 11:54 +0800, Chen-Yu Tsai wrote:
-> > > On Fri, May 13, 2022 at 11:31 AM Johnson Wang <
-> > > johnson.wang@mediatek.com> wrote:
-> > > > 
-> > > > We introduce a devfreq driver for the MediaTek Cache Coherent
-> > > > Interconnect
-> > > > (CCI) used by some MediaTek SoCs.
-> > > > 
-> > > > In this driver, we use the passive devfreq driver to get target
-> > > > frequencies
-> > > > and adjust voltages accordingly. In MT8183 and MT8186, the
-> > > > MediaTek
-> > > > CCI
-> > > > is supplied by the same regulators with the little core CPUs.
-> > > > 
-> > > > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> > > > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> > > > Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
-> > > > ---
-> > > > This patch depends on "devfreq-testing"[1].
-> > > > [1]
-> > > > 
-https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing__;!!CTRNKA9wMg0ARbw!zzOSoso9udvDV3h6kYlmizFtbn3ACA5aS2jCAjKyvtu4z0fobv1mD5uF9YbPSme8l_NnR05unTxkZfDdzohu8asWZQ$
-> > > > 
-> > > > ---
-> > > >  drivers/devfreq/Kconfig           |  10 +
-> > > >  drivers/devfreq/Makefile          |   1 +
-> > > >  drivers/devfreq/mtk-cci-devfreq.c | 474
-> > > > ++++++++++++++++++++++++++++++
-> > > >  3 files changed, 485 insertions(+)
-> > > >  create mode 100644 drivers/devfreq/mtk-cci-devfreq.c
-> > > > 
-> > > > diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
-> > > > index 87eb2b837e68..9754d8b31621 100644
-> > > > --- a/drivers/devfreq/Kconfig
-> > > > +++ b/drivers/devfreq/Kconfig
-> > > > @@ -120,6 +120,16 @@ config ARM_TEGRA_DEVFREQ
-> > > >           It reads ACTMON counters of memory controllers and
-> > > > adjusts the
-> > > >           operating frequencies and voltages with OPP support.
-> > > > 
-> > > > +config ARM_MEDIATEK_CCI_DEVFREQ
-> > > > +       tristate "MEDIATEK CCI DEVFREQ Driver"
-> > > > +       depends on ARM_MEDIATEK_CPUFREQ || COMPILE_TEST
-> > > > +       select DEVFREQ_GOV_PASSIVE
-> > > > +       help
-> > > > +         This adds a devfreq driver for MediaTek Cache
-> > > > Coherent
-> > > > Interconnect
-> > > > +         which is shared the same regulators with the cpu
-> > > > cluster.
-> > > > It can track
-> > > > +         buck voltages and update a proper CCI frequency. Use
-> > > > the
-> > > > notification
-> > > > +         to get the regulator status.
-> > > > +
-> > > >  config ARM_RK3399_DMC_DEVFREQ
-> > > >         tristate "ARM RK3399 DMC DEVFREQ Driver"
-> > > >         depends on (ARCH_ROCKCHIP && HAVE_ARM_SMCCC) || \
-> > > > diff --git a/drivers/devfreq/Makefile
-> > > > b/drivers/devfreq/Makefile
-> > > > index 0b6be92a25d9..bf40d04928d0 100644
-> > > > --- a/drivers/devfreq/Makefile
-> > > > +++ b/drivers/devfreq/Makefile
-> > > > @@ -11,6 +11,7 @@ obj-$(CONFIG_DEVFREQ_GOV_PASSIVE)     +=
-> > > > governor_passive.o
-> > > >  obj-$(CONFIG_ARM_EXYNOS_BUS_DEVFREQ)   += exynos-bus.o
-> > > >  obj-$(CONFIG_ARM_IMX_BUS_DEVFREQ)      += imx-bus.o
-> > > >  obj-$(CONFIG_ARM_IMX8M_DDRC_DEVFREQ)   += imx8m-ddrc.o
-> > > > +obj-$(CONFIG_ARM_MEDIATEK_CCI_DEVFREQ) += mtk-cci-devfreq.o
-> > > >  obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)   += rk3399_dmc.o
-> > > >  obj-$(CONFIG_ARM_SUN8I_A33_MBUS_DEVFREQ)       += sun8i-a33-
-> > > > mbus.o
-> > > >  obj-$(CONFIG_ARM_TEGRA_DEVFREQ)                += tegra30-
-> > > > devfreq.o
-> > > > diff --git a/drivers/devfreq/mtk-cci-devfreq.c
-> > > > b/drivers/devfreq/mtk-cci-devfreq.c
-> > > > new file mode 100644
-> > > > index 000000000000..aa8c37eb4a06
-> > > > --- /dev/null
-> > > > +++ b/drivers/devfreq/mtk-cci-devfreq.c
-> > > > @@ -0,0 +1,474 @@
-> 
-> [...]
-> 
-> > > > +       if (IS_ERR(drv->sram_reg))
-> > > > +               drv->sram_reg = NULL;
-> > > > +       else {
-> > > > +               ret = regulator_enable(drv->sram_reg);
-> > > > +               if (ret) {
-> > > > +                       dev_err(dev, "failed to enable sram
-> > > > regulator\n");
-> > > > +                       goto out_free_resources;
-> > > > +               }
-> > > > +       }
-> > > > +
-> > > > +       /*
-> > > > +        * We assume min voltage is 0 and tracking target
-> > > > voltage
-> > > > using
-> > > > +        * min_volt_shift for each iteration.
-> > > > +        * The retry_max is 3 times of expeted iteration count.
-> > > 
-> > > expected?
-> > > 
-> > 
-> > Maybe "the maximum" will be more appropriate?
-> 
-> 
-> I was merely pointing out a typo in "expeted".
-> 
-> Looking at it again, I'm not sure why retry attempts are tied to the
-> voltage.
-> 
-> 
-> ChenYu
 
-Hi Chen-Yu,
+On Fri, May 20 2022 at 10:42:40 +0200, AngeloGioacchino Del Regno 
+<angelogioacchino.delregno@collabora.com> wrote:
+> Il 19/05/22 15:47, Yassine Oudjana ha scritto:
+>> From: Yassine Oudjana <y.oudjana@protonmail.com>
+>> 
+>> Return a struct mtk_clk_rst_data * when registering a reset
+>> controller in preparation for adding an unregister helper
+>> that will take it as an argument. Make the necessary changes
+>> in drivers that do not currently discard the return value
+>> of register functions.
+>> 
+>> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> 
+> Hello Yassine,
+> 
+> Thanks for your efforts on helping to make the MediaTek clocks better 
+> - I agree
+> (and I'm not the only one..) that there's a lot of work to do on this 
+> side.
+> 
+> Though... I don't think that this is the right direction: you're 
+> right about
+> properly unregistering (in patch 4/6) the reset controllers on 
+> rmmod/failure
+> but I'm not sure that this kind of noise brings any benefit.
+> 
+> Explaining:
+> You definitely saw that there's a new register _with_dev, which uses 
+> devm ops
+> and that's going to automatically cleanup in case of removal/failure.
+> This is what we should do.
+> 
+> Hence, my proposal is to drop patch 3/6, 4/6, 5/6 and (slowly, 
+> steadily) migrate
+> all of the MediaTek clocks from CLK_OF_DECLARE() to platform drivers 
+> (which also
+> means that we can eventually change them to tristate!), so that we 
+> slowly remove
+> all users of all functions that are not "_with_dev", and that we 
+> finally remove
+> all of these then-unused functions as well.
 
-Thanks for you reminder.
+I've tried to make small (but hopefully not too small) steps with
+little improvements. Originally in MT6735 clock drivers v1, I only
+added reset controller unregister, and while rebasing on Rex-BC's
+reset cleanup series I found mtk_clk_simple_probe/remove while
+looking for references to mtk_register_reset_controller, so
+I thought of using it for my drivers resulting in this series
+adding support for the extra 4 clock types. I started finding
+other things that could be improved such as the other clock types
+not having register_*_with_dev(), but I had to avoid adding
+anything else since that would only make me find more things to
+improve and this series would've never been finished and sent.
 
-Whenever the voltages are scaled up/down one step,
-meaning that there is another iteration in the while loop.
+With that said, if these patches could become an obstacle for
+later more complete reworks, then by all means drop them.
 
-Thus, our thought is to use times of the voltages step up/down to set
-iteration limit.
+> 
+> Making sure that I don't get misunderstood:
+>      I'm not implying that this huge migration work is on your 
+> shoulders!
+> 
 
-BRs,
-Johnson Wang 
+Of course. I would never be able to handle such a large task.
+Everyone currently helping with modernizing this common clock
+framework has my full respect. You are doing amazing work.
+
+Thanks,
+Yassine
+
+
 
 
 _______________________________________________
