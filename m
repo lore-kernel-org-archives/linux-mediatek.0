@@ -4,80 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45AB0C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 492CBC433FE
 	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 11:01:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yliAjHq6n25g9UFXTAD7LPP47zwpa23+eHky81XoY/g=; b=K93H6ihGWQCH2x
-	5FOS7hXO0GpbP7rUakK6ax81ZikvToJVTYNhBOk+Ic4rScyCALAqp7MGhRzoc5UrqpVmxfmUx90ua
-	kXXdu9XkvAU1IVrybalmoIH4Jvx9f6/GHePfAuFgcm/QJKUGxb4ey0mbdOQNvHXCUNXWlK8iEZsKw
-	SCrnLayAOUm/RvRZ1kk2v/uYQVfHk2tSMHv14bkoGnQ6E2Gxs1JaNwZBnM4suHPucfaHfd5FP3Igp
-	SL3cOgBoq0F1EcglwPTGEHY+LBYXxg61PYPSBA/sSLpx4/JlFEkHPJ/7UD+BkPE0exRt8rDUdSC17
-	Jik+VPJX5xsqYGKa2wVQ==;
+	List-Owner; bh=DdexNNMNm/Dfs3u+bPlYctJgEfnom7+4BYNRRJ46vhM=; b=n9foGIan1vQILQ
+	yU7IgEZfkVvF7h7axGY0XZC81gHISeLtTYHMsr3js6Cm3m+ndMHtSA0an0Wr7bRkGs3tzFYVLVmUy
+	GDYILYBCBn54YCcnzeYpUKppPlu4qrtDln5p53dNi90WZQEM8VS6oV6ZQmfcDcgio17d5VZo82BLC
+	sj5K1AMKAElitKivt8rK/IWUjF01SD1Ape60MmjdDpJ5EK0FF91bG9OsKhEIMwRMr9PtqUqwPM5M4
+	AlRTn6oe1pr1njVzq5ZdaFILG7koGONWdQP1Veq9wzp6NGiD3uUt7pxopP0Hh3m2V6HeVzV4lN/tr
+	F3tg0FZDY+IBvvJKEYZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns0NR-00BwlX-0x; Fri, 20 May 2022 11:01:01 +0000
+	id 1ns0NR-00Bwlk-P7; Fri, 20 May 2022 11:01:01 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzIf-00Bi6D-Js; Fri, 20 May 2022 09:52:01 +0000
+ id 1nrzIp-00Bi6D-Jd
+ for linux-mediatek@bombadil.infradead.org; Fri, 20 May 2022 09:52:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=0EDYX6/jlsKjCqfkxKgPdol0lZ2Drp928yPwi4paSLQ=; b=LFW8yIOQ3TimZR59Go2F8jMnzw
- CBTCI88UtBLrPQ8BNqLRw/rez8zefbkSJg8dCfAi5n6ZW1xNNnC4tOasKQ7eKUDyNQNCr6O3cQzqv
- CTGpAuSN7s+d2WbnMxm0zyBZTi0/+KQR/rwPkk0/l/cPP/Cvj/MYhM/sx+FypE5DFeWClpGEHqAOg
- Rfz6Bd7xry7bfCtnlvOcXQrj4+uO9EaLreSAmBIWCvqfibZ2FLZ6JwvxAf/Wc5x8zKbd7e1EgYoz4
- ZFO81/y8N6sUecl26BKHv9TDy6w2X5Mh2skIrkWb82wo6/WVz/5XnwScaP8hxEy3K8hKN2YlOWCtf
- vQqvZNZA==;
-Received: from smtp-out2.suse.de ([195.135.220.29])
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=AvNGESyxRhAV7gvo9X+ZKpVxV8kV0aTUV2T2AAUUwSE=; b=JuHmBSQ+5HsuspmAkY6V6NXk3L
+ BL22HVLj7k6aA61rEBZJIMubqu1Iv/2+R1Fzn/C89DVP/tnrF+Gcyk+xidiQtKqPAUXuAVjaX7FDM
+ dwvmsCrdlGrjdk4ZikmtI1WZ/GQTG2EEgW07yD90RgXh6UNbzqz/z1b4VahNlSp930K24mfQGwDQ3
+ SuHVqCjnRDgJHrDYpwfVA+1peOw7YF75qAZW/ymFIKK8qp2nI4gPqm87hZHPeYyIxETC/5laJ8t93
+ A37TeahO81HTzJ0wiH2y0m1DJ9ze07IUTrndvGVD+ybyoqsnNmTgSumOfNE5t5RsFTkxbWASZNEP0
+ UIrRaIbA==;
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzER-002IUK-FK; Fri, 20 May 2022 09:47:41 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out2.suse.de (Postfix) with ESMTP id 02A571F99B;
- Fri, 20 May 2022 09:47:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1653040058; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0EDYX6/jlsKjCqfkxKgPdol0lZ2Drp928yPwi4paSLQ=;
- b=GsRkmokRG8jMr2vvJlveZSJsxyDD0gdysvsOlHzRO6nawaGMCacKesz3nKhzFGIrXCT7O4
- QkJnIO5CeoLCZr01MrYO4ZxjGX/iAKWb9nnKmyZTxnA3DKcfPWofoLQAult89v3jpyKQSe
- qP8vVQpSn5xrwiweHnkSnl9hnN8jHSE=
-Received: from suse.cz (unknown [10.100.201.202])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id 746C02C141;
- Fri, 20 May 2022 09:47:37 +0000 (UTC)
-Date: Fri, 20 May 2022 11:47:37 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, acme@kernel.org,
- akpm@linux-foundation.org, alexander.shishkin@linux.intel.com,
- catalin.marinas@arm.com, davem@davemloft.net, jolsa@redhat.com,
- jthierry@redhat.com, keescook@chromium.org, kernelfans@gmail.com,
+ id 1nrzBH-002ILI-Rc
+ for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 09:44:26 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id 202so330932pfu.0
+ for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 02:44:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=AvNGESyxRhAV7gvo9X+ZKpVxV8kV0aTUV2T2AAUUwSE=;
+ b=BkRPFP15NL4IDnXh3hlvK+h4PzJxWcyRSC5t3p3BGGZMBbn5p2tRT10c7yXnEjZ7qv
+ TjwumJSNJCbWyz+S7Oq4+ikTRxyYmgHbP6LlHqFnYLRs4Wtl7jh81BBsLNinRfjORf5Q
+ QReafMfp7lU1rHeO82t6+rUtgUpjsM6xenPjE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AvNGESyxRhAV7gvo9X+ZKpVxV8kV0aTUV2T2AAUUwSE=;
+ b=f46XRTOQhw80MvbCDuK6IKH5++sAuY0RsJXYf3TXJ2u8pvtG0b/51MD5bPFCFJKGom
+ Lkj6K7a573A71xPIJgT3M8MOBvJpUxuUrihMvjOCGbOcuJXifKxD68wOyS/1Qcs73RTo
+ HcmCkquQ15UleIhVtjG/4OhbKGNrpogoFFd9T07UipG3OcdEBDOAR6snkg1un3UaOBVF
+ YGn98On1GbmSSAPtEtuXre2uyMisxnBMia+6BpJPVP/TcE76XwBiEGKasAOpYSHzPlaR
+ 6lHRs82PlnVndKssPPm/orHy//Vm8gxSlNJXzLdbEDeTUDfzvLuw7UAZWtYrb1JPZ3q2
+ qU0g==
+X-Gm-Message-State: AOAM533uxp196RYkVlgiFpXyIUrjVfdmGOfqjHMKnDEioX+IO0ZpBih9
+ DkbOLxqGiC8yk6PdSZPMVFI8OQ==
+X-Google-Smtp-Source: ABdhPJzv5s6fjmTY7cGc4/IdOJw7m4BY9pIbTwRNzDnU08TqxlxAF8ZR6ZdjHyvyfxHFlJwT2Cytnw==
+X-Received: by 2002:a63:6802:0:b0:3f6:7295:7c3e with SMTP id
+ d2-20020a636802000000b003f672957c3emr2804558pgc.308.1653039843763; 
+ Fri, 20 May 2022 02:44:03 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com
+ ([2401:fa00:1:10:ec49:9912:894:222d])
+ by smtp.gmail.com with ESMTPSA id
+ 23-20020aa79217000000b0050dc76281bfsm1290597pfo.153.2022.05.20.02.44.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 May 2022 02:44:03 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
- masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
- mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
- nixiaoming@huawei.com, peterz@infradead.org,
- sparclinux@vger.kernel.org, sumit.garg@linaro.org,
- wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH v4 6/6] arm64: Enable perf events based hard lockup
- detector
-Message-ID: <YodjucHQ3Nab5J/f@alley>
-References: <20220427161340.8518-1-lecopzer.chen@mediatek.com>
- <20220427161340.8518-7-lecopzer.chen@mediatek.com>
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 4/4] clk: mediatek: mt8183: Add clk mux notifier for MFG mux
+Date: Fri, 20 May 2022 17:43:23 +0800
+Message-Id: <20220520094323.754971-5-wenst@chromium.org>
+X-Mailer: git-send-email 2.36.1.124.g0e6072fb45-goog
+In-Reply-To: <20220520094323.754971-1-wenst@chromium.org>
+References: <20220520094323.754971-1-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220427161340.8518-7-lecopzer.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_104739_998293_7F997B02 
-X-CRM114-Status: GOOD (  18.31  )
+X-CRM114-CacheID: sfid-20220520_104424_309663_76AEA21A 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,53 +108,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu 2022-04-28 00:13:40, Lecopzer Chen wrote:
-> With the recent feature added to enable perf events to use pseudo NMIs
-> as interrupts on platforms which support GICv3 or later, its now been
-> possible to enable hard lockup detector (or NMI watchdog) on arm64
-> platforms. So enable corresponding support.
-> 
-> One thing to note here is that normally lockup detector is initialized
-> just after the early initcalls but PMU on arm64 comes up much later as
-> device_initcall(). To cope with that, overriding watchdog_nmi_probe() to
-> let the watchdog framework know PMU not ready, and inform the framework
-> to re-initialize lockup detection once PMU has been initialized.
-> 
-> [1]: http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
-> 
-> --- a/arch/arm64/kernel/perf_event.c
-> +++ b/arch/arm64/kernel/perf_event.c
-> @@ -1390,10 +1391,15 @@ static struct platform_driver armv8_pmu_driver = {
->  
->  static int __init armv8_pmu_driver_init(void)
->  {
-> +	int ret;
-> +
->  	if (acpi_disabled)
-> -		return platform_driver_register(&armv8_pmu_driver);
-> +		ret = platform_driver_register(&armv8_pmu_driver);
->  	else
-> -		return arm_pmu_acpi_probe(armv8_pmuv3_pmu_init);
-> +		ret = arm_pmu_acpi_probe(armv8_pmuv3_pmu_init);
-> +
-> +	retry_lockup_detector_init();
+When the MFG PLL clock, which is upstream of the MFG clock, is changed,
+the downstream clock and consumers need to be switched away from the PLL
+over to a stable clock to avoid glitches.
 
-Does it makes sense to call retry_lockup_detector_init() when
-the above returned an error? Should it be?
+This is done through the use of the newly added clk mux notifier. The
+notifier is set on the mux itself instead of the upstream PLL, but in
+practice this works, as the rate change notifitcations are propogated
+throughout the sub-tree hanging off the PLL. Just before rate changes,
+the MFG mux is temporarily and transparently switched to the 26 MHz
+main crystal. After the rate change, the mux is switched back.
 
-	if (!ret)
-		retry_lockup_detector_init();
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/clk/mediatek/clk-mt8183.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-> +	return ret;
->  }
->  device_initcall(armv8_pmu_driver_init)
+diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
+index 8a755fadebb5..afef3738396e 100644
+--- a/drivers/clk/mediatek/clk-mt8183.c
++++ b/drivers/clk/mediatek/clk-mt8183.c
+@@ -1192,6 +1192,8 @@ static int clk_mt8183_top_probe(struct platform_device *pdev)
+ {
+ 	void __iomem *base;
+ 	struct device_node *node = pdev->dev.of_node;
++	struct mtk_mux_nb *mfg_mux_nb;
++	int i, ret;
+ 
+ 	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+@@ -1217,6 +1219,25 @@ static int clk_mt8183_top_probe(struct platform_device *pdev)
+ 	mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
+ 		top_clk_data);
+ 
++	/* Register mux notifier for MFG mux */
++	mfg_mux_nb = devm_kzalloc(&pdev->dev, sizeof(*mfg_mux_nb), GFP_KERNEL);
++	if (!mfg_mux_nb)
++		return -ENOMEM;
++
++	for (i = 0; i < ARRAY_SIZE(top_muxes); i++)
++		if (top_muxes[i].id == CLK_TOP_MUX_MFG)
++			break;
++	if (i == ARRAY_SIZE(top_muxes))
++		return -EINVAL;
++
++	mfg_mux_nb->mux = &top_muxes[i];
++	mfg_mux_nb->bypass_index = 0; // Bypass to 26M crystal
++	ret = devm_mtk_clk_mux_notifier_register(&pdev->dev,
++						 top_clk_data->hws[CLK_TOP_MUX_MFG]->clk,
++						 mfg_mux_nb);
++	if (ret)
++		return ret;
++
+ 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get,
+ 				      top_clk_data);
+ }
+-- 
+2.36.1.124.g0e6072fb45-goog
 
-
-I am not qualified to ack the arm-specific code. But otherwise
-the change looks reasonable.
-
-Best Regards,
-Petr
 
 _______________________________________________
 Linux-mediatek mailing list
