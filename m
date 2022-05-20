@@ -4,144 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BBC9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 02:46:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76E8BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 03:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wa6lp5yQv3DYaTY7klUmbWrl2U1nUSRDld8Ws5Dy/vk=; b=bbWL71pq291dES
-	C/k9LRdDocwTun6lCDYoPVlR88n+Od7H8aC6+vVb1u5Jns4Xs6hvQq3O0MeH/d8933gOOD6QKrRLH
-	tZNJg3i9P1ZTXJIfVs2ZqIaY3jkm5BUQE/kW/FObdZfvEkLln9EbCrTQr9nuLkM8yBcsXNO853kAv
-	7GyxWUQYORxt7LVlYbPdUQlQjNnHsRRYjD+8124O7jdEK1SEl0kBOSQTzdJkKm2lrzea8SRXCzirY
-	8x/25vkaJI0YJVe3jxuBKs3RRFKaodpAzrtTi2hj/QXUOei9ta9cJIwhHvaGNDFdsK7mPkDmLdeRb
-	PlYOSYUdh2hIVSpB2JvA==;
+	List-Owner; bh=QP5ZAiwqqDyUu4XNkuVLMmEPF1Nc3lQp4V5aVZGZ7FQ=; b=uuFTrcdp060Tz+
+	WitRsCOSnC6+FSKAMBnpj6UKvPUqCISUdhtFK0uQsrGFgK+pNKu7wVikOqwJC1BsoDAUQ/ICMYkLJ
+	49J5iYXEQbep3PWW4fE2JG5/xecWDx/uOikV7y5e8W73tP9Dl7dwDu2axdYASkvwBslUNy7Jh4e2o
+	ltyRhT9e6I/9cw/aq0EYrqySNZwfb1izaJ2QgUGbFhX7Lo9b9MtNBO5EjxetKnMLy6vKWXFt/2qzJ
+	4FubAgxArnKKRyMruSFKKKhzrjRjr2iDKDlC+MhtpcglDbfj81nIigWlscR437UdAVUFOn4WC2Ozb
+	TahNj802+Dq50xfBMWJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrsek-00A9Tb-0t; Fri, 20 May 2022 02:46:22 +0000
-Received: from mailout2.samsung.com ([203.254.224.25])
+	id 1nrt0i-00ADFC-8T; Fri, 20 May 2022 03:09:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrseW-00A9Pm-DM
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 02:46:11 +0000
-Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
- by mailout2.samsung.com (KnoxPortal) with ESMTP id
- 20220520024602epoutp02810a2fa36d61ea1a75458de95dd914dc~wsCs0KSM51332713327epoutp02K
- for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 02:46:02 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
- 20220520024602epoutp02810a2fa36d61ea1a75458de95dd914dc~wsCs0KSM51332713327epoutp02K
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1653014762;
- bh=pNwd+tG5/5Th2TaXiJdgPU0+4OREyHFZPZACOtCzGwo=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=WpayVlAKxc3d+UyodWXH3oTnlAa5CjzUU9dfzyXuh+yvKxw0Dds0ABlEnGmaBguIO
- muM6RWE8Ff76iF3YYDSzt2XuXfbunWW/O+IA/TH3eB+M4ENMmPHMBOiYmR/U0gvda/
- TK8OWJKwur4f+B0YFrwoRRncbyUH1Aq2O2dZ4w6g=
-Received: from epsnrtp1.localdomain (unknown [182.195.42.162]) by
- epcas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20220520024602epcas1p101fd352055afd50ab10860434a668044~wsCsRq4ps1499814998epcas1p1g;
- Fri, 20 May 2022 02:46:02 +0000 (GMT)
-Received: from epsmges1p3.samsung.com (unknown [182.195.36.134]) by
- epsnrtp1.localdomain (Postfix) with ESMTP id 4L4B1N5w7zz4x9Pp; Fri, 20 May
- 2022 02:46:00 +0000 (GMT)
-Received: from epcas1p1.samsung.com ( [182.195.41.45]) by
- epsmges1p3.samsung.com (Symantec Messaging Gateway) with SMTP id
- BE.1E.10038.8E007826; Fri, 20 May 2022 11:46:00 +0900 (KST)
-Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
- epcas1p3.samsung.com (KnoxPortal) with ESMTPA id
- 20220520024600epcas1p340ac0aa2dcf54e4b69180e8d4483bd18~wsCqkBSnO0345903459epcas1p3W;
- Fri, 20 May 2022 02:46:00 +0000 (GMT)
-Received: from epsmgms1p2.samsung.com (unknown [182.195.42.42]) by
- epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
- 20220520024600epsmtrp2d94a309fb79df1a06022261361dd966e~wsCqiuVGy2863728637epsmtrp2-;
- Fri, 20 May 2022 02:46:00 +0000 (GMT)
-X-AuditID: b6c32a37-127ff70000002736-50-628700e88ece
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
- epsmgms1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
- 04.76.08924.8E007826; Fri, 20 May 2022 11:46:00 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20220520024559epsmtip1aa1b59a3005b8fe5f752d9712e6eb50c~wsCqG38ll1417514175epsmtip1W;
- Fri, 20 May 2022 02:45:59 +0000 (GMT)
-Subject: Re: [PATCH v25 0/7] soc: mediatek: SVS: introduce MTK SVS
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Kevin Hilman <khilman@kernel.org>, Roger Lu <roger.lu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
- <eballetbo@gmail.com>, Rob Herring <robh+dt@kernel.org>, Nicolas Boichat
- <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Fan Chen <fan.chen@mediatek.com>, Charles Yang
- <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, Mark
- Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
- Guenter Roeck <linux@roeck-us.net>, Jia-wei Chang
- <jia-wei.chang@mediatek.com>, =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?=
- <rex-bc.chen@mediatek.com>
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <7beea208-7d40-1c7d-9c70-6437440d22da@samsung.com>
-Date: Fri, 20 May 2022 12:12:18 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
+ id 1nrt0V-00ADCk-Qn; Fri, 20 May 2022 03:08:53 +0000
+X-UUID: 905c8db91909448ca0615d6a767fa64f-20220519
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:67caa3e8-970f-4dc6-824a-e7daebdf7631, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:d474e1e2-edbf-4bd4-8a34-dfc5f7bb086d,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 905c8db91909448ca0615d6a767fa64f-20220519
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1628041226; Thu, 19 May 2022 20:08:46 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 May 2022 19:58:44 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 20 May 2022 10:58:43 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 20 May 2022 10:58:42 +0800
+Message-ID: <3f39777a225fac66f01858262defcc11c6135bb2.camel@mediatek.com>
+Subject: Re: [PATCH v7 13/19] dt-bindings: reset: mediatek: Add infra_ao
+ reset index for MT8192/MT8195
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@kernel.org"
+ <sboyd@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
+CC: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>, Chun-Jie Chen
+ =?UTF-8?Q?=28=E9=99=B3=E6=B5=9A=E6=A1=80=29?= <Chun-Jie.Chen@mediatek.com>,
+ "wenst@chromium.org" <wenst@chromium.org>, Runyang Chen
+ =?UTF-8?Q?=28=E9=99=88=E6=B6=A6=E6=B4=8B=29?= <Runyang.Chen@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 20 May 2022 10:58:43 +0800
+In-Reply-To: <20220519125527.18544-14-rex-bc.chen@mediatek.com>
+References: <20220519125527.18544-1-rex-bc.chen@mediatek.com>
+ <20220519125527.18544-14-rex-bc.chen@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <CAGXv+5EsgiXCpe-8H0cQ=qm_Nq+yfM_a4b1L=hOFP6mcwfZymw@mail.gmail.com>
-Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Tf1RTZRjHfe8ud8NaXRHYG5wMr9YRarABm9ccHk8g53b0BJ2OFpw64wL3
- AALb2t3K7A+n/JwhipxAFwYKFE5O4TBwOyEKJL/EohUgRD8YIhoosAhOO0gbF4v/vs/zfr7v
- 837f97wCnk8OP0CQodIxWhWdRWDr0ab2YLF4cl1BsuTTATG5cLSaT86fMaBkZcdtL9I+PM8j
- f3BdxMi/f3EhZGdrDZ+82+hASItjwL1qq8BIe04/IJ0nOgA5fv4WQtYO9iPksdwIcmqxDyFH
- f+1CybmvClHyWm85j8xr6eCTdsdljHw8cBklz+TbvXaLqPrP6wH1maEfpaymUT5VZdFTFrMR
- oxprjlC53a0odXJJQlkXDHyqc6gZoZyWTfFPJWYq0hk6ldEGMaoUdWqGKi2K2PuWMlopk0uk
- YukOcjsRpKKzmSgiZl+8ODYjyx2YCPqAztK7W/E0yxJhuxRatV7HBKWrWV0UwWhSszQyTShL
- Z7N6VVqoitG9KpVIwmVuMCkzfdY8w9MUSw5NVpXyDaB823HgLYB4JLxYdxocB+sFPvhVAK+V
- XcK4Yg7AkesLCFc4ASw+3+H1xNLcf3eVsgH4R0EPyhWPAPypdATzUBvx1+BI6z23Fgh88Reh
- 7dtAD8PDHRgcnW9CPQyGh8DWyaEV/ll8M/x50QE8WojvguaeKsTjRd3eBrPM0/bDD8DuptxV
- ZAPsPju+so03/ib87c49vkfzcBEcHq9EOP0CbJ6u4HnmQrzRGy73VSNcghj4xXLeapqN8EHn
- FT6nA6DzYQvGGXIANEyOAK4oAvC7iWKUoyJga23pyul4eDD82hbGtTdDq+sc4CY/Ax/OF3l5
- EIgLYWG+D4dsgfbfR1fP8BysLjBipwBhWpPHtCaDaU0G0//DqgBqBv6Mhs1OY1ipJuK/505R
- Z1vAym8I2X4VlE3PhLYBRADaABTwCF8hyM5N9hGm0h8dZrRqpVafxbBtQOa+4BJegF+K2v2d
- VDqlNHKHJFIeHhFJSuVSQiQ0l/XSPngarWMyGUbDaJ/4EIF3gAE5ESoyvkv7TW+6IJ8VxaXM
- Hba73tAWn1UcBG/71rQ3vt77o/8+bbW+9qQxvoGoq1B2P7p/ejDQ4WdahDXXxyaU/KEyy7pj
- STH79++RLe/dWtTyYIPr+5rAPsVMXcLMuYNxRnrx/aUrRy7djNPfCovOyZtKxpYSopIEW9vT
- Ev1dATcc792OVcu9dpbvPjR4YeyovDAxXmH6UB2d65wd679vtimsSMKdp0c+uRFiH63XKybK
- gu02dvivl8ZU+YioYYrqvWks2TYxbm3z6/lm+s+6qY+/dO7ssmlaQPiDxQOTryT75iUTz4eX
- iF9+p8O0pT7P2lHJxo4ljsucfGHX43/2oATKptPSEJ6Wpf8FAoiXi5YEAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SaUwTURSFfTPjdChpHAqEZ9WqVcRUrYBgntEQIxrHBI3EuOCGo4y40Iod
- cE2gAlZsgpgYt4qlIkatuFDEAlaRTUTRUOuK4jZFMIJBtEIUF0pjwr8v95zv/LoULu0gZNRm
- TQqn1bBJClJM3KhRyKe0DzmwPtSZG4h69p0VIfcJHYHyax8NRc5mN46afl0k0Y/XvzBUX1ko
- Qq0lAoaswrP+tCKPRM5MB0DfcmoBcp1pxNC55w4MZWRNQx29DzHU8uYegbqvZBPo9oPjONp/
- q1aEnEIxif48KybQCb1z6OwgpshUBJhTOgfBlBtbRIzZmspYLQdJpqQwnclqqCSY3N+hTHmP
- TsTUv7BhzDerfLHvSvGsBC5p8w5OOzVqnXjTV0sXnnwodFe7+YhIB45PNAAfCtIR0OZoJQ1A
- TEnpMgArhCeYNxgOjznqcAOg+tkf1tTw3k4ngMU/9SJPx5+eA19VtpGeTgAdDCvsIzwdnG4l
- 4dPuO4RX+IHD264LAwJJK2Fl+wvSw8PosfBprwA8LKGjoOW+GfMMEf1D1yyRnnMgvQyWFwqY
- t+IHG066CA/70LHw7cu2gUmcDoF9pse4l4Ngsysf8/JoaOvMww8Df+Mg3ThIMQ5SjIMUMyAs
- YDiXzKsT1XxYcriG26niWTWfqklUbdimtoKBh1Aqy4Dd0qWqBhgFqgGkcEWABKiz1kslCezu
- PZx2W7w2NYnjq8EIilAESZoMDfFSOpFN4bZyXDKn/Z9ilI9Mh8UAP/ndyOjGdnytJrb2/crl
- SlWWTtv2HYTHpObO/ZIm7LDPl+VOvCwb93OF/vX5z9bl4vOUQqqJ2Vu1MKp+yUx7xrvre90R
- O/uitcVv4B0Vz1NzDOOzLzpLJ42OKHA7PrHbhUNKkX5Yk//IlISiq9Hh7rp96pyt+owtMr9M
- x9GlrYtY6x+TfN5sU+xGfHIVOX0GON2hf1twy+4KUcROW5oz4Wz5GXSvNCA9e5Rk/6WCtGZj
- Xs8jPC2uwRy8pa93QkvnFHP6qpZGP4uLPRoXFumbWdddiAd+SPhbkb+6pm+BfLcQ9vLBGFP8
- muCbVTZ9wPiukT20bwlSfTyWYvt+X0Hwm9gwJa7l2X+Ix37+fwMAAA==
-X-CMS-MailID: 20220520024600epcas1p340ac0aa2dcf54e4b69180e8d4483bd18
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20220519182512epcas1p3020bd4713580c9244f759971b8bd2c3a
-References: <20220516004311.18358-1-roger.lu@mediatek.com>
- <CAGXv+5GSdWPZe3fNpBJ_WW0zCL8Skg6fHx9ATxaKU1hyMEt2Ww@mail.gmail.com>
- <7h4k1ndaui.fsf@baylibre.com> <7hy1yzbtb7.fsf@baylibre.com>
- <CAGXv+5GT=3m=pVPwUOWR42BR=emCpBXvvoAiRV7YKt2kEKWdAQ@mail.gmail.com>
- <CGME20220519182512epcas1p3020bd4713580c9244f759971b8bd2c3a@epcas1p3.samsung.com>
- <7hmtfdbcsc.fsf@baylibre.com>
- <5a1767dc-ba2d-4de5-d8fe-2f308d3318a9@samsung.com>
- <CAGXv+5EsgiXCpe-8H0cQ=qm_Nq+yfM_a4b1L=hOFP6mcwfZymw@mail.gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_194609_110155_F9B9365C 
-X-CRM114-Status: GOOD (  38.11  )
+X-CRM114-CacheID: sfid-20220519_200851_896711_B1E670A9 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,146 +96,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/20/22 11:42 AM, Chen-Yu Tsai wrote:
-> On Fri, May 20, 2022 at 9:28 AM Chanwoo Choi <cw00.choi@samsung.com> wrote:
->>
->> Hi Kevin, Chen-Yu,
->>
->> On 5/20/22 3:25 AM, Kevin Hilman wrote:
->>> Chen-Yu Tsai <wenst@chromium.org> writes:
->>>
->>>> n Wed, May 18, 2022 at 8:03 AM Kevin Hilman <khilman@kernel.org> wrote:
->>>>>
->>>>> Kevin Hilman <khilman@kernel.org> writes:
->>>>>
->>>>>> Chen-Yu Tsai <wenst@chromium.org> writes:
->>>>>>
->>>>>>> On Mon, May 16, 2022 at 8:43 AM Roger Lu <roger.lu@mediatek.com> wrote:
->>>>>>>>
->>>>>>>> The Smart Voltage Scaling(SVS) engine is a piece of hardware
->>>>>>>> which calculates suitable SVS bank voltages to OPP voltage table.
->>>>>>>> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
->>>>>>>> when receiving OPP_EVENT_ADJUST_VOLTAGE.
->>>>>>>>
->>>>>>>> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
->>>>>>>> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
->>>>>>>> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
->>>>>>>>
->>>>>>>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
->>>>>>>> [2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
->>>>>>>> [3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
->>>>>>>>
->>>>>>>> Change since v24:
->>>>>>>> - Rebase to Linux 5.18-rc6
->>>>>>>> - Show specific fail log in svs_platform_probe() to help catch which step fails quickly
->>>>>>>> - Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
->>>>>>>>
->>>>>>>> Test in below environment:
->>>>>>>> SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
->>>>>>>> HW: mt8183-Krane
->>>>>>>>
->>>>>>>> [4] https://protect2.fireeye.com/v1/url?k=847bae75-e5f0bb43-847a253a-000babff9b5d-0b6f42041b9dea1d&q=1&e=37a26c43-8564-4808-9701-dc76d1ebbb27&u=https%3A%2F%2Fgithub.com%2Fwens%2Flinux%2Fcommits%2Fmt8183-cpufreq-cci-svs-test
->>>>>>>
->>>>>>> I've updated my branch to include all the latest versions of the relevant
->>>>>>> patch series:
->>>>>>>
->>>>>>> - anx7625 DPI bus type series v2 (so the display works)
->>>>>>> - MT8183 thermal series v9 (this seems to have been overlooked by the
->>>>>>> maintainer)
->>>>>>> - MTK SVS driver series v25
->>>>>>> - devfreq: cpu based scaling support to passive governor series v5
->>>>>>> - MTK CCI devfreq series v4
->>>>>>> - MT8183 cpufreq series v7
->>>>>>> - Additional WIP patches for panfrost MTK devfreq
->>>>>>
->>>>>> Thanks for preparing an integration branch Chen-Yu.
->>>>>>
->>>>>> I'm testing this on mt8183-pumpkin with one patch to add the CCI
->>>>>> regulator[1], and the defconfig you posted in a previous rev of this
->>>>>> series, but the CCI driver still causes a fault on boot[2] on my
->>>>>> platform.
->>>>>>
->>>>>> I mentioned in earlier reviews that I think there's potentially a race
->>>>>> between CCI and SVS loading since they are co-dependent.  My hunch is
->>>>>> that this is still not being handled properly.
->>>>>
->>>>> Ah, actually it's crashing when I try to boot the platform with
->>>>> `maxcpus=4` on the cmdline (which I have to do because mt8183-pumpkin is
->>>>> unstable upstream with the 2nd cluster enabled.)
->>
->> This warning message is printed by 'WARN_ON(cpufreq_passive_unregister_notifier(devfreq))'
->> on devfreq passive governor.
->>
->> If the cpufreq drivers are not probed before of probing cci devfreq driver
->> with passive governor, passive governor shows this warning message.
->> Because passive governor with CPUFREQ_PARENT_DEV depends on the cpufreq driver
->> in order to get 'struct cpufreq_policy'[2].
->>
->> [1] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n339
->> [2] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n282
->>
->> But, as I knew, this message might not stop the kernel. Just show the warning
->> message and then return -EPROBE_DEFER error. It means that maybe try to
->> probe the cci devfreq driver on late time of kernel booting
->> and then will be working. But, I need the full kernel booting log
->> and the booting sequence of between cpufreq and cci devfreq driver.
+On Thu, 2022-05-19 at 20:55 +0800, Rex-BC Chen wrote:
+> To support reset of infra_ao, add the index of infra_ao reset of
+> thermal/svs/pcei for MT8192 and thermal/svs for MT8195.
 > 
-> Maybe just use a standard dev_warn() instead? WARN_ON causes all sorts
-> of panicking in developers' minds. :p
-
-OK. I'll use dev_warn() instead of WARN_ON.
-
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> ---
+>  include/dt-bindings/reset/mt8192-resets.h | 8 ++++++++
+>  include/dt-bindings/reset/mt8195-resets.h | 6 ++++++
+>  2 files changed, 14 insertions(+)
 > 
->> In order to fix your issue, could you share the full booting log?
->> And if possible, please explain the more detailed something about this.
-> 
-> The shortened version is that on an 8 core system, with maxcpus=4,
-> only the first four cores are booted and have cpufreq associated.
-> I've not actually used this mechanism, so I don't really know what
-> happens if the other cores are brought up later with hotplug. Is
-> cpufreq expected to attach to them?
-> 
-> Maybe Kevin can add some more details.
-> 
-> 
-> ChenYu
-> 
-> 
->>>>>
->>>>> The CCI driver should be a bit more robust about detecting
->>>>> available/online CPUs
->>>>
->>>> This all seems to be handled in the devfreq passive governor.
->>>
->>> Well, that's the initial crash.  But the SVS driver will also go through
->>> its svs_mt8183_banks[] array (including both big & little clusters) and
->>> try to init SVS, so presumably that will have some problems also if only
->>> one cluster is enabled.
->>>
->>>> And presumably we'd like to have CCI devfreq running even if just one
->>>> core was booted.
->>>
->>> Yes, I assume so also.
->>>
->>>> Added Chanwoo for more ideas.
->>>
->>> OK, thanks.
->>>
->>> Kevin
->>
->>
->> --
->> Best Regards,
->> Chanwoo Choi
->> Samsung Electronics
-> 
+> diff --git a/include/dt-bindings/reset/mt8192-resets.h b/include/dt-
+> bindings/reset/mt8192-resets.h
+> index 764ca9910fa9..12e2087c90a3 100644
+> --- a/include/dt-bindings/reset/mt8192-resets.h
+> +++ b/include/dt-bindings/reset/mt8192-resets.h
+> @@ -7,6 +7,7 @@
+>  #ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8192
+>  #define _DT_BINDINGS_RESET_CONTROLLER_MT8192
+>  
+> +/* TOPRGU resets */
+>  #define MT8192_TOPRGU_MM_SW_RST					
+> 1
+>  #define MT8192_TOPRGU_MFG_SW_RST				2
+>  #define MT8192_TOPRGU_VENC_SW_RST				3
+> @@ -30,4 +31,11 @@
+>  /* MMSYS resets */
+>  #define MT8192_MMSYS_SW0_RST_B_DISP_DSI0			15
+>  
+> +/* INFRA resets */
+> +#define MT8192_INFRA_RST0_THERM_CTRL_SWRST		0
+> +#define MT8192_INFRA_RST2_PEXTP_PHY_SWRST		1
+> +#define MT8192_INFRA_RST3_THERM_CTRL_PTP_SWRST	2
+> +#define MT8192_INFRA_RST4_PCIE_TOP_SWRST		3
+> +#define MT8192_INFRA_RST4_THERM_CTRL_MCU_SWRST	4
+> +
+>  #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8192 */
+> diff --git a/include/dt-bindings/reset/mt8195-resets.h b/include/dt-
+> bindings/reset/mt8195-resets.h
+> index a26bccc8b957..0b1937f14b36 100644
+> --- a/include/dt-bindings/reset/mt8195-resets.h
+> +++ b/include/dt-bindings/reset/mt8195-resets.h
+> @@ -7,6 +7,7 @@
+>  #ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8195
+>  #define _DT_BINDINGS_RESET_CONTROLLER_MT8195
+>  
+> +/* TOPRGU resets */
+>  #define MT8195_TOPRGU_CONN_MCU_SW_RST          0
+>  #define MT8195_TOPRGU_INFRA_GRST_SW_RST        1
+>  #define MT8195_TOPRGU_APU_SW_RST               2
+> @@ -26,4 +27,9 @@
+>  
+>  #define MT8195_TOPRGU_SW_RST_NUM               16
+>  
+> +/* INFRA resets */
+> +#define MT8195_INFRA_RST0_THERM_CTRL_SWRST     0
+> +#define MT8195_INFRA_RST3_THERM_CTRL_PTP_SWRST 1
+> +#define MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST 2
+> +
+>  #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8195 */
+> -- 
+> 2.18.0
 > 
 
+Hello Stephen,
 
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+this patch will have conflict with Matthias's commit branch for
+include/dt-bindings/reset/mt8192-resets.h.
+
+It's on linux-next.
+
+I have fix it in this version, but I think there will be a merge
+conflict if you pick my series in this run.
+
+
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/include/dt-bindings/reset/mt8192-resets.h?h=next-20220519&id=19c66219e4d5b813ebbd28621cfe9c450659ded7
+
+BRs,
+Rex
+
 
 _______________________________________________
 Linux-mediatek mailing list
