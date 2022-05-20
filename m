@@ -4,65 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A089DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 18:11:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCB26C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 18:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YHsJ2BhBEwUCl+nQ1P9t2zjYRGSMAbsZ6HrHCzG5fyc=; b=3u0gkkmPDH09Wvtv5YfKVreOEb
-	zqguc4DYpORPwOMyi5jiEcM6Dn078ycALIJp5gVcY1HFvlyIqh2UqQacG/PYZ4STltZhAul/3JVYD
-	FsB4nM5PTNIfHFsstcnJ3Ed4R0c5EbPOE62vwXdcbhKABFw1KX1uHtG+tuZVUl9KXZ1j8oCgf6l/T
-	0wRU7oHHIacVkszv2dG9gGSU5WzHtA7vcjVOocPndl5H66FuNFx0MMDAxbrzmOYjtQJa7jB+ErjvS
-	by2Lcp93Au9+dN6jBDbeTkhqn1nnkIbt2nrOIzATCd1XSo2Ro7bfsGG6XQLrrXO5zfLTlSxgPNFSt
-	fxDCiwlw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=u9HwjbHviVYPQneHvSelHZ5+3qLUeIc4JJOel0ceRJM=; b=fTlw7RAPoT/bvH
+	lkcz3Y2udSAcDqrcLpzs66qHXdD0RmGCiyB3N3nIntJF9UCptYuwCAYM3MW/JETnBSKkKxPHlLgAZ
+	2LYVjPteiTk33ZV2iv9nRMkxBWEiXXiLbJEgaj17hHgEy6Z45pB8rwy0X6x9JLzH7iNd/4aLwVN3Z
+	H616Gq6YYY/vABP6CaTNtF3J35YqTugeZzFsOW6mivX5NtQX5Yner9avJvhfNIPCbKdKBQ/BpDRZO
+	R+Kt1862GVaWZCG0ISdj1ncS+47etWXgpUCyCCyuNWwzD9GedmABeZp7VtdMqY4N02Liz0fVOpQmM
+	3GuSyf/yGbN1aye0RWNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns760-00E0bZ-4s; Fri, 20 May 2022 18:11:28 +0000
+	id 1ns76m-00E0kw-A2; Fri, 20 May 2022 18:12:16 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns75w-00E0aq-IR
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 18:11:25 +0000
+ id 1ns76k-00E0kF-En
+ for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 18:12:15 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 798F0B82D91;
- Fri, 20 May 2022 18:11:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72113C385A9;
- Fri, 20 May 2022 18:11:20 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 1BD9AB82D77;
+ Fri, 20 May 2022 18:12:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F25B0C385A9;
+ Fri, 20 May 2022 18:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1653070281;
- bh=k/yJclsWlrwAFMAoHXAQBg8IUcASAQM+ZxdCKiEZ3o0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=gWzdXZX8E2cheZv2N7f9vQRmDrxDCYMjKMAirb/L+ZiAI9bkMaqPQX8dgplfBW2l+
- urhqN5F3kd0I4MidxnVeVINAjqG74n/jsqvgm8dWzeQLeHV+vaownZI4tK/sVQmoI4
- NYrOBX1gSF0oGs1l8at4wRt8ingJR7/BCodpA8nAXUCvQ6WyLVeJRYjkv9qMqdfi1V
- mrPcUlH1bqw8lgWlgaKa+Yw1xmDty+3YAkaFmHgbYwvU7Mvo7wcPl3HojbAKVRQrO4
- lvbn3IMpKp49shNVCCCuUbUyHNQN0hrOz0D6gePQWsnXjquhjyAwJxDRHx+33m0o07
- zF5GPSVolicxw==
-Date: Fri, 20 May 2022 20:11:16 +0200
+ s=k20201202; t=1653070331;
+ bh=XH5tR/ceOrMA3qoQoBm41vju6F5mQ+4rINaDTk1L2Lw=;
+ h=From:To:Cc:Subject:Date:From;
+ b=DCjxGgLpX5eb4k63KxSdtXSNIoGzheVdUukHoZ43p83DSb6T5Zlamxl2h5feiMVoR
+ 5kBwL03Yse+QLYtpdI3sLMx/DMaMjrGtICwmV6bOQRR5EsNcU3EzKq7CS6Qlnw+cD+
+ x9fop2UXLr4kh/7RljZVjc2m7b4X61MnmdqJgZDCHP09CMIXkDx21R6VH8fqlJj9tV
+ qtEd799ETKPS6cZ45V1FROeBehhNk5lWl5NopZqMpYqT3v/OcyfU6b67tihgtP04q9
+ pI4a2sSzka8mu+eHJxcuAXHadJ7E+AsJuvgbrhdtjrlyKnSectvqphWafkgko17/IY
+ peucm2OTMC30g==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
- Sam.Shih@mediatek.com, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, robh@kernel.org, lorenzo.bianconi@redhat.com
-Subject: Re: [PATCH v2 net-next 11/15] net: ethernet: mtk_eth_soc: introduce
- device register map
-Message-ID: <YofZxFO2nGuPCyZi@lore-desk>
-References: <cover.1652716741.git.lorenzo@kernel.org>
- <78e8c6ed230130b75aae77e6d05a9b35e298860a.1652716741.git.lorenzo@kernel.org>
- <20220517184122.522ed708@kernel.org> <YoTA+5gLC4zhoQ0F@lore-desk>
- <20220518084431.66aa1737@kernel.org> <YoX3AMlBFfDcl69o@lore-desk>
- <20220519091224.4409b54d@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, Sam.Shih@mediatek.com,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ robh@kernel.org, lorenzo.bianconi@redhat.com
+Subject: [PATCH v3 net-next 00/16] introduce mt7986 ethernet support
+Date: Fri, 20 May 2022 20:11:23 +0200
+Message-Id: <cover.1653069056.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-In-Reply-To: <20220519091224.4409b54d@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_111124_789694_93C980FA 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20220520_111214_671087_05C80435 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,73 +69,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6888228106358256048=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add support for mt7986-eth driver available on mt7986 soc.
 
---===============6888228106358256048==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Hegm7aOIsPhLkENM"
-Content-Disposition: inline
+Changes since v2:
+- rely on GFP_KERNEL whenever possible
+- define mtk_reg_map struct to introduce soc register map and avoid macros
+- improve comments
 
+Changes since v1:
+- drop SRAM option
+- convert ring->dma to void
+- convert scratch_ring to void
+- enable port4
+- fix irq dts bindings
+- drop gmac1 support from mt7986a-rfb dts for the moment
 
---Hegm7aOIsPhLkENM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Lorenzo Bianconi (16):
+  arm64: dts: mediatek: mt7986: introduce ethernet nodes
+  dt-bindings: net: mediatek,net: add mt7986-eth binding
+  net: ethernet: mtk_eth_soc: rely on GFP_KERNEL for dma_alloc_coherent
+    whenever possible
+  net: ethernet: mtk_eth_soc: move tx dma desc configuration in
+    mtk_tx_set_dma_desc
+  net: ethernet: mtk_eth_soc: add txd_size to mtk_soc_data
+  net: ethernet: mtk_eth_soc: rely on txd_size in
+    mtk_tx_alloc/mtk_tx_clean
+  net: ethernet: mtk_eth_soc: rely on txd_size in mtk_desc_to_tx_buf
+  net: ethernet: mtk_eth_soc: rely on txd_size in txd_to_idx
+  net: ethernet: mtk_eth_soc: add rxd_size to mtk_soc_data
+  net: ethernet: mtk_eth_soc: rely on txd_size field in
+    mtk_poll_tx/mtk_poll_rx
+  net: ethernet: mtk_eth_soc: rely on rxd_size field in
+    mtk_rx_alloc/mtk_rx_clean
+  net: ethernet: mtk_eth_soc: introduce device register map
+  net: ethernet: mtk_eth_soc: introduce MTK_NETSYS_V2 support
+  net: ethernet: mtk_eth_soc: convert ring dma pointer to void
+  net: ethernet: mtk_eth_soc: convert scratch_ring pointer to void
+  net: ethernet: mtk_eth_soc: introduce support for mt7986 chipset
 
-> On Thu, 19 May 2022 09:51:28 +0200 Lorenzo Bianconi wrote:
-> > > I don't think there's a best known practice, you'll have to exercise
-> > > your judgment. Taking a look at a random example of MTK_PDMA_INT_STAT=
-US.
-> > > Looks like that one is already assigned to eth->tx_int_status_reg.
-> > > Maybe that can be generalized? Personally I'd forgo the macros
-> > > completely and just use eth->soc->register_name in the code. =20
-> >=20
-> > I personally think the code is easier to read if we use macros in this =
-case.
-> > Let's consider MTK_LRO_CTRL_DW1_CFG(), it depends on the particular soc=
- based
-> > on the register map and even on the ring index. I guess the best trade-=
-off we
-> > can get is to explicitly pass eth to the macros as parameter when neede=
-d.
->=20
-> Yeah, do you, I was just sharing what my knee jerk direction would be.
-> You know the code better.
+ .../devicetree/bindings/net/mediatek,net.yaml | 141 ++-
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts  |  74 ++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  39 +
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts  |  70 ++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 834 +++++++++++++-----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 305 ++++---
+ 6 files changed, 1113 insertions(+), 350 deletions(-)
 
-reworking the code I introduced a register map removing the macro dependenc=
-y.
-I will post v3 soon.
+-- 
+2.35.3
 
-Regards,
-Lorenzo
-
---Hegm7aOIsPhLkENM
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYofZxAAKCRA6cBh0uS2t
-rHdnAPwNnnUCfrfNOQE+XS8G2+JVOD3zD5Mm04pipDf4xGwi2AEAwmpnbYwRQlnZ
-ivMIn2SWK8Rx8uxbKDxQAGNFLEFD6A8=
-=XugI
------END PGP SIGNATURE-----
-
---Hegm7aOIsPhLkENM--
-
-
---===============6888228106358256048==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6888228106358256048==--
-
