@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64182C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 09:19:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EC97C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 09:44:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Cc:To
-	:Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=isf+MMrUPgv1GEdnUTDQiNPoeasMIVrzrXNH+xRfaCs=; b=3cOVJoIX/cWmiy+O6Tjo/CUDHU
-	S/48pErzlAhIc+aAO7JSg+0Cy4hm1njqGv7axdo89BH7mW1VZfR22qneSKMoKUHzYByxu9lugjd0q
-	Ee+gnQOzZVxqzMMgSVEAZv3+KH26pOKeWF0eSIbDVbR9EeB71Lcz9WuRBZeNuM0nJTVU9BKQgGwh1
-	ABHBGj3733SLmkMe3yAR/SAspMs24k0aHAssY9MdXQS1kT8saslvw3XwGFQ/2TF37dpS5w0hJkrtx
-	ve3/+gLoOVKqagz9Hw4FYaiEzLnI73LWv9nnlXXu+H3Kyv/w29woTEqCxiqrNGoKCEoEi30CDADMm
-	CIBSRMCw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DqoAq+8Yzd9Xir1iIFoFZrw3bg2vQLL8st2R+juKhlY=; b=vH/vkrguswr34z
+	/oAdUPyxldfOVni9DJlEYMFGvRXN3Ejr8CjiQ7vITXj4c5rJLfleOeWF7OdVBob60oAAQDZPLPsQ6
+	tE7pt7PnwIF4CxPGDXUvT2Kj1OuWCr5bTHfJynjdyvfpisf9NBZef/4/3HgQ8iLK9FMBXTD4WUD39
+	86vU9T4sfN7ZDGB+ydGtUnnlFArWu1CoViBbAjr3J6gjgW3vKMrBTdhfio9JgW9Q01WunVVOM5qnC
+	6kwVC/fvL5zMghGWLH4BGMni9BxTJ3wY1lO120ovUpH8GhJGWPH/n9/D/Gw4PkrI1+5kD3cFIvomb
+	+D1bvw3O5MWMTFvnE5tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrynP-00BYQ8-AS; Fri, 20 May 2022 09:19:43 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1nrzAy-00BgLG-TI; Fri, 20 May 2022 09:44:04 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nryn2-00BY7O-VR; Fri, 20 May 2022 09:19:23 +0000
-Received: by mail-ej1-x632.google.com with SMTP id gi33so5993419ejc.3;
- Fri, 20 May 2022 02:19:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:subject:to:cc:message-id:in-reply-to:references
- :mime-version; bh=VcTPVaqvCoNVkgpyNm16dnWDGZyl5qL7WxaDnKuP598=;
- b=QgSDOiwBJT42qz52RUfx+h8cf/UitIJqtSoyX9Yu2FMeGlS0WRwYR4ZXdQc/pjjSJn
- c7Rd8VXTTo2vSXpQqyMesenS5rB/lmJwAO6jP+Knx8p2DS2goYNODLBijrAIRpNEva+o
- LWquEXbcrRP4tiy1EzuQxSJqtNVZwEWBOs1Qu6CiRyTQppODkc2jTLQlFza4srgQes2+
- n+6l0oOmwW3Zgpk5dERg4MAmlb9M5cUXY7PX/kDO1axss+oPDsOXhmGB2pOKUjdgrdc4
- HEpa37dQp2+3kPtMJV9ojcycikDd50ks3zDV7Y+2iFPSqU+hWATNKiNZqTvMquCZ0CTe
- I9hw==
+ id 1nrzAw-00BgJD-0C
+ for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 09:44:03 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id ev18so7580495pjb.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 20 May 2022 02:43:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=b4toybDv1M53GirTn8tpXa0Kt2GdamhkRh4OIAgDtc4=;
+ b=WWvNjRlc9R3ylkT71F/0tYY4edxwlaAQp+Dvd7vVK/bnjQvRih4OUAVVzo1biCrAmn
+ YkhIzbWoHtuygjdR112SzgAHPZOxtb/tDDeieVB2abJW58imdO1Eo9vL3NtIFG2nqgbw
+ b1p6Sn1k7r4GowNho+ENI+EsKo91JVoN3LK/E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:subject:to:cc:message-id:in-reply-to
- :references:mime-version;
- bh=VcTPVaqvCoNVkgpyNm16dnWDGZyl5qL7WxaDnKuP598=;
- b=QPA5xPYlYWuT7YNAr+CW63ijpcmE0GUJNRwidWsWYabHlI0EVg48DK7F28Vmp6GMhl
- H00PC2FOGgo7BOzxKeddLW8+p2u5gMMm3Dz77PxEx34jx0A+Va8rRE3bTGQQZQtcc+kq
- lhOyo+AcJkEbhT8kQgOKBX+RfjoIw42fgnZdPIfw+xK/+GrZBlonsMaGvfNQhH4ovioQ
- szaJcFqhaR8NeGH8eiwLg2McKlvN3MUvWt9h9veVO0sNI+/p3U2fYKWw8hqHdcjpGRc1
- Rb2Xr3szlLInzO2/9l5juHY7S5d95WWywQCl2MSkGWdjkhN/FnlmjykFrFOKvjApPDlN
- fZww==
-X-Gm-Message-State: AOAM532+6FU3CRAXrzSsPfQpjAi4Xj/M6NETeqSt+g4fZz0aliDAtblK
- EUd4omaDjQH7yCWeCrl05A0=
-X-Google-Smtp-Source: ABdhPJzAUO9xeQzHtZ5a0Bbqyka1OnEaUWkU5eUvOy0bNzKwPcZqDJG4M05mzo97Bx7Dhn70lKrZSg==
-X-Received: by 2002:a17:907:7e92:b0:6f4:c553:c734 with SMTP id
- qb18-20020a1709077e9200b006f4c553c734mr7920226ejc.286.1653038354816; 
- Fri, 20 May 2022 02:19:14 -0700 (PDT)
-Received: from [192.168.151.247] ([138.199.7.159])
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=b4toybDv1M53GirTn8tpXa0Kt2GdamhkRh4OIAgDtc4=;
+ b=sG1MTTHmz8rfFwJxizpKoTWByE+ywZ41Q3N4d1j0MRBgXQSesw4WaqVrGi0bdSWmZX
+ IWn2lwwHnau7WFT6OqEP8bY6wg6wdokfClWc1jqUzauQczT59GCg9H7iYB0LBgIruPQK
+ EOrWQFJ5ZNgPPcKaJe8vqpXT/LNDp4vo+F1eBvvfFh0WC9i6La2BrlomPghwv0WZ1I5M
+ YiXCcwnaU/YaJknrjKN2I0YOsT/X0RCB/c1XZO6DGVB8T0NXCzAd1ITlPcZZHvsFvkHR
+ z2EPHCPUR9v0SOuWSVGG7iPzfflMCS7xt69KkR2w8N+P0Mq/MYWFboXQVEcE8eu50Bz5
+ I6bA==
+X-Gm-Message-State: AOAM530vRSOzicXirCnutE3UiLPX1XCp68ccUGqjF/9ssJLmCRbBk9ge
+ ose2JxctIYeTBUXMm6lOGQ93TA==
+X-Google-Smtp-Source: ABdhPJwnbKiL/9EFkMezmfR/RGWpPtvvom3H3Yyp6HcfhsLZSqErmLrIH1CjIf5RMqWmmYanZhLuQA==
+X-Received: by 2002:a17:903:22c7:b0:161:cf2e:2ce2 with SMTP id
+ y7-20020a17090322c700b00161cf2e2ce2mr8793814plg.59.1653039838197; 
+ Fri, 20 May 2022 02:43:58 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com
+ ([2401:fa00:1:10:ec49:9912:894:222d])
  by smtp.gmail.com with ESMTPSA id
- g16-20020a056402321000b0042ae33e055bsm4130930eda.2.2022.05.20.02.19.08
+ 23-20020aa79217000000b0050dc76281bfsm1290597pfo.153.2022.05.20.02.43.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 May 2022 02:19:14 -0700 (PDT)
-Date: Fri, 20 May 2022 13:18:59 +0400
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-Subject: Re: [PATCH v2 4/4] clk: mediatek: Add drivers for MediaTek MT6735
- main clock drivers
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: angelogioacchino.delregno@collabora.com, bgolaszewski@baylibre.com,
- chun-jie.chen@mediatek.com, devicetree@vger.kernel.org, ikjn@chromium.org,
- krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- mturquette@baylibre.com, p.zabel@pengutronix.de, robh+dt@kernel.org,
- sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com,
- weiyi.lu@mediatek.com, wenst@chromium.org, y.oudjana@protonmail.com,
- ~postmarketos/upstreaming@lists.sr.ht
-Message-Id: <NJC6CR.M4CF312LSXXV1@gmail.com>
-In-Reply-To: <20220520083514.27891-1-miles.chen@mediatek.com>
-References: <20220519142211.458336-5-y.oudjana@protonmail.com>
- <20220520083514.27891-1-miles.chen@mediatek.com>
-X-Mailer: geary/40.0
+ Fri, 20 May 2022 02:43:57 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 2/4] clk: mediatek: mt8183: mfgcfg: Propagate rate changes to
+ parent
+Date: Fri, 20 May 2022 17:43:21 +0800
+Message-Id: <20220520094323.754971-3-wenst@chromium.org>
+X-Mailer: git-send-email 2.36.1.124.g0e6072fb45-goog
+In-Reply-To: <20220520094323.754971-1-wenst@chromium.org>
+References: <20220520094323.754971-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_021921_072918_B30EA5B5 
-X-CRM114-Status: GOOD (  18.70  )
+X-CRM114-CacheID: sfid-20220520_024402_085344_82168E95 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,235 +90,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The only clock in the MT8183 MFGCFG block feeds the GPU. Propagate its
+rate change requests to its parent, so that DVFS for the GPU can work
+properly.
 
-On Fri, May 20 2022 at 16:35:14 +0800, Miles Chen 
-<miles.chen@mediatek.com> wrote:
-> hi Yassine,
-> 
->>  Add drivers for MT6735 apmixedsys, topckgen, infracfg and pericfg
->>  clock and reset controllers. These provide the base clocks on the
->>  platform, and should be enough to bring up all essential blocks
->>  including PWRAP, MSDC and peripherals (UART, I2C, SPI).
->> 
->>  Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->>  ---
->>  Dependencies:
->>  - clk: mediatek: Move to struct clk_hw provider APIs (series)
->>    
->> https://patchwork.kernel.org/project/linux-mediatek/cover/20220510104804.544597-1-wenst@chromium.org/
->>  - Cleanup MediaTek clk reset drivers and support MT8192/MT8195 
->> (series)
->>    
->> https://patchwork.kernel.org/project/linux-mediatek/cover/20220503093856.22250-1-rex-bc.chen@mediatek.com/
->>  - Export required symbols to compile clk drivers as module (single 
->> patch)
->>    
->> https://patchwork.kernel.org/project/linux-mediatek/patch/20220518111652.223727-7-angelogioacchino.delregno@collabora.com/
->>  - clk: mediatek: Improvements to simple probe/remove and reset 
->> controller unregistration
->>    
->> https://patchwork.kernel.org/project/linux-clk/cover/20220519134728.456643-1-y.oudjana@protonmail.com/
->> 
->>   MAINTAINERS                                  |    4 +
->>   drivers/clk/mediatek/Kconfig                 |    9 +
->>   drivers/clk/mediatek/Makefile                |    1 +
->>   drivers/clk/mediatek/clk-mt6735-apmixedsys.c |  235 ++++
-> 
-> ...snip...
-> 
->>  +#define APLL2_CON0		0x284
->>  +#define APLL2_CON1		0x288
->>  +#define APLL2_CON2		0x28c
->>  +#define APLL2_PWR_CON0		0x294
->>  +
->>  +#define CON0_RST_BAR		BIT(24)
->>  +
->>  +static const struct mtk_pll_data apmixedsys_plls[] = {
->>  +	{
->>  +		.id = ARMPLL,
->>  +		.name = "armpll",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = ARMPLL_CON0,
->>  +		.pwr_reg = ARMPLL_PWR_CON0,
->>  +		.en_mask = 0x00000001,
->>  +
->>  +		.pd_reg = ARMPLL_CON1,
->>  +		.pd_shift = 24,
->>  +
->>  +		.pcw_reg = ARMPLL_CON1,
->>  +		.pcw_chg_reg = ARMPLL_CON1,
->>  +		.pcwbits = 21,
->>  +
->>  +		.flags = PLL_AO
-> 
-> Thanks for submitting this patch.
-> 
-> I compare this with drivers/clk/mediatek/clk-mt7986-apmixed.c,
-> and other clk files are using macros to make the mtk_pll_data array
-> more readable.
+Fixes: acddfc2c261b ("clk: mediatek: Add MT8183 clock support")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/clk/mediatek/clk-mt8183-mfgcfg.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-I'd actually argue that macros make it less readable. While reading
-other drivers I had a lot of trouble figuring out which argument
-is which field of the struct, and had to constantly go back to the
-macro definitions and count arguments to find it. Having it this
-way, each value is labeled clearly with the field it's in. I think
-the tradeoff between line count and readability here is worth it.
-
-> 
-> Would you mind following the same style for all c files, please?
-> 
-> e.g.,
-> 	static const struct mtk_pll_data plls[] = {
-> 		PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0x00000001, 0, 32,
-> 				0x0200, 4, 0, 0x0204, 0),
-> 		PLL(CLK_APMIXED_NET2PLL, "net2pll", 0x0210, 0x021C, 0x00000001, 0, 
-> 32,
-> 				0x0210, 4, 0, 0x0214, 0),
-> 		...
-> 	};
-> 
->>  +	},
->>  +	{
->>  +		.id = MAINPLL,
->>  +		.name = "mainpll",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = MAINPLL_CON0,
->>  +		.pwr_reg = MAINPLL_PWR_CON0,
->>  +		.en_mask = 0xf0000101,
->>  +
->>  +		.pd_reg = MAINPLL_CON1,
->>  +		.pd_shift = 24,
->>  +
->>  +		.pcw_reg = MAINPLL_CON1,
->>  +		.pcw_chg_reg = MAINPLL_CON1,
->>  +		.pcwbits = 21,
->>  +
->>  +		.flags = HAVE_RST_BAR,
->>  +		.rst_bar_mask = CON0_RST_BAR
->>  +	},
->>  +	{
->>  +		.id = UNIVPLL,
->>  +		.name = "univpll",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = UNIVPLL_CON0,
->>  +		.pwr_reg = UNIVPLL_PWR_CON0,
->>  +		.en_mask = 0xfc000001,
->>  +
->>  +		.pd_reg = UNIVPLL_CON1,
->>  +		.pd_shift = 24,
->>  +
->>  +		.pcw_reg = UNIVPLL_CON1,
->>  +		.pcw_chg_reg = UNIVPLL_CON1,
->>  +		.pcwbits = 21,
->>  +
->>  +		.flags = HAVE_RST_BAR,
->>  +		.rst_bar_mask = CON0_RST_BAR
->>  +	},
->>  +	{
->>  +		.id = MMPLL,
->>  +		.name = "mmpll",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = MMPLL_CON0,
->>  +		.pwr_reg = MMPLL_PWR_CON0,
->>  +		.en_mask = 0x00000001,
->>  +
->>  +		.pd_reg = MMPLL_CON1,
->>  +		.pd_shift = 24,
->>  +
->>  +		.pcw_reg = MMPLL_CON1,
->>  +		.pcw_chg_reg = MMPLL_CON1,
->>  +		.pcwbits = 21
->>  +	},
->>  +	{
->>  +		.id = MSDCPLL,
->>  +		.name = "msdcpll",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = MSDCPLL_CON0,
->>  +		.pwr_reg = MSDCPLL_PWR_CON0,
->>  +		.en_mask = 0x00000001,
->>  +
->>  +		.pd_reg = MSDCPLL_CON1,
->>  +		.pd_shift = 24,
->>  +
->>  +		.pcw_reg = MSDCPLL_CON1,
->>  +		.pcw_chg_reg = MSDCPLL_CON1,
->>  +		.pcwbits = 21,
->>  +	},
->>  +	{
->>  +		.id = VENCPLL,
->>  +		.name = "vencpll",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = VENCPLL_CON0,
->>  +		.pwr_reg = VENCPLL_PWR_CON0,
->>  +		.en_mask = 0x00000001,
->>  +
->>  +		.pd_reg = VENCPLL_CON1,
->>  +		.pd_shift = 24,
->>  +
->>  +		.pcw_reg = VENCPLL_CON1,
->>  +		.pcw_chg_reg = VENCPLL_CON1,
->>  +		.pcwbits = 21,
->>  +
->>  +		.flags = HAVE_RST_BAR,
->>  +		.rst_bar_mask = CON0_RST_BAR
->>  +	},
->>  +	{
->>  +		.id = TVDPLL,
->>  +		.name = "tvdpll",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = TVDPLL_CON0,
->>  +		.pwr_reg = TVDPLL_PWR_CON0,
->>  +		.en_mask = 0x00000001,
->>  +
->>  +		.pd_reg = TVDPLL_CON1,
->>  +		.pd_shift = 24,
->>  +
->>  +		.pcw_reg = TVDPLL_CON1,
->>  +		.pcw_chg_reg = TVDPLL_CON1,
->>  +		.pcwbits = 21
->>  +	},
->>  +	{
->>  +		.id = APLL1,
->>  +		.name = "apll1",
->>  +		.parent_name = "clk26m",
->>  +
->>  +		.reg = APLL1_CON0,
->>  +		.pwr_reg = APLL1_PWR_CON0,
->>  +module_platform_driver(clk_mt6735_apmixedsys);
->>  +
->>  +MODULE_AUTHOR("Yassine Oudjana <y.oudjana@protonmail.com>");
->>  +MODULE_DESCRIPTION("Mediatek MT6735 apmixedsys clock driver");
-> 
-> Would you mind changing all Mediatek to MediaTek?
-> i.e.,
-> 
-> s/Mediatek/MediaTek/
-> 
-
-Sure. Will fix it.
-
-> 
-> thanks,
-> Miles
->  +MODULE_LICENSE("GPL");
-> 
-
-Thanks,
-Yassine
-
-
+diff --git a/drivers/clk/mediatek/clk-mt8183-mfgcfg.c b/drivers/clk/mediatek/clk-mt8183-mfgcfg.c
+index d774edaf760b..230299728859 100644
+--- a/drivers/clk/mediatek/clk-mt8183-mfgcfg.c
++++ b/drivers/clk/mediatek/clk-mt8183-mfgcfg.c
+@@ -18,9 +18,9 @@ static const struct mtk_gate_regs mfg_cg_regs = {
+ 	.sta_ofs = 0x0,
+ };
+ 
+-#define GATE_MFG(_id, _name, _parent, _shift)			\
+-	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift,	\
+-		&mtk_clk_gate_ops_setclr)
++#define GATE_MFG(_id, _name, _parent, _shift)				\
++	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift,	\
++		       &mtk_clk_gate_ops_setclr, CLK_SET_RATE_PARENT)
+ 
+ static const struct mtk_gate mfg_clks[] = {
+ 	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_sel", 0)
+-- 
+2.36.1.124.g0e6072fb45-goog
 
 
 _______________________________________________
