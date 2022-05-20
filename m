@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41FC8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 04:53:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7554AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 May 2022 04:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m4HxhoRu2TTyASgLC/IY5L38vigR0qGRptXPUtPjqzQ=; b=KYlACs/TA48gNy
-	9YBDcm8t3EHt7HWJxq2GeSJRzIPmzcfb1BQzHv3/WLV6LhXpZVKsfr5LsEzVdkOs5/cbszqFSj+6Z
-	RA2XxWmZy4k1EZql8xN7xP6avQF9NkO3TB39xZYwuL7/2JKkU8OXjPO7ZVXnV6JQ4v3AmSv/K+bS5
-	mBgKKM8gCu/0A91B2lU4z9nDOu8SE0b1VsGX94H9ywBxqTxR9+4uXXal1y8bYD6Dcd8FdDlIPJ0+H
-	BzyBdZikRx8eR+Rs9hipTlQz1zmuSJBhSA2ar9Rvpy3yzdFMYiB5ElKITpiYFeGCuKqp/IQkSqZwy
-	cqOKm4dPo92pg1A12Yzw==;
+	List-Owner; bh=dyJtb9xmmK8tTXJGT9phjC27YLFVp9m9lPuT6vLXDaw=; b=igZ1BNL6NVArdz
+	HgaaKg57UY8RQo7CzoXcg+3OOU5jFfFToAx1K99hh014psWCuv2E88zb2wNaOUth0rehC2mPXE3WN
+	AVR4YiPPIHzIAEa9+/Qqc9trpRx8suzC4VvnHpmsW0EtF3cfS1jXuy19fwH/EAQVA2+UL4f0Ha9Ld
+	dVbd0XFJf2cXjxczs9XRLzkhO87jtM5T3/LHb1ZrGydbk4OtuOTuUMdpGxvVZ1i0gjx1JFprwqRdo
+	qpavQr9GooLjWoYTJyywAOvhKI2CmlWm7jP1FSzg0LcyrCgUf66zpBshszMFo6QtGJiksVHJ3OhWR
+	+yscbZDl8qwknATUUaOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrudP-00AVca-HG; Fri, 20 May 2022 04:53:07 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1nrufl-00AWHQ-JU; Fri, 20 May 2022 04:55:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrudN-00AVag-Hv
- for linux-mediatek@lists.infradead.org; Fri, 20 May 2022 04:53:06 +0000
-Received: by mail-ej1-x636.google.com with SMTP id m20so13443829ejj.10
- for <linux-mediatek@lists.infradead.org>; Thu, 19 May 2022 21:53:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HelS1YSgoBW0SE2UIxwjEVxXmUoAGRP6Ud70VaUb1RA=;
- b=H6iH3aexSzoRS3xXyRLeJheX9vWo0LSI92UAWGJj3vVnikNVcBAUVV//3jW+OoHWMo
- c6QuxxhcpXAZBwmBxi7/BCYKY2HuDVbJgHBMKEtcou/69yjh3SsfubfIpwV8ZiWSmLnM
- 9YQff4597xej1VzxR5vTD6CKVagarFZCMisUQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HelS1YSgoBW0SE2UIxwjEVxXmUoAGRP6Ud70VaUb1RA=;
- b=BgscqSOnRWHBS3UUPBFW8GsiGzgLDBUpWuB85hdk94e3ZRJAA2VslL5BjMGof5bY1N
- aNo768hW1tPg1/QfxdneKhnleFJxKdqaMn4/6netFzFJTKscf0lDcZ6F8A24DFr2I4tt
- b+t6myLGMvmILhttalqkgB2/Yd1S+KcB8BzIsiaTf9dCBHqFXanRXe60/GiG5IkyulZ4
- FnoRij5iCfCAe7kcQBGKxt/kBxnqhY+H8fEhf5BZLVTT7Ov8DeFPoS8zdJBm0eUmoxFW
- PJsoBnh69v0dl+5mrftUZG3Sn6Bgyf5GvWgHutmH3oQIipE0tUfZk5f8RU+MMD9W0/Lx
- Swjw==
-X-Gm-Message-State: AOAM5331WHjP69MHfIOtKCOqXT+9A7HQILgX6Okih5+uE7T1bTPtWMDD
- V8gyqcrFhLvZcrmKcRA/m1t5zvetkh5Cj+lEBEfjNOKhSb2oUQ==
-X-Google-Smtp-Source: ABdhPJx//tzm42OLUTVgIaPY6+uQ1fk21PSPAoxge18XjLdO9zIresHOvI3h20PeWG9DGgGmlfuWizAbefFCfNTPqQQ=
-X-Received: by 2002:a17:907:c12:b0:6fe:22bb:7a0 with SMTP id
- ga18-20020a1709070c1200b006fe22bb07a0mr7327804ejc.450.1653022381201; Thu, 19
- May 2022 21:53:01 -0700 (PDT)
+ id 1nrufg-00AWFa-Jc; Fri, 20 May 2022 04:55:32 +0000
+X-UUID: a67f7b16eb2d4e4ebb71f56cc202d632-20220519
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:be1d970d-35dd-4b72-9a82-28802d24f1dc, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:a453f579-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: a67f7b16eb2d4e4ebb71f56cc202d632-20220519
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 842192924; Thu, 19 May 2022 21:55:17 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 May 2022 21:54:45 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 May 2022 12:54:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 20 May 2022 12:54:43 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <bgolaszewski@baylibre.com>, <chun-jie.chen@mediatek.com>,
+ <ck.hu@mediatek.com>, <devicetree@vger.kernel.org>, <fparent@baylibre.com>,
+ <ikjn@chromium.org>, <jason-jh.lin@mediatek.com>, <kernel@collabora.com>,
+ <konrad.dybcio@somainline.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <marijn.suijten@somainline.org>, <martin.botka@somainline.org>,
+ <matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
+ <mturquette@baylibre.com>, <p.zabel@pengutronix.de>,
+ <paul.bouchara@somainline.org>, <phone-devel@vger.kernel.org>,
+ <rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>, <sam.shih@mediatek.com>,
+ <sboyd@kernel.org>, <tinghan.shen@mediatek.com>, <weiyi.lu@mediatek.com>,
+ <wenst@chromium.org>, <y.oudjana@protonmail.com>,
+ <~postmarketos/upstreaming@lists.sr.ht>
+Subject: Re: [PATCH v2 7/7] clk: mediatek: Add MediaTek Helio X10 MT6795 clock
+ drivers
+Date: Fri, 20 May 2022 12:54:38 +0800
+Message-ID: <20220520045438.25661-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <a253f338-c162-17b8-f412-95cd63195151@collabora.com>
+References: <a253f338-c162-17b8-f412-95cd63195151@collabora.com>
 MIME-Version: 1.0
-References: <20220519134728.456643-1-y.oudjana@protonmail.com>
- <20220519134728.456643-2-y.oudjana@protonmail.com>
-In-Reply-To: <20220519134728.456643-2-y.oudjana@protonmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 20 May 2022 12:52:50 +0800
-Message-ID: <CAGXv+5GNoi_e2Ms3rcTTZ59k+_TZOB9qBM0p_BtE8EtDKYfpOQ@mail.gmail.com>
-Subject: Re: [PATCH 1/6] clk: mediatek: gate: Export
- mtk_clk_register_gates_with_dev
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Yassine Oudjana <y.oudjana@protonmail.com>,
- Miles Chen <miles.chen@mediatek.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- =?UTF-8?B?Sm9zw6kgRXhww7NzaXRv?= <jose.exposito89@gmail.com>, 
- Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, 
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_215305_651356_779802A1 
-X-CRM114-Status: UNSURE (   8.10  )
+X-CRM114-CacheID: sfid-20220519_215528_681068_3AC2E054 
+X-CRM114-Status: UNSURE (   8.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,16 +93,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 19, 2022 at 9:49 PM Yassine Oudjana
-<yassine.oudjana@gmail.com> wrote:
->
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
->
-> This allows it to be used in drivers built as modules.
->
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+Hi Angelo,
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>For MT8195... and 92, 83, 73... and others from the same era, being them for
+>chromebooks, iot, smartphones and whatever else... yeah you're totally right.
+>
+>The issue starts raising when looking at older SoCs featuring an older bootloader
+>that does have a kernel size limitation; for example, to make the loader happy on
+>MT6795, I had to strip the defconfig a lot and keep the Android-style boot.img
+>smaller than 10MB (that's Image.gz-dtb + ramdisk).
+
+I think you have the point :-)
+I did not consider the older SoCs case you mentioned and there is a real 10MB limit.
+I'm fine with this.
+
+ChenYu, What do you think?
+
+thanks,
+Miles
 
 _______________________________________________
 Linux-mediatek mailing list
