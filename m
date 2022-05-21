@@ -4,50 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E7EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 May 2022 10:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17A69C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 May 2022 11:14:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N3zvSzNPkiThd0hdGL5nazNPW/Gz0ITD19UCeOAkqGQ=; b=fuBdPaumyT5XeybIxcYG9bsKP0
-	NgSrvYBVJ/mxS6/m9rpDCnexjJGuJPZbcBA86jh6wAcJIawEaWeQJ1kdDWT/5feeqceyysZrMO5uM
-	7ZQpKj/W0poCqHLGWLVWKNLxukw2OTGpqHTOUKVMSfh1auSQQ1rtnraDf52R6jPC/X0LyRmpl+vHf
-	2cxPJ4Y4LUY+XCnKRHH0RtQZi1kj1yO/yXLZegzZqSBozXPBIye2ZZdegTaOUAWnZTnNdmy7Z14uE
-	wnrNp5EC+tmoIF8FxJfGzTXsa/xlRmUz40ZMEHZ/FmIn9nITHNHWEMod36gqIqdua7irxAY9KA1cE
-	UglHtfcQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PS+e5BungOKA1Xbm/kTVjwvVe416YLL7SUDJtrDwApM=; b=n0JdM4FcVtE66E
+	hThPsqVnRrVU4A5iCyifovWDSDkVWDRhwx3hkiHRqTbvJH2XUoBHn9WOjFwNi86JGklzsAHOTmWEV
+	1dQzSczNIpBgdGSDH+0GnZKkVDmJGKjDg//FUAhKqyXNK0OSisRhJ226Dr66sbEPUPx8Kmd4pCAC5
+	US+hKX8NGTBrX17P8YEkzrvBqPXCBAIv52Cv+X5kAUTwxACuhyLzM9ne/J9HfeyfsXto+cQoQJz7I
+	dYJsWEtWGxpJc+aIudhinDsAQqLEtVLawakzzdkDcAlk9XaK3QGL4UY1cLKQtX2i9j3hJ6LkcO/u3
+	ofDJ2Sv6XCw+xM9PNxeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nsMCL-00G9pD-V5; Sat, 21 May 2022 10:19:01 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nsMC1-00G9m0-OC; Sat, 21 May 2022 10:18:44 +0000
-Received: from localhost (p54ac0650.dip0.t-ipconnect.de [84.172.6.80])
- by pokefinder.org (Postfix) with ESMTPSA id 4E04D2C0024;
- Sat, 21 May 2022 12:12:27 +0200 (CEST)
-Date: Sat, 21 May 2022 12:12:26 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: Yang Yingliang <yangyingliang@huawei.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org,
- matthias.bgg@gmail.com, sr@denx.de, christophe.jaillet@wanadoo.fr
-Subject: Re: [PATCH -next v2 1/2] i2c: mt7621: fix missing
- clk_disable_unprepare() on error in mtk_i2c_probe()
-Message-ID: <Yoi7CtG+ZoNHvKdl@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa@the-dreams.de>,
- Yang Yingliang <yangyingliang@huawei.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org,
- matthias.bgg@gmail.com, sr@denx.de, christophe.jaillet@wanadoo.fr
-References: <20220514023148.305457-1-yangyingliang@huawei.com>
+	id 1nsN4H-00GHCr-DF; Sat, 21 May 2022 11:14:45 +0000
+Received: from mail3-relais-sop.national.inria.fr ([192.134.164.104])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nsN1j-00GFF9-Lc; Sat, 21 May 2022 11:12:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inria.fr; s=dc;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=IFMk+sG1UkKvvet9eVEjt93RJXFlKUDi3Jz4fWOgUhg=;
+ b=PBKOlLXg1sPPVZuZm2u8rC85P2knGUduUA24hKtJrGlcBfo3iDZt85Mt
+ xVtAPUidhjAQg3jrSeKusd7UflRGrzlMKveeAxM+fga8okdZFKdOQbHg+
+ Cpr1z83U/f+8HMk7rJ5wrocuQI4r6uvHk2cEisQL1eY0SOaHnLv5DrV3m s=;
+Authentication-Results: mail3-relais-sop.national.inria.fr;
+ dkim=none (message not signed) header.i=none;
+ spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr;
+ dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.91,242,1647298800"; d="scan'208";a="14727925"
+Received: from i80.paris.inria.fr (HELO i80.paris.inria.fr.) ([128.93.90.48])
+ by mail3-relais-sop.national.inria.fr with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 May 2022 13:11:57 +0200
+From: Julia Lawall <Julia.Lawall@inria.fr>
+To: Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: kernel-janitors@vger.kernel.org,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] media: mediatek: vcodec: fix typo in comment
+Date: Sat, 21 May 2022 13:10:40 +0200
+Message-Id: <20220521111145.81697-30-Julia.Lawall@inria.fr>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20220514023148.305457-1-yangyingliang@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220521_031841_992968_C43A610F 
-X-CRM114-Status: UNSURE (   8.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220521_041208_049031_FEA3F1A4 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,66 +66,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0228967774217982614=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Spelling mistake (triple letters) in comment.
+Detected with the help of Coccinelle.
 
---===============0228967774217982614==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="/QvgFcbHc+KnC2YM"
-Content-Disposition: inline
+Signed-off-by: Julia Lawall <Julia.Lawall@inria.fr>
 
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---/QvgFcbHc+KnC2YM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+index a29041a0b7e0..c156048cd4a5 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
+@@ -255,7 +255,7 @@ struct vdec_pic_info {
+  * @param_change: indicate encode parameter type
+  * @enc_params: encoding parameters
+  * @dec_if: hooked decoder driver interface
+- * @enc_if: hoooked encoder driver interface
++ * @enc_if: hooked encoder driver interface
+  * @drv_handle: driver handle for specific decode/encode instance
+  *
+  * @picinfo: store picture info after header parsing
 
-On Sat, May 14, 2022 at 10:31:47AM +0800, Yang Yingliang wrote:
-> Fix the missing clk_disable_unprepare() before return
-> from mtk_i2c_probe() in the error handling case.
->=20
-> Fixes: d04913ec5f89 ("i2c: mt7621: Add MediaTek MT7621/7628/7688 I2C driv=
-er")
-> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
-
-Applied to for-current, thanks!
-
-
---/QvgFcbHc+KnC2YM
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmKIuwoACgkQFA3kzBSg
-KbaAgg//aO+UxNd59hJiNRJesX7hbSoNvNi/Am6E07iqb75UlXN1Ljx1FhagnAGY
-GvFXynEZsyCG8kFRRi2SN11MSYm0KVcGTQ9R5ZPPMB7YMZkNoUMzm1TOCUPKk1vV
-I862euXxp00U7PTZ6MlyzabWcEPhjBTU0pLmSDb5LAnT0QD5Qsb69hvk64ZWk3i6
-bpuN+DUehqjQ5tnDURtC6UBwGar7WoY/sAQtLh80fBgKrLY1Q7SzYMmuLerCJmiU
-QFR/L+/aJZw9ZLsN9sKFhT83xNxkQRfbBYQ+SY+WSoNapX8q0KajBQkdH9a2lzs0
-ORJhGv25QzIudNLVAB1crTPq/uKN4o22T6HZlngIh9Dl+yFiI2WWZg1De2TevgwT
-MTV+L9hm9SCkrAwIwpxWHzXdcz31Fh2yM1wNn/HRhH6dxiIxlsEqBW2NeIvbNwzZ
-KNLPW5Xa2vE5PI8OeNDBpIMN/hu/YXs9ZBLb/0JjiWbsrpJTrLCwHQ78yxYHk2WN
-OvNzqj4cUXeyhTox8xJUFSHtQa1EKxPyRF4QDR7alh7oQ1PQfUDDX1b4PM5oplkf
-e9nclfIbgN3l/AgumUc0EGYzUXPGNiznz0rDbQInIGZAjCY6ldLaYjMR9XSxrfW0
-Dw22qdw2mTXZ01Iy1BYwNow/BHcyZNIMM1MVvdg3HayduC2xCvA=
-=VY7J
------END PGP SIGNATURE-----
-
---/QvgFcbHc+KnC2YM--
-
-
---===============0228967774217982614==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0228967774217982614==--
-
