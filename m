@@ -4,72 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 619FBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40D82C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vg6LABKirUIbLaTvkjtvaEqfdg5zJE99lveyD2gRH20=; b=so2ZB8icOm/ANT
-	AyxpBhU+PLX6Bk7tGGoIFOvLOFEM0UFBtZYS9kN3snUM73T2MVTdRCSOPd37MuAJFSGAwuQAqaYKs
-	cYJvk+e70ajzn20aXEaKOk+HPeUSw0vLJOiQCnBxfpa5FmJ8aOStWmSjr3s/jhMzqg5c6oH4NDcL0
-	TzPFUdO/Txf2KM3K83pDBfYGFv0WDqwZLPmYVxM762c4/eJ9d8ADOWyV75N86iq8sxnFzpu+mVqBS
-	q4x2A08QNXahHyTNDUn0LzINQnbBOJPuAJ7SChEH8VSkkYOlB2M0q40F8PauVS3W+Yk6zxmX2tKqs
-	9Hg/LNe6u+qq3sEW8mdg==;
+	List-Owner; bh=ZRejQe0CEFSEK/PM6OHzMO4hueRHWCKr/KusqbHyAbU=; b=r6i8B55AOZDsMn
+	hvabgB5TJCo+dHsKUgwE/vUr/D3x6SOcWaJQT/CdQoA8fYSiVkBt4/lYLISI9ZCT6mFgtwO30SihN
+	SUihnapOwj3LxskDKmcfXnsE5uV2kz9AuTn6cioTlhyKms+/KYVNCdySfcivzvbQvfCuz2LMSwaks
+	i8ym5fa4s0I+Xkg8PseEXYGI+APyDu7SwLJK75hlMg9C26IfAtO3JGQD/NsNHiyf/I+gI6R057U3X
+	6dQeRBIAhwDTSZbnf2m67+mVI796bD3A6+MzTHA90m21Qjk+AyMavQXtXgrzKD+POLV2jIVRld4Os
+	Tvas+g7r1d6+9Wz7frtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt4Vm-002u51-82; Mon, 23 May 2022 09:38:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nt4Vo-002u6M-R5; Mon, 23 May 2022 09:38:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt3hd-002Y2c-Ce; Mon, 23 May 2022 08:46:16 +0000
-X-UUID: b139c594fdf64524a27ad682747b37f0-20220523
+ id 1nt358-002GHj-MY; Mon, 23 May 2022 08:06:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+ In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=NhsfUTBkrWji55/hehG2eMsJ42bdgjLISxqITUjpUg0=; b=no+tIPu8c9lj5c8RaB3EWPLvJE
+ S2X6L48UvLmVtQyLjuSVup+pyQP6YHBC6Z7d5DPyei9O+G2jKzkKvbXg0uGU4Zhwx8NM0nTKyb0vo
+ 9EMoVOhczz9Atq2UxmeX2UC2jSQiw5MTsqr/fqjognSJ9V6h3n4YtSNd9JjOUqyiPXvT3D1cUoGNK
+ dsY1yeQS/zemX5B5IbLfkoeARgXNNAwwv9GAZCZg4D/arrbPeVcmaso22XppwIoECObtxyCWG1ilS
+ lRAjWZ43szJPXlMOkjQt0Zhdf1DeunXyLsTyRA4aQMYJ/jUNpTzSuy6gWI+y3aKzvoYDZAo+CHPwD
+ tCC1GBow==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nsp69-000YN1-6H; Sun, 22 May 2022 17:10:37 +0000
+X-UUID: 4a6ba431919c46d19f0efeb4ac21d1a3-20220522
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:e0e099a7-13c4-47f0-952e-23f697422a97, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:8d4ceaf8-8be5-4ce9-a499-28f093205b12, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:77c135e3-edbf-4bd4-8a34-dfc5f7bb086d,
+X-CID-META: VersionHash:2a19b09, CLOUDID:f1dc1be3-edbf-4bd4-8a34-dfc5f7bb086d,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: b139c594fdf64524a27ad682747b37f0-20220523
+X-UUID: 4a6ba431919c46d19f0efeb4ac21d1a3-20220522
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jia-wei.chang@mediatek.com>)
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 68509145; Mon, 23 May 2022 01:46:06 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 01:41:45 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 23 May 2022 16:41:44 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 23 May 2022 16:41:44 +0800
-From: Tim Chang <jia-wei.chang@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu
- <roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>, Jia-Wei Chang
- <jia-wei.chang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 2/4] soc: mediatek: svs: add support for mt8186
-Date: Mon, 23 May 2022 16:40:32 +0800
-Message-ID: <20220523084034.26802-3-jia-wei.chang@mediatek.com>
+ with ESMTP id 291991826; Sun, 22 May 2022 10:10:05 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 22 May 2022 10:02:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 01:02:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 23 May 2022 01:02:39 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <bgolaszewski@baylibre.com>, <chun-jie.chen@mediatek.com>,
+ <devicetree@vger.kernel.org>, <ikjn@chromium.org>,
+ <krzysztof.kozlowski+dt@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <miles.chen@mediatek.com>, <mturquette@baylibre.com>,
+ <p.zabel@pengutronix.de>, <robh+dt@kernel.org>, <sam.shih@mediatek.com>,
+ <sboyd@kernel.org>, <tinghan.shen@mediatek.com>, <weiyi.lu@mediatek.com>,
+ <wenst@chromium.org>, <y.oudjana@protonmail.com>,
+ <yassine.oudjana@gmail.com>, <~postmarketos/upstreaming@lists.sr.ht>
+Subject: Re: [PATCH v2 4/4] clk: mediatek: Add drivers for MediaTek MT6735
+ main clock drivers
+Date: Mon, 23 May 2022 01:02:39 +0800
+Message-ID: <20220522170239.18519-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
-References: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
+In-Reply-To: <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
+References: <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_014613_515103_5EC43291 
-X-CRM114-Status: GOOD (  20.75  )
+X-CRM114-CacheID: sfid-20220522_181034_355946_E3434040 
+X-CRM114-Status: GOOD (  26.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,465 +101,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Hi Angelo, Yassine,
 
-MT8186 svs has a number of banks which used as optimization of opp
-voltage table for corresponding dvfs drivers.
-MT8186 svs big core uses 2-line high bank and low bank to optimize the
-voltage of opp table for higher and lower frequency respectively.
+>>>
+>>> I'd actually argue that macros make it less readable. While reading
+>>> other drivers I had a lot of trouble figuring out which argument
+>>> is which field of the struct, and had to constantly go back to the
+>>> macro definitions and count arguments to find it. Having it this
+>>> way, each value is labeled clearly with the field it's in. I think
+>>> the tradeoff between line count and readability here is worth it.
+>> 
+>> It is easier for multiple developers to work together if we have a common style.
+>> 
+>> How do you think?
+>> 
+>
+>In my opinion, Yassine is definitely right about this one: unrolling these macros
+>will make the code more readable, even though this has the side effect of making
+>it bigger in the source code form (obviously, when compiled, it's going to be the
+>exact same size).
+>
+>I wouldn't mind getting this clock driver in without the usage of macros, as much
+>as I wouldn't mind converting all of the existing drivers to open-code everything
+>instead of using macros that you have to find in various headers... this practice
+>was done in multiple drivers (clock or elsewhere), so I don't think that it would
+>actually be a bad idea to do it here on MediaTek too, even though I'm not aware of
+>any *rule* that may want us to do that: if you check across drivers/clk/*, there's
+>a big split in how drivers are made, where some are using macros (davinci, renesas,
+>samsung, sprd, etc), and some are not (bcm, sunxi-ng, qcom, tegra, versatile, etc),
+>so it's really "do it as you wish"...
+>
 
-Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-svs.c | 351 ++++++++++++++++++++++++++++++++-
- 1 file changed, 344 insertions(+), 7 deletions(-)
+Thanks for the explanation and guide. I think we can do that for all MediaTek
+clock driver in the future, not having two styles in MediaTek clock driver now.
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 606a00a2e57d..656d0361ff7d 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -355,6 +355,7 @@ struct svs_platform_data {
-  * @dcbdet: svs efuse data
-  * @dcmdet: svs efuse data
-  * @turn_pt: 2-line turn point tells which opp_volt calculated by high/low bank
-+ * @vbin_turn_pt: voltage bin turn point helps know which svsb_volt should be overridden
-  * @type: bank type to represent it is 2-line (high/low) bank or 1-line bank
-  *
-  * Svs bank will generate suitalbe voltages by below general math equation
-@@ -417,6 +418,7 @@ struct svs_bank {
- 	u32 dcbdet;
- 	u32 dcmdet;
- 	u32 turn_pt;
-+	u32 vbin_turn_pt;
- 	u32 type;
- };
- 
-@@ -692,11 +694,12 @@ static int svs_status_debug_show(struct seq_file *m, void *v)
- 
- 	ret = thermal_zone_get_temp(svsb->tzd, &tzone_temp);
- 	if (ret)
--		seq_printf(m, "%s: temperature ignore, turn_pt = %u\n",
--			   svsb->name, svsb->turn_pt);
-+		seq_printf(m, "%s: temperature ignore, vbin_turn_pt = %u, turn_pt = %u\n",
-+			   svsb->name, svsb->vbin_turn_pt, svsb->turn_pt);
- 	else
--		seq_printf(m, "%s: temperature = %d, turn_pt = %u\n",
--			   svsb->name, tzone_temp, svsb->turn_pt);
-+		seq_printf(m, "%s: temperature = %d, vbin_turn_pt = %u, turn_pt = %u\n",
-+			   svsb->name, tzone_temp, svsb->vbin_turn_pt,
-+			   svsb->turn_pt);
- 
- 	for (i = 0; i < svsb->opp_count; i++) {
- 		opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
-@@ -889,9 +892,11 @@ static void svs_get_bank_volts_v3(struct svs_platform *svsp)
- 		opp_stop = svsb->opp_count;
- 	}
- 
--	for (i = opp_start; i < opp_stop; i++)
-+	for (i = opp_start; i < opp_stop; i++) {
- 		if (svsb->volt_flags & SVSB_REMOVE_DVTFIXED_VOLT)
- 			svsb->volt[i] -= svsb->dvt_fixed;
-+		svsb->volt[i] += svsb->volt_od;
-+	}
- }
- 
- static void svs_set_bank_freq_pct_v3(struct svs_platform *svsp)
-@@ -982,6 +987,10 @@ static void svs_get_bank_volts_v2(struct svs_platform *svsp)
- 	struct svs_bank *svsb = svsp->pbank;
- 	u32 temp, i;
- 
-+	if (svsb->phase == SVSB_PHASE_MON &&
-+	    svsb->volt_flags & SVSB_MON_VOLT_IGNORE)
-+		return;
-+
- 	temp = svs_readl_relaxed(svsp, VOP74);
- 	svsb->volt[14] = (temp >> 24) & GENMASK(7, 0);
- 	svsb->volt[12] = (temp >> 16) & GENMASK(7, 0);
-@@ -1007,8 +1016,34 @@ static void svs_get_bank_volts_v2(struct svs_platform *svsp)
- 				     svsb->volt[14],
- 				     svsb->freq_pct[15]);
- 
--	for (i = 0; i < svsb->opp_count; i++)
-+	for (i = 0; i < svsb->opp_count; i++) {
-+		if (svsb->volt_flags & SVSB_REMOVE_DVTFIXED_VOLT)
-+			svsb->volt[i] -= svsb->dvt_fixed;
- 		svsb->volt[i] += svsb->volt_od;
-+	}
-+
-+	/* For voltage bin support */
-+	if (svsb->opp_dfreq[0] > svsb->freq_base) {
-+		svsb->volt[0] = svs_opp_volt_to_bank_volt(svsb->opp_dvolt[0],
-+							  svsb->volt_step,
-+							  svsb->volt_base);
-+
-+		/* Find voltage bin turn point */
-+		for (i = 0; i < svsb->opp_count; i++) {
-+			if (svsb->opp_dfreq[i] <= svsb->freq_base) {
-+				svsb->vbin_turn_pt = i;
-+				break;
-+			}
-+		}
-+
-+		/* Override svs bank voltages */
-+		for (i = 1; i < svsb->vbin_turn_pt; i++)
-+			svsb->volt[i] =	interpolate(svsb->freq_pct[0],
-+						    svsb->freq_pct[svsb->vbin_turn_pt],
-+						    svsb->volt[0],
-+						    svsb->volt[svsb->vbin_turn_pt],
-+						    svsb->freq_pct[i]);
-+	}
- }
- 
- static void svs_set_bank_freq_pct_v2(struct svs_platform *svsp)
-@@ -1556,7 +1591,12 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
- 			svsb->name = "SVSB_CPU_LITTLE";
- 			break;
- 		case SVSB_CPU_BIG:
--			svsb->name = "SVSB_CPU_BIG";
-+			if (svsb->type == SVSB_HIGH)
-+				svsb->name = "SVSB_CPU_BIG_HIGH";
-+			else if (svsb->type == SVSB_LOW)
-+				svsb->name = "SVSB_CPU_BIG_LOW";
-+			else
-+				svsb->name = "SVSB_CPU_BIG";
- 			break;
- 		case SVSB_CCI:
- 			svsb->name = "SVSB_CCI";
-@@ -1719,6 +1759,103 @@ static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
- 	return true;
- }
- 
-+static bool svs_mt8186_efuse_parsing(struct svs_platform *svsp)
-+{
-+	struct svs_bank *svsb;
-+	struct nvmem_cell *cell;
-+	u32 idx, i, golden_temp;
-+
-+	for (i = 0; i < svsp->efuse_max; i++)
-+		if (svsp->efuse[i])
-+			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
-+				 i, svsp->efuse[i]);
-+
-+	if (!svsp->efuse[0]) {
-+		dev_notice(svsp->dev, "svs_efuse[0] = 0x0?\n");
-+		return false;
-+	}
-+
-+	/* Svs efuse parsing */
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+
-+		switch (svsb->sw_id) {
-+		case SVSB_CPU_BIG:
-+			if (svsb->type == SVSB_HIGH) {
-+				svsb->mdes = (svsp->efuse[2] >> 24) & GENMASK(7, 0);
-+				svsb->bdes = (svsp->efuse[2] >> 16) & GENMASK(7, 0);
-+				svsb->mtdes = svsp->efuse[2] & GENMASK(7, 0);
-+				svsb->dcmdet = (svsp->efuse[13] >> 8) & GENMASK(7, 0);
-+				svsb->dcbdet = svsp->efuse[13] & GENMASK(7, 0);
-+			} else if (svsb->type == SVSB_LOW) {
-+				svsb->mdes = (svsp->efuse[3] >> 24) & GENMASK(7, 0);
-+				svsb->bdes = (svsp->efuse[3] >> 16) & GENMASK(7, 0);
-+				svsb->mtdes = svsp->efuse[3] & GENMASK(7, 0);
-+				svsb->dcmdet = (svsp->efuse[14] >> 24) & GENMASK(7, 0);
-+				svsb->dcbdet = (svsp->efuse[14] >> 16) & GENMASK(7, 0);
-+			}
-+			break;
-+		case SVSB_CPU_LITTLE:
-+			svsb->mdes = (svsp->efuse[4] >> 24) & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[4] >> 16) & GENMASK(7, 0);
-+			svsb->mtdes = svsp->efuse[4] & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[14] >> 8) & GENMASK(7, 0);
-+			svsb->dcbdet = svsp->efuse[14] & GENMASK(7, 0);
-+			break;
-+		case SVSB_CCI:
-+			svsb->mdes = (svsp->efuse[5] >> 24) & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[5] >> 16) & GENMASK(7, 0);
-+			svsb->mtdes = svsp->efuse[5] & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[15] >> 24) & GENMASK(7, 0);
-+			svsb->dcbdet = (svsp->efuse[15] >> 16) & GENMASK(7, 0);
-+			break;
-+		case SVSB_GPU:
-+			svsb->mdes = (svsp->efuse[6] >> 24) & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[6] >> 16) & GENMASK(7, 0);
-+			svsb->mtdes = svsp->efuse[6] & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[15] >> 8) & GENMASK(7, 0);
-+			svsb->dcbdet = svsp->efuse[15] & GENMASK(7, 0);
-+			break;
-+		default:
-+			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
-+			return false;
-+		}
-+
-+		svsb->vmax += svsb->dvt_fixed;
-+	}
-+
-+	/* Thermal efuse parsing */
-+	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-+	if (IS_ERR_OR_NULL(cell)) {
-+		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
-+			PTR_ERR(cell));
-+		return false;
-+	}
-+
-+	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-+	if (IS_ERR(svsp->tefuse)) {
-+		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-+			PTR_ERR(svsp->tefuse));
-+		nvmem_cell_put(cell);
-+		return false;
-+	}
-+
-+	svsp->tefuse_max /= sizeof(u32);
-+	nvmem_cell_put(cell);
-+
-+	golden_temp = (svsp->tefuse[0] >> 24) & GENMASK(7, 0);
-+	if (!golden_temp)
-+		golden_temp = 50;
-+
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+		svsb->mts = 409;
-+		svsb->bts = (((500 * golden_temp + 204650) / 1000) - 25) * 4;
-+	}
-+
-+	return true;
-+}
-+
- static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb;
-@@ -2037,6 +2174,50 @@ static int svs_mt8192_platform_probe(struct svs_platform *svsp)
- 	return 0;
- }
- 
-+static int svs_mt8186_platform_probe(struct svs_platform *svsp)
-+{
-+	struct device *dev;
-+	struct svs_bank *svsb;
-+	u32 idx;
-+
-+	svsp->rst = devm_reset_control_get_optional(svsp->dev, "svs_rst");
-+	if (IS_ERR(svsp->rst))
-+		return dev_err_probe(svsp->dev, PTR_ERR(svsp->rst),
-+				     "cannot get svs reset control\n");
-+
-+	dev = svs_add_device_link(svsp, "lvts");
-+	if (IS_ERR(dev))
-+		return dev_err_probe(svsp->dev, PTR_ERR(dev),
-+				     "failed to get lvts device\n");
-+
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+
-+		switch (svsb->sw_id) {
-+		case SVSB_CPU_LITTLE:
-+		case SVSB_CPU_BIG:
-+			svsb->opp_dev = get_cpu_device(svsb->cpu_id);
-+			break;
-+		case SVSB_CCI:
-+			svsb->opp_dev = svs_add_device_link(svsp, "cci");
-+			break;
-+		case SVSB_GPU:
-+			svsb->opp_dev = svs_add_device_link(svsp, "mali");
-+			break;
-+		default:
-+			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
-+			return -EINVAL;
-+		}
-+
-+		if (IS_ERR(svsb->opp_dev))
-+			return dev_err_probe(svsp->dev, PTR_ERR(svsb->opp_dev),
-+					     "failed to get OPP device for bank %d\n",
-+					     idx);
-+	}
-+
-+	return 0;
-+}
-+
- static int svs_mt8183_platform_probe(struct svs_platform *svsp)
- {
- 	struct device *dev;
-@@ -2131,6 +2312,149 @@ static struct svs_bank svs_mt8192_banks[] = {
- 	},
- };
- 
-+static struct svs_bank svs_mt8186_banks[] = {
-+	{
-+		.sw_id			= SVSB_CPU_BIG,
-+		.type			= SVSB_LOW,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.cpu_id			= 6,
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT,
-+		.mode_support		= SVSB_MODE_INIT02,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 1670000000,
-+		.turn_freq_base		= 1670000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 4,
-+		.vmax			= 0x59,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x3,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0100,
-+		.int_st			= BIT(0),
-+		.ctl0			= 0x00540003,
-+	},
-+	{
-+		.sw_id			= SVSB_CPU_BIG,
-+		.type			= SVSB_HIGH,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.cpu_id			= 6,
-+		.tzone_name		= "cpu_big0",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 2050000000,
-+		.turn_freq_base		= 1670000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 4,
-+		.vmax			= 0x73,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0101,
-+		.int_st			= BIT(1),
-+		.ctl0			= 0x00540003,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 8,
-+	},
-+	{
-+		.sw_id			= SVSB_CPU_LITTLE,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-+		.get_volts		= svs_get_bank_volts_v2,
-+		.cpu_id			= 0,
-+		.tzone_name		= "cpu_zone0",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 2000000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 3,
-+		.vmax			= 0x65,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0102,
-+		.int_st			= BIT(2),
-+		.ctl0			= 0x3210000f,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 8,
-+	},
-+	{
-+		.sw_id			= SVSB_CCI,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-+		.get_volts		= svs_get_bank_volts_v2,
-+		.tzone_name		= "cpu_zone0",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 1400000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.volt_od		= 3,
-+		.vmax			= 0x65,
-+		.vmin			= 0x20,
-+		.age_config		= 0x1,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0103,
-+		.int_st			= BIT(3),
-+		.ctl0			= 0x3210000f,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 8,
-+	},
-+	{
-+		.sw_id			= SVSB_GPU,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v2,
-+		.get_volts		= svs_get_bank_volts_v2,
-+		.tzone_name		= "mfg",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 850000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.vmax			= 0x58,
-+		.vmin			= 0x20,
-+		.age_config		= 0x555555,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x4,
-+		.vco			= 0x10,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0104,
-+		.int_st			= BIT(4),
-+		.ctl0			= 0x00100003,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 8,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 7,
-+	},
-+};
-+
- static struct svs_bank svs_mt8183_banks[] = {
- 	{
- 		.sw_id			= SVSB_CPU_LITTLE,
-@@ -2245,6 +2569,16 @@ static const struct svs_platform_data svs_mt8192_platform_data = {
- 	.bank_max = ARRAY_SIZE(svs_mt8192_banks),
- };
- 
-+static const struct svs_platform_data svs_mt8186_platform_data = {
-+	.name = "mt8186-svs",
-+	.banks = svs_mt8186_banks,
-+	.efuse_parsing = svs_mt8186_efuse_parsing,
-+	.probe = svs_mt8186_platform_probe,
-+	.irqflags = IRQF_TRIGGER_HIGH,
-+	.regs = svs_regs_v2,
-+	.bank_max = ARRAY_SIZE(svs_mt8186_banks),
-+};
-+
- static const struct svs_platform_data svs_mt8183_platform_data = {
- 	.name = "mt8183-svs",
- 	.banks = svs_mt8183_banks,
-@@ -2259,6 +2593,9 @@ static const struct of_device_id svs_of_match[] = {
- 	{
- 		.compatible = "mediatek,mt8192-svs",
- 		.data = &svs_mt8192_platform_data,
-+	}, {
-+		.compatible = "mediatek,mt8186-svs",
-+		.data = &svs_mt8186_platform_data,
- 	}, {
- 		.compatible = "mediatek,mt8183-svs",
- 		.data = &svs_mt8183_platform_data,
--- 
-2.18.0
+>
+>... *but:*
+>
+>Apart from that, I also don't think that it is a good idea to convert the other
+>MTK clock drivers right now, as this would make the upstreaming of MediaTek clock
+>drivers harder for some of the community in this moment... especially when we look
+>at how many MTK SoCs are out there in the wild, and how many we have upstream:
+>something like 10% of them, or less.
 
+and thanks for considering this too.
+
+>
+>I see the huge benefit of having a bigger community around MediaTek platforms as
+>that's beneficial to get a way better support and solidity for all SoCs as they
+>are sharing the same drivers and same framework, and expanding the support to more
+>of them will only make it better with highly valuable community contributions.
+>
+>
+>That said, Yassine, you should've understood that you have my full support on
+>unrolling these macros - but it's not time to do that yet: you definitely know
+>that MediaTek clock drivers are going through a big cleanup phase which is, at
+>this point, unavoidable... if we are able to get the aid of scripts (cocci and
+>others), that will make our life easier in this cleanup, and will also make us
+>able to perform the entire cleanup with less effort and in less overall time.
+>
+>With that, I'm sad but I have to support Miles' decision on this one, and I also
+>have to ask you to use macros in this driver.
+>
+>
+>I am sure - and it is my wish - to see MediaTek clock drivers open-coding stuff
+>instead of using macros, but that's something for the future - which will happen
+>after the more important cleanups.
+>
+>After all, it will be just about running "gcc -E xxxx.c" and copy-pasting the
+>unrolled macros to the clock drivers, which will be pretty fast and straightforward.
+>
+>
+>Sorry for the wall of text, by the way.
+
+Sounds good and I want to say thank you again, I learned a lot from your post
+and patches you submitted.
+
+and I also want to say thank you to Yassine for the patch.
+
+thanks,
+Miles
+>
+>Cheers,
+>Angelo
+>
 
 _______________________________________________
 Linux-mediatek mailing list
