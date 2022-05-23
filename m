@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F2AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13990C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rcQDvkh8fxEY2ZaNcsUywgQKAmcAWoM9fzLgr8Ss/o0=; b=rN7yXzhVfOE2hW
-	GCM4xhzEXdh7hg/SAB1FfwTeakEyOZm0RFSIMA02NY1aozB1G97oyKr4W1S2QPYfjgmXbwBRdHye0
-	YomWktw5KRbKXz+WzUNjdf0u1Y4YJQgAnodl/IPLdIgYkR4EwmHoP4A8IUlTtHvyzk6kcOzaZRoVC
-	bMamJ7KzepWtBfH1lJNq/w5siXHg2SFWThzkW9g6jrCfcTOFK6uvg/Pl0csBzifUg8Aqwp5kxsAmu
-	YCHRCwGPFNkFuzcTk3dEeJKNy5ygAumL85e7cEktVgWY6CoRhDxRyTZ8d4ChNWKNYj0uhx29UiIsx
-	/JWdlkRen8hrvGyLChPQ==;
+	List-Owner; bh=tt7Fxurc6pg47P8pPoNvMp2AqsjFO+QYEmqC73LsLOg=; b=LfxaRLP/H1Xl9B
+	KEuUx7f/wP5X+hp/TQOagV4TBGMO7odzZcveK+/AwjOOG76hKJd+dLXJLuC65kotqI4trUEJq4ovG
+	h7kxvHXZosDj9OYsLkfze1Iu0/rXoP9jAUCbmo1A96pcKKrgnlt4f6j0BuIz9w2j7eNgSmyTx+c4T
+	hdTFbz6MosguNm7weOCyW1d48+uxHZTlMdSu8b4kf6zgW6CpTF/xVIO13Nc8UiX3Xq3gZI30G+803
+	H/h3ueo0sFr1/VX11AxvO0Q5QdubhL6o4Nv1xF46wgBxlgDFWZRMxwWXcAlarvsMwUsSJpLROlJwG
+	BdKunaUt4tTP9Me1BBjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt5dU-003PQ6-QV; Mon, 23 May 2022 10:50:04 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nt5iY-003RvH-5f; Mon, 23 May 2022 10:55:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt4W3-002uDH-FW; Mon, 23 May 2022 09:38:20 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A64751F426E8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653298698;
- bh=XvaiufkFnN1wMlfvWPGiVI99J1BcUL6VmHZvtPIs1vM=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=J3u7n8+ezDneiHNhUBpp+KDQ0k6O3Slu7Ag9EoZBw4/fJx9FORvGjuEQ3g79+vbRI
- u1TR3W8Nlhoyi+mXH5Pe3Hg3ZwrCDHZk/aj7YqIgApW1JWsDnxY/RiNfBEKv15wjDo
- Je8cDqtkSt+nFrtWHGoHiGRqtc2+cmvXoLapIEf1h8vlJVmMhdGQ43BTwttlACBcu/
- s1gGnZ69LsTBCaCHHBV5QKhORxXk9tYuzndFX/8FV/FPqEw5drdpJyOKvT/kbGs4x5
- eZfmh9xaB4C58q1aVCCqzFxAiiDTjwqvu6sPZPS5l0NMNwQfMlrihU/5JPty1/nkhY
- gp0kO1HWK02lQ==
-Message-ID: <d9563b65-2391-d32c-8a07-ca7a13cae7c7@collabora.com>
-Date: Mon, 23 May 2022 11:38:14 +0200
+ id 1nt4bX-002wTe-0q; Mon, 23 May 2022 09:44:05 +0000
+X-UUID: 9d7e530cfc1e45dab91b2d39edfc8165-20220523
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:1f0a3b7e-0947-447a-a151-487c9486a3e8, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:3f6738e3-edbf-4bd4-8a34-dfc5f7bb086d,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 9d7e530cfc1e45dab91b2d39edfc8165-20220523
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 440772454; Mon, 23 May 2022 02:43:52 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 02:33:52 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 23 May 2022 17:33:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 23 May 2022 17:33:50 +0800
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
+ <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
+CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
+ <nfraprado@collabora.com>, <chun-jie.chen@mediatek.com>,
+ <wenst@chromium.org>, <runyang.chen@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-clk@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
+ <rex-bc.chen@mediatek.com>
+Subject: [RESEND v8 16/19] arm64: dts: mediatek: Add infra #reset-cells
+ property for MT8195
+Date: Mon, 23 May 2022 17:33:43 +0800
+Message-ID: <20220523093346.28493-17-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220523093346.28493-1-rex-bc.chen@mediatek.com>
+References: <20220523093346.28493-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v3 4/4] soc: mediatek: svs: add support for mt8195
-Content-Language: en-US
-To: Tim Chang <jia-wei.chang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu <roger.lu@mediatek.com>,
- Kevin Hilman <khilman@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com
-References: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
- <20220523084034.26802-5-jia-wei.chang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220523084034.26802-5-jia-wei.chang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_023819_743787_CF8D763A 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20220523_024359_156883_7106C312 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,52 +83,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/05/22 10:40, Tim Chang ha scritto:
-> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> 
-> To support svs on MT8195, add corresponding bank information, platform
-> data, probe and parsing function.
-> 
-> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-
-
-
-> ---
->   drivers/soc/mediatek/mtk-svs.c | 151 +++++++++++++++++++++++++++++++++
->   1 file changed, 151 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 656d0361ff7d..bb5021648143 100644
-> --- a/drivers/soc/mediatek/mtk-svs.c
-> +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -1680,6 +1680,89 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
-
-..snip..
-
-> @@ -2559,6 +2697,16 @@ static struct svs_bank svs_mt8183_banks[] = {
->   	},
->   };
->   
-> +static const struct svs_platform_data svs_mt8195_platform_data = {
-> +	.name = "mt8195-svs",
-> +	.banks = svs_mt8195_banks,
-> +	.efuse_parsing = svs_mt8195_efuse_parsing,
-> +	.probe = svs_mt8192_platform_probe,
-> +	.irqflags = IRQF_TRIGGER_HIGH,
-
-Interrupt flags are specified in devicetree; avoid declaring irqflags.
-
-After that:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+V2Ugd2lsbCB1c2UgbWVkaWF0ZWsgY2xvY2sgcmVzZXQgYXMgaW5mcmFjZmdfYW8gcmVzZXQgaW5z
+dGVhZCBvZgp0aS1zeXNjb24uIFRvIHN1cHBvcnQgdGhpcywgcmVtb3ZlIHByb3BlcnR5IG9mIHRp
+IHJlc2V0IGFuZCBhZGQKcHJvcGVydHkgb2YgI3Jlc2V0LWNlbGxzIGZvciBtZWRpYXRlayBjbG9j
+ayByZXNldC4KClNpZ25lZC1vZmYtYnk6IFJleC1CQyBDaGVuIDxyZXgtYmMuY2hlbkBtZWRpYXRl
+ay5jb20+ClJldmlld2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lv
+YWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogTsOtY29sYXMgRi4g
+Ui4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgotLS0KIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvbWVkaWF0ZWsvbXQ4MTk1LmR0c2kgfCAxNSArKy0tLS0tLS0tLS0tLS0KIDEgZmlsZSBj
+aGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTk1LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3Qv
+ZHRzL21lZGlhdGVrL210ODE5NS5kdHNpCmluZGV4IGI1N2U2MjBjMmM3Mi4uZGIxNmViYTlkNDc1
+IDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5NS5kdHNpCisr
+KyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTk1LmR0c2kKQEAgLTEwLDcgKzEw
+LDYgQEAKICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9pbnRlcnJ1cHQtY29udHJvbGxlci9pcnEuaD4K
+ICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9waHkvcGh5Lmg+CiAjaW5jbHVkZSA8ZHQtYmluZGluZ3Mv
+cGluY3RybC9tdDgxOTUtcGluZnVuYy5oPgotI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3Jlc2V0L3Rp
+LXN5c2Nvbi5oPgogCiAvIHsKIAljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE5NSI7CkBAIC0y
+OTIsMjAgKzI5MSwxMCBAQAogCQl9OwogCiAJCWluZnJhY2ZnX2FvOiBzeXNjb25AMTAwMDEwMDAg
+ewotCQkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTUtaW5mcmFjZmdfYW8iLCAic3lzY29u
+IiwgInNpbXBsZS1tZmQiOworCQkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTUtaW5mcmFj
+ZmdfYW8iLCAic3lzY29uIjsKIAkJCXJlZyA9IDwwIDB4MTAwMDEwMDAgMCAweDEwMDA+OwogCQkJ
+I2Nsb2NrLWNlbGxzID0gPDE+OwotCi0JCQlpbmZyYWNmZ19yc3Q6IHJlc2V0LWNvbnRyb2xsZXIg
+ewotCQkJCWNvbXBhdGlibGUgPSAidGksc3lzY29uLXJlc2V0IjsKLQkJCQkjcmVzZXQtY2VsbHMg
+PSA8MT47Ci0JCQkJdGkscmVzZXQtYml0cyA9IDwKLQkJCQkJMHgxNDAgMTggMHgxNDQgMTggMCAw
+IChBU1NFUlRfU0VUIHwgREVBU1NFUlRfU0VUIHwgU1RBVFVTX05PTkUpIC8qIHBjaWUgKi8KLQkJ
+CQkJMHgxMjAgMCAgMHgxMjQgMCAgMCAwIChBU1NFUlRfU0VUIHwgREVBU1NFUlRfU0VUIHwgU1RB
+VFVTX05PTkUpIC8qIHRoZXJtYWwgKi8KLQkJCQkJMHg3MzAgMTAgMHg3MzQgMTAgMCAwIChBU1NF
+UlRfU0VUIHwgREVBU1NFUlRfU0VUIHwgU1RBVFVTX05PTkUpIC8qIHRoZXJtYWwgKi8KLQkJCQkJ
+MHgxNTAgNSAgMHgxNTQgNSAgMCAwIChBU1NFUlRfU0VUIHwgREVBU1NFUlRfU0VUIHwgU1RBVFVT
+X05PTkUpIC8qIHN2cyBncHUgKi8KLQkJCQk+OwotCQkJfTsKKwkJCSNyZXNldC1jZWxscyA9IDwx
+PjsKIAkJfTsKIAogCQlwZXJpY2ZnOiBzeXNjb25AMTAwMDMwMDAgewotLSAKMi4xOC4wCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
+ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
