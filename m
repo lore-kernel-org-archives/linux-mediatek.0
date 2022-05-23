@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC46C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1A6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jlZfF31J+v0Pavn6UcaGHC9vjVqXs5tI4LN+O6mJCAQ=; b=WYwrYnBczIKg2F
-	wUb4dIy9LafxmF8iUQLxh764n3HyzXb1X8+9R1nAIfFjKSnlAlXhCAZJBKMaMnVhEi9yp4+6ynWwH
-	Xj5XYkWKByvg7rahBeCla8lq0ikBamGrDTGn+q7nJSGlYurQn74ByiMiDjD9wW9LkidiRlLSHmV5/
-	tF8Z3FdQmrqc/Q3jHFRB7AWX0R2gSf9IT8AeUre9dFETyMya0J/SRtOsFA4pUbWTkOAdnqap950ul
-	vaCzIJlQq7zgLS/8gu8QuufBKCJR3q9IWa+idRSrPPn9HCb+6SFF8t8XlEBY/DVVRgQB8fXzwW71Y
-	fFvvVtBJOlED9jOoVFtw==;
+	List-Owner; bh=aFd4AlObAj9Qxiqdv+rnVBWAWb46JIhge24c7E/pnCA=; b=Vjl9bDPZ5EhI/y
+	pmYr09UejWZtzzTINzj2OfCxaLhgwC7CdhfJ8dq2r4a3TTwZqAINiD4hPxr+0qvX2IJ1kZJUPqOgK
+	USnUUNnDTmDdpOYnTTZBgZa173kMxUgIqwg8tgHIzKPf4ZDRVpyv0OnJg5JTZWGORxnwXuGaNsp7z
+	KamerZnAcrzqIB60o5YvdOFt635Pw1jBy24dQJ5+1iDhtS7aY4dvSMnZ1hqiH3rgUZIRyt1AoQ8fx
+	BzvZj2i+3OcXXLgfXgqjDXXiXSbqJyf5AGg7r4x7OONhN43LYFHJlviqhFDzFLvguSZrGeDYQqIUl
+	llPEvwXJNCJkVyssvhHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt5FU-003Dfl-0K; Mon, 23 May 2022 10:25:16 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nt5FX-003Dhf-GM; Mon, 23 May 2022 10:25:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt44S-002ivK-Bv; Mon, 23 May 2022 09:09:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 2E2971F42BCF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653296987;
- bh=/sfhtu0EJohUa0an01RNJupcRbWDB39oZa1Mvb18IbQ=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=YXnQr2gjB16+I2gt4DJQkMrEs4p16e02sC+yfzyaZdX/DF8o3rHBIpWaWkNLPh4uA
- moZVAgXY44+4TFo6g8k8X3zrBznP28EhfWk+xhMjA7PQiD5nCLx6i9xaXuXsYcQJ9i
- JfTna1UFvxHkcUP1uA7lzr7vR3avydfbImk5rHO9b+uoBM8VvWuLXQly6THvkwoC8j
- JHyn7+0GQmGamonjJ1IY+lvUCAdWDnpceEw6HSUXalm7GMyDaunOoE9ZOUIcudx1UM
- SNYSdJ3s97PuRqMALUSWO+GRdmUxXj12B9zq3j7K7C0SyhVDc5tbK2mYb0dKUtjFIr
- iA4g6NU5aQ1Ug==
-Message-ID: <1dbc63ba-e89e-1a0b-b7a2-2939208a97f7@collabora.com>
-Date: Mon, 23 May 2022 11:09:43 +0200
+ id 1nt45d-002jUf-NA; Mon, 23 May 2022 09:11:03 +0000
+X-UUID: adf5745bc457435b905f45ecd64e405f-20220523
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:368cd996-a41d-4e6f-80b5-efa8c641a22c, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:5
+X-CID-META: VersionHash:2a19b09, CLOUDID:28f1467a-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: adf5745bc457435b905f45ecd64e405f-20220523
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 930434728; Mon, 23 May 2022 02:10:54 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 02:04:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 17:04:53 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 23 May 2022 17:04:52 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Mathias
+ Nyman" <mathias.nyman@intel.com>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
+ <eddie.hung@mediatek.com>
+Subject: [PATCH 2/4] dt-bindings: usb: mtu3: add support 'resets' property
+Date: Mon, 23 May 2022 17:04:47 +0800
+Message-ID: <20220523090449.14430-2-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220523090449.14430-1-chunfeng.yun@mediatek.com>
+References: <20220523090449.14430-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v8 18/19] dt-bindings: arm: mediatek: Add #reset-cells
- property for MT8186
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, mturquette@baylibre.com,
- sboyd@kernel.org, matthias.bgg@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: p.zabel@pengutronix.de, nfraprado@collabora.com,
- chun-jie.chen@mediatek.com, wenst@chromium.org, runyang.chen@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220523060056.24396-1-rex-bc.chen@mediatek.com>
- <20220523060056.24396-19-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220523060056.24396-19-rex-bc.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_020948_589514_D23F1B37 
-X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-CacheID: sfid-20220523_021101_834776_28C5E8E0 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,20 +80,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMjMvMDUvMjIgMDg6MDAsIFJleC1CQyBDaGVuIGhhIHNjcml0dG86Cj4gV2Ugd2lsbCB1c2Ug
-dGhlIGluZnJhX2FvIHJlc2V0IHdoaWNoIGlzIGRlZmluZWQgaW4gbXQ4MTg2LXN5cy1jbG9jay4K
-PiBUaGUgdmFsdWUgb2YgcmVzZXQtY2VsbHMgaXMgMS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBSZXgt
-QkMgQ2hlbiA8cmV4LWJjLmNoZW5AbWVkaWF0ZWsuY29tPgo+IEFja2VkLWJ5OiBSb2IgSGVycmlu
-ZyA8cm9iaEBrZXJuZWwub3JnPgo+IFJldmlld2VkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFk
-byA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Cj4gVGVzdGVkLWJ5OiBOw61jb2xhcyBGLiBSLiBB
-LiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+CgpSZXZpZXdlZC1ieTogQW5nZWxvR2lv
-YWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNv
-bT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
-ZWsK
+Add 'resets' property to support IP reset usually by top pericfg.
+
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+index df766f8de872..208d3f780b2a 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+@@ -106,6 +106,9 @@ properties:
+   maximum-speed:
+     enum: [super-speed-plus, super-speed, high-speed, full-speed]
+ 
++  resets:
++    maxItems: 1
++
+   "#address-cells":
+     enum: [1, 2]
+ 
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
