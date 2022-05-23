@@ -4,95 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F830C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 08:56:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E563C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 08:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pQC7kIKw2708E8GcLQmD7aD/gMOb1ZSI17m9sYl+kWo=; b=wbXD7IU4G6Caq4
-	etEMx3/WVjE8wBEI1WsNTtto6zCn1cpX2jsK+7m912+09QM3zmN2ZQ1MebLdRsy6gq/JJJYPLT04u
-	CsvWoX5RR9ZrqRVVYcjD0TXzgCIybnSmKvcpqDuBj9n+3iGEpSURMmoNG6fraLCLG86vchGRJ6Gtm
-	DEeoH8cWhBv+lie+6fRUl/i61yaMQ6OHOHAHjMnkWgNvnHyZsCyLIsa8Tfzn32t3Ux/Y129Z0Sbtq
-	kdSTJ0QTSIRxAK5SgM4qXJIYGfZj+JOuxG6eMX8vdYz7KiJw9eSFAyCl+WwJaSwHSEUPSjY1T1ZoK
-	vK/mEoPV01uw94d5/kVg==;
+	List-Owner; bh=F5BJAkUYnNc/Si14mgPePM/HLIQMr3Y0jFHLKkAOhX8=; b=OvS8oZCCdNUnEu
+	fDslldyGKUUQ1AizcVsZorE8hWtQpKtPIiToqZwEuTcS9+kpp5VzEIh4N5zbfBdpt2d/jShfRIKpY
+	cAXI3n+h/KpaNSWhr1lu/Tr4J1PeTANHKs2twHpfUfzK2MaEeXDbegovuvaOklbOxsCNfUL6NaRaY
+	ion9FlmMVqNDhXVvrez/rP28LKez9EpHi2iggIH1gN2WfVQeOFkOpTt9dGFao+hUC4BgIXgrSk7pL
+	8dvxeTnx5yMfzUq3evu7HEu5pbx66Z4LdeUrc4uLpA/sXkYepD/PDtIcdv5MQ2z6I+88/nXOYjoJ2
+	RbzSt/TFShY0rtGD63Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt3rJ-002c7T-LG; Mon, 23 May 2022 08:56:13 +0000
+	id 1nt3uG-002dWe-OU; Mon, 23 May 2022 08:59:16 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt2p9-002A7b-PE; Mon, 23 May 2022 07:49:56 +0000
+ id 1nt2pz-002A7b-Sc; Mon, 23 May 2022 07:50:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=V+esiB0EBSG8dOJHRbOX36eLypWwW10L3M7nK7Ft+JA=; b=fA7VARNPNjrHn1PsqTczDTGN1l
- AsiddLqIffaHO/QjDME76SxoHtHIbVkZz6esEIMN/VUB+ZFQ67yfWys5HZ0ORJILtu0cq95iba06f
- VriHnJvHDeyhLJKwcHEW/1Dmo3nBctw3KGG1i2SOMdNzQS1iVjGSkTt5vePU7ApzPm/47K+wuURrm
- m+Ho+dBdvzhUWamav3m/j8H/HlaDedKnJ84G9z97hV3pygz7L+OwaaBSfOHr90NOnBP4lS/u/eUTW
- 3CcBg7v8BPB7wHOp/47PRvOpfq19yYbnJBzqc+6ClG0wN//k6EymA7mTbBK8MC2htBB9sHnuof6R1
- LhS4LyDw==;
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=ISirZv7u2fGLKuAG94sOY5WyWEVOlTjqq7rCj0x7ue8=; b=jZrrG95oLKt5zSByfFay2Aw8WD
+ 32C9YAKT59v/fEt1ekWcbGnXp2oY8ELZc8YCrlUg8TslUsjQ5mvrnaGXaK5frcp34FADSX3fC+269
+ D3scyNfJeu2SguMfh+UpCcAU/+ohRKXlT2CSBn/pM6JoxsEoHvMYm3WSKFMLdP14Fo2vEZwAOfOGL
+ eqyTuwO++kSHS0GK0Nc9WWnCTubheyuO+25A6N/t66zUfOS3K/Ncc5u0ZAfiMCJv75EGIzhdK7f7h
+ 4TqrJZbsGPZNabSrsA7bdY92eZ+TTXaengAkoE5VZjISMNQ274pgXvbPS1qxvr5Bhr2kagNNNWhff
+ jTAX4wlQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt0ru-000rzI-Nd; Mon, 23 May 2022 05:44:41 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id gg20so13050785pjb.1;
- Sun, 22 May 2022 22:44:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=V+esiB0EBSG8dOJHRbOX36eLypWwW10L3M7nK7Ft+JA=;
- b=LqWsFoEhEtXJ03wP/CUlkiR2MMLHq9MdzTMrsCEsLAQKdHKeXsVfUj3PsYC9pmAQXR
- DoUWCY4o8SqL4E1YOw7ASXbHe5nHHyBIqVMHaIHq5y5qnNErHsJj3tI5lekMLR79O52B
- TBCLlo94cF7d5mzPOHPI4OUL37J/Zq6Bm6LHAG/XKDRuPXXPnuzl8aNEVPUKlZUlKg8v
- l88you7k8V6dkm9HIB1wErtuBDzTM+e/zpU8KBOkk23R7FdvMxiKMobK8oe/4LmNAbPQ
- 9ssDVfmfmcG71IfTL9NJ6vumoBwbr3bcfjEEV3xcNluHiLnWnoSMFounR8tQrsn1usAW
- 780A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=V+esiB0EBSG8dOJHRbOX36eLypWwW10L3M7nK7Ft+JA=;
- b=v0bQCWy1trsLekiAz1SW3dXxfKcyRPFnK2hzxbUU3++yMeZ1PFlivPrrtm3jHsa2rI
- vEZ245u/mpH+qsjuYIzhh5Z9+yhONX8f5pd9+ZsZ2sq/oPas0VAPOkAKHOPSpM0X/+ck
- a+YGQTtngOlnICh56fdmniELvH5FpCTG2GvYVjeWLqumjHk3QEQaM7F/LjxOjl0HNGoX
- umcBUMAngZtMt/SZzH7x7oJkxdpCnIy5YeLWw5n0asat19ldc3bLXBLiq/s4LWZajSZo
- eHWc7I7FvBRF/M7M6Ou7PsMAMB8p0n077mAzDIz2xN8tZ0pijvyUxIVUXbZNUuj75Apm
- mglw==
-X-Gm-Message-State: AOAM530WGNaFQMxVcWzXfzC0dIZppgAAJITCjAosUnGqYfGJlyjFS+8a
- HvCBRbfF4Wt2cM07kFHodhQ=
-X-Google-Smtp-Source: ABdhPJyyQ+cfxgfexa3htOxvWWsetFYRz47y02NjNOB0aSqzbEXIh5HdyuJt4/n8vLL4FQWN4tGpgg==
-X-Received: by 2002:a17:90a:2809:b0:1df:35ca:2e6a with SMTP id
- e9-20020a17090a280900b001df35ca2e6amr24493051pjd.8.1653284555278; 
- Sun, 22 May 2022 22:42:35 -0700 (PDT)
-Received: from google.com ([2620:15c:202:201:d84e:5dcd:9d68:ebbf])
- by smtp.gmail.com with ESMTPSA id
- f2-20020a170902f38200b0015eaa9797e8sm4051485ple.172.2022.05.22.22.42.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 22 May 2022 22:42:34 -0700 (PDT)
-Date: Sun, 22 May 2022 22:42:31 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kevin Hilman <khilman@baylibre.com>,
- Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RESEND PATCH 1/2] Input: mt6779-keypad - fix hardware code
- mapping
-Message-ID: <Yosex9/a7OTuC6ZK@google.com>
-References: <20220513151845.2802795-1-mkorpershoek@baylibre.com>
- <20220513151845.2802795-2-mkorpershoek@baylibre.com>
- <YoHf6Z4HTfh4Y+bn@google.com> <874k1qkk7n.fsf@baylibre.com>
- <4a7bcbfb-12da-0e3f-8732-ecc53046a4ff@collabora.com>
+ id 1nt0Mm-000qg4-1t; Mon, 23 May 2022 05:12:31 +0000
+X-UUID: e8dc38e9236743a8a132da336603ca8f-20220522
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:516e76c8-894a-406f-a641-30ff3be8b6b4, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:71853c7a-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: e8dc38e9236743a8a132da336603ca8f-20220522
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1585277053; Sun, 22 May 2022 22:12:23 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 22 May 2022 22:12:21 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 23 May 2022 13:12:19 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 23 May 2022 13:12:19 +0800
+Message-ID: <5484a9e2be7e71c3ecc86f4184f076be09ee9420.camel@mediatek.com>
+Subject: Re: [PATCH v7 00/19] Cleanup MediaTek clk reset drivers and support
+ SoCs
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
+ <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
+ <chun-jie.chen@mediatek.com>, <wenst@chromium.org>,
+ <runyang.chen@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-clk@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 23 May 2022 13:12:19 +0800
+In-Reply-To: <20220520154020.dywardvr3silhjwk@notapiano>
+References: <20220519125527.18544-1-rex-bc.chen@mediatek.com>
+ <20220520154020.dywardvr3silhjwk@notapiano>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4a7bcbfb-12da-0e3f-8732-ecc53046a4ff@collabora.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_064439_197311_1E3C3FB5 
-X-CRM114-Status: GOOD (  36.82  )
+X-CRM114-CacheID: sfid-20220523_061228_770366_B25613E1 
+X-CRM114-Status: GOOD (  20.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,95 +96,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 16, 2022 at 01:06:43PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 16/05/22 09:30, Mattijs Korpershoek ha scritto:
-> > Hi Dmitry,
-> > 
-> > Thank you for your review,
-> > 
-> > On dim., mai 15, 2022 at 22:23, Dmitry Torokhov <dmitry.torokhov@gmail.com> wrote:
-> > 
-> > > On Fri, May 13, 2022 at 05:18:44PM +0200, Mattijs Korpershoek wrote:
-> > > > In mt6779_keypad_irq_handler(), we
-> > > > 1. Read a hardware code from KPD_MEM1 -> KPD_MEM5
-> > > > 2. Use that hardware code to compute columns/rows for the standard
-> > > >     keyboard matrix.
-> > > > 
-> > > > According to the (non-public) datasheet, the
-> > > > map between the hardware code and the cols/rows is:
-> > > > 
-> > > >          |(0)  |(1)  |(2)
-> > > >      ----*-----*-----*-----
-> > > >          |     |     |
-> > > >          |(9)  |(10) |(11)
-> > > >      ----*-----*-----*-----
-> > > >          |     |     |
-> > > >          |(18) |(19) |(20)
-> > > >      ----*-----*-----*-----
-> > > >          |     |     |
-> > > > 
-> > > > This brings us to another formula:
-> > > > -> row = code / 9;
-> > > > -> col = code % 3;
-> > > 
-> > > What if there are more than 3 columns?
-> > That's not supported, in hardware, according to the datasheet.
-> > 
-> > The datasheet I have states that "The interface of MT6763 only supports
-> > 3*3 single or 2*2 double, but internal ASIC still detects keys in the
-> > manner of 8*8 single, and 3*3 double. The registers and key codes still
-> > follows the legacy naming".
-> > 
-> > Should I add another patch in this series to add that limitation in the
-> > probe? There are no checks done in the probe() right now.
-> > 
-> 
-> I've just checked a downstream kernel for MT6795 and that one looks like
-> being fully compatible with this driver as well... and as far as downstream
-> is concerned, apparently, mt6735, 6739, 6755, 6757, 6758, 6763, 6771, 6775
-> all have the same register layout and the downstream driver for these is
-> always the very same one...
-> 
-> ...so, I don't think that there's currently any SoC that supports more than
-> three columns. Besides, a fast check shows that MT8195 also has the same.
-> At this point, I'd say that assuming that there are 3 columns, nor less, not
-> more, is just fine.
-
-OK, now that I looked at the datasheet I remember how it came about. The
-programming (register) interface does not really care about how actual
-matrix is organized, and instead has a set of bits representing keys,
-from KEY0 to KEY77, arranged in 5 chunks of 15 bits split into 5 32-bit
-registers. So we simply decided to use register number as row and
-offset in the register as column when encoding our "matrix".
-
-This does not match the actual keypad matrix organization, so if we want
-to change this, that's fine, but then we also need to recognize that we
-are skipping bits 16-31, 48-63, and so on, so to get to the right key
-number we need to do something like:
-
-	key = bit_nr / 32 * 16 + bit_nr % 32;
-	row = key / 9;
-	col = key % 9;
-
-I looked at the datasheets I have and they talk about 8x8 single keypad
-matrix, and 3x3 double keypad (with actual matrices either 3x3 or 2x2)
-but I do not actually see this map layout that Mattijs drew  documented
-anywhere though...  I also wonder if there are already existing DTSes in
-the wild that will be rendered invalid by these changes. I wonder if it
-would not be be better to document the existing meaning of row and
-column in the driver?
-
-Thanks.
-
--- 
-Dmitry
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAyMDIyLTA1LTIwIGF0IDExOjQwIC0wNDAwLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFk
+byB3cm90ZToKPiBPbiBUaHUsIE1heSAxOSwgMjAyMiBhdCAwODo1NTowOFBNICswODAwLCBSZXgt
+QkMgQ2hlbiB3cm90ZToKPiA+IEluIHRoaXMgc2VyaWVzLCB3ZSBjbGVhbnVwIE1lZGlhVGVrIGNs
+b2NrIHJlc2V0IGRyaXZlcnMgaW4KPiA+IGNsay9tZWRpYXRlawo+ID4gZm9sZGVyLiBNZWRpYVRl
+ayBjbG9jayByZXNldCBkcml2ZXIgaXMgdXNlZCB0byBwcm92aWRlIHJlc2V0Cj4gPiBjb250cm9s
+Cj4gPiBvZiBtb2R1bGVzIGNvbnRyb2xsZWQgaW4gY2xrLCBsaWtlIGluZnJhX2FvLgo+ID4gCj4g
+PiBDaGFuZ2VzIGZvciB2NzoKPiA+IDEuIHY3IGlzIGJhc2VkIG9uIGxpbnV4LW5leHQgbmV4dC0y
+MDIyMDUxOSBhbmQgQ2hlbi1ZdSdzIHNlcmllc1sxXS4KPiA+IDIuIEFkZCBzdXBwb3J0IGZvciBN
+VDgxODYuCj4gPiAKPiA+IFsxXTogCj4gPiBodHRwczovL3VybGRlZmVuc2UuY29tL3YzL19faHR0
+cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhdGVrL2xpc3QvP3Nl
+cmllcz02NDMwMDNfXzshIUNUUk5LQTl3TWcwQVJidyEzTl9SMVIycVhZZC12TFVFLUJ6cmMxWkRf
+MzlsaUZPNlZ6X1J5SmRQaXVBeW9NSE80VHVhb093V2sxa2E1MGJWZV8wZmR5SmFrQi1GekNMR2p6
+ZFZ0c2Q2c1EkCj4gPiAgCj4gPiAKPiA+IENoYW5nZXMgZm9yIHY2Ogo+ID4gMS4gQWRkIGEgbmV3
+IHBhdGNoIHRvIHN1cHBvcnQgaW51cHV0IGFyZ3VtZW50IGluZGV4IG1vZGUuCj4gPiAyLiBSZXZp
+c2UgZGVmaW5pdGlvbiBpbiByZXNldC5oIHRvIGluZGV4Lgo+ID4gCj4gPiBSZXgtQkMgQ2hlbiAo
+MTkpOgo+ID4gICBjbGs6IG1lZGlhdGVrOiByZXNldDogQWRkIHJlc2V0LmgKPiA+ICAgY2xrOiBt
+ZWRpYXRlazogcmVzZXQ6IEZpeCB3cml0dGVuIHJlc2V0IGJpdCBvZmZzZXQKPiA+ICAgY2xrOiBt
+ZWRpYXRlazogcmVzZXQ6IFJlZmluZSBhbmQgcmVvcmRlciBmdW5jdGlvbnMgaW4gcmVzZXQuYwo+
+ID4gICBjbGs6IG1lZGlhdGVrOiByZXNldDogRXh0cmFjdCBjb21tb24gZHJpdmVycyB0byB1cGRh
+dGUgZnVuY3Rpb24KPiA+ICAgY2xrOiBtZWRpYXRlazogcmVzZXQ6IE1lcmdlIGFuZCByZXZpc2Ug
+cmVzZXQgcmVnaXN0ZXIgZnVuY3Rpb24KPiA+ICAgY2xrOiBtZWRpYXRlazogcmVzZXQ6IFJldmlz
+ZSBzdHJ1Y3R1cmUgdG8gY29udHJvbCByZXNldCByZWdpc3Rlcgo+ID4gICBjbGs6IG1lZGlhdGVr
+OiByZXNldDogU3VwcG9ydCBub25zZXF1ZW5jZSBiYXNlIG9mZnNldHMgb2YgcmVzZXQKPiA+ICAg
+ICByZWdpc3RlcnMKPiA+ICAgY2xrOiBtZWRpYXRlazogcmVzZXQ6IFN1cHBvcnQgaW51cHV0IGFy
+Z3VtZW50IGluZGV4IG1vZGUKPiA+ICAgY2xrOiBtZWRpYXRlazogcmVzZXQ6IENoYW5nZSByZXR1
+cm4gdHlwZSBmb3IgY2xvY2sgcmVzZXQgcmVnaXN0ZXIKPiA+ICAgICBmdW5jdGlvbgo+ID4gICBj
+bGs6IG1lZGlhdGVrOiByZXNldDogQWRkIG5ldyByZWdpc3RlciByZXNldCBmdW5jdGlvbiB3aXRo
+IGRldmljZQo+ID4gICBjbGs6IG1lZGlhdGVrOiByZXNldDogQWRkIHJlc2V0IHN1cHBvcnQgZm9y
+IHNpbXBsZSBwcm9iZQo+ID4gICBkdC1iaW5kaW5nczogYXJtOiBtZWRpYXRlazogQWRkICNyZXNl
+dC1jZWxscyBwcm9wZXJ0eSBmb3IKPiA+ICAgICBNVDgxOTIvTVQ4MTk1Cj4gPiAgIGR0LWJpbmRp
+bmdzOiByZXNldDogbWVkaWF0ZWs6IEFkZCBpbmZyYV9hbyByZXNldCBpbmRleCBmb3IKPiA+ICAg
+ICBNVDgxOTIvTVQ4MTk1Cj4gPiAgIGNsazogbWVkaWF0ZWs6IHJlc2V0OiBBZGQgaW5mcmFfYW8g
+cmVzZXQgc3VwcG9ydCBmb3IKPiA+IE1UODE5Mi9NVDgxOTUKPiA+ICAgYXJtNjQ6IGR0czogbWVk
+aWF0ZWs6IEFkZCBpbmZyYSAjcmVzZXQtY2VsbHMgcHJvcGVydHkgZm9yIE1UODE5Mgo+ID4gICBh
+cm02NDogZHRzOiBtZWRpYXRlazogQWRkIGluZnJhICNyZXNldC1jZWxscyBwcm9wZXJ0eSBmb3Ig
+TVQ4MTk1Cj4gPiAgIGR0LWJpbmRpbmdzOiByZXNldDogbWVkaWF0ZWs6IEFkZCBpbmZyYV9hbyBy
+ZXNldCBpbmRleCBmb3IgTVQ4MTg2Cj4gPiAgIGR0LWJpbmRpbmdzOiBhcm06IG1lZGlhdGVrOiBB
+ZGQgI3Jlc2V0LWNlbGxzIHByb3BlcnR5IGZvciBNVDgxODYKPiA+ICAgY2xrOiBtZWRpYXRlazog
+cmVzZXQ6IEFkZCBpbmZyYV9hbyByZXNldCBzdXBwb3J0IGZvciBNVDgxODYKPiAKPiBGb3IgdGhl
+IHdob2xlIHNlcmllczoKPiAKPiBSZXZpZXdlZC1ieTogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8g
+PG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgo+IAo+IEFuZCBhbHNvCj4gCj4gVGVzdGVkLWJ5OiBO
+w61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Cj4gCj4gb24g
+bXQ4MTkyLWFzdXJhZGEtc3BoZXJpb24uIFBDSWUgcmVzZXRzIHdvcmsgYXMgaW50ZW5kZWQgYnkg
+YWRkaW5nIG9uCj4gdGhlIHBjaWUKPiBub2RlIAo+IAo+ICsgICAgICAgICAgICAgICAgICAgICAg
+IHJlc2V0cyA9IDwmaW5mcmFjZmcKPiBNVDgxOTJfSU5GUkFfUlNUMl9QRVhUUF9QSFlfU1dSU1Q+
+LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmaW5mcmFjZmcKPiBNVDgxOTJf
+SU5GUkFfUlNUNF9QQ0lFX1RPUF9TV1JTVD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcmVz
+ZXQtbmFtZXMgPSAicGh5IiwgIm1hYyI7Cj4gCj4gVGhhbmtzIGZvciB0aGUgZ3JlYXQgd29yayBv
+biB0aGlzIHNlcmllcywgUmV4IQo+IAo+IE7DrWNvbGFzCgpIZWxsbyBOw61jb2xhcywKClRoYW5r
+cyBmb3IgaGVscGluZyBtZSB0byB0ZXN0IHRoaXMgc2VyaWVzIGluIE1UODE5Mi4KCkJScywKUmV4
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
+awo=
