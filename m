@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E70E6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F2AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:50:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YNpnbwTZN2MUVaN4Qgxev8de7N+TXuxURczNNF2Qs2M=; b=cU88CVxPUuIUN0
-	lKtFXl+h4ZLiljMMiyzNs+h+rFnsiChbFjgu+d6g/q9xqzNXocKw8rnAh83WoqL8lwHGrjEDv8lbH
-	OjtJnWt57v1johBX2MpN3+jFf5pg4kbgWr78DVQC2wxNINBZKfxit8XKPeRrZiGIFc5xMhsUtEarz
-	4CNauJOcpZ8kd5CYVxaK+plD1CgfZOtG09wLyPIfRWA3neGiqZia+acpLM4FaWG/AFyezucGsBh82
-	TANWvFUTLVzb/xpXWOPWnA6g3EJBtuqdwZMkXKzXs1zj7cQH/+xULCbHxUJ1BaOnT2VsZIVOoYVOM
-	9EH97lOg03q/ZMSIk5lA==;
+	List-Owner; bh=rcQDvkh8fxEY2ZaNcsUywgQKAmcAWoM9fzLgr8Ss/o0=; b=rN7yXzhVfOE2hW
+	GCM4xhzEXdh7hg/SAB1FfwTeakEyOZm0RFSIMA02NY1aozB1G97oyKr4W1S2QPYfjgmXbwBRdHye0
+	YomWktw5KRbKXz+WzUNjdf0u1Y4YJQgAnodl/IPLdIgYkR4EwmHoP4A8IUlTtHvyzk6kcOzaZRoVC
+	bMamJ7KzepWtBfH1lJNq/w5siXHg2SFWThzkW9g6jrCfcTOFK6uvg/Pl0csBzifUg8Aqwp5kxsAmu
+	YCHRCwGPFNkFuzcTk3dEeJKNy5ygAumL85e7cEktVgWY6CoRhDxRyTZ8d4ChNWKNYj0uhx29UiIsx
+	/JWdlkRen8hrvGyLChPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt5co-003P5C-TS; Mon, 23 May 2022 10:49:22 +0000
+	id 1nt5dU-003PQ6-QV; Mon, 23 May 2022 10:50:04 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt4Vz-002uB7-Np; Mon, 23 May 2022 09:38:17 +0000
+ id 1nt4W3-002uDH-FW; Mon, 23 May 2022 09:38:20 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 6A2F11F41D24
+ (Authenticated sender: kholk11) with ESMTPSA id A64751F426E8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653298694;
- bh=+mM48zHrs1vI2jvIxwtcOKf64dJhB2TyhpCjZ7uDCtM=;
+ s=mail; t=1653298698;
+ bh=XvaiufkFnN1wMlfvWPGiVI99J1BcUL6VmHZvtPIs1vM=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=iST7cAMPBLCjzsMh4n4atbAlZTFPjGXPOe8rZ5qUNBhXeplo0jn6hLuuDtisSlPY4
- YsOVkJL1PmOxWNYBs+S4e2IGd34M1NWLm3Feooc8JA5axyPU978spk+Y+yhqhr2AH3
- 0s1MmghNKKAx5IPVPM+79b61jMHtsFYDHV1oSygaOh+DpFbc48SQh8lkIPKD1V0oCy
- 8ouPBcCLu1ghmosi6rBOT8OEoMpf15Yu4OeIq1+KhaaC+goYXJDQoSm3vmF6cLTl7l
- eYU+pD0KMMLQ+srUloQc5maKkMNGLLze2Qq1JAbjVH1v3ZW/twqNSC7oMOXLqAVkAs
- tf54CFmE3Yptw==
-Message-ID: <0a1c4797-cfdf-1b45-62f0-18ecf78ed335@collabora.com>
-Date: Mon, 23 May 2022 11:38:11 +0200
+ b=J3u7n8+ezDneiHNhUBpp+KDQ0k6O3Slu7Ag9EoZBw4/fJx9FORvGjuEQ3g79+vbRI
+ u1TR3W8Nlhoyi+mXH5Pe3Hg3ZwrCDHZk/aj7YqIgApW1JWsDnxY/RiNfBEKv15wjDo
+ Je8cDqtkSt+nFrtWHGoHiGRqtc2+cmvXoLapIEf1h8vlJVmMhdGQ43BTwttlACBcu/
+ s1gGnZ69LsTBCaCHHBV5QKhORxXk9tYuzndFX/8FV/FPqEw5drdpJyOKvT/kbGs4x5
+ eZfmh9xaB4C58q1aVCCqzFxAiiDTjwqvu6sPZPS5l0NMNwQfMlrihU/5JPty1/nkhY
+ gp0kO1HWK02lQ==
+Message-ID: <d9563b65-2391-d32c-8a07-ca7a13cae7c7@collabora.com>
+Date: Mon, 23 May 2022 11:38:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v3 2/4] soc: mediatek: svs: add support for mt8186
+Subject: Re: [PATCH v3 4/4] soc: mediatek: svs: add support for mt8195
 Content-Language: en-US
 To: Tim Chang <jia-wei.chang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -52,12 +52,12 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com
 References: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
- <20220523084034.26802-3-jia-wei.chang@mediatek.com>
+ <20220523084034.26802-5-jia-wei.chang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220523084034.26802-3-jia-wei.chang@mediatek.com>
+In-Reply-To: <20220523084034.26802-5-jia-wei.chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_023815_958806_4F5CA9D6 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20220523_023819_743787_CF8D763A 
+X-CRM114-Status: GOOD (  14.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,41 +77,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 23/05/22 10:40, Tim Chang ha scritto:
 > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > 
-> MT8186 svs has a number of banks which used as optimization of opp
-> voltage table for corresponding dvfs drivers.
-> MT8186 svs big core uses 2-line high bank and low bank to optimize the
-> voltage of opp table for higher and lower frequency respectively.
+> To support svs on MT8195, add corresponding bank information, platform
+> data, probe and parsing function.
 > 
 > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
+
 > ---
->   drivers/soc/mediatek/mtk-svs.c | 351 ++++++++++++++++++++++++++++++++-
->   1 file changed, 344 insertions(+), 7 deletions(-)
+>   drivers/soc/mediatek/mtk-svs.c | 151 +++++++++++++++++++++++++++++++++
+>   1 file changed, 151 insertions(+)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 606a00a2e57d..656d0361ff7d 100644
+> index 656d0361ff7d..bb5021648143 100644
 > --- a/drivers/soc/mediatek/mtk-svs.c
 > +++ b/drivers/soc/mediatek/mtk-svs.c
+> @@ -1680,6 +1680,89 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
 
 ..snip..
 
-> @@ -2245,6 +2569,16 @@ static const struct svs_platform_data svs_mt8192_platform_data = {
->   	.bank_max = ARRAY_SIZE(svs_mt8192_banks),
+> @@ -2559,6 +2697,16 @@ static struct svs_bank svs_mt8183_banks[] = {
+>   	},
 >   };
 >   
-> +static const struct svs_platform_data svs_mt8186_platform_data = {
-> +	.name = "mt8186-svs",
-> +	.banks = svs_mt8186_banks,
-> +	.efuse_parsing = svs_mt8186_efuse_parsing,
-> +	.probe = svs_mt8186_platform_probe,
+> +static const struct svs_platform_data svs_mt8195_platform_data = {
+> +	.name = "mt8195-svs",
+> +	.banks = svs_mt8195_banks,
+> +	.efuse_parsing = svs_mt8195_efuse_parsing,
+> +	.probe = svs_mt8192_platform_probe,
 > +	.irqflags = IRQF_TRIGGER_HIGH,
 
-I know I gave you my R-b tag earlier, but I've just noticed that: please remove
-irqflags, as this kind of flags are specified in devicetree and it is not
-necessary to specify them here.
+Interrupt flags are specified in devicetree; avoid declaring irqflags.
 
-Thanks,
-Angelo
+After that:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 _______________________________________________
 Linux-mediatek mailing list
