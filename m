@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 942EBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 13:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65CC3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 13:41:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OQN+36FbAaN7tZ2/Jpquy3GfJ4NTPW2gy2PuJyOgQuE=; b=A1Q2OygGxUvPev
-	V5hXrNmNOJ1C9s4OtFMSzTB1yyzVBfDl/W1+mUgy1w1jpLVLxGHNsgRbqnb24oZ+QA+da5c+kK48O
-	gpj9fthEi7NvfB2DvV3sb5XRTm1dGtGtMJ/4AdfrEH3tMwoTiULPvySE0oGWz69EN2+pdWiOB57DD
-	GIciDuvGRBlS3QfatwDQd85SQelrUqj3K53AV7x9R1b6ZbSnj10051WnND+GonOLNs8AcEit9dQjB
-	HloCqCCHQ0ERpNkC/Ds+AZsleAYaQEmqbavauGNttYkIKMD0Fhax/IIebCl1vo24kpdeKRkH0E36l
-	pm64rG2e3IuaszZ0yIwA==;
+	List-Owner; bh=7Zsl2SjtvQgAkAK2jvXedzIn5O7MgnVsnDZMdqt8UOg=; b=GVH9HCP3cc8pTP
+	VnjTS2eIefgxjkkfANqy2dQCiV8IWb24y8WZnh0QEryz9MWvxXZ5xikuS6GSPh/2ckDAMZ+Yjrk55
+	v6mk5edmMuniA/PmZDOSnLl+DAceaYLzVYw6h6wPVsFUJsHuV8eXDGPqxaviVHg01wG9QT0jssZaq
+	Du1sGoaFkFHDfJg6IkQYEa0Xr49qeR3zLkNif0uctqYRckPl27tYv8AXlC5Yw7UWGlglbaOlu+Hfw
+	yVgWCEIq3mdFXeE5QJDcrFEh4PORGkcdqvAgzs342d/1SCd3duKDBM2/hp3mKBwq3SAxC0CkLDo5q
+	U8b2saqeFH6yPeUpIZEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt8Iv-004TRo-1y; Mon, 23 May 2022 13:41:01 +0000
+	id 1nt8JQ-004ThL-2t; Mon, 23 May 2022 13:41:32 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt8HE-004SiR-JH; Mon, 23 May 2022 13:39:23 +0000
-X-UUID: 7b3278a24c114df6b368c5d53f766b4e-20220523
+ id 1nt8HF-004SjD-1l; Mon, 23 May 2022 13:39:25 +0000
+X-UUID: f0f736288eff4ff28ef680946bb89f95-20220523
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:98e324bd-0fa3-4d40-9db4-19fae5b8a8e1, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:ee2cd84c-9a95-495d-9e07-4f8f643ceb7a, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:0e293ee3-edbf-4bd4-8a34-dfc5f7bb086d,
+ B:0,IP:0,URL:0,TC:0,Content:23,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:23
+X-CID-META: VersionHash:2a19b09, CLOUDID:aa204e7a-5ef6-470b-96c9-bdb8ced32786,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: 7b3278a24c114df6b368c5d53f766b4e-20220523
+X-UUID: f0f736288eff4ff28ef680946bb89f95-20220523
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1547542892; Mon, 23 May 2022 06:39:11 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1707906767; Mon, 23 May 2022 06:39:10 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 06:29:17 -0700
+ 15.0.1497.2; Mon, 23 May 2022 06:29:09 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 21:29:15 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 23 May 2022 21:29:06 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 23 May 2022 21:29:14 +0800
+ Transport; Mon, 23 May 2022 21:29:06 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>,
  <angelogioacchino.delregno@collabora.com>
@@ -58,18 +59,18 @@ CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
  <jiaxin.yu@mediatek.com>
-Subject: [PATCH v5 15/20] ASoC: mediatek: mt8186: add mt8186-mt6366 common
+Subject: [PATCH v5 06/20] ASoC: mediatek: mt8186: support hw gain in platform
  driver
-Date: Mon, 23 May 2022 21:28:53 +0800
-Message-ID: <20220523132858.22166-16-jiaxin.yu@mediatek.com>
+Date: Mon, 23 May 2022 21:28:44 +0800
+Message-ID: <20220523132858.22166-7-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
 References: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_063916_699121_D0CEAB90 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20220523_063917_131263_A201E1FA 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,104 +87,257 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186-mt6366 common driver for mt8186 series machine.
+Add mt8186 hw gain dai driver.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../mediatek/mt8186/mt8186-mt6366-common.c    | 59 +++++++++++++++++++
- .../mediatek/mt8186/mt8186-mt6366-common.h    | 17 ++++++
- 2 files changed, 76 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-common.c
- create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-common.h
+ .../soc/mediatek/mt8186/mt8186-dai-hw-gain.c  | 236 ++++++++++++++++++
+ 1 file changed, 236 insertions(+)
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-common.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.c
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
 new file mode 100644
-index 000000000000..94e1128e8128
+index 000000000000..33edd6cbde12
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.c
-@@ -0,0 +1,59 @@
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-hw-gain.c
+@@ -0,0 +1,236 @@
 +// SPDX-License-Identifier: GPL-2.0
 +//
-+// mt8186-mt6366-common.c
-+//	--  MT8186 MT6366 ALSA common driver
++// MediaTek ALSA SoC Audio DAI HW Gain Control
 +//
 +// Copyright (c) 2022 MediaTek Inc.
 +// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-+//
-+#include <sound/soc.h>
 +
-+#include "../../codecs/mt6358.h"
-+#include "../common/mtk-afe-platform-driver.h"
++#include <linux/regmap.h>
 +#include "mt8186-afe-common.h"
-+#include "mt8186-mt6366-common.h"
++#include "mt8186-interconnection.h"
 +
-+int mt8186_mt6366_init(struct snd_soc_pcm_runtime *rtd)
++#define HW_GAIN_1_EN_W_NAME "HW GAIN 1 Enable"
++#define HW_GAIN_2_EN_W_NAME "HW GAIN 2 Enable"
++
++/* dai component */
++static const struct snd_kcontrol_new mtk_hw_gain1_in_ch1_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("CONNSYS_I2S_CH1 Switch", AFE_CONN13_1,
++				    I_CONNSYS_I2S_CH1, 1, 0),
++};
++
++static const struct snd_kcontrol_new mtk_hw_gain1_in_ch2_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("CONNSYS_I2S_CH2 Switch", AFE_CONN14_1,
++				    I_CONNSYS_I2S_CH2, 1, 0),
++};
++
++static const struct snd_kcontrol_new mtk_hw_gain2_in_ch1_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH1 Switch", AFE_CONN15,
++				    I_ADDA_UL_CH1, 1, 0),
++};
++
++static const struct snd_kcontrol_new mtk_hw_gain2_in_ch2_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2 Switch", AFE_CONN16,
++				    I_ADDA_UL_CH2, 1, 0),
++};
++
++static int mtk_hw_gain_event(struct snd_soc_dapm_widget *w,
++			     struct snd_kcontrol *kcontrol,
++			     int event)
 +{
-+	struct snd_soc_component *cmpnt_afe =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct snd_soc_component *cmpnt_codec =
-+		asoc_rtd_to_codec(rtd, 0)->component;
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
-+	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-+	struct snd_soc_dapm_context *dapm = &rtd->card->dapm;
-+	int ret;
++	struct snd_soc_component *cmpnt = snd_soc_dapm_to_component(w->dapm);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt);
++	unsigned int gain_cur;
++	unsigned int gain_con1;
 +
-+	/* set mtkaif protocol */
-+	mt6358_set_mtkaif_protocol(cmpnt_codec,
-+				   MT6358_MTKAIF_PROTOCOL_1);
-+	afe_priv->mtkaif_protocol = MT6358_MTKAIF_PROTOCOL_1;
++	dev_dbg(cmpnt->dev, "%s(), name %s, event 0x%x\n",
++		__func__, w->name, event);
 +
-+	ret = snd_soc_dapm_sync(dapm);
-+	if (ret) {
-+		dev_info(rtd->dev, "failed to snd_soc_dapm_sync\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt8186_mt6366_init);
-+
-+int mt8186_mt6366_card_set_be_link(struct snd_soc_card *card,
-+				   struct snd_soc_dai_link *link,
-+				   struct device_node *node,
-+				   char *link_name)
-+{
-+	int ret;
-+
-+	if (node && strcmp(link->name, link_name) == 0) {
-+		ret = snd_soc_of_get_dai_link_codecs(card->dev, node, link);
-+		if (ret < 0) {
-+			dev_err_probe(card->dev, ret, "get dai link codecs fail\n");
-+			return ret;
++	switch (event) {
++	case SND_SOC_DAPM_PRE_PMU:
++		if (strcmp(w->name, HW_GAIN_1_EN_W_NAME) == 0) {
++			gain_cur = AFE_GAIN1_CUR;
++			gain_con1 = AFE_GAIN1_CON1;
++		} else {
++			gain_cur = AFE_GAIN2_CUR;
++			gain_con1 = AFE_GAIN2_CON1;
 +		}
++
++		/* let hw gain ramp up, set cur gain to 0 */
++		regmap_update_bits(afe->regmap, gain_cur, AFE_GAIN1_CUR_MASK_SFT, 0);
++
++		/* set target gain to 0 */
++		regmap_update_bits(afe->regmap, gain_con1, GAIN1_TARGET_MASK_SFT, 0);
++		break;
++	default:
++		break;
 +	}
 +
 +	return 0;
 +}
-+EXPORT_SYMBOL_GPL(mt8186_mt6366_card_set_be_link);
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-common.h b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.h
-new file mode 100644
-index 000000000000..907d8f5e46b1
---- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.h
-@@ -0,0 +1,17 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt8186-mt6366-common.h
-+ *
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-+ */
 +
-+#ifndef _MT8186_MT6366_COMMON_H_
-+#define _MT8186_MT6366_COMMON_H_
++static const struct snd_soc_dapm_widget mtk_dai_hw_gain_widgets[] = {
++	/* inter-connections */
++	SND_SOC_DAPM_MIXER("HW_GAIN1_IN_CH1", SND_SOC_NOPM, 0, 0,
++			   mtk_hw_gain1_in_ch1_mix,
++			   ARRAY_SIZE(mtk_hw_gain1_in_ch1_mix)),
++	SND_SOC_DAPM_MIXER("HW_GAIN1_IN_CH2", SND_SOC_NOPM, 0, 0,
++			   mtk_hw_gain1_in_ch2_mix,
++			   ARRAY_SIZE(mtk_hw_gain1_in_ch2_mix)),
++	SND_SOC_DAPM_MIXER("HW_GAIN2_IN_CH1", SND_SOC_NOPM, 0, 0,
++			   mtk_hw_gain2_in_ch1_mix,
++			   ARRAY_SIZE(mtk_hw_gain2_in_ch1_mix)),
++	SND_SOC_DAPM_MIXER("HW_GAIN2_IN_CH2", SND_SOC_NOPM, 0, 0,
++			   mtk_hw_gain2_in_ch2_mix,
++			   ARRAY_SIZE(mtk_hw_gain2_in_ch2_mix)),
 +
-+int mt8186_mt6366_init(struct snd_soc_pcm_runtime *rtd);
-+int mt8186_mt6366_card_set_be_link(struct snd_soc_card *card,
-+				   struct snd_soc_dai_link *link,
-+				   struct device_node *node,
-+				   char *link_name);
-+#endif
++	SND_SOC_DAPM_SUPPLY(HW_GAIN_1_EN_W_NAME,
++			    AFE_GAIN1_CON0, GAIN1_ON_SFT, 0,
++			    mtk_hw_gain_event,
++			    SND_SOC_DAPM_PRE_PMU),
++
++	SND_SOC_DAPM_SUPPLY(HW_GAIN_2_EN_W_NAME,
++			    AFE_GAIN2_CON0, GAIN2_ON_SFT, 0,
++			    mtk_hw_gain_event,
++			    SND_SOC_DAPM_PRE_PMU),
++
++	SND_SOC_DAPM_INPUT("HW Gain 1 Out Endpoint"),
++	SND_SOC_DAPM_INPUT("HW Gain 2 Out Endpoint"),
++	SND_SOC_DAPM_OUTPUT("HW Gain 1 In Endpoint"),
++};
++
++static const struct snd_soc_dapm_route mtk_dai_hw_gain_routes[] = {
++	{"HW Gain 1 In", NULL, "HW_GAIN1_IN_CH1"},
++	{"HW Gain 1 In", NULL, "HW_GAIN1_IN_CH2"},
++	{"HW Gain 2 In", NULL, "HW_GAIN2_IN_CH1"},
++	{"HW Gain 2 In", NULL, "HW_GAIN2_IN_CH2"},
++
++	{"HW Gain 1 In", NULL, HW_GAIN_1_EN_W_NAME},
++	{"HW Gain 1 Out", NULL, HW_GAIN_1_EN_W_NAME},
++	{"HW Gain 2 In", NULL, HW_GAIN_2_EN_W_NAME},
++	{"HW Gain 2 Out", NULL, HW_GAIN_2_EN_W_NAME},
++
++	{"HW Gain 1 In Endpoint", NULL, "HW Gain 1 In"},
++	{"HW Gain 1 Out", NULL, "HW Gain 1 Out Endpoint"},
++	{"HW Gain 2 Out", NULL, "HW Gain 2 Out Endpoint"},
++};
++
++static const struct snd_kcontrol_new mtk_hw_gain_controls[] = {
++	SOC_SINGLE("HW Gain 1 Volume", AFE_GAIN1_CON1,
++		   GAIN1_TARGET_SFT, GAIN1_TARGET_MASK, 0),
++	SOC_SINGLE("HW Gain 2 Volume", AFE_GAIN2_CON1,
++		   GAIN2_TARGET_SFT, GAIN2_TARGET_MASK, 0),
++};
++
++/* dai ops */
++static int mtk_dai_gain_hw_params(struct snd_pcm_substream *substream,
++				  struct snd_pcm_hw_params *params,
++				  struct snd_soc_dai *dai)
++{
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++	unsigned int rate = params_rate(params);
++	unsigned int rate_reg = mt8186_rate_transform(afe->dev, rate, dai->id);
++
++	dev_dbg(afe->dev, "%s(), id %d, stream %d, rate %d\n",
++		__func__, dai->id, substream->stream, rate);
++
++	/* rate */
++	regmap_update_bits(afe->regmap,
++			   dai->id == MT8186_DAI_HW_GAIN_1 ?
++			   AFE_GAIN1_CON0 : AFE_GAIN2_CON0,
++			   GAIN1_MODE_MASK_SFT,
++			   rate_reg << GAIN1_MODE_SFT);
++
++	/* sample per step */
++	regmap_update_bits(afe->regmap,
++			   dai->id == MT8186_DAI_HW_GAIN_1 ?
++			   AFE_GAIN1_CON0 : AFE_GAIN2_CON0,
++			   GAIN1_SAMPLE_PER_STEP_MASK_SFT,
++			   (dai->id == MT8186_DAI_HW_GAIN_1 ? 0x40 : 0x0) <<
++			   GAIN1_SAMPLE_PER_STEP_SFT);
++
++	return 0;
++}
++
++static const struct snd_soc_dai_ops mtk_dai_gain_ops = {
++	.hw_params = mtk_dai_gain_hw_params,
++};
++
++/* dai driver */
++#define MTK_HW_GAIN_RATES (SNDRV_PCM_RATE_8000_48000 |\
++			   SNDRV_PCM_RATE_88200 |\
++			   SNDRV_PCM_RATE_96000 |\
++			   SNDRV_PCM_RATE_176400 |\
++			   SNDRV_PCM_RATE_192000)
++
++#define MTK_HW_GAIN_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
++			     SNDRV_PCM_FMTBIT_S24_LE |\
++			     SNDRV_PCM_FMTBIT_S32_LE)
++
++static struct snd_soc_dai_driver mtk_dai_gain_driver[] = {
++	{
++		.name = "HW Gain 1",
++		.id = MT8186_DAI_HW_GAIN_1,
++		.playback = {
++			.stream_name = "HW Gain 1 In",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = MTK_HW_GAIN_RATES,
++			.formats = MTK_HW_GAIN_FORMATS,
++		},
++		.capture = {
++			.stream_name = "HW Gain 1 Out",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = MTK_HW_GAIN_RATES,
++			.formats = MTK_HW_GAIN_FORMATS,
++		},
++		.ops = &mtk_dai_gain_ops,
++		.symmetric_rate = 1,
++		.symmetric_channels = 1,
++		.symmetric_sample_bits = 1,
++	},
++	{
++		.name = "HW Gain 2",
++		.id = MT8186_DAI_HW_GAIN_2,
++		.playback = {
++			.stream_name = "HW Gain 2 In",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = MTK_HW_GAIN_RATES,
++			.formats = MTK_HW_GAIN_FORMATS,
++		},
++		.capture = {
++			.stream_name = "HW Gain 2 Out",
++			.channels_min = 1,
++			.channels_max = 2,
++			.rates = MTK_HW_GAIN_RATES,
++			.formats = MTK_HW_GAIN_FORMATS,
++		},
++		.ops = &mtk_dai_gain_ops,
++		.symmetric_rate = 1,
++		.symmetric_channels = 1,
++		.symmetric_sample_bits = 1,
++	},
++};
++
++int mt8186_dai_hw_gain_register(struct mtk_base_afe *afe)
++{
++	struct mtk_base_afe_dai *dai;
++
++	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
++	if (!dai)
++		return -ENOMEM;
++
++	list_add(&dai->list, &afe->sub_dais);
++
++	dai->dai_drivers = mtk_dai_gain_driver;
++	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_gain_driver);
++
++	dai->controls = mtk_hw_gain_controls;
++	dai->num_controls = ARRAY_SIZE(mtk_hw_gain_controls);
++	dai->dapm_widgets = mtk_dai_hw_gain_widgets;
++	dai->num_dapm_widgets = ARRAY_SIZE(mtk_dai_hw_gain_widgets);
++	dai->dapm_routes = mtk_dai_hw_gain_routes;
++	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_hw_gain_routes);
++	return 0;
++}
 -- 
 2.18.0
 
