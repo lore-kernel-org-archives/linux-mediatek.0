@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1A6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:25:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F64C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 10:26:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aFd4AlObAj9Qxiqdv+rnVBWAWb46JIhge24c7E/pnCA=; b=Vjl9bDPZ5EhI/y
-	pmYr09UejWZtzzTINzj2OfCxaLhgwC7CdhfJ8dq2r4a3TTwZqAINiD4hPxr+0qvX2IJ1kZJUPqOgK
-	USnUUNnDTmDdpOYnTTZBgZa173kMxUgIqwg8tgHIzKPf4ZDRVpyv0OnJg5JTZWGORxnwXuGaNsp7z
-	KamerZnAcrzqIB60o5YvdOFt635Pw1jBy24dQJ5+1iDhtS7aY4dvSMnZ1hqiH3rgUZIRyt1AoQ8fx
-	BzvZj2i+3OcXXLgfXgqjDXXiXSbqJyf5AGg7r4x7OONhN43LYFHJlviqhFDzFLvguSZrGeDYQqIUl
-	llPEvwXJNCJkVyssvhHA==;
+	List-Owner; bh=HOaC133fcmGeb93XGXpZowVdvzOo+XboWx1DiEHncvE=; b=ZS9N/EPqwa2ybK
+	FRFxTSYffmoePbDBGk19P0mKRUHKu2lOesoeYiGaCLKa/0c2wpMY/uO79tTImFxJ9lPM2iAGcIxQI
+	v1jJb4xIpvX0GHOXUYeWejISy3PoP0Fn6al44Zan0azwBj5lvmhKq5xb38Lg96yjAT5urbsK9p17J
+	WC+bNryZWPofy2D3oyHUd6qPFhB8EmrdwgjYC9UNHO6YbTCXk+6AxTYU42z2PBVXXRWJuzx7Zx3I8
+	X/BOMPSPJGfaKIUVXkiTGhWEppFVbxLiUQFAxoanPj9ykD+1uXWBxBHEefArFHJe4DeHT9d3e/+rI
+	L7T1o1xvWZa5c+7yFUZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt5FX-003Dhf-GM; Mon, 23 May 2022 10:25:19 +0000
+	id 1nt5GE-003E0h-JI; Mon, 23 May 2022 10:26:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt45d-002jUf-NA; Mon, 23 May 2022 09:11:03 +0000
-X-UUID: adf5745bc457435b905f45ecd64e405f-20220523
+ id 1nt45e-002jW5-EA; Mon, 23 May 2022 09:11:04 +0000
+X-UUID: 8e67c32408df4d04affa4e78bae2b53e-20220523
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:368cd996-a41d-4e6f-80b5-efa8c641a22c, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:ae9b736d-ef93-42bb-8e44-a90b0b9a287c, OB:0,
  LO
  B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:5
-X-CID-META: VersionHash:2a19b09, CLOUDID:28f1467a-5ef6-470b-96c9-bdb8ced32786,
+X-CID-META: VersionHash:2a19b09, CLOUDID:27f1467a-5ef6-470b-96c9-bdb8ced32786,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
  ,QS:0,BEC:nil
-X-UUID: adf5745bc457435b905f45ecd64e405f-20220523
+X-UUID: 8e67c32408df4d04affa4e78bae2b53e-20220523
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 930434728; Mon, 23 May 2022 02:10:54 -0700
+ with ESMTP id 1168906604; Mon, 23 May 2022 02:10:54 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 02:04:54 -0700
+ 15.0.1497.2; Mon, 23 May 2022 02:04:55 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 17:04:53 +0800
+ 15.0.1497.2; Mon, 23 May 2022 17:04:54 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 23 May 2022 17:04:52 +0800
+ Transport; Mon, 23 May 2022 17:04:53 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
  <robh+dt@kernel.org>
@@ -57,18 +57,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
  <eddie.hung@mediatek.com>
-Subject: [PATCH 2/4] dt-bindings: usb: mtu3: add support 'resets' property
-Date: Mon, 23 May 2022 17:04:47 +0800
-Message-ID: <20220523090449.14430-2-chunfeng.yun@mediatek.com>
+Subject: [PATCH 3/4] usb: xhci-mtk: add support optional controller reset
+Date: Mon, 23 May 2022 17:04:48 +0800
+Message-ID: <20220523090449.14430-3-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220523090449.14430-1-chunfeng.yun@mediatek.com>
 References: <20220523090449.14430-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_021101_834776_28C5E8E0 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220523_021102_534106_0446ED61 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,27 +84,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add 'resets' property to support IP reset usually by top pericfg.
+Add support controller reset via a reset-controller usually in infracfg,
+it's different with the software reset by IPPC which only used to reset MAC,
+and it will also reset IPPC meanwhile.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/usb/host/xhci-mtk.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-index df766f8de872..208d3f780b2a 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-@@ -106,6 +106,9 @@ properties:
-   maximum-speed:
-     enum: [super-speed-plus, super-speed, high-speed, full-speed]
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index b1045f534a4b..01705e559c42 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -18,6 +18,7 @@
+ #include <linux/pm_wakeirq.h>
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/reset.h>
  
-+  resets:
-+    maxItems: 1
+ #include "xhci.h"
+ #include "xhci-mtk.h"
+@@ -550,6 +551,12 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto disable_ldos;
+ 
++	ret = device_reset_optional(dev);
++	if (ret) {
++		dev_err_probe(dev, ret, "failed to reset controller\n");
++		goto disable_clk;
++	}
 +
-   "#address-cells":
-     enum: [1, 2]
- 
+ 	hcd = usb_create_hcd(driver, dev, dev_name(dev));
+ 	if (!hcd) {
+ 		ret = -ENOMEM;
 -- 
 2.18.0
 
