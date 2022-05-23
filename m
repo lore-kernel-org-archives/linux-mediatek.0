@@ -4,106 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3DF3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 12:15:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBCC8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 12:30:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u0+09MC8+B1ZbZ7CZoTtyC71S1/Al1MbI/8k79p9DOA=; b=Ox9MirJN0eDLbM
-	s6PbZnDYv9Ky2VL8OyGQSgVQ8HZLvPL8cXTngmb/YyMnZwO/4qI6H9apxIn4xkYjJUj6zrNmV5GFx
-	2glwKax8aeGKj9IyG3vb6szVuLETMA75UK5P2eZI+3/jl6ko5iEvUgzGULXkpycFWohc7ge5yKZl6
-	gAOfiYwLMCsT9lMai7gC5KNKRv/9omkbebeTrcuI0hKA4l7YGJVolnFs4k4g526us0lQlS7hf9ywa
-	QV3B6ZNW2OnGKNnBbeYkET06+PMkMO2R454SzWpyNWybJuRWAW0jWCQgCJ1NAmmBITc/XmxcLD/p+
-	l2Prvoa3mt1W7WBXkNJw==;
+	List-Owner; bh=afImBPkNO4AYy7O/fSC5ZFBSrEeshTCmwIztsZJI5CE=; b=Yil1UpzCMDmWmi
+	J+O9q7ztZu58zlPoBI1wZlXu8rmgwo1lGnwKCv3mxUSwbEGbzh/g4m5u/vTLIkKztvd4aZBqCY8OU
+	OYdeBg7fcnE+Sg54G37wjKa/WztL+8fOsiwmf/0qufGqhaH28sCHeECFLEDpbbaMTc/3HiHHQql4t
+	3nJTaZXIZg4O+K2ZawkQ0F01uPa2m/LsBcYN4fJcM1mygAbOM43LT9OMw1ROx2GQJGXOGK6EaYx6b
+	ENi9xH6PLlvvDLianRy19d50MLFUIRFNs3td5UM1GwcxXDvsqRp+iEWUWvabQibcaTSB8ZCw3JdaN
+	8iVlT2JysKuZjIzGnomQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt6yK-0042jS-U8; Mon, 23 May 2022 12:15:40 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1nt7Ch-0049QK-Rb; Mon, 23 May 2022 12:30:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt6R5-003nAx-D5
- for linux-mediatek@bombadil.infradead.org; Mon, 23 May 2022 11:41:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=L59GiR9dWwoU3bIhqqTo2XYxtqfhGwikIlZ2jdUecpc=; b=SomgWj5lyYXFA2ocZ8eMOb8JQX
- WoL25LWzW+7itF/lVCe4FRnEjybn8j2M4L/m83rptq5qrdQG9rwzXKIbDv5Be8PG+gRqfkEdDWIsY
- vGxJMPRL3Ml++qi/mLhNsDmM/gv83W371AF5J04+nfYxzYYbTDXTzyJLmwdy6bX0v3sGxJGmt8eUk
- vDfZAe8BqNJFvw2ZC4CSucg0IZ61XzhZEaZIQ863X/aTeAqGMCFK2aKthBc/WcVSLVF0KeNqOPeTi
- 9NQbFfOJDzGJ6jlenYAsrABGF5DthTEPG2ujVd5VBSdCEepotc4WbiMOb6/M7Z1OZoPAGx7w+xmQv
- fzETmyEg==;
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt5f6-0011Zv-C5
- for linux-mediatek@lists.infradead.org; Mon, 23 May 2022 10:51:46 +0000
-Received: by mail-wm1-x330.google.com with SMTP id o9so815404wmd.0
- for <linux-mediatek@lists.infradead.org>; Mon, 23 May 2022 03:51:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=L59GiR9dWwoU3bIhqqTo2XYxtqfhGwikIlZ2jdUecpc=;
- b=2GpBC1024UFGepfN4EeJgCuO1UN/4rP8fzM4ZTL1Oy3Eb3PQ2YbsieGfwd/wr19Az/
- vWLap0skRbcSkUKW+aQZeMenpJ688qxeEMD6FtIdTctSUfNDjNU3ehuSa8LsbZCQyUSK
- Zy+t65L6dGDUIql6D2yeRE+ALRoFTHsQeKMF2wqO2ShIe7QcffeUStrl7exDqGkmebos
- xLpftSD8FbLe/y/SJYDwky1vcICDBek0D4TMe/W6PIp1v0fzs2QFFKULXHPK5y2KoT2H
- 8pWePMqWJBCozqwdHN94XLhrb7SeHk7Zo861HG5+ZCYdcczXlH57WTcJRxLCU2WW9NiG
- XpYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=L59GiR9dWwoU3bIhqqTo2XYxtqfhGwikIlZ2jdUecpc=;
- b=4TBOmIlh/ww5wOxeJAiZmv/yLHzdHuk259dBiHnhz9t7LoyXTRjb9Q/M1+Noarmnm0
- 7+Zsi/uQ9PvcHuLvPBFZ+f5+BCjMTjXca66jdb51j2VSIsOlNjwCzq8EsRPgI/kkMlFG
- KtPY/FTfSXXdyQd4VFhmq+JJ929VkHY2JIdfb2wSxXgcWBe0ssVwIj13ZMufhdo3rwvk
- wmJB+i31FlfjBVJsm79GdvHlulNS/s1rjFojXM86x5OShJLlKfIEHdPDBV1jhP6KKQ9v
- SMe/GDeHOpdhwAx6nXAvt/h90+B8B/CjaIVCTL3cz2EBzQ08FibNH/aBYLTPVTEjDxgM
- jg/w==
-X-Gm-Message-State: AOAM5302NgoO093LcwzsqBKTXj5urmGktNU1MoVNi+mCgK7+H4lzIcZi
- 16MmpLcb43ku6ByDu3K+GZTJ2w==
-X-Google-Smtp-Source: ABdhPJwNegNr44So8xq4D2p9JaCnMXp0VvpDOo2fky113Q7b9TeovIyeLXQjxBiFJh/CiujqFzERLQ==
-X-Received: by 2002:a05:600c:3048:b0:394:436b:76b6 with SMTP id
- n8-20020a05600c304800b00394436b76b6mr19844563wmh.63.1653303103041; 
- Mon, 23 May 2022 03:51:43 -0700 (PDT)
-Received: from localhost.localdomain
- (2a02-8440-6141-9d1b-3074-96af-9642-0003.rev.sfr.net.
- [2a02:8440:6141:9d1b:3074:96af:9642:3])
- by smtp.gmail.com with ESMTPSA id
- n11-20020a7bc5cb000000b003942a244f38sm8453607wmk.17.2022.05.23.03.51.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 May 2022 03:51:42 -0700 (PDT)
-From: Guillaume Ranquet <granquet@baylibre.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Helge Deller <deller@gmx.de>, CK Hu <ck.hu@mediatek.com>,
- Jitao shi <jitao.shi@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-fbdev@vger.kernel.org
-Subject: [PATCH v10 15/21] drm/mediatek: dpi: Only enable dpi after the bridge
- is enabled
-Date: Mon, 23 May 2022 12:47:48 +0200
-Message-Id: <20220523104758.29531-16-granquet@baylibre.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220523104758.29531-1-granquet@baylibre.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
+ id 1nt6tT-0040Ro-G1; Mon, 23 May 2022 12:10:40 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id F068D612E4;
+ Mon, 23 May 2022 12:10:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF245C385A9;
+ Mon, 23 May 2022 12:10:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1653307838;
+ bh=lBPchX/uMDZs5nmazywffKCr1QG3UlkRSzoLoU/mwFo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=e2EL/keWEbc/7ewgZUW2ThW8q5nsSVwgSmB4WDUMJGwMPkPK99ThG+YeOYB+80tLq
+ abrpovdkaqqqj/OSeSaFrDLZ5YRBIMe4vfEyMn+StVqqvixJnMX6NufcC6Vziu9hMJ
+ YJqeLBYAJMvBauRyHLubKa83NQK+s4qrrQUj0UIM=
+Date: Mon, 23 May 2022 14:10:34 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Mark Brown <broonie@kernel.org>, jirislaby@kernel.org,
+ matthias.bgg@gmail.com, zhiyong.tao@mediatek.com,
+ colin.king@intel.com, linux-serial@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ wenst@chromium.org
+Subject: Re: [PATCH] Revert "serial: 8250_mtk: Make sure to select the right
+ FEATURE_SEL"
+Message-ID: <Yot5uls/3vLzZu7I@kroah.com>
+References: <20220510122620.150342-1-angelogioacchino.delregno@collabora.com>
+ <YnpeYGbo7JJK0lDk@sirena.org.uk>
+ <b13b019f-f766-60df-3764-d375f64ea7d3@collabora.com>
+ <YnphFjs4E4EYafT4@sirena.org.uk>
+ <63169e65-cbfa-d495-754f-023dc8befa42@collabora.com>
+ <d91977d2-ebc6-de6e-5eeb-61c25ba0cc64@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <d91977d2-ebc6-de6e-5eeb-61c25ba0cc64@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_115145_258257_22A8FFAD 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20220523_051039_648911_3DD9AB19 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,39 +78,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enabling the dpi too early causes glitches on screen.
+On Mon, May 23, 2022 at 12:17:06PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 10/05/22 17:29, AngeloGioacchino Del Regno ha scritto:
+> > Il 10/05/22 14:56, Mark Brown ha scritto:
+> > > On Tue, May 10, 2022 at 02:46:28PM +0200, AngeloGioacchino Del Regno wrote:
+> > > 
+> > > > Sorry for missing this tag, and also I'm sorry for the noise.
+> > > 
+> > > Hey, if nobody broke anything all this testing stuff wouldn't be worth
+> > > it!
+> > 
+> > 
+> > Haha! That's true :-)
+> > 
+> > Thank you!
+> 
+> 
+> Hello Mark, Greg
+> 
+> I've just noticed that v5.18 was released, but without this revert.
 
-Move the call to mtk_dpi_enable() at the end of the bridge_enable
-callback to ensure everything is setup properly before enabling dpi.
+What is "this revert"?
 
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Can you schedule this for backport on v5.18?
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 763bfb700135..a6b6d62a17e7 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -478,7 +478,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
- 	if (dpi->pinctrl && dpi->pins_dpi)
- 		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
- 
--	mtk_dpi_enable(dpi);
- 	return 0;
- 
- err_pixel:
-@@ -711,6 +710,7 @@ static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
- 
- 	mtk_dpi_power_on(dpi);
- 	mtk_dpi_set_display_mode(dpi, &dpi->mode);
-+	mtk_dpi_enable(dpi);
- }
- 
- static enum drm_mode_status
--- 
-2.35.1
+I need more context here, sorry.
 
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
