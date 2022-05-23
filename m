@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04168C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 16:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F69C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 22:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MxTBz1QF8Hk1p2nOoK7qHGhbXl6VPJE+rF2sS1370Uw=; b=IXECdVNGbneGbB
-	mj4hlmp/kc/iLVM7nQ1NpNEN1WP/9xiloKGbX4IqiCyk2MFVkDTzFLoou3tDexOMyCOeNWWEhDAf5
-	/F0izBgKbqS82Fo1TUNAQ2J31hfeUP1xtgZ+bO9XVlajpTz/znah7d3jCBWljgU5i2MLscaL7eg++
-	ydKWsOOMpcmH5fCkpoVySFMtmhkR8yn1bU6JNV1VY4rfKpU6hQW62wob70nf6iHx7Z03BAHDgRj6k
-	Wyy2xZ4L8xlgd+ZoeyhGUxFszsiGO4KZ2BHqBU1E/JOXzStazqwt4hyJ35yNqtKcJM8ceAhDUs6E/
-	gLbYVXlFE138K42iv0QA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gGek62FSugSupE+AaTZXvE1/bAqZ7quJMN1CO525EdQ=; b=uoeIvq7dOauUy5
+	82XSG1MiKIUiRMRsQmezF6MHISvJwDN1RKW0AhkOW2R6rlxin6I87eqrsyCewNXXhJgrBpMfEYgBn
+	FzkjHRHqSoKJ/A5c8xmfPLF+FwLDZXCjx/CAOhtmjcmSgqB5jrpkKwUgxszwpm/LI88izo8KeHpWZ
+	nd18G34G9FINnN6w2MukYusfmSZ/u/FNcTXr+fvaVEqpMYz4SeRpj1r3f9ZLw88WPjG8c2eSBFtnq
+	x8h92mzXpHUx6JaT9gyd5KwyhXnOIdt79885Ks8+vb65NGAJ72st2KmN+l41g2FqlJlI10UEySrct
+	a6kawo5KlNyAxQot7KNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntBOg-005IWF-En; Mon, 23 May 2022 16:59:10 +0000
+	id 1ntGMH-005zGj-M6; Mon, 23 May 2022 22:17:01 +0000
 Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntBOU-005IUP-Ey; Mon, 23 May 2022 16:59:00 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- a23-20020a17090acb9700b001df4e9f4870so14289644pju.1; 
- Mon, 23 May 2022 09:58:54 -0700 (PDT)
+ id 1ntGME-005zF6-M0
+ for linux-mediatek@lists.infradead.org; Mon, 23 May 2022 22:17:00 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id n10so15200377pjh.5
+ for <linux-mediatek@lists.infradead.org>; Mon, 23 May 2022 15:16:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=7fn1yFxpVe/lx6SRRrqC5pO9JkynA3lVXz/276E/sVY=;
- b=TB6j1syu19Pk/CRBokAkVCLwh7Iroqg0r+rDrmviHL6ABD5eyvFuq6vkskf9zoALSs
- sx1A2nXlNkXcVooRfOGLcCwnl+VN7klMGiBUF9H42qvSyhtuUfH6+rPSCWrCF6hsNTqf
- Udb/2iWCSBABW3XSyQxjUhTl+R1MOR0Vnkd70/vimfTObURvmQKM7kZBE1HzjZNR6W4Y
- OGyR5BhoeBkzdPTTzorbEQTMeiuyHSzSvhUHhm+mOBQkWprm0leXizNCer2mZ/HL8ZQV
- taTmv+ORGQrCQj8jkoLTkmPROBfTd9oJ3gRxegQt8IdCSd8C/GWTPMQf0tBOiG9r9GSd
- G7Mw==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+ bh=pJTRgXjYxPKGivC1ddsBnyqDyotE4GS4vzjjb/S5WBE=;
+ b=ESCC6/40VtCzAGtorsLZn0r0V2dBdWiAOt/cG6gTdpQvsDw+mGlgVg7Rk53aHsoQQp
+ 0+uIQkSr3+LV3ofNC3mJgx8gX9WwjMSSnmnZddXeQKgw56PdhYP6Dpkq7qNvcqOfJqdv
+ T7SdjCVb57q7FlX/b0P0C7c5IJDFGC2tczw4YqAlFOIc7KvyWtLLtVdSccSr234CejTZ
+ /zPS5dQ3UeU2+8yW1jlkkiuqf4goS0Lz/gAX8rZ5QdmW7/pF94+serdUK5wna9OzJ/gb
+ /RRupefhXyaSG4Ep9gxcObKqnFHrT/5dS5XIwIukTLs3fzer6b5uHSKFz2pWYneFUqUa
+ Wp8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=7fn1yFxpVe/lx6SRRrqC5pO9JkynA3lVXz/276E/sVY=;
- b=zcHoRRn0t5FaTMz6WzFZp0CP4Os8M/k57KlR7ZoxLVhjt1fTeyeF1fAw2N0XEuxeiB
- Eb6qmNFG6AYK/UqDIMxw17sHxektiutQwSow/yuyx2WzIBJIp68PS/OGvFE64zcXwSqA
- bGSdR7VYTCU61BrhRPOZ98tqKDP6ibfNf6zpscKC2Q0+VcPQbTuuOxe2g7tV5diD2I2c
- +zSMEkKIQ9dcWal2lWtWbZN8ZfL8Aafie8272z9/AqitKBQB2APkNjcKtWHAyehbiCb0
- 6RjbZqkQLPEJFbTW1uqWh8JVEREPFLK+9EoAcVYGVPpuvb6AtAgeS1Fn9/UYSjRwqrzQ
- tn0Q==
-X-Gm-Message-State: AOAM532roExA0Z6tu9R7GuXj+hPQ6F9vzhUzsuM510hTm6SeABo4j9e9
- nO839WT26OlX4fu/JAYmnCE=
-X-Google-Smtp-Source: ABdhPJxv14G1AbpX6lfKccE6QIH5Vd/dtw1/hAcDrvzUHWqyTEAxRWPl8ZFaeBLEMUyFLdFoUur0pg==
-X-Received: by 2002:a17:902:7597:b0:15e:b5d3:267d with SMTP id
- j23-20020a170902759700b0015eb5d3267dmr24016528pll.55.1653325134120; 
- Mon, 23 May 2022 09:58:54 -0700 (PDT)
-Received: from google.com ([2620:15c:202:201:d84e:5dcd:9d68:ebbf])
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition;
+ bh=pJTRgXjYxPKGivC1ddsBnyqDyotE4GS4vzjjb/S5WBE=;
+ b=CNYYoxapiJPNmyTYKv8YIjfFBwSWJ7MRoSoDKcb0B6DQy1QKGBsqm3tKs6j89/p3Jj
+ 1d9uMnKgYhhJn/KPvomhmllj3ANKWIBPHO0JZVctGUzPk94vMuPntAqXdPwrLm7CeSX0
+ 9H2+z2RJ8XAsFFtvJhWAjkakz9hmT+/GRUXeMJNBXndn/VT87ISWr6mt6AH9IXtkzZaX
+ miWUrr9truDRxY5vwOH+uO9b+r5u+RTqShQVy5ZlwPdoIG628DkVyruH31xksOoG4q9H
+ Lfo9cF/b2NDV15IX9TMx74DKDR5i0CVP+XF/YJpdv0QMQORhG0f86x8MyDl6Exl4f9Vz
+ mwWQ==
+X-Gm-Message-State: AOAM532MOOzBdtar6VlvHx2k9NWioKYWBdXsCwEuBw/yE0HhQh8RRlm3
+ xRVdonypQoQY0ilm8iUbdFJjvGDTN/Q=
+X-Google-Smtp-Source: ABdhPJzOKCF/I42KUqWTL8cfnDA/0/qAdvt/GNLcSeZ9wgnwBO24anbaidWzuyLvAGG0ZvkiJfSv4A==
+X-Received: by 2002:a17:90a:aa8c:b0:1df:359a:1452 with SMTP id
+ l12-20020a17090aaa8c00b001df359a1452mr1170029pjq.75.1653344213190; 
+ Mon, 23 May 2022 15:16:53 -0700 (PDT)
+Received: from google.com ([2620:15c:202:201:ce25:f34f:c90d:61fa])
  by smtp.gmail.com with ESMTPSA id
- 23-20020aa79217000000b0050dc76281bfsm7422375pfo.153.2022.05.23.09.58.52
+ ck18-20020a17090afe1200b001cb6527ca39sm214063pjb.0.2022.05.23.15.16.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 May 2022 09:58:53 -0700 (PDT)
-Date: Mon, 23 May 2022 09:58:50 -0700
+ Mon, 23 May 2022 15:16:52 -0700 (PDT)
+Date: Mon, 23 May 2022 15:16:49 -0700
 From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, mkorpershoek@baylibre.com,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+To: linux-input@vger.kernel.org
+Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/5] Input: mtk-pmic-keys - Use regmap_{set,clear}_bits
- where possible
-Message-ID: <You9SjGt4UjJk17/@google.com>
-References: <20220520125132.229191-1-angelogioacchino.delregno@collabora.com>
- <20220520125132.229191-3-angelogioacchino.delregno@collabora.com>
- <YosS0ZvAovyl8cF5@google.com>
- <926ce818-4f42-898d-aca8-185b5c7434ba@collabora.com>
+Subject: [PATCH] Input: mtk-pmic-keys - use single update when configuring
+ long press behavior
+Message-ID: <YowH0Q5HAGU7Grx2@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <926ce818-4f42-898d-aca8-185b5c7434ba@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_095858_566612_5CDCC430 
-X-CRM114-Status: GOOD (  22.88  )
+X-CRM114-CacheID: sfid-20220523_151658_765033_F4D59329 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,58 +88,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 23, 2022 at 10:58:47AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 23/05/22 06:51, Dmitry Torokhov ha scritto:
-> > On Fri, May 20, 2022 at 02:51:29PM +0200, AngeloGioacchino Del Regno wrote:
-> > > Instead of always using regmap_update_bits(), let's go for the shorter
-> > > regmap_set_bits() and regmap_clear_bits() where possible.
-> > > 
-> > > No functional change.
-> > > 
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >   drivers/input/keyboard/mtk-pmic-keys.c | 24 ++++++------------------
-> > >   1 file changed, 6 insertions(+), 18 deletions(-)
-> > > 
-> > > diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> > > index 8e4fa7cd16e6..83d0b90cc8cb 100644
-> > > --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> > > +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> > > @@ -157,28 +157,16 @@ static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
-> > >   	switch (long_press_mode) {
-> > >   	case LP_ONEKEY:
-> > > -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > > -				   MTK_PMIC_PWRKEY_RST,
-> > > -				   MTK_PMIC_PWRKEY_RST);
-> > > -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> > > -				   MTK_PMIC_HOMEKEY_RST,
-> > > -				   0);
-> > > +		regmap_set_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_PWRKEY_RST);
-> > > +		regmap_clear_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_HOMEKEY_RST);
-> > 
-> > Why not combine this into a single update instead? I.e. assuming
-> > 
-> 
-> All downstream kernels (at least, I checked 4 different kernel versions for 4
-> different SoCs) are doing these updates one-at-a-time, never combining them.
+Instead of doing 3 read-modify-write operations when configuring behavior
+of long-press, consolidate everything into one.
 
-It is not like drivers in these downstream kernels were developed
-separately and each of them discovered this as a requirement. It was
-written once by someone and then either copied as is, or maybe
-additional key handling was added later.
+Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+---
+ drivers/input/keyboard/mtk-pmic-keys.c | 71 ++++++++++----------------
+ 1 file changed, 28 insertions(+), 43 deletions(-)
 
-> 
-> Even though I agree with you about one single update being simply more logical,
-> I am afraid that (on some SoCs) the IP will not like that so - since I don't have
-> any *clear* documentation saying that this is possible, or that this is not, I
-> would leave it like that.
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index c31ab4368388..d2f0db245ff6 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -18,17 +18,11 @@
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ 
+-#define MTK_PMIC_PWRKEY_RST_EN_MASK	0x1
+-#define MTK_PMIC_PWRKEY_RST_EN_SHIFT	6
+-#define MTK_PMIC_HOMEKEY_RST_EN_MASK	0x1
+-#define MTK_PMIC_HOMEKEY_RST_EN_SHIFT	5
+-#define MTK_PMIC_RST_DU_MASK		0x3
+-#define MTK_PMIC_RST_DU_SHIFT		8
+-
+-#define MTK_PMIC_PWRKEY_RST		\
+-	(MTK_PMIC_PWRKEY_RST_EN_MASK << MTK_PMIC_PWRKEY_RST_EN_SHIFT)
+-#define MTK_PMIC_HOMEKEY_RST		\
+-	(MTK_PMIC_HOMEKEY_RST_EN_MASK << MTK_PMIC_HOMEKEY_RST_EN_SHIFT)
++#define MTK_PMIC_RST_DU_MASK	GENMASK(9, 8)
++#define MTK_PMIC_RST_DU_SHIFT	8
++#define MTK_PMIC_RST_KEY_MASK	GENMASK(6, 5)
++#define MTK_PMIC_PWRKEY_RST	BIT(6)
++#define MTK_PMIC_HOMEKEY_RST	BIT(5)
+ 
+ #define MTK_PMIC_PWRKEY_INDEX	0
+ #define MTK_PMIC_HOMEKEY_INDEX	1
+@@ -108,53 +102,44 @@ enum mtk_pmic_keys_lp_mode {
+ };
+ 
+ static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
+-		u32 pmic_rst_reg)
++					 u32 pmic_rst_reg)
+ {
+-	int ret;
+ 	u32 long_press_mode, long_press_debounce;
++	u32 value, mask;
++	int error;
+ 
+-	ret = of_property_read_u32(keys->dev->of_node,
+-		"power-off-time-sec", &long_press_debounce);
+-	if (ret)
++	error = of_property_read_u32(keys->dev->of_node, "power-off-time-sec",
++				     &long_press_debounce);
++	if (error)
+ 		long_press_debounce = 0;
+ 
+-	regmap_update_bits(keys->regmap, pmic_rst_reg,
+-			   MTK_PMIC_RST_DU_MASK << MTK_PMIC_RST_DU_SHIFT,
+-			   long_press_debounce << MTK_PMIC_RST_DU_SHIFT);
++	mask = MTK_PMIC_RST_DU_MASK;
++	value = long_press_debounce << MTK_PMIC_RST_DU_SHIFT;
+ 
+-	ret = of_property_read_u32(keys->dev->of_node,
+-		"mediatek,long-press-mode", &long_press_mode);
+-	if (ret)
++	error  = of_property_read_u32(keys->dev->of_node,
++				      "mediatek,long-press-mode",
++				      &long_press_mode);
++	if (error)
+ 		long_press_mode = LP_DISABLE;
+ 
+ 	switch (long_press_mode) {
+-	case LP_ONEKEY:
+-		regmap_update_bits(keys->regmap, pmic_rst_reg,
+-				   MTK_PMIC_PWRKEY_RST,
+-				   MTK_PMIC_PWRKEY_RST);
+-		regmap_update_bits(keys->regmap, pmic_rst_reg,
+-				   MTK_PMIC_HOMEKEY_RST,
+-				   0);
+-		break;
+ 	case LP_TWOKEY:
+-		regmap_update_bits(keys->regmap, pmic_rst_reg,
+-				   MTK_PMIC_PWRKEY_RST,
+-				   MTK_PMIC_PWRKEY_RST);
+-		regmap_update_bits(keys->regmap, pmic_rst_reg,
+-				   MTK_PMIC_HOMEKEY_RST,
+-				   MTK_PMIC_HOMEKEY_RST);
+-		break;
++		value |= MTK_PMIC_HOMEKEY_RST;
++		fallthrough;
++
++	case LP_ONEKEY:
++		value |= MTK_PMIC_PWRKEY_RST;
++		fallthrough;
++
+ 	case LP_DISABLE:
+-		regmap_update_bits(keys->regmap, pmic_rst_reg,
+-				   MTK_PMIC_PWRKEY_RST,
+-				   0);
+-		regmap_update_bits(keys->regmap, pmic_rst_reg,
+-				   MTK_PMIC_HOMEKEY_RST,
+-				   0);
++		mask |= MTK_PMIC_RST_KEY_MASK;
+ 		break;
++
+ 	default:
+ 		break;
+ 	}
++
++	regmap_update_bits(keys->regmap, pmic_rst_reg, mask, value);
+ }
+ 
+ static irqreturn_t mtk_pmic_keys_irq_handler_thread(int irq, void *data)
+-- 
+2.36.1.124.g0e6072fb45-goog
 
-If we go with that we will never be able to touch any of the hardware
-interfaces, as I do not recall when spec would explicitly document every
-register and call out that individual bits can be changed together in
-one write.
-
-Thanks.
 
 -- 
 Dmitry
