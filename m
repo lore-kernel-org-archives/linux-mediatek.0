@@ -4,83 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12C0BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD84C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VzujkcWULmrjWP4vY4Qaw49cPLribIQlS+JxlFU2ggs=; b=WJx+dL3LuAMmjr
-	d62kbrGq8awnFt9k1MdbXrNiiFQvmiDZvN4wc7D5jgB0GgF2lYVwIX4bbg9zUOmnEd+m9in6CG1sW
-	3Nbv9/Kxo8DuZHRbmgeSQSy9cM+O0mdDUGl6g/zjhMLs15ymuvbx/jQBDzAuH01uubGDWkRzc+F1w
-	+dPKdMhdIg80W3h1nBc2oXoD1MV7pdbAGwmp3jAwDe/4J/3eO3RMOFRCnemKQyGGCLKqpca/aOSCJ
-	97AQW1rDGE+eWatiEFHpu7N/cYgn1CePsVGeqCSFrk2o9HeGf9Kgy/5kAea50ec83xwlyV8/E19aR
-	c+pBoVURMuO5ytRP/kyA==;
+	List-Owner; bh=4OOg+YtrC/Sob77zqlsb3jqh94uVyG5oxZg2RXbsnCU=; b=zpwAwKSoo94zVw
+	Gj49NEZ53le6h5uOQ0xiYL/vLDc6SeEFiPerUQxq08uN9rTH3Hs64gUmLDBkdDzUTN85EpnenrLur
+	iU/7UHkSZZCpMbLgYON167NwlLyfrN3q8obTd9/2977A4+nzrCRlSwHJ8YehPDhdLM9soSFQucnAi
+	d35K6//YPjJvfO75JbrU/HtLtBaiiPw74C2VbsFFHO5aIAHbJQLkKFsrKBfLzJzqTJSsuP6Meh9jw
+	beVbU40xHJ9vhIvK6kgv/U9XXb+yJ6GQ+hq0jeeJv9h4v4K0mWIUXWkVS1v2xlYzmkPD1GMHyNR/q
+	JEdkM31Rc8BYqu+OXInQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt4kP-0030BY-GK; Mon, 23 May 2022 09:53:09 +0000
+	id 1nt4mP-00314q-Ax; Mon, 23 May 2022 09:55:13 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt3rr-002cLz-Ja; Mon, 23 May 2022 08:56:49 +0000
-X-UUID: e6402987c7624fc09551ffc59a5bdc86-20220523
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=HLFu1xluDxItNbDVBy6/EjJzUNNNXGXBCYjSL92vSF8=; 
- b=JimQYUGoyIiYhbtAISFll9rCZdsYxh3V5JMd72U5nNnX16mTQYGgyjT+4q+/7SroiFLnmZn+uzcMp5zhO5e3fHnVuf3jVe7p4rIlu3bXEzg39Y3VCBw069t2jBx2DB5BO5oAmfQL9K1KzylZ50tW77339tImBaAKsi+3HUjFCmg=;
+ id 1nt3sM-002cej-IU; Mon, 23 May 2022 08:57:20 +0000
+X-UUID: cfc8c83d20b5421fac8227f1faeda9d9-20220523
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:0d99a5a3-0ff9-4b50-be75-caa1152aa13d, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:83f01c11-a14b-4b57-b60d-66bd3b3e2b7a, OB:0,
  LO
- B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:5
-X-CID-META: VersionHash:2a19b09, CLOUDID:d730467a-5ef6-470b-96c9-bdb8ced32786,
+ B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:be37467a-5ef6-470b-96c9-bdb8ced32786,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
  ,QS:0,BEC:nil
-X-UUID: e6402987c7624fc09551ffc59a5bdc86-20220523
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+X-UUID: cfc8c83d20b5421fac8227f1faeda9d9-20220523
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <jia-wei.chang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 643938292; Mon, 23 May 2022 01:56:35 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 01:46:33 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 23 May 2022 16:46:32 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 23 May 2022 16:46:31 +0800
-Message-ID: <bf6ee6a14e03e718f4ab608aa952f7c233b84e92.camel@mediatek.com>
-Subject: Re: [PATCH v9 2/2] phy: mediatek: Add PCIe PHY driver
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Jianjun Wang <jianjun.wang@mediatek.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chen-Yu
- Tsai" <wenst@chromium.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
- <krzk@kernel.org>
-CC: Wei-Shun Chang <weishunc@google.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <rex-bc.chen@mediatek.com>,
- <randy.wu@mediatek.com>, <jieyy.yang@mediatek.com>,
- <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <jian.yang@mediatek.com>
-Date: Mon, 23 May 2022 16:46:29 +0800
-In-Reply-To: <20220520064920.27313-3-jianjun.wang@mediatek.com>
-References: <20220520064920.27313-1-jianjun.wang@mediatek.com>
- <20220520064920.27313-3-jianjun.wang@mediatek.com>
+ with ESMTP id 348436489; Mon, 23 May 2022 01:57:11 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 01:57:09 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Mon, 23 May 2022 16:57:08 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 23 May 2022 16:57:08 +0800
+Message-ID: <f2dd851bdabe03c67da520ec1d2cdfdadc95e6f3.camel@mediatek.com>
+Subject: Re: [PATCH v2 0/4] soc: mediatek: svs: add support for mt8186 and
+From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu
+ <roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Mon, 23 May 2022 16:57:08 +0800
+In-Reply-To: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
+References: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_015647_753582_B4F3F4AE 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220523_015718_676126_53BFEC3D 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,19 +85,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-05-20 at 14:49 +0800, Jianjun Wang wrote:
-> Add PCIe GEN3 PHY driver support on MediaTek chipsets.
+On Mon, 2022-05-23 at 16:40 +0800, Tim Chang wrote:
+
+The Subject is for [Patch v3 0/4] rather than v2.
+Sorry for my typo.
+
+> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> ---
->  drivers/phy/mediatek/Kconfig        |  11 ++
->  drivers/phy/mediatek/Makefile       |   1 +
->  drivers/phy/mediatek/phy-mtk-pcie.c | 267
-> ++++++++++++++++++++++++++++
->  3 files changed, 279 insertions(+)
->  create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+> This series supports MT8186 and MT8195 Smart Voltage Scaling (SVS)
+> hardware which used as optimization of opp voltage table for
+> corresponding dvfs drivers.
 > 
-Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> This series is based on Roger's series [1].
+> [1]: Message ID: 20220516004311.18358-1-roger.lu@mediatek.com
+> 
+> Change since v2:
+> - Reuse platform probe of MT8192 for MT8195.
+> - Remove unnecessary svs bank parameters of MT8195.
+> - Remove sw id check for MT8195 efuse parsing.
+> 
+> Change since v1:
+> - Add myself as a co-maintainer of mtk-svs.yaml.
+> - Fix MT8186 error handling in platform probe.
+> - Add dt-bindings and support for MT8195 platform.
+> 
+> Jia-Wei Chang (4):
+>   dt-bindings: soc: mediatek: add mt8186 svs dt-bindings
+>   soc: mediatek: svs: add support for mt8186
+>   dt-bindings: soc: mediatek: add mt8195 svs dt-bindings
+>   soc: mediatek: svs: add support for mt8195
+> 
+>  .../bindings/soc/mediatek/mtk-svs.yaml        |   3 +
+>  drivers/soc/mediatek/mtk-svs.c                | 502
+> +++++++++++++++++-
+>  2 files changed, 498 insertions(+), 7 deletions(-)
+> 
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
