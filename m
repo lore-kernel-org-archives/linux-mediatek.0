@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C43AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 11:10:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE487C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 11:12:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8vamZNWKG+VsRUBX73rU9b31g21rAR3rtXbwTgn5DkI=; b=wPD3AZRFbMff5k
-	Doh6fnY5cSYFGkaqt/74qFTGIL8qCG5Wp6RbQgxY2JjKtk+Vj17+75+3LlXxzBO4S6xRwAO4YBHTk
-	OjUU7LeE3VmPWUlZLlVliypuAz5NDVq1t0MDxh+RjbcfZij++1XoErKpsNxULSGKsqLbIJE4CcT91
-	Q2k+XqUl6XDaZlxW7Y9NPZr6hZXFBjVaAaBsjNQdzB0vSnjY0T0pd/1pb96UOHXJgvhwkzK3myEaQ
-	wE25Y0UY08fkCzWKvASP24fkx2+cdEeNnqLC84OtsrSkZ+BQ9V99YZaKQb56F9lPSv+rTlhLgQiLw
-	KVoNh7w8FeJBwIbgv+Ew==;
+	List-Owner; bh=yTvgJ/mzsSRvLJA1UOKvMMEFCTKzzPNYxvS399vM1Bw=; b=wZ+KHnVqU49eek
+	fpz2daXlk77wEYLxvvHCxphQ29Hnf+vHBmatGVAm7slhfPHl8l4SWxGjQPXFUi7VV9r268gtGTn4w
+	uaz8Xt1EqeLmbwUv2LbHx1XjIUGKWtsEux9yPaIpLiKYuS8l+f2yEDpW4GnY97ABR1tQ4DstpuYck
+	WhGPVL7Mnk6oXqyQKrPsDoKRrx9VIUQn3ejxW8pojrao8/yAc5bQ2eJZfbXhveXZ1iscX3bkYt2qe
+	+OYsjmEHZLBy/eglC7jyNLWdlu/r0NqrpTWAFYECkW4+aI0Mu+wFPr++wDdhee/2nM+76zjBXmEzi
+	+r6X2lI8CFU+ZHMRQAhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt5xZ-003ZGk-6t; Mon, 23 May 2022 11:10:49 +0000
+	id 1nt5zL-003a8U-8k; Mon, 23 May 2022 11:12:39 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt4vi-0035IV-NM; Mon, 23 May 2022 10:04:54 +0000
+ id 1nt4wG-0035Vi-Eo; Mon, 23 May 2022 10:05:26 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id B888A1F41C08
+ (Authenticated sender: kholk11) with ESMTPSA id 708351F424C1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653300289;
- bh=GO3pTjYvyxyhAs/0dgN9/lVi2515gb9ZaDpQ4GAZKm8=;
+ s=mail; t=1653300323;
+ bh=hyzoYsUfBPMt2w65TtM4E/48BZdlAw/F0S4w7MVe23I=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=dRAR+qsGkJ2/IN9jSl1ZS+W7iWu9cZmOEOHTU1+mujZBjw4VAtBWspkSiFgUe7Gj9
- l0PaGsHJEgPhshlEXnphw7w6OfIXWgms2bD9CIzeTBEe96z6gSoOs9KkfYoIPKxO6K
- ECKU8vN3+QGUP43qMHYVDa3rFKN8ynYWRbLtXRDeY+T2CMIAgwGpTF7Lbikg7r9c5E
- x6uYxn94fQdvvdocz/ZdUy8XscXlZ7KdbCQreAPyRGwZmFFe4PYS2kCD7YZJv7Oode
- 7I26Bgd4rePJRexhypZoTJI7IVwFSG2Ffy8OOaB5Ar/q7e/+gm7WfkqUn+vHpTZEfB
- DtOPVkWtf1wYw==
-Message-ID: <0b46efc0-bc06-5416-f24b-c53ff79736c8@collabora.com>
-Date: Mon, 23 May 2022 12:04:46 +0200
+ b=ibFDRrkcUQuTq/dhq7xF6dFMKOooP2nCjmq4nQveMhwVt/tBvEMtWih+xHGI+SAq+
+ WHXedhOfRhOdAt9Q/e9oC9GW8B5pSgNGhIW5lUVEqv3scktOSCt2ddAfIk9hMmeTFG
+ LyPGgnibzGxDR+xfXpVWykL4oYlC1LvBHZkxEraz4b6JrFNQNjA72R5QjDnSMNMq1u
+ 53HSwmSHRNRdln3qn65/+QPFi7oQcvwuj+Zbt7OJbk2lqvZH0o3t76YA4quB8QXUUQ
+ +4vKmvPX3wjO72xocYLIbrMZ65vbfXgoOfqo0eMxvRM8tl/EoVEXLDjO3mBtgEot+2
+ iq9Uc6uLJINyw==
+Message-ID: <29641040-f6f1-a3c1-cad4-96911c8e38a8@collabora.com>
+Date: Mon, 23 May 2022 12:05:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v2 1/4] arm64: dts: mt8183: Fix Mali GPU clock
+Subject: Re: [PATCH v2 4/4] clk: mediatek: mt8183: Add clk mux notifier for
+ MFG mux
 Content-Language: en-US
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
@@ -53,12 +54,12 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20220523085923.1430470-1-wenst@chromium.org>
- <20220523085923.1430470-2-wenst@chromium.org>
+ <20220523085923.1430470-5-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220523085923.1430470-2-wenst@chromium.org>
+In-Reply-To: <20220523085923.1430470-5-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_030450_967061_A5FAAF61 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20220523_030524_698683_63C20AF6 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,35 +77,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 23/05/22 10:59, Chen-Yu Tsai ha scritto:
-> The actual clock feeding into the Mali GPU on the MT8183 is from the
-> clock gate in the MFGCFG block, not CLK_TOP_MFGPLL_CK from the TOPCKGEN
-> block, which itself is simply a pass-through placeholder for the MFGPLL
-> in the APMIXEDSYS block.
+> When the MFG PLL clock, which is upstream of the MFG clock, is changed,
+> the downstream clock and consumers need to be switched away from the PLL
+> over to a stable clock to avoid glitches.
 > 
-> Fix the hardware description with the correct clock reference.
+> This is done through the use of the newly added clk mux notifier. The
+> notifier is set on the mux itself instead of the upstream PLL, but in
+> practice this works, as the rate change notifitcations are propogated
+> throughout the sub-tree hanging off the PLL. Just before rate changes,
+> the MFG mux is temporarily and transparently switched to the 26 MHz
+> main crystal. After the rate change, the mux is switched back.
 > 
-> Fixes: a8168cebf1bc ("arm64: dts: mt8183: Add node for the Mali GPU")
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> ---
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 01e650251928..6ced76a60aab 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1368,7 +1368,7 @@ gpu: gpu@13040000 {
->   				<GIC_SPI 278 IRQ_TYPE_LEVEL_LOW>;
->   			interrupt-names = "job", "mmu", "gpu";
->   
-> -			clocks = <&topckgen CLK_TOP_MFGPLL_CK>;
-> +			clocks = <&mfgcfg CLK_MFG_BG3D>;
->   
->   			power-domains =
->   				<&spm MT8183_POWER_DOMAIN_MFG_CORE0>,
 
 _______________________________________________
 Linux-mediatek mailing list
