@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85609C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B45AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:26:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DEqLwoAF6gldXQSWBrbITcxDofUwvLzzWWVo+eH2uWI=; b=opLBTjPcsKIFI2
-	5Lc8/d5ADsuyWGxFwAjP2U3zRM/fKBVIMVE8dq+B5twHUSdFirKDDPAmaSNvFzmYSufaSkA4kb5FC
-	cs04vPESygsdfq9eex5agbStBcwekel+EirweD1i/NoqmLKhPvMbHPhIs/Dw6e1m4D0J2F9QmhKSt
-	zUztZNaKuJVQv7BmYKqfavSReq0GhcjyEJfIACzAqA9GW5qogIxFy6FcOq7ERq3dOE/7P1K+7ld48
-	xYUfuLMuHGSAW7f9vhkZRkeM7rKCCBNK+ZkEFokR486DiDVQg2UaI8AY6zZk02cb8ayXTO2C4Zx2O
-	XOHJn3369KeYPOofirvQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+W0ixK1yHqIIG6oOp2V9iAaI6kNk07DBd5FmpQW7lwM=; b=NwxSEu9D6g3Ug2
+	yvi+QUs1aR6IKciGiHf+wqth+UC+XQanI22sY4h0aOi7ypOV/PgZKJDM3GZ6s0NzT6JJ2WibMh0V3
+	rZhhHv+oS+usgy23ZvjYCl8kJmuzkqMCwe5WRF4m3Vrh7Wp3/CZDstmJTUEWTvSFKE5BRekNFS3Bb
+	A3LS7EJu7hhTmWbdEwiUTwc7gLs7M5BC7ZWp4WgmyVO88n7lgEFsBd9Q5HS8Mf4ZxOOHvSPn5t0ta
+	+vT1/7edK2EwC8PDu7AxKny1UgJzb6hMsFbpj1AblhrPJUbSZDuVTTahJg4xew6wRVwJ4WCr7MhdP
+	zunVJYB3/Cm3YZZUMASg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt4Cn-002mQf-Ro; Mon, 23 May 2022 09:18:25 +0000
+	id 1nt4KN-002pLe-0y; Mon, 23 May 2022 09:26:15 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt2ob-002AAA-K3; Mon, 23 May 2022 07:49:21 +0000
+ id 1nt2og-002A7b-PR; Mon, 23 May 2022 07:49:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=QIwzzBHqurNW0MflVEjdYTAjy2cInSyxA3uq1qK/eMs=; b=oZ+LqUXvedoXcPhnT+lsjlY3X/
- zqUFm9NSd2CzoQSP5/KykdiDGIAd0d5ZOA+llvLp3vKCDVcpfhnou7wMftAewaAcufG14FwcJCiB5
- NG2NbkfjsTpHoEMcapltfzJ1WY4sbBPtYJoeOCKhCqUkjafQ4hzATEFEiPx+v7jLF+yn6poMf8hUj
- pr4gkuCF26xLnP9nIDZEelbU+AXBOMMAdGnh62sRm/yrty8RVjq4HYPYOp9L4Dhmo1V1B/iEgeFaZ
- f4NmGMN6kqLT/NSbCKvL2mX6fJRJe0ZphgxLogAacROrtyaQYUttXwrcQbY1SIXqQYfErml+vv21N
- v+YS44ug==;
+ :MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=/4cz8NoD3bRO7q1ldwuAAvFZEAfbv21dlwQHyqaR1YI=; b=UDGUqNLVqdy0qoOBqAeEnEaZQa
+ Fi2mWzOddmgruHDWmxyMNqWnm68cheRFh82kxCbLpccRUjaPYwmwSwRgqNoHPPxUqHVezT59+JotI
+ 0Du25jhLtOEm7lL9iOfhNvbMXcuFkg0LbOYs84QEaLIFQ4+rzJUgwCM3k7eGzs0//D7zmI1DbaaWu
+ mnf8ifTbXk+xzVfS4WqAV25Cns2o2EizxATXQtU4oV2H6QYZiXwFmM+PM2l5lIz/nX+ykkKs3h++P
+ vjrhky3j1qzMyqYiAYabPXKMZQA+dtQ4MyvYLvjhxodNbyDJSNDmfNVfEgMRhcOrJzwAs1/JF2QV6
+ e4A02EKg==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt1Hn-000szH-1o; Mon, 23 May 2022 06:11:26 +0000
-X-UUID: ca471c4debca4e5ab3beff727eacc80a-20220522
+ id 1nt1CG-000sqF-46; Mon, 23 May 2022 06:05:43 +0000
+X-UUID: 31db124dfe344af7a454197933110576-20220522
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:23c9cdd7-78ff-48f6-85a8-e97c98e7e213, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:82005fce-e529-43f0-818f-663cd7905ae8, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
  ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09, CLOUDID:35ff2ee3-edbf-4bd4-8a34-dfc5f7bb086d,
+X-CID-META: VersionHash:2a19b09, CLOUDID:ada73e7a-5ef6-470b-96c9-bdb8ced32786,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
  ,QS:0,BEC:nil
-X-UUID: ca471c4debca4e5ab3beff727eacc80a-20220522
+X-UUID: 31db124dfe344af7a454197933110576-20220522
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 451387705; Sun, 22 May 2022 23:10:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 22 May 2022 23:01:00 -0700
+ with ESMTP id 1552650645; Sun, 22 May 2022 23:04:56 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 22 May 2022 23:00:59 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 23 May 2022 14:00:59 +0800
+ Mon, 23 May 2022 14:00:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 23 May 2022 14:00:58 +0800
+ Frontend Transport; Mon, 23 May 2022 14:00:57 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
  <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
@@ -73,19 +73,15 @@ CC: <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>
-Subject: [PATCH v8 11/19] clk: mediatek: reset: Add reset support for simple
- probe
-Date: Mon, 23 May 2022 14:00:48 +0800
-Message-ID: <20220523060056.24396-12-rex-bc.chen@mediatek.com>
+Subject: [PATCH v8 00/19] Cleanup MediaTek clk reset drivers and support SoCs
+Date: Mon, 23 May 2022 14:00:37 +0800
+Message-ID: <20220523060056.24396-1-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220523060056.24396-1-rex-bc.chen@mediatek.com>
-References: <20220523060056.24396-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_071124_499657_778A71E8 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220523_070541_293417_3F594536 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,37 +93,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-LSBBZGQgYSBwb2ludGVyIG9mICJtdGtfY2xrX3JzdF9kZXNjIiB0byAibXRrX2Nsa19kZXNjIi4K
-LSBBZGQgcmVnaXN0ZXIgcmVzZXQgd2l0aCBkZXZpY2UgZnVuY3Rpb24gaW4gbXRrX2Nsa19zaW1w
-bGVfcHJvYmUoKS4KClNpZ25lZC1vZmYtYnk6IFJleC1CQyBDaGVuIDxyZXgtYmMuY2hlbkBtZWRp
-YXRlay5jb20+ClJldmlld2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxv
-Z2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgpSZXZpZXdlZC1ieTogTsOtY29sYXMg
-Ri4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgpUZXN0ZWQtYnk6IE7DrWNv
-bGFzIEYuIFIuIEEuIFByYWRvIDxuZnJhcHJhZG9AY29sbGFib3JhLmNvbT4KLS0tCiBkcml2ZXJz
-L2Nsay9tZWRpYXRlay9jbGstbXRrLmMgfCA3ICsrKysrKysKIGRyaXZlcnMvY2xrL21lZGlhdGVr
-L2Nsay1tdGsuaCB8IDEgKwogMiBmaWxlcyBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKCmRpZmYg
-LS1naXQgYS9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXRrLmMgYi9kcml2ZXJzL2Nsay9tZWRp
-YXRlay9jbGstbXRrLmMKaW5kZXggYjkxODgwMDBhYjNjLi4wNWExODhjNjIxMTkgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvY2xrL21lZGlhdGVrL2Nsay1tdGsuYworKysgYi9kcml2ZXJzL2Nsay9tZWRp
-YXRlay9jbGstbXRrLmMKQEAgLTQ0NCw2ICs0NDQsMTMgQEAgaW50IG10a19jbGtfc2ltcGxlX3By
-b2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAKIAlwbGF0Zm9ybV9zZXRfZHJ2ZGF0
-YShwZGV2LCBjbGtfZGF0YSk7CiAKKwlpZiAobWNkLT5yc3RfZGVzYykgeworCQlyID0gbXRrX3Jl
-Z2lzdGVyX3Jlc2V0X2NvbnRyb2xsZXJfd2l0aF9kZXYoJnBkZXYtPmRldiwKKwkJCQkJCQkgICBt
-Y2QtPnJzdF9kZXNjKTsKKwkJaWYgKHIpCisJCQlnb3RvIHVucmVnaXN0ZXJfY2xrczsKKwl9CisK
-IAlyZXR1cm4gcjsKIAogdW5yZWdpc3Rlcl9jbGtzOgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsv
-bWVkaWF0ZWsvY2xrLW10ay5oIGIvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ay5oCmluZGV4
-IDZlZDBjNzQ1Y2FlMi4uMWI5NWM0ODRkNWFhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2Nsay9tZWRp
-YXRlay9jbGstbXRrLmgKKysrIGIvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ay5oCkBAIC0x
-OTIsNiArMTkyLDcgQEAgc3RydWN0IGNsa19odyAqbXRrX2Nsa19yZWdpc3Rlcl9yZWYydXNiX3R4
-KGNvbnN0IGNoYXIgKm5hbWUsCiBzdHJ1Y3QgbXRrX2Nsa19kZXNjIHsKIAljb25zdCBzdHJ1Y3Qg
-bXRrX2dhdGUgKmNsa3M7CiAJc2l6ZV90IG51bV9jbGtzOworCWNvbnN0IHN0cnVjdCBtdGtfY2xr
-X3JzdF9kZXNjICpyc3RfZGVzYzsKIH07CiAKIGludCBtdGtfY2xrX3NpbXBsZV9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KTsKLS0gCjIuMTguMAoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlz
-dApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+In this series, we cleanup MediaTek clock reset drivers in clk/mediatek
+folder. MediaTek clock reset driver is used to provide reset control
+of modules controlled in clk, like infra_ao.
+
+Changes for v8:
+1. Use 'enum mtk_reset_version' to replace u8 in patch 5 and 6.
+2. Use lowercase '0xc' in patch 7.
+3. Drop "simple-mfd" in patch 16 because it's for original reset controller.
+4. v8 is based on linux-next next-20220520 and Chen-Yu's series[1].
+
+Changes for v7:
+1. v7 is based on linux-next next-20220519 and Chen-Yu's series[1].
+2. Add support for MT8186.
+
+[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=643003
+
+Changes for v6:
+1. Add a new patch to support inuput argument index mode.
+2. Revise definition in reset.h to index.
+
+Rex-BC Chen (19):
+  clk: mediatek: reset: Add reset.h
+  clk: mediatek: reset: Fix written reset bit offset
+  clk: mediatek: reset: Refine and reorder functions in reset.c
+  clk: mediatek: reset: Extract common drivers to update function
+  clk: mediatek: reset: Merge and revise reset register function
+  clk: mediatek: reset: Revise structure to control reset register
+  clk: mediatek: reset: Support nonsequence base offsets of reset
+    registers
+  clk: mediatek: reset: Support inuput argument index mode
+  clk: mediatek: reset: Change return type for clock reset register
+    function
+  clk: mediatek: reset: Add new register reset function with device
+  clk: mediatek: reset: Add reset support for simple probe
+  dt-bindings: arm: mediatek: Add #reset-cells property for
+    MT8192/MT8195
+  dt-bindings: reset: mediatek: Add infra_ao reset index for
+    MT8192/MT8195
+  clk: mediatek: reset: Add infra_ao reset support for MT8192/MT8195
+  arm64: dts: mediatek: Add infra #reset-cells property for MT8192
+  arm64: dts: mediatek: Add infra #reset-cells property for MT8195
+  dt-bindings: reset: mediatek: Add infra_ao reset index for MT8186
+  dt-bindings: arm: mediatek: Add #reset-cells property for MT8186
+  clk: mediatek: reset: Add infra_ao reset support for MT8186
+
+ .../mediatek/mediatek,mt8186-sys-clock.yaml   |   3 +
+ .../mediatek/mediatek,mt8192-sys-clock.yaml   |   3 +
+ .../mediatek/mediatek,mt8195-sys-clock.yaml   |   3 +
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      |   1 +
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  15 +-
+ drivers/clk/mediatek/clk-mt2701-eth.c         |  10 +-
+ drivers/clk/mediatek/clk-mt2701-g3d.c         |  10 +-
+ drivers/clk/mediatek/clk-mt2701-hif.c         |  10 +-
+ drivers/clk/mediatek/clk-mt2701.c             |  22 +-
+ drivers/clk/mediatek/clk-mt2712.c             |  22 +-
+ drivers/clk/mediatek/clk-mt7622-eth.c         |  10 +-
+ drivers/clk/mediatek/clk-mt7622-hif.c         |  12 +-
+ drivers/clk/mediatek/clk-mt7622.c             |  22 +-
+ drivers/clk/mediatek/clk-mt7629-eth.c         |  10 +-
+ drivers/clk/mediatek/clk-mt7629-hif.c         |  12 +-
+ drivers/clk/mediatek/clk-mt8135.c             |  22 +-
+ drivers/clk/mediatek/clk-mt8173.c             |  22 +-
+ drivers/clk/mediatek/clk-mt8183.c             |  18 +-
+ drivers/clk/mediatek/clk-mt8186-infra_ao.c    |  23 ++
+ drivers/clk/mediatek/clk-mt8192.c             |  29 +++
+ drivers/clk/mediatek/clk-mt8195-infra_ao.c    |  24 +++
+ drivers/clk/mediatek/clk-mtk.c                |   7 +
+ drivers/clk/mediatek/clk-mtk.h                |   9 +-
+ drivers/clk/mediatek/reset.c                  | 198 +++++++++++++-----
+ drivers/clk/mediatek/reset.h                  |  82 ++++++++
+ include/dt-bindings/reset/mt8186-resets.h     |   5 +
+ include/dt-bindings/reset/mt8192-resets.h     |   8 +
+ include/dt-bindings/reset/mt8195-resets.h     |   6 +
+ 28 files changed, 523 insertions(+), 95 deletions(-)
+ create mode 100644 drivers/clk/mediatek/reset.h
+
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
