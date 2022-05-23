@@ -4,88 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91752C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 305FDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 09:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XjRcxrIqZRsaCLEqKHCSpSWEK0PhMcjWUzP+0h8zHK4=; b=IPCz+ec6PtQqld
-	J/M6lkZpBMEJ3FfPVlyZV5IvLgzOzCf70G+ak93gEOVylOdMWpS+0EkRo1R07jRFhQgzjLPGluJpP
-	Vq/K22fTZVrhriObVwo5KX1wMX8+P9ppENACg1U0d/3rVIEsFmZFTltILXGqGJ60l3LVF1HfrRpcf
-	X+vNdw9uYWNQwDXADGTT57R2YZ7WJJEULWGLRAjpbrTc5Qiv6SFw9bof/t04ps5gZzdGI5K6efZ1h
-	6eaURl6EpTESu4Kz3VJ/QVXWM9IoNHv8D+9Ui2UDyYVgjO3vChEnEYkV6Wu66L6eWqCnD9Bc6HMW0
-	nQMqgUVCdZwF74iLROzw==;
+	List-Owner; bh=Jr+tovB3bIW/mbzBszOJnkjwDQUq4AZUykXrzUHDRSY=; b=cLAEr/YV40t/Ym
+	fhmaMMRvI6x+8ReVPSj+dQIR84+2Nq/qDUbNZtk78DaUuPaXKpJik2NM7ilIdV197O272uGfXW+D6
+	yGhRLmw+VCp/oKuqKgPgUVZyYGu2eyHAUu1MG5KOxDa9C7nLDAzg3DyUMV+vHXUJ2Y7kiT8i5KICB
+	jtBCZbMCrbWHHore3jHr02Xy3YDvL03DHZrOMdaKbQ0leZw/seLL6t4C+wUNjTZqOW1HXuyfUS3EE
+	Xah1ARdkvKc4muAS+MOCMD/8rA4N1MEjEBfQoOOa9+opn+T6iwHqjyG6jlLtG92fJ3kkx1JMuz6zZ
+	rA5q18eH2LYE80J+LpMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt4oj-003290-6o; Mon, 23 May 2022 09:57:37 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1nt4pk-0032bA-H6; Mon, 23 May 2022 09:58:40 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt2pu-002AAA-Eh; Mon, 23 May 2022 07:50:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=DvhYrx98e/bvm+6euBlAh1Ati6s4ymRc78DPvLIPdzg=; b=mvmRp7iUeK89GIRjeJ6rdx8ynA
- nOCx51FbVFSuU4+W3MqMnzdIIaNj4i06QVo4UTXgTuSKHpwGUbf8BN/YxmmOrt9NLuvrYHIou31IG
- o58Ekyv76l+ow1YjzRqM/jhQaj5cgGYCxkPV4EFDQpD+a/mCMWWrZsqDp3KycI3DFLefWzlllIvE4
- ulH+ei44xzUxglf+RcHUr07tEde1UND1ZmiOLZNCpUnwkYKVu+mNuQs87PzhSnpx9GtqrrPCXhHY+
- d8hsCbZBotKY6c3xx9Cvdy6iAZe1tT1w0VMJuQ+C1CE6cyz/WrOyMCOABeApX0FHCFtMe2malzhvp
- UI74Aa1w==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt0OU-000qj7-Mz; Mon, 23 May 2022 05:14:18 +0000
-X-UUID: 53d581c0ee774e03b7c107b32b1acc8e-20220522
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:8a044e0e-ee87-4851-917c-ff71a9d31c4a, OB:0,
- LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:9f923c7a-5ef6-470b-96c9-bdb8ced32786,
- C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
- ,QS:0,BEC:nil
-X-UUID: 53d581c0ee774e03b7c107b32b1acc8e-20220522
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1275019573; Sun, 22 May 2022 22:13:48 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 22 May 2022 22:08:54 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 23 May 2022 13:08:52 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 23 May 2022 13:08:52 +0800
-Message-ID: <9a401f9e0bc1324e801ba05ec4a2269fa82322f2.camel@mediatek.com>
-Subject: Re: [PATCH v7 04/19] clk: mediatek: reset: Extract common drivers
- to update function
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
-CC: <mturquette@baylibre.com>, <sboyd@kernel.org>, <matthias.bgg@gmail.com>,
- <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
- <p.zabel@pengutronix.de>, <angelogioacchino.delregno@collabora.com>,
- <chun-jie.chen@mediatek.com>, <wenst@chromium.org>,
- <runyang.chen@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-clk@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 23 May 2022 13:08:52 +0800
-In-Reply-To: <20220520145551.b2sqheaizkegna3n@notapiano>
-References: <20220519125527.18544-1-rex-bc.chen@mediatek.com>
- <20220519125527.18544-5-rex-bc.chen@mediatek.com>
- <20220520145551.b2sqheaizkegna3n@notapiano>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1nt3ts-002dON-2O; Mon, 23 May 2022 08:58:54 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 450081F42575
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1653296330;
+ bh=7UgM4ruQTstnqIM046Xou/g3stt98V447+t6kKN3sCU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=N9rC/Ny9ej6qs7tbI98vVloYt0/LslMcDJWyfytwwtWbuJaejzOu6yd3Gt1b6ALRm
+ QFS6d4Jbz3rk5xnH5/NqW/IyuFCota2t7OOysSaNShon1S5NyjSCD5AqE2Nm9Y++Ek
+ vQBno/8lebbuo7ueDf8lq4Vy9XZ1KC9tBSazzSMqikgpS6mgRArJXFBL+Z3kJbzz79
+ L+lfQtQVL8gKCzTvNPKR7fhiO4tTAt7zPGPWlgpuYmf2F6f0/z/2sMAm5WMFZps3GF
+ +4tHF2/D5RHtc/3kAQ09K/zT8pb2C/32Au6Gf/4JzYh92mSr1Md4me9tMl8X6FHYb8
+ 7LGpECA+lXTiA==
+Message-ID: <926ce818-4f42-898d-aca8-185b5c7434ba@collabora.com>
+Date: Mon, 23 May 2022 10:58:47 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH 2/5] Input: mtk-pmic-keys - Use regmap_{set,clear}_bits
+ where possible
+Content-Language: en-US
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: matthias.bgg@gmail.com, mkorpershoek@baylibre.com,
+ linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220520125132.229191-1-angelogioacchino.delregno@collabora.com>
+ <20220520125132.229191-3-angelogioacchino.delregno@collabora.com>
+ <YosS0ZvAovyl8cF5@google.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <YosS0ZvAovyl8cF5@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_061416_637728_C62C3B53 
-X-CRM114-Status: GOOD (  19.65  )
+X-CRM114-CacheID: sfid-20220523_015852_405737_EC163D09 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,78 +67,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDIyLTA1LTIwIGF0IDEwOjU1IC0wNDAwLCBOw61jb2xhcyBGLiBSLiBBLiBQcmFk
-byB3cm90ZToKPiBPbiBUaHUsIE1heSAxOSwgMjAyMiBhdCAwODo1NToxMlBNICswODAwLCBSZXgt
-QkMgQ2hlbiB3cm90ZToKPiA+IFRvIG1ha2UgZHJpdmVycyBtb3JlIGNsZWFyIGFuZCByZWFkYWJs
-ZSwgd2UgZXh0cmFjdCBjb21tb24gY29kZQo+ID4gd2l0aGluIGFzc2VydCBhbmQgZGVhc3NlcnQg
-dG8gbXRrX3Jlc2V0X3VwZGF0ZV9zZXRfY2xyKCkgYW5kCj4gPiBtdGtfcmVzZXRfdXBkYXRlKCku
-Cj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFJleC1CQyBDaGVuIDxyZXgtYmMuY2hlbkBtZWRpYXRl
-ay5jb20+Cj4gPiBSZXZpZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPAo+ID4g
-YW5nZWxvZ2lvYWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPgo+ID4gLS0tCj4gPiAgZHJp
-dmVycy9jbGsvbWVkaWF0ZWsvcmVzZXQuYyB8IDM4ICsrKysrKysrKysrKysrKysrKysrKy0tLS0t
-LS0tLS0tCj4gPiAtLS0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDIyIGluc2VydGlvbnMoKyksIDE2
-IGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvbWVkaWF0ZWsv
-cmVzZXQuYwo+ID4gYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9yZXNldC5jCj4gPiBpbmRleCA1Y2Ji
-Y2MyMmE0ZmMuLjIyZmE5ZjA5NzUyYyAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvY2xrL21lZGlh
-dGVrL3Jlc2V0LmMKPiA+ICsrKyBiL2RyaXZlcnMvY2xrL21lZGlhdGVrL3Jlc2V0LmMKPiA+IEBA
-IC0xMiwyNCArMTIsMjcgQEAKPiA+ICAKPiA+ICAjaW5jbHVkZSAicmVzZXQuaCIKPiA+ICAKPiA+
-IC1zdGF0aWMgaW50IG10a19yZXNldF9hc3NlcnQoc3RydWN0IHJlc2V0X2NvbnRyb2xsZXJfZGV2
-ICpyY2RldiwKPiA+IC0JCQkgICAgdW5zaWduZWQgbG9uZyBpZCkKPiA+ICtzdGF0aWMgaW50IG10
-a19yZXNldF91cGRhdGUoc3RydWN0IHJlc2V0X2NvbnRyb2xsZXJfZGV2ICpyY2RldiwKPiA+ICsJ
-CQkgICAgdW5zaWduZWQgbG9uZyBpZCwgYm9vbCBkZWFzc2VydCkKPiAKPiBJJ2QgaGF2ZSBjYWxs
-ZWQgdGhlIGJvb2wgJ2Fzc2VydCcsIGFuZCB0aGVuIHBhc3NlZCB0cnVlIG9uIGFzc2VydCBhbmQK
-PiBmYWxzZSBvbgo+IGRlYXNzZXJ0LCBhcyBJIHRoaW5rIHRoYXQncyBzbGlnaHRseSBtb3JlIGlu
-dHVpdGl2ZSwgYnV0IHRoYXQncyBqdXN0Cj4gcGVyc29uYWwKPiBwcmVmZXJlbmNlLiBJdCdzIGZp
-bmUgbGlrZSB0aGlzIGFzIHdlbGwuCj4gCj4gVGhhbmtzLAo+IE7DrWNvbGFzCj4gCgpIZWxsbyBO
-w61jb2xhcywKClRoYW5rcyBmb3IgeW91ciBhZHZpY2UsIGJ1dCBJIHRoaW5rIEkgd2lsbCBrZWVw
-IHRoZSBvcmlnaW5hbCBsb2dpYyBpbgpuZXh0IHZlcnNpb24uCgpCUnMsClJleAoKCj4gPiAgewo+
-ID4gIAlzdHJ1Y3QgbXRrX3Jlc2V0ICpkYXRhID0gY29udGFpbmVyX29mKHJjZGV2LCBzdHJ1Y3Qg
-bXRrX3Jlc2V0LAo+ID4gcmNkZXYpOwo+ID4gKwl1bnNpZ25lZCBpbnQgdmFsID0gZGVhc3NlcnQg
-PyAwIDogfjA7Cj4gPiAgCj4gPiAgCXJldHVybiByZWdtYXBfdXBkYXRlX2JpdHMoZGF0YS0+cmVn
-bWFwLAo+ID4gIAkJCQkgIGRhdGEtPnJlZ29mcyArICgoaWQgLyAzMikgPDwgMiksCj4gPiAtCQkJ
-CSAgQklUKGlkICUgMzIpLCB+MCk7Cj4gPiArCQkJCSAgQklUKGlkICUgMzIpLCB2YWwpOwo+ID4g
-K30KPiA+ICsKPiA+ICtzdGF0aWMgaW50IG10a19yZXNldF9hc3NlcnQoc3RydWN0IHJlc2V0X2Nv
-bnRyb2xsZXJfZGV2ICpyY2RldiwKPiA+ICsJCQkgICAgdW5zaWduZWQgbG9uZyBpZCkKPiA+ICt7
-Cj4gPiArCXJldHVybiBtdGtfcmVzZXRfdXBkYXRlKHJjZGV2LCBpZCwgZmFsc2UpOwo+ID4gIH0K
-PiA+ICAKPiA+ICBzdGF0aWMgaW50IG10a19yZXNldF9kZWFzc2VydChzdHJ1Y3QgcmVzZXRfY29u
-dHJvbGxlcl9kZXYgKnJjZGV2LAo+ID4gIAkJCSAgICAgIHVuc2lnbmVkIGxvbmcgaWQpCj4gPiAg
-ewo+ID4gLQlzdHJ1Y3QgbXRrX3Jlc2V0ICpkYXRhID0gY29udGFpbmVyX29mKHJjZGV2LCBzdHJ1
-Y3QgbXRrX3Jlc2V0LAo+ID4gcmNkZXYpOwo+ID4gLQo+ID4gLQlyZXR1cm4gcmVnbWFwX3VwZGF0
-ZV9iaXRzKGRhdGEtPnJlZ21hcCwKPiA+IC0JCQkJICBkYXRhLT5yZWdvZnMgKyAoKGlkIC8gMzIp
-IDw8IDIpLAo+ID4gLQkJCQkgIEJJVChpZCAlIDMyKSwgMCk7Cj4gPiArCXJldHVybiBtdGtfcmVz
-ZXRfdXBkYXRlKHJjZGV2LCBpZCwgdHJ1ZSk7Cj4gPiAgfQo+ID4gIAo+ID4gIHN0YXRpYyBpbnQg
-bXRrX3Jlc2V0KHN0cnVjdCByZXNldF9jb250cm9sbGVyX2RldiAqcmNkZXYsIHVuc2lnbmVkCj4g
-PiBsb25nIGlkKQo+ID4gQEAgLTQzLDI0ICs0NiwyNyBAQCBzdGF0aWMgaW50IG10a19yZXNldChz
-dHJ1Y3QKPiA+IHJlc2V0X2NvbnRyb2xsZXJfZGV2ICpyY2RldiwgdW5zaWduZWQgbG9uZyBpZCkK
-PiA+ICAJcmV0dXJuIG10a19yZXNldF9kZWFzc2VydChyY2RldiwgaWQpOwo+ID4gIH0KPiA+ICAK
-PiA+IC1zdGF0aWMgaW50IG10a19yZXNldF9hc3NlcnRfc2V0X2NscihzdHJ1Y3QgcmVzZXRfY29u
-dHJvbGxlcl9kZXYKPiA+ICpyY2RldiwKPiA+IC0JCQkJICAgIHVuc2lnbmVkIGxvbmcgaWQpCj4g
-PiArc3RhdGljIGludCBtdGtfcmVzZXRfdXBkYXRlX3NldF9jbHIoc3RydWN0IHJlc2V0X2NvbnRy
-b2xsZXJfZGV2Cj4gPiAqcmNkZXYsCj4gPiArCQkJCSAgICB1bnNpZ25lZCBsb25nIGlkLCBib29s
-IGRlYXNzZXJ0KQo+ID4gIHsKPiA+ICAJc3RydWN0IG10a19yZXNldCAqZGF0YSA9IGNvbnRhaW5l
-cl9vZihyY2Rldiwgc3RydWN0IG10a19yZXNldCwKPiA+IHJjZGV2KTsKPiA+ICsJdW5zaWduZWQg
-aW50IGRlYXNzZXJ0X29mcyA9IGRlYXNzZXJ0ID8gMHg0IDogMDsKPiA+ICAKPiA+ICAJcmV0dXJu
-IHJlZ21hcF93cml0ZShkYXRhLT5yZWdtYXAsCj4gPiAtCQkJICAgIGRhdGEtPnJlZ29mcyArICgo
-aWQgLyAzMikgPDwgNCksCj4gPiArCQkJICAgIGRhdGEtPnJlZ29mcyArICgoaWQgLyAzMikgPDwg
-NCkgKwo+ID4gZGVhc3NlcnRfb2ZzLAo+ID4gIAkJCSAgICBCSVQoaWQgJSAzMikpOwo+ID4gIH0K
-PiA+ICAKPiA+ICtzdGF0aWMgaW50IG10a19yZXNldF9hc3NlcnRfc2V0X2NscihzdHJ1Y3QgcmVz
-ZXRfY29udHJvbGxlcl9kZXYKPiA+ICpyY2RldiwKPiA+ICsJCQkJICAgIHVuc2lnbmVkIGxvbmcg
-aWQpCj4gPiArewo+ID4gKwlyZXR1cm4gbXRrX3Jlc2V0X3VwZGF0ZV9zZXRfY2xyKHJjZGV2LCBp
-ZCwgZmFsc2UpOwo+ID4gK30KPiA+ICsKPiA+ICBzdGF0aWMgaW50IG10a19yZXNldF9kZWFzc2Vy
-dF9zZXRfY2xyKHN0cnVjdCByZXNldF9jb250cm9sbGVyX2Rldgo+ID4gKnJjZGV2LAo+ID4gIAkJ
-CQkgICAgICB1bnNpZ25lZCBsb25nIGlkKQo+ID4gIHsKPiA+IC0Jc3RydWN0IG10a19yZXNldCAq
-ZGF0YSA9IGNvbnRhaW5lcl9vZihyY2Rldiwgc3RydWN0IG10a19yZXNldCwKPiA+IHJjZGV2KTsK
-PiA+IC0KPiA+IC0JcmV0dXJuIHJlZ21hcF93cml0ZShkYXRhLT5yZWdtYXAsCj4gPiAtCQkJICAg
-IGRhdGEtPnJlZ29mcyArICgoaWQgLyAzMikgPDwgNCkgKyAweDQsCj4gPiAtCQkJICAgIEJJVChp
-ZCAlIDMyKSk7Cj4gPiArCXJldHVybiBtdGtfcmVzZXRfdXBkYXRlX3NldF9jbHIocmNkZXYsIGlk
-LCB0cnVlKTsKPiA+ICB9Cj4gPiAgCj4gPiAgc3RhdGljIGludCBtdGtfcmVzZXRfc2V0X2Nscihz
-dHJ1Y3QgcmVzZXRfY29udHJvbGxlcl9kZXYgKnJjZGV2LAo+ID4gLS0gCj4gPiAyLjE4LjAKPiA+
-IAo+ID4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
-ZWRpYXRlawo=
+Il 23/05/22 06:51, Dmitry Torokhov ha scritto:
+> On Fri, May 20, 2022 at 02:51:29PM +0200, AngeloGioacchino Del Regno wrote:
+>> Instead of always using regmap_update_bits(), let's go for the shorter
+>> regmap_set_bits() and regmap_clear_bits() where possible.
+>>
+>> No functional change.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/input/keyboard/mtk-pmic-keys.c | 24 ++++++------------------
+>>   1 file changed, 6 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+>> index 8e4fa7cd16e6..83d0b90cc8cb 100644
+>> --- a/drivers/input/keyboard/mtk-pmic-keys.c
+>> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
+>> @@ -157,28 +157,16 @@ static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
+>>   
+>>   	switch (long_press_mode) {
+>>   	case LP_ONEKEY:
+>> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
+>> -				   MTK_PMIC_PWRKEY_RST,
+>> -				   MTK_PMIC_PWRKEY_RST);
+>> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
+>> -				   MTK_PMIC_HOMEKEY_RST,
+>> -				   0);
+>> +		regmap_set_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_PWRKEY_RST);
+>> +		regmap_clear_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_HOMEKEY_RST);
+> 
+> Why not combine this into a single update instead? I.e. assuming
+> 
+
+All downstream kernels (at least, I checked 4 different kernel versions for 4
+different SoCs) are doing these updates one-at-a-time, never combining them.
+
+Even though I agree with you about one single update being simply more logical,
+I am afraid that (on some SoCs) the IP will not like that so - since I don't have
+any *clear* documentation saying that this is possible, or that this is not, I
+would leave it like that.
+
+
+> #define MTK_PMIC_KEY_RST_MASK GENMASK(6, 5)
+> 
+> 		regmap_update_bits(keys->regmap, pmic_rst_reg,
+> 				   MTK_PMIC_KEY_RST_MASK,
+> 				   MTK_PMIC_PWRKEY_RST);
+> 
+>>   		break;
+>>   	case LP_TWOKEY:
+>> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
+>> -				   MTK_PMIC_PWRKEY_RST,
+>> -				   MTK_PMIC_PWRKEY_RST);
+>> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
+>> -				   MTK_PMIC_HOMEKEY_RST,
+>> -				   MTK_PMIC_HOMEKEY_RST);
+>> +		regmap_set_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_PWRKEY_RST);
+>> +		regmap_set_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_HOMEKEY_RST);
+> 
+> 		regmap_update_bits(keys->regmap, pmic_rst_reg,
+> 				   MTK_PMIC_KEY_RST_MASK,
+> 				   MTK_PMIC_PWRKEY_RST | MTK_PMIC_HOMEKEY_RST);
+> 
+>>   		break;
+>>   	case LP_DISABLE:
+>> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
+>> -				   MTK_PMIC_PWRKEY_RST,
+>> -				   0);
+>> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
+>> -				   MTK_PMIC_HOMEKEY_RST,
+>> -				   0);
+>> +		regmap_clear_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_PWRKEY_RST);
+>> +		regmap_clear_bits(keys->regmap, pmic_rst_reg, MTK_PMIC_HOMEKEY_RST);
+> 
+> 		regmap_update_bits(keys->regmap, pmic_rst_reg,
+> 				   MTK_PMIC_KEY_RST_MASKi, 0);
+> 
+>>   		break;
+>>   	default:
+>>   		break;
+>> -- 
+>> 2.35.1
+>>
+> 
+> Thanks.
+> 
+
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
