@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 727F3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 12:14:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4CF5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 12:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sVO7DZ6Q8eCuIaZn+obbcEZVStlID5Bk6A51JvZdGsA=; b=GLohlnLtHU2jNX
-	doPxcpKr9ZQgho3hQRg1prvwAV3RpWxXJBTHE754ktKC8kHwPWS1xTaoxSyW5Fzm+QsQKdWX3kVxL
-	abxCFHEnMzSNDsgS6M43gjSBfR6OKCe6Vgp0EAzU5p9zSEvRfU3zKl7i0McTPA/OL3Y/s4fceGNOX
-	3vP7KxPVrTc30KnpzzTOWfAQaCsi53eS+fi26ouK3KDKow+5DLwjrOpHVo+exz7rgJgj7cFTfND5a
-	WSjy766Dt8kiMR2SbQwm4Q6VC95yc4a0EmCfZUca+MOmCoP++drYyo90RlqW573fn1Z9S1305ArIG
-	gmHwa8JCzhQ3W4xu48Rw==;
+	List-Owner; bh=TKfADrDN5SyD7k9XFooVFuxyc123SPOXEt2JeTD542I=; b=ikmGK2q4vgJcFj
+	+g7IzyAZvxJgcXyvTFkN1c3PNhaUXo+6TlcLeGyhBkuie/OQy/XsHx1uesalAaKLOC9y2gbbj7djD
+	xH6qm9RA3LZGDJHb/Wh8TGHi8uesN76YVY2wGgQGRnGoB/ztfgMmuV2piA0uqHitLnL5BAmgw5FmV
+	t0XB81oIGg+rXWnnEe/f+e5ZuTFHMyrMCwyl51cSQEjHgqs0qlWrxfutNyur0NVvl19cHyBpWQOmi
+	z1LEsyvhnQ9ud8r/TwxPCG5+6WKOfhoqSYg0LLXYxSz6DHc8k1kmw56Fp6S7SwEA8FIx0JcxtyANQ
+	z6PHUkqS+Y2rv667aPbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt6xL-0042Ga-DL; Mon, 23 May 2022 12:14:39 +0000
+	id 1nt6yH-0042iJ-Po; Mon, 23 May 2022 12:15:37 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt6Qz-003nAx-7T
- for linux-mediatek@bombadil.infradead.org; Mon, 23 May 2022 11:41:13 +0000
+ id 1nt6R2-003nAx-19
+ for linux-mediatek@bombadil.infradead.org; Mon, 23 May 2022 11:41:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
  :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=TQgiy1XDkMEG62oOfcg26Pc/4FzYdvAn//3gC4/v5Zk=; b=WJVo6Jz2s6/7M0Fz88sARrF2FK
- wPylo8r0TO34JpS6rWMp5vvykMutcHrIzbuGWRd/Jjwo+qjU4WM/0Nppi8XYTSsESMauvXKjIFwlv
- DEMdxBDxd2eAegG0Y+KvWSZPN50+ErDyb2EUtRf3GDR9yi1yQXE0MveXhOLAH3yB2sDNfvDGQuLBf
- IcxjFz5+s6CyZ9mFNPDAFmp234WlDFcE98ylzqAREy32C0Mn1mXJRBxpXdnXQPRT4/WPSKCnshR3N
- eDwtpD34K0EIOSB6d64/9Un1+G4Ne9DgTIFo7lbCz009tZv+TQG+XKy2ZuR0LMG8sKO0a4xpmpT7Y
- Qz8Nwu7A==;
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ bh=4zP6HMIa2YPzZ4Ud3UnVV9v/2WWghDZEujrnaWZbPns=; b=VM2pczhvCVaOPvV+qcSEKn3+R5
+ PN0XRyb8kkpyztd2p49NrA0nzlGTyxzVH6t4CMLGMRpOL4L2CRnqeAk0qgtOD4zfGVpSBCiD+lt2D
+ aSx4mwQMnHrZoRWcsdao9BcWp3v+/VzJXLa9aZWfvlYVWo80RZR6vQmA2Y9Oecjt8LcjtJtLlrfOI
+ 8Yn7pfVd/aaqEPst/s7d7zOCtRk+UO1MaX1s6tVW1a7eIRMxaM9IYvpoN82ZvjAld4SXlPnJFzxGU
+ 3sAAQ1HQgdHjI4pVOrHngIbUdWQYFcVbrypabwdfsSwVWeNxl0M7E/TJ0S/Q/QDuF3CA3l3j9buqs
+ kzR8Zg9A==;
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt5fX-0011bU-MC
- for linux-mediatek@lists.infradead.org; Mon, 23 May 2022 10:52:15 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id
- bd25-20020a05600c1f1900b0039485220e16so7432566wmb.0
- for <linux-mediatek@lists.infradead.org>; Mon, 23 May 2022 03:52:11 -0700 (PDT)
+ id 1nt5fE-0011ad-MG
+ for linux-mediatek@lists.infradead.org; Mon, 23 May 2022 10:51:55 +0000
+Received: by mail-wr1-x432.google.com with SMTP id t13so1585665wrg.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 23 May 2022 03:51:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TQgiy1XDkMEG62oOfcg26Pc/4FzYdvAn//3gC4/v5Zk=;
- b=LcJeSLll7b7XkxZOi6oFcPOcwisKrRD0mKGyBx9w1MSB6d6m5DWVFg+LaA0SincQow
- oyzfkP5EDVmZk0dtwla8VMOpO/tosI75OjowyRXVkOZe2MeBMDjxq+Zk8snOoEMjWg0Q
- e/QfpCSe2NvmjVZXesEBnQOJdrlPMpVDEmKuOkM9TfsNGHZ2CgnhA3FbJ3K0Pa3REJ2n
- 81sj5lHqvQ5iY3Jfe+4/6ff/SKGA7PY7FYnWMhhhZtZdS34UfthIjH4/hzLfy1Q/ZU1e
- TCTrXbKnVX1w/mcNDiB5mUgtpVDdBmNv20D1GoAsmV79HnLBHL06Bd4v926F+IGgF5TR
- jNoQ==
+ bh=4zP6HMIa2YPzZ4Ud3UnVV9v/2WWghDZEujrnaWZbPns=;
+ b=CVxXAcJ7h3wlqtwZU9H9KpppU+0u/RTKAuP4gBIGTnyBTrBe1J9DA3/oPGdgksz0xy
+ GLUAXoK2K5PD5Qa5uoLYqngMrUqTrBQJ22WiVornX3mY7lg3WgNkr4opKRljcDGJ+/bZ
+ bW3RuhkiUKraQUELKEkJxDdqc9nVn+Cdrp9idbZpPPJXCWSoi+iPXeHO6GRdDakV8A0+
+ KEZmDMyXYpfBriNae5MHHjylHFP8Q/FOiVWpPyPtKhse51L0ASaj2EH1H/nCY3QgBzmZ
+ PDdfqUyUduPQmp+OuR3gzYBUFeiFmKAZZCk6UmkCYrXc5uFd1B9NK+3wO+q7fCqOFV0R
+ g8Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TQgiy1XDkMEG62oOfcg26Pc/4FzYdvAn//3gC4/v5Zk=;
- b=PKZkL4cctB37BM81XpxEmq278dQPZe1ELEvP5WuMKGl87f0UFGA6oVqzRR+LeyTPmQ
- lpwkibL5rB7gYkUyyf0iCmsFRsyWhy/jLcajMB98YPsFd6am3RQgaE6+vqlfHT/tyZa6
- ctxu4G3GDagFObuYjqkuQQNC0RBnSuu81XDCullV25SMA1arDbzJI91cfYH/VPxTCeSi
- D2ray7t1LgZ4+DR5ocqUVvQMusfWXWE5xn0FpL1N5bXG0BhB8CWjqNNJJmqH6Wk98LIq
- LcZYZzx9mc4zzjQr4WiSoVDfHg3x8VUfVw3LdI6bYyR0N7QsXliwaK74iDcakLeFWXRN
- Fn9w==
-X-Gm-Message-State: AOAM533/naQ7Tme5gtqkgfKOmguWuxAmkZBVCevgThuWGzVrmUdyDVbK
- Wmybszl4gm0Jq0erpWKTpeHKwg==
-X-Google-Smtp-Source: ABdhPJzczxM2TesbfgdsrX4MxRcH1xman2Bx9FG8eZM/Ao5Fw16Apten6hubxh/MzctCsyR7U2x5rA==
-X-Received: by 2002:a05:600c:6015:b0:397:54e1:8279 with SMTP id
- az21-20020a05600c601500b0039754e18279mr1177859wmb.100.1653303129870; 
- Mon, 23 May 2022 03:52:09 -0700 (PDT)
+ bh=4zP6HMIa2YPzZ4Ud3UnVV9v/2WWghDZEujrnaWZbPns=;
+ b=0V5pe0SYaY/+7EqDNZzXg7fNheFZqLTPJm/KgubpGO/+AVcxOEfuipWX4hrVfvXqpY
+ 5Z6zVVem/zc8ZaFwRICTOg4Tt6i2CWVCejzcYepabzvpnT5SHb52pzTbQyvJZNhqMe5k
+ uY/y6XketDp++jmNC6SOQMU7iWLeMsoJ128VLR2w7/org73tn4edml7yLX5X77gPv2PX
+ Igf2NXK+p14uoHzqDuvlrNYj1Py3wpzgyZbN5UU+1R660gK1VihTom3DzFG3Z2OvoXyE
+ 2C/NAabDL//Hz3MO17FWxgc1CvtdUWQaFayIb4A4uHb5Uc4GSgux9X3+7ifws2hitLfo
+ xjsg==
+X-Gm-Message-State: AOAM533B5hceQ4SXy+jG/9kYMom2j+mkSmW8fA4TK8zU8GSrk4pNsur+
+ T7n4NrE2l3WeskorV/loEoPk2A==
+X-Google-Smtp-Source: ABdhPJyQ9VeNqhjj7qlI7JhdS3acBdep+9UKDmpO3Y91brQHC2cBHqOMlHX3SGs3/FwHb18YDgbYJA==
+X-Received: by 2002:a5d:6484:0:b0:20f:cc0b:e3f1 with SMTP id
+ o4-20020a5d6484000000b0020fcc0be3f1mr8011615wri.237.1653303109362; 
+ Mon, 23 May 2022 03:51:49 -0700 (PDT)
 Received: from localhost.localdomain
  (2a02-8440-6141-9d1b-3074-96af-9642-0003.rev.sfr.net.
  [2a02:8440:6141:9d1b:3074:96af:9642:3])
  by smtp.gmail.com with ESMTPSA id
- n11-20020a7bc5cb000000b003942a244f38sm8453607wmk.17.2022.05.23.03.52.08
+ n11-20020a7bc5cb000000b003942a244f38sm8453607wmk.17.2022.05.23.03.51.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 May 2022 03:52:09 -0700 (PDT)
+ Mon, 23 May 2022 03:51:48 -0700 (PDT)
 From: Guillaume Ranquet <granquet@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
@@ -94,17 +93,16 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
  linux-fbdev@vger.kernel.org
-Subject: [PATCH v10 19/21] drm/mediatek: Add mt8195 External DisplayPort
- support
-Date: Mon, 23 May 2022 12:47:52 +0200
-Message-Id: <20220523104758.29531-20-granquet@baylibre.com>
+Subject: [PATCH v10 16/21] drm/meditek: dpi: Add matrix_sel helper
+Date: Mon, 23 May 2022 12:47:49 +0200
+Message-Id: <20220523104758.29531-17-granquet@baylibre.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220523104758.29531-1-granquet@baylibre.com>
 References: <20220523104758.29531-1-granquet@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_115211_970793_A2183EBC 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20220523_115153_199476_762C4911 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,177 +119,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds External DisplayPort support to the mt8195 eDP driver.
+Add a mtk_dpi_matrix_sel() helper to update the DPI_MATRIX_SET
+register depending on the color format.
 
 Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 104 +++++++++++++++++++++++-------
- 1 file changed, 81 insertions(+), 23 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c      | 21 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  3 +++
+ 2 files changed, 24 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 8eb17ae82bfd..4789853ec5ff 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -164,6 +164,11 @@ static struct regmap_config mtk_dp_regmap_config = {
- 	.name = "mtk-dp-registers",
- };
- 
-+static bool mtk_dp_is_edp(struct mtk_dp *mtk_dp)
-+{
-+	return mtk_dp->next_bridge;
-+}
-+
- static struct mtk_dp *mtk_dp_from_bridge(struct drm_bridge *b)
- {
- 	return container_of(b, struct mtk_dp, bridge);
-@@ -1054,26 +1059,49 @@ static int mtk_dp_get_calibration_data(struct mtk_dp *mtk_dp)
- 	if (!cal_data->ln_tx_impsel_pmos)
- 		return -ENOMEM;
- 
--	cal_data->glb_bias_trim =
--		check_cal_data_valid(mtk_dp, 1, 0x1e, (buf[3] >> 27) & 0x1f, 0xf);
--	cal_data->clktx_impse =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[0] >> 9) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[0] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 28) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[0] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 24) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[1] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 20) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[1] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 16) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[2] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 12) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[2] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 8) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[3] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 4) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[3] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, buf[2] & 0xf, 0x8);
-+	if (mtk_dp_is_edp(mtk_dp)) {
-+		cal_data->glb_bias_trim =
-+			check_cal_data_valid(mtk_dp, 1, 0x1e, (buf[3] >> 27) & 0x1f, 0xf);
-+		cal_data->clktx_impse =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[0] >> 9) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 28) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 24) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 20) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 16) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 12) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 8) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[2] >> 4) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, buf[2] & 0xf, 0x8);
-+	} else {
-+		cal_data->glb_bias_trim =
-+			check_cal_data_valid(mtk_dp, 1, 0x1e, (buf[0] >> 27) & 0x1f, 0xf);
-+		cal_data->clktx_impse =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[0] >> 13) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[1] >> 28) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[1] >> 24) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[1] >> 20) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[1] >> 16) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[1] >> 12) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[1] >> 8) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, (buf[1] >> 4) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, buf[1] & 0xf, 0x8);
-+	}
- 
- 	kfree(buf);
- 
-@@ -1224,7 +1252,10 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
- 			   VIDEO_MUTE_SEL_DP_ENC0_P0_MASK |
- 			   VIDEO_MUTE_SW_DP_ENC0_P0_MASK);
- 
--	mtk_dp_sip_atf_call(MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable);
-+	if (mtk_dp_is_edp(mtk_dp))
-+		mtk_dp_sip_atf_call(MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable);
-+	else
-+		mtk_dp_sip_atf_call(MTK_DP_SIP_ATF_VIDEO_UNMUTE, enable);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index a6b6d62a17e7..5b88a7ed5845 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -386,6 +386,25 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+ 		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
  }
  
- static int mtk_dp_power_enable(struct mtk_dp *mtk_dp)
-@@ -2066,6 +2097,24 @@ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
- 	return ret;
- }
- 
-+static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
++static void mtk_dpi_matrix_sel(struct mtk_dpi *dpi, enum mtk_dpi_out_color_format format)
 +{
-+	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
-+	enum drm_connector_status ret = connector_status_disconnected;
-+	u8 sink_count = 0;
++	u32 matrix_sel = 0;
 +
-+	if (mtk_dp_is_edp(mtk_dp))
-+		return connector_status_connected;
-+
-+	if (mtk_dp_plug_state(mtk_dp)) {
-+		drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
-+		if (DP_GET_SINK_COUNT(sink_count))
-+			ret = connector_status_connected;
++	switch (format) {
++	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
++	case MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL:
++	case MTK_DPI_COLOR_FORMAT_YCBCR_444:
++	case MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL:
++	case MTK_DPI_COLOR_FORMAT_XV_YCC:
++		if (dpi->mode.hdisplay <= 720)
++			matrix_sel = 0x2;
++		break;
++	default:
++		break;
 +	}
-+
-+	return ret;
++	mtk_dpi_mask(dpi, DPI_MATRIX_SET, matrix_sel, INT_MATRIX_SEL_MASK);
 +}
 +
- static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
- 				    struct drm_connector *connector)
+ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+ 					enum mtk_dpi_out_color_format format)
  {
-@@ -2422,6 +2471,7 @@ static const struct drm_bridge_funcs mtk_dp_bridge_funcs = {
- 	.atomic_disable = mtk_dp_bridge_atomic_disable,
- 	.mode_valid = mtk_dp_bridge_mode_valid,
- 	.get_edid = mtk_dp_get_edid,
-+	.detect = mtk_dp_bdg_detect,
- };
+@@ -393,6 +412,7 @@ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+ 	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
+ 		mtk_dpi_config_yuv422_enable(dpi, false);
+ 		mtk_dpi_config_csc_enable(dpi, true);
++		mtk_dpi_matrix_sel(dpi, format);
+ 		if (dpi->conf->swap_input_support)
+ 			mtk_dpi_config_swap_input(dpi, false);
+ 		mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_BGR);
+@@ -400,6 +420,7 @@ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+ 		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
+ 		mtk_dpi_config_yuv422_enable(dpi, true);
+ 		mtk_dpi_config_csc_enable(dpi, true);
++		mtk_dpi_matrix_sel(dpi, format);
+ 		if (dpi->conf->swap_input_support)
+ 			mtk_dpi_config_swap_input(dpi, true);
+ 		mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+index dd47dd3f2e4f..91b32dfffced 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
++++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+@@ -231,6 +231,9 @@
+ #define EDGE_SEL_EN			BIT(5)
+ #define H_FRE_2N			BIT(25)
  
- static int mtk_dp_probe(struct platform_device *pdev)
-@@ -2443,7 +2493,11 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 
- 
- 	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
--	if (IS_ERR(mtk_dp->next_bridge)) {
-+	if (IS_ERR(mtk_dp->next_bridge) && PTR_ERR(mtk_dp->next_bridge) == -ENODEV) {
-+		dev_info(dev,
-+			 "No panel connected in devicetree, continuing as external DP\n");
-+		mtk_dp->next_bridge = NULL;
-+	} else if (IS_ERR(mtk_dp->next_bridge)) {
- 		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge), "Failed to get bridge\n");
- 	}
- 
-@@ -2488,7 +2542,10 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 	mtk_dp->bridge.ops =
- 		DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
- 	drm_bridge_add(&mtk_dp->bridge);
--	mtk_dp->bridge.type = DRM_MODE_CONNECTOR_eDP;
-+	if (mtk_dp_is_edp(mtk_dp))
-+		mtk_dp->bridge.type = DRM_MODE_CONNECTOR_eDP;
-+	else
-+		mtk_dp->bridge.type = DRM_MODE_CONNECTOR_DisplayPort;
- 
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
-@@ -2550,6 +2607,7 @@ static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
- 
- static const struct of_device_id mtk_dp_of_match[] = {
- 	{ .compatible = "mediatek,mt8195-edp-tx" },
-+	{ .compatible = "mediatek,mt8195-dp-tx" },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
++#define DPI_MATRIX_SET	0xB4
++#define INT_MATRIX_SEL			BIT(0)
++#define INT_MATRIX_SEL_MASK		(0x1F << 0)
+ #define RGB_TO_JPEG			0x00
+ #define RGB_TO_FULL709			0x01
+ #define RGB_TO_BT601			0x02
 -- 
 2.35.1
 
