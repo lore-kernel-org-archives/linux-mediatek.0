@@ -4,54 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1939C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 15:48:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6E62C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 16:01:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=abcYQKd0NnjKoWX5yfPd4avN1ajnHDXZcMuN2kJIRXc=; b=rZeW5mmyU5NzoI
-	BSszZmH+oCNUk+HYdktZbWBArd8Jl0z8kBG8aYdurdEv8PW09vGfb/e4V25NUUE1d9DnpKbLIEgPu
-	azGi4ql2na9cdwflGWW55qSiRO8DsWxEza/UjRWRVF0KK+0R2LJBk+JKwezlfxshQ5sKr2/WQryJG
-	GInvNtlopmVT+EZaZs9fkttYCk4GLjSueK9HcnUk0SpvhTBqxr0o7VvKuiqbMj/eeEyHgCb2sjmdP
-	nK1uieibpsUboiO0Rb9XPmCO3iUxO6j5oBQiGGGXLhvzkChl6YZzzArkfecqO0hITUcKIcsPTJBVe
-	gTk0Msjta/DtrEC3T9yw==;
+	List-Owner; bh=JW/1mwhaQLU5aQcFuoatffGzZTxJRgN//LENludqP0E=; b=Lr3Fqkl2PiHgys
+	BV5L2xMMdpSujobnWVC+f3y7Exu2zyKuogvosk/QW0b+/r+FS69fW0DBbYkVHBhPiK8sEN+0h6/Q6
+	T2RWf5NUSSaqd44twE0MM1liz4cza+0+Zw1xGCtZV/B3KKB2hvRSkQhFdgtX7uBB0WCwNgRp8cMPx
+	QRzO1NfrE66aCmLRx/kIBnQf02qIISPnNak3/Et9FqJ493bYjgHHOqi/4OriJ6o3MY1SqhWD41k0u
+	5/HxjJZq4ILRYGrinLxG4sjrR5fSOxttZfqtipwQDL7XkdUdT+kj9cOEph0R83sPwlXKBCEHZ2jYg
+	kDmsC6pkh9B8OBgLjKog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntAI8-0050u0-EZ; Mon, 23 May 2022 15:48:20 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ntAUl-00560r-2F; Mon, 23 May 2022 16:01:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntAH7-0050PF-Ap; Mon, 23 May 2022 15:47:21 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A1FC11F4398F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653320836;
- bh=JBFQk9/UuOJZhRiMeFv9v0H/oXZmc/eK6sreumqs5nA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=RUNrChPiKwvLvdBgx87lieYVUq1Lv9/lSdp6ZPzSIW17VkyemX4ZcqZg0qrQ+jXUz
- 8fU+3HqUcrtlzjlfhaob3dQTYMPFELnidWQaj85stO4zuGG7w239bW7snUULlIwUT2
- Vq14gCxu2rHOBzkq0UUaFTGjb7Lwuww6+w6/YBBQY0baYtAawONsgCNg6EyjgxjjC/
- jFNOkWqJvlq3T9gUyFGT1dWpZ2G87jz1ErkbamRbqIBh/4brzQDCZ075q/E8bYeA9q
- s1vgh9akYqxKFDTwDRQq6jodwSKP7V1XRqhYcDu+wlqM1oPH/0s5IRccCBHK8gW74g
- Z2sLJa/5DJr4g==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: lgirdwood@gmail.com
-Cc: broonie@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 4/4] regulator: Add driver for MT6332 PMIC regulators
-Date: Mon, 23 May 2022 17:47:09 +0200
-Message-Id: <20220523154709.118663-5-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220523154709.118663-1-angelogioacchino.delregno@collabora.com>
-References: <20220523154709.118663-1-angelogioacchino.delregno@collabora.com>
+ id 1ntAUY-0055u0-Me; Mon, 23 May 2022 16:01:12 +0000
+X-UUID: 149bcb7a41544238b168d0a3184463d8-20220523
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:12182ae7-f041-402a-9f00-4927ccafb2e6, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09, CLOUDID:bb9d507a-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 149bcb7a41544238b168d0a3184463d8-20220523
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 436261649; Mon, 23 May 2022 09:01:05 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 09:01:04 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 24 May 2022 00:01:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 24 May 2022 00:01:02 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
+ <linux-clk@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH 6/8] clk: mediatek: mt6797: use mtk_clk_simple_probe to
+ simplify driver
+Date: Tue, 24 May 2022 00:00:48 +0800
+Message-ID: <20220523160053.1922-7-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220523160053.1922-1-miles.chen@mediatek.com>
+References: <20220523160053.1922-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_084717_744750_0B3ECA8E 
-X-CRM114-Status: GOOD (  24.10  )
+X-CRM114-CacheID: sfid-20220523_090110_782573_F1C61AA9 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,514 +85,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a driver for the regulators found in the MT6332 PMICs,
-including six buck and four LDO regulators.
+mtk_clk_simple_probe was added by Chun-Jie to simply common flow
+of MediaTek clock drivers and ChenYu enhanced the error path of
+mtk_clk_simple_probe and added mtk_clk_simple_remove.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Let's use mtk_clk_simple_probe and mtk_clk_simple_probe in other
+MediaTek clock drivers as well.
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/regulator/Kconfig                  |   9 +
- drivers/regulator/Makefile                 |   1 +
- drivers/regulator/mt6332-regulator.c       | 422 +++++++++++++++++++++
- include/linux/regulator/mt6332-regulator.h |  27 ++
- 4 files changed, 459 insertions(+)
- create mode 100644 drivers/regulator/mt6332-regulator.c
- create mode 100644 include/linux/regulator/mt6332-regulator.h
+ drivers/clk/mediatek/clk-mt6797-img.c  | 36 ++++++++++----------------
+ drivers/clk/mediatek/clk-mt6797-vdec.c | 36 ++++++++++----------------
+ drivers/clk/mediatek/clk-mt6797-venc.c | 36 ++++++++++----------------
+ 3 files changed, 39 insertions(+), 69 deletions(-)
 
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index dfb52b093c6f..511441acb592 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -786,6 +786,15 @@ config REGULATOR_MT6331
- 	  This driver supports the control of different power rails of device
- 	  through regulator interface
+diff --git a/drivers/clk/mediatek/clk-mt6797-img.c b/drivers/clk/mediatek/clk-mt6797-img.c
+index 25d17db13bac..7c6a53fbb8be 100644
+--- a/drivers/clk/mediatek/clk-mt6797-img.c
++++ b/drivers/clk/mediatek/clk-mt6797-img.c
+@@ -32,33 +32,23 @@ static const struct mtk_gate img_clks[] = {
+ 	GATE_IMG(CLK_IMG_LARB6, "img_larb6", "mm_sel", 0),
+ };
  
-+config REGULATOR_MT6332
-+	tristate "MediaTek MT6332 PMIC"
-+	depends on MFD_MT6397
-+	help
-+	  Say y here to select this option to enable the power regulator of
-+	  MediaTek MT6332 PMIC.
-+	  This driver supports the control of different power rails of device
-+	  through regulator interface
-+
- config REGULATOR_MT6358
- 	tristate "MediaTek MT6358 PMIC"
- 	depends on MFD_MT6397
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 3799e2673825..13dbac706ed8 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -95,6 +95,7 @@ obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
- obj-$(CONFIG_REGULATOR_MT6315) += mt6315-regulator.o
- obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
- obj-$(CONFIG_REGULATOR_MT6331)	+= mt6331-regulator.o
-+obj-$(CONFIG_REGULATOR_MT6332)	+= mt6332-regulator.o
- obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
- obj-$(CONFIG_REGULATOR_MT6359)	+= mt6359-regulator.o
- obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
-diff --git a/drivers/regulator/mt6332-regulator.c b/drivers/regulator/mt6332-regulator.c
-new file mode 100644
-index 000000000000..77a27d8127a3
---- /dev/null
-+++ b/drivers/regulator/mt6332-regulator.c
-@@ -0,0 +1,422 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2022 Collabora Ltd.
-+// Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+//
-+// Based on mt6323-regulator.c,
-+//     Copyright (c) 2016 MediaTek Inc.
-+//
-+
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/mfd/mt6397/core.h>
-+#include <linux/mfd/mt6332/registers.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/machine.h>
-+#include <linux/regulator/mt6332-regulator.h>
-+#include <linux/regulator/of_regulator.h>
-+
-+#define MT6332_LDO_MODE_NORMAL	0
-+#define MT6332_LDO_MODE_LP	1
-+
-+/*
-+ * MT6332 regulators information
-+ *
-+ * @desc: standard fields of regulator description.
-+ * @qi: Mask for query enable signal status of regulators
-+ * @vselon_reg: Register sections for hardware control mode of bucks
-+ * @vselctrl_reg: Register for controlling the buck control mode.
-+ * @vselctrl_mask: Mask for query buck's voltage control mode.
-+ * @status_reg: Register for regulator enable status where qi unavailable
-+ * @status_mask: Mask for querying regulator enable status
-+ */
-+struct mt6332_regulator_info {
-+	struct regulator_desc desc;
-+	u32 qi;
-+	u32 vselon_reg;
-+	u32 vselctrl_reg;
-+	u32 vselctrl_mask;
-+	u32 modeset_reg;
-+	u32 modeset_mask;
-+	u32 status_reg;
-+	u32 status_mask;
-+};
-+
-+#define MT6332_BUCK(match, vreg, min, max, step, volt_ranges, enreg,	\
-+		vosel, vosel_mask, voselon, vosel_ctrl)			\
-+[MT6332_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6332_buck_volt_range_ops,			\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6332_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = (max - min)/step + 1,			\
-+		.linear_ranges = volt_ranges,				\
-+		.n_linear_ranges = ARRAY_SIZE(volt_ranges),		\
-+		.vsel_reg = vosel,					\
-+		.vsel_mask = vosel_mask,				\
-+		.enable_reg = enreg,					\
-+		.enable_mask = BIT(0),					\
-+	},								\
-+	.qi = BIT(13),							\
-+	.vselon_reg = voselon,						\
-+	.vselctrl_reg = vosel_ctrl,					\
-+	.vselctrl_mask = BIT(1),					\
-+	.status_mask = 0,						\
-+}
-+
-+#define MT6332_LDO_LINEAR(match, vreg, min, max, step, volt_ranges,	\
-+			  enreg, vosel, vosel_mask, voselon,		\
-+			  vosel_ctrl, _modeset_reg, _modeset_mask)	\
-+[MT6332_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6332_ldo_volt_range_ops,			\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6332_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = (max - min)/step + 1,			\
-+		.linear_ranges = volt_ranges,				\
-+		.n_linear_ranges = ARRAY_SIZE(volt_ranges),		\
-+		.vsel_reg = vosel,					\
-+		.vsel_mask = vosel_mask,				\
-+		.enable_reg = enreg,					\
-+		.enable_mask = BIT(0),					\
-+	},								\
-+	.qi = BIT(15),							\
-+	.vselon_reg = voselon,						\
-+	.vselctrl_reg = vosel_ctrl,					\
-+	.vselctrl_mask = BIT(1),					\
-+	.modeset_reg = _modeset_reg,					\
-+	.modeset_mask = _modeset_mask,					\
-+	.status_mask = 0,						\
-+}
-+
-+#define MT6332_LDO_AO(match, vreg, ldo_volt_table, vosel, vosel_mask)	\
-+[MT6332_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6332_volt_table_ao_ops,			\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6332_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = ARRAY_SIZE(ldo_volt_table),		\
-+		.volt_table = ldo_volt_table,				\
-+		.vsel_reg = vosel,					\
-+		.vsel_mask = vosel_mask,				\
-+	},								\
-+}
-+
-+#define MT6332_LDO(match, vreg, ldo_volt_table, enreg, enbit, vosel,	\
-+		   vosel_mask, _modeset_reg, _modeset_mask)		\
-+[MT6332_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6332_volt_table_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6332_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = ARRAY_SIZE(ldo_volt_table),		\
-+		.volt_table = ldo_volt_table,				\
-+		.vsel_reg = vosel,					\
-+		.vsel_mask = vosel_mask,				\
-+		.enable_reg = enreg,					\
-+		.enable_mask = BIT(enbit),				\
-+	},								\
-+	.qi = BIT(15),							\
-+	.modeset_reg = _modeset_reg,					\
-+	.modeset_mask = _modeset_mask,					\
-+	.status_mask = 0,						\
-+}
-+
-+#define MT6332_REG_FIXED(match, vreg, enreg, enbit, qibit, volt, stbit)	\
-+[MT6332_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6332_volt_fixed_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6332_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = 1,					\
-+		.enable_reg = enreg,					\
-+		.enable_mask = BIT(enbit),				\
-+		.min_uV = volt,						\
-+	},								\
-+	.qi = BIT(qibit),						\
-+	.status_reg = MT6332_EN_STATUS0,				\
-+	.status_mask = BIT(stbit),					\
-+}
-+
-+static const struct linear_range boost_volt_range[] = {
-+	REGULATOR_LINEAR_RANGE(3500000, 0, 0x7f, 31250),
-+};
-+
-+static const struct linear_range buck_volt_range[] = {
-+	REGULATOR_LINEAR_RANGE(700000, 0, 0x7f, 6250),
-+};
-+
-+static const struct linear_range buck_pa_volt_range[] = {
-+	REGULATOR_LINEAR_RANGE(500000, 0, 0x3f, 50000),
-+};
-+
-+static const struct linear_range buck_rf_volt_range[] = {
-+	REGULATOR_LINEAR_RANGE(1050000, 0, 0x7f, 9375),
-+};
-+
-+static const unsigned int ldo_volt_table1[] = {
-+	2800000, 3000000, 0, 3200000
-+};
-+
-+static const unsigned int ldo_volt_table2[] = {
-+	1200000, 1300000, 1400000, 1500000, 1600000, 1700000, 1800000, 1800000,
-+};
-+
-+static int mt6332_get_status(struct regulator_dev *rdev)
-+{
-+	struct mt6332_regulator_info *info = rdev_get_drvdata(rdev);
-+	u32 reg, en_mask, regval;
-+	int ret;
-+
-+	if (info->qi > 0) {
-+		reg = info->desc.enable_reg;
-+		en_mask = info->qi;
-+	} else {
-+		reg = info->status_reg;
-+		en_mask = info->status_mask;
+-static const struct of_device_id of_match_clk_mt6797_img[] = {
+-	{ .compatible = "mediatek,mt6797-imgsys", },
+-	{}
++static const struct mtk_clk_desc img_desc = {
++	.clks = img_clks,
++	.num_clks = ARRAY_SIZE(img_clks),
+ };
+ 
+-static int clk_mt6797_img_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_IMG_NR);
+-
+-	mtk_clk_register_gates(node, img_clks, ARRAY_SIZE(img_clks),
+-			       clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
+-
+-	return r;
+-}
++static const struct of_device_id of_match_clk_mt6797_img[] = {
++	{
++		.compatible = "mediatek,mt6797-imgsys",
++		.data = &img_desc,
++	}, {
++		/* sentinel */
 +	}
-+
-+	ret = regmap_read(rdev->regmap, reg, &regval);
-+	if (ret != 0) {
-+		dev_err(&rdev->dev, "Failed to get enable reg: %d\n", ret);
-+		return ret;
++};
+ 
+ static struct platform_driver clk_mt6797_img_drv = {
+-	.probe = clk_mt6797_img_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt6797-img",
+ 		.of_match_table = of_match_clk_mt6797_img,
+diff --git a/drivers/clk/mediatek/clk-mt6797-vdec.c b/drivers/clk/mediatek/clk-mt6797-vdec.c
+index de857894e033..6120fccc859f 100644
+--- a/drivers/clk/mediatek/clk-mt6797-vdec.c
++++ b/drivers/clk/mediatek/clk-mt6797-vdec.c
+@@ -49,33 +49,23 @@ static const struct mtk_gate vdec_clks[] = {
+ 	GATE_VDEC1(CLK_VDEC_LARB1_CKEN, "vdec_larb1_cken", "mm_sel", 0),
+ };
+ 
+-static const struct of_device_id of_match_clk_mt6797_vdec[] = {
+-	{ .compatible = "mediatek,mt6797-vdecsys", },
+-	{}
++static const struct mtk_clk_desc vdec_desc = {
++	.clks = vdec_clks,
++	.num_clks = ARRAY_SIZE(vdec_clks),
+ };
+ 
+-static int clk_mt6797_vdec_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VDEC_NR);
+-
+-	mtk_clk_register_gates(node, vdec_clks, ARRAY_SIZE(vdec_clks),
+-			       clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
+-
+-	return r;
+-}
++static const struct of_device_id of_match_clk_mt6797_vdec[] = {
++	{
++		.compatible = "mediatek,mt6797-vdecsys",
++		.data = &vdec_desc,
++	}, {
++		/* sentinel */
 +	}
-+
-+	return (regval & en_mask) ? REGULATOR_STATUS_ON : REGULATOR_STATUS_OFF;
-+}
-+
-+static int mt6332_ldo_set_mode(struct regulator_dev *rdev, unsigned int mode)
-+{
-+	struct mt6332_regulator_info *info = rdev_get_drvdata(rdev);
-+	int val;
-+
-+	switch (mode) {
-+	case REGULATOR_MODE_STANDBY:
-+		val = MT6332_LDO_MODE_LP;
-+		break;
-+	case REGULATOR_MODE_NORMAL:
-+		val = MT6332_LDO_MODE_NORMAL;
-+		break;
-+	default:
-+		return -EINVAL;
++};
+ 
+ static struct platform_driver clk_mt6797_vdec_drv = {
+-	.probe = clk_mt6797_vdec_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt6797-vdec",
+ 		.of_match_table = of_match_clk_mt6797_vdec,
+diff --git a/drivers/clk/mediatek/clk-mt6797-venc.c b/drivers/clk/mediatek/clk-mt6797-venc.c
+index 78b7ed55f979..834d3834d2bb 100644
+--- a/drivers/clk/mediatek/clk-mt6797-venc.c
++++ b/drivers/clk/mediatek/clk-mt6797-venc.c
+@@ -34,33 +34,23 @@ static const struct mtk_gate venc_clks[] = {
+ 	GATE_VENC(CLK_VENC_3, "venc_3", "venc_sel", 12),
+ };
+ 
+-static const struct of_device_id of_match_clk_mt6797_venc[] = {
+-	{ .compatible = "mediatek,mt6797-vencsys", },
+-	{}
++static const struct mtk_clk_desc venc_desc = {
++	.clks = venc_clks,
++	.num_clks = ARRAY_SIZE(venc_clks),
+ };
+ 
+-static int clk_mt6797_venc_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VENC_NR);
+-
+-	mtk_clk_register_gates(node, venc_clks, ARRAY_SIZE(venc_clks),
+-			       clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
+-
+-	return r;
+-}
++static const struct of_device_id of_match_clk_mt6797_venc[] = {
++	{
++		.compatible = "mediatek,mt6797-vencsys",
++		.data = &venc_desc,
++	}, {
++		/* sentinel */
 +	}
-+
-+	val <<= ffs(info->modeset_mask) - 1;
-+
-+	return regmap_update_bits(rdev->regmap, info->modeset_reg,
-+				  info->modeset_mask, val);
-+}
-+
-+static unsigned int mt6332_ldo_get_mode(struct regulator_dev *rdev)
-+{
-+	struct mt6332_regulator_info *info = rdev_get_drvdata(rdev);
-+	unsigned int val;
-+	int ret;
-+
-+	ret = regmap_read(rdev->regmap, info->modeset_reg, &val);
-+	if (ret < 0)
-+		return ret;
-+
-+	val &= info->modeset_mask;
-+	val >>= ffs(info->modeset_mask) - 1;
-+
-+	return (val & BIT(0)) ? REGULATOR_MODE_STANDBY : REGULATOR_MODE_NORMAL;
-+}
-+
-+static const struct regulator_ops mt6332_buck_volt_range_ops = {
-+	.list_voltage = regulator_list_voltage_linear_range,
-+	.map_voltage = regulator_map_voltage_linear_range,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.get_status = mt6332_get_status,
 +};
-+
-+static const struct regulator_ops mt6332_ldo_volt_range_ops = {
-+	.list_voltage = regulator_list_voltage_linear_range,
-+	.map_voltage = regulator_map_voltage_linear_range,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.get_status = mt6332_get_status,
-+	.set_mode = mt6332_ldo_set_mode,
-+	.get_mode = mt6332_ldo_get_mode,
-+};
-+
-+static const struct regulator_ops mt6332_volt_table_ops = {
-+	.list_voltage = regulator_list_voltage_table,
-+	.map_voltage = regulator_map_voltage_iterate,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.get_status = mt6332_get_status,
-+	.set_mode = mt6332_ldo_set_mode,
-+	.get_mode = mt6332_ldo_get_mode,
-+};
-+
-+static const struct regulator_ops mt6332_volt_table_ao_ops = {
-+	.list_voltage = regulator_list_voltage_table,
-+	.map_voltage = regulator_map_voltage_iterate,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+};
-+
-+static const struct regulator_ops mt6332_volt_fixed_ops = {
-+	.list_voltage = regulator_list_voltage_linear,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.get_status = mt6332_get_status,
-+};
-+
-+/* The array is indexed by id(MT6332_ID_XXX) */
-+static struct mt6332_regulator_info mt6332_regulators[] = {
-+	MT6332_BUCK("buck-vdram", VDRAM, 700000, 1493750, 6250, buck_volt_range,
-+		    MT6332_EN_STATUS0, MT6332_VDRAM_CON11, GENMASK(6, 0),
-+		    MT6332_VDRAM_CON12, MT6332_VDRAM_CON7),
-+	MT6332_BUCK("buck-vdvfs2", VDVFS2, 700000, 1312500, 6250, buck_volt_range,
-+		    MT6332_VDVFS2_CON9, MT6332_VDVFS2_CON11, GENMASK(6, 0),
-+		    MT6332_VDVFS2_CON12, MT6332_VDVFS2_CON7),
-+	MT6332_BUCK("buck-vpa", VPA, 500000, 3400000, 50000, buck_pa_volt_range,
-+		    MT6332_VPA_CON9, MT6332_VPA_CON11, GENMASK(5, 0),
-+		    MT6332_VPA_CON12, MT6332_VPA_CON7),
-+	MT6332_BUCK("buck-vrf18a", VRF1, 1050000, 2240625, 9375, buck_rf_volt_range,
-+		    MT6332_VRF1_CON9, MT6332_VRF1_CON11, GENMASK(6, 0),
-+		    MT6332_VRF1_CON12, MT6332_VRF1_CON7),
-+	MT6332_BUCK("buck-vrf18b", VRF2, 1050000, 2240625, 9375, buck_rf_volt_range,
-+		    MT6332_VRF2_CON9, MT6332_VRF2_CON11, GENMASK(6, 0),
-+		    MT6332_VRF2_CON12, MT6332_VRF2_CON7),
-+	MT6332_BUCK("buck-vsbst", VSBST, 3500000, 7468750, 31250, boost_volt_range,
-+		    MT6332_VSBST_CON8, MT6332_VSBST_CON12, GENMASK(6, 0),
-+		    MT6332_VSBST_CON13, MT6332_VSBST_CON8),
-+	MT6332_LDO("ldo-vauxb32", VAUXB32, ldo_volt_table1, MT6332_LDO_CON1, 10,
-+		   MT6332_LDO_CON9, GENMASK(6, 5), MT6332_LDO_CON1, GENMASK(1, 0)),
-+	MT6332_REG_FIXED("ldo-vbif28", VBIF28, MT6332_LDO_CON2, 10, 0, 2800000, 1),
-+	MT6332_REG_FIXED("ldo-vusb33", VUSB33, MT6332_LDO_CON3, 10, 0, 3300000, 2),
-+	MT6332_LDO_LINEAR("ldo-vsram", VSRAM_DVFS2, 700000, 1493750, 6250, buck_volt_range,
-+			  MT6332_EN_STATUS0, MT6332_LDO_CON8, GENMASK(15, 9),
-+			  MT6332_VDVFS2_CON23, MT6332_VDVFS2_CON22,
-+			  MT6332_LDO_CON5, GENMASK(1, 0)),
-+	MT6332_LDO_AO("ldo-vdig18", VDIG18, ldo_volt_table2, MT6332_LDO_CON12, GENMASK(11, 9)),
-+};
-+
-+static int mt6332_set_buck_vosel_reg(struct platform_device *pdev)
-+{
-+	struct mt6397_chip *mt6332 = dev_get_drvdata(pdev->dev.parent);
-+	int i;
-+	u32 regval;
-+
-+	for (i = 0; i < MT6332_ID_VREG_MAX; i++) {
-+		if (mt6332_regulators[i].vselctrl_reg) {
-+			if (regmap_read(mt6332->regmap,
-+				mt6332_regulators[i].vselctrl_reg,
-+				&regval) < 0) {
-+				dev_err(&pdev->dev,
-+					"Failed to read buck ctrl\n");
-+				return -EIO;
-+			}
-+
-+			if (regval & mt6332_regulators[i].vselctrl_mask) {
-+				mt6332_regulators[i].desc.vsel_reg =
-+				mt6332_regulators[i].vselon_reg;
-+			}
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6332_regulator_probe(struct platform_device *pdev)
-+{
-+	struct mt6397_chip *mt6332 = dev_get_drvdata(pdev->dev.parent);
-+	struct regulator_config config = {};
-+	struct regulator_dev *rdev;
-+	int i;
-+	u32 reg_value;
-+
-+	/* Query buck controller to select activated voltage register part */
-+	if (mt6332_set_buck_vosel_reg(pdev))
-+		return -EIO;
-+
-+	/* Read PMIC chip revision to update constraints and voltage table */
-+	if (regmap_read(mt6332->regmap, MT6332_HWCID, &reg_value) < 0) {
-+		dev_err(&pdev->dev, "Failed to read Chip ID\n");
-+		return -EIO;
-+	}
-+	reg_value &= GENMASK(7, 0);
-+
-+	dev_info(&pdev->dev, "Chip ID = 0x%x\n", reg_value);
-+
-+	/*
-+	 * ChipID 0x10 is "MT6332 E1", has a different voltage table and
-+	 * it's currently not supported in this driver. Upon detection of
-+	 * this ID, refuse to register the regulators, as we will wrongly
-+	 * interpret the VSEL for this revision, potentially overvolting
-+	 * some device.
-+	 */
-+	if (reg_value == 0x10) {
-+		dev_err(&pdev->dev, "Chip version not supported. Bailing out.\n");
-+		return -EINVAL;
-+	}
-+
-+	for (i = 0; i < MT6332_ID_VREG_MAX; i++) {
-+		config.dev = &pdev->dev;
-+		config.driver_data = &mt6332_regulators[i];
-+		config.regmap = mt6332->regmap;
-+		rdev = devm_regulator_register(&pdev->dev,
-+				&mt6332_regulators[i].desc, &config);
-+		if (IS_ERR(rdev)) {
-+			dev_err(&pdev->dev, "failed to register %s\n",
-+				mt6332_regulators[i].desc.name);
-+			return PTR_ERR(rdev);
-+		}
-+	}
-+	return 0;
-+}
-+
-+static const struct platform_device_id mt6332_platform_ids[] = {
-+	{"mt6332-regulator", 0},
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(platform, mt6332_platform_ids);
-+
-+static struct platform_driver mt6332_regulator_driver = {
-+	.driver = {
-+		.name = "mt6332-regulator",
-+	},
-+	.probe = mt6332_regulator_probe,
-+	.id_table = mt6332_platform_ids,
-+};
-+
-+module_platform_driver(mt6332_regulator_driver);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("Regulator Driver for MediaTek MT6332 PMIC");
-+MODULE_LICENSE("GPL");
-diff --git a/include/linux/regulator/mt6332-regulator.h b/include/linux/regulator/mt6332-regulator.h
-new file mode 100644
-index 000000000000..af5e3ed31029
---- /dev/null
-+++ b/include/linux/regulator/mt6332-regulator.h
-@@ -0,0 +1,27 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2022 Collabora Ltd.
-+ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#ifndef __LINUX_REGULATOR_MT6332_H
-+#define __LINUX_REGULATOR_MT6332_H
-+
-+enum {
-+	/* BUCK */
-+	MT6332_ID_VDRAM = 0,
-+	MT6332_ID_VDVFS2,
-+	MT6332_ID_VPA,
-+	MT6332_ID_VRF1,
-+	MT6332_ID_VRF2,
-+	MT6332_ID_VSBST,
-+	/* LDO */
-+	MT6332_ID_VAUXB32,
-+	MT6332_ID_VBIF28,
-+	MT6332_ID_VDIG18,
-+	MT6332_ID_VSRAM_DVFS2,
-+	MT6332_ID_VUSB33,
-+	MT6332_ID_VREG_MAX
-+};
-+
-+#endif /* __LINUX_REGULATOR_MT6332_H */
+ 
+ static struct platform_driver clk_mt6797_venc_drv = {
+-	.probe = clk_mt6797_venc_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt6797-venc",
+ 		.of_match_table = of_match_clk_mt6797_venc,
 -- 
-2.35.1
+2.18.0
 
 
 _______________________________________________
