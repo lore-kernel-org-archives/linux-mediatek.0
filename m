@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0577C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 12:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A892C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 13:01:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RMuSIovC0TQDC5tESwQBOqtOTzgm9yBMAEYcJCiItUM=; b=CTvhWDnaahPmNW
-	lJrPjA6ZUf3HgosT4CNue5FstSefCCVCM8ILNdGoci52L9FPF4tyxdac/aoArpkzs8dljdEElJBSt
-	45Eun+WGL8lBd1gF6RJHcVHhXNY+vVex+4gSwXWjJ0njNxpBOWqnVLt9uZ/SaxddxjilpwKAxAIfT
-	A3MI/EUqaiDHKiyhRKqPbVagRyJLl193cuBDlWjWzUoJcaDdFRm50vGS4VbNS5XSViNSDkRv37tbI
-	FlSSpdKdk4d7VoZyi5J1KUBMtPhrskZTryY1VR30p4h+U7o1uZ05iyoNqNxRsFnH94WB9u6bI77mS
-	/924aVu13Vce0BNvWc2w==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MB2EyeBdJjUfApvmInWEQZb40EP725HZIdNGww00ueU=; b=ekKfygl9OfpzKeIbx8pLHGHMUQ
+	5uvif8ALZwIVsGdNiZqbTy7guXiUNSXaJEz4XF+9Plk9mqJqnfayrOjkx9jJN81e5ZWKfKWh7J2dH
+	b1JjyS5xk+K0z+ZBjaX4neLcVyKVvShLJZVFTmZfo3VP3GlUM0I51iPdG5vafRYOgStd3lBYY+WJM
+	i9HSzMDCuksNKoQXTNWPer6OSEFGVoQQvOSwgDoCfZ2PoJNACGnfQxHy/VstKc05Uh2pebmWpNVD/
+	yhrnLe52JN6XwN0cL/lVZiUo5Y1p1TQ+ksIAqVXl0S8bPnYV9KCOLj7hQrKkYJHcubdTCl56/ENfs
+	UyY+N5NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt7V9-004HFY-D0; Mon, 23 May 2022 12:49:35 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nt7g3-004JA0-Fx; Mon, 23 May 2022 13:00:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt7Ux-004HBz-UD; Mon, 23 May 2022 12:49:25 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id BD9A41F42F1D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653310162;
- bh=s97rWWbc/m/oI+hUShZa6zXrVCJ0ZgxpFAi04DJsT8Q=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=mUO2Rnn5MUHx5GKdBszSmgbjorsWmooPNI+svWc9VXtYozCsvNStD5OcVJ9LiG4dT
- dFzsK1NhRoPIEXFm7qs8H3bekLzXXMwePpLXkolhdyTrw2yhtUW9cpSBR74jmYk9zM
- dQigSeiodRGHWtWx1wNPv/Xz6zL49vKkAdaWzDAkmtXY8pTgflz/86+X/17RgxEcuC
- qcqj5J7dJNpqLIC8IqHfemjndlkhGjdeC7QJ3KPTHuI5eO27KFr7ShIWTZLsRQKV8M
- kbaeIAyCzxCuicVsvBki3KlxirKKGviw+0P/VxXbJienRCrwUnewQNwcsba32jibrA
- ZzoHqv30Ln5Vg==
-Message-ID: <6cc68be9-e509-eae4-801d-997fdc01dcf2@collabora.com>
-Date: Mon, 23 May 2022 14:49:19 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 2/4] regulator: Add driver for MT6331 PMIC regulators
-Content-Language: en-US
-To: Mark Brown <broonie@kernel.org>
+ id 1nt7fs-004J7q-N3; Mon, 23 May 2022 13:00:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id EB7C061344;
+ Mon, 23 May 2022 13:00:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C9BDC385A9;
+ Mon, 23 May 2022 13:00:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1653310839;
+ bh=0gJAhDWK23rUCBEAT34CY4awugOC65Cdzpv/yAHbc7M=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Kvm3v85Z6Fv+WogPmdKKfh3PQ36Ep86EwiFoAJsMmlPnVDmEKSnbaoVXbD+mjuCbR
+ 7pVZ+OD+zZ6r2qmQ/jY+r4AOsPjfvQ/YJUWrKfxKSX52Wd/FG0clmH1Ew0vASF0kYj
+ zR90qdJyWkxltZQqCpOmgNgpWn9qxiEfIOb04TjwXYVQJJv80Ah0KkmSGSD26cjw7L
+ iKrBXWjokUFPC4ZvISgEpvBp0NZKXeftsNMe7eXtqzoD++yvvrtyLwDyfNTSDq7L93
+ SrZRxRQIbU6BELoDxcDp9N+IPb3T3iQU94Cmyv/++EDAFtRubC8Wolmh+A4ZFKSkxd
+ pkICzjHhbkFpA==
+Date: Mon, 23 May 2022 14:00:33 +0100
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: lgirdwood@gmail.com, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] regulator: Add driver for MT6331 PMIC regulators
+Message-ID: <YouFcSapkVC7ZfuP@sirena.org.uk>
 References: <20220520133305.265310-1-angelogioacchino.delregno@collabora.com>
  <20220520133305.265310-3-angelogioacchino.delregno@collabora.com>
  <YoepiTUfdhkYByo7@sirena.org.uk>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <YoepiTUfdhkYByo7@sirena.org.uk>
+ <6cc68be9-e509-eae4-801d-997fdc01dcf2@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <6cc68be9-e509-eae4-801d-997fdc01dcf2@collabora.com>
+X-Cookie: Sales tax applies.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_054924_152935_D5FBEBDC 
-X-CRM114-Status: GOOD (  22.60  )
+X-CRM114-CacheID: sfid-20220523_060040_884100_C8F33AA0 
+X-CRM114-Status: GOOD (  22.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,103 +71,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8749281317481485731=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/05/22 16:45, Mark Brown ha scritto:
-> On Fri, May 20, 2022 at 03:33:03PM +0200, AngeloGioacchino Del Regno wrote:
-> 
->> +// SPDX-License-Identifier: GPL-2.0
->> +/*
->> + * Copyright (c) 2022 Collabora Ltd.
->> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> + *
-> 
-> Please make the entire comment a C++ one so things look more
-> intentional.
-> 
 
-Will do.
+--===============8749281317481485731==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zrq/BafcBysX3uNy"
+Content-Disposition: inline
 
->> +static const unsigned int ldo_volt_table10[] = {
->> +	1200000, 1300000, 1500000, 1800000,
->> +	1200000, 1300000, 1500000, 1800000,
->> +	1200000, 1300000, 1500000, 1800000,
->> +	1200000, 1300000, 1500000, 1800000,
->> +};
-> 
-> So the top bits of the voltate selection field just get ignored?  Might
-> be easier to just write the code to not include the top bits.
-> 
 
-No, they're all valid values for real... but I guess that I can simplify
-this voltage table by simply modifying the bitmask that we use for the
-regulators that are using this table....
+--zrq/BafcBysX3uNy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Example:
+On Mon, May 23, 2022 at 02:49:19PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 20/05/22 16:45, Mark Brown ha scritto:
+> > On Fri, May 20, 2022 at 03:33:03PM +0200, AngeloGioacchino Del Regno wr=
+ote:
 
-MT6331_LDO_S("ldo-vcamio", VCAM_IO,  ldo_volt_table10, MT6331_SYSLDO_CON3, 10,
+> > > +static const unsigned int ldo_volt_table10[] =3D {
+> > > +	1200000, 1300000, 1500000, 1800000,
+> > > +	1200000, 1300000, 1500000, 1800000,
+> > > +	1200000, 1300000, 1500000, 1800000,
+> > > +	1200000, 1300000, 1500000, 1800000,
+> > > +};
 
-	MT6331_SYSLDO_CON11, GENMASK(6, 3), MT6331_SYSLDO_CON3, GENMASK(1, 0),
+> > So the top bits of the voltate selection field just get ignored?  Might
+> > be easier to just write the code to not include the top bits.
+> >=20
 
-	MT6331_EN_STATUS1, BIT(13)),
+> No, they're all valid values for real... but I guess that I can simplify
+> this voltage table by simply modifying the bitmask that we use for the
+> regulators that are using this table....
 
-So for VCAM_IO it's CON11... we have VGP2, VGP3 using CON14, CON15, then there
-are no more users for this table.
-If I use GENMASK(4, 3), I can effectively leave only four voltage values in
-ldo_volt_table10.
+Right, my point here is that it looks awfully like the documentation
+(this came from documentation I guess?) is including some extra bits
+that get ignored in the voltage selection field here.  That seems like a
+weird choice somewhere along the line.
 
-Also, I've just noticed a mistake on ldo-vmipi: that's supposed to have a mask
-of GENMASK(5, 3), not (6, 3) - which is in turn also making me able to remove
-the ldo_volt_table_3a.
+> > > +	if (info->qi > 0) {
+> > > +		reg =3D info->desc.enable_reg;
+> > > +		en_mask =3D info->qi;
 
-Alright, will fix in the next one :))
+> > If the regulator doesn't have status readback it shouldn't provide a
+> > get_status() operation.
 
->> +static int mt6331_get_status(struct regulator_dev *rdev)
->> +{
->> +	struct mt6331_regulator_info *info = rdev_get_drvdata(rdev);
->> +	u32 reg, en_mask, regval;
->> +	int ret;
->> +
->> +	if (info->qi > 0) {
->> +		reg = info->desc.enable_reg;
->> +		en_mask = info->qi;
-> 
-> If the regulator doesn't have status readback it shouldn't provide a
-> get_status() operation.
-> 
+> What I've understood is that when there's no "QI" flag, the enable regist=
+er
+> will provide the regulator status (EN/DIS) acting like QI, that's why I've
+> added that if branch...
 
-What I've understood is that when there's no "QI" flag, the enable register
-will provide the regulator status (EN/DIS) acting like QI, that's why I've
-added that if branch...
+> Anyway, I'll recheck this part before sending the next version!
 
-Anyway, I'll recheck this part before sending the next version!
+That would be fairly unusual, often a regulator won't even detect when
+it's gone out of regulation.
 
->> +static int mt6331_ldo_set_mode(struct regulator_dev *rdev, unsigned int mode)
->> +{
->> +	int ret, val = 0;
->> +	struct mt6331_regulator_info *info = rdev_get_drvdata(rdev);
->> +
->> +	if (!info->modeset_mask) {
->> +		dev_err(&rdev->dev, "regulator %s doesn't support set_mode\n",
->> +			info->desc.name);
->> +		return -EINVAL;
->> +	}
-> 
-> Just don't provide the operation for these regulators then.  That'll
-> mean a separate ops struct but that's fine.
+--zrq/BafcBysX3uNy
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Oki, I'll add new ops then.
+-----BEGIN PGP SIGNATURE-----
 
-Thanks for the review!
-P.S.: I'll obviously apply the same suggestions on mt6332-regulator as well.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmKLhXEACgkQJNaLcl1U
+h9A4gAf/S2iKtIJE+f3lzVnAs3dpnbYYgTd2ZdrDVFtyW/cH6sKeRTKVzvHefnRc
+t3SVVtMNVJ2TZNiO+p1WAm9qU/X1Z1QCsnD+8fqRl5GdVHLLcZCbajSb661dRKYg
+mg9WRUMZ66mk6o8F3mU1v1Ov5oitF2ng4hT9GLseXXyaLKd/72OwO/yhzLItjUWN
+IQmSkytWOrEJIUjDQcvzBkCIREMjOKASkpwfkVN0h08n5GoedQ/DrQL/hQ/vojrh
+Jc3FdWtaYWIxa9bUCOPWMAkJPvxS8BE1xkOxrS+I/BnD66WTigrlJRdnsIEy1XzJ
+51w8eBJpVpXGsRyh2h3SzY0hPouSHg==
+=YULk
+-----END PGP SIGNATURE-----
 
-Cheers,
-Angelo
+--zrq/BafcBysX3uNy--
+
+
+--===============8749281317481485731==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8749281317481485731==--
+
