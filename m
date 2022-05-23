@@ -4,79 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C24EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 12:37:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0577C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 12:49:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hFvOeZEdHEMwtC/89lvlNziodnm+dMJ6XRxDhXU68Bw=; b=21g/hg5acwwWhj
-	Y78wugjyh1f4WX/u5/Fj994n682ZsIgO7rntnEYeTR8/76uaTj+tp/jTnt0qzI4iO1HUY4j6U3yFY
-	3DNOpD/MAV2RmAHD6fAAR6CI57FnKAyhXLRBltVTmcT3P2JcHYZab8mno2q3Nntl1UqDM6Ab2VED6
-	nrlMvwOKKHriAkIQRHve2jllKnB9cYXVsQjf5ch0zZa192ckZWivmQw0PVEVNDYFBC32ohGcJ7OYG
-	/e8KiDL+O0kIHLphFnVsfcrngjrxzLka9s3NzA8q5jVv+JvLh5FXivEqpWWNcpUh+Az97KD3N3UWB
-	THzewaVT2lo/qUYeQjqQ==;
+	List-Owner; bh=RMuSIovC0TQDC5tESwQBOqtOTzgm9yBMAEYcJCiItUM=; b=CTvhWDnaahPmNW
+	lJrPjA6ZUf3HgosT4CNue5FstSefCCVCM8ILNdGoci52L9FPF4tyxdac/aoArpkzs8dljdEElJBSt
+	45Eun+WGL8lBd1gF6RJHcVHhXNY+vVex+4gSwXWjJ0njNxpBOWqnVLt9uZ/SaxddxjilpwKAxAIfT
+	A3MI/EUqaiDHKiyhRKqPbVagRyJLl193cuBDlWjWzUoJcaDdFRm50vGS4VbNS5XSViNSDkRv37tbI
+	FlSSpdKdk4d7VoZyi5J1KUBMtPhrskZTryY1VR30p4h+U7o1uZ05iyoNqNxRsFnH94WB9u6bI77mS
+	/924aVu13Vce0BNvWc2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt7Iv-004D5y-MX; Mon, 23 May 2022 12:36:57 +0000
-Received: from mail-oa1-f52.google.com ([209.85.160.52])
+	id 1nt7V9-004HFY-D0; Mon, 23 May 2022 12:49:35 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt7Fj-004BDN-Hr; Mon, 23 May 2022 12:33:41 +0000
-Received: by mail-oa1-f52.google.com with SMTP id
- 586e51a60fabf-f17f1acffeso18232006fac.4; 
- Mon, 23 May 2022 05:33:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=X6MWkN+MXwESjJ8VLjim2DGGoViFUAGh9+IlVSr0qvY=;
- b=12UsGWVPv4GX4i9rra3IDreh8Lj+JOePumfvWD3z77ckIcUfVURC8aOk0iDx/POgeg
- QgdSKWSDfJV5ywnfDaGx2nMZrHNIyXh76FkO1BWEhEjepKMTCkdQQImePOtIWPxzP20v
- G1XEQDn4g115g8uUYMLmo3hwoyT7NcwXYkHppRyg+3PQzEc0x1DzOQT+n08vm4Pu2UOA
- BsRrBuGyYHWrlqHux+Ie2U3LdovrMrCeruKweqRnGYhwc5NX/Y+3XHEb2bbpGNwSZ3lE
- wiWMPT5zGpksQPbRgMGO+kHHVTmcKKHMD58eQ/mjP7pjqm0Z6+HSe2wlXUNx0V3NyDkd
- D3jg==
-X-Gm-Message-State: AOAM5330h4nuDhIvQT/XPq1UAnJaWwBMPhbayDKvcXqPq2wBOWWUjjur
- NCAFKmCViM4KMy9StTIGxQ==
-X-Google-Smtp-Source: ABdhPJwOO+O7zT8r+lLhmyii8LgBtwlqTtnM90LxBsJkZOoKNqifzuh0NKNv8CMKNI9UWvO60BSKmA==
-X-Received: by 2002:a05:6870:d581:b0:f1:82de:958c with SMTP id
- u1-20020a056870d58100b000f182de958cmr12298708oao.27.1653309214834; 
- Mon, 23 May 2022 05:33:34 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- z1-20020a9d7a41000000b0060603221264sm3898554otm.52.2022.05.23.05.33.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 May 2022 05:33:34 -0700 (PDT)
-Received: (nullmailer pid 1378078 invoked by uid 1000);
- Mon, 23 May 2022 12:33:31 -0000
-From: Rob Herring <robh@kernel.org>
-To: Guillaume Ranquet <granquet@baylibre.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Jitao shi <jitao.shi@mediatek.com>,
- linux-mediatek@lists.infradead.org, CK Hu <ck.hu@mediatek.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-fbdev@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Vinod Koul <vkoul@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Helge Deller <deller@gmx.de>, Kishon Vijay Abraham I <kishon@ti.com>,
- linux-phy@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- Maxime Ripard <mripard@kernel.org>, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220523104758.29531-2-granquet@baylibre.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
- <20220523104758.29531-2-granquet@baylibre.com>
-Subject: Re: [PATCH v10 01/21] dt-bindings: mediatek,
- dpi: Add DPINTF compatible
-Date: Mon, 23 May 2022 07:33:31 -0500
-Message-Id: <1653309211.141261.1378077.nullmailer@robh.at.kernel.org>
+ id 1nt7Ux-004HBz-UD; Mon, 23 May 2022 12:49:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id BD9A41F42F1D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1653310162;
+ bh=s97rWWbc/m/oI+hUShZa6zXrVCJ0ZgxpFAi04DJsT8Q=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=mUO2Rnn5MUHx5GKdBszSmgbjorsWmooPNI+svWc9VXtYozCsvNStD5OcVJ9LiG4dT
+ dFzsK1NhRoPIEXFm7qs8H3bekLzXXMwePpLXkolhdyTrw2yhtUW9cpSBR74jmYk9zM
+ dQigSeiodRGHWtWx1wNPv/Xz6zL49vKkAdaWzDAkmtXY8pTgflz/86+X/17RgxEcuC
+ qcqj5J7dJNpqLIC8IqHfemjndlkhGjdeC7QJ3KPTHuI5eO27KFr7ShIWTZLsRQKV8M
+ kbaeIAyCzxCuicVsvBki3KlxirKKGviw+0P/VxXbJienRCrwUnewQNwcsba32jibrA
+ ZzoHqv30Ln5Vg==
+Message-ID: <6cc68be9-e509-eae4-801d-997fdc01dcf2@collabora.com>
+Date: Mon, 23 May 2022 14:49:19 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH 2/4] regulator: Add driver for MT6331 PMIC regulators
+Content-Language: en-US
+To: Mark Brown <broonie@kernel.org>
+Cc: lgirdwood@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220520133305.265310-1-angelogioacchino.delregno@collabora.com>
+ <20220520133305.265310-3-angelogioacchino.delregno@collabora.com>
+ <YoepiTUfdhkYByo7@sirena.org.uk>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <YoepiTUfdhkYByo7@sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_053339_636242_F460C83B 
-X-CRM114-Status: GOOD (  14.60  )
+X-CRM114-CacheID: sfid-20220523_054924_152935_D5FBEBDC 
+X-CRM114-Status: GOOD (  22.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,81 +67,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 May 2022 12:47:34 +0200, Guillaume Ranquet wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+Il 20/05/22 16:45, Mark Brown ha scritto:
+> On Fri, May 20, 2022 at 03:33:03PM +0200, AngeloGioacchino Del Regno wrote:
 > 
-> DPINTF is similar to DPI but does not have the exact same feature set
-> or register layouts.
+>> +// SPDX-License-Identifier: GPL-2.0
+>> +/*
+>> + * Copyright (c) 2022 Collabora Ltd.
+>> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> + *
 > 
-> DPINTF is the sink of the display pipeline that is connected to the
-> DisplayPort controller and encoder unit. It takes the same clocks as
-> DPI.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> ---
->  .../bindings/display/mediatek/mediatek,dpi.yaml     | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
+> Please make the entire comment a C++ one so things look more
+> intentional.
 > 
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+Will do.
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+>> +static const unsigned int ldo_volt_table10[] = {
+>> +	1200000, 1300000, 1500000, 1800000,
+>> +	1200000, 1300000, 1500000, 1800000,
+>> +	1200000, 1300000, 1500000, 1800000,
+>> +	1200000, 1300000, 1500000, 1800000,
+>> +};
+> 
+> So the top bits of the voltate selection field just get ignored?  Might
+> be easier to just write the code to not include the top bits.
+> 
 
-Full log is available here: https://patchwork.ozlabs.org/patch/
+No, they're all valid values for real... but I guess that I can simplify
+this voltage table by simply modifying the bitmask that we use for the
+regulators that are using this table....
 
+Example:
 
-dpi@14014000: Additional properties are not allowed ('ports' was unexpected)
-	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
-	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
+MT6331_LDO_S("ldo-vcamio", VCAM_IO,  ldo_volt_table10, MT6331_SYSLDO_CON3, 10,
 
-dpi@14014000: clock-names: ['pixel', 'engine', 'pll'] is too short
-	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
-	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
+	MT6331_SYSLDO_CON11, GENMASK(6, 3), MT6331_SYSLDO_CON3, GENMASK(1, 0),
 
-dpi@14014000: clocks: [[59, 26], [59, 27], [3, 6]] is too short
-	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
+	MT6331_EN_STATUS1, BIT(13)),
 
-dpi@14014000: clocks: [[61, 26], [61, 27], [3, 6]] is too short
-	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
+So for VCAM_IO it's CON11... we have VGP2, VGP3 using CON14, CON15, then there
+are no more users for this table.
+If I use GENMASK(4, 3), I can effectively leave only four voltage values in
+ldo_volt_table10.
 
-dpi@14014000: compatible: ['mediatek,mt7623-dpi', 'mediatek,mt2701-dpi'] is too long
-	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
-	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
+Also, I've just noticed a mistake on ldo-vmipi: that's supposed to have a mask
+of GENMASK(5, 3), not (6, 3) - which is in turn also making me able to remove
+the ldo_volt_table_3a.
 
-dpi@14014000: 'port' is a required property
-	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dtb
-	arch/arm/boot/dts/mt7623n-rfb-emmc.dtb
+Alright, will fix in the next one :))
 
-dpi@1401d000: Additional properties are not allowed ('power-domains' was unexpected)
-	arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-evb.dtb
+>> +static int mt6331_get_status(struct regulator_dev *rdev)
+>> +{
+>> +	struct mt6331_regulator_info *info = rdev_get_drvdata(rdev);
+>> +	u32 reg, en_mask, regval;
+>> +	int ret;
+>> +
+>> +	if (info->qi > 0) {
+>> +		reg = info->desc.enable_reg;
+>> +		en_mask = info->qi;
+> 
+> If the regulator doesn't have status readback it shouldn't provide a
+> get_status() operation.
+> 
 
-dpi@1401d000: clock-names: ['pixel', 'engine', 'pll'] is too short
-	arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-evb.dtb
+What I've understood is that when there's no "QI" flag, the enable register
+will provide the regulator status (EN/DIS) acting like QI, that's why I've
+added that if branch...
 
-dpi@1401d000: clocks: [[57, 40], [57, 41], [8, 8]] is too short
-	arch/arm64/boot/dts/mediatek/mt8173-evb.dtb
+Anyway, I'll recheck this part before sending the next version!
 
-dpi@1401d000: clocks: [[68, 40], [68, 41], [8, 8]] is too short
-	arch/arm64/boot/dts/mediatek/mt8173-elm.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtb
-	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dtb
+>> +static int mt6331_ldo_set_mode(struct regulator_dev *rdev, unsigned int mode)
+>> +{
+>> +	int ret, val = 0;
+>> +	struct mt6331_regulator_info *info = rdev_get_drvdata(rdev);
+>> +
+>> +	if (!info->modeset_mask) {
+>> +		dev_err(&rdev->dev, "regulator %s doesn't support set_mode\n",
+>> +			info->desc.name);
+>> +		return -EINVAL;
+>> +	}
+> 
+> Just don't provide the operation for these regulators then.  That'll
+> mean a separate ops struct but that's fine.
 
+Oki, I'll add new ops then.
+
+Thanks for the review!
+P.S.: I'll obviously apply the same suggestions on mt6332-regulator as well.
+
+Cheers,
+Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
