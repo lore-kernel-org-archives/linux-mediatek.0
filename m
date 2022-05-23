@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 065B4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 13:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B211BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 May 2022 13:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bs7wtF6iPTg0Cb5wvG6ICOfvjkSQwjbePVmnVkxeKSk=; b=rRmxzByHqSw/il
-	D742hX9D+oFyRCzUstX2eD+JRuY8nYOi/AiqsI2efjmuwNj524zdPq+d3irC3pPzoNSsFr4hEFQW9
-	/NLxdpIsRsN8CbDuy9icSFN/XUajettDdGxYHHSsSqLrsnDTa+EPQU1B8H2UvN7x8R+JLxSK97AF4
-	q5yoIkNIACltYkQGKvSDeqXi8Z59TIxZFlRvGc4rexfQwCeqpI5czPecThIw7haahAozGD+EREKHg
-	r9LMspcNkp1IvzFcPwqR9avSDmtD0FcZfpzvoxXKHicAanFz0a/pYKYE2fonabEgOoVeTa925Y+M1
-	lYvInQ4FQpEifsSTHXxw==;
+	List-Owner; bh=N840qE3ylQtytugOQhsbuedAqaTGYq7W6VS0EylAErU=; b=I/8YBtWInVtkV5
+	+tgzPKTwzMXbhxF9FLKLRXrWoE+OwdOaF/zSRZC7ZK3OmngAQ3RNnrVv61o2DE+mYXoIZwLnB1BR3
+	0DrFo+lpMTHg1i+uyXoDr48m4r4tzEKZ9RUJEDx5padgdlncHDjQrSfViZ1ICyzKNNqLKKu77e9V1
+	ql9Ob6P3MPJxKqdUK0BtAafg6U4UIzIUnVye6d1MlkJhj9N1/Un9cfH+7cHZFaUojxW2Y493GOLWP
+	WVIPBzlNRDc4MqrZn1ZbrocbE5KGuH3ZfQfhlDw1mJdtpagDkRGbko7mDxRSAo8oeJyI0QvogEExh
+	i9gBClUzdS/TtK2WwUWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt886-004PNE-PQ; Mon, 23 May 2022 13:29:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nt88e-004Pcy-AQ; Mon, 23 May 2022 13:30:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt87V-004P6h-Uh; Mon, 23 May 2022 13:29:16 +0000
-X-UUID: ec9d79b06eee415c91bb1945cbb49de2-20220523
+ id 1nt87a-004P58-46; Mon, 23 May 2022 13:29:19 +0000
+X-UUID: be68f2dde89042f8a1d675f826ea460b-20220523
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:2db5055f-2f14-4eec-9ab8-9a9d504d71ed, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:2da1ab01-c6c9-4c0f-a433-d5658622674e, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:87f14d7a-5ef6-470b-96c9-bdb8ced32786,
+X-CID-META: VersionHash:2a19b09, CLOUDID:3bf93de3-edbf-4bd4-8a34-dfc5f7bb086d,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: ec9d79b06eee415c91bb1945cbb49de2-20220523
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+X-UUID: be68f2dde89042f8a1d675f826ea460b-20220523
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <jiaxin.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 720450094; Mon, 23 May 2022 06:29:09 -0700
+ with ESMTP id 1604979621; Mon, 23 May 2022 06:29:06 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 06:29:07 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 06:29:04 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 May 2022 21:29:05 +0800
+ 15.0.1497.2; Mon, 23 May 2022 21:29:03 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 23 May 2022 21:29:05 +0800
+ Transport; Mon, 23 May 2022 21:29:02 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>,
  <angelogioacchino.delregno@collabora.com>
@@ -57,19 +57,20 @@ CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
- <jiaxin.yu@mediatek.com>
-Subject: [PATCH v5 05/20] ASoC: mediatek: mt8186: support hostless in platform
- driver
-Date: Mon, 23 May 2022 21:28:43 +0800
-Message-ID: <20220523132858.22166-6-jiaxin.yu@mediatek.com>
+ <jiaxin.yu@mediatek.com>, Rob Herring <robh@kernel.org>
+Subject: [PATCH v5 02/20] dt-bindings: mediatek: mt6358: add new compatible
+ for using mt6366
+Date: Mon, 23 May 2022 21:28:40 +0800
+Message-ID: <20220523132858.22166-3-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
 References: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_062914_036806_656149ED 
-X-CRM114-Status: GOOD (  15.82  )
+X-CRM114-CacheID: sfid-20220523_062918_273683_A66D8CF0 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,319 +87,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186 hostless dai driver.
+Add new compatible string "mediatek,mt6366-sound" for using mt6366.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- .../soc/mediatek/mt8186/mt8186-dai-hostless.c | 298 ++++++++++++++++++
- 1 file changed, 298 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8186/mt8186-dai-hostless.c
+ Documentation/devicetree/bindings/sound/mt6358.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-hostless.c b/sound/soc/mediatek/mt8186/mt8186-dai-hostless.c
-new file mode 100644
-index 000000000000..bf0d83840cf4
---- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-dai-hostless.c
-@@ -0,0 +1,298 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// MediaTek ALSA SoC Audio DAI Hostless Control
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-+
-+#include "mt8186-afe-common.h"
-+
-+static const struct snd_pcm_hardware mt8186_hostless_hardware = {
-+	.info = (SNDRV_PCM_INFO_MMAP | SNDRV_PCM_INFO_INTERLEAVED |
-+		 SNDRV_PCM_INFO_MMAP_VALID),
-+	.period_bytes_min = 256,
-+	.period_bytes_max = 4 * 48 * 1024,
-+	.periods_min = 2,
-+	.periods_max = 256,
-+	.buffer_bytes_max = 4 * 48 * 1024,
-+	.fifo_size = 0,
-+};
-+
-+/* dai component */
-+static const struct snd_soc_dapm_route mtk_dai_hostless_routes[] = {
-+	/* Hostless ADDA Loopback */
-+	{"ADDA_DL_CH1", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
-+	{"ADDA_DL_CH1", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
-+	{"ADDA_DL_CH2", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
-+	{"ADDA_DL_CH2", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
-+	{"I2S1_CH1", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
-+	{"I2S1_CH2", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
-+	{"I2S3_CH1", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
-+	{"I2S3_CH1", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
-+	{"I2S3_CH2", "ADDA_UL_CH1 Switch", "Hostless LPBK DL"},
-+	{"I2S3_CH2", "ADDA_UL_CH2 Switch", "Hostless LPBK DL"},
-+	{"Hostless LPBK UL", NULL, "ADDA_UL_Mux"},
-+
-+	/* Hostelss FM */
-+	/* connsys_i2s to hw gain 1*/
-+	{"Hostless FM UL", NULL, "Connsys I2S"},
-+
-+	{"HW_GAIN1_IN_CH1", "CONNSYS_I2S_CH1 Switch", "Hostless FM DL"},
-+	{"HW_GAIN1_IN_CH2", "CONNSYS_I2S_CH2 Switch", "Hostless FM DL"},
-+	/* hw gain to adda dl */
-+	{"Hostless FM UL", NULL, "HW Gain 1 Out"},
-+
-+	{"ADDA_DL_CH1", "GAIN1_OUT_CH1 Switch", "Hostless FM DL"},
-+	{"ADDA_DL_CH2", "GAIN1_OUT_CH2 Switch", "Hostless FM DL"},
-+	/* hw gain to i2s3 */
-+	{"I2S3_CH1", "GAIN1_OUT_CH1 Switch", "Hostless FM DL"},
-+	{"I2S3_CH2", "GAIN1_OUT_CH2 Switch", "Hostless FM DL"},
-+	/* hw gain to i2s1 */
-+	{"I2S1_CH1", "GAIN1_OUT_CH1 Switch", "Hostless FM DL"},
-+	{"I2S1_CH2", "GAIN1_OUT_CH2 Switch", "Hostless FM DL"},
-+
-+	/* Hostless_SRC */
-+	{"ADDA_DL_CH1", "SRC_1_OUT_CH1 Switch", "Hostless_SRC_1_DL"},
-+	{"ADDA_DL_CH2", "SRC_1_OUT_CH2 Switch", "Hostless_SRC_1_DL"},
-+	{"I2S1_CH1", "SRC_1_OUT_CH1 Switch", "Hostless_SRC_1_DL"},
-+	{"I2S1_CH2", "SRC_1_OUT_CH2 Switch", "Hostless_SRC_1_DL"},
-+	{"I2S3_CH1", "SRC_1_OUT_CH1 Switch", "Hostless_SRC_1_DL"},
-+	{"I2S3_CH2", "SRC_1_OUT_CH2 Switch", "Hostless_SRC_1_DL"},
-+	{"Hostless_SRC_1_UL", NULL, "HW_SRC_1_Out"},
-+
-+	/* Hostless_SRC_bargein */
-+	{"HW_SRC_1_IN_CH1", "I2S0_CH1 Switch", "Hostless_SRC_Bargein_DL"},
-+	{"HW_SRC_1_IN_CH2", "I2S0_CH2 Switch", "Hostless_SRC_Bargein_DL"},
-+	{"Hostless_SRC_Bargein_UL", NULL, "I2S0"},
-+
-+	/* Hostless AAudio */
-+	{"Hostless HW Gain AAudio In", NULL, "HW Gain 2 In"},
-+	{"Hostless SRC AAudio UL", NULL, "HW Gain 2 Out"},
-+	{"HW_SRC_2_IN_CH1", "HW_GAIN2_OUT_CH1 Switch", "Hostless SRC AAudio DL"},
-+	{"HW_SRC_2_IN_CH2", "HW_GAIN2_OUT_CH2 Switch", "Hostless SRC AAudio DL"},
-+};
-+
-+/* dai ops */
-+static int mtk_dai_hostless_startup(struct snd_pcm_substream *substream,
-+				    struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
-+	struct snd_pcm_runtime *runtime = substream->runtime;
-+	int ret;
-+
-+	snd_soc_set_runtime_hwparams(substream, &mt8186_hostless_hardware);
-+
-+	ret = snd_pcm_hw_constraint_integer(runtime,
-+					    SNDRV_PCM_HW_PARAM_PERIODS);
-+	if (ret < 0) {
-+		dev_err(afe->dev, "snd_pcm_hw_constraint_integer failed\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct snd_soc_dai_ops mtk_dai_hostless_ops = {
-+	.startup = mtk_dai_hostless_startup,
-+};
-+
-+/* dai driver */
-+#define MTK_HOSTLESS_RATES (SNDRV_PCM_RATE_8000_48000 |\
-+			   SNDRV_PCM_RATE_88200 |\
-+			   SNDRV_PCM_RATE_96000 |\
-+			   SNDRV_PCM_RATE_176400 |\
-+			   SNDRV_PCM_RATE_192000)
-+
-+#define MTK_HOSTLESS_FORMATS (SNDRV_PCM_FMTBIT_S16_LE |\
-+			     SNDRV_PCM_FMTBIT_S24_LE |\
-+			     SNDRV_PCM_FMTBIT_S32_LE)
-+
-+static struct snd_soc_dai_driver mtk_dai_hostless_driver[] = {
-+	{
-+		.name = "Hostless LPBK DAI",
-+		.id = MT8186_DAI_HOSTLESS_LPBK,
-+		.playback = {
-+			.stream_name = "Hostless LPBK DL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "Hostless LPBK UL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless FM DAI",
-+		.id = MT8186_DAI_HOSTLESS_FM,
-+		.playback = {
-+			.stream_name = "Hostless FM DL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "Hostless FM UL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless_SRC_1_DAI",
-+		.id = MT8186_DAI_HOSTLESS_SRC_1,
-+		.playback = {
-+			.stream_name = "Hostless_SRC_1_DL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "Hostless_SRC_1_UL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless_SRC_Bargein_DAI",
-+		.id = MT8186_DAI_HOSTLESS_SRC_BARGEIN,
-+		.playback = {
-+			.stream_name = "Hostless_SRC_Bargein_DL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "Hostless_SRC_Bargein_UL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	/* BE dai */
-+	{
-+		.name = "Hostless_UL1 DAI",
-+		.id = MT8186_DAI_HOSTLESS_UL1,
-+		.capture = {
-+			.stream_name = "Hostless_UL1 UL",
-+			.channels_min = 1,
-+			.channels_max = 4,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless_UL2 DAI",
-+		.id = MT8186_DAI_HOSTLESS_UL2,
-+		.capture = {
-+			.stream_name = "Hostless_UL2 UL",
-+			.channels_min = 1,
-+			.channels_max = 4,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless_UL3 DAI",
-+		.id = MT8186_DAI_HOSTLESS_UL3,
-+		.capture = {
-+			.stream_name = "Hostless_UL3 UL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless_UL5 DAI",
-+		.id = MT8186_DAI_HOSTLESS_UL5,
-+		.capture = {
-+			.stream_name = "Hostless_UL5 UL",
-+			.channels_min = 1,
-+			.channels_max = 12,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless_UL6 DAI",
-+		.id = MT8186_DAI_HOSTLESS_UL6,
-+		.capture = {
-+			.stream_name = "Hostless_UL6 UL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless HW Gain AAudio DAI",
-+		.id = MT8186_DAI_HOSTLESS_HW_GAIN_AAUDIO,
-+		.capture = {
-+			.stream_name = "Hostless HW Gain AAudio In",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+	{
-+		.name = "Hostless SRC AAudio DAI",
-+		.id = MT8186_DAI_HOSTLESS_SRC_AAUDIO,
-+		.playback = {
-+			.stream_name = "Hostless SRC AAudio DL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.capture = {
-+			.stream_name = "Hostless SRC AAudio UL",
-+			.channels_min = 1,
-+			.channels_max = 2,
-+			.rates = MTK_HOSTLESS_RATES,
-+			.formats = MTK_HOSTLESS_FORMATS,
-+		},
-+		.ops = &mtk_dai_hostless_ops,
-+	},
-+};
-+
-+int mt8186_dai_hostless_register(struct mtk_base_afe *afe)
-+{
-+	struct mtk_base_afe_dai *dai;
-+
-+	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
-+	list_add(&dai->list, &afe->sub_dais);
-+
-+	dai->dai_drivers = mtk_dai_hostless_driver;
-+	dai->num_dai_drivers = ARRAY_SIZE(mtk_dai_hostless_driver);
-+
-+	dai->dapm_routes = mtk_dai_hostless_routes;
-+	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_hostless_routes);
-+
-+	return 0;
-+}
+diff --git a/Documentation/devicetree/bindings/sound/mt6358.txt b/Documentation/devicetree/bindings/sound/mt6358.txt
+index 59a73ffdf1d3..fbe9e55c68f5 100644
+--- a/Documentation/devicetree/bindings/sound/mt6358.txt
++++ b/Documentation/devicetree/bindings/sound/mt6358.txt
+@@ -7,7 +7,9 @@ Must be a child node of PMIC wrapper.
+ 
+ Required properties:
+ 
+-- compatible : "mediatek,mt6358-sound".
++- compatible - "string" - One of:
++    "mediatek,mt6358-sound"
++    "mediatek,mt6366-sound"
+ - Avdd-supply : power source of AVDD
+ 
+ Optional properties:
 -- 
 2.18.0
 
