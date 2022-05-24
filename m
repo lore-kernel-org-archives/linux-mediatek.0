@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C20AC433FE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7734C433EF
 	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 08:39:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=R235b9wLPjahqIQRIg6LBfm6qY+AuJqA37fbchmu/RA=; b=OEZJSKpdHO4nxN
-	b/YyB6tiNdnlsq6vT00gYwoFTNDref9tv7iXihvwZk5V3XC91pXVseBVNmD0+s478sf0zC14BuOkB
-	XZmTmbY++eiSY4fOb10hLQ9uLFJH9Iqi7nwqcQCGf6DFjlVZ+DCMS5BrDelyqv1Q4zeMEPR2V5XDO
-	EWqiy3307jFu6FrzJJh62z+/b7UqrbrGNYhi7zRFjN8BzlrjaQf8QipDiN+PMioGwkqMZtgPVNdsq
-	oq1H+vPkrlWf8xsCIuCr3wzM5mjJRLYNaWf+5sW2mx9dzV6746bdRRLKxOCmC4BsMG5pU8EkyTGFA
-	zYKer4qwvdo3+BcXWnaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VYp3We2fNrOz1TI248sqjRB4Nwsp/9nafMUH5zPIpPc=; b=QZDZNrbxpl4hLH
+	rkwGkPUg18i+jfNv8PEMKGjSv7CsBgZoO/VXHKo1s88USYhcLuU6DHiCVGe2WViKo7/OzqiMTqPDk
+	pL0AyanBJiit6dhe2kOBIOo/f3YeKfU49pF7jo7MOxSfHAq7Tska9weyjNDAxnfnitMmoDpbyBHCo
+	+nZg1t5FYy8myY99MaeXtAUbnXMmrxGO2V0lgk1/PWfTqC0xmMXgAxevXsr7qZGd6cEXHD2IUg50N
+	2cfH/bZp+O4P3GIy0ATVsZeb6a/ez5zaHg8IKfy1Ib+I0cWT4gQ0PD6hoxUqbJFDN+RphahcEGESy
+	mJFXEm7MxrA4/V7Rjh4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntQ4W-007FeY-Cr; Tue, 24 May 2022 08:39:20 +0000
+	id 1ntQ4X-007Fen-7n; Tue, 24 May 2022 08:39:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntQ4A-007FYf-FJ; Tue, 24 May 2022 08:39:01 +0000
-X-UUID: 7c074c39638f472c9fb3a666c5df02a7-20220524
+ id 1ntQ4A-007FYy-FK; Tue, 24 May 2022 08:39:01 +0000
+X-UUID: 47645eec7b104811ad6b5c5987d1d5a7-20220524
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:a8b56248-cc66-4048-a294-e8df6b63466d, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:86820ecd-20a3-418a-8dc8-5ca46476d7f2, OB:0,
  LO
  B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
  ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09, CLOUDID:ad855ee3-edbf-4bd4-8a34-dfc5f7bb086d,
+X-CID-META: VersionHash:2a19b09, CLOUDID:997d6e7a-5ef6-470b-96c9-bdb8ced32786,
  C
- OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: 7c074c39638f472c9fb3a666c5df02a7-20220524
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+X-UUID: 47645eec7b104811ad6b5c5987d1d5a7-20220524
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1201102290; Tue, 24 May 2022 01:38:50 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 May 2022 01:38:49 -0700
+ with ESMTP id 1623042548; Tue, 24 May 2022 01:38:54 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 May 2022 16:38:48 +0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 24 May 2022 01:38:52 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Tue, 24 May 2022 16:38:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 24 May 2022 16:38:48 +0800
+ 15.2.792.3 via Frontend Transport; Tue, 24 May 2022 16:38:51 +0800
 From: Miles Chen <miles.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Chen-Yu Tsai <wenst@chromium.org>, Chun-Jie Chen
  <chun-jie.chen@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
+ <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 0/7] clk: mediatek: use mtk_clk_simple_probe to simplify
- driver
-Date: Tue, 24 May 2022 16:38:33 +0800
-Message-ID: <20220524083843.9994-1-miles.chen@mediatek.com>
+Subject: [PATCH v2 2/7] clk: mediatek: mt2712: use mtk_clk_simple_probe to
+ simplify driver
+Date: Tue, 24 May 2022 16:38:35 +0800
+Message-ID: <20220524083843.9994-3-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220524083843.9994-1-miles.chen@mediatek.com>
+References: <20220524083843.9994-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_013858_556088_83655DEC 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20220524_013858_576911_52434B17 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,97 +85,323 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+mtk_clk_simple_probe was added by Chun-Jie to simply common flow
+of MediaTek clock drivers and ChenYu enhanced the error path of
+mtk_clk_simple_probe and added mtk_clk_simple_remove.
 
-This is v2 patches to use mtk_clk_simple_probe to simplify driver.
+Let's use mtk_clk_simple_probe and mtk_clk_simple_probe in other
+MediaTek clock drivers as well.
 
-Change since v1:
-- Angelo's patch [1] already exported mtk_clk_simple_probe and mtk_clk_simple_remove,
-so drop this part from my v1 and depends on [1].
-- add a reviewed-by tag
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ drivers/clk/mediatek/clk-mt2712-bdp.c    | 34 +++++++++---------------
+ drivers/clk/mediatek/clk-mt2712-img.c    | 34 +++++++++---------------
+ drivers/clk/mediatek/clk-mt2712-jpgdec.c | 34 +++++++++---------------
+ drivers/clk/mediatek/clk-mt2712-mfg.c    | 34 +++++++++---------------
+ drivers/clk/mediatek/clk-mt2712-vdec.c   | 34 +++++++++---------------
+ drivers/clk/mediatek/clk-mt2712-venc.c   | 34 +++++++++---------------
+ 6 files changed, 72 insertions(+), 132 deletions(-)
 
-mtk_clk_simple_probe() was introduced by Chun-Jie in commit
-c58cd0e40ffa ("clk: mediatek: Add mtk_clk_simple_probe() to simplify clock providers")
-and mtk_clk_simple_remove() was added in commit
-commit 2204d96b1919 ("clk: mediatek: Add mtk_clk_simple_remove()")
-
-With mtk_clk_simple_probe and mtk_clk_simple_remove,
-we can get rid of defining the same probe function in clk drivers.
-mtk_clk_simple_probe and mtk_clk_simple_remove are used in new platforms
-now, let's apply them to old SoCs.
-
-The process is quite straightforward: 
-a. Look up probe functions which can be replaced by mtk_clk_simple_probe()
-b. Add mtk_clk_desc and add .data
-c. Replace the probe function with mtk_clk_simple_probe and mtk_clk_simple_remove
-
-I tested the series on MT8192 and MT6779.
-This patch is based on next-20220523 and [1].
-
-Thanks,
-Miles
-
-[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20220518111652.223727-7-angelogioacchino.delregno@collabora.com/
-
-
-
-*** BLURB HERE ***
-
-Miles Chen (7):
-  clk: mediatek: mt2701: use mtk_clk_simple_probe to simplify driver
-  clk: mediatek: mt2712: use mtk_clk_simple_probe to simplify driver
-  clk: mediatek: mt6765: use mtk_clk_simple_probe to simplify driver
-  clk: mediatek: mt6779: use mtk_clk_simple_probe to simplify driver
-  clk: mediatek: mt6797: use mtk_clk_simple_probe to simplify driver
-  clk: mediatek: mt8183: use mtk_clk_simple_probe to simplify driver
-  clk: mediatek: mt8192: add mtk_clk_simple_remove
-
- drivers/clk/mediatek/clk-mt2701-bdp.c         | 36 +++++++------------
- drivers/clk/mediatek/clk-mt2701-img.c         | 36 +++++++------------
- drivers/clk/mediatek/clk-mt2701-vdec.c        | 36 +++++++------------
- drivers/clk/mediatek/clk-mt2712-bdp.c         | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt2712-img.c         | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt2712-jpgdec.c      | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt2712-mfg.c         | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt2712-vdec.c        | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt2712-venc.c        | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt6765-audio.c       | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt6765-cam.c         | 33 +++++++----------
- drivers/clk/mediatek/clk-mt6765-img.c         | 33 +++++++----------
- drivers/clk/mediatek/clk-mt6765-mipi0a.c      | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt6765-mm.c          | 33 +++++++----------
- drivers/clk/mediatek/clk-mt6765-vcodec.c      | 34 +++++++-----------
- drivers/clk/mediatek/clk-mt6779-aud.c         | 29 +++++++--------
- drivers/clk/mediatek/clk-mt6779-cam.c         | 29 +++++++--------
- drivers/clk/mediatek/clk-mt6779-img.c         | 29 +++++++--------
- drivers/clk/mediatek/clk-mt6779-ipe.c         | 29 +++++++--------
- drivers/clk/mediatek/clk-mt6779-mfg.c         | 27 +++++++-------
- drivers/clk/mediatek/clk-mt6779-vdec.c        | 29 +++++++--------
- drivers/clk/mediatek/clk-mt6779-venc.c        | 29 +++++++--------
- drivers/clk/mediatek/clk-mt6797-img.c         | 36 +++++++------------
- drivers/clk/mediatek/clk-mt6797-vdec.c        | 36 +++++++------------
- drivers/clk/mediatek/clk-mt6797-venc.c        | 36 +++++++------------
- drivers/clk/mediatek/clk-mt8183-cam.c         | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8183-img.c         | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8183-ipu0.c        | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8183-ipu1.c        | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8183-ipu_adl.c     | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8183-ipu_conn.c    | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8183-mfgcfg.c      | 29 +++++++--------
- drivers/clk/mediatek/clk-mt8183-vdec.c        | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8183-venc.c        | 27 +++++++-------
- drivers/clk/mediatek/clk-mt8192-cam.c         |  1 +
- drivers/clk/mediatek/clk-mt8192-img.c         |  1 +
- .../clk/mediatek/clk-mt8192-imp_iic_wrap.c    |  1 +
- drivers/clk/mediatek/clk-mt8192-ipe.c         |  1 +
- drivers/clk/mediatek/clk-mt8192-mdp.c         |  1 +
- drivers/clk/mediatek/clk-mt8192-mfg.c         |  1 +
- drivers/clk/mediatek/clk-mt8192-msdc.c        |  1 +
- drivers/clk/mediatek/clk-mt8192-scp_adsp.c    |  1 +
- drivers/clk/mediatek/clk-mt8192-vdec.c        |  1 +
- drivers/clk/mediatek/clk-mt8192-venc.c        |  1 +
- 44 files changed, 430 insertions(+), 647 deletions(-)
-
+diff --git a/drivers/clk/mediatek/clk-mt2712-bdp.c b/drivers/clk/mediatek/clk-mt2712-bdp.c
+index 9acab4357133..684d03e9f6de 100644
+--- a/drivers/clk/mediatek/clk-mt2712-bdp.c
++++ b/drivers/clk/mediatek/clk-mt2712-bdp.c
+@@ -58,33 +58,23 @@ static const struct mtk_gate bdp_clks[] = {
+ 	GATE_BDP(CLK_BDP_TVD_CBUS, "bdp_tvd_cbus", "mm_sel", 30),
+ };
+ 
+-static int clk_mt2712_bdp_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_BDP_NR_CLK);
+-
+-	mtk_clk_register_gates(node, bdp_clks, ARRAY_SIZE(bdp_clks),
+-			clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-
+-	if (r != 0)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-	return r;
+-}
++static const struct mtk_clk_desc bdp_desc = {
++	.clks = bdp_clks,
++	.num_clks = ARRAY_SIZE(bdp_clks),
++};
+ 
+ static const struct of_device_id of_match_clk_mt2712_bdp[] = {
+-	{ .compatible = "mediatek,mt2712-bdpsys", },
+-	{}
++	{
++		.compatible = "mediatek,mt2712-bdpsys",
++		.data = &bdp_desc,
++	}, {
++		/* sentinel */
++	}
+ };
+ 
+ static struct platform_driver clk_mt2712_bdp_drv = {
+-	.probe = clk_mt2712_bdp_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt2712-bdp",
+ 		.of_match_table = of_match_clk_mt2712_bdp,
+diff --git a/drivers/clk/mediatek/clk-mt2712-img.c b/drivers/clk/mediatek/clk-mt2712-img.c
+index 5cc143e65e42..335049cdc856 100644
+--- a/drivers/clk/mediatek/clk-mt2712-img.c
++++ b/drivers/clk/mediatek/clk-mt2712-img.c
+@@ -36,33 +36,23 @@ static const struct mtk_gate img_clks[] = {
+ 	GATE_IMG(CLK_IMG_CAM_SV2_EN, "img_cam_sv2_en", "mm_sel", 11),
+ };
+ 
+-static int clk_mt2712_img_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_IMG_NR_CLK);
+-
+-	mtk_clk_register_gates(node, img_clks, ARRAY_SIZE(img_clks),
+-			clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-
+-	if (r != 0)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-	return r;
+-}
++static const struct mtk_clk_desc img_desc = {
++	.clks = img_clks,
++	.num_clks = ARRAY_SIZE(img_clks),
++};
+ 
+ static const struct of_device_id of_match_clk_mt2712_img[] = {
+-	{ .compatible = "mediatek,mt2712-imgsys", },
+-	{}
++	{
++		.compatible = "mediatek,mt2712-imgsys",
++		.data = &img_desc,
++	}, {
++		/* sentinel */
++	}
+ };
+ 
+ static struct platform_driver clk_mt2712_img_drv = {
+-	.probe = clk_mt2712_img_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt2712-img",
+ 		.of_match_table = of_match_clk_mt2712_img,
+diff --git a/drivers/clk/mediatek/clk-mt2712-jpgdec.c b/drivers/clk/mediatek/clk-mt2712-jpgdec.c
+index 31fc30370d98..07ba7c5e80af 100644
+--- a/drivers/clk/mediatek/clk-mt2712-jpgdec.c
++++ b/drivers/clk/mediatek/clk-mt2712-jpgdec.c
+@@ -32,33 +32,23 @@ static const struct mtk_gate jpgdec_clks[] = {
+ 	GATE_JPGDEC(CLK_JPGDEC_JPGDEC, "jpgdec_jpgdec", "jpgdec_sel", 4),
+ };
+ 
+-static int clk_mt2712_jpgdec_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_JPGDEC_NR_CLK);
+-
+-	mtk_clk_register_gates(node, jpgdec_clks, ARRAY_SIZE(jpgdec_clks),
+-			clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-
+-	if (r != 0)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-	return r;
+-}
++static const struct mtk_clk_desc jpgdec_desc = {
++	.clks = jpgdec_clks,
++	.num_clks = ARRAY_SIZE(jpgdec_clks),
++};
+ 
+ static const struct of_device_id of_match_clk_mt2712_jpgdec[] = {
+-	{ .compatible = "mediatek,mt2712-jpgdecsys", },
+-	{}
++	{
++		.compatible = "mediatek,mt2712-jpgdecsys",
++		.data = &jpgdec_desc,
++	}, {
++		/* sentinel */
++	}
+ };
+ 
+ static struct platform_driver clk_mt2712_jpgdec_drv = {
+-	.probe = clk_mt2712_jpgdec_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt2712-jpgdec",
+ 		.of_match_table = of_match_clk_mt2712_jpgdec,
+diff --git a/drivers/clk/mediatek/clk-mt2712-mfg.c b/drivers/clk/mediatek/clk-mt2712-mfg.c
+index a4d09675bf18..42f8cf3ecf4c 100644
+--- a/drivers/clk/mediatek/clk-mt2712-mfg.c
++++ b/drivers/clk/mediatek/clk-mt2712-mfg.c
+@@ -31,33 +31,23 @@ static const struct mtk_gate mfg_clks[] = {
+ 	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_sel", 0),
+ };
+ 
+-static int clk_mt2712_mfg_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_MFG_NR_CLK);
+-
+-	mtk_clk_register_gates(node, mfg_clks, ARRAY_SIZE(mfg_clks),
+-			clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-
+-	if (r != 0)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-	return r;
+-}
++static const struct mtk_clk_desc mfg_desc = {
++	.clks = mfg_clks,
++	.num_clks = ARRAY_SIZE(mfg_clks),
++};
+ 
+ static const struct of_device_id of_match_clk_mt2712_mfg[] = {
+-	{ .compatible = "mediatek,mt2712-mfgcfg", },
+-	{}
++	{
++		.compatible = "mediatek,mt2712-mfgcfg",
++		.data = &mfg_desc,
++	}, {
++		/* sentinel */
++	}
+ };
+ 
+ static struct platform_driver clk_mt2712_mfg_drv = {
+-	.probe = clk_mt2712_mfg_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt2712-mfg",
+ 		.of_match_table = of_match_clk_mt2712_mfg,
+diff --git a/drivers/clk/mediatek/clk-mt2712-vdec.c b/drivers/clk/mediatek/clk-mt2712-vdec.c
+index af13f43dd831..6296ed5c5b55 100644
+--- a/drivers/clk/mediatek/clk-mt2712-vdec.c
++++ b/drivers/clk/mediatek/clk-mt2712-vdec.c
+@@ -50,33 +50,23 @@ static const struct mtk_gate vdec_clks[] = {
+ 	GATE_VDEC1(CLK_VDEC_IMGRZ_CKEN, "vdec_imgrz_cken", "vdec_sel", 1),
+ };
+ 
+-static int clk_mt2712_vdec_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VDEC_NR_CLK);
+-
+-	mtk_clk_register_gates(node, vdec_clks, ARRAY_SIZE(vdec_clks),
+-			clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-
+-	if (r != 0)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-	return r;
+-}
++static const struct mtk_clk_desc vdec_desc = {
++	.clks = vdec_clks,
++	.num_clks = ARRAY_SIZE(vdec_clks),
++};
+ 
+ static const struct of_device_id of_match_clk_mt2712_vdec[] = {
+-	{ .compatible = "mediatek,mt2712-vdecsys", },
+-	{}
++	{
++		.compatible = "mediatek,mt2712-vdecsys",
++		.data = &vdec_desc,
++	}, {
++		/* sentinel */
++	}
+ };
+ 
+ static struct platform_driver clk_mt2712_vdec_drv = {
+-	.probe = clk_mt2712_vdec_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt2712-vdec",
+ 		.of_match_table = of_match_clk_mt2712_vdec,
+diff --git a/drivers/clk/mediatek/clk-mt2712-venc.c b/drivers/clk/mediatek/clk-mt2712-venc.c
+index abc08a029753..b9bfc35de629 100644
+--- a/drivers/clk/mediatek/clk-mt2712-venc.c
++++ b/drivers/clk/mediatek/clk-mt2712-venc.c
+@@ -33,33 +33,23 @@ static const struct mtk_gate venc_clks[] = {
+ 	GATE_VENC(CLK_VENC_SMI_LARB6, "venc_smi_larb6", "jpgdec_sel", 12),
+ };
+ 
+-static int clk_mt2712_venc_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VENC_NR_CLK);
+-
+-	mtk_clk_register_gates(node, venc_clks, ARRAY_SIZE(venc_clks),
+-			clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-
+-	if (r != 0)
+-		pr_err("%s(): could not register clock provider: %d\n",
+-			__func__, r);
+-
+-	return r;
+-}
++static const struct mtk_clk_desc venc_desc = {
++	.clks = venc_clks,
++	.num_clks = ARRAY_SIZE(venc_clks),
++};
+ 
+ static const struct of_device_id of_match_clk_mt2712_venc[] = {
+-	{ .compatible = "mediatek,mt2712-vencsys", },
+-	{}
++	{
++		.compatible = "mediatek,mt2712-vencsys",
++		.data = &venc_desc,
++	}, {
++		/* sentinel */
++	}
+ };
+ 
+ static struct platform_driver clk_mt2712_venc_drv = {
+-	.probe = clk_mt2712_venc_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt2712-venc",
+ 		.of_match_table = of_match_clk_mt2712_venc,
 -- 
 2.18.0
 
