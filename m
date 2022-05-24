@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1C86C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 02:06:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CCE4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 03:13:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CnOfadqtyx3+nyRGzNDm04iEYChsbsxUTuSu5+laGIU=; b=PTk0G/cZk5KYBD
-	yD/cEgeO94WQI/9xWKXTbNR0DWkfUqWfGHFVHx++Q84YlETMMdx5fkfAn/NSJa8k/V38CPBhumQ3g
-	KL8XXp/8D+fSu6nScACkW9KhJ1skzjjuRK9oV9EhvINJ63rxRqIudVWmisfx1B8fLYh93C/KB0qV5
-	625nSbNqc0g7t0yZ3EgltpqZRA/URKZNCu7emRPUPxwRPGQEl71Fr5LCKj3PSk/CA5Pax5YchKIIZ
-	VcrVRgrCUtYYQUHbAZJEZKOkIF/lnT3qQrnnszviZaXyy+Y993E2NzH10ZYOrO1FYMGynXkW1S24s
-	qmiODD1koTmX1E2qK/eg==;
+	List-Owner; bh=iU5ho5n1MhEQfzTAG8wjM0czIB90Is+nUxDlrkz2/lQ=; b=VCYwMIa3P2SfB3
+	9fqAa/r2DcGVEljDlSIeYMTQKwmTI+VJEKkDpzOupueP+bh7OWvPTFzfZSCwJlTJ0LJg/eyKmjZH2
+	S3D4+WI4zoPO+RSFZLwe1+1hMEOC8JkwQ0Ug3JSfY8seBp1b90S/rqdpOenLQ+2mEyf9dW+hwzsnO
+	w1P+qCQFHxFbWC7+8kRyNIGgzd5/t5Jr8r3ZOrDenv0VJcgYmjxuu8O7DYJiqZxw5nKYpu883czEj
+	7ihuE15DVwwxSwpJFZUqCAwZvDw8SQejtF0AHBI86tnD91KrpFjIgckUjGoWvtk8NnzASp+otkWjF
+	GFIJRxl/hSOYvUa0ExCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntJvr-006YMx-Sz; Tue, 24 May 2022 02:05:59 +0000
-Received: from mail-oa1-f44.google.com ([209.85.160.44])
+	id 1ntKyv-006ebi-Ny; Tue, 24 May 2022 03:13:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntJvg-006YJw-G3; Tue, 24 May 2022 02:05:49 +0000
-Received: by mail-oa1-f44.google.com with SMTP id
- 586e51a60fabf-f1d2ea701dso20657900fac.10; 
- Mon, 23 May 2022 19:05:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=dcv6C2UUSOPY4hLFgz6B6erXRgJFajWl9sQxIWWG2SI=;
- b=iOLOtzicIGxKYN9/dx2UU2Eqk1infiIl7segBLiwOAUKHPd0FeivsDeVwvWar6+2MO
- z6hrLkCRw2oaA/e/9AVn6HGoh5kFmzbNqwLi3boxoPHMIIYN0Dyct5IRZmWto3LOyL41
- K5Ek4k0GAMRy+KcCXcq/lgj7Y1b+7PlCvjbEtv1yivC9G9rTJKUi4n5qT23LPSx6xMVy
- 05bVvEmcgwm5+AewE9K9FWd4zscIQtQYerJjcfa3R3g5b8mk1+JsgTglFQ9zGOVcsbiG
- FvV+Jj8ZPX60BvagGaxXFwjGocN2fhWiBe3EK+Olej5FhJkeVrn4Ku3zbwWU9XbDHjik
- veFA==
-X-Gm-Message-State: AOAM531V9aCHUYd+NSND0nRKnydGeAffyFSwOProiDxgyq7ifR/LdfZm
- p1kz1YC7VpAtxpR1BTMCyQ==
-X-Google-Smtp-Source: ABdhPJy+WQejQ6HeO+BpEljjIZUbifyIibjiumiOLLiHb9rdI1HKatwYHJVZednKlIkp91wX9c6Vlw==
-X-Received: by 2002:a05:6871:87:b0:da:b3f:3208 with SMTP id
- u7-20020a056871008700b000da0b3f3208mr1216398oaa.184.1653357946254; 
- Mon, 23 May 2022 19:05:46 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- o192-20020a4a2cc9000000b0035eb4e5a6cfsm4822509ooo.37.2022.05.23.19.05.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 May 2022 19:05:45 -0700 (PDT)
-Received: (nullmailer pid 2605806 invoked by uid 1000);
- Tue, 24 May 2022 02:05:44 -0000
-Date: Mon, 23 May 2022 21:05:44 -0500
-From: Rob Herring <robh@kernel.org>
-To: Tim Chang <jia-wei.chang@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Roger Lu <roger.lu@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh+dt@kernel.org>, hsinyi@google.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-kernel@vger.kernel.org, Kevin Hilman <khilman@kernel.org>
-Subject: Re: [PATCH v3 1/4] dt-bindings: soc: mediatek: add mt8186 svs
- dt-bindings
-Message-ID: <20220524020544.GA2605761-robh@kernel.org>
-References: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
- <20220523084034.26802-2-jia-wei.chang@mediatek.com>
+ id 1ntKyj-006eaW-8X; Tue, 24 May 2022 03:13:04 +0000
+X-UUID: 0db6c52b62a544cba50e57cbd8357640-20220523
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=ZrLByKMLaDySPzY7pePqzCsnctAx+/zjZgkRRO0fBbA=; 
+ b=VGxcVdu8HERVJcWgkSd/QiNFSSDaUXxz3DirqPhfnFe13M4XB7hI7/oi6ERLEWCkqBxkk3t4nu6wHt9iM+G/dJdS0a5qJWQPd9TtL4AhZZUg4gZetVcKAo1r9QxEhmz49IMlx69m+B2tpkWVb7zrw7BaXaT4DTnfLDwJ9jJ8QqM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:bab72e0b-66e7-414a-bfd5-f4500c9acb4e, OB:0,
+ LO
+ B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:5
+X-CID-META: VersionHash:2a19b09, CLOUDID:e2dd607a-5ef6-470b-96c9-bdb8ced32786,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 0db6c52b62a544cba50e57cbd8357640-20220523
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 311417162; Mon, 23 May 2022 20:12:48 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 May 2022 20:02:46 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Tue, 24 May 2022 11:02:44 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Tue, 24 May 2022 11:02:44 +0800
+Message-ID: <45e49226ddbe44a5205f015c4c80e49239c5d9aa.camel@mediatek.com>
+Subject: Re: [PATCH 1/4] dt-bindings: usb: mtk-xhci: add support 'resets'
+ property
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>
+CC: Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>,
+ <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
+Date: Tue, 24 May 2022 11:02:43 +0800
+In-Reply-To: <40eb8f7ed5b5d6dc3aeb5b82e04986049a2e47f3.camel@mediatek.com>
+References: <20220523090449.14430-1-chunfeng.yun@mediatek.com>
+ <40eb8f7ed5b5d6dc3aeb5b82e04986049a2e47f3.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220523084034.26802-2-jia-wei.chang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_190548_568475_89E4F784 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220523_201301_356590_05DAB44F 
+X-CRM114-Status: GOOD (  21.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,21 +91,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 May 2022 16:40:31 +0800, Tim Chang wrote:
-> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> 
-> Add mt8186 svs compatible in dt-bindings and add myself as a
-> co-maintainer.
-> 
-> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
+Hi Rex-BC,
 
-Acked-by: Rob Herring <robh@kernel.org>
+On Mon, 2022-05-23 at 18:41 +0800, Rex-BC Chen wrote:
+> On Mon, 2022-05-23 at 17:04 +0800, Chunfeng Yun wrote:
+> > Add 'resets' property to support IP reset usually by top pericfg.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 3
+> > +++
+> >  1 file changed, 3 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-
+> > xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-
+> > xhci.yaml
+> > index 084d7135b2d9..892718459d25 100644
+> > --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > @@ -113,6 +113,9 @@ properties:
+> >    vbus-supply:
+> >      description: Regulator of USB VBUS5v
+> >  
+> > +  resets:
+> > +    maxItems: 1
+> > +
+> >    usb3-lpm-capable: true
+> >  
+> >    usb2-lpm-disable: true
+> 
+> Hello Chunfeng,
+> 
+> Which soc we will use this reset?
+This is common for all SoCs, can use it if there is a reset controller
+driver supported.
 
+> I am upstreaming another series for system clock reset.
+That's good
+> I think you should add how to use for this series base on [1].
+Currently I test it on mt8195 based on ti-syscon reset driver, luckly
+this is transparent for our usb controller drivers;
+
+I could add patches to use this 'resets' property on mt8195/8186 if the
+below series are applied.
+
+Thanks
+
+> 
+> [1]: 
+> 
+https://lore.kernel.org/linux-clk/5067ec46-7a82-6b7b-5b07-3102cfaefbf6@collabora.com/T/#m5b6abb9bd2109e4ed9a1a3eeee6e7976892cb8c2
+> 
+> BRs,
+> Rex
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
