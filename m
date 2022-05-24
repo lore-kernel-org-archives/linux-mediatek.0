@@ -4,53 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02C5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 09:35:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15021C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 09:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vvl70Tp/hgYpcXeZ7OBC6Efaz6kRLV6swPoGL6vHgV4=; b=kuIDg/ivUXIHdZ
-	RpKlqwg5cMNZX/iKBYWfk+1mdRQaDrwn12RMH1U75TztfxF1u+C8+++OjR/uyE6s49L86ljtuGB1A
-	BjCgciO56IQLDVbISCA9JxJNeDgK/7GHMO78vGYuNbAeGjU4FEFfT+o6MbCxMdF4eHPc1HX5rQUPK
-	Azng8UPkQOzkSY2K6IC1XOlgMpnvA/UMQk+EB0u8Hc1A5NdJRqftSe+TorWEPXcQjl0Z/6VRgluxy
-	z9eprbo3vX06uk31AXh5dR5sdFWZ0O6LVBnduiGHWg29vnoBHlLfAA0+lB4Ds0jrtpoLuLV2U2JcI
-	XuSEzx2AwuIDP/gdP7iw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VWK8m66GXA+xa6JIjGb7ykXnQh0eBOM24YI11dxG4tA=; b=Wj0r5H2YKLB4Ms
+	QzYdds7UWOSBg8zO2kQHa5hGlbVc5ukfB0BpdUNjvBpm1Q4jyX8KftrNILQqefzK4Vgih35yODmwu
+	VemZZ0A6bayqfsXF1IXc1Rgg2I8Ww1RQtaSOHe3+M7yZFn57Ir2xOKMWe3qcPz1uTQckMPtnLJSN1
+	O8jFGYHEdKCMVSBhDUz+OgGiVRDidAlm2YAz5ebmtgsErxD2pVUIXOajeVR0K/YsovRFr29uzlxc6
+	jCONLeZT7hUb0H3Va5/cjCHpHqu7rVWJcwNXXy+4sjXDcJHH3Ourp60cpfIM81YxqLzApAYnj15A6
+	XhdkaTXynlWAUXuPQdgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntQx0-007Qff-Km; Tue, 24 May 2022 09:35:38 +0000
+	id 1ntQxA-007Qji-Fz; Tue, 24 May 2022 09:35:48 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntQwg-007QXi-6n; Tue, 24 May 2022 09:35:20 +0000
+ id 1ntQwg-007QXu-6n; Tue, 24 May 2022 09:35:21 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 8719C1F42BE7
+ (Authenticated sender: kholk11) with ESMTPSA id D11401F42BEA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1653384912;
- bh=HPhSCFsRWt1WRYsQVwuXJfLERolxskKrILtU/HHC2QY=;
- h=From:To:Cc:Subject:Date:From;
- b=QRpNuS60XWbSPl2Q/45n7UwTA7/71z36HzZZwU+6jRJbt6Wfe4YAjV5IWbLPUYWAn
- cq3pw96Fo2Z+QyjZ4DF/PTXju3aHl+JSefwagEB6dMmpWKMMMfgZ+xYm6TQMdeq/bG
- YSIV4w48bCZPc5gC+AqmpUDnq9/EmFjwtJJGeg8GJd1ITyGJH++zGEux1Sjz3JW2wP
- OWZ4YQOkjRO/Fp2SI38vP7D9tAtzK6RAu/Wu+I4xs00k2rlEObjEGpiLsuDm7G88w5
- i1dt/3BYN8XnxTsqkxF9eSP9kUWUkMZrl1XQ5dMK66AjWlzuxJukU+3lJqdNweZLrR
- qgBbC3O81NOxQ==
+ s=mail; t=1653384913;
+ bh=rg+O5GDCFPT74K8q7Q+BQyRmVOj5osZx/xFCPhBlHuk=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=bdOeDcJPmzWFsvEE+/BaU4R23GwaCQ12+xxG98ifXPrfHLgn17HL2LEMlmcKthnch
+ qDPCGDAVhZpwKVk7JSeeSt4W+u008+NfjdtTgSvX6aONLcZg8YpP3Z9NpFAQ3VKsKC
+ S1urtQuqGFfWHeC/k9vlWdR4wr8i3oFUwjS6N5Lx4rOtoCZnBiHKQ32kqMvq/GCKsW
+ 2QjTKqtbeNBhTw0EgdRKo1FQ1YWFUyr7tIji2uJYjTjPt0Uh7TtA6RTv8+qm7+J2CX
+ 43AOw/ndKVIGwI5/VaFJx3Zjy88O8uX+8CyKrFONo2wd2g+432QklU4swND6DolHDL
+ 4aq6t+9je/yGQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: dmitry.torokhov@gmail.com
 Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
  mkorpershoek@baylibre.com, linux-input@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/3]  MediaTek Helio X10 MT6795 - MT6331 PMIC Keys
-Date: Tue, 24 May 2022 11:35:02 +0200
-Message-Id: <20220524093505.85438-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 2/3] Input: mtk-pmic-keys - Move long press debounce mask
+ to mtk_pmic_regs
+Date: Tue, 24 May 2022 11:35:04 +0200
+Message-Id: <20220524093505.85438-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220524093505.85438-1-angelogioacchino.delregno@collabora.com>
+References: <20220524093505.85438-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_023518_426223_143F7F28 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220524_023518_414744_5A3445C1 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,40 +69,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In an effort to give some love to the apparently forgotten MT6795 SoC,
-I am upstreaming more components that are necessary to support platforms
-powered by this one apart from a simple boot to serial console.
+As the second and last step of preparation to add support for more
+PMICs in this driver, move the long press debounce mask to struct
+mtk_pmic_regs and use that in mtk_pmic_keys_lp_reset_setup() instead
+of directly using the definition.
 
-This series performs some cleanups in mtk-pmic-keys and adds support for
-the MT6331 PMIC's keys.
+While at it, remove the definition for MTK_PMIC_RST_DU_SHIFT as we
+are able to calculate it dynamically and spares us some unnecessary
+new definitions around for future per-PMIC variations of RST_DU_MASK.
 
-Adding support to each driver in each subsystem is done in different
-patch series as to avoid spamming uninteresting patches to maintainers.
+Lastly, it was necessary to change the function signature of
+mtk_pmic_keys_lp_reset_setup() to now pass a pointer to the main
+mtk_pmic_regs structure, since that's where the reset debounce
+mask now resides.
 
-This series depends on another two series series [1], [2] named
-"MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper" and
-"MediaTek Helio X10 MT6795 - MT6331/6332 PMIC MFD integration"
+This commit brings no functional changes.
 
-Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/input/keyboard/mtk-pmic-keys.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-[1]: https://lore.kernel.org/lkml/20220520124039.228314-1-angelogioacchino.delregno@collabora.com/T/#t
-[2]: https://lore.kernel.org/lkml/20220520124617.228808-1-angelogioacchino.delregno@collabora.com/T/#t
-
-Changes in v2:
- - Dropped first two patches, as Dmitry pushed a different solution
- - Refactored on top of [3]
- - Dropped Mattijs R-b tags from patches [1/3], [2/3] due to the refactoring
-
-[3]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=644484
-
-AngeloGioacchino Del Regno (3):
-  Input: mtk-pmic-keys - Transfer per-key bit in mtk_pmic_keys_regs
-  Input: mtk-pmic-keys - Move long press debounce mask to mtk_pmic_regs
-  Input: mtk-pmic-keys - Add support for MT6331 PMIC keys
-
- drivers/input/keyboard/mtk-pmic-keys.c | 66 +++++++++++++++++++-------
- 1 file changed, 49 insertions(+), 17 deletions(-)
-
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index 2509a349a173..6404081253ea 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -19,7 +19,6 @@
+ #include <linux/regmap.h>
+ 
+ #define MTK_PMIC_RST_DU_MASK	GENMASK(9, 8)
+-#define MTK_PMIC_RST_DU_SHIFT	8
+ #define MTK_PMIC_PWRKEY_RST	BIT(6)
+ #define MTK_PMIC_HOMEKEY_RST	BIT(5)
+ 
+@@ -48,6 +47,7 @@ struct mtk_pmic_keys_regs {
+ struct mtk_pmic_regs {
+ 	const struct mtk_pmic_keys_regs keys_regs[MTK_PMIC_MAX_KEY_COUNT];
+ 	u32 pmic_rst_reg;
++	u32 rst_lprst_mask; /* Long-press reset timeout bitmask */
+ };
+ 
+ static const struct mtk_pmic_regs mt6397_regs = {
+@@ -58,6 +58,7 @@ static const struct mtk_pmic_regs mt6397_regs = {
+ 		MTK_PMIC_KEYS_REGS(MT6397_OCSTATUS2,
+ 		0x10, MT6397_INT_RSV, 0x8, MTK_PMIC_HOMEKEY_RST),
+ 	.pmic_rst_reg = MT6397_TOP_RST_MISC,
++	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+ };
+ 
+ static const struct mtk_pmic_regs mt6323_regs = {
+@@ -68,6 +69,7 @@ static const struct mtk_pmic_regs mt6323_regs = {
+ 		MTK_PMIC_KEYS_REGS(MT6323_CHRSTATUS,
+ 		0x4, MT6323_INT_MISC_CON, 0x8, MTK_PMIC_HOMEKEY_RST),
+ 	.pmic_rst_reg = MT6323_TOP_RST_MISC,
++	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+ };
+ 
+ static const struct mtk_pmic_regs mt6358_regs = {
+@@ -80,6 +82,7 @@ static const struct mtk_pmic_regs mt6358_regs = {
+ 				   0x8, MT6358_PSC_TOP_INT_CON0, 0xa,
+ 				   MTK_PMIC_HOMEKEY_RST),
+ 	.pmic_rst_reg = MT6358_TOP_RST_MISC,
++	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+ };
+ 
+ struct mtk_pmic_keys_info {
+@@ -105,7 +108,7 @@ enum mtk_pmic_keys_lp_mode {
+ };
+ 
+ static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
+-					 u32 pmic_rst_reg)
++					 const struct mtk_pmic_regs *regs)
+ {
+ 	const struct mtk_pmic_keys_regs *kregs_home, *kregs_pwr;
+ 	u32 long_press_mode, long_press_debounce;
+@@ -120,8 +123,8 @@ static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
+ 	if (error)
+ 		long_press_debounce = 0;
+ 
+-	mask = MTK_PMIC_RST_DU_MASK;
+-	value = long_press_debounce << MTK_PMIC_RST_DU_SHIFT;
++	mask = regs->rst_lprst_mask;
++	value = long_press_debounce << (ffs(regs->rst_lprst_mask) - 1);
+ 
+ 	error  = of_property_read_u32(keys->dev->of_node,
+ 				      "mediatek,long-press-mode",
+@@ -147,7 +150,7 @@ static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
+ 		break;
+ 	}
+ 
+-	regmap_update_bits(keys->regmap, pmic_rst_reg, mask, value);
++	regmap_update_bits(keys->regmap, regs->pmic_rst_reg, mask, value);
+ }
+ 
+ static irqreturn_t mtk_pmic_keys_irq_handler_thread(int irq, void *data)
+@@ -351,7 +354,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 		return error;
+ 	}
+ 
+-	mtk_pmic_keys_lp_reset_setup(keys, mtk_pmic_regs->pmic_rst_reg);
++	mtk_pmic_keys_lp_reset_setup(keys, mtk_pmic_regs);
+ 
+ 	platform_set_drvdata(pdev, keys);
+ 
 -- 
 2.35.1
 
