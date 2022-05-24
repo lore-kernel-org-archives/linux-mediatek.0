@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA8E9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 15:28:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52592C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 15:28:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I+3sypjKN3hyUqv5l1hZUNAZWYjhx29bTMWZBNfAi30=; b=EvM4cjzQPE09lM
-	EJQefwEV9rkxPlZf/Qrl+2UF8hyJKVaYUd/dgpOLCO5YtIV3KexF8iyTRoRXB9yuJrR/gXDuBM13/
-	vLbFSDrvBJ9nCGZvIjuQkQb1XDwMSWoKWzkRWb1ZCvqKHRdIPJanHKwPNqAeYEKDuA8nHrs6hRJ3m
-	0gTR9K6W+IR6YmJeiJpQLZrlOqNUck3M/TMHjg+hP0E2RS/230mWrJx3htfGRhqlfpcdk4mv74end
-	qxeiwoeFuJeyV/Eaqxka5J0E5yxMoAiK6zZZbR8YOd8T+oWUxUs5fUslM/BGnDeg8zYGgd+6vNtv+
-	j9ZbEcMmwKvK3IadC7Dw==;
+	List-Owner; bh=oTkY6Z+Bj7YNGjQITa/f/2VLSchWwUACN0DrkCvhd14=; b=ePbMbr7z0Td/8f
+	19s3fdpPBPe8JU1OdxCf4UKDpqhhBxQBfCG4lTk1IwAse2+iXoQDbQrm/s0WejCIJDbgbS/W0MlSx
+	9Tgck0zpNqf9+54Rn+evpeJnGMN4X/oC4Ivb+yNdwS4VyDzGdXQvxX6YRBct/5ArW1KFuMzqC5o6f
+	p3Fn0lPXholHki8+RsnJVlOc6tmctJ2pW5J76zHTjWV1eBrVer9xfbJ+PLWl3SVAtQNRjrih/eK0a
+	Iwky/ukj1HVNsFB+SgRangmpp8oMHXy38k6HBNTWpdGgrqBkYfW6W9mwX6VOV1dmDCXUdHSqlJLvv
+	Jy7jWbwZ1pQtdFpUYYRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntWSR-008Rne-12; Tue, 24 May 2022 15:28:27 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1ntWSO-008Rmq-MS; Tue, 24 May 2022 15:28:24 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntWS8-008Rds-WE
- for linux-mediatek@lists.infradead.org; Tue, 24 May 2022 15:28:11 +0000
-Received: by mail-wr1-x430.google.com with SMTP id u27so25400204wru.8
- for <linux-mediatek@lists.infradead.org>; Tue, 24 May 2022 08:28:06 -0700 (PDT)
+ id 1ntWS8-008Rdj-0Z
+ for linux-mediatek@lists.infradead.org; Tue, 24 May 2022 15:28:09 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id p10so7596671wrg.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 24 May 2022 08:28:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=K2Kq4AjX60Auvs3EuDkJuXpELchmlwLWXQGbXPVKMFg=;
- b=MaqBpO0pzw2Nv86cZdqlL2ALSDFOV1BK9LgFUwh35kTr5l0ZencTSTkfJUfpzHwq4A
- LZNnnNo4Zc7/yvDJ1AA+qsJqoF8vsxLvFmggzUmZ3J5jYs56Z/bj1NfI0oMUTFC/IcMw
- A9a6feB5qVngeQMPrdhkk5bM3jqtrnhSwpr+EGbm2w0cPK8Crl381CE7ZLc6ma6SjgqY
- Vh5VpS57UfOIivGNOEOPheHHd29CzvCa6rUM/gr/Cw8fXNJq1J/qr4O9AXlq0bnRlruP
- mADsDpqLi9PDK5UBvn8ADQNFzFPEWEEP+h70O9ijS0SmGSyYgB8cwcUf4KPSnYs9rKFv
- ge3A==
+ bh=MuJUprVkec1LhN6o7SGN7yS6FtU75T+9Wd1DOyeL8ik=;
+ b=cXViV63iRSsMqW3XAi/zQKnSpJARlA/rf5fRH6+kSetZovEs5U2oYe2hHvprEFaZFr
+ vHgoIQ2/m6pWstO2paqiiTVf1lazwwki/PMZiHiAwFraMXiFSjb7z18b4hFHGOr7faY4
+ qMQSahJsZlMtKLt4yxdownjKXhfxRs+b9tCxfa8ZTK4/ODqqAbnDW9GZ5YfaRk72rN9D
+ Nkv+lT52o+aTj/2yun+3xAdvR4DxtZfe4ohuen7ZrwxA18kX4hmEp3EoKKt4DjMpC68e
+ aLvca5iCRNTTJThD/PeYwqHLB0fAdmQi1qkDsDsw2RxTN11aY0cC3/ugEnClljCb4ZZF
+ XJdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=K2Kq4AjX60Auvs3EuDkJuXpELchmlwLWXQGbXPVKMFg=;
- b=0+4HJtMvc+kX0E570f6sRCVaAj3fZyf/yvRTsBQd56/Nz4lK/kHLxhqhweJ8fUky49
- vF77kUc/UfDobRgHVDQXD7ecHkPL9X1pekS0E8Mio7TfB8j3dDi9bHvSz29IE1nKz97o
- v6g7M5uDL/Er1pEU70rZElW5+jOaeAp0K0WQfg7x1lDP8+21Q+c2sFlA3uq91kjn0lDt
- SnbP0sMjyseoHHPPKbETRdCO769+23q8e+SUUK7DwFFmGkEoStKqpWxn6xwXFmoAJx9p
- 4Od3t2aye3fHiF/r1HJJhiD/+NF+htdph/xxw8kZFv2U4r5JTGu7bTSd9XVgcyrGq0on
- i/ew==
-X-Gm-Message-State: AOAM530x7/X2FWkHkrb6EQ1f8Wo7ouKIL/tI/z3xYxoNPBie6SLj598a
- 7Yju7At7fDK/F65f7PruM48hfw==
-X-Google-Smtp-Source: ABdhPJzhL25As+aiDUdp92860cR8SXhTp4IGDzPkkcaizWyOIZvd4NfNBonbrx5zCl7T9cfzyR+7Mw==
-X-Received: by 2002:a05:6000:1541:b0:20f:e8f0:be4e with SMTP id
- 1-20020a056000154100b0020fe8f0be4emr6471819wry.658.1653406085387; 
- Tue, 24 May 2022 08:28:05 -0700 (PDT)
+ bh=MuJUprVkec1LhN6o7SGN7yS6FtU75T+9Wd1DOyeL8ik=;
+ b=M6Zj+tu7kvZ52W9vxFLEaIj9qdJJfTSECRA/JL8P3GeB05AQoFUbWssx4t62t+qFom
+ AGVSKSEZyWLM1pQbciE56RZfuJ8beskOKMLwl0rQ9Z7+ajRUv1LO4liXow6csBWspFFn
+ OVs5cwDCReZ0KJb1ftAFZ7X4gCXvv+aUk31blRawcDXF2/Fj/RbT5u0CJNMM0NGAjkct
+ x0IQrVCLwaoiWWq+BA9OjRJeGXiINEkLuSKq36ZHuVqj7jaCAT8fvDZVahs5ynHs381x
+ J0IS21rY5ZOUin8udz10XqoD6K8BsPpMYrzwvTR5AtTKpHPEDiee7mjR6UrAED4+pT/t
+ FmwQ==
+X-Gm-Message-State: AOAM533bEw+fqfDABMPsNLhrIsMZg9lh1ZjSqbhYV10OFTmqFjs2AA/L
+ 3Ta+jmaCB4gN15U+lbOsqnyWhQ==
+X-Google-Smtp-Source: ABdhPJwGvaG1N+rlSqIUh/89AyIZlqskmxR/ikdhIJdjlbxerIP+U4FECFmabv4sskd0a2Nbk5lnWQ==
+X-Received: by 2002:a05:6000:178d:b0:20f:e7da:6a21 with SMTP id
+ e13-20020a056000178d00b0020fe7da6a21mr6657054wrg.689.1653406084354; 
+ Tue, 24 May 2022 08:28:04 -0700 (PDT)
 Received: from xps-9300.baylibre
  (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
  by smtp.gmail.com with ESMTPSA id
- k24-20020a05600c1c9800b003974027722csm2703693wms.47.2022.05.24.08.28.04
+ k24-20020a05600c1c9800b003974027722csm2703693wms.47.2022.05.24.08.28.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 May 2022 08:28:05 -0700 (PDT)
+ Tue, 24 May 2022 08:28:03 -0700 (PDT)
 From: Alexandre Bailon <abailon@baylibre.com>
 To: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org,
  amitk@kernel.org
@@ -70,18 +70,17 @@ Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
  fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com,
- Alexandre Bailon <abailon@baylibre.com>
-Subject: [PATCH v7 2/6] dt-bindings: thermal: Add binding document for LVTS
- thermal controllers
-Date: Tue, 24 May 2022 17:25:49 +0200
-Message-Id: <20220524152552.246193-3-abailon@baylibre.com>
+ Michael Kao <michael.kao@mediatek.com>, Ben Tseng <ben.tseng@mediatek.com>
+Subject: [PATCH v7 1/6] thermal: mediatek: Relocate driver to mediatek folder
+Date: Tue, 24 May 2022 17:25:48 +0200
+Message-Id: <20220524152552.246193-2-abailon@baylibre.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220524152552.246193-1-abailon@baylibre.com>
 References: <20220524152552.246193-1-abailon@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_082809_115260_26C042DB 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20220524_082808_105116_CBF235A5 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,102 +97,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds binding document for mt8192 and mt8195 thermal
-controllers.
+From: Michael Kao <michael.kao@mediatek.com>
 
-Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+Add Mediatek proprietary folder to upstream more thermal zone and cooler
+drivers. Relocate the original thermal controller driver to it and rename
+as soc_temp.c to show its purpose more clearly.
+
+Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- .../thermal/mediatek,mt8192-lvts.yaml         | 81 +++++++++++++++++++
- 1 file changed, 81 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
+ drivers/thermal/Kconfig                       | 14 ++++-------
+ drivers/thermal/Makefile                      |  2 +-
+ drivers/thermal/mediatek/Kconfig              | 23 +++++++++++++++++++
+ drivers/thermal/mediatek/Makefile             |  1 +
+ .../{mtk_thermal.c => mediatek/soc_temp.c}    |  0
+ 5 files changed, 29 insertions(+), 11 deletions(-)
+ create mode 100644 drivers/thermal/mediatek/Kconfig
+ create mode 100644 drivers/thermal/mediatek/Makefile
+ rename drivers/thermal/{mtk_thermal.c => mediatek/soc_temp.c} (100%)
 
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml b/Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
+diff --git a/drivers/thermal/Kconfig b/drivers/thermal/Kconfig
+index e37691e0bf20..8669d7278055 100644
+--- a/drivers/thermal/Kconfig
++++ b/drivers/thermal/Kconfig
+@@ -410,16 +410,10 @@ config DA9062_THERMAL
+ 	  zone.
+ 	  Compatible with the DA9062 and DA9061 PMICs.
+ 
+-config MTK_THERMAL
+-	tristate "Temperature sensor driver for mediatek SoCs"
+-	depends on ARCH_MEDIATEK || COMPILE_TEST
+-	depends on HAS_IOMEM
+-	depends on NVMEM || NVMEM=n
+-	depends on RESET_CONTROLLER
+-	default y
+-	help
+-	  Enable this option if you want to have support for thermal management
+-	  controller present in Mediatek SoCs
++menu "Mediatek thermal drivers"
++depends on ARCH_MEDIATEK || COMPILE_TEST
++source "drivers/thermal/mediatek/Kconfig"
++endmenu
+ 
+ config AMLOGIC_THERMAL
+ 	tristate "Amlogic Thermal Support"
+diff --git a/drivers/thermal/Makefile b/drivers/thermal/Makefile
+index f0c36a1530d5..9ade39bdb525 100644
+--- a/drivers/thermal/Makefile
++++ b/drivers/thermal/Makefile
+@@ -55,7 +55,7 @@ obj-y				+= st/
+ obj-$(CONFIG_QCOM_TSENS)	+= qcom/
+ obj-y				+= tegra/
+ obj-$(CONFIG_HISI_THERMAL)     += hisi_thermal.o
+-obj-$(CONFIG_MTK_THERMAL)	+= mtk_thermal.o
++obj-$(CONFIG_MTK_THERMAL)	+= mediatek/
+ obj-$(CONFIG_GENERIC_ADC_THERMAL)	+= thermal-generic-adc.o
+ obj-$(CONFIG_UNIPHIER_THERMAL)	+= uniphier_thermal.o
+ obj-$(CONFIG_AMLOGIC_THERMAL)     += amlogic_thermal.o
+diff --git a/drivers/thermal/mediatek/Kconfig b/drivers/thermal/mediatek/Kconfig
 new file mode 100644
-index 000000000000..914c877d1f2f
+index 000000000000..592c849b9fed
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
-@@ -0,0 +1,81 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/thermal/mediatek,mt8192-lvts.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/drivers/thermal/mediatek/Kconfig
+@@ -0,0 +1,23 @@
++config MTK_THERMAL
++	tristate "MediaTek thermal drivers"
++	depends on THERMAL_OF
++	help
++	  This is the option for MediaTek thermal software
++	  solutions. Please enable corresponding options to
++	  get temperature information from thermal sensors or
++	  turn on throttle mechaisms for thermal mitigation.
 +
-+title: MediaTek SoC LVTS thermal controller
++if MTK_THERMAL
 +
-+maintainers:
-+  - Yu-Chia Chang <ethan.chang@mediatek.com>
-+  - Ben Tseng <ben.tseng@mediatek.com>
++config MTK_SOC_THERMAL
++	tristate "Temperature sensor driver for MediaTek SoCs"
++	depends on HAS_IOMEM
++	depends on NVMEM
++	depends on RESET_CONTROLLER
++	help
++	  Enable this option if you want to get SoC temperature
++	  information for MediaTek platforms. This driver
++	  configures thermal controllers to collect temperature
++	  via AUXADC interface.
 +
-+allOf:
-+  - $ref: thermal-sensor.yaml#
-+  - $ref: /nvmem/nvmem-consumer.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8192-lvts
-+      - mediatek,mt8195-lvts
-+
-+  reg:
-+    minItems: 2
-+    maxItems: 4
-+
-+  interrupts:
-+    maxItems: 2
-+
-+  clocks:
-+    maxItems: 1
-+
-+  "#thermal-sensor-cells":
-+    const: 1
-+
-+  nvmem-cells:
-+    maxItems: 2
-+    description: Calibration data for thermal sensors
-+
-+  nvmem-cell-names:
-+    items:
-+      - const: e_data1
-+      - const: e_data2
-+
-+  resets:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+
-+
-+required:
-+  - '#thermal-sensor-cells'
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - nvmem-cells
-+  - nvmem-cell-names
-+  - resets
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/thermal/thermal.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/reset/mt8195-resets.h>
-+
-+    lvts: lvts@1100b000 {
-+        compatible = "mediatek,mt8195-lvts";
-+        #thermal-sensor-cells = <1>;
-+        reg = <0 0x1100b000 0 0x1000>,
-+              <0 0x11278000 0 0x1000>;
-+        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>,
-+                     <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
-+        clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-+        resets = <&infracfg_ao MT8195_INFRA_RST0_THERM_CTRL_SWRST>,
-+                 <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
-+        nvmem-cells = <&lvts_e_data1 &lvts_e_data2>;
-+        nvmem-cell-names = "e_data1","e_data2";
-+    };
-+...
++endif
+diff --git a/drivers/thermal/mediatek/Makefile b/drivers/thermal/mediatek/Makefile
+new file mode 100644
+index 000000000000..f75313ddce5e
+--- /dev/null
++++ b/drivers/thermal/mediatek/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_MTK_SOC_THERMAL)	+= soc_temp.o
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mediatek/soc_temp.c
+similarity index 100%
+rename from drivers/thermal/mtk_thermal.c
+rename to drivers/thermal/mediatek/soc_temp.c
 -- 
 2.35.1
 
