@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10158C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 07:24:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C20AC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 May 2022 08:39:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NC+t45ZiszLf1WFeGmw+sjLVPcZCZ6/6NeR9/a7GNyU=; b=GPLjsZNOnu4C8K
-	QiDSHg0VA1isils3T5pk+7RYQ9JQtseSKr6bwkA420YS78XoshnMxCACIi7Oh0U39GEWgGp0C08wK
-	jJhPTIk8IK+kE4084XgsBfNO2KJCMeu5Ydlgrj1qsaUI5lXoQqFtKM/YDLjfJ6iJf2ztyKqUonnvA
-	Jm2YJtNrqzLDpPcPB/LWk+PIUEVpf5sxNmHzdLjnqKD6g3vbWBd9MJoHdnh0CqcPcI52U2V1Po+kt
-	L3A8Yn4dxoYJWQC4Qsnfue7RgoaLLdqDdLzZEHhA1sVGGbP07qfvrdQj9kmz0gTo1K5guNLywq8Kx
-	FrfxktJ251yBxypvzzug==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=R235b9wLPjahqIQRIg6LBfm6qY+AuJqA37fbchmu/RA=; b=OEZJSKpdHO4nxN
+	b/YyB6tiNdnlsq6vT00gYwoFTNDref9tv7iXihvwZk5V3XC91pXVseBVNmD0+s478sf0zC14BuOkB
+	XZmTmbY++eiSY4fOb10hLQ9uLFJH9Iqi7nwqcQCGf6DFjlVZ+DCMS5BrDelyqv1Q4zeMEPR2V5XDO
+	EWqiy3307jFu6FrzJJh62z+/b7UqrbrGNYhi7zRFjN8BzlrjaQf8QipDiN+PMioGwkqMZtgPVNdsq
+	oq1H+vPkrlWf8xsCIuCr3wzM5mjJRLYNaWf+5sW2mx9dzV6746bdRRLKxOCmC4BsMG5pU8EkyTGFA
+	zYKer4qwvdo3+BcXWnaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntOuN-0074Bu-Pr; Tue, 24 May 2022 07:24:47 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1ntQ4W-007FeY-Cr; Tue, 24 May 2022 08:39:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntOuJ-0074Ax-1Q
- for linux-mediatek@lists.infradead.org; Tue, 24 May 2022 07:24:46 +0000
-Received: by mail-wm1-x336.google.com with SMTP id
- bd25-20020a05600c1f1900b0039485220e16so867254wmb.0
- for <linux-mediatek@lists.infradead.org>; Tue, 24 May 2022 00:24:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:in-reply-to:references:date:message-id
- :mime-version; bh=AjWSodLOo8ZPJy6O0FlUERSrMcBBp3JgmwXgCuABWKY=;
- b=2GrWBC208uKvWnarte0fbHotpeC/ayk+QVlBl9wQwBF+g9AeVdwpxvmmu1Jjkq2qmM
- xiCLo3QJBM0YGlMcr15fhl6yuiPI/7TomlDhysJCJ93CUQM9SKY3P1oOAZExz1nxjNLZ
- 1vLG22aAt9PcxivPCvdMPJW/yVq7l1OCFzFILLT7wJajIO6Ngf3hfC/BZij7SC42PoXV
- 3rE2HF0a/brq6fP/m89FtcRyMSgs3nmMuoHnxI9mir9z11Pk9h2mqciu2JWC09v79gZ/
- rrwF23yFKqpJvVfmILrQ6HxEz9NHkK+fv+x6dJW6oLZcvAWrh4B0hqsVSz3Pu8aMNZB1
- yHhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=AjWSodLOo8ZPJy6O0FlUERSrMcBBp3JgmwXgCuABWKY=;
- b=EudexWpA97LBdTyVHcyv/aYNUVgs1sgnFYK6+mmM28zJ1IZ96ywMAwYC4Ui7XmlrHs
- lo5XWrNU2S9rVrB1vCkVzifd+VyAnQre/P9sHFjxSiMzntq5DCH2SAO13bUjx1ak4EEx
- BJH3wmyBbHQAeAHtqQ7E+GwLPZwQ8c6qsVONECj0oQeeEpZYp/ywR7x9TTzYatxDmU20
- 3bDDvQiYEXsF9asLAy4z8I/4CANJyimQJtpvNHHi/t3K32EAiNFPkL+1j9NG07oF/Zef
- uphHEAnGpmYRT1E0cIuCOQmxScFLU+Am37ZJkw1mtg6ASkn1Srt0yCX+EfU7/9J/idIp
- NYow==
-X-Gm-Message-State: AOAM533ibgggM/vRVxh9G2fGPjEASiCtIQg/YbgQ2yTwUSahNqnvU6KO
- 0vXTpoAS0oj4dxCltcaXv4XNrA==
-X-Google-Smtp-Source: ABdhPJzE9aWITFtiFFRNGY2dX+P743fTQhoFoU891iRxPYgTeFrPs9sSk/w06Y2GmZkZCVOi+Z+2Eg==
-X-Received: by 2002:a05:600c:acb:b0:397:bdb:ffea with SMTP id
- c11-20020a05600c0acb00b003970bdbffeamr2441172wmr.56.1653377079785; 
- Tue, 24 May 2022 00:24:39 -0700 (PDT)
-Received: from localhost ([2a01:cb19:85e6:1900:de85:21d6:6f2:c7e3])
- by smtp.gmail.com with ESMTPSA id
- m7-20020adfa3c7000000b0020d0cdbf7eesm12131452wrb.111.2022.05.24.00.24.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 May 2022 00:24:39 -0700 (PDT)
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Input: mtk-pmic-keys - use single update when
- configuring long press behavior
-In-Reply-To: <YowH0Q5HAGU7Grx2@google.com>
-References: <YowH0Q5HAGU7Grx2@google.com>
-Date: Tue, 24 May 2022 09:24:38 +0200
-Message-ID: <87wnebe6kp.fsf@baylibre.com>
+ id 1ntQ4A-007FYf-FJ; Tue, 24 May 2022 08:39:01 +0000
+X-UUID: 7c074c39638f472c9fb3a666c5df02a7-20220524
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5, REQID:a8b56248-cc66-4048-a294-e8df6b63466d, OB:0,
+ LO
+ B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09, CLOUDID:ad855ee3-edbf-4bd4-8a34-dfc5f7bb086d,
+ C
+ OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+ ,QS:0,BEC:nil
+X-UUID: 7c074c39638f472c9fb3a666c5df02a7-20220524
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1201102290; Tue, 24 May 2022 01:38:50 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 24 May 2022 01:38:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 24 May 2022 16:38:48 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 24 May 2022 16:38:48 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 0/7] clk: mediatek: use mtk_clk_simple_probe to simplify
+ driver
+Date: Tue, 24 May 2022 16:38:33 +0800
+Message-ID: <20220524083843.9994-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_002443_123134_88C9B01B 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20220524_013858_556088_83655DEC 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,141 +80,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On lun., mai 23, 2022 at 15:16, Dmitry Torokhov <dmitry.torokhov@gmail.com> wrote:
+Hi everyone,
 
-> Instead of doing 3 read-modify-write operations when configuring behavior
-> of long-press, consolidate everything into one.
->
-> Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+This is v2 patches to use mtk_clk_simple_probe to simplify driver.
 
-Hi Dmitry,
+Change since v1:
+- Angelo's patch [1] already exported mtk_clk_simple_probe and mtk_clk_simple_remove,
+so drop this part from my v1 and depends on [1].
+- add a reviewed-by tag
 
-Thank you for improving the driver.
+mtk_clk_simple_probe() was introduced by Chun-Jie in commit
+c58cd0e40ffa ("clk: mediatek: Add mtk_clk_simple_probe() to simplify clock providers")
+and mtk_clk_simple_remove() was added in commit
+commit 2204d96b1919 ("clk: mediatek: Add mtk_clk_simple_remove()")
 
-I've tested this with evtest on mt8183-pumpkin on input/next
-(fabcf4d8696839a8da8a3f90d1fd30ae923ddde7).
-Note that I needed to add [1] on top as well for the driver to be
-loaded, since [1] is not part of input/next
+With mtk_clk_simple_probe and mtk_clk_simple_remove,
+we can get rid of defining the same probe function in clk drivers.
+mtk_clk_simple_probe and mtk_clk_simple_remove are used in new platforms
+now, let's apply them to old SoCs.
 
-[1] https://lore.kernel.org/r/20220121140323.4080640-5-mkorpershoek@baylibre.com/
+The process is quite straightforward: 
+a. Look up probe functions which can be replaced by mtk_clk_simple_probe()
+b. Add mtk_clk_desc and add .data
+c. Replace the probe function with mtk_clk_simple_probe and mtk_clk_simple_remove
 
-Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+I tested the series on MT8192 and MT6779.
+This patch is based on next-20220523 and [1].
 
-Tested-by: Mattijs Korpershoek <mkorpershoek@baylibre.com> # on mt8183-pumpkin
-> ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 71 ++++++++++----------------
->  1 file changed, 28 insertions(+), 43 deletions(-)
->
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index c31ab4368388..d2f0db245ff6 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -18,17 +18,11 @@
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  
-> -#define MTK_PMIC_PWRKEY_RST_EN_MASK	0x1
-> -#define MTK_PMIC_PWRKEY_RST_EN_SHIFT	6
-> -#define MTK_PMIC_HOMEKEY_RST_EN_MASK	0x1
-> -#define MTK_PMIC_HOMEKEY_RST_EN_SHIFT	5
-> -#define MTK_PMIC_RST_DU_MASK		0x3
-> -#define MTK_PMIC_RST_DU_SHIFT		8
-> -
-> -#define MTK_PMIC_PWRKEY_RST		\
-> -	(MTK_PMIC_PWRKEY_RST_EN_MASK << MTK_PMIC_PWRKEY_RST_EN_SHIFT)
-> -#define MTK_PMIC_HOMEKEY_RST		\
-> -	(MTK_PMIC_HOMEKEY_RST_EN_MASK << MTK_PMIC_HOMEKEY_RST_EN_SHIFT)
-> +#define MTK_PMIC_RST_DU_MASK	GENMASK(9, 8)
-> +#define MTK_PMIC_RST_DU_SHIFT	8
-> +#define MTK_PMIC_RST_KEY_MASK	GENMASK(6, 5)
-> +#define MTK_PMIC_PWRKEY_RST	BIT(6)
-> +#define MTK_PMIC_HOMEKEY_RST	BIT(5)
->  
->  #define MTK_PMIC_PWRKEY_INDEX	0
->  #define MTK_PMIC_HOMEKEY_INDEX	1
-> @@ -108,53 +102,44 @@ enum mtk_pmic_keys_lp_mode {
->  };
->  
->  static void mtk_pmic_keys_lp_reset_setup(struct mtk_pmic_keys *keys,
-> -		u32 pmic_rst_reg)
-> +					 u32 pmic_rst_reg)
->  {
-> -	int ret;
->  	u32 long_press_mode, long_press_debounce;
-> +	u32 value, mask;
-> +	int error;
->  
-> -	ret = of_property_read_u32(keys->dev->of_node,
-> -		"power-off-time-sec", &long_press_debounce);
-> -	if (ret)
-> +	error = of_property_read_u32(keys->dev->of_node, "power-off-time-sec",
-> +				     &long_press_debounce);
-> +	if (error)
->  		long_press_debounce = 0;
->  
-> -	regmap_update_bits(keys->regmap, pmic_rst_reg,
-> -			   MTK_PMIC_RST_DU_MASK << MTK_PMIC_RST_DU_SHIFT,
-> -			   long_press_debounce << MTK_PMIC_RST_DU_SHIFT);
-> +	mask = MTK_PMIC_RST_DU_MASK;
-> +	value = long_press_debounce << MTK_PMIC_RST_DU_SHIFT;
->  
-> -	ret = of_property_read_u32(keys->dev->of_node,
-> -		"mediatek,long-press-mode", &long_press_mode);
-> -	if (ret)
-> +	error  = of_property_read_u32(keys->dev->of_node,
-> +				      "mediatek,long-press-mode",
-> +				      &long_press_mode);
-> +	if (error)
->  		long_press_mode = LP_DISABLE;
->  
->  	switch (long_press_mode) {
-> -	case LP_ONEKEY:
-> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> -				   MTK_PMIC_PWRKEY_RST,
-> -				   MTK_PMIC_PWRKEY_RST);
-> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> -				   MTK_PMIC_HOMEKEY_RST,
-> -				   0);
-> -		break;
->  	case LP_TWOKEY:
-> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> -				   MTK_PMIC_PWRKEY_RST,
-> -				   MTK_PMIC_PWRKEY_RST);
-> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> -				   MTK_PMIC_HOMEKEY_RST,
-> -				   MTK_PMIC_HOMEKEY_RST);
-> -		break;
-> +		value |= MTK_PMIC_HOMEKEY_RST;
-> +		fallthrough;
-> +
-> +	case LP_ONEKEY:
-> +		value |= MTK_PMIC_PWRKEY_RST;
-> +		fallthrough;
-> +
->  	case LP_DISABLE:
-> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> -				   MTK_PMIC_PWRKEY_RST,
-> -				   0);
-> -		regmap_update_bits(keys->regmap, pmic_rst_reg,
-> -				   MTK_PMIC_HOMEKEY_RST,
-> -				   0);
-> +		mask |= MTK_PMIC_RST_KEY_MASK;
->  		break;
-> +
->  	default:
->  		break;
->  	}
-> +
-> +	regmap_update_bits(keys->regmap, pmic_rst_reg, mask, value);
->  }
->  
->  static irqreturn_t mtk_pmic_keys_irq_handler_thread(int irq, void *data)
-> -- 
-> 2.36.1.124.g0e6072fb45-goog
->
->
-> -- 
-> Dmitry
+Thanks,
+Miles
+
+[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20220518111652.223727-7-angelogioacchino.delregno@collabora.com/
+
+
+
+*** BLURB HERE ***
+
+Miles Chen (7):
+  clk: mediatek: mt2701: use mtk_clk_simple_probe to simplify driver
+  clk: mediatek: mt2712: use mtk_clk_simple_probe to simplify driver
+  clk: mediatek: mt6765: use mtk_clk_simple_probe to simplify driver
+  clk: mediatek: mt6779: use mtk_clk_simple_probe to simplify driver
+  clk: mediatek: mt6797: use mtk_clk_simple_probe to simplify driver
+  clk: mediatek: mt8183: use mtk_clk_simple_probe to simplify driver
+  clk: mediatek: mt8192: add mtk_clk_simple_remove
+
+ drivers/clk/mediatek/clk-mt2701-bdp.c         | 36 +++++++------------
+ drivers/clk/mediatek/clk-mt2701-img.c         | 36 +++++++------------
+ drivers/clk/mediatek/clk-mt2701-vdec.c        | 36 +++++++------------
+ drivers/clk/mediatek/clk-mt2712-bdp.c         | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt2712-img.c         | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt2712-jpgdec.c      | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt2712-mfg.c         | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt2712-vdec.c        | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt2712-venc.c        | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt6765-audio.c       | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt6765-cam.c         | 33 +++++++----------
+ drivers/clk/mediatek/clk-mt6765-img.c         | 33 +++++++----------
+ drivers/clk/mediatek/clk-mt6765-mipi0a.c      | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt6765-mm.c          | 33 +++++++----------
+ drivers/clk/mediatek/clk-mt6765-vcodec.c      | 34 +++++++-----------
+ drivers/clk/mediatek/clk-mt6779-aud.c         | 29 +++++++--------
+ drivers/clk/mediatek/clk-mt6779-cam.c         | 29 +++++++--------
+ drivers/clk/mediatek/clk-mt6779-img.c         | 29 +++++++--------
+ drivers/clk/mediatek/clk-mt6779-ipe.c         | 29 +++++++--------
+ drivers/clk/mediatek/clk-mt6779-mfg.c         | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt6779-vdec.c        | 29 +++++++--------
+ drivers/clk/mediatek/clk-mt6779-venc.c        | 29 +++++++--------
+ drivers/clk/mediatek/clk-mt6797-img.c         | 36 +++++++------------
+ drivers/clk/mediatek/clk-mt6797-vdec.c        | 36 +++++++------------
+ drivers/clk/mediatek/clk-mt6797-venc.c        | 36 +++++++------------
+ drivers/clk/mediatek/clk-mt8183-cam.c         | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8183-img.c         | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8183-ipu0.c        | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8183-ipu1.c        | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8183-ipu_adl.c     | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8183-ipu_conn.c    | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8183-mfgcfg.c      | 29 +++++++--------
+ drivers/clk/mediatek/clk-mt8183-vdec.c        | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8183-venc.c        | 27 +++++++-------
+ drivers/clk/mediatek/clk-mt8192-cam.c         |  1 +
+ drivers/clk/mediatek/clk-mt8192-img.c         |  1 +
+ .../clk/mediatek/clk-mt8192-imp_iic_wrap.c    |  1 +
+ drivers/clk/mediatek/clk-mt8192-ipe.c         |  1 +
+ drivers/clk/mediatek/clk-mt8192-mdp.c         |  1 +
+ drivers/clk/mediatek/clk-mt8192-mfg.c         |  1 +
+ drivers/clk/mediatek/clk-mt8192-msdc.c        |  1 +
+ drivers/clk/mediatek/clk-mt8192-scp_adsp.c    |  1 +
+ drivers/clk/mediatek/clk-mt8192-vdec.c        |  1 +
+ drivers/clk/mediatek/clk-mt8192-venc.c        |  1 +
+ 44 files changed, 430 insertions(+), 647 deletions(-)
+
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
