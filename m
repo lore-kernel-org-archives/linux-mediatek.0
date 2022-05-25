@@ -4,78 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DECB6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 02:02:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DDDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 03:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xhLcOigW5EQHQF5zSRyxgZ2B/jVtADd4CJPrgfcatOw=; b=sPYaVoOtYd4jQ6
-	TshwehsAFw6edxDHDfkqZT1Us13FekoTtryNHkHYoxvFN9pm7c9kPbEiA6tY+fzzp9Vg5itpDTFQS
-	qMRK0RPCfSgG3CPZhrfxmQ/xDEOBoCOKSrD8Ewdvx25KjfXEE5v8ELdIVKLBFDFZWh+arRQ1366Vw
-	H4vZcnpnzfNRCNuN4BTILucYFQ72Ev+YuGLDzqjYPBspKS+WxO4BXW+AZAvkZivBQDQt4C8nIWTFq
-	8sdjFwiSNLm3KGaoxXdOIpO72y6SpHgCYgh+DHQDDAto6jpJqsExKYYmALnLVgZWS6VCgcAkMXASU
-	gRthG/kq1HzP8t7HrpXA==;
+	List-Owner; bh=zZTlD8VQqLJdBQKDoadZh/DKc6bTchprdZdVU3EGCCA=; b=OQzhj8s3DbBfJ5
+	A2Zr4pwJIiBDKXPh8X9s1M5U+jCGShVEg5chxslwOIetY4K1IdnGsibOakWCxaD8b+aGraZoxb6qr
+	GtVQ6Wos4BTORiw9r/TN3hKDm+trUFMXExVahOBDbORNeGxmzEvaj01w098ek45MAiXL8UGcM4ehq
+	lM42ohrYW8TjyI3m1Rm3TkFfpxJz2BMBFTrmdtsBTygAPItK6q0HjwPMLDpcRgOXAXO4vpIWIEg8L
+	t0wxb0yJ9dKEqBolg5vJZUpPuFLlilPsXLZfUd9Rvz1acW6XvqCR1LL3/ehHEo7IRQ75R03LooofB
+	mY1NgJ+osvLaCA9q7cng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntgLf-009ila-LH; Wed, 25 May 2022 02:02:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nthgt-009pjg-AK; Wed, 25 May 2022 03:28:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntgLU-009ikM-RZ; Wed, 25 May 2022 02:01:58 +0000
-X-UUID: 9045097ef33745e3a52b9b5c609caef9-20220524
+ id 1nthgh-009ph1-Ub; Wed, 25 May 2022 03:27:57 +0000
+X-UUID: 4019af35c1eb47fea93ad5292661201a-20220524
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:459550a2-311d-455b-a932-0961e7f53536, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:98c8463a-6183-49c7-9922-60e783737708, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
- ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09, CLOUDID:f9b81bb8-3c45-407b-8f66-25095432a27a,
+ B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+ ON:release,TS:0
+X-CID-META: VersionHash:2a19b09, CLOUDID:bd1c5c47-4fb1-496b-8f1d-39e733fed1ea,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: 9045097ef33745e3a52b9b5c609caef9-20220524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
+X-UUID: 4019af35c1eb47fea93ad5292661201a-20220524
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 867910015; Tue, 24 May 2022 19:01:52 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ with ESMTP id 1075296761; Tue, 24 May 2022 20:27:45 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 May 2022 18:51:51 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Wed, 25 May 2022 09:51:49 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 25 May 2022 09:51:47 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
- <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
- <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
- <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yong Mao
- <yong.mao@mediatek.com>
-Subject: [RESEND v12 3/3] mmc: mediatek: add support for SDIO eint wakup IRQ
-Date: Wed, 25 May 2022 09:51:40 +0800
-Message-ID: <20220525015140.384-4-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220525015140.384-1-axe.yang@mediatek.com>
-References: <20220525015140.384-1-axe.yang@mediatek.com>
+ 15.0.1497.2; Tue, 24 May 2022 20:27:43 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 May 2022 11:27:41 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 25 May 2022 11:27:41 +0800
+Message-ID: <05ad616704053c3f9b3275cd557b99bd56b3f40f.camel@mediatek.com>
+Subject: Re: [PATCH v18 1/6] soc: mediatek: mutex: add common interface for
+ modules setting
+From: CK Hu <ck.hu@mediatek.com>
+To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Alexandre Courbot
+ <acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+ <pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+ <randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
+ <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <cellopoint.kai@gmail.com>
+Date: Wed, 25 May 2022 11:27:41 +0800
+In-Reply-To: <20220512084139.15086-2-moudy.ho@mediatek.com>
+References: <20220512084139.15086-1-moudy.ho@mediatek.com>
+ <20220512084139.15086-2-moudy.ho@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_190156_943411_D981A257 
-X-CRM114-Status: GOOD (  23.78  )
+X-CRM114-CacheID: sfid-20220524_202756_041241_99C25C14 
+X-CRM114-Status: GOOD (  27.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,204 +97,197 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for eint IRQ when MSDC is used as an SDIO host. This
-feature requires SDIO device support async IRQ function. With this
-feature, SDIO host can be awakened by SDIO card in suspend state,
-without additional pin.
+Hi, Moudy:
 
-MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
-turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
-resume, switch GPIO function back to DAT1 mode then turn on clock.
+On Thu, 2022-05-12 at 16:41 +0800, Moudy Ho wrote:
+> In order to allow multiple modules to operate MUTEX hardware through
+> a common interfrace, a flexible index "mtk_mutex_table_index" needs
+> to
+> be added to replace original component ID so that like DDP and MDP
+> can add their own MUTEX table settings independently.
+> 
+> In addition, 4 generic interface "mtk_mutex_set_mod",
+> "mtk_mutex_set_sof",
+> "mtk_mutex_clear_mod" and "mtk_mutex_clear_sof" have been added,
+> which is
+> expected to replace the "mtk_mutex_add_comp" and
+> "mtk_mutex_remove_comp"
+> pair originally dedicated to DDP in the future.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/soc/mediatek/mtk-mutex.c       | 88
+> ++++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-mutex.h | 22 +++++++
+>  2 files changed, 110 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mutex.c
+> b/drivers/soc/mediatek/mtk-mutex.c
+> index aaf8fc1abb43..a62ac1811419 100644
+> --- a/drivers/soc/mediatek/mtk-mutex.c
+> +++ b/drivers/soc/mediatek/mtk-mutex.c
+> @@ -156,6 +156,8 @@ struct mtk_mutex_data {
+>  	const unsigned int *mutex_sof;
+>  	const unsigned int mutex_mod_reg;
+>  	const unsigned int mutex_sof_reg;
+> +	const unsigned int *mutex_table_mod;
+> +	const unsigned int *mutex_table_sof;
+>  	const bool no_clk;
+>  };
+>  
+> @@ -530,6 +532,92 @@ void mtk_mutex_release(struct mtk_mutex *mutex)
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_mutex_release);
+>  
+> +static int mtk_mutex_write_mod(struct mtk_mutex *mutex,
+> +			       enum mtk_mutex_table_index idx, bool
+> clear)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	unsigned int reg;
+> +	unsigned int offset;
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
+> +	    idx >= MUTEX_TABLE_IDX_MAX) {
+> +		dev_err(mtx->dev, "Not supported MOD table index : %d",
+> idx);
+> +		return -EINVAL;
+> +	}
+> +
+> +	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+> +				    mutex->id);
+> +	reg = readl_relaxed(mtx->regs + offset);
+> +
+> +	if (clear)
+> +		reg &= ~BIT(mtx->data->mutex_table_mod[idx]);
+> +	else
+> +		reg |= BIT(mtx->data->mutex_table_mod[idx]);
+> +
+> +	writel_relaxed(reg, mtx->regs + offset);
+> +
+> +	return 0;
+> +}
+> +
+> +int mtk_mutex_set_mod(struct mtk_mutex *mutex,
+> +		      enum mtk_mutex_table_index idx)
+> +{
+> +	return mtk_mutex_write_mod(mutex, idx, false);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_set_mod);
 
-Some device tree property should be added or modified in MSDC node
-to support SDIO eint IRQ. Pinctrls "state_eint" is mandatory. Since
-this feature depends on asynchronous interrupts, "wakeup-source",
-"keep-power-in-suspend" and "cap-sdio-irq" flags are necessary, and
-the interrupts list should be extended(the interrupt named with
-sdio_wakeup):
-        &mmcX {
-		...
-		interrupt-names = "msdc", "sdio_wakeup";
-		interrupts-extended = <...>,
-                              	      <&pio xxx IRQ_TYPE_LEVEL_LOW>;
-                ...
-                pinctrl-names = "default", "state_uhs", "state_eint";
-                ...
-                pinctrl-2 = <&mmc2_pins_eint>;
-                ...
-                cap-sdio-irq;
-		keep-power-in-suspend;
-		wakeup-source;
-                ...
-        };
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Co-developed-by: Yong Mao <yong.mao@mediatek.com>
-Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 80 ++++++++++++++++++++++++++++++++++++---
- 1 file changed, 74 insertions(+), 6 deletions(-)
+Why not just export symbol of mtk_mutex_write_mod() and drop
+mtk_mutex_set_mod()/mtk_mutex_clear_mod()?
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 195dc897188b..2d5b23616df6 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /*
-- * Copyright (c) 2014-2015 MediaTek Inc.
-+ * Copyright (c) 2014-2015, 2022 MediaTek Inc.
-  * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
-  */
- 
-@@ -20,6 +20,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/pm_runtime.h>
-+#include <linux/pm_wakeirq.h>
- #include <linux/regulator/consumer.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
-@@ -440,8 +441,10 @@ struct msdc_host {
- 	struct pinctrl *pinctrl;
- 	struct pinctrl_state *pins_default;
- 	struct pinctrl_state *pins_uhs;
-+	struct pinctrl_state *pins_eint;
- 	struct delayed_work req_timeout;
- 	int irq;		/* host interrupt */
-+	int eint_irq;		/* interrupt from sdio device for waking up system */
- 	struct reset_control *reset;
- 
- 	struct clk *src_clk;	/* msdc source clock */
-@@ -1520,17 +1523,41 @@ static void __msdc_enable_sdio_irq(struct msdc_host *host, int enb)
- 
- static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
- {
--	unsigned long flags;
- 	struct msdc_host *host = mmc_priv(mmc);
-+	unsigned long flags;
-+	int ret;
- 
- 	spin_lock_irqsave(&host->lock, flags);
- 	__msdc_enable_sdio_irq(host, enb);
- 	spin_unlock_irqrestore(&host->lock, flags);
- 
--	if (enb)
--		pm_runtime_get_noresume(host->dev);
--	else
--		pm_runtime_put_noidle(host->dev);
-+	if (mmc_card_enable_async_irq(mmc->card) && host->pins_eint) {
-+		if (enb) {
-+			pinctrl_select_state(host->pinctrl, host->pins_eint);
-+			ret = dev_pm_set_dedicated_wake_irq_reverse(host->dev, host->eint_irq);
-+
-+			if (ret) {
-+				dev_err(host->dev, "Failed to register SDIO wakeup irq!\n");
-+				host->pins_eint = NULL;
-+				pm_runtime_get_noresume(host->dev);
-+			} else {
-+				dev_info(host->dev, "SDIO eint irq: %d!\n", host->eint_irq);
-+				device_init_wakeup(host->dev, true);
-+			}
-+
-+			pinctrl_select_state(host->pinctrl, host->pins_uhs);
-+		} else {
-+			dev_pm_clear_wake_irq(host->dev);
-+		}
-+	} else {
-+		if (enb) {
-+			/* Ensure host->pins_eint is NULL */
-+			host->pins_eint = NULL;
-+			pm_runtime_get_noresume(host->dev);
-+		} else {
-+			pm_runtime_put_noidle(host->dev);
-+		}
-+	}
- }
- 
- static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
-@@ -2631,6 +2658,19 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 		goto host_free;
- 	}
- 
-+	/* Support for SDIO eint irq ? */
-+	if ((mmc->pm_caps & MMC_PM_WAKE_SDIO_IRQ) && (mmc->pm_caps & MMC_PM_KEEP_POWER)) {
-+		host->eint_irq = platform_get_irq_byname(pdev, "sdio_wakeup");
-+		if (host->eint_irq > 0) {
-+			host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
-+			if (IS_ERR(host->pins_eint)) {
-+				dev_err_probe(&pdev->dev, PTR_ERR(host->pins_eint),
-+					      "Cannot find pinctrl eint!\n");
-+				host->pins_eint = NULL;
-+			}
-+		}
-+	}
-+
- 	msdc_of_property_parse(pdev, host);
- 
- 	host->dev = &pdev->dev;
-@@ -2845,6 +2885,12 @@ static int __maybe_unused msdc_runtime_suspend(struct device *dev)
- 	struct msdc_host *host = mmc_priv(mmc);
- 
- 	msdc_save_reg(host);
-+
-+	if (sdio_irq_claimed(mmc) && host->pins_eint) {
-+		disable_irq(host->irq);
-+		pinctrl_select_state(host->pinctrl, host->pins_eint);
-+		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-+	}
- 	msdc_gate_clock(host);
- 	return 0;
- }
-@@ -2860,12 +2906,19 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
- 		return ret;
- 
- 	msdc_restore_reg(host);
-+
-+	if (sdio_irq_claimed(mmc) && host->pins_eint) {
-+		sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-+		pinctrl_select_state(host->pinctrl, host->pins_uhs);
-+		enable_irq(host->irq);
-+	}
- 	return 0;
- }
- 
- static int __maybe_unused msdc_suspend(struct device *dev)
- {
- 	struct mmc_host *mmc = dev_get_drvdata(dev);
-+	struct msdc_host *host = mmc_priv(mmc);
- 	int ret;
- 
- 	if (mmc->caps2 & MMC_CAP2_CQE) {
-@@ -2874,11 +2927,26 @@ static int __maybe_unused msdc_suspend(struct device *dev)
- 			return ret;
- 	}
- 
-+	if (sdio_irq_claimed(mmc) && host->pins_eint) {
-+		pm_runtime_put_sync_suspend(dev);
-+
-+		return 0;
-+	}
-+
- 	return pm_runtime_force_suspend(dev);
- }
- 
- static int __maybe_unused msdc_resume(struct device *dev)
- {
-+	struct mmc_host *mmc = dev_get_drvdata(dev);
-+	struct msdc_host *host = mmc_priv(mmc);
-+
-+	if (sdio_irq_claimed(mmc) && host->pins_eint) {
-+		pm_runtime_get_sync(dev);
-+
-+		return 0;
-+	}
-+
- 	return pm_runtime_force_resume(dev);
- }
- 
--- 
-2.25.1
+> +
+> +int mtk_mutex_clear_mod(struct mtk_mutex *mutex,
+> +			enum mtk_mutex_table_index idx)
+> +{
+> +	return mtk_mutex_write_mod(mutex, idx, true);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_clear_mod);
+> +
+> +int mtk_mutex_write_sof(struct mtk_mutex *mutex,
+> +			enum mtk_mutex_table_index idx, bool clear)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
+> mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	unsigned int sof_id, val;
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	if (idx < MUTEX_TABLE_IDX_MDP_RDMA0 ||
+> +	    idx >= MUTEX_TABLE_IDX_MAX) {
+> +		dev_err(mtx->dev, "Not supported SOF table index : %d",
+> idx);
+> +		return -EINVAL;
+> +	}
+> +
+> +	sof_id = mtx->data->mutex_table_sof[idx];
+
+Why do you map each idx to a sof? For each idx, we could choose sof by
+different application. I would like to change parameter
+mtk_mutex_table_index to mtk_mutex_sof_index.
+
+Regards,
+CK
+
+> +
+> +	if (clear)
+> +		val = MUTEX_SOF_SINGLE_MODE;
+> +	else
+> +		val = mtx->data->mutex_sof[sof_id];
+> +
+> +	writel_relaxed(val, mtx->regs +
+> +		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
+> mutex->id));
+> +
+> +	return 0;
+> +}
+> +
+> +int mtk_mutex_set_sof(struct mtk_mutex *mutex,
+> +		      enum mtk_mutex_table_index idx)
+> +{
+> +	return mtk_mutex_write_sof(mutex, idx, false);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_set_sof);
+> +
+> +int mtk_mutex_clear_sof(struct mtk_mutex *mutex,
+> +			enum mtk_mutex_table_index idx)
+> +{
+> +	return mtk_mutex_write_sof(mutex, idx, true);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_clear_sof);
+> +
+>  static int mtk_mutex_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> diff --git a/include/linux/soc/mediatek/mtk-mutex.h
+> b/include/linux/soc/mediatek/mtk-mutex.h
+> index 6fe4ffbde290..f174452212d6 100644
+> --- a/include/linux/soc/mediatek/mtk-mutex.h
+> +++ b/include/linux/soc/mediatek/mtk-mutex.h
+> @@ -10,6 +10,20 @@ struct regmap;
+>  struct device;
+>  struct mtk_mutex;
+>  
+> +enum mtk_mutex_table_index {
+> +	/* MDP table index */
+> +	MUTEX_TABLE_IDX_MDP_RDMA0,
+> +	MUTEX_TABLE_IDX_MDP_RSZ0,
+> +	MUTEX_TABLE_IDX_MDP_RSZ1,
+> +	MUTEX_TABLE_IDX_MDP_TDSHP0,
+> +	MUTEX_TABLE_IDX_MDP_WROT0,
+> +	MUTEX_TABLE_IDX_MDP_WDMA,
+> +	MUTEX_TABLE_IDX_MDP_AAL0,
+> +	MUTEX_TABLE_IDX_MDP_CCORR0,
+> +
+> +	MUTEX_TABLE_IDX_MAX		/* ALWAYS keep at the end */
+> +};
+> +
+>  struct mtk_mutex *mtk_mutex_get(struct device *dev);
+>  int mtk_mutex_prepare(struct mtk_mutex *mutex);
+>  void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+> @@ -22,5 +36,13 @@ void mtk_mutex_unprepare(struct mtk_mutex *mutex);
+>  void mtk_mutex_put(struct mtk_mutex *mutex);
+>  void mtk_mutex_acquire(struct mtk_mutex *mutex);
+>  void mtk_mutex_release(struct mtk_mutex *mutex);
+> +int mtk_mutex_set_mod(struct mtk_mutex *mutex,
+> +		      enum mtk_mutex_table_index idx);
+> +int mtk_mutex_clear_mod(struct mtk_mutex *mutex,
+> +			enum mtk_mutex_table_index idx);
+> +int mtk_mutex_set_sof(struct mtk_mutex *mutex,
+> +		      enum mtk_mutex_table_index idx);
+> +int mtk_mutex_clear_sof(struct mtk_mutex *mutex,
+> +			enum mtk_mutex_table_index idx);
+>  
+>  #endif /* MTK_MUTEX_H */
 
 
 _______________________________________________
