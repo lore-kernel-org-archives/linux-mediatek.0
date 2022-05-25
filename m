@@ -4,277 +4,238 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DBECC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 09:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B0AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 09:50:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P9PrJQOW2rZXZN3tkURlgVQeBFK9de1Dmlrj3Kb8J1s=; b=4gx3y7mOz6JoQCnX+I65XICp+0
-	9WtHgBOgIT5i/DphChYo/hgaEiszVU+FOZwRvCeFlBM63HrnUbfKo8rf10ikRGATqJeTGoVY6JOYL
-	8zcjEPvHO9wk66ogU1SSHAar0lig+qWWQnOkPtlWj9N1wamUojZ9PMGQg1gZWxa0ctIaZKoKDNL3R
-	PvQBkYun733V7Zech7ZuPnLv/DaRCDLv6QsRJBfbqGbEOW6jmIDi3wDX1XpzBlp5twyYzdUsAb2HV
-	VXnCYuuY+rEy4yUZkg/qMn04NMVLV40uvrfou8vOpzpR2/vtAMVRka4ZuCRuqWgmGhlbP3hLkI1OX
-	apCw5J+Q==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=t/AD3pzNkXetndzbKYAxZ5W27Dal+KJXdbuOXyEClxc=; b=R4Itj+fOmH51FM
+	dNPZAn3yTGW8WUqBwagup0JhbO279GfO00Ut4Ho3cmsGe+25h8o6rhblOJEeKwy5yPYP8PNzCHrxy
+	hbbjqFCR0uHKp5cdXDWvE0xzas0KYgQyWhOkgrWJpxi5F11f+U+xm/OUXW1DuwJlbyJ19ARLrgDTD
+	AfiWmpmig2OZhWH1qTUn0p19RJ5xqaEuRW6FkJyHKy+1hssz8+RLpsN1UgrAVIcDskJ1Hem5KwjlD
+	eAiLS7/D5RJdOumo/tdsyxzN1MQ8t358ZUxLcWxVLKbOWpBADg5wlitFBIsuH9G9GGEhpwz02PKEY
+	n+newaKLpxA6H2XsbagA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntnZc-00AdDz-84; Wed, 25 May 2022 09:45:00 +0000
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntnZO-00Ad9P-6c; Wed, 25 May 2022 09:44:49 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.west.internal (Postfix) with ESMTP id B141D2B05006;
- Wed, 25 May 2022 05:44:38 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 25 May 2022 05:44:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
- :cc:content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm3; t=1653471878; x=1653479078; bh=ys3iQzhNHF
- k+i8WtIf+H8WQ46WfOZFCztCK2dX/C9P0=; b=N/JRB+WnexRIZ9dX5PcEm/8f/H
- cPBsMsbDuSTmVpILRSXnNlFoPgXwTnB9sG5c2CBpqvmmZti7TCvET1ygVyPq4fwA
- fQ5OKTgoJNLZ2M0ZTBEABVgD9xQIGnhTbnxt6XkIAVCIzuLJXBs7WAGfC96irWbw
- lr6953LnsKHvebopgcw5k3L/zNh8kVTad2/799qbT1ZNmy0HBuUmu2c1k8Ro/kCY
- bvMC07VkU0pJwn8wysn6o8m1M2Ne1dICZCA2GfRKAkRG+uRlxyGobz3yN2r1jOok
- pxntt2LaG8S5EYl12Kr5IDS1ImVsXzQyl8d4WYDx7OYzrJX/5YAypClUA6hQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
- :feedback-id:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:sender:subject:subject:to:to
- :x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm1; t=1653471878; x=1653479078; bh=ys3iQzhNHFk+i8WtIf+H8WQ46WfO
- ZFCztCK2dX/C9P0=; b=XJwcQJysHomLv8q3I/a024YNpcHuA7CVVSfdAKLSNh3e
- yCo6zETnKg3Mmiy6LoUaiq2nQu9FmR/S85oMTwF7btYoM842Xj+nV71rUSMChwSf
- dqf2GI+aNWNs5ombF58vGOinb8gsdVPNIx+xirIXrd2MM5HTFxrTtiWm/87u7xJG
- g2dLVRdU0LdTz2v5YPgzkl1T0mdMsa+3PlpXoMfDj0mFo5gdyV+0rNllM1Gs6YzH
- v42Dafl6F/jY8Nx/xQNz9BWuJQwjez2vm5rfwevvrJNdAG3j0FQLxK/8UQJ0nJ0c
- WDUETgLd5XsVCXp/jcUW6Bu92Nyy4tEdyF1vOAVWKg==
-X-ME-Sender: <xms:hfqNYq_j5GFf5Uz1mDgmLdV70fLnuq6aSKWevLqyWIawg4NmhGrHQg>
- <xme:hfqNYqtHTkLzDuf9wZyjFbHZAlnHbcr-0YckTlhEp7Xi4YnN4O9Rj5_Rgh6byONs6
- vUf5M6n4txqCdpV9vw>
-X-ME-Received: <xmr:hfqNYgB-vOJM3N79sWpwTBKgf_FqXdlgWKqgCm2OFJA94fiDo67jizwJV9YM_HUjfM0eagMIdOKEsmwTFs1RY076g0I827v4G1dOjck>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrjeehgddukecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvvefukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
- vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
- htvghrnhepgfeuuedtfefgveevheejfeeghedvjeejfeehkeffudetuedtgfeiieeiffeu
- tdffnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecuvehluhhsthgvrhfuihiivg
- eptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggt
- hh
-X-ME-Proxy: <xmx:hfqNYicSWVCNxtPjO2OP-dTZTG5RnA-8HT0mTEUaKkDRVcwql_I2Ug>
- <xmx:hfqNYvOIcwaM76cNjFwwp5PA3zMSONCG2MMRXEw6yETvTmp88gEfoQ>
- <xmx:hfqNYsk9JgcQt1Fcfw7pvS3BYvWH_sfA1sMh1fLYGKJSYXOJnHLW1A>
- <xmx:hvqNYpW3xzQCmkMOuNOuoVddp28C1T8FymU-PtWuCJdZO9MFWihypK9P9TQ>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 25 May 2022 05:44:36 -0400 (EDT)
-Date: Wed, 25 May 2022 11:44:34 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Guillaume Ranquet <granquet@baylibre.com>
-Cc: airlied@linux.ie, angelogioacchino.delregno@collabora.com,
- chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org,
- ck.hu@mediatek.com, daniel@ffwll.ch, deller@gmx.de,
- jitao.shi@mediatek.com, kishon@ti.com, krzk+dt@kernel.org,
- maarten.lankhorst@linux.intel.com, matthias.bgg@gmail.com,
- p.zabel@pengutronix.de, robh+dt@kernel.org, tzimmermann@suse.de,
- vkoul@kernel.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, markyacoub@google.com,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH v9 18/22] drm/mediatek: Add mt8195 Embedded DisplayPort
- driver
-Message-ID: <20220525094434.7qhycnobrmgiihuf@houat>
-References: <20220327223927.20848-1-granquet@baylibre.com>
- <20220327223927.20848-19-granquet@baylibre.com>
- <20220429083933.q3w75q3zuyyuvo4w@houat>
- <CABnWg9tzhZjrdKT4chkDrY-uH8BMUoxyNLUSwfuG6Sv1J+8ddg@mail.gmail.com>
- <20220512074446.ihilbbnbuwesxbbg@houat>
- <CABnWg9tHRc_7VZ1z6NeMEDfQvxam_xOimBnM=hzBUqkhzPOSCA@mail.gmail.com>
+	id 1ntnel-00AeKO-MN; Wed, 25 May 2022 09:50:19 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1ntnea-00AeHq-GK; Wed, 25 May 2022 09:50:10 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	(Authenticated sender: kholk11)
+	with ESMTPSA id 71BAF1F44B84
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1653472204;
+	bh=syTUXEsw9/n/6NDfW7WVBL7ZaRtUq32UuldrTBYAPc4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cUME8Mii9tR0Tu01mYdGkHp05qEJkOXwdrQIlvvfG38MQrP5H3GB6ASGPt9iwDqgv
+	 d1mRtNNHL1u+o4bjHckBdvy5LqcIiLNB/+TGq8Zt2paL3/AO0a7XCsF1e5I04EVCvn
+	 KDTyX8xJHIT1GYRk7c6lh+jl8fnPDZDeJEOak7bxJwGPv/sph7p+SHf8EGqGZYT3Tb
+	 cMLALx0Bg0h25UbxIml54g7j5SnPiPH5ZAT5Dp7DFGV3CHcFAJSDpWBxTZlAh3H2gN
+	 /6Du8ufh33EOgXlIgWtnnVhCMXYJ7X3BEkwRZgFyrGfd+d5BWEmIGYUL1kB7yJ9fD0
+	 RFYnM0I0gTxeg==
+Message-ID: <43a102cf-6971-8083-d24f-629d6d39810f@collabora.com>
+Date: Wed, 25 May 2022 11:50:00 +0200
 MIME-Version: 1.0
-In-Reply-To: <CABnWg9tHRc_7VZ1z6NeMEDfQvxam_xOimBnM=hzBUqkhzPOSCA@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v20 0/8] Add Mediatek Soc DRM (vdosys0) support for mt8195
+Content-Language: en-US
+To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: CK Hu <ck.hu@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ jason-jhlin <jason-jh.lin@mediatek.corp-partner.google.com>
+References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_024446_812145_CCEE1074 
-X-CRM114-Status: GOOD (  33.64  )
+X-CRM114-CacheID: sfid-20220525_025008_864310_B7D81F53 
+X-CRM114-Status: GOOD (  29.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
 List-Id: <linux-mediatek.lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>, 
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
 List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6927302815967903327=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 19/04/22 11:41, jason-jh.lin ha scritto:
+> From: jason-jhlin <jason-jh.lin@mediatek.corp-partner.google.com>
+> 
 
---===============6927302815967903327==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="frqxb4oy2hxaw6mk"
-Content-Disposition: inline
+Hello Jason,
+
+this series does not apply cleanly anymore on next-20220525, can you please
+rebase and resend?
+
+I hope that with a bit of coordination, we can get the entire display stack
+finally upstreamed in v5.19... it's been quite a while... :-)
+
+Cheers,
+Angelo
+
+> Change in v20:
+> - split binding patch to another series 'MediaTek MT8195 display binding':
+>    https://patchwork.ozlabs.org/project/devicetree-bindings/list/?series=295669
+> - fix io_start type from u32 to resource_size_t
+> - fix some commit message for DITHER enum
+> 
+> Change in v19:
+> - fix checking condition for the return vaule of platform resource
+> - drm/mediatek fix build waning for [-Wunused-const-variable]
+> 
+> Change in v18:
+> - change get driver data by io_start and wrap mmsys driver data into
+>    mmsys match data structure to support identifying multi mmsys driver
+>    data with the same compatible name
+> - change DDP_COMPONENT_DITHER to DDP_CONPONENT_DITHER0
+> 
+> Change in v17:
+> - change compatible name from 2 vdosys to 1 mmsys
+> - add get driver data by clk name function to get corresponding
+>    driver data for mt8195 vdosys0
+> - add all routing table setting for mt8195 vdosys0
+> - remove useless mutex define
+> 
+> Change in v16:
+> - rebase on linu-next tag: 'next-20220303'
+> - rebase on series: 'Fix MediaTek display dt-bindings issues'
+> 
+> Change in v15:
+> - remove mt8195-mmsys.h comment for mux settings
+> - define the mask macro to replace using value as mask
+>    to fix zero mask problem
+> - add EOF setting comment for MUTEX sof register
+> 
+> Change in v14:
+> - rebase on mediatek-drm-next-5.17
+> - rebase on "Add mmsys and mutex support for MDP" series
+> - rebase on "media: mediatek: support mdp3 on mt8183 platform" series
+> 
+> Change in v13:
+> - remove dts patch
+> - rebase on kernel-5.16-rc1
+> - rebase on mediatek-drm-next
+> 
+> Change in v12:
+> - add clock-names property to merge yaml
+> - using BIT(nr) macro to define the settings of mmsys routing table
+> - fix clk_get and clk_prepare_enable error handling issue
+> 
+> Change in v11:
+> - rebase on kernel-5.15-rc1
+> - change mbox label to gce0 for dts node of vdosys0
+> - change ovl compatibale to mt8192 to set smi_id_en=true in driver data
+> - move common module from display folder to common folder,
+>    such as AAL, COCLOR, CCORR and MUTEX
+> 
+> Change in v10:
+> - rebase on "drm/mediatek: add support for mediatek SOC MT8192" series
+> - rebase on "soc: mediatek: mmsys: add mt8192 mmsys support" series
+> - fix some typo and "mediatek" start with capital in every dt-bindings
+> - move mutex yaml from dfisplay folder to soc folder
+> - separate merge additional propoerties to an individual dt-bindings patch
+> 
+> Change in v9:
+> - separate power and gce properties of mmsys into another dt-binding patch
+> - rebase on "Separate aal module" series
+> - keep mtk_ddp_clk_enable/disable in the same place
+> - change mtk_dsc_start config register to mtk_drm_ddp_write_mask
+> - remove the 0 setting of merge fifo config function
+> - add CCORR driver data for mt8195
+> 
+> Change in v8:
+> - add DP_INTF0 mux into mmsys routing table
+> - add DP_INTF0 mutex mod and enum into add/remove comp function
+> - remove bypass DSC enum in mtk_ddp_comp_init
+> 
+> Change in v7:
+> - add dt=binding of mmsys and disp path into this series
+> - separate th modidfication of alphabetic order, remove unused define and
+>    rename the define of register offset to individual patch
+> - add comment for MERGE ultra and preultra setting
+> 
+> Change in v6:
+> - adjust alphabetic order for mediatek-drm
+> - move the patch that add mt8195 support for mediatek-drm as
+>    the lastest patch
+> - add MERGE define for const varriable
+> 
+> Change in v5:
+> - add power-domain property into vdosys0 and vdosys1 dts node.
+> - add MT8195 prifix and remove unused VDO1 define in mt8195-mmsys.h
+> 
+> Change in v4:
+> - extract dt-binding patches to another patch series
+> - squash DSC module into mtk_drm_ddp_comp.c
+> - add coment and simplify MERGE config function
+> 
+> Change in v3:
+> - change mmsys and display dt-bindings document from txt to yaml
+> - add MERGE additional description in display dt-bindings document
+> - fix mboxes-cells number of vdosys0 node in dts
+> - drop mutex eof convert define
+> - remove pm_runtime apis in DSC and MERGE
+> - change DSC and MERGE enum to alphabetic order
+> 
+> Change in v2:
+> - add DSC yaml file
+> - add mt8195 drm driver porting parts in to one patch
+> - remove useless define, variable, structure member and function
+> - simplify DSC and MERGE file and switch threre order
+> 
+> jason-jh.lin (8):
+>    soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+>    soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+>    drm/mediatek: add DSC support for mediatek-drm
+>    drm/mediatek: add MERGE support for mediatek-drm
+>    drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
+>    soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for mt8195 vdosys0
+>    drm/mediatek: add suffix 0 to DDP_COMPONENT_DITHER for mt8195 vdosys0
+>    soc: mediatek: remove DDP_DOMPONENT_DITHER from enum
+> 
+>   drivers/gpu/drm/mediatek/Makefile           |   1 +
+>   drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+>   drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 246 +++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  65 +++-
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   2 +
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 151 +++++++-
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   7 +
+>   drivers/soc/mediatek/mt8167-mmsys.h         |   2 +-
+>   drivers/soc/mediatek/mt8183-mmsys.h         |   2 +-
+>   drivers/soc/mediatek/mt8186-mmsys.h         |   4 +-
+>   drivers/soc/mediatek/mt8192-mmsys.h         |   4 +-
+>   drivers/soc/mediatek/mt8195-mmsys.h         | 370 ++++++++++++++++++++
+>   drivers/soc/mediatek/mt8365-mmsys.h         |   4 +-
+>   drivers/soc/mediatek/mtk-mmsys.c            | 152 +++++++-
+>   drivers/soc/mediatek/mtk-mmsys.h            |   6 +
+>   drivers/soc/mediatek/mtk-mutex.c            |  95 ++++-
+>   include/linux/soc/mediatek/mtk-mmsys.h      |  13 +-
+>   18 files changed, 1098 insertions(+), 40 deletions(-)
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+>   create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> 
 
 
---frqxb4oy2hxaw6mk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, May 19, 2022 at 09:26:59AM -0700, Guillaume Ranquet wrote:
-> On Thu, 12 May 2022 09:44, Maxime Ripard <maxime@cerno.tech> wrote:
-> >Hi,
-> >
-> >On Wed, May 11, 2022 at 05:59:13AM -0700, Guillaume Ranquet wrote:
-> >> >> +#include <drm/drm_atomic_helper.h>
-> >> >> +#include <drm/drm_bridge.h>
-> >> >> +#include <drm/drm_crtc.h>
-> >> >> +#include <drm/dp/drm_dp_helper.h>
-> >> >> +#include <drm/drm_edid.h>
-> >> >> +#include <drm/drm_of.h>
-> >> >> +#include <drm/drm_panel.h>
-> >> >> +#include <drm/drm_print.h>
-> >> >> +#include <drm/drm_probe_helper.h>
-> >> >> +#include <linux/arm-smccc.h>
-> >> >> +#include <linux/clk.h>
-> >> >> +#include <linux/delay.h>
-> >> >> +#include <linux/errno.h>
-> >> >> +#include <linux/kernel.h>
-> >> >> +#include <linux/mfd/syscon.h>
-> >> >> +#include <linux/nvmem-consumer.h>
-> >> >> +#include <linux/of.h>
-> >> >> +#include <linux/of_irq.h>
-> >> >> +#include <linux/of_platform.h>
-> >> >> +#include <linux/phy/phy.h>
-> >> >> +#include <linux/platform_device.h>
-> >> >> +#include <linux/pm_runtime.h>
-> >> >> +#include <linux/regmap.h>
-> >> >> +#include <sound/hdmi-codec.h>
-> >> >> +#include <video/videomode.h>
-> >> >> +
-> >> >> +#include "mtk_dp_reg.h"
-> >> >> +
-> >> >> +#define MTK_DP_AUX_WAIT_REPLY_COUNT 20
-> >> >> +#define MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT 3
-> >> >> +
-> >> >> +//TODO: platform/device data or dts?
-> >> >
-> >> >DTS :)
-> >>
-> >> It's probably going to be a platform_data struct for v10...
-> >> If I have time, I'll change it to a dts property for v10.
-> >
-> >I can't really imagine a case where we would need platform_data
-> >nowadays. If you have a device tree, then it should be part of the
-> >binding.
-> >
-> >What issue would you like to address by using a platform_data?
-> >
->=20
-> Ok, I'll migrate to dt then. I didn't realize platform_data were deprecia=
-ted.
->=20
-> Angelo wants the MAX_LINRATE and MAX_LANES defines to be configurable.
-> I imagined platform_data would be more appropriate as (per my understandi=
-ng) the
-> limitation is associated with a specific SoC.
-
-The entire device tree is nothing but a collection of data associated to
-a specific SoC though :)
-
-> >> >> +static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
-> >> >> +				    struct drm_connector *connector)
-> >> >> +{
-> >> >> +	struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
-> >> >> +	bool enabled =3D mtk_dp->enabled;
-> >> >> +	struct edid *new_edid =3D NULL;
-> >> >> +
-> >> >> +	if (!enabled)
-> >> >> +		drm_bridge_chain_pre_enable(bridge);
-> >> >> +
-> >> >> +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
-> >> >> +	usleep_range(2000, 5000);
-> >> >> +
-> >> >> +	if (mtk_dp_plug_state(mtk_dp))
-> >> >> +		new_edid =3D drm_get_edid(connector, &mtk_dp->aux.ddc);
-> >> >> +
-> >> >> +	if (!enabled)
-> >> >> +		drm_bridge_chain_post_disable(bridge);
-> >> >
-> >> >Are you sure we can't get a mode set while get_edid is called?
-> >> >
-> >> >If we can, then you could end up disabling the device while it's being
-> >> >powered on.
-> >>
-> >> I'm a bit unsure, I need to spend more time in the drm stack to make s=
-ure.
-> >> I'll get back to you when I have a definitive answer.
-> >
-> >So, it looks like it's ok.
-> >
-> >get_edid is your implementation of get_modes, which is called by
-> >drm_helper_probe_single_connector_modes
-> >
-> >https://elixir.bootlin.com/linux/latest/source/drivers/gpu/drm/drm_probe=
-_helper.c#L416
-> >
-> >This is the standard implemantion of fill_modes, which is called
-> >whenever the get_connector ioctl is called (or similar paths, like
-> >drm_client_modeset_probe)
-> >
-> >drm_helper_probe_single_connector_modes is under the assumption that the
-> >mode_config.mutex is held though, and that the big lock. So it should be
-> >serialized there.
-> >
-> >Just for future proofing though, it would be better to use refcounting
-> >there. Would runtime_pm work for you there?
-> >
->=20
-> Thx for looking into this for me.
-> Not sure runtime_pm works here as it would only refcount if compiled
-> with CONFIG_PM?
-
-It should be enabled in most configurations these days, and you can
-always depend on it in your Kconfig option.
-
-> I'd rather use the enabled field as a refcounter instead of a boolean.
-
-It's a bit more ad-hoc, but that would work too. Make sure to use a lock
-or atomic operations though
-
-Maxime
-
---frqxb4oy2hxaw6mk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCYo36ggAKCRDj7w1vZxhR
-xZ8uAQD4p9FP6n4HWaV/eeMy9XLCytn17FejCmxsGJ+BVRXkngEA7rKJQeM++TcT
-7XF+Ij2881A16a/1Cfs+sVBCS9T7/Ao=
-=cDEf
------END PGP SIGNATURE-----
-
---frqxb4oy2hxaw6mk--
-
-
---===============6927302815967903327==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6927302815967903327==--
-
