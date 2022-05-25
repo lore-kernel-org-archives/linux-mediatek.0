@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6AD8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 01:48:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387BEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 01:49:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Sy5sClNh0ylOzVG9s5a8mOlm5wfQzvlhfNNKAdfdE0Y=; b=W/Gzt3CwvTq31W
-	ZmgAZcLI023ODcDbSaUVYhclOTF6+r9nH0VeiYOmE+A6nE54glS5b1NqlExDa3umdt0MbpT0akP1N
-	+HalkiEYZ3+lis6SymqGlF/jfsicVVd3I0X8sa9wXH8IlTSFjBPyYIhrg48gaFNnCO3w57EdAvNI9
-	yoo3s5SYmcy/lgpYcXLuvEBurbA9IBkZ7AoYgdvKWsK/m5jgUn+2nLGFxZn+XbzAytDbQyO9cjU7i
-	B26JnpZTgLFcV0FdgyHxBKnTy7DChHdSdFG2kIkJieS/EhW832VlcVeQbQa21aX9+8EQ5e/TFEH/i
-	0U0DooOOwbAkPjW/qJvg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fiCh+1XRSMUUOJ0SmSBN9WjI6T3LRncSozNsjo+7KmY=; b=lGahN6t7akwRCK
+	N2Cn+goJ0L3Tbwx2xZVgLvb9z1pQClh8Y9qBpnvpmaGg1YQxLbFgTijZdGm+1GDgCAQx8uEdw9hsN
+	/hLwTrfoHqp3eJ9fSSEsykwMRioZuaE3vqluPLUCFkXCvu7qa9b2WwSwXmsTjYMeHrXNH9cNzOCrm
+	o6V2CAC9NyLIjz4v83gEsH+1OUrXtKWTn3BGD56J6rnfC4FATwcX1PBTFZ+EhWkwWdKGLdWs2b04d
+	/cvB+CIjxLzIUFh+9vfuItm/BmAAFe2bq9XfGo+V6TAYCbq43EAzH2WQTd1JhYgo37l9gVxLuuQF7
+	Bj59Vv4bUOgvSIBbq6SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntg8l-009eda-P6; Wed, 25 May 2022 01:48:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ntg9X-009exe-Od; Wed, 25 May 2022 01:49:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntg8i-009eZr-P2; Wed, 25 May 2022 01:48:46 +0000
-X-UUID: bc674553efe8402490e1af961284a440-20220524
+ id 1ntg8j-009eb4-OY; Wed, 25 May 2022 01:48:47 +0000
+X-UUID: 1cd2eb9bd4524cabbf6c35398ca2017e-20220524
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:b49e8c4b-fa94-422e-974e-6cffe443c0d6, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:2d096e0f-ac76-4415-a478-d97105a80f15, OB:0,
  LO
- B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
- ON:release,TS:0
-X-CID-META: VersionHash:2a19b09, CLOUDID:89231bb8-3c45-407b-8f66-25095432a27a,
+ B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+ ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09, CLOUDID:c1535747-4fb1-496b-8f1d-39e733fed1ea,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
  ,QS:0,BEC:nil
-X-UUID: bc674553efe8402490e1af961284a440-20220524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+X-UUID: 1cd2eb9bd4524cabbf6c35398ca2017e-20220524
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1845915087; Tue, 24 May 2022 18:48:37 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 380741163; Tue, 24 May 2022 18:48:39 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 May 2022 18:48:35 -0700
+ 15.0.1497.2; Tue, 24 May 2022 18:48:37 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 May 2022 09:48:33 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Wed, 25 May 2022 09:48:35 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 25 May 2022 09:48:32 +0800
+ Transport; Wed, 25 May 2022 09:48:33 +0800
 From: Axe Yang <axe.yang@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
@@ -63,15 +64,18 @@ CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v12 0/3] mmc: mediatek: add support for SDIO async IRQ
-Date: Wed, 25 May 2022 09:48:28 +0800
-Message-ID: <20220525014831.32723-1-axe.yang@mediatek.com>
+Subject: [PATCH 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and pinctrls
+ properties
+Date: Wed, 25 May 2022 09:48:29 +0800
+Message-ID: <20220525014831.32723-2-axe.yang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220525014831.32723-1-axe.yang@mediatek.com>
+References: <20220525014831.32723-1-axe.yang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_184844_877363_B33BE367 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20220524_184845_834754_6DF3792D 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,80 +92,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v12:
-- assign NULL to pins_eint directly instead of using kfree()
+Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
+This feature allow SDIO devices alarm asynchronous interrupt to host
+even when host stop providing clock to SDIO card. An extra wakeup
+interrupt and pinctrl states for SDIO DAT1 pin state switching are
+required in this scenario.
 
-Changes in v11:
-- remove '_irq' suffix in interrupts-names property
-- fix yaml example build error
-- refactor msdc_enable_sdio_irq(), free pins_eint if async irq is not supported
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+---
+ .../devicetree/bindings/mmc/mtk-sd.yaml       | 50 ++++++++++++++++++-
+ 1 file changed, 49 insertions(+), 1 deletion(-)
 
-Changes in v10:
-- add sample node for SDIO host which support wakeup interrupt in yaml
-- skip MMC_PM_WAKE_SDIO_IRQ check before enable SDIO async interrupt
-- add MMC_PM_KEEP_POWER check before SDIO eint pinstate parsing
-- use dev_pm_set_dedicated_wake_irq_reverse() to correct irq control sequence
-- set dedicated irq in msdc_enable_sdio_irq() rather than msdc_drv_probe()
-- remove unnecessary wake irq control, rpm/dpm system shall manage that
-- move wake irq/msdc irq control back to system suspend phase, use rpm_suspend
-  and rpm_resume to ensure irq control sequence:
-     disable msdc irq -> enable wake irq -> disable wake irq -> enable msdc irq
-- simplify variables, check pins_eint to know whether wakeup settings are managed
-
-Changes in v9:
-- remove pinctrl "state_dat1"
-
-Changes in v8:
-- remove maxItems property under pinctrl-names property
-
-Changes in v7:
-- add device_init_wakeup() to register SDIO host as wakeup source
-
-Changes in v6:
-- abandon cap-sdio-async-irq flag, use wakeup-source flag instead
-- extend interrupts and pinctrls in mediatek mmc host controller DT documents
-- add mmc_card_enable_async_irq() to access enable_async_irq flag
-- simplify wakeup irq implementation with dedicate wake up irq related interface
-
-Changes in v5:
-- resort variables to reversed xmas tree order
-- restore old copyright year range and add current year back
-
-Changes in v4:
-- add MMC_CAP2_SDIO_ASYNC_IRQ judge before lookup eint pinctrl
-- replace spin_lock_irqsave() variant with spin_lock() in eint irq handler
-
-Changes in v3:
-- correct abbreviations with capital letters in commit message
-- replace copyright year with 2022 in mtk-sd.c
-- remove unnessary pointer casting
-- adjust variable order to reversed xmas tree
-- remove a redundant blank line
-- refine if statement, following standard pattern
-
-Changes in v2:
-- change flag name from 'cap-sdio-async-int' to 'cap-sdio-async-irq'
-- change corresponding macro names from xxx_INT to xxx_IRQ
-- resort new member in msdc_host structure
-- refine function msdc_request_dat1_eint_irq()
-- rename msdc_{suspend,resume} function names, add suffix '_noirq'
-- add MMC_CAP2_NO_SDIO judgement before parse eint related pin setting
-
-Axe Yang (3):
-  dt-bindings: mmc: mtk-sd: extend interrupts and pinctrls properties
-  mmc: core: Add support for SDIO wakeup interrupt
-  mmc: mediatek: add support for SDIO eint wakup IRQ
-
- .../devicetree/bindings/mmc/mtk-sd.yaml       | 50 +++++++++++-
- drivers/mmc/core/sdio.c                       | 14 ++++
- drivers/mmc/host/mtk-sd.c                     | 80 +++++++++++++++++--
- include/linux/mmc/card.h                      |  8 +-
- include/linux/mmc/sdio.h                      |  5 ++
- 5 files changed, 149 insertions(+), 8 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index 2a2e9fa8c188..e83bf10281d6 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -72,12 +72,27 @@ properties:
+       - const: ahb_cg
+ 
+   interrupts:
+-    maxItems: 1
++    description:
++      Should at least contain MSDC GIC interrupt. To support SDIO in-band wakeup, an extended
++      interrupt is required and be configured as wakeup source irq.
++    minItems: 1
++    maxItems: 2
++
++  interrupt-names:
++    items:
++      - const: msdc
++      - const: sdio_wakeup
+ 
+   pinctrl-names:
++    description:
++      Should at least contain default and state_uhs. To support SDIO in-band wakeup, dat1 pin
++      will be switched between GPIO mode and SDIO DAT1 mode, state_eint and state_dat1 are
++      mandatory in this scenarios.
++    minItems: 2
+     items:
+       - const: default
+       - const: state_uhs
++      - const: state_eint
+ 
+   pinctrl-0:
+     description:
+@@ -89,6 +104,11 @@ properties:
+       should contain uhs mode pin ctrl.
+     maxItems: 1
+ 
++  pinctrl-2:
++    description:
++      should switch dat1 pin to GPIO mode.
++    maxItems: 1
++
+   assigned-clocks:
+     description:
+       PLL of the source clock.
+@@ -208,4 +228,32 @@ examples:
+         mediatek,hs400-cmd-resp-sel-rising;
+     };
+ 
++    mmc3: mmc@11260000 {
++        compatible = "mediatek,mt8173-mmc";
++        reg = <0x11260000 0x1000>;
++        clock-names = "source", "hclk";
++        clocks = <&pericfg CLK_PERI_MSDC30_3>,
++                 <&topckgen CLK_TOP_MSDC50_2_H_SEL>;
++        interrupt-names = "msdc", "sdio_wakeup";
++        interrupts-extended = <&gic GIC_SPI 74 IRQ_TYPE_LEVEL_LOW 0>,
++                     <&pio 23 IRQ_TYPE_LEVEL_LOW>;
++        pinctrl-names = "default", "state_uhs", "state_eint";
++        pinctrl-0 = <&mmc2_pins_default>;
++        pinctrl-1 = <&mmc2_pins_uhs>;
++        pinctrl-2 = <&mmc2_pins_eint>;
++        bus-width = <4>;
++        max-frequency = <200000000>;
++        cap-sd-highspeed;
++        sd-uhs-sdr104;
++        keep-power-in-suspend;
++        wakeup-source;
++        cap-sdio-irq;
++        no-mmc;
++        no-sd;
++        non-removable;
++        vmmc-supply = <&sdio_fixed_3v3>;
++        vqmmc-supply = <&mt6397_vgp3_reg>;
++        mmc-pwrseq = <&wifi_pwrseq>;
++    };
++
+ ...
 -- 
 2.25.1
-
 
 
 _______________________________________________
