@@ -4,79 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F45EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 05:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3E4AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 06:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WZYZ+KMM2LfQuvGO6fyjPZS1dwgLBfViY4qfCF+Nx7o=; b=Gf5LXA/gzfbiwI
-	y4Jvn2fw1dJdFSiZGIF71F8AzwwPEJBb/q49BBZTrCHxHqbsVFi1Tllz0MX2VosKwbk1B0Ix4mBAT
-	zml8V7Z2yn+4slY5Re4rHPzuv8P7BeFo2vRPHQYtOX30nSHEeQviglg1vP567chCujIfmMyTOamBK
-	zQULZGgsIXgJJgVYpDk3IorBpkXk0mgg0phlBOSaEWO2yM0AfRsoLOGnmcz1Cu+bkV74sWA8lraVn
-	qdXP7RC5eN7KzlA+9OSZKkw+eLm4ynTbSzDoNMtHy29vL7r7EVH49nrBvI9IsSMGL+zDkeS2NtNA2
-	NpbgZEE/vLwQ5xbdGIeg==;
+	List-Owner; bh=T6Lv5WrytwYevaxtM5y5AnVYrkyIbWcrygxnuerLjw0=; b=g8dJUdBnRRBCI/
+	1Q+fJ8WKcnhyaIagKE525bRg4adiiqwEqUIx5p82jHoPYXa8Bsxk5VAhaYGNw32JJ2+wu05GibV2v
+	U5CkSUCfElz2RGw/0ZhYrfEmjGVL6oauFWScBp3efw3y4hA8iEXpadMLnkAOw7FVSV+Bmj/Y9y4BQ
+	D7FKCnnM+YTTGyfk2Zz8ST0hbtF+yTf08FzwpE6Bm07MY0ZmTGDNYD5hQcBEZLY7mNc0Ne8kgcYz6
+	niXx4nDljdqNw6Rz0RVvqZjqlN5eJrc9YRrr3+wGmlJkP5n736MFJv0bbmtpJL8UucxUwHzkUxknp
+	Dv67eDC8xL4EP554/HtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntjtB-00A0GE-L8; Wed, 25 May 2022 05:48:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ntkSx-00A4Ao-7C; Wed, 25 May 2022 06:25:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntjsq-00A0Cw-EC; Wed, 25 May 2022 05:48:39 +0000
-X-UUID: c318cd9ea0e44664b8c4530872fd701d-20220524
+ id 1ntkSt-00A49n-Fi; Wed, 25 May 2022 06:25:54 +0000
+X-UUID: d20eeee7649e4820bbd71c95be0b9df7-20220524
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5, REQID:6e3aa34e-1968-47cd-b722-3b6d6534d9e7, OB:0,
+X-CID-O-INFO: VERSION:1.1.5, REQID:80d0a584-fdc2-4291-83c9-0a22d3c8feb2, OB:0,
  LO
  B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
  ON:release,TS:5
-X-CID-META: VersionHash:2a19b09, CLOUDID:6e316147-4fb1-496b-8f1d-39e733fed1ea,
+X-CID-META: VersionHash:2a19b09, CLOUDID:62c56247-4fb1-496b-8f1d-39e733fed1ea,
  C
  OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
  ,QS:0,BEC:nil
-X-UUID: c318cd9ea0e44664b8c4530872fd701d-20220524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+X-UUID: d20eeee7649e4820bbd71c95be0b9df7-20220524
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yf.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 57035083; Tue, 24 May 2022 22:48:26 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1595215462; Tue, 24 May 2022 23:25:46 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 May 2022 22:47:43 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 May 2022 13:47:41 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 25 May 2022 13:47:41 +0800
-Message-ID: <eaed852506a753629d0d76334664c51d98477d14.camel@mediatek.com>
-Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
-CC: Markus Schneider-Pargmann <msp@baylibre.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <linux-fbdev@vger.kernel.org>
-Date: Wed, 25 May 2022 13:47:41 +0800
-In-Reply-To: <20220523104758.29531-19-granquet@baylibre.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
- <20220523104758.29531-19-granquet@baylibre.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.0.1497.2; Tue, 24 May 2022 23:25:44 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Wed, 25 May 2022 14:25:43 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 25 May 2022 14:25:42 +0800
+From: <yf.wang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open
+ list:MEDIATEK IOMMU DRIVER" <iommu@lists.linux-foundation.org>, "moderated
+ list:MEDIATEK IOMMU DRIVER" <linux-mediatek@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "open
+ list" <linux-kernel@vger.kernel.org>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Ning Li
+ <Ning.Li@mediatek.com>, Yunfei Wang <yf.wang@mediatek.com>, Ning Li
+ <ning.li@mediatek.com>
+Subject: [PATCH v6 2/2] iommu/mediatek: Allow page table PA up to 35bit
+Date: Wed, 25 May 2022 14:18:34 +0800
+Message-ID: <20220525061836.30292-3-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220525061836.30292-1-yf.wang@mediatek.com>
+References: <20220525061836.30292-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_224836_523290_730E46B2 
-X-CRM114-Status: GOOD (  28.56  )
+X-CRM114-CacheID: sfid-20220524_232551_570857_205FA7AF 
+X-CRM114-Status: GOOD (  17.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,75 +81,124 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEd1aWxsYXVtZToKCk9uIE1vbiwgMjAyMi0wNS0yMyBhdCAxMjo0NyArMDIwMCwgR3VpbGxh
-dW1lIFJhbnF1ZXQgd3JvdGU6Cj4gRnJvbTogTWFya3VzIFNjaG5laWRlci1QYXJnbWFubiA8bXNw
-QGJheWxpYnJlLmNvbT4KPiAKPiBUaGlzIHBhdGNoIGFkZHMgYSBEaXNwbGF5UG9ydCBkcml2ZXIg
-Zm9yIHRoZSBNZWRpYXRlayBtdDgxOTUgU29DLgo+IAo+IEl0IHN1cHBvcnRzIHRoZSBtdDgxOTUs
-IHRoZSBlbWJlZGRlZCBEaXNwbGF5UG9ydCB1bml0cy4gSXQgb2ZmZXJzCj4gRGlzcGxheVBvcnQg
-MS40IHdpdGggdXAgdG8gNCBsYW5lcy4KPiAKPiBUaGUgZHJpdmVyIGNyZWF0ZXMgYSBjaGlsZCBk
-ZXZpY2UgZm9yIHRoZSBwaHkuIFRoZSBjaGlsZCBkZXZpY2Ugd2lsbAo+IG5ldmVyIGV4aXN0IHdp
-dGhvdXQgdGhlIHBhcmVudCBiZWluZyBhY3RpdmUuIEFzIHRoZXkgYXJlIHNoYXJpbmcgYQo+IHJl
-Z2lzdGVyIHJhbmdlLCB0aGUgcGFyZW50IHBhc3NlcyBhIHJlZ21hcCBwb2ludGVyIHRvIHRoZSBj
-aGlsZCBzbwo+IHRoYXQKPiBib3RoIGNhbiB3b3JrIHdpdGggdGhlIHNhbWUgcmVnaXN0ZXIgcmFu
-Z2UuIFRoZSBwaHkgZHJpdmVyIHNldHMKPiBkZXZpY2UKPiBkYXRhIHRoYXQgaXMgcmVhZCBieSB0
-aGUgcGFyZW50IHRvIGdldCB0aGUgcGh5IGRldmljZSB0aGF0IGNhbiBiZQo+IHVzZWQKPiB0byBj
-b250cm9sIHRoZSBwaHkgcHJvcGVydGllcy4KPiAKPiBUaGlzIGRyaXZlciBpcyBiYXNlZCBvbiBh
-biBpbml0aWFsIHZlcnNpb24gYnkKPiBKYXNvbi1KSC5MaW4gPGphc29uLWpoLmxpbkBtZWRpYXRl
-ay5jb20+Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmt1cyBTY2huZWlkZXItUGFyZ21hbm4gPG1z
-cEBiYXlsaWJyZS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogR3VpbGxhdW1lIFJhbnF1ZXQgPGdyYW5x
-dWV0QGJheWxpYnJlLmNvbT4KPiAtLS0KPiAgCgpbc25pcF0KCj4gKwo+ICtzdGF0aWMgaXJxcmV0
-dXJuX3QgbXRrX2RwX2hwZF9ldmVudF90aHJlYWQoaW50IGhwZCwgdm9pZCAqZGV2KQoKSSBkb24n
-dCBoYXZlIGEgRFAgc3BlYy4gSSBmaW5kIG9uZSBpbiBbMV0gYnV0IEknbSBub3Qgc3VyZSBpdCdz
-IHJlYWwKc3BlYyBvciBub3QuIElmIGl0J3MgcmVhbCwgaW4gc2VjdGlvbiAzLjEuMy4yLCBpdCBk
-ZXNjcmliZToKCjMuMS4zLjIgSG90IFBsdWcvVW5wbHVnIERldGVjdGlvbgpPbmUgc2lnbmFsIChI
-UEQpIGlzIHVzZWQgYnkgYSBkZXZpY2UgKGFuIFVwc3RyZWFtIGRldmljZSkgdG8gZGV0ZWN0CnRo
-YXQgYSBEb3duc3RyZWFtIHBvcnQgb24gdGhlIGRldmljZSBoYXMgYmVlbiBjb25uZWN0ZWQgdG8g
-YW5vdGhlcgpkZXZpY2UgKHRoZSBEb3duc3RyZWFtIGRldmljZSkuIEltcGxlbWVudGF0aW9uIG9m
-IEhQRCBpcyBvcHRpb25hbCBmb3IKYW4gZW1iZWRkZWQgbGluayBjb25maWd1cmF0aW9uLiBBdCBs
-ZWFzdCBhIOKAnHRyaWNrbGUgcG93ZXLigJ0gbXVzdCBiZQpwcmVzZW50IGJvdGggaW4gdGhlIFVw
-c3RyZWFtIGFuZCBEb3duc3RyZWFtIGRldmljZXMgZm9yIGEgSG90IFBsdWcKZXZlbnQgdG8gYmUg
-ZGV0ZWN0ZWQuIAoKSSBmb2N1cyBvbiB0aGUgc3RhdGVtZW50ICJJbXBsZW1lbnRhdGlvbiBvZiBI
-UEQgaXMgb3B0aW9uYWwgZm9yIGFuCmVtYmVkZGVkIGxpbmsgY29uZmlndXJhdGlvbiIuIEknbSBu
-b3Qgc3VyZSB3aGF0IGRvZXMgJ29wdGlvbmFsJyBtZWFuLgpEb2VzIGl0IG1lYW4gZURQIHBhbmVs
-IHdpdGhvdXQgSFBEIHNpZ25hbCBpcyBwb3NzaWJsZT8gSWYgc28sIEkgdGhpbmsKZHJpdmVyIHNo
-b3VsZCBzdXBwb3J0IGVEUCBwYW5lbCB3aXRob3V0IEhQRCBzaWduYWwuIE1heWJlIEkKbWlzdW5k
-ZXJzdGFuZGluZyB0aGlzIHNwZWMuIFBsZWFzZSBleHBsYWluIGZvciBtZS4KClJlZ2FyZHMsCkNL
-CgoKWzFdIGh0dHBzOi8vZ2xlbndpbmcuZ2l0aHViLmlvL2RvY3MvRFAtMS4yLnBkZgoKPiArewo+
-ICsJc3RydWN0IG10a19kcCAqbXRrX2RwID0gZGV2Owo+ICsJaW50IGV2ZW50Owo+ICsJdTggYnVm
-W0RQX1JFQ0VJVkVSX0NBUF9TSVpFXSA9IHt9Owo+ICsKPiArCWV2ZW50ID0gbXRrX2RwX3BsdWdf
-c3RhdGUobXRrX2RwKSA/IGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkCj4gOgo+ICsJCQkJCQkg
-IGNvbm5lY3Rvcl9zdGF0dXNfZGlzYwo+IG9ubmVjdGVkOwo+ICsKPiArCWlmIChldmVudCA8IDAp
-Cj4gKwkJcmV0dXJuIElSUV9IQU5ETEVEOwo+ICsKPiArCWlmIChtdGtfZHAtPmRybV9kZXYpIHsK
-PiArCQlkZXZfaW5mbyhtdGtfZHAtPmRldiwgImRybV9oZWxwZXJfaHBkX2lycV9ldmVudFxuIik7
-Cj4gKwkJZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50KG10a19kcC0+YnJpZGdlLmRldik7Cj4gKwl9
-Cj4gKwo+ICsJaWYgKG10a19kcC0+dHJhaW5faW5mby5jYWJsZV9zdGF0ZV9jaGFuZ2UpIHsKPiAr
-CQltdGtfZHAtPnRyYWluX2luZm8uY2FibGVfc3RhdGVfY2hhbmdlID0gZmFsc2U7Cj4gKwo+ICsJ
-CW10a19kcC0+dHJhaW5fc3RhdGUgPSBNVEtfRFBfVFJBSU5fU1RBVEVfU1RBUlRVUDsKPiArCj4g
-KwkJaWYgKCFtdGtfZHAtPnRyYWluX2luZm8uY2FibGVfcGx1Z2dlZF9pbiB8fAo+ICsJCSAgICAh
-bXRrX2RwX3BsdWdfc3RhdGUobXRrX2RwKSkgewo+ICsJCQltdGtfZHBfdmlkZW9fbXV0ZShtdGtf
-ZHAsIHRydWUpOwo+ICsKPiArCQkJbXRrX2RwX2luaXRpYWxpemVfcHJpdl9kYXRhKG10a19kcCk7
-Cj4gKwkJCW10a19kcF9zZXRfaWRsZV9wYXR0ZXJuKG10a19kcCwgdHJ1ZSk7Cj4gKwkJCWlmICht
-dGtfZHAtPmhhc19mZWMpCj4gKwkJCQltdGtfZHBfZmVjX2VuYWJsZShtdGtfZHAsIGZhbHNlKTsK
-PiArCj4gKwkJCW10a19kcF91cGRhdGVfYml0cyhtdGtfZHAsCj4gTVRLX0RQX1RPUF9QV1JfU1RB
-VEUsCj4gKwkJCQkJICAgRFBfUFdSX1NUQVRFX0JBTkRHQVBfVFBMTCwKPiArCQkJCQkgICBEUF9Q
-V1JfU1RBVEVfTUFTSyk7Cj4gKwkJfSBlbHNlIHsKPiArCQkJbXRrX2RwX3VwZGF0ZV9iaXRzKG10
-a19kcCwKPiBNVEtfRFBfVE9QX1BXUl9TVEFURSwKPiArCQkJCQkgICBEUF9QV1JfU1RBVEVfQkFO
-REdBUF9UUExMX0xBCj4gTkUsCj4gKwkJCQkJICAgRFBfUFdSX1NUQVRFX01BU0spOwo+ICsJCQlk
-cm1fZHBfcmVhZF9kcGNkX2NhcHMoJm10a19kcC0+YXV4LCBidWYpOwo+ICsJCQltdGtfZHAtPnRy
-YWluX2luZm8ubGlua19yYXRlID0KPiArCQkJCW1pbl90KGludCwgbXRrX2RwLT5tYXhfbGlua3Jh
-dGUsCj4gKwkJCQkgICAgICBidWZbbXRrX2RwLT5tYXhfbGlua3JhdGVdKTsKPiArCQkJbXRrX2Rw
-LT50cmFpbl9pbmZvLmxhbmVfY291bnQgPQo+ICsJCQkJbWluX3QoaW50LCBtdGtfZHAtPm1heF9s
-YW5lcywKPiArCQkJCSAgICAgIGRybV9kcF9tYXhfbGFuZV9jb3VudChidWYpKTsKPiArCQl9Cj4g
-Kwl9Cj4gKwo+ICsJaWYgKG10a19kcC0+dHJhaW5faW5mby5pcnFfc3RhdHVzICYgTVRLX0RQX0hQ
-RF9JTlRFUlJVUFQpIHsKPiArCQlkZXZfZGJnKG10a19kcC0+ZGV2LCAiTVRLX0RQX0hQRF9JTlRF
-UlJVUFRcbiIpOwo+ICsJCW10a19kcC0+dHJhaW5faW5mby5pcnFfc3RhdHVzICY9IH5NVEtfRFBf
-SFBEX0lOVEVSUlVQVDsKPiArCQltdGtfZHBfaHBkX3NpbmtfZXZlbnQobXRrX2RwKTsKPiArCX0K
-PiArCj4gKwlyZXR1cm4gSVJRX0hBTkRMRUQ7Cj4gK30KPiArCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
-CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+From: Yunfei Wang <yf.wang@mediatek.com>
+
+The level 1 and level 2 pgtable are both allocated in ZONE_DMA32, and
+may have two possible problem:
+1.The level 2 pgtable is allocated in ZONE_DMA32 with atomic flag, and
+it may fail if ZONE_DMA32 memory is used out.
+2.Single memory feature will make ZONE_DMA32 empty, and cause level
+1 and level 2 pgtable PA more than 32bit.
+
+So add the quirk IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT support for single
+normal zone, so that level 1 and level 2 pgtable can support at most
+35bit PA.
+
+Signed-off-by: Ning Li <ning.li@mediatek.com>
+Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+---
+ drivers/iommu/mtk_iommu.c | 29 +++++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 6fd75a60abd6..1b9a876ef271 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -33,6 +33,7 @@
+ 
+ #define REG_MMU_PT_BASE_ADDR			0x000
+ #define MMU_PT_ADDR_MASK			GENMASK(31, 7)
++#define MMU_PT_ADDR_2_0_MASK			GENMASK(2, 0)
+ 
+ #define REG_MMU_INVALIDATE			0x020
+ #define F_ALL_INVLD				0x2
+@@ -118,6 +119,7 @@
+ #define WR_THROT_EN			BIT(6)
+ #define HAS_LEGACY_IVRP_PADDR		BIT(7)
+ #define IOVA_34_EN			BIT(8)
++#define PGTABLE_PA_35_EN		BIT(9)
+ 
+ #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+ 		((((pdata)->flags) & (_x)) == (_x))
+@@ -401,6 +403,9 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
+ 		.iommu_dev = data->dev,
+ 	};
+ 
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
++		dom->cfg.quirks |= IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT;
++
+ 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
+ 		dom->cfg.oas = data->enable_4GB ? 33 : 32;
+ 	else
+@@ -450,6 +455,7 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	struct device *m4udev = data->dev;
+ 	int ret, domid;
++	u32 regval;
+ 
+ 	domid = mtk_iommu_get_domain_id(dev, data->plat_data);
+ 	if (domid < 0)
+@@ -472,8 +478,14 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 			return ret;
+ 		}
+ 		data->m4u_dom = dom;
+-		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
+-		       data->base + REG_MMU_PT_BASE_ADDR);
++
++		/* Bits[6:3] are invalid for mediatek platform */
++		if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
++			regval = (dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK) |
++				 (dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_2_0_MASK);
++		else
++			regval = dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK;
++		writel(regval, data->base + REG_MMU_PT_BASE_ADDR);
+ 
+ 		pm_runtime_put(m4udev);
+ 	}
+@@ -987,6 +999,7 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+ 	struct mtk_iommu_suspend_reg *reg = &data->reg;
+ 	struct mtk_iommu_domain *m4u_dom = data->m4u_dom;
+ 	void __iomem *base = data->base;
++	u32 regval;
+ 	int ret;
+ 
+ 	ret = clk_prepare_enable(data->bclk);
+@@ -1010,7 +1023,14 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+ 	writel_relaxed(reg->int_main_control, base + REG_MMU_INT_MAIN_CONTROL);
+ 	writel_relaxed(reg->ivrp_paddr, base + REG_MMU_IVRP_PADDR);
+ 	writel_relaxed(reg->vld_pa_rng, base + REG_MMU_VLD_PA_RNG);
+-	writel(m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK, base + REG_MMU_PT_BASE_ADDR);
++
++	/* Bits[6:3] are invalid for mediatek platform */
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
++		regval = (m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK) |
++			 (m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_2_0_MASK);
++	else
++		regval = m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK;
++	writel(regval, base + REG_MMU_PT_BASE_ADDR);
+ 
+ 	/*
+ 	 * Users may allocate dma buffer before they call pm_runtime_get,
+@@ -1038,7 +1058,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+ 
+ static const struct mtk_iommu_plat_data mt6779_data = {
+ 	.m4u_plat      = M4U_MT6779,
+-	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN,
++	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN |
++			 PGTABLE_PA_35_EN,
+ 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
+ 	.iova_region   = single_domain,
+ 	.iova_region_nr = ARRAY_SIZE(single_domain),
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
