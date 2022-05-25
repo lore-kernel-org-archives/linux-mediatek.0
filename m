@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB67C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 10:08:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F3FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 10:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t+fZNRhAhugWRpwZDm9hu5xVlbKhnZb2Euy367chw0E=; b=fBr9rXMF+g9ZEc
-	4i0hHlRUOJgDbStMRG8OBKLHhRtp2ro5ogA8/do7S6tj1RGOfGaNjWdPVqVp0ruoMMGhLtZ/V6hbE
-	V8nKK4eVr9O1qVsqAy0MGpOUq0qW+Louggr/2xNR/pxAliD4das0Et+MXr3+IYQiIKLGxIWZ2i39L
-	geDgfeT+FizNO+Gz+5+8i1qurgeU9p2HBTG5JDVF9N9WI2cHp44GSAoJkLHmCf0PpoUY3Dmv6vMZI
-	d1asFZRTCYdjJfu1DHwBYFe1Kc0MPDrximk+9xSLNvldkEihtUMNfy84h5Xb6y8hn4wMOrk7iZMPO
-	AYPAjOgHY1+KouVUwZZg==;
+	List-Owner; bh=zXdEjFr1Q9VO/mLppG8m9OIGpao4CjkA5IeLohVZaV0=; b=jTot+ItlB5LwZT
+	pWU7o3dUCtRR/82/ntFPTjbqwORZlRAt91mGCfO0psndBMx3JSbh9SqxQckmMN29tB5DAItEUvVBs
+	VFZSeCwv0df9MpeTBrMJw9/QnN69+UL4rjFrmJsgHEe8rHP9FLU7ia1oz9KEMr5XhtI1gDbxBzclb
+	806/4RXt4Afr/ZTtBcVFP9KwKYLUW7UwKUfKmCWl4cfAaXYOXEcIUqFTdAnfgQmapwDxFej0d68wI
+	SwTz/KOu6aZVt7t1FRBrVzGXg2dWgYULY58iIIHagbiPUKri8wAdAmakSyVoV4wf0QN035ole84HM
+	963yTClf8C/Zy1hfDfzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntnwY-00Ah70-N6; Wed, 25 May 2022 10:08:42 +0000
+	id 1ntoQj-00Ajbk-02; Wed, 25 May 2022 10:39:53 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntnwN-00Ah3n-5H; Wed, 25 May 2022 10:08:32 +0000
+	id 1ntoQV-00AjX3-CW; Wed, 25 May 2022 10:39:41 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
 	(Authenticated sender: kholk11)
-	with ESMTPSA id 968391F44BDB
+	with ESMTPSA id 5C5B31F448AA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653473309;
-	bh=f7K6y+dJjMBoG72vq/rLJZEBSpBO8+vaOYzhtZ/0Lls=;
+	s=mail; t=1653475175;
+	bh=JtMKudCPbVBC4fPSg8WPLsPO72lG8JrBwViYM6bNNoI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KMyTR4v/JWGVhJKk8F7Kdw/mFlyVJgFd4MfDTQIIS7bjrD53k8B3IpL0ilhdwuPS8
-	 hdm4xxgCAWA8PaU5bE9mLyfPPO1XBZWqYpHt1ZZuDYqvBynJfAVQhTJOFP04DvutTt
-	 6eE528/1CT/39gQnZP+PsH3AYSohwz6tk+QEzFrMqkXTzDKrjVFaLmuf73Xvn4q6eg
-	 YwXptzgTCh2d3GMQQh5soNMjNe9tSOqQxAhchyITrk+m9GRLVdSECYZ3R/U3o9xrO/
-	 PMapcVFMXP3AZ0/2/cqdonoKvv/DkHkul+lKDM27wDMcsGXBeQwF1e3Y3JBJmBsRBU
-	 h6NY3FQroIg0w==
-Message-ID: <79863f1b-7bdd-61c7-2209-23011d8e1558@collabora.com>
-Date: Wed, 25 May 2022 12:08:26 +0200
+	b=ei1cJvaBsJOHecaFd4fbRaXHd2+DhGLrvQgIZDAknuw5CZDoea0DCSET+jljl/Odc
+	 I7defVnJskBOCTvNng734y1gn7qK9bQ+krN+2eGUQ44PbKqZhufzA65SgLvGbANq6o
+	 c1vBwwjfAWIE88mkjwfvoSmw9b50vTyiXGb6mx7Aa1XVhXzNLfcZNYlgJN4+6KxFfN
+	 n1fS6unEx/OgVs+kS/DWLlnj2gXcm//B4/ZSW1Nc+JsugNc2a2Z+jqS+pu/ZA3GQuH
+	 UMU+IKDdmvEMx3F/ULu59eHH8po7X6n1OBmguD10pVD2UVqPdljaPqjFqRq6lrqWya
+	 AxT5gFkChux2Q==
+Message-ID: <54d6c0ff-d93c-0506-4db9-3852c69211ab@collabora.com>
+Date: Wed, 25 May 2022 12:39:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v21 00/25] Add MediaTek SoC DRM (vdosys1) support for
- mt8195
+Subject: Re: [PATCH v7 1/1] firmware: mediatek: add adsp ipc protocol
+ interface
 Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, "Nancy.Lin"
- <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
- linux@roeck-us.net
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- llvm@lists.linux.dev, singo.chang@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220512053128.31415-1-nancy.lin@mediatek.com>
- <8c6ceb14be7e53a7dab9d6f045a48deaef54f683.camel@mediatek.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: Kevin Hilman <khilman@baylibre.com>,
+ Linux-ALSA <alsa-devel@alsa-project.org>, tzungbi@google.com,
+ Chen-Yu Tsai <wenst@chromium.org>, cujomalainey@google.com,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ sound-open-firmware@alsa-project.org
+References: <20220407130338.28939-1-allen-kh.cheng@mediatek.com>
+ <20220407130338.28939-2-allen-kh.cheng@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <8c6ceb14be7e53a7dab9d6f045a48deaef54f683.camel@mediatek.com>
+In-Reply-To: <20220407130338.28939-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_030831_388099_A532FA51 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20220525_033939_798205_E6498B0A 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,50 +83,51 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/05/22 04:47, Rex-BC Chen ha scritto:
-> On Thu, 2022-05-12 at 13:31 +0800, Nancy.Lin wrote:
->> The hardware path of vdosys1 with DPTx output need to go through by
->> several modules, such as, OVL_ADAPTOR and MERGE.
->>
->> Add DRM and these modules support by the patches below:
->>
->> Changes in v21:
->> - fix reviewer comment
->>    - fix rdma and ethdr binding doc and dts
->>
-
-..snip..
-
+Il 07/04/22 15:03, Allen-KH Cheng ha scritto:
+> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > 
-> Hello Matthias,
+> Some of mediatek processors contain
+> the Tensilica HiFix DSP for audio processing.
 > 
-> Could you also spare some time to give us some suggestion for the mmsys
-> and mutex patches of this series?
-> If we can improve anything, we can do it before 5.19.
-> Thanks for your big support!
+> The communication between Host CPU and DSP firmware is
+> taking place using a shared memory area for message passing.
 > 
-> BRs,
-> Rex
+> ADSP IPC protocol offers (send/recv) interfaces using
+> mediatek-mailbox APIs.
+> 
+> We use two mbox channels to implement a request-reply protocol.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+> Reviewed-by: Curtis Malainey <cujomalainey@chromium.org>
+> Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+> Reviewed-by: YC Hung <yc.hung@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/firmware/Kconfig                      |   1 +
+>   drivers/firmware/Makefile                     |   1 +
+>   drivers/firmware/mediatek/Kconfig             |   9 +
+>   drivers/firmware/mediatek/Makefile            |   2 +
+>   drivers/firmware/mediatek/mtk-adsp-ipc.c      | 161 ++++++++++++++++++
+>   .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++
+>   6 files changed, 239 insertions(+)
+>   create mode 100644 drivers/firmware/mediatek/Kconfig
+>   create mode 100644 drivers/firmware/mediatek/Makefile
+>   create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
+>   create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
 > 
 
-Even though there may be something to further improve, keep in mind that we're
-already at v21... that's... a lot of versions, and vdosys0/1 are practically
-tied together even though they're coming from two different engineers.
+Gentle ping for this one, as it's getting stale... and it's ready.
 
-I can confirm that this entire stack works on the new HW as intended and that
-there's no regression on older ones, so on all patches you can add my:
+To add context, this driver is *really* necessary, as support for it
+is added in the MT8195 ASoC SOF driver as a platform device [1], and the
+necessary memory regions are coming from the mediatek,mt8195-dsp [2] driver.
 
-[Tested on MT6795, MT8173, MT8192, MT8195]
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[1]: 
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/sound/soc/sof/mediatek/mt8195/mt8195.c?h=next-20220525#n389
 
-
-.... BUT! ....
-
-
-This series won't apply cleanly anymore on next-20220525 (same for vdosys0,
-already pinged Jason about it) because of the commits adding support for MT8186,
-so *please rebase this series once again*.
-
+[2]: 
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml?h=next-20220525#n61
 
 Cheers,
 Angelo
