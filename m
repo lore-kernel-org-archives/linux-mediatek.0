@@ -4,62 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98364C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 20:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3FD8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 22:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2sHuUMqqaAcXWz+BrlbWfsMHjumYTUaWqWKZZjW2KL0=; b=pZXLmdhPUITKh6
-	fduB0TohdIutfv6eh/ep6pllidxfUwQ65EqXK9PiuoCEtCrWbeiXhaGh3zliyEmEcRdp3pir8cuFT
-	jcsPb9ESuZzRdonjlfNLuJTmiWWDoZE+QXws9MQyZmNflMy2TqLBut4s+vEG6ofP2tgEhdCpYMbAQ
-	UkvEmV5BSm5gr9dUIqBeToNa+b1kL8LIVcxB1dI+NZVGFZfJqs2ErIKCMLFFN9VmdnzzxfPMVqviA
-	W0jYG6WxESe94ro/MToai/9KPCCuhfoLYxQSZVa/w2FFSF4u47ypRVYYbcticz1Ystp2o0dk/HV/6
-	L0EHF15/WG4sZS1KZKbQ==;
+	List-Owner; bh=X1JSYptEOqsTu9H1R9yuIKIYvOPvAxmIIKO17+fzOtM=; b=27mqI2lxXFC9VD
+	iZ99MGvuFV7QaGFp2qOBs/W5s6/vCGfNO0Tcpe3HRZwjGJ2bKnU4JqUAYXYHH6ee+/gNRQl8THaIh
+	O/gOzYhOkr2dkSp8Y1rCEzTXLoeHjjD5+saqSgHlm0YNmzgobdqUjBaAZm88VNTRSaRConDneOIYR
+	4dDX3rzuY6Dzb3PvkoHZeSTW82Rv7W6W5XJ7u/76YeHI9+i1etF4VWb6UEJ3QxXFb4x3bX7RJSCZe
+	OEc6dJrpeq2oK4n+4lQLF0MjnkEiW/Y0cAGN+G5wBAV+/Qpp9tDCDdvAFeU++Bbo/keYZt6KlkIn/
+	HyeLXdiiwaJgnkNrt4iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nty1B-00Chc5-8G; Wed, 25 May 2022 20:54:09 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ntzAA-00CpBX-RA; Wed, 25 May 2022 22:07:30 +0000
+Received: from mail-pf1-f171.google.com ([209.85.210.171])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nty0y-00ChaX-Bn; Wed, 25 May 2022 20:53:59 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(Authenticated sender: nfraprado)
-	with ESMTPSA id 841561F4268A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653512032;
-	bh=JayclhC6KF2KjXxwe9UBTJau5WIH16YxRj272sxRyX8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ECuo2A5BML0Z5RO9YZdLhFbyvNvnUVwNVOyHg+CvMtoF/sCu8w2tvmgQSxaMXYNq6
-	 ZGz/CqMZ7nR48ovPBo2M6Tios2gZJ+M1ey3WbNkCLGyhidE7jpFTNMKY5MuY+eFXRD
-	 mjyK9h4+UAm0Mmo5ki9DLv8EjE48UjMr6y8Nx2Sn7dKGt/BFFny9xpciqkcIZQFOLd
-	 /uqm/Y/LSF9Zt0ju9E6yTlgWBdZYPA+Q8X8CdD2wSHdR0C6TLD3L7eXrAhNMt+tdie
-	 JFL0AEJYHcpu75Fadb+8WGX7WaY3YRCHrF7HFJ86OPYdlG1hKhF6ZNwHIvkVq/yWk3
-	 fMz/Lp2SS8m6Q==
-Date: Wed, 25 May 2022 16:53:46 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
- properties
-Message-ID: <20220525205346.6ik67nduv3zexl4p@notapiano>
-References: <20220509205847.607076-1-nfraprado@collabora.com>
+	id 1ntz9z-00Cp8G-CG
+	for linux-mediatek@lists.infradead.org; Wed, 25 May 2022 22:07:21 +0000
+Received: by mail-pf1-f171.google.com with SMTP id x143so113974pfc.11
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 May 2022 15:07:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+         :message-id:mime-version;
+        bh=IE2Ntb5oMK4K7amafeNetTiCxxwL4oFF63eZ4S/Cu40=;
+        b=J9pZRVyEUYkkxuBGwk7x3QRggkqS7f9JJZR9bdMGDars6m3TbXV30qI0MIqmB+XlTB
+         0oRZ1J1gJCOsVpf2h2W0Eoz7pB1EOci8AY6CgJS3XNzNsnx1clZEzuyZ4JzH9Hgggl78
+         Qro7D1QLjzx6AqXOf1X0YRVD6GogDkwEwgZyLDAo1VZlnbnNqFn0PHPp3q02IV2IvUFf
+         huku/s+M28zMhdBJu17E8oQq5pWbGDl6GqeeiKNedYMtu9gukIEORgqY20GGn5tVW3Fg
+         3ZhtOjNVRCqsCa6lnFhrp2bpi5em2r24bTDBo55v1i3rrBY+CcviCZVKK9h/8QXMI12P
+         mZYw==
+X-Gm-Message-State: AOAM530cX6V4wZBmMfX2G/nQeGLLy71Mz085po1Ehm0qEP158YTY3NHf
+	M7M17oF6H/fZdB2NZE7e95RI4Q==
+X-Google-Smtp-Source: ABdhPJwdqFMCLJa7Y7vyj6CS5A+5uCRs6z3mJZo81jSCPzBgpMhVjT7B8zM+9XXAV6oNybU+EL4RYw==
+X-Received: by 2002:a63:c04a:0:b0:3fa:7277:964c with SMTP id z10-20020a63c04a000000b003fa7277964cmr13087451pgi.499.1653516436926;
+        Wed, 25 May 2022 15:07:16 -0700 (PDT)
+Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net. [71.197.186.152])
+        by smtp.gmail.com with ESMTPSA id o1-20020a170902d4c100b0015edb22aba1sm10030189plg.270.2022.05.25.15.07.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 May 2022 15:07:16 -0700 (PDT)
+From: Kevin Hilman <khilman@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>, Chanwoo Choi <cw00.choi@samsung.com>
+Cc: Roger Lu <roger.lu@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Enric Balletbo Serra <eballetbo@gmail.com>, Rob
+ Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>,
+ Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Fan Chen <fan.chen@mediatek.com>, Charles Yang
+ <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, Mark
+ Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, Guenter Roeck
+ <linux@roeck-us.net>, Jia-wei Chang <jia-wei.chang@mediatek.com>,
+ =?utf-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <rex-bc.chen@mediatek.com>
+Subject: Re: [PATCH v25 0/7] soc: mediatek: SVS: introduce MTK SVS
+In-Reply-To: <CAGXv+5HEG1VJ89LDHJmMvPqafcdb2cuJj2wxv44ozPxDeHj8ig@mail.gmail.com>
+References: <20220516004311.18358-1-roger.lu@mediatek.com>
+ <CAGXv+5GSdWPZe3fNpBJ_WW0zCL8Skg6fHx9ATxaKU1hyMEt2Ww@mail.gmail.com>
+ <7h4k1ndaui.fsf@baylibre.com> <7hy1yzbtb7.fsf@baylibre.com>
+ <CAGXv+5GT=3m=pVPwUOWR42BR=emCpBXvvoAiRV7YKt2kEKWdAQ@mail.gmail.com>
+ <CGME20220519182512epcas1p3020bd4713580c9244f759971b8bd2c3a@epcas1p3.samsung.com>
+ <7hmtfdbcsc.fsf@baylibre.com>
+ <5a1767dc-ba2d-4de5-d8fe-2f308d3318a9@samsung.com>
+ <CAGXv+5EsgiXCpe-8H0cQ=qm_Nq+yfM_a4b1L=hOFP6mcwfZymw@mail.gmail.com>
+ <eacf7a67-bc64-a764-e23d-c733a4666b8a@samsung.com>
+ <CAGXv+5HEG1VJ89LDHJmMvPqafcdb2cuJj2wxv44ozPxDeHj8ig@mail.gmail.com>
+Date: Wed, 25 May 2022 15:07:15 -0700
+Message-ID: <7hleup9sh8.fsf@baylibre.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220509205847.607076-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_135356_654322_3542C08F 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20220525_150719_461906_C33AD109 
+X-CRM114-Status: GOOD (  40.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,51 +91,180 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 09, 2022 at 04:58:47PM -0400, N=EDcolas F. R. A. Prado wrote:
-> The Mediatek AFE PCM controller for MT8192 allows two I2S interfaces to
-> share the same clock and act as a single interface with both input and
-> output. Add patterns for these properties in the dt-binding. The
-> property is split into two patterns in order to allow all valid
-> interface pairings.
-> =
+Chen-Yu Tsai <wenst@chromium.org> writes:
 
-> Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-> =
+> On Fri, May 20, 2022 at 5:53 PM Chanwoo Choi <cw00.choi@samsung.com> wrote:
+>>
+>> Hi Kevin,
+>>
+>> On 5/20/22 11:42 AM, Chen-Yu Tsai wrote:
+>> > On Fri, May 20, 2022 at 9:28 AM Chanwoo Choi <cw00.choi@samsung.com> wrote:
+>> >>
+>> >> Hi Kevin, Chen-Yu,
+>> >>
+>> >> On 5/20/22 3:25 AM, Kevin Hilman wrote:
+>> >>> Chen-Yu Tsai <wenst@chromium.org> writes:
+>> >>>
+>> >>>> n Wed, May 18, 2022 at 8:03 AM Kevin Hilman <khilman@kernel.org> wrote:
+>> >>>>>
+>> >>>>> Kevin Hilman <khilman@kernel.org> writes:
+>> >>>>>
+>> >>>>>> Chen-Yu Tsai <wenst@chromium.org> writes:
+>> >>>>>>
+>> >>>>>>> On Mon, May 16, 2022 at 8:43 AM Roger Lu <roger.lu@mediatek.com> wrote:
+>> >>>>>>>>
+>> >>>>>>>> The Smart Voltage Scaling(SVS) engine is a piece of hardware
+>> >>>>>>>> which calculates suitable SVS bank voltages to OPP voltage table.
+>> >>>>>>>> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
+>> >>>>>>>> when receiving OPP_EVENT_ADJUST_VOLTAGE.
+>> >>>>>>>>
+>> >>>>>>>> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
+>> >>>>>>>> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
+>> >>>>>>>> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
+>> >>>>>>>>
+>> >>>>>>>> [1] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=25cb20a212a1f989385dfe23230817e69c62bee5
+>> >>>>>>>> [2] https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/commit/?h=opp/linux-next&id=b325ce39785b1408040d90365a6ab1aa36e94f87
+>> >>>>>>>> [3] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.16-next/dts64&id=a8168cebf1bca1b5269e8a7eb2626fb76814d6e2
+>> >>>>>>>>
+>> >>>>>>>> Change since v24:
+>> >>>>>>>> - Rebase to Linux 5.18-rc6
+>> >>>>>>>> - Show specific fail log in svs_platform_probe() to help catch which step fails quickly
+>> >>>>>>>> - Remove struct svs_bank member "pd_dev" because all subsys device's power domain has been merged into one node like above [3]
+>> >>>>>>>>
+>> >>>>>>>> Test in below environment:
+>> >>>>>>>> SW: Integration Tree [4] + Thermal patch [5] + SVS v25 (this patchset)
+>> >>>>>>>> HW: mt8183-Krane
+>> >>>>>>>>
+>> >>>>>>>> [4] https://protect2.fireeye.com/v1/url?k=847bae75-e5f0bb43-847a253a-000babff9b5d-0b6f42041b9dea1d&q=1&e=37a26c43-8564-4808-9701-dc76d1ebbb27&u=https%3A%2F%2Fgithub.com%2Fwens%2Flinux%2Fcommits%2Fmt8183-cpufreq-cci-svs-test
+>> >>>>>>>
+>> >>>>>>> I've updated my branch to include all the latest versions of the relevant
+>> >>>>>>> patch series:
+>> >>>>>>>
+>> >>>>>>> - anx7625 DPI bus type series v2 (so the display works)
+>> >>>>>>> - MT8183 thermal series v9 (this seems to have been overlooked by the
+>> >>>>>>> maintainer)
+>> >>>>>>> - MTK SVS driver series v25
+>> >>>>>>> - devfreq: cpu based scaling support to passive governor series v5
+>> >>>>>>> - MTK CCI devfreq series v4
+>> >>>>>>> - MT8183 cpufreq series v7
+>> >>>>>>> - Additional WIP patches for panfrost MTK devfreq
+>> >>>>>>
+>> >>>>>> Thanks for preparing an integration branch Chen-Yu.
+>> >>>>>>
+>> >>>>>> I'm testing this on mt8183-pumpkin with one patch to add the CCI
+>> >>>>>> regulator[1], and the defconfig you posted in a previous rev of this
+>> >>>>>> series, but the CCI driver still causes a fault on boot[2] on my
+>> >>>>>> platform.
+>> >>>>>>
+>> >>>>>> I mentioned in earlier reviews that I think there's potentially a race
+>> >>>>>> between CCI and SVS loading since they are co-dependent.  My hunch is
+>> >>>>>> that this is still not being handled properly.
+>> >>>>>
+>> >>>>> Ah, actually it's crashing when I try to boot the platform with
+>> >>>>> `maxcpus=4` on the cmdline (which I have to do because mt8183-pumpkin is
+>> >>>>> unstable upstream with the 2nd cluster enabled.)
+>> >>
+>> >> This warning message is printed by 'WARN_ON(cpufreq_passive_unregister_notifier(devfreq))'
+>> >> on devfreq passive governor.
+>> >>
+>> >> If the cpufreq drivers are not probed before of probing cci devfreq driver
+>> >> with passive governor, passive governor shows this warning message.
+>> >> Because passive governor with CPUFREQ_PARENT_DEV depends on the cpufreq driver
+>> >> in order to get 'struct cpufreq_policy'[2].
+>> >>
+>> >> [1] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n339
+>> >> [2] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/tree/drivers/devfreq/governor_passive.c?h=devfreq-testing#n282
+>> >>
+>> >> But, as I knew, this message might not stop the kernel. Just show the warning
+>> >> message and then return -EPROBE_DEFER error. It means that maybe try to
+>> >> probe the cci devfreq driver on late time of kernel booting
+>> >> and then will be working. But, I need the full kernel booting log
+>> >> and the booting sequence of between cpufreq and cci devfreq driver.
+>> >
+>> > Maybe just use a standard dev_warn() instead? WARN_ON causes all sorts
+>> > of panicking in developers' minds. :p
+>> >
+>> >> In order to fix your issue, could you share the full booting log?
+>> >> And if possible, please explain the more detailed something about this.
+>> >
+>> > The shortened version is that on an 8 core system, with maxcpus=4,
+>> > only the first four cores are booted and have cpufreq associated.
+>> > I've not actually used this mechanism, so I don't really know what
+>> > happens if the other cores are brought up later with hotplug. Is
+>> > cpufreq expected to attach to them?
+>> >
+>> > Maybe Kevin can add some more details.
+>> >
+>> >
+>> > ChenYu
+>> >
+>> >
+>> >>>>>
+>> >>>>> The CCI driver should be a bit more robust about detecting
+>> >>>>> available/online CPUs
+>> >>>>
+>> >>>> This all seems to be handled in the devfreq passive governor.
+>> >>>
+>> >>> Well, that's the initial crash.  But the SVS driver will also go through
+>> >>> its svs_mt8183_banks[] array (including both big & little clusters) and
+>> >>> try to init SVS, so presumably that will have some problems also if only
+>> >>> one cluster is enabled.
+>> >>>
+>> >>>> And presumably we'd like to have CCI devfreq running even if just one
+>> >>>> core was booted.
+>> >>>
+>> >>> Yes, I assume so also.
+>> >>>
+>> >>>> Added Chanwoo for more ideas.
+>> >>>
+>> >>> OK, thanks.
+>> >>>
+>> >>> Kevin
+>>
+>>
+>> I tested the passive governor with my temporary test code
+>> on odroid-xu3 which contains the big.LITTLE cluster (Octa-core).
+>>
+>>
+>> [Sequence of cpufreq/devfreq driver]
+>> 1. Turn on all cpus
+>> 2. Probed cpufreq driver
+>> 3. Probed devfreq driver using passive governor with CPUFREQ_PARENT_DEV
+>>
+>> In my test case, there are no warning message during kernel booting.
+>> Also when scaling the cpu frequency of cpus of big.LITTLE clusters,
+>> temporary devfreq driver receives the notfication and then
+>> calculate the target frequency of devfreq device by iterating online cpu.
+>>
+>> If there are any h/w constraints on your case, please let me know.
+>
+> Could you run your system with maxcpus=4 added to your cmdline?
+> This is what Kevin was running.
+>
+> The current result is that the latter four cores aren't booted, so no
+> cpufreq tied to them, and the passive governor will fail to get their
+> cpufreq_policy. As mentioned before, the code path used to have a
+> WARN_ON(). Now it's a dev_warn(). It will still fail initialization
+> though.
+>
+> We're wondering if devfreq passive governor should be made to work
+> even if not all cpu cores are available when it probes.
 
-> ---
-> The series from v1 of this patch was merged although some changes were
-> still needed in this patch, so the v1 of this patch was reverted [1] and
-> this standalone commit addresses the feedback from v1 and readds the
-> property.
-> =
+For info, here is a boot log[1] from mt8183-pumpkin board where I'm
+testing Chen-Yu's lastest integration branch.  
 
-> [1] https://lore.kernel.org/all/20220509185625.580811-1-nfraprado@collabo=
-ra.com
-> =
+As Chen-Yu said, the part that makes it trigger the warn is disabling
+some of the CPUs *at boot time*.  In this case, I'm passing `maxcpus=4`
+on the kernel command line.
 
-> v1: https://lore.kernel.org/all/20220429203039.2207848-2-nfraprado@collab=
-ora.com/
-> =
+Kevin
 
-> Changes in v2:
-> - Added "mediatek," prefix to property
-> - Rewrote and added more information to property description
-> - Split into two patterns to validate that output-input pairings are
->   done
-> =
-
->  .../bindings/sound/mt8192-afe-pcm.yaml           | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
-
-Gentle ping on this one. Any feedback for v2?
-
-Thanks,
-N=EDcolas
+[1] https://termbin.com/zidi
 
 _______________________________________________
 Linux-mediatek mailing list
