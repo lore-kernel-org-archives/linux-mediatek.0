@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B0AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 09:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB67C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 May 2022 10:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t/AD3pzNkXetndzbKYAxZ5W27Dal+KJXdbuOXyEClxc=; b=R4Itj+fOmH51FM
-	dNPZAn3yTGW8WUqBwagup0JhbO279GfO00Ut4Ho3cmsGe+25h8o6rhblOJEeKwy5yPYP8PNzCHrxy
-	hbbjqFCR0uHKp5cdXDWvE0xzas0KYgQyWhOkgrWJpxi5F11f+U+xm/OUXW1DuwJlbyJ19ARLrgDTD
-	AfiWmpmig2OZhWH1qTUn0p19RJ5xqaEuRW6FkJyHKy+1hssz8+RLpsN1UgrAVIcDskJ1Hem5KwjlD
-	eAiLS7/D5RJdOumo/tdsyxzN1MQ8t358ZUxLcWxVLKbOWpBADg5wlitFBIsuH9G9GGEhpwz02PKEY
-	n+newaKLpxA6H2XsbagA==;
+	List-Owner; bh=t+fZNRhAhugWRpwZDm9hu5xVlbKhnZb2Euy367chw0E=; b=fBr9rXMF+g9ZEc
+	4i0hHlRUOJgDbStMRG8OBKLHhRtp2ro5ogA8/do7S6tj1RGOfGaNjWdPVqVp0ruoMMGhLtZ/V6hbE
+	V8nKK4eVr9O1qVsqAy0MGpOUq0qW+Louggr/2xNR/pxAliD4das0Et+MXr3+IYQiIKLGxIWZ2i39L
+	geDgfeT+FizNO+Gz+5+8i1qurgeU9p2HBTG5JDVF9N9WI2cHp44GSAoJkLHmCf0PpoUY3Dmv6vMZI
+	d1asFZRTCYdjJfu1DHwBYFe1Kc0MPDrximk+9xSLNvldkEihtUMNfy84h5Xb6y8hn4wMOrk7iZMPO
+	AYPAjOgHY1+KouVUwZZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntnel-00AeKO-MN; Wed, 25 May 2022 09:50:19 +0000
+	id 1ntnwY-00Ah70-N6; Wed, 25 May 2022 10:08:42 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntnea-00AeHq-GK; Wed, 25 May 2022 09:50:10 +0000
+	id 1ntnwN-00Ah3n-5H; Wed, 25 May 2022 10:08:32 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
 	(Authenticated sender: kholk11)
-	with ESMTPSA id 71BAF1F44B84
+	with ESMTPSA id 968391F44BDB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653472204;
-	bh=syTUXEsw9/n/6NDfW7WVBL7ZaRtUq32UuldrTBYAPc4=;
+	s=mail; t=1653473309;
+	bh=f7K6y+dJjMBoG72vq/rLJZEBSpBO8+vaOYzhtZ/0Lls=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cUME8Mii9tR0Tu01mYdGkHp05qEJkOXwdrQIlvvfG38MQrP5H3GB6ASGPt9iwDqgv
-	 d1mRtNNHL1u+o4bjHckBdvy5LqcIiLNB/+TGq8Zt2paL3/AO0a7XCsF1e5I04EVCvn
-	 KDTyX8xJHIT1GYRk7c6lh+jl8fnPDZDeJEOak7bxJwGPv/sph7p+SHf8EGqGZYT3Tb
-	 cMLALx0Bg0h25UbxIml54g7j5SnPiPH5ZAT5Dp7DFGV3CHcFAJSDpWBxTZlAh3H2gN
-	 /6Du8ufh33EOgXlIgWtnnVhCMXYJ7X3BEkwRZgFyrGfd+d5BWEmIGYUL1kB7yJ9fD0
-	 RFYnM0I0gTxeg==
-Message-ID: <43a102cf-6971-8083-d24f-629d6d39810f@collabora.com>
-Date: Wed, 25 May 2022 11:50:00 +0200
+	b=KMyTR4v/JWGVhJKk8F7Kdw/mFlyVJgFd4MfDTQIIS7bjrD53k8B3IpL0ilhdwuPS8
+	 hdm4xxgCAWA8PaU5bE9mLyfPPO1XBZWqYpHt1ZZuDYqvBynJfAVQhTJOFP04DvutTt
+	 6eE528/1CT/39gQnZP+PsH3AYSohwz6tk+QEzFrMqkXTzDKrjVFaLmuf73Xvn4q6eg
+	 YwXptzgTCh2d3GMQQh5soNMjNe9tSOqQxAhchyITrk+m9GRLVdSECYZ3R/U3o9xrO/
+	 PMapcVFMXP3AZ0/2/cqdonoKvv/DkHkul+lKDM27wDMcsGXBeQwF1e3Y3JBJmBsRBU
+	 h6NY3FQroIg0w==
+Message-ID: <79863f1b-7bdd-61c7-2209-23011d8e1558@collabora.com>
+Date: Wed, 25 May 2022 12:08:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.0
-Subject: Re: [PATCH v20 0/8] Add Mediatek Soc DRM (vdosys0) support for mt8195
+Subject: Re: [PATCH v21 00/25] Add MediaTek SoC DRM (vdosys1) support for
+ mt8195
 Content-Language: en-US
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, "Nancy.Lin"
+ <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: CK Hu <ck.hu@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- jason-jhlin <jason-jh.lin@mediatek.corp-partner.google.com>
-References: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
+ linux@roeck-us.net
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ llvm@lists.linux.dev, singo.chang@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220512053128.31415-1-nancy.lin@mediatek.com>
+ <8c6ceb14be7e53a7dab9d6f045a48deaef54f683.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220419094143.9561-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <8c6ceb14be7e53a7dab9d6f045a48deaef54f683.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_025008_864310_B7D81F53 
-X-CRM114-Status: GOOD (  29.80  )
+X-CRM114-CacheID: sfid-20220525_030831_388099_A532FA51 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,165 +83,53 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/04/22 11:41, jason-jh.lin ha scritto:
-> From: jason-jhlin <jason-jh.lin@mediatek.corp-partner.google.com>
+Il 18/05/22 04:47, Rex-BC Chen ha scritto:
+> On Thu, 2022-05-12 at 13:31 +0800, Nancy.Lin wrote:
+>> The hardware path of vdosys1 with DPTx output need to go through by
+>> several modules, such as, OVL_ADAPTOR and MERGE.
+>>
+>> Add DRM and these modules support by the patches below:
+>>
+>> Changes in v21:
+>> - fix reviewer comment
+>>    - fix rdma and ethdr binding doc and dts
+>>
+
+..snip..
+
+> 
+> Hello Matthias,
+> 
+> Could you also spare some time to give us some suggestion for the mmsys
+> and mutex patches of this series?
+> If we can improve anything, we can do it before 5.19.
+> Thanks for your big support!
+> 
+> BRs,
+> Rex
 > 
 
-Hello Jason,
+Even though there may be something to further improve, keep in mind that we're
+already at v21... that's... a lot of versions, and vdosys0/1 are practically
+tied together even though they're coming from two different engineers.
 
-this series does not apply cleanly anymore on next-20220525, can you please
-rebase and resend?
+I can confirm that this entire stack works on the new HW as intended and that
+there's no regression on older ones, so on all patches you can add my:
 
-I hope that with a bit of coordination, we can get the entire display stack
-finally upstreamed in v5.19... it's been quite a while... :-)
+[Tested on MT6795, MT8173, MT8192, MT8195]
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
+.... BUT! ....
+
+
+This series won't apply cleanly anymore on next-20220525 (same for vdosys0,
+already pinged Jason about it) because of the commits adding support for MT8186,
+so *please rebase this series once again*.
+
 
 Cheers,
 Angelo
-
-> Change in v20:
-> - split binding patch to another series 'MediaTek MT8195 display binding':
->    https://patchwork.ozlabs.org/project/devicetree-bindings/list/?series=295669
-> - fix io_start type from u32 to resource_size_t
-> - fix some commit message for DITHER enum
-> 
-> Change in v19:
-> - fix checking condition for the return vaule of platform resource
-> - drm/mediatek fix build waning for [-Wunused-const-variable]
-> 
-> Change in v18:
-> - change get driver data by io_start and wrap mmsys driver data into
->    mmsys match data structure to support identifying multi mmsys driver
->    data with the same compatible name
-> - change DDP_COMPONENT_DITHER to DDP_CONPONENT_DITHER0
-> 
-> Change in v17:
-> - change compatible name from 2 vdosys to 1 mmsys
-> - add get driver data by clk name function to get corresponding
->    driver data for mt8195 vdosys0
-> - add all routing table setting for mt8195 vdosys0
-> - remove useless mutex define
-> 
-> Change in v16:
-> - rebase on linu-next tag: 'next-20220303'
-> - rebase on series: 'Fix MediaTek display dt-bindings issues'
-> 
-> Change in v15:
-> - remove mt8195-mmsys.h comment for mux settings
-> - define the mask macro to replace using value as mask
->    to fix zero mask problem
-> - add EOF setting comment for MUTEX sof register
-> 
-> Change in v14:
-> - rebase on mediatek-drm-next-5.17
-> - rebase on "Add mmsys and mutex support for MDP" series
-> - rebase on "media: mediatek: support mdp3 on mt8183 platform" series
-> 
-> Change in v13:
-> - remove dts patch
-> - rebase on kernel-5.16-rc1
-> - rebase on mediatek-drm-next
-> 
-> Change in v12:
-> - add clock-names property to merge yaml
-> - using BIT(nr) macro to define the settings of mmsys routing table
-> - fix clk_get and clk_prepare_enable error handling issue
-> 
-> Change in v11:
-> - rebase on kernel-5.15-rc1
-> - change mbox label to gce0 for dts node of vdosys0
-> - change ovl compatibale to mt8192 to set smi_id_en=true in driver data
-> - move common module from display folder to common folder,
->    such as AAL, COCLOR, CCORR and MUTEX
-> 
-> Change in v10:
-> - rebase on "drm/mediatek: add support for mediatek SOC MT8192" series
-> - rebase on "soc: mediatek: mmsys: add mt8192 mmsys support" series
-> - fix some typo and "mediatek" start with capital in every dt-bindings
-> - move mutex yaml from dfisplay folder to soc folder
-> - separate merge additional propoerties to an individual dt-bindings patch
-> 
-> Change in v9:
-> - separate power and gce properties of mmsys into another dt-binding patch
-> - rebase on "Separate aal module" series
-> - keep mtk_ddp_clk_enable/disable in the same place
-> - change mtk_dsc_start config register to mtk_drm_ddp_write_mask
-> - remove the 0 setting of merge fifo config function
-> - add CCORR driver data for mt8195
-> 
-> Change in v8:
-> - add DP_INTF0 mux into mmsys routing table
-> - add DP_INTF0 mutex mod and enum into add/remove comp function
-> - remove bypass DSC enum in mtk_ddp_comp_init
-> 
-> Change in v7:
-> - add dt=binding of mmsys and disp path into this series
-> - separate th modidfication of alphabetic order, remove unused define and
->    rename the define of register offset to individual patch
-> - add comment for MERGE ultra and preultra setting
-> 
-> Change in v6:
-> - adjust alphabetic order for mediatek-drm
-> - move the patch that add mt8195 support for mediatek-drm as
->    the lastest patch
-> - add MERGE define for const varriable
-> 
-> Change in v5:
-> - add power-domain property into vdosys0 and vdosys1 dts node.
-> - add MT8195 prifix and remove unused VDO1 define in mt8195-mmsys.h
-> 
-> Change in v4:
-> - extract dt-binding patches to another patch series
-> - squash DSC module into mtk_drm_ddp_comp.c
-> - add coment and simplify MERGE config function
-> 
-> Change in v3:
-> - change mmsys and display dt-bindings document from txt to yaml
-> - add MERGE additional description in display dt-bindings document
-> - fix mboxes-cells number of vdosys0 node in dts
-> - drop mutex eof convert define
-> - remove pm_runtime apis in DSC and MERGE
-> - change DSC and MERGE enum to alphabetic order
-> 
-> Change in v2:
-> - add DSC yaml file
-> - add mt8195 drm driver porting parts in to one patch
-> - remove useless define, variable, structure member and function
-> - simplify DSC and MERGE file and switch threre order
-> 
-> jason-jh.lin (8):
->    soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
->    soc: mediatek: add mtk-mutex support for mt8195 vdosys0
->    drm/mediatek: add DSC support for mediatek-drm
->    drm/mediatek: add MERGE support for mediatek-drm
->    drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
->    soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for mt8195 vdosys0
->    drm/mediatek: add suffix 0 to DDP_COMPONENT_DITHER for mt8195 vdosys0
->    soc: mediatek: remove DDP_DOMPONENT_DITHER from enum
-> 
->   drivers/gpu/drm/mediatek/Makefile           |   1 +
->   drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
->   drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 246 +++++++++++++
->   drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  65 +++-
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   2 +
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 151 +++++++-
->   drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   7 +
->   drivers/soc/mediatek/mt8167-mmsys.h         |   2 +-
->   drivers/soc/mediatek/mt8183-mmsys.h         |   2 +-
->   drivers/soc/mediatek/mt8186-mmsys.h         |   4 +-
->   drivers/soc/mediatek/mt8192-mmsys.h         |   4 +-
->   drivers/soc/mediatek/mt8195-mmsys.h         | 370 ++++++++++++++++++++
->   drivers/soc/mediatek/mt8365-mmsys.h         |   4 +-
->   drivers/soc/mediatek/mtk-mmsys.c            | 152 +++++++-
->   drivers/soc/mediatek/mtk-mmsys.h            |   6 +
->   drivers/soc/mediatek/mtk-mutex.c            |  95 ++++-
->   include/linux/soc/mediatek/mtk-mmsys.h      |  13 +-
->   18 files changed, 1098 insertions(+), 40 deletions(-)
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
->   create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
-> 
-
-
 
 _______________________________________________
 Linux-mediatek mailing list
