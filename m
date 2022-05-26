@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC26C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 01:42:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EDEBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 01:57:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MBmMXx6SBYjr/qWdKIGzMCOBTgU3mtqpBvSw12TnKI4=; b=vGYUoDi75xyXhN
-	2hcbbK8qBJfePgwMC/QHKfeN/w1GiC1F1lTDqzX8PrniM6yvsNwQgEpYc5sKq0dImvuyrNE3Dxwlg
-	jdxw5slIFW74+SvgiLAUSO1cWj3I8P9Dr3R80HasT0Qy5G8RYXdbI61MabwxmbU7vGOT5GSsNKU4P
-	+sPuQwlN2FNBxooAYO/eCVQ7FabheikLwG5+GyCt++Jrdoq4aZCc40RYGR+C4Hk8aKrZShXrfVPKu
-	QeYnPKxoRRAHCqgjTNlWHecQQyCyn2QR7+rEOtU1rPt2bP9c0xE8aa6fdqhiwrzvEgxHoIngOV7HW
-	YqfMgeLzXHfcGhtLGJrA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UoVWZcU81DsS6uEusFzu604/W4CfKFU1DprqjTERJrY=; b=uOqhUtN5cpyoVo
+	xN8uLGwtwezZU/cUyHfnxHJN1wgQcraIKjge4Uk7tcHAcsufxPNsVvgZysR2TMUcsGiml4cNFJspW
+	BUfypjX9dUlkyjzZmseTRt8vrWDtsnSOJmM9RyE3kBkUex3r9m5Mmj/Zc78qDNBKsgshJY3W+wwZE
+	JLORpBTRoij95YBZtnLNAJ1FayLaNKyasSTOWieQ4NNwra/AKlQpw2tZ8lH62cQpD7My42HyNUaRo
+	leQYkHzl02j0zvFAcx2Pf9Cr7MTnu/GY/N4kSonikrpP5qtXTCkI5MZuGuqIN19qULZUR8czQiM60
+	VPrNiyPKTfGV53rlimZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nu2Vv-00DCH2-JZ; Thu, 26 May 2022 01:42:11 +0000
-Received: from mail-oi1-f171.google.com ([209.85.167.171])
+	id 1nu2kw-00DF3Z-CA; Thu, 26 May 2022 01:57:42 +0000
+Received: from mail-oa1-f42.google.com ([209.85.160.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nu2Vk-00DCEU-4q; Thu, 26 May 2022 01:42:01 +0000
-Received: by mail-oi1-f171.google.com with SMTP id m125so633852oia.6;
-        Wed, 25 May 2022 18:41:59 -0700 (PDT)
+	id 1nu2kt-00DF1Q-Rn; Thu, 26 May 2022 01:57:41 +0000
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-f2a4c51c45so661327fac.9;
+        Wed, 25 May 2022 18:57:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=d+Z9RgiK3EIxVlZZsUbr4/gk0SD8+6Vq2nxSeiDB3Go=;
-        b=YtA1bJbZJ2f11Mtrk9KOEnLN1cw9lBTm1B2suOoyH8jI9+wvxQOwLXndrCy1sbiRc5
-         7y3uCeblMdbUF+rY1xOsVadOU4u9bvWG5uBRnhyBrl+A+E9ROvUkHg7lFKiMt1QjL8DQ
-         h/Imn7H/ykT++oH5fqpbUdhD2LkV0KUnXJ/3WFR0PerWE9ub4jLJE8coSCW2cG4OxvWY
-         Kvpjo6WSBcVqNyoiedSwmHmp0fAlJB7fTHtl79XIvbMdAopIjQVSg8ipS7/GH45rd9nV
-         M7vGWuXIseJqnF3VpEbi5h8uJyI/Dq88NNcP5p9O2PHE2dxkHPRMThTXyBLwkpHKkrco
-         azuw==
-X-Gm-Message-State: AOAM531pQW7hr6QeKCfYZrJxrSmb2XC7aOgawegjnHJgRQvo7Q9CAol1
-	SWNx/GydKunzL1SSbo3d0A==
-X-Google-Smtp-Source: ABdhPJxuUpgwjNNVehgCikH94aM0C278Tato0V32TMxGzCsr8Y3hkxPGQkpU0UbT585q/wH8Oxdo3Q==
-X-Received: by 2002:a05:6808:210a:b0:326:77be:466f with SMTP id r10-20020a056808210a00b0032677be466fmr5336oiw.184.1653529318875;
-        Wed, 25 May 2022 18:41:58 -0700 (PDT)
-Received: from xps15.. (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.googlemail.com with ESMTPSA id pi12-20020a0568704c8c00b000e9b8376a7bsm162542oab.23.2022.05.25.18.41.57
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=fBooorBUc9TiuuZP7V/CE0nVyIQJLuFcFSmL3ukgr+0=;
+        b=lKsr3FFVgq4FgyRCz7fH884agZ3hfzUCabpe9S3vV7OyEaeyU+DKbD87EksQFNEskg
+         f/PfyRz38XAwoTsaX/FVdNeFF6WHFUfBA7B8QyaQ7FJW9l504Hrd1wv/hQra6Zbnwxct
+         adlYwHebJgRLCZEGZquEqQ6ymE2IXOoJXTTYTAQjqKAeZ/o4DXHZK9cwgh5x/h7XCaTn
+         NwNHAdZfdvlyRigoYaCCnF6DHvOKeV3BWKrFo1N7JYJULWuhAUuhWlfoZ2W5hYwpgrYp
+         Y+vU2zocgwOo/tRFsg5V+BGAz+a0dSFhDDN/UMSTMOKqZ+PDuo2FKy+rQ17hA36tMAl/
+         MkWQ==
+X-Gm-Message-State: AOAM532UIdyl1yg1kHZNvvJCKZQ7P3XNB3uUw1TC3D5qjmcaTcx1S9v1
+	G0KNK1RajuW/3DWo1XeK2A==
+X-Google-Smtp-Source: ABdhPJxUeqloFyZQmwKt5j7Tji4hIdlUPLrqi9TrK0/U1U2+xqrrho6dVSvMuYpjlY4QrOa42I+OCA==
+X-Received: by 2002:a05:6870:b68a:b0:f1:8001:1182 with SMTP id cy10-20020a056870b68a00b000f180011182mr37728oab.30.1653530257854;
+        Wed, 25 May 2022 18:57:37 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id w27-20020a9d5a9b000000b0060603221240sm134732oth.16.2022.05.25.18.57.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 May 2022 18:41:58 -0700 (PDT)
+        Wed, 25 May 2022 18:57:37 -0700 (PDT)
+Received: (nullmailer pid 2896334 invoked by uid 1000);
+	Thu, 26 May 2022 01:57:36 -0000
+Date: Wed, 25 May 2022 20:57:36 -0500
 From: Rob Herring <robh@kernel.org>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Biao Huang <biao.huang@mediatek.com>
-Cc: netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] dt-bindings: net: Fix unevaluatedProperties warnings in examples
-Date: Wed, 25 May 2022 20:41:48 -0500
-Message-Id: <20220526014149.2872762-1-robh@kernel.org>
-X-Mailer: git-send-email 2.34.1
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, kernel@collabora.com
+Subject: Re: [PATCH v1 1/2] dt-bindings: pinctrl: mt8192: Add
+ drive-strength-microamp
+Message-ID: <20220526015736.GA2896280-robh@kernel.org>
+References: <20220525155714.1837360-1-nfraprado@collabora.com>
+ <20220525155714.1837360-2-nfraprado@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220525155714.1837360-2-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_184200_228201_9CC8A0B6 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20220525_185739_933944_4FD7227A 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,80 +75,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The 'unevaluatedProperties' schema checks is not fully working and doesn't
-catch some cases where there's a $ref to another schema. A fix is pending,
-but results in new warnings in examples. Fix the warnings by removing
-spurious properties or adding missing properties to the schema.
+On Wed, 25 May 2022 11:57:13 -0400, N=EDcolas F. R. A. Prado wrote:
+> Commit e5fabbe43f3f ("pinctrl: mediatek: paris: Support generic
+> PIN_CONFIG_DRIVE_STRENGTH_UA") added support for using
+> drive-strength-microamp instead of mediatek,drive-strength-adv.
+> =
 
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- Documentation/devicetree/bindings/net/cdns,macb.yaml           | 1 -
- Documentation/devicetree/bindings/net/mediatek,net.yaml        | 3 +++
- Documentation/devicetree/bindings/net/mediatek-dwmac.yaml      | 3 +++
- .../devicetree/bindings/net/wireless/mediatek,mt76.yaml        | 2 +-
- 4 files changed, 7 insertions(+), 2 deletions(-)
+> Since there aren't any users of mediatek,drive-strength-adv on mt8192
+> yet, remove this property and add drive-strength-microamp in its place,
+> which has a clearer meaning.
+> =
 
-diff --git a/Documentation/devicetree/bindings/net/cdns,macb.yaml b/Documentation/devicetree/bindings/net/cdns,macb.yaml
-index 337cec4d85ca..86fc31c2d91b 100644
---- a/Documentation/devicetree/bindings/net/cdns,macb.yaml
-+++ b/Documentation/devicetree/bindings/net/cdns,macb.yaml
-@@ -191,7 +191,6 @@ examples:
-                     clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
-                     #address-cells = <1>;
-                     #size-cells = <0>;
--                    #stream-id-cells = <1>;
-                     iommus = <&smmu 0x875>;
-                     power-domains = <&zynqmp_firmware PD_ETH_1>;
-                     resets = <&zynqmp_reset ZYNQMP_RESET_GEM1>;
-diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-index 699164dd1295..f5564ecddb62 100644
---- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-@@ -27,6 +27,9 @@ properties:
-   reg:
-     maxItems: 1
- 
-+  clocks: true
-+  clock-names: true
-+
-   interrupts:
-     minItems: 3
-     maxItems: 4
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-index 901944683322..61b2fb9e141b 100644
---- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-@@ -58,6 +58,9 @@ properties:
-       - const: rmii_internal
-       - const: mac_cg
- 
-+  power-domains:
-+    maxItems: 1
-+
-   mediatek,pericfg:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 249967d8d750..5a12dc32288a 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -51,7 +51,7 @@ properties:
-     description:
-       Specify the consys reset for mt7986.
- 
--  reset-name:
-+  reset-names:
-     const: consys
- 
-   mediatek,infracfg:
--- 
-2.34.1
+> Fixes: 4ac68333ff6d ("dt-bindings: pinctrl: mt8192: Add mediatek,drive-st=
+rength-adv property")
+> Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> =
 
+> ---
+> =
+
+>  .../bindings/pinctrl/pinctrl-mt8192.yaml      | 27 ++-----------------
+>  1 file changed, 2 insertions(+), 25 deletions(-)
+> =
+
+
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
