@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2582FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 12:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51D50C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 13:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PZjNaDYOBIb1V+0IoWbjQ2dX3FMu+k/ZBEXcnyrJ5R0=; b=XoTt222e897V1B
-	fp5G2vU4KNoBihwOqaUxVJgTPV618a0X+Iglx223PlO6kERVGwYm2srVClbnS9ZfEXG4z7sgrDlff
-	XLhvD/yjDBme2ZbJ2eAWERRnFhYsAoQo0lWXYnMRI07SO9pJgfyn3PYPPqdtE6rVFYZqGAWe5YGgB
-	VQz55plgUEn7aQvvoO2x40a33vz5GFG5pEo04igW7xETRJvf6/+X85kXr4kl22rrao0N3jIxOxDZo
-	0w0bLyrJiL+EL/hbyo8DIDkSrPZ6HPcJHLljE+Li430x6H5sgevq1uBXr+X1cNrsvsGF+icW+hExe
-	Nz4c1TNTrtlBc/t0hp/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0qweVt4rAa/shUVkksYFulU5rCk2bZo2wL5GgMhCdqo=; b=VKYSDeATJpalot
+	dZY0d2Mtw8PYArQFyVgEMm4iDsXEn3GGiGwyR5p2TpWvyUte4t9PpEJ3fNUrgdtqYCs6XWZqyGbAQ
+	AH/7Jgb4dlJ4z5LHVODZWXG/RX2mGiM3adywoqZO+lSWKyHCjOexzKGwHLY6e1AcUQl9l1l81wvrz
+	pTfP6R9ypAca8qs++ouEg3wXvFSYKg1jT1dKsfy64ccbl9nQ/K+gjV4BCrwzDoTQm7aNFyCOmecpI
+	755/vAH76XE9ZNVNs5plteyaDQXYWS2rJAf6D7iMbGbSYoHcEe3fYFerO0UBLUGAwmOekzNXfZ1bS
+	tT5gcxwzOmb9b4yVAF9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuD4a-00EwyX-8Y; Thu, 26 May 2022 12:58:40 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nuDeT-00F2f2-QV; Thu, 26 May 2022 13:35:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuD4B-00Ewq0-10; Thu, 26 May 2022 12:58:17 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(Authenticated sender: kholk11)
-	with ESMTPSA id 996081F45608
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653569889;
-	bh=Pxy52o+lM2XaDOLsjbwjyhew5a/i/1lMjk2kvPzvEYs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=h4XZLqWW1UodqgwGvGfUppm/Pacgx73ML19oAAIJIIBs1+VwHCmw4/hlB6DFCN45i
-	 TVenv+dx+YuUHCmLnyQtNwkB/1S0LauCYcJ34pDOAmhYjNJ8oYF1JYBqwJmK7bXApG
-	 3w6lsSDO3H1lZiYZvA/YT4nhqlvVVs2XnuJikgv1GJyJFAs3QDlwgrnrqBER0Bmcj9
-	 nrG9wJ4xeNqNfuScapX1mEyDSlYk+FN4DC6wt0mju3U5tkeVv20EE+X/rnjG4F+JQe
-	 eJCgkq3l+v6/aUEC8sfn6Fckfcoo2lWCb9r9/amXCwm/6cgKS0HofyHilyEtBpj6Mr
-	 OdQ6rKgRctCpA==
-Message-ID: <76367ac4-15ad-553e-9c88-6464622f393f@collabora.com>
-Date: Thu, 26 May 2022 14:58:06 +0200
+	id 1nuDeR-00F2eY-Iy
+	for linux-mediatek@lists.infradead.org; Thu, 26 May 2022 13:35:45 +0000
+X-UUID: 2e2b24e439c74ac792879d758aaebecd-20220526
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:0925ec76-62b7-4b7c-9dac-cf58af4abad9,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:f5b99847-4fb1-496b-8f1d-39e733fed1ea,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 2e2b24e439c74ac792879d758aaebecd-20220526
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1483376012; Thu, 26 May 2022 06:35:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 26 May 2022 06:35:33 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 26 May 2022 21:35:32 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 26 May 2022 21:35:32 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: <linux-wireless@vger.kernel.org>
+CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+	<lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	"Evelyn Tsai" <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, "Ryder Lee" <ryder.lee@mediatek.com>
+Subject: [PATCH v2] mac80211: check skb_shared in ieee80211_8023_xmit()
+Date: Thu, 26 May 2022 21:35:32 +0800
+Message-ID: <e7a73aaf7742b17e43421c56625646dfc5c4d2cb.1653571902.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v7 2/6] dt-bindings: thermal: Add binding document for
- LVTS thermal controllers
-Content-Language: en-US
-To: Alexandre Bailon <abailon@baylibre.com>, rafael@kernel.org,
- rui.zhang@intel.com, daniel.lezcano@linaro.org, amitk@kernel.org
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org,
- krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
- fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com
-References: <20220524152552.246193-1-abailon@baylibre.com>
- <20220524152552.246193-3-abailon@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220524152552.246193-3-abailon@baylibre.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220526_055815_384577_00390F22 
-X-CRM114-Status: GOOD (  18.65  )
+X-CRM114-CacheID: sfid-20220526_063543_671985_7AAEBB19 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,151 +74,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/05/22 17:25, Alexandre Bailon ha scritto:
-> This patch adds binding document for mt8192 and mt8195 thermal
-> controllers.
-> 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> ---
->   .../thermal/mediatek,mt8192-lvts.yaml         | 81 +++++++++++++++++++
->   1 file changed, 81 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml b/Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
-> new file mode 100644
-> index 000000000000..914c877d1f2f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
-> @@ -0,0 +1,81 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/thermal/mediatek,mt8192-lvts.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek SoC LVTS thermal controller
-> +
-> +maintainers:
-> +  - Yu-Chia Chang <ethan.chang@mediatek.com>
-> +  - Ben Tseng <ben.tseng@mediatek.com>
-> +
-> +allOf:
-> +  - $ref: thermal-sensor.yaml#
-> +  - $ref: /nvmem/nvmem-consumer.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8192-lvts
-> +      - mediatek,mt8195-lvts
-> +
-> +  reg:
-> +    minItems: 2
-> +    maxItems: 4
-> +
-> +  interrupts:
-> +    maxItems: 2
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  "#thermal-sensor-cells":
-> +    const: 1
-> +
-> +  nvmem-cells:
-> +    maxItems: 2
-> +    description: Calibration data for thermal sensors
-> +
-> +  nvmem-cell-names:
-> +    items:
-> +      - const: e_data1
-> +      - const: e_data2
+Add a missing skb_shared check into 802.3 path to prevent potential
+use-after-free from happening. This also uses skb_share_check()
+instead of open-coding in tx path.
 
- From what I understand, each nvmem cell has calibration data for each thermal
-sensor, so let's use some more descriptive names...
-some ideas: "lvts1-calib" "lvts1-cal" "calib1".
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+change since v2 - switch to use skb_share_check()
+---
+ net/mac80211/tx.c | 36 +++++++++++++-----------------------
+ 1 file changed, 13 insertions(+), 23 deletions(-)
 
-Also, I think that the best option is to register one driver instance for each
-hardware instance, meaning that you should have only one reg, only one nvmem-cell,
-only one reset, only one interrupt. This makes it possible to have as many
-LVTS instances as possible without any code adjustments in the future.
-
-An example for MT8195:
-
-thermal-sensor@1100b000 {
-	compatible = "mediatek,mt8195-lvts";
-	reg = <0 0x1100b000 0 0x1000>;
-	interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
-	#thermal-sensor-cells = <1>;
-	clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-	nvmem-cells = <&lvts_e_data1>;
-	nvmem-cell-names = "calibration";
-
-	/* is this a reset for lvts1? */
-	resets = <&infracfg_ao MT8195_INFRA_RST0_THERM_CTRL_SWRST>;
-};
-
-thermal-sensor@11278000 {
-	compatible = "mediatek,mt8195-lvts";
-	reg = <0 0x11278000 0 0x1000>;
-	interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
-	#thermal-sensor-cells = <1>;
-	clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-	nvmem-cells = <&lvts_e_data2>;
-	nvmem-cell-names = "calibration";
-
-	/* is this a reset for lvts2? */
-	resets = <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
-};
-
-In the future, a new MediaTek SoC may simply define more nodes..... :-)
-
-> +
-> +  resets:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +
-> +
-> +required:
-> +  - '#thermal-sensor-cells'
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - nvmem-cells
-> +  - nvmem-cell-names
-> +  - resets
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/thermal/thermal.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt8195-clk.h>
-> +    #include <dt-bindings/reset/mt8195-resets.h>
-> +
-> +    lvts: lvts@1100b000 {
-
-Please use generic names: this should be thermal-sensor@1100b000
-
-> +        compatible = "mediatek,mt8195-lvts";
-> +        #thermal-sensor-cells = <1>;
-> +        reg = <0 0x1100b000 0 0x1000>,
-> +              <0 0x11278000 0 0x1000>;
-> +        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>,
-> +                     <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
-> +        resets = <&infracfg_ao MT8195_INFRA_RST0_THERM_CTRL_SWRST>,
-> +                 <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
-> +        nvmem-cells = <&lvts_e_data1 &lvts_e_data2>;
-> +        nvmem-cell-names = "e_data1","e_data2";
-> +    };
-> +...
+diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
+index 0e4efc08c762..c425f4fb7c2e 100644
+--- a/net/mac80211/tx.c
++++ b/net/mac80211/tx.c
+@@ -2818,19 +2818,10 @@ static struct sk_buff *ieee80211_build_hdr(struct ieee80211_sub_if_data *sdata,
+ 	/*
+ 	 * If the skb is shared we need to obtain our own copy.
+ 	 */
+-	if (skb_shared(skb)) {
+-		struct sk_buff *tmp_skb = skb;
+-
+-		/* can't happen -- skb is a clone if info_id != 0 */
+-		WARN_ON(info_id);
+-
+-		skb = skb_clone(skb, GFP_ATOMIC);
+-		kfree_skb(tmp_skb);
+-
+-		if (!skb) {
+-			ret = -ENOMEM;
+-			goto free;
+-		}
++	skb = skb_share_check(skb, GFP_ATOMIC);
++	if (unlikely(!skb)) {
++		ret = -ENOMEM;
++		goto free;
+ 	}
+ 
+ 	hdr.frame_control = fc;
+@@ -3539,15 +3530,9 @@ static bool ieee80211_xmit_fast(struct ieee80211_sub_if_data *sdata,
+ 
+ 	/* after this point (skb is modified) we cannot return false */
+ 
+-	if (skb_shared(skb)) {
+-		struct sk_buff *tmp_skb = skb;
+-
+-		skb = skb_clone(skb, GFP_ATOMIC);
+-		kfree_skb(tmp_skb);
+-
+-		if (!skb)
+-			return true;
+-	}
++	skb = skb_share_check(skb, GFP_ATOMIC);
++	if (unlikely(!skb))
++		return true;
+ 
+ 	if ((hdr->frame_control & cpu_to_le16(IEEE80211_STYPE_QOS_DATA)) &&
+ 	    ieee80211_amsdu_aggregate(sdata, sta, fast_tx, skb))
+@@ -4437,7 +4422,7 @@ static void ieee80211_8023_xmit(struct ieee80211_sub_if_data *sdata,
+ 				struct net_device *dev, struct sta_info *sta,
+ 				struct ieee80211_key *key, struct sk_buff *skb)
+ {
+-	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++	struct ieee80211_tx_info *info;
+ 	struct ieee80211_local *local = sdata->local;
+ 	struct tid_ampdu_tx *tid_tx;
+ 	u8 tid;
+@@ -4452,6 +4437,11 @@ static void ieee80211_8023_xmit(struct ieee80211_sub_if_data *sdata,
+ 	    test_bit(SDATA_STATE_OFFCHANNEL, &sdata->state))
+ 		goto out_free;
+ 
++	skb = skb_share_check(skb, GFP_ATOMIC);
++	if (unlikely(!skb))
++		return;
++
++	info = IEEE80211_SKB_CB(skb);
+ 	memset(info, 0, sizeof(*info));
+ 
+ 	ieee80211_aggr_check(sdata, sta, skb);
+-- 
+2.29.2
 
 
 _______________________________________________
