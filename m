@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DDFEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 05:58:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2FE8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 06:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N4btVhoGSSatDQT9X044cqvhU4ZPlliQ+WRQd64/gPk=; b=nZbybfFGOS0Spt
-	SIf0x73P1SRE/MrH+Y6YU2upy6bQiz/NLaPl/qAxgkZ52l3UB+/+y8voMNnjc6EDmmmUIp9+NK9zD
-	dETMcqIEq7f2TTgjXL68b32IaZAlyHZXtuZKaPuP323laZeIqA8X8swOj0bugzpk4974I2KFLuUF1
-	yH5/9P+IKaUYIE7n/bDwDmOpOzQK2ZhryyafqTo4CeR9PqvfvcKZQRpQ2oDt72QJt6SBPF7rQCJUF
-	ptA8ZDMVUP042+zgsjdw0juGemuvLrQiR1Zqk37tDQeJCLwgHOyDwnNpAiilanUxjor9nvdfBOdSO
-	2nJvngBRJkbWozQEDqow==;
+	List-Owner; bh=tq1Oz9BTRd1KnOy2cXJWzrIFfXrHus3T2cNVCUU944k=; b=D3Lt/Ok1h9yvQU
+	rg55Wqctf/DxdliOCe2RUqObTpXFA6IFcfQV71j+AdW3k63AD9XZSj4s9oI0mQa3hLW4LKENNPTbp
+	vSRrdg7WY1UP6XYhXaqFN2ZlF+EEnIt8QGAu+K1GgIijJ0aypKIKsV7sjQPN2qTrMk7wEQ5iNDUEm
+	zXWBzMdQzta3bud3IAYBQxsaqy6VXy2ArtWWIdVXVXD4tICsneC8cGnWt4Mzix8TzQN/mgPZS8NBJ
+	crdOYUyzntk+TbXFxHENvrZX+brIuQSq1uDkYpgZVLritPUvqg8sQB4c/n5yp79v+3eZ+fIiVwpOn
+	ugASPrGy/2DU/3x0luxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nu6Vq-00DZM2-Ll; Thu, 26 May 2022 05:58:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nu6Zc-00DZye-14; Thu, 26 May 2022 06:02:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nu6Ve-00DZIo-Qb; Thu, 26 May 2022 05:58:13 +0000
-X-UUID: 2791b781dc6b44e584b066c53e656350-20220525
+	id 1nu6ZZ-00DZxI-PG; Thu, 26 May 2022 06:02:15 +0000
+X-UUID: 8c60f175d3d6417cbae3970e14ed4914-20220525
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:7cd2306b-a13c-4712-b38c-cd7d2ecdb093,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.5,REQID:887f8c80-4d1d-4da7-81b0-3a325c4060e3,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:a6c08947-4fb1-496b-8f1d-39e733fed1ea,C
+X-CID-META: VersionHash:2a19b09,CLOUDID:06f18947-4fb1-496b-8f1d-39e733fed1ea,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: 2791b781dc6b44e584b066c53e656350-20220525
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <jing-ting.wu@mediatek.com>)
+X-UUID: 8c60f175d3d6417cbae3970e14ed4914-20220525
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <jia-wei.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 648547922; Wed, 25 May 2022 22:57:58 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 May 2022 22:57:57 -0700
+	with ESMTP id 1461197523; Wed, 25 May 2022 23:02:03 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 May 2022 22:52:01 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 26 May 2022 13:57:55 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 26 May 2022 13:52:00 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 26 May 2022 13:57:55 +0800
-Message-ID: <ba7ddde1829ee9eedcd6673f923d731d60719dc5.camel@mediatek.com>
-Subject: Re: [SPAM]Re: [Bug] Race condition between CPU hotplug off flow and
- __sched_setscheduler()
-From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-To: Peter Zijlstra <peterz@infradead.org>
-CC: Daniel Bristot de Oliveira <bristot@redhat.com>, Valentin Schneider
-	<vschneid@redhat.com>, <tglx@linutronix.de>, <wsd_upstream@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <Jonathan.JMChen@mediatek.com>,
-	"chris.redpath@arm.com" <chris.redpath@arm.com>, Dietmar Eggemann
-	<dietmar.eggemann@arm.com>, Vincent Donnefort <vdonnefort@gmail.com>, "Ingo
- Molnar" <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>, "Vincent
- Guittot" <vincent.guittot@linaro.org>, Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Christian
- Brauner" <brauner@kernel.org>
-Date: Thu, 26 May 2022 13:57:55 +0800
-In-Reply-To: <52eea711b8ce3151ff73bfb0289cc9da0e8c4a10.camel@mediatek.com>
-References: <4a0aa13c99ffd6aea6426f83314aa2a91bc8933f.camel@mediatek.com>
-	 <20220519134706.GH2578@worktop.programming.kicks-ass.net>
-	 <52eea711b8ce3151ff73bfb0289cc9da0e8c4a10.camel@mediatek.com>
+ Transport; Thu, 26 May 2022 13:52:00 +0800
+Message-ID: <48e3f8a9db7b4fe429ed55440b8fa437f40b12ba.camel@mediatek.com>
+Subject: Re: [PATCH v3 2/4] soc: mediatek: svs: add support for mt8186
+From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
+ Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu
+	<roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>
+Date: Thu, 26 May 2022 13:52:00 +0800
+In-Reply-To: <0a1c4797-cfdf-1b45-62f0-18ecf78ed335@collabora.com>
+References: <20220523084034.26802-1-jia-wei.chang@mediatek.com>
+	 <20220523084034.26802-3-jia-wei.chang@mediatek.com>
+	 <0a1c4797-cfdf-1b45-62f0-18ecf78ed335@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_225810_918698_14B8B3D5 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20220525_230213_874624_CF0359B8 
+X-CRM114-Status: GOOD (  19.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,83 +84,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Peter
-
-
-> > How easy can you reproduce; does the below hack make it better?
-> 
-> 
-> The issue can be reproduced in about 48 hours when hotplug up/down
-> frequently.
-> 
-> Thanks for your suggestion.
-> I think the hack patch could stay the rq->balance_callback when rq-
-> > callback = &balance_push_callback.
-> 
-> We can add hack patch to the stability test.
-
-Use the patch of previous mail, we pass the stability test at previous
-48 hours and still testing.
-
-I think the patch could make the issue better.
-Do you suggest to upstream this patch to mainline?
-
-Thank you.
-
+On Mon, 2022-05-23 at 11:38 +0200, AngeloGioacchino Del Regno wrote:
+> Il 23/05/22 10:40, Tim Chang ha scritto:
+> > From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > > 
-> > diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-> > index 95bac3b094b3..f18ee22b29bc 100644
-> > --- a/kernel/sched/core.c
-> > +++ b/kernel/sched/core.c
-> > @@ -4763,20 +4763,30 @@ struct callback_head balance_push_callback
-> > =
-> > {
-> >  	.func = (void (*)(struct callback_head *))balance_push,
-> >  };
-> >  
-> > -static inline struct callback_head
-> > *splice_balance_callbacks(struct
-> > rq *rq)
-> > +static inline struct callback_head *
-> > +__splice_balance_callbacks(struct rq *rq, bool foo)
-> >  {
-> >  	struct callback_head *head = rq->balance_callback;
-> >  
-> >  	lockdep_assert_rq_held(rq);
-> > -	if (head)
-> > -		rq->balance_callback = NULL;
-> > +	if (head) {
-> > +		if (foo && head == &balance_push_callback)
-> > +			head = NULL;
-> > +		else
-> > +			rq->balance_callback = NULL;
-> > +	}
-> >  
-> >  	return head;
-> >  }
-> >  
-> > +static inline struct callback_head
-> > *splice_balance_callbacks(struct
-> > rq *rq)
-> > +{
-> > +	return __splice_balance_callbacks(rq, true);
-> > +}
-> > +
-> >  static void __balance_callbacks(struct rq *rq)
-> >  {
-> > -	do_balance_callbacks(rq, splice_balance_callbacks(rq));
-> > +	do_balance_callbacks(rq, __splice_balance_callbacks(rq,
-> > false));
-> >  }
-> >  
-> >  static inline void balance_callbacks(struct rq *rq, struct
-> > callback_head *head)
+> > MT8186 svs has a number of banks which used as optimization of opp
+> > voltage table for corresponding dvfs drivers.
+> > MT8186 svs big core uses 2-line high bank and low bank to optimize
+> > the
+> > voltage of opp table for higher and lower frequency respectively.
 > > 
+> > Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-svs.c | 351
+> > ++++++++++++++++++++++++++++++++-
+> >   1 file changed, 344 insertions(+), 7 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-svs.c
+> > b/drivers/soc/mediatek/mtk-svs.c
+> > index 606a00a2e57d..656d0361ff7d 100644
+> > --- a/drivers/soc/mediatek/mtk-svs.c
+> > +++ b/drivers/soc/mediatek/mtk-svs.c
 > 
+> ..snip..
+> 
+> > @@ -2245,6 +2569,16 @@ static const struct svs_platform_data
+> > svs_mt8192_platform_data = {
+> >   	.bank_max = ARRAY_SIZE(svs_mt8192_banks),
+> >   };
+> >   
+> > +static const struct svs_platform_data svs_mt8186_platform_data = {
+> > +	.name = "mt8186-svs",
+> > +	.banks = svs_mt8186_banks,
+> > +	.efuse_parsing = svs_mt8186_efuse_parsing,
+> > +	.probe = svs_mt8186_platform_probe,
+> > +	.irqflags = IRQF_TRIGGER_HIGH,
+> 
+> I know I gave you my R-b tag earlier, but I've just noticed that:
+> please remove
+> irqflags, as this kind of flags are specified in devicetree and it is
+> not
+> necessary to specify them here.
+> 
+> Thanks,
+> Angelo
 
-Best Regards,
-Jing-Ting Wu
+Hi Angelo,
 
+Sure, I will remove it in the next version.
+Thanks.
 
 
 
