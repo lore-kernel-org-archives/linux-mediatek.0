@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB36EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 20:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72368C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 20:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WAvQyYeIz0lq9fWuBBh8+1ILbOaSjYeOjLJc2TubqAA=; b=ARkcJFUpjzMiV/
-	zONaeQyZlnazLxkZ/D2A/aSCJjLRrwh4geTti+sVqTPPzfk5v/7UNJ4hZQXLyYtgQYTDkvqKkTBvW
-	B8GKV90jCFs6vcDNMThnP/onpyymTRNa/Gp4Svl8+PwkWfrIMhfcgV6zpnMnKDM1r5kmFvS2r1zCZ
-	l/AO5Zgh2SftXIO2JIU0LlIQwKxfXiRVKcHAymP8H4t8rxSIWLhxIyebNC4PoHfTxDxt2JcQmoR2t
-	Q0acCoA2MRrN/85kx/RZ33eRAP4SFkzBlhj3JT9P7WhjxIb5CjPUYAB50poXgjZOyjapNmsh/TWgF
-	3u4P2aArqcp9vPi08JwA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=80jFeG0eSlGE1aa2v0zCq0ZefqrV68YC73YySA7gp04=; b=K1zIvv4XnBGqFi
+	nQRZqsTt7esbWz3PwzpJWXamvxS+wMLVLaLG1vVnaNi/b3WrnSapEvclIxT0tbXjzMCg/CDmj9wPy
+	4cjo+Mm/szsGH2WahdPbkmi3y4vdze1CRAYhzA/D2cfAIt5H1NV7hSiVmm5VRmZhcAAFISWXy9M9T
+	oFj2bOEbSfwhshNDTjEC6VyUXmZWGqkdiN0P8f6rCrjXRlSsm9vF3xRNCK/zyM02wXXo3NkJiHtFi
+	ITjGdRYN3V61PQ5UW7bK5koXajPia+yiapbdRqBxfnqfLP9t1P+HqfjOPYFCYJlcMPq7eb65p/aQb
+	bSdvWzZlDyxWJ75heYig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuKWu-00FtpM-37; Thu, 26 May 2022 20:56:24 +0000
+	id 1nuKWs-00Ftoy-EN; Thu, 26 May 2022 20:56:22 +0000
 Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuKL4-00Foue-4M
-	for linux-mediatek@lists.infradead.org; Thu, 26 May 2022 20:44:11 +0000
+	id 1nuKL1-00Foue-5Y
+	for linux-mediatek@lists.infradead.org; Thu, 26 May 2022 20:44:09 +0000
 Received: by mail-ed1-x52c.google.com with SMTP id er5so3139581edb.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 May 2022 13:44:10 -0700 (PDT)
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 May 2022 13:44:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=XOY58nRo2FBMVZy4R9dChoRFoguqNiD/V0YfBQb6+is=;
-        b=jP0bjuQktDPX6JTVbJjvC+zRgIO8NTyrFajRszjwmIwb1XAOJzbMLaoYRW4V9EiAvC
-         unlwEAj2AHm1wi/ncAhOpQltINgTs8tyspxKTxa45VV/Q9qryXDtlCggrdOE05keuzg5
-         SdkZ1uKmYeQ4JjSlTUnxAyZsOJS4MoGnPqC2g2TRh+wE9jGJJyLBacNOg5dZbcc8Nns0
-         DujxcKG2MHdwp505Fqt4dhqJvokj5t88Tx9ZrCFJJJdBx2rrWKdK9QQgrLExp0cwzio+
-         GlCCQx79fnPsReDh2OMi6GifCZ2J8Q1D6fpPp8sgJfg7YyqQf9a8S/jIp8c3LHDb6SRH
-         gFMg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=qgzdTe7fcPDB2gZCUSY8XDUZGwLpeoTk6dRLrKInLZw=;
+        b=nfHEhi7ujlgHOW7VWTy7u/ez0jnBhNWYtx7YskXCH2/UMTlUXvVqZ8r4hDdc+eccdZ
+         eDQJSL5qDd4CHFuv5+VR0rJBcZQwBLEhXoXQxcWSwoO5DPbdMWv6cBbwraUVhbzLHGFl
+         YFEF6FjrPWGOCtI48xOZQV/AWbmpKgL2yntfvgn3Pi9fKgofLL9X6i3RjWbtgescg4A2
+         J7zFnkfDvfRGJF1aPlerzZJWjlDQtLz/2g34UhyhB+KvpnNIW3qXfYGv3Ozf0JR1Oq1E
+         VETk/7mEwjWgVTAgIgbPjLEmhRCgqlqHaW7tm5FOLqZK0WnqmLJgsSuMxGMMNCSNhEKd
+         Y50Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=XOY58nRo2FBMVZy4R9dChoRFoguqNiD/V0YfBQb6+is=;
-        b=3N4Z7of0Ndekh//7GXPk/XDFkgNYjhhePTOv16w8EWWxRaBNcoFldK7BYeQhiSjO1D
-         l5aTdKnOOQ4HBDn9pyiwOaHzOXurKAUyf46HMU4MGueD0f+CvR1GJmazitczP9LYKWmr
-         s6ZTkX0PAoNTSimzCQAOw7XEhQXbZJ10CL7ryqw6YMUX4qlZtv7rIVqiZFnKQnr5t/BR
-         sYxHg0nh7kSJuPxZ6ARezY3mQ//KyNHYCgoFpD9khjUUaPVy9s99+qrKKgYg9FpgYmRP
-         aqvuqkU7Yt2F5O2IAEI+GwjskckG0NWPDTtbVPIf6SuaBoBEuivwcroh+dE3mKPJ9Iv8
-         8kjg==
-X-Gm-Message-State: AOAM531yedulzvyHuVu+jzls773O4gJ31DVTuhHMtb1+yeP6TUhl/Kmc
-	47psO3p4MdoeBqjtsGtmz3NEVQ==
-X-Google-Smtp-Source: ABdhPJyrLaR89tqeL23Sv2113VdbG8ErSnQMN2ndTBmG7bJIm8BHM2LMNk1k5z6mSMinJ7S/qaYvBw==
-X-Received: by 2002:aa7:dbc1:0:b0:42b:77a2:4f81 with SMTP id v1-20020aa7dbc1000000b0042b77a24f81mr19418697edt.287.1653597849731;
-        Thu, 26 May 2022 13:44:09 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=qgzdTe7fcPDB2gZCUSY8XDUZGwLpeoTk6dRLrKInLZw=;
+        b=uA+6al0Rt7FHBDrCseUbv8X+FzwyvR3lvFbjqYgG4A3eqyoGf+pL6F+3nzqlkd8CXr
+         k5vkQWxYgGogI4Hme03nN5grukL9YWxDCpepF3tfOUBcv1v2WflzZth8PIMZfEfqI2NU
+         AN9TFNlSgNj+EXI0DQURmuoCEFYSaUIbxutvOcSjDc6Ro8dPhXIZQg+YtyCaEz7sQPO1
+         bqW6iDwrmS6AY38qMnv4/UGF/SPfovkYbQGBuroXJP47Co8qtFCF9YBBCFCunIC3QAMk
+         evJ2slZLZORGXNiYGM3XeL9T264whQG7Fx0RU3i6KAPKNMdaye0YeHqPBqsoSoJGq9zz
+         GHnQ==
+X-Gm-Message-State: AOAM531oTr2eda+LgybAhqF4pYv+5hRAt23JLcWCdrV+tzKMi9l72ybq
+	V39wbZvpsfk/HkK8SrwhKARZBA==
+X-Google-Smtp-Source: ABdhPJzmbatH19Rfb7UpYoZN8s5POPS+jX9M0kXvrf1DSf2MQ6Y2AyfXy9WcElSAeYt6XR2aaTKIyg==
+X-Received: by 2002:a50:ed18:0:b0:42b:b880:3f27 with SMTP id j24-20020a50ed18000000b0042bb8803f27mr12083288eds.187.1653597845910;
+        Thu, 26 May 2022 13:44:05 -0700 (PDT)
 Received: from localhost.localdomain (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id i15-20020a1709061ccf00b006fec5cef701sm803475ejh.197.2022.05.26.13.44.08
+        by smtp.gmail.com with ESMTPSA id i15-20020a1709061ccf00b006fec5cef701sm803475ejh.197.2022.05.26.13.44.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 May 2022 13:44:09 -0700 (PDT)
+        Thu, 26 May 2022 13:44:05 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Arnd Bergmann <arnd@arndb.de>,
 	Olof Johansson <olof@lixom.net>,
 	arm@kernel.org,
 	soc@kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/2] ARM: dts: mediatek: adjust whitespace around '='
-Date: Thu, 26 May 2022 22:44:02 +0200
-Message-Id: <20220526204402.832393-2-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/2] arm64: dts: mediatek: adjust whitespace around '='
+Date: Thu, 26 May 2022 22:44:01 +0200
+Message-Id: <20220526204402.832393-1-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220526204402.832393-1-krzysztof.kozlowski@linaro.org>
-References: <20220526204402.832393-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220526_134410_225693_3726C4A9 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20220526_134407_299386_C61E6EA8 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,69 +105,311 @@ Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Output compared with dtx_diff and fdtdump.
 ---
- arch/arm/boot/dts/mt2701.dtsi | 8 ++++----
- arch/arm/boot/dts/mt7623.dtsi | 6 +++---
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts          |  2 +-
+ .../boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts    |  8 ++++----
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts         |  8 ++++----
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi             | 10 +++++-----
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi            |  4 ++--
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi         | 12 ++++++------
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts          | 12 ++++++------
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi             |  8 ++++----
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi             |  8 ++++----
+ arch/arm64/boot/dts/mediatek/mt8195-evb.dts          |  8 ++++----
+ 10 files changed, 40 insertions(+), 40 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index ef583cfd3baf..b8eba3ba153c 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -427,9 +427,9 @@ audsys: clock-controller@11220000 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+index 11aa135aa0f3..9b1af9c80130 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+@@ -106,7 +106,7 @@ &cpu2 {
+ };
  
- 		afe: audio-controller {
- 			compatible = "mediatek,mt2701-audio";
--			interrupts =  <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
-+			interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
- 				      <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
--			interrupt-names	= "afe", "asys";
-+			interrupt-names = "afe", "asys";
- 			power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
- 
- 			clocks = <&infracfg CLK_INFRA_AUDIO>,
-@@ -559,7 +559,7 @@ jpegdec: jpegdec@15004000 {
- 		compatible = "mediatek,mt2701-jpgdec";
- 		reg = <0 0x15004000 0 0x1000>;
- 		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
--		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
-+		clocks = <&imgsys CLK_IMG_JPGDEC_SMI>,
- 			  <&imgsys CLK_IMG_JPGDEC>;
- 		clock-names = "jpgdec-smi",
- 			      "jpgdec";
-@@ -573,7 +573,7 @@ jpegenc: jpegenc@1500a000 {
- 			     "mediatek,mtk-jpgenc";
- 		reg = <0 0x1500a000 0 0x1000>;
- 		interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_LOW>;
--		clocks =  <&imgsys CLK_IMG_VENC>;
-+		clocks = <&imgsys CLK_IMG_VENC>;
- 		clock-names = "jpgenc";
- 		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
- 		iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index f4848362b3be..25d31e40a553 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -241,7 +241,7 @@ infracfg: syscon@10001000 {
+ &eth {
+-	phy-mode ="rgmii-rxid";
++	phy-mode = "rgmii-rxid";
+ 	phy-handle = <&ethernet_phy0>;
+ 	mediatek,tx-delay-ps = <1530>;
+ 	snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index 2b9bf8dd14ec..ada06d3de1c9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -336,14 +336,14 @@ mux {
+ 	i2c1_pins: i2c1-pins {
+ 		mux {
+ 			function = "i2c";
+-			groups =  "i2c1_0";
++			groups = "i2c1_0";
+ 		};
  	};
  
- 	pericfg: syscon@10003000 {
--		compatible =  "mediatek,mt7623-pericfg",
-+		compatible = "mediatek,mt7623-pericfg",
- 			      "mediatek,mt2701-pericfg",
- 			      "syscon";
- 		reg = <0 0x10003000 0 0x1000>;
-@@ -628,9 +628,9 @@ audsys: clock-controller@11220000 {
- 		afe: audio-controller {
- 			compatible = "mediatek,mt7623-audio",
- 				     "mediatek,mt2701-audio";
--			interrupts =  <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
-+			interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
- 				      <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
--			interrupt-names	= "afe", "asys";
-+			interrupt-names = "afe", "asys";
- 			power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+ 	i2c2_pins: i2c2-pins {
+ 		mux {
+ 			function = "i2c";
+-			groups =  "i2c2_0";
++			groups = "i2c2_0";
+ 		};
+ 	};
  
- 			clocks = <&infracfg CLK_INFRA_AUDIO>,
+@@ -366,14 +366,14 @@ conf {
+ 	irrx_pins: irrx-pins {
+ 		mux {
+ 			function = "ir";
+-			groups =  "ir_1_rx";
++			groups = "ir_1_rx";
+ 		};
+ 	};
+ 
+ 	irtx_pins: irtx-pins {
+ 		mux {
+ 			function = "ir";
+-			groups =  "ir_1_tx";
++			groups = "ir_1_tx";
+ 		};
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+index 596c073d8b05..3ee392d805d8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+@@ -298,14 +298,14 @@ mux {
+ 	i2c1_pins: i2c1-pins {
+ 		mux {
+ 			function = "i2c";
+-			groups =  "i2c1_0";
++			groups = "i2c1_0";
+ 		};
+ 	};
+ 
+ 	i2c2_pins: i2c2-pins {
+ 		mux {
+ 			function = "i2c";
+-			groups =  "i2c2_0";
++			groups = "i2c2_0";
+ 		};
+ 	};
+ 
+@@ -328,14 +328,14 @@ conf {
+ 	irrx_pins: irrx-pins {
+ 		mux {
+ 			function = "ir";
+-			groups =  "ir_1_rx";
++			groups = "ir_1_rx";
+ 		};
+ 	};
+ 
+ 	irtx_pins: irtx-pins {
+ 		mux {
+ 			function = "ir";
+-			groups =  "ir_1_tx";
++			groups = "ir_1_tx";
+ 		};
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index dbcee8b4d8d8..146e18b5b1f4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -118,8 +118,8 @@ clk25m: oscillator {
+ 	};
+ 
+ 	psci {
+-		compatible  = "arm,psci-0.2";
+-		method      = "smc";
++		compatible = "arm,psci-0.2";
++		method = "smc";
+ 	};
+ 
+ 	pmu {
+@@ -616,9 +616,9 @@ audsys: clock-controller@11220000 {
+ 
+ 		afe: audio-controller {
+ 			compatible = "mediatek,mt7622-audio";
+-			interrupts =  <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW>,
+-				      <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW>;
+-			interrupt-names	= "afe", "asys";
++			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-names = "afe", "asys";
+ 
+ 			clocks = <&infracfg CLK_INFRA_AUDIO_PD>,
+ 				 <&topckgen CLK_TOP_AUD1_SEL>,
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index d2636a0ed152..e3a407d03551 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -57,8 +57,8 @@ cpu3: cpu@3 {
+ 	};
+ 
+ 	psci {
+-		compatible  = "arm,psci-0.2";
+-		method      = "smc";
++		compatible = "arm,psci-0.2";
++		method = "smc";
+ 	};
+ 
+ 	reserved-memory {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index 9c75fbb31f98..0d8f9459e35d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -300,8 +300,8 @@ da9211_vcpu_reg: BUCKA {
+ 				regulator-name = "VBUCKA";
+ 				regulator-min-microvolt = < 700000>;
+ 				regulator-max-microvolt = <1310000>;
+-				regulator-min-microamp  = <2000000>;
+-				regulator-max-microamp  = <4400000>;
++				regulator-min-microamp = <2000000>;
++				regulator-max-microamp = <4400000>;
+ 				regulator-ramp-delay = <10000>;
+ 				regulator-always-on;
+ 				regulator-allowed-modes = <DA9211_BUCK_MODE_SYNC
+@@ -312,8 +312,8 @@ da9211_vgpu_reg: BUCKB {
+ 				regulator-name = "VBUCKB";
+ 				regulator-min-microvolt = < 700000>;
+ 				regulator-max-microvolt = <1310000>;
+-				regulator-min-microamp  = <2000000>;
+-				regulator-max-microamp  = <3000000>;
++				regulator-min-microamp = <2000000>;
++				regulator-max-microamp = <3000000>;
+ 				regulator-ramp-delay = <10000>;
+ 			};
+ 		};
+@@ -374,8 +374,8 @@ &mmc0 {
+ 	mmc-hs400-1_8v;
+ 	cap-mmc-hw-reset;
+ 	hs400-ds-delay = <0x14015>;
+-	mediatek,hs200-cmd-int-delay=<30>;
+-	mediatek,hs400-cmd-int-delay=<14>;
++	mediatek,hs200-cmd-int-delay = <30>;
++	mediatek,hs400-cmd-int-delay = <14>;
+ 	mediatek,hs400-cmd-resp-sel-rising;
+ 	vmmc-supply = <&mt6397_vemc_3v3_reg>;
+ 	vqmmc-supply = <&mt6397_vio18_reg>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+index 4fa1e93302c7..0b5f154007be 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+@@ -122,8 +122,8 @@ da9211_vcpu_reg: BUCKA {
+ 				regulator-name = "VBUCKA";
+ 				regulator-min-microvolt = < 700000>;
+ 				regulator-max-microvolt = <1310000>;
+-				regulator-min-microamp	= <2000000>;
+-				regulator-max-microamp	= <4400000>;
++				regulator-min-microamp = <2000000>;
++				regulator-max-microamp = <4400000>;
+ 				regulator-ramp-delay = <10000>;
+ 				regulator-always-on;
+ 			};
+@@ -132,8 +132,8 @@ da9211_vgpu_reg: BUCKB {
+ 				regulator-name = "VBUCKB";
+ 				regulator-min-microvolt = < 700000>;
+ 				regulator-max-microvolt = <1310000>;
+-				regulator-min-microamp	= <2000000>;
+-				regulator-max-microamp	= <3000000>;
++				regulator-min-microamp = <2000000>;
++				regulator-max-microamp = <3000000>;
+ 				regulator-ramp-delay = <10000>;
+ 			};
+ 		};
+@@ -148,8 +148,8 @@ &mmc0 {
+ 	bus-width = <8>;
+ 	max-frequency = <50000000>;
+ 	cap-mmc-highspeed;
+-	mediatek,hs200-cmd-int-delay=<26>;
+-	mediatek,hs400-cmd-int-delay=<14>;
++	mediatek,hs200-cmd-int-delay = <26>;
++	mediatek,hs400-cmd-int-delay = <14>;
+ 	mediatek,hs400-cmd-resp-sel-rising;
+ 	vmmc-supply = <&mt6397_vemc_3v3_reg>;
+ 	vqmmc-supply = <&mt6397_vio18_reg>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 40d7b47fc52e..5e903ab5884c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -246,9 +246,9 @@ pmu_a72 {
+ 	psci {
+ 		compatible = "arm,psci-1.0", "arm,psci-0.2", "arm,psci";
+ 		method = "smc";
+-		cpu_suspend   = <0x84000001>;
+-		cpu_off	      = <0x84000002>;
+-		cpu_on	      = <0x84000003>;
++		cpu_suspend = <0x84000001>;
++		cpu_off	 = <0x84000002>;
++		cpu_on	 = <0x84000003>;
+ 	};
+ 
+ 	clk26m: oscillator0 {
+@@ -1505,7 +1505,7 @@ larb5: larb@19001000 {
+ 
+ 		vcodec_enc_vp8: vcodec@19002000 {
+ 			compatible = "mediatek,mt8173-vcodec-enc-vp8";
+-			reg =  <0 0x19002000 0 0x1000>; /* VENC_LT_SYS */
++			reg = <0 0x19002000 0 0x1000>; /* VENC_LT_SYS */
+ 			interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
+ 			iommus = <&iommu M4U_PORT_VENC_RCPU_SET2>,
+ 				 <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 01e650251928..42b208132a88 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -295,8 +295,8 @@ pmu-a73 {
+ 	};
+ 
+ 	psci {
+-		compatible      = "arm,psci-1.0";
+-		method          = "smc";
++		compatible = "arm,psci-1.0";
++		method = "smc";
+ 	};
+ 
+ 	clk26m: oscillator {
+@@ -504,7 +504,7 @@ power-domain@MT8183_POWER_DOMAIN_CONN {
+ 
+ 				power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
+ 					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
+-					clocks =  <&topckgen CLK_TOP_MUX_MFG>;
++					clocks = <&topckgen CLK_TOP_MUX_MFG>;
+ 					clock-names = "mfg";
+ 					#address-cells = <1>;
+ 					#size-cells = <0>;
+@@ -1150,7 +1150,7 @@ i2c8: i2c@1101b000 {
+ 		};
+ 
+ 		ssusb: usb@11201000 {
+-			compatible ="mediatek,mt8183-mtu3", "mediatek,mtu3";
++			compatible = "mediatek,mt8183-mtu3", "mediatek,mtu3";
+ 			reg = <0 0x11201000 0 0x2e00>,
+ 			      <0 0x11203e00 0 0x0100>;
+ 			reg-names = "mac", "ippc";
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+index db25a515e420..690dc7717f2c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+@@ -139,19 +139,19 @@ pins {
+ };
+ 
+ &u3phy0 {
+-	status="okay";
++	status = "okay";
+ };
+ 
+ &u3phy1 {
+-	status="okay";
++	status = "okay";
+ };
+ 
+ &u3phy2 {
+-	status="okay";
++	status = "okay";
+ };
+ 
+ &u3phy3 {
+-	status="okay";
++	status = "okay";
+ };
+ 
+ &uart0 {
 -- 
 2.34.1
 
