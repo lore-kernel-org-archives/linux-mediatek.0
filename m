@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EDEBC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 01:57:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0165C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 01:59:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UoVWZcU81DsS6uEusFzu604/W4CfKFU1DprqjTERJrY=; b=uOqhUtN5cpyoVo
-	xN8uLGwtwezZU/cUyHfnxHJN1wgQcraIKjge4Uk7tcHAcsufxPNsVvgZysR2TMUcsGiml4cNFJspW
-	BUfypjX9dUlkyjzZmseTRt8vrWDtsnSOJmM9RyE3kBkUex3r9m5Mmj/Zc78qDNBKsgshJY3W+wwZE
-	JLORpBTRoij95YBZtnLNAJ1FayLaNKyasSTOWieQ4NNwra/AKlQpw2tZ8lH62cQpD7My42HyNUaRo
-	leQYkHzl02j0zvFAcx2Pf9Cr7MTnu/GY/N4kSonikrpP5qtXTCkI5MZuGuqIN19qULZUR8czQiM60
-	VPrNiyPKTfGV53rlimZg==;
+	List-Owner; bh=C/jVO4+uYVBMuYAP3G2ZzmPD0Uq1AAiugkwWSHuKaK8=; b=LpJ/IonEjPHXLy
+	F/fFyD574JmZcLaoN5+ynca6yAN0dHvemsnh5U0F8qb8GoOhkcI/ZFeRKfBGOjziGjw78VBkmDoZ1
+	R+DwSxNFr0ZXQA0o7rf1F/NmNixLnPASY57otaLOoBZJuzmdb6s1dD6foVx0Akgqxp/dAsv9g8z7B
+	mUZKPz5zPaLKDUH+w6KQCzZcW2DuX+dGG25HOeqgOkDvCeoBzV22LjmC2z/aQE11imX62dHz8qPTd
+	lhC5qYUUUIPLU/ec5BO8m90YOPXfVlJkmCOgynpeiDmljzzr+xC0XjFLv9ICaznkV70wGxmMTMOUG
+	Ga5+e30jWwfNw57YkdGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nu2kw-00DF3Z-CA; Thu, 26 May 2022 01:57:42 +0000
-Received: from mail-oa1-f42.google.com ([209.85.160.42])
+	id 1nu2mI-00DFeM-Cc; Thu, 26 May 2022 01:59:06 +0000
+Received: from mail-oa1-f45.google.com ([209.85.160.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nu2kt-00DF1Q-Rn; Thu, 26 May 2022 01:57:41 +0000
-Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-f2a4c51c45so661327fac.9;
-        Wed, 25 May 2022 18:57:38 -0700 (PDT)
+	id 1nu2m3-00DFVn-Ll; Thu, 26 May 2022 01:58:52 +0000
+Received: by mail-oa1-f45.google.com with SMTP id 586e51a60fabf-f2a4c51c45so663327fac.9;
+        Wed, 25 May 2022 18:58:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:content-transfer-encoding
          :in-reply-to;
-        bh=fBooorBUc9TiuuZP7V/CE0nVyIQJLuFcFSmL3ukgr+0=;
-        b=lKsr3FFVgq4FgyRCz7fH884agZ3hfzUCabpe9S3vV7OyEaeyU+DKbD87EksQFNEskg
-         f/PfyRz38XAwoTsaX/FVdNeFF6WHFUfBA7B8QyaQ7FJW9l504Hrd1wv/hQra6Zbnwxct
-         adlYwHebJgRLCZEGZquEqQ6ymE2IXOoJXTTYTAQjqKAeZ/o4DXHZK9cwgh5x/h7XCaTn
-         NwNHAdZfdvlyRigoYaCCnF6DHvOKeV3BWKrFo1N7JYJULWuhAUuhWlfoZ2W5hYwpgrYp
-         Y+vU2zocgwOo/tRFsg5V+BGAz+a0dSFhDDN/UMSTMOKqZ+PDuo2FKy+rQ17hA36tMAl/
-         MkWQ==
-X-Gm-Message-State: AOAM532UIdyl1yg1kHZNvvJCKZQ7P3XNB3uUw1TC3D5qjmcaTcx1S9v1
-	G0KNK1RajuW/3DWo1XeK2A==
-X-Google-Smtp-Source: ABdhPJxUeqloFyZQmwKt5j7Tji4hIdlUPLrqi9TrK0/U1U2+xqrrho6dVSvMuYpjlY4QrOa42I+OCA==
-X-Received: by 2002:a05:6870:b68a:b0:f1:8001:1182 with SMTP id cy10-20020a056870b68a00b000f180011182mr37728oab.30.1653530257854;
-        Wed, 25 May 2022 18:57:37 -0700 (PDT)
+        bh=u1k8n/bnMYLdf6Ge4xddMp84AvG888eR8uyJpk19AXI=;
+        b=VYvmpdf33YNzz9YLpPcc1LkeD7hpU60v97IoUgWDuKDyW9Yh1Q1ivjBMk1FOyDGBbd
+         u+V1gfYelRGRxSUPtdUU3gqG0uUQpMzHD5+37y41NMJpc5L9lPNOLgjG+3YLTwuXC4fV
+         nP8qud6SaKMS7OgKE7BXWa8dqoRFBj2+IEdJSyUORekJPo3SgiqLyysSO7OJ3U6JulVa
+         DRabqpeusKhCfUk/fWjZmSBcQEmUQneZwpGQNAA6rO1+uKgZmRkY7DbpDsMYHpAbq6Ji
+         lnd5Mnc3GuKuVYoyF6F5kG0eInLqmYfpGjFPjVR0vtg+xvo4Jm7dkriaES0hiKU7o1QY
+         pnhA==
+X-Gm-Message-State: AOAM531RWe72d9sSdumgakThNa0rwNZEoiQjuAPaYJwSbQdPzW4VfXMY
+	wP79v+xlcOkxXIPJu2g5EQ==
+X-Google-Smtp-Source: ABdhPJwm0i+e0VsW1YFMx88HUodQOXevLnzV1/8atr9allVCR9Q5IuKOcmK9q2gmX2vgMB5I2FGcjw==
+X-Received: by 2002:a05:6870:ea8d:b0:e6:135c:1a2e with SMTP id s13-20020a056870ea8d00b000e6135c1a2emr25954oap.9.1653530329601;
+        Wed, 25 May 2022 18:58:49 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id w27-20020a9d5a9b000000b0060603221240sm134732oth.16.2022.05.25.18.57.36
+        by smtp.gmail.com with ESMTPSA id 25-20020a544199000000b0032aea9c2c23sm193918oiy.40.2022.05.25.18.58.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 May 2022 18:57:37 -0700 (PDT)
-Received: (nullmailer pid 2896334 invoked by uid 1000);
-	Thu, 26 May 2022 01:57:36 -0000
-Date: Wed, 25 May 2022 20:57:36 -0500
+        Wed, 25 May 2022 18:58:49 -0700 (PDT)
+Received: (nullmailer pid 2898004 invoked by uid 1000);
+	Thu, 26 May 2022 01:58:48 -0000
+Date: Wed, 25 May 2022 20:58:48 -0500
 From: Rob Herring <robh@kernel.org>
 To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, kernel@collabora.com
-Subject: Re: [PATCH v1 1/2] dt-bindings: pinctrl: mt8192: Add
- drive-strength-microamp
-Message-ID: <20220526015736.GA2896280-robh@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 2/2] dt-bindings: pinctrl: mt8192: Use generic bias
+ instead of pull-*-adv
+Message-ID: <20220526015848.GA2897970-robh@kernel.org>
 References: <20220525155714.1837360-1-nfraprado@collabora.com>
- <20220525155714.1837360-2-nfraprado@collabora.com>
+ <20220525155714.1837360-3-nfraprado@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220525155714.1837360-2-nfraprado@collabora.com>
+In-Reply-To: <20220525155714.1837360-3-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_185739_933944_4FD7227A 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20220525_185851_764048_62A129D2 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,27 +80,32 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 May 2022 11:57:13 -0400, N=EDcolas F. R. A. Prado wrote:
-> Commit e5fabbe43f3f ("pinctrl: mediatek: paris: Support generic
-> PIN_CONFIG_DRIVE_STRENGTH_UA") added support for using
-> drive-strength-microamp instead of mediatek,drive-strength-adv.
+On Wed, 25 May 2022 11:57:14 -0400, N=EDcolas F. R. A. Prado wrote:
+> Commit cafe19db7751 ("pinctrl: mediatek: Backward compatible to previous
+> Mediatek's bias-pull usage") allowed the bias-pull-up and bias-pull-down
+> properties to be used for setting PUPD/R1/R0 type bias on mtk-paris
+> based SoC's, which was previously only supported by the custom
+> mediatek,pull-up-adv and mediatek,pull-down-adv properties.
 > =
 
-> Since there aren't any users of mediatek,drive-strength-adv on mt8192
-> yet, remove this property and add drive-strength-microamp in its place,
-> which has a clearer meaning.
+> Since the bias-pull-{up,down} properties already have defines associated
+> thus being more descriptive and is more universal on MediaTek platforms,
+> and given that there are no mediatek,pull-{up,down}-adv users on mt8192
+> yet, remove the custom adv properties in favor of the generic ones.
 > =
 
-> Fixes: 4ac68333ff6d ("dt-bindings: pinctrl: mt8192: Add mediatek,drive-st=
-rength-adv property")
+> Note that only mediatek,pull-up-adv was merged in the binding, but not
+> its down counterpart.
+> =
+
+> Fixes: edbacb36ea50 ("dt-bindings: pinctrl: mt8192: Add mediatek,pull-up-=
+adv property")
 > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
-> =
-
 > ---
 > =
 
->  .../bindings/pinctrl/pinctrl-mt8192.yaml      | 27 ++-----------------
->  1 file changed, 2 insertions(+), 25 deletions(-)
+>  .../bindings/pinctrl/pinctrl-mt8192.yaml      | 29 ++++++++++---------
+>  1 file changed, 15 insertions(+), 14 deletions(-)
 > =
 
 
