@@ -4,45 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3028C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 11:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C7AAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 May 2022 11:12:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0bB05h3lqqZ6+KSCxsow5tnPK4GFzpLRsrLi/1kc6sE=; b=morbndpAui/uf4
-	zWF8ckGiJUECeZBjHiskLolLy0bV+4lkVmLMy/T+9zwIt15WXCwZnUUp9TwUMww7+EF4Co2uQgzz6
-	5HE/g2HsRLSddnSzmTV/BlzKziB9DE5yPGSVrjz1z/+n8gtSfxaeCYw3nOJqDUJBNbO9f/VoPyBlV
-	UB82u0dZMonzd7adNQVqI45mpnmPqw5orjEeYMPqh5IXWuyQHNrEzAlgspkLdv91kUU6RxiOQilLa
-	p5+T1PR2ifgj6ZCSJbO/uNUdZsItDGIlqLCiHofgE9ZgTtQrFZaKKN8dzd3VDv3G5mP4gc/gw4TtX
-	wHtaXW2e/OTLLL0g7ghw==;
+	List-Owner; bh=9EVp+FXa1zvSin9hmYMCbN3Gj01ulLSwqXaapRCqTqs=; b=o9xw9delYvwX0I
+	I2hDmpo0ZpM+GsOVDbcgyWVSI0y/9Pf6hoScyAXsJE2Re0gcoiXt8nd0HPUT16/V2QuwPdztOnDSf
+	BZXzl7mkWchA97SbmvpRt3JX9hfHvo1nAUqUEFb1v2paJzzp8K8DvYbsjA/1a37UVDs7mPCP1VPoz
+	tD0VHFL7iQIIggQ4gIb3RtuG1Q8O/AiE+nL7J7xn2ZTNjtp/TCnetwxALC3tWiFUhee8uprAB0eia
+	HaFzS4JSuYCT7EgRRLkS1EyUa6spVlfDKveCPYieMO2mNaNDaJOIZkGLLTdTcNZcuNCEZaSLTH/lJ
+	/QvslE1wMHDIpAOi1e2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuBMP-00EWS7-Oz; Thu, 26 May 2022 11:08:57 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1nuBQ8-00EXSr-Jx; Thu, 26 May 2022 11:12:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuBM2-00EWIw-AG; Thu, 26 May 2022 11:08:36 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 345161C0B8F; Thu, 26 May 2022 13:08:28 +0200 (CEST)
-Date: Thu, 26 May 2022 13:08:27 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dmitry.torokhov@gmail.com, matthias.bgg@gmail.com,
-	mkorpershoek@baylibre.com, linux-input@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/3]  MediaTek Helio X10 MT6795 - MT6331 PMIC Keys
-Message-ID: <20220526110827.GC5138@localhost>
-References: <20220524093505.85438-1-angelogioacchino.delregno@collabora.com>
+	id 1nuBQ4-00EXQD-UC; Thu, 26 May 2022 11:12:46 +0000
+X-UUID: 594142cfb46d4819ac9f55dc3da1e0ac-20220526
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:e0f54872-c075-4cc4-a48b-31c716f7ebc7,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:52029647-4fb1-496b-8f1d-39e733fed1ea,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: 594142cfb46d4819ac9f55dc3da1e0ac-20220526
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <nancy.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 416318163; Thu, 26 May 2022 04:12:40 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 26 May 2022 04:02:40 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 26 May 2022 19:02:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 26 May 2022 19:02:38 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
+ Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
+	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
+	<singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v22 15/24] drm/mediatek: add display merge start/stop API for cmdq support
+Date: Thu, 26 May 2022 19:02:24 +0800
+Message-ID: <20220526110233.20080-16-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220526110233.20080-1-nancy.lin@mediatek.com>
+References: <20220526110233.20080-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220524093505.85438-1-angelogioacchino.delregno@collabora.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220526_040834_543106_DCD1FBE4 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20220526_041245_008510_44D49F82 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,32 +88,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
+Add merge start/stop API for cmdq support. The ovl_adaptor merges
+are configured with each drm plane update. Need to enable/disable
+merge with cmdq making sure all the settings taken effect in the
+same vblank.
 
-> In an effort to give some love to the apparently forgotten MT6795 SoC,
-> I am upstreaming more components that are necessary to support platforms
-> powered by this one apart from a simple boot to serial console.
-> 
-> This series performs some cleanups in mtk-pmic-keys and adds support for
-> the MT6331 PMIC's keys.
-> 
-> Adding support to each driver in each subsystem is done in different
-> patch series as to avoid spamming uninteresting patches to maintainers.
-> 
-> This series depends on another two series series [1], [2] named
-> "MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper" and
-> "MediaTek Helio X10 MT6795 - MT6331/6332 PMIC MFD integration"
-> 
-> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 ++
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c | 18 +++++++++++++++---
+ 2 files changed, 17 insertions(+), 3 deletions(-)
 
-Please cc phone-devel with phone stuff...
-
-...and thanks for all the work. I guess we still don't have an android
-phone with basic phone functionality working on mainline...?
-
-Best regards,
-							Pavel
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index e847e90f436d..33e61a136bbc 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -66,6 +66,8 @@ void mtk_merge_stop(struct device *dev);
+ void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
+ 			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
+ 			      struct cmdq_pkt *cmdq_pkt);
++void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
++void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt);
+ 
+ void mtk_ovl_bgclr_in_on(struct device *dev);
+ void mtk_ovl_bgclr_in_off(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+index 40da0555416d..c7af5ccab916 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+@@ -67,17 +67,29 @@ struct mtk_disp_merge {
+ };
+ 
+ void mtk_merge_start(struct device *dev)
++{
++	mtk_merge_start_cmdq(dev, NULL);
++}
++
++void mtk_merge_stop(struct device *dev)
++{
++	mtk_merge_stop_cmdq(dev, NULL);
++}
++
++void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
+ {
+ 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+ 
+-	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
++	mtk_ddp_write(cmdq_pkt, 1, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CTRL);
+ }
+ 
+-void mtk_merge_stop(struct device *dev)
++void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
+ {
+ 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+ 
+-	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
++	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CTRL);
+ }
+ 
+ static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
 -- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
