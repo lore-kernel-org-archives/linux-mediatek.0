@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B381BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 May 2022 10:20:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35789C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 May 2022 11:01:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tst6JSxv9JLhXhHYKyL+syjXaxs4xu3gNeyNb6rcrR4=; b=OPke33awTcrt0V
-	X7v8lQ2I3B1IWY2aaEuri8B71xyZkaCCoAUMQTCxz4ZqdNlY0KOqCA8i1k8G55wWh/SvXS32M+3bW
-	mVi/zTPjAmDcexqPNmJx1cdu7oCwvfOTKJL5dno4HTAMQLycmP5rrLbnEUH0HvYEYzKQ/ZzCbJcHw
-	a42g7cv5xEqj+K9fypqjoVlZjiGyBOHO+lw4/MCFzzE9AM1hcGe67jrNLqH0rI/Rw2a58qlFYDfqz
-	cuu82Ayi2c4uC0PakPDsNACSMvPfZ8S9lCUnql+rTzdYod6QpeNV7Kjf+2gtiJunIezDJUHgKBECp
-	1rXOL5+rjFWXWxoMiuMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/tvMql9tOp59BHpWUWy5KftkDcTxFLMRoWaX6y7bjFY=; b=Y9duqs9KKcFTEB
+	8tEWM29lDL+TMOfy6VS6z8UNgX1KDCqApXoUUn6dg1SttvnXOJAYmv7RciDMoJtEZsGQop+Y00/+g
+	8fLGMBHqubUe/9/4BS6N07KthkY6z+hTkgHzFWCZN4wDnhRERSIcrohXTC/6uofWJdY3l8WPV0c10
+	N+vH39Md4bhY7yFqqwaBvLXK5i4YHvOBfDRwbixniqK2hnnBkC9ufmUY8tWHywTc1yM/d76Sra1/C
+	hDS5+t9yoPXCtb7T3W5BQWa1RljlQbuo5ELFKmliBXXwflShOQD80xQsP068PWINwlLFIJixfXUyX
+	Eu0eDQZwxB/B7SD+rolw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuX5F-00HJwg-DU; Fri, 27 May 2022 10:20:41 +0000
-Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
+	id 1nuXiB-00HR1w-7s; Fri, 27 May 2022 11:00:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuX53-00HJuj-SO; Fri, 27 May 2022 10:20:31 +0000
-Received: by mail-vk1-xa2a.google.com with SMTP id i25so1822586vkr.8;
-        Fri, 27 May 2022 03:20:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=TZKGv1sVPbn33wSFQC2Hq1TTGl51W+KoM8tu8whSa+8=;
-        b=QPJBbxLga9z4bh76vDTCdWiIm0fFqSq0xsZaD4/EcFAsk7UUqTJMVgbymVey6Y8rhP
-         PboTeGA3VQ2Xk04Jjgj56gdD/R76WekWIn10md8C9xSA6SyQDTYEZQRdiVkTg3+ashWs
-         QDz+w0fzSf3U8uVQe8l2oRu9SZfmbHFuRzlVO3JF5DpkGNudYVwnhl0SQRvY9f7YvbI6
-         BriJ6JmHW3g8ekfRRYekCrPj7hByDo5qlteqj/chMuFuzMDADe5I+n20pP1VqzgE5IB6
-         Thr5+ZRpZYeFE68q86npCR6iptHjCk+ekb5DlLWvC2h5HeIwDjVgExL1HfAwqSK9e1f6
-         GoQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=TZKGv1sVPbn33wSFQC2Hq1TTGl51W+KoM8tu8whSa+8=;
-        b=V61Jxs0XX/6J3TsmFsG7cLHGDL6XN1i4H2vfqfJ7xjYXgAgRjTCHoyhZtzNI9OmRHb
-         K3YF2Bhgs+MJknTA7UoAUZSHdFjKtO+cx7BfMJdEWxwnFZjZlOfTw3wHTi+A6bXjmWX+
-         BW8LEJiQu7IHtcK0FPtdcxAuOhi5ST1XWv2/AGnlqs9cMrzlrKZHIdkiloeaHuX9mxjy
-         0AKK+/dDYdCXoWSn379+1QRARRXjdUWkLozOzvY6oz5hQSsvwDdMVZlTgPYMYd77CxJm
-         djbgO61HMGT/MkEdLv7m95JZfCq+e4BgyuLH/Li021MZ7MRoNcLKVB6tgTh7p3tgzARe
-         kChw==
-X-Gm-Message-State: AOAM531HDuZLk8Ij9s/juzLsLNv+CuPSZGQsVQFlfiNU4iGYlrVwUm6p
-	yWGg71KSYftHduoBSYCMxQRNP4thC9CIQY9bJXc=
-X-Google-Smtp-Source: ABdhPJzCvvChTLL1Ij936+gWZfCHT1cI1LarPkF1I6RwV3Pk4C5uy4ku0CQpduox7gHOYLFdtC0zFPW6WdlyCuyLSic=
-X-Received: by 2002:a1f:a107:0:b0:357:a962:cef8 with SMTP id
- k7-20020a1fa107000000b00357a962cef8mr9396561vke.10.1653646826292; Fri, 27 May
- 2022 03:20:26 -0700 (PDT)
+	id 1nuXi6-00HQzG-Ia; Fri, 27 May 2022 11:00:54 +0000
+X-UUID: dd06e2f911b34dbb882f201d4ae42c55-20220527
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:0eed6499-f2f1-4a45-a621-de6bb93512a7,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:08757fb8-3c45-407b-8f66-25095432a27a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: dd06e2f911b34dbb882f201d4ae42c55-20220527
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <johnson.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1645953396; Fri, 27 May 2022 04:00:41 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 27 May 2022 04:00:39 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 27 May 2022 19:00:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 27 May 2022 19:00:38 +0800
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: <cw00.choi@samsung.com>, <krzk+dt@kernel.org>, <robh+dt@kernel.org>,
+	<kyungmin.park@samsung.com>
+CC: <khilman@kernel.org>, <linux-pm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<jia-wei.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Johnson Wang
+	<johnson.wang@mediatek.com>
+Subject: [PATCH v6 0/2] Introduce MediaTek CCI devfreq driver
+Date: Fri, 27 May 2022 19:00:34 +0800
+Message-ID: <20220527110036.8810-1-johnson.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220527032504.30341-1-yee.lee@mediatek.com>
-In-Reply-To: <20220527032504.30341-1-yee.lee@mediatek.com>
-From: patrick wang <patrick.wang.shcn@gmail.com>
-Date: Fri, 27 May 2022 18:20:14 +0800
-Message-ID: <CAGcnep-t7GRkQxCQw-si0QgnsP9mQepcJ+xuYeQyzJLwc0Xicw@mail.gmail.com>
-Subject: Re: [PATCH] mm: kmemleak: Skip check in kmemleak_*_phys when pfn
- bound is not ready
-To: yee.lee@mediatek.com
-Cc: linux-kernel@vger.kernel.org, Kuan-Ying.lee@mediatek.com, 
-	Andrew.Yang@mediatek.com, Sunny.Kao@mediatek.com, chinwen.chang@mediatek.com, 
-	Catalin Marinas <catalin.marinas@arm.com>, Andrew Morton <akpm@linux-foundation.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220527_032029_979290_A6A62841 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20220527_040050_653092_E457331E 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,95 +80,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 27, 2022 at 11:25 AM <yee.lee@mediatek.com> wrote:
->
-> From: Yee Lee <yee.lee@mediatek.com>
->
-> In some archs (arm64), memblock allocates memory in boot time when
-> the pfn boundary (max_pfn/min_pfn) is not ready. The lowmen checks in
-> kmemleak_*_phys() drop those blocks and cause some false leak alarms
-> on common kernel objects.
+The Cache Coherent Interconnect (CCI) is the management of cache
+coherency by hardware. CCI DEVFREQ is DVFS driver for power saving by
+scaling clock frequency and supply voltage of CCI. CCI uses the same
+input clock source and power rail as LITTLE CPUs on Mediatek SoCs.
 
-If I understand correctly, if those blocks are dropped, they will
-not be added as kmemleak objects. So how could this affect
-other objects?
+This series depends on:
+Chanwoo's repo: kernel/git/chanwoo/linux.git
+branch: devfreq-testing
+[1]: PM / devfreq: Export devfreq_get_freq_range symbol within devfreq
+[2]: PM / devfreq: Add cpu based scaling support to passive governor
+[3]: PM / devfreq: passive: Reduce duplicate code when passive_devfreq case
+[4]: PM / devfreq: passive: Update frequency when start governor
 
-Thanks,
-Patrick
+Changes in v6:
+- Remove unnecessary "goto" statement.
 
->
-> Kmemleak output: (Qemu/arm64)
-> unreferenced object 0xffff0000c0170a00 (size 128):
->   comm "swapper/0", pid 1, jiffies 4294892404 (age 126.208s)
->   hex dump (first 32 bytes):
->     62 61 73 65 00 00 00 00 00 00 00 00 00 00 00 00  base............
->     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
->   backtrace:
->     [<(____ptrval____)>] __kmalloc_track_caller+0x1b0/0x2e4
->     [<(____ptrval____)>] kstrdup_const+0x8c/0xc4
->     [<(____ptrval____)>] kvasprintf_const+0xbc/0xec
->     [<(____ptrval____)>] kobject_set_name_vargs+0x58/0xe4
->     [<(____ptrval____)>] kobject_add+0x84/0x100
->     [<(____ptrval____)>] __of_attach_node_sysfs+0x78/0xec
->     [<(____ptrval____)>] of_core_init+0x68/0x104
->     [<(____ptrval____)>] driver_init+0x28/0x48
->     [<(____ptrval____)>] do_basic_setup+0x14/0x28
->     [<(____ptrval____)>] kernel_init_freeable+0x110/0x178
->     [<(____ptrval____)>] kernel_init+0x20/0x1a0
->     [<(____ptrval____)>] ret_from_fork+0x10/0x20
->
-> This patch relaxs the boundary checking in kmemleak_*_phys api
-> if max_low_pfn is uninitialzed.
->
-> Fixes: 23c2d4 (mm: kmemleak: take a full lowmem check in kmemleak_*_phy)
-> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-> ---
->  mm/kmemleak.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/mm/kmemleak.c b/mm/kmemleak.c
-> index a182f5ddaf68..6b2af544aa0f 100644
-> --- a/mm/kmemleak.c
-> +++ b/mm/kmemleak.c
-> @@ -1132,7 +1132,7 @@ EXPORT_SYMBOL(kmemleak_no_scan);
->  void __ref kmemleak_alloc_phys(phys_addr_t phys, size_t size, int min_count,
->                                gfp_t gfp)
->  {
-> -       if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-> +       if (!max_low_pfn || (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn))
->                 kmemleak_alloc(__va(phys), size, min_count, gfp);
->  }
->  EXPORT_SYMBOL(kmemleak_alloc_phys);
-> @@ -1146,7 +1146,7 @@ EXPORT_SYMBOL(kmemleak_alloc_phys);
->   */
->  void __ref kmemleak_free_part_phys(phys_addr_t phys, size_t size)
->  {
-> -       if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-> +       if (!max_low_pfn || (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn))
->                 kmemleak_free_part(__va(phys), size);
->  }
->  EXPORT_SYMBOL(kmemleak_free_part_phys);
-> @@ -1158,7 +1158,7 @@ EXPORT_SYMBOL(kmemleak_free_part_phys);
->   */
->  void __ref kmemleak_not_leak_phys(phys_addr_t phys)
->  {
-> -       if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-> +       if (!max_low_pfn || (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn))
->                 kmemleak_not_leak(__va(phys));
->  }
->  EXPORT_SYMBOL(kmemleak_not_leak_phys);
-> @@ -1170,7 +1170,7 @@ EXPORT_SYMBOL(kmemleak_not_leak_phys);
->   */
->  void __ref kmemleak_ignore_phys(phys_addr_t phys)
->  {
-> -       if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-> +       if (!max_low_pfn || (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn))
->                 kmemleak_ignore(__va(phys));
->  }
->  EXPORT_SYMBOL(kmemleak_ignore_phys);
-> --
-> 2.18.0
->
+Changes in v5:
+- Modify some binding description.
+- Remove pre_voltage member.
+- Not to enable/disable intermediate clock.
+- Not to "put" resources that using devm_ variants.
+
+Resend v4:
+- CC interconnect maintainer.
+- Change sign-off sequence in commit message.
+
+Changes in v4:
+- Add a maintainer in the binding document.
+- Modify clock description.
+- Add binding document into MAINTAINERS.
+- Replace format specifier %d with %ld.
+
+Changes in v3:
+- Move binding document to 'interconnect' and rename it.
+- Add COMPILE_TEST dependence symbol.
+- Remove need_voltage_tracking variable.
+- Move mtk_ccifreq_voltage_tracking() code into mtk_ccifreq_set_voltage().
+- Add an interation limit in the while() loop.
+- Replace 'cci_dev' with 'dev'
+- Replace old_* with pre_*
+- Remove of_match_ptr()
+- Use module_platform_driver()
+
+Changes in v2:
+- Take MT8183 as example in binding document.
+- Use dev_err() instead of pr_err().
+- Use 'goto' statement to handle error case.
+- Clean up driver code.
+
+Johnson Wang (2):
+  dt-bindings: interconnect: Add MediaTek CCI dt-bindings
+  PM / devfreq: mediatek: Introduce MediaTek CCI devfreq driver
+
+ .../bindings/interconnect/mediatek,cci.yaml   | 140 ++++++
+ MAINTAINERS                                   |   1 +
+ drivers/devfreq/Kconfig                       |  10 +
+ drivers/devfreq/Makefile                      |   1 +
+ drivers/devfreq/mtk-cci-devfreq.c             | 474 ++++++++++++++++++
+ 5 files changed, 626 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+ create mode 100644 drivers/devfreq/mtk-cci-devfreq.c
+
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
