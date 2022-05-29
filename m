@@ -4,84 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D829C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 May 2022 05:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4574AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 May 2022 08:02:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=seLNkYMP/cACBHp8+ePkLIeHSAlyi00Spc4+F99ZSHU=; b=Ob3E4kAaH5qSWS
-	39pR5X8A0j7ow52gVIMGfadUMGPMlTCdJtNANSM9QtqfqabQBY34sTdJ8ply+6+sjomNMFfthQUSO
-	zDqtRTUyHBmjNIpdpuG8r0zOKe70O1Z338FLp051qLYn2rPDIu9jDwXjwPmLLRwrC53qWV8FwsQG4
-	QIcvtnimtCxauOxsuwr/50EPj55RBF9SgYQLKUrNQAn6VtA1iR1PEbQ9jSbXKFBypvThhdLroUq4s
-	/KxVLhG0PZrI2RmFLxQq8+1f7wcW4enwTwJ3jHuL8vxIB1V/q4X1pmxSLZi7Uaf6RGZgg9dJd2FuD
-	P3qyZNnzr04lLxnDOvtA==;
+	List-Owner; bh=yvD1Ax6vGCNDACD0l4pj5U3ijCzStOJi2/3hwwhYkT4=; b=s+86lIcuJ+fXH3
+	nCXHVucTom8Q3/StmDXLZHFqg5Z3LY7GV2ha1fQ/MnKSwo2LPluLgvvSWLBCcBI6VfaCPymtWEXxs
+	6r9Gg3RuciTbKcV0aypafexa2Xy0qMYO0d4iadOv0Zf0goxf5LzQnpTT300w097WLKtGKFTPuQyfq
+	SZkotDfdUWYlvIbyEQF6nqYMwnJSughTeB1tzdiKt2xo0jdJ9vPXRoCvDJyudcNOKcd5mPMukOsu5
+	edi5oYwi8911lXKvqMssTDFpLOFldTHKPhRMwTLK9U62rxu8UOdcKfej3gu5dfEAzKO1Ry5TD6OoM
+	M8v5Vo1b0U2/KkgOZvgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvBPD-003JAX-2o; Sun, 29 May 2022 05:23:59 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1nvDsN-003V4Y-Ke; Sun, 29 May 2022 08:02:15 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvBP9-003J9r-18; Sun, 29 May 2022 05:23:56 +0000
-Received: by mail-pg1-x531.google.com with SMTP id e66so7380585pgc.8;
-        Sat, 28 May 2022 22:23:53 -0700 (PDT)
+	id 1nvDsI-003V3n-Tr
+	for linux-mediatek@lists.infradead.org; Sun, 29 May 2022 08:02:14 +0000
+Received: by mail-ed1-x529.google.com with SMTP id v25so1945497eda.6
+        for <linux-mediatek@lists.infradead.org>; Sun, 29 May 2022 01:02:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=T5XFxBmhA+Yi1gVGr5oW1G0EspvBXVIjAMsTMV065mY=;
-        b=QAWpoJZCKF7T0vZBtphN+2DNdtfi3T0OkcWuaFphp80JM9vAtF4y2pvAepLlAC3Zrn
-         bFZ7dYpki1E/vErAHcAz4YEQP0FYC5C+IxoMCAHqRUWMw12OTSyjPA9B9gyTz5YIc9S3
-         0p0XpJdYR81NYPyyvA3kI3zjHjEbgV/tYPAMzBeJzxXvvI4F/BxnbSNdQtemE3RHLTKb
-         kP22NG3oqYJwQ7LO4Wyy3WLcU5aZEtjjXOIqwnwW88Mq5vw8tKxzQn7SQ+o9i298opNG
-         JuK6WMVKufc0UFEQkQxin0s2eTdicputubLMaLGPkY2I8gE3++c0Ses4UPiXpHsaHNyk
-         5S2Q==
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=UDbcZey2Qic72q7wZpZ3xzumGPDOPPDFso1OJL9a9QE=;
+        b=gZn7NUJQBDiX30l4ps8Ty1Jgo+c9DBxt8rxmCX47qGVZlsNvF3/ziY8kLhwnEQmke1
+         FuGjDvyAuI1I7ZLtiPhaNNolc16dzWLu2fMYwX63sYWWIGIHfBCRbVivSyQxnkefo/Bq
+         SlP+PfB6EVS/SC4ABworMcY7cisT8Gfmb/7EGRN+GtJIhxMDW4aTvxPsvCHGjXv8W395
+         UXVjwXk+hstu3nL6UPtGCNox5pUw9l9HaboW5JUpVxA2E5JyJTX/4O7ua02U6vA5XHcl
+         qjQrRrXiDWeQJvuNLlVOn1w2R0SsJCD/Hrt8Gb2LeU9DtgXJbpjSm3xmWFM4sZBD5nib
+         BLRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=T5XFxBmhA+Yi1gVGr5oW1G0EspvBXVIjAMsTMV065mY=;
-        b=eIJkITVDw0SJj15LvJRqgu5Z6hU/bk+OTzf2pCwuTPcpxXZepfVuOPCzHKH3MZVaTe
-         b07DIJBqf2Tg+aww35jchD1QAwF4kZk+S8xlpAb6/y0q6uWuehycIja/O5LhvWeJzEHs
-         rRQMtW8jTmI1DJ10TQGTmSOyoCpFrPcNVCrYzwkxuCzIY2ZdJOMlpu8lYmFESvmxfTPl
-         YQX4BHuRj6hKCAJkIXSrjSTqX1q9udjQHkUoTzL5C9BlobvZ3jY/8qiDRb/1CU7L+PVW
-         hNyWDpagpZV7Ij+vB6GmUpt0bORwCaf1h/Oef5j4DHMDTUt33Ky0eb2ixtT5rQYg+R4s
-         ZuwQ==
-X-Gm-Message-State: AOAM532P2eSsyG51sTeQ81ky4iZTTplYuul+94ey5ZrGjsS3oFzonsJI
-	Owy6zfKJ26199HMxY2guChc=
-X-Google-Smtp-Source: ABdhPJwGHmvbTI1lv9t0UPg5Z2nY7WeVEoA3G10fVVPpkiSXwhqJRCAulrJUSFmKdTYgXLRNALmXuA==
-X-Received: by 2002:a05:6a00:10d3:b0:4fe:5d:75c8 with SMTP id d19-20020a056a0010d300b004fe005d75c8mr50898462pfu.6.1653801833255;
-        Sat, 28 May 2022 22:23:53 -0700 (PDT)
-Received: from google.com ([2620:15c:202:201:781a:4ab0:a93b:176b])
-        by smtp.gmail.com with ESMTPSA id q6-20020a170902f78600b001635c9e7f77sm6541632pln.57.2022.05.28.22.23.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 May 2022 22:23:51 -0700 (PDT)
-Date: Sat, 28 May 2022 22:23:48 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RESEND PATCH 1/2] Input: mt6779-keypad - fix hardware code
- mapping
-Message-ID: <YpMDZORAlHmg/x/0@google.com>
-References: <20220513151845.2802795-1-mkorpershoek@baylibre.com>
- <20220513151845.2802795-2-mkorpershoek@baylibre.com>
- <YoHf6Z4HTfh4Y+bn@google.com>
- <874k1qkk7n.fsf@baylibre.com>
- <4a7bcbfb-12da-0e3f-8732-ecc53046a4ff@collabora.com>
- <Yosex9/a7OTuC6ZK@google.com>
- <87y1yq91on.fsf@baylibre.com>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=UDbcZey2Qic72q7wZpZ3xzumGPDOPPDFso1OJL9a9QE=;
+        b=23SsZxdkDdUbyeqImEx06A5oOhxbADkPepWdgdWRawPS7nSGNUh8csd5gDFiuohhj8
+         n8HSyrbIMnioPzw0zHXoXiyKx4MmcjyhXF+VJIk8naHVou+cyB/MYScIh8zRdwISyF8W
+         5K4F9qEpU78iA/5+zMn+JEdD9twqa9zHaKXgz0Lsg+yxr7SosJYjKIgzoJaxbbhhf1h0
+         aUKwTL+sb/Qw66uHUS9dGt0TM5HDiGwzMsGzuBu2C1+qXVxkjw3xwr7dzWizxa70jzWm
+         Ts1s6fxAzRYY6hJ8aNjuCgA3PqSyy2FlhrLdXc6dKa06bQeYAPQeX0XZRqbwHSmz3HkF
+         /b4g==
+X-Gm-Message-State: AOAM533SAcgSfR5hxh6u3UHGK0RZIzVVCXKzh5PCfPQ+T1UQDgrTPXLW
+	EtNzY8ueH6p5pyyFt/XmVNCtiw==
+X-Google-Smtp-Source: ABdhPJyehAc2r10hf/j2xJPy6edB19h6IE3t7+EDA/JJ+7Ogyn8k+xE2wE4zBRqodu+Al+nqDgwOSg==
+X-Received: by 2002:a05:6402:6cc:b0:42d:bd2d:9f82 with SMTP id n12-20020a05640206cc00b0042dbd2d9f82mr5188023edy.59.1653811328959;
+        Sun, 29 May 2022 01:02:08 -0700 (PDT)
+Received: from [192.168.0.177] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id pg7-20020a170907204700b006f3ef214dfdsm2950671ejb.99.2022.05.29.01.02.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 29 May 2022 01:02:08 -0700 (PDT)
+Message-ID: <21351474-56d5-6e11-314b-1599b34e3f42@linaro.org>
+Date: Sun, 29 May 2022 10:02:07 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87y1yq91on.fsf@baylibre.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v2] ASoC: dt-bindings: mediatek: mt8192: Add i2s-share
+ properties
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Mark Brown <broonie@kernel.org>, kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Shane Chien <shane.chien@mediatek.com>, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220509205847.607076-1-nfraprado@collabora.com>
+ <e8d854c0-e2a5-2382-4b54-c5e879170324@linaro.org>
+ <20220527190542.4jckyflvtkq4n7ie@notapiano>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220527190542.4jckyflvtkq4n7ie@notapiano>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220528_222355_120138_EFA7B93E 
-X-CRM114-Status: GOOD (  60.64  )
+X-CRM114-CacheID: sfid-20220529_010211_010570_C21B9B6F 
+X-CRM114-Status: GOOD (  25.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,147 +96,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 24, 2022 at 09:21:28PM +0200, Mattijs Korpershoek wrote:
-> On dim., mai 22, 2022 at 22:42, Dmitry Torokhov <dmitry.torokhov@gmail.com> wrote:
-> 
-> > On Mon, May 16, 2022 at 01:06:43PM +0200, AngeloGioacchino Del Regno wrote:
-> >> Il 16/05/22 09:30, Mattijs Korpershoek ha scritto:
-> >> > Hi Dmitry,
-> >> > 
-> >> > Thank you for your review,
-> >> > 
-> >> > On dim., mai 15, 2022 at 22:23, Dmitry Torokhov <dmitry.torokhov@gmail.com> wrote:
-> >> > 
-> >> > > On Fri, May 13, 2022 at 05:18:44PM +0200, Mattijs Korpershoek wrote:
-> >> > > > In mt6779_keypad_irq_handler(), we
-> >> > > > 1. Read a hardware code from KPD_MEM1 -> KPD_MEM5
-> >> > > > 2. Use that hardware code to compute columns/rows for the standard
-> >> > > >     keyboard matrix.
-> >> > > > 
-> >> > > > According to the (non-public) datasheet, the
-> >> > > > map between the hardware code and the cols/rows is:
-> >> > > > 
-> >> > > >          |(0)  |(1)  |(2)
-> >> > > >      ----*-----*-----*-----
-> >> > > >          |     |     |
-> >> > > >          |(9)  |(10) |(11)
-> >> > > >      ----*-----*-----*-----
-> >> > > >          |     |     |
-> >> > > >          |(18) |(19) |(20)
-> >> > > >      ----*-----*-----*-----
-> >> > > >          |     |     |
-> >> > > > 
-> >> > > > This brings us to another formula:
-> >> > > > -> row = code / 9;
-> >> > > > -> col = code % 3;
-> >> > > 
-> >> > > What if there are more than 3 columns?
-> >> > That's not supported, in hardware, according to the datasheet.
-> >> > 
-> >> > The datasheet I have states that "The interface of MT6763 only supports
-> >> > 3*3 single or 2*2 double, but internal ASIC still detects keys in the
-> >> > manner of 8*8 single, and 3*3 double. The registers and key codes still
-> >> > follows the legacy naming".
-> >> > 
-> >> > Should I add another patch in this series to add that limitation in the
-> >> > probe? There are no checks done in the probe() right now.
-> >> > 
-> >> 
-> >> I've just checked a downstream kernel for MT6795 and that one looks like
-> >> being fully compatible with this driver as well... and as far as downstream
-> >> is concerned, apparently, mt6735, 6739, 6755, 6757, 6758, 6763, 6771, 6775
-> >> all have the same register layout and the downstream driver for these is
-> >> always the very same one...
-> >> 
-> >> ...so, I don't think that there's currently any SoC that supports more than
-> >> three columns. Besides, a fast check shows that MT8195 also has the same.
-> >> At this point, I'd say that assuming that there are 3 columns, nor less, not
-> >> more, is just fine.
-> >
-> > OK, now that I looked at the datasheet I remember how it came about. The
-> > programming (register) interface does not really care about how actual
-> > matrix is organized, and instead has a set of bits representing keys,
-> > from KEY0 to KEY77, arranged in 5 chunks of 15 bits split into 5 32-bit
-> > registers. So we simply decided to use register number as row and
-> > offset in the register as column when encoding our "matrix".
-> 
-> That's correct and that's a good way to phrase it.
-> I will add that in the commit message.
-> 
-> >
-> > This does not match the actual keypad matrix organization, so if we want
-> > to change this, that's fine, but then we also need to recognize that we
-> > are skipping bits 16-31, 48-63, and so on, so to get to the right key
-> > number we need to do something like:
-> >
-> > 	key = bit_nr / 32 * 16 + bit_nr % 32;
-> > 	row = key / 9;
-> > 	col = key % 9;
-> 
-> I would prefer to have the driver's matrix_keypad (build in probe()) to
-> match the actual hardware. To me this seems easier to understand for
-> people familiar with the hardware.
-> 
-> I've also tested the above snippet and it matches my expectations.
-> 
-> >
-> > I looked at the datasheets I have and they talk about 8x8 single keypad
-> > matrix, and 3x3 double keypad (with actual matrices either 3x3 or 2x2)
-> 
-> Indeed. I plan to send out double keypad support for this driver since
-> that's actually needed for mt8183-pumpkin as well.
-> It's already in our mtk-v5.10[1] integration tree but I have not submitted
-> it yet.
-> I planned to send this a separate series to avoid burdening / have
-> smaller chunks to review. If that was a mistake, please let me know.
-> 
-> > but I do not actually see this map layout that Mattijs drew  documented
-> 
-> The map layout that I draw is not directly copied from the datasheet.
-> It's a "translation" of the following table:
-> 
-> | hardware key code | col0 | col1 | col2|
-> | ----------------- | -----| ---- | --- |
-> | row0              | 0    | 1    | 2   |
-> | row1              | 9    | 10   | 11  |
-> | row2              | 18   | 19   | 20  |
-> 
-> It seems that caused more confusion than actual useful information,
-> sorry about that.
-> 
-> > anywhere though...  I also wonder if there are already existing DTSes in
-> > the wild that will be rendered invalid by these changes. I wonder if it
-> > would not be be better to document the existing meaning of row and
-> > column in the driver?
-> 
-> The concern for "DTSes in the wild" that will break is a valid point.
-> I'm not aware of any of those. Most vendor trees i've seen don't use
-> this driver at all. I hope that will change at some point.
-> 
-> In the end. I'd prefer to have the driver's keypad matrix match
-> the actual hardware. Right now we can have a 5x32 matrix which seems
-> absurd. Having at most an 8x8 is more reasonable.
-> 
-> I'd like to send v3 with just fixing the row/column suggestion in
-> mt6779_keypad_irq_handler() that Dmitry suggested.
-> 
-> Would that work Dmitry?
-
-OK, let's do that. Although I'd be curious to see the double keypad
-patches as according to the datasheets I saw the translation is
-different for those.
-
-Thanks.
-
--- 
-Dmitry
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMjcvMDUvMjAyMiAyMTowNSwgTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gd3JvdGU6Cj4gT24g
+VGh1LCBNYXkgMjYsIDIwMjIgYXQgMDg6NDk6MzlBTSArMDIwMCwgS3J6eXN6dG9mIEtvemxvd3Nr
+aSB3cm90ZToKPj4gT24gMDkvMDUvMjAyMiAyMjo1OCwgTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8g
+d3JvdGU6Cj4+PiBUaGUgTWVkaWF0ZWsgQUZFIFBDTSBjb250cm9sbGVyIGZvciBNVDgxOTIgYWxs
+b3dzIHR3byBJMlMgaW50ZXJmYWNlcyB0bwo+Pj4gc2hhcmUgdGhlIHNhbWUgY2xvY2sgYW5kIGFj
+dCBhcyBhIHNpbmdsZSBpbnRlcmZhY2Ugd2l0aCBib3RoIGlucHV0IGFuZAo+Pj4gb3V0cHV0LiBB
+ZGQgcGF0dGVybnMgZm9yIHRoZXNlIHByb3BlcnRpZXMgaW4gdGhlIGR0LWJpbmRpbmcuIFRoZQo+
+Pj4gcHJvcGVydHkgaXMgc3BsaXQgaW50byB0d28gcGF0dGVybnMgaW4gb3JkZXIgdG8gYWxsb3cg
+YWxsIHZhbGlkCj4+PiBpbnRlcmZhY2UgcGFpcmluZ3MuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTog
+TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgo+Pj4KPj4+
+IC0tLQo+Pj4gVGhlIHNlcmllcyBmcm9tIHYxIG9mIHRoaXMgcGF0Y2ggd2FzIG1lcmdlZCBhbHRo
+b3VnaCBzb21lIGNoYW5nZXMgd2VyZQo+Pj4gc3RpbGwgbmVlZGVkIGluIHRoaXMgcGF0Y2gsIHNv
+IHRoZSB2MSBvZiB0aGlzIHBhdGNoIHdhcyByZXZlcnRlZCBbMV0gYW5kCj4+PiB0aGlzIHN0YW5k
+YWxvbmUgY29tbWl0IGFkZHJlc3NlcyB0aGUgZmVlZGJhY2sgZnJvbSB2MSBhbmQgcmVhZGRzIHRo
+ZQo+Pj4gcHJvcGVydHkuCj4+Pgo+Pj4gWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8y
+MDIyMDUwOTE4NTYyNS41ODA4MTEtMS1uZnJhcHJhZG9AY29sbGFib3JhLmNvbQo+Pj4KPj4+IHYx
+OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMjA0MjkyMDMwMzkuMjIwNzg0OC0yLW5m
+cmFwcmFkb0Bjb2xsYWJvcmEuY29tLwo+Pj4KPj4+IENoYW5nZXMgaW4gdjI6Cj4+PiAtIEFkZGVk
+ICJtZWRpYXRlaywiIHByZWZpeCB0byBwcm9wZXJ0eQo+Pj4gLSBSZXdyb3RlIGFuZCBhZGRlZCBt
+b3JlIGluZm9ybWF0aW9uIHRvIHByb3BlcnR5IGRlc2NyaXB0aW9uCj4+PiAtIFNwbGl0IGludG8g
+dHdvIHBhdHRlcm5zIHRvIHZhbGlkYXRlIHRoYXQgb3V0cHV0LWlucHV0IHBhaXJpbmdzIGFyZQo+
+Pj4gICBkb25lCj4+Pgo+Pj4gIC4uLi9iaW5kaW5ncy9zb3VuZC9tdDgxOTItYWZlLXBjbS55YW1s
+ICAgICAgICAgICB8IDE2ICsrKysrKysrKysrKysrKysKPj4+ICAxIGZpbGUgY2hhbmdlZCwgMTYg
+aW5zZXJ0aW9ucygrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3Mvc291bmQvbXQ4MTkyLWFmZS1wY20ueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9tdDgxOTItYWZlLXBjbS55YW1sCj4+PiBpbmRleCA3YTI1
+YmM5YjgwNjAuLjJhYmY0M2M2YzJjMyAxMDA2NDQKPj4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9tdDgxOTItYWZlLXBjbS55YW1sCj4+PiArKysgYi9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc291bmQvbXQ4MTkyLWFmZS1wY20ueWFtbAo+
+Pj4gQEAgLTU0LDYgKzU0LDIyIEBAIHByb3BlcnRpZXM6Cj4+PiAgICAgICAgLSBjb25zdDogYXVk
+X2luZnJhX2Nsawo+Pj4gICAgICAgIC0gY29uc3Q6IGF1ZF9pbmZyYV8yNm1fY2xrCj4+PiAgCj4+
+PiArcGF0dGVyblByb3BlcnRpZXM6Cj4+PiArICAiXm1lZGlhdGVrLGkyc1sxMzU3OV0tc2hhcmUk
+IjoKPj4+ICsgICAgZGVzY3JpcHRpb246Cj4+PiArICAgICAgRWFjaCBJMlMgaW50ZXJmYWNlIGhh
+cyBhIHNpbmdsZSBkYXRhIGxpbmUsIGlucHV0IGlmIGl0cyBpbmRleCBpcyBldmVuIG9yCj4+PiAr
+ICAgICAgb3V0cHV0IGlmIHRoZSBpbmRleCBpcyBvZGQuIEFuIGlucHV0IGFuZCBhbiBvdXRwdXQg
+STJTIGludGVyZmFjZSBjYW4gYmUKPj4+ICsgICAgICB1c2VkIHRvZ2V0aGVyIGFzIGlmIHRoZXkg
+d2VyZSBhIHNpbmdsZSBJMlMgaW50ZXJmYWNlIHdpdGggYm90aCBpbnB1dCBhbmQKPj4+ICsgICAg
+ICBvdXRwdXQgZGF0YSBsaW5lcyBieSBzaGFyaW5nIHRoZSBzYW1lIGNsb2NrLiBUaGlzIHByb3Bl
+cnR5IHJlcHJlc2VudHMgdGhpcwo+Pj4gKyAgICAgIHBhaXJpbmcuIFRoZSB2YWx1ZSBzaG91bGQg
+YmUgdGhlIG5hbWUgb2YgdGhlIGludGVyZmFjZSB3aG9zZSBjbG9jayBpcwo+Pj4gKyAgICAgIHVz
+ZWQsIGFuZCB0aGUgcHJvcGVydHkgbmFtZSB0aGUgb3RoZXIgaW50ZXJmYWNlIHRoYXQgZGVwZW5k
+cyBvbiB0aGlzCj4+PiArICAgICAgY2xvY2suCj4+PiArICAgIHBhdHRlcm46ICJeSTJTWzAyNjhd
+JCIKPj4+ICsKPj4+ICsgICJebWVkaWF0ZWssaTJzWzAyNjhdLXNoYXJlJCI6Cj4+PiArICAgIGRl
+c2NyaXB0aW9uOiBTYW1lIGFzIGFib3ZlLgo+Pj4gKyAgICBwYXR0ZXJuOiAiXkkyU1sxMzU3OV0k
+Igo+Pgo+PiBSb2IncyBxdWVzdGlvbiBpcyBzdGlsbCB2YWxpZCAtIHdoeSB0aGVzZSBhcmUgbm90
+IHBoYW5kbGVzPwo+IAo+IFNvLCBpbnN0ZWFkIG9mIGhhdmluZwo+IAo+IAlpMnM5LXNoYXJlID0g
+IkkyUzgiOwo+IAo+IG9uIHRoZSBEVCwgeW91IHdhbnQgdXMgdG8gaGF2ZSBzb21ldGhpbmcgbGlr
+ZSB0aGlzOgo+IAo+ICAgICAgICAgYWZlX2kyczg6IG1lZGlhdGVrLGkyczggeyB9Owo+IAo+ICAg
+ICAgICAgbWVkaWF0ZWssaTJzOSB7Cj4gICAgICAgICAgIG1lZGlhdGVrLHNoYXJlLWNsb2NrID0g
+PCZhZmVfaTJzOD47Cj4gICAgICAgICB9Owo+IAo+IE9yIGRvIHlvdSBtZWFuIHNvbWV0aGluZyBl
+bHNlPwoKTm90IGVudGlyZWx5LiBUaGlzIGlzIGEgYmluZGluZyBmb3IgbWVkaWF0ZWssbXQ4MTky
+LWF1ZGlvLCBub3QgZm9yIEkyUzksCnNvIHRoZSBwcm9wZXJ0eSBzaG91bGQgYmUgaW4gdGhpcyBi
+aW5kaW5nIHJlZmVyZW5jaW5nIHlvdXIgZXhpc3RpbmcgSTJTCmRldmljZXMuCgo+IAo+IEl0IHNl
+ZW1zIGxpa2UgYSBsb3QgbW9yZSBzeW50YXggdG8gZXhwcmVzcyB0aGUgc2FtZSB0aGluZyAoYW5k
+IHRoZSBlbXB0eSBub2RlCj4gc2VlbXMgYXdrd2FyZCksIGJ1dCBpZiB0aGF0J3MgdGhlIERUIHdh
+eSwgSSBjYW4gY2hhbmdlIGl0IG5vIHByb2JsZW0uCgpIbSwgdGhlbiB0aGUgZm9sbG93IHVwIHF1
+ZXN0aW9uOiB3aHkgeW91IGRvIG5vdCBoYXZlIGkyczggZGVmaW5lZCBpbiBEVFM/CgoKQmVzdCBy
+ZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtbWVkaWF0ZWsK
