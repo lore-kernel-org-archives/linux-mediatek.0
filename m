@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C959C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 09:04:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67436C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 09:10:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pUR/cqYBNiKvclr3ohz0L2YgU1yfGvJtyh9L9TkLKvw=; b=nfHM7UKdf6jP0M
-	ObXR0CZuvqMRJBInOkJv5Qf1dKBfnqidB6N3081O7ivDYCahIuaNAOfqtA0JujrY6G9ESEB7rxgyc
-	VCQYXAj65z5LRfh2fMxhwvrkRr9gsd4AQimIxvT/0Q/k0nkXya0hFh4sthVkLXTrRm4HuZSUi+WIE
-	p55l18xLwCIeEW3h3k4uN7nP++TuzOICSdV4tFSVFvg9ZEINxzm/2cnCtfTv2/XvxVIEOVfz5RXDJ
-	NCsKbZwHU5d/OPxbOpm4NqjVwrWGu73eDC4CDacPDPiP9NZxa/y4GxZ2ezKPP1nVXGeC9rIeG6RXw
-	jR6dpg+1h+ri6ZTDQvGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7y1C85VJaREAbwbTsgJ7B6wwysSQDCRtgrOTsO5h3Lk=; b=FdbzVncH9iyzuN
+	Qph+Nogl7/j1R6baEsPSb55wPEyLu3Nsxvyjfzi9lsoUptGuI4+OijF9aG+w5ZuoiyPoneBtmxyv4
+	xlFUfMt8rc2FmYnsKSE6ei5Q4j5+qM7DfR/57wvcgkyVoIR9PRnzW+QXb72koyy/kIjAQxm60F6fY
+	4CSweJZ63pUW6AXSeEPwIJb9OOZgvBdkbTCNkqwJ2TWpMA2iIhaqrs/b1Qiy/yBBhhxIQZXgP/9T4
+	mZ3Tk+g58I8ls0zCSGGcIcHDPa3vya3QmpziX6QOrNLSwVVLKgctGWK9DGah3cSbjFR4tBr5y630L
+	RqJHhMZnGLHWNjJVtmQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvbKA-0063v1-Gd; Mon, 30 May 2022 09:04:30 +0000
-Received: from esa.microchip.iphmx.com ([68.232.153.233])
+	id 1nvbPl-00650b-UI; Mon, 30 May 2022 09:10:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvbJr-0063lq-8d; Mon, 30 May 2022 09:04:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1653901450; x=1685437450;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=BqttjK6LoysDCfGp3a/aAnQzKKWODvXywQSQ/I73aMM=;
-  b=pqM7aLUi8j9ErghA8GzeIebW9pf55mT2BUo5u7yD0u6MiDrc4xCuxnjV
-   Ty7UxXQGhW25+PAQWAt2ipQtZYM7nryAMY1EpCNgx1ErNIAVBHeD3058n
-   VnHsXszbuLRo/owrsPBu+5ke1bK+Gxwcim4UAx1dBXG6Lz/OddjnxSQtE
-   2av4hGt83tLQZ1Cuk1mL/Wg+OZkUdEu0n++Nhqxd9vMQVuH8Upa3DF9BM
-   zK90dad2s2fdXrzVaJUWqSIA+EOUyV2U9TH0NIRVhh0tgNXvDRVRzMT0K
-   F58KNk1a54ubmz7urVsGlmSLNFtqUsyeEbcmb0+nGPnBn90cstTfCK90M
-   g==;
-X-IronPort-AV: E=Sophos;i="5.91,262,1647327600"; 
-   d="scan'208";a="175650657"
-Received: from smtpout.microchip.com (HELO email.microchip.com) ([198.175.253.82])
-  by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 30 May 2022 02:04:06 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex03.mchp-main.com (10.10.85.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.17; Mon, 30 May 2022 02:04:06 -0700
-Received: from [10.159.205.135] (10.10.115.15) by chn-vm-ex02.mchp-main.com
- (10.10.85.144) with Microsoft SMTP Server id 15.1.2375.17 via Frontend
- Transport; Mon, 30 May 2022 02:04:01 -0700
-Message-ID: <3704e284-3fd0-b073-9a3b-68ae2e966181@microchip.com>
-Date: Mon, 30 May 2022 11:03:59 +0200
+	id 1nvbPb-0064yh-Ed; Mon, 30 May 2022 09:10:09 +0000
+X-UUID: 943586e98a18433dadb87f9909be61de-20220530
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:cd290a7e-fbcc-4ad5-be41-478acfb32059,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:2a2d0048-4fb1-496b-8f1d-39e733fed1ea,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 943586e98a18433dadb87f9909be61de-20220530
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <chui-hao.chiu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 701116982; Mon, 30 May 2022 02:09:57 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 May 2022 02:09:56 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 30 May 2022 17:09:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 30 May 2022 17:09:54 +0800
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, Ryder Lee <ryder.Lee@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
+Subject: [PATCH v3] arm64: dts: mt7986: add built-in Wi-Fi device nodes
+Date: Mon, 30 May 2022 17:09:44 +0800
+Message-ID: <20220530090944.4558-1-chui-hao.chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] dt-bindings: net: Fix unevaluatedProperties warnings in
- examples
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, "Paolo
- Abeni" <pabeni@redhat.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Felix Fietkau <nbd@nbd.name>, "Lorenzo
- Bianconi" <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "Kalle
- Valo" <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Claudiu
- Beznea" <claudiu.beznea@microchip.com>, Biao Huang <biao.huang@mediatek.com>
-CC: <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20220526014149.2872762-1-robh@kernel.org>
-From: Nicolas Ferre <nicolas.ferre@microchip.com>
-Organization: microchip
-In-Reply-To: <20220526014149.2872762-1-robh@kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_020411_422993_8E294DDF 
-X-CRM114-Status: GOOD (  18.99  )
+X-CRM114-CacheID: sfid-20220530_021007_531102_DBFF9D5A 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,92 +75,185 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/05/2022 at 03:41, Rob Herring wrote:
-> The 'unevaluatedProperties' schema checks is not fully working and doesn't
-> catch some cases where there's a $ref to another schema. A fix is pending,
-> but results in new warnings in examples. Fix the warnings by removing
-> spurious properties or adding missing properties to the schema.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->   Documentation/devicetree/bindings/net/cdns,macb.yaml           | 1 -
->   Documentation/devicetree/bindings/net/mediatek,net.yaml        | 3 +++
->   Documentation/devicetree/bindings/net/mediatek-dwmac.yaml      | 3 +++
->   .../devicetree/bindings/net/wireless/mediatek,mt76.yaml        | 2 +-
->   4 files changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/cdns,macb.yaml b/Documentation/devicetree/bindings/net/cdns,macb.yaml
-> index 337cec4d85ca..86fc31c2d91b 100644
-> --- a/Documentation/devicetree/bindings/net/cdns,macb.yaml
-> +++ b/Documentation/devicetree/bindings/net/cdns,macb.yaml
-> @@ -191,7 +191,6 @@ examples:
->                       clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
->                       #address-cells = <1>;
->                       #size-cells = <0>;
-> -                    #stream-id-cells = <1>;
->                       iommus = <&smmu 0x875>;
->                       power-domains = <&zynqmp_firmware PD_ETH_1>;
->                       resets = <&zynqmp_reset ZYNQMP_RESET_GEM1>;
+This enables built-in 802.11ax Wi-Fi support.
 
-For cdns,macb.yaml:
-Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
+Reviewed-by: Sam Shih <sam.shih@mediatek.com>
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+---
+v2: add clocks and clock-names.
+v3: rename wmac to wifi and change underscores to dash in node names.
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 41 +++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 22 ++++++++++
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 43 ++++++++++++++++++++
+ 3 files changed, 106 insertions(+)
 
-Thanks Rob. Best regards,
-   Nicolas
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+index 24c155c71f0d..42b4f42754f3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+@@ -57,6 +57,13 @@
+ 	status = "okay";
+ };
 
-> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> index 699164dd1295..f5564ecddb62 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> @@ -27,6 +27,9 @@ properties:
->     reg:
->       maxItems: 1
-> 
-> +  clocks: true
-> +  clock-names: true
-> +
->     interrupts:
->       minItems: 3
->       maxItems: 4
-> diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> index 901944683322..61b2fb9e141b 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> @@ -58,6 +58,9 @@ properties:
->         - const: rmii_internal
->         - const: mac_cg
-> 
-> +  power-domains:
-> +    maxItems: 1
-> +
->     mediatek,pericfg:
->       $ref: /schemas/types.yaml#/definitions/phandle
->       description:
-> diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> index 249967d8d750..5a12dc32288a 100644
-> --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-> @@ -51,7 +51,7 @@ properties:
->       description:
->         Specify the consys reset for mt7986.
-> 
-> -  reset-name:
-> +  reset-names:
->       const: consys
-> 
->     mediatek,infracfg:
-> --
-> 2.34.1
-> 
++&wifi {
++	status = "okay";
++	pinctrl-names = "default", "dbdc";
++	pinctrl-0 = <&wf_2g_5g_pins>;
++	pinctrl-1 = <&wf_dbdc_pins>;
++};
++
+ &pio {
+ 	pcie_pins: pcie-pins {
+ 		mux {
+@@ -99,6 +106,40 @@
+ 			groups = "jtag";
+ 		};
+ 	};
++
++	wf_2g_5g_pins: wf-2g-5g-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_2g", "wf_5g";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
++
++	wf_dbdc_pins: wf-dbdc-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_dbdc";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
+ };
 
+ &spi0 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 9663a0779416..0f7d555996fc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/clock/mt7986-clk.h>
+ #include <dt-bindings/phy/phy.h>
++#include <dt-bindings/reset/mt7986-resets.h>
 
--- 
-Nicolas Ferre
+ / {
+ 	interrupt-parent = <&gic>;
+@@ -80,6 +81,11 @@
+ 			reg = <0 0x43000000 0 0x30000>;
+ 			no-map;
+ 		};
++
++		wmcpu_emi: wmcpu-reserved@4fc00000 {
++			no-map;
++			reg = <0 0x4fc00000 0 0x00100000>;
++		};
+ 	};
+
+ 	timer {
+@@ -381,6 +387,22 @@
+ 			 #reset-cells = <1>;
+ 		};
+
++		wifi: wifi@18000000 {
++			compatible = "mediatek,mt7986-wmac";
++			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
++			reset-names = "consys";
++			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
++				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
++			clock-names = "mcu", "ap2conn";
++			reg = <0 0x18000000 0 0x1000000>,
++			      <0 0x10003000 0 0x1000>,
++			      <0 0x11d10000 0 0x1000>;
++			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
++			memory-region = <&wmcpu_emi>;
++		};
+ 	};
+
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+index d4078feb4aad..088722c1e14c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+@@ -97,3 +97,46 @@
+ &usb_phy {
+ 	status = "okay";
+ };
++
++&wifi {
++	status = "okay";
++	pinctrl-names = "default", "dbdc";
++	pinctrl-0 = <&wf_2g_5g_pins>;
++	pinctrl-1 = <&wf_dbdc_pins>;
++};
++
++&pio {
++	wf_2g_5g_pins: wf-2g-5g-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_2g", "wf_5g";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
++
++	wf_dbdc_pins: wf-dbdc-pins {
++		mux {
++			function = "wifi";
++			groups = "wf_dbdc";
++		};
++		conf {
++			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
++			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
++			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
++			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
++			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
++			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
++			       "WF1_TOP_CLK", "WF1_TOP_DATA";
++			drive-strength = <4>;
++		};
++	};
++};
+--
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
