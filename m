@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD9AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 20:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA52C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 20:42:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t8oWdU+PGvoj6e3MCoaioJ/R2nufeuQ+LPNet1mxZ1E=; b=m9mESRcrlN7hN9
-	O2I9llQbggPr1w9lCU+dTE18exGi8xk/fW35WZsSS3d7NIKjSIpSqLPBlkZz8JwqS2Ye1+NqWmcIu
-	sVMLc+5zRLWPprVIcNbSsEB83EwjRmp8SYRATMbjp30qrhs36bqPGchZU3GxUIZjIhf5NoSdSE4ER
-	jwhvq5jfTBN0HnI6fsonbhHAUg3OtMXLCSTIkYlaWKjKe4dwy9zGLIUGtKhhwnjUqYge1rVl+DWoM
-	OkD+mgqw5XusYS8uzt/F1mDQ8aMsQrb19H7uG2cvrnvXXhEoiFeQz0zorOk3mQMvYiN+nXT9zUMXk
-	b2pVZf/umtusfn6H12UA==;
+	List-Owner; bh=wUZLe7rUm1v4Ug/N5U/5s18Jp+/Uf/D6jpYTc6/G2sI=; b=p3dw4WZlYsJR77
+	CYK5tl25XjysVNAgHmTfPYYVHmZdr+pnnfFGZ8JGk0GGPoWqmKd9dz0Y626GooJ1jxDn3AlKIh5zJ
+	NBomclDTAnx9L/Ay3mVS5xbUczo+2vcgj4tG3iUvDuadyFZ3nKV6J1K2rRDGlH8RlAG4NDZki5t9d
+	YqKN6KZgtQwIEk01xENzyPKCGlTDglpK9wZhU1AtrI2Z/QXw3o8kCN0aS9ePPXO8XYLlQJ2Tv81Ku
+	sSvyx0fvoMXYBDp2rI9a88bpYJOO+wam+jLqm9Ze5xBqRY8kpxSrV1xs+K8qOWzKJ1jXUxUzUdAqO
+	SMsWzjs33Cmh4h0vNapg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvmDr-008F1m-2p; Mon, 30 May 2022 20:42:43 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1nvmDq-008F1Z-B4; Mon, 30 May 2022 20:42:42 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvmDg-008Ews-EX
-	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 20:42:34 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id n124-20020a1c2782000000b003972dfca96cso156672wmn.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 13:42:32 -0700 (PDT)
+	id 1nvmDe-008Ev4-UP
+	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 20:42:32 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id r9-20020a1c4409000000b00397345f2c6fso156665wma.4
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 13:42:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=OfRzRz9zY+mWQeLzIoLCLlJA3rGJuwiAX+1Eau/u4p4=;
-        b=OjKjf6rUbb5SpHdfuQH/imC6NIGGZ3P6M75JaF7jECTByieFVd1TOqOnYXpvC0Xfnl
-         kfuspj+G1QyOLBh5ycOvIDKPEaJpzXwRasjKFwdTVZX+NCHgfJxPMWEQnOa4b7AQ71EH
-         EHzNtZZQhJgqZQxFQ/zf9FKMzmL1isRwROY615/pxsGSyD2GBYUJv9t8Za7onN8ZMiKb
-         5ziqKRVwUiCvD4Kl0L1TFAlFgHqF9+MiZjI3RA1MsLUFL5UUJFNmYpOCEqe70vM6Ox/e
-         7hWYxIS0wN5QzYQ3+Wgepr65/WYoGz9FitNkxZIpVpVxrjl6s77g2vP1cmz/I5bO9hVJ
-         TmBQ==
+        bh=HkFKykSg+LXExaO0zjWiIjLlKGz26EUYiL/1qNJ2Q8w=;
+        b=Yhl2ZB+7Oo+MPtAhiZPeb1kGOMCy4KpgnrI1FI8wALaO4TnnblLX3RYtX71zTX8Ty+
+         /rPiSwPS8Ntj1+6iluycUEgCuOi2rovnnYNtL3FABc18GLpj7FNM5fZSVhBhmZycGKVu
+         6LubAHLGtOMujGoNYwKkV4pdUWEsj/KowS9g2145xsMXol0LyLtC6ANFCtp0XQ3WlXLT
+         E1RyWfnQpYGdQ9JEXNpRh67kZbdQ/iOU2jjdJgxOAPBx01toc85+LHc3mRy1MF+UCZfV
+         ifCLCxjBeUNqQ6QcuPzm4kS5b0w4/5ivZW9Ijl7dU266jlgxaELeiiMp6jxo7boo3OBF
+         IirQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=OfRzRz9zY+mWQeLzIoLCLlJA3rGJuwiAX+1Eau/u4p4=;
-        b=QvmYzUQOKZu9ClAVqB0dw+avWYBwhkC7pF1nn5/rQDrM4SXvnph7wM0YakbDceYrBC
-         SGugQodCUaPzgTUjegosxtcFgrch3UB4BL6Z9/7dg812tAZ3nO7eKdaxowxCYpAwYcvr
-         m/EnonLRGBU/4r88U5WalFrPbrXIMZZOQDwrTzo80pVunGFE4tY1iqx0mC8pp+NEziZy
-         S4gTOLaJxOwvR+XZG++V73WOjzVmxASK3YkUiE2xo8OCgWCu7g7+TqxassuVue51bNxU
-         c88HFOKYQvv7ett3mAWCX4QNuABm0YpiBgN1v1SUmOZKAQGeGJ9N1Se+lO4nXuGvx4A8
-         n3FQ==
-X-Gm-Message-State: AOAM530YLzGRsorYgG9CKSWe3sBMgtxUtf0xVaRy9ULFial+lRs1qKB8
-	O5Pr+X8i6kurVqYRQox6dRUepA==
-X-Google-Smtp-Source: ABdhPJxK0D0IN4lwSq73zpNlpbs45dPOpaoXgVGrmOvGp9YvwJOGUYq8ZhEMazBS/AVR3tG2t4BOCw==
-X-Received: by 2002:a05:600c:3849:b0:397:89ce:289 with SMTP id s9-20020a05600c384900b0039789ce0289mr16587313wmr.104.1653943351285;
-        Mon, 30 May 2022 13:42:31 -0700 (PDT)
+        bh=HkFKykSg+LXExaO0zjWiIjLlKGz26EUYiL/1qNJ2Q8w=;
+        b=tC8ZCFCNQN5i+opeCAF4dpRO4XyVpaDFez+HvQ/gHfyqtf2V3Bl5ZKhCvfDGoaNW1p
+         sDurJtZrLgkIVVtXyZOe4qFtSBY3RPnw6Qobw/UIS7myfuTGG349f1J4NVN7EOfWI5Ah
+         8ySQfpzKu3zoe9foI5dqJupkGd+DK8kcYQXvUesfFAJjUAHde1w+e0ei9H8Un8BUMRXZ
+         EKFztgMkXburwUE43tvix+GsWo/qFqLgpdqZi8APOABB2jMwn79udLCN7smidQvlircj
+         Xw+gd5lqwuPf3biP3laJZO2DKSspuWd9941zLev72FUoS07pV39oyG4i3tIzYuxbSaOL
+         j/Bg==
+X-Gm-Message-State: AOAM5322e9x3wfF03NRtAKbllEbgVmC2OpGl905AQD+Oj/1/KcK7IGIn
+	xbXeZfr5cfvXh2HpgUxPSKYoWQ==
+X-Google-Smtp-Source: ABdhPJyWZ0ltCGykHekzkC4wGU2P0YpdAkpBmOKuYqWdsTCUCVOJrAGcowWtV41kGKzubyTCQ0edQg==
+X-Received: by 2002:a05:600c:2b8f:b0:397:46f2:7a10 with SMTP id j15-20020a05600c2b8f00b0039746f27a10mr20146610wmc.75.1653943349546;
+        Mon, 30 May 2022 13:42:29 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
-        by smtp.gmail.com with ESMTPSA id w13-20020a7bc74d000000b0039b17714eb2sm262253wmk.34.2022.05.30.13.42.30
+        by smtp.gmail.com with ESMTPSA id w13-20020a7bc74d000000b0039b17714eb2sm262253wmk.34.2022.05.30.13.42.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 May 2022 13:42:30 -0700 (PDT)
+        Mon, 30 May 2022 13:42:28 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Alexandre Bailon <abailon@baylibre.com>,
@@ -65,16 +65,16 @@ Cc: Alexandre Bailon <abailon@baylibre.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 3/4] soc: mediatek: add support of MTK_SCPD_STRICT_BUSP cap
-Date: Mon, 30 May 2022 22:42:13 +0200
-Message-Id: <20220530204214.913251-3-fparent@baylibre.com>
+Subject: [PATCH 2/4] soc: mediatek: Add support of WAYEN operations
+Date: Mon, 30 May 2022 22:42:12 +0200
+Message-Id: <20220530204214.913251-2-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220530204214.913251-1-fparent@baylibre.com>
 References: <20220530204214.913251-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_134232_549005_3FFC6395 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20220530_134231_025132_D25B6997 
+X-CRM114-Status: GOOD (  17.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,78 +93,209 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Alexandre Bailon <abailon@baylibre.com>
 
-This adds support of MTK_SCPD_STRICT_BUSP cap.
-This is required by the mt8365, for the MM power domain.
+This updates the power domain to support WAYEN operations.
+This is required by the mt8365 for the MM power domain.
 
 Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/soc/mediatek/mtk-pm-domains.c | 37 ++++++++++++++++++++-------
- drivers/soc/mediatek/mtk-pm-domains.h |  1 +
- 2 files changed, 29 insertions(+), 9 deletions(-)
+ drivers/soc/mediatek/mtk-pm-domains.c | 64 +++++++++++++++++++++------
+ drivers/soc/mediatek/mtk-pm-domains.h | 27 ++++++-----
+ 2 files changed, 67 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index 90b91b3b19a8..beaa5785fda2 100644
+index 5ced254b082b..90b91b3b19a8 100644
 --- a/drivers/soc/mediatek/mtk-pm-domains.c
 +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -263,17 +263,36 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
- 	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+@@ -44,6 +44,7 @@ struct scpsys_domain {
+ 	struct clk_bulk_data *subsys_clks;
+ 	struct regmap *infracfg;
+ 	struct regmap *smi;
++	struct regmap *infracfg_nao;
+ 	struct regulator *supply;
+ };
  
--	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
--	if (ret)
--		goto err_pwr_ack;
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUSP)) {
-+		/*
-+		 * In few Mediatek platforms(e.g. MT6779), the bus protect
-+		 * policy is stricter, which leads to bus protect release must
-+		 * be prior to bus access.
-+		 */
-+		ret = scpsys_sram_enable(pd);
-+		if (ret < 0)
-+			goto err_pwr_ack;
+@@ -116,23 +117,38 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+ 					MTK_POLL_TIMEOUT);
+ }
  
--	ret = scpsys_sram_enable(pd);
--	if (ret < 0)
--		goto err_disable_subsys_clks;
-+		ret = scpsys_bus_protect_disable(pd);
-+		if (ret < 0)
-+			goto err_pwr_ack;
+-static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
++static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
++				      struct regmap *regmap, struct regmap *infracfg_nao)
+ {
+ 	int i, ret;
  
--	ret = scpsys_bus_protect_disable(pd);
--	if (ret < 0)
--		goto err_disable_sram;
-+		ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-+		if (ret < 0)
-+			goto err_pwr_ack;
-+	} else {
-+		ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-+		if (ret)
-+			goto err_pwr_ack;
+ 	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+-		u32 val, mask = bpd[i].bus_prot_mask;
++		u32 mask = bpd[i].bus_prot_mask;
++		u32 val = mask, sta_mask = mask;
++		struct regmap *ack_regmap = regmap;
+ 
+ 		if (!mask)
+ 			break;
+ 
++		if (bpd[i].wayen) {
++			if (!infracfg_nao)
++				return -ENODEV;
 +
-+		ret = scpsys_sram_enable(pd);
-+		if (ret < 0)
-+			goto err_disable_subsys_clks;
++			val = 0;
++			sta_mask = bpd[i].bus_prot_sta_mask;
++			ack_regmap = infracfg_nao;
++		}
 +
-+		ret = scpsys_bus_protect_disable(pd);
-+		if (ret < 0)
-+			goto err_disable_sram;
-+	}
+ 		if (bpd[i].bus_prot_reg_update)
+-			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
++			regmap_update_bits(regmap, bpd[i].bus_prot_set, mask, val);
+ 		else
+ 			regmap_write(regmap, bpd[i].bus_prot_set, mask);
  
- 	return 0;
+-		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+-					       val, (val & mask) == mask,
++		if (bpd[i].ignore_clr_ack)
++			continue;
++
++		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
++					       val, (val & sta_mask) == sta_mask,
+ 					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+ 		if (ret)
+ 			return ret;
+@@ -145,34 +161,49 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+ {
+ 	int ret;
  
+-	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
++	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
++			pd->infracfg, pd->infracfg_nao);
+ 	if (ret)
+ 		return ret;
+ 
+-	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
++	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
+ }
+ 
++#define mask_cond(wayen, val, mask) \
++	((wayen && ((val & mask) == mask)) || (!wayen && !(val & mask)))
++
+ static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+-				       struct regmap *regmap)
++				       struct regmap *regmap, struct regmap *infracfg_nao)
+ {
+ 	int i, ret;
+ 
+ 	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+-		u32 val, mask = bpd[i].bus_prot_mask;
++		u32 val = 0, mask = bpd[i].bus_prot_mask;
++		u32 sta_mask = mask;
++		struct regmap *ack_regmap = regmap;
+ 
+ 		if (!mask)
+ 			continue;
+ 
++		if (bpd[i].wayen) {
++			if (!infracfg_nao)
++				return -ENODEV;
++
++			val = mask;
++			sta_mask = bpd[i].bus_prot_sta_mask;
++			ack_regmap = infracfg_nao;
++		}
++
+ 		if (bpd[i].bus_prot_reg_update)
+-			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
++			regmap_update_bits(regmap, bpd[i].bus_prot_clr, mask, val);
+ 		else
+ 			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+ 
+ 		if (bpd[i].ignore_clr_ack)
+ 			continue;
+ 
+-		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+-					       val, !(val & mask),
++		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
++					       val, mask_cond(bpd[i].wayen, val, sta_mask),
+ 					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+ 		if (ret)
+ 			return ret;
+@@ -185,11 +216,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+ {
+ 	int ret;
+ 
+-	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
++	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
+ 	if (ret)
+ 		return ret;
+ 
+-	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
++	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
++			pd->infracfg, pd->infracfg_nao);
+ }
+ 
+ static int scpsys_regulator_enable(struct regulator *supply)
+@@ -363,6 +395,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 			return ERR_CAST(pd->smi);
+ 	}
+ 
++	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(node, "mediatek,infracfg_nao");
++	if (IS_ERR(pd->infracfg_nao))
++		return ERR_CAST(pd->infracfg_nao);
++
+ 	num_clks = of_clk_get_parent_count(node);
+ 	if (num_clks > 0) {
+ 		/* Calculate number of subsys_clks */
 diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-index a3955d960233..5347471bc3c4 100644
+index daa24e890dd4..a3955d960233 100644
 --- a/drivers/soc/mediatek/mtk-pm-domains.h
 +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-@@ -8,6 +8,7 @@
- #define MTK_SCPD_SRAM_ISO		BIT(2)
- #define MTK_SCPD_KEEP_DEFAULT_OFF	BIT(3)
- #define MTK_SCPD_DOMAIN_SUPPLY		BIT(4)
-+#define MTK_SCPD_STRICT_BUSP		BIT(5)
- #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+@@ -39,23 +39,28 @@
  
- #define SPM_VDE_PWR_CON			0x0210
+ #define SPM_MAX_BUS_PROT_DATA		6
+ 
+-#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
+-		.bus_prot_mask = (_mask),			\
+-		.bus_prot_set = _set,				\
+-		.bus_prot_clr = _clr,				\
+-		.bus_prot_sta = _sta,				\
+-		.bus_prot_reg_update = _update,			\
+-		.ignore_clr_ack = _ignore,			\
++#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _wayen) {	\
++		.bus_prot_mask = (_mask),				\
++		.bus_prot_set = _set,					\
++		.bus_prot_clr = _clr,					\
++		.bus_prot_sta = _sta,					\
++		.bus_prot_sta_mask = _sta_mask,				\
++		.bus_prot_reg_update = _update,				\
++		.ignore_clr_ack = _ignore,				\
++		.wayen = _wayen,					\
+ 	}
+ 
+ #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
+-		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
++		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
+ 
+ #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
+-		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
++		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
+ 
+ #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
+-		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
++		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
++
++#define BUS_PROT_WAYEN(_en_mask, _sta_mask, _set, _sta)		\
++		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, true)
+ 
+ #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
+ 		BUS_PROT_UPDATE(_mask,				\
+@@ -68,8 +73,10 @@ struct scpsys_bus_prot_data {
+ 	u32 bus_prot_set;
+ 	u32 bus_prot_clr;
+ 	u32 bus_prot_sta;
++	u32 bus_prot_sta_mask;
+ 	bool bus_prot_reg_update;
+ 	bool ignore_clr_ack;
++	bool wayen;
+ };
+ 
+ /**
 -- 
 2.36.1
 
