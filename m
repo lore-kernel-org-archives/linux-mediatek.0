@@ -4,58 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32413C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 09:47:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C599C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 10:09:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FePkK5tUAF53XTaKHQJFYP+ynWZUCMGtdk1mZK0bA0U=; b=hNtOsBBSYF1g4J
-	K3MDe9XZo0kY16Qd6li9UGAhDAS036OLRJgzOHbbcE6jQZ4nDGaOp/6XiwJC0sbPCVU3dIMUKNNqQ
-	kcynhhvSfn5T8wCZ7ZnagsXbfevwFeKAErNvkWAJWCZpof9HeI8m35I5lLE24OJENzHwSqJ628xON
-	upAboWFSMpTCoJyYr6rhKWNS1qg2Ahwj3svORYWN0GVeH5htrRfTQqwLNfnIGxiDnWKr+uqh7NwPy
-	ayQ/wji1sK3q2p98us5LOI15K4FdrxgSdDySkTPEKbgDHKw8wpAYAnZlX7lMWP0zvMQ8sSHr6n2N9
-	gukMOQWO6ZOjfaHPdMgQ==;
+	List-Owner; bh=NyZoalxD9bjX2Ic1sqBMXCwc0NyQ2ESU8BAWtxZMM8A=; b=CJU3EL+QZ0DfWd
+	hsDTUO3pAzoeQUX5injdeZHVRblzj0VbsbDAZEm+lDR5HVB2EJ8zcJeVQujUaG47TeTupkQvwr4nd
+	hIoHSVFb5pox448eKm5L2N6hsKDpirgS+eRVLSJgY3nrsQ75yzmP6U8mJey9SAJrwrrBpBQFKyiiS
+	7ESN22HsqLl71sWJqT6FAogg+kFQMusUExomacRiv8+k60Bhm1U+r5gvbPj3rkGufuAFHiPNkR+iM
+	WDTOFjuvjrHSeXHFeZnt24FrF5bjZfjMOQI3Ws9PlgyPQ/YCfmC0sqidsEJYbP/vml6k64L/Yf0JT
+	KcC7Z+dN+Aia3wnAYgMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvbzd-006ApK-N1; Mon, 30 May 2022 09:47:21 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nvcKZ-006EWe-Io; Mon, 30 May 2022 10:08:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvbzP-006AkJ-F6; Mon, 30 May 2022 09:47:09 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(Authenticated sender: kholk11)
-	with ESMTPSA id 330FE1F42772
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653904023;
-	bh=TscsrSniRUbTF2lS5EjYkm9gJZ0Gk4By33O4vJgUvvk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=il99dXitmCOx0A/VyZZgaOg/pMyn3K9JWvwUiQJ80FitEn4Totge5VEgd5QM6PiHm
-	 Ofum2lXAOT6ZkGd8iTUrvCUA8L0eYcWD+A4NF858gkt72XXcf0KeBLqKqmAohKMTgz
-	 kVHoGOiLJtHCsCn1jKLT4amWAGjjrTxYSO54cl/We8FeI+ww8NEiyoe25wUsUPwQKm
-	 6NZY9VVIyvwU3belzrLQZAJM+WMC+7zV5XLJx+Yg18rGaKj8NFhDy8t7q+mhwefEto
-	 4MUajxomeppisUKDJkcu6uN14/o5ESv5DiKBTFWm5LRQ9WJPPZNixL60ms9FW98n5k
-	 A6aOhdL1o/b7Q==
-Message-ID: <e9cf5b0c-cb11-f68b-3130-4fa6243468da@collabora.com>
-Date: Mon, 30 May 2022 11:47:00 +0200
+	id 1nvcKO-006ES9-Cx; Mon, 30 May 2022 10:08:50 +0000
+X-UUID: fcaae020de7348fb9e61c7497d61bd2c-20220530
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:ea7a6186-1b05-4bd0-8d0c-b6ff392be814,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:88ba0248-4fb1-496b-8f1d-39e733fed1ea,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: fcaae020de7348fb9e61c7497d61bd2c-20220530
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1907799424; Mon, 30 May 2022 03:08:36 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 May 2022 03:08:34 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 May 2022 18:08:33 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 30 May 2022 18:08:33 +0800
+Message-ID: <828da579f872747943dbb7684b35f58bc592c6ca.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "David
+ Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
+ Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>
+Date: Mon, 30 May 2022 18:08:33 +0800
+In-Reply-To: <20220523104758.29531-19-granquet@baylibre.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v2 0/3] MediaTek Helio X10 MT6795 - MT6331 PMIC Keys
-Content-Language: en-US
-To: Pavel Machek <pavel@ucw.cz>
-Cc: dmitry.torokhov@gmail.com, matthias.bgg@gmail.com,
- mkorpershoek@baylibre.com, linux-input@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220524093505.85438-1-angelogioacchino.delregno@collabora.com>
- <20220526110827.GC5138@localhost>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220526110827.GC5138@localhost>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_024707_769504_9C6262CD 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20220530_030848_470386_2ADD4FD6 
+X-CRM114-Status: GOOD (  23.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,62 +86,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/05/22 13:08, Pavel Machek ha scritto:
-> Hi!
+Hi, Guillaume:
+
+On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
 > 
->> In an effort to give some love to the apparently forgotten MT6795 SoC,
->> I am upstreaming more components that are necessary to support platforms
->> powered by this one apart from a simple boot to serial console.
->>
->> This series performs some cleanups in mtk-pmic-keys and adds support for
->> the MT6331 PMIC's keys.
->>
->> Adding support to each driver in each subsystem is done in different
->> patch series as to avoid spamming uninteresting patches to maintainers.
->>
->> This series depends on another two series series [1], [2] named
->> "MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper" and
->> "MediaTek Helio X10 MT6795 - MT6331/6332 PMIC MFD integration"
->>
->> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
 > 
-> Please cc phone-devel with phone stuff...
+> It supports the mt8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
 > 
-> ...and thanks for all the work. I guess we still don't have an android
-> phone with basic phone functionality working on mainline...?
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
 > 
-> Best regards,
-> 							Pavel
+> This driver is based on an initial version by
+> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> ---
+>  
 
+[snip]
 
-Hello Pavel,
+> +
+> +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
+> +{
+> +	bool connected;
+> +	u16 swirq_status = mtk_dp_swirq_get_clear(mtk_dp);
+> +	u8 hwirq_status = mtk_dp_hwirq_get_clear(mtk_dp);
+> +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
+> +
+> +	train_info->irq_status |= hwirq_status | swirq_status;
 
-I'm sorry, I've been sending a lot of things lately and I forgot to add
-that list to the Cc on some series...
+You mix software control variable and irq status here. Break each flag
+in irq_status to variables in train_info to decouple software control
+variable and irq status.
 
-Btw, we don't have any MediaTek android phone working at all on mainline:
-the one that I'm in the process of upstreaming would be the first one ever,
-the hope is that doing this will encourage other developers to do the same
-with other platforms.
+> +
+> +	if (!train_info->irq_status)
+> +		return IRQ_HANDLED;
+> +
+> +	connected = mtk_dp_plug_state(mtk_dp);
+> +	if (connected || !train_info->cable_plugged_in)
+> +		train_info->irq_status &= ~MTK_DP_HPD_DISCONNECT;
+> +	else if (!connected || train_info->cable_plugged_in)
+> +		train_info->irq_status &= ~MTK_DP_HPD_CONNECT;
+> +
+> +	if (!(train_info->irq_status &
+> +	      (MTK_DP_HPD_CONNECT | MTK_DP_HPD_DISCONNECT)))
+> +		return IRQ_HANDLED;
+> +
+> +	if (train_info->irq_status & MTK_DP_HPD_CONNECT) {
+> +		train_info->irq_status &= ~MTK_DP_HPD_CONNECT;
+> +		train_info->cable_plugged_in = true;
+> +	} else {
+> +		train_info->irq_status &= ~MTK_DP_HPD_DISCONNECT;
+> +		train_info->cable_plugged_in = false;
+> +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_STARTUP;
+> +	}
+> +	train_info->cable_state_change = true;
+> +
+> +	return IRQ_WAKE_THREAD;
+> +}
+> +
 
-Speaking of them all... I don't think that there's any retail smartphone
-that comes with Android having any phone call ability... I'm aware of some
-Qualcomm smartphones being able to use mobile data and SMS, but no calling.
-
-Unless anything changed and unless I'm unaware of recent developments.
-
-Aside from that, MediaTek chips should be a little simpler in this regard,
-so I think that we can (and I would love to) get that working, so that
-smartphones can still be smart -- phones -- on mainline as well... but I
-have a hunch that this will require quite some time.
-
-Regards,
-Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
