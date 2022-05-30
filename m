@@ -4,61 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE0ABC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 20:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C79C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 20:42:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UcVCCU0w41KX4GDAOqKUBhMq2A4S7I9KK92Tgk6xErk=; b=QwE9U/HbcBfYTFgFk0V1BLHL6o
-	LGYHi3depNdFEn9XSSoXa5vQ90+9rmERwGXW/I6pX9fhbNZE4uhcC8uJO63oGEnoQJMHZ0b5wR6WN
-	hQhvakOqnjbssHLNu7vFksIo1Ki094EntGSGX63EqdETwlZFf7POlBTC8h69bMco6WH/lLygehidk
-	xZUSjLVJDaVX33rchTn0rmn4CVhJIZS4Xv85m9pU2pwg+nJlOoZY8ab2VHNVLKoeU+tk8spldjrLK
-	hjEB7xXrA/1u3kWsJArVQtJNJjaBq4DNQKqaxVdK2sFPIWcW0edk5J8s0bVPLfuhmdVia8+hD3/ff
-	B4eIRRCw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hYHWDKGfnZ7xcMjxQ1pQANLRDlqM/4pOWfjE8aFtXB4=; b=KPiFnoBMcrtaks
+	sLOQIikGvzASJ1RUc1VeNVL/ktKIsqzfECXFZ2RGtmmyBnRkFVWYCM3qrqj7T31xgsUO0eyaneUgJ
+	kbyu4eFoAqNsqp+LjsITWvM8aIC+kaZ2FyKLpxyTsA6MNgTaCHVvw62U+PYFubgY7G0aXVsqjtPl6
+	lvCSdsMvKe5/KNci1JfP5kLw52W94La6sjSiqI62vTfU+oru9Pjybd73rojQ8jkuK64t4PW5QvvMx
+	PR6GwxuXSQOZfqA2ohNARXJg0B0jKsxcW0QcHssv9q+X6jcvQGRHQB9bdllhFR+GaXZk9rZGHKVs7
+	RBwKZGeRgbCXaF3byGmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvm2x-008DhW-TV; Mon, 30 May 2022 20:31:27 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nvmDg-008Ex8-B0; Mon, 30 May 2022 20:42:32 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvm2m-008Df0-GE
-	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 20:31:18 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1nvm2b-0001eR-CN; Mon, 30 May 2022 22:31:05 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1nvm2a-005W7e-AZ; Mon, 30 May 2022 22:31:02 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1nvm2X-00DAOs-V5; Mon, 30 May 2022 22:31:01 +0200
-Date: Mon, 30 May 2022 22:31:01 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+	id 1nvmDc-008Euk-TB
+	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 20:42:30 +0000
+Received: by mail-wr1-x431.google.com with SMTP id p10so16057939wrg.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 13:42:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=TBMGHe/9NOqZ3Kh+JOrF68tVZuQ1XNvw/gFRCoIpoLM=;
+        b=P6EJUlIkaQX/GAxBBZworgItiQjIuaWiqEBkZRvFN4ucg3iAj0Ml0k3grIAjx3OFjp
+         w0lfN8SApSeQqK7P5hjZgGNmUbXDq7blnl9L2Y0Sb0qiEwoZ34cWoMTKgdHLmyb+40lS
+         2MCr9PjlXd4z3eJjh42Qqawvch3nzt0TNlSwjOngUQ5aQUSvkjtF6JedOdKxn1kRaznk
+         4ulkTbMtYqwZ99h0SkMY+94ea0xdzNyMWgq66vKOsoeYlgy0o8MRoGClQJ9cBUDzOoQj
+         GEDrc2psEt7zDqLpKLZ0iMkR55oAFlF4CJd0ZDcGDPNaiYRzjjyqXNQZ4K3HoWxIOyaz
+         nF/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=TBMGHe/9NOqZ3Kh+JOrF68tVZuQ1XNvw/gFRCoIpoLM=;
+        b=J61y+/ciVtP9hFVNE+04ftenSgeWxN+T9oKLyV6+6IDiwcHU0ikeGTdwUDJ5iFREcA
+         WmtZCODiu9nDZ9T67YOLfbNAkZjKHzT0V/bIzFbi4SK7B6xxgBrzmbT/R20m+0ZqFlOV
+         2a+OluQoRh8deVl3gc1AIV6sNcDqtfTgpGjQkb2yc2P7ziTggil5uVZYCkqFHzs+KZ6F
+         vbCBA3xnsm66K+BFSwmDADS+QidqvgEJzFAqZvbgQ2zT+WgGDPZOTd2u4oYLtJzMuhZ1
+         OwC09gM2VBnlbiG+lOGYrbnX6Ij+B9QoCDqPDz/S6b44iWmfe1L4kwvQGr4PEWoe/MvI
+         jYMQ==
+X-Gm-Message-State: AOAM533UiWtS54Y0l5XquFiOpbz1P927kFo4zLLAhTO461MvS/LLuJri
+	ik3t309z4wz7BYQv97odbn1DjQ==
+X-Google-Smtp-Source: ABdhPJzMnN8B6FO9tAuqRbT/IvWGcIChRi6Gj+uHJVi4s2P8VaVhe+EpgYkhfQ7KfQ7fMyV1+QxVwA==
+X-Received: by 2002:a5d:59af:0:b0:20f:d3fc:c5ba with SMTP id p15-20020a5d59af000000b0020fd3fcc5bamr34780364wrr.436.1653943347514;
+        Mon, 30 May 2022 13:42:27 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+        by smtp.gmail.com with ESMTPSA id w13-20020a7bc74d000000b0039b17714eb2sm262253wmk.34.2022.05.30.13.42.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 May 2022 13:42:26 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: Fabien Parent <fparent@baylibre.com>,
+	Matthias Brugger <mbrugger@suse.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: pwm: add MT8365 SoC binding
-Message-ID: <20220530203101.5wq52q5pq523ewuu@pengutronix.de>
-References: <20220530202136.906407-1-fparent@baylibre.com>
+Subject: [PATCH 1/4] dt-bindings: power: Add MT8365 power domains
+Date: Mon, 30 May 2022 22:42:11 +0200
+Message-Id: <20220530204214.913251-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-In-Reply-To: <20220530202136.906407-1-fparent@baylibre.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_133116_583601_984767C4 
-X-CRM114-Status: GOOD (  20.90  )
+X-CRM114-CacheID: sfid-20220530_134228_999832_857CAD8D 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,87 +88,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2600932971693657458=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add power domains dt-bindings for MT8365.
 
---===============2600932971693657458==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ydudqqbygmakmkzx"
-Content-Disposition: inline
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ .../power/mediatek,power-controller.yaml      |  2 ++
+ include/dt-bindings/power/mt8365-power.h      | 19 +++++++++++++++++++
+ 2 files changed, 21 insertions(+)
+ create mode 100644 include/dt-bindings/power/mt8365-power.h
 
+diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+index 135c6f722091..2c6d3e4246b2 100644
+--- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
++++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+@@ -29,6 +29,7 @@ properties:
+       - mediatek,mt8186-power-controller
+       - mediatek,mt8192-power-controller
+       - mediatek,mt8195-power-controller
++      - mediatek,mt8365-power-controller
+ 
+   '#power-domain-cells':
+     const: 1
+@@ -67,6 +68,7 @@ patternProperties:
+               "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
+               "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
+               "include/dt-bindings/power/mt8195-power.h" - for MT8195 type power domain.
++              "include/dt-bindings/power/mt8365-power.h" - for MT8365 type power domain.
+         maxItems: 1
+ 
+       clocks:
+diff --git a/include/dt-bindings/power/mt8365-power.h b/include/dt-bindings/power/mt8365-power.h
+new file mode 100644
+index 000000000000..4f50997a13b4
+--- /dev/null
++++ b/include/dt-bindings/power/mt8365-power.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2022 MediaTek Inc.
++ */
++
++#ifndef _DT_BINDINGS_POWER_MT8365_POWER_H
++#define _DT_BINDINGS_POWER_MT8365_POWER_H
++
++#define MT8365_POWER_DOMAIN_MM		0
++#define MT8365_POWER_DOMAIN_CONN	1
++#define MT8365_POWER_DOMAIN_MFG		2
++#define MT8365_POWER_DOMAIN_AUDIO	3
++#define MT8365_POWER_DOMAIN_CAM		4
++#define MT8365_POWER_DOMAIN_DSP		5
++#define MT8365_POWER_DOMAIN_VDEC	6
++#define MT8365_POWER_DOMAIN_VENC	7
++#define MT8365_POWER_DOMAIN_APU		8
++
++#endif /* _DT_BINDINGS_POWER_MT8365_POWER_H */
+-- 
+2.36.1
 
---ydudqqbygmakmkzx
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, May 30, 2022 at 10:21:34PM +0200, Fabien Parent wrote:
-> Add binding documentation for the MT8365 SoC.
->=20
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
->  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Doc=
-umentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> index 25ed214473d7..ac5c58bbb22d 100644
-> --- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-> @@ -8,6 +8,7 @@ Required properties:
->     - "mediatek,mt7628-pwm": found on mt7628 SoC.
->     - "mediatek,mt7629-pwm": found on mt7629 SoC.
->     - "mediatek,mt8183-pwm": found on mt8183 SoC.
-> +   - "mediatek,mt8365-pwm": found on mt8365 SoC.
->     - "mediatek,mt8516-pwm": found on mt8516 SoC.
->   - reg: physical base address and length of the controller's registers.
->   - #pwm-cells: must be 2. See pwm.yaml in this directory for a descripti=
-on of
-> @@ -17,6 +18,7 @@ Required properties:
->                  has no clocks
->     - "top": the top clock generator
->     - "main": clock used by the PWM core
-> +   - "pwm1-3": the five per PWM clocks for mt8365
-
-I think you either want s/3/5/ or s/five/three/ here?!
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---ydudqqbygmakmkzx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmKVKYMACgkQwfwUeK3K
-7AlmTAf+IC1ZakoG/AbDBiw+ISsvysZi3oDGLTm43optth/vSyX8NRewez5UcedF
-lhD+yb619mm33nUfifszc601C2x4L47zLAVRSyVoMn2XiaDporeX17CbcCyq1tDO
-yb7dTFuQEdfYr+TbvvVp/5UkCq6cCNS0yojfqxcP+WmXVDD1GsRnzH5BR2dT4Ofy
-ynvcYyx8d7wroDefw9IMs01DdPDrXdA7qa6NcSBAzwrAKPRAOVSNvn8ULuE8Op8Y
-DyG+WasQYyCDO/k3grKxatZ/ht7OJKObTC+VSbhBucC6yTxYPtZp7tTyLfNR4ReJ
-q09ZfRsmPbRLgEVf+5phxmbaevk7uw==
-=Gzed
------END PGP SIGNATURE-----
-
---ydudqqbygmakmkzx--
-
-
---===============2600932971693657458==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============2600932971693657458==--
-
