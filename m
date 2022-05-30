@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0AC1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 12:35:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 664D7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 12:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nuL/RkzaGiiOPI//A9Zqgal6TiCXS35wksMPJTVt1GE=; b=rMVthMPw+BOJBV
-	DyOBr5gcR/pvXKpzr4fFEQ+3jRn+hv6hRhiOBw4ZazRSrfDkHa5e9Xd9GsupJQNdnsG0jAICG8E8o
-	6MVdWfThbaltLjx9upS0HZkMbGDImF57xIVR0i3mVFGqjBlvo7FuteP7yHSmpeJhVgJxl7FGJEak0
-	WnsPMGUzHyhtaugEkjU6uqY32H2o/SCW+lPKWCoatD5JyFEeqw6mKM7CSfCqDtE1QFJwu/SCYXPnR
-	mCp8OOP0XqbQ5NAnbBYl7qETTn4VgPmGDCgT4L1+eJjKchW8M+Cs182T/SxsaUemayEd4+OarR0Cz
-	cTVge3i6irViz7iZhvJA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xeDK4QbVd3CT5XBgrfPXcBRcd28kx1ORtJ3+YaTf7eI=; b=RigYh+FEjIk0tQ
+	7bFnqlhKnzCUg2IxIDwaNkH9bKRoYCLBawxtJ/oitOPVQWYDKIUnmGYOd9Y4RNG6bGip0WMGKCNu3
+	s4v6V2briTEqfaLlTtxVz+2iXoJ32dExZ15a/rk0ES8+lNL4AJinAA5Tz6adSVAyFwsxV1ATpvOMr
+	modU+9Hm6LTkgEOPI2lroqSmRWjS3Y+Xp8M0eBkfSsFKPkjYkp1SagsPeb0dE3VrYAY2yOR+ypRYx
+	pVCEKxABF8A2af7BNC4inKPRYtuU5AsHlMF9vsR3K8BnuDqO1rMHYinOD7Hs2NE3xrUeKcsy1OGFl
+	rcOAc3HmrOldqc8e+VEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvec2-006WRC-UU; Mon, 30 May 2022 12:35:10 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1nvec6-006WRi-Is; Mon, 30 May 2022 12:35:14 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nveby-006WPx-1M
-	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 12:35:08 +0000
-Received: by mail-wr1-x431.google.com with SMTP id h5so6375640wrb.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 05:35:04 -0700 (PDT)
+	id 1nveby-006WPp-3s
+	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 12:35:10 +0000
+Received: by mail-wr1-x429.google.com with SMTP id q7so3495080wrg.5
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 05:35:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=lbYsntMLq1GN0TWediUrrDdKB95gK6V8mOFIJ/plIGA=;
-        b=6PIvfuSRJgpUpEkUtolL+elU452K0LIs/Lk0e8ySI1W8R7XRUH431mK1hLv3cpfqv0
-         2ZivpNy+gpcusmBB8mk0Ew4hQQzierrs2JMj4MSTb5RaE1pnm5r4BB+rMCLfpOATrfQ1
-         fdgRBLMqOOfK4fOdnWAONoFqqYZa441FyfaRHJHwcNmWWpMHldEdkBWgLnLLoV6jgILp
-         UhF1HWrNlnLykhYQKA9UwLBePuuFaE0k468BQeVRY9pdlVrIjvnbtqfZHqI9FifYwY0d
-         RBeEm4ojUdqz9Xr9zBAlKsKLKwezW2a8pkmUhSR3NeD6xwpo7+xnIR9BI4/jC0QQ716W
-         7sXw==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=4ZpnujIPcolEhKbIJZUfooL6oIUs8mzgT5bxqd2OLwk=;
+        b=civVMl7MXBedL2Fy/RdMR2hvoMq61sw/bSOuRyUnGfnpbQlu1B1vaETDk2eoLtMg61
+         xxvEM0CcGiuHnAv6EMTxHCVekfHJ443IW5HAHw1nPPodMQDAgQb/Z8wkdyR2n2oVdc02
+         rEchF77XObT5skBCADYM/9HeAkGoea+j9J1auHdrH25hfsrcuBh06zz0PQOUIkBpRAHo
+         9mlga4VSDuJ7sjz7UYdmr50MV3YV9+ezDISlXifrMQirUadM1ssMASjkx+97cXDUuyeb
+         JhphSXc6/ervgN2b3jAzZSnPdDVaaUjM91vEkyX+Un5qEiD2lJPkDNrYMhf/x2hF+OXy
+         7cRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=lbYsntMLq1GN0TWediUrrDdKB95gK6V8mOFIJ/plIGA=;
-        b=Wimza5ZhvRZ38INBDzjtg3iKRyPInitpU1MLR9oD0h0RludO+qHiLtkrhX/SS8Z5C1
-         YNCETsV9C72fcvRF5jsei65ynRUjPy14hpaDzjH9q1qNtJ/Br8vRRI5Y86vbowhpHetN
-         Iif976GgMa1F9jaEBkPotbkIcY/7rRBsN9/d56l3Cit1t2R9sjQmEXRO76uRtsT9Ug5o
-         kZnJuejLeyp1H4v7CrCt1kEYC1CJQ04mAmrDO9r0RI0ll7QB6jVPdgMdOkNs1aIn/Y5r
-         S+vT27wBcL6gWkgV0Gpay5bA50LdnOftb2YpwyoICkw/9WYXwV2wy6+idf1g4bQL1S21
-         NzLg==
-X-Gm-Message-State: AOAM532q77HxbrGp5X6pSJ7XecwoUHPyKLIazW6oUC9ro2Z4oToB9xR2
-	LIhwml6Jpw6fUZCu1y0GItSsbQ==
-X-Google-Smtp-Source: ABdhPJylyu+I3dilKUdZVnw2PpnKf2fn0YNljSSTog9+EycAuB0MX1E9Uhj466cMXJhLxItBU/M5Yg==
-X-Received: by 2002:a5d:648a:0:b0:210:2c59:a07a with SMTP id o10-20020a5d648a000000b002102c59a07amr7301097wri.195.1653914103914;
-        Mon, 30 May 2022 05:35:03 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=4ZpnujIPcolEhKbIJZUfooL6oIUs8mzgT5bxqd2OLwk=;
+        b=JaJmZTidJPT7gTDBloFoX16lHppYuJhHwag8o0SkjOIcZHnpO1/sX2RMM77DW70N+c
+         J5tCzzTY1vvpZvMHpKu31z+5s2TDkY+xUt1PTrORH/p8W93Gtd84QKigELw0OnQSWisF
+         o7alLJeAkK3LrE7tKxYAcazPPgrNrVItMKltjHii+BiW9SiESVnamFYJm8tY7FLAuiVp
+         pgpp233CLQECFnAKHVB5vOtZcyD8dZzlNE+tjsnddbaf4uT3WMAyCM3ysRR8MLvPFVuo
+         sTXR+Cv4xLDZUj6a6uYPFsJWoTbjnIQBMFmhApQHzK03V9/dk8e6u7ObSjIafet+cdxc
+         lFqA==
+X-Gm-Message-State: AOAM5311CogeG0JA8X/g4AInV4lI504hGsZxdebr8jAjU6AUe/uSq9LH
+	S2sMAfemRPqgPLvgqyqqaWKteQ==
+X-Google-Smtp-Source: ABdhPJxvnP7l8SO28NpVJS5NOclYzbNoRLMyWaTv8lhRa6I5+hFmHhKsWwpdaDK81i85ecqujt0hRA==
+X-Received: by 2002:a05:6000:1611:b0:210:28cc:65dd with SMTP id u17-20020a056000161100b0021028cc65ddmr8793920wrb.700.1653914102514;
+        Mon, 30 May 2022 05:35:02 -0700 (PDT)
 Received: from helium.lan ([88.160.162.107])
-        by smtp.gmail.com with ESMTPSA id o3-20020a5d47c3000000b0020d0cdbf7eesm9380895wrc.111.2022.05.30.05.35.02
+        by smtp.gmail.com with ESMTPSA id o3-20020a5d47c3000000b0020d0cdbf7eesm9380895wrc.111.2022.05.30.05.35.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 May 2022 05:35:03 -0700 (PDT)
+        Mon, 30 May 2022 05:35:01 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Sean Wang <sean.wang@kernel.org>,
 	Linus Walleij <linus.walleij@linaro.org>,
@@ -67,16 +67,14 @@ Cc: Fabien Parent <fparent@baylibre.com>,
 	linux-gpio@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] pinctrl: mediatek: mt8365: use MTK_PINCTRL_MODE_SET_CLR_BROKEN quirk
-Date: Mon, 30 May 2022 14:34:25 +0200
-Message-Id: <20220530123425.689459-2-fparent@baylibre.com>
+Subject: [PATCH 1/2] pinctrl: mediatek: common: add quirk for broken set/clr modes
+Date: Mon, 30 May 2022 14:34:24 +0200
+Message-Id: <20220530123425.689459-1-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220530123425.689459-1-fparent@baylibre.com>
-References: <20220530123425.689459-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_053506_342916_CD6B3297 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20220530_053506_343032_2BD52CD6 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,26 +91,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MT8365, the GPIO64 modes cannot be set using the SET/CLR register.
-Use the MTK_PINCTRL_MODE_SET_CLR_BROKEN quirk to workaround it.
+On MT8365, the SET/CLR of the mode is broken and some pin modes won't
+be set correctly. Add a quirk for such SoCs, so that instead of using
+the SET/CLR register use the main R/W register
+to read/update/write the modes.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt8365.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 46 ++++++++++++-------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  3 ++
+ 2 files changed, 33 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-index 57f37a294063..a49fa685f5f5 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-@@ -454,6 +454,7 @@ static const struct mtk_pinctrl_devdata mt8365_pinctrl_data = {
- 		.ap_num = 160,
- 		.db_cnt = 160,
- 	},
-+	.quirks = MTK_PINCTRL_MODE_SET_CLR_BROKEN,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index f25b3e09386b..156627d9c552 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -330,23 +330,37 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
+ 		return -EINVAL;
+ 	}
+ 
+-	bit = BIT(pin & pctl->devdata->mode_mask);
+-	if (enable)
+-		reg_pullen = SET_ADDR(mtk_get_port(pctl, pin) +
+-			pctl->devdata->pullen_offset, pctl);
+-	else
+-		reg_pullen = CLR_ADDR(mtk_get_port(pctl, pin) +
+-			pctl->devdata->pullen_offset, pctl);
+-
+-	if (isup)
+-		reg_pullsel = SET_ADDR(mtk_get_port(pctl, pin) +
+-			pctl->devdata->pullsel_offset, pctl);
+-	else
+-		reg_pullsel = CLR_ADDR(mtk_get_port(pctl, pin) +
+-			pctl->devdata->pullsel_offset, pctl);
++	if (pctl->devdata->quirks & MTK_PINCTRL_MODE_SET_CLR_BROKEN) {
++		bit = pin & pctl->devdata->mode_mask;
++		reg_pullen = mtk_get_port(pctl, pin) +
++				pctl->devdata->pullen_offset;
++		reg_pullsel = mtk_get_port(pctl, pin) +
++				pctl->devdata->pullsel_offset;
++
++		regmap_update_bits(mtk_get_regmap(pctl, pin), reg_pullen,
++			BIT(bit), enable << bit);
++		regmap_update_bits(mtk_get_regmap(pctl, pin), reg_pullsel,
++			BIT(bit), isup << bit);
++	} else {
++		bit = BIT(pin & pctl->devdata->mode_mask);
++		if (enable)
++			reg_pullen = SET_ADDR(mtk_get_port(pctl, pin) +
++				pctl->devdata->pullen_offset, pctl);
++		else
++			reg_pullen = CLR_ADDR(mtk_get_port(pctl, pin) +
++				pctl->devdata->pullen_offset, pctl);
++
++		if (isup)
++			reg_pullsel = SET_ADDR(mtk_get_port(pctl, pin) +
++				pctl->devdata->pullsel_offset, pctl);
++		else
++			reg_pullsel = CLR_ADDR(mtk_get_port(pctl, pin) +
++				pctl->devdata->pullsel_offset, pctl);
++
++		regmap_write(mtk_get_regmap(pctl, pin), reg_pullen, bit);
++		regmap_write(mtk_get_regmap(pctl, pin), reg_pullsel, bit);
++	}
+ 
+-	regmap_write(mtk_get_regmap(pctl, pin), reg_pullen, bit);
+-	regmap_write(mtk_get_regmap(pctl, pin), reg_pullsel, bit);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+index 6fe8564334c9..cc0dce8818c6 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+@@ -22,6 +22,8 @@
+ 
+ #define MTK_PINCTRL_NOT_SUPPORT	(0xffff)
+ 
++#define MTK_PINCTRL_MODE_SET_CLR_BROKEN   BIT(0)
++
+ struct mtk_desc_function {
+ 	const char *name;
+ 	unsigned char muxval;
+@@ -271,6 +273,7 @@ struct mtk_pinctrl_devdata {
+ 	unsigned int mode_mask;
+ 	unsigned int mode_per_reg;
+ 	unsigned int mode_shf;
++	unsigned long quirks;
  };
  
- static const struct of_device_id mt8365_pctrl_match[] = {
+ struct mtk_pinctrl {
 -- 
 2.36.1
 
