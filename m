@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52FC5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 08:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5215C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 08:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uATemB/LcblbnhAE87HyH5qDW4T/p6KKbD8ogM+X+Qo=; b=nZxNzkhzNpj3Xt
-	ZFqJJQd66ZWL6l1JoO8sq5lFZC/CO5OTsE0O+orMa6F3PNhquqEU3w+LLS1m2A1svmTChm5bey9wD
-	/ejG70ZZZfktXUqVwwE9BFwH+u9xsBAE+wGavtd5pNhxn8CUxLtR3UDpn6Ker21AwDgTtyWtbXnfE
-	yTj2CRe65swrlUM52SJsPfZRCLOh71OAjX3gABc4hYFfBYr3FFv83LpiTyNHyatoSo4ThVzYdDMfc
-	Vbnl7LTgE5vFNyXIKrlD9M3qZXMRM9w8JkzC6bgmyg7al7lS3WFlyihKs7VC2dgrqOjzBeKpxud38
-	mxD2iDovsEfETwb1Xsxw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LGPHBJr/245jyOvr5Q7Re/1tNg3oIoog+D3MNzJCYfM=; b=SM283Gk4WEJXRb
+	G8xwIaq+fBz+DR/bRjpE9/GsAUiOXMkd90KnZaqD+H//ZKt3ErkrTtohBTWW9A06/fTgabusz3XHe
+	4+YckfiPTLp+fWmM7cI+wfBvz7YO1PE7iVnmDCB5CmiksXdSaftNZ5PWVrHnvX5T6fQy1vEHfeGJM
+	LEnu85bVh6w3B9OHkJgwx5wtttuF52WqYVg4agCW5/98xBnpEWcm4wjfSdVBQ+xET+VxJkuVcUXrI
+	5lAizlRseJ+cS59YICDRyZLEYcHqiZAhS9pofP493Ia6CPxhc3EJrJwy7aQm1kRHJw/QboWOCR+gN
+	EiO+MQeI15C9JlJOWknQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvaKP-005on4-HS; Mon, 30 May 2022 08:00:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nvaUy-005r5L-2v; Mon, 30 May 2022 08:11:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvaKD-005ojM-UD; Mon, 30 May 2022 08:00:31 +0000
-X-UUID: 1e3fa6d2436e4a18bdedb033934b1f29-20220530
+	id 1nvaUo-005r3M-0w; Mon, 30 May 2022 08:11:27 +0000
+X-UUID: 21387eaa9638454c918433ee6b7220be-20220530
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:d77085a6-ec4d-4f57-befc-6605eb7cfec1,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:287ec0b8-3c45-407b-8f66-25095432a27a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:194c601b-827d-4cf0-ab35-368b4c564e51,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09,CLOUDID:6349fd47-4fb1-496b-8f1d-39e733fed1ea,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: 1e3fa6d2436e4a18bdedb033934b1f29-20220530
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
+X-UUID: 21387eaa9638454c918433ee6b7220be-20220530
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2055297545; Mon, 30 May 2022 01:00:26 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+	with ESMTP id 1168845449; Mon, 30 May 2022 01:11:17 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 30 May 2022 00:50:24 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 30 May 2022 15:50:23 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 30 May 2022 15:50:22 +0800
-Message-ID: <2c88fd4c308e86536d5996b3f32f68d05d452e23.camel@mediatek.com>
-Subject: Re: [PATCH v10 08/21] drm/mediatek: dpi: implement a swap_input
- toggle in SoC config
-From: CK Hu <ck.hu@mediatek.com>
-To: Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <linux-fbdev@vger.kernel.org>
-Date: Mon, 30 May 2022 15:50:23 +0800
-In-Reply-To: <20220523104758.29531-9-granquet@baylibre.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <20220523104758.29531-9-granquet@baylibre.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.0.1497.2; Mon, 30 May 2022 01:11:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 30 May 2022 16:11:14 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 30 May 2022 16:11:13 +0800
+From: <yf.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
+ SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
+	<Yong.Wu@mediatek.com>
+Subject: [PATCH v7 0/2] iommu/mediatek: TTBR up to 35bit support
+Date: Mon, 30 May 2022 16:04:27 +0800
+Message-ID: <20220530080432.29123-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_010030_010905_6CF623EA 
-X-CRM114-Status: GOOD (  17.19  )
+X-CRM114-CacheID: sfid-20220530_011126_105314_0246800D 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,103 +79,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Guillaume:
+This patchset adds MediaTek TTBR up to 35bit support for single normal zone.
 
+Changes in v7:
+- Update patch and commit message
+  - Extend arm_v7s_cfg.ttbr to u64.
+  - Move the special ttbr logical into mtk_iommu.c.
+  - Update commit message for single normal zone.
 
-On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
-> Adds a bit of flexibility to support SoCs without swap_input support
-> 
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++++++++++---
->  1 file changed, 11 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 545a1337cc89..454f8563efae 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -126,6 +126,7 @@ struct mtk_dpi_conf {
->  	const u32 *output_fmts;
->  	u32 num_output_fmts;
->  	bool is_ck_de_pol;
-> +	bool swap_input_support;
->  	const struct mtk_dpi_yc_limit *limit;
->  };
->  
-> @@ -378,18 +379,21 @@ static void mtk_dpi_config_color_format(struct
-> mtk_dpi *dpi,
->  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
->  		mtk_dpi_config_yuv422_enable(dpi, false);
->  		mtk_dpi_config_csc_enable(dpi, true);
-> -		mtk_dpi_config_swap_input(dpi, false);
-> +		if (dpi->conf->swap_input_support)
-> +			mtk_dpi_config_swap_input(dpi, false);
->  		mtk_dpi_config_channel_swap(dpi,
-> MTK_DPI_OUT_CHANNEL_SWAP_BGR);
->  	} else if ((format == MTK_DPI_COLOR_FORMAT_YCBCR_422) ||
->  		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
->  		mtk_dpi_config_yuv422_enable(dpi, true);
->  		mtk_dpi_config_csc_enable(dpi, true);
-> -		mtk_dpi_config_swap_input(dpi, true);
-> +		if (dpi->conf->swap_input_support)
-> +			mtk_dpi_config_swap_input(dpi, true);
+Changes in v6:
+- Update patch: gfp_l1 = GFP_KERNEL | __GFP_ZERO;
+- Update commit message for single normal zone.
 
-As [1], please keep in touch with Mediatek engineer.
+Changes in v5:
+- Only update message-ID.
 
-Regards,
-CK
+Changes in v4:
+- Fix build test WARNING: use GENMASK_ULL replace GENMASK.
 
-[1] 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220218145437.18563-8-granquet@baylibre.com/
+Changes in v3:
+- Add version changes description, there is No new code change in V3.
 
->  		mtk_dpi_config_channel_swap(dpi,
-> MTK_DPI_OUT_CHANNEL_SWAP_RGB);
->  	} else {
->  		mtk_dpi_config_yuv422_enable(dpi, false);
->  		mtk_dpi_config_csc_enable(dpi, false);
-> -		mtk_dpi_config_swap_input(dpi, false);
-> +		if (dpi->conf->swap_input_support)
-> +			mtk_dpi_config_swap_input(dpi, false);
->  		mtk_dpi_config_channel_swap(dpi,
-> MTK_DPI_OUT_CHANNEL_SWAP_RGB);
->  	}
->  }
-> @@ -808,6 +812,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
->  	.output_fmts = mt8173_output_fmts,
->  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
->  	.is_ck_de_pol = true,
-> +	.swap_input_support = true,
->  	.limit = &mtk_dpi_limit,
->  };
->  
-> @@ -819,6 +824,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
->  	.output_fmts = mt8173_output_fmts,
->  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
->  	.is_ck_de_pol = true,
-> +	.swap_input_support = true,
->  	.limit = &mtk_dpi_limit,
->  };
->  
-> @@ -829,6 +835,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
->  	.output_fmts = mt8183_output_fmts,
->  	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
->  	.is_ck_de_pol = true,
-> +	.swap_input_support = true,
->  	.limit = &mtk_dpi_limit,
->  };
->  
-> @@ -839,6 +846,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
->  	.output_fmts = mt8173_output_fmts,
->  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
->  	.is_ck_de_pol = true,
-> +	.swap_input_support = true,
->  	.limit = &mtk_dpi_limit,
->  };
->  
+Changes in v2:
+- Update patch and commit message
+  - Add Level 1 pgtable PA up to 35bit.
+  - This is new feature, remove stable@vger.kernel.org
+  - Update commit message.
+
+Ning Li (2):
+  iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
+  iommu/mediatek: Allow page table PA up to 35bit
+
+ drivers/iommu/io-pgtable-arm-v7s.c | 48 +++++++++++++++++++++---------
+ drivers/iommu/mtk_iommu.c          | 29 +++++++++++++++---
+ include/linux/io-pgtable.h         | 17 +++++++----
+ 3 files changed, 70 insertions(+), 24 deletions(-)
+
 
 
 _______________________________________________
