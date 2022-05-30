@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F0ACC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 14:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D5E0C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 14:35:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oeBr6fd31YXRNbEMLoF54OAyLbar6aPxZiIDX1pIzGc=; b=vnBvVe0qT08NsJ
-	+FmuhqMgnVRFF7pmPDFLPlTSYGimq8hCHbY7iVDH/uDKkWII0LCnN/36YpqSKW/342ZR5oVRH/tJH
-	5xF7eizv2+25HcvqWDaSjeTLhIMUDv+5j0W0btv5qCWtB0KLTo29KjXU9hrqDvkXBLTTqY8rWimNr
-	V5c01DycwbdQzQnDZWnfvu2CNCtulrYlX7ChfyAqcygBbgLUatKy8S9uFysBzxvZSamKqYGjToiJ6
-	xiEkxBUDslSGYXwzAdlZaAxaj6S1ViOvCee9lp/kXx3Y1c8OMd0OzctIIlyLJEnOup5LFo+dchHNj
-	kIFKH5wq3ld1dOQ+0WPg==;
+	List-Owner; bh=mRRJpIC+CUp5ZBYoE+ieeIsfY69tJagDAwwCqy08MtQ=; b=vTXaFHipxxu4e6
+	TBWFG9MiotEvqQNJETeS937tSc+MokylVFOBF02Xz4saO100pdq13A/hT2oJIjv6EmCPF1kxyQCox
+	diAEhAozs37ezKSETGX3to8638JHira1n7xAvqre50sW4Hms7R7qkQ5LuElMfcvyJ0yzxDbZf7+Hm
+	LXjiDp7xV+6p0mRAU2RwQh1MHOaRjwQuIcv8bGQtrPhg3jYYsHS0ed1J/nSaWQUQ+cGndxKgYjKqo
+	tCyQQflQ66CH9f144TYGvUlsckbM+WBuooepwn3O0NPCZH4uqIE9i+jkVW9fiksU/dAR5ImvYgFMg
+	s/R4esGU+u+M06pFr1YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvfzL-0071LI-Aq; Mon, 30 May 2022 14:03:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nvgUT-007GVc-UO; Mon, 30 May 2022 14:35:30 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvff5-006pSb-Pj; Mon, 30 May 2022 13:42:25 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C7CF560FC9;
-	Mon, 30 May 2022 13:42:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22962C3411E;
-	Mon, 30 May 2022 13:42:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1653918141;
-	bh=z0nAyk/VU0ksVU4YbjsvPBgUNPDMbbrVaHL11Of9pZI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tcXUM9Mt00yqROSr4JfU7kluOvUjdAknUI2SlVrSKG3DEbo6oBNNqurQYE5X8MSXg
-	 gQxUx9jP8QhM43z1uz6cfOQUhN/KzDzt2k3rnsvsWuaG0uwYPvfkg2K6TUqVIbXifo
-	 VQznQaLbo3RLRYCQ3ghfP4w/UMwAIwKW34fsTyCvrsCXmvKUroeEVQurnNnl5TJkVq
-	 FvbomnConRUsXi3coHcXUWikpQT3QHLQz8rgwxwq0DjfiKdxJQrAsbxV7DalEo/8j1
-	 IXEb44q5+DLBbcuGv2kUX6ryAald9QmtkF+pTpBG+/kRUvl/ESW7pNbmDi62BAtXu8
-	 cOjDI3Q0pzQuA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	=?UTF-8?q?Thibaut=20VAR=C3=88NE?= <hacks+kernel@slashdirt.org>,
-	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	kvalo@kernel.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	Bo.Jiao@mediatek.com,
-	sujuan.chen@mediatek.com,
-	shayne.chen@mediatek.com,
-	greearb@candelatech.com,
-	sean.wang@mediatek.com,
-	deren.wu@mediatek.com,
-	xing.song@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
+	id 1nvfs0-006xDf-QZ
+	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 13:55:47 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id s24so7426299wrb.10
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 06:55:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=Xw66Rm/stx5LdYx2rVfwLOupkCkZYlXybZKzqQavPCw=;
+        b=tcCeuGat82kxq/tRnolJqUxQecH9kOW5WFXPEM5DGqSbcF+ZnIHNmjfaZY7/UJTtoU
+         E+s5JYjoWhMxM7k7Jjip+G26kUqlbZXkZa+XpHn6By8vKcycMQT3nvxt5CeEjyXR59om
+         hXBEkp7JCEAJFfytoYtsnxxEv/J32OEIGXqHy/DYTpxaQnEteeVtOU5zIj0Slu2tWTo3
+         SZvPX/X5iNoNSoDQVgYCsImovxymg1hBSmTFRfr5g7ZdeIyyun3UEYPuPXuNdiVATbc0
+         XybcHs5DB/AW8/zTwWYDDe0KijSDUalJqoq4aM06KqKI3JShKSrG5xTDRmDsLr/QbNVg
+         LX3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=Xw66Rm/stx5LdYx2rVfwLOupkCkZYlXybZKzqQavPCw=;
+        b=ZfbyjSqge1CNH60pgbWcSnIhZm+smJWSMnqL2+2V4b+azRzNOSy6XINSIpxbXmloKi
+         kIljqWfsgpjXwhZca05oRCy35te8x4uNUbUZtn/B9icxRj9o2CxePgIMLEmNmi/XoWSi
+         XZawoPi7Wg05dxJ64bpakEF7LnBRDVC05G3z9w35YGY7jW9lD1V0ccExSymYO1xS1p5V
+         8/oNNBaDCOMJ9PygsjdIy4VdyWYWdB0Q3q0eyuEKgkVqzNUcDvaELAPKXCH55LnezHQt
+         7z8D5jc7U1ium5bJSfZ6tGA6pXIu4rXJWEklzbYT1TGsgVvA77Gk6czhBjOrrP/dl7dG
+         dDKA==
+X-Gm-Message-State: AOAM533/A2TmkUYD1WmnYPpAWnUYb8WhEXuCVnRaoi+md60kft3QkeXC
+	4ns1xp8Kfmk3rq/dwxKMFlPLsHrFW+LGeg==
+X-Google-Smtp-Source: ABdhPJyZArKkXHwklacwoXIj8QPwSo171Bv6oYmc4UVF5gdv7tBrH85atnkzcmtB3PGbgTH3iciK+w==
+X-Received: by 2002:a5d:5743:0:b0:210:dd:98c8 with SMTP id q3-20020a5d5743000000b0021000dd98c8mr20932592wrw.259.1653918943273;
+        Mon, 30 May 2022 06:55:43 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+        by smtp.gmail.com with ESMTPSA id w9-20020adfee49000000b0020cfed0bb7fsm9214856wro.53.2022.05.30.06.55.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 May 2022 06:55:42 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 075/109] mt76: fix encap offload ethernet type check
-Date: Mon, 30 May 2022 09:37:51 -0400
-Message-Id: <20220530133825.1933431-75-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220530133825.1933431-1-sashal@kernel.org>
-References: <20220530133825.1933431-1-sashal@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 2/3] soc: mediatek: pwrap: add support for sys & tmr clocks
+Date: Mon, 30 May 2022 15:55:21 +0200
+Message-Id: <20220530135522.762560-2-fparent@baylibre.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220530135522.762560-1-fparent@baylibre.com>
+References: <20220530135522.762560-1-fparent@baylibre.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_064223_999154_765B1649 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20220530_065545_140428_88E16AB5 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,54 +85,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogRmVsaXggRmlldGthdSA8bmJkQG5iZC5uYW1lPgoKWyBVcHN0cmVhbSBjb21taXQgYmM5
-OGU3ZmRkODBkMjE1YjRiNTVlZWEwMDEwMjMyMzFlYjhjZTEyZSBdCgpUaGUgZHJpdmVyIG5lZWRz
-IHRvIGNoZWNrIGlmIHRoZSBmb3JtYXQgaXMgODAyLjIgdnMgODAyLjMgaW4gb3JkZXIgdG8gc2V0
-CmEgdHggZGVzY3JpcHRvciBmbGFnLiBza2ItPnByb3RvY29sIGNhbid0IGJlIHVzZWQsIHNpbmNl
-IGl0IG1heSBub3QgYmUgcHJvcGVybHkKaW5pdGlhbGl6ZWQgZm9yIHBhY2tldHMgY29taW5nIGlu
-IGZyb20gYSBwYWNrZXQgc29ja2V0LgpGaXggbWlzZGV0ZWN0aW9uIGJ5IGNoZWNraW5nIHRoZSBl
-dGhlcnR5cGUgZnJvbSB0aGUgc2tiIGRhdGEgaW5zdGVhZAoKUmVwb3J0ZWQtYnk6IFRoaWJhdXQg
-VkFSw4hORSA8aGFja3Mra2VybmVsQHNsYXNoZGlydC5vcmc+ClNpZ25lZC1vZmYtYnk6IEZlbGl4
-IEZpZXRrYXUgPG5iZEBuYmQubmFtZT4KU2lnbmVkLW9mZi1ieTogU2FzaGEgTGV2aW4gPHNhc2hh
-bEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3
-OTE1L21hYy5jIHwgNCArKystCiBkcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210
-NzkyMS9tYWMuYyB8IDQgKysrLQogMiBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDIg
-ZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsv
-bXQ3Ni9tdDc5MTUvbWFjLmMgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210
-NzkxNS9tYWMuYwppbmRleCA3NjkxMjkyNTI2ZTAuLmE4YTBlNmFmNTFmOCAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MTUvbWFjLmMKKysrIGIvZHJp
-dmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MTUvbWFjLmMKQEAgLTc5OSw2ICs3
-OTksNyBAQCBtdDc5MTVfbWFjX3dyaXRlX3R4d2lfODAyMyhzdHJ1Y3QgbXQ3OTE1X2RldiAqZGV2
-LCBfX2xlMzIgKnR4d2ksCiAKIAl1OCB0aWQgPSBza2ItPnByaW9yaXR5ICYgSUVFRTgwMjExX1FP
-U19DVExfVElEX01BU0s7CiAJdTggZmNfdHlwZSwgZmNfc3R5cGU7CisJdTE2IGV0aGVydHlwZTsK
-IAlib29sIHdtbSA9IGZhbHNlOwogCXUzMiB2YWw7CiAKQEAgLTgxMiw3ICs4MTMsOCBAQCBtdDc5
-MTVfbWFjX3dyaXRlX3R4d2lfODAyMyhzdHJ1Y3QgbXQ3OTE1X2RldiAqZGV2LCBfX2xlMzIgKnR4
-d2ksCiAJdmFsID0gRklFTERfUFJFUChNVF9UWEQxX0hEUl9GT1JNQVQsIE1UX0hEUl9GT1JNQVRf
-ODAyXzMpIHwKIAkgICAgICBGSUVMRF9QUkVQKE1UX1RYRDFfVElELCB0aWQpOwogCi0JaWYgKGJl
-MTZfdG9fY3B1KHNrYi0+cHJvdG9jb2wpID49IEVUSF9QXzgwMl8zX01JTikKKwlldGhlcnR5cGUg
-PSBnZXRfdW5hbGlnbmVkX2JlMTYoJnNrYi0+ZGF0YVsxMl0pOworCWlmIChldGhlcnR5cGUgPj0g
-RVRIX1BfODAyXzNfTUlOKQogCQl2YWwgfD0gTVRfVFhEMV9FVEhfODAyXzM7CiAKIAl0eHdpWzFd
-IHw9IGNwdV90b19sZTMyKHZhbCk7CmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC93aXJlbGVzcy9t
-ZWRpYXRlay9tdDc2L210NzkyMS9tYWMuYyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVr
-L210NzYvbXQ3OTIxL21hYy5jCmluZGV4IDUwMjRkZGYwN2NiYy4uYmVmOGQ0YTc2ZWQ5IDEwMDY0
-NAotLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9tYWMuYwor
-KysgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9tYWMuYwpAQCAt
-NjgxLDYgKzY4MSw3IEBAIG10NzkyMV9tYWNfd3JpdGVfdHh3aV84MDIzKHN0cnVjdCBtdDc5MjFf
-ZGV2ICpkZXYsIF9fbGUzMiAqdHh3aSwKIHsKIAl1OCB0aWQgPSBza2ItPnByaW9yaXR5ICYgSUVF
-RTgwMjExX1FPU19DVExfVElEX01BU0s7CiAJdTggZmNfdHlwZSwgZmNfc3R5cGU7CisJdTE2IGV0
-aGVydHlwZTsKIAlib29sIHdtbSA9IGZhbHNlOwogCXUzMiB2YWw7CiAKQEAgLTY5NCw3ICs2OTUs
-OCBAQCBtdDc5MjFfbWFjX3dyaXRlX3R4d2lfODAyMyhzdHJ1Y3QgbXQ3OTIxX2RldiAqZGV2LCBf
-X2xlMzIgKnR4d2ksCiAJdmFsID0gRklFTERfUFJFUChNVF9UWEQxX0hEUl9GT1JNQVQsIE1UX0hE
-Ul9GT1JNQVRfODAyXzMpIHwKIAkgICAgICBGSUVMRF9QUkVQKE1UX1RYRDFfVElELCB0aWQpOwog
-Ci0JaWYgKGJlMTZfdG9fY3B1KHNrYi0+cHJvdG9jb2wpID49IEVUSF9QXzgwMl8zX01JTikKKwll
-dGhlcnR5cGUgPSBnZXRfdW5hbGlnbmVkX2JlMTYoJnNrYi0+ZGF0YVsxMl0pOworCWlmIChldGhl
-cnR5cGUgPj0gRVRIX1BfODAyXzNfTUlOKQogCQl2YWwgfD0gTVRfVFhEMV9FVEhfODAyXzM7CiAK
-IAl0eHdpWzFdIHw9IGNwdV90b19sZTMyKHZhbCk7Ci0tIAoyLjM1LjEKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5n
-IGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+MT8365 requires an extra 2 clocks to be enabled to behave correctly.
+Add support these 2 clocks, they are made optional since they seem to
+be present only on MT8365.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 36 ++++++++++++++++++++++++----
+ 1 file changed, 32 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index bf39a64f3ecc..8dea5e14d73e 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -1163,6 +1163,8 @@ struct pmic_wrapper {
+ 	const struct pwrap_slv_type *slave;
+ 	struct clk *clk_spi;
+ 	struct clk *clk_wrap;
++	struct clk *clk_sys;
++	struct clk *clk_tmr;
+ 	struct reset_control *rstc;
+ 
+ 	struct reset_control *rstc_bridge;
+@@ -2250,6 +2252,20 @@ static int pwrap_probe(struct platform_device *pdev)
+ 		return PTR_ERR(wrp->clk_wrap);
+ 	}
+ 
++	wrp->clk_sys = devm_clk_get_optional(wrp->dev, "sys");
++	if (IS_ERR(wrp->clk_sys)) {
++		return dev_err_probe(wrp->dev, PTR_ERR(wrp->clk_sys),
++				     "failed to get clock: %pe\n",
++				     wrp->clk_sys);
++	}
++
++	wrp->clk_tmr = devm_clk_get_optional(wrp->dev, "tmr");
++	if (IS_ERR(wrp->clk_tmr)) {
++		return dev_err_probe(wrp->dev, PTR_ERR(wrp->clk_tmr),
++				     "failed to get clock: %pe\n",
++				     wrp->clk_tmr);
++	}
++
+ 	ret = clk_prepare_enable(wrp->clk_spi);
+ 	if (ret)
+ 		return ret;
+@@ -2258,6 +2274,14 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto err_out1;
+ 
++	ret = clk_prepare_enable(wrp->clk_sys);
++	if (ret)
++		goto err_out2;
++
++	ret = clk_prepare_enable(wrp->clk_tmr);
++	if (ret)
++		goto err_out3;
++
+ 	/* Enable internal dynamic clock */
+ 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_DCM)) {
+ 		pwrap_writel(wrp, 1, PWRAP_DCM_EN);
+@@ -2272,7 +2296,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 		ret = pwrap_init(wrp);
+ 		if (ret) {
+ 			dev_dbg(wrp->dev, "init failed with %d\n", ret);
+-			goto err_out2;
++			goto err_out4;
+ 		}
+ 	}
+ 
+@@ -2286,7 +2310,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done)) {
+ 		dev_dbg(wrp->dev, "initialization isn't finished\n");
+ 		ret = -ENODEV;
+-		goto err_out2;
++		goto err_out4;
+ 	}
+ 
+ 	/* Initialize watchdog, may not be done by the bootloader */
+@@ -2319,7 +2343,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 			       IRQF_TRIGGER_HIGH,
+ 			       "mt-pmic-pwrap", wrp);
+ 	if (ret)
+-		goto err_out2;
++		goto err_out4;
+ 
+ 	wrp->regmap = devm_regmap_init(wrp->dev, NULL, wrp, wrp->slave->regmap);
+ 	if (IS_ERR(wrp->regmap)) {
+@@ -2331,11 +2355,15 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	if (ret) {
+ 		dev_dbg(wrp->dev, "failed to create child devices at %pOF\n",
+ 				np);
+-		goto err_out2;
++		goto err_out4;
+ 	}
+ 
+ 	return 0;
+ 
++err_out4:
++	clk_disable_unprepare(wrp->clk_tmr);
++err_out3:
++	clk_disable_unprepare(wrp->clk_sys);
+ err_out2:
+ 	clk_disable_unprepare(wrp->clk_wrap);
+ err_out1:
+-- 
+2.36.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
