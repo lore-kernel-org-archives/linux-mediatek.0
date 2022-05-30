@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5215C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 08:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52C52C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 08:11:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LGPHBJr/245jyOvr5Q7Re/1tNg3oIoog+D3MNzJCYfM=; b=SM283Gk4WEJXRb
-	G8xwIaq+fBz+DR/bRjpE9/GsAUiOXMkd90KnZaqD+H//ZKt3ErkrTtohBTWW9A06/fTgabusz3XHe
-	4+YckfiPTLp+fWmM7cI+wfBvz7YO1PE7iVnmDCB5CmiksXdSaftNZ5PWVrHnvX5T6fQy1vEHfeGJM
-	LEnu85bVh6w3B9OHkJgwx5wtttuF52WqYVg4agCW5/98xBnpEWcm4wjfSdVBQ+xET+VxJkuVcUXrI
-	5lAizlRseJ+cS59YICDRyZLEYcHqiZAhS9pofP493Ia6CPxhc3EJrJwy7aQm1kRHJw/QboWOCR+gN
-	EiO+MQeI15C9JlJOWknQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tDc+Et9/e5Boq582pzB1uqNUf0LWykfDVYAzkmgv9fU=; b=wt2Ov3+HLx3JXp
+	jG+vChHrwGhX/uG+L3jZ4yP1ttoyz+we2O6a3iwMDkF6/dRzMvNENkyBidx2W6AopJ+WIDNxXoonl
+	dvr/Xt9jdPO7CBHL74RdTaBRSLZ0jRWixQQXbgkO5bXlvunvnU0sXiWJ5rIVVoNiq706wIwA0LgeE
+	hUarGe6/DBjsoJYw45AIe5W48m/vd/SPU4D6NnsBI0ysAiJm+K6FeKFqYZfOtSTZeIPETmshAnkkF
+	A3eaL10Uj6W//d3nqhgF8JLnUnHfMvFf/Lw9PtyQ8bVF51RhlW4OJ0VoVxfT0IXKqyBdPaNadKxeW
+	oqgsdTdc4qfZiK0zWHqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvaUy-005r5L-2v; Mon, 30 May 2022 08:11:36 +0000
+	id 1nvaV8-005r9L-JM; Mon, 30 May 2022 08:11:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvaUo-005r3M-0w; Mon, 30 May 2022 08:11:27 +0000
-X-UUID: 21387eaa9638454c918433ee6b7220be-20220530
+	id 1nvaUx-005r4s-AG; Mon, 30 May 2022 08:11:36 +0000
+X-UUID: 837a0d17d2fb453396c877e187228520-20220530
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:194c601b-827d-4cf0-ab35-368b4c564e51,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09,CLOUDID:6349fd47-4fb1-496b-8f1d-39e733fed1ea,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:75f65f2d-999b-4b22-8a62-30da9658e486,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:2a19b09,CLOUDID:86ffc0b8-3c45-407b-8f66-25095432a27a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 21387eaa9638454c918433ee6b7220be-20220530
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+X-UUID: 837a0d17d2fb453396c877e187228520-20220530
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
 	(envelope-from <yf.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1168845449; Mon, 30 May 2022 01:11:17 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 30 May 2022 01:11:15 -0700
+	with ESMTP id 35744218; Mon, 30 May 2022 01:11:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 May 2022 01:11:28 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 30 May 2022 16:11:14 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 30 May 2022 16:11:26 +0800
 Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 30 May 2022 16:11:13 +0800
+ 15.2.792.3 via Frontend Transport; Mon, 30 May 2022 16:11:25 +0800
 From: <yf.wang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
- SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open
+ list:MEDIATEK IOMMU DRIVER" <iommu@lists.linux-foundation.org>, "moderated
+ list:MEDIATEK IOMMU DRIVER" <linux-mediatek@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "open
+ list" <linux-kernel@vger.kernel.org>
 CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
-	<Yong.Wu@mediatek.com>
-Subject: [PATCH v7 0/2] iommu/mediatek: TTBR up to 35bit support
-Date: Mon, 30 May 2022 16:04:27 +0800
-Message-ID: <20220530080432.29123-1-yf.wang@mediatek.com>
+	<Yong.Wu@mediatek.com>, Yunfei Wang <yf.wang@mediatek.com>, Ning Li
+	<ning.li@mediatek.com>
+Subject: [PATCH v7 2/2] iommu/mediatek: Allow page table PA up to 35bit
+Date: Mon, 30 May 2022 16:04:29 +0800
+Message-ID: <20220530080432.29123-3-yf.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220530080432.29123-1-yf.wang@mediatek.com>
+References: <20220530080432.29123-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_011126_105314_0246800D 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220530_011135_407569_31C3243D 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,42 +84,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset adds MediaTek TTBR up to 35bit support for single normal zone.
+From: Yunfei Wang <yf.wang@mediatek.com>
 
-Changes in v7:
-- Update patch and commit message
-  - Extend arm_v7s_cfg.ttbr to u64.
-  - Move the special ttbr logical into mtk_iommu.c.
-  - Update commit message for single normal zone.
+Single memory zone feature will remove ZONE_DMA32 and ZONE_DMA. So add
+the quirk IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT to let level 1 and level 2
+pgtable support at most 35bit PA.
 
-Changes in v6:
-- Update patch: gfp_l1 = GFP_KERNEL | __GFP_ZERO;
-- Update commit message for single normal zone.
+Signed-off-by: Ning Li <ning.li@mediatek.com>
+Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+---
+ drivers/iommu/mtk_iommu.c | 29 +++++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
 
-Changes in v5:
-- Only update message-ID.
-
-Changes in v4:
-- Fix build test WARNING: use GENMASK_ULL replace GENMASK.
-
-Changes in v3:
-- Add version changes description, there is No new code change in V3.
-
-Changes in v2:
-- Update patch and commit message
-  - Add Level 1 pgtable PA up to 35bit.
-  - This is new feature, remove stable@vger.kernel.org
-  - Update commit message.
-
-Ning Li (2):
-  iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
-  iommu/mediatek: Allow page table PA up to 35bit
-
- drivers/iommu/io-pgtable-arm-v7s.c | 48 +++++++++++++++++++++---------
- drivers/iommu/mtk_iommu.c          | 29 +++++++++++++++---
- include/linux/io-pgtable.h         | 17 +++++++----
- 3 files changed, 70 insertions(+), 24 deletions(-)
-
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 6fd75a60abd6..dd9661690ca6 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -33,6 +33,9 @@
+ 
+ #define REG_MMU_PT_BASE_ADDR			0x000
+ #define MMU_PT_ADDR_MASK			GENMASK(31, 7)
++/* Mediatek extend ttbr bits[2:0] for PA bits[34:32] */
++#define MMU_PT_35BIT_PA(pa)			\
++	((pa & GENMASK_ULL(31, 7)) | ((pa & GENMASK_ULL(34, 32)) >> 32))
+ 
+ #define REG_MMU_INVALIDATE			0x020
+ #define F_ALL_INVLD				0x2
+@@ -118,6 +121,7 @@
+ #define WR_THROT_EN			BIT(6)
+ #define HAS_LEGACY_IVRP_PADDR		BIT(7)
+ #define IOVA_34_EN			BIT(8)
++#define PGTABLE_PA_35_EN		BIT(9)
+ 
+ #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+ 		((((pdata)->flags) & (_x)) == (_x))
+@@ -401,6 +405,9 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
+ 		.iommu_dev = data->dev,
+ 	};
+ 
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
++		dom->cfg.quirks |= IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT;
++
+ 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
+ 		dom->cfg.oas = data->enable_4GB ? 33 : 32;
+ 	else
+@@ -450,6 +457,7 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	struct device *m4udev = data->dev;
+ 	int ret, domid;
++	u32 regval;
+ 
+ 	domid = mtk_iommu_get_domain_id(dev, data->plat_data);
+ 	if (domid < 0)
+@@ -472,8 +480,13 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 			return ret;
+ 		}
+ 		data->m4u_dom = dom;
+-		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
+-		       data->base + REG_MMU_PT_BASE_ADDR);
++
++		/* Bits[6:3] are invalid for mediatek platform */
++		if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
++			regval = MMU_PT_35BIT_PA(dom->cfg.arm_v7s_cfg.ttbr);
++		else
++			regval = dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK;
++		writel(regval, data->base + REG_MMU_PT_BASE_ADDR);
+ 
+ 		pm_runtime_put(m4udev);
+ 	}
+@@ -987,6 +1000,7 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+ 	struct mtk_iommu_suspend_reg *reg = &data->reg;
+ 	struct mtk_iommu_domain *m4u_dom = data->m4u_dom;
+ 	void __iomem *base = data->base;
++	u32 regval;
+ 	int ret;
+ 
+ 	ret = clk_prepare_enable(data->bclk);
+@@ -1010,7 +1024,13 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+ 	writel_relaxed(reg->int_main_control, base + REG_MMU_INT_MAIN_CONTROL);
+ 	writel_relaxed(reg->ivrp_paddr, base + REG_MMU_IVRP_PADDR);
+ 	writel_relaxed(reg->vld_pa_rng, base + REG_MMU_VLD_PA_RNG);
+-	writel(m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK, base + REG_MMU_PT_BASE_ADDR);
++
++	/* Bits[6:3] are invalid for mediatek platform */
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
++		regval = MMU_PT_35BIT_PA(m4u_dom->cfg.arm_v7s_cfg.ttbr);
++	else
++		regval = m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK;
++	writel(regval, base + REG_MMU_PT_BASE_ADDR);
+ 
+ 	/*
+ 	 * Users may allocate dma buffer before they call pm_runtime_get,
+@@ -1038,7 +1058,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+ 
+ static const struct mtk_iommu_plat_data mt6779_data = {
+ 	.m4u_plat      = M4U_MT6779,
+-	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN,
++	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN |
++			 PGTABLE_PA_35_EN,
+ 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
+ 	.iova_region   = single_domain,
+ 	.iova_region_nr = ARRAY_SIZE(single_domain),
+-- 
+2.18.0
 
 
 _______________________________________________
