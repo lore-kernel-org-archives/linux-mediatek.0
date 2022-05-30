@@ -4,63 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E58FEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 14:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A5B9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 14:57:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tPsu8dcBU5gWX/Bp4A5F7HCtQiwi/lkqXW1m3L4f5D0=; b=pwJthUSPyOgwTCmyEazS5iLb3h
-	It9bHm33WCyj9X0Y0EH+QqXRv6eRi2Cd2wmagVHXdvf9/xa0gU4BcJsc98Qyp4yXVvCuhi766vwAy
-	wX9EW2hr4sFiD7BX8Wn4YZjzqL0COePamDL7T+P3LsACZu0KJbc+njJff/x16hs8bPbXaNW3RU7h7
-	fab4eyi8e2LU+QtZNakylopqCJ9WxxU+VGyLyB6pf/PVFiI4S+3FypPY7NBVMccVHE9qHm6Y/qSB8
-	MtfOZ3688x0rFaHAXKKIk3UdLeQ/b7gfFJI0umYC9QspYrRs1tYCRtWF7cfcVJBSn9Y9A+/5bgjk8
-	2HlQ7o3Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ILqOXTbm47CzhpsV2BM2EQEnPYavg7Nbn7fRWiUuw2I=; b=WMNPHcCS5FjgYo
+	OPqgHRZYnFQh/7sR9rBBwpL051aed5yLuVLf/PZg9F1jtN+/eemo1fO2ISwe3yIxyrA6lvGmpjmU/
+	YfmMIe9mm2uq4hCVvXtMVslmsTKQYpgkgg7hf64mmJKqH78f+DXC1DUpHHIdBUN4421ifAC52DGCv
+	8gSPZUB1wEkLdlb+G0WgFLjmf0285g3y+f/thQibTA2k+8o1yKpOiS+rzvKszHgyqYltziRI9fP3e
+	9YYS+lXN1GBRm/awFddqaWSPW6ojep3vFuGPRw9CVPh1nBgM+B5AHTtob03D47rohFwfj26EA2fTu
+	O9B7JB5Fm3ROt7bPlsfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvgba-007K1a-SO; Mon, 30 May 2022 14:42:51 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nvgpe-007QBD-5P; Mon, 30 May 2022 14:57:22 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvgLE-007C7O-Jd; Mon, 30 May 2022 14:25:58 +0000
+	id 1nvgpQ-007Q6t-Qt; Mon, 30 May 2022 14:57:10 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id C0F2EB80DA7;
-	Mon, 30 May 2022 14:25:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0ABBAC3411C;
-	Mon, 30 May 2022 14:25:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1653920753;
-	bh=saYkzz6/Bxx+TCHOWJ3kqLX/CFp8+t6kRB+V5Vc0gWk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TajnoueX0WPBLvP2NyXtPjnH7Lbf17+aIc8WM5OMeAbXKnTN0fGlgenaNQyB44Hv1
-	 OFIbLofzQEbCr0j0IcGE6uJsfMJ8ANOxkaO66bFnHWQlzrqSBX5PlaG5pYJ7Yw/g3w
-	 uu7DcTrRgHPeUJZYP1dOzV3lVBzK4qhpkPtKhxSo3LnuUmNFgKmAsx/67UrBmRNmme
-	 NYKDJ/TrBAmeJDFbmeN9jZbEuIZq1IN1zr5iXa8loEY/gmUxlAZig6R8wzHR6gAPdc
-	 v7PSI3ez232iK4R4yDORQRQVV8ewieBfUlo4fE21UC5uCkc4E+a0R0mLmQAu6mdxW9
-	 21ikbrKkdfpEA==
-Date: Mon, 30 May 2022 16:25:50 +0200
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel test robot <lkp@intel.com>, lgirdwood@gmail.com,
-	llvm@lists.linux.dev, kbuild-all@lists.01.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 4/4] regulator: Add driver for MT6332 PMIC regulators
-Message-ID: <YpTT7l0oAJ51Df5A@sirena.org.uk>
-References: <20220523154709.118663-5-angelogioacchino.delregno@collabora.com>
- <202205262341.pY4PkDL7-lkp@intel.com>
- <540be3e8-6a97-5e80-3767-892025ded07b@collabora.com>
+	by ams.source.kernel.org (Postfix) with ESMTPS id 20933B80DB4;
+	Mon, 30 May 2022 14:57:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30034C385B8;
+	Mon, 30 May 2022 14:57:03 +0000 (UTC)
+Date: Mon, 30 May 2022 15:56:59 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: Patrick Wang <patrick.wang.shcn@gmail.com>
+Cc: Yee Lee <yee.lee@mediatek.com>, linux-kernel@vger.kernel.org,
+	Kuan-Ying.lee@mediatek.com, Andrew.Yang@mediatek.com,
+	Sunny.Kao@mediatek.com, chinwen.chang@mediatek.com,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	Ariel Marcovitch <arielmarcovitch@gmail.com>
+Subject: Re: [PATCH] mm: kmemleak: Skip check in kmemleak_*_phys when pfn
+ bound is not ready
+Message-ID: <YpTbO/z1n0UYswBf@arm.com>
+References: <20220527032504.30341-1-yee.lee@mediatek.com>
+ <CAGcnep9B+z8QG4f4kkW8NF+fM1Kgj=NOV=YRhLK4yK74jbqpAw@mail.gmail.com>
+ <05cfaf936a0c5f37f2e7ba779a8a1b0a6252be96.camel@mediatek.com>
+ <64281aab-0301-7237-d72c-b7ab41bf50e4@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <540be3e8-6a97-5e80-3767-892025ded07b@collabora.com>
-X-Cookie: May your camel be as swift as the wind.
+Content-Disposition: inline
+In-Reply-To: <64281aab-0301-7237-d72c-b7ab41bf50e4@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_072556_847875_C6F9C57C 
-X-CRM114-Status: GOOD (  18.01  )
+X-CRM114-CacheID: sfid-20220530_075709_206908_3DDFB197 
+X-CRM114-Status: GOOD (  35.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,77 +67,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3600377601805289375=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Patrick,
 
---===============3600377601805289375==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="M/QnrxKiHPTf+/lZ"
-Content-Disposition: inline
+On Mon, May 30, 2022 at 09:32:18PM +0800, Patrick Wang wrote:
+> On 2022/5/30 10:27, Yee Lee wrote:
+> > On Fri, 2022-05-27 at 21:39 +0800, patrick wang wrote:
+> > > On Fri, May 27, 2022 at 11:25 AM <yee.lee@mediatek.com> wrote:
+> > > > From: Yee Lee <yee.lee@mediatek.com>
+> > > > 
+> > > > In some archs (arm64), memblock allocates memory in boot time when
+> > > > the pfn boundary (max_pfn/min_pfn) is not ready. The lowmen checks in
+> > > > kmemleak_*_phys() drop those blocks and cause some false leak alarms
+> > > > on common kernel objects.
+> > > > 
+> > > > Kmemleak output: (Qemu/arm64)
+> > > > unreferenced object 0xffff0000c0170a00 (size 128):
+> > > >    comm "swapper/0", pid 1, jiffies 4294892404 (age 126.208s)
+> > > >    hex dump (first 32 bytes):
+> > > >      62 61 73 65 00 00 00 00 00 00 00 00 00 00 00 00  base............
+> > > >      00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+> > > >    backtrace:
+> > > >      [<(____ptrval____)>] __kmalloc_track_caller+0x1b0/0x2e4
+> > > >      [<(____ptrval____)>] kstrdup_const+0x8c/0xc4
+> > > >      [<(____ptrval____)>] kvasprintf_const+0xbc/0xec
+> > > >      [<(____ptrval____)>] kobject_set_name_vargs+0x58/0xe4
+> > > >      [<(____ptrval____)>] kobject_add+0x84/0x100
+> > > >      [<(____ptrval____)>] __of_attach_node_sysfs+0x78/0xec
+> > > >      [<(____ptrval____)>] of_core_init+0x68/0x104
+> > > >      [<(____ptrval____)>] driver_init+0x28/0x48
+> > > >      [<(____ptrval____)>] do_basic_setup+0x14/0x28
+> > > >      [<(____ptrval____)>] kernel_init_freeable+0x110/0x178
+> > > >      [<(____ptrval____)>] kernel_init+0x20/0x1a0
+> > > >      [<(____ptrval____)>] ret_from_fork+0x10/0x20
+> > > > 
+> > > > This patch relaxs the boundary checking in kmemleak_*_phys api
+> > > > if max_low_pfn is uninitialzed.
+> > > > 
+> > > > Fixes: 23c2d4 (mm: kmemleak: take a full lowmem check in kmemleak_*_phy)
 
+BTW, please use at least 12 characters for the git sha1, the above is
+ambiguous.
 
---M/QnrxKiHPTf+/lZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> > > > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+> > > > ---
+> > > >   mm/kmemleak.c | 8 ++++----
+> > > >   1 file changed, 4 insertions(+), 4 deletions(-)
+> > > > 
+> > > > diff --git a/mm/kmemleak.c b/mm/kmemleak.c
+> > > > index a182f5ddaf68..6b2af544aa0f 100644
+> > > > --- a/mm/kmemleak.c
+> > > > +++ b/mm/kmemleak.c
+> > > > @@ -1132,7 +1132,7 @@ EXPORT_SYMBOL(kmemleak_no_scan);
+> > > >   void __ref kmemleak_alloc_phys(phys_addr_t phys, size_t size, int min_count,
+> > > >                                 gfp_t gfp)
+> > > >   {
+> > > > -       if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
+> > > > +       if (!max_low_pfn || (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn))
+> > > 
+> > > Just skip checking will bring the crash possibility back. Seems
+> > > it's beyond these interfaces' handle scope for this situation,
+> > > since "min_low_pfn" and "max_low_pfn" are depending on arches.
+> > 
+> > Yes, for the cases beyond the pfn guard, users have to take care the
+> > boundary by themselves.
+> 
+> Could we record these early calling and deal with them when it's
+> ready? Is this appropriate?
+> 
+> I have an implementation based on this approach. Could you please
+> help to have a test on your machine as well? And someone to take
+> a look or review?
 
-On Mon, May 30, 2022 at 11:33:28AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 26/05/22 17:12, kernel test robot ha scritto:
+We had something similar until 5.4, removed by commit c5665868183f ("mm:
+kmemleak: use the memory pool for early allocations"). It was a bit
+painful as we never had the right buffer, so I'm not keen on adding it
+back.
 
-> > > > drivers/regulator/mt6332-regulator.c:15:10: fatal error: 'linux/mfd/mt6332/registers.h' file not found
-> >     #include <linux/mfd/mt6332/registers.h>
+> From 82cae75dfaa78f414faf85bb49133e95159c041a Mon Sep 17 00:00:00 2001
+> From: Patrick Wang <patrick.wang.shcn@gmail.com>
+> Date: Mon, 30 May 2022 18:38:23 +0800
+> Subject: [PATCH] mm: kmemleak: record early operations and handle later
+> 
+> The kmemleak_*_phys() interface uses "min_low_pfn" and
+> "max_low_pfn" to check address. But on some architectures,
+> kmemleak_*_phys() is called before those two variables
+> initialized. Record these early operations and handle them
+> when kmemleak_*_phys() are ready.
 
-> Note for maintainers: this failure is expected, as this series depends on the
-> series that introduces the MT6331 and MT6332 MFD device (with its headers, used
-> by the regulator driver of this series)
+Could we instead record everything (no checks) but later avoid scanning
+if below min or above max_low_pfn? We can add an OBJECT_PHYS flag to all
+objects allocated via kmemleak_*_phys() and always check the
+virt_to_phys() boundaries at scan time. It may actually help with this
+problem as well:
 
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=643602
+https://lore.kernel.org/r/9dd08bb5-f39e-53d8-f88d-bec598a08c93@gmail.com
 
-That's
-
-   mfd: mt6397: Add basic support for MT6331+MT6332 PMIC
-
-It looks like that's not yet been applied - please resubmit when
-that series has been applied.  I'll need a pull request for the
-MFD bits I guess, please make sure Lee knows that's going to be
-needed.
-
-Please include human readable descriptions of things like commits and
-issues being discussed in e-mail in your mails, this makes them much
-easier for humans to read especially when they have no internet access.
-I do frequently catch up on my mail on flights or while otherwise
-travelling so this is even more pressing for me than just being about
-making things a bit easier to read.
-
---M/QnrxKiHPTf+/lZ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmKU0+0ACgkQJNaLcl1U
-h9AsZggAgZpjGrzxtd8KkXrv69DF/0hxAr/jx7H3w2zmf8aLSB4qEedlb5dWzKZk
-vI88CBNqC2odiuuNYqCF1IiiMQZD1ADsbtBZTzbti27HJ++Gplo6S6SuNzn8IrVJ
-93g8sr8sZ44zNixlJttjrQRlQ2DvzBOMZgd/3HboinR8fv8rwqM/EfHEjJaFE7uI
-tZcB0sjaEAFbR72N9wV24okXAFQMCOpEgRz/DG6ivdIbQPpeg6LDD3hNnm7oEgRB
-rXcN5A/8t1djYba7C1WBmEtwE0rIuMbmI/i+CR6mpTeN0D/U0EBe7PE2LYJzazfn
-BFMlFIahn5vPuC9lY4Yv1rc9i21W7w==
-=FtuI
------END PGP SIGNATURE-----
-
---M/QnrxKiHPTf+/lZ--
-
-
---===============3600377601805289375==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Catalin
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3600377601805289375==--
-
