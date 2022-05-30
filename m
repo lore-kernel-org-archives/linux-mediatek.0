@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13C8AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 20:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40B34C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 20:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=75icLEadDg9SuYiVLRWZ8hvxFN2k+OEtdzVewKs1CdQ=; b=VopShk0G6omemW
-	QnIFvQQP4bdLett8KIKWuPoRR9nuywJL8hpSCOOE9wJ0FUB+SVMglkGH6TG94BM8VpcpDi5fR/+44
-	HcZAsSewKPug9zwar3YdzNVfDhmf5KXs2Prx04HhAbDrpmdrMXoIqEs+RuerlInJ4x8a/LF3HHRDw
-	7tvXXaBeszaS580R6AUldMnZIL7ldp62gX+W+RdxaiPjeYWs3JIdP3rAZMTTaoblHcSN9nM6TUnsw
-	g717a4yg/t9KvtIzWulrLBuAEDw9RAV2bVgDtfffIBuVOddQPpHnDrKTL3ABKqiiNvpus2UrcY3zy
-	UmzAMKgRabxduFM3aeCg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PzeO+21Z96RoKN4XNIkxUgA/OiGCMaww/LNM7uG1354=; b=kAWwyXwJ03N7/l
+	xjJHAZyuNATIVcbfX5OPjQ4z3G8DNQxMXTOA2CT/VMHEvX15xQ/f/NPJEEtjFaJrocSf464ze30Qp
+	gck9XkBGzNekxiZTk4EiPK0wqk/4uroxk29QGV2/QCFM8jPsusbcWgUhRgCuoxZe8JZzZ3A9vWcbe
+	1bVb4uWFB2sgUkcxzZv1+pewWOL7W9HJIXUuQXez8E8wWtm0PEYKvN5SHVOh/y2q8G+I7k6cZPnM+
+	KF6mbYgxAG/tT4dzAKl/M2jWT1gKwxBSLsZiyd25kCpKrOARsA0JuBfy9H7Tm8QBxKEgjWh4PJ76r
+	GG0pFli0x+klHM50q45w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvlos-008A5t-Au; Mon, 30 May 2022 20:16:54 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1nvltk-008BxL-NP; Mon, 30 May 2022 20:21:56 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvlnB-0089D6-Hs
-	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 20:15:12 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id s24so8691027wrb.10
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 13:15:08 -0700 (PDT)
+	id 1nvltg-008Buk-Tl
+	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 20:21:55 +0000
+Received: by mail-wm1-x329.google.com with SMTP id c5-20020a1c3505000000b0038e37907b5bso165932wma.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 13:21:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=PD07AGQSISBrBm8fI0Y+y6jJGPbS9zphsEozNpxvp5c=;
-        b=MIjCVNm9g03WUwxU5l29QvEepUh5wgB7oQF4k3VLWcYaS9VXU+YwiZFLHJ3xuT1eSW
-         nfeoWSQ3Cx/AgyV8zGDKSNUGXjId6MJxju4d+uaToMm2lBCqtTOldeSKsdYeocKgPt6D
-         dZVvQ6Mxp5sMfcruCnIxWupF/gPGMBjsDRzn+lCvvIw+tg8dBT2+NAXfkzpUjRX5sUUC
-         E257NMxeK8YUQWugfDhCqwmO8DVnL/8cDLQ5sC+LTETOKTR4CIsFg/KT7pRcoFc2YrS2
-         VMvs2eDy8Ql5unLyZ1AdVLM32fevHoEod0supyC5nJJeKF7FJokoujZTL4357QG7MrNL
-         IKew==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=eiDOJFzaInCJhnUpiGhTUeinv2gyCwbF/a7PS9tPsw8=;
+        b=GGLTks7z+Cu2sD67ItYjIkSDBnPFbXlry0Yr2hBSF7OQkd9rKRwnYFKllacNxl2clO
+         jWHHOCWRt3kxSiYR5U8LKYbDItbOm17Myh6fQPHght6fxMCiy8WPnyuQfqXiN0teNpjJ
+         6TpUF6rm3KWf64/X882oAL/sIwnxRDF8w3VwkUWFYx755AxKaLVLTGpTOXQ8i7LsSMYx
+         7mzkX6zpqpUTcc4ilmGiuAEnAgtOWEXfl2cJre2phoWZmTy7Uy9Hz0t18CM3WF2b/mBh
+         wAe+zJhJJj9rsXLXTbkOT8W1F71HrBAjoTvICAXgTHNJ5CM3mbqVBujloyWQh8SlM7x7
+         W5Zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=PD07AGQSISBrBm8fI0Y+y6jJGPbS9zphsEozNpxvp5c=;
-        b=NqHjpL2nJ/8bmP+rJOEQ2XplpQzRxtOUeHPnwDA0OBQNY27UjV30YyYk5OPaY2Ikd5
-         Ajv01+bUtUCxEv6p32NqSfe4qAaboW97k754GLkxT8uC/VBEEAeFnDjWMGp5idgzZPTN
-         HGLY68nFy6ENFmUAY96KzXC1CA5dGSUdRlg72Lwi4CrU3GxVErz4W0/S7D7+qZbPTtnU
-         6CFjCzgVVsePWkIpnaSTEhIF3wcAOO4N/oYT8l5YSCOGPkkc8Sw7TzbeyG3bz9H/TWvs
-         Yeff7/Lq4pOfqKo8NUEb2bP7lMN86PlRKW6+bWS/hdicRER4Eh8YXlnk0FIeqKsQOicq
-         f5zQ==
-X-Gm-Message-State: AOAM531OR6jhfpF3Xhdv1wu2/J/Y+emwsdSImjqQf2WQWhwm+2SFj8VI
-	FG//ILuzlaajnZhRKzCuTAXfRQ==
-X-Google-Smtp-Source: ABdhPJzABVtC2tkCZEtAl4IfibZ4A1woYgNYxWWP2/bB92DTuTd5TnPRpW2iy1sQkdfWlmVR0yHj5Q==
-X-Received: by 2002:a05:6000:15c7:b0:210:472:e0e8 with SMTP id y7-20020a05600015c700b002100472e0e8mr20637968wry.365.1653941706961;
-        Mon, 30 May 2022 13:15:06 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=eiDOJFzaInCJhnUpiGhTUeinv2gyCwbF/a7PS9tPsw8=;
+        b=1UZ8aAcTvlvxvrJ7RaVGQ56Mgf9zWwSRmXVLdgcLmxYODLWYQRsRfDeQ8MYtLhGdtX
+         gPmrA+oIz59vyy0+5TU3W9CmiG0PtAztyYxWaZiBmZG2hTzPfWWC5iz2u/wxZXM1wgC+
+         tObUyfHdmKw+CF9XUIAO+XewcpsRpkBR63PgsD5PbxFLueiHrdftphZG0CVixFqsXjuc
+         OsFKg1yPugp7robPvpd1n4OutakXKhBLGBMTKRtMXDj+s8pcJuqJxfMrgVPh1Z0QzzLF
+         oigxrKECSEB7tqhZaNQMuq76k7rFGoBxOjbHYhiCXAk2HBGtklqX5S9g0JYxqz+KcVRR
+         2WtQ==
+X-Gm-Message-State: AOAM530gV5ECD9b/2JYXn19dFRTStZAcB4znllUqsKIGESx0t437vQPf
+	cwZnJM1QUGC+e7aZ/w6tCiG7Pg==
+X-Google-Smtp-Source: ABdhPJxAETeJdaqhq72lFl2LUU+Ioc+InFtkW1WnYu123vrwlMVWG/bC/IKO0H+s9HT4NX5FMo8g+w==
+X-Received: by 2002:a05:600c:48aa:b0:397:55ba:adb3 with SMTP id j42-20020a05600c48aa00b0039755baadb3mr20239263wmp.73.1653942110348;
+        Mon, 30 May 2022 13:21:50 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
-        by smtp.gmail.com with ESMTPSA id t1-20020adfe101000000b0020d110bc39esm9770401wrz.64.2022.05.30.13.15.05
+        by smtp.gmail.com with ESMTPSA id q9-20020a1cf309000000b0039754d1d327sm261860wmq.13.2022.05.30.13.21.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 May 2022 13:15:06 -0700 (PDT)
+        Mon, 30 May 2022 13:21:49 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: matthias.bgg@gmail.com,
-	ck.hu@mediatek.com,
-	jitao.shi@mediatek.com,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org
-Cc: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@linux.ie,
-	daniel@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
+To: Thierry Reding <thierry.reding@gmail.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Lee Jones <lee.jones@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>,
+	linux-pwm@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Fabien Parent <fparent@baylibre.com>
-Subject: [PATCH 6/7] drm/mediatek: dpi: add support for dpi clock
-Date: Mon, 30 May 2022 22:14:35 +0200
-Message-Id: <20220530201436.902505-6-fparent@baylibre.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/2] dt-bindings: pwm: add MT8365 SoC binding
+Date: Mon, 30 May 2022 22:21:34 +0200
+Message-Id: <20220530202136.906407-1-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220530201436.902505-1-fparent@baylibre.com>
-References: <20220530201436.902505-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_131509_635602_FC98DC55 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20220530_132153_053089_AFEDE811 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,74 +95,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8365 requires an additional clock for DPI. Add support for that
-additional clock.
+Add binding documentation for the MT8365 SoC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index e61cd67b978f..7872db60840e 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -72,6 +72,7 @@ struct mtk_dpi {
- 	struct device *dev;
- 	struct clk *engine_clk;
- 	struct clk *pixel_clk;
-+	struct clk *dpi_clk;
- 	struct clk *tvd_clk;
- 	int irq;
- 	struct drm_display_mode mode;
-@@ -412,6 +413,7 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
- 	mtk_dpi_disable(dpi);
- 	clk_disable_unprepare(dpi->pixel_clk);
- 	clk_disable_unprepare(dpi->engine_clk);
-+	clk_disable_unprepare(dpi->dpi_clk);
- }
- 
- static int mtk_dpi_power_on(struct mtk_dpi *dpi)
-@@ -421,10 +423,16 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
- 	if (++dpi->refcount != 1)
- 		return 0;
- 
-+	ret = clk_prepare_enable(dpi->dpi_clk);
-+	if (ret) {
-+		dev_err(dpi->dev, "failed to enable dpi clock: %d\n", ret);
-+		goto err_refcount;
-+	}
-+
- 	ret = clk_prepare_enable(dpi->engine_clk);
- 	if (ret) {
- 		dev_err(dpi->dev, "Failed to enable engine clock: %d\n", ret);
--		goto err_refcount;
-+		goto err_engine;
- 	}
- 
- 	ret = clk_prepare_enable(dpi->pixel_clk);
-@@ -441,6 +449,8 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
- 
- err_pixel:
- 	clk_disable_unprepare(dpi->engine_clk);
-+err_engine:
-+	clk_disable_unprepare(dpi->dpi_clk);
- err_refcount:
- 	dpi->refcount--;
- 	return ret;
-@@ -893,6 +903,12 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	dpi->dpi_clk = devm_clk_get_optional(dev, "dpi");
-+	if (IS_ERR(dpi->dpi_clk)) {
-+		return dev_err_probe(dev, ret, "Failed to get dpi clock: %pe\n",
-+				     dpi->dpi_clk);
-+	}
-+
- 	dpi->irq = platform_get_irq(pdev, 0);
- 	if (dpi->irq <= 0)
- 		return -EINVAL;
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+index 25ed214473d7..ac5c58bbb22d 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
++++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
+@@ -8,6 +8,7 @@ Required properties:
+    - "mediatek,mt7628-pwm": found on mt7628 SoC.
+    - "mediatek,mt7629-pwm": found on mt7629 SoC.
+    - "mediatek,mt8183-pwm": found on mt8183 SoC.
++   - "mediatek,mt8365-pwm": found on mt8365 SoC.
+    - "mediatek,mt8516-pwm": found on mt8516 SoC.
+  - reg: physical base address and length of the controller's registers.
+  - #pwm-cells: must be 2. See pwm.yaml in this directory for a description of
+@@ -17,6 +18,7 @@ Required properties:
+                 has no clocks
+    - "top": the top clock generator
+    - "main": clock used by the PWM core
++   - "pwm1-3": the five per PWM clocks for mt8365
+    - "pwm1-8": the eight per PWM clocks for mt2712
+    - "pwm1-6": the six per PWM clocks for mt7622
+    - "pwm1-5": the five per PWM clocks for mt7623
 -- 
 2.36.1
 
