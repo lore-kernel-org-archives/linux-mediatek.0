@@ -4,59 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD08DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 09:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68EBEC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 09:35:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VLxrIadfOKo/1K8cEfAECm6KpFAajnUMyvjxJ22bypE=; b=TTtWOgJ9DZjdd9
-	b+UTymV+OWFscYT+AkltDKdqbkNa0Ng68QxT37oJpCESEpJvRJZizF+zJIV6GgfnShhbZOyL3vH7K
-	uWemsOFzzf8mUVBaqooC7Gac9RIe5A7PEyHI51oTQ5c+qrVwAg4gVEjOB2y/jDqdeTdaVDxZdT94e
-	jBxK/Gin3KkvH/i6nHAWBOU3wb2Q9xx2P21zDKQS7RGM4LQXiRDA4UpxD8Gikyooe5lGlXZEepUcH
-	OSlsXHSket5ESs97sROXc36F8cYzqiG+AkGEwosvw0RSnx+BTLjAOBtwpTse/lngrf3uxOxMd0VEW
-	Pb/tkEN0MWj+d54369yQ==;
+	List-Owner; bh=+JehtIy2W9832C1RnzpE+UX36810zo4xqcUK0wz3YYI=; b=MED8b9Peb0B9PN
+	VPFvC0QnU+UmBm9XZjhVUseuio0sfiUehtoxPdd2ezPHMkqT3tTw0fn0bEQH/xvWz0zttD4jW+sj/
+	ZCjW6mj7HxKmlxGPibopun6ExNRjohc+/3aup2xqw36rZAdzZ0SDntZM2M6pyZRPjF5Ykd740KQpm
+	Bnca1ZWpwN+epF5wegbrfEfylo4nkTzXh2m5dbiZK9r9Aa3S0s9n1vjvxdecs2baO7UsptT6KQLnS
+	vOc0dQXo0CQodPvSncolHjaebS/exQPQt/DVsaIuAjQcdx92fbNsFAbwZ3AS+KgHzttpCvCx0EgiN
+	2/uVLY+b2s+SjybMcx+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvbmV-00687Y-R7; Mon, 30 May 2022 09:33:47 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nvbnm-0068SA-LL; Mon, 30 May 2022 09:35:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvbmH-00684Y-Ms; Mon, 30 May 2022 09:33:35 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(Authenticated sender: kholk11)
-	with ESMTPSA id 2E08E1F4239C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653903212;
-	bh=lMKzFjgelCV6B+f+Iojh6N9K0j7OtZvxDvvRazCQGi8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=e6XuJscA8OJ6A7Fm17Uq+gRoKgI6zyt8LrLBK7yB7ArBvRoXJRT7bFM0eSdRJGzFz
-	 9MtKae83zjZPsD06ZP6TJXtaz0rZDtz5IsOSHYpnVlu11jQOiO1NXC+MYsAfwLT87k
-	 xnpRjjICuJAHkns9zk1BegDzpMgZwqO+E2LhrdrtOTsT87WYSjH6VPQAgzSnVVb9ee
-	 czgPbdHxfFSJxnqoAqkb8wpT+hhVlEUZMIp6dhZlnBuEd6r3+ALjs7+6QCQSygPim9
-	 CbrEQj/WZr1UnxPYm7O7j4S4vzijkbP0sUarC1XOL3T6VEHE19R+uB0c89IevEZiD2
-	 RiSMTFTQJSMwg==
-Message-ID: <540be3e8-6a97-5e80-3767-892025ded07b@collabora.com>
-Date: Mon, 30 May 2022 11:33:28 +0200
+	id 1nvbnZ-0068OS-5A; Mon, 30 May 2022 09:34:56 +0000
+X-UUID: add0bce945884312a68ecf817c5440c8-20220530
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:9c193e2e-b9b4-4a76-bf71-fb4c7add843b,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:2c610148-4fb1-496b-8f1d-39e733fed1ea,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: add0bce945884312a68ecf817c5440c8-20220530
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1512981265; Mon, 30 May 2022 02:34:49 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 May 2022 02:34:47 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Mon, 30 May 2022 17:34:46 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 30 May 2022 17:34:46 +0800
+Message-ID: <719320a455d4dc5d142cea48577c3a1b0317bb9a.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "David
+ Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
+ Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>
+Date: Mon, 30 May 2022 17:34:46 +0800
+In-Reply-To: <20220523104758.29531-19-granquet@baylibre.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH v3 4/4] regulator: Add driver for MT6332 PMIC regulators
-Content-Language: en-US
-To: kernel test robot <lkp@intel.com>, lgirdwood@gmail.com
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org, broonie@kernel.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20220523154709.118663-5-angelogioacchino.delregno@collabora.com>
- <202205262341.pY4PkDL7-lkp@intel.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <202205262341.pY4PkDL7-lkp@intel.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_023333_914173_60ADBC2F 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20220530_023453_257175_EAEEF11C 
+X-CRM114-Status: GOOD (  24.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,73 +87,195 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/05/22 17:12, kernel test robot ha scritto:
-> Hi AngeloGioacchino,
-> 
-> Thank you for the patch! Yet something to improve:
-> 
-> [auto build test ERROR on broonie-regulator/for-next]
-> [also build test ERROR on v5.18 next-20220526]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch]
-> 
-> url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/MediaTek-Helio-X10-MT6795-MT6331-6332-Regulators/20220523-235049
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-> config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20220526/202205262341.pY4PkDL7-lkp@intel.com/config)
-> compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 3d546191ad9d7d2ad2c7928204b9de51deafa675)
-> reproduce (this is a W=1 build):
->          wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->          chmod +x ~/bin/make.cross
->          # https://github.com/intel-lab-lkp/linux/commit/062027827142f02db7e65b052d458f424811e30e
->          git remote add linux-review https://github.com/intel-lab-lkp/linux
->          git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/MediaTek-Helio-X10-MT6795-MT6331-6332-Regulators/20220523-235049
->          git checkout 062027827142f02db7e65b052d458f424811e30e
->          # save the config file
->          mkdir build_dir && cp config build_dir/.config
->          COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/regulator/
-> 
-> If you fix the issue, kindly add following tag where applicable
-> Reported-by: kernel test robot <lkp@intel.com>
-> 
-> All errors (new ones prefixed by >>):
-> 
->>> drivers/regulator/mt6332-regulator.c:15:10: fatal error: 'linux/mfd/mt6332/registers.h' file not found
->     #include <linux/mfd/mt6332/registers.h>
+Hi, Guillaume:
 
-
-Note for maintainers: this failure is expected, as this series depends on the
-series that introduces the MT6331 and MT6332 MFD device (with its headers, used
-by the regulator driver of this series)
-
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=643602
-
-
-
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->     1 error generated.
+On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
 > 
+> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
 > 
-> vim +15 drivers/regulator/mt6332-regulator.c
+> It supports the mt8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
 > 
->       9	
->      10	#include <linux/module.h>
->      11	#include <linux/of.h>
->      12	#include <linux/platform_device.h>
->      13	#include <linux/regmap.h>
->      14	#include <linux/mfd/mt6397/core.h>
->    > 15	#include <linux/mfd/mt6332/registers.h>
->      16	#include <linux/regulator/driver.h>
->      17	#include <linux/regulator/machine.h>
->      18	#include <linux/regulator/mt6332-regulator.h>
->      19	#include <linux/regulator/of_regulator.h>
->      20	
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
 > 
+> This driver is based on an initial version by
+> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> 
+
+[snip]
+
+> +
+> +static void mtk_dp_read_link_status(struct mtk_dp *mtk_dp,
+> +				    u8
+> link_status[DP_LINK_STATUS_SIZE])
+> +{
+> +	drm_dp_dpcd_read(&mtk_dp->aux, DP_LANE0_1_STATUS, link_status,
+> +			 DP_LINK_STATUS_SIZE);
+> +}
+> +
+> +static int mtk_dp_train_tps_1(struct mtk_dp *mtk_dp,
+> +			      u8 target_lane_count, int
+> *iteration_count, u8 *lane_adjust,  int *status_control, u8
+> *prev_lane_adjust)
+> +{
+> +	int ret;
+> +	u8 val;
+> +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
+> +
+> +	ret = mtk_dp_training_set_scramble(mtk_dp, false);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (*status_control == 0) {
+> +		ret = mtk_dp_train_set_pattern(mtk_dp, 1);
+> +		if (ret)
+> +			return ret;
+> +
+> +		val = DP_LINK_SCRAMBLING_DISABLE |
+> +			DP_TRAINING_PATTERN_1;
+> +		drm_dp_dpcd_writeb(&mtk_dp->aux,
+> +				   DP_TRAINING_PATTERN_SET,
+> +				DP_LINK_SCRAMBLING_DISABLE |
+> +				DP_TRAINING_PATTERN_1);
+> +		drm_dp_dpcd_read(&mtk_dp->aux,
+> +				 DP_ADJUST_REQUEST_LANE0_1,
+> +				lane_adjust,
+> +				sizeof(*lane_adjust) * 2);
+> +
+> +		mtk_dp_train_update_swing_pre(mtk_dp,
+> +					      target_lane_count,
+> lane_adjust);
+> +		*status_control = 1;
+> +		(*iteration_count)++;
+> +	}
+> +
+> +	drm_dp_link_train_clock_recovery_delay(&mtk_dp->aux,
+> +					       mtk_dp->rx_cap);
+> +	mtk_dp_read_link_status(mtk_dp, link_status);
+
+drm_dp_dpcd_read_link_status(&mtk_dp->aux, link_status);
+
+> +
+> +	if (drm_dp_clock_recovery_ok(link_status,
+> +				     target_lane_count)) {
+> +		mtk_dp->train_info.cr_done = true;
+> +		*iteration_count = 1;
+> +		dev_dbg(mtk_dp->dev, "Link train CR pass\n");
+> +		return 0;
+> +	} else if (*prev_lane_adjust == link_status[4]) {
+> +		(*iteration_count)++;
+> +		if (*prev_lane_adjust &
+> DP_ADJUST_VOLTAGE_SWING_LANE0_MASK) {
+> +			dev_dbg(mtk_dp->dev, "Link train CQ fail\n");
+> +			return -EINVAL;
+> +		}
+> +	} else {
+> +		*prev_lane_adjust = link_status[4];
+> +	}
+> +	return -EAGAIN;
+> +}
+> +
+> +static int mtk_dp_train_tps_2_3(struct mtk_dp *mtk_dp, u8
+> target_linkrate,
+> +				u8 target_lane_count, int
+> *iteration_count, u8 *lane_adjust,  int *status_control, u8
+> *prev_lane_adjust)
+> +{
+> +	int ret;
+> +	u8 val;
+> +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
+> +
+> +	if (*status_control == 1) {
+> +		if (mtk_dp->train_info.tps4) {
+> +			ret = mtk_dp_train_set_pattern(mtk_dp, 4);
+> +			if (ret)
+> +				return -EINVAL;
+> +
+> +			val = DP_TRAINING_PATTERN_4;
+> +		} else if (mtk_dp->train_info.tps3) {
+> +			ret = mtk_dp_train_set_pattern(mtk_dp, 3);
+> +			if (ret)
+> +				return -EINVAL;
+> +
+> +			val = DP_LINK_SCRAMBLING_DISABLE |
+> +				DP_TRAINING_PATTERN_3;
+> +		} else {
+> +			ret = mtk_dp_train_set_pattern(mtk_dp, 2);
+> +			if (ret)
+> +				return -EINVAL;
+> +
+> +			val = DP_LINK_SCRAMBLING_DISABLE |
+> +				DP_TRAINING_PATTERN_2;
+> +		}
+> +		drm_dp_dpcd_writeb(&mtk_dp->aux,
+> +				   DP_TRAINING_PATTERN_SET,
+> +				val);
+> +
+> +		drm_dp_dpcd_read(&mtk_dp->aux,
+> +				 DP_ADJUST_REQUEST_LANE0_1,
+> +				lane_adjust,
+> +				sizeof(*lane_adjust) * 2);
+> +
+> +		mtk_dp_train_update_swing_pre(mtk_dp,
+> +					      target_lane_count,
+> lane_adjust);
+> +		*status_control = 2;
+> +		(*iteration_count)++;
+> +	}
+> +
+> +	drm_dp_link_train_channel_eq_delay(&mtk_dp->aux,
+> +					   mtk_dp->rx_cap);
+> +
+> +	mtk_dp_read_link_status(mtk_dp, link_status);
+
+drm_dp_dpcd_read_link_status(&mtk_dp->aux, link_status);
+
+Regards,
+CK
+
+> +
+> +	if (!drm_dp_clock_recovery_ok(link_status,
+> +				      target_lane_count)) {
+> +		mtk_dp->train_info.cr_done = false;
+> +		mtk_dp->train_info.eq_done = false;
+> +		dev_dbg(mtk_dp->dev, "Link train EQ fail\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (drm_dp_channel_eq_ok(link_status,
+> +				 target_lane_count)) {
+> +		mtk_dp->train_info.eq_done = true;
+> +		dev_dbg(mtk_dp->dev, "Link train EQ pass\n");
+> +		return 0;
+> +	}
+> +
+> +	if (*prev_lane_adjust == link_status[4])
+> +		(*iteration_count)++;
+> +	else
+> +		*prev_lane_adjust = link_status[4];
+> +
+> +	return -EAGAIN;
+> +}
+> +
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
