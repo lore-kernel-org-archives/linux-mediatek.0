@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3BC8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 18:04:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 994FCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 May 2022 18:04:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zn2L9r4QCjqTttiPItYxNx0nsFvPc+vNpjUq6w0OzJA=; b=S1ISeW7SQ/YYn6
-	3VAMBHRkZnyHJbm/44C13/JLRy8XCvdV9SCps6D1w/yuIp2Q8+nHggoiBUdE2l0b7srr1Y0vY4rzd
-	TfmczdGviolyS1brnHaUWBphbGFsJV+2f1DHMxr4zRUnrY/TdnyxsOx9EcbOuXu4exXikwFPparJk
-	oY676g5BW92FfmGulL5vKPcizTw2pTrhJZ9rux4tJjEl26oM1LkhmEx0IVC5iaCE5iFcj+k4TmeHz
-	zgnKfGBk5JgGxxPJKAwCubTUKJnzYyXEiFa8jLX3Hra/PtqYALNNd4NdfFkgncq0BMs6dv7QHRQWx
-	+efGt+anYu0ySPy88jWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3vhW5BQe8o9QxaeQCX8I+M16wnxMK3HZqiWh080Vlyc=; b=O+bUKS7rYjhDX3
+	AjpyLTsKqLjgv8bPZBI2q/fgroWDjmyYE9m4sO8zYnoiG4s+iQHRiJR6eq2DcWLEMuwPFIWOo4Dz3
+	YwGv8gu/wKf/A8XA36BJUD00ev6F1cljHM9im4giO0OOizZECMwH9W8u024i79FWNgrVPn6MPYJP2
+	NrCjblyo38a8RN5xU7jMz+koDRcMFKiK06QYlczDN/Ek9WhboVJRsh77LQQ8V0j8AUR2fyMaCpcRk
+	+hYeBOcmBPjSny/veIRKLryLciep1b/USvEjJ833nXQuRWyDM4hvES/nc6CubL/EHPKfrZgJPmHnC
+	qeNpMqOz3GRGH5+2VgzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvjkd-007mTq-S7; Mon, 30 May 2022 18:04:23 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1nvjke-007mU9-Ky; Mon, 30 May 2022 18:04:24 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvjkG-007mIC-A7
-	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 18:04:03 +0000
-Received: by mail-wr1-x429.google.com with SMTP id q21so4480792wra.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 11:03:57 -0700 (PDT)
+	id 1nvjkI-007mIV-VC
+	for linux-mediatek@lists.infradead.org; Mon, 30 May 2022 18:04:04 +0000
+Received: by mail-wr1-x436.google.com with SMTP id x17so6607090wrg.6
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 May 2022 11:04:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=eEF/THqP4/KMnhR3Jx46Pp2/fGel1OrMSQe1WykeaFE=;
-        b=YjA/47czGUZcB3jHTGA93lpns9MvpQGWDsDLKqd8CFUEsg1VNHhCm2d7nwCGBfQvja
-         E7bGvlwNaBeG/I0zVOqu77Y2ZNhxxc3/1DkrFu6rxz08JUgpYX1cMjrVpm+M9HET6FRa
-         yS5VYOlJEUvUzgwXXhnfX7VhNKQvOninG0lZEJqPss8cwi0GrsZtu0pdyN6SIsiy55+m
-         oW4sbMy84PoQgMFQ1rI0dknEbE8i08PEYhC+NU3e4mv5JCYQYqyOedDXKp5i4CsYMfDB
-         wtXofgV58zwq8U8hgNi42vXMkUF6nmV31OKlRYNzQpZ+7K70ot1UtCVuanhwp9pxzAlz
-         NGqQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=vmIAgX4stP7tbN1utudJdCwbmHGl9Wqirrw9D2YXhxA=;
+        b=sj37xc3nASZ+YCXla39Pf94LuVNA1E3wbnpESKap4+mtZJkHFXPsMp7U6qzSqZUvSP
+         Zkbt24QW2ES5ClbIchtBy19300ZLdqUNMSmmUTpB6UYympcjd01q1M0KrPM9xHbQ1Qxw
+         GHrOPXCT+kGQ4dB/KttIVWVEUjPvL6qWZSfqcDa2MSh2XvY34u/O4j3wXJ/4xhzDGdS4
+         KDD0P2RkI/tv81gLON3wHXZdLn5dCEoFpv7k5Jf/+ktP9RymmXCa2CHYVACXJiwm6ZVm
+         HPCp8Ul/ru2dIS28/dji4srbNBakB6xMGNuUeH94i8RGl8OD1U0q+N7faTgqNzcaWwdG
+         6aHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=eEF/THqP4/KMnhR3Jx46Pp2/fGel1OrMSQe1WykeaFE=;
-        b=ax0QPaoV+zl5y/NSpsaR4sP+dHIntUdyJDMPtcQb2B96yC88TFHZk2rieERV0+9gFX
-         6VW3E4rYg3cewJhg/9vv/8kx00pLSRSA9Srq/qw1JtKf6YAUCUqi5OWLhthmoO1QRCbZ
-         N/X8RCRkP8r6YNmfCFG8yfilTZG1wviDvqIk9UnYBYjxo5Uq/zmO+HhUW46QITu9CVGj
-         9WV1cLTql8CqSIM8ug53tQ5g6XhFpXzGuYgsjxhdQvC2waDG5IVckkw0lqU3tCyL4mhh
-         GPzNNoAjwKXzzcyYJZtA8V16swRXDpboaBAyxsZfwKjOggmp8eMnFyEM7KOrhTxlJ3nR
-         9+bA==
-X-Gm-Message-State: AOAM530CXKBWmrhxEOIKShyJi5hgRRjODELkLAUq4seFSRykZySb3idm
-	03lec/ZtqSndry4WDM2MyWikUA==
-X-Google-Smtp-Source: ABdhPJwy5EGuO92uUYbYm+RoosB6dUYzPz/zHdWaBA9pWwIWvfY+x51eD4gAdsAxVp9Fy19bMTkIcg==
-X-Received: by 2002:a5d:6a92:0:b0:210:3387:23ec with SMTP id s18-20020a5d6a92000000b00210338723ecmr5422504wru.102.1653933836689;
-        Mon, 30 May 2022 11:03:56 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=vmIAgX4stP7tbN1utudJdCwbmHGl9Wqirrw9D2YXhxA=;
+        b=bL0UD6907A78US74DP2pbMsKqWtCCBd8rhxs5BJU2dI7BeOUWAU2sKN+MaomME9lvt
+         lw1QuwoA+mfrP9XK6tTv2Ot4LUw5Tq30zQKqmo78nOFxm/6od3VN3smitNf394MnCWX1
+         LFU+hza+swOQ9ZXsLoeXQv1w06jvLRytUz2qhPE/lDCDdnS+1gW+fkhygfheCspkVtRX
+         zvfKKbKmDPd3BKSYdhD2GA7Lnh+97nufsNN/VY5BkCF5j6oYF+lBYZQLMTLlbE7RGl4Y
+         ey55fhXslHjwzNOkd5aMAZj48pjMJ2FYD1w1yJ0upcgZ29bA0g2D0RoDHJSIBDiK8iKI
+         g8nw==
+X-Gm-Message-State: AOAM530xUZeu7rGAsHf4oSR3sE+E2I1Z6F8M12lNiVasvhQ91xOEj/8f
+	JANGlEC5LbzdxEbh+HDpnQZDsQ==
+X-Google-Smtp-Source: ABdhPJzbbLY65ueNfiMy634xwWX8GhshgQaMx9qx3BJ/rdkq+iVkOzEljqVwWPwdzKhOxGv1GHmSOg==
+X-Received: by 2002:a05:6000:1247:b0:210:1f6c:b1cb with SMTP id j7-20020a056000124700b002101f6cb1cbmr12912728wrx.709.1653933839926;
+        Mon, 30 May 2022 11:03:59 -0700 (PDT)
 Received: from helium.lan ([88.160.162.107])
-        by smtp.gmail.com with ESMTPSA id 9-20020a1c0209000000b00397550b387bsm1647wmc.23.2022.05.30.11.03.54
+        by smtp.gmail.com with ESMTPSA id 9-20020a1c0209000000b00397550b387bsm1647wmc.23.2022.05.30.11.03.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 May 2022 11:03:55 -0700 (PDT)
+        Mon, 30 May 2022 11:03:59 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Yong Wu <yong.wu@mediatek.com>,
 	Joerg Roedel <joro@8bytes.org>,
 	Will Deacon <will@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Fabien Parent <fparent@baylibre.com>,
 	iommu@lists.linux-foundation.org,
 	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 1/3] dt-bindings: iommu: mediatek: add binding documentation for MT8365 SoC
-Date: Mon, 30 May 2022 20:03:26 +0200
-Message-Id: <20220530180328.845692-1-fparent@baylibre.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 3/3] iommu: mtk_iommu: add support for MT8365 SoC
+Date: Mon, 30 May 2022 20:03:28 +0200
+Message-Id: <20220530180328.845692-3-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220530180328.845692-1-fparent@baylibre.com>
+References: <20220530180328.845692-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_110400_541001_7F034417 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20220530_110403_070261_997A35B8 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,137 +94,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add IOMMU binding documentation for the MT8365 SoC.
+Add IOMMU support for MT8365 SoC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- .../bindings/iommu/mediatek,iommu.yaml        |  2 +
- include/dt-bindings/memory/mt8365-larb-port.h | 96 +++++++++++++++++++
- 2 files changed, 98 insertions(+)
- create mode 100644 include/dt-bindings/memory/mt8365-larb-port.h
+ drivers/iommu/mtk_iommu.c | 11 +++++++++++
+ drivers/iommu/mtk_iommu.h |  1 +
+ 2 files changed, 12 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index 97e8c471a5e8..5ba688365da5 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -77,6 +77,7 @@ properties:
-           - mediatek,mt8173-m4u  # generation two
-           - mediatek,mt8183-m4u  # generation two
-           - mediatek,mt8192-m4u  # generation two
-+          - mediatek,mt8365-m4u  # generation two
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index b692347d8d56..039b8f9d5022 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1093,6 +1093,16 @@ static const struct mtk_iommu_plat_data mt8192_data = {
+ 	.port_width     = 5,
+ };
  
-       - description: mt7623 generation one
-         items:
-@@ -120,6 +121,7 @@ properties:
-       dt-binding/memory/mt8173-larb-port.h for mt8173,
-       dt-binding/memory/mt8183-larb-port.h for mt8183,
-       dt-binding/memory/mt8192-larb-port.h for mt8192.
-+      dt-binding/memory/mt8365-larb-port.h for mt8365.
++static const struct mtk_iommu_plat_data mt8365_data = {
++	.m4u_plat     = M4U_MT8365,
++	.flags	      = RESET_AXI,
++	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
++	.iova_region  = single_domain,
++	.iova_region_nr = ARRAY_SIZE(single_domain),
++	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
++	.port_width   = 6,
++};
++
+ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
+ 	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
+@@ -1100,6 +1110,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+ 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
+ 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
++	{ .compatible = "mediatek,mt8365-m4u", .data = &mt8365_data},
+ 	{}
+ };
  
-   power-domains:
-     maxItems: 1
-diff --git a/include/dt-bindings/memory/mt8365-larb-port.h b/include/dt-bindings/memory/mt8365-larb-port.h
-new file mode 100644
-index 000000000000..e7d5637aa38e
---- /dev/null
-+++ b/include/dt-bindings/memory/mt8365-larb-port.h
-@@ -0,0 +1,96 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Yong Wu <yong.wu@mediatek.com>
-+ */
-+#ifndef _DT_BINDINGS_MEMORY_MT8365_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT8365_LARB_PORT_H_
-+
-+#include <dt-bindings/memory/mtk-memory-port.h>
-+
-+#define M4U_LARB0_ID			0
-+#define M4U_LARB1_ID			1
-+#define M4U_LARB2_ID			2
-+#define M4U_LARB3_ID			3
-+#define M4U_LARB4_ID			4
-+#define M4U_LARB5_ID			5
-+#define M4U_LARB6_ID			6
-+#define M4U_LARB7_ID			7
-+
-+/* larb0 */
-+#define M4U_PORT_DISP_OVL0		MTK_M4U_ID(0, 0)
-+#define M4U_PORT_DISP_OVL0_2L		MTK_M4U_ID(0, 1)
-+#define M4U_PORT_DISP_RDMA0		MTK_M4U_ID(0, 2)
-+#define M4U_PORT_DISP_WDMA0		MTK_M4U_ID(0, 3)
-+#define M4U_PORT_DISP_RDMA1		MTK_M4U_ID(0, 4)
-+#define M4U_PORT_MDP_RDMA0		MTK_M4U_ID(0, 5)
-+#define M4U_PORT_MDP_WROT1		MTK_M4U_ID(0, 6)
-+#define M4U_PORT_MDP_WROT0		MTK_M4U_ID(0, 7)
-+#define M4U_PORT_MDP_RDMA1		MTK_M4U_ID(0, 8)
-+#define M4U_PORT_DISP_FAKE0		MTK_M4U_ID(0, 9)
-+
-+/* larb1 */
-+#define M4U_PORT_VENC_RCPU		MTK_M4U_ID(1, 0)
-+#define M4U_PORT_VENC_REC		MTK_M4U_ID(1, 1)
-+#define M4U_PORT_VENC_BSDMA		MTK_M4U_ID(1, 2)
-+#define M4U_PORT_VENC_SV_COMV		MTK_M4U_ID(1, 3)
-+#define M4U_PORT_VENC_RD_COMV		MTK_M4U_ID(1, 4)
-+#define M4U_PORT_VENC_NBM_RDMA		MTK_M4U_ID(1, 5)
-+#define M4U_PORT_VENC_NBM_RDMA_LITE	MTK_M4U_ID(1, 6)
-+#define M4U_PORT_JPGENC_Y_RDMA		MTK_M4U_ID(1, 7)
-+#define M4U_PORT_JPGENC_C_RDMA		MTK_M4U_ID(1, 8)
-+#define M4U_PORT_JPGENC_Q_TABLE		MTK_M4U_ID(1, 9)
-+#define M4U_PORT_JPGENC_BSDMA		MTK_M4U_ID(1, 10)
-+#define M4U_PORT_JPGDEC_WDMA		MTK_M4U_ID(1, 11)
-+#define M4U_PORT_JPGDEC_BSDMA		MTK_M4U_ID(1, 12)
-+#define M4U_PORT_VENC_NBM_WDMA		MTK_M4U_ID(1, 13)
-+#define M4U_PORT_VENC_NBM_WDMA_LITE	MTK_M4U_ID(1, 14)
-+#define M4U_PORT_VENC_CUR_LUMA		MTK_M4U_ID(1, 15)
-+#define M4U_PORT_VENC_CUR_CHROMA	MTK_M4U_ID(1, 16)
-+#define M4U_PORT_VENC_REF_LUMA		MTK_M4U_ID(1, 17)
-+#define M4U_PORT_VENC_REF_CHROMA	MTK_M4U_ID(1, 18)
-+
-+/* larb2 */
-+#define M4U_PORT_CAM_IMGO		MTK_M4U_ID(2, 0)
-+#define M4U_PORT_CAM_RRZO		MTK_M4U_ID(2, 1)
-+#define M4U_PORT_CAM_AAO		MTK_M4U_ID(2, 2)
-+#define M4U_PORT_CAM_LCS		MTK_M4U_ID(2, 3)
-+#define M4U_PORT_CAM_ESFKO		MTK_M4U_ID(2, 4)
-+#define M4U_PORT_CAM_CAM_SV0		MTK_M4U_ID(2, 5)
-+#define M4U_PORT_CAM_CAM_SV1		MTK_M4U_ID(2, 6)
-+#define M4U_PORT_CAM_LSCI		MTK_M4U_ID(2, 7)
-+#define M4U_PORT_CAM_LSCI_D		MTK_M4U_ID(2, 8)
-+#define M4U_PORT_CAM_AFO		MTK_M4U_ID(2, 9)
-+#define M4U_PORT_CAM_SPARE		MTK_M4U_ID(2, 10)
-+#define M4U_PORT_CAM_BPCI		MTK_M4U_ID(2, 11)
-+#define M4U_PORT_CAM_BPCI_D		MTK_M4U_ID(2, 12)
-+#define M4U_PORT_CAM_UFDI		MTK_M4U_ID(2, 13)
-+#define M4U_PORT_CAM_IMGI		MTK_M4U_ID(2, 14)
-+#define M4U_PORT_CAM_IMG2O		MTK_M4U_ID(2, 15)
-+#define M4U_PORT_CAM_IMG3O		MTK_M4U_ID(2, 16)
-+#define M4U_PORT_CAM_WPE0_I		MTK_M4U_ID(2, 17)
-+#define M4U_PORT_CAM_WPE1_I		MTK_M4U_ID(2, 18)
-+#define M4U_PORT_CAM_WPE_O		MTK_M4U_ID(2, 19)
-+#define M4U_PORT_CAM_FD0_I		MTK_M4U_ID(2, 20)
-+#define M4U_PORT_CAM_FD1_I		MTK_M4U_ID(2, 21)
-+#define M4U_PORT_CAM_FD0_O		MTK_M4U_ID(2, 22)
-+#define M4U_PORT_CAM_FD1_O		MTK_M4U_ID(2, 23)
-+
-+/* larb3 */
-+#define M4U_PORT_HW_VDEC_MC_EXT		MTK_M4U_ID(3, 0)
-+#define M4U_PORT_HW_VDEC_UFO_EXT	MTK_M4U_ID(3, 1)
-+#define M4U_PORT_HW_VDEC_PP_EXT		MTK_M4U_ID(3, 2)
-+#define M4U_PORT_HW_VDEC_PRED_RD_EXT	MTK_M4U_ID(3, 3)
-+#define M4U_PORT_HW_VDEC_PRED_WR_EXT	MTK_M4U_ID(3, 4)
-+#define M4U_PORT_HW_VDEC_PPWRAP_EXT	MTK_M4U_ID(3, 5)
-+#define M4U_PORT_HW_VDEC_TILE_EXT	MTK_M4U_ID(3, 6)
-+#define M4U_PORT_HW_VDEC_VLD_EXT	MTK_M4U_ID(3, 7)
-+#define M4U_PORT_HW_VDEC_VLD2_EXT	MTK_M4U_ID(3, 8)
-+#define M4U_PORT_HW_VDEC_AVC_MV_EXT	MTK_M4U_ID(3, 9)
-+#define M4U_PORT_HW_VDEC_RG_CTRL_DMA_EXT MTK_M4U_ID(3, 10)
-+
-+/* larb4 */
-+#define M4U_PORT_APU_READ		MTK_M4U_ID(0, 0)
-+#define M4U_PORT_APU_WRITE		MTK_M4U_ID(0, 1)
-+
-+#endif
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index 84cecaf6d61c..cb174fa6f2ab 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -46,6 +46,7 @@ enum mtk_iommu_plat {
+ 	M4U_MT8173,
+ 	M4U_MT8183,
+ 	M4U_MT8192,
++	M4U_MT8365,
+ };
+ 
+ struct mtk_iommu_iova_region;
 -- 
 2.36.1
 
