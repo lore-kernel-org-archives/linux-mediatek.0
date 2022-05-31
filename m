@@ -4,89 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6FB6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 20:40:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C44D9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 20:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wvzpbSEPy8hH2j8nCMLdy/B7cPNM92GjfuEe4Y3SeWM=; b=uZolN9BZq0Iv+k
-	Eph3HAQD4Vj6IhY+07wSiIixL2zSgS4mp/GMZr9niWo3T0ToKbrHj6FtLbkOsuG1TWTrCmojuHw0Z
-	z5FY8z/bG2tNajmijJk4xskcdGNlv/2SO9KkZk0BcO6gNGwQymUvso8w5fEBHolny+gLvAr+ifHHr
-	hZRWggg6x6owsLqGPjylgJWzp0clT9UXKeyOIqvru4MzONt2q92/XWSZHnXw/jTUevcAV+ceKeV4Q
-	G7XV3S4jxx6SOhqgQzaEj6+UeeMWXxUusjUL+xfO9x2kk1xSrtfhAaB6E3pypI/cRTS3duV6S7tj9
-	F2tTEDKSA/qJrh1Zwuug==;
+	List-Owner; bh=20jV3Qi7FQ73MN9wEJT6kTRKjvG5JLchS2dCO4QYNHw=; b=QQyORqbMcbG2PK
+	lessfGnRh4WeTcJiIZA2zF5cKd0glFk+9YqDmUp+QdDebpZPvMryqS5OpDUmi5/6NHLdANsx7lixu
+	qIGKsA8ElXPuSZVN+/vh7eDEWiybpcQjIGJxykKnrq2T08QNYbIgB9hWbZVxkE7OJ95zrIeoX+Kah
+	A6rfvlVLT3vw/e1gQkOHuMewRooBit6ZhYr50tYDSBzsBFPkz4lzZOLC01RMLO/zxBlItFs5+/hDj
+	tJ5FzXpSVC30xcL6IaKNgYkB7gR4Km+hZ0dpHdc51HiRKHn4mzx5ZK0Fb5fGQ7tmzYoRWeTCgeohB
+	BlvC+hSiJxfmU+7km0zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw8fE-00CZ7M-2q; Tue, 31 May 2022 20:40:28 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1nw8iE-00CbGH-6v; Tue, 31 May 2022 20:43:34 +0000
+Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw8f4-00CYwj-66
-	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 20:40:19 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id x62so7276829ede.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 13:40:15 -0700 (PDT)
+	id 1nw8i1-00Cb9X-66; Tue, 31 May 2022 20:43:22 +0000
+Received: by mail-io1-xd2c.google.com with SMTP id d198so15374010iof.12;
+        Tue, 31 May 2022 13:43:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=Alpwe54um/pAMi391V2OXK5ebcRXESWz/C1BKY6Vx2U=;
-        b=bpXiaXVheIuoXS4qYPJJkBRiRLc0xdm8fJsiezzNxaSbqbM0HnHijdjFweVTNkO5Bt
-         OZqNy/x48s3aknETcJSY51qRmtTvaefEriEEJgQKisgFjaP183xCgKHWGQMMuAEHM6iq
-         Tc3YKXQYkPZ94qbC96FiM34BqIpNNbIw3S8bJFm37gUnEIpXhZlKzpuEHXf1T8hzTbUW
-         Du1P41pKola5rfLIqjTtayOOX87K1DlGcQtFT+ikof7IHHBi0DGNf1t+EUD7xcGMBNpZ
-         EvT5U5w/Mdqm9rktSC9cQ0mZie8pKoeXyPlTqMEFXnEeubuvBemuKrU2SexCdF1YgbDO
-         BdSA==
+        bh=TI/uINot2gV0lsjsvp3p4xP/LTEZ58Gik5+AdIHYdjg=;
+        b=WjUDqvXL2OO2piHgXTpKnWg7kXo9tMrfgtr27wgnYh5T8GyiOc6uw6wKAyJO394Zql
+         fh+tPnrmnm+ECm22gO3dHdskQ1xsBGOXDIPcZlMK28PdlJ5llhwCCHdC6n+n60CQaTVW
+         iw96wJJ4F85cmoal2mWrAfo0V6q8OksPYWhXPMZYzdq/EIu4xG54DN4qDRTeiYT4j4K3
+         Lt8pC/MAKLTQ8RKQAG2tBmU6yObfyVkXMBCkWffZ2O6Zp6HD1JSjhfIcwdVvRMI+ijS3
+         mSyz4iwbpDpK6M5kQ9YpoF9irzRtLVTpUpukpuDglcjijqmhUvcHgfLPTUmcnlaKJBBw
+         GHBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=Alpwe54um/pAMi391V2OXK5ebcRXESWz/C1BKY6Vx2U=;
-        b=rnXk9HEl1PB9Gid88WXTsXzqTmLFJFBBisUA5lOg8cBabQWNQVbpW/bvzSm6hnhYqK
-         EnCX0GP6XjM7kpbewb8n3Z1rdY45zPfGZ/4cV8v7m/2YKLNed8xmaejREa2Escyl4qkf
-         k0ENuvp5dhTmkuW6wHilMKtvx907uHK0CWdRVGPRw8DXDX056XrEHjlui//N8nfOUlUY
-         ARxaKXyCmF6/MeD52Yxi0wOyJ6f+jV1vVIz5IhQ855zvHANomKCI89o1cWOiGtcErJyH
-         c6f9S+rMzTT4vwVrLLtHBMy68AOWSuwbS0jtyn7egSoSTgYe6MiihoRrZ85WDzytuDto
-         fyUg==
-X-Gm-Message-State: AOAM533mBbzoDljI1hMCoo7U8YclTVIkGgl3HdG9x2OzSRfkW13LMXOy
-	ye1gEsdqr6NXmRk6fYJdoNxw2g==
-X-Google-Smtp-Source: ABdhPJzdZx04tPobjk6aL2VQPYwY9rAKwfMAkoP+ACgtkB/OwGTdsTuE3oT/JNLygYdZnn9MWjUmsw==
-X-Received: by 2002:a05:6402:c1:b0:42a:b8a5:8d5e with SMTP id i1-20020a05640200c100b0042ab8a58d5emr67401586edu.266.1654029614622;
-        Tue, 31 May 2022 13:40:14 -0700 (PDT)
-Received: from [192.168.0.179] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id gt2-20020a170906f20200b006ff01fbb7ccsm5299610ejb.40.2022.05.31.13.40.12
+        bh=TI/uINot2gV0lsjsvp3p4xP/LTEZ58Gik5+AdIHYdjg=;
+        b=qWjOcLzz3eU+Yw0X7so9oV0fv4SQWx5JfIhxucuUAaaBA/tuYEJneJedCcR9ygd0qT
+         58Hv9YVbQdz+yJUG0IThh9v+2DeZmcj37y1p9jVtluunCLaz7wwWz/+yZa7zWshgWx9f
+         t4gHQQh0RZSFLz/9LnaMNpSIFm/M/F9etw4pAtnQdYIwyUX7+9DqXIXeDWK8JAYsARCs
+         Npt9oJ1BGD5pStwTQc49dB8LhlyT5MJtcCK/PKSCRhZaipuJuOZcyRpblBcboDnGnl/K
+         AKEx00qQEkt/xIJRanrPYQTN46NdRgHA5UVWFPeUoW3HrmeqhLtyGM9i0lWPsggsjI9l
+         zjHg==
+X-Gm-Message-State: AOAM532JVBQVcndB8qr8sKC5pHWm5jvAEei0g8Ouo579gFe6FqndQIdF
+	kJGB7j0qnY6aHTZeVaTQVzE=
+X-Google-Smtp-Source: ABdhPJx8SX0NE5W2CPxvdPdhXAbiWnUhFsofQHgdXznAXgWnYRcojbA8I3LXi1OxTQffPNYS3M4g7A==
+X-Received: by 2002:a05:6602:3299:b0:668:6cd3:60e6 with SMTP id d25-20020a056602329900b006686cd360e6mr7510796ioz.183.1654029799400;
+        Tue, 31 May 2022 13:43:19 -0700 (PDT)
+Received: from ?IPV6:2600:1700:2442:6db0:bd78:a862:1b9c:aef9? ([2600:1700:2442:6db0:bd78:a862:1b9c:aef9])
+        by smtp.gmail.com with ESMTPSA id q11-20020a92050b000000b002d3bb071d5bsm1010934ile.0.2022.05.31.13.43.18
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 May 2022 13:40:14 -0700 (PDT)
-Message-ID: <3ab7892e-cee0-f5d6-7b58-1a9bfc803ea9@linaro.org>
-Date: Tue, 31 May 2022 22:40:12 +0200
+        Tue, 31 May 2022 13:43:19 -0700 (PDT)
+Message-ID: <8d4b8cc3-8433-24f9-1fc5-12d71e640952@gmail.com>
+Date: Tue, 31 May 2022 16:43:18 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [PATCH 12/14] dt-bindings: leds: Add Mediatek MT6370 flashlight
- binding documentation
+Subject: Re: [PATCH] scripts: dtc: fix a false alarm for
+ node_name_chars_strict
 Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
- daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
- gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
- lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
- heikki.krogerus@linux.intel.com, deller@gmx.de
-Cc: cy_huang@richtek.com, alice_chen@richtek.com, chiaen_wu@richtek.com,
- dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org
-References: <20220531104211.17106-1-peterwu.pub@gmail.com>
- <20220531104211.17106-4-peterwu.pub@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220531104211.17106-4-peterwu.pub@gmail.com>
+To: Qun-Wei Lin <qun-wei.lin@mediatek.com>, robh+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ casper.li@mediatek.com, chinwen.chang@mediatek.com,
+ kuan-ying.lee@mediatek.com
+References: <20220531053358.19003-1-qun-wei.lin@mediatek.com>
+From: Frank Rowand <frowand.list@gmail.com>
+In-Reply-To: <20220531053358.19003-1-qun-wei.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_134018_253432_D5AF39B8 
-X-CRM114-Status: GOOD (  16.50  )
+X-CRM114-CacheID: sfid-20220531_134321_280139_92404A30 
+X-CRM114-Status: GOOD (  18.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,87 +94,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/05/2022 12:42, ChiaEn Wu wrote:
-> From: Alice Chen <alice_chen@richtek.com>
+On 5/31/22 01:33, Qun-Wei Lin wrote:
+> The function check_node_name_chars_strict issues a false alarm when
+> compiling an overlay dts.
 > 
-
-Subject - same comment as previous #10 patch.
-
-> Add Mediatek MT6370 flashlight binding documentation
+> /fragment@0/__overlay__: Character '_' not recommended in node name
 > 
-> Signed-off-by: Alice Chen <alice_chen@richtek.com>
+> This workaround will fix it by skip checking for node named __overlay__.
+
+This is not a false alarm.
+
+Do not special case node name "__overlay__".  This node name should never
+occur in a modern overlay source file.
+
+For details, see "Overlay Source Format" in the "Overlays" section of:
+https://elinux.org/Device_Tree_Reference#Overlays
+
+That paragraph also has a pointer to the correct format for overlay
+source files, which is slides 29-34 of:
+https://elinux.org/Device_Tree_Reference#Overlays
+
+-Frank
+
+> 
+> Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
 > ---
->  .../leds/mediatek,mt6370-flashlight.yaml      | 48 +++++++++++++++++++
->  1 file changed, 48 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+>  scripts/dtc/checks.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-> new file mode 100644
-> index 000000000000..b1b11bd3d410
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-> @@ -0,0 +1,48 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/leds/leds-mt6370-flashlight.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> diff --git a/scripts/dtc/checks.c b/scripts/dtc/checks.c
+> index 781ba1129a8e..6ef4f2cd67b9 100644
+> --- a/scripts/dtc/checks.c
+> +++ b/scripts/dtc/checks.c
+> @@ -325,6 +325,11 @@ static void check_node_name_chars_strict(struct check *c, struct dt_info *dti,
+>  {
+>  	int n = strspn(node->name, c->data);
+>  
+> +	if (streq(node->name, "__overlay__")) {
+> +		/* HACK: Overlay fragments are a special case */
+> +		return;
+> +	}
 > +
-> +title: Flash LED driver for MT6370 PMIC from MediaTek Integrated.
-> +
-> +maintainers:
-> +  - Alice Chen <alice_chen@richtek.com>
-> +
-> +description: |
-> +  This module is part of the MT6370 MFD device.
-> +  see Documentation/devicetree/bindings/mfd/mt6370.yaml
-> +  Add MT6370 flash LED driver include 2-channel flash LED support Torch/Strobe Mode.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6370-flashlight
-> +
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
-> +patternProperties:
-> +  "^led@[0-1]$":
-> +    type: object
-> +    $ref: common.yaml#
-> +    description:
-> +      Properties for a single flash LED.
+>  	if (n < node->basenamelen)
+>  		FAIL(c, dti, node, "Character '%c' not recommended in node name",
+>  		     node->name[n]);
 
-Same as patch #11.
-
-> +
-> +    properties:
-> +      reg:
-> +        description: Index of the flash LED.
-
-As well.
-
-> +        enum:
-> +          - 0 #Address of LED1
-> +          - 1 #Address of LED2
-
-'#' starts a comment, so there is always a space after '#'
-
-> +
-> +    unevaluatedProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - "#address-cells"
-> +  - "#size-cells"
-> +
-> +additionalProperties: false
-
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
