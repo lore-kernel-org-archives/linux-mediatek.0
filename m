@@ -4,69 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0A0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 13:07:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EDD9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 13:14:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NK46mmeqMfSI+TRc2hk9TfTjiGmvJzbsMHWDU2ueFto=; b=xu/xxZVNrKV1y6
-	9ZpU4pnZkC0aBg3ixiMTgyKNmmlEjaUmMEJ1kNvbQK/lkYfgY3e9baOlRlsdiJ0M4SIXYjXoVOCYt
-	U5FPV+oHWlxkmi/e8Rc6HYYBlio2dOII7GLTDBo7nbqp5/NPqNRlOj6rinI3xxHr9HRIppR8dg8Eh
-	6ALi2gxf5GN4xzDfs9onWbb7xI+sUKC4FRsvI+PLjuYpAXj95hzkn5dd0v+mC6379POj4SrqH9vDv
-	PhMEjho73ReQ0YuJyHFQ/wWZCABjCNbhAK0xuisq3F4B0V7fj3go5CaRPdZIg8KlNwHP9sCmgH0DC
-	o0OImi1rwFr5XkvT5nRQ==;
+	List-Owner; bh=PF993pDtOtpfpACjO6YosGDNVzyY0I3Y8/OtvIzCFsc=; b=j0tfA5pqsrimcA
+	sve0ZLbxTFlMBjPhz1qUmLBo5VGKWJM4lpwJzD6iEco//kBtH7vG9WHxjP2DVccpt07DB8wJicwHY
+	77RbGQhJroQXrEdt0Gsr7Y/5m77nriV9no2Ma+tbWhz3zbFh/Nmfia7vN+9GqisijIrwnqQvv95pV
+	J69F7Li53H5o9Ria2vZhkUXcce1PQt5FTHMGESUhulssWgavVdm8zCBc++6KHCsuRWZnnvXJFHPwu
+	Iz3v1866MTyzLXfAVrorXq+sXIa1Cw1+9SyA5GHVckVu72auH+9icSNo6Hwoo/oQoB7UI/py/MG4l
+	GhSGZ080ud02nL/kHF9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1ab-00AyMk-Ri; Tue, 31 May 2022 13:07:13 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nw1hd-00B0Fv-TX; Tue, 31 May 2022 13:14:29 +0000
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1a9-00AyCw-9m; Tue, 31 May 2022 13:06:46 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 5B252B80CA5;
-	Tue, 31 May 2022 13:06:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BE90C3411E;
-	Tue, 31 May 2022 13:06:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654002401;
-	bh=fQyBKa6i2Oi/d6zUCqifTnGlCz1MKWwjMKnJhC5OgKU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=JXv5yfghZk1tbSPMN2pXN+/znRFvMr95s0HVF2hqCp6bqeUeugg1kxs8H4LQtBht9
-	 dJZaT5lNuD8kP3vI6JI24z3USrGb+1JRAzQXpcm57FqxndsTpzTa/zTBS+zRc462Lz
-	 mKY54sWvSNREBI9oTsSsSembR9Uoi0cV1NKwCv2+Jg8yHYXtGro5xWFgR6bkS6vwhI
-	 kquO7eJ1TXunLXG/cjdVsvSkVXWX+LYroWCQOASBj3HUEZdrHVLtDVk3ShwONZ4bxS
-	 YeIzDMC9KW9blAgNNg+2bLKycmYnGos7yYCbyEuXJXtkMw2pHXrqxmDX/0Z8cNVref
-	 H2SixmTqhF12Q==
-Received: by mail-vs1-f51.google.com with SMTP id c26so13511442vsl.6;
-        Tue, 31 May 2022 06:06:41 -0700 (PDT)
-X-Gm-Message-State: AOAM532VxFm4XcFVkVQf1Q8cNySESqbJvFhpwIBh5xj97tJyh5k4Mua9
-	i5y9RSpN8/i3mBYXaSabcGeO0IcOXsXyLz56oQ==
-X-Google-Smtp-Source: ABdhPJzIzgHJ8nyxJIrzYvXYC2oWioOfU589jWLaAk9OWmEVsMAUlK4GGYDgQwFpI0Ejh52SgdHXc2ULtIxtWnWSJlk=
-X-Received: by 2002:a05:6102:510b:b0:337:a739:ce7c with SMTP id
- bm11-20020a056102510b00b00337a739ce7cmr18125393vsb.53.1654002400089; Tue, 31
- May 2022 06:06:40 -0700 (PDT)
+	id 1nw1hR-00B0Cb-8o; Tue, 31 May 2022 13:14:19 +0000
+Received: by mail-oi1-x242.google.com with SMTP id k187so13175253oif.1;
+        Tue, 31 May 2022 06:14:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=WjL5ChPbIi7K/V0MdTfM2rPQhvrdOuYsXgOFgMyivaI=;
+        b=WmEqihZdq4LKwV2jTDPCqYBvw9n0DRGIq4RQ7wYrno4HYN5lt3eH4qZDaQTWUHqXVE
+         b8kC+BH6VHErKiVz4/M6PdWldjxCdPMXwoZaJy5mcfAaj/61IzPllr2pjGhtE226tIKp
+         3g8DyvJ2eSUv9HqWtrJMauqYG7IRTb03st1dgUtoPD8MzdXIFGv9FjbNd8b9aa6G6Qvk
+         CK73YGmE24rmOzbwEGXdqwYi3bosJbRJzTuJMuQuk7e87+QK7CNxrvTT/vOoZC3o3/JQ
+         ZA8x5trG+NpI0u9i2JaTtnqB+LA6Kd5J8Ld5nyp41nUyuudbZrk6OWs3brs1crItb4FY
+         1SVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=WjL5ChPbIi7K/V0MdTfM2rPQhvrdOuYsXgOFgMyivaI=;
+        b=47hhXOHjBQJnCGI3j3wwDYCQGpxcELYl8cD81hvNTqaT7HPMIbzebzc8ibYlNxJKoM
+         4fBJYj6CRSQfo5g9xkMyTH85Sqv7PuHq8M/54Ga3LjROWlazWvmRaMgwIKnRJkI2FjtF
+         3NFgiIfqu/qKAHmgs2CQ/FDXTb8FfJiXkEnCRPbz2vaMW4OKyR1wrsrhgw+EP9YlAAiX
+         8cyK9RQAks+SVuBUbj+xP6FxP81Sq24lGTl19QyOBokldv9rXdHfKxGsgDHX0snG5Glz
+         ungk6ZMsmhdE9wakORPmKBr1Dzq2W2GM7bLcJIvi8DL64DuFVFDkiBIGP2+v8LPea6z/
+         IA3w==
+X-Gm-Message-State: AOAM532sPtzNS/UfJHywpr1c4pJIvVGAKmr8wh0FFjMwpOMRhEPwFkgr
+	PFV+IXwnwD5JYj2nROPNk4PIGsDLxT4=
+X-Google-Smtp-Source: ABdhPJwQQg/OzLXNx/Hq3Xv0QAqdEOXRvSI1uqk1PNeKMu66slAGcZdztnBeofE6iyRo6FC0bhehIw==
+X-Received: by 2002:a17:90a:8914:b0:1dc:20c0:40f4 with SMTP id u20-20020a17090a891400b001dc20c040f4mr28485260pjn.11.1653995954965;
+        Tue, 31 May 2022 04:19:14 -0700 (PDT)
+Received: from RD-3580-24288.rt.l (42-72-220-172.emome-ip.hinet.net. [42.72.220.172])
+        by smtp.gmail.com with ESMTPSA id cm24-20020a056a00339800b00518142f8c37sm10751608pfb.171.2022.05.31.04.19.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 May 2022 04:19:14 -0700 (PDT)
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+To: lee.jones@linaro.org,
+	daniel.thompson@linaro.org,
+	jingoohan1@gmail.com,
+	pavel@ucw.cz,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	sre@kernel.org,
+	chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org,
+	jic23@kernel.org,
+	lars@metafoo.de,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	linux@roeck-us.net,
+	heikki.krogerus@linux.intel.com,
+	deller@gmx.de
+Cc: cy_huang@richtek.com,
+	alice_chen@richtek.com,
+	chiaen_wu@richtek.com,
+	peterwu.pub@gmail.com,
+	dri-devel@lists.freedesktop.org,
+	linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	linux-iio@vger.kernel.org,
+	linux-fbdev@vger.kernel.org
+Subject: [RESEND 01/14] dt-bindings: usb: Add Mediatek MT6370 TCPC binding
+Date: Tue, 31 May 2022 19:18:47 +0800
+Message-Id: <20220531111900.19422-2-peterwu.pub@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220531111900.19422-1-peterwu.pub@gmail.com>
+References: <20220531111900.19422-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
-References: <20220531053358.19003-1-qun-wei.lin@mediatek.com>
-In-Reply-To: <20220531053358.19003-1-qun-wei.lin@mediatek.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Tue, 31 May 2022 08:06:28 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJnir+qA1Cgm5ATzsAH-pMqQSychLG=JQyUQg02dYb8TQ@mail.gmail.com>
-Message-ID: <CAL_JsqJnir+qA1Cgm5ATzsAH-pMqQSychLG=JQyUQg02dYb8TQ@mail.gmail.com>
-Subject: Re: [PATCH] scripts: dtc: fix a false alarm for node_name_chars_strict
-To: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Cc: Frank Rowand <frowand.list@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	devicetree@vger.kernel.org, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, casper.li@mediatek.com, 
-	chinwen.chang@mediatek.com, kuan-ying.lee@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_060645_543174_9CC1A422 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20220531_061417_341128_B6AAB4FE 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,40 +115,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 31, 2022 at 12:34 AM Qun-Wei Lin <qun-wei.lin@mediatek.com> wrote:
->
-> The function check_node_name_chars_strict issues a false alarm when
-> compiling an overlay dts.
->
-> /fragment@0/__overlay__: Character '_' not recommended in node name
->
-> This workaround will fix it by skip checking for node named __overlay__.
->
-> Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-> ---
->  scripts/dtc/checks.c | 5 +++++
+From: ChiYuan Huang <cy_huang@richtek.com>
 
-We don't take patches for dtc. You must send them to upstream dtc and
-then it will be sync'ed to the kernel tree.
+Add Mediatek MT6370 TCPC binding documentation.
 
->  1 file changed, 5 insertions(+)
->
-> diff --git a/scripts/dtc/checks.c b/scripts/dtc/checks.c
-> index 781ba1129a8e..6ef4f2cd67b9 100644
-> --- a/scripts/dtc/checks.c
-> +++ b/scripts/dtc/checks.c
-> @@ -325,6 +325,11 @@ static void check_node_name_chars_strict(struct check *c, struct dt_info *dti,
->  {
->         int n = strspn(node->name, c->data);
->
-> +       if (streq(node->name, "__overlay__")) {
-> +               /* HACK: Overlay fragments are a special case */
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+ .../bindings/usb/mediatek,mt6370-tcpc.yaml    | 35 +++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
 
-Not a hack IMO.
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+new file mode 100644
+index 000000000000..49316633f92f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+@@ -0,0 +1,35 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/usb/mediatek,mt6370-tcpc.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: Mediatek MT6370 Type-C Port Switch and Power Delivery controller DT bindings
++
++maintainers:
++  - ChiYuan Huang <cy_huang@richtek.com>
++
++description: |
++  Mediatek MT6370 is a multi-functional device. It integrates charger, ADC, flash, RGB indicators,
++  regulators (DSV/VIBLDO), and TypeC Port Switch with Power Delivery controller.
++  This document only describes MT6370 Type-C Port Switch and Power Delivery controller.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6370-tcpc
++
++  interrupts:
++    maxItems: 1
++
++  connector:
++    type: object
++    $ref: /schemas/connector/usb-connector.yaml#
++    description:
++      Properties for usb c connector.
++
++additionalProperties: false
++
++required:
++  - compatible
++  - interrupts
+-- 
+2.25.1
 
-However, this should be checking for any node name starting with '__'.
-
-Also, doesn't 'fragment@0' cause a warning about missing 'reg'?
 
 _______________________________________________
 Linux-mediatek mailing list
