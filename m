@@ -4,100 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7FBBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 12:39:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C54AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 12:42:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Wi32tmpiQHX52ETq9Uk/4lGPfSR1D8G8ZTXJ1dPWC8=; b=y02PRs5lXgm9HE
-	jKxtBnNH+70QyasVRjYoaKkD5dccotkZbbnu3rtynIFxVq4lu375EbUZPbBXSjBoD47qL8WjIEEJz
-	/AeZNQcGEfyP6PnfovDWfseF2VSbf2TVVyTZAfdKYF4/pd4FZhcPiMa4FsUMbYyyaGTz5/FvIgFTb
-	dZGwfZBTk38vsB35mhA7XbqV+mBv0KwSEkXltHuMxdjFUV3S2vyp9EFoVhUY/pDIr9cUr4+tp8nWV
-	wwaKj3cwx/G3P2/iVDXEcIwAyktXc8k4vjD6lM70s8xK8wrPevA5VWGIL13PB+X1bW3lYmRQvamyZ
-	kbr0FpAu6Kewv0puIGAQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qDX5X5nKXLHBPlFbMdfwdqDyzaVh/0AbbwxuYcFILPc=; b=fk0fJzuy8kRkwH2u1TG6p60vat
+	OOdbxjdBLGYpFOs1twi9choHX2plrMr9r6zdlkSEA05qixijg06bCHcb+hxwHd6L0qA+BNjdDiBcO
+	r9zElS/G6ZiC1ZH+tiGng58E34AtLlpjDasFLU/ipiyCYP9OaKeBf46clISe9KzdRF42xkpvuGZre
+	3WjVCohR5d1LF5Vq+u1idqq2eNykWQse36lpVLMG0spXiK098sHdkR1G61AjKx/vC+X4WgyEn4tdL
+	gbz9nNLpip32iGmXQr47+Vvp9Mvn4hXbOTeKX9xml84y9iHWExSGpB6w8UN8CVY6Btvxb1dJrBFhU
+	ONZG0YxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1A3-00Ao87-2C; Tue, 31 May 2022 12:39:47 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1nw1C9-00Aoj3-Iz; Tue, 31 May 2022 12:41:57 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw19p-00Ao5Y-6k; Tue, 31 May 2022 12:39:36 +0000
-Received: by mail-pl1-x643.google.com with SMTP id b5so12707214plx.10;
-        Tue, 31 May 2022 05:39:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=NLlQWPmyPhz9LkYQh7iizThmB3DZjfxS2yfzbAOphFg=;
-        b=dR/tmmYf6X+SPz7vVDCZSTvJxhSmPumrcdc8D9eCahiy7k5GDXb8cgd5Oz+V7Xx0PC
-         hAmjVU30wiCV7GMwbEfx0EI6okI7wgqBJjhtxxQOaoMd+KgOUEjQWC7TaK13GS+wbNV3
-         4nMpIu8GOnQGX2cEOSo5rOoPbmdvRMkGyIytuDFbw6Q1ndzsjki6TmeyBbqod00KmjJ+
-         LwkmKZN9M46Mt3KB7twZ0g+yay2qgsRP7Ds07ocwfWBkCmEM/RZTwEDb24Rtex7xJinQ
-         +c3SJX7hCPVwQTa0GmgjxG6xpuflTpqYSLVacboKq/ZCOD8dvEg/RhMzwuNJRlDQQuiN
-         AOmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=NLlQWPmyPhz9LkYQh7iizThmB3DZjfxS2yfzbAOphFg=;
-        b=ayXJ4iTvJq3cui+JG7kR0igIsPgFlx2cWMgCH2ZBFdXJX+F1T2gcSJ0wcGW9SMT80R
-         CLBPlRDC1dHL7+xwSXgfGBlpdrEVqEIHb2HEtUqyAs5YQwBXK/av18lLvSen18qsYhny
-         IO2CSorg+3ySAVsz0FRYDXZ9zO7cJszu8lIX6P3R730OxvQWruHo05h/B/IaUbVrlkdl
-         TFrL94JO8p+oSEOgHbuLISF2vbT/8UrpYIWkrYDlcvKqu1/gN9UI7xyFysVAOqXhcrRE
-         zkKnPYqRe0TDb4Gp7Yf79oE7HiiJTWwWVGXVJEFPN6wDvAboYpm1A2Ifmr2NM5QAWoYu
-         7KPw==
-X-Gm-Message-State: AOAM531qTR5DvZt0BaBLHTleKGxc96/AnXI7TuyWtiWp8hfiCGLuF2KC
-	EyT2yIR1OCJW84YFbXzYYzE=
-X-Google-Smtp-Source: ABdhPJwMUDWTQjzldPrXFAGVjBuisYokJWG2xm0cEnR/uFycvlSkZSU8HIszco6eDBSdMG6hx3eaRg==
-X-Received: by 2002:a17:902:9349:b0:158:a6f7:e280 with SMTP id g9-20020a170902934900b00158a6f7e280mr60247418plp.155.1653993750981;
-        Tue, 31 May 2022 03:42:30 -0700 (PDT)
-Received: from RD-3580-24288.rt.l (42-72-220-172.emome-ip.hinet.net. [42.72.220.172])
-        by smtp.gmail.com with ESMTPSA id d19-20020a17090ac25300b001cd4989feebsm1525829pjx.55.2022.05.31.03.42.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 03:42:30 -0700 (PDT)
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-To: lee.jones@linaro.org,
-	daniel.thompson@linaro.org,
-	jingoohan1@gmail.com,
-	pavel@ucw.cz,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	sre@kernel.org,
-	chunfeng.yun@mediatek.com,
-	gregkh@linuxfoundation.org,
-	jic23@kernel.org,
-	lars@metafoo.de,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com,
-	deller@gmx.de
-Cc: cy_huang@richtek.com,
-	alice_chen@richtek.com,
-	chiaen_wu@richtek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-fbdev@vger.kernel.org
-Subject: [PATCH 11/14] dt-bindings: leds: mt6370: Add Mediatek mt6370 indicator documentation
-Date: Tue, 31 May 2022 18:42:08 +0800
-Message-Id: <20220531104211.17106-3-peterwu.pub@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220531104211.17106-1-peterwu.pub@gmail.com>
-References: <20220531104211.17106-1-peterwu.pub@gmail.com>
+	id 1nw1By-00Aof1-Qu; Tue, 31 May 2022 12:41:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 64482611EA;
+	Tue, 31 May 2022 12:41:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D415C385A9;
+	Tue, 31 May 2022 12:41:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1654000905;
+	bh=50k5P2deod6KO8gvHsZ0qJej+m44dwOkD8HE8Gg5bjs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MO2bw7bbdUFxvvki8bhZ3MgawmrbJZNY4ep7dcTpbtkPkBrD1hNo20l60DI3T7Oj1
+	 nlEdkpQz4meR1xf1XIYnfpCEfnmw3hcFzO7dSl+AV566wl8NggjS3iS6AJi7CzsMZX
+	 AN27nByTMKymlcyySqfBAbf2gzy8zhdHvemoux4FVUEYrqpGuxQI+T7JGhU0N6HVrH
+	 foWmceq2jqtCybmNYuVDwkPIWVeUhAcJAKqePfeEoG7aeHhOX0vJwnz4IPCq6XRJS0
+	 Qh7pYiaRubz31TiwxkjXegOnMv4Tyt7uBHh0AoRxhnqbluKjyV3pK5BlOng75mJBSN
+	 FCgiuBVpURnIQ==
+Date: Tue, 31 May 2022 14:41:42 +0200
+From: Mark Brown <broonie@kernel.org>
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: lee.jones@linaro.org, daniel.thompson@linaro.org, jingoohan1@gmail.com,
+	pavel@ucw.cz, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
+	lgirdwood@gmail.com, linux@roeck-us.net,
+	heikki.krogerus@linux.intel.com, deller@gmx.de,
+	cy_huang@richtek.com, alice_chen@richtek.com, chiaen_wu@richtek.com,
+	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org
+Subject: Re: [PATCH 03/14] regulator: mt6370: Add mt6370 DisplayBias and
+ VibLDO support
+Message-ID: <YpYNBo90NETXtjkV@sirena.org.uk>
+References: <20220531102809.11976-1-peterwu.pub@gmail.com>
+ <20220531102809.11976-4-peterwu.pub@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <20220531102809.11976-4-peterwu.pub@gmail.com>
+X-Cookie: May your camel be as swift as the wind.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_053933_283870_3FAD8B94 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20220531_054146_953439_8D1FF471 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,89 +78,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2691076049848117162=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
 
-Add Mediatek mt6370 indicator documentation.
+--===============2691076049848117162==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hl22OOkO/wMChZ8B"
+Content-Disposition: inline
 
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
----
- .../leds/mediatek,mt6370-indicator.yaml       | 57 +++++++++++++++++++
- 1 file changed, 57 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
 
-diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-new file mode 100644
-index 000000000000..823be3add097
---- /dev/null
-+++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-@@ -0,0 +1,57 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/leds/mediatek,mt6370-indicator.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: LED driver for MT6370 PMIC from MediaTek Integrated.
-+
-+maintainers:
-+  - Alice Chen <alice_chen@richtek.com>
-+
-+description: |
-+  This module is part of the MT6370 MFD device.
-+  see Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-+  Add MT6370 LED driver include 4-channel RGB LED support Register/PWM/Breath Mode
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6370-indicator
-+
-+  "#address-cells":
-+    const: 1
-+
-+  "#size-cells":
-+    const: 0
-+
-+patternProperties:
-+  "^(multi-)?led@[0-3]$":
-+    description: |
-+      Properties for a single LED.
-+    $ref: common.yaml#
-+    type: object
-+
-+    properties:
-+      reg:
-+        description: |
-+          Index of the LED.
-+        enum:
-+          - 0 # LED output ISINK1
-+          - 1 # LED output ISINK2
-+          - 2 # LED output ISINK3
-+          - 3 # LED output ISINK4
-+
-+      mediatek,soft-start:
-+        description: |
-+          soft start step control, support /0.5ms/1ms/1.5ms/2ms.
-+        $ref: /schemas/types.yaml#/definitions/uint32
-+        enum: [0, 1, 2, 3]
-+
-+    unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+  - "#address-cells"
-+  - "#size-cells"
-+
-+additionalProperties: false
--- 
-2.25.1
+--hl22OOkO/wMChZ8B
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Tue, May 31, 2022 at 06:27:58PM +0800, ChiaEn Wu wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
+>=20
+> Add mt6370 DisplayBias and VibLDO support.
+
+Other than one small thing this looks nice and clean:
+
+> +	enable_gpio =3D fwnode_gpiod_get_index(of_fwnode_handle(np), "enable", =
+0,
+> +					     GPIOD_OUT_HIGH |
+> +					     GPIOD_FLAGS_BIT_NONEXCLUSIVE,
+> +					     desc->name);
+> +	if (IS_ERR(enable_gpio)) {
+> +		config->ena_gpiod =3D NULL;
+> +		return 0;
+> +	}
+
+Please just use the OF APIs - due to ACPI's handling of power for
+devices the regulator API OF bindings can't be used sensibly on
+ACPI so it's better to explicitly work on DT only.  This won't
+actually cause problems here but it's a bit clearer.
+
+--hl22OOkO/wMChZ8B
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmKWDQUACgkQJNaLcl1U
+h9CrHwf/Xn0rciY/VlcVjndWUL/zYX17wRyxPAwxx/DOq/VCeystayvT4671ML/1
+6h5ZE7pKGSzHQjyt8x3BXHDAvn0EW5KNrc+lwBTQDrhiE7hbKcXb0cChQBvcM4KJ
+m2ETTDdgNoBEkUQwj40OnrL/DIw7NpILWAOaoB+gGwelfj4Lu8LxTcZsRQqdwAGN
+Q4lC4mPkae3NP0+tc82DyjtHytJPaX5jCPML4AofpFKs6A95yGyKlARdDgQqVVXP
+sbKZA93RwgxZDSH0pxXBaKCBTEwOIjIl5qXbk0OXyvnopAYvVGVe6oFgutC2MPqa
+joJC6sXurZO+wFB9H9tlKwq9Au8AOQ==
+=WP6+
+-----END PGP SIGNATURE-----
+
+--hl22OOkO/wMChZ8B--
+
+
+--===============2691076049848117162==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2691076049848117162==--
+
