@@ -4,51 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0542AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 08:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1335C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 08:54:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Kyioqt6u7NYEbQFdDyRmpqGg/ddZTvuj5p846w8Jmak=; b=Bu5A/c1y0Py4WV
-	+4FcOsSyBdvJIVq9W4cdj7iitcNiYvN9JZdIsZUNN0hHHgcLk11Pzc5hx7JM/it0Ls3MHMoPH/Sas
-	Af1Ad+u/dM9QfQh9gmDSL/9Kp4NuI3ASTF+csHkUdGo1rQB8k/SSGK24xt07xM7VBRXCxY4T70QiV
-	q+LDGX1zq7FMiVlqczYqZBDhVwlY4i+OTq7ZXnI4hUAQYtEvGpZEeQ7U2GINVM3hbiL1IjVEugeHV
-	3mdacMEiexTWXOZlbmkAb7DlLWxczBLq7sQPKFLNgy+3LpLee6ReOc64WoINeYBjx6qLPauShf56o
-	sjnfZU742bEEAOVtsjFA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Message-ID:Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:From:To:Subject:
+	Content-Description:Mime-Version:Cc:Content-ID:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2PlT5qRDtmNY34snF9oCoP1iyBo1M9IVZab0GXWgKtM=; b=XBMnuvd7excArd
+	3Eo54XU5PHwNp4+VodZfscZtS/Oy//1vJKJDkoLa6LlMYjCb4HZ63OwcecSjhv/axVcLiA7NXxZ/w
+	65Cmr9LTAmPO/mwUBz7BJieXP7bwFyA//QjoHOHhJX4C7dyvzy5woJdxrcYMLS5IsbVUO+L8JIZKj
+	ep3YnS4o0ZM7nR+QXdsU3g6rwrrr5KdCKYBSjURkgnUmKXOHDXJgG1RyWpwuKxgc4TBhOuMcAXvAE
+	hZW51uEJYs1NZuLrRx0LkVXSfi/Oicovt8hyAkImj2Ffdddi3Q8Wm4/vW71u/TyBfa2akrVmmdy6p
+	QH8AARXuFYa7dw8vrCfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvx9k-009oHd-4D; Tue, 31 May 2022 08:23:12 +0000
-Received: from mail.onlinesuccesses.pl ([198.244.150.235])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvx9g-009oGJ-0J
-	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 08:23:09 +0000
-Received: by mail.onlinesuccesses.pl (Postfix, from userid 1002)
-	id CFB0EAD975; Tue, 31 May 2022 08:16:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=onlinesuccesses.pl;
-	s=mail; t=1653985037;
-	bh=nE8HqilgMh4dy7+Z8ksfg7Bc9rmPeQtYFq3/3YR2ODU=;
-	h=Date:From:To:Subject:From;
-	b=mbwRO1LutuM1uPBR6Nz3/x8ERY4UUWn9+kRqGwnxopamRllq8GvwMwnWa5AQ51Ax+
-	 UPG42LQ5GlBqzIvKt6xUjrxS4P4y3nGXD8kzzGK2lpLXpyX6/nPbNhqfk3NIbd8SzR
-	 igvBmM1F2vacdP5RfoJAq5ACMIlpbYoOOAGaXegksii7Ij8Iv1gI1nDSpRBiB8xdL4
-	 IiiUQtCzJCqVMlQ21h0/Ae4QW/qjHoRDA9MOI+YJkk1Z+13WrqnTRQ3G4NP2S9EVCU
-	 cKTCRBFFAyOUhj8+Q935cXHCPshLVvE1GXFLpNOqR/hnYzZyCm03ZpqMEuFsb+6m10
-	 jAwOxx5odCCbA==
-Received: by mail.onlinesuccesses.pl for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 08:15:36 GMT
-Message-ID: <20220531064501-0.1.4l.1dc8k.0.xl9rcqpj1o@onlinesuccesses.pl>
-Date: Tue, 31 May 2022 08:15:36 GMT
-From: "Wiktor Zielonko" <wiktor.zielonko@onlinesuccesses.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Ruch z pierwszej pozycji w Google
-X-Mailer: mail.onlinesuccesses.pl
-MIME-Version: 1.0
+	id 1nvxe5-009vao-P5; Tue, 31 May 2022 08:54:33 +0000
+Received: from [2a10:1fc0:5::e0b3:407f] (helo=host.hosttoname.com)
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1nvxe3-009vaC-BC
+	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 08:54:32 +0000
+Received: from [193.70.26.62] (ip62.ip-193-70-26.eu [193.70.26.62])
+	by host.hosttoname.com (Postfix) with ESMTPA id AA572214D7
+	for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 08:28:58 +0000 (UTC)
+Mime-Version: 1.0
+Content-Description: Mail message body
+Subject: Your kind attention
+To: linux-mediatek@lists.infradead.org
+From: mathej200@proton.me
+Date: Tue, 31 May 2022 01:28:54 -0700
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_012308_237322_C7095F06 
-X-CRM114-Status: UNSURE (   1.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220531_015431_465543_36791A27 
+X-CRM114-Status: SPAM  (  -5.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,22 +48,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: mathew@mjsconsortium.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
+Message-ID: <E1nvxe5-009vao-P5@bombadil.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LCAKCmpha2nFmyBjemFzIHRlbXUgemfFgm9zacWCYSBzacSZIGRvIG5hcyBm
-aXJtYSwga3TDs3JlaiBzdHJvbmEgaW50ZXJuZXRvd2EgbmllIHBvenljam9ub3dhxYJhIHNpxJkg
-d3lzb2tvIHcgd3lzenVraXdhcmNlIEdvb2dsZS4gCgpOYSBwb2RzdGF3aWUgd3lrb25hbmVnbyBw
-cnpleiBuYXMgYXVkeXR1IFNFTyB6b3B0eW1hbGl6b3dhbGnFm215IHRyZcWbY2kgbmEgc3Ryb25p
-ZSBwb2Qga8SFdGVtIHdjemXFm25pZWogb3ByYWNvd2FueWNoIHPFgsOzdyBrbHVjem93eWNoLiBO
-YXN6IHdld27EmXRyem55IHN5c3RlbSBjb2R6aWVubmllIGFuYWxpenVqZSBwcmF3aWTFgm93ZSBk
-emlhxYJhbmllIHdpdHJ5bnkuICBEemnEmWtpIGluZHl3aWR1YWxuZWogc3RyYXRlZ2lpLCBmaXJt
-YSB6ZG9ieXdhIGNvcmF6IHdpxJljZWogS2xpZW50w7N3LiAgCgpDenkgY2hjaWVsaWJ5IFBhxYRz
-dHdvIHp3acSZa3N6ecSHIGxpY3pixJkgb3PDs2Igb2R3aWVkemFqxIVjeWNoIHN0cm9uxJkgaW50
-ZXJuZXRvd8SFIGZpcm15PyBNw7NnxYJieW0gcHJ6ZWRzdGF3acSHIG9mZXJ0xJk/IAoKClBvemRy
-YXdpYW0gc2VyZGVjem5pZSwKV2lrdG9yIFppZWxvbmtvCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
-dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+SGVsbG8gdGhlcmUsCgpNeSBuYW1lcyBhcmUgTWF0aGV3IEpvaG5zb24sIEkgYW0gcmVwcmVzZW50
+aW5nIHRoZSBpbnRlcmVzdCBvZiBhIGNlcnRhaW4gcG9saXRpY2FsbHkgZXhwb3NlZCBwZXJzb24s
+IHdlIGFyZSBsb29raW5nIGZvciBwYXJ0bmVycyBvdmVyc2VhcyB0aGF0IGNhbiBtYW5hZ2UgaGln
+aC12YWx1ZSBmdW5kcyBmb3IgYSBwZXJpb2Qgb2YgNS0xMCB5ZWFycywgdGhlIGZ1bmRzIGhhdmUg
+YmVlbiBhY2NydWVkIGJ5IHRoZSBpbmZsdWVuY2Ugb2YgdGhlIHBvd2VyIG9mIG15IGJlbmVmYWN0
+b3LigJlzIG9mZmljZS4KClBsZWFzZSBkbyBjb250YWN0IG1lIGlmIHlvdSBhcmUgaW50ZXJlc3Rl
+ZCBhbmQgSSB3aWxsIGV4cGxhaW4gdGhlIGJ1c2luZXNzIHRvIHlvdSBpbiBkZXRhaWwgZm9yIHlv
+dSB0byBiZXR0ZXIgdW5kZXJzdGFuZCB0aGUgdHJhbnNhY3Rpb24sIEkgY2FuIGFzc3VyZSB5b3Ug
+dGhhdCB0aGlzIHdpbGwgYmUgb2YgbXV0dWFsIGJlbmVmaXQgdG8gYWxsLgoKWW91IGNhbiByZXNw
+b25kIHRvIG1lIGFuZCBpIHdpbGwgc2VuZCB5b3UgYSBkZXRhaWxlZCBleHBsYW5hdGlvbgoKWW91
+cnMuCgpNYXRoZXcgSm9obnNvbi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtbWVkaWF0ZWsK
