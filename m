@@ -4,100 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77A46C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 12:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AA6FC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 12:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=syoRFXdXQzcM34VIbzkvZvVLjPFv9mAzVTqdtXYiV5Y=; b=bBNzhgRwMoZtH6
-	5MhbjttrUE/ws0SH3dBcTTR5X2uVHGSu5gT53RlyQ+/zFxtoRNJaeSePPsQYlYK0bNyqji6STFBYD
-	1uljSHGWT3Vig4G+r3BprVinaQ8YQ7T+gv3xREK4jDZXTe3q+BaZJOJjiMJDpZWfyKQqraimuW0js
-	dN0OdyzqA2+L+IRh287iAtMWSXPdHwBNj/bwcnRynxuknwX6Uh14O34/e9kmeuhoSmsfZOz7igtJ/
-	0K0SPakhLUUg5lvQ4v8M0v0i7u4Sv8XGahtZrIwhkeZ16K677J4geV4wUb9ki/OATRDfoXdtYy4d1
-	CpR5zanqxB+lU7G7vfFw==;
+	List-Owner; bh=JrFXwo4nBlWjvQST9H8Vmc/AAq+KPWdXjqhzvRRH+PQ=; b=gPNq1RBcXhGShE
+	w1Zi8Ijcktt5gY1vBRNQjtiqP1ZI63a8xGAUFjc1SGfOFLcsiETOQ737NfMx28euu5fD1fbn4RiWJ
+	wPlUmmj77n2V5fU9v4o5kUWSmsxdU2OrvDcp4yp6sWNNpdi1NcvlnBdUkhgarf4OpHDInu9LG5HD/
+	Lv0MfIIKiZgO07yb/Pq5TZdDrnpUfml2lAUE68x3dT6VdbMHeDnREaELUTYFIu8SC7UaSe26Rigbv
+	161j4rSNJ3kGtBj736cAuB5qzuUcpTU1PT1N9ENBac6cwJxdBvkY++xmmV7vF/7mNxNxi+PBpiEhz
+	gx42WJHpLZUUJ8Q3/OWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1Cr-00AoyC-OH; Tue, 31 May 2022 12:42:41 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1nw1KX-00ArB0-9E; Tue, 31 May 2022 12:50:37 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1Cc-00AotS-Bd; Tue, 31 May 2022 12:42:29 +0000
-Received: by mail-pg1-x542.google.com with SMTP id 129so8452988pgc.2;
-        Tue, 31 May 2022 05:42:26 -0700 (PDT)
+	id 1nw1KH-00Ar2O-Fj
+	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 12:50:23 +0000
+Received: by mail-wr1-x435.google.com with SMTP id e2so18585076wrc.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 05:50:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=U7ahqBydDZnP+CjyjsQFK3suIZ5X/7W6Ul5AL8gL7a4=;
-        b=pbtIgDiOlAAzMPQJX9RSET7wKKMb0cURNTYAf8khBIJ7tgAMritvSeyBHK88OgWp3J
-         p2eY3mg3nQEC5svVgaRYVeHAiWB0LK1plQskY/5QYNoiPRdVCIIoFp6C7FMbAF8UGrrd
-         lBadBgtoaMg++H1MWs2p5uzAP/rBSoi7lJAW3YNDUwxLdmQJga2RGklhnlZheYx4tGWA
-         JDLreq67j91X+rNozmBhfZclynEPT46jWN/SwmgF8xb5UhpKWmTArXQaEu+WsdRc677y
-         XMwxshss89EaOuzNJZgSx1EX9fVS7xIgMGz1U4lbxqWjQpEQZw1NlJ6XcpFM9jWAulGH
-         LEpQ==
+        bh=tEjwaurHVMJcwAgK/RtwUwRV4sLe4udXQl3kl+UTRSg=;
+        b=VgN9otLsImmOdEiEQMJvVUswrD4KDRye97AzAK7AqCWUNPQYVsT9mlFSLsIyQadSY/
+         aMZexslC1uHQp58ZwYP3iI9BCWRdWMivbS7Hr3dRcDbv6jPk93Jd25DZZ17u32dtcvCV
+         yFhgBkcJqPBHGYdIAdWlEFTw8xggBm8krkg/8cZTgP10VsZJ9Bs/1nkiOum+CDcLdJaI
+         H0v8nJ9I4lnVf05DworpM4fK7iyPyLkOXVEYF9wq5b1Dwd8aEOgF9F5zC0Lfr29aEsxY
+         aGzKv3m4mex1HDs9ejM9W21Bsa1rUulj36QUoAjOi9BPIUaeVRggmppd6Y+1bYe+W6M5
+         63uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=U7ahqBydDZnP+CjyjsQFK3suIZ5X/7W6Ul5AL8gL7a4=;
-        b=EPieetC4rJaChnW004AmFP0NG37ywOOnSMi8m04u/uk9EZMurSbw2yvZC/V9byhLDw
-         Cd9XazVHQk1fpswg16wH6hcB0ESWwkPp200RCfmhj3ACXdIslwS9UmxMzqKhHK7R6eO1
-         amek2eFgKba6i6J28f/ia5wXL7dufjkzbFmcuVLWPIZR7/fgjyvexxyb6pJg4N7LAxyD
-         BlWpjisL67ed7HJxF3Z1zoIhscebZSicv5T46nwYy3TKSYLeb3Dc18NgjtzMD9DEY8b+
-         oeWJXw2a39+ZWqPjSSl+3l5IoEa1RdDgcv4WTyYKAfOka9ClgETE71Xxio0d7ZVlLQcO
-         VYVQ==
-X-Gm-Message-State: AOAM530Ws9rstrEquoi5n4YDWjkBQeQqZOmkznpojIAnZt9xSYe3FAJO
-	KWlj9o5Lk5/6npHJM/ve9SLW5FJ9PQs=
-X-Google-Smtp-Source: ABdhPJxfNtDreP69KzGE54ZQe7nNgxdxT4MxnC6lkz0a7elU8yTD8DI/llg0zMIxb1K6PG6nwQyNxQ==
-X-Received: by 2002:a63:1066:0:b0:3fa:c21c:bf38 with SMTP id 38-20020a631066000000b003fac21cbf38mr29418134pgq.453.1653993756469;
-        Tue, 31 May 2022 03:42:36 -0700 (PDT)
-Received: from RD-3580-24288.rt.l (42-72-220-172.emome-ip.hinet.net. [42.72.220.172])
-        by smtp.gmail.com with ESMTPSA id d19-20020a17090ac25300b001cd4989feebsm1525829pjx.55.2022.05.31.03.42.31
+        bh=tEjwaurHVMJcwAgK/RtwUwRV4sLe4udXQl3kl+UTRSg=;
+        b=A4YSLjQVA9Qok29ML/XSB3bXLQVde7z+lnCKQL2L4RQBMG+s8BNS37KhGJF9eAyF5u
+         wqpoJyh8+2nZ5JvEbQEMnhgn1/KEccAb2oBDtQ73ye2JAVB23dUT915aYVdx93sJXzW5
+         tK97Z2tLHwtBnnAeNutQc09jR0s16eq0etACpNEYK0xKVNLm3tym6rsonEdOJWW8R9N7
+         Q1afItLAZ2MKAn8j2ulTkk6k1RyLb4W64yj7+azLxmozdN4th6EZSxr3ETLeneuHQA94
+         5+vHVEYhoKihsR+wc6qMn9fp0AVJ6ZXyYxIT8sKISxxALPQ5RsVPJnohoAYCV67bXPm5
+         v4RA==
+X-Gm-Message-State: AOAM532Wm/ts6UC1/qGoD4akRnAKxLNxP7MvqJNjDT0BKc0u4FFKmq4D
+	zZ/M+co2eAzyHsGqF1LLXUTn6Q==
+X-Google-Smtp-Source: ABdhPJz+0xRhbxZOvqm4trzphmBLxipyzJg9E3N2RcSx9CyjqRtqduu5UbyVouSGVHu6621tAkc0NA==
+X-Received: by 2002:a5d:6da6:0:b0:20f:bc8a:9400 with SMTP id u6-20020a5d6da6000000b0020fbc8a9400mr43886708wrs.274.1654001418333;
+        Tue, 31 May 2022 05:50:18 -0700 (PDT)
+Received: from helium.lan ([88.160.162.107])
+        by smtp.gmail.com with ESMTPSA id i13-20020adfaacd000000b0020fc40d006bsm11475019wrc.17.2022.05.31.05.50.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 03:42:36 -0700 (PDT)
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-To: lee.jones@linaro.org,
-	daniel.thompson@linaro.org,
-	jingoohan1@gmail.com,
-	pavel@ucw.cz,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	sre@kernel.org,
-	chunfeng.yun@mediatek.com,
-	gregkh@linuxfoundation.org,
-	jic23@kernel.org,
-	lars@metafoo.de,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com,
-	deller@gmx.de
-Cc: cy_huang@richtek.com,
-	alice_chen@richtek.com,
-	chiaen_wu@richtek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org,
+        Tue, 31 May 2022 05:50:17 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>,
+	linux-input@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-fbdev@vger.kernel.org
-Subject: [PATCH 12/14] dt-bindings: leds: Add Mediatek MT6370 flashlight binding documentation
-Date: Tue, 31 May 2022 18:42:09 +0800
-Message-Id: <20220531104211.17106-4-peterwu.pub@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220531104211.17106-1-peterwu.pub@gmail.com>
-References: <20220531104211.17106-1-peterwu.pub@gmail.com>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 2/7] dt-bindings: input: mtk-pmic-keys: add binding for MT6357 PMIC
+Date: Tue, 31 May 2022 14:49:54 +0200
+Message-Id: <20220531124959.202787-3-fparent@baylibre.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220531124959.202787-1-fparent@baylibre.com>
+References: <20220531124959.202787-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_054226_424356_E9634DA2 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20220531_055021_636440_3A898C66 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,72 +95,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alice Chen <alice_chen@richtek.com>
+Add binding documentation for the PMIC keys on MT6357.
 
-Add Mediatek MT6370 flashlight binding documentation
-
-Signed-off-by: Alice Chen <alice_chen@richtek.com>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- .../leds/mediatek,mt6370-flashlight.yaml      | 48 +++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+ Documentation/devicetree/bindings/input/mtk-pmic-keys.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-new file mode 100644
-index 000000000000..b1b11bd3d410
---- /dev/null
-+++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-@@ -0,0 +1,48 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/leds/leds-mt6370-flashlight.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Flash LED driver for MT6370 PMIC from MediaTek Integrated.
-+
-+maintainers:
-+  - Alice Chen <alice_chen@richtek.com>
-+
-+description: |
-+  This module is part of the MT6370 MFD device.
-+  see Documentation/devicetree/bindings/mfd/mt6370.yaml
-+  Add MT6370 flash LED driver include 2-channel flash LED support Torch/Strobe Mode.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6370-flashlight
-+
-+  "#address-cells":
-+    const: 1
-+
-+  "#size-cells":
-+    const: 0
-+
-+patternProperties:
-+  "^led@[0-1]$":
-+    type: object
-+    $ref: common.yaml#
-+    description:
-+      Properties for a single flash LED.
-+
-+    properties:
-+      reg:
-+        description: Index of the flash LED.
-+        enum:
-+          - 0 #Address of LED1
-+          - 1 #Address of LED2
-+
-+    unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+  - "#address-cells"
-+  - "#size-cells"
-+
-+additionalProperties: false
+diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+index 9d00f2a8e13a..7eb0751afa22 100644
+--- a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
++++ b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+@@ -12,6 +12,7 @@ Required properties:
+ - compatible: Should be one of:
+ 	- "mediatek,mt6397-keys"
+ 	- "mediatek,mt6323-keys"
++	- "mediatek,mt6357-keys"
+ 	- "mediatek,mt6358-keys"
+ - linux,keycodes: See Documentation/devicetree/bindings/input/input.yaml
+ 
 -- 
-2.25.1
+2.36.1
 
 
 _______________________________________________
