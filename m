@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EE7EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 15:02:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE516C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 15:02:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=595RqUSf4PgmGHvBq1MZxo4SycpBdYfP3W1P4i+EUms=; b=faaTHOdOdJejHh
-	dGTPW2NtzwieqgThQYWFRY9URp1OxNDqLkl4D0jofpGtuvSjeQsrxXqN9DpnXh2GqKEXRFHrYWjYn
-	2MzgmlooZcENqVEjex9+fx76V1SMNPIGEvWh23AfMs4T6tvVV0AJWf75ZvqQTJU5+7Dl1QUEMIQeT
-	GsnmkWVu1A8yMb3pn60AnQnTQeHhFlIjk7WdVMIsOy4Mq6HKc9DqZczqLa60ZGhz4iLwPIex64nNb
-	FGyfARPyEFeS09lFrEZnp7wXUyR9SDu8Oy6BfQO89/kpdeG13dLbwFRggbnNiJDrkF0azCLLJA19S
-	V4LsDOlt0xsdcAHGgrSw==;
+	List-Owner; bh=+PpiE3DOYWyuAI5vPJgsYlNLSUicY5mWP6JVloX+Yas=; b=FZXX3AZpkITo/w
+	MsSR89kCLh+D7Fe3i5vNYclDI25tcQ2TNUUjqt8hxDCBJ9CxkaktwRT83lnRgIbDx36UxfOCs9YN+
+	xv+YEPP7m+YAWOZsw+wEKVgOQ1QDBY1IXrM36KwPhV8Cy1ZyTsuB7MqZrwYrVg/iuwRWN6xkWcuUz
+	HK/tCUMnL8hXyDpYFq565aEARIykeHxuT4xG7PPnUPjYfoJyJsP2Km/t/Whfy3O8NckIXTJ0z4osG
+	PgjNDrnwuvvelaI3VvYx7WIOU5CDEuYhSB9Dclcn+5vYnGswXCqpoy6sjJhKTI0Qc4hoXuzuamWO9
+	78cv1UmEeViqoSHzbu3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw3Nh-00BPZb-AD; Tue, 31 May 2022 15:02:01 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1nw3O8-00BPqH-HM; Tue, 31 May 2022 15:02:28 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw2Gt-00B9yl-Kg
+	id 1nw2Gt-00BA8N-IX
 	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 13:50:57 +0000
-Received: by mail-wr1-x431.google.com with SMTP id t6so18805483wra.4
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 06:50:55 -0700 (PDT)
+Received: by mail-wm1-x32e.google.com with SMTP id 129-20020a1c0287000000b003974edd7c56so1291454wmc.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 06:50:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=lW0yAksGLkkUyy22NDdYQDHyZq2zc0vWqxg9iWVW56I=;
-        b=0Rpx6jMIsXbKBWz1Z4MydcV9MC4lfQ3IYbK0315TxxRiBKVFtYDLzjN7CG4UB2UfWq
-         06uhmo1Q6/Mi1Jb09Hw7bavVWC473lzLKiVfHrsQ5in01UXAMACueQStByBDdPzDrBqp
-         twnBLWRJxnAEiZ0+mPXx6cIxmUygABTTEFKvNZa/MjJr/Y2grABaHGjDVverTv4ebyxt
-         TnzynXxR7yWbhOz4huGXpOoRp1SIMztgg1r5aLLCiQ3CmPtGzWQoJt1KE4PCgOXkFwQg
-         zaN3g5ow5FcEEOLYDOomGD2Td/iJJorkSyXXnQpmbUAJFuBArGG5g3rkIgU01hKSc2lm
-         Z3uQ==
+        bh=7hTkqdJSG32FEC0xJwQxsGaVxXfP9pn5uHosSEpvk/o=;
+        b=8V4VsGA9OVOOn0SdJ25JIZGwaIM5LceU5cEeIikivz49vnnxZAGp7IY4ojZQryeGnJ
+         DP2gZq2HIx2X9KjjPP97ub/aV8GnlaIzRYU2dyi4ll7AaU5prn6VHbRNOuIWY32qdXGP
+         lfSx/5pavnyO2+V0r85FCrEZZcgYKBajNvaAwL2INiM/VWtWvlm85BJkhIyhGFv2WlnA
+         bgv9mq8TOvr/DR/S/KyRMtMk/feIQVxxIsgVxNxdt57BbR1t/pFrt7PFL6/ATtanGSR2
+         VQ114YE12cjm+Zs5zQGB67fBgQPSdash0s6aDAcmmp0Efp6dbTMc/oGaq8ZPhlmKU1vA
+         No1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=lW0yAksGLkkUyy22NDdYQDHyZq2zc0vWqxg9iWVW56I=;
-        b=hL1hbffi8oz1sm6Cx5/qGegtqhwSq85B5dXWrmN8HNFo7ZPdk3Rjz/xQ0IG+LTFtB2
-         9QO5XGwOBJsr1USZBHE1DEBxKTfUTgPjQ2bobwpsTwc9eKA7NXT8oDD19OOaw1D1KQFc
-         DtsJSE0rfIxAibOfDIwkFjUkSqFL3EY7i4RMYL1qM/71W63lEiKBwXY4TzTHRau0efLR
-         LuhrzquycCwICK2Vcva/gpsYutZO6VFC/RbzR8qZ3sg3xG+GjHCpx6B1JcMM7oMQ65jI
-         Kdwp72woL9hmPiO7l1FGOUUXC6uXYEqLZBOfnn68xzQzwrrpePk86/ktL4lyXZ6QzYnt
-         abpg==
-X-Gm-Message-State: AOAM530GPY8a/27gR0YrIowAx+jmIZNl1YqVRTEVt4me2NCb5NOfKy8C
-	t/NTr/K1rOKDkQYKP6dKMVhA3g==
-X-Google-Smtp-Source: ABdhPJx92GIJhNJSvoi0FLCIeGZ8dl9Y3pv8+Zk660zC6fx9w1PvGGZpm6/Ia+aYM0mB7Jhr4qPWOw==
-X-Received: by 2002:a5d:448d:0:b0:20d:744:7663 with SMTP id j13-20020a5d448d000000b0020d07447663mr50722292wrq.654.1654005055117;
-        Tue, 31 May 2022 06:50:55 -0700 (PDT)
+        bh=7hTkqdJSG32FEC0xJwQxsGaVxXfP9pn5uHosSEpvk/o=;
+        b=QsFsMX2dBHgnGjugeJyPSYQy1vuS2lipftB2XN97Xv+fH3Mhp4oIJZ9hlZYsAbpl6c
+         JrpMOSx6mwShDBeP1+7if4lM0/0FGp2s19H/lz58Kc98fC8NoFToVolgxwj0CSRS31ox
+         Cgb8pS6jGZWeaukYZFLEY8580jv9t5Nkgy/6jgiKLcjTGZuT7r8S1rofasvKVw9kp+z2
+         SdysmTDcU2Jvq/kvRuHQNZFPOtn0IPzQgaLvzFOUh5gjwR9spaW/y7hpdAASEWcplOiu
+         SUAF2MKQfvbPk3z3UkTwp8PweZJwC2w+K/AdzyRoXTUqdyitA8xSEa+xJYexnCpnTuXB
+         ivtw==
+X-Gm-Message-State: AOAM531Y0wxBJuB/Dc9HJcQq2Ocx1+i8Sdzmuw9huBQzg5QeA8iovAeo
+	f0ZLkrPjelBSgBuO/5pxdM4l+Q==
+X-Google-Smtp-Source: ABdhPJygJdWIMEqnFljSCeHyRbLD1v7vofyqs6EKiM1gktA+EiK+fDFmHMqxmTLq4ylJWgeaim7/yw==
+X-Received: by 2002:a05:600c:354e:b0:397:7c1c:5b66 with SMTP id i14-20020a05600c354e00b003977c1c5b66mr23408175wmq.142.1654005051142;
+        Tue, 31 May 2022 06:50:51 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
-        by smtp.gmail.com with ESMTPSA id l11-20020a05600c1d0b00b00394351e35edsm2404806wms.26.2022.05.31.06.50.53
+        by smtp.gmail.com with ESMTPSA id l11-20020a05600c1d0b00b00394351e35edsm2404806wms.26.2022.05.31.06.50.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 06:50:54 -0700 (PDT)
+        Tue, 31 May 2022 06:50:50 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org,
@@ -72,7 +72,8 @@ To: robh+dt@kernel.org,
 	broonie@kernel.org,
 	wim@linux-watchdog.org,
 	linux@roeck-us.net,
-	Leilk Liu <leilk.liu@mediatek.com>
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Lala Lin <lala.lin@mediatek.com>
 Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	dmaengine@vger.kernel.org,
@@ -87,16 +88,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-usb@vger.kernel.org,
 	linux-watchdog@vger.kernel.org,
 	Fabien Parent <fparent@baylibre.com>
-Subject: [PATCH 09/17] dt-bindings: spi: mt65xx: add MT8365 SoC bindings
-Date: Tue, 31 May 2022 15:50:18 +0200
-Message-Id: <20220531135026.238475-10-fparent@baylibre.com>
+Subject: [PATCH 07/17] dt-bindings: nvmem: mediatek,efuse: add MT8365 bindings
+Date: Tue, 31 May 2022 15:50:16 +0200
+Message-Id: <20220531135026.238475-8-fparent@baylibre.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220531135026.238475-1-fparent@baylibre.com>
 References: <20220531135026.238475-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_065055_702681_0D339C7C 
-X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-CacheID: sfid-20220531_065055_649598_0DCF8DB7 
+X-CRM114-Status: UNSURE (   8.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,25 +115,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding documentation for the MT8365 SoC.
+Add bindings documentation for the efuse driver on MT8365 SoC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml | 1 +
+ Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-index 94ef0552bd42..d3d34a3a0b7f 100644
---- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-@@ -18,6 +18,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt7629-spi
-+              - mediatek,mt8365-spi
-           - const: mediatek,mt7622-spi
-       - items:
-           - enum:
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+index 7c7233e29ecf..444875264493 100644
+--- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -32,6 +32,7 @@ properties:
+               - mediatek,mt8192-efuse
+               - mediatek,mt8195-efuse
+               - mediatek,mt8516-efuse
++              - mediatek,mt8365-efuse
+           - const: mediatek,efuse
+       - const: mediatek,mt8173-efuse
+         deprecated: true
 -- 
 2.36.1
 
