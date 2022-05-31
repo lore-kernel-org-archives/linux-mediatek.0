@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AD44C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 11:46:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1F50C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 11:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Vbr2K724GqWMoAPEfeqies76ZKv5Xz4ME0djQ+wIOvo=; b=fnI3aYltS2Mxsa
-	nBG8To6Wx2gtlH3UEJoot1TTWAOJV2FM5svAjE9lZqGiy+oQZvMVhA3Oa3aa245wdlFT2Uqb9aF+K
-	cuL0ueG4BD2/ICVuahZSrtQvKZFK8Vu6mJoGguCP1Cl13X0MCJXYRR6cv4JrH9SfI73Q/R/7fG6GE
-	XK/PVC4bp0oTHhL9lKCp5vamQc47U0OKR+n7+8WsZ5/IQnWKf5K47d2FTEYAzHX/JZJ2aF3X8yjzr
-	mO8okYB0uDbJ/OvdQId9EGv3JBw3Lng3UMeQMooBm5V5oAD/i1w0iREYcwt2y3pLXSnWnHmKsIpt8
-	knucovaCAHUKiniQCx/g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=u7NRkGLowM+cM5erlSIg58QPi6WwktRO0pdm9L39XWY=; b=yQRATfgmnHE1jT
+	2TFZ8lciNlpbvb8CLRkdhybLitYKmQTXOSGPrNuXe4xNHx7Yg3d/RJAoIP3978wdCPImX++vNQlf2
+	QZRmxdBqq4ta0i6RAiKFgCJB2HnDm3+Wj+sT8mWhcPxmxi1qpUIP10BZtojTXnMCGYFgYvXTrTwfm
+	LGAKdeaQXcQm8Dh6BPIYwRjoSP+1u1wBQz7ISBr3wxmHrpNQg28lUn2sbS2NKm3Ju9aFtDWo8qMO+
+	/20zBnLdHJPVgi/vycQcsul4OWu6LQDMAK2flB7GlSJryVQ91hhVp8qAfzl1nGrTmV0x1TCRsF7Cv
+	ECeJhbT8e1IsOBVUmA+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw0KN-00AYzV-Ss; Tue, 31 May 2022 11:46:23 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1nw0RW-00AbcL-RC; Tue, 31 May 2022 11:53:46 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw0Jt-00AYkG-SW
-	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 11:45:57 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id v4-20020a1cac04000000b00397001398c0so1067298wme.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 04:45:52 -0700 (PDT)
+	id 1nw0RU-00AbbW-0P
+	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 11:53:45 +0000
+Received: by mail-ej1-x630.google.com with SMTP id q1so9618368ejz.9
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 04:53:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=vQ/9SuRW2gSNxyY7HSFEc0S6z28TQqq+nMHdkwJ6Hjs=;
-        b=eShVvcrfk3gqYk2CaIpk67IugOw/7xJh08X9rt5dq/FTYWlqCHjqocwOSulr6rc/SZ
-         0pN/1bbnmr9jDniFi1PhCd/EFfPtEwx/6M1d3KzJIGpFwUjBwyu7G9OHbP/+ra01qnyk
-         L5N0C2IxkBFrqrEIJDtb4c1QFogW3rvLHvHTSs/lRGz+gVbJqtcFV2/mRN7RBPvonQeI
-         Flmg752rG11r8oF352pxCHrDetidSJn3QzDJ+VrHT7tSuf3iQ5TcZA2pKlMBeRLstHNs
-         pbZr/LYgOTivalc9VeAfiz9ddSB/Ulw8NfnZjKQRnc4djzSsiRpcuA/GAgwKXCuzlXYA
-         9bDw==
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=aZv3mvyH3YwBv75DPbWyCn0ZYruAzdYgAgL6PD0leyM=;
+        b=sEekkrr6ZDYJGypMUv4kxJnQIqV1gbcVTncftHFHezDhnkayrx1pwsyyCBA2tRbn0G
+         luiuIlu72eZpdya+jg76kOE6AKlZG6/Lp21I5f0mB37j8D8kCv0KxXK5e6dIO8CcVmW8
+         5DWYe0a/H5TsRqYT0IkCMYboOQm45AxJWEEzg2JI4t5WpuBu1EQA4G0nFkSfWY3QgIxn
+         ttzMqDrP+OnyWebrjqooAUNkydJi1CMpvuI/cqKrnLMx4DwR/3A6O3waKyv8OXCUVSA9
+         AWExUukGBEWn3pbRssql9oNEc8iA876VKtN7zmtQ2W2SWb2aOckkwKo5DZX0/kT3p2n2
+         AMQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=vQ/9SuRW2gSNxyY7HSFEc0S6z28TQqq+nMHdkwJ6Hjs=;
-        b=HGLm3DbvuYrfrQr6VKd4DcOQDuuK+mRgWaXb09Rs5fKdcy6U1ZKDUxgW7P9fC5y6ZG
-         IeMmFJfhk8ZTnUKAi5BT+JYKYMqtJENSmnqeSaiCqcy86+LxgVV2Kcg9rFnfE+snRexU
-         bGz/gkcIbaNTizyjXI0Dvkyo3SYeAFvEdTlazRKMrZhpS44edkfgE3NFEw6J1RfA0Zmv
-         ZBaueTNhRvIBA0mAv6uF9A+w6pzJc4/TUd2bZAxpE53hJHQ6+Nkvg41Dkq8N1zO++nCY
-         GO1OZaZoFDtQWiJpTzxRnHKdd+ctBrqSw7jwdqIJ97us3FAv7IlvHm+CyrWScPui5Sjx
-         DYpw==
-X-Gm-Message-State: AOAM533VgZ6kNI8+n4vyg5BdwLTuHE2QnxZd0zrtcgSzTWoL3TiRkP55
-	F4IWFN7c8uMTBDqSDwwyPyeBEw==
-X-Google-Smtp-Source: ABdhPJwJjhIwNfHDxLSY/eNUnC7ZtsMB76qjz5vk7LG+i1TjoIDN2lSFL9muj7ndGdSsaK4RYxe/Fw==
-X-Received: by 2002:a05:600c:c5:b0:39c:1396:b489 with SMTP id u5-20020a05600c00c500b0039c1396b489mr7093277wmm.146.1653997551291;
-        Tue, 31 May 2022 04:45:51 -0700 (PDT)
-Received: from localhost.localdomain ([88.160.162.107])
-        by smtp.gmail.com with ESMTPSA id i12-20020a05600c354c00b0039765a7add4sm2064154wmq.29.2022.05.31.04.45.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 04:45:50 -0700 (PDT)
-From: Fabien Parent <fparent@baylibre.com>
-To: Thierry Reding <thierry.reding@gmail.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Lee Jones <lee.jones@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>,
-	linux-pwm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/2] dt-bindings: pwm: mediatek: add pwm binding for MT8195
-Date: Tue, 31 May 2022 13:45:43 +0200
-Message-Id: <20220531114544.144785-1-fparent@baylibre.com>
-X-Mailer: git-send-email 2.36.1
+        bh=aZv3mvyH3YwBv75DPbWyCn0ZYruAzdYgAgL6PD0leyM=;
+        b=C5lfNn1M6WD2rAzf+C80Qau5sDHPaylEuoacrRpJZwspGiNKHyiTCwmXOBtPRVwdHj
+         Hrl9VndpAJjBkZBNyV1iO3OwVwNW1HxDARq59bKPDwyaDTWatmlE/dLyYsE2bo6X/f3u
+         G2gDgvjDNCO7hwVdhvpNnNhCemcCtRonpR0lRH/qG5D8jBW0NxhYSKsnwEedk/SorFXe
+         WbYaiRY07xXZVp4XsNCYFEKRLH6auI5bYP+bylObqfsxdCkWBRPWVKNCjCLEFoe0KMGk
+         FLJQ+79CKFnSNLm473VwRSV4gi6ITeLiWWlniYCC3zdJZbbUPzSteqTuP8czhofzysSv
+         9J+w==
+X-Gm-Message-State: AOAM532AtIoQA7ygLhFW4hA3O/A/GcUIjaDRKYxXPW7E7spmaf6XnLfe
+	1SPypUk4ANnfl5TeSIJn3RDmCg==
+X-Google-Smtp-Source: ABdhPJymW8FmeTjxdKGYmtGd9rjreWcOisc6PcJr915f/Hv4wEXVceV9u1qf7rs6m1f5pLD06Pogkw==
+X-Received: by 2002:a17:907:2cc4:b0:6fe:2100:de21 with SMTP id hg4-20020a1709072cc400b006fe2100de21mr52520891ejc.462.1653998022758;
+        Tue, 31 May 2022 04:53:42 -0700 (PDT)
+Received: from [192.168.0.179] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id l27-20020a50d6db000000b0042dc25fdf5bsm5320894edj.29.2022.05.31.04.53.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 May 2022 04:53:42 -0700 (PDT)
+Message-ID: <ce04b6b1-1082-0da6-1852-9819459ccfb7@linaro.org>
+Date: Tue, 31 May 2022 13:53:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 2/7] dt-bindings: display: mediatek: dpi: add binding for
+ MT8365
+Content-Language: en-US
+To: Fabien Parent <fparent@baylibre.com>, matthias.bgg@gmail.com,
+ ck.hu@mediatek.com, jitao.shi@mediatek.com,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20220530201436.902505-1-fparent@baylibre.com>
+ <20220530201436.902505-2-fparent@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220530201436.902505-2-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_044554_040276_B903055A 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20220531_045344_104703_17C3C890 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,28 +97,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8195's PWM IP is compatible with the MT8183 PWM IP.
+On 30/05/2022 22:14, Fabien Parent wrote:
+> DPI for MT8365 is compatible with MT8192 but requires an additional
+> clock. Modify the documentation to requires this clock only on MT8365 SoCs.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  .../display/mediatek/mediatek,dpi.yaml        | 44 ++++++++++++++++---
+>  1 file changed, 37 insertions(+), 7 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> index caf4c88708f4..c9c9f4d5ebe7 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> @@ -17,13 +17,18 @@ description: |
+>  
+>  properties:
+>    compatible:
+> -    enum:
+> -      - mediatek,mt2701-dpi
+> -      - mediatek,mt7623-dpi
+> -      - mediatek,mt8173-dpi
+> -      - mediatek,mt8183-dpi
+> -      - mediatek,mt8186-dpi
+> -      - mediatek,mt8192-dpi
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt2701-dpi
+> +          - mediatek,mt7623-dpi
+> +          - mediatek,mt8173-dpi
+> +          - mediatek,mt8183-dpi
+> +          - mediatek,mt8186-dpi
+> +          - mediatek,mt8192-dpi
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8365-dpi
+> +          - const: mediatek,mt8192-dpi
+>  
+>    reg:
+>      maxItems: 1
+> @@ -32,16 +37,20 @@ properties:
+>      maxItems: 1
+>  
+>    clocks:
+> +    minItems: 3
+>      items:
+>        - description: Pixel Clock
+>        - description: Engine Clock
+>        - description: DPI PLL
+> +      - description: DPI Clock
+>  
+>    clock-names:
+> +    minItems: 3
+>      items:
+>        - const: pixel
+>        - const: engine
+>        - const: pll
+> +      - const: dpi
+>  
+>    pinctrl-0: true
+>    pinctrl-1: true
+> @@ -71,6 +80,27 @@ required:
+>  
+>  additionalProperties: false
+>  
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8365-dpi
+> +
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 4
+> +        clock-names:
+> +          maxItems: 4
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
- Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
- 1 file changed, 1 insertion(+)
+These should be minItems instead.
 
-diff --git a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-index 25ed214473d7..7b53355470d6 100644
---- a/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-+++ b/Documentation/devicetree/bindings/pwm/pwm-mediatek.txt
-@@ -8,6 +8,7 @@ Required properties:
-    - "mediatek,mt7628-pwm": found on mt7628 SoC.
-    - "mediatek,mt7629-pwm": found on mt7629 SoC.
-    - "mediatek,mt8183-pwm": found on mt8183 SoC.
-+   - "mediatek,mt8195-pwm", "mediatek,mt8183-pwm": found on mt8195 SoC.
-    - "mediatek,mt8516-pwm": found on mt8516 SoC.
-  - reg: physical base address and length of the controller's registers.
-  - #pwm-cells: must be 2. See pwm.yaml in this directory for a description of
--- 
-2.36.1
+> +
+> +    else:
+> +      properties:
+> +        clocks:
+> +          maxItems: 3
+> +        clock-names:
+> +          maxItems: 3
+> +
+>  examples:
+>    - |
+>      #include <dt-bindings/interrupt-controller/arm-gic.h>
 
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
