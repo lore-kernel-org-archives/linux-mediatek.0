@@ -4,100 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC62EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 10:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D04AFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 10:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/viO/ey3JQ0zB5K282A/7wLzFOcNc0mtWgqZj8e86M4=; b=0qNS0g0Je31Uc0
-	YShJbd6lh0Fa7hfYOWPTerfRBVUwXHdLaq4XtfNoXdPiEhXoNv2IDk0gdLpS2xJa8EgoO4OF1g2+0
-	frmqW7sKcbsSJS09qujuewlgP/AEPiWr6PYoHwgXJ/V0Ipnqy/ck/UFhqZAr/XIkDawcSeIACug83
-	vYJkNlitMgCoZBv8T+SiVS67C40lVxnlPbgD64YihNiLW4e2wQOKER5HyblzYIYFpMfh6/8UM42QD
-	jqmFMjj8aFu3N/nuwXPx5Q5Ko3TOVoMxo/8aw7uceUFPukJsshuCGZrtMXosQTepf6tvbcufYBXj2
-	+xaFWMTuNuuM7V2zXosw==;
+	List-Owner; bh=weO12IMq2X0B8y7INwE99nwXnLZfBybS35Yq9jfYaK4=; b=Q6RvV5SGiOKO41
+	1OKWEnZVOx4eX8Ka1Xd0HeEOwoXZKcR7caVm+xs0gEGHFQBXclsP5uqIPt1LKUVKgMhoon6V5l/80
+	mOW6WJyU5fFP5TZmQjzub61uJnG0AS1nJSCb/kEzSyRZ0DSCaksOh5fcDATI2TvbWxN1v8Ti7HFQc
+	jPPIgTThfiDihdum7VK4dW4QaV4XohHqOhx0g8VDw6JGGHHxpzv8J4zcsanxYtMET4LsxUyplE8iL
+	az2jPVTRNaJKTvbT4v49ejJQyFMyXwE1gdSOSJqU1IhE82X5MITtF2wnFkS4hfHZEdN0vakcXABPk
+	fyaw4Ri+iHPmoUi9lv7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvzAz-00AE06-Qh; Tue, 31 May 2022 10:32:37 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1nvzYd-00AJ6Y-QE; Tue, 31 May 2022 10:57:03 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvz91-00AD0o-Ob; Tue, 31 May 2022 10:30:37 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id v11-20020a17090a4ecb00b001e2c5b837ccso2173471pjl.3;
-        Tue, 31 May 2022 03:30:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=gSHJ8cU7Tk4Hdo/isRqfWUjlGNskb5R2AVQxrPbbCvI=;
-        b=SAX5OgGshyh0S7Q0P1G5oGCltp30E0lVS7VMHwVSGtJzobus0r+DSq4HZ9dVlccA//
-         L7FsL/3Cc/4VWO1fCCTnIRfxF9dICs905OFUIaS8polL5LqvFba4ii/xGg5A3euqE/Gq
-         hqwWt5bT8r53Ff+88JekCF8hEVqQz1OgUeKgug2ZTSS6z60EkuT3MgEBIhfMwptDimft
-         m4KcPqMyGtnWFp1V1hFwZGTEHb0zBUzVFVKHmXVfjw0rT3dtM8EjbCEoeF7OaEyWl9uU
-         bj8y9S3JytkJe6N7OsX3ScPNoaGUFC1mnMmYbbtgAa7FApCvVo6PwK0fou3Ruyx1w2eR
-         zeig==
+	id 1nvzYP-00AJ18-DR
+	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 10:56:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1653994606;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5AMEdZHq6r8jK1K5fClop/kDp2DOnuh5RSKQmQhnlmo=;
+	b=C2eES+l/dXwru1vP0ZJTC8D2kkFc1fpGn4czJDV4moEQxNt5S/il66fhtQ1PjPoPSBxsXd
+	fsBuW35Hhr9GdLwzY5aq+txXqEw8HrtGXe5PuIUK6UHagdEqsRPWCkE0GFqpwWwnNyIC2T
+	o2Z+joTNtERN3YuoArSEH4QKsFQoMrA=
+Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
+ [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-321-yUBhuQ53Pwq-tmnWUFd2kg-1; Tue, 31 May 2022 06:56:45 -0400
+X-MC-Unique: yUBhuQ53Pwq-tmnWUFd2kg-1
+Received: by mail-lf1-f70.google.com with SMTP id bu3-20020a056512168300b0047791fb1d68so6546916lfb.23
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 03:56:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=gSHJ8cU7Tk4Hdo/isRqfWUjlGNskb5R2AVQxrPbbCvI=;
-        b=fBR96CI58G3/znQR/L+8XgHflIbGuXbauIjkfp1UaU0JEjV2lDfHDzaJX04wm+xTJa
-         Vkwun75sV/pk+MgivFJjttJGX3LgjQAMMK/i3fFjxqA220QxQXJBiM/bKx70ZWvwBN1b
-         cFMqju1RifRUpuMQYvpPeslDWTepj5YRq3N+iDOcKXw8LwNsZqNWMmhEbFMYoXqnsYR3
-         3uuQoNapTShUbJ5TKBxsc4er+4ieOzdlWBs6NMM5BZkhm9lxCLilwaXJh+vxwZsIqpUr
-         k1FtK7fsyKVsiW8FqdvLWo2M/ELoVYnl/KOa2U2J20Jv3DBAPJ9VknqLUsywftccw1iU
-         TSKA==
-X-Gm-Message-State: AOAM533THYDK2yszR/VafmifSKBIvzFlXeCn9JYcGfM9zU/romskAH0E
-	bd0xd4QGmaF2CCUK2k0b5w0=
-X-Google-Smtp-Source: ABdhPJxeJjnsS/OG2s2o/PBurv6FPum5YkGzaAOy+mj8Ht/7zT6NftWz5GABkl7zQzsb3ERmo9fwcA==
-X-Received: by 2002:a17:90a:a085:b0:1e0:97ee:c263 with SMTP id r5-20020a17090aa08500b001e097eec263mr27994149pjp.110.1653993032769;
-        Tue, 31 May 2022 03:30:32 -0700 (PDT)
-Received: from RD-3580-24288.rt.l (42-72-220-172.emome-ip.hinet.net. [42.72.220.172])
-        by smtp.gmail.com with ESMTPSA id c1-20020a63d501000000b003c14af50631sm10216519pgg.73.2022.05.31.03.30.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 03:30:32 -0700 (PDT)
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-To: lee.jones@linaro.org,
-	daniel.thompson@linaro.org,
-	jingoohan1@gmail.com,
-	pavel@ucw.cz,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	sre@kernel.org,
-	chunfeng.yun@mediatek.com,
-	gregkh@linuxfoundation.org,
-	jic23@kernel.org,
-	lars@metafoo.de,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com,
-	deller@gmx.de
-Cc: cy_huang@richtek.com,
-	alice_chen@richtek.com,
-	chiaen_wu@richtek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-fbdev@vger.kernel.org
-Subject: [PATCH 08/14] video: backlight: mt6370: Add Mediatek MT6370 support
-Date: Tue, 31 May 2022 18:28:03 +0800
-Message-Id: <20220531102809.11976-9-peterwu.pub@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220531102809.11976-1-peterwu.pub@gmail.com>
-References: <20220531102809.11976-1-peterwu.pub@gmail.com>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=5AMEdZHq6r8jK1K5fClop/kDp2DOnuh5RSKQmQhnlmo=;
+        b=KBX7MU/SDl6FFiyyzkqT25r7iJhxkKSIU+UokZOWkW3pX4KNE4V3QmVYeh9S057KPz
+         OiZ0oxPKK/XQ//BWgpIIFSyr9e+xGfeywRhBS2ceibPAZWOI0Wwz3i+q79Qxi7cIFg/6
+         oZGiuovNNT5hf4EXfKFCjHzaUOjzBg98tXZrBQ8yKezNJ869zgymuLl899uEgtqxoaoG
+         tuqUWdN4L4rRJnDGYuHztzpSo1O1n0+lqjaN/z4EvG65WmzyZR7c6+N3pa+FzfLGt5JR
+         LkOeyEllNDGJp5a4trhsuv7atvFh/PVXvAzjo8b0xQdhpy6MVrNMqfvwViFLyGwfuOFu
+         8xbA==
+X-Gm-Message-State: AOAM533JsV9kPY/LDFp3rv61gJEJqY8N7K57B4ZKaAXBV4dQwJhmgk3G
+	IIesWabfzH1kCeCnCnifTqeUEkIOJ/DGcHRocNu92mM/gGaVEgeII1JWmayiOqfvc4ZlF37pkEq
+	6f0BNJr3hZ5tnbWY1udcmJo70gABVGo1m
+X-Received: by 2002:a2e:8958:0:b0:255:48a6:b34f with SMTP id b24-20020a2e8958000000b0025548a6b34fmr9086931ljk.32.1653994603802;
+        Tue, 31 May 2022 03:56:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzT/kJtZFCGg6vVnaOEu+TAnTzoEpR9/PyP/37VarQ8+j7ln571wRc5ni+laLwliCYrgww7xA==
+X-Received: by 2002:a2e:8958:0:b0:255:48a6:b34f with SMTP id b24-20020a2e8958000000b0025548a6b34fmr9086904ljk.32.1653994603496;
+        Tue, 31 May 2022 03:56:43 -0700 (PDT)
+Received: from [10.101.1.23] (ip-185-104-137-32.ptr.icomera.net. [185.104.137.32])
+        by smtp.gmail.com with ESMTPSA id s22-20020a2e9c16000000b0025567cf8633sm16866lji.85.2022.05.31.03.56.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 May 2022 03:56:42 -0700 (PDT)
+Message-ID: <5ba0b86a-fa9c-ed97-3b43-7814599deab5@redhat.com>
+Date: Tue, 31 May 2022 12:56:18 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v10 0/4] Separate panel orientation property creating and
+ value setting
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, amd-gfx@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, Rob Clark <robdclark@chromium.org>,
+ Stephen Boyd <swboyd@chromium.org>, Douglas Anderson
+ <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Sean Paul <sean@poorly.run>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Simon Ser <contact@emersion.fr>, Harry Wentland <harry.wentland@amd.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Emil Velikov <emil.l.velikov@gmail.com>
+References: <20220530081910.3947168-1-hsinyi@chromium.org>
+ <a8d1fe13-e747-016a-2d45-bfb50f23f2d9@redhat.com>
+ <CAJMQK-iM-ip7edA2mBOhp-8maWKG5+kTceZUM5U6BOLLBq1H4Q@mail.gmail.com>
+From: Hans de Goede <hdegoede@redhat.com>
+In-Reply-To: <CAJMQK-iM-ip7edA2mBOhp-8maWKG5+kTceZUM5U6BOLLBq1H4Q@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=hdegoede@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_033035_884062_608C630E 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20220531_035649_565297_FFF646E0 
+X-CRM114-Status: GOOD (  33.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,395 +118,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiaEn Wu <chiaen_wu@richtek.com>
+Hi,
 
-Add Mediatek MT6370 Backlight support.
+On 5/30/22 13:34, Hsin-Yi Wang wrote:
+> On Mon, May 30, 2022 at 4:53 PM Hans de Goede <hdegoede@redhat.com> wrote:
+>>
+>> Hi,
+>>
+>> On 5/30/22 10:19, Hsin-Yi Wang wrote:
+>>> Some drivers, eg. mtk_drm and msm_drm, rely on the panel to set the
+>>> orientation. Panel calls drm_connector_set_panel_orientation() to create
+>>> orientation property and sets the value. However, connector properties
+>>> can't be created after drm_dev_register() is called. The goal is to
+>>> separate the orientation property creation, so drm drivers can create it
+>>> earlier before drm_dev_register().
+>>
+>> Sorry for jumping in pretty late in the discussion (based on the v10
+>> I seem to have missed this before).
+>>
+>> This sounds to me like the real issue here is that drm_dev_register()
+>> is getting called too early?
+>>
+> Right.
+> 
+>> To me it seems sensible to delay calling drm_dev_register() and
+>> thus allowing userspace to start detecting available displays +
+>> features until after the panel has been probed.
+>>
+> 
+> Most panels set this value very late, in .get_modes callback (since it
+> is when the connector is known), though the value was known during
+> panel probe.
 
-Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
----
- drivers/video/backlight/Kconfig            |   8 +
- drivers/video/backlight/Makefile           |   1 +
- drivers/video/backlight/mt6370-backlight.c | 338 +++++++++++++++++++++
- 3 files changed, 347 insertions(+)
- create mode 100644 drivers/video/backlight/mt6370-backlight.c
+Hmm I would expect the main drm/kms driver to register the drm_connector
+object after probing the panel, right ?
 
-diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/Kconfig
-index a003e02e13ce..d9868fbe7488 100644
---- a/drivers/video/backlight/Kconfig
-+++ b/drivers/video/backlight/Kconfig
-@@ -268,6 +268,14 @@ config BACKLIGHT_MAX8925
- 	  If you have a LCD backlight connected to the WLED output of MAX8925
- 	  WLED output, say Y here to enable this driver.
- 
-+config BACKLIGHT_MT6370
-+	tristate "Mediatek MT6370 Backlight Driver"
-+	depends on MFD_MT6370
-+	help
-+	  Say Y here to enable MT6370 Backlight support.
-+	  It's commonly used to drive the display WLED. There're 4 channels
-+	  inisde, and each channel can provide up to 30mA current.
-+
- config BACKLIGHT_APPLE
- 	tristate "Apple Backlight Driver"
- 	depends on X86 && ACPI
-diff --git a/drivers/video/backlight/Makefile b/drivers/video/backlight/Makefile
-index cae2c83422ae..e815f3f1deff 100644
---- a/drivers/video/backlight/Makefile
-+++ b/drivers/video/backlight/Makefile
-@@ -44,6 +44,7 @@ obj-$(CONFIG_BACKLIGHT_LP855X)		+= lp855x_bl.o
- obj-$(CONFIG_BACKLIGHT_LP8788)		+= lp8788_bl.o
- obj-$(CONFIG_BACKLIGHT_LV5207LP)	+= lv5207lp.o
- obj-$(CONFIG_BACKLIGHT_MAX8925)		+= max8925_bl.o
-+obj-$(CONFIG_BACKLIGHT_MT6370)		+= mt6370-backlight.o
- obj-$(CONFIG_BACKLIGHT_OMAP1)		+= omap1_bl.o
- obj-$(CONFIG_BACKLIGHT_PANDORA)		+= pandora_bl.o
- obj-$(CONFIG_BACKLIGHT_PCF50633)	+= pcf50633-backlight.o
-diff --git a/drivers/video/backlight/mt6370-backlight.c b/drivers/video/backlight/mt6370-backlight.c
-new file mode 100644
-index 000000000000..f8a8d33203ed
---- /dev/null
-+++ b/drivers/video/backlight/mt6370-backlight.c
-@@ -0,0 +1,338 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+#include <linux/backlight.h>
-+#include <linux/bitfield.h>
-+#include <linux/bits.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/gpio/driver.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#define MT6370_REG_DEV_INFO		0x100
-+#define MT6370_REG_BL_EN		0x1A0
-+#define MT6370_REG_BL_BSTCTRL		0x1A1
-+#define MT6370_REG_BL_PWM		0x1A2
-+#define MT6370_REG_BL_DIM2		0x1A4
-+
-+#define MT6370_VENID_MASK		GENMASK(7, 4)
-+#define MT6370_BL_EXT_EN_MASK		BIT(7)
-+#define MT6370_BL_EN_MASK		BIT(6)
-+#define MT6370_BL_CONFIG_MASK		BIT(0)
-+#define MT6370_BL_CH_MASK		GENMASK(5, 2)
-+#define MT6370_BL_DIM2_MASK		GENMASK(2, 0)
-+#define MT6370_BL_DUMMY_6372_MASK	GENMASK(2, 0)
-+#define MT6370_BL_DIM2_6372_SHIFT	3
-+#define MT6370_BL_PWM_EN_MASK		BIT(7)
-+#define MT6370_BL_PWM_HYS_EN_MASK	BIT(2)
-+#define MT6370_BL_PWM_HYS_SEL_MASK	GENMASK(1, 0)
-+#define MT6370_BL_OVP_EN_MASK		BIT(7)
-+#define MT6370_BL_OVP_SEL_MASK		GENMASK(6, 5)
-+#define MT6370_BL_OC_EN_MASK		BIT(3)
-+#define MT6370_BL_OC_SEL_MASK		GENMASK(2, 1)
-+
-+#define MT6370_BL_MAX_BRIGHTNESS	2048
-+
-+enum {
-+	MT6370_VID_COMMON = 0,
-+	MT6370_VID_6372,
-+	MT6370_VID_MAX,
-+};
-+
-+enum mt6370_prop_type {
-+	MT6370_PARSE_TYPE_BOOL = 0,
-+	MT6370_PARSE_TYPE_U8,
-+	MT6370_PARSE_TYPE_MAX,
-+};
-+
-+struct mt6370_priv {
-+	int vid_type;
-+	struct backlight_device *bl;
-+	struct device *dev;
-+	struct gpio_desc *enable_gpio;
-+	struct regmap *regmap;
-+};
-+
-+static int mt6370_bl_update_status(struct backlight_device *bl_dev)
-+{
-+	struct mt6370_priv *priv = bl_get_data(bl_dev);
-+	int brightness = backlight_get_brightness(bl_dev);
-+	unsigned int enable_val;
-+	u8 brightness_val[2];
-+	int ret;
-+
-+	if (brightness) {
-+		brightness_val[0] = (brightness - 1) & MT6370_BL_DIM2_MASK;
-+		brightness_val[1] = (brightness - 1)
-+					>> fls(MT6370_BL_DIM2_MASK);
-+
-+		if (priv->vid_type == MT6370_VID_6372) {
-+			brightness_val[0] <<= MT6370_BL_DIM2_6372_SHIFT;
-+			brightness_val[0] |= MT6370_BL_DUMMY_6372_MASK;
-+		}
-+
-+		ret = regmap_raw_write(priv->regmap, MT6370_REG_BL_DIM2,
-+				       brightness_val, sizeof(brightness_val));
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (priv->enable_gpio)
-+		gpiod_set_value(priv->enable_gpio, brightness ? 1 : 0);
-+
-+	enable_val = brightness ? MT6370_BL_EN_MASK : 0;
-+	return regmap_update_bits(priv->regmap, MT6370_REG_BL_EN,
-+				  MT6370_BL_EN_MASK, enable_val);
-+}
-+
-+static int mt6370_bl_get_brightness(struct backlight_device *bl_dev)
-+{
-+	struct mt6370_priv *priv = bl_get_data(bl_dev);
-+	unsigned int enable;
-+	u8 brightness_val[2];
-+	int brightness, ret;
-+
-+	ret = regmap_read(priv->regmap, MT6370_REG_BL_EN, &enable);
-+	if (ret)
-+		return ret;
-+
-+	if (!(enable & MT6370_BL_EN_MASK))
-+		return 0;
-+
-+	ret = regmap_raw_read(priv->regmap, MT6370_REG_BL_DIM2,
-+			      brightness_val, sizeof(brightness_val));
-+	if (ret)
-+		return ret;
-+
-+	if (priv->vid_type == MT6370_VID_6372)
-+		brightness_val[0] >>= MT6370_BL_DIM2_6372_SHIFT;
-+
-+	brightness = brightness_val[1] << fls(MT6370_BL_DIM2_MASK);
-+	brightness += (brightness_val[0] & MT6370_BL_DIM2_MASK);
-+
-+	return brightness + 1;
-+}
-+
-+static const struct backlight_ops mt6370_bl_ops = {
-+	.options = BL_CORE_SUSPENDRESUME,
-+	.update_status = mt6370_bl_update_status,
-+	.get_brightness = mt6370_bl_get_brightness,
-+};
-+
-+#define MT6370_DT_PROP_DECL(_name, _type, _reg, _mask, _max, _inv)	\
-+{									\
-+	.name = "mediatek,bled-" #_name,				\
-+	.type = MT6370_PARSE_TYPE_##_type,				\
-+	.reg = _reg,							\
-+	.mask = _mask,							\
-+	.max_val = _max,						\
-+	.invert = _inv,							\
-+}
-+
-+static int mt6370_init_backlight_properties(struct mt6370_priv *priv,
-+					    struct backlight_properties *props)
-+{
-+	struct device *dev = priv->dev;
-+	u8 prop_val;
-+	u32 brightness;
-+	unsigned int mask, val;
-+	static const struct {
-+		char *name;
-+		enum mt6370_prop_type type;
-+		unsigned int reg;
-+		unsigned int mask;
-+		u8 max_val;
-+		bool invert;
-+	} vendor_opt_props[] = {
-+		MT6370_DT_PROP_DECL(pwm-enable, BOOL, MT6370_REG_BL_PWM,
-+				    MT6370_BL_PWM_EN_MASK, 1, false),
-+		MT6370_DT_PROP_DECL(pwm-hys-enable, BOOL, MT6370_REG_BL_PWM,
-+				    MT6370_BL_PWM_HYS_EN_MASK, 1, false),
-+		MT6370_DT_PROP_DECL(pwm-hys-sel, U8, MT6370_REG_BL_PWM,
-+				    MT6370_BL_PWM_HYS_SEL_MASK, 3, false),
-+		MT6370_DT_PROP_DECL(ovp-level-sel, U8, MT6370_REG_BL_BSTCTRL,
-+				    MT6370_BL_OVP_SEL_MASK, 3, false),
-+		MT6370_DT_PROP_DECL(ovp-shutdown, BOOL, MT6370_REG_BL_BSTCTRL,
-+				    MT6370_BL_OVP_EN_MASK, 1, true),
-+		MT6370_DT_PROP_DECL(ocp-level-sel, U8, MT6370_REG_BL_BSTCTRL,
-+				    MT6370_BL_OC_SEL_MASK, 3, false),
-+		MT6370_DT_PROP_DECL(ocp-shutdown, BOOL, MT6370_REG_BL_BSTCTRL,
-+				    MT6370_BL_OC_EN_MASK, 1, true),
-+	}, *prop_now;
-+	int i, ret;
-+
-+	/* vendor optional properties */
-+	for (i = 0; i < ARRAY_SIZE(vendor_opt_props); i++) {
-+		prop_now = vendor_opt_props + i;
-+
-+		switch (prop_now->type) {
-+		case MT6370_PARSE_TYPE_BOOL:
-+			if (device_property_read_bool(dev, prop_now->name))
-+				val = 1;
-+			else
-+				val = 0;
-+			break;
-+		case MT6370_PARSE_TYPE_U8:
-+			ret = device_property_read_u8(dev, prop_now->name,
-+						      &prop_val);
-+			/* Property not exist, keep value in default */
-+			if (ret)
-+				continue;
-+
-+			val = min_t(u8, prop_val, prop_now->max_val);
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+
-+		if (prop_now->invert)
-+			val = prop_now->max_val - val;
-+
-+		val <<= ffs(prop_now->mask) - 1;
-+
-+		ret = regmap_update_bits(priv->regmap, prop_now->reg,
-+					 prop_now->mask, val);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	/* common properties */
-+	ret = device_property_read_u32(dev, "max-brightness", &brightness);
-+	if (ret)
-+		brightness = MT6370_BL_MAX_BRIGHTNESS;
-+
-+	props->max_brightness = min_t(u32, brightness,
-+				      MT6370_BL_MAX_BRIGHTNESS);
-+
-+	ret = device_property_read_u32(dev, "default-brightness", &brightness);
-+	if (ret)
-+		brightness = props->max_brightness;
-+
-+	props->brightness = min_t(u32, brightness, props->max_brightness);
-+
-+
-+	ret = device_property_read_u8(dev, "mediatek,bled-channel-use",
-+				      &prop_val);
-+	if (ret) {
-+		dev_err(dev, "mediatek,bled-channel-use DT property missing\n");
-+		return ret;
-+	}
-+
-+	if (!prop_val) {
-+		dev_err(dev, "No channel specified\n");
-+		return -EINVAL;
-+	}
-+
-+	mask = MT6370_BL_EXT_EN_MASK | MT6370_BL_CH_MASK;
-+	val = prop_val << (ffs(MT6370_BL_CH_MASK) - 1);
-+
-+	if (priv->enable_gpio)
-+		val |= MT6370_BL_EXT_EN_MASK;
-+
-+	return regmap_update_bits(priv->regmap, MT6370_REG_BL_EN, mask, val);
-+}
-+
-+static int mt6370_check_vendor_info(struct mt6370_priv *priv)
-+{
-+	unsigned int dev_info, vid;
-+	int ret;
-+
-+	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &dev_info);
-+	if (ret)
-+		return ret;
-+
-+	vid = FIELD_GET(MT6370_VENID_MASK, dev_info);
-+	if (vid == 0x9 || vid == 0xb)
-+		priv->vid_type = MT6370_VID_6372;
-+	else
-+		priv->vid_type = MT6370_VID_COMMON;
-+
-+	return 0;
-+}
-+
-+static int mt6370_bl_probe(struct platform_device *pdev)
-+{
-+	struct mt6370_priv *priv;
-+	struct backlight_properties props = {
-+		.type = BACKLIGHT_RAW,
-+		.scale = BACKLIGHT_SCALE_LINEAR,
-+	};
-+	int ret;
-+
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->dev = &pdev->dev;
-+
-+	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!priv->regmap) {
-+		dev_err(&pdev->dev, "Failed to get regmap\n");
-+		return -ENODEV;
-+	}
-+
-+	ret = mt6370_check_vendor_info(priv);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to check vendor info (%d)\n", ret);
-+		return ret;
-+	}
-+
-+	priv->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
-+						    GPIOD_OUT_HIGH);
-+	if (IS_ERR(priv->enable_gpio)) {
-+		dev_err(&pdev->dev, "Failed to get 'enable' gpio\n");
-+		return PTR_ERR(priv->enable_gpio);
-+	}
-+
-+	ret = mt6370_init_backlight_properties(priv, &props);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to init backlight properties\n");
-+		return ret;
-+	}
-+
-+	priv->bl = devm_backlight_device_register(&pdev->dev, pdev->name,
-+						  &pdev->dev, priv,
-+						  &mt6370_bl_ops, &props);
-+	if (IS_ERR(priv->bl)) {
-+		dev_err(&pdev->dev, "Failed to register backlight\n");
-+		return PTR_ERR(priv->bl);
-+	}
-+
-+	backlight_update_status(priv->bl);
-+	platform_set_drvdata(pdev, priv);
-+
-+	return 0;
-+}
-+
-+static int mt6370_bl_remove(struct platform_device *pdev)
-+{
-+	struct mt6370_priv *priv = platform_get_drvdata(pdev);
-+	struct backlight_device *bl_dev = priv->bl;
-+
-+	bl_dev->props.brightness = 0;
-+	backlight_update_status(priv->bl);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id __maybe_unused mt6370_bl_of_match[] = {
-+	{ .compatible = "mediatek,mt6370-backlight", },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt6370_bl_of_match);
-+
-+static struct platform_driver mt6370_bl_driver = {
-+	.driver = {
-+		.name = "mt6370-backlight",
-+		.of_match_table = mt6370_bl_of_match,
-+	},
-+	.probe = mt6370_bl_probe,
-+	.remove = mt6370_bl_remove,
-+};
-+module_platform_driver(mt6370_bl_driver);
-+
-+MODULE_AUTHOR("ChiaEn Wu <chiaen_wu@richtek.com>");
-+MODULE_DESCRIPTION("Mediatek MT6370 Backlight Driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.25.1
+So maybe this is a problem with the panel API? How about adding 
+separate callback to the panel API to get the orientation, which the
+main drm/kms driver can then call before registering the connector ?
+
+And then have the main drm/kms driver call
+drm_connector_set_panel_orientation() with the returned orientation
+on the connecter before registering it.
+
+The new get_orientation callback for the panel should of course
+be optional (IOW amy be NULL), so we probably want a small
+helper for drivers using panel (sub)drivers to take care of
+the process of getting the panel orientation from the panel
+(if supported) and then setting it on the connector.
+
+
+> I think we can also let drm check if they have remote panel nodes: If
+> there is a panel and the panel sets the orientation, let the drm read
+> this value and set the property. Does this workflow sound reasonable?
+> 
+> The corresponding patch to implement this:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220530113033.124072-1-hsinyi@chromium.org/
+
+That is a suprisingly small patch (which is good). I guess that
+my suggestion to add a new panel driver callback to get
+the orientation would be a bit bigget then this. Still I think
+that that would be a bit cleaner, as it would also solve this
+for cases where the orientation comes from the panel itself
+(through say some EDID extenstion) rather then from devicetree.
+
+Still I think either way should be acceptable upstream.
+
+Opinions from other drm devs on the above are very much welcome!
+
+Your small patch nicely avoids the probe ordering problem,
+so it is much better then this patch series.
+
+Regards,
+
+Hans
+
+
+
+> 
+> Thanks
+> 
+>> I see a devicetree patch in this series, so I guess that the panel
+>> is described in devicetree. Especially in the case of devicetree
+>> I would expect the kernel to have enough info to do the right
+>> thing and make sure the panel is probed before calling
+>> drm_dev_register() ?
+>>
+>> Regards,
+>>
+>> Hans
+>>
+>>
+>>
+>>
+>>>
+>>> After this series, drm_connector_set_panel_orientation() works like
+>>> before. It won't affect existing callers of
+>>> drm_connector_set_panel_orientation(). The only difference is that
+>>> some drm drivers can call drm_connector_init_panel_orientation_property()
+>>> earlier.
+>>>
+>>> Hsin-Yi Wang (4):
+>>>   gpu: drm: separate panel orientation property creating and value
+>>>     setting
+>>>   drm/mediatek: init panel orientation property
+>>>   drm/msm: init panel orientation property
+>>>   arm64: dts: mt8183: Add panel rotation
+>>>
+>>>  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  1 +
+>>>  drivers/gpu/drm/drm_connector.c               | 58 ++++++++++++++-----
+>>>  drivers/gpu/drm/mediatek/mtk_dsi.c            |  7 +++
+>>>  drivers/gpu/drm/msm/dsi/dsi_manager.c         |  4 ++
+>>>  include/drm/drm_connector.h                   |  2 +
+>>>  5 files changed, 59 insertions(+), 13 deletions(-)
+>>>
+>>
+> 
 
 
 _______________________________________________
