@@ -4,54 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 428CFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 17:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3545CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 18:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EoXq2JFSsFX6qLMMabz0iRoND3DLd8lh/jPCvQ4PxCA=; b=p+ID89FMASGqdZ
-	n7f3Iv8qIkJJ9RA5PWQGf60cLWz6qTMP9REIZV46W3UdCUIZUFxOEaMtEKsRcSVQVjpF28h+xZG6S
-	T7CJ1hK7apfR01fmRGjlAitCXjeObn8B68MDGiw69Emf3+NGYxmclKUZaa/PLzeRT4VU9MQPXPBCg
-	iUfnGr0B63mek3huPG1cG50rTFbC/pKHTVKthOxzUJ+URG5tIpFOsRbbS+xsq8yv7tdsB91a7IZ1v
-	Etmvrk9HRpUHPSj1iMx0woKc+aBQP6HjYGeQbz4VX9LfzJBhmyeriaGJBBbG51XItRGQWv1mkwWfn
-	clnViPen2ZjmP1ciyogg==;
+	List-Owner; bh=iLyvguQ3/8qO6V2lcHwANpR81ahsl2TlHClhwC0/5sk=; b=DQ+Rt2L5uxzRhT
+	uTziNBtQb0LLIEOgWZCtThjimtpYZzXSq+2XfkoTlXZ+q6SfT+wp6yiyfX8IUuC3TCic4hhzAZZ2x
+	acnuWqKzVV2zF7sIDJPjxtRqC/mSzHNJRg5hjQA2x08GakGUEgjUG00rGgJY8Yrw7zArP7Xt11cI6
+	gAqdxvpzFPJdV7uP0SsvF2cGoyjYAEE8pppb6y9qK3tbVJld7RoRQwR0i/yjmHV3tDwbM4kzrrCXA
+	sunmCvjUKstwhdX8aqjKu68CaeqTpvfsas3zUlMH4KJqmm4xvXX4DaggsD36hwkRKRusLZR0WEKL8
+	nQdJZ3VobxbDusCgS5MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw5Uj-00C1DL-Ey; Tue, 31 May 2022 17:17:25 +0000
-Received: from smtp08.smtpout.orange.fr ([80.12.242.130] helo=smtp.smtpout.orange.fr)
+	id 1nw6N7-00C8hQ-Ti; Tue, 31 May 2022 18:13:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw5Uf-00C17R-SI
-	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 17:17:24 +0000
-Received: from [192.168.1.18] ([90.11.190.129])
-	by smtp.orange.fr with ESMTPA
-	id w5USneYqRNUm1w5UTnpWfe; Tue, 31 May 2022 19:17:11 +0200
-X-ME-Helo: [192.168.1.18]
-X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Tue, 31 May 2022 19:17:11 +0200
-X-ME-IP: 90.11.190.129
-Message-ID: <bfe13669-0b22-2b50-12df-e37095faf62c@wanadoo.fr>
-Date: Tue, 31 May 2022 19:17:08 +0200
+	id 1nw6Mw-00C8es-JB; Tue, 31 May 2022 18:13:28 +0000
+X-UUID: c11ea813be0c4a1d81646bb44e27cd1c-20220531
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:6465ac7b-e8a7-4f76-aadf-a0b4895441c1,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:66a2048a-32d7-4fc0-b2ef-8776ac194f8f,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: c11ea813be0c4a1d81646bb44e27cd1c-20220531
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <miles.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1573055600; Tue, 31 May 2022 11:13:19 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 31 May 2022 11:13:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 1 Jun 2022 02:13:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 1 Jun 2022 02:13:16 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <linmq006@gmail.com>
+CC: <bhelgaas@google.com>, <jianjun.wang@mediatek.com>, <kw@linux.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-pci@vger.kernel.org>,
+	<lorenzo.pieralisi@arm.com>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
+	<robh@kernel.org>, <ryder.lee@mediatek.com>
+Subject: Re: [PATCH v2] PCI: mediatek-gen3: Fix refcount leak in mtk_pcie_init_irq_domains
+Date: Wed, 1 Jun 2022 02:13:16 +0800
+Message-ID: <20220531181316.24452-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220530064807.34534-1-linmq006@gmail.com>
+References: <20220530064807.34534-1-linmq006@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 3/4] soc: mediatek: add support of MTK_SCPD_STRICT_BUSP
- cap
-Content-Language: fr
-To: Fabien Parent <fparent@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Alexandre Bailon <abailon@baylibre.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220530204214.913251-1-fparent@baylibre.com>
- <20220530204214.913251-3-fparent@baylibre.com>
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <20220530204214.913251-3-fparent@baylibre.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_101722_061711_857A0861 
-X-CRM114-Status: GOOD (  20.43  )
+X-CRM114-CacheID: sfid-20220531_111326_677976_1AE7354D 
+X-CRM114-Status: GOOD (  15.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,60 +76,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-TGUgMzAvMDUvMjAyMiDDoCAyMjo0MiwgRmFiaWVuIFBhcmVudCBhIMOpY3JpdMKgOgo+IEZyb206
-IEFsZXhhbmRyZSBCYWlsb24gPGFiYWlsb25AYmF5bGlicmUuY29tPgo+IAo+IFRoaXMgYWRkcyBz
-dXBwb3J0IG9mIE1US19TQ1BEX1NUUklDVF9CVVNQIGNhcC4KPiBUaGlzIGlzIHJlcXVpcmVkIGJ5
-IHRoZSBtdDgzNjUsIGZvciB0aGUgTU0gcG93ZXIgZG9tYWluLgo+IAo+IFNpZ25lZC1vZmYtYnk6
-IEFsZXhhbmRyZSBCYWlsb24gPGFiYWlsb25AYmF5bGlicmUuY29tPgo+IFNpZ25lZC1vZmYtYnk6
-IEZhYmllbiBQYXJlbnQgPGZwYXJlbnRAYmF5bGlicmUuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9z
-b2MvbWVkaWF0ZWsvbXRrLXBtLWRvbWFpbnMuYyB8IDM3ICsrKysrKysrKysrKysrKysrKysrLS0t
-LS0tLQo+ICAgZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLXBtLWRvbWFpbnMuaCB8ICAxICsKPiAg
-IDIgZmlsZXMgY2hhbmdlZCwgMjkgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiAKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLXBtLWRvbWFpbnMuYyBiL2RyaXZl
-cnMvc29jL21lZGlhdGVrL210ay1wbS1kb21haW5zLmMKPiBpbmRleCA5MGI5MWIzYjE5YTguLmJl
-YWE1Nzg1ZmRhMiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstcG0tZG9t
-YWlucy5jCj4gKysrIGIvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLXBtLWRvbWFpbnMuYwo+IEBA
-IC0yNjMsMTcgKzI2MywzNiBAQCBzdGF0aWMgaW50IHNjcHN5c19wb3dlcl9vbihzdHJ1Y3QgZ2Vu
-ZXJpY19wbV9kb21haW4gKmdlbnBkKQo+ICAgCXJlZ21hcF9jbGVhcl9iaXRzKHNjcHN5cy0+YmFz
-ZSwgcGQtPmRhdGEtPmN0bF9vZmZzLCBQV1JfSVNPX0JJVCk7Cj4gICAJcmVnbWFwX3NldF9iaXRz
-KHNjcHN5cy0+YmFzZSwgcGQtPmRhdGEtPmN0bF9vZmZzLCBQV1JfUlNUX0JfQklUKTsKPiAgIAo+
-IC0JcmV0ID0gY2xrX2J1bGtfcHJlcGFyZV9lbmFibGUocGQtPm51bV9zdWJzeXNfY2xrcywgcGQt
-PnN1YnN5c19jbGtzKTsKPiAtCWlmIChyZXQpCj4gLQkJZ290byBlcnJfcHdyX2FjazsKPiArCWlm
-IChNVEtfU0NQRF9DQVBTKHBkLCBNVEtfU0NQRF9TVFJJQ1RfQlVTUCkpIHsKPiArCQkvKgo+ICsJ
-CSAqIEluIGZldyBNZWRpYXRlayBwbGF0Zm9ybXMoZS5nLiBNVDY3NzkpLCB0aGUgYnVzIHByb3Rl
-Y3QKPiArCQkgKiBwb2xpY3kgaXMgc3RyaWN0ZXIsIHdoaWNoIGxlYWRzIHRvIGJ1cyBwcm90ZWN0
-IHJlbGVhc2UgbXVzdAo+ICsJCSAqIGJlIHByaW9yIHRvIGJ1cyBhY2Nlc3MuCj4gKwkJICovCj4g
-KwkJcmV0ID0gc2Nwc3lzX3NyYW1fZW5hYmxlKHBkKTsKPiArCQlpZiAocmV0IDwgMCkKPiArCQkJ
-Z290byBlcnJfcHdyX2FjazsKCkhpLAp3aXRoIHRoaXMgbmV3IHBhdGgsIHRoZSBlcnJvciBoYW5k
-bGluZyBwYXRoIGxvb2tzIG9kZCBiZWNhdXNlIHRoZSBvcmRlciAKb2Ygb3BlcmF0aW9uIGlzIG5v
-dCB0aGUgc2FtZS4KCj4gICAKPiAtCXJldCA9IHNjcHN5c19zcmFtX2VuYWJsZShwZCk7Cj4gLQlp
-ZiAocmV0IDwgMCkKPiAtCQlnb3RvIGVycl9kaXNhYmxlX3N1YnN5c19jbGtzOwo+ICsJCXJldCA9
-IHNjcHN5c19idXNfcHJvdGVjdF9kaXNhYmxlKHBkKTsKPiArCQlpZiAocmV0IDwgMCkKPiArCQkJ
-Z290byBlcnJfcHdyX2FjazsKCkhlcmUuLi4KCj4gICAKPiAtCXJldCA9IHNjcHN5c19idXNfcHJv
-dGVjdF9kaXNhYmxlKHBkKTsKPiAtCWlmIChyZXQgPCAwKQo+IC0JCWdvdG8gZXJyX2Rpc2FibGVf
-c3JhbTsKPiArCQlyZXQgPSBjbGtfYnVsa19wcmVwYXJlX2VuYWJsZShwZC0+bnVtX3N1YnN5c19j
-bGtzLCBwZC0+c3Vic3lzX2Nsa3MpOwo+ICsJCWlmIChyZXQgPCAwKQo+ICsJCQlnb3RvIGVycl9w
-d3JfYWNrOwoKLi4uIGFuZCBoZXJlIGFzIHdlbGwuCgpDSgoKPiArCX0gZWxzZSB7Cj4gKwkJcmV0
-ID0gY2xrX2J1bGtfcHJlcGFyZV9lbmFibGUocGQtPm51bV9zdWJzeXNfY2xrcywgcGQtPnN1YnN5
-c19jbGtzKTsKPiArCQlpZiAocmV0KQo+ICsJCQlnb3RvIGVycl9wd3JfYWNrOwo+ICsKPiArCQly
-ZXQgPSBzY3BzeXNfc3JhbV9lbmFibGUocGQpOwo+ICsJCWlmIChyZXQgPCAwKQo+ICsJCQlnb3Rv
-IGVycl9kaXNhYmxlX3N1YnN5c19jbGtzOwo+ICsKPiArCQlyZXQgPSBzY3BzeXNfYnVzX3Byb3Rl
-Y3RfZGlzYWJsZShwZCk7Cj4gKwkJaWYgKHJldCA8IDApCj4gKwkJCWdvdG8gZXJyX2Rpc2FibGVf
-c3JhbTsKPiArCX0KPiAgIAo+ICAgCXJldHVybiAwOwo+ICAgCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvc29jL21lZGlhdGVrL210ay1wbS1kb21haW5zLmggYi9kcml2ZXJzL3NvYy9tZWRpYXRlay9t
-dGstcG0tZG9tYWlucy5oCj4gaW5kZXggYTM5NTVkOTYwMjMzLi41MzQ3NDcxYmMzYzQgMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLXBtLWRvbWFpbnMuaAo+ICsrKyBiL2Ry
-aXZlcnMvc29jL21lZGlhdGVrL210ay1wbS1kb21haW5zLmgKPiBAQCAtOCw2ICs4LDcgQEAKPiAg
-ICNkZWZpbmUgTVRLX1NDUERfU1JBTV9JU08JCUJJVCgyKQo+ICAgI2RlZmluZSBNVEtfU0NQRF9L
-RUVQX0RFRkFVTFRfT0ZGCUJJVCgzKQo+ICAgI2RlZmluZSBNVEtfU0NQRF9ET01BSU5fU1VQUExZ
-CQlCSVQoNCkKPiArI2RlZmluZSBNVEtfU0NQRF9TVFJJQ1RfQlVTUAkJQklUKDUpCj4gICAjZGVm
-aW5lIE1US19TQ1BEX0NBUFMoX3NjcGQsIF94KQkoKF9zY3BkKS0+ZGF0YS0+Y2FwcyAmIChfeCkp
-Cj4gICAKPiAgICNkZWZpbmUgU1BNX1ZERV9QV1JfQ09OCQkJMHgwMjEwCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Miaoqian,
+
+>of_get_child_by_name() returns a node pointer with refcount
+>incremented, we should use of_node_put() on it when not need anymore.
+>Add missing of_node_put() to avoid refcount leak.
+>
+>Fixes: 814cceebba9b ("PCI: mediatek-gen3: Add INTx support")
+>Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+>---
+>changes in v2:
+>- move of_node_put(intc_node) right after irq_domain_add_linear to cover
+>normal path and error paths.
+>
+>v1 link: https://lore.kernel.org/all/20220526110246.53502-1-linmq006@gmail.com/
+>---
+> drivers/pci/controller/pcie-mediatek-gen3.c | 1 +
+> 1 file changed, 1 insertion(+)
+>
+>diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+>index 3e8d70bfabc6..19a01daad304 100644
+>--- a/drivers/pci/controller/pcie-mediatek-gen3.c
+>+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+>@@ -598,6 +598,7 @@ static int mtk_pcie_init_irq_domains(struct mtk_gen3_pcie *pcie)
+> 
+> 	pcie->intx_domain = irq_domain_add_linear(intc_node, PCI_NUM_INTX,
+> 						  &intx_domain_ops, pcie);
+>+	of_node_put(intc_node);
+> 	if (!pcie->intx_domain) {
+> 		dev_err(dev, "failed to create INTx IRQ domain\n");
+> 		return -ENODEV;
+>
+> 		
+
+Thanks for this v2 patch. I think we can do similar things like
+rtl8365mb_irq_setup() in drivers/net/dsa/realtek/rtl8365mb.c.
+
+When I read the error path, I will go back and see if everything is
+released, so I think it is clearer to put of_node_put() in the error
+path and before return 0.
+
+How do you think?
+
+i.g.,
+
+static int mtk_pcie_init_irq_domains(struct mtk_gen3_pcie *pcie)
+{
+	struct device *dev = pcie->dev;
+	struct device_node *intc_node, *node = dev->of_node;
+	int ret;
+
+	raw_spin_lock_init(&pcie->irq_lock);
+
+	/* Setup INTx */
+	intc_node = of_get_child_by_name(node, "interrupt-controller");
+	if (!intc_node) {
+		dev_err(dev, "missing interrupt-controller node\n");
+		return -ENODEV;
+	}
+
+	pcie->intx_domain = irq_domain_add_linear(intc_node, PCI_NUM_INTX,
+						  &intx_domain_ops, pcie);
+	if (!pcie->intx_domain) {
+		dev_err(dev, "failed to create INTx IRQ domain\n");
+		ret = -ENODEV;
+		goto out_put_node;
+	}
+
+	/* Setup MSI */
+	mutex_init(&pcie->lock);
+
+	pcie->msi_bottom_domain = irq_domain_add_linear(node, PCIE_MSI_IRQS_NUM,
+				  &mtk_msi_bottom_domain_ops, pcie);
+	if (!pcie->msi_bottom_domain) {
+		dev_err(dev, "failed to create MSI bottom domain\n");
+		ret = -ENODEV;
+		goto err_msi_bottom_domain;
+	}
+
+	pcie->msi_domain = pci_msi_create_irq_domain(dev->fwnode,
+						     &mtk_msi_domain_info,
+						     pcie->msi_bottom_domain);
+	if (!pcie->msi_domain) {
+		dev_err(dev, "failed to create MSI domain\n");
+		ret = -ENODEV;
+		goto err_msi_domain;
+	}
+
+	of_node_put(intc);
+	return 0;
+
+err_msi_domain:
+	irq_domain_remove(pcie->msi_bottom_domain);
+err_msi_bottom_domain:
+	irq_domain_remove(pcie->intx_domain);
+out_put_node:
+	of_node_put(intc);
+
+	return ret;
+}
+
+thanks,
+Miles
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
