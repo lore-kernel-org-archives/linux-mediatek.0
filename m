@@ -4,101 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D509C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 13:22:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2083BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 13:23:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=syoRFXdXQzcM34VIbzkvZvVLjPFv9mAzVTqdtXYiV5Y=; b=NAfgWvAcIO5rSy
-	HjuWkrXQ3lDGMalHv+nHAquSOUFHzojwmjE4jU+GpVIHuNQeeKR78VTpe4g9/X2NK443Hvw15qwRM
-	ZSushYqY5FAOx/71ntB5VVblBS+t6yTLQxJppvIsHgBUc7h/VgLHKgGtHDA+7ZjkNxRHf/3x4zglb
-	KN7kSu56vgK912J6H0ILsTsZCEPg71QrAqsDRFgSvWeSkmjGihfiZx0obg53RrB6QGrfobiE0nwlM
-	gcKAwAm/6p6Umwd0DxT9ZnouoFE1wmMVuq0/Got6vspD2kBkGJyhlAfYdn04h1QnSb3kYR/KOVVjI
-	IxPUOgAk1fOK5ky6d+Jg==;
+	List-Owner; bh=M0JxUePUTNk7VzUYtAp/AfM8/JpKpLNDOS91V76LHDQ=; b=JCxnf5EBXQE9JS
+	atzSI1UPhMFmbH9WFfnqFlGi+NXr2YQXCAMT5rej+oYugq2LsWNVjm30kH22jRaCYdVD/xdOnX7LA
+	sPK2X9UL3BklQRp426O3FlkGHY7ck+MDmBD7PKtV6WVUfROoHlS7hzwe7r+2ZQphwOBzl2559DXe7
+	MAAM6OkV4jjYs6Zks7Iz0y4GuBA+uKgFll7+cd4A2DWjGGBH4iutdg1a2mGvpit8utPB4nKvEObO7
+	vKH2JDA7xACwkFUm8AVLXRQa4VEkX1h8kEykVdbXzVMZyapI33n3WwZSnVPGebdMkrv2lq1wR08FJ
+	zhqffFmqRjWbgY4r/nPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1pZ-00B3Em-5F; Tue, 31 May 2022 13:22:41 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1nw1pt-00B3RE-KK; Tue, 31 May 2022 13:23:01 +0000
+Received: from mail-oi1-f180.google.com ([209.85.167.180])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1oH-00B2dJ-3e; Tue, 31 May 2022 13:21:22 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id m14-20020a17090a414e00b001df77d29587so2666151pjg.2;
-        Tue, 31 May 2022 06:21:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=U7ahqBydDZnP+CjyjsQFK3suIZ5X/7W6Ul5AL8gL7a4=;
-        b=gY4IDX6Of6Gq9PA3f1jZGTS5g7DSpVEowE1SjgpLLb07Ek5O3bUa1AT3+cfdS6UCd8
-         8Xt+NMoxOJuIk1S99ITLMNeJSVAIWnxd9ngnf4E663cBpINBrMmGDXNRpdw8PQO9ESN0
-         731JEaDVv5f30evjoU7f4yAGsARRqv7GDBqzFnJF0rzOI9cPUCcO5ApJXoM2duaDE0f5
-         fj8i3/Kpt7FIQOYfCSd45IYis8XPGGX3uAMe2IUBvzNCFMPsb0Au7CuvCnnQPXwZzS+b
-         0RWSns/CRrkU8x5/UqEZiAzlBoLt3ZRjybQHALkf6vqASoClAAn6hcUxRm+1zZAddYJi
-         ZVeg==
+	id 1nw1oO-00B2gH-Cg; Tue, 31 May 2022 13:21:30 +0000
+Received: by mail-oi1-f180.google.com with SMTP id k11so3800222oia.12;
+        Tue, 31 May 2022 06:21:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=U7ahqBydDZnP+CjyjsQFK3suIZ5X/7W6Ul5AL8gL7a4=;
-        b=3lvZRZX/mpjXmEsH9ZMquFaFDdGaGju89FoWSqbNXqSdsX6OXvatHn2jD2WIcpS8pG
-         ZlguLExHWgkUs8oLQwrrwJO5A5tpT1c4oKz60eKomu0MO9EUr6gSd+hIoTtPVUxy/4XX
-         PQX44Q3hMZiQppK05LJ4lAVJM9LPZ+B3hN0ziGmn8iATCCPSnnliDAYDIBgsq8U9rzZn
-         X0M00RhUg2FqnCTBNFFTXIN0pIGWCRsi7P5arX/1ZSweKxZRAKGg3GZYNMcKz6dIDaMX
-         S0RXnnL1hwVEicDiITOWTjZACyt3ECJG+z2S3tHZm8PBSXsXooG8+ZCmFSZH+L8Eu4rU
-         s8ZA==
-X-Gm-Message-State: AOAM533AWssE7WBTic03ewJLeORSf0OYfQ4k4b3jy58m1Wk9f/AW+ejp
-	xLJKXO/a/u0YizOe8FizbX/DIEFST6E=
-X-Google-Smtp-Source: ABdhPJwXXdpvzfH0OHWambVU4ULlh4L9pgITiSW26L4OAZncDI72140qTyXM7wFe+JzlcNO/h+5R7w==
-X-Received: by 2002:a05:6a00:a04:b0:51b:6ea0:43ca with SMTP id p4-20020a056a000a0400b0051b6ea043camr3778065pfh.78.1653995972975;
-        Tue, 31 May 2022 04:19:32 -0700 (PDT)
-Received: from RD-3580-24288.rt.l (42-72-220-172.emome-ip.hinet.net. [42.72.220.172])
-        by smtp.gmail.com with ESMTPSA id cm24-20020a056a00339800b00518142f8c37sm10751608pfb.171.2022.05.31.04.19.27
+        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+         :message-id;
+        bh=sjiY+V80OL2DiZ6A4EsGgW9fJIH8AO134dDg8U/4y24=;
+        b=duJE9UWaaoMroq6CZxx4PGnzjtH8XYXnE6J0F9wuVIfm+Q0Iw6nAl9UGztd9ToWIgj
+         NjriwMuAvg6SqIKUwqoJo/GhX/QrCjMXy5FLEePo/T1n2Ul8BeQIU0NjvthJZIHyCA/d
+         OEbcUKeKWVaqtgv7AOYxm4Dh6pQlTxWoUeF5kp8Lw8l2n9w3vzgJvZuK4Y4YJI6jPoDq
+         zha6QxaBld68zRaTn9Vh3141vRB0MiLDsnxIIwJWwCUE5BX/aB+GDCn1N0LyPAlGs8Lh
+         ONz+ZywA/VSuIwe1mXygk93EeHLraPFNoUqFfhcicMGsoqe3eV/7P4rIrCT5h++pFotf
+         57bA==
+X-Gm-Message-State: AOAM530pQ5oeTPYgR+IAN6vXFZ1O5+ZFHFf9Oqz7HdVF1Ayh40U5EeL3
+	9jRiTABiq7+QuNnxAG2Yeg==
+X-Google-Smtp-Source: ABdhPJyl1Zml7tK5z8UzPYsy0IRPoHHsY9ZbD0LO+NEm3SnMP5YpNvNvBFYMbygVSD+kwDaZAn8DAw==
+X-Received: by 2002:a05:6808:1510:b0:32a:ef6a:99b with SMTP id u16-20020a056808151000b0032aef6a099bmr12444054oiw.120.1654003286440;
+        Tue, 31 May 2022 06:21:26 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id t6-20020a056870f20600b000e90544b79fsm5563380oao.41.2022.05.31.06.21.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 04:19:32 -0700 (PDT)
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-To: lee.jones@linaro.org,
-	daniel.thompson@linaro.org,
-	jingoohan1@gmail.com,
-	pavel@ucw.cz,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	sre@kernel.org,
-	chunfeng.yun@mediatek.com,
-	gregkh@linuxfoundation.org,
-	jic23@kernel.org,
-	lars@metafoo.de,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com,
-	deller@gmx.de
-Cc: cy_huang@richtek.com,
-	alice_chen@richtek.com,
-	chiaen_wu@richtek.com,
-	peterwu.pub@gmail.com,
-	dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-fbdev@vger.kernel.org
-Subject: [RESEND 04/14] dt-bindings: leds: Add Mediatek MT6370 flashlight binding
-Date: Tue, 31 May 2022 19:18:50 +0800
-Message-Id: <20220531111900.19422-5-peterwu.pub@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220531111900.19422-1-peterwu.pub@gmail.com>
-References: <20220531111900.19422-1-peterwu.pub@gmail.com>
-MIME-Version: 1.0
+        Tue, 31 May 2022 06:21:26 -0700 (PDT)
+Received: (nullmailer pid 1610155 invoked by uid 1000);
+	Tue, 31 May 2022 13:21:25 -0000
+From: Rob Herring <robh@kernel.org>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, chunkuang.hu@kernel.org, devicetree@vger.kernel.org, jitao.shi@mediatek.com, ck.hu@mediatek.com, p.zabel@pengutronix.de, krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, daniel@ffwll.ch, robh+dt@kernel.org
+In-Reply-To: <20220530201436.902505-1-fparent@baylibre.com>
+References: <20220530201436.902505-1-fparent@baylibre.com>
+Subject: Re: [PATCH 1/7] dt-bindings: display: mediatek: dpi: add power-domains property
+Date: Tue, 31 May 2022 08:21:25 -0500
+Message-Id: <1654003285.268526.1610147.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_062121_192127_6A1F0416 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20220531_062128_533226_3C144BA3 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,77 +70,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alice Chen <alice_chen@richtek.com>
+On Mon, 30 May 2022 22:14:30 +0200, Fabien Parent wrote:
+> DPI is part of the display / multimedia block in MediaTek SoCs, and
+> always have a power-domain (at least in the upstream device-trees).
+> Add the power-domains property to the binding documentation.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml  | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
 
-Add Mediatek MT6370 flashlight binding documentation
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Signed-off-by: Alice Chen <alice_chen@richtek.com>
----
- .../leds/mediatek,mt6370-flashlight.yaml      | 48 +++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+yamllint warnings/errors:
 
-diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-new file mode 100644
-index 000000000000..b1b11bd3d410
---- /dev/null
-+++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-@@ -0,0 +1,48 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/leds/leds-mt6370-flashlight.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Flash LED driver for MT6370 PMIC from MediaTek Integrated.
-+
-+maintainers:
-+  - Alice Chen <alice_chen@richtek.com>
-+
-+description: |
-+  This module is part of the MT6370 MFD device.
-+  see Documentation/devicetree/bindings/mfd/mt6370.yaml
-+  Add MT6370 flash LED driver include 2-channel flash LED support Torch/Strobe Mode.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6370-flashlight
-+
-+  "#address-cells":
-+    const: 1
-+
-+  "#size-cells":
-+    const: 0
-+
-+patternProperties:
-+  "^led@[0-1]$":
-+    type: object
-+    $ref: common.yaml#
-+    description:
-+      Properties for a single flash LED.
-+
-+    properties:
-+      reg:
-+        description: Index of the flash LED.
-+        enum:
-+          - 0 #Address of LED1
-+          - 1 #Address of LED2
-+
-+    unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+  - "#address-cells"
-+  - "#size-cells"
-+
-+additionalProperties: false
--- 
-2.25.1
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.example.dts:29.35-36 syntax error
+FATAL ERROR: Unable to parse input tree
+make[1]: *** [scripts/Makefile.lib:364: Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.example.dtb] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1401: dt_binding_check] Error 2
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
