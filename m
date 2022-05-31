@@ -4,79 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D24B5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 06:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0542AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 08:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=svh58oTtFvYInh+0oDy7NDvIKWbkiO7CxsI4bT4xHug=; b=lZZNpn4E8ha/lC
-	JMxwtMyKBcDhsYr69xeyIHSSnZM8r633V9pRHkCnRyf7w9Fgn0FOOnsj2VpvJtkplJAsO2Awf+gq6
-	5dW8Rwf+LCI6Cpo1NIKTCNr1kDYnQ9LQxnYx0v5XKK8pd3rESKQQURKPELhhSC4MWKknhZSLlV74B
-	FQCklyBq5MTV3QIt2I35VOLa0t+yWOLaPpZodNznrY8UiBPFxMeiNH6Fx3ujGFRgg08RqnR+x9ubC
-	SdLTrBJC1gLTETgm9hh/kzoGc9OY29E6ZVwlL/nuqVvvJs6CFYVrGtgn9h4PtJrhYZ0wJtGwlRseI
-	TH6lKtFOCTm/A6Q9IOrQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Kyioqt6u7NYEbQFdDyRmpqGg/ddZTvuj5p846w8Jmak=; b=Bu5A/c1y0Py4WV
+	+4FcOsSyBdvJIVq9W4cdj7iitcNiYvN9JZdIsZUNN0hHHgcLk11Pzc5hx7JM/it0Ls3MHMoPH/Sas
+	Af1Ad+u/dM9QfQh9gmDSL/9Kp4NuI3ASTF+csHkUdGo1rQB8k/SSGK24xt07xM7VBRXCxY4T70QiV
+	q+LDGX1zq7FMiVlqczYqZBDhVwlY4i+OTq7ZXnI4hUAQYtEvGpZEeQ7U2GINVM3hbiL1IjVEugeHV
+	3mdacMEiexTWXOZlbmkAb7DlLWxczBLq7sQPKFLNgy+3LpLee6ReOc64WoINeYBjx6qLPauShf56o
+	sjnfZU742bEEAOVtsjFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvvIQ-009ZDl-Fh; Tue, 31 May 2022 06:24:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nvx9k-009oHd-4D; Tue, 31 May 2022 08:23:12 +0000
+Received: from mail.onlinesuccesses.pl ([198.244.150.235])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvvIN-009ZBz-HH; Tue, 31 May 2022 06:24:01 +0000
-X-UUID: e70207ed08b340ada06ca7e15fc8c32c-20220530
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:9adb48fc-5364-4e63-8d08-eef75a14b177,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09,CLOUDID:7a2b5914-f88c-475e-badf-d9ee54230b8f,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: e70207ed08b340ada06ca7e15fc8c32c-20220530
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 381169437; Mon, 30 May 2022 23:23:56 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 30 May 2022 23:13:53 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 31 May 2022 14:13:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 31 May 2022 14:13:39 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
-	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
-	<river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Subject: [PATCH v17 0/4] media: mediatek: support mdp3 on mt8183 platform
-Date: Tue, 31 May 2022 14:13:34 +0800
-Message-ID: <20220531061338.19555-1-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1nvx9g-009oGJ-0J
+	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 08:23:09 +0000
+Received: by mail.onlinesuccesses.pl (Postfix, from userid 1002)
+	id CFB0EAD975; Tue, 31 May 2022 08:16:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=onlinesuccesses.pl;
+	s=mail; t=1653985037;
+	bh=nE8HqilgMh4dy7+Z8ksfg7Bc9rmPeQtYFq3/3YR2ODU=;
+	h=Date:From:To:Subject:From;
+	b=mbwRO1LutuM1uPBR6Nz3/x8ERY4UUWn9+kRqGwnxopamRllq8GvwMwnWa5AQ51Ax+
+	 UPG42LQ5GlBqzIvKt6xUjrxS4P4y3nGXD8kzzGK2lpLXpyX6/nPbNhqfk3NIbd8SzR
+	 igvBmM1F2vacdP5RfoJAq5ACMIlpbYoOOAGaXegksii7Ij8Iv1gI1nDSpRBiB8xdL4
+	 IiiUQtCzJCqVMlQ21h0/Ae4QW/qjHoRDA9MOI+YJkk1Z+13WrqnTRQ3G4NP2S9EVCU
+	 cKTCRBFFAyOUhj8+Q935cXHCPshLVvE1GXFLpNOqR/hnYzZyCm03ZpqMEuFsb+6m10
+	 jAwOxx5odCCbA==
+Received: by mail.onlinesuccesses.pl for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 08:15:36 GMT
+Message-ID: <20220531064501-0.1.4l.1dc8k.0.xl9rcqpj1o@onlinesuccesses.pl>
+Date: Tue, 31 May 2022 08:15:36 GMT
+From: "Wiktor Zielonko" <wiktor.zielonko@onlinesuccesses.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Ruch z pierwszej pozycji w Google
+X-Mailer: mail.onlinesuccesses.pl
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_232359_608623_8D86D31D 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20220531_012308_237322_C7095F06 
+X-CRM114-Status: UNSURE (   1.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,230 +60,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change since v16:
-- Rebased on v5.19-rc1
-- Depend on:
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=646131
-- In response to MUTEX changes, adjust API naming and parameters when
-  used in function "mdp_path_subfrm_require".
-- Remove unnecessary MDP3 phandle in 8183 dts.
-
-Change since v15:
-- Depend on:
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=640926
-- Split the bindings under ./soc/mediatek into a separate patch.
-- Fix data abort in "mdp_auto_release_work"
-- Adjust the steps in the function "mdp_cmdq_send" to make the error handling
-  more reasonable
-
-Change since v14:
-- Rebase on v5.18-rc6
-- Depend on:
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=640926
-- In response to CMDQ API change, replace the function "cmdq_pkt_flush_async"
-  with the standard APIs of mbox
-- Fix the description of "mediatek,gce-client-reg" property in MDP3-related
-  bindings
-
-Change since v13:
-- Rebase on v5.18-rc4
-- Depend on:
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=636041
-- Remove advanced functionality about ISP settings for direct link cases.
-- Remove the software designation in the mt8183 dts and
-  revise corresponding bindings.
-
-Change since v12:
-- Rebase on linux-next
-- Depend on:
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=630948
-- Remove messages related to routing information in MDP3, and leave the related
-  settings in MMSYS.
-- Remove unnecessary phandle and redundant property in RDMA dt-binding and
-  adjust the corresponding driver.
-- Revise MDP3 node name in dts. 
-- Removed unnecessary functions, mutex and work queue in MDP3 driver
-- Fixed format mapping error for V4L2_PIX_FMT_RGB565X
-
-Change since v11:
-- Rebase on linux-next tag:next-20220316
-- Depend on:
-  [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=624281
-- Remove redundant hardware index in data-binding suggested by Rob Herring.
-- Referring to Rob Herring's suggestion to improve some descriptions in the
-  RDMA dt-binding
-- Move MDP3 file folder from "./drive/media/platform/mtk-mdp3" to
-  "./driver/media/platform/mediatek/mdp3"
-- Fixed the V4L2 and MDP color format mapping error in RGB565 which
-  checked by Benjamin Gaignard
-
-Change since v10:
-- The routing table needs to be discarded, and the calculation result
-  on the SCP side is used to write a suitable mux setting for
-  1 input port and 2 output ports.
-- Adjust dts parsing flow to remove redundant HW IDs.
-- Fix memory leak caused by no free path information in function "mdp_cmdq_send".
-
-Change since v9:
-- Keep only the MDP3 driver patches and split the remaining mmsys and
-  mutex patches into another mail.
-- Move mutex mod settings to corresponding driver and make relevant adjustments
-  for this in MDP3 driver.
-- Fix compile warning reported by kernel test robot.
-
-Change since v8:
-- Rebase on v5.16-rc2.
-- Refer to Angelo's suggestion, adjust the register writing format to increase
-  readability and significance.
-- Refer to Angelo's suggestion, adjust or reduce inappropriate debugging
-  messages.
-- Refer to Rob Herring's suggestion to correct the the binding file
-  to make it with the specification.
-- Fix compile warning reported by kernel test robot.
-
-Change since v7:
-- Rebase on v5.15-rc6.
-- Revise several V4L2 M2M settings to pass v4l2-compliance test.
-- Integrate those same component dt-binding documents of DRM and MDP, and
-  move them under the MMSYS domain.
-- Split MMSYS and MUTEX into two different files according to
-  their functional properties.
-
-Changes since v6:
-- Refactor GCE event to corresponding node.
-- Fix dt_binding_check fail.
-- Fix compilation errors.
-
-Changes since v5:
-- Rebase on v5.14-rc6.
-- Move MMSYS/Mutex settings to corresponding driver.
-- Revise the software license description and copyright.
-- Remove unnecessary enum. or definitions.
-- Optimize platform/chip definition conditions.
-- Use general printing functions instead of MDP3 private ones.
-- Fix compile warning.
-
-Changes since v4:
-- Rebase on v5.13-rc1.
-- Remove the CMDQ flush flow to match the CMDQ API change.
-- Integrate four of MDP's direct-link subcomponents into MDP controller node
-  from syscon node to avoid illegal clock usage.
-- Rewrite dt-binding in a JSON compatible subset of YAML
-- Fix a bit of macro argument precedence.
-
-Changes since v3:
-- Rebase on v5.9-rc1.
-- modify code for review comment from Rob Herring, cancel multiple nodes using
-  same register base situation.
-- control IOMMU port through pm runtime get/put to DMA components' device.
-- SCP(VPU) driver revision.
-- stop queuing jobs(remove flush_workqueue()) after mdp_m2m_release().
-- add computation of plane address with data_offset.
-- fix scale ratio check issue.
-- add default v4l2_format setting.
-
-Changes since v2:
-- modify code for review comment from Tomasz Figa & Alexandre Courbot
-- review comment from Rob Herring will offer code revision in v4, due to
-  it's related to device node modification, will need to modify code
-  architecture
-
-Changes since v1:
-- modify code for CMDQ v3 API support
-- EC ipi cmd migration
-- fix compliance test fail item (m2m cmd with -f) due to there is two problem in runing all format(-f) cmd:
-1. out of memory before test complete
-        Due to capture buffer mmap (refcount + 1) after reqbuf but seems
-        no corresponding munmap called before device close.
-        There are total 12XX items(formats) in format test and each format
-        alloc 8 capture/output buffers.
-2. unceasingly captureBufs() (randomly)
-        Seems the break statement didn't catch the count == 0 situation:
-        In v4l2-test-buffers.cpp, function: captureBufs()
-                        ...
-                        count--;
-                        if (!node->is_m2m && !count)
-                                break;
-        Log is as attachment
-
-Hi,
-
-This patch is used to present Media Data Path 3 (MDP3)
-which provided scaling and color format conversion.
-support using GCE to write register in critical time limitation.
-support V4L2 m2m device control.
-
-Moudy Ho (4):
-  dt-binding: mediatek: add bindings for MediaTek MDP3 components
-  dt-binding: mediatek: add bindings for MediaTek CCORR and WDMA
-  dts: arm64: mt8183: add Mediatek MDP3 nodes
-  media: platform: mtk-mdp3: add Mediatek MDP3 driver
-
- .../bindings/media/mediatek,mdp3-rdma.yaml    |  85 ++
- .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++
- .../bindings/media/mediatek,mdp3-wrot.yaml    |  70 ++
- .../bindings/soc/mediatek/mediatek,ccorr.yaml |  58 +
- .../bindings/soc/mediatek/mediatek,wdma.yaml  |  71 ++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  79 +-
- drivers/media/platform/mediatek/Kconfig       |   1 +
- drivers/media/platform/mediatek/Makefile      |   1 +
- drivers/media/platform/mediatek/mdp3/Kconfig  |  20 +
- drivers/media/platform/mediatek/mdp3/Makefile |   6 +
- .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |  19 +
- .../platform/mediatek/mdp3/mdp_reg_rdma.h     |  65 ++
- .../platform/mediatek/mdp3/mdp_reg_rsz.h      |  39 +
- .../platform/mediatek/mdp3/mdp_reg_wdma.h     |  47 +
- .../platform/mediatek/mdp3/mdp_reg_wrot.h     |  55 +
- .../platform/mediatek/mdp3/mtk-img-ipi.h      | 290 +++++
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 488 +++++++++
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  47 +
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 987 ++++++++++++++++++
- .../platform/mediatek/mdp3/mtk-mdp3-comp.h    | 185 ++++
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 378 +++++++
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  95 ++
- .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     | 772 ++++++++++++++
- .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |  48 +
- .../platform/mediatek/mdp3/mtk-mdp3-regs.c    | 736 +++++++++++++
- .../platform/mediatek/mdp3/mtk-mdp3-regs.h    | 370 +++++++
- .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     | 312 ++++++
- .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |  78 ++
- 28 files changed, 5466 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
- create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
- create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
- create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.h
-
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RHppZcWEIGRvYnJ5LCAKCmpha2nFmyBjemFzIHRlbXUgemfFgm9zacWCYSBzacSZIGRvIG5hcyBm
+aXJtYSwga3TDs3JlaiBzdHJvbmEgaW50ZXJuZXRvd2EgbmllIHBvenljam9ub3dhxYJhIHNpxJkg
+d3lzb2tvIHcgd3lzenVraXdhcmNlIEdvb2dsZS4gCgpOYSBwb2RzdGF3aWUgd3lrb25hbmVnbyBw
+cnpleiBuYXMgYXVkeXR1IFNFTyB6b3B0eW1hbGl6b3dhbGnFm215IHRyZcWbY2kgbmEgc3Ryb25p
+ZSBwb2Qga8SFdGVtIHdjemXFm25pZWogb3ByYWNvd2FueWNoIHPFgsOzdyBrbHVjem93eWNoLiBO
+YXN6IHdld27EmXRyem55IHN5c3RlbSBjb2R6aWVubmllIGFuYWxpenVqZSBwcmF3aWTFgm93ZSBk
+emlhxYJhbmllIHdpdHJ5bnkuICBEemnEmWtpIGluZHl3aWR1YWxuZWogc3RyYXRlZ2lpLCBmaXJt
+YSB6ZG9ieXdhIGNvcmF6IHdpxJljZWogS2xpZW50w7N3LiAgCgpDenkgY2hjaWVsaWJ5IFBhxYRz
+dHdvIHp3acSZa3N6ecSHIGxpY3pixJkgb3PDs2Igb2R3aWVkemFqxIVjeWNoIHN0cm9uxJkgaW50
+ZXJuZXRvd8SFIGZpcm15PyBNw7NnxYJieW0gcHJ6ZWRzdGF3acSHIG9mZXJ0xJk/IAoKClBvemRy
+YXdpYW0gc2VyZGVjem5pZSwKV2lrdG9yIFppZWxvbmtvCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
+dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
