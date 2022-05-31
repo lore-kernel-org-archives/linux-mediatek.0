@@ -4,61 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1156C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 13:24:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA289C4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 13:50:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=stLjgsQMCYe94VNZSEt9z6cnQDGck0KEEl8oxK6gIRU=; b=tpr8kdA9rqX4vJ9hZVw28B5zao
-	NAsqYLUo6skjbeUnsHjh3ONYmzzpXCMxBfn3rdEuBtin8nxH34vKxAu1fu7ceL/+KVkOuyS1B1l89
-	dpE7vF2ok5EreiVatreI04gldGbn633DGKnDJ48TFOfBEsBnciTkuR38gUTU/BR+kjeJXV9ivxPwI
-	bCgaZPsHu9mzO/Z358qjOFz/+M9LO5l3DPs0hT3Qvj9hQl+haSCpeZ/ebPXhp4UoIMW6b0HCtfdFg
-	ka+qUEjMuUPwq0TqoJR/Xyx1IXLa8QC5UClyZQJdZG3BfoeB9oLCI7tJCqcQ8DOrUk6AggxO3Ksx2
-	WleR1f3Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Joz6TgnK0T2eQN97SXGmlCFOeraEvwJul8SXKkC67os=; b=2569IDmRG21swd
+	ziWoJwnB2+Btprg4xGWcdSUj5Y7Qq2m2Gz/Bw6kOXZjI7HDMsEEfMdp7WlAT9Q/bFdgN5n81Y2IIE
+	bMfYSGuGoqAHK/HMu5LNQ+LEPOOnbdsnEISZbXztM9Qz/bQJKx5PeUEW2W5WKy0LASk+9vvr+xwi3
+	u3MP+N9ykr8j2K+Flm3juHnw9seHVpVksPkbqDU7EvXZFqGydQyoKvaxaEMrwvCWcjl+66IyaXKpa
+	kARY4UIn01OKdNmoKSD+jX+AR+zsv4FBVHqzuMBVK8fF/QF6arS0Cfj9KS/zRKQwcVUG9kqPNE/X0
+	b8qWc02FGLUvJMOliH2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1r7-00B46N-JN; Tue, 31 May 2022 13:24:17 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nw2Go-00BA6x-7r; Tue, 31 May 2022 13:50:50 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1op-00B2tY-B9
-	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 13:21:58 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1nw1oi-0000fa-7H; Tue, 31 May 2022 15:21:48 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1nw1oi-005efT-S7; Tue, 31 May 2022 15:21:47 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1nw1og-00DJcI-RM; Tue, 31 May 2022 15:21:46 +0200
-Date: Tue, 31 May 2022 15:21:46 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
-	Lee Jones <lee.jones@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1nw2Gg-00B9zm-Ec
+	for linux-mediatek@lists.infradead.org; Tue, 31 May 2022 13:50:46 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id e2so18821811wrc.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 31 May 2022 06:50:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=GdLebb0hcqumk+5oPRll761fGotaeHJ+s+cQnmwt1xo=;
+        b=vvDy6XluCcZHIaiVjMTo9e2czawjGc4AH938vW1pCzEcW7kbxITyawjphD4EV/7vDN
+         evc04Bbu01AxfCOacWkePRVHGvLcgU8FjxYfGe28i3qOevr+sFvsloQ5zQnu1MiWNtp9
+         wBAa00iDuFO00vXE9tuUDKf+8yFB7Otyji9C0BH4UBBYCvCPLHIvMPlNpnE1di8tMbcv
+         Yc3nn94Mngd8+f5An0MCY5JQ+c6oCIWT0W/aF9xDx91B2zFOMxYepU0t+P9d7IR/dHqb
+         dD/UeFvwFgVP7F8Ff+5GEwn+qJd5uucYG3s47GiUoWky06YiKrLkNXu/2bqq0KlPsqHJ
+         X7Pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=GdLebb0hcqumk+5oPRll761fGotaeHJ+s+cQnmwt1xo=;
+        b=2VNP4Wm/JOVTpRmQ84vi2KSxj7RKlRzcgAtqBJpwvONxmn5LFnLDq/H96dGSErBTrg
+         /8xXybL7n77ragRaZTKcLSM/Go5qmau8YGJkBApkhTrf+HG9ZR6XrnhqShjWTG7N4/Ui
+         VmajcrMOgrpfKipxfutPqCOe5/479EBOKyH9QhZsbIaN+wWKh/c+SsSe/3YKOXOX54a7
+         3z2LNijszJB3O45/UPDO/DFgBsuEJTYDiOaVR1kHcsJBLAlV5bTmtEC5CB81yARfSJTg
+         8OBQHn05FIjLlVWJVzl6Ih9GNOUirZnYE45TY8perPKq7osezy0RfgmZlD7NP3t0ixbf
+         KLAg==
+X-Gm-Message-State: AOAM533v6p3iaYBy2m+RZ2gpLfvneUMxp1CcPs7hN6PVKlr6txheanMP
+	eeEQwD/zjFVHSrh51UtBi3eU/FCDhhHgutLS
+X-Google-Smtp-Source: ABdhPJzwij5huFbgeVoSJeVbVzYQRkcylviSsOwOJ7GzYS2+JjN4sQ22PXZUOKuNArAQHL/NOyjV9Q==
+X-Received: by 2002:a05:6000:1548:b0:20f:c4e3:637a with SMTP id 8-20020a056000154800b0020fc4e3637amr40373733wry.513.1654005041269;
+        Tue, 31 May 2022 06:50:41 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+        by smtp.gmail.com with ESMTPSA id l11-20020a05600c1d0b00b00394351e35edsm2404806wms.26.2022.05.31.06.50.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 May 2022 06:50:40 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	vkoul@kernel.org,
+	qii.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	jic23@kernel.org,
+	chaotian.jing@mediatek.com,
+	ulf.hansson@linaro.org,
+	srinivas.kandagatla@linaro.org,
+	chunfeng.yun@mediatek.com,
+	broonie@kernel.org,
+	wim@linux-watchdog.org,
+	linux@roeck-us.net,
+	Yong Wu <yong.wu@mediatek.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	dmaengine@vger.kernel.org,
+	linux-i2c@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/2] pwm: mediatek: add MT8365 support
-Message-ID: <20220531132146.2zgqda4krzinpnjz@pengutronix.de>
-References: <20220530205038.917431-1-fparent@baylibre.com>
- <20220530205038.917431-2-fparent@baylibre.com>
+	linux-mediatek@lists.infradead.org,
+	linux-iio@vger.kernel.org,
+	linux-mmc@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-serial@vger.kernel.org,
+	linux-spi@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	linux-watchdog@vger.kernel.org,
+	Fabien Parent <fparent@baylibre.com>
+Subject: [PATCH 02/17] dt-bindings: memory: add mt8365 SoC binding documentation
+Date: Tue, 31 May 2022 15:50:11 +0200
+Message-Id: <20220531135026.238475-3-fparent@baylibre.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220531135026.238475-1-fparent@baylibre.com>
+References: <20220531135026.238475-1-fparent@baylibre.com>
 MIME-Version: 1.0
-In-Reply-To: <20220530205038.917431-2-fparent@baylibre.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_062155_426968_75C183BB 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20220531_065042_539535_6DAD640B 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,66 +110,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5993001216168885098=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add MediaTek SMI bindings for MT8365 SoC.
 
---===============5993001216168885098==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vghzb7bo5uqxchra"
-Content-Disposition: inline
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ .../bindings/memory-controllers/mediatek,smi-common.yaml    | 6 ++++++
+ .../bindings/memory-controllers/mediatek,smi-larb.yaml      | 6 ++++++
+ 2 files changed, 12 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index a98b359bf909..e1029ac99ab4 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -46,6 +46,11 @@ properties:
+           - const: mediatek,mt7623-smi-common
+           - const: mediatek,mt2701-smi-common
+ 
++      - description: for mt8365
++        items:
++          - const: mediatek,mt8365-smi-common
++          - const: mediatek,mt8186-smi-common
++
+   reg:
+     maxItems: 1
+ 
+@@ -130,6 +135,7 @@ allOf:
+             - mediatek,mt8192-smi-common
+             - mediatek,mt8195-smi-common-vdo
+             - mediatek,mt8195-smi-common-vpp
++            - mediatek,mt8365-smi-common
+ 
+     then:
+       properties:
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index c886681f62a7..815d87fc64a0 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -32,6 +32,11 @@ properties:
+           - const: mediatek,mt7623-smi-larb
+           - const: mediatek,mt2701-smi-larb
+ 
++      - description: for mt8365
++        items:
++          - const: mediatek,mt8365-smi-larb
++          - const: mediatek,mt8186-smi-larb
++
+   reg:
+     maxItems: 1
+ 
+@@ -78,6 +83,7 @@ allOf:
+             - mediatek,mt8183-smi-larb
+             - mediatek,mt8186-smi-larb
+             - mediatek,mt8195-smi-larb
++            - mediatek,mt8365-smi-larb
+ 
+     then:
+       properties:
+-- 
+2.36.1
 
---vghzb7bo5uqxchra
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, May 30, 2022 at 10:50:38PM +0200, Fabien Parent wrote:
-> Add support for PWM on MT8365
->=20
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-
-looks reasonable
-
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---vghzb7bo5uqxchra
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmKWFmgACgkQwfwUeK3K
-7Alc5wgAhtJ1RC3404iVoUzmztvxCsqFqWXCCs7ABL7F4nca8vj+sLX6wtYzYwLR
-o1Jxc8nRei/tSuMbWz0XEUS479GGdFs3+XATIdc1QzSGsR9cXShBtec+cywRSNrN
-uRAJMb+BSx0exbP8LyUx4zDNkrL1HHsd3nwKtR8FGf0FrQxe+Qtv63o/BMpdhWr6
-LZ3Qq3qg5bZ+DdJlqnlXDNC7AYxmE5e+Hl1nZs0g0oSxG628nJ5MbGhoL6ubmPhk
-FEMNgX35Fr9Kz6IHYfSWeBU2RAeU/xHCZRpaLq0JZx5i1L/GKOeTatx3yaWk4HQZ
-Yl7UcqI+LDiOEWSeNs+RuGSpZbfu1w==
-=4/fJ
------END PGP SIGNATURE-----
-
---vghzb7bo5uqxchra--
-
-
---===============5993001216168885098==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5993001216168885098==--
-
