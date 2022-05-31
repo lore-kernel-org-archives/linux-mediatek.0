@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4E62C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 12:59:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B5BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 13:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o0DTdxfp2crRb6mkmqnDnQ5dAd3GZ55NweBg5/0OMJg=; b=1aLHL4BCRNvph0
-	/feUq33NYG6cOU1AI5OEgzJGG6D23wGIIMRsEssOxoOC6Cg5V4g/Qf25cs991OJr6xQqzn6G/QY4q
-	Xep06iSOImHlFiMA9n44bYkzRM8mHv7rC6tr1FFrN0pGl/36vDQhHKhD5gA0frKg5iImNMbdpReR0
-	n+bBiZQ0SamqjXYUqYW9rl9DOynvpUIshLQM8Z+cH6f/Afu1sBsg/nVKZZTPAiwMPv5NGw90i6PLD
-	Menn2v1z2VENaOlXQF33B/qiC5I3CKWtoOggK475XWgQ/m6XP+BeYFMGSKoE6sJU7bwvJ8xeKdBfj
-	QVjLt3oSxdPUOt3CrI1A==;
+	List-Owner; bh=oYG4C7EjYfh+kElebz5FKcr4p81N8zXNy7w8D5DkdPU=; b=iefarGJV2QSqCl
+	2kTfBOUovQRnAWjQbLN7OeX0DmEB2qoWBB1pOlE6Zw16ZUAISMr9m+TueNME9WtkHEofXO5O62eiX
+	KGxNSdlzizA2QhQ1CBJqj6kFI3X1YPD933gbbKwE0/5cu0zFh6k+3OooI4fc1NY/Koh0bFy1IDVGD
+	Tv4F6OfFS84kIcfoZt4/X+pMdzz3iDZ8vsjlih6ziaem3QTipqY3UlSfigRExaDMKXe6ZmSxxxZdA
+	Ath1Q5MfG6Lkq20tOFrLXdRhHxkbCM0zYPvjcP/Np6gIO1HMVJm4PlJckIvNB1VIF6wMMOWnG52V7
+	CCC7IwrdW688IiHb0SGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1Sx-00Av4w-Mf; Tue, 31 May 2022 12:59:19 +0000
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044])
+	id 1nw1Uz-00Avyw-MA; Tue, 31 May 2022 13:01:25 +0000
+Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw1SW-00Auu9-Co; Tue, 31 May 2022 12:58:58 +0000
-Received: by mail-pj1-x1044.google.com with SMTP id nn3-20020a17090b38c300b001e0e091cf03so1629876pjb.1;
-        Tue, 31 May 2022 05:58:49 -0700 (PDT)
+	id 1nw1Uc-00AvpW-BG; Tue, 31 May 2022 13:01:07 +0000
+Received: by mail-qv1-xf42.google.com with SMTP id a9so5030236qvt.6;
+        Tue, 31 May 2022 06:01:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=sePt3x7ON3JH7CeHoCRuD6Euif4kN7Rj2nuq+sT7jGM=;
-        b=L4iT7jcD7Aa8BTMEzLrmBs/dijnsKXYuJpmDX+VrrhWXGY1NSQT7XFlOk2NFy2FOkB
-         3HkGY2epADf5bMF2k1JAHGRqwybDCcFirS2uL0l5JVwiP26KQZ8O3LhzLSFuyzH+mAdJ
-         q+4vUxHJyKAuLVRwmMizAawEl1xEgv3rKJ/wVnrse+o51och7ltoZENTIr/s5PpdneKd
-         mP9XDSCyLbWECcF+HzpldUgRqeUb+DOP8dl/O5xI2bQxxRU6TfFNL1hCeETRbt7zR0qL
-         sbrfd1Uq4u0erc+Hd4UiTcqcn3hd0fVlz1kcf1B6d0+ksVF7HH+DWsRmoxgkwS7Qcwqy
-         /8Cw==
+        bh=0sCP0jkvIeE07R1+RmlM9MygA92ez6zp1dtKYb5AvDE=;
+        b=nXmORH65SpUjbhTvE2/X4vleVvzj6HP+vuXT2wdUKKV3uYzPcGvjjNbaiQXbwG8qzK
+         uPv/BkQ+TkqS/c/pTyH3MEcmQTjImLnIAQwYIywCz9eE2DXVRcjWE2BFU0DaPWbtLi/6
+         JIvwS/TtGLCo09S6g+UL6qkaUK2oeoCMkdiukx7QIlym1KreWmFGviLxAhPsUcZHmlSM
+         OSkgJCSvXdBwmw4Gici4yb0fk/qD+ZeAOnsOxdBN99m27wOxY2bmru3yqNJ3C7pNDS41
+         mUuOOYgxXC4RL+LYjsYCmgj2KzDBSJcjDqVJDm+H+8YT3Rf9D+evD4SgQIcZFSpWOpWa
+         kFAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=sePt3x7ON3JH7CeHoCRuD6Euif4kN7Rj2nuq+sT7jGM=;
-        b=r2kSKCxfSt1BXMIDstcRwf1p6ijetn9O5Evr1d88pIhnfBYAXsf2krqaNgg0TCHVfP
-         j78nugCabDAkkc9GaVEfcHBfrpHSIFjvPUGUsEi+dB9Nagm1xdfNPNEIHEN9oZfaAsJC
-         W3LTAEsIp9usMLeq/Xm0Jnri5qbgawpyn+yRF/N7IjyXlDAbTKmeECm1qEREdrNcMsWD
-         G4FKS7W9PrVO7HVwY9PyDnIivN/WWA/LZeYL1VeMbXFFm/pmNgM93ama0dvP3ICM43yh
-         Extzhzw8yv7bDTeWzvKbaEo6aD38tVjhcg+1xWQCYrB51pvSuyPBQugud1uTrRaS9AUM
-         ZZgw==
-X-Gm-Message-State: AOAM533v8fWsa5SBBWW/6rEchIYckEHAtAiby+lra5lRPUlqjBM+e7kL
-	bcIF5l6QgDaZX+Uex0mxGwxjRmLjxIc=
-X-Google-Smtp-Source: ABdhPJwIqOcoNUOpeyqsTh9oOgeAWS0oQhQ0+DT4YxHpbXee3CjQRtoHo2X2J6oUELTc2qP/1v0NRA==
-X-Received: by 2002:a05:6a00:811:b0:518:b0eb:9132 with SMTP id m17-20020a056a00081100b00518b0eb9132mr40359775pfk.57.1653996001942;
-        Tue, 31 May 2022 04:20:01 -0700 (PDT)
+        bh=0sCP0jkvIeE07R1+RmlM9MygA92ez6zp1dtKYb5AvDE=;
+        b=eHtKMy2PsGXsEdDvHqNEyBarqzKoGLIKqd6YECwMIGt/fxI+hFwkTAzy+0ACKl6yHa
+         IzSTuU6sdv0/vgQfYkPj4Gsky9N+oFREfNJDeHe+8Gc3+KV2koc1eXiNVbyM9JjGsagn
+         203h47IMWhVZ7UAHPl1OMcGQfIfPs9hqtZUsZC0RjHpwRak+cS+OyE3AyAvOkrOMAU1f
+         BHzDgHHYIFhsEtRnpBXjoGZI+pAi48Yfslk5DeTqqUFT8PQ4QC8sbbV7FSiCAqiYRfh5
+         Ru4k9hZ4axd4S18aFGST6dJhMygpD+K09hlQHiqtCxAwOLx+WkzuPkJX1FBTf6SE96l9
+         5/kw==
+X-Gm-Message-State: AOAM530YBp2QxVuMULkK4U8Y6lAL0BfPxqBWfU5q40n0K/Z089jdWT6x
+	F9pyUGICVbA2YZvCN51jv7FojaQw588=
+X-Google-Smtp-Source: ABdhPJxJCbqOi6bcKGG2j8vTrhwclOHUg/eFfbPHJw6XvHla1B8QXbEiVn8d3/yztpo6Xy5/cUsecA==
+X-Received: by 2002:a17:902:e5c4:b0:163:4c5e:5b39 with SMTP id u4-20020a170902e5c400b001634c5e5b39mr33395049plf.69.1653995961377;
+        Tue, 31 May 2022 04:19:21 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-72-220-172.emome-ip.hinet.net. [42.72.220.172])
-        by smtp.gmail.com with ESMTPSA id cm24-20020a056a00339800b00518142f8c37sm10751608pfb.171.2022.05.31.04.19.56
+        by smtp.gmail.com with ESMTPSA id cm24-20020a056a00339800b00518142f8c37sm10751608pfb.171.2022.05.31.04.19.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 04:20:01 -0700 (PDT)
+        Tue, 31 May 2022 04:19:21 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: lee.jones@linaro.org,
 	daniel.thompson@linaro.org,
@@ -89,16 +89,16 @@ Cc: cy_huang@richtek.com,
 	linux-usb@vger.kernel.org,
 	linux-iio@vger.kernel.org,
 	linux-fbdev@vger.kernel.org
-Subject: [RESEND 09/14] regulator: mt6370: Add mt6370 DisplayBias and VibLDO support
-Date: Tue, 31 May 2022 19:18:55 +0800
-Message-Id: <20220531111900.19422-10-peterwu.pub@gmail.com>
+Subject: [RESEND 02/14] dt-bindings: power: supply: Add Mediatek MT6370 Charger binding
+Date: Tue, 31 May 2022 19:18:48 +0800
+Message-Id: <20220531111900.19422-3-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220531111900.19422-1-peterwu.pub@gmail.com>
 References: <20220531111900.19422-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_055852_472120_6791C271 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20220531_060105_654420_21A8C4DC 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,444 +115,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+From: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Add mt6370 DisplayBias and VibLDO support.
+Add Mediatek MT6370 Charger binding documentation.
 
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 ---
- drivers/regulator/Kconfig            |   8 +
- drivers/regulator/Makefile           |   1 +
- drivers/regulator/mt6370-regulator.c | 389 +++++++++++++++++++++++++++
- 3 files changed, 398 insertions(+)
- create mode 100644 drivers/regulator/mt6370-regulator.c
+ .../power/supply/mediatek,mt6370-charger.yaml | 60 +++++++++++++++++++
+ 1 file changed, 60 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
 
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index cbe0f96ca342..dcb6866dab53 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -804,6 +804,14 @@ config REGULATOR_MT6360
- 	  2-channel buck with Thermal Shutdown and Overload Protection
- 	  6-channel High PSRR and Low Dropout LDO.
- 
-+config REGULATOR_MT6370
-+	tristate "MT6370 SubPMIC Regulator"
-+	depends on MFD_MT6370
-+	help
-+	  Say Y here to enable MT6370 regulator support.
-+	  This driver support the control for DisplayBias voltages and one
-+	  general purpose LDO which commonly used to drive the vibrator.
-+
- config REGULATOR_MT6380
- 	tristate "MediaTek MT6380 PMIC"
- 	depends on MTK_PMIC_WRAP
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 8d3ee8b6d41d..f1cbff21843e 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -97,6 +97,7 @@ obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
- obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
- obj-$(CONFIG_REGULATOR_MT6359)	+= mt6359-regulator.o
- obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
-+obj-$(CONFIG_REGULATOR_MT6370) += mt6370-regulator.o
- obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
- obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
- obj-$(CONFIG_REGULATOR_MTK_DVFSRC) += mtk-dvfsrc-regulator.o
-diff --git a/drivers/regulator/mt6370-regulator.c b/drivers/regulator/mt6370-regulator.c
+diff --git a/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
 new file mode 100644
-index 000000000000..949b2c7b5556
+index 000000000000..9d5c4487ca9c
 --- /dev/null
-+++ b/drivers/regulator/mt6370-regulator.c
-@@ -0,0 +1,389 @@
-+// SPDX-License-Identifier: GPL-2.0+
++++ b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+@@ -0,0 +1,60 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/power/supply/mediatek,mt6370-charger.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#include <linux/bits.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/interrupt.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/machine.h>
++title: Mediatek MT6370 Battery Charger
 +
-+enum {
-+	MT6370_IDX_DSVBOOST = 0,
-+	MT6370_IDX_DSVPOS,
-+	MT6370_IDX_DSVNEG,
-+	MT6370_IDX_VIBLDO,
-+	MT6370_MAX_IDX
-+};
++maintainers:
++  - ChiaEn Wu <chiaen_wu@richtek.com>
 +
-+#define MT6370_REG_LDO_CFG	0x180
-+#define MT6370_REG_LDO_VOUT	0x181
-+#define MT6370_REG_DB_CTRL1	0x1B0
-+#define MT6370_REG_DB_CTRL2	0x1B1
-+#define MT6370_REG_DB_VBST	0x1B2
-+#define MT6370_REG_DB_VPOS	0x1B3
-+#define MT6370_REG_DB_VNEG	0x1B4
-+#define MT6370_REG_LDO_STAT	0x1DC
-+#define MT6370_REG_DB_STAT	0x1DF
++description: |
++  This module is part of the MT6370 MFD device.
++  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
 +
-+#define MT6370_LDOOMS_MASK	BIT(7)
-+#define MT6370_LDOEN_MASK	BIT(7)
-+#define MT6370_LDOVOUT_MASK	GENMASK(3, 0)
-+#define MT6370_DBPERD_MASK	(BIT(7) | BIT(4))
-+#define MT6370_DBEXTEN_MASK	BIT(0)
-+#define MT6370_DBVPOSEN_MASK	BIT(6)
-+#define MT6370_DBVPOSDISG_MASK	BIT(5)
-+#define MT6370_DBVNEGEN_MASK	BIT(3)
-+#define MT6370_DBVNEGDISG_MASK	BIT(2)
-+#define MT6370_DBALLON_MASK	(MT6370_DBVPOSEN_MASK | MT6370_DBVNEGEN_MASK)
-+#define MT6370_DBSLEW_MASK	GENMASK(7, 6)
-+#define MT6370_DBVOUT_MASK	GENMASK(5, 0)
-+#define MT6370_LDOOC_EVT_MASK	BIT(7)
-+#define MT6370_POSSCP_EVT_MASK	BIT(7)
-+#define MT6370_NEGSCP_EVT_MASK	BIT(6)
-+#define MT6370_BSTOCP_EVT_MASK	BIT(5)
-+#define MT6370_POSOCP_EVT_MASK	BIT(4)
-+#define MT6370_NEGOCP_EVT_MASK	BIT(3)
++properties:
++  compatible:
++    const: mediatek,mt6370-charger
 +
-+#define MT6370_LDO_MINUV	1600000
-+#define MT6370_LDO_STPUV	200000
-+#define MT6370_LDO_N_VOLT	13
-+#define MT6370_DBVBOOST_MINUV	4000000
-+#define MT6370_DBVBOOST_STPUV	50000
-+#define MT6370_DBVBOOST_N_VOLT	45
-+#define MT6370_DBVOUT_MINUV	4000000
-+#define MT6370_DBVOUT_STPUV	50000
-+#define MT6370_DBVOUT_N_VOLT	41
++  interrupts:
++    description: |
++      Specify what irqs are needed to be handled by MT6370 Charger driver. IRQ
++      "MT6370_IRQ_CHG_MIVR", "MT6370_IRQ_ATTACH" and "MT6370_IRQ_OVPCTRL_UVP_D"
++      are required.
++    items:
++      - description: BC1.2 done irq for mt6370 charger
++      - description: usb plug in irq for mt6370 charger
++      - description: mivr irq for mt6370 charger
 +
-+struct mt6370_priv {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct regulator_dev *rdev[MT6370_MAX_IDX];
-+	bool use_external_ctrl;
-+};
++  interrupt-names:
++    items:
++      - const: attach_i
++      - const: uvp_d_evt
++      - const: mivr
 +
-+static const unsigned int mt6370_vpos_ramp_tbl[] = { 8540, 5840, 4830, 3000 };
-+static const unsigned int mt6370_vneg_ramp_tbl[] = { 10090, 6310, 5050, 3150 };
++  io-channels:
++    description: |
++      Use ADC channel to read vbus, ibus, ibat, etc., info. Ibus ADC channel
++      is required.
 +
-+static int mt6370_get_error_flags(struct regulator_dev *rdev,
-+				  unsigned int *flags)
-+{
-+	struct regmap *regmap = rdev_get_regmap(rdev);
-+	unsigned int stat_reg, stat, rpt_flags = 0;
-+	int rid = rdev_get_id(rdev), ret;
++  usb-otg-vbus:
++    type: object
++    description: OTG boost regulator.
++    $ref: /schemas/regulator/regulator.yaml#
 +
-+	if (rid == MT6370_IDX_VIBLDO)
-+		stat_reg = MT6370_REG_LDO_STAT;
-+	else
-+		stat_reg = MT6370_REG_DB_STAT;
++    properties:
++      enable-gpio:
++        maxItems: 1
++        description: |
++          Specify a valid 'enable' gpio for the regulator and it's optional
 +
-+	ret = regmap_read(regmap, stat_reg, &stat);
-+	if (ret)
-+		return ret;
++required:
++  - compatible
++  - interrupts
++  - interrupt-names
++  - io-channels
 +
-+	switch (rid) {
-+	case MT6370_IDX_DSVBOOST:
-+		if (stat & MT6370_BSTOCP_EVT_MASK)
-+			rpt_flags |= REGULATOR_ERROR_OVER_CURRENT;
-+		break;
-+	case MT6370_IDX_DSVPOS:
-+		if (stat & MT6370_POSSCP_EVT_MASK)
-+			rpt_flags |= REGULATOR_ERROR_UNDER_VOLTAGE;
++additionalProperties: false
 +
-+		if (stat & MT6370_POSOCP_EVT_MASK)
-+			rpt_flags |= REGULATOR_ERROR_OVER_CURRENT;
-+		break;
-+	case MT6370_IDX_DSVNEG:
-+		if (stat & MT6370_NEGSCP_EVT_MASK)
-+			rpt_flags |= REGULATOR_ERROR_UNDER_VOLTAGE;
-+
-+		if (stat & MT6370_NEGOCP_EVT_MASK)
-+			rpt_flags |= REGULATOR_ERROR_OVER_CURRENT;
-+		break;
-+	default:
-+		if (stat & MT6370_LDOOC_EVT_MASK)
-+			rpt_flags |= REGULATOR_ERROR_OVER_CURRENT;
-+		break;
-+	}
-+
-+	*flags = rpt_flags;
-+	return 0;
-+}
-+
-+static const struct regulator_ops mt6370_dbvboost_ops = {
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.list_voltage = regulator_list_voltage_linear,
-+	.get_bypass = regulator_get_bypass_regmap,
-+	.set_bypass = regulator_set_bypass_regmap,
-+	.get_error_flags = mt6370_get_error_flags,
-+};
-+
-+static const struct regulator_ops mt6370_dbvout_ops = {
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.list_voltage = regulator_list_voltage_linear,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.set_active_discharge = regulator_set_active_discharge_regmap,
-+	.set_ramp_delay = regulator_set_ramp_delay_regmap,
-+	.get_error_flags = mt6370_get_error_flags,
-+};
-+
-+static const struct regulator_ops mt6370_ldo_ops = {
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.list_voltage = regulator_list_voltage_linear,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.set_active_discharge = regulator_set_active_discharge_regmap,
-+	.get_error_flags = mt6370_get_error_flags,
-+};
-+
-+static int mt6370_of_parse_cb(struct device_node *np,
-+			      const struct regulator_desc *desc,
-+			      struct regulator_config *config)
-+{
-+	struct mt6370_priv *priv = config->driver_data;
-+	struct gpio_desc *enable_gpio;
-+	int ret;
-+
-+	enable_gpio = fwnode_gpiod_get_index(of_fwnode_handle(np), "enable", 0,
-+					     GPIOD_OUT_HIGH |
-+					     GPIOD_FLAGS_BIT_NONEXCLUSIVE,
-+					     desc->name);
-+	if (IS_ERR(enable_gpio)) {
-+		config->ena_gpiod = NULL;
-+		return 0;
-+	}
-+
-+	/*
-+	 * RG control by default
-+	 * Only if all are using external pin, change all by external control
-+	 */
-+	if (priv->use_external_ctrl) {
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_DB_CTRL1,
-+					 MT6370_DBEXTEN_MASK,
-+					 MT6370_DBEXTEN_MASK);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	config->ena_gpiod = enable_gpio;
-+	priv->use_external_ctrl = true;
-+	return 0;
-+}
-+
-+static const struct regulator_desc mt6370_regulator_descs[] = {
-+	{
-+		.name = "mt6370-dsv-vbst",
-+		.of_match = of_match_ptr("dsvbst"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = MT6370_IDX_DSVBOOST,
-+		.type = REGULATOR_VOLTAGE,
-+		.owner = THIS_MODULE,
-+		.ops = &mt6370_dbvboost_ops,
-+		.min_uV = MT6370_DBVBOOST_MINUV,
-+		.uV_step = MT6370_DBVBOOST_STPUV,
-+		.n_voltages = MT6370_DBVBOOST_N_VOLT,
-+		.vsel_reg = MT6370_REG_DB_VBST,
-+		.vsel_mask = MT6370_DBVOUT_MASK,
-+		.bypass_reg = MT6370_REG_DB_CTRL1,
-+		.bypass_mask = MT6370_DBPERD_MASK,
-+		.bypass_val_on = MT6370_DBPERD_MASK,
-+	},
-+	{
-+		.name = "mt6370-dsv-vpos",
-+		.of_match = of_match_ptr("dsvpos"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = MT6370_IDX_DSVPOS,
-+		.type = REGULATOR_VOLTAGE,
-+		.owner = THIS_MODULE,
-+		.of_parse_cb = mt6370_of_parse_cb,
-+		.ops = &mt6370_dbvout_ops,
-+		.min_uV = MT6370_DBVOUT_MINUV,
-+		.uV_step = MT6370_DBVOUT_STPUV,
-+		.n_voltages = MT6370_DBVOUT_N_VOLT,
-+		.vsel_reg = MT6370_REG_DB_VPOS,
-+		.vsel_mask = MT6370_DBVOUT_MASK,
-+		.enable_reg = MT6370_REG_DB_CTRL2,
-+		.enable_mask = MT6370_DBVPOSEN_MASK,
-+		.ramp_reg = MT6370_REG_DB_VPOS,
-+		.ramp_mask = MT6370_DBSLEW_MASK,
-+		.ramp_delay_table = mt6370_vpos_ramp_tbl,
-+		.n_ramp_values = ARRAY_SIZE(mt6370_vpos_ramp_tbl),
-+		.active_discharge_reg = MT6370_REG_DB_CTRL2,
-+		.active_discharge_mask = MT6370_DBVPOSDISG_MASK,
-+		.active_discharge_on = MT6370_DBVPOSDISG_MASK,
-+	},
-+	{
-+		.name = "mt6370-dsv-vneg",
-+		.of_match = of_match_ptr("dsvneg"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = MT6370_IDX_DSVNEG,
-+		.type = REGULATOR_VOLTAGE,
-+		.owner = THIS_MODULE,
-+		.of_parse_cb = mt6370_of_parse_cb,
-+		.ops = &mt6370_dbvout_ops,
-+		.min_uV = MT6370_DBVOUT_MINUV,
-+		.uV_step = MT6370_DBVOUT_STPUV,
-+		.n_voltages = MT6370_DBVOUT_N_VOLT,
-+		.vsel_reg = MT6370_REG_DB_VNEG,
-+		.vsel_mask = MT6370_DBVOUT_MASK,
-+		.enable_reg = MT6370_REG_DB_CTRL2,
-+		.enable_mask = MT6370_DBVNEGEN_MASK,
-+		.ramp_reg = MT6370_REG_DB_VNEG,
-+		.ramp_mask = MT6370_DBSLEW_MASK,
-+		.ramp_delay_table = mt6370_vneg_ramp_tbl,
-+		.n_ramp_values = ARRAY_SIZE(mt6370_vneg_ramp_tbl),
-+		.active_discharge_reg = MT6370_REG_DB_CTRL2,
-+		.active_discharge_mask = MT6370_DBVNEGDISG_MASK,
-+		.active_discharge_on = MT6370_DBVNEGDISG_MASK,
-+	},
-+	{
-+		.name = "mt6370-vib-ldo",
-+		.of_match = of_match_ptr("vibldo"),
-+		.regulators_node = of_match_ptr("regulators"),
-+		.id = MT6370_IDX_VIBLDO,
-+		.type = REGULATOR_VOLTAGE,
-+		.owner = THIS_MODULE,
-+		.ops = &mt6370_ldo_ops,
-+		.min_uV = MT6370_LDO_MINUV,
-+		.uV_step = MT6370_LDO_STPUV,
-+		.n_voltages = MT6370_LDO_N_VOLT,
-+		.vsel_reg = MT6370_REG_LDO_VOUT,
-+		.vsel_mask = MT6370_LDOVOUT_MASK,
-+		.enable_reg = MT6370_REG_LDO_VOUT,
-+		.enable_mask = MT6370_LDOEN_MASK,
-+		.active_discharge_reg = MT6370_REG_LDO_CFG,
-+		.active_discharge_mask = MT6370_LDOOMS_MASK,
-+		.active_discharge_on = MT6370_LDOOMS_MASK,
-+	}
-+};
-+
-+static irqreturn_t mt6370_scp_handler(int irq, void *data)
-+{
-+	struct regulator_dev *rdev = data;
-+
-+	regulator_notifier_call_chain(rdev, REGULATOR_EVENT_UNDER_VOLTAGE,
-+				      NULL);
-+	return IRQ_HANDLED;
-+}
-+
-+static irqreturn_t mt6370_ocp_handler(int irq, void *data)
-+{
-+	struct regulator_dev *rdev = data;
-+
-+	regulator_notifier_call_chain(rdev, REGULATOR_EVENT_OVER_CURRENT, NULL);
-+	return IRQ_HANDLED;
-+}
-+
-+static int mt6370_regulator_irq_register(struct mt6370_priv *priv)
-+{
-+	struct platform_device *pdev = to_platform_device(priv->dev);
-+	static const struct {
-+		const char *name;
-+		int rid;
-+		irq_handler_t handler;
-+	} mt6370_irqs[] = {
-+		{ "db_vpos_scp", MT6370_IDX_DSVPOS, mt6370_scp_handler },
-+		{ "db_vneg_scp", MT6370_IDX_DSVNEG, mt6370_scp_handler },
-+		{ "db_vbst_ocp", MT6370_IDX_DSVBOOST, mt6370_ocp_handler },
-+		{ "db_vpos_ocp", MT6370_IDX_DSVPOS,  mt6370_ocp_handler },
-+		{ "db_vneg_ocp", MT6370_IDX_DSVNEG, mt6370_ocp_handler },
-+		{ "ldo_oc", MT6370_IDX_VIBLDO, mt6370_ocp_handler }
-+	};
-+	struct regulator_dev *rdev;
-+	int i, irq, ret;
-+
-+	for (i = 0; i < ARRAY_SIZE(mt6370_irqs); i++) {
-+		irq = platform_get_irq_byname(pdev, mt6370_irqs[i].name);
-+
-+		rdev = priv->rdev[mt6370_irqs[i].rid];
-+
-+		ret = devm_request_threaded_irq(priv->dev, irq, NULL,
-+						mt6370_irqs[i].handler, 0,
-+						mt6370_irqs[i].name, rdev);
-+		if (ret) {
-+			dev_err(priv->dev,
-+				"Failed to register (%d) interrupt\n", i);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6370_regualtor_register(struct mt6370_priv *priv)
-+{
-+	struct regulator_dev *rdev;
-+	struct regulator_config cfg = {};
-+	struct device *parent = priv->dev->parent;
-+	int i;
-+
-+	cfg.dev = parent;
-+	cfg.driver_data = priv;
-+
-+	for (i = 0; i < MT6370_MAX_IDX; i++) {
-+		rdev = devm_regulator_register(priv->dev,
-+					       mt6370_regulator_descs + i,
-+					       &cfg);
-+		if (IS_ERR(rdev)) {
-+			dev_err(priv->dev,
-+				"Failed to register (%d) regulator\n", i);
-+			return PTR_ERR(rdev);
-+		}
-+
-+		priv->rdev[i] = rdev;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6370_regulator_probe(struct platform_device *pdev)
-+{
-+	struct mt6370_priv *priv;
-+	int ret;
-+
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->dev = &pdev->dev;
-+
-+	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!priv->regmap) {
-+		dev_err(&pdev->dev, "Failed to init regmap\n");
-+		return -ENODEV;
-+	}
-+
-+	ret = mt6370_regualtor_register(priv);
-+	if (ret)
-+		return ret;
-+
-+	return mt6370_regulator_irq_register(priv);
-+}
-+
-+static const struct platform_device_id mt6370_devid_table[] = {
-+	{ "mt6370-regulator", 0},
-+	{}
-+};
-+MODULE_DEVICE_TABLE(platform, mt6370_devid_table);
-+
-+static struct platform_driver mt6370_regulator_driver = {
-+	.driver = {
-+		.name = "mt6370-regulator",
-+	},
-+	.id_table = mt6370_devid_table,
-+	.probe = mt6370_regulator_probe,
-+};
-+module_platform_driver(mt6370_regulator_driver);
-+
-+MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
-+MODULE_DESCRIPTION("Mediatek MT6370 Regulator Driver");
-+MODULE_LICENSE("GPL v2");
++...
 -- 
 2.25.1
 
