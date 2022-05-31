@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECBC9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 12:32:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7FBBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 May 2022 12:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PF993pDtOtpfpACjO6YosGDNVzyY0I3Y8/OtvIzCFsc=; b=UqdXLBfgLunVZU
-	HnW451uOGZ6yrtbauiSTZ8XLOzwLRM1Ewg+VsGMu4lcCLr9IXqZYM5kayNd+YFynn0MPuXx8ZVCcu
-	q3kOUlGFkU3M+fY98Dr7oyqbt+rfrY8dNxw+dR1b7pUNaL7msQVwyJrZxqL4Teil0Avd3PxCAbRxe
-	UrehWGe+m4roO9XmXTYpTsqBZXqcLTCrJSvD3RuYIvF0mFyzfbDsdg0c5BiRa7j8uCwGYObOCJ/oF
-	N853zNogdQzxHxaALEPxk3lY9Bh1OMhNfMjdxEOw1OEeIjhv1ZEB6iaAweSMw4g/BUiB7r3LNrlTL
-	AmElzzvLERVPo+PpV2UQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8Wi32tmpiQHX52ETq9Uk/4lGPfSR1D8G8ZTXJ1dPWC8=; b=y02PRs5lXgm9HE
+	jKxtBnNH+70QyasVRjYoaKkD5dccotkZbbnu3rtynIFxVq4lu375EbUZPbBXSjBoD47qL8WjIEEJz
+	/AeZNQcGEfyP6PnfovDWfseF2VSbf2TVVyTZAfdKYF4/pd4FZhcPiMa4FsUMbYyyaGTz5/FvIgFTb
+	dZGwfZBTk38vsB35mhA7XbqV+mBv0KwSEkXltHuMxdjFUV3S2vyp9EFoVhUY/pDIr9cUr4+tp8nWV
+	wwaKj3cwx/G3P2/iVDXEcIwAyktXc8k4vjD6lM70s8xK8wrPevA5VWGIL13PB+X1bW3lYmRQvamyZ
+	kbr0FpAu6Kewv0puIGAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw13G-00AmER-Rb; Tue, 31 May 2022 12:32:46 +0000
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243])
+	id 1nw1A3-00Ao87-2C; Tue, 31 May 2022 12:39:47 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nw12h-00Am0L-Om; Tue, 31 May 2022 12:32:13 +0000
-Received: by mail-oi1-x243.google.com with SMTP id u140so14783721oie.3;
-        Tue, 31 May 2022 05:32:09 -0700 (PDT)
+	id 1nw19p-00Ao5Y-6k; Tue, 31 May 2022 12:39:36 +0000
+Received: by mail-pl1-x643.google.com with SMTP id b5so12707214plx.10;
+        Tue, 31 May 2022 05:39:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=WjL5ChPbIi7K/V0MdTfM2rPQhvrdOuYsXgOFgMyivaI=;
-        b=Dt4cmAwTJzLQp+0BhvSpwI46ky2dI72Ho0ICX5p7qoY/Cq20zgcg3MruR/EMF2Bq/b
-         bttgX4DseumTdpOkyOeLDbhu/g0tdhRqMTJq3xHeH7Y+46XvfvsF6ZP0IAktzO7U/eKj
-         0versn33tjTT0IlRhUYB+CU5TjsWXAfTIXhupO9UAG0+WcQTF2olwkKQexwJa36jFxyt
-         JYXcZGUcWG0zYb6nYsM9gn3xgDRKrfJ+kh54KRUoE8hpcI5Mj4N0PWANGjFFYncNE+7l
-         5k9RicWNlg6t8/gUtoxx5UXQY1J+ugPqpYcnRDiZjTqXfOM7cSycfbANCKRtA0ZdAi/2
-         Pi6Q==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=NLlQWPmyPhz9LkYQh7iizThmB3DZjfxS2yfzbAOphFg=;
+        b=dR/tmmYf6X+SPz7vVDCZSTvJxhSmPumrcdc8D9eCahiy7k5GDXb8cgd5Oz+V7Xx0PC
+         hAmjVU30wiCV7GMwbEfx0EI6okI7wgqBJjhtxxQOaoMd+KgOUEjQWC7TaK13GS+wbNV3
+         4nMpIu8GOnQGX2cEOSo5rOoPbmdvRMkGyIytuDFbw6Q1ndzsjki6TmeyBbqod00KmjJ+
+         LwkmKZN9M46Mt3KB7twZ0g+yay2qgsRP7Ds07ocwfWBkCmEM/RZTwEDb24Rtex7xJinQ
+         +c3SJX7hCPVwQTa0GmgjxG6xpuflTpqYSLVacboKq/ZCOD8dvEg/RhMzwuNJRlDQQuiN
+         AOmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=WjL5ChPbIi7K/V0MdTfM2rPQhvrdOuYsXgOFgMyivaI=;
-        b=QxBv9Nbt0EWm67mMbYd9ZIm6VP97sYPgd/kRXAfp2c9o/UR3dIAvWSHGhykqWphvvi
-         prtq2+/Ws/orQHigSR705HAQzpgjKrDcG3xBXFbJcRpyjQ5I3EZGOtEMyP427PzW863N
-         yewWSrHUnD/0j49UyfyCbPY5N0u/eUFm20H3pn2kMAeXUZ0XYcNpgYW6YCB+6q1EJIw6
-         S6puATyR9qrme4fYuk7KEnjd8+YrW5kie4h9bMRe57soy9QY+kPaYVOqhQ+YCQ+7meYM
-         UaG/0eUjhlUtCtvTDb3+/LZtyUjcn2MOSCgMO0SlTDAqDsNG2bI8+buYQ8sEK+3bGz+o
-         P8gw==
-X-Gm-Message-State: AOAM530XJ1UPHjGK738If3yOe3cklop/2W0TZZZzBEoJJFt1kVTy/C5q
-	v5CeIxqcNI59AOz98XMcVPrftS6+fgI=
-X-Google-Smtp-Source: ABdhPJxcNj1TTo46zD0wjy4+ZyPww3ji1KDlsT3qEGdzSt4nXnXjTaqvtqMA3y7vBlN14PrpZHzriQ==
-X-Received: by 2002:a17:90b:33c8:b0:1df:aaf7:5822 with SMTP id lk8-20020a17090b33c800b001dfaaf75822mr27811307pjb.9.1653993738855;
-        Tue, 31 May 2022 03:42:18 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=NLlQWPmyPhz9LkYQh7iizThmB3DZjfxS2yfzbAOphFg=;
+        b=ayXJ4iTvJq3cui+JG7kR0igIsPgFlx2cWMgCH2ZBFdXJX+F1T2gcSJ0wcGW9SMT80R
+         CLBPlRDC1dHL7+xwSXgfGBlpdrEVqEIHb2HEtUqyAs5YQwBXK/av18lLvSen18qsYhny
+         IO2CSorg+3ySAVsz0FRYDXZ9zO7cJszu8lIX6P3R730OxvQWruHo05h/B/IaUbVrlkdl
+         TFrL94JO8p+oSEOgHbuLISF2vbT/8UrpYIWkrYDlcvKqu1/gN9UI7xyFysVAOqXhcrRE
+         zkKnPYqRe0TDb4Gp7Yf79oE7HiiJTWwWVGXVJEFPN6wDvAboYpm1A2Ifmr2NM5QAWoYu
+         7KPw==
+X-Gm-Message-State: AOAM531qTR5DvZt0BaBLHTleKGxc96/AnXI7TuyWtiWp8hfiCGLuF2KC
+	EyT2yIR1OCJW84YFbXzYYzE=
+X-Google-Smtp-Source: ABdhPJwMUDWTQjzldPrXFAGVjBuisYokJWG2xm0cEnR/uFycvlSkZSU8HIszco6eDBSdMG6hx3eaRg==
+X-Received: by 2002:a17:902:9349:b0:158:a6f7:e280 with SMTP id g9-20020a170902934900b00158a6f7e280mr60247418plp.155.1653993750981;
+        Tue, 31 May 2022 03:42:30 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-72-220-172.emome-ip.hinet.net. [42.72.220.172])
-        by smtp.gmail.com with ESMTPSA id d19-20020a17090ac25300b001cd4989feebsm1525829pjx.55.2022.05.31.03.42.13
+        by smtp.gmail.com with ESMTPSA id d19-20020a17090ac25300b001cd4989feebsm1525829pjx.55.2022.05.31.03.42.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 May 2022 03:42:18 -0700 (PDT)
+        Tue, 31 May 2022 03:42:30 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: lee.jones@linaro.org,
 	daniel.thompson@linaro.org,
@@ -88,14 +88,16 @@ Cc: cy_huang@richtek.com,
 	linux-usb@vger.kernel.org,
 	linux-iio@vger.kernel.org,
 	linux-fbdev@vger.kernel.org
-Subject: [PATCH 09/14] dt-bindings: usb: Add Mediatek MT6370 TCPC binding documentation
-Date: Tue, 31 May 2022 18:42:06 +0800
-Message-Id: <20220531104211.17106-1-peterwu.pub@gmail.com>
+Subject: [PATCH 11/14] dt-bindings: leds: mt6370: Add Mediatek mt6370 indicator documentation
+Date: Tue, 31 May 2022 18:42:08 +0800
+Message-Id: <20220531104211.17106-3-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220531104211.17106-1-peterwu.pub@gmail.com>
+References: <20220531104211.17106-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_053211_884549_C083B33A 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20220531_053933_283870_3FAD8B94 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,55 +116,77 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: ChiYuan Huang <cy_huang@richtek.com>
 
-Add Mediatek MT6370 TCPC binding documentation.
+Add Mediatek mt6370 indicator documentation.
 
 Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
 ---
- .../bindings/usb/mediatek,mt6370-tcpc.yaml    | 35 +++++++++++++++++++
- 1 file changed, 35 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+ .../leds/mediatek,mt6370-indicator.yaml       | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
 new file mode 100644
-index 000000000000..49316633f92f
+index 000000000000..823be3add097
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
-@@ -0,0 +1,35 @@
++++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+@@ -0,0 +1,57 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: "http://devicetree.org/schemas/usb/mediatek,mt6370-tcpc.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++$id: http://devicetree.org/schemas/leds/mediatek,mt6370-indicator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Mediatek MT6370 Type-C Port Switch and Power Delivery controller DT bindings
++title: LED driver for MT6370 PMIC from MediaTek Integrated.
 +
 +maintainers:
-+  - ChiYuan Huang <cy_huang@richtek.com>
++  - Alice Chen <alice_chen@richtek.com>
 +
 +description: |
-+  Mediatek MT6370 is a multi-functional device. It integrates charger, ADC, flash, RGB indicators,
-+  regulators (DSV/VIBLDO), and TypeC Port Switch with Power Delivery controller.
-+  This document only describes MT6370 Type-C Port Switch and Power Delivery controller.
++  This module is part of the MT6370 MFD device.
++  see Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
++  Add MT6370 LED driver include 4-channel RGB LED support Register/PWM/Breath Mode
 +
 +properties:
 +  compatible:
-+    enum:
-+      - mediatek,mt6370-tcpc
++    const: mediatek,mt6370-indicator
 +
-+  interrupts:
-+    maxItems: 1
++  "#address-cells":
++    const: 1
 +
-+  connector:
++  "#size-cells":
++    const: 0
++
++patternProperties:
++  "^(multi-)?led@[0-3]$":
++    description: |
++      Properties for a single LED.
++    $ref: common.yaml#
 +    type: object
-+    $ref: /schemas/connector/usb-connector.yaml#
-+    description:
-+      Properties for usb c connector.
 +
-+additionalProperties: false
++    properties:
++      reg:
++        description: |
++          Index of the LED.
++        enum:
++          - 0 # LED output ISINK1
++          - 1 # LED output ISINK2
++          - 2 # LED output ISINK3
++          - 3 # LED output ISINK4
++
++      mediatek,soft-start:
++        description: |
++          soft start step control, support /0.5ms/1ms/1.5ms/2ms.
++        $ref: /schemas/types.yaml#/definitions/uint32
++        enum: [0, 1, 2, 3]
++
++    unevaluatedProperties: false
 +
 +required:
 +  - compatible
-+  - interrupts
++  - "#address-cells"
++  - "#size-cells"
++
++additionalProperties: false
 -- 
 2.25.1
 
