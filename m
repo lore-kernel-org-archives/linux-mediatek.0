@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57371C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 07:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83534C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 07:37:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LkIahomPj1z7bEhfPEaVRf9xcLcLDD8w++SJOJW8Qy4=; b=K4SeRBpvirJTQL
-	YlRtRlcKDLbiBZ8vdLkFIz3+/+Jn4zvg7Uw1S0ksEg5wtwVEWwMyv27olS7h6U3BF8XNuWR3n27Wa
-	H5VR8npic7Bbv9oLFTSKxCpcBOVrjKN1BeE7yU19RoKwij46UerDfZUiGaYf5KQDh9PyOCUNOG0KG
-	Glgh+fWj0TOYYjtBYDgWX89jAwxNBKgoK5MlEyrPk1MBpJeC8IdoqdJH2HMd0mn07YmwdXV7gXUDD
-	1tEZ+5ozZZNt0JXz1k3CpNe6W689UNJtUQTnNY8m7Sux43hMHX2pUVhyX0sP4RlV0xhfgOTSzl+zd
-	6NnTU/Aco7ZmqQCyor3A==;
+	List-Owner; bh=CWFrfoV7400LRh96LNWmwG0IzBHa2bYpuCTLsxFsWPg=; b=2l6hIO58mBNhj3
+	7accdhf4yhvzj+ZzXWE9v7LpNXAwhkZONTHb96NliAmUjNTFevjHoYCNStRoFQ29uckggzOKIpXe3
+	sm+2ErFtb33Kq+k7ElABb+eJ72kkBpRvEPxBi8JOLHSrw9pjoMoVIbW/pL0jBfnwOtEIQYnqHvfdJ
+	+9/r6/+p2kJ0JjwleZ9oc8U0OX+2GmzB+2FXsTwnk/PkM0P/3oaIJWbACdsQdyB0lVFmgMoNCyh+K
+	0JBq8YsRH/JVVqZQR5Su6baQDsEidlGricOCSzo+FOXs+A1e02BBWJDvt+n2xPBf8timma6PoGj7C
+	thuhPyEp7xHuCRV7bpWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwIty-00EOEf-N4; Wed, 01 Jun 2022 07:36:22 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1nwIur-00EOjr-5w; Wed, 01 Jun 2022 07:37:17 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwItv-00EOC9-AT
-	for linux-mediatek@lists.infradead.org; Wed, 01 Jun 2022 07:36:20 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id f9so2022468ejc.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jun 2022 00:36:17 -0700 (PDT)
+	id 1nwIu4-00EOHJ-93
+	for linux-mediatek@lists.infradead.org; Wed, 01 Jun 2022 07:36:29 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id n10so1941163ejk.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jun 2022 00:36:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=0q3wt29aNZiv6jXypasXo5xqD+y2Dp/M8UIl5yGQ+OU=;
-        b=EqmxQDYflsUcRFsBVf/C3LdLhNCWjjkgpV6d3FyTWbkOsrcS2A39iklfOv0rM7Dcsr
-         ZRdPNxhAVzy9A0PBcWP+r849b7PsmV7Lfnj0rig+AgIFCXYaGYBX0R5lcfCIDptvbdBE
-         Tp0zFqG7kZqXGeKPL8/WPYye5vZacc2NLr+yGZw8m+H/DUXabvU81+dQFiAyaa0k2K15
-         b665tJpSN/mwuqMv6l+GAfNzMOytdKbvDfmKDBhef3zm7x4zrQdfzY1AqYEUFZFD82Vq
-         zQrKkqgdLe7tfAeCmaW6ERzoNTgcj74viKMPs0J34io1jsptMuGJT2yN9/wTDSrilBkB
-         WhOA==
+        bh=1NLbj63p78gaZ8WaajEU8PUTCmU7WPY2qFfR3aIc2H8=;
+        b=gqBcGcAkA8yHXLTni7MKZcgZpIkQHVSVTHhr/karxr9ZXi7QXpOby0C1PSZ+CxEZHD
+         evRMSrT6rKpG0jp6FBf4/F3CtsD6yYFKugM2+mCp9sxULDIupq2sV2HELbPhFFrDdKKG
+         /VGVXv3DC8CNS2Qw3WoAsYRy75CVYWNW6iOIREj8ldQTYzWrJpxg0ayoLYYT6jwf22ok
+         ZobxHbs9TcZh+0Glo6CkNmSg+6C/msfP1yuxPMVsnlj7w1XFRuq/lxp3KCYGxaMEtUWE
+         bGMsEcGgoiyKOp6LUmB9IWp43dbJtxGQypSvfWhG013S0VgyBqar2nl8/XQxPEiQEFHr
+         mt4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=0q3wt29aNZiv6jXypasXo5xqD+y2Dp/M8UIl5yGQ+OU=;
-        b=7tuNsGFLOmGyfGHbl7rSd9i1Y8N6b2V8KyqBBRqC0X6P5A7GzqZ1mYhsPVoGiDJ/1C
-         VD4eSV/SOgZ5nm2jUeVh1VqxMQ8AZRW4RXtmBIkTmVGcAL3L0ZbGuET8ASoJwSKwkagq
-         GPCVfR+pCCDBEnPqFAh+5utTP09X5K+xRLKfwwz5Jp+Sza/vaGjOHBZwgnzFEOptZnTj
-         fnf+EfBL4iXcOLtSU194/WfPhIKSmoTFYRLqTCQ1dfaCJe0P6MfV2n1rhr2o8muRChQ6
-         M8+CO1ioTI3QkLLJBZptoxfUYs/Mme2OIRMgv1MYePHD3XAlkSvo7vxi6JP7rY9T75gk
-         9jIQ==
-X-Gm-Message-State: AOAM530e/qNEt8OaXqAcdPMejvO8cAVnLdd/9InUsbMrrt/AttBaGKDr
-	iWE4L44E93Sp/JOFzVcRxkZ7Og==
-X-Google-Smtp-Source: ABdhPJygn1kSoBskFVxX1NTOvT9WDOZ5vbePTEPzYPwUrOV6DSTk5mMP3EMwBrRPRSlIzj9AM+6EXQ==
-X-Received: by 2002:a17:907:7e84:b0:6fe:cded:7d1f with SMTP id qb4-20020a1709077e8400b006fecded7d1fmr42958260ejc.35.1654068976668;
-        Wed, 01 Jun 2022 00:36:16 -0700 (PDT)
+        bh=1NLbj63p78gaZ8WaajEU8PUTCmU7WPY2qFfR3aIc2H8=;
+        b=htd7n9USpU+MITwpUsdUXhaqvQm4p0DTLjTjOE8VVeWWpLN+jprhQjovifDfLyij+J
+         a+BNB3bxuU5tqSV9ufoTvxLg1yYGlNpsALBuyBi3vDFdhHZxVPg8D29OP+y5y1aoaZ6K
+         ZrLCDOM/cv6uQcY4jo5/xXbOTwUGSCftmVGBqdhWlAr8SQtxiuxLi9CJzFNdQ+Tk/VXJ
+         jovyRp2bQ3wpSLCkWJZdouMostYU57F4+/L0Etu7yAT/8rZ8K3ZL3RCbfIBwZGU2g6JX
+         7Bk3eXwFHUzKfPRVsKdzrLdQRhvn2HBrWSscddSx+k4O6qei8QtH2pnyDdbtrEkHHA4S
+         RvEw==
+X-Gm-Message-State: AOAM530O56ZYDOAALOvWK2E646En99XviKxVE3LXVI7NMcl5ow4KvIVJ
+	ZC05UM793g654H61QFPc7OPioA==
+X-Google-Smtp-Source: ABdhPJxg0SzgI+t9GI5poUsf996ZK2hzQvgWSQYGKBMZk4wcTKUZeLadLadxYiaP5JO/Z+O8cYDoXw==
+X-Received: by 2002:a17:907:d13:b0:6fe:ece3:64e1 with SMTP id gn19-20020a1709070d1300b006feece364e1mr40377450ejc.584.1654068986057;
+        Wed, 01 Jun 2022 00:36:26 -0700 (PDT)
 Received: from [192.168.0.179] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id o22-20020a170906601600b006fe8b456672sm382548ejj.3.2022.06.01.00.36.15
+        by smtp.gmail.com with ESMTPSA id bv3-20020a170906b1c300b006f3ef214ddesm374169ejb.68.2022.06.01.00.36.24
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Jun 2022 00:36:16 -0700 (PDT)
-Message-ID: <2926e4f5-1322-f1c6-f43a-c4a09f5751de@linaro.org>
-Date: Wed, 1 Jun 2022 09:36:14 +0200
+        Wed, 01 Jun 2022 00:36:25 -0700 (PDT)
+Message-ID: <92708b65-231a-68db-f624-02a6e76cb49d@linaro.org>
+Date: Wed, 1 Jun 2022 09:36:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [RESEND 01/14] dt-bindings: usb: Add Mediatek MT6370 TCPC binding
+Subject: Re: [RESEND 02/14] dt-bindings: power: supply: Add Mediatek MT6370
+ Charger binding
 Content-Language: en-US
 To: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
  daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
@@ -80,12 +81,12 @@ Cc: cy_huang@richtek.com, alice_chen@richtek.com, chiaen_wu@richtek.com,
  linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org
 References: <20220531111900.19422-1-peterwu.pub@gmail.com>
- <20220531111900.19422-2-peterwu.pub@gmail.com>
+ <20220531111900.19422-3-peterwu.pub@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220531111900.19422-2-peterwu.pub@gmail.com>
+In-Reply-To: <20220531111900.19422-3-peterwu.pub@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_003619_443375_C561346A 
-X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-CacheID: sfid-20220601_003628_371650_9683CCBE 
+X-CRM114-Status: UNSURE (   6.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,11 +105,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 31/05/2022 13:18, ChiaEn Wu wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
 > 
-> Add Mediatek MT6370 TCPC binding documentation.
+> Add Mediatek MT6370 Charger binding documentation.
 > 
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
 
 Please apply my previous comments.
 
