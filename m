@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61FC1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 10:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92347C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 10:13:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8DmNSLzMGSI5TJmjnKnPoibT5WJOVsQa6ANJeRIdbJ8=; b=PGiVWtE0eKAkcH
-	PtZojnCbs+chdTdGGuNnhr1/j0wTgfBUFs1+EsEQEVeemFKfh1uT6Ff59aN0hLpmLSDQ84mMQ7W8g
-	7mzAMzQAFxs0+I3U+iqmTTp8BB2SohnLd6ZjEEiASqT+TIKyiHpvdeiax02XBQMan1hwWwwmuTt3b
-	WcveYmHNdSJe2bAnGd6Fzg+T8iMzSqAFMoeUHgnbnOeqL91ZAOs1W6+WI7WErsXl6yC+K3WHBKO3Q
-	PXta0jkQcQ/3QTxvrsziGrWTyqfiYOEtmlWr5xQPB9tnnqLZ3JDangfTwb80PmsfizoImoyEcxWIp
-	OOIpye05mYANBDzkuIcQ==;
+	List-Owner; bh=byMNSRWx9G8+5PpSy+wZyPtOXUMZUkuy2oldGJQ2Dqw=; b=cUD30bxLbnJazG
+	BsiAuZRSzUnr4sEHeuj/isIN5utqnNk22ZfVUuBRqkajmfBPqrtoeIqZV5gbck9Wrl69zJrEyKvsd
+	Csxj0I2QH4xkQ2/fXLBjHvxX7Rhf73wGm1s6HDG5E5jUkJgNwGwqkXiHQyFjCzC/2U+TBiv1gLpJo
+	rEo4ldrFxGM3C0gLwu0FWvIFf0DCw1rAtqa/XykcbEHK51CoJgTbx5W2AY65CNKZ/cVYkl+7DJVTk
+	VIJB9vfUn96LpnRVhImnPSGgqRI7gbdOGh1xvIUdra5rASJbhSXlt6WjMqIJYNkjDiM6Kr3LNy4e0
+	zSMnv7/FHEX+FDH1k5Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwLKA-00FBHC-IK; Wed, 01 Jun 2022 10:11:34 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1nwLM3-00FC9O-1K; Wed, 01 Jun 2022 10:13:31 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwKyu-00F2U8-J6; Wed, 01 Jun 2022 09:49:38 +0000
-Received: by mail-ej1-x629.google.com with SMTP id n10so2599897ejk.5;
-        Wed, 01 Jun 2022 02:49:35 -0700 (PDT)
+	id 1nwL1L-00F3K3-1B; Wed, 01 Jun 2022 09:52:08 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id f21so2573023ejh.11;
+        Wed, 01 Jun 2022 02:52:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=27PUTNb2UH1CaFlaB6o+qtISHhMqVYpnRcYCFuMiVv4=;
-        b=RLZe4nVv/Ic2Sv7cEK7VnKNh8dqoPXLpxnLc7UHjGVmmaOPOdprU9K/lDH3Kr6SBBs
-         6QDIiqyi6WSTTNbbOkaJZQxy8YW00WXStF0ZngoQO8N9wcquuUTE85nb3APbRA0XivHe
-         pRiLCDAis4jbIvybxugAxhkZlTL8NK/7VRcrLnDf0uEQG2evVEh8fmhzHI46goYAy/Rj
-         q8Bbbjx+gKvOdjejX68tjSajQP70rVeZpFFv49Ib8lN+kErMrJya6+9vsV7cGjxOYuDc
-         3XgnvxTdqukRyUlMaSwf9b5Yn8Xatlmpk1zSwUk3glp21S87SI0Q0DdcTQbIgVdEgv4s
-         sXUA==
+        bh=y1mJGH5c1Uozsg7k4TIS92U6v6LjyV9oFoYVM0NRha8=;
+        b=pDzLCrKYfqkJbuKWjOE7YKh1BjW8iuiBm1bkNBWCdyl6ZXoEh4vEn7DK+SXSpbB90U
+         0mMySw+1KW+jWuSlprGFz1/ZihwNlBGfQoJ952/S65Zmwv3yE5hNf/jPQiWvymLTm2fF
+         5PkFkXZAasgyv3D7SLAriP98k8PabcZr76rGv9IlXeRbm0xbiyv3vYnBL++vOmRc3YHf
+         XDY8aMNfCeHWTJKIS7vTg70L9GewCHcK41H93Qqlgs6oPaArJ8adNouaJAAsPAr7X8F4
+         inDdCJvjhmWW8uwlHRhS2KKJQUa9JGtgmNjDKfkuu2t5FghP5ZU/AhZiljZlz8vr07eB
+         Bzbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=27PUTNb2UH1CaFlaB6o+qtISHhMqVYpnRcYCFuMiVv4=;
-        b=a8MRYkAbmLr/Y3+WDFkOvPRQSFruVyEx+Q8ChW33aO0A2eqU0vFWGblLVSYys8AYrf
-         IuQt2kv97ZRyFcErKAeNQfmizUeuoD7S095SjBOrx51vRMKWTY55NTTUaCYfky6ae2S+
-         PDobfoR0cJwVC4SDiorpvb5wnjbZj0ix6u8I8Q0kciz5bcCJKGXKrP8R3M84IsP+4d8n
-         GjuROod8aeddSQGv5O+8ynsh/l27LAZnmhSI5xqH4j1pr1LO7zcjbQALpgC7KaE6rSOR
-         G10YgQmh9FtmCETE2tu0y0ywFuKQ2uqc5lzZPNJNnkVWOpFaCy4Z9CMyRQCXvbSeTqnM
-         abCg==
-X-Gm-Message-State: AOAM532t9FWNfGuDtAB6BMM3CIqcZNwBceobIZP042YgHiD78cTOiokn
-	IsLIAljoXIGqVm2KZHxP16Il1MBqwKvSjTXL1YY=
-X-Google-Smtp-Source: ABdhPJyRwbLQFMmfl3jzbmPNjvUrFSOgiS+i5wMk8MNJphpsSnNZ8UtMTX/OTZ0ronnNTUPtL2vf7d9XmnEYugvrfuk=
-X-Received: by 2002:a17:907:6e1a:b0:6fe:f357:3837 with SMTP id
- sd26-20020a1709076e1a00b006fef3573837mr40896205ejc.44.1654076974098; Wed, 01
- Jun 2022 02:49:34 -0700 (PDT)
+        bh=y1mJGH5c1Uozsg7k4TIS92U6v6LjyV9oFoYVM0NRha8=;
+        b=o9c3UIGW9ExTM90BBLqk50TbyoSGhAwpMOJq6p/Mkdv+3nUoU5BmG7wDVnjtB+Z1pK
+         ZzpgNgL8yR/MbsWjHv0GWT6U9riooRStnUCvgQXvNUkC2OdkLa6+bkj3LhjzLXI3PQla
+         kRB8GIyYMnMkV6POb7uHaZtvdcfcDU46+fWHbU2yHGFK98r6EnqCtnH4rxbdTXMnChQz
+         ZiHkQYV/Ezrxt8DErB+mOlkoScD2L9rgOcbyubiH830c8ZsoSv1SU3ojXsqwCCiTulm7
+         VZbsVMogfjFANIGHQmcP47hOnIqF3JyW9tVD5wdybLCaR4pTbiwi+Zz805omogNef9x7
+         4BwQ==
+X-Gm-Message-State: AOAM531vv/aZQwuxJUp7Wltxm/+8uKDTvaoyYu1EQMhi75zIWqBJqH2s
+	HStrJBWumnnPOVrpT4xqQNskAW/9Y4kmq5QCem0=
+X-Google-Smtp-Source: ABdhPJyqf9ZHomloEdcRczicdqSM2R1J6YhdToJV6ojkEOXFybYoQ0iogidyjBJ4Et6n0VcyKxc+QBr3vsPZaac7yDU=
+X-Received: by 2002:a17:906:2416:b0:6fe:a0be:91d5 with SMTP id
+ z22-20020a170906241600b006fea0be91d5mr54057142eja.132.1654077125409; Wed, 01
+ Jun 2022 02:52:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220531102809.11976-1-peterwu.pub@gmail.com> <20220531102809.11976-7-peterwu.pub@gmail.com>
-In-Reply-To: <20220531102809.11976-7-peterwu.pub@gmail.com>
+ <CAHp75Vd8taco19vsDmBcCv8euV1SvwSiY5=P9oMkA6zWsjwXxg@mail.gmail.com>
+In-Reply-To: <CAHp75Vd8taco19vsDmBcCv8euV1SvwSiY5=P9oMkA6zWsjwXxg@mail.gmail.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 1 Jun 2022 11:48:58 +0200
-Message-ID: <CAHp75Vd8taco19vsDmBcCv8euV1SvwSiY5=P9oMkA6zWsjwXxg@mail.gmail.com>
+Date: Wed, 1 Jun 2022 11:51:30 +0200
+Message-ID: <CAHp75Vf245Oo3wmx5rh_EkXZ4FL_nnehpfuaDAiEdG6BenXxhw@mail.gmail.com>
 Subject: Re: [PATCH 06/14] leds: mt6370: Add Mediatek MT6370 Indicator support
 To: ChiaEn Wu <peterwu.pub@gmail.com>
 Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
@@ -79,8 +80,8 @@ Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.or
 	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
 	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_024936_738615_55E5DC79 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20220601_025207_152292_2F1534CE 
+X-CRM114-Status: GOOD (  24.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,81 +98,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 31, 2022 at 1:16 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+On Wed, Jun 1, 2022 at 11:48 AM Andy Shevchenko
+<andy.shevchenko@gmail.com> wrote:
+> On Tue, May 31, 2022 at 1:16 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+> >
+> > From: Alice Chen <alice_chen@richtek.com>
 >
-> From: Alice Chen <alice_chen@richtek.com>
+> All below comments are applicable to the rest of the series as well
+> (one way or another), so please fix all your patches where it's
+> appropriate.
 
-All below comments are applicable to the rest of the series as well
-(one way or another), so please fix all your patches where it's
-appropriate.
+Forgot to mention, please consider using
 
+  return dev_err_probe();
+
+pattern in the ->probe() and related funcitons. It will save a lot of LOCs.
+
+> > Add Mediatek MT6370 Indicator support
 >
-> Add Mediatek MT6370 Indicator support
+> What indicator?
+> Please also keep attention on English punctuation (missed period).
+>
+> ...
+>
+> > +       help
+> > +         Support 4 channels and reg/pwm/breath mode.
+> > +         Isink4 can also use as a CHG_VIN power good Indicator.
+>
+> be used
+>
+> > +         Say Y here to enable support for
+> > +         MT6370_RGB_LED device.
+>
+> ...
+>
+> > +#include <linux/module.h>
+> > +#include <linux/mutex.h>
+> > +#include <linux/platform_device.h>
+>
+> > +#include <linux/of.h>
+>
+> Are you sure this is the correct header? Seems you need
+> mod_devicetable.h instead.
+>
+> > +#include <linux/property.h>
+> > +#include <linux/regmap.h>
+>
+> ...
+>
+> > +struct mt6370_priv {
+> > +       struct mutex lock;
+>
+> Do you use regmap locking?
+>
+> > +       struct device *dev;
+>
+> > +       struct regmap *regmap;
+>
+> > +       struct regmap_field *fields[F_MAX_FIELDS];
+> > +       const struct reg_field *reg_fields;
+> > +       const struct linear_range *ranges;
+> > +       struct reg_cfg *reg_cfgs;
+> > +       unsigned int leds_count;
+> > +       unsigned int leds_active;
+> > +       bool is_mt6372;
+> > +       struct mt6370_led leds[];
+> > +};
+>
+> ...
+>
+> > +static const unsigned int common_tfreqs[] = {
+> > +       10000, 5000, 2000, 1000, 500, 200, 5, 1
+>
+> Leave a comma at the end.
+>
+> > +};
+> > +
+> > +static const unsigned int mt6372_tfreqs[] = {
+> > +       8000, 4000, 2000, 1000, 500, 250, 8, 4
+>
+> Ditto.
+>
+> > +};
+>
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
 
-What indicator?
-Please also keep attention on English punctuation (missed period).
-
-...
-
-> +       help
-> +         Support 4 channels and reg/pwm/breath mode.
-> +         Isink4 can also use as a CHG_VIN power good Indicator.
-
-be used
-
-> +         Say Y here to enable support for
-> +         MT6370_RGB_LED device.
-
-...
-
-> +#include <linux/module.h>
-> +#include <linux/mutex.h>
-> +#include <linux/platform_device.h>
-
-> +#include <linux/of.h>
-
-Are you sure this is the correct header? Seems you need
-mod_devicetable.h instead.
-
-> +#include <linux/property.h>
-> +#include <linux/regmap.h>
-
-...
-
-> +struct mt6370_priv {
-> +       struct mutex lock;
-
-Do you use regmap locking?
-
-> +       struct device *dev;
-
-> +       struct regmap *regmap;
-
-> +       struct regmap_field *fields[F_MAX_FIELDS];
-> +       const struct reg_field *reg_fields;
-> +       const struct linear_range *ranges;
-> +       struct reg_cfg *reg_cfgs;
-> +       unsigned int leds_count;
-> +       unsigned int leds_active;
-> +       bool is_mt6372;
-> +       struct mt6370_led leds[];
-> +};
-
-...
-
-> +static const unsigned int common_tfreqs[] = {
-> +       10000, 5000, 2000, 1000, 500, 200, 5, 1
-
-Leave a comma at the end.
-
-> +};
-> +
-> +static const unsigned int mt6372_tfreqs[] = {
-> +       8000, 4000, 2000, 1000, 500, 250, 8, 4
-
-Ditto.
-
-> +};
 
 
 -- 
