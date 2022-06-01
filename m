@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E03BDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 11:09:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 251FCC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 11:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZXRg9Ewtq49KDqlTUenKJPMmzqgIwyp9CcYjrlqT2es=; b=KM6ftWSKzvoyj9
-	bOBS2923xipTZlwMhhLgtN2rqkXVQt3AMHZbwe2dtjz2VCOmV2FHW/Qi5y1smY+fFl0wCfGQHaEuU
-	69VG+GsabTMxmIYm7++yyVb5+l9SGQ1NuNRhb3jKNf//E+mEJdvvZzPxRxo9wsc+biCSOTZNPuH4G
-	mDShFcb8P3u507oMJFN2nhw5oeewQE09C771cGevcwZiQggTl+/EtGqvIYEEug8xrEsYeFwLHtlws
-	mAD/BlHnbaQ2bfB4uNck9m7Teq1mfUGlUNrrp5aMDD1wzqxQ7324bDWc20cncZyiPzLGH/E8BUnY5
-	f5G9axMVZVLEndvD1Dsw==;
+	List-Owner; bh=3YhfptMFxP6fELvhH9itTPqbufVeXtJ6/BkfiXD4PQQ=; b=zJrLmhUOA62TBb
+	aP8C0+/3EypNnOqJrYmBKnc8grSNK5l34Yy4COa7bWdNiJMxaZ4hsWFHa69hx/74TgnJ7xbTzn/76
+	Y6Uz9lcoeDm6tue7rahu6jkKRsWv5sD3dTF9vNArFEvH1lHWMC3w5U0cSNcU+yRccaWPR0Bwp9xjw
+	HLeYcqFLH0tfWimErdsNVZohcxxe5sUHiUKxVMrKo0nY/4Ml5goPO2qCaSynMRX3/VKtOZcXjG0YQ
+	p4gANLw0yepYs2eA0sXpuQGZIir3raIdCdoL5oCvZv7aiRTlqBUvltWbzVebzxx+B75gHdsRWjPLL
+	RfkMs8nj7hr6JLbbDBJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwMDv-00FWYN-BT; Wed, 01 Jun 2022 11:09:11 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nwMQe-00FawE-Vj; Wed, 01 Jun 2022 11:22:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwMDC-00FWDF-2D; Wed, 01 Jun 2022 11:08:27 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(Authenticated sender: kholk11)
-	with ESMTPSA id 309B11F43FFB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1654081704;
-	bh=f8UaqDooK99deu8q+6dpzulRy5t5QoE3TXUqdXno8fQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YVFOT+A4ShlTY5Zkr6DyBJxCpk79ZaXWTkrvNukTuUyVEddCTqztzJX3FLOSu1X1B
-	 ftbNEdVSZ8UNU1OKiuBHCK3aKkUaREh0c8CP38jNA3El8nbLZyay40vPhIO6CONIkX
-	 WxyX3SA54Q4/HrcfJVoEnuqdv1idXQzBuh0cVSN4w477w9thKsrFJamPM89eRTRWu/
-	 NdzwMl+TXfqwBIo2/24IPc/BLeUy4fP5Aydb8sdZmdusjda79kqTlSO7p7Ed/9RDK5
-	 mW7DUBcChxZOG/ZcK+Kol3I1plZlAoX28LjgMJ7pNdzc6hyj0lThvqK/nczBZqv9ab
-	 NO3lZZFPBIfkQ==
-Message-ID: <0682f3a6-01c7-66cf-05ec-33bd3d862116@collabora.com>
-Date: Wed, 1 Jun 2022 13:08:21 +0200
+	id 1nwMQb-00FauH-59; Wed, 01 Jun 2022 11:22:19 +0000
+X-UUID: e073f8a76a61499395d40d1f364fe8e5-20220601
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:c2c3e0fc-79b6-4b14-9680-6a54a1b9a08b,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09,CLOUDID:ef648f14-f88c-475e-badf-d9ee54230b8f,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: e073f8a76a61499395d40d1f364fe8e5-20220601
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1779496492; Wed, 01 Jun 2022 04:22:07 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Jun 2022 04:22:06 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 1 Jun 2022 19:22:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 1 Jun 2022 19:22:04 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Benson Leung
+	<bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Daisuke Nojiri
+	<dnojiri@chromium.org>, Sebastian Reichel <sebastian.reichel@collabora.com>,
+	"Dustin L. Howett" <dustin@howett.net>, Tzung-Bi Shih <tzungbi@kernel.org>,
+	Tinghan Shen <tinghan.shen@mediatek.com>, "Gustavo A. R. Silva"
+	<gustavoars@kernel.org>, Prashant Malani <pmalani@chromium.org>, "Enric
+ Balletbo i Serra" <enric.balletbo@collabora.com>, Brian Norris
+	<briannorris@chromium.org>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <weishunc@google.com>
+Subject: [PATCH v1 02/15] remoteproc: Kconfig: Add mt8195 SCP dual core configuration
+Date: Wed, 1 Jun 2022 19:21:48 +0800
+Message-ID: <20220601112201.15510-3-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220601112201.15510-1-tinghan.shen@mediatek.com>
+References: <20220601112201.15510-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.0
-Subject: Re: [PATCH 0/2] MediaTek Helio X10 MT6795 - MT6331/6332 PMIC MFD
- integration
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, lee.jones@linaro.org
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, johnson.wang@mediatek.com,
- hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220520124617.228808-1-angelogioacchino.delregno@collabora.com>
- <fab40b87-7471-83a3-d154-aa2da0b7d23f@collabora.com>
- <c2f2a3a2-ea5d-59a7-eb84-d59b7d9bff47@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <c2f2a3a2-ea5d-59a7-eb84-d59b7d9bff47@linaro.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_040826_317441_1D694061 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20220601_042217_246323_C12AC4E6 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,64 +85,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/06/22 13:07, Krzysztof Kozlowski ha scritto:
-> On 01/06/2022 13:03, AngeloGioacchino Del Regno wrote:
->> Il 20/05/22 14:46, AngeloGioacchino Del Regno ha scritto:
->>> In an effort to give some love to the apparently forgotten MT6795 SoC,
->>> I am upstreaming more components that are necessary to support platforms
->>> powered by this one apart from a simple boot to serial console.
->>>
->>> This series adds the necessary headers and support for the MT6331 with
->>> MT6332 companion PMIC in the mt6397 MFD driver, along with some basic
->>> devices.
->>>
->>> Adding support to each driver in each subsystem will be done in different
->>> patch series as to avoid spamming uninteresting patches to maintainers.
->>>
->>> This series depends on another series [1] named
->>> "MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper"
->>>
->>> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
->>>
->>>
->>
->> Gentle ping to not let this big effort (with drivers depending on this one) get
->> forgotten and wasted.
-> 
-> Yeah, but it was not even 2 weeks since posting and we are in merge
-> window. Please resend after the merge window.
-> 
+MediaTek MT8195 SoC SCP is a dual-core subsystem. Add a remoteproc
+configuration to enable support of the 2nd core.
 
-Understood!
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+---
+ drivers/remoteproc/Kconfig | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Cheers,
-Angelo
-
->>
->> P.S.: Mark wanted to merge the regulator drivers for MT6331/6332 from another
->>         series that depends on this one (but compile errors due to said dependency)
->>
->> P.P.S.: Lee: Reporting what Mark said (Full context in [2]):
->> "I'll need a pull request for the MFD bits I guess, please make sure Lee knows
->> that's going to be needed."
->>
-> 
-> Best regards,
-> Krzysztof
-
-
+diff --git a/drivers/remoteproc/Kconfig b/drivers/remoteproc/Kconfig
+index 166019786653..bb2960b4ffbd 100644
+--- a/drivers/remoteproc/Kconfig
++++ b/drivers/remoteproc/Kconfig
+@@ -64,6 +64,16 @@ config MTK_SCP
+ 
+ 	  It's safe to say N here.
+ 
++config MTK_SCP_DUALCORE
++	tristate "MediaTek SCP dual-core support"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on MTK_SCP
++	help
++	  Say y here to support bring up the 2nd core of the dual-core version of
++	  MediaTek's SCP via the remote processor framework.
++
++	  It's safe to say N here.
++
+ config OMAP_REMOTEPROC
+ 	tristate "OMAP remoteproc support"
+ 	depends on ARCH_OMAP4 || SOC_OMAP5 || SOC_DRA7XX
 -- 
-AngeloGioacchino Del Regno
-Software Engineer
+2.18.0
 
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
 
 _______________________________________________
 Linux-mediatek mailing list
