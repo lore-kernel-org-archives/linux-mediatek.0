@@ -4,76 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD0C0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 09:30:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 656A2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 09:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k1f14E7KfQ+s4qiEO84GjwMPVTXwaym0ovN5Dy2CzlI=; b=u9X7b6BW5ua5mm
-	zVtlD3oVWYOXxvs7+vJ+ZHgKp13wVRT6DlkPgE5vpB0sOwcvAE0SkQ7np1BWl9Df/EiHsBSDIfd39
-	0xm+CR7DSnfvAHNkNKAKCUC1C0g1Ak4BpTgKD7st4IlwUF8mX8ksWI3tmnyFmhIQAQsiiIuWBjgoJ
-	FS/2MNVtY/SvdNeM3Xp3S7TkSOc4nJI2FF6AsKYY0Xh1JnJ7mSDfLaZhRvvqF7JuLRg8oE4KCj5wS
-	VdnaELAKUu0JVr+MSUDn8LwSKgx3EDsEBaDRUsGp3MCIoDrJiEOKrQDgktLzJbBXJTLyJRdu+Z9ED
-	x6XdvhGuEagR1Y8LS4tg==;
+	List-Owner; bh=mtfujjrGrUjhpI0lusCAHWLOS8Xh7DcYNldlzREAoQw=; b=JbDcEOWTBFBQwb
+	OdzidF/nnDiA+XNJh2WoEfZ23QIp2m3qmA3Qa9VyJQwX7YLxUd5wSmUhbzkjF9c4nHocHATJAhVCU
+	kArDvON8c+g8BVasTV2yQfZSbSPz7vsVI9GLkGjYsohhxP1DMnk4y2nJCJVmDkLbBhCDkkhS4JqHV
+	h/7/dxijGsOzEwUvWmgdufOJ6St4HK9oQQlgcuemnUCZQO14DlSrUV9qsbUEEkxhpZH84hNKHMU8C
+	VxC7wyumgEdU6ZrBYTSumAWkuaaZFGU29Mq+hH8nBuUXP9J1KysO74KmlW+5e2/K/XG4CJB/0SLxh
+	hjTb5B1mkRfkxN+v/wXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwKgS-00EvHz-1M; Wed, 01 Jun 2022 09:30:32 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1nwKiG-00Evt0-0P; Wed, 01 Jun 2022 09:32:24 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwKgO-00EvGG-Ap
-	for linux-mediatek@lists.infradead.org; Wed, 01 Jun 2022 09:30:30 +0000
-Received: by mail-ej1-x635.google.com with SMTP id rs12so2452598ejb.13
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jun 2022 02:30:25 -0700 (PDT)
+	id 1nwKi4-00EvnL-GN
+	for linux-mediatek@lists.infradead.org; Wed, 01 Jun 2022 09:32:14 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id b8so1331244edf.11
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jun 2022 02:32:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=RTq2qApdr0XDjYdhICkGJiEtvpG4jeHig+budTOXpzw=;
-        b=N5bZXB4HEnh1aE629ihk0RNtGOggnXdOo8MhyhV/pnh0CS3sIL/F0HjMn6dkeMJhys
-         uvLvUCgQ22KIadzabZUoW8aH9DgEKYOj0O7xEDoueNU6mwjz5rjcJ9pvqB5Ab7qEQqf2
-         RzK5un4TdNweT81vZseW8sNyrkZ8icMt397oM=
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=9rLHj//9k/15fypiFbMELs3ChxXWRGpeQMJrEmUMxUs=;
+        b=QIpbmzzYJ0HAltV9KIinq7hcn1/hnXtpRXtMmZG9J7qu9J+yvPLSDMoa7T1mF07mXK
+         H0apr2OZxGQd0U1WCKeMv8lb+Fm0H/mDYSMtRdWizypZAKluo8iAZmIxB1zzo1cgkxVD
+         8FqROBoannHWns4ltnEoaFMetuFzZVnMg34x8TBZHDiL1S+h+agEWmJXOJBPr45zEleE
+         wIN4pLzhGLnCkSJ6swE6lcLnjUX895KzSJg8xs9oTGRBgvcXRQgxWZs0dfq2tVdBw1lA
+         e+iovxTxiCiSptWs6zjF6xpsc90sU1LjwN9TwlBSRUrniu3cN+/+/2A8nwrc4UNO1Pv1
+         qyIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=RTq2qApdr0XDjYdhICkGJiEtvpG4jeHig+budTOXpzw=;
-        b=0btSGqv9O/3dDErPQC8/z3qXNWN96CGCmPYm1auUeXSEDKNJXk1LzU7r2aFJHY9uxh
-         VCIT7bXhxpeth/DvRd6D8z2920ElyvHQYReDz+OajQOSgs1azdUTboH9/LIx4TungP2i
-         JAsHnpLg6zin1SqjKtCHgf4ruD95icWvl2ZJpO2tS9+REnz8E9UVAwcGXiD1kx/SC5iT
-         UdORu96CmeFMML9NgxLxfH+I1g9vuQhGC0YD2TuS9qYUFIFFUQ557nqqQbZOOgcB42cP
-         BI7n/gG6wqYNvaogv9ZS4A7CBX/LzX0u6TYUFEqF9eS5ruCLtEBlDR6OmdtX0nkKhvMi
-         wh3g==
-X-Gm-Message-State: AOAM532m4WWZJ+pZ3+aXEPm8t8nXc50p9LFMyZ5WjBD+P4ff5eywrKaT
-	z7NXei8ObsyRp6UdL6uhLsAxMZHcitJgEpWFRWI1mA==
-X-Google-Smtp-Source: ABdhPJxO4OEEAdvJqMndbTEvHBclpdxbIJVkiSSJC2U5lu+FvyjTBUCrzqDl4iM+Hnoyelw7MdIsxnbVinBAcMcjCA0=
-X-Received: by 2002:a17:907:160c:b0:6fe:c56f:751 with SMTP id
- hb12-20020a170907160c00b006fec56f0751mr46232867ejc.746.1654075824444; Wed, 01
- Jun 2022 02:30:24 -0700 (PDT)
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=9rLHj//9k/15fypiFbMELs3ChxXWRGpeQMJrEmUMxUs=;
+        b=qUzX8jWljOOiCD1xBjEu7xNHbwweyvPhsIIUknN22kCsXo5/HJWO1lD50H212rzSLy
+         5jqocHcTjvG4VDX3RHOZ0jAC5ZZ5ye0iUCVVVkZ1jP9fGF96FukLQJQCPaPkHAU/mN96
+         wfcygz5MZIe2ktke0TY70cl79QkcGjkUIoHQsJww9tJLcS7YyiXc5kj2WKNzSb4DcpcC
+         eEtp6Muyzr3UXYoTXaUVqTmcd/ixaQZPiUTxIUhl2mUTRmgr5XrWZ4xsgp5c27o4JPB+
+         32x13fs0+gglTHmtc5y2O4sBZmE7Gb4c7D4u4ecKjL33l9/gXeQpQlVJbJBY6wHuipSv
+         EiRQ==
+X-Gm-Message-State: AOAM531iXyVNLa2X2BUow1E9a3pV2FjslkYUFROJydNOWohD63hTbQ43
+	INmxQ9SuBZozuvKzTyiQzC5aUQ==
+X-Google-Smtp-Source: ABdhPJxIaNQdmdCizYbGGHKjK+me0jgNnS5X6cMWDDf2h3DFwSO74zQhHh65gXy+skv8i/8hh9yGoQ==
+X-Received: by 2002:a05:6402:e9f:b0:41c:df21:b113 with SMTP id h31-20020a0564020e9f00b0041cdf21b113mr69039921eda.217.1654075928172;
+        Wed, 01 Jun 2022 02:32:08 -0700 (PDT)
+Received: from [192.168.0.179] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id i23-20020a1709061e5700b00708a2ae7620sm102525ejj.67.2022.06.01.02.32.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Jun 2022 02:32:07 -0700 (PDT)
+Message-ID: <efdbb151-8213-d1e7-a935-0e857947d450@linaro.org>
+Date: Wed, 1 Jun 2022 11:32:06 +0200
 MIME-Version: 1.0
-References: <20220601081823.1038797-1-hsinyi@chromium.org> <20220601081823.1038797-9-hsinyi@chromium.org>
- <c890efc4-dfda-cab1-8a46-527e3e02168a@redhat.com>
-In-Reply-To: <c890efc4-dfda-cab1-8a46-527e3e02168a@redhat.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Wed, 1 Jun 2022 17:29:58 +0800
-Message-ID: <CAJMQK-iNFyScoh5pZkWA9cPmdmz+YNhuDH-v0fveSfCT0udZFA@mail.gmail.com>
-Subject: Re: [PATCH 8/8] drm/mediatek: Config orientation property if panel
- provides it
-To: Hans de Goede <hdegoede@redhat.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, 
-	Sam Ravnborg <sam@ravnborg.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
-	Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	Rob Clark <robdclark@chromium.org>, Stephen Boyd <swboyd@chromium.org>, 
-	Douglas Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 00/17] Add support for MT8365 EVK board
+Content-Language: en-US
+To: Fabien Parent <fparent@baylibre.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, vkoul@kernel.org, qii.wang@mediatek.com,
+ matthias.bgg@gmail.com, jic23@kernel.org, chaotian.jing@mediatek.com,
+ ulf.hansson@linaro.org, srinivas.kandagatla@linaro.org,
+ chunfeng.yun@mediatek.com, broonie@kernel.org, wim@linux-watchdog.org,
+ linux@roeck-us.net
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dmaengine@vger.kernel.org, linux-i2c@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-iio@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-serial@vger.kernel.org,
+ linux-spi@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-watchdog@vger.kernel.org
+References: <20220531135026.238475-1-fparent@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220531135026.238475-1-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_023028_441269_D82A38D5 
-X-CRM114-Status: GOOD (  37.44  )
+X-CRM114-CacheID: sfid-20220601_023212_614540_DAD06F35 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,119 +101,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 1, 2022 at 4:57 PM Hans de Goede <hdegoede@redhat.com> wrote:
->
-> Hi,
->
-> On 6/1/22 10:18, Hsin-Yi Wang wrote:
-> > Panel orientation property should be set before drm_dev_register().
-> > Mediatek drm driver calls drm_dev_register() in .bind(). However, most
-> > panels sets orientation property relatively late, mostly in .get_modes()
-> > callback, since this is when they are able to get the connector and
-> > binds the orientation property to it, though the value should be known
-> > when the panel is probed.
-> >
-> > Let the drm driver check if the remote end point is a panel and if it
-> > contains the orientation property. If it does, set it before
-> > drm_dev_register() is called.
-> >
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > ---
-> > The concept is the same as the previous version.
-> > https://patchwork.kernel.org/project/linux-mediatek/patch/20220530113033.124072-1-hsinyi@chromium.org/
-> > The only difference is, it now uses the panel API instead of parsing
-> > orientation from the driver.
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 14 ++++++++++++++
-> >  1 file changed, 14 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index bd3f5b485085..12836a697f56 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -185,6 +185,7 @@ struct mtk_dsi {
-> >       struct drm_encoder encoder;
-> >       struct drm_bridge bridge;
-> >       struct drm_bridge *next_bridge;
-> > +     struct drm_panel *panel;
-> >       struct drm_connector *connector;
-> >       struct phy *phy;
-> >
-> > @@ -822,6 +823,16 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
-> >               ret = PTR_ERR(dsi->connector);
-> >               goto err_cleanup_encoder;
-> >       }
-> > +
-> > +     /* Read panel orientation */
-> > +     if (dsi->panel) {
-> > +             enum drm_panel_orientation orientation;
-> > +
-> > +             orientation = drm_panel_get_orientation(dsi->panel);
-> > +             if (orientation != DRM_MODE_PANEL_ORIENTATION_UNKNOWN)
-> > +                     drm_connector_set_panel_orientation(dsi->connector, orientation);
-> > +     }
-> > +
-> >       drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
-> >
-> >       return 0;
->
-> drm_connector_set_panel_orientation() is a no-op when called with
-> DRM_MODE_PANEL_ORIENTATION_UNKNOWN, so the check for this is not
-> necessary. This allows this to be simplified to:
->
->         /* Read panel orientation */
->         if (dsi->panel)
->                 drm_connector_set_panel_orientation(dsi->connector,
->                                                     drm_panel_get_orientation(dsi->panel));
->
->
-> Note since drm_panel_get_orientation() checks for a NULL panel, you could even
-> drop the "if (dsi->panel)", but I think the meaning of the code is more
-> clear with that present.
->
-Will update this
->
->
->
->
->
-> > @@ -837,6 +848,9 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
-> >       struct drm_device *drm = data;
-> >       struct mtk_dsi *dsi = dev_get_drvdata(dev);
-> >
-> > +     /* Get panel if existed */
-> > +     ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0, &dsi->panel, NULL);
-> > +
->
-> Check ret? or maybe not assign to ret ?    I understand some errors are expected
-> so maybe something like:
->
->         if (ret && ret != -ENODEV)
->                 return ret;
->
-I will choose not to assign ret. In some cases that the end point is a
-bridge (not panel), since we assign NULL to the bridge, we will get
-EPROBE_DEFER.
+On 31/05/2022 15:50, Fabien Parent wrote:
+> This patch series adds support for the MT8365 EVK board.
+> 
+> This series has dependencies on the following series:
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646256
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646091
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646083
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646081
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646076
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646068
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646020
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646052
+> https://lore.kernel.org/r/20220504091923.2219-2-rex-bc.chen@mediatek.com 
+> https://lore.kernel.org/r/20220512062622.31484-2-chunfeng.yun@mediatek.com 
+> https://lore.kernel.org/r/20220512062622.31484-1-chunfeng.yun@mediatek.com
+> https://lore.kernel.org/r/20220524115019.97246-1-angelogioacchino.delregno@collabora.com
+> https://lore.kernel.org/all/20220127015857.9868-1-biao.huang@mediatek.com/
 
-If the panel fails at this stage,
-drm_connector_set_panel_orientation() is just a no-op. Let dsi still
-be able to be binded.
+Eh... and how we are supposed to test or apply this? Such dependencies
+could mean none of automated tools will pick it up, so your patchset has
+to wait till dependencies got merged.
 
 
-> ?
->
-> Note -ENODEV is probably not the right error the check for!
->
-> Regards,
->
-> Hans
->
->
->
-> >       ret = mtk_dsi_encoder_init(drm, dsi);
-> >       if (ret)
-> >               return ret;
->
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
