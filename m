@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D95FCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 08:21:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46803C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 08:22:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MqNQ7I22zU/W2gDz81UTNvoJPe71bfHQ1QDHeAijdOc=; b=Azlu0CKrI9oO39
-	vSgwfAODARirppmHX5j+0JFmp1oPt8BM+bJkKTv01tVnT0H6+64gUIPqgt7AHpPVz920WCYi8DVRn
-	wFDmKDlpaBff5ceF04eUo56AO41L7Gh+y+1cphQEnvrRDTzXn/i4mqGHIRw4votVrYH6fFMTGgV/u
-	Y//6qu0RjcrGocPPFBd+rMWbTHbsAl71NGB3xVoPoq/FLbGFxKp7a2rfCBU7w6gOYkW+im0DDODFx
-	8kEi5Iikl9ZqYCf2H5WVc6BSY5fTWqJYdwJc2xIGL1fP5dPkynnjufo3w+Up4d16wq3LxeKMBcRw9
-	WyaqinwORCSbOIYY2luA==;
+	List-Owner; bh=thQDy1uJd6jUlVbBNd48BWmu2e12SiNy83H2ggtLupY=; b=3tJEMLNqRowCg0
+	PAZKG692uvsBMqxx06/r0ikGGjVVSIfewsziDHrOSjn0J/HgvugQrtyaOX+DXgoq1FjQ92rA+D0QY
+	QH+aUW9xVfNOSxQoqzYMiEF4uefzSqhfF94FyStMMEazYcaJTVgcsPmmyqOBoCYO9xi4aTeefSJeX
+	GdysGBIg4aSu6Tkwggu9KtsdMd9FF9dyeCPomP+iwM8qQZpubF83S7kpA2xq6VVAt4gYN1p+MK91Z
+	jIvVxCIrVmOj+1E9bnClMHZGwwSk6u0Rj1oNMpqBrk+xFpBXaK5fTakhvobI8BJ83LFtHPirHSmdK
+	sQjSvgt0nZrInGOmiMdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwJbd-00Ebkc-J4; Wed, 01 Jun 2022 08:21:29 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1nwJcB-00Ec5N-Sb; Wed, 01 Jun 2022 08:22:03 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwJZ7-00EaSm-0U
-	for linux-mediatek@lists.infradead.org; Wed, 01 Jun 2022 08:18:54 +0000
-Received: by mail-pf1-x431.google.com with SMTP id e11so1295099pfj.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jun 2022 01:18:52 -0700 (PDT)
+	id 1nwJZD-00EaWy-PI
+	for linux-mediatek@lists.infradead.org; Wed, 01 Jun 2022 08:19:01 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id t2so1105592pld.4
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jun 2022 01:18:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=M55jesM2/bLrZTqeLQbPue+qYepgHtq5DKFSuhycS2c=;
-        b=aYfb6XQeGN+agxPiXMc5cMMCvRMycYKm3pjxf5IuRCdZkzxHVMNiMARTXTzWZUQPQG
-         RTyI09JGjcklxzXAbDnf/Di/q40nfaQ7S4bgFQVenhFqddaJnUPtH0xkmzLf3rpgk7MS
-         mME6bPb0/mloYpW/tF0wiOlWADxaQd/hVTSug=
+        bh=tde+IhIAyMS5phfhjLJ/xUjc9TpTeEZ8Vt0Thw0su/Y=;
+        b=AvPaiVerLhPA7bu4ah3qZZGvu6x+scDrnj9QwMVpBGEzH3jZ7jjZctDsthGN2X75vw
+         +gqQh9EYZiKEDVg457+bSPZMSAva31GxPBAHUAeqWSP4I5zE+e61zJti+EJ+Q8OnrZ/N
+         KigOKjCuq65/FJ5z6+Tj+iW5NfPqCgjMotibk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=M55jesM2/bLrZTqeLQbPue+qYepgHtq5DKFSuhycS2c=;
-        b=5lSms+nUaGniu/InOPCAw/2xW0FrFj06VQ3jPpvrD0YKUE+GSEomQ+D69XwKu+mufH
-         z/DzTpr0jlmHDiUI5V4HDIKnuLxPvUOqOcZBe5rhjDqSjaIGT+l2iFAI/xZ0gmsTXCzT
-         Yt1veipKdtoOTa/pHCoTAHkmDpg6OhtEDCxid9mhnxc+4qfPZhFNyE8dT7JNxHGjEazj
-         hbasv56aL1xVCnG43bVKFbcWvFooBgKgF96Pbv9QB3lxrCZ063OR7OOX5TjcCyyKth4R
-         xu83Bt/+YWmG+WoKfq//lKsSbxzlXc3+XP3lNYo3TCuRPGajtV9uE9uR3jHzi+rdBAFM
-         jLag==
-X-Gm-Message-State: AOAM530M4fCPNAXvgxq2+9klid7jqq+cXX1WHJrie60vX8MP+eNpetf4
-	jKjSB2mBkIJQvRUdXSkbcCMCjw==
-X-Google-Smtp-Source: ABdhPJw1updJCiw3Qsgmdq3tUxrZNaTrj9u2SGii7IU9H10RIUQW1QdPFu5jUXYEGA9RVz0ZD8Btpw==
-X-Received: by 2002:a05:6a00:a03:b0:51b:5131:704e with SMTP id p3-20020a056a000a0300b0051b5131704emr13202436pfh.53.1654071532308;
-        Wed, 01 Jun 2022 01:18:52 -0700 (PDT)
+        bh=tde+IhIAyMS5phfhjLJ/xUjc9TpTeEZ8Vt0Thw0su/Y=;
+        b=rSHHAuJV12k3G1HjR75geXnOaPK5HqxJuarvDnnMcW32hTZLb8rlYOelaawRX/m/n4
+         EG82AN6l/RqXUSzmh5mftK3ygHVkLrAl/DYwIZ8Fag7PR2Drz+aHgWXCMPDzBQ8VVTNk
+         SWiuLS8tpVK9FQXxMF2tXHngF6LzrGJBFOUggBpl8SH0aOwtHU5EH5KvZFrdJkYY5KOc
+         U4ILUmBnDroZFLsCbt8KjGPf4TCGmKJYKF/owpA56t9pmYTTJ3Vf9Dhf/sqZ9GitOXa1
+         2oMzg13R1vrTfIjgXszfts1c6nL/t7XgejhqA4Qz4aTEmrbgrwlZic6So/qEVyz6Hbgd
+         QQbg==
+X-Gm-Message-State: AOAM532jjF5AbRjdIjVbVE6rU+iwBZlJa/dGJBOwa7mLBQwMHDub6ABU
+	rb52gVTOr8A1BQ+cfqAjolfMVg==
+X-Google-Smtp-Source: ABdhPJyJZ9Nd5iUhCD6MyJuY2jjn3E+5iA+mGbWJIcSz/UCeJVMvsyFTNMYYQQ2/CExPe30dQ0kFsA==
+X-Received: by 2002:a17:90b:1e44:b0:1e2:e772:5f08 with SMTP id pi4-20020a17090b1e4400b001e2e7725f08mr17755299pjb.129.1654071539081;
+        Wed, 01 Jun 2022 01:18:59 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:dc30:e75c:ae95:f2d6])
-        by smtp.gmail.com with ESMTPSA id c3-20020aa78803000000b0050dc7628182sm824680pfo.92.2022.06.01.01.18.49
+        by smtp.gmail.com with ESMTPSA id c3-20020aa78803000000b0050dc7628182sm824680pfo.92.2022.06.01.01.18.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Jun 2022 01:18:51 -0700 (PDT)
+        Wed, 01 Jun 2022 01:18:58 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Cc: Hans de Goede <hdegoede@redhat.com>,
@@ -75,16 +75,16 @@ Cc: Hans de Goede <hdegoede@redhat.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 6/8] drm/panel: ili9881c: Implement .get_orientation callback
-Date: Wed,  1 Jun 2022 16:18:21 +0800
-Message-Id: <20220601081823.1038797-7-hsinyi@chromium.org>
+Subject: [PATCH 8/8] drm/mediatek: Config orientation property if panel provides it
+Date: Wed,  1 Jun 2022 16:18:23 +0800
+Message-Id: <20220601081823.1038797-9-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.36.1.255.ge46751e96f-goog
 In-Reply-To: <20220601081823.1038797-1-hsinyi@chromium.org>
 References: <20220601081823.1038797-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_011853_111052_8F5EA30E 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20220601_011859_898396_F50C44C2 
+X-CRM114-Status: GOOD (  18.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,38 +101,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To return the orientation property to drm/kms driver.
+Panel orientation property should be set before drm_dev_register().
+Mediatek drm driver calls drm_dev_register() in .bind(). However, most
+panels sets orientation property relatively late, mostly in .get_modes()
+callback, since this is when they are able to get the connector and
+binds the orientation property to it, though the value should be known
+when the panel is probed.
+
+Let the drm driver check if the remote end point is a panel and if it
+contains the orientation property. If it does, set it before
+drm_dev_register() is called.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- drivers/gpu/drm/panel/panel-ilitek-ili9881c.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+The concept is the same as the previous version.
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220530113033.124072-1-hsinyi@chromium.org/
+The only difference is, it now uses the panel API instead of parsing
+orientation from the driver.
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-index ba30d11547ad..238b6a75d2ed 100644
---- a/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-+++ b/drivers/gpu/drm/panel/panel-ilitek-ili9881c.c
-@@ -858,12 +858,20 @@ static int ili9881c_get_modes(struct drm_panel *panel,
- 	return 1;
- }
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index bd3f5b485085..12836a697f56 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -185,6 +185,7 @@ struct mtk_dsi {
+ 	struct drm_encoder encoder;
+ 	struct drm_bridge bridge;
+ 	struct drm_bridge *next_bridge;
++	struct drm_panel *panel;
+ 	struct drm_connector *connector;
+ 	struct phy *phy;
  
-+static enum drm_panel_orientation ili9881c_get_orientation(struct drm_panel *panel)
-+{
-+       struct ili9881c *ctx = panel_to_ili9881c(panel);
+@@ -822,6 +823,16 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 		ret = PTR_ERR(dsi->connector);
+ 		goto err_cleanup_encoder;
+ 	}
 +
-+       return ctx->orientation;
-+}
++	/* Read panel orientation */
++	if (dsi->panel) {
++		enum drm_panel_orientation orientation;
 +
- static const struct drm_panel_funcs ili9881c_funcs = {
- 	.prepare	= ili9881c_prepare,
- 	.unprepare	= ili9881c_unprepare,
- 	.enable		= ili9881c_enable,
- 	.disable	= ili9881c_disable,
- 	.get_modes	= ili9881c_get_modes,
-+	.get_orientation = ili9881c_get_orientation,
- };
++		orientation = drm_panel_get_orientation(dsi->panel);
++		if (orientation != DRM_MODE_PANEL_ORIENTATION_UNKNOWN)
++			drm_connector_set_panel_orientation(dsi->connector, orientation);
++	}
++
+ 	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
  
- static int ili9881c_dsi_probe(struct mipi_dsi_device *dsi)
+ 	return 0;
+@@ -837,6 +848,9 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+ 	struct drm_device *drm = data;
+ 	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+ 
++	/* Get panel if existed */
++	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0, &dsi->panel, NULL);
++
+ 	ret = mtk_dsi_encoder_init(drm, dsi);
+ 	if (ret)
+ 		return ret;
 -- 
 2.36.1.255.ge46751e96f-goog
 
