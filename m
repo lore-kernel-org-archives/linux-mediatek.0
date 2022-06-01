@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B218C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 02:33:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01F65C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 04:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TA8nrYBA71/GcbSK4dCARZwGdjG+E/ri1WNFVMO4pnU=; b=XOc9+xGzx0PPIF
-	8Z0+Hf6DmEdLM+7CRNmITk8+JHoZ06sx5z7yglxjg967petvBQiCrgIT6xNKRPodqQmkQ+NWtysXV
-	M9Ja2cBKygQEXC1SKgOxUlBPSVfvUpRN4IK6JRwMvt28zZDRJXWIW32UaiH6/X2G5Z+muqmL6iyvQ
-	MDqMGEp8sNm1pqbOiQg956+5XPSOgCAgfO7mxwJxc3DD10LtCiZ3vF7DvsFtQz/dFzqkNcUqmglTE
-	Rn2ytrmfpj1EVC3Li1rUJqX2Xrd/wIg4+tkPk3PpUBTXw01CDqr/K4GHonRQAwS4CUNVPmubNFmPW
-	tcxcS2Pw5cVaqEFp/5dw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HSsZPvqMK/8DRdfCd70348e/lHbS/Lq2U8J/WUPOFko=; b=cKz0ZuULHsP+xu
+	0Gc5LyJLOrcLRIwQGmH8rAr3usdTQjR9/la3iXkF2zzFIbpiw1zWHfHhGMiET3TvaUo7yF/KCCCEj
+	rA+cSNwsQ+LRyRee+ji9OPrtekp7a64dksB3mPygtGUzS4+hBly/BMnA5bzNrOVEDyvM0a5UuuVVW
+	5zyQ7lqybPFCiX1XkBGczYrhchXM5MEXP9Z47hDDWWHSUNc/S38WrRbaf+U9qFJES25FKt3ojC/vS
+	tfhTiTzbWwTl1Lyhpkg+SvmbQS0yUBqC0183PTWQ/etJfsRVfc0lYTnMjpuht1nWSQTebY/D1SuJL
+	yIgzOinnOL6Hc2K6WLyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwEAk-00DRc1-Le; Wed, 01 Jun 2022 02:33:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nwFja-00Dleq-3M; Wed, 01 Jun 2022 04:13:26 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwEAZ-00DRZo-53; Wed, 01 Jun 2022 02:33:12 +0000
-X-UUID: b56bd4de7e714784a6875039f16bb5dd-20220531
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:63e43bb2-f00e-4afa-92ad-425de1f95d65,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:2a19b09,CLOUDID:f22267e8-9525-475c-8bd6-db49bae23a97,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: b56bd4de7e714784a6875039f16bb5dd-20220531
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 206946128; Tue, 31 May 2022 19:33:05 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 31 May 2022 19:25:08 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Jun 2022 10:25:06 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 1 Jun 2022 10:25:06 +0800
-Message-ID: <0209f3123079f65027bff96d8214129d7bf8393c.camel@mediatek.com>
-Subject: Re: [PATCH v17 4/4] media: platform: mtk-mdp3: add Mediatek MDP3
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
-	<roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Date: Wed, 1 Jun 2022 10:25:06 +0800
-In-Reply-To: <20220531061338.19555-5-moudy.ho@mediatek.com>
-References: <20220531061338.19555-1-moudy.ho@mediatek.com>
-	 <20220531061338.19555-5-moudy.ho@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nwFjT-00Dlca-0s; Wed, 01 Jun 2022 04:13:20 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id v11-20020a17090a4ecb00b001e2c5b837ccso4931441pjl.3;
+        Tue, 31 May 2022 21:13:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Ilrv2fsQ1oyZr4Sxgimv3HjgUAGGQatiiqNbcEA0JFU=;
+        b=im8+dOhyrYsZgyqm/2nx3dBhLfzOI7x5+GXKwk4veel/e3dCK2Lt2Ri/gyxKSDlOtG
+         8rhg+YkF1ktZU6A9sosvKcMFf+/uZnko/TESgmA1vwUr4nM/S9+o0tM3KvTTN0vY6zYR
+         a9CvDXgQvas+3Mox/NUQb/SO/p2/mqhhygeGrMnWUQdiDityjaCjgVLYMGdIJtR3lw92
+         0fZprUZLdxYbEEX9kFeVbuDJ+F6/TdLvQU+G9Zhi29Q2a8gMEoGh6skDN7qQ7jOZcgPA
+         7iz8OUwUzw+lLNXk2YP9aEOhqTVkAs6BNfvcKUjA2iF1ev4Q9qXN+g5BFWvBlmSJNf4g
+         1Ktw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Ilrv2fsQ1oyZr4Sxgimv3HjgUAGGQatiiqNbcEA0JFU=;
+        b=uNQPjKNQagx4SZkxfjjDlO32/yWUDz+SaL+lRef4gyssBDuCKsrpH6HzUugipHegWY
+         AMjCubCWKtSk7tlRtVZIzpuwo5DYyqdzg7h8+ENrfVKIDaquAX3rQDTt4lOapXH4OV7J
+         y7i0EZ0zJ62s8MXZa1Ro0dF5cwzqrwlD8IMXR2JnkMed8cMQPxhbVyge48akVbHcSsgT
+         SULF5yTJZq/MPCNornUCjF4leTF1jGI/qegXTO4v/+/FseltDC3C89b94wgJfLpkyCvN
+         GWcklnH6I2E6YRN9EEy7mdDngrDmB+ZNte1q+OOT0NLhqemCE++4OWz5ZcxHgF6cT4c3
+         zK+Q==
+X-Gm-Message-State: AOAM532nYqhyCwfuKYr4tkniIdbk7T5gg/9xnnFz++Kah3OunNSfZt96
+	SblfX7Vzl8hmObohcRfd21GR11Yx3kdpDpgy
+X-Google-Smtp-Source: ABdhPJyPvtXzWJO2RmYHgPiZUTuVpyzAZyIlZ53x15if6PBizKnZr1JaSDXzPfVBdWGswbimTAuoHg==
+X-Received: by 2002:a17:902:ef48:b0:159:51d:f725 with SMTP id e8-20020a170902ef4800b00159051df725mr65758050plx.47.1654056796365;
+        Tue, 31 May 2022 21:13:16 -0700 (PDT)
+Received: from localhost.localdomain ([202.120.234.246])
+        by smtp.googlemail.com with ESMTPSA id d17-20020a17090abf9100b001df68146a20sm2714564pjs.56.2022.05.31.21.13.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 31 May 2022 21:13:15 -0700 (PDT)
+From: Miaoqian Lin <linmq006@gmail.com>
+To: miles.chen@mediatek.com,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+	Rob Herring <robh@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Marc Zyngier <maz@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: linmq006@gmail.com
+Subject: [PATCH v3] PCI: mediatek-gen3: Fix refcount leak in mtk_pcie_init_irq_domains
+Date: Wed,  1 Jun 2022 08:12:58 +0400
+Message-Id: <20220601041259.56185-1-linmq006@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_193311_229198_2B464905 
-X-CRM114-Status: GOOD (  22.82  )
+X-CRM114-CacheID: sfid-20220531_211319_130926_36DE7BEF 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,169 +96,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+of_get_child_by_name() returns a node pointer with refcount
+incremented, we should use of_node_put() on it when not need anymore.
+Add missing of_node_put() to avoid refcount leak.
 
-On Tue, 2022-05-31 at 14:13 +0800, Moudy Ho wrote:
-> This patch adds driver for Mediatek's Media Data Path ver.3 (MDP3).
-> It provides the following functions:
->   color transform, format conversion, resize, crop, rotate, flip
->   and additional image quality enhancement.
-> 
-> The MDP3 driver is mainly used for Google Chromebook products to
-> import the new architecture to set the HW settings as shown below:
->   User -> V4L2 framework
->     -> MDP3 driver -> SCP (setting calculations)
->       -> MDP3 driver -> CMDQ (GCE driver) -> HW
-> 
-> Each modules' related operation control is sited in mtk-mdp3-comp.c
-> Each modules' register table is defined in file with "mdp_reg_"
-> prefix
-> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> Probe, power, suspend/resume, system level functions are defined in
-> mtk-mdp3-core.c
-> 
+Fixes: 814cceebba9b ("PCI: mediatek-gen3: Add INTx support")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+---
+changes in v2:
+- move of_node_put(intc_node) right after irq_domain_add_linear to cover
+normal path and error paths.
+---
+changes in v3:
+- call of_node_put() in error paths with goto, and call of_node_put() before
+  return 0 in normal path. Since this function has a goto part to handle
+  resources, so put them together, as suggested by Miles Chen <miles.chen@mediatek.com>
 
-[snip]
+v1 link: https://lore.kernel.org/all/20220526110246.53502-1-linmq006@gmail.com/
+v2 link: https://lore.kernel.org/all/20220530064807.34534-1-linmq006@gmail.com/
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-> 
-> +int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
-> +{
-> +	struct mdp_cmdq_cmd cmd;
-> +	struct mdp_path *path = NULL;
-> +	struct mdp_cmdq_cb_param *cb_param = NULL;
-> +	struct mdp_comp *comps = NULL;
-> +	struct device *dev = &mdp->pdev->dev;
-> +	int i, ret;
-> +
-> +	atomic_inc(&mdp->job_count);
-> +	if (atomic_read(&mdp->suspended)) {
-> +		atomic_dec(&mdp->job_count);
-> +		return -ECANCELED;
-> +	}
-> +
-> +	cb_param = kzalloc(sizeof(*cb_param), GFP_KERNEL);
-> +	if (!cb_param) {
-> +		ret = -ENOMEM;
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	cmd.pkt = cmdq_pkt_create(mdp->cmdq_clt, SZ_16K);
-> +	if (IS_ERR(cmd.pkt)) {
-> +		ret = PTR_ERR(cmd.pkt);
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	comps = kcalloc(param->config->num_components, sizeof(*comps),
-> +			GFP_KERNEL);
-> +	if (!comps) {
-> +		ret = -ENOMEM;
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	path = kzalloc(sizeof(*path), GFP_KERNEL);
-> +	if (!path) {
-> +		ret = -ENOMEM;
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	path->mdp_dev = mdp;
-> +	path->config = param->config;
-> +	path->param = param->param;
-> +	for (i = 0; i < param->param->num_outputs; i++) {
-> +		path->bounds[i].left = 0;
-> +		path->bounds[i].top = 0;
-> +		path->bounds[i].width =
-> +			param->param->outputs[i].buffer.format.width;
-> +		path->bounds[i].height =
-> +			param->param->outputs[i].buffer.format.height;
-> +		path->composes[i] = param->composes[i] ?
-> +			param->composes[i] : &path->bounds[i];
-> +	}
-> +
-> +	ret = mdp_path_ctx_init(mdp, path);
-> +	if (ret) {
-> +		dev_err(dev, "mdp_path_ctx_init error\n");
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	cmd.event = &mdp->event[0];
-> +	ret = mdp_path_config(mdp, &cmd, path);
-> +	if (ret) {
-> +		dev_err(dev, "mdp_path_config error\n");
-> +		goto err_cmdq_data;
-> +	}
-> +	cmdq_pkt_finalize(cmd.pkt);
-> +
-> +	for (i = 0; i < param->config->num_components; i++)
-> +		memcpy(&comps[i], path->comps[i].comp,
-> +		       sizeof(struct mdp_comp));
-> +
-> +	cb_param->mdp = mdp;
-> +	cb_param->user_cmdq_cb = param->cmdq_cb;
-> +	cb_param->user_cb_data = param->cb_data;
-> +	cb_param->pkt = cmd.pkt;
-> +	cb_param->comps = comps;
-> +	cb_param->num_comps = param->config->num_components;
-> +	cb_param->mdp_ctx = param->mdp_ctx;
-> +
-> +	cmd.pkt->async_cb.data = (void *)cb_param;
-
-async_cb is part of proprietary callback mechanism and I'm replacing
-the proprietary one with standard one. My final patch is [1] (not
-upstreamed yet) and 'data' would be removed. The way to get data
-related to pkt:
-
-strutc mdp_data {
-    struct cmdq_pkt pkt;
-    /* Other data such as mdp, user_cmdq_cb, ... */
-}
-
-The callback function would callback with pkt and you could use pkt to
-find struct mdp_data{}.
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-cmdq6&id=a35f642aa89f02b7307725cdaa3bfb348b26d093
-
-Regards,
-CK
-
-
-> +	mdp->cmdq_clt->client.rx_callback = mdp_handle_cmdq_callback;
-> +
-> +	mtk_mutex_prepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
-> +	for (i = 0; i < param->config->num_components; i++)
-> +		mdp_comp_clock_on(&mdp->pdev->dev, path-
-> >comps[i].comp);
-> +
-> +	dma_sync_single_for_device(mdp->cmdq_clt->chan->mbox->dev,
-> +				   cmd.pkt->pa_base, cmd.pkt-
-> >cmd_buf_size,
-> +				   DMA_TO_DEVICE);
-> +	ret = mbox_send_message(mdp->cmdq_clt->chan, cmd.pkt);
-> +	if (ret < 0) {
-> +		dev_err(dev, "mbox send message fail %d!\n", ret);
-> +		goto err_clock_off;
-> +	}
-> +	mbox_client_txdone(mdp->cmdq_clt->chan, 0);
-> +
-> +	kfree(path);
-> +	return 0;
-> +
-> +err_clock_off:
-> +	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
-> +	mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
-> +			    cb_param->num_comps);
-> +err_cmdq_data:
-> +	kfree(path);
-> +	atomic_dec(&mdp->job_count);
-> +	wake_up(&mdp->callback_wq);
-> +	if (cmd.pkt)
-> +		cmdq_pkt_destroy(cmd.pkt);
-> +	kfree(comps);
-> +	kfree(cb_param);
-> +	return ret;
-> +}
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 3e8d70bfabc6..bceed28446ed 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -600,7 +600,8 @@ static int mtk_pcie_init_irq_domains(struct mtk_gen3_pcie *pcie)
+ 						  &intx_domain_ops, pcie);
+ 	if (!pcie->intx_domain) {
+ 		dev_err(dev, "failed to create INTx IRQ domain\n");
+-		return -ENODEV;
++		ret = -ENODEV;
++		goto out_put_node;
+ 	}
+ 
+ 	/* Setup MSI */
+@@ -623,13 +624,15 @@ static int mtk_pcie_init_irq_domains(struct mtk_gen3_pcie *pcie)
+ 		goto err_msi_domain;
+ 	}
+ 
++	of_node_put(intc_node);
+ 	return 0;
+ 
+ err_msi_domain:
+ 	irq_domain_remove(pcie->msi_bottom_domain);
+ err_msi_bottom_domain:
+ 	irq_domain_remove(pcie->intx_domain);
+-
++out_put_node:
++	of_node_put(intc_node);
+ 	return ret;
+ }
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
