@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0855C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 11:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DF8CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 11:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z3CRWWjvqOdSH3+EYbhrV8u2/IvCv+EX+kuwenSTB14=; b=TWbWtm5VBSB1Mn
-	uF3FUApVaMEtpZ/t9eYDfEj0VYQRbSNrrZP521lrCnLLE/aYffpnYcnK1xpPW5fsvwN8DMXH3o1GI
-	lbhyqOrtOsRpPNiqAwSI6vj1wDD7xriaMIKG2HGOTcm0YaXstgnUMue4FwlcgYcT6gAhO+6yg2mya
-	sKn7z7an6D9opfTO8GdeTvmnFx89EBzFKlmKa+45OtHka1zUzWef47ChRD+8tDXbvMdPJmIDy7+OI
-	JkEu3YNk5QW+95wvs129ZFg9/M4adp0/OvgMBahXwG0zgUUSB5yGQ5Xzxj40+mlJi+dWgTgBPF5O5
-	IBGlvU8yeXjk4YWCKrcA==;
+	List-Owner; bh=B4U2yVirZlPUY4JSnDa9/g9eGeYV+d8Th1oxF5s9EPo=; b=ZPxoe68CvNz9/h
+	LxR4inyiq5aozvWy5g739tGOuDUGuzKVlrgXA0CiOlMsglg7bKqzXq7hBDB8Y+Lf/9wRak/BO93LC
+	5PLXIBx078AMP+cqFpZj2H+vTufmINlZR9BixQykKhrHByU8ylG0t7itWfNBLVq0K7aFUBIJL4wac
+	ehwRyuSdOhLjYSb+uCSo80XPb4FdrkHM15r2iD4U8kQBiQ5i6AgrHG9R0ZA41N123FQ+Jn8m78C59
+	SRT/kDCa1EjI3BiXJ3RDaFKc+C8v91WZUIh0PtahWBFMqd9HEcMPltURapGqMWO7P229CMrD+PU/q
+	QbYAPXmV8iZRM0IxoZfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwMbG-00Fdg2-F5; Wed, 01 Jun 2022 11:33:18 +0000
+	id 1nwMbY-00Fdqf-LM; Wed, 01 Jun 2022 11:33:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwMaE-00FdDi-50; Wed, 01 Jun 2022 11:32:16 +0000
-X-UUID: b675c96efa544aaf816e0c2e43999e09-20220601
+	id 1nwMaE-00FdCB-Gd; Wed, 01 Jun 2022 11:32:16 +0000
+X-UUID: 5d8642c37fd94775821333b786cbbe00-20220601
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:4fa74643-13e2-4611-b7fa-7675b0418a73,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.5,REQID:c3512885-2682-4038-944e-847a7ac2d61d,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:a0ac8f14-f88c-475e-badf-d9ee54230b8f,C
+X-CID-META: VersionHash:2a19b09,CLOUDID:9eac8f14-f88c-475e-badf-d9ee54230b8f,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: b675c96efa544aaf816e0c2e43999e09-20220601
+X-UUID: 5d8642c37fd94775821333b786cbbe00-20220601
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 217592412; Wed, 01 Jun 2022 04:32:08 -0700
+	with ESMTP id 653609552; Wed, 01 Jun 2022 04:32:08 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Jun 2022 04:22:07 -0700
+ 15.0.1497.2; Wed, 1 Jun 2022 04:22:10 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 1 Jun 2022 19:22:05 +0800
+ Wed, 1 Jun 2022 19:22:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 1 Jun 2022 19:22:05 +0800
+ 15.2.792.3 via Frontend Transport; Wed, 1 Jun 2022 19:22:06 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
 	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
@@ -63,17 +63,17 @@ CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <weishunc@google.com>
-Subject: [PATCH v1 10/15] remoteproc: mediatek: Add chip dependent operations for SCP core 1
-Date: Wed, 1 Jun 2022 19:21:56 +0800
-Message-ID: <20220601112201.15510-11-tinghan.shen@mediatek.com>
+Subject: [PATCH v1 12/15] remoteproc: mediatek: Add SCP core 1 as a rproc subdevice
+Date: Wed, 1 Jun 2022 19:21:58 +0800
+Message-ID: <20220601112201.15510-13-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220601112201.15510-1-tinghan.shen@mediatek.com>
 References: <20220601112201.15510-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_043214_234333_EF916B89 
-X-CRM114-Status: GOOD (  20.71  )
+X-CRM114-CacheID: sfid-20220601_043214_587366_0BD4F126 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,193 +90,298 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SCP rproc operations has chip dependent callbacks. Implement a
-version of these callbacks for MT8195 SCP core 1.
+Because the clock and SRAM power is controlled by SCP core 0, SCP core 1
+has to be boot after SCP core 0. We use the rproc subdev to achieve this
+purpose.
+
+The watchdog timeout handler of SCP core 1 is added as part of the rproc
+subdevice. This allows SCP core 0 to handle watchdog timeout coming from
+SCP core 1.
 
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
- drivers/remoteproc/mtk_common.h   |   1 +
- drivers/remoteproc/mtk_scp.c      |   3 +-
- drivers/remoteproc/mtk_scp_dual.c | 121 +++++++++++++++++++++++++++++-
- 3 files changed, 123 insertions(+), 2 deletions(-)
+ drivers/remoteproc/Makefile         |   2 +-
+ drivers/remoteproc/mtk_common.h     |  12 +++
+ drivers/remoteproc/mtk_scp.c        |  32 +++++++
+ drivers/remoteproc/mtk_scp_dual.c   |   8 ++
+ drivers/remoteproc/mtk_scp_subdev.c | 130 ++++++++++++++++++++++++++++
+ 5 files changed, 183 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/remoteproc/mtk_scp_subdev.c
 
+diff --git a/drivers/remoteproc/Makefile b/drivers/remoteproc/Makefile
+index 84cb687d28da..97f729f7c4ae 100644
+--- a/drivers/remoteproc/Makefile
++++ b/drivers/remoteproc/Makefile
+@@ -15,7 +15,7 @@ obj-$(CONFIG_IMX_REMOTEPROC)		+= imx_rproc.o
+ obj-$(CONFIG_IMX_DSP_REMOTEPROC)	+= imx_dsp_rproc.o
+ obj-$(CONFIG_INGENIC_VPU_RPROC)		+= ingenic_rproc.o
+ obj-$(CONFIG_MTK_SCP)			+= mtk_scp.o mtk_scp_ipi.o
+-obj-$(CONFIG_MTK_SCP_DUALCORE)		+= mtk_scp_dual.o
++obj-$(CONFIG_MTK_SCP_DUALCORE)		+= mtk_scp_dual.o mtk_scp_subdev.o
+ obj-$(CONFIG_OMAP_REMOTEPROC)		+= omap_remoteproc.o
+ obj-$(CONFIG_WKUP_M3_RPROC)		+= wkup_m3_rproc.o
+ obj-$(CONFIG_DA8XX_REMOTEPROC)		+= da8xx_remoteproc.o
 diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 04f7ee590f96..7b363411ec99 100644
+index 7b363411ec99..a5c26e56277d 100644
 --- a/drivers/remoteproc/mtk_common.h
 +++ b/drivers/remoteproc/mtk_common.h
-@@ -171,4 +171,5 @@ int scp_parse_fw(struct rproc *rproc, const struct firmware *fw);
- int scp_map_memory_region(struct mtk_scp *scp);
- void scp_unmap_memory_region(struct mtk_scp *scp);
- irqreturn_t scp_irq_handler(int irq, void *priv);
-+void scp_ipi_handler(struct mtk_scp *scp);
- #endif
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index c67883c28a43..55bc4e9d1a6f 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -84,7 +84,7 @@ static void scp_init_ipi_handler(void *data, unsigned int len, void *priv)
- 	wake_up_interruptible(&scp->run.wq);
- }
+@@ -99,6 +99,14 @@ struct scp_ipi_desc {
+ 	void *priv;
+ };
  
--static void scp_ipi_handler(struct mtk_scp *scp)
-+void scp_ipi_handler(struct mtk_scp *scp)
- {
- 	struct mtk_share_obj __iomem *rcv_obj = scp->recv_buf;
- 	struct scp_ipi_desc *ipi_desc = scp->ipi_desc;
-@@ -118,6 +118,7 @@ static void scp_ipi_handler(struct mtk_scp *scp)
- 	scp->ipi_id_ack[id] = true;
- 	wake_up(&scp->ack_wq);
- }
-+EXPORT_SYMBOL_GPL(scp_ipi_handler);
- 
- static int scp_elf_read_ipi_buf_addr(struct mtk_scp *scp,
- 				     const struct firmware *fw,
-diff --git a/drivers/remoteproc/mtk_scp_dual.c b/drivers/remoteproc/mtk_scp_dual.c
-index d4cc15e22640..16cf9d2628c8 100644
---- a/drivers/remoteproc/mtk_scp_dual.c
-+++ b/drivers/remoteproc/mtk_scp_dual.c
-@@ -12,6 +12,124 @@
- #include "mtk_common.h"
- #include "remoteproc_internal.h"
- 
-+static void mt8195_power_on_sram(void __iomem *addr)
-+{
-+	int i;
-+
-+	for (i = 31; i >= 0; i--)
-+		writel(GENMASK(i, 0), addr);
-+	writel(0, addr);
-+}
-+
-+static void mt8195_power_off_sram(void __iomem *addr)
-+{
-+	int i;
-+
-+	writel(0, addr);
-+	for (i = 0; i < 32; i++)
-+		writel(GENMASK(i, 0), addr);
-+}
-+
-+static int mt8195_scp_dual_before_load(struct mtk_scp *scp)
-+{
-+	u32 sec_ctrl;
-+
-+	mt8195_power_on_sram(scp->reg_base + MT8195_CPU1_SRAM_PD);
-+
-+	/* hold SCP in reset while loading FW. */
-+	scp->data->scp_reset_assert(scp);
-+
-+	/* enable MPU for all memory regions */
-+	writel(0xff, scp->reg_base + MT8195_CORE1_MEM_ATT_PREDEF);
-+
-+	return 0;
-+}
-+
-+static void mt8195_scp_dual_irq_handler(struct mtk_scp *scp)
-+{
-+	u32 scp_to_host;
-+
-+	scp_to_host = readl(scp->reg_base + MT8195_SSHUB2APMCU_IPC_SET);
-+
-+	if (scp_to_host & MT8192_SCP_IPC_INT_BIT) {
-+		scp_ipi_handler(scp);
-+
-+		/*
-+		 * SCP won't send another interrupt until we clear
-+		 * MT8195_SSHUB2APMCU_IPC_CLR.
-+		 */
-+		writel(MT8192_SCP_IPC_INT_BIT,
-+		       scp->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
-+	}
-+}
-+
-+static void mt8195_scp_dual_reset_assert(struct mtk_scp *scp)
-+{
-+	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_SET);
-+}
-+
-+static void mt8195_scp_dual_reset_deassert(struct mtk_scp *scp)
-+{
-+	writel(1, scp->reg_base + MT8195_CORE1_SW_RSTN_CLR);
-+}
-+
-+static void *mt8195_scp_dual_da_to_va(struct mtk_scp *scp, u64 da, size_t len)
-+{
-+	int offset;
-+
-+	if (da >= scp->sram_phys &&
-+	    (da + len) <= scp->sram_phys + scp->sram_size) {
-+		offset = da - scp->sram_phys;
-+		return (void __force *)scp->sram_base + offset;
-+	}
-+
-+	/* optional memory region */
-+	if (scp->l1tcm_size &&
-+	    da >= scp->l1tcm_phys &&
-+	    (da + len) <= scp->l1tcm_phys + scp->l1tcm_size) {
-+		offset = da - scp->l1tcm_phys;
-+		return (void __force *)scp->l1tcm_base + offset;
-+	}
-+
-+	/* optional memory region */
-+	if (scp->dram_size &&
-+	    da >= scp->dma_addr &&
-+	    (da + len) <= scp->dma_addr + scp->dram_size) {
-+		offset = da - scp->dma_addr;
-+		return scp->cpu_addr + offset;
-+	}
-+
-+	return NULL;
-+}
-+
-+static void mt8195_scp_dual_stop(struct mtk_scp *scp)
-+{
-+	/* Power off CPU SRAM */
-+	mt8195_power_off_sram(scp->reg_base + MT8195_CPU1_SRAM_PD);
-+
-+	/* Disable SCP watchdog */
-+	writel(0, scp->reg_base + MT8195_CORE1_WDT_CFG);
-+}
-+
-+static int mt8195_scp_dual_clk_get(struct mtk_scp *scp)
-+{
-+	scp->clk = NULL;
-+
-+	return 0;
-+}
-+
-+static const struct mtk_scp_of_data mt8195_scp_dual_of_data = {
-+	.scp_clk_get = mt8195_scp_dual_clk_get,
-+	.scp_before_load = mt8195_scp_dual_before_load,
-+	.scp_irq_handler = mt8195_scp_dual_irq_handler,
-+	.scp_reset_assert = mt8195_scp_dual_reset_assert,
-+	.scp_reset_deassert = mt8195_scp_dual_reset_deassert,
-+	.scp_stop = mt8195_scp_dual_stop,
-+	.scp_da_to_va = mt8195_scp_dual_da_to_va,
-+	.host_to_scp_reg = MT8192_GIPC_IN_SET,
-+	.host_to_scp_int_bit = MT8195_HOST_IPC_INT_BIT,
++struct scp_subdev_core {
++	struct rproc_subdev subdev;
++	struct mtk_scp *main_scp;
++	void (*scp_dual_wdt_timeout)(struct mtk_scp *scp, u32 scp_to_host);
 +};
 +
- static const struct rproc_ops scp_ops = {
- 	.start		= scp_start,
- 	.stop		= scp_stop,
-@@ -53,6 +171,7 @@ static int scp_dual_probe(struct platform_device *pdev)
- 	scp = (struct mtk_scp *)rproc->priv;
- 	scp->rproc = rproc;
- 	scp->dev = dev;
-+	scp->data = of_device_get_match_data(dev);
- 	platform_set_drvdata(pdev, scp);
++#define to_subdev_core(d) container_of(d, struct scp_subdev_core, subdev)
++
+ struct mtk_scp;
  
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
-@@ -125,7 +244,7 @@ static int scp_dual_remove(struct platform_device *pdev)
+ struct mtk_scp_of_data {
+@@ -144,6 +152,7 @@ struct mtk_scp {
+ 	size_t dram_size;
+ 
+ 	struct rproc_subdev *rpmsg_subdev;
++	struct rproc_subdev *dual_subdev;
+ };
+ 
+ /**
+@@ -172,4 +181,7 @@ int scp_map_memory_region(struct mtk_scp *scp);
+ void scp_unmap_memory_region(struct mtk_scp *scp);
+ irqreturn_t scp_irq_handler(int irq, void *priv);
+ void scp_ipi_handler(struct mtk_scp *scp);
++
++struct rproc_subdev *scp_dual_create_subdev(struct mtk_scp *scp);
++void scp_dual_destroy_subdev(struct rproc_subdev *subdev);
+ #endif
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 55bc4e9d1a6f..c7bf0a44ba0d 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -231,6 +231,13 @@ static void mt8195_scp_irq_handler(struct mtk_scp *scp)
+ 	} else {
+ 		if (readl(scp->reg_base + MT8195_SYS_STATUS) & MT8195_CORE1_WDT) {
+ 			writel(1, scp->reg_base + MT8195_CORE1_WDT_IRQ);
++
++			if (scp->dual_subdev) {
++				struct scp_subdev_core *subdev_core;
++
++				subdev_core = to_subdev_core(scp->dual_subdev);
++				subdev_core->scp_dual_wdt_timeout(scp, scp_to_host);
++			}
+ 		} else {
+ 			writel(1, scp->reg_base + MT8192_CORE0_WDT_IRQ);
+ 			scp_wdt_handler(scp, scp_to_host);
+@@ -836,6 +843,27 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
+ 	}
  }
  
- static const struct of_device_id mtk_scp_dual_of_match[] = {
--	{ .compatible = "mediatek,mt8195-scp-dual" },
-+	{ .compatible = "mediatek,mt8195-scp-dual", .data = &mt8195_scp_dual_of_data },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_scp_dual_of_match);
++static void scp_add_dual_subdev(struct mtk_scp *scp)
++{
++#if IS_ENABLED(CONFIG_MTK_SCP_DUALCORE)
++	scp->dual_subdev = scp_dual_create_subdev(scp);
++
++	if (scp->dual_subdev)
++		rproc_add_subdev(scp->rproc, scp->dual_subdev);
++#endif
++}
++
++static void scp_remove_dual_subdev(struct mtk_scp *scp)
++{
++#if IS_ENABLED(CONFIG_MTK_SCP_DUALCORE)
++	if (scp->dual_subdev) {
++		rproc_remove_subdev(scp->rproc, scp->dual_subdev);
++		scp_dual_destroy_subdev(scp->dual_subdev);
++		scp->dual_subdev = NULL;
++	}
++#endif
++}
++
+ static int scp_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -911,6 +939,8 @@ static int scp_probe(struct platform_device *pdev)
+ 
+ 	scp_add_rpmsg_subdev(scp);
+ 
++	scp_add_dual_subdev(scp);
++
+ 	ret = devm_request_threaded_irq(dev, platform_get_irq(pdev, 0), NULL,
+ 					scp_irq_handler, IRQF_ONESHOT,
+ 					pdev->name, scp);
+@@ -927,6 +957,7 @@ static int scp_probe(struct platform_device *pdev)
+ 	return 0;
+ 
+ remove_subdev:
++	scp_remove_dual_subdev(scp);
+ 	scp_remove_rpmsg_subdev(scp);
+ 	scp_ipi_unregister(scp, SCP_IPI_INIT);
+ release_dev_mem:
+@@ -944,6 +975,7 @@ static int scp_remove(struct platform_device *pdev)
+ 	int i;
+ 
+ 	rproc_del(scp->rproc);
++	scp_remove_dual_subdev(scp);
+ 	scp_remove_rpmsg_subdev(scp);
+ 	scp_ipi_unregister(scp, SCP_IPI_INIT);
+ 	scp_unmap_memory_region(scp);
+diff --git a/drivers/remoteproc/mtk_scp_dual.c b/drivers/remoteproc/mtk_scp_dual.c
+index 4e8d7f5cdad6..90c49716dd39 100644
+--- a/drivers/remoteproc/mtk_scp_dual.c
++++ b/drivers/remoteproc/mtk_scp_dual.c
+@@ -258,6 +258,14 @@ static int scp_dual_probe(struct platform_device *pdev)
+ 		goto remove_ipi;
+ 	}
+ 
++	/* disable auto boot before register rproc.
++	 * it's booted as a subdevice of scp core 0.
++	 */
++	rproc->auto_boot = false;
++	ret = devm_rproc_add(dev, rproc);
++	if (ret)
++		goto remove_ipi;
++
+ 	return 0;
+ 
+ remove_ipi:
+diff --git a/drivers/remoteproc/mtk_scp_subdev.c b/drivers/remoteproc/mtk_scp_subdev.c
+new file mode 100644
+index 000000000000..197fb207c756
+--- /dev/null
++++ b/drivers/remoteproc/mtk_scp_subdev.c
+@@ -0,0 +1,130 @@
++// SPDX-License-Identifier: GPL-2.0
++//
++// Copyright (c) 2022 MediaTek Inc.
++
++#include <linux/err.h>
++#include <linux/io.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/of_platform.h>
++#include <linux/platform_device.h>
++
++#include "mtk_common.h"
++
++#define SCP_MAIN_CORE 0
++#define SCP_DTS_CORE_ID 0
++#define SCP_DTS_CORE_REF 1
++
++static struct mtk_scp *scp_dual_get(struct mtk_scp *scp)
++{
++	struct device *dev = scp->dev;
++	struct device_node *np;
++	struct platform_device *dual_pdev;
++
++	np = of_parse_phandle(dev->of_node, "mediatek,scp-core", SCP_DTS_CORE_REF);
++	dual_pdev = of_find_device_by_node(np);
++	of_node_put(np);
++
++	if (!dual_pdev) {
++		dev_err(dev, "No scp-dual pdev\n");
++		return NULL;
++	}
++
++	return platform_get_drvdata(dual_pdev);
++}
++
++static void scp_dual_put(struct mtk_scp *scp)
++{
++	put_device(scp->dev);
++}
++
++static int scp_dual_rproc_start(struct rproc_subdev *subdev)
++{
++	struct scp_subdev_core *subdev_core = to_subdev_core(subdev);
++	struct mtk_scp *scp_dual;
++
++	scp_dual = scp_dual_get(subdev_core->main_scp);
++	if (!scp_dual)
++		return -ENODEV;
++
++	rproc_boot(scp_dual->rproc);
++	scp_dual_put(scp_dual);
++
++	return 0;
++}
++
++static void scp_dual_rproc_stop(struct rproc_subdev *subdev, bool crashed)
++{
++	struct scp_subdev_core *subdev_core = to_subdev_core(subdev);
++	struct mtk_scp *scp_dual;
++
++	scp_dual = scp_dual_get(subdev_core->main_scp);
++	if (!scp_dual)
++		return;
++
++	rproc_shutdown(scp_dual->rproc);
++	scp_dual_put(scp_dual);
++}
++
++static void scp_dual_wdt_handler(struct mtk_scp *scp, u32 scp_to_host)
++{
++	struct mtk_scp *scp_dual;
++
++	scp_dual = scp_dual_get(scp);
++	if (!scp_dual)
++		return;
++
++	dev_err(scp_dual->dev, "SCP watchdog timeout! 0x%x\n", scp_to_host);
++	rproc_report_crash(scp_dual->rproc, RPROC_WATCHDOG);
++	scp_dual_put(scp_dual);
++}
++
++struct rproc_subdev *scp_dual_create_subdev(struct mtk_scp *scp)
++{
++	struct device *dev = scp->dev;
++	struct scp_subdev_core *subdev_core;
++	struct device_node *np;
++	int ret, core_id;
++
++	ret = of_property_read_u32_index(dev->of_node, "mediatek,scp-core", SCP_DTS_CORE_ID,
++					 &core_id);
++	if (ret < 0) {
++		dev_warn(dev, "No SCP core id\n");
++		return NULL;
++	}
++
++	if (core_id != SCP_MAIN_CORE) {
++		dev_dbg(dev, "SCP core id %d\n", core_id);
++		return NULL;
++	}
++
++	np = of_parse_phandle(dev->of_node, "mediatek,scp-core", SCP_DTS_CORE_REF);
++	if (!np) {
++		dev_err(dev, "Invalid mediatek,scp-core phandle\n");
++		return NULL;
++	}
++	of_node_put(np);
++
++	subdev_core = devm_kzalloc(dev, sizeof(*subdev_core), GFP_KERNEL);
++	if (!subdev_core)
++		return NULL;
++
++	subdev_core->main_scp = scp;
++	subdev_core->scp_dual_wdt_timeout = scp_dual_wdt_handler;
++	subdev_core->subdev.start = scp_dual_rproc_start;
++	subdev_core->subdev.stop = scp_dual_rproc_stop;
++
++	return &subdev_core->subdev;
++}
++EXPORT_SYMBOL_GPL(scp_dual_create_subdev);
++
++void scp_dual_destroy_subdev(struct rproc_subdev *subdev)
++{
++	struct scp_subdev_core *subdev_core = to_subdev_core(subdev);
++
++	devm_kfree(subdev_core->main_scp->dev, subdev_core);
++}
++EXPORT_SYMBOL_GPL(scp_dual_destroy_subdev);
++
++MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("MediaTek scp dual core subdev interface");
 -- 
 2.18.0
 
