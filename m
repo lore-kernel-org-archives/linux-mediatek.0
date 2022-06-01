@@ -4,70 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2403C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 05:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 426AFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 07:26:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/WiE/yzOvgITMpNQcBh48QTHz62UfgWyOUIhTZQtYf4=; b=L0ZnorzwPCs2PI
-	Fl+ElviLSHq2FNy27booK/i/bKR0HNNsdIhHuOIl1Lrrbzc13C9YPxFU9PchANUgz+CNYiHFqTLGg
-	CCOpvl6sNGs0u077KgbHV00clv0HNcllRWp2bLwCoX1PF/+DKVZGwTibbaSv9BGPIeI8dGx+2HRtj
-	uGpvtBC4edWOABYomtXefQ3SClhlzdcv3YBDZQB4kvxHPROOh2rPiLjwKandTSVHeJBP0Oro+dztR
-	NquYvAXjoAzVf7V/bHzzhsQdfIXj0nzqCDu2aOaW85BPDZfAFpjCmUdlyAn6nz5cxOWYCoQ0euepS
-	yfP0QVW0Z5qyKjuaN0Ow==;
+	List-Owner; bh=rxmRlbAp+90DaYfy6IkozIpNSMEM88ZWeM0WIUkHFkA=; b=zqRBj0wDnRr6zq
+	iEVlOxiyPfNaVH8HNk6cNIQd2X450bJg6w7cSKWvCo8l0ov3WuKO50r9ZE6Dh1Q8MFSuZEHZoHypm
+	Wx0XJLsnmTPBKi+z9XbiLDUFj7/PWYIVtXA2eDqRQ6/2C1O03oXcaj47uwjazBbqeoyqztHsem+BY
+	zDMxttpNdgdOS5uN23ShwLfhCMPuq0tnWnKL6tTJmj4Ww7Oe0P1ylTd25ogtGmuNhkVLIIdjsA57U
+	C9PLhDi+8DW3VWIjJw4aCD2nbIfLTutGRdBEQZnl8CryIuDWGMiJ69ZXF05tsbDCPWxLCSE4r8f/m
+	H1XZ2zNogZXJt/zUz+ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwGyk-00DwKp-TZ; Wed, 01 Jun 2022 05:33:10 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nwIkO-00EMud-2N; Wed, 01 Jun 2022 07:26:28 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwGyW-00DwFq-IF; Wed, 01 Jun 2022 05:32:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 22DF4611B7;
-	Wed,  1 Jun 2022 05:32:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8DB0C385A5;
-	Wed,  1 Jun 2022 05:32:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654061574;
-	bh=iQER32CU/sUTRxMxTf/FVOO/vpKLn4BYxmNWOMU1Q5A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=py1GvzmMMyjfRNmngOj/y8UvpccVWhIIU9HkNDRPc+VIpmfUT5xzceY16Ml6a7YF8
-	 JZpnQQC9kuU7m1I0xBjJK4+y2sjajb4kmqbZnZWACbXOvqMG2+ClNL6hOYaY/IgsQr
-	 ZHnVKFYVypiskCsbyu8HcWz7G5bKq4uz1XcLLD4a4gHvRWsGOfDyA8BBRd7T+fips4
-	 k2/fMrgoYK02fldXgqKnRL45L6ESGmYzNZNy+aQOj8V/LlviXvkKL8fkk8ICsnENsO
-	 +PjLJ5Cc0sbGWQq1xnuVlCJPYgmKiyf3RHwHKcKEnifcbRKy0FlAMHIx3mCiO+8RBY
-	 9EtQrISZve5rQ==
-Date: Wed, 1 Jun 2022 11:02:49 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Wei-Shun Chang <weishunc@google.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	rex-bc.chen@mediatek.com, randy.wu@mediatek.com,
-	jieyy.yang@mediatek.com, chuanjia.liu@mediatek.com,
-	qizhong.cheng@mediatek.com, jian.yang@mediatek.com
-Subject: Re: [PATCH v9 0/2] phy: mediatek: Add PCIe PHY driver
-Message-ID: <Ypb6AS6oj2en/Roi@matsya>
-References: <20220520064920.27313-1-jianjun.wang@mediatek.com>
- <96f7cc90171bb6e088ce0ed88e10ad14f06a98bb.camel@mediatek.com>
+	id 1nwIkE-00EMsB-BX
+	for linux-mediatek@lists.infradead.org; Wed, 01 Jun 2022 07:26:19 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 25so680186edw.8
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jun 2022 00:26:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=yFS3Rnzfb0unp6UI0nuTf8G/mfgDKJWNbf+GB8d9uhI=;
+        b=yzkX1bG3uR7Qmo+F7Qn+hD60uiQC931MBqEyL6CGfUOrTBWOWU+fSEZRlHsxL+o36H
+         DaqBipXoh9uvBx5bddczFUvjkjeXBBibFH//xj8nkC6+BldNDlqO97uoNDCMjCR2tpbh
+         iXPv3e4OV0sFLNf+AQh/N2HDdJtQ+bcBqcEhEHrumECnJcXgYb0c9sI5pRHJ8gOZ+I4j
+         RKTmx02GpCBTx63+I8GebWfp/M1OilGCQSjE68nmPHe2DS2B4ln1SMWm5hTC543D1aM4
+         c1kvAk/OltrRUqX0oU3syh9MOBrJ4FDVR9It+1wYbKDr/j4x1mN/vt4gTx3gFDbEUdsS
+         MqPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=yFS3Rnzfb0unp6UI0nuTf8G/mfgDKJWNbf+GB8d9uhI=;
+        b=pymGNGOSs2RTImvEPWGUPB4sh+u8OfQgvMnP8vhnVvIojxOpPdAZbFere8mgYwWrNS
+         TJnDycfMQClUU0DI/dH6zNPzDjEJIgKuD0KVRmcAarCvLFlcBrUeC18GsT2pnCo/g46d
+         N+PE40nru0frlROpDXY9nU1jYNZk0radLsDPGqjGPr5iJlSFE43XTefsudOM6980UrSW
+         DO+3TA6dJRpDAI1JbML5dSS/5Ysy5mZQHDObHV9R3Za1jdP5/AtldYiEaihq+aBrKwDu
+         j7wWZWJVPOFipRCvN/DwTlmDOsgJZ8KZQol2J+PVtD0mVmZNNnU0gUFJZatuEt30Vwi4
+         SqQw==
+X-Gm-Message-State: AOAM5339Z6/qnxJjwv0V4pKcgi43WOqNgBW9azmF1hmYT86li23hPYsb
+	Q1EAgi29F4MqnpkODW7DOT30nw==
+X-Google-Smtp-Source: ABdhPJyfhUlStTcZTz+Ssrs2TvVIfO4c18Qt7HTJuB/uTfvjqG5vQ05BQvumt+AGIXmDE9LMcb26HA==
+X-Received: by 2002:a05:6402:40ce:b0:42b:9d1:96e6 with SMTP id z14-20020a05640240ce00b0042b09d196e6mr66557011edb.262.1654068374634;
+        Wed, 01 Jun 2022 00:26:14 -0700 (PDT)
+Received: from [192.168.0.179] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id h15-20020a170906110f00b006fe98c7c7a9sm359838eja.85.2022.06.01.00.26.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Jun 2022 00:26:14 -0700 (PDT)
+Message-ID: <1f349852-34a7-ff27-3c34-462128802340@linaro.org>
+Date: Wed, 1 Jun 2022 09:26:12 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <96f7cc90171bb6e088ce0ed88e10ad14f06a98bb.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 09/14] dt-bindings: usb: Add Mediatek MT6370 TCPC binding
+ documentation
+Content-Language: en-US
+To: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
+ daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
+ gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
+ lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
+ heikki.krogerus@linux.intel.com, deller@gmx.de
+Cc: cy_huang@richtek.com, alice_chen@richtek.com, chiaen_wu@richtek.com,
+ dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org
+References: <20220531102809.11976-1-peterwu.pub@gmail.com>
+ <20220531102809.11976-10-peterwu.pub@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220531102809.11976-10-peterwu.pub@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_223256_722087_EA5402D7 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20220601_002618_429718_9503F13F 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,74 +103,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01-06-22, 10:21, Jianjun Wang wrote:
-> Hello Maintainers,
+On 31/05/2022 12:28, ChiaEn Wu wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
 > 
-> Gentle ping for this patch series, if there is anything I can do to get
-> these patches merged, please let me know.
-
-Patience my friend patience. This was received very late in cycle and I
-will review after merge window closes..
-
-
+> Add Mediatek MT6370 TCPC binding documentation.
 > 
-> Thanks.
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> ---
+>  .../bindings/usb/mediatek,mt6370-tcpc.yaml    | 35 +++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
 > 
-> On Fri, 2022-05-20 at 14:49 +0800, Jianjun Wang wrote:
-> > These series patches add support for PCIe PHY driver on MediaTek
-> > chipsets.
-> > 
-> > Changes in v9:
-> > 1. Check if the return value is -ENOMEM when reading efuse data
-> > fails.
-> > 
-> > Changes in v8:
-> > 1. Use "device_property_present()" to increase human readability;
-> > 2. Use "GPL" as recommended in commit bf7fbeeae6db ("module: Cure
-> >    the MODULE_LICENSE "GPL" vs. "GPL v2" bogosity").
-> > 
-> > Changes in v7:
-> > 1. Add bitfield.h header to fix the build error on non-arm64
-> > platforms.
-> > 
-> > Changes in v6:
-> > 1. Remove unnecessary header files;
-> > 2. Use FILELD_PREP in bitfield.h to set value.
-> > 
-> > Changes in v5:
-> > 1. Fix typo in kerneldoc: "eFues" => "eFuse".
-> > 
-> > Changes in v4:
-> > 1. Fix no return when calling dev_err_probe.
-> > 
-> > Changes in v3:
-> > 1. Add introductions for structure members;
-> > 2. Add SoC dependent data;
-> > 3. Dynamically allocate efuse data;
-> > 4. Check return value if it's an -EPROBE_DEFER.
-> > 
-> > Changes in v2:
-> > 1. Add specific compatible name;
-> > 2. Read NVMEM data at probe time;
-> > 3. Fix typos.
-> > 
-> > Jianjun Wang (2):
-> >   dt-bindings: phy: mediatek: Add YAML schema for PCIe PHY
-> >   phy: mediatek: Add PCIe PHY driver
-> > 
-> >  .../bindings/phy/mediatek,pcie-phy.yaml       |  75 +++++
-> >  drivers/phy/mediatek/Kconfig                  |  11 +
-> >  drivers/phy/mediatek/Makefile                 |   1 +
-> >  drivers/phy/mediatek/phy-mtk-pcie.c           | 267
-> > ++++++++++++++++++
-> >  4 files changed, 354 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
-> >  create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
-> > 
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+> new file mode 100644
+> index 000000000000..49316633f92f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+> @@ -0,0 +1,35 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/usb/mediatek,mt6370-tcpc.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: Mediatek MT6370 Type-C Port Switch and Power Delivery controller DT bindings
 
--- 
-~Vinod
+s/DT bindings//
+
+> +
+> +maintainers:
+> +  - ChiYuan Huang <cy_huang@richtek.com>
+> +
+> +description: |
+> +  Mediatek MT6370 is a multi-functional device. It integrates charger, ADC, flash, RGB indicators,
+> +  regulators (DSV/VIBLDO), and TypeC Port Switch with Power Delivery controller.
+> +  This document only describes MT6370 Type-C Port Switch and Power Delivery controller.
+
+These lines do not look like wrapped at 80.
+
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6370-tcpc
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  connector:
+> +    type: object
+> +    $ref: /schemas/connector/usb-connector.yaml#
+
+You need unevaluatedProperties:false within connector.
+
+> +    description:
+> +      Properties for usb c connector.
+
+Skip description, it's not helpful.
+
+> +
+> +additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - interrupts
+
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
