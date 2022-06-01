@@ -4,85 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC93C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 15:32:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EC7BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 15:53:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mr+X1yAaA7l4cDpExPUsuv+uOnQkUQ/mJqPLH89wOBo=; b=hzIue3hVsbet1O
-	U1Q1aa/h7YIrDo1NUpfqeuv3kjoVLEa4dITBLBrPSIBqOdGQrH2g7obTJI7fJHbbMyu3x3i8gFnJh
-	8gaAo9qhU46QK4B5vLZZfpbBJjJpVSH5AJd8F/oZfxZrwcHgJR1pseCZ+kGhIzNe4U8PBQ120e63F
-	nnEIFGYKXaHaqmcdNYYeTRjKA8dtepaIZ1t3R9NQ7FchoYJ2nESizIKy4jewAgdweZzG1NaNQ85NW
-	5SvruHs54MAbqrFonQrqi8VqPSddCK5FNBQgHiLk9tN6vt/YqaMn7dxWZ3UMDkE0nrMPdE5+1zQMv
-	5I0liKg3Ub87YNAJ7L5Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Subject:References:Cc:
+	To:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MD/+FVjimpHkBafaF1V93GxtJE9ipWMO6K50XaNzVTk=; b=0haQ9+LNtCbJTd0EvmgcsI5N6A
+	iEZ1WGlB1+VTr2kCyDlv2v7KvH0fIOPdhBYzuoVA3CgdVo8x7Xa9bJ8HZzRk4kimWMEQW68Uhi+L0
+	JbpWU7t3zDdigVi6GmDWweBjcVOs43yz0zXQ/FeYqbGGWQADauqJ3PIn3caWQAf7MvFhFhPqEhLMy
+	fXsiHZTualyIwyPzhRCMLLX6l8CQHUVXCbmQcRxeKIkct1iYk29EO+kcX9HIQG/B7i6XMHmdJFMB2
+	mWD2QmVhMSev1m6FFvPvy4T2gG3UPilHH/BceUYmf1Ar76q5RYshddrZVyE9MatpVhTYUnEEw8cGA
+	4g60/S1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nybCD-008IO6-Pz; Tue, 07 Jun 2022 15:32:41 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1nybWj-008Lkj-0U; Tue, 07 Jun 2022 15:53:53 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nybCA-008ILy-DT
-	for linux-mediatek@lists.infradead.org; Tue, 07 Jun 2022 15:32:39 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id b8so6822814edj.11
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jun 2022 08:32:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=8mWAcxmdEaXtXEf9bkpBT1dXxrFHE82EQI8/Jd/D+m0=;
-        b=GPfz/jg87i8Zik3e8kzVXPFh+GLz9PHfv82fQeGPkCn0GfiS5QUaw/pZFKY3MMdomI
-         /LuGFP+pL0A4/djAMIc8djgLEpFxw3hqlfiemCoHbAJraq7EEdYsE7sHKSJQfkCWxDhT
-         erwf8YK192cyUffD1u6jI914YqFVstgnWVijI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=8mWAcxmdEaXtXEf9bkpBT1dXxrFHE82EQI8/Jd/D+m0=;
-        b=7h4UomXtgdl36pXvTMrejo+KqfleYO1Er1J0jkG9wqs9rN+SyL6y2EJEV3RlZn9oeN
-         shKYz6zfyufrxB5/apXhZZ4AtbPlFuPitxINLMQDJn847KNZyj7v+jfSO3CCc5YcxmCP
-         emg2qAtvFavABeuweubefp+MaAxdWYwHFjozPCfEQl83YM27a8HC2U9DzBCJ5dBEl6Eb
-         8lkFV0siwcine/Qrg/Ub/K4hVuTK6thgSR3lMXnfk/g7e3LR/0HGh5iy3qQNvERanmOo
-         lktfyJ9strh5ZyCDYw+YrfdR2PrIjOTdtlPUC1JTRPtwqJsqwdlROPsErLKJeRLi9UFn
-         qqjg==
-X-Gm-Message-State: AOAM533gJKWQQCPhUsfZdxsJj0FUVMwQ3rkRO5g7L4GBk7Sw8/m0g/AS
-	mnqB0wtifQcWfYzcx/aIqIcJvfvwJB8bM/Yb
-X-Google-Smtp-Source: ABdhPJzZT5TQKrj0qzuPrX741xkt+KA5SrR5lLi2DfATtXI/aFuT7Aeb7SwPEw6RIXRViuRtuXplpA==
-X-Received: by 2002:aa7:c450:0:b0:431:55c6:29f9 with SMTP id n16-20020aa7c450000000b0043155c629f9mr14070635edr.14.1654615953880;
-        Tue, 07 Jun 2022 08:32:33 -0700 (PDT)
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com. [209.85.221.54])
-        by smtp.gmail.com with ESMTPSA id u9-20020a1709064ac900b006f3ef214e20sm7747769ejt.134.2022.06.07.08.32.32
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Jun 2022 08:32:32 -0700 (PDT)
-Received: by mail-wr1-f54.google.com with SMTP id q26so14322600wra.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jun 2022 08:32:32 -0700 (PDT)
-X-Received: by 2002:a5d:608d:0:b0:218:3cfa:afe9 with SMTP id
- w13-20020a5d608d000000b002183cfaafe9mr12177876wrt.422.1654615951748; Tue, 07
- Jun 2022 08:32:31 -0700 (PDT)
+	id 1nwPx0-00GqOP-5Z; Wed, 01 Jun 2022 15:08:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1654096067;
+	bh=2kv8RiXdA0qxNspb/2fDNaF0Q8s5Jy/Qmx21CY+FbW0=;
+	h=X-UI-Sender-Class:Date:To:Cc:References:Subject:Reply-To:From:
+	 In-Reply-To;
+	b=E+MZ4r+TMj+QZdS742fp620K9oAyL28TQ0+A/Lk0xgMI9+Ug604xyFSc1zFcHD8E9
+	 dUbMEzYioAfOcjADFKCOccJFJbAJUDUha6DtDh8oPg2cVi47c/QO0ggzY6IBz74pGF
+	 k6ZEYY8g6MgtIr9WTIZ+QLhBNdvAFATyh9idcgCA=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [192.168.0.21] ([217.61.157.109]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MUGi9-1oM6533Wvj-00RHqb; Wed, 01
+ Jun 2022 17:07:46 +0200
+Message-ID: <23accb82-8f75-4773-4fad-b6218930da62@public-files.de>
+Date: Wed, 1 Jun 2022 17:07:46 +0200
 MIME-Version: 1.0
-References: <20220607090549.2345795-1-hsinyi@chromium.org> <20220607090549.2345795-9-hsinyi@chromium.org>
-In-Reply-To: <20220607090549.2345795-9-hsinyi@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 7 Jun 2022 08:32:19 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=Xe=iEh080QjE+Awgw0Q+Rb=xnrAj6OtO3EXp==XgvD0g@mail.gmail.com>
-Message-ID: <CAD=FV=Xe=iEh080QjE+Awgw0Q+Rb=xnrAj6OtO3EXp==XgvD0g@mail.gmail.com>
-Subject: Re: [PATCH v5 8/8] drm/mediatek: Config orientation property if panel
- provides it
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Hans de Goede <hdegoede@redhat.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Rob Clark <robdclark@chromium.org>, 
-	Stephen Boyd <swboyd@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+To: angelogioacchino.delregno@collabora.com
+Cc: gregkh@linuxfoundation.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
+ matthias.bgg@gmail.com
+References: <CAGXv+5Hx7cRwNzLWrExcFGy=MMOc3-0EbqCanv2E0G_DKXLCgg@mail.gmail.com>
+Subject: [BUG] mtk serial broken on mt7622 with 5.18.0
+Content-Language: en-US
+From: Frank Wunderlich <frank-w@public-files.de>
+In-Reply-To: <CAGXv+5Hx7cRwNzLWrExcFGy=MMOc3-0EbqCanv2E0G_DKXLCgg@mail.gmail.com>
+X-Provags-ID: V03:K1:6HmAzGI+kinOSC+Tl2WcUAHn+3P/WzdwxHLd5Tmjfz5a41e0Skx
+ l+5KgKrzBISREEBeZ3GuEeKyClVMKWEN0Z/qXZUUkGhCWRGoZTlcK8MpJzWd7MlfYF4XjlU
+ jkjpBr8WcdxD19q5V1CF1vavRPK/SA0q2MseKN/s+XC1BMZZA7a7Mbh3iSFMuXandWC59iW
+ xroIVTM/42n1asMBmH0Zw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Iv6HGkEx/fc=:1DMtqfDyP3hN/Ill9AC4Gy
+ rsZIcHGn2NZh4OyRutBiJQ+2tpf23z48mAfoJXRsVZ+otUf971zU9up3JVpU0ztcx6IOcTp8C
+ SXrNCPWbW0se6mvAnCQ7PpEVt6JOuNp3tnk1Fr7ImK8FOGqxk1nB1bW7XqSXLCXzNYBsSfEFJ
+ NbjNmwZBjURUqjKP3ZBdnFi7CvG+1IPXCisHwvcxF2jwQ0atAFjV9N/M6rN4KWUybehqvIrdf
+ i11vhjUbL4Nww7pYu7sKl2FpnCRPdxjVAGw9fDIXo2vGasE1YUGB0vYjhMhOsLVXqow/JM8In
+ rLVFC8CosGxmdON5cwQFPBtPV7kSyvZ27UTu7ARIoxyPxVOQAKFiHSL3o2KLIbbbOuhYpWKPZ
+ WCYT55Txq8g41MiuHWr6oiE7PClkVJnVOYR02Rj9vPLX7ESmPTgCaJXzTleiARyhEXgLkkVWA
+ z9t0lDmD0q7JpnuPeUBMI750/G1gFHZZlJ0ebPk9EniL2YaVgSYu65DfrS73LuTk8z9aaEhrO
+ fklsz01W1ubCyAknSIovTUe1VkH/WRLjUmuhHOa/+s+9ikLhOcjlHIBeHjMSDXVqAaAuVjQJ/
+ Wh1OYewI6qsMI49AXc779kigr4hRt/x6dzBWLU2Elpbe6KuOG/DxscPMZgSsyR1vFh+FLPWOv
+ AYqX63/DcTdfbDVZKbCAmKqXWsybktfGC9sOQd9U4c/pmJJMhv4aCTtf6GFCRAvFYPwa7W3dx
+ x7a9qcv7sRuHgpQWfdpkMHbZbOF9CEwlnxTVdUVCC6h7N1l5U3jbsLQjjTmV6kKg2VCkZ8/mf
+ J6WD/gEytiuCFTiRS68dPfyumFmrfUVRv3Lsayo/x58ZCqaj5gAJnKYHFk4Y44o2lDT2dFYt/
+ GDcmpCnZG2R74kWXVJPsYQviHMQtQTRBBNZxMywo/VupFMsBU08wNRm/uJUu4viy+tH1PHS4+
+ uZZSAafgzh638p3aLRlMAJi9cxgUt3PbjclQUI/lrH1qBv5yF+v60L2goVOSkxdD7X4v42ljl
+ tQjlsk3A2dqt8mLqbpGMnXNWusl+Tk46RgRr3y+pFHCf9IDxImMuz/Dw/lE17jn6Ndhmko/yk
+ +/Dqp7Hpgk1dBboNSl74IC3e12nnfv2qYI8QvngKOB/Ck30N7muI2tHZA==
+X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_083238_520128_8053A221 
-X-CRM114-Status: GOOD (  31.17  )
+X-CRM114-CacheID: sfid-20220601_080758_777766_1BC46351 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
+X-Mailman-Approved-At: Tue, 07 Jun 2022 08:53:52 -0700
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,95 +88,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: frank-w@public-files.de
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Hi,
 
-On Tue, Jun 7, 2022 at 2:06 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
->
-> Panel orientation property should be set before drm_dev_register().
-> Mediatek drm driver calls drm_dev_register() in .bind(). However, most
-> panels sets orientation property relatively late, mostly in .get_modes()
-> callback, since this is when they are able to get the connector and
-> binds the orientation property to it, though the value should be known
-> when the panel is probed.
->
-> Let the drm driver check if the remote end point is a panel and if it
-> contains the orientation property. If it does, set it before
-> drm_dev_register() is called.
->
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Reviewed-by: Hans de Goede <hdegoede@redhat.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
-> v4->v5:
-> - use the new function in v5.
-> - don't use drm_of_find_panel_or_bridge().
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index d9f10a33e6fa..998b1237e193 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -185,6 +185,7 @@ struct mtk_dsi {
->         struct drm_encoder encoder;
->         struct drm_bridge bridge;
->         struct drm_bridge *next_bridge;
-> +       struct drm_panel *panel;
->         struct drm_connector *connector;
->         struct phy *phy;
->
-> @@ -822,6 +823,10 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
->                 ret = PTR_ERR(dsi->connector);
->                 goto err_cleanup_encoder;
->         }
-> +
-> +       /* Read panel orientation */
-> +       drm_connector_set_orientation_from_panel(dsi->connector, dsi->panel);
-> +
->         drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
->
->         return 0;
-> @@ -836,6 +841,16 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
->         int ret;
->         struct drm_device *drm = data;
->         struct mtk_dsi *dsi = dev_get_drvdata(dev);
-> +       struct device_node *panel_node;
-> +
-> +       /* Get panel if existed */
-> +       panel_node = of_graph_get_remote_node(dev->of_node, 0, 0);
-> +       if (panel_node) {
-> +               dsi->panel = of_drm_find_panel(panel_node);
-> +               if (IS_ERR(dsi->panel))
-> +                       dsi->panel = NULL;
-> +               of_node_put(panel_node);
-> +       }
+i get a serial console hang on booting my mt7622 bananapi r64 with 5.18.0
 
-While the above works, it feels like we could do better. What about this?
+[    0.591802] Serial: 8250/16550 driver, 3 ports, IRQ sharing disabled
+[    0.599915] printk: console [ttyS0] disabled
+[    0.624563] 11002000.serial: ttyS0 at MMIO 0x11002000 (irq = 126,
+base_baud = 1562500) is a 16550A
 
-* We add _some_ way to determine if a bridge is actually a
-panel_bridge. If nothing else maybe this could be
-drm_bridge_is_panel() and it could just check if bridge.funcs ==
-panel_bridge_bridge_funcs
+git bisect points to this commit (cannot revert it alone)
 
-* In drm_bridge_connector_init(), when we're looping through all the
-bridges we find the panel_bridge if it's there.
+6f81fdded0d024c7d4084d434764f30bca1cd6b1 is the first bad commit
+commit 6f81fdded0d024c7d4084d434764f30bca1cd6b1
+Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date:   Wed Apr 27 15:23:27 2022 +0200
 
-* At the end of drm_bridge_connector_init() if we found a panel_bridge
-then we call a function like drm_panel_bridge_set_orientation().
+     serial: 8250_mtk: Make sure to select the right FEATURE_SEL
 
+     Set the FEATURE_SEL at probe time to make sure that BIT(0) is enabled:
+     this guarantees that when the port is configured as AP UART, the
+     right register layout is interpreted by the UART IP.
 
-Then you can fully get rid of the mediatek patch, right? The above
-will only work if you're using a panel_bridge / bridge_connector, but
-that's "the future" anyway and we want to encourage people to
-transition to that.
+     Signed-off-by: AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com>
+     Cc: stable <stable@vger.kernel.org>
+     Link:
+https://lore.kernel.org/r/20220427132328.228297-3-angelogioacchino.delregno@collabora.com
+     Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
--Doug
+  drivers/tty/serial/8250/8250_mtk.c | 7 +++++++
+  1 file changed, 7 insertions(+)
+
+merged by 6811a466d27b "Merge tag 'tty-5.18-rc7'"
+
+reverted these 2 commits works for me
+e1bfdbc7daca 2022-04-27 serial: 8250_mtk: Fix register address for
+XON/XOFF character
+6f81fdded0d0 2022-04-27 serial: 8250_mtk: Make sure to select the right
+FEATURE_SEL
+
+have see this discussion [1], but can't manage to import mbox file to
+thunderbird yet
+
+regards Frank
+
+[1]
+https://lore.kernel.org/linux-arm-kernel/CAGXv+5Hx7cRwNzLWrExcFGy=MMOc3-0EbqCanv2E0G_DKXLCgg@mail.gmail.com/#t
 
 _______________________________________________
 Linux-mediatek mailing list
