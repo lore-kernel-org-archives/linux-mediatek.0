@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C7B6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 13:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74CF4CCA468
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 13:56:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LwGkqAtvvU6NIB6R71C/FIW/9FB9GQNXbTBSXjle8lc=; b=sxegV6cLnbRiNO
-	xeWsdrlPupFkZI4A6YqvpmRHss/S5JAhbRhnlsHA0D9LzfhVoU/tiE3RKWOCIlmB9zraGpHuSlC3m
-	UuI1BiNrJNF05HaTIM2P8umbRmI9VaTyRSVHncuqOHXXfKRWtfCbIGAxk9X4wnXjIsYl8zTPixvj6
-	vl9kYx6uidLjZjgApNLTK2hJp8J5gjmHQ5/TXwb/ntpefOZ6zc6Nf+4TFfjQoiS/Rhu6s62Tai7Cv
-	Spg50u5xkv5XMGhOeQ29zHG2P1H4kyKZuy7hlF2cpg2/VMM7WlFrmY5ESIGW2qfNdcEfMc/XkJJKz
-	qAs59Wjts6bcZeoDrQAQ==;
+	List-Owner; bh=LwGkqAtvvU6NIB6R71C/FIW/9FB9GQNXbTBSXjle8lc=; b=doYHTMBKlDir+r
+	QgFcaqC/lR6X6GrRt68j7roRzb6mbCKbElatntRo7VN2YekRLmibgSU6NqTWkwPbnq6mp7Nmv+KA/
+	K8N/h/EyFhF9Y+qyqPTKaxwuLpZbYQIxFDcrlyAsHi+jeNj9avLSmXk2geA47FpAyoRrhaCeW5Q4Z
+	2wTOF0U4htVtKCfL1MHf6eguzF9U7pyWPrWmgADRF1tl0eRcuoMfYLJKfHyYCBmJrGv3Cxs2N1YRA
+	oEyaPITJUC7QIxAIyIKy/GgvpnQvWCn7Dc78G0eAG9tDTJeztAEyoXM5qxCRJBjoEITVTBy1b+RfA
+	tFyXdthSLTYDVLOjbGaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwOoI-00GPOV-Vm; Wed, 01 Jun 2022 13:54:55 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nwOpm-00GQUN-Aq; Wed, 01 Jun 2022 13:56:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwOmn-00GOOF-EM; Wed, 01 Jun 2022 13:53:25 +0000
+	id 1nwOok-00GPl7-PA; Wed, 01 Jun 2022 13:55:25 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E69F9615C4;
-	Wed,  1 Jun 2022 13:53:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D241C3411F;
-	Wed,  1 Jun 2022 13:53:17 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2C61261555;
+	Wed,  1 Jun 2022 13:55:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60812C34119;
+	Wed,  1 Jun 2022 13:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654091598;
+	s=k20201202; t=1654091721;
 	bh=r3DLkc6jEcY3i0/3z56pH0qiShiXBiSeWD+DV9othKc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=G297vWd24QTYYN8UVhD/TX1OSFHuraIhEjO6QHdxM23UILW+Dd15Mzk1790p5UJXi
-	 d8ljLl4YFLuwPga5T17I5vCi/eCahcgmB7own6W5OWFF3zciw1JIJryzoRMXC/SXKG
-	 bekoqvwupBzFHW/fC3UWpqeUv/ADv8LFieZHpXjkCdeaf6DxFqiaW2d9evvf+peUKu
-	 4+b58QZZ9lr4Ajtiz1ZlykBepn/pSHb/Z4Kud3fqGdOw5xf/bVXTKUX9wmxrlSwOpP
-	 dXw4j8VwCfUh6DcpWet9zA79DhdTXjscxx8HXaWeN4CGs3jHpo45MwxisQl/+Xn8Bk
-	 pB8fynyOebNFg==
+	b=F0ebd9xcNqA4OfVMnzL50KZPsqCIVRy6Wo+QTq5OD1YNzhDBxFFD4N0t9ZsfG8igv
+	 zI0sKfpFLe5nBrOFvE6xmbUX0CivY5GnEq4q4yMXRoy9GPI5VaAruNiF5DgP7syKEA
+	 Qj6gS8/zvfRCEohvUwr1qSS6MFIleKS1HBlWCEWag2eFmwXqSSh5b+5xdhvmgZFoyI
+	 y44XmtChJ5iB2Yy2qWqIm0aj9EhtzlDXvSQ97gNybF+npv8J/56AO7WNNiYhgBWKdZ
+	 9Di53AeGYGvNyPg7RpQV3qmaDnx6mLadBcKVhome2zWPjVDlqiH887NYjxCo+N11U0
+	 lWX4MIT6suG7A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,18 +54,18 @@ Cc: Viresh Kumar <viresh.kumar@linaro.org>,
 	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.18 28/49] cpufreq: Avoid unnecessary frequency updates due to mismatch
-Date: Wed,  1 Jun 2022 09:51:52 -0400
-Message-Id: <20220601135214.2002647-28-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.17 27/48] cpufreq: Avoid unnecessary frequency updates due to mismatch
+Date: Wed,  1 Jun 2022 09:54:00 -0400
+Message-Id: <20220601135421.2003328-27-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220601135214.2002647-1-sashal@kernel.org>
-References: <20220601135214.2002647-1-sashal@kernel.org>
+In-Reply-To: <20220601135421.2003328-1-sashal@kernel.org>
+References: <20220601135421.2003328-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_065321_558514_E361E213 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20220601_065522_885903_64DA905B 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
