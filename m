@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9A66C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 14:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E96C0CCA468
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 14:14:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5ffksXxoRYYMJUCEb9FODdIW68oZzvUpCta9+dxxRHY=; b=dxdPhZvVEeSouC
-	lHQJ3WHRLmkXkqyB+j3TgS5eJD1ykm6r6k/oFGnRfDDxai7MC0iALCXqnTehaylIyrAg6lKQRYFV1
-	peqZUpFaqc1qD9XXEivyVM0iAkLQmUHv0POqPK9bma4LfV0wHIU46boRw4uAodSL7ghGRH2UIfXl+
-	c4kcNkfKiy8cJwyM628Ca1Tq6cjNyizhpWWWlnzBiVNKQEe0Bj/95vbYwa7oD7ol5da8owDMHGvUV
-	kqdCYJfXTst8NAeJEKRUCU0arf8AgmMhg2EPCNvBFzSwY3rjNheU6njXCIjU5q/jmzpfsYS65RDST
-	Ut6qn5tYHjcDwgObeTuA==;
+	List-Owner; bh=/ImIyOq5ZvIvJ/zjKA6viEGbH0hiKDi6ZTtPI5EcQ9g=; b=EeOZ4yCMu5LM7J
+	BtSnVg/x9Et5o3g/TuuA4Cka08HTx2Ohmi1k26z4rZyeJ6D2dm9qj7OlNMJzVAxVmpiuqMwSzd8dW
+	7KHJaqql8bUOkMcwJp/WiVV4vGsx2mJWx1RRdyGZPiBjudGfJKkoTrEs/FZPoSdXvCq0sDjuKTyNh
+	telTRbCWUhAM9boZP3xtH40bgqcaL9ghg0jDXsgQzir7c4motWAb4YRjhKnLgWcwADUMIwFhTZtXH
+	7/3YJYIKQbDM5qzrqlHSjyL1w/F8nP/PJRSRDc1h4KhsGuM8RgyVm3aUCtbwlWb5vR+j+vfXNlhQp
+	ngf/S1kAS1YBbjNkM3kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwOz8-00GVVJ-TS; Wed, 01 Jun 2022 14:06:06 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1nwP6y-00GZdQ-Ar; Wed, 01 Jun 2022 14:14:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwOqV-00GQyU-RZ; Wed, 01 Jun 2022 13:57:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 42A13CE1C35;
-	Wed,  1 Jun 2022 13:57:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C7F6C36AF4;
-	Wed,  1 Jun 2022 13:57:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654091829;
-	bh=rwAcKcC1TTyoUSUWY4uS7Xn/Go0skmGw/R7r7MS/DDM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tSH20pBZqhenih5BABvB5kAn+1Vj2KxjALUw5D91kHhPvHuIe4xTJ6ZOKVUkkTQH3
-	 FDsoHkdW1bTfLugJYNWbhEK3d27Tyl55fPT0W0BCxrM1zbh1qYy7Ly9lBNBARpBB9S
-	 MyK3/NvNhrFEryuKwz6jCi/CjdNGaG0CXMZgqz5WQlx2ZztT3rg5aWfYwzOm/s+5/4
-	 tWEhecsTSTggCKaIjnPBib/qvmcvSyEPRNZP20q/+yAcFjSZ47btWDgTmGbEFEJuWY
-	 OQOaN3AOvMDjxGfbLb9cgpTuapb9aXaDbvi4lKZUhUK/kuWP37iRzjc3kcsb24I6Mi
-	 FNLO7daEYq+vA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Viresh Kumar <viresh.kumar@linaro.org>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>,
-	Jia-wei Chang <jia-wei.chang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	"Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
-	Sasha Levin <sashal@kernel.org>,
-	rafael@kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 23/37] cpufreq: Avoid unnecessary frequency updates due to mismatch
-Date: Wed,  1 Jun 2022 09:56:08 -0400
-Message-Id: <20220601135622.2003939-23-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220601135622.2003939-1-sashal@kernel.org>
-References: <20220601135622.2003939-1-sashal@kernel.org>
+	id 1nwOrx-00GRni-6l; Wed, 01 Jun 2022 13:58:44 +0000
+X-UUID: 729ed01ba3704ab38d3d2335c507d2c5-20220601
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:47a86ecc-9185-4b70-80b2-3e64172056ea,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:cebb780d-3a0d-4bbe-9d72-0e5d26d57423,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: 729ed01ba3704ab38d3d2335c507d2c5-20220601
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+	(envelope-from <qun-wei.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 668013730; Wed, 01 Jun 2022 06:58:31 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Jun 2022 06:58:30 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 1 Jun 2022 21:58:28 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 1 Jun 2022 21:58:28 +0800
+Message-ID: <96fdee041ed8ec7d0414fa989c50bf9082005f9b.camel@mediatek.com>
+Subject: Re: [PATCH] scripts: dtc: fix a false alarm for
+ node_name_chars_strict
+From: qun-wei.lin <qun-wei.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>
+CC: Frank Rowand <frowand.list@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	<casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
+	<kuan-ying.lee@mediatek.com>
+Date: Wed, 1 Jun 2022 21:58:28 +0800
+In-Reply-To: <CAL_JsqJnir+qA1Cgm5ATzsAH-pMqQSychLG=JQyUQg02dYb8TQ@mail.gmail.com>
+References: <20220531053358.19003-1-qun-wei.lin@mediatek.com>
+	 <CAL_JsqJnir+qA1Cgm5ATzsAH-pMqQSychLG=JQyUQg02dYb8TQ@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_065712_101784_DD297981 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20220601_065841_321051_9F3055F1 
+X-CRM114-Status: GOOD (  23.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,62 +85,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Viresh Kumar <viresh.kumar@linaro.org>
+On Tue, 2022-05-31 at 08:06 -0500, Rob Herring wrote:
+> On Tue, May 31, 2022 at 12:34 AM Qun-Wei Lin <
+> qun-wei.lin@mediatek.com> wrote:
+> > 
+> > The function check_node_name_chars_strict issues a false alarm when
+> > compiling an overlay dts.
+> > 
+> > /fragment@0/__overlay__: Character '_' not recommended in node name
+> > 
+> > This workaround will fix it by skip checking for node named
+> > __overlay__.
+> > 
+> > Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+> > ---
+> >  scripts/dtc/checks.c | 5 +++++
+> 
+> We don't take patches for dtc. You must send them to upstream dtc and
+> then it will be sync'ed to the kernel tree.
 
-[ Upstream commit f55ae08c89873e140c7cac2a7fa161d31a0d60cf ]
+Ok, I'll send this patch to the correct upstream.
 
-For some platforms, the frequency returned by hardware may be slightly
-different from what is provided in the frequency table. For example,
-hardware may return 499 MHz instead of 500 MHz. In such cases it is
-better to avoid getting into unnecessary frequency updates, as we may
-end up switching policy->cur between the two and sending unnecessary
-pre/post update notifications, etc.
+> 
+> >  1 file changed, 5 insertions(+)
+> > 
+> > diff --git a/scripts/dtc/checks.c b/scripts/dtc/checks.c
+> > index 781ba1129a8e..6ef4f2cd67b9 100644
+> > --- a/scripts/dtc/checks.c
+> > +++ b/scripts/dtc/checks.c
+> > @@ -325,6 +325,11 @@ static void
+> > check_node_name_chars_strict(struct check *c, struct dt_info *dti,
+> >  {
+> >         int n = strspn(node->name, c->data);
+> > 
+> > +       if (streq(node->name, "__overlay__")) {
+> > +               /* HACK: Overlay fragments are a special case */
+> 
+> Not a hack IMO.
+> 
+> However, this should be checking for any node name starting with
+> '__'.
 
-This patch has chosen allows the hardware frequency and table frequency
-to deviate by 1 MHz for now, we may want to increase it a bit later on
-if someone still complains.
+Did you mean it needs to skip the check for all nodes whose names start
+with "_", such as __overlay__, __fixup__, __local_fixup__, and
+__symbols__?
 
-Reported-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
-Tested-by: Jia-wei Chang <jia-wei.chang@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/cpufreq/cpufreq.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+> 
+> Also, doesn't 'fragment@0' cause a warning about missing 'reg'?
 
-diff --git a/drivers/cpufreq/cpufreq.c b/drivers/cpufreq/cpufreq.c
-index eeac6d809229..cddf7e13c232 100644
---- a/drivers/cpufreq/cpufreq.c
-+++ b/drivers/cpufreq/cpufreq.c
-@@ -28,6 +28,7 @@
- #include <linux/suspend.h>
- #include <linux/syscore_ops.h>
- #include <linux/tick.h>
-+#include <linux/units.h>
- #include <trace/events/power.h>
- 
- static LIST_HEAD(cpufreq_policy_list);
-@@ -1701,6 +1702,16 @@ static unsigned int cpufreq_verify_current_freq(struct cpufreq_policy *policy, b
- 		return new_freq;
- 
- 	if (policy->cur != new_freq) {
-+		/*
-+		 * For some platforms, the frequency returned by hardware may be
-+		 * slightly different from what is provided in the frequency
-+		 * table, for example hardware may return 499 MHz instead of 500
-+		 * MHz. In such cases it is better to avoid getting into
-+		 * unnecessary frequency updates.
-+		 */
-+		if (abs(policy->cur - new_freq) < HZ_PER_MHZ)
-+			return policy->cur;
-+
- 		cpufreq_out_of_sync(policy, new_freq);
- 		if (update)
- 			schedule_work(&policy->update);
--- 
-2.35.1
+No, it doesn't.
+Actually, the check_unit_address_vs_reg function suppress the common
+warnings about the fragment names [1].
+
+[1] 
+https://github.com/dgibson/dtc/commit/afbddcd418fbf70467419b91f73cce972482449c
 
 
 _______________________________________________
