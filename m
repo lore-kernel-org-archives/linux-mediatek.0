@@ -4,79 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7EB4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 12:21:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 392BBC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 12:26:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yUGmbRnSiQOO6BgryuGM4Sm81TWjJH27G7E4OUj7eP4=; b=2s+ryBD6Shfixg
-	pgaIVH0i9th1bma9VfpOUUlTWMYWQjTNf9thnz1J2vy/abFTSnuX5FmA/FUmyCezna/omzkczAcRr
-	Tj2WoKxFznUJ5oCtou1cIQNLalb4XF6y80/4NOwEtlnROz2KL1TZV1RJ8WSZu6N8/E0ISeI54ee9Y
-	UMX22e7sVrTNMiMWsL6eDtP3Hd4B5XzhC9PO02Llx9ZfWRZMP+mBdsN9Ijx0bN67R8WgrvT8aknfE
-	sUoxBij7Oe8wJP0RZvRMMMO+ZhRIh8WKcDG5Yn5Tc0Grgy4K3NzqVBCyCffMMug89iEDlI1W+JJ1l
-	1s94cq+id2l4+gIn6M/A==;
+	List-Owner; bh=dIxMd2z5JQlqE7qNnB1jkIsJu7ewPH9bBT8UVkU34gw=; b=V0Y4YKzEm+7ary
+	0RuGtW4mdhu9y7/uulKL0UnIIWYZqogC7Jyjmjxd2hGzJr2lZk2dvFZJL/XA5sxsEgXVbjPOJU142
+	dGr6+u8pNgmb4NQMi4fBgMqsIJbpLITIdHNLbBh9AxNiDnjXYcofSg2B+dAYVyA1Viw5QhTpHMQlZ
+	sEo1TCKoMso/LqW5+DuBgAVRkd6qpNIDJG8ihP/RhvpR1EJRIiuSA8D/OupTa3l6BBJE0/HRbFfvs
+	4PPvHeKVD07wLdQ3XMi4ti/nIQ/cTsyByHLLg/Jt+D8pukWiMNh75zyhq8b1d215k7Xg12mhN3Tw5
+	BnUaApO8SY3qAjb3kkIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwjpE-003Ba8-Uh; Thu, 02 Jun 2022 12:21:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nwjuB-003ChB-Q7; Thu, 02 Jun 2022 12:26:23 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwjoy-003BUK-OA; Thu, 02 Jun 2022 12:21:02 +0000
-X-UUID: 572106883553470eb9c8ff6587268fdd-20220602
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:2ae712af-c170-4d23-9bc6-0a550e475d0a,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:273fe937-9855-4915-a138-f5705f1f3d02,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: 572106883553470eb9c8ff6587268fdd-20220602
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2073146982; Thu, 02 Jun 2022 05:20:54 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jun 2022 05:19:06 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 2 Jun 2022 20:19:05 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 2 Jun 2022 20:19:05 +0800
-Message-ID: <1b2c534c189944b388ff7ca9adc013e8878fe37e.camel@mediatek.com>
-Subject: Re: [PATCH v10 11/21] drm/mediatek: dpi: move swap_shift to SoC
- config
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
-	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>
-Date: Thu, 2 Jun 2022 20:19:05 +0800
-In-Reply-To: <76ddd49bb2bb46923900b085056ce22d7bfa0b0a.camel@mediatek.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <20220523104758.29531-12-granquet@baylibre.com>
-	 <76ddd49bb2bb46923900b085056ce22d7bfa0b0a.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nwju0-003CdD-5o
+	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 12:26:15 +0000
+Received: by mail-ej1-x631.google.com with SMTP id f9so9748975ejc.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jun 2022 05:26:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=l0e+QqCCjFx8f2OLbKQ+40o0Vy08QxD2mn2l44RhFqk=;
+        b=Nog3DQYN4J+cB/fbmluiaMsCH/GEsYKtdT45PVLBiw2jKYQkdhhVUysv0ef7qxi5IW
+         aE8WpuDdI6v/NncvujJcJ4EYi8xwKg7+DxNzdA5fl9LrHbBpppRImfqFr8Jq8ZT48aTX
+         PM/01Xa8gaQOW1DTj9IAkZWZNeJhBN3zuY9ralaG7fd3uNY4Q+0rRFiLcIlCZtvU9KOW
+         b/q6MlU24eUHFojZjVgH24tBtY3Pm/BW7XnaFMNMoLOUSIYEvb46JFbJSFz+CLoqK77A
+         OOnr4Kw9TL/sqpX2+7szIKKFHDvMHBcJyMeDrthV16bc99bfngWqbXiC522v8fdsJoYh
+         jxaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=l0e+QqCCjFx8f2OLbKQ+40o0Vy08QxD2mn2l44RhFqk=;
+        b=qlrwpA3mXrGlMP9EbQu68GAN8JYfOLCGJ+xZRHLTTvHKHuYpdgHbpFPVuTSIlievOB
+         xyEKFoycEzcQt6Y4xE/3Ags4z4DGxKykjCpP1QY1sb8qu/fw8/sjV1Ih3VJgvTG5XrXA
+         pNAEJEnVT0G7Uj9lgWRpMmPjSwuF19YxUb0Eu8JavNaOv9KRfjSeJ+JDqq/GLGEOWBv0
+         qjuEePIdeTIUAyPKFqmz/743O5tXrWFjCbmEyzELWZTIMsb20tuhQQuo0aRACLYi6B5E
+         GujR2C0fOB3Dfwo0jC3vf0crk3ZgUTtU60GEhR6kOHDzRM9FCsKyI9mOChPjBV+0BMKb
+         5vmw==
+X-Gm-Message-State: AOAM531jVf0QWXLM2Nkh4HaoMJnAcKOenk6+wT9uz3jIwVZdBLKc7FYS
+	rH0dR6Q4xS5y06D8ohMLOmNeVg==
+X-Google-Smtp-Source: ABdhPJyJKtUxGXFMU3/LbZTcWeEqPqvfdbUMPT0Dy5tDfhr7+6snoslGd5TY/yGd2/qhA/NuG5+fVw==
+X-Received: by 2002:a17:907:97c7:b0:6fe:f7eb:be67 with SMTP id js7-20020a17090797c700b006fef7ebbe67mr4169542ejc.559.1654172767738;
+        Thu, 02 Jun 2022 05:26:07 -0700 (PDT)
+Received: from [192.168.0.181] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id j10-20020a170906830a00b006f3ef214dc0sm1684967ejx.38.2022.06.02.05.26.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Jun 2022 05:26:07 -0700 (PDT)
+Message-ID: <2c610d82-65bf-60c8-05f3-434eaa1cfc8b@linaro.org>
+Date: Thu, 2 Jun 2022 14:26:06 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220422071534.15653-1-tinghan.shen@mediatek.com>
+ <c0a188e5-8a8c-d4a3-5a3d-9b9dd85d8f44@linaro.org>
+ <eb4deff1a01c09783518bbaff8fe4e4c4ca6fa5b.camel@mediatek.com>
+ <591767ee-e349-7a17-a9e9-b95d0500c7c1@linaro.org>
+ <774c075ca4ad815c88be755cfb51889a171e835d.camel@mediatek.com>
+ <9e3f5586-59fa-42cc-770c-b8694b4f2bf3@linaro.org>
+ <a1140bd47cbd68436d0b9e147c2d6d6327ac092e.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <a1140bd47cbd68436d0b9e147c2d6d6327ac092e.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_052100_821219_9507C72B 
-X-CRM114-Status: GOOD (  22.92  )
+X-CRM114-CacheID: sfid-20220602_052612_364522_4B19310C 
+X-CRM114-Status: GOOD (  23.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,128 +100,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-05-30 at 16:38 +0800, CK Hu wrote:
-> Hi, Guillaume:
+On 02/06/2022 13:53, Tinghan Shen wrote:
+> Hi Krzysztof,
 > 
-> On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
-> > Add flexibility by moving the swap shift value to SoC specific
-> > config
-> > 
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dpi.c | 8 +++++++-
-> >  1 file changed, 7 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > index 6eeda222a973..6d4d8c6ec47d 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > @@ -131,6 +131,7 @@ struct mtk_dpi_conf {
-> >  	u32 dimension_mask;
-> >  	/* HSIZE and VSIZE mask (no shift) */
-> >  	u32 hvsize_mask;
-> > +	u32 channel_swap_shift;
-> >  	const struct mtk_dpi_yc_limit *limit;
-> >  };
-> >  
-> > @@ -349,7 +350,8 @@ static void mtk_dpi_config_channel_swap(struct
-> > mtk_dpi *dpi,
-> >  		break;
-> >  	}
-> >  
-> > -	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << CH_SWAP,
-> > CH_SWAP_MASK);
-> > +	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << dpi->conf-
-> > > channel_swap_shift,
-> > 
-> > +		     CH_SWAP_MASK);
-> > From the definiton:
+> On Thu, 2022-06-02 at 12:45 +0200, Krzysztof Kozlowski wrote:
+>> On 02/06/2022 12:19, Tinghan Shen wrote:
+>>> Hi Krzysztof,
+>>>
+>>> On Thu, 2022-06-02 at 09:40 +0200, Krzysztof Kozlowski wrote:
+>>>> On 02/06/2022 08:44, Tinghan Shen wrote:
+>>>>>>> +  mbox-names:
+>>>>>>> +    items:
+>>>>>>> +      - const: mbox0
+>>>>>>> +      - const: mbox1
+>>>>>>
+>>>>>> These should be rather some meaningful names, e.g. "rx" and "tx".
+>>>>>
+>>>>> The mbox name has to align with the adsp ipc driver.
+>>>>> The adsp ipc driver is using 'mbox%d' for mailbox channels.
+>>>>>
+>>>>>
+>>>>>
+>>>
+>>>
+> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/commit/?id=9db69df4bdd37eb1f65b6931ee067fb15b9a4d5c__;!!CTRNKA9wMg0ARbw!1TmempNkQhC5QuLBhyfWo_AC97MoLuWipsGV-LPaW9RKNPheU7Bgc-eboNi1JA1nC5I$
+>>>>>  
+>>>>>
+>>>>> 	chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
+>>>>>
+>>>>> 	/* ...snip... */
+>>>>>
+>>>>> 	adsp_chan->ch = mbox_request_channel_byname(cl, chan_name);
+>>>>>
+>>>>> Is it ok to continue using these names?
+>>>>
+>>>> It is a bit confusing... how did that driver got merged recently without
+>>>> bindings? Why bindings are separate?
+>>>>
+>>>> The bindings always come together in one patchset with the driver
+>>>> implementing them. Bindings are though a separate patch, yet still
+>>>> followed by the driver which uses them.
+>>>>
+>>>> I do not see any compatibles in that driver, which suggests there is no
+>>>> other binding using it. If that's correct, then you need to change the
+>>>> driver.
+>>>>
+>>>
+>>> The mtk-adsp-ipc driver's sole function is to encapsulate the operations 
+>>> of mailbox framework from adsp ipc users. The mtk-adsp-ipc is not defined 
+>>> in the dts file and we don't need it to be defined. The creation of mtk-adsp-ipc 
+>>> device is requested by adsp ipc users via the use of 'platform_device_register_data'[1].
+>>>
+>>> the driver implemented the mailbox framework is 'mtk-adsp-mailbox'[2]. it has 
+>>> corresponding hardwares and a yaml file[3] to describe it.
+>>
+>> I don't understand how is this related. We talk here about the
+>> mbox-names for this bindings file. You replied, that these bindings are
+>> already used by something, but now you say that they are not? So why do
+>> you need to change anything in any driver?
+>>
+>> Simple question - do the bindings here "add mt8186 dsp document" are
+>> used by any specific Linux driver already?
 > 
->  #define CH_SWAP				0
-> +#define DPINTF_CH_SWAP			BIT(1)
->  #define CH_SWAP_MASK			(0x7 << 0)
-> +#define DPINTF_CH_SWAP_MASK		(0x7 << 1)
+> This bindings, 'add mt8186 dsp document', are used by the SOF sound driver of MT8186[1]. 
 > 
-> This statement should be:
-> 
-> mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << dpi->conf-
-> > channel_swap_shift, CH_SWAP_MASK << dpi->conf->channel_swap_shift);
-> 
-> dpi->conf->channel_swap_shift is 1 for MT8195-DP_INTF and 0 for
-> others.
-> And drop the definition of DPINTF_CH_SWAP and DPINTF_CH_SWAP_MASK,
-> 
-> Regards,
-> CK
-> 
+> I'm sorry for miss leading you in previous reply. I was thought that you're 
+> asking why the mtk-adsp-ipc driver got merged without bindings. So, I tried 
+> to explain why mtk-adsp-ipc doesn't have bindings.
 
-Hello CK,
+Then my question is kind of still valid:
+How did "mt8186 SOF" driver got merged recently without bindings? Why
+bindings are separate?
 
-I have checked this with Jitao,
-it's all shift 1 bit including mask and value.
+You cannot just sneak in usage of bindings in a driver, then submit
+bindings and say "we already have an user!". No, the bindings come with
+the driver. Always.
 
-I will modify like this:
-#define DPINTF_CH_SWAP 1
+Linked patch [1] brings undocumented compatible mediatek,mt8186-dsp, so
+you should see big fat warning when running checkpatch. So this points
+that you did not run checkpatch which is another not acceptable
+submission. :(
 
-mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
-val << dpi->conf-> channel_swap_shift,
-CH_SWAP_MASK << dpi->conf->channel_swap_shift);
+[1]
+https://lore.kernel.org/all/20220422055659.8738-2-tinghan.shen@mediatek.com/
 
 
-BR,
-Bo-Chen
-> 
-> >  }
-> >  
-> >  static void mtk_dpi_config_yuv422_enable(struct mtk_dpi *dpi, bool
-> > enable)
-> > @@ -821,6 +823,7 @@ static const struct mtk_dpi_conf mt8173_conf =
-> > {
-> >  	.swap_input_support = true,
-> >  	.dimension_mask = HPW_MASK,
-> >  	.hvsize_mask = HSIZE_MASK,
-> > +	.channel_swap_shift = CH_SWAP,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> > @@ -835,6 +838,7 @@ static const struct mtk_dpi_conf mt2701_conf =
-> > {
-> >  	.swap_input_support = true,
-> >  	.dimension_mask = HPW_MASK,
-> >  	.hvsize_mask = HSIZE_MASK,
-> > +	.channel_swap_shift = CH_SWAP,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> > @@ -848,6 +852,7 @@ static const struct mtk_dpi_conf mt8183_conf =
-> > {
-> >  	.swap_input_support = true,
-> >  	.dimension_mask = HPW_MASK,
-> >  	.hvsize_mask = HSIZE_MASK,
-> > +	.channel_swap_shift = CH_SWAP,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> > @@ -861,6 +866,7 @@ static const struct mtk_dpi_conf mt8192_conf =
-> > {
-> >  	.swap_input_support = true,
-> >  	.dimension_mask = HPW_MASK,
-> >  	.hvsize_mask = HSIZE_MASK,
-> > +	.channel_swap_shift = CH_SWAP,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
