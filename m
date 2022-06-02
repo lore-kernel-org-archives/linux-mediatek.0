@@ -4,59 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D00C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 08:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10FAFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 09:08:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XnM21/ITyjaYGxSnEhy4yzzBcOnDl4Bt+LH0eUucmNo=; b=dkZZx9r3nZkpk6
-	LdPgCrZMzQZkyNAAJscweOnWXhT8ZUlxnche6LrVkpoelusmh/g/iqSFOlqvdN3k7kYLTX7wQVt1R
-	Pkz4H1X26JGjok5LrAQzq5J4sJKDP5Dp3Q0Jo0Ks9rucfoakaIs9+SFYXlHikn7hxAhNtN3KT6Aas
-	2FMUhPFNPrX8IO5BOhztNuTBiFlIobAs8ZdJarpuWmkNkZQ7yz+MDCLA2fHkuwe83SEYJpJkwU9VM
-	Rz7dfd7XE2aTSTmsf/EE0Glqw+fukbjwVhMKTANBzjNewWDAoLXNed7PwqtftbVJJ6XJDsa5MZpAh
-	4aNdKuec3yvq5XtjxWuA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qbF2Nz69Nre7Nx3YmQ1FNiZrzmgAZWssKBml4MgfubA=; b=wViRId4m2Ah4s1
+	Eby6bZhGCl8pdiA9QrH0FyNiaGul5+ioPxhStKsf4cF14B6tcXIVMd0QzcWZ8/R/wHuEXxHGjfs8K
+	/cQAyRNpzJgIB1np8vf+IOp0F7cxlReiitiheG6OXBZmsmcICsN5YoegcZHW7SK5L8wU6b8FByLJT
+	WnOiMujMW1JnBJInts9CepqGSMqcjivh8MiwUfytE55UIVwTOd7a+r0H5AgRd9lzIpMASaYIFwRvO
+	JmxkCbdXGTP4jby+b5iVUmzVIcJ+IgYvQKSpQC7er5aEcOOShTnzEesAqR3SajuWWk6vqlkyqeWft
+	S6lKJUwJJZODd8OpvyVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwgRQ-002GJa-Ab; Thu, 02 Jun 2022 08:44:28 +0000
-Received: from smtp-bc0e.mail.infomaniak.ch ([45.157.188.14])
+	id 1nwgo3-002NNP-8u; Thu, 02 Jun 2022 09:07:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwgRM-002GHP-Ev
-	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 08:44:26 +0000
-Received: from smtp-2-0001.mail.infomaniak.ch (unknown [10.5.36.108])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4LDKLl046yzMprjq;
-	Thu,  2 Jun 2022 10:44:15 +0200 (CEST)
-Received: from [10.0.0.141] (unknown [31.10.206.125])
-	by smtp-2-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4LDKLk1DMszlk1FD;
-	Thu,  2 Jun 2022 10:44:13 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=pschenker.ch;
-	s=20220412; t=1654159454;
-	bh=mV7mkCUjOl6hMSevGR59+xlFQCqBQ4WwdymyF0opzUY=;
-	h=Subject:From:Reply-To:To:Cc:Date:In-Reply-To:References:From;
-	b=TVJFhJK9EsLdiqX+KhfpvkfTgssVCX73VGWmPkbBNWLdNRINdU7AzH0KLslewDaPE
-	 0/OcSegpEggQ+NuLItKAQexi9dmhEjTtYaqWsf2yWmCCCWHigsxq3jh0KmXREU+xJC
-	 BCkuo08R2hje4EXErOkpDVna9rJTAIVc9SsHLJrw=
-Message-ID: <2c5a6bb34c67c9c15c393346e89bdb14ae6f3c44.camel@pschenker.ch>
-Subject: Re: [PATCH] Revert "mt76: mt7921: enable aspm by default"
-From: Philippe Schenker <dev@pschenker.ch>
-To: sean.wang@mediatek.com
-Cc: deren.wu@mediatek.com, kvalo@kernel.org, linux-wireless@vger.kernel.org,
-  nbd@nbd.name, linux@leemhuis.info, davem@davemloft.net, kuba@kernel.org, 
- lorenzo.bianconi83@gmail.com, matthias.bgg@gmail.com, pabeni@redhat.com, 
- ryder.lee@mediatek.com, shayne.chen@mediatek.com, yn.chen@mediatek.com, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Date: Thu, 02 Jun 2022 10:44:13 +0200
-In-Reply-To: <1654122203-26090-1-git-send-email-sean.wang@mediatek.com>
-References: 	<e93aef5c9f8a97efe23cfb5892f78f919ce328e7.camel@pschenker.ch--annotate>
-	 <1654122203-26090-1-git-send-email-sean.wang@mediatek.com>
-User-Agent: Evolution 3.44.1 
+	id 1nwgo0-002NMF-MC; Thu, 02 Jun 2022 09:07:50 +0000
+X-UUID: 63d6747bbad34171879ecd1ea63e4a9d-20220602
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:f323286e-3e04-41a9-8319-419ac146659b,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:b676ac6e-b02c-4af4-b838-5c14aaa063c7,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 63d6747bbad34171879ecd1ea63e4a9d-20220602
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 427262239; Thu, 02 Jun 2022 02:07:43 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jun 2022 01:58:09 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 2 Jun 2022 16:58:07 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 2 Jun 2022 16:58:07 +0800
+Message-ID: <287d88a62fd13cd762b20faa3e9df826632fe1eb.camel@mediatek.com>
+Subject: Re: [PATCH v1 01/15] dt-binding: remoteproc: mediatek: Support
+ dual-core SCP
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Bjorn Andersson
+	<bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Benson Leung
+	<bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Daisuke Nojiri
+	<dnojiri@chromium.org>, Sebastian Reichel <sebastian.reichel@collabora.com>,
+	"Dustin L. Howett" <dustin@howett.net>, Tzung-Bi Shih <tzungbi@kernel.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Prashant Malani
+	<pmalani@chromium.org>, Enric Balletbo i Serra
+	<enric.balletbo@collabora.com>, Brian Norris <briannorris@chromium.org>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <weishunc@google.com>
+Date: Thu, 2 Jun 2022 16:58:07 +0800
+In-Reply-To: <476baef8-0255-45ed-85f4-2b9d877c4af1@linaro.org>
+References: <20220601112201.15510-1-tinghan.shen@mediatek.com>
+	 <20220601112201.15510-2-tinghan.shen@mediatek.com>
+	 <dd3ea397-fa21-abe5-85ad-b8a4818dc011@linaro.org>
+	 <3c837acfbefa5b7e23e1121678b5b878f08e4ef2.camel@mediatek.com>
+	 <476baef8-0255-45ed-85f4-2b9d877c4af1@linaro.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_014424_671305_558F38D6 
-X-CRM114-Status: GOOD (  28.25  )
+X-CRM114-CacheID: sfid-20220602_020748_778570_47CBA22D 
+X-CRM114-Status: GOOD (  40.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,69 +90,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: dev@pschenker.ch
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA2LTAyIGF0IDA2OjIzICswODAwLCBzZWFuLndhbmdAbWVkaWF0ZWsuY29t
-IHdyb3RlOgo+IEZyb206IFNlYW4gV2FuZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4KPiAKPiA+
-IE9uIFR1ZSwgMjAyMi0wNC0xMiBhdCAxOTowNiArMDgwMCwgRGVyZW4gV3Ugd3JvdGU6Cj4gPiA+
-IE9uIFR1ZSwgMjAyMi0wNC0xMiBhdCAxMjozNyArMDMwMCwgS2FsbGUgVmFsbyB3cm90ZToKPiA+
-ID4gPiBQaGlsaXBwZSBTY2hlbmtlciA8ZGV2QHBzY2hlbmtlci5jaD4gd3JpdGVzOgo+ID4gPiA+
-IAo+ID4gPiA+ID4gVGhpcyByZXZlcnRzIGNvbW1pdCBiZjM3NDdhZTJlMjVkZGE2YTllNmM0NjRh
-NzE3YzY2MTE4YzU4OGM4Lgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBUaGlzIGNvbW1pdCBpbnRyb2R1
-Y2VzIGEgcmVncmVzc2lvbiBvbiBzb21lIHN5c3RlbXMgd2hlcmUgdGhlCj4gPiA+ID4gPiBrZXJu
-ZWwgaXMgY3Jhc2hpbmcgaW4gZGlmZmVyZW50IGxvY2F0aW9ucyBhZnRlciBhIHJlYm9vdCB3YXMK
-PiA+ID4gPiA+IGlzc3VlZC4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gVGhpcyBpc3N1ZSB3YXMgYmlz
-ZWN0ZWQgb24gYSBUaGlua3BhZCBQMTRzIEdlbjIgKEFNRCkgd2l0aAo+ID4gPiA+ID4gbGF0ZXN0
-Cj4gPiA+ID4gPiBmaXJtd2FyZS4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gTGluazoKPiA+ID4gPiA+
-IGh0dHBzOi8vdXJsZGVmZW5zZS5jb20vdjMvX19odHRwczovL2xvcmUua2VybmVsLm9yZy9saW51
-eC13aXJlbGVzcwo+ID4gPiA+ID4gLzUwNzdhOTUzNDg3Mjc1ODM3ZTgxYmRmMTgwOGRlZDAwYjk2
-NzZmOWYuY2FtZWxAcHNjaGVua2VyLmNoL18KPiA+ID4gPiA+IF87ISEKPiA+ID4gPiA+IENUUk5L
-QTl3TWcwQVJidyEwOXRqeWFRbE1jaTNmVkkzeWlOaURKS1VXX3F3TkFfQ2JWaG9BcmFlSVg5NkI5
-Cj4gPiA+ID4gPiA5UTE0Cj4gPiA+ID4gPiBKNGlEeWNXQTljcTM2WSQKPiA+ID4gPiA+IAo+ID4g
-PiA+ID4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgU2NoZW5rZXIgPGRldkBwc2NoZW5rZXIuY2g+
-Cj4gPiA+ID4gCj4gPiA+ID4gQ2FuIEkgdGFrZSB0aGlzIHRvIHdpcmVsZXNzIHRyZWU/IEZlbGl4
-LCBhY2s/Cj4gPiA+ID4gCj4gPiA+ID4gSSdsbCBhbHNvIGFkZDoKPiA+ID4gPiAKPiA+ID4gPiBG
-aXhlczogYmYzNzQ3YWUyZTI1ICgibXQ3NjogbXQ3OTIxOiBlbmFibGUgYXNwbSBieSBkZWZhdWx0
-IikKPiA+ID4gPiAKPiA+ID4gCj4gPiA+IEhpIEthbGxlLAo+ID4gPiAKPiA+ID4gV2UgaGF2ZSBh
-IHBhdGNoIGZvciBhIHNpbWlsYXIgcHJvYmxlbS4gQ2FuIHlvdSB3YWl0IGZvciB0aGUKPiA+ID4g
-dmVyaWZpY2F0aW9uIGJ5IFBoaWxpcHBlPwo+ID4gPiBDb21taXQgNjAyY2MwYzk2MThhODEgKCJt
-dDc2OiBtdDc5MjFlOiBmaXggcG9zc2libGUgcHJvYmUgZmFpbHVyZQo+ID4gPiBhZnRlcgo+ID4g
-PiByZWJvb3QiKQo+ID4gPiBMaW5rOgo+ID4gPiBodHRwczovL3VybGRlZmVuc2UuY29tL3YzL19f
-aHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lCj4gPiA+IGwvZ2l0L3Rv
-cnZhbGRzL2xpbnV4LmdpdC9jb21taXQvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3
-Ngo+ID4gPiA/aWQ9Cj4gPiA+IDYwMmNjMGM5NjE4YTgxOWFiMDBlYTNjOTQwMDc0MmEwY2EzMTgz
-ODBfXzshIUNUUk5LQTl3TWcwQVJidyEzTjlJMwo+ID4gPiBpS3dTCj4gPiA+IDNYQ05BYjRMdWhi
-RnF0X2VsMXlpT2FKelNkVWphSnNUYXhSQ0hpV2hYbkVnYmszYk9xWVR5NlQkCj4gPiA+IAo+ID4g
-PiBJIGNhbiByZXByb2R1Y2UgdGhlIHByb2JsZW0gaW4gbXkgdjUuMTYtcmM1IGRlc2t0b3AuIEFu
-ZCB0aGUgaXNzdWUKPiA+ID4gY2FuCj4gPiA+IGJlIGZpeGVkIHdoZW4gdGhlIHBhdGNoIGFwcGxp
-ZWQuCj4gPiA+IAo+ID4gPiAKPiA+ID4gSGkgUGhpbGlwcGUsCj4gPiA+IAo+ID4gPiBDYW4geW91
-IHBsZWFzZSBoZWxwIHRvIGNoZWNrIHRoZSBwYXRjaCBpbiB5b3VyIHBsYXRmb3JtPwo+ID4gCj4g
-PiBIaSBLYWxsZSBhbmQgRGVyZW4sCj4gPiAKPiA+IEkganVzdCBub3RpY2VkIG9uIG15IHN5c3Rl
-bSBhbmQgbWFpbmxpbmUgdjUuMTggcmVib290cyBkbyBub3cgd29yawo+ID4gaG93ZXZlciBCbHVl
-dG9vdGggaXMgbm8gbG9uZ2VyIGFjY2Vzc2libGUgYWZ0ZXIgYSByZWJvb3QuCj4gPiAKPiA+IFJl
-dmVydGluZyBjb21taXQgYmYzNzQ3YWUyZTI1ZGRhNmE5ZTZjNDY0YTcxN2M2NjExOGM1ODhjOCBv
-biB0b3Agb2YKPiA+IHY1LjE4IHNvbHZlcyB0aGlzIHByb2JsZW0gZm9yIG1lLgo+ID4gCj4gPiBA
-RGVyZW4gYXJlIHlvdSBhd2FyZSBvZiB0aGlzIGJ1Zz8KPiA+IEBLYWxsZSBJcyB0aGVyZSBhIGJ1
-Z3RyYWNrZXIgc29tZXdoZXJlIEkgY2FuIHN1Ym1pdCB0aGlzPwo+IAo+IEhpIFBoaWxpcHBlLAo+
-IAo+IENvdWxkIHlvdSB0cnkgdGhlIGxhdGVzdCBmaXJtd2FyZSB0byBzZWUgaWYgaXQgY2FuIGhl
-bHAgd2l0aCB0aGUgaXNzdWUKPiB5b3UgcmVwb3J0ZWQgaGVyZSA/Cj4gCj4gUGxlYXNlIGNoZWNr
-IG91dAo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2Zp
-cm13YXJlL2xpbnV4LWZpcm13YXJlLmdpdC90cmVlL21lZGlhdGVrCj4gYW5kIHJlcGxhY2UgdGhl
-IGZvbGxvd2luZyB0aHJlZSBmaWxlcyBpbiAvbGliL2Zpcm13YXJlL21lZGlhdGVrIG9uCj4geW91
-ciB0YXJnZXQgYW5kIHJlYm9vdAo+IDEpIEJUX1JBTV9DT0RFX01UNzk2MV8xXzJfaGRyLmJpbgo+
-IDIpIFdJRklfTVQ3OTYxX3BhdGNoX21jdV8xXzJfaGRyLmJpbgo+IDMpIFdJRklfUkFNX0NPREVf
-TVQ3OTYxXzEuYmluCj4gCj4gwqDCoMKgwqDCoMKgwqDCoFNlYW4KCkhpIFNlYW4sCgpUaGFua3Mg
-Zm9yIHlvdXIgc3VnZ2VzdGlvbi4gSSBkb3dubG9hZGVkIHRoZSBmaXJtd2FyZXMgZnJvbSB0aGUg
-bGluayB5b3UKaW5kaWNhdGVkIGFuZCBkb3dubG9hZGVkIHRoZSB0aHJlZSBmaXJtd2FyZXMgZnJv
-bSBtYWluIGJyYW5jaC4gSSBjaGVja2VkCmFuZCB0aGUgc2hhMjU2c3VtcyBvZiB0aGUgbW9zdCBy
-ZWNlbnQgZmlybXdhcmVzIG1hdGNoIHdpdGggdGhlIG9uZQppbnN0YWxsZWQgYnkgbXkgZGlzdHJp
-YnV0aW9uLiBTbyBJIGFscmVhZHkgaGFkIGxhdGVzdCB2ZXJzaW9ucyBvbiBteQp0ZXN0cy4KClBo
-aWxpcHBlCgo+IAo+ID4gCj4gPiBUaGFua3MsCj4gPiBQaGlsaXBwZQo+ID4gCj4gPiA+IAo+ID4g
-PiAKPiA+ID4gUmVnYXJkcywKPiA+ID4gRGVyZW4KPiA+ID4gCj4gPiAKPiA+IAo+ID4gCgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
-ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Krzysztof,
+
+On Thu, 2022-06-02 at 08:55 +0200, Krzysztof Kozlowski wrote:
+> On 02/06/2022 07:21, Tinghan Shen wrote:
+> > Hi Krzysztof,
+> > 
+> > On Wed, 2022-06-01 at 13:50 +0200, Krzysztof Kozlowski wrote:
+> > > On 01/06/2022 13:21, Tinghan Shen wrote:
+> > > > The SCP co-processor is a dual-core RISC-V MCU on MT8195.
+> > > > 
+> > > > Add a new property to identify each core and helps to find drivers
+> > > > through device tree API to cooperate with each other, e.g. boot flow and
+> > > > watchdog timeout flow.
+> > > > 
+> > > > Add a new compatile for the driver of SCP 2nd core.
+> > > > 
+> > > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > > > ---
+> > > >  .../devicetree/bindings/remoteproc/mtk,scp.yaml      | 12 ++++++++++++
+> > > >  1 file changed, 12 insertions(+)
+> > > > 
+> > > > diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> > > > b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> > > > index eec3b9c4c713..b181786d9575 100644
+> > > > --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> > > > +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> > > > @@ -20,6 +20,7 @@ properties:
+> > > >        - mediatek,mt8186-scp
+> > > >        - mediatek,mt8192-scp
+> > > >        - mediatek,mt8195-scp
+> > > > +      - mediatek,mt8195-scp-dual
+> > > >  
+> > > >    reg:
+> > > >      description:
+> > > > @@ -57,6 +58,16 @@ properties:
+> > > >    memory-region:
+> > > >      maxItems: 1
+> > > >  
+> > > > +  mediatek,scp-core:
+> > > > +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> > > > +    description:
+> > > > +      The property value is a list with 2 items, a core id and a phandle
+> > > 
+> > > uint32, not phandle.
+> > > 
+> > > > +      to the sibling SCP node. 
+> > > 
+> > > Skip this. First part is obvious from the schema, second part should be
+> > > described via items.
+> > > 
+> > > The core id represents the id of the dts node contains
+> > > > +      this property. The valid values of core id are 0 and 1 for dual-core SCP.
+> > > > +      The phandle of sibling SCP node is used to find the register settings,
+> > > > +      trigger core dependent callback, and invoke rproc API.
+> > > 
+> > > Entire description did not help me to understand what's this. So far it
+> > > looks like it is not a hardware property but some programming help, so
+> > > it does not look like properly described in bindings.
+> > > 
+> > > > +    maxItems: 1
+> > > 
+> > > In description you said - two items.
+> > > 
+> > > You need allOf:if:then disallowing this property for other variants.
+> > > 
+> > > > +
+> > > >  required:
+> > > >    - compatible
+> > > >    - reg
+> > > > @@ -115,6 +126,7 @@ examples:
+> > > >          reg-names = "sram", "cfg", "l1tcm";
+> > > >          clocks = <&infracfg CLK_INFRA_SCPSYS>;
+> > > >          clock-names = "main";
+> > > > +        mediatek,scp-core = <0 &scp_dual>;
+> > > 
+> > > This looks like phandle, so wrong type.
+> > > >  
+> > > >          cros_ec {
+> > > >              mediatek,rpmsg-name = "cros-ec-rpmsg";
+> > 
+> > Thanks for your feedback.
+> > After looking for a comparable uses case, I find out a different approach.
+> > 
+> >   mediatek,scp-core:
+> >     $ref: "/schemas/types.yaml#/definitions/phandle-array"
+> >     description:
+> >       Enable the dual-core support in scp driver.
+> 
+> You describe desired functional behavior, not the hardware. What is the
+> property about? If you just want to indicate this is two-core processor,
+> then it could be:
+> 	mediatek,cores = <2>; /* number of cores */
+> 
+> 
+> However it seems you want to achieve here something different and as I
+> raised last time - it does not look like DT property.
+> 
+> Or maybe this is for first core and you want to indicate the sibling?
+> Something like that was mentioned in previous description.
+
+This property is mainly added for scp 1st core driver 
+and scp 2nd core driver to find each other via DT API.
+
+After reconsidering the use of core id in the scp driver, it 
+is not necessary in the control flow. I'll remove the core id 
+at next version.
+
+How about change the description as following,
+
+  This property enables the dual-core support in scp driver.
+  By providing the phandle of SCP 2nd core node, the 1st SCP node
+  can control the SCP 2nd core as the subdevice of remoteproc framework.
+
+
+Thanks,
+Tinghan
+
+> 
+> 
+> >     items:
+> >       - items:
+> >           - description: Assign a core id for current scp node.
+> >             enum: [0, 1]
+> >           - description:
+> >               Phandle of another SCP node. This helps to find
+> >               the scp driver of another core to trigger core
+> >               dependent callback, invoke rproc subdevice API, etc.
+> 
+> Items should be rather reversed, as [0,1] being the argument to phandle
+> for a provider (see examples with syscon)...
+> 
+> Best regards,
+> Krzysztof
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
