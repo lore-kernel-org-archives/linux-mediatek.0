@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1767AC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jun 2022 22:24:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22712C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 03:07:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9CzpZ22QIRnR7mujTp/vOIiebtHJVm5zLiGYlG0e66E=; b=zP3dmXUR9NXLDT
-	i2dZg515rHZbc2OrexV8zBuGgs3QpE+P8/AeDrlFvEkOjU/faWcolKs20reszg9BtyHDwhh4qkeze
-	Y7jzLusBQwfdVhShB6xtsmN8tqH+aKv6qjQ+U5X4KX/WwWTPEjp1LXOGD/BAI0NMozDIpnSvkuxx+
-	/Pes8Ie8clrNODN++FGWkCQLqmKYR/nTARyfeveN4/zxJBKfa6H513uruZl+zxycysGvJRVRirrRH
-	+E7JC/UIEk1eXTEvDc16RCscYGIIeDx8SuJwnMHYw/P5u4swoO+GvZVfdwrEVgqnnx7sTQ9fljX0z
-	aA0NZtMS/E8db6RWPQeQ==;
+	List-Owner; bh=Zn4EhYIzHeb0yem3EwWmCV1K1Qb+QYsYlkYpKNNVG4I=; b=pZQpSoEZ13BqpY
+	ka+a90jgLnaeQvO6JeNmThn5r6g2gzwMQFFyaavKmRkcFiFnl71wpRWNyMwjCZSy3jEjSJrMUqYFo
+	vyAfxvf7nv+BqQdGQgJhBbiO+OXJf0kFin0WrggTtQlrTUz32dpMmAYVFBc7KJ0lTWh+1b7Jtm3Et
+	5MsvCHuTntqXWs931VEWqVmDSoKoctvKSdSTkVivgC1w2H2q/UC70NO77bSEuAB01jrzufGJ5ozXu
+	OVy7nGNFelFOnd4QGxx2ynITimqeYHUSM79PW+uQgBHbfNCcVbfxZ51ewY26gGbJcNRsxrMJoqFM3
+	7rIs2KziYqOyU4acm+Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwWkp-000euK-EB; Wed, 01 Jun 2022 22:23:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nwbBK-001CmK-Ar; Thu, 02 Jun 2022 03:07:30 +0000
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwWkc-000erb-VC; Wed, 01 Jun 2022 22:23:42 +0000
-X-UUID: dc1fd33dad864a0f9ded43682d24add8-20220601
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:255d01f0-6019-4e06-a019-690720853bd9,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:28
-X-CID-META: VersionHash:2a19b09,CLOUDID:bb70f514-b515-4766-a72d-4514488fe823,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: dc1fd33dad864a0f9ded43682d24add8-20220601
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1571342725; Wed, 01 Jun 2022 15:23:26 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Jun 2022 15:23:25 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 2 Jun 2022 06:23:23 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Jun 2022 06:23:23 +0800
-From: <sean.wang@mediatek.com>
-To: <dev@pschenker.ch>
-CC: <deren.wu@mediatek.com>, <kvalo@kernel.org>,
-	<linux-wireless@vger.kernel.org>, <nbd@nbd.name>, <linux@leemhuis.info>,
-	<davem@davemloft.net>, <kuba@kernel.org>, <lorenzo.bianconi83@gmail.com>,
-	<matthias.bgg@gmail.com>, <pabeni@redhat.com>, <ryder.lee@mediatek.com>,
-	<sean.wang@mediatek.com>, <shayne.chen@mediatek.com>, <yn.chen@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>
-Subject: Re: [PATCH] Revert "mt76: mt7921: enable aspm by default"
-Date: Thu, 2 Jun 2022 06:23:23 +0800
-Message-ID: <1654122203-26090-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <e93aef5c9f8a97efe23cfb5892f78f919ce328e7.camel@pschenker.ch--annotate>
-References: <e93aef5c9f8a97efe23cfb5892f78f919ce328e7.camel@pschenker.ch--annotate>
+	id 1nwbB9-001CkZ-7M; Thu, 02 Jun 2022 03:07:20 +0000
+Received: by mail-il1-x12d.google.com with SMTP id u2so1671403iln.2;
+        Wed, 01 Jun 2022 20:07:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=UHKfOpo21i5MoDcQk+7qlf8n2C1uh2g5W/XKZOO7xm4=;
+        b=XqzZbjV/Hai6OuvPT51RZ5MBwaa4GjrqL4asM6ShURsMufo/2R1ExscNVQqvu5DBtw
+         9Y+i20d8C5dFfgnd1jzRReVbkwhp4RbWZS1l9JXgLofMR8G9V5AAS6gFWtLXtQtsPhGx
+         1OQBjTpmQ//8AyQzrwP3+JCGnVnNnIi/l06Baooqun/kLub8dkoTG8yNFBG6nUOqMDY+
+         trMWnOWVLdIC3jUyb1KMLhLwhyg+N5P3IAcHoHkf1i8mtgh40icijw2HLmWXO5Ugyg4A
+         OvQX6IgsCsoGI8YblKc99qRYEVpFsfpolaftzk9HqOjOt9PrxrpYJK59h1oGYo96Cve1
+         jYqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=UHKfOpo21i5MoDcQk+7qlf8n2C1uh2g5W/XKZOO7xm4=;
+        b=MXCFdK1pzjcgCrLfl5wuVGsM10JTyQ7Zo7GZKM+HDuvB0t1Qa6HhYB7tnPZfAcy/Kw
+         A3susfBmWhyNMlEWFuuj3bGatKGia+Tb9ZP3ybZuBWBIbAMpE25H6xUFdktzrcV9mTXS
+         pszPKAtv3ixmUgrQqjVrNLvhNf2GVXGjbYjqe6FaRXQQ/P5N+LSOQ3gQKaAxTqh7kvN+
+         j0KaWNJHLYStDTFpGbNtdf24TFqk9w1qZKRTs2V96GmrRhpwKdfakcwaN0UiU57qJ2+A
+         /1yiyop1G/Hz0E3vFia3G3XrZ8B1VqH5ejTLBtnb2aeJPMVPdTxjbpHoCJE8xSBlYkzZ
+         vXJg==
+X-Gm-Message-State: AOAM533fVsIIXvOUt+Gy6S+0wAiL7xu2j9eDpUV0gmd+JrOcROt1Vm+F
+	kJBJP+fOicC8NBODAWK5SOw=
+X-Google-Smtp-Source: ABdhPJx+fqog1Uk+ibtsTSfCYj8/q1T78oJkFBEJpVW0wb27VYQ2ApRYJ31SJjEzEP9rUa3YWg/UOw==
+X-Received: by 2002:a05:6e02:170f:b0:2d3:dc72:7172 with SMTP id u15-20020a056e02170f00b002d3dc727172mr2083947ill.218.1654139236758;
+        Wed, 01 Jun 2022 20:07:16 -0700 (PDT)
+Received: from ?IPV6:2600:1700:2442:6db0:edec:ab49:ad93:c595? ([2600:1700:2442:6db0:edec:ab49:ad93:c595])
+        by smtp.gmail.com with ESMTPSA id d35-20020a026063000000b0032b3a78175fsm902283jaf.35.2022.06.01.20.07.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 01 Jun 2022 20:07:16 -0700 (PDT)
+Message-ID: <e0055a5c-cca9-db63-80bd-a39ff1585389@gmail.com>
+Date: Wed, 1 Jun 2022 22:07:15 -0500
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] scripts: dtc: fix a false alarm for
+ node_name_chars_strict
+Content-Language: en-US
+To: "qun-wei.lin" <qun-wei.lin@mediatek.com>, Rob Herring <robh@kernel.org>
+Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, casper.li@mediatek.com,
+ chinwen.chang@mediatek.com, kuan-ying.lee@mediatek.com
+References: <20220531053358.19003-1-qun-wei.lin@mediatek.com>
+ <8d4b8cc3-8433-24f9-1fc5-12d71e640952@gmail.com>
+ <20220531214914.GA2388344-robh@kernel.org>
+ <7c6f0015-cf50-4c8b-060d-f6641d0aeb16@gmail.com>
+ <b054866a5c043d3b6d5553057b5f5bf7b06681f0.camel@mediatek.com>
+From: Frank Rowand <frowand.list@gmail.com>
+In-Reply-To: <b054866a5c043d3b6d5553057b5f5bf7b06681f0.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_152339_056244_E5CAC257 
-X-CRM114-Status: GOOD (  22.22  )
+X-CRM114-CacheID: sfid-20220601_200719_335055_FD3DF388 
+X-CRM114-Status: GOOD (  26.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,91 +97,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On 6/1/22 09:59, qun-wei.lin wrote:
+> On Tue, 2022-05-31 at 20:45 -0500, Frank Rowand wrote:
+>> On 5/31/22 17:49, Rob Herring wrote:
+>>> On Tue, May 31, 2022 at 04:43:18PM -0400, Frank Rowand wrote:
+>>>> On 5/31/22 01:33, Qun-Wei Lin wrote:
+>>>>> The function check_node_name_chars_strict issues a false alarm
+>>>>> when
+>>>>> compiling an overlay dts.
+>>>>>
+>>>>> /fragment@0/__overlay__: Character '_' not recommended in node
+>>>>> name
+>>>>>
+>>>>> This workaround will fix it by skip checking for node named
+>>>>> __overlay__.
+>>>>
+>>>> This is not a false alarm.
+>>>>
+>>>> Do not special case node name "__overlay__".  This node name
+>>>> should never
+>>>> occur in a modern overlay source file.
+>>>
+>>> A dtbo -> dts pass will give warnings, so handling these nodes is 
+>>> worthwhile. Though thinking a bit more about it, I think this one
+>>> is off 
+>>> by default, but W=2 turns it on.
+>>
+> 
+> When DTC detects an overlay target, it will generate a node name
+> "__overlay__" in function add_orphan_node [1]
+> 
+> Use the example on page 34 of the slide [2]. When the parser reads this
+> line in overlay source file:
+> 
+> &{/soc/base_fpga_region} {
+> 
+> It will build two nodes, one with no name and the other one is a
+> subnode __overlay__ [2].
+> 
+> So if we set W=2, the following warning will be issued:
+> 
+> Warning (node_name_chars_strict): /fragment@0/__overlay__: Character
+> '_' not recommended in node name
 
->On Tue, 2022-04-12 at 19:06 +0800, Deren Wu wrote:
->> On Tue, 2022-04-12 at 12:37 +0300, Kalle Valo wrote:
->> > Philippe Schenker <dev@pschenker.ch> writes:
->> >
->> > > This reverts commit bf3747ae2e25dda6a9e6c464a717c66118c588c8.
->> > >
->> > > This commit introduces a regression on some systems where the
->> > > kernel is crashing in different locations after a reboot was
->> > > issued.
->> > >
->> > > This issue was bisected on a Thinkpad P14s Gen2 (AMD) with latest
->> > > firmware.
->> > >
->> > > Link:
->> > > https://urldefense.com/v3/__https://lore.kernel.org/linux-wireless
->> > > /5077a953487275837e81bdf1808ded00b9676f9f.camel@pschenker.ch/__;!!
->> > > CTRNKA9wMg0ARbw!09tjyaQlMci3fVI3yiNiDJKUW_qwNA_CbVhoAraeIX96B99Q14
->> > > J4iDycWA9cq36Y$
->> > >
->> > > Signed-off-by: Philippe Schenker <dev@pschenker.ch>
->> >
->> > Can I take this to wireless tree? Felix, ack?
->> >
->> > I'll also add:
->> >
->> > Fixes: bf3747ae2e25 ("mt76: mt7921: enable aspm by default")
->> >
->>
->> Hi Kalle,
->>
->> We have a patch for a similar problem. Can you wait for the
->> verification by Philippe?
->> Commit 602cc0c9618a81 ("mt76: mt7921e: fix possible probe failure
->> after
->> reboot")
->> Link:
->> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kerne
->> l/git/torvalds/linux.git/commit/drivers/net/wireless/mediatek/mt76?id=
->> 602cc0c9618a819ab00ea3c9400742a0ca318380__;!!CTRNKA9wMg0ARbw!3N9I3iKwS
->> 3XCNAb4LuhbFqt_el1yiOaJzSdUjaJsTaxRCHiWhXnEgbk3bOqYTy6T$
->>
->> I can reproduce the problem in my v5.16-rc5 desktop. And the issue can
->> be fixed when the patch applied.
->>
->>
->> Hi Philippe,
->>
->> Can you please help to check the patch in your platform?
->
->Hi Kalle and Deren,
->
->I just noticed on my system and mainline v5.18 reboots do now work however Bluetooth is no longer accessible after a reboot.
->
->Reverting commit bf3747ae2e25dda6a9e6c464a717c66118c588c8 on top of
->v5.18 solves this problem for me.
->
->@Deren are you aware of this bug?
->@Kalle Is there a bugtracker somewhere I can submit this?
+Thanks for digging into the internals of dtc to determine how a properly
+formatted overlay source file is processed in a way that the check for
+a leading "_" in a node name is after dtc creating the __overlay__ node
+name.
 
-Hi Philippe,
+I have looked at dtc several times and have never educated myself enough
+to be anything other than dangerous.  It seems that you might be more
+educated about how it works.  If so, is there a reasonable way to tell
+check_node_name_chars_strict() when the node name is one of the special
+ones that dtc creates for overlays instead of a node name that appears
+in a source file?
 
-Could you try the latest firmware to see if it can help with the issue you reported here ?
+-Frank
 
-Please check out https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/mediatek
-and replace the following three files in /lib/firmware/mediatek on your target and reboot
-1) BT_RAM_CODE_MT7961_1_2_hdr.bin
-2) WIFI_MT7961_patch_mcu_1_2_hdr.bin
-3) WIFI_RAM_CODE_MT7961_1.bin
-
-	Sean
-
->
->Thanks,
->Philippe
->
+> 
+> I think this is a false alarm because this __overlay__ is automatically
+> generated by DTC.
+> 
+>> Yes, at least as of 5.18-rc1 the warning is only if
+>> '-W node_name_chars_strict', so a dtbo -> dts pass will not give the
+>> warning for node __overlay__ by default.
+>>
+>> -Frank
+>>
+>>>
+>>> Rob
 >>
 >>
->> Regards,
->> Deren
->>
->
->
->
+> 
+> We want to enable all warnings in DTC to ensure that all of our DTS are
+> compliant with the conventions.
+> 
+> [1] 
+> https://git.kernel.org/pub/scm/utils/dtc/dtc.git/tree/dtc-parser.y#n169
+> [2] https://elinux.org/images/0/03/Elce_2018_dt_bof.pdf
+> [3] 
+> https://git.kernel.org/pub/scm/utils/dtc/dtc.git/tree/livetree.c#n228
+> 
+> 
+> 
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
