@@ -4,80 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B209FC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 14:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 216E5C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 14:47:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AXQQabnUzi2nqUuzG0siGrivaHWjQI5utqZ7hUmJ/88=; b=uBU+wVtbEEc1Na
-	8LEJEJx5K/O88LlGciUO9zOc2lNcnobCL1KpCFr1LwBkk1KdbbyByxAljveSB4TVAZrJaZ011u+be
-	qIq3AMgngNu7FXaG8iXqTBhBy63WMYrU2y6zOyqx8CtT4ZQjk0deEEwhyoUtXznxZzxW0CIKuOHj2
-	SVZR2btNg4Z/8SUSQAclJaOhLh9x44Yqf/Y4k9YUZXYjKqzVF/d3ACpCvVL8uy2svWtXjzRa6y+zZ
-	Td6ihnroiUxrHH2nUAoWNO3ZgC6ZovXcbPM2ZcQkQ3me7JMaOazhCBBcYl2GebltRX6XCSwF8/T2Y
-	W1eUrBctbKMRVWGdzzhA==;
+	List-Owner; bh=5+nVRzE5F6H7ljQN+KdyMO4WxMW2YocCFtKBQnB2nvM=; b=0IezNN2qCe/6RJ
+	oNnUDpP0BuJ++135XxO4knCH2qTzprSO1I8mMAlVm89pas/IA+681mgYBPZChhdJYzyZNs0Z8Xyt8
+	ygBj6FnYg6isNUzCfXD0JwDQtW4lSLvpJ0sn9BLHuL37uN8lMTI1SLdl58B3SBGT8MX33CFAJ4Qdp
+	D7kGqaqmc4/vy1dmc59pVCwAaY7pxP6azOPk66jA52gorUS/AMQmDvMptvtM6Qty4sY3CA6hdIB3u
+	0HrPVJLPTb9G/ceQK30Mmbe1WHNnC+HQy8YNMINckLhk61je6GWwDThN3DZs2c/U7FUgAZoxNmxvW
+	CpntP0YOf1QBNPWu492Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwlnf-003Ywh-5K; Thu, 02 Jun 2022 14:27:47 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1nwm6G-003bwl-3Y; Thu, 02 Jun 2022 14:47:00 +0000
+Received: from mail-oi1-f170.google.com ([209.85.167.170])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwlnc-003YvQ-M8; Thu, 02 Jun 2022 14:27:46 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id u8so2352849wrm.13;
-        Thu, 02 Jun 2022 07:27:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=PU8lc3rqUKJ9fwYFMxTWZiWtxbKl/aHmbF7KgXVxdw8=;
-        b=nTCCpeSYwfMZY+4KPdvMlazL72pUA9cf31ff5VpnywSiVU9k5w5t458nw6elFguljg
-         OyVTJ6tj4p5kxFAUAVicDk6q903TOeCzEEX7UqisGtUPG8ui4J274meFJKWGwWzRorv5
-         h5Y/xMsiRDKaMFfBWbUE9FlqYBqmZC0lnC6o170UwiLmvD1F4cIwmf7q6WKP+ypzmGfO
-         fpHzIbIvQPob9eBzeY3t0iu0sV9vuWV98dAV+9s35Y3YBfLr2FiMHs3dQHaWnTqKjxYZ
-         HtUvhV7aVJm+ZxGEJfifkYjdHnZJFL+muk90bFTjaLFdQ1KGsobxK1HtczYZDzorbLox
-         rnCw==
+	id 1nwm64-003bu0-Oz; Thu, 02 Jun 2022 14:46:49 +0000
+Received: by mail-oi1-f170.google.com with SMTP id l84so6764318oif.10;
+        Thu, 02 Jun 2022 07:46:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=PU8lc3rqUKJ9fwYFMxTWZiWtxbKl/aHmbF7KgXVxdw8=;
-        b=Q/Evj9Xafz/vtmMwbbu7P82j7bXvxYCLXhyho6iVTc8W9lYN4/tojFhkigu3MO2Ahl
-         EKJvXgKoXjSOHfR/US5WCSNsk7Oaaiimrhb9+1fpbaxBc6f5hJSKpfQJm+kZvwzat2pA
-         7fqjvQy+9zUxKIEmzG5wZ5BHVUkKEXh55iGz1RHYUjp55COuRk0kSH/JJEihyd1ustjj
-         9ri1/Mt5eZOvYeuV6B2wZH+2nyUMhgULUbEGFkDLJ5o0QuvzahTRgWnToZkhlJz706fE
-         5p/Fqdjhr6bhdWIgKl3dqeng3Ik/VMzvQ5xV2a1juSREVFsJ64S+nPL+hlWvk4AhG8jc
-         CJtA==
-X-Gm-Message-State: AOAM533jMVNSqfFo7gmRq3LhFEsXTASeag32Zz/tpXoo+ESu+WGCXMd4
-	E9uu1ucX2ZdFrQVKSfSL40M=
-X-Google-Smtp-Source: ABdhPJwjC4sOY/AU32uEMgLGNEAI19FhBPDUP9arLJ7oiFGKBMRXEJZ7V09GeOEGnuHwTIckNIWbKQ==
-X-Received: by 2002:a5d:5885:0:b0:20f:f390:c47e with SMTP id n5-20020a5d5885000000b0020ff390c47emr3997562wrf.133.1654180061203;
-        Thu, 02 Jun 2022 07:27:41 -0700 (PDT)
-Received: from [10.40.36.42] ([193.52.24.5])
-        by smtp.gmail.com with ESMTPSA id ay1-20020a5d6f01000000b0020fee88d0f2sm5954781wrb.0.2022.06.02.07.27.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Jun 2022 07:27:38 -0700 (PDT)
-Message-ID: <c5022150-a2b4-07b9-d8ec-789147134d85@gmail.com>
-Date: Thu, 2 Jun 2022 16:27:37 +0200
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=9OqbyLMTa5EEL6RxtyCIR/NHZfXvXp6qSuYlVj8gFdA=;
+        b=yZdNotf7rhcFHlKNPq9BlWGn8qYCmfeZsBoY3kolFyllCECNnpaOU9zunlB+6TSrKO
+         2QugjYaN/i4f6yTKm/PM/rwRD8J71eRq3wQ43p44NFwSaROMjnHxhqjRxdHFyau0xxF3
+         p28qcoikS5n/DRRtFlG9KB/8t4V7ABEDWGW27h/zAVz26ZVDME/NwB+mZjT/8/0pTFVb
+         R3K2ISyLNbv4OraL40Wd3LkaKGtMfZBk2hvpuC7fjqwmctIIUjlPsGEv8zT2K5xYTU42
+         Hza7dlPdxye23GJoQ1zasQmwsHgM+ZSsoVm+v4IBYRjcuX8S/tstFSB6M5nH+P4puYKY
+         WQjw==
+X-Gm-Message-State: AOAM531gfqFzApDIfU5MIrKupY57EBpLA+jNVtQIpTDbGKMW+UN1eOnH
+	kTRMjV6T9nL1XQBc/JMUow==
+X-Google-Smtp-Source: ABdhPJy6omKqs5U1K2FahbzcdCjnEXHb8La5WghrtetpNPL23YoGja2J0Zasvgq2RMqS0e/WWXxC6g==
+X-Received: by 2002:a05:6808:20aa:b0:32b:a632:fb5e with SMTP id s42-20020a05680820aa00b0032ba632fb5emr2855961oiw.264.1654181206717;
+        Thu, 02 Jun 2022 07:46:46 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id y12-20020a544d8c000000b00325cda1ffbasm2338898oix.57.2022.06.02.07.46.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Jun 2022 07:46:46 -0700 (PDT)
+Received: (nullmailer pid 2291389 invoked by uid 1000);
+	Thu, 02 Jun 2022 14:46:45 -0000
+Date: Thu, 2 Jun 2022 09:46:45 -0500
+From: Rob Herring <robh@kernel.org>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: devicetree@vger.kernel.org, Eric Biggers <ebiggers@google.com>, Kiwoong Kim <kwmad.kim@samsung.com>, linux-mmc@vger.kernel.org, Chaotian Jing <chaotian.jing@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Rob Herring <robh+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Yue Hu <huyue2@yulong.com>, Stephen Boyd <swboyd@chromium.org>, angelogioacchino.delregno@collabora.com, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Adrian Hunter <adrian.hunter@intel.com>, Satya Tangirala <satyat@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Tian Tao <tiantao6@hisilicon.com>, Andrew Jeffery <andrew@aj.id.au>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [RESEND v12 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
+ pinctrls properties
+Message-ID: <20220602144645.GA2291328-robh@kernel.org>
+References: <20220525015140.384-1-axe.yang@mediatek.com>
+ <20220525015140.384-2-axe.yang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v2 0/3] Support MediaTek devapc for MT8186
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- runyang.chen@mediatek.com, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220504115501.3490-1-rex-bc.chen@mediatek.com>
- <CAGXv+5E9s3c0j501fHZxhwsHSeK0vG+GEqLMhtZMvtvC=+etjQ@mail.gmail.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <CAGXv+5E9s3c0j501fHZxhwsHSeK0vG+GEqLMhtZMvtvC=+etjQ@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20220525015140.384-2-axe.yang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_072744_792028_D12D17B6 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20220602_074648_848004_AB386A48 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,75 +74,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 02/06/2022 09:48, Chen-Yu Tsai wrote:
-> On Wed, May 4, 2022 at 7:55 PM Rex-BC Chen <rex-bc.chen@mediatek.com> wrote:
->>
->> This series is for supporting devapc implementation in MT8186.
->>
->> V2:
->> - Add a patch to separate register offsets from mtk_devapc_data.
->>
->> V1:
->> - Add dt-binding and add devapc data for MT8186.
->>
->> Rex-BC Chen (3):
->>    dt-bindings: soc: mediatek: devapc: Add bindings for MT8186
->>    soc: mediatek: devapc: Separate register offsets from mtk_devapc_data
->>    soc: mediatek: devapc: Add support for MT8186
+On Wed, 25 May 2022 09:51:38 +0800, Axe Yang wrote:
+> Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
+> This feature allow SDIO devices alarm asynchronous interrupt to host
+> even when host stop providing clock to SDIO card. An extra wakeup
+> interrupt and pinctrl states for SDIO DAT1 pin state switching are
+> required in this scenario.
 > 
-> Applied this on next-20220602 (with a few fixes for other section mismatch
-> errors), booted and got:
-> 
-> [    1.948483] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948488] mtk-devapc 10207000.devapc: Bus ID:0x100, Dom ID:0x0,
-> Vio Addr:0x13000000
-> [    1.948520] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948523] mtk-devapc 10207000.devapc: Bus ID:0x200, Dom ID:0x0,
-> Vio Addr:0x140001a0
-> [    1.948537] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948540] mtk-devapc 10207000.devapc: Bus ID:0x200, Dom ID:0x0,
-> Vio Addr:0x140001a0
-> [    1.948555] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948558] mtk-devapc 10207000.devapc: Bus ID:0x200, Dom ID:0x0,
-> Vio Addr:0x14000100
-> [    1.948573] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948576] mtk-devapc 10207000.devapc: Bus ID:0x200, Dom ID:0x0,
-> Vio Addr:0x14000100
-> [    1.948590] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948593] mtk-devapc 10207000.devapc: Bus ID:0x200, Dom ID:0x0,
-> Vio Addr:0x14000100
-> [    1.948607] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948610] mtk-devapc 10207000.devapc: Bus ID:0x200, Dom ID:0x0,
-> Vio Addr:0x14000100
-> [    1.948624] mtk-devapc 10207000.devapc: Read Violation
-> [    1.948627] mtk-devapc 10207000.devapc: Bus ID:0x200, Dom ID:0x0,
-> Vio Addr:0x14000100
-> 
-> during the boot process. So I think this works well. Manually reading a
-> known secure address also triggers it:
-> 
-> root@hayato:~# busybox devmem 0x1000e000
-> 0x00000000
-> [  135.069121] mtk-devapc 10207000.devapc: Read Violation
-> [  135.069132] mtk-devapc 10207000.devapc: Bus ID:0x482, Dom ID:0x0,
-> Vio Addr:0x1000e000
-> 
-> So,
-> 
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> ---
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 50 ++++++++++++++++++-
+>  1 file changed, 49 insertions(+), 1 deletion(-)
 > 
 
-Whole series applied to v5.19-next/soc
-
-> BTW, looks like MT8186 support in mainline is shaping up real good.
-> SCP firmware is still missing, so video codec stuff won't work.
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
