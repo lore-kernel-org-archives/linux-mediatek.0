@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B3CC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 10:00:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F14FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 10:06:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9JT3VPrbNHnhZQb3D0eqJHpHtWgXIlLWjWwA7szTJVM=; b=qLV9r/DdaAdbj0
-	Ha2lsUlj/PN7NcqG+3+Zngg0CuO5uKn7pa+/jvs5ouX3TBBNQBD1kvWXtZJSIf6TO7IUY10FqZ5HF
-	2UXTEmk7WqqIXR2U2xI5HIHQ5IbYx75pAZys4i8R55K/kKHqx+khlT3ar26eZl70MWr0agWmEyuK5
-	VCz9m441WYDR2zs1ZkuDsciT6vlRlRMQceoJxzopUhQOdIZedwwJfleL5KSWy9XDOZ1EpsgRb++pE
-	in0Ajct95qOuJW7fh3ZvLA63aR87mHDCsgmem2uSSj5lGYNYsC8AnOm4/sdJiYdwC98EhhT7TjQXw
-	52SfT94s5oO3/nDNs3mQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=S4Uf/08ijOsGiT19F553fGrsISHMFZ9aeksCIUtmr0g=; b=IEx9UQOy61g24l
+	dbqYxOv8l3WmgTLNnpVXHZzj8JezY3k9Ick+TwuBdArzPNTzYECV3yzfttmQ21A62/V/JI16DswnQ
+	litNWnriPsi0gb9i2W+RVzB4nIS+MzMraF0xbnyfkt/xs/trApx5lLmfXekMNND1abMEmLQ83au6o
+	DqTpOdMQWoi+hC8NOIpEV+Y3zN6QDJxupI2rv3nx5+H1biny5SZxH02+9ZrALkqzmaGR+zeZ/WB7S
+	ieM3ScufbiXoKOAi4S03T9sijHfhzeAPgt1olvIkH/vNPkKySmeMyqjnEIO4eN92so65H4g3oYKlq
+	ycU/kcgfrvgpaMxONsAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwhcu-002cH0-3I; Thu, 02 Jun 2022 10:00:24 +0000
-Received: from smtp-42af.mail.infomaniak.ch ([2001:1600:3:17::42af])
+	id 1nwhj2-002fDB-CE; Thu, 02 Jun 2022 10:06:44 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwhcq-002cFZ-DF
-	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 10:00:22 +0000
-Received: from smtp-2-0000.mail.infomaniak.ch (unknown [10.5.36.107])
-	by smtp-2-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4LDM2S0hckzMqVZ1;
-	Thu,  2 Jun 2022 12:00:16 +0200 (CEST)
-Received: from [10.0.0.141] (unknown [31.10.206.125])
-	by smtp-2-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4LDM2R1hVrzljk0H;
-	Thu,  2 Jun 2022 12:00:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=pschenker.ch;
-	s=20220412; t=1654164016;
-	bh=6clftNNkW5b/aLVfOs7w8oDA4IjZgT0jJnfYalkyXtc=;
-	h=Subject:From:Reply-To:To:Cc:Date:In-Reply-To:References:From;
-	b=MpfhxnUiBgc+nT3XyFNggIH4DEYXpuPFvnua6h7NJWilzYTT4MomXlytP5wDq6uDj
-	 lP3sLe/hjP4cDifzRVZiBGxdxaZ7YA99O+wL3SUKgDsOPJqSKmqd1p6tvJs6nj47Az
-	 BGEAbuMmyRoRhgzAiPemv/lhoB+iIXufekVl5a7M=
-Message-ID: <75b5f888b2e23f52aabce54ff38ddc70d1ad6a34.camel@pschenker.ch>
-Subject: Re: [PATCH] Revert "mt76: mt7921: enable aspm by default"
-From: Philippe Schenker <dev@pschenker.ch>
-To: Deren Wu <deren.wu@mediatek.com>, Kalle Valo <kvalo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
- linux@leemhuis.info, "David S. Miller" <davem@davemloft.net>, Jakub
- Kicinski <kuba@kernel.org>, Lorenzo Bianconi
- <lorenzo.bianconi83@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Paolo Abeni <pabeni@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, Sean
- Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, YN
- Chen <YN.Chen@mediatek.com>,  linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,  linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org,  regressions@lists.linux.dev
-Date: Thu, 02 Jun 2022 12:00:14 +0200
-In-Reply-To: <da79fa2a94c435a308ea763efc557fc352d0245c.camel@mediatek.com>
-References: <20220412090415.17541-1-dev@pschenker.ch>
-	 <87y20aod5d.fsf@kernel.org>
-	 <668f1310cc78b17c24ce7be10f5f907d5578e280.camel@mediatek.com>
-	 <e93aef5c9f8a97efe23cfb5892f78f919ce328e7.camel@pschenker.ch>
-	 <87mtewoj4e.fsf@kernel.org>
-	 <da79fa2a94c435a308ea763efc557fc352d0245c.camel@mediatek.com>
-User-Agent: Evolution 3.44.1 
+	id 1nwhip-002f0V-9q; Thu, 02 Jun 2022 10:06:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1654164391; x=1685700391;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Tpy1h6rxcXVO9xLL8s23Z2+kWlBjSZ7Dkplh6lZNrSI=;
+  b=hhppczxs6cymdCmc1+HK690sr2xvAgCm1u6JPbqogtOC82YkagTzluIJ
+   vM69juBhpqtSlOFJfYPTUV+fcXJGrEFjmeT7SCrXUzGK5+0kihbmbbC1q
+   VZounqenTz9p/xKnTbcb6j/nAowz33z5gQ+d/XBczT/+z8FoFDLRbVmzt
+   nFp4R6lglDxPmepI3ZTJ7rpjmqunbv4Cd1nluTprGQ+Ag2x+aNkfXgsZQ
+   8n681m6/YNB9AC2FlwnoR47A3bwkBGtWu+P2sgjxpq4NV6tladw/PTtBl
+   z5Vrac7UxBlRwIzXRhXvqXzYjfVJZpDfmZjvsQl7gdEJ4em3UpnuXLC90
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10365"; a="255768777"
+X-IronPort-AV: E=Sophos;i="5.91,270,1647327600"; 
+   d="scan'208";a="255768777"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jun 2022 03:06:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,270,1647327600"; 
+   d="scan'208";a="582020563"
+Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
+  by fmsmga007.fm.intel.com with ESMTP; 02 Jun 2022 03:06:21 -0700
+Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1nwhie-0004xf-QH;
+	Thu, 02 Jun 2022 10:06:20 +0000
+Date: Thu, 2 Jun 2022 18:05:32 +0800
+From: kernel test robot <lkp@intel.com>
+To: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
+	daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
+	lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
+	heikki.krogerus@linux.intel.com, deller@gmx.de
+Cc: kbuild-all@lists.01.org, cy_huang@richtek.com, alice_chen@richtek.com,
+	chiaen_wu@richtek.com, peterwu.pub@gmail.com,
+	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-iio@vger.kernel.org
+Subject: Re: [RESEND 13/14] leds: flashlight: mt6370: Add Mediatek MT6370
+ flashlight support
+Message-ID: <202206021739.LZjU7zjg-lkp@intel.com>
+References: <20220531111900.19422-14-peterwu.pub@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220531111900.19422-14-peterwu.pub@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_030020_923430_1DD7A5D4 
-X-CRM114-Status: GOOD (  32.63  )
+X-CRM114-CacheID: sfid-20220602_030631_474206_B9F4268A 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,73 +88,133 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: dev@pschenker.ch
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA2LTAyIGF0IDAwOjU1ICswODAwLCBEZXJlbiBXdSB3cm90ZToKPiBPbiBX
-ZWQsIDIwMjItMDYtMDEgYXQgMTE6NTggKzAzMDAsIEthbGxlIFZhbG8gd3JvdGU6Cj4gPiBQaGls
-aXBwZSBTY2hlbmtlciA8ZGV2QHBzY2hlbmtlci5jaD4gd3JpdGVzOgo+ID4gCj4gPiA+IE9uIFR1
-ZSwgMjAyMi0wNC0xMiBhdCAxOTowNiArMDgwMCwgRGVyZW4gV3Ugd3JvdGU6Cj4gPiA+ID4gT24g
-VHVlLCAyMDIyLTA0LTEyIGF0IDEyOjM3ICswMzAwLCBLYWxsZSBWYWxvIHdyb3RlOgo+ID4gPiA+
-ID4gUGhpbGlwcGUgU2NoZW5rZXIgPGRldkBwc2NoZW5rZXIuY2g+IHdyaXRlczoKPiA+ID4gPiA+
-IAo+ID4gPiA+ID4gPiBUaGlzIHJldmVydHMgY29tbWl0Cj4gPiA+ID4gPiA+IGJmMzc0N2FlMmUy
-NWRkYTZhOWU2YzQ2NGE3MTdjNjYxMThjNTg4YzguCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBU
-aGlzIGNvbW1pdCBpbnRyb2R1Y2VzIGEgcmVncmVzc2lvbiBvbiBzb21lIHN5c3RlbXMgd2hlcmUK
-PiA+ID4gPiA+ID4gdGhlCj4gPiA+ID4gPiA+IGtlcm5lbCBpcwo+ID4gPiA+ID4gPiBjcmFzaGlu
-ZyBpbiBkaWZmZXJlbnQgbG9jYXRpb25zIGFmdGVyIGEgcmVib290IHdhcyBpc3N1ZWQuCj4gPiA+
-ID4gPiA+IAo+ID4gPiA+ID4gPiBUaGlzIGlzc3VlIHdhcyBiaXNlY3RlZCBvbiBhIFRoaW5rcGFk
-IFAxNHMgR2VuMiAoQU1EKSB3aXRoCj4gPiA+ID4gPiA+IGxhdGVzdAo+ID4gPiA+ID4gPiBmaXJt
-d2FyZS4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IExpbms6IAo+ID4gPiA+ID4gPiAKPiBodHRw
-czovL3VybGRlZmVuc2UuY29tL3YzL19faHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtd2ly
-ZWxlc3MvNTA3N2E5NTM0ODcyNzU4MzdlODFiZGYxODA4ZGVkMDBiOTY3NmY5Zi5jYW1lbEBwc2No
-ZW5rZXIuY2gvX187ISFDVFJOS0E5d01nMEFSYnchMDl0anlhUWxNY2kzZlZJM3lpTmlESktVV19x
-d05BX0NiVmhvQXJhZUlYOTZCOTlRMTRKNGlEeWNXQTljcTM2WSQKPiA+ID4gPiA+ID4gwqAKPiA+
-ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcGUgU2NoZW5rZXIgPGRldkBwc2NoZW5rZXIu
-Y2g+Cj4gPiA+ID4gPiAKPiA+ID4gPiA+IENhbiBJIHRha2UgdGhpcyB0byB3aXJlbGVzcyB0cmVl
-PyBGZWxpeCwgYWNrPwo+ID4gPiA+ID4gCj4gPiA+ID4gPiBJJ2xsIGFsc28gYWRkOgo+ID4gPiA+
-ID4gCj4gPiA+ID4gPiBGaXhlczogYmYzNzQ3YWUyZTI1ICgibXQ3NjogbXQ3OTIxOiBlbmFibGUg
-YXNwbSBieSBkZWZhdWx0IikKPiA+ID4gPiA+IAo+ID4gPiA+IAo+ID4gPiA+IEhpIEthbGxlLAo+
-ID4gPiA+IAo+ID4gPiA+IFdlIGhhdmUgYSBwYXRjaCBmb3IgYSBzaW1pbGFyIHByb2JsZW0uIENh
-biB5b3Ugd2FpdCBmb3IgdGhlCj4gPiA+ID4gdmVyaWZpY2F0aW9uIGJ5IFBoaWxpcHBlPwo+ID4g
-PiA+IENvbW1pdCA2MDJjYzBjOTYxOGE4MSAoIm10NzY6IG10NzkyMWU6IGZpeCBwb3NzaWJsZSBw
-cm9iZQo+ID4gPiA+IGZhaWx1cmUKPiA+ID4gPiBhZnRlcgo+ID4gPiA+IHJlYm9vdCIpCj4gPiA+
-ID4gTGluazogCj4gPiA+ID4gCj4gaHR0cHM6Ly91cmxkZWZlbnNlLmNvbS92My9fX2h0dHBzOi8v
-Z2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4Lmdp
-dC9jb21taXQvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Nj9pZD02MDJjYzBjOTYx
-OGE4MTlhYjAwZWEzYzk0MDA3NDJhMGNhMzE4MzgwX187ISFDVFJOS0E5d01nMEFSYnchekNZeURj
-dWZKLU9McVFWNmxlQ2VnQTVTa05PT1ZqQUlvLWp6VEhUazZIVVdUOUdqdC1idlN6OGxyODFadjk1
-dSQKPiA+ID4gPiDCoAo+ID4gPiA+IAo+ID4gPiA+IEkgY2FuIHJlcHJvZHVjZSB0aGUgcHJvYmxl
-bSBpbiBteSB2NS4xNi1yYzUgZGVza3RvcC4gQW5kIHRoZQo+ID4gPiA+IGlzc3VlIGNhbgo+ID4g
-PiA+IGJlIGZpeGVkIHdoZW4gdGhlIHBhdGNoIGFwcGxpZWQuCj4gPiA+ID4gCj4gPiA+ID4gCj4g
-PiA+ID4gSGkgUGhpbGlwcGUsCj4gPiA+ID4gCj4gPiA+ID4gQ2FuIHlvdSBwbGVhc2UgaGVscCB0
-byBjaGVjayB0aGUgcGF0Y2ggaW4geW91ciBwbGF0Zm9ybT8KPiA+ID4gCj4gPiA+IEhpIEthbGxl
-IGFuZCBEZXJlbiwKPiA+ID4gCj4gPiA+IEkganVzdCBub3RpY2VkIG9uIG15IHN5c3RlbSBhbmQg
-bWFpbmxpbmUgdjUuMTggcmVib290cyBkbyBub3cgd29yawo+ID4gPiBob3dldmVyIEJsdWV0b290
-aCBpcyBubyBsb25nZXIgYWNjZXNzaWJsZSBhZnRlciBhIHJlYm9vdC4KPiA+ID4gCj4gPiA+IFJl
-dmVydGluZyBjb21taXQgYmYzNzQ3YWUyZTI1ZGRhNmE5ZTZjNDY0YTcxN2M2NjExOGM1ODhjOCBv
-biB0b3AKPiA+ID4gb2YKPiA+ID4gdjUuMTggc29sdmVzIHRoaXMgcHJvYmxlbSBmb3IgbWUuCj4g
-PiA+IAo+ID4gPiBARGVyZW4gYXJlIHlvdSBhd2FyZSBvZiB0aGlzIGJ1Zz8KPiA+ID4gQEthbGxl
-IElzIHRoZXJlIGEgYnVndHJhY2tlciBzb21ld2hlcmUgSSBjYW4gc3VibWl0IHRoaXM/Cj4gPiAK
-PiA+IEZvciByZWdyZXNzaW9ucyB0aGUgYmVzdCBpcyB0byBzdWJtaXQgaXQgdG8gdGhlIHJlZ3Jl
-c3Npb25zIGxpc3QsCj4gPiBDQ2VkCj4gPiBpdCBub3cuCj4gPiAKPiBIaSBQaGlsaXBwZSwKPiAK
-PiBUcmllZCB5b3VyIHRlc3Qgd2l0aCB2NS4xOC4wIG9uIG15IGRlc2t0b3AgYW5kIGJvdGggd2lm
-aS9idCBhcmUgc3RpbGwKPiBhdmFpYmxlIGFmdGVyIHJlYm9vdC4gVGhlIG9ubHkgcHJvYmxlbSBp
-cyBJIG5lZWQgdG8gaW5zZXJ0IGJ0dXNiCj4gbW9kdWxlCj4gYnkgY29tbWFuZCAibW9kcHJvYmUg
-YnR1c2IiIHRvIG1ha2UgQlQgd29ya2FibGUuCj4gCj4gSSB3aWxsIGNoZWNrIHRoZSBpc3N1ZSBv
-biBkaWZmZXJlbnQgcGxhdGZvcm1zLiBJZiB0aGVyZSBhcmUgYW55Cj4gZmluZGluZywgSSB3aWxs
-IGxldCB5b3Uga25vdy4KClRoYW5rcyBmb3IgeW91ciB0ZXN0cywgSSBkaWQgdGVzdCBhZ2FpbiBv
-biBteSBwbGF0Zm9ybS4gVGhpcyB0aW1lIHdpdGggYQpoYW5kLWJ1aWx0IHY1LjE4IHN0cmFpZ2h0
-IGZyb20gdG9ydmFsZHMvbGludXguIEFuZCBJIGNhbiBjb25maXJtIG15CmZpbmRpbmdzIEkgZXZl
-biBsb2FkZWQgYnR1c2IgKHJlbW92ZWQgYW5kIHJlbG9hZGVkKSBub3RoaW5nIGhlbHBlZC4gSQph
-bHdheXMgZ2V0IHRoZSBtZXNzYWdlCgpObyBkZWZhdWx0IGNvbnRyb2xsZXIgYXZhaWxhYmxlCgpJ
-biB0aGlzIGNhc2UgSSBndWVzcyBpdCBjb3VsZCBiZSByYXRoZXIgYSBCSU9TIGlzc3VlLiBJbiB0
-aGlzIHRlc3RpbmcKcm91bmQgYWxzbyBzb21lIFVTQiBwb3J0cyBkaWQgbm90IHdvcmsuCgpJZiBp
-dCBoZWxwcyBhbnkgbXkgc3lzdGVtIGlzIGEgTGVub3ZvIFAxNHMgR2VuMi4gSSBiZWxpZXZlIHRo
-ZW4gdGhlCmRyaXZlciBpcyBnb29kLgoKUmVnYXJkcywKUGhpbGlwcGUKCj4gCj4gUmVnYXJkcywK
-PiBEZXJlbgo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtbWVkaWF0ZWsK
+Hi ChiaEn,
+
+Thank you for the patch! Perhaps something to improve:
+
+[auto build test WARNING on pavel-leds/for-next]
+[also build test WARNING on lee-mfd/for-mfd-next lee-backlight/for-backlight-next v5.18 next-20220602]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/ChiaEn-Wu/Add-Mediatek-MT6370-PMIC-support/20220531-211432
+base:   git://git.kernel.org/pub/scm/linux/kernel/git/pavel/linux-leds.git for-next
+config: nios2-allyesconfig (https://download.01.org/0day-ci/archive/20220602/202206021739.LZjU7zjg-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 11.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/805a8af17c769562ec4b85e9b7d2669d004fe3a6
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review ChiaEn-Wu/Add-Mediatek-MT6370-PMIC-support/20220531-211432
+        git checkout 805a8af17c769562ec4b85e9b7d2669d004fe3a6
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=nios2 SHELL=/bin/bash drivers/gpu/drm/v3d/ drivers/leds/ sound/core/
+
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+   In file included from include/linux/device.h:15,
+                    from include/linux/leds.h:12,
+                    from include/linux/led-class-flash.h:11,
+                    from drivers/leds/flash/leds-mt6370-flash.c:8:
+   drivers/leds/flash/leds-mt6370-flash.c: In function 'mt6370_led_probe':
+>> drivers/leds/flash/leds-mt6370-flash.c:591:17: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'size_t' {aka 'unsigned int'} [-Wformat=]
+     591 |                 "No child node or node count over max led number %lu\n", count);
+         |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                              ^~~
+   include/linux/dev_printk.h:144:56: note: in expansion of macro 'dev_fmt'
+     144 |         dev_printk_index_wrap(_dev_err, KERN_ERR, dev, dev_fmt(fmt), ##__VA_ARGS__)
+         |                                                        ^~~~~~~
+   drivers/leds/flash/leds-mt6370-flash.c:590:17: note: in expansion of macro 'dev_err'
+     590 |                 dev_err(&pdev->dev,
+         |                 ^~~~~~~
+   drivers/leds/flash/leds-mt6370-flash.c:591:68: note: format string is defined here
+     591 |                 "No child node or node count over max led number %lu\n", count);
+         |                                                                  ~~^
+         |                                                                    |
+         |                                                                    long unsigned int
+         |                                                                  %u
+
+
+vim +591 drivers/leds/flash/leds-mt6370-flash.c
+
+   580	
+   581	static int mt6370_led_probe(struct platform_device *pdev)
+   582	{
+   583		struct mt6370_priv *priv;
+   584		struct fwnode_handle *child;
+   585		size_t count;
+   586		int i = 0, ret;
+   587	
+   588		count = device_get_child_node_count(&pdev->dev);
+   589		if (!count || count > MT6370_MAX_LEDS) {
+   590			dev_err(&pdev->dev,
+ > 591			"No child node or node count over max led number %lu\n", count);
+   592			return -EINVAL;
+   593		}
+   594	
+   595		priv = devm_kzalloc(&pdev->dev, struct_size(priv, leds, count),
+   596				    GFP_KERNEL);
+   597		if (!priv)
+   598			return -ENOMEM;
+   599	
+   600		priv->leds_count = count;
+   601		priv->dev = &pdev->dev;
+   602		mutex_init(&priv->lock);
+   603	
+   604		priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
+   605		if (!priv->regmap) {
+   606			dev_err(&pdev->dev, "Failed to get parent regmap\n");
+   607			return -ENODEV;
+   608		}
+   609	
+   610		device_for_each_child_node(&pdev->dev, child) {
+   611			struct mt6370_led *led = priv->leds + i;
+   612			struct led_init_data init_data = { .fwnode = child, };
+   613	
+   614			led->priv = priv;
+   615			ret = mt6370_init_common_properties(led, &init_data);
+   616			if (ret)
+   617				goto out_flash_release;
+   618	
+   619			ret = mt6370_init_flash_properties(led, &init_data);
+   620	
+   621			if (ret)
+   622				goto out_flash_release;
+   623	
+   624			ret = mt6370_led_register(&pdev->dev, led, &init_data);
+   625			if (ret)
+   626				goto out_flash_release;
+   627	
+   628			i++;
+   629		}
+   630	
+   631		platform_set_drvdata(pdev, priv);
+   632		return 0;
+   633	
+   634	out_flash_release:
+   635		mt6370_v4l2_flash_release(priv);
+   636		return ret;
+   637	}
+   638	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
