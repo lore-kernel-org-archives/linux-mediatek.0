@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86ABAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 15:50:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA917C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 16:16:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dxX5+GAYJehlR5WtKbHGYDZPfYdgMVGee1DuVxhdJMM=; b=L65oFrqQfruNIG
-	bXlvoh+ZvHInDaeEx8o2gMdH2nKZnt0QHcd40YFzBYCBk0RVwl/DHzRvmni/QPq2y+MWLNl32UATq
-	K4CTXueJuXSxpp/dIey3pruV3/g8JSohxMi7GeP5PuFZYbJTFe403yMOHDTBemmwnK/syRV3FeUsx
-	/5VVA/7lxtV/dqvMmJ2R3RZeuvAtz77w7BtSDvVM5psjgcY+Wx2sd9tWRIwV2xkKDmce0wByr3U5A
-	BRJV6cQyvxJ6rxrrOcUIOQBpkeEtUBuS+Uu2b9Meie3lSUC7AQwoRAANKpQMae8bw+GthiPfEgm1s
-	kp5S7PXCHfLCWPGx8EWA==;
+	List-Owner; bh=/Xn1x505FAUBTXlQwQvVErZhcXLo5YAEEv9lQZJn0Qs=; b=bwR55Z+724DvWk
+	huki+LJ8k62viLMuKbHjMdAV80apUKWJf7E1HZ4Gu5Yca5nb/ss0oEzjIw64vSXq10b/wQV7GysLx
+	ZCa8Dl2+ew5wrMzyzxFSKJL2KDOhpG/yOJPHzItDtYm8zewy3AD6oGqQoxLN+Uvqghfj1oP7S5jGz
+	JG2ad3TabibGMw9FZJ3rLz2oq6wJqDeWOPUeX9Gb1BdF4EHsRliaGpQwFCBjhzDJHqGre5odVK+qp
+	xsuhRfXvnkc4Uf+q/FwZSG/lmYgeqRIbN2WmFzBhO1r3bUQhryMEtfO1qHmzL/AxnnJ5AyzKOt7gw
+	ppJnSSyWJ/WSWLBZgrpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwn5Y-003i3p-HX; Thu, 02 Jun 2022 15:50:20 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nwnUc-003kau-AJ; Thu, 02 Jun 2022 16:16:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwn5W-003i2w-2P
-	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 15:50:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A205C61244;
-	Thu,  2 Jun 2022 15:50:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0A250C3411A;
-	Thu,  2 Jun 2022 15:50:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654185013;
-	bh=3IcmI6aTuTaZ9jT8NsJcigQPndxrKj7HswxoA95i+34=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=LodZVhqVBaO0Y9KZXYE+Gsj34bPo+ScTnpLKOMXipjuB+ygTgs0si4KFi0Yv4MHuI
-	 nJj9tlHJJrakJQrL+YBnZ0gjxoUGpPKj8k50ucUK35Fyq8Qfnt/qo9SHd6B08PgUt1
-	 wBdY7w+KFZzmP41m9Bt3mxr+HN7iXGHIHbdBkuUNimtAaLgGeHU9ZMNMkEMwydwa8P
-	 S7Y46o6MneFOas6n5tdhTxDD/WV7xdh6EGRgdFpu8pkqu4kA4ZQXiU5AZ5hBkRYK7p
-	 iGFTdXqtKeoKCufD8YyVcKa/P/LOMABnF9T3G9W3E55qtMwDrGS1ve3GOBX9VmOCol
-	 6npDQBujhdEDg==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id DDA51F0394F;
-	Thu,  2 Jun 2022 15:50:12 +0000 (UTC)
+	id 1nwnUP-003kYF-8P; Thu, 02 Jun 2022 16:16:04 +0000
+X-UUID: 488a63971dde49f6bf9b69f617b4d7e4-20220602
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:6480fa9d-50e9-428b-8c2e-c9ae329623f7,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09,CLOUDID:553bb76e-b02c-4af4-b838-5c14aaa063c7,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 488a63971dde49f6bf9b69f617b4d7e4-20220602
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <jing-ting.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 505628082; Thu, 02 Jun 2022 09:15:55 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jun 2022 09:15:53 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Fri, 3 Jun 2022 00:15:51 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 3 Jun 2022 00:15:51 +0800
+Message-ID: <78f3347e01a5c46975b9029f93deea2b31bb8393.camel@mediatek.com>
+Subject: Re: [SPAM]Re: [Bug] Race condition between CPU hotplug off flow and
+ __sched_setscheduler()
+From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+To: Peter Zijlstra <peterz@infradead.org>
+CC: Daniel Bristot de Oliveira <bristot@redhat.com>, Valentin Schneider
+	<vschneid@redhat.com>, <tglx@linutronix.de>, <wsd_upstream@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <Jonathan.JMChen@mediatek.com>,
+	"chris.redpath@arm.com" <chris.redpath@arm.com>, Dietmar Eggemann
+	<dietmar.eggemann@arm.com>, Vincent Donnefort <vdonnefort@gmail.com>, "Ingo
+ Molnar" <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>, "Vincent
+ Guittot" <vincent.guittot@linaro.org>, Steven Rostedt <rostedt@goodmis.org>,
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Christian
+ Brauner" <brauner@kernel.org>
+Date: Fri, 3 Jun 2022 00:15:51 +0800
+In-Reply-To: <ba7ddde1829ee9eedcd6673f923d731d60719dc5.camel@mediatek.com>
+References: <4a0aa13c99ffd6aea6426f83314aa2a91bc8933f.camel@mediatek.com>
+	 <20220519134706.GH2578@worktop.programming.kicks-ass.net>
+	 <52eea711b8ce3151ff73bfb0289cc9da0e8c4a10.camel@mediatek.com>
+	 <ba7ddde1829ee9eedcd6673f923d731d60719dc5.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Subject: Re: [PATCH] Bluetooth: btusb: Add support of IMC Networks PID 0x3568
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id:  <165418501290.10758.3267160679920762449.git-patchwork-notify@kernel.org>
-Date: Thu, 02 Jun 2022 15:50:12 +0000
-References: <20220602092822.953521-1-aaron.ma@canonical.com>
-In-Reply-To: <20220602092822.953521-1-aaron.ma@canonical.com>
-To: Aaron Ma <aaron.ma@canonical.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, luiz.dentz@gmail.com, johan.hedberg@gmail.com,
- marcel@holtmann.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_085018_190301_F088FAEE 
-X-CRM114-Status: UNSURE (   8.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220602_091601_346476_2801F769 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +90,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi Peter
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Marcel Holtmann <marcel@holtmann.org>:
 
-On Thu,  2 Jun 2022 17:28:22 +0800 you wrote:
-> It is 13d3:3568 for MediaTek MT7922 USB Bluetooth chip.
+> > > How easy can you reproduce; does the below hack make it better?
+
+The patch is helpful to the syndrome, passed stability test over 10
+days so far. (as-is: < 48 hours failed)
+
+Could you help to upstream this patch to linux kernel mainline?
+Thank you.
+
 > 
-> T:  Bus=03 Lev=01 Prnt=01 Port=02 Cnt=01 Dev#=  2 Spd=480 MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=13d3 ProdID=3568 Rev=01.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=...
-> C:  #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> I:  If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> > > diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+> > > index 95bac3b094b3..f18ee22b29bc 100644
+> > > --- a/kernel/sched/core.c
+> > > +++ b/kernel/sched/core.c
+> > > @@ -4763,20 +4763,30 @@ struct callback_head
+> > > balance_push_callback
+> > > =
+> > > {
+> > >  	.func = (void (*)(struct callback_head *))balance_push,
+> > >  };
+> > >  
+> > > -static inline struct callback_head
+> > > *splice_balance_callbacks(struct
+> > > rq *rq)
+> > > +static inline struct callback_head *
+> > > +__splice_balance_callbacks(struct rq *rq, bool foo)
+> > >  {
+> > >  	struct callback_head *head = rq->balance_callback;
+> > >  
+> > >  	lockdep_assert_rq_held(rq);
+> > > -	if (head)
+> > > -		rq->balance_callback = NULL;
+> > > +	if (head) {
+> > > +		if (foo && head == &balance_push_callback)
+> > > +			head = NULL;
+> > > +		else
+> > > +			rq->balance_callback = NULL;
+> > > +	}
+> > >  
+> > >  	return head;
+> > >  }
+> > >  
+> > > +static inline struct callback_head
+> > > *splice_balance_callbacks(struct
+> > > rq *rq)
+> > > +{
+> > > +	return __splice_balance_callbacks(rq, true);
+> > > +}
+> > > +
+> > >  static void __balance_callbacks(struct rq *rq)
+> > >  {
+> > > -	do_balance_callbacks(rq, splice_balance_callbacks(rq));
+> > > +	do_balance_callbacks(rq, __splice_balance_callbacks(rq,
+> > > false));
+> > >  }
+> > >  
+> > >  static inline void balance_callbacks(struct rq *rq, struct
+> > > callback_head *head)
+> > > 
+
+
+Best Regards,
+Jing-Ting Wu
 > 
-> [...]
-
-Here is the summary with links:
-  - Bluetooth: btusb: Add support of IMC Networks PID 0x3568
-    https://git.kernel.org/bluetooth/bluetooth-next/c/d60ea31cb434
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+> 
 
 
 _______________________________________________
