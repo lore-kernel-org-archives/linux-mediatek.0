@@ -4,100 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C5CC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 06:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEDA7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 06:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fujdSkc9eVxgyWYomkDxyOFUPMUvnH+M6aDbN1/mils=; b=NSTsPguwgn5V6A
-	xUG1NmOjyhPQ8lffgLpWbwQcMdG0YIkyx12Cx2mpu6acMw2rFldxuTogeOiPL/pbAp1MV5zeqguDv
-	/ReQ1odhp7WFR3aD/D7ZfmS0mKDRnePH3u237PTTDo5/MXSFGOjegXz9C1MT5+7BG1g3H+W5UBDse
-	ATuA5LrdKjClb/girj27ciaQ7TP0C2QE96yy1lVQJ1po6LCnI8MjFcopbh3SoTXmzudXeS3KTPfIV
-	h2pM6Pizje+XY5Kw2ZKAKF/x215Iyj3XkCbynRJNlNOC6PncxiWZuvKeCF1nvSLU4EmDmlKazbTmU
-	T3rjJl6WcCMkVn5Smm2w==;
+	List-Owner; bh=h3JZKH3zh7PkRLbrdmteodHgE36VyjX9MKXIK8S/IZU=; b=wcZV0kGpJleqIB
+	rrW1/wslJsL/OHD/RQvpIaiNXvka37u15Hq4r5fGFO3QWa+yNcl13ZW73j6+1Cin2+H63ZwTdLYVF
+	HHKOwcK6AOMhMwbokt15F5s+caojn49JAjsxLUT1BIJHdFdbuvYzYY18Vfo/Dh3joaf/7DDn8kU5T
+	sgscW4TLw3P991MO4gL7Y8HAT83IeJp+7WOuHsTEJ6Bbjx7cA7VuIfOR1YGBJ13j4xfG3EuEbvY19
+	VCCzZRn7CJaZXYSD+MaK7dd3BSR9YZamDHEYH2mcg/lWKRsUUx/Mii92O/A1cPwAELmOaSSj5DSXk
+	C04+5yZFKFGl3T+T84fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nweIg-001jAx-FM; Thu, 02 Jun 2022 06:27:18 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1nweJo-001jjU-K1; Thu, 02 Jun 2022 06:28:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nweIU-001j2q-Sp; Thu, 02 Jun 2022 06:27:08 +0000
-Received: by mail-pl1-x633.google.com with SMTP id s12so3769544plp.0;
-        Wed, 01 Jun 2022 23:27:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=sgetwGF1PvFvysoUcKKwVGNS/40oEtUezOmpaPDogiY=;
-        b=ZMFPdPunvlYPQPU3WvFgrloJ8uyHxXAWCOMTRSZ9UdgD6rlNisHeAFF5/aY9eRXA0W
-         RVgqJzVwNnaI7+v11DYXSCOX+1qoTZ4UHTG6/wQD/YlQrYt1Hwg51G8tJEPipcv4GY66
-         4jWv5S3N+GmyqU6l+K858iXVMtXZSPnh1xSRU4u2GJihLrDkY356tc/U6/el6POMbuSC
-         BVjvraKgPJFIcs7OPE4lDWq0kSaW9OyCoibbg40N5i4AFl2cRDJlVWQrlLKvz816fS2X
-         IAmGmyJ+ToO08AHPxyjQEN6ZAc0PXhytlp05lepN1qcMlsN3si+QLc1JoCpWctNrxLBb
-         JqTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=sgetwGF1PvFvysoUcKKwVGNS/40oEtUezOmpaPDogiY=;
-        b=fjjG7J72+ji1wvHOQ4FIbcY6LGvP2vKsNdYiXHI2eWMWF9QXTiqNqr4xC8Phlh/rn6
-         lBU5CMBSD0NAwNuJBTcDQSI03q0Ruj8wBdUXNvL/b20NKeh43maFd8cXYXSmTcMVzWoH
-         oLh1e6Fiy3Ioupow9JXQ4QKyZmGmV6Xz4btXbVFC2XNRD4t0vTG8zwAlD/lUn+SRQVWj
-         Dre61Gav4WZib+2QgY6aAry13gHKJHefOC1tEaD+M+RgoMzC7iUpyX53UxR36GYAvvyE
-         BXdb5VX2py6A37+jKLyKTO0lNIi3zfCeCqfzBe8bHLIQgfrqH1PtNFgV0By/OSUDbSRv
-         WJ8Q==
-X-Gm-Message-State: AOAM531Ci+wlumEaTSx5bZw1sEe9241mnz8KDk/eso2FmumtSOufQ4xO
-	JgmNshhKdboV2CMu0f2zh0s=
-X-Google-Smtp-Source: ABdhPJw/XVMZxQqn7LbpCVPeOLw0PRZZYK3mOXAw1YPVhpRYJee8hLeBKf1SThBKLbxC47OMbHQhGw==
-X-Received: by 2002:a17:903:40ce:b0:164:248:1464 with SMTP id t14-20020a17090340ce00b0016402481464mr3355617pld.16.1654151225424;
-        Wed, 01 Jun 2022 23:27:05 -0700 (PDT)
-Received: from cyhuang-hp-elitebook-840-g3.rt ([2402:7500:569:e4e7:9594:e92e:b3a9:bf26])
-        by smtp.gmail.com with ESMTPSA id u14-20020a170902714e00b0015e8d4eb1f9sm2650433plm.67.2022.06.01.23.26.54
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Jun 2022 23:27:04 -0700 (PDT)
-Date: Thu, 2 Jun 2022 14:26:51 +0800
-From: ChiYuan Huang <u0084500@gmail.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>,
-	Daniel Thompson <daniel.thompson@linaro.org>,
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sebastian Reichel <sre@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>,
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>,
-	Helge Deller <deller@gmx.de>, cy_huang@richtek.com,
-	alice_chen@richtek.com, chiaen_wu@richtek.com, u0084500@gmail.com,
-	dri-devel <dri-devel@lists.freedesktop.org>,
-	Linux LED Subsystem <linux-leds@vger.kernel.org>,
-	devicetree <devicetree@vger.kernel.org>,
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	Linux PM <linux-pm@vger.kernel.org>,
-	USB <linux-usb@vger.kernel.org>,
-	linux-iio <linux-iio@vger.kernel.org>,
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
-Subject: Re: [PATCH 06/14] leds: mt6370: Add Mediatek MT6370 Indicator support
-Message-ID: <20220602062643.GA13824@cyhuang-hp-elitebook-840-g3.rt>
-References: <20220531102809.11976-1-peterwu.pub@gmail.com>
- <20220531102809.11976-7-peterwu.pub@gmail.com>
- <CAHp75Vd8taco19vsDmBcCv8euV1SvwSiY5=P9oMkA6zWsjwXxg@mail.gmail.com>
+	id 1nweJe-001jgC-0w; Thu, 02 Jun 2022 06:28:19 +0000
+X-UUID: 6182b8f3a2034dd6a53c20f3d95fcc85-20220601
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:974876cd-e701-4f41-9984-c866ccecbd3e,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:2a19b09,CLOUDID:67e90615-b515-4766-a72d-4514488fe823,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: 6182b8f3a2034dd6a53c20f3d95fcc85-20220601
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 277163561; Wed, 01 Jun 2022 23:28:13 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Jun 2022 23:22:29 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 2 Jun 2022 14:22:28 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 2 Jun 2022 14:22:28 +0800
+Message-ID: <6d432025e3f7e96a26d07ad0c779234a246ef4fe.camel@mediatek.com>
+Subject: Re: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 2 Jun 2022 14:22:28 +0800
+In-Reply-To: <177a0be5289045602fdbde295b1bd076bee9e854.camel@mediatek.com>
+References: <20220422071534.15653-1-tinghan.shen@mediatek.com>
+	 <177a0be5289045602fdbde295b1bd076bee9e854.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAHp75Vd8taco19vsDmBcCv8euV1SvwSiY5=P9oMkA6zWsjwXxg@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_232706_994491_D24429C9 
-X-CRM114-Status: GOOD (  26.65  )
+X-CRM114-CacheID: sfid-20220601_232818_124354_F955E6C6 
+X-CRM114-Status: GOOD (  22.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,99 +82,150 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 01, 2022 at 11:48:58AM +0200, Andy Shevchenko wrote:
-> On Tue, May 31, 2022 at 1:16 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> >
-> > From: Alice Chen <alice_chen@richtek.com>
-> 
-> All below comments are applicable to the rest of the series as well
-> (one way or another), so please fix all your patches where it's
-> appropriate.
-> 
-> >
-> > Add Mediatek MT6370 Indicator support
-> 
-> What indicator?
-It's RGB curent sink type LED driver (maximum supported current is only 24mA).
-> Please also keep attention on English punctuation (missed period).
-> 
-Ack in next.
-> ...
->
-> > +       help
-> > +         Support 4 channels and reg/pwm/breath mode.
-> > +         Isink4 can also use as a CHG_VIN power good Indicator.
-> 
-> be used
-> 
-Ack in next.
-> > +         Say Y here to enable support for
-> > +         MT6370_RGB_LED device.
-> 
-> ...
-> 
-> > +#include <linux/module.h>
-> > +#include <linux/mutex.h>
-> > +#include <linux/platform_device.h>
-> 
-> > +#include <linux/of.h>
-> 
-> Are you sure this is the correct header? Seems you need
-> mod_devicetable.h instead.
-> 
-It's the correct header and be used for the struct 'of_device_id'.
-> > +#include <linux/property.h>
-> > +#include <linux/regmap.h>
-> 
-> ...
-> 
-> > +struct mt6370_priv {
-> > +       struct mutex lock;
-> 
-> Do you use regmap locking?
->
-MFD regmap register already the access lock.
+Hi Rex,
 
-This lock is just to guarantee only one user can access the RGB register
-part.
-
-Sorry, from the comment, do you want us to rename or remove this lock?
-> > +       struct device *dev;
+On Fri, 2022-04-22 at 15:59 +0800, Rex-BC Chen wrote:
+> On Fri, 2022-04-22 at 15:15 +0800, Tinghan Shen wrote:
+> > This patch adds mt8186 dsp document. The dsp is used for Sound Open
+> > Firmware driver node. It includes registers, clocks, memory regions,
+> > and mailbox for dsp.
+> > 
+> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > ---
+> > 
+> > This patch depends on MT8186 clock bindings.
+> > 
 > 
-> > +       struct regmap *regmap;
-> 
-> > +       struct regmap_field *fields[F_MAX_FIELDS];
-> > +       const struct reg_field *reg_fields;
-> > +       const struct linear_range *ranges;
-> > +       struct reg_cfg *reg_cfgs;
-> > +       unsigned int leds_count;
-> > +       unsigned int leds_active;
-> > +       bool is_mt6372;
-> > +       struct mt6370_led leds[];
-> > +};
-> 
-> ...
-> 
-> > +static const unsigned int common_tfreqs[] = {
-> > +       10000, 5000, 2000, 1000, 500, 200, 5, 1
-> 
-> Leave a comma at the end.
-> 
-Ack in next.
-> > +};
+> https://lore.kernel.org/all/20220409132251.31725-2-chun-jie.chen@mediatek.com/
+> > 
+> > ---
+> >  .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 93
+> > +++++++++++++++++++
+> >  1 file changed, 93 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8186-
+> > dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-
+> > dsp.yaml
+> > new file mode 100644
+> > index 000000000000..00a79e880895
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+> > @@ -0,0 +1,93 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/dsp/mediatek,mt8186-dsp.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > > +
-> > +static const unsigned int mt6372_tfreqs[] = {
-> > +       8000, 4000, 2000, 1000, 500, 250, 8, 4
+> > +title: Mediatek mt8186 DSP core
 > 
-> Ditto.
+> Hello Tinghan,
 > 
-Ack in next.
-> > +};
+> Please use MediaTek.
+
+Ok. I'll update it at next version.
+
+
+Thanks,
+TingHan
+
+
+> Thanks.
+> 
+> BRs,
+> Rex
+> 
+> > +
+> > +maintainers:
+> > +  - Tinghan Shen <tinghan.shen@mediatek.com>
+> > +
+> > +description: |
+> > +  MediaTek mt8186 SoC contains a DSP core used for
+> > +  advanced pre- and post- audio processing.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt8186-dsp
+> > +
+> > +  reg:
+> > +    items:
+> > +      - description: Address and size of the DSP config registers
+> > +      - description: Address and size of the DSP SRAM
+> > +      - description: Address and size of the DSP secure registers
+> > +      - description: Address and size of the DSP bus registers
+> > +
+> > +  reg-names:
+> > +    items:
+> > +      - const: cfg
+> > +      - const: sram
+> > +      - const: sec
+> > +      - const: bus
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: mux for audio dsp clock
+> > +      - description: mux for audio dsp local bus
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: audiodsp_sel
+> > +      - const: adsp_bus_sel
+> > +
+> > +  power-domains:
+> > +    maxItems: 1
+> > +
+> > +  mboxes:
+> > +    items:
+> > +      - description: ipc reply between host and audio DSP.
+> > +      - description: ipc request between host and audio DSP.
+> > +
+> > +  mbox-names:
+> > +    items:
+> > +      - const: mbox0
+> > +      - const: mbox1
+> > +
+> > +  memory-region:
+> > +    items:
+> > +      - description: dma buffer between host and DSP.
+> > +      - description: DSP system memory.
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - reg-names
+> > +  - clocks
+> > +  - clock-names
+> > +  - power-domains
+> > +  - mbox-names
+> > +  - mboxes
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > +    #include <dt-bindings/clock/mt8186-clk.h>
+> > +    dsp@10680000 {
+> > +        compatible = "mediatek,mt8186-dsp";
+> > +        reg = <0x10680000 0x2000>,
+> > +              <0x10800000 0x100000>,
+> > +              <0x1068b000 0x100>,
+> > +              <0x1068f000 0x1000>;
+> > +        reg-names = "cfg", "sram", "sec", "bus";
+> > +        clocks = <&topckgen CLK_TOP_AUDIODSP>,
+> > +                 <&topckgen CLK_TOP_ADSP_BUS>;
+> > +        clock-names = "audiodsp_sel",
+> > +                      "adsp_bus_sel";
+> > +        power-domains = <&spm 6>;
+> > +        mbox-names = "mbox0", "mbox1";
+> > +        mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
+> > +    };
 > 
 > 
-> -- 
-> With Best Regards,
-> Andy Shevchenko
+
 
 _______________________________________________
 Linux-mediatek mailing list
