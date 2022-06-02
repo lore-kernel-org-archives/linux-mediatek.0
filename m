@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2D0C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 10:46:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CDECC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 11:11:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3e7JyI7Sc7RA1ldZ6o7rlo+kxOdPEtg03Vl9i+uNNUM=; b=mlCBtbeBMQSYHb
-	uhK6UZ27dep+ort4VonGXUCE2r7nDXESszKg6HfFZSI23iG3ly/ESxnXs6+OBw+vH3arM1Z81R5r6
-	HwXpudr+g/rEZVFQ5duJ1u79g1Rbvi5+fZf7QBAgE41rWqYUi1BvX6qpE78fNEbDzB3LBhjhkd5AF
-	cVohzkl+kkxiaYweHyHGkozT5msnY++5RFAWCEEmguf8sI9Z/qUH782P6WaDpJ4n8yI5DhRUGvk2j
-	4vGSQpfSWvbmKjWUWh78a+ob/VUEYkjvfSTpRCqrZP1jG6u9w4VjkWYjjcf2Un4M+07qSZBMuai2x
-	aFuDTaIe8PZnQg+sg2dw==;
+	List-Owner; bh=zcOtI6c+X+DgU980187Wdm9puK+zLVtZYn60tBfFWww=; b=MMChpvrvZPlAIY
+	0+nNLNQGqn9CPwEcMc+JhVl52XQ++mBf7QTW4BksNfDOrbLWzzRETUP4eO5aL+RwvCNo6j2UEDhql
+	OqZffYMEX4ovjX6C8JsmHQjyuk1qO7/T5CWAprVOuXE0ipGyqlQ+5yFC0HSuf2Vkj5skGfZEnqduq
+	o1yad2VKxPsnCbzFAOqga1tYEpNbCQBiFcILfOdvYRuznuBDGtSgUfa68UTHcfINNcr7cHo2Xd9/t
+	az1m4zbukKD3zlp23yqVGl3TP4YluMWJhx0YDis8p/v2UcN/XTEUOAkOe6+w0nVSt2pp2N+rQl1Cl
+	CJP+ORBWgUsHTfLEnfRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwiL3-002q3K-NR; Thu, 02 Jun 2022 10:46:01 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1nwijE-002u5v-Id; Thu, 02 Jun 2022 11:11:00 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwiL0-002q0h-RV
-	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 10:46:00 +0000
-Received: by mail-ed1-x531.google.com with SMTP id x62so5715645ede.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jun 2022 03:45:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=nw6pxzn4DckQbSIrMyIKvslcoovKd9JNNcEV3M74aJU=;
-        b=FVtc2GMHaMVFwBTB9n2bmkPgrxq0S/3I/jF+Z5+VjhYWNvNhdvd9FduqFd8H21CXnp
-         5CoJBlRBbspU+PTFXH1VuLP74dEZNgdRy0pabuto/4CifAKSH60UJrIP/u0wDj1LjPpZ
-         pwN9n0KWujb8LNQ1GokLI6aRvWoP/kuIV4CibHVrjYuCB1sg9UWKqq9nlBBb3+IcyRxM
-         oG+8X0jviUubYCuFv0wHF4I2MgJIe0fOxMsZb88UZBXiUgyGXO2IBR03XgFDZDgYBVZj
-         nmSUJqmu0Thut+grCufPZRhNpL1Wm/mKbJQEtEjOiUCn2fVSqMR7B0gk0OB/P3jwjSYP
-         Vw9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=nw6pxzn4DckQbSIrMyIKvslcoovKd9JNNcEV3M74aJU=;
-        b=nfLhsktwnkZUH0SWcHRNDaGPj2NiM5T7JHJH9UEyKUNxUKtsjtEeiAgB5pGwRlQ2xl
-         C3wMzyGw2VvCoXJ6gk39dAG50QtQTPLI2Fbkj4pSQ4fGDg1VOOZnena7qkyeDA3HihS+
-         1w2/FP1TW28vXx9Z8qKFJdItPDPIBh1Xjv+gCxIGwp/01+9pokKrIvJIIiZ3rOxDxV/v
-         rMi9nSaIPsBLHHbeVwr3LDe90OvmHwxkwMvxLEuMcENbJe+NS96p8+ZlhimJ6vLXVwKQ
-         ZMfqr3Q6c4v9sJqWmXtTOQlBpl28Jg7kwRLQ1dnObcuNDfKPQ7Zhv55LicI8McBXJ1DX
-         xTAw==
-X-Gm-Message-State: AOAM532L9HhHzXrffKBBhbTFVpk0cKAZlbPfwwl+HxEi2PGKc6K6uelT
-	oT+SdMjwmDv8HU0e451TZ34ldsnY+Ki3/fgS
-X-Google-Smtp-Source: ABdhPJyHBWmqVU4LKyl/2v3+gW1nAjEOcRCOkljscEs8ZrboVaNdsEU+GlslnGTpUxxoIj+RBNBgJw==
-X-Received: by 2002:a05:6402:3901:b0:42d:f38f:a5c6 with SMTP id fe1-20020a056402390100b0042df38fa5c6mr4551192edb.321.1654166756552;
-        Thu, 02 Jun 2022 03:45:56 -0700 (PDT)
-Received: from [192.168.0.181] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id q2-20020a17090609a200b006f3ef214e63sm1600576eje.201.2022.06.02.03.45.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Jun 2022 03:45:55 -0700 (PDT)
-Message-ID: <9e3f5586-59fa-42cc-770c-b8694b4f2bf3@linaro.org>
-Date: Thu, 2 Jun 2022 12:45:54 +0200
+	id 1nwijB-002u4B-OF; Thu, 02 Jun 2022 11:10:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1654168257; x=1685704257;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=olQ0OA0H1c6Sts3x+w8aOXscdnJ5P5s3LhpfS4yRNpE=;
+  b=ShIBqHS5Nr8wkm50r0MvMrT8caR/Sw0hibuYhmCdhbEiBFP4ke1H73hk
+   omTz8aRy22HF7SGw8r8OWx+IAeXAbEITl6cnVkXA1/WGTV7nxt4IgQd0q
+   SIH6pBjRozzlHVLxjh2nmS0wRRdYDdQoNhC9eBdug9pe7w/jfgm+7hBf4
+   m9OghfSWWPC+RAChNvMIi2RG0KapGqvI3aKYItZjjzlB9iIpbgy2aKQaA
+   O1EGYBH0cjLIf8ATHOYzOqvcXjxhzEJiaOSDIGfoIGpVwefNrDsQiCkX8
+   D2uEze6NhFzrSCpFjhxvftBc3tGm8S+5MynEJCEqvcL8n2Z4OFgDrqtfl
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10365"; a="256394204"
+X-IronPort-AV: E=Sophos;i="5.91,271,1647327600"; 
+   d="scan'208";a="256394204"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jun 2022 04:10:54 -0700
+X-IronPort-AV: E=Sophos;i="5.91,271,1647327600"; 
+   d="scan'208";a="721260311"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Jun 2022 04:10:49 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1nwiiz-000RZf-AX;
+	Thu, 02 Jun 2022 14:10:45 +0300
+Date: Thu, 2 Jun 2022 14:10:45 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+	Chaotian Jing <chaotian.jing@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Satya Tangirala <satyat@google.com>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Lucas Stach <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Stephen Boyd <swboyd@chromium.org>,
+	Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
+	Tian Tao <tiantao6@hisilicon.com>,
+	angelogioacchino.delregno@collabora.com, linux-mmc@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [RESEND v12 0/3] mmc: mediatek: add support for SDIO async IRQ
+Message-ID: <YpiatZh+ZMpoAp/K@smile.fi.intel.com>
+References: <20220525015140.384-1-axe.yang@mediatek.com>
+ <1d07579c0a6b8853ab72e345a0bd0be73549de8c.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220422071534.15653-1-tinghan.shen@mediatek.com>
- <c0a188e5-8a8c-d4a3-5a3d-9b9dd85d8f44@linaro.org>
- <eb4deff1a01c09783518bbaff8fe4e4c4ca6fa5b.camel@mediatek.com>
- <591767ee-e349-7a17-a9e9-b95d0500c7c1@linaro.org>
- <774c075ca4ad815c88be755cfb51889a171e835d.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <774c075ca4ad815c88be755cfb51889a171e835d.camel@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1d07579c0a6b8853ab72e345a0bd0be73549de8c.camel@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_034558_974547_3C575774 
-X-CRM114-Status: GOOD (  22.98  )
+X-CRM114-CacheID: sfid-20220602_041057_908344_68DE5914 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,66 +98,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/06/2022 12:19, Tinghan Shen wrote:
-> Hi Krzysztof,
+On Thu, Jun 02, 2022 at 02:07:04PM +0800, Axe Yang wrote:
+> Hi,
 > 
-> On Thu, 2022-06-02 at 09:40 +0200, Krzysztof Kozlowski wrote:
->> On 02/06/2022 08:44, Tinghan Shen wrote:
->>>>> +  mbox-names:
->>>>> +    items:
->>>>> +      - const: mbox0
->>>>> +      - const: mbox1
->>>>
->>>> These should be rather some meaningful names, e.g. "rx" and "tx".
->>>
->>> The mbox name has to align with the adsp ipc driver.
->>> The adsp ipc driver is using 'mbox%d' for mailbox channels.
->>>
->>>
->>>
-> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/commit/?id=9db69df4bdd37eb1f65b6931ee067fb15b9a4d5c__;!!CTRNKA9wMg0ARbw!1TmempNkQhC5QuLBhyfWo_AC97MoLuWipsGV-LPaW9RKNPheU7Bgc-eboNi1JA1nC5I$
->>>  
->>>
->>> 	chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
->>>
->>> 	/* ...snip... */
->>>
->>> 	adsp_chan->ch = mbox_request_channel_byname(cl, chan_name);
->>>
->>> Is it ok to continue using these names?
->>
->> It is a bit confusing... how did that driver got merged recently without
->> bindings? Why bindings are separate?
->>
->> The bindings always come together in one patchset with the driver
->> implementing them. Bindings are though a separate patch, yet still
->> followed by the driver which uses them.
->>
->> I do not see any compatibles in that driver, which suggests there is no
->> other binding using it. If that's correct, then you need to change the
->> driver.
->>
-> 
-> The mtk-adsp-ipc driver's sole function is to encapsulate the operations 
-> of mailbox framework from adsp ipc users. The mtk-adsp-ipc is not defined 
-> in the dts file and we don't need it to be defined. The creation of mtk-adsp-ipc 
-> device is requested by adsp ipc users via the use of 'platform_device_register_data'[1].
-> 
-> the driver implemented the mailbox framework is 'mtk-adsp-mailbox'[2]. it has 
-> corresponding hardwares and a yaml file[3] to describe it.
+> Gentle ping for this set.
 
-I don't understand how is this related. We talk here about the
-mbox-names for this bindings file. You replied, that these bindings are
-already used by something, but now you say that they are not? So why do
-you need to change anything in any driver?
+It's a merge window, so your code perhaps will be considered next week,
+or later.
 
-Simple question - do the bindings here "add mt8186 dsp document" are
-used by any specific Linux driver already?
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
