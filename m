@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEDA7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 06:28:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD92DC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 06:28:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h3JZKH3zh7PkRLbrdmteodHgE36VyjX9MKXIK8S/IZU=; b=wcZV0kGpJleqIB
-	rrW1/wslJsL/OHD/RQvpIaiNXvka37u15Hq4r5fGFO3QWa+yNcl13ZW73j6+1Cin2+H63ZwTdLYVF
-	HHKOwcK6AOMhMwbokt15F5s+caojn49JAjsxLUT1BIJHdFdbuvYzYY18Vfo/Dh3joaf/7DDn8kU5T
-	sgscW4TLw3P991MO4gL7Y8HAT83IeJp+7WOuHsTEJ6Bbjx7cA7VuIfOR1YGBJ13j4xfG3EuEbvY19
-	VCCzZRn7CJaZXYSD+MaK7dd3BSR9YZamDHEYH2mcg/lWKRsUUx/Mii92O/A1cPwAELmOaSSj5DSXk
-	C04+5yZFKFGl3T+T84fg==;
+	List-Owner; bh=koxNaxPu3swRL4ag5WtPUWt/xYKpfKpA0baMD4UWIqs=; b=Mx/n2c+1UFErY3
+	rohwd3LjyjMkS3pL+cTNgz1f257TMKsgGka9rXWqLxErx1twtMAEijuuQ2zlmVXZj2Vj4yEjVeTBx
+	6WySfSaM3vPdcns6Ge06tNeoZT/nuQNYUpUz+SOXiN+JSbQqWwR5MfWng9g5h9ose5tjpucCgPH3r
+	6hfcj7/lVOLNDVWABOPwqNfgHFY4jb04/rayntah/nyQSTLU2JhCEzkdq24K9VSsMQEyiGLWIgdUI
+	6Hx/+X4qjOjDdLZfyjlTaQoK/BSnWQkQDZQnFmVlsRbzCnogswKgOWPPp6LdvhkgEs4VXYHNR4vJD
+	4GpPFv6dgKKiZmq3+4Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nweJo-001jjU-K1; Thu, 02 Jun 2022 06:28:28 +0000
+	id 1nweK0-001jnv-Gi; Thu, 02 Jun 2022 06:28:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nweJe-001jgC-0w; Thu, 02 Jun 2022 06:28:19 +0000
-X-UUID: 6182b8f3a2034dd6a53c20f3d95fcc85-20220601
+	id 1nweJy-001jlz-17; Thu, 02 Jun 2022 06:28:39 +0000
+X-UUID: 83b28d3cdc5d4d118b875f238beb39e3-20220601
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=ChpsM1cLnqmNeeMHjqBksv07oHFy8CGYDmj8mAoUA/k=;
+	b=V83M8TbH7haUZ5H+c1oECdxQsZy3pIe1hhkMDvFKpSRYYyaWI1F8gIVMQMd3cvIl78vr78DJrsGtaXqJmWFCD49w7PMj63uxrNcG1RBgGesu3f42t1EqX7vK6XSR2DlQVMs1rwUufYrw430yj3Ino3TyBlsnaqYbmZuBqLLeZCo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:974876cd-e701-4f41-9984-c866ccecbd3e,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:2a19b09,CLOUDID:67e90615-b515-4766-a72d-4514488fe823,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:c48eb7cc-a9d4-4962-a7aa-ac0d6ec87c1c,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:37d0920d-3a0d-4bbe-9d72-0e5d26d57423,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: 6182b8f3a2034dd6a53c20f3d95fcc85-20220601
+X-UUID: 83b28d3cdc5d4d118b875f238beb39e3-20220601
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 277163561; Wed, 01 Jun 2022 23:28:13 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Jun 2022 23:22:29 -0700
+	with ESMTP id 270302199; Wed, 01 Jun 2022 23:28:33 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Jun 2022 23:18:35 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 2 Jun 2022 14:22:28 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ Thu, 2 Jun 2022 14:18:34 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 2 Jun 2022 14:22:28 +0800
-Message-ID: <6d432025e3f7e96a26d07ad0c779234a246ef4fe.camel@mediatek.com>
-Subject: Re: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 2 Jun 2022 14:22:28 +0800
-In-Reply-To: <177a0be5289045602fdbde295b1bd076bee9e854.camel@mediatek.com>
-References: <20220422071534.15653-1-tinghan.shen@mediatek.com>
-	 <177a0be5289045602fdbde295b1bd076bee9e854.camel@mediatek.com>
+ Transport; Thu, 2 Jun 2022 14:18:33 +0800
+Message-ID: <8ac7a6766c635412b408cb5295ddb3da37541140.camel@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: iommu: mediatek: add binding
+ documentation for MT8365 SoC
+From: Yong Wu <yong.wu@mediatek.com>
+To: Fabien Parent <fparent@baylibre.com>
+CC: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Rob
+ Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <iommu@lists.linux-foundation.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Date: Thu, 2 Jun 2022 14:18:33 +0800
+In-Reply-To: <20220530180328.845692-1-fparent@baylibre.com>
+References: <20220530180328.845692-1-fparent@baylibre.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_232818_124354_F955E6C6 
-X-CRM114-Status: GOOD (  22.21  )
+X-CRM114-CacheID: sfid-20220601_232838_105595_CE88754D 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,151 +86,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rex,
-
-On Fri, 2022-04-22 at 15:59 +0800, Rex-BC Chen wrote:
-> On Fri, 2022-04-22 at 15:15 +0800, Tinghan Shen wrote:
-> > This patch adds mt8186 dsp document. The dsp is used for Sound Open
-> > Firmware driver node. It includes registers, clocks, memory regions,
-> > and mailbox for dsp.
-> > 
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > ---
-> > 
-> > This patch depends on MT8186 clock bindings.
-> > 
+On Mon, 2022-05-30 at 20:03 +0200, Fabien Parent wrote:
+> Add IOMMU binding documentation for the MT8365 SoC.
 > 
-> https://lore.kernel.org/all/20220409132251.31725-2-chun-jie.chen@mediatek.com/
-> > 
-> > ---
-> >  .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 93
-> > +++++++++++++++++++
-> >  1 file changed, 93 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8186-
-> > dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-
-> > dsp.yaml
-> > new file mode 100644
-> > index 000000000000..00a79e880895
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
-> > @@ -0,0 +1,93 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/dsp/mediatek,mt8186-dsp.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Mediatek mt8186 DSP core
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  .../bindings/iommu/mediatek,iommu.yaml        |  2 +
+>  include/dt-bindings/memory/mt8365-larb-port.h | 96
+> +++++++++++++++++++
+>  2 files changed, 98 insertions(+)
+>  create mode 100644 include/dt-bindings/memory/mt8365-larb-port.h
+
+[snip...]
+
+> +#ifndef _DT_BINDINGS_MEMORY_MT8365_LARB_PORT_H_
+> +#define _DT_BINDINGS_MEMORY_MT8365_LARB_PORT_H_
+> +
+> +#include <dt-bindings/memory/mtk-memory-port.h>
+> +
+> +#define M4U_LARB0_ID			0
+> +#define M4U_LARB1_ID			1
+> +#define M4U_LARB2_ID			2
+> +#define M4U_LARB3_ID			3
+> +#define M4U_LARB4_ID			4
+> +#define M4U_LARB5_ID			5
+> +#define M4U_LARB6_ID			6
+> +#define M4U_LARB7_ID			7
+
+Remove these. they are no used, right?
+
+> +
+> +/* larb0 */
+> +#define M4U_PORT_DISP_OVL0		MTK_M4U_ID(0, 0)
+> +#define M4U_PORT_DISP_OVL0_2L	MTK_M4U_ID(0, 1)
+
+[...]
+
 > 
-> Hello Tinghan,
-> 
-> Please use MediaTek.
+> +/* larb4 */
+> +#define M4U_PORT_APU_READ		MTK_M4U_ID(0, 0)
+> +#define M4U_PORT_APU_WRITE		MTK_M4U_ID(0, 1)
 
-Ok. I'll update it at next version.
+Please remove these two APU definitions. currently these are not
+supported.
 
+Thanks.
 
-Thanks,
-TingHan
-
-
-> Thanks.
-> 
-> BRs,
-> Rex
-> 
-> > +
-> > +maintainers:
-> > +  - Tinghan Shen <tinghan.shen@mediatek.com>
-> > +
-> > +description: |
-> > +  MediaTek mt8186 SoC contains a DSP core used for
-> > +  advanced pre- and post- audio processing.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt8186-dsp
-> > +
-> > +  reg:
-> > +    items:
-> > +      - description: Address and size of the DSP config registers
-> > +      - description: Address and size of the DSP SRAM
-> > +      - description: Address and size of the DSP secure registers
-> > +      - description: Address and size of the DSP bus registers
-> > +
-> > +  reg-names:
-> > +    items:
-> > +      - const: cfg
-> > +      - const: sram
-> > +      - const: sec
-> > +      - const: bus
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: mux for audio dsp clock
-> > +      - description: mux for audio dsp local bus
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: audiodsp_sel
-> > +      - const: adsp_bus_sel
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  mboxes:
-> > +    items:
-> > +      - description: ipc reply between host and audio DSP.
-> > +      - description: ipc request between host and audio DSP.
-> > +
-> > +  mbox-names:
-> > +    items:
-> > +      - const: mbox0
-> > +      - const: mbox1
-> > +
-> > +  memory-region:
-> > +    items:
-> > +      - description: dma buffer between host and DSP.
-> > +      - description: DSP system memory.
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - reg-names
-> > +  - clocks
-> > +  - clock-names
-> > +  - power-domains
-> > +  - mbox-names
-> > +  - mboxes
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +    #include <dt-bindings/clock/mt8186-clk.h>
-> > +    dsp@10680000 {
-> > +        compatible = "mediatek,mt8186-dsp";
-> > +        reg = <0x10680000 0x2000>,
-> > +              <0x10800000 0x100000>,
-> > +              <0x1068b000 0x100>,
-> > +              <0x1068f000 0x1000>;
-> > +        reg-names = "cfg", "sram", "sec", "bus";
-> > +        clocks = <&topckgen CLK_TOP_AUDIODSP>,
-> > +                 <&topckgen CLK_TOP_ADSP_BUS>;
-> > +        clock-names = "audiodsp_sel",
-> > +                      "adsp_bus_sel";
-> > +        power-domains = <&spm 6>;
-> > +        mbox-names = "mbox0", "mbox1";
-> > +        mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
-> > +    };
-> 
-> 
-
-
+> +
+> +#endif
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
