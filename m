@@ -4,87 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC053C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 05:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9657FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 05:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=syfeGQVWsGe4fQaUrR814KawTh0RWjK0dUim8MgWxFg=; b=u3Sks88i/1+dDG
-	AjjG6AeyXQFXshn1tAwEFouX56p6VfKGctIzxRYCJeETqs989Yl3lP74qAuFvTxYh1cuOWYS/v5it
-	1/og17Od0tBAU9juVwwRc2qNS6Yw212TuSoH6HZyPF6QFDK3O1G8nE7gR9hv70nFUtkY+HScBOliS
-	NzBASAeu9ZpyC4D6156Hz/sFA0ijQ+rsfuiURXINfkO0kqFRN6UY5g/0tP1LtUWW3hGqfmucqK9Hh
-	tb+E3x65JTCpa5tHEgpk0vPlb8AlaCg0yTBBMcOvovMgrE2FvFdF/VMLamYupf8hMRB+mjQWTWpzO
-	ck+IDc8n3ySqQBVtzgDA==;
+	List-Owner; bh=XNiFvD7Y6CXg+URSQIxhfqf8K2akpPupNBsjgvb2SEo=; b=JUivgSG3zeC2qw
+	XS/OKr7Y0b3Pr+sQvRPLQq76fgwFPn0f4uGoNvi7ydHB1CmvEFVPGe1MYRNZ2vnMieZ0r00guQAyn
+	vrPz1ZLITlqPgP1h6L61YyoAmOsRG+vpEs95LmvmD4j0/jp7koQ2dJCqd+1040sDRJcAi7/pz03ON
+	Wavg6rwUgXL532cbs15amkyFqEPw4mSOcs169FMPOatqYwEUZlFpmUuiqEAWcbeVK8MLXZkN5eM5w
+	tEbsNgJ04OZf5+OQTRAIEmIIUIt94Ct7l+H2OWkFl3HahQas3A+eb9c/hJKSktf8jb273F4nr290S
+	YCkRy+2QgiEzEXfA10Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwdRI-001TBt-7r; Thu, 02 Jun 2022 05:32:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nwdht-001XLn-Lf; Thu, 02 Jun 2022 05:49:17 +0000
+Received: from smtp04.smtpout.orange.fr ([80.12.242.126] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwdR6-001T8w-B4; Thu, 02 Jun 2022 05:31:58 +0000
-X-UUID: a800e6afeda541c599ff6be2a6c402be-20220601
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:ce73dd02-47e5-4695-b105-e7deb574663e,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:a155900d-3a0d-4bbe-9d72-0e5d26d57423,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: a800e6afeda541c599ff6be2a6c402be-20220601
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2049111502; Wed, 01 Jun 2022 22:31:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Jun 2022 22:31:39 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 2 Jun 2022 13:31:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 2 Jun 2022 13:31:37 +0800
-Message-ID: <a903bdb73b93c4e61bbe9e62231347632445c2af.camel@mediatek.com>
-Subject: Re: [PATCH v10 00/21] drm/mediatek: Add mt8195 DisplayPort driver
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun
- =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?=
-	<ck.hu@mediatek.com>, Jitao Shi =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?=
-	<jitao.shi@mediatek.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "maxime@cerno.tech"
-	<maxime@cerno.tech>
-CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
-	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>
-Date: Thu, 2 Jun 2022 13:31:37 +0800
-In-Reply-To: <358b183faed73672e8fa4f6eb0d48fb067aec87d.camel@mediatek.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <358b183faed73672e8fa4f6eb0d48fb067aec87d.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nwdhe-001XI8-3W
+	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 05:49:06 +0000
+Received: from [192.168.1.18] ([90.11.190.129])
+	by smtp.orange.fr with ESMTPA
+	id wdhSn51g6QKuawdhSnS6n8; Thu, 02 Jun 2022 07:48:57 +0200
+X-ME-Helo: [192.168.1.18]
+X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
+X-ME-Date: Thu, 02 Jun 2022 07:48:57 +0200
+X-ME-IP: 90.11.190.129
+Message-ID: <60d33448-1cc9-c662-167b-10c1f9660545@wanadoo.fr>
+Date: Thu, 2 Jun 2022 07:48:50 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v10 14/21] drm/mediatek: dpi: Add dpintf support
+Content-Language: fr
+To: granquet@baylibre.com
+Cc: airlied@linux.ie, chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org,
+ ck.hu@mediatek.com, daniel@ffwll.ch, deller@gmx.de,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ jitao.shi@mediatek.com, kishon@ti.com, krzysztof.kozlowski+dt@linaro.org,
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, maarten.lankhorst@linux.intel.com,
+ matthias.bgg@gmail.com, mripard@kernel.org, msp@baylibre.com,
+ p.zabel@pengutronix.de, robh+dt@kernel.org, tzimmermann@suse.de,
+ vkoul@kernel.org
+References: <20220523104758.29531-1-granquet@baylibre.com>
+ <20220523104758.29531-15-granquet@baylibre.com>
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+In-Reply-To: <20220523104758.29531-15-granquet@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_223156_420365_08785B75 
-X-CRM114-Status: GOOD (  38.55  )
+X-CRM114-CacheID: sfid-20220601_224902_405419_A1F00DFC 
+X-CRM114-Status: GOOD (  28.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,189 +68,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-06-02 at 11:50 +0800, Rex-BC Chen wrote:
-> On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
-> > this series is built around the DisplayPort driver. The dpi/dpintf
-> > driver and the added helper functions are required for the
-> > DisplayPort
-> > driver to work.
-> > 
-> > This v10 still has some un-answered comments and TODOs for v11.
-> > 
-> > This has been tested sucessfully on a 5.18-next based "vendor
-> > branch".
-> > 
-> > There's a missing dependency in the mediatek clock framework to
-> > allow
-> > a
-> > mux clock to change it's parent automatically on rate change.
-> > Without this change, the dpi driver won't properly set the clocks
-> > on
-> > mode change and thus nothing will be displayed on screen.
-> > 
-> > Changes from v9:
-> > - The DP-Phy is back to being a child device of the DP driver (as
-> > in
-> > v8)
-> > - hot plug detection has been added back to Embedded Display
-> > Port...
-> > as
-> >   after discussing with mediatek experts, this is needed eventhough
-> > the
-> >   Embedded Display port is not un-pluggable
-> > - rebased on linux-next
-> > - simplified/split train_handler function, as suggested by Rex
-> > - added comments on the sleep/delays present in the code
-> > - removed previous patch introducing retries when receiving
-> > AUX_DEFER
-> > as
-> >   this is already handled in the dp_aux framework
-> > - added max-lane and max-linkrate device tree u8 properties instead
-> > of
-> >   hardcoded #defines
-> > 
-> > Things that are in my todolist for v11:
-> > - retrieve CK/DE support from panel driver instead of hardcoding it
-> > into
-> >   the dpi driver
-> > - refcount the dp driver "enabled" status for "future proofing"
-> > - review the drm_dp_helpers for features/functions that have been
-> >   re-implemented in the mediatek dp drivers
-> > 
-> > Older revisions:
-> > RFC - 
-> > 
-https://lore.kernel.org/linux-mediatek/20210816192523.1739365-1-msp@baylibre.com/
-> > v1  - 
-> > 
-https://lore.kernel.org/linux-mediatek/20210906193529.718845-1-msp@baylibre.com/
-> > v2  - 
-> > 
-https://lore.kernel.org/linux-mediatek/20210920084424.231825-1-msp@baylibre.com/
-> > v3  - 
-> > 
-https://lore.kernel.org/linux-mediatek/20211001094443.2770169-1-msp@baylibre.com/
-> > v4  - 
-> > 
-https://lore.kernel.org/linux-mediatek/20211011094624.3416029-1-msp@baylibre.com/
-> > v5  - 
-> > 
-https://lore.kernel.org/all/20211021092707.3562523-1-msp@baylibre.com/
-> > v6  - 
-> > 
-https://lore.kernel.org/linux-mediatek/20211110130623.20553-1-granquet@baylibre.com/
-> > v7  - 
-> > 
-https://lore.kernel.org/linux-mediatek/20211217150854.2081-1-granquet@baylibre.com/
-> > v8  - 
-> > 
-https://lore.kernel.org/linux-mediatek/20220218145437.18563-1-granquet@baylibre.com/
-> > v9  - 
-> > 
-https://lore.kernel.org/all/20220327223927.20848-1-granquet@baylibre.com/
-> > 
-> > Functional dependencies are:
-> > - Add Mediatek Soc DRM (vdosys0) support for mt8195
-> >   
-> > 
-https://lore.kernel.org/linux-mediatek/20220419094143.9561-2-jason-jh.lin@mediatek.com/
-> > - Add MediaTek SoC DRM (vdosys1) support for mt8195
-> >   
-> > 
-https://lore.kernel.org/linux-mediatek/20220512053128.31415-1-nancy.lin@mediatek.com/
-> > 
-> > 
-> > Guillaume Ranquet (15):
-> >   drm/edid: Convert cea_sad helper struct to kernelDoc
-> >   drm/edid: Add cea_sad helpers for freq/length
-> >   drm/mediatek: dpi: move dpi limits to SoC config
-> >   drm/mediatek: dpi: implement a CK/DE pol toggle in SoC config
-> >   drm/mediatek: dpi: implement a swap_input toggle in SoC config
-> >   drm/mediatek: dpi: move dimension mask to SoC config
-> >   drm/mediatek: dpi: move hvsize_mask to SoC config
-> >   drm/mediatek: dpi: move swap_shift to SoC config
-> >   drm/mediatek: dpi: move the yuv422_en_bit to SoC config
-> >   drm/mediatek: dpi: move the csc_enable bit to SoC config
-> >   drm/mediatek: dpi: Add dpintf support
-> >   drm/mediatek: dpi: Only enable dpi after the bridge is enabled
-> >   drm/meditek: dpi: Add matrix_sel helper
-> >   drm/mediatek: Add mt8195 External DisplayPort support
-> >   drm/mediatek: DP audio support for mt8195
-> > 
-> > Jitao Shi (1):
-> >   drm/mediatek: add hpd debounce
-> > 
-> > Markus Schneider-Pargmann (5):
-> >   dt-bindings: mediatek,dpi: Add DPINTF compatible
-> >   dt-bindings: mediatek,dp: Add Display Port binding
-> >   video/hdmi: Add audio_infoframe packing for DP
-> >   phy: phy-mtk-dp: Add driver for DP phy
-> >   drm/mediatek: Add mt8195 Embedded DisplayPort driver
-> > 
-> >  .../display/mediatek/mediatek,dp.yaml         |   99 +
-> >  .../display/mediatek/mediatek,dpi.yaml        |   13 +-
-> >  MAINTAINERS                                   |    1 +
-> >  drivers/gpu/drm/drm_edid.c                    |   74 +
-> >  drivers/gpu/drm/mediatek/Kconfig              |    8 +
-> >  drivers/gpu/drm/mediatek/Makefile             |    2 +
-> >  drivers/gpu/drm/mediatek/mtk_dp.c             | 3419
-> > +++++++++++++++++
-> >  drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  570 +++
-> >  drivers/gpu/drm/mediatek/mtk_dpi.c            |  272 +-
-> >  drivers/gpu/drm/mediatek/mtk_dpi_regs.h       |   38 +
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |    8 +
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |    1 +
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c        |    8 +-
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.h        |    3 +
-> >  drivers/phy/mediatek/Kconfig                  |    8 +
-> >  drivers/phy/mediatek/Makefile                 |    1 +
-> >  drivers/phy/mediatek/phy-mtk-dp.c             |  200 +
-> >  drivers/video/hdmi.c                          |   82 +-
-> >  include/drm/dp/drm_dp_helper.h                |    2 +
-> >  include/drm/drm_edid.h                        |   26 +-
-> >  include/linux/hdmi.h                          |    7 +-
-> >  include/linux/soc/mediatek/mtk-mmsys.h        |    4 +-
-> >  22 files changed, 4765 insertions(+), 81 deletions(-)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-> >  create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
-> >  create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> >  create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
-> 
-> Hello all,
-> 
-> Due to the resource issue, I will keep upstreaming Guillaume's MT8195
-> dp/edp series.
-> 
-> I will check the comments for v8/v9/v10 and have some discussion with
-> you.
-> 
-> Thanks for your all comments.
-> 
-> BRs,
-> Bo-Chen
-> 
-
-Hello all,
-
-Because the patches of dp_intf seem to be almost completed, I want to
-split this series into two series:
-dp_intf and edp/dp.
-
-It will be easier to review and maintain this series.
-
-Thanks!
-
-BRs,
-Bo-Chen
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGUgMjMvMDUvMjAyMiDDoCAxMjo0NywgR3VpbGxhdW1lIFJhbnF1ZXQgYSDDqWNyaXTCoDoKPiBk
+cGludGYgaXMgdGhlIGRpc3BsYXlwb3J0IGludGVyZmFjZSBoYXJkd2FyZSB1bml0LiBUaGlzIHVu
+aXQgaXMgc2ltaWxhcgo+IHRvIGRwaSBhbmQgY2FuIHJldXNlIG1vc3Qgb2YgdGhlIGNvZGUuCj4g
+Cj4gVGhpcyBwYXRjaCBhZGRzIHN1cHBvcnQgZm9yIG10ODE5NS1kcGludGYgdG8gdGhpcyBkcGkg
+ZHJpdmVyLiBNYWluCj4gZGlmZmVyZW5jZXMgYXJlOgo+ICAgLSBTb21lIGZlYXR1cmVzL2Z1bmN0
+aW9uYWwgY29tcG9uZW50cyBhcmUgbm90IGF2YWlsYWJsZSBmb3IgZHBpbnRmCj4gICAgIHdoaWNo
+IGFyZSBub3cgZXhjbHVkZWQgZnJvbSBjb2RlIGV4ZWN1dGlvbiBvbmNlIGlzX2RwaW50ZiBpcyBz
+ZXQKPiAgIC0gZHBpbnRmIGNhbiBhbmQgbmVlZHMgdG8gY2hvb3NlIGJldHdlZW4gZGlmZmVyZW50
+IGNsb2NrZGl2aWRlcnMgYmFzZWQKPiAgICAgb24gdGhlIGNsb2Nrc3BlZWQuIFRoaXMgaXMgZG9u
+ZSBieSBjaG9vc2luZyBhIGRpZmZlcmVudCBjbG9jayBwYXJlbnQuCj4gICAtIFRoZXJlIGFyZSB0
+d28gYWRkaXRpb25hbCBjbG9ja3MgdGhhdCBuZWVkIHRvIGJlIG1hbmFnZWQuIFRoZXNlIGFyZQo+
+ICAgICBvbmx5IHNldCBmb3IgZHBpbnRmIGFuZCB3aWxsIGJlIHNldCB0byBOVUxMIGlmIG5vdCBz
+dXBwbGllZC4gVGhlCj4gICAgIGNsa18qIGNhbGxzIGhhbmRsZSB0aGVzZSBhcyBub3JtYWwgY2xv
+Y2tzIHRoZW4uCj4gICAtIFNvbWUgcmVnaXN0ZXIgY29udGVudHMgZGlmZmVyIHNsaWdodGx5IGJl
+dHdlZW4gdGhlIHR3byBjb21wb25lbnRzLiBUbwo+ICAgICB3b3JrIGFyb3VuZCB0aGlzIEkgYWRk
+ZWQgcmVnaXN0ZXIgYml0cy9tYXNrcyB3aXRoIGEgRFBJTlRGXyBwcmVmaXgKPiAgICAgYW5kIHVz
+ZSB0aGVtIHdoZXJlIGRpZmZlcmVudC4KPiAKPiBCYXNlZCBvbiBhIHNlcGFyYXRlIGRyaXZlciBm
+b3IgZHBpbnRmIGNyZWF0ZWQgYnkKPiBKYXNvbi1KSC5MaW4gPGphc29uLWpoLmxpbi1OdVM1THZO
+VXBjSldrMEh0aWszSi93QHB1YmxpYy5nbWFuZS5vcmc+Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1h
+cmt1cyBTY2huZWlkZXItUGFyZ21hbm4gPG1zcC1yZHZpZDFEdUhSQldrMEh0aWszSi93QHB1Ymxp
+Yy5nbWFuZS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogR3VpbGxhdW1lIFJhbnF1ZXQgPGdyYW5xdWV0
+LXJkdmlkMUR1SFJCV2swSHRpazNKL3dAcHVibGljLmdtYW5lLm9yZz4KPiAtLS0KPiAgIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgICAgICAgICAgfCAxMjYgKysrKysrKysrKysr
+KysrKystLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpX3JlZ3MuaCAgICAg
+fCAgMzUgKysrKysrCj4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
+cC5jIHwgICA4ICsrCj4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
+cC5oIHwgICAxICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAg
+ICAgfCAgIDUgKy0KPiAgIGluY2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1tbXN5cy5oICAg
+ICAgfCAgIDQgKy0KPiAgIDYgZmlsZXMgY2hhbmdlZCwgMTU5IGluc2VydGlvbnMoKyksIDIwIGRl
+bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RwaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGluZGV4IGViOTY5
+YzVjNWMyZS4uNzYzYmZiNzAwMTM1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5j
+Cj4gQEAgLTcxLDYgKzcxLDcgQEAgc3RydWN0IG10a19kcGkgewo+ICAgCXZvaWQgX19pb21lbSAq
+cmVnczsKPiAgIAlzdHJ1Y3QgZGV2aWNlICpkZXY7Cj4gICAJc3RydWN0IGNsayAqZW5naW5lX2Ns
+azsKPiArCXN0cnVjdCBjbGsgKmRwaV9ja19jZzsKPiAgIAlzdHJ1Y3QgY2xrICpwaXhlbF9jbGs7
+Cj4gICAJc3RydWN0IGNsayAqdHZkX2NsazsKPiAgIAlpbnQgaXJxOwo+IEBAIC0xMjYsNiArMTI3
+LDcgQEAgc3RydWN0IG10a19kcGlfY29uZiB7Cj4gICAJY29uc3QgdTMyICpvdXRwdXRfZm10czsK
+PiAgIAl1MzIgbnVtX291dHB1dF9mbXRzOwo+ICAgCWJvb2wgaXNfY2tfZGVfcG9sOwo+ICsJYm9v
+bCBpc19kcGludGY7Cj4gICAJYm9vbCBzd2FwX2lucHV0X3N1cHBvcnQ7Cj4gICAJLyogTWFzayB1
+c2VkIGZvciBIV0lEVEgsIEhQT1JDSCwgVlNZTkNfV0lEVEggYW5kIFZTWU5DX1BPUkNIIChubyBz
+aGlmdCkgKi8KPiAgIAl1MzIgZGltZW5zaW9uX21hc2s7Cj4gQEAgLTQzOCw2ICs0NDAsOCBAQCBz
+dGF0aWMgdm9pZCBtdGtfZHBpX3Bvd2VyX29mZihzdHJ1Y3QgbXRrX2RwaSAqZHBpKQo+ICAgCW10
+a19kcGlfZGlzYWJsZShkcGkpOwo+ICAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPnBpeGVs
+X2Nsayk7Cj4gICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwaS0+ZW5naW5lX2Nsayk7Cj4gKwlj
+bGtfZGlzYWJsZV91bnByZXBhcmUoZHBpLT5kcGlfY2tfY2cpOwo+ICsJY2xrX2Rpc2FibGVfdW5w
+cmVwYXJlKGRwaS0+dHZkX2Nsayk7Cj4gICB9Cj4gICAKPiAgIHN0YXRpYyBpbnQgbXRrX2RwaV9w
+b3dlcl9vbihzdHJ1Y3QgbXRrX2RwaSAqZHBpKQo+IEBAIC00NDcsMTIgKzQ1MSwyNCBAQCBzdGF0
+aWMgaW50IG10a19kcGlfcG93ZXJfb24oc3RydWN0IG10a19kcGkgKmRwaSkKPiAgIAlpZiAoKytk
+cGktPnJlZmNvdW50ICE9IDEpCj4gICAJCXJldHVybiAwOwo+ICAgCgpIaSwKCmJlbHdvIHRoZSBl
+cnJvciBoYW5kbGluZyBwYXRoIGxvb2tzIG9kZC4gKGJvdGggd2hlcmUgd2UgZ290bywgYW5kIHRo
+ZSAKb3JkZXIgb2YgdGhlIGNsa19kaXNhYmxlX3VucHJlcGFyZSgpIGluIHRoZSBlcnJvciBoYW5k
+bGluZyBwYXRoLgoKanVzdCBteSAyYywKCkNKCgo+ICsJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxl
+KGRwaS0+dHZkX2Nsayk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJZGV2X2VycihkcGktPmRldiwgIkZh
+aWxlZCB0byBlbmFibGUgdHZkIHBsbDogJWRcbiIsIHJldCk7Cj4gKwkJZ290byBlcnJfcGl4ZWw7
+Cj4gKwl9Cj4gKwo+ICAgCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkcGktPmVuZ2luZV9jbGsp
+Owo+ICAgCWlmIChyZXQpIHsKPiAgIAkJZGV2X2VycihkcGktPmRldiwgIkZhaWxlZCB0byBlbmFi
+bGUgZW5naW5lIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiAgIAkJZ290byBlcnJfcmVmY291bnQ7Cj4g
+ICAJfQo+ICAgCj4gKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHBpLT5kcGlfY2tfY2cpOwo+
+ICsJaWYgKHJldCkgewo+ICsJCWRldl9lcnIoZHBpLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxlIGRw
+aV9ja19jZyBjbG9jazogJWRcbiIsIHJldCk7Cj4gKwkJZ290byBlcnJfY2tfY2c7Cj4gKwl9Cj4g
+Kwo+ICAgCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkcGktPnBpeGVsX2Nsayk7Cj4gICAJaWYg
+KHJldCkgewo+ICAgCQlkZXZfZXJyKGRwaS0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBwaXhlbCBj
+bG9jazogJWRcbiIsIHJldCk7Cj4gQEAgLTQ2Niw2ICs0ODIsOCBAQCBzdGF0aWMgaW50IG10a19k
+cGlfcG93ZXJfb24oc3RydWN0IG10a19kcGkgKmRwaSkKPiAgIAlyZXR1cm4gMDsKPiAgIAo+ICAg
+ZXJyX3BpeGVsOgo+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwaS0+ZHBpX2NrX2NnKTsKPiAr
+ZXJyX2NrX2NnOgo+ICAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPmVuZ2luZV9jbGspOwo+
+ICAgZXJyX3JlZmNvdW50Ogo+ICAgCWRwaS0+cmVmY291bnQtLTsKClsuLi5dCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
