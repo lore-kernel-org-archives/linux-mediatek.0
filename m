@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F48C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 11:36:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A06C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 11:49:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VMub1AUIB5h24MQyAguknvd+VTj1GwktAIkNkJ8gKN0=; b=jes/4gvJn9auUL
-	49ktF1YuPsuYjNT0kHxj9C8Vr2frwpwj6+BLt0uSMHcliVHuq6783rm+63jJVe2Uf4OoDEL+wFTBG
-	JCiU7aWYlLvr6db/0Km9TM4axKgA4kkA0fRvpG9INBlYak8csjJmVud7Fq7UfxasEGrED1fp6E6nL
-	WtPlcNebqDzaMsKldNKmQJr1KuuoVUAMd59mb3ssCFSJnoDITzsVPdDzmMkLCeMJB0taQTHmZnhcC
-	+MXWAyLFLc3L9DQvR9G/gxG5FNXttXakoEjsXmv43eyTCUzPPTf655Ab9+1GD71oWt5Ujb+ZAkweV
-	0rHeGzlm/ErBLbUcBwNA==;
+	List-Owner; bh=+aeuLGHsGziATFMkg5Ri4p/YrGM5KQbA2RlG/b4VASA=; b=B/bIkJmAG+IBFd
+	ICpMwtUleSKaVk09eg/zKwO7EQiIjHyXVJ3OlhXcSShPw3dpuYOtZST9jJiBghbVYfmThWjrM3VTz
+	KkqbkKvnaJj5+qnYtAeQ1HrR8h5g5EguKsP1VnBX8IBt8komr8E74+wapM72EInZrB4E/V3D54oqn
+	nKup5xNnue682tldeUbhYaCOZsUBiY4FonhuY/EjXMolKicMfd9ywKrAbnPGm18iYoXevJItoni7O
+	fyXVcUNmjwqTYj1k9udIPPf8HlkqA1eb0gMoPc3YSqObSGxf4C1Wts2BNOEQnOTtms7C2TFrAlU2H
+	HC5xkLUTjgDzkkNVE4rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwj7b-002xSA-4E; Thu, 02 Jun 2022 11:36:11 +0000
+	id 1nwjKG-0031MW-Ms; Thu, 02 Jun 2022 11:49:16 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwj7V-002xQO-Ff; Thu, 02 Jun 2022 11:36:09 +0000
-X-UUID: 82835d90c5634b738639f52afd7b1e72-20220602
+	id 1nwjK4-0031Il-AW; Thu, 02 Jun 2022 11:49:06 +0000
+X-UUID: 6d6248aef46840bcbfb2c294a8435add-20220602
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:6237693a-fdbb-4d60-b4e1-65bcb6ff31dd,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.5,REQID:079752b3-5c98-4f9f-b49f-65bc9d4580f5,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:7019e837-9855-4915-a138-f5705f1f3d02,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-META: VersionHash:2a19b09,CLOUDID:9065e837-9855-4915-a138-f5705f1f3d02,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 82835d90c5634b738639f52afd7b1e72-20220602
+X-UUID: 6d6248aef46840bcbfb2c294a8435add-20220602
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 240141980; Thu, 02 Jun 2022 04:35:51 -0700
+	with ESMTP id 1358563642; Thu, 02 Jun 2022 04:49:01 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jun 2022 04:29:58 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Jun 2022 04:38:59 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 2 Jun 2022 19:29:57 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Jun 2022 19:29:56 +0800
-Message-ID: <5c614dc0947aba6ce2eb0cdc3055a390da723d08.camel@mediatek.com>
-Subject: Re: [PATCH v1 01/15] dt-binding: remoteproc: mediatek: Support
- dual-core SCP
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Bjorn Andersson
-	<bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Benson Leung
-	<bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Daisuke Nojiri
-	<dnojiri@chromium.org>, Sebastian Reichel <sebastian.reichel@collabora.com>,
-	"Dustin L. Howett" <dustin@howett.net>, Tzung-Bi Shih <tzungbi@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Prashant Malani
-	<pmalani@chromium.org>, Enric Balletbo i Serra
-	<enric.balletbo@collabora.com>, Brian Norris <briannorris@chromium.org>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <weishunc@google.com>
-Date: Thu, 2 Jun 2022 19:29:56 +0800
-In-Reply-To: <45c8050e-16d3-80d6-0799-8b067a38d956@linaro.org>
-References: <20220601112201.15510-1-tinghan.shen@mediatek.com>
-	 <20220601112201.15510-2-tinghan.shen@mediatek.com>
-	 <dd3ea397-fa21-abe5-85ad-b8a4818dc011@linaro.org>
-	 <3c837acfbefa5b7e23e1121678b5b878f08e4ef2.camel@mediatek.com>
-	 <476baef8-0255-45ed-85f4-2b9d877c4af1@linaro.org>
-	 <287d88a62fd13cd762b20faa3e9df826632fe1eb.camel@mediatek.com>
-	 <45c8050e-16d3-80d6-0799-8b067a38d956@linaro.org>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 2 Jun 2022 19:38:57 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 2 Jun 2022 19:38:57 +0800
+Message-ID: <be98423304bd51959dd9334215114bd179ec1e6b.camel@mediatek.com>
+Subject: Re: [PATCH v10 11/21] drm/mediatek: dpi: move swap_shift to SoC
+ config
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
+ Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>
+Date: Thu, 2 Jun 2022 19:38:57 +0800
+In-Reply-To: <76ddd49bb2bb46923900b085056ce22d7bfa0b0a.camel@mediatek.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-12-granquet@baylibre.com>
+	 <76ddd49bb2bb46923900b085056ce22d7bfa0b0a.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_043605_579690_ED58A7FF 
-X-CRM114-Status: GOOD (  43.19  )
+X-CRM114-CacheID: sfid-20220602_044904_396501_2DC10D8A 
+X-CRM114-Status: GOOD (  23.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,146 +93,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Thu, 2022-06-02 at 12:37 +0200, Krzysztof Kozlowski wrote:
-> On 02/06/2022 10:58, Tinghan Shen wrote:
-> > Hi Krzysztof,
-> > 
-> > On Thu, 2022-06-02 at 08:55 +0200, Krzysztof Kozlowski wrote:
-> > > On 02/06/2022 07:21, Tinghan Shen wrote:
-> > > > Hi Krzysztof,
-> > > > 
-> > > > On Wed, 2022-06-01 at 13:50 +0200, Krzysztof Kozlowski wrote:
-> > > > > On 01/06/2022 13:21, Tinghan Shen wrote:
-> > > > > > The SCP co-processor is a dual-core RISC-V MCU on MT8195.
-> > > > > > 
-> > > > > > Add a new property to identify each core and helps to find drivers
-> > > > > > through device tree API to cooperate with each other, e.g. boot flow and
-> > > > > > watchdog timeout flow.
-> > > > > > 
-> > > > > > Add a new compatile for the driver of SCP 2nd core.
-> > > > > > 
-> > > > > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > > > > > ---
-> > > > > >  .../devicetree/bindings/remoteproc/mtk,scp.yaml      | 12 ++++++++++++
-> > > > > >  1 file changed, 12 insertions(+)
-> > > > > > 
-> > > > > > diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > > > b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > > > index eec3b9c4c713..b181786d9575 100644
-> > > > > > --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > > > +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > > > @@ -20,6 +20,7 @@ properties:
-> > > > > >        - mediatek,mt8186-scp
-> > > > > >        - mediatek,mt8192-scp
-> > > > > >        - mediatek,mt8195-scp
-> > > > > > +      - mediatek,mt8195-scp-dual
-> > > > > >  
-> > > > > >    reg:
-> > > > > >      description:
-> > > > > > @@ -57,6 +58,16 @@ properties:
-> > > > > >    memory-region:
-> > > > > >      maxItems: 1
-> > > > > >  
-> > > > > > +  mediatek,scp-core:
-> > > > > > +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> > > > > > +    description:
-> > > > > > +      The property value is a list with 2 items, a core id and a phandle
-> > > > > 
-> > > > > uint32, not phandle.
-> > > > > 
-> > > > > > +      to the sibling SCP node. 
-> > > > > 
-> > > > > Skip this. First part is obvious from the schema, second part should be
-> > > > > described via items.
-> > > > > 
-> > > > > The core id represents the id of the dts node contains
-> > > > > > +      this property. The valid values of core id are 0 and 1 for dual-core SCP.
-> > > > > > +      The phandle of sibling SCP node is used to find the register settings,
-> > > > > > +      trigger core dependent callback, and invoke rproc API.
-> > > > > 
-> > > > > Entire description did not help me to understand what's this. So far it
-> > > > > looks like it is not a hardware property but some programming help, so
-> > > > > it does not look like properly described in bindings.
-> > > > > 
-> > > > > > +    maxItems: 1
-> > > > > 
-> > > > > In description you said - two items.
-> > > > > 
-> > > > > You need allOf:if:then disallowing this property for other variants.
-> > > > > 
-> > > > > > +
-> > > > > >  required:
-> > > > > >    - compatible
-> > > > > >    - reg
-> > > > > > @@ -115,6 +126,7 @@ examples:
-> > > > > >          reg-names = "sram", "cfg", "l1tcm";
-> > > > > >          clocks = <&infracfg CLK_INFRA_SCPSYS>;
-> > > > > >          clock-names = "main";
-> > > > > > +        mediatek,scp-core = <0 &scp_dual>;
-> > > > > 
-> > > > > This looks like phandle, so wrong type.
-> > > > > >  
-> > > > > >          cros_ec {
-> > > > > >              mediatek,rpmsg-name = "cros-ec-rpmsg";
-> > > > 
-> > > > Thanks for your feedback.
-> > > > After looking for a comparable uses case, I find out a different approach.
-> > > > 
-> > > >   mediatek,scp-core:
-> > > >     $ref: "/schemas/types.yaml#/definitions/phandle-array"
-> > > >     description:
-> > > >       Enable the dual-core support in scp driver.
-> > > 
-> > > You describe desired functional behavior, not the hardware. What is the
-> > > property about? If you just want to indicate this is two-core processor,
-> > > then it could be:
-> > > 	mediatek,cores = <2>; /* number of cores */
-> > > 
-> > > 
-> > > However it seems you want to achieve here something different and as I
-> > > raised last time - it does not look like DT property.
-> > > 
-> > > Or maybe this is for first core and you want to indicate the sibling?
-> > > Something like that was mentioned in previous description.
-> > 
-> > This property is mainly added for scp 1st core driver 
-> > and scp 2nd core driver to find each other via DT API.
-> > 
-> > After reconsidering the use of core id in the scp driver, it 
-> > is not necessary in the control flow. I'll remove the core id 
-> > at next version.
-> > 
-> > How about change the description as following,
-> > 
-> >   This property enables the dual-core support in scp driver.
-> >   By providing the phandle of SCP 2nd core node, the 1st SCP node
-> >   can control the SCP 2nd core as the subdevice of remoteproc framework.
+On Mon, 2022-05-30 at 16:38 +0800, CK Hu wrote:
+> Hi, Guillaume:
 > 
-> Please, read it again:
+> On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> > Add flexibility by moving the swap shift value to SoC specific
+> > config
+> > 
+> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dpi.c | 8 +++++++-
+> >  1 file changed, 7 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > index 6eeda222a973..6d4d8c6ec47d 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > @@ -131,6 +131,7 @@ struct mtk_dpi_conf {
+> >  	u32 dimension_mask;
+> >  	/* HSIZE and VSIZE mask (no shift) */
+> >  	u32 hvsize_mask;
+> > +	u32 channel_swap_shift;
+> >  	const struct mtk_dpi_yc_limit *limit;
+> >  };
+> >  
+> > @@ -349,7 +350,8 @@ static void mtk_dpi_config_channel_swap(struct
+> > mtk_dpi *dpi,
+> >  		break;
+> >  	}
+> >  
+> > -	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << CH_SWAP,
+> > CH_SWAP_MASK);
+> > +	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << dpi->conf-
+> > > channel_swap_shift,
+> > 
+> > +		     CH_SWAP_MASK);
+> > From the definiton:
 > 
-> > > You describe desired functional behavior, not the hardware.
+>  #define CH_SWAP				0
+> +#define DPINTF_CH_SWAP			BIT(1)
+>  #define CH_SWAP_MASK			(0x7 << 0)
+> +#define DPINTF_CH_SWAP_MASK		(0x7 << 1)
 > 
-> Again, you describe Linux implementation (scp driver, remoteproc
-> framework). You need to describe the hardware, not Linux drivers.
+> This statement should be:
 > 
-> Maybe the hardware property is that one core has its sibling and you
-> provide here that sibling?
+> mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << dpi->conf-
+> > channel_swap_shift, CH_SWAP_MASK << dpi->conf->channel_swap_shift);
+> 
+> dpi->conf->channel_swap_shift is 1 for MT8195-DP_INTF and 0 for
+> others.
+> And drop the definition of DPINTF_CH_SWAP and DPINTF_CH_SWAP_MASK,
+> 
+> Regards,
+> CK
+> 
 
-Yes, exactly. I'm sorry for misreading your argument.
+Hello CK,
 
-How about this one,
-   
-  Reference to the sibling SCP core. This is required when 
-  dual-core SCP support is enabled.
+I think we should keep DPINTF_CH_SWAP?
+BIT(1) = 2 so the shift should be:
+dpi->conf->channel_swap_shift is 2 for MT8195-DP_INTF and 0 for
+others.
 
-Thanks,
-TingHan
-
-
-
-
+BRs,
+Bo-Chen
+> 
+> >  }
+> >  
+> >  static void mtk_dpi_config_yuv422_enable(struct mtk_dpi *dpi, bool
+> > enable)
+> > @@ -821,6 +823,7 @@ static const struct mtk_dpi_conf mt8173_conf =
+> > {
+> >  	.swap_input_support = true,
+> >  	.dimension_mask = HPW_MASK,
+> >  	.hvsize_mask = HSIZE_MASK,
+> > +	.channel_swap_shift = CH_SWAP,
+> >  	.limit = &mtk_dpi_limit,
+> >  };
+> >  
+> > @@ -835,6 +838,7 @@ static const struct mtk_dpi_conf mt2701_conf =
+> > {
+> >  	.swap_input_support = true,
+> >  	.dimension_mask = HPW_MASK,
+> >  	.hvsize_mask = HSIZE_MASK,
+> > +	.channel_swap_shift = CH_SWAP,
+> >  	.limit = &mtk_dpi_limit,
+> >  };
+> >  
+> > @@ -848,6 +852,7 @@ static const struct mtk_dpi_conf mt8183_conf =
+> > {
+> >  	.swap_input_support = true,
+> >  	.dimension_mask = HPW_MASK,
+> >  	.hvsize_mask = HSIZE_MASK,
+> > +	.channel_swap_shift = CH_SWAP,
+> >  	.limit = &mtk_dpi_limit,
+> >  };
+> >  
+> > @@ -861,6 +866,7 @@ static const struct mtk_dpi_conf mt8192_conf =
+> > {
+> >  	.swap_input_support = true,
+> >  	.dimension_mask = HPW_MASK,
+> >  	.hvsize_mask = HSIZE_MASK,
+> > +	.channel_swap_shift = CH_SWAP,
+> >  	.limit = &mtk_dpi_limit,
+> >  };
+> >  
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
 
 _______________________________________________
