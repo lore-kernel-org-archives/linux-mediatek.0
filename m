@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10FAFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 09:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E5F2C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 09:18:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qbF2Nz69Nre7Nx3YmQ1FNiZrzmgAZWssKBml4MgfubA=; b=wViRId4m2Ah4s1
-	Eby6bZhGCl8pdiA9QrH0FyNiaGul5+ioPxhStKsf4cF14B6tcXIVMd0QzcWZ8/R/wHuEXxHGjfs8K
-	/cQAyRNpzJgIB1np8vf+IOp0F7cxlReiitiheG6OXBZmsmcICsN5YoegcZHW7SK5L8wU6b8FByLJT
-	WnOiMujMW1JnBJInts9CepqGSMqcjivh8MiwUfytE55UIVwTOd7a+r0H5AgRd9lzIpMASaYIFwRvO
-	JmxkCbdXGTP4jby+b5iVUmzVIcJ+IgYvQKSpQC7er5aEcOOShTnzEesAqR3SajuWWk6vqlkyqeWft
-	S6lKJUwJJZODd8OpvyVg==;
+	List-Owner; bh=x5tW43FZ0OPHZ9pHl7rhsFmjZOZqZSR3S03RgsHMVbQ=; b=r0yjwUDsCD8hEI
+	PYQ/tYjKQ4I4XYcyHA4XJV97OYsRYx7xvI6MW/e3UuqSYe2SDLXgHam76FVjGkvpCiFzbR71SnUYU
+	cqMVg6U7IIE6c31SLmlpGoapeJbh4PR/Eki0GbM8fUpDs3lpATIjh2qkMKNjkk3r/E0jurxwqmc1I
+	WG0JX3ShaoA58fxtwNM+YjPpncTuaRssyHJMKC6h+vR0gE9/M7lz8fvyE4uB/EbSEL5iQ6nJFqfZj
+	wDE2e1+fDW8MkEIUhLOA4JLSSROtmSofTtCJd/k3x4guyY9uotLGTv7bwTC38nith+m6N3zZuSMcP
+	GjYvQj7d5ZZKvHnmaTOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwgo3-002NNP-8u; Thu, 02 Jun 2022 09:07:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nwgyO-002Q80-97; Thu, 02 Jun 2022 09:18:32 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwgo0-002NMF-MC; Thu, 02 Jun 2022 09:07:50 +0000
-X-UUID: 63d6747bbad34171879ecd1ea63e4a9d-20220602
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:f323286e-3e04-41a9-8319-419ac146659b,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:b676ac6e-b02c-4af4-b838-5c14aaa063c7,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:0,BEC:nil
-X-UUID: 63d6747bbad34171879ecd1ea63e4a9d-20220602
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 427262239; Thu, 02 Jun 2022 02:07:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Jun 2022 01:58:09 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 2 Jun 2022 16:58:07 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Jun 2022 16:58:07 +0800
-Message-ID: <287d88a62fd13cd762b20faa3e9df826632fe1eb.camel@mediatek.com>
-Subject: Re: [PATCH v1 01/15] dt-binding: remoteproc: mediatek: Support
- dual-core SCP
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Bjorn Andersson
-	<bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, Benson Leung
-	<bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Daisuke Nojiri
-	<dnojiri@chromium.org>, Sebastian Reichel <sebastian.reichel@collabora.com>,
-	"Dustin L. Howett" <dustin@howett.net>, Tzung-Bi Shih <tzungbi@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Prashant Malani
-	<pmalani@chromium.org>, Enric Balletbo i Serra
-	<enric.balletbo@collabora.com>, Brian Norris <briannorris@chromium.org>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <weishunc@google.com>
-Date: Thu, 2 Jun 2022 16:58:07 +0800
-In-Reply-To: <476baef8-0255-45ed-85f4-2b9d877c4af1@linaro.org>
-References: <20220601112201.15510-1-tinghan.shen@mediatek.com>
-	 <20220601112201.15510-2-tinghan.shen@mediatek.com>
-	 <dd3ea397-fa21-abe5-85ad-b8a4818dc011@linaro.org>
-	 <3c837acfbefa5b7e23e1121678b5b878f08e4ef2.camel@mediatek.com>
-	 <476baef8-0255-45ed-85f4-2b9d877c4af1@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nwgyC-002Q32-Ds; Thu, 02 Jun 2022 09:18:21 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id rq11so8770386ejc.4;
+        Thu, 02 Jun 2022 02:18:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=0d9LPcPl2z82dxOAeBz8oaTNCeFfF1mrJ8xfIO9HyHE=;
+        b=lfLh9e2Zec+kRfUbieDqxaSJGfE2gK5tVDQL4/AlpgVcAAIBNipxqiaQ9KaF31NRoL
+         p4XLfqqfzJDaVnItedh+uY7WOZo9GWfO9EDs7Kwtb9g1ep7F/2s8jmC8C+5HKoB8mmqm
+         5+MnNkvj0n3QFu1KLRgu4qmE4FZpPqT/FxCabwWRio16T/tBO5n8YQs39umvhQZU1izc
+         kmND1i4pFf63FZslDTQd5TX2paKc+iavMXEEIfxzCgFARk5C9xBN1i2j5XO5tazLpbL3
+         wIlyYfmxX1H8YiEs73O3/gKRJfzGSjM99weIY/3wRiXAWXYqSVXb5yR9RaF0dJyLJck3
+         HKTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=0d9LPcPl2z82dxOAeBz8oaTNCeFfF1mrJ8xfIO9HyHE=;
+        b=3JQcCUFgetTdD62xGycE6AlIfMXM81FUZsLvOKp3j1EGKEvpkBAkckQ0nEngTwMBif
+         25qulS6WbS1jd7FG1briQco+ADtLTsaVbXK94lgctVD8lPasBAj8pGKTWZ+yNDvHHvuQ
+         EOyUw9WLvYg0dRIx75vL9x1GjaAHkiNtAuzPR4gATAezaRKER3IGq+M1/3mEeMOvP8gd
+         a9PCFQY8xLDoGtEaKGs4HntyP4PQBETWf6cDJcntRx5gFdGEV4YWMHsPr+OZwHB/WWYK
+         yz5O2X4lsglip4BFl/nrrZzfWI4fN/oz4QDG9dB8vYNn6l7schUeeQXRgHW71eAUr6do
+         BJhg==
+X-Gm-Message-State: AOAM531vH8Run8Pxqogmk93QARhtU+qAv+A5G0LC0xoZpmT+fh5DwJYP
+	mo9DMiQSxR7+03zQOJjhyl/MwL5PciQ2nbbxp+A=
+X-Google-Smtp-Source: ABdhPJxRg1MZXl/SkbIUuNBrRuGNQldHFdLPZxE+GhC/BiCEKh8oflGlAj5dFnKQFyQ9Ns7hxKjhAhvcKy/fq3rTsjo=
+X-Received: by 2002:a17:907:6e04:b0:6f4:d6f3:c72a with SMTP id
+ sd4-20020a1709076e0400b006f4d6f3c72amr3415411ejc.636.1654161497069; Thu, 02
+ Jun 2022 02:18:17 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220531102809.11976-1-peterwu.pub@gmail.com> <20220531102809.11976-7-peterwu.pub@gmail.com>
+ <CAHp75Vd8taco19vsDmBcCv8euV1SvwSiY5=P9oMkA6zWsjwXxg@mail.gmail.com> <20220602062643.GA13824@cyhuang-hp-elitebook-840-g3.rt>
+In-Reply-To: <20220602062643.GA13824@cyhuang-hp-elitebook-840-g3.rt>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 2 Jun 2022 11:17:40 +0200
+Message-ID: <CAHp75Vd-n=oLnhRCK=pR5ybOZbC6BKXrE2jRdwDbH90E4KYFGA@mail.gmail.com>
+Subject: Re: [PATCH 06/14] leds: mt6370: Add Mediatek MT6370 Indicator support
+To: ChiYuan Huang <u0084500@gmail.com>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
+	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, cy_huang@richtek.com, 
+	alice_chen@richtek.com, chiaen_wu@richtek.com, 
+	dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_020748_778570_47CBA22D 
-X-CRM114-Status: GOOD (  40.87  )
+X-CRM114-CacheID: sfid-20220602_021820_506492_A1A2E083 
+X-CRM114-Status: GOOD (  20.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,140 +99,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On Thu, Jun 2, 2022 at 8:27 AM ChiYuan Huang <u0084500@gmail.com> wrote:
+> On Wed, Jun 01, 2022 at 11:48:58AM +0200, Andy Shevchenko wrote:
+> > On Tue, May 31, 2022 at 1:16 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 
-On Thu, 2022-06-02 at 08:55 +0200, Krzysztof Kozlowski wrote:
-> On 02/06/2022 07:21, Tinghan Shen wrote:
-> > Hi Krzysztof,
-> > 
-> > On Wed, 2022-06-01 at 13:50 +0200, Krzysztof Kozlowski wrote:
-> > > On 01/06/2022 13:21, Tinghan Shen wrote:
-> > > > The SCP co-processor is a dual-core RISC-V MCU on MT8195.
-> > > > 
-> > > > Add a new property to identify each core and helps to find drivers
-> > > > through device tree API to cooperate with each other, e.g. boot flow and
-> > > > watchdog timeout flow.
-> > > > 
-> > > > Add a new compatile for the driver of SCP 2nd core.
-> > > > 
-> > > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > > > ---
-> > > >  .../devicetree/bindings/remoteproc/mtk,scp.yaml      | 12 ++++++++++++
-> > > >  1 file changed, 12 insertions(+)
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > index eec3b9c4c713..b181786d9575 100644
-> > > > --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> > > > @@ -20,6 +20,7 @@ properties:
-> > > >        - mediatek,mt8186-scp
-> > > >        - mediatek,mt8192-scp
-> > > >        - mediatek,mt8195-scp
-> > > > +      - mediatek,mt8195-scp-dual
-> > > >  
-> > > >    reg:
-> > > >      description:
-> > > > @@ -57,6 +58,16 @@ properties:
-> > > >    memory-region:
-> > > >      maxItems: 1
-> > > >  
-> > > > +  mediatek,scp-core:
-> > > > +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> > > > +    description:
-> > > > +      The property value is a list with 2 items, a core id and a phandle
-> > > 
-> > > uint32, not phandle.
-> > > 
-> > > > +      to the sibling SCP node. 
-> > > 
-> > > Skip this. First part is obvious from the schema, second part should be
-> > > described via items.
-> > > 
-> > > The core id represents the id of the dts node contains
-> > > > +      this property. The valid values of core id are 0 and 1 for dual-core SCP.
-> > > > +      The phandle of sibling SCP node is used to find the register settings,
-> > > > +      trigger core dependent callback, and invoke rproc API.
-> > > 
-> > > Entire description did not help me to understand what's this. So far it
-> > > looks like it is not a hardware property but some programming help, so
-> > > it does not look like properly described in bindings.
-> > > 
-> > > > +    maxItems: 1
-> > > 
-> > > In description you said - two items.
-> > > 
-> > > You need allOf:if:then disallowing this property for other variants.
-> > > 
-> > > > +
-> > > >  required:
-> > > >    - compatible
-> > > >    - reg
-> > > > @@ -115,6 +126,7 @@ examples:
-> > > >          reg-names = "sram", "cfg", "l1tcm";
-> > > >          clocks = <&infracfg CLK_INFRA_SCPSYS>;
-> > > >          clock-names = "main";
-> > > > +        mediatek,scp-core = <0 &scp_dual>;
-> > > 
-> > > This looks like phandle, so wrong type.
-> > > >  
-> > > >          cros_ec {
-> > > >              mediatek,rpmsg-name = "cros-ec-rpmsg";
-> > 
-> > Thanks for your feedback.
-> > After looking for a comparable uses case, I find out a different approach.
-> > 
-> >   mediatek,scp-core:
-> >     $ref: "/schemas/types.yaml#/definitions/phandle-array"
-> >     description:
-> >       Enable the dual-core support in scp driver.
-> 
-> You describe desired functional behavior, not the hardware. What is the
-> property about? If you just want to indicate this is two-core processor,
-> then it could be:
-> 	mediatek,cores = <2>; /* number of cores */
-> 
-> 
-> However it seems you want to achieve here something different and as I
-> raised last time - it does not look like DT property.
-> 
-> Or maybe this is for first core and you want to indicate the sibling?
-> Something like that was mentioned in previous description.
+...
 
-This property is mainly added for scp 1st core driver 
-and scp 2nd core driver to find each other via DT API.
+> > What indicator?
+> It's RGB curent sink type LED driver (maximum supported current is only 24mA).
 
-After reconsidering the use of core id in the scp driver, it 
-is not necessary in the control flow. I'll remove the core id 
-at next version.
+Make your commit messages a slightly more verbose.
 
-How about change the description as following,
+...
 
-  This property enables the dual-core support in scp driver.
-  By providing the phandle of SCP 2nd core node, the 1st SCP node
-  can control the SCP 2nd core as the subdevice of remoteproc framework.
+> > > +#include <linux/of.h>
+> >
+> > Are you sure this is the correct header? Seems you need
+> > mod_devicetable.h instead.
+> >
+> It's the correct header and be used for the struct 'of_device_id'.
+
+Nope. Run the following command
+$ git grep -n 'struct of_device_id {' -- include/linux/
+
+...
+
+> > > +struct mt6370_priv {
+> > > +       struct mutex lock;
+> >
+> > Do you use regmap locking?
+> >
+> MFD regmap register already the access lock.
+>
+> This lock is just to guarantee only one user can access the RGB register
+> part.
+>
+> Sorry, from the comment, do you want us to rename or remove this lock?
+
+My point is, since you have two locks, explain why you need each of them.
+
+> > > +       struct device *dev;
+> >
+> > > +       struct regmap *regmap;
+> >
+> > > +       struct regmap_field *fields[F_MAX_FIELDS];
+> > > +       const struct reg_field *reg_fields;
+> > > +       const struct linear_range *ranges;
+> > > +       struct reg_cfg *reg_cfgs;
+> > > +       unsigned int leds_count;
+> > > +       unsigned int leds_active;
+> > > +       bool is_mt6372;
+> > > +       struct mt6370_led leds[];
+> > > +};
 
 
-Thanks,
-Tinghan
-
-> 
-> 
-> >     items:
-> >       - items:
-> >           - description: Assign a core id for current scp node.
-> >             enum: [0, 1]
-> >           - description:
-> >               Phandle of another SCP node. This helps to find
-> >               the scp driver of another core to trigger core
-> >               dependent callback, invoke rproc subdevice API, etc.
-> 
-> Items should be rather reversed, as [0,1] being the argument to phandle
-> for a provider (see examples with syscon)...
-> 
-> Best regards,
-> Krzysztof
-
+-- 
+With Best Regards,
+Andy Shevchenko
 
 _______________________________________________
 Linux-mediatek mailing list
