@@ -4,59 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9657FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 05:49:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC00C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 06:09:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XNiFvD7Y6CXg+URSQIxhfqf8K2akpPupNBsjgvb2SEo=; b=JUivgSG3zeC2qw
-	XS/OKr7Y0b3Pr+sQvRPLQq76fgwFPn0f4uGoNvi7ydHB1CmvEFVPGe1MYRNZ2vnMieZ0r00guQAyn
-	vrPz1ZLITlqPgP1h6L61YyoAmOsRG+vpEs95LmvmD4j0/jp7koQ2dJCqd+1040sDRJcAi7/pz03ON
-	Wavg6rwUgXL532cbs15amkyFqEPw4mSOcs169FMPOatqYwEUZlFpmUuiqEAWcbeVK8MLXZkN5eM5w
-	tEbsNgJ04OZf5+OQTRAIEmIIUIt94Ct7l+H2OWkFl3HahQas3A+eb9c/hJKSktf8jb273F4nr290S
-	YCkRy+2QgiEzEXfA10Gw==;
+	List-Owner; bh=GKP77qgc8CRpC4t4oQXjYxBzVHh+eF+VA8SBgvhtWS4=; b=PR3V16BwAciRj2
+	n/GNBWuJZBiTF/sRPaGDE7NAERkcvp/jzIgX3i2iG3G0MB14v3DSQdt3CC6K9OKczNp21pjdmGNqT
+	v/dpCwMFv4/Ug35N5TA4KsePydhw0MsHpak5x5LHAixf4OfO/NZTrwrNaLGp9zSRr5by7WuXZ5ONF
+	MPuLl8pcYrsJDtRsBAcsfNsNWsdmrsnaDhF7lb9eKhz8vfQIDzGhRNVcQ+NUIm1aCUa/OdPA+k3fZ
+	NmjRuoqxI9zVIc/uL04dcaO8xFLk4FDb1jfSCJzoS0O/4uH12daVR6zKaBDd1RRX6KPXBgXI+bIsI
+	Apd9MGUaMi9aUlZNQ1hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwdht-001XLn-Lf; Thu, 02 Jun 2022 05:49:17 +0000
-Received: from smtp04.smtpout.orange.fr ([80.12.242.126] helo=smtp.smtpout.orange.fr)
+	id 1nwe1h-001eER-Br; Thu, 02 Jun 2022 06:09:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwdhe-001XI8-3W
-	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 05:49:06 +0000
-Received: from [192.168.1.18] ([90.11.190.129])
-	by smtp.orange.fr with ESMTPA
-	id wdhSn51g6QKuawdhSnS6n8; Thu, 02 Jun 2022 07:48:57 +0200
-X-ME-Helo: [192.168.1.18]
-X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Thu, 02 Jun 2022 07:48:57 +0200
-X-ME-IP: 90.11.190.129
-Message-ID: <60d33448-1cc9-c662-167b-10c1f9660545@wanadoo.fr>
-Date: Thu, 2 Jun 2022 07:48:50 +0200
+	id 1nwe1X-001eAj-Gc; Thu, 02 Jun 2022 06:09:36 +0000
+X-UUID: 353bcebf39004c45aa7b17045437edac-20220601
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=GHNd9oIn3kIp820QF+C1/nYOh8saFSuSEtIaQSH5w7M=;
+	b=moKgnR4/zUkatxcD4WFcpmRyjLe717OKE9oTKhIAMu0Jt2nP6waOXHXPdHVaMAMNCCie4gqtbGJxCs1bd7BtCT0Ws2LRPTkzToffGeI9NKdU/DOMvHOPxguYm5t9ifa603yyKmQT5qLJs5E/iZiADSsjNaq6ROQMzLLmWHPDH8A=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:1316c6bd-e7e8-4865-90bf-8ab7ade6e248,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:7e020615-b515-4766-a72d-4514488fe823,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 353bcebf39004c45aa7b17045437edac-20220601
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <axe.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1329188681; Wed, 01 Jun 2022 23:09:26 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Jun 2022 23:07:09 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 2 Jun 2022 14:07:07 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 2 Jun 2022 14:07:05 +0800
+Message-ID: <1d07579c0a6b8853ab72e345a0bd0be73549de8c.camel@mediatek.com>
+Subject: Re: [RESEND v12 0/3] mmc: mediatek: add support for SDIO async IRQ
+From: Axe Yang <axe.yang@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+	Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
+CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
+	<satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
+	<dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>, Andrew Jeffery
+	<andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim
+	<kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, Tian Tao
+	<tiantao6@hisilicon.com>, <angelogioacchino.delregno@collabora.com>,
+	<linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 2 Jun 2022 14:07:04 +0800
+In-Reply-To: <20220525015140.384-1-axe.yang@mediatek.com>
+References: <20220525015140.384-1-axe.yang@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v10 14/21] drm/mediatek: dpi: Add dpintf support
-Content-Language: fr
-To: granquet@baylibre.com
-Cc: airlied@linux.ie, chunfeng.yun@mediatek.com, chunkuang.hu@kernel.org,
- ck.hu@mediatek.com, daniel@ffwll.ch, deller@gmx.de,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- jitao.shi@mediatek.com, kishon@ti.com, krzysztof.kozlowski+dt@linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, maarten.lankhorst@linux.intel.com,
- matthias.bgg@gmail.com, mripard@kernel.org, msp@baylibre.com,
- p.zabel@pengutronix.de, robh+dt@kernel.org, tzimmermann@suse.de,
- vkoul@kernel.org
-References: <20220523104758.29531-1-granquet@baylibre.com>
- <20220523104758.29531-15-granquet@baylibre.com>
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <20220523104758.29531-15-granquet@baylibre.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_224902_405419_A1F00DFC 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20220601_230935_604292_C5ED1992 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,79 +87,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-TGUgMjMvMDUvMjAyMiDDoCAxMjo0NywgR3VpbGxhdW1lIFJhbnF1ZXQgYSDDqWNyaXTCoDoKPiBk
-cGludGYgaXMgdGhlIGRpc3BsYXlwb3J0IGludGVyZmFjZSBoYXJkd2FyZSB1bml0LiBUaGlzIHVu
-aXQgaXMgc2ltaWxhcgo+IHRvIGRwaSBhbmQgY2FuIHJldXNlIG1vc3Qgb2YgdGhlIGNvZGUuCj4g
-Cj4gVGhpcyBwYXRjaCBhZGRzIHN1cHBvcnQgZm9yIG10ODE5NS1kcGludGYgdG8gdGhpcyBkcGkg
-ZHJpdmVyLiBNYWluCj4gZGlmZmVyZW5jZXMgYXJlOgo+ICAgLSBTb21lIGZlYXR1cmVzL2Z1bmN0
-aW9uYWwgY29tcG9uZW50cyBhcmUgbm90IGF2YWlsYWJsZSBmb3IgZHBpbnRmCj4gICAgIHdoaWNo
-IGFyZSBub3cgZXhjbHVkZWQgZnJvbSBjb2RlIGV4ZWN1dGlvbiBvbmNlIGlzX2RwaW50ZiBpcyBz
-ZXQKPiAgIC0gZHBpbnRmIGNhbiBhbmQgbmVlZHMgdG8gY2hvb3NlIGJldHdlZW4gZGlmZmVyZW50
-IGNsb2NrZGl2aWRlcnMgYmFzZWQKPiAgICAgb24gdGhlIGNsb2Nrc3BlZWQuIFRoaXMgaXMgZG9u
-ZSBieSBjaG9vc2luZyBhIGRpZmZlcmVudCBjbG9jayBwYXJlbnQuCj4gICAtIFRoZXJlIGFyZSB0
-d28gYWRkaXRpb25hbCBjbG9ja3MgdGhhdCBuZWVkIHRvIGJlIG1hbmFnZWQuIFRoZXNlIGFyZQo+
-ICAgICBvbmx5IHNldCBmb3IgZHBpbnRmIGFuZCB3aWxsIGJlIHNldCB0byBOVUxMIGlmIG5vdCBz
-dXBwbGllZC4gVGhlCj4gICAgIGNsa18qIGNhbGxzIGhhbmRsZSB0aGVzZSBhcyBub3JtYWwgY2xv
-Y2tzIHRoZW4uCj4gICAtIFNvbWUgcmVnaXN0ZXIgY29udGVudHMgZGlmZmVyIHNsaWdodGx5IGJl
-dHdlZW4gdGhlIHR3byBjb21wb25lbnRzLiBUbwo+ICAgICB3b3JrIGFyb3VuZCB0aGlzIEkgYWRk
-ZWQgcmVnaXN0ZXIgYml0cy9tYXNrcyB3aXRoIGEgRFBJTlRGXyBwcmVmaXgKPiAgICAgYW5kIHVz
-ZSB0aGVtIHdoZXJlIGRpZmZlcmVudC4KPiAKPiBCYXNlZCBvbiBhIHNlcGFyYXRlIGRyaXZlciBm
-b3IgZHBpbnRmIGNyZWF0ZWQgYnkKPiBKYXNvbi1KSC5MaW4gPGphc29uLWpoLmxpbi1OdVM1THZO
-VXBjSldrMEh0aWszSi93QHB1YmxpYy5nbWFuZS5vcmc+Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1h
-cmt1cyBTY2huZWlkZXItUGFyZ21hbm4gPG1zcC1yZHZpZDFEdUhSQldrMEh0aWszSi93QHB1Ymxp
-Yy5nbWFuZS5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogR3VpbGxhdW1lIFJhbnF1ZXQgPGdyYW5xdWV0
-LXJkdmlkMUR1SFJCV2swSHRpazNKL3dAcHVibGljLmdtYW5lLm9yZz4KPiAtLS0KPiAgIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgICAgICAgICAgfCAxMjYgKysrKysrKysrKysr
-KysrKystLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpX3JlZ3MuaCAgICAg
-fCAgMzUgKysrKysrCj4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5jIHwgICA4ICsrCj4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5oIHwgICAxICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAg
-ICAgfCAgIDUgKy0KPiAgIGluY2x1ZGUvbGludXgvc29jL21lZGlhdGVrL210ay1tbXN5cy5oICAg
-ICAgfCAgIDQgKy0KPiAgIDYgZmlsZXMgY2hhbmdlZCwgMTU5IGluc2VydGlvbnMoKyksIDIwIGRl
-bGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RwaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IGluZGV4IGViOTY5
-YzVjNWMyZS4uNzYzYmZiNzAwMTM1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHBpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5j
-Cj4gQEAgLTcxLDYgKzcxLDcgQEAgc3RydWN0IG10a19kcGkgewo+ICAgCXZvaWQgX19pb21lbSAq
-cmVnczsKPiAgIAlzdHJ1Y3QgZGV2aWNlICpkZXY7Cj4gICAJc3RydWN0IGNsayAqZW5naW5lX2Ns
-azsKPiArCXN0cnVjdCBjbGsgKmRwaV9ja19jZzsKPiAgIAlzdHJ1Y3QgY2xrICpwaXhlbF9jbGs7
-Cj4gICAJc3RydWN0IGNsayAqdHZkX2NsazsKPiAgIAlpbnQgaXJxOwo+IEBAIC0xMjYsNiArMTI3
-LDcgQEAgc3RydWN0IG10a19kcGlfY29uZiB7Cj4gICAJY29uc3QgdTMyICpvdXRwdXRfZm10czsK
-PiAgIAl1MzIgbnVtX291dHB1dF9mbXRzOwo+ICAgCWJvb2wgaXNfY2tfZGVfcG9sOwo+ICsJYm9v
-bCBpc19kcGludGY7Cj4gICAJYm9vbCBzd2FwX2lucHV0X3N1cHBvcnQ7Cj4gICAJLyogTWFzayB1
-c2VkIGZvciBIV0lEVEgsIEhQT1JDSCwgVlNZTkNfV0lEVEggYW5kIFZTWU5DX1BPUkNIIChubyBz
-aGlmdCkgKi8KPiAgIAl1MzIgZGltZW5zaW9uX21hc2s7Cj4gQEAgLTQzOCw2ICs0NDAsOCBAQCBz
-dGF0aWMgdm9pZCBtdGtfZHBpX3Bvd2VyX29mZihzdHJ1Y3QgbXRrX2RwaSAqZHBpKQo+ICAgCW10
-a19kcGlfZGlzYWJsZShkcGkpOwo+ICAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPnBpeGVs
-X2Nsayk7Cj4gICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwaS0+ZW5naW5lX2Nsayk7Cj4gKwlj
-bGtfZGlzYWJsZV91bnByZXBhcmUoZHBpLT5kcGlfY2tfY2cpOwo+ICsJY2xrX2Rpc2FibGVfdW5w
-cmVwYXJlKGRwaS0+dHZkX2Nsayk7Cj4gICB9Cj4gICAKPiAgIHN0YXRpYyBpbnQgbXRrX2RwaV9w
-b3dlcl9vbihzdHJ1Y3QgbXRrX2RwaSAqZHBpKQo+IEBAIC00NDcsMTIgKzQ1MSwyNCBAQCBzdGF0
-aWMgaW50IG10a19kcGlfcG93ZXJfb24oc3RydWN0IG10a19kcGkgKmRwaSkKPiAgIAlpZiAoKytk
-cGktPnJlZmNvdW50ICE9IDEpCj4gICAJCXJldHVybiAwOwo+ICAgCgpIaSwKCmJlbHdvIHRoZSBl
-cnJvciBoYW5kbGluZyBwYXRoIGxvb2tzIG9kZC4gKGJvdGggd2hlcmUgd2UgZ290bywgYW5kIHRo
-ZSAKb3JkZXIgb2YgdGhlIGNsa19kaXNhYmxlX3VucHJlcGFyZSgpIGluIHRoZSBlcnJvciBoYW5k
-bGluZyBwYXRoLgoKanVzdCBteSAyYywKCkNKCgo+ICsJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxl
-KGRwaS0+dHZkX2Nsayk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJZGV2X2VycihkcGktPmRldiwgIkZh
-aWxlZCB0byBlbmFibGUgdHZkIHBsbDogJWRcbiIsIHJldCk7Cj4gKwkJZ290byBlcnJfcGl4ZWw7
-Cj4gKwl9Cj4gKwo+ICAgCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkcGktPmVuZ2luZV9jbGsp
-Owo+ICAgCWlmIChyZXQpIHsKPiAgIAkJZGV2X2VycihkcGktPmRldiwgIkZhaWxlZCB0byBlbmFi
-bGUgZW5naW5lIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiAgIAkJZ290byBlcnJfcmVmY291bnQ7Cj4g
-ICAJfQo+ICAgCj4gKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHBpLT5kcGlfY2tfY2cpOwo+
-ICsJaWYgKHJldCkgewo+ICsJCWRldl9lcnIoZHBpLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxlIGRw
-aV9ja19jZyBjbG9jazogJWRcbiIsIHJldCk7Cj4gKwkJZ290byBlcnJfY2tfY2c7Cj4gKwl9Cj4g
-Kwo+ICAgCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShkcGktPnBpeGVsX2Nsayk7Cj4gICAJaWYg
-KHJldCkgewo+ICAgCQlkZXZfZXJyKGRwaS0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBwaXhlbCBj
-bG9jazogJWRcbiIsIHJldCk7Cj4gQEAgLTQ2Niw2ICs0ODIsOCBAQCBzdGF0aWMgaW50IG10a19k
-cGlfcG93ZXJfb24oc3RydWN0IG10a19kcGkgKmRwaSkKPiAgIAlyZXR1cm4gMDsKPiAgIAo+ICAg
-ZXJyX3BpeGVsOgo+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwaS0+ZHBpX2NrX2NnKTsKPiAr
-ZXJyX2NrX2NnOgo+ICAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPmVuZ2luZV9jbGspOwo+
-ICAgZXJyX3JlZmNvdW50Ogo+ICAgCWRwaS0+cmVmY291bnQtLTsKClsuLi5dCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi,
+
+Gentle ping for this set.
+
+On Wed, 2022-05-25 at 09:51 +0800, Axe Yang wrote:
+> Changes in v12:
+> - assign NULL to pins_eint directly instead of using kfree()
+> 
+> Changes in v11:
+> - remove '_irq' suffix in interrupts-names property
+> - fix yaml example build error
+> - refactor msdc_enable_sdio_irq(), free pins_eint if async irq is not
+> supported
+> 
+> Changes in v10:
+> - add sample node for SDIO host which support wakeup interrupt in
+> yaml
+> - skip MMC_PM_WAKE_SDIO_IRQ check before enable SDIO async interrupt
+> - add MMC_PM_KEEP_POWER check before SDIO eint pinstate parsing
+> - use dev_pm_set_dedicated_wake_irq_reverse() to correct irq control
+> sequence
+> - set dedicated irq in msdc_enable_sdio_irq() rather than
+> msdc_drv_probe()
+> - remove unnecessary wake irq control, rpm/dpm system shall manage
+> that
+> - move wake irq/msdc irq control back to system suspend phase, use
+> rpm_suspend
+>   and rpm_resume to ensure irq control sequence:
+>      disable msdc irq -> enable wake irq -> disable wake irq ->
+> enable msdc irq
+> - simplify variables, check pins_eint to know whether wakeup settings
+> are managed
+> 
+> Changes in v9:
+> - remove pinctrl "state_dat1"
+> 
+> Changes in v8:
+> - remove maxItems property under pinctrl-names property
+> 
+> Changes in v7:
+> - add device_init_wakeup() to register SDIO host as wakeup source
+> 
+> Changes in v6:
+> - abandon cap-sdio-async-irq flag, use wakeup-source flag instead
+> - extend interrupts and pinctrls in mediatek mmc host controller DT
+> documents
+> - add mmc_card_enable_async_irq() to access enable_async_irq flag
+> - simplify wakeup irq implementation with dedicate wake up irq
+> related interface
+> 
+> Changes in v5:
+> - resort variables to reversed xmas tree order
+> - restore old copyright year range and add current year back
+> 
+> Changes in v4:
+> - add MMC_CAP2_SDIO_ASYNC_IRQ judge before lookup eint pinctrl
+> - replace spin_lock_irqsave() variant with spin_lock() in eint irq
+> handler
+> 
+> Changes in v3:
+> - correct abbreviations with capital letters in commit message
+> - replace copyright year with 2022 in mtk-sd.c
+> - remove unnessary pointer casting
+> - adjust variable order to reversed xmas tree
+> - remove a redundant blank line
+> - refine if statement, following standard pattern
+> 
+> Changes in v2:
+> - change flag name from 'cap-sdio-async-int' to 'cap-sdio-async-irq'
+> - change corresponding macro names from xxx_INT to xxx_IRQ
+> - resort new member in msdc_host structure
+> - refine function msdc_request_dat1_eint_irq()
+> - rename msdc_{suspend,resume} function names, add suffix '_noirq'
+> - add MMC_CAP2_NO_SDIO judgement before parse eint related pin
+> setting
+> 
+> Axe Yang (3):
+>   dt-bindings: mmc: mtk-sd: extend interrupts and pinctrls properties
+>   mmc: core: Add support for SDIO wakeup interrupt
+>   mmc: mediatek: add support for SDIO eint wakup IRQ
+> 
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 50 +++++++++++-
+>  drivers/mmc/core/sdio.c                       | 14 ++++
+>  drivers/mmc/host/mtk-sd.c                     | 80
+> +++++++++++++++++--
+>  include/linux/mmc/card.h                      |  8 +-
+>  include/linux/mmc/sdio.h                      |  5 ++
+>  5 files changed, 149 insertions(+), 8 deletions(-)
+> 
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
