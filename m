@@ -4,98 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF7CBC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 10:37:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2D0C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 10:46:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UTOj4i5AssBvq5UbO1aJJQATJO2/DqMK2hWhS93GxWY=; b=K8AW+YYr6pPzLJ
-	Q28GR2iXl2oKjydS+NcA3pItlPUZKKldZ/2SVdlk/uMOD+b+9RRgVAOk79XtQ/PYw4tchWLKeDW5R
-	VIcKAM+lExUTOe11FvUIB+gd/w8VWt2KdxKallQpfMZAylY99PYbGdOZXdG469+0RQ+P7WFy3abd6
-	9bp5yRq/rJEBObeVbCvs8KCPk0cPug1wvA8XBpPff50IP0SyJAR7Kgd1O1PnVRTqETH/gCzHXKAb3
-	Duya8HOpOO0/dwhaNSeyqTK0wtLsv3eWzGRnC91Qds8fD3OuBW5A+aynUr7OnFpKlKUW5iT/9VJET
-	HD0FXdvq6TjWRYr4mzLA==;
+	List-Owner; bh=3e7JyI7Sc7RA1ldZ6o7rlo+kxOdPEtg03Vl9i+uNNUM=; b=mlCBtbeBMQSYHb
+	uhK6UZ27dep+ort4VonGXUCE2r7nDXESszKg6HfFZSI23iG3ly/ESxnXs6+OBw+vH3arM1Z81R5r6
+	HwXpudr+g/rEZVFQ5duJ1u79g1Rbvi5+fZf7QBAgE41rWqYUi1BvX6qpE78fNEbDzB3LBhjhkd5AF
+	cVohzkl+kkxiaYweHyHGkozT5msnY++5RFAWCEEmguf8sI9Z/qUH782P6WaDpJ4n8yI5DhRUGvk2j
+	4vGSQpfSWvbmKjWUWh78a+ob/VUEYkjvfSTpRCqrZP1jG6u9w4VjkWYjjcf2Un4M+07qSZBMuai2x
+	aFuDTaIe8PZnQg+sg2dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwiDB-002oYT-6V; Thu, 02 Jun 2022 10:37:53 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1nwiL3-002q3K-NR; Thu, 02 Jun 2022 10:46:01 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwiCz-002oVA-Dk
-	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 10:37:43 +0000
-Received: by mail-ej1-x631.google.com with SMTP id y19so9117233ejq.6
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jun 2022 03:37:38 -0700 (PDT)
+	id 1nwiL0-002q0h-RV
+	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 10:46:00 +0000
+Received: by mail-ed1-x531.google.com with SMTP id x62so5715645ede.10
+        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jun 2022 03:45:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=r1T+WwnTRfE//at0nY01fjZD1laeeB+Z8YGXF7avaAg=;
-        b=PJlETdLr0kO3tVcOUTKvr4p9ORuolPge3WcfwqWxT9DSQdvBRSdqhs8+4uJf+U29sJ
-         OZJqnnw9HNZaj3KNBL5bV1OHa0vusazu1eJzE0xgeIQUOPKM561vuHIhFuTwOUWRqdx8
-         O10oV5vwANrYB9y/YjuWHKvlAOceIHLhgkKp7PQV5+gEz5OLREutpvBOLMZwwK3Ho2Oi
-         LMYabySh2bzQNIlPlfxYv7aLDxpz090eEXY1u+uvDAcxlfvzynjm427tqgu9PmrVMj2c
-         vlzC4XTpLgSNk/hGeeysomyNYLHsflj8No2IBH19NKDz/+eHZeUxNJs7igZPkFDn7Krc
-         cLTg==
+        bh=nw6pxzn4DckQbSIrMyIKvslcoovKd9JNNcEV3M74aJU=;
+        b=FVtc2GMHaMVFwBTB9n2bmkPgrxq0S/3I/jF+Z5+VjhYWNvNhdvd9FduqFd8H21CXnp
+         5CoJBlRBbspU+PTFXH1VuLP74dEZNgdRy0pabuto/4CifAKSH60UJrIP/u0wDj1LjPpZ
+         pwN9n0KWujb8LNQ1GokLI6aRvWoP/kuIV4CibHVrjYuCB1sg9UWKqq9nlBBb3+IcyRxM
+         oG+8X0jviUubYCuFv0wHF4I2MgJIe0fOxMsZb88UZBXiUgyGXO2IBR03XgFDZDgYBVZj
+         nmSUJqmu0Thut+grCufPZRhNpL1Wm/mKbJQEtEjOiUCn2fVSqMR7B0gk0OB/P3jwjSYP
+         Vw9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=r1T+WwnTRfE//at0nY01fjZD1laeeB+Z8YGXF7avaAg=;
-        b=vuyd7lBQn2AtGfFlw9G8OY8zGM6jiXYBbXi2Pg2+Jyoz+4Am8RxGu4XJoODyFE0LCQ
-         2wlRCJOwksfuYMBbgNIsGMKr5t6CqauT70f8P1gZ50UhfKpC2fGbbhOOTleB1pFAc5GD
-         McwOEgssohH14zGD+cM3ObFROU8ke/M/pplARty/ok3kPBzyzrX2Qejr2L4OWZKV0zM2
-         KtknepAMJ1JmaCLAItK2DQNATJHOV/Le+BPfKZhnflmFEYfeVPJZ9JIlggseouvaW9s2
-         jyfxZHH8QBbOaBz+PC4j2iA6ql1GBXLNYKQEadUnoCYqC3EIq43ZqA+2Dye5ioyDUwqO
-         dPjQ==
-X-Gm-Message-State: AOAM53044xKraUqHKiUJosaD3qhwqJAPJcVCKdWGbaCt8oZ97apDnByY
-	a2QeXvM76mqaL/a5od3V6FzxJw==
-X-Google-Smtp-Source: ABdhPJxf/1ArXbLS2S1c+3P6kj8AvpNRjPilepUwHjRGNjnat9mKJux43GdqKe6h5jtOqCa2x2sBxQ==
-X-Received: by 2002:a17:906:600c:b0:6fe:9204:959b with SMTP id o12-20020a170906600c00b006fe9204959bmr3605252ejj.417.1654166256869;
-        Thu, 02 Jun 2022 03:37:36 -0700 (PDT)
+        bh=nw6pxzn4DckQbSIrMyIKvslcoovKd9JNNcEV3M74aJU=;
+        b=nfLhsktwnkZUH0SWcHRNDaGPj2NiM5T7JHJH9UEyKUNxUKtsjtEeiAgB5pGwRlQ2xl
+         C3wMzyGw2VvCoXJ6gk39dAG50QtQTPLI2Fbkj4pSQ4fGDg1VOOZnena7qkyeDA3HihS+
+         1w2/FP1TW28vXx9Z8qKFJdItPDPIBh1Xjv+gCxIGwp/01+9pokKrIvJIIiZ3rOxDxV/v
+         rMi9nSaIPsBLHHbeVwr3LDe90OvmHwxkwMvxLEuMcENbJe+NS96p8+ZlhimJ6vLXVwKQ
+         ZMfqr3Q6c4v9sJqWmXtTOQlBpl28Jg7kwRLQ1dnObcuNDfKPQ7Zhv55LicI8McBXJ1DX
+         xTAw==
+X-Gm-Message-State: AOAM532L9HhHzXrffKBBhbTFVpk0cKAZlbPfwwl+HxEi2PGKc6K6uelT
+	oT+SdMjwmDv8HU0e451TZ34ldsnY+Ki3/fgS
+X-Google-Smtp-Source: ABdhPJyHBWmqVU4LKyl/2v3+gW1nAjEOcRCOkljscEs8ZrboVaNdsEU+GlslnGTpUxxoIj+RBNBgJw==
+X-Received: by 2002:a05:6402:3901:b0:42d:f38f:a5c6 with SMTP id fe1-20020a056402390100b0042df38fa5c6mr4551192edb.321.1654166756552;
+        Thu, 02 Jun 2022 03:45:56 -0700 (PDT)
 Received: from [192.168.0.181] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id j12-20020a170906254c00b0070759e37183sm1575327ejb.59.2022.06.02.03.37.35
+        by smtp.gmail.com with ESMTPSA id q2-20020a17090609a200b006f3ef214e63sm1600576eje.201.2022.06.02.03.45.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Jun 2022 03:37:36 -0700 (PDT)
-Message-ID: <45c8050e-16d3-80d6-0799-8b067a38d956@linaro.org>
-Date: Thu, 2 Jun 2022 12:37:34 +0200
+        Thu, 02 Jun 2022 03:45:55 -0700 (PDT)
+Message-ID: <9e3f5586-59fa-42cc-770c-b8694b4f2bf3@linaro.org>
+Date: Thu, 2 Jun 2022 12:45:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH v1 01/15] dt-binding: remoteproc: mediatek: Support
- dual-core SCP
+Subject: Re: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
 Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>,
- Daisuke Nojiri <dnojiri@chromium.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- "Dustin L. Howett" <dustin@howett.net>, Tzung-Bi Shih <tzungbi@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Prashant Malani <pmalani@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Brian Norris <briannorris@chromium.org>
-Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev,
- Project_Global_Chrome_Upstream_Group@mediatek.com, weishunc@google.com
-References: <20220601112201.15510-1-tinghan.shen@mediatek.com>
- <20220601112201.15510-2-tinghan.shen@mediatek.com>
- <dd3ea397-fa21-abe5-85ad-b8a4818dc011@linaro.org>
- <3c837acfbefa5b7e23e1121678b5b878f08e4ef2.camel@mediatek.com>
- <476baef8-0255-45ed-85f4-2b9d877c4af1@linaro.org>
- <287d88a62fd13cd762b20faa3e9df826632fe1eb.camel@mediatek.com>
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220422071534.15653-1-tinghan.shen@mediatek.com>
+ <c0a188e5-8a8c-d4a3-5a3d-9b9dd85d8f44@linaro.org>
+ <eb4deff1a01c09783518bbaff8fe4e4c4ca6fa5b.camel@mediatek.com>
+ <591767ee-e349-7a17-a9e9-b95d0500c7c1@linaro.org>
+ <774c075ca4ad815c88be755cfb51889a171e835d.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <287d88a62fd13cd762b20faa3e9df826632fe1eb.camel@mediatek.com>
+In-Reply-To: <774c075ca4ad815c88be755cfb51889a171e835d.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_033741_543443_3A68B32D 
-X-CRM114-Status: GOOD (  26.23  )
+X-CRM114-CacheID: sfid-20220602_034558_974547_3C575774 
+X-CRM114-Status: GOOD (  22.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,129 +98,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/06/2022 10:58, Tinghan Shen wrote:
+On 02/06/2022 12:19, Tinghan Shen wrote:
 > Hi Krzysztof,
 > 
-> On Thu, 2022-06-02 at 08:55 +0200, Krzysztof Kozlowski wrote:
->> On 02/06/2022 07:21, Tinghan Shen wrote:
->>> Hi Krzysztof,
+> On Thu, 2022-06-02 at 09:40 +0200, Krzysztof Kozlowski wrote:
+>> On 02/06/2022 08:44, Tinghan Shen wrote:
+>>>>> +  mbox-names:
+>>>>> +    items:
+>>>>> +      - const: mbox0
+>>>>> +      - const: mbox1
+>>>>
+>>>> These should be rather some meaningful names, e.g. "rx" and "tx".
 >>>
->>> On Wed, 2022-06-01 at 13:50 +0200, Krzysztof Kozlowski wrote:
->>>> On 01/06/2022 13:21, Tinghan Shen wrote:
->>>>> The SCP co-processor is a dual-core RISC-V MCU on MT8195.
->>>>>
->>>>> Add a new property to identify each core and helps to find drivers
->>>>> through device tree API to cooperate with each other, e.g. boot flow and
->>>>> watchdog timeout flow.
->>>>>
->>>>> Add a new compatile for the driver of SCP 2nd core.
->>>>>
->>>>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
->>>>> ---
->>>>>  .../devicetree/bindings/remoteproc/mtk,scp.yaml      | 12 ++++++++++++
->>>>>  1 file changed, 12 insertions(+)
->>>>>
->>>>> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
->>>>> b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
->>>>> index eec3b9c4c713..b181786d9575 100644
->>>>> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
->>>>> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
->>>>> @@ -20,6 +20,7 @@ properties:
->>>>>        - mediatek,mt8186-scp
->>>>>        - mediatek,mt8192-scp
->>>>>        - mediatek,mt8195-scp
->>>>> +      - mediatek,mt8195-scp-dual
->>>>>  
->>>>>    reg:
->>>>>      description:
->>>>> @@ -57,6 +58,16 @@ properties:
->>>>>    memory-region:
->>>>>      maxItems: 1
->>>>>  
->>>>> +  mediatek,scp-core:
->>>>> +    $ref: /schemas/types.yaml#/definitions/uint32-array
->>>>> +    description:
->>>>> +      The property value is a list with 2 items, a core id and a phandle
->>>>
->>>> uint32, not phandle.
->>>>
->>>>> +      to the sibling SCP node. 
->>>>
->>>> Skip this. First part is obvious from the schema, second part should be
->>>> described via items.
->>>>
->>>> The core id represents the id of the dts node contains
->>>>> +      this property. The valid values of core id are 0 and 1 for dual-core SCP.
->>>>> +      The phandle of sibling SCP node is used to find the register settings,
->>>>> +      trigger core dependent callback, and invoke rproc API.
->>>>
->>>> Entire description did not help me to understand what's this. So far it
->>>> looks like it is not a hardware property but some programming help, so
->>>> it does not look like properly described in bindings.
->>>>
->>>>> +    maxItems: 1
->>>>
->>>> In description you said - two items.
->>>>
->>>> You need allOf:if:then disallowing this property for other variants.
->>>>
->>>>> +
->>>>>  required:
->>>>>    - compatible
->>>>>    - reg
->>>>> @@ -115,6 +126,7 @@ examples:
->>>>>          reg-names = "sram", "cfg", "l1tcm";
->>>>>          clocks = <&infracfg CLK_INFRA_SCPSYS>;
->>>>>          clock-names = "main";
->>>>> +        mediatek,scp-core = <0 &scp_dual>;
->>>>
->>>> This looks like phandle, so wrong type.
->>>>>  
->>>>>          cros_ec {
->>>>>              mediatek,rpmsg-name = "cros-ec-rpmsg";
+>>> The mbox name has to align with the adsp ipc driver.
+>>> The adsp ipc driver is using 'mbox%d' for mailbox channels.
 >>>
->>> Thanks for your feedback.
->>> After looking for a comparable uses case, I find out a different approach.
 >>>
->>>   mediatek,scp-core:
->>>     $ref: "/schemas/types.yaml#/definitions/phandle-array"
->>>     description:
->>>       Enable the dual-core support in scp driver.
+>>>
+> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/commit/?id=9db69df4bdd37eb1f65b6931ee067fb15b9a4d5c__;!!CTRNKA9wMg0ARbw!1TmempNkQhC5QuLBhyfWo_AC97MoLuWipsGV-LPaW9RKNPheU7Bgc-eboNi1JA1nC5I$
+>>>  
+>>>
+>>> 	chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
+>>>
+>>> 	/* ...snip... */
+>>>
+>>> 	adsp_chan->ch = mbox_request_channel_byname(cl, chan_name);
+>>>
+>>> Is it ok to continue using these names?
 >>
->> You describe desired functional behavior, not the hardware. What is the
->> property about? If you just want to indicate this is two-core processor,
->> then it could be:
->> 	mediatek,cores = <2>; /* number of cores */
+>> It is a bit confusing... how did that driver got merged recently without
+>> bindings? Why bindings are separate?
 >>
+>> The bindings always come together in one patchset with the driver
+>> implementing them. Bindings are though a separate patch, yet still
+>> followed by the driver which uses them.
 >>
->> However it seems you want to achieve here something different and as I
->> raised last time - it does not look like DT property.
+>> I do not see any compatibles in that driver, which suggests there is no
+>> other binding using it. If that's correct, then you need to change the
+>> driver.
 >>
->> Or maybe this is for first core and you want to indicate the sibling?
->> Something like that was mentioned in previous description.
 > 
-> This property is mainly added for scp 1st core driver 
-> and scp 2nd core driver to find each other via DT API.
+> The mtk-adsp-ipc driver's sole function is to encapsulate the operations 
+> of mailbox framework from adsp ipc users. The mtk-adsp-ipc is not defined 
+> in the dts file and we don't need it to be defined. The creation of mtk-adsp-ipc 
+> device is requested by adsp ipc users via the use of 'platform_device_register_data'[1].
 > 
-> After reconsidering the use of core id in the scp driver, it 
-> is not necessary in the control flow. I'll remove the core id 
-> at next version.
-> 
-> How about change the description as following,
-> 
->   This property enables the dual-core support in scp driver.
->   By providing the phandle of SCP 2nd core node, the 1st SCP node
->   can control the SCP 2nd core as the subdevice of remoteproc framework.
+> the driver implemented the mailbox framework is 'mtk-adsp-mailbox'[2]. it has 
+> corresponding hardwares and a yaml file[3] to describe it.
 
-Please, read it again:
+I don't understand how is this related. We talk here about the
+mbox-names for this bindings file. You replied, that these bindings are
+already used by something, but now you say that they are not? So why do
+you need to change anything in any driver?
 
->> You describe desired functional behavior, not the hardware.
+Simple question - do the bindings here "add mt8186 dsp document" are
+used by any specific Linux driver already?
 
-Again, you describe Linux implementation (scp driver, remoteproc
-framework). You need to describe the hardware, not Linux drivers.
-
-Maybe the hardware property is that one core has its sibling and you
-provide here that sibling?
 
 
 Best regards,
