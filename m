@@ -4,84 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD422C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jun 2022 21:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81D8AC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jun 2022 00:40:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d7mJccDEWEJ90KwIeQfFnJ0JrwdhiykptFcHxoxE6m0=; b=dFGEt13iHPcmPq
-	Ng0Yg4KkKcB7taPQappwQ28ipi32QA5HeMY5wNX+9H0Pj0e7FpK3VeXjPBSq36csfhIz8uqE95OrO
-	zDbwasY/dCUmv2lWatwRGIHfULhfl8yfkt4emGZbKVrT9JPi6KWdHHKTLuhzrZMh5oZ9OBfugny7d
-	kS3fcb7snon6VfECqhX2RqydT+8OGcw8Rs2LBEMO/XeNI0pJYG0Y0eGWppXVW785IQm2zpPtNd8WA
-	COcrYiEtu8ZtmFC5F2Zj4xp1NKqhwGqweeSoTqN0oba4jBPWGe4CWJ0NEJGAbcWA5wiGUefNk8zf2
-	dBqsB4UCtYtnJpqps69A==;
+	List-Owner; bh=SgoPixRZjdbRGgIIyurFuk6wIR4JuxoxOPnEQBFwPNk=; b=maX1g+KQbpqMAb
+	A250cOmCIHXnwfNiknRu5LrTIpZe67QOK5veUAZeq6jBecx2eINy/gOXs5ILE4cxVbkP10xtw5r9D
+	GykG30wG0InWeCTsXHEihlhT+Gpus/Aj0ll/VIzDmtdqdEnllOkiHAYVEXLwsAje5BGdqStHUJQfa
+	m2dM1h2EmuHKY+CyUDQdCMSaD5TTb5ELNrgHbLw5AKfwQoVaRtgo7BJ/CALZIZwTAKyGnTSArsXJa
+	0pCoicITNwLKGl25JhW7LV7szlsy+OcefQpKM26579WEOJe/XdJwq0jiiEmqqC5UbZtoEWWSBNAUX
+	Zb75jUGnUoZ1GszSosLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwslK-004S9K-N8; Thu, 02 Jun 2022 21:53:50 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1nwvMB-005BJy-3B; Fri, 03 Jun 2022 00:40:03 +0000
+Received: from mailout2.samsung.com ([203.254.224.25])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwslI-004S4v-8x
-	for linux-mediatek@lists.infradead.org; Thu, 02 Jun 2022 21:53:49 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id s6so928873eja.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jun 2022 14:53:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=PlQ+AfYx33ch5Af1MOc8eSZOWrp4sa+5BG8p2IQdVOQ=;
-        b=LQbMJioZzGwe6/fK5um+5Ha94Y3saA4t6tLL33c0D7+smsDYIjGyCJ62XISlVIfDnb
-         k7+IGE4QIPIQO60LtADGNIslNBNGIZ5QqLEoOEwAapZhW8OmMhz8yMIQrfL9zX/HltC7
-         qkwO9hwIWO1HMZSqakKMcSasFiJdp5cXvDCAU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=PlQ+AfYx33ch5Af1MOc8eSZOWrp4sa+5BG8p2IQdVOQ=;
-        b=d8UTTDqVXFbSlEGkgsmtsjqa/uiB3+YIkqEfnSwMWtewJPvewM1fbzIuUlW7ep3SlR
-         IEs89B52sUjt8I9EllL+19jRLsuD6r7VR42MaGtYtiASFA0d60Oa5Z3okDU9ZIIdfgPP
-         te29q0DGWaiK3g6xM5rouotyumc0WVV8QWYLuWuJ1/LhBcZKtY4lwcNNC0gDSZnu40JC
-         GQw4YDDUsVABAqY5mndaEwpP9LB9hC7P3eVmSxnvpufOS/RfuKeJhTyN3kNIkzN+xj58
-         paadl6wA4LqSsfzslH0TlZCfSktEdrikMNIg5zv4BNi8Ima3RSEprJ+nNtRmkyiRXnKN
-         3Rfg==
-X-Gm-Message-State: AOAM532Lss3lMIu9ZFP/zvlcG8Nd1VCnbkW8InbRGaTuzhXPsBzkFUrD
-	3Pv/07xFiTfzhE0WlTDW45XtpP9ElBca/NHE
-X-Google-Smtp-Source: ABdhPJyy/KnGqw8ilFRMp7kcbtkKv3fNz/S8knTtUvfdktBwjxBij3HN3AIsLURMWtYvGDgss0IUgg==
-X-Received: by 2002:a17:906:6806:b0:703:1f4e:9868 with SMTP id k6-20020a170906680600b007031f4e9868mr6065005ejr.699.1654206820525;
-        Thu, 02 Jun 2022 14:53:40 -0700 (PDT)
-Received: from mail-wm1-f49.google.com (mail-wm1-f49.google.com. [209.85.128.49])
-        by smtp.gmail.com with ESMTPSA id 8-20020a170906300800b00704dccefd2bsm2110304ejz.204.2022.06.02.14.53.39
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Jun 2022 14:53:40 -0700 (PDT)
-Received: by mail-wm1-f49.google.com with SMTP id a10so662197wmj.5
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jun 2022 14:53:39 -0700 (PDT)
-X-Received: by 2002:a05:600c:4f0c:b0:397:75d7:613 with SMTP id
- l12-20020a05600c4f0c00b0039775d70613mr35121379wmq.34.1654206512562; Thu, 02
- Jun 2022 14:48:32 -0700 (PDT)
+	id 1nwvM6-005BIz-E8
+	for linux-mediatek@lists.infradead.org; Fri, 03 Jun 2022 00:40:00 +0000
+Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
+	by mailout2.samsung.com (KnoxPortal) with ESMTP id 20220603003947epoutp023a1c2e5d84da785f6536cf3107fd23fc~09Wd8w-Wn2867128671epoutp02d
+	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jun 2022 00:39:47 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com 20220603003947epoutp023a1c2e5d84da785f6536cf3107fd23fc~09Wd8w-Wn2867128671epoutp02d
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1654216788;
+	bh=qV2RZDuOC+NLNi/reDeA+VSns9m5hOCk/GH43ETyVv4=;
+	h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+	b=VwFLJA+tMfzm91iYt0XnGiNTYWJjoNLT0qGaT7RyshFeYR5M2xdCigjfPdPyfa6eO
+	 MUo2iXeCc6rtzHghb5k4iWCscAZyAnKiiq+QH0q0NLfVaVUlu9lKquqyLiUi2sogtw
+	 07DA3oJfXWr6apPjGk2cj8QJBM1xJFRu0D6F7uBg=
+Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
+	epcas1p2.samsung.com (KnoxPortal) with ESMTP id
+	20220603003947epcas1p2573fdd0c119bb0b6582590173ab14289~09WdNi0cW1131411314epcas1p2P;
+	Fri,  3 Jun 2022 00:39:47 +0000 (GMT)
+Received: from epsmges1p2.samsung.com (unknown [182.195.38.234]) by
+	epsnrtp4.localdomain (Postfix) with ESMTP id 4LDkYF37Zcz4x9Q2; Fri,  3 Jun
+	2022 00:39:45 +0000 (GMT)
+Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
+	epsmges1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
+	71.EB.09785.15859926; Fri,  3 Jun 2022 09:39:45 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+	epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20220603003945epcas1p2dc8eba48f7027beb7cf066836f153370~09WbLrmHh0516205162epcas1p21;
+	Fri,  3 Jun 2022 00:39:45 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+	20220603003944epsmtrp180b6ac701cb9c15970dc07fb385e9b0b~09WbKs85r2717627176epsmtrp1Q;
+	Fri,  3 Jun 2022 00:39:44 +0000 (GMT)
+X-AuditID: b6c32a36-c9dff70000002639-b2-629958514480
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+	epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+	05.A9.11276.05859926; Fri,  3 Jun 2022 09:39:44 +0900 (KST)
+Received: from [10.113.221.102] (unknown [10.113.221.102]) by
+	epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20220603003944epsmtip1fe9113c4cccfc887037aaa1a3b0bdfba~09WasoZYi1012510125epsmtip1z;
+	Fri,  3 Jun 2022 00:39:44 +0000 (GMT)
+Subject: Re: [PATCH v6 1/2] dt-bindings: interconnect: Add MediaTek CCI
+ dt-bindings
+To: Johnson Wang <johnson.wang@mediatek.com>, krzk+dt@kernel.org,
+	robh+dt@kernel.org, kyungmin.park@samsung.com, djakov@kernel.org
+Cc: khilman@kernel.org, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	jia-wei.chang@mediatek.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Organization: Samsung Electronics
+Message-ID: <a29667c5-9c84-b2c7-7027-926703cfe473@samsung.com>
+Date: Fri, 3 Jun 2022 09:39:44 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
+	Thunderbird/59.0
 MIME-Version: 1.0
-References: <20220601094637.1200634-1-hsinyi@chromium.org>
-In-Reply-To: <20220601094637.1200634-1-hsinyi@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Thu, 2 Jun 2022 14:48:20 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=W+5GAUBh_ZMPeKhqxQXxau2OKCbt3p2QmsDhROf207dA@mail.gmail.com>
-Message-ID: <CAD=FV=W+5GAUBh_ZMPeKhqxQXxau2OKCbt3p2QmsDhROf207dA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/8] Add a panel API to return panel orientation
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Hans de Goede <hdegoede@redhat.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Rob Clark <robdclark@chromium.org>, 
-	Stephen Boyd <swboyd@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+In-Reply-To: <20220527110036.8810-2-johnson.wang@mediatek.com>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrBJsWRmVeSWpSXmKPExsWy7bCmvm5gxMwkgwszRC3mHznHavHsViOb
+	xfH9S9gtjv0Ktni6+TGTxctZ99gszja9YbfY9Pgaq8XlXXPYLC43X2S0+Nx7hNHi07oOFovW
+	vUfYHXg9Nq3qZPPYvKTeo+XkfhaPvi2rGD0+b5ILYI3KtslITUxJLVJIzUvOT8nMS7dV8g6O
+	d443NTMw1DW0tDBXUshLzE21VXLxCdB1y8wBOlFJoSwxpxQoFJBYXKykb2dTlF9akqqQkV9c
+	YquUWpCSU2BaoFecmFtcmpeul5daYmVoYGBkClSYkJ1x7OMW9oIvJhU9uy+wNTD2qHUxcnJI
+	CJhIPP23ib2LkYtDSGAHo8T3fV9YIZxPjBK79s5jhnC+MUrcm3OBFaZl9prlUC17GSX61q6D
+	qnrPKLF882kWkCphgVCJRTO+MoIkRARaGCWufe0EG8ws0M0ksffJTXaQKjYBLYn9L26wgdj8
+	AooSV388ZgSxeQXsJE4unAu2j0VAReLg1wNgNaICYRInt7VA1QhKnJz5BGwbJ1D90hu7wOqZ
+	BcQlbj2ZzwRhy0tsfzsH7DwJgTMcEs83vmKHeMJF4sPJDmYIW1ji1fEtUHEpiZf9bewQDc2M
+	Eg0vbjNCOD2MEkef9bFAVBlL7F86GWgFB9AKTYn1u/QhwooSO3/PZYTYzCfx7msPK0iJhACv
+	REebEESJssTlB3eZIGxJicXtnWwTGJVmIflnFpIfZiH5YRbCsgWMLKsYxVILinPTU4sNC4zg
+	MZ6cn7uJEZyEtcx2ME56+0HvECMTB+MhRgkOZiUR3pJdU5OEeFMSK6tSi/Lji0pzUosPMZoC
+	Q3gis5Rocj4wD+SVxBuaWBqYmBkZm1gYmhkqifOumnY6UUggPbEkNTs1tSC1CKaPiYNTqoHJ
+	RcldO+HSPMaT0+vMVzptWbaXPzh0Z8PxGc9F2jUXqGckl+iJxPbb67F/PmAe6LPi6n3Z8Mv8
+	ZioTkm5fVZhRcYnNwDD4mITTRvGEnarzJikdfPXCRqw+bH/wY8WHaR5LH1gwba5cytBhH+eg
+	abBsVuPC3VUKVpyfJCqT2JfI1qUeXNy7XP97eVbQ74qXLe31NsFTN89P7wt0U1Jnr2jhlrrW
+	V2L+yO37zp2Pp7+5s7mev/N12NkLPHMXm13kFs7J+hiyy313h77oyS+6xXOEF/Yxb9a8coG/
+	1K/y14mNlwt2u5+7UHE3f4alwhN2jdOBT3mrO9s23N+tM1G/bG7oczGBPqN7v6dlWljrTVRi
+	Kc5INNRiLipOBAD/BaKMSwQAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrAIsWRmVeSWpSXmKPExsWy7bCSnG5AxMwkg1WLzS3mHznHavHsViOb
+	xfH9S9gtjv0Ktni6+TGTxctZ99gszja9YbfY9Pgaq8XlXXPYLC43X2S0+Nx7hNHi07oOFovW
+	vUfYHXg9Nq3qZPPYvKTeo+XkfhaPvi2rGD0+b5ILYI3isklJzcksSy3St0vgyjj2cQt7wReT
+	ip7dF9gaGHvUuhg5OSQETCRmr1nO3sXIxSEksJtRYtevU2wQCUmJaRePMncxcgDZwhKHDxeD
+	hIUE3jJK9J7JBLGFBUIlFs34ygjSKyLQwiix78kRMIdZoJNJ4s7q7UwQU48ySkz4MYsVpIVN
+	QEti/4sbYBv4BRQlrv54zAhi8wrYSZxcOBeshkVAReLg1wNgNaICYRI7lzxmgqgRlDg58wkL
+	iM0JVL/0xi6wemYBdYk/8y4xQ9jiEreezGeCsOUltr+dwzyBUXgWkvZZSFpmIWmZhaRlASPL
+	KkbJ1ILi3PTcYsMCw7zUcr3ixNzi0rx0veT83E2M4EjU0tzBuH3VB71DjEwcjIcYJTiYlUR4
+	S3ZNTRLiTUmsrEotyo8vKs1JLT7EKM3BoiTOe6HrZLyQQHpiSWp2ampBahFMlomDU6qBaeO5
+	+MZYXc2WJd5ilTa3HPkCbxwp3n+d7fmSqzNLHgbqc3g/nuxXsC1EPkDQYM6r08svh//Vfeg1
+	b3+Zd+hkRaNa141n21geeVk4rRNa8UL37aWaGxHue9qsVKaUpajc0lvz96T9/f3ae4/Y5J8P
+	vPHo6T3XvxtaXuicy746ZfntrEvCG1i2ab+z+t7ovOrrEo5t2tPWrv2cMO/ZRNV761ivVyS/
+	uL9x8cHr335XaiXP5L28tf67uuuSWX/2eYZdE2azKPWYcjf31d5JWvc27PLc5Xvhwr/GhtN5
+	1831ZppNOzfPe0OPx1FjuefXKzM5z/3dMefYl477hhIJDEn+ziu7p0yuXf7k4Y1dKvckwpbw
+	KbEUZyQaajEXFScCAOPXECszAwAA
+X-CMS-MailID: 20220603003945epcas1p2dc8eba48f7027beb7cf066836f153370
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20220527110145epcas1p4c7f18d9c279de790634bffb8550ad552
+References: <20220527110036.8810-1-johnson.wang@mediatek.com>
+	<CGME20220527110145epcas1p4c7f18d9c279de790634bffb8550ad552@epcas1p4.samsung.com>
+	<20220527110036.8810-2-johnson.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_145348_368723_7707CEC8 
-X-CRM114-Status: GOOD (  20.23  )
+X-CRM114-CacheID: sfid-20220602_173959_043338_E5A91666 
+X-CRM114-Status: GOOD (  26.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,59 +143,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Georgi,
 
-On Wed, Jun 1, 2022 at 2:46 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
->
-> Panels usually call drm_connector_set_panel_orientation(), which is
-> later than drm/kms driver calling drm_dev_register(). This leads to a
-> WARN()[1].
->
-> The orientation property is known earlier. For example, some panels
-> parse the property through device tree during probe.
->
-> The series add a panel API drm_panel_get_orientation() for drm/kms
-> drivers. The drivers can use the API to get panel's orientation, so they
-> can call drm_connector_set_panel_orientation() before drm_dev_register().
->
-> Panel needs to implement .get_orientation callback to return the property.
->
-> [1] https://patchwork.kernel.org/project/linux-mediatek/patch/20220530081910.3947168-2-hsinyi@chromium.org/
->
-> Hsin-Yi Wang (8):
->   drm/panel: Add an API drm_panel_get_orientation() to return panel
->     orientation
->   drm/panel: boe-tv101wum-nl6: Implement .get_orientation callback
->   drm/panel: panel-edp: Implement .get_orientation callback
->   drm/panel: lvds: Implement .get_orientation callback
->   drm/panel: panel-simple: Implement .get_orientation callback
->   drm/panel: ili9881c: Implement .get_orientation callback
->   drm/panel: elida-kd35t133: Implement .get_orientation callback
->   drm/mediatek: Config orientation property if panel provides it
->
->  drivers/gpu/drm/drm_panel.c                    |  8 ++++++++
->  drivers/gpu/drm/mediatek/mtk_dsi.c             | 10 ++++++++++
->  drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c |  8 ++++++++
->  drivers/gpu/drm/panel/panel-edp.c              |  8 ++++++++
->  drivers/gpu/drm/panel/panel-elida-kd35t133.c   |  8 ++++++++
->  drivers/gpu/drm/panel/panel-ilitek-ili9881c.c  |  8 ++++++++
->  drivers/gpu/drm/panel/panel-lvds.c             |  8 ++++++++
->  drivers/gpu/drm/panel/panel-simple.c           |  9 +++++++++
->  include/drm/drm_panel.h                        | 10 ++++++++++
->  9 files changed, 77 insertions(+)
+If you agree this dt-bidning into .../bindings/interconnect,
+I'll merge it. Could you please review it?
 
-Seems reasonable to me. I added a request to the panel-edp patch that
-probably applies to all of the panel patches requesting a comment next
-to the old calls in get_modes().
+On 5/27/22 8:00 PM, Johnson Wang wrote:
+> Add devicetree binding of MediaTek CCI on MT8183 and MT8186.
+> 
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  .../bindings/interconnect/mediatek,cci.yaml   | 141 ++++++++++++++++++
+>  MAINTAINERS                                   |   1 +
+>  2 files changed, 142 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> new file mode 100644
+> index 000000000000..449c7c988229
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> @@ -0,0 +1,141 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: https://protect2.fireeye.com/v1/url?k=ad4ad61b-cc317c8c-ad4b5d54-74fe4860001d-01f34b7b1b45f9dd&q=1&e=81fe0992-6204-4794-b412-8ba4ca747e10&u=http%3A%2F%2Fdevicetree.org%2Fschemas%2Finterconnect%2Fmediatek%2Ccci.yaml%23
+> +$schema: https://protect2.fireeye.com/v1/url?k=a032f6c0-c1495c57-a0337d8f-74fe4860001d-83ce1b32f63b7f35&q=1&e=81fe0992-6204-4794-b412-8ba4ca747e10&u=http%3A%2F%2Fdevicetree.org%2Fmeta-schemas%2Fcore.yaml%23
+> +
+> +title: MediaTek Cache Coherent Interconnect (CCI) frequency and voltage scaling
+> +
+> +maintainers:
+> +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
+> +  - Johnson Wang <johnson.wang@mediatek.com>
+> +
+> +description: |
+> +  MediaTek Cache Coherent Interconnect (CCI) is a hardware engine used by
+> +  MT8183 and MT8186 SoCs to scale the frequency and adjust the voltage in
+> +  hardware. It can also optimize the voltage to reduce the power consumption.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8183-cci
+> +      - mediatek,mt8186-cci
+> +
+> +  clocks:
+> +    items:
+> +      - description:
+> +          The multiplexer for clock input of the bus.
+> +      - description:
+> +          A parent of "bus" clock which is used as an intermediate clock source
+> +          when the original clock source (PLL) is under transition and not
+> +          stable yet.
+> +
+> +  clock-names:
+> +    items:
+> +      - const: cci
+> +      - const: intermediate
+> +
+> +  operating-points-v2: true
+> +  opp-table: true
+> +
+> +  proc-supply:
+> +    description:
+> +      Phandle of the regulator for CCI that provides the supply voltage.
+> +
+> +  sram-supply:
+> +    description:
+> +      Phandle of the regulator for sram of CCI that provides the supply
+> +      voltage. When it is present, the implementation needs to do
+> +      "voltage tracking" to step by step scale up/down Vproc and Vsram to fit
+> +      SoC specific needs. When absent, the voltage scaling flow is handled by
+> +      hardware, hence no software "voltage tracking" is needed.
+> +
+> +required:
+> +  - compatible
+> +  - clocks
+> +  - clock-names
+> +  - operating-points-v2
+> +  - proc-supply
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    cci: cci {
+> +        compatible = "mediatek,mt8183-cci";
+> +        clocks = <&mcucfg CLK_MCU_BUS_SEL>,
+> +                 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
+> +        clock-names = "cci", "intermediate";
+> +        operating-points-v2 = <&cci_opp>;
+> +        proc-supply = <&mt6358_vproc12_reg>;
+> +    };
+> +
+> +    cci_opp: opp-table-cci {
+> +        compatible = "operating-points-v2";
+> +        opp-shared;
+> +        opp2_00: opp-273000000 {
+> +            opp-hz = /bits/ 64 <273000000>;
+> +            opp-microvolt = <650000>;
+> +        };
+> +        opp2_01: opp-338000000 {
+> +            opp-hz = /bits/ 64 <338000000>;
+> +            opp-microvolt = <687500>;
+> +        };
+> +        opp2_02: opp-403000000 {
+> +            opp-hz = /bits/ 64 <403000000>;
+> +            opp-microvolt = <718750>;
+> +        };
+> +        opp2_03: opp-463000000 {
+> +            opp-hz = /bits/ 64 <463000000>;
+> +            opp-microvolt = <756250>;
+> +        };
+> +        opp2_04: opp-546000000 {
+> +            opp-hz = /bits/ 64 <546000000>;
+> +            opp-microvolt = <800000>;
+> +        };
+> +        opp2_05: opp-624000000 {
+> +            opp-hz = /bits/ 64 <624000000>;
+> +            opp-microvolt = <818750>;
+> +        };
+> +        opp2_06: opp-689000000 {
+> +            opp-hz = /bits/ 64 <689000000>;
+> +            opp-microvolt = <850000>;
+> +        };
+> +        opp2_07: opp-767000000 {
+> +            opp-hz = /bits/ 64 <767000000>;
+> +            opp-microvolt = <868750>;
+> +        };
+> +        opp2_08: opp-845000000 {
+> +            opp-hz = /bits/ 64 <845000000>;
+> +            opp-microvolt = <893750>;
+> +        };
+> +        opp2_09: opp-871000000 {
+> +            opp-hz = /bits/ 64 <871000000>;
+> +            opp-microvolt = <906250>;
+> +        };
+> +        opp2_10: opp-923000000 {
+> +            opp-hz = /bits/ 64 <923000000>;
+> +            opp-microvolt = <931250>;
+> +        };
+> +        opp2_11: opp-962000000 {
+> +            opp-hz = /bits/ 64 <962000000>;
+> +            opp-microvolt = <943750>;
+> +        };
+> +        opp2_12: opp-1027000000 {
+> +            opp-hz = /bits/ 64 <1027000000>;
+> +            opp-microvolt = <975000>;
+> +        };
+> +        opp2_13: opp-1092000000 {
+> +            opp-hz = /bits/ 64 <1092000000>;
+> +            opp-microvolt = <1000000>;
+> +        };
+> +        opp2_14: opp-1144000000 {
+> +            opp-hz = /bits/ 64 <1144000000>;
+> +            opp-microvolt = <1025000>;
+> +        };
+> +        opp2_15: opp-1196000000 {
+> +            opp-hz = /bits/ 64 <1196000000>;
+> +            opp-microvolt = <1050000>;
+> +        };
+> +    };
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 41c9c8f2b96d..7239f0e0c47b 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -5735,6 +5735,7 @@ L:	linux-pm@vger.kernel.org
+>  S:	Maintained
+>  T:	git git://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git
+>  F:	Documentation/devicetree/bindings/devfreq/
+> +F:	Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+>  F:	drivers/devfreq/
+>  F:	include/linux/devfreq.h
+>  F:	include/trace/events/devfreq.h
+> 
 
-I assume that all but patch #8 ought to land through drm-misc. I'm
-happy to help commit them once everyone is happy. If the Mediatek
-maintainer(s) want to Ack patch #8 I can land that in drm-misc too. If
-we want something fancier like an immutable branch you'll probably
-have to get someone involved that's got a higher drm pay grade than
-me. ;-)
 
--Doug
+-- 
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
 
 _______________________________________________
 Linux-mediatek mailing list
