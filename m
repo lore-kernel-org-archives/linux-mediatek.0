@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A77F2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jun 2022 10:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D425DC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jun 2022 12:23:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KGQ4DdWNnk+YoxM5xM67wb5zsL3SDrHwev/91EmjU40=; b=e4bx4ri5lKTw2V
-	GokaCvXA7R/AzDDvLX6SATaUWqkSU8zSbELZCsMiI5vW2boKemexv2nMNBjTMha59TcJI1Bgn9qYC
-	06yry9ZhnM8O26TtHfZPqBM7DYqaAXkRBqIUkFwjwv23h0Q0Tzga0xKCy1yP7AYMpeaKWSJtOuE0o
-	M770H+6q+fV79I4+00D69nLg9kcEsLqzVGDvOBqQDDMuiFwln+Fq9ke/zh/QgroXrsWc0dHMQtdFc
-	RfuOCOHRyziRdcBWpvggjvf6ct5YIr41MTmcch+kd/q2zXCLUBqqUI7sgvZ2RHggVNlpU/SgOum3F
-	PiP/RDiUfeuvBgC5Y6rA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qg009EGwwhevlOeYkWcnk03qeddjWq6YdvD7xXI67Ss=; b=i1fa9rDzboMSh5
+	mTPcf7KDvZ809PER/Jua+syWfeQn2nx8UOaBchpbS0KXpZKh8mRxu7RyBiY8tYgNmcdeb9HrM/Zoa
+	B5keXVoLJG6qqVxJ23v/dJlIIPa6bmnBjZXx80eBuLCgmf5FQgIqt+Gw4LK//Wqd4Z+FkUVk18We9
+	9Pwk8VqFu0wfASQcAjz5W+IN+QpIQ9sS4l3/nFp7JQiPhNYdBfKiehpot+WlNw3mJU/zpRriMpAkf
+	mxeMU8BETnO9/4Zn8/Dp+az/PJs52PRH4agcALwz0Ryjz8HctuXUJYIK6xNWn63DSO72tdKV0FSYB
+	sY9YKrU5Sz7CQl8/zWiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nx4b8-0074dg-Ss; Fri, 03 Jun 2022 10:32:06 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1nx6KL-007Omh-H0; Fri, 03 Jun 2022 12:22:53 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nx4ax-0074aK-44; Fri, 03 Jun 2022 10:31:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 81B83CE22D7;
-	Fri,  3 Jun 2022 10:31:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42F38C385A9;
-	Fri,  3 Jun 2022 10:31:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654252310;
-	bh=uxKDQNP2ZIM59sJd/+dQG5xkTcM55eNMWdyr2X32D6g=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=o0hRM0IG/I22H9wIGay8MPt5gSxCJKew0MZ30/YttjF4KPdOUZAt9tWKlZOAztKOf
-	 Bc2u2bb6ZRKIEhtWoCREM2Ss+6zn+bVDKMqX1lpJL3CkCuIKZa2/OABcKljV3flWJ7
-	 GUzT053LmCTaQePuKcPLfMtEz/K1InO0HxGIjH1DV8sYcThBtdkWfwanoJDdAqQiLi
-	 HKMQQrbTu/tltcWEHf6/1uRLp/T1RQmqfYtAANrjIzNe7jTxyWfCql6mEtSjmvWlgq
-	 XLMF025l17iff2AShrujEzMyBxWFGaz6ngHGwcnVqUwPUYsYZJvvzJaNEqyTrM7Jyx
-	 k4XpJmBUQrWMw==
-Message-ID: <5e57a1f3-1159-9277-5f8c-6ed0ad030a00@kernel.org>
-Date: Fri, 3 Jun 2022 13:31:44 +0300
+	id 1nx6JV-007OQ7-O1; Fri, 03 Jun 2022 12:22:03 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id g205so7048742pfb.11;
+        Fri, 03 Jun 2022 05:22:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=3VC0YJVZn7Kv6rn/9H6pSETWMjRj00JSP4l9cAHh5eU=;
+        b=hROkOAQnkmQctmhtlL1X5NiOE3QXbtEkfIJvBno2MFCdveIkW1Kx36uOmAKO4ebT0Z
+         QFcLvV1FAiydy4xwFUEtjTgcTg7kDI7nAD7s7AusEVTao1eFqEJtHnMINWF8Ki5oe5nU
+         6M+t9EyIWLPH060tBgvGubZ/UtPZzcg8iTOjyIteG1qOQ2rJdBuUZ9VjymAASIPMsk95
+         FZZihZ3m/6Q/GfUE3fn2Vynix8OvJ9N2t35TnUiWRflNGc6TogspMjzsXRkSaiVSm/cA
+         2Gd4PdL359hpW+FgdiSNaZIa0iIo5p6Yn+Uf3HupeYEQIdFEafpNpt/91kuianpwz6JB
+         HAhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=3VC0YJVZn7Kv6rn/9H6pSETWMjRj00JSP4l9cAHh5eU=;
+        b=bMKhghvYTw21iVUI/eO87hGxc+geYVXVOKZq4Bcps/id8p7qXdOZ4GKvAZ81CW/xW6
+         GPz7Z/BWwnIxJ1R1DM41tVaEIL4q8/nDopWGYbxtUagImIaUfi7VWTlSAQvNjO9MWFyF
+         kw4+Y2lN/IH1wYEWHbyXBKwbvtHPMr+aU0vvFjIRY0UajIP5SOjrku0zE/kd7mH6wGW8
+         dC5odbNu+INnaIAe2IPXzvLaYgnEuaVn1ymTY8kitYnTQEkB6PfCOAxYw4hJ0yDECjqi
+         WzRwKRSCxPWG8XauQq3rKdlqft+jLREcLh8JpYsjJZOg/VDZCY/jPhggY/QT6v+gSVzp
+         MXog==
+X-Gm-Message-State: AOAM5339F43G3WRIblOJb73s581eD+A05hpTolJHXbqiK7qHkMz768wY
+	pbgyRW5Qz4Q5yCrfzAab7Hw=
+X-Google-Smtp-Source: ABdhPJxCUQk6p5MU7RZHc5xtq+78cZYza7i9U7uf70adLQBe3kOuHC+oOulaqSKHxDVn+zUwwg3Q2Q==
+X-Received: by 2002:a65:6cc9:0:b0:399:26da:29af with SMTP id g9-20020a656cc9000000b0039926da29afmr8711774pgw.489.1654258919680;
+        Fri, 03 Jun 2022 05:21:59 -0700 (PDT)
+Received: from localhost.localdomain ([202.120.234.246])
+        by smtp.googlemail.com with ESMTPSA id h15-20020a17090a470f00b001df51dd0c93sm8330001pjg.1.2022.06.03.05.21.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Jun 2022 05:21:58 -0700 (PDT)
+From: Miaoqian Lin <linmq006@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Kai Chieh Chuang <kaichieh.chuang@mediatek.com>,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] ASoC: mt6797-mt6351: Fix refcount leak in mt6797_mt6351_dev_probe
+Date: Fri,  3 Jun 2022 16:21:47 +0400
+Message-Id: <20220603122149.25117-1-linmq006@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Subject: Re: [PATCH v6 1/2] dt-bindings: interconnect: Add MediaTek CCI
- dt-bindings
-Content-Language: en-US
-To: Chanwoo Choi <cw00.choi@samsung.com>,
- Johnson Wang <johnson.wang@mediatek.com>, krzk+dt@kernel.org,
- robh+dt@kernel.org, kyungmin.park@samsung.com
-Cc: khilman@kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- jia-wei.chang@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220527110036.8810-1-johnson.wang@mediatek.com>
- <CGME20220527110145epcas1p4c7f18d9c279de790634bffb8550ad552@epcas1p4.samsung.com>
- <20220527110036.8810-2-johnson.wang@mediatek.com>
- <a29667c5-9c84-b2c7-7027-926703cfe473@samsung.com>
-From: Georgi Djakov <djakov@kernel.org>
-In-Reply-To: <a29667c5-9c84-b2c7-7027-926703cfe473@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220603_033155_560103_260172A6 
-X-CRM114-Status: GOOD (  20.67  )
+X-CRM114-CacheID: sfid-20220603_052201_839608_43D2787B 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,201 +88,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3.06.22 3:39, Chanwoo Choi wrote:
-> Hi Georgi,
-> 
-> If you agree this dt-bidning into .../bindings/interconnect,
-> I'll merge it. Could you please review it?
-> 
-> On 5/27/22 8:00 PM, Johnson Wang wrote:
->> Add devicetree binding of MediaTek CCI on MT8183 and MT8186.
->>
->> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
->> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
->> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
->> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+of_parse_phandle() returns a node pointer with refcount
+incremented, we should use of_node_put() on it when not need anymore.
+Add missing of_node_put() to avoid refcount leak.
 
-Acked-by: Georgi Djakov <djakov@kernel.org>
+Fixes: f0ab0bf250da ("ASoC: add mt6797-mt6351 driver and config option")
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+---
+changes in v2:
+- update Fixes tag
+v1 link: https://lore.kernel.org/r/20220603083417.9011-1-linmq006@gmail.com/
+---
+ sound/soc/mediatek/mt6797/mt6797-mt6351.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-Looks good to me. Thanks!
-
-BR,
-Georgi
-
->> ---
->>   .../bindings/interconnect/mediatek,cci.yaml   | 141 ++++++++++++++++++
->>   MAINTAINERS                                   |   1 +
->>   2 files changed, 142 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
->> new file mode 100644
->> index 000000000000..449c7c988229
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
->> @@ -0,0 +1,141 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: https://protect2.fireeye.com/v1/url?k=ad4ad61b-cc317c8c-ad4b5d54-74fe4860001d-01f34b7b1b45f9dd&q=1&e=81fe0992-6204-4794-b412-8ba4ca747e10&u=http%3A%2F%2Fdevicetree.org%2Fschemas%2Finterconnect%2Fmediatek%2Ccci.yaml%23
->> +$schema: https://protect2.fireeye.com/v1/url?k=a032f6c0-c1495c57-a0337d8f-74fe4860001d-83ce1b32f63b7f35&q=1&e=81fe0992-6204-4794-b412-8ba4ca747e10&u=http%3A%2F%2Fdevicetree.org%2Fmeta-schemas%2Fcore.yaml%23
->> +
->> +title: MediaTek Cache Coherent Interconnect (CCI) frequency and voltage scaling
->> +
->> +maintainers:
->> +  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
->> +  - Johnson Wang <johnson.wang@mediatek.com>
->> +
->> +description: |
->> +  MediaTek Cache Coherent Interconnect (CCI) is a hardware engine used by
->> +  MT8183 and MT8186 SoCs to scale the frequency and adjust the voltage in
->> +  hardware. It can also optimize the voltage to reduce the power consumption.
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - mediatek,mt8183-cci
->> +      - mediatek,mt8186-cci
->> +
->> +  clocks:
->> +    items:
->> +      - description:
->> +          The multiplexer for clock input of the bus.
->> +      - description:
->> +          A parent of "bus" clock which is used as an intermediate clock source
->> +          when the original clock source (PLL) is under transition and not
->> +          stable yet.
->> +
->> +  clock-names:
->> +    items:
->> +      - const: cci
->> +      - const: intermediate
->> +
->> +  operating-points-v2: true
->> +  opp-table: true
->> +
->> +  proc-supply:
->> +    description:
->> +      Phandle of the regulator for CCI that provides the supply voltage.
->> +
->> +  sram-supply:
->> +    description:
->> +      Phandle of the regulator for sram of CCI that provides the supply
->> +      voltage. When it is present, the implementation needs to do
->> +      "voltage tracking" to step by step scale up/down Vproc and Vsram to fit
->> +      SoC specific needs. When absent, the voltage scaling flow is handled by
->> +      hardware, hence no software "voltage tracking" is needed.
->> +
->> +required:
->> +  - compatible
->> +  - clocks
->> +  - clock-names
->> +  - operating-points-v2
->> +  - proc-supply
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    #include <dt-bindings/clock/mt8183-clk.h>
->> +    cci: cci {
->> +        compatible = "mediatek,mt8183-cci";
->> +        clocks = <&mcucfg CLK_MCU_BUS_SEL>,
->> +                 <&topckgen CLK_TOP_ARMPLL_DIV_PLL1>;
->> +        clock-names = "cci", "intermediate";
->> +        operating-points-v2 = <&cci_opp>;
->> +        proc-supply = <&mt6358_vproc12_reg>;
->> +    };
->> +
->> +    cci_opp: opp-table-cci {
->> +        compatible = "operating-points-v2";
->> +        opp-shared;
->> +        opp2_00: opp-273000000 {
->> +            opp-hz = /bits/ 64 <273000000>;
->> +            opp-microvolt = <650000>;
->> +        };
->> +        opp2_01: opp-338000000 {
->> +            opp-hz = /bits/ 64 <338000000>;
->> +            opp-microvolt = <687500>;
->> +        };
->> +        opp2_02: opp-403000000 {
->> +            opp-hz = /bits/ 64 <403000000>;
->> +            opp-microvolt = <718750>;
->> +        };
->> +        opp2_03: opp-463000000 {
->> +            opp-hz = /bits/ 64 <463000000>;
->> +            opp-microvolt = <756250>;
->> +        };
->> +        opp2_04: opp-546000000 {
->> +            opp-hz = /bits/ 64 <546000000>;
->> +            opp-microvolt = <800000>;
->> +        };
->> +        opp2_05: opp-624000000 {
->> +            opp-hz = /bits/ 64 <624000000>;
->> +            opp-microvolt = <818750>;
->> +        };
->> +        opp2_06: opp-689000000 {
->> +            opp-hz = /bits/ 64 <689000000>;
->> +            opp-microvolt = <850000>;
->> +        };
->> +        opp2_07: opp-767000000 {
->> +            opp-hz = /bits/ 64 <767000000>;
->> +            opp-microvolt = <868750>;
->> +        };
->> +        opp2_08: opp-845000000 {
->> +            opp-hz = /bits/ 64 <845000000>;
->> +            opp-microvolt = <893750>;
->> +        };
->> +        opp2_09: opp-871000000 {
->> +            opp-hz = /bits/ 64 <871000000>;
->> +            opp-microvolt = <906250>;
->> +        };
->> +        opp2_10: opp-923000000 {
->> +            opp-hz = /bits/ 64 <923000000>;
->> +            opp-microvolt = <931250>;
->> +        };
->> +        opp2_11: opp-962000000 {
->> +            opp-hz = /bits/ 64 <962000000>;
->> +            opp-microvolt = <943750>;
->> +        };
->> +        opp2_12: opp-1027000000 {
->> +            opp-hz = /bits/ 64 <1027000000>;
->> +            opp-microvolt = <975000>;
->> +        };
->> +        opp2_13: opp-1092000000 {
->> +            opp-hz = /bits/ 64 <1092000000>;
->> +            opp-microvolt = <1000000>;
->> +        };
->> +        opp2_14: opp-1144000000 {
->> +            opp-hz = /bits/ 64 <1144000000>;
->> +            opp-microvolt = <1025000>;
->> +        };
->> +        opp2_15: opp-1196000000 {
->> +            opp-hz = /bits/ 64 <1196000000>;
->> +            opp-microvolt = <1050000>;
->> +        };
->> +    };
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 41c9c8f2b96d..7239f0e0c47b 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -5735,6 +5735,7 @@ L:	linux-pm@vger.kernel.org
->>   S:	Maintained
->>   T:	git git://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git
->>   F:	Documentation/devicetree/bindings/devfreq/
->> +F:	Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
->>   F:	drivers/devfreq/
->>   F:	include/linux/devfreq.h
->>   F:	include/trace/events/devfreq.h
->>
-> 
-> 
+diff --git a/sound/soc/mediatek/mt6797/mt6797-mt6351.c b/sound/soc/mediatek/mt6797/mt6797-mt6351.c
+index 496f32bcfb5e..d2f6213a6bfc 100644
+--- a/sound/soc/mediatek/mt6797/mt6797-mt6351.c
++++ b/sound/soc/mediatek/mt6797/mt6797-mt6351.c
+@@ -217,7 +217,8 @@ static int mt6797_mt6351_dev_probe(struct platform_device *pdev)
+ 	if (!codec_node) {
+ 		dev_err(&pdev->dev,
+ 			"Property 'audio-codec' missing or invalid\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto put_platform_node;
+ 	}
+ 	for_each_card_prelinks(card, i, dai_link) {
+ 		if (dai_link->codecs->name)
+@@ -230,6 +231,9 @@ static int mt6797_mt6351_dev_probe(struct platform_device *pdev)
+ 		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
+ 			__func__, ret);
+ 
++	of_node_put(codec_node);
++put_platform_node:
++	of_node_put(platform_node);
+ 	return ret;
+ }
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
