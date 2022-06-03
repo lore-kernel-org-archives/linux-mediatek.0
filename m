@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15765C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jun 2022 14:03:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 452AEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jun 2022 15:26:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=14xAR8hSCk6+/CeiTkWMg28Vemlf4rPIjnlZV3N7530=; b=tDRjIlGSREvBTy
-	RKN8Q7O0hj70Vrr38dN52Pg5JA0hGNobdTIESIULJqCY/O4xO8NAXzErbrs2n7TyP3UWtjwGhedfQ
-	wBrREJC/9Vsfoy7rpN2yhITHTH/VRrlI3SIK/HBySxsNWP76NGBdHxY+2+/MCF9WB9ZgA/Jpx9rj1
-	DqW7hvTCXdrBarMgUFSs5l2s0JeyrEPSEhDKOtV9qTM/QBg5iG7/8zUoCtvCvX4lv2XyeOUDQxfk5
-	48leUSWbz5B/U6euba0uDJcPzw67aRJGigbPn04dD6e4g1ONdEH5R4+TLfcmKtjHLvMziZTgkvpzD
-	601gl+KUZvq1aTdOuqxQ==;
+	List-Owner; bh=Jdp5hWH+ROamqlEBgpxuJAWxZ7izeAfyoS1bvRa/v6I=; b=dqDm3qQrEkNtNh
+	26My6eRU4s/UCc/R8sbduCyYrkzc5xoXlGpkSPRkMPlZBCdyACl9yfeYdwEOwSXPCNkIra+zgPm4Q
+	Q59UrxCj53adn6ud41duECL4mrPRYXmOzJJ+JM11YiQybEXb1Jmf5E0vTNiEYLdpoB0tnJ2hhAY9M
+	QeL8g9mDgiIwKKnoO6p2FvQNJ/aCLQn13fyuzlkqJXdCb0XjgrlBHHyOfZKg6dNh/DJiqgYiwKxZs
+	S8RKIlZga/lzGyZWnoLZc7rCarrM3yc+VEIek4jEHuWnlkwKVcsvSECXkMSNLlLqR7wSBttlHAhb/
+	S2CkHYF0Wqm3bp6YacfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nx7tY-007cIq-4G; Fri, 03 Jun 2022 14:03:20 +0000
-Received: from mail-oi1-f176.google.com ([209.85.167.176])
+	id 1nx9BM-007zxC-Dv; Fri, 03 Jun 2022 15:25:48 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nx7tH-007cAO-P4; Fri, 03 Jun 2022 14:03:05 +0000
-Received: by mail-oi1-f176.google.com with SMTP id s8so5244112oib.6;
-        Fri, 03 Jun 2022 07:03:00 -0700 (PDT)
+	id 1nx9BB-007ztC-7h; Fri, 03 Jun 2022 15:25:38 +0000
+Received: by mail-ej1-x630.google.com with SMTP id s12so9386553ejx.3;
+        Fri, 03 Jun 2022 08:25:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=BsFKjZipbOTjUWCQRSSMQJgD00JclNvNv7Gv7B+yrU8=;
+        b=M4JLXiWxSuRJFYbt5BPJdGkyNoQXlVZnC3Kbj97ggGitikrkpzh3SYa5y4tU4aoy8y
+         +G0X6gPXjfMrlM2BLJeDWtAaIbWiox9nqn6xE4ITMhkFAdiVOmesKdEDm5tItpU1qZPF
+         A94PqTFPnRY1LsOcxVhpIaUtA1fVBxpTVKXvIH7DWcOKYHF1XoqBi4kNhe4U82ii7faX
+         ve/jVsfRKoDfx07xs+68rxEtIxMClWcvNTiwOmDZOnC7ZLIO/WVhoETXrND/b5lIHp43
+         MAvTXthtvokzyDQIlVTIQkg8Aqu3dThwN7GNAKtIKjGmBYe4TAXWRA1JgYBx/1kHhCAT
+         6t+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=L4KrDpSYq99VolrzPQGxB5l5hpx3haeHuOlN9SEwbx0=;
-        b=by2Bdzcamci1h8sHi78s6KIk0gpg+dvpmTrZNx5hzqw8jDaD2DVZ9z6TRDgkSnh9FR
-         S6VGiBtXGSGfSDobkF/Q91YwkyAcuiu/0HX+pQ6Cev1LZIsxdDQTs1rqSgGYsuRruHID
-         5r3F0bF48i+B59zZaSR0iyT2wkp8Mi1puuycWvv8p63ClDGsvq5+96HR77TxdDlvqtht
-         7RHm7oPYuFmKqBN89Gw5MSiugOpiWzwNfl+QCpxum7q4yTNA50Gq9KPGYpW6SKwXmdQR
-         FI0ezf3TGAsXTDyKl0rQSNniEBvtYX+zB3dGKE0GwwLfa4NQ4DAUD2eIRtYSI5NXB50C
-         N2DQ==
-X-Gm-Message-State: AOAM530gCN69k1cEgbLzKHpGVb+cGWhFnvOw2XwHR57w087X3/E+Jmn4
-	y6uI0CLXcerTWaSlZtUsDg==
-X-Google-Smtp-Source: ABdhPJzNWAcrfALGI9WFStd6O7bU+uyoCscDf+bymPZkJRN1miqnpseIhlLZQcf+wmB4Pok3H4FeGA==
-X-Received: by 2002:a05:6808:144d:b0:32b:7fbc:9440 with SMTP id x13-20020a056808144d00b0032b7fbc9440mr5607304oiv.226.1654264980296;
-        Fri, 03 Jun 2022 07:03:00 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id p3-20020acad803000000b0032e5209af19sm891448oig.31.2022.06.03.07.02.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jun 2022 07:02:59 -0700 (PDT)
-Received: (nullmailer pid 275907 invoked by uid 1000);
-	Fri, 03 Jun 2022 14:02:58 -0000
-Date: Fri, 3 Jun 2022 09:02:58 -0500
-From: Rob Herring <robh@kernel.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Axe Yang <axe.yang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>, angelogioacchino.delregno@collabora.com, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [RESEND v12 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
- pinctrls properties
-Message-ID: <20220603140258.GB243231-robh@kernel.org>
-References: <20220525015140.384-1-axe.yang@mediatek.com>
- <20220525015140.384-2-axe.yang@mediatek.com>
- <CAPDyKFr25qbAb9DdCpu6Cp9NyK35YAv745Duw_ht7BQc+pQF=A@mail.gmail.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=BsFKjZipbOTjUWCQRSSMQJgD00JclNvNv7Gv7B+yrU8=;
+        b=OW/ddDgX9oFEQar1CJ7yHsHGMZKkNVQZ7I6pZwj5eXVUYsr0IVIseDfRu+MMLZrlR6
+         V29jqcx+0ovffyak0pEQocrxa+afPDbEiWCJNfGKNO48iWBu0kXvuAEITjFtUdchO5Kc
+         kv+rrdGCAAAS+VesT9vKkpxFd2i/K8L4G0oBW5CO3h5h97lBZpGEK8+PUiYOBrxGgFkO
+         X5QBH75YJlBJbGxwUPEF8xd8X9g3o416PlW01Fp8c6w6KaOSON60qVB2L6cBNDsFXlJu
+         c1nusYZtPTJ40eLqNZ1sPRHqbkKjOCQjdOdpDMYoofyaNqzZeoPlYgELf7gSi3R5enGP
+         KskQ==
+X-Gm-Message-State: AOAM533GhVjYcdsVoHnLnoDN6HoAOm+XhohnPbl9bueND/mYNT7lYs3x
+	4RCWOTeZ0vjKjfxhmrbZ1bFuz/xru1bmohk4w+g=
+X-Google-Smtp-Source: ABdhPJzrwJnGaL84JtXS4Waw3Cqw/ZmtEJYT/uxuIbpHE62Y9br/lrSJdLekasDZcKyrvWXBktw5BEH6/zFZio9znQM=
+X-Received: by 2002:a17:907:62a1:b0:6da:7952:d4d2 with SMTP id
+ nd33-20020a17090762a100b006da7952d4d2mr8978189ejc.260.1654269934125; Fri, 03
+ Jun 2022 08:25:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAPDyKFr25qbAb9DdCpu6Cp9NyK35YAv745Duw_ht7BQc+pQF=A@mail.gmail.com>
+References: <2997c5b0-3611-5e00-466c-b2966f09f067@nbd.name> <1654245968-8067-1-git-send-email-chen45464546@163.com>
+In-Reply-To: <1654245968-8067-1-git-send-email-chen45464546@163.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Fri, 3 Jun 2022 08:25:22 -0700
+Message-ID: <CAKgT0Uc9vSEJxrev10Uc3P==+tTip7+7W=AF2uE+VB3GVyOTxg@mail.gmail.com>
+Subject: Re: [PATCH v2] net: ethernet: mtk_eth_soc: fix misuse of mem alloc
+ interface netdev[napi]_alloc_frag
+To: Chen Lin <chen45464546@163.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>, 
+	Sean Wang <sean.wang@mediatek.com>, Mark-MC.Lee@mediatek.com, 
+	David Miller <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Paolo Abeni <pabeni@redhat.com>, matthias.bgg@gmail.com, Netdev <netdev@vger.kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220603_070303_853193_C954D457 
-X-CRM114-Status: GOOD (  20.27  )
+X-CRM114-CacheID: sfid-20220603_082537_314808_2D536BC6 
+X-CRM114-Status: GOOD (  21.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,68 +88,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 03, 2022 at 09:28:37AM +0200, Ulf Hansson wrote:
-> On Wed, 25 May 2022 at 03:51, Axe Yang <axe.yang@mediatek.com> wrote:
-> >
-> > Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
-> > This feature allow SDIO devices alarm asynchronous interrupt to host
-> > even when host stop providing clock to SDIO card. An extra wakeup
-> > interrupt and pinctrl states for SDIO DAT1 pin state switching are
-> > required in this scenario.
-> >
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 50 ++++++++++++++++++-
-> >  1 file changed, 49 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > index 2a2e9fa8c188..e83bf10281d6 100644
-> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > @@ -72,12 +72,27 @@ properties:
-> >        - const: ahb_cg
-> >
-> >    interrupts:
-> > -    maxItems: 1
-> > +    description:
-> > +      Should at least contain MSDC GIC interrupt. To support SDIO in-band wakeup, an extended
-> > +      interrupt is required and be configured as wakeup source irq.
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +
-> > +  interrupt-names:
-> > +    items:
-> > +      - const: msdc
-> > +      - const: sdio_wakeup
-> >
-> >    pinctrl-names:
-> > +    description:
-> > +      Should at least contain default and state_uhs. To support SDIO in-band wakeup, dat1 pin
-> > +      will be switched between GPIO mode and SDIO DAT1 mode, state_eint and state_dat1 are
-> > +      mandatory in this scenarios.
-> > +    minItems: 2
-> >      items:
-> >        - const: default
-> >        - const: state_uhs
-> > +      - const: state_eint
-> 
-> Don't you need something along the lines of the below instead? I mean
-> the "state_eint" isn't always needed, right?
-> 
-> oneOf:
->   - items:
->       - const: default
->       - const: state_uhs
->     - items:
->         - const: default
->         - const: state_uhs
->         - const: state_eint
+On Fri, Jun 3, 2022 at 2:03 AM Chen Lin <chen45464546@163.com> wrote:
+>
+> When rx_flag == MTK_RX_FLAGS_HWLRO,
+> rx_data_len = MTK_MAX_LRO_RX_LENGTH(4096 * 3) > PAGE_SIZE.
+> netdev_alloc_frag is for alloction of page fragment only.
+> Reference to other drivers and Documentation/vm/page_frags.rst
+>
+> Branch to use alloc_pages when ring->frag_size > PAGE_SIZE.
+>
+> Signed-off-by: Chen Lin <chen45464546@163.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c |   22 ++++++++++++++++++++--
+>  1 file changed, 20 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index b3b3c07..772d903 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -1467,7 +1467,16 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+>                         goto release_desc;
+>
+>                 /* alloc new buffer */
+> -               new_data = napi_alloc_frag(ring->frag_size);
+> +               if (ring->frag_size <= PAGE_SIZE) {
+> +                       new_data = napi_alloc_frag(ring->frag_size);
+> +               } else {
+> +                       struct page *page;
+> +                       unsigned int order = get_order(ring->frag_size);
+> +
+> +                       page = alloc_pages(GFP_ATOMIC | __GFP_COMP |
+> +                                           __GFP_NOWARN, order);
+> +                       new_data = page ? page_address(page) : NULL;
+> +               }
+>                 if (unlikely(!new_data)) {
+>                         netdev->stats.rx_dropped++;
+>                         goto release_desc;
+> @@ -1914,7 +1923,16 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+>                 return -ENOMEM;
+>
+>         for (i = 0; i < rx_dma_size; i++) {
+> -               ring->data[i] = netdev_alloc_frag(ring->frag_size);
+> +               if (ring->frag_size <= PAGE_SIZE) {
+> +                       ring->data[i] = netdev_alloc_frag(ring->frag_size);
+> +               } else {
+> +                       struct page *page;
+> +                       unsigned int order = get_order(ring->frag_size);
+> +
+> +                       page = alloc_pages(GFP_KERNEL | __GFP_COMP |
+> +                                           __GFP_NOWARN, order);
+> +                       ring->data[i] = page ? page_address(page) : NULL;
+> +               }
+>                 if (!ring->data[i])
+>                         return -ENOMEM;
+>         }
 
-This is equivalent to what was done. The 'minItems: 2' makes the 3rd 
-item optional.
+Actually I looked closer at this driver. Is it able to receive frames
+larger than 2K? If not there isn't any point in this change.
 
-Rob
+Based on commit 4fd59792097a ("net: ethernet: mediatek: support
+setting MTU") it looks like it doesn't, so odds are this patch is not
+necessary.
 
 _______________________________________________
 Linux-mediatek mailing list
