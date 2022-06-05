@@ -4,67 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D33DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jun 2022 03:13:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ED66C43334
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jun 2022 11:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lJAg3wAYIOfGkLJz9b2yaRRH7zU2464mSQGOOLGHIMo=; b=QLV13YRz2aevF1
-	dU3X6obkzjbEfGbLzLPZmvMWcxLMf1dirrudNl3Y11MfrIfPYoRIKQPio5MF5enec2xo5k263NjOl
-	kTN/ztYWfssFsgf5T29JDjOaxNaJJXo3tWRcoQmFnK9VkCMU1tvfIUgD+AYRfj19ivexZ5bzG6PZv
-	Nj854C/z8jS22gADMQtVYx1LhyGyTP+5KLo/Tf8EIPUyb27uQZ3/yM0n5Cc3MnBIUJdk3fTs4U5bA
-	gDc8oGfKq7rlekVmbArcK+XSoDz5Us7MJjn9q8TmksiCZOSxgV91Z6BvP1AV7GdXhGUgOuBE+oFGL
-	Z3XedKxFd/JpwSgZlzPA==;
+	List-Owner; bh=y0PysnegLOjYLAloDuSvgvm8eSQ68UofODWad4FQHQc=; b=JTgRfUbPkwXBb2
+	VmYjxojTCKleZViyd81K4dd3KJ0aYwi16eO7FwbMxT77AIGkjQsKV+jzXXIXjxmIKUGf/RSFB2SnI
+	8FN9BRjCduceiv+43EN2kE+Llg26Os6fYZ+dl9Vdj8TDzMSY/D2/9f2hllCcQ2liR9/op8D/7HLFS
+	zu+8SBkf1vvxuONzs15/m020BxnveX6F7nvPJYNRC/JmMMpOhpRz1EqZ4GctPB/JIg6oqv2rUbIth
+	asFrPKhxoF2IXVIISCCYRRKUNWJ9spEXyZK4DiXX8u/ZKfjT8vBKAGxEtMDWlM5Bz5jlBKGXnydRN
+	cGGrAdUWCgGfeuySpjRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxgi1-00DDCu-0A; Sun, 05 Jun 2022 03:13:45 +0000
-Received: from m12-12.163.com ([220.181.12.12])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxghq-00DD8m-6M; Sun, 05 Jun 2022 03:13:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=TUBfwF53I+2MtjAGYa
-	pwu8YmcHWT7Pc/VRs7clOHSnE=; b=ZCqQKZAt5oWK5y3REdGO4gj2itwrzw0hCp
-	vjMDwzhzbFIT+CNKCu6HyYEssriY+d9ejF2H3ppC1IHy8KIChiT5uOskW1sxTL7Y
-	/TqK7b4EcM+LTy6o4+T4PPcBkXg2Syn8Au7RU4wqpEvEi3rE+VIVEMvK4rRxhqMy
-	lMYqZo8zU=
-Received: from localhost.localdomain (unknown [171.221.147.121])
-	by smtp8 (Coremail) with SMTP id DMCowADHgyE4H5xi7gqqGA--.22831S2;
-	Sun, 05 Jun 2022 11:13:01 +0800 (CST)
-From: Chen Lin <chen45464546@163.com>
-To: nbd@nbd.name,
-	alexander.duyck@gmail.com
-Cc: john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Chen Lin <chen45464546@163.com>
-Subject: [PATCH v3] net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag
-Date: Sun,  5 Jun 2022 11:12:37 +0800
-Message-Id: <1654398757-2937-1-git-send-email-chen45464546@163.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <CAKgT0UdR-bdiZXsV_=8yJUS8zjoO6jeBS5bKNWAyxwLCiOP8ZQ@mail.gmail.com>
-References: <CAKgT0UdR-bdiZXsV_=8yJUS8zjoO6jeBS5bKNWAyxwLCiOP8ZQ@mail.gmail.com>
-X-CM-TRANSID: DMCowADHgyE4H5xi7gqqGA--.22831S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7ZFyfKF4rCw15Jw1UJF1DZFb_yoW8AFWrpr
-	4Yya43ZFyxAr4DG395Aa1UZFs8Aw4xKryUKry3Z34fZwn8tFWrKFyktFW5uryakrWvkFyS
-	yrs0vr9I9Fn5Kw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pi22NAUUUUU=
-X-Originating-IP: [171.221.147.121]
-X-CM-SenderInfo: hfkh0kqvuwkkiuw6il2tof0z/xtbB2A0XnmBHK0PEJgAAsx
+	id 1nxoIT-00EMxJ-Fk; Sun, 05 Jun 2022 11:19:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1nxoIR-00EMw6-9n
+	for linux-mediatek@lists.infradead.org; Sun, 05 Jun 2022 11:19:52 +0000
+X-UUID: dee93ea96f9a47d592605b52b04e3c85-20220605
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:87d9dd94-5d95-43dc-8d39-e1e619f8e310,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09,CLOUDID:d1fcea6e-b02c-4af4-b838-5c14aaa063c7,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: dee93ea96f9a47d592605b52b04e3c85-20220605
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1552114775; Sun, 05 Jun 2022 04:19:40 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 5 Jun 2022 04:09:38 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sun, 5 Jun 2022 19:09:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Sun, 5 Jun 2022 19:09:37 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+	<Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH 1/1] mt76: mt7921: fix warning Using plain integer as NULL pointer
+Date: Sun, 5 Jun 2022 19:08:59 +0800
+Message-ID: <2a3f2334e18a7ad2dbc2cbb410d1b2f9f3690b11.1654424403.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1654424403.git.deren.wu@mediatek.com>
+References: <cover.1654424403.git.deren.wu@mediatek.com>
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220604_201334_627925_4D3EDDAA 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20220605_041951_388518_3358D4A5 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,60 +83,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When rx_flag == MTK_RX_FLAGS_HWLRO, 
-rx_data_len = MTK_MAX_LRO_RX_LENGTH(4096 * 3) > PAGE_SIZE.
-netdev_alloc_frag is for alloction of page fragment only.
-Reference to other drivers and Documentation/vm/page_frags.rst
+From: Deren Wu <deren.wu@mediatek.com>
 
-Branch to use __get_free_pages when ring->frag_size > PAGE_SIZE.
+Changed "0 to NULL" to avoid below sparse warnings
+.../mt76/mt7921/acpi_sar.c:64:68: sparse: Using plain integer as NULL pointer
 
-Signed-off-by: Chen Lin <chen45464546@163.com>
+Fixes: ab79a7d7a96f ("mt76: mt7921: introduce ACPI SAR support")
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |   16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index b3b3c07..ba9259a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1467,7 +1467,13 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			goto release_desc;
- 
- 		/* alloc new buffer */
--		new_data = napi_alloc_frag(ring->frag_size);
-+		if (ring->frag_size <= PAGE_SIZE)
-+			new_data = napi_alloc_frag(ring->frag_size);
-+		else
-+			new_data = (void *)__get_free_pages(GFP_ATOMIC |
-+			  __GFP_COMP | __GFP_NOWARN,
-+			  get_order(mtk_max_frag_size(MTK_MAX_LRO_RX_LENGTH)));
-+
- 		if (unlikely(!new_data)) {
- 			netdev->stats.rx_dropped++;
- 			goto release_desc;
-@@ -1914,7 +1920,13 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
- 		return -ENOMEM;
- 
- 	for (i = 0; i < rx_dma_size; i++) {
--		ring->data[i] = netdev_alloc_frag(ring->frag_size);
-+		if (ring->frag_size <= PAGE_SIZE)
-+			ring->data[i] = netdev_alloc_frag(ring->frag_size);
-+		else
-+			ring->data[i] = (void *)__get_free_pages(GFP_KERNEL |
-+			  __GFP_COMP | __GFP_NOWARN,
-+			  get_order(mtk_max_frag_size(MTK_MAX_LRO_RX_LENGTH)));
-+
- 		if (!ring->data[i])
- 			return -ENOMEM;
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
+index fb3d31b96682..be4f07ad3af9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
+@@ -61,7 +61,7 @@ mt7921_acpi_read(struct mt7921_dev *dev, u8 *method, u8 **tbl, u32 *len)
+ static int
+ mt7921_asar_acpi_read_mtcl(struct mt7921_dev *dev, u8 **table, u8 *version)
+ {
+-	*version = (mt7921_acpi_read(dev, MT7921_ACPI_MTCL, table, 0) < 0)
++	*version = (mt7921_acpi_read(dev, MT7921_ACPI_MTCL, table, NULL) < 0)
+ 		   ? 1 : 2;
+ 	return 0;
+ }
 -- 
-1.7.9.5
+2.18.0
 
 
 _______________________________________________
