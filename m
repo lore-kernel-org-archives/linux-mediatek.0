@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ED66C43334
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jun 2022 11:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1A1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jun 2022 15:10:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y0PysnegLOjYLAloDuSvgvm8eSQ68UofODWad4FQHQc=; b=JTgRfUbPkwXBb2
-	VmYjxojTCKleZViyd81K4dd3KJ0aYwi16eO7FwbMxT77AIGkjQsKV+jzXXIXjxmIKUGf/RSFB2SnI
-	8FN9BRjCduceiv+43EN2kE+Llg26Os6fYZ+dl9Vdj8TDzMSY/D2/9f2hllCcQ2liR9/op8D/7HLFS
-	zu+8SBkf1vvxuONzs15/m020BxnveX6F7nvPJYNRC/JmMMpOhpRz1EqZ4GctPB/JIg6oqv2rUbIth
-	asFrPKhxoF2IXVIISCCYRRKUNWJ9spEXyZK4DiXX8u/ZKfjT8vBKAGxEtMDWlM5Bz5jlBKGXnydRN
-	cGGrAdUWCgGfeuySpjRQ==;
+	List-Owner; bh=DdFVjFAzevebzNmpa+4AFJzArD2HmWEjU4HDwPDCiE0=; b=BPCR97Fx4mZvCW
+	fg/HMBCLygM6o+ol2nNuBuI3UdDdt0L00ifF74VRo6En3/uTBcuN4diEDrQlG4BYqJ3cWrLaNF4T/
+	6bL9fzPe80LchXgasmJM1AYMsVkM+3PskfNwlrA3d0SglbDo/lSsOGrDMfFeRufkaS/vMshPRSIyz
+	IsBvnRlD+OrCrCuk+XTvsie4nQTphOEC+1A1o95QDlt0l6PcPrquC7HXDXO5ITwjk8gWxHE/EQwFn
+	SB/9T6Pna2V46IuUtAIN6e7HWfbwb5dIOpzW9MfUy7mcZBfTI7npv1pFhDJ3MOkMdE3hiWUJbhi7B
+	+5bJ9orl8DOSgTbgrWsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxoIT-00EMxJ-Fk; Sun, 05 Jun 2022 11:19:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nxrth-00Eiek-AT; Sun, 05 Jun 2022 15:10:33 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxoIR-00EMw6-9n
-	for linux-mediatek@lists.infradead.org; Sun, 05 Jun 2022 11:19:52 +0000
-X-UUID: dee93ea96f9a47d592605b52b04e3c85-20220605
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:87d9dd94-5d95-43dc-8d39-e1e619f8e310,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09,CLOUDID:d1fcea6e-b02c-4af4-b838-5c14aaa063c7,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:0,BEC:nil
-X-UUID: dee93ea96f9a47d592605b52b04e3c85-20220605
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1552114775; Sun, 05 Jun 2022 04:19:40 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 5 Jun 2022 04:09:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sun, 5 Jun 2022 19:09:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Sun, 5 Jun 2022 19:09:37 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
-	<Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
-	<linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH 1/1] mt76: mt7921: fix warning Using plain integer as NULL pointer
-Date: Sun, 5 Jun 2022 19:08:59 +0800
-Message-ID: <2a3f2334e18a7ad2dbc2cbb410d1b2f9f3690b11.1654424403.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <cover.1654424403.git.deren.wu@mediatek.com>
-References: <cover.1654424403.git.deren.wu@mediatek.com>
+	id 1nxrte-00EieH-Ha; Sun, 05 Jun 2022 15:10:31 +0000
+Received: by mail-ot1-f49.google.com with SMTP id r14-20020a056830418e00b0060b8da9ff75so9075706otu.11;
+        Sun, 05 Jun 2022 08:10:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=Vsn+wMa185J0sI9/4wU0hnhDayhYBgTjtmFx6XMmTGo=;
+        b=jXbYWENwgNaUFd7B0Cjzn7B+9ugomcQpR+X3DBPnT1q3TDHB+evwl0eKeQCg8oPtao
+         pZd9UPUoJlUztUQKgvrCTozbbumU9ZdlfpXM8D6zGCaIKs+fmc9JlCQFnr8+Co9O4PBf
+         7usYDk12MxHZe/QmAPHRiG8CDLNlHY9OGBieRNgHNOaNel4bH2UUNUD70Z13JnVA0CmY
+         /+U8tGlvGAY2eHJ7yWIMG6Cf24XsiaZPuSOUmHYfiwruQABNMsw6OLwC4x6ec0yLL5mL
+         YvnMD7Ya7ImokyETQnYVmAEoQ7ecvn7zZ8+Wu6K5n222kmoLL1A7cxDIH99CTy+gumM0
+         Qe1g==
+X-Gm-Message-State: AOAM532LIOF3544khtmCyIKZQnR+rakYgw94iw3fqPykp6oAXrmfExf8
+	P8+JAyPfjyqZo1rFdkyEQQ==
+X-Google-Smtp-Source: ABdhPJxYqNhMxphrMk+sow3mAaQ2pLF6E6WRmyaiLajOWNQA35Xnlo+V/ILcQ6sN1GBYhzpUNIGoiw==
+X-Received: by 2002:a9d:711c:0:b0:60b:92aa:ff85 with SMTP id n28-20020a9d711c000000b0060b92aaff85mr8265811otj.137.1654441829840;
+        Sun, 05 Jun 2022 08:10:29 -0700 (PDT)
+Received: from robh.at.kernel.org ([2607:fb90:20d2:7c7e:bed3:ffa4:df1c:4ad2])
+        by smtp.gmail.com with ESMTPSA id gz9-20020a056870280900b000e686d1386dsm5647542oab.7.2022.06.05.08.10.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 05 Jun 2022 08:10:29 -0700 (PDT)
+Received: (nullmailer pid 3511759 invoked by uid 1000);
+	Sun, 05 Jun 2022 15:10:28 -0000
+Date: Sun, 5 Jun 2022 10:10:28 -0500
+From: Rob Herring <robh@kernel.org>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: devicetree@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/3] dt-bindings: soc: mediatek: pwrap: add MT8365 SoC
+ bindings
+Message-ID: <20220605151028.GA3511707-robh@kernel.org>
+References: <20220530135522.762560-1-fparent@baylibre.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220530135522.762560-1-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220605_041951_388518_3358D4A5 
-X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-CacheID: sfid-20220605_081030_620810_98D068DE 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,34 +79,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+On Mon, 30 May 2022 15:55:20 +0200, Fabien Parent wrote:
+> Add pwrap binding documentation for
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
 
-Changed "0 to NULL" to avoid below sparse warnings
-.../mt76/mt7921/acpi_sar.c:64:68: sparse: Using plain integer as NULL pointer
-
-Fixes: ab79a7d7a96f ("mt76: mt7921: introduce ACPI SAR support")
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
-index fb3d31b96682..be4f07ad3af9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/acpi_sar.c
-@@ -61,7 +61,7 @@ mt7921_acpi_read(struct mt7921_dev *dev, u8 *method, u8 **tbl, u32 *len)
- static int
- mt7921_asar_acpi_read_mtcl(struct mt7921_dev *dev, u8 **table, u8 *version)
- {
--	*version = (mt7921_acpi_read(dev, MT7921_ACPI_MTCL, table, 0) < 0)
-+	*version = (mt7921_acpi_read(dev, MT7921_ACPI_MTCL, table, NULL) < 0)
- 		   ? 1 : 2;
- 	return 0;
- }
--- 
-2.18.0
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
