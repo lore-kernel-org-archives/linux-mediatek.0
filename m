@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 797D3C43334
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jun 2022 21:31:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B90C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jun 2022 02:55:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6KPrZtCN9nzYNVTYaCEV5ks/RpK3o4yrzxyct6Xs+po=; b=OVG82sK2dZ90Lf
-	BG2JwvS9y6lllmwow+scIekOmD3r6LoryYHGdOk6JDrwCm4idUIQ9BPsZc8Ex0BJcoaWs01u39Uim
-	7romQw0bkVwIpjeKgSeaZrsI8747NOg8OgTJ/BxWBqSOtfQtQ37RWRLGdolihAEyn2Dlx5M1XR7zp
-	slYEURh545/4q4zKB6rk1IjYsxa7aWZXFHTwSzkM2/VbkampdpacfrLl/Ufn9CcOEGafKu/ftUwn+
-	g1RSrFcfeYRjLGWQEF/4F+qr9EXvSbCHYs8L59DWn5U/Vs6U90/uXy2A56KOwRqr68VxyxpFuLqg/
-	0WVXdXNV79+II/t+IdGg==;
+	List-Owner; bh=u4ggHsycWxHstiMmYXl9So9RnCTBx1U5AnPjwoHuw7c=; b=IKkTECP4d7s/cJ
+	1BEye2dMlGqVQ2J5yOaGBVaAPyCOPtkngRueJ5x44rh73fvrecht2m/dyPkLxbNxvhrofPectT5GS
+	bKnh1cB4mMQDLhfjb+vLzKkvOTb6aCL9VD4Zht0ekbHapTWMegu6WcMIP+6NbQ9nz94Z2jQcYY8Ba
+	ZH+VqjGl/uwoqO0TXL2+DMEM9uoOQHkVE7koOw6xBXse/0HSxRHSDKhiuLGGjEFC0DkbRU+a4YMTw
+	YTdibdTvX6z4gcjIU54TJrZfuZaP+sn/AH+du2KZwFVVvW9nAtOP6DuryI80/P5GXQcWgm2kap4/t
+	JfDdMuGXL2zP7GpxVxGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxxpv-00FQaG-LB; Sun, 05 Jun 2022 21:31:03 +0000
-Received: from mail-qk1-f175.google.com ([209.85.222.175])
+	id 1ny2tc-00GYMe-Cf; Mon, 06 Jun 2022 02:55:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxxpt-00FQY7-3Y; Sun, 05 Jun 2022 21:31:02 +0000
-Received: by mail-qk1-f175.google.com with SMTP id x65so9752431qke.2;
-        Sun, 05 Jun 2022 14:31:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=jvbIlYtTimkFNkSuvwvsn7TNxlt9v4zuD1GIswaA658=;
-        b=rsVLNL9MTUu5CIi8CP7C3jmfr5pwY3jsE7fYDl6NQLEfLu5xgAAh33tHUUcOR/LZl4
-         /UKXRIEVN2mcI0W+p58zm45PrW8hWscrm8UiPM3hL7G+9shWNUg2qymNsQNWV8DILzL4
-         uaNbX0/Jg160toxVY/ygwydaywjcsPCRVmuVBiyElcapLOJOf1PXKAAyfrhbDbNZZh+x
-         N80+UeqmIuTKUPB6Xxk/f7hzHvwa8UdYxKapRa4RtaCqsfIOelrkZlMw23KRuZBkO46L
-         wKrQcqGtjlZVNCfuwuEMdu5z8tr5Q5+7nK1gpExTbe3US0rxiUsSAcz0w0C9dnN4Icjh
-         TkmQ==
-X-Gm-Message-State: AOAM531IHLmylteZO00sC61vJnV6fHhB5cirCBPPfL6ZG0h4glBJvLPr
-	L42HmQTFHsoHbLjRxc75Nw==
-X-Google-Smtp-Source: ABdhPJwFTjVuWXRjsufN/+qTiVsbFhiiHDYdgOwg1AeVs9k1uDLrqGyKvhs5aMXcvCtdU1pCv/ghog==
-X-Received: by 2002:a37:8ac5:0:b0:6a6:a3e7:565 with SMTP id m188-20020a378ac5000000b006a6a3e70565mr8278256qkd.171.1654464659720;
-        Sun, 05 Jun 2022 14:30:59 -0700 (PDT)
-Received: from robh.at.kernel.org ([2607:fb90:ac97:ac63:b5fd:aa9:8d74:9989])
-        by smtp.gmail.com with ESMTPSA id bc8-20020a05622a1cc800b00304bc47a690sm9026031qtb.44.2022.06.05.14.30.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 05 Jun 2022 14:30:59 -0700 (PDT)
-Received: (nullmailer pid 3553606 invoked by uid 1000);
-	Sun, 05 Jun 2022 21:30:56 -0000
-Date: Sun, 5 Jun 2022 16:30:56 -0500
-From: Rob Herring <robh@kernel.org>
-To: Fabien Parent <fparent@baylibre.com>
-Cc: linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 2/7] dt-bindings: input: mtk-pmic-keys: add binding for
- MT6357 PMIC
-Message-ID: <20220605213056.GA3553552-robh@kernel.org>
-References: <20220531124959.202787-1-fparent@baylibre.com>
- <20220531124959.202787-3-fparent@baylibre.com>
+	id 1ny2tN-00GYL1-Ob; Mon, 06 Jun 2022 02:55:00 +0000
+X-UUID: cd90ef72ccd44084920fb39c3ecd823f-20220605
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:1a91b9f7-2da9-4e38-a83b-a37c5909fe9f,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:c0123f7e-c8dc-403a-96e8-6237210dceee,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: cd90ef72ccd44084920fb39c3ecd823f-20220605
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 237751123; Sun, 05 Jun 2022 19:54:47 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 5 Jun 2022 19:51:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 6 Jun 2022 10:51:56 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 6 Jun 2022 10:51:56 +0800
+Message-ID: <fa71cdebe09b7939bccc3b4b4f40d62afdb09158.camel@mediatek.com>
+Subject: Re: [PATCH v1] dt-bindings: dsp: mediatek: add mt8186 dsp document
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 6 Jun 2022 10:51:56 +0800
+In-Reply-To: <2c610d82-65bf-60c8-05f3-434eaa1cfc8b@linaro.org>
+References: <20220422071534.15653-1-tinghan.shen@mediatek.com>
+	 <c0a188e5-8a8c-d4a3-5a3d-9b9dd85d8f44@linaro.org>
+	 <eb4deff1a01c09783518bbaff8fe4e4c4ca6fa5b.camel@mediatek.com>
+	 <591767ee-e349-7a17-a9e9-b95d0500c7c1@linaro.org>
+	 <774c075ca4ad815c88be755cfb51889a171e835d.camel@mediatek.com>
+	 <9e3f5586-59fa-42cc-770c-b8694b4f2bf3@linaro.org>
+	 <a1140bd47cbd68436d0b9e147c2d6d6327ac092e.camel@mediatek.com>
+	 <2c610d82-65bf-60c8-05f3-434eaa1cfc8b@linaro.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220531124959.202787-3-fparent@baylibre.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220605_143101_209182_D88CC0EC 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220605_195457_860066_C8D0C14F 
+X-CRM114-Status: GOOD (  40.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,16 +88,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 31 May 2022 14:49:54 +0200, Fabien Parent wrote:
-> Add binding documentation for the PMIC keys on MT6357.
+Hi Krzysztof,
+
+On Thu, 2022-06-02 at 14:26 +0200, Krzysztof Kozlowski wrote:
+> On 02/06/2022 13:53, Tinghan Shen wrote:
+> > Hi Krzysztof,
+> > 
+> > On Thu, 2022-06-02 at 12:45 +0200, Krzysztof Kozlowski wrote:
+> > > On 02/06/2022 12:19, Tinghan Shen wrote:
+> > > > Hi Krzysztof,
+> > > > 
+> > > > On Thu, 2022-06-02 at 09:40 +0200, Krzysztof Kozlowski wrote:
+> > > > > On 02/06/2022 08:44, Tinghan Shen wrote:
+> > > > > > > > +  mbox-names:
+> > > > > > > > +    items:
+> > > > > > > > +      - const: mbox0
+> > > > > > > > +      - const: mbox1
+> > > > > > > 
+> > > > > > > These should be rather some meaningful names, e.g. "rx" and "tx".
+> > > > > > 
+> > > > > > The mbox name has to align with the adsp ipc driver.
+> > > > > > The adsp ipc driver is using 'mbox%d' for mailbox channels.
+> > > > > > 
+> > > > > > 
+> > > > > > 
+> > > > 
+> > > > 
+> > 
+> > 
+https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/commit/?id=9db69df4bdd37eb1f65b6931ee067fb15b9a4d5c__;!!CTRNKA9wMg0ARbw!1TmempNkQhC5QuLBhyfWo_AC97MoLuWipsGV-LPaW9RKNPheU7Bgc-eboNi1JA1nC5I$
+> > > > > >  
+> > > > > > 
+> > > > > > 	chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
+> > > > > > 
+> > > > > > 	/* ...snip... */
+> > > > > > 
+> > > > > > 	adsp_chan->ch = mbox_request_channel_byname(cl, chan_name);
+> > > > > > 
+> > > > > > Is it ok to continue using these names?
+> > > > > 
+> > > > > It is a bit confusing... how did that driver got merged recently without
+> > > > > bindings? Why bindings are separate?
+> > > > > 
+> > > > > The bindings always come together in one patchset with the driver
+> > > > > implementing them. Bindings are though a separate patch, yet still
+> > > > > followed by the driver which uses them.
+> > > > > 
+> > > > > I do not see any compatibles in that driver, which suggests there is no
+> > > > > other binding using it. If that's correct, then you need to change the
+> > > > > driver.
+> > > > > 
+> > > > 
+> > > > The mtk-adsp-ipc driver's sole function is to encapsulate the operations 
+> > > > of mailbox framework from adsp ipc users. The mtk-adsp-ipc is not defined 
+> > > > in the dts file and we don't need it to be defined. The creation of mtk-adsp-ipc 
+> > > > device is requested by adsp ipc users via the use of 'platform_device_register_data'[1].
+> > > > 
+> > > > the driver implemented the mailbox framework is 'mtk-adsp-mailbox'[2]. it has 
+> > > > corresponding hardwares and a yaml file[3] to describe it.
+> > > 
+> > > I don't understand how is this related. We talk here about the
+> > > mbox-names for this bindings file. You replied, that these bindings are
+> > > already used by something, but now you say that they are not? So why do
+> > > you need to change anything in any driver?
+> > > 
+> > > Simple question - do the bindings here "add mt8186 dsp document" are
+> > > used by any specific Linux driver already?
+> > 
+> > This bindings, 'add mt8186 dsp document', are used by the SOF sound driver of MT8186[1]. 
+> > 
+> > I'm sorry for miss leading you in previous reply. I was thought that you're 
+> > asking why the mtk-adsp-ipc driver got merged without bindings. So, I tried 
+> > to explain why mtk-adsp-ipc doesn't have bindings.
 > 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
->  Documentation/devicetree/bindings/input/mtk-pmic-keys.txt | 1 +
->  1 file changed, 1 insertion(+)
+> Then my question is kind of still valid:
+> How did "mt8186 SOF" driver got merged recently without bindings? Why
+> bindings are separate?
+> 
+> You cannot just sneak in usage of bindings in a driver, then submit
+> bindings and say "we already have an user!". No, the bindings come with
+> the driver. Always.
+> 
+> Linked patch [1] brings undocumented compatible mediatek,mt8186-dsp, so
+> you should see big fat warning when running checkpatch. So this points
+> that you did not run checkpatch which is another not acceptable
+> submission. :(
+> 
+> [1]
+> https://lore.kernel.org/all/20220422055659.8738-2-tinghan.shen@mediatek.com/
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+I apologize for breaking the rules and sending inappropriate patches.
+
+I was thought that it was acceptable to send community reviewed patches in a series, 
+then followed the bindings at another patch. I was believed that separating un-reviewed
+binding patch from reviewed driver patches would aid in patch acceptance.
+Now, I see I make a big mistake. I'm sorry.
+
+Best regards,
+TingHan
+
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
