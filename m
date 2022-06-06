@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D32C43334
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58EBC433EF
 	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jun 2022 05:22:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DmfSD6ROB+9+IyCDZ01dCIYi0ZOiH63EX0OchuSSBjg=; b=yXRFI0exWJiUy6
-	dus5yLDX6urXf9jOfOUYX21x6r6vuw6JOIJy0ACjtpIDI+kKzPhOP2UmgLYLxcR8FD6K3T20clMvH
-	jJ2FvCrFQp88VJQVNBKJJngk/1fiOwLl9ddMlAUsob81LAsJJMtZgbjwMBm7XO9WesbeF6taJWsws
-	gWjTsaSlfYzm2A56KixIKMKN3OogXVuGCZSa9KevJcqrMuZXMf71W6VhVIABdnZIUxybTze3Pfovx
-	+5RPWzyAcCd6h4waJ+vdk3wp96bvAgcFuGrStpNoyZ2W90BZhVclQy8bSStwkYBWuG7ci2qzwOneC
-	Xnf3sIAcNWVp9mpvdbEA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CpmX5Ik0pnSGAJbBwB41Cd5g6y5M/ZyBkPx0bJcJV6s=; b=tAQTQR7n9Y/fxR
+	J00bpEOTEYSyegr0Sn3ADNls3WOUBghJlWWJMfqunzHAD7ohYIjMQ/S/6i68ybIL8NmxZe618gthY
+	MhkGVyS8ofuurUjt+Hwh9aG9nwDf3yphL8/j9rUKXIrJzUTve3hK32eaceo9nYPbQfO/Dk4w1yIVc
+	lc6GM5W9Ysnj+lAfdpZNo5yf7qnNo+dHofHckrwmMgPaq1fwgKM4RByqyqW7zYScxuwvRBmJbRnX+
+	iYR4mvF9j2GpFIVWoQ7ixHRM7Ex1OFUtgwOsyayri+SRU/oO3EZeytwE4S2JdLYYjKAzGs0z0ekHj
+	atfuuUz28to2vVUEdmRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ny5Bc-00Gmtr-Gm; Mon, 06 Jun 2022 05:21:56 +0000
+	id 1ny5Bb-00Gmtj-Rg; Mon, 06 Jun 2022 05:21:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ny5BR-00Gms3-K0; Mon, 06 Jun 2022 05:21:47 +0000
-X-UUID: 046517d996f6473998385934e67c666d-20220605
+	id 1ny5BR-00Gms4-Jx; Mon, 06 Jun 2022 05:21:47 +0000
+X-UUID: deb0ba177dde4b09ad4b3c389e18ad2e-20220605
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:3d4cbdff-2f81-4b29-a195-cc3c12b7454a,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09,CLOUDID:9331b5ad-3171-4dd4-a2d9-73b846daf167,C
+X-CID-O-INFO: VERSION:1.1.5,REQID:ac91a3c5-8458-4e6a-acb0-c864838ddd93,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+	TION:release,TS:20
+X-CID-META: VersionHash:2a19b09,CLOUDID:9431b5ad-3171-4dd4-a2d9-73b846daf167,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 046517d996f6473998385934e67c666d-20220605
+X-UUID: deb0ba177dde4b09ad4b3c389e18ad2e-20220605
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1338872502; Sun, 05 Jun 2022 22:21:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+	with ESMTP id 433378867; Sun, 05 Jun 2022 22:21:36 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sun, 5 Jun 2022 22:11:34 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 6 Jun 2022 13:11:32 +0800
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 6 Jun 2022 13:11:32 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.3 via Frontend Transport; Mon, 6 Jun 2022 13:11:32 +0800
@@ -58,16 +58,17 @@ CC: <matthias.bgg@gmail.com>, <airlied@linux.ie>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [RESEND v4 0/3] MediaTek MT8195 display binding
-Date: Mon, 6 Jun 2022 13:11:28 +0800
-Message-ID: <20220606051131.14182-1-rex-bc.chen@mediatek.com>
+Subject: [RESEND v4 1/3] dt-bindings: mediatek: add vdosys1 RDMA definition for mt8195
+Date: Mon, 6 Jun 2022 13:11:29 +0800
+Message-ID: <20220606051131.14182-2-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220606051131.14182-1-rex-bc.chen@mediatek.com>
+References: <20220606051131.14182-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220605_222145_728127_3E036852 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220605_222145_693279_F1757BC4 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,42 +85,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add this series to present MediaTek display binding for MT8195.
-The reason I send this series is Jason and Nancy's binding patches are
-never received by devicetree mail server.
-Therefore, I help them to resend binding patches.
+From: "Nancy.Lin" <nancy.lin@mediatek.com>
 
-Changes for resend v4:
-1. Rebase to v5.19-rc1 which iommu series is included.
-2. Add my signed-off.
-3. v4 is not received by devicetree mail server, add more cc and resend.
-4. This patch is from Nancy's v22 series:[2].
+Add vdosys1 RDMA definition.
 
-[2]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=645240
-
-Changes for v3:
-1. Fix rdma and ethdr binding doc.
-2. Nancy's series: [1].
-3. This series is based on linux-next: next-20220511.
-
-Changes for v2:
-1. This patch is based on linux next-20220506.
-2. Jason's patches are accepted and I drop them.
-
-[1]: https://lore.kernel.org/all/20220512053128.31415-1-nancy.lin@mediatek.com/
-
-Nancy.Lin (3):
-  dt-bindings: mediatek: add vdosys1 RDMA definition for mt8195
-  dt-bindings: reset: mt8195: add vdosys1 reset control bit
-  dt-bindings: mediatek: add ethdr definition for mt8195
-
- .../display/mediatek/mediatek,ethdr.yaml      | 188 ++++++++++++++++++
- .../display/mediatek/mediatek,mdp-rdma.yaml   |  88 ++++++++
- include/dt-bindings/reset/mt8195-resets.h     |  45 +++++
- 3 files changed, 321 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../display/mediatek/mediatek,mdp-rdma.yaml   | 88 +++++++++++++++++++
+ 1 file changed, 88 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+new file mode 100644
+index 000000000000..678abb321cc2
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+@@ -0,0 +1,88 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MDP RDMA
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description:
++  The MediaTek MDP RDMA stands for Read Direct Memory Access.
++  It provides real time data to the back-end panel driver, such as DSI,
++  DPI and DP_INTF.
++  It contains one line buffer to store the sufficient pixel data.
++  RDMA device node must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
++
++properties:
++  compatible:
++    - const: mediatek,mt8195-vdo1-rdma
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: RDMA Clock
++
++  iommus:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    description:
++      The register of display function block to be set by gce. There are 4 arguments,
++      such as gce node, subsys id, offset and register size. The subsys id that is
++      mapping to the register of display function blocks is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - power-domains
++  - clocks
++  - iommus
++  - mediatek,gce-client-reg
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/power/mt8195-power.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++    #include <dt-bindings/memory/mt8195-memory-port.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        rdma@1c104000 {
++            compatible = "mediatek,mt8195-vdo1-rdma";
++            reg = <0 0x1c104000 0 0x1000>;
++            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
++            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
++            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
++            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
++            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
++        };
++    };
 -- 
 2.18.0
 
