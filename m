@@ -4,122 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335D9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jun 2022 06:35:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4427AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jun 2022 08:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=170nB+dlGyBrtQtpwWYQOlT8TwqbAALkH99GSlrmsas=; b=FpAe9/n835hGuN
-	d8q6kVbf+/Tj7QHRy+YOYDPrGBKV8yfiQkBWnhdNNSJGuxVnZGA5x4noM9XHaWFwhqYhukXM7GqbW
-	u87MvRmadjpjO2/Y/NY1/mSL8gySzm9jBIhsi1OCUblnIUhKtVJrXjcE2CnUo3HUZSCDkYMBM3med
-	lY9rDeC7bTJW0EOHaRY+p/JNkmWd3C2guFk9iVjlY+VJ5k2lEwcQmmPvbgAtfJYt9qor9TpofsSFo
-	ro9Mwky6rn37/9aJ6t6K/xw8pxsl8FYWOZfHq0naISJvqM6iH7u6G1wMpMqrP7A1l7otQ0DQm4KjG
-	wxEKsMTsVO8V5ELNbTiA==;
+	List-Owner; bh=LLoYDihPfXl6eVUsjF0uQPdFx6sQr8yILxgeXy8yats=; b=tW38LSSlD+LlOy
+	OD+QuBGJsWWxlSzC0xCpwwVBriv1A4rmZeyRc8Hgx0OEkckMXKZwCflZgWYyvLn0Vk03B0IaORKcF
+	0mLe6Tbc3tdbSUHoc1Ey4DwNen5+Keb0F/BB5+LYeD1RMFeKDw/SaxrfAc7y5RZWjDJ2vL+8nyea4
+	JY7xpbFbvTs8Nz5kem2BBUEiz2N87w4MNdjzseyjMMwaOCs7x2cNAaMO42PwSZSLb9Lnbq9GXU9Cw
+	qTbnbhjTWznT2jzlmVzH+azpeSjVYmqXXZxpaIps2ORVjbjsxF2udAVTNaaA6wc2Q4fycRMtnkAkW
+	UzD8TIPyzyNvvPNSg2rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ny6L1-00HJg8-Bl; Mon, 06 Jun 2022 06:35:43 +0000
-Received: from mail-bn8nam04on20602.outbound.protection.outlook.com ([2a01:111:f400:7e8d::602] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+	id 1ny8Kt-000C1h-9C; Mon, 06 Jun 2022 08:43:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ny6Kp-00HJcp-QT; Mon, 06 Jun 2022 06:35:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WGcMjBA4IAx2mEiIDAlCIX67CCFMhUtMYv60zw0osDpL97q0LfsN+hxR4/94p9h+DALvmJNqsqLtpBR4LiIidvqG2iVk32fXvEHfL1uBJL4PcdhNK0TNqUBt/z8hAYqQqh2EvqT+pLi84M7ERQvY4y5PuQdkpeR24tJZPmKNBChidIC1Ye1eWUllPXJpYCCsz3F2NMVKrTMYwBJbGpVsjnwfgH1uJTn/uWt0wJYnun91vuYvh66nojiK49SIl76ljulPeWLyoHNjP2VfH2CBXF16CrSJeftEGj6dyXva7gutP6PwFx/Z6yIyXFIE+G70G49G9OomItZU1Scnp5eLkw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SeO7Te4yt4I3yBW6/n8sTDab7gbKG7kE6H+bEojxsls=;
- b=ROlR5sVzYZbqKOnILTWxcLGXCLNNdCxqKXYZ8360hsoCWuihyIvjXIDkL4CZf5fJmnNuonDRhp3RngZxeYu5Kdltp+ic7z+4W5a00L0HaVn2ooTo2cQqSEWDjGtbPivDjXw8SG7XVrSgg5ZhO9+F6Sa6hrJkoBFtqOV6xVJRgnTaJTQk34J4CLq9ojXumJCzHJU5ots3wm1WD9KvAiKcuc3oCLwAh79E+OCs3+8zqt4lA5OqqaGAT3E51MAbmLRc7skysXxQJa0ouzCBiUyTh/R4jR/Hvr0YJR9AunKna5o4SVr2Dnl9cR9ByZh/oJLTfkWfDc4PAjbnuoQmqmMrYQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.238) smtp.rcpttodomain=samsung.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SeO7Te4yt4I3yBW6/n8sTDab7gbKG7kE6H+bEojxsls=;
- b=sENtcgjYXlx7gF1Ww8pbiuMwRJ/UhVPfvEiS6SG5dqH2SW9aZTLDbH7YNcpBj0y8rlDMLqi0ymZUbxCTQgvmQqcgLXsp/tQMfps8ZJ0MeNwzeAMlZSc2THfYZ+hJ7da55qfjM+fDWejB9ZXUuQna1t+cCJfPbmhHL/h1uOlx0kZoIG7MUD/yMHZmDkwPnxuyOsyeK9Sirgmnj3EAjy6aQ70yYfcPeVsgftxdTdjY1fspMXRfMy6RmRpMSrsJQZJgMUk6V7Ijy/YRyn0h3ujniXtkUv1b2XN2ttdGJzX8lKlFTSMdS0YaK12UEnMhKgM2oFbBkHYKEtoiu7Fq7ht70g==
-Received: from DM6PR13CA0049.namprd13.prod.outlook.com (2603:10b6:5:134::26)
- by DS7PR12MB6118.namprd12.prod.outlook.com (2603:10b6:8:9a::5) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5314.18; Mon, 6 Jun 2022 06:20:00 +0000
-Received: from DM6NAM11FT057.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:134:cafe::66) by DM6PR13CA0049.outlook.office365.com
- (2603:10b6:5:134::26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.11 via Frontend
- Transport; Mon, 6 Jun 2022 06:20:00 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.238)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.238 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.238; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.238) by
- DM6NAM11FT057.mail.protection.outlook.com (10.13.172.252) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5314.12 via Frontend Transport; Mon, 6 Jun 2022 06:20:00 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by DRHQMAIL105.nvidia.com
- (10.27.9.14) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Mon, 6 Jun
- 2022 06:19:59 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Sun, 5 Jun 2022
- 23:19:58 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.12) by mail.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server id 15.2.986.22 via Frontend
- Transport; Sun, 5 Jun 2022 23:19:56 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <jgg@nvidia.com>, <joro@8bytes.org>, <will@kernel.org>,
-	<marcan@marcan.st>, <sven@svenpeter.dev>, <robin.murphy@arm.com>,
-	<robdclark@gmail.com>, <m.szyprowski@samsung.com>,
-	<krzysztof.kozlowski@linaro.org>, <baolu.lu@linux.intel.com>,
-	<agross@kernel.org>, <bjorn.andersson@linaro.org>, <matthias.bgg@gmail.com>,
-	<heiko@sntech.de>, <orsonzhai@gmail.com>, <baolin.wang7@gmail.com>,
-	<zhang.lyra@gmail.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
-	<samuel@sholland.org>, <jean-philippe@linaro.org>,
-	<alex.williamson@redhat.com>
-CC: <suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
-	<alim.akhtar@samsung.com>, <dwmw2@infradead.org>, <yong.wu@mediatek.com>,
-	<mjrosato@linux.ibm.com>, <gerald.schaefer@linux.ibm.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<cohuck@redhat.com>, <iommu@lists.linux-foundation.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux-foundation.org>,
-	<kvm@vger.kernel.org>
-Subject: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match enforced cache coherency
-Date: Sun, 5 Jun 2022 23:19:25 -0700
-Message-ID: <20220606061927.26049-4-nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220606061927.26049-1-nicolinc@nvidia.com>
-References: <20220606061927.26049-1-nicolinc@nvidia.com>
+	id 1ny8Kp-000BxB-5m; Mon, 06 Jun 2022 08:43:42 +0000
+X-UUID: 17c9464482474cdc9cabf7754bfddcf7-20220606
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:b304caf7-61c6-435d-a828-3857d140cb6f,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:4e89bdad-3171-4dd4-a2d9-73b846daf167,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: 17c9464482474cdc9cabf7754bfddcf7-20220606
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1683470145; Mon, 06 Jun 2022 01:43:30 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Jun 2022 01:42:30 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Mon, 6 Jun 2022 16:42:29 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 6 Jun 2022 16:42:29 +0800
+Message-ID: <35cfe765b527e30c541a3d7eb4d26895f7b0a5ff.camel@mediatek.com>
+Subject: Re: [PATCH v22 00/24] Add MediaTek SoC DRM (vdosys1) support for
+ mt8195
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+	"wim@linux-watchdog.org" <wim@linux-watchdog.org>, "AngeloGioacchino Del
+ Regno" <angelogioacchino.delregno@collabora.com>, "linux@roeck-us.net"
+	<linux@roeck-us.net>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
+ Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+	Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
+	<Jason-JH.Lin@mediatek.com>, Yongqiang Niu
+ =?UTF-8?Q?=28=E7=89=9B=E6=B0=B8=E5=BC=BA=29?= <yongqiang.niu@mediatek.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, "llvm@lists.linux.dev"
+	<llvm@lists.linux.dev>, Singo Chang
+ =?UTF-8?Q?=28=E5=BC=B5=E8=88=88=E5=9C=8B=29?= <Singo.Chang@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 6 Jun 2022 16:42:29 +0800
+In-Reply-To: <20220526110233.20080-1-nancy.lin@mediatek.com>
+References: <20220526110233.20080-1-nancy.lin@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: bb407244-624f-4b4a-99c6-08da478495e9
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6118:EE_
-X-Microsoft-Antispam-PRVS: 	<DS7PR12MB6118FD6562C7A810C4BCD6CCABA29@DS7PR12MB6118.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	i8tdHq15yT1WINxiiwZZdMsO9IrJtkA4R9MXKqwKxXQG6mgzUX3kzv9rK+rShRMSWnkD6J8/Yu6KG2q23Fsy/6CG4W3Vo7HrhwugSUVcZEJzK55e2Vge6vsJdmr/OTVkfBq7ifIz2vxnJ+Q2sCWDBM0E+zR/OGLxM5wXspdnewX51zk5kEhankAbfsmXSE777idXG+f4gLjLmQOvEZEvJrzpdp9db1MxcF2YgYlnPxbfrmY2lldC5dJyWkYu01PjIOM2vzQ+CN/XeE8gw8QM9TdKXh7oaP5YjUsOhnaS+synX6yddE/NgHpPhhju9OI556Cg2b0rVxo3DUdl6UOeK2MmlaWnZpBSWRnFPqi/j2XIZpwMUVhTflKx/Z/v0/kir0tWA9yiK0U6RR9TYlJb5sjHX6KJjNJFxBSeIGEMVGVWzXbcpNtHBjbshi5nXZRxQ2+K7SsrnPHA8KgPwRY7eCekAfZlrSYGm0//m7IX9gSH3ci5LqcxUq8U1s8GJ/t4A8Mw92r7Et6WZiBRaEETgpSmNkc81MrjVhf7HH5SeYfLOCqrt95mYq70nP01MUfaDUpPppLCD9r/ybwIfZnCULmxrTdnaZfbAzFGrm1ujrrobmL4WpzRRMnhSC39Xr6XzQ915Ucie2z7KIUkMNZ+rWoHkqgKQOWdzLL/RUZZHODr+Yvpjj6hMIiLqMQMDyHroNlzuY2pk4HxgIvmFtjHzUPsYmYaWKvuENFgOSI0dndstJUI4viewQOj4dupX+Lo/V8EZ3mEG8tJ3An4oGu7yQ==
-X-Forefront-Antispam-Report: 	CIP:12.22.5.238;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230001)(4636009)(46966006)(36840700001)(40470700004)(7696005)(2616005)(6666004)(1076003)(47076005)(54906003)(26005)(86362001)(40460700003)(426003)(2906002)(7416002)(7406005)(83380400001)(186003)(5660300002)(36756003)(316002)(81166007)(336012)(8936002)(82310400005)(70586007)(921005)(110136005)(356005)(4326008)(70206006)(8676002)(36860700001)(508600001)(2101003)(36900700001)(83996005);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2022 06:20:00.1466
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: bb407244-624f-4b4a-99c6-08da478495e9
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.238];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT057.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB6118
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220605_233531_890678_3360EB8A 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20220606_014339_271084_26BDAB2B 
+X-CRM114-Status: GOOD (  29.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,49 +97,243 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jason Gunthorpe <jgg@nvidia.com>
+On Thu, 2022-05-26 at 19:02 +0800, Nancy.Lin wrote:
+> The hardware path of vdosys1 with DPTx output need to go through by
+> several modules, such as, OVL_ADAPTOR and MERGE.
+> 
+> Add DRM and these modules support by the patches below:
+> 
+> Changes in v22:
+> - rebase to next-20220525
+> - rebase to vdosys0 series v22
+> - separate dts to a new patch
+> 
+> Changes in v21:
+> - fix reviewer comment
+>   - fix rdma and ethdr binding doc and dts
+> 
+> Changes in v20:
+> - fix reviewer comment
+>   - update mmsys update bit api name
+>   - add mtk_mmsys_update_bits error message if lose gce property
+>   - list all mt8195 vdosys1 reset bits
+> 
+> Changes in v19:
+> - fix reviewer comment
+>   - separate mt8195 mmsys component to a new patch
+>   - separate mt8195 vdo0 and vdo1 routing table
+>   - separate mmsys_write_reg api to a new patch and simplify write
+> reg code
+>   - separate mmsys 64 bit reset to a new patch
+>   - separate mtk-mutex dp_intf1 component to a new patch
+> 
+> Changes in v18:
+> - fix reviewer comment
+>   - fix rdma binding doc
+>   - fix ethdr binding doc
+>   - refine mmsys config cmdq support
+>   - refine merge reset control flow, get reset control in probe
+> function
+>   - add ethdr reset control error handling and remove dbg log
+> - rebase to vdosys0 series v20 (ref [5])
+> 
+> Changes in v17:
+> - fix reviewer comment in v16
+>   - separate ovl adaptor comp in mtk-mmsys and mtk-mutex
+>   - separate mmsys config API
+>   - move mdp_rdma binding yaml
+> - fix ovl adaptor pm runtime get sync timing issue
+> - rebase to vdosys0 series v19 (ref [5])
+> - rebase to [7] for modify vblank register change
+> 
+> Changes in v16:
+> - fix reviewer comment in v 15
+>   - fix mtk_drm_ddp_comp.c alignment
+>   - fix vdosys0 mmsys num before adding vdosys1 patch
+> 
+> Changes in v15:
+> - fix ethdr uppercase hex number in dts
+> 
+> Changes in v14:
+> - remove MTK_MMSYS 64 bit dependency
+> - add ethdr.yaml back and fix dt_schema check fail
+> 
+> Resend v13
+> - add related maintainer in maillist
+> 
+> Changes in v13:
+> - fix reviewer comment in v12
+>   - fix rdma dt-binding format
+>   - fix dts node naming
+> - fix 32 bit build error
+>   - modify 64bit dependency for mtk-mmsys
+> - rebase to vdosys0 series v16. (ref [5])
+> 
+> Changes in v12:
+> - fix reviewer comment in v11
+>   - modify mbox index
+>   - refine dma dev for ovl_adaptor sub driver
+> 
+> Changes in v11:
+> - remove ethdr vblank spin lock
+> - refine ovl_adaptor print message
+> 
+> Changes in v10:
+> - refine ethdr reset control using
+> devm_reset_control_array_get_optional_exclusive
+> - fix ovl_adaptor mtk_ovl_adaptor_clk_enable error handle issue
+> 
+> Changes in v9:
+> - rebase on kernel-5.16-rc1
+> - rebase on vdosys0 series v13. (ref [5])
+> - fix ovl_adaptor sub driver is brought up unintentionally
+> - fix clang build test fail- duplicate ethdr/mdp_rdma
+> init_module/cleanup_module symbol issue 
+> 
+> Changes in v8:
+> - separate merge async reset to new patch.
+> - separate drm ovl_adaptor sub driver to new patch.
+> - fix reviewer comment in v7.
+> 
+> Changes in v7:
+> - rebase on vdosys0 series v12 (ref[5])
+> - add dma description in ethdr binding document.
+> - refine vdosys1 bit definition of mmsys routing table.
+> - separate merge modification into 3 pathces.
+> - separate mutex modification into 2 patches.
+> - add plane color coding for mdp_rdma csc.
+> - move mdp_rdma pm control to ovl_adaptor.
+> - fix reviewer comment in v6.
+> 
+> Changes in v6:
+> - rebase on kernel-5.15-rc1.
+> - change mbox label to gce0 for dts node of vdosys1.
+> - modify mmsys reset num for mt8195.
+> - rebase on vdosys0 series v10. (ref [5])
+> - use drm to bring up ovl_adaptor driver.
+> - move drm iommu/mutex check from kms init to drm bind.
+> - modify rdma binding doc location.
+> (Documentation/devicetree/bindings/arm/)
+> - modify for reviewer's comment in v5.
+> 
+> Changes in v5:
+> - add mmsys reset controller reference.
+> 
+> Changes in v4:
+> - use merge common driver for merge1~4.
+> - refine ovl_adaptor rdma driver.
+> - use ovl_adaptor ddp_comp function instead of ethdr.
+> - modify for reviewer's comment in v3.
+> 
+> Changes in v3:
+> - modify for reviewer's comment in v2.
+> - add vdosys1 2 pixels align limit.
+> - add mixer odd offset support.
+> 
+> Changes in v2:
+> - Merge PSEUDO_OVL and ETHDR into one DRM component.
+> - Add mmsys config API for vdosys1 hardware setting.
+> - Add mmsys reset control using linux reset framework.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> 
+> This series are based on the following patch:
+> [1] arm64: dts: Add mediatek SoC mt8195 and evaluation board
+>     20220112114724.1953-4-tinghan.shen@mediatek.com
+> [2] arm64: dts: mt8195: add IOMMU and smi nodes
+>     20210615173233.26682-15-tinghan.shen@mediatek.com
+> [3] arm64: dts: mt8195: add gce node
+>     20220126090109.32143-1-jason-jh.lin@mediatek.com
+> [4] [v2] arm64: dts: mt8195: add display node for vdosys0
+>     20220225021535.2655-1-jason-jh.lin@mediatek.com
+> [5] Add MediaTek SoC DRM (vdosys0) support for mt8195 - v22 series
+>     20220526102126.19756-1-jason-jh.lin@mediatek.com
+> [6] dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
+>     20220407075726.17771-2-yong.wu@mediatek.com
+> 
+> Nancy.Lin (24):
+>   dt-bindings: mediatek: add vdosys1 RDMA definition for mt8195
+>   dt-bindings: reset: mt8195: add vdosys1 reset control bit
+>   dt-bindings: mediatek: add ethdr definition for mt8195
+>   soc: mediatek: add mtk-mmsys ethdr and mdp_rdma components
+>   soc: mediatek: add mtk-mmsys support for mt8195 vdosys1
+>   soc: mediatek: add mtk_mmsys_update_bits API
+>   soc: mediatek: add mtk-mmsys config API for mt8195 vdosys1
+>   soc: mediatek: add cmdq support of mtk-mmsys config API for mt8195
+>     vdosys1
+>   soc: mediatek: mmsys: add mmsys for support 64 reset bits
+>   soc: mediatek: mmsys: add reset control for MT8195 vdosys1
+>   soc: mediatek: add mtk-mutex component - dp_intf1
+>   soc: mediatek: add mtk-mutex support for mt8195 vdosys1
+>   drm/mediatek: add display MDP RDMA support for MT8195
+>   drm/mediatek: add display merge advance config API for MT8195
+>   drm/mediatek: add display merge start/stop API for cmdq support
+>   drm/mediatek: add display merge mute/unmute support for MT8195
+>   drm/mediatek: add display merge async reset control
+>   drm/mediatek: add ETHDR support for MT8195
+>   drm/mediatek: add mediatek-drm plane color encoding info
+>   drm/mediatek: add ovl_adaptor support for MT8195
+>   drm/mediatek: add dma dev get function
+>   drm/mediatek: modify mediatek-drm for mt8195 multi mmsys support
+>   drm/mediatek: add drm ovl_adaptor sub driver for MT8195
+>   drm/mediatek: add mediatek-drm of vdosys1 support for MT8195
+> 
+>  .../display/mediatek/mediatek,ethdr.yaml      | 188 +++++++
+>  .../display/mediatek/mediatek,mdp-rdma.yaml   |  88 +++
+>  drivers/gpu/drm/mediatek/Makefile             |   5 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  38 ++
+>  drivers/gpu/drm/mediatek/mtk_disp_merge.c     |  94 +++-
+>  .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 514
+> ++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  96 ++--
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |   6 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 125 +++--
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  58 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 360 ++++++++----
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  25 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_plane.c      |   1 +
+>  drivers/gpu/drm/mediatek/mtk_drm_plane.h      |   1 +
+>  drivers/gpu/drm/mediatek/mtk_ethdr.c          | 369 +++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_ethdr.h          |  26 +
+>  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       | 315 +++++++++++
+>  drivers/gpu/drm/mediatek/mtk_mdp_rdma.h       |  20 +
+>  drivers/soc/mediatek/mt8195-mmsys.h           | 146 +++++
+>  drivers/soc/mediatek/mtk-mmsys.c              | 134 +++--
+>  drivers/soc/mediatek/mtk-mmsys.h              |   1 +
+>  drivers/soc/mediatek/mtk-mutex.c              |  37 ++
+>  include/dt-bindings/reset/mt8195-resets.h     |  45 ++
+>  include/linux/soc/mediatek/mtk-mmsys.h        |  25 +
+>  24 files changed, 2479 insertions(+), 238 deletions(-)
+>  create mode 100644
+> Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yam
+> l
+>  create mode 100644
+> Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> rdma.yaml
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.h
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
+> 
+> -- 
+> 2.18.0
+> 
 
-The KVM mechanism for controlling wbinvd is only triggered during
-kvm_vfio_group_add(), meaning it is a one-shot test done once the devices
-are setup.
+Hello CK,
 
-So, there is no value in trying to push a device that could do enforced
-cache coherency to a dedicated domain vs re-using an existing domain since
-KVM won't be able to take advantage of it. This just wastes domain memory.
+The binding series for MT8195 vdosys1 is sent to devicetree.
+It's passed for robh/checkpatch and robh/patch-applied.
+This series is based on 5.19-rc1 which is including iommu series.
+Result:
 
-Simplify this code and eliminate the test. This removes the only logic
-that needed to have a dummy domain attached prior to searching for a
-matching domain and simplifies the next patches.
+https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20220606051131.14182-2-rex-bc.chen@mediatek.com/
 
-If someday we want to try and optimize this further the better approach is
-to update the Intel driver so that enforce_cache_coherency() can work on a
-domain that already has IOPTEs and then call the enforce_cache_coherency()
-after detaching a device from a domain to upgrade the whole domain to
-enforced cache coherency mode.
 
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
----
- drivers/vfio/vfio_iommu_type1.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20220606051131.14182-4-rex-bc.chen@mediatek.com/
 
-diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-index c13b9290e357..f4e3b423a453 100644
---- a/drivers/vfio/vfio_iommu_type1.c
-+++ b/drivers/vfio/vfio_iommu_type1.c
-@@ -2285,9 +2285,7 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
- 	 * testing if they're on the same bus_type.
- 	 */
- 	list_for_each_entry(d, &iommu->domain_list, next) {
--		if (d->domain->ops == domain->domain->ops &&
--		    d->enforce_cache_coherency ==
--			    domain->enforce_cache_coherency) {
-+		if (d->domain->ops == domain->domain->ops) {
- 			iommu_detach_group(domain->domain, group->iommu_group);
- 			if (!iommu_attach_group(d->domain,
- 						group->iommu_group)) {
--- 
-2.17.1
+BRs,
+Bo-Chen
 
 
 _______________________________________________
