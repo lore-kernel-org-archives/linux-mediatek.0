@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CC0BC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jun 2022 19:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47B9BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jun 2022 19:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lYOUY/Y6rx8Zk+aH/CyCiuz355NL3qgy6YbqKF6bNFA=; b=Z5aWAE4wh6TAlB
-	z9vXUp0WkWXGRZbM5uk8FyqAQg5G4mXMp+oe5q21Va/AqmcQWYH1MiyOYAYYSJcPg99GFA87Vs9mB
-	i/+VdhKfRg0M40tuzJINNL9WFoJ/CvhJO4Qokgxv9Yj6/nXjsQ6pCkbCfFmp5Vb46cH6S+arWG6lW
-	ZYdKVOPehZP4dmg0YZ0WnZ7tPLgYQL8139eZhhf2NcNq13e/5QIln4eWq+PtHn4IWjpv7AeJaKl/i
-	NNsmmfK/Cf4QIf4qg8CAI9DsR4E7eEXW72c3uMcIeWlLXDGK0zKVj4U2jhvEjuuBhPFGqcuHOB01d
-	a6wDx501fcX97BFO6D3w==;
+	List-Owner; bh=8iHqq1nxT+1FK/TBsNwWFsqtP7wxLvT14TTbvaJsj4s=; b=YnRivwBMDJsMi7
+	DgLR6KRCJnhnKSN4kFuCu8sdwtrSSa5kuoxuGkNk+uqgkqcbrPHvGF0BUh3p+xLAnlw/O8c39nvCG
+	+SxYPKHwNNPdP8kiGAUIC6PYgvrhEMC67S+2cB6VEzkaVrjssZLIV0/29n6+s/iWJq96NDxE7AQxz
+	f4uHkhdNRISzgXZ3wFTFenezUYs4d2QB/FL0ytcHj6C38kPar/pK+fjK/UgeKD0itv5axvuonYoe0
+	v95ULS87G4z9dP4kQjynC0W8+Eu/oIDB8sA573hsJ0Jvhnsr8o9WXvWQeSl+YjsXDDLVaFBgQnh2J
+	UitqynEESxUZesDZVDsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyI67-002PKN-Bl; Mon, 06 Jun 2022 19:09:07 +0000
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
+	id 1nyIDm-002QXw-Ll; Mon, 06 Jun 2022 19:17:02 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyI5w-002PFi-6U
-	for linux-mediatek@lists.infradead.org; Mon, 06 Jun 2022 19:08:57 +0000
-Received: by mail-oi1-x22b.google.com with SMTP id y69so7128246oia.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jun 2022 12:08:48 -0700 (PDT)
+	id 1nyIDc-002QVv-5J
+	for linux-mediatek@lists.infradead.org; Mon, 06 Jun 2022 19:16:53 +0000
+Received: by mail-ot1-x335.google.com with SMTP id f9-20020a9d2c09000000b0060bf1fa91f4so4226299otb.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jun 2022 12:16:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=mime-version:in-reply-to:references:from:user-agent:date:message-id
          :subject:to:cc;
-        bh=U+d48J6VO4jwWOwK4nY7MppUng+HS6f87TdgczeTWfA=;
-        b=jbYQLfVc8E3vRnH/nAaGpEpu3GBx4LeR4+rgdiFOihSxweRGcyNUDXo8oXTht50+6z
-         vCTaJSGT4TIKqAoQCMUYxwZN9KwxGDwPDjCxGedcYvmUQ583rhPZD1tmOJE3v34dIpjn
-         C98AM8dS6nf6IlEL28J7wSLX2wRF8ySv7yZOo=
+        bh=0ISgbHiV4o5sZcHUC78zgYQXpXhaQoJ6UxzNGiryKJ8=;
+        b=CBgVQb1ZbwpHj6ip0ODYxgb4cXYCkJ38H4sisthI4mJaz8l4VaspsrbKLeJJV/1SVk
+         8Ymd6q9UwbXJTbOLlTFrJW6UjBC1pWbB+mvRBlN7GK2+7gJzpmci3HP3EljH9CVYa+TF
+         OvYU5zEwK/vuBrZnhYaWtD2kEY6UNXXnhrjqA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:in-reply-to:references:from
          :user-agent:date:message-id:subject:to:cc;
-        bh=U+d48J6VO4jwWOwK4nY7MppUng+HS6f87TdgczeTWfA=;
-        b=yxgXGse06MxGOaREzMSrsCX86T1uJHdTq58s4ZXzwMNK4ZwdWa1M8SDqVpLfWJiL/I
-         op/vq88fZ4cO1+9dIXAROwcZqoDI58Bf57BVdVJvXWeDRuWaErdy73HBHRlGHdZkE70N
-         ruYHbCvZNC6Y6XiG6QUMtltZlnYJ8fpF5U2VnXvwV+kgg/zKvoYIkk+5l/a552eFWw9X
-         ExjjqdGAjEgJRkJ8c32JWYt4gvA9gm/SwTUVw3WAb+DBIYjXks7Iv1jivYC2gHXaH6jn
-         FCPSK57EBrXrN9f+8J2q5NzQhGUZEMEEkMTWF7f3QX6uSEGeT7OESQOPJruhZosbSLrX
-         20yQ==
-X-Gm-Message-State: AOAM531JspX8R+YJE7GeccDqekLRzF4B2IuN8TOyMu8pgUbh/p3RrB8/
-	l/g0ExRUu1LDlDt7Y5vng7nNaODHOkCMfWoTpKDLRg==
-X-Google-Smtp-Source: ABdhPJy4c94CssdxgDB7cICSjvhkR/T7a00ZnGxM1AaOQjnzXXHNZCZXMZRtPZa2NcP41pwS569R9SzLPrA11kDyVIA=
-X-Received: by 2002:a05:6808:e87:b0:32e:4789:d2c with SMTP id
- k7-20020a0568080e8700b0032e47890d2cmr11740857oil.193.1654542527131; Mon, 06
- Jun 2022 12:08:47 -0700 (PDT)
+        bh=0ISgbHiV4o5sZcHUC78zgYQXpXhaQoJ6UxzNGiryKJ8=;
+        b=4mjHbBeHsOdC6WhrIdO78I5mlDF+LjBtZet1aDcqewBa26amJshj1jYZadKLkv4N+y
+         +PF+NBjyJuiiKq4uXjm3cQT6vlNuBtKVzYRdEKCAuLgPdEwsgkgbYBMnqWyND/9Si8Pn
+         o7d0cpMwAPFUqRgLOdB/2veNinIg3g1GMUEXaqQfgaKQRplh+oYDY7kNk40QCUPKkqwT
+         DDBZu3oi5xxVTgxIuo3BxcSQxo1isAQn0daGyJUE/xgpB+gv6LWmpzovCe8R+hCbjR2y
+         B3f2iEALg5K58wo8fQGZGtb4IfhiQw6Go37bWOjQPztVVdICbxTgiOE20ccxVH8Tm4MM
+         wgvg==
+X-Gm-Message-State: AOAM531jE7yCrz88p/nVEcvgJ183wNcnLg1m0bD4Dp3Yk2dhdGf71NG3
+	2YMt5gNr3e2kK42JtN4rYDK2sjyROKua1EhD2mgqIw==
+X-Google-Smtp-Source: ABdhPJzrtp9rNjx/MRKwpP7DdfW0iFsQFuzWAL7ZNWmFj9UIEt2EemDZZ/o72GqwyMu+DAw6tK2o5XVWQKasAGXXwEI=
+X-Received: by 2002:a05:6830:113:b0:60b:eb0b:4054 with SMTP id
+ i19-20020a056830011300b0060beb0b4054mr5483588otp.159.1654543009163; Mon, 06
+ Jun 2022 12:16:49 -0700 (PDT)
 Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 6 Jun 2022 12:08:46 -0700
+ HTTPREST; Mon, 6 Jun 2022 12:16:48 -0700
 MIME-Version: 1.0
-In-Reply-To: <20220606152431.1889185-5-hsinyi@chromium.org>
-References: <20220606152431.1889185-1-hsinyi@chromium.org> <20220606152431.1889185-5-hsinyi@chromium.org>
+In-Reply-To: <20220606152431.1889185-9-hsinyi@chromium.org>
+References: <20220606152431.1889185-1-hsinyi@chromium.org> <20220606152431.1889185-9-hsinyi@chromium.org>
 From: Stephen Boyd <swboyd@chromium.org>
 User-Agent: alot/0.10
-Date: Mon, 6 Jun 2022 12:08:46 -0700
-Message-ID: <CAE-0n51xPADPVcBH7QRh96t7q=mx4VhxrEb1cZENcsu7Z=Nv0A@mail.gmail.com>
-Subject: Re: [PATCH v4 4/8] drm/panel: lvds: Implement .get_orientation callback
+Date: Mon, 6 Jun 2022 12:16:48 -0700
+Message-ID: <CAE-0n51Lq381dQW6zw3D0fibdj=Jm4r3uAYG59ySo4CXbx+EpA@mail.gmail.com>
+Subject: Re: [PATCH v4 8/8] drm/mediatek: Config orientation property if panel
+ provides it
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>
 Cc: Hans de Goede <hdegoede@redhat.com>, Thierry Reding <thierry.reding@gmail.com>, 
 	Sam Ravnborg <sam@ravnborg.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,8 +74,8 @@ Cc: Hans de Goede <hdegoede@redhat.com>, Thierry Reding <thierry.reding@gmail.co
 	Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
 	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220606_120856_283516_767BD782 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20220606_121652_226784_514E8C72 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,41 +92,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Hsin-Yi Wang (2022-06-06 08:24:27)
-> diff --git a/drivers/gpu/drm/panel/panel-lvds.c b/drivers/gpu/drm/panel/panel-lvds.c
-> index f11252fb00fe..491b64c2c8d6 100644
-> --- a/drivers/gpu/drm/panel/panel-lvds.c
-> +++ b/drivers/gpu/drm/panel/panel-lvds.c
-> @@ -99,15 +99,30 @@ static int panel_lvds_get_modes(struct drm_panel *panel,
->         drm_display_info_set_bus_formats(&connector->display_info,
->                                          &lvds->bus_format, 1);
->         connector->display_info.bus_flags = lvds->bus_flags;
+Quoting Hsin-Yi Wang (2022-06-06 08:24:31)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index d9f10a33e6fa..c56282412bfa 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -822,6 +823,12 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+>                 ret = PTR_ERR(dsi->connector);
+>                 goto err_cleanup_encoder;
+>         }
 > +
-> +       /*
-> +        * drm drivers are expected to call drm_panel_get_orientation() to get
-> +        * panel's orientation then drm_connector_set_panel_orientation() to
-> +        * set the property before drm_dev_register(). Otherwise there will be
-> +        * a WARN_ON if orientation is set after drm is registered.
-> +        */
+> +       /* Read panel orientation */
+> +       if (dsi->panel)
+> +               drm_connector_set_panel_orientation(dsi->connector,
+> +                               drm_panel_get_orientation(dsi->panel));
+> +
 
-Should this comment also be a "TODO: Remove once all drm drivers call
-drm_connector_set_panel_orientation()"?
+It could be simplified like so?
 
->         drm_connector_set_panel_orientation(connector, lvds->orientation);
+	drm_connector_set_orientation_from_panel(dsi->connector, dsi->panel);
+
+Then the API could get the orientation if the panel pointer is valid.
+Does any code need to use/modify the orientation value besides
+drm_connector_set_panel_orientation()?
+
+>         drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
 >
->         return 1;
->  }
->
-> +static enum drm_panel_orientation panel_lvds_get_orientation,(struct drm_panel *panel)
-
-Stray comma here                                            ---^
-
-> +{
-> +       struct panel_lvds *lvds = to_panel_lvds(panel);
-> +
-> +       return lvds->orientation;
-> +}
-> +
+>         return 0;
 
 _______________________________________________
 Linux-mediatek mailing list
