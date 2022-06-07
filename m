@@ -4,55 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D340BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 10:57:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E24C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 11:58:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8lhA54nKZo+YqKT5apIHn/dLx02TRc8PDgKzfASB488=; b=1E5AEnr/W3DOA4
-	qP+imyZ1dKV2147iCdtz9CKywye9Sap4uMYxm4Uxq/2tRtblR82bknlh7f5gbBHQXJBfHe5hx968e
-	+rzWIzE/C/J3pohEcuypslHmDCzAe8Agnw5kyuOgwaUeg8C4ShRWZYFPGqmbUS6S9+qfiEZrKQKys
-	aNAJq/XwhlHY5aqq1Z/retPjdAVc1Xv95Z1mzJ1hTcXpgAHUyJDPVo5Ms22ylMJR75EL1MSjK5mt0
-	b9C2ygFuhNGGxrsNNtwk9PPCgM2Rh+EkrAwIAIZQImOipX2oQYMRKSrG7WgNMJxKR3vUYrxMKSFsx
-	wc29hlm+3+oVImO0rk9Q==;
+	List-Owner; bh=Z4qbSmWIHV/5c/FKd70ZYp5XVeHtF98V1pciv224dFA=; b=wawDPDN/5of9Nk
+	XI/pRPxo0VimmsXOB+u99fcJENsmDvg9WyKerVPAI9t7TC4RVgTJvNvvfbrMTT68Co9pUv++2I/av
+	IfywM2iMVOTJMlAGbnay3skIk4NLUZQ8c6ZDqcrKSLm917/yuvsuC7zxI4eWaXrH2yOG0zKyMZMkW
+	t4nrVOCdOs8rrU9J1ldGh5LrR7KzjSdGwGCqMmYFw3FdBgDKciUmffOyisaagoftvpyxGq4XXV0cC
+	hmLU/lnx5plUxSy9hoGp6YbjOHwlws1s5QoyKUXQpYW4BPl9DXPcpdE9Av/Fd/QKnYp9JNH54wGPK
+	dLzRBurjPjtemUwdN++Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyWtR-006sIO-Db; Tue, 07 Jun 2022 10:57:01 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nyXrA-007BIi-1c; Tue, 07 Jun 2022 11:58:44 +0000
+Received: from mail-mw2nam10on20607.outbound.protection.outlook.com ([2a01:111:f400:7e89::607] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyWrs-006rdW-Hh; Tue, 07 Jun 2022 10:55:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 297BEB81F01;
-	Tue,  7 Jun 2022 10:55:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 224E2C385A5;
-	Tue,  7 Jun 2022 10:55:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654599321;
-	bh=5JaZ8fuFAsCs3zwfgmDiaQbX9q96F/m3qVELfXvKhnE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=qXg2Eg9uNjPunE55sZ+BYMJ5NTmO6e4w5ByJadfTdStS0+FZjNCqBowUi+6KqvBos
-	 JS6jGOP9QNpAodD2mbEStUZdH25C2vWJn0tzp+BTevWrJJp+r+/SjQz+tcPza6VckL
-	 B8416lH1ZvjJR5BuckGw7yqkpyq9FEIE095V1z+wU2PqVI1nQ1f9OWWcvKQ1PQ+2aP
-	 nIe6QJK0cTSo4R4wJIW/4OKlXCv2y9R/Ie6dxoslCxh8Bd7gioxNdB27ULvAehleCF
-	 /zgpb575z90pCyBNr2gD86eS3vvVKc7+2fHKBP38j7CH4pn6gaJoL8qns5iOjyaPj+
-	 R94JgD9oKxLzA==
-From: Mark Brown <broonie@kernel.org>
-To: robh+dt@kernel.org, angelogioacchino.delregno@collabora.com, jiaxin.yu@mediatek.com
-Cc: linux-kernel@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, tzungbi@google.com, matthias.bgg@gmail.com, trevor.wu@mediatek.com, julianbraha@gmail.com, aaronyu@google.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org
-In-Reply-To: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
-References: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH v5 00/20] ASoC: mediatek: Add support for MT8186 SoC
-Message-Id: <165459931885.399031.2621579592368573898.b4-ty@kernel.org>
-Date: Tue, 07 Jun 2022 11:55:18 +0100
+	id 1nyXqu-007BAP-O4; Tue, 07 Jun 2022 11:58:30 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Gtqq4tQk6nzpSln2zUm0X2CY5p/bfbPCKgc3O19riC808arlrgVn4vRshg05dOM8PzFAOJQwEDRZUR0YFaxd8wJrYV52lFw4tXSX1FrEJL7uGsq4LjJTJ/qoZoGi3pYWIKUxvTHlfJyPZt6zn4kQgwBBftAcDsxyK/4RH07zieWNLLqU50Gsycz6UGaOJPaDujqujvmXQDxQ/td0VzIs+G4AlyWMWQI56atgeyzBHQ1aHELGcTv2A0u3Wh1NHw3gaNlQRBe+EUPEe8jn6NcKD29qUMQOOKcjweLhyAucTNiXOEofu6SLcCR0i45GtDx9w10NovvN6mimK3eRCOSyKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hyQ7FJG645S4QF9ib6147Xx09KY8YPpUL9WcHbeFmLw=;
+ b=RvXRJzQ7/TJvy4tUajRfD9LDrmNrNe/myqEbd2IDlLnWWm3sh0eReT5cMtakY2q/FSgAONb4qUOrdrQSECVexBEFQyKfc8qzPJn1djkWp1wvJUn8z0AX56iE/5H88y6xYGloth2nz5OJs6SDH99xYWvycJAH2JotXjlDs10Wcl580iJWW1iEwXZsZQdF00OZt7wzjJ5oG1hfyGWb6JAMhIFOyXtutrq94BEGY97g0BdzLOBBydDYVd9d1mOq/ZcjUm+usmFLTUEx9AuxQZGGUJuI+Zv+XL9DlN8XPlSVwtvp3vIXTO1rtS6FbGgCBPyPuFJWa5zpKWkmW94zzj3Rwg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hyQ7FJG645S4QF9ib6147Xx09KY8YPpUL9WcHbeFmLw=;
+ b=m0tT/9jkFNdqHGV9JszjPpvwRwakHbfF7FccTnjn1cv6kj+hvpB7CwUC+0a0OSHCGpbPJq889iBKXHTDuMjPUQX5r0OfFUQVxBzBNiUkERMdgJojls1j5s2OmdIznZc7RIlju6o8T7VvdGVzpbyv1G0MYq3BHsIFcUW5wCCghP5/UZG+idQcqnwZ+hAj6WXrguEL4jMMXFQvlTJBrWlha6ltIlB/YF96pkBajldJ7I5S6GRkCZyRX1gkPJhkgw2VtNhb5P4oFRP8tAu2kd4mDhJJ0pzgZHOdzADCiGQkWLK9n8EoxWpDke+CwzTt9fIl2GjJmjNLtZUdwlOah0zNYg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+ by DM6PR12MB4403.namprd12.prod.outlook.com (2603:10b6:5:2ab::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.12; Tue, 7 Jun
+ 2022 11:58:22 +0000
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::2484:51da:d56f:f1a5]) by MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::2484:51da:d56f:f1a5%9]) with mapi id 15.20.5314.019; Tue, 7 Jun 2022
+ 11:58:22 +0000
+Date: Tue, 7 Jun 2022 08:58:20 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Baolu Lu <baolu.lu@linux.intel.com>
+Cc: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org, will@kernel.org,
+	marcan@marcan.st, sven@svenpeter.dev, robin.murphy@arm.com,
+	robdclark@gmail.com, m.szyprowski@samsung.com,
+	krzysztof.kozlowski@linaro.org, agross@kernel.org,
+	bjorn.andersson@linaro.org, matthias.bgg@gmail.com, heiko@sntech.de,
+	orsonzhai@gmail.com, baolin.wang7@gmail.com, zhang.lyra@gmail.com,
+	wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
+	jean-philippe@linaro.org, alex.williamson@redhat.com,
+	suravee.suthikulpanit@amd.com, alyssa@rosenzweig.io,
+	alim.akhtar@samsung.com, dwmw2@infradead.org, yong.wu@mediatek.com,
+	mjrosato@linux.ibm.com, gerald.schaefer@linux.ibm.com,
+	thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
+	cohuck@redhat.com, iommu@lists.linux-foundation.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	virtualization@lists.linux-foundation.org, kvm@vger.kernel.org
+Subject: Re: [PATCH 0/5] Simplify vfio_iommu_type1 attach/detach routine
+Message-ID: <20220607115820.GH1343366@nvidia.com>
+References: <20220606061927.26049-1-nicolinc@nvidia.com>
+ <d357966b-7abd-f8f3-3ca7-3c99f5e075b9@linux.intel.com>
+Content-Disposition: inline
+In-Reply-To: <d357966b-7abd-f8f3-3ca7-3c99f5e075b9@linux.intel.com>
+X-ClientProxiedBy: MN2PR13CA0035.namprd13.prod.outlook.com
+ (2603:10b6:208:160::48) To MN2PR12MB4192.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::15)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 8cc5a917-b8c4-446d-7322-08da487d04fa
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4403:EE_
+X-Microsoft-Antispam-PRVS: 	<DM6PR12MB4403AF135DE2F2CCACF4DA0BC2A59@DM6PR12MB4403.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	qWjRiR0HgdFvAQmgwW9BJgMAGiT4zayOWQcQsoJK1Avh5U5BaA0Pxc+GbxXLc+nBfB7iSf/4m8cByAWMMf2LqxV9Xub13IuK0g1AqkqLXo69NiRZn8kSa16DzecbIjK+xTz8spBwmgIxDJviUSeuryPRNWdey/HjmZmHBA6kJJq8ouhuNMI6/Msp72Crc4xLuFN2gl0NaKRaZv15xoTyk4teKzNs0Ya3rEFZacm45N5CNBoduGeO7nYGXPJAbAOk1Q04aBc4J3tPI7PTiF1s7vOKzVJD7o6Ysk9zGEnzfijeiflXdDLHvNs0ZAHJgOZ24xd5kj1jizufnnQPOCazW2uqux8UNCEXEHPu76hQpRzBEMQWHyJo5wtXyik5lH5vxA0khI+69Ln0ifnRPKFI+4ccUJg0Bl+joj/H75T0Imeheyxdz/qR6PvZD4FMM+fmvUfSkOn3Q3AFrdduSQAVnhsElUgCrgGZINSEQxWLqIi3ziO2oy9cH5cGINMObkiCMkhMIVc20guO05VPT9Dh3nolc/94EeAyil6YTCZsjCIirmiMW0FWGBSN6gGJ2VWd5KkVgtXI/ZImW286Edrl29JABytHY/mGkOVpa28IQ7wCE1sREY60mS4U+zGYLK5syYfQy7KRNEryQ73e7BOjJQ==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB4192.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(2616005)(36756003)(7416002)(508600001)(6506007)(8936002)(7406005)(66556008)(8676002)(66476007)(4326008)(66946007)(2906002)(38100700002)(5660300002)(4744005)(53546011)(6512007)(6486002)(86362001)(6916009)(33656002)(316002)(26005)(1076003)(186003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?QEkwO8qV+DMoII+XdhdNjXBVl5qHAjfA/jzJcWkeAKXa+Steb3/LW/WZiHz6?=
+ =?us-ascii?Q?S00g8axuYF+ssrPsIhwqzzkSgSGhjb+X+yNSc1Vw6rXNAeg2bQHQFqUbsbSh?=
+ =?us-ascii?Q?umSHjkGdMSwCk3ckYcRXsnCw62OaoX+dWpa5JadGMY3H6GauE9BThHvO5zrQ?=
+ =?us-ascii?Q?cvwNidfx9iu6zkOrTeVdY9XJOxTAW4l/lKKwcB6EY+frVT3ClZnb/LL4TKHx?=
+ =?us-ascii?Q?eNP1pWRekH7auhPaWgp1E4qqmhvx/mDvoSrUmqQHq3YBcstKCwweeJqMEMHe?=
+ =?us-ascii?Q?+Dyl3YjsF1nTWmg0kV3+alCBs/FhJwbT3GMNiZi3iPMxf7hLTY17R2M9N0Wg?=
+ =?us-ascii?Q?eS9bA05ywqk3yGO/C2p+lRIc+lOLkXemW6IKqR/njf+pc5h+GhXUCLC9hGgx?=
+ =?us-ascii?Q?4Ad0xh/oybgNnC8w2hbDSItUv5pFGkQIyI2OcGBYBdk5NhKeLuOf2aXF+jDe?=
+ =?us-ascii?Q?Zty6XA7CL2rKo27xXYhwFvdKl5tdRrb8xMJT3XuuwIRZdZ8goEPTKbcAILSp?=
+ =?us-ascii?Q?SwROnbizTZ/TKpV2zUpOwZY8EDbLlY4ThlMNRRTAYZ8+aChn3xwshBBSmKms?=
+ =?us-ascii?Q?kWzlb9efK528WSnd+Soq8w2kJ9LLqMOtWWRW5GcCRhK+jLGqd2Ng8noBGl8a?=
+ =?us-ascii?Q?1zwITKi8MgnYXa5dyIkzftIyhPWsZgLhBV2tnE4DF44dGYn7tnGEdH7+wbG5?=
+ =?us-ascii?Q?XX/SCAA5XEx7O6jgc4NQwdSRdkS9nxCcTicRNZqb+kOHtzKdO6AGRZ/3aUtV?=
+ =?us-ascii?Q?xYbLphs/wissPWCcH9/xcN/qoXIyWqJcrqqtxUMnWgAfrdWqdBpHacLjeCLX?=
+ =?us-ascii?Q?cxRM5NmGT7ZpDeK1v/K/BWloejaB1x2c43r/F5XhhPTmqBOx5B7iUCpnLkRQ?=
+ =?us-ascii?Q?E3wELXcgINvdaNo4+dexPrvKLYmizL7dgrGT0L03qVMGI1VDsteGZVLfzL8U?=
+ =?us-ascii?Q?XfBuVt4v/i2ha92hO3SEAurYep/JrELcHYRaakuOm8X007tNpxicFnhYtXHA?=
+ =?us-ascii?Q?rrGpkkIbjY8WDl2IIqdkGRWKjIGXYrnoDtdsg8yMH6GIatgAnCYafRi2O2XT?=
+ =?us-ascii?Q?WH+IxNIfd7/c8085MJSQ5J3wROq+yeJd2JFmyICrPvnwR+ejTGNgti+b1xMo?=
+ =?us-ascii?Q?THLw3qYixaCPylFYentKU1av/u6Cz04aSh06GT/c70DlEdgK1uzqxxiPXeru?=
+ =?us-ascii?Q?ewfDmU6kFZoCV6OCXt6kXKMFLhXtDoV8QZ22zNqiSAifjZ8U5OwwjWBPVVmi?=
+ =?us-ascii?Q?deDhMsShmV4p+Ga9ejrkdshDzG14U0k+rKLMFAjdWTyplvEu//nmJi/2sXPS?=
+ =?us-ascii?Q?740D9Akr/tdv7LEC9pt7wUgfW6iw6wELdjKp/CTTgc0rv0RhiuckCUSW5atv?=
+ =?us-ascii?Q?S0ywCbwhuGnz0YBVv2V1QQzJ0akYPx6foc3hmZca+rttT8NToMQgG15nVpbA?=
+ =?us-ascii?Q?7HI0WC4DSG2j/f4eVTwh8n63uvjTcKdSjVJJP4w7VFyK4dFcFjDasp04PiFy?=
+ =?us-ascii?Q?N0EHtgXNU5CTECDoKXhgSsCvY4EnXFY0xCgf3ReMk2e+Yu8kZtxMmK7reADh?=
+ =?us-ascii?Q?yBVTohyPb/LsR1zo07XoPMNNo3NovlzljfqQOKMxNFk3BhG+19HhEgaCuIx/?=
+ =?us-ascii?Q?9OO4Y350z/sVdOzK88ARm1fx2FaTDTfVHvd5go9w4XyNuQNHAqi5fX2XocCR?=
+ =?us-ascii?Q?MZbLMl5np8FGzlUBoVdKqIf0xzIUARs/+EUt87g91C3WMAhHMWldtUGsMD4/?=
+ =?us-ascii?Q?+OxvqbQR7w=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8cc5a917-b8c4-446d-7322-08da487d04fa
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jun 2022 11:58:22.0324
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ygtIfwM5keObquhDnrdqGDLG45tetbDL26LAnv1CjoRY9EUw3/i+WK2uzzzNuDxK
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4403
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_035524_926269_BFC9E30A 
-X-CRM114-Status: GOOD (  17.71  )
+X-CRM114-CacheID: sfid-20220607_045828_859884_9E111647 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,94 +152,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 May 2022 21:28:38 +0800, Jiaxin Yu wrote:
-> This series of patches adds support for Mediatek AFE of MT8186 Soc.
-> Patches are based on broonie tree "for-next" branch.
+On Tue, Jun 07, 2022 at 03:44:43PM +0800, Baolu Lu wrote:
+> On 2022/6/6 14:19, Nicolin Chen wrote:
+> > Worths mentioning the exact match for enforce_cache_coherency is removed
+> > with this series, since there's very less value in doing that since KVM
+> > won't be able to take advantage of it -- this just wastes domain memory.
+> > Instead, we rely on Intel IOMMU driver taking care of that internally.
 > 
-> Changes since v4:
->   - [v5 07/20]
->     - remove unsusd controls
->   - [v5 09/20]
->     - correct indent error
->   - [v5 10/20]
->   - [v5 13/20]
->   - [v5 14/20]
->     - fix the return value if the value is different from the previous
->       value in mixer controls
->   - [v5 17/20]
->   - [v5 19/20]
->     - correct the compatible name with '_' instead of '-'
->   - [v5 18/20]
->   - [v5 20/20]
->     - correct the yaml after 'pip3 install dtschema --upgrade'
-> 
-> [...]
+> After reading this series, I don't see that Intel IOMMU driver needs any
+> further change to support the new scheme. Did I miss anything?
 
-Applied to
+You already did it :)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[01/20] ASoC: mediatek: mt6366: support for mt6366 codec
-        commit: 612c4695e312c753a8b06f6b052cea3d8338e3c3
-[02/20] dt-bindings: mediatek: mt6358: add new compatible for using mt6366
-        (no commit info)
-[03/20] ASoC: mediatek: mt8186: support audsys clock control
-        commit: 58949aa35c0f74a98b03864817354d85f452a51c
-[04/20] ASoC: mediatek: mt8186: support adda in platform driver
-        commit: b65c466220b336f5044c1be75ebc771d087ee7ca
-[05/20] ASoC: mediatek: mt8186: support hostless in platform driver
-        commit: 55cac93d271166a2aa431d453bf31fdcb19bd5e6
-[06/20] ASoC: mediatek: mt8186: support hw gain in platform driver
-        commit: 2567ccae9105cbc881828f2ea09954c1b5fd975d
-[07/20] ASoC: mediatek: mt8186: support i2s in platform driver
-        commit: 2907d261276e09bd84fdc8bad35930a046a99d4d
-[08/20] ASoC: mediatek: mt8186: support pcm in platform driver
-        commit: 920508f9fe2fc90f19916d74f4c23088030d32e0
-[09/20] ASoC: mediatek: mt8186: support src in platform driver
-        commit: e118015db7bd0dad1744221d0fe18333ebf9c622
-[10/20] ASoC: mediatek: mt8186: support tdm in platform driver
-        commit: ae92dcbee8b6a6f63198a2a6fea0fc9f6a0fe07b
-[11/20] ASoC: mediatek: mt8186: support audio clock control in platform driver
-        commit: 55b423d5623ccd6785429431c2cf5f3e073b73ba
-[12/20] ASoC: mediatek: mt8186: support gpio control in platform driver
-        commit: cfa9a966f12a91a269e50f1c3237c006ffe2ee9a
-[13/20] ASoC: mediatek: mt8186: add misc driver and register definitions
-        commit: 80d8cad2e9ce21517d50c7084c12a59d38a778f7
-[14/20] ASoC: mediatek: mt8186: add platform driver
-        (no commit info)
-[15/20] ASoC: mediatek: mt8186: add mt8186-mt6366 common driver
-        (no commit info)
-[16/20] dt-bindings: mediatek: mt8186: add audio afe document
-        (no commit info)
-[17/20] ASoC: mediatek: mt8186: add machine driver with mt6366, da7219 and max98357
-        (no commit info)
-[18/20] dt-bindings: mediatek: mt8186: add mt8186-mt6366-da7219-max98357 document
-        (no commit info)
-[19/20] ASoC: mediatek: mt8186: add machine driver with mt6366, rt1019 and rt5682s
-        (no commit info)
-[20/20] dt-bindings: mediatek: mt8186: add mt8186-mt6366-rt1019-rt5682s document
-        (no commit info)
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Jason
 
 _______________________________________________
 Linux-mediatek mailing list
