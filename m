@@ -4,138 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E24C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 11:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10470C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 12:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z4qbSmWIHV/5c/FKd70ZYp5XVeHtF98V1pciv224dFA=; b=wawDPDN/5of9Nk
-	XI/pRPxo0VimmsXOB+u99fcJENsmDvg9WyKerVPAI9t7TC4RVgTJvNvvfbrMTT68Co9pUv++2I/av
-	IfywM2iMVOTJMlAGbnay3skIk4NLUZQ8c6ZDqcrKSLm917/yuvsuC7zxI4eWaXrH2yOG0zKyMZMkW
-	t4nrVOCdOs8rrU9J1ldGh5LrR7KzjSdGwGCqMmYFw3FdBgDKciUmffOyisaagoftvpyxGq4XXV0cC
-	hmLU/lnx5plUxSy9hoGp6YbjOHwlws1s5QoyKUXQpYW4BPl9DXPcpdE9Av/Fd/QKnYp9JNH54wGPK
-	dLzRBurjPjtemUwdN++Q==;
+	List-Owner; bh=IRL8fQ5CkjFdIxjikWq1Gsp6EnbqON/0MR9wG/bY+fs=; b=CPAc80ywSLfSuX
+	27cKyPqICcwP6EjVMewr6lBP57ld6Pk1nsGytbJu1pjsED1QU51Xh8BOFWrH9voC7Lhm1hw/VQZIe
+	cBSW/VUvYhlFuspDjWIj8T2ga6VqG+pmfNaNwu4+uMdDBsshyBJLLyXrqufQ+I6Gok9GgVemmzsVk
+	PDZwFRkPRY7Z0XnjejACCccUgs+a+NNsgqxh9wgr8HdBd3Cdsf+PvE6IYnhKtwXUOdJSHBg9+ApOn
+	O6N2GtlBicRxYyvg8fXrB/GlhGksgN0bsUcghG0dhvwFGXLvnabt41q7HHpFcAhyw9olLj/vNm3En
+	skpRQbaHUr4E27At3NhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyXrA-007BIi-1c; Tue, 07 Jun 2022 11:58:44 +0000
-Received: from mail-mw2nam10on20607.outbound.protection.outlook.com ([2a01:111:f400:7e89::607] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1nyYJd-007LZW-9G; Tue, 07 Jun 2022 12:28:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyXqu-007BAP-O4; Tue, 07 Jun 2022 11:58:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Gtqq4tQk6nzpSln2zUm0X2CY5p/bfbPCKgc3O19riC808arlrgVn4vRshg05dOM8PzFAOJQwEDRZUR0YFaxd8wJrYV52lFw4tXSX1FrEJL7uGsq4LjJTJ/qoZoGi3pYWIKUxvTHlfJyPZt6zn4kQgwBBftAcDsxyK/4RH07zieWNLLqU50Gsycz6UGaOJPaDujqujvmXQDxQ/td0VzIs+G4AlyWMWQI56atgeyzBHQ1aHELGcTv2A0u3Wh1NHw3gaNlQRBe+EUPEe8jn6NcKD29qUMQOOKcjweLhyAucTNiXOEofu6SLcCR0i45GtDx9w10NovvN6mimK3eRCOSyKQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hyQ7FJG645S4QF9ib6147Xx09KY8YPpUL9WcHbeFmLw=;
- b=RvXRJzQ7/TJvy4tUajRfD9LDrmNrNe/myqEbd2IDlLnWWm3sh0eReT5cMtakY2q/FSgAONb4qUOrdrQSECVexBEFQyKfc8qzPJn1djkWp1wvJUn8z0AX56iE/5H88y6xYGloth2nz5OJs6SDH99xYWvycJAH2JotXjlDs10Wcl580iJWW1iEwXZsZQdF00OZt7wzjJ5oG1hfyGWb6JAMhIFOyXtutrq94BEGY97g0BdzLOBBydDYVd9d1mOq/ZcjUm+usmFLTUEx9AuxQZGGUJuI+Zv+XL9DlN8XPlSVwtvp3vIXTO1rtS6FbGgCBPyPuFJWa5zpKWkmW94zzj3Rwg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hyQ7FJG645S4QF9ib6147Xx09KY8YPpUL9WcHbeFmLw=;
- b=m0tT/9jkFNdqHGV9JszjPpvwRwakHbfF7FccTnjn1cv6kj+hvpB7CwUC+0a0OSHCGpbPJq889iBKXHTDuMjPUQX5r0OfFUQVxBzBNiUkERMdgJojls1j5s2OmdIznZc7RIlju6o8T7VvdGVzpbyv1G0MYq3BHsIFcUW5wCCghP5/UZG+idQcqnwZ+hAj6WXrguEL4jMMXFQvlTJBrWlha6ltIlB/YF96pkBajldJ7I5S6GRkCZyRX1gkPJhkgw2VtNhb5P4oFRP8tAu2kd4mDhJJ0pzgZHOdzADCiGQkWLK9n8EoxWpDke+CwzTt9fIl2GjJmjNLtZUdwlOah0zNYg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by DM6PR12MB4403.namprd12.prod.outlook.com (2603:10b6:5:2ab::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.12; Tue, 7 Jun
- 2022 11:58:22 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::2484:51da:d56f:f1a5]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::2484:51da:d56f:f1a5%9]) with mapi id 15.20.5314.019; Tue, 7 Jun 2022
- 11:58:22 +0000
-Date: Tue, 7 Jun 2022 08:58:20 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Baolu Lu <baolu.lu@linux.intel.com>
-Cc: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org, will@kernel.org,
-	marcan@marcan.st, sven@svenpeter.dev, robin.murphy@arm.com,
-	robdclark@gmail.com, m.szyprowski@samsung.com,
-	krzysztof.kozlowski@linaro.org, agross@kernel.org,
-	bjorn.andersson@linaro.org, matthias.bgg@gmail.com, heiko@sntech.de,
-	orsonzhai@gmail.com, baolin.wang7@gmail.com, zhang.lyra@gmail.com,
-	wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
-	jean-philippe@linaro.org, alex.williamson@redhat.com,
-	suravee.suthikulpanit@amd.com, alyssa@rosenzweig.io,
-	alim.akhtar@samsung.com, dwmw2@infradead.org, yong.wu@mediatek.com,
-	mjrosato@linux.ibm.com, gerald.schaefer@linux.ibm.com,
-	thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
-	cohuck@redhat.com, iommu@lists.linux-foundation.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	virtualization@lists.linux-foundation.org, kvm@vger.kernel.org
-Subject: Re: [PATCH 0/5] Simplify vfio_iommu_type1 attach/detach routine
-Message-ID: <20220607115820.GH1343366@nvidia.com>
-References: <20220606061927.26049-1-nicolinc@nvidia.com>
- <d357966b-7abd-f8f3-3ca7-3c99f5e075b9@linux.intel.com>
-Content-Disposition: inline
-In-Reply-To: <d357966b-7abd-f8f3-3ca7-3c99f5e075b9@linux.intel.com>
-X-ClientProxiedBy: MN2PR13CA0035.namprd13.prod.outlook.com
- (2603:10b6:208:160::48) To MN2PR12MB4192.namprd12.prod.outlook.com
- (2603:10b6:208:1d5::15)
+	id 1nyYJ5-007LKs-Hf; Tue, 07 Jun 2022 12:27:38 +0000
+X-UUID: e98ae71e228e404eae696004532dd6b0-20220607
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:3f3f5662-2e3d-45f4-9efa-149a66c15148,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:2a19b09,CLOUDID:a166f3e4-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: e98ae71e228e404eae696004532dd6b0-20220607
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 82989194; Tue, 07 Jun 2022 05:27:26 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Jun 2022 05:24:32 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 7 Jun 2022 20:24:31 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Tue, 7 Jun 2022 20:24:31 +0800
+Message-ID: <8af7938ae9244e4b7caf62e0c6ce0bcdddc13889.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun
+ =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
+	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
+	<linux-fbdev@vger.kernel.org>
+Date: Tue, 7 Jun 2022 20:24:31 +0800
+In-Reply-To: <0bd8b0c66b9e2a1b63280e7eab63048bee7fe786.camel@mediatek.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+	 <0bd8b0c66b9e2a1b63280e7eab63048bee7fe786.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8cc5a917-b8c4-446d-7322-08da487d04fa
-X-MS-TrafficTypeDiagnostic: DM6PR12MB4403:EE_
-X-Microsoft-Antispam-PRVS: 	<DM6PR12MB4403AF135DE2F2CCACF4DA0BC2A59@DM6PR12MB4403.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	qWjRiR0HgdFvAQmgwW9BJgMAGiT4zayOWQcQsoJK1Avh5U5BaA0Pxc+GbxXLc+nBfB7iSf/4m8cByAWMMf2LqxV9Xub13IuK0g1AqkqLXo69NiRZn8kSa16DzecbIjK+xTz8spBwmgIxDJviUSeuryPRNWdey/HjmZmHBA6kJJq8ouhuNMI6/Msp72Crc4xLuFN2gl0NaKRaZv15xoTyk4teKzNs0Ya3rEFZacm45N5CNBoduGeO7nYGXPJAbAOk1Q04aBc4J3tPI7PTiF1s7vOKzVJD7o6Ysk9zGEnzfijeiflXdDLHvNs0ZAHJgOZ24xd5kj1jizufnnQPOCazW2uqux8UNCEXEHPu76hQpRzBEMQWHyJo5wtXyik5lH5vxA0khI+69Ln0ifnRPKFI+4ccUJg0Bl+joj/H75T0Imeheyxdz/qR6PvZD4FMM+fmvUfSkOn3Q3AFrdduSQAVnhsElUgCrgGZINSEQxWLqIi3ziO2oy9cH5cGINMObkiCMkhMIVc20guO05VPT9Dh3nolc/94EeAyil6YTCZsjCIirmiMW0FWGBSN6gGJ2VWd5KkVgtXI/ZImW286Edrl29JABytHY/mGkOVpa28IQ7wCE1sREY60mS4U+zGYLK5syYfQy7KRNEryQ73e7BOjJQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB4192.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(2616005)(36756003)(7416002)(508600001)(6506007)(8936002)(7406005)(66556008)(8676002)(66476007)(4326008)(66946007)(2906002)(38100700002)(5660300002)(4744005)(53546011)(6512007)(6486002)(86362001)(6916009)(33656002)(316002)(26005)(1076003)(186003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?QEkwO8qV+DMoII+XdhdNjXBVl5qHAjfA/jzJcWkeAKXa+Steb3/LW/WZiHz6?=
- =?us-ascii?Q?S00g8axuYF+ssrPsIhwqzzkSgSGhjb+X+yNSc1Vw6rXNAeg2bQHQFqUbsbSh?=
- =?us-ascii?Q?umSHjkGdMSwCk3ckYcRXsnCw62OaoX+dWpa5JadGMY3H6GauE9BThHvO5zrQ?=
- =?us-ascii?Q?cvwNidfx9iu6zkOrTeVdY9XJOxTAW4l/lKKwcB6EY+frVT3ClZnb/LL4TKHx?=
- =?us-ascii?Q?eNP1pWRekH7auhPaWgp1E4qqmhvx/mDvoSrUmqQHq3YBcstKCwweeJqMEMHe?=
- =?us-ascii?Q?+Dyl3YjsF1nTWmg0kV3+alCBs/FhJwbT3GMNiZi3iPMxf7hLTY17R2M9N0Wg?=
- =?us-ascii?Q?eS9bA05ywqk3yGO/C2p+lRIc+lOLkXemW6IKqR/njf+pc5h+GhXUCLC9hGgx?=
- =?us-ascii?Q?4Ad0xh/oybgNnC8w2hbDSItUv5pFGkQIyI2OcGBYBdk5NhKeLuOf2aXF+jDe?=
- =?us-ascii?Q?Zty6XA7CL2rKo27xXYhwFvdKl5tdRrb8xMJT3XuuwIRZdZ8goEPTKbcAILSp?=
- =?us-ascii?Q?SwROnbizTZ/TKpV2zUpOwZY8EDbLlY4ThlMNRRTAYZ8+aChn3xwshBBSmKms?=
- =?us-ascii?Q?kWzlb9efK528WSnd+Soq8w2kJ9LLqMOtWWRW5GcCRhK+jLGqd2Ng8noBGl8a?=
- =?us-ascii?Q?1zwITKi8MgnYXa5dyIkzftIyhPWsZgLhBV2tnE4DF44dGYn7tnGEdH7+wbG5?=
- =?us-ascii?Q?XX/SCAA5XEx7O6jgc4NQwdSRdkS9nxCcTicRNZqb+kOHtzKdO6AGRZ/3aUtV?=
- =?us-ascii?Q?xYbLphs/wissPWCcH9/xcN/qoXIyWqJcrqqtxUMnWgAfrdWqdBpHacLjeCLX?=
- =?us-ascii?Q?cxRM5NmGT7ZpDeK1v/K/BWloejaB1x2c43r/F5XhhPTmqBOx5B7iUCpnLkRQ?=
- =?us-ascii?Q?E3wELXcgINvdaNo4+dexPrvKLYmizL7dgrGT0L03qVMGI1VDsteGZVLfzL8U?=
- =?us-ascii?Q?XfBuVt4v/i2ha92hO3SEAurYep/JrELcHYRaakuOm8X007tNpxicFnhYtXHA?=
- =?us-ascii?Q?rrGpkkIbjY8WDl2IIqdkGRWKjIGXYrnoDtdsg8yMH6GIatgAnCYafRi2O2XT?=
- =?us-ascii?Q?WH+IxNIfd7/c8085MJSQ5J3wROq+yeJd2JFmyICrPvnwR+ejTGNgti+b1xMo?=
- =?us-ascii?Q?THLw3qYixaCPylFYentKU1av/u6Cz04aSh06GT/c70DlEdgK1uzqxxiPXeru?=
- =?us-ascii?Q?ewfDmU6kFZoCV6OCXt6kXKMFLhXtDoV8QZ22zNqiSAifjZ8U5OwwjWBPVVmi?=
- =?us-ascii?Q?deDhMsShmV4p+Ga9ejrkdshDzG14U0k+rKLMFAjdWTyplvEu//nmJi/2sXPS?=
- =?us-ascii?Q?740D9Akr/tdv7LEC9pt7wUgfW6iw6wELdjKp/CTTgc0rv0RhiuckCUSW5atv?=
- =?us-ascii?Q?S0ywCbwhuGnz0YBVv2V1QQzJ0akYPx6foc3hmZca+rttT8NToMQgG15nVpbA?=
- =?us-ascii?Q?7HI0WC4DSG2j/f4eVTwh8n63uvjTcKdSjVJJP4w7VFyK4dFcFjDasp04PiFy?=
- =?us-ascii?Q?N0EHtgXNU5CTECDoKXhgSsCvY4EnXFY0xCgf3ReMk2e+Yu8kZtxMmK7reADh?=
- =?us-ascii?Q?yBVTohyPb/LsR1zo07XoPMNNo3NovlzljfqQOKMxNFk3BhG+19HhEgaCuIx/?=
- =?us-ascii?Q?9OO4Y350z/sVdOzK88ARm1fx2FaTDTfVHvd5go9w4XyNuQNHAqi5fX2XocCR?=
- =?us-ascii?Q?MZbLMl5np8FGzlUBoVdKqIf0xzIUARs/+EUt87g91C3WMAhHMWldtUGsMD4/?=
- =?us-ascii?Q?+OxvqbQR7w=3D=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8cc5a917-b8c4-446d-7322-08da487d04fa
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jun 2022 11:58:22.0324
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ygtIfwM5keObquhDnrdqGDLG45tetbDL26LAnv1CjoRY9EUw3/i+WK2uzzzNuDxK
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4403
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_045828_859884_9E111647 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20220607_052735_619458_686B8546 
+X-CRM114-Status: GOOD (  37.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,19 +99,156 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 07, 2022 at 03:44:43PM +0800, Baolu Lu wrote:
-> On 2022/6/6 14:19, Nicolin Chen wrote:
-> > Worths mentioning the exact match for enforce_cache_coherency is removed
-> > with this series, since there's very less value in doing that since KVM
-> > won't be able to take advantage of it -- this just wastes domain memory.
-> > Instead, we rely on Intel IOMMU driver taking care of that internally.
+On Tue, 2022-06-07 at 14:21 +0800, CK Hu wrote:
+> Hi, Rex:
 > 
-> After reading this series, I don't see that Intel IOMMU driver needs any
-> further change to support the new scheme. Did I miss anything?
+> On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > 
+> > This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> > 
+> > It supports the mt8195, the embedded DisplayPort units. It offers
+> > DisplayPort 1.4 with up to 4 lanes.
+> > 
+> > The driver creates a child device for the phy. The child device
+> > will
+> > never exist without the parent being active. As they are sharing a
+> > register range, the parent passes a regmap pointer to the child so
+> > that
+> > both can work with the same register range. The phy driver sets
+> > device
+> > data that is read by the parent to get the phy device that can be
+> > used
+> > to control the phy properties.
+> > 
+> > This driver is based on an initial version by
+> > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > ---
+> 
+> [snip]
+> 
+> > +
+> > +static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+> > +{
+> > +	struct mtk_dp *mtk_dp = dev;
+> > +	int event;
+> > +	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
+> > +
+> > +	event = mtk_dp_plug_state(mtk_dp) ? connector_status_connected
+> > :
+> > +						  connector_status_disc
+> > onnected;
+> > +
+> > +	if (event < 0)
+> 
+> event is always > 0, isn't it?
+> 
+Hello CK,
 
-You already did it :)
+ok, I will move this to dp patch.
 
-Jason
+> > +		return IRQ_HANDLED;
+> > +
+> > +	if (mtk_dp->drm_dev) {
+> > +		dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
+> > +		drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+> 
+> I think this ISR would come once. If bridge has not attached, the drm
+> core would lost this event. Maybe you should enable eDP hardware
+> after
+> bridge attached or send this event when attached.
+> 
+
+for edp patch, I will move it to (mtk_dp_bridge_attach).
+for dp patch, I will add it back.
+
+> > +	}
+> > +
+> > +	if (mtk_dp->train_info.cable_state_change) {
+> 
+> Executing this thread imply cable_state_change = true, so drop
+> cable_state_change.
+> 
+
+In mtk_dp_hpd_isr_handler(), there is another irq
+"MTK_DP_HPD_INTERRUPT" which means the sink devices give a interrupt to
+source device. it's not about connected status, so I think we still
+need this.
+
+> > +		mtk_dp->train_info.cable_state_change = false;
+> > +
+> > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_STARTUP;
+> > +
+> > +		if (!mtk_dp->train_info.cable_plugged_in ||
+> > +		    !mtk_dp_plug_state(mtk_dp)) {
+> 
+> I do not like two variable to present one thing. If
+> 
+> mtk_dp->train_info.cable_plugged_in = false
+> and
+> mtk_dp_plug_state(mtk_dp) = ture
+> 
+> What does this mean? I think this mean 'now' is connected because
+> cable_plugged_in is old information and mtk_dp_plug_state() is
+> current
+> information.
+> 
+> But I would like to keep cable_plugged_in and drop
+> mtk_dp_plug_state()
+> because cable_plugged_in would be changed in isr and it would be the
+> same as mtk_dp_plug_state().
+> 
+> Regards,
+> CK
+> 
+
+ok, I will drop this.
+
+BRs,
+Rex
+
+> > +			mtk_dp_video_mute(mtk_dp, true);
+> > +
+> > +			mtk_dp_initialize_priv_data(mtk_dp);
+> > +			mtk_dp_set_idle_pattern(mtk_dp, true);
+> > +			if (mtk_dp->has_fec)
+> > +				mtk_dp_fec_enable(mtk_dp, false);
+> > +
+> > +			mtk_dp_update_bits(mtk_dp,
+> > MTK_DP_TOP_PWR_STATE,
+> > +					   DP_PWR_STATE_BANDGAP_TPLL,
+> > +					   DP_PWR_STATE_MASK);
+> > +		} else {
+> > +			mtk_dp_update_bits(mtk_dp,
+> > MTK_DP_TOP_PWR_STATE,
+> > +					   DP_PWR_STATE_BANDGAP_TPLL_LA
+> > NE,
+> > +					   DP_PWR_STATE_MASK);
+> > +			drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
+> > +			mtk_dp->train_info.link_rate =
+> > +				min_t(int, mtk_dp->max_linkrate,
+> > +				      buf[mtk_dp->max_linkrate]);
+> > +			mtk_dp->train_info.lane_count =
+> > +				min_t(int, mtk_dp->max_lanes,
+> > +				      drm_dp_max_lane_count(buf));
+> > +		}
+> > +	}
+> > +
+> > +	if (mtk_dp->train_info.irq_status & MTK_DP_HPD_INTERRUPT) {
+> > +		dev_dbg(mtk_dp->dev, "MTK_DP_HPD_INTERRUPT\n");
+> > +		mtk_dp->train_info.irq_status &= ~MTK_DP_HPD_INTERRUPT;
+> > +		mtk_dp_hpd_sink_event(mtk_dp);
+> > +	}
+> > +
+> > +	return IRQ_HANDLED;
+> > +}
+> > +
+> 
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
