@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F99C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 09:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1678C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 09:44:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FU5RLFiTyVX5gM6ITTjlk8hsj7FNH2feLIAqQMXh8AM=; b=Ik8SrmPKjqFtdX
-	loNtKEHxBOS2UjydHvpEWdripqUkPZUC10P4ZWFdSatCYbWPTEnU7Xt4Rvu8CmiFaMLFstx6oi/fA
-	ncook5siVB0dsBWcVW/TF3pv2wEId8eQOX3n1aK+oTk+ka/BTDKILdM7Rq7NUVVjWijEp3v83gmTt
-	oKF3usdF+oKSSny9OgiNI0U+TW5KetXuSua1swm/kRXFZRSx7OE1JGohZHiKNA155JSu3PGvwzGfX
-	71Wg5Tn0evUPp1OGClDu5oEAm7AbIvte2KtCH+4N2yHSHXyhuu3LhKDr1QAiV+0HTya1fVfy6Z3B6
-	krZmVM6Do1+PsDOiwshQ==;
+	List-Owner; bh=JrKCvn9m6kUVp2ZiVQeK/sYRmEwzHa3UFWYISrc3QHQ=; b=YbvVOnpFocBMq7
+	7y85SupLCc3HFCTyljdlypxjub8BaE/zCEoTpd79S/cU1LMk9teH71ewjmlcmjm2Yk4zBMQgBIasf
+	7RYG/VxUK6ki6G1TtJuFfGoHUZdUOVslf2yBkCfb7dKb5mn+4gGm3tb7JoXZc6/gxb0QGrMIzaf+Q
+	2P82OxM4Hv1fIOmttTFkJ5SSWr8Ib1wsJGcnaTaclWvYOH0gwqPA46K4EDGGIBnzX6VvcqbEpiou7
+	JmRMzPwqRqvFAdY87GOtWXEb4fkOEW9GzsgkDY0dpo1eihhJgeO0CqLknO1S3HKF8qzj/3PtUsrPH
+	JDmvfuJ62a8gS2/m5Lpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyVjI-006Krn-GT; Tue, 07 Jun 2022 09:42:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nyVl9-006LuG-Ov; Tue, 07 Jun 2022 09:44:23 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyVRI-006Bai-9O; Tue, 07 Jun 2022 09:23:53 +0000
-X-UUID: 3facd36908dc4f6fac811c8e731189ac-20220607
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:36b487e4-d8f4-4514-b094-126a21f4a9a0,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:a3b8777e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:0,BEC:nil
-X-UUID: 3facd36908dc4f6fac811c8e731189ac-20220607
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 839573648; Tue, 07 Jun 2022 02:23:46 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Jun 2022 02:13:44 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 7 Jun 2022 17:13:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 7 Jun 2022 17:13:42 +0800
-Message-ID: <e55fc34a7a29e5bc1a0200764145ddb2353c14f3.camel@mediatek.com>
-Subject: Re: [PATCH v19 1/6] soc: mediatek: mutex: add common interface for
- modules setting
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
-	<roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Date: Tue, 7 Jun 2022 17:13:42 +0800
-In-Reply-To: <20220531055224.19280-2-moudy.ho@mediatek.com>
-References: <20220531055224.19280-1-moudy.ho@mediatek.com>
-	 <20220531055224.19280-2-moudy.ho@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nyVUW-006Cuw-1Z
+	for linux-mediatek@lists.infradead.org; Tue, 07 Jun 2022 09:27:13 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id u26so26624411lfd.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jun 2022 02:27:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=bycnujn+C+TNXArQgDaRYNKXnzzQ5tOqUsTDh+BoVXc=;
+        b=t8p26q3E/L/TgZvfOS55JAOsz9xPuki8ovvsGEs+DFidMo0+nC5q87KialHMbXXUx2
+         NZBSPLKbAm5cIgCaNWSfYwSt4fnlLecR64L71ARiiI5CPS1aqqzrxJvXB6IKLY3WXNuu
+         5SHFPVTF0HSOWo8rE6sQ/WkS4a9ZCwX0/c1KlNkUzxFzcQXCYtwlIQpkRlh9O9h7hD2c
+         lzKWKa/el8B4Cs+eVSyH6vN291VP71o6gwb8Ctk7TpGDvbmiVIQea1yApDwP5aGLX40A
+         Z49d4wqGHGA6mOLOnxNUVdf0Mj1739Iv+QtyQf++UoZ8BECNUCN8dDbnFukVMBX5uYds
+         kbDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=bycnujn+C+TNXArQgDaRYNKXnzzQ5tOqUsTDh+BoVXc=;
+        b=UuohTxSnDCMDP1ovbuNE1MymAjMQbRRUW90x+KvQm6wDxBmKgFh5ah6y/Iqkowykr4
+         ks2AokUBNMtY7GIp7HLEhkAkMeYqc4WBXw7F6bST3u5PTrd6dFUZIAgsWqzIXVUqqsOT
+         VLWoVQLFHZ8JwTTNKbD7JE0Ysz0YsFru9NXQYk+tH1s+feekqVM8lv2hOz+b0+26EyQb
+         BVkBHfPD33hpWOZ9D5SO3gjJaeT/hDN6oUv6gKyO7Lvt2oYwZPvVHQDEq+OUcDfquJ7A
+         Zd2WKMq9GXJ0f7UmrWSu5lRP/vrjHohKIcTSIih1/Uxj2OmYF7fdI6X++rRqjjzW57pt
+         2eXw==
+X-Gm-Message-State: AOAM530PE0z6SAbPtgw5INSHg/l+ospP0kTXVD2NOWovS4oKGqdnSk8x
+	mvLVkmmAIzuGLbinp3fdJa38SSBaivU/a/aazLp1LQ==
+X-Google-Smtp-Source: ABdhPJxQISkP4fpMf2Tx4GQZOz5bRQyTzJ8vaUdWMeVJt9giKQNrG2uqpo97Sb9v8bOTq0hPO8Lyk67AS9Huf+RLHh4=
+X-Received: by 2002:a05:6512:403:b0:479:1627:a9b7 with SMTP id
+ u3-20020a056512040300b004791627a9b7mr15454828lfk.233.1654594027813; Tue, 07
+ Jun 2022 02:27:07 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220525015140.384-1-axe.yang@mediatek.com> <20220525015140.384-2-axe.yang@mediatek.com>
+ <CAPDyKFr25qbAb9DdCpu6Cp9NyK35YAv745Duw_ht7BQc+pQF=A@mail.gmail.com> <c46ef886f908067d10b1cb9f37b3e41e6157c71d.camel@mediatek.com>
+In-Reply-To: <c46ef886f908067d10b1cb9f37b3e41e6157c71d.camel@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 7 Jun 2022 11:26:31 +0200
+Message-ID: <CAPDyKFp1ibzg2FO9m_m9quqPRew9jOtLJRSF80VTi0cesjhBqw@mail.gmail.com>
+Subject: Re: [RESEND v12 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
+ pinctrls properties
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, 
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, 
+	Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, 
+	Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, 
+	Tian Tao <tiantao6@hisilicon.com>, angelogioacchino.delregno@collabora.com, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_022352_375160_9BF4C271 
-X-CRM114-Status: GOOD (  24.86  )
+X-CRM114-CacheID: sfid-20220607_022712_160672_F372D518 
+X-CRM114-Status: GOOD (  28.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,164 +96,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+On Tue, 7 Jun 2022 at 10:24, Axe Yang <axe.yang@mediatek.com> wrote:
+>
+> On Fri, 2022-06-03 at 09:28 +0200, Ulf Hansson wrote:
+> > On Wed, 25 May 2022 at 03:51, Axe Yang <axe.yang@mediatek.com> wrote:
+> > >
+> > > Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
+> > > This feature allow SDIO devices alarm asynchronous interrupt to
+> > > host
+> > > even when host stop providing clock to SDIO card. An extra wakeup
+> > > interrupt and pinctrl states for SDIO DAT1 pin state switching are
+> > > required in this scenario.
+> > >
+> > > Reviewed-by: AngeloGioacchino Del Regno <
+> > > angelogioacchino.delregno@collabora.com>
+> > > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> > > ---
+> > >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 50
+> > > ++++++++++++++++++-
+> > >  1 file changed, 49 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > index 2a2e9fa8c188..e83bf10281d6 100644
+> > > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > > @@ -72,12 +72,27 @@ properties:
+> > >        - const: ahb_cg
+> > >
+> > >    interrupts:
+> > > -    maxItems: 1
+> > > +    description:
+> > > +      Should at least contain MSDC GIC interrupt. To support SDIO
+> > > in-band wakeup, an extended
+> > > +      interrupt is required and be configured as wakeup source
+> > > irq.
+> > > +    minItems: 1
+> > > +    maxItems: 2
+> > > +
+> > > +  interrupt-names:
+> > > +    items:
+> > > +      - const: msdc
+> > > +      - const: sdio_wakeup
+> > >
+> > >    pinctrl-names:
+> > > +    description:
+> > > +      Should at least contain default and state_uhs. To support
+> > > SDIO in-band wakeup, dat1 pin
+> > > +      will be switched between GPIO mode and SDIO DAT1 mode,
+> > > state_eint and state_dat1 are
+> > > +      mandatory in this scenarios.
+> > > +    minItems: 2
+> > >      items:
+> > >        - const: default
+> > >        - const: state_uhs
+> > > +      - const: state_eint
+> >
+> > Don't you need something along the lines of the below instead? I mean
+> > the "state_eint" isn't always needed, right?
+> >
+> > oneOf:
+> >   - items:
+> >       - const: default
+> >       - const: state_uhs
+> >     - items:
+> >         - const: default
+> >         - const: state_uhs
+> >         - const: state_eint
+> >
+> No, it is not always needed.
+> As Rob said, the 'minItems: 2' makes the 3rd item optional.
+> Combine 'minItems' and 'description' fields, it is easy for others to
+> understand how to set pinctrl related properities.
 
-On Tue, 2022-05-31 at 13:52 +0800, Moudy Ho wrote:
-> In order to allow multiple modules to operate MUTEX hardware through
-> a common interfrace, two flexible indexes "mtk_mutex_mod_index" and
-> "mtk_mutex_sof_index" need to be added to replace original component
-> ID so that like DDP and MDP can add their own MOD table or SOF
-> settings independently.
-> 
-> In addition, 2 generic interface "mtk_mutex_write_mod" and
-> "mtk_mutex_write_sof" have been added, which is expected to replace
-> the "mtk_mutex_add_comp" and "mtk_mutex_remove_comp" pair originally
-> dedicated to DDP in the future.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-mutex.c       | 59
-> ++++++++++++++++++++++++++
->  include/linux/soc/mediatek/mtk-mutex.h | 26 ++++++++++++
->  2 files changed, 85 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c
-> b/drivers/soc/mediatek/mtk-mutex.c
-> index 981d56967e7a..a3b054b33826 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -185,6 +185,7 @@ struct mtk_mutex_data {
->  	const unsigned int *mutex_sof;
->  	const unsigned int mutex_mod_reg;
->  	const unsigned int mutex_sof_reg;
-> +	const unsigned int *mutex_table_mod;
->  	const bool no_clk;
->  };
->  
-> @@ -606,6 +607,64 @@ void mtk_mutex_release(struct mtk_mutex *mutex)
->  }
->  EXPORT_SYMBOL_GPL(mtk_mutex_release);
->  
-> +int mtk_mutex_write_mod(struct mtk_mutex *mutex,
-> +			enum mtk_mutex_mod_index idx, bool clear)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int reg;
-> +	unsigned int offset;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	if (idx < MUTEX_MOD_IDX_MDP_RDMA0 ||
-> +	    idx >= MUTEX_MOD_IDX_MAX) {
-> +		dev_err(mtx->dev, "Not supported MOD table index : %d",
-> idx);
-> +		return -EINVAL;
-> +	}
-> +
-> +	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
-> +				    mutex->id);
-> +	reg = readl_relaxed(mtx->regs + offset);
-> +
-> +	if (clear)
-> +		reg &= ~BIT(mtx->data->mutex_table_mod[idx]);
-> +	else
-> +		reg |= BIT(mtx->data->mutex_table_mod[idx]);
-> +
-> +	writel_relaxed(reg, mtx->regs + offset);
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_write_mod);
-> +
-> +int mtk_mutex_write_sof(struct mtk_mutex *mutex,
-> +			enum mtk_mutex_sof_index idx, bool clear)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct
-> mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int val;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	if (idx < MUTEX_SOF_IDX_SINGLE_MODE ||
-> +	    idx >= MUTEX_SOF_IDX_MAX) {
-> +		dev_err(mtx->dev, "Not supported SOF index : %d", idx);
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (clear)
-> +		val = MUTEX_SOF_SINGLE_MODE;
+Yes, I agree.
 
-This equal to 'idx = MUTEX_SOF_SINGLE_MODE', so 'clear' is not
-necessary.
+>
+> Anyway, If you insist 'oneOf' is the better way, I can update that in
+> next version. What do you think?
 
-Regards,
-CK
+I am fine with it as is, sorry for the noise.
 
-> +	else
-> +		val = idx;
-> +
-> +	writel_relaxed(val, mtx->regs +
-> +		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
-> mutex->id));
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_write_sof);
-> +
->  static int mtk_mutex_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> diff --git a/include/linux/soc/mediatek/mtk-mutex.h
-> b/include/linux/soc/mediatek/mtk-mutex.h
-> index 6fe4ffbde290..829231523e3f 100644
-> --- a/include/linux/soc/mediatek/mtk-mutex.h
-> +++ b/include/linux/soc/mediatek/mtk-mutex.h
-> @@ -10,6 +10,26 @@ struct regmap;
->  struct device;
->  struct mtk_mutex;
->  
-> +enum mtk_mutex_mod_index {
-> +	/* MDP table index */
-> +	MUTEX_MOD_IDX_MDP_RDMA0,
-> +	MUTEX_MOD_IDX_MDP_RSZ0,
-> +	MUTEX_MOD_IDX_MDP_RSZ1,
-> +	MUTEX_MOD_IDX_MDP_TDSHP0,
-> +	MUTEX_MOD_IDX_MDP_WROT0,
-> +	MUTEX_MOD_IDX_MDP_WDMA,
-> +	MUTEX_MOD_IDX_MDP_AAL0,
-> +	MUTEX_MOD_IDX_MDP_CCORR0,
-> +
-> +	MUTEX_MOD_IDX_MAX		/* ALWAYS keep at the end */
-> +};
-> +
-> +enum mtk_mutex_sof_index {
-> +	MUTEX_SOF_IDX_SINGLE_MODE,
-> +
-> +	MUTEX_SOF_IDX_MAX		/* ALWAYS keep at the end */
-> +};
-> +
->  struct mtk_mutex *mtk_mutex_get(struct device *dev);
->  int mtk_mutex_prepare(struct mtk_mutex *mutex);
->  void mtk_mutex_add_comp(struct mtk_mutex *mutex,
-> @@ -22,5 +42,11 @@ void mtk_mutex_unprepare(struct mtk_mutex *mutex);
->  void mtk_mutex_put(struct mtk_mutex *mutex);
->  void mtk_mutex_acquire(struct mtk_mutex *mutex);
->  void mtk_mutex_release(struct mtk_mutex *mutex);
-> +int mtk_mutex_write_mod(struct mtk_mutex *mutex,
-> +			enum mtk_mutex_mod_index idx,
-> +			bool clear);
-> +int mtk_mutex_write_sof(struct mtk_mutex *mutex,
-> +			enum mtk_mutex_sof_index idx,
-> +			bool clear);
->  
->  #endif /* MTK_MUTEX_H */
+>
+> And thanks to your comment, I found a mistake in 'description', I
+> should remove descriptions related to 'state_dat1', and I will update
+> that in next version.
 
+Okay.
+
+>
+> And do you have any comment on patch 2/3 and 3/3?
+
+Sorry for the delay, I will have a look asap.
+
+>
+>
+> Regards,
+> Axe
+>
+>
+
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-mediatek mailing list
