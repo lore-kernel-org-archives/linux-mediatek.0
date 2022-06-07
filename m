@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF439C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 09:11:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF9A5C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 09:12:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mwTyrJ04OF8BSUHVMILeHoYoetqxQ8XEUit64xs/DSs=; b=bHJYpKCewcn3z6
-	J+Ldl27Ap10z3P5migKpp6HQ5O8vbcFSuOd99ZqrkiQQc8sqlTm6HoqW1E002yGwLu1DFTQ+Hm6EF
-	jAMAs0le+ugBQ4WmpZHcEWIyylDfme+r0GbFTH3zYq996dwx2PXW8QPDipYzbTUlG5RNHvy+yuK+J
-	L5w4CINKDzK8tuOzSM8wq2EX+3Ie/J7n59tO5buAnFk0SwBoSVNLNo+ZzglwleyppnodpepMi5xbB
-	5IFsXr6SgGtEJj/9CJFXfPdhM6Lykcky86tAZfBZrIHsEYxMa0w8pSf/rO4gHPaL2i4p5pw1eaSeN
-	+Qh4vR/Bgacx9+lCivmA==;
+	List-Owner; bh=spmChpnkhSCMQqC7MB2zU8kBfupWNo8y9kktcYeQYBk=; b=GTkqaqo7vCJlXe
+	m9cr4WjBbLREJgWsQkQ5rhS2O5zWoQ6fRAaK7/30kvZa4gQn2P2G0GDYGCeiBK/S587RpTGCEmm5b
+	uKCq3tAxZibrYPb0hglmqilQRkGPqJg3rXnEiYHkXk0Ff84X9Sim9knOYOUl8X9HA2E8tO8Zdjcg/
+	3raZ4+6Z5SQ98Ul46CUfUI+e0ftM4RIF1eR6aI/imUVTyiAVpVbXCMYb0OXXLQzsqHk++NJQzgNei
+	8Tx9KwKzUaFlpaUNI3TifOJvXAJYpWkpfJkw+Hn+321SG+UEqx4jxWLlgEBb011wurioRHNUyXeAu
+	9DjJtg9hoD2flnXfssjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyVFK-00663g-Hv; Tue, 07 Jun 2022 09:11:30 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1nyVGG-0066fa-Gs; Tue, 07 Jun 2022 09:12:28 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyVA1-00636l-MJ
-	for linux-mediatek@lists.infradead.org; Tue, 07 Jun 2022 09:06:05 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id o6-20020a17090a0a0600b001e2c6566046so20290309pjo.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jun 2022 02:05:59 -0700 (PDT)
+	id 1nyVA8-00639w-D1
+	for linux-mediatek@lists.infradead.org; Tue, 07 Jun 2022 09:06:10 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id j7so15105021pjn.4
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jun 2022 02:06:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=JYiFnAz00MQeZi91E0UGkYUB+X1a+/Lsax/pqn3rMlA=;
-        b=KH3+lr+udpk9BxBvp8pMA2hNB+th+s1iQrrtA3y5IMRralVN952OscgP2INjWAZFd8
-         k4mjICqnU4+kEi0V4d+uTKrHr7Rh/7LZgNlFafUHVj0Q1/jNY9mXrUrB2PtUobzOOhqC
-         rFSPen3RMgxDU4KLhSxdhq54eJ0q9X09oVhzQ=
+        bh=FkC4wQn3+nXU7dST9FaxB+QRGREtiwsJHA3bRU8iD1Q=;
+        b=KBM2BBQMMLkgUMsyR9jAjWANoeklgbSZu54h1hNjBmSk+dJ8U+LkBMOQU9IEslajqr
+         IMWKVu3kPIKAiCJEzAlwxvBzAZUNCr9GzM0AXvUMoGO3F/K9fF3Irci+SpskTJtYvYsm
+         XH6CtIIBAipgd4VblS3HvTpbYCYgpm9EN69YM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=JYiFnAz00MQeZi91E0UGkYUB+X1a+/Lsax/pqn3rMlA=;
-        b=QypuBc1KSDbAVk0LCwsdryX8PBPpPb7+sB04Nq+PiL6pfV19MGhAXCb8UmQt8w6OMD
-         y8NhASAYj9s/WXlcX/4nb5E0vsL+HIRrRz3YX7ZhcS+RiVXFk1oICp2iQ86aURhPCw0Y
-         4MvhL9/jG6CA3T/hpCs72MPN9qTW3K7CAeOqr1RGwnKHrujUmqLEU/9GiR3lBmF7qh3B
-         b4kTwB2bkCe+JjSMLh7GygXoz7sXZQx+PmhbRHJw2OXJIzaRifegAQklY+2IwMMgGSLR
-         5sUxEB9Qsx/2kRzWYAX4LX/9dHZZrXCjXYi7UpGOTBE0GW4nzD7/3f44lxAesl1IOYqn
-         Gt2w==
-X-Gm-Message-State: AOAM533Qlsw3AcU0IZ8nbt+8OxyVSoH0SgcbYoWW9E4uZd8HFkeiXLCp
-	WLWG07NTBnqsIZA7dDuKiC5GbQ==
-X-Google-Smtp-Source: ABdhPJyr2A4/F6vIPaUyB60Ia6c6CqNra9a2QyXEjIj5RyHeqzXzhdCeEAtKv/SYI0gMhRUktDj0qw==
-X-Received: by 2002:a17:902:a413:b0:156:15b:524a with SMTP id p19-20020a170902a41300b00156015b524amr28148208plq.106.1654592758652;
-        Tue, 07 Jun 2022 02:05:58 -0700 (PDT)
+        bh=FkC4wQn3+nXU7dST9FaxB+QRGREtiwsJHA3bRU8iD1Q=;
+        b=xHHTmYYqNtjO8mpdj/TgpF3vAU+q1pUnlZoerrfguc1lL8QMkWnGbxWTyLK8zYkwEJ
+         8M1L44fhGif0K0D6BfPHSPdz3YZjzAvpTxh15UKxHxICJkg0JbosBs/Lmk8/4xM/HkC9
+         R0exk/YMwRxQ/tNi+42uv5i5tZX9gV2Kw72I0CdMDBnkNbPK5d6geBL/Qj87HU/Uw6D/
+         UhUAEj8KJuZcuX5DlNVxcT5DRf3/4UX97ufHGOM2nZXpNvZUM6QYT4E14rX7VAIJtYL8
+         DOkx92xqO/Js+sExj2DPHXYq6dh3jHraUoTDVY7i9zPLlggswrmgs38ccVneb8YcmfEU
+         abCw==
+X-Gm-Message-State: AOAM532x6JGQa8xg087gF5txwTuzl9VN0LY9xZvvgrdM6H4Sxp7WOe9M
+	p3utit7n29eeXVKwpGwrgcknGA==
+X-Google-Smtp-Source: ABdhPJxtMveNapxOscHpOj1UN38se05kULc+7JDGp1azNMKPpid/CV/xKFokwk5MP3Wyrs0aUn69hA==
+X-Received: by 2002:a17:902:6a85:b0:163:d764:e1a9 with SMTP id n5-20020a1709026a8500b00163d764e1a9mr28522297plk.50.1654592762305;
+        Tue, 07 Jun 2022 02:06:02 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com ([2401:fa00:1:10:40b7:55ce:10ee:c7a0])
-        by smtp.gmail.com with ESMTPSA id t27-20020aa7947b000000b0051c0fe8fb8csm4507010pfq.95.2022.06.07.02.05.55
+        by smtp.gmail.com with ESMTPSA id t27-20020aa7947b000000b0051c0fe8fb8csm4507010pfq.95.2022.06.07.02.05.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jun 2022 02:05:58 -0700 (PDT)
+        Tue, 07 Jun 2022 02:06:01 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Cc: Hans de Goede <hdegoede@redhat.com>,
@@ -75,16 +75,16 @@ Cc: Hans de Goede <hdegoede@redhat.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 1/8] drm/panel: Add an API to allow drm to set orientation from panel
-Date: Tue,  7 Jun 2022 17:05:42 +0800
-Message-Id: <20220607090549.2345795-2-hsinyi@chromium.org>
+Subject: [PATCH v5 2/8] drm/panel: boe-tv101wum-nl6: Implement .get_orientation callback
+Date: Tue,  7 Jun 2022 17:05:43 +0800
+Message-Id: <20220607090549.2345795-3-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.36.1.255.ge46751e96f-goog
 In-Reply-To: <20220607090549.2345795-1-hsinyi@chromium.org>
 References: <20220607090549.2345795-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_020601_833894_0656CD23 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20220607_020608_459420_5CC31065 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,135 +101,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Panels usually call drm_connector_set_panel_orientation(), which is
-later than drm/kms driver calling drm_dev_register(). This leads to a
-WARN().
+To return the orientation property to drm/kms driver.
 
-The orientation property is known earlier. For example, some panels
-parse the property through device tree during probe.
-
-Add an API to return the property from panel to drm/kms driver, so the
-drivers are able to call drm_connector_set_orientation_from_panel() before
-drm_dev_register().
-
-Suggested-by: Hans de Goede <hdegoede@redhat.com>
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 Reviewed-by: Douglas Anderson <dianders@chromium.org>
 ---
-v4 -> v5:
-- Simplify the caller from drm_connector_set_panel_orientation(connector,
-drm_panel_get_orientation(panel)) to
-drm_connector_set_orientation_from_panel(connector, panel).
-The main function is also moved from drm_panel to drm_connector.
-- Add some notice for the original drm_connector_set_panel_orientation()
-usage.
-- sort callbacks.
+v4->v5:
+Move the usage text from caller to function doc. Leave todo instead.
+Same for other panel patches.
 ---
- drivers/gpu/drm/drm_connector.c | 32 ++++++++++++++++++++++++++++++++
- include/drm/drm_connector.h     |  4 ++++
- include/drm/drm_panel.h         |  9 +++++++++
- 3 files changed, 45 insertions(+)
+ drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index 1c48d162c77e..859165a1c8f1 100644
---- a/drivers/gpu/drm/drm_connector.c
-+++ b/drivers/gpu/drm/drm_connector.c
-@@ -24,6 +24,7 @@
- #include <drm/drm_connector.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_encoder.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_utils.h>
- #include <drm/drm_print.h>
- #include <drm/drm_drv.h>
-@@ -2320,6 +2321,9 @@ EXPORT_SYMBOL(drm_connector_set_vrr_capable_property);
-  * It is allowed to call this function with a panel_orientation of
-  * DRM_MODE_PANEL_ORIENTATION_UNKNOWN, in which case it is a no-op.
-  *
-+ * The function shouldn't be called in panel after drm is registered (i.e.
-+ * drm_dev_register() is called in drm).
-+ *
-  * Returns:
-  * Zero on success, negative errno on failure.
-  */
-@@ -2389,6 +2393,34 @@ int drm_connector_set_panel_orientation_with_quirk(
- }
- EXPORT_SYMBOL(drm_connector_set_panel_orientation_with_quirk);
- 
-+/**
-+ * drm_connector_set_orientation_from_panel -
-+ * 	set the connector's panel_orientation from panel's callback.
-+ * @connector: connector for which to init the panel-orientation property.
-+ * @panel: panel that can provide orientation information.
-+ *
-+ * Drm drivers should call this function before drm_dev_register().
-+ * Orientation is obtained from panel's .get_orientation() callback.
-+ *
-+ * Returns:
-+ * Zero on success, negative errno on failure.
-+ */
-+int drm_connector_set_orientation_from_panel(
-+	struct drm_connector *connector,
-+	struct drm_panel *panel)
-+{
-+	enum drm_panel_orientation panel_orientation;
-+
-+	if (panel && panel->funcs && panel->funcs->get_orientation)
-+		panel_orientation = panel->funcs->get_orientation(panel);
-+	else
-+		panel_orientation = DRM_MODE_PANEL_ORIENTATION_UNKNOWN;
-+
-+	return drm_connector_set_panel_orientation(connector,
-+						   panel_orientation);
-+}
-+EXPORT_SYMBOL(drm_connector_set_orientation_from_panel);
-+
- static const struct drm_prop_enum_list privacy_screen_enum[] = {
- 	{ PRIVACY_SCREEN_DISABLED,		"Disabled" },
- 	{ PRIVACY_SCREEN_ENABLED,		"Enabled" },
-diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 3ac4bf87f257..94b422b55cc1 100644
---- a/include/drm/drm_connector.h
-+++ b/include/drm/drm_connector.h
-@@ -38,6 +38,7 @@ struct drm_modeset_acquire_ctx;
- struct drm_device;
- struct drm_crtc;
- struct drm_encoder;
-+struct drm_panel;
- struct drm_property;
- struct drm_property_blob;
- struct drm_printer;
-@@ -1802,6 +1803,9 @@ int drm_connector_set_panel_orientation_with_quirk(
- 	struct drm_connector *connector,
- 	enum drm_panel_orientation panel_orientation,
- 	int width, int height);
-+int drm_connector_set_orientation_from_panel(
-+	struct drm_connector *connector,
-+	struct drm_panel *panel);
- int drm_connector_attach_max_bpc_property(struct drm_connector *connector,
- 					  int min, int max);
- void drm_connector_create_privacy_screen_properties(struct drm_connector *conn);
-diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
-index d279ee455f01..3a271128c078 100644
---- a/include/drm/drm_panel.h
-+++ b/include/drm/drm_panel.h
-@@ -116,6 +116,15 @@ struct drm_panel_funcs {
- 	int (*get_modes)(struct drm_panel *panel,
- 			 struct drm_connector *connector);
- 
-+	/**
-+	 * @get_orientation:
-+	 *
-+	 * Return the panel orientation set by device tree or EDID.
-+	 *
-+	 * This function is optional.
+diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+index 1be150ac758f..07f722f33fc5 100644
+--- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
++++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+@@ -1511,16 +1511,28 @@ static int boe_panel_get_modes(struct drm_panel *panel,
+ 	connector->display_info.width_mm = boe->desc->size.width_mm;
+ 	connector->display_info.height_mm = boe->desc->size.height_mm;
+ 	connector->display_info.bpc = boe->desc->bpc;
++	/*
++	 * TODO: Remove once all drm drivers call
++	 * drm_connector_set_orientation_from_panel()
 +	 */
-+	enum drm_panel_orientation (*get_orientation)(struct drm_panel *panel);
+ 	drm_connector_set_panel_orientation(connector, boe->orientation);
+ 
+ 	return 1;
+ }
+ 
++static enum drm_panel_orientation boe_panel_get_orientation(struct drm_panel *panel)
++{
++	struct boe_panel *boe = to_boe_panel(panel);
 +
- 	/**
- 	 * @get_timings:
- 	 *
++	return boe->orientation;
++}
++
+ static const struct drm_panel_funcs boe_panel_funcs = {
+ 	.unprepare = boe_panel_unprepare,
+ 	.prepare = boe_panel_prepare,
+ 	.enable = boe_panel_enable,
+ 	.get_modes = boe_panel_get_modes,
++	.get_orientation = boe_panel_get_orientation,
+ };
+ 
+ static int boe_panel_add(struct boe_panel *boe)
 -- 
 2.36.1.255.ge46751e96f-goog
 
