@@ -4,54 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 538C7C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 14:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B58CBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 14:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wxEqiCj/b8Dhp5jWvRbC51zP2sQLyH8rrLz1STFZUOs=; b=0Ui0KJO89nEGcN
-	1jmbr+sYPlZekNaJPZThAGXJsowMxumkNBX/09iSZEc1RShNip2cpIMp6DNNXuK3xHKwD3/YHrqbk
-	ckJqt3HNwMwFf4KPYJjC3DOihMbNvSIJ21zPqZn2LaPGgDCxOW1SLKHFxVW2SHVOy1GKQYwnthur5
-	WAc4l7XfaGVIw+EUnrpn0x2ukouXYh/Wfh9qBGlpvn/qSU18BCA0anXggBcKHrAAnWnTfDOmJ33O0
-	40h+PM1zNygUayz5okE7aR5Dmtba+q8C/xkYWjrYFIuoUaaeaQfrjNEESMAe5ylTQZGab0ZgNEan9
-	wXhOM/WQ94+0loL/DdWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8PllGMbH9vfO7mKlGwpFCHl6ip3SXybwEV5hLD8hsb8=; b=VUx9Ra1ij6NI7x
+	fgBWqbmu0Fd2w8aUn85pDRjyuMuO7oJtUQKe1jMPB5YqVt3z9q6U3bucQfUL8UbU5vOxfpmwf4+54
+	xL1BaL499g7pLbgqt5Bsslk+qcd0a2Wj3sG6Typ8uQFUt1cnRrExmSDytMT/k6WUMW3mGWju4nUhT
+	x66EnnNpuhq9yAgpITNMOSfu6o2ZCeaAO0KlIEgNF+WaQBxP1W6wJO5ETYF6SV30SwOOWsAcGm/cB
+	DSypWyDx9/9z8UeMNP8hg91PCNXAS212UhPzW5hVSNJSnKPxdPemxZGMUmsNuETZb05McEwBLlZuT
+	1hseR721GMCdN9gSVoSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyZwF-007y9Y-NK; Tue, 07 Jun 2022 14:12:07 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nya0P-007zWF-Ty; Tue, 07 Jun 2022 14:16:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyZvm-007xtj-Ao; Tue, 07 Jun 2022 14:11:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0C5946157A;
-	Tue,  7 Jun 2022 14:11:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DADCC385A5;
-	Tue,  7 Jun 2022 14:11:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654611096;
-	bh=cJyU+230aiz3hoabBrQP0N+I1Q926hj1jnMqC2WpPTo=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=Xaa7RW0UOlpXmuEQJCNVGyLHFldqiJn1YvEvkSSJk6FYeqT/mwPcEq/X2EkBkMNJE
-	 8/S6s++4kXiQjCJ1Ne17gp+hxWYyCGfssDyxcRBuHIeC8h3RaGilmktV6vbxSq28ev
-	 OF7gq/r3h2qCI21Ti/8jSz9fVzK6j6wcgivZtB0ywaQ1wt/camEcx/U9cLuekBQJOL
-	 ECCjBxtDCWbQtUyL1u5e4/WhBb2jlqVkTp1E717ZoAWaj3/PmkAPSmDLWaOEbATkXQ
-	 VKLVy34eecT3Ow6KS5uHK0Am9GjANeGZTNo6BlH4v0XoHceSmKtjMONamMyAm6OHUC
-	 4p5oLYP8cxiAw==
-From: Mark Brown <broonie@kernel.org>
-To: perex@perex.cz, akihiko.odaki@gmail.com, pc.liao@mediatek.com, angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org, tzungbi@google.com, koro.chen@mediatek.com, linux-kernel@vger.kernel.org, jiaxin.yu@mediatek.com, tiwai@suse.com, drinkcat@chromium.org, linmq006@gmail.com, lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, matthias.bgg@gmail.com
-In-Reply-To: <20220603124243.31358-1-linmq006@gmail.com>
-References: <20220603124243.31358-1-linmq006@gmail.com>
-Subject: Re: [PATCH v2] ASoC: mediatek: mt8173-rt5650: Fix refcount leak in mt8173_rt5650_dev_probe
-Message-Id: <165461109323.1597191.3939968146449868630.b4-ty@kernel.org>
-Date: Tue, 07 Jun 2022 15:11:33 +0100
+	id 1nya0D-007zSz-Aj; Tue, 07 Jun 2022 14:16:14 +0000
+X-UUID: 7de8c1e46f3a48b1be4acc421f05c999-20220607
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:6ae54236-3ba0-4309-9329-ca5aa103810a,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:01b1f5e4-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 7de8c1e46f3a48b1be4acc421f05c999-20220607
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <johnson.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1015962411; Tue, 07 Jun 2022 07:16:10 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Jun 2022 07:06:11 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 7 Jun 2022 22:06:06 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 7 Jun 2022 22:06:06 +0800
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: <cw00.choi@samsung.com>, <krzk+dt@kernel.org>, <robh+dt@kernel.org>,
+	<kyungmin.park@samsung.com>
+CC: <khilman@kernel.org>, <djakov@kernel.org>, <linux-pm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<jia-wei.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Johnson Wang
+	<johnson.wang@mediatek.com>
+Subject: [PATCH v7 0/2] Introduce MediaTek CCI devfreq driver
+Date: Tue, 7 Jun 2022 22:05:54 +0800
+Message-ID: <20220607140556.6278-1-johnson.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_071138_496604_3768BE2A 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20220607_071613_417780_03E2F6D6 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,40 +81,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 3 Jun 2022 16:42:41 +0400, Miaoqian Lin wrote:
-> of_parse_phandle() returns a node pointer with refcount
-> incremented, we should use of_node_put() on it when not need anymore.
-> Fix refcount leak in some error paths.
-> 
-> 
+The Cache Coherent Interconnect (CCI) is the management of cache
+coherency by hardware. CCI DEVFREQ is DVFS driver for power saving by
+scaling clock frequency and supply voltage of CCI. CCI uses the same
+input clock source and power rail as LITTLE CPUs on Mediatek SoCs.
 
-Applied to
+This series depends on:
+Chanwoo's repo: kernel/git/chanwoo/linux.git
+branch: devfreq-testing
+[1]: PM / devfreq: Export devfreq_get_freq_range symbol within devfreq
+[2]: PM / devfreq: Add cpu based scaling support to passive governor
+[3]: PM / devfreq: passive: Reduce duplicate code when passive_devfreq case
+[4]: PM / devfreq: passive: Update frequency when start governor
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Changes in v7:
+- remove the 'ret' printing from dev_err_probe().
 
-Thanks!
+Changes in v6:
+- Remove unnecessary "goto" statement.
 
-[1/1] ASoC: mediatek: mt8173-rt5650: Fix refcount leak in mt8173_rt5650_dev_probe
-      commit: efe2178d1a32492f99e7f1f2568eea5c88a85729
+Changes in v5:
+- Modify some binding description.
+- Remove pre_voltage member.
+- Not to enable/disable intermediate clock.
+- Not to "put" resources that using devm_ variants.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Resend v4:
+- CC interconnect maintainer.
+- Change sign-off sequence in commit message.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Changes in v4:
+- Add a maintainer in the binding document.
+- Modify clock description.
+- Add binding document into MAINTAINERS.
+- Replace format specifier %d with %ld.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Changes in v3:
+- Move binding document to 'interconnect' and rename it.
+- Add COMPILE_TEST dependence symbol.
+- Remove need_voltage_tracking variable.
+- Move mtk_ccifreq_voltage_tracking() code into mtk_ccifreq_set_voltage().
+- Add an interation limit in the while() loop.
+- Replace 'cci_dev' with 'dev'
+- Replace old_* with pre_*
+- Remove of_match_ptr()
+- Use module_platform_driver()
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Changes in v2:
+- Take MT8183 as example in binding document.
+- Use dev_err() instead of pr_err().
+- Use 'goto' statement to handle error case.
+- Clean up driver code.
 
-Thanks,
-Mark
+Johnson Wang (2):
+  dt-bindings: interconnect: Add MediaTek CCI dt-bindings
+  PM / devfreq: mediatek: Introduce MediaTek CCI devfreq driver
+
+ .../bindings/interconnect/mediatek,cci.yaml   | 140 ++++++
+ MAINTAINERS                                   |   1 +
+ drivers/devfreq/Kconfig                       |  10 +
+ drivers/devfreq/Makefile                      |   1 +
+ drivers/devfreq/mtk-cci-devfreq.c             | 474 ++++++++++++++++++
+ 5 files changed, 626 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+ create mode 100644 drivers/devfreq/mtk-cci-devfreq.c
+
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
