@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C40A6C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 10:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D340BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 10:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pUCIu1azzCMsUBAQ4qFl9ERTT/sSnO0deeLXAX4TZsk=; b=sNSRNFpn0ko1ej
-	ma6ROfaUYnbjyA16oiiC+90lzNekxEP/eLoe06kVzkgSDwadiQ86h60kk+5dQ6v4+ImoEZ533LcnM
-	WC4Z6xrRRTRBPeELSZkUnVWI8scysON+VoG8nYj2d0pPVp0OXlHqs/o0oGsNtodo1zjEdTAOMkpUI
-	oS7NnShj7njl7TB/0I3PTfZew6QsXJ4D98vJPQywyuChQp8IPpm2Iib9dtdyjnDjW4awsHu9IOI11
-	Tx62Y58LaPgZU7J9sCRqrIB8/ADzrcrtdeXj3Zfmdgg2MI7mD3xvafbb4TyykPGRg+e19CYKSuRBY
-	SXcg2gqJQmDKkXtyQsOA==;
+	List-Owner; bh=8lhA54nKZo+YqKT5apIHn/dLx02TRc8PDgKzfASB488=; b=1E5AEnr/W3DOA4
+	qP+imyZ1dKV2147iCdtz9CKywye9Sap4uMYxm4Uxq/2tRtblR82bknlh7f5gbBHQXJBfHe5hx968e
+	+rzWIzE/C/J3pohEcuypslHmDCzAe8Agnw5kyuOgwaUeg8C4ShRWZYFPGqmbUS6S9+qfiEZrKQKys
+	aNAJq/XwhlHY5aqq1Z/retPjdAVc1Xv95Z1mzJ1hTcXpgAHUyJDPVo5Ms22ylMJR75EL1MSjK5mt0
+	b9C2ygFuhNGGxrsNNtwk9PPCgM2Rh+EkrAwIAIZQImOipX2oQYMRKSrG7WgNMJxKR3vUYrxMKSFsx
+	wc29hlm+3+oVImO0rk9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyWoY-006pvL-5l; Tue, 07 Jun 2022 10:51:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nyWtR-006sIO-Db; Tue, 07 Jun 2022 10:57:01 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyWje-006nM3-Q9; Tue, 07 Jun 2022 10:46:56 +0000
+	id 1nyWrs-006rdW-Hh; Tue, 07 Jun 2022 10:55:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6173F6152A;
-	Tue,  7 Jun 2022 10:46:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D994EC34119;
-	Tue,  7 Jun 2022 10:46:48 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 297BEB81F01;
+	Tue,  7 Jun 2022 10:55:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 224E2C385A5;
+	Tue,  7 Jun 2022 10:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654598813;
-	bh=hlj2Yw+EG0pWKoO3cXlRjHbXss4PXj721LR0qzOjcRQ=;
+	s=k20201202; t=1654599321;
+	bh=5JaZ8fuFAsCs3zwfgmDiaQbX9q96F/m3qVELfXvKhnE=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=lLjZE/ozDwyHnNNLv6KyRqV2xvU5uJJz9u7TCauhLkOPhBG38x6MdtEwI+8UIDQGw
-	 uwtQiaJiwSNPU3upK6sgPC39kbtNdgB+CJfvt4RS1u1WkKKQpLeo6s5YlC3hEycLWK
-	 DZ8Pjgv0h7TbVz5Vt1jDWfcTuWpK/D09EzsT4BVhx4hbG2e1VCKQHVGbNkyCNRk8sg
-	 k6i/de3UcYlJTd5vP0lgvg+Z56k+nzRjJukId3zcOJcHo7YFPUDXs4S3klIjdIoaFE
-	 QhfEG8FvKM9beX57uQhEHDZQEfg+6mZSxo/qgqEJSsXBAY9yR2jt850+wpSUTN7I+A
-	 ZsaWxiF+LqPiw==
+	b=qXg2Eg9uNjPunE55sZ+BYMJ5NTmO6e4w5ByJadfTdStS0+FZjNCqBowUi+6KqvBos
+	 JS6jGOP9QNpAodD2mbEStUZdH25C2vWJn0tzp+BTevWrJJp+r+/SjQz+tcPza6VckL
+	 B8416lH1ZvjJR5BuckGw7yqkpyq9FEIE095V1z+wU2PqVI1nQ1f9OWWcvKQ1PQ+2aP
+	 nIe6QJK0cTSo4R4wJIW/4OKlXCv2y9R/Ie6dxoslCxh8Bd7gioxNdB27ULvAehleCF
+	 /zgpb575z90pCyBNr2gD86eS3vvVKc7+2fHKBP38j7CH4pn6gaJoL8qns5iOjyaPj+
+	 R94JgD9oKxLzA==
 From: Mark Brown <broonie@kernel.org>
-To: linux@roeck-us.net, robh+dt@kernel.org, vkoul@kernel.org, matthias.bgg@gmail.com, jic23@kernel.org, srinivas.kandagatla@linaro.org, krzysztof.kozlowski+dt@linaro.org, chunfeng.yun@mediatek.com, fparent@baylibre.com, ulf.hansson@linaro.org, wim@linux-watchdog.org, qii.wang@mediatek.com, chaotian.jing@mediatek.com
-Cc: linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dmaengine@vger.kernel.org, linux-mmc@vger.kernel.org, linux-spi@vger.kernel.org, linux-iio@vger.kernel.org, linux-i2c@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20220531135026.238475-1-fparent@baylibre.com>
-References: <20220531135026.238475-1-fparent@baylibre.com>
-Subject: Re: (subset) [PATCH 00/17] Add support for MT8365 EVK board
-Message-Id: <165459880859.302078.17715085151206065145.b4-ty@kernel.org>
-Date: Tue, 07 Jun 2022 11:46:48 +0100
+To: robh+dt@kernel.org, angelogioacchino.delregno@collabora.com, jiaxin.yu@mediatek.com
+Cc: linux-kernel@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, tzungbi@google.com, matthias.bgg@gmail.com, trevor.wu@mediatek.com, julianbraha@gmail.com, aaronyu@google.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org
+In-Reply-To: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
+References: <20220523132858.22166-1-jiaxin.yu@mediatek.com>
+Subject: Re: [PATCH v5 00/20] ASoC: mediatek: Add support for MT8186 SoC
+Message-Id: <165459931885.399031.2621579592368573898.b4-ty@kernel.org>
+Date: Tue, 07 Jun 2022 11:55:18 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_034654_977099_3B409FCB 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20220607_035524_926269_BFC9E30A 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,34 +69,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 31 May 2022 15:50:09 +0200, Fabien Parent wrote:
-> This patch series adds support for the MT8365 EVK board.
+On Mon, 23 May 2022 21:28:38 +0800, Jiaxin Yu wrote:
+> This series of patches adds support for Mediatek AFE of MT8186 Soc.
+> Patches are based on broonie tree "for-next" branch.
 > 
-> This series has dependencies on the following series:
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646256
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646091
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646083
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646081
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646076
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646068
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646020
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=646052
-> https://lore.kernel.org/r/20220504091923.2219-2-rex-bc.chen@mediatek.com
-> https://lore.kernel.org/r/20220512062622.31484-2-chunfeng.yun@mediatek.com
-> https://lore.kernel.org/r/20220512062622.31484-1-chunfeng.yun@mediatek.com
-> https://lore.kernel.org/r/20220524115019.97246-1-angelogioacchino.delregno@collabora.com
-> https://lore.kernel.org/all/20220127015857.9868-1-biao.huang@mediatek.com/
+> Changes since v4:
+>   - [v5 07/20]
+>     - remove unsusd controls
+>   - [v5 09/20]
+>     - correct indent error
+>   - [v5 10/20]
+>   - [v5 13/20]
+>   - [v5 14/20]
+>     - fix the return value if the value is different from the previous
+>       value in mixer controls
+>   - [v5 17/20]
+>   - [v5 19/20]
+>     - correct the compatible name with '_' instead of '-'
+>   - [v5 18/20]
+>   - [v5 20/20]
+>     - correct the yaml after 'pip3 install dtschema --upgrade'
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
 Thanks!
 
-[09/17] dt-bindings: spi: mt65xx: add MT8365 SoC bindings
-        commit: 901fc8e8079e401f3240006cab6629e65579701c
+[01/20] ASoC: mediatek: mt6366: support for mt6366 codec
+        commit: 612c4695e312c753a8b06f6b052cea3d8338e3c3
+[02/20] dt-bindings: mediatek: mt6358: add new compatible for using mt6366
+        (no commit info)
+[03/20] ASoC: mediatek: mt8186: support audsys clock control
+        commit: 58949aa35c0f74a98b03864817354d85f452a51c
+[04/20] ASoC: mediatek: mt8186: support adda in platform driver
+        commit: b65c466220b336f5044c1be75ebc771d087ee7ca
+[05/20] ASoC: mediatek: mt8186: support hostless in platform driver
+        commit: 55cac93d271166a2aa431d453bf31fdcb19bd5e6
+[06/20] ASoC: mediatek: mt8186: support hw gain in platform driver
+        commit: 2567ccae9105cbc881828f2ea09954c1b5fd975d
+[07/20] ASoC: mediatek: mt8186: support i2s in platform driver
+        commit: 2907d261276e09bd84fdc8bad35930a046a99d4d
+[08/20] ASoC: mediatek: mt8186: support pcm in platform driver
+        commit: 920508f9fe2fc90f19916d74f4c23088030d32e0
+[09/20] ASoC: mediatek: mt8186: support src in platform driver
+        commit: e118015db7bd0dad1744221d0fe18333ebf9c622
+[10/20] ASoC: mediatek: mt8186: support tdm in platform driver
+        commit: ae92dcbee8b6a6f63198a2a6fea0fc9f6a0fe07b
+[11/20] ASoC: mediatek: mt8186: support audio clock control in platform driver
+        commit: 55b423d5623ccd6785429431c2cf5f3e073b73ba
+[12/20] ASoC: mediatek: mt8186: support gpio control in platform driver
+        commit: cfa9a966f12a91a269e50f1c3237c006ffe2ee9a
+[13/20] ASoC: mediatek: mt8186: add misc driver and register definitions
+        commit: 80d8cad2e9ce21517d50c7084c12a59d38a778f7
+[14/20] ASoC: mediatek: mt8186: add platform driver
+        (no commit info)
+[15/20] ASoC: mediatek: mt8186: add mt8186-mt6366 common driver
+        (no commit info)
+[16/20] dt-bindings: mediatek: mt8186: add audio afe document
+        (no commit info)
+[17/20] ASoC: mediatek: mt8186: add machine driver with mt6366, da7219 and max98357
+        (no commit info)
+[18/20] dt-bindings: mediatek: mt8186: add mt8186-mt6366-da7219-max98357 document
+        (no commit info)
+[19/20] ASoC: mediatek: mt8186: add machine driver with mt6366, rt1019 and rt5682s
+        (no commit info)
+[20/20] dt-bindings: mediatek: mt8186: add mt8186-mt6366-rt1019-rt5682s document
+        (no commit info)
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
