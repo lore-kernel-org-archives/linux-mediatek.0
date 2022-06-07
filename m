@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1047EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 08:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 868BBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 08:34:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0iWG1IGAWd/M1BwESQngl5jjHiuLBrttOApDIMJZgxo=; b=zloxUg9BjxHmUN
-	kAx0uvRUZ5Vm9TB7ew8L45AjF16wOGMFtPnZ4VeuXQuQutB7MF9EdcVgbYOPJ9VnbD6SkJ2pSGQKM
-	ev3CBvqi4Uo1Sr3PtitM8vIWD4fgRa41ZfrdbxtlqHnK1ljCoBkwNXFtH6LqzvVgO9tPoMJMg5VeN
-	asAJBsJPd0xVbzmTtmhcT3Rc6wWv4SecBqt95LjAaT2RfPMYIHNQKMlVLQCKZ7/iHkkl8H76kBI2I
-	D+VhyFun1fRdSZxvPMDmsQR90ZAUXbilv+3oAL61pNGxA8Z37TVhZ5SHQV3taLXSMoXQKTJ88aeRv
-	gq3vdHEGkU7NY+EE5dYQ==;
+	List-Owner; bh=ClcEg3JSa2LniWf3FqjlbYs8iOwLgmddkSUb5KKZ0AQ=; b=cudh+7Yp4WbzcZ
+	XNdVud5IGhOu+C1WdO6PzLoVNEcMJ1M6bIRXLGRI3rhZ57TwdFv6vWx3ouz1bv3zWoZ98xjkhoQd+
+	CXXHd6OVN9udjI28i0TyA636ahS9iS7h4kcoQvTiWm0lSYZO58kUkuqzLpwgKn59n0V5H7U05zk8Y
+	aLGyLmIIZSV8RKseW+v1+WouHdIdQRGcZLj68raDKVzJaQ+H9IgfrTwh6rBT5mc4PzmtHT//nrB65
+	F1CuQvSFYonSlLGB9irIlV1Lywv6KGoMmrrkG6TcUYI5v+NjxvtTgIWN8A/F83e2juxa8Rwe2l2KK
+	+iz7bdyW13yplIquWaug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyUTo-005mig-Jb; Tue, 07 Jun 2022 08:22:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nyUfd-005pXA-7K; Tue, 07 Jun 2022 08:34:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyUTe-005mge-6A; Tue, 07 Jun 2022 08:22:15 +0000
-X-UUID: cfcd971fb46640b58b3ab39ac5e420c3-20220607
+	id 1nyUfP-005pSD-L9; Tue, 07 Jun 2022 08:34:25 +0000
+X-UUID: 84faf9a658d44fc8b0a978a19f53fa1c-20220607
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=n6scTcFQN2z5UvtgSmWoBV1I2jxbA1n/11Wdy5uPEF4=;
+	b=Cv3/0F3/6BOov4zpruV3Fea+EyJnt2Kazoj3jh5hrt7uEK5gk/aO29wrtMJCPjiIsVEe/SXSSB4WC6F6i7ztDNbQ4lYqXDCFfk+xQNqAKIVzeTj+w0aW0zZf0NAxww4sg3kvxGXrXKmDvNEK3kHxX9A3OeBWW/xOQvP73e/yYYA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:ea31bbbe-e0ef-4a9b-8877-04e6432ec7e1,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.5,REQID:05be55d8-dabf-4fd6-97b2-c1eba242cfe4,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:a051eae4-2ba2-4dc1-b6c5-11feb6c769e0,C
+X-CID-META: VersionHash:2a19b09,CLOUDID:765e757e-c8dc-403a-96e8-6237210dceee,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: cfcd971fb46640b58b3ab39ac5e420c3-20220607
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
+X-UUID: 84faf9a658d44fc8b0a978a19f53fa1c-20220607
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <axe.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1328904487; Tue, 07 Jun 2022 01:22:08 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Jun 2022 01:12:05 -0700
+	with ESMTP id 1930162777; Tue, 07 Jun 2022 01:34:18 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Jun 2022 01:24:16 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 7 Jun 2022 16:12:04 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 7 Jun 2022 16:24:14 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 7 Jun 2022 16:12:04 +0800
-Message-ID: <ff858934b622e6716dd48bf02d4d57f19358b805.camel@mediatek.com>
-Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Guillaume Ranquet
-	<granquet@baylibre.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, "Daniel
- Vetter" <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
-CC: Markus Schneider-Pargmann <msp@baylibre.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ Transport; Tue, 7 Jun 2022 16:24:13 +0800
+Message-ID: <c46ef886f908067d10b1cb9f37b3e41e6157c71d.camel@mediatek.com>
+Subject: Re: [RESEND v12 1/3] dt-bindings: mmc: mtk-sd: extend interrupts
+ and pinctrls properties
+From: Axe Yang <axe.yang@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+CC: Rob Herring <robh+dt@kernel.org>, Chaotian Jing
+	<chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Adrian Hunter <adrian.hunter@intel.com>, Yoshihiro Shimoda
+	<yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, Andy
+ Shevchenko <andriy.shevchenko@linux.intel.com>, Wolfram Sang
+	<wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, "Eric
+ Biggers" <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, "Stephen
+ Boyd" <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
+	<huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
+	<angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>
-Date: Tue, 7 Jun 2022 16:12:04 +0800
-In-Reply-To: <20220523104758.29531-19-granquet@baylibre.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <20220523104758.29531-19-granquet@baylibre.com>
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 7 Jun 2022 16:24:12 +0800
+In-Reply-To: <CAPDyKFr25qbAb9DdCpu6Cp9NyK35YAv745Duw_ht7BQc+pQF=A@mail.gmail.com>
+References: <20220525015140.384-1-axe.yang@mediatek.com>
+	 <20220525015140.384-2-axe.yang@mediatek.com>
+	 <CAPDyKFr25qbAb9DdCpu6Cp9NyK35YAv745Duw_ht7BQc+pQF=A@mail.gmail.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_012214_266517_C12600F5 
-X-CRM114-Status: GOOD (  25.78  )
+X-CRM114-CacheID: sfid-20220607_013423_743298_604867E7 
+X-CRM114-Status: GOOD (  24.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,139 +95,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rex:
-
-On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+On Fri, 2022-06-03 at 09:28 +0200, Ulf Hansson wrote:
+> On Wed, 25 May 2022 at 03:51, Axe Yang <axe.yang@mediatek.com> wrote:
+> > 
+> > Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
+> > This feature allow SDIO devices alarm asynchronous interrupt to
+> > host
+> > even when host stop providing clock to SDIO card. An extra wakeup
+> > interrupt and pinctrl states for SDIO DAT1 pin state switching are
+> > required in this scenario.
+> > 
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 50
+> > ++++++++++++++++++-
+> >  1 file changed, 49 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > index 2a2e9fa8c188..e83bf10281d6 100644
+> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > @@ -72,12 +72,27 @@ properties:
+> >        - const: ahb_cg
+> > 
+> >    interrupts:
+> > -    maxItems: 1
+> > +    description:
+> > +      Should at least contain MSDC GIC interrupt. To support SDIO
+> > in-band wakeup, an extended
+> > +      interrupt is required and be configured as wakeup source
+> > irq.
+> > +    minItems: 1
+> > +    maxItems: 2
+> > +
+> > +  interrupt-names:
+> > +    items:
+> > +      - const: msdc
+> > +      - const: sdio_wakeup
+> > 
+> >    pinctrl-names:
+> > +    description:
+> > +      Should at least contain default and state_uhs. To support
+> > SDIO in-band wakeup, dat1 pin
+> > +      will be switched between GPIO mode and SDIO DAT1 mode,
+> > state_eint and state_dat1 are
+> > +      mandatory in this scenarios.
+> > +    minItems: 2
+> >      items:
+> >        - const: default
+> >        - const: state_uhs
+> > +      - const: state_eint
 > 
-> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> Don't you need something along the lines of the below instead? I mean
+> the "state_eint" isn't always needed, right?
 > 
-> It supports the mt8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
+> oneOf:
+>   - items:
+>       - const: default
+>       - const: state_uhs
+>     - items:
+>         - const: default
+>         - const: state_uhs
+>         - const: state_eint
 > 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
-> 
-> This driver is based on an initial version by
-> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> ---
+No, it is not always needed. 
+As Rob said, the 'minItems: 2' makes the 3rd item optional.
+Combine 'minItems' and 'description' fields, it is easy for others to
+understand how to set pinctrl related properities.
 
-[snip]
+Anyway, If you insist 'oneOf' is the better way, I can update that in
+next version. What do you think?
 
-> +
-> +static int mtk_dp_train_start(struct mtk_dp *mtk_dp)
-> +{
-> +	int ret = 0;
-> +	u8 lane_count;
-> +	u8 link_rate;
-> +	u8 train_limit;
-> +	u8 max_link_rate;
-> +	u8 plug_wait;
-> +
-> +	for (plug_wait = 7; !mtk_dp_plug_state(mtk_dp) && plug_wait >
-> 0;
-> +	     --plug_wait)
-> +		/* Avoid short pulses on the HPD isr */
-> +		usleep_range(1000, 5000);
-> +	if (plug_wait == 0) {
-> +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
+And thanks to your comment, I found a mistake in 'description', I
+should remove descriptions related to 'state_dat1', and I will update
+that in next version.
 
-After return, mtk_dp->train_state would be set to
-MTK_DP_TRAIN_STATE_DPIDLE, so drop this.
+And do you have any comment on patch 2/3 and 3/3?
 
-> +		return -ENODEV;
-> +	}
-> +
-> +	link_rate = mtk_dp->rx_cap[1];
-> +	lane_count = mtk_dp->rx_cap[2] & 0x1F;
-> +
-> +	mtk_dp->train_info.link_rate = min(mtk_dp->max_linkrate,
-> link_rate);
-> +	mtk_dp->train_info.lane_count = min(mtk_dp->max_lanes,
-> lane_count);
-> +	link_rate = mtk_dp->train_info.link_rate;
-> +	lane_count = mtk_dp->train_info.lane_count;
-> +
-> +	switch (link_rate) {
-> +	case MTK_DP_LINKRATE_RBR:
-> +	case MTK_DP_LINKRATE_HBR:
-> +	case MTK_DP_LINKRATE_HBR2:
-> +	case MTK_DP_LINKRATE_HBR25:
-> +	case MTK_DP_LINKRATE_HBR3:
-> +		break;
-> +	default:
-> +		mtk_dp->train_info.link_rate = MTK_DP_LINKRATE_HBR3;
-> +		break;
-> +	};
-> +
-> +	max_link_rate = link_rate;
-> +	for (train_limit = 6; train_limit > 0; train_limit--) {
-> +		mtk_dp->train_info.cr_done = false;
-> +		mtk_dp->train_info.eq_done = false;
-> +
-> +		mtk_dp_train_change_mode(mtk_dp);
-> +		ret = mtk_dp_train_flow(mtk_dp, link_rate, lane_count);
-> +		if (ret)
-> +			return ret;
-> +
-> +		if (!mtk_dp->train_info.cr_done) {
-> +			switch (link_rate) {
-> +			case MTK_DP_LINKRATE_RBR:
-> +				lane_count = lane_count / 2;
-> +				link_rate = max_link_rate;
-> +				if (lane_count == 0) {
-> +					mtk_dp->train_state =
-> +						MTK_DP_TRAIN_STATE_DPID
-> LE;
-
-After return, mtk_dp->train_state would be set to
-MTK_DP_TRAIN_STATE_DPIDLE, so drop this.
 
 Regards,
-CK
-
-> +					return -EIO;
-> +				}
-> +				break;
-> +			case MTK_DP_LINKRATE_HBR:
-> +				link_rate = MTK_DP_LINKRATE_RBR;
-> +				break;
-> +			case MTK_DP_LINKRATE_HBR2:
-> +				link_rate = MTK_DP_LINKRATE_HBR;
-> +				break;
-> +			case MTK_DP_LINKRATE_HBR3:
-> +				link_rate = MTK_DP_LINKRATE_HBR2;
-> +				break;
-> +			default:
-> +				return -EINVAL;
-> +			};
-> +		} else if (!mtk_dp->train_info.eq_done) {
-> +			if (lane_count == 0)
-> +				return -EIO;
-> +
-> +			lane_count /= 2;
-> +		} else {
-> +			break;
-> +		}
-> +	}
-> +
-> +	if (train_limit == 0)
-> +		return -ETIMEDOUT;
-> +
-> +	return 0;
-> +}
-> +
-
+Axe
 
 _______________________________________________
 Linux-mediatek mailing list
