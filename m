@@ -4,67 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E934FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 15:11:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC93C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 15:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CZ8dOibWuBhXfyKr8q5fHvR+eh4a/jZEg0+2IyqqVr4=; b=jkH3FJr1Nr9on/
-	NCbH5B6nOzqAHw++nA7kKBHr8IFv0buv8cDgTTOvFfxa6jZ0M03LWMYnlndYurB7HxJPAlbkWP4nM
-	h8PIwDfovijRtgxM2vHtBgD7bOxgv+a/V0eBYtUmYUkBztFus1yOkLzqCaplIyqszpfCzgtdySpRj
-	p4gr9XBieNS3+v4roxxEtHhg+ONeKiM8xMEXXABVq8siskXpzfrW7GCUnR0e645nARaX+BL2WSup4
-	fCruxAxTJLncfVsyCeBPMQg3jLWF8Ud0ucaQ2fXYUSDbrLLWM9yKL+90BuHpHLVp34hlULFGbJqe5
-	b2e5bLpS0/UkSuElWEOg==;
+	List-Owner; bh=mr+X1yAaA7l4cDpExPUsuv+uOnQkUQ/mJqPLH89wOBo=; b=hzIue3hVsbet1O
+	U1Q1aa/h7YIrDo1NUpfqeuv3kjoVLEa4dITBLBrPSIBqOdGQrH2g7obTJI7fJHbbMyu3x3i8gFnJh
+	8gaAo9qhU46QK4B5vLZZfpbBJjJpVSH5AJd8F/oZfxZrwcHgJR1pseCZ+kGhIzNe4U8PBQ120e63F
+	nnEIFGYKXaHaqmcdNYYeTRjKA8dtepaIZ1t3R9NQ7FchoYJ2nESizIKy4jewAgdweZzG1NaNQ85NW
+	5SvruHs54MAbqrFonQrqi8VqPSddCK5FNBQgHiLk9tN6vt/YqaMn7dxWZ3UMDkE0nrMPdE5+1zQMv
+	5I0liKg3Ub87YNAJ7L5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyarp-008Eee-1R; Tue, 07 Jun 2022 15:11:37 +0000
-Received: from mail-il1-f169.google.com ([209.85.166.169])
+	id 1nybCD-008IO6-Pz; Tue, 07 Jun 2022 15:32:41 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyard-008Ebw-5F; Tue, 07 Jun 2022 15:11:26 +0000
-Received: by mail-il1-f169.google.com with SMTP id u2so13498094iln.2;
-        Tue, 07 Jun 2022 08:11:23 -0700 (PDT)
+	id 1nybCA-008ILy-DT
+	for linux-mediatek@lists.infradead.org; Tue, 07 Jun 2022 15:32:39 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id b8so6822814edj.11
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jun 2022 08:32:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=8mWAcxmdEaXtXEf9bkpBT1dXxrFHE82EQI8/Jd/D+m0=;
+        b=GPfz/jg87i8Zik3e8kzVXPFh+GLz9PHfv82fQeGPkCn0GfiS5QUaw/pZFKY3MMdomI
+         /LuGFP+pL0A4/djAMIc8djgLEpFxw3hqlfiemCoHbAJraq7EEdYsE7sHKSJQfkCWxDhT
+         erwf8YK192cyUffD1u6jI914YqFVstgnWVijI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=yZvply317AePPx+C+0gJXDyN0OP2009ot+8UwJNT7lc=;
-        b=KQmfG473SfoDLZWZkoEXA+DKSLZt4+D46caJdgeIu8G65a4fk4dGLNJpzDIeoquklv
-         62lhtRr2PY7ubhDI8JQ6R/V9PgZ4017QTtRyeT+krroO3kwq0oK1WVYEMqrScz3rto5p
-         8ympunyAwfGwhisMulyI99pdmzHxENOFlSIjOEB8j9wVJ9YIibk+TqJngz4ZIxhLNk+3
-         Lfg7lXqUcil2KmyD13oDBFWSXNtZaM3Msw2h0RZQYITT2d9pu/R/19fGtcgbb8GCtd10
-         XvCCMCbBtO9/E4bqy0am4IZ0WY7XClbTMKyi/mmWkPn+fZbgG1r4uvavTH1SMuP8qAm1
-         icyA==
-X-Gm-Message-State: AOAM530AnVBbymOW2zLXbBC1NvsmYA5WrMmJasjtKaJK2Zp0cW2nwckK
-	lObypqxTh3KkYntTg+v2y98GFfQrRA==
-X-Google-Smtp-Source: ABdhPJx/aj8OkTZ5sZWk9M29SQS/0eDgBTSzLYMt1Sjvv9q41ldddqHu8JdQx/N4vjM5hJPYMOdyQg==
-X-Received: by 2002:a05:6e02:164b:b0:2d3:ccea:ff38 with SMTP id v11-20020a056e02164b00b002d3cceaff38mr16702955ilu.37.1654614682299;
-        Tue, 07 Jun 2022 08:11:22 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.251])
-        by smtp.gmail.com with ESMTPSA id b14-20020a05663805ae00b00331d98c9a7fsm409601jar.40.2022.06.07.08.11.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jun 2022 08:11:21 -0700 (PDT)
-Received: (nullmailer pid 3258163 invoked by uid 1000);
-	Tue, 07 Jun 2022 15:11:19 -0000
-Date: Tue, 7 Jun 2022 09:11:19 -0600
-From: Rob Herring <robh@kernel.org>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, "airlied@linux.ie" <airlied@linux.ie>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "pavel@ucw.cz" <pavel@ucw.cz>, Nancy Lin =?utf-8?B?KOael+aso+ieoik=?= <Nancy.Lin@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>
-Subject: Re: [RESEND v4 1/3] dt-bindings: mediatek: add vdosys1 RDMA
- definition for mt8195
-Message-ID: <20220607151119.GA3254370-robh@kernel.org>
-References: <20220606051131.14182-1-rex-bc.chen@mediatek.com>
- <20220606051131.14182-2-rex-bc.chen@mediatek.com>
- <1654520033.524963.534472.nullmailer@robh.at.kernel.org>
- <8598b46381861bd36008cc87599c73863cb4b98e.camel@mediatek.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=8mWAcxmdEaXtXEf9bkpBT1dXxrFHE82EQI8/Jd/D+m0=;
+        b=7h4UomXtgdl36pXvTMrejo+KqfleYO1Er1J0jkG9wqs9rN+SyL6y2EJEV3RlZn9oeN
+         shKYz6zfyufrxB5/apXhZZ4AtbPlFuPitxINLMQDJn847KNZyj7v+jfSO3CCc5YcxmCP
+         emg2qAtvFavABeuweubefp+MaAxdWYwHFjozPCfEQl83YM27a8HC2U9DzBCJ5dBEl6Eb
+         8lkFV0siwcine/Qrg/Ub/K4hVuTK6thgSR3lMXnfk/g7e3LR/0HGh5iy3qQNvERanmOo
+         lktfyJ9strh5ZyCDYw+YrfdR2PrIjOTdtlPUC1JTRPtwqJsqwdlROPsErLKJeRLi9UFn
+         qqjg==
+X-Gm-Message-State: AOAM533gJKWQQCPhUsfZdxsJj0FUVMwQ3rkRO5g7L4GBk7Sw8/m0g/AS
+	mnqB0wtifQcWfYzcx/aIqIcJvfvwJB8bM/Yb
+X-Google-Smtp-Source: ABdhPJzZT5TQKrj0qzuPrX741xkt+KA5SrR5lLi2DfATtXI/aFuT7Aeb7SwPEw6RIXRViuRtuXplpA==
+X-Received: by 2002:aa7:c450:0:b0:431:55c6:29f9 with SMTP id n16-20020aa7c450000000b0043155c629f9mr14070635edr.14.1654615953880;
+        Tue, 07 Jun 2022 08:32:33 -0700 (PDT)
+Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com. [209.85.221.54])
+        by smtp.gmail.com with ESMTPSA id u9-20020a1709064ac900b006f3ef214e20sm7747769ejt.134.2022.06.07.08.32.32
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 07 Jun 2022 08:32:32 -0700 (PDT)
+Received: by mail-wr1-f54.google.com with SMTP id q26so14322600wra.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jun 2022 08:32:32 -0700 (PDT)
+X-Received: by 2002:a5d:608d:0:b0:218:3cfa:afe9 with SMTP id
+ w13-20020a5d608d000000b002183cfaafe9mr12177876wrt.422.1654615951748; Tue, 07
+ Jun 2022 08:32:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8598b46381861bd36008cc87599c73863cb4b98e.camel@mediatek.com>
+References: <20220607090549.2345795-1-hsinyi@chromium.org> <20220607090549.2345795-9-hsinyi@chromium.org>
+In-Reply-To: <20220607090549.2345795-9-hsinyi@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Date: Tue, 7 Jun 2022 08:32:19 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=Xe=iEh080QjE+Awgw0Q+Rb=xnrAj6OtO3EXp==XgvD0g@mail.gmail.com>
+Message-ID: <CAD=FV=Xe=iEh080QjE+Awgw0Q+Rb=xnrAj6OtO3EXp==XgvD0g@mail.gmail.com>
+Subject: Re: [PATCH v5 8/8] drm/mediatek: Config orientation property if panel
+ provides it
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Hans de Goede <hdegoede@redhat.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Rob Clark <robdclark@chromium.org>, 
+	Stephen Boyd <swboyd@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+	Linux ARM <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_081125_240398_C8986071 
-X-CRM114-Status: GOOD (  26.31  )
+X-CRM114-CacheID: sfid-20220607_083238_520128_8053A221 
+X-CRM114-Status: GOOD (  31.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,86 +99,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 06, 2022 at 09:30:42PM +0800, Rex-BC Chen wrote:
-> On Mon, 2022-06-06 at 20:53 +0800, Rob Herring wrote:
-> > On Mon, 06 Jun 2022 13:11:29 +0800, Bo-Chen Chen wrote:
-> > > From: "Nancy.Lin" <nancy.lin@mediatek.com>
-> > > 
-> > > Add vdosys1 RDMA definition.
-> > > 
-> > > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno <
-> > > angelogioacchino.delregno@collabora.com>
-> > > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > > Tested-by: AngeloGioacchino Del Regno <
-> > > angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >  .../display/mediatek/mediatek,mdp-rdma.yaml   | 88
-> > > +++++++++++++++++++
-> > >  1 file changed, 88 insertions(+)
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
-> > > rdma.yaml
-> > > 
-> > 
-> > My bot found errors running 'make DT_CHECKER_FLAGS=-m
-> > dt_binding_check'
-> > on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> > 
-> > yamllint warnings/errors:
-> > 
-> > dtschema/dtc warnings/errors:
-> > /builds/robherring/linux-dt-
-> > review/Documentation/devicetree/bindings/display/mediatek/mediatek,md
-> > p-rdma.yaml: properties:compatible: [{'const': 'mediatek,mt8195-vdo1-
-> > rdma'}] is not of type 'object', 'boolean'
-> > 	from schema $id: 
-> > https://urldefense.com/v3/__http://json-schema.org/draft-07/schema*__;Iw!!CTRNKA9wMg0ARbw!3hhZrSKSWnCN5Bha9laiHlB5JCx9_p-ksaYDZmoCLQRi1tI4KJCcTJQva2vds3j3bwKF$
-> >  
-> > /builds/robherring/linux-dt-
-> > review/Documentation/devicetree/bindings/display/mediatek/mediatek,md
-> > p-rdma.yaml: ignoring, error in schema: properties: compatible
-> > Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
-> > rdma.example.dtb:0:0: /example-0/soc/rdma@1c104000: failed to match
-> > any schema with compatible: ['mediatek,mt8195-vdo1-rdma']
-> > 
-> > doc reference errors (make refcheckdocs):
-> > 
-> > See https://patchwork.ozlabs.org/patch/
-> > 
-> > This check can fail if there are any dependencies. The base for a
-> > patch
-> > series is generally the most recent rc1.
-> > 
-> > If you already ran 'make dt_binding_check' and didn't see the above
-> > error(s), then make sure 'yamllint' is installed and dt-schema is up
-> > to
-> > date:
-> > 
-> > pip3 install dtschema --upgrade
-> > 
-> > Please check and re-submit.
-> > 
-> 
-> Hello Rob,
-> 
-> We found that if we write this, and the error will disapear:
->  properties:
->    compatible:
-> -    - const: mediatek,mt8195-vdo1-rdma
-> +    items:
-> +      - const: mediatek,mt8195-vdo1-rdma
-> 
-> But from Krzysztof's review[1], he adviced us to drop items.
-> 
-> Is there any suggsetion for this error or do we have any
-> misunderstanding?
+Hi,
 
-The '-' is important.
+On Tue, Jun 7, 2022 at 2:06 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
+> Panel orientation property should be set before drm_dev_register().
+> Mediatek drm driver calls drm_dev_register() in .bind(). However, most
+> panels sets orientation property relatively late, mostly in .get_modes()
+> callback, since this is when they are able to get the connector and
+> binds the orientation property to it, though the value should be known
+> when the panel is probed.
+>
+> Let the drm driver check if the remote end point is a panel and if it
+> contains the orientation property. If it does, set it before
+> drm_dev_register() is called.
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+> v4->v5:
+> - use the new function in v5.
+> - don't use drm_of_find_panel_or_bridge().
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index d9f10a33e6fa..998b1237e193 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -185,6 +185,7 @@ struct mtk_dsi {
+>         struct drm_encoder encoder;
+>         struct drm_bridge bridge;
+>         struct drm_bridge *next_bridge;
+> +       struct drm_panel *panel;
+>         struct drm_connector *connector;
+>         struct phy *phy;
+>
+> @@ -822,6 +823,10 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+>                 ret = PTR_ERR(dsi->connector);
+>                 goto err_cleanup_encoder;
+>         }
+> +
+> +       /* Read panel orientation */
+> +       drm_connector_set_orientation_from_panel(dsi->connector, dsi->panel);
+> +
+>         drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
+>
+>         return 0;
+> @@ -836,6 +841,16 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+>         int ret;
+>         struct drm_device *drm = data;
+>         struct mtk_dsi *dsi = dev_get_drvdata(dev);
+> +       struct device_node *panel_node;
+> +
+> +       /* Get panel if existed */
+> +       panel_node = of_graph_get_remote_node(dev->of_node, 0, 0);
+> +       if (panel_node) {
+> +               dsi->panel = of_drm_find_panel(panel_node);
+> +               if (IS_ERR(dsi->panel))
+> +                       dsi->panel = NULL;
+> +               of_node_put(panel_node);
+> +       }
 
-compatible:
-  const: mediatek,mt8195-vdo1-rdma
+While the above works, it feels like we could do better. What about this?
+
+* We add _some_ way to determine if a bridge is actually a
+panel_bridge. If nothing else maybe this could be
+drm_bridge_is_panel() and it could just check if bridge.funcs ==
+panel_bridge_bridge_funcs
+
+* In drm_bridge_connector_init(), when we're looping through all the
+bridges we find the panel_bridge if it's there.
+
+* At the end of drm_bridge_connector_init() if we found a panel_bridge
+then we call a function like drm_panel_bridge_set_orientation().
+
+
+Then you can fully get rid of the mediatek patch, right? The above
+will only work if you're using a panel_bridge / bridge_connector, but
+that's "the future" anyway and we want to encourage people to
+transition to that.
+
+-Doug
 
 _______________________________________________
 Linux-mediatek mailing list
