@@ -4,76 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6735EC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 09:36:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E157C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 10:33:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w7LGzaOqEFxFKAZcvBfU7NqYSCYno6NWDI1SljnNhNw=; b=rkVQCrl8oAWAWE
-	u7cJ+5Q+4uRe/xQMJVUYePGboGe09TnuAbzctn5zek4sL6sM6O/6WC6FZS5z82ZN2uTicsIEatzmS
-	hJJ5EP9RBSTUWw5ykNlshtfh9MjIO158NcwMHnN6hPDuUXHF7jSUlRMc/hYi8N6eOsY3skbYlQS9E
-	cHb+qCbkwGwZvF9pOcgwsr2eq8djZ6SgHMyzIZljtv56ueZo/ANjYepIzL8KUmjHRnIV879rtRxYR
-	eqHzK6jV9b3qYrUwoJHpXA+OmWsm6rbkJiVguQjyaKx8xHrofWVdCK/T0FbG+YuXO3nm7nNQN6cSY
-	kye342U2T3IJ4BrvdhTw==;
+	List-Owner; bh=ZUA/VrzmKCLDfatpIURBbLOyOY+3t1a72tI8lqOorzI=; b=1SrJ7LQzc4IQeD
+	WwbOtwhEmQnhlbM7eTlR/EGkBzzo+dib1Z8muXx1QtP67Y/GPSYF6UQHkrVfWTXQOnPNMu52QLi8E
+	pFKdyMo2TyN71RaOHEHOiAOVrPNxnf0oPsUWIeXXhbVQEmJ/dPTGq+hPWvbh7+e0gj42GaZFGxm3Z
+	a5RAbre3tbWzwnN5GRdrGdjUNpmXResbrfJz3dC2SeS/PCKQjZd+nAKuL6nT7L+iizzmy4lypwVgV
+	NE24enQJJG/mfctQA9jpg0ltr2u/nMnccl9O9aw7DDcLTWI7QOaJr29fwYj4ueE0kTjwZnjga9Pk+
+	7g2Lg/vqQe8JyKh30Nmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nys6s-00CQ0P-5i; Wed, 08 Jun 2022 09:36:18 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1nyszz-00Cmau-Cr; Wed, 08 Jun 2022 10:33:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nys6W-00CPr6-13
-	for linux-mediatek@lists.infradead.org; Wed, 08 Jun 2022 09:35:57 +0000
-Received: by mail-ed1-x536.google.com with SMTP id x62so26257866ede.10
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jun 2022 02:35:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=kOg3HvH8j+WVCx/lSSBrh7BoztwaXs9YDBC9IWClIgg=;
-        b=BYg8e6tB+8azsKp0NbkOtO6Sv9a3zM9cNkEsd/Zvy4TRu7dIMeJRCubIXz1+yJEHSm
-         eaj8rvMkrQbvG2tDfOe0Sb+HPi67Wwzb2u4p/W+mTgTdUSft07yDROB3L9RVu4HrhY1N
-         HrwEILSRfLabHhKX7K/nAJ2mDJqbWxirI90B8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=kOg3HvH8j+WVCx/lSSBrh7BoztwaXs9YDBC9IWClIgg=;
-        b=EyE9N/WoVQeTcpOs4wiblzLKCpSk8hSB5EZLYHmXtAUWsXXn58Oj5Gwr0ElEEbo4M6
-         ML8KZxDPCNpSJ3vHXcLFOwRIeeXwbpg07aJqbmfNYo8/vADV91Hfw4+ICM1RodBxZ8mn
-         rI+kOkMv957TPYrsZahrTaPXhcbaT2stGr1doNGJ3TCKmEmavnbClg7skbD0EB244nCX
-         sMBUDR2XAE2VxH8Jh4avz3/69RpLUKC3B2TaGAOKrVCNyEqej9pgQxneJfkQyEtNIvyk
-         idYq1qy1eZHZkETPGe1xG984h9QzTRQGqe7f9Eza8WQ7htnnUuHLwYmXhv80wlmcsVmN
-         f28Q==
-X-Gm-Message-State: AOAM531l3vdJQKZN2aXKB7bg9o8uBbVP2l29Whet21J4hI77l3BB/5m5
-	8BKCnpvHFcBtR3/qsEKRITz6En3BwroEF8o9jGroGA==
-X-Google-Smtp-Source: ABdhPJxbUUhlJQTDlzFDaW7RW91mrSfMojk1t+tvHzRVYL+0VnFJ2Vlg/w4Krtx80r04u4Z+7aAKFVKb/iNsqLSus5U=
-X-Received: by 2002:a05:6402:cab:b0:42d:c842:8369 with SMTP id
- cn11-20020a0564020cab00b0042dc8428369mr37949645edb.181.1654680952985; Wed, 08
- Jun 2022 02:35:52 -0700 (PDT)
+	id 1nyszZ-00CmRR-Tu; Wed, 08 Jun 2022 10:32:51 +0000
+X-UUID: 29a09333834d412191c513514a993246-20220608
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:aba5328e-8a34-46c1-a5f8-214a1995933e,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:04f219e5-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 29a09333834d412191c513514a993246-20220608
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1596128052; Wed, 08 Jun 2022 03:32:42 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 8 Jun 2022 03:26:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 8 Jun 2022 18:26:34 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 8 Jun 2022 18:26:33 +0800
+Message-ID: <75c00caca74b8366ca2c4594a8229b6de95c5f47.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun
+ =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
+	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
+	<linux-fbdev@vger.kernel.org>
+Date: Wed, 8 Jun 2022 18:26:33 +0800
+In-Reply-To: <f791f46c6307a18818574cb7fb8653bcc84aa9ad.camel@mediatek.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+	 <f791f46c6307a18818574cb7fb8653bcc84aa9ad.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220607090549.2345795-1-hsinyi@chromium.org> <20220607090549.2345795-9-hsinyi@chromium.org>
- <CAD=FV=Xe=iEh080QjE+Awgw0Q+Rb=xnrAj6OtO3EXp==XgvD0g@mail.gmail.com>
-In-Reply-To: <CAD=FV=Xe=iEh080QjE+Awgw0Q+Rb=xnrAj6OtO3EXp==XgvD0g@mail.gmail.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Wed, 8 Jun 2022 17:35:27 +0800
-Message-ID: <CAJMQK-h3-9kSsN2r5+P84DeRNKwCm4pTPsri3tTQQLZjaieSEg@mail.gmail.com>
-Subject: Re: [PATCH v5 8/8] drm/mediatek: Config orientation property if panel
- provides it
-To: Doug Anderson <dianders@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Hans de Goede <hdegoede@redhat.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Rob Clark <robdclark@chromium.org>, 
-	Stephen Boyd <swboyd@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_023556_173923_53F1EABE 
-X-CRM114-Status: GOOD (  38.21  )
+X-CRM114-CacheID: sfid-20220608_033250_018885_54B50F66 
+X-CRM114-Status: GOOD (  29.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,96 +99,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 7, 2022 at 11:39 PM Doug Anderson <dianders@chromium.org> wrote:
->
-> Hi,
->
-> On Tue, Jun 7, 2022 at 2:06 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
-> >
-> > Panel orientation property should be set before drm_dev_register().
-> > Mediatek drm driver calls drm_dev_register() in .bind(). However, most
-> > panels sets orientation property relatively late, mostly in .get_modes()
-> > callback, since this is when they are able to get the connector and
-> > binds the orientation property to it, though the value should be known
-> > when the panel is probed.
-> >
-> > Let the drm driver check if the remote end point is a panel and if it
-> > contains the orientation property. If it does, set it before
-> > drm_dev_register() is called.
-> >
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > Reviewed-by: Hans de Goede <hdegoede@redhat.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Tue, 2022-06-07 at 15:47 +0800, CK Hu wrote:
+> Hi, Rex:
+> 
+> On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > 
+> > This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> > 
+> > It supports the mt8195, the embedded DisplayPort units. It offers
+> > DisplayPort 1.4 with up to 4 lanes.
+> > 
+> > The driver creates a child device for the phy. The child device
+> > will
+> > never exist without the parent being active. As they are sharing a
+> > register range, the parent passes a regmap pointer to the child so
+> > that
+> > both can work with the same register range. The phy driver sets
+> > device
+> > data that is read by the parent to get the phy device that can be
+> > used
+> > to control the phy properties.
+> > 
+> > This driver is based on an initial version by
+> > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 > > ---
-> > v4->v5:
-> > - use the new function in v5.
-> > - don't use drm_of_find_panel_or_bridge().
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 15 +++++++++++++++
-> >  1 file changed, 15 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index d9f10a33e6fa..998b1237e193 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -185,6 +185,7 @@ struct mtk_dsi {
-> >         struct drm_encoder encoder;
-> >         struct drm_bridge bridge;
-> >         struct drm_bridge *next_bridge;
-> > +       struct drm_panel *panel;
-> >         struct drm_connector *connector;
-> >         struct phy *phy;
-> >
-> > @@ -822,6 +823,10 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
-> >                 ret = PTR_ERR(dsi->connector);
-> >                 goto err_cleanup_encoder;
-> >         }
+> 
+> [snip]
+> 
 > > +
-> > +       /* Read panel orientation */
-> > +       drm_connector_set_orientation_from_panel(dsi->connector, dsi->panel);
+> > +static int mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+> > +{
+> > +	ssize_t ret;
+> > +	u8 sink_count;
+> > +	bool locked;
+> > +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
+> > +	u32 sink_count_reg = DP_SINK_COUNT_ESI;
+> > +	u32 link_status_reg = DP_LANE0_1_STATUS;
 > > +
-> >         drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
-> >
-> >         return 0;
-> > @@ -836,6 +841,16 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
-> >         int ret;
-> >         struct drm_device *drm = data;
-> >         struct mtk_dsi *dsi = dev_get_drvdata(dev);
-> > +       struct device_node *panel_node;
+> > +	ret = drm_dp_dpcd_readb(&mtk_dp->aux, sink_count_reg,
+> > &sink_count);
+> > +	if (ret < 0) {
+> > +		drm_err(mtk_dp->drm_dev, "Read sink count failed:
+> > %ld\n", ret);
+> > +		return ret;
+> > +	}
 > > +
-> > +       /* Get panel if existed */
-> > +       panel_node = of_graph_get_remote_node(dev->of_node, 0, 0);
-> > +       if (panel_node) {
-> > +               dsi->panel = of_drm_find_panel(panel_node);
-> > +               if (IS_ERR(dsi->panel))
-> > +                       dsi->panel = NULL;
-> > +               of_node_put(panel_node);
-> > +       }
->
-> While the above works, it feels like we could do better. What about this?
->
-> * We add _some_ way to determine if a bridge is actually a
-> panel_bridge. If nothing else maybe this could be
-> drm_bridge_is_panel() and it could just check if bridge.funcs ==
-> panel_bridge_bridge_funcs
->
-> * In drm_bridge_connector_init(), when we're looping through all the
-> bridges we find the panel_bridge if it's there.
->
-> * At the end of drm_bridge_connector_init() if we found a panel_bridge
-> then we call a function like drm_panel_bridge_set_orientation().
->
->
-> Then you can fully get rid of the mediatek patch, right? The above
-> will only work if you're using a panel_bridge / bridge_connector, but
-> that's "the future" anyway and we want to encourage people to
-> transition to that.
->
-This also works with the mtk dsi, and it's more generic. I'll drop
-this patch and go with this implementation in the next version. Thanks
-for the suggestion.
+> > +	ret = drm_dp_dpcd_read(&mtk_dp->aux, link_status_reg,
+> > link_status,
+> > +			       sizeof(link_status));
+> > +	if (!ret) {
+> > +		drm_err(mtk_dp->drm_dev, "Read link status failed:
+> > %ld\n",
+> > +			ret);
+> > +		return ret;
+> > +	}
+> > +
+> > +	locked = drm_dp_channel_eq_ok(link_status,
+> > +				      mtk_dp->train_info.lane_count);
+> > +	if (!locked && mtk_dp->train_state >
+> > MTK_DP_TRAIN_STATE_TRAINING_PRE)
+> 
+> Before enter this function, mtk_dp->train_state is set to
+> MTK_DP_TRAIN_STATE_STARTUP, so this never happen, drop this.
+> 
 
-> -Doug
+The interrupt from sink device could come any time. Why it's
+impossible?
+
+> > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING_PRE;
+> > +
+> > +	if (link_status[1] & DP_REMOTE_CONTROL_COMMAND_PENDING)
+> > +		drm_dp_dpcd_writeb(&mtk_dp->aux,
+> > DP_DEVICE_SERVICE_IRQ_VECTOR,
+> > +				   DP_REMOTE_CONTROL_COMMAND_PENDING);
+> > +
+> > +	if (DP_GET_SINK_COUNT(sink_count) &&
+> > +	    (link_status[2] & DP_DOWNSTREAM_PORT_STATUS_CHANGED)) {
+> > +		mtk_dp->train_info.check_cap_count = 0;
+> > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKEDID;
+> 
+> Why change state from MTK_DP_TRAIN_STATE_STARTUP to
+> MTK_DP_TRAIN_STATE_CHECKEDID? In mtk_dp_train_handler(),
+> mtk_dp_parse_capabilities() is true then change to
+> MTK_DP_TRAIN_STATE_CHECKEDID. Give a reason why these two are
+> different.
+> 
+> Regards,
+> CK
+> 
+
+I will drop this and drop state of MTK_DP_TRAIN_STATE_CHECKEDID.
+MTK_DP_TRAIN_STATE_CHECKEDID is only used for audio.
+We can check enable status in another place.
+
+BRs,
+Bo-Chen
+
+> > +		msleep(20);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> 
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
