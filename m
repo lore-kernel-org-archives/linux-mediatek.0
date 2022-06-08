@@ -4,55 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8735C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 13:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D5ABC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 13:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p7B/nOJsVuQvC80yxc7vVpbO/yJNCWXhrthkL7HW/oE=; b=o0LjTRF6CM7TNk
-	aHKqXKrUAM8ecAa5iokDW2LTVJUa/wU3pn9Ja+AhMPo33lwwMS89Z2kZOUWkr90rBT9B4Wo+5H/iI
-	pEzZUDXs6GeU3AnUosmJ+5TpUfeX4uz4sXUT+YFVHEDytEcJH9TzaeKwFWyztEuWGPqEfMfE8452g
-	MjgnZgBw1LQfe+OFOebTUqeadEFjK+Ojuw0VLQwTjt7CE+WiwKzUajQp0/+oL7dcspvb627DFBm/E
-	LI5TpE8wYXKh9mFuYDPufR/OfvySy9FMBrbDwF0FP5N+Kn/ZuqXIWbW6EHMlbwURT5WA9OMNmHrsm
-	x74rid9dXB24rHvMgu2w==;
+	List-Owner; bh=LyH9Aq3ISp0FAWf+DYezYzStlUutU8m5NJuqnkUgF0Q=; b=Ox/HxQYyOiOrkN
+	8VeW9vgdH50oEfYyFtPmLphmeletzJ6on++rhNaiO59zkfuUbFmqjiQICLS/+Sbe9q2qt4UgdP9Hx
+	gGd/2RQfJuF/stoE3LZ5gGOgRgnt2VlakRKmCiz4qwoEmzMc0rY0DK11IcY90Np8e2b5jwlTe6v3E
+	ZUOXJq4UAMu2T/F5/7Tp+C9Y2u3MeHI/Ua2hloq/PbTu7w9k3d6z8WS/YX3aWNYFCL4qkmlUWvbmi
+	+26E/ZzZ7FHv9Z0MKAVWCfohbdaVEgOJFknmxMV4EXn+vYV6Hz8NrH9LU0NX6pRMoyD6fuOOj1X1s
+	8PiRuvVpqZyKsDKDKDtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyvwu-00DGbZ-52; Wed, 08 Jun 2022 13:42:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nyw3T-00DJoG-BY; Wed, 08 Jun 2022 13:49:03 +0000
+Received: from mail-io1-f43.google.com ([209.85.166.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyvqH-00DDZU-AD; Wed, 08 Jun 2022 13:35:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D9E1D61ABA;
-	Wed,  8 Jun 2022 13:35:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60FE5C3411D;
-	Wed,  8 Jun 2022 13:35:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654695324;
-	bh=5LB/laBhD+UgSSOr7WRcH6UEhfeHkVEIj7KyPjpj7bk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hEdu1RTA30wC/gVRvrUhamV4CIrMaI7UIJc2NGAqmGgsT6dbAjDo4FBPJFL+b+/D8
-	 ZJeBpPbyJkpirCUplI61/Gq1yjZHZG4T5C+bCPyeGkGggfU/0M5VKj8E8Z7vQxDLAj
-	 Ji90W1x9PiwNLAiSlagnIz/Z44sWRwPGDOs7wgOvqFrzAZ5kDqulANOtym3pL7fQwd
-	 EFgw/Zk0iwP9DDGNfAEwwBWMsP8Mx21B6nLRwN9wUvrBBirQZkQO45yLF+wNTvd78t
-	 QCXWFe0ImNoRz81zN2mnXF3xtLYcoTV46kHQs4fH+PW2JMJaUb/CSMPI4miSidZAbC
-	 4bn+/O3h0XkDw==
-From: Mark Brown <broonie@kernel.org>
-To: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, jiaxin.yu@mediatek.com, angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com, tiwai@suse.com, perex@perex.cz, Colin Ian King <colin.king@intel.com>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
-In-Reply-To: <20220608082338.2083456-1-colin.i.king@gmail.com>
-References: <20220608082338.2083456-1-colin.i.king@gmail.com>
-Subject: Re: [PATCH][next] ASoC: mediatek: mt8186: Fix a handful of spelling mistakes
-Message-Id: <165469532211.615471.3502999805996832817.b4-ty@kernel.org>
-Date: Wed, 08 Jun 2022 14:35:22 +0100
-MIME-Version: 1.0
+	id 1nyvzt-00DI53-4f; Wed, 08 Jun 2022 13:45:22 +0000
+Received: by mail-io1-f43.google.com with SMTP id 134so12574661iou.12;
+        Wed, 08 Jun 2022 06:45:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+         :message-id;
+        bh=W8KqLdaB/w/YGRDGH2n8sRCUDF1uSkNdTgkHzNsZwJc=;
+        b=8JfJoTzW738qliFuK0wHpUlhdpABR/U5AAvux71ueCGBHq4u03/DThaq2NxZb/v1Py
+         Tx36xBRzDT39bTUIIDK4PJTSgHY6orHhTh/nMHc6Tn/Cud1SQUt0EvfRc9PGFQnd0NjW
+         vcell4Es9hjY6pLSNCbKpE7zauwiULhoA4Nm682WWAU0pHY/SQCmPRMiA1V/pk5gAt9n
+         dxzUopIp8POO2XudRDCXd7Ddk1RQhFVeM13qarAcQ/K9CGEUoTVA4p+Dh7xuJpjVDC2L
+         d1gMziPRWcX/hGZ8H3qDxqb7dNguuGOfIyjp8QsuG3aKGjy//NESRV8gPiKhd2B4oG9j
+         rE3Q==
+X-Gm-Message-State: AOAM533CQ4jiYKPWlsXfL9Qgi5gNeDX/V5I6hY+InEQg2DMJIDlxpim6
+	rd/KPXTSSNf3p3gTd7AJBQ==
+X-Google-Smtp-Source: ABdhPJx5s0ccjVbdJZaMMM/QC0HXDyokEKnHKgCKaaXwNUwaytQlXG9SpY/n8lgwAAdFIB6/yFyxcQ==
+X-Received: by 2002:a02:8609:0:b0:330:e92c:2cc4 with SMTP id e9-20020a028609000000b00330e92c2cc4mr19375084jai.95.1654695917923;
+        Wed, 08 Jun 2022 06:45:17 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.251])
+        by smtp.gmail.com with ESMTPSA id cx4-20020a056638490400b0033126faae3asm8080774jab.116.2022.06.08.06.45.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jun 2022 06:45:17 -0700 (PDT)
+Received: (nullmailer pid 1272086 invoked by uid 1000);
+	Wed, 08 Jun 2022 13:45:07 -0000
+From: Rob Herring <robh@kernel.org>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, nancy.lin@mediatek.com, devicetree@vger.kernel.org, angelogioacchino.delregno@collabora.com, robh+dt@kernel.org, dri-devel@lists.freedesktop.org, pavel@ucw.cz, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, airlied@linux.ie, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-arm-kernel@lists.infradead.org, p.zabel@pengutronix.de, linux-mediatek@lists.infradead.org, chunkuang.hu@kernel.org, ck.hu@mediatek.com
+In-Reply-To: <20220608043852.4980-4-rex-bc.chen@mediatek.com>
+References: <20220608043852.4980-1-rex-bc.chen@mediatek.com> <20220608043852.4980-4-rex-bc.chen@mediatek.com>
+Subject: Re: [RESEND v5 3/3] dt-bindings: mediatek: add ethdr definition for mt8195
+Date: Wed, 08 Jun 2022 07:45:07 -0600
+Message-Id: <1654695907.376302.1272085.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_063525_423459_88503DDC 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20220608_064521_312908_C08D71B5 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,43 +70,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 8 Jun 2022 09:23:38 +0100, Colin Ian King wrote:
-> There are several spelling mistakes in dev_err messages. Fix them.
+On Wed, 08 Jun 2022 12:38:52 +0800, Bo-Chen Chen wrote:
+> From: "Nancy.Lin" <nancy.lin@mediatek.com>
 > 
+> Add vdosys1 ETHDR definition.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../display/mediatek/mediatek,ethdr.yaml      | 188 ++++++++++++++++++
+>  1 file changed, 188 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
 > 
 
-Applied to
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+yamllint warnings/errors:
 
-Thanks!
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.example.dts:71.40-41 syntax error
+FATAL ERROR: Unable to parse input tree
+make[1]: *** [scripts/Makefile.lib:383: Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.example.dtb] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1404: dt_binding_check] Error 2
 
-[1/1] ASoC: mediatek: mt8186: Fix a handful of spelling mistakes
-      commit: b09654e39c89a86680528345f3a95b832236ee82
+doc reference errors (make refcheckdocs):
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+See https://patchwork.ozlabs.org/patch/
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+pip3 install dtschema --upgrade
 
-Thanks,
-Mark
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
