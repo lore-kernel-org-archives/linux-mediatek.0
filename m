@@ -4,62 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5DA6C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jun 2022 23:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4777DC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 01:56:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TXkVUIfgiSDLswKMZfdy+B7dZxSnpnDU6WuOdngfhn4=; b=igWZm1R6cpmJDM
-	FbDVcelSqJ4zfzEl+ie3S+SrUGfe8pCZXCxFgOmmx5EY0D8IzpWVovHKRY79EgBgEwyXY+CxjGboa
-	NqkjtX7fsAmglXcgq/JM4dhosVTbe/NaTnWpOi+kEhmXd77Msjq3MBDm2qiMp/YE8Tlc2UUuTN1KB
-	0QksrrVhkPGJSe5jhLjAqWwxf77MpT5Lin1NYtJsgWlCuM4dqNSIKEdJJhfrgWFa/pq830vghkqWz
-	02lV2xjgmC9M4S3ue8neTqc+82AWRN1TfXgE9Y2wWyP9tQLs2bUJklkUT71E6JB3rYws7rMGmMYDA
-	UeUDLHoxQJ35zTI8nBUQ==;
+	List-Owner; bh=OU35NVw14H9VGZH/w6uZWuv1gruqv0RJZ2YJ/8VOFDM=; b=1NaK7WDOJS8Vwe
+	MIgRvMA2Zl0kzF6QNmVi8erqp+D22Tdx5hmL9JjzHYns4xGNSOizcAe1JOAT3m/OdNPWNtX4lPWTw
+	veh90c2tx4tN+rK4sttDJz6D6UR0IwLPi8W+d6M6pXMp46rHQxAn2ORjWfWupRs3VwLAPbkPLF1ds
+	qKjlm7Lu7NRn7dJYN+nOUeR0YPEKEQXAN31cFKQiel3sFVDGCcVkqSA/Ar2pKdQSmbj9TPt/aXjuI
+	hHxunt8CPwTc9Y/nI3rzhUTtjbcLMVT99MCbpIBYy4ADyJw2khbsuixycTXq5obL4Yr8qWQpEQvn2
+	sdkRoszTST42btD5mucA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyiP9-009zG0-Oe; Tue, 07 Jun 2022 23:14:31 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nykvN-00AJ1G-Vs; Wed, 08 Jun 2022 01:55:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyiOw-009zEf-AJ; Tue, 07 Jun 2022 23:14:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 2BD98B8246D;
-	Tue,  7 Jun 2022 23:14:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 731DCC3411C;
-	Tue,  7 Jun 2022 23:14:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654643654;
-	bh=HyJ/pBoolQywSI16EFt/cD0D9gnRf8vXON8lajK+0hE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=N46ZeFPhZrGOntfcSegxbZEKFrqlAdTxHgD+gMoUPhPncHMM8uEGZOjxi8Q+V/f6O
-	 4zZ+GBKyTQMIqokmuf0/1ole1b2h53PMkgRafFtzuETA3haeq2Vimi/g2/RuCBDwni
-	 Mlzp231tNQPOfvdCG0iv7epy1pIsqSMMTU+epl5bCcbJjGER99bnPsba1N+o5KNfrZ
-	 IloRN+j1Pm3t/VGnVKEdQonjrA0MJeCyex04r1iG3FGJl90OyNgi9y7Sc6x23DJcwv
-	 Jds7aHs+0vS1mnn+UjLgNNfKwqAhvAE1IT2X3D5C6zeuN0wgN2fMPqjaImlQbpa+ED
-	 PVBZJI+eQ/rBw==
-Date: Tue, 7 Jun 2022 16:14:13 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Chen Lin <chen45464546@163.com>
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
- pabeni@redhat.com, matthias.bgg@gmail.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, alexander.duyck@gmail.com
-Subject: Re: [PATCH v4] net: ethernet: mtk_eth_soc: fix misuse of mem alloc
- interface netdev[napi]_alloc_frag
-Message-ID: <20220607161413.655dd63f@kernel.org>
-In-Reply-To: <1654558751-3702-1-git-send-email-chen45464546@163.com>
-References: <20220606143437.25397f08@kernel.org>
-	<1654558751-3702-1-git-send-email-chen45464546@163.com>
+	id 1nykvK-00AIzY-46; Wed, 08 Jun 2022 01:55:56 +0000
+X-UUID: a868f8d0fb40415e93d5c812e35b2217-20220607
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:8d1406cf-6eb1-40a7-9d99-016a8a8032b6,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:2a19b09,CLOUDID:d80703e5-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: a868f8d0fb40415e93d5c812e35b2217-20220607
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1179804002; Tue, 07 Jun 2022 18:55:43 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Jun 2022 18:55:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 8 Jun 2022 09:55:40 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 8 Jun 2022 09:55:40 +0800
+Message-ID: <863e4efa275830371dfae5f2597958f4caf0ecfd.camel@mediatek.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: mediatek: add vdosys1 RDMA
+ definition for mt8195
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de"
+	<p.zabel@pengutronix.de>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
+CC: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "airlied@linux.ie"
+	<airlied@linux.ie>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "pavel@ucw.cz" <pavel@ucw.cz>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Nancy Lin
+ =?UTF-8?Q?=28=E6=9E=97=E6=AC=A3=E8=9E=A2=29?= <Nancy.Lin@mediatek.com>
+Date: Wed, 8 Jun 2022 09:55:40 +0800
+In-Reply-To: <cd9b1212-0950-9fd8-7481-e3ef14de2131@linaro.org>
+References: <20220606031818.13646-1-rex-bc.chen@mediatek.com>
+	 <20220606031818.13646-2-rex-bc.chen@mediatek.com>
+	 <cd9b1212-0950-9fd8-7481-e3ef14de2131@linaro.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_161418_550026_065A535E 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220607_185554_203535_3F872A91 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,23 +93,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  7 Jun 2022 07:39:11 +0800 Chen Lin wrote:
-> +static inline void *mtk_max_lro_buf_alloc(gfp_t gfp_mask)
+On Wed, 2022-06-08 at 01:12 +0800, Krzysztof Kozlowski wrote:
+> On 06/06/2022 05:18, Bo-Chen Chen wrote:
+> > From: "Nancy.Lin" <nancy.lin@mediatek.com>
+> > 
+> > Add vdosys1 RDMA definition.
+> > 
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > Tested-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >  .../display/mediatek/mediatek,mdp-rdma.yaml   | 88
+> > +++++++++++++++++++
+> >  1 file changed, 88 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > new file mode 100644
+> > index 000000000000..678abb321cc2
+> > --- /dev/null
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > @@ -0,0 +1,88 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!xhCYRrVE-1_MTOnoDL_D-oY0zx2GGWns3WktzHKJwbLcdsGoWUhgu2dX0aG9ruZQ6aTU$
+> >  
+> > +$schema: 
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xhCYRrVE-1_MTOnoDL_D-oY0zx2GGWns3WktzHKJwbLcdsGoWUhgu2dX0aG9ruLOtx5y$
+> >  
+> > +
+> > +title: MediaTek MDP RDMA
+> > +
+> > +maintainers:
+> > +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> > +  - Philipp Zabel <p.zabel@pengutronix.de>
+> > +
+> > +description:
+> > +  The MediaTek MDP RDMA stands for Read Direct Memory Access.
+> > +  It provides real time data to the back-end panel driver, such as
+> > DSI,
+> > +  DPI and DP_INTF.
+> > +  It contains one line buffer to store the sufficient pixel data.
+> > +  RDMA device node must be siblings to the central MMSYS_CONFIG
+> > node.
+> > +  For a description of the MMSYS_CONFIG binding, see
+> > +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya
+> > ml for details.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    - const: mediatek,mt8195-vdo1-rdma
+> 
+> During my review I missed that part. But your testing should not miss
+> it
+> - please always run `make dt_bindings_check` and do not send code
+> which
+> fails.
+> 
+> Best regards,
+> Krzysztof
 
-No need for inline, compiler will inline this anyway.
+Hello Krzysztof,
 
-> +{
-> +	void *data;
+Sorry we did not check again for this.
+And also thanks for your review.
 
-unsigned long data; then you can move the cast from the long line to
-the return statement, saving us from the strange indentation.
+I will modify this in next version.
 
-> +	data = (void *)__get_free_pages(gfp_mask |
-> +			  __GFP_COMP | __GFP_NOWARN,
-> +			  get_order(mtk_max_frag_size(MTK_MAX_LRO_RX_LENGTH)));
-> +
-> +	return data;
-> +}
+BRs,
+Rex
+
 
 _______________________________________________
 Linux-mediatek mailing list
