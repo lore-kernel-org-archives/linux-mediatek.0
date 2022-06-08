@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8759CC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 09:00:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 175A5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 09:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mjGJFMuqkHTQJjIWJ7XVKaB4wwnzwGbohqXLmXHn4YU=; b=cRT9vknKcdw8Q2
-	Q1cbXFzA8Sb22rPgkliPo5RLB00hxqz20Q39qHKzbbc1QWmXM5517ejlocMKA5qUWXG6hpdYVUjmu
-	QMwmUe0CmeE5HNRTA/Yup0CvKHOwMo6X30j5B2FqSCnWfJOvfNKrtr8aX6o9GBPS67yIbc2AC6vD0
-	s1sos2xbxMPpHWJ53361vG4kqqg9x9HmjqLNA3SnMcyzsP4G0PGJf+v7PG0CgbyzCEkFaeUTn39O4
-	9GPuv2JsJ4x4UizD0P9mZUDsobK5uN+7KH4+R9GNWyzaCZp9v5zCq8qczA5fGSt+H+jvsenbRTpiN
-	XDmfhfzZCCe/aiW9ORjA==;
+	List-Owner; bh=YwC5FMMyq5ouyY9S38ssx6e5yqcaJtBw0df8JM6xIbQ=; b=w9cRQCDPexsYyf
+	YfCCfda71tX9UVoCXRMVNfJtJQ0QI/Ws2eyh1APYfyCBCVCMXDKLmeWa1BkNMKh34PvjFhh6ap3qg
+	JxKQdDQslaPcCx/P+2FaqsyzoHlFyBUTUrw/qf1TXccFfG+w/b+1qMInJSOrj64FxxZhBlB36o0YW
+	GMTIWGQ+S1m/74ik2HyDROHIaeXgLKbh3wEEAd6fpGXZSn+pQ1RGGaxJCOngRWnk0Gc4US1j5j9zV
+	C3//VdnKkTuDzxLEMcaMCEr3nJJBpyLrl7iseWPiKDVmuDDQVMyxj7k+sfmkaNwi922xiWpAzaU1u
+	quO5Zs61Oh12WFPFWfFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyrY8-00CAnh-C2; Wed, 08 Jun 2022 09:00:24 +0000
+	id 1nyrYB-00CAp6-2g; Wed, 08 Jun 2022 09:00:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyrKM-00C4bB-Kt; Wed, 08 Jun 2022 08:46:12 +0000
-X-UUID: f88da9f89f684c45b0c3144ab44dbe6b-20220608
+	id 1nyrKL-00C4bK-8P; Wed, 08 Jun 2022 08:46:10 +0000
+X-UUID: 97e47547641d43a6adb2f322e5b73c6e-20220608
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:629b7b2c-e40f-453d-ae64-363c1568e311,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.5,REQID:508215b0-0358-4d44-a996-10c88cc2e106,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:dd06a07e-c8dc-403a-96e8-6237210dceee,C
+X-CID-META: VersionHash:2a19b09,CLOUDID:ecad15e5-2ba2-4dc1-b6c5-11feb6c769e0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: f88da9f89f684c45b0c3144ab44dbe6b-20220608
+X-UUID: 97e47547641d43a6adb2f322e5b73c6e-20220608
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1555283875; Wed, 08 Jun 2022 01:46:04 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+	with ESMTP id 302064904; Wed, 08 Jun 2022 01:46:04 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Jun 2022 01:36:04 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ 15.0.1497.2; Wed, 8 Jun 2022 01:45:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 8 Jun 2022 16:36:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 8 Jun 2022 16:36:02 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Lee Jones <lee.jones@linaro.org>, Benson Leung <bleung@chromium.org>, Guenter
- Roeck <groeck@chromium.org>, Sebastian Reichel
-	<sebastian.reichel@collabora.com>, Daisuke Nojiri <dnojiri@chromium.org>,
-	Kees Cook <keescook@chromium.org>, Tinghan Shen <tinghan.shen@mediatek.com>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Prashant Malani
-	<pmalani@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <weishunc@google.com>
-Subject: [PATCH v2 1/9] dt-binding: remoteproc: mediatek: Support dual-core SCP
-Date: Wed, 8 Jun 2022 16:35:45 +0800
-Message-ID: <20220608083553.8697-2-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220608083553.8697-1-tinghan.shen@mediatek.com>
-References: <20220608083553.8697-1-tinghan.shen@mediatek.com>
+ Wed, 8 Jun 2022 16:45:14 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 8 Jun 2022 16:45:14 +0800
+Message-ID: <8bd5136b1404e16ba5085c3151b31ec9a1715e54.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Guillaume Ranquet
+	<granquet@baylibre.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, "Daniel
+ Vetter" <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
+ Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>
+Date: Wed, 8 Jun 2022 16:45:14 +0800
+In-Reply-To: <20220523104758.29531-19-granquet@baylibre.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_014610_741180_21C7B2C3 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20220608_014609_362020_5B9688FD 
+X-CRM114-Status: GOOD (  23.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,57 +92,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8195 SCP co-processor is a dual-core RISC-V MCU.
+Hi, Rex:
 
-Add a new property to reference the sibling core and to assign
-core id to SCP nodes. Also add a new compatile for the driver of
-SCP 2nd core.
+On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> 
+> It supports the mt8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> ---
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- .../devicetree/bindings/remoteproc/mtk,scp.yaml     | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+[snip]
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index eec3b9c4c713..4576ff9b1f2d 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -20,6 +20,7 @@ properties:
-       - mediatek,mt8186-scp
-       - mediatek,mt8192-scp
-       - mediatek,mt8195-scp
-+      - mediatek,mt8195-scp-dual
- 
-   reg:
-     description:
-@@ -57,6 +58,17 @@ properties:
-   memory-region:
-     maxItems: 1
- 
-+  mediatek,scp-core:
-+    $ref: "/schemas/types.yaml#/definitions/phandle-array"
-+    description:
-+      Reference to the sibling SCP core. This is required to
-+      enable support for dual-core SCP.
-+    items:
-+      - items:
-+          - description: Phandle of sibling SCP node.
-+          - description: Core id of this SCP node
-+            enum: [0, 1]
-+
- required:
-   - compatible
-   - reg
-@@ -115,6 +127,7 @@ examples:
-         reg-names = "sram", "cfg", "l1tcm";
-         clocks = <&infracfg CLK_INFRA_SCPSYS>;
-         clock-names = "main";
-+        mediatek,scp-core = <&scp_dual 0>;
- 
-         cros_ec {
-             mediatek,rpmsg-name = "cros-ec-rpmsg";
--- 
-2.18.0
+> +
+> +static bool mtk_dp_set_swing_pre_emphasis(struct mtk_dp *mtk_dp, int
+> lane_num,
+> +					  int swing_val, int
+> preemphasis)
+
+The return value is never processed, so let this function to be void.
+
+Regards,
+CK
+
+> +{
+> +	int ret;
+> +
+> +	u32 lane_shift = lane_num * DP_TX1_VOLT_SWING_SHIFT;
+> +
+> +	if (lane_num < 0 || lane_num > 3)
+
+lane_num < 0 would not happen. lane_num > 3 only if device tree max
+lane is wrong. So I would like to checkout max lane when parsing device
+tree instead of checking here.
+
+> +		return false;
+> +
+> +	dev_dbg(mtk_dp->dev,
+> +		"link training swing_val= 0x%x, preemphasis = 0x%x\n",
+> +		swing_val, preemphasis);
+> +
+> +	ret = mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_SWING_EMP,
+> +				 swing_val << (DP_TX0_VOLT_SWING_SHIFT
+> + lane_shift),
+> +				 DP_TX0_VOLT_SWING_MASK << lane_shift);
+> +	if (ret)
+> +		return ret;
+> +	ret = mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_SWING_EMP,
+> +				 preemphasis << (DP_TX0_PRE_EMPH_SHIFT
+> + lane_shift),
+> +				 DP_TX0_PRE_EMPH_MASK << lane_shift);
+> +
+> +	return !ret;
+> +}
+> +
 
 
 _______________________________________________
