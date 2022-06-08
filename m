@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75135C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 02:30:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE123C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 02:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vIfxjj6YESU+MYOQFalPvI9NxK3k69Av42rmGIA8Zyk=; b=PDGyCvjANF9ngA
-	DL2QpPZecRD/I0MOZ72ju6HEIEU+PG9PNsVbzDtY5faofCFGanPVUnEjv2j5j0qeXkMPO8L0Q/E+Q
-	FdMKRWd8m76o3BjzFCOPzit3647SgeVimp9wSqjdTBO/+4NZnCTcBZFEkIZkqVXsh4ch6pZzcf8KH
-	Q9PGckYZ2Yxp9nn/HPNLYvI16Ya35CpabndlsoR2/1oLdvcTXp9zNKgsAYrt31AGTEXaXO1N05yI4
-	RwmdGa9KIpSLsXft3kfy/bKHMQQJZzep3b1WZ4SddjjRYpw+IC/QCnGIGAJX7oxfzqvWqFjSbMuyo
-	GoKSFhPCetnAfwuvb+UQ==;
+	List-Owner; bh=16bhuf/S8ldivz2POndsmVmKEsNj/g+en3esJS81Tj4=; b=MAAO/v42AvPcMc
+	LsLkP3hLHJf/EuGHzoB/kLQ+b2scsKd/8B3ljMm9sO4qjpXtCbb7cYpycUltBHYk9jGRhtRdiqGSk
+	EuQ/LJYUtuLqIOpAyOZpu8rJE4H4UBJQCIuwUBCHl4C4nqpr+KAUH1T4k/COnOy7ukdlAbx/bNSWR
+	ikknUaOrvm0jIw7ryiOSUvy0Z6FoaMsQNQMUsZtY81GVf4OXJ7hyPmy/RTtlssNitA5PkrG6+X1PE
+	lKC7U/xxHXgvfVKfMVj84flzUKUMvvoPgXvNUnu7jxaaCJiyIZxgrGawwrfsf1+9HnFwo/GYk6vOh
+	y+j29EimBVzygB516Y0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nylSh-00AOXs-9C; Wed, 08 Jun 2022 02:30:23 +0000
+	id 1nylim-00AQW6-Uy; Wed, 08 Jun 2022 02:47:00 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nylSV-00AOVn-Ri; Wed, 08 Jun 2022 02:30:14 +0000
-X-UUID: f1f60cef30954183a052d8fcc7984ef3-20220607
+	id 1nylia-00AQPu-H1; Wed, 08 Jun 2022 02:46:50 +0000
+X-UUID: 08ff7bd8e3654236866e7400ee690e5a-20220607
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:f19be5a2-b532-4587-af73-90b84f33f743,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:2a19b09,CLOUDID:51118f7e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:91eb4bbd-dca9-43b6-9baf-f9fb2ee08b10,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:e3cc8f7e-c8dc-403a-96e8-6237210dceee,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: f1f60cef30954183a052d8fcc7984ef3-20220607
+X-UUID: 08ff7bd8e3654236866e7400ee690e5a-20220607
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 210382856; Tue, 07 Jun 2022 19:30:04 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+	with ESMTP id 600789370; Tue, 07 Jun 2022 19:46:43 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Jun 2022 19:23:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 8 Jun 2022 10:23:08 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ 15.0.1497.2; Tue, 7 Jun 2022 19:44:03 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 8 Jun 2022 10:44:01 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 8 Jun 2022 10:23:08 +0800
-Message-ID: <358331497a5ff431d46bfea9c5c9dcadfaaa9a63.camel@mediatek.com>
+ Transport; Wed, 8 Jun 2022 10:44:01 +0800
+Message-ID: <79bea587e20de842d48dcb2e1da19e276f9d635b.camel@mediatek.com>
 Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
  driver
 From: CK Hu <ck.hu@mediatek.com>
@@ -72,18 +72,18 @@ CC: Markus Schneider-Pargmann <msp@baylibre.com>,
 	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
 	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
 	<linux-fbdev@vger.kernel.org>
-Date: Wed, 8 Jun 2022 10:23:08 +0800
-In-Reply-To: <8af7938ae9244e4b7caf62e0c6ce0bcdddc13889.camel@mediatek.com>
+Date: Wed, 8 Jun 2022 10:44:01 +0800
+In-Reply-To: <4329859ca11c13e7f6a9951b01a779fc391f029b.camel@mediatek.com>
 References: <20220523104758.29531-1-granquet@baylibre.com>
 	 <20220523104758.29531-19-granquet@baylibre.com>
-	 <0bd8b0c66b9e2a1b63280e7eab63048bee7fe786.camel@mediatek.com>
-	 <8af7938ae9244e4b7caf62e0c6ce0bcdddc13889.camel@mediatek.com>
+	 <b8aef76cef2fa434401b6a016de291eb24198faa.camel@mediatek.com>
+	 <4329859ca11c13e7f6a9951b01a779fc391f029b.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_193011_931977_E1636207 
-X-CRM114-Status: GOOD (  45.26  )
+X-CRM114-CacheID: sfid-20220607_194648_605231_4421F3BC 
+X-CRM114-Status: GOOD (  40.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,8 +102,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi, Rex:
 
-On Tue, 2022-06-07 at 20:24 +0800, Rex-BC Chen wrote:
-> On Tue, 2022-06-07 at 14:21 +0800, CK Hu wrote:
+On Tue, 2022-06-07 at 20:44 +0800, Rex-BC Chen wrote:
+> On Tue, 2022-06-07 at 14:44 +0800, CK Hu wrote:
 > > Hi, Rex:
 > > 
 > > On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
@@ -137,144 +137,136 @@ On Tue, 2022-06-07 at 20:24 +0800, Rex-BC Chen wrote:
 > > [snip]
 > > 
 > > > +
-> > > +static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+> > > +static int mtk_dp_train_handler(struct mtk_dp *mtk_dp)
 > > > +{
-> > > +	struct mtk_dp *mtk_dp = dev;
-> > > +	int event;
-> > > +	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
+> > > +	bool training_done = false;
+> > > +	short max_retry = 50;
+> > > +	int ret = 0;
 > > > +
-> > > +	event = mtk_dp_plug_state(mtk_dp) ? connector_status_connected
-> > > :
-> > > +						  connector_status_disc
-> > > onnected;
-> > > +
-> > > +	if (event < 0)
+> > > +	do {
+> > > +		switch (mtk_dp->train_state) {
+> > > +		case MTK_DP_TRAIN_STATE_STARTUP:
 > > 
-> > event is always > 0, isn't it?
+> > mtk_dp->train_state is initialized as MTK_DP_TRAIN_STATE_STARTUP
+> > even
+> > though HPD ISR does not exist. Does this mean HPD ISR is redundant?
+> > If
+> > HPD ISR is not redundant, create a new state
+> > MTK_DP_TRAIN_STATE_NONE
+> > for init state.
 > > 
 > 
 > Hello CK,
 > 
-> ok, I will move this to dp patch.
+> I think we don't need MTK_DP_TRAIN_STATE_NONE.
+> Because it's "DP_TRAIN_STATE" not "DP_STATE", I think it's ok if we
+> start this state machine with "MTK_DP_TRAIN_STATE_STARTUP".
+
+The initial state is MTK_DP_TRAIN_STATE_STARTUP, and HPD thread would
+change state from MTK_DP_TRAIN_STATE_STARTUP to
+MTK_DP_TRAIN_STATE_STARTUP, this is redundant. So drop the state change
+in HPD thread.
+
 > 
-> > > +		return IRQ_HANDLED;
+> > > +			mtk_dp_state_handler(mtk_dp);
+> > > +			mtk_dp->train_state =
+> > > MTK_DP_TRAIN_STATE_CHECKCAP;
+> > > +			break;
 > > > +
-> > > +	if (mtk_dp->drm_dev) {
-> > > +		dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
-> > > +		drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
-> > 
-> > I think this ISR would come once. If bridge has not attached, the
-> > drm
-> > core would lost this event. Maybe you should enable eDP hardware
-> > after
-> > bridge attached or send this event when attached.
-> > 
-> 
-> for edp patch, I will move it to (mtk_dp_bridge_attach).
-> for dp patch, I will add it back.
-
-I find out that mtk_dp_poweron() is in top of mtk_dp_bridge_attach().
-If move mtk_dp_poweron() to bottom of mtk_dp_bridge_attach(), mtk_dp-
->drm_dev would not be NULL here. So we could drop this checking.
-
-> 
-> > > +	}
+> > > +		case MTK_DP_TRAIN_STATE_CHECKCAP:
+> > > +			if (mtk_dp_parse_capabilities(mtk_dp)) {
+> > > +				mtk_dp->train_info.check_cap_count = 0;
+> > > +				mtk_dp->train_state =
+> > > MTK_DP_TRAIN_STATE_CHECKEDID;
+> > > +			} else {
+> > > +				mtk_dp->train_info.check_cap_count++;
 > > > +
-> > > +	if (mtk_dp->train_info.cable_state_change) {
+> > > +				if (mtk_dp->train_info.check_cap_count
+> > > > 
+> > > 
+> > > +				    MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT
+> > > ) {
+> > > +					mtk_dp-
+> > > > train_info.check_cap_count = 0;
+> > > 
+> > > +					mtk_dp->train_state =
+> > > MTK_DP_TRAIN_STATE_DPIDLE;
+> > > +					ret = -ETIMEDOUT;
+> > > +				}
+> > > +			}
+> > > +			break;
+> > > +
+> > > +		case MTK_DP_TRAIN_STATE_CHECKEDID:
+> > > +			mtk_dp->train_state =
+> > > MTK_DP_TRAIN_STATE_TRAINING_PRE;
 > > 
-> > Executing this thread imply cable_state_change = true, so drop
-> > cable_state_change.
+> > MTK_DP_TRAIN_STATE_CHECKEDID is a redundant state, drop it.
 > > 
+> > > +			break;
+> > > +
+> > > +		case MTK_DP_TRAIN_STATE_TRAINING_PRE:
+> > > +			mtk_dp_state_handler(mtk_dp);
+> > > +			mtk_dp->train_state =
+> > > MTK_DP_TRAIN_STATE_TRAINING;
+> > > +			break;
+> > > +
+> > > +		case MTK_DP_TRAIN_STATE_TRAINING:
+> > > +			ret = mtk_dp_train_start(mtk_dp);
+> > > +			if (ret == 0) {
+> > > +				mtk_dp_video_mute(mtk_dp, true);
+> > > +				mtk_dp->train_state =
+> > > MTK_DP_TRAIN_STATE_NORMAL;
+> > > +				mtk_dp_fec_enable(mtk_dp, mtk_dp-
+> > > > has_fec);
+> > > 
+> > > +			} else if (ret != -EAGAIN) {
+> > > +				mtk_dp->train_state =
+> > > MTK_DP_TRAIN_STATE_DPIDLE;
+> > > +			}
+> > > +			break;
+> > > +		case MTK_DP_TRAIN_STATE_NORMAL:
+> > > +			mtk_dp_state_handler(mtk_dp);
+> > > +			training_done = true;
+> > > +			break;
+> > > +		case MTK_DP_TRAIN_STATE_DPIDLE:
+> > 
+> > When would this case happen?
+> > 
+> > Regards,
+> > CK
 > 
-> In mtk_dp_hpd_isr_handler(), there is another irq
-> "MTK_DP_HPD_INTERRUPT" which means the sink devices give a interrupt
-> to
-> source device. it's not about connected status, so I think we still
-> need this.
+> Yes, if it's disconnected if we are still training for dp.
+> or failed to training min spec RBR.
 
-In bottom of mtk_dp_hpd_isr_handler(), the code is:
-
-+	train_info->cable_state_change = true;
-+
-+	return IRQ_WAKE_THREAD;
-
-This thread is called only when return IRQ_WAKE_THREAD, and before
-return IRQ_WAKE_THREAD, train_info->cable_state_change is always set to
-true. So in this thread, train_info->cable_state_change must be true.
+I mean, every time state change to MTK_DP_TRAIN_STATE_DPIDLE, it would
+jump out of this loop and would not get into this loop, so this case
+would never get in. This is redundant, so remove this.
 
 Regards,
 CK
 
 > 
-> > > +		mtk_dp->train_info.cable_state_change = false;
-> > > +
-> > > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_STARTUP;
-> > > +
-> > > +		if (!mtk_dp->train_info.cable_plugged_in ||
-> > > +		    !mtk_dp_plug_state(mtk_dp)) {
-> > 
-> > I do not like two variable to present one thing. If
-> > 
-> > mtk_dp->train_info.cable_plugged_in = false
-> > and
-> > mtk_dp_plug_state(mtk_dp) = ture
-> > 
-> > What does this mean? I think this mean 'now' is connected because
-> > cable_plugged_in is old information and mtk_dp_plug_state() is
-> > current
-> > information.
-> > 
-> > But I would like to keep cable_plugged_in and drop
-> > mtk_dp_plug_state()
-> > because cable_plugged_in would be changed in isr and it would be
-> > the
-> > same as mtk_dp_plug_state().
-> > 
-> > Regards,
-> > CK
-> > 
-> 
-> ok, I will drop this.
-> 
 > BRs,
 > Rex
-> 
-> > > +			mtk_dp_video_mute(mtk_dp, true);
-> > > +
-> > > +			mtk_dp_initialize_priv_data(mtk_dp);
-> > > +			mtk_dp_set_idle_pattern(mtk_dp, true);
-> > > +			if (mtk_dp->has_fec)
-> > > +				mtk_dp_fec_enable(mtk_dp, false);
-> > > +
-> > > +			mtk_dp_update_bits(mtk_dp,
-> > > MTK_DP_TOP_PWR_STATE,
-> > > +					   DP_PWR_STATE_BANDGAP_TPLL,
-> > > +					   DP_PWR_STATE_MASK);
-> > > +		} else {
-> > > +			mtk_dp_update_bits(mtk_dp,
-> > > MTK_DP_TOP_PWR_STATE,
-> > > +					   DP_PWR_STATE_BANDGAP_TPLL_LA
-> > > NE,
-> > > +					   DP_PWR_STATE_MASK);
-> > > +			drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
-> > > +			mtk_dp->train_info.link_rate =
-> > > +				min_t(int, mtk_dp->max_linkrate,
-> > > +				      buf[mtk_dp->max_linkrate]);
-> > > +			mtk_dp->train_info.lane_count =
-> > > +				min_t(int, mtk_dp->max_lanes,
-> > > +				      drm_dp_max_lane_count(buf));
+> > 
+> > > +			break;
+> > > +		default:
+> > > +			break;
 > > > +		}
-> > > +	}
 > > > +
-> > > +	if (mtk_dp->train_info.irq_status & MTK_DP_HPD_INTERRUPT) {
-> > > +		dev_dbg(mtk_dp->dev, "MTK_DP_HPD_INTERRUPT\n");
-> > > +		mtk_dp->train_info.irq_status &= ~MTK_DP_HPD_INTERRUPT;
-> > > +		mtk_dp_hpd_sink_event(mtk_dp);
-> > > +	}
+> > > +		if (ret) {
+> > > +			if (ret == -EAGAIN)
+> > > +				continue;
+> > > +			/*
+> > > +			 * If we get any other error number, it doesn't
+> > > +			 * make any sense to keep iterating.
+> > > +			 */
+> > > +			break;
+> > > +		}
+> > > +	} while (!training_done || --max_retry);
 > > > +
-> > > +	return IRQ_HANDLED;
+> > > +	return ret;
 > > > +}
-> > > +
 > > 
 > > 
 > 
