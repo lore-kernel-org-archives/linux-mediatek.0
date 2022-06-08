@@ -4,127 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E079C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 02:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75135C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 02:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MvP2bBCmbarpv03i9D6XCxTmaixhASne7vqmlV6jGSU=; b=XICjAZwC68FGxn
-	WOzPg1dJUeEeaS7PObq8zcXKXwBJKZxiOCJCv7Md5jk99rCQr/cmecUhfDSj3dbdlk3HSGmqQnzfd
-	3calrYYRR3z73Q3LMd+EUxeyL1tf3JHJjqVFpEs6n7cO08BxAVFAR32T0OD4T8HqRYY0J0gmOzUb6
-	gGPXynaOIS80qB48NMOLkghc+SaLUjWFVtkSx7cJNcgvYgaMJXN7vvJH107qpe7IOu8TGxv+yDRfz
-	Yha8jJcJOj8IP3MOsDeGt4gi51XD4CcE8njtWl12NPxlDYAYHraytdZ1XI4kWA8p/LXooUMGOt6eU
-	v4Aepqd5kgPjTo3Dno+g==;
+	List-Owner; bh=vIfxjj6YESU+MYOQFalPvI9NxK3k69Av42rmGIA8Zyk=; b=PDGyCvjANF9ngA
+	DL2QpPZecRD/I0MOZ72ju6HEIEU+PG9PNsVbzDtY5faofCFGanPVUnEjv2j5j0qeXkMPO8L0Q/E+Q
+	FdMKRWd8m76o3BjzFCOPzit3647SgeVimp9wSqjdTBO/+4NZnCTcBZFEkIZkqVXsh4ch6pZzcf8KH
+	Q9PGckYZ2Yxp9nn/HPNLYvI16Ya35CpabndlsoR2/1oLdvcTXp9zNKgsAYrt31AGTEXaXO1N05yI4
+	RwmdGa9KIpSLsXft3kfy/bKHMQQJZzep3b1WZ4SddjjRYpw+IC/QCnGIGAJX7oxfzqvWqFjSbMuyo
+	GoKSFhPCetnAfwuvb+UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyl0F-00AJri-Ek; Wed, 08 Jun 2022 02:00:59 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1nylSh-00AOXs-9C; Wed, 08 Jun 2022 02:30:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyl01-00AJnD-Ke
-	for linux-mediatek@lists.infradead.org; Wed, 08 Jun 2022 02:00:47 +0000
-Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
-	by mailout3.samsung.com (KnoxPortal) with ESMTP id 20220608020040epoutp0389feb40200f2a74718296a7f5a436f8f~2grhAo-Vb1796917969epoutp03N
-	for <linux-mediatek@lists.infradead.org>; Wed,  8 Jun 2022 02:00:40 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com 20220608020040epoutp0389feb40200f2a74718296a7f5a436f8f~2grhAo-Vb1796917969epoutp03N
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1654653641;
-	bh=NesFd0hFZnDgwRVoNRjbk3wCcwYkZt4oYwHdgKFII7g=;
-	h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
-	b=n3E1QaWMyUDszrtrTSihdU6ijl78MfjHiYaFN2GPTcuziyIXHH6SuDofwE2pUbGFN
-	 nB4GLosgo/ErTDg+++QrPjWNBBOe5r7JTCiwxjRvhb1jDGoCbm20Srdsra4knwwgK0
-	 6Lf6I7loWZynkK0lDhAYg3FCHuVauPwmbINMFqgc=
-Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
-	epcas1p3.samsung.com (KnoxPortal) with ESMTP id
-	20220608020040epcas1p3ac4a4f86f80302d0d910061cfa14fc9f~2grgh0AXD1369813698epcas1p3Y;
-	Wed,  8 Jun 2022 02:00:40 +0000 (GMT)
-Received: from epsmges1p5.samsung.com (unknown [182.195.38.233]) by
-	epsnrtp2.localdomain (Postfix) with ESMTP id 4LHr6G5lhlz4x9Q1; Wed,  8 Jun
-	2022 02:00:38 +0000 (GMT)
-Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
-	epsmges1p5.samsung.com (Symantec Messaging Gateway) with SMTP id
-	B9.FD.09935.6C200A26; Wed,  8 Jun 2022 11:00:38 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
-	epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20220608020038epcas1p29d690189e5f4ec195a410e721da9c959~2greoE3K_3197331973epcas1p2D;
-	Wed,  8 Jun 2022 02:00:38 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
-	epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
-	20220608020038epsmtrp1c4e2d10c9664c0259ec2f933dc5552ee~2grenPE1-1419514195epsmtrp1o;
-	Wed,  8 Jun 2022 02:00:38 +0000 (GMT)
-X-AuditID: b6c32a39-f37ff700000026cf-a0-62a002c6a183
-Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
-	epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
-	AD.F5.11276.6C200A26; Wed,  8 Jun 2022 11:00:38 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
-	epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20220608020037epsmtip185ff608915ef81f4d9c3c6281c3cc037~2greO7RWm2414924149epsmtip1x;
-	Wed,  8 Jun 2022 02:00:37 +0000 (GMT)
-Subject: Re: [PATCH v7 0/2] Introduce MediaTek CCI devfreq driver
-To: Johnson Wang <johnson.wang@mediatek.com>, krzk+dt@kernel.org,
-	robh+dt@kernel.org, kyungmin.park@samsung.com
-Cc: khilman@kernel.org, djakov@kernel.org, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	jia-wei.chang@mediatek.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <1f3bb9cd-dd13-c9fb-9d90-a02159a59463@samsung.com>
-Date: Wed, 8 Jun 2022 11:00:37 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
-	Thunderbird/59.0
+	id 1nylSV-00AOVn-Ri; Wed, 08 Jun 2022 02:30:14 +0000
+X-UUID: f1f60cef30954183a052d8fcc7984ef3-20220607
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:f19be5a2-b532-4587-af73-90b84f33f743,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:2a19b09,CLOUDID:51118f7e-c8dc-403a-96e8-6237210dceee,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: f1f60cef30954183a052d8fcc7984ef3-20220607
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 210382856; Tue, 07 Jun 2022 19:30:04 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Jun 2022 19:23:10 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 8 Jun 2022 10:23:08 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 8 Jun 2022 10:23:08 +0800
+Message-ID: <358331497a5ff431d46bfea9c5c9dcadfaaa9a63.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Guillaume Ranquet
+	<granquet@baylibre.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, "Daniel
+ Vetter" <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun
+ =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
+	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
+	<linux-fbdev@vger.kernel.org>
+Date: Wed, 8 Jun 2022 10:23:08 +0800
+In-Reply-To: <8af7938ae9244e4b7caf62e0c6ce0bcdddc13889.camel@mediatek.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+	 <0bd8b0c66b9e2a1b63280e7eab63048bee7fe786.camel@mediatek.com>
+	 <8af7938ae9244e4b7caf62e0c6ce0bcdddc13889.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <20220607140556.6278-1-johnson.wang@mediatek.com>
-Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrGJsWRmVeSWpSXmKPExsWy7bCmvu4xpgVJBjf69CzmHznHavHsViOb
-	xfH9S9gtjv0Ktni6+TGTxctZ99gszja9YbfY9Pgaq8XlXXPYLC43X2S0+Nx7hNHi07oOFovW
-	vUfYHXg9Nq3qZPPYvKTeo+XkfhaPvi2rGD0+b5ILYI3KtslITUxJLVJIzUvOT8nMS7dV8g6O
-	d443NTMw1DW0tDBXUshLzE21VXLxCdB1y8wBOlFJoSwxpxQoFJBYXKykb2dTlF9akqqQkV9c
-	YquUWpCSU2BaoFecmFtcmpeul5daYmVoYGBkClSYkJ1x+XVMQYNoxYY7axgbGNcLdDFyckgI
-	mEhsmfOEtYuRi0NIYAejROvJ6SwQzidGifblh6Ey3xgl3n5fyQ7Tsvz3X2aIxF5Gibs3DkA5
-	7xkl/nduYASpEhZwlLj5fworiC0iUChx/+40dpAiZoF5TBKnz61kAkmwCWhJ7H9xgw3E5hdQ
-	lLj64zFYM6+AncTvtafBbBYBFYm+rTvBVosKhEmc3NYCVSMocXLmExYQmxOo/sPKVrBlzALi
-	EreezGeCsOUltr+dA3adhMABDomvr1ugfnCRmHf2AiuELSzx6vgWqLiUxMv+NnaIhmZGiYYX
-	txkhnB5GiaPP+lggqowl9i+dDLSCA2iFpsT6XfoQYUWJnb/nMkJs5pN497WHFaREQoBXoqNN
-	CKJEWeLyg7tMELakxOL2TrYJjEqzkPwzC8kPs5D8MAth2QJGllWMYqkFxbnpqcWGBabw+E7O
-	z93ECE7AWpY7GKe//aB3iJGJg/EQowQHs5IIr2T4/CQh3pTEyqrUovz4otKc1OJDjKbAEJ7I
-	LCWanA/MAXkl8YYmlgYmZkbGJhaGZoZK4ryrpp1OFBJITyxJzU5NLUgtgulj4uCUamBK2fGu
-	r+3DffnrqSdeFU4sylz8IM6wb/X2M3GX/VlqvznsZI9aunm67Y7Y018KInnueSayaDeWc/1/
-	knY507Y6+RLPnU9pmwpv/EnhK5Vs539x8/0x8/YuvhlFr+znP47orJnzpqZtu3f4iuyHys5G
-	f9WdRTYw/38XGl+4enL7kQ1rN+x5Zt9wtjhLROFb4wPemFQ5kWOOkU/vfFn1NZFxvdv75iUx
-	N3QVc0sZ+aetcrmcucZFXk+1gTdpm05aRmx/2izfz4HX7q1ed1Ly5N6XZvnOlrP/W66oldH+
-	UDtp19++lSxN8VNygkWm82fvPLXmzL8jF9dcfN3zr/HLEvnt+6UWN9spPdqrFORxcIKcEktx
-	RqKhFnNRcSIA4ObkXkkEAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprHIsWRmVeSWpSXmKPExsWy7bCSnO4xpgVJBh8f8FvMP3KO1eLZrUY2
-	i+P7l7BbHPsVbPF082Mmi5ez7rFZnG16w26x6fE1VovLu+awWVxuvsho8bn3CKPFp3UdLBat
-	e4+wO/B6bFrVyeaxeUm9R8vJ/SwefVtWMXp83iQXwBrFZZOSmpNZllqkb5fAlXH5dUxBg2jF
-	hjtrGBsY1wt0MXJySAiYSCz//Ze5i5GLQ0hgN6PE+7+zmCASkhLTLh4FSnAA2cIShw8XQ9S8
-	ZZT4fLWBHaRGWMBR4ub/KawgtohAocT59w/BbGaBOUwSn/fxQzRMZJSYfXMB2FA2AS2J/S9u
-	sIHY/AKKEld/PGYEsXkF7CR+rz0NZrMIqEj0bd0JtkBUIExi55LHTBA1ghInZz5hAbE5geo/
-	rGyFWqYu8WfeJWYIW1zi1pP5TBC2vMT2t3OYJzAKz0LSPgtJyywkLbOQtCxgZFnFKJlaUJyb
-	nltsWGCYl1quV5yYW1yal66XnJ+7iREchVqaOxi3r/qgd4iRiYPxEKMEB7OSCK9k+PwkId6U
-	xMqq1KL8+KLSnNTiQ4zSHCxK4rwXuk7GCwmkJ5akZqemFqQWwWSZODilGpj4C9gO3a8xiX+1
-	b09YAzdPzuX+l20Be/bNXmLaFhpTOP3xTr4zLqekOJOCvEqCNlxc1mKV+XftNBv7LJ3gkDLr
-	FUy/3vx0flGVM1sp4yLTuVuPF5v72DlsubxIzUbs7P2evRyz2FPka6fKPFK07xE4MHW56eYS
-	Y/vvcTMrH/sYzeusq0x+wRH885yq1i/pa+WaLw9Ouy55f/4Vi0b+xr1vNh/bd+eKup5C4WW1
-	fS4RH39NF3ATun8vMy1ETGD+y/L4924z3nyUOP2r/+Xadt+3Lx7abTj56wCvTphe7Vq1m+68
-	W74n7P2+iW9TulJ7ZscbrqIfjXUT9s2WK7X9r6VvM13j66EwgYZzYZ/CpdKVWIozEg21mIuK
-	EwEqd5peMQMAAA==
-X-CMS-MailID: 20220608020038epcas1p29d690189e5f4ec195a410e721da9c959
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20220607140711epcas1p1aca32de28831fae8a6fd3b890b26f7ac
-References: <CGME20220607140711epcas1p1aca32de28831fae8a6fd3b890b26f7ac@epcas1p1.samsung.com>
-	<20220607140556.6278-1-johnson.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_190046_048401_36F3EBA2 
-X-CRM114-Status: GOOD (  22.16  )
+X-CRM114-CacheID: sfid-20220607_193011_931977_E1636207 
+X-CRM114-Status: GOOD (  45.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,79 +100,186 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/7/22 11:05 PM, Johnson Wang wrote:
-> The Cache Coherent Interconnect (CCI) is the management of cache
-> coherency by hardware. CCI DEVFREQ is DVFS driver for power saving by
-> scaling clock frequency and supply voltage of CCI. CCI uses the same
-> input clock source and power rail as LITTLE CPUs on Mediatek SoCs.
+Hi, Rex:
+
+On Tue, 2022-06-07 at 20:24 +0800, Rex-BC Chen wrote:
+> On Tue, 2022-06-07 at 14:21 +0800, CK Hu wrote:
+> > Hi, Rex:
+> > 
+> > On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> > > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > 
+> > > This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> > > 
+> > > It supports the mt8195, the embedded DisplayPort units. It offers
+> > > DisplayPort 1.4 with up to 4 lanes.
+> > > 
+> > > The driver creates a child device for the phy. The child device
+> > > will
+> > > never exist without the parent being active. As they are sharing
+> > > a
+> > > register range, the parent passes a regmap pointer to the child
+> > > so
+> > > that
+> > > both can work with the same register range. The phy driver sets
+> > > device
+> > > data that is read by the parent to get the phy device that can be
+> > > used
+> > > to control the phy properties.
+> > > 
+> > > This driver is based on an initial version by
+> > > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> > > 
+> > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > > ---
+> > 
+> > [snip]
+> > 
+> > > +
+> > > +static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+> > > +{
+> > > +	struct mtk_dp *mtk_dp = dev;
+> > > +	int event;
+> > > +	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
+> > > +
+> > > +	event = mtk_dp_plug_state(mtk_dp) ? connector_status_connected
+> > > :
+> > > +						  connector_status_disc
+> > > onnected;
+> > > +
+> > > +	if (event < 0)
+> > 
+> > event is always > 0, isn't it?
+> > 
 > 
-> This series depends on:
-> Chanwoo's repo: kernel/git/chanwoo/linux.git
-> branch: devfreq-testing
-> [1]: PM / devfreq: Export devfreq_get_freq_range symbol within devfreq
-> [2]: PM / devfreq: Add cpu based scaling support to passive governor
-> [3]: PM / devfreq: passive: Reduce duplicate code when passive_devfreq case
-> [4]: PM / devfreq: passive: Update frequency when start governor
+> Hello CK,
 > 
-> Changes in v7:
-> - remove the 'ret' printing from dev_err_probe().
+> ok, I will move this to dp patch.
 > 
-> Changes in v6:
-> - Remove unnecessary "goto" statement.
+> > > +		return IRQ_HANDLED;
+> > > +
+> > > +	if (mtk_dp->drm_dev) {
+> > > +		dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
+> > > +		drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+> > 
+> > I think this ISR would come once. If bridge has not attached, the
+> > drm
+> > core would lost this event. Maybe you should enable eDP hardware
+> > after
+> > bridge attached or send this event when attached.
+> > 
 > 
-> Changes in v5:
-> - Modify some binding description.
-> - Remove pre_voltage member.
-> - Not to enable/disable intermediate clock.
-> - Not to "put" resources that using devm_ variants.
+> for edp patch, I will move it to (mtk_dp_bridge_attach).
+> for dp patch, I will add it back.
+
+I find out that mtk_dp_poweron() is in top of mtk_dp_bridge_attach().
+If move mtk_dp_poweron() to bottom of mtk_dp_bridge_attach(), mtk_dp-
+>drm_dev would not be NULL here. So we could drop this checking.
+
 > 
-> Resend v4:
-> - CC interconnect maintainer.
-> - Change sign-off sequence in commit message.
+> > > +	}
+> > > +
+> > > +	if (mtk_dp->train_info.cable_state_change) {
+> > 
+> > Executing this thread imply cable_state_change = true, so drop
+> > cable_state_change.
+> > 
 > 
-> Changes in v4:
-> - Add a maintainer in the binding document.
-> - Modify clock description.
-> - Add binding document into MAINTAINERS.
-> - Replace format specifier %d with %ld.
+> In mtk_dp_hpd_isr_handler(), there is another irq
+> "MTK_DP_HPD_INTERRUPT" which means the sink devices give a interrupt
+> to
+> source device. it's not about connected status, so I think we still
+> need this.
+
+In bottom of mtk_dp_hpd_isr_handler(), the code is:
+
++	train_info->cable_state_change = true;
++
++	return IRQ_WAKE_THREAD;
+
+This thread is called only when return IRQ_WAKE_THREAD, and before
+return IRQ_WAKE_THREAD, train_info->cable_state_change is always set to
+true. So in this thread, train_info->cable_state_change must be true.
+
+Regards,
+CK
+
 > 
-> Changes in v3:
-> - Move binding document to 'interconnect' and rename it.
-> - Add COMPILE_TEST dependence symbol.
-> - Remove need_voltage_tracking variable.
-> - Move mtk_ccifreq_voltage_tracking() code into mtk_ccifreq_set_voltage().
-> - Add an interation limit in the while() loop.
-> - Replace 'cci_dev' with 'dev'
-> - Replace old_* with pre_*
-> - Remove of_match_ptr()
-> - Use module_platform_driver()
+> > > +		mtk_dp->train_info.cable_state_change = false;
+> > > +
+> > > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_STARTUP;
+> > > +
+> > > +		if (!mtk_dp->train_info.cable_plugged_in ||
+> > > +		    !mtk_dp_plug_state(mtk_dp)) {
+> > 
+> > I do not like two variable to present one thing. If
+> > 
+> > mtk_dp->train_info.cable_plugged_in = false
+> > and
+> > mtk_dp_plug_state(mtk_dp) = ture
+> > 
+> > What does this mean? I think this mean 'now' is connected because
+> > cable_plugged_in is old information and mtk_dp_plug_state() is
+> > current
+> > information.
+> > 
+> > But I would like to keep cable_plugged_in and drop
+> > mtk_dp_plug_state()
+> > because cable_plugged_in would be changed in isr and it would be
+> > the
+> > same as mtk_dp_plug_state().
+> > 
+> > Regards,
+> > CK
+> > 
 > 
-> Changes in v2:
-> - Take MT8183 as example in binding document.
-> - Use dev_err() instead of pr_err().
-> - Use 'goto' statement to handle error case.
-> - Clean up driver code.
+> ok, I will drop this.
 > 
-> Johnson Wang (2):
->   dt-bindings: interconnect: Add MediaTek CCI dt-bindings
->   PM / devfreq: mediatek: Introduce MediaTek CCI devfreq driver
+> BRs,
+> Rex
 > 
->  .../bindings/interconnect/mediatek,cci.yaml   | 140 ++++++
->  MAINTAINERS                                   |   1 +
->  drivers/devfreq/Kconfig                       |  10 +
->  drivers/devfreq/Makefile                      |   1 +
->  drivers/devfreq/mtk-cci-devfreq.c             | 474 ++++++++++++++++++
->  5 files changed, 626 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
->  create mode 100644 drivers/devfreq/mtk-cci-devfreq.c
+> > > +			mtk_dp_video_mute(mtk_dp, true);
+> > > +
+> > > +			mtk_dp_initialize_priv_data(mtk_dp);
+> > > +			mtk_dp_set_idle_pattern(mtk_dp, true);
+> > > +			if (mtk_dp->has_fec)
+> > > +				mtk_dp_fec_enable(mtk_dp, false);
+> > > +
+> > > +			mtk_dp_update_bits(mtk_dp,
+> > > MTK_DP_TOP_PWR_STATE,
+> > > +					   DP_PWR_STATE_BANDGAP_TPLL,
+> > > +					   DP_PWR_STATE_MASK);
+> > > +		} else {
+> > > +			mtk_dp_update_bits(mtk_dp,
+> > > MTK_DP_TOP_PWR_STATE,
+> > > +					   DP_PWR_STATE_BANDGAP_TPLL_LA
+> > > NE,
+> > > +					   DP_PWR_STATE_MASK);
+> > > +			drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
+> > > +			mtk_dp->train_info.link_rate =
+> > > +				min_t(int, mtk_dp->max_linkrate,
+> > > +				      buf[mtk_dp->max_linkrate]);
+> > > +			mtk_dp->train_info.lane_count =
+> > > +				min_t(int, mtk_dp->max_lanes,
+> > > +				      drm_dp_max_lane_count(buf));
+> > > +		}
+> > > +	}
+> > > +
+> > > +	if (mtk_dp->train_info.irq_status & MTK_DP_HPD_INTERRUPT) {
+> > > +		dev_dbg(mtk_dp->dev, "MTK_DP_HPD_INTERRUPT\n");
+> > > +		mtk_dp->train_info.irq_status &= ~MTK_DP_HPD_INTERRUPT;
+> > > +		mtk_dp_hpd_sink_event(mtk_dp);
+> > > +	}
+> > > +
+> > > +	return IRQ_HANDLED;
+> > > +}
+> > > +
+> > 
+> > 
+> 
 > 
 
-Applied them. Thanks.
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
 
 _______________________________________________
 Linux-mediatek mailing list
