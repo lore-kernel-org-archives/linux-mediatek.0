@@ -4,85 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A4F7CCA47B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 17:39:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12835C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 17:46:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Q/kE6VQ6y8HdysIbXJkwwQscLE+7DB7AU/pTWtrt6w=; b=RK4hnZT0AOQ+sw
-	JlMGT/X8XkvulBg15kxPGHyOtBVXCXQ0pGZEPDH0mv4sW7hQgKIjToS+2NUbRgPc4KRGTXTsBpON6
-	az4NcezdIhIkWRtbmyPgB8MGP1jQnDtcEvakYcKfFeGa7ThKVoHx+BhzksbAY57yIJ3pum/cIJtpR
-	bwGvKiPyEOrQde9bkUHX3cOWfQaeFI7SKBhFEAdH2eKwQw++VyvD3Ch6n/mcSDteMsBnSytsUNjlc
-	zCHvSKgKCddtgAN5a/1KDpcQ6hFb72SVtmPR1xEbGvIVK7qpA9wq84EuU3xFQ+JRejIWO/6RlIVSt
-	OKFQJjZTYvnqg81ShtXg==;
+	List-Owner; bh=CDJMZkuYDOjpT/5vYG0z1dB73LmrGKJEl4Kv65cCOk8=; b=aZToPpHMxBoQj1
+	cAJ68O7ptV0m8hZqach7PB/rYP/IWE6CE1VvAnbGLcuBe4BikGcEAlJ4Arzb4oVYGxfd7UjVjaRs8
+	T3ukSEICZaG1xWMn6UdV1hecd03z5W0iKfqzFl6GgXIyNUPhQI1km2N9khw88eMc3bO24y3Yn6isW
+	qfOTlfmhpbvOmTFeGMMLBG11cCQcgPICi7FLO7sn1ZvpeVk4pX0hGcNxXlOsGD7zNLmOPWrwX06Im
+	2ykA5UpxGXm0hFe3OBTjKmX4Ibis01yRQ10/vnjTd4eg230EqTJygcDObDrEiohugbbiVZ5PlEamF
+	+vDXLtuwnXf/9BoQRSig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyzeV-00EW8d-73; Wed, 08 Jun 2022 17:39:31 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1nyzlW-00EXsV-3Z; Wed, 08 Jun 2022 17:46:46 +0000
+Received: from mail-co1nam11on20623.outbound.protection.outlook.com ([2a01:111:f400:7eab::623] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyzeR-00EW55-Td; Wed, 08 Jun 2022 17:39:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1654709911;
-	bh=SR1VTuMOXDTjsNlYicSw844o8AeTNjX000JV8bAUIic=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=L4P+F8gecA14ZeUYBilj1mn805fMy+4IuO5W8qlxvEmZVnea+1VpSkzBR3ZoIc+KK
-	 pTFseQic+GP2azKNjmb9LlWvRHItqIufW1cAHKCvblQpLjHElsk+/UuObfSDqMyMie
-	 TktnoD92HpwjJKlFp1l3D+vaqB2F6uIwkcdiK9t8=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.76.43] ([80.245.76.43]) by web-mail.gmx.net
- (3c-app-gmx-bap09.server.lan [172.19.172.79]) (via HTTP); Wed, 8 Jun 2022
- 19:38:30 +0200
+	id 1nyzlR-00EXqB-UC; Wed, 08 Jun 2022 17:46:44 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kHqn5PAP+jbe8Zs5DgorTAGXOCPOVhFXbYoYTJCHxFuoObzdit2lC4O9O1vivWhNiY+zDYZBIVasc/Aho9bjIjD7fDt1GqD+gg+dP/ddBsrnCVCKzIecUdca+WLJy9sebrabWuE5b5WP0NUGqMKynwjr6jsr/KABnoMoQbtgzX2HDJbLLwmnEwD7oc4JrRxQ6vncGo7kkEdM9nk2PNTj3RjuSo1KVDyFC3ckW3XGLlLz6pTm4/N1GuIYVPtlDsymbUm5Q4SmFW671AkPnxOgpKj3LiRQlRFSbsIq49rdxiSNZ1RDW+j4pW4chFq2HCD4qipoEqgXpbp/dP4z/yRSnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fFeNMwak6IcWIfXn3ck/l0OoBncuvs3yDZ+On/hvF3w=;
+ b=FZN7npI2c4Y6/FzlggObdZDGWKmeW1ze3nbyVSLHjKCRM/TJuUEKFLpjg+dHYHPwdclNK1SczwySFeQ0t5t6caG2h/c+3JFEieaq4HVQpxS+cBkJ4HXYubTTasnc875wk8w3T92nZWXIVgNPwbDwBBJ2j/tYkub3XCj3RdubsFgb/ItmmGkndwvVXLX0rfo+LMa0xToXGYN/NjWpGAMQ+up0Ia5wa2wSOG12uohIwTkZa4NxA6Ia4F1+QCpu/i4hrQ5C8YeEApE6BO1W4t4KWUHwDp/ar0dbs/bUykPAQF1cMB22xvKF/+P7BXR3alD4nUzSghf2wmH6ikDVALsqVg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.235) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com; dmarc=pass
+ (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
+ (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fFeNMwak6IcWIfXn3ck/l0OoBncuvs3yDZ+On/hvF3w=;
+ b=pj314MFZvyxbk0ZQs3c3QVIyiIVQvNRFWeljCaisw0svE3icciaLryu3SwB0ZrJruRPwCHycdF4wqAtPteGog6x6WVjlLESH6hvPeDrZrnR+RPyF39amcDN+uB9Vh7M8HNgVfpKFtMIPwxZD6OLG39vMVYxzMWC8fr6QDrGq6pHplKhKAzvo+3RQJasA72tXTPMmIYOac4j55a3VSKOkN5kGsFhdpTybvsc45awQKNkhJb+xIkvCjZlgTlBCzAKRScyZvB2f2v72w18BTuucGDIWT74YwdOeMTT88dbwNkPiNdDw6pXiRsR87KEhizzHi+VNUl9o+dBa+9XHhl5/uw==
+Received: from BN8PR04CA0048.namprd04.prod.outlook.com (2603:10b6:408:d4::22)
+ by BL1PR12MB5109.namprd12.prod.outlook.com (2603:10b6:208:309::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.12; Wed, 8 Jun
+ 2022 17:46:36 +0000
+Received: from BN8NAM11FT049.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:d4:cafe::74) by BN8PR04CA0048.outlook.office365.com
+ (2603:10b6:408:d4::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12 via Frontend
+ Transport; Wed, 8 Jun 2022 17:46:36 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.235)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.235 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.235; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.235) by
+ BN8NAM11FT049.mail.protection.outlook.com (10.13.177.157) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5332.12 via Frontend Transport; Wed, 8 Jun 2022 17:46:35 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by DRHQMAIL107.nvidia.com
+ (10.27.9.16) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Wed, 8 Jun
+ 2022 17:46:35 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Wed, 8 Jun 2022
+ 10:46:34 -0700
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
+ Transport; Wed, 8 Jun 2022 10:46:31 -0700
+Date: Wed, 8 Jun 2022 10:46:30 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+CC: "jgg@nvidia.com" <jgg@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
+	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
+	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
+	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
+	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>, "agross@kernel.org"
+	<agross@kernel.org>, "bjorn.andersson@linaro.org"
+	<bjorn.andersson@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>,
+	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "baolin.wang7@gmail.com"
+	<baolin.wang7@gmail.com>, "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+	"wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
+	<jernej.skrabec@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"virtualization@lists.linux-foundation.org"
+	<virtualization@lists.linux-foundation.org>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
+	<jonathanh@nvidia.com>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "gerald.schaefer@linux.ibm.com"
+	<gerald.schaefer@linux.ibm.com>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "cohuck@redhat.com"
+	<cohuck@redhat.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org"
+	<iommu@lists.linux-foundation.org>, "dwmw2@infradead.org"
+	<dwmw2@infradead.org>
+Subject: Re: [PATCH 4/5] vfio/iommu_type1: Clean up update_dirty_scope in
+ detach_group()
+Message-ID: <YqDgdqVIEwWF1Lku@Asurada-Nvidia>
+References: <20220606061927.26049-1-nicolinc@nvidia.com>
+ <20220606061927.26049-5-nicolinc@nvidia.com>
+ <BN9PR11MB5276FD77A2780C97BB82CBA88CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Message-ID: <trinity-c7b8fdfa-11b4-4e5c-90d6-6dd96da1e2d2-1654709910860@3c-app-gmx-bap09>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: linux-mediatek@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
- Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Greg
- Ungerer <gerg@kernel.org>, =?UTF-8?Q?Ren=C3=A9_van_Dorst?=
- <opensource@vdorst.com>, Mauro Carvalho Chehab
- <mchehab+samsung@kernel.org>, Frank Wunderlich <linux@fw-web.de>
-Subject: Aw: [PATCH v3 0/6] Support mt7531 on BPI-R2 Pro
-Date: Wed, 8 Jun 2022 19:38:30 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20220507170440.64005-1-linux@fw-web.de>
-References: <20220507170440.64005-1-linux@fw-web.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:b5vLgY6x8wk0IfFlmacN0mlyvljNM3lzBAp6gZ3YYSyGfOwKIWWsICLx3aTIAj3wYk/H5
- KVQ8p8tAQrEv3DQDo7PQzbkzWkokqRFf5VURxU6LUhBvPkAKZ9FZw3ZaXGypApq2yw2Ceb05qSGM
- XRJy/ooHfrCvcRmLD9Ke0/z1BvxnrEIlnadqGaoJ1UULJfp1IYpnx6rhukiqQ9/97t7RF/EBk44L
- sFcuSdyJtzl3S2x3tomYxVO9hsvM/5ek/0SO3qkAI58RWVUfRNVJl44Bu1VF36NtG8GHcyq7WKwL
- vI=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Tsy9Ri02RQw=:VA5cKMITPNkPq9WTs/tyI5
- IjrtX4u3TO8GPfPqH+1pF6qOd/RzV5bHzcfPzolKqrEJegNSwOR9dRj11z4LI38lhFvcnmGR0
- XB8FVZM2QG8b3Q8t4QhZnkjw6viiWfwYAxQ98ij+WD4+LgI3nw6PI4brmkiOWww4oEO0inDGG
- 9YloHncR2sFyBA5eBBGlLHzk6MzUjs/0m8ylNlLehz6Er50By1lF7JMVO4bAF0+upZfPzf7zX
- kJxoCLq3xjhdP21hWx7QWTVCKQOObDnxm7dHAUlXvxzHurGAmEhMdpeB3I59kImogpVtEqCyJ
- AYHEv1jo6He+6AI1JgA0Xm3k9bn4UTeSuINvJDLZ2QXNHXRtJzWNQFbS6AG3y82lZKFRNXast
- FTjc1TifJ8RpkrrkLVTvRginX7LjqJBJdsv2sLun6kZjRCf6ZFmNw4MTCmwdEIoyW4soi74nH
- PAzPg0Sfi/DgFp6WpztZpmLTIiZUD7ISQTNOM+tPfYMxR8lBwle894MCVvcge7kOfrokpcKyf
- zS5h3DyIvETKIvLWdE44K027QtM+lvqdGIz3l/VHAR8DIWPm2DTNJAm4AZr7Pxr5FS/JJTcAe
- gi8SSBK0BZjlNzJ7JKhe3F31W8RHOqLYKMRCd3hV7ccjCy+8adYSwSkmMn+RiyyTpAmgYOlCz
- 8KfkD6OOFkcVrUeoyoNIPyCD5rFo1DJQf2BcOTB/bQumkAhPlHa+V6dyvOcipGdjZ2kMX8uty
- y2zow8tcV+TjBJDzaggVBQm1ein3QpSVMiDHkQSWJ7S3aay+x6lWp4lYTnz7JPTIy+lmJv/Jl
- YwcpfGn
+Content-Disposition: inline
+In-Reply-To: <BN9PR11MB5276FD77A2780C97BB82CBA88CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 1587681b-17e6-42e3-05b6-08da4976d555
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5109:EE_
+X-Microsoft-Antispam-PRVS: 	<BL1PR12MB5109163184F6942DE7D0E27DABA49@BL1PR12MB5109.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	VlWwurAOdfoGgoI16h8tVUGa0DMWObSVow2a+oqBe2GTFnExd/q6V80KUoAhwGlN9yTiFYxYW6jVjBzap0lqYoeVA4tHrBHMrOGcX5zZBeMejX3y7boGTlEAy8viOhvea4Lc5edPDt9f1gM3Yz4yshhtJU834DNuWSaDl8ncPyiQpyTRLuBvHJQBfduDGAfTgNfVbzHCJWrjAXpEGCRPTCGf7mTDAGh5679B46vrSg97YEDPFcMD43BwIItZvesFk4Zy64H93Dwary+5LvOOu343wysK9GxUMsJt9ESj5btIlqPdywHT8vmD67YvGPAoF/x3yZG3LHh7dZG8q/gtWy/b19cPhlo8nNnXnqEF0h7nE/ltWdup6DdvlH4HcoFYaMfD8+KZMV6Nv5XXpmSmcgQ94fjbq6RpxSQwnzq7UXarKD8LjmvWxl+5vaxdtSLl+vQBoPAlz1+dg+ILTz84VtisIYiw0ad3EIuQhQbcbYSsDfl9yL3rUkx2qO+yEb2NtCkQ2Fm3IO17nJB9KrPPm+T/qEgXoGVHlivYgejJEd9lU5sCIz0CwKdDurelw2XGvaY0nI7xYOBc6QrkGfSXmL4RbKqj3ZJ2PIJhnpEDGJMm+/XmrxCm1GA9pgdb3fgW8qWWDVkr+09ib2mFcHFvH7pgUIS1zo/GUOR2uhAkDta/7zYxFcm6pSERA8WykStTkWHbbfBM3IVe36tTA8CCypUdjIbGAWMJQSylTJFpr+k=
+X-Forefront-Antispam-Report: 	CIP:12.22.5.235;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230001)(4636009)(40470700004)(46966006)(36840700001)(316002)(47076005)(426003)(8676002)(81166007)(36860700001)(55016003)(82310400005)(6916009)(70206006)(4326008)(70586007)(356005)(2906002)(54906003)(508600001)(336012)(8936002)(9686003)(33716001)(4744005)(186003)(5660300002)(83380400001)(40460700003)(86362001)(7416002)(7406005)(26005)(14143004)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jun 2022 17:46:35.8559
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1587681b-17e6-42e3-05b6-08da4976d555
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.235];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT049.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5109
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_103928_540970_6C4DFF94 
-X-CRM114-Status: UNSURE (   5.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220608_104641_997830_AEDCFD8C 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,9 +157,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-just a gentle ping, is anything missing/wrong?
+On Wed, Jun 08, 2022 at 08:35:47AM +0000, Tian, Kevin wrote:
 
-regards Frank
+> > @@ -2519,7 +2515,17 @@ static void vfio_iommu_type1_detach_group(void
+> > *iommu_data,
+> >                       kfree(domain);
+> >                       vfio_iommu_aper_expand(iommu, &iova_copy);
+> >                       vfio_update_pgsize_bitmap(iommu);
+> > +                     /*
+> > +                      * Removal of a group without dirty tracking may
+> > allow
+> > +                      * the iommu scope to be promoted.
+> > +                      */
+> > +                     if (!group->pinned_page_dirty_scope) {
+> > +                             iommu->num_non_pinned_groups--;
+> > +                             if (iommu->dirty_page_tracking)
+> > +
+> >       vfio_iommu_populate_bitmap_full(iommu);
+> 
+> This doesn't look correct. The old code decrements
+> num_non_pinned_groups for every detach group without dirty
+> tracking. But now it's only done when the domain is about to
+> be released...
+
+Hmm..you are right. It should be placed outside:
+		if (list_empty(&domain->group_list)) {
+			...
+		}
++		if (!group->pinned_page_dirty_scope) {
++			...
++		}
+
+Will fix this and the same problem in PATCH-5 too.
+
+Thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
