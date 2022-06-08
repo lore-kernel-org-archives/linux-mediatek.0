@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 443F2C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 08:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420E8C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jun 2022 08:59:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jx/uQKrUbJjXhZsHQotte26oHZZoKDL+LZAmUsGXTxI=; b=c6rapFRyRtBpYy
-	i86Yf0387eszSs7JX/N056O3+qWmUEmqL8dp8/mkRZks8KyJlAhU8FQeBlo7rM8oHCktvGd8AkhgJ
-	5J1R/cVng1FvZY7yvo1F7Q2oh9+FvAKcVlfHwNT9RlZQzRzT5ilHTgmlOde/itScy8vrMQuLBU9e7
-	A+d06dkRPQ3O4sqQLMaE9MO9tiR90Gn2Jhhd7UrVOBN/nOAUI2d8t1JgJL81WJY2Pp7Gx2HZEmeIT
-	DYHtTRoTrSvY7/KARftTsOS4Z28zIlmu/qeSk2I+sy2Iz8t0MFQVWHw6xguv5aL5kLw+yhB2NaEKE
-	tRgycURJ18W/hZyarjvA==;
+	List-Owner; bh=9AiiLm1Q6lviLJO0BEL6W5VC9coNG8EiehRaQyqaXbg=; b=CotuA0Mz+dFClB
+	pHpAGh8yMd8eXCSrGQE1yhUI0CK/cTJXc/otoaGs63zEesPt3qRH4E7uD74e+WXRI538wjp5poISA
+	+cautM75I6QLpYrQD0uPUcuZkWe+1yZQSPR+TN2dVyIJF9HlDWdTAAacA2BOOkN+OBYGEuc14MlNj
+	s1sa0CwMpEEbS4DWzsvsI7m1Gx/ek9WTYAsKxDF7T/z27w5lkQfnVMYb9oyXiX1OqzXHSoDHD90Gh
+	bBEGN63s3MzhJhlgb7fSP1XDrZDmxUainwXnhzwx3rmHhOjxuot9WtL28FkbxPSFj2n6QdXM916O4
+	E2lHhhqRTGQDZ8YDztXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyrVw-00C9l9-6r; Wed, 08 Jun 2022 08:58:08 +0000
+	id 1nyrWl-00CA87-7f; Wed, 08 Jun 2022 08:58:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyrJx-00C4SX-7q; Wed, 08 Jun 2022 08:45:47 +0000
-X-UUID: 6e3fe084f58d4fe5b88f59aea670c5b3-20220608
+	id 1nyrJw-00C4S5-F2; Wed, 08 Jun 2022 08:45:47 +0000
+X-UUID: 761d2fb1865d4f918cc55999dcc8e295-20220608
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:195d6877-a194-49f1-a439-1b1e63876065,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:7001a07e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:f4f1ff91-984c-41b2-af86-1493d6a0dec2,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:2a19b09,CLOUDID:7401a07e-c8dc-403a-96e8-6237210dceee,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 6e3fe084f58d4fe5b88f59aea670c5b3-20220608
+X-UUID: 761d2fb1865d4f918cc55999dcc8e295-20220608
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 983042223; Wed, 08 Jun 2022 01:45:37 -0700
+	with ESMTP id 42834503; Wed, 08 Jun 2022 01:45:37 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Jun 2022 01:37:12 -0700
+ 15.0.1497.2; Wed, 8 Jun 2022 01:43:32 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 8 Jun 2022 16:36:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 8 Jun 2022 16:36:02 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Lee Jones <lee.jones@linaro.org>, Benson Leung <bleung@chromium.org>,
-	"Guenter Roeck" <groeck@chromium.org>, Sebastian Reichel
-	<sebastian.reichel@collabora.com>, Daisuke Nojiri <dnojiri@chromium.org>,
-	Kees Cook <keescook@chromium.org>, Tinghan Shen <tinghan.shen@mediatek.com>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, Prashant Malani
-	<pmalani@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <weishunc@google.com>
-Subject: [PATCH v2 7/9] remoteproc: mediatek: Add SCP core 1 as a rproc subdevice
-Date: Wed, 8 Jun 2022 16:35:51 +0800
-Message-ID: <20220608083553.8697-8-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220608083553.8697-1-tinghan.shen@mediatek.com>
-References: <20220608083553.8697-1-tinghan.shen@mediatek.com>
+ Wed, 8 Jun 2022 16:43:31 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 8 Jun 2022 16:43:31 +0800
+Message-ID: <6aa6e07728f67c86a6c50f32e3cb461012b60409.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun
+ =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
+	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
+	<linux-fbdev@vger.kernel.org>
+Date: Wed, 8 Jun 2022 16:43:31 +0800
+In-Reply-To: <358331497a5ff431d46bfea9c5c9dcadfaaa9a63.camel@mediatek.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+	 <0bd8b0c66b9e2a1b63280e7eab63048bee7fe786.camel@mediatek.com>
+	 <8af7938ae9244e4b7caf62e0c6ce0bcdddc13889.camel@mediatek.com>
+	 <358331497a5ff431d46bfea9c5c9dcadfaaa9a63.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_014545_343682_487A0777 
-X-CRM114-Status: GOOD (  18.09  )
+X-CRM114-CacheID: sfid-20220608_014544_618766_D35E5DBF 
+X-CRM114-Status: GOOD (  50.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,225 +101,224 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Because the clock and SRAM power is controlled by SCP core 0, SCP core 1
-has to be boot after SCP core 0. We use the rproc subdev to achieve this
-purpose.
+On Wed, 2022-06-08 at 10:23 +0800, CK Hu wrote:
+> Hi, Rex:
+> 
+> On Tue, 2022-06-07 at 20:24 +0800, Rex-BC Chen wrote:
+> > On Tue, 2022-06-07 at 14:21 +0800, CK Hu wrote:
+> > > Hi, Rex:
+> > > 
+> > > On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> > > > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > > 
+> > > > This patch adds a DisplayPort driver for the Mediatek mt8195
+> > > > SoC.
+> > > > 
+> > > > It supports the mt8195, the embedded DisplayPort units. It
+> > > > offers
+> > > > DisplayPort 1.4 with up to 4 lanes.
+> > > > 
+> > > > The driver creates a child device for the phy. The child device
+> > > > will
+> > > > never exist without the parent being active. As they are
+> > > > sharing
+> > > > a
+> > > > register range, the parent passes a regmap pointer to the child
+> > > > so
+> > > > that
+> > > > both can work with the same register range. The phy driver sets
+> > > > device
+> > > > data that is read by the parent to get the phy device that can
+> > > > be
+> > > > used
+> > > > to control the phy properties.
+> > > > 
+> > > > This driver is based on an initial version by
+> > > > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> > > > 
+> > > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > > > ---
+> > > 
+> > > [snip]
+> > > 
+> > > > +
+> > > > +static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+> > > > +{
+> > > > +	struct mtk_dp *mtk_dp = dev;
+> > > > +	int event;
+> > > > +	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
+> > > > +
+> > > > +	event = mtk_dp_plug_state(mtk_dp) ?
+> > > > connector_status_connected
+> > > > :
+> > > > +						  connector_sta
+> > > > tus_disc
+> > > > onnected;
+> > > > +
+> > > > +	if (event < 0)
+> > > 
+> > > event is always > 0, isn't it?
+> > > 
+> > 
+> > Hello CK,
+> > 
+> > ok, I will move this to dp patch.
+> > 
+> > > > +		return IRQ_HANDLED;
+> > > > +
+> > > > +	if (mtk_dp->drm_dev) {
+> > > > +		dev_info(mtk_dp->dev,
+> > > > "drm_helper_hpd_irq_event\n");
+> > > > +		drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+> > > 
+> > > I think this ISR would come once. If bridge has not attached, the
+> > > drm
+> > > core would lost this event. Maybe you should enable eDP hardware
+> > > after
+> > > bridge attached or send this event when attached.
+> > > 
+> > 
+> > for edp patch, I will move it to (mtk_dp_bridge_attach).
+> > for dp patch, I will add it back.
+> 
+> I find out that mtk_dp_poweron() is in top of mtk_dp_bridge_attach().
+> If move mtk_dp_poweron() to bottom of mtk_dp_bridge_attach(), mtk_dp-
+> > drm_dev would not be NULL here. So we could drop this checking.
+> > 
 
-The watchdog timeout handler of SCP core 1 is added as part of the rproc
-subdevice. This allows SCP core 0 to handle watchdog timeout coming from
-SCP core 1.
+Hello CK,
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- drivers/remoteproc/mtk_common.h |   9 +++
- drivers/remoteproc/mtk_scp.c    | 130 ++++++++++++++++++++++++++++++++
- 2 files changed, 139 insertions(+)
+If we failed to setup phy(ret!=0), we alos need to deattach this
+bridge.
+I don't think  it's a good idea just for remove this.
 
-diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
-index 5582f4207fbf..67b41866a100 100644
---- a/drivers/remoteproc/mtk_common.h
-+++ b/drivers/remoteproc/mtk_common.h
-@@ -99,6 +99,14 @@ struct scp_ipi_desc {
- 	void *priv;
- };
- 
-+struct scp_subdev_core {
-+	struct rproc_subdev subdev;
-+	struct mtk_scp *main_scp;
-+	void (*scp_dual_wdt_timeout)(struct mtk_scp *scp, u32 scp_to_host);
-+};
-+
-+#define to_subdev_core(d) container_of(d, struct scp_subdev_core, subdev)
-+
- struct mtk_scp;
- 
- struct mtk_scp_of_data {
-@@ -144,6 +152,7 @@ struct mtk_scp {
- 	size_t dram_size;
- 
- 	struct rproc_subdev *rpmsg_subdev;
-+	struct rproc_subdev *dual_subdev;
- };
- 
- /**
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index b8a4db581179..d0e9e19e251f 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -244,6 +244,13 @@ static void mt8195_scp_irq_handler(struct mtk_scp *scp)
- 	} else {
- 		if (readl(scp->reg_base + MT8195_SYS_STATUS) & MT8195_CORE1_WDT) {
- 			writel(1, scp->reg_base + MT8195_CORE1_WDT_IRQ);
-+
-+			if (scp->dual_subdev) {
-+				struct scp_subdev_core *subdev_core;
-+
-+				subdev_core = to_subdev_core(scp->dual_subdev);
-+				subdev_core->scp_dual_wdt_timeout(scp, scp_to_host);
-+			}
- 		} else {
- 			writel(1, scp->reg_base + MT8192_CORE0_WDT_IRQ);
- 			scp_wdt_handler(scp, scp_to_host);
-@@ -925,6 +932,118 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
- 	}
- }
- 
-+static struct mtk_scp *scp_dual_get(struct mtk_scp *scp)
-+{
-+	struct device *dev = scp->dev;
-+	struct device_node *np;
-+	struct platform_device *dual_pdev;
-+
-+	np = of_parse_phandle(dev->of_node, "mediatek,scp-core", 0);
-+	dual_pdev = of_find_device_by_node(np);
-+	of_node_put(np);
-+
-+	if (!dual_pdev) {
-+		dev_err(dev, "No scp-dual pdev\n");
-+		return NULL;
-+	}
-+
-+	return platform_get_drvdata(dual_pdev);
-+}
-+
-+static void scp_dual_put(struct mtk_scp *scp)
-+{
-+	put_device(scp->dev);
-+}
-+
-+static int scp_dual_rproc_start(struct rproc_subdev *subdev)
-+{
-+	struct scp_subdev_core *subdev_core = to_subdev_core(subdev);
-+	struct mtk_scp *scp_dual;
-+
-+	scp_dual = scp_dual_get(subdev_core->main_scp);
-+	if (!scp_dual)
-+		return -ENODEV;
-+
-+	rproc_boot(scp_dual->rproc);
-+	scp_dual_put(scp_dual);
-+
-+	return 0;
-+}
-+
-+static void scp_dual_rproc_stop(struct rproc_subdev *subdev, bool crashed)
-+{
-+	struct scp_subdev_core *subdev_core = to_subdev_core(subdev);
-+	struct mtk_scp *scp_dual;
-+
-+	scp_dual = scp_dual_get(subdev_core->main_scp);
-+	if (!scp_dual)
-+		return;
-+
-+	rproc_shutdown(scp_dual->rproc);
-+	scp_dual_put(scp_dual);
-+}
-+
-+static void scp_dual_wdt_handler(struct mtk_scp *scp, u32 scp_to_host)
-+{
-+	struct mtk_scp *scp_dual;
-+
-+	scp_dual = scp_dual_get(scp);
-+	if (!scp_dual)
-+		return;
-+
-+	dev_err(scp_dual->dev, "SCP watchdog timeout! 0x%x\n", scp_to_host);
-+	rproc_report_crash(scp_dual->rproc, RPROC_WATCHDOG);
-+	scp_dual_put(scp_dual);
-+}
-+
-+static struct rproc_subdev *scp_dual_create_subdev(struct mtk_scp *scp)
-+{
-+	struct device *dev = scp->dev;
-+	struct scp_subdev_core *subdev_core;
-+	struct device_node *np;
-+
-+	np = of_parse_phandle(dev->of_node, "mediatek,scp-core", 0);
-+	if (!np)
-+		return NULL;
-+
-+	of_node_put(np);
-+
-+	subdev_core = devm_kzalloc(dev, sizeof(*subdev_core), GFP_KERNEL);
-+	if (!subdev_core)
-+		return NULL;
-+
-+	subdev_core->main_scp = scp;
-+	subdev_core->scp_dual_wdt_timeout = scp_dual_wdt_handler;
-+	subdev_core->subdev.start = scp_dual_rproc_start;
-+	subdev_core->subdev.stop = scp_dual_rproc_stop;
-+
-+	return &subdev_core->subdev;
-+}
-+
-+static void scp_dual_destroy_subdev(struct rproc_subdev *subdev)
-+{
-+	struct scp_subdev_core *subdev_core = to_subdev_core(subdev);
-+
-+	devm_kfree(subdev_core->main_scp->dev, subdev_core);
-+}
-+
-+static void scp_add_dual_subdev(struct mtk_scp *scp)
-+{
-+	scp->dual_subdev = scp_dual_create_subdev(scp);
-+
-+	if (scp->dual_subdev)
-+		rproc_add_subdev(scp->rproc, scp->dual_subdev);
-+}
-+
-+static void scp_remove_dual_subdev(struct mtk_scp *scp)
-+{
-+	if (scp->dual_subdev) {
-+		rproc_remove_subdev(scp->rproc, scp->dual_subdev);
-+		scp_dual_destroy_subdev(scp->dual_subdev);
-+		scp->dual_subdev = NULL;
-+	}
-+}
-+
- static int scp_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -1014,6 +1133,9 @@ static int scp_probe(struct platform_device *pdev)
- 
- 	scp_add_rpmsg_subdev(scp);
- 
-+	if (core_id == SCP_CORE_0)
-+		scp_add_dual_subdev(scp);
-+
- 	ret = devm_request_threaded_irq(dev, platform_get_irq(pdev, 0), NULL,
- 					scp_irq_handler, IRQF_ONESHOT,
- 					pdev->name, scp);
-@@ -1023,6 +1145,12 @@ static int scp_probe(struct platform_device *pdev)
- 		goto remove_subdev;
- 	}
- 
-+	/* disable auto boot before register rproc.
-+	 * scp core 1 is booted as a subdevice of scp core 0.
-+	 */
-+	if (core_id == SCP_CORE_1)
-+		rproc->auto_boot = false;
-+
- 	ret = rproc_add(rproc);
- 	if (ret)
- 		goto remove_subdev;
-@@ -1030,6 +1158,7 @@ static int scp_probe(struct platform_device *pdev)
- 	return 0;
- 
- remove_subdev:
-+	scp_remove_dual_subdev(scp);
- 	scp_remove_rpmsg_subdev(scp);
- 	scp_ipi_unregister(scp, SCP_IPI_INIT);
- release_dev_mem:
-@@ -1047,6 +1176,7 @@ static int scp_remove(struct platform_device *pdev)
- 	int i;
- 
- 	rproc_del(scp->rproc);
-+	scp_remove_dual_subdev(scp);
- 	scp_remove_rpmsg_subdev(scp);
- 	scp_ipi_unregister(scp, SCP_IPI_INIT);
- 	scp_unmap_memory_region(scp);
--- 
-2.18.0
+> > > > +	}
+> > > > +
+> > > > +	if (mtk_dp->train_info.cable_state_change) {
+> > > 
+> > > Executing this thread imply cable_state_change = true, so drop
+> > > cable_state_change.
+> > > 
+> > 
+> > In mtk_dp_hpd_isr_handler(), there is another irq
+> > "MTK_DP_HPD_INTERRUPT" which means the sink devices give a
+> > interrupt
+> > to
+> > source device. it's not about connected status, so I think we still
+> > need this.
+> 
+> In bottom of mtk_dp_hpd_isr_handler(), the code is:
+> 
+> +	train_info->cable_state_change = true;
+> +
+> +	return IRQ_WAKE_THREAD;
+> 
+> This thread is called only when return IRQ_WAKE_THREAD, and before
+> return IRQ_WAKE_THREAD, train_info->cable_state_change is always set
+> to
+> true. So in this thread, train_info->cable_state_change must be true.
+> 
+
+As mentioned, this irq handler function is not only for connected
+status.
+
+this could be return if this irq is interrupt from sink device.
++	if (!(train_info->irq_status &
++	      (MTK_DP_HPD_CONNECT | MTK_DP_HPD_DISCONNECT)))
++		return IRQ_HANDLED;
+
+BRs,
+Bo-Chen
+> Regards,
+> CK
+> 
+> > 
+> > > > +		mtk_dp->train_info.cable_state_change = false;
+> > > > +
+> > > > +		mtk_dp->train_state =
+> > > > MTK_DP_TRAIN_STATE_STARTUP;
+> > > > +
+> > > > +		if (!mtk_dp->train_info.cable_plugged_in ||
+> > > > +		    !mtk_dp_plug_state(mtk_dp)) {
+> > > 
+> > > I do not like two variable to present one thing. If
+> > > 
+> > > mtk_dp->train_info.cable_plugged_in = false
+> > > and
+> > > mtk_dp_plug_state(mtk_dp) = ture
+> > > 
+> > > What does this mean? I think this mean 'now' is connected because
+> > > cable_plugged_in is old information and mtk_dp_plug_state() is
+> > > current
+> > > information.
+> > > 
+> > > But I would like to keep cable_plugged_in and drop
+> > > mtk_dp_plug_state()
+> > > because cable_plugged_in would be changed in isr and it would be
+> > > the
+> > > same as mtk_dp_plug_state().
+> > > 
+> > > Regards,
+> > > CK
+> > > 
+> > 
+> > ok, I will drop this.
+> > 
+> > BRs,
+> > Rex
+> > 
+> > > > +			mtk_dp_video_mute(mtk_dp, true);
+> > > > +
+> > > > +			mtk_dp_initialize_priv_data(mtk_dp);
+> > > > +			mtk_dp_set_idle_pattern(mtk_dp, true);
+> > > > +			if (mtk_dp->has_fec)
+> > > > +				mtk_dp_fec_enable(mtk_dp,
+> > > > false);
+> > > > +
+> > > > +			mtk_dp_update_bits(mtk_dp,
+> > > > MTK_DP_TOP_PWR_STATE,
+> > > > +					   DP_PWR_STATE_BANDGAP
+> > > > _TPLL,
+> > > > +					   DP_PWR_STATE_MASK);
+> > > > +		} else {
+> > > > +			mtk_dp_update_bits(mtk_dp,
+> > > > MTK_DP_TOP_PWR_STATE,
+> > > > +					   DP_PWR_STATE_BANDGAP
+> > > > _TPLL_LA
+> > > > NE,
+> > > > +					   DP_PWR_STATE_MASK);
+> > > > +			drm_dp_read_dpcd_caps(&mtk_dp->aux,
+> > > > buf);
+> > > > +			mtk_dp->train_info.link_rate =
+> > > > +				min_t(int, mtk_dp-
+> > > > >max_linkrate,
+> > > > +				      buf[mtk_dp-
+> > > > >max_linkrate]);
+> > > > +			mtk_dp->train_info.lane_count =
+> > > > +				min_t(int, mtk_dp->max_lanes,
+> > > > +				      drm_dp_max_lane_count(buf
+> > > > ));
+> > > > +		}
+> > > > +	}
+> > > > +
+> > > > +	if (mtk_dp->train_info.irq_status &
+> > > > MTK_DP_HPD_INTERRUPT) {
+> > > > +		dev_dbg(mtk_dp->dev, "MTK_DP_HPD_INTERRUPT\n");
+> > > > +		mtk_dp->train_info.irq_status &=
+> > > > ~MTK_DP_HPD_INTERRUPT;
+> > > > +		mtk_dp_hpd_sink_event(mtk_dp);
+> > > > +	}
+> > > > +
+> > > > +	return IRQ_HANDLED;
+> > > > +}
+> > > > +
+> > > 
+> > > 
+> > 
+> > 
+> 
+> 
 
 
 _______________________________________________
