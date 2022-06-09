@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D4FC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 13:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B650C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 14:20:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RCFCtWRXkFFxTCToYbH0IhHKLMqTCJxbFR2Se4lxI68=; b=XjRnNtBoxATXIb
-	yh2hnwYiZ9vxpfCM6Udk41mfDXgIkNqlkWjk/CUAK0MBA45IvJ9OsSqGGwn8rKUff7KuncNoIxddx
-	HESYE8KPpzzFL4ebNfItV1o4whT29Y7dD8x30JQzVllmgwaN/YvohnJ6dlc6BbsW/Zpnd8LJN5fPU
-	rjArrJjaDPNwDpXv6NmeLGTYyrBi6edon72fHRi4sByB+ncflAp9C2M+6NZUlne6RdliPDPQVnQlv
-	NYJwetWehKsFgCCY4DLtdUXahUSxMKO9AQ2hrscjP9GVgDQckSxiMi4vcKGBlbMNgEIFfwNe1sW/l
-	Nk/t2ERR2MsK5toS83CQ==;
+	List-Owner; bh=Iv3IyRfoBrWVECMidBojfgF9iqT1i2SWDwflf67P600=; b=RY7TxrBvh3VQvO
+	jm75QAO/sOxbcVHiRm04h//G+eUKSMUFr/cpeP+faZjIfvJT09/98FNAWZBYAlsrObU/bBJbRW+x1
+	E977qsCGH+SzJB9+pdJKo+fMKDrt6pS676fihR9nJSMweiLWQ+IYSyYNIQht+dzATyw5m8zLnC11V
+	5d3PEUJINlzHK7NNxsrlFXSh9f/PIgGbWpMLcNHd0kYN3jjaq6C0J8rv+/xRSLhyfztTkIsNcnjQr
+	eTreauPXdSAEHBZk/1KBkSmJ9k3BFknjhFbmEDCQJBq6srMy18oz4bnjYSUjMOB1MPcyIo2s8cNlO
+	3j3E/1+CXKlfiQfJtDlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzIGs-002BaT-Te; Thu, 09 Jun 2022 13:32:22 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nzJ1D-002Sf6-0x; Thu, 09 Jun 2022 14:20:15 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzIGo-002BYb-Pm; Thu, 09 Jun 2022 13:32:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1nzJ10-002SZn-BP; Thu, 09 Jun 2022 14:20:04 +0000
+Received: from notapiano (unknown [169.150.201.35])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 41593B82DE0;
-	Thu,  9 Jun 2022 13:32:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1062C34114;
-	Thu,  9 Jun 2022 13:32:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654781536;
-	bh=z1uhxQdjX7oKygIhJ5n3vdkXs/MdE4hzoVbc7kac5Pw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hMlmSDIOYJ+7b9WtKMfh6cgzJtzXooKB9Ak5wfc8T3UmN/WAUfnlQCqpv4GR0YjgG
-	 DWU8hxNDaAM1ZQt9W4THFQE6z0aY044Vscbzm22b4jgWPoF+LLoB4e3e4PGCUo8JaV
-	 hSxS8BIZYoLxBWGpe2pGg8ILRHwpznXh3kv7Kleqvg381zngU5Ik1Kyq+svQaNR7TJ
-	 Wq//i/RIqX99KrUBuYgO0bJ7T/gHcisYcj5pPKpQXMPx0I11l8o3/lQLUVPzaidmUb
-	 2RVz40d6hmCZ5zasbu3JfAz+I5RjDPkDu2c05iawkPzEg4Z20NkuVbFND0UQ7GKmsV
-	 DsOgIPzAWiAxQ==
-From: Mark Brown <broonie@kernel.org>
-To: ckeepax@opensource.cirrus.com
-Cc: linux-sunxi@lists.linux.dev, peter.ujfalusi@gmail.com, pierre-louis.bossart@linux.intel.com, linux-imx@nxp.com, krzk@kernel.org, jarkko.nikula@bitmer.com, linux-xtensa@linux-xtensa.org, cezary.rojewski@intel.com, shawnguo@kernel.org, linux-mediatek@lists.infradead.org, nicolas.ferre@microchip.com, patches@opensource.cirrus.com, linux-amlogic@lists.infradead.org, srinivas.kandagatla@linaro.org, daniel@zonque.org, linux-mips@vger.kernel.org, linux-tegra@vger.kernel.org, nsaenz@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de, alsa-devel@alsa-project.org, kernel@pengutronix.de, jbrunet@baylibre.com, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org, lgirdwood@gmail.com
-In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
-References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
-Subject: Re: [PATCH 00/56] Specify clock provider directly to CPU DAIs
-Message-Id: <165478153064.1052094.1721875477574787769.b4-ty@kernel.org>
-Date: Thu, 09 Jun 2022 14:32:10 +0100
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D51F166017AE;
+	Thu,  9 Jun 2022 15:19:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654784396;
+	bh=IGskQUzMVf3MzyO5y7ZT7G+KdfE9vPrMiktEA7GFgYA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZlRMs5kW5b4iU2ZLeEfP6jBr1LtN1syhRX3o0xPqAdaydhDzhfNl3DGRnSdnbC+AB
+	 PRv+LTW1UFUdWBpQ2bsQOSRozNkWdYKVUeC69HiP+6/3izv/iXQ9BWUiNP/9HqJC3Q
+	 dzVkodprlPUZHIQyylbAVunC74S64lADKQKupaAIsQ9G0nYl7dN28bvG+EHxDkfE/q
+	 2Pp+WPxwiwChBKMq7gImqcsPaNTuTSs4oivcNE5eypIx54bnabZ718cbYMmYbkrZof
+	 JGjcPalmCiC5v63bpzpYvOsU7XIGcVui3p+RJKXndNx0TlqVPxaaz90Z3Z9BW+vL2R
+	 RxL8vyKohIyJg==
+Date: Thu, 9 Jun 2022 10:19:49 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Guodong Liu <guodong.liu@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: mt8192: Switch
+ drive-strength-adv for -microamp
+Message-ID: <20220609141949.j5h6esqjmoal3y2m@notapiano>
+References: <20220531221954.160036-1-nfraprado@collabora.com>
+ <20220531221954.160036-2-nfraprado@collabora.com>
+ <1332454e2733d48fdf2396bcaed37bc3e33616b5.camel@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1332454e2733d48fdf2396bcaed37bc3e33616b5.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_063219_174754_BE5E3EBB 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20220609_072002_773490_43E8B9CB 
+X-CRM114-Status: GOOD (  28.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,163 +76,152 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 May 2022 16:42:22 +0100, Charles Keepax wrote:
-> Currently the set_fmt callback always passes clock provider/consumer
-> with respect to the CODEC. This made sense when the framework was
-> directly broken down into platforms and CODECs. However, as things
-> are now broken down into components which can be connected as either
-> the CPU or CODEC side of a DAI link it simplifies things if each
-> side of the link is just told if it is provider or consumer of the
-> clocks. Making this change allows us to remove one of the last parts
-> of the ASoC core that needs to know if a driver is a CODEC driver,
-> where it flips the clock format specifier if a CODEC driver is used on
-> the CPU side of a DAI link, as well as just being conceptually more
-> consistent with componentisation.
-> 
-> [...]
+Hi Guodong,
 
-Applied to
+On Wed, Jun 08, 2022 at 04:08:13PM +0800, Guodong Liu wrote:
+> -----Original Message-----
+> From: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> To: Linus Walleij <linus.walleij@linaro.org>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com
+> >, kernel@collabora.com, N=EDcolas F. R. A. Prado <
+> nfraprado@collabora.com>, Krzysztof Kozlowski <
+> krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <
+> matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Sean Wang <
+> sean.wang@mediatek.com>, devicetree@vger.kernel.org, =
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, =
 
-Thanks!
+> linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+> Subject: [PATCH v2 1/2] dt-bindings: pinctrl: mt8192: Switch drive-
+> strength-adv for -microamp
+> Date: Tue, 31 May 2022 18:19:53 -0400
+> =
 
-[01/56] ASoC: core: Add set_fmt_new callback that directly specifies provider
-        commit: 905f3a04e184854555fc248ca4e692fdbf2f2547
-[02/56] ASoC: amd: vangogh: Update to use set_fmt_new callback
-        commit: ab890e0f83a65624d20b0ca4a7cb6306b8511558
-[03/56] ASoC: atmel: Update to use set_fmt_new callback
-        commit: 0fd054a577180cd807992e32c7cd394e54c85903
-[04/56] ASoC: au1x: Update to use set_fmt_new callback
-        commit: fee11f70849b21a244e6e27d281f3858b671bfea
-[05/56] ASoC: bcm: Update to use set_fmt_new callback
-        commit: 04ea2404468b7885c560c3673f6f2fd368f305a2
-[06/56] ASoC: ep93xx: Update to use set_fmt_new callback
-        commit: 5d6124e58d56818249a6266f56d9c3739e72e1bd
-[07/56] ASoC: dwc: Update to use set_fmt_new callback
-        commit: ca0444f1f7b228ae3b8d1a5c0f0d1b4463171f98
-[08/56] ASoC: fsl: Update to use set_fmt_new callback
-        commit: 3b14c15a333b8225ea38479e13c0366539d3374a
-[09/56] ASoC: hisilicon: Update to use set_fmt_new callback
-        commit: 0f362524dd3face4865077a4f7e7e640a95702aa
-[10/56] ASoC: img: Update to use set_fmt_new callback
-        commit: ed2b384082a678a0c4c8c56deff9e5f46d5e3fca
-[11/56] ASoC: Intel: Update to use set_fmt_new callback
-        commit: add9ee8c64c617f561a309cdda50104e9e2c12f6
-[12/56] ASoC: js4740-i2s: Update to use set_fmt_new callback
-        commit: cbb3a19f090d5a41b822caf9ff2058e1c6bc7ea3
-[13/56] ASoC: mediatek: Update to use set_fmt_new callback
-        commit: 3af99430f8d948a41556156155b0295dec274d41
-[14/56] ASoC: meson: Update to use set_fmt_new callback
-        commit: f60442bf6eab47aa4ab127aab88afdcc29a09a73
-[15/56] ASoC: mxs-saif: Update to use set_fmt_new callback
-        commit: f3c0064f1f8e358799c70c7905a09d15c5ec5e5a
-[16/56] ASoC: pxa: Update to use set_fmt_new callback
-        commit: 84c5b47c8ce4d5059d5e7539d3b44922cc0390e9
-[17/56] ASoC: qcom: Update to use set_fmt_new callback
-        commit: 1148e16b335f341f36475b646c692b4a71a1855e
-[18/56] ASoC: rockchip: Update to use set_fmt_new callback
-        commit: 27646d265da1745b2d1d10fec18465631cb1135f
-[19/56] ASoC: samsung: Update to use set_fmt_new callback
-        commit: 0b491c7c1b2555ef08285fd49a8567f2f9f34ff8
-[20/56] ASoC: sh: Update to use set_fmt_new callback
-        commit: 2d4dd776e902546389f2d7808ece7fd815aa829c
-[21/56] ASoC: stm: Update to use set_fmt_new callback
-        commit: 0092dac91ec1c404787841bdd9ecbf3404d1a41c
-[22/56] ASoC: sunxi: Update to use set_fmt_new callback
-        commit: 7cc3965fde74c9c725ed01de4ac35bc7d562d16a
-[23/56] ASoC: tegra: Update to use set_fmt_new callback
-        commit: d92ad6633fa77f9496840b77c8effeaa13ac78dc
-[24/56] ASoC: test-component: Update to use set_fmt_new callback
-        commit: d444c8d246a62392c0d249b1030c3ca271d47649
-[25/56] ASoC: ti: Update to use set_fmt_new callback
-        commit: 563ff63dc9fbb8ef4b8f145a53c84a5489bbd789
-[26/56] ASoC: ux500: Update to use set_fmt_new callback
-        commit: ce3467c78478e33927aea9043bf20f46fa4d5688
-[27/56] ASoC: xtensa: Update to use set_fmt_new callback
-        commit: e945206a0a448ac81dde0609578508368946f7a6
-[28/56] ASoC: core: Always send the CPU DAI a direct clock specifier
-        commit: 6c076273a326cc5b5162451aacf7b7744bb03c66
-[29/56] ASoC: amd: vangogh: Rename set_fmt_new back to set_fmt
-        commit: 346f47e784cd48b456f267a66e0daf1ef10d21b3
-[30/56] ASoC: atmel: Rename set_fmt_new back to set_fmt
-        commit: a839a53b9dc70f94032a671ee019599884612d4a
-[31/56] ASoC: au1x: Rename set_fmt_new back to set_fmt
-        commit: 2c73f5fd20a845fcb48173578b7c83dbcbacdeda
-[32/56] ASoC: bcm: Rename set_fmt_new back to set_fmt
-        commit: 1a267dd98c246237be00587b6e71f969bf75f10d
-[33/56] ASoC: ep93xx: Rename set_fmt_new back to set_fmt
-        commit: 324a4db8de05290237793dc3d7da887846ae90c1
-[34/56] ASoC: dwc: Rename set_fmt_new back to set_fmt
-        commit: 765fb623a2cd925c550370f73efe2137c52a1b25
-[35/56] ASoC: fsl: Rename set_fmt_new back to set_fmt
-        commit: 00778276cf4c611882219ab7aba9664c48981f1a
-[36/56] ASoC: hisilicon: Rename set_fmt_new back to set_fmt
-        commit: b9a7972818b84a15d46505df7808fd86c3fba5bb
-[37/56] ASoC: img: Rename set_fmt_new back to set_fmt
-        commit: 1830a30ec4cf1642a429e80dbbeb86aa7825c71a
-[38/56] ASoC: Intel: Rename set_fmt_new back to set_fmt
-        commit: c14a6ce9848571cf67faff206b02e212bec82761
-[39/56] ASoC: jz4740-i2s: Rename set_fmt_new back to set_fmt
-        commit: 1724cc38e7685ad8b01413acd70a4a731fc105ae
-[40/56] ASoC: mediatek: Rename set_fmt_new back to set_fmt
-        commit: 00ca2d152ef0fa9f4beb2a590e176499440de8fe
-[41/56] ASoC: meson: Rename set_fmt_new back to set_fmt
-        commit: eee6b5b9f3af0e906085022713ef41e56d03eca8
-[42/56] ASoC: mxs-saif: Rename set_fmt_new back to set_fmt
-        commit: 1a805faeb4915496671cd24bd2a75cc97a85dfc8
-[43/56] ASoC: pxa: Rename set_fmt_new back to set_fmt
-        commit: 8e2cc2b241bc0bb905231f301e6dfc80dc79f8a8
-[44/56] ASoC: qcom: Rename set_fmt_new back to set_fmt
-        commit: f1bd2fae856384f9377ca3faed0583d929002640
-[45/56] ASoC: rockchip: Rename set_fmt_new back to set_fmt
-        commit: 059f16bc0e02164617312435c31dffdc419f113f
-[46/56] ASoC: samsung: Rename set_fmt_new back to set_fmt
-        commit: b99d00c724bcf395558cb3028e823bd8f554fee6
-[47/56] ASoC: sh: Rename set_fmt_new back to set_fmt
-        commit: adced68031f96642272fae4e8c36d45d13797306
-[48/56] ASoC: stm: Rename set_fmt_new back to set_fmt
-        commit: 02ba0d9680feee645a321d65012f38d0a368b559
-[49/56] ASoC: sunxi: Rename set_fmt_new back to set_fmt
-        commit: 15011b2388d020a6cdb323539fc69c31b04d9f21
-[50/56] ASoC: tegra: Rename set_fmt_new back to set_fmt
-        commit: 475f2af6a2ff33e828900601a162e324b9986f9a
-[51/56] ASoC: test-component: Rename set_fmt_new back to set_fmt
-        commit: 408c122ef9de99220f7919594ab8af98194a19e8
-[52/56] ASoC: ti: Rename set_fmt_new back to set_fmt
-        commit: 9ff1836023ae19013c01f230e6a091fad6835213
-[53/56] ASoC: ux500: Rename set_fmt_new back to set_fmt
-        commit: e24ba1a21e244e7174e75ca0c4020beaff0ad369
-[54/56] ASoC: xtensa: Rename set_fmt_new back to set_fmt
-        commit: 58e23e21d18532aaa404e1db87ec92762e1fecd5
-[55/56] ASoC: soc-dai: Remove set_fmt_new callback
-        commit: 19423951a4b5c4f0ca107d6a4bed23f3f63718ca
-[56/56] ASoC: simple-card-utils: Move snd_soc_component_is_codec to be local
-        commit: 28086d05ada6d03daa886aad0e469854b811311c
+> Commit e5fabbe43f3f ("pinctrl: mediatek: paris: Support generic
+> PIN_CONFIG_DRIVE_STRENGTH_UA") added support for using
+> drive-strength-microamp instead of mediatek,drive-strength-adv.
+> =
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+> Since there aren't any users of mediatek,drive-strength-adv on mt8192
+> yet, remove this property and add drive-strength-microamp in its place,
+> which has a clearer meaning.
+> =
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+> While at it, add a new 'if' block to validate that drive-strength and
+> drive-strength-microamp aren't used together, since they're mutually
+> exclusive.
+> =
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+> Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogiocchino.delregno@collabora.com>
+> ---
+> =
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+> Changes in v2:
+> - Added 'if' block to make drive-strength and drive-strength-microamp
+>   mutually exclusive
+> - Changed commit title to be more precise
+> - Dropped Fixes tag
+> =
+
+>  .../bindings/pinctrl/pinctrl-mt8192.yaml      | 35 ++++++-------------
+>  1 file changed, 10 insertions(+), 25 deletions(-)
+> =
+
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-
+> mt8192.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-
+> mt8192.yaml
+> index c90a132fbc79..c8092b218f2f 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml
+> @@ -80,31 +80,8 @@ patternProperties:
+>                dt-bindings/pinctrl/mt65xx.h. It can only support
+> 2/4/6/8/10/12/14/16mA in mt8192.
+>              enum: [2, 4, 6, 8, 10, 12, 14, 16]
+>  =
+
+> -          mediatek,drive-strength-adv:
+> -            description: |
+> -              Describe the specific driving setup property.
+> -              For I2C pins, the existing generic driving setup can
+> only support
+> -              2/4/6/8/10/12/14/16mA driving. But in specific driving
+> setup, they
+> -              can support 0.125/0.25/0.5/1mA adjustment. If we enable
+> specific
+> -              driving setup, the existing generic setup will be
+> disabled.
+> -              The specific driving setup is controlled by E1E0EN.
+> -              When E1=3D0/E0=3D0, the strength is 0.125mA.
+> -              When E1=3D0/E0=3D1, the strength is 0.25mA.
+> -              When E1=3D1/E0=3D0, the strength is 0.5mA.
+> -              When E1=3D1/E0=3D1, the strength is 1mA.
+> -              EN is used to enable or disable the specific driving
+> setup.
+> -              Valid arguments are described as below:
+> -              0: (E1, E0, EN) =3D (0, 0, 0)
+> -              1: (E1, E0, EN) =3D (0, 0, 1)
+> -              2: (E1, E0, EN) =3D (0, 1, 0)
+> -              3: (E1, E0, EN) =3D (0, 1, 1)
+> -              4: (E1, E0, EN) =3D (1, 0, 0)
+> -              5: (E1, E0, EN) =3D (1, 0, 1)
+> -              6: (E1, E0, EN) =3D (1, 1, 0)
+> -              7: (E1, E0, EN) =3D (1, 1, 1)
+> -              So the valid arguments are from 0 to 7.
+> -            $ref: /schemas/types.yaml#/definitions/uint32
+> -            enum: [0, 1, 2, 3, 4, 5, 6, 7]
+> =
+
+> Can't remove mediatek,drive-strength-adv property, I2C pins will ofter
+> use this property
+
+Yes, the point is that they should use drive-strength-microamp instead, whi=
+ch
+does the exact same thing while also having a clearer meaning.
+
+> =
+
+> +          drive-strength-microamp:
+> +            enum: [125, 250, 500, 1000]
+>  =
+
+>            mediatek,pull-up-adv:
+>              description: |
+> @@ -138,6 +115,14 @@ patternProperties:
+>          required:
+>            - pinmux
+>  =
+
+> +        allOf:
+> +          - if:
+> +              required:
+> +                - drive-strength-microamp
+> +            then:
+> +              properties:
+> +                drive-strength: false
+> +
+>          additionalProperties: false
+>  =
+
+> Property drive-strength-microamp and drive-strength aren't exclusive,
+> just i2c pins support drive-strength-microamp property .
+
+They are exclusive in the sense that both drive-strength-microamp and
+drive-strength shouldn't be used on the same pin configuration. The fact th=
+at
+only i2c pins use drive-strength-microamp doesn't have to do with this, and=
+ is
+perfectly fine.
 
 Thanks,
-Mark
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
