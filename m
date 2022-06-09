@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91719C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 12:11:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5DBEC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 12:14:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rRg7Oz45EKKCWclB8oR+x7bO6319aXmS1yAvjbRJnBo=; b=oh3v3kr/o3cb23
-	rBREz8BQ454IeaIVZSalTIOSBZGD9UrXhSB9CfX7550i4bRTa675IugQ88SSzA2Zk2rOefCMAY5sY
-	8uJO4jzik2stOimMGrevhJ7WfQHxkrr17rLLfA6jXjzFBVfb1YP4Gv37oIGLXvZzAD3F50EKV+Pvp
-	BqplrXBBuy8jUU50h/P9iW8XLqtyAai3T4U0TxKGc6EUyA2KJJaUqACQXov0uXLZBgjgItUYMcaUw
-	HUHc/WJ/p0GMcedhGVBVKU5hM+d9caU8KDyC5RP3uYAxhmFK5cCnHpsOMYvo4IhcoXI7dwe7F0/GD
-	0g04gQFquYfzMXi6eEqg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=gIF/yvAHTgDYJDFPadA/NvX55x/Nh/puHhDalhCE10c=; b=ZDHsoSjk3cGN+N
+	Jwcw6qU7GaTAQxe6/Aw3Y4EUVcBFs7wxpNrSLIzlUph/SjRQCc+iZr6nGh3VAMspbbd/nD9qtcdrI
+	9UP4dGGrtfqEXiras+3d83bbIaERJRM4SMMKR4zIkPzQqRIVmLHNP8tjxzHVpCLUol2UWX9oPZzOt
+	7efle0j6FmN7cpvrYFXRsgbECgY/YktW4IddvdjTS1+TDIkxjWrzN3OGqJtoCNry1PLtbM2SYwdQW
+	0QFRUV3+nJSX3V5wcjYREFOyQIs/uJ0T6DuyDygMCVAzNTSyNI7RDkoldwUl2Um8op1UFpPNeSEoK
+	i2ieSO9E82mMlYhaR2QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzH0L-001cCD-Uz; Thu, 09 Jun 2022 12:11:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nzH30-001dN6-Ai; Thu, 09 Jun 2022 12:13:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzGhm-001UYc-Sw; Thu, 09 Jun 2022 11:52:04 +0000
-X-UUID: 05110ff445f24db8aa7f0a981c7c66dd-20220609
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:72ee3886-4ccb-4787-8cef-3c0a24783580,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09,CLOUDID:f49b42e5-2ba2-4dc1-b6c5-11feb6c769e0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:0,BEC:nil
-X-UUID: 05110ff445f24db8aa7f0a981c7c66dd-20220609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 356463852; Thu, 09 Jun 2022 04:51:57 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 04:41:59 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 9 Jun 2022 19:41:58 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 9 Jun 2022 19:41:57 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
-	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
-	<kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [RESEND,V2,2/2] media: media: jpegenc: set bit mask for jpegenc
-Date: Thu, 9 Jun 2022 19:41:51 +0800
-Message-ID: <20220609114151.19509-3-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220609114151.19509-1-irui.wang@mediatek.com>
-References: <20220609114151.19509-1-irui.wang@mediatek.com>
+	id 1nzGmy-001Wge-RO; Thu, 09 Jun 2022 11:57:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5E35B60C49;
+	Thu,  9 Jun 2022 11:57:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A599CC3411B;
+	Thu,  9 Jun 2022 11:57:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1654775843;
+	bh=OypU/OgmdIE82Czce754wZSkPYqIeHYmcc3YDTKRUCc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=hg036Jq6tRQxbSfxhePXWNh7rY1YzBQji8mWHKwFIQkvGjHhuwsmB/YWuUaE+RGVg
+	 BYl8F9kOHSiSypJJ/VxYobtGaBQB9K9M6afPa4qniGj8e8jF/RrAeNLfI317N1so7a
+	 iP/n92kuorohBLVa820HErpOembgsRzutaoIPLhaaKiWLmsQq5lC2UJVwG/QFpfDfC
+	 2gp+Shnp0pzmcBnid61jngmuFxnZiP7cB6wkLQhQsv0LSGEzgyVHr8azCJYBHwlrT3
+	 pi5bukGinvsaPmnK9Ym+RabGc+Gxpn3LlRnxH8fJO4LA9W+3sqArBlAUW7ETyIUBWZ
+	 1yQJc88RqXzBw==
+Date: Thu, 9 Jun 2022 12:57:17 +0100
+From: Will Deacon <will@kernel.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com,
+	Marc Zyngier <maz@kernel.org>,
+	Alexandru Elisei <alexandru.elisei@arm.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, jean-philippe.brucker@arm.com
+Subject: Re: [PATCH] arm64: Clear OS lock in enable_debug_monitors
+Message-ID: <20220609115716.GA2427@willie-the-truck>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220609033322.12436-1-mark-pk.tsai@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_045202_970972_EDB4B7E9 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20220609_045724_985796_608C8E16 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,36 +75,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
+On Thu, Jun 09, 2022 at 11:33:18AM +0800, Mark-PK Tsai wrote:
+> Always clear OS lock before enable debug event.
+> 
+> The OS lock is clear in cpuhp ops in recent kernel,
+> but when the debug exception happened before it
+> kernel might crash because debug event enable didn't
+> take effect when OS lock is hold.
+> 
+> Below is the use case that having this problem:
+> 
+> Register kprobe in console_unlock and kernel will
+> panic at secondary_start_kernel on secondary core.
+> 
+> CPU: 1 PID: 0 Comm: swapper/1 Tainted: P
+> ...
+> pstate: 004001c5 (nzcv dAIF +PAN -UAO)
+> pc : do_undefinstr+0x5c/0x60
+> lr : do_undefinstr+0x2c/0x60
+> sp : ffffffc01338bc50
+> pmr_save: 000000f0
+> x29: ffffffc01338bc50 x28: ffffff8115e95a00 T
+> x27: ffffffc01258e000 x26: ffffff8115e95a00
+> x25: 00000000ffffffff x24: 0000000000000000
+> x23: 00000000604001c5 x22: ffffffc014015008
+> x21: 000000002232f000 x20: 00000000000000f0 j
+> x19: ffffffc01338bc70 x18: ffffffc0132ed040
+> x17: ffffffc01258eb48 x16: 0000000000000403 L&
+> x15: 0000000000016480 x14: ffffffc01258e000 i/
+> x13: 0000000000000006 x12: 0000000000006985
+> x11: 00000000d5300000 x10: 0000000000000000
+> x9 : 9f6c79217a8a0400 x8 : 00000000000000c5
+> x7 : 0000000000000000 x6 : ffffffc01338bc08 2T
+> x5 : ffffffc01338bc08 x4 : 0000000000000002
+> x3 : 0000000000000000 x2 : 0000000000000004
+> x1 : 0000000000000000 x0 : 0000000000000001 *q
+> Call trace:
+>  do_undefinstr+0x5c/0x60
+>  el1_undef+0x10/0xb4
+>  0xffffffc014015008
+>  vprintk_func+0x210/0x290
+>  printk+0x64/0x90
+>  cpuinfo_detect_icache_policy+0x80/0xe0
+>  __cpuinfo_store_cpu+0x150/0x160
+>  secondary_start_kernel+0x154/0x440
+> 
+> The root cause is that OS_LSR_EL1.OSLK is reset
+> to 1 on a cold reset[1] and the firmware didn't
+> unlock it by default.
+> So the core didn't go to el1_dbg as expected after
+> kernel_enable_single_step and eret.
 
-set jpeg encode DMA bit mask to support 34bits
-iova space(16GB) that the mt8186 iommu HW support.
-Whole the iova range separate to 0~4G/4G~8G/8G~12G/12G~16G,
-regarding which iova range jpgenc actually locate, it
-depends on the dma-ranges property of vdec dtsi node.
+Hmm, I thought we didn't use hardware single-step for kprobes after
+7ee31a3aa8f4 ("arm64: kprobes: Use BRK instead of single-step when executing
+instructions out-of-line"). What is triggering this exception?
 
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index bc5b0a0168ec..87685a62a5c2 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1369,6 +1369,9 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 	jpeg->vdev->device_caps = V4L2_CAP_STREAMING |
- 				  V4L2_CAP_VIDEO_M2M_MPLANE;
- 
-+	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
-+		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
-+
- 	ret = video_register_device(jpeg->vdev, VFL_TYPE_VIDEO, -1);
- 	if (ret) {
- 		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
--- 
-2.18.0
-
+Will
 
 _______________________________________________
 Linux-mediatek mailing list
