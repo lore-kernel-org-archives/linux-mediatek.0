@@ -4,76 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADDC1C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 02:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1354EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 02:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EDrB8P74T1CaxL92YTc5gKMau42yJG6etXe+npBlurs=; b=piRXkVYJuod2y9
-	+AXXEmMfmU6VABeMqud4PMezGU/A8utFmQefUQwNRVf7r9P78xMV/In4Iv6jTzwbKBSw8EhAsA4ki
-	X8CaAofqiE/DsqSDPeZDSrnHzQrCpB8Bzq1rP3cQLTcO8J6gMqVKgWg+iYOrVnX9tDujSOA4Wwmtj
-	ycZrYbChzuijLj7gN4P/YQG7HYyzgeJ/sW0gGtYIxVY9jqxvlMhCcTD6NaK4s9OZSyGsAVBd/nav1
-	e+PsBSsMf3AaiJJ9qk5bPJwXzlIPoBNDCOCniGXVHJG9v2mhjUlz66BKmsQ2EhTS+jbGKYS3/+fx5
-	TieOkuVDhcX8taTZgAlg==;
+	List-Owner; bh=WMuMJtQsIzABRA04gq5ZG2uANj9XlYDGgiCAmDqBurU=; b=mXXOvnIq12qwWs
+	kyLoPfJUb4HAri6Ts5cemsn3o6Bdj333jLEC9CU7hbgnHTJCqTSzs2YQN9TGrostqVQwPUOr0YwqF
+	p7zsXZtwnkrDHbScAXZojvoDFvqy9wt1VU7ZFyHe/8VuKuPfj8vFxu503TrTrkkex6iH29qAkI9hL
+	zEuHfIckiODooSGgscPnFIy3zgIF8OEWSpXyWTkYTY/PgPdy48HZTfD+7qtxRTZ0ZcGifxkJoRALD
+	j2JFJIFCxtaIjJizYiSX7K7zVdvti20zjYcmNtX+AMxHVonVD0MkORB6sf/MOgDAy9tRqiA9EIM04
+	73o0Ndxym3Wt/Qrb+NIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nz7oq-00FgzQ-NX; Thu, 09 Jun 2022 02:22:44 +0000
+	id 1nz7ou-00Fh1v-V8; Thu, 09 Jun 2022 02:22:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nz7no-00FgQW-Ov; Thu, 09 Jun 2022 02:21:42 +0000
-X-UUID: 2d2adad21c8c4580be4e10e835ac1258-20220608
+	id 1nz7np-00FgRK-Bt; Thu, 09 Jun 2022 02:21:42 +0000
+X-UUID: ccfa35cc9498487eba09941c6a1bc342-20220608
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:489e0633-724e-4239-bd89-e0bfe8c75400,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.5,REQID:c5f11953-7106-489a-9628-0c8dd3e25c46,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:5
-X-CID-META: VersionHash:2a19b09,CLOUDID:49deb67e-c8dc-403a-96e8-6237210dceee,C
+X-CID-META: VersionHash:2a19b09,CLOUDID:6c822ce5-2ba2-4dc1-b6c5-11feb6c769e0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 2d2adad21c8c4580be4e10e835ac1258-20220608
+X-UUID: ccfa35cc9498487eba09941c6a1bc342-20220608
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2079237603; Wed, 08 Jun 2022 19:21:38 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+	with ESMTP id 219192332; Wed, 08 Jun 2022 19:21:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Jun 2022 19:12:57 -0700
+ 15.0.1497.2; Wed, 8 Jun 2022 19:14:04 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 9 Jun 2022 10:12:55 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 9 Jun 2022 10:14:01 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 9 Jun 2022 10:12:55 +0800
-Message-ID: <0df506ac54f8f96939c9d70f451dca1edd9a95dd.camel@mediatek.com>
-Subject: Re: [PATCH v22 17/24] drm/mediatek: add display merge async reset
- control
+ Transport; Thu, 9 Jun 2022 10:14:01 +0800
+Message-ID: <a9e414d58dc14be072823d5a5c7ee8802275785d.camel@mediatek.com>
+Subject: Re: [PATCH v22 20/24] drm/mediatek: add ovl_adaptor support for
+ MT8195
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
 	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
-	<wim@linux-watchdog.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+	"wim@linux-watchdog.org" <wim@linux-watchdog.org>, "AngeloGioacchino Del
+ Regno" <angelogioacchino.delregno@collabora.com>, "linux@roeck-us.net"
+	<linux@roeck-us.net>
 CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
  Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	"jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <dri-devel@lists.freedesktop.org>,
-	<llvm@lists.linux.dev>, <singo.chang@mediatek.com>,
+	Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
+	<Jason-JH.Lin@mediatek.com>, Yongqiang Niu
+ =?UTF-8?Q?=28=E7=89=9B=E6=B0=B8=E5=BC=BA=29?= <yongqiang.niu@mediatek.com>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, "llvm@lists.linux.dev"
+	<llvm@lists.linux.dev>, Singo Chang
+ =?UTF-8?Q?=28=E5=BC=B5=E8=88=88=E5=9C=8B=29?= <Singo.Chang@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 9 Jun 2022 10:12:55 +0800
-In-Reply-To: <20220526110233.20080-18-nancy.lin@mediatek.com>
+Date: Thu, 9 Jun 2022 10:14:01 +0800
+In-Reply-To: <20220526110233.20080-21-nancy.lin@mediatek.com>
 References: <20220526110233.20080-1-nancy.lin@mediatek.com>
-	 <20220526110233.20080-18-nancy.lin@mediatek.com>
+	 <20220526110233.20080-21-nancy.lin@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_192140_835231_48E47BCC 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20220608_192141_424672_D2838F47 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,20 +100,19 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Thu, 2022-05-26 at 19:02 +0800, Nancy.Lin wrote:
-> Add merge async reset control in mtk_merge_stop. Async hw doesn't do
-> self
-> reset on each sof signal(start of frame), so need to reset the async
-> to
-> clear the hw status for the next merge start.
+> Add ovl_adaptor driver for MT8195.
+> Ovl_adaptor is an encapsulated module and designed for simplified
+> DRM control flow. This module is composed of 8 RDMAs, 4 MERGEs and
+> an ETHDR. Two RDMAs merge into one layer, so this module support 4
+> layers.
 > 
 > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 > Reviewed-by: AngeloGioacchino Del Regno <
 > angelogioacchino.delregno@collabora.com>
 > Tested-by: AngeloGioacchino Del Regno <
 > angelogioacchino.delregno@collabora.com>
 > ---
-> 
 
 [Bo-Chen: Test on MT8195 Tomato Chromebook with external display]
 Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
