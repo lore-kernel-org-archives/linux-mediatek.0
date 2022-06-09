@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37FAC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 02:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A22EC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 02:30:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l2WUth8AyDGtDMGPt+GCbwXBGIxx8YSEqelgrpTlJC0=; b=vyvvUN7yB3ks4g
-	UcU9InhVHPo5881tJC2dLbre7nVTmkGVe8TXhwvXaH3PlAFGXHgxbMmVAJdUSMifJbzL7ci+Z9Tuc
-	9mJtmejj7OQG62XYR9i7OEgwIhd6lsPWyMQxla3RQ4yQc9KfUMsLun9/epfDce3mfWVeZHhXmQr6Y
-	mYTfTb2YRlRaVtFG6hhxBNhu45TynXfsvqYFzErhGnKX8RGfb8wYfLUtdcav1F/t4tFvAXxnk8Qon
-	mrLD6CFZ1FoBMDQIfOfRLwU1f/irlSNorOcpU3cTgZcaVkakO+iQXmjBlc9NHrkJ2UNDiGgw4CQTT
-	+Sn6K62xIWCQTlwgNplg==;
+	List-Owner; bh=QOTRprHblLr2uSfuAa651wgmyILbXzd9QVkrr6WYCz0=; b=DdIl8OXwBWc4AH
+	PWwkOHti6B/38ttIPhdjpVnySV7TyV4ppv6vv+CxzzaPXzdWPyi944/QVjjZn4V63lMxl+ymksPfx
+	DhfGYqkJ5wkqrtZ0YKnd1DrNDTm4Ov9rmSvuNbBOb27Z7ceV/D7ciQjqbKR/23TJTuCyVxi7EOMAc
+	1rx+8sf/z6iDH3IyuqtYTScwI6HsXff9p0QoWMP2AUyUjo3QRSskTsY7uYdYBUhh2EcGlfUSBSkYM
+	gurv3sLgzRj3QfTEv1S2L2muAG02v6EBgPV5tx+LDI9i5OwFM7ynxP1RK1NK30BMzChKD9P93cWwi
+	qj/ysm1+MaC/1fD9obGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nz7pv-00FhcW-MP; Thu, 09 Jun 2022 02:23:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nz7wN-00FkQ2-QP; Thu, 09 Jun 2022 02:30:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nz7nq-00FgSI-De; Thu, 09 Jun 2022 02:21:43 +0000
-X-UUID: 4f2d3d8e94e446b6b8f726fc27dc5e56-20220608
+	id 1nz7w6-00FkIP-KQ; Thu, 09 Jun 2022 02:30:16 +0000
+X-UUID: daaf7f55824a48bf92f861dbb64055c8-20220608
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:17c02f08-1b8c-4a0b-ab57-24501dca43e6,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:2a19b09,CLOUDID:6d822ce5-2ba2-4dc1-b6c5-11feb6c769e0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:5030c0ba-5941-4a30-bd0c-99be138a0817,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:00ef2ce5-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: 4f2d3d8e94e446b6b8f726fc27dc5e56-20220608
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: daaf7f55824a48bf92f861dbb64055c8-20220608
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 393409319; Wed, 08 Jun 2022 19:21:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Jun 2022 19:13:39 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 9 Jun 2022 10:13:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 9 Jun 2022 10:13:36 +0800
-Message-ID: <14ca38d3d00eb4308076dd9c39ef9eb5cb27c7d8.camel@mediatek.com>
-Subject: Re: [PATCH v22 19/24] drm/mediatek: add mediatek-drm plane color
- encoding info
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
-	<wim@linux-watchdog.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	"jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <dri-devel@lists.freedesktop.org>,
-	<llvm@lists.linux.dev>, <singo.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 9 Jun 2022 10:13:36 +0800
-In-Reply-To: <20220526110233.20080-20-nancy.lin@mediatek.com>
-References: <20220526110233.20080-1-nancy.lin@mediatek.com>
-	 <20220526110233.20080-20-nancy.lin@mediatek.com>
+	with ESMTP id 1923485804; Wed, 08 Jun 2022 19:30:10 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 8 Jun 2022 19:30:09 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 9 Jun 2022 10:30:07 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 9 Jun 2022 10:30:07 +0800
+Message-ID: <49f4f8732eb1df31b0c8a82761e1c4dad9aef106.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Guillaume Ranquet
+	<granquet@baylibre.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, "Daniel
+ Vetter" <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun
+ =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
+	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
+	<linux-fbdev@vger.kernel.org>
+Date: Thu, 9 Jun 2022 10:30:07 +0800
+In-Reply-To: <75c00caca74b8366ca2c4594a8229b6de95c5f47.camel@mediatek.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+	 <f791f46c6307a18818574cb7fb8653bcc84aa9ad.camel@mediatek.com>
+	 <75c00caca74b8366ca2c4594a8229b6de95c5f47.camel@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_192142_501770_1045F144 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220608_193014_746497_0603AA84 
+X-CRM114-Status: GOOD (  34.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,22 +100,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-05-26 at 19:02 +0800, Nancy.Lin wrote:
-> Add plane color encoding information for color space conversion.
-> It's a preparation for adding support for mt8195 ovl_adaptor mdp_rdma
-> csc control.
-> 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> Tested-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
-> 
+Hi, Rex:
 
-[Bo-Chen: Test on MT8195 Tomato Chromebook with external display]
-Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+On Wed, 2022-06-08 at 18:26 +0800, Rex-BC Chen wrote:
+> On Tue, 2022-06-07 at 15:47 +0800, CK Hu wrote:
+> > Hi, Rex:
+> > 
+> > On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> > > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > 
+> > > This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> > > 
+> > > It supports the mt8195, the embedded DisplayPort units. It offers
+> > > DisplayPort 1.4 with up to 4 lanes.
+> > > 
+> > > The driver creates a child device for the phy. The child device
+> > > will
+> > > never exist without the parent being active. As they are sharing
+> > > a
+> > > register range, the parent passes a regmap pointer to the child
+> > > so
+> > > that
+> > > both can work with the same register range. The phy driver sets
+> > > device
+> > > data that is read by the parent to get the phy device that can be
+> > > used
+> > > to control the phy properties.
+> > > 
+> > > This driver is based on an initial version by
+> > > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> > > 
+> > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > > ---
+> > 
+> > [snip]
+> > 
+> > > +
+> > > +static int mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+> > > +{
+> > > +	ssize_t ret;
+> > > +	u8 sink_count;
+> > > +	bool locked;
+> > > +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
+> > > +	u32 sink_count_reg = DP_SINK_COUNT_ESI;
+> > > +	u32 link_status_reg = DP_LANE0_1_STATUS;
+> > > +
+> > > +	ret = drm_dp_dpcd_readb(&mtk_dp->aux, sink_count_reg,
+> > > &sink_count);
+> > > +	if (ret < 0) {
+> > > +		drm_err(mtk_dp->drm_dev, "Read sink count failed:
+> > > %ld\n", ret);
+> > > +		return ret;
+> > > +	}
+> > > +
+> > > +	ret = drm_dp_dpcd_read(&mtk_dp->aux, link_status_reg,
+> > > link_status,
+> > > +			       sizeof(link_status));
+> > > +	if (!ret) {
+> > > +		drm_err(mtk_dp->drm_dev, "Read link status failed:
+> > > %ld\n",
+> > > +			ret);
+> > > +		return ret;
+> > > +	}
+> > > +
+> > > +	locked = drm_dp_channel_eq_ok(link_status,
+> > > +				      mtk_dp->train_info.lane_count);
+> > > +	if (!locked && mtk_dp->train_state >
+> > > MTK_DP_TRAIN_STATE_TRAINING_PRE)
+> > 
+> > Before enter this function, mtk_dp->train_state is set to
+> > MTK_DP_TRAIN_STATE_STARTUP, so this never happen, drop this.
+> > 
+> 
+> The interrupt from sink device could come any time. Why it's
+> impossible?
+
+I still ask this question: "For eDP, when does disconnect happened?" If
+it indeed happen, I still do not like to change state here. When
+disconnect, the training flow would result in fail finally and need not
+to change state here, but the training flow would block for a while
+when disconnect. You could add some check point to check train_info-
+>cable_plugged_in to quickly break out the training flow.
+
+Regards,
+CK
+
+> 
+> > > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING_PRE;
+> > > +
+> > > +	if (link_status[1] & DP_REMOTE_CONTROL_COMMAND_PENDING)
+> > > +		drm_dp_dpcd_writeb(&mtk_dp->aux,
+> > > DP_DEVICE_SERVICE_IRQ_VECTOR,
+> > > +				   DP_REMOTE_CONTROL_COMMAND_PENDING);
+> > > +
+> > > +	if (DP_GET_SINK_COUNT(sink_count) &&
+> > > +	    (link_status[2] & DP_DOWNSTREAM_PORT_STATUS_CHANGED)) {
+> > > +		mtk_dp->train_info.check_cap_count = 0;
+> > > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKEDID;
+> > 
+> > Why change state from MTK_DP_TRAIN_STATE_STARTUP to
+> > MTK_DP_TRAIN_STATE_CHECKEDID? In mtk_dp_train_handler(),
+> > mtk_dp_parse_capabilities() is true then change to
+> > MTK_DP_TRAIN_STATE_CHECKEDID. Give a reason why these two are
+> > different.
+> > 
+> > Regards,
+> > CK
+> > 
+> 
+> I will drop this and drop state of MTK_DP_TRAIN_STATE_CHECKEDID.
+> MTK_DP_TRAIN_STATE_CHECKEDID is only used for audio.
+> We can check enable status in another place.
+> 
+> BRs,
+> Bo-Chen
+> 
+> > > +		msleep(20);
+> > > +	}
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > 
+> > 
+> 
+> 
 
 
 _______________________________________________
