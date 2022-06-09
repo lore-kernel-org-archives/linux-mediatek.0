@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE53CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 11:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42DA9C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 11:24:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sSZxuav+GZLHEhx0PcZuEJFT13Cz5GiIRQhUeg5SZkQ=; b=vLR/OPVra6viQC
-	MGuEojMeR/2bZ7OQGiZehms+3gP1qlxIwSggGxUiul/ASM1VsAT8mpP6Sa/9CYupyCst3BPGjnhiJ
-	TxtHxx4AGI3gvtY2xqlUKuJTLNhxMD87KDNnHZtwVoDU5TQsUdjrnfE1OBe8NvOe7eJlZbpQ5PZgH
-	lEPyj1CD+Kvw6itLwX6zZMa06TtEjFuX4RIa8SpjaT0/HaNzQsEvxUNHbGoFZZaT0TTKuX4+LIh/n
-	GV8YA4bMCU4TaoEmLUzWcrUiU29KLSwztBZlExLs4HNqAaGxitcOgpZEor1lFLbgtHJnlb0mhHbbe
-	AMpOxUlDqwn80Z/PdkCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YST+9G3qHfoR+lZBKk7NdoN35411C9RaROQruGFrRvA=; b=n50O73wdQWE6JL
+	H82qaYP9j0sRoTEH/ho3QnEpHmc/nOwzy3meqvjT96wyIvkxYrT2JZw091Eevsx+386pBuSIB9gkF
+	KHAmiiNvrPHYTOs6VSOtsUHVzAAd/VfynnCPfwah6m3Bfb7GT2A0t+QyzoGMJkrc0Zggfk1nQRvmp
+	F7ap1FB3P3mfqfgSN+vkOHG17F3vpT8PlNYGTc51XczZP38pHqKTie55vRBRABV6NO7aMZYg9ydxO
+	T35nGKJVcjSI29MUM4tpU92sAeoY/7Rm+rpzxei7sBnEO5ptpZQ4vlVsm5m8fCs6WLEN9lbErYexq
+	vZmbbVvcjjHn1b3LgpVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzGGR-001GfF-Qg; Thu, 09 Jun 2022 11:23:47 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1nzGGk-001Gtr-7M; Thu, 09 Jun 2022 11:24:06 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzGFs-001GLu-E3; Thu, 09 Jun 2022 11:23:13 +0000
+	id 1nzGFs-001GLB-EE; Thu, 09 Jun 2022 11:23:14 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A23166017CF;
-	Thu,  9 Jun 2022 12:23:10 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CA19966017C8;
+	Thu,  9 Jun 2022 12:23:07 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1654773791;
-	bh=+SNQosugZ3rRLzeC91179/d1xD7fpoErRAwb547pmRM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=S7KJDmw4QBP9Uj7VYNzil/QC22SlwfQosv38ZlTcKF1fTNbCdGJMtdM/XXAuS42cx
-	 tkber570qlmPd1KgxxeLT57PuZ8dSLaYH/b3G8r8eR3sEXxnnnqiHZasnsC4wosbKB
-	 qoPhN1SF9UYkrT/XjkdACqiXVpAOEhWQhS9W7BJUrHT1dH2u0qn93Rq8LOjBAuZtNk
-	 iD0qXVvBuFebozm+R/4ydMZygTpqkCRAGLtcFOQYRhe7Kt1VEvwpv4D7MAfb+c2fmT
-	 ZfDgTHfbhQZBDJGYky2Tgl4OTWys0UseWYN8K32Ktx0q3hSRZ+RSQT8T7UcsXJyjeU
-	 gMZ73MX2uQ+tw==
+	s=mail; t=1654773788;
+	bh=9Ae5YF6irZpp0Rms9XFrNm87VVx0wDKBfDaYKBip0iY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=kTGqfVH1pAml5TEdtn4V1L6IjyCLLn/p7oz53tNZ4NCG02/TgKQhGwGI0PXypNIJx
+	 WiQEwpXpg/S1JAjeE9zINrD5W4GHDMwCiATKETd+fkmP0VwM62qvWOdOP2S0rCREME
+	 +rTnlqhyyBllcPh7Gm4PdX9S9hkjZi69kUB/UMjq5atKW6BFbQ2b8UhPb9snZNMhwb
+	 UKLhwCCrqmTmFMNu/tDTCsCF6Ks6p9ZNpwRtbkBYuMeRpt6YmeI/g7xWVPq4jl8MW5
+	 VmA7vF1Noib1pX5tRcSL+X+wPVQvKPNQ+ZzugIQs3yATRD9FBl0fB1DspY9JEP5MkH
+	 suJIzFwYPi/Hw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -57,16 +57,14 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	paul.bouchara@somainline.org,
 	kernel@collabora.com,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 03/10] arm64: dts: mediatek: mt6795: Add Cortex A53 PMU nodes
-Date: Thu,  9 Jun 2022 13:22:56 +0200
-Message-Id: <20220609112303.117928-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 00/10] MediaTek Helio X10 MT6795 - Devicetree, part 1
+Date: Thu,  9 Jun 2022 13:22:53 +0200
+Message-Id: <20220609112303.117928-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220609112303.117928-1-angelogioacchino.delregno@collabora.com>
-References: <20220609112303.117928-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_042312_658477_9B4B3B57 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20220609_042312_660911_8EBFB999 
+X-CRM114-Status: UNSURE (   9.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,33 +82,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the required nodes to enable the PMU on this SoC.
+In an effort to give some love to the apparently forgotten MT6795 SoC,
+I am upstreaming more components that are necessary to support platforms
+powered by this one apart from a simple boot to serial console.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 9 +++++++++
- 1 file changed, 9 insertions(+)
+This series modernizes the devicetree of the MT6795 SoC and adds a
+couple of nodes that are supported by this SoC.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index 1456b9035336..639104b3f693 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -160,6 +160,15 @@ uart_clk: dummy26m {
- 		#clock-cells = <0>;
- 	};
- 
-+	pmu {
-+		compatible = "arm,cortex-a53-pmu";
-+		interrupts = <GIC_SPI  8 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI  9 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 10 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 11 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
-+	};
-+
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
+In my local tree I have much more than that (including the dts for
+that Xperia M5 smartphone that I always mention...), but I decided
+to push the devicetree commits in multiple parts, as to get these
+in sooner than later because that reduces my delta, and this makes
+upstreaming a bit easier, especially when having to rebase things
+around, which happens a lot.
+
+So, this series *does NOT* depends on any of the other series that
+I've pushed and is mergeable in parallel.
+
+Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+
+Changes in v2:
+ - Split fixed-clocks addition/removal patch for readability
+ - Added patches for pinctrl controller node and vGIC interrupt
+
+AngeloGioacchino Del Regno (10):
+  arm64: dts: mediatek: mt6795: Create soc bus node and move mmio
+    devices
+  arm64: dts: mediatek: mt6795: Add cpu-map and L2 cache
+  arm64: dts: mediatek: mt6795: Add Cortex A53 PMU nodes
+  arm64: dts: mediatek: mt6795: Add watchdog node to avoid timeouts
+  arm64: dts: mediatek: mt6795: Add fixed clocks for 32kHz and 26MHz XOs
+  arm64: dts: mediatek: mt6795: Remove incorrect fixed-clocks
+  arm64: dts: mediatek: mt6795: Add general purpose timer node
+  arm64: dts: mediatek: mt6795: Add ARM CCI-400 node and assign to CPUs
+  arm64: dts: mediatek: mt6795: Add pinctrl controller node
+  arm64: dts: mediatek: mt6795: Specify interrupts for vGIC
+
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 260 ++++++++++++++++++-----
+ 1 file changed, 205 insertions(+), 55 deletions(-)
+
 -- 
 2.35.1
 
