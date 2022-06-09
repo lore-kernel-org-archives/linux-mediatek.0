@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E50C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 18:19:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34AAFCCA473
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 18:26:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VZ91eMB5wYeySoFf+07M0y2HuJe4FWjN7MxfbScqXTc=; b=vt8OEV80u5yw/Q
-	7kIc2zhAk0vRzKDnUlTPTlnXFB315hQ4veRJbAfQmSNQdlJppzr/u0tnVvgzbZ1YSG54kloFsMQj+
-	1+NlXgeCzc4vHy8YGd5k9h3yUVYeQVOsGnN1E6n+2BEQtpi0J/aNtv4KWB0VMpWOi7ObKTogQEXDW
-	BgaDQgDa3wqADHcqh72Bg8m7H2quomDP3haNpQ992bd1FhHi4Gz+ZB7nrN2G3LAb3kQ2fJVMLWmHm
-	cRtV85qDjDt4ZRkgJf9CVTEs3cvoShjEfxLHx+IgE4+XWh+wWGVp50xJ5lN9qyEv+afT3ACdZwljA
-	5HQzxyyQbmeX019LbDgA==;
+	List-Owner; bh=H3iJYExmBhm1B47Rl65ixOsh3xQVUKYkN3et9I8R110=; b=LsHzv1+D34HktG
+	FLIt9pdtbmNa6P7ZgvPUj8Nm6PTLVWIEBjOadBqiCfvV0gM1SBkOuCqx03V4RX8fky+S0FBIvzBOn
+	nuAy9kWaqb+PO/5uXIOeCIA0Q/f62s0wXXWdNibFQdMSVg/9xhk9H7nwLMjuGz23weVSaz3fTiB1s
+	2F6lMa9Lgv7URQywyoxrGwF88MKv4qAgHQcpVCHkB3G3iMHydwZSfhNLZVzGV/tHYLmgLaOvH/mYF
+	rSGRxPvmMliAwq07d9FQzOxmbbg+Y5bgDbzoGC/dAFJ+Fdd/3VG5JM+7C1tes+y54Xe8sWSxBsT1P
+	HrSRe1bLW+dtMFVOj7tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzMkM-003WLU-TT; Thu, 09 Jun 2022 18:19:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nzMr1-003YtL-SP; Thu, 09 Jun 2022 18:25:59 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzMkB-003WF4-T1; Thu, 09 Jun 2022 18:18:57 +0000
-X-UUID: 424e7c55f80d4ff0a8eb54e2ab8f8e59-20220609
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:226bca1c-b000-4a74-835f-29856a4d59bc,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:48ff49e5-2ba2-4dc1-b6c5-11feb6c769e0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,IP:nil,URL:0,File:ni
-	l,QS:0,BEC:nil
-X-UUID: 424e7c55f80d4ff0a8eb54e2ab8f8e59-20220609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <miles.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 743595470; Thu, 09 Jun 2022 11:18:48 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 11:08:46 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 10 Jun 2022 02:08:45 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 02:08:45 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <iommu@lists.linux-foundation.org>,
-	<joro@8bytes.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<krzysztof.kozlowski@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<matthias.bgg@gmail.com>, <robh+dt@kernel.org>, <will@kernel.org>,
-	<yong.wu@mediatek.com>
-Subject: Re: [PATCH v3 4/6] arm64: dts: mediatek: mt2712e: Add mediatek,infracfg phandle for IOMMU
-Date: Fri, 10 Jun 2022 02:08:45 +0800
-Message-ID: <20220609180845.31195-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220609100802.54513-5-angelogioacchino.delregno@collabora.com>
-References: <20220609100802.54513-5-angelogioacchino.delregno@collabora.com>
+	id 1nzMqq-003Ynx-1s; Thu, 09 Jun 2022 18:25:49 +0000
+Received: from notapiano (unknown [169.150.201.35])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 34BE266017A8;
+	Thu,  9 Jun 2022 19:25:42 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654799144;
+	bh=wjYwbyy4txNdLBUZYKXoH1LINavwCoVlNaaWI8BLCAo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S3X604uAwDGo1mcYXm1Peo7/dNqEnhkV2oWvy8T8SZEadRJhtWLJbHclNkl61Vr+n
+	 PL4RaC7q2vzIqM1hL+DJ5aWo9oRSvDgfcdv9ThWyuMghbfzudQkHIg3eXAvIFYEDRh
+	 DtCVaiprK/t3xRctX6/Yd2wU1bCCPnEQ7gNT93mlXaHM4fauVKI4a6RKnvpaA9Ssdy
+	 giKgCZs+OJ8FsnnTBd18RLqgoimezvQ8A4XYleCsmg9IVdYrfz53/WSUHvnYZgz1Yv
+	 yktvQM9qr0zRzF/zVrSMQCJZKNppxa6FEN3+fiSrTlyq/AXD0wkNHL6GWnKLhKVIKK
+	 8AJJu9HWZ/ktA==
+Date: Thu, 9 Jun 2022 14:25:37 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Guodong Liu <guodong.liu@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v1 2/4] pinctrl: add drive for I2C related pins on mt8192
+Message-ID: <20220609182537.zbqk7gqsyscayv7b@notapiano>
+References: <20220608053909.1252-1-guodong.liu@mediatek.com>
+ <20220608053909.1252-3-guodong.liu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220608053909.1252-3-guodong.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_111855_962982_856711E7 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20220609_112548_309581_BDA1E3C6 
+X-CRM114-Status: GOOD (  18.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +74,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> The IOMMU driver now looks for the "mediatek,infracfg" phandle as a
-> new way to retrieve a syscon to that:
-> even though the old way is retained, it has been deprecated and the
-> driver will write a message in kmsg advertising to use the phandle
-> way instead.
-> 
-> For this reason, assign the right phandle to mediatek,infracfg in
-> the iommu node.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Guodong,
 
-Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
+thank you for the patch. Please see some suggestions below.
 
+On Wed, Jun 08, 2022 at 01:39:07PM +0800, Guodong Liu wrote:
+> This patch provides the advanced drive raw data setting version
+> for I2C used pins on mt8192
+
+Please add "mediatek:" on the commit title for this patch and patch 1, like=
+ you
+did for 3 and 4.
+
+> =
+
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index 623eb3beabf2..4797537cb368 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -329,6 +329,7 @@ iommu0: iommu@10205000 {
->  		interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&infracfg CLK_INFRA_M4U>;
->  		clock-names = "bclk";
-> +		mediatek,infracfg = <&infracfg>;
->  		mediatek,larbs = <&larb0>, <&larb1>, <&larb2>,
->  				 <&larb3>, <&larb6>;
->  		#iommu-cells = <1>;
-> @@ -346,6 +347,7 @@ iommu1: iommu@1020a000 {
->  		interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW>;
->  		clocks = <&infracfg CLK_INFRA_M4U>;
->  		clock-names = "bclk";
-> +		mediatek,infracfg = <&infracfg>;
->  		mediatek,larbs = <&larb4>, <&larb5>, <&larb7>;
->  		#iommu-cells = <1>;
->  	};
-> -- 
-> 2.35.1
-> 
-> 
+>  drivers/pinctrl/mediatek/pinctrl-mt8192.c | 31 +++++++++++++++++++++--
+>  1 file changed, 29 insertions(+), 2 deletions(-)
+> =
+
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/=
+mediatek/pinctrl-mt8192.c
+> index 9faf7001369d..d11ff5519e1e 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
+> @@ -1259,6 +1259,32 @@ static const struct mtk_pin_field_calc mt8192_pin_=
+r1_range[] =3D {
+>  	PIN_FIELD_BASE(205, 205, 8, 0x0070, 0x10, 5, 1),
+>  };
+>  =
+
+> +static const struct mtk_pin_field_calc mt8192_pin_drv_adv_range[] =3D {
+> +	PIN_FIELD_BASE(89, 89, 2, 0x0040, 0x10, 0, 5),
+> +	PIN_FIELD_BASE(90, 90, 2, 0x0040, 0x10, 5, 5),
+> +
+> +	PIN_FIELD_BASE(118, 118, 4, 0x0040, 0x10, 0, 3),
+> +	PIN_FIELD_BASE(119, 119, 4, 0x0040, 0x10, 18, 3),
+> +	PIN_FIELD_BASE(120, 120, 4, 0x0040, 0x10, 15, 3),
+> +	PIN_FIELD_BASE(121, 121, 4, 0x0050, 0x10, 3, 3),
+> +	PIN_FIELD_BASE(122, 122, 4, 0x0040, 0x10, 12, 3),
+> +	PIN_FIELD_BASE(123, 123, 4, 0x0050, 0x10, 0, 3),
+> +	PIN_FIELD_BASE(124, 124, 4, 0x0040, 0x10, 9, 3),
+> +	PIN_FIELD_BASE(125, 125, 4, 0x0040, 0x10, 27, 3),
+> +	PIN_FIELD_BASE(139, 139, 4, 0x0040, 0x10, 6, 3),
+> +	PIN_FIELD_BASE(140, 140, 4, 0x0040, 0x10, 24, 3),
+> +	PIN_FIELD_BASE(141, 141, 4, 0x0040, 0x10, 3, 3),
+> +	PIN_FIELD_BASE(142, 142, 4, 0x0040, 0x10, 21, 3),
+> +	PIN_FIELD_BASE(160, 160, 7, 0x0030, 0x10, 0, 3),
+> +	PIN_FIELD_BASE(161, 161, 7, 0x0030, 0x10, 3, 3),
+> +	PIN_FIELD_BASE(200, 200, 8, 0x0010, 0x10, 3, 3),
+> +	PIN_FIELD_BASE(201, 201, 8, 0x0010, 0x10, 9, 3),
+> +	PIN_FIELD_BASE(202, 202, 5, 0x0020, 0x10, 0, 3),
+> +	PIN_FIELD_BASE(203, 203, 5, 0x0020, 0x10, 3, 3),
+> +	PIN_FIELD_BASE(204, 204, 8, 0x0010, 0x10, 0, 3),
+> +	PIN_FIELD_BASE(205, 205, 8, 0x0010, 0x10, 6, 3),
+> +};
+> +
+>  static const struct mtk_pin_field_calc mt8192_pin_e1e0en_range[] =3D {
+>  	PIN_FIELD_BASE(118, 118, 4, 0x0040, 0x10, 0, 1),
+>  	PIN_FIELD_BASE(119, 119, 4, 0x0040, 0x10, 18, 1),
+> @@ -1357,6 +1383,7 @@ static const struct mtk_pin_reg_calc mt8192_reg_cal=
+s[PINCTRL_PIN_REG_MAX] =3D {
+>  	[PINCTRL_PIN_REG_R1] =3D MTK_RANGE(mt8192_pin_r1_range),
+>  	[PINCTRL_PIN_REG_DRV_EN] =3D MTK_RANGE(mt8192_pin_e1e0en_range),
+>  	[PINCTRL_PIN_REG_DRV_E0] =3D MTK_RANGE(mt8192_pin_e0_range),
+> +	[PINCTRL_PIN_REG_DRV_ADV]	=3D MTK_RANGE(mt8192_pin_drv_adv_range),
+
+Nit: use space instead of tab before the =3D.
+
+Thanks,
+N=EDcolas
+
+>  	[PINCTRL_PIN_REG_DRV_E1] =3D MTK_RANGE(mt8192_pin_e1_range),
+>  };
+>  =
+
+> @@ -1376,8 +1403,8 @@ static const struct mtk_pin_soc mt8192_data =3D {
+>  	.drive_get	=3D mtk_pinconf_drive_get_rev1,
+>  	.adv_pull_get =3D mtk_pinconf_adv_pull_get,
+>  	.adv_pull_set =3D mtk_pinconf_adv_pull_set,
+> -	.adv_drive_get =3D mtk_pinconf_adv_drive_get,
+> -	.adv_drive_set =3D mtk_pinconf_adv_drive_set,
+> +	.adv_drive_get	=3D mtk_pinconf_adv_drive_get_raw,
+> +	.adv_drive_set	=3D mtk_pinconf_adv_drive_set_raw,
+>  };
+>  =
+
+>  static const struct of_device_id mt8192_pinctrl_of_match[] =3D {
+> -- =
+
+> 2.25.5
+> =
+
 
 _______________________________________________
 Linux-mediatek mailing list
