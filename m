@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A1C5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 10:41:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D639C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 11:20:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cy0DypHrKruCW/eahGGEyrvZJq5i0ZF+I+iZhjPBcYg=; b=NbZfWdQhD0evnl
-	cm9LJJ264hHShh6Ox14qXaCo23Bo6UlLz4VOWtwhK0XIqqHkZFgPoJLU/ovdRSllwv66E3H07SbHz
-	romhD8Px2ywPnNt+I2/rnnfhCVgfOcQ43eWL0Fzbhn4lyjh//cprNMIAB/Jd6zumdJDl84JpIeWMI
-	sz5f5/RyfUni1udtvcnjY8AdhqC72WLSlZSUq5SxOEtyKS/uf2/nTgiXLK0msz/rfW91Y2p55zyYs
-	PvKvVmvW6usZGqYh0kmNzEnrfc4rXJKyFFCYw1kh5w/6AFu45vmglFB/63yN4t7Wz6bwewJ0XAc46
-	1JmsDErj5wJr1DsKDKDA==;
+	List-Owner; bh=gEfaThrCqw7n+UR0Jp3ftMzsGc/QM+/pwI4AYTiuCYw=; b=Kmkyulz7jmVPMo
+	E+jBVGdEZ2XcwTms26cHHuUQD46ITzx5P8zH8S11t+jrTOESpiRJ0d9KzOLKjb9TAF77Ifx13fbCR
+	9KnNlqiACD/aXAlGy6+bmK8uSohqfEGQUeean5V6O307Pv3XTxaaqlIPo8GEmfVx11pzFTYK1E2Ag
+	BNpWvjT6vAchhyU9/rRYMqhpwByRiOtDZdbgRFdkRd2hdOju5tYoYpqvZfR0W5cYELX8JgcvpsDFc
+	xYCCjwyw5j6hMBAQS59I3mAs30oFX6+zlrxxYpBoRRpSoJfXjOjWz5eMIdQD3MXZi2KsgcezBJLOo
+	TmVytiw1CY5oWvIMJ1cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzFbU-0014kI-I0; Thu, 09 Jun 2022 10:41:28 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1nzGDF-001FZL-3I; Thu, 09 Jun 2022 11:20:29 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzFaJ-0013eZ-2l; Thu, 09 Jun 2022 10:40:17 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1nzGD2-001FTj-Aa; Thu, 09 Jun 2022 11:20:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0401F66017C6;
-	Thu,  9 Jun 2022 11:40:08 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1654771209;
-	bh=GX0txyd0JJ2fw10K575GVaUiFEMtDFJAGpNRUdkYnN8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=j6XLvLR1v9PF6omuHiRlTXNk0cw3A3B/9lkmvkdHbxM6OfhBOcaQ45XB67DEp8OoJ
-	 ipLffPjj7VQsGkR0XDT0PG7RnEoXxJUpS8mCatNcvs3gYndNGX8hJVa5gL4jiSKSH9
-	 TU/B5ET7IrbG2+8T/T4I6SwBNOGKkbavjAKISRIPD7hQiBAm1wleh9oTlb/Vdek+OK
-	 5Sb8Jhve6ZmIynp1l19a7woNzX8WEhd0YgXkY5/MuZ4qO3+oP5W4kzsnDo57Qm7Qyg
-	 CaypPBraprsn9Qlp20aQwRiCo+PnwEeqAdCtLkNrvBDdLRK+BkdPfL3Nv0pEO4PUWz
-	 8vbhRMHO3EI1A==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: yong.wu@mediatek.com
-Cc: joro@8bytes.org,
-	will@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	iommu@lists.linux-foundation.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	konrad.dybcio@somainline.org,
-	marijn.suijten@somainline.org,
-	martin.botka@somainline.org,
-	~postmarketos/upstreaming@lists.sr.ht,
-	phone-devel@vger.kernel.org,
-	paul.bouchara@somainline.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 1/3] dt-bindings: mediatek: Add bindings for MT6795 M4U
-Date: Thu,  9 Jun 2022 12:39:59 +0200
-Message-Id: <20220609104001.97753-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220609104001.97753-1-angelogioacchino.delregno@collabora.com>
-References: <20220609104001.97753-1-angelogioacchino.delregno@collabora.com>
-MIME-Version: 1.0
+	by ams.source.kernel.org (Postfix) with ESMTPS id 5B61AB82C1E;
+	Thu,  9 Jun 2022 11:20:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21495C3411B;
+	Thu,  9 Jun 2022 11:20:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1654773613;
+	bh=AWv2PV1W2uMcxim/FLcbB7lfU8oERNdihwirOIiMNyo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=eiTpckFO5bKFgibe9V9qAdqPM0yQ6aEUPUkc1FNt6mKmG5Ud29rc/4pL0sQuiA3Tk
+	 X57bS9wr2Zv50nG2WYpX2W66eXmDw0qmR9lx9DWtlHzGJH0VDn75KMLjEfjoA7fpBI
+	 tiAl8gH9vBpCSEAdEEuOIc3y2LLzi7kA5hcwgbXI0cyf7s96mS7WpdpdCzQ0S8RlFz
+	 SGbjUJ7fxXkgOr8M3pMSPFc38BPWSw3Hj2fBAdKifXvZ9MegicJKBrk4c3jTK0athX
+	 cgJV2xgi/fPuZqpEa9iYhIe7mRYVoJNKmTeSFwDEhuhuc9o6Qk9dQqBQpjzC3YD2X5
+	 6mQYyXdu46+Bw==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <maz@kernel.org>)
+	id 1nzGCw-00GqYl-Nc; Thu, 09 Jun 2022 12:20:10 +0100
+Date: Thu, 09 Jun 2022 12:20:10 +0100
+Message-ID: <87edzy3wyd.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	<yj.chiang@mediatek.com>,
+	Alexandru Elisei <alexandru.elisei@arm.com>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] arm64: Clear OS lock in enable_debug_monitors
+In-Reply-To: <20220609033322.12436-1-mark-pk.tsai@mediatek.com>
+References: <20220609033322.12436-1-mark-pk.tsai@mediatek.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: mark-pk.tsai@mediatek.com, catalin.marinas@arm.com, will@kernel.org, matthias.bgg@gmail.com, yj.chiang@mediatek.com, alexandru.elisei@arm.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_034015_424238_81DD2B1D 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20220609_042016_716200_C777D56B 
+X-CRM114-Status: GOOD (  32.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,157 +88,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add bindings for the MediaTek Helio X10 (MT6795) IOMMU/M4U.
+On Thu, 09 Jun 2022 04:33:18 +0100,
+Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
+> 
+> Always clear OS lock before enable debug event.
+> 
+> The OS lock is clear in cpuhp ops in recent kernel,
+> but when the debug exception happened before it
+> kernel might crash because debug event enable didn't
+> take effect when OS lock is hold.
+> 
+> Below is the use case that having this problem:
+> 
+> Register kprobe in console_unlock and kernel will
+> panic at secondary_start_kernel on secondary core.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
- .../bindings/iommu/mediatek,iommu.yaml        |  4 +
- include/dt-bindings/memory/mt6795-larb-port.h | 96 +++++++++++++++++++
- 2 files changed, 100 insertions(+)
- create mode 100644 include/dt-bindings/memory/mt6795-larb-port.h
+Feels a bit extreme to do that, but hey...
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index d5e3272a54e8..20902c387520 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -73,6 +73,7 @@ properties:
-           - mediatek,mt2701-m4u  # generation one
-           - mediatek,mt2712-m4u  # generation two
-           - mediatek,mt6779-m4u  # generation two
-+          - mediatek,mt6795-m4u  # generation two
-           - mediatek,mt8167-m4u  # generation two
-           - mediatek,mt8173-m4u  # generation two
-           - mediatek,mt8183-m4u  # generation two
-@@ -128,6 +129,7 @@ properties:
-       dt-binding/memory/mt2701-larb-port.h for mt2701 and mt7623,
-       dt-binding/memory/mt2712-larb-port.h for mt2712,
-       dt-binding/memory/mt6779-larb-port.h for mt6779,
-+      dt-binding/memory/mt6795-larb-port.h for mt6795,
-       dt-binding/memory/mt8167-larb-port.h for mt8167,
-       dt-binding/memory/mt8173-larb-port.h for mt8173,
-       dt-binding/memory/mt8183-larb-port.h for mt8183,
-@@ -152,6 +154,7 @@ allOf:
-             enum:
-               - mediatek,mt2701-m4u
-               - mediatek,mt2712-m4u
-+              - mediatek,mt6795-m4u
-               - mediatek,mt8173-m4u
-               - mediatek,mt8186-iommu-mm
-               - mediatek,mt8192-m4u
-@@ -181,6 +184,7 @@ allOf:
-           contains:
-             enum:
-               - mediatek,mt2712-m4u
-+              - mediatek,mt6795-m4u
-               - mediatek,mt8173-m4u
- 
-     then:
-diff --git a/include/dt-bindings/memory/mt6795-larb-port.h b/include/dt-bindings/memory/mt6795-larb-port.h
-new file mode 100644
-index 000000000000..223aca8fd350
---- /dev/null
-+++ b/include/dt-bindings/memory/mt6795-larb-port.h
-@@ -0,0 +1,96 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+/*
-+ * Copyright (c) 2022 Collabora Ltd.
-+ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_MEMORY_MT6795_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT6795_LARB_PORT_H_
-+
-+#include <dt-bindings/memory/mtk-memory-port.h>
-+
-+#define M4U_LARB0_ID			0
-+#define M4U_LARB1_ID			1
-+#define M4U_LARB2_ID			2
-+#define M4U_LARB3_ID			3
-+#define M4U_LARB4_ID			4
-+#define M4U_LARB5_ID			5
-+
-+/* larb0 */
-+#define M4U_PORT_DISP_OVL0		MTK_M4U_ID(M4U_LARB0_ID, 0)
-+#define M4U_PORT_DISP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 1)
-+#define M4U_PORT_DISP_RDMA1		MTK_M4U_ID(M4U_LARB0_ID, 2)
-+#define M4U_PORT_DISP_WDMA0		MTK_M4U_ID(M4U_LARB0_ID, 3)
-+#define M4U_PORT_DISP_OVL1		MTK_M4U_ID(M4U_LARB0_ID, 4)
-+#define M4U_PORT_DISP_RDMA2		MTK_M4U_ID(M4U_LARB0_ID, 5)
-+#define M4U_PORT_DISP_WDMA1		MTK_M4U_ID(M4U_LARB0_ID, 6)
-+#define M4U_PORT_DISP_OD_R		MTK_M4U_ID(M4U_LARB0_ID, 7)
-+#define M4U_PORT_DISP_OD_W		MTK_M4U_ID(M4U_LARB0_ID, 8)
-+#define M4U_PORT_MDP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 9)
-+#define M4U_PORT_MDP_RDMA1		MTK_M4U_ID(M4U_LARB0_ID, 10)
-+#define M4U_PORT_MDP_WDMA		MTK_M4U_ID(M4U_LARB0_ID, 11)
-+#define M4U_PORT_MDP_WROT0		MTK_M4U_ID(M4U_LARB0_ID, 12)
-+#define M4U_PORT_MDP_WROT1		MTK_M4U_ID(M4U_LARB0_ID, 13)
-+
-+/* larb1 */
-+#define M4U_PORT_VDEC_MC		MTK_M4U_ID(M4U_LARB1_ID, 0)
-+#define M4U_PORT_VDEC_PP		MTK_M4U_ID(M4U_LARB1_ID, 1)
-+#define M4U_PORT_VDEC_UFO		MTK_M4U_ID(M4U_LARB1_ID, 2)
-+#define M4U_PORT_VDEC_VLD		MTK_M4U_ID(M4U_LARB1_ID, 3)
-+#define M4U_PORT_VDEC_VLD2		MTK_M4U_ID(M4U_LARB1_ID, 4)
-+#define M4U_PORT_VDEC_AVC_MV		MTK_M4U_ID(M4U_LARB1_ID, 5)
-+#define M4U_PORT_VDEC_PRED_RD		MTK_M4U_ID(M4U_LARB1_ID, 6)
-+#define M4U_PORT_VDEC_PRED_WR		MTK_M4U_ID(M4U_LARB1_ID, 7)
-+#define M4U_PORT_VDEC_PPWRAP		MTK_M4U_ID(M4U_LARB1_ID, 8)
-+
-+/* larb2 */
-+#define M4U_PORT_CAM_IMGO		MTK_M4U_ID(M4U_LARB2_ID, 0)
-+#define M4U_PORT_CAM_RRZO		MTK_M4U_ID(M4U_LARB2_ID, 1)
-+#define M4U_PORT_CAM_AAO		MTK_M4U_ID(M4U_LARB2_ID, 2)
-+#define M4U_PORT_CAM_LCSO		MTK_M4U_ID(M4U_LARB2_ID, 3)
-+#define M4U_PORT_CAM_ESFKO		MTK_M4U_ID(M4U_LARB2_ID, 4)
-+#define M4U_PORT_CAM_IMGO_S		MTK_M4U_ID(M4U_LARB2_ID, 5)
-+#define M4U_PORT_CAM_LSCI		MTK_M4U_ID(M4U_LARB2_ID, 6)
-+#define M4U_PORT_CAM_LSCI_D		MTK_M4U_ID(M4U_LARB2_ID, 7)
-+#define M4U_PORT_CAM_BPCI		MTK_M4U_ID(M4U_LARB2_ID, 8)
-+#define M4U_PORT_CAM_BPCI_D		MTK_M4U_ID(M4U_LARB2_ID, 9)
-+#define M4U_PORT_CAM_UFDI		MTK_M4U_ID(M4U_LARB2_ID, 10)
-+#define M4U_PORT_CAM_IMGI		MTK_M4U_ID(M4U_LARB2_ID, 11)
-+#define M4U_PORT_CAM_IMG2O		MTK_M4U_ID(M4U_LARB2_ID, 12)
-+#define M4U_PORT_CAM_IMG3O		MTK_M4U_ID(M4U_LARB2_ID, 13)
-+#define M4U_PORT_CAM_VIPI		MTK_M4U_ID(M4U_LARB2_ID, 14)
-+#define M4U_PORT_CAM_VIP2I		MTK_M4U_ID(M4U_LARB2_ID, 15)
-+#define M4U_PORT_CAM_VIP3I		MTK_M4U_ID(M4U_LARB2_ID, 16)
-+#define M4U_PORT_CAM_LCEI		MTK_M4U_ID(M4U_LARB2_ID, 17)
-+#define M4U_PORT_CAM_RB			MTK_M4U_ID(M4U_LARB2_ID, 18)
-+#define M4U_PORT_CAM_RP			MTK_M4U_ID(M4U_LARB2_ID, 19)
-+#define M4U_PORT_CAM_WR			MTK_M4U_ID(M4U_LARB2_ID, 20)
-+
-+/* larb3 */
-+#define M4U_PORT_VENC_RCPU		MTK_M4U_ID(M4U_LARB3_ID, 0)
-+#define M4U_PORT_VENC_REC		MTK_M4U_ID(M4U_LARB3_ID, 1)
-+#define M4U_PORT_VENC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 2)
-+#define M4U_PORT_VENC_SV_COMV		MTK_M4U_ID(M4U_LARB3_ID, 3)
-+#define M4U_PORT_VENC_RD_COMV		MTK_M4U_ID(M4U_LARB3_ID, 4)
-+#define M4U_PORT_JPGENC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 5)
-+#define M4U_PORT_REMDC_SDMA		MTK_M4U_ID(M4U_LARB3_ID, 6)
-+#define M4U_PORT_REMDC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 7)
-+#define M4U_PORT_JPGENC_RDMA		MTK_M4U_ID(M4U_LARB3_ID, 8)
-+#define M4U_PORT_JPGENC_SDMA		MTK_M4U_ID(M4U_LARB3_ID, 9)
-+#define M4U_PORT_JPGDEC_WDMA		MTK_M4U_ID(M4U_LARB3_ID, 10)
-+#define M4U_PORT_JPGDEC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 11)
-+#define M4U_PORT_VENC_CUR_LUMA		MTK_M4U_ID(M4U_LARB3_ID, 12)
-+#define M4U_PORT_VENC_CUR_CHROMA	MTK_M4U_ID(M4U_LARB3_ID, 13)
-+#define M4U_PORT_VENC_REF_LUMA		MTK_M4U_ID(M4U_LARB3_ID, 14)
-+#define M4U_PORT_VENC_REF_CHROMA	MTK_M4U_ID(M4U_LARB3_ID, 15)
-+#define M4U_PORT_REMDC_WDMA		MTK_M4U_ID(M4U_LARB3_ID, 16)
-+#define M4U_PORT_VENC_NBM_RDMA		MTK_M4U_ID(M4U_LARB3_ID, 17)
-+#define M4U_PORT_VENC_NBM_WDMA		MTK_M4U_ID(M4U_LARB3_ID, 18)
-+
-+/* larb4 */
-+#define M4U_PORT_MJC_MV_RD		MTK_M4U_ID(M4U_LARB4_ID, 0)
-+#define M4U_PORT_MJC_MV_WR		MTK_M4U_ID(M4U_LARB4_ID, 1)
-+#define M4U_PORT_MJC_DMA_RD		MTK_M4U_ID(M4U_LARB4_ID, 2)
-+#define M4U_PORT_MJC_DMA_WR		MTK_M4U_ID(M4U_LARB4_ID, 3)
-+
-+#endif
+> 
+> CPU: 1 PID: 0 Comm: swapper/1 Tainted: P
+> ...
+> pstate: 004001c5 (nzcv dAIF +PAN -UAO)
+> pc : do_undefinstr+0x5c/0x60
+> lr : do_undefinstr+0x2c/0x60
+> sp : ffffffc01338bc50
+> pmr_save: 000000f0
+> x29: ffffffc01338bc50 x28: ffffff8115e95a00 T
+> x27: ffffffc01258e000 x26: ffffff8115e95a00
+> x25: 00000000ffffffff x24: 0000000000000000
+> x23: 00000000604001c5 x22: ffffffc014015008
+> x21: 000000002232f000 x20: 00000000000000f0 j
+> x19: ffffffc01338bc70 x18: ffffffc0132ed040
+> x17: ffffffc01258eb48 x16: 0000000000000403 L&
+> x15: 0000000000016480 x14: ffffffc01258e000 i/
+> x13: 0000000000000006 x12: 0000000000006985
+> x11: 00000000d5300000 x10: 0000000000000000
+> x9 : 9f6c79217a8a0400 x8 : 00000000000000c5
+> x7 : 0000000000000000 x6 : ffffffc01338bc08 2T
+> x5 : ffffffc01338bc08 x4 : 0000000000000002
+> x3 : 0000000000000000 x2 : 0000000000000004
+> x1 : 0000000000000000 x0 : 0000000000000001 *q
+> Call trace:
+>  do_undefinstr+0x5c/0x60
+>  el1_undef+0x10/0xb4
+>  0xffffffc014015008
+>  vprintk_func+0x210/0x290
+>  printk+0x64/0x90
+>  cpuinfo_detect_icache_policy+0x80/0xe0
+>  __cpuinfo_store_cpu+0x150/0x160
+>  secondary_start_kernel+0x154/0x440
+> 
+> The root cause is that OS_LSR_EL1.OSLK is reset
+> to 1 on a cold reset[1] and the firmware didn't
+> unlock it by default.
+> So the core didn't go to el1_dbg as expected after
+> kernel_enable_single_step and eret.
+> 
+> [1] https://developer.arm.com/documentation/ddi0595/2021-06/AArch64-Registers/OSLSR-EL1--OS-Lock-Status-Register?lang=en
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> ---
+>  arch/arm64/kernel/debug-monitors.c | 23 ++++++++++++-----------
+>  1 file changed, 12 insertions(+), 11 deletions(-)
+> 
+> diff --git a/arch/arm64/kernel/debug-monitors.c b/arch/arm64/kernel/debug-monitors.c
+> index bf9fe71589bc..186f2846d652 100644
+> --- a/arch/arm64/kernel/debug-monitors.c
+> +++ b/arch/arm64/kernel/debug-monitors.c
+> @@ -70,6 +70,17 @@ static int __init early_debug_disable(char *buf)
+>  
+>  early_param("nodebugmon", early_debug_disable);
+>  
+> +/*
+> + * OS lock clearing.
+> + */
+> +static int clear_os_lock(unsigned int cpu)
+> +{
+> +	write_sysreg(0, osdlr_el1);
+> +	write_sysreg(0, oslar_el1);
+> +	isb();
+> +	return 0;
+> +}
+> +
+>  /*
+>   * Keep track of debug users on each core.
+>   * The ref counts are per-cpu so we use a local_t type.
+> @@ -91,6 +102,7 @@ void enable_debug_monitors(enum dbg_active_el el)
+>  		enable |= DBG_MDSCR_KDE;
+>  
+>  	if (enable && debug_enabled) {
+> +		clear_os_lock(0);
+>  		mdscr = mdscr_read();
+>  		mdscr |= enable;
+>  		mdscr_write(mdscr);
+> @@ -119,17 +131,6 @@ void disable_debug_monitors(enum dbg_active_el el)
+>  }
+>  NOKPROBE_SYMBOL(disable_debug_monitors);
+>  
+> -/*
+> - * OS lock clearing.
+> - */
+> -static int clear_os_lock(unsigned int cpu)
+> -{
+> -	write_sysreg(0, osdlr_el1);
+> -	write_sysreg(0, oslar_el1);
+> -	isb();
+> -	return 0;
+> -}
+> -
+>  static int __init debug_monitors_init(void)
+>  {
+>  	return cpuhp_setup_state(CPUHP_AP_ARM64_DEBUG_MONITORS_STARTING,
+
+If the OS Lock is cleared every time we enabled debug, what is the
+point of the notifier then?
+
+Thanks,
+
+	M.
+
 -- 
-2.35.1
-
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
