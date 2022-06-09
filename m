@@ -4,87 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36717C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 07:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FFDCCA47F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 07:46:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xnVfmqjkCs9NpirKmEaIum5Moozd/VI4RRzfy9Jv3aA=; b=tx/RUAMyRZ3B2l
-	iLypA0uxlw5aIp9CvZNh5pCbk8bqbt6pIEHCWAR6hVX7QNqLWwLufhF11m6/FR9p9VrSXfX+oiSof
-	OmVUS4DkRVXBkFHYC6fRKC/M8ZGy9jvzdAPohbqMYQ2paelCePZRp4cAIAF0Ua/eigDKT+Ev/evtA
-	4I7oW31xoMK9XXb+ZmWjCaDjH5/2xW5m0R9Sn5c9+6gZ2/unXCrcQVc2lA63a04Hp3zbtsCJy9Uds
-	v4tJuNjpibP9JnZ1/oh/as2B3O5i7BMOCI61SUI2fSm2ZpzGq8uH2CD/mGw6tYB82lYtB61b1dqjf
-	my9ljpAQpFzlpIpGX7xA==;
+	List-Owner; bh=28Hjk5pi47gGnt7h0l9U8k3UpJFHiM2MjTtCla4h5NU=; b=zbLb3JI4G9P4Mi
+	g88CdcN20xxj5ohxPWtve/QWvVwr7TOVPUAe4VJdKyhXKRX6vzPxN5byBM4Xm4CZFHrEEjm1jihJp
+	TZ5WhSAa1oR+oYPJ6ECg+SBEFsaSuWc8i1DwT2y4JJwKU7JHKDl7jS2lyYkHDGbbqCvXBBAmBIZN0
+	CP1vOMqTq8jPNAx+Qc1rinmV914ed7GER3mQhlSAoEwuFU9CCEaSNOjDJVVUYUQ3nZO0fawMRHAe0
+	iOsZYpfbkY3nkZ6/ZZCCrklCgWXWyxWrJQdfprltq20nz2WqN3F1KooAA/M4goDfWtYXq8JFHGUJ5
+	ZDLXUF7p4O5Fpe+kxmrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzCXd-00HNST-71; Thu, 09 Jun 2022 07:25:17 +0000
+	id 1nzCsC-00HWph-8k; Thu, 09 Jun 2022 07:46:32 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzCX6-00HN6h-Ri; Thu, 09 Jun 2022 07:24:46 +0000
-X-UUID: 3ab6f51d233e4756a1e4712a4088ba66-20220609
+	id 1nzCrs-00HWhp-6J; Thu, 09 Jun 2022 07:46:13 +0000
+X-UUID: 7c1df2c493c541cd8238ab5629ff3dbf-20220609
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:c61161a3-604e-4b6c-b154-4d2a81e98915,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:f0dc38e5-2ba2-4dc1-b6c5-11feb6c769e0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:80070c6c-c0c1-4f2c-bb56-1b7da05c42ba,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:2a19b09,CLOUDID:6919c47e-c8dc-403a-96e8-6237210dceee,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 3ab6f51d233e4756a1e4712a4088ba66-20220609
+X-UUID: 7c1df2c493c541cd8238ab5629ff3dbf-20220609
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1341199571; Thu, 09 Jun 2022 00:24:36 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 00:24:34 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 9 Jun 2022 15:24:33 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 9 Jun 2022 15:24:33 +0800
-Message-ID: <dba8cf8aac439fdecd9eba7009845d76ebca6666.camel@mediatek.com>
-Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
- driver
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
-	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun
- =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>
-CC: Markus Schneider-Pargmann <msp@baylibre.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
-	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>
-Date: Thu, 9 Jun 2022 15:24:33 +0800
-In-Reply-To: <49f4f8732eb1df31b0c8a82761e1c4dad9aef106.camel@mediatek.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <20220523104758.29531-19-granquet@baylibre.com>
-	 <f791f46c6307a18818574cb7fb8653bcc84aa9ad.camel@mediatek.com>
-	 <75c00caca74b8366ca2c4594a8229b6de95c5f47.camel@mediatek.com>
-	 <49f4f8732eb1df31b0c8a82761e1c4dad9aef106.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	with ESMTP id 1654459721; Thu, 09 Jun 2022 00:46:04 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Jun 2022 00:42:37 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 9 Jun 2022 15:42:36 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 9 Jun 2022 15:42:35 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
+Subject: [PATCH 3/3] usb: mtu3: register mtu3_irq by threaded irq
+Date: Thu, 9 Jun 2022 15:42:33 +0800
+Message-ID: <20220609074233.15532-3-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220609074233.15532-1-chunfeng.yun@mediatek.com>
+References: <20220609074233.15532-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_002444_908917_BA4B8AE7 
-X-CRM114-Status: GOOD (  40.35  )
+X-CRM114-CacheID: sfid-20220609_004612_271640_393F949E 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,162 +81,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-06-09 at 10:30 +0800, CK Hu wrote:
-> Hi, Rex:
-> 
-> On Wed, 2022-06-08 at 18:26 +0800, Rex-BC Chen wrote:
-> > On Tue, 2022-06-07 at 15:47 +0800, CK Hu wrote:
-> > > Hi, Rex:
-> > > 
-> > > On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
-> > > > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > > 
-> > > > This patch adds a DisplayPort driver for the Mediatek mt8195
-> > > > SoC.
-> > > > 
-> > > > It supports the mt8195, the embedded DisplayPort units. It
-> > > > offers
-> > > > DisplayPort 1.4 with up to 4 lanes.
-> > > > 
-> > > > The driver creates a child device for the phy. The child device
-> > > > will
-> > > > never exist without the parent being active. As they are
-> > > > sharing
-> > > > a
-> > > > register range, the parent passes a regmap pointer to the child
-> > > > so
-> > > > that
-> > > > both can work with the same register range. The phy driver sets
-> > > > device
-> > > > data that is read by the parent to get the phy device that can
-> > > > be
-> > > > used
-> > > > to control the phy properties.
-> > > > 
-> > > > This driver is based on an initial version by
-> > > > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
-> > > > 
-> > > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > > > ---
-> > > 
-> > > [snip]
-> > > 
-> > > > +
-> > > > +static int mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
-> > > > +{
-> > > > +	ssize_t ret;
-> > > > +	u8 sink_count;
-> > > > +	bool locked;
-> > > > +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
-> > > > +	u32 sink_count_reg = DP_SINK_COUNT_ESI;
-> > > > +	u32 link_status_reg = DP_LANE0_1_STATUS;
-> > > > +
-> > > > +	ret = drm_dp_dpcd_readb(&mtk_dp->aux, sink_count_reg,
-> > > > &sink_count);
-> > > > +	if (ret < 0) {
-> > > > +		drm_err(mtk_dp->drm_dev, "Read sink count
-> > > > failed:
-> > > > %ld\n", ret);
-> > > > +		return ret;
-> > > > +	}
-> > > > +
-> > > > +	ret = drm_dp_dpcd_read(&mtk_dp->aux, link_status_reg,
-> > > > link_status,
-> > > > +			       sizeof(link_status));
-> > > > +	if (!ret) {
-> > > > +		drm_err(mtk_dp->drm_dev, "Read link status
-> > > > failed:
-> > > > %ld\n",
-> > > > +			ret);
-> > > > +		return ret;
-> > > > +	}
-> > > > +
-> > > > +	locked = drm_dp_channel_eq_ok(link_status,
-> > > > +				      mtk_dp-
-> > > > >train_info.lane_count);
-> > > > +	if (!locked && mtk_dp->train_state >
-> > > > MTK_DP_TRAIN_STATE_TRAINING_PRE)
-> > > 
-> > > Before enter this function, mtk_dp->train_state is set to
-> > > MTK_DP_TRAIN_STATE_STARTUP, so this never happen, drop this.
-> > > 
-> > 
-> > The interrupt from sink device could come any time. Why it's
-> > impossible?
-> 
-> I still ask this question: "For eDP, when does disconnect happened?"
-> If
-> it indeed happen, I still do not like to change state here. When
-> disconnect, the training flow would result in fail finally and need
-> not
-> to change state here, but the training flow would block for a while
-> when disconnect. You could add some check point to check train_info-
-> > cable_plugged_in to quickly break out the training flow.
-> 
-> Regards,
-> CK
-> 
+Use threaded irq to improve time consuming top-half
 
-Hello CK,
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/mtu3/mtu3_core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-This function is to handle "sink interrupt" and we need to read the
-status from sink device via aux channel.
-edp spec is just add some extension rule from dp spec, this is define
-in dp spec.
-
-The basic spec is still "dp", and these are all define in dp spec.
-Therefore, I think we should keep this.
-
-BRs,
-Bo-Chen
-
-> > 
-> > > > +		mtk_dp->train_state =
-> > > > MTK_DP_TRAIN_STATE_TRAINING_PRE;
-> > > > +
-> > > > +	if (link_status[1] & DP_REMOTE_CONTROL_COMMAND_PENDING)
-> > > > +		drm_dp_dpcd_writeb(&mtk_dp->aux,
-> > > > DP_DEVICE_SERVICE_IRQ_VECTOR,
-> > > > +				   DP_REMOTE_CONTROL_COMMAND_PE
-> > > > NDING);
-> > > > +
-> > > > +	if (DP_GET_SINK_COUNT(sink_count) &&
-> > > > +	    (link_status[2] &
-> > > > DP_DOWNSTREAM_PORT_STATUS_CHANGED)) {
-> > > > +		mtk_dp->train_info.check_cap_count = 0;
-> > > > +		mtk_dp->train_state =
-> > > > MTK_DP_TRAIN_STATE_CHECKEDID;
-> > > 
-> > > Why change state from MTK_DP_TRAIN_STATE_STARTUP to
-> > > MTK_DP_TRAIN_STATE_CHECKEDID? In mtk_dp_train_handler(),
-> > > mtk_dp_parse_capabilities() is true then change to
-> > > MTK_DP_TRAIN_STATE_CHECKEDID. Give a reason why these two are
-> > > different.
-> > > 
-> > > Regards,
-> > > CK
-> > > 
-> > 
-> > I will drop this and drop state of MTK_DP_TRAIN_STATE_CHECKEDID.
-> > MTK_DP_TRAIN_STATE_CHECKEDID is only used for audio.
-> > We can check enable status in another place.
-> > 
-> > BRs,
-> > Bo-Chen
-> > 
-> > > > +		msleep(20);
-> > > > +	}
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> > > > +
-> > > 
-> > > 
-> > 
-> > 
-> 
-> 
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index c4a2c37abf62..3c6a670efafa 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -965,7 +965,8 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
+ 		goto dma_mask_err;
+ 	}
+ 
+-	ret = devm_request_irq(dev, mtu->irq, mtu3_irq, 0, dev_name(dev), mtu);
++	ret = devm_request_threaded_irq(dev, mtu->irq, NULL, mtu3_irq,
++					IRQF_ONESHOT, dev_name(dev), mtu);
+ 	if (ret) {
+ 		dev_err(dev, "request irq %d failed!\n", mtu->irq);
+ 		goto irq_err;
+-- 
+2.18.0
 
 
 _______________________________________________
