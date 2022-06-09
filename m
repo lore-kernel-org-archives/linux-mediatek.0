@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38AA3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 10:10:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C5A8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 10:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Te4SQ9P/QMFRbmUYNkmcLwXE289Y3jAwdTWV+wpZjEI=; b=GiVnZIcG2a0Pac
-	ACFqCxROJzJJ/awb+s7AlMHiFEe1YKp6VkKhD0RSt3hMSzrEF2QgJf1QGVxJlyays3hGQTD7W1aTc
-	03KhilmKhluR3NrEbpkaX5r1CL8EnPXhngf896nrFs5KdDZV3kpuXnShBtuYojJjye46aIlK5dYiQ
-	mck9UM0e4lRuimJ857E1d8Xp0YfCHfO9TjIc+J1eR1T2QPxPJHRexw2r4npQFyvF4R8QvSBbGJBoM
-	/gce/GqP6MClqsSDnuSmIE7zp88ubOJcVBiJgqzJ765XGcaKCjrLu8CXbU1PmRNU8tn3IRrCoK17y
-	RxX5K3wUr+4zy9uAk00w==;
+	List-Owner; bh=X1nvQB2MaYEhH/HiX0DKFsOGVfK8WDmoA6ipyoHipMo=; b=FZFlVp9O9TAgyq
+	kXEHbKbmasa7K3X+oAHbea1hTVx7h6D9CTJOfdZkgHvqK1W15uxwT5FeMVUtXbGMv0h5m/o5eyjNW
+	8TQZ5Jp+aKZkkwYoRpHmY4jxYQhS3xZ8Lt/MpsyE+m6y5IWP+L9VDMhVHH7TO3daudx7jU+4N9twq
+	LB21atJMQsPYIF/p6gf02yW1kQG9Y5DJJ6qCtf+yqhptpHninKlQmN0HO/IrU8iWOxSF5QRHnq8Ow
+	cB/PuE3Gm3aTswwQ3MguG7w1S3G5nFAFhwGi+G5EOuNne8u0kq7iLDASEMmvmyOrPgeYEdpnk7Qqq
+	3nFkviRXiOorXONiu9Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzF7a-000tGY-Us; Thu, 09 Jun 2022 10:10:34 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nzFaX-0013rO-AE; Thu, 09 Jun 2022 10:40:29 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzF63-000sAC-ET; Thu, 09 Jun 2022 10:09:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1nzFaI-0013ex-1G; Thu, 09 Jun 2022 10:40:15 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id BCF8FB82C86;
-	Thu,  9 Jun 2022 10:08:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EE40C34114;
-	Thu,  9 Jun 2022 10:08:51 +0000 (UTC)
-Message-ID: <3cd958be-41a8-707d-983a-c9950e913ae5@xs4all.nl>
-Date: Thu, 9 Jun 2022 12:08:50 +0200
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 20A5266017C7;
+	Thu,  9 Jun 2022 11:40:10 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654771211;
+	bh=XsdKca6uJqVHP/fpe/JGNltV33I9zIbmdBk8VfIBHU4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=grhQQ7l0fxS0nE/QuH0wy0PvUmj2vFgdYu7M8vFf3deBIEaJt7TGwQt4JHSSlJkey
+	 KW7H1VFqaIh+dCG9wyw9x2tMiAmHhyG5jITZDY88uOT9TKXI1nSpdB4W5yzwHMeuq5
+	 pXfBARcaRcd/vE1NRxU8Aru+DV7A10v5cWgRT4QhrTcgb4iDl4WLYRoBU4dcmXkxTX
+	 ENCk8OYQLp1VkSiPgp0IQSFcsWFqbODDdYe8Q5n3JwHRZE36OVnuIXJvfjwfwDSGSL
+	 LYdskul928uHc6cD20stZsm4zZvq9N07xMW0Oi/jepPqxvZuCyj3LL+obrCZEPwwjV
+	 0bZw1J288bbgA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: yong.wu@mediatek.com
+Cc: joro@8bytes.org,
+	will@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	iommu@lists.linux-foundation.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	konrad.dybcio@somainline.org,
+	marijn.suijten@somainline.org,
+	martin.botka@somainline.org,
+	~postmarketos/upstreaming@lists.sr.ht,
+	phone-devel@vger.kernel.org,
+	paul.bouchara@somainline.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 2/3] iommu: mtk_iommu: Introduce new flag TF_PORT_TO_ADDR_MT8173
+Date: Thu,  9 Jun 2022 12:40:00 +0200
+Message-Id: <20220609104001.97753-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220609104001.97753-1-angelogioacchino.delregno@collabora.com>
+References: <20220609104001.97753-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Subject: Re: [PATCH 1/4] media: mediatek: vcodec: Fix decoder v4l2 bus_info
- not correctly
-Content-Language: en-US
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220526095737.21118-1-yunfei.dong@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20220526095737.21118-1-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_030859_769494_C6A9626E 
-X-CRM114-Status: GOOD (  20.49  )
+X-CRM114-CacheID: sfid-20220609_034014_333957_A4D9D02E 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,72 +86,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunfei Dong,
+In preparation for adding support for MT6795, add a new flag named
+TF_PORT_TO_ADDR_MT8173 and use that instead of checking for m4u_plat
+type in mtk_iommu_hw_init() to avoid seeing a long list of m4u_plat
+checks there in the future.
 
-On 5/26/22 11:57, Yunfei Dong wrote:
-> Fix v4l2 capability bus_info value with correct chip name according to compatible.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 23 ++++++++++++++++++-
->  1 file changed, 22 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> index 52e5d36aa912..ccfa426a34ab 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> @@ -185,11 +185,32 @@ static int vidioc_vdec_dqbuf(struct file *file, void *priv,
->  	return v4l2_m2m_dqbuf(file, ctx->m2m_ctx, buf);
->  }
->  
-> +static int mtk_vcodec_dec_get_chip_name(void *priv)
-> +{
-> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> +	struct device *dev = &ctx->dev->plat_dev->dev;
-> +
-> +	if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-dec"))
-> +		return 8173;
-> +	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8183-vcodec-dec"))
-> +		return 8183;
-> +	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-dec"))
-> +		return 8192;
-> +	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-dec"))
-> +		return 8195;
-> +	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8186-vcodec-dec"))
-> +		return 8186;
-> +	else
-> +		return 8173;
-> +}
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/iommu/mtk_iommu.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Nice, but...
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 0ea0848581e9..8611cf8e4bd5 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -140,6 +140,7 @@
+ #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
+ /* IOMMU I/O (r/w) is enabled using PERICFG_IOMMU_1 register */
+ #define HAS_PERI_IOMMU1_REG		BIT(17)
++#define TF_PORT_TO_ADDR_MT8173		BIT(18)
+ 
+ #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
+ 				((((pdata)->flags) & (mask)) == (_x))
+@@ -960,7 +961,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int ban
+ 	 * Global control settings are in bank0. May re-init these global registers
+ 	 * since no sure if there is bank0 consumers.
+ 	 */
+-	if (data->plat_data->m4u_plat == M4U_MT8173) {
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, TF_PORT_TO_ADDR_MT8173)) {
+ 		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
+ 			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
+ 	} else {
+@@ -1437,7 +1438,8 @@ static const struct mtk_iommu_plat_data mt8167_data = {
+ static const struct mtk_iommu_plat_data mt8173_data = {
+ 	.m4u_plat     = M4U_MT8173,
+ 	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
+-			HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM,
++			HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM |
++			TF_PORT_TO_ADDR_MT8173,
+ 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+ 	.banks_num    = 1,
+ 	.banks_enable = {true},
+-- 
+2.35.1
 
-> +
->  static int vidioc_vdec_querycap(struct file *file, void *priv,
->  				struct v4l2_capability *cap)
->  {
-> +	int platform_name = mtk_vcodec_dec_get_chip_name(priv);
-> +
->  	strscpy(cap->driver, MTK_VCODEC_DEC_NAME, sizeof(cap->driver));
-> -	strscpy(cap->bus_info, MTK_PLATFORM_STR, sizeof(cap->bus_info));
-> +	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:mt%d", platform_name);
-
-...this will result in identical bus_info values for the decoder and encoder
-video devices. The bus_info field is supposed to be unique, and that's now
-no longer the case.
-
-I suggest changing this to:
-
-	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:mt%d-dec", platform_name);
-
-(and '-enc' for the encoder patch).
-
-Regards,
-
-	Hans
-
->  	strscpy(cap->card, MTK_PLATFORM_STR, sizeof(cap->card));
->  
->  	return 0;
 
 _______________________________________________
 Linux-mediatek mailing list
