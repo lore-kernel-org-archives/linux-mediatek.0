@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8BC1C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 09:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6838CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jun 2022 10:08:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2cuSbyCDRn7j+/r1K/jIC4rf+hxnBLG4S5IKNjIqdDQ=; b=pJHP6FPub/yA2L
-	n34jI7UPgNayvKfe9+UVKSqDLMUS4SFIa9SQ8jdniv2G6FFF+tmhYzHie6r3vba7KdLZ//F5KHRZz
-	+qRx/Fdxb3XljdMGPuzoFA8usnwSAykLdBFvkX2uXA3Ecd2txqKBF/5ScnM5YIzTl0WDFvnuZQBiI
-	s1E+z3Mv9KLyj3nKz5CzF6FDxCgajovf8dtzcCFni6HBpcRAm+htYHCSl/fYvA7/rHwCxl0kDUbqo
-	w6E0No2qY9ayOVDJmJed6mFFiUiaZRXU61ARTXpbP6wTZRJv4GOaWwsG0Gz0fc1L8xeaV9KJO2p4s
-	Rj2EhkUm2hm22Ejf4p7g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wwrJB4MLCftsXJHS4rvdnz7fzXPUGe9PDlHfGDWWaDU=; b=d4xJfbWWr8EuHf
+	HKITJaljAhbhnyHcgLCMiFiz0pksNVS0iXjkb7IQ1yglvtbrtYI3D278I96BhY8cbfuvC8lI31sWg
+	W6/4r+LkaNB4icyyX7UQKtiW9UFNt2WJ2mCkLIFPaPDYyqZe3xZUk9Fjsc6NIPdvPH6f9hFCmuwbT
+	SqwXE22n40uqE3iFrfXPOa4xnzGTuCM8cu5h6OwDm5D8Li9EJMVJVGrtWOfcqjq/1CJ1Vb6iRk6r+
+	Iex1KioaaZrWfX0uOO6g/+9EnvA4SbPZ+E5tjSpdgW0AhikAAi9yYB9ttT0nm1teZ/I/UG6geaik6
+	yR51t8ivpP6ghleQvg1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzEbk-000hNy-RO; Thu, 09 Jun 2022 09:37:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nzF5T-000rqi-U0; Thu, 09 Jun 2022 10:08:23 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzEbU-000hGj-Vb; Thu, 09 Jun 2022 09:37:27 +0000
-X-UUID: e47e8d172eb8416e8b890a83f61e5b87-20220609
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:6b705a66-68eb-4be1-ba20-23420dc589c3,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:d902c97e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:0,BEC:nil
-X-UUID: e47e8d172eb8416e8b890a83f61e5b87-20220609
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 732579605; Thu, 09 Jun 2022 02:37:15 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 02:37:13 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 9 Jun 2022 17:37:11 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 9 Jun 2022 17:37:11 +0800
-Message-ID: <d86e62ab8613f32a50e905f6ac14173b25d36006.camel@mediatek.com>
-Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, Guillaume Ranquet
-	<granquet@baylibre.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, "Daniel
- Vetter" <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
-CC: Markus Schneider-Pargmann <msp@baylibre.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>
-Date: Thu, 9 Jun 2022 17:37:11 +0800
-In-Reply-To: <20220523104758.29531-19-granquet@baylibre.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <20220523104758.29531-19-granquet@baylibre.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nzF5G-000rip-9G; Thu, 09 Jun 2022 10:08:11 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 755C866017C5;
+	Thu,  9 Jun 2022 11:08:07 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654769288;
+	bh=9HpIBYF19N1SAtOw4Vv+gzm2DQkV6yJwK5auxdSwGCU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=IObVT78jMPoK6EO7srMFDYkY4A8z+8NHyvGo+CD+w6MNqE0lktcPvIvmiORFpjIx4
+	 OFWsZDSKP4auG7YOlUNLUConqzkINbyls+H33jGpr+lWhAuWDZgEwGPtqKktOsH/eb
+	 o0037R7x9hSb00M+NpMJg/p09lGbi/FocpmbNPlPB+wqi+6jBGe3UUol0Nd8gtJ4YK
+	 pWqRQeQiIw7olf+HKlriLbDV16QyP+Lp67tjaI+b76sO1KajYYJk+k28yaRCWtG2l7
+	 FGBWYcBubtvDw6+q4Cg0d6htZOLq/CTooDa027LaTE+bP4/Jb9+KxlPB0GFgfTLAUQ
+	 lTPt+SU9Qi11Q==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: yong.wu@mediatek.com
+Cc: joro@8bytes.org,
+	will@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	iommu@lists.linux-foundation.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	krzysztof.kozlowski@linaro.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 0/6] mtk_iommu: Specify phandles to infracfg and pericfg
+Date: Thu,  9 Jun 2022 12:07:56 +0200
+Message-Id: <20220609100802.54513-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_023725_069297_AC7C5983 
-X-CRM114-Status: GOOD (  20.95  )
+X-CRM114-CacheID: sfid-20220609_030810_496717_E82D6578 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,85 +80,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rex:
+The IOMMU has registers in the infracfg and/or pericfg iospaces: as
+for the currently supported SoCs, MT2712 and MT8173 need a phandle to
+infracfg, while MT8195 needs one to pericfg.
 
-On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
-> 
-> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
-> 
-> It supports the mt8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
-> 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
-> 
-> This driver is based on an initial version by
-> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> ---
+Before this change, the driver was checking for a SoC-specific infra/peri
+compatible but, sooner or later, these lists are going to grow a lot...
+...and this is why it was chosen to add phandles (as it was done with
+some other drivers already - look at mtk-pm-domains, mt8192-afe
 
-[snip]
+Please note that, while it was necessary to update the devicetrees for
+MT8173 and MT2712e, there was no update for MT8195 because there is no
+IOMMU node in there yet.
 
-> +
-> +static int mtk_dp_power_disable(struct mtk_dp *mtk_dp)
-> +{
-> +	int ret;
-> +
-> +	ret = mtk_dp_write(mtk_dp, MTK_DP_TOP_PWR_STATE, 0);
-> +
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = mtk_dp_write(mtk_dp, MTK_DP_0034,
+Changes in v3:
+ - Different squashing of dt-bindings patches (sorry for misunderstanding!)
+ - Removed legacy devicetree print
 
-MTK_DP_0034 is defined as:
+Changes in v2:
+ - Squashed dt-bindings patches as suggested by Matthias
+ - Removed quotes from infra/peri phandle refs
+ - Changed dev_warn to dev_info in patches [2/7], [3/7]
 
-+#define MTK_DP_0034		      (BIT(2) | BIT(4) | BIT(5))
+AngeloGioacchino Del Regno (6):
+  dt-bindings: iommu: mediatek: Add mediatek,infracfg phandle
+  iommu: mtk_iommu: Lookup phandle to retrieve syscon to infracfg
+  arm64: dts: mediatek: mt8173: Add mediatek,infracfg phandle for IOMMU
+  arm64: dts: mediatek: mt2712e: Add mediatek,infracfg phandle for IOMMU
+  dt-bindings: iommu: mediatek: Add mediatek,pericfg phandle
+  iommu: mtk_iommu: Lookup phandle to retrieve syscon to pericfg
 
-I think this a weird address.
+ .../bindings/iommu/mediatek,iommu.yaml        | 30 +++++++++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  2 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  1 +
+ drivers/iommu/mtk_iommu.c                     | 61 +++++++++++--------
+ 4 files changed, 70 insertions(+), 24 deletions(-)
 
-> +			   DA_CKM_CKTX0_EN_FORCE_EN |
-> DA_CKM_BIAS_LPF_EN_FORCE_VAL |
-> +		     DA_CKM_BIAS_EN_FORCE_VAL |
-> +		     DA_XTP_GLB_LDO_EN_FORCE_VAL |
-> +		     DA_XTP_GLB_AVD10_ON_FORCE_VAL);
-> +
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Disable RX */
-> +	ret = mtk_dp_write(mtk_dp, MTK_DP_1040, 0);
-
-
-MTK_DP_1040 is defined as:
-
-+#define MTK_DP_1040		      (BIT(6) | BIT(12))
-
-I think this a weird address.
-
-Regards,
-CK
-
-> +
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = mtk_dp_write(mtk_dp, MTK_DP_TOP_MEM_PD,
-> +			   0x550 | BIT(FUSE_SEL_SHIFT) |
-> BIT(MEM_ISO_EN_SHIFT));
-> +
-> +	return ret;
-> +}
+-- 
+2.35.1
 
 
 _______________________________________________
