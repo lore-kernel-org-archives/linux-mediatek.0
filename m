@@ -4,47 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19617C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:46:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25770C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AEzasHWKBrZHCs6agm+xogj9Rka3Ohp1nW8ttf0WlPg=; b=TjSgRg8gQ4gTGD
-	p9enuD5GT8gC3nW2KF5221m6Q7yiaOk1FgwdpxQR27QTPZN1jIGZ/955SKrf/rwXEss6gF9VEKFXz
-	GwzUBGbP5zOJZ4lxUMf1cRuN3dts3ZKuf8cnsk0lZdAXB6yN/lew6YXvdEBX/cN4gZH6nbMkqiIQM
-	yMBFKmG4YUbSUtbsYjokB7t0xIfcJ6ASt7IKS9jjknbAJ0H0gJpXUc7BNCJoqh2j9gmTKMSYy9GLj
-	olmyz8DGq1vFxIw/r+7mehjUjVPF9O4Xxv7WD8qqtDNaT4anPv969GxPKHvWTQ/IqINS4Mvoi+0bn
-	txFBQlVsnHmqTSrTYOXA==;
+	List-Owner; bh=oORLkI3E9Qb5zqHY4ecyXbrBH/HBvYBgAmgX0EEpTpQ=; b=ml4ICn2n8kBxkL
+	CwdAmJQlehejtXfP9RZBWl062HnMsR8X8fPbRjXkeLWHRbPOs3a5NTxW24EM15fbo53gr9V6V/BkJ
+	Xkv6B/xUSC+cjg1tZAs0flP8qHkK5mKfki7Epsq1LQaxKaG9F7PnaCnuPSz/se1Cq51FCM7rn4iEW
+	RyxzvqlRRZmM4ATvGAD+7uEHmj28kJot7+ZUoYwUX7CfFd8E6bYu8KrPd9U6ERJLSvcZT578mo+kL
+	yYp/ckMxkJz2SZlEOstsehknvEepCTGNmdAokh4k00rQp7MpqF8BSIpC20wtrg7Iw88yFArLP5OQU
+	v3qCe18duTdsLyCsmlcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaHt-006tE6-Pw; Fri, 10 Jun 2022 08:46:37 +0000
+	id 1nzaHv-006tFO-DB; Fri, 10 Jun 2022 08:46:39 +0000
 Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaHo-006t8u-3S; Fri, 10 Jun 2022 08:46:34 +0000
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25A5dXqe010565;
-	Fri, 10 Jun 2022 04:45:43 -0400
-Received: from nwd2mta4.analog.com ([137.71.173.58])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3gm00mh1jd-1
+	id 1nzaHp-006tA4-9A; Fri, 10 Jun 2022 08:46:34 +0000
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25A7h8DW005272;
+	Fri, 10 Jun 2022 04:46:12 -0400
+Received: from nwd2mta3.analog.com ([137.71.173.56])
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3ghq33kpsk-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Jun 2022 04:45:43 -0400
-Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 25A8jfhg027444
+	Fri, 10 Jun 2022 04:46:12 -0400
+Received: from ASHBMBX9.ad.analog.com (ASHBMBX9.ad.analog.com [10.64.17.10])
+	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 25A8kB6u023099
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 10 Jun 2022 04:45:41 -0400
-Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by ASHBMBX8.ad.analog.com
- (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Fri, 10 Jun
- 2022 04:45:40 -0400
-Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
- (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Fri, 10 Jun 2022 04:45:40 -0400
+	Fri, 10 Jun 2022 04:46:11 -0400
+Received: from ASHBCASHYB4.ad.analog.com (10.64.17.132) by
+ ASHBMBX9.ad.analog.com (10.64.17.10) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Fri, 10 Jun 2022 04:46:10 -0400
+Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by
+ ASHBCASHYB4.ad.analog.com (10.64.17.132) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Fri, 10 Jun 2022 04:46:10 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
+ (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Fri, 10 Jun 2022 04:46:09 -0400
 Received: from nsa.ad.analog.com ([10.44.3.70])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 25A8imiO014275;
-	Fri, 10 Jun 2022 04:45:31 -0400
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 25A8imiS014275;
+	Fri, 10 Jun 2022 04:45:57 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <linux-imx@nxp.com>, <linux-renesas-soc@vger.kernel.org>,
         <linux-mips@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
@@ -59,8 +63,8 @@ CC: Cai Huoqing <cai.huoqing@linux.dev>,
         Benjamin Fair
 	<benjaminfair@google.com>,
         Jishnu Prakash <quic_jprakash@quicinc.com>,
-        Linus
- Walleij <linus.walleij@linaro.org>,
+        "Linus
+ Walleij" <linus.walleij@linaro.org>,
         Lars-Peter Clausen <lars@metafoo.de>,
         Alexandre Torgue <alexandre.torgue@foss.st.com>,
         Amit Kucheria
@@ -70,8 +74,8 @@ CC: Cai Huoqing <cai.huoqing@linux.dev>,
         Haibo Chen <haibo.chen@nxp.com>, Benson Leung
 	<bleung@chromium.org>,
         "Rafael J. Wysocki" <rafael@kernel.org>,
-        Alexandre
- Belloni <alexandre.belloni@bootlin.com>,
+        "Alexandre
+ Belloni" <alexandre.belloni@bootlin.com>,
         Christophe Branchereau
 	<cbranchereau@gmail.com>,
         Patrick Venture <venture@google.com>, Arnd Bergmann
@@ -79,59 +83,61 @@ CC: Cai Huoqing <cai.huoqing@linux.dev>,
         Nancy Yuen <yuenn@google.com>, Sascha Hauer
 	<s.hauer@pengutronix.de>,
         Daniel Lezcano <daniel.lezcano@linaro.org>,
-        Gwendal
- Grignou <gwendal@chromium.org>,
-        Saravanan Sekar <sravanhome@gmail.com>,
-        Tali
- Perry <tali.perry1@gmail.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        "Gwendal Grignou" <gwendal@chromium.org>,
+        Saravanan Sekar
+	<sravanhome@gmail.com>,
+        "Tali Perry" <tali.perry1@gmail.com>,
+        Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>,
         Paul Cercueil <paul@crapouillou.net>,
-        Thara Gopinath
-	<thara.gopinath@linaro.org>,
+        Thara
+ Gopinath <thara.gopinath@linaro.org>,
         Avi Fishman <avifishman70@gmail.com>,
-        Lorenzo
- Bianconi <lorenzo@kernel.org>,
-        Claudiu Beznea <claudiu.beznea@microchip.com>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Andy Shevchenko
-	<andy.shevchenko@gmail.com>,
-        Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        Tomer Maimon
-	<tmaimon77@gmail.com>,
-        Bjorn Andersson <bjorn.andersson@linaro.org>,
-        Nicolas
- Ferre <nicolas.ferre@microchip.com>,
+        "Lorenzo Bianconi" <lorenzo@kernel.org>,
+        Claudiu Beznea
+	<claudiu.beznea@microchip.com>,
+        Pengutronix Kernel Team
+	<kernel@pengutronix.de>,
+        Andy Shevchenko <andy.shevchenko@gmail.com>,
+        Fabrice
+ Gasnier <fabrice.gasnier@foss.st.com>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        Tomer Maimon <tmaimon77@gmail.com>,
+        Bjorn Andersson
+	<bjorn.andersson@linaro.org>,
+        "Nicolas Ferre" <nicolas.ferre@microchip.com>,
         Jonathan Cameron <jic23@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
-        Shawn Guo <shawnguo@kernel.org>, Guenter
- Roeck <groeck@chromium.org>,
-        Fabio Estevam <festevam@gmail.com>,
-        Olivier
- Moysan <olivier.moysan@foss.st.com>,
-        Eugen Hristev
-	<eugen.hristev@microchip.com>,
-        Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH 02/34] iio: adc: ad7606_par: explicitly add proper header files
-Date: Fri, 10 Jun 2022 10:45:13 +0200
-Message-ID: <20220610084545.547700-3-nuno.sa@analog.com>
+        Shawn
+ Guo <shawnguo@kernel.org>,
+        "Guenter Roeck" <groeck@chromium.org>,
+        Fabio
+ Estevam <festevam@gmail.com>,
+        "Olivier Moysan" <olivier.moysan@foss.st.com>,
+        Eugen Hristev <eugen.hristev@microchip.com>,
+        Miquel Raynal
+	<miquel.raynal@bootlin.com>
+Subject: [PATCH 06/34] iio: adc: ingenic-adc: explicitly add proper header files
+Date: Fri, 10 Jun 2022 10:45:17 +0200
+Message-ID: <20220610084545.547700-7-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220610084545.547700-1-nuno.sa@analog.com>
 References: <20220610084545.547700-1-nuno.sa@analog.com>
 MIME-Version: 1.0
 X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-ORIG-GUID: L46BpwneyhtI3GNdFP6pjW7i3IWCTReN
-X-Proofpoint-GUID: L46BpwneyhtI3GNdFP6pjW7i3IWCTReN
+X-Proofpoint-ORIG-GUID: ZWkRrk7n7yLUDDdUIimFozBiAwIQaxy8
+X-Proofpoint-GUID: ZWkRrk7n7yLUDDdUIimFozBiAwIQaxy8
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.517,FMLib:17.11.64.514
  definitions=2022-06-10_02,2022-06-09_02,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxscore=0
- malwarescore=0 mlxlogscore=827 lowpriorityscore=0 suspectscore=0
- bulkscore=0 adultscore=0 priorityscore=1501 clxscore=1015 spamscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ mlxlogscore=736 phishscore=0 priorityscore=1501 adultscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 spamscore=0 impostorscore=0 bulkscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2204290000 definitions=main-2206100031
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_014632_240642_D1DAA453 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20220610_014633_395559_BDC3C8E9 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,14 +158,15 @@ RG8gbm90IHRydXN0IHRoZSBmYWN0IHRoYXQgaWlvLmggaW5jbHVkZXMgb2YuaCB3aGljaCBpbiB0
 dXJuIGluY2x1ZGVzCmFsbCB0aGUgaGVhZGVycyB3ZSBhcmUgcmVseWluZyBvbi4KClRoZSB1bHRp
 bWF0ZSBnb2FsIGlzIHRvIGFjdHVhbGx5IGRyb3Agb2YuaCBmcm9tIGlpby5oLgoKU2lnbmVkLW9m
 Zi1ieTogTnVubyBTw6EgPG51bm8uc2FAYW5hbG9nLmNvbT4KLS0tCiBkcml2ZXJzL2lpby9hZGMv
-YWQ3NjA2X3Bhci5jIHwgMSArCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKCmRpZmYg
-LS1naXQgYS9kcml2ZXJzL2lpby9hZGMvYWQ3NjA2X3Bhci5jIGIvZHJpdmVycy9paW8vYWRjL2Fk
-NzYwNl9wYXIuYwppbmRleCA4ODg4ZTU2YjVlOTAuLmI5MTJiNGRmOWI1NiAxMDA2NDQKLS0tIGEv
-ZHJpdmVycy9paW8vYWRjL2FkNzYwNl9wYXIuYworKysgYi9kcml2ZXJzL2lpby9hZGMvYWQ3NjA2
-X3Bhci5jCkBAIC01LDYgKzUsNyBAQAogICogQ29weXJpZ2h0IDIwMTEgQW5hbG9nIERldmljZXMg
-SW5jLgogICovCiAKKyNpbmNsdWRlIDxsaW51eC9tb2RfZGV2aWNldGFibGUuaD4KICNpbmNsdWRl
-IDxsaW51eC9tb2R1bGUuaD4KICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KICNp
-bmNsdWRlIDxsaW51eC90eXBlcy5oPgotLSAKMi4zNi4xCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Ckxp
-bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+aW5nZW5pYy1hZGMuYyB8IDIgKysKIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2lpby9hZGMvaW5nZW5pYy1hZGMuYyBiL2RyaXZlcnMvaWlvL2Fk
+Yy9pbmdlbmljLWFkYy5jCmluZGV4IDJiMzkxMmM2Y2E2Yi4uZTczMWJhNDdhZGQyIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2lpby9hZGMvaW5nZW5pYy1hZGMuYworKysgYi9kcml2ZXJzL2lpby9hZGMv
+aW5nZW5pYy1hZGMuYwpAQCAtMTgsNiArMTgsOCBAQAogI2luY2x1ZGUgPGxpbnV4L21vZF9kZXZp
+Y2V0YWJsZS5oPgogI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+CiAjaW5jbHVkZSA8bGludXgvcGxh
+dGZvcm1fZGV2aWNlLmg+CisjaW5jbHVkZSA8bGludXgvcHJvcGVydHkuaD4KKyNpbmNsdWRlIDxs
+aW51eC9vZi5oPgogCiAjZGVmaW5lIEpaX0FEQ19SRUdfRU5BQkxFCQkweDAwCiAjZGVmaW5lIEpa
+X0FEQ19SRUdfQ0ZHCQkJMHgwNAotLSAKMi4zNi4xCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
