@@ -4,77 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 647B0CCA473
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 02:02:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 955A5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 02:03:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n+QWM3Ky+4lV0dOIL0BjzQe4U8+Y+zoffhmAet7FNco=; b=u0FH/wCu2/zApl
-	8WDI+c/CRt5KMcbAkrFxWX4gHwbZ2SUDvRqBPAvIaVDGYA/9yL4dMkijamaMkgFNQsJi+2ocIV9L6
-	vvL3IceL1I9f4u0KKuGdPUHMdPB4xMepKozFzuZwqw8lMdbjvzCy8quSgUGFw0NlTVD3P6wUr38MN
-	ySOUh0WNFxaCMTndq9Jyg3AYQGFSJuTjpi6YBSeLAh4+/4vMrzDifpv/pBqHY7LmSAAJwfnDYlxIn
-	ZoBwquvafZ6yk2iZ8Htkd0r96ezTjhIhjcctGlORqqs730hKsd5wImHvekdbn41M7CAhdTzC/jQ+c
-	uCWCoj9IrTuLUHdvgkaw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=jZqUZXbBjEDZJouDiRYDIAbuwXQXiGM2D91ILfAMZrg=; b=l6EWlcmJcoPBwJ9Iz9RVUlIZk0
+	dwFW6SNeBwElmslCmQVkaQa0LLDToKS1WN8hEZjkR/mMbDx1jkVTz905sLwu5l0BRsdsZBhsKZ60g
+	4HJ/Y3t2rhUW4c/CfBqYK/7a3LZqsFRI1M3Bgr8TLsDapMY2h4wpQNWZ2Q11g4Dm7Q3lmpXl4J2tX
+	9LC9R0gTP/B+LDJ/91Va2GpO9ltG9r4Ic5tcMeFiee4xRACwNwImsYclCnwTNbkDQLkGTAj1/1VMX
+	FTokVXAh2pebrf2VfXmYsjfzBbx2kUIRFxSVVzSL6BIb66Ryw3AnwNYEFEz+hiVDnTJBsolKlVjKa
+	Un2dcGdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzTz0-00585W-VE; Fri, 10 Jun 2022 02:02:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nzTzl-0058R1-Hz; Fri, 10 Jun 2022 02:03:29 +0000
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzTye-0057zd-EE; Fri, 10 Jun 2022 02:02:21 +0000
-X-UUID: 2fbdf87f29a041eb9845230de8b75291-20220609
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:4dfc25a7-f8ec-4618-8a5e-e82d98226337,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09,CLOUDID:c9bddc7e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:0,BEC:nil
-X-UUID: 2fbdf87f29a041eb9845230de8b75291-20220609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 255123937; Thu, 09 Jun 2022 18:58:32 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 18:53:24 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 10 Jun 2022 09:53:23 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 10 Jun 2022 09:53:21 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
-	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2, 4/4] media: mediatek: vcodec: Change encoder v4l2 capability value
-Date: Fri, 10 Jun 2022 09:53:15 +0800
-Message-ID: <20220610015315.25513-4-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220610015315.25513-1-yunfei.dong@mediatek.com>
-References: <20220610015315.25513-1-yunfei.dong@mediatek.com>
+	id 1nzTzg-0058MY-F5; Fri, 10 Jun 2022 02:03:26 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+	by mailout.nyi.internal (Postfix) with ESMTP id 283EC5C012B;
+	Thu,  9 Jun 2022 22:03:19 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute1.internal (MEProxy); Thu, 09 Jun 2022 22:03:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
+	cc:cc:content-transfer-encoding:content-type:date:date:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to; s=fm3; t=1654826599; x=
+	1654912999; bh=auv2y1q/XHGLdEIrA+k3tJpicIXejmP+D7ve/EoZ7GM=; b=T
+	lueWR2anscPTLp0GLpyNG2+xRDvlxqL4hHB649GKDVxE+83H0KogHLzK7+y7p1tl
+	DhCwJiGfhsexGpVmouxwk198ga4JMmAxvc0MPItUHh02vk4LRvUraBFLAjEYzL7H
+	gZcuiRXlvoicEFjgLzVXW800HjEb+HDIcWMTDaizkpQmKHhL77Q8uKOOZz707O40
+	TIz9C4thfrQn3s2q2+xaIwggUvQqHrFUz2TqGq1d4nIqw7xfdbXSW30edDJyuQuH
+	yq3ZTH9aWoSA/finyesptEcxaUPQUKI96Nsq8jdr1mMFqphTsaDNhASvslpIpCZs
+	KuHK82wLrkBr7ibytLhow==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1654826599; x=
+	1654912999; bh=auv2y1q/XHGLdEIrA+k3tJpicIXejmP+D7ve/EoZ7GM=; b=H
+	jaQGVAUFJ+o43qxljJhhhS7u5lZVx5+WEwMvXkqqfGfjYrY4QoCjutwZAnmZEjoi
+	UJkCS7XhYJDA1P48qBCrVwgj71pEU+N52OHb1JTH/DSvb0m3ai5Jy+f+uP4ewgto
+	jCgSFGjRPxUxrZo4gX98NmnppaNPRvC2tURk1H/pTCigjKDBHM6600/pBBy/aDtQ
+	9gG2FmWceVGLRo4xsWSTNiAqaow9F80mCByr562WBl+Sm9MDBq92NOgaHEbLJ8nM
+	mDr5zac63XZVJmWiVE5oiukoidXAgr8j4l85vEPJ0c54Qu3kFJMG2Pyy78sK4Rqo
+	pcjUqTi4+Fa8a0sfFqWAg==
+X-ME-Sender: <xms:ZaaiYna9xxSUqWwOqN2o4LbFxDQu91IYyvn7Ey86UqV2RrC2yZzEfw>
+    <xme:ZaaiYmbLAZJMC-YelQXR7lHVv9B0EGQgCOn61JOLlB4fAvLGnPCLxIQuJS_Jqc5nd
+    -t5T7a4wtpCMDnIsA>
+X-ME-Received: <xmr:ZaaiYp-W6bS5nyInJAR8JRslpyj4PadpQGE-IaOz_bAAWC1bMSMRGVDiT8TLXsxwNr-Y84i1EqQRN_fQ5uv3dGFQwBe77L4PBugRC1gmugy_d1ux0NXfRXQrdw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedruddutddgheegucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucenucfjughrpefuvfevfhfhkffffgggjggtgfesth
+    ejredttdefjeenucfhrhhomhepufgrmhhuvghlucfjohhllhgrnhguuceoshgrmhhuvghl
+    sehshhholhhlrghnugdrohhrgheqnecuggftrfgrthhtvghrnhepleetjeffvdegheektd
+    ekveeuueetffetffehudefueejvddufeduteeiieejveelnecuffhomhgrihhnpehkvghr
+    nhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfh
+    hrohhmpehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhg
+X-ME-Proxy: <xmx:ZaaiYtpnP-ZI6-J9uVGSSPK2oule0PiJy9MQZ77TQHt5ROhcNr4NMg>
+    <xmx:ZaaiYirYiAV5Vy1rURPPL3TX0xJdFr7XYP3Sz-8v6317Kmg3HYStWg>
+    <xmx:ZaaiYjRiGIEvtRQGbryJCwl4Mz2lfRVOT8dq1v23yOQq8Q4SKY931A>
+    <xmx:Z6aiYvq427nOQFMRmcwWTUq6YZyNTbWxjVLldeY5Zj6xsbSPPt914Q>
+Feedback-ID: i0ad843c9:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 9 Jun 2022 22:03:15 -0400 (EDT)
+Subject: Re: [PATCH 00/56] Specify clock provider directly to CPU DAIs
+To: Mark Brown <broonie@kernel.org>, ckeepax@opensource.cirrus.com
+Cc: linux-sunxi@lists.linux.dev, peter.ujfalusi@gmail.com,
+ pierre-louis.bossart@linux.intel.com, linux-imx@nxp.com, krzk@kernel.org,
+ jarkko.nikula@bitmer.com, linux-xtensa@linux-xtensa.org,
+ cezary.rojewski@intel.com, shawnguo@kernel.org,
+ linux-mediatek@lists.infradead.org, nicolas.ferre@microchip.com,
+ patches@opensource.cirrus.com, linux-amlogic@lists.infradead.org,
+ srinivas.kandagatla@linaro.org, daniel@zonque.org,
+ linux-mips@vger.kernel.org, linux-tegra@vger.kernel.org, nsaenz@kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de,
+ alsa-devel@alsa-project.org, kernel@pengutronix.de, jbrunet@baylibre.com,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org,
+ lgirdwood@gmail.com
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+ <165478153064.1052094.1721875477574787769.b4-ty@kernel.org>
+From: Samuel Holland <samuel@sholland.org>
+Message-ID: <2a498819-dbbf-31c1-4145-bbd2d7179bd8@sholland.org>
+Date: Thu, 9 Jun 2022 21:03:15 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <165478153064.1052094.1721875477574787769.b4-ty@kernel.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_190220_540826_B26A6F66 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20220609_190325_038328_167CF8CF 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,45 +117,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the value of v4l2 capability parameters: driver and card.
+Hi Mark,
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h | 1 -
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 4 ++--
- 2 files changed, 2 insertions(+), 3 deletions(-)
+On 6/9/22 8:32 AM, Mark Brown wrote:
+> On Thu, 19 May 2022 16:42:22 +0100, Charles Keepax wrote:
+>> Currently the set_fmt callback always passes clock provider/consumer
+>> with respect to the CODEC. This made sense when the framework was
+>> directly broken down into platforms and CODECs. However, as things
+>> are now broken down into components which can be connected as either
+>> the CPU or CODEC side of a DAI link it simplifies things if each
+>> side of the link is just told if it is provider or consumer of the
+>> clocks. Making this change allows us to remove one of the last parts
+>> of the ASoC core that needs to know if a driver is a CODEC driver,
+>> where it flips the clock format specifier if a CODEC driver is used on
+>> the CPU side of a DAI link, as well as just being conceptually more
+>> consistent with componentisation.
+>>
+>> [...]
+> 
+> Applied to
+> 
+>    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> 
+> Thanks!
+> 
+> [01/56] ASoC: core: Add set_fmt_new callback that directly specifies provider
+>         commit: 905f3a04e184854555fc248ca4e692fdbf2f2547
+> [02/56] ASoC: amd: vangogh: Update to use set_fmt_new callback
+>         commit: ab890e0f83a65624d20b0ca4a7cb6306b8511558
+> [03/56] ASoC: atmel: Update to use set_fmt_new callback
+>         commit: 0fd054a577180cd807992e32c7cd394e54c85903
+> [04/56] ASoC: au1x: Update to use set_fmt_new callback
+>         commit: fee11f70849b21a244e6e27d281f3858b671bfea
+> [05/56] ASoC: bcm: Update to use set_fmt_new callback
+>         commit: 04ea2404468b7885c560c3673f6f2fd368f305a2
+> [06/56] ASoC: ep93xx: Update to use set_fmt_new callback
+>         commit: 5d6124e58d56818249a6266f56d9c3739e72e1bd
+> [07/56] ASoC: dwc: Update to use set_fmt_new callback
+>         commit: ca0444f1f7b228ae3b8d1a5c0f0d1b4463171f98
+> [08/56] ASoC: fsl: Update to use set_fmt_new callback
+>         commit: 3b14c15a333b8225ea38479e13c0366539d3374a
+> [09/56] ASoC: hisilicon: Update to use set_fmt_new callback
+>         commit: 0f362524dd3face4865077a4f7e7e640a95702aa
+> [10/56] ASoC: img: Update to use set_fmt_new callback
+>         commit: ed2b384082a678a0c4c8c56deff9e5f46d5e3fca
+> [11/56] ASoC: Intel: Update to use set_fmt_new callback
+>         commit: add9ee8c64c617f561a309cdda50104e9e2c12f6
+> [12/56] ASoC: js4740-i2s: Update to use set_fmt_new callback
+>         commit: cbb3a19f090d5a41b822caf9ff2058e1c6bc7ea3
+> [13/56] ASoC: mediatek: Update to use set_fmt_new callback
+>         commit: 3af99430f8d948a41556156155b0295dec274d41
+> [14/56] ASoC: meson: Update to use set_fmt_new callback
+>         commit: f60442bf6eab47aa4ab127aab88afdcc29a09a73
+> [15/56] ASoC: mxs-saif: Update to use set_fmt_new callback
+>         commit: f3c0064f1f8e358799c70c7905a09d15c5ec5e5a
+> [16/56] ASoC: pxa: Update to use set_fmt_new callback
+>         commit: 84c5b47c8ce4d5059d5e7539d3b44922cc0390e9
+> [17/56] ASoC: qcom: Update to use set_fmt_new callback
+>         commit: 1148e16b335f341f36475b646c692b4a71a1855e
+> [18/56] ASoC: rockchip: Update to use set_fmt_new callback
+>         commit: 27646d265da1745b2d1d10fec18465631cb1135f
+> [19/56] ASoC: samsung: Update to use set_fmt_new callback
+>         commit: 0b491c7c1b2555ef08285fd49a8567f2f9f34ff8
+> [20/56] ASoC: sh: Update to use set_fmt_new callback
+>         commit: 2d4dd776e902546389f2d7808ece7fd815aa829c
+> [21/56] ASoC: stm: Update to use set_fmt_new callback
+>         commit: 0092dac91ec1c404787841bdd9ecbf3404d1a41c
+> [22/56] ASoC: sunxi: Update to use set_fmt_new callback
+>         commit: 7cc3965fde74c9c725ed01de4ac35bc7d562d16a
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index a29041a0b7e0..37add77e1c87 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -22,7 +22,6 @@
- #define MTK_VCODEC_DRV_NAME	"mtk_vcodec_drv"
- #define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
- #define MTK_VCODEC_ENC_NAME	"mtk-vcodec-enc"
--#define MTK_PLATFORM_STR	"platform:mt8173"
- 
- #define MTK_VCODEC_MAX_PLANES	3
- #define MTK_V4L2_BENCHMARK	0
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index f22efad761d8..d1211a675c33 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -226,9 +226,9 @@ static int vidioc_venc_querycap(struct file *file, void *priv,
- {
- 	int platform_name = mtk_vcodec_enc_get_chip_name(priv);
- 
--	strscpy(cap->driver, MTK_VCODEC_ENC_NAME, sizeof(cap->driver));
-+	strscpy(cap->driver, MTK_VCODEC_DRV_NAME, sizeof(cap->driver));
-+	strscpy(cap->card, MTK_VCODEC_ENC_NAME, sizeof(cap->card));
- 	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:mt%d-enc", platform_name);
--	strscpy(cap->card, MTK_PLATFORM_STR, sizeof(cap->card));
- 
- 	return 0;
- }
--- 
-2.18.0
+This patch is wrong, which I pointed out earlier[1]. It will break audio on the
+Allwinner A33 and A64 SoCs. Charles said he would send a v2[2]. Excluding the
+changes to sound/soc/sunxi/sun8i-codec.c from the patch would fix it.
 
+Regards,
+Samuel
+
+[1]:
+https://lore.kernel.org/alsa-devel/948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org/
+[2]:
+https://lore.kernel.org/linux-sunxi/20220520095654.GK38351@ediswmail.ad.cirrus.com/
 
 _______________________________________________
 Linux-mediatek mailing list
