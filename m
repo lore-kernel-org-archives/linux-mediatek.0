@@ -4,57 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889B0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 18:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26656C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 19:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bfTcYlz/sGuahm/Tcj5WMMXaA/LV+J3dd70ZRLM6GEo=; b=bO89Dwplz1QWDV
-	0TMxgn41AcFtAzQTg8upgTypuQfz34sFgvoOEhAEnz/OKFgnC1UApmD2vBb2ejfXP3pbTLpbN0oIh
-	yYETXLonBZtiWwAHKeMTfCAC7q5hQbhc3LQSohVdxBTVyVHyt7Wj8ByqpW+ZWfSVMv0HesR5cAPS1
-	fhIzrvWzZMinY8UmlLH1vzSjURTJdAbh2gR+ydtaCt6Jor+aWLoxM5qSpRZMzM95PeHHUnbR7fOLo
-	QmDIt6W1IDk3r7yR0+4FX9NAgBoB9Af1HtXkXmLttSnDW4KE9Vrmn/n2TUoYLYhEFkxtqgN88uPiM
-	loj4Wa3W1GPUTNZq9nIw==;
+	List-Owner; bh=jfSlvxPkSLrpnDnNK5/Odaa+tw5JvoZaBA9VVRGny4E=; b=RIAYjVtyn9BHLY
+	d/bR364zrXnLrk0dXQuovKLyvT967Nc8F5yuPUTQjBhH8d5xXH6Xixc9ESdNL7ZHTNRHqp+tfb39q
+	S6irO/7v4AX9lBzw9AYeLhOfONhDDsqfVcGjisWy1qf486tMk8HsoD/dBMnC6EayvQe482YwFF0is
+	XP55Oonf78B0BOPVa9MWbQB0AMXB6g2NwG57FGDbVpkxb4MXS38wrDyL6nwi+q20w1ihOnWIVfneI
+	db3jj+T9y9xlbeTLFEi+lHcIuPRjrYWNJNoYfaAYjiSqJ7sFQXQY2/KisdkO0ZUqpwXdS148PF4x4
+	BkllkD8EB4pLTNSOEN8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzjaX-009Oom-PV; Fri, 10 Jun 2022 18:42:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nzkWo-009Z70-5T; Fri, 10 Jun 2022 19:42:42 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzjaM-009Oks-Sa; Fri, 10 Jun 2022 18:42:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7069C6220F;
-	Fri, 10 Jun 2022 18:42:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE96AC34114;
-	Fri, 10 Jun 2022 18:42:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654886537;
-	bh=PJBR6bKb3Ylt/8DyDdQwk5imWJG0lzjWUnMRvGHHesE=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=bi4mAHAcf2fgQoDLYAunF0CMvF+EqEcOGK1JshkXVnrIa6ig8IJPbyKqqzr1fz45Y
-	 G/SPsoq/l31XgT/FUMq4A1plS6YNt5Pf2zMVP1Z0uXnQ/zA0t3C4829OJj1RJ5LTF1
-	 70UNuYrXPXFw3r2mc2qVDEkLEF4Kz68uIT//qft0cGKDozMWC35E83x0bN7oBpcMsX
-	 TrQEYTHRgNoP/nMYlkT6+2jZ6kwUgYlNVws+e2MjcAvVrwNq2TINy2ZKpr2kyksrow
-	 0odJG4t5S3UQWpyNOk7iY0yV8piZCTrTC3VfPDqwZU4ePiXN6vimqM8tXA5bXLt061
-	 6aEwYPE34OXWg==
+	id 1nzkWk-009Z65-P7; Fri, 10 Jun 2022 19:42:40 +0000
+Received: by mail-ed1-x533.google.com with SMTP id z7so182555edm.13;
+        Fri, 10 Jun 2022 12:42:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=Y54GLtlH6LdYaPPW/vT7zN8oinpgFewT/Kozy6U1sr8=;
+        b=iWSpr/Kt7gr1R9ypw8jSjj+iOo2ix1stq9TO7FQZo6FT8oajeYFmxMX5790+z+QVIw
+         C7Ph+qzRUt7nF1vNHdfJ0/2YZ2pZ+XOQ62dOWxjQJtnhLEBN5faftDizO1QR7VcaY1th
+         B2gMlUAyrnpPEnSuXIjg0v7ebGj0D7jFND7r5/1yIqLtNPorMEV563M1TGbB6y5QzIzb
+         69uRffN14fsfXA3NOeVWJp0NxUn7g4a5ccquY7moBAfqWHgcOt7DGfcfretFbABXDM7C
+         mJOIUP9o2bGzA7CZMkUvUUHb0Oaw59fP1sckcKbdvg0t/ddeKFE7FxUbxOVDoWa0tvSp
+         3ktQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=Y54GLtlH6LdYaPPW/vT7zN8oinpgFewT/Kozy6U1sr8=;
+        b=uIJX1gcW1JKfJJwBcfui6tudnv9bAWL7e++k7FDaN8uFUsCgWivSsJoTNvSsdpa4U1
+         c0/cyaMFbCpE0LlX85jcsQ3DXe0mV289+kJHhmRtSlvy0cukW2/oIvYVjJip0Pg4hFrR
+         7mb9YR0AFoZ5J3nxliYK52+049k1GCpK8/rk87qdxwk35kqMObQS4pi0SpON7XV5oNbF
+         26uCnNQ0UewfvEei3HHBz4bCL9B3wDlb+7yGo99LwiQyRrMuLy9gfMEsgv7WIbDl6dT+
+         tzpvgLcYWd60nvPxoH9biP5TTKP/Wb2L0QTmUkkyHtgRdEyyEcmGCM9dyIzaHAiN3uCq
+         x9fg==
+X-Gm-Message-State: AOAM531Lmjkbg8lyYt/yiIzAZ6gm5uwdDDZEuaK09bK5AXLeUpFL0PuV
+	WZrkKnWfovk45Yzbepg2MWg=
+X-Google-Smtp-Source: ABdhPJzmp7JEbyf5YC9B40GJWfUYSStWlZjAXDQjdn7K/oR4H50lmJrnbL72tBcPT/obo+EANAlJ1A==
+X-Received: by 2002:a05:6402:5c9:b0:420:aac6:257b with SMTP id n9-20020a05640205c900b00420aac6257bmr52750712edx.128.1654890155771;
+        Fri, 10 Jun 2022 12:42:35 -0700 (PDT)
+Received: from ?IPv6:2001:a61:136e:3c01:8bd4:cf6f:76f1:a861? ([2001:a61:136e:3c01:8bd4:cf6f:76f1:a861])
+        by smtp.gmail.com with ESMTPSA id nd28-20020a170907629c00b00706c50870a0sm4261637ejc.194.2022.06.10.12.42.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jun 2022 12:42:35 -0700 (PDT)
+Message-ID: <b2260504dce967f3ce8b0bee190ab81464b01f3f.camel@gmail.com>
+Subject: Re: [PATCH 25/34] thermal: qcom: qcom-spmi-adc-tm5: convert to IIO
+ fwnode API
+From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>, Nuno =?ISO-8859-1?Q?S=E1?=
+	 <nuno.sa@analog.com>
+Cc: dl-linux-imx <linux-imx@nxp.com>, Linux-Renesas
+ <linux-renesas-soc@vger.kernel.org>, "open list:BROADCOM NVRAM DRIVER"
+ <linux-mips@vger.kernel.org>, linux-arm Mailing List
+ <linux-arm-kernel@lists.infradead.org>, chrome-platform@lists.linux.dev,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-msm
+ <linux-arm-msm@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+ OpenBMC Maillist <openbmc@lists.ozlabs.org>, Cai Huoqing
+ <cai.huoqing@linux.dev>, Benjamin Fair <benjaminfair@google.com>, Jishnu
+ Prakash <quic_jprakash@quicinc.com>, Linus Walleij
+ <linus.walleij@linaro.org>, Lars-Peter Clausen <lars@metafoo.de>, Alexandre
+ Torgue <alexandre.torgue@foss.st.com>, Amit Kucheria <amitk@kernel.org>,
+ Andy Gross <agross@kernel.org>, Michael Hennerich
+ <Michael.Hennerich@analog.com>, Haibo Chen <haibo.chen@nxp.com>, Benson
+ Leung <bleung@chromium.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,  Christophe Branchereau
+ <cbranchereau@gmail.com>, Patrick Venture <venture@google.com>, Arnd
+ Bergmann <arnd@arndb.de>, Nancy Yuen <yuenn@google.com>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+ Gwendal Grignou <gwendal@chromium.org>, Saravanan Sekar
+ <sravanhome@gmail.com>, Tali Perry <tali.perry1@gmail.com>,  Maxime
+ Coquelin <mcoquelin.stm32@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
+ Thara Gopinath <thara.gopinath@linaro.org>, Avi Fishman
+ <avifishman70@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomer Maimon
+ <tmaimon77@gmail.com>, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,  Jonathan Cameron
+ <jic23@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Shawn Guo
+ <shawnguo@kernel.org>, Guenter Roeck <groeck@chromium.org>, Fabio Estevam
+ <festevam@gmail.com>, Olivier Moysan <olivier.moysan@foss.st.com>, Eugen
+ Hristev <eugen.hristev@microchip.com>, Miquel Raynal
+ <miquel.raynal@bootlin.com>
+Date: Fri, 10 Jun 2022 21:42:33 +0200
+In-Reply-To: <CAHp75VdYsPAS_1KZCrWvK5=By020Xxtw_FtogZwJQ=Srajdjbg@mail.gmail.com>
+References: <20220610084545.547700-1-nuno.sa@analog.com>
+	 <20220610084545.547700-26-nuno.sa@analog.com>
+	 <CAHp75VdYsPAS_1KZCrWvK5=By020Xxtw_FtogZwJQ=Srajdjbg@mail.gmail.com>
+User-Agent: Evolution 3.42.4 (3.42.4-2.fc35) 
 MIME-Version: 1.0
-In-Reply-To: <20220523102339.21927-3-matthias.bgg@kernel.org>
-References: <20220523102339.21927-1-matthias.bgg@kernel.org> <20220523102339.21927-3-matthias.bgg@kernel.org>
-Subject: Re: [PATCH v3 2/2] clk: mediatek: Delete MT8192 msdc gate
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: allen-kh.cheng@mediatek.com, weiyi.lu@mediatek.com, chun-jie.chen@mediatek.com, linux-kernel@vger.kernel.org, ikjn@chromium.org, miles.chen@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, Matthias Brugger <matthias.bgg@gmail.com>
-To: matthias.bgg@kernel.org, mturquette@baylibre.com
-Date: Fri, 10 Jun 2022 11:42:15 -0700
-User-Agent: alot/0.10
-Message-Id: <20220610184217.BE96AC34114@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_114219_000895_EDA545CC 
-X-CRM114-Status: UNSURE (   7.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220610_124238_872506_4F978DEB 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,25 +119,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting matthias.bgg@kernel.org (2022-05-23 03:23:39)
-> From: Matthias Brugger <matthias.bgg@gmail.com>
-> 
-> The msdc gate is part of the MMC driver. Delete the not used code.
-> 
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
-> 
-> ---
-
-Applied to clk-next
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAyMDIyLTA2LTEwIGF0IDE3OjIwICswMjAwLCBBbmR5IFNoZXZjaGVua28gd3JvdGU6
+Cj4gT24gRnJpLCBKdW4gMTAsIDIwMjIgYXQgMTA6NDggQU0gTnVubyBTw6EgPG51bm8uc2FAYW5h
+bG9nLmNvbT4gd3JvdGU6Cj4gPiAKPiA+IE1ha2UgdXNhZ2Ugb2YgdGhlIG5ldyBmaXJtd2FyZSBh
+Z25vc3RpYyBBUEkKPiA+ICdkZXZtX29mX2lpb19jaGFubmVsX2dldF9ieV9uYW1lKCknIHRvIGdl
+dCB0aGUgSUlPIGNoYW5uZWwuCj4gCj4gX29mXyA/IQo+IAoKQ2xlYXJseSBub3QgOikuLi4gV2ls
+bCBmaXggaXQgb24gdjIKCi0gTnVubyBTw6EKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVk
+aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
