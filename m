@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F0A0C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 06:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3550CC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 06:55:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FNxNvlmAn5X69Xiw+wLrScaq6wZVuUL49lIIBgt4Ni0=; b=JU6VTMThxcgnnV
-	S6Ag9sTX0PYRbWx7PH7ekBfw4nWRQHhiBRdhiR5FNydgzwKc6dd+7MqPY4G8FrqBBM4kgRDV4pDop
-	XLvTNFwoCR37ew3mBq+mMiYwyeOtNvGn1EvesCO/IuHF0CrjA08UAEjKbQWlrpqHBnz6mKxQqheUP
-	JZRbA9Mg4T0ZTKdFq3BYy0QDYPjU4eCM5n5EuiYxO4iE3EmdeUHMve4oSkARJ/ExAvD6guEYZxrhe
-	2n518O+mfR+qd3PhLNw60P2TU6J5Cd3lAtELtHtCyF7+/lh35VqGuaJ3TeRMuHGAKlwUds2TARFPz
-	WB0OpYLQ4DMIRI3+fqIQ==;
+	List-Owner; bh=VJM274Ev6y6cKGvHH30XbxJ/RIBcLJ4KKJSRPCYoEYg=; b=h3x+dxTP6iNqam
+	NRr1OzNsXPTl7RwBINayqoV2asX/jvjRp83bJtHIUD595m10RUu6cb2fDG4tCD/CyZAiLKlkmhyTc
+	aj0VKtM+7WvSpPMglBpMC7QAnXeXWcoyE7JrrfHaqoxgTHKpHixjGUbxEOeO3lMC6NZJt4yKHUr4W
+	Vj2Nrc7IQQIPEbqmDymycyi5XKWkoml3bu2XPd3FSFZyjqhY8pKhGZNdnPCn0U7tK59kKnrHwX5jF
+	7QC1hJZrdaAc+CByanqlf1W4Diqy4K4ZuIuzh/myStkpvsrDmPGESUxxtUVsWGR/6v6Iy6TcEJp4h
+	WHDbZoUThZmtfSw3KHhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYYN-006HuF-6x; Fri, 10 Jun 2022 06:55:31 +0000
+	id 1nzYYi-006I2w-2b; Fri, 10 Jun 2022 06:55:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYYA-006Hp2-J7; Fri, 10 Jun 2022 06:55:22 +0000
-X-UUID: 04424c2c23364bfd8dd35a0e7e610403-20220609
+	id 1nzYYA-006HpD-JG; Fri, 10 Jun 2022 06:55:23 +0000
+X-UUID: f967fcfce2bf4ea4a26aac5db80c8779-20220609
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:2038fe59-d7cc-40b1-a9c1-e54ca0776a07,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.5,REQID:4d2239ec-9743-4b82-b01d-63098269afaf,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:7e7ee87e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-META: VersionHash:2a19b09,CLOUDID:7d7ee87e-c8dc-403a-96e8-6237210dceee,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 04424c2c23364bfd8dd35a0e7e610403-20220609
+X-UUID: f967fcfce2bf4ea4a26aac5db80c8779-20220609
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
+	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1072899180; Thu, 09 Jun 2022 23:55:10 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 896903044; Thu, 09 Jun 2022 23:55:10 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 23:45:08 -0700
+ 15.0.1497.2; Thu, 9 Jun 2022 23:51:01 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 10 Jun 2022 14:45:06 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 14:45:06 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
-	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
-	<river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Subject: [PATCH v18 3/4] dts: arm64: mt8183: add Mediatek MDP3 nodes
-Date: Fri, 10 Jun 2022 14:45:03 +0800
-Message-ID: <20220610064504.8302-4-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220610064504.8302-1-moudy.ho@mediatek.com>
-References: <20220610064504.8302-1-moudy.ho@mediatek.com>
+ Fri, 10 Jun 2022 14:50:59 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Fri, 10 Jun 2022 14:50:59 +0800
+Message-ID: <ad31ed6f7a70babddbb2fa859b1b9c8199705f70.camel@mediatek.com>
+Subject: Re: [PATCH v10 04/21] drm/edid: Add cea_sad helpers for freq/length
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "David
+ Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
+ Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, CK Hu <ck.hu@mediatek.com>, Jitao shi
+	<jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>
+Date: Fri, 10 Jun 2022 14:50:59 +0800
+In-Reply-To: <62abad94-fe4a-2505-506d-6e4bc6b425ff@collabora.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-5-granquet@baylibre.com>
+	 <62abad94-fe4a-2505-506d-6e4bc6b425ff@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_235518_691320_2FE6D11B 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20220609_235518_692549_186EE1BD 
+X-CRM114-Status: GOOD (  32.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,119 +94,211 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device nodes for Media Data Path 3 (MDP3) modules.
+On Wed, 2022-05-25 at 14:26 +0200, AngeloGioacchino Del Regno wrote:
+> Il 23/05/22 12:47, Guillaume Ranquet ha scritto:
+> > This patch adds two helper functions that extract the frequency and
+> > word
+> > length from a struct cea_sad.
+> > 
+> > For these helper functions new defines are added that help
+> > translate the
+> > 'freq' and 'byte2' fields into real numbers.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > ---
+> >   drivers/gpu/drm/drm_edid.c | 74
+> > ++++++++++++++++++++++++++++++++++++++
+> >   include/drm/drm_edid.h     | 14 ++++++++
+> >   2 files changed, 88 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/drm_edid.c
+> > b/drivers/gpu/drm/drm_edid.c
+> > index 561f53831e29..61ef1b1c972c 100644
+> > --- a/drivers/gpu/drm/drm_edid.c
+> > +++ b/drivers/gpu/drm/drm_edid.c
+> > @@ -4758,6 +4758,80 @@ int drm_edid_to_speaker_allocation(struct
+> > edid *edid, u8 **sadb)
+> >   }
+> >   EXPORT_SYMBOL(drm_edid_to_speaker_allocation);
+> >   
+> > +/**
+> > + * drm_cea_sad_get_sample_rate - Extract the sample rate from
+> > cea_sad
+> > + * @sad: Pointer to the cea_sad struct
+> > + *
+> > + * Extracts the cea_sad frequency field and returns the sample
+> > rate in Hz.
+> > + *
+> > + * Return: Sample rate in Hz or a negative errno if parsing
+> > failed.
+> > + */
+> > +int drm_cea_sad_get_sample_rate(const struct cea_sad *sad)
+> > +{
+> > +	switch (sad->freq) {
+> > +	case DRM_CEA_SAD_FREQ_32KHZ:
+> > +		return 32000;
+> > +	case DRM_CEA_SAD_FREQ_44KHZ:
+> > +		return 44100;
+> > +	case DRM_CEA_SAD_FREQ_48KHZ:
+> > +		return 48000;
+> > +	case DRM_CEA_SAD_FREQ_88KHZ:
+> > +		return 88200;
+> > +	case DRM_CEA_SAD_FREQ_96KHZ:
+> > +		return 96000;
+> > +	case DRM_CEA_SAD_FREQ_176KHZ:
+> > +		return 176400;
+> > +	case DRM_CEA_SAD_FREQ_192KHZ:
+> > +		return 192000;
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +}
+> > +EXPORT_SYMBOL(drm_cea_sad_get_sample_rate);
+> > +
+> > +static bool drm_cea_sad_is_uncompressed(const struct cea_sad *sad)
+> > +{
+> > +	switch (sad->format) {
+> > +	case HDMI_AUDIO_CODING_TYPE_STREAM:
+> 
+> As far as I know, bit 0 is reserved, so HDMI_AUDIO_CODING_TYPE_STREAM
+> should
+> never occur here?
+> 
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 79 +++++++++++++++++++++++-
- 1 file changed, 78 insertions(+), 1 deletion(-)
+Hello Angelo,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index e74fd253478b..ade5997a9656 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1389,6 +1389,50 @@
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
- 		};
- 
-+		mdp3-rdma0@14001000 {
-+			compatible = "mediatek,mt8183-mdp3-rdma";
-+			reg = <0 0x14001000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-+				 <&mmsys CLK_MM_MDP_RSZ1>;
-+			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-+			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-+				 <&gce 21 CMDQ_THR_PRIO_LOWEST 0>;
-+		};
-+
-+		mdp3-rsz0@14003000 {
-+			compatible = "mediatek,mt8183-mdp3-rsz";
-+			reg = <0 0x14003000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-+			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-+		};
-+
-+		mdp3-rsz1@14004000 {
-+			compatible = "mediatek,mt8183-mdp3-rsz";
-+			reg = <0 0x14004000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-+			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-+		};
-+
-+		mdp3-wrot0@14005000 {
-+			compatible = "mediatek,mt8183-mdp3-wrot";
-+			reg = <0 0x14005000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_MDP_WROT0>;
-+			iommus = <&iommu M4U_PORT_MDP_WROT0>;
-+		};
-+
-+		mdp3-wdma@14006000 {
-+			compatible = "mediatek,mt8183-mdp3-wdma";
-+			reg = <0 0x14006000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-+			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
-+		};
-+
- 		ovl0: ovl@14008000 {
- 			compatible = "mediatek,mt8183-disp-ovl";
- 			reg = <0 0x14008000 0 0x1000>;
-@@ -1507,7 +1551,33 @@
- 			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
--					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
-+					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>,
-+					      <CMDQ_EVENT_MDP_RDMA0_SOF>,
-+					      <CMDQ_EVENT_MDP_RDMA0_EOF>,
-+					      <CMDQ_EVENT_MDP_RSZ0_SOF>,
-+					      <CMDQ_EVENT_MDP_RSZ1_SOF>,
-+					      <CMDQ_EVENT_MDP_TDSHP_SOF>,
-+					      <CMDQ_EVENT_MDP_WROT0_SOF>,
-+					      <CMDQ_EVENT_MDP_WROT0_EOF>,
-+					      <CMDQ_EVENT_MDP_WDMA0_SOF>,
-+					      <CMDQ_EVENT_MDP_WDMA0_EOF>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_0>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_1>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_2>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_3>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_4>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_5>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_6>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_7>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_8>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_9>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_10>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_11>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_12>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_13>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_14>,
-+					      <CMDQ_EVENT_WPE_A_DONE>,
-+					      <CMDQ_EVENT_SPE_B_DONE>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
- 		};
- 
-@@ -1532,6 +1602,13 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 		};
- 
-+		mdp3-ccorr@1401c000 {
-+			compatible = "mediatek,mt8183-mdp3-ccorr";
-+			reg = <0 0x1401c000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-+			clocks = <&mmsys CLK_MM_MDP_CCORR>;
-+		};
-+
- 		imgsys: syscon@15020000 {
- 			compatible = "mediatek,mt8183-imgsys", "syscon";
- 			reg = <0 0x15020000 0 0x1000>;
--- 
-2.18.0
+because we do not know whether "HDMI_AUDIO_CODING_TYPE_STREAM" is
+compressed, we decide to change this function name to
+drm_cea_sad_is_pcm to prevent misunderstanding.
+For this, I will drop case HDMI_AUDIO_CODING_TYPE_STREAM
+
+> > +	case HDMI_AUDIO_CODING_TYPE_PCM:
+> > +		return true;
+> > +	default:
+> > +		return false;
+> > +	}
+> > +}
+> > +
+> 
+> Also, I think that implementing a
+> drm_cea_sad_get_compressed_max_bitrate()
+> function should be pretty straightforward... the spec says that this
+> is
+> 8 bits, byte 3 (your byte2) contains the max bitrate divided by 8kHz,
+> so to extract it, you read byte2 and multiply it by 8000Hz.
+> 
+> /**
+>   * drm_cea_sad_get_compressed_max_bitrate - Extract maximum bitrate
+>   * @sad: Pointer to the cea_sad structure
+>   *
+>   * Extracts the cea_sad byte2 field and returns the maximum bit rate
+>   * of a compressed audio stream.
+>   *
+>   * Note: This function may only be called for compressed audio.
+>   *
+>   * Return: Maximum bitrate of compressed audio stream in bit/s or
+>   *         negative number for error
+>   */
+> int drm_cea_sad_get_compressed_max_bitrate(const struct cea_sad *sad)
+> {
+> 	if (drm_cea_sad_is_uncompressed(sad)) {
+> 		DRM_ERROR("Not supported: tried to get max bitrate for
+> uncompressed format: %u\n",
+> 			 sad->format);
+> 		return -EINVAL;
+> 	}
+> 
+> 	return sad->byte2 * 8000;
+> }
+> 
+
+After sync with Jitao, we think this function is not correct.
+refer to table of "Short Audio Descriptor" in [1].
+
+[1]:https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
+
+BRs,
+Bo-Chen
+> > +/**
+> > + * drm_cea_sad_get_uncompressed_word_length - Extract word length
+> > + * @sad: Pointer to the cea_sad struct
+> > + *
+> > + * Extracts the cea_sad byte2 field and returns the word length
+> > for an
+> > + * uncompressed stream.
+> > + *
+> > + * Note: This function may only be called for uncompressed audio.
+> > + *
+> > + * Return: Word length in bits or a negative errno if parsing
+> > failed.
+> > + */
+> > +int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad
+> > *sad)
+> > +{
+> > +	if (!drm_cea_sad_is_uncompressed(sad)) {
+> > +		DRM_WARN("Unable to get the uncompressed word length
+> > for a compressed format: %u\n",
+> > +			 sad->format);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	switch (sad->byte2) {
+> > +	case DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT:
+> > +		return 16;
+> > +	case DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT:
+> > +		return 20;
+> > +	case DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT:
+> > +		return 24;
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +}
+> > +EXPORT_SYMBOL(drm_cea_sad_get_uncompressed_word_length);
+> > +
+> >   /**
+> >    * drm_av_sync_delay - compute the HDMI/DP sink audio-video sync
+> > delay
+> >    * @connector: connector associated with the HDMI/DP sink
+> > diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
+> > index 37c420423625..7a939cb95b38 100644
+> > --- a/include/drm/drm_edid.h
+> > +++ b/include/drm/drm_edid.h
+> > @@ -373,6 +373,18 @@ struct cea_sad {
+> >   	u8 byte2;
+> >   };
+> >   
+> > +#define DRM_CEA_SAD_FREQ_32KHZ  BIT(0)
+> > +#define DRM_CEA_SAD_FREQ_44KHZ  BIT(1)
+> > +#define DRM_CEA_SAD_FREQ_48KHZ  BIT(2)
+> > +#define DRM_CEA_SAD_FREQ_88KHZ  BIT(3)
+> > +#define DRM_CEA_SAD_FREQ_96KHZ  BIT(4)
+> > +#define DRM_CEA_SAD_FREQ_176KHZ BIT(5)
+> > +#define DRM_CEA_SAD_FREQ_192KHZ BIT(6)
+> > +
+> > +#define DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT BIT(0)
+> > +#define DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT BIT(1)
+> > +#define DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT BIT(2)
+> > +
+> >   struct drm_encoder;
+> >   struct drm_connector;
+> >   struct drm_connector_state;
+> > @@ -380,6 +392,8 @@ struct drm_display_mode;
+> >   
+> >   int drm_edid_to_sad(struct edid *edid, struct cea_sad **sads);
+> >   int drm_edid_to_speaker_allocation(struct edid *edid, u8 **sadb);
+> > +int drm_cea_sad_get_sample_rate(const struct cea_sad *sad);
+> > +int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad
+> > *sad);
+> >   int drm_av_sync_delay(struct drm_connector *connector,
+> >   		      const struct drm_display_mode *mode);
+> >   
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
 
 _______________________________________________
