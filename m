@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2925CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:48:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F00E0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:48:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BVJAguYo/pQa97hR4c1vjN1MVnyrDxzPJsXtXWx+2GE=; b=l4TcuhVEuNPOcv
-	Js/ejLc7IslgClZOP4YFtsSrggj99mVqkCk5cH+S3UhSnuW81+Tugws0uF6bpRXqapnHK5OsJEUr8
-	HiiwvKLt9DdWXNDsq9VG7XcdNNkq3kuNSFe6B9G39kr44CtJ1mFSoLdiT17vfPvnNG3Q/urQhaGxn
-	BbDqHOm8kYQf2NjE7j8gDPwfceQeJRjS5AYEcH5JzmPpKnbTIXYTU8HA+dYER3KY0zTbuw2OQCiu6
-	YJ4B3GB0TJJ1S0xON39i5ByH05lW7M5kXpIfGiXyGFToifq9hPtFs9RhUBt4wkg/Ynwwe1rDIkchB
-	qpQnIFhpWoRKLIuMrhBA==;
+	List-Owner; bh=VrQBGmBaWzNo6fmwHbVrfa8ebDP1MIeU2AsbT/SRY+Q=; b=IFgCJO+fxM68y3
+	6joMUginshgWR/Lds8xg0sdn0uDVujNFTxqvL4FcA5W+mxxFVYq8eoMj5X5BwDsrD5cKh4MOim6Pr
+	Sk2oKGH6MYnkVOWW3TfDtBydCJzaRiCFAWn4O9Ayr+gmP07BQ0LiTTTehpIQjgoUydTvdliXVwCD1
+	BxEkKoS56wpmmLKlDPG8OfBKOHi0y1fgacS0Y09tLfthVoHk9NF67RRITb2vMhGxUub9C5ywzJROD
+	a6Gv/zF6u7nZD91R15veEXiKKw3bN0eE8BMJ1FEbDa4lIdn9RpROf/GMkc50yDkWaaQVBJU+KbgkE
+	t1t+pJ8qL3ZHE4W4V0OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaJG-006uID-Cg; Fri, 10 Jun 2022 08:48:02 +0000
+	id 1nzaJT-006uSG-Qe; Fri, 10 Jun 2022 08:48:15 +0000
 Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaJD-006uGJ-G3; Fri, 10 Jun 2022 08:48:00 +0000
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25A5dYLD010569;
-	Fri, 10 Jun 2022 04:47:37 -0400
+	id 1nzaJQ-006uQL-Ub; Fri, 10 Jun 2022 08:48:14 +0000
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25A7WKNX005267;
+	Fri, 10 Jun 2022 04:47:50 -0400
 Received: from nwd2mta4.analog.com ([137.71.173.58])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3gm00mh20q-1
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3ghq33kq7t-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Jun 2022 04:47:37 -0400
+	Fri, 10 Jun 2022 04:47:50 -0400
 Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 25A8lZGw027526
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 25A8lnqA027535
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 10 Jun 2022 04:47:35 -0400
+	Fri, 10 Jun 2022 04:47:49 -0400
 Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX8.ad.analog.com
  (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Fri, 10 Jun
- 2022 04:47:35 -0400
+ 2022 04:47:48 -0400
 Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
  (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Fri, 10 Jun 2022 04:47:34 -0400
+ Transport; Fri, 10 Jun 2022 04:47:48 -0400
 Received: from nsa.ad.analog.com ([10.44.3.70])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 25A8imie014275;
-	Fri, 10 Jun 2022 04:47:23 -0400
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 25A8imig014275;
+	Fri, 10 Jun 2022 04:47:36 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <linux-imx@nxp.com>, <linux-renesas-soc@vger.kernel.org>,
         <linux-mips@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
@@ -111,27 +111,27 @@ CC: Cai Huoqing <cai.huoqing@linux.dev>,
         Eugen Hristev
 	<eugen.hristev@microchip.com>,
         Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH 18/34] iio: trigger: stm32-lptimer-trigger: explicitly add proper header files
-Date: Fri, 10 Jun 2022 10:45:29 +0200
-Message-ID: <20220610084545.547700-19-nuno.sa@analog.com>
+Subject: [PATCH 20/34] iio: inkern: only relase the device node when done with it
+Date: Fri, 10 Jun 2022 10:45:31 +0200
+Message-ID: <20220610084545.547700-21-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220610084545.547700-1-nuno.sa@analog.com>
 References: <20220610084545.547700-1-nuno.sa@analog.com>
 MIME-Version: 1.0
 X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-ORIG-GUID: XaUawEAyaGZU_NQn0A4irsQom7dYsKM1
-X-Proofpoint-GUID: XaUawEAyaGZU_NQn0A4irsQom7dYsKM1
+X-Proofpoint-ORIG-GUID: SkfWEkHBuamWrqTrmnu36au12Kn0EwdD
+X-Proofpoint-GUID: SkfWEkHBuamWrqTrmnu36au12Kn0EwdD
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.517,FMLib:17.11.64.514
  definitions=2022-06-10_02,2022-06-09_02,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxscore=0
- malwarescore=0 mlxlogscore=931 lowpriorityscore=0 suspectscore=0
- bulkscore=0 adultscore=0 priorityscore=1501 clxscore=1015 spamscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ mlxlogscore=924 phishscore=0 priorityscore=1501 adultscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 spamscore=0 impostorscore=0 bulkscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2204290000 definitions=main-2206100031
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_014759_559735_EF55162E 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20220610_014813_047861_86D9D220 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,20 +148,29 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RG8gbm90IHRydXN0IHRoZSBmYWN0IHRoYXQgaWlvLmggaW5jbHVkZXMgb2YuaCB3aGljaCBpbiB0
-dXJuIGluY2x1ZGVzCmFsbCB0aGUgaGVhZGVycyB3ZSBhcmUgcmVseWluZyBvbi4KClRoZSB1bHRp
-bWF0ZSBnb2FsIGlzIHRvIGFjdHVhbGx5IGRyb3Agb2YuaCBmcm9tIGlpby5oLgoKU2lnbmVkLW9m
-Zi1ieTogTnVubyBTw6EgPG51bm8uc2FAYW5hbG9nLmNvbT4KLS0tCiBkcml2ZXJzL2lpby90cmln
-Z2VyL3N0bTMyLWxwdGltZXItdHJpZ2dlci5jIHwgMSArCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNl
-cnRpb24oKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2lpby90cmlnZ2VyL3N0bTMyLWxwdGltZXIt
-dHJpZ2dlci5jIGIvZHJpdmVycy9paW8vdHJpZ2dlci9zdG0zMi1scHRpbWVyLXRyaWdnZXIuYwpp
-bmRleCBhZjQ2YzEwY2VhOTIuLjJlNDQ3YTNmMDQ3ZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9paW8v
-dHJpZ2dlci9zdG0zMi1scHRpbWVyLXRyaWdnZXIuYworKysgYi9kcml2ZXJzL2lpby90cmlnZ2Vy
-L3N0bTMyLWxwdGltZXItdHJpZ2dlci5jCkBAIC0xMSw2ICsxMSw3IEBACiAKICNpbmNsdWRlIDxs
-aW51eC9paW8vdGltZXIvc3RtMzItbHB0aW0tdHJpZ2dlci5oPgogI2luY2x1ZGUgPGxpbnV4L21m
-ZC9zdG0zMi1scHRpbWVyLmg+CisjaW5jbHVkZSA8bGludXgvbW9kX2RldmljZXRhYmxlLmg+CiAj
-aW5jbHVkZSA8bGludXgvbW9kdWxlLmg+CiAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNl
-Lmg+CiAjaW5jbHVkZSA8bGludXgvcHJvcGVydHkuaD4KLS0gCjIuMzYuMQoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
-bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+J29mX25vZGVfcHV0KCknIGNhbiBwb3RlbnRpYWxseSByZWxlYXNlIHRoZSBtZW1vcnkgcG9pbnRl
+ZCB0byBieQonaWlvc3BlYy5ucCcgd2hpY2ggd291bGQgbGVhdmUgdXMgd2l0aCBhbiBpbnZhbGlk
+IHBvaW50ZXIgKGFuZCB3ZSB3b3VsZApzdGlsbCBwYXNzIGl0IGluICdvZl94bGF0ZSgpJykuIEFz
+IHN1Y2gsIHdlIGNhbiBvbmx5IHJlbGVhc2UgdGhlIG5vZGUKYWZ0ZXIgd2UgYXJlIGRvbmUgd2l0
+aCBpdC4KCkZpeGVzOiAxN2Q4MmI0N2EyMTVkICgiaWlvOiBBZGQgT0Ygc3VwcG9ydCIpClNpZ25l
+ZC1vZmYtYnk6IE51bm8gU8OhIDxudW5vLnNhQGFuYWxvZy5jb20+Ci0tLQogZHJpdmVycy9paW8v
+aW5rZXJuLmMgfCA2ICsrKystLQogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMiBk
+ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2lpby9pbmtlcm4uYyBiL2RyaXZlcnMv
+aWlvL2lua2Vybi5jCmluZGV4IGRmNzQ3NjVkMzNkYy4uOWQ4NzA1Nzc5NGZjIDEwMDY0NAotLS0g
+YS9kcml2ZXJzL2lpby9pbmtlcm4uYworKysgYi9kcml2ZXJzL2lpby9pbmtlcm4uYwpAQCAtMTY1
+LDkgKzE2NSwxMCBAQCBzdGF0aWMgaW50IF9fb2ZfaWlvX2NoYW5uZWxfZ2V0KHN0cnVjdCBpaW9f
+Y2hhbm5lbCAqY2hhbm5lbCwKIAogCWlkZXYgPSBidXNfZmluZF9kZXZpY2UoJmlpb19idXNfdHlw
+ZSwgTlVMTCwgaWlvc3BlYy5ucCwKIAkJCSAgICAgICBpaW9fZGV2X25vZGVfbWF0Y2gpOwotCW9m
+X25vZGVfcHV0KGlpb3NwZWMubnApOwotCWlmIChpZGV2ID09IE5VTEwpCisJaWYgKGlkZXYgPT0g
+TlVMTCkgeworCQlvZl9ub2RlX3B1dChpaW9zcGVjLm5wKTsKIAkJcmV0dXJuIC1FUFJPQkVfREVG
+RVI7CisJfQogCiAJaW5kaW9fZGV2ID0gZGV2X3RvX2lpb19kZXYoaWRldik7CiAJY2hhbm5lbC0+
+aW5kaW9fZGV2ID0gaW5kaW9fZGV2OwpAQCAtMTc1LDYgKzE3Niw3IEBAIHN0YXRpYyBpbnQgX19v
+Zl9paW9fY2hhbm5lbF9nZXQoc3RydWN0IGlpb19jaGFubmVsICpjaGFubmVsLAogCQlpbmRleCA9
+IGluZGlvX2Rldi0+aW5mby0+b2ZfeGxhdGUoaW5kaW9fZGV2LCAmaWlvc3BlYyk7CiAJZWxzZQog
+CQlpbmRleCA9IF9fb2ZfaWlvX3NpbXBsZV94bGF0ZShpbmRpb19kZXYsICZpaW9zcGVjKTsKKwlv
+Zl9ub2RlX3B1dChpaW9zcGVjLm5wKTsKIAlpZiAoaW5kZXggPCAwKQogCQlnb3RvIGVycl9wdXQ7
+CiAJY2hhbm5lbC0+Y2hhbm5lbCA9ICZpbmRpb19kZXYtPmNoYW5uZWxzW2luZGV4XTsKLS0gCjIu
+MzYuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
+aWF0ZWsK
