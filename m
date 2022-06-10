@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3E51CCA47B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 11:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A316DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 11:07:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yS7FZx7h45UW+FJMx2gRDrmCWOFq49+sIfDl8Cqufpo=; b=GnfTlFf8WN3Mhk
-	+A/Y2I4rq7EwLQR9TSPpTzpUJb22Vb4Lny6QjUeO5XY29fxFocGGxYM2W7t4rD4+DLC6WuqwGFH77
-	gmZkuBwgB1+tRvpZjGs8O0EXRt5T/3sKrd7TotOWtTg5EaWlNCOZU95wVnbHFh0EWVvQiQ8u2jaQk
-	CZAVjk+F1LEgjjbav4qvt0a4UceWPTiG97akZvoB0PBobvcEyruLKQgD33XmxR8/P80YLClcqYTsl
-	jMReMZKjzKnbdNZ44Dp+bA3242GEFbIQIftbXYi2Z4jC4LGngXR3EzDIy3v7CiH52zGZDMun885f+
-	rlCgbi9VZhmI1UaHYBvw==;
+	List-Owner; bh=4O6hhRur1zLZuGshRfhwGNBJ9lxR1X613l4gCrIHad4=; b=FPVxO+tsLOkEb0
+	2Lp3G4LuWSxKgaD79+KlhLBf90eJAqjJyrMQmu7ts4nb61Z5YjTkeJavdQF87jTo9zkbgBKikNACy
+	BPJaJjVTQk25YIKmW4sfndLKLRpNlnkrLngmkIFw5uF8uXDuPkjabNryR/OwRapaTDhTATwzaTSTi
+	/9ejtRjBIu+/huIixiMbKSRS+LRZujV8K3EZnoq2Zky43LyNsMM/JFUiyvzRSJr3YYsiFkfYYGTil
+	bCPY/X6I4am/ODOu75hRi68QpGsBKP3yuSRZB/MVU9QgFPbfhPUQOhw2S+wb984yQ3Ia/d31kIP3i
+	gIblsYnHVp3UgWVg67rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzcU1-007lB7-MI; Fri, 10 Jun 2022 11:07:17 +0000
+	id 1nzcU2-007lBb-KP; Fri, 10 Jun 2022 11:07:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzcSN-007kQo-HC; Fri, 10 Jun 2022 11:05:38 +0000
-X-UUID: fb50d1d45719411a9df1f32acf534cd6-20220610
+	id 1nzcSN-007kRr-WC; Fri, 10 Jun 2022 11:05:39 +0000
+X-UUID: c68842ab89c14948a180ae5042467c91-20220610
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:b7741c1e-8fff-4e0b-8543-e96d7dc60312,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:c268f27e-c8dc-403a-96e8-6237210dceee,C
+X-CID-O-INFO: VERSION:1.1.5,REQID:24a28d75-67c9-4c4a-a9b2-17fe97116464,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+	TION:release,TS:20
+X-CID-META: VersionHash:2a19b09,CLOUDID:0c1168e5-2ba2-4dc1-b6c5-11feb6c769e0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: fb50d1d45719411a9df1f32acf534cd6-20220610
+X-UUID: c68842ab89c14948a180ae5042467c91-20220610
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 768141891; Fri, 10 Jun 2022 04:05:26 -0700
+	with ESMTP id 1227640526; Fri, 10 Jun 2022 04:05:26 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Jun 2022 03:55:26 -0700
+ 15.0.1497.2; Fri, 10 Jun 2022 03:55:25 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 10 Jun 2022 18:55:24 +0800
+ Fri, 10 Jun 2022 18:55:23 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 18:55:24 +0800
+ 15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 18:55:23 +0800
 From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
 	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -60,17 +60,17 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v11 07/10] drm/mediatek: add hpd debounce
-Date: Fri, 10 Jun 2022 18:55:19 +0800
-Message-ID: <20220610105522.13449-8-rex-bc.chen@mediatek.com>
+Subject: [PATCH v11 01/10] dt-bindings: mediatek,dp: Add Display Port binding
+Date: Fri, 10 Jun 2022 18:55:13 +0800
+Message-ID: <20220610105522.13449-2-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
 References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_040535_671069_7B3C50FD 
-X-CRM114-Status: GOOD (  18.73  )
+X-CRM114-CacheID: sfid-20220610_040536_073487_EF63A107 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,126 +87,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jitao Shi <jitao.shi@mediatek.com>
+From: Markus Schneider-Pargmann <msp@baylibre.com>
 
-From the DP spec 1.4a chapter 3.3, upstream devices should implement
-HPD signal de-bouncing on an external connection.
-A period of 100ms should be used to detect an HPD connect event.
-To cover these cases, HPD de-bounce should be implemented only after
-HPD low has been detected for at least 100ms.
+This controller is present on several mediatek hardware. Currently
+mt8195 and mt8395 have this controller without a functional difference,
+so only one compatible field is added.
 
-Therefore,
-1. If HPD is low (which means plugging out) for longer than 100ms:
-   we need to do de-bouncing (which means we need to wait for 100ms).
-2. If HPD low is for less than 100ms:
-   we don't need to care about the de-bouncing.
+The controller can have two forms, as a normal display port and as an
+embedded display port.
 
-In this patch, we start a 100ms timer and use a need_debounce boolean
-to implement the feature.
-
-Two cases when HPD is high:
-1. If the timer is expired (>100ms):
-   - need_debounce is true.
-   - When HPD high (plugging event comes), need_debounce will be true
-     and then we need to do de-bouncing (wait for 100ms).
-2. If the timer is not expired (<100ms):
-   - need_debounce is false.
-   - When HPD high (plugging event comes), need_debounce will be false
-     and no need to do de-bouncing.
-
-HPD_______             __________________
-          |            |<-  100ms   ->
-          |____________|
-          <-  100ms   ->
-
-Without HPD de-bouncing, USB-C to HDMI Adapaters will not be detected.
-
-The change has been successfully tested with the following devices:
-- Dell Adapter - USB-C to HDMI
-- Acer 1in1 HDMI dongle
-- Ugreen 1in1 HDMI dongle
-- innowatt HDMI + USB3 hub
-- Acer 2in1 HDMI dongle
-- Apple 3in1 HDMI dongle (A2119)
-- J5Create 3in1 HDMI dongle (JAC379)
-
-Tested-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+[Bo-Chen: Fix reviewers' comment]
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ .../display/mediatek/mediatek,dp.yaml         | 101 ++++++++++++++++++
+ 1 file changed, 101 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 7c2bb2a494dd..2413551bfe9f 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -129,6 +129,8 @@ struct mtk_dp {
- 	struct mutex dp_lock;
- 
- 	struct drm_connector *conn;
-+	bool need_debounce;
-+	struct timer_list debounce_timer;
- };
- 
- static struct regmap_config mtk_dp_regmap_config = {
-@@ -1681,6 +1683,9 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- 	if (event < 0)
- 		return IRQ_HANDLED;
- 
-+	if (mtk_dp->need_debounce && mtk_dp->train_info.cable_plugged_in)
-+		msleep(100);
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+new file mode 100644
+index 000000000000..10f50a0dcf49
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+@@ -0,0 +1,101 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- 	dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
- 	drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
- 
-@@ -1766,6 +1771,12 @@ static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
- 	}
- 	train_info->cable_state_change = true;
- 
-+	if (!train_info->cable_plugged_in) {
-+		mod_timer(&mtk_dp->debounce_timer,
-+			  jiffies + msecs_to_jiffies(100) - 1);
-+		mtk_dp->need_debounce = false;
-+	}
++title: MediaTek Display Port Controller
 +
- 	return IRQ_WAKE_THREAD;
- }
- 
-@@ -2216,6 +2227,13 @@ static const struct drm_bridge_funcs mtk_dp_bridge_funcs = {
- 	.detect = mtk_dp_bdg_detect,
- };
- 
-+static void mtk_dp_debounce_timer(struct timer_list *t)
-+{
-+	struct mtk_dp *mtk_dp = from_timer(mtk_dp, t, debounce_timer);
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Jitao shi <jitao.shi@mediatek.com>
 +
-+	mtk_dp->need_debounce = true;
-+}
++description: |
++  Device tree bindings for the MediaTek display port and
++  embedded display port controller present on some MediaTek SoCs.
 +
- static int mtk_dp_probe(struct platform_device *pdev)
- {
- 	struct mtk_dp *mtk_dp;
-@@ -2295,6 +2313,9 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 
- 	drm_bridge_add(&mtk_dp->bridge);
- 
-+	mtk_dp->need_debounce = true;
-+	timer_setup(&mtk_dp->debounce_timer, mtk_dp_debounce_timer, 0);
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-dp-tx
++      - mediatek,mt8195-edp-tx
 +
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
- 
-@@ -2307,6 +2328,7 @@ static int mtk_dp_remove(struct platform_device *pdev)
- 
- 	platform_device_unregister(mtk_dp->phy_dev);
- 	mtk_dp_video_mute(mtk_dp, true);
-+	del_timer_sync(&mtk_dp->debounce_timer);
- 
- 	pm_runtime_disable(&pdev->dev);
- 
++  reg:
++    maxItems: 1
++
++  nvmem-cells:
++    maxItems: 1
++    description: efuse data for display port calibration
++
++  nvmem-cell-names:
++    const: dp_calibration_data
++
++  power-domains:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Input endpoint of the controller, usually dp_intf
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Output endpoint of the controller
++
++    required:
++      - port@0
++      - port@1
++
++  max-lanes:
++    maxItems: 1
++    description: maximum number of lanes supported by the hardware.
++
++  max-linkrate:
++    maxItems: 1
++    description: maximum link rate supported by the hardware and unit is MHz.
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - ports
++  - max-lanes
++  - max-linkrate
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/mt8195-power.h>
++    dp_tx@1c600000 {
++        compatible = "mediatek,mt8195-dp-tx";
++        reg = <0x1c600000 0x8000>;
++        power-domains = <&spm MT8195_POWER_DOMAIN_DP_TX>;
++        interrupts = <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
++        max-lanes = /bits/ 8 <4>;
++        max-linkrate = /bits/ 16 <8100>;
++
++        ports {
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            port@0 {
++                reg = <0>;
++                edp_in: endpoint {
++                    remote-endpoint = <&dp_intf0_out>;
++                };
++            };
++            port@1 {
++                reg = <1>;
++                edp_out: endpoint {
++                    remote-endpoint = <&panel_in>;
++                };
++            };
++        };
++    };
 -- 
 2.18.0
 
