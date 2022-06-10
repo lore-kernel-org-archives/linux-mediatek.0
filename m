@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5531FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 11:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B22CC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 11:08:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=axrnbkAlG1b4LvGo3TA9+pA9/gxUeG8FybE72qxDSIM=; b=iIO7IWv5Wqt2N/
-	LF5Aqj+onXeNMnGbtDsTilSIxUk2LFafLGquX3h9ORRq9F2xRIw3C2sxfp+8tTnbdkStknd3t0fNT
-	9SdNWW0tQMDwI5146PyhP4qdD7/+9Lb3WhaqBAezAq7wGc3nEbmM6vAuwiTCl6K1Bblsd/BI1wTHt
-	Xir28OrokbvjBGo1tQBh4w4RWO882ZDADK8XgQY2E/PsbC0ALkPu7ixLei/CMU6GYPFzFy90mgb+r
-	LE+W+piO0xj4fYht/xhMT5aOKOoabK9hMcdFV/KGQJ1bF+gWoBiDagROqwgW3SutFSM+1/LkboDT+
-	6UjpOQPMdPxrDiSbsTpg==;
+	List-Owner; bh=pfuabjge+KiNykxcmB+7TrOOoi1RbBwhN47GmVERHak=; b=H/S00ncF+hdkSt
+	UCpB4pDXGUGqhiA5c4h5Or3nXoDmjF9cuqGr/EH/l2cXuT4unLcDVQVXD9pGDTJUaEH80Ivmsv+bH
+	sDP6UN//CCtqwzFYHmTrEi02lkaFj8ShyRXi3pjZnxRwPXoNT7zEqCKh5SZsLtVbFYLJDHCUy9H8Y
+	y+T0thfIToOzxiilWNUbLuv7uHnP85R3fpb2t6Lqhcb6gE4zeGskz6WQ4HQF/tOHdWbC2hIBoBRxR
+	2+Y+/sl5RjTOvQ5c+47mZrz9yaDyZKFJFW/mwUfDhyu8+s2ZJ6ddzEA4nLfCr0VL8u0V4DN0Odylk
+	i7L4rSPNrxWgyQur+Mzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzcUu-007lqS-Ft; Fri, 10 Jun 2022 11:08:12 +0000
+	id 1nzcVO-007m83-Cy; Fri, 10 Jun 2022 11:08:42 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzcSP-007kT3-WD; Fri, 10 Jun 2022 11:05:42 +0000
-X-UUID: f54d59740534421d94223a5040ec84e4-20220610
+	id 1nzcSQ-007kS6-SW; Fri, 10 Jun 2022 11:05:43 +0000
+X-UUID: a79901f26ae84ef386550bcb336714f2-20220610
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:b1ddcec2-a339-4074-a7c4-6186c545904e,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:151168e5-2ba2-4dc1-b6c5-11feb6c769e0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:ff2ed04a-123b-4f54-8f3a-596aa8dd7b84,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09,CLOUDID:181168e5-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:0,BEC:nil
-X-UUID: f54d59740534421d94223a5040ec84e4-20220610
+X-UUID: a79901f26ae84ef386550bcb336714f2-20220610
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1492054894; Fri, 10 Jun 2022 04:05:26 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+	with ESMTP id 25553872; Fri, 10 Jun 2022 04:05:26 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Jun 2022 03:55:28 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 10 Jun 2022 18:55:24 +0800
+ 15.0.1497.2; Fri, 10 Jun 2022 03:55:27 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 10 Jun 2022 18:55:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 18:55:24 +0800
@@ -60,17 +60,17 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v11 06/10] drm/mediatek: Add MT8195 External DisplayPort support
-Date: Fri, 10 Jun 2022 18:55:18 +0800
-Message-ID: <20220610105522.13449-7-rex-bc.chen@mediatek.com>
+Subject: [PATCH v11 09/10] drm/mediatek: DP audio support for MT8195
+Date: Fri, 10 Jun 2022 18:55:21 +0800
+Message-ID: <20220610105522.13449-10-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
 References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_040538_068755_A07CE451 
-X-CRM114-Status: GOOD (  19.83  )
+X-CRM114-CacheID: sfid-20220610_040538_973460_9617A901 
+X-CRM114-Status: GOOD (  19.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,362 +89,896 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Guillaume Ranquet <granquet@baylibre.com>
 
-This patch adds External DisplayPort support to the mt8195 eDP driver.
+This patch adds audio support to the DP driver for MT8195 with up to 8
+channels.
 
 Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-[Bo-Chen: Move some dp features here and modify for reviewers' comments.]
+[Bo-Chen: Cleanup and fix reviewers' comments]
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 217 ++++++++++++++++++++++++------
- 1 file changed, 174 insertions(+), 43 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 698 ++++++++++++++++++++++++++++++
+ 1 file changed, 698 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index e33b513469e8..7c2bb2a494dd 100644
+index a5ed94ca00c6..35712ee6a04e 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -124,6 +124,7 @@ struct mtk_dp {
- 
- 	bool enabled;
- 
-+	bool has_fec;
- 	/* protect the mtk_dp struct */
- 	struct mutex dp_lock;
- 
-@@ -138,6 +139,11 @@ static struct regmap_config mtk_dp_regmap_config = {
- 	.name = "mtk-dp-registers",
+@@ -85,9 +85,41 @@ enum mtk_dp_linkrate {
+ 	MTK_DP_LINKRATE_HBR3 = 0x1E,
  };
  
-+static bool mtk_dp_is_edp(struct mtk_dp *mtk_dp)
-+{
-+	return mtk_dp->next_bridge;
-+}
++enum mtk_dp_sdp_type {
++	MTK_DP_SDP_NONE = 0x00,
++	MTK_DP_SDP_ACM = 0x01,
++	MTK_DP_SDP_ISRC = 0x02,
++	MTK_DP_SDP_AVI = 0x03,
++	MTK_DP_SDP_AUI = 0x04,
++	MTK_DP_SDP_SPD = 0x05,
++	MTK_DP_SDP_MPEG = 0x06,
++	MTK_DP_SDP_NTSC = 0x07,
++	MTK_DP_SDP_VSP = 0x08,
++	MTK_DP_SDP_VSC = 0x09,
++	MTK_DP_SDP_EXT = 0x0A,
++	MTK_DP_SDP_PPS0 = 0x0B,
++	MTK_DP_SDP_PPS1 = 0x0C,
++	MTK_DP_SDP_PPS2 = 0x0D,
++	MTK_DP_SDP_PPS3 = 0x0E,
++	MTK_DP_SDP_DRM = 0x10,
++	MTK_DP_SDP_MAX_NUM
++};
 +
- static struct mtk_dp *mtk_dp_from_bridge(struct drm_bridge *b)
- {
- 	return container_of(b, struct mtk_dp, bridge);
-@@ -414,6 +420,20 @@ static bool mtk_dp_plug_state(struct mtk_dp *mtk_dp)
- 		  HPD_DB_DP_TRANS_P0_MASK);
++struct mtk_dp_sdp_packet {
++	enum mtk_dp_sdp_type type;
++	struct dp_sdp sdp;
++};
++
++struct mtk_dp_audio_cfg {
++	int sample_rate;
++	int word_length_bits;
++	int channels;
++};
++
+ struct mtk_dp_info {
+ 	u32 depth;
+ 	enum dp_pixelformat format;
++	struct mtk_dp_audio_cfg audio_caps;
+ 	struct mtk_dp_timings timings;
+ };
+ 
+@@ -123,10 +155,22 @@ struct mtk_dp {
+ 	struct regmap *regs;
+ 
+ 	bool enabled;
++	bool audio_enable;
+ 
+ 	bool has_fec;
+ 	/* protect the mtk_dp struct */
+ 	struct mutex dp_lock;
++	/* protect the plugged_cb as it's used in both bridge ops and audio */
++	struct mutex update_plugged_status_lock;
++	/* protect the eld data as it's used in both bridge ops and audio */
++	struct mutex eld_lock;
++	/* protect edid as it is used in both bridge ops and IRQ handler */
++	struct mutex edid_lock;
++	struct edid *edid;
++
++	hdmi_codec_plugged_cb plugged_cb;
++	struct device *codec_dev;
++	u8 connector_eld[MAX_ELD_BYTES];
+ 
+ 	struct drm_connector *conn;
+ 	bool need_debounce;
+@@ -416,6 +460,125 @@ static void mtk_dp_pg_disable(struct mtk_dp *mtk_dp)
+ 			   4 << PGEN_PATTERN_SEL_SHIFT, PGEN_PATTERN_SEL_MASK);
  }
  
-+static bool mtk_dp_plug_state_avoid_pulse(struct mtk_dp *mtk_dp)
++static void mtk_dp_audio_setup_channels(struct mtk_dp *mtk_dp,
++					struct mtk_dp_audio_cfg *cfg)
 +{
-+	int wait;
++	u32 channel_enable_bits;
 +
-+	for (wait = 7; !mtk_dp_plug_state(mtk_dp) && wait > 0; --wait)
-+		/* Avoid short pulses on the HPD isr */
-+		usleep_range(1000, 5000);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3324,
++			   AUDIO_SOURCE_MUX_DP_ENC1_P0_DPRX,
++			   AUDIO_SOURCE_MUX_DP_ENC1_P0_MASK);
 +
-+	if (wait == 0)
-+		return false;
++	/* audio channel count change reset */
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_33F4, BIT(9), BIT(9));
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3304,
++			   AU_PRTY_REGEN_DP_ENC1_P0_MASK,
++			   AU_PRTY_REGEN_DP_ENC1_P0_MASK);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3304,
++			   AU_CH_STS_REGEN_DP_ENC1_P0_MASK,
++			   AU_CH_STS_REGEN_DP_ENC1_P0_MASK);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3304,
++			   AUDIO_SAMPLE_PRSENT_REGEN_DP_ENC1_P0_MASK,
++			   AUDIO_SAMPLE_PRSENT_REGEN_DP_ENC1_P0_MASK);
 +
-+	return true;
++	switch (cfg->channels) {
++	case 2:
++		channel_enable_bits = AUDIO_2CH_SEL_DP_ENC0_P0_MASK |
++				      AUDIO_2CH_EN_DP_ENC0_P0_MASK;
++		break;
++	case 8:
++	default:
++		channel_enable_bits = AUDIO_8CH_SEL_DP_ENC0_P0_MASK |
++				      AUDIO_8CH_EN_DP_ENC0_P0_MASK;
++		break;
++	}
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3088,
++			   channel_enable_bits | AU_EN_DP_ENC0_P0_MASK,
++			   AUDIO_2CH_SEL_DP_ENC0_P0_MASK |
++			   AUDIO_2CH_EN_DP_ENC0_P0_MASK |
++			   AUDIO_8CH_SEL_DP_ENC0_P0_MASK |
++			   AUDIO_8CH_EN_DP_ENC0_P0_MASK |
++			   AU_EN_DP_ENC0_P0_MASK);
++
++	/* audio channel count change reset */
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_33F4, 0, BIT(9));
++
++	/* enable audio reset */
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_33F4, BIT(0), BIT(0));
++}
++
++static void mtk_dp_audio_channel_status_set(struct mtk_dp *mtk_dp,
++					    struct mtk_dp_audio_cfg *cfg)
++{
++	struct snd_aes_iec958 iec = { 0 };
++
++	switch (cfg->sample_rate) {
++	case 32000:
++		iec.status[3] = IEC958_AES3_CON_FS_32000;
++		break;
++	case 44100:
++		iec.status[3] = IEC958_AES3_CON_FS_44100;
++		break;
++	case 48000:
++		iec.status[3] = IEC958_AES3_CON_FS_48000;
++		break;
++	case 88200:
++		iec.status[3] = IEC958_AES3_CON_FS_88200;
++		break;
++	case 96000:
++		iec.status[3] = IEC958_AES3_CON_FS_96000;
++		break;
++	case 192000:
++		iec.status[3] = IEC958_AES3_CON_FS_192000;
++		break;
++	default:
++		iec.status[3] = IEC958_AES3_CON_FS_NOTID;
++		break;
++	}
++
++	switch (cfg->word_length_bits) {
++	case 16:
++		iec.status[4] = IEC958_AES4_CON_WORDLEN_20_16;
++		break;
++	case 20:
++		iec.status[4] = IEC958_AES4_CON_WORDLEN_20_16 |
++			IEC958_AES4_CON_MAX_WORDLEN_24;
++		break;
++	case 24:
++		iec.status[4] = IEC958_AES4_CON_WORDLEN_24_20 |
++			IEC958_AES4_CON_MAX_WORDLEN_24;
++		break;
++	default:
++		iec.status[4] = IEC958_AES4_CON_WORDLEN_NOTID;
++	}
++
++	/* IEC 60958 consumer channel status bits */
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_308C,
++			   0, CH_STATUS_0_DP_ENC0_P0_MASK);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3090,
++			   iec.status[3] << 8, CH_STATUS_1_DP_ENC0_P0_MASK);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3094,
++			   iec.status[4], CH_STATUS_2_DP_ENC0_P0_MASK);
++}
++
++static void mtk_dp_audio_sdp_asp_set_channels(struct mtk_dp *mtk_dp,
++					      int channels)
++{
++	if (channels != 2 && channels != 8)
++		channels = 8;
++
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_312C,
++			   (channels - 1) << ASP_HB3_DP_ENC0_P0_SHIFT,
++			   ASP_HB2_DP_ENC0_P0_MASK | ASP_HB3_DP_ENC0_P0_MASK);
++}
++
++static void mtk_dp_audio_set_divider(struct mtk_dp *mtk_dp)
++{
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
++			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
++			   AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_MASK);
++}
++
+ static bool mtk_dp_plug_state(struct mtk_dp *mtk_dp)
+ {
+ 	return !!(mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3414) &
+@@ -436,6 +599,169 @@ static bool mtk_dp_plug_state_avoid_pulse(struct mtk_dp *mtk_dp)
+ 	return true;
+ }
+ 
++static void mtk_dp_sdp_trigger_packet(struct mtk_dp *mtk_dp,
++				      enum mtk_dp_sdp_type type)
++{
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280,
++			   type, SDP_PACKET_TYPE_DP_ENC1_P0_MASK);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280,
++			   SDP_PACKET_W_DP_ENC1_P0, SDP_PACKET_W_DP_ENC1_P0);
++}
++
++static void mtk_dp_sdp_set_data(struct mtk_dp *mtk_dp, u8 *data_bytes)
++{
++	mtk_dp_bulk_16bit_write(mtk_dp, MTK_DP_ENC1_P0_3200,
++				data_bytes, 0x10);
++}
++
++static void mtk_dp_sdp_set_header(struct mtk_dp *mtk_dp,
++				  enum mtk_dp_sdp_type type,
++				  struct dp_sdp_header *header)
++{
++	u32 db_addr;
++
++	switch (type) {
++	case MTK_DP_SDP_DRM:
++		db_addr = MTK_DP_ENC0_P0_3138;
++		break;
++	case MTK_DP_SDP_PPS0:
++	case MTK_DP_SDP_PPS1:
++	case MTK_DP_SDP_PPS2:
++	case MTK_DP_SDP_PPS3:
++		db_addr = MTK_DP_ENC0_P0_3130;
++		break;
++	default:
++		db_addr = MTK_DP_ENC0_P0_30D8 + (type - MTK_DP_SDP_ACM) * 8;
++		break;
++	}
++
++	mtk_dp_bulk_16bit_write(mtk_dp, db_addr, (u8 *)header, 4);
++}
++
++static const u32 sdp_type_to_reg[MTK_DP_SDP_MAX_NUM] = {
++	[MTK_DP_SDP_NONE]	= 0x0,
++	[MTK_DP_SDP_ACM]	= MTK_DP_ENC0_P0_30B4,
++	[MTK_DP_SDP_ISRC]	= MTK_DP_ENC0_P0_30B4 + 1,
++	[MTK_DP_SDP_AVI]	= MTK_DP_ENC0_P0_30A4 + 1,
++	[MTK_DP_SDP_AUI]	= MTK_DP_ENC0_P0_30A8,
++	[MTK_DP_SDP_SPD]	= MTK_DP_ENC0_P0_30A8 + 1,
++	[MTK_DP_SDP_MPEG]	= MTK_DP_ENC0_P0_30AC,
++	[MTK_DP_SDP_NTSC]	= MTK_DP_ENC0_P0_30AC + 1,
++	[MTK_DP_SDP_VSP]	= MTK_DP_ENC0_P0_30B0,
++	[MTK_DP_SDP_VSC]	= MTK_DP_ENC0_P0_30B8,
++	[MTK_DP_SDP_EXT]	= MTK_DP_ENC0_P0_30B0 + 1,
++	[MTK_DP_SDP_PPS0]	= MTK_DP_ENC0_P0_31E8,
++	[MTK_DP_SDP_PPS1]	= MTK_DP_ENC0_P0_31E8,
++	[MTK_DP_SDP_PPS2]	= MTK_DP_ENC0_P0_31E8,
++	[MTK_DP_SDP_PPS3]	= MTK_DP_ENC0_P0_31E8,
++	[MTK_DP_SDP_DRM]	= MTK_DP_ENC0_P0_31DC,
++};
++
++static void mtk_dp_disable_sdp(struct mtk_dp *mtk_dp, enum mtk_dp_sdp_type type)
++{
++	if (type == MTK_DP_SDP_NONE)
++		return;
++
++	/* Disable periodic send */
++	mtk_dp_update_bits(mtk_dp, sdp_type_to_reg[type] & 0xfffc, 0,
++			   0xFF << ((sdp_type_to_reg[type] & 3) * 8));
++}
++
++static void mtk_dp_setup_sdp(struct mtk_dp *mtk_dp,
++			     struct mtk_dp_sdp_packet *packet)
++{
++	u32 reg, shift;
++
++	mtk_dp_sdp_set_data(mtk_dp, packet->sdp.db);
++	mtk_dp_sdp_set_header(mtk_dp, packet->type, &packet->sdp.sdp_header);
++
++	mtk_dp_disable_sdp(mtk_dp, packet->type);
++
++	switch (packet->type) {
++	case MTK_DP_SDP_ISRC:
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_31EC,
++				   0x1C << ISRC1_HB3_DP_ENC0_P0_SHIFT,
++				   ISRC1_HB3_DP_ENC0_P0_MASK);
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280,
++				   MTK_DP_SDP_ISRC,
++				   SDP_PACKET_TYPE_DP_ENC1_P0_MASK);
++
++		if (packet->sdp.sdp_header.HB3 & BIT(2))
++			mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
++					   BIT(ISRC_CONT_DP_ENC0_P0_SHIFT),
++					   ISRC_CONT_DP_ENC0_P0_MASK);
++		else
++			mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
++					   0, ISRC_CONT_DP_ENC0_P0_MASK);
++
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280,
++				   SDP_PACKET_W_DP_ENC1_P0,
++				   SDP_PACKET_W_DP_ENC1_P0);
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30B4,
++				   5 << ISRC_CFG_DP_ENC0_P0_SHIFT,
++				   ISRC_CFG_DP_ENC0_P0_MASK);
++		break;
++	case MTK_DP_SDP_DRM:
++		mtk_dp_sdp_trigger_packet(mtk_dp, packet->type);
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_31DC,
++				   5 << HDR0_CFG_DP_ENC0_P0_SHIFT,
++				   HDR0_CFG_DP_ENC0_P0_MASK);
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_31EC,
++				   0x1C << ISRC1_HB3_DP_ENC0_P0_SHIFT,
++				   ISRC1_HB3_DP_ENC0_P0_MASK);
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280,
++				   MTK_DP_SDP_ISRC,
++				   SDP_PACKET_TYPE_DP_ENC1_P0_MASK);
++
++		if (packet->sdp.sdp_header.HB3 & BIT(2))
++			mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
++					   BIT(ISRC_CONT_DP_ENC0_P0_SHIFT),
++					   ISRC_CONT_DP_ENC0_P0_MASK);
++		else
++			mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30BC,
++					   0, ISRC_CONT_DP_ENC0_P0_MASK);
++
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3280,
++				   SDP_PACKET_W_DP_ENC1_P0,
++				   SDP_PACKET_W_DP_ENC1_P0);
++		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30B4,
++				   5 << ISRC_CFG_DP_ENC0_P0_SHIFT,
++				   ISRC_CFG_DP_ENC0_P0_MASK);
++		break;
++	case MTK_DP_SDP_ACM:
++	case MTK_DP_SDP_AVI:
++	case MTK_DP_SDP_AUI:
++	case MTK_DP_SDP_SPD:
++	case MTK_DP_SDP_MPEG:
++	case MTK_DP_SDP_NTSC:
++	case MTK_DP_SDP_VSP:
++	case MTK_DP_SDP_VSC:
++	case MTK_DP_SDP_EXT:
++	case MTK_DP_SDP_PPS0:
++	case MTK_DP_SDP_PPS1:
++	case MTK_DP_SDP_PPS2:
++	case MTK_DP_SDP_PPS3:
++		reg = sdp_type_to_reg[packet->type];
++		shift = (reg & 3) * 8;
++
++		mtk_dp_sdp_trigger_packet(mtk_dp, packet->type);
++		/* Enable periodic sending */
++		mtk_dp_update_bits(mtk_dp, reg & 0xfffc,
++				   0x05 << shift, 0xff << shift);
++		break;
++	case MTK_DP_SDP_NONE:
++	default:
++		break;
++	}
++}
++
++static void mtk_dp_sdp_vsc_ext_disable(struct mtk_dp *mtk_dp)
++{
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30A0,
++			   0, BIT(7) | BIT(8) | BIT(12));
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_328C, 0, BIT(7));
 +}
 +
  static void mtk_dp_aux_irq_clear(struct mtk_dp *mtk_dp)
  {
  	mtk_dp_write(mtk_dp, MTK_DP_AUX_P0_3640,
-@@ -638,6 +658,13 @@ static void mtk_dp_reset_swing_pre_emphasis(struct mtk_dp *mtk_dp)
- 			   DP_TX3_PRE_EMPH_MASK);
+@@ -1088,6 +1414,32 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
+ 			    MTK_DP_SIP_ATF_VIDEO_UNMUTE, enable);
  }
  
-+static void mtk_dp_fec_enable(struct mtk_dp *mtk_dp, bool enable)
++static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
 +{
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3540,
-+			   enable ? BIT(FEC_EN_DP_TRANS_P0_SHIFT) : 0,
-+			   FEC_EN_DP_TRANS_P0_MASK);
++	u32 val[3];
++
++	if (mute) {
++		val[0] = BIT(VBID_AUDIO_MUTE_SW_DP_ENC0_P0_SHIFT) |
++			 BIT(VBID_AUDIO_MUTE_SEL_DP_ENC0_P0_SHIFT);
++		val[1] = 0;
++		val[2] = 0;
++	} else {
++		val[0] = 0;
++		val[1] = BIT(AU_EN_DP_ENC0_P0_SHIFT);
++		/* Send one every two frames */
++		val[2] = 0x0F;
++	}
++
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3030,
++			   val[0],
++			   VBID_AUDIO_MUTE_FLAG_SW_DP_ENC0_P0_MASK |
++			   VBID_AUDIO_MUTE_FLAG_SEL_DP_ENC0_P0_MASK);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3088,
++			   val[1], AU_EN_DP_ENC0_P0_MASK);
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_30A4,
++			   val[2], AU_TS_CFG_DP_ENC0_P0_MASK);
 +}
 +
- static u32 mtk_dp_swirq_get_clear(struct mtk_dp *mtk_dp)
- {
- 	u32 irq_status = mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_35D0) &
-@@ -865,35 +892,67 @@ static void mtk_dp_get_calibration_data(struct mtk_dp *mtk_dp)
- 		return;
- 	}
- 
--	cal_data->glb_bias_trim =
--		check_cal_data_valid(mtk_dp, 1, 0x1e,
--				     (buf[3] >> 27) & 0x1f, 0xf);
--	cal_data->clktx_impse =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[0] >> 9) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[0] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 28) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[0] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 24) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[1] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 20) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[1] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 16) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[2] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 12) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[2] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 8) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[3] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 4) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[3] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, buf[2] & 0xf, 0x8);
-+	if (mtk_dp_is_edp(mtk_dp)) {
-+		cal_data->glb_bias_trim =
-+			check_cal_data_valid(mtk_dp, 1, 0x1e,
-+					     (buf[3] >> 27) & 0x1f, 0xf);
-+		cal_data->clktx_impse =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[0] >> 9) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 28) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 24) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 20) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 16) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 12) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 8) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 4) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, buf[2] & 0xf, 0x8);
-+	} else {
-+		cal_data->glb_bias_trim =
-+			check_cal_data_valid(mtk_dp, 1, 0x1e,
-+					     (buf[0] >> 27) & 0x1f, 0xf);
-+		cal_data->clktx_impse =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[0] >> 13) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 28) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 24) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 20) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 16) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 12) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 8) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 4) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, buf[1] & 0xf, 0x8);
-+	}
- 
- 	kfree(buf);
- }
-@@ -1021,7 +1080,10 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
- 			   VIDEO_MUTE_SEL_DP_ENC0_P0_MASK |
- 			   VIDEO_MUTE_SW_DP_ENC0_P0_MASK);
- 
--	mtk_dp_sip_atf_call(mtk_dp, MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable);
-+	mtk_dp_sip_atf_call(mtk_dp,
-+			    mtk_dp_is_edp(mtk_dp) ?
-+			    MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE :
-+			    MTK_DP_SIP_ATF_VIDEO_UNMUTE, enable);
- }
- 
  static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
-@@ -1069,6 +1131,8 @@ static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
- 	mtk_dp->info.depth = DP_MSA_MISC_8_BPC;
- 	memset(&mtk_dp->info.timings, 0, sizeof(struct mtk_dp_timings));
+ {
+ 	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
+@@ -1135,6 +1487,78 @@ static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
  	mtk_dp->info.timings.frame_rate = 60;
+ 
+ 	mtk_dp->has_fec = false;
++	mtk_dp->audio_enable = false;
++}
 +
-+	mtk_dp->has_fec = false;
++static void mtk_dp_sdp_set_down_cnt_init(struct mtk_dp *mtk_dp,
++					 u32 sram_read_start)
++{
++	u32 sdp_down_cnt_init = 0;
++	struct drm_display_mode mode;
++	struct mtk_dp_timings *timings = &mtk_dp->info.timings;
++
++	drm_display_mode_from_videomode(&timings->vm, &mode);
++
++	if (mtk_dp->info.timings.pix_rate_khz > 0)
++		sdp_down_cnt_init = sram_read_start *
++				    mtk_dp->train_info.link_rate * 2700 * 8 /
++				    (timings->pix_rate_khz * 4);
++
++	switch (mtk_dp->train_info.lane_count) {
++	case 1:
++		sdp_down_cnt_init = max_t(u32, sdp_down_cnt_init, 0x1A);
++		break;
++	case 2:
++		/* case for LowResolution && High Audio Sample Rate */
++		sdp_down_cnt_init = max_t(u32, sdp_down_cnt_init, 0x10);
++		sdp_down_cnt_init += mode.vtotal <= 525 ? 4 : 0;
++		break;
++	case 4:
++	default:
++		sdp_down_cnt_init = max_t(u32, sdp_down_cnt_init, 6);
++		break;
++	}
++
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3040,
++			   sdp_down_cnt_init
++			   << SDP_DOWN_CNT_INIT_DP_ENC0_P0_SHIFT,
++			   SDP_DOWN_CNT_INIT_DP_ENC0_P0_MASK);
++}
++
++static void mtk_dp_sdp_set_down_cnt_init_in_hblank(struct mtk_dp *mtk_dp)
++{
++	int pix_clk_mhz;
++	u32 dc_offset;
++	u32 spd_down_cnt_init = 0;
++	struct drm_display_mode mode;
++	struct mtk_dp_timings *timings = &mtk_dp->info.timings;
++
++	drm_display_mode_from_videomode(&timings->vm, &mode);
++
++	pix_clk_mhz = mtk_dp->info.format == DP_PIXELFORMAT_YUV420 ?
++		      mtk_dp->info.timings.pix_rate_khz / 2000 :
++		      mtk_dp->info.timings.pix_rate_khz / 1000;
++
++	switch (mtk_dp->train_info.lane_count) {
++	case 1:
++		spd_down_cnt_init = 0x20;
++		break;
++	case 2:
++		dc_offset = (mode.vtotal <= 525) ? 0x14 : 0x00;
++		spd_down_cnt_init = 0x18 + dc_offset;
++		break;
++	case 4:
++	default:
++		dc_offset = (mode.vtotal <= 525) ? 0x08 : 0x00;
++		if (pix_clk_mhz > mtk_dp->train_info.link_rate * 27)
++			spd_down_cnt_init = 0x8;
++		else
++			spd_down_cnt_init = 0x10 + dc_offset;
++		break;
++	}
++
++	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3364, spd_down_cnt_init,
++			   SDP_DOWN_CNT_INIT_IN_HBLANK_DP_ENC1_P0_MASK);
  }
  
  static void mtk_dp_setup_tu(struct mtk_dp *mtk_dp)
-@@ -1416,6 +1480,9 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
- 	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
- 	usleep_range(2000, 5000);
- 
-+	if (!mtk_dp_plug_state(mtk_dp))
-+		return -ENODEV;
-+
- 	drm_dp_read_dpcd_caps(&mtk_dp->aux, mtk_dp->rx_cap);
- 
- 	mtk_dp->rx_cap[DP_TRAINING_AUX_RD_INTERVAL] &= DP_TRAINING_AUX_RD_MASK;
-@@ -1461,6 +1528,9 @@ static int mtk_dp_train_start(struct mtk_dp *mtk_dp)
- 	u8 train_limit;
- 	u8 max_link_rate;
- 
-+	if (!mtk_dp_plug_state_avoid_pulse(mtk_dp))
-+		return -ENODEV;
-+
- 	link_rate = mtk_dp->rx_cap[1];
- 	lane_count = mtk_dp->rx_cap[2] & 0x1F;
- 
-@@ -1602,21 +1672,46 @@ static void mtk_dp_init_port(struct mtk_dp *mtk_dp)
- static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- {
- 	struct mtk_dp *mtk_dp = dev;
-+	int event;
- 	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
- 
-+	event = mtk_dp_plug_state(mtk_dp) ?
-+		connector_status_connected : connector_status_disconnected;
-+
-+	if (event < 0)
-+		return IRQ_HANDLED;
-+
-+	dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
-+	drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
-+
- 	if (mtk_dp->train_info.cable_state_change) {
- 		mtk_dp->train_info.cable_state_change = false;
- 
--		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
--				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
--				   DP_PWR_STATE_MASK);
--		drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
--		mtk_dp->train_info.link_rate =
--			min_t(int, mtk_dp->max_linkrate,
--			      buf[mtk_dp->max_linkrate]);
--		mtk_dp->train_info.lane_count =
--			min_t(int, mtk_dp->max_lanes,
--			      drm_dp_max_lane_count(buf));
-+		mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
-+
-+		if (!mtk_dp->train_info.cable_plugged_in) {
-+			mtk_dp_video_mute(mtk_dp, true);
-+
-+			mtk_dp_initialize_priv_data(mtk_dp);
-+			mtk_dp_set_idle_pattern(mtk_dp, true);
-+			if (mtk_dp->has_fec)
-+				mtk_dp_fec_enable(mtk_dp, false);
-+
-+			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-+					   DP_PWR_STATE_BANDGAP_TPLL,
-+					   DP_PWR_STATE_MASK);
-+		} else {
-+			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-+					   DP_PWR_STATE_BANDGAP_TPLL_LANE,
-+					   DP_PWR_STATE_MASK);
-+			drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
-+			mtk_dp->train_info.link_rate =
-+				min_t(int, mtk_dp->max_linkrate,
-+				      buf[mtk_dp->max_linkrate]);
-+			mtk_dp->train_info.lane_count =
-+				min_t(int, mtk_dp->max_lanes,
-+				      drm_dp_max_lane_count(buf));
-+		}
+@@ -1151,6 +1575,8 @@ static void mtk_dp_setup_tu(struct mtk_dp *mtk_dp)
  	}
  
- 	if (mtk_dp->train_info.irq_sta.hpd_inerrupt) {
-@@ -1735,6 +1830,24 @@ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
- 	return ret;
+ 	mtk_dp_setup_encoder(mtk_dp);
++	mtk_dp_sdp_set_down_cnt_init_in_hblank(mtk_dp);
++	mtk_dp_sdp_set_down_cnt_init(mtk_dp, sram_read_start);
  }
  
-+static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ static void mtk_dp_calculate_pixrate(struct mtk_dp *mtk_dp)
+@@ -1184,6 +1610,14 @@ static void mtk_dp_set_tx_out(struct mtk_dp *mtk_dp)
+ 	mtk_dp_setup_tu(mtk_dp);
+ }
+ 
++static void mtk_dp_edid_free(struct mtk_dp *mtk_dp)
 +{
-+	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
-+	enum drm_connector_status ret = connector_status_disconnected;
-+	u8 sink_count = 0;
++	mutex_lock(&mtk_dp->edid_lock);
++	kfree(mtk_dp->edid);
++	mtk_dp->edid = NULL;
++	mutex_unlock(&mtk_dp->edid_lock);
++}
++
+ static ssize_t mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+ {
+ 	ssize_t ret;
+@@ -1217,6 +1651,7 @@ static ssize_t mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+ 
+ 	if (DP_GET_SINK_COUNT(sink_count) &&
+ 	    (link_status[2] & DP_DOWNSTREAM_PORT_STATUS_CHANGED)) {
++		mtk_dp_edid_free(mtk_dp);
+ 		mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
+ 		msleep(20);
+ 	}
+@@ -1224,6 +1659,17 @@ static ssize_t mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+ 	return 0;
+ }
+ 
++static void mtk_dp_sdp_stop_sending(struct mtk_dp *mtk_dp)
++{
++	u8 packet_type;
++
++	for (packet_type = MTK_DP_SDP_ACM; packet_type < MTK_DP_SDP_MAX_NUM;
++	     packet_type++)
++		mtk_dp_disable_sdp(mtk_dp, packet_type);
++
++	mtk_dp_sdp_vsc_ext_disable(mtk_dp);
++}
++
+ static void mtk_dp_train_update_swing_pre(struct mtk_dp *mtk_dp, int lanes,
+ 					  u8 dpcd_adjust_req[2])
+ {
+@@ -1516,6 +1962,55 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
+ 	return 0;
+ }
+ 
++static bool mtk_dp_edid_parse_audio_capabilities(struct mtk_dp *mtk_dp,
++						 struct mtk_dp_audio_cfg *cfg)
++{
++	struct cea_sad *sads;
++	int sad_count;
++	int i;
++	bool ret = false;
 +
 +	if (mtk_dp_is_edp(mtk_dp))
-+		return connector_status_connected;
++		return false;
 +
-+	if (mtk_dp_plug_state_avoid_pulse(mtk_dp)) {
-+		drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
-+		if (DP_GET_SINK_COUNT(sink_count))
-+			ret = connector_status_connected;
++	mutex_lock(&mtk_dp->edid_lock);
++	if (!mtk_dp->edid) {
++		mutex_unlock(&mtk_dp->edid_lock);
++		dev_err(mtk_dp->dev, "EDID not found!\n");
++		return false;
 +	}
++	sad_count = drm_edid_to_sad(mtk_dp->edid, &sads);
++	mutex_unlock(&mtk_dp->edid_lock);
++
++	if (sad_count <= 0) {
++		drm_info(mtk_dp->drm_dev, "The SADs is NULL\n");
++		return false;
++	}
++
++	for (i = 0; i < sad_count; i++) {
++		int sample_rate, word_length;
++
++		/* Only PCM supported at the moment */
++		if (sads[i].format != HDMI_AUDIO_CODING_TYPE_PCM)
++			continue;
++
++		sample_rate = drm_cea_sad_get_sample_rate(&sads[i]);
++		word_length =
++			drm_cea_sad_get_uncompressed_word_length(&sads[i]);
++		if (sample_rate <= 0 || word_length <= 0)
++			continue;
++
++		cfg->channels = sads[i].channels;
++		cfg->word_length_bits = word_length;
++		cfg->sample_rate = sample_rate;
++		ret = true;
++		break;
++	}
++	kfree(sads);
 +
 +	return ret;
 +}
 +
- static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
- 				    struct drm_connector *connector)
+ static void mtk_dp_train_change_mode(struct mtk_dp *mtk_dp)
  {
-@@ -1748,7 +1861,8 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
- 	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
- 	usleep_range(2000, 5000);
+ 	phy_reset(mtk_dp->phy);
+@@ -1609,6 +2104,48 @@ static void mtk_dp_video_enable(struct mtk_dp *mtk_dp, bool enable)
+ 	}
+ }
  
--	new_edid = drm_get_edid(connector, &mtk_dp->aux.ddc);
-+	if (mtk_dp_plug_state(mtk_dp))
-+		new_edid = drm_get_edid(connector, &mtk_dp->aux.ddc);
- 
- 	if (!enabled)
- 		drm_bridge_chain_post_disable(bridge);
-@@ -2099,6 +2213,7 @@ static const struct drm_bridge_funcs mtk_dp_bridge_funcs = {
- 	.atomic_disable = mtk_dp_bridge_atomic_disable,
- 	.mode_valid = mtk_dp_bridge_mode_valid,
- 	.get_edid = mtk_dp_get_edid,
-+	.detect = mtk_dp_bdg_detect,
- };
- 
- static int mtk_dp_probe(struct platform_device *pdev)
-@@ -2120,9 +2235,15 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 				     "failed to request dp irq resource\n");
- 
- 	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
--	if (IS_ERR(mtk_dp->next_bridge))
-+	if (IS_ERR(mtk_dp->next_bridge) &&
-+	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV) {
-+		dev_info(dev,
-+			 "No panel connected in devicetree, continue as external DP\n");
-+		mtk_dp->next_bridge = NULL;
-+	} else if (IS_ERR(mtk_dp->next_bridge)) {
- 		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
- 				     "Failed to get bridge\n");
-+	}
- 
- 	ret = mtk_dp_dt_parse(mtk_dp, pdev);
- 	if (ret)
-@@ -2167,7 +2288,10 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 
- 	mtk_dp->bridge.ops =
- 		DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
--	mtk_dp->bridge.type = DRM_MODE_CONNECTOR_eDP;
-+	if (mtk_dp_is_edp(mtk_dp))
-+		mtk_dp->bridge.type = DRM_MODE_CONNECTOR_eDP;
-+	else
-+		mtk_dp->bridge.type = DRM_MODE_CONNECTOR_DisplayPort;
- 
- 	drm_bridge_add(&mtk_dp->bridge);
- 
-@@ -2194,6 +2318,12 @@ static int mtk_dp_suspend(struct device *dev)
- {
- 	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
- 
-+	if (mtk_dp_plug_state(mtk_dp)) {
-+		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
-+		/* Ensure the sink is off before shutting down power */
-+		usleep_range(2000, 3000);
++static void mtk_dp_audio_sdp_setup(struct mtk_dp *mtk_dp,
++				   struct mtk_dp_audio_cfg *cfg)
++{
++	struct mtk_dp_sdp_packet packet;
++	struct hdmi_audio_infoframe frame;
++
++	hdmi_audio_infoframe_init(&frame);
++	frame.coding_type = HDMI_AUDIO_CODING_TYPE_PCM;
++	frame.channels = cfg->channels;
++	frame.sample_frequency = cfg->sample_rate;
++
++	switch (cfg->word_length_bits) {
++	case 16:
++		frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
++		break;
++	case 20:
++		frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_20;
++		break;
++	case 24:
++	default:
++		frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_24;
++		break;
 +	}
 +
- 	mtk_dp_power_disable(mtk_dp);
++	packet.type = MTK_DP_SDP_AUI;
++	hdmi_audio_infoframe_pack_for_dp(&frame, &packet.sdp,
++					 MTK_DP_DP_VERSION_11);
++
++	mtk_dp_audio_sdp_asp_set_channels(mtk_dp, cfg->channels);
++	mtk_dp_setup_sdp(mtk_dp, &packet);
++}
++
++static void mtk_dp_audio_setup(struct mtk_dp *mtk_dp,
++			       struct mtk_dp_audio_cfg *cfg)
++{
++	mtk_dp_audio_sdp_setup(mtk_dp, cfg);
++	mtk_dp_audio_channel_status_set(mtk_dp, cfg);
++
++	mtk_dp_audio_setup_channels(mtk_dp, cfg);
++	mtk_dp_audio_set_divider(mtk_dp);
++}
++
+ static void mtk_dp_video_config(struct mtk_dp *mtk_dp)
+ {
+ 	mtk_dp_mn_overwrite_disable(mtk_dp);
+@@ -1635,6 +2172,19 @@ static int mtk_dp_training(struct mtk_dp *mtk_dp)
+ 		case MTK_DP_TRAIN_STATE_NORMAL:
+ 			mtk_dp_video_config(mtk_dp);
+ 			mtk_dp_video_enable(mtk_dp, true);
++
++			mtk_dp->audio_enable =
++				mtk_dp_edid_parse_audio_capabilities(mtk_dp,
++								     &mtk_dp->info.audio_caps);
++
++			if (mtk_dp->audio_enable) {
++				mtk_dp_audio_setup(mtk_dp, &mtk_dp->info.audio_caps);
++				mtk_dp_audio_mute(mtk_dp, false);
++			} else {
++				memset(&mtk_dp->info.audio_caps, 0,
++				       sizeof(mtk_dp->info.audio_caps));
++			}
++
+ 			training_done = true;
+ 			break;
+ 		default:
+@@ -1696,12 +2246,15 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
  
- 	mtk_dp_hwirq_enable(mtk_dp, false);
-@@ -2221,6 +2351,7 @@ static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
+ 		if (!mtk_dp->train_info.cable_plugged_in) {
+ 			mtk_dp_video_mute(mtk_dp, true);
++			mtk_dp_audio_mute(mtk_dp, true);
  
- static const struct of_device_id mtk_dp_of_match[] = {
- 	{ .compatible = "mediatek,mt8195-edp-tx" },
-+	{ .compatible = "mediatek,mt8195-dp-tx" },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
+ 			mtk_dp_initialize_priv_data(mtk_dp);
+ 			mtk_dp_set_idle_pattern(mtk_dp, true);
+ 			if (mtk_dp->has_fec)
+ 				mtk_dp_fec_enable(mtk_dp, false);
++			mtk_dp_sdp_stop_sending(mtk_dp);
+ 
++			mtk_dp_edid_free(mtk_dp);
+ 			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+ 					   DP_PWR_STATE_BANDGAP_TPLL,
+ 					   DP_PWR_STATE_MASK);
+@@ -1841,6 +2394,18 @@ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
+ 	return ret;
+ }
+ 
++static void mtk_dp_update_plugged_status(struct mtk_dp *mtk_dp)
++{
++	bool connected, has_audio;
++
++	mutex_lock(&mtk_dp->update_plugged_status_lock);
++	connected = mtk_dp_plug_state_avoid_pulse(mtk_dp);
++	has_audio = drm_detect_monitor_audio(mtk_dp->edid);
++	if (mtk_dp->plugged_cb && mtk_dp->codec_dev)
++		mtk_dp->plugged_cb(mtk_dp->codec_dev, connected & has_audio);
++	mutex_unlock(&mtk_dp->update_plugged_status_lock);
++}
++
+ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ {
+ 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+@@ -1856,6 +2421,7 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 			ret = connector_status_connected;
+ 	}
+ 
++	mtk_dp_update_plugged_status(mtk_dp);
+ 	return ret;
+ }
+ 
+@@ -1878,6 +2444,18 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+ 	if (!enabled)
+ 		drm_bridge_chain_post_disable(bridge);
+ 
++	mutex_lock(&mtk_dp->edid_lock);
++	kfree(mtk_dp->edid);
++	mtk_dp->edid = NULL;
++
++	if (!new_edid) {
++		mutex_unlock(&mtk_dp->edid_lock);
++		return NULL;
++	}
++
++	mtk_dp->edid = drm_edid_duplicate(new_edid);
++	mutex_unlock(&mtk_dp->edid_lock);
++
+ 	return new_edid;
+ }
+ 
+@@ -2049,6 +2627,7 @@ static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
+ 	}
+ 
+ 	mtk_dp_video_mute(mtk_dp, true);
++	mtk_dp_audio_mute(mtk_dp, true);
+ 	mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
+ 
+ 	mtk_dp->enabled = false;
+@@ -2079,6 +2658,8 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 	}
+ 
+ 	mtk_dp_video_mute(mtk_dp, true);
++	mtk_dp_audio_mute(mtk_dp, true);
++	mtk_dp_sdp_stop_sending(mtk_dp);
+ 
+ 	if (mtk_dp_parse_capabilities(mtk_dp)) {
+ 		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
+@@ -2091,7 +2672,13 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 		return;
+ 	}
+ 
++	mutex_lock(&mtk_dp->eld_lock);
++	memcpy(mtk_dp->connector_eld, mtk_dp->conn->eld, MAX_ELD_BYTES);
++	mutex_unlock(&mtk_dp->eld_lock);
++
+ 	mtk_dp->enabled = true;
++
++	mtk_dp_update_plugged_status(mtk_dp);
+ }
+ 
+ static enum drm_mode_status
+@@ -2239,6 +2826,104 @@ static void mtk_dp_debounce_timer(struct timer_list *t)
+ 	mtk_dp->need_debounce = true;
+ }
+ 
++/*
++ * HDMI audio codec callbacks
++ */
++static int mtk_dp_audio_hw_params(struct device *dev, void *data,
++				  struct hdmi_codec_daifmt *daifmt,
++				  struct hdmi_codec_params *params)
++{
++	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
++	struct mtk_dp_audio_cfg cfg;
++
++	if (!mtk_dp->enabled) {
++		pr_err("%s, DP is not ready!\n", __func__);
++		return -ENODEV;
++	}
++
++	cfg.channels = params->cea.channels;
++	cfg.sample_rate = params->sample_rate;
++	cfg.word_length_bits = 24;
++
++	mtk_dp_audio_setup(mtk_dp, &cfg);
++
++	return 0;
++}
++
++static int mtk_dp_audio_startup(struct device *dev, void *data)
++{
++	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
++
++	mtk_dp_audio_mute(mtk_dp, false);
++
++	return 0;
++}
++
++static void mtk_dp_audio_shutdown(struct device *dev, void *data)
++{
++	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
++
++	mtk_dp_audio_mute(mtk_dp, true);
++}
++
++static int mtk_dp_audio_get_eld(struct device *dev, void *data, uint8_t *buf,
++				size_t len)
++{
++	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
++
++	if (mtk_dp->enabled)
++		memcpy(buf, mtk_dp->connector_eld, len);
++	else
++		memset(buf, 0, len);
++
++	return 0;
++}
++
++static int mtk_dp_audio_hook_plugged_cb(struct device *dev, void *data,
++					hdmi_codec_plugged_cb fn,
++					struct device *codec_dev)
++{
++	struct mtk_dp *mtk_dp = data;
++
++	mutex_lock(&mtk_dp->update_plugged_status_lock);
++	mtk_dp->plugged_cb = fn;
++	mtk_dp->codec_dev = codec_dev;
++	mutex_unlock(&mtk_dp->update_plugged_status_lock);
++
++	mtk_dp_update_plugged_status(mtk_dp);
++
++	return 0;
++}
++
++static const struct hdmi_codec_ops mtk_dp_audio_codec_ops = {
++	.hw_params = mtk_dp_audio_hw_params,
++	.audio_startup = mtk_dp_audio_startup,
++	.audio_shutdown = mtk_dp_audio_shutdown,
++	.get_eld = mtk_dp_audio_get_eld,
++	.hook_plugged_cb = mtk_dp_audio_hook_plugged_cb,
++	.no_capture_mute = 1,
++};
++
++static int mtk_dp_register_audio_driver(struct device *dev)
++{
++	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
++	struct hdmi_codec_pdata codec_data = {
++		.ops = &mtk_dp_audio_codec_ops,
++		.max_i2s_channels = 8,
++		.i2s = 1,
++		.data = mtk_dp,
++	};
++	struct platform_device *pdev;
++
++	pdev = platform_device_register_data(dev, HDMI_CODEC_DRV_NAME,
++					     PLATFORM_DEVID_AUTO, &codec_data,
++					     sizeof(codec_data));
++	if (IS_ERR(pdev))
++		return PTR_ERR(pdev);
++
++	return 0;
++}
++
+ static int mtk_dp_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_dp *mtk_dp;
+@@ -2285,9 +2970,21 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 				     "failed to request mediatek dptx irq\n");
+ 
+ 	mutex_init(&mtk_dp->dp_lock);
++	mutex_init(&mtk_dp->edid_lock);
++	mutex_init(&mtk_dp->eld_lock);
++	mutex_init(&mtk_dp->update_plugged_status_lock);
+ 
+ 	platform_set_drvdata(pdev, mtk_dp);
+ 
++	if (!mtk_dp_is_edp(mtk_dp)) {
++		ret = mtk_dp_register_audio_driver(dev);
++		if (ret) {
++			dev_err(dev, "Failed to register audio driver: %d\n",
++				ret);
++			return ret;
++		}
++	}
++
+ 	mtk_dp->phy_dev = platform_device_register_data(dev, "mediatek-dp-phy",
+ 							PLATFORM_DEVID_AUTO,
+ 							&mtk_dp->regs,
+@@ -2333,6 +3030,7 @@ static int mtk_dp_remove(struct platform_device *pdev)
+ 
+ 	platform_device_unregister(mtk_dp->phy_dev);
+ 	mtk_dp_video_mute(mtk_dp, true);
++	mtk_dp_audio_mute(mtk_dp, true);
+ 	del_timer_sync(&mtk_dp->debounce_timer);
+ 
+ 	pm_runtime_disable(&pdev->dev);
 -- 
 2.18.0
 
