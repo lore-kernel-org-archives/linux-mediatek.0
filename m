@@ -4,80 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3550CC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 06:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AACBAC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 07:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VJM274Ev6y6cKGvHH30XbxJ/RIBcLJ4KKJSRPCYoEYg=; b=h3x+dxTP6iNqam
-	NRr1OzNsXPTl7RwBINayqoV2asX/jvjRp83bJtHIUD595m10RUu6cb2fDG4tCD/CyZAiLKlkmhyTc
-	aj0VKtM+7WvSpPMglBpMC7QAnXeXWcoyE7JrrfHaqoxgTHKpHixjGUbxEOeO3lMC6NZJt4yKHUr4W
-	Vj2Nrc7IQQIPEbqmDymycyi5XKWkoml3bu2XPd3FSFZyjqhY8pKhGZNdnPCn0U7tK59kKnrHwX5jF
-	7QC1hJZrdaAc+CByanqlf1W4Diqy4K4ZuIuzh/myStkpvsrDmPGESUxxtUVsWGR/6v6Iy6TcEJp4h
-	WHDbZoUThZmtfSw3KHhg==;
+	List-Owner; bh=rd9fd4QtCukzj2OhYQl7mCI8rHzH+2qbvOpfEKKDetY=; b=1qqLIEwQLCK/xi
+	f5P6Ak+6TMiRv0mF+r5DBAWJC6CJZy3LJGncSQie9ZzhP2xtVyoMmEqgSMAu/El1yFrZY1LsSDoJ3
+	PrOFY4lm4ct9AtjWUyg1FxBIULvLRvIW14/BSkry4xZzujzpAkpf7QV6chuGiEAE9z7SCjh6MA6rs
+	ZN37uCRDUD2bIpabYbcVpUy9OgFpkiu8nQUhWHg3tuqrkKVhu+xXeuWClAYXRSn8RouUI5pxXimqy
+	bn7eHIOW7BTxIPlsSD511NABAfz+h+o0EncbJXL6o/UUvqtygSLsWloXj1lxm0oHkf8YeBDOcg0py
+	dLoh/a/Dkg/Yn2e8jfNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYYi-006I2w-2b; Fri, 10 Jun 2022 06:55:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1nzYsz-006NsK-UH; Fri, 10 Jun 2022 07:16:49 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11] helo=mx1.molgen.mpg.de)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYYA-006HpD-JG; Fri, 10 Jun 2022 06:55:23 +0000
-X-UUID: f967fcfce2bf4ea4a26aac5db80c8779-20220609
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:4d2239ec-9743-4b82-b01d-63098269afaf,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:7d7ee87e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: f967fcfce2bf4ea4a26aac5db80c8779-20220609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 896903044; Thu, 09 Jun 2022 23:55:10 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 23:51:01 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 10 Jun 2022 14:50:59 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 10 Jun 2022 14:50:59 +0800
-Message-ID: <ad31ed6f7a70babddbb2fa859b1b9c8199705f70.camel@mediatek.com>
-Subject: Re: [PATCH v10 04/21] drm/edid: Add cea_sad helpers for freq/length
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Guillaume Ranquet <granquet@baylibre.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, CK Hu <ck.hu@mediatek.com>, Jitao shi
-	<jitao.shi@mediatek.com>
-CC: Markus Schneider-Pargmann <msp@baylibre.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>
-Date: Fri, 10 Jun 2022 14:50:59 +0800
-In-Reply-To: <62abad94-fe4a-2505-506d-6e4bc6b425ff@collabora.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <20220523104758.29531-5-granquet@baylibre.com>
-	 <62abad94-fe4a-2505-506d-6e4bc6b425ff@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1nzYsq-006Nk4-W5
+	for linux-mediatek@lists.infradead.org; Fri, 10 Jun 2022 07:16:48 +0000
+Received: from [192.168.0.2] (ip5f5aeb3f.dynamic.kabel-deutschland.de [95.90.235.63])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id D0BA161EA1923;
+	Fri, 10 Jun 2022 09:16:20 +0200 (CEST)
+Message-ID: <1472eccd-429b-0a18-565c-7de2e5ed44f2@molgen.mpg.de>
+Date: Fri, 10 Jun 2022 09:16:20 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] Bluetooth: btmtksdio: Add in-band wakeup support
+Content-Language: en-US
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, Soul.Huang@mediatek.com,
+ YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
+ Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+ Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ ted.huang@mediatek.com, Eric.Liang@mediatek.com, Stella.Chang@mediatek.com,
+ Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
+ frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com,
+ mcchou@chromium.org, shawnku@google.com, linux-bluetooth@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Yake Yang <yake.yang@mediatek.com>
+References: <742cdffcf110e1601257207fb2b0d3f426d4008c.1654819586.git.objelf@gmail.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <742cdffcf110e1601257207fb2b0d3f426d4008c.1654819586.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_235518_692549_186EE1BD 
-X-CRM114-Status: GOOD (  32.62  )
+X-CRM114-CacheID: sfid-20220610_001641_243732_BFD1B65B 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,217 +67,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-05-25 at 14:26 +0200, AngeloGioacchino Del Regno wrote:
-> Il 23/05/22 12:47, Guillaume Ranquet ha scritto:
-> > This patch adds two helper functions that extract the frequency and
-> > word
-> > length from a struct cea_sad.
-> > 
-> > For these helper functions new defines are added that help
-> > translate the
-> > 'freq' and 'byte2' fields into real numbers.
-> > 
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > ---
-> >   drivers/gpu/drm/drm_edid.c | 74
-> > ++++++++++++++++++++++++++++++++++++++
-> >   include/drm/drm_edid.h     | 14 ++++++++
-> >   2 files changed, 88 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/drm_edid.c
-> > b/drivers/gpu/drm/drm_edid.c
-> > index 561f53831e29..61ef1b1c972c 100644
-> > --- a/drivers/gpu/drm/drm_edid.c
-> > +++ b/drivers/gpu/drm/drm_edid.c
-> > @@ -4758,6 +4758,80 @@ int drm_edid_to_speaker_allocation(struct
-> > edid *edid, u8 **sadb)
-> >   }
-> >   EXPORT_SYMBOL(drm_edid_to_speaker_allocation);
-> >   
-> > +/**
-> > + * drm_cea_sad_get_sample_rate - Extract the sample rate from
-> > cea_sad
-> > + * @sad: Pointer to the cea_sad struct
-> > + *
-> > + * Extracts the cea_sad frequency field and returns the sample
-> > rate in Hz.
-> > + *
-> > + * Return: Sample rate in Hz or a negative errno if parsing
-> > failed.
-> > + */
-> > +int drm_cea_sad_get_sample_rate(const struct cea_sad *sad)
-> > +{
-> > +	switch (sad->freq) {
-> > +	case DRM_CEA_SAD_FREQ_32KHZ:
-> > +		return 32000;
-> > +	case DRM_CEA_SAD_FREQ_44KHZ:
-> > +		return 44100;
-> > +	case DRM_CEA_SAD_FREQ_48KHZ:
-> > +		return 48000;
-> > +	case DRM_CEA_SAD_FREQ_88KHZ:
-> > +		return 88200;
-> > +	case DRM_CEA_SAD_FREQ_96KHZ:
-> > +		return 96000;
-> > +	case DRM_CEA_SAD_FREQ_176KHZ:
-> > +		return 176400;
-> > +	case DRM_CEA_SAD_FREQ_192KHZ:
-> > +		return 192000;
-> > +	default:
-> > +		return -EINVAL;
-> > +	}
-> > +}
-> > +EXPORT_SYMBOL(drm_cea_sad_get_sample_rate);
-> > +
-> > +static bool drm_cea_sad_is_uncompressed(const struct cea_sad *sad)
-> > +{
-> > +	switch (sad->format) {
-> > +	case HDMI_AUDIO_CODING_TYPE_STREAM:
-> 
-> As far as I know, bit 0 is reserved, so HDMI_AUDIO_CODING_TYPE_STREAM
-> should
-> never occur here?
-> 
+Dear Sean,
 
-Hello Angelo,
 
-because we do not know whether "HDMI_AUDIO_CODING_TYPE_STREAM" is
-compressed, we decide to change this function name to
-drm_cea_sad_is_pcm to prevent misunderstanding.
-For this, I will drop case HDMI_AUDIO_CODING_TYPE_STREAM
+Thank you for the patch.
 
-> > +	case HDMI_AUDIO_CODING_TYPE_PCM:
-> > +		return true;
-> > +	default:
-> > +		return false;
-> > +	}
-> > +}
-> > +
+Am 10.06.22 um 02:17 schrieb sean.wang@mediatek.com:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Also, I think that implementing a
-> drm_cea_sad_get_compressed_max_bitrate()
-> function should be pretty straightforward... the spec says that this
-> is
-> 8 bits, byte 3 (your byte2) contains the max bitrate divided by 8kHz,
-> so to extract it, you read byte2 and multiply it by 8000Hz.
-> 
-> /**
->   * drm_cea_sad_get_compressed_max_bitrate - Extract maximum bitrate
->   * @sad: Pointer to the cea_sad structure
->   *
->   * Extracts the cea_sad byte2 field and returns the maximum bit rate
->   * of a compressed audio stream.
->   *
->   * Note: This function may only be called for compressed audio.
->   *
->   * Return: Maximum bitrate of compressed audio stream in bit/s or
->   *         negative number for error
->   */
-> int drm_cea_sad_get_compressed_max_bitrate(const struct cea_sad *sad)
-> {
-> 	if (drm_cea_sad_is_uncompressed(sad)) {
-> 		DRM_ERROR("Not supported: tried to get max bitrate for
-> uncompressed format: %u\n",
-> 			 sad->format);
-> 		return -EINVAL;
-> 	}
-> 
-> 	return sad->byte2 * 8000;
-> }
-> 
+> 'ce64b3e94919 ("Bluetooth: mt7921s: Support wake on bluetooth")'
+> have added the waken-on-bluetooth via dedicated GPIO.
 
-After sync with Jitao, we think this function is not correct.
-refer to table of "Short Audio Descriptor" in [1].
+Maybe:
 
-[1]:https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
+Commit ce64b3e94919 ("Bluetooth: mt7921s: Support wake on bluetooth") 
+adds the wake on bluethooth via a dedicated GPIO.
 
-BRs,
-Bo-Chen
-> > +/**
-> > + * drm_cea_sad_get_uncompressed_word_length - Extract word length
-> > + * @sad: Pointer to the cea_sad struct
-> > + *
-> > + * Extracts the cea_sad byte2 field and returns the word length
-> > for an
-> > + * uncompressed stream.
-> > + *
-> > + * Note: This function may only be called for uncompressed audio.
-> > + *
-> > + * Return: Word length in bits or a negative errno if parsing
-> > failed.
-> > + */
-> > +int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad
-> > *sad)
-> > +{
-> > +	if (!drm_cea_sad_is_uncompressed(sad)) {
-> > +		DRM_WARN("Unable to get the uncompressed word length
-> > for a compressed format: %u\n",
-> > +			 sad->format);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	switch (sad->byte2) {
-> > +	case DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT:
-> > +		return 16;
-> > +	case DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT:
-> > +		return 20;
-> > +	case DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT:
-> > +		return 24;
-> > +	default:
-> > +		return -EINVAL;
-> > +	}
-> > +}
-> > +EXPORT_SYMBOL(drm_cea_sad_get_uncompressed_word_length);
-> > +
-> >   /**
-> >    * drm_av_sync_delay - compute the HDMI/DP sink audio-video sync
-> > delay
-> >    * @connector: connector associated with the HDMI/DP sink
-> > diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
-> > index 37c420423625..7a939cb95b38 100644
-> > --- a/include/drm/drm_edid.h
-> > +++ b/include/drm/drm_edid.h
-> > @@ -373,6 +373,18 @@ struct cea_sad {
-> >   	u8 byte2;
-> >   };
-> >   
-> > +#define DRM_CEA_SAD_FREQ_32KHZ  BIT(0)
-> > +#define DRM_CEA_SAD_FREQ_44KHZ  BIT(1)
-> > +#define DRM_CEA_SAD_FREQ_48KHZ  BIT(2)
-> > +#define DRM_CEA_SAD_FREQ_88KHZ  BIT(3)
-> > +#define DRM_CEA_SAD_FREQ_96KHZ  BIT(4)
-> > +#define DRM_CEA_SAD_FREQ_176KHZ BIT(5)
-> > +#define DRM_CEA_SAD_FREQ_192KHZ BIT(6)
-> > +
-> > +#define DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT BIT(0)
-> > +#define DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT BIT(1)
-> > +#define DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT BIT(2)
-> > +
-> >   struct drm_encoder;
-> >   struct drm_connector;
-> >   struct drm_connector_state;
-> > @@ -380,6 +392,8 @@ struct drm_display_mode;
-> >   
-> >   int drm_edid_to_sad(struct edid *edid, struct cea_sad **sads);
-> >   int drm_edid_to_speaker_allocation(struct edid *edid, u8 **sadb);
-> > +int drm_cea_sad_get_sample_rate(const struct cea_sad *sad);
-> > +int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad
-> > *sad);
-> >   int drm_av_sync_delay(struct drm_connector *connector,
-> >   		      const struct drm_display_mode *mode);
-> >   
+> The patch extends the function to the waken-on-bluetooth via SDIO DAT1 pin
+> (inband wakeup) when the SDIO host driver is able to support.
+
+Maybe:
+
+Extend the wake-on-bluetooth to use the SDIO DAT1 pin (in-band wakeup), 
+when supported by the SDIO host driver.
+
+How did you test this? In what datasheet is it documented?
+
+> Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+> Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>   drivers/bluetooth/btmtksdio.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
 > 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+> index d6700efcfe8c..9ed3af4ba51a 100644
+> --- a/drivers/bluetooth/btmtksdio.c
+> +++ b/drivers/bluetooth/btmtksdio.c
+> @@ -118,6 +118,7 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
+>   #define BTMTKSDIO_FUNC_ENABLED		3
+>   #define BTMTKSDIO_PATCH_ENABLED		4
+>   #define BTMTKSDIO_HW_RESET_ACTIVE	5
+> +#define BTMTKSDIO_INBAND_WAKEUP		6
+>   
+>   struct mtkbtsdio_hdr {
+>   	__le16	len;
+> @@ -1294,6 +1295,9 @@ static bool btmtksdio_sdio_wakeup(struct hci_dev *hdev)
+>   		.wakeup_delay = cpu_to_le16(0x20),
+>   	};
+>   
+> +	if (test_bit(BTMTKSDIO_INBAND_WAKEUP, &bdev->tx_state))
+> +		return may_wakeup;
+> +
+>   	if (may_wakeup && bdev->data->chipid == 0x7921) {
+>   		struct sk_buff *skb;
+>   
+> @@ -1384,6 +1388,10 @@ static int btmtksdio_probe(struct sdio_func *func,
+>   	 */
+>   	pm_runtime_put_noidle(bdev->dev);
+>   
+> +	/* Mark if the mmc host can support waken by SDIO */
 
+Maybe:
+
+Mark if MMC host supports wake on bluetooth by SDIO
+
+> +	if (device_can_wakeup(func->card->host->parent))
+> +		set_bit(BTMTKSDIO_INBAND_WAKEUP, &bdev->tx_state);
+> +
+>   	err = device_init_wakeup(bdev->dev, true);
+>   	if (err)
+>   		bt_dev_err(hdev, "failed to initialize device wakeup");
+
+
+Kind regards,
+
+Paul
 
 _______________________________________________
 Linux-mediatek mailing list
