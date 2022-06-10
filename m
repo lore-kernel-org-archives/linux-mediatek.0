@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEBE9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 02:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C05C8C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 02:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y3yiI0v4cJ31t7ghj1W5e3O7vFGhkOa+ZPEzHvEWiRE=; b=rc7Easw2nb1Jut
-	8/ZRcuN4v9tnFL4g2CD6AsG5htwj3RuboFxBoxjaGdfZbtBQXy4pJ79+Pj/qhJwc4pgtpPLSkkiGZ
-	jKxO7Ra1iw8QhqkPVzUtaIxZwNGOacstR1q1lo/oeNdfQhkxTu6tFChJKQZh10Gv0yxIIiVRTo7/z
-	T/uUy06y3IsZ4KvkRvFhEOPYvrOATr7nnXu4G+kAM7T3gdBIlcOROUDBQ+0TyVwhnibHKDCVGFW+z
-	mGXDOHHMItmjkDrBfVTPDEdNn/Su7d9AlWjVjnYsMuYNHJ4wh/oTFBIRQ02CfTriUY5OTmKOzdwzn
-	gDRb9oWOSPdjH+UB5nMA==;
+	List-Owner; bh=V2CMgXIQQHKwxgeIoHrSnjmQ8adzEgnxQJTSuobpeZY=; b=HGxdFox2ZqEJY9
+	c1lAdJTrGY+gY6Kv1Lpf83nGFNCYRqqEkNqEoY/M0VS+bMI9OYi0nhM20PhfJBusRyNSXOgRYfZQW
+	0adZeP4pFKtq+q0hC9N1dlOwgVuySvk+GqIB/q5su6Y8FXRp9dGyC2qJElmVnF4vnmo8rPAe4uJJ1
+	Hci9LwdodxjTjE9yGc0kvail6R/18WFpF+Qnb2T9dn1blAVTpJYtseRhU+rEdnQoNYLbi7Vv3yuXI
+	MYg1o/XsTrAQtCqlBLGFQLulMJz/VXib6Pnrp53Uo3KR18QiVGDiPfaNniNZFL8Eerm6kyXbS5I7v
+	buI8UYfSev4XQ07Oy4pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzU2l-0059W8-PO; Fri, 10 Jun 2022 02:06:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nzU7O-005BHo-GU; Fri, 10 Jun 2022 02:11:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzU2X-0059R1-Hq; Fri, 10 Jun 2022 02:06:22 +0000
-X-UUID: 9c17c8fdd61748d3bb76c93297b3265a-20220609
+	id 1nzU76-005B9m-Go; Fri, 10 Jun 2022 02:11:06 +0000
+X-UUID: 34feaacd251a4f259a90dcb80d8405b3-20220609
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:d5c1b523-8bf2-4173-934c-22ceb8a5e2ef,OB:-327
-	68,LOB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:-32768,FILE:0,RULE:Releas
-	e_Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:68ce460e-1a7c-41b2-b051-c27ac39cc2df,C
-	OID:nil,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil,QS:
-	0,BEC:nil
-X-UUID: 9c17c8fdd61748d3bb76c93297b3265a-20220609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.5,REQID:ed81d1a9-476b-4296-9c63-1dc573811b2b,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:d7eb52e5-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:0,BEC:nil
+X-UUID: 34feaacd251a4f259a90dcb80d8405b3-20220609
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 119461632; Thu, 09 Jun 2022 19:02:11 -0700
+	with ESMTP id 1181242574; Thu, 09 Jun 2022 19:10:57 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 18:53:23 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Jun 2022 19:10:55 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 10 Jun 2022 09:53:21 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 10 Jun 2022 09:53:19 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
-	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2, 3/4] media: mediatek: vcodec: Fix encoder v4l2 bus_info not correctly
-Date: Fri, 10 Jun 2022 09:53:14 +0800
-Message-ID: <20220610015315.25513-3-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220610015315.25513-1-yunfei.dong@mediatek.com>
-References: <20220610015315.25513-1-yunfei.dong@mediatek.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 10 Jun 2022 10:10:54 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Fri, 10 Jun 2022 10:10:48 +0800
+Message-ID: <3ced724e0067e105c11889a5d1bf3247ed57e520.camel@mediatek.com>
+Subject: Re: [PATCH v10 18/21] drm/mediatek: Add mt8195 Embedded DisplayPort
+ driver
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chunfeng Yun
+ =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
+ Deller" <deller@gmx.de>, Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>
+CC: Markus Schneider-Pargmann <msp@baylibre.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
+	<linux-phy@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
+	<linux-fbdev@vger.kernel.org>
+Date: Fri, 10 Jun 2022 10:10:40 +0800
+In-Reply-To: <d86e62ab8613f32a50e905f6ac14173b25d36006.camel@mediatek.com>
+References: <20220523104758.29531-1-granquet@baylibre.com>
+	 <20220523104758.29531-19-granquet@baylibre.com>
+	 <d86e62ab8613f32a50e905f6ac14173b25d36006.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_190621_625679_A3A9B80D 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20220609_191104_619091_00AE78AF 
+X-CRM114-Status: GOOD (  27.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,54 +99,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix v4l2 capability bus_info value with correct chip name according to compatible.
+On Thu, 2022-06-09 at 17:37 +0800, CK Hu wrote:
+> Hi, Rex:
+> 
+> On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
+> > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > 
+> > This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> > 
+> > It supports the mt8195, the embedded DisplayPort units. It offers
+> > DisplayPort 1.4 with up to 4 lanes.
+> > 
+> > The driver creates a child device for the phy. The child device
+> > will
+> > never exist without the parent being active. As they are sharing a
+> > register range, the parent passes a regmap pointer to the child so
+> > that
+> > both can work with the same register range. The phy driver sets
+> > device
+> > data that is read by the parent to get the phy device that can be
+> > used
+> > to control the phy properties.
+> > 
+> > This driver is based on an initial version by
+> > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > ---
+> 
+> [snip]
+> 
+> > +
+> > +static int mtk_dp_power_disable(struct mtk_dp *mtk_dp)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = mtk_dp_write(mtk_dp, MTK_DP_TOP_PWR_STATE, 0);
+> > +
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = mtk_dp_write(mtk_dp, MTK_DP_0034,
+> 
+> MTK_DP_0034 is defined as:
+> 
+> +#define MTK_DP_0034		      (BIT(2) | BIT(4) | BIT(5))
+> 
+> I think this a weird address.
+> 
+> > +			   DA_CKM_CKTX0_EN_FORCE_EN |
+> > DA_CKM_BIAS_LPF_EN_FORCE_VAL |
+> > +		     DA_CKM_BIAS_EN_FORCE_VAL |
+> > +		     DA_XTP_GLB_LDO_EN_FORCE_VAL |
+> > +		     DA_XTP_GLB_AVD10_ON_FORCE_VAL);
+> > +
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* Disable RX */
+> > +	ret = mtk_dp_write(mtk_dp, MTK_DP_1040, 0);
+> 
+> 
+> MTK_DP_1040 is defined as:
+> 
+> +#define MTK_DP_1040		      (BIT(6) | BIT(12))
+> 
+> I think this a weird address.
+> 
+> Regards,
+> CK
+> 
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
-changed with v1:
-- change bus_info from "platform:mt%d" to "platform:mt%d-enc"
----
- .../platform/mediatek/vcodec/mtk_vcodec_enc.c | 21 ++++++++++++++++++-
- 1 file changed, 20 insertions(+), 1 deletion(-)
+Hello CK,
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index c21367038c34..f22efad761d8 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -204,11 +204,30 @@ static int vidioc_enum_fmt_vid_out(struct file *file, void *priv,
- 			       pdata->num_output_formats);
- }
- 
-+static int mtk_vcodec_enc_get_chip_name(void *priv)
-+{
-+	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-+	struct device *dev = &ctx->dev->plat_dev->dev;
-+
-+	if (of_device_is_compatible(dev->of_node, "mediatek,mt8173-vcodec-enc"))
-+		return 8173;
-+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8183-vcodec-enc"))
-+		return 8183;
-+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8192-vcodec-enc"))
-+		return 8192;
-+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-enc"))
-+		return 8195;
-+	else
-+		return 8173;
-+}
-+
- static int vidioc_venc_querycap(struct file *file, void *priv,
- 				struct v4l2_capability *cap)
- {
-+	int platform_name = mtk_vcodec_enc_get_chip_name(priv);
-+
- 	strscpy(cap->driver, MTK_VCODEC_ENC_NAME, sizeof(cap->driver));
--	strscpy(cap->bus_info, MTK_PLATFORM_STR, sizeof(cap->bus_info));
-+	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:mt%d-enc", platform_name);
- 	strscpy(cap->card, MTK_PLATFORM_STR, sizeof(cap->card));
- 
- 	return 0;
--- 
-2.18.0
+I will change them to 0x34 and 0x1040.
+
+BRs,
+Rex
+
+> > +
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = mtk_dp_write(mtk_dp, MTK_DP_TOP_MEM_PD,
+> > +			   0x550 | BIT(FUSE_SEL_SHIFT) |
+> > BIT(MEM_ISO_EN_SHIFT));
+> > +
+> > +	return ret;
+> > +}
+> 
+> 
 
 
 _______________________________________________
