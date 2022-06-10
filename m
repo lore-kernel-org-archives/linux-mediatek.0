@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 012B3CCA47E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B417C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:46:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AjD8C6/qblYjR+FynCx33YAjff9PaY7zlDlsYHCiLmI=; b=J/ZGo5Ajt8HRrc
-	KdedlWbGKgpe12LNTeD/77ZE/GEpJgjj9Pp7cPuqBxAJy0pryT9w+dkTop4CaFszyXTtRJI6vY6e9
-	BKXBWCa6hbcdCQA5bncqikNSNMp/3xaN7mi6Blgs2+VhdQEc0KqsWWcuZQQqU2jUBg24c977oQ7c4
-	Fxvb4KQTGuyJARRH63XFIe+lQYYDR/RWLk6t4sSRo7B9ftzWODOz1lrpX3OipDReppw9+ZegvxAZn
-	jv3NJr3UundumZpzUI7r1fO3TAymVBg7JecLB850rMRi1T6BBFkDHkzLiiqbMZeS+4a8Aaus7x+6z
-	WyZzo6oZ7JWAySAly4iw==;
+	List-Owner; bh=R5EeFv5IuX8QvY9cp7UyOorLrWjVeppriBTUnTAK4i8=; b=x/K41mCr1DDLUF
+	fWNxxKx0KfeI5PH/a/PABaRPqSg9mJNvhT3+1EldOvSLXsBN5ksSb9zOQ/E3xHLHOsAz7VaWVvLAO
+	SIUxyiuGQGhbezxz4QLgMDtY5j02OR2bvZqEJksEDtENnhz8WdWVXGaIWuoJOG8g0+RNyLmb/knfP
+	VjKG2uEYpDj2wH92MUMtYXB91+9mcL371L/UZs/6oJQgCFq8tMUp4i5ByhfB5TQ99VGXVdSk+lgxV
+	NwpYeaSKcCDeR+3BzUyryyf04S4b1GqIepmQ1jijSkkrLT+dNPfLHGl5/CbS7DdzOUXsrzVBsQomn
+	33oXs8USY401uIrMmLJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaHl-006t7F-RY; Fri, 10 Jun 2022 08:46:29 +0000
+	id 1nzaHq-006tBL-Vk; Fri, 10 Jun 2022 08:46:35 +0000
 Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaHi-006t50-VF; Fri, 10 Jun 2022 08:46:28 +0000
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25A8fbnM010559;
-	Fri, 10 Jun 2022 04:46:04 -0400
+	id 1nzaHn-006t8q-To; Fri, 10 Jun 2022 08:46:33 +0000
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25A8T342005277;
+	Fri, 10 Jun 2022 04:45:49 -0400
 Received: from nwd2mta4.analog.com ([137.71.173.58])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3gm00mh1p3-1
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3ghq33kppn-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Jun 2022 04:46:04 -0400
+	Fri, 10 Jun 2022 04:45:48 -0400
 Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 25A8k2To027456
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 25A8jlSR027447
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 10 Jun 2022 04:46:02 -0400
+	Fri, 10 Jun 2022 04:45:47 -0400
 Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by ASHBMBX8.ad.analog.com
  (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Fri, 10 Jun
- 2022 04:46:01 -0400
+ 2022 04:45:46 -0400
 Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
  (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Fri, 10 Jun 2022 04:46:01 -0400
+ Transport; Fri, 10 Jun 2022 04:45:46 -0400
 Received: from nsa.ad.analog.com ([10.44.3.70])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 25A8imiR014275;
-	Fri, 10 Jun 2022 04:45:50 -0400
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 25A8imiP014275;
+	Fri, 10 Jun 2022 04:45:37 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <linux-imx@nxp.com>, <linux-renesas-soc@vger.kernel.org>,
         <linux-mips@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
@@ -111,27 +111,27 @@ CC: Cai Huoqing <cai.huoqing@linux.dev>,
         Eugen Hristev
 	<eugen.hristev@microchip.com>,
         Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH 05/34] iio: adc: imx8qxp-adc: explicitly add proper header files
-Date: Fri, 10 Jun 2022 10:45:16 +0200
-Message-ID: <20220610084545.547700-6-nuno.sa@analog.com>
+Subject: [PATCH 03/34] iio: adc: berlin2-adc: explicitly add proper header files
+Date: Fri, 10 Jun 2022 10:45:14 +0200
+Message-ID: <20220610084545.547700-4-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220610084545.547700-1-nuno.sa@analog.com>
 References: <20220610084545.547700-1-nuno.sa@analog.com>
 MIME-Version: 1.0
 X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-ORIG-GUID: eVoh9-6XyJ-alub1YM52pYAjk3sNb1Dd
-X-Proofpoint-GUID: eVoh9-6XyJ-alub1YM52pYAjk3sNb1Dd
+X-Proofpoint-ORIG-GUID: 3bOI1SVfKwtBCpzB7Qoy07tpKwz_6S3B
+X-Proofpoint-GUID: 3bOI1SVfKwtBCpzB7Qoy07tpKwz_6S3B
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.874,Hydra:6.0.517,FMLib:17.11.64.514
  definitions=2022-06-10_02,2022-06-09_02,2022-02-23_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxscore=0
- malwarescore=0 mlxlogscore=831 lowpriorityscore=0 suspectscore=0
- bulkscore=0 adultscore=0 priorityscore=1501 clxscore=1015 spamscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ mlxlogscore=676 phishscore=0 priorityscore=1501 adultscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 spamscore=0 impostorscore=0 bulkscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2204290000 definitions=main-2206100031
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_014627_031283_EA7641FA 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20220610_014632_007079_4E03F675 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,15 +152,16 @@ RG8gbm90IHRydXN0IHRoZSBmYWN0IHRoYXQgaWlvLmggaW5jbHVkZXMgb2YuaCB3aGljaCBpbiB0
 dXJuIGluY2x1ZGVzCmFsbCB0aGUgaGVhZGVycyB3ZSBhcmUgcmVseWluZyBvbi4KClRoZSB1bHRp
 bWF0ZSBnb2FsIGlzIHRvIGFjdHVhbGx5IGRyb3Agb2YuaCBmcm9tIGlpby5oLgoKU2lnbmVkLW9m
 Zi1ieTogTnVubyBTw6EgPG51bm8uc2FAYW5hbG9nLmNvbT4KLS0tCiBkcml2ZXJzL2lpby9hZGMv
-aW14OHF4cC1hZGMuYyB8IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCgpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9paW8vYWRjL2lteDhxeHAtYWRjLmMgYi9kcml2ZXJzL2lpby9hZGMv
-aW14OHF4cC1hZGMuYwppbmRleCA5MDFkZDhlMWIzMmYuLmU4YzlhNjllMTBlYiAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9paW8vYWRjL2lteDhxeHAtYWRjLmMKKysrIGIvZHJpdmVycy9paW8vYWRjL2lt
-eDhxeHAtYWRjLmMKQEAgLTE5LDYgKzE5LDcgQEAKICNpbmNsdWRlIDxsaW51eC9pbnRlcnJ1cHQu
-aD4KICNpbmNsdWRlIDxsaW51eC9pby5oPgogI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgorI2lu
-Y2x1ZGUgPGxpbnV4L21vZF9kZXZpY2V0YWJsZS5oPgogI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5o
-PgogI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgogI2luY2x1ZGUgPGxpbnV4L3Bt
-X3J1bnRpbWUuaD4KLS0gCjIuMzYuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
-a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+YmVybGluMi1hZGMuYyB8IDIgKysKIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2lpby9hZGMvYmVybGluMi1hZGMuYyBiL2RyaXZlcnMvaWlvL2Fk
+Yy9iZXJsaW4yLWFkYy5jCmluZGV4IDAzOTg3ZDdlNmIzZC4uM2QyZThiNGRiNjFhIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2lpby9hZGMvYmVybGluMi1hZGMuYworKysgYi9kcml2ZXJzL2lpby9hZGMv
+YmVybGluMi1hZGMuYwpAQCAtMTUsNyArMTUsOSBAQAogI2luY2x1ZGUgPGxpbnV4L2lpby9tYWNo
+aW5lLmg+CiAjaW5jbHVkZSA8bGludXgvaW50ZXJydXB0Lmg+CiAjaW5jbHVkZSA8bGludXgva2Vy
+bmVsLmg+CisjaW5jbHVkZSA8bGludXgvbW9kX2RldmljZXRhYmxlLmg+CiAjaW5jbHVkZSA8bGlu
+dXgvbW9kdWxlLmg+CisjaW5jbHVkZSA8bGludXgvb2YuaD4KICNpbmNsdWRlIDxsaW51eC9wbGF0
+Zm9ybV9kZXZpY2UuaD4KICNpbmNsdWRlIDxsaW51eC9zbGFiLmg+CiAjaW5jbHVkZSA8bGludXgv
+bWZkL3N5c2Nvbi5oPgotLSAKMi4zNi4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
+dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
