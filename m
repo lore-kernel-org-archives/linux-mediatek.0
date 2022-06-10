@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DC5C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58CCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 08:29:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y5GDautU8PXPhLxwtbYByYrqAPUbVS94tX4f+fT4dmU=; b=Hjz7Zry4FQs46O
-	jWdODAntqgjNiZaflfpX7DUInlhQndo1fXaKI6jFvtuXg+gn7/3ruRNQqifhV+wspPrsQZpxMdHu6
-	c1+hWB0TbaGomw/JXsy//QnhTE1hdMiwBTS6CzgV+59RhIOaxW2NMx5FJ9CoG615ijKYHKBSNC0Ba
-	E04jsMSgS79EEQskfdQ6gGh1j8xZgn94IZbITHk3MZhnn8hVtoj7WdE1WyB7Be63i4Z9DYLIuaePO
-	jH4JxMYEliOFwMfNuhyoUmn4satr9ZLe/ZGBBA1eExi2IGB2G7+yYZcQjmGNAnbyj3NyoUsFSKxIe
-	CK0GeevVgXUSEX8NNPtA==;
+	List-Owner; bh=2lxlAQRg98tNqopBZ35s2iitydMfA3A02i+56yuCxbw=; b=k7GCMA5kzsJTXr
+	Bi+0LpzXSNHihYf25Z4ZtISgAhM3fipLkoqse9xKv3dH+RJq7Bw1ahfmIinRo7ORJnSKDgk4+EewC
+	sY2/Gt6pXOZHkhLwsJvYhhuA2sFM2fAlRbR9XZpEm9QesguM2LUaGHmtok05KGTeQbMrjaaeYSgxf
+	BkPAVwaHgDE8+KTIZEO289jzeeyGvsrionYBl42i0d8lMgXKD/c9dLVPGDdISdgHa70iF4WalO1Q2
+	Y+8u6nj3Mscqtp3gDmF3o8A/zS3DSrYD7uvPHxbRGVglkyc84q1mlMO4UmVTFTLlGRh4EFpiCjPqM
+	KMdnSlQCyf/OnMiAqWDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nza0i-006m2G-Cp; Fri, 10 Jun 2022 08:28:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1nza1D-006mJr-Oa; Fri, 10 Jun 2022 08:29:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzZzV-006lOx-CA; Fri, 10 Jun 2022 08:27:42 +0000
-X-UUID: 4baeaa843908432abe7b909b98782843-20220610
+	id 1nzZzV-006lMU-S1; Fri, 10 Jun 2022 08:27:44 +0000
+X-UUID: bc6c0147334e475caae93f200c88d3cb-20220610
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:0c100798-581a-46c4-b052-06de5f2ddc45,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:20
-X-CID-META: VersionHash:2a19b09,CLOUDID:ef1f62e5-2ba2-4dc1-b6c5-11feb6c769e0,C
+X-CID-O-INFO: VERSION:1.1.5,REQID:6b3a8ad5-72d3-4678-864d-eebdc5a29055,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:2a19b09,CLOUDID:f179ec7e-c8dc-403a-96e8-6237210dceee,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 4baeaa843908432abe7b909b98782843-20220610
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+X-UUID: bc6c0147334e475caae93f200c88d3cb-20220610
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
 	(envelope-from <jiaxin.yu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1970329906; Fri, 10 Jun 2022 01:27:33 -0700
+	with ESMTP id 1637402343; Fri, 10 Jun 2022 01:27:35 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Jun 2022 01:27:32 -0700
+ 15.0.1497.2; Fri, 10 Jun 2022 01:27:33 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 10 Jun 2022 16:27:30 +0800
+ Fri, 10 Jun 2022 16:27:32 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 10 Jun 2022 16:27:29 +0800
+ Transport; Fri, 10 Jun 2022 16:27:31 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>,
 	<angelogioacchino.delregno@collabora.com>
@@ -56,17 +56,17 @@ CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
 	<jiaxin.yu@mediatek.com>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v7 4/8] dt-bindings: mediatek: mt8186: add audio afe document
-Date: Fri, 10 Jun 2022 16:27:20 +0800
-Message-ID: <20220610082724.29256-5-jiaxin.yu@mediatek.com>
+Subject: [PATCH v7 6/8] dt-bindings: mediatek: mt8186: add mt8186-mt6366-da7219-max98357 document
+Date: Fri, 10 Jun 2022 16:27:22 +0800
+Message-ID: <20220610082724.29256-7-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220610082724.29256-1-jiaxin.yu@mediatek.com>
 References: <20220610082724.29256-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_012737_487822_3EE40FE8 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20220610_012737_953031_586596D2 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,193 +83,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186 audio afe document.
+Add document for mt8186 board with mt6366, da7219 and max98357.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/sound/mt8186-afe-pcm.yaml        | 175 ++++++++++++++++++
- 1 file changed, 175 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
+ .../sound/mt8186-mt6366-da7219-max98357.yaml  | 75 +++++++++++++++++++
+ 1 file changed, 75 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
+diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
 new file mode 100644
-index 000000000000..88f82d096443
+index 000000000000..513cd28b2027
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
-@@ -0,0 +1,175 @@
++++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+@@ -0,0 +1,75 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/sound/mt8186-afe-pcm.yaml#
++$id: http://devicetree.org/schemas/sound/mt8186-mt6366-da7219-max98357.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Mediatek AFE PCM controller for mt8186
++title: Mediatek MT8186 with MT6366, DA7219 and MAX98357 ASoC sound card driver
 +
 +maintainers:
 +  - Jiaxin Yu <jiaxin.yu@mediatek.com>
 +
++description:
++  This binding describes the MT8186 sound card.
++
 +properties:
 +  compatible:
-+    const: mediatek,mt8186-sound
++    enum:
++      - mediatek,mt8186-mt6366-da7219-max98357-sound
 +
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  resets:
-+    maxItems: 1
-+
-+  reset-names:
-+    const: audiosys
-+
-+  mediatek,apmixedsys:
++  mediatek,platform:
 +    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of the mediatek apmixedsys controller
++    description: The phandle of MT8186 ASoC platform.
 +
-+  mediatek,infracfg:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of the mediatek infracfg controller
++  headset-codec:
++    type: object
++    additionalProperties: false
++    properties:
++      sound-dai:
++        maxItems: 1
++    required:
++      - sound-dai
 +
-+  mediatek,topckgen:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of the mediatek topckgen controller
-+
-+  clocks:
-+    items:
-+      - description: audio infra sys clock
-+      - description: audio infra 26M clock
-+      - description: audio top mux
-+      - description: audio intbus mux
-+      - description: mainpll 136.5M clock
-+      - description: faud1 mux
-+      - description: apll1 clock
-+      - description: faud2 mux
-+      - description: apll2 clock
-+      - description: audio engen1 mux
-+      - description: apll1_d8 22.5792M clock
-+      - description: audio engen2 mux
-+      - description: apll2_d8 24.576M clock
-+      - description: i2s0 mclk mux
-+      - description: i2s1 mclk mux
-+      - description: i2s2 mclk mux
-+      - description: i2s4 mclk mux
-+      - description: tdm mclk mux
-+      - description: i2s0_mck divider
-+      - description: i2s1_mck divider
-+      - description: i2s2_mck divider
-+      - description: i2s4_mck divider
-+      - description: tdm_mck divider
-+      - description: audio hires mux
-+      - description: 26M clock
-+
-+  clock-names:
-+    items:
-+      - const: aud_infra_clk
-+      - const: mtkaif_26m_clk
-+      - const: top_mux_audio
-+      - const: top_mux_audio_int
-+      - const: top_mainpll_d2_d4
-+      - const: top_mux_aud_1
-+      - const: top_apll1_ck
-+      - const: top_mux_aud_2
-+      - const: top_apll2_ck
-+      - const: top_mux_aud_eng1
-+      - const: top_apll1_d8
-+      - const: top_mux_aud_eng2
-+      - const: top_apll2_d8
-+      - const: top_i2s0_m_sel
-+      - const: top_i2s1_m_sel
-+      - const: top_i2s2_m_sel
-+      - const: top_i2s4_m_sel
-+      - const: top_tdm_m_sel
-+      - const: top_apll12_div0
-+      - const: top_apll12_div1
-+      - const: top_apll12_div2
-+      - const: top_apll12_div4
-+      - const: top_apll12_div_tdm
-+      - const: top_mux_audio_h
-+      - const: top_clk26m_clk
-+
-+required:
-+  - compatible
-+  - interrupts
-+  - resets
-+  - reset-names
-+  - mediatek,apmixedsys
-+  - mediatek,infracfg
-+  - mediatek,topckgen
-+  - clocks
-+  - clock-names
++  playback-codecs:
++    type: object
++    additionalProperties: false
++    properties:
++      sound-dai:
++        items:
++          - description: phandle of dp codec
++          - description: phandle of l channel speaker codec
++          - description: phandle of r channel speaker codec
++        minItems: 2
++    required:
++      - sound-dai
 +
 +additionalProperties: false
 +
++required:
++  - compatible
++  - mediatek,platform
++  - headset-codec
++  - playback-codecs
++
 +examples:
 +  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
 +
-+    afe: mt8186-afe-pcm@11210000 {
-+        compatible = "mediatek,mt8186-sound";
-+        reg = <0x11210000 0x2000>;
-+        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
-+        resets = <&watchdog 17>; //MT8186_TOPRGU_AUDIO_SW_RST
-+        reset-names = "audiosys";
-+        mediatek,apmixedsys = <&apmixedsys>;
-+        mediatek,infracfg = <&infracfg>;
-+        mediatek,topckgen = <&topckgen>;
-+        clocks = <&infracfg_ao 44>, //CLK_INFRA_AO_AUDIO
-+                 <&infracfg_ao 54>, //CLK_INFRA_AO_AUDIO_26M_BCLK
-+                 <&topckgen 15>, //CLK_TOP_AUDIO
-+                 <&topckgen 16>, //CLK_TOP_AUD_INTBUS
-+                 <&topckgen 70>, //CLK_TOP_MAINPLL_D2_D4
-+                 <&topckgen 17>, //CLK_TOP_AUD_1
-+                 <&apmixedsys 12>, //CLK_APMIXED_APLL1
-+                 <&topckgen 18>, //CLK_TOP_AUD_2
-+                 <&apmixedsys 13>, //CLK_APMIXED_APLL2
-+                 <&topckgen 19>, //CLK_TOP_AUD_ENGEN1
-+                 <&topckgen 101>, //CLK_TOP_APLL1_D8
-+                 <&topckgen 20>, //CLK_TOP_AUD_ENGEN2
-+                 <&topckgen 104>, //CLK_TOP_APLL2_D8
-+                 <&topckgen 63>, //CLK_TOP_APLL_I2S0_MCK_SEL
-+                 <&topckgen 64>, //CLK_TOP_APLL_I2S1_MCK_SEL
-+                 <&topckgen 65>, //CLK_TOP_APLL_I2S2_MCK_SEL
-+                 <&topckgen 66>, //CLK_TOP_APLL_I2S4_MCK_SEL
-+                 <&topckgen 67>, //CLK_TOP_APLL_TDMOUT_MCK_SEL
-+                 <&topckgen 131>, //CLK_TOP_APLL12_CK_DIV0
-+                 <&topckgen 132>, //CLK_TOP_APLL12_CK_DIV1
-+                 <&topckgen 133>, //CLK_TOP_APLL12_CK_DIV2
-+                 <&topckgen 134>, //CLK_TOP_APLL12_CK_DIV4
-+                 <&topckgen 135>, //CLK_TOP_APLL12_CK_DIV_TDMOUT_M
-+                 <&topckgen 44>, //CLK_TOP_AUDIO_H
-+                 <&clk26m>;
-+        clock-names = "aud_infra_clk",
-+                      "mtkaif_26m_clk",
-+                      "top_mux_audio",
-+                      "top_mux_audio_int",
-+                      "top_mainpll_d2_d4",
-+                      "top_mux_aud_1",
-+                      "top_apll1_ck",
-+                      "top_mux_aud_2",
-+                      "top_apll2_ck",
-+                      "top_mux_aud_eng1",
-+                      "top_apll1_d8",
-+                      "top_mux_aud_eng2",
-+                      "top_apll2_d8",
-+                      "top_i2s0_m_sel",
-+                      "top_i2s1_m_sel",
-+                      "top_i2s2_m_sel",
-+                      "top_i2s4_m_sel",
-+                      "top_tdm_m_sel",
-+                      "top_apll12_div0",
-+                      "top_apll12_div1",
-+                      "top_apll12_div2",
-+                      "top_apll12_div4",
-+                      "top_apll12_div_tdm",
-+                      "top_mux_audio_h",
-+                      "top_clk26m_clk";
++    sound: mt8186-sound {
++        compatible = "mediatek,mt8186-mt6366-da7219-max98357-sound";
++        mediatek,platform = <&afe>;
++        pinctrl-names = "aud_clk_mosi_off",
++                        "aud_clk_mosi_on";
++        pinctrl-0 = <&aud_clk_mosi_off>;
++        pinctrl-1 = <&aud_clk_mosi_on>;
++
++        headset-codec {
++            sound-dai = <&da7219>;
++        };
++
++        playback-codecs {
++            sound-dai = <&anx_bridge_dp>,
++                        <&max98357a>;
++        };
 +    };
 +
 +...
