@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 509E3C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 11:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3E51CCA47B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 11:07:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MfirPqMVnxQk6j7kLnT+LSyhIhEX6WjRHqn8IE3tm4k=; b=IZV43CT61piJ4F
-	2lqeKNDiGNLfBs/45znSRYhvD2Zptr2M3Yxa5OLmGBK0T9icA5l19D5srZudzm4eYeS0nDWopFv4Y
-	IdvsWbKZTy9eJULkD1acgTL6P9ddkJsShyCNf8IA6pIFLT60XldbrugyQYkCf2F0GGV30qe5tqcmf
-	NzaL9/p/v5h7Dno155leBsT8RGcbVWrbN3eKMxH9fjEuHDVdJXeu4WsnWzZx4ec0iPkSQM2R7a3Ck
-	95hHMocrmhyD+MKyL8JBzNEDlicn1oGw7KKBRnbZw0RnkoXn5M4D3HjwsYmUT3b7192Jaw1+iNSQc
-	7NuyJv3k3/HQwGKGuDbA==;
+	List-Owner; bh=yS7FZx7h45UW+FJMx2gRDrmCWOFq49+sIfDl8Cqufpo=; b=GnfTlFf8WN3Mhk
+	+A/Y2I4rq7EwLQR9TSPpTzpUJb22Vb4Lny6QjUeO5XY29fxFocGGxYM2W7t4rD4+DLC6WuqwGFH77
+	gmZkuBwgB1+tRvpZjGs8O0EXRt5T/3sKrd7TotOWtTg5EaWlNCOZU95wVnbHFh0EWVvQiQ8u2jaQk
+	CZAVjk+F1LEgjjbav4qvt0a4UceWPTiG97akZvoB0PBobvcEyruLKQgD33XmxR8/P80YLClcqYTsl
+	jMReMZKjzKnbdNZ44Dp+bA3242GEFbIQIftbXYi2Z4jC4LGngXR3EzDIy3v7CiH52zGZDMun885f+
+	rlCgbi9VZhmI1UaHYBvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzcU0-007lAQ-KA; Fri, 10 Jun 2022 11:07:16 +0000
+	id 1nzcU1-007lB7-MI; Fri, 10 Jun 2022 11:07:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzcSO-007kS6-W7; Fri, 10 Jun 2022 11:05:38 +0000
-X-UUID: a655196d11d34f59b6a86a9d62ea4ff7-20220610
+	id 1nzcSN-007kQo-HC; Fri, 10 Jun 2022 11:05:38 +0000
+X-UUID: fb50d1d45719411a9df1f32acf534cd6-20220610
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:4e612508-4dae-478a-a0f6-8422d23a930b,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:2a19b09,CLOUDID:091168e5-2ba2-4dc1-b6c5-11feb6c769e0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.5,REQID:b7741c1e-8fff-4e0b-8543-e96d7dc60312,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:c268f27e-c8dc-403a-96e8-6237210dceee,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: a655196d11d34f59b6a86a9d62ea4ff7-20220610
+X-UUID: fb50d1d45719411a9df1f32acf534cd6-20220610
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1017746367; Fri, 10 Jun 2022 04:05:26 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+	with ESMTP id 768141891; Fri, 10 Jun 2022 04:05:26 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Jun 2022 03:55:28 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 10 Jun 2022 18:55:24 +0800
+ 15.0.1497.2; Fri, 10 Jun 2022 03:55:26 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 10 Jun 2022 18:55:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 18:55:24 +0800
@@ -60,18 +60,17 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v11 08/10] drm/mediatek: set monitor to DP_SET_POWER_D3 to avoid garbage
-Date: Fri, 10 Jun 2022 18:55:20 +0800
-Message-ID: <20220610105522.13449-9-rex-bc.chen@mediatek.com>
+Subject: [PATCH v11 07/10] drm/mediatek: add hpd debounce
+Date: Fri, 10 Jun 2022 18:55:19 +0800
+Message-ID: <20220610105522.13449-8-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
 References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_040537_060535_40DE0298 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220610_040535_671069_7B3C50FD 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +87,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set the monitor power state to DP_SET_POWER_D3 to avoid garbage.
+From: Jitao Shi <jitao.shi@mediatek.com>
 
+From the DP spec 1.4a chapter 3.3, upstream devices should implement
+HPD signal de-bouncing on an external connection.
+A period of 100ms should be used to detect an HPD connect event.
+To cover these cases, HPD de-bounce should be implemented only after
+HPD low has been detected for at least 100ms.
+
+Therefore,
+1. If HPD is low (which means plugging out) for longer than 100ms:
+   we need to do de-bouncing (which means we need to wait for 100ms).
+2. If HPD low is for less than 100ms:
+   we don't need to care about the de-bouncing.
+
+In this patch, we start a 100ms timer and use a need_debounce boolean
+to implement the feature.
+
+Two cases when HPD is high:
+1. If the timer is expired (>100ms):
+   - need_debounce is true.
+   - When HPD high (plugging event comes), need_debounce will be true
+     and then we need to do de-bouncing (wait for 100ms).
+2. If the timer is not expired (<100ms):
+   - need_debounce is false.
+   - When HPD high (plugging event comes), need_debounce will be false
+     and no need to do de-bouncing.
+
+HPD_______             __________________
+          |            |<-  100ms   ->
+          |____________|
+          <-  100ms   ->
+
+Without HPD de-bouncing, USB-C to HDMI Adapaters will not be detected.
+
+The change has been successfully tested with the following devices:
+- Dell Adapter - USB-C to HDMI
+- Acer 1in1 HDMI dongle
+- Ugreen 1in1 HDMI dongle
+- innowatt HDMI + USB3 hub
+- Acer 2in1 HDMI dongle
+- Apple 3in1 HDMI dongle (A2119)
+- J5Create 3in1 HDMI dongle (JAC379)
+
+Tested-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 2413551bfe9f..a5ed94ca00c6 100644
+index 7c2bb2a494dd..2413551bfe9f 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -2043,6 +2043,11 @@ static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- {
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+@@ -129,6 +129,8 @@ struct mtk_dp {
+ 	struct mutex dp_lock;
  
-+	if (mtk_dp_plug_state(mtk_dp)) {
-+		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
-+		usleep_range(2000, 3000);
+ 	struct drm_connector *conn;
++	bool need_debounce;
++	struct timer_list debounce_timer;
+ };
+ 
+ static struct regmap_config mtk_dp_regmap_config = {
+@@ -1681,6 +1683,9 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+ 	if (event < 0)
+ 		return IRQ_HANDLED;
+ 
++	if (mtk_dp->need_debounce && mtk_dp->train_info.cable_plugged_in)
++		msleep(100);
++
+ 	dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
+ 	drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+ 
+@@ -1766,6 +1771,12 @@ static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
+ 	}
+ 	train_info->cable_state_change = true;
+ 
++	if (!train_info->cable_plugged_in) {
++		mod_timer(&mtk_dp->debounce_timer,
++			  jiffies + msecs_to_jiffies(100) - 1);
++		mtk_dp->need_debounce = false;
 +	}
 +
+ 	return IRQ_WAKE_THREAD;
+ }
+ 
+@@ -2216,6 +2227,13 @@ static const struct drm_bridge_funcs mtk_dp_bridge_funcs = {
+ 	.detect = mtk_dp_bdg_detect,
+ };
+ 
++static void mtk_dp_debounce_timer(struct timer_list *t)
++{
++	struct mtk_dp *mtk_dp = from_timer(mtk_dp, t, debounce_timer);
++
++	mtk_dp->need_debounce = true;
++}
++
+ static int mtk_dp_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_dp *mtk_dp;
+@@ -2295,6 +2313,9 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 
+ 	drm_bridge_add(&mtk_dp->bridge);
+ 
++	mtk_dp->need_debounce = true;
++	timer_setup(&mtk_dp->debounce_timer, mtk_dp_debounce_timer, 0);
++
+ 	pm_runtime_enable(dev);
+ 	pm_runtime_get_sync(dev);
+ 
+@@ -2307,6 +2328,7 @@ static int mtk_dp_remove(struct platform_device *pdev)
+ 
+ 	platform_device_unregister(mtk_dp->phy_dev);
  	mtk_dp_video_mute(mtk_dp, true);
- 	mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
++	del_timer_sync(&mtk_dp->debounce_timer);
+ 
+ 	pm_runtime_disable(&pdev->dev);
  
 -- 
 2.18.0
