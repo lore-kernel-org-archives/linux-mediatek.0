@@ -4,81 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1626EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 06:46:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC3FC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 06:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7GnUi7QFZggXvmiEcUqAKaOBJBv0hgsz+HeQfWH93Mg=; b=CNu0q35V9i1uP/
-	9sT8s/KIgBNZ8QeOjnwoFYbSqAbqoJvVynHF4rfrww7u4o52mT2ON+qWro+bNOn5GhHJIAWchVlvm
-	6U55sp1TaC7jefQN1adT7FhV2E7wX9ZjV+9UG1V7bigCJoaGG2DvFf0tkNqQsUDx0At5cQYbBeBRJ
-	dO8tLxDEVwj4SL3JJ6nVuIZBxuL/hqRV5RRv2W3K3URFptHwFqcXh5WUHCdiudYGvlVXohWaAiX/Y
-	Ki8NJNO20O7XuPol9F4cN+iTigd2eW0RqkzP1Omx6at4AcMLN9GVyzaIXi3LVEzIb9mL0LfoIMkeM
-	iKMu1Ng6SKR20vh59B/w==;
+	List-Owner; bh=S3f7D90UWRd8qsF2pZvEDKhz5VPOvUolD0p186PO8Is=; b=tHhQudQ5ISUSoQ
+	NRQOTZrVhyzHpZ5Y6oKFBv7q7vo11YTwpMd3+hXryGPyEHAj6J7NlR++B83gAec3GkzwKZW+hW0CW
+	+wgpG7Aaw4pJ+ToRUy/EwRM3oLUc0ltF15us/wtdkSsL/dpwzpbwKaiQJZ+htSfa0vWexjLpQv8fJ
+	o82G8jk3Zb2GsYB1w+LeP6xJ/zsc4DT+KTtqvAHk8gbDk409zC9zvWtKstjLeQSuxy9cEytG5jugz
+	HL7cRtkPqwSOuRuZ5TZjKjmTvOOcJbdOrrNv/EGWEr0R+EZ457B2hGt/n1acZYNd0TowHNK/A1/RJ
+	vxXSLcpSd6x3f17H6t3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYPl-006Etz-5F; Fri, 10 Jun 2022 06:46:37 +0000
+	id 1nzYQB-006F6f-Ht; Fri, 10 Jun 2022 06:47:03 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYPe-006ErZ-Ii; Fri, 10 Jun 2022 06:46:36 +0000
-X-UUID: ca3bdca0beff4dda8d7ce3d9f4814fee-20220609
+	id 1nzYPf-006ErD-28; Fri, 10 Jun 2022 06:46:37 +0000
+X-UUID: bd30847c2cad4c6c8a7bcb0ff9d02455-20220609
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:f75d0ccb-9240-4cba-a64c-603f5ac7f07d,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:2a19b09,CLOUDID:9122e87e-c8dc-403a-96e8-6237210dceee,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: ca3bdca0beff4dda8d7ce3d9f4814fee-20220609
+X-CID-O-INFO: VERSION:1.1.5,REQID:71c1c8c8-bbde-4910-9b63-7a6306942689,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:2a19b09,CLOUDID:0ec65de5-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,IP:nil,URL:0,File:ni
+	l,QS:0,BEC:nil
+X-UUID: bd30847c2cad4c6c8a7bcb0ff9d02455-20220609
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
+	(envelope-from <mark-pk.tsai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 136269429; Thu, 09 Jun 2022 23:46:25 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Jun 2022 23:45:08 -0700
+	with ESMTP id 1971727978; Thu, 09 Jun 2022 23:46:25 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 10 Jun 2022 14:45:06 +0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Jun 2022 23:36:23 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 10 Jun 2022 14:36:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 14:45:06 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
-	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
-	<river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Subject: [PATCH v18 2/4] dt-binding: mediatek: add bindings for MediaTek CCORR and WDMA
-Date: Fri, 10 Jun 2022 14:45:02 +0800
-Message-ID: <20220610064504.8302-3-moudy.ho@mediatek.com>
+ 15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 14:36:22 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <will@kernel.org>, <stable@vger.kernel.org>
+CC: <alexandru.elisei@arm.com>, <catalin.marinas@arm.com>,
+	<jean-philippe.brucker@arm.com>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<mark-pk.tsai@mediatek.com>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
+	<yj.chiang@mediatek.com>
+Subject: Re: [PATCH] arm64: Clear OS lock in enable_debug_monitors
+Date: Fri, 10 Jun 2022 14:36:19 +0800
+Message-ID: <20220610063619.7921-1-mark-pk.tsai@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220610064504.8302-1-moudy.ho@mediatek.com>
-References: <20220610064504.8302-1-moudy.ho@mediatek.com>
+In-Reply-To: <20220609115716.GA2427@willie-the-truck>
+References: <20220609115716.GA2427@willie-the-truck>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_234630_677410_91B5ADAE 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20220609_234631_142165_86DFAA42 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,164 +81,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds DT binding documentation for MediaTek's CCORR and
-WDMA components.
-These components exist in both MediaTek's Media Data Path 3(MDP3) and DRM,
-and the bindings are placed under the folder "./soc/mediatek" to prevent
-duplicate builds.
+> On Thu, Jun 09, 2022 at 11:33:18AM +0800, Mark-PK Tsai wrote:
+> > Always clear OS lock before enable debug event.
+> > 
+> > The OS lock is clear in cpuhp ops in recent kernel,
+> > but when the debug exception happened before it
+> > kernel might crash because debug event enable didn't
+> > take effect when OS lock is hold.
+> > 
+> > Below is the use case that having this problem:
+> > 
+> > Register kprobe in console_unlock and kernel will
+> > panic at secondary_start_kernel on secondary core.
+> > 
+> > CPU: 1 PID: 0 Comm: swapper/1 Tainted: P
+> > ...
+> > pstate: 004001c5 (nzcv dAIF +PAN -UAO)
+> > pc : do_undefinstr+0x5c/0x60
+> > lr : do_undefinstr+0x2c/0x60
+> > sp : ffffffc01338bc50
+> > pmr_save: 000000f0
+> > x29: ffffffc01338bc50 x28: ffffff8115e95a00 T
+> > x27: ffffffc01258e000 x26: ffffff8115e95a00
+> > x25: 00000000ffffffff x24: 0000000000000000
+> > x23: 00000000604001c5 x22: ffffffc014015008
+> > x21: 000000002232f000 x20: 00000000000000f0 j
+> > x19: ffffffc01338bc70 x18: ffffffc0132ed040
+> > x17: ffffffc01258eb48 x16: 0000000000000403 L&
+> > x15: 0000000000016480 x14: ffffffc01258e000 i/
+> > x13: 0000000000000006 x12: 0000000000006985
+> > x11: 00000000d5300000 x10: 0000000000000000
+> > x9 : 9f6c79217a8a0400 x8 : 00000000000000c5
+> > x7 : 0000000000000000 x6 : ffffffc01338bc08 2T
+> > x5 : ffffffc01338bc08 x4 : 0000000000000002
+> > x3 : 0000000000000000 x2 : 0000000000000004
+> > x1 : 0000000000000000 x0 : 0000000000000001 *q
+> > Call trace:
+> >  do_undefinstr+0x5c/0x60
+> >  el1_undef+0x10/0xb4
+> >  0xffffffc014015008
+> >  vprintk_func+0x210/0x290
+> >  printk+0x64/0x90
+> >  cpuinfo_detect_icache_policy+0x80/0xe0
+> >  __cpuinfo_store_cpu+0x150/0x160
+> >  secondary_start_kernel+0x154/0x440
+> > 
+> > The root cause is that OS_LSR_EL1.OSLK is reset
+> > to 1 on a cold reset[1] and the firmware didn't
+> > unlock it by default.
+> > So the core didn't go to el1_dbg as expected after
+> > kernel_enable_single_step and eret.
+> 
+> Hmm, I thought we didn't use hardware single-step for kprobes after
+> 7ee31a3aa8f4 ("arm64: kprobes: Use BRK instead of single-step when executing
+> instructions out-of-line"). What is triggering this exception?
+> 
+> Will
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- .../bindings/soc/mediatek/mediatek,ccorr.yaml | 58 +++++++++++++++
- .../bindings/soc/mediatek/mediatek,wdma.yaml  | 71 +++++++++++++++++++
- 2 files changed, 129 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+You're right.
+Actually this issue happend in 5.4 LTS, and the commit you mentioned
+can avoid the kernel panic by not using hardware single-step.
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-new file mode 100644
-index 000000000000..20d02cb4ad0a
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-@@ -0,0 +1,58 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/mediatek/mediatek,ccorr.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek color correction
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  Mediatek color correction with 3X3 matrix.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-ccorr
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+
-+    mdp3_ccorr: mdp3-ccorr@1401c000 {
-+      compatible = "mediatek,mt8183-mdp3-ccorr";
-+      reg = <0x1401c000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-+      clocks = <&mmsys CLK_MM_MDP_CCORR>;
-+    };
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-new file mode 100644
-index 000000000000..102d9e163139
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-@@ -0,0 +1,71 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/mediatek/mediatek,wdma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Write Direct Memory Access
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  Mediatek Write Direct Memory Access(WDMA) component used to write
-+  the data into DMA.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-wdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+
-+  iommus:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - power-domains
-+  - clocks
-+  - iommus
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+    #include <dt-bindings/power/mt8183-power.h>
-+    #include <dt-bindings/memory/mt8183-larb-port.h>
-+
-+    mdp3_wdma: mdp3-wdma@14006000 {
-+      compatible = "mediatek,mt8183-mdp3-wdma";
-+      reg = <0x14006000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
-+      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-+      iommus = <&iommu>;
-+    };
--- 
-2.18.0
+I think 5.4 LTS should apply this commit.
+
+7ee31a3aa8f4 ("arm64: kprobes: Use BRK instead of single-step when executing instructions out-of-line")
+
+Cc: stable@vger.kernel.org
+
+
+
+And I'm not sure if there is other use case may have problem if the
+kernel don't clear OS lock in enable_debug_monitors everytime.
+So should we do this to prevent someone face the similar issue?
 
 
 _______________________________________________
