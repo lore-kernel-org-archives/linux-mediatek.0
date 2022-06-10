@@ -4,140 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B20BCC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 06:37:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F7EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jun 2022 06:44:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GIzDz7zpv9nwd8rSULwVIv2PjEvQFTwlvxH0OQwjMOE=; b=A34xsRIuH6CuXm
-	cavtULB6+T18Gr9bFG2Bm8IPo7C/8JZLQTNtuM+NIiJWt3eaoMI8BzwE+glevW4TFZ1yloh5jJ3mB
-	gRvT3Hwrht/y71xsdQoh+OyNZS+egg2J8iQZFacCwtxnzijWCLKXAZepdhX2AosovsFMOmY0aKuRZ
-	tmd+0H84y5Sb5Iv3XZthRPR6h42SzL/ehHPZpeIrwRYFgKSVY/7RKRb7IgIJlCj9C8YFV269zFQKY
-	nkkzIQQdWtiW6KqqdKs0jv9dPyKHzuZ/U53cya5lmYUn3H3MsfZ1CbMxnONq0RjZplTmvqFuseSa6
-	SPJVg9vm3o3WVHxoEVrA==;
+	List-Owner; bh=Y4inJJcgATvBRR1VPd27q5MeBO/vXAHvxl8yFw+WlNQ=; b=mDvY5Ufwa/xUKf
+	U2eneurMReKWJIAru9t5gL4RQ8vEPUWOJvzR19/bg/CAgy4GJ4fPB2oZf7o6H1+xX8BKUbsQBDYlH
+	f8zJxIjj0KsVbeOnu64QMjIDZpvzTVf3Eobth4ucjPcOZjYvriYZ70fUfM/jgT2jnRjW1q3sE0Zp9
+	7Ir/4vGv6+Bg5aWxXkvdV76+BuLI/gqd03DaFe9/G9fUtLrPVoB4TVhci97zcOqKN/BvI8nMzyH4i
+	/XIwiuOOfgdVjyXQBpNOorL2e4CoL35dqw9PfkmJNu6SPp8OqRCPKbhxD6mBB9Dh/Kt+8IoBM47lj
+	idcEywt28J73hXGoZOQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYGx-006Bbs-Sb; Fri, 10 Jun 2022 06:37:31 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1nzYNv-006E2C-Ey; Fri, 10 Jun 2022 06:44:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzYGq-006BWk-OI
-	for linux-mediatek@lists.infradead.org; Fri, 10 Jun 2022 06:37:28 +0000
-Received: by mail-wm1-x329.google.com with SMTP id m39-20020a05600c3b2700b0039c511ebbacso635051wms.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jun 2022 23:37:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=Qxlw/2GeYPhBz4i8FzCqobc8aHph2WQJ2uzH+wlAQPM=;
-        b=YvKD/lnZFHPf9Bklm5hR2t0kTgFB1/rXSkgOKvxFTago0OfV/XXVBnr65QfdQ0sIbE
-         X56d5w92lO93EaOJsDJ8oCNGyjZkcJXPRSg9xTkOKhWDw62K7tpcO84Az2vOBRZU/r3+
-         YIHnLV0yk1ox4ibJDxo/xtHUE91KPK5nhGt24yQglgyRLlAN46Y1Z1t0+GvzN7M+MEou
-         tOdQLaDCWTLurM3ng8g7elKpPBlMcfWMNnTz6GEuMIGKZgA7WgUpL2gOP6VsKo5/EHPb
-         626ZTuTKw9tktPSgibPC7QlWbKT0XcsOV4TdzYgmUmuC1ODYErjWurNuno/msyBC5MwG
-         9u4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=Qxlw/2GeYPhBz4i8FzCqobc8aHph2WQJ2uzH+wlAQPM=;
-        b=VA9zXC3ZOFGI7mLAB6q4yXwZtqnNbVTEgxLa+f7m+wq/SV4KhN8kt2yflhwfgLkPdq
-         AE0e6JBof+QVSoR6HdJDadZI1j2Cc7wdCIIthM/4FF+QYP4BO5BjzD3jJmVoa26nRCc3
-         hn9j4m3zDsGT0NIfbtegrW5BJjFIlb4MpfW1S1sSC15a6kKV67wnO3Dx9hfi+gvVVXoG
-         dfddh5VFL7BKmmXIl5qJaMa24bzyj178+xCYL5fouq3raCv4atC9D0cb6qTeycdSTFBN
-         9gcxm0mtBp3FeKU5C0SAfwETW5ca8csGcXV4qQrN39GI3lBOqUA1UyzcAs/HuY3KMGJr
-         aPtQ==
-X-Gm-Message-State: AOAM531WQeo+kOiDrlVOLFe1nySByqmkV1MW0XFF5IGVJBRZyEr2Xedx
-	WScEmazaY2TAy12aep3u0zMrXg==
-X-Google-Smtp-Source: ABdhPJw4Hge4NDaRn0TL71ijVSQhRo1MhCaO3HbTb1tYRGHCORKkku8fnKoEAx9FGxDoG3CaWVnJNw==
-X-Received: by 2002:a1c:4e03:0:b0:39c:5bbc:e0d2 with SMTP id g3-20020a1c4e03000000b0039c5bbce0d2mr7034980wmh.184.1654843041123;
-        Thu, 09 Jun 2022 23:37:21 -0700 (PDT)
-Received: from localhost.localdomain ([2001:861:44c0:66c0:27b0:82d9:d0c6:702a])
-        by smtp.gmail.com with ESMTPSA id 2-20020a05600c228200b0039482d95ab7sm1729030wmf.24.2022.06.09.23.37.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jun 2022 23:37:20 -0700 (PDT)
-From: Neil Armstrong <narmstrong@baylibre.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	soc@kernel.org,
-	Arnd Bergmann <arnd@arndb.de>,
-	Olof Johansson <olof@lixom.net>,
-	arm@kernel.org
-Cc: Neil Armstrong <narmstrong@baylibre.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-tegra@vger.kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Tero Kristo <kristo@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-omap@vger.kernel.org,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	linux-gpio@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	Kevin Hilman <khilman@baylibre.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Nishanth Menon <nm@ti.com>,
-	devicetree@vger.kernel.org,
-	Chen-Yu Tsai <wens@csie.org>,
-	linux-arm-msm@vger.kernel.org,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-kernel@vger.kernel.org,
-	Andrew Jeffery <andrew@aj.id.au>,
-	linux-input@vger.kernel.org,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Peter Rosin <peda@axentia.se>,
-	Khuong Dinh <khuong@os.amperecomputing.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Andy Gross <agross@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	linux-sunxi@lists.linux.dev,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	linux-samsung-soc@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
-	Li Yang <leoyang.li@nxp.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Wei Xu <xuwei5@hisilicon.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	linux-aspeed@lists.ozlabs.org,
-	openbmc@lists.ozlabs.org,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Joel Stanley <joel@jms.id.au>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v2 00/48] dt-bindings: input: gpio-keys: rework matching children
-Date: Fri, 10 Jun 2022 08:37:18 +0200
-Message-Id: <165484301356.1384204.15957178175784526690.b4-ty@baylibre.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220609113721.379932-1-krzysztof.kozlowski@linaro.org>
-References: <20220609113721.379932-1-krzysztof.kozlowski@linaro.org>
+	id 1nzYNn-006Dzc-Uw; Fri, 10 Jun 2022 06:44:42 +0000
+X-UUID: f50e5c2d9c434988813ed9053dc7d45f-20220609
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.5,REQID:418c5219-793a-45a3-9129-4fd6fd326984,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:2a19b09,CLOUDID:31b35de5-2ba2-4dc1-b6c5-11feb6c769e0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:0,BEC:nil
+X-UUID: f50e5c2d9c434988813ed9053dc7d45f-20220609
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1087458678; Thu, 09 Jun 2022 23:44:30 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Jun 2022 23:34:29 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 10 Jun 2022 14:34:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 10 Jun 2022 14:34:26 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, daoyuan huang
+	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+	<river.cheng@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>
+Subject: [PATCH v20 6/6] soc: mediatek: mutex: add functions that operate registers by CMDQ
+Date: Fri, 10 Jun 2022 14:34:23 +0800
+Message-ID: <20220610063424.7800-7-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220610063424.7800-1-moudy.ho@mediatek.com>
+References: <20220610063424.7800-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_233724_826990_310EDF7B 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20220609_234436_047937_605EDC9C 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,49 +95,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Due to HW limitations, MDP3 is necessary to enable MUTEX in each frame
+for SOF triggering and cooperate with CMDQ control to reduce the amount
+of interrupts generated(also, reduce frame latency).
 
-On Thu, 9 Jun 2022 13:37:21 +0200, Krzysztof Kozlowski wrote:
-> Merging
-> =======
-> 1. dt-bindings: rebased on top of Rob's:
->    https://lore.kernel.org/all/20220608211207.2058487-1-robh@kernel.org/
-> 
-> 2. DTS patches are independent. They can be picked up directly by sub-arch
->    maintainers, by Arnd or Olof, or eventually by me (if you wish).
-> 
-> [...]
+In response to the above situation, a new interface
+"mtk_mutex_enable_by_cmdq" has been added to achieve the purpose.
 
-Thanks, Applied to https://git.kernel.org/pub/scm/linux/kernel/git/amlogic/linux.git (v5.20/arm64-dt)
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c       | 45 +++++++++++++++++++++++++-
+ include/linux/soc/mediatek/mtk-mutex.h |  2 ++
+ 2 files changed, 46 insertions(+), 1 deletion(-)
 
-[07/48] arm64: dts: amlogic: correct gpio-keys properties
-        https://git.kernel.org/amlogic/c/4956be9944d1fb23107f27bad8a2cca0fa167443
-[08/48] arm64: dts: amlogic: align gpio-key node names with dtschema
-        https://git.kernel.org/amlogic/c/4fd9afd894ebe5831dbd737e6ca7b6de14da7fda
-
-These changes has been applied on the intermediate git tree [1].
-
-The v5.20/arm64-dt branch will then be sent via a formal Pull Request to the Linux SoC maintainers
-for inclusion in their intermediate git branches in order to be sent to Linus during
-the next merge window, or sooner if it's a set of fixes.
-
-In the cases of fixes, those will be merged in the current release candidate
-kernel and as soon they appear on the Linux master branch they will be
-backported to the previous Stable and Long-Stable kernels [2].
-
-The intermediate git branches are merged daily in the linux-next tree [3],
-people are encouraged testing these pre-release kernels and report issues on the
-relevant mailing-lists.
-
-If problems are discovered on those changes, please submit a signed-off-by revert
-patch followed by a corrective changeset.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/amlogic/linux.git
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
-
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index f8ea09a8bb5d..85fa7df7066d 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -7,10 +7,12 @@
+ #include <linux/iopoll.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
++#include <linux/of_address.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/soc/mediatek/mtk-mutex.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
+ 
+ #define MT2701_MUTEX0_MOD0			0x2c
+ #define MT2701_MUTEX0_SOF0			0x30
+@@ -204,6 +206,8 @@ struct mtk_mutex_ctx {
+ 	void __iomem			*regs;
+ 	struct mtk_mutex		mutex[10];
+ 	const struct mtk_mutex_data	*data;
++	phys_addr_t			addr;
++	struct cmdq_client_reg		cmdq_reg;
+ };
+ 
+ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+@@ -594,6 +598,30 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_enable);
+ 
++int mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex, void *pkt)
++{
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	struct cmdq_pkt *cmdq_pkt = (struct cmdq_pkt *)pkt;
++
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
++
++	if (!mtx->cmdq_reg.size) {
++		dev_err(mtx->dev, "mediatek,gce-client-reg hasn't been set");
++		return -EINVAL;
++	}
++
++	cmdq_pkt_write(cmdq_pkt, mtx->cmdq_reg.subsys,
++		       mtx->addr + DISP_REG_MUTEX_EN(mutex->id), 1);
++	return 0;
++#else
++	dev_err(mtx->dev, "Not support for enable MUTEX by CMDQ");
++	return -ENODEV;
++#endif
++}
++EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
++
+ void mtk_mutex_disable(struct mtk_mutex *mutex)
+ {
+ 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+@@ -684,8 +712,11 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_mutex_ctx *mtx;
+-	struct resource *regs;
++	struct resource *regs, addr;
+ 	int i;
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	int ret;
++#endif
+ 
+ 	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
+ 	if (!mtx)
+@@ -705,6 +736,18 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
++	if (of_address_to_resource(dev->of_node, 0, &addr) < 0) {
++		dev_err(dev, "Failed to get addr\n");
++		return -EINVAL;
++	}
++	mtx->addr = addr.start;
++
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &mtx->cmdq_reg, 0);
++	if (ret)
++		dev_dbg(dev, "No mediatek,gce-client-reg!\n");
++#endif
++
+ 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	mtx->regs = devm_ioremap_resource(dev, regs);
+ 	if (IS_ERR(mtx->regs)) {
+diff --git a/include/linux/soc/mediatek/mtk-mutex.h b/include/linux/soc/mediatek/mtk-mutex.h
+index 2ddab9d2b85d..a0f4f51a3b45 100644
+--- a/include/linux/soc/mediatek/mtk-mutex.h
++++ b/include/linux/soc/mediatek/mtk-mutex.h
+@@ -35,6 +35,8 @@ int mtk_mutex_prepare(struct mtk_mutex *mutex);
+ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+ 			enum mtk_ddp_comp_id id);
+ void mtk_mutex_enable(struct mtk_mutex *mutex);
++int mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
++			     void *pkt);
+ void mtk_mutex_disable(struct mtk_mutex *mutex);
+ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+ 			   enum mtk_ddp_comp_id id);
 -- 
-Neil
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
