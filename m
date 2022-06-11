@@ -4,70 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E3B6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jun 2022 10:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22998CCA480
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jun 2022 13:50:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IM7igWeD6xOoQVwnJH4xdIXjIjqFkhYrDNgYDdIHBvs=; b=uxGzV6xqFQEiOU
-	N6lKoDnnNhz4YYVIu10+oXJpS5jFYfPFwIhZGCVLII1a0ohpzIe6gSTDZZbn6q33CGYtOJAf/4BAt
-	oPDxErC9A7iGJ5UsX+dydYJDPPwdbx74qbSqUnBxuq3BFZUNYgO2pgh57bUQETdCZqXJTojAakpCA
-	n300Ee5g0MA2R5ydTrmVfOdNy6O7uGviYOwUAr3kJMZXIEv7J9xkBjb8n1ECR26R6MWKnQY1QUGc0
-	j4vGtdUiZlg41tymQfpDKYIb7CozPEDa3ZgmcZXqFoQ2+HB1BKk3aZIxENkBGeOwW1RjUn/XtCH2R
-	okRMoD6CIwwMb92hdnMg==;
+	List-Owner; bh=xm0IUMXYQoZ/xhIpA5UbhMYDeEnk028dG7y+JFTXYfU=; b=2sH6Ue4kJbYOYw
+	LpSp06czKlI/W0AaGfO2NSXwsdrIIh8i0Z+KPDPikVeTrNlUmPOR4kpf3x7u2+zlK+u7TTlkuEala
+	2EA5gnHrNCxXzicEzRoORkL629Z3cW7AYFMygyySbOmJSk+TX3DVtHxhOudwt7I/GU4cwEtwmgkT+
+	mSRNR3/nvqyIbmBXz30OAq9oZ0cAxmzm82eqzUBBXEmeea1CBpVZEJ5I9p2UZvCmpRUKSOXH/iY8B
+	tCJmbYLZrAANtF8ZV7pk9W541EZEa+RknNZBHkQBCpjKT/ALwvLveXjPC2+ZxgEZWnsBNGojVHquv
+	jCsAIgHpSJ5iqaguR+vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzybD-00CYdw-1j; Sat, 11 Jun 2022 10:44:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o01VG-00D8xl-0w; Sat, 11 Jun 2022 13:50:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzyb9-00CYc0-B6; Sat, 11 Jun 2022 10:44:08 +0000
-X-UUID: 2007cf44ffa54e019282280c7cc6d5d4-20220611
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:37dfa060-4480-454c-aa68-591a95ac855e,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:2a19b09,CLOUDID:a23d85e7-1f03-4449-90ad-e6cb8f3d1399,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:0,BEC:nil
-X-UUID: 2007cf44ffa54e019282280c7cc6d5d4-20220611
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yf.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 694065624; Sat, 11 Jun 2022 03:44:01 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 11 Jun 2022 03:33:59 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Sat, 11 Jun 2022 18:33:58 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 11 Jun 2022 18:33:57 +0800
-From: <yf.wang@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open
- list:MEDIATEK IOMMU DRIVER" <iommu@lists.linux-foundation.org>, "moderated
- list:MEDIATEK IOMMU DRIVER" <linux-mediatek@lists.infradead.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "open
- list" <linux-kernel@vger.kernel.org>
-CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
-	<Yong.Wu@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Yunfei Wang
-	<yf.wang@mediatek.com>, Ning Li <ning.li@mediatek.com>
-Subject: [PATCH v8 3/3] iommu/mediatek: Allow page table PA up to 35bit
-Date: Sat, 11 Jun 2022 18:26:55 +0800
-Message-ID: <20220611102656.10954-4-yf.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220611102656.10954-1-yf.wang@mediatek.com>
-References: <20220611102656.10954-1-yf.wang@mediatek.com>
+	id 1o01VC-00D8vz-QB; Sat, 11 Jun 2022 13:50:12 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2298660F16;
+	Sat, 11 Jun 2022 13:50:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E49FDC34116;
+	Sat, 11 Jun 2022 13:49:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1654955407;
+	bh=axWYZgHjU+vWL39otfQyFw7n1cGND5pHaeO608w9aDQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=kXEFWai8vIb/IcKUCUsY5h6FQ5HgBYwoNoO6x0MjQtdX9+M+TxIqv68GybTf+JOgW
+	 q/rV4SV3/m1/STeXQ+UhMBbZQgylp8pVkzRVphpH0I9ytGjY804Yv+Hfj7kFzrY8FN
+	 dQ5Bsv9xQ4YGPIVB0zHbP6oKxuv28f0GR5JQljdn7j5Hm/k4wwQwu/0bq5LIzb7kGO
+	 qiRF8DBvDKq57IzKjPeCW9Uc/oQWQ/I3eyGpG4r9iA19/4Xzgt4xaW5KPrZqH+YdYX
+	 CvRdaHxByHiYYFDF3o0LpHQcmqIK+hK/B8HUt9XKFV7g3A47bKyk80WnlHX4RfshFk
+	 IyGi7XrE4Zc2A==
+Date: Sat, 11 Jun 2022 14:59:05 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>
+Cc: <linux-imx@nxp.com>, <linux-renesas-soc@vger.kernel.org>,
+ <linux-mips@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <chrome-platform@lists.linux.dev>, Lad Prabhakar
+ <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ <linux-arm-msm@vger.kernel.org>, <linux-iio@vger.kernel.org>,
+ <openbmc@lists.ozlabs.org>, Cai Huoqing <cai.huoqing@linux.dev>, Benjamin
+ Fair <benjaminfair@google.com>, Jishnu Prakash <quic_jprakash@quicinc.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Lars-Peter Clausen
+ <lars@metafoo.de>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Amit
+ Kucheria <amitk@kernel.org>, Andy Gross <agross@kernel.org>, Michael
+ Hennerich <Michael.Hennerich@analog.com>, Haibo Chen <haibo.chen@nxp.com>,
+ Benson Leung <bleung@chromium.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Christophe Branchereau <cbranchereau@gmail.com>, Patrick Venture
+ <venture@google.com>, Arnd Bergmann <arnd@arndb.de>, Nancy Yuen
+ <yuenn@google.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Gwendal Grignou <gwendal@chromium.org>,
+ Saravanan Sekar <sravanhome@gmail.com>, Tali Perry <tali.perry1@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Paul Cercueil
+ <paul@crapouillou.net>, Thara Gopinath <thara.gopinath@linaro.org>, Avi
+ Fishman <avifishman70@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Bjorn
+ Andersson <bjorn.andersson@linaro.org>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Zhang Rui <rui.zhang@intel.com>, Shawn Guo
+ <shawnguo@kernel.org>, Guenter Roeck <groeck@chromium.org>, Fabio Estevam
+ <festevam@gmail.com>, Olivier Moysan <olivier.moysan@foss.st.com>, Eugen
+ Hristev <eugen.hristev@microchip.com>, Miquel Raynal
+ <miquel.raynal@bootlin.com>
+Subject: Re: [PATCH 01/34] iio: adc: ad7606: explicitly add proper header
+ files
+Message-ID: <20220611145905.55e9b074@jic23-huawei>
+In-Reply-To: <20220610084545.547700-2-nuno.sa@analog.com>
+References: <20220610084545.547700-1-nuno.sa@analog.com>
+	<20220610084545.547700-2-nuno.sa@analog.com>
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220611_034407_431957_0993A0BB 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20220611_065010_958038_5DE3EF41 
+X-CRM114-Status: GOOD (  16.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,88 +99,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yunfei Wang <yf.wang@mediatek.com>
-
-Single memory zone feature will remove ZONE_DMA32 and ZONE_DMA. So add
-the quirk IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT to let level 1 and level 2
-pgtable support at most 35bit PA.
-
-Signed-off-by: Ning Li <ning.li@mediatek.com>
-Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 3d62399e8865..4dbc33758711 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -138,6 +138,7 @@
- /* PM and clock always on. e.g. infra iommu */
- #define PM_CLK_AO			BIT(15)
- #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
-+#define PGTABLE_PA_35_EN		BIT(17)
- 
- #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
- 				((((pdata)->flags) & (mask)) == (_x))
-@@ -240,6 +241,7 @@ struct mtk_iommu_data {
- struct mtk_iommu_domain {
- 	struct io_pgtable_cfg		cfg;
- 	struct io_pgtable_ops		*iop;
-+	u32				ttbr;
- 
- 	struct mtk_iommu_bank_data	*bank;
- 	struct iommu_domain		domain;
-@@ -596,6 +598,9 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom,
- 		.iommu_dev = data->dev,
- 	};
- 
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
-+		dom->cfg.quirks |= IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT;
-+
- 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
- 		dom->cfg.oas = data->enable_4GB ? 33 : 32;
- 	else
-@@ -684,8 +689,8 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 			goto err_unlock;
- 		}
- 		bank->m4u_dom = dom;
--		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
--		       bank->base + REG_MMU_PT_BASE_ADDR);
-+		bank->m4u_dom->ttbr = MTK_IOMMU_ADDR(dom->cfg.arm_v7s_cfg.ttbr);
-+		writel(bank->m4u_dom->ttbr, data->base + REG_MMU_PT_BASE_ADDR);
- 
- 		pm_runtime_put(m4udev);
- 	}
-@@ -1366,8 +1371,7 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
- 		writel_relaxed(reg->int_control[i], base + REG_MMU_INT_CONTROL0);
- 		writel_relaxed(reg->int_main_control[i], base + REG_MMU_INT_MAIN_CONTROL);
- 		writel_relaxed(reg->ivrp_paddr[i], base + REG_MMU_IVRP_PADDR);
--		writel(m4u_dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
--		       base + REG_MMU_PT_BASE_ADDR);
-+		writel(m4u_dom->ttbr, base + REG_MMU_PT_BASE_ADDR);
- 	} while (++i < data->plat_data->banks_num);
- 
- 	/*
-@@ -1401,7 +1405,7 @@ static const struct mtk_iommu_plat_data mt2712_data = {
- static const struct mtk_iommu_plat_data mt6779_data = {
- 	.m4u_plat      = M4U_MT6779,
- 	.flags         = HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN | WR_THROT_EN |
--			 MTK_IOMMU_TYPE_MM,
-+			 MTK_IOMMU_TYPE_MM | PGTABLE_PA_35_EN,
- 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
- 	.banks_num    = 1,
- 	.banks_enable = {true},
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAxMCBKdW4gMjAyMiAxMDo0NToxMiArMDIwMApOdW5vIFPDoSA8bnVuby5zYUBhbmFs
+b2cuY29tPiB3cm90ZToKCj4gRG8gbm90IHRydXN0IHRoZSBmYWN0IHRoYXQgaWlvLmggaW5jbHVk
+ZXMgb2YuaCB3aGljaCBpbiB0dXJuIGluY2x1ZGVzCj4gYWxsIHRoZSBoZWFkZXJzIHdlIGFyZSBy
+ZWx5aW5nIG9uLgo+IAo+IFRoZSB1bHRpbWF0ZSBnb2FsIGlzIHRvIGFjdHVhbGx5IGRyb3Agb2Yu
+aCBmcm9tIGlpby5oLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE51bm8gU8OhIDxudW5vLnNhQGFuYWxv
+Zy5jb20+CkhpIE51bm8sCgpOb3Qgc3VyZSBob3cgZmFyIEknbGwgZ2V0IHRocm91Z2ggdGhlIHNl
+cmllcywgYnV0IHRvIHRyeSBhbmQKcmVkdWNlIHRoZSBub2lzZSAvIHRyYWZmaWMgZm9yIGFueSBm
+dXR1cmUgdmVyc2lvbnMgSSdtIGdvaW5nIHRvCnBpY2sgdXAgYXMgbWFueSBvZiB0aGVzZSBwcmVj
+dXJzb3IgcGF0Y2hlcyBhcyBwb3NzaWJsZS4KCkFwcGxpZWQgdG8gdGhlIHRvZ3JlZyBicmFuY2gg
+b2YgaWlvLmdpdCAod2hpY2gganVzdCBnb3QgcmViYXNlZApvbiB2NS4xOS1yYzEpIGFuZCBwdXNo
+ZWQgb3V0IGFzIHRlc3RpbmcgZm9yIDAtZGF5IHRvIHRha2UgYSBxdWljawpsb29rIGFuZCBzZWUg
+aWYgd2UgbWlzc2VkIGFueXRoaW5nLgoKVGhhbmtzLAoKSm9uYXRoYW4KCgo+IC0tLQo+ICBkcml2
+ZXJzL2lpby9hZGMvYWQ3NjA2LmMgfCAxICsKPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
+KCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYyBiL2RyaXZlcnMv
+aWlvL2FkYy9hZDc2MDYuYwo+IGluZGV4IDNiMTkzZGMyNjQzOC4uYmEyNGY5OTUyM2UwIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvaWlvL2FkYy9hZDc2MDYuYwo+ICsrKyBiL2RyaXZlcnMvaWlvL2Fk
+Yy9hZDc2MDYuYwo+IEBAIC0xMiw2ICsxMiw3IEBACj4gICNpbmNsdWRlIDxsaW51eC9pbnRlcnJ1
+cHQuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9k
+dWxlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wcm9wZXJ0eS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
+cmVndWxhdG9yL2NvbnN1bWVyLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zY2hlZC5oPgo+ICAjaW5j
+bHVkZSA8bGludXgvc2xhYi5oPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtbWVkaWF0ZWsK
