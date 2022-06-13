@@ -4,91 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D1A3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 11:20:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4321CCCA47B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 11:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0IwV/Nd8bu5u01qV7QIFNJf10/7meLPBw3KPZ8m9ejg=; b=D6IqtYPPQpacek
-	FXhHkLXLQlY+qrCdIpPz45oyj7ju7fXsy7W+dKYpCw/VWADQzUArV1Xdj/rQJ6dQaanTe0qBF69v4
-	PsVEdHR52ephefQCPeToX4IBbFbFxzex+HEMMa4LxcWi+8pUKeNMCoQqFzAqBQWP3FjJuL299jI36
-	CsnglsFPcslKfxGQ7Y0VSSH0kJdqYccnewygsCklsejni5sgkcMOjT+SmGXIZe0qTSOiVMM/6nC4S
-	iwkDo/y1Q8YsxWfa0a1ubPE+85sJ03WyqgXdN0hiQvEnTw4EMnG1CZM9urkJUe6Pr5xyZ5GhacBVS
-	487B08ki+4Gu6j3dG1Dw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nApx+FwnoU5jvNZs14tkKXWh5LXdrIDw+8dmXtLsaIg=; b=yBLm+pzFX3Vm4B
+	4K1ho5T6AbyhXFZxfDo/9EArzlFEr58n9NPE6Ii+zB1tHL4rfHqy0QJ7SvDI3qn0XPMfgzIbSWRnZ
+	430Ugx8tM6P2moIa0mxshytwi5PbxmsuTTQ4DUCWelyHBB1YZuo84T+PG78mkE+F96PkKO4RhvsBb
+	61PeUWGbyAi8pELSHSrR/9986pjfr1B9zYI6BV8/a+akSRihCC8srFoOEf6gyrwXkDHq4xzL7CRGA
+	cG/SDR7KTK4sFaifArNr5ohJ0hvNZ/oZdtx9LrjXCcogAl48H/fMxYm8SvGCCzTGMnTbTkFT+1iKB
+	e/y8wuaNsPpOxC8ytvSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0i6x-0039wH-87; Mon, 13 Jun 2022 11:19:59 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1o0i7s-003ASp-Ch; Mon, 13 Jun 2022 11:20:56 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0i0u-0036hW-CK; Mon, 13 Jun 2022 11:13:52 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id k5-20020a17090a404500b001e8875e6242so5582605pjg.5;
-        Mon, 13 Jun 2022 04:13:43 -0700 (PDT)
+	id 1o0i14-0036lB-Bd
+	for linux-mediatek@lists.infradead.org; Mon, 13 Jun 2022 11:13:57 +0000
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25DAb8cL027136;
+	Mon, 13 Jun 2022 11:13:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=a4fJ2Gu9aJowTZ3RVwjnYkGtrh+e2H116hzbvNv33Tw=;
+ b=YuW55tFatkQMvBXs1PEcaTiBW8eVKAyJjSsP6b39CGgPOiu5ymPN7/8uC+sVjNX3Tp9T
+ fn9/69drxZp9uZepqJf2989PGmnmi7D/KAjg7ZtKa+t7XFy0s3OsjdQXvI8FfIdyDwtu
+ Z9G6/SI+tl47WTWFiMPmXt4pIkLQbBxOM1yLa0BkOx78fxldeg9WhZu5fOnDiKwkng+z
+ V2QBa8EcZVt75ulrJNGWkOOS9ZP3gKuFNnu2HQuW91RG0bW1Hzl599HcNjmALTkh+ZtS
+ Iq724SN5EjK6ejh9m6+GEt3MLV4Fr4CuKXBFxwWKNtS8XdYRqUlmxeJ9EsVJCHgdIrIn dA== 
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3gmhn0au4j-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 13 Jun 2022 11:13:51 +0000
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 25DBC0EE027625;
+	Mon, 13 Jun 2022 11:13:49 GMT
+Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2102.outbound.protection.outlook.com [104.47.58.102])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id 3gp45cr10s-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 13 Jun 2022 11:13:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=STQGmVZOA2rgL6iRA1X0OATAc0xn9gPyLqokVj5aKYWmUI/7RZy2vH/2pHHr7e8OCclOjm6wfJYy7FMK0EKX3dYFVt8umU8CYENEbPhWAdmr4ECBiq3R+w8Y1+WZ5r++uxpgU8XZJEF0IL5n/iI5tc2gYTOdlXblHrSe8icrLel1xYfunSr5iz593UsZqX+1Cf7BT9h6wz7vWTxWc3vix/nc99ueITLF0wnC8csoFjrvOsWaWdS49EOtzVM7e6bQ8wIRU6yWctzu5I3HLuvZ0oW5hx2uhU0jMrDKNrgs77n6qnsr2sPG1BW2sS1Ny1cVBZjGbAQGdIaREZgJy+B6Sg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=a4fJ2Gu9aJowTZ3RVwjnYkGtrh+e2H116hzbvNv33Tw=;
+ b=KRBBoX5EjnV906MdsxcSHXyyjoajYykjwffiyPkc7Tm/sSmL6zu8wehKvzS6egjcDsVPLom7OtVpyNjkRequrLEn7VCcfZi4d9NSz4VaWYv07NfxRucUmAggfRBd1oJBuU440oKLCN5wqJoGW9Pdcm+srYnRbgVgdBnCfomqCyKoZO0Ws/N6dbQA9KnES8cFWDXJB7g1F24CRt7UEZ5QOHp4cvukoodruMjgJhkvZ0dK2bBpyzsJLN67W+o07K4UwEZi8JrKONjG5nlusT3TUc3sk8m/jeYcYYrgZ34vnjtjRQ/97aSgZG/TI6YFZJCihRqddd7zaZGJU5C6zsE2vg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=o3I7ekobMZ21n7qNlRFfTo8b92MqfGk0Hi9aWPPAEr8=;
-        b=TJ+Gg7XAGe0WpIeOQOnzcq8Xxz6ToA+eeVOSTUPmyjwaJ05SxftAk4L0DNEqTuaMKk
-         iCbq+6Pbhno2N/uns6ziI8OSoNgERMuT7kyYUGnSDCf1NYqQHMbV0i8O/rKxoGLtDU6X
-         x3sJy1MwPA66DHF4HsjWSrUARR17BUYKc40HtQaWi2NZC0u6Ern/Tom7Ef5rT1Jmhuu6
-         jHbPkfwRY0DxoieLqEg51pJtvjqxaj0/C4lZgXOHHsX9BUQY455cuHQcuJWvVhZK9dr2
-         FTTHwvG2RS93qej+EFp9RV1IBuDk8rXauprGpbok8OyI3MSle/a9vpQogffKf6pUFu5S
-         PGXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=o3I7ekobMZ21n7qNlRFfTo8b92MqfGk0Hi9aWPPAEr8=;
-        b=tWWdSDCigu4+1Qli343ZckDxol/n7pn0BXtt005ZvW066s95kz1YxHmoyVWmKkciTd
-         hG3fLdxs2O1Rti/rEzcBNQyTcL0zWbG69kx+RbLMgkZK7QgQw2SnXSOE56itrEj4sfYh
-         3NkuFjFrq49e1GLZ46ThRg3R+pv8dVahy9oD0V3Pdmlu4kg1fuRNqqo/5fncyrOKFucQ
-         kPIoiszW3yPoYTE3IhyizgJNcQN2E4zfooP+8nJp0i09GXAo1A5XnKmrzAZGNPfR1gzc
-         PhlNbS37pXmo7n6LzxvfampaU+SoagVsKH9CSQeuVLRtwtlUwJcN0aKrFyhWsPoKIg98
-         BrHg==
-X-Gm-Message-State: AOAM533kWvwWnYe9jCAyTAo/Ox4NZm0soUWMd7zhN0zeZqq3cw9mdoR2
-	XnarrmR5neuugIOiVhwDFrg=
-X-Google-Smtp-Source: ABdhPJzuLodzUPiJzHDTQHQZgOpwmcT8562r9XfHBROYFyWMxrUJvRbrnDOcFGTu2tvIQNu9fhl/kw==
-X-Received: by 2002:a17:903:2645:b0:167:92f1:15c0 with SMTP id je5-20020a170903264500b0016792f115c0mr32604393plb.100.1655118823067;
-        Mon, 13 Jun 2022 04:13:43 -0700 (PDT)
-Received: from RD-3580-24288.rt.l (42-72-115-109.emome-ip.hinet.net. [42.72.115.109])
-        by smtp.gmail.com with ESMTPSA id g17-20020a056a000b9100b0051b4e53c487sm5199989pfj.45.2022.06.13.04.13.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jun 2022 04:13:42 -0700 (PDT)
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-To: jic23@kernel.org,
-	lars@metafoo.de,
-	matthias.bgg@gmail.com,
-	lee.jones@linaro.org,
-	daniel.thompson@linaro.org,
-	jingoohan1@gmail.com,
-	pavel@ucw.cz,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org
-Cc: linux-iio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-fbdev@vger.kernel.org,
-	szunichen@gmail.com,
-	ChiYuan Huang <cy_huang@richtek.com>
-Subject: [PATCH v2 13/15] leds: mt6370: Add Mediatek MT6370 current sink type LED Indicator support
-Date: Mon, 13 Jun 2022 19:11:44 +0800
-Message-Id: <20220613111146.25221-14-peterwu.pub@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220613111146.25221-1-peterwu.pub@gmail.com>
-References: <20220613111146.25221-1-peterwu.pub@gmail.com>
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=a4fJ2Gu9aJowTZ3RVwjnYkGtrh+e2H116hzbvNv33Tw=;
+ b=yWrxlyGz0BNXwYSVurI5JLteUWMHkESnvZBHJCP990ixaMl2op2W3/UKVRHBDp7OxTolZ9J2wcieFhEZmpwgBdt2tQIGKqoi2QVYM+vuhQYtX+toOjahvr/S5RRT6DZkoU7cQtAwZN5v4JowcK8dDjQOzzfvnc/DV8Baqs/PM+U=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by BYAPR10MB3445.namprd10.prod.outlook.com
+ (2603:10b6:a03:81::11) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.14; Mon, 13 Jun
+ 2022 11:13:42 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5020:9b82:5917:40b]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5020:9b82:5917:40b%6]) with mapi id 15.20.5332.020; Mon, 13 Jun 2022
+ 11:13:42 +0000
+Date: Mon, 13 Jun 2022 14:13:28 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: johnson.wang@mediatek.com
+Cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [bug report] PM / devfreq: mediatek: Introduce MediaTek CCI devfreq
+ driver
+Message-ID: <Yqcb2LyvqF/qRUsU@kili>
+Content-Disposition: inline
+X-ClientProxiedBy: ZR0P278CA0042.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:1d::11) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f811e30c-518f-4e1d-d357-08da4d2dc64e
+X-MS-TrafficTypeDiagnostic: BYAPR10MB3445:EE_
+X-Microsoft-Antispam-PRVS: 	<BYAPR10MB34456153F2B7F518D3BBC11C8EAB9@BYAPR10MB3445.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	O+Z3S6BCZVsV3dOlq/+hwPq9av0XgwlDsqU2xXmy7VgVxC5awRlJlW9QqwDIpmbse5/yM0VT/fuHzPGLMt4EL++/ACmMipeBEoEQ9rR3uN4zxXMSz7CNn9AuKaGvCO+aT32BlpJ2YY/cupPk+yGgH/WO2ugXQoLIACRDoar5D+6qOc7HG/cl6Lk1IErmAbAolRMUCYpXprIZXCtW1XJRicQN4vdiu2buSbtA0NrWzF7kAQKYg4y3x43qdf45lMupZuSjKG7zHjqaSgJgrYE2VMbGzl/P5xo19sOxbclSZ1B+z81n+nyEyaMv0NdxFFwAJ//yG/D0wfO3RcwLb8bwqS2tLtphisRBWljdLXfgQeUXCNruZ5Q8t83EU4LzpGrFSDGKbQJAJpxfV7q0x0RLPU1i9JFa1xSQx2w3JGS0ZP8nEFeRXirU08PiI8+c43orgPgIr44BgIQ1B6mhceGpc9eC6D0Uh1rdXWHg7MPxKi3rN6WLYSWzkfiQmOcbAn2WBJib1ua6ljUpXXzGzNKgMTLeJsG74sS63uZpE/DzdejOA1aiEaWSuwBE4WMK8zdbt5K0rb5ypLzYY3ZRCajOIkPIQ+i+9bqDPkEl0/IO35sRFZOpxfqmpO9gN7mE1WJthbTGPKGuGwBD9HJYdH8klpqvNnJ4+PG57vgKQqR3+a/alh/O48YA88aSapgV5vEsdqh8Zw5e01XXECXbP6Uoig==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(366004)(8676002)(66946007)(4326008)(66556008)(66476007)(8936002)(5660300002)(6512007)(6486002)(4744005)(6916009)(86362001)(508600001)(83380400001)(6506007)(33716001)(316002)(9686003)(6666004)(186003)(44832011)(2906002)(38100700002)(52116002)(26005)(38350700002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?JO2fIGql2LpVIPwz67/6bvoqkV27tWTTpcgBYBzvaVpttoNDIz9IQ/7t9U2n?=
+ =?us-ascii?Q?OeuWeYUKLdJMNNcTnyfJp21Gjuwf04piIm/MTJk9orhe9xJhTTCwgqjn6Mzq?=
+ =?us-ascii?Q?Yqh09dNBycMEEhYIqkrHu94u057fKx3wwxHKX+q4EpWiBU8tiwlljU/dauuk?=
+ =?us-ascii?Q?L+hrsotJ0IRdkjfKUi8NUT3Ke5QRlQwdXO2rR0L1JuN9S2alg5jOkhXTBC/y?=
+ =?us-ascii?Q?zVCWRQE+SFKBry/Z+YGCofi/XJ2uoEBkUwtIN02+OUxdSZSSeifphSAqLEgc?=
+ =?us-ascii?Q?7kO/xDM8+zSR38zxNyn/4NPr7vLl8OTxc5qlnSLIRRPmMDwHHjr0siSqWuGZ?=
+ =?us-ascii?Q?lghZDVjD72qKOS/h01nOJypwPJV0oZteaUJA4JLrJ4Y9r6a2yzKHESPEHXxy?=
+ =?us-ascii?Q?yjXvi47cxFk4cmKdUNVCmUX+fyQMawY/dPZPQ1bBkBnAc9065X0TTGQkW7GK?=
+ =?us-ascii?Q?41knCAmDaY3oDGT/Kb3nt7HDgPfSqvxPkiCUNnsjCH9FkAaJYGhoNZu8O9wY?=
+ =?us-ascii?Q?iPjQ8N9RK4+sAWdWfPQQNbh8FcelDQ65brOOFzxr1Il4IaEjJgpntVYDP1uI?=
+ =?us-ascii?Q?7W2Aqr8KvnssuNPlb1s42/2zYaq0wpLoqx4KJGunBuCP4HasLeADdjs06fjg?=
+ =?us-ascii?Q?9nYVCA8e6MH0ib2526+7vfbqFbmg5H/7hcDlawlGs0aGvVetmNreAQHm/NlI?=
+ =?us-ascii?Q?XfVWo5QqtkVbj5FzSWul3fCW6q1tkICBg01eN+zkRmpT/Wpq4hRYa7JgvO5H?=
+ =?us-ascii?Q?y7cv0w43bR0vSVeRMf6EAxZCfwejo/t/iS6DVOyRB7gj6MkLLq69enChm/wo?=
+ =?us-ascii?Q?gjle4JIpXQ6NBFGubYERp/g9vIapSKCCLpERBwBq574rDJejTwzzckQmOAlJ?=
+ =?us-ascii?Q?LND+owB+17TPlL2oH5P6/WMt/ctfpRfONSsLxLsoU/peJITlY/0YUkKnCQNT?=
+ =?us-ascii?Q?HezjRtE2F3fobVzIkanmK1n0RLWdoS0xlOHegEmaqIlRlpj5Vo8w1YZ6gHjg?=
+ =?us-ascii?Q?PlRXYswoo0atMBhxRGTPlgXQKQ6u+BN4yBzFRszLbF9vRTM6TMPVkZdrx3AO?=
+ =?us-ascii?Q?qlNNIzMkfTSrOIP42u6rjkw7tLWTa3Wt3LpwuwtPhX86dAUYXFrlbuLd01JD?=
+ =?us-ascii?Q?FoS5jScjw3bUrK7wTqDPWvjLLFUHLM1VedlqrFT/zL8ypMB5BlSafUHF/F71?=
+ =?us-ascii?Q?r4yP0XAVwbidFizip5bGmS1VslM+UvA1Xe8zre0EwzrGH24UClM/CK8ZQ59V?=
+ =?us-ascii?Q?EJ+y4O5wDHugkMkydTZqa3XW8gcwfc+6PcJclJEV2BVSo3ErhVUc5C2VAbJ6?=
+ =?us-ascii?Q?FytnTDffkKB9CtOeOrcB1wNZR5+EqAx2VvT3TCYuCjfkDCaRCxsF/uUZC+/z?=
+ =?us-ascii?Q?JnGB9EyMeZSii3RBnlA2LedyrtuPe9nqRmzi2syRI8Xpbzk/rKyUwOr8Uop1?=
+ =?us-ascii?Q?3lqPREgg5bfxnzPCx0cejO6WYys4o0gSLqu6VQsPUzCFUMQx3j535l1MO2Ks?=
+ =?us-ascii?Q?gBvB7VayWNvCvGwAjsjiul5bLN8YQKvvrv7dKlLHXNA27HSBldSScU6fv7w0?=
+ =?us-ascii?Q?fMLTgLhel/6mJWVwHMzDKp4WgsFKEHBx+77cqakVBs6r8v+FHxtnlNT4Flod?=
+ =?us-ascii?Q?66VL6aW0W4rM6blwftKc/9m0+8sat/Tx8kH8hmoTlEUUcNpeTONuHKXJ7IWg?=
+ =?us-ascii?Q?7KnJ85iumGxwJ2Uc0e2Fv79TJunQmBgAFiSPAMN5e4mH2P0B3+8aad1nmRfg?=
+ =?us-ascii?Q?cNJN4rGd0dQaOe8zaMH75HJK4QpZ8RY=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f811e30c-518f-4e1d-d357-08da4d2dc64e
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2022 11:13:42.7736
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DfFcndjMIWd/gnYwRs0bkr7KkJvq/tD7yZJ1i7sZX9/KwBkJDjqACCNT51/xw1etRzrehYALCaitCmlrBqY9YlRucTdi8Smtmbnwz9XR3sc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR10MB3445
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.517,18.0.874
+ definitions=2022-06-13_03:2022-06-13,2022-06-13 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 mlxlogscore=640
+ phishscore=0 adultscore=0 bulkscore=0 mlxscore=0 suspectscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2204290000 definitions=main-2206130051
+X-Proofpoint-GUID: NDOXTmFwOdrr1ZcPC8hSSzdF5E5DqiQ1
+X-Proofpoint-ORIG-GUID: NDOXTmFwOdrr1ZcPC8hSSzdF5E5DqiQ1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_041344_526073_D04EC817 
-X-CRM114-Status: GOOD (  20.69  )
+X-CRM114-CacheID: sfid-20220613_041355_129983_FF94A3B7 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,1050 +161,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+Hello Johnson Wang,
 
-Add Mediatek MT6370 current sink type LED Indicator driver.
+This is a semi-automatic email about new static checker warnings.
 
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
----
- drivers/leds/Kconfig       |  11 +
- drivers/leds/Makefile      |   1 +
- drivers/leds/leds-mt6370.c | 989 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 1001 insertions(+)
- create mode 100644 drivers/leds/leds-mt6370.c
+The patch 9f3ec0f65421: "PM / devfreq: mediatek: Introduce MediaTek 
+CCI devfreq driver" from Jun 7, 2022, leads to the following Smatch 
+complaint:
 
-diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
-index 6090e647daee..61e6ec416cb0 100644
---- a/drivers/leds/Kconfig
-+++ b/drivers/leds/Kconfig
-@@ -244,6 +244,17 @@ config LEDS_MT6323
- 	  This option enables support for on-chip LED drivers found on
- 	  Mediatek MT6323 PMIC.
- 
-+config LEDS_MT6370_RGB
-+	tristate "LED Support for Mediatek MT6370 PMIC"
-+	depends on LEDS_CLASS
-+	depends on MFD_MT6370
-+	select LINEAR_RANGE
-+	help
-+	  Say Y here to enable support for MT6370_RGB LED device.
-+	  In MT6370, there're four channel current-sink LED driver that support
-+	  hardware pattern for reg, pwm, breath mode. Isink4 channel
-+	  can also be used as a CHG_VIN power good indicator.
-+
- config LEDS_S3C24XX
- 	tristate "LED Support for Samsung S3C24XX GPIO LEDs"
- 	depends on LEDS_CLASS
-diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
-index e58ecb36360f..b641fd83f49a 100644
---- a/drivers/leds/Makefile
-+++ b/drivers/leds/Makefile
-@@ -62,6 +62,7 @@ obj-$(CONFIG_LEDS_MIKROTIK_RB532)	+= leds-rb532.o
- obj-$(CONFIG_LEDS_MLXCPLD)		+= leds-mlxcpld.o
- obj-$(CONFIG_LEDS_MLXREG)		+= leds-mlxreg.o
- obj-$(CONFIG_LEDS_MT6323)		+= leds-mt6323.o
-+obj-$(CONFIG_LEDS_MT6370_RGB)		+= leds-mt6370.o
- obj-$(CONFIG_LEDS_NET48XX)		+= leds-net48xx.o
- obj-$(CONFIG_LEDS_NETXBIG)		+= leds-netxbig.o
- obj-$(CONFIG_LEDS_NIC78BX)		+= leds-nic78bx.o
-diff --git a/drivers/leds/leds-mt6370.c b/drivers/leds/leds-mt6370.c
-new file mode 100644
-index 000000000000..2bed5e2e00b1
---- /dev/null
-+++ b/drivers/leds/leds-mt6370.c
-@@ -0,0 +1,989 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+
-+#include <linux/bitops.h>
-+#include <linux/kernel.h>
-+#include <linux/led-class-multicolor.h>
-+#include <linux/linear_range.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/regmap.h>
-+
-+enum {
-+	MT6370_LED_ISNK1 = 0,
-+	MT6370_LED_ISNK2,
-+	MT6370_LED_ISNK3,
-+	MT6370_LED_ISNK4,
-+	MT6370_MAX_LEDS
-+};
-+
-+enum mt6370_led_mode {
-+	MT6370_LED_PWM_MODE = 0,
-+	MT6370_LED_BREATH_MODE,
-+	MT6370_LED_REG_MODE,
-+	MT6370_LED_MAX_MODE
-+};
-+
-+enum mt6370_led_field {
-+	F_RGB_EN = 0,
-+	F_CHGIND_EN,
-+	F_LED1_CURR,
-+	F_LED2_CURR,
-+	F_LED3_CURR,
-+	F_LED4_CURR,
-+	F_LED1_MODE,
-+	F_LED2_MODE,
-+	F_LED3_MODE,
-+	F_LED4_MODE,
-+	F_LED1_DUTY,
-+	F_LED2_DUTY,
-+	F_LED3_DUTY,
-+	F_LED4_DUTY,
-+	F_LED1_FREQ,
-+	F_LED2_FREQ,
-+	F_LED3_FREQ,
-+	F_LED4_FREQ,
-+	F_MAX_FIELDS
-+};
-+
-+enum mt6370_led_ranges {
-+	R_LED123_CURR = 0,
-+	R_LED4_CURR,
-+	R_LED_TRFON,
-+	R_LED_TOFF,
-+	R_MAX_RANGES,
-+};
-+
-+enum mt6370_pattern {
-+	P_LED_TR1 = 0,
-+	P_LED_TR2,
-+	P_LED_TF1,
-+	P_LED_TF2,
-+	P_LED_TON,
-+	P_LED_TOFF,
-+	P_MAX_PATTERNS
-+};
-+
-+#define MT6370_REG_DEV_INFO			0x100
-+#define MT6370_REG_RGB1_DIM			0x182
-+#define MT6370_REG_RGB2_DIM			0x183
-+#define MT6370_REG_RGB3_DIM			0x184
-+#define MT6370_REG_RGB_EN			0x185
-+#define MT6370_REG_RGB1_ISNK			0x186
-+#define MT6370_REG_RGB2_ISNK			0x187
-+#define MT6370_REG_RGB3_ISNK			0x188
-+#define MT6370_REG_RGB1_TR			0x189
-+#define MT6370_REG_RGB_CHRIND_DIM		0x192
-+#define MT6370_REG_RGB_CHRIND_CTRL		0x193
-+#define MT6370_REG_RGB_CHRIND_TR		0x194
-+
-+#define MT6372_REG_RGB_EN			0x182
-+#define MT6372_REG_RGB1_ISNK			0x183
-+#define MT6372_REG_RGB2_ISNK			0x184
-+#define MT6372_REG_RGB3_ISNK			0x185
-+#define MT6372_REG_RGB4_ISNK			0x186
-+#define MT6372_REG_RGB1_DIM			0x187
-+#define MT6372_REG_RGB2_DIM			0x188
-+#define MT6372_REG_RGB3_DIM			0x189
-+#define MT6372_REG_RGB4_DIM			0x18A
-+#define MT6372_REG_RGB12_FREQ			0x18B
-+#define MT6372_REG_RGB34_FREQ			0x18C
-+#define MT6372_REG_RGB1_TR			0x18D
-+
-+#define MT6370_VENID_MASK			GENMASK(7, 4)
-+#define MT6370_CHEN_BIT(id)			BIT(MT6370_LED_ISNK4 - id)
-+#define MT6370_VIRTUAL_MULTICOLOR		5
-+#define MC_CHANNEL_NUM				3
-+#define MT6370_PWM_DUTY				31
-+#define MT6372_PMW_DUTY				255
-+
-+#define STATE_OFF				0
-+#define STATE_KEEP				1
-+#define STATE_ON				2
-+
-+struct mt6370_led {
-+	union {
-+		struct led_classdev isink;
-+		struct led_classdev_mc mc;
-+	};
-+	struct mt6370_priv *priv;
-+	u32 default_state;
-+	u32 index;
-+};
-+
-+struct mt6370_priv {
-+	/* Per LED access lock */
-+	struct mutex lock;
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct regmap_field *fields[F_MAX_FIELDS];
-+	const struct reg_field *reg_fields;
-+	const struct linear_range *ranges;
-+	struct reg_cfg *reg_cfgs;
-+	unsigned int leds_count;
-+	unsigned int leds_active;
-+	bool is_mt6372;
-+	struct mt6370_led leds[];
-+};
-+
-+static const struct reg_field common_reg_fields[F_MAX_FIELDS] = {
-+	[F_RGB_EN]	= REG_FIELD(MT6370_REG_RGB_EN, 4, 7),
-+	[F_CHGIND_EN]	= REG_FIELD(MT6370_REG_RGB_CHRIND_DIM, 7, 7),
-+	[F_LED1_CURR]	= REG_FIELD(MT6370_REG_RGB1_ISNK, 0, 2),
-+	[F_LED2_CURR]	= REG_FIELD(MT6370_REG_RGB2_ISNK, 0, 2),
-+	[F_LED3_CURR]	= REG_FIELD(MT6370_REG_RGB3_ISNK, 0, 2),
-+	[F_LED4_CURR]	= REG_FIELD(MT6370_REG_RGB_CHRIND_CTRL, 0, 1),
-+	[F_LED1_MODE]	= REG_FIELD(MT6370_REG_RGB1_DIM, 5, 6),
-+	[F_LED2_MODE]	= REG_FIELD(MT6370_REG_RGB2_DIM, 5, 6),
-+	[F_LED3_MODE]	= REG_FIELD(MT6370_REG_RGB3_DIM, 5, 6),
-+	[F_LED4_MODE]	= REG_FIELD(MT6370_REG_RGB_CHRIND_DIM, 5, 6),
-+	[F_LED1_DUTY]	= REG_FIELD(MT6370_REG_RGB1_DIM, 0, 4),
-+	[F_LED2_DUTY]	= REG_FIELD(MT6370_REG_RGB2_DIM, 0, 4),
-+	[F_LED3_DUTY]	= REG_FIELD(MT6370_REG_RGB3_DIM, 0, 4),
-+	[F_LED4_DUTY]	= REG_FIELD(MT6370_REG_RGB_CHRIND_DIM, 0, 4),
-+	[F_LED1_FREQ]	= REG_FIELD(MT6370_REG_RGB1_ISNK, 3, 5),
-+	[F_LED2_FREQ]	= REG_FIELD(MT6370_REG_RGB2_ISNK, 3, 5),
-+	[F_LED3_FREQ]	= REG_FIELD(MT6370_REG_RGB3_ISNK, 3, 5),
-+	[F_LED4_FREQ]	= REG_FIELD(MT6370_REG_RGB_CHRIND_CTRL, 2, 4)
-+};
-+
-+static const struct reg_field mt6372_reg_fields[F_MAX_FIELDS] = {
-+	[F_RGB_EN]	= REG_FIELD(MT6372_REG_RGB_EN, 4, 7),
-+	[F_CHGIND_EN]	= REG_FIELD(MT6372_REG_RGB_EN, 3, 3),
-+	[F_LED1_CURR]	= REG_FIELD(MT6372_REG_RGB1_ISNK, 0, 3),
-+	[F_LED2_CURR]	= REG_FIELD(MT6372_REG_RGB2_ISNK, 0, 3),
-+	[F_LED3_CURR]	= REG_FIELD(MT6372_REG_RGB3_ISNK, 0, 3),
-+	[F_LED4_CURR]	= REG_FIELD(MT6372_REG_RGB4_ISNK, 0, 3),
-+	[F_LED1_MODE]	= REG_FIELD(MT6372_REG_RGB1_ISNK, 6, 7),
-+	[F_LED2_MODE]	= REG_FIELD(MT6372_REG_RGB2_ISNK, 6, 7),
-+	[F_LED3_MODE]	= REG_FIELD(MT6372_REG_RGB3_ISNK, 6, 7),
-+	[F_LED4_MODE]	= REG_FIELD(MT6372_REG_RGB4_ISNK, 6, 7),
-+	[F_LED1_DUTY]	= REG_FIELD(MT6372_REG_RGB1_DIM, 0, 7),
-+	[F_LED2_DUTY]	= REG_FIELD(MT6372_REG_RGB2_DIM, 0, 7),
-+	[F_LED3_DUTY]	= REG_FIELD(MT6372_REG_RGB3_DIM, 0, 7),
-+	[F_LED4_DUTY]	= REG_FIELD(MT6372_REG_RGB4_DIM, 0, 7),
-+	[F_LED1_FREQ]	= REG_FIELD(MT6372_REG_RGB12_FREQ, 5, 7),
-+	[F_LED2_FREQ]	= REG_FIELD(MT6372_REG_RGB12_FREQ, 2, 4),
-+	[F_LED3_FREQ]	= REG_FIELD(MT6372_REG_RGB34_FREQ, 5, 7),
-+	[F_LED4_FREQ]	= REG_FIELD(MT6372_REG_RGB34_FREQ, 2, 4)
-+};
-+
-+/* Current unit: microamp, time unit: millisecond */
-+static const struct linear_range common_led_ranges[R_MAX_RANGES] = {
-+	[R_LED123_CURR]	= { 4000, 1, 6, 4000 },
-+	[R_LED4_CURR]	= { 2000, 1, 3, 2000 },
-+	[R_LED_TRFON]	= { 125, 0, 15, 200 },
-+	[R_LED_TOFF]	= { 250, 0, 15, 400 }
-+};
-+
-+static const struct linear_range mt6372_led_ranges[R_MAX_RANGES] = {
-+	[R_LED123_CURR]	= { 2000, 1, 14, 2000 },
-+	[R_LED4_CURR]	= { 2000, 1, 14, 2000 },
-+	[R_LED_TRFON]	= { 125, 0, 15, 250 },
-+	[R_LED_TOFF]	= { 250, 0, 15, 500 }
-+};
-+
-+static enum mt6370_led_field mt6370_get_led_current_field(unsigned int led_no)
-+{
-+	switch (led_no) {
-+	case MT6370_LED_ISNK1:
-+		return F_LED1_CURR;
-+	case MT6370_LED_ISNK2:
-+		return F_LED2_CURR;
-+	case MT6370_LED_ISNK3:
-+		return F_LED3_CURR;
-+	default:
-+		return F_LED4_CURR;
-+	}
-+}
-+
-+static int mt6370_set_led_brightness(struct mt6370_priv *priv,
-+				     unsigned int led_no, unsigned int level)
-+{
-+	enum mt6370_led_field sel_field;
-+
-+	sel_field = mt6370_get_led_current_field(led_no);
-+
-+	return regmap_field_write(priv->fields[sel_field], level);
-+}
-+
-+static int mt6370_get_led_brightness(struct mt6370_priv *priv,
-+				     unsigned int led_no, unsigned int *level)
-+{
-+	enum mt6370_led_field sel_field;
-+
-+	sel_field = mt6370_get_led_current_field(led_no);
-+
-+	return regmap_field_read(priv->fields[sel_field], level);
-+}
-+
-+static int mt6370_set_led_duty(struct mt6370_priv *priv, unsigned int led_no,
-+			       unsigned int ton, unsigned int toff)
-+{
-+	enum mt6370_led_field sel_field;
-+	unsigned int divisor, ratio;
-+
-+	divisor = priv->is_mt6372 ? MT6372_PMW_DUTY : MT6370_PWM_DUTY;
-+	ratio = ton * divisor / (ton + toff);
-+
-+	switch (led_no) {
-+	case MT6370_LED_ISNK1:
-+		sel_field = F_LED1_DUTY;
-+		break;
-+	case MT6370_LED_ISNK2:
-+		sel_field = F_LED2_DUTY;
-+		break;
-+	case MT6370_LED_ISNK3:
-+		sel_field = F_LED3_DUTY;
-+		break;
-+	default:
-+		sel_field = F_LED4_DUTY;
-+	}
-+
-+	return regmap_field_write(priv->fields[sel_field], ratio);
-+}
-+
-+static const unsigned int common_tfreqs[] = {
-+	10000, 5000, 2000, 1000, 500, 200, 5, 1,
-+};
-+
-+static const unsigned int mt6372_tfreqs[] = {
-+	8000, 4000, 2000, 1000, 500, 250, 8, 4,
-+};
-+
-+static int mt6370_set_led_freq(struct mt6370_priv *priv, unsigned int led_no,
-+			       unsigned int ton, unsigned int toff)
-+{
-+	enum mt6370_led_field sel_field;
-+	const unsigned int *tfreq;
-+	unsigned int tfreq_len, tsum;
-+	int i;
-+
-+	if (priv->is_mt6372) {
-+		tfreq = mt6372_tfreqs;
-+		tfreq_len = ARRAY_SIZE(mt6372_tfreqs);
-+	} else {
-+		tfreq = common_tfreqs;
-+		tfreq_len = ARRAY_SIZE(common_tfreqs);
-+	}
-+
-+	tsum = ton + toff;
-+
-+	if (tsum > tfreq[0] || tsum < tfreq[tfreq_len - 1])
-+		return -EOPNOTSUPP;
-+
-+	for (i = 0; i < tfreq_len; i++) {
-+		if (tsum >= tfreq[i])
-+			break;
-+	}
-+
-+	switch (led_no) {
-+	case MT6370_LED_ISNK1:
-+		sel_field = F_LED1_FREQ;
-+		break;
-+	case MT6370_LED_ISNK2:
-+		sel_field = F_LED2_FREQ;
-+		break;
-+	case MT6370_LED_ISNK3:
-+		sel_field = F_LED3_FREQ;
-+		break;
-+	default:
-+		sel_field = F_LED4_FREQ;
-+	}
-+
-+	return regmap_field_write(priv->fields[sel_field], i);
-+}
-+
-+static void mt6370_get_breath_reg_base(struct mt6370_priv *priv,
-+				       unsigned int led_no, unsigned int *base)
-+{
-+	if (priv->is_mt6372) {
-+		*base = MT6372_REG_RGB1_TR + led_no * 3;
-+		return;
-+	}
-+
-+	switch (led_no) {
-+	case MT6370_LED_ISNK1:
-+	case MT6370_LED_ISNK2:
-+	case MT6370_LED_ISNK3:
-+		*base = MT6370_REG_RGB1_TR + led_no * 3;
-+		break;
-+	default:
-+		*base = MT6370_REG_RGB_CHRIND_TR;
-+	}
-+}
-+
-+static int mt6370_gen_breath_pattern(struct mt6370_priv *priv,
-+				     struct led_pattern *pattern, u32 len,
-+				     u8 *pattern_val, u32 val_len)
-+{
-+	enum mt6370_led_ranges sel_range;
-+	struct led_pattern *curr;
-+	unsigned int sel;
-+	u8 val[P_MAX_PATTERNS / 2] = {0};
-+	int i;
-+
-+	if (len < P_MAX_PATTERNS && val_len < P_MAX_PATTERNS / 2)
-+		return -EINVAL;
-+
-+	/*
-+	 * Pattern list
-+	 * tr1:	byte 0, b'[7: 4]
-+	 * tr2:	byte 0, b'[3: 0]
-+	 * tf1:	byte 1, b'[7: 4]
-+	 * tf2:	byte 1, b'[3: 0]
-+	 * ton:	byte 2, b'[7: 4]
-+	 * toff: byte 2, b'[3: 0]
-+	 */
-+	for (i = 0; i < P_MAX_PATTERNS; i++) {
-+		curr = pattern + i;
-+
-+		sel_range = i == P_LED_TOFF ? R_LED_TOFF : R_LED_TRFON;
-+
-+		linear_range_get_selector_within(priv->ranges + sel_range,
-+						 curr->delta_t, &sel);
-+
-+		val[i / 2] |= sel << (4 * ((i + 1) % 2));
-+	}
-+
-+	memcpy(pattern_val, val, 3);
-+	return 0;
-+}
-+
-+static int mt6370_set_led_mode(struct mt6370_priv *priv, unsigned int led_no,
-+			       enum mt6370_led_mode mode)
-+{
-+	enum mt6370_led_field sel_field;
-+
-+	switch (led_no) {
-+	case MT6370_LED_ISNK1:
-+		sel_field = F_LED1_MODE;
-+		break;
-+	case MT6370_LED_ISNK2:
-+		sel_field = F_LED2_MODE;
-+		break;
-+	case MT6370_LED_ISNK3:
-+		sel_field = F_LED3_MODE;
-+		break;
-+	default:
-+		sel_field = F_LED4_MODE;
-+	}
-+
-+	return regmap_field_write(priv->fields[sel_field], mode);
-+}
-+
-+static int mt6370_mc_brightness_set(struct led_classdev *lcdev,
-+				    enum led_brightness level)
-+{
-+	struct led_classdev_mc *mccdev = lcdev_to_mccdev(lcdev);
-+	struct mt6370_led *led = container_of(mccdev, struct mt6370_led, mc);
-+	struct mt6370_priv *priv = led->priv;
-+	struct mc_subled *subled;
-+	unsigned int enable, disable;
-+	int i, ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	led_mc_calc_color_components(mccdev, level);
-+
-+	ret = regmap_field_read(priv->fields[F_RGB_EN], &enable);
-+	if (ret)
-+		goto out;
-+
-+	disable = enable;
-+
-+	for (i = 0; i < mccdev->num_colors; i++) {
-+		u32 brightness;
-+
-+		subled = mccdev->subled_info + i;
-+		brightness = min(subled->brightness, lcdev->max_brightness);
-+		disable &= ~MT6370_CHEN_BIT(subled->channel);
-+
-+		if (level == LED_OFF) {
-+			enable &= ~MT6370_CHEN_BIT(subled->channel);
-+
-+			ret = mt6370_set_led_mode(priv, subled->channel,
-+						  MT6370_LED_REG_MODE);
-+			if (ret)
-+				goto out;
-+
-+			continue;
-+		}
-+
-+		if (brightness == LED_OFF) {
-+			enable &= ~MT6370_CHEN_BIT(subled->channel);
-+			continue;
-+		}
-+
-+		enable |= MT6370_CHEN_BIT(subled->channel);
-+
-+		ret = mt6370_set_led_brightness(priv, subled->channel,
-+						brightness);
-+		if (ret)
-+			goto out;
-+	}
-+
-+	ret = regmap_field_write(priv->fields[F_RGB_EN], disable);
-+	if (ret)
-+		goto out;
-+
-+	ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+
-+	return ret;
-+}
-+
-+static int mt6370_mc_blink_set(struct led_classdev *lcdev,
-+			       unsigned long *delay_on,
-+			       unsigned long *delay_off)
-+{
-+	struct led_classdev_mc *mccdev = lcdev_to_mccdev(lcdev);
-+	struct mt6370_led *led = container_of(mccdev, struct mt6370_led, mc);
-+	struct mt6370_priv *priv = led->priv;
-+	struct mc_subled *subled;
-+	unsigned int enable, disable;
-+	int i, ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	if (!*delay_on && !*delay_off)
-+		*delay_on = *delay_off = 500;
-+
-+	ret = regmap_field_read(priv->fields[F_RGB_EN], &enable);
-+	if (ret)
-+		goto out;
-+
-+	disable = enable;
-+
-+	for (i = 0; i < mccdev->num_colors; i++) {
-+		subled = mccdev->subled_info + i;
-+
-+		disable &= ~MT6370_CHEN_BIT(subled->channel);
-+
-+		ret = mt6370_set_led_duty(priv, subled->channel, *delay_on,
-+					  *delay_off);
-+		if (ret)
-+			goto out;
-+
-+		ret = mt6370_set_led_freq(priv, subled->channel, *delay_on,
-+					  *delay_off);
-+		if (ret)
-+			goto out;
-+
-+		ret = mt6370_set_led_mode(priv, subled->channel,
-+					  MT6370_LED_PWM_MODE);
-+		if (ret)
-+			goto out;
-+	}
-+
-+	/* Toggle to make pattern timing the same */
-+	ret = regmap_field_write(priv->fields[F_RGB_EN], disable);
-+	if (ret)
-+		goto out;
-+
-+	ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+
-+	return ret;
-+}
-+
-+static int mt6370_mc_pattern_set(struct led_classdev *lcdev,
-+			struct led_pattern *pattern, u32 len, int repeat)
-+{
-+	struct led_classdev_mc *mccdev = lcdev_to_mccdev(lcdev);
-+	struct mt6370_led *led = container_of(mccdev, struct mt6370_led, mc);
-+	struct mt6370_priv *priv = led->priv;
-+	struct mc_subled *subled;
-+	unsigned int reg_base, enable, disable;
-+	u8 params[P_MAX_PATTERNS / 2];
-+	int i, ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	ret = mt6370_gen_breath_pattern(priv, pattern, len, params,
-+					sizeof(params));
-+	if (ret)
-+		goto out;
-+
-+	ret = regmap_field_read(priv->fields[F_RGB_EN], &enable);
-+	if (ret)
-+		goto out;
-+
-+	disable = enable;
-+
-+	for (i = 0; i < mccdev->num_colors; i++) {
-+		subled = mccdev->subled_info + i;
-+
-+		mt6370_get_breath_reg_base(priv, subled->channel, &reg_base);
-+		disable &= ~MT6370_CHEN_BIT(subled->channel);
-+
-+		ret = regmap_raw_write(priv->regmap, reg_base, params,
-+				       sizeof(params));
-+		if (ret)
-+			goto out;
-+
-+		ret = mt6370_set_led_mode(priv, subled->channel,
-+					  MT6370_LED_BREATH_MODE);
-+		if (ret)
-+			goto out;
-+	}
-+
-+	/* Toggle to make pattern timing be the same */
-+	ret = regmap_field_write(priv->fields[F_RGB_EN], disable);
-+	if (ret)
-+		goto out;
-+
-+	ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+
-+	return ret;
-+}
-+
-+static inline int mt6370_mc_pattern_clear(struct led_classdev *lcdev)
-+{
-+	struct led_classdev_mc *mccdev = lcdev_to_mccdev(lcdev);
-+	struct mt6370_led *led = container_of(mccdev, struct mt6370_led, mc);
-+	struct mt6370_priv *priv = led->priv;
-+	struct mc_subled *subled;
-+	int i, ret = 0;
-+
-+	mutex_lock(&led->priv->lock);
-+
-+	for (i = 0; i < mccdev->num_colors; i++) {
-+		subled = mccdev->subled_info + i;
-+
-+		ret = mt6370_set_led_mode(priv, subled->channel,
-+					  MT6370_LED_REG_MODE);
-+		if (ret)
-+			break;
-+	}
-+
-+	mutex_unlock(&led->priv->lock);
-+
-+	return ret;
-+}
-+
-+static int mt6370_isnk_brightness_set(struct led_classdev *lcdev,
-+				      enum led_brightness level)
-+{
-+	struct mt6370_led *led = container_of(lcdev, struct mt6370_led, isink);
-+	struct mt6370_priv *priv = led->priv;
-+	unsigned int enable;
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	ret = regmap_field_read(priv->fields[F_RGB_EN], &enable);
-+	if (ret)
-+		goto out;
-+
-+	if (level == LED_OFF) {
-+		enable &= ~MT6370_CHEN_BIT(led->index);
-+
-+		ret = mt6370_set_led_mode(priv, led->index,
-+					  MT6370_LED_REG_MODE);
-+		if (ret)
-+			goto out;
-+
-+		ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-+	} else {
-+		enable |= MT6370_CHEN_BIT(led->index);
-+
-+		ret = mt6370_set_led_brightness(priv, led->index, level);
-+		if (ret)
-+			goto out;
-+
-+		ret = regmap_field_write(priv->fields[F_RGB_EN], enable);
-+	}
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+
-+	return ret;
-+}
-+
-+static int mt6370_isnk_blink_set(struct led_classdev *lcdev,
-+				 unsigned long *delay_on,
-+				 unsigned long *delay_off)
-+{
-+	struct mt6370_led *led = container_of(lcdev, struct mt6370_led, isink);
-+	struct mt6370_priv *priv = led->priv;
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	if (!*delay_on && !*delay_off)
-+		*delay_on = *delay_off = 500;
-+
-+	ret = mt6370_set_led_duty(priv, led->index, *delay_on, *delay_off);
-+	if (ret)
-+		goto out;
-+
-+	ret = mt6370_set_led_freq(priv, led->index, *delay_on, *delay_off);
-+	if (ret)
-+		goto out;
-+
-+	ret = mt6370_set_led_mode(priv, led->index, MT6370_LED_PWM_MODE);
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+
-+	return ret;
-+}
-+
-+static int mt6370_isnk_pattern_set(struct led_classdev *lcdev,
-+				   struct led_pattern *pattern, u32 len,
-+				   int repeat)
-+{
-+	struct mt6370_led *led = container_of(lcdev, struct mt6370_led, isink);
-+	struct mt6370_priv *priv = led->priv;
-+	unsigned int reg_base;
-+	u8 params[P_MAX_PATTERNS / 2];
-+	int ret;
-+
-+	mutex_lock(&priv->lock);
-+
-+	ret = mt6370_gen_breath_pattern(priv, pattern, len, params,
-+					sizeof(params));
-+	if (ret)
-+		goto out;
-+
-+	mt6370_get_breath_reg_base(priv, led->index, &reg_base);
-+
-+	ret = regmap_raw_write(priv->regmap, reg_base, params, sizeof(params));
-+	if (ret)
-+		goto out;
-+
-+	ret = mt6370_set_led_mode(priv, led->index, MT6370_LED_BREATH_MODE);
-+
-+out:
-+	mutex_unlock(&priv->lock);
-+
-+	return ret;
-+}
-+
-+static inline int mt6370_isnk_pattern_clear(struct led_classdev *lcdev)
-+{
-+	struct mt6370_led *led = container_of(lcdev, struct mt6370_led, isink);
-+	struct mt6370_priv *priv = led->priv;
-+	int ret;
-+
-+	mutex_lock(&led->priv->lock);
-+	ret = mt6370_set_led_mode(priv, led->index, MT6370_LED_REG_MODE);
-+	mutex_unlock(&led->priv->lock);
-+
-+	return ret;
-+}
-+
-+static int mt6370_init_led_properties(struct mt6370_led *led,
-+				      struct led_init_data *init_data)
-+{
-+	struct mt6370_priv *priv = led->priv;
-+	struct led_classdev *lcdev;
-+	struct fwnode_handle *child;
-+	enum mt6370_led_ranges sel_range;
-+	u32 max_uA, max_level;
-+	const char * const states[] = { "off", "keep", "on" };
-+	const char *stat_str;
-+	int ret;
-+
-+	if (led->index == MT6370_VIRTUAL_MULTICOLOR) {
-+		struct mc_subled *sub_led;
-+		u32 num_color = 0;
-+
-+		sub_led = devm_kzalloc(priv->dev,
-+				       sizeof(*sub_led) * MC_CHANNEL_NUM,
-+				       GFP_KERNEL);
-+		if (!sub_led)
-+			return -ENOMEM;
-+
-+		fwnode_for_each_child_node(init_data->fwnode, child) {
-+			u32 reg, color;
-+
-+			ret = fwnode_property_read_u32(child, "reg", &reg);
-+			if (ret || reg > MT6370_LED_ISNK3 ||
-+			    priv->leds_active & BIT(reg))
-+				return -EINVAL;
-+
-+			ret = fwnode_property_read_u32(child, "color", &color);
-+			if (ret) {
-+				dev_err(priv->dev,
-+					"led %d, no color specified\n",
-+					led->index);
-+				return ret;
-+			}
-+
-+			priv->leds_active |= BIT(reg);
-+			sub_led[num_color].color_index = color;
-+			sub_led[num_color].channel = reg;
-+			num_color++;
-+		}
-+
-+		if (num_color < 2) {
-+			dev_err(priv->dev,
-+				"Multicolor must include 2 or more led channel\n");
-+			return -EINVAL;
-+		}
-+
-+		led->mc.num_colors = num_color;
-+		led->mc.subled_info = sub_led;
-+
-+		lcdev = &led->mc.led_cdev;
-+		lcdev->brightness_set_blocking = mt6370_mc_brightness_set;
-+		lcdev->blink_set = mt6370_mc_blink_set;
-+		lcdev->pattern_set = mt6370_mc_pattern_set;
-+		lcdev->pattern_clear = mt6370_mc_pattern_clear;
-+	} else {
-+		lcdev = &led->isink;
-+		lcdev->brightness_set_blocking = mt6370_isnk_brightness_set;
-+		lcdev->blink_set = mt6370_isnk_blink_set;
-+		lcdev->pattern_set = mt6370_isnk_pattern_set;
-+		lcdev->pattern_clear = mt6370_isnk_pattern_clear;
-+	}
-+
-+	ret = fwnode_property_read_u32(init_data->fwnode, "led-max-microamp",
-+				       &max_uA);
-+	if (ret) {
-+		dev_warn(priv->dev,
-+		   "Not specified led-max-microamp, config to the minimum\n");
-+		max_uA = 0;
-+	}
-+
-+	if (led->index == MT6370_LED_ISNK4)
-+		sel_range = R_LED4_CURR;
-+	else
-+		sel_range = R_LED123_CURR;
-+
-+	linear_range_get_selector_within(priv->ranges + sel_range, max_uA,
-+					 &max_level);
-+
-+	lcdev->max_brightness = max_level;
-+
-+	fwnode_property_read_string(init_data->fwnode, "linux,default-trigger",
-+			&lcdev->default_trigger);
-+
-+	if (!fwnode_property_read_string(init_data->fwnode, "default-state",
-+					 &stat_str)) {
-+		ret = match_string(states, ARRAY_SIZE(states), stat_str);
-+		if (ret < 0)
-+			ret = STATE_OFF;
-+
-+		led->default_state = ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6370_isnk_init_default_state(struct mt6370_led *led)
-+{
-+	struct mt6370_priv *priv = led->priv;
-+	unsigned int enable, level;
-+	int ret;
-+
-+	ret = mt6370_get_led_brightness(priv, led->index, &level);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_field_read(priv->fields[F_RGB_EN], &enable);
-+	if (ret)
-+		return ret;
-+
-+	if (!(enable & MT6370_CHEN_BIT(led->index)))
-+		level = LED_OFF;
-+
-+	switch (led->default_state) {
-+	case STATE_ON:
-+		led->isink.brightness = led->isink.max_brightness;
-+		break;
-+	case STATE_KEEP:
-+		led->isink.brightness = min(level, led->isink.max_brightness);
-+		break;
-+	default:
-+		led->isink.brightness = LED_OFF;
-+	}
-+
-+	return mt6370_isnk_brightness_set(&led->isink, led->isink.brightness);
-+}
-+
-+static int mt6370_led_register(struct device *parent, struct mt6370_led *led,
-+			       struct led_init_data *init_data)
-+{
-+	struct mt6370_priv *priv = led->priv;
-+	int ret;
-+
-+	if (led->index == MT6370_VIRTUAL_MULTICOLOR) {
-+		ret = mt6370_mc_brightness_set(&led->mc.led_cdev, LED_OFF);
-+		if (ret) {
-+			dev_err(parent, "Couldn't set multicolor brightness\n");
-+			return ret;
-+		}
-+
-+		ret = devm_led_classdev_multicolor_register_ext(parent,
-+								&led->mc,
-+								init_data);
-+		if (ret) {
-+			dev_err(parent, "Couldn't register multicolor\n");
-+			return ret;
-+		}
-+	} else {
-+		if (led->index == MT6370_LED_ISNK4) {
-+			ret = regmap_field_write(priv->fields[F_CHGIND_EN], 1);
-+			if (ret) {
-+				dev_err(parent, "Failed to set CHRIND to SW\n");
-+				return ret;
-+			}
-+		}
-+
-+		ret = mt6370_isnk_init_default_state(led);
-+		if (ret) {
-+			dev_err(parent, "Failed to init %d isnk state\n",
-+				led->index);
-+			return ret;
-+		}
-+
-+		ret = devm_led_classdev_register_ext(parent, &led->isink,
-+						     init_data);
-+		if (ret) {
-+			dev_err(parent, "Couldn't register isink %d\n",
-+				led->index);
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6370_check_vendor_info(struct mt6370_priv *priv)
-+{
-+	unsigned int devinfo, vid;
-+	int ret;
-+
-+	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &devinfo);
-+	if (ret)
-+		return ret;
-+
-+	vid = FIELD_GET(MT6370_VENID_MASK, devinfo);
-+	if (vid == 0x9 || vid == 0xb) {
-+		priv->reg_fields = mt6372_reg_fields;
-+		priv->ranges = mt6372_led_ranges;
-+		priv->is_mt6372 = true;
-+	} else {
-+		priv->reg_fields = common_reg_fields;
-+		priv->ranges = common_led_ranges;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6370_leds_probe(struct platform_device *pdev)
-+{
-+	struct mt6370_priv *priv;
-+	struct fwnode_handle *child;
-+	size_t count;
-+	int i = 0, ret;
-+
-+	count = device_get_child_node_count(&pdev->dev);
-+	if (!count || count > MT6370_MAX_LEDS) {
-+		dev_err(&pdev->dev,
-+			"No child node or node count over max led number %zu\n",
-+			count);
-+		return -EINVAL;
-+	}
-+
-+	priv = devm_kzalloc(&pdev->dev,
-+			    struct_size(priv, leds, count), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->leds_count = count;
-+	priv->dev = &pdev->dev;
-+	mutex_init(&priv->lock);
-+
-+	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!priv->regmap)
-+		return dev_err_probe(&pdev->dev, -ENODEV,
-+				     "Failed to get parent regmap\n");
-+
-+	ret = mt6370_check_vendor_info(priv);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to check vendor info (%d)\n", ret);
-+		return ret;
-+	}
-+
-+	ret = devm_regmap_field_bulk_alloc(&pdev->dev, priv->regmap,
-+					   priv->fields, priv->reg_fields,
-+					   F_MAX_FIELDS);
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "Failed to allocate regmap field\n");
-+
-+	device_for_each_child_node(&pdev->dev, child) {
-+		struct mt6370_led *led = priv->leds + i++;
-+		struct led_init_data init_data = { .fwnode = child, };
-+		u32 reg, color;
-+
-+		ret = fwnode_property_read_u32(child, "reg", &reg);
-+		if (ret)
-+			return dev_err_probe(&pdev->dev, ret,
-+					     "Failed to parse reg property\n");
-+
-+		if (reg >= MT6370_MAX_LEDS)
-+			return dev_err_probe(&pdev->dev, -EINVAL,
-+					     "Error reg property number\n");
-+
-+		ret = fwnode_property_read_u32(child, "color", &color);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Failed to parse color property\n");
-+			return ret;
-+		}
-+
-+		if (color == LED_COLOR_ID_RGB || color == LED_COLOR_ID_MULTI)
-+			reg = MT6370_VIRTUAL_MULTICOLOR;
-+
-+		if (priv->leds_active & BIT(reg))
-+			return dev_err_probe(&pdev->dev, -EINVAL,
-+					     "Duplicat reg property\n");
-+
-+		priv->leds_active |= BIT(reg);
-+
-+		led->index = reg;
-+		led->priv = priv;
-+
-+		ret = mt6370_init_led_properties(led, &init_data);
-+		if (ret)
-+			return ret;
-+
-+		ret = mt6370_led_register(&pdev->dev, led, &init_data);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mt6370_rgbled_device_table[] = {
-+	{ .compatible = "mediatek,mt6370-indicator", },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt6370_rgbled_device_table);
-+
-+static struct platform_driver mt6370_rgbled_driver = {
-+	.driver = {
-+		.name = "mt6370-indicator",
-+		.of_match_table = mt6370_rgbled_device_table,
-+	},
-+	.probe = mt6370_leds_probe,
-+};
-+module_platform_driver(mt6370_rgbled_driver);
-+
-+MODULE_AUTHOR("Alice Chen <alice_chen@richtek.com>");
-+MODULE_DESCRIPTION("Mediatek MT6370 RGB Led Driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.25.1
+    drivers/devfreq/mtk-cci-devfreq.c:135 mtk_ccifreq_target()
+    warn: variable dereferenced before check 'drv' (see line 130)
 
+drivers/devfreq/mtk-cci-devfreq.c
+   129		struct mtk_ccifreq_drv *drv = dev_get_drvdata(dev);
+   130		struct clk *cci_pll = clk_get_parent(drv->cci_clk);
+                                                     ^^^^^^^^^^^^
+Dereference
+
+   131		struct dev_pm_opp *opp;
+   132		unsigned long opp_rate;
+   133		int voltage, pre_voltage, inter_voltage, target_voltage, ret;
+   134	
+   135		if (!drv)
+                    ^^^^
+Checked too late.
+
+   136			return -EINVAL;
+   137	
+
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-mediatek mailing list
