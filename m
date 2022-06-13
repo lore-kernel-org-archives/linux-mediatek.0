@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89379CCA47B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 11:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9B28CCA47B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 11:13:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YOG9JwB59Gok4tXhrvqSnL7rSM6QhW4a7xaBMdSeGTw=; b=miSXZqMI7KLIOU
-	Nyl9pz0h+fUyC55wN0thpFmKOlZhTaOhWqwMg5Rqnynh5//CZq/1LnlIl0PVNIlEhZ706nx30Io9H
-	VkEFJXxmIOfN/IbihtuhXumCfFcCbPeKcaePp0slAde46HhhFkMlsF2t6vurndy0KbaP3OkSGW5FQ
-	VT8ldsM8NjgAdtfZVfrJG5+jdxlNMl3F80X5JBJSl1qlIHNBgdhI+LZ0t15Ju1BFq8tMcnztjYMSM
-	T7/m3JjJuxQy3uFNVwiXoocZV+nqN7GN/Iz/SnnlHdkSOcE7GWBYnBwzIEobHkBv8UcRIaqbFju/B
-	tbHcjwCaWfFxEKq3JgMA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LH7P2bSH9zX3hC2xlijSl6cwWbnFDv+X6XyLhHulMyw=; b=UsxBhjorp45xFH
+	auTUbNboWWmLIAlq0Ak4tvNvWfh58iWiBuNvw1SA2A20Kr5mLhF+oHttxTiQjBv+5h4Jp3IX/HotY
+	PSlLS1e1LTa75mZs3Uy/iMISp95lKPDHm+oi183oT7vtzPnA7BuhKFBPJFweWOwUXTAhx7XXRYG9O
+	7Er6CySF4CIPc/ngJlzlbjm9S6NWjZIj01GQ90gVmUL2X6CCLfh618v9BirCVC+1WZsMkzFowpYsB
+	t5hMqX7+JxXxEP9p1qc4ERRjLARELT3+g2bKBG4wUm+2AZowMwJbizPKO7WH1JEJO1XXC0vQDdr/6
+	pZFP/WFO87P+r3mcATeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0i0A-0036Il-Eb; Mon, 13 Jun 2022 11:12:58 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1o0i0L-0036O5-Lw; Mon, 13 Jun 2022 11:13:09 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0hzy-0036El-0l; Mon, 13 Jun 2022 11:12:47 +0000
-Received: by mail-pl1-x632.google.com with SMTP id v4so2816065plp.8;
-        Mon, 13 Jun 2022 04:12:45 -0700 (PDT)
+	id 1o0i02-0036Ff-TU; Mon, 13 Jun 2022 11:12:52 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 129so5256558pgc.2;
+        Mon, 13 Jun 2022 04:12:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=uAu/7JYWKp3oO9Ew5zW36EZM8vLHAe2MUQSvRrU0KCU=;
-        b=qOA/n9TUulSaWuEEntueeIl15Tc52Mrdtao4+8N/hbZH7nSSkqkcKq5HgNiQejILBX
-         xEKYRQ740DxtlR+eeqAS1hXj8yfFR0o+K3/TMHIS1SVixtTJBNG3hi7M+nZ7KUcgEeXf
-         YfcwgIT1zZZuEWhSAFvppsMlvE67qNUuUuoZyemMCa7RYoR/zG+A1I7KXN7K7ZAUWwM7
-         xBhn4p9bmaSue8+iUnwtPY83+G8qLDWxHqyENc+q1PHQpffTWbkYFVO19TsIavlUibCa
-         1bOmR5gGF5eEVRMSE+6g7DLHC9H0XZn0dZ26PKVBj45P/Jm7/a+WoUIfuuXJf+2uFttC
-         ihGg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=oqTkyZ/R9/aOjKZlhpbfjvDgfGSkULBZvX8wxg4YxyU=;
+        b=EkfouFuwigzPeP3CaHjbjOBiWlhMunkQOLCaHKE2YU6uwGayAsPnUiKSAXGdXu18cJ
+         v4gsLlJJlItr1BUXfBsqy4n/SJ3JfrJozMKwoYPdCNYzW3nIjUOr8xTpW2pnpdzMS6N3
+         fU1tUtmrLaNU1SbFzyXbBnxLXiGR5p8MfWcLVM8ZECExJE9azVAatV/AqH5t25q8zpX3
+         hhfuJLTyojZTZyemTeos0TFjLPWsXyMrWe7iM56nTK6jVjsQpTeVehX8WVnWFMOzDINC
+         A/K/lWvB8Z/L9aRwVHBilttnT0nQc9JF1fuhIfPB9oUg8Paw8u8WsrP8Dvt6YEOmRlZP
+         C7pA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=uAu/7JYWKp3oO9Ew5zW36EZM8vLHAe2MUQSvRrU0KCU=;
-        b=pHu9KWArrUbGMjBYbHJgWddlZSmZiBrj5SPg75dD3jefFijgk8fKaocixgtSqibN9B
-         2pkAkK0jZM+MLL41vbfrHBT63Tkj0mZTFf4jz/TOhhw2qwdnDfqUI8p6KMw2MA4DtDbV
-         T1NPQgEWaPR6UTzQuUDhiJ35TKAyTsoAst9O3nj02+PVAWp0GGSDVxD+F13EcyjJ6YbI
-         HWb5+NemjfyDgQ3j471Sp2jXjiM9K9G2Re6ikTMLB8Q6d0J8Qj695BrzLsSy5QbD0YN3
-         Li+QApznnuypLDvy7wtr2xu8U06s0kTVd5QQXhdYJNr3Xiri3y7Uhj6b9ka3/UuhmwqZ
-         ZwZQ==
-X-Gm-Message-State: AOAM531SFcgIvzWobQ8FYg3L53VWOpm1tprRb3NozmAUVEmtGFTs8g3W
-	QRDOhLL1B6XnX3d6AGUhHjA=
-X-Google-Smtp-Source: ABdhPJwSPCx8VFTSE///2fUU6bdpqYrFaHyryI80Nf1hUuilj72TC5BjLbf98HTK2DjAxP5Onk25tA==
-X-Received: by 2002:a17:90a:8546:b0:1e8:61e8:7b2a with SMTP id a6-20020a17090a854600b001e861e87b2amr15165502pjw.228.1655118764475;
-        Mon, 13 Jun 2022 04:12:44 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=oqTkyZ/R9/aOjKZlhpbfjvDgfGSkULBZvX8wxg4YxyU=;
+        b=Fw8BAnAiz7L+dEN5uGUc7K8b/O5mIIltOdRYmV4wzWYrEyAZsfDkI1AMN/3Df8eMmB
+         oLML/Q1280CDbyvkEcYbL3RhyUtodPlCdgEtZBdSdY9u3MjE6lBF6UM2vlQRB7y4W4vh
+         lFdqkK50Imy3mQcRirY2SY9X6gO+fIJmQFknIwMZP9ObbUMubivwmSCOoZ7v7O0/PXkF
+         lpJqZZc/Bb65UjfCg26RbAV5nLyozaSzg9Y9TZz7DbHwV1Dcc/c6MVDc7VLJtaG1Q8wF
+         8uyjdIoja1c25YorqMaMR/CQV8B6EPMxTwT0VZvhnySQPHISdXOQA8aYlfRnbUDHSnDp
+         KUpQ==
+X-Gm-Message-State: AOAM531zH5vqokx362pZSQRZKfCFQEZN2u6BgmDlUH+3HKN29/vcAbBg
+	nJcivuFnrnb+LeC+blsu6tM=
+X-Google-Smtp-Source: ABdhPJykU5u3d/PSqbUfSBIHCI7wMOPjK0kTGhhrXnoTs+pr7YZi4FLWyDRwJrY+TNdVd5Qu1JUYlg==
+X-Received: by 2002:a65:67c1:0:b0:3fd:ebd6:5dab with SMTP id b1-20020a6567c1000000b003fdebd65dabmr30448557pgs.75.1655118769299;
+        Mon, 13 Jun 2022 04:12:49 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-72-115-109.emome-ip.hinet.net. [42.72.115.109])
-        by smtp.gmail.com with ESMTPSA id g17-20020a056a000b9100b0051b4e53c487sm5199989pfj.45.2022.06.13.04.12.39
+        by smtp.gmail.com with ESMTPSA id g17-20020a056a000b9100b0051b4e53c487sm5199989pfj.45.2022.06.13.04.12.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jun 2022 04:12:44 -0700 (PDT)
+        Mon, 13 Jun 2022 04:12:49 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: jic23@kernel.org,
 	lars@metafoo.de,
@@ -78,15 +78,17 @@ Cc: linux-iio@vger.kernel.org,
 	linux-usb@vger.kernel.org,
 	linux-fbdev@vger.kernel.org,
 	szunichen@gmail.com,
-	ChiaEn Wu <chiaen_wu@richtek.com>
-Subject: [PATCH v2 00/15] Add Mediatek MT6370 PMIC support
-Date: Mon, 13 Jun 2022 19:11:31 +0800
-Message-Id: <20220613111146.25221-1-peterwu.pub@gmail.com>
+	ChiYuan Huang <cy_huang@richtek.com>
+Subject: [PATCH v2 01/15] dt-bindings: usb: Add Mediatek MT6370 TCPC
+Date: Mon, 13 Jun 2022 19:11:32 +0800
+Message-Id: <20220613111146.25221-2-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220613111146.25221-1-peterwu.pub@gmail.com>
+References: <20220613111146.25221-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_041246_128639_60A4F201 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20220613_041250_996428_5F538A9B 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,147 +100,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQ2hpYUVuIFd1IDxjaGlhZW5fd3VAcmljaHRlay5jb20+CgpUaGlzIHBhdGNoIHNlcmll
-cyBhZGQgTWVkaWF0ZWsgTVQ2MzcwIFBNSUMgc3VwcG9ydC4gVGhlIE1UNjM3MCBpcyBhCmhpZ2hs
-eS1pbnRlZ3JhdGVkIHNtYXJ0IHBvd2VyIG1hbmFnZW1lbnQgSUMsIHdoaWNoIGluY2x1ZGVzIGEg
-c2luZ2xlCmNlbGwgTGktSW9uL0xpLVBvbHltZXIgc3dpdGNoaW5nIGJhdHRlcnkgY2hhcmdlciwg
-YSBVU0IKVHlwZS1DICYgUG93ZXIgRGVsaXZlcnkgKFBEKSBjb250cm9sbGVyLCBkdWFsIEZsYXNo
-IExFRCBjdXJyZW50IHNvdXJjZXMsCmEgUkdCIExFRCBkcml2ZXIsIGEgYmFja2xpZ2h0IFdMRUQg
-ZHJpdmVyLCBhIGRpc3BsYXkgYmlhcyBkcml2ZXIgYW5kIGEKZ2VuZXJhbCBMRE8gZm9yIHBvcnRh
-YmxlIGRldmljZXMuCgpBbW9uZyB3aXRoIHRoaXMgd2UgdG9vayBzb21lIGNoYW5nZXMgYW5kIHJl
-ZmluZWQgdGhlIGRldmljZSB0cmVlIGZpbGVzIHRvCmNvbXBseSB3aXRoIERUIHNwZWNpZmljYXRp
-b25zLgoKVGhhbmsgeW91LApDaGlhRW4gV3UKCi0tLQpDaGFuZ2VzIGluIHYyOgotIEluIHBhdGNo
-IDAxLzE1OgoJCS0gQWRkICJ1bmV2YWx1YXRlZFByb3BlcnRpZXM6IGZhbHNlIi4KCQktIERlbGV0
-ZSAiRFQgYmluZGluZ3MiLgoJCS0gUmVmaW5lIHRoZSBkZXNjcmlwdGlvbiB0byBmaXQgaW4gODAg
-Y29sdW1ucy4KCQktIFNraXAgdGhlIGNvbm5lY3RvciBkZXNjcmlwdGlvbi4KLSBJbiBwYXRjaCAw
-Mi8xNToKCQktIFJlZmluZSBpdGVtcyBkZXNjcmlwdGlvbiBvZiBpbnRlcnJ1cHQtbmFtZQoJCS0g
-UmVuYW1lICJ1c2Itb3RnLXZidXMiIHRvICJ1c2Itb3RnLXZidXMtcmVndWxhdG9yIgoJCS0gQWRk
-IGNvbnN0cmFpbnQgcHJvcGVydGllcyBmb3IgQURDCi0gSW4gcGF0Y2ggMDMvMTU6CgkJLSBTa2lw
-IG5vdCB1c2VmdWwgZGVzY3JpcHRpb24gb2YgIl4obXVsdGktKT9sZWRAWzAtM10kIgoJCSAgYW5k
-IHJlZy4KCQktIER1ZSB0byB0aGUgZGVwZW5kZW5jeSwgcmVtb3ZlIHRoZSBtZW50aW9uIG9mIG1m
-ZAoJCSAgZG9jdW1lbnQgZGlyZWN0b3J5LgoJCS0gRGVsZXRlIFNvZnQtc3RhcnQgcHJvcGVydHku
-IEluIGRlc2lnbiBhc3BlY3QsIHdlIHRoaW5rCgkJICBzb2Z0LXJlc3RhcnQgc2hvdWxkIGFsd2F5
-cyBiZSBlbmFibGVkLCBvdXIgbmV3IGNoaXAKCQkgIGhhcyBkZWxldGVkIHRoZSByZWxhdGVkIHNl
-dHRpbmcgcmVnaXN0ZXIgLCBhbHNvLCB3ZSBkb27igJl0CgkJICBhbGxvdyB1c2VyIGFkanVzdCB0
-aGlzIHBhcmFtZXRlciBpbiB0aGlzIGNoaXAuCgkJLSBSZWZpbmUgdGhlIGNvbW1pdCBtZXNzYWdl
-LgotIEluIHBhdGNoIDA0LzE1OgoJCS0gU2tpcCBub3QgdXNlZnVsIGRlc2NyaXB0aW9uIG9mICJe
-bGVkQFswLTFdJCIgYW5kIHJlZy4KCQktIEFkZCBhcGFjZSBhZnRlciAnIycuCgkJLSBSZWZpbmUg
-dGhlIGNvbW1pdCBtZXNzYWdlLgotIEluIHBhdGNoIDA1LzE1OgoJCS0gUmVtb3ZlICJiaW5kaW5n
-IGRvY3VtZW50YXRpb24iIGluIHN1YmplY3QgdGl0bGUKCQktIFJlZmluZSBkZXNjcmlwdGlvbiBv
-ZiBtdDYzNzAgYmFja2xpZ2h0IGJpbmRpbmcKCQkgIGRvY3VtZW50CgkJLSBSZWZpbmUgcHJvcGVy
-dGllcyBuYW1lKGJsZWQtcHdtLWh5cy1pbnB1dC1iaXQsCgkJICBibGVkLW92cC1taWNyb3ZvbHQs
-IGJsZWQtb2NwLW1pY3JvYW1wKSBhbmQgdGhlaXIKCQkgIGRlc2NyaXB0aW9uCi0gSW4gcGF0Y2gg
-MDYvMTU6CgkJLSBSZWZpbmUgQURDIGFuZCBSZWd1bGF0b3IgZGVzY3JpcHRpb25zCgkJLSBSZWZp
-bmUgaW5jbHVkZSBoZWFkZXIgdXNhZ2UgaW4gZXhhbXBsZQoJCS0gUmVmaW5lIG5vZGUgbmFtZSB0
-byBnZW5lcmljIG5vZGUgbmFtZSgicG1pY0AzNCIpCgkJLSBSZWZpbmUgbGVkIGV4YW1wbGUgaW5k
-ZW50YXRpb24KCQktIFJlZmluZSBsaWNlbnNlIG9mIG1lZGlhdGVrLG10NjM3MF9hZGMuaAoJCS0g
-UmVuYW1lIHRoZSBkdHMgZXhhbXBsZSBmcm9tIElSUSBkZWZpbmUgdG8gbnVtYmVyLgoJCS0gUmVt
-b3ZlIG1lZGlhdGVrLG10NjM3MC5oCi0gSW4gcGF0Y2ggMDcvMTU6CgkJLSBBZGQgQUJJIGRvY3Vt
-ZW50YXRpb24gZm9yIG10NjM3MCBub24tc3RhbmRhcmQgQURDCgkJICBzeXNmcyBpbnRlcmZhY2Vz
-LgotIEluIHBhdGNoIDA4LzE1OgoJCS0gQWRkIGFsbCBJUlEgZGVmaW5lIGludG8gbXQ2MzcwLmMu
-CgkJLSBSZWZpbmUgaW5jbHVkZSBoZWFkZXIgdXNhZ2UKLSBJbiBwYXRjaCAwOS8xNToKCQktIE5v
-IGNoYW5nZXMuCi0gSW4gcGF0Y2ggMTAvMTU6CgkJLSBVc2UgJ2dwaW9kX2dldF9mcm9tX29mX25v
-ZGUnIHRvIHJlcGxhY2UKCQkgICdmd25vZGVfZ3Bpb2RfZ2V0X2luZGV4Jy4KLSBJbiBwYXRjaCAx
-MS8xNToKCQktIFJlZmluZSBLY29uZmlnIG10NjM3MCBoZWxwIHRleHQKCQktIFJlZmluZSBtYXNr
-JnNoaWZ0IHRvIEZJRUxEX1BSRVAoKQoJCS0gUmVmaW5lIG11dGV4IGxvY2sgbmFtZSAoImxvY2si
-IC0+ICJhZGNfbG9jayIpCgkJLSBSZWZpbmUgbXQ2MzcwX2FkY19yZWFkX3NjYWxlKCkKCQktIFJl
-ZmluZSBtdDYzNzBfYWRjX3JlYWRfb2Zmc2V0KCkKCQktIFJlZmluZSBtdDYzNzBfY2hhbm5lbF9s
-YWJlbHNbXSBieSB1c2luZyBlbnVtIHRvIGluZGV4CgkJICBjaGFuIHNwZWMKCQktIFJlZmluZSBN
-VDYzNzBfQURDX0NIQU4oKQoJCS0gUmVmaW5lIGluZGlvX2Rldi0+bmFtZQoJCS0gUmVtb3ZlIHVz
-ZWxlc3MgaW5jbHVkZSBoZWFkZXIgZmlsZXMKLSBJbiBwYXRjaCAxMi8xNToKCQktIFJlZmluZSBt
-dDYzNzBfY2hnX290Z19yZGVzYy5vZl9tYXRjaAoJCSAgKCJtdDYzNzAsb3RnLXZidXMiIC0+ICJ1
-c2Itb3RnLXZidXMtcmVndWxhdG9yIikgdG8gbWF0Y2gKCQkgIERUIGJpbmRpbmcKLSBJbiBwYXRj
-aCAxMy8xNToKCQktIFJlZmluZSBLY29uZmlnIGRlc2NyaXB0aW9uLgoJCS0gUmVtb3ZlIGluY2x1
-ZGUgImxpbnV4L29mLmgiIGFuZCB1c2UKCQkgICJsaW51eC9tb2RfZGV2aWNldGFibGUuaCIuCgkJ
-LSBQbGFjZSBhIGNvbW1hIGZvciB0aGUgbGFzdCBlbGVtZW50IG9mIHRoZSBjb25zdAoJCSAgdW5z
-aWduZWQgaW50IGFycmF5LgoJCS0gQWRkIGEgY29tbWVudCBsaW5lIGZvciB0aGUgbXV0ZXggJ2xv
-Y2snLgoJCS0gSW4gcHJvYmUgZnVuY3Rpb24sIHVzZSAnZGV2X2Vycl9wcm9iZScgaW4gc29tZQoJ
-CSAganVkZ2VtZW50IHRvIHJlZHVjZSB0aGUgTE9DLgoJCS0gUmVmaW5lIGluY2x1ZGUgaGVhZGVy
-IHVzYWdlLgoJCSAgQklUL0dFTk1BU0sgLT4gbGludXgvYml0cy5oCgkJICBGSUVMRF9HRVQgLT4g
-bGludXgvYml0ZmllbGQuaAotIEluIHBhdGNoIDE0LzE1OgoJCS0gQWRkIGJsYW5rIGxpbmUuCgkJ
-LSBSZXBsYWNlIGNvbnRhaW5lcl9vZigpIHdpdGggdG9fbXQ2MzcwX2xlZCgpIC4KCQktIFJlZmlu
-ZSBkZXNjcmlwdGlvbiBvZiByYW1waW5nLgoJCS0gUmVmaW5lIHRoZSBtdDYzNzBfaW5pdF9jb21t
-b25fcHJvcGVydGllcyBmdW5jdGlvbi4KCQktIFJlZmluZSB0aGUgcHJvYmUgcmV0dXJuLgotIElu
-IHBhdGNoIDE1LzE1OgoJCS0gUmVmaW5lIE1UNjM3MCBoZWxwIHRleHQgaW4gS2NvbmZpZwoJCS0g
-UmVmaW5lIERUIFBhcnNlIGZ1bmN0aW9uCgkJLSBSZW1vdmUgdXNlbGVzcyBlbnVtCgkJLSBBZGQg
-Y29tbWVudCBmb3IgNjM3MiBiYWNrd2FyZCBjb21wYXRpYmxlIGluCgkJICBibF91cGRhdGVfc3Rh
-dHVzKCkgYW5kCgkJICBjaGVja192ZW5kb3JfaW5mbygpCgkJLSBVc2luZyBkZXZfZXJyX3Byb2Jl
-KCk7IGluc3RlYWRzIGRldl9lcnIoKSZyZXR1cm47IGluCgkJICB0aGUgcHJvYmUoKQoKQWxpY2Ug
-Q2hlbiAoMik6CiAgZHQtYmluZGluZ3M6IGxlZHM6IEFkZCBNZWRpYXRlayBNVDYzNzAgZmxhc2hs
-aWdodAogIGxlZHM6IGZsYXNobGlnaHQ6IG10NjM3MDogQWRkIE1lZGlhdGVrIE1UNjM3MCBmbGFz
-aGxpZ2h0IHN1cHBvcnQKCkNoaVl1YW4gSHVhbmcgKDgpOgogIGR0LWJpbmRpbmdzOiB1c2I6IEFk
-ZCBNZWRpYXRlayBNVDYzNzAgVENQQwogIGR0LWJpbmRpbmdzOiBsZWRzOiBtdDYzNzA6IEFkZCBN
-ZWRpYXRlayBtdDYzNzAgY3VycmVudCBzaW5rIHR5cGUgTEVECiAgICBpbmRpY2F0b3IKICBkdC1i
-aW5kaW5nczogYmFja2xpZ2h0OiBBZGQgTWVkaWF0ZWsgTVQ2MzcwIGJhY2tsaWdodAogIGR0LWJp
-bmRpbmdzOiBtZmQ6IEFkZCBNZWRpYXRlayBNVDYzNzAKICBtZmQ6IG10NjM3MDogQWRkIE1lZGlh
-dGVrIE1UNjM3MCBzdXBwb3J0CiAgdXNiOiB0eXBlYzogdGNwY2lfbXQ2MzcwOiBBZGQgTWVkaWF0
-ZWsgTVQ2MzcwIHRjcGNpIGRyaXZlcgogIHJlZ3VsYXRvcjogbXQ2MzcwOiBBZGQgbXQ2MzcwIERp
-c3BsYXlCaWFzIGFuZCBWaWJMRE8gc3VwcG9ydAogIGxlZHM6IG10NjM3MDogQWRkIE1lZGlhdGVr
-IE1UNjM3MCBjdXJyZW50IHNpbmsgdHlwZSBMRUQgSW5kaWNhdG9yCiAgICBzdXBwb3J0CgpDaGlh
-RW4gV3UgKDUpOgogIGR0LWJpbmRpbmdzOiBwb3dlcjogc3VwcGx5OiBBZGQgTWVkaWF0ZWsgTVQ2
-MzcwIENoYXJnZXIKICBEb2N1bWVudGF0aW9uOiBBQkk6IHRlc3Rpbmc6IG10NjM3MDogQWRkIEFE
-QyBzeXNmcyBndWlkZWxpbmUKICBpaW86IGFkYzogbXQ2MzcwOiBBZGQgTWVkaWF0ZWsgTVQ2Mzcw
-IHN1cHBvcnQKICBwb3dlcjogc3VwcGx5OiBtdDYzNzA6IEFkZCBNZWRpYXRlayBNVDYzNzAgY2hh
-cmdlciBkcml2ZXIKICB2aWRlbzogYmFja2xpZ2h0OiBtdDYzNzA6IEFkZCBNZWRpYXRlayBNVDYz
-NzAgc3VwcG9ydAoKIC4uLi9BQkkvdGVzdGluZy9zeXNmcy1idXMtaWlvLWFkYy1tdDYzNzAgICAg
-ICB8ICAgMzYgKwogLi4uL2JhY2tsaWdodC9tZWRpYXRlayxtdDYzNzAtYmFja2xpZ2h0LnlhbWwg
-IHwgIDEwNyArKwogLi4uL2xlZHMvbWVkaWF0ZWssbXQ2MzcwLWZsYXNobGlnaHQueWFtbCAgICAg
-IHwgICA0NCArCiAuLi4vbGVkcy9tZWRpYXRlayxtdDYzNzAtaW5kaWNhdG9yLnlhbWwgICAgICAg
-fCAgIDQ4ICsKIC4uLi9iaW5kaW5ncy9tZmQvbWVkaWF0ZWssbXQ2MzcwLnlhbWwgICAgICAgICB8
-ICAyNzkgKysrKwogLi4uL3Bvd2VyL3N1cHBseS9tZWRpYXRlayxtdDYzNzAtY2hhcmdlci55YW1s
-IHwgICA2MCArCiAuLi4vYmluZGluZ3MvdXNiL21lZGlhdGVrLG10NjM3MC10Y3BjLnlhbWwgICAg
-fCAgIDM2ICsKIGRyaXZlcnMvaWlvL2FkYy9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICB8
-ICAgIDkgKwogZHJpdmVycy9paW8vYWRjL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgIHwg
-ICAgMSArCiBkcml2ZXJzL2lpby9hZGMvbXQ2MzcwLWFkYy5jICAgICAgICAgICAgICAgICAgfCAg
-MjYyICsrKysKIGRyaXZlcnMvbGVkcy9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICB8
-ICAgMTEgKwogZHJpdmVycy9sZWRzL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgIHwg
-ICAgMSArCiBkcml2ZXJzL2xlZHMvZmxhc2gvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgfCAg
-ICA5ICsKIGRyaXZlcnMvbGVkcy9mbGFzaC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICB8ICAg
-IDEgKwogZHJpdmVycy9sZWRzL2ZsYXNoL2xlZHMtbXQ2MzcwLWZsYXNoLmMgICAgICAgIHwgIDY1
-NyArKysrKysrKysrCiBkcml2ZXJzL2xlZHMvbGVkcy1tdDYzNzAuYyAgICAgICAgICAgICAgICAg
-ICAgfCAgOTg5ICsrKysrKysrKysrKysrCiBkcml2ZXJzL21mZC9LY29uZmlnICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgfCAgIDEzICsKIGRyaXZlcnMvbWZkL01ha2VmaWxlICAgICAgICAgICAg
-ICAgICAgICAgICAgICB8ICAgIDEgKwogZHJpdmVycy9tZmQvbXQ2MzcwLmMgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHwgIDM0OSArKysrKwogZHJpdmVycy9wb3dlci9zdXBwbHkvS2NvbmZpZyAg
-ICAgICAgICAgICAgICAgIHwgICAxMSArCiBkcml2ZXJzL3Bvd2VyL3N1cHBseS9NYWtlZmlsZSAg
-ICAgICAgICAgICAgICAgfCAgICAxICsKIGRyaXZlcnMvcG93ZXIvc3VwcGx5L210NjM3MC1jaGFy
-Z2VyLmMgICAgICAgICB8IDExMzIgKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvcmVndWxhdG9y
-L0tjb25maWcgICAgICAgICAgICAgICAgICAgICB8ICAgIDggKwogZHJpdmVycy9yZWd1bGF0b3Iv
-TWFrZWZpbGUgICAgICAgICAgICAgICAgICAgIHwgICAgMSArCiBkcml2ZXJzL3JlZ3VsYXRvci9t
-dDYzNzAtcmVndWxhdG9yLmMgICAgICAgICAgfCAgMzg4ICsrKysrKwogZHJpdmVycy91c2IvdHlw
-ZWMvdGNwbS9LY29uZmlnICAgICAgICAgICAgICAgIHwgICAgOCArCiBkcml2ZXJzL3VzYi90eXBl
-Yy90Y3BtL01ha2VmaWxlICAgICAgICAgICAgICAgfCAgICAxICsKIGRyaXZlcnMvdXNiL3R5cGVj
-L3RjcG0vdGNwY2lfbXQ2MzcwLmMgICAgICAgICB8ICAyMTIgKysrCiBkcml2ZXJzL3ZpZGVvL2Jh
-Y2tsaWdodC9LY29uZmlnICAgICAgICAgICAgICAgfCAgICA5ICsKIGRyaXZlcnMvdmlkZW8vYmFj
-a2xpZ2h0L01ha2VmaWxlICAgICAgICAgICAgICB8ICAgIDEgKwogZHJpdmVycy92aWRlby9iYWNr
-bGlnaHQvbXQ2MzcwLWJhY2tsaWdodC5jICAgIHwgIDMzOSArKysrKwogLi4uL2R0LWJpbmRpbmdz
-L2lpby9hZGMvbWVkaWF0ZWssbXQ2MzcwX2FkYy5oIHwgICAxOCArCiAzMiBmaWxlcyBjaGFuZ2Vk
-LCA1MDQyIGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL0FC
-SS90ZXN0aW5nL3N5c2ZzLWJ1cy1paW8tYWRjLW10NjM3MAogY3JlYXRlIG1vZGUgMTAwNjQ0IERv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9sZWRzL2JhY2tsaWdodC9tZWRpYXRlayxt
-dDYzNzAtYmFja2xpZ2h0LnlhbWwKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvbGVkcy9tZWRpYXRlayxtdDYzNzAtZmxhc2hsaWdodC55YW1sCiBj
-cmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2xlZHMv
-bWVkaWF0ZWssbXQ2MzcwLWluZGljYXRvci55YW1sCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9tZWRpYXRlayxtdDYzNzAueWFtbAogY3Jl
-YXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dlci9z
-dXBwbHkvbWVkaWF0ZWssbXQ2MzcwLWNoYXJnZXIueWFtbAogY3JlYXRlIG1vZGUgMTAwNjQ0IERv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvbWVkaWF0ZWssbXQ2MzcwLXRjcGMu
-eWFtbAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvaWlvL2FkYy9tdDYzNzAtYWRjLmMKIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2xlZHMvZmxhc2gvbGVkcy1tdDYzNzAtZmxhc2guYwog
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbGVkcy9sZWRzLW10NjM3MC5jCiBjcmVhdGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9tZmQvbXQ2MzcwLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L3Bvd2VyL3N1cHBseS9tdDYzNzAtY2hhcmdlci5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9yZWd1bGF0b3IvbXQ2MzcwLXJlZ3VsYXRvci5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy91c2IvdHlwZWMvdGNwbS90Y3BjaV9tdDYzNzAuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
-cnMvdmlkZW8vYmFja2xpZ2h0L210NjM3MC1iYWNrbGlnaHQuYwogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGluY2x1ZGUvZHQtYmluZGluZ3MvaWlvL2FkYy9tZWRpYXRlayxtdDYzNzBfYWRjLmgKCi0tIAoy
-LjI1LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
-ZGlhdGVrCg==
+From: ChiYuan Huang <cy_huang@richtek.com>
+
+Add Mediatek MT6370 TCPC binding documentation.
+
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+ .../bindings/usb/mediatek,mt6370-tcpc.yaml    | 36 +++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+new file mode 100644
+index 000000000000..aa083e92bbba
+--- /dev/null
++++ b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+@@ -0,0 +1,36 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/usb/mediatek,mt6370-tcpc.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: Mediatek MT6370 Type-C Port Switch and Power Delivery controller
++
++maintainers:
++  - ChiYuan Huang <cy_huang@richtek.com>
++
++description: |
++  Mediatek MT6370 is a multi-functional device.
++  It integrates charger, ADC, flash, RGB indicators,
++  regulators (DSV/VIBLDO), and TypeC Port Switch with Power Delivery controller.
++  This document only describes MT6370 Type-C Port Switch and
++  Power Delivery controller.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6370-tcpc
++
++  interrupts:
++    maxItems: 1
++
++  connector:
++    type: object
++    $ref: /schemas/connector/usb-connector.yaml#
++    unevaluatedProperties: false
++
++additionalProperties: false
++
++required:
++  - compatible
++  - interrupts
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
