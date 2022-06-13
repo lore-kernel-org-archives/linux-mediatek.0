@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8F7FCCA47B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 08:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24978CCA47D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 09:32:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c9QmThtu4go9HzihM4m1+h31nGqN0rJgERCEcMmjwdk=; b=EHXpcbMLul1b5S
-	UwsBiFiPCN/2DZTWZxpUDu9kwjzsIV33S/sh18aJX1jNsoF1PGbwnhnDc2Yrx4ThhLbTdpBV/E7M+
-	JF1vaHcdgz2mcFLF0XMTGYpUo5M/KFm1CxkDoMhH0l9arlrJjx1IV2EzOZNn+yvksnbH1be8J8AEs
-	lBeq89hmitReSjfYkngj/pz2Woo1ygWClwFyohzjH3f7Sn3RcuunEG4oIhHkgvZStmgLo+XF7Pb51
-	HIyK5xX6S+UUWIFgBX+doIGWErZ52p8atHRir58LJYPwOycxIzgxt29Ixs0tmWGwq+9CeM3yUooqT
-	zTw3zrW1WYn6crT4rcAw==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OwwxlKHijuVte72hKkbIStXVeTz1JOAF8uhptFQsvpY=; b=4C8rCUkJknLiymqz5HxksUCgzl
+	q2vV31guoRq6XJYcTJRl0QEVCwYIMfgSuPaC0Ech0G8gbMr8JTLUepOxQr+q417KGSKvnyRqAXsFq
+	FWtpEgCA+snV8pi9+RyCBRFMhJTdvW8qCmH+BkYfLCPEbR++pTSmbnwMcPfjtF99PHEr0uSI9LalP
+	6Fmsq0Y8+C0353AQoz9sBi4nF8WM2oKH7IMQ0MsQjz+SVEfZUj8MO9LTWKoCgLZZY133BFllCxzfN
+	2pX8SJ2M1ck3M11jKp4P+Yde72mVWIUZLzZSGzHs17YkFpcFz+h95Av1NTtimyJQdztUU4DoVAq4e
+	SlJa4kEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0fCr-002CPc-Pn; Mon, 13 Jun 2022 08:13:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o0gQZ-002YbA-6T; Mon, 13 Jun 2022 09:32:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0fCL-002C4J-Ks; Mon, 13 Jun 2022 08:13:23 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1o0gQX-002YZt-4G
+	for linux-mediatek@lists.infradead.org; Mon, 13 Jun 2022 09:32:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B924660163F;
-	Mon, 13 Jun 2022 09:13:16 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655107997;
-	bh=nngcLlLkWokhulYNje5MIUVohalGmGQRGzNdGDIqhOg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oUJLCpDwf6d8vCEwFuLYeiFLaqPJ3EL68/bcBr6sbAbGzc+N/DXSCCdHMIGrwe9ml
-	 bN1WxFu0/szl4ZkMs77VDe868k+7i2zq94TTq/sYBpB+AZLVdeyxCfWdHoRSvXvqfw
-	 78roJdyviEA8KQtMfXF3SN579GsYRv8qwbkHmrHXAFURrEC44PsMKIdobYnmyq9bLx
-	 PgY6B9oTiBQclhsLYbiZM1R55H+F7GMMsgy76kt8n5wNyz91LluFdLVpUH0HnoeQQe
-	 6Sb0GPrzbO1qFd5SeZVpBoCwqnt5uJOWy6RFQdX0NkmV2fN4m1diJhIc7Wzroyef2H
-	 PcqPencC5Of5g==
-Message-ID: <80c7fa61-e25a-fc45-bdcb-60ac3796b96e@collabora.com>
-Date: Mon, 13 Jun 2022 10:13:13 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B519461361;
+	Mon, 13 Jun 2022 09:32:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97EABC341C4;
+	Mon, 13 Jun 2022 09:32:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1655112723;
+	bh=SddoYtToYnd60vSjGq+xaMPEhrFsty5ft9T+UA0njtE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gSqHDkRMztXJ1K9i7c9jfF/kjwwUcOLm/+pUCvqqtDW/5yMzZPamcEsKmwE3vy34e
+	 yQRGS+aqwqP+iUI81Yft/cULbLm9rEx+gX+RvpV+UEWcZ08Vt8Dj0vib8zTItDC6FV
+	 z5//94arY5H6nVQF8CUpP4LUqyGKNaLJzYe3ShwruNldf58AJTOh+62cmWiY9ymj/F
+	 o+G3KAnEm0wox/FGUFfjKv8W42sU3LH24qpnQs4KlPa5WEXx50VwYHbQzMwu2QjVCp
+	 e/QZY4CPxu+hvWdtGlQqN7Tlq6xh9uRLAz0Q1BiYhmbYs8m9jefSxhk3MBWUYSzcHx
+	 o6IqoEL+4FXBw==
+Date: Mon, 13 Jun 2022 11:31:59 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Deren Wu <Deren.Wu@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+	Eric Liang <Eric.Liang@mediatek.com>,
+	Stella Chang <Stella.Chang@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] mt76: mt7921s: fix possible sdio deadlock in command fail
+Message-ID: <YqcED2AWOP+mFPQV@lore-desk>
+References: <7122534ce50527e099a23fa198683a0e20c6db38.1654998031.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v3 6/6] iommu: mtk_iommu: Lookup phandle to retrieve
- syscon to pericfg
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski@linaro.org
-References: <20220609100802.54513-1-angelogioacchino.delregno@collabora.com>
- <20220609100802.54513-7-angelogioacchino.delregno@collabora.com>
- <db422fe4d0b5391ee2aacae989d7e48209e1095f.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <db422fe4d0b5391ee2aacae989d7e48209e1095f.camel@mediatek.com>
+In-Reply-To: <7122534ce50527e099a23fa198683a0e20c6db38.1654998031.git.deren.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_011321_969545_09E3B830 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20220613_023205_244152_B7E152BC 
+X-CRM114-Status: GOOD (  14.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,37 +77,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8641702695116072613=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/06/22 07:32, Yong Wu ha scritto:
-> On Thu, 2022-06-09 at 12:08 +0200, AngeloGioacchino Del Regno wrote:
->> On some SoCs (of which only MT8195 is supported at the time of
->> writing),
->> the "R" and "W" (I/O) enable bits for the IOMMUs are in the
->> pericfg_ao
->> register space and not in the IOMMU space: as it happened already
->> with
->> infracfg, it is expected that this list will grow.
-> 
-> Currently I don't see the list will grow. As commented before, In the
-> lastest SoC, The IOMMU enable bits for IOMMU will be in ATF, rather
-> than in this pericfg register region. In this case, Is this patch
-> unnecessary? or we could add this patch when there are 2 SoCs use this
-> setting at least?  what's your opinion?
-> 
 
-Perhaps I've misunderstood... besides, can you please check if there's any
-other SoC (not just chromebooks, also smartphone SoCs) that need this logic?
-
-Thanks,
-Angelo
+--===============8641702695116072613==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="A5J39+V/GstiCcPe"
+Content-Disposition: inline
 
 
+--A5J39+V/GstiCcPe
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> From: Deren Wu <deren.wu@mediatek.com>
+>=20
+> Move sdio_release_host() to final resource handing
+>=20
+
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+> Fixes: b12deb5e86fa ("mt76: mt7921s: fix mt7921s_mcu_[fw|drv]_pmctrl")
+> Reported-by: YN Chen <YN.Chen@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c b/drive=
+rs/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+> index 54a5c712a3c3..1856d677fff4 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+> @@ -156,9 +156,9 @@ int mt7921s_mcu_fw_pmctrl(struct mt7921_dev *dev)
+> =20
+>  	err =3D readx_poll_timeout(mt76s_read_pcr, &dev->mt76, status,
+>  				 !(status & WHLPCR_IS_DRIVER_OWN), 2000, 1000000);
+> +err:
+>  	sdio_release_host(func);
+> =20
+> -err:
+>  	if (err < 0) {
+>  		dev_err(dev->mt76.dev, "firmware own failed\n");
+>  		clear_bit(MT76_STATE_PM, &mphy->state);
+> --=20
+> 2.18.0
+>=20
+
+--A5J39+V/GstiCcPe
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYqcEDwAKCRA6cBh0uS2t
+rKi5AP9bBre9sLH9PTh+EH3Jr/qpaTrLs7r4oOzOHR1pYRujYwEA110zit1P/R1p
+V2NpPVVAmKVq5M9jc72S1elD2wL+hws=
+=1cka
+-----END PGP SIGNATURE-----
+
+--A5J39+V/GstiCcPe--
+
+
+--===============8641702695116072613==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8641702695116072613==--
+
