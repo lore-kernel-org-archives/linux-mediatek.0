@@ -4,79 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43D8AC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 03:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0017ECCA473
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 03:23:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mRp4V+sno86DKEk6znxNEGKc9Lp65VZNjWRIt4zNvo0=; b=MRfXPdCCpFyLHL
-	D5xhccBj8EWnX9mg7OH2PoF00cwZuOWvDJf8eD3VgFQltpXOrOYDF+/eXm8wseWdwx3CQr2T/iZtX
-	nJiaO/TDXsrjv+wcubJAPDXZhJ8iWxDwi0fgISEnEEUfPO+BUVyUvTpEWhk+U1kNe9NrKHPQ5FbDn
-	7lELf5rHADDunHR76USAnLJS3iImA1fYyvldcDwp2LSRS2jXA+gA0vR4aDEk5sjT9dxiI45yxpf6U
-	L0PRqrEtu/ZHfYAQ4D3kITShUZ6tsq2oiMz0IsIitt47RijVfPlHnEd1urrim4JajyQurw1sL6exR
-	ugjwOY0d2lQwuAQdCmRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=O/8nAmcWcfhNeBfhoNUAffcpTE1ioONfJoQAeRqPky4=; b=EkrPRqJ4X1Eg4Y
+	xM7cXHenro1Sfg9SZSNJIQfZiw8Ht2ApA7198uPlYWc127O0m0ADQtnXHroEl/wJW56J1HYGNscO3
+	r2nuMzfBMpjfQJflcZYADoLZV6MSw2yPmmr1vfuS8tSeRhsItC/XGnHMiYsMOhMro2O00oBXRxcQe
+	Nfxh5iRUt0UvEvbS8uaZucilYHIZuxJcmrHAJHMew3WxOz1QD4Y7MINu8GnzE5f3h+6/CRUiuIZrx
+	F+O5oUkqNKiyz/xzb6tt9LVnYWPSqBIT/mYhDfGjonJ3qFdCschjAw9sKmzmQ3RlKCN7KRS2iG5yF
+	jA43FXsLb0smPWnrj8og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0adK-0010Pz-RC; Mon, 13 Jun 2022 03:20:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o0afQ-00114m-7a; Mon, 13 Jun 2022 03:23:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0ad8-0010MA-Ux; Mon, 13 Jun 2022 03:20:45 +0000
-X-UUID: 40e758a1f9da4d3eba12ebefba251532-20220612
+	id 1o0afB-0010u3-KJ; Mon, 13 Jun 2022 03:22:51 +0000
+X-UUID: 2d27b3cdbf7c462b8035659e9d7f2045-20220612
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.5,REQID:bd144ae9-3214-41f7-8adc-8db22c522cfa,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:2a19b09,CLOUDID:d54452c6-12ba-4305-bfdf-9aefbdc32516,C
+X-CID-O-INFO: VERSION:1.1.5,REQID:691a9d8d-1b38-4c0a-866b-6725ddb9ad8a,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:2a19b09,CLOUDID:6e5f52c6-12ba-4305-bfdf-9aefbdc32516,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:0,BEC:nil
-X-UUID: 40e758a1f9da4d3eba12ebefba251532-20220612
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: 2d27b3cdbf7c462b8035659e9d7f2045-20220612
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1194842458; Sun, 12 Jun 2022 20:20:33 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 1777418965; Sun, 12 Jun 2022 20:22:38 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 12 Jun 2022 20:12:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 13 Jun 2022 11:12:33 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 13 Jun 2022 11:12:33 +0800
-Message-ID: <fc301b26d4e0fea003a9b6c2237eaca16a4929f6.camel@mediatek.com>
-Subject: Re: [PATCH v10 08/21] drm/mediatek: dpi: implement a swap_input
- toggle in SoC config
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Guillaume Ranquet <granquet@baylibre.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
-	<daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Kishon
- Vijay Abraham I" <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, "Helge
- Deller" <deller@gmx.de>, Jitao shi <jitao.shi@mediatek.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>
-Date: Mon, 13 Jun 2022 11:12:33 +0800
-In-Reply-To: <2c88fd4c308e86536d5996b3f32f68d05d452e23.camel@mediatek.com>
-References: <20220523104758.29531-1-granquet@baylibre.com>
-	 <20220523104758.29531-9-granquet@baylibre.com>
-	 <2c88fd4c308e86536d5996b3f32f68d05d452e23.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.0.1497.2; Sun, 12 Jun 2022 20:22:37 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 13 Jun 2022 11:22:35 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 13 Jun 2022 11:22:34 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
+	<kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [V3,0/8] Support multi-hardware jpeg decoder for MT8195
+Date: Mon, 13 Jun 2022 11:22:24 +0800
+Message-ID: <20220613032232.23187-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220612_202043_037280_ED236F91 
-X-CRM114-Status: GOOD (  20.93  )
+X-CRM114-CacheID: sfid-20220612_202249_696884_43E9E2DB 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,123 +84,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-05-30 at 15:50 +0800, CK Hu wrote:
-> Hi, Guillaume:
-> 
-> 
-> On Mon, 2022-05-23 at 12:47 +0200, Guillaume Ranquet wrote:
-> > Adds a bit of flexibility to support SoCs without swap_input
-> > support
-> > 
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++++++++++---
-> >  1 file changed, 11 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > index 545a1337cc89..454f8563efae 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > @@ -126,6 +126,7 @@ struct mtk_dpi_conf {
-> >  	const u32 *output_fmts;
-> >  	u32 num_output_fmts;
-> >  	bool is_ck_de_pol;
-> > +	bool swap_input_support;
-> >  	const struct mtk_dpi_yc_limit *limit;
-> >  };
-> >  
-> > @@ -378,18 +379,21 @@ static void
-> > mtk_dpi_config_color_format(struct
-> > mtk_dpi *dpi,
-> >  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
-> >  		mtk_dpi_config_yuv422_enable(dpi, false);
-> >  		mtk_dpi_config_csc_enable(dpi, true);
-> > -		mtk_dpi_config_swap_input(dpi, false);
-> > +		if (dpi->conf->swap_input_support)
-> > +			mtk_dpi_config_swap_input(dpi, false);
-> >  		mtk_dpi_config_channel_swap(dpi,
-> > MTK_DPI_OUT_CHANNEL_SWAP_BGR);
-> >  	} else if ((format == MTK_DPI_COLOR_FORMAT_YCBCR_422) ||
-> >  		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
-> >  		mtk_dpi_config_yuv422_enable(dpi, true);
-> >  		mtk_dpi_config_csc_enable(dpi, true);
-> > -		mtk_dpi_config_swap_input(dpi, true);
-> > +		if (dpi->conf->swap_input_support)
-> > +			mtk_dpi_config_swap_input(dpi, true);
-> 
-> As [1], please keep in touch with Mediatek engineer.
-> 
-> Regards,
-> CK
-> 
-> [1] 
-> 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220218145437.18563-8-granquet@baylibre.com/
-> 
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Hello CK,
+This series adds support for multi hardware jpeg decoding,
+by first adding use of_platform_populate to manage each hardware
+information: interrupt, clock, register bases and power.
+Secondly add decoding work queue to deal with the decoding requests
+of multi-hardware at the same time. Lastly, add output picture
+reorder function interface to eliminate the out of order images.
 
-the reason is the hardware design of dp_intf does not support input
-swap.
-I will add this in commit message.
+This series has been tested with both MT8195.
+Decoding worked for this chip.
 
-BRs,
-Bo-Chen
+Patch 1 Adds jpeg decoder dt-bindings for mt8195
 
-> >  		mtk_dpi_config_channel_swap(dpi,
-> > MTK_DPI_OUT_CHANNEL_SWAP_RGB);
-> >  	} else {
-> >  		mtk_dpi_config_yuv422_enable(dpi, false);
-> >  		mtk_dpi_config_csc_enable(dpi, false);
-> > -		mtk_dpi_config_swap_input(dpi, false);
-> > +		if (dpi->conf->swap_input_support)
-> > +			mtk_dpi_config_swap_input(dpi, false);
-> >  		mtk_dpi_config_channel_swap(dpi,
-> > MTK_DPI_OUT_CHANNEL_SWAP_RGB);
-> >  	}
-> >  }
-> > @@ -808,6 +812,7 @@ static const struct mtk_dpi_conf mt8173_conf =
-> > {
-> >  	.output_fmts = mt8173_output_fmts,
-> >  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
-> >  	.is_ck_de_pol = true,
-> > +	.swap_input_support = true,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> > @@ -819,6 +824,7 @@ static const struct mtk_dpi_conf mt2701_conf =
-> > {
-> >  	.output_fmts = mt8173_output_fmts,
-> >  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
-> >  	.is_ck_de_pol = true,
-> > +	.swap_input_support = true,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> > @@ -829,6 +835,7 @@ static const struct mtk_dpi_conf mt8183_conf =
-> > {
-> >  	.output_fmts = mt8183_output_fmts,
-> >  	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
-> >  	.is_ck_de_pol = true,
-> > +	.swap_input_support = true,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> > @@ -839,6 +846,7 @@ static const struct mtk_dpi_conf mt8192_conf =
-> > {
-> >  	.output_fmts = mt8173_output_fmts,
-> >  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
-> >  	.is_ck_de_pol = true,
-> > +	.swap_input_support = true,
-> >  	.limit = &mtk_dpi_limit,
-> >  };
-> >  
-> 
-> 
+Patches 2 jpeg decoder builds three module for using Multi-HW,
+export some functions to make them visible by other modules.
+
+Patch 3 use of_platform_populate to manage multi-hardware.
+
+Patch 4 add jpeg decoding timeout function to judge hardware timeout.
+
+Patch 5 add decoding work queue to deal with multi-hardware decoding
+at the same time.
+
+Patch 6 add output picture reorder function to order images.
+
+Patch 7 refactor jpegdec func interface for HW working.
+
+Patch 8 add stop cmd function to deal with EOS operation.
+
+---
+This series patches dependent on:
+media_stage tree:
+[1]
+https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
+
+patch1 new jpegdec dt-bindings included files
+[2] MM IOMMU binding:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
+
+[3] MT8195 power domain:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+
+Changes compared with v2:
+- add stop cmd function.
+- some modifications for patch v1's review comments.
+
+Changes compared with v1:
+- new yaml file for mt8195 jpeg decoder.
+- some modifications for patch v1's review comments.
+
+kyrie wu (8):
+  dt-bindings: mediatek: Add mediatek,mt8195-jpgdec compatible
+  media: mtk-jpegdec: export jpeg decoder functions
+  media: mtk-jpegdec: manage jpegdec multi-hardware
+  media: mtk-jpegdec: add jpegdec timeout func interface
+  media: mtk-jpegdec: add jpeg decode worker interface
+  media: mtk-jpegdec: add output pic reorder interface
+  media: mtk-jpegdec: refactor jpegdec func interface
+  mtk-jpegdec: add stop cmd interface for jpgdec
+
+ .../media/mediatek,mt8195-jpegdec.yaml        | 177 ++++++++++
+ drivers/media/platform/mediatek/jpeg/Makefile |   5 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 244 +++++++++++++-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  46 +++
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 309 ++++++++++++++++--
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |   3 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_reg.h |   1 +
+ 7 files changed, 753 insertions(+), 32 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+
+-- 
+2.18.0
 
 
 _______________________________________________
