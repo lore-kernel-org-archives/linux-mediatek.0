@@ -4,68 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24978CCA47D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 09:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7308C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 09:40:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OwwxlKHijuVte72hKkbIStXVeTz1JOAF8uhptFQsvpY=; b=4C8rCUkJknLiymqz5HxksUCgzl
-	q2vV31guoRq6XJYcTJRl0QEVCwYIMfgSuPaC0Ech0G8gbMr8JTLUepOxQr+q417KGSKvnyRqAXsFq
-	FWtpEgCA+snV8pi9+RyCBRFMhJTdvW8qCmH+BkYfLCPEbR++pTSmbnwMcPfjtF99PHEr0uSI9LalP
-	6Fmsq0Y8+C0353AQoz9sBi4nF8WM2oKH7IMQ0MsQjz+SVEfZUj8MO9LTWKoCgLZZY133BFllCxzfN
-	2pX8SJ2M1ck3M11jKp4P+Yde72mVWIUZLzZSGzHs17YkFpcFz+h95Av1NTtimyJQdztUU4DoVAq4e
-	SlJa4kEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Z4beRF4j/G3y1P/loBxnovqEvogrk9CRIZfjWkzAGA8=; b=keuuUswVF/Jpdj
+	sN1oXL5dzcsLtel85Qnc5F48KYOyVOMFQjCXAMBeEXFpPS1XPHf4GU/Fmv6DOcXqEm6sDBG48TfCO
+	KczBLEcxVntiVOjo+DeeJtQ3C4BiGfRoiUOrf78Dgx+NS/Fcb8B535Q5PwPn+7eKO/lSaxxdZQ5tr
+	JtIzozFfd/HZ0++Lbe2VPIhca06zpXSDHcUpoAW3rLmxqvHfy+d45JG8qfx20KPdfZ0nnkTZbtAxx
+	qFQrlwfVeRwTkPdM1yOl26YuXqGUEP4VnNgCFnTbaR6d3Bss5igtFt3h6lLjSUcTTHvbp7yuo/2Gx
+	oPJO2eTohEYqVS3gMWRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0gQZ-002YbA-6T; Mon, 13 Jun 2022 09:32:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o0gYH-002Zyx-Eb; Mon, 13 Jun 2022 09:40:05 +0000
+Received: from mail-co1nam11on20725.outbound.protection.outlook.com ([2a01:111:f400:7eab::725] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0gQX-002YZt-4G
-	for linux-mediatek@lists.infradead.org; Mon, 13 Jun 2022 09:32:06 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B519461361;
-	Mon, 13 Jun 2022 09:32:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97EABC341C4;
-	Mon, 13 Jun 2022 09:32:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655112723;
-	bh=SddoYtToYnd60vSjGq+xaMPEhrFsty5ft9T+UA0njtE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gSqHDkRMztXJ1K9i7c9jfF/kjwwUcOLm/+pUCvqqtDW/5yMzZPamcEsKmwE3vy34e
-	 yQRGS+aqwqP+iUI81Yft/cULbLm9rEx+gX+RvpV+UEWcZ08Vt8Dj0vib8zTItDC6FV
-	 z5//94arY5H6nVQF8CUpP4LUqyGKNaLJzYe3ShwruNldf58AJTOh+62cmWiY9ymj/F
-	 o+G3KAnEm0wox/FGUFfjKv8W42sU3LH24qpnQs4KlPa5WEXx50VwYHbQzMwu2QjVCp
-	 e/QZY4CPxu+hvWdtGlQqN7Tlq6xh9uRLAz0Q1BiYhmbYs8m9jefSxhk3MBWUYSzcHx
-	 o6IqoEL+4FXBw==
-Date: Mon, 13 Jun 2022 11:31:59 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Deren Wu <Deren.Wu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
-	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
-	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
-	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
-	Eric Liang <Eric.Liang@mediatek.com>,
-	Stella Chang <Stella.Chang@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] mt76: mt7921s: fix possible sdio deadlock in command fail
-Message-ID: <YqcED2AWOP+mFPQV@lore-desk>
-References: <7122534ce50527e099a23fa198683a0e20c6db38.1654998031.git.deren.wu@mediatek.com>
+	id 1o0gYF-002Zwt-4d; Mon, 13 Jun 2022 09:40:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LNe0Qb5z8iyx6SycSzf9g7JNyjLaY/GRZDtvVnKez87xo9e4u6abYZ1Lj6WB3ZDNLq3K47k0m6ydJmxIMks98K/dGeYMXi3yb7sc+u3yVWW+I8gJXI+eQ3QXnGsGet3xvph10KXvATQRhT1y0F5GnMxOTBhGp5aFBUGrmrtF/5PE1j31pO5IAA8s78DuHd2vw23AtyrFa6Cfjs94WB5LqpuuRbUbvgjNiLdgF6vdP/DWgNYgOPdoNAgjPi4ohMxlVIx+Exh6X7hhv6t4gxsR3x0aBag4Ua/7At+gxXQ5zNYlQnG3m6JXVSXkidnUBrE/ucvQVqpLOiwulVs6CBacYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KdToBZUtLn/PXoQNa86XXrO5eM+EwNY4u9N6PAO5wLc=;
+ b=Dnyvp3EuFtJHqOceWpM3M7a2FMS5AA6zklb3HRLnK7sFue/pbNRzk920gYhNva3TbyPaCpHzxDZg/ekBPylUXW8HoaOWovurRJCoAN1MK8bwus19l1SP6cXHZ7nwCQUIY6Wtcr6Kg26LChHBkUSdYyf6BnuTIsNPY9Eny0THiFP5DlzFwKmXqcHyRwRHfEToVXmAXZ78I2NHTxungSjwHLkrPizn5UMH1l88guB80Kfl6Gx0FAohtYtQmnc+br0C8/kR5nebFiNL4okFCXTw5HQxxZPt0hKYlUGMHhCKE7RmPfDOqx5sNZFm+DtN8KUQEUEgRhxAz9J9OsuWw9/GeA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KdToBZUtLn/PXoQNa86XXrO5eM+EwNY4u9N6PAO5wLc=;
+ b=xflzY4+hKwxl1GfE6YMzA634/0TR9ZlgnendS4f4Mh1oW46LfoutN1HSS+FUroyoa88GAfcMBCPLPtv8jOE/Sgec73n3GRVrpsLK/ecdXb2E9HSSP8QtiSUv702kDTf7a34ZNEwonzen8quqIZYWwesnFkLmUnem49w3iu1rOTQ=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by SJ0PR04MB7472.namprd04.prod.outlook.com (2603:10b6:a03:294::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12; Mon, 13 Jun
+ 2022 09:39:56 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::ec96:5112:c2d5:9377]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::ec96:5112:c2d5:9377%8]) with mapi id 15.20.5332.020; Mon, 13 Jun 2022
+ 09:39:55 +0000
+Date: Mon, 13 Jun 2022 17:39:48 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>, bliang@analogixsemi.com,
+	qwen@analogixsemi.com, jli@analogixsemi.com,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v9 1/3] usb: typec: tcpci: move tcpci.h to
+ include/linux/usb/
+Message-ID: <20220613093948.GA1454902@anxtwsw-Precision-3640-Tower>
+References: <20220309023404.1221453-1-xji@analogixsemi.com>
+ <YqMaUroS87rjnCny@kroah.com>
+ <YqMyxQGzPSs/HwVi@kuha.fi.intel.com>
+Content-Disposition: inline
+In-Reply-To: <YqMyxQGzPSs/HwVi@kuha.fi.intel.com>
+X-ClientProxiedBy: TY2PR0101CA0022.apcprd01.prod.exchangelabs.com
+ (2603:1096:404:92::34) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-In-Reply-To: <7122534ce50527e099a23fa198683a0e20c6db38.1654998031.git.deren.wu@mediatek.com>
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 3dd966cc-10d7-467c-fe51-08da4d20ac7c
+X-MS-TrafficTypeDiagnostic: SJ0PR04MB7472:EE_
+X-Microsoft-Antispam-PRVS: 	<SJ0PR04MB7472CBB53C6517891F28ACC6C7AB9@SJ0PR04MB7472.namprd04.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	XASgv3aBIoK/9XrkqIjNWy+Zdqr99H8PrrDzV1we/m0uWhmXKt29RRAXrfnXATc6eLsW7X4527WrtCPuXKB/dYmcaXX9SSNcSVz5GNApbbogG4OJv2JZrnCkFq9Zu5lb6TM+mmQJnCvg2VVenuyyEfgh8Sec3EJBr310u6jPhpWOJ/FbiVvF25KtmbDB2f3c4GdSemvN9LwXtftevYDKEratFHpVHzXaQVT4FOf5dPBTUKT687vq2QHdgoPwf1s4N17Ur79PBSG2WRrDbGBlWsXmnhnxGNzHD9lMorBBTsqKa7UYXv8UqqX+SyG7DvhnOjib2arDeomOCeWr3fNQsseFg+wPhfMOjhWlvgcFUsWViutJtIhpkuOzgFGUxorzmbIbY5fIUD/bXCyDriz5z2r0wtvfSOmUWc/9GaZkCV/18s+5rOGVo9j+Gg92YUuy51BRAvA2LYQvgMSPkiprc8l53U/pxWJNFamGObPo7P57ly507Jmc0UyCrMAZU6b2VOr5HA4/A3nX4SqSKBZOv+Nfcibf0jbw9jJ/DBmsqgXjKpCZoyUiP4QGxJ4w1s7cMTwshwyyb3s8penAF6sAK0VtHzinFk66JqEQdB5fslVQcmCi6iFRK+j6T+5DRo2md5pMnPPJVA/3JS7MLafwGwBuWAoCKPQXHQw19lsIyHAr+tV3pudLjpuVOdzNIvlz9iu2DmzEVLh3C5OA8WDw2g==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR04MB6739.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(366004)(186003)(1076003)(8936002)(33716001)(83380400001)(6506007)(38100700002)(6666004)(38350700002)(55236004)(6916009)(9686003)(6512007)(52116002)(54906003)(508600001)(66946007)(316002)(6486002)(66556008)(8676002)(66476007)(4326008)(86362001)(2906002)(5660300002)(26005)(33656002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?GzEc59HF21w03VxqlM6ReFS61Y6NstPTY+podrVQ7JXmjXXQVPNx1gfrrO3s?=
+ =?us-ascii?Q?CA6wSULfXftIcpCm7GI1BKICBm0HHdVvcmMsytwvQzYpoN5g7Y5n6314MAmN?=
+ =?us-ascii?Q?JJzUBvAdQIWJ6LvHNyCKv15PzX8htWCwmeb5qN64B7fSB+CfNDeAO8dcWWi9?=
+ =?us-ascii?Q?s+AAQfGyQMCFd9iNFVw3qlBDv5iew0huZwEfaba8xaEFPfscft/gJwJQ70kk?=
+ =?us-ascii?Q?fHCYzGcLXMVu1WHpKZ1b/FBIulCvXxL37h7pdx+oipIN0LltrvT2OB1KlqRG?=
+ =?us-ascii?Q?5oGiziuuhHF6jrSlC/qfIA9ipDbcfAEVeadNNn+jUmcHyuEXULtxZf6giFhD?=
+ =?us-ascii?Q?e8LwbE63vOdOeOzGrY5sJKHjskx5mEcTWruPoMpQp1c+M1k299fnkM/IUJIX?=
+ =?us-ascii?Q?8pTWKL2HquFsjsDZNxkhynjErOLuUAjbZjxAomgUgb9oZbBkDTdEt/QviZF4?=
+ =?us-ascii?Q?Cm4TXKUJNTFbrCpgxaF0CFHAwhPngdMqcL+hPNuSRN17Eq5UMHdsyiLwGqPI?=
+ =?us-ascii?Q?gZ/csKIwCaa+N6XWZydcKMNFbbogRHoFdOGIupweTSyO86KYDSy4No2TKBvN?=
+ =?us-ascii?Q?Fl6Pa00wev5ayZFuawm7E9ntojqSI7gKPUMPWdZ7+pdx+87YyOwSpSpPS41t?=
+ =?us-ascii?Q?cMbDeFYqX8ws8/aHAJnbHhZQzw3YJBwUwT6PByPaGRPFrDeF/t8mj4xmRnHI?=
+ =?us-ascii?Q?dQ7SeIuOSy5xSC7YcUDty8FuG+YPlfNPvb45upP4/I3Fa16V/lRpzRPM2iZ6?=
+ =?us-ascii?Q?YiWwRS6/+sDRdgGjfCMG7rPVjDbiz3DvQPmJqYVmlPn+77r7l2QdDvGV3fvh?=
+ =?us-ascii?Q?4rR6Iye3RKJkK9vFCVww5d81n4ZAvs8r85k6bq1Fb/CsoZkbQyfxxH7298mb?=
+ =?us-ascii?Q?IAWtE05vMMjSAcJidMgVYrKeKjHr6RJKSma/ihbfUcVzv1lEd2FyOgzSWlL4?=
+ =?us-ascii?Q?+/KBNNwuG083CG0GtO6PpytJd56CGm6xmWl5tmqDwOFOw1NQrkblnxhLsAE2?=
+ =?us-ascii?Q?ZNF2VIwffQH914Ic45TFCRVzD6a8qxGlONt5rJw4yNxfm2kcrJ71bBxoTSTA?=
+ =?us-ascii?Q?wd0nj/B2UEDkBQx1jtF2DYvuiD0kefPapTqJns2961dBPiYc050uhF2q6dvk?=
+ =?us-ascii?Q?yvg5UHDkaVmdXw6kZv6BX4h+M5zZQ5g/hT+CcvdUC+eUwj79klS+Ebu08lte?=
+ =?us-ascii?Q?XhioxXGFpGI5/Oa22kO0CqPysNujVDlgf79VvU5OGx3UjKJ0EWNVNUfwHqOf?=
+ =?us-ascii?Q?O5norcfOKVQfA86TP8NLh0RB6+xi409uPdHGyTHRP9XwJXZ96YR2TkT+ykv7?=
+ =?us-ascii?Q?Xn3FvRGMNABK3azHYUrvPESxXZ+AMuGF50CzdqBpez5TOpkDFWDvCoxqLWdN?=
+ =?us-ascii?Q?D7nCNS5i4k2fJNUeMU2SlLCpUbsHwOLRsf/qNWfSDGwosRw9J3QzMNLlB24C?=
+ =?us-ascii?Q?+qhVwU5B9n3XDAq7S8fFm0dXqX+LM1LB0bHTdbkwQkZc5uvDEX0OhrUniUCX?=
+ =?us-ascii?Q?/loD8KftEGSQ5wcyJIY2/GsJvmGf14arx+aybspO79tUHn5DCGnV8P/2T1FG?=
+ =?us-ascii?Q?ar70AOYtmMXlZfxYlA0MXqWZ2ePqmxUFJ45JiYbW7DxthL7Qw8v43OPUZ4Uz?=
+ =?us-ascii?Q?lQD/3agOPWqSKH5vj4ygy+AhkD0AOK0NDJiWySTw0u7CQgUWoKFm8IxNUYJW?=
+ =?us-ascii?Q?auVK+1kQLQXwU3UkoZ51gjPYrELNGZFyDM6exUtdCORfuYd19buNrZY/uqRG?=
+ =?us-ascii?Q?4xaIAgy22g=3D=3D?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3dd966cc-10d7-467c-fe51-08da4d20ac7c
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2022 09:39:55.7167
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: U0wEW2GQxiWRUUwJybJePv1JpYuxIVdToU/sIvOTf5n1GWam8EspYFc5mtdrehc1QZWm7JvbGIA69X2KkPeWfg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR04MB7472
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_023205_244152_B7E152BC 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20220613_024003_395195_546DCABD 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,80 +137,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8641702695116072613=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============8641702695116072613==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="A5J39+V/GstiCcPe"
-Content-Disposition: inline
-
-
---A5J39+V/GstiCcPe
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> From: Deren Wu <deren.wu@mediatek.com>
->=20
-> Move sdio_release_host() to final resource handing
->=20
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> Fixes: b12deb5e86fa ("mt76: mt7921s: fix mt7921s_mcu_[fw|drv]_pmctrl")
-> Reported-by: YN Chen <YN.Chen@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c b/drive=
-rs/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> index 54a5c712a3c3..1856d677fff4 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> @@ -156,9 +156,9 @@ int mt7921s_mcu_fw_pmctrl(struct mt7921_dev *dev)
-> =20
->  	err =3D readx_poll_timeout(mt76s_read_pcr, &dev->mt76, status,
->  				 !(status & WHLPCR_IS_DRIVER_OWN), 2000, 1000000);
-> +err:
->  	sdio_release_host(func);
-> =20
-> -err:
->  	if (err < 0) {
->  		dev_err(dev->mt76.dev, "firmware own failed\n");
->  		clear_bit(MT76_STATE_PM, &mphy->state);
-> --=20
-> 2.18.0
->=20
-
---A5J39+V/GstiCcPe
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYqcEDwAKCRA6cBh0uS2t
-rKi5AP9bBre9sLH9PTh+EH3Jr/qpaTrLs7r4oOzOHR1pYRujYwEA110zit1P/R1p
-V2NpPVVAmKVq5M9jc72S1elD2wL+hws=
-=1cka
------END PGP SIGNATURE-----
-
---A5J39+V/GstiCcPe--
-
-
---===============8641702695116072613==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+On Fri, Jun 10, 2022 at 03:02:13PM +0300, Heikki Krogerus wrote:
+> On Fri, Jun 10, 2022 at 12:17:54PM +0200, Greg Kroah-Hartman wrote:
+> > On Wed, Mar 09, 2022 at 10:34:01AM +0800, Xin Ji wrote:
+> > > USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+> > > and a port controller (TCPC) - may require that the driver for the PD
+> > > controller accesses directly also the on-chip port controller in some cases.
+> > > 
+> > > Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
+> > > 
+> > > Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> > > 
+> > > ---
+> > > V8 -> V9: Add more commit message
+> > > V7 -> V8: Fix Guanter's comment, remove unnecessary explain
+> > > 
+> > > Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> > > ---
+> > >  drivers/usb/typec/tcpm/tcpci.c                        | 3 +--
+> > >  drivers/usb/typec/tcpm/tcpci_maxim.c                  | 3 +--
+> > >  drivers/usb/typec/tcpm/tcpci_mt6360.c                 | 3 +--
+> > >  drivers/usb/typec/tcpm/tcpci_rt1711h.c                | 2 +-
+> > >  {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h | 1 +
+> > >  5 files changed, 5 insertions(+), 7 deletions(-)
+> > >  rename {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h (99%)
+> > 
+> > I need an ack by the typec maintainers/developers before I can take this
+> > (hint...)
+> 
+> I'm sorry for the delayed response.
+> 
+> Xin, you need to rebase this. It does not apply cleanly anymore.
+> 
+> thanks,
+> 
+> -- 
+> heikki
+Hi heikki, OK, I'll rebase on the latest code and resend.
+Thanks,
+Xin
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8641702695116072613==--
-
