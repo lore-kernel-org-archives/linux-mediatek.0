@@ -4,86 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A62C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 09:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E17EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 10:00:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ijAghkvLs38f0HskgEBJb+AOm9TPgo7RtmjpOnYzgD0=; b=utGT3dnzxI6DLL
-	Dhkg5hFsBFq9Ja/N6ijmprslOe+r+SgrBwLxzT1AOkBGz+PE36LF181BArENv3XnpIDgkPJXCf6vd
-	LE7+r/sDNQ+oW5GKQKLV7Zey3aHcbM1XHAzGlxOMGZSQqnIfm2FmsyE/FP6RmkwLZNVivYhePhYaR
-	RBj/D2gjv6YUSIgLnbJM07LRPaSmXgCopF12XjEQJ0aFLi8E7MEFZIwz4WqfrNgdPvMgCQSWzyqsE
-	AU+SK85Ve4UN58oUFcV0ZEKQlLs5MDq4cgtV4BKKyphc8FCEKLjINiozxWrYOa9VlbDoHASK8tCws
-	QxbMdVYM9w3ZWK9Tm8EA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FaNSsa97gVqLjJRFWytLrXwFd54p0NBmhgZzZBwLosk=; b=qE/SG4V7UQh4k9
+	d//lARN6mlrFKMDvVMhbsHVYJxcJp21u1id/qbOEaA47575VsI05uUKuc1gdgOQhqAMwbPlmhEKvZ
+	fBTbYFpRCZkR7UtM/obEGVotHiKb9McHelplCb7HQnXQb/GlGILMoaLlmPwx9AR2GM+wX9R6PH0PK
+	UXxWDjhZgc//ftjLMTwrDCtTwPICXdMeUXMhnY3njQzbkFDfI4Fex4cv1wI1V5T+IgDmODoAsmpjH
+	ABH/dbdeFXqgT0GvmegfVwtOzy1W2hEhaeuGW6kEQ1lmmdcnmlABObpbKqtpfDheK1PFa4Q4PR42z
+	RNUGeFVdRaTUP9AKyAIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0gpe-002iCr-IU; Mon, 13 Jun 2022 09:58:02 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
+	id 1o0gs4-002jcv-4I; Mon, 13 Jun 2022 10:00:32 +0000
+Received: from mail-dm6nam12on20702.outbound.protection.outlook.com ([2a01:111:f400:fe59::702] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0gmq-002gR9-K5; Mon, 13 Jun 2022 09:55:09 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25D7jncr030852;
-	Mon, 13 Jun 2022 04:54:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=PODMain02222019;
- bh=SAL9QBrR9Hifnxdadv6LtK1riDzGLGAzq1j5dDkQ/eE=;
- b=YSEazX0uO5GV3d6eprUPFqBpY2HPFw6tjVtpSwFjm3pPOCyD6SFrbQuT8qP8aTpkafDG
- wEMwsYZTSezO57v7oNilz7MY86TJm4g9OiORe+E7d5kLh74zbgbf6wXjUpBlmEMbG8H6
- 9xgtekY2JVsWrI1WFghS9KWch1o2j/pFUmPWiGjLFQqZgwvmN/ZSCq4a8Nzev/hxGIaI
- 067Wj8AJx34nIpY4KIQbEKUU5w5DkIZnl8ZWtlBRglqaIwVerccqsUrkRpF0VTgpw5/W
- 8eqrcUGfEwdkdNFAaj8W5vDvtbi+DB3ikcOmlpx6B/W4dW4VZCSzcPsBWfNJkdOGtTqz hA== 
-Received: from ediex01.ad.cirrus.com ([84.19.233.68])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3gmrf31py0-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Mon, 13 Jun 2022 04:54:55 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Mon, 13 Jun
- 2022 10:54:53 +0100
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Mon, 13 Jun 2022 10:54:53 +0100
-Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 2C2AD11D1;
-	Mon, 13 Jun 2022 09:54:53 +0000 (UTC)
-Date: Mon, 13 Jun 2022 09:54:53 +0000
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Mark Brown <broonie@kernel.org>
-CC: Samuel Holland <samuel@sholland.org>, <linux-sunxi@lists.linux.dev>,
-        <peter.ujfalusi@gmail.com>, <pierre-louis.bossart@linux.intel.com>,
-        <linux-imx@nxp.com>, <krzk@kernel.org>, <jarkko.nikula@bitmer.com>,
-        <linux-xtensa@linux-xtensa.org>, <cezary.rojewski@intel.com>,
-        <shawnguo@kernel.org>, <linux-mediatek@lists.infradead.org>,
-        <nicolas.ferre@microchip.com>, <patches@opensource.cirrus.com>,
-        <linux-amlogic@lists.infradead.org>, <srinivas.kandagatla@linaro.org>,
-        <daniel@zonque.org>, <linux-mips@vger.kernel.org>,
-        <linux-tegra@vger.kernel.org>, <nsaenz@kernel.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>, <heiko@sntech.de>,
-        <alsa-devel@alsa-project.org>, <kernel@pengutronix.de>,
-        <jbrunet@baylibre.com>,
-        Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-        <linux-rockchip@lists.infradead.org>, <linux-omap@vger.kernel.org>,
-        <lgirdwood@gmail.com>
-Subject: Re: [PATCH 00/56] Specify clock provider directly to CPU DAIs
-Message-ID: <20220613095453.GB38351@ediswmail.ad.cirrus.com>
-References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
- <165478153064.1052094.1721875477574787769.b4-ty@kernel.org>
- <2a498819-dbbf-31c1-4145-bbd2d7179bd8@sholland.org>
- <YqMy/FkxDPKmzdrB@sirena.org.uk>
+	id 1o0gs0-002jaS-AG; Mon, 13 Jun 2022 10:00:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZSkFzALmiY5irzFDAvJff6VTrP5RC2N+3Ooft0MTRoNyC3MoQrFo858azFQLsdqqmKl+RpDauEwbmO0/1gZQ78k+zJWs/HtFpedrnrKaTNwC/AWozsM8Da3yrIiBSk49whSts0342Pum5QWQCxMjXucZdaHLIY7ectxIpPMyG4Ts0eVuJZdA9wUxizZS3HyPKs8H9A3kTGp1l6RqxuPcieTD/mwIETcRBWIPHkDHFBqrd8GsLDF8qH5Fk6ew8J+IeSQ5aZ9YIcT4wUV4o4y5L8Y3Qoql/zadEP0td0dw7lYiE9IoXevcdmUooHYxKi4Sqdp6Y7+H0CLDIsT+SwcOdQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nNx1TNd02XU5nWbvCJwS79wPQDHEkqOQKTYwqrHRfuY=;
+ b=gRou4IIXjO101fls1peIoxCmv372xFAff7VX8TnyPUo7hMCSbjmik8Pbb7DkMdGlRyUcmE4/MR0kjtPdeyqfxR5q6VIHeWrAI/3nsKxr5wS1mdMeFG546pVVFjir0bNrw+riFezslhw9j0S7lJNRHFyt3P3kxgOX96aDM/zNk4h64+VkY1dEw5CppC634Eof9JbM1H3phmk/QJGvhql8YyoSfCBG+oGRIa6Uq2CERQLwgZ+14zDIj/XOV8oz8+pmANAecWkl5p/aQhQcylzeA9AApjL2xDtWa+pM2+MxjHFQvLgqRd0U5qYfoJxqF5lj/RGCF0hDlChElwo05JmNvQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nNx1TNd02XU5nWbvCJwS79wPQDHEkqOQKTYwqrHRfuY=;
+ b=B9Yov0X8A0MRCVP57moVuQftyFM4gF06YBFMpH7gk6ZLdePYWrSSB8TfmfXp4ikQa38s6+W8BnXrAW/QmzRC4KaE7WFgCfdd3kp34EGWTPKideBKyBjyzHLShJ90k2VX3KLo4jlCHs1XU6UTAUHjDIQJqVOQlHmR1JhU0L5+4cI=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by SJ0PR04MB7229.namprd04.prod.outlook.com (2603:10b6:a03:297::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.13; Mon, 13 Jun
+ 2022 10:00:24 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::ec96:5112:c2d5:9377]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::ec96:5112:c2d5:9377%8]) with mapi id 15.20.5332.020; Mon, 13 Jun 2022
+ 10:00:24 +0000
+From: Xin Ji <xji@analogixsemi.com>
+To: Guenter Roeck <linux@roeck-us.net>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: bliang@analogixsemi.com,
+	qwen@analogixsemi.com,
+	jli@analogixsemi.com,
+	Xin Ji <xji@analogixsemi.com>,
+	linux-usb@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v10 1/3] usb: typec: tcpci: move tcpci.h to include/linux/usb/
+Date: Mon, 13 Jun 2022 17:59:54 +0800
+Message-Id: <20220613095957.1669829-1-xji@analogixsemi.com>
+X-Mailer: git-send-email 2.25.1
+X-ClientProxiedBy: TYAPR03CA0019.apcprd03.prod.outlook.com
+ (2603:1096:404:14::31) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YqMy/FkxDPKmzdrB@sirena.org.uk>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Proofpoint-GUID: UiaFdV3e1tP7Nx8vGVE1XxJr6gdm5Oey
-X-Proofpoint-ORIG-GUID: UiaFdV3e1tP7Nx8vGVE1XxJr6gdm5Oey
-X-Proofpoint-Spam-Reason: safe
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 4fb17ac3-bd35-4bc8-0190-08da4d2388e4
+X-MS-TrafficTypeDiagnostic: SJ0PR04MB7229:EE_
+X-Microsoft-Antispam-PRVS: 	<SJ0PR04MB7229DB91B73AF0E73E3D80F4C7AB9@SJ0PR04MB7229.namprd04.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	ts+Xckk0hd3MYWa8X+zCCRnO1FB7s8hopKI9mzJ3pal6bSNFiWOBmB9N+OLFl/+zGuIDoINxGJ6nFOM6cHoNiVuKUKc1oMOx8KEXsC985uxWJ9vfGHO0a0a5cJTPOUNHBvYaHkE7iCIDEb/FRz19LG5Nk9YN0r5ybdMz4kvBsuOgl7/lJm9/6ZmdGFhNPPHJa9h1y6cOxNieZc0RtqQgZecm/v0VeQEoOIRLxVFnNkrdFjZG+I9IT/yF8R5VmViimewMXy2m39yMIC1hsdoryov3V0zebLKjqbsemYWNpwTmWKlFNLYGVEYakQHlZdnnk1qqN3Ot51X114ZtTn3gDNjvNvNb2Kq0Cdwwp19woJol5+XkGlNEc6y4ouapHVsBUzZc00D1DFLz8XeDsFkn3yg9nQIz/sF418mj34ssjkVo/PeWvsDQHoyHw+j5ZWF8czEHvekTH+sPxdaRZXb0mIhXYqMaScRhTDkPNz/ZIfZtO3m8BEOxwoKmyHhFrgwK0t2oUZYkpQ53LMKc8yAJXFs5zOhcfGNg77QgsGcyLs/dzzXAhz7oLIRs3/TnMH6FQlHtqxA2QwTMucp9UTQofdPfLaNBNvuUAKN4zM0FqSkhG/hZX5tzvGWsMlajaYzJYWtX1E7t2oKl0KkJC0gteSAvXn7JlJuRa513JVN/l7J93cmDtWBdxD9Ht7GF7iS9NLJHjexddYIzzgV3hqNcKw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR04MB6739.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(366004)(110136005)(316002)(36756003)(83380400001)(186003)(2616005)(1076003)(8936002)(508600001)(5660300002)(6486002)(4326008)(66946007)(8676002)(66476007)(6666004)(66556008)(2906002)(55236004)(38350700002)(52116002)(38100700002)(26005)(6506007)(6512007)(86362001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?xlBEOGTPFyCNm6tmJZm5+tdc87672IE7mPffgg2WzTz6eNNN6qxvxdKHU7Rx?=
+ =?us-ascii?Q?sv496EuLdQZX6Nieuk/ycIUbaGCj4Gs2DN443BEuFPMvwAMzONrJPxNiDaqO?=
+ =?us-ascii?Q?i90NYhQTtVaqtVoFS3iIOwdncN4y3ZNcN16Bysu+3ZzGxcy2RGxLpIPS20ng?=
+ =?us-ascii?Q?Ar04Zlca+Bc1dfyhwhH1veeRUI1q4ejRmLAWClzZ+hVRXI/iYDWVXxpe6atd?=
+ =?us-ascii?Q?BlLVQtv1vHKAtGX1k+67T5aZJQlMiyFvgd2mLc01NKFY/JJb8ARaQdD7kUWI?=
+ =?us-ascii?Q?ppSzn9QFgB4TTbXxt0D1Tf8IcR8D0pghO969RQ0vLDSlQSaCcHs3FKYrrWAq?=
+ =?us-ascii?Q?WXd67nUBjpHNfviCJ18hKKxhc8c1mek3yzGpQAM5LWb38ua/8UbVpwtEtP3S?=
+ =?us-ascii?Q?fbks+oIw3Ve0mf+/0XN9tEamRTVXaTLd8ntH2hNKRd/AKS86r3ysptzxyApI?=
+ =?us-ascii?Q?IKV+R8EGmMEI3vl8II1WyVH01Z7q8nQLrVnYddqKI9IAkG7rCTpKflqcHasa?=
+ =?us-ascii?Q?rEgKkQqm5csylsoxoWOPwbwAGIrwTgoUidADUtosFtTiOOi288VvAl+Tmbqw?=
+ =?us-ascii?Q?M0JEtNksqLtlLjz6oev6hQqXAjusOlyXtToyYmp8zxfWuXcZmmk3fsqU96ny?=
+ =?us-ascii?Q?/lET9ysAUbVHQoQPWiVJdys++wy9N1xd8gjx+lcvWimV/4CZXwSKDOW1Wf/G?=
+ =?us-ascii?Q?kjh8rVrAR0hBw140ixy5IZe11nNdm0jOPGSD3ZUy0zAxx7LxU0wtiTDdgcUi?=
+ =?us-ascii?Q?8yy+muyrLHpRXUBIme/d8AohDMFcQAVqbUkTwq+zrJGp1ojFvkosq/q/fUeN?=
+ =?us-ascii?Q?opFys24d7a5JS5a0Hej5jNohSxX17gp/HUVPUtrYGqwULRMvrRPIi+fsWT2v?=
+ =?us-ascii?Q?aRKPed1BdiBkiIfV9n0/2zgUORew0rX8tJYHFdx6Da1UrrJQZsWrcLDjFm1q?=
+ =?us-ascii?Q?Hw3VavVDCMCeyKaayHayOfHvHHvuZoyO4SUIVebG0h5F8DV2VjAe1gsEQbit?=
+ =?us-ascii?Q?oU2MOIzzixtOCHyi0ANaA5IWrHU7iJ1EH4qcO8WlEfijoHj8wA9+Ao/c/F6y?=
+ =?us-ascii?Q?k/S+YCpGoQGXFRtUyujZrwQX60m0qLZJtSPTMeiYgP3XwFwouw4p/ibX7fQR?=
+ =?us-ascii?Q?+GyK83to+nzaLXPdg8s0OOe+POzyGyUnUllOerG+ouIubFvFC2LC9tF89Vs1?=
+ =?us-ascii?Q?bpeLSSRiU/5wt+SgWMoRYVmlX6oLyt9VDrwvI4+nRYtFs97zxuDva0h2+G1G?=
+ =?us-ascii?Q?UyEJo6qqCcSZUj34bpIbEFgNL3TUBNntJR9kstjnoR22Kp9FMbs/1EP9iQ7w?=
+ =?us-ascii?Q?3waIlsYr53RJl8kWYssa5zvLrsZ9Glo76osggbwQIWjCVUlCYLh+N8Mm5hdL?=
+ =?us-ascii?Q?gyjLbS2h066CEvz14AtDoQZEfbkjGo4zU7sgrOOeoRSifPC+Dzm3/V0GbER6?=
+ =?us-ascii?Q?eNWOdbi2SiUJD8eFCVsDtCQmghnB+6dN07RVt2BUl0qHL2fL0cJn6ebjzDs4?=
+ =?us-ascii?Q?HuzHd14gthThdfZSkkV8dTwxVjPrNaW5OHA4xxN1+bepLPs7eKBta9DrCPzU?=
+ =?us-ascii?Q?PC/5cdIG9JOlssakN2zTUAnSH+LSM3oom+9SEKrSlgvMNrBYv/Lprg8UZOA3?=
+ =?us-ascii?Q?L0Zb3q/jbwtQ6T+k6r66GcXKp6ADW9DGSfpSNPbDbahqo7kQx54MXrmDCxeI?=
+ =?us-ascii?Q?cfCRxDA7PMuz+mG18i6byvtVD8Q0bVktX1mm0JTmYIz2m/ClB+LHiHR75DA3?=
+ =?us-ascii?Q?8Ln/Tc9CcQ=3D=3D?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4fb17ac3-bd35-4bc8-0190-08da4d2388e4
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2022 10:00:24.3590
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6CzJtO4prZm99cBwj2a8CHAWXtl+KYsqDGaHO/4seWlNDNY0EyY8dDDzD018NmP9dfY42E0D97satRXxeQyYHA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR04MB7229
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_025508_698247_049E0C1D 
-X-CRM114-Status: GOOD (  18.09  )
+X-CRM114-CacheID: sfid-20220613_030028_414618_6C51E0E8 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,32 +141,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 10, 2022 at 01:03:08PM +0100, Mark Brown wrote:
-> On Thu, Jun 09, 2022 at 09:03:15PM -0500, Samuel Holland wrote:
-> > On 6/9/22 8:32 AM, Mark Brown wrote:
-> > > On Thu, 19 May 2022 16:42:22 +0100, Charles Keepax wrote:
-> 
-> Please delete unneeded context from mails when replying.  Doing this
-> makes it much easier to find your reply in the message, helping ensure
-> it won't be missed by people scrolling through the irrelevant quoted
-> material.
-> 
-> > > [22/56] ASoC: sunxi: Update to use set_fmt_new callback
-> > >         commit: 7cc3965fde74c9c725ed01de4ac35bc7d562d16a
-> 
-> > This patch is wrong, which I pointed out earlier[1]. It will break audio on the
-> > Allwinner A33 and A64 SoCs. Charles said he would send a v2[2]. Excluding the
-> > changes to sound/soc/sunxi/sun8i-codec.c from the patch would fix it.
-> 
-> Your mail doesn't say that this will break, it says the change is
-> unexpected.  In any case, please send an incremental fix - there's no
-> need to revert the entire series for this.
+USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+and a port controller (TCPC) - may require that the driver for the PD
+controller accesses directly also the on-chip port controller in some cases.
 
-Apologies guys was on PTO last week, I will send an incremental
-fix today to patch up the issues.
+Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
 
-Thanks,
-Charles
+Signed-off-by: Xin Ji <xji@analogixsemi.com>
+
+---
+V9 -> V10: Rebase on the latest code
+V8 -> V9 : Add more commit message
+V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+---
+ drivers/usb/typec/tcpm/tcpci.c                        | 3 +--
+ drivers/usb/typec/tcpm/tcpci_maxim.c                  | 3 +--
+ drivers/usb/typec/tcpm/tcpci_mt6360.c                 | 3 +--
+ drivers/usb/typec/tcpm/tcpci_rt1711h.c                | 2 +-
+ {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h | 1 +
+ 5 files changed, 5 insertions(+), 7 deletions(-)
+ rename {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h (99%)
+
+diff --git a/drivers/usb/typec/tcpm/tcpci.c b/drivers/usb/typec/tcpm/tcpci.c
+index f33e08eb7670..812784702d53 100644
+--- a/drivers/usb/typec/tcpm/tcpci.c
++++ b/drivers/usb/typec/tcpm/tcpci.c
+@@ -13,11 +13,10 @@
+ #include <linux/property.h>
+ #include <linux/regmap.h>
+ #include <linux/usb/pd.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ #include <linux/usb/typec.h>
+ 
+-#include "tcpci.h"
+-
+ #define	PD_RETRY_COUNT_DEFAULT			3
+ #define	PD_RETRY_COUNT_3_0_OR_HIGHER		2
+ #define	AUTO_DISCHARGE_DEFAULT_THRESHOLD_MV	3500
+diff --git a/drivers/usb/typec/tcpm/tcpci_maxim.c b/drivers/usb/typec/tcpm/tcpci_maxim.c
+index df2505570f07..4b6705f3d7b7 100644
+--- a/drivers/usb/typec/tcpm/tcpci_maxim.c
++++ b/drivers/usb/typec/tcpm/tcpci_maxim.c
+@@ -11,11 +11,10 @@
+ #include <linux/module.h>
+ #include <linux/regmap.h>
+ #include <linux/usb/pd.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ #include <linux/usb/typec.h>
+ 
+-#include "tcpci.h"
+-
+ #define PD_ACTIVITY_TIMEOUT_MS				10000
+ 
+ #define TCPC_VENDOR_ALERT				0x80
+diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+index 8a952eaf9016..1b7c31278ebb 100644
+--- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
++++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+@@ -11,10 +11,9 @@
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ 
+-#include "tcpci.h"
+-
+ #define MT6360_REG_PHYCTRL1	0x80
+ #define MT6360_REG_PHYCTRL3	0x82
+ #define MT6360_REG_PHYCTRL7	0x86
+diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+index b56a0880a044..3291ca4948da 100644
+--- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
++++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+@@ -10,9 +10,9 @@
+ #include <linux/i2c.h>
+ #include <linux/interrupt.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ #include <linux/regmap.h>
+-#include "tcpci.h"
+ 
+ #define RT1711H_VID		0x29CF
+ #define RT1711H_PID		0x1711
+diff --git a/drivers/usb/typec/tcpm/tcpci.h b/include/linux/usb/tcpci.h
+similarity index 99%
+rename from drivers/usb/typec/tcpm/tcpci.h
+rename to include/linux/usb/tcpci.h
+index b2edd45f13c6..20c0bedb8ec8 100644
+--- a/drivers/usb/typec/tcpm/tcpci.h
++++ b/include/linux/usb/tcpci.h
+@@ -9,6 +9,7 @@
+ #define __LINUX_USB_TCPCI_H
+ 
+ #include <linux/usb/typec.h>
++#include <linux/usb/tcpm.h>
+ 
+ #define TCPC_VENDOR_ID			0x0
+ #define TCPC_PRODUCT_ID			0x2
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
