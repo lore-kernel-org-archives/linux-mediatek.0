@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A59DC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 11:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBBFC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 11:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=txqITLTtw7khoBKhwdl/1MGUTaKaH+U29hcDFhGcF7Q=; b=W1tO6/rzioyl/u
-	BNvEwUK3Do7nR3EtXaOLzKt+QqHi0m9mcZ9CyeQQfz53+jxtMPrMBO+qPwbUbKWInFNP05f9c0+54
-	x4V0rhdZISYbufY6QDCP3tWQYOGn/mUvnfaPYXUr6jyRxHwqJJ0XqmlpeODbwR6OLOtD+1q+h7UDA
-	tboR1oPCEzqsgRJ0u1a6zZraZvd+tQsIKaLuY+DqwZq96ZH0j85gUe+XrNboYpGTagbkeaJndxvwK
-	LH7Qrz50GSTBr0CwHdXwMZoEmdXjaBBOl8kM7Ce0QpcXKfImDVDhcdoLcglajMS6wRIzmzerq0/KC
-	xw2cPwwFB7sIx6xRXMMA==;
+	List-Owner; bh=1Y47W8GjGemFqrziLu2zTP0UDq7GiXBfSlIAWHRaqG4=; b=m7L50iChvEq6fJ
+	uojcwkdN0UDkvciijInDAhdVqznQGWymVudaRX3yGesBrMwms/9MGj55ieVC85rq58f6QnF7hSXTL
+	Pkl2Sbui56I0rC2AlhAgaBZtlxax/zdE2ChRbfcPW5wE7ErFpJn+qV/h3t3OZU2PADLoz3JV08th1
+	5DkRaodu8l0zlnfxr/dxrr22FU/AA47AnXUEUtwaioIV48a3phFp8nb0iJeaGSYOazfBXQddbf74G
+	y5eUtUPdqQfOWCpTvVLFe7tjYRAHCURtIeJpt1ZAmNk2wClMrkYd0/fwjsNkw3aHu0Q8oIqW6R5Ye
+	60/UKQJNNHN3S2/oxIbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0i2I-0037Pt-B8; Mon, 13 Jun 2022 11:15:10 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1o0i2g-0037dq-Uy; Mon, 13 Jun 2022 11:15:35 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0i0O-0036PV-VH; Mon, 13 Jun 2022 11:13:15 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id k12-20020a17090a404c00b001eaabc1fe5dso2641401pjg.1;
-        Mon, 13 Jun 2022 04:13:12 -0700 (PDT)
+	id 1o0i0S-0036SG-Qz; Mon, 13 Jun 2022 11:13:18 +0000
+Received: by mail-pg1-x544.google.com with SMTP id 129so5257536pgc.2;
+        Mon, 13 Jun 2022 04:13:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=fmQY6vSeK8Zc6KodLnbJm1/BoNk/JBGKEN17gVySBcE=;
-        b=k+B4IXfSX+zP8uIUj7zzU5GPRDui0LJDVrFVnFwfb1Wcd0uK8cuKNQ9Vb9bRCa3gOT
-         krfaM6pqot/3oykApmdkQxJ2RKzxmwc4f3Ohr+IY9mEbc4oB8KYjSEqqFWBiMoKx3quX
-         jTrHc0DrMaD+R0BT09CPife77Kf56sL+/19MyJYgyLS3xA6iLGgntHGEwDcxqeu0OwDv
-         9hKcWA0MzLcscIhnj4JXfMT2xB2Y4xMyywrfAsASmhF0iU+djVIXdpX++ZR3T8o5V+WU
-         c2Ki4ISrswT741BeTI8vwoD0zcBjAKfyK8w3ONBZPZJ1aZkByjVARGgehvx8eNvHfyEu
-         GtUQ==
+        bh=hf4jIbSC0d5YY8s9rqomM6DgVm8XNv+YrOYwUOgBoNA=;
+        b=LXWqlDW2i8o2CD+D6fikYhundWq6bCB6giHGiPurlzrtGHlwsplK3mx8a1NdxqTICD
+         wQUiqLRKDT8VJLctE8Qyo1+yYsGZFNdBFubmnLWippbPRgB6MF9yVDZQoRuKJIdueXwO
+         FM0jRPYl1fOnL/6rWLdXogGSFa2a5FpcWfZvQwec1lfsdVIoykmgXW9fd6LWHSAckdDP
+         uxwPG0WS7/ESWkyuaAWgiASgRQQTdn9KLVQX1N8MvZI5kykft1vw8fvoOyjrwfEHNHKq
+         p+yMOHkQEeFAkgJboqBBrgVM9NFCYLmM+itqsX9KU3HC5HJKe4SKoCUiaIXnJh74LlB5
+         p/uQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=fmQY6vSeK8Zc6KodLnbJm1/BoNk/JBGKEN17gVySBcE=;
-        b=QCwTkPiLVXoivlwsdj0AfMrCNaMJeJAGHs0DTlVNDE2qhbGLHKKf08Kyulr2kvmnOH
-         4kEdMx7P0+qNYehSlMnzkYKBBRy50XKfXJivQnXiyU5/5ysmmFE/P7px8CBAJw/cntmW
-         g+InjThuI802TlaxU49yvR5urFJN8+EzWMjzMxbXqaklWwE2x0WuwPZEmVlUroedFj9n
-         ETYzCegFp0qwDYOIphN3Pg5z4Zdgqr6l6hlx4//o9qvfISwa9/ASjfuHpIgdnR7tRPJ0
-         /erc/TTfwBMk2NIJKTDUHukFnp4JsWWPelLgntIRSEYqNUWL39WXlzBZ/fwLQ8JqW8m1
-         +RPA==
-X-Gm-Message-State: AOAM531haO9qw8/NvQQr/NeYcXCgJJJuGppihcOvrSQPZvvsZTcrlQYb
-	Xjeshcow0dfwUf5WRs3PkO4=
-X-Google-Smtp-Source: ABdhPJxO8aTvAB3mFtzrML3I5aFfT6DN4rqUVR7l4BTxvDEFKDzUYQXlzCUwmwKURsGmc4DPaPX0+A==
-X-Received: by 2002:a17:902:d2ce:b0:167:7637:7025 with SMTP id n14-20020a170902d2ce00b0016776377025mr40909237plc.37.1655118791614;
-        Mon, 13 Jun 2022 04:13:11 -0700 (PDT)
+        bh=hf4jIbSC0d5YY8s9rqomM6DgVm8XNv+YrOYwUOgBoNA=;
+        b=nfo2FUMvKUJmhOVYqPriV734IopxLAj2gadFSEiuSji5jvnQCQ1aizVuq7fY63JWOM
+         SelJ0g4IMo00tdCZU5H08p4ZIUZJZkoilOOTPG23H3zJ6XhSrcBir0KU3OXYTrgjsQ4e
+         t3S7FiDg7e0Hsipzs+satN7oKWZQlg1zm901GyJWFP/h0fr1LVV/fDPA8rDTmUmSI4i3
+         7G47ou37NodwcRVfBBb82IkLrs+MieBSgWj7EfGomeOSlRyfLkbboKC96GNczRxA2qw9
+         OoGQPKcv5c/jVbsP8O4uJ1q4bIM1INZGbYfsu/3mAETqz2nCvYIhfVg5BNSBTuAT0XDE
+         pK6Q==
+X-Gm-Message-State: AOAM533qMbGwgXc6NgMg2qnMydbbzPMcUqjp8RF8VISWTHLxAlcMW0U7
+	fMxadJ1pnefjM9gnd2D7ZQ4=
+X-Google-Smtp-Source: ABdhPJy91L1cAhQPwaeU8vYLmrVlKb6COYEVKqbPaII+8J9gUc3Xz+wkNkvJMcJwWCAFDLtI1fb5tQ==
+X-Received: by 2002:a05:6a00:18a9:b0:51b:f63b:6f7c with SMTP id x41-20020a056a0018a900b0051bf63b6f7cmr47127824pfh.49.1655118796098;
+        Mon, 13 Jun 2022 04:13:16 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-72-115-109.emome-ip.hinet.net. [42.72.115.109])
-        by smtp.gmail.com with ESMTPSA id g17-20020a056a000b9100b0051b4e53c487sm5199989pfj.45.2022.06.13.04.13.07
+        by smtp.gmail.com with ESMTPSA id g17-20020a056a000b9100b0051b4e53c487sm5199989pfj.45.2022.06.13.04.13.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jun 2022 04:13:11 -0700 (PDT)
+        Mon, 13 Jun 2022 04:13:15 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: jic23@kernel.org,
 	lars@metafoo.de,
@@ -78,17 +78,17 @@ Cc: linux-iio@vger.kernel.org,
 	linux-usb@vger.kernel.org,
 	linux-fbdev@vger.kernel.org,
 	szunichen@gmail.com,
-	ChiYuan Huang <cy_huang@richtek.com>
-Subject: [PATCH v2 06/15] dt-bindings: mfd: Add Mediatek MT6370
-Date: Mon, 13 Jun 2022 19:11:37 +0800
-Message-Id: <20220613111146.25221-7-peterwu.pub@gmail.com>
+	ChiaEn Wu <chiaen_wu@richtek.com>
+Subject: [PATCH v2 07/15] Documentation: ABI: testing: mt6370: Add ADC sysfs guideline
+Date: Mon, 13 Jun 2022 19:11:38 +0800
+Message-Id: <20220613111146.25221-8-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220613111146.25221-1-peterwu.pub@gmail.com>
 References: <20220613111146.25221-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_041313_078996_ED295CDE 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20220613_041316_895512_308353A3 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,327 +105,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+From: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Add Mediatek MT6370 binding documentation.
+Add ABI documentation for mt6370 non-standard ADC sysfs interfaces.
 
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 ---
- .../bindings/mfd/mediatek,mt6370.yaml         | 279 ++++++++++++++++++
- .../dt-bindings/iio/adc/mediatek,mt6370_adc.h |  18 ++
- 2 files changed, 297 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
- create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
+ .../ABI/testing/sysfs-bus-iio-adc-mt6370      | 36 +++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 Documentation/ABI/testing/sysfs-bus-iio-adc-mt6370
 
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+diff --git a/Documentation/ABI/testing/sysfs-bus-iio-adc-mt6370 b/Documentation/ABI/testing/sysfs-bus-iio-adc-mt6370
 new file mode 100644
-index 000000000000..6c2639e81e50
+index 000000000000..039b3381176a
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-@@ -0,0 +1,279 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mfd/mediatek,mt6370.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/Documentation/ABI/testing/sysfs-bus-iio-adc-mt6370
+@@ -0,0 +1,36 @@
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage0_raw
++KernelVersion:	5.18
++Contact:	chiaen_wu@richtek.com
++Description:
++		Indicated MT6370 VBUS ADC with lower accuracy(+-75mA)
++		higher measure range(1~22V)
++		Calculating with scale returns voltage in uV
 +
-+title: Mediatek MT6370 SubPMIC
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage1_raw
++KernelVersion:	5.18
++Contact:	chiaen_wu@richtek.com
++Description:
++		Indicated MT6370 VBUS ADC with higher accuracy(+-30mA)
++		lower measure range(1~9.76V)
++		Calculating with scale offset returns voltage in uV
 +
-+maintainers:
-+  - ChiYuan Huang <cy_huang@richtek.com>
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage4_raw
++KernelVersion:	5.18
++Contact:	chiaen_wu@richtek.com
++Description:
++		Indicated MT6370 TS_BAT ADC
++		Calculating with scale returns voltage in uV
 +
-+description: |
-+  MT6370 is a highly-integrated smart power management IC, which includes a
-+  single cell Li-Ion/Li-Polymer switching battery charger, a USB Type-C &
-+  Power Delivery (PD) controller, dual flash LED current sources, a RGB LED
-+  driver, a backlight WLED driver, a display bias driver and a general LDO for
-+  portable devices.
++What:		/sys/bus/iio/devices/iio:deviceX/in_voltage7_raw
++KernelVersion:	5.18
++Contact:	chiaen_wu@richtek.com
++Description:
++		Indicated MT6370 CHG_VDDP ADC
++		Calculating with scale returns voltage in mV
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt6370
-+
-+  reg:
-+    maxItems: 1
-+
-+  wakeup-source: true
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-controller: true
-+
-+  '#interrupt-cells':
-+    const: 1
-+
-+  adc:
-+    type: object
-+    description: |
-+      Provides 9 channels for system monitoring, including vbusdiv5, vbusdiv2,
-+      vbat, vsys, chg_vddp, ts_bat, ibus, ibat, and temp_jc.
-+
-+    properties:
-+      compatible:
-+        const: mediatek,mt6370-adc
-+
-+      "#io-channel-cells":
-+        const: 1
-+
-+    required:
-+      - compatible
-+      - '#io-channel-cells'
-+
-+  backlight:
-+    type: object
-+    $ref: /schemas/leds/backlight/mediatek,mt6370-backlight.yaml#
-+
-+  charger:
-+    type: object
-+    $ref: /schemas/power/supply/mediatek,mt6370-charger.yaml#
-+
-+  tcpc:
-+    type: object
-+    $ref: /schemas/usb/mediatek,mt6370-tcpc.yaml#
-+
-+  indicator:
-+    type: object
-+    $ref: /schemas/leds/mediatek,mt6370-indicator.yaml#
-+
-+  flashlight:
-+    type: object
-+    $ref: /schemas/leds/mediatek,mt6370-flashlight.yaml#
-+
-+  regulators:
-+    type: object
-+    description: |
-+      List all supported regulators, which support the control for DisplayBias
-+      voltages and one general purpose LDO which commonly used to drive the
-+      vibrator.
-+
-+    patternProperties:
-+      "^(dsvbst|vibldo)$":
-+        $ref: /schemas/regulator/regulator.yaml#
-+        type: object
-+        unevaluatedProperties: false
-+
-+      "^(dsvpos|dsvneg)$":
-+        $ref: /schemas/regulator/regulator.yaml#
-+        type: object
-+        unevaluatedProperties: false
-+
-+        properties:
-+          enable-gpio:
-+            maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - interrupt-controller
-+  - '#interrupt-cells'
-+  - regulators
-+  - adc
-+  - backlight
-+  - indicator
-+  - tcpc
-+  - charger
-+  - flashlight
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/leds/common.h>
-+    #include <dt-bindings/iio/adc/mediatek,mt6370_adc.h>
-+    #include <dt-bindings/usb/pd.h>
-+    i2c {
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+
-+        pmic@34 {
-+        compatible = "mediatek,mt6370";
-+        reg = <0x34>;
-+        wakeup-source;
-+        interrupts-extended = <&gpio26 3 IRQ_TYPE_LEVEL_LOW>;
-+        interrupt-controller;
-+        #interrupt-cells = <1>;
-+
-+        mt6370_adc: adc {
-+          compatible = "mediatek,mt6370-adc";
-+          #io-channel-cells = <1>;
-+        };
-+
-+        backlight {
-+          compatible = "mediatek,mt6370-backlight";
-+          mediatek,bled-channel-use = /bits/ 8 <15>;
-+        };
-+
-+        charger {
-+          compatible = "mediatek,mt6370-charger";
-+          interrupts = <48>, <68>, <6>;
-+          interrupt-names = "attach_i", "uvp_d_evt", "mivr";
-+          io-channels = <&mt6370_adc MT6370_CHAN_IBUS>;
-+
-+          mt6370_otg_vbus: usb-otg-vbus-regulator {
-+            regulator-name = "mt6370-usb-otg-vbus";
-+            regulator-min-microvolt = <4350000>;
-+            regulator-max-microvolt = <5800000>;
-+            regulator-min-microamp = <500000>;
-+            regulator-max-microamp = <3000000>;
-+          };
-+        };
-+
-+        indicator {
-+          compatible = "mediatek,mt6370-indicator";
-+          #address-cells = <1>;
-+          #size-cells = <0>;
-+
-+          multi-led@0 {
-+            reg = <0>;
-+            function = LED_FUNCTION_INDICATOR;
-+            color = <LED_COLOR_ID_RGB>;
-+            led-max-microamp = <24000>;
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+            led@0 {
-+              reg = <0>;
-+              color = <LED_COLOR_ID_RED>;
-+            };
-+            led@1 {
-+              reg = <1>;
-+              color = <LED_COLOR_ID_GREEN>;
-+            };
-+            led@2 {
-+              reg = <2>;
-+              color = <LED_COLOR_ID_BLUE>;
-+            };
-+          };
-+          led@3 {
-+            reg = <3>;
-+            function = LED_FUNCTION_INDICATOR;
-+            color = <LED_COLOR_ID_WHITE>;
-+            led-max-microamp = <6000>;
-+          };
-+        };
-+
-+        flashlight {
-+          compatible = "mediatek,mt6370-flashlight";
-+          #address-cells = <1>;
-+          #size-cells = <0>;
-+          led@0 {
-+            reg = <0>;
-+            led-sources = <0>;
-+            function = LED_FUNCTION_FLASH;
-+            color = <LED_COLOR_ID_WHITE>;
-+            function-enumerator = <1>;
-+            led-max-microamp = <200000>;
-+            flash-max-microamp = <500000>;
-+            flash-max-timeout-us = <1248000>;
-+          };
-+          led@1 {
-+            reg = <1>;
-+            led-sources = <1>;
-+            function = LED_FUNCTION_FLASH;
-+            color = <LED_COLOR_ID_WHITE>;
-+            function-enumerator = <2>;
-+            led-max-microamp = <200000>;
-+            flash-max-microamp = <500000>;
-+            flash-max-timeout-us = <1248000>;
-+          };
-+        };
-+
-+        tcpc {
-+          compatible = "mediatek,mt6370-tcpc";
-+          interrupts-extended = <&gpio26 4 IRQ_TYPE_LEVEL_LOW>;
-+
-+          connector {
-+            compatible = "usb-c-connector";
-+            label = "USB-C";
-+            vbus-supply = <&mt6370_otg_vbus>;
-+            data-role = "dual";
-+            power-role = "dual";
-+            try-power-role = "sink";
-+            source-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+            sink-pdos = <PDO_FIXED(5000, 2000, PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)>;
-+            op-sink-microwatt = <10000000>;
-+
-+            ports {
-+              #address-cells = <1>;
-+              #size-cells = <0>;
-+
-+              port@0 {
-+                reg = <0>;
-+                endpoint {
-+                  remote-endpoint = <&usb_hs>;
-+                };
-+              };
-+              port@1 {
-+                reg = <1>;
-+                endpoint {
-+                  remote-endpoint = <&usb_ss>;
-+                };
-+              };
-+              port@2 {
-+                reg = <2>;
-+                endpoint {
-+                  remote-endpoint = <&dp_aux>;
-+                };
-+              };
-+            };
-+          };
-+        };
-+
-+        regulators {
-+          dsvbst {
-+            regulator-name = "mt6370-dsv-vbst";
-+            regulator-min-microvolt = <4000000>;
-+            regulator-max-microvolt = <6200000>;
-+          };
-+          dsvpos {
-+            regulator-name = "mt6370-dsv-vpos";
-+            regulator-min-microvolt = <4000000>;
-+            regulator-max-microvolt = <6000000>;
-+            regulator-boot-on;
-+          };
-+          dsvneg {
-+            regulator-name = "mt6370-dsv-vneg";
-+            regulator-min-microvolt = <4000000>;
-+            regulator-max-microvolt = <6000000>;
-+            regulator-boot-on;
-+          };
-+          vibldo {
-+            regulator-name = "mt6370-vib-ldo";
-+            regulator-min-microvolt = <1600000>;
-+            regulator-max-microvolt = <4000000>;
-+          };
-+        };
-+      };
-+    };
-diff --git a/include/dt-bindings/iio/adc/mediatek,mt6370_adc.h b/include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
-new file mode 100644
-index 000000000000..6ee725547763
---- /dev/null
-+++ b/include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
-@@ -0,0 +1,18 @@
-+/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
-+
-+#ifndef __DT_BINDINGS_MEDIATEK_MT6370_ADC_H__
-+#define __DT_BINDINGS_MEDIATEK_MT6370_ADC_H__
-+
-+/* ADC Channel Index */
-+#define MT6370_CHAN_VBUSDIV5	0
-+#define MT6370_CHAN_VBUSDIV2	1
-+#define MT6370_CHAN_VSYS	2
-+#define MT6370_CHAN_VBAT	3
-+#define MT6370_CHAN_TS_BAT	4
-+#define MT6370_CHAN_IBUS	5
-+#define MT6370_CHAN_IBAT	6
-+#define MT6370_CHAN_CHG_VDDP	7
-+#define MT6370_CHAN_TEMP_JC	8
-+#define MT6370_CHAN_MAX		9
-+
-+#endif
++What:		/sys/bus/iio/devices/iio:deviceX/in_temp8_raw
++KernelVersion:	5.18
++Contact:	chiaen_wu@richtek.com
++Description:
++		Indicated MT6370 IC junction temperature
++		Calculating with scale and offset returns temperature in degree
 -- 
 2.25.1
 
