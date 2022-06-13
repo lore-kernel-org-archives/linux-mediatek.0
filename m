@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86047C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 15:32:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24255C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 15:53:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QK0KAg4PYaoRl0QvfYSmOBRsyYOzwJhxnD/0Z+Rb7kg=; b=ZwCse70rfRyCcv
-	kvEKg6ZTGtBbcWDbSaHzC6gMVTqdTrtgjDmqEH/3z2N/tdxoOUHhOYLKvnzZr+2a99PYQE61YVmrA
-	WeLV/+V442K1jf+QkrKkYJYfnZ4lFskXJzvVMIGfIsOhuUUvUNTSgnjbP5VUECyM2yk/iDf6JLxqT
-	4D6XcL3eXH0W/emb1A87BN3wPeoWqWps2CRuTfMsYTS0FKXF3YFSAwgApFTS3V5GGIpQNNqVLaGqc
-	rhDtCIcmsNtuws6O7qz+o+mmHag7EHEKPThKM3lgxlyVKOy08+iwQo6hequUS8YC+AJ1itk4+hp8I
-	jvdomH1NSrmnGGHqc9EQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:To:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BCSbxSzVmSdmWReRWD/AVjmFe81cOiccc+5A+YgTfjw=; b=UtPeV51+xKEU1tlbtOnVEDMjGk
+	SnJAI4qCzgR3HQVpIABwFFviAQSttDbltpClUnYprdM3r0x3P4s011+zPEJVLIszASSAEsP67zF7D
+	E+hwPN6oXRl5lEpc4mPbNeaRExkoT6iQZCXMNiNlt23Ob6TjqduB9ZoPAGuKUYjyoMpsgBcDPF19z
+	CDW2Oaot3iiaxdiNrc0sp48OpR0+v5QQNRZ8q9pTNODVByWvAhE5uY7OFMzwTKwubaijS+RbJ0+/w
+	tMBT4VTWpxMR+DoWxkeqVohCLIsnrpktTnJ8oqCwwQqUsNgH/HgU0VN3BCtooTzEq3y0Ec+NSYlC0
+	IhPaWGNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0m3Y-004WWV-Cc; Mon, 13 Jun 2022 15:32:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o0mN8-004Zor-Bz; Mon, 13 Jun 2022 15:52:58 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0m3T-004WVP-VQ
-	for linux-mediatek@lists.infradead.org; Mon, 13 Jun 2022 15:32:43 +0000
-X-UUID: 5d642692204f48c9b25e48f0484563f3-20220613
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:b77ec1c7-141a-44df-b5e5-e4f82a7a75e4,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:b14ad71,CLOUDID:f0d06ac6-12ba-4305-bfdf-9aefbdc32516,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 5d642692204f48c9b25e48f0484563f3-20220613
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1574216788; Mon, 13 Jun 2022 08:32:27 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Jun 2022 08:32:25 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 13 Jun 2022 23:32:24 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 13 Jun 2022 23:32:24 +0800
-Message-ID: <77d3ba88b76dcdb973fb078263513c595e911c14.camel@mediatek.com>
-Subject: Re: [PATCH] mt76: mt7921s: fix possible sdio deadlock in command
- fail
-From: Deren Wu <deren.wu@mediatek.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, "Soul
- Huang" <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Leon Yen
-	<Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
-	<Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
-	<linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>
-Date: Mon, 13 Jun 2022 23:32:24 +0800
-In-Reply-To: <YqcrzCbeJUg3s18b@lore-desk>
-References: <7122534ce50527e099a23fa198683a0e20c6db38.1654998031.git.deren.wu@mediatek.com>
-	 <YqcrzCbeJUg3s18b@lore-desk>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o0mMw-004ZiZ-Mr; Mon, 13 Jun 2022 15:52:48 +0000
+Received: by mail-wm1-x335.google.com with SMTP id a10so3208593wmj.5;
+        Mon, 13 Jun 2022 08:52:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:content-language:to
+         :references:from:subject:in-reply-to:content-transfer-encoding;
+        bh=OCL5aWKRbj0ROQTskl1q1tCaL14mdMWA6juXly3fSBY=;
+        b=Knn6GmPZQULHNfmfoeI4Fpg+udRaQGh5orUc4dJD4WbSTCQCnxwcWiNs993WqlEUWs
+         /6dHHJAhYJXBD7Va9MK0UFIRRSTwEiqPoMPoIzSY+23D8k94rLcFIKpuMi18R1m3IWSh
+         3NiJMMEsxpXeaiWNV7fWwvBZiSynlf72E1S6jqf9Mr+jY75/8l2OJed49AXo/ENVEthc
+         Tkol+fq+LvPAWmT/LxapbDTbjAKe8Ml4vXGcnH1To03kPwyRe/68RiV6UaWxzWYUlfwu
+         AYDngHNUGy6AxTykccByw6LHJvLS3ZwZb+RGAuBop5BjyTNj1VbSlh37MV5pNYlFBxXh
+         AjGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent
+         :content-language:to:references:from:subject:in-reply-to
+         :content-transfer-encoding;
+        bh=OCL5aWKRbj0ROQTskl1q1tCaL14mdMWA6juXly3fSBY=;
+        b=gq/Igs2ixZ4NkqlxpGm+ZD3lw8Cxmi5kWghrJpdbCpNJj6xNyNKIz62LmLt7bpW6m3
+         jrtbREP7KxegsyNCwCWYnPL9IvxvJ2yLuf7V3yD18DEZsQfDZEBu9uspvlDX/41B6jVG
+         a62jGANHkbJt7LDCa3MS/Jc3GbMB82e8c6igfRItzjGJN4/d2phW2IsBOlppymTcgH6L
+         DxodipYvo96r1gRtmwuETfAxuqGiZRBXztB73luRD+DncUSd23GejyB1Pnn+VKoA+dx9
+         RSybVSS/U2HqmKRvb2RXeIqt7Uz8zO0m50IYjJHVXS5e7bSVO//iD2Q8MILW4GaoUIpf
+         Uv+g==
+X-Gm-Message-State: AOAM531ci/uVhbmiPcpQ+5xW0RzFsG/43aCBHqwSlzfUnVM/qc8mRSzG
+	24R7X+Fb3ESD3I+ThJJh2u+jMi51JuG8Hw==
+X-Google-Smtp-Source: ABdhPJxb8jGNR9Uj1sykaV4sMfYHmhnT+dMd4lOi3/Cadt9gYuj/PJgSkxQCaPTx4jhhNoioc0o5Nw==
+X-Received: by 2002:a05:600c:22d9:b0:39c:4b1b:5f99 with SMTP id 25-20020a05600c22d900b0039c4b1b5f99mr118995wmg.151.1655135564826;
+        Mon, 13 Jun 2022 08:52:44 -0700 (PDT)
+Received: from [192.168.0.36] ([37.223.143.134])
+        by smtp.gmail.com with ESMTPSA id t17-20020a05600c129100b0039754d1d327sm9736322wmd.13.2022.06.13.08.52.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 13 Jun 2022 08:52:43 -0700 (PDT)
+Message-ID: <606c3409-0e27-e993-8657-0c8d36a16a97@gmail.com>
+Date: Mon, 13 Jun 2022 17:52:42 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Content-Language: en-US
+To: "moudy.ho" <moudy.ho@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220608144055.27562-1-chunkuang.hu@kernel.org>
+ <55b84b36832b0da24c267d06a43b9db4ee345176.camel@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] mailbox: mtk-cmdq: Remove proprietary cmdq_task_cb
+In-Reply-To: <55b84b36832b0da24c267d06a43b9db4ee345176.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_083240_063899_6C703B49 
-X-CRM114-Status: GOOD (  20.96  )
+X-CRM114-CacheID: sfid-20220613_085246_815844_81C5619D 
+X-CRM114-Status: GOOD (  17.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,115 +87,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-06-13 at 14:21 +0200, Lorenzo Bianconi wrote:
-> > From: Deren Wu <deren.wu@mediatek.com>
-> > 
-> > Move sdio_release_host() to final resource handing
-> > 
-> > Fixes: b12deb5e86fa ("mt76: mt7921s: fix
-> > mt7921s_mcu_[fw|drv]_pmctrl")
-> > Reported-by: YN Chen <YN.Chen@mediatek.com>
-> > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> > b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> > index 54a5c712a3c3..1856d677fff4 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> > @@ -156,9 +156,9 @@ int mt7921s_mcu_fw_pmctrl(struct mt7921_dev
-> > *dev)
-> >  
-> >  	err = readx_poll_timeout(mt76s_read_pcr, &dev->mt76, status,
-> >  				 !(status & WHLPCR_IS_DRIVER_OWN),
-> > 2000, 1000000);
-> > +err:
-> >  	sdio_release_host(func);
-> >  
-> > -err:
-> >  	if (err < 0) {
-> >  		dev_err(dev->mt76.dev, "firmware own failed\n");
-> >  		clear_bit(MT76_STATE_PM, &mphy->state);
-> > -- 
-> > 2.18.0
-> > 
+
+
+On 10/06/2022 04:49, moudy.ho wrote:
+> On Wed, 2022-06-08 at 22:40 +0800, Chun-Kuang Hu wrote:
+>> rx_callback is a standard mailbox callback mechanism and could cover
+>> the
+>> function of proprietary cmdq_task_cb, so use the standard one instead
+>> of
+>> the proprietary one. Client driver has changed to use standard
+>> rx_callback, so remove proprietary cmdq_task_cb.
+>>
+>> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 > 
-> Hi Deren,
+> Depends on:
 > 
-> in order to align the code with mt7921e, can you please fold the
-> following
-> changes into this patch?
+> https://patchwork.kernel.org/project/linux-mediatek/patch/1650102868-26219-1-git-send-email-chunkuang.hu@kernel.org/
 > 
-> Regards,
-> Lorenzo
+> Tested-by: Moudy Ho <Moudy.Ho@mediatek.com>
 > 
 
-Hi Lore,
+Thanks for helping by testing this, although:
 
-Sure, I will post v2 with your patch.
+Your message makes me think that you didn't test against v5.19-rc1 nor against 
+v5.18 (!) based kernel but something older. Giving a Tested-by tag to an older 
+kernel with lots of out-of-tree patches on top can be critical as the kernel 
+evolves and changes pretty much over time.
+Upstream development should always be done against an upstream kernel, as 
+otherwise bugs in the upstream kernel could stay unnoticed and show up as 
+"regressions" later on, when you update your base kernel version.
 
+Best regards,
+Matthias
 
-Thanks,
-Deren
-
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
-> @@ -135,8 +135,8 @@ int mt7921s_mcu_fw_pmctrl(struct mt7921_dev *dev)
->  	struct sdio_func *func = dev->mt76.sdio.func;
->  	struct mt76_phy *mphy = &dev->mt76.phy;
->  	struct mt76_connac_pm *pm = &dev->pm;
-> -	int err = 0;
->  	u32 status;
-> +	int err;
->  
->  	sdio_claim_host(func);
->  
-> @@ -147,7 +147,7 @@ int mt7921s_mcu_fw_pmctrl(struct mt7921_dev *dev)
->  					 2000, 1000000);
->  		if (err < 0) {
->  			dev_err(dev->mt76.dev, "mailbox ACK not
-> cleared\n");
-> -			goto err;
-> +			goto out;
->  		}
->  	}
->  
-> @@ -155,18 +155,18 @@ int mt7921s_mcu_fw_pmctrl(struct mt7921_dev
-> *dev)
->  
->  	err = readx_poll_timeout(mt76s_read_pcr, &dev->mt76, status,
->  				 !(status & WHLPCR_IS_DRIVER_OWN),
-> 2000, 1000000);
-> -err:
-> +out:
->  	sdio_release_host(func);
->  
->  	if (err < 0) {
->  		dev_err(dev->mt76.dev, "firmware own failed\n");
->  		clear_bit(MT76_STATE_PM, &mphy->state);
-> -		err = -EIO;
-> +		return -EIO;
->  	}
->  
->  	pm->stats.last_doze_event = jiffies;
->  	pm->stats.awake_time += pm->stats.last_doze_event -
->  				pm->stats.last_wake_event;
->  
-> -	return err;
-> +	return 0;
->  }
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
+>> ---
+>>   drivers/mailbox/mtk-cmdq-mailbox.c       | 11 -----------
+>>   include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ----------
+>>   2 files changed, 21 deletions(-)
+>>
+>> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+>> b/drivers/mailbox/mtk-cmdq-mailbox.c
+>> index 2578e5aaa935..9465f9081515 100644
+>> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+>> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+>> @@ -192,15 +192,10 @@ static bool cmdq_thread_is_in_wfe(struct
+>> cmdq_thread *thread)
+>>   
+>>   static void cmdq_task_exec_done(struct cmdq_task *task, int sta)
+>>   {
+>> -	struct cmdq_task_cb *cb = &task->pkt->async_cb;
+>>   	struct cmdq_cb_data data;
+>>   
+>>   	data.sta = sta;
+>> -	data.data = cb->data;
+>>   	data.pkt = task->pkt;
+>> -	if (cb->cb)
+>> -		cb->cb(data);
+>> -
+>>   	mbox_chan_received_data(task->thread->chan, &data);
+>>   
+>>   	list_del(&task->list_entry);
+>> @@ -448,7 +443,6 @@ static void cmdq_mbox_shutdown(struct mbox_chan
+>> *chan)
+>>   static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long
+>> timeout)
+>>   {
+>>   	struct cmdq_thread *thread = (struct cmdq_thread *)chan-
+>>> con_priv;
+>> -	struct cmdq_task_cb *cb;
+>>   	struct cmdq_cb_data data;
+>>   	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
+>>   	struct cmdq_task *task, *tmp;
+>> @@ -465,13 +459,8 @@ static int cmdq_mbox_flush(struct mbox_chan
+>> *chan, unsigned long timeout)
+>>   
+>>   	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+>>   				 list_entry) {
+>> -		cb = &task->pkt->async_cb;
+>>   		data.sta = -ECONNABORTED;
+>> -		data.data = cb->data;
+>>   		data.pkt = task->pkt;
+>> -		if (cb->cb)
+>> -			cb->cb(data);
+>> -
+>>   		mbox_chan_received_data(task->thread->chan, &data);
+>>   		list_del(&task->list_entry);
+>>   		kfree(task);
+>> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h
+>> b/include/linux/mailbox/mtk-cmdq-mailbox.h
+>> index 44365aab043c..a8f0070c7aa9 100644
+>> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+>> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+>> @@ -67,24 +67,14 @@ enum cmdq_code {
+>>   
+>>   struct cmdq_cb_data {
+>>   	int			sta;
+>> -	void			*data;
+>>   	struct cmdq_pkt		*pkt;
+>>   };
+>>   
+>> -typedef void (*cmdq_async_flush_cb)(struct cmdq_cb_data data);
+>> -
+>> -struct cmdq_task_cb {
+>> -	cmdq_async_flush_cb	cb;
+>> -	void			*data;
+>> -};
+>> -
+>>   struct cmdq_pkt {
+>>   	void			*va_base;
+>>   	dma_addr_t		pa_base;
+>>   	size_t			cmd_buf_size; /* command occupied
+>> size */
+>>   	size_t			buf_size; /* real buffer size */
+>> -	struct cmdq_task_cb	cb;
+>> -	struct cmdq_task_cb	async_cb;
+>>   	void			*cl;
+>>   };
+>>   
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
