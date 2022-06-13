@@ -4,91 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61C1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 11:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DFDEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 12:14:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pzZHa+r+7T9IgnpIRrBfU5eDp7cWro6orKDZrSUlj4Y=; b=gRA21Df+MqEFdC
-	O1sgt3YvKrOvnPdXZ5rbezVuZuvIQRoDkoAwCDhhIZNL0rJYN+LCwbN/eNSgyzd7uN2JEXr50NmL+
-	SloZJAIqw59dRpXFZ0RS5UWH+OuLbxa9D4OO4WrsjrPojY51MYgL6HLQjCp5oAErrNOWsnlLZzl+K
-	offJq9ngpywAIymGJPxDH8JBeCbkuIhDDsahaI4Brs0sX7tB04oh4ayJiCg8I0AkQPuoHVquyVBib
-	8uQJnz5PBOiC1IilPTi5+TLftUDFvCSy0S7GrZuzZRN2F57eItKZUknhHjnuZkwHnTliV/PtrTGc6
-	5RNTIFBEfw7QOHpSreUg==;
+	List-Owner; bh=M0J1ChI35L687FYiTEWx6OWsplA25u03hoUf0P4GAuQ=; b=PC2rAv7KQ/h+v+
+	rWoGU7tdfmmqTu1y97T4au/BgkDAhPVPvMPYnc3sNyoFTOhMylP241BD11Wwm/Imi74BjDZaHHnlg
+	SmR9/3lxAwW/dgsju9sMKyq2fkkVP+CEm1iOcqCLAJgLix4BOKdH0/LmOfjkDQ4f+00oxazeZewGl
+	PUX0cGoR9HqqZ7bLtmpH5qJ0Ufl+Do3fhnMYp1rq5Z1xSFYjfvdhIHjqESPG+GyydOb1vyuLWlMGi
+	ug83gTZmIjghHhlWdYYs/jf+jwheown4HjIcWk2dMRlNi0PrOsnzCRDuk/hyGNv7IxU/EL/V5Jyqp
+	pwNakDLARAt65cFwCbXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0i8y-003B8j-So; Mon, 13 Jun 2022 11:22:04 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1o0ixe-003SGx-OB; Mon, 13 Jun 2022 12:14:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0i13-0036lz-Uk; Mon, 13 Jun 2022 11:13:59 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id f9so4860805plg.0;
-        Mon, 13 Jun 2022 04:13:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=WyrmKsYSTK52+yXgs1VGgiXSRnWks4qyg2oye3t5qyc=;
-        b=i2QqvHYCHyukFpJBLjG0rU00YjN7H5Tsw1q9ioVPHeIOF9lgtnBR4shoML0ukpYAn4
-         hqwzFPS4K2C8cTstgfKBGOuVcFLA0J/rV6I2o2/dT8//c6mur65DCUieLPoks/M0VHvC
-         N0gDf6Ca/RPH2b7lCK+x4TEaaNwDw/P5FZEfvNHgxUfXYlwpD3fxAWAyh19UGwa4Y31d
-         YB3yWCqWj8fOXpEejxMUflf3zkV04Std6UaMQaN/dnIMIl5REioUGzVGNshBTnZbWFva
-         MjE4pI1xgsHg4H7BwHKGgxLBneT/ZJ4zT6JSBCm/PzIrSkEApX6pIoHrCvkrcELGDFJy
-         5S2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=WyrmKsYSTK52+yXgs1VGgiXSRnWks4qyg2oye3t5qyc=;
-        b=MSdyxn9rCtSrRwO95M6L+uXIgTi+nhVjeEV6gqrQdEw3JL5VfuYz/iKHJwV6H9sCYf
-         7hI5SEJ4uRj2UCQz2hHZ7ilN4L8h7CGEmqAnw87s7tdNlLkI2Ej0QKgGt8HLxn1iua3M
-         D5tXABNtvBvsMhhUzZpuK5Djs/jizXRltgBNS7nd1npUqONMO0NZJtBaODdzBDyDAAme
-         7B20KLjdLuwx9p1ts119cWo3xFVHI2bF6vEays+ECIuYIO0o4InSqR3cLz8wCem6zsgg
-         vQnfuTyNG9POBf/+I46apah2sJlPHn13eJ/AOFnZwGT2HunRUEIxF43gbCuHCPXnBHeC
-         2TaA==
-X-Gm-Message-State: AOAM531CegOsa+vj5OmTMWbr2d5js2QslF5X1x4wt8g0oMTZLhUYbG3y
-	AloR0W+2qss15+8t9dsnRoqDDZO/vpQ=
-X-Google-Smtp-Source: ABdhPJyYCI9XgxVM1FtHKJngxG40BxuJFmwFN2aaDbA62KL/KVDkRpjD1zYl9v7sBO9Xn20BGeUuKA==
-X-Received: by 2002:a17:903:4045:b0:168:b7ca:19b0 with SMTP id n5-20020a170903404500b00168b7ca19b0mr17042967pla.66.1655118832186;
-        Mon, 13 Jun 2022 04:13:52 -0700 (PDT)
-Received: from RD-3580-24288.rt.l (42-72-115-109.emome-ip.hinet.net. [42.72.115.109])
-        by smtp.gmail.com with ESMTPSA id g17-20020a056a000b9100b0051b4e53c487sm5199989pfj.45.2022.06.13.04.13.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jun 2022 04:13:51 -0700 (PDT)
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-To: jic23@kernel.org,
-	lars@metafoo.de,
-	matthias.bgg@gmail.com,
-	lee.jones@linaro.org,
-	daniel.thompson@linaro.org,
-	jingoohan1@gmail.com,
-	pavel@ucw.cz,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org
-Cc: linux-iio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-fbdev@vger.kernel.org,
-	szunichen@gmail.com,
-	ChiaEn Wu <chiaen_wu@richtek.com>
-Subject: [PATCH v2 15/15] video: backlight: mt6370: Add Mediatek MT6370 support
-Date: Mon, 13 Jun 2022 19:11:46 +0800
-Message-Id: <20220613111146.25221-16-peterwu.pub@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220613111146.25221-1-peterwu.pub@gmail.com>
-References: <20220613111146.25221-1-peterwu.pub@gmail.com>
+	id 1o0ixa-003SFS-4Q; Mon, 13 Jun 2022 12:14:25 +0000
+X-UUID: 1527f734c7954a9e8bf50aa7a6239f98-20220613
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=KkfVromvX+mMfNc+ewnWVRm1PM/Za0B8AWwtof/nngs=;
+	b=LXqmkye1UoyA0r/xbkvXDoMmtxwsZ+3KDUOCcQZqQleU/0k2kSkNUbmv7X0555A4bMM9X9IbvItsv1+JftID7ZCiyI8PmMKKWUKuMTqtjySdwH3YbIDs8kAd6UbG1LvNPgFT5I5yQGCDAlS0+wy5aRohk7421m6rJFYWzJ0XkNY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:3f47204c-ae9a-4574-9e48-c73786bcd9c3,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:10,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:15
+X-CID-META: VersionHash:b14ad71,CLOUDID:6ff466c6-12ba-4305-bfdf-9aefbdc32516,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 1527f734c7954a9e8bf50aa7a6239f98-20220613
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1078127982; Mon, 13 Jun 2022 05:14:00 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 13 Jun 2022 05:03:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 13 Jun 2022 20:03:56 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 13 Jun 2022 20:03:55 +0800
+Message-ID: <e15deedee3a412e8496be1867725f7e62e396551.camel@mediatek.com>
+Subject: Re: [PATCH v8 2/3] iommu/mediatek: Rename MTK_IOMMU_TLB_ADDR to
+ MTK_IOMMU_ADDR
+From: Yong Wu <yong.wu@mediatek.com>
+To: <yf.wang@mediatek.com>
+CC: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, "open list:MEDIATEK IOMMU DRIVER"
+	<iommu@lists.linux-foundation.org>, "moderated list:MEDIATEK IOMMU DRIVER"
+	<linux-mediatek@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>, open list
+	<linux-kernel@vger.kernel.org>, <wsd_upstream@mediatek.com>, Libo Kang
+	<Libo.Kang@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Ning Li
+	<ning.li@mediatek.com>
+Date: Mon, 13 Jun 2022 20:03:55 +0800
+In-Reply-To: <20220611102656.10954-3-yf.wang@mediatek.com>
+References: <20220611102656.10954-1-yf.wang@mediatek.com>
+	 <20220611102656.10954-3-yf.wang@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_041354_079066_869DC573 
-X-CRM114-Status: GOOD (  26.54  )
+X-CRM114-CacheID: sfid-20220613_051422_228975_43CD41E0 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,399 +89,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiaEn Wu <chiaen_wu@richtek.com>
+On Sat, 2022-06-11 at 18:26 +0800, yf.wang@mediatek.com wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
+> 
+> Rename MTK_IOMMU_TLB_ADDR to MTK_IOMMU_ADDR, and update
+> MTK_IOMMU_ADDR
+> definition for better generality.
 
-Add Mediatek MT6370 Backlight support.
+Comment more about why you need this.
 
-Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
----
- drivers/video/backlight/Kconfig            |   9 +
- drivers/video/backlight/Makefile           |   1 +
- drivers/video/backlight/mt6370-backlight.c | 339 +++++++++++++++++++++
- 3 files changed, 349 insertions(+)
- create mode 100644 drivers/video/backlight/mt6370-backlight.c
+Prepare for supporting TTBR up to 35bit which also need this macro.
+Currently it is dma_addr_t while ttbr is phys_addr_t, thus change the
+type to "unsigned long long" for generality.
 
-diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/Kconfig
-index a003e02e13ce..ec1589ad88bb 100644
---- a/drivers/video/backlight/Kconfig
-+++ b/drivers/video/backlight/Kconfig
-@@ -268,6 +268,15 @@ config BACKLIGHT_MAX8925
- 	  If you have a LCD backlight connected to the WLED output of MAX8925
- 	  WLED output, say Y here to enable this driver.
- 
-+config BACKLIGHT_MT6370
-+	tristate "Mediatek MT6370 Backlight Driver"
-+	depends on MFD_MT6370
-+	help
-+	  This enables support for Mediatek MT6370 Backlight driver.
-+	  It's commonly used to drive the display WLED. There're 4 channels
-+	  inisde, and each channel supports up to 30mA of current capability
-+	  with 2048 current steps in exponential or linear mapping curves.
-+
- config BACKLIGHT_APPLE
- 	tristate "Apple Backlight Driver"
- 	depends on X86 && ACPI
-diff --git a/drivers/video/backlight/Makefile b/drivers/video/backlight/Makefile
-index cae2c83422ae..e815f3f1deff 100644
---- a/drivers/video/backlight/Makefile
-+++ b/drivers/video/backlight/Makefile
-@@ -44,6 +44,7 @@ obj-$(CONFIG_BACKLIGHT_LP855X)		+= lp855x_bl.o
- obj-$(CONFIG_BACKLIGHT_LP8788)		+= lp8788_bl.o
- obj-$(CONFIG_BACKLIGHT_LV5207LP)	+= lv5207lp.o
- obj-$(CONFIG_BACKLIGHT_MAX8925)		+= max8925_bl.o
-+obj-$(CONFIG_BACKLIGHT_MT6370)		+= mt6370-backlight.o
- obj-$(CONFIG_BACKLIGHT_OMAP1)		+= omap1_bl.o
- obj-$(CONFIG_BACKLIGHT_PANDORA)		+= pandora_bl.o
- obj-$(CONFIG_BACKLIGHT_PCF50633)	+= pcf50633-backlight.o
-diff --git a/drivers/video/backlight/mt6370-backlight.c b/drivers/video/backlight/mt6370-backlight.c
-new file mode 100644
-index 000000000000..a443c677cb7e
---- /dev/null
-+++ b/drivers/video/backlight/mt6370-backlight.c
-@@ -0,0 +1,339 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+#include <linux/backlight.h>
-+#include <linux/bitfield.h>
-+#include <linux/bits.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/gpio/driver.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#define MT6370_REG_DEV_INFO		0x100
-+#define MT6370_REG_BL_EN		0x1A0
-+#define MT6370_REG_BL_BSTCTRL		0x1A1
-+#define MT6370_REG_BL_PWM		0x1A2
-+#define MT6370_REG_BL_DIM2		0x1A4
-+
-+#define MT6370_VENID_MASK		GENMASK(7, 4)
-+#define MT6370_BL_EXT_EN_MASK		BIT(7)
-+#define MT6370_BL_EN_MASK		BIT(6)
-+#define MT6370_BL_CONFIG_MASK		BIT(0)
-+#define MT6370_BL_CH_MASK		GENMASK(5, 2)
-+#define MT6370_BL_DIM2_MASK		GENMASK(2, 0)
-+#define MT6370_BL_DUMMY_6372_MASK	GENMASK(2, 0)
-+#define MT6370_BL_DIM2_6372_SHIFT	3
-+#define MT6370_BL_PWM_EN_MASK		BIT(7)
-+#define MT6370_BL_PWM_HYS_EN_MASK	BIT(2)
-+#define MT6370_BL_PWM_HYS_SEL_MASK	GENMASK(1, 0)
-+#define MT6370_BL_OVP_EN_MASK		BIT(7)
-+#define MT6370_BL_OVP_SEL_MASK		GENMASK(6, 5)
-+#define MT6370_BL_OC_EN_MASK		BIT(3)
-+#define MT6370_BL_OC_SEL_MASK		GENMASK(2, 1)
-+
-+#define MT6370_BL_MAX_BRIGHTNESS	2048
-+#define MT6370_BL_MAX_CH		15
-+
-+enum {
-+	MT6370_VID_COMMON = 0,
-+	MT6370_VID_6372,
-+};
-+
-+struct mt6370_priv {
-+	int vid_type;
-+	struct backlight_device *bl;
-+	struct device *dev;
-+	struct gpio_desc *enable_gpio;
-+	struct regmap *regmap;
-+};
-+
-+static int mt6370_bl_update_status(struct backlight_device *bl_dev)
-+{
-+	struct mt6370_priv *priv = bl_get_data(bl_dev);
-+	int brightness = backlight_get_brightness(bl_dev);
-+	unsigned int enable_val;
-+	u8 brightness_val[2];
-+	int ret;
-+
-+	if (brightness) {
-+		brightness_val[0] = (brightness - 1) & MT6370_BL_DIM2_MASK;
-+		brightness_val[1] = (brightness - 1)
-+				    >> fls(MT6370_BL_DIM2_MASK);
-+
-+		/*
-+		 * To make MT6372 using 14 bits to control the brightness
-+		 * backward compatible with 11 bits brightness control
-+		 * (like MT6370 and MT6371 do), we left shift the value
-+		 * and pad with 1 to remaining bits. Hence, the MT6372's
-+		 * backlight brightness will be almost the same as MT6370's
-+		 * and MT6371's.
-+		 */
-+		if (priv->vid_type == MT6370_VID_6372) {
-+			brightness_val[0] <<= MT6370_BL_DIM2_6372_SHIFT;
-+			brightness_val[0] |= MT6370_BL_DUMMY_6372_MASK;
-+		}
-+
-+		ret = regmap_raw_write(priv->regmap, MT6370_REG_BL_DIM2,
-+				       brightness_val, sizeof(brightness_val));
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (priv->enable_gpio)
-+		gpiod_set_value(priv->enable_gpio, brightness ? 1 : 0);
-+
-+	enable_val = brightness ? MT6370_BL_EN_MASK : 0;
-+	return regmap_update_bits(priv->regmap, MT6370_REG_BL_EN,
-+				  MT6370_BL_EN_MASK, enable_val);
-+}
-+
-+static int mt6370_bl_get_brightness(struct backlight_device *bl_dev)
-+{
-+	struct mt6370_priv *priv = bl_get_data(bl_dev);
-+	unsigned int enable;
-+	u8 brightness_val[2];
-+	int brightness, ret;
-+
-+	ret = regmap_read(priv->regmap, MT6370_REG_BL_EN, &enable);
-+	if (ret)
-+		return ret;
-+
-+	if (!(enable & MT6370_BL_EN_MASK))
-+		return 0;
-+
-+	ret = regmap_raw_read(priv->regmap, MT6370_REG_BL_DIM2,
-+			      brightness_val, sizeof(brightness_val));
-+	if (ret)
-+		return ret;
-+
-+	if (priv->vid_type == MT6370_VID_6372)
-+		brightness_val[0] >>= MT6370_BL_DIM2_6372_SHIFT;
-+
-+	brightness = brightness_val[1] << fls(MT6370_BL_DIM2_MASK);
-+	brightness += (brightness_val[0] & MT6370_BL_DIM2_MASK);
-+
-+	return brightness + 1;
-+}
-+
-+static const struct backlight_ops mt6370_bl_ops = {
-+	.options = BL_CORE_SUSPENDRESUME,
-+	.update_status = mt6370_bl_update_status,
-+	.get_brightness = mt6370_bl_get_brightness,
-+};
-+
-+static int mt6370_init_backlight_properties(struct mt6370_priv *priv,
-+					    struct backlight_properties *props)
-+{
-+	struct device *dev = priv->dev;
-+	u8 prop_val;
-+	u32 brightness;
-+	unsigned int mask, val;
-+	int ret;
-+
-+	/* Vendor optional properties
-+	 * if property not exist, keep value in default.
-+	 */
-+	if (device_property_read_bool(dev, "mediatek,bled-pwm-enable")) {
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_PWM,
-+					 MT6370_BL_PWM_EN_MASK,
-+					 MT6370_BL_PWM_EN_MASK);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (device_property_read_bool(dev, "mediatek,bled-pwm-hys-enable")) {
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_PWM,
-+					 MT6370_BL_PWM_HYS_EN_MASK,
-+					 MT6370_BL_PWM_HYS_EN_MASK);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	ret = device_property_read_u8(dev, "mediatek,bled-pwm-hys-input-bit",
-+				      &prop_val);
-+	if (!ret) {
-+		val = min_t(u8, prop_val, 3)
-+		      << (ffs(MT6370_BL_PWM_HYS_SEL_MASK) - 1);
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_PWM,
-+					 MT6370_BL_PWM_HYS_SEL_MASK, val);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	ret = device_property_read_u8(dev, "mediatek,bled-ovp-microvolt",
-+				      &prop_val);
-+	if (!ret) {
-+		val = min_t(u8, prop_val, 3)
-+		      << (ffs(MT6370_BL_OVP_SEL_MASK) - 1);
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_BSTCTRL,
-+					 MT6370_BL_OVP_SEL_MASK, val);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (device_property_read_bool(dev, "mediatek,bled-ovp-shutdown")) {
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_BSTCTRL,
-+					 MT6370_BL_OVP_EN_MASK,
-+					 MT6370_BL_OVP_EN_MASK);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	ret = device_property_read_u8(dev, "mediatek,bled-ocp-microamp",
-+				      &prop_val);
-+	if (!ret) {
-+		val = min_t(u8, prop_val, 3)
-+		      << (ffs(MT6370_BL_OC_SEL_MASK) - 1);
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_BSTCTRL,
-+					 MT6370_BL_OC_SEL_MASK, val);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	if (device_property_read_bool(dev, "mediatek,bled-ocp-shutdown")) {
-+		ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_BSTCTRL,
-+					 MT6370_BL_OC_EN_MASK,
-+					 MT6370_BL_OC_EN_MASK);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	/* Common properties */
-+	ret = device_property_read_u32(dev, "max-brightness", &brightness);
-+	if (ret)
-+		brightness = MT6370_BL_MAX_BRIGHTNESS;
-+
-+	props->max_brightness = min_t(u32, brightness,
-+				      MT6370_BL_MAX_BRIGHTNESS);
-+
-+	ret = device_property_read_u32(dev, "default-brightness", &brightness);
-+	if (ret)
-+		brightness = props->max_brightness;
-+
-+	props->brightness = min_t(u32, brightness, props->max_brightness);
-+
-+
-+	ret = device_property_read_u8(dev, "mediatek,bled-channel-use",
-+				      &prop_val);
-+	if (ret) {
-+		dev_err(dev, "mediatek,bled-channel-use DT property missing\n");
-+		return ret;
-+	}
-+
-+	if (!prop_val || prop_val > MT6370_BL_MAX_CH) {
-+		dev_err(dev, "No channel specified (ch_val:%d)\n", prop_val);
-+		return -EINVAL;
-+	}
-+
-+	mask = MT6370_BL_EXT_EN_MASK | MT6370_BL_CH_MASK;
-+	val = prop_val << (ffs(MT6370_BL_CH_MASK) - 1);
-+
-+	if (priv->enable_gpio)
-+		val |= MT6370_BL_EXT_EN_MASK;
-+
-+	return regmap_update_bits(priv->regmap, MT6370_REG_BL_EN, mask, val);
-+}
-+
-+static int mt6370_check_vendor_info(struct mt6370_priv *priv)
-+{
-+	/*
-+	 * MT6372 uses 14 bits to control the brightness but MT6370 and MT6371
-+	 * use 11 bits. They are different so we have to use this function to
-+	 * check the vendor ID and use different methods to calculate the
-+	 * brightness.
-+	 */
-+	unsigned int dev_info, vid;
-+	int ret;
-+
-+	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &dev_info);
-+	if (ret)
-+		return ret;
-+
-+	vid = FIELD_GET(MT6370_VENID_MASK, dev_info);
-+	if (vid == 0x9 || vid == 0xb)
-+		priv->vid_type = MT6370_VID_6372;
-+	else
-+		priv->vid_type = MT6370_VID_COMMON;
-+
-+	return 0;
-+}
-+
-+static int mt6370_bl_probe(struct platform_device *pdev)
-+{
-+	struct mt6370_priv *priv;
-+	struct backlight_properties props = {
-+		.type = BACKLIGHT_RAW,
-+		.scale = BACKLIGHT_SCALE_LINEAR,
-+	};
-+	int ret;
-+
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->dev = &pdev->dev;
-+
-+	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!priv->regmap)
-+		dev_err_probe(&pdev->dev, -ENODEV, "Failed to get regmap\n");
-+
-+	ret = mt6370_check_vendor_info(priv);
-+	if (ret)
-+		dev_err_probe(&pdev->dev, ret, "Failed to check vendor info\n");
-+
-+	priv->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
-+						    GPIOD_OUT_HIGH);
-+	if (IS_ERR(priv->enable_gpio))
-+		dev_err_probe(&pdev->dev, PTR_ERR(priv->enable_gpio),
-+			      "Failed to get 'enable' gpio\n");
-+
-+	ret = mt6370_init_backlight_properties(priv, &props);
-+	if (ret)
-+		dev_err_probe(&pdev->dev, ret,
-+			      "Failed to init backlight properties\n");
-+
-+	priv->bl = devm_backlight_device_register(&pdev->dev, pdev->name,
-+						  &pdev->dev, priv,
-+						  &mt6370_bl_ops, &props);
-+	if (IS_ERR(priv->bl))
-+		dev_err_probe(&pdev->dev, PTR_ERR(priv->bl),
-+			      "Failed to register backlight\n");
-+
-+	backlight_update_status(priv->bl);
-+	platform_set_drvdata(pdev, priv);
-+
-+	return 0;
-+}
-+
-+static int mt6370_bl_remove(struct platform_device *pdev)
-+{
-+	struct mt6370_priv *priv = platform_get_drvdata(pdev);
-+	struct backlight_device *bl_dev = priv->bl;
-+
-+	bl_dev->props.brightness = 0;
-+	backlight_update_status(priv->bl);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id __maybe_unused mt6370_bl_of_match[] = {
-+	{ .compatible = "mediatek,mt6370-backlight", },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt6370_bl_of_match);
-+
-+static struct platform_driver mt6370_bl_driver = {
-+	.driver = {
-+		.name = "mt6370-backlight",
-+		.of_match_table = mt6370_bl_of_match,
-+	},
-+	.probe = mt6370_bl_probe,
-+	.remove = mt6370_bl_remove,
-+};
-+module_platform_driver(mt6370_bl_driver);
-+
-+MODULE_AUTHOR("ChiaEn Wu <chiaen_wu@richtek.com>");
-+MODULE_DESCRIPTION("Mediatek MT6370 Backlight Driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.25.1
+Anyway,
 
+Reviewed-by: Yong Wu <yong.wu@mediatek.com>
 
+> 
+> Signed-off-by: Ning Li <ning.li@mediatek.com>
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> ---
+>  drivers/iommu/mtk_iommu.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index bb9dd92c9898..3d62399e8865 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -265,8 +265,8 @@ static const struct iommu_ops mtk_iommu_ops;
+>  
+>  static int mtk_iommu_hw_init(const struct mtk_iommu_data *data,
+> unsigned int bankid);
+>  
+> -#define MTK_IOMMU_TLB_ADDR(iova) ({					
+> \
+> -	dma_addr_t _addr = iova;					\
+> +#define MTK_IOMMU_ADDR(addr) ({					
+> 	\
+> +	unsigned long long _addr = addr;				\
+>  	((lower_32_bits(_addr) & GENMASK(31, 12)) |
+> upper_32_bits(_addr));\
+>  })
+>  
+> @@ -381,8 +381,8 @@ static void
+> mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+>  		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+>  			       base + data->plat_data->inv_sel_reg);
+>  
+> -		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova), base +
+> REG_MMU_INVLD_START_A);
+> -		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova + size - 1),
+> +		writel_relaxed(MTK_IOMMU_ADDR(iova), base +
+> REG_MMU_INVLD_START_A);
+> +		writel_relaxed(MTK_IOMMU_ADDR(iova + size - 1),
+>  			       base + REG_MMU_INVLD_END_A);
+>  		writel_relaxed(F_MMU_INV_RANGE, base +
+> REG_MMU_INVALIDATE);
+>  
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
