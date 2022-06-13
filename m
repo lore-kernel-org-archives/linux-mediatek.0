@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78B93CCA47C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 14:00:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D0A8C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 14:01:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AXBf1KT9o/4I5y2N22L1j1ANzcaq91W00WoW4+mZa1s=; b=rbz5M3wuOQx2s9
-	neGjm6kq+3XEEBD197Ema8uLfjvbSu03VJghmeMcsyE7C5D+R2nukKxVP9phLa8pwV7HPr+EB0KOb
-	koBPs5TSfd9sSA4ja6JemxxpXkih/2hWNB3gnlnsWWHlWPan3N5P2md1RtrWhvv7tMP2/Kwc/imdf
-	6cm8DQzkvpTd9DUGBxx0VBEmTNF68iSlADWeNPzvivTWWaKLPRTWtd4KbBwwopI1n7zFTF8c2K8kc
-	9m8Cxn3RSYTomC2+3tZAzZHMvjEDRdQtsRb4lE89ZzokgVz+7DaXA6hhpovqFGcUHUGKN+r6l3Jq9
-	ZqR2KWtxegEfQi6jLPHg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gkM0BvZAxVzfV4F87jF835XMbYB9pb7GIm/45Sjz+CQ=; b=kWXhPrpsoRMXq/
+	m6n12mZMT7ct67s3m1FGti3U2ZzX4feX2NJrch/DqO9ty+jnX5628Godnuyg1ZOfIh2CcUHJYiSXu
+	ADmrWORzUWmMJaQAJ7h/uPSm4dkNmUBSiA/pixBMmzw0O7x6/s8qTkBtbCYPK4C1toCIGlZqFe/xv
+	31Ykc6GLxkXEFluuHb6B2uUDI2hr7QA6idWr6Ibf5v/+vZu/pRtJdXShMLcaSNIsLGUQJ6rMsa3m1
+	HpZVJHkPm/5xqwhmwm8JPvfHsSsCTeIWhaR/91KtY/iZDdz3WKPuFZ0f8g0pxCuqkjVAuDl8DqlM+
+	dfMKdBJpuuneAXglqjZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0kcY-0042PT-4y; Mon, 13 Jun 2022 14:00:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o0kci-0042Wq-Mr; Mon, 13 Jun 2022 14:00:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0kc1-00429d-7A; Mon, 13 Jun 2022 14:00:15 +0000
-X-UUID: 6605d134defc41ccbd4a9fde9535d22f-20220613
+	id 1o0kc3-00429u-Bo; Mon, 13 Jun 2022 14:00:17 +0000
+X-UUID: cd65c93951094995ba6d73688012804f-20220613
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:18ec2c99-2eb8-4a0f-a258-40689dfe1607,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:790f69c6-12ba-4305-bfdf-9aefbdc32516,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.6,REQID:e4583005-dad9-4a33-95da-33ae09a14e1e,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:1e058f37-84c0-4f9a-9fbd-acd4a0e9ad0f,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 6605d134defc41ccbd4a9fde9535d22f-20220613
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+X-UUID: cd65c93951094995ba6d73688012804f-20220613
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
 	(envelope-from <lecopzer.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2138931547; Mon, 13 Jun 2022 07:00:03 -0700
+	with ESMTP id 570734557; Mon, 13 Jun 2022 07:00:02 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Jun 2022 07:00:02 -0700
+ 15.0.1497.2; Mon, 13 Jun 2022 07:00:00 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 13 Jun 2022 21:59:59 +0800
+ Mon, 13 Jun 2022 21:59:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 13 Jun 2022 21:59:59 +0800
+ 15.2.792.3 via Frontend Transport; Mon, 13 Jun 2022 21:59:58 +0800
 From: Lecopzer Chen <lecopzer.chen@mediatek.com>
 To: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
 CC: <pmladek@suse.com>, <acme@kernel.org>, <akpm@linux-foundation.org>,
@@ -60,17 +60,15 @@ CC: <pmladek@suse.com>, <acme@kernel.org>, <akpm@linux-foundation.org>,
 	<nixiaoming@huawei.com>, <peterz@infradead.org>,
 	<sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
 	<will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: [PATCH v5 2/6] kernel/watchdog: change watchdog_nmi_enable() to void
-Date: Mon, 13 Jun 2022 21:59:52 +0800
-Message-ID: <20220613135956.15711-3-lecopzer.chen@mediatek.com>
+Subject: [PATCH v5 0/6] Support hld delayed init based on Pseudo-NMI for
+Date: Mon, 13 Jun 2022 21:59:50 +0800
+Message-ID: <20220613135956.15711-1-lecopzer.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220613135956.15711-1-lecopzer.chen@mediatek.com>
-References: <20220613135956.15711-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_070013_290142_46E49E29 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20220613_070015_485636_238F7A57 
+X-CRM114-Status: GOOD (  20.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,78 +85,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Nobody cares about the return value of watchdog_nmi_enable(),
-changing its prototype to void.
+As we already used hld internally for arm64 since 2020, there still
+doesn't have a proper commit on the upstream and we badly need it.
 
-Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
-Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Reviewed-by: Petr Mladek <pmladek@suse.com>
----
- arch/sparc/kernel/nmi.c | 8 +++-----
- include/linux/nmi.h     | 2 +-
- kernel/watchdog.c       | 3 +--
- 3 files changed, 5 insertions(+), 8 deletions(-)
+This serise rework on 5.17 from [1] and the origin author is
+Pingfan Liu <kernelfans@gmail.com>
+Sumit Garg <sumit.garg@linaro.org>
 
-diff --git a/arch/sparc/kernel/nmi.c b/arch/sparc/kernel/nmi.c
-index 060fff95a305..5dcf31f7e81f 100644
---- a/arch/sparc/kernel/nmi.c
-+++ b/arch/sparc/kernel/nmi.c
-@@ -282,11 +282,11 @@ __setup("nmi_watchdog=", setup_nmi_watchdog);
-  * sparc specific NMI watchdog enable function.
-  * Enables watchdog if it is not enabled already.
-  */
--int watchdog_nmi_enable(unsigned int cpu)
-+void watchdog_nmi_enable(unsigned int cpu)
- {
- 	if (atomic_read(&nmi_active) == -1) {
- 		pr_warn("NMI watchdog cannot be enabled or disabled\n");
--		return -1;
-+		return;
- 	}
- 
- 	/*
-@@ -295,11 +295,9 @@ int watchdog_nmi_enable(unsigned int cpu)
- 	 * process first.
- 	 */
- 	if (!nmi_init_done)
--		return 0;
-+		return;
- 
- 	smp_call_function_single(cpu, start_nmi_watchdog, NULL, 1);
--
--	return 0;
- }
- /*
-  * sparc specific NMI watchdog disable function.
-diff --git a/include/linux/nmi.h b/include/linux/nmi.h
-index 750c7f395ca9..b7bcd63c36b4 100644
---- a/include/linux/nmi.h
-+++ b/include/linux/nmi.h
-@@ -119,7 +119,7 @@ static inline int hardlockup_detector_perf_init(void) { return 0; }
- void watchdog_nmi_stop(void);
- void watchdog_nmi_start(void);
- int watchdog_nmi_probe(void);
--int watchdog_nmi_enable(unsigned int cpu);
-+void watchdog_nmi_enable(unsigned int cpu);
- void watchdog_nmi_disable(unsigned int cpu);
- 
- /**
-diff --git a/kernel/watchdog.c b/kernel/watchdog.c
-index 066ad3017767..458737bc4e35 100644
---- a/kernel/watchdog.c
-+++ b/kernel/watchdog.c
-@@ -93,10 +93,9 @@ __setup("nmi_watchdog=", hardlockup_panic_setup);
-  * softlockup watchdog start and stop. The arch must select the
-  * SOFTLOCKUP_DETECTOR Kconfig.
-  */
--int __weak watchdog_nmi_enable(unsigned int cpu)
-+void __weak watchdog_nmi_enable(unsigned int cpu)
- {
- 	hardlockup_detector_perf_enable();
--	return 0;
- }
- 
- void __weak watchdog_nmi_disable(unsigned int cpu)
+Qoute from [1]:
+
+> Hard lockup detector is helpful to diagnose unpaired irq
+> enable/disable.
+> But the current watchdog framework can not cope with arm64 hw perf
+> event
+> easily.
+
+> On arm64, when lockup_detector_init()->watchdog_nmi_probe(), PMU is
+> not
+> ready until device_initcall(armv8_pmu_driver_init).  And it is deeply
+> integrated with the driver model and cpuhp. Hence it is hard to push
+> the
+> initialization of armv8_pmu_driver_init() before smp_init().
+
+> But it is easy to take an opposite approach by enabling watchdog_hld
+> to
+> get the capability of PMU async. 
+> The async model is achieved by expanding watchdog_nmi_probe() with
+> -EBUSY, and a re-initializing work_struct which waits on a
+> wait_queue_head.
+
+Provide an API - retry_lockup_detector_init() for anyone who needs
+to delayed init lockup detector.
+
+The original assumption is: nobody should use delayed probe after
+lockup_detector_check() (which has __init attribute).
+That is, anyone uses this API must call between lockup_detector_init()
+and lockup_detector_check(), and the caller must have __init attribute
+
+The delayed init flow is:
+1. lockup_detector_init() -> watchdog_nmi_probe() get non-zero retun,
+   then set allow_lockup_detector_init_retry to true which means it's
+   able to do delayed probe later.
+
+2. PMU arch code init done, call retry_lockup_detector_init().
+
+3. retry_lockup_detector_init() queue the work only when
+   allow_lockup_detector_init_retry is true which means nobody should
+call
+   this before lockup_detector_init().
+
+4. the work lockup_detector_delay_init() is doing without wait event.
+   if probe success, set allow_lockup_detector_init_retry to false.
+
+5. at late_initcall_sync(), lockup_detector_check() set
+   allow_lockup_detector_init_retry to false first to avoid any later
+retry,
+   and then flush_work() to make sure the __init section won't be freed
+   before the work done.
+
+[1]
+https://lore.kernel.org/lkml/20211014024155.15253-1-kernelfans@gmail.com/
+
+v5:
+  1. rebase on v5.19-rc2
+  2. change to proper schedule api
+  3. return value checking before retry_lockup_detector_init()
+
+v4:
+  1. remove -EBUSY protocal, let all the non-zero value from
+     watchdog_nmi_probe() be able to retry.
+  2. separate arm64 part patch into hw_nmi_get_sample_period and retry
+     delayed init
+  3. tweak commit msg that we don't have to limit to -EBUSY  
+  4. rebase on v5.18-rc4
+
+v3:
+  1. Tweak commit message in patch 04 
+	2. Remove wait event
+  3. s/lockup_detector_pending_init/allow_lockup_detector_init_retry/
+  4. provide api retry_lockup_detector_init() 
+https://lore.kernel.org/lkml/20220324141405.10835-1-lecopzer.chen@mediatek.com/ 
+
+v2:
+  1. Tweak commit message in patch 01/02/04/05 
+  2. Remove vobose WARN in patch 04 within watchdog core.
+  3. Change from three states variable: detector_delay_init_state to
+     two states variable: allow_lockup_detector_init_retry
+
+     Thanks Petr Mladek <pmladek@suse.com> for the idea.
+     > 1.  lockup_detector_work() called before lockup_detector_check().
+     >     In this case, wait_event() will wait until
+     >     lockup_detector_check()
+     >     clears detector_delay_pending_init and calls wake_up().
+
+     > 2. lockup_detector_check() called before lockup_detector_work().
+     >    In this case, wait_even() will immediately continue because
+     >    it will see cleared detector_delay_pending_init.
+  4. Add comment in code in patch 04/05 for two states variable
+changing.
+https://lore.kernel.org/lkml/20220307154729.13477-1-lecopzer.chen@mediatek.com/
+
+
+Lecopzer Chen (5):
+  kernel/watchdog: remove WATCHDOG_DEFAULT
+  kernel/watchdog: change watchdog_nmi_enable() to void
+  kernel/watchdog: Adapt the watchdog_hld interface for async model
+  arm64: add hw_nmi_get_sample_period for preparation of lockup detector
+  arm64: Enable perf events based hard lockup detector
+
+Pingfan Liu (1):
+  kernel/watchdog_hld: Ensure CPU-bound context when creating hardlockup
+    detector event
+
+ arch/arm64/Kconfig               |  2 +
+ arch/arm64/kernel/Makefile       |  1 +
+ arch/arm64/kernel/perf_event.c   | 12 +++++-
+ arch/arm64/kernel/watchdog_hld.c | 39 +++++++++++++++++
+ arch/sparc/kernel/nmi.c          |  8 ++--
+ drivers/perf/arm_pmu.c           |  5 +++
+ include/linux/nmi.h              |  4 +-
+ include/linux/perf/arm_pmu.h     |  2 +
+ kernel/watchdog.c                | 72 +++++++++++++++++++++++++++++---
+ kernel/watchdog_hld.c            |  8 +++-
+ 10 files changed, 139 insertions(+), 14 deletions(-)
+ create mode 100644 arch/arm64/kernel/watchdog_hld.c
+
 -- 
 2.25.1
 
