@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76159CCA47F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 13:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 890F1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 14:00:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1pK0aITHEOXhetYfa9jzRxv0dnqesZt/f+TIF3/+rls=; b=p34rTl9HGOCA1Wrrt6T+SGqKwL
-	HVqMIfRCryuyTK96Unv67EM+5c+bobTVrfOtvkJNmTSCQo8GR/tDJF7lgaK5dk8gg+C7HlKCOQ/rV
-	UiM2sXPDZFhz5vAgeoL3Dt1ZFpk0brSxiUUjychL9L0a0ccjjJPecUy42oDuvt2tCe0P/Zr28D66T
-	zekeXBn4GEfLQuvY1F/j0cC8YvAOslGWBKVFgUXkZvd+G0pEqWeviVsm/KW4Ig+baitX57gQy29un
-	NYkbt8LnmI1Sf+zIb8PgR9SdAYkMZZJVTaoR6JFOf6Ls6eTovpFJaHX1M57fYZbvsIF/axMz0WkW5
-	7iqv8Hew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ypGx9wTQy3H6n+czxOBkLuIS2ed5Ho9JDbybH8CUrrs=; b=0ZQljwVXqhPHKF
+	7gKW7UwNcs8opUNRa9YDKHAJSnNerZmP3XZMyFH6IbwSN/f25oAd7AW/xLAXguQ2gesQG8USZjgcM
+	M+yUJs0b3gdxNGuc5oa9Y3IMuvd3CCDrCyL6huTxpT7xw1fZOa1YXjePUdKc5B54P1xqvaljIa1sL
+	mlZYmp0qmEvUrAputyk8QBfn8EU9oHfzY2pD0j6ZFdKQ+N9mtcfOcqsgTsWM9dUR0N9u3nhAX+VgT
+	5/F9nQBnILdHX07eA27AGy7cVq9pBhqGYm2QGdZVX0XWfW6/RSKb1vvlrMGhQQHZ1W/YTbfwIvKW2
+	RJbCxLeyAKd4lttAehiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0kJH-003uzV-RE; Mon, 13 Jun 2022 13:40:51 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1o0kcE-0042HA-8Q; Mon, 13 Jun 2022 14:00:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0kIS-003uPB-R7; Mon, 13 Jun 2022 13:40:02 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id k16so7186881wrg.7;
-        Mon, 13 Jun 2022 06:39:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :references:from:in-reply-to:content-transfer-encoding;
-        bh=wQnoBtrfVqerdDXtoRJNXxFJ8ERaywkQKEUxnchF8QU=;
-        b=Tllb95AleXMxXyeBwv7CpMAXehORNHpEs+cthLcVV5jw9/oFcVQli7Afj7fCxQzmNE
-         +C9c4mGSCLY/MylFVNEK2H4DbI4VgFTYB8wPeVZXqnj/g8r9R/HoSWLIu8ZzS1HI2+yA
-         SvcFbCVln4LbAwEhjVIqzyMUx7z20qITI55robQo5dmXd8lHxX+FSdkemEMs0PgCLlNa
-         Rm2f4zaTbnPhuHxoCPzBl2R0QH6JBY1V2m0A8xOO3SI6xJPTelAYvi5Oh6V5pn8hsW34
-         +gjwvopzJESwJDVyC/Va9IerEMajbi7DefzuSNh+GxLUBw4vf7QJsLC/qP1m/bxCnzxU
-         Z0aQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=wQnoBtrfVqerdDXtoRJNXxFJ8ERaywkQKEUxnchF8QU=;
-        b=xzKC6HTT+pjNmH8caNEDeZSkYIsLBQ3HJfG3yCxfhRSZdYO1raVh9aNOm+KmYEL9Ee
-         cDxOnHZa+cXO6+/iUqC0F4fDO9Jk6F06Xb+EszOY6+0kDnBwPiDEsIHLHRZ7KcRKIHcE
-         14fv2cC7zx5bllgL0chLq5qMPp9pXrZvScuRoT4lEJ8B2fnzFHOHJYFPtmuJsQ8ArJNW
-         Wg2MQm+Czq7nGlnkv04x0KtIYxbe2dXJaLLB2cQEFA0hGzGhDuAfGGhFoZwAohyA4QGe
-         n3XO5Da1bx/5KYo9QryrHGvAllqY+Syu0yL/nsVZE7XKUw5oxHkcF5YcJlH0Ftw5Dbe8
-         llDA==
-X-Gm-Message-State: AOAM5322usV6U3OL/7ZRpKeQ2Y3dKA6bohLnDjWeDSTqDSeUnVsaGAPE
-	VvsCYs8StetHUdyyNeflh8s=
-X-Google-Smtp-Source: ABdhPJzaB7syhPpYvqUXtQrW/XfIxiI0fU2XTi7T+9RC2+CQ6lyBLhW79NarIKvbDng0DRfhrmSyPw==
-X-Received: by 2002:a5d:6d8c:0:b0:217:a419:c3f8 with SMTP id l12-20020a5d6d8c000000b00217a419c3f8mr42252830wrs.260.1655127595429;
-        Mon, 13 Jun 2022 06:39:55 -0700 (PDT)
-Received: from [192.168.0.36] ([37.223.143.134])
-        by smtp.gmail.com with ESMTPSA id t7-20020a05600c198700b0039c5fb1f592sm9365680wmq.14.2022.06.13.06.39.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Jun 2022 06:39:54 -0700 (PDT)
-Message-ID: <fed3da9f-2a87-96f7-347b-d1c4f5f133ae@gmail.com>
-Date: Mon, 13 Jun 2022 15:39:53 +0200
+	id 1o0kc0-00429p-Ck; Mon, 13 Jun 2022 14:00:13 +0000
+X-UUID: 64ea85b9b50b4be6a5a04a0dcce2bef7-20220613
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:dba5efbf-5eb0-4e42-8219-b5a41bbd0915,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:b14ad71,CLOUDID:780f69c6-12ba-4305-bfdf-9aefbdc32516,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 64ea85b9b50b4be6a5a04a0dcce2bef7-20220613
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+	(envelope-from <lecopzer.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1738113145; Mon, 13 Jun 2022 07:00:03 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 13 Jun 2022 07:00:01 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 13 Jun 2022 22:00:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 13 Jun 2022 22:00:00 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+CC: <pmladek@suse.com>, <acme@kernel.org>, <akpm@linux-foundation.org>,
+	<alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
+	<davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
+	<keescook@chromium.org>, <kernelfans@gmail.com>,
+	<lecopzer.chen@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<linux-perf-users@vger.kernel.org>, <mark.rutland@arm.com>,
+	<masahiroy@kernel.org>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
+	<mcgrof@kernel.org>, <mingo@redhat.com>, <namhyung@kernel.org>,
+	<nixiaoming@huawei.com>, <peterz@infradead.org>,
+	<sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
+	<will@kernel.org>, <yj.chiang@mediatek.com>
+Subject: [PATCH v5 3/6] kernel/watchdog_hld: Ensure CPU-bound context when creating hardlockup detector event
+Date: Mon, 13 Jun 2022 21:59:53 +0800
+Message-ID: <20220613135956.15711-4-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220613135956.15711-1-lecopzer.chen@mediatek.com>
+References: <20220613135956.15711-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH] mailbox: mtk-cmdq: Remove proprietary cmdq_task_cb
-Content-Language: en-US
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220608144055.27562-1-chunkuang.hu@kernel.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220608144055.27562-1-chunkuang.hu@kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_064000_962696_E794B944 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20220613_070012_483138_51432169 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,99 +82,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Pingfan Liu <kernelfans@gmail.com>
 
+hardlockup_detector_event_create() should create perf_event on the
+current CPU. Preemption could not get disabled because
+perf_event_create_kernel_counter() allocates memory. Instead,
+the CPU locality is achieved by processing the code in a per-CPU
+bound kthread.
 
-On 08/06/2022 16:40, Chun-Kuang Hu wrote:
-> rx_callback is a standard mailbox callback mechanism and could cover the
-> function of proprietary cmdq_task_cb, so use the standard one instead of
-> the proprietary one. Client driver has changed to use standard
-> rx_callback, so remove proprietary cmdq_task_cb.
-> 
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Add a check to prevent mistakes when calling the code in another
+code path.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
+Co-developed-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Reviewed-by: Petr Mladek <pmladek@suse.com>
+---
+ kernel/watchdog_hld.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-> ---
->   drivers/mailbox/mtk-cmdq-mailbox.c       | 11 -----------
->   include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ----------
->   2 files changed, 21 deletions(-)
-> 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 2578e5aaa935..9465f9081515 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -192,15 +192,10 @@ static bool cmdq_thread_is_in_wfe(struct cmdq_thread *thread)
->   
->   static void cmdq_task_exec_done(struct cmdq_task *task, int sta)
->   {
-> -	struct cmdq_task_cb *cb = &task->pkt->async_cb;
->   	struct cmdq_cb_data data;
->   
->   	data.sta = sta;
-> -	data.data = cb->data;
->   	data.pkt = task->pkt;
-> -	if (cb->cb)
-> -		cb->cb(data);
-> -
->   	mbox_chan_received_data(task->thread->chan, &data);
->   
->   	list_del(&task->list_entry);
-> @@ -448,7 +443,6 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
->   static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
->   {
->   	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
-> -	struct cmdq_task_cb *cb;
->   	struct cmdq_cb_data data;
->   	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
->   	struct cmdq_task *task, *tmp;
-> @@ -465,13 +459,8 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
->   
->   	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
->   				 list_entry) {
-> -		cb = &task->pkt->async_cb;
->   		data.sta = -ECONNABORTED;
-> -		data.data = cb->data;
->   		data.pkt = task->pkt;
-> -		if (cb->cb)
-> -			cb->cb(data);
-> -
->   		mbox_chan_received_data(task->thread->chan, &data);
->   		list_del(&task->list_entry);
->   		kfree(task);
-> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index 44365aab043c..a8f0070c7aa9 100644
-> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -67,24 +67,14 @@ enum cmdq_code {
->   
->   struct cmdq_cb_data {
->   	int			sta;
-> -	void			*data;
->   	struct cmdq_pkt		*pkt;
->   };
->   
-> -typedef void (*cmdq_async_flush_cb)(struct cmdq_cb_data data);
-> -
-> -struct cmdq_task_cb {
-> -	cmdq_async_flush_cb	cb;
-> -	void			*data;
-> -};
-> -
->   struct cmdq_pkt {
->   	void			*va_base;
->   	dma_addr_t		pa_base;
->   	size_t			cmd_buf_size; /* command occupied size */
->   	size_t			buf_size; /* real buffer size */
-> -	struct cmdq_task_cb	cb;
-> -	struct cmdq_task_cb	async_cb;
->   	void			*cl;
->   };
->   
+diff --git a/kernel/watchdog_hld.c b/kernel/watchdog_hld.c
+index 701f35f0e2d4..0573cef0b9dc 100644
+--- a/kernel/watchdog_hld.c
++++ b/kernel/watchdog_hld.c
+@@ -169,10 +169,16 @@ static void watchdog_overflow_callback(struct perf_event *event,
+ 
+ static int hardlockup_detector_event_create(void)
+ {
+-	unsigned int cpu = smp_processor_id();
++	unsigned int cpu;
+ 	struct perf_event_attr *wd_attr;
+ 	struct perf_event *evt;
+ 
++	/*
++	 * Preemption is not disabled because memory will be allocated.
++	 * Ensure CPU-locality by calling this in per-CPU kthread.
++	 */
++	WARN_ON(!is_percpu_thread());
++	cpu = raw_smp_processor_id();
+ 	wd_attr = &wd_hw_attr;
+ 	wd_attr->sample_period = hw_nmi_get_sample_period(watchdog_thresh);
+ 
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
