@@ -4,145 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C88C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 20:45:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81570C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 22:33:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bECWmvM2konBJN9HJ4V65H/qH1Il3nGygw5TIiqsRDY=; b=Hziv/ZHIyNNEvD
-	fA1QH0zeSo/mx37cCuKnP0RCuBK09NhaekreuWqjk6SaFYxPOcTCOweIeO/SFQeZI48vv9wc/qn+d
-	8RBzYK8J8PJUWK9gJvAkN/H2zZJ4xdrbeNtbl/8/g8A4WRihUT8ByJiUyBiwrENzo6jbqKPa+dA1G
-	Xh16yq9uf1dpkSGCQVvi+JdUM1SfBMmkyJCGTXuUbjZmeFWSgU0gOo8twtVQRMN2C1K7YV0bTGfRn
-	tMZuDJRzyZWmEPZwZjO9Xf1skyrMwWpAU1KMRyox7tI4doJv399V9Ni0rWJkc9U9swTMcfQN/vLvh
-	KJHUPWqrfG1QwAiALYBQ==;
+	List-Owner; bh=KeZmPWSWJ9Dkjw+S/y1hbP8tLqiqiRcZZWwTGy6nsIE=; b=mZQa+DsQP8Xe9/
+	K5kHM488dgM5fiZ/RTuk4gbCnMcfSbj2zkfEqYz12XL8Rq1PdwKaMD2NhAi4iNJOqugqVEsGL29aU
+	SO+ityTIMOMAWlXAjiTUhVse66IhS3HBMxV9y01cqpF8jtiug5M33O7MZ1mHL54Na1GZlyeB56i1w
+	ueQJiLCRKYfpgQJFGBbgG1z3LE1jcEbE0FLRGIIPpZu2w2r1muQGzTVggEO/OC4M97hZ/5cMgRj+Y
+	L1b/LsFrP03p8cznlzNGJu0EmcEaB4mTbGBKO6l2Wc+T9QtDqoYINpSE+7Ke9Gh0I4WnyIazHx4g3
+	c3RgjVRJYsLGKOZSZ8KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1DPt-00BD9v-QK; Tue, 14 Jun 2022 20:45:37 +0000
-Received: from mail-co1nam11on20602.outbound.protection.outlook.com ([2a01:111:f400:7eab::602] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1o1F5g-00Bc5T-74; Tue, 14 Jun 2022 22:32:52 +0000
+Received: from mail-io1-f45.google.com ([209.85.166.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1DPk-00BD5Q-4d; Tue, 14 Jun 2022 20:45:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IJ3bF63yYGUN6eohvnWDP9oKyS+9TiW3ayXA/a22grBqOH2hJwisWr8dg6vL6FouhZIJxnde5LqjRSaB0B+B6jBVGsQk36B93Y7xZpZs+lo13PR26x+v0opZkLXS5oaJN5Qfqj7ancj27L3sTu9l27UYeoUv4RDgI8FjYffqcgUDp5V/qg9/U2iH1q2hqf2FXYMLLk3zd5kohvDblI1mhnW5/Zoso9i+mYdgxPpaLq99t7uaJCD0z+zSDITiw4ywtOfDCKZ9sjhwxtl6lt7Dm2tZfMxBdtDDkok9al6DA7ljsRd0uGbx6pYuf9js6DZSCCbD3myNMfIA0bqVbabvCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=h+wdnHzm5/tFJI64HWledeJrntDDTEnQRGQb3TjHaak=;
- b=OqjzX1hhs8nf4EaE+2jE3pmO2Kjv2Mpr0fX4ctxEq4KLBSW0RYxjDnmzTvipUuAhUik3AAYgXsEQ9KKGf8RZgjwoViD4bZ+IrVBJp6v6s1KcottmCIVrRKvabPKML4QZ32oDBXoewriLTn8etvY8/CjbYtPNfIRmzBO78If3Lk65ZZUY+El2wr7LiYLrddG9srRMYGmbc2D6BqCYpYBAoNtR3jdIPEfACZrGqt3eHOPoTaVW3yy5O9+9//T3tuI2ozbvEZgzOk8c0XEx4ZSevYhwo98Qyr3cIaSJAv1K7NBIZAnl3WMPqEUq87YW2fpRPkfLISpEQUG3DqjD5psJSg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.235) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com; dmarc=pass
- (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
- (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h+wdnHzm5/tFJI64HWledeJrntDDTEnQRGQb3TjHaak=;
- b=XfpsHHlhP6RjgRnv2YvQYPgMseZ6o6stX8nOOrlRUvybxcMS0kC7GSuFMym2nIlbXTp7Odm9I5U5Pf3N/Y2WkCxg89a5nmpO9fvfNZnGmnygKuB/JgY2xtYkaauV+jQq0mCRmEzTu9Mw225ue7e9JSF9FC1xZkmQsaZ12oLvnqlPkb77jV0aKtAGged9X2LvbdBlHCNgh624YBjemTB/kCW9nwo5NuB9PgBKzoc81Lw7L3ZFP3iaf855HfB0+bmqlcx/gJwTpcgGazzT9HTEPQPP29lEZR/+LiMa2HOJF1T/T9Z4/taJufU6An6tgBiu7beCFIpJBgw8Q/Wxz4iHPw==
-Received: from BN0PR04CA0144.namprd04.prod.outlook.com (2603:10b6:408:ed::29)
- by BN6PR1201MB0113.namprd12.prod.outlook.com (2603:10b6:405:55::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12; Tue, 14 Jun
- 2022 20:45:23 +0000
-Received: from BN8NAM11FT008.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:ed:cafe::87) by BN0PR04CA0144.outlook.office365.com
- (2603:10b6:408:ed::29) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.17 via Frontend
- Transport; Tue, 14 Jun 2022 20:45:23 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.235)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.235 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.235; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.235) by
- BN8NAM11FT008.mail.protection.outlook.com (10.13.177.95) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5332.12 via Frontend Transport; Tue, 14 Jun 2022 20:45:23 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by DRHQMAIL107.nvidia.com
- (10.27.9.16) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Tue, 14 Jun
- 2022 20:45:22 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail202.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Tue, 14 Jun
- 2022 13:45:22 -0700
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
- Transport; Tue, 14 Jun 2022 13:45:19 -0700
-Date: Tue, 14 Jun 2022 13:45:18 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-CC: Jason Gunthorpe <jgg@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
-	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
-	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>, "agross@kernel.org"
-	<agross@kernel.org>, "bjorn.andersson@linaro.org"
-	<bjorn.andersson@linaro.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>,
-	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "baolin.wang7@gmail.com"
-	<baolin.wang7@gmail.com>, "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
-	"wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
-	<jernej.skrabec@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"virtualization@lists.linux-foundation.org"
-	<virtualization@lists.linux-foundation.org>, "thierry.reding@gmail.com"
-	<thierry.reding@gmail.com>, "alim.akhtar@samsung.com"
-	<alim.akhtar@samsung.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
-	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
-	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
-	<jonathanh@nvidia.com>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "gerald.schaefer@linux.ibm.com"
-	<gerald.schaefer@linux.ibm.com>, "linux-sunxi@lists.linux.dev"
-	<linux-sunxi@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "cohuck@redhat.com"
-	<cohuck@redhat.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org"
-	<iommu@lists.linux-foundation.org>, "dwmw2@infradead.org"
-	<dwmw2@infradead.org>
-Subject: Re: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
- enforced cache coherency
-Message-ID: <YqjzXpzuBa4ATf9o@Asurada-Nvidia>
-References: <20220606061927.26049-1-nicolinc@nvidia.com>
- <20220606061927.26049-4-nicolinc@nvidia.com>
- <BN9PR11MB5276DC98E75B1906A76F7ADC8CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20220608111724.GL1343366@nvidia.com>
- <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
+	id 1o1F5c-00Bc4K-Tm; Tue, 14 Jun 2022 22:32:50 +0000
+Received: by mail-io1-f45.google.com with SMTP id h8so10903382iof.11;
+        Tue, 14 Jun 2022 15:32:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=CVcb2QfZlvcldcNaLh32HL82gx/d45G76khp2L61DK4=;
+        b=h4smxfcnhJxlQX6lpfCY+j3RSL3wCDhThYdq63jRKjmw/pGPuaM+G13bgpJm3pdk5y
+         /nazUwE4YLS2W7WY/gqMYi7iP5D9ExydFDkYie/UefWux8Zsz52rf6hMLs7s1iJV5Ubh
+         XU/0NWnm2DSqYS/WdTJHp6JAFNWsCIn5wssJWywbnKeUCYtXcAF9y/Dd+qaPHiijhANP
+         xBaSd7fy+tN5TDbFSNFSvjECxnWI6OYbPFns0EXiMZpMtHwpmopnIKbBnMeTnYZty+bf
+         i0qhdDcp/ftBDC0KFCcONnvkHnhgVEJhEqV9lnFOyV7hIWkVbn3WLSrgI/u4mGLaE1dg
+         hOrg==
+X-Gm-Message-State: AOAM530mjUXpKgXZX+X12Qwkc+y3T4tEfZCYJyyLTZM5yZitJjIk1r03
+	uMckbVqkdeyRLzg4E5TJsw==
+X-Google-Smtp-Source: ABdhPJyq0EVA3Gxzc2qJ8HO4/M8DLzAPSmeeI6l+hyZb/y7hNm8hyd6w4gg3LC5iya2L+50YOqknZg==
+X-Received: by 2002:a05:6638:1411:b0:331:ac08:5ae3 with SMTP id k17-20020a056638141100b00331ac085ae3mr4141226jad.162.1655245964991;
+        Tue, 14 Jun 2022 15:32:44 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.251])
+        by smtp.gmail.com with ESMTPSA id u9-20020a92da89000000b002d4032b41casm5974649iln.32.2022.06.14.15.32.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jun 2022 15:32:44 -0700 (PDT)
+Received: (nullmailer pid 2848738 invoked by uid 1000);
+	Tue, 14 Jun 2022 22:32:42 -0000
+Date: Tue, 14 Jun 2022 16:32:42 -0600
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v4 1/6] dt-bindings: net: dsa: convert binding for
+ mediatek switches
+Message-ID: <20220614223242.GA2848631-robh@kernel.org>
+References: <20220610170541.8643-1-linux@fw-web.de>
+ <20220610170541.8643-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c57380c9-1dd6-4d7d-4096-08da4e46ce09
-X-MS-TrafficTypeDiagnostic: BN6PR1201MB0113:EE_
-X-Microsoft-Antispam-PRVS: 	<BN6PR1201MB0113233C3B5CAF3FE03B6129ABAA9@BN6PR1201MB0113.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	01Lo7EEKLCy2OIC9zTeh6zz/WeBLpYGCF/uXe2ghKhndvNCltYjbF+9OT7LjgeEp0EGOYX5nuh8iNeJdBU9ltcgjgxnXDpq2V4ci2ZGnH/qdqBYJAvHqdOHKYZnlUsuyIwMc5/ZbSNSlzit+njn0WYai4x8rr0ZEmgKxr9lbMKggl+67Z3iwkRyy0mB0dp8SfaBVMh1XZDS8flTgxtRw9ggZO3cGg1XUhhsXl9VK5HMTXN8sAFQn3IJgkOd8SZ8F75KGwXFAp8byCM4c6ZzPY0ocQ+1DYLkWW7xxoqtllkzXftPyL/EON92SQXB0iomv5sJSfASJa52ZEdJ9ZCVP8emmMOA0am7u7MWVpExc6P/LjBm1bgZANxlx1mptyq0XjhB057UHTchHzc333st+7lAC+iGMOew4JEbMYoRP//znW+l8zk9usgbzA+tg55NalrgL7Pwht3H1lcAyo+37W026OIYzHwBTwtw0dS3vbt5YA35V7kyPIZnJri/6mo9tuelWk3JF9QPHOG4EAVfkPPv9nWOOTYs4BGK1uO5sxTULTBgNSVwaSw2R+JzRxKw95KPJE1sUFHwcXvCi6mNojKWSjRSoZgD0KA0/ZAbi09qjpoXRJjk/2PiOSdswHXc9qzUWl36cTtF0LUxCn7pNzSodPa/MLmoZXXZ5fZNnEXHmKdEljxtMKov1+RUJYUOPNVkI2hG8arkjz3tAzGtodg==
-X-Forefront-Antispam-Report: 	CIP:12.22.5.235;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(40470700004)(36840700001)(46966006)(5660300002)(7416002)(356005)(36860700001)(7406005)(2906002)(186003)(4744005)(40460700003)(82310400005)(26005)(9686003)(33716001)(70586007)(54906003)(8936002)(86362001)(70206006)(55016003)(508600001)(83380400001)(4326008)(47076005)(8676002)(316002)(426003)(336012)(6916009)(81166007)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2022 20:45:23.5861
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c57380c9-1dd6-4d7d-4096-08da4e46ce09
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.235];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT008.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR1201MB0113
+In-Reply-To: <20220610170541.8643-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_134528_240505_FC96B40B 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20220614_153248_986333_0E81BD47 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,38 +73,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiko Stuebner <heiko@sntech.de>, =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Florian Fainelli <f.fainelli@gmail.com>, linux-rockchip@lists.infradead.org, Greg Ungerer <gerg@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Vivien Didelot <vivien.didelot@gmail.com>, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kevin,
-
-On Wed, Jun 08, 2022 at 11:48:27PM +0000, Tian, Kevin wrote:
-> > > > The KVM mechanism for controlling wbinvd is only triggered during
-> > > > kvm_vfio_group_add(), meaning it is a one-shot test done once the
-> > devices
-> > > > are setup.
-> > >
-> > > It's not one-shot. kvm_vfio_update_coherency() is called in both
-> > > group_add() and group_del(). Then the coherency property is
-> > > checked dynamically in wbinvd emulation:
-> >
-> > From the perspective of managing the domains that is still
-> > one-shot. It doesn't get updated when individual devices are
-> > added/removed to domains.
+On Fri, 10 Jun 2022 19:05:36 +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> It's unchanged per-domain but dynamic per-vm when multiple
-> domains are added/removed (i.e. kvm->arch.noncoherent_dma_count).
-> It's the latter being checked in the kvm.
+> Convert txt binding to yaml binding for Mediatek switches.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> v4:
+> - fix squash of port 5 as cpu-port
+> - drop type from interrupt-controller and add depency for this
+> - use ethernet-ports in examples
+> - drop address-/size-cells
+> 
+> v3:
+> - include standalone patch in mt7530 series
+> - drop some descriptions (gpio-cells,reset-gpios,reset-names)
+> - drop | from descriptions
+> - move patternProperties above allOf
+> 
+> v2:
+> - rename mediatek.yaml => mediatek,mt7530.yaml
+> - drop "boolean" in description
+> - drop description for interrupt-properties
+> - drop #interrupt-cells as requirement
+> - example: eth=>ethernet,mdio0=>mdio,comment indention
+> - replace 0 by GPIO_ACTIVE_HIGH in first example
+> - use port(s)-pattern from dsa.yaml
+> - adress/size-cells not added to required because this
+>   is defined at mdio-level inc current dts , not switch level
+> ---
+>  .../bindings/net/dsa/mediatek,mt7530.yaml     | 406 ++++++++++++++++++
+>  .../devicetree/bindings/net/dsa/mt7530.txt    | 327 --------------
+>  2 files changed, 406 insertions(+), 327 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/net/dsa/mt7530.txt
+> 
 
-I am going to send a v2, yet not quite getting the point here.
-Meanwhile, Jason is on leave.
-
-What, in your opinion, would be an accurate description here?
-
-Thanks
-Nic
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
