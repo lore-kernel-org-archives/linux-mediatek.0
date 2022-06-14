@@ -4,76 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1C32C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 06:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 248FEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 07:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gY475nQZBdMIRMfDAbehcP+4a+Tosb7oyhIe/CLpP3g=; b=rkRdc3Fk01ZFa6
-	HGTjbhwrpp5cnlM/AFWhAc8qLTKTQkYZREkuoW3SdRjvZVAQmxoLC8t3d75asl2WyHcJAaK611tjK
-	K6JO2cRDbm0w/3hyv/9gAh/zEJhIcPWwO0TmnLayxueq8gSXIRgI+dizt28/eS/IA0wMjnEpMoYtr
-	EuwZW6uxd11569b8bb6chic7NDWcwHTgPW/DWldy7TGbAx/dUsd3qWDEsBhXEwkXhbMGNoNKAfafL
-	sAWV3qqeR7cCPU+selrK+va5GKMhcDUG27PU35NtI0aJv+IOvrmOZTW3WNEU8EWw3rPbKrYCusDkd
-	bUlCYPtI2Bt1YRfv16+Q==;
+	List-Owner; bh=QPdnv9wTRRfQOGd3a9d7kPMy9ZXpLLQRgCoknEMiZ0U=; b=kog32oCGw1dDJ1
+	JhrW4+zZCwWe7UCf6lQdQ8p+X4FlHsu25lXdouB9+h4VPAXo8WOfW/+l+cYdhC40Cv5G+45cqpfg9
+	+BdwXUb0JMc2Hgucp8hA8ASR9zWE4BUqG+i3krYeaRHBmdOeZGUVP2i0ZJljrEy/0DhMlFpf+omu3
+	gyE9IiOQxhCrTTaUxHk2ShHFKwjsolM/gubVXn8lbW+OXZSzkSqOI1LQX8lBUIEsi+3N6J3IY8FyV
+	qN/pauv3EZ/fmQ6crgvludd6uDcQr2Mqx08xjErA/QHfDotkGt0uFbkSYcSJw/EBj0xCVIVFhW63b
+	Si5bIqKiI68pQr/zhG6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o10Qh-007P6a-B2; Tue, 14 Jun 2022 06:53:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o10yF-007tzF-80; Tue, 14 Jun 2022 07:28:15 +0000
+Received: from mail-sgaapc01on20718.outbound.protection.outlook.com ([2a01:111:f400:feab::718] helo=APC01-SG2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o10QO-007OoM-FC; Tue, 14 Jun 2022 06:53:18 +0000
-X-UUID: 65d7fb4d309d4de39579c2d9cea7d8d7-20220613
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:2e7d3d00-7816-4ec9-bf13-efdb1b8be791,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:c8178607-b57a-4a25-a071-bc7b4972bc68,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 65d7fb4d309d4de39579c2d9cea7d8d7-20220613
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <mingjia.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1420696961; Mon, 13 Jun 2022 23:53:07 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Jun 2022 23:53:06 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 14 Jun 2022 14:53:04 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 14 Jun 2022 14:53:02 +0800
-From: Mingjia Zhang <mingjia.zhang@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
-	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: Add to support VP9 inner racing mode
-Date: Tue, 14 Jun 2022 14:52:19 +0800
-Message-ID: <20220614065219.29712-1-mingjia.zhang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1o10xt-007th7-5C; Tue, 14 Jun 2022 07:27:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Uej4dym1jBlGyOrJuBUA9zne8aEHm1Dc+aJiYPxZBpHeRIeZR+XH+FlBqyQFhX1e2eXVroQYVtIpoQtcP3GVBwXaBQhR+mepRSnOkwCTYP/b0ClwMOrk1toK3H284wzTAKdwGGHsvCzbUg+B3ZdYZwCaCLea5ZDZrlaPn2A4PRn+WqGwVMGW574L1JAdDY2HrMoZUSn6LOeHar+JLF0wqPwqvFCRLe2OEkC20XPzthFJLwvNBvvh+iDeyk2ZVe8Md92ndxBsmx57njQkeWfplqoM0yG5CUdAmDZrX8fFpJcOaw/J3g6D2dgZlqj8y8Rq8ZgjXBkB9iGsvOqu4kZ0dg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rVn0I8IuRnjhtP5iqKJJ+F9WM77T22RA/nRLrh7B40w=;
+ b=Et/rhwvg+Kn00yvfcXhYWZoEQs5yafr2PImxZPZhAiT7oe0fxNyYIMuxor208nRRyM8MkTbFWmuUus9teOo0EudgIxJCtaANZ4VKhC+8lcWaeQiXMLzPy/ekFisQ8DGicA4doymLFeqF+0YBPMNRRAdgjI13PooLrZcO1CvzcSisAKLkahaQVAKMfXK0d8pX343tzYcEcIi/jh8OppAHceZqbCN88tAfoUxWMuH+0Pb63sWm5YK10dw1oh5a1XccORkYzHUvGi3C2yp8po1eIHW7N+5WqB77IUF6l7S8R9Zs9ziqKCxwaFnAE4YYXMJx8Y8VFMhP0KTh4JfycaROBw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com;
+ s=selector2-vivo0-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rVn0I8IuRnjhtP5iqKJJ+F9WM77T22RA/nRLrh7B40w=;
+ b=GCRZlHxqZkeu70omtJ+SK8tP0KY2ju7SrRfRU6h9bJxlB9Y6IO38t5dYEG1lhbMPcxn+wB2X4Ix1/EaOgac7lOHiXnSrrqc+7zZWXwCAlxAeiTA9gWigQZXhndGP9tOYqfEC2luCOOSA16nYOh6wqcEWXP4larmgp+dwRm6Tjko=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from PS2PR06MB3493.apcprd06.prod.outlook.com (2603:1096:300:63::20)
+ by TY2PR06MB2685.apcprd06.prod.outlook.com (2603:1096:404:34::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.13; Tue, 14 Jun
+ 2022 07:27:44 +0000
+Received: from PS2PR06MB3493.apcprd06.prod.outlook.com
+ ([fe80::9890:b96e:6c97:ccdf]) by PS2PR06MB3493.apcprd06.prod.outlook.com
+ ([fe80::9890:b96e:6c97:ccdf%5]) with mapi id 15.20.5332.022; Tue, 14 Jun 2022
+ 07:27:44 +0000
+From: Guo Zhengkui <guozhengkui@vivo.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Haowen Bai <baihaowen@meizu.com>,
+	George Sun <george.sun@mediatek.com>,
+	Guo Zhengkui <guozhengkui@vivo.com>,
+	linux-media@vger.kernel.org (open list:MEDIA INPUT INFRASTRUCTURE (V4L/DVB)),
+	linux-kernel@vger.kernel.org (open list),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Cc: zhengkui_guo@outlook.com
+Subject: [PATCH] media: mediatek: vcodec: fix minmax.cocci warning
+Date: Tue, 14 Jun 2022 15:25:59 +0800
+Message-Id: <20220614072618.26925-1-guozhengkui@vivo.com>
+X-Mailer: git-send-email 2.20.1
+X-ClientProxiedBy: SG2PR03CA0127.apcprd03.prod.outlook.com
+ (2603:1096:4:91::31) To PS2PR06MB3493.apcprd06.prod.outlook.com
+ (2603:1096:300:63::20)
 MIME-Version: 1.0
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 9899e996-c90e-4096-9dcc-08da4dd75f33
+X-MS-TrafficTypeDiagnostic: TY2PR06MB2685:EE_
+X-Microsoft-Antispam-PRVS: 	<TY2PR06MB26855E7207946E918E4A084EC7AA9@TY2PR06MB2685.apcprd06.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	mPi3okusCecG8WHgql43t3HSSuWeKX2b42Nhwf0HFEDisl7SHxuZY2xLGH5r0Yy5Gr1iEiXxdF1PAOF2BTd2t9U9KpazsXhOHAGYIHYPXt8xGbjNZw/6kGzlUsdvVUy2Btitgp/jzlJJnBN+bpRAZh4k7qRA8eOS3Bu0gjL4Cr6qB39aEIjijaFad7i/JjXa7YfeLq96SeO/ll63AHy4kZ0KsZo0n3ursa1noJ8tkYVeQ/Rjl1yn6fpcSkjTb3obLZR/g+4icEeTrHZk4A8UBVmhi6xIE3i/VSH1W9O7kcPHzNgE5SRK7B1Vhodk+AHIhCsa6M7Oj0lcJiB14PF4DdDNMX9MgAAKzqJDY4Lw3JoFWs1OkA1OsarjXiDIutPOGZJ5IfoM8Xqa/Kq4I5TgId/wjgT/gz8s5cofJ+1b/9hfu9j7+XIpQmx8dlYRiyxYtnx6DmNoe5F3sSorBfDnbHINNNWsGG/yUGKAuVIUmurkA+t1QQLCSupsUtrITLhIg/PTbmW7N3oCRMuEvAxb/D25XlE2m4D6ucpipnvgl6iRJJ3wXaJ9VoPsvrZYZTtZPVyuH0puRl60rfsQjuHSIvbwB/GMCTQcp9VhES39Ge2N/AmMunFA/c6UK4EHp8+oStFeH5QEF7QCRKfZCLgYdlyHKjJ+5Wj/1CsL3mFR9DmIBAqeyqUa7hMemAcGoaOr6fsVsFVO/Xvt8yRjlwMmNDuOnBUo6o+bJ9xFC13CEqX0y6W0qLmfHM1uwkWEWVSJLOiUeUvPqC8XRUwpX7o+yQ==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PS2PR06MB3493.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(366004)(86362001)(110136005)(6512007)(921005)(6506007)(66946007)(52116002)(66556008)(66476007)(2906002)(6486002)(36756003)(508600001)(8936002)(38350700002)(6666004)(316002)(2616005)(83380400001)(8676002)(1076003)(4326008)(4744005)(7416002)(26005)(186003)(5660300002)(38100700002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?LoqKnO/eTXjr2/SiH99ZGZ/Q0lsPSBja7z1+JFTCafVaJ6wQc8VwjgcK+aCy?=
+ =?us-ascii?Q?+iSCZspqa55d7jbvF0UTzlaJbMQn43u4wjJCU+t3lhQZk6B34l8eg3GkNPLk?=
+ =?us-ascii?Q?23Gl+BVQj9H8hll1FxRgPFURIM2+lVUVqUqUUDdf2ltca1jBosfooKJABIL9?=
+ =?us-ascii?Q?oGQdeqvODQT9voGVT6qZArmhQLXIydOjhVq2o620RbjaJ3KbMiTkvK8Ewaah?=
+ =?us-ascii?Q?9lRF0fYJY11m9+EXAIynvLZkBOyyW0+SwG5lFzv5biJBqhg+6KXq8q+C73kR?=
+ =?us-ascii?Q?vBMm3OJgNuESUi8FpLdN4apqZNgFEpdtZw6MrUKhPDBcug1fVDV/YliNPeyq?=
+ =?us-ascii?Q?1P5hTOkpZulJm+KjGc2U0fFgX+qvx9rqLAbmDs1vbpnMWTL0jOOmZMFpgjbi?=
+ =?us-ascii?Q?ehImFTTp9D3LN9huTOVuECyXC8XeYim36tYGDhTs+XbPehNz/ISve9GZ3o0m?=
+ =?us-ascii?Q?vOonbZpTaYgDy/4/7Zn7Xva98+B2kOhlNcUdaoycYJriGmXazzkA5/RcFnOa?=
+ =?us-ascii?Q?Y1B8+lleoQ6H3ldrSQy+xNQO1hq4hyhf30fbuqJIO50+Yu7USRCeTM1JSZSV?=
+ =?us-ascii?Q?qSepHD5Qdjpr4DnkJF0CsQ5ofnAnqLXLwGjCFiPaRtjoYjVA1Yq3BWatqe8q?=
+ =?us-ascii?Q?jX2c/ugkSuRbrwjxCtvQVsnOOpAPHWtQ/mbLnNKtwe8964BD7E7/GDgdCPg3?=
+ =?us-ascii?Q?mfv8Wgd358r+KngV2IUV4B0apIOGkc0khd8HnvG8y61+1XBzA3UKr2AgRTcT?=
+ =?us-ascii?Q?NCqyt4X4I5QNyQEJiD8P3hcf8PA20Ypd/qNhJoNxVjN5YE3iHysPNnkUKwGB?=
+ =?us-ascii?Q?sBbRit9CpHG0iToCwEW0GdBiTbhkTGeUvWP2R03GWm6jqN0vCokwn3+jIljn?=
+ =?us-ascii?Q?aLPv6k/q6K7QBUDJ5yZnywVL65bAdfsaorJ2oDW2dfc10kSqdm2fZtjd/yjN?=
+ =?us-ascii?Q?La2X8eH4YqYTs6Z5JfOS6U8EojPXXQ7xkQKngUiW7LIAYF2MuVILtME06Clf?=
+ =?us-ascii?Q?X0zAty6sR24fiyKH0A1pPJkHRN00vQ9SNMmsDC8jM1e/R3uV1Ugcg3rPWjej?=
+ =?us-ascii?Q?cGz5EVOc4YO7w2LT7QDENb7sCkPNZDP+BoQEveYkHr41HLGj6HxBZA98os85?=
+ =?us-ascii?Q?2L+0W3V4uhQWd2NjsoLh2Uv+BasqjFuJvt03k/7QGFomRPgQ24yBGx2emY6h?=
+ =?us-ascii?Q?hWg85SZyzzGmR4jfu84XhVXyBZupAIuhIy1UaLBN1U0BKqEeqNg+5mC3Y3Dc?=
+ =?us-ascii?Q?wyk9VHhL2yHwVgEiirwda8MV28LnQZuwAoAvGJwTQmyzMhXKtpGEUz2ucyA1?=
+ =?us-ascii?Q?py87uRvmPAc4+oPMyLaFB9dheEaRvvo2RU2vER1UgA3VdRJSC+bnBseBkmXK?=
+ =?us-ascii?Q?k+3Xct+o3UASSddQYuAHpbWlw48BBvE2KwnTj7M6WfXQhBLMfJujLCY6W9n8?=
+ =?us-ascii?Q?1xrFjbFfxli4fsSSwVW/hjx/bqJTuqc+zqKNMVJNnczJtJK6aAq00menwEeh?=
+ =?us-ascii?Q?kRLW08xoKodh+CUfJjCI0bB2YgPJWIWtlc0YpzeE/BJBYQXKEe7GyZ9aRQvf?=
+ =?us-ascii?Q?WmHOQR8lJhfIQTgw4wPSJDxkGpsQSBvaU2YVUJvRcDV6mJwlVaU13IHNREuw?=
+ =?us-ascii?Q?M5qjPe8KM9GFMqQE9PFmvMpF7B3vJakykL8ngwQvOECItq19Ag30ohSh6Mvs?=
+ =?us-ascii?Q?Q6Qr4+cA7S7gXZSzEq/UcNYUXDJyadDM6ZHokLJCKgghgOq6/tk3Cm4kL0n5?=
+ =?us-ascii?Q?mZ0veZLLXA=3D=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9899e996-c90e-4096-9dcc-08da4dd75f33
+X-MS-Exchange-CrossTenant-AuthSource: PS2PR06MB3493.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2022 07:27:43.9996
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: SIU3Pm0XV1FhZSDEPpPhRHXn+kRG0NKQW2kA1fi4nacQdnNESFk2ubTKdDvVY85pnD/mtRjuh4ENgSje+Lvcxw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY2PR06MB2685
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_235316_545768_32FB40EA 
-X-CRM114-Status: GOOD (  15.88  )
+X-CRM114-CacheID: sfid-20220614_002753_234105_1DF16B22 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,143 +144,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: mingjia zhang <mingjia.zhang@mediatek.com>
+Fix the following coccicheck warning:
 
-In order to reduce decoder latency, enable VP9 inner racing mode.
-Send lat trans buffer information to core when trigger lat to work,
-need not to wait until lat decode done.
+drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c:
+694:15-16: WARNING opportunity for min().
 
-Signed-off-by: mingjia zhang <mingjia.zhang@mediatek.com>
+Signed-off-by: Guo Zhengkui <guozhengkui@vivo.com>
 ---
- .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 64 ++++++++++++-------
- 1 file changed, 40 insertions(+), 24 deletions(-)
+ .../media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c   | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-index fba06f321baa..35462d45fbf4 100644
+index f464af190d8c..81de876d5126 100644
 --- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
 +++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
-@@ -436,6 +436,7 @@ struct vdec_vp9_slice_ref {
-  * @frame_ctx:		4 frame context according to VP9 Spec
-  * @frame_ctx_helper:	4 frame context according to newest kernel spec
-  * @dirty:		state of each frame context
-+ * @local_vsi:		local instance vsi information
-  * @init_vsi:		vsi used for initialized VP9 instance
-  * @vsi:		vsi used for decoding/flush ...
-  * @core_vsi:		vsi used for Core stage
-@@ -482,6 +483,8 @@ struct vdec_vp9_slice_instance {
- 	struct v4l2_vp9_frame_context frame_ctx_helper;
- 	unsigned char dirty[4];
+@@ -691,7 +691,7 @@ static int vdec_vp9_slice_tile_offset(int idx, int mi_num, int tile_log2)
+ 	int sbs = (mi_num + 7) >> 3;
+ 	int offset = ((idx * sbs) >> tile_log2) << 3;
  
-+	struct vdec_vp9_slice_vsi local_vsi;
-+
- 	/* MicroP vsi */
- 	union {
- 		struct vdec_vp9_slice_init_vsi *init_vsi;
-@@ -1617,16 +1620,10 @@ static int vdec_vp9_slice_update_single(struct vdec_vp9_slice_instance *instance
+-	return offset < mi_num ? offset : mi_num;
++	return min(offset, mi_num);
  }
  
- static int vdec_vp9_slice_update_lat(struct vdec_vp9_slice_instance *instance,
--				     struct vdec_lat_buf *lat_buf,
--				     struct vdec_vp9_slice_pfc *pfc)
-+				     struct vdec_vp9_slice_vsi *vsi)
- {
--	struct vdec_vp9_slice_vsi *vsi;
--
--	vsi = &pfc->vsi;
--	memcpy(&pfc->state[0], &vsi->state, sizeof(vsi->state));
--
- 	mtk_vcodec_debug(instance, "Frame %u LAT CRC 0x%08x %lx %lx\n",
--			 pfc->seq, vsi->state.crc[0],
-+			 (instance->seq - 1), vsi->state.crc[0],
- 			 (unsigned long)vsi->trans.dma_addr,
- 			 (unsigned long)vsi->trans.dma_addr_end);
- 
-@@ -2091,6 +2088,13 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		return ret;
- 	}
- 
-+	if (IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability)) {
-+		vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
-+		memcpy(&instance->local_vsi, vsi, sizeof(*vsi));
-+		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
-+		vsi = &instance->local_vsi;
-+	}
-+
- 	if (instance->irq) {
- 		ret = mtk_vcodec_wait_for_done_ctx(ctx,	MTK_INST_IRQ_RECEIVED,
- 						   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
-@@ -2103,22 +2107,25 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	}
- 
- 	vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
--	ret = vdec_vp9_slice_update_lat(instance, lat_buf, pfc);
-+	ret = vdec_vp9_slice_update_lat(instance, vsi);
- 
--	/* LAT trans full, no more UBE or decode timeout */
--	if (ret) {
--		mtk_vcodec_err(instance, "VP9 decode error: %d\n", ret);
--		return ret;
--	}
-+	if (!IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
-+		/* LAT trans full, no more UBE or decode timeout */
-+		if (ret) {
-+			mtk_vcodec_err(instance, "frame[%d] decode error: %d\n",
-+				       ret, (instance->seq - 1));
-+			return ret;
-+		}
- 
--	mtk_vcodec_debug(instance, "lat dma addr: 0x%lx 0x%lx\n",
--			 (unsigned long)pfc->vsi.trans.dma_addr,
--			 (unsigned long)pfc->vsi.trans.dma_addr_end);
- 
--	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue,
--				       vsi->trans.dma_addr_end +
--				       ctx->msg_queue.wdma_addr.dma_addr);
--	vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
-+	vsi->trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
-+	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue, vsi->trans.dma_addr_end);
-+	if (!IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
-+		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
-+
-+	mtk_vcodec_debug(instance, "lat trans end addr(0x%lx), ube start addr(0x%lx)\n",
-+			 (unsigned long)vsi->trans.dma_addr_end,
-+			 (unsigned long)ctx->msg_queue.wdma_addr.dma_addr);
- 
- 	return 0;
- }
-@@ -2194,10 +2201,14 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- 		goto err;
- 	}
- 
--	pfc->vsi.trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
- 	mtk_vcodec_debug(instance, "core dma_addr_end 0x%lx\n",
- 			 (unsigned long)pfc->vsi.trans.dma_addr_end);
--	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
-+
-+	if (IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
-+		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr);
-+	else
-+		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
-+
- 	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
- 
- 	return 0;
-@@ -2205,7 +2216,12 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
- err:
- 	if (ctx && pfc) {
- 		/* always update read pointer */
--		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
-+		if (IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
-+			vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
-+						       pfc->vsi.trans.dma_addr);
-+		else
-+			vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
-+						       pfc->vsi.trans.dma_addr_end);
- 
- 		if (fb)
- 			ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req);
+ static
 -- 
-2.18.0
+2.20.1
 
 
 _______________________________________________
