@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73461C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 02:06:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C72AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 02:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s2myUvJUbq5V0ZgWyksNQoTPc4TnufhaIg/jleKDGqc=; b=p06ADquQynBlpL
-	J+3KvyRtL+u4DIoYZz6FxVS9AOIXBE9IfxwRGzAWdzaG7925yWaNj/CTGcDY20GspW6ivYXtejE1l
-	KtDef/yjPKUzmJ1XKaQzEX5+JVShpENq7agEFUxmF/nHuJ3W1dU3oG2OaNMpZKD+HVJOZRnjFtzI+
-	b8Me437chk8jBvhXJ8lgbfm5W6FoXVrHeC6ZdVK6PW+SqbDPNSOTFjHVS/TNT4sx+tNHSe9cLbLz2
-	cV3eQpRqr01XdqKahiM6d5h7g90wtTJ0P50navUifm1egXemNsEZj46uSSaiPRlKrM2MlD7791DVj
-	D+SoXMo/zi6BRdJcicvQ==;
+	List-Owner; bh=s2myUvJUbq5V0ZgWyksNQoTPc4TnufhaIg/jleKDGqc=; b=qTmfIBw6a9PVCw
+	KcCP9kgk4z1hbd1+54+c5m7c3ZOGNOFwTaay5JDuqsYCUKEOJ95MjjFDnBzOs380OrF6cE6A5AUX5
+	k+OEH0eGjdXVXcmV3K3ZTwLHMPq/dEavH4RxXEAnJ5L/Cn414uM4e+/bEKAqDfWVIt/DvGyzJC5pT
+	1ZOBucwij8p+oGNWqEcfZXUTtRKoExBSb/mBSZUWpWovpSxKCDJX/RPL3f8AiDsymFS6hBPTFFT+8
+	nnvv4ppKXyzdCl1lsOQBmFj8wdkRneEaUUU44OFeiPKupGvLdzgfVsANrZ3NBcBQlTKxdg/9QAmpw
+	jZpw33LSpz3eJX8+zNbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0vwK-006dom-VU; Tue, 14 Jun 2022 02:05:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o0vxS-006eIr-PG; Tue, 14 Jun 2022 02:07:06 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0vw6-006dkY-SN; Tue, 14 Jun 2022 02:05:46 +0000
+	id 1o0vxD-006eBT-Ie; Tue, 14 Jun 2022 02:06:53 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4ACA160B65;
-	Tue, 14 Jun 2022 02:05:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C92AC36AFE;
-	Tue, 14 Jun 2022 02:05:40 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 3CECDB816A9;
+	Tue, 14 Jun 2022 02:06:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEE71C385A9;
+	Tue, 14 Jun 2022 02:06:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655172341;
+	s=k20201202; t=1655172408;
 	bh=Jf02ZOeNT62FmD9AyapXa5UwHsN7xvflT8W163Wk6CI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tJ19ONjU+l9BeL/zM9nYXViwOF+j9/4vl3O7IQtzNaItqa2KK8Pn+ojil8iqC6Z+9
-	 PY0XXJMxMsHlxhxb9Z1bNU6vstGNRCVG5SzfP9boZo4HBmzlNr5EE0BuokhfHWygOi
-	 re947V0M/WXlO0/BhYVVaZjzjhezOJPovZSlmp76Hjf08qqPUd6ROWPcehTaTWo1wr
-	 UyTCBgYb+uXnK4vmNgd77gkYxQ/P5bKPeIeKBRWyNYw/xTU7Jnju5NTP84RijCT/4z
-	 FmJNLuw/BVvTmwTWC61qZVPY4hgbJMp5Yinxdw1HDC4LPcWVeJtl01phqjGMVTDdoR
-	 PIyJrrGoSwaHg==
+	b=eLf7P1AmZW2kBYtjAa5K71X5YXFVaBjgXO6cxUjbD24d/kqJgfgXXPfER2bA7M21E
+	 kBKlKNCvUrJAjZYDS+YFDRDkd5WTrWHkziy80m5UEQkgcUF3QikWNU4K2yoLREg9wI
+	 Js3DNJxLN9o1TKIm8EEz8KiIZAwfWQoy7I0TtYa4VLsrLCDa4cbFZCu6mX5a43IHt/
+	 I9kr2/GkWnyL+bIqkqZldG5qAMyNXIbNgePGN6lWB7E//Rls1Ozv0QbbJ6obEnM0Qg
+	 Kep85e7T1+3jOBmv9Wf5pw+myhGm5aCrRYgqv3Ac3s6H8OPsRrkfnuYMMrpnuUlecD
+	 vtgBGTwtnp1Vg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,17 +53,17 @@ Cc: Chen Lin <chen45464546@163.com>,
 	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.18 35/47] net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag
-Date: Mon, 13 Jun 2022 22:04:28 -0400
-Message-Id: <20220614020441.1098348-35-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.17 31/43] net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag
+Date: Mon, 13 Jun 2022 22:05:50 -0400
+Message-Id: <20220614020602.1098943-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220614020441.1098348-1-sashal@kernel.org>
-References: <20220614020441.1098348-1-sashal@kernel.org>
+In-Reply-To: <20220614020602.1098943-1-sashal@kernel.org>
+References: <20220614020602.1098943-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_190543_084185_26EB6E89 
+X-CRM114-CacheID: sfid-20220613_190651_912428_1AE76124 
 X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
