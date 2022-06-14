@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8025C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 02:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2DF1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 02:40:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZEpzdfdpP0PT/i1aVlcWcQCzTvMS3lKFFzNnIQqTkbY=; b=lcEETIaV2ynBiK
-	F1VIRMX6nIMtolz/YBA9jAPhZXmj7aoc8d5Y95A2/XZroFdK9IgLIVKozJMBb0m1HvhcCMU537lCD
-	KfbrGorXGI3THMfqdJVvSIJfI/iAU43t5wry8bQY4x30UEjwVdNWTzEeWVp6M5maSruGtzwDCpdGc
-	E0Ji1rVwosPu8OU9VPyN5XTNV5TXjRC19MR0jJ/V9W+UhmBJjEBFuZ552ZjqljTFf+enXPLz40iUZ
-	oB1dhHenyTllu0Euaz1MPVdcCKk4Ir27KcKhs8UKPwBGgjKyyEeyBZN11CNzDntN8dDZDElgAGGG0
-	WkLk4heYqDwOl1XQjHVg==;
+	List-Owner; bh=52G/aB5oIkcj7BYvZSrpZN7nn4fcy5LZJpOTEXQStuI=; b=QzBrkklHfUuXWJ
+	Z8VcHyYeAPia9pZpqTftMBwrdYid0uQ69JDYwiBLdPJxUl+niI7j6irlueWpWKeZ+esCIdEJRnOUf
+	lhhqeUcxyJJRQwgEnZSzNOqw5UipzCoGK7ATmr3T0IreJ05Svsx2XX7ugSzHFQDPYIq7Q7u75jdAl
+	afBP7tLUdkuZ6Oor7nRg2RwapJMT+e48ZJhcfOe/EBHW1CM0AX0zRUAfFgnZiuz/wPvoX1eA78MtU
+	XV+FWx3Kv2ldqf3whwbAbee01zd0XKSdh5yeo0LwBBuLc/K0mrmEBt60ao/dGbd6bL0stktN7QJZ1
+	oNWCDR5IhWiJo7dNnNsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0w5w-006iGX-Dp; Tue, 14 Jun 2022 02:15:52 +0000
+	id 1o0wTU-006m9S-LL; Tue, 14 Jun 2022 02:40:12 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0w5r-006iCe-0f; Tue, 14 Jun 2022 02:15:51 +0000
-X-UUID: 981bfe485f9345c78c65a6332427cc05-20220613
+	id 1o0wTR-006m8W-Jl; Tue, 14 Jun 2022 02:40:11 +0000
+X-UUID: 3614fe93d33d4f92aabc8f910f4cbfdb-20220613
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=m/kJ4tMrz+D1I0WAY7mPn+y7Tr8JMOphUlt6WtDhAGY=;
-	b=Di4jmnQpkUg/bs2HFyHoX3a0q8JIDMgnLFovTjPjNW2NOTRiDBiTZjhxK9bkxT5x9jcLwJBRBxHGaL1X2iLM9oHhZ47Cci7ZPQXMeAmaQrmVetPicbY8jZvKqt8ARaYEZgm3O9zF7fM/awXT3ZYFQed7l+66ANYkuqxzW32T0j0=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=15XA/ewnRXi3CTe0LITMKCEUWtVCirZXbQ/aZEu8kWg=;
+	b=dKVocuFcT6NkoFb6xFwOX5WFSPvD9curIaN47nnMimINaMBQQM3uBRGPrlqhKDDpY7RYcJ2GZxPajOdrZQlcyfj8XnlIIU3NfQ9RpPlKtoEY5RCZoPbg1W3a53r5zOlus/CFexuwinwaaspJ8yoDJnUF9KBNYIsFnPViYtMYqYE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:5b2e432c-0393-4973-a339-cab80f87420c,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:bb1b52c5-c67b-4a73-9b18-726dd8f2eb58,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.6,REQID:b42cae36-4cb9-4771-94b9-4d0e0d178471,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:b14ad71,CLOUDID:337053c5-c67b-4a73-9b18-726dd8f2eb58,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 981bfe485f9345c78c65a6332427cc05-20220613
+X-UUID: 3614fe93d33d4f92aabc8f910f4cbfdb-20220613
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <jianjun.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1697499570; Mon, 13 Jun 2022 19:15:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 1118894753; Mon, 13 Jun 2022 19:40:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Jun 2022 19:15:06 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ 15.0.1497.2; Mon, 13 Jun 2022 19:39:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 14 Jun 2022 10:15:04 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ Tue, 14 Jun 2022 10:39:00 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 14 Jun 2022 10:15:04 +0800
-Message-ID: <758e23499dd440f480d90c4417625a538521917a.camel@mediatek.com>
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Print LTSSM state when PCIe link
- down
+ Transport; Tue, 14 Jun 2022 10:38:59 +0800
+Message-ID: <bcc98dbbf737e4d98c25c839a390a0d9782cde3e.camel@mediatek.com>
+Subject: Re: [PATCH v9 0/2] phy: mediatek: Add PCIe PHY driver
 From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh@kernel.org>, Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?=
-	<kw@linux.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<jieyy.yang@mediatek.com>, <chuanjia.liu@mediatek.com>,
-	<qizhong.cheng@mediatek.com>, <jian.yang@mediatek.com>
-Date: Tue, 14 Jun 2022 10:15:03 +0800
-In-Reply-To: <f95d10d69758014c9b1631718afa7dc72a68aa79.camel@mediatek.com>
-References: <20220329030715.7975-1-jianjun.wang@mediatek.com>
-	 <32f5308e629cef3692c57c4c55442b0f2f25634f.camel@mediatek.com>
-	 <7a10b1d7fc294093f26555a8b5a8748a3c0e1c9f.camel@mediatek.com>
-	 <f95d10d69758014c9b1631718afa7dc72a68aa79.camel@mediatek.com>
+To: Vinod Koul <vkoul@kernel.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+	<kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	"AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>, Wei-Shun Chang <weishunc@google.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <rex-bc.chen@mediatek.com>,
+	<randy.wu@mediatek.com>, <jieyy.yang@mediatek.com>,
+	<chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
+	<jian.yang@mediatek.com>
+Date: Tue, 14 Jun 2022 10:38:59 +0800
+In-Reply-To: <Ypb6AS6oj2en/Roi@matsya>
+References: <20220520064920.27313-1-jianjun.wang@mediatek.com>
+	 <96f7cc90171bb6e088ce0ed88e10ad14f06a98bb.camel@mediatek.com>
+	 <Ypb6AS6oj2en/Roi@matsya>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_191547_142327_1501C998 
-X-CRM114-Status: GOOD (  31.05  )
+X-CRM114-CacheID: sfid-20220613_194009_701594_8E0BFFD8 
+X-CRM114-Status: GOOD (  23.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,131 +92,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maintainers,
+Hi Vinod,
 
-Just gentle ping for this patch, is there anything I can to do to get
-this patch merged?
+Sorry to disturb you, would you mind taking a look at this patch?
 
 Thanks.
 
-On Wed, 2022-06-01 at 10:24 +0800, Jianjun Wang wrote:
-> Hello Maintainers,
-> 
-> Is there anything I can do to get this patch merged?
-> 
-> Thanks.
-> 
-> On Wed, 2022-05-18 at 09:55 +0800, Jianjun Wang wrote:
-> > Hi Maintainers,
+On Wed, 2022-06-01 at 11:02 +0530, Vinod Koul wrote:
+> On 01-06-22, 10:21, Jianjun Wang wrote:
+> > Hello Maintainers,
 > > 
-> > Gentle ping for this patch, if there is anything I can do to get
-> > this
-> > patch merged, please let me know.
+> > Gentle ping for this patch series, if there is anything I can do to
+> > get
+> > these patches merged, please let me know.
+> 
+> Patience my friend patience. This was received very late in cycle and
+> I
+> will review after merge window closes..
+> 
+> 
 > > 
 > > Thanks.
 > > 
-> > On Fri, 2022-04-22 at 14:33 +0800, Jianjun Wang wrote:
-> > > Hi Maintainers,
+> > On Fri, 2022-05-20 at 14:49 +0800, Jianjun Wang wrote:
+> > > These series patches add support for PCIe PHY driver on MediaTek
+> > > chipsets.
 > > > 
-> > > Just gentle ping for this patch, if there is anything I can do to
-> > > get
-> > > this patch merged, please let me know.
+> > > Changes in v9:
+> > > 1. Check if the return value is -ENOMEM when reading efuse data
+> > > fails.
 > > > 
-> > > Thanks.
+> > > Changes in v8:
+> > > 1. Use "device_property_present()" to increase human readability;
+> > > 2. Use "GPL" as recommended in commit bf7fbeeae6db ("module: Cure
+> > >    the MODULE_LICENSE "GPL" vs. "GPL v2" bogosity").
 > > > 
-> > > On Tue, 2022-03-29 at 11:07 +0800, Jianjun Wang wrote:
-> > > > Print current LTSSM state when PCIe link down instead of the
-> > > > register
-> > > > value, make it easier to get the link status.
-> > > > 
-> > > > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > > > Reviewed-by: AngeloGioacchino Del Regno <
-> > > > angelogioacchino.delregno@collabora.com>
-> > > > ---
-> > > > Changes in v2:
-> > > > Print both of the register value and the LTSSM state.
-> > > > ---
-> > > >  drivers/pci/controller/pcie-mediatek-gen3.c | 41
-> > > > ++++++++++++++++++++-
-> > > >  1 file changed, 40 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > index 6745076a02b9..c24e03c198b7 100644
-> > > > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > @@ -153,6 +153,37 @@ struct mtk_gen3_pcie {
-> > > >  	DECLARE_BITMAP(msi_irq_in_use, PCIE_MSI_IRQS_NUM);
-> > > >  };
-> > > >  
-> > > > +/* LTSSM state in PCIE_LTSSM_STATUS_REG bit[28:24] */
-> > > > +static const char *const ltssm_str[] = {
-> > > > +	"detect.quiet",			/* 0x00 */
-> > > > +	"detect.active",		/* 0x01 */
-> > > > +	"polling.active",		/* 0x02 */
-> > > > +	"polling.compliance",		/* 0x03 */
-> > > > +	"polling.configuration",	/* 0x04 */
-> > > > +	"config.linkwidthstart",	/* 0x05 */
-> > > > +	"config.linkwidthaccept",	/* 0x06 */
-> > > > +	"config.lanenumwait",		/* 0x07 */
-> > > > +	"config.lanenumaccept",		/* 0x08 */
-> > > > +	"config.complete",		/* 0x09 */
-> > > > +	"config.idle",			/* 0x0A */
-> > > > +	"recovery.receiverlock",	/* 0x0B */
-> > > > +	"recovery.equalization",	/* 0x0C */
-> > > > +	"recovery.speed",		/* 0x0D */
-> > > > +	"recovery.receiverconfig",	/* 0x0E */
-> > > > +	"recovery.idle",		/* 0x0F */
-> > > > +	"L0",				/* 0x10 */
-> > > > +	"L0s",				/* 0x11 */
-> > > > +	"L1.entry",			/* 0x12 */
-> > > > +	"L1.idle",			/* 0x13 */
-> > > > +	"L2.idle",			/* 0x14 */
-> > > > +	"L2.transmitwake",		/* 0x15 */
-> > > > +	"disable",			/* 0x16 */
-> > > > +	"loopback.entry",		/* 0x17 */
-> > > > +	"loopback.active",		/* 0x18 */
-> > > > +	"loopback.exit",		/* 0x19 */
-> > > > +	"hotreset",			/* 0x1A */
-> > > > +};
-> > > > +
-> > > >  /**
-> > > >   * mtk_pcie_config_tlp_header() - Configure a configuration
-> > > > TLP
-> > > > header
-> > > >   * @bus: PCI bus to query
-> > > > @@ -327,8 +358,16 @@ static int mtk_pcie_startup_port(struct
-> > > > mtk_gen3_pcie *pcie)
-> > > >  				 !!(val & PCIE_PORT_LINKUP),
-> > > > 20,
-> > > >  				 PCI_PM_D3COLD_WAIT *
-> > > > USEC_PER_MSEC);
-> > > >  	if (err) {
-> > > > +		const char *ltssm_state;
-> > > > +		int ltssm_index;
-> > > > +
-> > > >  		val = readl_relaxed(pcie->base +
-> > > > PCIE_LTSSM_STATUS_REG);
-> > > > -		dev_err(pcie->dev, "PCIe link down, ltssm reg
-> > > > val:
-> > > > %#x\n", val);
-> > > > +		ltssm_index = PCIE_LTSSM_STATE(val);
-> > > > +		ltssm_state = ltssm_index >=
-> > > > ARRAY_SIZE(ltssm_str) ?
-> > > > +			      "Unknown state" :
-> > > > ltssm_str[ltssm_index];
-> > > > +		dev_err(pcie->dev,
-> > > > +			"PCIe link down, current ltssm state:
-> > > > %s
-> > > > (%#x)\n",
-> > > > +			ltssm_state, val);
-> > > >  		return err;
-> > > >  	}
-> > > >  
+> > > Changes in v7:
+> > > 1. Add bitfield.h header to fix the build error on non-arm64
+> > > platforms.
 > > > 
+> > > Changes in v6:
+> > > 1. Remove unnecessary header files;
+> > > 2. Use FILELD_PREP in bitfield.h to set value.
 > > > 
-> > 
-> > 
+> > > Changes in v5:
+> > > 1. Fix typo in kerneldoc: "eFues" => "eFuse".
+> > > 
+> > > Changes in v4:
+> > > 1. Fix no return when calling dev_err_probe.
+> > > 
+> > > Changes in v3:
+> > > 1. Add introductions for structure members;
+> > > 2. Add SoC dependent data;
+> > > 3. Dynamically allocate efuse data;
+> > > 4. Check return value if it's an -EPROBE_DEFER.
+> > > 
+> > > Changes in v2:
+> > > 1. Add specific compatible name;
+> > > 2. Read NVMEM data at probe time;
+> > > 3. Fix typos.
+> > > 
+> > > Jianjun Wang (2):
+> > >   dt-bindings: phy: mediatek: Add YAML schema for PCIe PHY
+> > >   phy: mediatek: Add PCIe PHY driver
+> > > 
+> > >  .../bindings/phy/mediatek,pcie-phy.yaml       |  75 +++++
+> > >  drivers/phy/mediatek/Kconfig                  |  11 +
+> > >  drivers/phy/mediatek/Makefile                 |   1 +
+> > >  drivers/phy/mediatek/phy-mtk-pcie.c           | 267
+> > > ++++++++++++++++++
+> > >  4 files changed, 354 insertions(+)
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/phy/mediatek,pcie-phy.yaml
+> > >  create mode 100644 drivers/phy/mediatek/phy-mtk-pcie.c
+> > > 
 > 
 > 
 _______________________________________________
