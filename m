@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C3FC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 03:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E769C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 05:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eMfDCyWor7qjGPiQ98Op51IObEndXtpASBlmG7/oNE4=; b=a9K6EaiaofUBoh
-	kWIdE8YY77dvARB4LBz603i24jU0k2j0TbF+IgRX8AmjBUC24Uzfwl+6owKbt12R6GY2kLQPwOgbt
-	ZIWBMf0S6Vg16pgk4CD6rLdd7tbSW7mxIpZC9ye9dLMxXf8n+Lk6frD+NRuhqGIbIfX5ACSj+b7fO
-	ZONH0TroztiR0kqlkE+UDCJsOK3xhe+RKuHDLVsbT2eYnnwLgkdBh/Gkm5uknx9oj9vIHZ904zXsN
-	kfW1uB0KS9fVq9IiykkL4o/nqAzhOgtpMskZAvci+RYJx6JX59OQu5t5iugaMWjK5yQR6d+emHZCI
-	K/uZmKAPEDulJk1hxYHg==;
+	List-Owner; bh=+1+SPGkr40iZdPnpLM7vo/0i4Bigf+EnNqtCjz2Wrys=; b=yfbRZ0HN0m5XPI
+	0HG1B677HwXUpThf+NafEIm8IN1jse4+Pkv9w+Zijyull5ANq5UNaAcyFdmLdrE4lWoMlDQy6w9qf
+	eZOHlt2e1MttZ0dWJDeNvFhclfLsCfuzvYFQNYnHk210zFjBDN3tn+LVOj7NWUI1DlH8qLGkMP2o8
+	zxYijLIGjhIKZM6rUQwFZVtJr9rESwflZJg6DvF8U1p6AVVG24BM842lvgQzqlG8tJWNilkfCxoqI
+	QTiShasjVHseCn+J0yjXVHyUu7Bbb80ml+OfZ0FK1y6XJd9R96hQ77ak5VtHfZ7oc1PnBlWe4CDGQ
+	1f1LyOsLtLq3alSCrqRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0xVx-006vw0-6q; Tue, 14 Jun 2022 03:46:49 +0000
+	id 1o0zFQ-0077Gf-FJ; Tue, 14 Jun 2022 05:37:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0xVu-006vvH-6f; Tue, 14 Jun 2022 03:46:47 +0000
-X-UUID: c295396bf20643d7a070a9487bd0caca-20220613
+	id 1o0zFM-0077F8-Tm; Tue, 14 Jun 2022 05:37:51 +0000
+X-UUID: fa5b3f581a6b437e9e13f751949c8488-20220613
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:c78beb05-f154-44e1-8cb5-d02b02aae836,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:b14ad71,CLOUDID:52c77e07-b57a-4a25-a071-bc7b4972bc68,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.6,REQID:068c34d3-0449-4bbe-ba51-6afa21f1acf6,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:a7a08207-b57a-4a25-a071-bc7b4972bc68,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: c295396bf20643d7a070a9487bd0caca-20220613
+X-UUID: fa5b3f581a6b437e9e13f751949c8488-20220613
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 927646812; Mon, 13 Jun 2022 20:46:40 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Jun 2022 20:36:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 14 Jun 2022 11:36:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+	with ESMTP id 1366366796; Mon, 13 Jun 2022 22:37:40 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 13 Jun 2022 22:27:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 14 Jun 2022 13:27:36 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 14 Jun 2022 11:36:37 +0800
-Message-ID: <f0746d3e0f1c998872840b63e94cd767061e77e7.camel@mediatek.com>
-Subject: Re: [PATCH v11 03/12] drm/mediatek: dpi: implement a CK/DE pol
+ Transport; Tue, 14 Jun 2022 13:27:36 +0800
+Message-ID: <e431cca23add678bb39dbc75d783d239914d256a.camel@mediatek.com>
+Subject: Re: [PATCH v11 04/12] drm/mediatek: dpi: implement a swap_input
  toggle in SoC config
 From: CK Hu <ck.hu@mediatek.com>
 To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
@@ -61,16 +61,16 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 14 Jun 2022 11:36:36 +0800
-In-Reply-To: <20220613064841.10481-4-rex-bc.chen@mediatek.com>
+Date: Tue, 14 Jun 2022 13:27:36 +0800
+In-Reply-To: <20220613064841.10481-5-rex-bc.chen@mediatek.com>
 References: <20220613064841.10481-1-rex-bc.chen@mediatek.com>
-	 <20220613064841.10481-4-rex-bc.chen@mediatek.com>
+	 <20220613064841.10481-5-rex-bc.chen@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_204646_282759_145A4ADB 
-X-CRM114-Status: GOOD (  20.14  )
+X-CRM114-CacheID: sfid-20220613_223748_993409_6CFE77D7 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,15 +92,8 @@ Hi, Bo-Chen:
 On Mon, 2022-06-13 at 14:48 +0800, Bo-Chen Chen wrote:
 > From: Guillaume Ranquet <granquet@baylibre.com>
 > 
-> Dp_intf does not support CK/DE polarity because the polarity
-> information
-> is not used for eDP and DP while dp_intf is only for eDP and DP.
-> Therefore, we add a bit of flexibility to support SoCs without CK/DE
-> pol
-> support.
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
+> The hardware design of dp_intf does not support input swap, so we add
+> a bit of flexibility to support SoCs without swap_input support.
 > 
 > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 > [Bo-Chen: Add modification reason in commit message.]
@@ -109,83 +102,88 @@ Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > angelogioacchino.delregno@collabora.com>
 > Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 22 +++++++++++++++++-----
->  1 file changed, 17 insertions(+), 5 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++++++++++---
+>  1 file changed, 11 insertions(+), 3 deletions(-)
 > 
 > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
 > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index ce8c5eefe5f1..15218c1e8c11 100644
+> index 15218c1e8c11..c1438c744120 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -125,6 +125,7 @@ struct mtk_dpi_conf {
->  	bool edge_sel_en;
+> @@ -126,6 +126,7 @@ struct mtk_dpi_conf {
 >  	const u32 *output_fmts;
 >  	u32 num_output_fmts;
-> +	bool is_ck_de_pol;
+>  	bool is_ck_de_pol;
+> +	bool swap_input_support;
 >  	const struct mtk_dpi_yc_limit *limit;
 >  };
 >  
-> @@ -211,13 +212,20 @@ static void mtk_dpi_config_pol(struct mtk_dpi
-> *dpi,
->  			       struct mtk_dpi_polarities *dpi_pol)
->  {
->  	unsigned int pol;
-> +	unsigned int mask;
->  
-> -	pol = (dpi_pol->ck_pol == MTK_DPI_POLARITY_RISING ? 0 : CK_POL)
-> |
-> -	      (dpi_pol->de_pol == MTK_DPI_POLARITY_RISING ? 0 : DE_POL)
-> |
-> -	      (dpi_pol->hsync_pol == MTK_DPI_POLARITY_RISING ? 0 :
-> HSYNC_POL) |
-> +	mask = HSYNC_POL | VSYNC_POL;
-> +	pol = (dpi_pol->hsync_pol == MTK_DPI_POLARITY_RISING ? 0 :
-> HSYNC_POL) |
->  	      (dpi_pol->vsync_pol == MTK_DPI_POLARITY_RISING ? 0 :
-> VSYNC_POL);
-> -	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, pol,
-> -		     CK_POL | DE_POL | HSYNC_POL | VSYNC_POL);
-> +	if (dpi->conf->is_ck_de_pol) {
-> +		mask |= CK_POL | DE_POL;
-> +		pol |= (dpi_pol->ck_pol == MTK_DPI_POLARITY_RISING ?
-> +			0 : CK_POL) |
-> +		       (dpi_pol->de_pol == MTK_DPI_POLARITY_RISING ?
-> +			0 : DE_POL);
-> +	}
-> +
-> +	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, pol, mask);
+> @@ -378,18 +379,21 @@ static void mtk_dpi_config_color_format(struct
+> mtk_dpi *dpi,
+>  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
+>  		mtk_dpi_config_yuv422_enable(dpi, false);
+>  		mtk_dpi_config_csc_enable(dpi, true);
+> -		mtk_dpi_config_swap_input(dpi, false);
+> +		if (dpi->conf->swap_input_support)
+> +			mtk_dpi_config_swap_input(dpi, false);
+>  		mtk_dpi_config_channel_swap(dpi,
+> MTK_DPI_OUT_CHANNEL_SWAP_BGR);
+>  	} else if ((format == MTK_DPI_COLOR_FORMAT_YCBCR_422) ||
+>  		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
+>  		mtk_dpi_config_yuv422_enable(dpi, true);
+>  		mtk_dpi_config_csc_enable(dpi, true);
+> -		mtk_dpi_config_swap_input(dpi, true);
+> +		if (dpi->conf->swap_input_support)
+> +			mtk_dpi_config_swap_input(dpi, true);
+
+In this case, we need swap input, but hardware does not support, so
+just skip config hardware and everything works fine? Should print any
+error message?
+
+Regards,
+CK
+
+>  		mtk_dpi_config_channel_swap(dpi,
+> MTK_DPI_OUT_CHANNEL_SWAP_RGB);
+>  	} else {
+>  		mtk_dpi_config_yuv422_enable(dpi, false);
+>  		mtk_dpi_config_csc_enable(dpi, false);
+> -		mtk_dpi_config_swap_input(dpi, false);
+> +		if (dpi->conf->swap_input_support)
+> +			mtk_dpi_config_swap_input(dpi, false);
+>  		mtk_dpi_config_channel_swap(dpi,
+> MTK_DPI_OUT_CHANNEL_SWAP_RGB);
+>  	}
 >  }
->  
->  static void mtk_dpi_config_3d(struct mtk_dpi *dpi, bool en_3d)
-> @@ -799,6 +807,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
->  	.max_clock_khz = 300000,
+> @@ -808,6 +812,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
 >  	.output_fmts = mt8173_output_fmts,
 >  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
-> +	.is_ck_de_pol = true,
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  	.limit = &mtk_dpi_limit,
 >  };
 >  
-> @@ -809,6 +818,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
->  	.max_clock_khz = 150000,
+> @@ -819,6 +824,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
 >  	.output_fmts = mt8173_output_fmts,
 >  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
-> +	.is_ck_de_pol = true,
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  	.limit = &mtk_dpi_limit,
 >  };
 >  
-> @@ -818,6 +828,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
->  	.max_clock_khz = 100000,
+> @@ -829,6 +835,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
 >  	.output_fmts = mt8183_output_fmts,
 >  	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
-> +	.is_ck_de_pol = true,
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  	.limit = &mtk_dpi_limit,
 >  };
 >  
-> @@ -827,6 +838,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
->  	.max_clock_khz = 150000,
+> @@ -839,6 +846,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
 >  	.output_fmts = mt8183_output_fmts,
 >  	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
-> +	.is_ck_de_pol = true,
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  	.limit = &mtk_dpi_limit,
 >  };
 >  
