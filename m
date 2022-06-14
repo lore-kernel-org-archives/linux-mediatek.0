@@ -4,79 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99569C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 06:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C3E7C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 06:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zx+n8f9huypVsn3kww8mkRfgAsmEMJblPCZ3wSKNj+A=; b=BpBVStFVs4K+jy
-	VfTBaE6aQI+sxPGQ0Rkz0raQYi6IRTFqlmmZhX9fwihEcWjX/qF0JXikvtV8YqH/Dgr1z8qi0Qe/7
-	nRN8gQQ4NZ9VQUlpJxv8Uz27qiskGpbPHFTTyCzHZ/iEVRLHXVNireGDYYCAcqW3BNhjOsdI1ICkt
-	/dLsAvEDWNzlk/r+1Sb+7nC1zazuAwuoe0wLqbJdwSjohP4XdirlGEqOcVfdQpj04hEDWMoMR4Hqr
-	hQ8wuabLELemkg8R7KwMF5V2BV2v7zVAElc9lHs5bOaaKLB2Vbh7OFMsu4/79fyYduKE+ojrWsS8N
-	FxRWBzRIkL0KN9k5T0dg==;
+	List-Owner; bh=6hKzDYUagysuogy2iQCwuyLHJdBBiFIs+xQq8JFM7NI=; b=hkR78QZ9Y8RrJe
+	yK1yiph2aSVMDDK4aaBsWx/wFLhC6S3GTQlUoZuud485nfSzhKB+YlHf5HkXLGKJdlcafiDfUpGic
+	OSytjGfgukL7kcR/YdsuuyO+7JEFNQBIAx5A5ZVmSOgKBM3GIXEEGKBE8UACzP6WVgx6fgeLwbYEo
+	eltIXu/hXVtkVIIU/2VcCs7vpHGp+FNtDKLPQvyBkWpPofns8U3a022+7SCGsrMo/5xXuuZZm92LK
+	B0r+Zu5RyATxXLHVI6NbBlGxaEPUP8Cq2VEmVZAcv9C84l3BxUnLED4twQzkM74lhAKMx1Xz8Ma2p
+	9N9b+LBeb9rsRT5kVuWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0ztn-007E6P-Vr; Tue, 14 Jun 2022 06:19:36 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1o0zxN-007F1m-R5; Tue, 14 Jun 2022 06:23:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0ztc-007E4C-Ri; Tue, 14 Jun 2022 06:19:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1655187564; x=1686723564;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=G7Y9H6pjfhFNNFt9HzcJbUr6NMbLnNfbUFKiekG8WDg=;
-  b=QIiGelqvQx6QCyXc4FiMYU+EYqDLjSEdxQmtYCaIW+piwrfEcJMccAS4
-   fFOo8qMIeFtoPHP1t+B5nrC/NL+K/swjm02KrriZeme0nUgCfnSE96uYY
-   JOmAIPsn2ChvgM6kHd6uRxBlM8s4ZCt/p15Z12I3AGX5HCOaUAoVW+ad+
-   TVxSfM26JVceiuCQf6JnHJBtBgHfFYiXxasUAa+My/5jeaktXXUOfzLhA
-   CHeMGTcDOjYtUcTes7Xu6rA9GZO5oZenNgaLPI4cyB409j90W5D83frLN
-   9l4D2Oy/R6V+EI1MIFw3BXuOCStu17mYq84MuK6XUrB4bD/FaaFNDEqYW
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10377"; a="277298465"
-X-IronPort-AV: E=Sophos;i="5.91,299,1647327600"; 
-   d="scan'208";a="277298465"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jun 2022 23:19:23 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,299,1647327600"; 
-   d="scan'208";a="588249606"
-Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
-  by fmsmga007.fm.intel.com with ESMTP; 13 Jun 2022 23:19:17 -0700
-Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
-	(envelope-from <lkp@intel.com>)
-	id 1o0ztU-000LYn-QI;
-	Tue, 14 Jun 2022 06:19:16 +0000
-Date: Tue, 14 Jun 2022 14:18:33 +0800
-From: kernel test robot <lkp@intel.com>
-To: Lecopzer Chen <lecopzer.chen@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org, pmladek@suse.com,
-	acme@kernel.org, akpm@linux-foundation.org,
-	alexander.shishkin@linux.intel.com, catalin.marinas@arm.com,
-	davem@davemloft.net, jolsa@redhat.com, jthierry@redhat.com,
-	keescook@chromium.org, kernelfans@gmail.com,
-	lecopzer.chen@mediatek.com, linux-mediatek@lists.infradead.org,
-	linux-perf-users@vger.kernel.org, mark.rutland@arm.com,
-	masahiroy@kernel.org, matthias.bgg@gmail.com, maz@kernel.org,
-	mcgrof@kernel.org, mingo@redhat.com, namhyung@kernel.org,
-	nixiaoming@huawei.com, peterz@infradead.org,
-	sparclinux@vger.kernel.org, sumit.garg@linaro.org,
-	wangqing@vivo.com, will@kernel.org, yj.chiang@mediatek.com
-Subject: Re: [PATCH v5 4/6] kernel/watchdog: Adapt the watchdog_hld interface
- for async model
-Message-ID: <202206141412.PeVDy6qk-lkp@intel.com>
-References: <20220613135956.15711-5-lecopzer.chen@mediatek.com>
+	id 1o0zxK-007F0l-RD; Tue, 14 Jun 2022 06:23:16 +0000
+X-UUID: 7d50b2e6ab0f41b9ae86029c53d93c3d-20220613
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:b752373c-4461-4bfb-81a0-bf1f61da0bf5,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:27888407-b57a-4a25-a071-bc7b4972bc68,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 7d50b2e6ab0f41b9ae86029c53d93c3d-20220613
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 900669519; Mon, 13 Jun 2022 23:23:08 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 13 Jun 2022 23:20:50 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 14 Jun 2022 14:20:48 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 14 Jun 2022 14:20:48 +0800
+Message-ID: <de65caa980c270e4dedcf134d45185d41cd4c0ae.camel@mediatek.com>
+Subject: Re: [PATCH v11 12/12] drm/mediatek: dpi: Add matrix_sel helper
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 14 Jun 2022 14:20:48 +0800
+In-Reply-To: <20220613064841.10481-13-rex-bc.chen@mediatek.com>
+References: <20220613064841.10481-1-rex-bc.chen@mediatek.com>
+	 <20220613064841.10481-13-rex-bc.chen@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220613135956.15711-5-lecopzer.chen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_231924_954218_B3674E17 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20220613_232314_931577_D948C7D5 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,62 +86,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lecopzer,
+Hi, Bo-Chen:
 
-Thank you for the patch! Yet something to improve:
+On Mon, 2022-06-13 at 14:48 +0800, Bo-Chen Chen wrote:
+> From: Guillaume Ranquet <granquet@baylibre.com>
+> 
+> Add a mtk_dpi_matrix_sel() helper to update the DPI_MATRIX_SET
+> register depending on the color format.
 
-[auto build test ERROR on arm64/for-next/core]
-[also build test ERROR on arm/for-next kvmarm/next soc/for-next]
-[cannot apply to xilinx-xlnx/master]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+Why set DPI_MATRIX_SET? New feature or bug fix? What does this matrix
+work for?
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Lecopzer-Chen/Support-hld-delayed-init-based-on-Pseudo-NMI-for/20220614-021318
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux.git for-next/core
-config: hexagon-randconfig-r024-20220613 (https://download.01.org/0day-ci/archive/20220614/202206141412.PeVDy6qk-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project d378268ead93c85803c270277f0243737b536ae7)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/7df94eb967160312b005f9d8a29b558beec2d5a7
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Lecopzer-Chen/Support-hld-delayed-init-based-on-Pseudo-NMI-for/20220614-021318
-        git checkout 7df94eb967160312b005f9d8a29b558beec2d5a7
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash
+Regards,
+CK
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+> 
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c      | 21 +++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  3 +++
+>  2 files changed, 24 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index 9668bd5dd14a..dc355a512963 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -387,6 +387,25 @@ static void mtk_dpi_config_disable_edge(struct
+> mtk_dpi *dpi)
+>  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0,
+> EDGE_SEL_EN);
+>  }
+>  
+> +static void mtk_dpi_matrix_sel(struct mtk_dpi *dpi, enum
+> mtk_dpi_out_color_format format)
+> +{
+> +	u32 matrix_sel = 0;
+> +
+> +	switch (format) {
+> +	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
+> +	case MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL:
+> +	case MTK_DPI_COLOR_FORMAT_YCBCR_444:
+> +	case MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL:
+> +	case MTK_DPI_COLOR_FORMAT_XV_YCC:
+> +		if (dpi->mode.hdisplay <= 720)
+> +			matrix_sel = 0x2;
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> +	mtk_dpi_mask(dpi, DPI_MATRIX_SET, matrix_sel,
+> INT_MATRIX_SEL_MASK);
+> +}
+> +
+>  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+>  					enum mtk_dpi_out_color_format
+> format)
+>  {
+> @@ -394,6 +413,7 @@ static void mtk_dpi_config_color_format(struct
+> mtk_dpi *dpi,
+>  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
+>  		mtk_dpi_config_yuv422_enable(dpi, false);
+>  		mtk_dpi_config_csc_enable(dpi, true);
+> +		mtk_dpi_matrix_sel(dpi, format);
+>  		if (dpi->conf->swap_input_support)
+>  			mtk_dpi_config_swap_input(dpi, false);
+>  		mtk_dpi_config_channel_swap(dpi,
+> MTK_DPI_OUT_CHANNEL_SWAP_BGR);
+> @@ -401,6 +421,7 @@ static void mtk_dpi_config_color_format(struct
+> mtk_dpi *dpi,
+>  		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
+>  		mtk_dpi_config_yuv422_enable(dpi, true);
+>  		mtk_dpi_config_csc_enable(dpi, true);
+> +		mtk_dpi_matrix_sel(dpi, format);
+>  		if (dpi->conf->swap_input_support)
+>  			mtk_dpi_config_swap_input(dpi, true);
+>  		mtk_dpi_config_channel_swap(dpi,
+> MTK_DPI_OUT_CHANNEL_SWAP_RGB);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> index f7f0272dbd6a..96c117202d0d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> @@ -230,4 +230,7 @@
+>  #define EDGE_SEL_EN			BIT(5)
+>  #define H_FRE_2N			BIT(25)
+>  
+> +#define DPI_MATRIX_SET		0xB4
+> +#define INT_MATRIX_SEL_MASK	(0x1F << 0)
+> +
+>  #endif /* __MTK_DPI_REGS_H */
 
-All errors (new ones prefixed by >>):
-
->> kernel/watchdog.c:915:3: error: use of undeclared identifier 'allow_lockup_detector_init_retry'
-                   allow_lockup_detector_init_retry = true;
-                   ^
-   1 error generated.
-
-
-vim +/allow_lockup_detector_init_retry +915 kernel/watchdog.c
-
-   903	
-   904	void __init lockup_detector_init(void)
-   905	{
-   906		if (tick_nohz_full_enabled())
-   907			pr_info("Disabling watchdog on nohz_full cores by default\n");
-   908	
-   909		cpumask_copy(&watchdog_cpumask,
-   910			     housekeeping_cpumask(HK_TYPE_TIMER));
-   911	
-   912		if (!watchdog_nmi_probe())
-   913			nmi_watchdog_available = true;
-   914		else
- > 915			allow_lockup_detector_init_retry = true;
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 
 _______________________________________________
 Linux-mediatek mailing list
