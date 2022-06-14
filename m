@@ -4,93 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF43C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 15:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 617B2C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 15:15:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JsiM7dS9IosvziECUWTkAS63JWFVHS0b0I8RzKomGoM=; b=RURYLeDN0mAcV4
-	2A3oLaMpjxeAhRkbGJhydiV9fo5igSfLQun1kXzpb/r8MevVXt+m4YFU0AYVNVQvhumFwLQs76iPo
-	AOYqrnB5Vy1+rwENB/uOAUDTL7+FKfSwKSKMOIh+wOK2RQDRMZ0pTU0eoz/z3JCn4bBrLwkEUabFU
-	c01dGHym48pbTHyG9xMgs/c5CzIx9Ayn2nylxvU5rUu1pjZhlb5uY78F/UcnTleXjqcE4onYTBDnA
-	MbCcOliDNok/lGgyb0FJ6+OgiWIytdHlqS8REvG6cNue7mmkYHK82MJLHJluwu0siJZWeokt9Iq7z
-	UnwJWgEQacbqeuvWZhyw==;
+	List-Owner; bh=2kRM6UuNP3BG3QrSs8Cvz8s01x6eFkHI5qzaPchw3Hs=; b=Wt0DgxdtU/dXTh
+	bZZ9XZg42dnnfYLRjp7vRbmnEdXLpsctZ6fsH5HIS8GhIfsoj28K71YYLpUOp34xoaNsV16KbXE4J
+	O30kBWXjZwiuhVwZ4bPZxXrlJ+g1BqlxWO0N1tMC31Q/3ndiaj6/MYhD7UAtHwyYKLIWdTVJNBLYy
+	NYwl9usYUIMYABbDLau07JRJn5ZhTKSPTUpMfxX7HWyMiarYmu82ZQeWn3mpIQ5YI8y9yho9lXpeE
+	VQdf96ZEOPeKlcAyWbgZgwNM1QWSBpy/fO0gMtph3OB6XI7uOPV7TUiXQxHZfx1ymLpd4gxziuy2I
+	KHA7XJiaXReQIGHo2fYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o18Ac-00A5Qn-6t; Tue, 14 Jun 2022 15:09:30 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1o18G2-00A6ad-Pz; Tue, 14 Jun 2022 15:15:06 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o18AO-00A5Ns-LY; Tue, 14 Jun 2022 15:09:18 +0000
-Received: by mail-wm1-x329.google.com with SMTP id m39-20020a05600c3b2700b0039c511ebbacso6392350wms.3;
-        Tue, 14 Jun 2022 08:09:14 -0700 (PDT)
+	id 1o18Fz-00A6ZT-EB; Tue, 14 Jun 2022 15:15:04 +0000
+Received: by mail-wr1-x432.google.com with SMTP id h19so8496898wrc.12;
+        Tue, 14 Jun 2022 08:15:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=Nl9p8XiHK5AtOeQObHfkqzSF21Df3dWTIZeLDSP3Cys=;
-        b=dHlU4MVJUMyBYrekjMq6Vhyud157on1z+2yR09M4IAhjQ9PvH+Oyazf1HRmDFwP9Px
-         qx793ASDm4UaOMFcmoziBQ2g7bDIt3xm61ZAVAB0QeGlURjEg9vEA4/3585aWLgXgCXi
-         xBotswPEPmHsxDHkZhf1mamS6sSxFBvUXuBF60MBtLdKs5KFiyg08RUI7snMi08keLfp
-         nZLi2TkdvSO2DgkN0yRrnuZGECpZC2dITErT/lxeliM6wjqOEZ2BWErkrBMLkWv9ikFB
-         GFiX1aRcXXwXc73EUpaRGiOAV7BIzD3NzTk5lB+ygJGXDN6l0hVkXpKe2JmRdhP2psXN
-         tOhg==
+        bh=IXuDe0y1N7g0HQ+gRNGCz3TLBK6SHrrUtGI9qXS70nI=;
+        b=pNE5vPgqmLRxJYRUwLn2HygBM6ytJdDox1fo8PavsqAlLYbvUXKHMA7QW/EKefImgn
+         vCsmD6HVBAt1GjEMoJvYBgbfgyAcZBE9j+BAjgaRHWxosTq/rTgYCpc81ougivQSnSdo
+         MQrnA/hMkYQ0J3u4SGpJxbsKjp0OZpX3yjrZ0xGxhZPOG3Ltop5iqtB9VcRT1Wy3GfK9
+         IEQarUkCk6Or41YYY1+vKUsT2qQLqaMG2LJXsL0baMqYWDGHgxxz1wjVelA8DEq+YcTf
+         0iNIa9bByS4Ue98OyUC31rOtmb+CHhqr3S9W3EGxGkxx/V85oRMN2Mrdp9DUCwhFAhYe
+         MP0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=Nl9p8XiHK5AtOeQObHfkqzSF21Df3dWTIZeLDSP3Cys=;
-        b=sPvTUnmNiUv/hvJ5PTUWT9LlgXMimIpjggIhzogBKlKjNVXCSsMSNyXXRc3lT/wbxy
-         +FyEGjQuHfGt91I4qs4wYub79OBesUvAcgkHDV0W61OhD1V1b+bEWNzySCeGuPVhcFSY
-         Tk3ROU+OF5vYQBwJxIaP61XtnNuHOk0yTe9zaqYhSUuavp+dKddyAJ4ZA0DTisCY1JDR
-         NJHygMnVL1P7oyaW2hI7O8G8WrT4GlGXY79zDxt4W9SLgBTs1oU2RuUnkzfu+/ZUaMpK
-         1qP7dmIBG9RFLd4vrY1OTtdABN4cspL+r5VDQikp6lhv0KGLIsgeI2HG/v/3Epgf/YhB
-         Dw8w==
-X-Gm-Message-State: AOAM530yRHqlTS4al5bCIN0uDfSTsTxXqnd+0+TFIYTFRKsDClq4Wkam
-	UrKkkWQO9OlEKImaL703k5u/MssZtr7TeQ==
-X-Google-Smtp-Source: ABdhPJyv0qrF9fYVnHKL6koDutsHT/45fh4dzAhBy8tf9jKdyeD9b1maXdCi+EYvCB28F6WOc6tOTw==
-X-Received: by 2002:a05:600c:1c88:b0:39d:7299:e295 with SMTP id k8-20020a05600c1c8800b0039d7299e295mr4182748wms.155.1655219353085;
-        Tue, 14 Jun 2022 08:09:13 -0700 (PDT)
+        bh=IXuDe0y1N7g0HQ+gRNGCz3TLBK6SHrrUtGI9qXS70nI=;
+        b=DjskqDmpV403MUsf3UmqE7Uw7P4HxhT9aGTl8mJYoG1mSXojTL0c0ZxG9CMLNFARgk
+         4JyFl9fyTDPCNnpHyhxgLvM2bJswVDl1C0XjjhYnw6A3AJEeSmGRhohKu22GlWUoDZaJ
+         1GdUtyQGH4Nxta+rc0760ZQHSJCr5L9074Dk6kTVtXURWYt8vgEwiw1pkhcSqzsXu199
+         xQb490RMx9zJv0V9TRkuPx3CyG5LcFIVD617wQ819L5N4h9Na4/ncnfSve7RaqnIoDRf
+         w5Nt/2g1T9C4DPSmktS16IEHto3OwS5d0L+JpHQXMbLNPVEY+0jJtFwh7UZZ77M1UJ/8
+         M2lg==
+X-Gm-Message-State: AJIora+BsB3ZQgMbVHVur3nELGPAvD1/3G1quFSZlFT2og8TH238Qjok
+	Qwor8NIrs4RvFwKkPmoQal8=
+X-Google-Smtp-Source: AGRyM1vbq7YuSWWy21Fn37KJrbY6DIxBAJG8TbMUpC1uDPhvtrmHbIIb6r7vg7XBmdrSGnOv4jXjCw==
+X-Received: by 2002:a5d:40c7:0:b0:210:3135:e662 with SMTP id b7-20020a5d40c7000000b002103135e662mr5240739wrq.280.1655219700487;
+        Tue, 14 Jun 2022 08:15:00 -0700 (PDT)
 Received: from [192.168.0.36] ([37.223.143.134])
-        by smtp.gmail.com with ESMTPSA id h9-20020a05600c350900b0039c4d022a44sm14763956wmq.1.2022.06.14.08.09.10
+        by smtp.gmail.com with ESMTPSA id h206-20020a1c21d7000000b0039746638d6esm13745526wmh.33.2022.06.14.08.14.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 Jun 2022 08:09:11 -0700 (PDT)
-Message-ID: <86c40dc9-c48a-4f42-88ea-7a91b5bb425a@gmail.com>
-Date: Tue, 14 Jun 2022 17:09:09 +0200
+        Tue, 14 Jun 2022 08:14:59 -0700 (PDT)
+Message-ID: <da05a10b-dd4d-6d93-0cd3-e4695d9b767e@gmail.com>
+Date: Tue, 14 Jun 2022 17:14:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.1
-Subject: Re: [PATCH v18 3/4] dts: arm64: mt8183: add Mediatek MDP3 nodes
+Subject: Re: [PATCH v3 2/6] iommu: mtk_iommu: Lookup phandle to retrieve
+ syscon to infracfg
 Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ yong.wu@mediatek.com
+Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Courbot
- <acourbot@chromium.org>, tfiga@chromium.org, drinkcat@chromium.org,
- pihsun@chromium.org, hsinyi@google.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, allen-kh.cheng@mediatek.com,
- xiandong.wang@mediatek.com, randy.wu@mediatek.com,
- jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com,
- river.cheng@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- cellopoint.kai@gmail.com
-References: <20220610064504.8302-1-moudy.ho@mediatek.com>
- <20220610064504.8302-4-moudy.ho@mediatek.com>
+ krzysztof.kozlowski@linaro.org
+References: <20220609100802.54513-1-angelogioacchino.delregno@collabora.com>
+ <20220609100802.54513-3-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220610064504.8302-4-moudy.ho@mediatek.com>
+In-Reply-To: <20220609100802.54513-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_080916_756756_A26A2DBB 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20220614_081503_549030_9DD23C23 
+X-CRM114-Status: GOOD (  22.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,123 +98,75 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 10/06/2022 08:45, Moudy Ho wrote:
-> Add device nodes for Media Data Path 3 (MDP3) modules.
+On 09/06/2022 12:07, AngeloGioacchino Del Regno wrote:
+> This driver will get support for more SoCs and the list of infracfg
+> compatibles is expected to grow: in order to prevent getting this
+> situation out of control and see a long list of compatible strings,
+> add support to retrieve a handle to infracfg's regmap through a
+> new "mediatek,infracfg" phandle.
 > 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> In order to keep retrocompatibility with older devicetrees, the old
+> way is kept in place.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Looks good to me. I'm ready to take this as soon as 1,2 and 4 got merged.
-
-Matthias
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 79 +++++++++++++++++++++++-
->   1 file changed, 78 insertions(+), 1 deletion(-)
+>   drivers/iommu/mtk_iommu.c | 38 ++++++++++++++++++++++++--------------
+>   1 file changed, 24 insertions(+), 14 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index e74fd253478b..ade5997a9656 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1389,6 +1389,50 @@
->   			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
->   		};
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index bb9dd92c9898..90685946fcbe 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1140,22 +1140,32 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>   	data->protect_base = ALIGN(virt_to_phys(protect), MTK_PROTECT_PA_ALIGN);
 >   
-> +		mdp3-rdma0@14001000 {
-> +			compatible = "mediatek,mt8183-mdp3-rdma";
-> +			reg = <0 0x14001000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-> +			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> +				 <&mmsys CLK_MM_MDP_RSZ1>;
-> +			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-> +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-> +				 <&gce 21 CMDQ_THR_PRIO_LOWEST 0>;
-> +		};
+>   	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE)) {
+> -		switch (data->plat_data->m4u_plat) {
+> -		case M4U_MT2712:
+> -			p = "mediatek,mt2712-infracfg";
+> -			break;
+> -		case M4U_MT8173:
+> -			p = "mediatek,mt8173-infracfg";
+> -			break;
+> -		default:
+> -			p = NULL;
+> +		infracfg = syscon_regmap_lookup_by_phandle(dev->of_node, "mediatek,infracfg");
+> +		if (IS_ERR(infracfg)) {
+> +			/*
+> +			 * Legacy devicetrees will not specify a phandle to
+> +			 * mediatek,infracfg: in that case, we use the older
+> +			 * way to retrieve a syscon to infra.
+> +			 *
+> +			 * This is for retrocompatibility purposes only, hence
+> +			 * no more compatibles shall be added to this.
+> +			 */
+> +			switch (data->plat_data->m4u_plat) {
+> +			case M4U_MT2712:
+> +				p = "mediatek,mt2712-infracfg";
+> +				break;
+> +			case M4U_MT8173:
+> +				p = "mediatek,mt8173-infracfg";
+> +				break;
+> +			default:
+> +				p = NULL;
+> +			}
 > +
-> +		mdp3-rsz0@14003000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
-> +			reg = <0 0x14003000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-> +		};
-> +
-> +		mdp3-rsz1@14004000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
-> +			reg = <0 0x14004000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-> +		};
-> +
-> +		mdp3-wrot0@14005000 {
-> +			compatible = "mediatek,mt8183-mdp3-wrot";
-> +			reg = <0 0x14005000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-> +			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_WROT0>;
-> +			iommus = <&iommu M4U_PORT_MDP_WROT0>;
-> +		};
-> +
-> +		mdp3-wdma@14006000 {
-> +			compatible = "mediatek,mt8183-mdp3-wdma";
-> +			reg = <0 0x14006000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
-> +			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-> +			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
-> +		};
-> +
->   		ovl0: ovl@14008000 {
->   			compatible = "mediatek,mt8183-disp-ovl";
->   			reg = <0 0x14008000 0 0x1000>;
-> @@ -1507,7 +1551,33 @@
->   			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
->   			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
->   			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
-> -					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
-> +					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>,
-> +					      <CMDQ_EVENT_MDP_RDMA0_SOF>,
-> +					      <CMDQ_EVENT_MDP_RDMA0_EOF>,
-> +					      <CMDQ_EVENT_MDP_RSZ0_SOF>,
-> +					      <CMDQ_EVENT_MDP_RSZ1_SOF>,
-> +					      <CMDQ_EVENT_MDP_TDSHP_SOF>,
-> +					      <CMDQ_EVENT_MDP_WROT0_SOF>,
-> +					      <CMDQ_EVENT_MDP_WROT0_EOF>,
-> +					      <CMDQ_EVENT_MDP_WDMA0_SOF>,
-> +					      <CMDQ_EVENT_MDP_WDMA0_EOF>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_0>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_1>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_2>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_3>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_4>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_5>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_6>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_7>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_8>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_9>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_10>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_11>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_12>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_13>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_14>,
-> +					      <CMDQ_EVENT_WPE_A_DONE>,
-> +					      <CMDQ_EVENT_SPE_B_DONE>;
->   			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
->   		};
+> +			infracfg = syscon_regmap_lookup_by_compatible(p);
+> +			if (IS_ERR(infracfg))
+> +				return PTR_ERR(infracfg);
+>   		}
 >   
-> @@ -1532,6 +1602,13 @@
->   			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
->   		};
->   
-> +		mdp3-ccorr@1401c000 {
-> +			compatible = "mediatek,mt8183-mdp3-ccorr";
-> +			reg = <0 0x1401c000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_CCORR>;
-> +		};
-> +
->   		imgsys: syscon@15020000 {
->   			compatible = "mediatek,mt8183-imgsys", "syscon";
->   			reg = <0 0x15020000 0 0x1000>;
+> -		infracfg = syscon_regmap_lookup_by_compatible(p);
+> -
+> -		if (IS_ERR(infracfg))
+> -			return PTR_ERR(infracfg);
+> -
+>   		ret = regmap_read(infracfg, REG_INFRA_MISC, &val);
+>   		if (ret)
+>   			return ret;
 
 _______________________________________________
 Linux-mediatek mailing list
