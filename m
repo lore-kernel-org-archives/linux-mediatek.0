@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2CD6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 12:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A71FCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 12:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FVfOO6Bf76x7xWJjFLxIIEBPy6AxpWW2eRifdGyGt0c=; b=2FGczqBXpVD7q7
-	/aIzbiD95PnZ0psV11W/tzlmrEi2H18oP4+rnl/wYh+GsbrKu15fVvX9Ol1rN6ISjq9JYyR8Zyka2
-	7qXlieXM+thuTK7T5K2wTWrS/zIIyePkIDiu7xktZYO/a1kxbOpbAZ/+6F9+2+87F5SJVCV7dpcCW
-	aItInsTaF/NXlm8dSMw14qZxo6+43g0MMSRwY8mGLVsTS9dn1DQ3N+jEpxN4oHP6eDqWpmrtSt1uN
-	JbMB7I+9tLPrHjRVsfTGHWke534Ojng4NERUxLR3iYhxKCc17BqXYIHgZk5AcnRdqqJq4Et6MMiBj
-	M5HNp/ThgjEBEemmpdfw==;
+	List-Owner; bh=dGtnqSsgV0pp9hfy6XaSpb0PH+LQlmbq1B+1oFFJ1CE=; b=4c6QGP+2rL0W/a
+	9I1fanmoNLnVVvF8rJAgh+BqRGj7SYkOUNQxQXJ6MLgeirN+lx7EHCNYWOgTawLQmEOBrVL8bmX2f
+	cQN/R0KO5KHHsY8Lrvzdom03CjYZz1LSOi/AOkTsTYx2MydWmWetgk3vtXq19G+GZ2RM+9L7nuXuN
+	KS64Cbkc0jz1rHBqGRubbO76lwBJD7deCdNbokvb1j4q25UQXRdnZG1ho3ocpbMkJvRgBx6XIbp5D
+	08033uedkxn8mVk2j5gOpIF1thd58anZQhUq8ZV2A9jLxpO+trqWKmzACqI1LmgyS9tzzrwFWbPoF
+	8LhZVtLu1FK1Gqu8fYmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o15c4-009V6f-T2; Tue, 14 Jun 2022 12:25:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o166I-009fu2-P3; Tue, 14 Jun 2022 12:56:54 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o15Ws-009SK9-QN; Tue, 14 Jun 2022 12:20:20 +0000
-X-UUID: d8dea34dd34e495d8421c0bda7e17ba3-20220614
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:89a77aa5-0e3e-4203-8ca4-d9ce97da404d,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:20
-X-CID-META: VersionHash:b14ad71,CLOUDID:95256ac5-c67b-4a73-9b18-726dd8f2eb58,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: d8dea34dd34e495d8421c0bda7e17ba3-20220614
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 628041064; Tue, 14 Jun 2022 05:20:12 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jun 2022 05:10:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 14 Jun 2022 20:10:28 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 14 Jun 2022 20:10:27 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
-	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
-	<wenst@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
-	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
-	<kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [RESEND V9,1/7] dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
-Date: Tue, 14 Jun 2022 20:10:18 +0800
-Message-ID: <20220614121024.31667-2-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220614121024.31667-1-irui.wang@mediatek.com>
-References: <20220614121024.31667-1-irui.wang@mediatek.com>
+	id 1o1666-009fpK-2S; Tue, 14 Jun 2022 12:56:44 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id E4339B81862;
+	Tue, 14 Jun 2022 12:56:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2E45C3411B;
+	Tue, 14 Jun 2022 12:56:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1655211398;
+	bh=iHxMC4bK6vMql08nJAlYbsQGBq196kEhV81vmOYVdZU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OL3u7YQsW8BKxJr9mZnLJZ54ASq/5yWpIgMB7+NQ6dB47B8QBKOaj3DWsXG4WZZWo
+	 94+tTl3/bXtEEsJx+YhNGunEoioNhiWTqPKGWeeKsojraklxMaeLknfvE2/anjJpna
+	 hjjHfvga0anMPUX6M1dFbEOtF7CDq/yBGhc1mpZh8GKa5mjPAxnmqb5wkG65Hm+PHv
+	 rFFGKJzhIdhSdsC6yPyNoChrzdooUpJoUST+3Egcf+R/MKhqoYqj7k2xQ4b3iJnsh4
+	 d5sszGowTb0c2X8W5g6+E0ZVt8LIqpmaFEjys0R8Z5wy6skpmm6Wy194g+erJCvXrU
+	 5Qqc5Xa7jGttQ==
+Date: Tue, 14 Jun 2022 13:56:31 +0100
+From: Will Deacon <will@kernel.org>
+To: yf.wang@mediatek.com
+Cc: Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"Isaac J. Manjarres" <isaacm@codeaurora.org>,
+	Georgi Djakov <quic_c_gdjako@quicinc.com>,
+	Sven Peter <sven@svenpeter.dev>,
+	"moderated list:ARM SMMU DRIVERS" <linux-arm-kernel@lists.infradead.org>,
+	"open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
+	Yong Wu <Yong.Wu@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Ning Li <ning.li@mediatek.com>
+Subject: Re: [PATCH v8 1/3] iommu/io-pgtable-arm-v7s: Add a quirk to allow
+ pgtable PA up to 35bit
+Message-ID: <20220614125630.GA8159@willie-the-truck>
+References: <20220611102656.10954-1-yf.wang@mediatek.com>
+ <20220611102656.10954-2-yf.wang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220611102656.10954-2-yf.wang@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_052018_927466_2E5239A7 
-X-CRM114-Status: GOOD (  15.54  )
+X-CRM114-CacheID: sfid-20220614_055642_445560_B830F654 
+X-CRM114-Status: GOOD (  35.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,178 +85,207 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
+Hi,
 
-Add mediatek,mt8195-jpgenc compatible to binding document.
+For some reason, this series has landed in my spam folder so apologies
+for the delay :/
 
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
----
- .../media/mediatek,mt8195-jpegenc.yaml        | 153 ++++++++++++++++++
- 1 file changed, 153 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+On Sat, Jun 11, 2022 at 06:26:53PM +0800, yf.wang@mediatek.com wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
+> 
+> Single memory zone feature will remove ZONE_DMA32 and ZONE_DMA and
+> cause pgtable PA size larger than 32bit.
+> 
+> Since Mediatek IOMMU hardware support at most 35bit PA in pgtable,
+> so add a quirk to allow the PA of pgtables support up to bit35.
+> 
+> Signed-off-by: Ning Li <ning.li@mediatek.com>
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> ---
+>  drivers/iommu/io-pgtable-arm-v7s.c | 48 ++++++++++++++++++++++--------
+>  include/linux/io-pgtable.h         | 17 +++++++----
+>  2 files changed, 46 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+> index be066c1503d3..d4702d8d825a 100644
+> --- a/drivers/iommu/io-pgtable-arm-v7s.c
+> +++ b/drivers/iommu/io-pgtable-arm-v7s.c
+> @@ -182,14 +182,8 @@ static bool arm_v7s_is_mtk_enabled(struct io_pgtable_cfg *cfg)
+>  		(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT);
+>  }
+>  
+> -static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
+> -				    struct io_pgtable_cfg *cfg)
+> +static arm_v7s_iopte to_iopte_mtk(phys_addr_t paddr, arm_v7s_iopte pte)
+>  {
+> -	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
+> -
+> -	if (!arm_v7s_is_mtk_enabled(cfg))
+> -		return pte;
+> -
+>  	if (paddr & BIT_ULL(32))
+>  		pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
+>  	if (paddr & BIT_ULL(33))
+> @@ -199,6 +193,17 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
+>  	return pte;
+>  }
+>  
+> +static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
+> +				    struct io_pgtable_cfg *cfg)
+> +{
+> +	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
+> +
+> +	if (!arm_v7s_is_mtk_enabled(cfg))
+> +		return pte;
+> +
+> +	return to_iopte_mtk(paddr, pte);
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-new file mode 100644
-index 000000000000..a7f9f723d5db
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-@@ -0,0 +1,153 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mt8195-jpegenc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek JPEG Encoder Device Tree Bindings
-+
-+maintainers:
-+  - kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
-+
-+description: |-
-+  MediaTek JPEG Encoder is the JPEG encode hardware present in MediaTek SoCs
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8195-jpgenc
-+
-+  mediatek,jpegenc-multi-core:
-+    type: boolean
-+    description: |
-+      Indicates whether the jpeg encoder has multiple cores or not.
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  iommus:
-+    maxItems: 4
-+    description: |
-+      Points to the respective IOMMU block with master port as argument, see
-+      Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-+      Ports are according to the HW.
-+
-+  "#address-cells":
-+    const: 2
-+
-+  "#size-cells":
-+    const: 2
-+
-+  ranges: true
-+
-+# Required child node:
-+patternProperties:
-+  "^jpgenc@[0-9a-f]+$":
-+    type: object
-+    description: |
-+      The jpeg encoder hardware device node which should be added as subnodes to
-+      the main jpeg node.
-+
-+    properties:
-+      compatible:
-+        const: mediatek,mt8195-jpgenc-hw
-+
-+      reg:
-+        maxItems: 1
-+
-+      hw_id:
-+        description: |
-+          Current jpegenc hw id.
-+
-+      iommus:
-+        minItems: 1
-+        maxItems: 32
-+        description: |
-+          List of the hardware port in respective IOMMU block for current Socs.
-+          Refer to bindings/iommu/mediatek,iommu.yaml.
-+
-+      interrupts:
-+        maxItems: 1
-+
-+      clocks:
-+        maxItems: 1
-+
-+      clock-names:
-+        items:
-+          - const: jpgenc
-+
-+      power-domains:
-+        maxItems: 1
-+
-+    required:
-+      - compatible
-+      - reg
-+      - hw_id
-+      - iommus
-+      - interrupts
-+      - clocks
-+      - clock-names
-+      - power-domains
-+
-+    additionalProperties: false
-+
-+required:
-+  - compatible
-+  - power-domains
-+  - iommus
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/memory/mt8195-memory-port.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/power/mt8195-power.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        jpgenc_master {
-+                compatible = "mediatek,mt8195-jpgenc";
-+                mediatek,jpegenc-multi-core;
-+                power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
-+                iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
-+                <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
-+                <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
-+                <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
-+                #address-cells = <2>;
-+                #size-cells = <2>;
-+                ranges;
-+
-+                jpgenc@1a030000 {
-+                        compatible = "mediatek,mt8195-jpgenc-hw";
-+                        reg = <0 0x1a030000 0 0x10000>;
-+                        hw_id = <0>;
-+                        iommus = <&iommu_vdo M4U_PORT_L19_JPGENC_Y_RDMA>,
-+                        <&iommu_vdo M4U_PORT_L19_JPGENC_C_RDMA>,
-+                        <&iommu_vdo M4U_PORT_L19_JPGENC_Q_TABLE>,
-+                        <&iommu_vdo M4U_PORT_L19_JPGENC_BSDMA>;
-+                        interrupts = <GIC_SPI 342 IRQ_TYPE_LEVEL_HIGH 0>;
-+                        clocks = <&vencsys CLK_VENC_JPGENC>;
-+                        clock-names = "jpgenc";
-+                        power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
-+                };
-+
-+                jpgenc@1b030000 {
-+                        compatible = "mediatek,mt8195-jpgenc-hw";
-+                        reg = <0 0x1b030000 0 0x10000>;
-+                        hw_id = <1>;
-+                        iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
-+                        <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
-+                        <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
-+                        <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
-+                        interrupts = <GIC_SPI 347 IRQ_TYPE_LEVEL_HIGH 0>;
-+                        clocks = <&vencsys_core1 CLK_VENC_CORE1_JPGENC>;
-+                        clock-names = "jpgenc";
-+                        power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
-+                };
-+        };
-+    };
--- 
-2.18.0
+nit, but can we rename and rework this so it reads a bit better, please?
+Something like:
 
+
+	if (arm_v7s_is_mtk_enabled(cfg))
+		return to_mtk_iopte(paddr, pte);
+
+	return pte;
+
+
+>  static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
+>  				  struct io_pgtable_cfg *cfg)
+>  {
+> @@ -234,6 +239,7 @@ static arm_v7s_iopte *iopte_deref(arm_v7s_iopte pte, int lvl,
+>  static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+>  				   struct arm_v7s_io_pgtable *data)
+>  {
+> +	gfp_t gfp_l1 = __GFP_ZERO | ARM_V7S_TABLE_GFP_DMA;
+>  	struct io_pgtable_cfg *cfg = &data->iop.cfg;
+>  	struct device *dev = cfg->iommu_dev;
+>  	phys_addr_t phys;
+> @@ -241,9 +247,11 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+>  	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
+>  	void *table = NULL;
+>  
+> +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
+> +		gfp_l1 = GFP_KERNEL | __GFP_ZERO;
+
+I think it's a bit grotty to override the flags inline like this (same for
+the slab flag later on). Something like this is a bit cleaner:
+
+
+	/*
+	 * Comment explaining why GFP_KERNEL is desirable here.
+	 * I'm assuming it's because the walker can address all of memory.
+	 */
+	gfp_l1 = cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
+		 GFP_KERNEL : ARM_V7S_TABLE_GFP_DMA;
+
+	...
+
+	__get_free_pages(gfp_l1 | __GFP_ZERO, ...);
+
+
+and similar for the slab flag.
+
+>  	if (lvl == 1)
+> -		table = (void *)__get_free_pages(
+> -			__GFP_ZERO | ARM_V7S_TABLE_GFP_DMA, get_order(size));
+> +		table = (void *)__get_free_pages(gfp_l1, get_order(size));
+>  	else if (lvl == 2)
+>  		table = kmem_cache_zalloc(data->l2_tables, gfp);
+>  
+> @@ -251,7 +259,8 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+>  		return NULL;
+>  
+>  	phys = virt_to_phys(table);
+> -	if (phys != (arm_v7s_iopte)phys) {
+> +	if (phys != (arm_v7s_iopte)phys &&
+> +	    !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)) {
+>  		/* Doesn't fit in PTE */
+
+Shouldn't we be checking that the address is within 35 bits here? Perhaps we
+should generate a mask from the oas instead of just using the cast.
+
+>  		dev_err(dev, "Page table does not fit in PTE: %pa", &phys);
+>  		goto out_free;
+> @@ -457,9 +466,14 @@ static arm_v7s_iopte arm_v7s_install_table(arm_v7s_iopte *table,
+>  					   arm_v7s_iopte curr,
+>  					   struct io_pgtable_cfg *cfg)
+>  {
+> +	phys_addr_t phys = virt_to_phys(table);
+>  	arm_v7s_iopte old, new;
+>  
+> -	new = virt_to_phys(table) | ARM_V7S_PTE_TYPE_TABLE;
+> +	new = phys | ARM_V7S_PTE_TYPE_TABLE;
+> +
+> +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
+> +		new = to_iopte_mtk(phys, new);
+> +
+>  	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_NS)
+>  		new |= ARM_V7S_ATTR_NS_TABLE;
+>  
+> @@ -778,6 +792,7 @@ static phys_addr_t arm_v7s_iova_to_phys(struct io_pgtable_ops *ops,
+>  static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+>  						void *cookie)
+>  {
+> +	slab_flags_t slab_flag = ARM_V7S_TABLE_SLAB_FLAGS;
+>  	struct arm_v7s_io_pgtable *data;
+>  
+>  	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
+> @@ -788,7 +803,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+>  
+>  	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
+>  			    IO_PGTABLE_QUIRK_NO_PERMS |
+> -			    IO_PGTABLE_QUIRK_ARM_MTK_EXT))
+> +			    IO_PGTABLE_QUIRK_ARM_MTK_EXT |
+> +			    IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT))
+>  		return NULL;
+>  
+>  	/* If ARM_MTK_4GB is enabled, the NO_PERMS is also expected. */
+> @@ -796,15 +812,21 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+>  	    !(cfg->quirks & IO_PGTABLE_QUIRK_NO_PERMS))
+>  			return NULL;
+>  
+> +	if ((cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT) &&
+> +	    !arm_v7s_is_mtk_enabled(cfg))
+> +		return NULL;
+> +
+>  	data = kmalloc(sizeof(*data), GFP_KERNEL);
+>  	if (!data)
+>  		return NULL;
+>  
+>  	spin_lock_init(&data->split_lock);
+> +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
+> +		slab_flag = 0;
+>  	data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
+>  					    ARM_V7S_TABLE_SIZE(2, cfg),
+>  					    ARM_V7S_TABLE_SIZE(2, cfg),
+> -					    ARM_V7S_TABLE_SLAB_FLAGS, NULL);
+> +					    slab_flag, NULL);
+>  	if (!data->l2_tables)
+>  		goto out_free_data;
+>  
+> diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
+> index 86af6f0a00a2..c9189716f6bd 100644
+> --- a/include/linux/io-pgtable.h
+> +++ b/include/linux/io-pgtable.h
+> @@ -74,17 +74,22 @@ struct io_pgtable_cfg {
+>  	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
+>  	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
+>  	 *
+> +	 * IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT: (ARM v7s format) MediaTek IOMMUs
+> +	 *	extend the translation table base support up to 35 bits PA, the
+> +	 *	encoding format is same with IO_PGTABLE_QUIRK_ARM_MTK_EXT.
+> +	 *
+
+One thing I don't get is how the existing driver handles this. It seems
+as though if the HAS_4GB_MODE flag is not set, then we set oas to 35 but
+without any pgtable changes. How does this work?
+
+If it turns out that the existing devices can't handle 35-bit PAs, then
+could we use an oas of 35 to indicate that this new format is in use
+instead of introducing another quirk?
+
+Will
 
 _______________________________________________
 Linux-mediatek mailing list
