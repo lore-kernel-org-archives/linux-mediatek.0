@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C1CCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 20:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB9E5CCA47A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 20:23:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RoazYuFPfobm0jkOCHjxLLOK33nDlejwxbuKXZTj6uU=; b=JvG5kHR4Ayn38U9k9v3PJV4j3E
-	K2zEzbV4RO4pmBotpjBPcFL9X+2pb0lpJ3PgYFv+ktZEGAjcLB6D2Fa2w0UD38S8BnQNTxMLePkE2
-	D1+erEUo6Pz5gGWQN+oOW2CqIcBA6zqJfJpt5vld28BrSDM7hgOGjli+B5IBBvUX2jxyALPzlgE0F
-	6goIqlKmMe1F6C0fzBjqfTOsxG9lgYemqKY40VQ+PTZrm8AO7Ft6XSTDE8vwt3POM6blJw7iHVKjq
-	3BI0OCUGYIfPl1c1juyHJ87UEIEgYw4bD2xjrDzzQPImRMN1JzuEDwHoaERcRElR1DnJSPWZrtnU5
-	UP1zBWJw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=A6FcLDbbov7+GCTvPe4LOONQA8az1TZo4pBqzPCQhAw=; b=36qLcj2qDzUiRL
+	TJHGPzMAX6g7M4c5ICz1MnLat2vl/GiaK6GoWZtm7sBB2h0BZRKYomteUcWnxoz7sj/rKopprvSmr
+	19JBL9H+ZcNPdfv5Klu2EKnHAaSdXi+34zzxP6Lct2T6TJ+fehp9mVNgMxqhJf8w9TN45RX0KBXsn
+	WAmGyLSmXPndZOSovQWqw/CW68R6vrrabjeS1sOSetz2iYp0g5oGN7BQf1z0FUV81rQIN4iBhVBbg
+	6rp9iZzPVW1exmqLN3KPIrfYss/IZINB4yk7whJjLv9Fy3TeVyfgA9juR290YHZugJVou7wwliKiC
+	9XfSpfXIRiqcnIF2C4iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1CuB-00B4lV-3f; Tue, 14 Jun 2022 20:12:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1o1D4i-00B70Z-5Q; Tue, 14 Jun 2022 20:23:44 +0000
+Received: from mail-io1-f42.google.com ([209.85.166.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Ctx-00B4gq-SS; Tue, 14 Jun 2022 20:12:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 998ED614E7;
-	Tue, 14 Jun 2022 20:12:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E3FCC3411F;
-	Tue, 14 Jun 2022 20:12:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655237556;
-	bh=K5sMYcQa8KcOJXSCKfv+sFO+l852HartgdnTcv4p7so=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=f3BmAGBn6NGciCmPlQayj2yDq9jL2NaTEe/GRV2ekXUGGZAM/MJsq7FdEVj+21EgB
-	 k2abiF7N9LvGSWcmr3Ymx/F1yo5VTktL44TSyZVG/QCjvdi1vecgXCRaCYrOsOSSrc
-	 RXwyoSHObgEPZTTSFHabkqMuFsHfYvj3DET5kw9QKSmuzOlRKsMOgeUJWsdo5InnUV
-	 N6rERiBymHuvCZp3UA3q6ZiFkyjqEf+p0Aevb85pNWXgUeqGGJwNNynQ9eQL52yuKl
-	 nADPCjAz9GdoAyEkMXS6x6FLslDQ4WiqVEOAlc9PeeasgwqVocSmBTYnap0uk2Fchk
-	 D6jfQaRBg695w==
-Date: Tue, 14 Jun 2022 22:12:32 +0200
-From: Wolfram Sang <wsa@kernel.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: dan.carpenter@oracle.com, Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] i2c: mediatek: Fix an error handling path in
- mtk_i2c_probe()
-Message-ID: <YqjrsJLXEyAJU40B@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	dan.carpenter@oracle.com, Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-References: <8001bcdbee9f8afc85118c99b8166eb6473dcba5.1653222111.git.christophe.jaillet@wanadoo.fr>
+	id 1o1D4f-00B6zf-4j; Tue, 14 Jun 2022 20:23:42 +0000
+Received: by mail-io1-f42.google.com with SMTP id y79so10621718iof.2;
+        Tue, 14 Jun 2022 13:23:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=yn1X9tsTyWKYB/yNHVHmt00Zq59Qs2y2qulf6vb+2UM=;
+        b=iHj/F8jXXac2xubh5fzWOecGh1X8b2hlEtAJUg4pLL8j+x7bpQ2JUJo5wderiuUCYC
+         uBelETHamhXdumBhbvD88cXx3FAj2IL7L99wEa1M5FVFR1ivbz10HjMMG+tQ4MmX+5bA
+         gSm8SoNfYhzuXDNxS/FQ4LDfL+wN1Y9SELTbFHGMjpiX5r+29uZzPu91OHQTZsb7s5Q8
+         HG8ZZX3SjyGK1ogJIn7tY8OWgfEkuDti8V3pegC0wnmsuPauO9pdpxN1b4JOHWLK2tQb
+         aUeoN8aFEFRSrki/FHsyIAuJch/9D1pSNGNUDjeK3jjY3CsPezD4rlXGysh70sZ3zNlj
+         MmFQ==
+X-Gm-Message-State: AOAM5318gDrOdIwKRq+RyPGK966pV4m8xsrZhfYpMalSX5FsR85jljE+
+	UMXGCOBD0c2gkzh9LL3s2Q==
+X-Google-Smtp-Source: ABdhPJx9rerqWe1Bf7zW/nGD3+1oZxHbZiDkER+sQCEKjG2+KNxYREIe+A+7VgkMnLoB33NTi+7crg==
+X-Received: by 2002:a05:6638:2711:b0:332:1030:d6c2 with SMTP id m17-20020a056638271100b003321030d6c2mr3817608jav.263.1655238218973;
+        Tue, 14 Jun 2022 13:23:38 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.251])
+        by smtp.gmail.com with ESMTPSA id r4-20020a92c504000000b002d54d827007sm5835499ilg.17.2022.06.14.13.23.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jun 2022 13:23:38 -0700 (PDT)
+Received: (nullmailer pid 2415510 invoked by uid 1000);
+	Tue, 14 Jun 2022 20:23:36 -0000
+Date: Tue, 14 Jun 2022 14:23:36 -0600
+From: Rob Herring <robh@kernel.org>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, daniel@ffwll.ch, krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie, msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com, wenst@chromium.org, angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v11 01/10] dt-bindings: mediatek,dp: Add Display Port
+ binding
+Message-ID: <20220614202336.GA2400714-robh@kernel.org>
+References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
+ <20220610105522.13449-2-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <8001bcdbee9f8afc85118c99b8166eb6473dcba5.1653222111.git.christophe.jaillet@wanadoo.fr>
+Content-Disposition: inline
+In-Reply-To: <20220610105522.13449-2-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_131237_993225_14EBB669 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20220614_132341_227798_CC7F6720 
+X-CRM114-Status: GOOD (  18.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,70 +74,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2078181898563310460=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jun 10, 2022 at 06:55:13PM +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This controller is present on several mediatek hardware. Currently
+> mt8195 and mt8395 have this controller without a functional difference,
+> so only one compatible field is added.
+> 
+> The controller can have two forms, as a normal display port and as an
+> embedded display port.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> [Bo-Chen: Fix reviewers' comment]
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>  .../display/mediatek/mediatek,dp.yaml         | 101 ++++++++++++++++++
+>  1 file changed, 101 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> new file mode 100644
+> index 000000000000..10f50a0dcf49
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> @@ -0,0 +1,101 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Display Port Controller
+> +
+> +maintainers:
+> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> +  - Jitao shi <jitao.shi@mediatek.com>
+> +
+> +description: |
+> +  Device tree bindings for the MediaTek display port and
+> +  embedded display port controller present on some MediaTek SoCs.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8195-dp-tx
+> +      - mediatek,mt8195-edp-tx
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  nvmem-cells:
+> +    maxItems: 1
+> +    description: efuse data for display port calibration
+> +
+> +  nvmem-cell-names:
+> +    const: dp_calibration_data
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Input endpoint of the controller, usually dp_intf
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Output endpoint of the controller
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+> +  max-lanes:
+> +    maxItems: 1
+> +    description: maximum number of lanes supported by the hardware.
 
---===============2078181898563310460==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="LPJ/UywH79b/GoGa"
-Content-Disposition: inline
+We already have a 'data-lanes' property defined in 
+'video-interfaces.yaml' that can serve this purpose.
 
+> +
+> +  max-linkrate:
+> +    maxItems: 1
+> +    description: maximum link rate supported by the hardware and unit is MHz.
 
---LPJ/UywH79b/GoGa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sun, May 22, 2022 at 02:22:07PM +0200, Christophe JAILLET wrote:
-> The clsk are prepared, enabled, then disabled. So if an error occurs after
-> the disable step, they are still prepared.
->=20
-> Add an error handling path to unprepare the clks in such a case, as alrea=
-dy
-> done in the .remove function.
->=20
-> Fixes: 8b4fc246c3ff ("i2c: mediatek: Optimize master_xfer() and avoid cir=
-cular locking")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-
-Applied to for-current, thanks!
-
-
---LPJ/UywH79b/GoGa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmKo67AACgkQFA3kzBSg
-KbYsUQ//RC/VArnR3VlNNgSKRNoCEEel97zMSxrWxq65CjNsnO8W3zD/9DyqzyQS
-cJyDJkxEdKcDK8EQSF+iW0qLRPg4HLCs6WBoOsdgcSCmxv5YiTOmluHkO+kGP7ne
-tYYUuvhihoHqLAOtYXYYWi9kNH0cFOvIur0h2J/EHno/2LA+6fJEGMSI942PNbV8
-o6vTD9i7xhMIa8wpGE/Bwg0vMB7aBzuR2MfHoMmRTVJd/EsSNOLY+Eb6si+1mQLt
-3g8JsGEKiU7yRPcQBUl6aWQjT6OrHRHI0z6JCcFsDibkVn0W8FyKw6HG+xQo9ZZy
-lgfNdquCbZcs2fVnCTgXTtj4S/NRxYrDqN1KC3H76EmwouJ5ha7C0R+Yh+6Se8/f
-V463JjPsZWzQhIHTYcZ87bfte3w5/4iTgGhGMkddmKTRFv4WYkJZxDbX84f15ktB
-HTngGpZqNx/25++2fiZ+32V3NlPL9tRf/h2CXw9rFATe+72SbXKvNGVLgKvC0EfM
-nSdZJg9lXsD49Ds2/UtYnBXtCQ0yYiGsSbvAzP/CC6tHn/vwGcVVqJixGAE7bUUu
-M/S60KHdu3GP6m400nWh4r+C2TWzL9QFZML2X+gYuWxWD9Xubx72EqdzXoGKwDZU
-NZjihxOZB2V5KDIJ7unDrC/octpmuAMLGE+ZMxFgJL9hadYZGrA=
-=SD9T
------END PGP SIGNATURE-----
-
---LPJ/UywH79b/GoGa--
-
-
---===============2078181898563310460==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Then use '-mhz' suffix on the property name. Then you don't need a type 
+(or maxItems).
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============2078181898563310460==--
-
