@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FD8CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jun 2022 20:30:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73461C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 02:06:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0ylOM4xsAYSBLV7Utap+lrf6PIUy+bN5uHl/VgKEEfM=; b=q9Io2RIPxcAjuA
-	sdAafCMSEhW98Az4rOhkcUuGRm5UQY0e0wrox3JOv0NsfnqoVEjvnRTZZogmVBGqdMaM12zvdWCt2
-	8ae2T9DPw7dHLpr43aaqzHulllHvYuzl7txnpz5hQxpHzvxigJLQs2o6XhIwvZgx7XZ/NRO8kasUM
-	rrwF2zC0cAXXqWu3rAcXuQfWzuj4XBkuOVyZcACUBiZvEGxDhLp9UJn4pvw3Ffv4b7aklr3+Djs2b
-	bvGENqxpb+YhBZkHGIMslY2ppNWpmCtdDej+1y/Gz22z5YogyFADau8ayh96iEbRocFN2pTLb4jBe
-	RatvzraWJWEeCpSdQNVg==;
+	List-Owner; bh=s2myUvJUbq5V0ZgWyksNQoTPc4TnufhaIg/jleKDGqc=; b=p06ADquQynBlpL
+	J+3KvyRtL+u4DIoYZz6FxVS9AOIXBE9IfxwRGzAWdzaG7925yWaNj/CTGcDY20GspW6ivYXtejE1l
+	KtDef/yjPKUzmJ1XKaQzEX5+JVShpENq7agEFUxmF/nHuJ3W1dU3oG2OaNMpZKD+HVJOZRnjFtzI+
+	b8Me437chk8jBvhXJ8lgbfm5W6FoXVrHeC6ZdVK6PW+SqbDPNSOTFjHVS/TNT4sx+tNHSe9cLbLz2
+	cV3eQpRqr01XdqKahiM6d5h7g90wtTJ0P50navUifm1egXemNsEZj46uSSaiPRlKrM2MlD7791DVj
+	D+SoXMo/zi6BRdJcicvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0qhX-005enk-EU; Mon, 13 Jun 2022 20:30:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1o0vwK-006dom-VU; Tue, 14 Jun 2022 02:05:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0qZO-005bGB-0V; Mon, 13 Jun 2022 20:21:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=8O3gyMH/DIarLtUQIeptn6LXzo+PYX0mLfSnGbw2a7g=; b=NiCUaEIDQk/r/vKjMnabo0T1aj
-	KK3IXgeBZZBkAGgl4TSxcVArNoBIV/AKyyLi9t5a07UnCfbFSwN2nvXFXzLDYNNMAXXD2fr3a3lXn
-	5qBH/nL9tJX2J7QQ4kM/7UEN+euVSEGc7b6Ex8N+TV4DQW9YU3BeLEFg/YHZyrRBVB4eOurKWVCUV
-	3dbn5FrNEUgwk3XQpLPNxo6eOD7VlDnTDsuYkubKzs3hE1PvMf7ii7WpSMRyCQ1xaKSHGQwOi4VXv
-	BhCrf7pxathZUx6m7wZ/N1DXG7+13m4woNibuhLDnSJXchPFtBME85NedsEqI+ptN5vbrVryuRlDS
-	RIIm5mxw==;
-Received: from [2601:1c0:6280:3f0::aa0b]
-	by desiato.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0qZK-007fIG-L3; Mon, 13 Jun 2022 20:21:51 +0000
-Message-ID: <424b4f90-138c-d71f-0f1c-12c60e44c1c2@infradead.org>
-Date: Mon, 13 Jun 2022 13:21:43 -0700
+	id 1o0vw6-006dkY-SN; Tue, 14 Jun 2022 02:05:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4ACA160B65;
+	Tue, 14 Jun 2022 02:05:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C92AC36AFE;
+	Tue, 14 Jun 2022 02:05:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1655172341;
+	bh=Jf02ZOeNT62FmD9AyapXa5UwHsN7xvflT8W163Wk6CI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=tJ19ONjU+l9BeL/zM9nYXViwOF+j9/4vl3O7IQtzNaItqa2KK8Pn+ojil8iqC6Z+9
+	 PY0XXJMxMsHlxhxb9Z1bNU6vstGNRCVG5SzfP9boZo4HBmzlNr5EE0BuokhfHWygOi
+	 re947V0M/WXlO0/BhYVVaZjzjhezOJPovZSlmp76Hjf08qqPUd6ROWPcehTaTWo1wr
+	 UyTCBgYb+uXnK4vmNgd77gkYxQ/P5bKPeIeKBRWyNYw/xTU7Jnju5NTP84RijCT/4z
+	 FmJNLuw/BVvTmwTWC61qZVPY4hgbJMp5Yinxdw1HDC4LPcWVeJtl01phqjGMVTDdoR
+	 PIyJrrGoSwaHg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Chen Lin <chen45464546@163.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	nbd@openwrt.org,
+	blogic@openwrt.org,
+	matthias.bgg@gmail.com,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.18 35/47] net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag
+Date: Mon, 13 Jun 2022 22:04:28 -0400
+Message-Id: <20220614020441.1098348-35-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220614020441.1098348-1-sashal@kernel.org>
+References: <20220614020441.1098348-1-sashal@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v2 15/15] video: backlight: mt6370: Add Mediatek MT6370
- support
-Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>, jic23@kernel.org, lars@metafoo.de,
- matthias.bgg@gmail.com, lee.jones@linaro.org, daniel.thompson@linaro.org,
- jingoohan1@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com,
- ChiaEn Wu <chiaen_wu@richtek.com>
-References: <20220613111146.25221-1-peterwu.pub@gmail.com>
- <20220613111146.25221-16-peterwu.pub@gmail.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20220613111146.25221-16-peterwu.pub@gmail.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20220613_190543_084185_26EB6E89 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +81,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Chen Lin <chen45464546@163.com>
 
+[ Upstream commit 2f2c0d2919a14002760f89f4e02960c735a316d2 ]
 
-On 6/13/22 04:11, ChiaEn Wu wrote:
-> diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/Kconfig
-> index a003e02e13ce..ec1589ad88bb 100644
-> --- a/drivers/video/backlight/Kconfig
-> +++ b/drivers/video/backlight/Kconfig
-> @@ -268,6 +268,15 @@ config BACKLIGHT_MAX8925
->  	  If you have a LCD backlight connected to the WLED output of MAX8925
->  	  WLED output, say Y here to enable this driver.
->  
-> +config BACKLIGHT_MT6370
-> +	tristate "Mediatek MT6370 Backlight Driver"
-> +	depends on MFD_MT6370
-> +	help
-> +	  This enables support for Mediatek MT6370 Backlight driver.
-> +	  It's commonly used to drive the display WLED. There're 4 channels
+When rx_flag == MTK_RX_FLAGS_HWLRO,
+rx_data_len = MTK_MAX_LRO_RX_LENGTH(4096 * 3) > PAGE_SIZE.
+netdev_alloc_frag is for alloction of page fragment only.
+Reference to other drivers and Documentation/vm/page_frags.rst
 
-	                                                There are 4 channels
+Branch to use __get_free_pages when ring->frag_size > PAGE_SIZE.
 
-> +	  inisde, and each channel supports up to 30mA of current capability
+Signed-off-by: Chen Lin <chen45464546@163.com>
+Link: https://lore.kernel.org/r/1654692413-2598-1-git-send-email-chen45464546@163.com
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
 
-	  inside,
-
-> +	  with 2048 current steps in exponential or linear mapping curves.
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index f02d07ec5ccb..2630e1794f7f 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -778,6 +778,17 @@ static inline bool mtk_rx_get_desc(struct mtk_rx_dma *rxd,
+ 	return true;
+ }
+ 
++static void *mtk_max_lro_buf_alloc(gfp_t gfp_mask)
++{
++	unsigned int size = mtk_max_frag_size(MTK_MAX_LRO_RX_LENGTH);
++	unsigned long data;
++
++	data = __get_free_pages(gfp_mask | __GFP_COMP | __GFP_NOWARN,
++				get_order(size));
++
++	return (void *)data;
++}
++
+ /* the qdma core needs scratch memory to be setup */
+ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ {
+@@ -1269,7 +1280,10 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			goto release_desc;
+ 
+ 		/* alloc new buffer */
+-		new_data = napi_alloc_frag(ring->frag_size);
++		if (ring->frag_size <= PAGE_SIZE)
++			new_data = napi_alloc_frag(ring->frag_size);
++		else
++			new_data = mtk_max_lro_buf_alloc(GFP_ATOMIC);
+ 		if (unlikely(!new_data)) {
+ 			netdev->stats.rx_dropped++;
+ 			goto release_desc;
+@@ -1683,7 +1697,10 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 		return -ENOMEM;
+ 
+ 	for (i = 0; i < rx_dma_size; i++) {
+-		ring->data[i] = netdev_alloc_frag(ring->frag_size);
++		if (ring->frag_size <= PAGE_SIZE)
++			ring->data[i] = netdev_alloc_frag(ring->frag_size);
++		else
++			ring->data[i] = mtk_max_lro_buf_alloc(GFP_KERNEL);
+ 		if (!ring->data[i])
+ 			return -ENOMEM;
+ 	}
 -- 
-~Randy
+2.35.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
