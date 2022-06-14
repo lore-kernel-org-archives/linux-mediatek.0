@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44FDECCA47B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 02:10:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821AAC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 02:11:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w4idwG+tKDvX1dNtDkormtxAxVY/zKvOi/yW5o4b5jg=; b=Hmyagrg6YUU1UW
-	R8PZyBMX5Bj5DAQfj4yE1V6XbNk/GKrmeK1G2U8f7ZcF0gXIq6FLE330qcFesdPCg+Dw+lhUlis5I
-	CxXZ0/1MqZxXdWCUvLTekIC++2YUE6LYZ3wUVOtQZjdEOvAFIuED8P3ptcxPWTU/e7QK4bQEu2LgU
-	w5xa9g0QLevoqFUtaicaTmkPw4NdRwYRBLn9io94pKoguDi6CxqWgOHGzf/3xYcCjh+E/dNgN/BAn
-	Fah4GbtvunMJ4Le19x4UbyN+mBEH2rYFr4FdzbCbz94KQXZbjJgZH6phdJ70RoZBhoPG3QeLOIjMX
-	VGfGAlLzkmT7SVzcNLzg==;
+	List-Owner; bh=MDkg2AHFZaU7fP8Mh7rxhsVQrEvkiUevbCY/M3IQOJo=; b=Mpl7bI4AxpDeLu
+	p0Q8QqcoBtnwmuPamXM3zt5m4KnzZAqY5eWHd30ohmc9vrKRfZ3ETm2cFLhdqUfGeeUsN+16MUPbD
+	NRY8Xhd95hdoGRYJtHMsB/uXaMh5Xi4IEkwr6h7DKfi7H60ImneM5BoV53/x1JDnpPV9RpagB5UcG
+	q9Mqp0DwOKOmz5KqKVGBJp2ypx4+0qpOQ6H0GRPDh8kVFhcQt86eOA8FjyGb9mLYwruHwmhMWUkp1
+	P6/X/wx0scj/H5icZQLM+pUZAFqOpYWKfBBrAQEPjUszxi2+jeJ/A6U2FEIcIXWTlGxS06Cq3GLjM
+	OTAN+WxLgWjDafTEVJFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0w0o-006fsh-TA; Tue, 14 Jun 2022 02:10:34 +0000
+	id 1o0w1P-006gEX-25; Tue, 14 Jun 2022 02:11:11 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0w0X-006fjB-Pm; Tue, 14 Jun 2022 02:10:19 +0000
+	id 1o0w0v-006fwq-5k; Tue, 14 Jun 2022 02:10:42 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5977B60F1C;
-	Tue, 14 Jun 2022 02:10:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AB2BC36B00;
-	Tue, 14 Jun 2022 02:10:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B290C61014;
+	Tue, 14 Jun 2022 02:10:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D10C3C385A2;
+	Tue, 14 Jun 2022 02:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655172617;
-	bh=y5LEe/I2hjA22v9AnBMJ09sBI7qaJ0yppZgeWvB0g/8=;
+	s=k20201202; t=1655172640;
+	bh=uFtGcef05qaubXjffqXmiRE1GCLUtZTkvbdmKXBCgDA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=o87WBV2+JCaSHhjUdpECagfL+qjwUXaXqrhD64FEmmXMkqyBgTE6ldR0fTc6pYSJh
-	 1TN7WIcfmUeH9BeGcfhm8Pp0Ifvlfo9a/a09TuG2q8F4MFMiWY6grRc1EuasxOqgY4
-	 a95HKd/ysFfzMwaku+23hV0KpETwlpgLBn3l5F3EgFJzH1mY4J79hf7bSWHdWoOGGY
-	 zbKBkO4VeeKqZl9b7cRKrL3Fx9LDSHTku343uhIGJN/PyXAXNCbytf7n4x5HoPzCEp
-	 1wRNELoFaaDTY0YzSu8C6CqcohC2Ym4gYhWZgSlcwPyPjNBcmKwvgyMHhs4zePbwC5
-	 dVtoBtobS/+7A==
+	b=frXeeaPQ1iII3mT7bZw4Q/px8vuMLsxjKyPjxgEXcG52JeBginpTcYdcvgqeYZOFE
+	 GF/zRB2hMh4Zs8a30gdNO3fpv/DIj0+8tvHJWYVBU6FNIIvqIbtPNA0etYcrhF94AM
+	 3swFLnanv+ZHYqPu1R/eOA2KkknzOru+e87t2ts+I4Xv6XOVk2qps+aS9R52fVTGkA
+	 WqBeoMeAzhmwsyx1jscjl2uC9c5c5s73zmp8myhnU20zMtMCSBcDLpbh264a6FlLTW
+	 CdE8+J6KdGoT6a+wx+trVDeSb+O6gLZSi7QuXtiCnE3BfswQ3MmLUlGwLgK0xaE5sn
+	 irFPhdXd707cw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,17 +53,17 @@ Cc: Chen Lin <chen45464546@163.com>,
 	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 17/18] net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag
-Date: Mon, 13 Jun 2022 22:09:40 -0400
-Message-Id: <20220614020941.1100702-17-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 14/14] net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag
+Date: Mon, 13 Jun 2022 22:10:19 -0400
+Message-Id: <20220614021019.1100929-14-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220614020941.1100702-1-sashal@kernel.org>
-References: <20220614020941.1100702-1-sashal@kernel.org>
+In-Reply-To: <20220614021019.1100929-1-sashal@kernel.org>
+References: <20220614021019.1100929-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_191017_949516_399927B0 
+X-CRM114-CacheID: sfid-20220613_191041_317123_8B472CAD 
 X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,10 +101,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 19 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 59f3dce3ab1d..d0f2488003eb 100644
+index dbd16dd5aa04..5fc6f4fd0f26 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -597,6 +597,17 @@ static inline void mtk_rx_get_desc(struct mtk_rx_dma *rxd,
+@@ -596,6 +596,17 @@ static inline void mtk_rx_get_desc(struct mtk_rx_dma *rxd,
  	rxd->rxd4 = READ_ONCE(dma_rxd->rxd4);
  }
  
@@ -134,7 +134,7 @@ index 59f3dce3ab1d..d0f2488003eb 100644
  		if (unlikely(!new_data)) {
  			netdev->stats.rx_dropped++;
  			goto release_desc;
-@@ -1312,7 +1326,10 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+@@ -1315,7 +1329,10 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
  		return -ENOMEM;
  
  	for (i = 0; i < rx_dma_size; i++) {
