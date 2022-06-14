@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE5EAC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 06:37:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C27C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 06:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1AhQBw+zUl9ECxsJCVnTe3xAjZQqOfIUWxruWaf11IQ=; b=i7kRb2/McWujHB
-	2sx8EFX0xRxkhHiCLiFEUMTJyqpv8vyEdgf/zpQ++60el2dKKCVCICKMxVYFdoaTZ5ebek8pmUrrX
-	JrmJ8xKmUiDbICGoEqE8GMsixkm8vkJSHYTVZ9tBvsG4H1COrmKgTgLuAq2CONDoSaOr87uXDMte1
-	/3L9I8OAhCxrWg+zwcNqNmyLoiteZudYBg7I46VfIFAksIMVTMdm0bwpvJavoYOsq3ZlcG5hKVvJ7
-	qCdkurnoovL8Iim3yY60R86XPJeHe8PyPtknFB+oacHOwDtDHha7QBx0OxgK8MX11KrEu1pjRiiKT
-	Mei2FgqK7lE9yNhgcc3Q==;
+	List-Owner; bh=ypGx9wTQy3H6n+czxOBkLuIS2ed5Ho9JDbybH8CUrrs=; b=QCMYzkZUYlU9JL
+	yxZJVQBJY/Hdxx6jxx+iOoKIEIUPOyVV7ZCttuPq7nN/SvLv5w0k2mR9gTtEqBni1rdAGoAXKFINu
+	KK1W3qzwBs7VNwjAlDmGRQDc2ps+jOMKx2UoMp30ByauHrPfHyTTXeyKlNCA0wib1Q6doB0/k29n0
+	Ua6YhYupzW6ONo0j+SBV6C4SWpUmTRGIMvGypexrfkvQs0PEbnZNcFlkBIOhKEKS/Fk5Rh/fz5THk
+	yxwZCpQrHO7BXzRJ1mH6Gi14Fo7L50yE8g2/Rq1a/cefGtkgPpuLZGMV/y8nLaQudnZu5OPMhlvJ3
+	C/b0aqWt5lwGmeBWC46Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o10BJ-007J3O-L3; Tue, 14 Jun 2022 06:37:41 +0000
+	id 1o10Bg-007JBb-36; Tue, 14 Jun 2022 06:38:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o10B7-007IzS-Lb; Tue, 14 Jun 2022 06:37:31 +0000
-X-UUID: 86310cd22131449f8a8c3a59d4ae1e72-20220613
+	id 1o10B9-007J0V-9i; Tue, 14 Jun 2022 06:37:33 +0000
+X-UUID: bb9e9892340b455da218941321c960df-20220613
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:2a9acadc-5751-4190-a571-3d1acbf3181f,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.6,REQID:f82a45bb-95eb-40e1-9259-b65762ee6487,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:c3555dc5-c67b-4a73-9b18-726dd8f2eb58,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-META: VersionHash:b14ad71,CLOUDID:ca555dc5-c67b-4a73-9b18-726dd8f2eb58,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 86310cd22131449f8a8c3a59d4ae1e72-20220613
+X-UUID: bb9e9892340b455da218941321c960df-20220613
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <lecopzer.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 768784373; Mon, 13 Jun 2022 23:37:23 -0700
+	with ESMTP id 396992583; Mon, 13 Jun 2022 23:37:23 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Jun 2022 23:28:41 -0700
+ 15.0.1497.2; Mon, 13 Jun 2022 23:28:40 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 14 Jun 2022 14:28:39 +0800
+ 15.2.792.15; Tue, 14 Jun 2022 14:28:38 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Tue, 14 Jun 2022 14:28:38 +0800
@@ -60,17 +60,17 @@ CC: <pmladek@suse.com>, <acme@kernel.org>, <akpm@linux-foundation.org>,
 	<nixiaoming@huawei.com>, <peterz@infradead.org>,
 	<sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
 	<will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: [PATCH v6 5/6] arm64: add hw_nmi_get_sample_period for preparation of lockup detector
-Date: Tue, 14 Jun 2022 14:28:34 +0800
-Message-ID: <20220614062835.7196-6-lecopzer.chen@mediatek.com>
+Subject: [PATCH v6 3/6] kernel/watchdog_hld: Ensure CPU-bound context when creating hardlockup detector event
+Date: Tue, 14 Jun 2022 14:28:32 +0800
+Message-ID: <20220614062835.7196-4-lecopzer.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220614062835.7196-1-lecopzer.chen@mediatek.com>
 References: <20220614062835.7196-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_233729_757631_E8F81B0B 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20220613_233731_391784_75C243A9 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,72 +87,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set safe maximum CPU frequency to 5 GHz in case a particular platform
-doesn't implement cpufreq driver.
-Although, architecture doesn't put any restrictions on
-maximum frequency but 5 GHz seems to be safe maximum given the available
-Arm CPUs in the market which are clocked much less than 5 GHz.
+From: Pingfan Liu <kernelfans@gmail.com>
 
-On the other hand, we can't make it much higher as it would lead to
-a large hard-lockup detection timeout on parts which are running
-slower (eg. 1GHz on Developerbox) and doesn't possess a cpufreq driver.
+hardlockup_detector_event_create() should create perf_event on the
+current CPU. Preemption could not get disabled because
+perf_event_create_kernel_counter() allocates memory. Instead,
+the CPU locality is achieved by processing the code in a per-CPU
+bound kthread.
 
-[1]:http://lore.kernel.org/linux-arm-kernel/1610712101-14929-1-git-send-email-sumit.garg@linaro.org
+Add a check to prevent mistakes when calling the code in another
+code path.
 
-Co-developed-by: Sumit Garg <sumit.garg@linaro.org>
-Signed-off-by: Sumit Garg <sumit.garg@linaro.org>
-Co-developed-by: Pingfan Liu <kernelfans@gmail.com>
 Signed-off-by: Pingfan Liu <kernelfans@gmail.com>
+Co-developed-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
 Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Reviewed-by: Petr Mladek <pmladek@suse.com>
 ---
- arch/arm64/kernel/Makefile       |  1 +
- arch/arm64/kernel/watchdog_hld.c | 25 +++++++++++++++++++++++++
- 2 files changed, 26 insertions(+)
- create mode 100644 arch/arm64/kernel/watchdog_hld.c
+ kernel/watchdog_hld.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/kernel/Makefile b/arch/arm64/kernel/Makefile
-index fa7981d0d917..303b69ad5366 100644
---- a/arch/arm64/kernel/Makefile
-+++ b/arch/arm64/kernel/Makefile
-@@ -46,6 +46,7 @@ obj-$(CONFIG_MODULES)			+= module.o
- obj-$(CONFIG_ARM64_MODULE_PLTS)		+= module-plts.o
- obj-$(CONFIG_PERF_EVENTS)		+= perf_regs.o perf_callchain.o
- obj-$(CONFIG_HW_PERF_EVENTS)		+= perf_event.o
-+obj-$(CONFIG_HARDLOCKUP_DETECTOR_PERF)	+= watchdog_hld.o
- obj-$(CONFIG_HAVE_HW_BREAKPOINT)	+= hw_breakpoint.o
- obj-$(CONFIG_CPU_PM)			+= sleep.o suspend.o
- obj-$(CONFIG_CPU_IDLE)			+= cpuidle.o
-diff --git a/arch/arm64/kernel/watchdog_hld.c b/arch/arm64/kernel/watchdog_hld.c
-new file mode 100644
-index 000000000000..de43318e4dd6
---- /dev/null
-+++ b/arch/arm64/kernel/watchdog_hld.c
-@@ -0,0 +1,25 @@
-+// SPDX-License-Identifier: GPL-2.0
-+#include <linux/cpufreq.h>
-+
-+/*
-+ * Safe maximum CPU frequency in case a particular platform doesn't implement
-+ * cpufreq driver. Although, architecture doesn't put any restrictions on
-+ * maximum frequency but 5 GHz seems to be safe maximum given the available
-+ * Arm CPUs in the market which are clocked much less than 5 GHz. On the other
-+ * hand, we can't make it much higher as it would lead to a large hard-lockup
-+ * detection timeout on parts which are running slower (eg. 1GHz on
-+ * Developerbox) and doesn't possess a cpufreq driver.
-+ */
-+#define SAFE_MAX_CPU_FREQ	5000000000UL // 5 GHz
-+u64 hw_nmi_get_sample_period(int watchdog_thresh)
-+{
-+	unsigned int cpu = smp_processor_id();
-+	unsigned long max_cpu_freq;
-+
-+	max_cpu_freq = cpufreq_get_hw_max_freq(cpu) * 1000UL;
-+	if (!max_cpu_freq)
-+		max_cpu_freq = SAFE_MAX_CPU_FREQ;
-+
-+	return (u64)max_cpu_freq * watchdog_thresh;
-+}
-+
+diff --git a/kernel/watchdog_hld.c b/kernel/watchdog_hld.c
+index 701f35f0e2d4..0573cef0b9dc 100644
+--- a/kernel/watchdog_hld.c
++++ b/kernel/watchdog_hld.c
+@@ -169,10 +169,16 @@ static void watchdog_overflow_callback(struct perf_event *event,
+ 
+ static int hardlockup_detector_event_create(void)
+ {
+-	unsigned int cpu = smp_processor_id();
++	unsigned int cpu;
+ 	struct perf_event_attr *wd_attr;
+ 	struct perf_event *evt;
+ 
++	/*
++	 * Preemption is not disabled because memory will be allocated.
++	 * Ensure CPU-locality by calling this in per-CPU kthread.
++	 */
++	WARN_ON(!is_percpu_thread());
++	cpu = raw_smp_processor_id();
+ 	wd_attr = &wd_hw_attr;
+ 	wd_attr->sample_period = hw_nmi_get_sample_period(watchdog_thresh);
+ 
 -- 
 2.25.1
 
