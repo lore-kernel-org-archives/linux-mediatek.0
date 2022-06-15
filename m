@@ -4,74 +4,195 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B76C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 06:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64095C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 07:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xaHrLeCcXA4MKrx/nOdikRD1p0jFZglYy5I+OtA3MFk=; b=pZvMaqCkc5/7Eb
-	s19lk1ScTtPvZ98t+/dKQGlckIWEYdP90KXpH/JdylS2zV4rxZqKuy9t9+sXA+f2Y8NNjpBPG8xxV
-	n7D4UbaEP7cggTUzjnqX5kTxY3DlZFPQ0Z8RmNJyb9J0kVMOF7yPsS4uZCJ+Qu2LvCuN2ZfVI5U2h
-	v0ogCO1jHitjwukiwpKe8EL3HK95SFwOrCUqdRcEb7PGsQTCA2Qei+KJc93vQn1MW1GMFLtbfshxh
-	T0zzkCWnHg5lWi9a3cywh8fzZEiBsKAmK3ZV/HyRTjf3y0P4cQv1dqV74TJknfaVMJ2iD9/1D27p9
-	ItH1vLkbj/P0n3oZyCEQ==;
+	List-Owner; bh=QJXpNb0g86A0vcBTVOt4ZjbTB2jiYQl+1J08ZfcMj9Q=; b=CyD0NmOlhVFGh2
+	JBc1CNFP1TAaNrywbsPxXetowKv6x9kx3c7w4q/X+6FI3pLHJNcfemZ4GHAbn/W4usHOek4EoT9zN
+	k/S415Y4uRPmQ+z0GkYH+eLOuMsVtoEU5ub+ElhMwVeBbuc62NsEY2XwT/OukQQXiyGUJ/DINOyiW
+	kQ2q7ujsy+XaBca3a9OwAZcN6zhviCNkXDQ7KRctl8AjM4efvKVnDiUSlkDyEzBk1V6Z//wPsFwgm
+	edP45p990zIprBnfpEE9Nz+bKRhpsOorRWoTXzLsrCf4qo0OoCh6NiDzC7QeWYEe3YDR4/ZCfTt7N
+	Y5lkvbKXNefC4JsZmeCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1MtQ-00CweJ-Vh; Wed, 15 Jun 2022 06:52:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o1NYY-00D2vM-Uc; Wed, 15 Jun 2022 07:35:14 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1MtF-00CwZm-UW; Wed, 15 Jun 2022 06:52:35 +0000
-X-UUID: db72bd2acb9f45c99d409136a3a90d13-20220614
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:d088c03b-4543-4cfc-a380-c89f3ed8c873,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:c1db49f6-e099-41ba-a32c-13b8bfe63214,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: db72bd2acb9f45c99d409136a3a90d13-20220614
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1989722894; Tue, 14 Jun 2022 23:52:28 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jun 2022 23:52:27 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 15 Jun 2022 14:52:25 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 15 Jun 2022 14:52:25 +0800
-Message-ID: <f8fbd1b522c3ecfbdacc290f028126045d9c0dc8.camel@mediatek.com>
-Subject: Re: [PATCH v11 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 15 Jun 2022 14:52:25 +0800
-In-Reply-To: <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
-	 <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o1NYV-00D2uk-Ri; Wed, 15 Jun 2022 07:35:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1655278511; x=1686814511;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=qjTs6Qqc+6U9DK7fvm60mvysz0KWlM5ghwtuJV99NBg=;
+  b=DGJe3IryVqaMplzaMEvYgOK8/s/CY4PchcITymGuznkf8zU8Fj8JN+5w
+   O0d7235hyiZlJLV9ePAhujORAfxpnmkCgWXT0k7hi/J6IzucWukahunhl
+   CK2yhAWiNQCRntoOZJid0mVuGFeaO02M0C5+SjW/RBZZt+ogDl+a6gAOA
+   kVezpucP5/i9tUF8KKTFwBDSJ57p9H9BZQMZsUSekT3VXFIC4r9cuEQgh
+   o4bN7BZbHC5q2pDCf5rjEtKkQsFA2Xxbm0UbonEMl/2mt1WCWCt93yCYO
+   wMdk9wjb3QX++T9HrxKmlYNbGqzu1BgMbHHNnKdwfmcs9x2vja2L5pvlN
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="279585821"
+X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; 
+   d="scan'208";a="279585821"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 00:35:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,300,1647327600"; 
+   d="scan'208";a="674345094"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+  by FMSMGA003.fm.intel.com with ESMTP; 15 Jun 2022 00:35:07 -0700
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 15 Jun 2022 00:35:07 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Wed, 15 Jun 2022 00:35:07 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.108)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Wed, 15 Jun 2022 00:35:07 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=lJnI56DiAFK6OBrUFjVVDeBR2VHmW/OosX1p+7aeUmMTIVJ2flVdcBAh7RYGplvJtBp1ZWVdgNBABCAzq3KbN9XG1ultZ1lgI2p0KG5yYItKyYn3DhIFqx18OKt0Jcg2RF4obSIhEwbkB8iu9XWO+9bLq5qer90L+bQHmxhoZZo1BH+avUJDxi7a0C0hlkQKHkvaCLVWp/rFiyizGTLOHXpJEh1Gx3JoJwNXM+dIetpIlhARFU5zQ7LD/HdTPMqbm0Uma81SKJ9+OoC+5980ro6MpNTDpQ9GNYQQz7GRPgs5CSm+yVzUgsc+ceMwn0VUcrZw3BoWv/k4TFeLY6/AMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QmAOL4zLvaH0pBgX6k2mYHNQK0hTQ/UwZGXCmcK3IGI=;
+ b=Q5v7s6vzxoNBQCCCt0ihR7B+90OWXxR1Sp38H25pizJKkhQ7umluPnSsmZgcNyVkmDzhaFGb90o/yDRaTTpw5U4eBYFhk3mDqvNe4gZF1cyi+pnbrWf+iwdwhSJIikwu2QbCHMG59xS03peQ7vewSCCNZwvZmddwYJ4ohWpLC28DsZXl4anIT8EQlC78udAMdo55z8mUePcJ8BuWyU485FB3VuvTT2snEeiJI5sv1AxwGmsBks5JexUaLJKxH1cZORn+d48oqAPm40cahLRMRxCtJi5CaObvIrjrbmZ3sFDUw5xQdEMj7D2QH91mTMVXrvh7vEr+f+3OoIrjNTKxjA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by BL1PR11MB5429.namprd11.prod.outlook.com (2603:10b6:208:30b::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.13; Wed, 15 Jun
+ 2022 07:35:00 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::3583:afc6:2732:74b8]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::3583:afc6:2732:74b8%4]) with mapi id 15.20.5332.022; Wed, 15 Jun 2022
+ 07:35:00 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
+	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
+	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
+	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
+	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>, "agross@kernel.org"
+	<agross@kernel.org>, "bjorn.andersson@linaro.org"
+	<bjorn.andersson@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>,
+	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "baolin.wang7@gmail.com"
+	<baolin.wang7@gmail.com>, "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+	"wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
+	<jernej.skrabec@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"virtualization@lists.linux-foundation.org"
+	<virtualization@lists.linux-foundation.org>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
+	<jonathanh@nvidia.com>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "gerald.schaefer@linux.ibm.com"
+	<gerald.schaefer@linux.ibm.com>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "cohuck@redhat.com"
+	<cohuck@redhat.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org"
+	<iommu@lists.linux-foundation.org>, "dwmw2@infradead.org"
+	<dwmw2@infradead.org>
+Subject: RE: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
+ enforced cache coherency
+Thread-Topic: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
+ enforced cache coherency
+Thread-Index: AQHYeW2KrRlTv4MQ5UeMm5INXClL961FJamwgAA6IwCAAMkn0IAJQ4IAgAConjA=
+Date: Wed, 15 Jun 2022 07:35:00 +0000
+Message-ID: <BN9PR11MB527694346588A803F0EDD95E8CAD9@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20220606061927.26049-1-nicolinc@nvidia.com>
+ <20220606061927.26049-4-nicolinc@nvidia.com>
+ <BN9PR11MB5276DC98E75B1906A76F7ADC8CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20220608111724.GL1343366@nvidia.com>
+ <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
+ <YqjzXpzuBa4ATf9o@Asurada-Nvidia>
+In-Reply-To: <YqjzXpzuBa4ATf9o@Asurada-Nvidia>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.500.17
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 6b3f2e08-9de5-49bb-8948-08da4ea18e0d
+x-ms-traffictypediagnostic: BL1PR11MB5429:EE_
+x-microsoft-antispam-prvs: <BL1PR11MB5429955041DDA2F710BDDFEC8CAD9@BL1PR11MB5429.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: gclx44ls315XMkbb/mOK1LsfqKSbzW9+I44SNLlNNKB1MOKmYs9RbqZ6j3amspubH5RTm3TuQew8JqVs1PweGwcNd9wnmyW8m21M37irrjB97J6GhqXArAEGh2s2d0980h4kmcrEa0QeAJ/LeCotU6rgoLfhKca4YtDnQ5QSEadB9fc1+7TjeYvDiB8yC0IT3S3mFJKiV6DG19CgJNvZePzEzEZfSXZs7BPNvvOLyOMps58kltKIUmsbYKmYNG5Vp+8kupYvks56PFyn+ue2dKe2dpymK5BO48++zIeZqrD9kLsQ/tZ5ByZyzQxLUciiq3sVZtB999NzXLSKZqhTk7ziRt94meinpcDhbA6SBa5hYLvW00/htGjPI1s/6pA3glEnxUs6IG9zsFo/sCJ/uGPz/lQgSfSeUlZFwl6MANf6pYevUQtCZOKew9Ak7notoHjS+ntOnuqPal7JfkV8ygqyk4tq3qJHvQtvNOGfIZ7+kSbYmDHN+/K/NoC/GPqLl9b3bIF94pf5+tSgKGv86IBFtR6+ejb528JuQ8poM9hLZOK+l8HY5Yw7kZX/F9DhY/aQxmOp8XAV7aZaghj4y4EuJ5ga4qj2PSpHqBIBsUdxqJBAA5vaVSuiV4F1ICGNrL4tuVVj/O6neG26CBsES2G6roRVAxcCBh2/MIWToj349lpOtiAbw5x3HPuhqqJK0VkYTOr/3TabSmXtfYN6zA==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(366004)(66446008)(66476007)(8676002)(64756008)(66556008)(76116006)(66946007)(8936002)(7416002)(38100700002)(52536014)(508600001)(4326008)(7406005)(86362001)(71200400001)(5660300002)(26005)(6506007)(7696005)(2906002)(9686003)(6916009)(55016003)(38070700005)(33656002)(54906003)(316002)(82960400001)(122000001)(186003)(83380400001);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?FixdU54nkp2j0ExIDKg4vco44Ep9nEs3xx33Ys0G7pbuHo4e42WWkSg/cpC3?=
+ =?us-ascii?Q?xg0J9txdDG+ASNpsBpKFlkSeNca1NDo4Us8/Q2BPhm0Pvq/elPoAiLjS/YTK?=
+ =?us-ascii?Q?vi7Yzzd++hY/qc8pD5baz7rV0mUn9GfwbybDKkID6fYPCwZ5GJdJsJFubcSd?=
+ =?us-ascii?Q?rLZrX/0eznWjjwDA4nQKsUbZZ4FQQ5MU6LZOAsDp+MvbklgjRJjh8uVjOzv9?=
+ =?us-ascii?Q?QJ0N8Qa0OucsIHzLUA6B2sb8589/FYUUCpwcnGIdWhb0jfIBo3Brvd2DL8/q?=
+ =?us-ascii?Q?Z7Wbv3JTWVE6FK9qZcgJnrLC6JP6OSupsETmaixSMUbo9qSeaJMIFcFM62if?=
+ =?us-ascii?Q?+gp+K9I5Z1MCPlN/BmDU8u3nVgYZHbeccVr+FeyFEXvAfS8BkegvGKwm/wd/?=
+ =?us-ascii?Q?zX3OWqhMK8xwf8M9IwzaCWzxGQpfo+XU4IA6egFduka4u+wX8Pmdl1YYJBfv?=
+ =?us-ascii?Q?sHrhUULxpK4OqTxRimUAQ/lJ/Hb5ZQmYOWZQPSrAmUOe/8t3/MNtyFd0+zV1?=
+ =?us-ascii?Q?Aj7xAORyCiBdUYP+Y5qpzjysmgBu70kHSiD4J82tNuJJzWFkv99HZO6xV/QD?=
+ =?us-ascii?Q?XxgBmmZDftJxefMCR4h3RxuKKBNBgzbxA4HIFPkjakiXu77FgZUC29dF1XCf?=
+ =?us-ascii?Q?R/Goe0XPsPs+FlANtx06192HYBGYFeYwBvGKsxKEdQ9v4DDJTi51+JZb1pfC?=
+ =?us-ascii?Q?HwCGn4fb/rItd6RpDKzHwGMkWphq9D4gpB3sIiZZt1fNMlZRt6BFqFGCWY41?=
+ =?us-ascii?Q?vZvJb0u98LkOgx8y0a9+b0prj+GXQnBMgo6ycR7Ejfw8x26C0rSXTmfPv7sP?=
+ =?us-ascii?Q?tUplK0KjWYSj7Y30mHnn9vhfzuzo8OJM+a5hJv3E5dMAFt12uV21tSrGlpeu?=
+ =?us-ascii?Q?MQ3Uvz4AgjAkuZThMja3CusgRWDVEdyOFfFI/FSksMnXrMrf4yhD6Owcaqf4?=
+ =?us-ascii?Q?Senv0mMS89bZnOXwLF8y/bPCs2sBM1+AfHcP0b+YzeNDz81MTL/NTOpmE8Yu?=
+ =?us-ascii?Q?iGLivg3TV/2kQuGyaHuZI2G8JrSm4YSOARYWG835IVbAs/ceT/131jmDmSZ3?=
+ =?us-ascii?Q?wkBYGTDlKFtusb4wk5qQ/htFHgdjnYDfxM5voKV8GNY2f8WjzSLv+5P4k5mf?=
+ =?us-ascii?Q?/DFgUv/IRvjUFd2Gxywn29dnmPMZSvQyDoNJx44NHPtsln9D7so+W/APIC/r?=
+ =?us-ascii?Q?7J142KSJa22E8/OYLCjKSdH9+we7J9cIOMp2Z2NZgZ3cxouTlXc3MrB8E4D7?=
+ =?us-ascii?Q?5ssiiX/IfYAYWB7XUIxB1lh5OzbKbOeQV6S+t9pyQoSz5Q55NX62BDggiiK+?=
+ =?us-ascii?Q?p5QykUJs1mZd5o+AFUMOvj4zzbLWzs6Ylv03Ylcx7QaFKm1JC9BQFKLp8blS?=
+ =?us-ascii?Q?2FItx8XjJT4j25IYRd9Xs69KhZVnC6n3I5it8fpPsimiHfK1rbG09YPTh3it?=
+ =?us-ascii?Q?HR5PpfOwfjHGRm6H/PVkYMATiryGV8GG5+eSw+SX2XZsIhgmFRkhiC7JhwpP?=
+ =?us-ascii?Q?Lp7hKuY6qhOu5MOG1OIu/BTA3nvmQnanMQlNAzomD3eh3cu0Sc9xvUd6QayU?=
+ =?us-ascii?Q?QFM1BxV8Vzlep9v0GwDvLyRGNSM/z841HjJDDuOuLLgZpjJdVeL58avZC6YH?=
+ =?us-ascii?Q?ueXuE8E50MZz7ocnSUbPLogJh4PLNaRKFL3+puytgb6on4hPJDCbDbQJ5ecg?=
+ =?us-ascii?Q?/+dkT12834iliiV5XztPFOGfaBR3LcFh91pXvMFkt+bq/ig3EGmhkr64kD+O?=
+ =?us-ascii?Q?1Xsw9+6UXg=3D=3D?=
 MIME-Version: 1.0
-X-MTK: N
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6b3f2e08-9de5-49bb-8948-08da4ea18e0d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2022 07:35:00.5987
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: YB3Oay9/YbjViA+rFqwL5rNvWz1hcm9jfbxfIpp/r37jw1RQTfQQFBsGeSE0ko3JyklMons88TXEE2Bm41toyA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5429
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_235234_037431_822D4EE1 
-X-CRM114-Status: GOOD (  24.39  )
+X-CRM114-CacheID: sfid-20220615_003511_987744_46FBD520 
+X-CRM114-Status: GOOD (  24.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,126 +209,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
-
-On Fri, 2022-06-10 at 18:55 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: Wednesday, June 15, 2022 4:45 AM
 > 
-> This patch adds a embedded displayport driver for the MediaTek mt8195
-> SoC.
+> Hi Kevin,
 > 
-> It supports the MT8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
+> On Wed, Jun 08, 2022 at 11:48:27PM +0000, Tian, Kevin wrote:
+> > > > > The KVM mechanism for controlling wbinvd is only triggered during
+> > > > > kvm_vfio_group_add(), meaning it is a one-shot test done once the
+> > > devices
+> > > > > are setup.
+> > > >
+> > > > It's not one-shot. kvm_vfio_update_coherency() is called in both
+> > > > group_add() and group_del(). Then the coherency property is
+> > > > checked dynamically in wbinvd emulation:
+> > >
+> > > From the perspective of managing the domains that is still
+> > > one-shot. It doesn't get updated when individual devices are
+> > > added/removed to domains.
+> >
+> > It's unchanged per-domain but dynamic per-vm when multiple
+> > domains are added/removed (i.e. kvm->arch.noncoherent_dma_count).
+> > It's the latter being checked in the kvm.
 > 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
+> I am going to send a v2, yet not quite getting the point here.
+> Meanwhile, Jason is on leave.
 > 
-> This driver is based on an initial version by
-> Jitao shi <jitao.shi@mediatek.com>
+> What, in your opinion, would be an accurate description here?
 > 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> [Bo-Chen: Cleanup the drivers and modify comments from reviewers]
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
 
-[snip]
+Something like below:
+--
+The KVM mechanism for controlling wbinvd is based on OR of
+the coherency property of all devices attached to a guest, no matter
+those devices  are attached to a single domain or multiple domains.
 
-> +
-> +static int mtk_dp_train_start(struct mtk_dp *mtk_dp)
-> +{
-> +	int ret = 0;
-> +	u8 lane_count;
-> +	u8 link_rate;
-> +	u8 train_limit;
-> +	u8 max_link_rate;
-> +
-> +	link_rate = mtk_dp->rx_cap[1];
-> +	lane_count = mtk_dp->rx_cap[2] & 0x1F;
-> +
-> +	mtk_dp->train_info.link_rate = min(mtk_dp->max_linkrate,
-> link_rate);
-> +	mtk_dp->train_info.lane_count = min(mtk_dp->max_lanes,
-> lane_count);
-> +	link_rate = mtk_dp->train_info.link_rate;
-> +	lane_count = mtk_dp->train_info.lane_count;
-> +
-> +	switch (link_rate) {
-> +	case MTK_DP_LINKRATE_RBR:
-> +	case MTK_DP_LINKRATE_HBR:
-> +	case MTK_DP_LINKRATE_HBR2:
-> +	case MTK_DP_LINKRATE_HBR25:
-> +	case MTK_DP_LINKRATE_HBR3:
-> +		break;
-> +	default:
-> +		mtk_dp->train_info.link_rate = MTK_DP_LINKRATE_HBR3;
-> +		break;
-> +	};
-> +
-> +	max_link_rate = link_rate;
-> +	for (train_limit = 6; train_limit > 0; train_limit--) {
-> +		mtk_dp->train_info.cr_done = false;
-> +		mtk_dp->train_info.eq_done = false;
-> +
-> +		mtk_dp_train_change_mode(mtk_dp);
-> +		ret = mtk_dp_train_flow(mtk_dp, link_rate, lane_count);
-> +		if (ret)
-> +			return ret;
-> +
-> +		if (!mtk_dp->train_info.cr_done) {
+So, there is no value in trying to push a device that could do enforced
+cache coherency to a dedicated domain vs re-using an existing domain
+which is non-coherent since KVM won't be able to take advantage of it. 
+This just wastes domain memory.
 
-When mtk_dp_train_flow() return 0, it imply train_info.cr_done is true,
-isn't it?
+Simplify this code and eliminate the test. This removes the only logic
+that needed to have a dummy domain attached prior to searching for a
+matching domain and simplifies the next patches.
 
-> +			switch (link_rate) {
-> +			case MTK_DP_LINKRATE_RBR:
-> +				lane_count = lane_count / 2;
-> +				link_rate = max_link_rate;
-> +				if (lane_count == 0)
-> +					return -EIO;
-> +				break;
-> +			case MTK_DP_LINKRATE_HBR:
-> +				link_rate = MTK_DP_LINKRATE_RBR;
-> +				break;
-> +			case MTK_DP_LINKRATE_HBR2:
-> +				link_rate = MTK_DP_LINKRATE_HBR;
-> +				break;
-> +			case MTK_DP_LINKRATE_HBR3:
-> +				link_rate = MTK_DP_LINKRATE_HBR2;
-> +				break;
-> +			default:
-> +				return -EINVAL;
-> +			};
-> +		} else if (!mtk_dp->train_info.eq_done) {
+It's unclear whether we want to further optimize the Intel driver to
+update the domain coherency after a device is detached from it, at
+least not before KVM can be verified to handle such dynamics in related
+emulation paths (wbinvd, vcpu load, write_cr0, ept, etc.). In reality
+we don't see an usage requiring such optimization as the only device
+which imposes such non-coherency is Intel GPU which even doesn't
+support hotplug/hot remove.
+--
 
-When mtk_dp_train_flow() return 0, it imply train_info.eq_done is true,
-isn't it?
-
-Regards,
-CK
-
-> +			if (lane_count == 0)
-> +				return -EIO;
-> +
-> +			lane_count /= 2;
-> +		} else {
-> +			break;
-> +		}
-> +	}
-> +
-> +	if (train_limit == 0)
-> +		return -ETIMEDOUT;
-> +
-> +	return 0;
-> +}
-
+Thanks
+Kevin
 
 _______________________________________________
 Linux-mediatek mailing list
