@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59C5FC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 16:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF8F5C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 16:55:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ekvOwZlqpEHGrF/93MgQYapWzoQ5QHDXek64UI+J84Q=; b=XnwTBxaT7gq8QakmScAkB1P/QA
-	sAJUdX8KHuuyIgA0OTlXy/Zpa6aMdPJHLVNd5QzGLqJ8QMMSnT0JrAsEW8Gjtot431czR8bjUz2S+
-	Y9CK6HjYsl3ZBaTgEzaZ26P6uU51rmf8fA2zDY5xVV+fdxhskU0p22HACEyX/DZa1szOd32OZlPhI
-	5rOgKc1bkmL+G6AJZduYi26NjWMjMT/n0n4QvIlFPin+B6NhIxNiqfC37ITl1EluHgHHy3PvOmMiV
-	u1D6FfL3g6/6xXvhwW4Sq9OKHKpjOyUyhRt1WUgqeGzCd2AzofJFU+2OhLX1TeWtiRPoYv2LPrJy9
-	wMiO4DHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O0ZNCzaGbIN6vYx92G4OUm186Sl4b3mFGrPcQiPkGOk=; b=gvi2VFLM0RERPG0q3O3fpdKQH8
+	jDlvFIvUOWKzLgzBxMoMOlbURauJSp9hm6pJwHuHkKi5wMeD0B9Zn/Lwb4wLa21bX/Ih7wQe7J82f
+	RXkSvky7mZmBKj8TkhU1FlFGrbL7cCx/aAkg0+SDocAE2onMzQd49YvR8OXKjiJmtV9GdSgDne++4
+	ENbgUup0N6ZqiXPnh9ob4MjLOFpUkGJlto5LL1BZdw/WGWaIhF38vX+h+r06bQbJ2E43kf3sHudkt
+	Phl8J2dv8543FqwTMA7RWZ025aFAMrZ6fzc1ixP16h6jsJDqpfa1enSTYhx7q9P6ojXdH6/Cpi/FH
+	2cUXEk5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Vug-00FQh4-W8; Wed, 15 Jun 2022 16:30:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o1WIX-00FWMq-V9; Wed, 15 Jun 2022 16:55:17 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1VtV-00FQAl-8Q; Wed, 15 Jun 2022 16:29:26 +0000
-X-UUID: 10a1de7556034e7789f73cdc3e0351e1-20220615
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:b7c17108-4d0e-4606-a8b2-0100e7844961,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:fbe69e48-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 10a1de7556034e7789f73cdc3e0351e1-20220615
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yf.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2004226322; Wed, 15 Jun 2022 09:29:18 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Jun 2022 09:19:16 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 16 Jun 2022 00:19:15 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 16 Jun 2022 00:19:14 +0800
-From: <yf.wang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
- SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
-	<Yong.Wu@mediatek.com>, Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH v9 0/3] iommu/mediatek: TTBR up to 35bit support
-Date: Thu, 16 Jun 2022 00:12:20 +0800
-Message-ID: <20220615161224.6923-1-yf.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1o1WIE-00FWBc-Tj; Wed, 15 Jun 2022 16:55:00 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id c21so16213995wrb.1;
+        Wed, 15 Jun 2022 09:54:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=O0ZNCzaGbIN6vYx92G4OUm186Sl4b3mFGrPcQiPkGOk=;
+        b=FWFfE/TrOsOqhKNBqDjPUw1E7PsUxALBEn9s+nTsX2df5Hx2wbVhzfUT/DUXRnQpnS
+         y1WJqF+s3WJHsn1DPXWQOQtlbNRQuDyptNEM4nr6MeSafsU1dPtHIULXL+MQ3fGzaqYM
+         NgASYW/jRkv6l0ZagU9DLznhoJ+G23wWKjS9X/eSpnNdUWMKuepQg/hFM8aVnvJVD1i7
+         58rvgMp5z0X4w/AZZn031OrSvk9Vo3t4oNimvCl2flH1cQxaoO9l5kVRc6IYg6tRnlDV
+         x3SSlYjYWZyFy79oPP8KftfTu34PQzBwjm1YJ8iuURHu1VsErk2pjiDI/K1c6Sr4M1Ce
+         n+JA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=O0ZNCzaGbIN6vYx92G4OUm186Sl4b3mFGrPcQiPkGOk=;
+        b=HauL/Ck7pAfyt9Uu1tFihWAZy60VQhTxyFQ5zLRl7RgiNeZEhR2QUk6yq+9mygwYtV
+         Fkv0Jgg0wCXfVmLahVSxtiZRzOQsOo75moPBBbkkebjXIO5qhpthenESgZlpP31iWmmU
+         nkWVL30fo5QYyda7U296TfEtNXloQkMBtN1uYqweT5HINaMZdnjPzRPhmXUWab3kvQdS
+         BEZXlJePy0JtBqNqFfmdCaWh0DtC0S2nAkuRtDDDj4zlDQ20n3DADNmZirgArxHSuvhv
+         u15uMNfW8WuwDENcEbNVhXAXqNcEVWG2zdENyC6GZ1UDIVs2HEwy+ma36xJ5mCHHCt0L
+         5wQg==
+X-Gm-Message-State: AJIora9CM+BzCn+ZD696Q45mvuxRFcjBnWma8YEvdTVMiDj5Glo+mc+X
+	7/DORJNXUngr2HjYkaxLcSQ=
+X-Google-Smtp-Source: AGRyM1upL28UfLmiDNOCmxFWdPZt1LH1eRzJbtxF7HVF5ZDTc2UCPQgDR6kt2epkDohPh0R41Pw3Xg==
+X-Received: by 2002:adf:e2cb:0:b0:20c:c1bb:9fcb with SMTP id d11-20020adfe2cb000000b0020cc1bb9fcbmr704620wrj.35.1655312094114;
+        Wed, 15 Jun 2022 09:54:54 -0700 (PDT)
+Received: from [192.168.0.36] ([37.223.143.134])
+        by smtp.gmail.com with ESMTPSA id p22-20020a1c7416000000b0039c5a765388sm2890998wmc.28.2022.06.15.09.54.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Jun 2022 09:54:52 -0700 (PDT)
+Message-ID: <bd788f00-0328-e57d-d56f-7e975996a9d0@gmail.com>
+Date: Wed, 15 Jun 2022 18:54:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH RESEND v10 3/3] ARM: dts: Add PCIe support for Airoha
+ EN7523
+Content-Language: en-US
+To: Felix Fietkau <nbd@nbd.name>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220615125335.96089-1-nbd@nbd.name>
+ <20220615125335.96089-3-nbd@nbd.name>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220615125335.96089-3-nbd@nbd.name>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_092925_353149_DEEC95C9 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220615_095459_000241_E6447824 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +93,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v8:
-- Add and update patch
-  - Add [2/3] patch update MTK_IOMMU_ADDR to calculate the special ttbr.
-  - Save the special ttbr to mtk_iommu_domain avoid calculate it again.
-
-Changes in v7:
-- Update patch and commit message
-  - Extend arm_v7s_cfg.ttbr to u64.
-  - Move the special ttbr logical into mtk_iommu.c.
-  - Update commit message for single normal zone.
-
-Changes in v6:
-- Update patch: gfp_l1 = GFP_KERNEL | __GFP_ZERO;
-- Update commit message for single normal zone.
-
-Changes in v5:
-- Only update message-ID.
-
-Changes in v4:
-- Fix build test WARNING: use GENMASK_ULL replace GENMASK.
-
-Changes in v3:
-- Add version changes description, there is No new code change in V3.
-
-Changes in v2:
-- Update patch and commit message
-  - Add Level 1 pgtable PA up to 35bit.
-  - This is new feature, remove stable@vger.kernel.org
-  - Update commit message.
-
-Yunfei Wang (1):
-  iommu/mediatek: Rename MTK_IOMMU_TLB_ADDR to MTK_IOMMU_ADDR
-
-Ning Li (2):
-  iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
-  iommu/mediatek: Allow page table PA up to 35bit
-
- drivers/iommu/io-pgtable-arm-v7s.c | 58 +++++++++++++++++++++++-------
- drivers/iommu/mtk_iommu.c          | 22 ++++++++------
- include/linux/io-pgtable.h         | 17 +++++----
- 3 files changed, 69 insertions(+), 28 deletions(-)
 
 
+On 15/06/2022 14:53, Felix Fietkau wrote:
+> This uses the MediaTek MT7622 PCIe driver, since the PCIe IP block is nearly
+> identical to the one in MT7622
+> 
+> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+
+applied to v5.19-next/dts32
+
+Thanks!
+
+> ---
+>   arch/arm/boot/dts/en7523-evb.dts |  8 +++++
+>   arch/arm/boot/dts/en7523.dtsi    | 58 ++++++++++++++++++++++++++++++++
+>   2 files changed, 66 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/en7523-evb.dts b/arch/arm/boot/dts/en7523-evb.dts
+> index a8d8bb0419a0..f23a25cce119 100644
+> --- a/arch/arm/boot/dts/en7523-evb.dts
+> +++ b/arch/arm/boot/dts/en7523-evb.dts
+> @@ -33,3 +33,11 @@ &gpio0 {
+>   &gpio1 {
+>   	status = "okay";
+>   };
+> +
+> +&pcie0 {
+> +	status = "okay";
+> +};
+> +
+> +&pcie1 {
+> +	status = "okay";
+> +};
+> diff --git a/arch/arm/boot/dts/en7523.dtsi b/arch/arm/boot/dts/en7523.dtsi
+> index 2e705b87b6c1..7f839331a777 100644
+> --- a/arch/arm/boot/dts/en7523.dtsi
+> +++ b/arch/arm/boot/dts/en7523.dtsi
+> @@ -143,4 +143,62 @@ gpio1: gpio@1fbf0270 {
+>   		gpio-controller;
+>   		#gpio-cells = <2>;
+>   	};
+> +
+> +	pcie0: pcie@1fa91000 {
+> +		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
+> +		device_type = "pci";
+> +		reg = <0x1fa91000 0x1000>;
+> +		reg-names = "port0";
+> +		linux,pci-domain = <0>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-names = "pcie_irq";
+> +		clocks = <&scu EN7523_CLK_PCIE>;
+> +		clock-names = "sys_ck0";
+> +		bus-range = <0x00 0xff>;
+> +		ranges = <0x82000000 0 0x20000000  0x20000000  0 0x8000000>;
+> +		status = "disabled";
+> +
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+> +				<0 0 0 2 &pcie_intc0 1>,
+> +				<0 0 0 3 &pcie_intc0 2>,
+> +				<0 0 0 4 &pcie_intc0 3>;
+> +		pcie_intc0: interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+> +			#interrupt-cells = <1>;
+> +		};
+> +	};
+> +
+> +	pcie1: pcie@1fa92000 {
+> +		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
+> +		device_type = "pci";
+> +		reg = <0x1fa92000 0x1000>;
+> +		reg-names = "port1";
+> +		linux,pci-domain = <1>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-names = "pcie_irq";
+> +		clocks = <&scu EN7523_CLK_PCIE>;
+> +		clock-names = "sys_ck1";
+> +		bus-range = <0x00 0xff>;
+> +		ranges = <0x82000000 0 0x28000000  0x28000000  0 0x8000000>;
+> +		status = "disabled";
+> +
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+> +				<0 0 0 2 &pcie_intc1 1>,
+> +				<0 0 0 3 &pcie_intc1 2>,
+> +				<0 0 0 4 &pcie_intc1 3>;
+> +		pcie_intc1: interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+> +			#interrupt-cells = <1>;
+> +		};
+> +	};
+>   };
 
