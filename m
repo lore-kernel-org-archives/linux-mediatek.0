@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D95C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 17:09:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C276C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 17:14:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cobn8A+KKWWGLE/KLkmTm/RTu5IcKtpUSjELueSd/QU=; b=2+Tgs1pQaAA/SrzjxYFvDCrFU/
-	2Ja8UGq6C4llt5vaM630sWGll3bQwx0Eu7G+ekcxULT5FeZJxLqivqgGcHYBaaDbZWKBpsirT2B9h
-	e8Gpf33m5rLfajCtSK7ZRaYAL7gMMbB6cJ0GDmamTFT1+5sUxFn4cjvqycwzOD1Loa3N8JXjDtrgn
-	ybO7qzGxbbXLrU1PR67TsdchvlMD9yla+llCV72/0mXqswdDDA3wKuExXu3oC8T4jfIGZ5lIs29rX
-	auuzaiiTOT43ssJTAJ/HC8reN8jW1Jnlf+dceTrncZKOPg0ENnRPT01vDRvTiebVibmci+z2ZR/DW
-	oI36Uvjw==;
+	bh=EZ4Djhmy79B6r/e7ZRLOEehkhIHgDAqZ3mCX7j7FrvU=; b=POrbL/DEg2G2epERa4ynKbLMG4
+	AZTNb6/sSLYB6nYp7JnRAzRqWccSYArcduzv28RpEehMwMWVpENriqcWmBJn1d3gwT2CdRVWiKmQj
+	GoubE8WdJ6crvOfRKPFwHPN6JwPdWRO1VkFaBnl7jp1U4GMRW8vcd2f7PhINFUYE4fTJwX1Y6XOp2
+	HcZRxiqxyfEd36QXUtJ9122EMrN63uP7yQ/MQghV4RtDXrtG76kP0cEHVOz1ZqrGqbpMGvD7WLq+G
+	+VFXfTh++qDoflLhbRhZFbX6ZnjpSadwGYu064UbhszDd6Mkqlth15yELwR/pmJot1tUmv9HP/gp/
+	eCisctrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1WVj-00Fajw-O9; Wed, 15 Jun 2022 17:08:55 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1WVa-00Faev-EQ
-	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 17:08:48 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 1549CB81FF0;
-	Wed, 15 Jun 2022 17:08:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A64CC34115;
-	Wed, 15 Jun 2022 17:08:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655312918;
-	bh=Wcvp8mCTF0vA1Izf8dbxoQE7s/QBBKvOMJdR6TDX1nE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Q+AmjVG1yX//0RTOk2NZsCrpHZ342RhxY/RE7Y15d151OqRkHWEDHp3rh8Kx7lfFc
-	 pmEJtElprkPA40vW4SolGJ37QtUdO9FpyokWuINtpWy8dE20H+ur4lE9FMTVWHRWPC
-	 g0fsUSq1vZTOhqmzo/r6v664VObEnaewO7YyYY+mZEbdBEa7GG3YjSB6POskxi3mTP
-	 2u9VzI9e/79Bcm5STijGhaaSPXLpybR5H9hd5vvMHyANUtfVt8LBfQwLakGZlVsNzg
-	 4qknUsPn+1C/A6ZBll1/2+evkXn+JbNf9FKypbmQv1g3eP6cmgNtGsSvPIHo0zEYYG
-	 XRqqtZFKIAA1w==
-From: Mark Brown <broonie@kernel.org>
-To: dan.carpenter@oracle.com, tinghan.shen@mediatek.com, pierre-louis.bossart@linux.intel.com
-Cc: sound-open-firmware@alsa-project.org, daniel.baluta@nxp.com, kernel-janitors@vger.kernel.org, linux-mediatek@lists.infradead.org, tiwai@suse.com, lgirdwood@gmail.com, perex@perex.cz, ranjani.sridharan@linux.intel.com, kai.vehmanen@linux.intel.com, yc.hung@mediatek.com, matthias.bgg@gmail.com, Allen-KH.Cheng@mediatek.com, peter.ujfalusi@linux.intel.com, yangyingliang@huawei.com, alsa-devel@alsa-project.org
-In-Reply-To: <YqmWIK8sTj578OJP@kili>
-References: <YqmWIK8sTj578OJP@kili>
-Subject: Re: [PATCH] ASoC: SOF: mediatek: Fix error code in probe
-Message-Id: <165531291502.3574042.3082631572005013512.b4-ty@kernel.org>
-Date: Wed, 15 Jun 2022 18:08:35 +0100
+	id 1o1WbJ-00Fd4Z-14; Wed, 15 Jun 2022 17:14:41 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o1Wb6-00Fd0A-Js; Wed, 15 Jun 2022 17:14:30 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BC787153B;
+	Wed, 15 Jun 2022 10:14:25 -0700 (PDT)
+Received: from [10.57.82.209] (unknown [10.57.82.209])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8FAB23F73B;
+	Wed, 15 Jun 2022 10:14:23 -0700 (PDT)
+Message-ID: <949c22c4-5f64-47cf-673c-14fcadcc1d27@arm.com>
+Date: Wed, 15 Jun 2022 18:14:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v9 2/3] iommu/mediatek: Rename MTK_IOMMU_TLB_ADDR to
+ MTK_IOMMU_ADDR
+Content-Language: en-GB
+To: yf.wang@mediatek.com, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:MEDIATEK IOMMU DRIVER" <iommu@lists.linux-foundation.org>,
+ "moderated list:MEDIATEK IOMMU DRIVER" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+Cc: wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>, Ning Li <ning.li@mediatek.com>
+References: <20220615161224.6923-1-yf.wang@mediatek.com>
+ <20220615161224.6923-3-yf.wang@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220615161224.6923-3-yf.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_100846_684925_FE009F45 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20220615_101428_756865_C28B3229 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,36 +71,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 15 Jun 2022 11:19:44 +0300, Dan Carpenter wrote:
-> This should return PTR_ERR() instead of IS_ERR().
+On 2022-06-15 17:12, yf.wang--- via iommu wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
 > 
+> Rename MTK_IOMMU_TLB_ADDR to MTK_IOMMU_ADDR, and update MTK_IOMMU_ADDR
+> definition for better generality.
 > 
+> Signed-off-by: Ning Li <ning.li@mediatek.com>
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index bb9dd92c9898..3d62399e8865 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -265,8 +265,8 @@ static const struct iommu_ops mtk_iommu_ops;
+>   
+>   static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid);
+>   
+> -#define MTK_IOMMU_TLB_ADDR(iova) ({					\
+> -	dma_addr_t _addr = iova;					\
+> +#define MTK_IOMMU_ADDR(addr) ({						\
+> +	unsigned long long _addr = addr;				\
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: SOF: mediatek: Fix error code in probe
-      commit: 62257638170eee07926c9df5a4c9059ec69a3734
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+If phys_addr_t is 64-bit, then dma_addr_t is also 64-bit, so there is no 
+loss of generality from using an appropriate type - IOVAs have to fit 
+into dma_addr_t for iommu-dma, after all. However, since IOVAs also have 
+to fit into unsigned long in the general IOMMU API, as "addr" is here, 
+then this is still just as broken for 32-bit LPAE as the existing code is.
 
 Thanks,
-Mark
+Robin.
+
+>   	((lower_32_bits(_addr) & GENMASK(31, 12)) | upper_32_bits(_addr));\
+>   })
+>   
+> @@ -381,8 +381,8 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+>   		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+>   			       base + data->plat_data->inv_sel_reg);
+>   
+> -		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova), base + REG_MMU_INVLD_START_A);
+> -		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova + size - 1),
+> +		writel_relaxed(MTK_IOMMU_ADDR(iova), base + REG_MMU_INVLD_START_A);
+> +		writel_relaxed(MTK_IOMMU_ADDR(iova + size - 1),
+>   			       base + REG_MMU_INVLD_END_A);
+>   		writel_relaxed(F_MMU_INV_RANGE, base + REG_MMU_INVALIDATE);
+>   
 
