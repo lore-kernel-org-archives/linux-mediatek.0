@@ -4,69 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF906C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 20:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50571C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 21:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e9n3WoSY2l3FkGN+L1hygguY54hdetUG2F1BTOkJs/Q=; b=B75oWf/A2gUrjVKccjEh475Kqc
-	yj43cRCfyutPyIvcgUUOPizqI0YS9QsbVKfX9FSk9Na0sB6aoC2mVMflzI7Wm4x+EnUtCq42anGAb
-	vkl9mhlBPSJvB/OtFNHo80L39Y5PylCd0p8twoHuLTHqoCIlVLBZxVmEE3SIZ+mel5w3l/GU02uRt
-	coDabQJHK9dcUPIDsz3CB88DDqx3gxYLDm9AHE34bcUbIIhFJnQ2xoOpkVghkZ+gZRUKn/NMGsyFD
-	zg9y4lGykdw7ub1tY8fRNyVgu0BrLNXJsGX0IoI2KwbY9oKRfQFErQHL5pxuiXvRF/nFT2/762pmb
-	xMekftZg==;
+	bh=FZSDdV6mNRQiDJWSYS9igOAu0wbjoocy2kuoW1xZJug=; b=ESOJi6e1xYxOxf8xnAHen7PG+x
+	RRrp4As3YL+Nlqwr+pjmOg53vi/A2zHeTR6RyRmKiY7oN+zN4w6RLNPhTJEgnrmRi4UsEqtl94CPn
+	mBPT86ryWraX6JVOqZnkzCZSlzTU62Jt2eigLIE6c7r88uIEYOMFedHNBDe1MXbrmKpOmkWdI7rTt
+	E8GCQVxCVwCY0xCM0E3TER3Q9+gM6Us1SuK0/E/sJ4za0hmfvRH+NZoTJzKe89TG17RshzuU1Knkp
+	BJT6/m/7OQ9H2jAZtVN4YhvKw26Hek+xtMw93COYw8YReuPizl3dKzKSI+OfW5jMi9GDI/qkMdrWf
+	jGyf9H1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1ZRM-00GDVb-Sy; Wed, 15 Jun 2022 20:16:36 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o1asY-00GWMl-ID; Wed, 15 Jun 2022 21:48:46 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1ZRA-00GDQy-7a; Wed, 15 Jun 2022 20:16:26 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 940A75A9;
-	Wed, 15 Jun 2022 22:16:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655324178;
-	bh=v1jkPA/EFojabfAV7CqrNhRRtf1nu53ymbo3OjQaZ+A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AAYDj2ecF7Wh3k/aBm0G8psU0EIBwv4jaVsp1cZ4ba8hgolUoANUU95Wur/tNquvL
-	 BcYLNq81dNw2GbgsDDtGcDCQwcl5Ks2g3SM5oOYeBfo58qVrDiw8VSp3XjJLnQjM/M
-	 UWVqDCnd+FDZKd4fbr0oCPP3TEWoGpeVQTA3eA/Q=
-Date: Wed, 15 Jun 2022 23:16:08 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Moudy Ho <moudy.ho@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Jernej Skrabec <jernej.skrabec@siol.net>,
-	Maoguang Meng <maoguang.meng@mediatek.com>,
-	Hsin-Yi Wang <hsinyi@google.com>,
-	daoyuan huang <daoyuan.huang@mediatek.com>,
-	Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Rob Landley <rob@landley.net>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	tfiga@chromium.org, drinkcat@chromium.org, acourbot@chromium.org,
-	pihsun@chromium.org, menghui.lin@mediatek.com,
-	sj.huang@mediatek.com, ben.lok@mediatek.com, randy.wu@mediatek.com,
-	srv_heupstream@mediatek.com, Rex-BC Chen <Rex-BC.Chen@mediatek.com>
-Subject: Re: [V1] media: mtk-mdp3: Add Mediatek MDP3 Driver
-Message-ID: <Yqo+CPSNDeqFLPGB@pendragon.ideasonboard.com>
-References: <20210623091457.18002-1-moudy.ho@mediatek.com>
- <2735b66aef88ef5dc623702d27efc3a931d2fdd3.camel@ndufresne.ca>
+	id 1o1asP-00GWKL-Lo
+	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 21:48:39 +0000
+Received: by mail-pg1-x532.google.com with SMTP id l4so11504872pgh.13
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jun 2022 14:48:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=FZSDdV6mNRQiDJWSYS9igOAu0wbjoocy2kuoW1xZJug=;
+        b=ZpEJrFA438ZSkfTtEVYExa6cnAWhsvmUfpjsXYhT3+RglSUp+BETn8FrcoVEUH1Xf3
+         w89oj7m1+dvWYEBxZTzq8TOIK8k7osRT9F74IS6tONgVl/5eeyTXRDi4TNMcOvgrgGyK
+         vtqC3QS4kuPYkPGwcJ41fbjaNm+v47aPMQA70fUDHFmvVcvy3Fq8Id2wO6YPLQhbfk+m
+         ObQQZHAfWJStEW2KMHfeluBeHBzPldcOqfOXoL4LybCKsNNGImxL7J0tQj3XW1OJ/Cs7
+         RYDFS/eBia5pw8WTh0ft13K/OGlBMrdMbKZ1B0ZXhfp2CZOsjSsA4O/eFJ6WV9w/PsIp
+         2IyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=FZSDdV6mNRQiDJWSYS9igOAu0wbjoocy2kuoW1xZJug=;
+        b=yq4obFZ55CuHpB1ZfKsYdNZjNnV0I1ZkvQnyq8a8H2JSACKjd7r5asMUpJq99sUoPq
+         Yue2qqcsgjO2ocgNMnJYE2xbAQTrRe6knWQWO+1IOI2nKNqFpsDwkCh6xPaAPK06Ee0N
+         1Co1B6iWL0lF5fTokGiZjhZnIsHBGS76tWfDknmSJBPi+l4vLKuQ5G1fma0OdnlPPg4U
+         DpmvUHBaugT/GZuBSNpxGBTRCHNwLIyaoPbreM2JYP2Idcgyyxg0cO2KwTbCNCyclvpk
+         40XfvoVW1f5gGr0lMyClpXUM0OAtWAAJoMqsw+GGFORJYvyciTW1vIbnTHMBPSNTq9kV
+         tjMA==
+X-Gm-Message-State: AJIora8b6llZg3d2/JPucSwqIJ2qa4t4Ms7pcTQ2EPPzpTThemK91BGx
+	SMinnZKvuB9hlLkNj4/BsrPfUg==
+X-Google-Smtp-Source: AGRyM1vkhWHhrlIjk/HHd51WfK5Or24gmvhP0SqUbOiKWv1kc7ZmeBlxTK44Ul6iywlD0zO883LPZg==
+X-Received: by 2002:aa7:94a6:0:b0:51b:ddb8:1fcf with SMTP id a6-20020aa794a6000000b0051bddb81fcfmr1411308pfl.23.1655329714602;
+        Wed, 15 Jun 2022 14:48:34 -0700 (PDT)
+Received: from google.com ([192.77.111.2])
+        by smtp.gmail.com with ESMTPSA id u1-20020a170903124100b00163f8ddf160sm97347plh.161.2022.06.15.14.48.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Jun 2022 14:48:34 -0700 (PDT)
+Date: Wed, 15 Jun 2022 22:48:31 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, johnson.wang@mediatek.com,
+	hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: mfd: mt6397: Add compatibles for MT6331
+ RTC and keys
+Message-ID: <YqpTrwlXmXMYuDd0@google.com>
+References: <20220520124617.228808-1-angelogioacchino.delregno@collabora.com>
+ <20220520124617.228808-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <2735b66aef88ef5dc623702d27efc3a931d2fdd3.camel@ndufresne.ca>
+In-Reply-To: <20220520124617.228808-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_131624_483015_057B8E2C 
-X-CRM114-Status: GOOD (  25.98  )
+X-CRM114-CacheID: sfid-20220615_144837_744968_BA6BCEFD 
+X-CRM114-Status: GOOD (  14.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,133 +94,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 15, 2022 at 03:55:14PM -0400, Nicolas Dufresne wrote:
-> Le mercredi 23 juin 2021 à 17:14 +0800, Moudy Ho a écrit :
-> > From: mtk18742 <moudy.ho@mediatek.com>
-> > 
-> > Add MDP3 driver for MT8183
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >  drivers/media/platform/Kconfig                |   17 +
-> >  drivers/media/platform/Makefile               |    2 +
-> >  drivers/media/platform/mtk-mdp3/Makefile      |    9 +
-> >  drivers/media/platform/mtk-mdp3/isp_reg.h     |   37 +
-> >  .../media/platform/mtk-mdp3/mdp-platform.h    |   58 +
-> >  .../media/platform/mtk-mdp3/mdp_reg_ccorr.h   |   75 +
-> >  .../media/platform/mtk-mdp3/mdp_reg_rdma.h    |  206 +++
-> >  drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h |  109 ++
-> >  .../media/platform/mtk-mdp3/mdp_reg_wdma.h    |  125 ++
-> >  .../media/platform/mtk-mdp3/mdp_reg_wrot.h    |  115 ++
-> >  .../media/platform/mtk-mdp3/mmsys_config.h    |  188 +++
-> >  drivers/media/platform/mtk-mdp3/mmsys_mutex.h |   35 +
-> >  .../media/platform/mtk-mdp3/mmsys_reg_base.h  |   38 +
-> >  drivers/media/platform/mtk-mdp3/mtk-img-ipi.h |  282 ++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   |  538 ++++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.h   |   53 +
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 1437 +++++++++++++++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |  157 ++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  266 +++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |   86 +
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-debug.c  |  973 +++++++++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-debug.h  |   39 +
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |  803 +++++++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-m2m.h    |   42 +
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  748 +++++++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |  373 +++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-vpu.c    |  313 ++++
-> >  .../media/platform/mtk-mdp3/mtk-mdp3-vpu.h    |   79 +
-> >  28 files changed, 7203 insertions(+)
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/isp_reg.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mdp-platform.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_ccorr.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wdma.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_config.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_mutex.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mmsys_reg_base.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-debug.c
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-debug.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.c
-> >  create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.h
+On Fri, 20 May 2022, AngeloGioacchino Del Regno wrote:
 
-[snip]
+> MT6331 is a multifunction device, providing RTC, keys and more: add
 
-> > diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-> > new file mode 100644
-> > index 000000000000..0c4c942b5f9c
-> > --- /dev/null
-> > +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-> > @@ -0,0 +1,748 @@
+No such thing as an MFD.  What does the data-sheet call it?
 
-[snip]
+What "more"?
 
-> > +static void mdp_prepare_buffer(struct img_image_buffer *b,
-> > +			       struct mdp_frame *frame, struct vb2_buffer *vb)
-> > +{
-> > +	struct v4l2_pix_format_mplane *pix_mp = &frame->format.fmt.pix_mp;
-> > +	unsigned int i;
-> > +
-> > +	b->format.colorformat = frame->mdp_fmt->mdp_color;
-> > +	b->format.ycbcr_prof = frame->ycbcr_prof;
-> > +	for (i = 0; i < pix_mp->num_planes; ++i) {
-> > +		u32 stride = mdp_fmt_get_stride(frame->mdp_fmt,
-> > +			pix_mp->plane_fmt[i].bytesperline, i);
-> > +
-> > +		b->format.plane_fmt[i].stride = stride;
-> > +		/*
-> > +		 * TODO(crbug.com/901264): The way to pass an offset within a
-> > +		 * DMA-buf is not defined in V4L2 specification, so we abuse
-> > +		 * data_offset for now. Fix it when we have the right interface,
-> > +		 * including any necessary validation and potential alignment
-> > +		 * issues.
-> > +		 */
-> > +		b->format.plane_fmt[i].size =
-> > +			mdp_fmt_get_plane_size(frame->mdp_fmt, stride,
-> > +					       pix_mp->height, i) -
-> > +					       vb->planes[i].data_offset;
-> > +		b->iova[i] = vb2_dma_contig_plane_dma_addr(vb, i) +
-> > +			     vb->planes[i].data_offset;
+> the necessary compatibles to start implementing the basics.
 > 
-> As the comment says, data_offset is not valdiated at all for capture devices and
-> is only validated so that (length - data_offset > 0) for OUTPUT devices. So this
-> is going out of spec and leave the door open for buffer overflow triggered by
-> users.
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> index d59063503b0d..2a9533c47365 100644
+> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> @@ -30,6 +30,7 @@ Optional subnodes:
+>  - rtc
+>  	Required properties: Should be one of follows
+>  		- compatible: "mediatek,mt6323-rtc"
+> +		- compatible: "mediatek,mt6331-rtc"
+>  		- compatible: "mediatek,mt6358-rtc"
+>  		- compatible: "mediatek,mt6397-rtc"
+>  	For details, see ../rtc/rtc-mt6397.txt
+> @@ -55,6 +56,7 @@ Optional subnodes:
+>  - keys
+>  	Required properties:
+>  		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
+> +			      or "mediatek,mt6331-keys"
 
-And as documented by the TODO comment, it's clearly an API abuse. This
-can't go in as-is, we need to revive the v4l2_buffer extended API that
-Boris used to work on.
+Please place these in a vertical list.
 
-> > +	}
-> > +	for (; i < MDP_COLOR_GET_PLANE_COUNT(b->format.colorformat); ++i) {
-> > +		u32 stride = mdp_fmt_get_stride_contig(frame->mdp_fmt,
-> > +			b->format.plane_fmt[0].stride, i);
-> > +
-> > +		b->format.plane_fmt[i].stride = stride;
-> > +		b->format.plane_fmt[i].size =
-> > +			mdp_fmt_get_plane_size(frame->mdp_fmt, stride,
-> > +					       pix_mp->height, i);
-> > +		b->iova[i] = b->iova[i - 1] + b->format.plane_fmt[i - 1].size;
-> > +	}
-> > +	b->usage = frame->usage;
-> > +}
+>  	see ../input/mtk-pmic-keys.txt
+>  
+>  - power-controller
 
 -- 
-Regards,
-
-Laurent Pinchart
+Lee Jones [李琼斯]
+Principal Technical Lead - Developer Services
+Linaro.org │ Open source software for Arm SoCs
+Follow Linaro: Facebook | Twitter | Blog
 
