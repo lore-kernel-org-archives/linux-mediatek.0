@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1E4FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 09:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0996C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 11:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O7Xx1VUnijWFWQL8f4A5Bg/bC8Eb257+kqZ3EFXKQkE=; b=xA3ESEIOtBE8oF
-	wVSF14XJgQNn1FY+YGxupWMFyZdl5J242F/K+Iq6Ul8L1ltNrzP2NeXtvUB2UuS7AKvOTZ5JPakLJ
-	SF4t0E6prfWSBxMVqc/jc9lbgHaVvvLLNiNjh63FDIsSzAZlZbzjJf2tNZPHLXcHgm5PgGCcbAmWL
-	mfAwdSMNBKZUq95bjGGw226FHgFLzilrjkpWkGpymzf2XG0S7gOL7N+M6XKiUsW3N1dnbiR0EARhy
-	D77NQo3no68/AIGShXN8XMbH5Ziw3so7qM79m9pgzamlgqOpwloi2zO9wI9SKcn+IjXmt41sfGvSV
-	8Xl/TejuXyLGFlpMxs+A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tq3BYXlY6Freva9RFSPxzRzmDvz22uJ6FiaZNUPSB3A=; b=YeTvtpD1uYHfQHX6uSctUMcDSf
+	3kkIuB7DGbboUkB9fp2jYzcAzyTPCdAQ8v0P1cLAgjiedbZhvskVqnWTty0eXl8cstxWYZC07f5To
+	Q0Ecltq8L0T9T19pGz2v3Hz57ohM+qUlt0I1hvV4bY+N1Yfnhf7A6+EpKWP2CqI1+jN9mBIc7MQRZ
+	SebgLP6Vayz0D8W9X8uRLYsM7cjBI48h9Ub0Y5wxsbTO7oVYJ6rmyRjmuUlFJ3gYGAVVm6M3Ua7TX
+	iaBzeNlJl5vHjbSdOfOQk1R/sGs9Lbw4vVVpLXtFNXTcOXTyt1AmYBZjFUQFAYRgzpiZ/2l17aNJ/
+	HUYCgwpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Pi0-00Db83-3a; Wed, 15 Jun 2022 09:53:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o1QtV-00E5PG-5h; Wed, 15 Jun 2022 11:09:05 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Phr-00Db12-Gs
-	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 09:53:02 +0000
-X-UUID: 63f4cada88b94ed4ba62a1ba9fbbd881-20220615
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:c9aae3f4-3343-4c52-927c-edd5bad4ef82,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:4db89548-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 63f4cada88b94ed4ba62a1ba9fbbd881-20220615
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 812350288; Wed, 15 Jun 2022 02:52:52 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Jun 2022 02:52:51 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 15 Jun 2022 17:52:49 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 15 Jun 2022 17:52:28 +0800
-Message-ID: <3a10245ab7c78a6e5d02d471e85c146b88c9cdb6.camel@mediatek.com>
-Subject: Re: [PATCH] ASoC: SOF: mediatek: Fix error code in probe
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>, Pierre-Louis Bossart
-	<pierre-louis.bossart@linux.intel.com>
-CC: Liam Girdwood <lgirdwood@gmail.com>, Ranjani Sridharan
-	<ranjani.sridharan@linux.intel.com>, Kai Vehmanen
-	<kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
- Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
-	<tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, YC Hung
-	<yc.hung@mediatek.com>, =?ISO-8859-1?Q?P=E9ter?= Ujfalusi
-	<peter.ujfalusi@linux.intel.com>, Yang Yingliang <yangyingliang@huawei.com>,
-	Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
-	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
-	<linux-mediatek@lists.infradead.org>, <kernel-janitors@vger.kernel.org>
-Date: Wed, 15 Jun 2022 17:52:28 +0800
-In-Reply-To: <YqmWIK8sTj578OJP@kili>
-References: <YqmWIK8sTj578OJP@kili>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o1QnK-00E37t-2V
+	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 11:02:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1655290962; x=1686826962;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=+eBod1AbuflrGZyETNkqQFJ/qRpCcnjD62eOthJoFJE=;
+  b=WVe0Ygr9JY9LO55SmT6VCY7uO0cqg7ikCODu4Hr00ul15IDo+Qi22Y3R
+   V+vIStVbYEH9pfwvQnhIIVrFvSexjCOTMs7TzM/jsoD/C/g0n4a3Nivs5
+   EWTWQv6xlexZIiqOQSEMCGAVpFo4xbadXNDlBtp/6MnT76FfJx2wrtLrj
+   YvHrKPASz7yB+y6SCVBuwUQdS4A18fBxMsODWKE9PJpFPcnbU3wkE5vVH
+   Azh9pk8DZZRgpf2LOn4qqXOj5y8lc8g0V/xQI7MX3QLsBfifyyd/ZMQqp
+   eJbAgcofJZxkjSz5UEb94X0t2DD3LH7Q8MYgALmLaQ4QQ/e9LFde7VL4v
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="365269971"
+X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; 
+   d="scan'208";a="365269971"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 04:02:38 -0700
+X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; 
+   d="scan'208";a="830979055"
+Received: from ldortadu-mobl1.amr.corp.intel.com (HELO [10.209.160.187]) ([10.209.160.187])
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 04:02:37 -0700
+Message-ID: <5e2f44f1-de41-ac02-9fa8-e26a849897ad@linux.intel.com>
+Date: Wed, 15 Jun 2022 05:56:22 -0500
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.9.1
+Subject: Re: [PATCH] ASoC: SOF: mediatek: Fix error code in probe
+Content-Language: en-US
+To: Dan Carpenter <dan.carpenter@oracle.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: alsa-devel@alsa-project.org, Allen-KH Cheng
+ <Allen-KH.Cheng@mediatek.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ =?UTF-8?Q?P=c3=a9ter_Ujfalusi?= <peter.ujfalusi@linux.intel.com>,
+ Takashi Iwai <tiwai@suse.com>, kernel-janitors@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Yang Yingliang <yangyingliang@huawei.com>, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ YC Hung <yc.hung@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, sound-open-firmware@alsa-project.org
+References: <YqmWIK8sTj578OJP@kili>
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+In-Reply-To: <YqmWIK8sTj578OJP@kili>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_025259_658419_43B29F4F 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20220615_040242_236211_746E09BC 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,18 +85,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
 
-On Wed, 2022-06-15 at 11:19 +0300, Dan Carpenter wrote:
+
+On 6/15/22 03:19, Dan Carpenter wrote:
 > This should return PTR_ERR() instead of IS_ERR().
 > 
 > Fixes: e0100bfd383c ("ASoC: SOF: mediatek: Add mt8186 ipc support")
 > Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+
+Nice catch, thanks!
+
+Acked-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+
 > ---
 >  sound/soc/sof/mediatek/mt8186/mt8186.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -113,15 +118,3 @@ On Wed, 2022-06-15 at 11:19 +0300, Dan Carpenter wrote:
 >  		goto err_adsp_off;
 >  	}
 
-Thank you for finding this bug.
-
-
-Best regards,
-TingHan
-
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
