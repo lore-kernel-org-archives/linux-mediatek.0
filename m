@@ -4,72 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3F7C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jun 2022 22:43:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7170C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 01:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=doLA6HySbmnvNGdMemyXC7l8lxSV6yZRn3i+KtIx3U8=; b=R9CTk3hfhaSNqx
-	9u3TtMqXbNckv9da0gU3AzEXjBwElkJM1zgGQytye8dzgagRGldfNT3fSqpcOlaIr64fl/s3Q1UDf
-	0Q3fOBjM94x+A5I7MgLywE2jIHTMzeEe80lw7IH5NI4H3SyfRBJHN0EYgNL7yb4sap+fpr1N54tGE
-	lFi8F1VIyBB8C0YhrDL//fTLr27pWNXjrz/lWo5tleS7OrEDUTuDNBTddsxsDJtobdUzy6PRDJuii
-	axKP9wYRcSF8HeeLL6hA8qknbS/+8XStu9LsWvrtN3aVTqHWejjioiG9fbw0vgOj3pfwxlJKd5TIH
-	o5mQcuOf+ZoTzc8nBjTg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ux+oUqq7N+aqPs4fKh7jQNghV2m7i4m7H2rD3HkyHrw=; b=Yn1eOdRA349Fmz
+	WN+71Y1hoIYZG6ZHvj968loKZUkXTCnAXhD0XKugsRYzyziK+Vi4xY5Hm3lD2I71VFBrZvLwOSjYi
+	6kOe0myGfWUd2+lT0S+fMPicIHXhTnMzHWzyKmZYoxcWRrNHxC3x60763LCSaP0HbRIlU3V4wjQZ0
+	POVBPQrZV5XDgDb0J1CIAUI0DUBg/SEQxSd4cwyk/35v2xEHD6MprcxwwSfDBeA5B5us+g/Tx9HTM
+	4d6+FwFQDYrI+2DMCjneD0Jn/csuGeRoau/8McgB7dktgXX2Y1OaFTRQUlfnepZ4qtj3GbQjOibQQ
+	cJNESkNrAJzw0j0dEa4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1FFf-00Bf3a-6c; Tue, 14 Jun 2022 22:43:11 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1o1HOC-00ByLj-Hp; Wed, 15 Jun 2022 01:00:08 +0000
+Received: from out30-57.freemail.mail.aliyun.com ([115.124.30.57])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1FFc-00Bf1K-M5
-	for linux-mediatek@lists.infradead.org; Tue, 14 Jun 2022 22:43:10 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id b8so13586949edj.11
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jun 2022 15:43:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=fu1szmDzlGfqa/giCoqV+n3/sSlO3DCUhpaHRBKVeEM=;
-        b=y9ah+9GixU5hUF6ivgx3BgREWTx1vR2kzKbhGQ5W6tmIUWXn+8M+OTGMBoF6nRUGer
-         CTM3IMIAcLrK1WylJSCsmEJE1q3I/XLcsw1dufg8DZXrJ8DwWgqc/3f9g+HtAddjjN1u
-         /QaFLx2xg6uwRdhyiiASmZWi3Fh8uiwjjYlUZMvVTtutkutBhu5I0/llXKHynHyEA/RS
-         yonoUhJtRfOwFHzAyL1xtUycJllseY9Ryl0stXMYVPrgJa5SSpqddjRChh6lSfxFyLUF
-         B0X2hW1B4XLw1yRjrT9pf2KgCtzuKMXPRXy38y7srP+EtyJ6ySCsX3+dylA8gTEbHCwd
-         1C8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=fu1szmDzlGfqa/giCoqV+n3/sSlO3DCUhpaHRBKVeEM=;
-        b=Q/vZf/DoySom8En60m6QT3ymk+5myXYwAwwQs4Bw/sHa1mt8fksgvaexllXFvEeL0M
-         0MIXdzcrbl5R2YiW6BP9v3QZJLoXKFHpADz5J5w2lgdmr0cCEo3RayVpvxgv4in1Y8Gi
-         NHwdXkkUQSxZz1gXRcvfL7b7nNAohHGZTAzw72gWhatpw50uCTXDugsYYLtx22dCS09g
-         A7mVPkelaBjmbrGSCZCC5P7hUKN0SghrVObJrRS0xMWh810nLCA0W4vKrO1+XE5MPOqk
-         aLO34anH1m+6kc8EEb+h6pkKwhIQSOwwQCEXc6e8+iQmyjZQkGYC2/M1lJ7Yg/Nchod4
-         8crg==
-X-Gm-Message-State: AJIora9zBlTmD81j1KCQrn5SmXNSRbI3UvbLcRtZVTSwd3Jn7Pq9nCfG
-	q1+bAbQxdh7BiATGxIw5qQUqnFY+dMBT07Ix9mqdClKBwKM=
-X-Google-Smtp-Source: ABdhPJysEPRqVMvGFhljSVETI9cbdBeq3wO8pnk4n86DVPhYMcs0dCBe2GAdxIpGDzsYARb5F48fhbhXPGgjVZiSbCk=
-X-Received: by 2002:a05:6402:1d4a:b0:42e:9ec8:320b with SMTP id
- dz10-20020a0564021d4a00b0042e9ec8320bmr8807397edb.119.1655246583651; Tue, 14
- Jun 2022 15:43:03 -0700 (PDT)
+	id 1o1HO1-00ByIu-79; Wed, 15 Jun 2022 00:59:58 +0000
+X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R191e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018045170;MF=yang.lee@linux.alibaba.com;NM=1;PH=DS;RN=10;SR=0;TI=SMTPD_---0VGQ60SH_1655254787;
+Received: from localhost(mailfrom:yang.lee@linux.alibaba.com fp:SMTPD_---0VGQ60SH_1655254787)
+          by smtp.aliyun-inc.com;
+          Wed, 15 Jun 2022 08:59:47 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: mchehab@kernel.org
+Cc: matthias.bgg@gmail.com,
+	tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Yang Li <yang.lee@linux.alibaba.com>,
+	Abaci Robot <abaci@linux.alibaba.com>
+Subject: [PATCH -next] media: mediatek: vcodec: remove unneeded semicolon
+Date: Wed, 15 Jun 2022 08:59:46 +0800
+Message-Id: <20220615005946.17196-1-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
-References: <20220525091201.14210-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220525091201.14210-1-angelogioacchino.delregno@collabora.com>
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-Date: Tue, 14 Jun 2022 16:42:52 -0600
-Message-ID: <CANLsYkz+t7Ju6RhZjhSc6ke9R2k3MtKBfU0XJGZFFSpqJWO8Kg@mail.gmail.com>
-Subject: Re: [PATCH v2] rpmsg: mtk_rpmsg: Fix circular locking dependency
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: bjorn.andersson@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org, 
-	linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_154308_770258_F23164F8 
-X-CRM114-Status: GOOD (  21.18  )
+X-CRM114-CacheID: sfid-20220614_175957_457748_61938106 
+X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,141 +64,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 May 2022 at 03:12, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> During execution of the worker that's used to register rpmsg devices
-> we are safely locking the channels mutex but, when creating a new
-> endpoint for such devices, we are registering a IPI on the SCP, which
-> then makes the SCP to trigger an interrupt, lock its own mutex and in
-> turn register more subdevices.
-> This creates a circular locking dependency situation, as the mtk_rpmsg
-> channels_lock will then depend on the SCP IPI lock.
->
-> [   18.014514]  Possible unsafe locking scenario:
-> [   18.014515]        CPU0                    CPU1
-> [   18.014517]        ----                    ----
-> [   18.045467]   lock(&mtk_subdev->channels_lock);
-> [   18.045474]                                lock(&scp->ipi_desc[i].lock);
-> [   18.228399]                                lock(&mtk_subdev->channels_lock);
-> [   18.228405]   lock(&scp->ipi_desc[i].lock);
-> [   18.264405]
->
-> To solve this, simply unlock the channels_lock mutex before calling
-> mtk_rpmsg_register_device() and relock it right after, as safety is
-> still ensured by the locking mechanism that happens right after
-> through SCP.
->
-> Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Eliminate the following coccicheck warning:
+./drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c:71:2-3: Unneeded semicolon
 
-I have applied this patch.
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Mathieu
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 61412d0eeb33..eb4be41b41b0 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -68,7 +68,7 @@ static bool mtk_vdec_get_cap_fmt(struct mtk_vcodec_ctx *ctx, int format_index)
+ 	default:
+ 		ret = true;
+ 		break;
+-	};
++	}
+ 
+ 	return ret;
+ }
+-- 
+2.20.1.7.g153144c
 
-> ---
->
-> v2: Adding debug log to changelog portion, fixed commit description
->
-> [   15.447736] ======================================================
-> [   15.460158] WARNING: possible circular locking dependency detected
-> [   15.460161] 5.17.0-next-20220324+ #399 Not tainted
-> [   15.460165] ------------------------------------------------------
-> [   15.460166] kworker/0:3/155 is trying to acquire lock:
-> [   15.460170] ffff5b4d0eaf1308 (&scp->ipi_desc[i].lock){+.+.}-{4:4}, at: scp_ipi_lock+0x34/0x50 [mtk_scp_ipi]
-> [   15.504958]
-> []                but task is already holding lock:
-> [   15.504960] ffff5b4d0e8f1918 (&mtk_subdev->channels_lock){+.+.}-{4:4}, at: mtk_register_device_work_function+0x50/0x1cc [mtk_rpmsg]
-> [   15.504978]
-> []                which lock already depends on the new lock.
->
-> [   15.504980]
-> []                the existing dependency chain (in reverse order) is:
-> [   15.504982]
-> []               -> #1 (&mtk_subdev->channels_lock){+.+.}-{4:4}:
-> [   15.504990]        lock_acquire+0x68/0x84
-> [   15.504999]        __mutex_lock+0xa4/0x3e0
-> [   15.505007]        mutex_lock_nested+0x40/0x70
-> [   15.505012]        mtk_rpmsg_ns_cb+0xe4/0x134 [mtk_rpmsg]
-> [   15.641684]        mtk_rpmsg_ipi_handler+0x38/0x64 [mtk_rpmsg]
-> [   15.641693]        scp_ipi_handler+0xbc/0x180 [mtk_scp]
-> [   15.663905]        mt8192_scp_irq_handler+0x44/0xa4 [mtk_scp]
-> [   15.663915]        scp_irq_handler+0x6c/0xa0 [mtk_scp]
-> [   15.685779]        irq_thread_fn+0x34/0xa0
-> [   15.685785]        irq_thread+0x18c/0x240
-> [   15.685789]        kthread+0x104/0x110
-> [   15.709579]        ret_from_fork+0x10/0x20
-> [   15.709586]
-> []               -> #0 (&scp->ipi_desc[i].lock){+.+.}-{4:4}:
-> [   15.731271]        __lock_acquire+0x11e4/0x1910
-> [   15.740367]        lock_acquire.part.0+0xd8/0x220
-> [   15.749813]        lock_acquire+0x68/0x84
-> [   15.757861]        __mutex_lock+0xa4/0x3e0
-> [   15.766084]        mutex_lock_nested+0x40/0x70
-> [   15.775006]        scp_ipi_lock+0x34/0x50 [mtk_scp_ipi]
-> [   15.785503]        scp_ipi_register+0x40/0xa4 [mtk_scp_ipi]
-> [   15.796697]        scp_register_ipi+0x1c/0x30 [mtk_scp]
-> [   15.807194]        mtk_rpmsg_create_ept+0xa0/0x108 [mtk_rpmsg]
-> [   15.818912]        rpmsg_create_ept+0x44/0x60
-> [   15.827660]        cros_ec_rpmsg_probe+0x15c/0x1f0
-> [   15.837282]        rpmsg_dev_probe+0x128/0x1d0
-> [   15.846203]        really_probe.part.0+0xa4/0x2a0
-> [   15.855649]        __driver_probe_device+0xa0/0x150
-> [   15.865443]        driver_probe_device+0x48/0x150
-> [   15.877157]        __device_attach_driver+0xc0/0x12c
-> [   15.889359]        bus_for_each_drv+0x80/0xe0
-> [   15.900330]        __device_attach+0xe4/0x190
-> [   15.911303]        device_initial_probe+0x1c/0x2c
-> [   15.922969]        bus_probe_device+0xa8/0xb0
-> [   15.933927]        device_add+0x3a8/0x8a0
-> [   15.944193]        device_register+0x28/0x40
-> [   15.954970]        rpmsg_register_device+0x5c/0xa0
-> [   15.966782]        mtk_register_device_work_function+0x148/0x1cc [mtk_rpmsg]
-> [   15.983146]        process_one_work+0x294/0x664
-> [   15.994458]        worker_thread+0x7c/0x45c
-> [   16.005069]        kthread+0x104/0x110
-> [   16.014789]        ret_from_fork+0x10/0x20
-> [   16.025201]
-> []               other info that might help us debug this:
->
-> [   16.047769]  Possible unsafe locking scenario:
->
-> [   16.063942]        CPU0                    CPU1
-> [   16.075166]        ----                    ----
-> [   16.086376]   lock(&mtk_subdev->channels_lock);
-> [   16.097592]                                lock(&scp->ipi_desc[i].lock);
-> [   16.113188]                                lock(&mtk_subdev->channels_lock);
-> [   16.129482]   lock(&scp->ipi_desc[i].lock);
-> [   16.140020]
-> []                *** DEADLOCK ***
->
-> [   16.158282] 4 locks held by kworker/0:3/155:
-> [   16.168978]  #0: ffff5b4d00008748 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x1fc/0x664
-> [   16.190017]  #1: ffff80000953bdc8 ((work_completion)(&mtk_subdev->register_work)){+.+.}-{0:0}, at: process_one_work+0x1fc/0x664
-> [   16.215269]  #2: ffff5b4d0e8f1918 (&mtk_subdev->channels_lock){+.+.}-{4:4}, at: mtk_register_device_work_function+0x50/0x1cc [mtk_rpmsg]
-> [   16.242131]  #3: ffff5b4d05964190 (&dev->mutex){....}-{4:4}, at: __device_attach+0x44/0x190
->
->  drivers/rpmsg/mtk_rpmsg.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
-> index 5b4404b8be4c..d1213c33da20 100644
-> --- a/drivers/rpmsg/mtk_rpmsg.c
-> +++ b/drivers/rpmsg/mtk_rpmsg.c
-> @@ -234,7 +234,9 @@ static void mtk_register_device_work_function(struct work_struct *register_work)
->                 if (info->registered)
->                         continue;
->
-> +               mutex_unlock(&subdev->channels_lock);
->                 ret = mtk_rpmsg_register_device(subdev, &info->info);
-> +               mutex_lock(&subdev->channels_lock);
->                 if (ret) {
->                         dev_err(&pdev->dev, "Can't create rpmsg_device\n");
->                         continue;
-> --
-> 2.35.1
->
 
 _______________________________________________
 Linux-mediatek mailing list
