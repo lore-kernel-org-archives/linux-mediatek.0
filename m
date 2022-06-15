@@ -4,78 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C6BCC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 13:21:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01305C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 13:24:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lLnEeD4HScX3wYTfaLfMTcXpGRNYwxAv7p4Jh61bcKg=; b=wpEgSDrarHAmcFyPdT/krhX0+Q
-	wdIjYqIfDyySvXG5YSOq59I12DgPCmh4RKrDdxvqfCslVehZSzlNC8IQl22tQLuA1aao9XSOScbZ7
-	HVFmdx0WaYRcoIituDtAogbtpLzMH3fhskwZlno9Bb8QtAVAWqyNR9pBELMJAir6sr0lqGCiY/kOn
-	hgXx7gJ2GuI0w1R6BS/qh3iF8srzreXg+GvBPDXcD69Szt1ACjJEgT2jUTTyv1613b6fIb1BZXWd4
-	GFZ2cMjSWCD8bcBo+Fk+alsbnC6VqctkNqMCizDAVBeGe0clkeSFrfSiM/q2H5HAnVp+BBJ2zWDXw
-	0T912ZMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UJ8iaI1pTv/YM131C86Mnpd2Cs7gpkRb4SNOR9/hNuU=; b=RjAwRKSuJpk2x37I+uC5nuCLQl
+	NxVFrpXH1WGttwoKbEKTdpX0QL/PMEz3FaBr/9HlkJS7nZuugXtrsUhdC2J4fWgLVjZh1NeM37Ss0
+	ZG1Prw+otzKrWDYuvBjH8CD0bguVh1sz/gVfIlwYSD+YmKChOQ19IBHF9hDrJOgmEBignLOZ89nrC
+	85Ea4PAlNSfJNs7hTOxHpXXBLYQjyZnXt6RFVfaI+U0LH5GA91y/O72xZNgWbDzF9xIFW+kVvGORj
+	5gErXJl/faj0pjisdH32jx+NCaLEZWP5oZJrALiwEywycev+pURA9oZqbjFMaie4kKWbV77igv6g4
+	5cGnZNaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1SxN-00EfQA-LH; Wed, 15 Jun 2022 13:21:13 +0000
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+	id 1o1T0I-00EgJI-FO; Wed, 15 Jun 2022 13:24:14 +0000
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1SxK-00EfOZ-MX
-	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 13:21:12 +0000
-Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-31336535373so60947587b3.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jun 2022 06:21:08 -0700 (PDT)
+	id 1o1T0G-00EgGp-3V
+	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 13:24:13 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id v81so20582352ybe.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jun 2022 06:24:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=lLnEeD4HScX3wYTfaLfMTcXpGRNYwxAv7p4Jh61bcKg=;
-        b=FAuYV82HbMz5SF8Z7r8LjZLY8Js1QZM8S6JoU4BP+yJW+/cPQITzEEsuzeuUPSFqbj
-         cknm9RkZLDfM8pCMnBfGKMOBmpD2wRin39gPIaa4Wc0vF7A53qjSrsZNQYrQW2+63eHX
-         /j64PsFHZlvSTFVpZgAvXiKd1MwQG2DwDHeYDWj9MJChIz4j4yj0G4AnzHd5R2/bXDGI
-         p9AsvC5FJauhwdgFjUWfPZQWEKVUmpu7mcN/qvaaFutjh4y7Rfut/oK46cqLoiFv8Y3b
-         PN6bs6TaE7EVVLE5vSJ1YBHMildxFf+0mCBB9DOccscXnPGY9tgcod5a+h/I5WzQVjNF
-         NHuw==
+         :cc;
+        bh=UJ8iaI1pTv/YM131C86Mnpd2Cs7gpkRb4SNOR9/hNuU=;
+        b=WWCVGdRbgpyX4JC60E1knSS/uwhU4ze16f8ZReamCR9o1Dj27V6VmZMuQI0hMSj+0y
+         eDBfWai5XlZ5g9HKJQGi9zFmX1Lcf0EnLacnZJ6TWl0+rAOvpYZ5XDVPq9TIYXjNe+gD
+         R++DrE91aVAzvH96TpvA5xZsdxzx5ipVAqsl/TlyBQZAkwgGYHerQaBqkkjpNKvGVKmS
+         0oKtDdUJrgqGw6Cv5T2Umy7PFz9gFsCxJKLWpKwJ1jwxkYMgK5ScDDRTp0axuRfKkNzh
+         ken5dnpzo4+0PznZJYM50eS8aRlVxZZKF00zFbrTkTa+r5LcHNPX9BM8eM2M0I0vZj6I
+         gEkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=lLnEeD4HScX3wYTfaLfMTcXpGRNYwxAv7p4Jh61bcKg=;
-        b=ZCRGWA6Mxd6d1kibvdZ9RwGGyHKKOjaYFd6tZK0qsF+zviUWiGFc3YI1fnRA0Ej7dm
-         ia1O8Xclcoztk8POXkS2uXSE1g6QVlhOwB0fZzJEMlS0pacf8370hunIJHCr7pLQdSu7
-         XsRwaBli7SQpyAOdgLhW8pmvkOYbb3WJyCGoX9N8qnzuSVXJsJP5m9IzMg6+R/mr+bmW
-         8EJilm1rHruEZn2KAKvpM3kHP/Zi0BhLOlKEFU9r73RopOVcyql1oAVEFXMtkMZGukj8
-         gmH99fkPC6wCppuR0spkFNIfu74Qvzg2I5XUn8uxxPRxf2+5pS5NWZUiJfnz/T9osxYN
-         m18A==
-X-Gm-Message-State: AJIora/ylRcpeEuZ1CCSh6WamMU1Cu4VTVK9yri+rjjZe0CtfAxaqK8w
-	EVPOGeCUHsuH/ROqc5rRC9Vtf5aQHMbn3yONTmvWXQ==
-X-Google-Smtp-Source: AGRyM1sWoBtACZMnUE5e9euq2R2bCswy4VmCdrOftup15FaJJZ5F8vphDQM3yFswuCusR6wCSWVBJAXvAZQH0EVE5QA=
-X-Received: by 2002:a81:a00b:0:b0:30c:5c1a:19f with SMTP id
- x11-20020a81a00b000000b0030c5c1a019fmr11566849ywg.437.1655299267750; Wed, 15
- Jun 2022 06:21:07 -0700 (PDT)
+         :message-id:subject:to:cc;
+        bh=UJ8iaI1pTv/YM131C86Mnpd2Cs7gpkRb4SNOR9/hNuU=;
+        b=BCPPM2zVfZ1HPqsFZiZB6vmCqoUC+Qpq0nuqa6k6haBTy0WGgGVQJ65gqFh4qcyjoF
+         RJhWdSjiy5Y6ym8fqkk7/Kl4QtlI9FZKJ+ZKOvdPGgsc3l33oIUAIEkhFElhgnaLdDOv
+         3fVnapb+39gTzzPfCx3WM2xyCVmz4aX/6Z8kl0gyX1eATBJqM99BnYZwCUZxmlv+MB/i
+         qJk2n8Nyyihnd++RT4Xy/J0OEy3M4qjWFBdci410zr2B1O5rjKBg266R1DpP/v25KUu4
+         m/y2BPSmshoNkFrIVjoo5Vzp3gqL77mljFITupyBwULpO2dPVggMrfhViw2GZKRsCvlV
+         oKvw==
+X-Gm-Message-State: AJIora+97YIGXN5LQeUxLqGIDZB1SdLeThZrmJHGRVccheIt2J+9h3vQ
+	76koZP8B/tt/4jXzbJi1AGuiTRKmTuZAKlvPl+TJhw==
+X-Google-Smtp-Source: AGRyM1t5vbN1VRN0wQ0bZrJ9w/qnK3EiTQYoQv3YAhndL7v5GPOVjr/01mLr9EMdHOiqE1S1jfQPtZw4XGNv/p3Uo5Y=
+X-Received: by 2002:a25:8387:0:b0:664:7589:27b9 with SMTP id
+ t7-20020a258387000000b00664758927b9mr10564795ybk.291.1655299449036; Wed, 15
+ Jun 2022 06:24:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220525155714.1837360-1-nfraprado@collabora.com> <20220525155714.1837360-3-nfraprado@collabora.com>
-In-Reply-To: <20220525155714.1837360-3-nfraprado@collabora.com>
+References: <20220530123425.689459-1-fparent@baylibre.com>
+In-Reply-To: <20220530123425.689459-1-fparent@baylibre.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 15 Jun 2022 15:20:56 +0200
-Message-ID: <CACRpkdZL6SAHWgOjcJ=D-fjTwYL4ctgo4Tbre3QwPKSTpzPs4g@mail.gmail.com>
-Subject: Re: [PATCH v1 2/2] dt-bindings: pinctrl: mt8192: Use generic bias
- instead of pull-*-adv
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Wed, 15 Jun 2022 15:23:57 +0200
+Message-ID: <CACRpkdYZJUWb4TBJiZVK4SNeA2Njn6341FuDjdYsn-0_yCeRKg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] pinctrl: mediatek: common: add quirk for broken
+ set/clr modes
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_062110_794667_FD2AC20A 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20220615_062412_210875_26D8D81D 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,28 +85,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 25, 2022 at 5:57 PM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
+On Mon, May 30, 2022 at 2:35 PM Fabien Parent <fparent@baylibre.com> wrote:
 
-> Commit cafe19db7751 ("pinctrl: mediatek: Backward compatible to previous
-> Mediatek's bias-pull usage") allowed the bias-pull-up and bias-pull-down
-> properties to be used for setting PUPD/R1/R0 type bias on mtk-paris
-> based SoC's, which was previously only supported by the custom
-> mediatek,pull-up-adv and mediatek,pull-down-adv properties.
+> On MT8365, the SET/CLR of the mode is broken and some pin modes won't
+> be set correctly. Add a quirk for such SoCs, so that instead of using
+> the SET/CLR register use the main R/W register
+> to read/update/write the modes.
 >
-> Since the bias-pull-{up,down} properties already have defines associated
-> thus being more descriptive and is more universal on MediaTek platforms,
-> and given that there are no mediatek,pull-{up,down}-adv users on mt8192
-> yet, remove the custom adv properties in favor of the generic ones.
->
-> Note that only mediatek,pull-up-adv was merged in the binding, but not
-> its down counterpart.
->
-> Fixes: edbacb36ea50 ("dt-bindings: pinctrl: mt8192: Add mediatek,pull-up-=
-adv property")
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-Patch applied.
+What is the state of this patch set? I see changes are requested by
+Angelo, are they being addressed?
 
 Yours,
 Linus Walleij
