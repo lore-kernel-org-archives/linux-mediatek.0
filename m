@@ -4,76 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2912DC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 12:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8E54C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 12:10:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=55hRcrpcGweTZNPgLNjSVUS+p9bWv5ADc27zzK0jGoA=; b=ekiBFIFYfGaGo+xGhTV9pF8ufo
-	ItS0xmm91gBVVZx53OlzEzy8O8UufdujNoGdwBtgUA0DyD701SlOycAN0W2wx38jetoEj9AHdutnP
-	uH4iRqP0g4qzAYEX4Y710+Kszyctmo3YP3QaDB7xcYEkh5Hqke3tlzoL8myBDF6mfqBZrP7mQ1F+c
-	gYSjW33hpEFeDLqRb23P2E7QH0A/urEG+H3pRiL73+e/nKoR4TfO2MN9U0xqZCtMzhtic9md+v09v
-	n7kE2pMMb+Gt2gKi+Ty42g5QyYRf8fuGW/4juz3f0BCytehtHHSmdZ/WCSu3g5G12/uME5Ww5zloj
-	5pPVttBQ==;
+	bh=ufqEIhQJLn0a1lP22CtHnxpKmABhqIWqQFeboCEBeR8=; b=gftYMuXlElxdX8xJHwMVLElbCA
+	/X+/ntHcMkoSc5eb5HSOI9MAjFFmIEXQmL9VyS2WRWq9oeYkWLOIO24K/TeNm+ImH8xEypOpJH2sT
+	/Fd40DrO5IQrsHJ7EVmFt6+WcCJyRLPlo0knv9++Dc7j/gSybwiTHKE8Yzy+vRjUg7xGnURzooDt8
+	5v3OpZHiL6azZ0qKN7Zu05VOQHZ4PRJ2oI/ZAK1TY3TIfAmkR8ZcYMYtsGvlfgSr1THYzUJjmHb5V
+	oGUXce/de6CGuEEYmkfSRPQK1DpC+srdE9OrinkSc3kDF3KAyLguiwoy7IV7MxTn93AWgce09hR8A
+	cmiHlc9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Rj9-00ELyG-Sg; Wed, 15 Jun 2022 12:02:27 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1o1RqR-00EONp-6U; Wed, 15 Jun 2022 12:09:59 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Rhg-00ELHZ-10
-	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 12:00:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1655294456; x=1686830456;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=yCu340qMfg6oZcr5JvLYeZcBPp9Lyul8ahB/e4qnXUI=;
-  b=JWgZKtzhWEWhq9mdp9mkwZyr9KsGe15+2MH3k1awkL1yzOqQgx9T9RzR
-   k8eQhhwn/rYcsvy50mHox3Rb+ool7y/HCRgyDo347FDJmcH9lbrrXq2Mc
-   9rZpLssPVshXdk+YdwLXQY38/soo7RQbjYQxTi9K18lVjMsnS4ru+e9M+
-   DMmz2sJz9owNWhsVDPzdeDD47EKfiDcvsnHOzZDdudCDTOHnKy3YqVETU
-   78lZ4oUktducOjwpDlbJhuoHUO4T2qoxAfcrXkmGBZVT278EglkCO8Ui4
-   4pKdKYYxnZ8Mx5EKBBkMc6xI6Cdw4QZe6hOechifdqJZ2ZGaKsMXvs0Fz
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="261961763"
-X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; 
-   d="scan'208";a="261961763"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 05:00:53 -0700
-X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; 
-   d="scan'208";a="674463081"
-Received: from clanggaa-mobl1.ger.corp.intel.com (HELO [10.249.254.173]) ([10.249.254.173])
-  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 05:00:49 -0700
-Message-ID: <416df4cf-5421-cbf3-bb47-b39c6129ff71@linux.intel.com>
-Date: Wed, 15 Jun 2022 15:01:27 +0300
+	id 1o1RqO-00EOMF-O3; Wed, 15 Jun 2022 12:09:58 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id h5so15147944wrb.0;
+        Wed, 15 Jun 2022 05:09:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:content-language:to:cc
+         :references:from:subject:in-reply-to:content-transfer-encoding;
+        bh=ufqEIhQJLn0a1lP22CtHnxpKmABhqIWqQFeboCEBeR8=;
+        b=NNQJ/jGhKFi3TLolVvv6p5vDCUgaeZ2UDfX5QF22P23d0rNi2IA+3xgJlttCAlAbei
+         rk6ebUX23qsziqFBje19orA87/iwUKsvIIxT1/tuq/V/zfiyuLMDGAhmMekYevaKip0L
+         VFsqyo2qSHzhQaaVho66mGEdQ0v3EV+MXT2CiOUY0RceDlRJUVuTteYygqy1hEhOnhDy
+         bDFcEuM9bSkckbpuY7bJcxBHX7aiGwNDqqmpKOCokXagegSOK3ZOIf+WH/TR6GhgAGAE
+         JXb9yVmULvi4y4ygg6OY6k3egdNzz9CQUgXR20nHtdlWgf58B33lpzamh5904JHegno4
+         8d3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent
+         :content-language:to:cc:references:from:subject:in-reply-to
+         :content-transfer-encoding;
+        bh=ufqEIhQJLn0a1lP22CtHnxpKmABhqIWqQFeboCEBeR8=;
+        b=oWbAGxVFKuOPVq/N6kBebyy1Kii5Ln5okIJzmgBDG3E62ZPMBiKLt+tKf5FbUxTTXk
+         wze4kfz03MAeeDs6xgBMZHxBV+DgWoTQn2xOH2r8UWdmyJSwru3WOOUrLwjuDyEjIfRC
+         EKyGMAftLGExidCZ4seHCmnol32zEHMN1e6kX/aDoEUjCH62x8nGR+RSwEoBDjUicAKk
+         YAJXxNh1AXKATOetaKmetjSvIpNZ2czwqPk0XGNSaMbh/B/Dk9clezxGVvdAt+uNKUlu
+         NJEwPx7KcB6icTAykJWXw9iHeMYtFw1v5Zvb/PxzPnkbhIMcjj0CYk6n+/lJnzqFiqMI
+         tWPA==
+X-Gm-Message-State: AJIora+lnoVFLAyCRnaw4p67lwotlLOG6+Imn1G5qkZnpaTETetkU7FZ
+	+K/SKNGS1XQHcSupr4Ajb44=
+X-Google-Smtp-Source: AGRyM1spOOsJofsOCL+iHFbSiA5IRU/CCTL1EBYYpqTyOZwOes1IVw6CJtdit0i26miabw44PN2cEg==
+X-Received: by 2002:a05:6000:1542:b0:218:549a:2a8e with SMTP id 2-20020a056000154200b00218549a2a8emr9738727wry.314.1655294992184;
+        Wed, 15 Jun 2022 05:09:52 -0700 (PDT)
+Received: from [192.168.0.36] ([37.223.143.134])
+        by smtp.gmail.com with ESMTPSA id 64-20020a1c1943000000b0039c6390730bsm2249993wmz.29.2022.06.15.05.09.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 15 Jun 2022 05:09:51 -0700 (PDT)
+Message-ID: <8b31b1d2-4ed7-11a1-2124-4641c8f3abcd@gmail.com>
+Date: Wed, 15 Jun 2022 14:09:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Firefox/91.0 Thunderbird/91.10.0
-Subject: Re: [PATCH] ASoC: SOF: mediatek: Fix error code in probe
+ Thunderbird/91.8.1
 Content-Language: en-US
-To: Dan Carpenter <dan.carpenter@oracle.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: alsa-devel@alsa-project.org, Allen-KH Cheng
- <Allen-KH.Cheng@mediatek.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Takashi Iwai <tiwai@suse.com>, kernel-janitors@vger.kernel.org,
- Liam Girdwood <lgirdwood@gmail.com>,
- Yang Yingliang <yangyingliang@huawei.com>, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- YC Hung <yc.hung@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, sound-open-firmware@alsa-project.org
-References: <YqmWIK8sTj578OJP@kili>
-From: =?UTF-8?Q?P=c3=a9ter_Ujfalusi?= <peter.ujfalusi@linux.intel.com>
-In-Reply-To: <YqmWIK8sTj578OJP@kili>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ yong.wu@mediatek.com
+Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, iommu@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ krzysztof.kozlowski@linaro.org
+References: <20220609100802.54513-1-angelogioacchino.delregno@collabora.com>
+ <20220609100802.54513-7-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 6/6] iommu: mtk_iommu: Lookup phandle to retrieve
+ syscon to pericfg
+In-Reply-To: <20220609100802.54513-7-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_050056_172229_B8E0DB37 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20220615_050956_876723_F63D4CA1 
+X-CRM114-Status: GOOD (  27.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,31 +98,97 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 15/06/2022 11:19, Dan Carpenter wrote:
-> This should return PTR_ERR() instead of IS_ERR().
-
-Acked-by: Peter Ujfalusi <peter.ujfalusi@linux.intel.com>
-
-> Fixes: e0100bfd383c ("ASoC: SOF: mediatek: Add mt8186 ipc support")
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-> ---
->  sound/soc/sof/mediatek/mt8186/mt8186.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On 09/06/2022 12:08, AngeloGioacchino Del Regno wrote:
+> On some SoCs (of which only MT8195 is supported at the time of writing),
+> the "R" and "W" (I/O) enable bits for the IOMMUs are in the pericfg_ao
+> register space and not in the IOMMU space: as it happened already with
+> infracfg, it is expected that this list will grow.
 > 
-> diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-> index 3333a0634e29..e006532caf2f 100644
-> --- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-> +++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-> @@ -392,7 +392,7 @@ static int mt8186_dsp_probe(struct snd_sof_dev *sdev)
->  						      PLATFORM_DEVID_NONE,
->  						      pdev, sizeof(*pdev));
->  	if (IS_ERR(priv->ipc_dev)) {
-> -		ret = IS_ERR(priv->ipc_dev);
-> +		ret = PTR_ERR(priv->ipc_dev);
->  		dev_err(sdev->dev, "failed to create mtk-adsp-ipc device\n");
->  		goto err_adsp_off;
->  	}
+> Instead of specifying pericfg compatibles on a per-SoC basis, following
+> what was done with infracfg, let's lookup the syscon by phandle instead.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 23 +++++++++++++----------
+>   1 file changed, 13 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 90685946fcbe..0ea0848581e9 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -138,6 +138,8 @@
+>   /* PM and clock always on. e.g. infra iommu */
+>   #define PM_CLK_AO			BIT(15)
+>   #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
+> +/* IOMMU I/O (r/w) is enabled using PERICFG_IOMMU_1 register */
+> +#define HAS_PERI_IOMMU1_REG		BIT(17)
 
--- 
-Péter
+ From what I can see MTK_IOMMU_TYPE_INFRA is only set in MT8195 which uses 
+pericfg. So we don't need a new flag here. For me the flag name 
+MTK_IOMMU_TYPE_INFRA was confusing as it has nothing to do with the use of 
+infracfg. I'll hijack this patch to provide some feedback on the actual code, 
+please see below.
+
+>   
+>   #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
+>   				((((pdata)->flags) & (mask)) == (_x))
+> @@ -187,7 +189,6 @@ struct mtk_iommu_plat_data {
+>   	u32			flags;
+>   	u32			inv_sel_reg;
+>   
+> -	char			*pericfg_comp_str;
+>   	struct list_head	*hw_list;
+>   	unsigned int		iova_region_nr;
+>   	const struct mtk_iommu_iova_region	*iova_region;
+> @@ -1218,14 +1219,16 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>   			goto out_runtime_disable;
+>   		}
+>   	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
+> -		   data->plat_data->pericfg_comp_str) {
+
+Check for pericfg_comp_str is not needed, we only have one platform that uses 
+MTK_IOMMU_TYPE_INFRA.
+
+> -		infracfg = syscon_regmap_lookup_by_compatible(data->plat_data->pericfg_comp_str);
+
+We can do something like this to make the code clearer:
+data->pericfg = 
+syscon_regmap_lookup_by_compatible(data->plat_data->pericfg_comp_str);
+		if (IS_ERR(data->pericfg)) {
+
+Using infracfg variable here is confusing as it has nothing to do with infracfg 
+used with HAS_4GB_MODE flag.
+
+Regards,
+Matthias
+
+> -		if (IS_ERR(infracfg)) {
+> -			ret = PTR_ERR(infracfg);
+> -			goto out_runtime_disable;
+> +		   MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_PERI_IOMMU1_REG)) {
+> +		data->pericfg = syscon_regmap_lookup_by_phandle(dev->of_node, "mediatek,pericfg");
+> +		if (IS_ERR(data->pericfg)) {
+> +			p = "mediatek,mt8195-pericfg_ao";
+> +			data->pericfg = syscon_regmap_lookup_by_compatible(p);
+> +			if (IS_ERR(data->pericfg)) {
+> +				ret = PTR_ERR(data->pericfg);
+> +				goto out_runtime_disable;
+> +			}
+>   		}
+> -
+> -		data->pericfg = infracfg;
+>   	}
+>   
+>   	platform_set_drvdata(pdev, data);
+> @@ -1484,8 +1487,8 @@ static const struct mtk_iommu_plat_data mt8192_data = {
+>   static const struct mtk_iommu_plat_data mt8195_data_infra = {
+>   	.m4u_plat	  = M4U_MT8195,
+>   	.flags            = WR_THROT_EN | DCM_DISABLE | STD_AXI_MODE | PM_CLK_AO |
+> -			    MTK_IOMMU_TYPE_INFRA | IFA_IOMMU_PCIE_SUPPORT,
+> -	.pericfg_comp_str = "mediatek,mt8195-pericfg_ao",
+> +			    HAS_PERI_IOMMU1_REG | MTK_IOMMU_TYPE_INFRA |
+> +			    IFA_IOMMU_PCIE_SUPPORT,
+>   	.inv_sel_reg      = REG_MMU_INV_SEL_GEN2,
+>   	.banks_num	  = 5,
+>   	.banks_enable     = {true, false, false, false, true},
 
