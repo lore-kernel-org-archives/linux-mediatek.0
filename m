@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A08C1CCA473
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 15:31:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CC4CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 16:26:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=BtT5kWVHkZCHYYvzhi0dUg4wfVVhnHdHn0rc89nniPk=; b=mwjZK0P68wsOws
-	fCqrH4aLBB8H512SJYntLN9GpdSmAcL8TptTC00OEMxS08/2qmcgfknG4HtdwQIedENQH+LaSqvhZ
-	tjs4CYHQ6I7GPjepgYL57cvv5vMq8cMnxohWo39WY14dS/lv0QalGnmzISt1diqRNc2IY15P+gZwu
-	zOxJP4jf8WYttcpppl5N+iiuAz2ERQcbPQ1+jWx/Ficm2jazKbpVdR4LEqvN81eMBsd4nC+NWOoEE
-	HRZWOvQKgr/wsu5aECCCIuecHemIRC+I1zC+SfpjevAR9kTreUB5OPolNA6UGUmbN/AG3LedXQffg
-	pMd43dZxMk/yt44omAHA==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B19ImLJwTyajh7B8RLGQgAHEq3brpxa/QL2Jv9n6RFA=; b=f0ybNKHpm6T36TH+IhJ+BH+Wz7
+	88eKyylNzU8uc7EZhf+ONVK7ERn21rWoo36WAu7Q81m4ex9X7XVgg35l4Vb7BkexaIIGdCgbMWfXm
+	uS+u7M/gI7RXH8xWn+syb8IxdR2GUnENTRDrMKCmIAjq9knDPLh3VQJdcACcNtaDTrUV9CyNDZAQA
+	pxh4TalKKPRkOoUhHEmhgtKCy/ByUrwK38hC0Ctt/Q67oqTB4GntQZW3bSNsw5Dsh6X8/JTinwb+z
+	mjo0or/WaRnjzjZigo0MHyQYWTh5t16kP9In82KdADzLSe+HTAwqfXmAY1DSRDZIK6eO+YdeCjTZh
+	m9FiB5Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1UzV-00FAOg-Vz; Wed, 15 Jun 2022 15:31:34 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1o1VqM-00FOxi-BC; Wed, 15 Jun 2022 16:26:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1UzK-00FAOA-Dn; Wed, 15 Jun 2022 15:31:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 00BA061720;
-	Wed, 15 Jun 2022 15:31:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20695C34115;
-	Wed, 15 Jun 2022 15:31:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655307081;
-	bh=r+yRrxHClzv1P38azR8w13O3Oa7kVO4IL+igkr/tjqg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=NsRoNoq8fE3qubujywO1GcEOTOQeZqx6h1IKN9ZdyW1BfyjX8+3S9GHfirXsE52Zk
-	 poqn+5/PPTm0kG4HgW0EbqyJssvgQUfkjUdfoVoQYmO5jrET8HQHq20D9vqx404hZs
-	 eyztWGEjNJ7EZYyLa2Dr3JY2xNe1O3Zaw5UbDHAzEczTRMa1u1rUiqDCySwh4Ow6tL
-	 RcQy/emi+IQy9h2d5B4kZD2vGXPxcfGbmQBtwvgN1p86y4nd1ZYkhVSMVrnIuvjvqv
-	 nRFYEy2X4GTfz0CI0GmNS8PPBycVtoYixfiKfThx8DlVuim19gfzF6lmKFZWZkPPiN
-	 xbw7eQaRXz9Pw==
-Date: Wed, 15 Jun 2022 10:31:19 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	John Crispin <john@phrozen.org>, Rob Herring <robh@kernel.org>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH RESEND v10 1/3] dt-bindings: PCI: Add support for Airoha
- EN7532
-Message-ID: <20220615153119.GA940910@bhelgaas>
+	id 1o1Vju-00FMkg-5y; Wed, 15 Jun 2022 16:19:31 +0000
+X-UUID: e40ed083943d4dac8899171b4080c255-20220615
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:01a72f97-c31e-468b-9951-c520f0e14e0f,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:9a5a5bf6-e099-41ba-a32c-13b8bfe63214,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: e40ed083943d4dac8899171b4080c255-20220615
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 2078972466; Wed, 15 Jun 2022 09:19:26 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Jun 2022 09:19:24 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 16 Jun 2022 00:19:23 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 16 Jun 2022 00:19:22 +0800
+From: <yf.wang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open
+ list:MEDIATEK IOMMU DRIVER" <iommu@lists.linux-foundation.org>, "moderated
+ list:MEDIATEK IOMMU DRIVER" <linux-mediatek@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "open
+ list" <linux-kernel@vger.kernel.org>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
+	<Yong.Wu@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Yunfei Wang
+	<yf.wang@mediatek.com>, Ning Li <ning.li@mediatek.com>
+Subject: [PATCH v9 2/3] iommu/mediatek: Rename MTK_IOMMU_TLB_ADDR to MTK_IOMMU_ADDR
+Date: Thu, 16 Jun 2022 00:12:22 +0800
+Message-ID: <20220615161224.6923-3-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220615161224.6923-1-yf.wang@mediatek.com>
+References: <20220615161224.6923-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220615125335.96089-1-nbd@nbd.name>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_083122_544639_F54F75A8 
-X-CRM114-Status: GOOD (  18.60  )
+X-CRM114-CacheID: sfid-20220615_091930_324874_7A00F4D6 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +83,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 15, 2022 at 02:53:33PM +0200, Felix Fietkau wrote:
-> From: John Crispin <john@phrozen.org>
-> 
-> EN7532 is an ARM based platform SoC integrating the same PCIe IP as
-> MT7622, add a binding for it.
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: John Crispin <john@phrozen.org>
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+From: Yunfei Wang <yf.wang@mediatek.com>
 
-Applied patches 1 & 2 to pci/ctrl/mediatek for v5.20, thanks!
+Rename MTK_IOMMU_TLB_ADDR to MTK_IOMMU_ADDR, and update MTK_IOMMU_ADDR
+definition for better generality.
 
-I assume patch 3 for:
+Signed-off-by: Ning Li <ning.li@mediatek.com>
+Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+---
+ drivers/iommu/mtk_iommu.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-  arch/arm/boot/dts/en7523-evb.dts
-  arch/arm/boot/dts/en7523.dtsi
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index bb9dd92c9898..3d62399e8865 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -265,8 +265,8 @@ static const struct iommu_ops mtk_iommu_ops;
+ 
+ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid);
+ 
+-#define MTK_IOMMU_TLB_ADDR(iova) ({					\
+-	dma_addr_t _addr = iova;					\
++#define MTK_IOMMU_ADDR(addr) ({						\
++	unsigned long long _addr = addr;				\
+ 	((lower_32_bits(_addr) & GENMASK(31, 12)) | upper_32_bits(_addr));\
+ })
+ 
+@@ -381,8 +381,8 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+ 			       base + data->plat_data->inv_sel_reg);
+ 
+-		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova), base + REG_MMU_INVLD_START_A);
+-		writel_relaxed(MTK_IOMMU_TLB_ADDR(iova + size - 1),
++		writel_relaxed(MTK_IOMMU_ADDR(iova), base + REG_MMU_INVLD_START_A);
++		writel_relaxed(MTK_IOMMU_ADDR(iova + size - 1),
+ 			       base + REG_MMU_INVLD_END_A);
+ 		writel_relaxed(F_MMU_INV_RANGE, base + REG_MMU_INVALIDATE);
+ 
+-- 
+2.18.0
 
-needs to go through an ARM tree, right?
-
-> ---
->  Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> index 57ae73462272..684227522267 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> @@ -7,6 +7,7 @@ Required properties:
->  	"mediatek,mt7622-pcie"
->  	"mediatek,mt7623-pcie"
->  	"mediatek,mt7629-pcie"
-> +	"airoha,en7523-pcie"
->  - device_type: Must be "pci"
->  - reg: Base addresses and lengths of the root ports.
->  - reg-names: Names of the above areas to use during resource lookup.
-> -- 
-> 2.36.1
-> 
 
