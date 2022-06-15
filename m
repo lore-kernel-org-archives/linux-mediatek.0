@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF887C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 02:05:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7BA4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 02:59:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OR7ruSFDqaNlWBtuomaztWbDcMOhim0SqqZ8UBf27rA=; b=aPe9LhCQXy00IL
-	1EUtoFM1aZKhfP8tpii6jXTnret7Vhzy4ay9fCPquNzryauPnR0AbAz5SxcoLFTpHuIGZNi1UOrSg
-	cvg18oD+Krio392WTmLPs9X9pbOQdxNfvom6Cl0FryblEWWJJBHyZrQdHVLaF4DBdTI3sSDc7pMYd
-	W2IxVnGOm5x5e2nwPzJyVpJokXLPg0T7Tto1lISEPoqI2iWAxQoU7ZfJS7OfrZSyx1f5EoGCT9Wd0
-	Xa1w4RKW6dBT8SowZnfHeDPCOg3u6s5WWYU21s/R7pNviq0ut/5dvtRxkUUmPBUEE315YnnjuicYD
-	ODhI6crnrRjVFTbn6mgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8YSJmZ0qrW0pS7MsoXag9hZrGwY7BqvcRoAwWBRHceI=; b=0LhJxY8Zfbpj0R
+	0EiwYsz1ebqjrBTCiv1W6hqgc3gjAUJT/v5mUXxghOLayOu8V7NBk22HOCWaBgznH/ps93TlhNNA1
+	I5xo7P/A2YnyuuZIkVBFEeoHawUm5ZoZe37zAYjPySEIMJzqli/Z1MDFP19xEljBSRXLjdHK6vDxn
+	0X0d29vC8sfhv9dheAd+ZyneRVwBPa/RmZ+/IeZCbvD1nPZz0DkjZQqqAH6PeTPbb5Rm4JJ7upopL
+	8y1dxQLygdAgBSYik70/atKe/n/4g5uhk4rnKtP30jat5Cp7Kv90ST2YpbGhqbyKspxjy3MqoWYXh
+	L2Am0wdAzJvEMeHLgLew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1IOy-00CAHp-1K; Wed, 15 Jun 2022 02:05:00 +0000
+	id 1o1JFC-00CH9B-8o; Wed, 15 Jun 2022 02:58:58 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1IOm-00CADi-RT; Wed, 15 Jun 2022 02:04:50 +0000
-X-UUID: 06ad5e0b985243b1846ef9fd238aa489-20220614
+	id 1o1JF0-00CH5z-3j; Wed, 15 Jun 2022 02:58:48 +0000
+X-UUID: dd0cedbcd2c549ad921a39e8827c7129-20220614
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:507f223c-77df-432e-9ad1-ace764171c1e,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:52288048-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.6,REQID:fdc60410-8531-4a1e-80ac-22450faf7fdc,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:e3038348-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 06ad5e0b985243b1846ef9fd238aa489-20220614
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <mark-pk.tsai@mediatek.com>)
+X-UUID: dd0cedbcd2c549ad921a39e8827c7129-20220614
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1930077269; Tue, 14 Jun 2022 19:02:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 1992586496; Tue, 14 Jun 2022 19:58:41 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Jun 2022 18:59:52 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ 15.0.1497.2; Tue, 14 Jun 2022 19:58:39 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Wed, 15 Jun 2022 09:59:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ Wed, 15 Jun 2022 10:58:37 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 15 Jun 2022 09:59:50 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-CC: <yj.chiang@mediatek.com>, Jean-Philippe Brucker
-	<jean-philippe@linaro.org>, <stable@vger.kernel.org>, Mark-PK Tsai
-	<mark-pk.tsai@mediatek.com>, Masami Hiramatsu <mhiramat@kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 5.4] arm64: kprobes: Use BRK instead of single-step when executing instructions out-of-line
-Date: Wed, 15 Jun 2022 09:59:23 +0800
-Message-ID: <20220615015928.19181-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Transport; Wed, 15 Jun 2022 10:58:37 +0800
+Message-ID: <d5416a2f2a655f6574b17597fdc22615fe2fc22a.camel@mediatek.com>
+Subject: Re: [PATCH v11 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 15 Jun 2022 10:58:37 +0800
+In-Reply-To: <20220610105522.13449-6-rex-bc.chen@mediatek.com>
+References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
+	 <20220610105522.13449-6-rex-bc.chen@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_190448_940609_26C85396 
-X-CRM114-Status: GOOD (  23.62  )
+X-CRM114-CacheID: sfid-20220614_195846_214336_B0CFEAEF 
+X-CRM114-Status: GOOD (  32.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,247 +88,302 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Hi, Bo-Chen:
 
-commit 7ee31a3aa8f490c6507bc4294df6b70bed1c593e upstream.
+On Fri, 2022-06-10 at 18:55 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a embedded displayport driver for the MediaTek mt8195
+> SoC.
+> 
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> [Bo-Chen: Cleanup the drivers and modify comments from reviewers]
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
 
-Commit 36dadef23fcc ("kprobes: Init kprobes in early_initcall") enabled
-using kprobes from early_initcall. Unfortunately at this point the
-hardware debug infrastructure is not operational. The OS lock may still
-be locked, and the hardware watchpoints may have unknown values when
-kprobe enables debug monitors to single-step instructions.
+[snip]
 
-Rather than using hardware single-step, append a BRK instruction after
-the instruction to be executed out-of-line.
+> +
+> +static int mtk_dp_train_flow(struct mtk_dp *mtk_dp, u8
+> target_link_rate,
+> +			     u8 target_lane_count)
+> +{
+> +	u8 lane_adjust[2] = {};
+> +	bool pass_tps1 = false;
+> +	bool pass_tps2_3 = false;
+> +	int train_retries;
+> +	int status_control;
+> +	int iteration_count;
+> +	int ret;
+> +	u8 prev_lane_adjust;
+> +
+> +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LINK_BW_SET,
+> target_link_rate);
+> +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LANE_COUNT_SET,
+> +			   target_lane_count |
+> DP_LANE_COUNT_ENHANCED_FRAME_EN);
+> +
+> +	if (mtk_dp->train_info.sink_ssc)
+> +		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_DOWNSPREAD_CTRL,
+> +				   DP_SPREAD_AMP_0_5);
+> +
+> +	train_retries = 0;
+> +	status_control = 0;
+> +	iteration_count = 1;
+> +	prev_lane_adjust = 0xFF;
+> +
+> +	mtk_dp_set_lanes(mtk_dp, target_lane_count / 2);
+> +	ret = mtk_dp_phy_configure(mtk_dp, target_link_rate,
+> target_lane_count);
+> +	if (ret)
+> +		return -EINVAL;
+> +
+> +	dev_dbg(mtk_dp->dev,
+> +		"Link train target_link_rate = 0x%x, target_lane_count
+> = 0x%x\n",
+> +		target_link_rate, target_lane_count);
+> +
+> +	do {
+> +		train_retries++;
+> +		if (!mtk_dp->train_info.cable_plugged_in ||
+> +		    mtk_dp->train_info.irq_sta.hpd_disconnect) {
 
-Fixes: 36dadef23fcc ("kprobes: Init kprobes in early_initcall")
-Suggested-by: Will Deacon <will@kernel.org>
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Acked-by: Masami Hiramatsu <mhiramat@kernel.org>
-Link: https://lore.kernel.org/r/20201103134900.337243-1-jean-philippe@linaro.org
-Signed-off-by: Will Deacon <will@kernel.org>
-Link: https://lore.kernel.org/lkml/20220610063619.7921-1-mark-pk.tsai@mediatek.com/
-Cc: stable@vger.kernel.org
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
----
- arch/arm64/include/asm/brk-imm.h        |  2 +
- arch/arm64/include/asm/debug-monitors.h |  1 +
- arch/arm64/include/asm/kprobes.h        |  2 +-
- arch/arm64/kernel/probes/kprobes.c      | 69 +++++++++----------------
- 4 files changed, 27 insertions(+), 47 deletions(-)
+In mtk_dp_hpd_isr_handler(), train_info.irq_sta.hpd_disconnect would
+finally be set to false, so you need not to check it here. So remove it
+here.
 
-diff --git a/arch/arm64/include/asm/brk-imm.h b/arch/arm64/include/asm/brk-imm.h
-index e3d47b52161d..ec7720dbe2c8 100644
---- a/arch/arm64/include/asm/brk-imm.h
-+++ b/arch/arm64/include/asm/brk-imm.h
-@@ -10,6 +10,7 @@
-  * #imm16 values used for BRK instruction generation
-  * 0x004: for installing kprobes
-  * 0x005: for installing uprobes
-+ * 0x006: for kprobe software single-step
-  * Allowed values for kgdb are 0x400 - 0x7ff
-  * 0x100: for triggering a fault on purpose (reserved)
-  * 0x400: for dynamic BRK instruction
-@@ -19,6 +20,7 @@
-  */
- #define KPROBES_BRK_IMM			0x004
- #define UPROBES_BRK_IMM			0x005
-+#define KPROBES_BRK_SS_IMM		0x006
- #define FAULT_BRK_IMM			0x100
- #define KGDB_DYN_DBG_BRK_IMM		0x400
- #define KGDB_COMPILED_DBG_BRK_IMM	0x401
-diff --git a/arch/arm64/include/asm/debug-monitors.h b/arch/arm64/include/asm/debug-monitors.h
-index d825e3585e28..0253691c4b3a 100644
---- a/arch/arm64/include/asm/debug-monitors.h
-+++ b/arch/arm64/include/asm/debug-monitors.h
-@@ -53,6 +53,7 @@
- 
- /* kprobes BRK opcodes with ESR encoding  */
- #define BRK64_OPCODE_KPROBES	(AARCH64_BREAK_MON | (KPROBES_BRK_IMM << 5))
-+#define BRK64_OPCODE_KPROBES_SS	(AARCH64_BREAK_MON | (KPROBES_BRK_SS_IMM << 5))
- /* uprobes BRK opcodes with ESR encoding  */
- #define BRK64_OPCODE_UPROBES	(AARCH64_BREAK_MON | (UPROBES_BRK_IMM << 5))
- 
-diff --git a/arch/arm64/include/asm/kprobes.h b/arch/arm64/include/asm/kprobes.h
-index 97e511d645a2..8699ce30f587 100644
---- a/arch/arm64/include/asm/kprobes.h
-+++ b/arch/arm64/include/asm/kprobes.h
-@@ -16,7 +16,7 @@
- #include <linux/percpu.h>
- 
- #define __ARCH_WANT_KPROBES_INSN_SLOT
--#define MAX_INSN_SIZE			1
-+#define MAX_INSN_SIZE			2
- 
- #define flush_insn_slot(p)		do { } while (0)
- #define kretprobe_blacklist_size	0
-diff --git a/arch/arm64/kernel/probes/kprobes.c b/arch/arm64/kernel/probes/kprobes.c
-index c4452827419b..b41ed2f907b0 100644
---- a/arch/arm64/kernel/probes/kprobes.c
-+++ b/arch/arm64/kernel/probes/kprobes.c
-@@ -36,25 +36,16 @@ DEFINE_PER_CPU(struct kprobe_ctlblk, kprobe_ctlblk);
- static void __kprobes
- post_kprobe_handler(struct kprobe_ctlblk *, struct pt_regs *);
- 
--static int __kprobes patch_text(kprobe_opcode_t *addr, u32 opcode)
--{
--	void *addrs[1];
--	u32 insns[1];
--
--	addrs[0] = addr;
--	insns[0] = opcode;
--
--	return aarch64_insn_patch_text(addrs, insns, 1);
--}
--
- static void __kprobes arch_prepare_ss_slot(struct kprobe *p)
- {
-+	kprobe_opcode_t *addr = p->ainsn.api.insn;
-+	void *addrs[] = {addr, addr + 1};
-+	u32 insns[] = {p->opcode, BRK64_OPCODE_KPROBES_SS};
-+
- 	/* prepare insn slot */
--	patch_text(p->ainsn.api.insn, p->opcode);
-+	aarch64_insn_patch_text(addrs, insns, 2);
- 
--	flush_icache_range((uintptr_t) (p->ainsn.api.insn),
--			   (uintptr_t) (p->ainsn.api.insn) +
--			   MAX_INSN_SIZE * sizeof(kprobe_opcode_t));
-+	flush_icache_range((uintptr_t)addr, (uintptr_t)(addr + MAX_INSN_SIZE));
- 
- 	/*
- 	 * Needs restoring of return address after stepping xol.
-@@ -134,13 +125,18 @@ void *alloc_insn_page(void)
- /* arm kprobe: install breakpoint in text */
- void __kprobes arch_arm_kprobe(struct kprobe *p)
- {
--	patch_text(p->addr, BRK64_OPCODE_KPROBES);
-+	void *addr = p->addr;
-+	u32 insn = BRK64_OPCODE_KPROBES;
-+
-+	aarch64_insn_patch_text(&addr, &insn, 1);
- }
- 
- /* disarm kprobe: remove breakpoint from text */
- void __kprobes arch_disarm_kprobe(struct kprobe *p)
- {
--	patch_text(p->addr, p->opcode);
-+	void *addr = p->addr;
-+
-+	aarch64_insn_patch_text(&addr, &p->opcode, 1);
- }
- 
- void __kprobes arch_remove_kprobe(struct kprobe *p)
-@@ -169,20 +165,15 @@ static void __kprobes set_current_kprobe(struct kprobe *p)
- }
- 
- /*
-- * Interrupts need to be disabled before single-step mode is set, and not
-- * reenabled until after single-step mode ends.
-- * Without disabling interrupt on local CPU, there is a chance of
-- * interrupt occurrence in the period of exception return and  start of
-- * out-of-line single-step, that result in wrongly single stepping
-- * into the interrupt handler.
-+ * Mask all of DAIF while executing the instruction out-of-line, to keep things
-+ * simple and avoid nesting exceptions. Interrupts do have to be disabled since
-+ * the kprobe state is per-CPU and doesn't get migrated.
-  */
- static void __kprobes kprobes_save_local_irqflag(struct kprobe_ctlblk *kcb,
- 						struct pt_regs *regs)
- {
- 	kcb->saved_irqflag = regs->pstate & DAIF_MASK;
--	regs->pstate |= PSR_I_BIT;
--	/* Unmask PSTATE.D for enabling software step exceptions. */
--	regs->pstate &= ~PSR_D_BIT;
-+	regs->pstate |= DAIF_MASK;
- }
- 
- static void __kprobes kprobes_restore_local_irqflag(struct kprobe_ctlblk *kcb,
-@@ -225,10 +216,7 @@ static void __kprobes setup_singlestep(struct kprobe *p,
- 		slot = (unsigned long)p->ainsn.api.insn;
- 
- 		set_ss_context(kcb, slot);	/* mark pending ss */
--
--		/* IRQs and single stepping do not mix well. */
- 		kprobes_save_local_irqflag(kcb, regs);
--		kernel_enable_single_step(regs);
- 		instruction_pointer_set(regs, slot);
- 	} else {
- 		/* insn simulation */
-@@ -279,12 +267,8 @@ post_kprobe_handler(struct kprobe_ctlblk *kcb, struct pt_regs *regs)
- 	}
- 	/* call post handler */
- 	kcb->kprobe_status = KPROBE_HIT_SSDONE;
--	if (cur->post_handler)	{
--		/* post_handler can hit breakpoint and single step
--		 * again, so we enable D-flag for recursive exception.
--		 */
-+	if (cur->post_handler)
- 		cur->post_handler(cur, regs, 0);
--	}
- 
- 	reset_current_kprobe();
- }
-@@ -308,8 +292,6 @@ int __kprobes kprobe_fault_handler(struct pt_regs *regs, unsigned int fsr)
- 		if (!instruction_pointer(regs))
- 			BUG();
- 
--		kernel_disable_single_step();
--
- 		if (kcb->kprobe_status == KPROBE_REENTER)
- 			restore_previous_kprobe(kcb);
- 		else
-@@ -371,10 +353,6 @@ static void __kprobes kprobe_handler(struct pt_regs *regs)
- 			 * pre-handler and it returned non-zero, it will
- 			 * modify the execution path and no need to single
- 			 * stepping. Let's just reset current kprobe and exit.
--			 *
--			 * pre_handler can hit a breakpoint and can step thru
--			 * before return, keep PSTATE D-flag enabled until
--			 * pre_handler return back.
- 			 */
- 			if (!p->pre_handler || !p->pre_handler(p, regs)) {
- 				setup_singlestep(p, regs, kcb, 0);
-@@ -405,7 +383,7 @@ kprobe_ss_hit(struct kprobe_ctlblk *kcb, unsigned long addr)
- }
- 
- static int __kprobes
--kprobe_single_step_handler(struct pt_regs *regs, unsigned int esr)
-+kprobe_breakpoint_ss_handler(struct pt_regs *regs, unsigned int esr)
- {
- 	struct kprobe_ctlblk *kcb = get_kprobe_ctlblk();
- 	int retval;
-@@ -415,16 +393,15 @@ kprobe_single_step_handler(struct pt_regs *regs, unsigned int esr)
- 
- 	if (retval == DBG_HOOK_HANDLED) {
- 		kprobes_restore_local_irqflag(kcb, regs);
--		kernel_disable_single_step();
--
- 		post_kprobe_handler(kcb, regs);
- 	}
- 
- 	return retval;
- }
- 
--static struct step_hook kprobes_step_hook = {
--	.fn = kprobe_single_step_handler,
-+static struct break_hook kprobes_break_ss_hook = {
-+	.imm = KPROBES_BRK_SS_IMM,
-+	.fn = kprobe_breakpoint_ss_handler,
- };
- 
- static int __kprobes
-@@ -568,7 +545,7 @@ int __kprobes arch_trampoline_kprobe(struct kprobe *p)
- int __init arch_init_kprobes(void)
- {
- 	register_kernel_break_hook(&kprobes_break_hook);
--	register_kernel_step_hook(&kprobes_step_hook);
-+	register_kernel_break_hook(&kprobes_break_ss_hook);
- 
- 	return 0;
- }
--- 
-2.18.0
+> +			return -ENODEV;
+> +		}
+> +
+> +		if (mtk_dp->train_state < MTK_DP_TRAIN_STATE_TRAINING)
+> +			return -EAGAIN;
+> +
+> +		if (!pass_tps1) {
+> +			ret = mtk_dp_train_tps_1(mtk_dp,
+> target_lane_count,
+> +						 &iteration_count,
+> lane_adjust,
+> +						 &status_control,
+> +						 &prev_lane_adjust);
+> +			if (!ret) {
+> +				pass_tps1 = true;
+> +				train_retries = 0;
+> +			} else if (ret == -EINVAL) {
+> +				break;
+> +			}
+> +		} else {
+> +			ret = mtk_dp_train_tps_2_3(mtk_dp,
+> target_link_rate,
+> +						   target_lane_count,
+> +						   &iteration_count,
+> +						   lane_adjust,
+> &status_control,
+> +						   &prev_lane_adjust);
+> +			if (!ret) {
+> +				pass_tps2_3 = true;
+> +				break;
+> +			} else if (ret == -EINVAL) {
+> +				break;
+> +			}
+> +		}
+> +
+> +		drm_dp_dpcd_read(&mtk_dp->aux,
+> DP_ADJUST_REQUEST_LANE0_1,
+> +				 lane_adjust, sizeof(lane_adjust));
+> +		mtk_dp_train_update_swing_pre(mtk_dp,
+> target_lane_count,
+> +					      lane_adjust);
+> +	} while (train_retries < MTK_DP_TRAIN_RETRY_LIMIT &&
+> +		 iteration_count < MTK_DP_TRAIN_MAX_ITERATIONS);
+> +
+> +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_PATTERN_SET,
+> +			   DP_TRAINING_PATTERN_DISABLE);
+> +	ret = mtk_dp_train_set_pattern(mtk_dp, 0);
+> +	if (ret)
+> +		return -EINVAL;
+> +
+> +	if (!pass_tps2_3)
+> +		return -ETIMEDOUT;
+> +
+> +	mtk_dp->train_info.link_rate = target_link_rate;
+> +	mtk_dp->train_info.lane_count = target_lane_count;
+> +
+> +	mtk_dp_training_set_scramble(mtk_dp, true);
+> +
+> +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LANE_COUNT_SET,
+> +			   target_lane_count |
+> +				   DP_LANE_COUNT_ENHANCED_FRAME_EN);
+> +	mtk_dp_set_enhanced_frame_mode(mtk_dp, true);
+> +
+> +	return ret;
+> +}
+> +
+
+[snip]
+
+> +
+> +/*
+> + * We need to handle HPD signal in eDP even though eDP is a always
+> connected
+> + * device. Besides connected status, there is another feature for
+> HPD signal -
+> + * HPD pulse: it presents an IRQ from sink devices to source devices
+> (Refer to
+> + * 5.1.4 of DP1.4 spec).
+> + */
+> +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
+> +{
+> +	bool connected;
+> +	u32 irq_status = mtk_dp_swirq_get_clear(mtk_dp) |
+> +			 mtk_dp_hwirq_get_clear(mtk_dp);
+> +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
+> +
+> +	if (irq_status & MTK_DP_HPD_INTERRUPT)
+> +		train_info->irq_sta.hpd_inerrupt = true;
+> +	if (irq_status & MTK_DP_HPD_CONNECT)
+> +		train_info->irq_sta.hpd_connect = true;
+> +	if (irq_status & MTK_DP_HPD_DISCONNECT)
+> +		train_info->irq_sta.hpd_disconnect = true;
+> +
+
+train_info->irq_sta.hpd_connect is used only in this function, so let
+hpd_connect to be local variable.
+
+> +	if (!irq_status)
+> +		return IRQ_HANDLED;
+> +
+> +	connected = mtk_dp_plug_state(mtk_dp);
+> +	if (connected || !train_info->cable_plugged_in)
+> +		train_info->irq_sta.hpd_disconnect  = false;
+> +	else if (!connected || train_info->cable_plugged_in)
+> +		train_info->irq_sta.hpd_connect = false;
+> +
+> +	if (!(train_info->irq_sta.hpd_connect ||
+> +	      train_info->irq_sta.hpd_disconnect))
+> +		return IRQ_WAKE_THREAD;
+> +
+> +	if (train_info->irq_sta.hpd_connect) {
+> +		train_info->irq_sta.hpd_connect = false;
+> +		train_info->cable_plugged_in = true;
+> +	} else {
+> +		train_info->irq_sta.hpd_disconnect = false;
+> +		train_info->cable_plugged_in = false;
+> +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
+> +	}
+> +	train_info->cable_state_change = true;
+> +
+> +	return IRQ_WAKE_THREAD;
+> +}
+> +
+
+[snip]
+
+> +
+> +static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
+> +				   struct drm_dp_aux_msg *msg)
+> +{
+> +	struct mtk_dp *mtk_dp;
+> +	bool is_read;
+> +	u8 request;
+> +	size_t accessed_bytes = 0;
+> +	int ret = 0;
+> +
+> +	mtk_dp = container_of(mtk_aux, struct mtk_dp, aux);
+> +
+> +	if (!mtk_dp->train_info.cable_plugged_in ||
+> +	    mtk_dp->train_info.irq_sta.hpd_disconnect) {
+
+In mtk_dp_hpd_isr_handler(), train_info.irq_sta.hpd_disconnect would
+finally be set to false, so you need not to check it here. So remove it
+here.
+
+Regards,
+CK
+
+> +		ret = -EAGAIN;
+> +		goto err;
+> +	}
+> +
+> +	switch (msg->request) {
+> +	case DP_AUX_I2C_MOT:
+> +	case DP_AUX_I2C_WRITE:
+> +	case DP_AUX_NATIVE_WRITE:
+> +	case DP_AUX_I2C_WRITE_STATUS_UPDATE:
+> +	case DP_AUX_I2C_WRITE_STATUS_UPDATE | DP_AUX_I2C_MOT:
+> +		request = msg->request &
+> ~DP_AUX_I2C_WRITE_STATUS_UPDATE;
+> +		is_read = false;
+> +		break;
+> +	case DP_AUX_I2C_READ:
+> +	case DP_AUX_NATIVE_READ:
+> +	case DP_AUX_I2C_READ | DP_AUX_I2C_MOT:
+> +		request = msg->request;
+> +		is_read = true;
+> +		break;
+> +	default:
+> +		drm_err(mtk_aux->drm_dev, "invalid aux cmd = %d\n",
+> +			msg->request);
+> +		ret = -EINVAL;
+> +		goto err;
+> +	}
+> +
+> +	if (msg->size == 0) {
+> +		ret = mtk_dp_aux_do_transfer(mtk_dp, is_read, request,
+> +					     msg->address +
+> accessed_bytes,
+> +					     msg->buffer +
+> accessed_bytes, 0);
+> +	} else {
+> +		while (accessed_bytes < msg->size) {
+> +			size_t to_access =
+> +				min_t(size_t, DP_AUX_MAX_PAYLOAD_BYTES,
+> +				      msg->size - accessed_bytes);
+> +
+> +			ret = mtk_dp_aux_do_transfer(mtk_dp, is_read,
+> request,
+> +						     msg->address +
+> accessed_bytes,
+> +						     msg->buffer +
+> accessed_bytes,
+> +						     to_access);
+> +
+> +			if (ret) {
+> +				drm_info(mtk_dp->drm_dev,
+> +					 "Failed to do AUX transfer:
+> %d\n", ret);
+> +				break;
+> +			}
+> +			accessed_bytes += to_access;
+> +		}
+> +	}
+> +err:
+> +	if (ret) {
+> +		msg->reply = DP_AUX_NATIVE_REPLY_NACK |
+> DP_AUX_I2C_REPLY_NACK;
+> +		return ret;
+> +	}
+> +
+> +	msg->reply = DP_AUX_NATIVE_REPLY_ACK | DP_AUX_I2C_REPLY_ACK;
+> +	return msg->size;
+> +}
+> +
 
 
 _______________________________________________
