@@ -4,85 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C40FC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 22:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73D6FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 23:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BTgb0npZslGFqc9l4/B2gapx8GhMpIsy4i4EMeyyDr0=; b=kLWD305Z9VIheFbxKhQoWFsusC
-	2L+EJI1/FIUYfkdFW8hBB0r3WyaSsKVatY7zwJKMAXc1//virvIUDu0goc8rnk7ORNWx/hD1sYYHo
-	HVKcnppu6eBtqZAxhK2OBQRBZiu6isSmYHF8/22qMWEQqAj1Q14OANIw1HWM/YD1ndyOqDe+A4qDN
-	7dMXYEmlQV7vuZPFs8R+KGBX6tdi5v5aS5g2t4YC6yRMCYRtyK+ti6s1oleSirDdZTa9t9DJnt5jd
-	538ZpvqywqirkpAzJXWvRGNWsq5om935nkpR1OBKKuMEqet1ddYYl6TXig87hnCqqEfzXi5bjXXuE
-	bufMGWMA==;
+	bh=dv+4zVQ8yma2CGjUc5/QHeUPsUtTcuF3IrwnT53JeW0=; b=dehSAhsCXVoH699GQgd7HtZj4Z
+	ZWqSDNTUIUBdxKx1cZRu3a6b3Oo3MLmLs3dT/BPuBknq9hqLQH/Uc0oMa6ptqKXRQ46yQ4cohlbcC
+	IGFCbdce1zY7yzHS7wUyVODRjLpoEbUhxTc2VWVB2BqE27qPdu/WhajHVECb4A0TaEL4kNBfZpvq1
+	kVBQgN+GunbQT+Q+t85anoCjvRJW0GOJ2XHVEeh9+Fa1q6H+LV8MV6UHGYXbBH52n3ZjAViObGCbl
+	DRvTc00uYbQecWLH+lFypKd4FQNwDtnN0GnoM0QFg1aeSnbGT4DjxMBvS8RYBDGBmQ2hfvCWqbyVZ
+	ZQgVRKPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1bpT-00Gk1G-7E; Wed, 15 Jun 2022 22:49:39 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1o1cBN-00Gng9-Uw; Wed, 15 Jun 2022 23:12:17 +0000
+Received: from mail-mw2nam12on2061f.outbound.protection.outlook.com ([2a01:111:f400:fe5a::61f] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1bpI-00GjwF-Ep
-	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 22:49:30 +0000
-Received: by mail-pf1-x429.google.com with SMTP id e11so12715426pfj.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jun 2022 15:49:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=BTgb0npZslGFqc9l4/B2gapx8GhMpIsy4i4EMeyyDr0=;
-        b=WvQUh86qusE8PX1g7+NSCGy1cDhMQoQxF2jJKx6nYb2FRlplI+9h/aRuthtegCxFL0
-         ztLFvr3Y0bFc0Kmz2ph/kvL1SKumYDYqyrjTvVT3abIhD+cwsKPgbcNiqF+QrW0mFY6t
-         ReO2vQkpTPt3BPjusfP146o55WN5YX/Fk3zMJacEILu1xw0o26oHX1xTjHKyThohZuU/
-         X4JwKH18igly2gUlYR06mSkoWN2fq5FikzlgsqyM7K9UF//YF+ysz6rUHkkFjRaKoaUZ
-         Lb9MYuJulIP+BkpJyrGVkWAv3asYtMt5PYOr6L3nQ2yJ2pANC5UdRQd1P5yNzwNo+20I
-         zPfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=BTgb0npZslGFqc9l4/B2gapx8GhMpIsy4i4EMeyyDr0=;
-        b=uEo+U0Hgiquxj8dx2WkD2pJAXoO1P6QLtuPD6KxAC8dhy/h1NLNS6EDFURKuhTdCWz
-         obf25GTmB9UL7qFcCrx0gfmNhFymUjfyrtSEE77pJ+SIfYNWka8dGU+d03evpkwoyKsN
-         Pdh4k9e3Zpquf19SdFVc220hLqTN+gh0gFTyG3DbHbovtcxXhn1N+wAb5x4b3gPRVP+I
-         4iCAEjMxfY+xifwUDR1F6HF3QHWQGwuHCHgS1LvC+CESjjOUkor4mCAV3mWiOdZkMtYA
-         N9xs3dK+m374gNbtlSBXYNbTbHONI/y6rl3JfY4DJzn4WRgiU9ZazLiTn/yCrk7WowvP
-         JLPw==
-X-Gm-Message-State: AJIora/qlv8OfoolmtfOJdtbsFaH7lPZ4fRT453f0b7BbfUhJMGSs62L
-	4dRrGE4E92wH+4hdTvckSOiApw==
-X-Google-Smtp-Source: AGRyM1vJTWE74QAH+LAzbfgiQoQZEXpPZOfnHOlTu+phRnDTJoAfiQS6YkTfp6ogAdyvwLAJL0QVDg==
-X-Received: by 2002:a63:1408:0:b0:408:ab3d:9310 with SMTP id u8-20020a631408000000b00408ab3d9310mr1777949pgl.253.1655333365420;
-        Wed, 15 Jun 2022 15:49:25 -0700 (PDT)
-Received: from google.com ([192.77.111.2])
-        by smtp.gmail.com with ESMTPSA id p24-20020aa78618000000b0051c7038bd52sm127995pfn.220.2022.06.15.15.49.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jun 2022 15:49:25 -0700 (PDT)
-Date: Wed, 15 Jun 2022 23:49:22 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com,
-	daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org,
-	szunichen@gmail.com, ChiYuan Huang <cy_huang@richtek.com>
-Subject: Re: [PATCH v2 08/15] mfd: mt6370: Add Mediatek MT6370 support
-Message-ID: <Yqph8jwHU8rPooJA@google.com>
-References: <20220613111146.25221-1-peterwu.pub@gmail.com>
- <20220613111146.25221-9-peterwu.pub@gmail.com>
+	id 1o1cBK-00Gne2-B1; Wed, 15 Jun 2022 23:12:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H7w8UqLNcDPkaQ2Su50IekXjTBAGLMsb9foC+vtTDKLLWzY9RE3403Caqhhryzyn+BNQrBOhLbNw3rtJvghf4MIZ5S48PR13jaLnK3pJgNS7YwspJyGcI3SZnbcu55dUImC5QDzEF6m1P8LMSR+155xvOJeJkot6Is7BcyW9hqnxhVxJKe9c/rVim2yP6o9AK5AAiV7BEJLn71UJdpt5mLlganCvc9VMJoBqoHoeW0VfQttwyqS7dwxzFVoct8iaNmBSvbJuj90RJWVvZ+6DhRrSC6Y292t/qZ9EeP30v/89raZxniaPvA+klkMFn6um0vtuz0En+R4Clj0g9iQ0dA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dv+4zVQ8yma2CGjUc5/QHeUPsUtTcuF3IrwnT53JeW0=;
+ b=UG3uCrVWj+/yLmZYpK8PIlVS/OvB9s3vPt0r2UAEA46xOuXIlybKxU5PWzVVs/II7a6dWaedcbRweDw9D4GIT3fn6TkSD+Z59AHmX4uTEMrdp7Hi1PbM8eM1BpyC4SJakTgW2aGTW5xR/hxU6WD5OxWhWVGPlrdFDn2MFOxd0VrfODa7mICMYKY0OsmH2vkljjMQELDg/cnQzkDrDJElA4/tUa9yg3UJ+P+8TMt/JUwwQfNzFOhPDGFeR/2RXkAOevXg6INRqj9ug5wyLBWxIt6i89oibSAS0AzxSymvKFWHkEc/SovyMjRg6g2YPAj9PPujWbD9oVvcrLGwCAEiWQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.236) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com; dmarc=pass
+ (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
+ (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dv+4zVQ8yma2CGjUc5/QHeUPsUtTcuF3IrwnT53JeW0=;
+ b=nsT7NCzMa2c/i7L8h5EXK5ADt8e0fb+vTzgcrGfd3EMZ2kR3vQNb3WhtFVz8uuCyNDHSAAf1F6REUDrG7P6SFfXy6LmLbJQ4qNQcBQTQedQIo8xrvvdtBHWKC0cfgBY+tseEaACzijh6rHX31PV8EFoVQJHZB6b5dvwLEEoRNAPBZsVGulGmUsbhrty8eECliO8SG38Xv/JaK5Mk2l0OU8hppn+HySYTUFIdc0lpV12Cw/FupdzK7fSwEzGaeMNGgXsJWyBpRk190nwW9nYsol/rc+aayjnu5zer56Th21d9FfeVjMaUTOBqC38rJ2GbnsLWNoCK9rRfaHRICyWEtg==
+Received: from BN9P222CA0024.NAMP222.PROD.OUTLOOK.COM (2603:10b6:408:10c::29)
+ by DM6PR12MB4105.namprd12.prod.outlook.com (2603:10b6:5:217::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.13; Wed, 15 Jun
+ 2022 23:12:08 +0000
+Received: from BN8NAM11FT061.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:10c:cafe::45) by BN9P222CA0024.outlook.office365.com
+ (2603:10b6:408:10c::29) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14 via Frontend
+ Transport; Wed, 15 Jun 2022 23:12:08 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.236)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.236 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.236; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.236) by
+ BN8NAM11FT061.mail.protection.outlook.com (10.13.177.144) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5332.12 via Frontend Transport; Wed, 15 Jun 2022 23:12:07 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ DRHQMAIL109.nvidia.com (10.27.9.19) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.32; Wed, 15 Jun 2022 23:12:06 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.22; Wed, 15 Jun 2022 16:12:06 -0700
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
+ Transport; Wed, 15 Jun 2022 16:12:04 -0700
+Date: Wed, 15 Jun 2022 16:12:03 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
+	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
+	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
+	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
+	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>, "agross@kernel.org"
+	<agross@kernel.org>, "bjorn.andersson@linaro.org"
+	<bjorn.andersson@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>,
+	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "baolin.wang7@gmail.com"
+	<baolin.wang7@gmail.com>, "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+	"wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
+	<jernej.skrabec@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"virtualization@lists.linux-foundation.org"
+	<virtualization@lists.linux-foundation.org>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
+	<jonathanh@nvidia.com>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "gerald.schaefer@linux.ibm.com"
+	<gerald.schaefer@linux.ibm.com>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "cohuck@redhat.com"
+	<cohuck@redhat.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org"
+	<iommu@lists.linux-foundation.org>, "dwmw2@infradead.org"
+	<dwmw2@infradead.org>
+Subject: Re: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
+ enforced cache coherency
+Message-ID: <YqpnQ63gx/3HUWOA@Asurada-Nvidia>
+References: <20220606061927.26049-1-nicolinc@nvidia.com>
+ <20220606061927.26049-4-nicolinc@nvidia.com>
+ <BN9PR11MB5276DC98E75B1906A76F7ADC8CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20220608111724.GL1343366@nvidia.com>
+ <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
+ <YqjzXpzuBa4ATf9o@Asurada-Nvidia>
+ <BN9PR11MB527694346588A803F0EDD95E8CAD9@BN9PR11MB5276.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220613111146.25221-9-peterwu.pub@gmail.com>
+In-Reply-To: <BN9PR11MB527694346588A803F0EDD95E8CAD9@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 589330ed-c0b8-46ee-7f51-08da4f247844
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4105:EE_
+X-Microsoft-Antispam-PRVS: 	<DM6PR12MB4105AB8011A048D7553121ADABAD9@DM6PR12MB4105.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	UiXDI9NvcScFVEI7OCm3l0nGJn6kYhAX4y5QwDkwSstAzqwE0gV32FjlfOCVs0htCBHLnUbvHDlFqWVjeaAATuhRY134npZAfNAyhRKU+6FiXt18woerTIMQGBO4zbUHZH8TPTBrg2qWcOEEnNKoPKh0ULiqKvjRzfrYUrKtAqFFOq6YGtvYHqCAwJa5vE+XMPpv7NB00Hng4nmOv35wSyrZF4MKhlrZNXjWKfbreL09WO6L5nz6Mz1pC+69qYDyu5T/SqcUWFnh5pHLTf24BSrVIZYdj4VMMZyRitKFl+iJu1Zd0BE9Z+KVX+ktBHr0LobO3vA+P9pazy/ToQ7jHKmUS0Cp+KF5D7fseLJf7dEDyhCsZnig/UUryIgUYuf0EC1J94yU64OJ0jZMOc30R1cTeA765mC+H8GknODLWRUuGjvZY3Gtj1NvlIqn6ztR5n1KSMKWumYLBKSM6j4cHJ1a9iH7S015nR1DAmwFmfPIor88XxltP4Bi1xkORpzLaacxMDVohHLwSOWfwWuuF1L/drc3TcpM9GBpMrXhBiKYl6NCXu1kYvG/SwDCuw5hZ48Wvmqf2jWg0mnsKkB05m969uotJ6bmYvVUI2nKnhv7plnDL27l2MN3S8Ibu7ko4yCzsrVb6DPz0LMcgoO9iyCGpLf5PN9v4WboSidDnQrkyNON/LgVEm2ghCQNjiMU/TV1POURv6Bg11NHUvUL3w==
+X-Forefront-Antispam-Report: 	CIP:12.22.5.236;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(36840700001)(46966006)(40470700004)(33716001)(426003)(47076005)(336012)(83380400001)(86362001)(316002)(4326008)(2906002)(186003)(8676002)(70206006)(55016003)(36860700001)(54906003)(356005)(8936002)(26005)(6916009)(5660300002)(70586007)(40460700003)(7406005)(81166007)(9686003)(82310400005)(508600001)(7416002)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2022 23:12:07.9799
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 589330ed-c0b8-46ee-7f51-08da4f247844
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.236];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT061.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4105
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_154928_532020_EDAEAD87 
-X-CRM114-Status: GOOD (  24.54  )
+X-CRM114-CacheID: sfid-20220615_161214_619331_EE5CB25F 
+X-CRM114-Status: GOOD (  28.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,440 +160,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 13 Jun 2022, ChiaEn Wu wrote:
-
-> From: ChiYuan Huang <cy_huang@richtek.com>
+On Wed, Jun 15, 2022 at 07:35:00AM +0000, Tian, Kevin wrote:
+> External email: Use caution opening links or attachments
 > 
-> Add Mediatek MT6370 MFD support.
 > 
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> ---
->  drivers/mfd/Kconfig  |  13 ++
->  drivers/mfd/Makefile |   1 +
->  drivers/mfd/mt6370.c | 349 +++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 363 insertions(+)
->  create mode 100644 drivers/mfd/mt6370.c
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> > Sent: Wednesday, June 15, 2022 4:45 AM
+> >
+> > Hi Kevin,
+> >
+> > On Wed, Jun 08, 2022 at 11:48:27PM +0000, Tian, Kevin wrote:
+> > > > > > The KVM mechanism for controlling wbinvd is only triggered during
+> > > > > > kvm_vfio_group_add(), meaning it is a one-shot test done once the
+> > > > devices
+> > > > > > are setup.
+> > > > >
+> > > > > It's not one-shot. kvm_vfio_update_coherency() is called in both
+> > > > > group_add() and group_del(). Then the coherency property is
+> > > > > checked dynamically in wbinvd emulation:
+> > > >
+> > > > From the perspective of managing the domains that is still
+> > > > one-shot. It doesn't get updated when individual devices are
+> > > > added/removed to domains.
+> > >
+> > > It's unchanged per-domain but dynamic per-vm when multiple
+> > > domains are added/removed (i.e. kvm->arch.noncoherent_dma_count).
+> > > It's the latter being checked in the kvm.
+> >
+> > I am going to send a v2, yet not quite getting the point here.
+> > Meanwhile, Jason is on leave.
+> >
+> > What, in your opinion, would be an accurate description here?
+> >
 > 
-> diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-> index 3b59456f5545..d9a7524a3e0e 100644
-> --- a/drivers/mfd/Kconfig
-> +++ b/drivers/mfd/Kconfig
-> @@ -937,6 +937,19 @@ config MFD_MT6360
->  	  PMIC part includes 2-channel BUCKs and 2-channel LDOs
->  	  LDO part includes 4-channel LDOs
->  
-> +config MFD_MT6370
-> +	tristate "Mediatek MT6370 SubPMIC"
-> +	select MFD_CORE
-> +	select REGMAP_I2C
-> +	select REGMAP_IRQ
-> +	depends on I2C
-> +	help
-> +	  Say Y here to enable MT6370 SubPMIC functional support.
-> +	  It integrate single cell battery charger with adc monitoring, RGB
+> Something like below:
+> --
+> The KVM mechanism for controlling wbinvd is based on OR of
+> the coherency property of all devices attached to a guest, no matter
+> those devices  are attached to a single domain or multiple domains.
+> 
+> So, there is no value in trying to push a device that could do enforced
+> cache coherency to a dedicated domain vs re-using an existing domain
+> which is non-coherent since KVM won't be able to take advantage of it.
+> This just wastes domain memory.
+> 
+> Simplify this code and eliminate the test. This removes the only logic
+> that needed to have a dummy domain attached prior to searching for a
+> matching domain and simplifies the next patches.
+> 
+> It's unclear whether we want to further optimize the Intel driver to
+> update the domain coherency after a device is detached from it, at
+> least not before KVM can be verified to handle such dynamics in related
+> emulation paths (wbinvd, vcpu load, write_cr0, ept, etc.). In reality
+> we don't see an usage requiring such optimization as the only device
+> which imposes such non-coherency is Intel GPU which even doesn't
+> support hotplug/hot remove.
 
-s/integrates/consists of a/
-
-"ADC"
-
-> +	  LEDs, dual channel flashlight, WLED backlight driver, display bias
-
-> +	  voltage supply, one general purpose LDO, and cc logic
-> +	  controller with USBPD commmunication capable.
-
-The last part makes no sense - "and is USBPD"?
-
->  config MFD_MT6397
->  	tristate "MediaTek MT6397 PMIC Support"
->  	select MFD_CORE
-> diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-> index 858cacf659d6..62b27125420e 100644
-> --- a/drivers/mfd/Makefile
-> +++ b/drivers/mfd/Makefile
-> @@ -242,6 +242,7 @@ obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)	+= intel_soc_pmic_bxtwc.o
->  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)	+= intel_soc_pmic_chtwc.o
->  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)	+= intel_soc_pmic_chtdc_ti.o
->  obj-$(CONFIG_MFD_MT6360)	+= mt6360-core.o
-> +obj-$(CONFIG_MFD_MT6370)	+= mt6370.o
->  mt6397-objs			:= mt6397-core.o mt6397-irq.o mt6358-irq.o
->  obj-$(CONFIG_MFD_MT6397)	+= mt6397.o
->  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)	+= intel_soc_pmic_mrfld.o
-> diff --git a/drivers/mfd/mt6370.c b/drivers/mfd/mt6370.c
-> new file mode 100644
-> index 000000000000..6af9f73c9c0c
-> --- /dev/null
-> +++ b/drivers/mfd/mt6370.c
-> @@ -0,0 +1,349 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +
-> +#include <linux/bits.h>
-> +#include <linux/i2c.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/kernel.h>
-> +#include <linux/mfd/core.h>
-> +#include <linux/module.h>
-> +#include <linux/regmap.h>
-> +
-> +enum {
-> +	MT6370_USBC_I2C = 0,
-> +	MT6370_PMU_I2C,
-> +	MT6370_MAX_I2C
-> +};
-> +
-> +#define MT6370_REG_DEV_INFO	0x100
-> +#define MT6370_REG_CHG_IRQ1	0x1C0
-> +#define MT6370_REG_CHG_MASK1	0x1E0
-> +
-> +#define MT6370_VENID_MASK	GENMASK(7, 4)
-> +
-> +#define MT6370_NUM_IRQREGS	16
-> +#define MT6370_USBC_I2CADDR	0x4E
-> +#define MT6370_REG_ADDRLEN	2
-> +#define MT6370_REG_MAXADDR	0x1FF
-> +
-> +/* IRQ definitions */
-> +#define MT6370_IRQ_DIRCHGON		0
-> +#define MT6370_IRQ_CHG_TREG		4
-> +#define MT6370_IRQ_CHG_AICR		5
-> +#define MT6370_IRQ_CHG_MIVR		6
-> +#define MT6370_IRQ_PWR_RDY		7
-> +#define MT6370_IRQ_FL_CHG_VINOVP	11
-> +#define MT6370_IRQ_CHG_VSYSUV		12
-> +#define MT6370_IRQ_CHG_VSYSOV		13
-> +#define MT6370_IRQ_CHG_VBATOV		14
-> +#define MT6370_IRQ_CHG_VINOVPCHG	15
-> +#define MT6370_IRQ_TS_BAT_COLD		20
-> +#define MT6370_IRQ_TS_BAT_COOL		21
-> +#define MT6370_IRQ_TS_BAT_WARM		22
-> +#define MT6370_IRQ_TS_BAT_HOT		23
-> +#define MT6370_IRQ_TS_STATC		24
-> +#define MT6370_IRQ_CHG_FAULT		25
-> +#define MT6370_IRQ_CHG_STATC		26
-> +#define MT6370_IRQ_CHG_TMR		27
-> +#define MT6370_IRQ_CHG_BATABS		28
-> +#define MT6370_IRQ_CHG_ADPBAD		29
-> +#define MT6370_IRQ_CHG_RVP		30
-> +#define MT6370_IRQ_TSHUTDOWN		31
-> +#define MT6370_IRQ_CHG_IINMEAS		32
-> +#define MT6370_IRQ_CHG_ICCMEAS		33
-> +#define MT6370_IRQ_CHGDET_DONE		34
-> +#define MT6370_IRQ_WDTMR		35
-> +#define MT6370_IRQ_SSFINISH		36
-> +#define MT6370_IRQ_CHG_RECHG		37
-> +#define MT6370_IRQ_CHG_TERM		38
-> +#define MT6370_IRQ_CHG_IEOC		39
-> +#define MT6370_IRQ_ADC_DONE		40
-> +#define MT6370_IRQ_PUMPX_DONE		41
-> +#define MT6370_IRQ_BST_BATUV		45
-> +#define MT6370_IRQ_BST_MIDOV		46
-> +#define MT6370_IRQ_BST_OLP		47
-> +#define MT6370_IRQ_ATTACH		48
-> +#define MT6370_IRQ_DETACH		49
-> +#define MT6370_IRQ_HVDCP_STPDONE	51
-> +#define MT6370_IRQ_HVDCP_VBUSDET_DONE	52
-> +#define MT6370_IRQ_HVDCP_DET		53
-> +#define MT6370_IRQ_CHGDET		54
-> +#define MT6370_IRQ_DCDT			55
-> +#define MT6370_IRQ_DIRCHG_VGOK		59
-> +#define MT6370_IRQ_DIRCHG_WDTMR		60
-> +#define MT6370_IRQ_DIRCHG_UC		61
-> +#define MT6370_IRQ_DIRCHG_OC		62
-> +#define MT6370_IRQ_DIRCHG_OV		63
-> +#define MT6370_IRQ_OVPCTRL_SWON		67
-> +#define MT6370_IRQ_OVPCTRL_UVP_D	68
-> +#define MT6370_IRQ_OVPCTRL_UVP		69
-> +#define MT6370_IRQ_OVPCTRL_OVP_D	70
-> +#define MT6370_IRQ_OVPCTRL_OVP		71
-> +#define MT6370_IRQ_FLED_STRBPIN		72
-> +#define MT6370_IRQ_FLED_TORPIN		73
-> +#define MT6370_IRQ_FLED_TX		74
-> +#define MT6370_IRQ_FLED_LVF		75
-> +#define MT6370_IRQ_FLED2_SHORT		78
-> +#define MT6370_IRQ_FLED1_SHORT		79
-> +#define MT6370_IRQ_FLED2_STRB		80
-> +#define MT6370_IRQ_FLED1_STRB		81
-> +#define mT6370_IRQ_FLED2_STRB_TO	82
-> +#define MT6370_IRQ_FLED1_STRB_TO	83
-> +#define MT6370_IRQ_FLED2_TOR		84
-> +#define MT6370_IRQ_FLED1_TOR		85
-> +#define MT6370_IRQ_OTP			93
-> +#define MT6370_IRQ_VDDA_OVP		94
-> +#define MT6370_IRQ_VDDA_UV		95
-> +#define MT6370_IRQ_LDO_OC		103
-> +#define MT6370_IRQ_BLED_OCP		118
-> +#define MT6370_IRQ_BLED_OVP		119
-> +#define MT6370_IRQ_DSV_VNEG_OCP		123
-> +#define MT6370_IRQ_DSV_VPOS_OCP		124
-> +#define MT6370_IRQ_DSV_BST_OCP		125
-> +#define MT6370_IRQ_DSV_VNEG_SCP		126
-> +#define MT6370_IRQ_DSV_VPOS_SCP		127
-> +
-> +struct mt6370_info {
-> +	struct i2c_client *i2c[MT6370_MAX_I2C];
-> +	struct device *dev;
-> +	struct regmap *regmap;
-> +	struct regmap_irq_chip_data *irq_data;
-> +};
-
-Can we shove all of the above into a header file?
-
-> +static const struct regmap_irq mt6370_irqs[] = {
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHGON, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TREG, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_AICR, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_MIVR, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_PWR_RDY, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FL_CHG_VINOVP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VSYSUV, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VSYSOV, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VBATOV, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VINOVPCHG, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_COLD, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_COOL, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_WARM, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_HOT, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_STATC, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_FAULT, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_STATC, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TMR, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_BATABS, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_ADPBAD, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_RVP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_TSHUTDOWN, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_IINMEAS, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_ICCMEAS, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHGDET_DONE, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_WDTMR, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_SSFINISH, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_RECHG, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TERM, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_IEOC, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_ADC_DONE, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_PUMPX_DONE, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_BATUV, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_MIDOV, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_OLP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_ATTACH, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DETACH, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_STPDONE, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_VBUSDET_DONE, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_DET, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHGDET, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DCDT, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_VGOK, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_WDTMR, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_UC, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_OC, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_OV, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_SWON, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_UVP_D, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_UVP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_OVP_D, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_OVP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_STRBPIN, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_TORPIN, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_TX, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_LVF, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_SHORT, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_SHORT, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_STRB, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB, 8),
-> +	REGMAP_IRQ_REG_LINE(mT6370_IRQ_FLED2_STRB_TO, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB_TO, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_TOR, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_TOR, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_OTP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_VDDA_OVP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_VDDA_UV, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_LDO_OC, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_BLED_OCP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_BLED_OVP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VNEG_OCP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VPOS_OCP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_BST_OCP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VNEG_SCP, 8),
-> +	REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VPOS_SCP, 8)
-> +};
-> +
-> +static const struct regmap_irq_chip mt6370_irq_chip = {
-> +	.name		= "mt6370-irqs",
-> +	.status_base	= MT6370_REG_CHG_IRQ1,
-> +	.mask_base	= MT6370_REG_CHG_MASK1,
-> +	.num_regs	= MT6370_NUM_IRQREGS,
-> +	.irqs		= mt6370_irqs,
-> +	.num_irqs	= ARRAY_SIZE(mt6370_irqs),
-> +};
-> +
-> +static const struct resource mt6370_regulator_irqs[] = {
-> +	DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VPOS_SCP, "db_vpos_scp"),
-> +	DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VNEG_SCP, "db_vneg_scp"),
-> +	DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_BST_OCP, "db_vbst_ocp"),
-> +	DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VPOS_OCP, "db_vpos_ocp"),
-> +	DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VNEG_OCP, "db_vneg_ocp"),
-> +	DEFINE_RES_IRQ_NAMED(MT6370_IRQ_LDO_OC, "ldo_oc")
-> +};
-> +
-> +static const struct mfd_cell mt6370_devices[] = {
-> +	MFD_CELL_OF("adc", NULL, NULL, 0, 0, "mediatek,mt6370-adc"),
-> +	MFD_CELL_OF("charger", NULL, NULL, 0, 0, "mediatek,mt6370-charger"),
-> +	MFD_CELL_OF("backlight", NULL, NULL, 0, 0, "mediatek,mt6370-backlight"),
-> +	MFD_CELL_OF("flashlight", NULL, NULL, 0, 0, "mediatek,mt6370-flashlight"),
-> +	MFD_CELL_OF("indicator", NULL, NULL, 0, 0, "mediatek,mt6370-indicator"),
-> +	MFD_CELL_OF("tcpc", NULL, NULL, 0, 0, "mediatek,mt6370-tcpc"),
-> +	MFD_CELL_RES("regulator", mt6370_regulator_irqs)
-> +};
-> +
-> +static int mt6370_check_vendor_info(struct mt6370_info *info)
-> +{
-> +	unsigned int devinfo;
-> +	int ret;
-> +
-> +	ret = regmap_read(info->regmap, MT6370_REG_DEV_INFO, &devinfo);
-> +	if (ret)
-> +		return ret;
-> +
-> +	switch (FIELD_GET(MT6370_VENID_MASK, devinfo)) {
-> +	case 0x8: /* RT5081 */
-> +	case 0xA: /* RT5081A */
-> +	case 0xE: /* MT6370 */
-> +	case 0xF: /* MT6371 */
-> +	case 0x9: /* MT6372P */
-> +	case 0xB: /* MT6372CP */
-
-Please define these and drop the comments.
-
-> +		break;
-> +	default:
-> +		dev_err(info->dev, "Not invalid value 0x%02x\n", devinfo);
-> +		return -ENODEV;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt6370_regmap_read(void *context, const void *reg_buf,
-> +			      size_t reg_size, void *val_buf, size_t val_size)
-> +{
-> +	struct mt6370_info *info = context;
-> +	u8 bank_idx = *(u8 *)reg_buf, bank_addr = *(u8 *)(reg_buf + 1);
-
-Looks a little scruffy.  Perhaps allocate the values below.
-
-> +	int ret;
-> +
-> +	ret = i2c_smbus_read_i2c_block_data(info->i2c[bank_idx], bank_addr,
-> +					    val_size, val_buf);
-> +	if (ret != val_size)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt6370_regmap_write(void *context, const void *data, size_t count)
-> +{
-> +	struct mt6370_info *info = context;
-> +	u8 bank_idx = *(u8 *)data, bank_addr = *(u8 *)(data + 1);
-
-As above.
-
-> +	int len = count - MT6370_REG_ADDRLEN;
-> +
-> +	return i2c_smbus_write_i2c_block_data(info->i2c[bank_idx], bank_addr,
-> +					      len, data + MT6370_REG_ADDRLEN);
-> +}
-> +
-> +static const struct regmap_bus mt6370_regmap_bus = {
-> +	.read		= mt6370_regmap_read,
-> +	.write		= mt6370_regmap_write,
-> +};
-> +
-> +static const struct regmap_config mt6370_regmap_config = {
-> +	.reg_bits		= 16,
-> +	.val_bits		= 8,
-> +	.reg_format_endian	= REGMAP_ENDIAN_BIG,
-> +	.max_register		= MT6370_REG_MAXADDR,
-> +};
-> +
-> +static int mt6370_probe(struct i2c_client *i2c)
-> +{
-> +	struct mt6370_info *info;
-> +	struct i2c_client *usbc_i2c;
-> +	int ret;
-> +
-> +	info = devm_kzalloc(&i2c->dev, sizeof(*info), GFP_KERNEL);
-> +	if (!info)
-> +		return -ENOMEM;
-> +
-> +	info->dev = &i2c->dev;
-> +
-> +	usbc_i2c = devm_i2c_new_dummy_device(&i2c->dev, i2c->adapter,
-> +					     MT6370_USBC_I2CADDR);
-> +	if (IS_ERR(usbc_i2c)) {
-> +		ret = PTR_ERR(usbc_i2c);
-> +		dev_err(&i2c->dev, "Failed to register usbc i2c client %d\n", ret);
-
-"USB-C I2C"?
-
-> +		return ret;
-> +	}
-> +
-> +	/* Assign I2C client for PMU and TypeC */
-> +	info->i2c[MT6370_PMU_I2C] = i2c;
-> +	info->i2c[MT6370_USBC_I2C] = usbc_i2c;
-> +
-> +	info->regmap = devm_regmap_init(&i2c->dev, &mt6370_regmap_bus, info,
-> +					&mt6370_regmap_config);
-> +	if (IS_ERR(info->regmap)) {
-> +		ret = PTR_ERR(info->regmap);
-> +		dev_err(&i2c->dev, "Failed to register regmap (%d)\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = mt6370_check_vendor_info(info);
-> +	if (ret) {
-> +		dev_err(&i2c->dev, "Failed to check vendor info (%d)\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = devm_regmap_add_irq_chip(&i2c->dev, info->regmap, i2c->irq,
-> +				       IRQF_ONESHOT, -1, &mt6370_irq_chip,
-> +				       &info->irq_data);
-> +	if (ret) {
-> +		dev_err(&i2c->dev, "Failed to add irq chip (%d)\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	return devm_mfd_add_devices(&i2c->dev, PLATFORM_DEVID_AUTO,
-> +				    mt6370_devices, ARRAY_SIZE(mt6370_devices),
-> +				    NULL, 0,
-> +				    regmap_irq_get_domain(info->irq_data));
-> +}
-> +
-> +static const struct of_device_id mt6370_match_table[] = {
-> +	{ .compatible = "mediatek,mt6370", },
-> +	{}
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6370_match_table);
-> +
-> +static struct i2c_driver mt6370_driver = {
-> +	.driver = {
-> +		.name = "mt6370",
-> +		.of_match_table = mt6370_match_table,
-> +	},
-> +	.probe_new = mt6370_probe,
-> +};
-> +module_i2c_driver(mt6370_driver);
-> +
-> +MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
-> +MODULE_DESCRIPTION("MT6370 I2C MFD Driver");
-
-Drop all references to "MFD" please.
-
-> +MODULE_LICENSE("GPL v2");
-
--- 
-Lee Jones [李琼斯]
-Principal Technical Lead - Developer Services
-Linaro.org │ Open source software for Arm SoCs
-Follow Linaro: Facebook | Twitter | Blog
+Thanks! I just updated that and will send v2.
 
