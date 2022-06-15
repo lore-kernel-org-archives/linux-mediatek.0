@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27ED7C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 11:46:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2912DC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 12:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/nYO/sjQU/RUAOaFCIXJtrIKCPvcXwi3Je+sYdFBDcI=; b=NrY1bimY9TxHgXbyCezfBD2Ngw
-	jKRt0amsu/+muDhplIkbvBmc0gOwm0adJ8j5F+KUG92/4i4088Z322DO/f0iz1oMsl16MSZiERDo6
-	AYSFM/50M5kMo/xD3c8YjjCGv/7CsIAOS+SUkaXsVvOnF7sIDpAMmoTXZn9aP+eYF4q7S7fSQER2V
-	C24DpUpUb838GW/f11GUv3Z2/5pGhXJvmk+TdBPnJnd6yQIUvqCq8KZuuXtzJ971NYih1XOOxUeeo
-	B1pTJtBy26YaMlj6HGj2J+KQ2oq8efDspIyDLZajyw7CtBSW/TVBr6c663IUdzWm50IFu2n7qoGrl
-	3wRkzrhA==;
+	bh=55hRcrpcGweTZNPgLNjSVUS+p9bWv5ADc27zzK0jGoA=; b=ekiBFIFYfGaGo+xGhTV9pF8ufo
+	ItS0xmm91gBVVZx53OlzEzy8O8UufdujNoGdwBtgUA0DyD701SlOycAN0W2wx38jetoEj9AHdutnP
+	uH4iRqP0g4qzAYEX4Y710+Kszyctmo3YP3QaDB7xcYEkh5Hqke3tlzoL8myBDF6mfqBZrP7mQ1F+c
+	gYSjW33hpEFeDLqRb23P2E7QH0A/urEG+H3pRiL73+e/nKoR4TfO2MN9U0xqZCtMzhtic9md+v09v
+	n7kE2pMMb+Gt2gKi+Ty42g5QyYRf8fuGW/4juz3f0BCytehtHHSmdZ/WCSu3g5G12/uME5Ww5zloj
+	5pPVttBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1RTI-00EFPM-Bf; Wed, 15 Jun 2022 11:46:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o1Rj9-00ELyG-Sg; Wed, 15 Jun 2022 12:02:27 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1RT7-00EFNQ-HD; Wed, 15 Jun 2022 11:45:55 +0000
-X-UUID: c3ca8da6b380485b85d924172815face-20220615
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=/nYO/sjQU/RUAOaFCIXJtrIKCPvcXwi3Je+sYdFBDcI=;
-	b=vGo6VJWejIfXEwPtkXtOJgRLiOT94/5+OhCo/jfYwFfHcCDf1KzTpUz5WL3I7wTycs57GazTgfZCZPnIQrJV5oVk/tzvfWV2F8cP+XJka+FAoOnSX/PUcZkAY0puWlQPp/8D//TI8pGYRx0n9QGbmeqY+MG/dU2eoAkx+5s0b4c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:7cddc96f-be76-43f3-8192-4b03fbb7913b,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:ab0f9948-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: c3ca8da6b380485b85d924172815face-20220615
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 449449712; Wed, 15 Jun 2022 04:45:49 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Jun 2022 04:43:28 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 15 Jun 2022 19:43:26 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 15 Jun 2022 19:43:25 +0800
-Message-ID: <3e084cf745e1425084186368c867f54b54c91ce6.camel@mediatek.com>
-Subject: Re: [PATCH v4, 0/3] add h264 decoder driver for mt8186
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>, Alexandre Courbot
-	<acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
-	<tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 15 Jun 2022 19:43:25 +0800
-In-Reply-To: <5316234cef174e49110f949991ef71c578a3478e.camel@ndufresne.ca>
-References: <20220512034620.30500-1-yunfei.dong@mediatek.com>
-	 <edbb4605c9e30329d2f5a4ff738571acb6b91f1f.camel@ndufresne.ca>
-	 <5316234cef174e49110f949991ef71c578a3478e.camel@ndufresne.ca>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o1Rhg-00ELHZ-10
+	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 12:00:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1655294456; x=1686830456;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=yCu340qMfg6oZcr5JvLYeZcBPp9Lyul8ahB/e4qnXUI=;
+  b=JWgZKtzhWEWhq9mdp9mkwZyr9KsGe15+2MH3k1awkL1yzOqQgx9T9RzR
+   k8eQhhwn/rYcsvy50mHox3Rb+ool7y/HCRgyDo347FDJmcH9lbrrXq2Mc
+   9rZpLssPVshXdk+YdwLXQY38/soo7RQbjYQxTi9K18lVjMsnS4ru+e9M+
+   DMmz2sJz9owNWhsVDPzdeDD47EKfiDcvsnHOzZDdudCDTOHnKy3YqVETU
+   78lZ4oUktducOjwpDlbJhuoHUO4T2qoxAfcrXkmGBZVT278EglkCO8Ui4
+   4pKdKYYxnZ8Mx5EKBBkMc6xI6Cdw4QZe6hOechifdqJZ2ZGaKsMXvs0Fz
+   w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10378"; a="261961763"
+X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; 
+   d="scan'208";a="261961763"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 05:00:53 -0700
+X-IronPort-AV: E=Sophos;i="5.91,302,1647327600"; 
+   d="scan'208";a="674463081"
+Received: from clanggaa-mobl1.ger.corp.intel.com (HELO [10.249.254.173]) ([10.249.254.173])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 05:00:49 -0700
+Message-ID: <416df4cf-5421-cbf3-bb47-b39c6129ff71@linux.intel.com>
+Date: Wed, 15 Jun 2022 15:01:27 +0300
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.10.0
+Subject: Re: [PATCH] ASoC: SOF: mediatek: Fix error code in probe
+Content-Language: en-US
+To: Dan Carpenter <dan.carpenter@oracle.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: alsa-devel@alsa-project.org, Allen-KH Cheng
+ <Allen-KH.Cheng@mediatek.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Takashi Iwai <tiwai@suse.com>, kernel-janitors@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Yang Yingliang <yangyingliang@huawei.com>, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ YC Hung <yc.hung@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, sound-open-firmware@alsa-project.org
+References: <YqmWIK8sTj578OJP@kili>
+From: =?UTF-8?Q?P=c3=a9ter_Ujfalusi?= <peter.ujfalusi@linux.intel.com>
+In-Reply-To: <YqmWIK8sTj578OJP@kili>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_044553_618372_39364F11 
-X-CRM114-Status: GOOD (  26.67  )
+X-CRM114-CacheID: sfid-20220615_050056_172229_B8E0DB37 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +88,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTmljb2xhcywNCg0KVGhhbmtzIGZvciB5b3VyIGNvbW1lbnRzLg0KT24gVHVlLCAyMDIyLTA2
-LTE0IGF0IDEzOjQ2IC0wNDAwLCBOaWNvbGFzIER1ZnJlc25lIHdyb3RlOg0KPiBMZSBsdW5kaSAx
-MyBqdWluIDIwMjIgw6AgMTY6MTAgLTA0MDAsIE5pY29sYXMgRHVmcmVzbmUgYSDDqWNyaXQgOg0K
-PiA+IExlIGpldWRpIDEyIG1haSAyMDIyIMOgIDExOjQ2ICswODAwLCBZdW5mZWkgRG9uZyBhIMOp
-Y3JpdCA6DQo+ID4gPiBGaXJzdGx5LCBhZGQgbXQ4MTg2IGNvbXBhdGlibGUgYW5kIHByaXZhdGUg
-ZGF0YSwgdGhlbiBhZGQNCj4gPiA+IGRvY3VtZW50IGZvcg0KPiA+ID4gY29tcGF0aWJsZSAibWVk
-aWF0ZWssbXQ4MTg2LXZjb2RlYy1kZWMiLiBGb3IgbXQ4MTg2IGlzIHNpbmdsZQ0KPiA+ID4gY29y
-ZQ0KPiA+ID4gYXJjaGl0ZWN0dXJlLCBuZWVkIHRvIGFkZCBuZXcgaW50ZXJmYWNlIGZvciBoMjY0
-IGhhcmR3YXJlDQo+ID4gPiBkZWNvZGVyLg0KPiA+IA0KPiA+IFdvdWxkIGJlIG5pY2UgdG8gdGFr
-ZSB0aGUgaGFiaXQgb2Ygc2hhcmluZyBmbHVzdGVyIHNjb3JlIGZvciB0aGlzDQo+ID4gbmV3IEhX
-LCBJDQo+ID4gd291bGQgZXhwZWN0IG5vIGxlc3MgdGhlbiB3aGF0IHRoZSBudW1iZXJzIHlvdSdk
-IGdldCBmcm9tIHJ1bm5pbmcNCj4gPiBvdmVyIE1UODE5NSBvcg0KPiA+IDkyLCByZW1haW5zIG5p
-Y2UgdG8gZGVtb25zdHJhdGUgdGhhdCB0aGlzIHdhcyB0ZXN0ZWQgYW5kIGRvY3VtZW50DQo+ID4g
-YW55IG9vcHMgYWxvbmcNCj4gPiB0aGUgd2F5Lg0KPiA+ID4gDQo+ID4gPiBQYXRjaGUgMSBhZGQg
-bXQ4MTg2IGNvbXBhdGlibGUgYW5kIHByaXZhdGUgZGF0YS4NCj4gPiA+IFBhdGNoZSAyIGFkZCBt
-dDgxODYgY29tcGF0aWJsZSBkb2N1bWVudC4NCj4gPiA+IFBhdGNoZSAzIGFkZCBoMjY0IHNpbmds
-ZSBjb3JlIGRyaXZlci4NCj4gPiA+IC0tLQ0KPiA+ID4gVGhpcyBwYXRjaCBkZXBlbmRzIG9uICJz
-dXBwb3J0IGZvciBNVDgxOTIgZGVjb2RlciJbMV0NCj4gPiA+IA0KPiA+ID4gWzFdICANCj4gPiA+
-IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1tZWRpYXRlay9jb3Zl
-ci8yMDIyMDUxMjAyMTk1MC4yOTA4Ny0xLXl1bmZlaS5kb25nQG1lZGlhdGVrLmNvbS8NCj4gDQo+
-IEkgZm9yZ290IGVhcmxpZXIsIGJ1dCBJIHN1cHBvc2UgdGhpcyB3aWxsIGFsc28gZGVwZW5kcyBv
-biBhbiBzY3AuaW1nDQo+IGZpcm13YXJlID8NCj4gSWYgc28sIGFueSBsaW51eC1maXJtd2FyZSBz
-dWJtaXNzaW9uIHRvIGxpbmsgdG8gPw0KPiANCkZvciB0aGUgdGFzdC9jdHMvZ3RzIHRlc3QgYXJl
-IGNvbWluZyB0byB0aGUgZW5kLCBhZnRlciBhbGwgZWMgcGF0Y2hlcw0KYXJlIG1lcmdlZCwgSSB3
-aWxsIHVwc3RyZWFtIHNjcC5pbWcNCg0KQmVzdCBSZWdhcmRzLA0KWXVuZmVpIERvbmcNCj4gPiA+
-IC0tLQ0KPiA+ID4gY2hhbmdlZCB3aXRoIHYzOg0KPiA+ID4gLSBmaXggX19pb21lbSBub3QgcmVh
-c29uYWJsZSwgYWxpZ24gc2hhcmUgbWVtb3J5IHRvIGRyYW0uDQo+ID4gPiBjaGFuZ2VkIHdpdGgg
-djI6DQo+ID4gPiAtIGZpeCBzcGFyc2UgYW5kIHNtYXRjaCBjaGVjayBmYWlsIGZvciBwYXRjaCAz
-DQo+ID4gPiBjaGFuZ2VkIHdpdGggdjE6DQo+ID4gPiAtIHJlYmFzZSBkcml2ZXIgdG8gdGhlIGxh
-dGVzdCBtZWRpYV9zdGFnZS4NCj4gPiA+IC0tLQ0KPiA+ID4gWXVuZmVpIERvbmcgKDMpOg0KPiA+
-ID4gICBkdC1iaW5kaW5nczogbWVkaWE6IG1lZGlhdGVrOiB2Y29kZWM6IEFkZHMgZGVjb2RlciBk
-dC1iaW5kaW5ncw0KPiA+ID4gZm9yDQo+ID4gPiAgICAgbXQ4MTg2DQo+ID4gPiAgIG1lZGlhOiBt
-ZWRpYXRlazogdmNvZGVjOiBTdXBwb3J0IE1UODE4Ng0KPiA+ID4gICBtZWRpYTogbWVkaWF0ZWs6
-IHZjb2RlYzogYWRkIGgyNjQgZGVjb2RlciBkcml2ZXIgZm9yIG10ODE4Ng0KPiA+ID4gDQo+ID4g
-PiAgLi4uL21lZGlhL21lZGlhdGVrLHZjb2RlYy1zdWJkZXYtZGVjb2Rlci55YW1sIHwgICA0ICst
-DQo+ID4gPiAgLi4uL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9tdGtfdmNvZGVjX2RlYy5oIHwg
-ICAxICsNCj4gPiA+ICAuLi4vbWVkaWF0ZWsvdmNvZGVjL210a192Y29kZWNfZGVjX2Rydi5jICAg
-ICAgfCAgIDQgKw0KPiA+ID4gIC4uLi92Y29kZWMvbXRrX3Zjb2RlY19kZWNfc3RhdGVsZXNzLmMg
-ICAgICAgICB8ICAxOSArKw0KPiA+ID4gIC4uLi92Y29kZWMvdmRlYy92ZGVjX2gyNjRfcmVxX211
-bHRpX2lmLmMgICAgICB8IDE3Nw0KPiA+ID4gKysrKysrKysrKysrKysrKystDQo+ID4gPiAgNSBm
-aWxlcyBjaGFuZ2VkLCAyMDMgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCj4gPiA+IA0K
-PiANCj4gDQo=
 
+
+On 15/06/2022 11:19, Dan Carpenter wrote:
+> This should return PTR_ERR() instead of IS_ERR().
+
+Acked-by: Peter Ujfalusi <peter.ujfalusi@linux.intel.com>
+
+> Fixes: e0100bfd383c ("ASoC: SOF: mediatek: Add mt8186 ipc support")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> ---
+>  sound/soc/sof/mediatek/mt8186/mt8186.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+> index 3333a0634e29..e006532caf2f 100644
+> --- a/sound/soc/sof/mediatek/mt8186/mt8186.c
+> +++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+> @@ -392,7 +392,7 @@ static int mt8186_dsp_probe(struct snd_sof_dev *sdev)
+>  						      PLATFORM_DEVID_NONE,
+>  						      pdev, sizeof(*pdev));
+>  	if (IS_ERR(priv->ipc_dev)) {
+> -		ret = IS_ERR(priv->ipc_dev);
+> +		ret = PTR_ERR(priv->ipc_dev);
+>  		dev_err(sdev->dev, "failed to create mtk-adsp-ipc device\n");
+>  		goto err_adsp_off;
+>  	}
+
+-- 
+Péter
 
