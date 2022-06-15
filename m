@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21354C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 22:24:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3F83C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 22:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uLEDL+G7aX3Y4fRU26LLhNvvGtvMvsrcMGTR1rtP7yw=; b=wowE6NV442IrDh8+Vv0ojREC3S
-	Y8omHega7276Sg3HZaTH5LnZXGch/Oii8VXpSJQ7uHvUB1RWDp8Ga1zG1LtR/uUIUL8vIrkdge/8D
-	PzdLcOlzNNugl1uTvIEqV+2JxCg6UIzulgenHVspQ2p2qsYLtAvnTsNU2TC64H6JLTWahru+0KwX9
-	y39INSrbW0AmG6RTVWsnfJe9CjJ2mNOlVozGBG76amrfYylWo+mzf8ZYDtO/aTXr1xy12Alyolunb
-	7Ltgds8OTgIhyqsdymV/5+os8XYAFsvEqELQjfanse4VADAF0jfKJ68tP16T7iZcsCbZEAvTz6TS/
-	3ddsauFQ==;
+	bh=ZPjP9p/uVKjgescd2V0zdX2+EdmJKxQJvyV74R1o4jk=; b=Kh4szIcZW7jqDbfqAQqWh9y+/y
+	l+KYpYcZ7ANSX11bZtnXu7BUJDbBsIDE1daoGNhMCnEtZqKB5AWxbXm5IUzE9+vqOpiJNZsVap7z8
+	yUJfPGi1x15C/Q7oKbxJ0+CTe0bATwukTMSI1qpt85ns3mdc1puYa1jjuP0phg8lB39s0TCghfSE+
+	3kwg64rZUAkrxVzrax+pNeQU9jXCrey1E29TKPCka+CXwJAs2jeVump2H+RUu9Ite3LS8GI5KwoYD
+	CFjnWDkQmq4PqlJqh2PGlvg/AuuT50RXoWjWfkAdNaJoU1Wn0kvUtGjF/q8IbXmz/F0wtH2HgZIh6
+	ODawSFBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1bRJ-00Gfih-14; Wed, 15 Jun 2022 22:24:41 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1o1bRt-00GfsA-Cf; Wed, 15 Jun 2022 22:25:17 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1bR8-00Gfgz-J0
-	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 22:24:31 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id i15so11590620plr.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jun 2022 15:24:28 -0700 (PDT)
+	id 1o1bRr-00GfpP-07
+	for linux-mediatek@lists.infradead.org; Wed, 15 Jun 2022 22:25:16 +0000
+Received: by mail-pl1-x634.google.com with SMTP id h1so11546525plf.11
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jun 2022 15:25:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=uLEDL+G7aX3Y4fRU26LLhNvvGtvMvsrcMGTR1rtP7yw=;
-        b=DTJF3smWA3fB95jgkWeMgAeL3z2fFHk8fPHUNEallNDdQff3BPuIcBZS65ZbGBPUXE
-         K6BOf3/c2HA+EFOtIuA+4DajkWGkAzMQmZeFz2jKNsM4hfaGAPiXCWlPadUXuzDTRnoI
-         5Jt7riLi+7en25sCaSe8ZlYJ4cSXRdC1Vyxf7RUHS8uGg2SzfkxnsOr9+1jAnQEIk7TL
-         1pkdH0HOOKTr1NWiSFW3u7QG+uol9RhSdTluUF1Cj6vP5+yL/pDTlqwaBjjoyWk5zd8u
-         evUfILLDx8rbTd29hitOx5f87S0CYWd3ZPpYWIVzsTuXC34ir4vWVGv0pfGro8jz7KmU
-         XOJw==
+        bh=ZPjP9p/uVKjgescd2V0zdX2+EdmJKxQJvyV74R1o4jk=;
+        b=jdoU6/kwxsiyhuP27wcopcyJgsLTdAyVDdJin0zRGKDDVlI0xRyt+YxX0js4J1BqLN
+         dNj+dY7znGpUHqeMyYFyH53XWuQBGg4rgvZ8yWVJ+5FCCnBr6kcoQMCV3ogLgrYkeBzV
+         xL6+27q/oYPdd11Js6mxp9nQk1KxdI0xYWNKPzLOWJEol5NahaU4l9eLRb7J9oyBL5ej
+         l0h0Maj35qZdfbE40NmPvf2kkmy7SeahUU1w5bL2czOY8qESszurIrHcWXXqlHzAcf3r
+         HTOatDEXJXftalCP9F4BVj7cenhGtebJLg/HFJKsz1tqC1+O4qsHSpXUdWgo9tJXxQuZ
+         /8EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:content-transfer-encoding
          :in-reply-to;
-        bh=uLEDL+G7aX3Y4fRU26LLhNvvGtvMvsrcMGTR1rtP7yw=;
-        b=iGozONoUm2xBhlaUIGrwH4MUnXZkN8S2b5NU2aK4KFRbR81CmjM+E77en9DCANvUrj
-         S4glsnB6knadSY6arvsmjeFrmzfd6FtF4RYpCwQnPon44RC0hJRD5JGKLrIb99AympT8
-         IQZ+NyGFbLEwFzt/vCSV2kkS/8zIHdF1G7N9PFvHMXSomRNfFhkuJbIQVERHAM4wUQnZ
-         AA1rMFRFf0FjTl9NNFmjZZIVnshDos1fch41zxzxIXgPFYQEcrr0RptHqQX4EQz1f8xR
-         +Dv+JcQwygiw12N2TWzwDzEtxD2Jij8v071KIJYorU2Rr88+m60C6TH70C1BTnWARl0V
-         OSDg==
-X-Gm-Message-State: AJIora+jp9HJVnTJD9b5pj+ezc8/uGIyStCjps5eR/JgCxkQmdfAdwqY
-	Wo1hP+Zmm0/KbRXPwgVYZwjfuQ==
-X-Google-Smtp-Source: AGRyM1twcw/WY5Xe4Nnxhw4M0Mco1frKQyTuE637zz53WB/TZIzLMkuT2IwpfthyharuE1mZ8MJLtg==
-X-Received: by 2002:a17:90b:11c5:b0:1ea:9747:28ba with SMTP id gv5-20020a17090b11c500b001ea974728bamr12696060pjb.22.1655331867581;
-        Wed, 15 Jun 2022 15:24:27 -0700 (PDT)
+        bh=ZPjP9p/uVKjgescd2V0zdX2+EdmJKxQJvyV74R1o4jk=;
+        b=gHtOAHgHj+MuTYukbCVBQOnL54hPvjvvetWqLy/ISmEKVcfU7xL73GHAQXeByMVGs5
+         RQSddGMyJNfwQuU/G7MGNUSe56Yvl8Kyo3XMeFiAgoUZyvkx7pUggeTvI6WSaspFEaH8
+         xD9IvJAdgXqb74jJnmnY/0z9zpAkRF28de+zOcRLM1/RYZg/azJoLx+EiT1EalBzRG8T
+         0xjrj30WF7cUTOHEBfAfbg5IdGTblo9x9dOjVBDjcRWWGuSIPRVMjySTMUt8R8X0SRZg
+         rCMA6xsd77cRxPuMz5AuL/SaKbElOYtM/lgvnQia+fyyGiOz7El/zTAbgkyyYdtFbDla
+         JO7g==
+X-Gm-Message-State: AJIora+fft6Gz0nbWrrP+xjR2dD12NZGNQkGVvabHdnjuDZSyc+V7TL2
+	obagBK15lOLpLZmppBv4PHW7YA==
+X-Google-Smtp-Source: AGRyM1v7iepztO3D37M5/039LZHAq3jQ9KgC7Ky8PJSj47BCCc/5TtWJHzrR6q+A/NVvbhWIdeTTNA==
+X-Received: by 2002:a17:902:8f8f:b0:167:7fa1:60e2 with SMTP id z15-20020a1709028f8f00b001677fa160e2mr1434948plo.121.1655331910615;
+        Wed, 15 Jun 2022 15:25:10 -0700 (PDT)
 Received: from google.com ([192.77.111.2])
-        by smtp.gmail.com with ESMTPSA id p9-20020a62b809000000b0051c79bd5047sm128311pfe.139.2022.06.15.15.24.26
+        by smtp.gmail.com with ESMTPSA id ji5-20020a170903324500b0016390e0db7asm135292plb.121.2022.06.15.15.25.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jun 2022 15:24:27 -0700 (PDT)
-Date: Wed, 15 Jun 2022 23:24:24 +0100
+        Wed, 15 Jun 2022 15:25:10 -0700 (PDT)
+Date: Wed, 15 Jun 2022 23:25:08 +0100
 From: Lee Jones <lee.jones@linaro.org>
 To: Fabien Parent <fparent@baylibre.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/7] dt-bindings: mfd: mt6397: add binding for MT6357
-Message-ID: <YqpcGLIhD2FsPLdi@google.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 4/7] mfd: mt6397-core: add MT6357 PMIC support
+Message-ID: <YqpcRAihWIba6jmr@google.com>
 References: <20220531124959.202787-1-fparent@baylibre.com>
- <20220531124959.202787-2-fparent@baylibre.com>
+ <20220531124959.202787-5-fparent@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220531124959.202787-2-fparent@baylibre.com>
+In-Reply-To: <20220531124959.202787-5-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_152430_651920_4922972D 
-X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-CacheID: sfid-20220615_152515_078112_D3B57111 
+X-CRM114-Status: UNSURE (   9.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,14 +94,20 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Tue, 31 May 2022, Fabien Parent wrote:
 
-> Add binding documentation for the MT6357 PMIC.
+> Adds support for PMIC keys, regulator, and RTC for the MT6357 PMIC.
 > 
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/mfd/mt6397-core.c            |   44 +
+>  include/linux/mfd/mt6357/core.h      |  119 ++
+>  include/linux/mfd/mt6357/registers.h | 1574 ++++++++++++++++++++++++++
+>  3 files changed, 1737 insertions(+)
+>  create mode 100644 include/linux/mfd/mt6357/core.h
+>  create mode 100644 include/linux/mfd/mt6357/registers.h
 
-Doesn't seem to apply.
+Fixed the subject line for you.
+
+Applied, thanks.
 
 -- 
 Lee Jones [李琼斯]
