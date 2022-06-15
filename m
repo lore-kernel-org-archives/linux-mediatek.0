@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27550C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 14:02:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E73C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jun 2022 14:21:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T9eq4r9Pe9t81eYIGkTX5xMWzyZu9wStgr6YkM4XD0g=; b=CzvEfNXZ39x2CXBuA3llTs9e+E
-	4f/QcW14zkNBaGqOHG2AKywtSnBAVlDda0znYD5Eob9+/YGPG8+hJhb3E2E6VTNYlhQlIM/42SbPf
-	Okhg0POfnsDczdVMyM+rn/TQPTejT5xUgx5lgfDMPHQna5n8BuwPdsl1EhRZ/peYw5QP4P5H9PG5h
-	MHcTlysXqrVgvfqAWRa7ykV6qny1JJXsF2fnPCj2iffV1gLBQyipbLKo7Q7ievH1ByUjZxpjO1G6P
-	loI7GSTX9vW+wS7NK1lEGNlIS7kS63ahYDVMHQ5sskbqKxJMTau2CnKVDxaOeX5+KBYlRP2LP22cE
-	s+b7xb2Q==;
+	bh=lZgS2iJNSu3c42246+lbSSuVyF80Z0xMXbwlVxhtUjI=; b=yQ386iQl6wemvRTFe0ok/2Kah4
+	92IIz3Wk6MuOV7wPgK3kg7nQM5oMVXZVvnXljoMf2tffdbG+A411fGcEmXjuG/QIN25vIDYblu0WQ
+	NA/Rzo0+NJVMsYhLSA4PdRrP8xUfagyb5PG22eQegaCVSlDss2gr3pOEaA/ixUyB6748TyizSiKmK
+	HLftvENkdVGGmTOenT78jWNC+0eNN2OUiZlrOas/nMr9kfJJRIod0FEfXJiv74EznuesPHkBOI1Bs
+	YLh1lwy6mldeVaqyKfP4AbwXHsWzE60UONXSf+mblIUgmTEbffjp62fzrtjbQuKnfIdagLTTfmabR
+	iBRFU6XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1TbL-00Eq50-UX; Wed, 15 Jun 2022 14:02:31 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o1Ttl-00EvA9-D0; Wed, 15 Jun 2022 14:21:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Tb9-00Eq28-Ax; Wed, 15 Jun 2022 14:02:20 +0000
-Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DF66B6601701;
-	Wed, 15 Jun 2022 15:02:15 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655301738;
-	bh=A/jvOxm1ICij5K0mIG7oqF5iy6HOnMoo/iFg2qWHY+o=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Xp91NeW7/5pDED1maKh/hv/BrO3shNGUFb2jaEdMzphcwtcjlNybZ+ct8f3IwhDac
-	 ZI/OWfjBpJZKrBoklAeASR8Tu7mCBjc99sYoSIPJ0Urj/ds4at6R0RGAq8X/YdOc9q
-	 l8yW8bym5tB5LXyiaqIv4I/Cs1Ws8rhasaPXmj4yTo0/cc2I73wnpxAeUhobtyvtLD
-	 jbRIWok6C3Y3BMSDsNsenU06cBgVOzTqVuBEsv0HUmYc2S++fOMctZZZKa+JFWCIpr
-	 6zUxp6Q2kTv52QxFTODST5w3r1d0nHz3uRuPUXCICLdGey89ewVi2W6DwOfbxVW3VS
-	 no6sEAK760B8w==
-Message-ID: <a64aa50e843967d691300af3cda27b85b8353f96.camel@collabora.com>
-Subject: Re: [V9,4/7] mtk-jpegenc: add jpegenc timeout func interface
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>, 
- angelogioacchino.delregno@collabora.com, wenst@chromium.org
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>, 
-	xia.jiang@mediatek.com, maoguang.meng@mediatek.com, kyrie wu
-	 <kyrie.wu@mediatek.com>, srv_heupstream@mediatek.com
-Date: Wed, 15 Jun 2022 10:02:07 -0400
-In-Reply-To: <20220613032306.23237-5-irui.wang@mediatek.com>
-References: <20220613032306.23237-1-irui.wang@mediatek.com>
-	 <20220613032306.23237-5-irui.wang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.1 (3.44.1-1.fc36) 
+	id 1o1TtX-00Ev4D-Ju; Wed, 15 Jun 2022 14:21:21 +0000
+X-UUID: ee7d23920fda492caf68c1856086d68d-20220615
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:a4ca2413-2038-4d3e-b173-7fecfaea02b6,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:d9549c48-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: ee7d23920fda492caf68c1856086d68d-20220615
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1897157548; Wed, 15 Jun 2022 07:21:12 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Jun 2022 07:21:10 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 15 Jun 2022 22:21:00 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 15 Jun 2022 22:20:59 +0800
+From: <yf.wang@mediatek.com>
+To: <will@kernel.org>
+CC: <Libo.Kang@mediatek.com>, <Yong.Wu@mediatek.com>,
+	<iommu@lists.linux-foundation.org>, <isaacm@codeaurora.org>,
+	<joro@8bytes.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>, <ning.li@mediatek.com>,
+	<quic_c_gdjako@quicinc.com>, <robin.murphy@arm.com>, <sven@svenpeter.dev>,
+	<wsd_upstream@mediatek.com>, <yf.wang@mediatek.com>
+Subject: Re: [PATCH v8 1/3] iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
+Date: Wed, 15 Jun 2022 22:14:11 +0800
+Message-ID: <20220615141411.5119-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220614125630.GA8159@willie-the-truck>
+References: <20220614125630.GA8159@willie-the-truck>
 MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_070219_550642_F9D14DE6 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20220615_072119_684916_DC4ED1B4 
+X-CRM114-Status: GOOD (  25.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,104 +82,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le lundi 13 juin 2022 =C3=A0 11:23 +0800, Irui Wang a =C3=A9crit=C2=A0:
-> From: kyrie wu <kyrie.wu@mediatek.com>
->=20
-> Generalizes jpegenc timeout func interfaces to handle HW timeout.
->=20
-> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-> ---
->  .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  8 ++++++
->  .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 25 +++++++++++++++++++
->  2 files changed, 33 insertions(+)
->=20
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drive=
-rs/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> index f6e980fde4ef..0683d80fcea5 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> @@ -76,6 +76,12 @@ struct mtk_jpeg_variant {
->  	u32 cap_q_default_fourcc;
->  };
-> =20
-> +struct mtk_jpeg_hw_param {
-> +	struct vb2_v4l2_buffer *src_buffer;
-> +	struct vb2_v4l2_buffer *dst_buffer;
-> +	struct mtk_jpeg_ctx *curr_ctx;
-> +};
-> +
->  enum mtk_jpegenc_hw_id {
->  	MTK_JPEGENC_HW0,
->  	MTK_JPEGENC_HW1,
-> @@ -107,6 +113,8 @@ struct mtk_jpegenc_comp_dev {
->  	struct mtk_jpegenc_clk venc_clk;
->  	int jpegenc_irq;
->  	int hw_id;
-> +	struct delayed_work job_timeout_work;
-> +	struct mtk_jpeg_hw_param hw_param;
->  };
-> =20
->  /**
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/dri=
-vers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> index 8ac6b031dcd4..99f3db2a393a 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> @@ -185,6 +185,26 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ct=
-x,  void __iomem *base)
->  }
->  EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_params);
-> =20
-> +static void mtk_jpegenc_timeout_work(struct work_struct *work)
-> +{
-> +	struct delayed_work *dly_work =3D to_delayed_work(work);
-> +	struct mtk_jpegenc_comp_dev *cjpeg =3D
-> +		container_of(dly_work,
-> +			     struct mtk_jpegenc_comp_dev,
-> +			     job_timeout_work);
-> +	enum vb2_buffer_state buf_state =3D VB2_BUF_STATE_ERROR;
-> +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-> +
-> +	src_buf =3D cjpeg->hw_param.src_buffer;
-> +	dst_buf =3D cjpeg->hw_param.dst_buffer;
-> +	dst_buf->vb2_buf.timestamp =3D src_buf->vb2_buf.timestamp;
+On Tue, 2022-06-14 at 13:56 +0100, Will Deacon wrote:
+> Hi,
+> 
+> For some reason, this series has landed in my spam folder so
+> apologies
+> for the delay :/
+> 
+> 
+> > +static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
+> > +				    struct io_pgtable_cfg *cfg)
+> > +{
+> > +	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
+> > +
+> > +	if (!arm_v7s_is_mtk_enabled(cfg))
+> > +		return pte;
+> > +
+> > +	return to_iopte_mtk(paddr, pte);
+> 
+> nit, but can we rename and rework this so it reads a bit better,
+> please?
+> Something like:
+> 
+> 
+> 	if (arm_v7s_is_mtk_enabled(cfg))
+> 		return to_mtk_iopte(paddr, pte);
+> 
+> 	return pte;
+> 
+> 
 
-Another case for v4l2_m2m_buf_copy_metadata? As you know early the dst_buf,=
- you
-could do that once before you start the encoding, this could possibly remov=
-e the
-duplication.
+Hi Will,
+Thanks for your suggestion, PATCH v9 version will modify it.
 
-> +
-> +	mtk_jpeg_enc_reset(cjpeg->reg_base);
-> +	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
-> +	pm_runtime_put(cjpeg->dev);
-> +	v4l2_m2m_buf_done(src_buf, buf_state);
-> +}
-> +
->  static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
->  {
->  	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-> @@ -196,6 +216,8 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq=
-, void *priv)
->  	struct mtk_jpegenc_comp_dev *jpeg =3D priv;
->  	struct mtk_jpeg_dev *master_jpeg =3D jpeg->master_dev;
-> =20
-> +	cancel_delayed_work(&jpeg->job_timeout_work);
-> +
->  	irq_status =3D readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
->  		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
->  	if (irq_status)
-> @@ -272,6 +294,9 @@ static int mtk_jpegenc_hw_probe(struct platform_devic=
-e *pdev)
->  	dev->plat_dev =3D pdev;
->  	dev->dev =3D &pdev->dev;
-> =20
-> +	INIT_DELAYED_WORK(&dev->job_timeout_work,
-> +			  mtk_jpegenc_timeout_work);
-> +
->  	jpegenc_clk =3D &dev->venc_clk;
-> =20
->  	jpegenc_clk->clk_num =3D devm_clk_bulk_get_all(&pdev->dev,
 
+> >  static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
+> >  				  struct io_pgtable_cfg *cfg)
+> >  {
+> > @@ -234,6 +239,7 @@ static arm_v7s_iopte *iopte_deref(arm_v7s_iopte
+> > pte, int lvl,
+> >  static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+> >  				   struct arm_v7s_io_pgtable *data)
+> >  {
+> > +	gfp_t gfp_l1 = __GFP_ZERO | ARM_V7S_TABLE_GFP_DMA;
+> >  	struct io_pgtable_cfg *cfg = &data->iop.cfg;
+> >  	struct device *dev = cfg->iommu_dev;
+> >  	phys_addr_t phys;
+> > @@ -241,9 +247,11 @@ static void *__arm_v7s_alloc_table(int lvl,
+> > gfp_t gfp,
+> >  	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
+> >  	void *table = NULL;
+> >  
+> > +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
+> > +		gfp_l1 = GFP_KERNEL | __GFP_ZERO;
+> 
+> I think it's a bit grotty to override the flags inline like this
+> (same for
+> the slab flag later on). Something like this is a bit cleaner:
+> 
+> 
+> 	/*
+> 	 * Comment explaining why GFP_KERNEL is desirable here.
+> 	 * I'm assuming it's because the walker can address all of
+> memory.
+> 	 */
+> 	gfp_l1 = cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
+> 		 GFP_KERNEL : ARM_V7S_TABLE_GFP_DMA;
+> 
+> 	...
+> 
+> 	__get_free_pages(gfp_l1 | __GFP_ZERO, ...);
+> 
+> 
+> and similar for the slab flag.
+> 
+
+Hi Will,
+Thanks for your suggestion, PATCH v9 version will modify it.
+
+
+> >  	if (lvl == 1)
+> > -		table = (void *)__get_free_pages(
+> > -			__GFP_ZERO | ARM_V7S_TABLE_GFP_DMA,
+> > get_order(size));
+> > +		table = (void *)__get_free_pages(gfp_l1,
+> > get_order(size));
+> >  	else if (lvl == 2)
+> >  		table = kmem_cache_zalloc(data->l2_tables, gfp);
+> >  
+> > @@ -251,7 +259,8 @@ static void *__arm_v7s_alloc_table(int lvl,
+> > gfp_t gfp,
+> >  		return NULL;
+> >  
+> >  	phys = virt_to_phys(table);
+> > -	if (phys != (arm_v7s_iopte)phys) {
+> > +	if (phys != (arm_v7s_iopte)phys &&
+> > +	    !(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)) {
+> >  		/* Doesn't fit in PTE */
+> 
+> Shouldn't we be checking that the address is within 35 bits here?
+> Perhaps we
+> should generate a mask from the oas instead of just using the cast.
+> 
+
+Hi Will,
+Thanks for your suggestion, PATCH v9 version will add checking that the address is within 35 bits:
+
+phys = virt_to_phys(table);
+if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
+    phys >= (1ULL << cfg->oas) : phys != (arm_v7s_iopte)phys) {
+	/* Doesn't fit in PTE */
+
+
+Thanks,
+Yunfei.
 
