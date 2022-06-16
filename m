@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9283DC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 12:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB58DC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 13:04:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gy0oFAby9fgPJK22xRJJtXNYPWrTCXwW8x6uK6X5dvU=; b=d1C6UA/fVjM7A+aDwxqXfEw8GK
-	iXYZqayex6vlt8H08mDbUp1wI00rQrKoSOlyDnbQxoDm0Zw9bIU6WaA9yOMtXiUoq0y16e9GV8BrN
-	o3XXl3sPAVBR8VYbch3RLx+jcgI9qn5iHDvLjMxn/pY1Yx1k2v1Hxi64ir3A4Mb/fjPJg2WCHYAhB
-	yv2e5Wz6og8pESUbks7lP6t2NpPY7bsGAz5G1N3sx0auO0/HcsAD0Mqan3ojQg0SNcxxycRCGDUCn
-	HHh2jlazm2nf4T7VxtdO7wBMpVrP8ufntWZ2Yn56SL0afypxboOporyqVj76LlPaGAk3A0KqHppmz
-	/oE/3Esw==;
+	bh=1dVwRcvX/zX2ZvyZyllNzIEz5OjgRw64ZDWPHeywZC8=; b=G2aVKO86syiEtd474Ns/KDPBKJ
+	IleB59Rv0NfPicG82qBwHHUu6uZ8qpc9gTM+4WcbbYVJwyHV4Gg/sBvnMAsFR/fJCC9sDnMlzPQZZ
+	DgrqXuImBagIEvqFrz5J+qIRziyzcRTgrQV0pUBWNFLe5ajcJfyFedtENMJfmVzXDChFrq6QN3Dr+
+	yt7qh12bR8PJTllxrJ9kMdxZJ0I1w0amJgabH9V3gWnbpJH6v8DEuLN29O6x48NUPbMhb6F83XyMx
+	V8Gx/z+zAF7zu6pNLZN7J7LbjkltcavmLooGjxVpUdunyff7khefKHTBTxljNhXwxg92GOlV4X7P8
+	ZFq8f1vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1p4W-002Mio-Ao; Thu, 16 Jun 2022 12:58:04 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1o1pAD-002Nll-EH; Thu, 16 Jun 2022 13:03:57 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1p4T-002MgW-Fq; Thu, 16 Jun 2022 12:58:02 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id l2-20020a05600c4f0200b0039c55c50482so2801833wmq.0;
-        Thu, 16 Jun 2022 05:57:59 -0700 (PDT)
+	id 1o1pAB-002NjQ-7l; Thu, 16 Jun 2022 13:03:56 +0000
+Received: by mail-wr1-x434.google.com with SMTP id c21so1816445wrb.1;
+        Thu, 16 Jun 2022 06:03:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=gy0oFAby9fgPJK22xRJJtXNYPWrTCXwW8x6uK6X5dvU=;
-        b=Z7w8dNVB6+HrIK1AfeHcndhIn6ZaWZVjaZIxWOsOukdpjyAuA9v5MRUoVszMrQBn3J
-         OmEcavKPfNs572/UH5gmdKM7J3jRilp9xyNozanCQxRuPPAHSx18eI8pYMArV407v1zj
-         ooLDM0oB0I+fjkcaMrNQZMsuuEmVZHOA89GLn8XQCQZPc5kCtcYe8LI/cYv7QVn7PPK0
-         bBwexju2unXFq1uFUGN5CPtTg29DK4hfbDtw2leG52kDHQiU4m8uyyrpWyt7BxLV32vi
-         kox7/OnNMP54x3gfxbTCLsOXe8nE6ebCUd2U82Z2pSCrj5cs18rIZzPc3yFkjojHXfaq
-         nm+w==
+        h=message-id:date:mime-version:user-agent:content-language:to:cc
+         :references:from:subject:in-reply-to:content-transfer-encoding;
+        bh=1dVwRcvX/zX2ZvyZyllNzIEz5OjgRw64ZDWPHeywZC8=;
+        b=NLgcwNvhdW5LkWEv0Uj6WMcBuQS0Z1MM6opxaEO69IsazSgL5o/21eqAo114sQwXs2
+         ZkXtQWXYFdjoNejhiOflb2NYwFTOrZCmVk+R4LosZsDdyZD9GX1+SdXppbuI+3Pl4Dwj
+         oZ8LDWShTIDXYFrDt/VL60KBQZskZjrfS9Ujd846ylIsSkNqoYV821AlLBcV1M9k4Uni
+         hvgWGjpA7tm8/uhmXNgYXzdZOlb/YAz+dFGZZ3YQFjV1IgK0SCNKEgtcekb73M/l0LwD
+         Ea1mOJ4TPFkQ1t9gp7J5SSIcpPoZBufsHPVIxTtW0SXqdT9uP7HfY8MR7wZZT1DYNsT9
+         tDIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:message-id:date:mime-version:user-agent
+         :content-language:to:cc:references:from:subject:in-reply-to
          :content-transfer-encoding;
-        bh=gy0oFAby9fgPJK22xRJJtXNYPWrTCXwW8x6uK6X5dvU=;
-        b=vQIcxdPcBBsthUVUKnVKZG2B1Cb+k/v2g2m74ATpAxwHQcFOeWPjSDlu1gfpQabfbw
-         jIsCogsG2gwb9pPJibCunHbDVAIYBWCCh2YUpviF2Q8/LXbj9YLycqG6mMaQILh99R58
-         2Nvg1jGgT4Wvszb+ztiZeFL3mEsU2VCMZXO5NszdBgMCa6TRBe84TJ+gFHUporsPeRIS
-         tRydgmLFwTBfQbXCRG9G+o7Gu3Cy/YnpCYVMj3VYztzVZJaP/vLyAGToqWO4INyeGehv
-         COZcev4tVMET5qFb2McPfE4ZApWu+5ZBCzkzmQDdICHUCzzWX3vLacQT6ESKCjLGu1hK
-         kdtQ==
-X-Gm-Message-State: AJIora8sLkOP0un2LKQyCjyST6aG9IYO9+sojkWfZOyCsqsay0kT7jt6
-	v64BO3sIHPhtMxPXVFTd3A0=
-X-Google-Smtp-Source: AGRyM1vD+Ab3nz7tP2nVuzPb0dsUZnxwwUULdQcZmibPpfHs7wyej1w4JmMQtgxPcmsGhtrQP3nYMw==
-X-Received: by 2002:a05:600c:3790:b0:39c:62b9:b164 with SMTP id o16-20020a05600c379000b0039c62b9b164mr4925109wmr.0.1655384277780;
-        Thu, 16 Jun 2022 05:57:57 -0700 (PDT)
+        bh=1dVwRcvX/zX2ZvyZyllNzIEz5OjgRw64ZDWPHeywZC8=;
+        b=iiCL971bAT4iSyORcMGwMt+C4hVcFoh0j1GGynnKU5yl77m/knUABikUl080ATH5ep
+         Jywlmr5PryVBqyf/rb3kK90AEQozZ9Vts1bHA4fp+NOXcvtq6NSweW3r/A1BjZTpF1zb
+         c2zZbiLfXnCA6cbyBRS0irzQkRHbo2NL9Fa1npId9jEwCnMMRKo34ysBUGFSoEvf5DWS
+         0M/wMCAaUCvmVKqYZPpaIh7HzYsakQqyvCd/CX5BTgqFvSOZle5tew/JAjnkCfuU1r+M
+         1NI+8UtonaDKRmDMru1rOirpOXW14dOqLivsNJ3tSa6pX/tNiTd4mt8GFDKlBQB7+IUM
+         wfvA==
+X-Gm-Message-State: AJIora+bzgPJvptC59FETuIarSIF3HnJ9yWN0uZi8BhDOoicYQu11vZr
+	/tuNe+Ppud6pjyV8MFamFrw=
+X-Google-Smtp-Source: AGRyM1sv4JO3boUQn0I7JKR24E8LVGw6lqUPTDh/dIC/Y2zXeT22ejoujCVHN0znkQkj4DjGS0zThA==
+X-Received: by 2002:a05:6000:a0b:b0:219:f87e:86b with SMTP id co11-20020a0560000a0b00b00219f87e086bmr4647358wrb.570.1655384627020;
+        Thu, 16 Jun 2022 06:03:47 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id l7-20020a5d4107000000b0020fffbc122asm2161091wrp.99.2022.06.16.05.57.55
+        by smtp.gmail.com with ESMTPSA id m15-20020a05600c4f4f00b0039748be12dbsm6319155wmq.47.2022.06.16.06.03.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Jun 2022 05:57:56 -0700 (PDT)
-Message-ID: <d99deddb-c4a9-d5a1-d0a6-0e7f94fbdd9a@gmail.com>
-Date: Thu, 16 Jun 2022 14:57:53 +0200
+        Thu, 16 Jun 2022 06:03:46 -0700 (PDT)
+Message-ID: <f47513f3-e1a9-1764-9954-cdf6931281a9@gmail.com>
+Date: Thu, 16 Jun 2022 15:03:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.1
-Subject: Re: [PATCH v4 1/5] dt-bindings: iommu: mediatek: Add
- mediatek,infracfg phandle
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  yong.wu@mediatek.com
@@ -74,14 +72,15 @@ Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  krzysztof.kozlowski@linaro.org, miles.chen@mediatek.com
 References: <20220616110830.26037-1-angelogioacchino.delregno@collabora.com>
- <20220616110830.26037-2-angelogioacchino.delregno@collabora.com>
+ <20220616110830.26037-6-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220616110830.26037-2-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4 5/5] iommu/mediatek: Cleanup pericfg lookup flow
+In-Reply-To: <20220616110830.26037-6-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_055801_597212_CE722EF4 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20220616_060355_324161_5B074118 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,59 +98,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 16/06/2022 13:08, AngeloGioacchino Del Regno wrote:
-> Add property "mediatek,infracfg" to let the mtk_iommu driver retrieve
-> a phandle to the infracfg syscon instead of performing a per-soc
-> compatible lookup in the entire devicetree and set it as a required
-> property for MT2712 and MT8173.
+> Since only the INFRA type IOMMU needs to modify register(s) in the
+> pericfg iospace, it's safe to drop the pericfg_comp_str NULL check;
+> also, directly assign the regmap handle to data->pericfg instead of
+> to the infracfg variable to improve code readability.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   .../bindings/iommu/mediatek,iommu.yaml          | 17 +++++++++++++++++
->   1 file changed, 17 insertions(+)
+>   drivers/iommu/mtk_iommu.c | 12 +++++-------
+>   1 file changed, 5 insertions(+), 7 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> index 2ae3bbad7f1a..fee0241b5098 100644
-> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> @@ -101,6 +101,10 @@ properties:
->       items:
->         - const: bclk
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 90685946fcbe..b2ae84046249 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1217,15 +1217,13 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>   			dev_err(dev, "mm dts parse fail(%d).", ret);
+>   			goto out_runtime_disable;
+>   		}
+> -	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
+> -		   data->plat_data->pericfg_comp_str) {
+> -		infracfg = syscon_regmap_lookup_by_compatible(data->plat_data->pericfg_comp_str);
+> -		if (IS_ERR(infracfg)) {
+> -			ret = PTR_ERR(infracfg);
+> +	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
+> +		p = data->plat_data->pericfg_comp_str;
+> +		data->pericfg = syscon_regmap_lookup_by_compatible(p);
+> +		if (IS_ERR(data->pericfg)) {
+> +			ret = PTR_ERR(data->pericfg);
+>   			goto out_runtime_disable;
+>   		}
+> -
+> -		data->pericfg = infracfg;
+>   	}
 >   
-> +  mediatek,infracfg:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle to the mediatek infracfg syscon
-> +
->     mediatek,larbs:
->       $ref: /schemas/types.yaml#/definitions/phandle-array
->       minItems: 1
-> @@ -167,6 +171,18 @@ allOf:
->         required:
->           - power-domains
->   
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt2712-m4u
-> +              - mediatek,mt8173-m4u
-> +
-> +    then:
-> +      required:
-> +        - mediatek,infracfg
-> +
->     - if: # The IOMMUs don't have larbs.
->         not:
->           properties:
-> @@ -191,6 +207,7 @@ examples:
->               interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>;
->               clocks = <&infracfg CLK_INFRA_M4U>;
->               clock-names = "bclk";
-> +            mediatek,infracfg = <&infracfg>;
->               mediatek,larbs = <&larb0>, <&larb1>, <&larb2>,
->                                <&larb3>, <&larb4>, <&larb5>;
->               #iommu-cells = <1>;
+>   	platform_set_drvdata(pdev, data);
 
