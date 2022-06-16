@@ -4,127 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA5AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 02:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A733DC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 04:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GhBtibn7C/yz4vKqsDQRURimrz+0niz40Jmk1OUnqgU=; b=rydO3GgKVO/XJt8wT5hQWHFKJh
-	LFdySIkXZWWOMi2cF6k9JuwotquGA13DkB9lmgd9XpoRzaGpR5PMt3/ADneXP9DwIZE+DKaGmlmYL
-	JdbV70sxg8VjrZOOkZX+V9RH6hCEfj9HhqM3MeIyyuYWgnCNFg9jw5BkSt1hCG6/iIEghStqMy9oX
-	VphITT+hvodMi2mXTYYQelbr7DZFkCXQjd+8LvVi9obLSOTJtc/ovOl/s5hPI1Ma5+w8FJtj3TJ68
-	j/bNQxBqwZm+ZLPiV+Qk1gETfeSMpnWoUAJyQbb0GHle0od0okh5ySpbk2mBhM9x80OLvjC5MsyMt
-	F8kDxRLQ==;
+	bh=DxadkN7nqNrPrYrBldOIVxNGXXCLWBvUhyyMSwEEau0=; b=ElZyZTTPfWOEYaT+wKIxxkrSjT
+	gBmIq3kz4/QcW7w88dZSeNBJWgM3TVV8v8FrZAba6wEPrQcPT+OMwXoudvAUrDUL21cUWd8PstftK
+	EsTE2dsfWhiUgSd+rkDx9aoLQmikByOmYTwjyeFp7TNK0B8hh26fjLG5pURMV5AUnNm5ADH4M4YHB
+	PpiE6XxVJglWuuDjd8oiFFHMF/2VAUASS+fNYp839xHyBacKZrbXc/g6pGvCvQ1TL8sGH7n2xTmOx
+	weOXHMkVidwSCqxdZLgFlTMtMSStDDnbXjxjVtGzTxIDZ2mNHe1ICwEI1mKe4UasPj8UwScgHaNkW
+	m9mvwBVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1ffB-0009oW-UC; Thu, 16 Jun 2022 02:55:17 +0000
-Received: from mail-co1nam11on2060e.outbound.protection.outlook.com ([2a01:111:f400:7eab::60e] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1o1hXy-000RiN-46; Thu, 16 Jun 2022 04:55:58 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1ff1-0009lT-2y; Thu, 16 Jun 2022 02:55:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=asariG3I1XsbsLdZvlU7JD7bgUWn7ouo8GIp8JJ5HLGnKARBBtsUQ/SfD7VHIb1SPe8YmVt9zofiaCUshvKwkMDxwOWeBhPKVaoiBeiAq+C5tSVebLBTn9yGoh1cHONgtP53mZr0RBoGdutD2jqzyInvD9Abrm6lAI/unFo+dAf6GHQAn7wBVtEGw4tke6u8UK/E2rRQU6bKs6ezfdal/9+3UetzzZyBfKvQ/awW9a2/xv2eSV6VJhTnXnY1QTVs1Wc8aosYZunXU9nqMBVwNRSl7kRjPW/uk8Rg4GMret6jpT0mJWMX4rhkJAslxVlBr9Zj5yK/6WAXOC6sQuF4wA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GhBtibn7C/yz4vKqsDQRURimrz+0niz40Jmk1OUnqgU=;
- b=Bm8SX8RfwpvvCdmFVoRT82gfe8P24noxdJ5T92qIjgTpsVE61SdprlmGhftuEwA8CuwtKLk/Y2tR82N/wEcHi0hxq11dRKGZtxNMImlDpcCuKaq28WgcdDVBopMi+w2ReYgqD4UuKpZDxioaFd+08QvClcGu1Y51UFt8HDavgctfRoEgGjoH5y8uHGhQR/MctTQImKWMckDK9Z8kcuf736wneTbwJGoZflNcOgaLUAMLbul/yR2XwxM3Iu1Nh5VGM9PoaHkLvHSahdOonpepEEaiCSiMkl9t6W9W0f5mgX/fWNhKviKB2Cnnttz7LQ6barBP5yu9vPX19dflC0BiEg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.234) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com; dmarc=pass
- (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
- (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GhBtibn7C/yz4vKqsDQRURimrz+0niz40Jmk1OUnqgU=;
- b=tipximkeSNPWNhyrfTMN9HOlM6t4uiw4MXbXWVCaHeG+h7d8tDudSYkrNzJ/50JWHFpfRsTMYVj5alXvurTkcvxpz7oDkMSFqVGdxsarkF5vtxp5wB+rBbLaM9peZZ1mX0V/Fj15Drosk2s+VVC6t+S7dU2NlNsTq9ZZVkBXjVFIt14Zw10+5J704OX0gIsCjJIRb4POiXGwhDMlVNgKaCUIxCq2arwl7RQkeQKYX5bnBavM1g/xZKBPxqzD/aqoBUJLKlySJT+pwEqSjieXq2wpQekMvY7mTc2CHmCMDUNxuWQIuXmduiXk9BcG7p2G9Pk/umAWLrOcVF7R7il1iQ==
-Received: from DM6PR03CA0039.namprd03.prod.outlook.com (2603:10b6:5:100::16)
- by MN2PR12MB2990.namprd12.prod.outlook.com (2603:10b6:208:cc::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14; Thu, 16 Jun
- 2022 02:40:13 +0000
-Received: from DM6NAM11FT005.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:100:cafe::b1) by DM6PR03CA0039.outlook.office365.com
- (2603:10b6:5:100::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.15 via Frontend
- Transport; Thu, 16 Jun 2022 02:40:13 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.234)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.234 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.234; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.234) by
- DM6NAM11FT005.mail.protection.outlook.com (10.13.172.238) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5332.12 via Frontend Transport; Thu, 16 Jun 2022 02:40:12 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by DRHQMAIL101.nvidia.com
- (10.27.9.10) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Thu, 16 Jun
- 2022 02:40:08 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail202.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Wed, 15 Jun
- 2022 19:40:07 -0700
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
- Transport; Wed, 15 Jun 2022 19:40:04 -0700
-Date: Wed, 15 Jun 2022 19:40:02 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Baolu Lu <baolu.lu@linux.intel.com>
-CC: <joro@8bytes.org>, <will@kernel.org>, <marcan@marcan.st>,
-	<sven@svenpeter.dev>, <robin.murphy@arm.com>, <robdclark@gmail.com>,
-	<matthias.bgg@gmail.com>, <orsonzhai@gmail.com>, <baolin.wang7@gmail.com>,
-	<zhang.lyra@gmail.com>, <jean-philippe@linaro.org>,
-	<alex.williamson@redhat.com>, <jgg@nvidia.com>, <kevin.tian@intel.com>,
-	<suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
-	<dwmw2@infradead.org>, <yong.wu@mediatek.com>, <mjrosato@linux.ibm.com>,
-	<gerald.schaefer@linux.ibm.com>, <thierry.reding@gmail.com>,
-	<vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <cohuck@redhat.com>,
-	<thunder.leizhen@huawei.com>, <tglx@linutronix.de>,
-	<christophe.jaillet@wanadoo.fr>, <john.garry@huawei.com>,
-	<chenxiang66@hisilicon.com>, <saiprakash.ranjan@codeaurora.org>,
-	<isaacm@codeaurora.org>, <yangyingliang@huawei.com>,
-	<jordan@cosmicpenguin.net>, <iommu@lists.linux-foundation.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
-	<virtualization@lists.linux-foundation.org>, <kvm@vger.kernel.org>
-Subject: Re: [PATCH v2 1/5] iommu: Return -EMEDIUMTYPE for incompatible
- domain and device/group
-Message-ID: <YqqYAtfn7PQeCxgW@Asurada-Nvidia>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-2-nicolinc@nvidia.com>
- <0c0e6ec8-725d-93e8-44f1-db6c8a673a97@linux.intel.com>
+	id 1o1hXu-000RhC-IN; Thu, 16 Jun 2022 04:55:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1655355354; x=1686891354;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=kkmFQxqRSE/ckje8wFOulaGLrffZ2XBJeCW/d4bSrAY=;
+  b=N4DT0qOXq3v5FXXrkkvHgEPG0243zSXsiIMKywvh2M0og2PIsnQJapzI
+   ofqr8m7VC/xvlPL2QA+QCdEB0rSoo1bZPCDxbASZsmrB4ZIc9i/xZCcr6
+   0MTzLbi4EQx2+Za4iXrOFkXSS11ORFzxR6FUuB5nxIHquubbJIspv8xLO
+   gd1ZB9YqsjhUL3EIn6NiGqCTfG7ixZ3zXH+TWfV4ptHt826MnnIIGxvuk
+   yXGjcmJrMSdHAcjaoKfHSPAmVzsuU3tRREbpY3GOWnpo5YAK+w20n0LLR
+   ew13p2NhZfHQ9brJ7vd2VSczEYQ/Ab+LugdJtfcQCpZmf00Jd6VhdNFfI
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10379"; a="259019716"
+X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; 
+   d="scan'208";a="259019716"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 21:55:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; 
+   d="scan'208";a="713224177"
+Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
+  by orsmga004.jf.intel.com with ESMTP; 15 Jun 2022 21:55:47 -0700
+Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1o1hXm-000O3l-S1;
+	Thu, 16 Jun 2022 04:55:46 +0000
+Date: Thu, 16 Jun 2022 12:54:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: yf.wang@mediatek.com, Yong Wu <yong.wu@mediatek.com>,
+	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"open list:MEDIATEK IOMMU DRIVER" <iommu@lists.linux-foundation.org>,
+	"moderated list:MEDIATEK IOMMU DRIVER" <linux-mediatek@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>
+Cc: kbuild-all@lists.01.org, wsd_upstream@mediatek.com,
+	Libo Kang <Libo.Kang@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Yunfei Wang <yf.wang@mediatek.com>, Ning Li <ning.li@mediatek.com>
+Subject: Re: [PATCH v9 3/3] iommu/mediatek: Allow page table PA up to 35bit
+Message-ID: <202206161233.WDjdWJGb-lkp@intel.com>
+References: <20220615161224.6923-4-yf.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <0c0e6ec8-725d-93e8-44f1-db6c8a673a97@linux.intel.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7f4b40cf-3b78-4593-41b5-08da4f4189d1
-X-MS-TrafficTypeDiagnostic: MN2PR12MB2990:EE_
-X-Microsoft-Antispam-PRVS: 	<MN2PR12MB2990BF315D3E7101FA85B8B3ABAC9@MN2PR12MB2990.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	HwdzFIEdlNpfJjfm+z36VuJ0NsCdJyymn+4PuqriQ52llbjQjZKtB67FKv5ZNq43v082E/05qYv1LZTW2l9JnHlWVmTK9Vzo7PbUITUtxRFeKwVaot0/W4L30fASq/Pnw2Zqg7dKa/n2KDTXEV0wh07urfOQNtUrjPPtVCcZpXLP5qew/tGmTSSA3jB1Dxj8Z8ag44OyU8rtPGGPm7MCbSxS/kb+Zq3uFnnajKR+pnTZVHKSshdZnPoiPzzAM6SuLu6Ta1KFQqOFvmC5V7bI8E8/b8AlE81Mbw8glsGK86I3MpwIy8pijZ+YjYNNVmTtI7N6ZmGvm/zHAWSOXmaZfdxTMW0aa28jjrokSC22SGP9O3amKHycFDW76sVYI8Y9JN5P0e6w+2HYqagE7OMo2W7ImW2F7GNTUikt96fwPafAhuLQ1dTnYs2oSD6E/jMezii0MF57mbf76nXplH6LvipiLlzo2q4wIT3Z5W1Q6Xo+MjM4MYltIRVB9Sj011KnPhrQTjth2pXSjTYNP9ExiuosEHVlKVDTL821HVdCRcJwWOio5yQfPnOCa8S4UPzbS/G7/e5h//3VZmL+rpGN+1n47XxpNbD2Fj7wzEC1CGHsqJAmT1/uoyne4TYDCH5L5gNX7/m8ezEqX9njhPzYOCf2WO68qp0BxNkkq7EK3hZGhMavDiCdmXwJU0pgley9mttfIGdG0/D+Lted9HwGIw==
-X-Forefront-Antispam-Report: 	CIP:12.22.5.234;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(36840700001)(40470700004)(46966006)(81166007)(86362001)(53546011)(33716001)(82310400005)(54906003)(6916009)(186003)(5660300002)(36860700001)(7406005)(7416002)(40460700003)(508600001)(83380400001)(26005)(55016003)(9686003)(2906002)(356005)(8936002)(316002)(47076005)(336012)(426003)(4326008)(70586007)(70206006)(8676002)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jun 2022 02:40:12.8757
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7f4b40cf-3b78-4593-41b5-08da4f4189d1
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.234];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT005.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB2990
+In-Reply-To: <20220615161224.6923-4-yf.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_195507_166397_B5DC6149 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20220615_215554_694038_64B95F6F 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,40 +88,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 16, 2022 at 10:09:49AM +0800, Baolu Lu wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> On 2022/6/16 08:03, Nicolin Chen wrote:
-> > diff --git a/drivers/iommu/intel/iommu.c b/drivers/iommu/intel/iommu.c
-> > index 44016594831d..0dd13330fe12 100644
-> > --- a/drivers/iommu/intel/iommu.c
-> > +++ b/drivers/iommu/intel/iommu.c
-> > @@ -4323,7 +4323,7 @@ static int prepare_domain_attach_device(struct iommu_domain *domain,
-> >               return -ENODEV;
-> > 
-> >       if (dmar_domain->force_snooping && !ecap_sc_support(iommu->ecap))
-> > -             return -EOPNOTSUPP;
-> > +             return -EMEDIUMTYPE;
-> > 
-> >       /* check if this iommu agaw is sufficient for max mapped address */
-> >       addr_width = agaw_to_width(iommu->agaw);
-> > @@ -4331,10 +4331,10 @@ static int prepare_domain_attach_device(struct iommu_domain *domain,
-> >               addr_width = cap_mgaw(iommu->cap);
-> > 
-> >       if (dmar_domain->max_addr > (1LL << addr_width)) {
-> > -             dev_err(dev, "%s: iommu width (%d) is not "
-> > +             dev_dbg(dev, "%s: iommu width (%d) is not "
-> >                       "sufficient for the mapped address (%llx)\n",
-> >                       __func__, addr_width, dmar_domain->max_addr);
-> > -             return -EFAULT;
-> > +             return -EMEDIUMTYPE;
-> >       }
-> >       dmar_domain->gaw = addr_width;
-> 
-> Can we simply remove the dev_err()? As the return value has explicitly
-> explained the failure reason, putting a print statement won't help much.
+Hi,
 
-Yes. As long as no one has objection, I can remove that in the next
-version.
+Thank you for the patch! Yet something to improve:
+
+[auto build test ERROR on joro-iommu/next]
+[also build test ERROR on linus/master v5.19-rc2 next-20220615]
+[cannot apply to arm-perf/for-next/perf]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/yf-wang-mediatek-com/iommu-io-pgtable-arm-v7s-Add-a-quirk-to-allow-pgtable-PA-up-to-35bit/20220616-011227
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/joro/iommu.git next
+config: arc-allyesconfig (https://download.01.org/0day-ci/archive/20220616/202206161233.WDjdWJGb-lkp@intel.com/config)
+compiler: arceb-elf-gcc (GCC) 11.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/0032fcce9c1ab50caec1ef5dd4089a8a61fcf15c
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review yf-wang-mediatek-com/iommu-io-pgtable-arm-v7s-Add-a-quirk-to-allow-pgtable-PA-up-to-35bit/20220616-011227
+        git checkout 0032fcce9c1ab50caec1ef5dd4089a8a61fcf15c
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash
+
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   In file included from include/linux/scatterlist.h:9,
+                    from include/linux/dma-mapping.h:10,
+                    from include/linux/dma-direct.h:9,
+                    from drivers/iommu/mtk_iommu.c:11:
+   drivers/iommu/mtk_iommu.c: In function 'mtk_iommu_attach_device':
+>> drivers/iommu/mtk_iommu.c:693:49: error: 'struct mtk_iommu_data' has no member named 'base'
+     693 |                 writel(bank->m4u_dom->ttbr, data->base + REG_MMU_PT_BASE_ADDR);
+         |                                                 ^~
+   arch/arc/include/asm/io.h:231:75: note: in definition of macro 'writel_relaxed'
+     231 | #define writel_relaxed(v,c)     __raw_writel((__force u32) cpu_to_le32(v),c)
+         |                                                                           ^
+   drivers/iommu/mtk_iommu.c:693:17: note: in expansion of macro 'writel'
+     693 |                 writel(bank->m4u_dom->ttbr, data->base + REG_MMU_PT_BASE_ADDR);
+         |                 ^~~~~~
+
+
+vim +693 drivers/iommu/mtk_iommu.c
+
+   646	
+   647	static int mtk_iommu_attach_device(struct iommu_domain *domain,
+   648					   struct device *dev)
+   649	{
+   650		struct mtk_iommu_data *data = dev_iommu_priv_get(dev), *frstdata;
+   651		struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+   652		struct list_head *hw_list = data->hw_list;
+   653		struct device *m4udev = data->dev;
+   654		struct mtk_iommu_bank_data *bank;
+   655		unsigned int bankid;
+   656		int ret, region_id;
+   657	
+   658		region_id = mtk_iommu_get_iova_region_id(dev, data->plat_data);
+   659		if (region_id < 0)
+   660			return region_id;
+   661	
+   662		bankid = mtk_iommu_get_bank_id(dev, data->plat_data);
+   663		mutex_lock(&dom->mutex);
+   664		if (!dom->bank) {
+   665			/* Data is in the frstdata in sharing pgtable case. */
+   666			frstdata = mtk_iommu_get_frst_data(hw_list);
+   667	
+   668			ret = mtk_iommu_domain_finalise(dom, frstdata, region_id);
+   669			if (ret) {
+   670				mutex_unlock(&dom->mutex);
+   671				return -ENODEV;
+   672			}
+   673			dom->bank = &data->bank[bankid];
+   674		}
+   675		mutex_unlock(&dom->mutex);
+   676	
+   677		mutex_lock(&data->mutex);
+   678		bank = &data->bank[bankid];
+   679		if (!bank->m4u_dom) { /* Initialize the M4U HW for each a BANK */
+   680			ret = pm_runtime_resume_and_get(m4udev);
+   681			if (ret < 0) {
+   682				dev_err(m4udev, "pm get fail(%d) in attach.\n", ret);
+   683				goto err_unlock;
+   684			}
+   685	
+   686			ret = mtk_iommu_hw_init(data, bankid);
+   687			if (ret) {
+   688				pm_runtime_put(m4udev);
+   689				goto err_unlock;
+   690			}
+   691			bank->m4u_dom = dom;
+   692			bank->m4u_dom->ttbr = MTK_IOMMU_ADDR(dom->cfg.arm_v7s_cfg.ttbr);
+ > 693			writel(bank->m4u_dom->ttbr, data->base + REG_MMU_PT_BASE_ADDR);
+   694	
+   695			pm_runtime_put(m4udev);
+   696		}
+   697		mutex_unlock(&data->mutex);
+   698	
+   699		return mtk_iommu_config(data, dev, true, region_id);
+   700	
+   701	err_unlock:
+   702		mutex_unlock(&data->mutex);
+   703		return ret;
+   704	}
+   705	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
