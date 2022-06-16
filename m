@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CFC4CCA47A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 13:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81742C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 13:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AqCBBKJhjvVRevpKirub+RjdcNJhrbWsjFdQsoZidsM=; b=N0RH7dFncMYAE+ToRzTK+P14Kf
-	1KlsFZ8d9itv4gp1FQ/IFYjVSjlGXhMhgG98NKlsUeIkPLjHkOL8QRv+DTtfIfyU09gqnndlnmRLS
-	TTsyTbpVFBaYHVaDhYJZhol/YJiAauYvyi5VbadumO2b+/Axb1LWnIMV7+0zbCxY+5h0O5D1Co8ac
-	FpFbsFg1Piwr0kt0/iTdiQeZ4qVbJRCaRylH320D8ktaSd9YmYLXhUTGzbLpsIDdYYtJ5hofQqEHN
-	NzjHWjBrFlIy/2Mb6jrpGofUjQjp2YpuSUVi+meX1bGkaTq7gouvarcDm7IqSAkEH7UClEC7G4P/x
-	+6nz6qCw==;
+	bh=p++bIs2HneM4Mmo2YjeBS7JYAqLzkFDGH55M3o+NIxg=; b=BVdbuK++WQx7r1eA69w5qnM0dH
+	B+QFipKw/jv5h2fhRbGztQE0eRRpZyE0pO1bYcazMFcV5MmwCGYY1aRmvbFvnS5FytVvrB37/7+pm
+	KK6lttraN+5ZRUUq8N4eK3amlLktP0NDqiji/j/03kD8fv0yIHEwpa4qgbmaZX6oPOSkh3qF4pgv/
+	gbNX0D9IYXCcheimTZK5zSGzsRRAUJBJrtlKx9pKVoayJ0P3fKjHvOwVgdpmwxORl/6dGBuTP26dn
+	22MzNOXVLjpCwol23a1eDBpi3uNS177GES4MN1zzMOJNnq1b8nUxGEdgw7zKK0/LJW3dQzF+jMMuU
+	Pc7tVeAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1pzJ-002dv0-Qg; Thu, 16 Jun 2022 13:56:45 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1o1q09-002eI5-Al; Thu, 16 Jun 2022 13:57:37 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1pxl-002d8o-Rq
-	for linux-mediatek@lists.infradead.org; Thu, 16 Jun 2022 13:55:11 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id a10so1486217pju.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jun 2022 06:55:09 -0700 (PDT)
+	id 1o1pyU-002dW1-Qq
+	for linux-mediatek@lists.infradead.org; Thu, 16 Jun 2022 13:55:56 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id g186so1325441pgc.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jun 2022 06:55:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=AqCBBKJhjvVRevpKirub+RjdcNJhrbWsjFdQsoZidsM=;
-        b=MLMlzJpHqLk2NTSkk+4CI6/9tDS/CcuAuC6dpww7mHmyJkrttmtnJO/CzsKVctLzxk
-         uSWmtfHFtdcmmtcODHtKBEZjJDTXUKdKe+WmLecqFOF6zJKiqunDohh3PU0vQalFwjKA
-         d7uiDUPkWwPHlwOvs19l2d58ZAWsYV0fw7sePeBQIPrYPZsiYO5IJW3+TGPBkwJCdCpZ
-         TUBQgm+PUj2fx8W3A7arprSw311qJKS2AT37ChtVeYVsgIJHCEUXmpBrOLlt79rnM7iI
-         clLazAQA26Ptz+LYSgDLQKTFIA8N4Iutdz2ZSrAPnlzZqxBBCdvCpomjVI7MWbyu93Wf
-         ZrzQ==
+        bh=p++bIs2HneM4Mmo2YjeBS7JYAqLzkFDGH55M3o+NIxg=;
+        b=BehuJv74CLjkgQwQW2YTJI7GYHpWAyt46Adp9YWqP2Ino810KUqBU3m1LAkJP2RoeF
+         +eA+u8d7kVSzDosz5vq7VxcNcZTX5YfEAdbw3WwaqZk6zp6IGjSa69Y0nIzpcs7oQ7T1
+         5P9k5mgEtdwx7+92E2Hd+8E/s1CExYyHRLZ7rC2g7YdASXXLLCb/7P762HZgHrjLA75R
+         xG5TtUiW3VtMrQd6uFAmQG8Y4p1sUGlhBWUz7hIEqmjYZkezA6cSjVo4NTIG9NzxS6uo
+         9KvtSOoyXEs4n5UZOYuuYOrIE0Y0joFHJlTY2q8mQG0IgbCAF5+0MpkutS140mIBOqqJ
+         kXZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=AqCBBKJhjvVRevpKirub+RjdcNJhrbWsjFdQsoZidsM=;
-        b=jmSn0tmZAg1ECuJMMHfUddxHLiIQ4ptQBcB0fomKyv3kMJqGHPyFdEQlbdyxcERdcP
-         V5ZeBYnJO6ld1qoV0gogDC/h/6cBeaAtUns2dS+sAb9BJQSZ4ac5yDAaFmrhTRnvyPMm
-         eIAihK4qIA7/C6Kd/NfOc3jISI9rgdckJwt8WHZW18o3o9dbMQi0BfPWFg630PPAC/Fd
-         Hj384PfDTtoQrb7QjzMz9dSVlIeL8c5E/7B9Fk4SrCKboquHAAIPs67GwPhefzeshGyh
-         u8L4utl9sLyrSmNT23a7BX22I1T1YRB0lqusnkkfV22Ea92X/hhoujuZsffiWmRKvQg7
-         TI0A==
-X-Gm-Message-State: AJIora/osmNZBw/RgNiNY9N3PNY+C+4YGZTe7J9Y6oiJAYOmNmi6kJRL
-	d/hc2j1W8fbqC3aBxrU0HuVzoA==
-X-Google-Smtp-Source: AGRyM1vD8xThX01mXSwdjH5o86512U3eYCtOXz7Tt7aA/zrrnyjP12qDLwKDYDuqb3ZyVxcfG86VdA==
-X-Received: by 2002:a17:902:c94b:b0:168:fb7a:e5a0 with SMTP id i11-20020a170902c94b00b00168fb7ae5a0mr4755533pla.56.1655387708715;
-        Thu, 16 Jun 2022 06:55:08 -0700 (PDT)
+        bh=p++bIs2HneM4Mmo2YjeBS7JYAqLzkFDGH55M3o+NIxg=;
+        b=F44J3but25dv3Wa7z7pO+Ib7K0S7ymlPKBqFsj7HP6/PVPt+aVIYjqaPwcwPdKjcjj
+         RI6EL9V1s42SQOqOAj9Cr9iPVFbCU85xOURPOwY57HhYnTj0ft8R3N0xZga1A+qA+12C
+         QNmo4VU123wempd/vBdBZffkYABC45GhclvnM/Iy11QtsTwOg5solBE+eGxZXAx3BX3o
+         xDSSYjtm3/4KV34YXmGsBWSol3h6f1Xj1uDFNvn9XPBc5fjP0imUb+6DCf2DFlmLeTyg
+         MhpeC2GdfwAE+s5rKqQgw8EvU1mL6Y6MdU0vJuftLVCkhz1N8GWMirWUB9gkPMihseMV
+         2fgg==
+X-Gm-Message-State: AJIora+K7xd/Rqun4o7kX/C0QsCMMxVRBabBmAvVcFYIkJZMFjTgg5m7
+	Fk/ueKkjk1uxKa/DNCj9KSuH+w==
+X-Google-Smtp-Source: AGRyM1vXMhY+ZrUKaR7yePLi9tk4x6RLg+QaJ2jT5cqYNFanziG3iv5eJoN4umJFjqajEOEp+YtBpQ==
+X-Received: by 2002:a63:356:0:b0:3fd:7477:63f0 with SMTP id 83-20020a630356000000b003fd747763f0mr4613366pgd.601.1655387752971;
+        Thu, 16 Jun 2022 06:55:52 -0700 (PDT)
 Received: from [172.20.0.255] ([192.77.111.2])
-        by smtp.gmail.com with ESMTPSA id p2-20020a62b802000000b0051bc3f9a1f6sm1823305pfe.55.2022.06.16.06.55.07
+        by smtp.gmail.com with ESMTPSA id d2-20020a056a00198200b0051b9ecb53e6sm1773063pfl.105.2022.06.16.06.55.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Jun 2022 06:55:08 -0700 (PDT)
-Message-ID: <629e761b-e3ad-0861-1937-ad660a8a900b@linaro.org>
-Date: Thu, 16 Jun 2022 06:55:06 -0700
+        Thu, 16 Jun 2022 06:55:52 -0700 (PDT)
+Message-ID: <ea767ff8-9fa0-7a2f-af52-e0d05adafb03@linaro.org>
+Date: Thu, 16 Jun 2022 06:55:51 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH v3 1/4] dt-bindings: dsp: mediatek: Use meaningful names
- for mbox
+Subject: Re: [PATCH v3 3/4] dt-bindings: dsp: mediatek: Add mt8186 dsp
+ document
 Content-Language: en-US
 To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
  <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -86,14 +86,15 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220616073042.13229-1-tinghan.shen@mediatek.com>
- <20220616073042.13229-2-tinghan.shen@mediatek.com>
+ <20220616073042.13229-4-tinghan.shen@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220616073042.13229-2-tinghan.shen@mediatek.com>
+In-Reply-To: <20220616073042.13229-4-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_065509_981723_B8D18035 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20220616_065554_945295_9F198B74 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,36 +110,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 16/06/2022 00:30, Tinghan Shen wrote:
-> Rename mbox according to actions instead of 'mbox0' and 'mbox1'.
+> This patch adds mt8186 dsp document. The dsp is used for Sound Open
+> Firmware driver node. It includes registers, clocks, memory regions,
+> and mailbox for dsp.
 > 
 > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  .../devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml   | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
-> index b7e68b0dfa13..ca8d8661f872 100644
-> --- a/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
-> +++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
-> @@ -50,13 +50,13 @@ properties:
->  
->    mboxes:
->      items:
-> -      - description: ipc reply between host and audio DSP.
-> -      - description: ipc request between host and audio DSP.
-> +      - description: mailbox for receiving audio DSP requests.
-> +      - description: mailbox for transmitting requests to audio DSP.
->  
->    mbox-names:
->      items:
-> -      - const: mbox0
-> -      - const: mbox1
-> +      - const: rx
-> +      - const: tx
->  
 
-Commit msg lacks important piece - do you break any users with this? Do
-you have any users of this binding?
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 
 Best regards,
