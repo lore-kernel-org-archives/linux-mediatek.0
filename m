@@ -4,84 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F3AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 00:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CED4CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 01:11:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tGTPqf53Lj9/8GsMg13z01n1z5EhrPKNzDb0BXUNfys=; b=Olz6AO4CADbN/udjd4uA2hh3pt
-	Cll6Sb+XXqpuadogSQrL5A8makf4XVAORo1UQ6EgSELhMuVQjl9VymNlnKucZY6QVWfwHQspvrfYl
-	KBx03ll10sajvaG3+6NQX5AQrnv17WeYx9xPwCvlAgUBjENdCBZ5CRRwvPOUlNiQHjbGGGtzWM/2C
-	WG4m8jLkxEvRrsPbdsFUZ+YwAOhBO4+OSMriFYIC8Cj9Saci/12giZWpFH0oGcF5/ZNxNN331UQ7U
-	qj5LihNsmlc2jwUvORx+KSEGe1TJigQK1YxrQ5tsw9ZZVoge2De5LiIDuD7F6H0+Rl/CzP4spHrTL
-	moZp46jQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ft1J63ZOYWXd19cMmcIJIYqtvRJMmFemzygnHTUpnvM=; b=Kbw1LlQZ9YLBR9VBv6kCpwkwhr
+	V3MIU2l1mu7cUjb7Mc0qrz16F86V1EuuZgHdpqGAXOf7a7ZVpZlGV1bKpAfMIZdSrbH5hHfNcF1z7
+	8bc8TotAfS9+iheDoTd2vhZz/jtD3SccPEs7x4ivF/ED12pXWF8nO4XFJC71zNMcPHkBCr7QoZuE1
+	BzOb+OVHKGSsFkVcGy6VxKAJPCsN010nWTQX/Kj+rjH6EkoBv/Qc0vxCwB1QDFC1Dnb8L1MsU/5NZ
+	x/YWAwW6zsiyWzupHqgO5IuV3gIlNKYMqaW9GPm1KEA7UWMQoyLWJOF+y8cUgapLlV7A5tX92+aXW
+	fg+Yv3aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1dqM-00HFHP-SQ; Thu, 16 Jun 2022 00:58:42 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1o1e2U-00HKnH-WB; Thu, 16 Jun 2022 01:11:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1dm8-00HD1s-Uw
-	for linux-mediatek@lists.infradead.org; Thu, 16 Jun 2022 00:54:22 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id v17-20020a17090a899100b001ead067eaf9so400762pjn.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jun 2022 17:54:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=tGTPqf53Lj9/8GsMg13z01n1z5EhrPKNzDb0BXUNfys=;
-        b=imzLz7hkw0xDQ5bcaTiu6NBK7dS+wL7BA/wi7ulf/eXucrkRhXVhbM4BdsvGl3IAO8
-         PJrV3SA+qkkoTiO6q3tbzzXPxqjiTbZ3WbROwx9OSiCsw9y9PJJnTG27IfM1RkLBBcTQ
-         yN9t6CQKy7ISP1XE1qlQaHQGHdWr8MGgdLm1t53YYuFcuPU/ZzPQPIvWggH0bCUhcecT
-         59mIgU4kcTRsq35trroqJBaw1HVmg/UEsqxPDy678LwW0xFoDUm7pw0E+HL/t+aZ72by
-         46CYYGwekKxmiHiuoyJfpSy2794/RPZuGwdZDyaKL8uK0N1hrXRuVm2oqcysdp7wd2yq
-         Infg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=tGTPqf53Lj9/8GsMg13z01n1z5EhrPKNzDb0BXUNfys=;
-        b=nVqUth4h7H2VuwRAh+TkhjZvwOkghbpWT/QWacyyOJkuYIvV7sp8xDF+8NBZ08E0dl
-         R/kIXqgf3eRHBzDNaBXmwjcUOHYir5geghI5US5Yi3gwWvwPMnsUgvFvwj0vxwi2jwVA
-         RcWWiAW8beUPEmOvsaQnGMcjNTyRmbZuNX9TF1SfGSmN6ghhIqdLFyY5AKo4AoS1/xXD
-         RYdfsbM3DgObtfTY7vRsrC/uAE1BXg8Kj0EMFIU5yxwanWAmd/1Rznyq9PQrWi4IxGOO
-         TJ1aCphK2KZVehE4wa3H5aKdtybkZghAqQTKVkH2iW+YfF2RBvR3nv98nP87h4ULRUtJ
-         OvLw==
-X-Gm-Message-State: AJIora+sk4XOs8tOZ5QdC7oHaUVRYdO06A4SWzFPP1szTPn3TH38F0Xh
-	1VyhZoNXul6x/T8ALenDBrTk4A==
-X-Google-Smtp-Source: AGRyM1tAUWMoTe1+UGuqnfRFsdpszLuSA8ql6hYeutqISeJUosITT+V0GIs9M5h7ypRYxwPnRvVZAA==
-X-Received: by 2002:a17:902:d4cd:b0:167:4fa1:44b6 with SMTP id o13-20020a170902d4cd00b001674fa144b6mr2159478plg.15.1655340859523;
-        Wed, 15 Jun 2022 17:54:19 -0700 (PDT)
-Received: from krzk-bin.. ([192.77.111.2])
-        by smtp.gmail.com with ESMTPSA id p4-20020a170902780400b0016760c06b76sm233660pll.194.2022.06.15.17.54.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jun 2022 17:54:19 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: arm@kernel.org,
-	soc@kernel.org,
-	Arnd Bergmann <arnd@arndb.de>,
-	Olof Johansson <olof@lixom.net>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 18/40] ARM: dts: mediatek: align gpio-key node names with dtschema
-Date: Wed, 15 Jun 2022 17:53:11 -0700
-Message-Id: <20220616005333.18491-18-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
-References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+	id 1o1e2O-00HKgU-RD
+	for linux-mediatek@lists.infradead.org; Thu, 16 Jun 2022 01:11:11 +0000
+X-UUID: 34185001bf7e478f84ad2bde71677aa3-20220615
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:e59d4536-7220-4871-830a-3e5dbd51b130,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:ea3f64f6-e099-41ba-a32c-13b8bfe63214,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 34185001bf7e478f84ad2bde71677aa3-20220615
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 139480642; Wed, 15 Jun 2022 18:10:59 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Jun 2022 18:10:58 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 16 Jun 2022 09:10:56 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 16 Jun 2022 09:10:56 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
+	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+	<jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 2/2] mt76: mt7921: enable HW beacon filter in the initialization stage
+Date: Thu, 16 Jun 2022 09:10:53 +0800
+Message-ID: <96bb54870d90b9fd3f01463f2aca5336db0492c5.1655341405.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <27f75af42fe59ba9e3fadd173dfc777176eca555.1655341405.git.objelf@gmail.com>
+References: <27f75af42fe59ba9e3fadd173dfc777176eca555.1655341405.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_175421_018941_22D1699C 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20220615_181108_959050_E172E5F2 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,119 +86,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The node names should be generic and DT schema expects certain pattern
-(e.g. with key/button/switch).
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+The current driver has worked with HW beacon filter and connection
+monitor all the way, here we move the enablement into the initialization
+stage like other HW features being done to get rid of others are
+confused why these configurations would be changed at runtime.
+
+We still leave a way to turn off these offload features in debugfs knobs
+but that is just for debugging purposes.
+
+Tested-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- arch/arm/boot/dts/mt7623a-rfb-emmc.dts        | 4 ++--
- arch/arm/boot/dts/mt7623a-rfb-nand.dts        | 4 ++--
- arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 4 ++--
- arch/arm/boot/dts/mt7623n-rfb-emmc.dts        | 4 ++--
- arch/arm/boot/dts/mt7629-rfb.dts              | 4 ++--
- 5 files changed, 10 insertions(+), 10 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c |  1 +
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 16 +++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c  |  5 -----
+ 3 files changed, 16 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt7623a-rfb-emmc.dts b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-index 13c86936d1c8..e8b4b6d30d19 100644
---- a/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-+++ b/arch/arm/boot/dts/mt7623a-rfb-emmc.dts
-@@ -45,13 +45,13 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&key_pins_a>;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 48a10aaecc62..5f3e2507975c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -96,6 +96,7 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	ieee80211_hw_set(hw, WANT_MONITOR_VIF);
+ 	ieee80211_hw_set(hw, SUPPORTS_PS);
+ 	ieee80211_hw_set(hw, SUPPORTS_DYNAMIC_PS);
++	ieee80211_hw_set(hw, CONNECTION_MONITOR);
  
--		factory {
-+		button-factory {
- 			label = "factory";
- 			linux,code = <BTN_0>;
- 			gpios = <&pio 256 GPIO_ACTIVE_LOW>;
- 		};
+ 	if (dev->pm.enable)
+ 		ieee80211_hw_set(hw, CONNECTION_MONITOR);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index d803a7dd5f83..c7f95d83885a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -352,6 +352,7 @@ static int mt7921_add_interface(struct ieee80211_hw *hw,
+ 		mtxq->wcid = idx;
+ 	}
  
--		wps {
-+		button-wps {
- 			label = "wps";
- 			linux,code = <KEY_WPS_BUTTON>;
- 			gpios = <&pio 257 GPIO_ACTIVE_HIGH>;
-diff --git a/arch/arm/boot/dts/mt7623a-rfb-nand.dts b/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-index 88d8f0b2f4c2..61f5da68d4b0 100644
---- a/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-+++ b/arch/arm/boot/dts/mt7623a-rfb-nand.dts
-@@ -45,13 +45,13 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&key_pins_a>;
++	vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
+ out:
+ 	mt7921_mutex_release(dev);
  
--		factory {
-+		button-factory {
- 			label = "factory";
- 			linux,code = <BTN_0>;
- 			gpios = <&pio 256 GPIO_ACTIVE_LOW>;
- 		};
+@@ -495,8 +496,21 @@ static void
+ mt7921_pm_interface_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
+ {
+ 	struct mt7921_dev *dev = priv;
++	struct ieee80211_hw *hw = mt76_hw(dev);
++	bool pm_enable = dev->pm.enable;
++	int err;
  
--		wps {
-+		button-wps {
- 			label = "wps";
- 			linux,code = <KEY_WPS_BUTTON>;
- 			gpios = <&pio 257 GPIO_ACTIVE_HIGH>;
-diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-index 027c1b0c6a98..5008115d2494 100644
---- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-+++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
-@@ -91,13 +91,13 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&key_pins_a>;
+-	mt7921_mcu_set_beacon_filter(dev, vif, dev->pm.enable);
++	err = mt7921_mcu_set_beacon_filter(dev, vif, pm_enable);
++	if (err < 0)
++		return;
++
++	if (pm_enable) {
++		vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
++		ieee80211_hw_set(hw, CONNECTION_MONITOR);
++	} else {
++		vif->driver_flags &= ~IEEE80211_VIF_BEACON_FILTER;
++		__clear_bit(IEEE80211_HW_CONNECTION_MONITOR, hw->flags);
++	}
+ }
  
--		factory {
-+		button-factory {
- 			label = "factory";
- 			linux,code = <BTN_0>;
- 			gpios = <&pio 256 GPIO_ACTIVE_LOW>;
- 		};
+ static void
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index d0a7c3128d5a..823019f9c2dc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -1134,7 +1134,6 @@ int mt7921_mcu_set_beacon_filter(struct mt7921_dev *dev,
+ 				 struct ieee80211_vif *vif,
+ 				 bool enable)
+ {
+-	struct ieee80211_hw *hw = mt76_hw(dev);
+ 	int err;
  
--		wps {
-+		button-wps {
- 			label = "wps";
- 			linux,code = <KEY_WPS_BUTTON>;
- 			gpios = <&pio 257 GPIO_ACTIVE_HIGH>;
-diff --git a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-index 1b9b9a8145a7..bf67a8e9be59 100644
---- a/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-+++ b/arch/arm/boot/dts/mt7623n-rfb-emmc.dts
-@@ -60,13 +60,13 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&key_pins_a>;
+ 	if (enable) {
+@@ -1142,8 +1141,6 @@ int mt7921_mcu_set_beacon_filter(struct mt7921_dev *dev,
+ 		if (err)
+ 			return err;
  
--		factory {
-+		button-factory {
- 			label = "factory";
- 			linux,code = <BTN_0>;
- 			gpios = <&pio 256 GPIO_ACTIVE_LOW>;
- 		};
+-		vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
+-		ieee80211_hw_set(hw, CONNECTION_MONITOR);
+ 		mt76_set(dev, MT_WF_RFCR(0), MT_WF_RFCR_DROP_OTHER_BEACON);
  
--		wps {
-+		button-wps {
- 			label = "wps";
- 			linux,code = <KEY_WPS_BUTTON>;
- 			gpios = <&pio 257 GPIO_ACTIVE_HIGH>;
-diff --git a/arch/arm/boot/dts/mt7629-rfb.dts b/arch/arm/boot/dts/mt7629-rfb.dts
-index eb536cbebd9b..84e14bee7235 100644
---- a/arch/arm/boot/dts/mt7629-rfb.dts
-+++ b/arch/arm/boot/dts/mt7629-rfb.dts
-@@ -23,13 +23,13 @@ chosen {
- 	gpio-keys {
- 		compatible = "gpio-keys";
+ 		return 0;
+@@ -1153,8 +1150,6 @@ int mt7921_mcu_set_beacon_filter(struct mt7921_dev *dev,
+ 	if (err)
+ 		return err;
  
--		reset {
-+		button-reset {
- 			label = "factory";
- 			linux,code = <KEY_RESTART>;
- 			gpios = <&pio 60 GPIO_ACTIVE_LOW>;
- 		};
+-	vif->driver_flags &= ~IEEE80211_VIF_BEACON_FILTER;
+-	__clear_bit(IEEE80211_HW_CONNECTION_MONITOR, hw->flags);
+ 	mt76_clear(dev, MT_WF_RFCR(0), MT_WF_RFCR_DROP_OTHER_BEACON);
  
--		wps {
-+		button-wps {
- 			label = "wps";
- 			linux,code = <KEY_WPS_BUTTON>;
- 			gpios = <&pio 58 GPIO_ACTIVE_LOW>;
+ 	return 0;
 -- 
-2.34.1
+2.25.1
 
 
