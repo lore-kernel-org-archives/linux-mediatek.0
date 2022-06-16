@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75814C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 10:51:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8B6AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 11:08:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SYnBj5Sryv7WruEVgL+vu4MrpBJcxwCB7eutKg/9GKo=; b=1GmYRFN9vUzoxpy3mImixJCqLt
-	AUpoaDxaickxOkeC/RjVg6nxRecORyrzuSmip9WzukUzfROHLagMP+wAeqa8RNqBVEFUCpS1z/XfC
-	TKwCToUxwhuZBR3M836gqwx7XMVWkrUNPZ7ylow5s7T+n9facY5mqiNTEALqpiEazjNwjVFtllPct
-	+jepeaoPW32zLjtBDCSMXp8UdxVr2MI9+miQ5Juh3erhkqLxXx4ARkz7RHnagrKuABaymUaw7AMeZ
-	hOHdDpGPrGjVpkmoiHle5LttvXpk1Q8WVb8ltdv3n+5HFrKU5rRABQInvXqqfeT3uHPoL1hJU5xdv
-	vYxzeFCQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=75CakknAqO0PMv6rE61f+6vnoUrCIgWs3bvKtyD5Cq0=; b=2yCjYfAKN697Lt1im2k8y4LsoI
+	YzH+B3Y8dFyoZC0wiLtk/BYCg4gAeQJZgT1JlQjJ8No1tEhlFyHa9TN++0VHOiOD7p7SUsb71QwQp
+	XuujY2iA0sMLUMQsSfLulxWBlCpIXfgjrIBB9rSn3j/rx4e61WCBx4VzWNwaWOABUsSaX0r2Qcv0P
+	H7hzdS/xW3bvhpkUbMGX6cLEgm/LtnhZnmDL+xbLZhJ4hxkbQs0+6NCN/L+OlkrVov62F9BU2gQgf
+	mecwrFia3Tx0EZWi6z1EUUDXifZGMTPHaH2tNKWZHGBUBcsY66HjxPWona/fY408OkZAhN/cC87Yx
+	+x2HBHbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1n6E-001wxj-5q; Thu, 16 Jun 2022 10:51:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o1nMr-00204L-8x; Thu, 16 Jun 2022 11:08:53 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1n6A-001ww8-J5; Thu, 16 Jun 2022 10:51:40 +0000
-X-UUID: 915409cb1a3640a89a131d5adf95f4fe-20220616
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:f33b9e3c-849b-4a1c-acf3-67d8a9a0b192,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:33b1bf48-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 915409cb1a3640a89a131d5adf95f4fe-20220616
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 863167843; Thu, 16 Jun 2022 03:51:34 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Jun 2022 03:51:33 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 16 Jun 2022 18:51:31 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 16 Jun 2022 18:51:31 +0800
-Message-ID: <bd0183b088c4c2849837f49b4b35b26d9079ac5f.camel@mediatek.com>
-Subject: Re: [PATCH v11 12/12] drm/mediatek: dpi: Add matrix_sel helper
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 16 Jun 2022 18:51:31 +0800
-In-Reply-To: <de65caa980c270e4dedcf134d45185d41cd4c0ae.camel@mediatek.com>
-References: <20220613064841.10481-1-rex-bc.chen@mediatek.com>
-	 <20220613064841.10481-13-rex-bc.chen@mediatek.com>
-	 <de65caa980c270e4dedcf134d45185d41cd4c0ae.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o1nMf-001zxT-G7; Thu, 16 Jun 2022 11:08:43 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 686846601747;
+	Thu, 16 Jun 2022 12:08:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655377719;
+	bh=mpK1TVAIqyX6YVJK1M8Os+7jR/kqhqwVYDvOvGIs95Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ch6RYiKtPc9VsSjhrKSnp0vU0dODz448sqD29I+hfp7tCSq5/Ms2LWSEmzwV9qCFj
+	 J3HRBsegQbwFFREW/xctKgGliHrhsNAX/hzS1NR+sNIfg8fXJAyVe/5fqZ0QKL4H6w
+	 5XeXjANUFC2PrvMdwicA55FIyaMoVZc5uBhj6yMPfuHVu2QLOLG3DQiFH1x0G5qPIF
+	 BI5vbbrHPn0UYp78uw+RtufGvAbSFKnCq94XwKZFtGPfhDMsIsH8I2XtydLwqLAW93
+	 sEfCtPjgq0vSZdfTOF91OsyzR9Jq+0/kn8QN0ufQW/4J25FJfL/V6d3ItuimOpVXZh
+	 R7/M9tiasr5gg==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: yong.wu@mediatek.com
+Cc: joro@8bytes.org,
+	will@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	iommu@lists.linux-foundation.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	krzysztof.kozlowski@linaro.org,
+	miles.chen@mediatek.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 0/5] mtk_iommu: Specify phandles to infracfg and pericfg
+Date: Thu, 16 Jun 2022 13:08:25 +0200
+Message-Id: <20220616110830.26037-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_035138_696108_B386A26C 
-X-CRM114-Status: GOOD (  21.72  )
+X-CRM114-CacheID: sfid-20220616_040841_790133_24585D3E 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,103 +80,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-06-14 at 14:20 +0800, CK Hu wrote:
-> Hi, Bo-Chen:
-> 
-> On Mon, 2022-06-13 at 14:48 +0800, Bo-Chen Chen wrote:
-> > From: Guillaume Ranquet <granquet@baylibre.com>
-> > 
-> > Add a mtk_dpi_matrix_sel() helper to update the DPI_MATRIX_SET
-> > register depending on the color format.
-> 
-> Why set DPI_MATRIX_SET? New feature or bug fix? What does this matrix
-> work for?
-> 
-> Regards,
-> CK
-> 
+The IOMMU has registers in the infracfg and/or pericfg iospaces: as
+for the currently supported SoCs, MT2712 and MT8173 need a phandle to
+infracfg, while MT8195 needs one to pericfg.
 
-Matrix selection is a new feature for both dpi and dpintf of MT8195.
-I will add this in next version.
+Before this change, the driver was checking for a SoC-specific infra/peri
+compatible but, sooner or later, these lists are going to grow a lot...
+...and this is why it was chosen to add phandles (as it was done with
+some other drivers already - look at mtk-pm-domains, mt8192-afe
 
-> > 
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dpi.c      | 21 +++++++++++++++++++++
-> >  drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  3 +++
-> >  2 files changed, 24 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > index 9668bd5dd14a..dc355a512963 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > @@ -387,6 +387,25 @@ static void mtk_dpi_config_disable_edge(struct
-> > mtk_dpi *dpi)
-> >  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0,
-> > EDGE_SEL_EN);
-> >  }
-> >  
-> > +static void mtk_dpi_matrix_sel(struct mtk_dpi *dpi, enum
-> > mtk_dpi_out_color_format format)
-> > +{
-> > +	u32 matrix_sel = 0;
-> > +
-> > +	switch (format) {
-> > +	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
-> > +	case MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL:
-> > +	case MTK_DPI_COLOR_FORMAT_YCBCR_444:
-> > +	case MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL:
-> > +	case MTK_DPI_COLOR_FORMAT_XV_YCC:
-> > +		if (dpi->mode.hdisplay <= 720)
-> > +			matrix_sel = 0x2;
-> > +		break;
-> > +	default:
-> > +		break;
-> > +	}
-> > +	mtk_dpi_mask(dpi, DPI_MATRIX_SET, matrix_sel,
-> > INT_MATRIX_SEL_MASK);
-> > +}
-> > +
-> >  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
-> >  					enum mtk_dpi_out_color_format
-> > format)
-> >  {
-> > @@ -394,6 +413,7 @@ static void mtk_dpi_config_color_format(struct
-> > mtk_dpi *dpi,
-> >  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
-> >  		mtk_dpi_config_yuv422_enable(dpi, false);
-> >  		mtk_dpi_config_csc_enable(dpi, true);
-> > +		mtk_dpi_matrix_sel(dpi, format);
-> >  		if (dpi->conf->swap_input_support)
-> >  			mtk_dpi_config_swap_input(dpi, false);
-> >  		mtk_dpi_config_channel_swap(dpi,
-> > MTK_DPI_OUT_CHANNEL_SWAP_BGR);
-> > @@ -401,6 +421,7 @@ static void mtk_dpi_config_color_format(struct
-> > mtk_dpi *dpi,
-> >  		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
-> >  		mtk_dpi_config_yuv422_enable(dpi, true);
-> >  		mtk_dpi_config_csc_enable(dpi, true);
-> > +		mtk_dpi_matrix_sel(dpi, format);
-> >  		if (dpi->conf->swap_input_support)
-> >  			mtk_dpi_config_swap_input(dpi, true);
-> >  		mtk_dpi_config_channel_swap(dpi,
-> > MTK_DPI_OUT_CHANNEL_SWAP_RGB);
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > index f7f0272dbd6a..96c117202d0d 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > @@ -230,4 +230,7 @@
-> >  #define EDGE_SEL_EN			BIT(5)
-> >  #define H_FRE_2N			BIT(25)
-> >  
-> > +#define DPI_MATRIX_SET		0xB4
-> > +#define INT_MATRIX_SEL_MASK	(0x1F << 0)
-> > +
-> >  #endif /* __MTK_DPI_REGS_H */
-> 
-> 
+Please note that, while it was necessary to update the devicetrees for
+MT8173 and MT2712e, there was no update for MT8195 because there is no
+IOMMU node in there yet.
+
+Changes in v4:
+ - Dropped changes introducing mediatek,pericfg handle
+ - Fixed required property in IOMMU example in patch [1/5]
+ - Added a pericfg lookup flow cleanup commit
+
+Changes in v3:
+ - Different squashing of dt-bindings patches (sorry for misunderstanding!)
+ - Removed legacy devicetree print
+
+Changes in v2:
+ - Squashed dt-bindings patches as suggested by Matthias
+ - Removed quotes from infra/peri phandle refs
+ - Changed dev_warn to dev_info in patches [2/7], [3/7]
+
+AngeloGioacchino Del Regno (5):
+  dt-bindings: iommu: mediatek: Add mediatek,infracfg phandle
+  iommu/mediatek: Lookup phandle to retrieve syscon to infracfg
+  arm64: dts: mediatek: mt8173: Add mediatek,infracfg phandle for IOMMU
+  arm64: dts: mediatek: mt2712e: Add mediatek,infracfg phandle for IOMMU
+  iommu/mediatek: Cleanup pericfg lookup flow
+
+ .../bindings/iommu/mediatek,iommu.yaml        | 17 +++++++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  2 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  1 +
+ drivers/iommu/mtk_iommu.c                     | 50 +++++++++++--------
+ 4 files changed, 49 insertions(+), 21 deletions(-)
+
+-- 
+2.35.1
 
 
