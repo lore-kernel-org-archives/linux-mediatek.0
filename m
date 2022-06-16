@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665AEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 13:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EB8DC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 13:28:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q5ApQStmmQQuY/tZ+Ruk4okptPMO9uzhXSBTZ/iONIs=; b=GL1NATobLCUoS5voaycoDNH4JS
-	kvPSYREaeWgdnmkSacUZIjDwdwPPjDw6/KneM4He0P4k9yhXZyXWHf6NNvp+6OKPy9oKCS8riqZvn
-	pHesQr/wROJ9Z34NSUhbG+AnedzSBS9qIyAUlCYY+mi71e9QqO9W3UV3wZRJEwUBmZdIkORKm18Jx
-	Zhh0q7ga5lq3Nu64GMgWH7A8et/9kNcxKArMg1l5H3KfQb6+VF5dtmg5v5nJafe6Vo3bnKBOsf0aU
-	yTMu/ZdrBZblB8rx1kisNgtKqNWbLCs8xS9zp8dFKGDaly1hv9jGn6LYw/379oBEBeauWugp05eOu
-	2bHEX2/g==;
+	bh=8h+FpcXrrgVVoUz/iXyZW+h/bqUW6xveKHdamK/cuQc=; b=CdXE8GnAeb1uva2cPQZOEaQUAQ
+	3eAM0M7fkLKAOcbvxrs75LZPmLCPF9GLoAcn2yhN81yAINx+fISYRUm7PaC0w8rqXa0uXhHSnl3Tl
+	7dnAwwd3skZxdZcQ6h7bl6MKuonKgZBokZ7GCsaF83YVcafnS+0II5JeJR2r1VD07LC6SClWPi1ht
+	3IBCLiIfuFVa6rpjmTMH1EJOkDLp+1buFdTjXWvxlCNhAAlalPSe2DDSZUkNbyBwD04HbgiRGaym3
+	kf6M4eSCNkjk7rsfhlRyZs/X4O2eNN9uqIODglt8AF4y54u/C9l2jdllJfkldzjtlgpOOH4YqPWfc
+	xaYpRIvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1pSN-002RLg-40; Thu, 16 Jun 2022 13:22:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o1pY9-002SfQ-Dp; Thu, 16 Jun 2022 13:28:41 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1pS6-002RHK-QB; Thu, 16 Jun 2022 13:22:28 +0000
-X-UUID: 7b17d8ec00894c0e9e9449224cdd862c-20220616
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:8c2c9a2e-687d-4364-aaad-0c373f52c805,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:b14ad71,CLOUDID:f93180f6-e099-41ba-a32c-13b8bfe63214,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 7b17d8ec00894c0e9e9449224cdd862c-20220616
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2106147878; Thu, 16 Jun 2022 06:22:19 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Jun 2022 06:22:17 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 16 Jun 2022 21:22:16 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 16 Jun 2022 21:22:16 +0800
-Message-ID: <aeebb6879d62865f8baf037e541c568eb9310f23.camel@mediatek.com>
-Subject: Re: [PATCH v11 01/10] dt-bindings: mediatek,dp: Add Display Port
- binding
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>, <msp@baylibre.com>, <granquet@baylibre.com>,
-	<jitao.shi@mediatek.com>, <wenst@chromium.org>,
-	<angelogioacchino.delregno@collabora.com>, <ck.hu@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 16 Jun 2022 21:22:16 +0800
-In-Reply-To: <20220614202336.GA2400714-robh@kernel.org>
-References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
-	 <20220610105522.13449-2-rex-bc.chen@mediatek.com>
-	 <20220614202336.GA2400714-robh@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o1pY6-002Sdj-TP; Thu, 16 Jun 2022 13:28:40 +0000
+Received: by mail-wr1-x431.google.com with SMTP id h5so1927733wrb.0;
+        Thu, 16 Jun 2022 06:28:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=8h+FpcXrrgVVoUz/iXyZW+h/bqUW6xveKHdamK/cuQc=;
+        b=a998jYD2CZKZZJVPrXyeBC/bJFux5MWHfso4bLTv11q7pyesMZCgv6WDOku9YPqUvN
+         FDO7eR32YMlOe5kqaNv2yHLYNYJoiH6vO2OsGb8ebqOlPhV7cgdAwR1XqfKuhU6XIxMC
+         PbYddJwmRfjU352RIVPwrjRL0TvqL9DkN3gq9ORZzp2kx06lrCfYe4G1JqzzvCf9MtJ2
+         IIf+uhCuWz9ReVq4LmWp8OK/fNqP6QpLWUJtZKS4JxpCMjvqewjRX21/4VV938rWiKhr
+         2IErU1R/CFnngTA39KwYkqVv+idN2Xl0GNfF2QS4Up29Yg8c753g4dUoRGvuNYzYhcgp
+         qy5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=8h+FpcXrrgVVoUz/iXyZW+h/bqUW6xveKHdamK/cuQc=;
+        b=PeKbb1Ot/03FnBHYnJQ4jnGuilS+xwqH2IbBQK7d7Sd1Ab1p9/CarBDpsPWfvZcrTF
+         JCCJVnyRF/aeA5/BivaEbCIuYZKjl+taf+yCdG8qitUxVb+G3jl23WUttrVF7ivKQPUM
+         uybUtNe0OO+YUPmDWFz4HwvdkyApVaoPgo3GvqjC+5v4GIzEc2Ov0rFq7r2+jQBQYoUd
+         XpI8dYym5yJegkfjeQ454mNSeycsPrgXBZRDCnMkUlroTFqM7hrHIn25i5AJCVZIiTLD
+         iC+xGAfPN5HEAIt+vh0wbQ8NjEtxaF2e1/vWP6+iNmlPkmz9Nam46jvhEWnj5Tp1fMAb
+         hX4g==
+X-Gm-Message-State: AJIora9M+1PlJ/sMO4xKXCpkALuM4tzI+RXm6LBqz6sSNj/6vCWj6a1z
+	F5a4sdbRquYU9YATBW5dFtM=
+X-Google-Smtp-Source: AGRyM1unnhtSqt7GBcBXkXPGLTuYxnFiOMYFOgsWaPoDEka0FPVYkml3TItU5PtGNRR2Jfz0hmT2dg==
+X-Received: by 2002:adf:fe90:0:b0:210:7e22:186e with SMTP id l16-20020adffe90000000b002107e22186emr4837864wrr.321.1655386115274;
+        Thu, 16 Jun 2022 06:28:35 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id bg27-20020a05600c3c9b00b003974d0d981dsm6360986wmb.35.2022.06.16.06.28.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Jun 2022 06:28:34 -0700 (PDT)
+Message-ID: <085be77f-3833-628e-b76a-b2b888db3b78@gmail.com>
+Date: Thu, 16 Jun 2022 15:28:33 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v2 1/5] iommu/mediatek: Use dev_err_probe to mute
+ probe_defer err log
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>
+Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+References: <20220616054203.11365-1-yong.wu@mediatek.com>
+ <20220616054203.11365-2-yong.wu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220616054203.11365-2-yong.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_062226_911370_9C9E190B 
-X-CRM114-Status: GOOD (  25.62  )
+X-CRM114-CacheID: sfid-20220616_062838_994164_CC483628 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,134 +98,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-06-14 at 14:23 -0600, Rob Herring wrote:
-> On Fri, Jun 10, 2022 at 06:55:13PM +0800, Bo-Chen Chen wrote:
-> > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > 
-> > This controller is present on several mediatek hardware. Currently
-> > mt8195 and mt8395 have this controller without a functional
-> > difference,
-> > so only one compatible field is added.
-> > 
-> > The controller can have two forms, as a normal display port and as
-> > an
-> > embedded display port.
-> > 
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > [Bo-Chen: Fix reviewers' comment]
-> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > ---
-> >  .../display/mediatek/mediatek,dp.yaml         | 101
-> > ++++++++++++++++++
-> >  1 file changed, 101 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.ya
-> > ml
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.ya
-> > ml
-> > new file mode 100644
-> > index 000000000000..10f50a0dcf49
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.ya
-> > ml
-> > @@ -0,0 +1,101 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml*__;Iw!!CTRNKA9wMg0ARbw!yqAl1KhfbHqHN7-5aeqhzqeOVhPU_Z5beko5q-y-s5pcfp1WL5oVGvY5UF4EfWm4PWjc5mjBwyBUMsr_RI45ipbhsw$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!yqAl1KhfbHqHN7-5aeqhzqeOVhPU_Z5beko5q-y-s5pcfp1WL5oVGvY5UF4EfWm4PWjc5mjBwyBUMsr_RI5WzYKENQ$
-> >  
-> > +
-> > +title: MediaTek Display Port Controller
-> > +
-> > +maintainers:
-> > +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> > +  - Jitao shi <jitao.shi@mediatek.com>
-> > +
-> > +description: |
-> > +  Device tree bindings for the MediaTek display port and
-> > +  embedded display port controller present on some MediaTek SoCs.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - mediatek,mt8195-dp-tx
-> > +      - mediatek,mt8195-edp-tx
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  nvmem-cells:
-> > +    maxItems: 1
-> > +    description: efuse data for display port calibration
-> > +
-> > +  nvmem-cell-names:
-> > +    const: dp_calibration_data
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  ports:
-> > +    $ref: /schemas/graph.yaml#/properties/ports
-> > +    properties:
-> > +      port@0:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: Input endpoint of the controller, usually
-> > dp_intf
-> > +
-> > +      port@1:
-> > +        $ref: /schemas/graph.yaml#/properties/port
-> > +        description: Output endpoint of the controller
-> > +
-> > +    required:
-> > +      - port@0
-> > +      - port@1
-> > +
-> > +  max-lanes:
-> > +    maxItems: 1
-> > +    description: maximum number of lanes supported by the
-> > hardware.
+
+
+On 16/06/2022 07:41, Yong Wu wrote:
+> Mute the probe defer log:
 > 
-> We already have a 'data-lanes' property defined in 
-> 'video-interfaces.yaml' that can serve this purpose.
+> [    2.654806] mtk-iommu 14018000.iommu: mm dts parse fail(-517).
+> [    2.656168] mtk-iommu 1c01f000.iommu: mm dts parse fail(-517).
 > 
+> Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Guenter Roeck <groeck@chromium.org>
 
-Hello Rob,
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Thanks for review.
-From the description of video-interfaces.yaml, I think it's not quite
-match what we need. We only need this value be one of "1,2,4".
-
-Any other suggestion?
-
-> > +
-> > +  max-linkrate:
-> > +    maxItems: 1
-> > +    description: maximum link rate supported by the hardware and
-> > unit is MHz.
+> ---
+>   drivers/iommu/mtk_iommu.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Then use '-mhz' suffix on the property name. Then you don't need a
-> type 
-> (or maxItems).
-
-OK, I will write like this:
-
-  max-linkrate-mhz:
-    enum: [ 1620, 2700, 5400, 8100 ]
-    description: maximum link rate supported by the hardware.
-
-BRs,
-Bo-Chen
-
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index bb9dd92c9898..3b2489e8a6dd 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1204,7 +1204,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+>   	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
+>   		ret = mtk_iommu_mm_dts_parse(dev, &match, data);
+>   		if (ret) {
+> -			dev_err(dev, "mm dts parse fail(%d).", ret);
+> +			dev_err_probe(dev, ret, "mm dts parse fail.");
+>   			goto out_runtime_disable;
+>   		}
+>   	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
 
