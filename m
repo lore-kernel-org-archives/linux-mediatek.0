@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54803C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 08:44:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E56FC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 08:46:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g0pTuYXqLEm2PicZjnMT9sKqIErzcGgeE6r7PEPFD34=; b=o4lfF07t3g7qY5l4HgOetiXm70
-	XbuxwkP2mcnc9sy9/DmW01n4/z4nTIdlHWeeN5H3f/QdJIx56m42RJ2YkpOc7YrH0yzGJ2p5EhQ20
-	3RV9u/Nf5lNGJR7u6ZJ9TYu3zgzVOJQgOfL0zwIJ7pIllQtq5OrlZ9Eoi0aLrcu7srTTroawJPZdI
-	0nAOsSiHCSdBWTmQbrpPQjzlQL1uuPIw//dr4z1imtQJ7iFTg95plLO5n/qVer0WNCs5W/pDId3w3
-	WJCfezLK3+LTMT3EqSw9JyZLsQNuFPt032eWnsPZ1sHgXrBlF4eWlzCOiQDAJ7dnZqD4/CJZ1Pq9Q
-	GkE1YaYg==;
+	bh=ziujsNQpVi2ItgNilXMba0cEPnr+1m9qdLH0H1yURqE=; b=CaLZncKIEDd+Re3QICWgsHwy1/
+	zeBFxQaJ76otCztkc9sqdbeHtXgAeB79zskU/6bdZRz3to/cC67QeZp3yxOwvJNF02kthn9EC3Hrr
+	IFkmuXQDhPl8q18DOs0bMq78DAGPlevTEWVDF8fBp3qrB0NDOfpYgMOf35CqpRkAfrm7cUrc9RAGY
+	8TelyKwDF0F/1jN72iVYS7NhMnd43aEUv78uc6hPKMwk8VPtVSJK6Ch2OP29hsqUfvdklkCHrbEOd
+	Al9cVJB8Qh2emFZP+JX9WJIyckZI54XU+HNu2PejHdRnxdFZ6qZP575/JLCnuroxFtWLLBXO/r6PW
+	66YHwmMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1l6o-001Qob-2O; Thu, 16 Jun 2022 08:44:10 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o1l8e-001Rkx-Nn; Thu, 16 Jun 2022 08:46:04 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1l6b-001QhG-Rs; Thu, 16 Jun 2022 08:43:59 +0000
+	id 1o1l8S-001Ret-K9; Thu, 16 Jun 2022 08:45:54 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A1F876601742;
-	Thu, 16 Jun 2022 09:43:53 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 44EA16601745;
+	Thu, 16 Jun 2022 09:45:50 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655369034;
-	bh=4jGClLDY5f6BG1FfD7RfaglDLpDrYdvh0EE5esCI3bo=;
+	s=mail; t=1655369151;
+	bh=3V8ML5nble416YqEnklIe2qV+U/q3IDZwUrctK/WtyU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SIjmBTDdK92BGB0lCzVdaetlRk6h4lsUfEldDJ4R3usWCUsEPDfHMC2RL1RdIj5RE
-	 aKyw8+jRXdTpADJ9rMJsqz+kH3+P/sw+IT9vyrDlV5LDSL0qghyUq17Xvm4cSeGttM
-	 R4vvDzvukC+AWxf8Lb0bhE1sVFvtx7StmobyFtAJGe6H7q3m8jJtK9zEaxo/mVq38C
-	 bdEBRUYRh8lMDPMJqN2C7hl1616zAi9l3J7gnio2FKC2Q+okZMcmO4Db3DVqyUu2OF
-	 YwzbfhBxYSWtIMLINL1LBbymVf7V/0oU7/3QsBhf9JQ81oE5NRlaI+g7WvWk21b7Ay
-	 Mq1MhIwx9ar0Q==
-Message-ID: <c46dc265-115b-d27a-9e74-a7c48497cdfc@collabora.com>
-Date: Thu, 16 Jun 2022 10:43:51 +0200
+	b=jQrHrvQuytaaFWaSqxSHYM0vSS05al78apQ2LJHpDN0hf2dloTBuGpNpWqYBWmsy3
+	 tyRtoMdES5KqdD1iIQG+xYHTYbN0FGyVjvR4JqmU0olldQRi5BmIAn1CyH8fEFvDQH
+	 SWB7PyRiC7TiLacNPQhqQ5CIQMP5MO7WYVjfxdztcd3jdY9jmnf9TDAfELy2oE9K4t
+	 rVbzOokhsQRWjeSq9hl6KWTLDUofWN8quKmI0vWq3LWmVylaz9yAuMk6zxZCYM5rNJ
+	 fv6bBWLzZ9sAiIFo/uRoG6/qWLVSg1AWwo3rtwOKiPq8Ze0UlJ2cMR+IQtTeKplz1u
+	 BR2QhjXvcrSnA==
+Message-ID: <5bc0a278-6a78-efec-f07b-a990830253f8@collabora.com>
+Date: Thu, 16 Jun 2022 10:45:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 2/2] mfd: mt6397: Add basic support for MT6331+MT6332 PMIC
+Subject: Re: [PATCH v3 6/6] iommu: mtk_iommu: Lookup phandle to retrieve
+ syscon to pericfg
 Content-Language: en-US
-To: Lee Jones <lee.jones@linaro.org>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, johnson.wang@mediatek.com,
- hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220520124617.228808-1-angelogioacchino.delregno@collabora.com>
- <20220520124617.228808-3-angelogioacchino.delregno@collabora.com>
- <YqpUmE5+Kmq9rxwB@google.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski@linaro.org
+References: <20220609100802.54513-1-angelogioacchino.delregno@collabora.com>
+ <20220609100802.54513-7-angelogioacchino.delregno@collabora.com>
+ <db422fe4d0b5391ee2aacae989d7e48209e1095f.camel@mediatek.com>
+ <80c7fa61-e25a-fc45-bdcb-60ac3796b96e@collabora.com>
+ <2d0f49294a8bac34dd5dd1ce4201f009a207b7a7.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <YqpUmE5+Kmq9rxwB@google.com>
+In-Reply-To: <2d0f49294a8bac34dd5dd1ce4201f009a207b7a7.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_014358_080649_ACBE699D 
-X-CRM114-Status: GOOD (  21.39  )
+X-CRM114-CacheID: sfid-20220616_014552_844751_7E7AE2C2 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,72 +81,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/06/22 23:52, Lee Jones ha scritto:
-> On Fri, 20 May 2022, AngeloGioacchino Del Regno wrote:
-> 
->> Add support for the MT6331 PMIC with MT6332 Companion PMIC, found
->> in MT6795 Helio X10 smartphone platforms.
+Il 16/06/22 08:30, Yong Wu ha scritto:
+> On Mon, 2022-06-13 at 10:13 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 13/06/22 07:32, Yong Wu ha scritto:
+>>> On Thu, 2022-06-09 at 12:08 +0200, AngeloGioacchino Del Regno
+>>> wrote:
+>>>> On some SoCs (of which only MT8195 is supported at the time of
+>>>> writing),
+>>>> the "R" and "W" (I/O) enable bits for the IOMMUs are in the
+>>>> pericfg_ao
+>>>> register space and not in the IOMMU space: as it happened already
+>>>> with
+>>>> infracfg, it is expected that this list will grow.
+>>>
+>>> Currently I don't see the list will grow. As commented before, In
+>>> the
+>>> lastest SoC, The IOMMU enable bits for IOMMU will be in ATF, rather
+>>> than in this pericfg register region. In this case, Is this patch
+>>> unnecessary? or we could add this patch when there are 2 SoCs use
+>>> this
+>>> setting at least?  what's your opinion?
+>>>
 >>
->> This combo has support for multiple devices but, for a start,
->> only the following have been implemented:
->> - Regulators (two instances, one in MT6331, one in MT6332)
->> - RTC (MT6331)
->> - Keys (MT6331)
->> - Interrupts (MT6331 also dispatches MT6332's interrupts)
->>
->> There's more to be implemented, especially for MT6332, which
->> will come at a later stage.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/mfd/mt6397-core.c            |  47 ++
->>   drivers/mfd/mt6397-irq.c             |   9 +-
->>   include/linux/mfd/mt6331/core.h      |  53 +++
->>   include/linux/mfd/mt6331/registers.h | 584 ++++++++++++++++++++++++
->>   include/linux/mfd/mt6332/core.h      |  53 +++
->>   include/linux/mfd/mt6332/registers.h | 642 +++++++++++++++++++++++++++
->>   include/linux/mfd/mt6397/core.h      |   2 +
->>   7 files changed, 1389 insertions(+), 1 deletion(-)
->>   create mode 100644 include/linux/mfd/mt6331/core.h
->>   create mode 100644 include/linux/mfd/mt6331/registers.h
->>   create mode 100644 include/linux/mfd/mt6332/core.h
->>   create mode 100644 include/linux/mfd/mt6332/registers.h
+>> Perhaps I've misunderstood... besides, can you please check if
+>> there's any
+>> other SoC (not just chromebooks, also smartphone SoCs) that need this
+>> logic?
 > 
-> [...]
+> As far as I know, SmartPhone SoCs don't enable the infra iommu until
+> now. they don't have this logic. I don't object this patch, I think we
+> could add it when at least 2 SoCs need this.
 > 
->> +#endif /* __MFD_MT6332_REGISTERS_H__ */
->> diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt6397/core.h
->> index 1cf78726503b..4d2b80319db3 100644
->> --- a/include/linux/mfd/mt6397/core.h
->> +++ b/include/linux/mfd/mt6397/core.h
->> @@ -12,6 +12,8 @@
->>   
->>   enum chip_id {
->>   	MT6323_CHIP_ID = 0x23,
-> 
->> +	MT6331_CHIP_ID = 0x20,
->> +	MT6332_CHIP_ID = 0x20,
-> 
-> Are these meant to be the same?
+> Thanks very much for help improving here.
 > 
 
-Yes, because this list is referring to the first 8 bits of the CID register,
-which is the same for both 6331 and 6332, this is because these two chips are
-meant to be used together (at least from my understanding), one as main PMIC
-and one as a companion PMIC.
+Many thanks for checking that! Now that everything is clear, I can safely
+go on with pushing a v4 of this series.
 
-The difference belongs in the higher 8 bits, but there's no support for this
-check in the mt6397 driver (yet), and I chose not to implement that to not
-complicate this work *at least for now*, as I have no idea about what the
-already implemented PMICs read in the high 8 bits (I can check only two of
-them, but not the others as I don't have the hardware).
-
-Besides, checking the lower 8 bits is important only because we get knowledge
-of the chip *revision* and not the actual model (for which, we use devicetree
-anyway).
-
-Regards,
+Thanks again!
 Angelo
-
-
 
