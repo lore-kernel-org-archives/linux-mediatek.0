@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF00C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 13:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329F2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 13:54:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vMYX8vVEMVSTBnRO4T8a2iTEzySbI9JJmfib14Jv9h0=; b=Pl4KEGh7qwvTXAbeelvvxAUKN+
-	dGSVAcWHajPrvrn1EJTCURfFH/F6dNpu7JuNmVFEe12WafmH58k0CrZ2DUsnZr+Ed3kTWzfE3iRrL
-	Y0BMXSbbJbXSJfBzVS+qPdUNHQZuCRiybkB2zKU1UnObwe63haOye69xVm9gk3lNcjKeMIFxEp5wh
-	Az3b5w+stxjyTh10SHE0vUzq0miUN7kYgDG83ZwMvV1sJeBp0/z6COnZ3n+GACeDvrDpM7jPiEF1b
-	v3FOW41flb/mbK1mGOgO0fofNe/vE1UgxZFpAGGQVYNFEam/mdGiYkth4ctMHJzmP5GX/tTzma75E
-	2fgxh8Bg==;
+	bh=ftHZyHw/wNXSXOb7JE7tzZIShYwLppug3sKDdxarxV0=; b=fGfy7x59hhUAB7+bc/8HEuNph9
+	CuH2nsZs6GTveJRByZbS7kSdnNt1CmlhtAYD3zvlpP6TSTShHJsxyOYc4q7A2+InjYK+yj1wtAzHx
+	gf6myLFqdbJ3SzDvQZQuQxtBKXJCwjTjX2McYqFe/cGPrXm6V+ZNwQwiPksCfSm9GvmAZAaio9gKP
+	LPxZAimdDuvgFHV6dxD5fP/+wXcxF5YTNpzzAwH+stgn+zNv75YX+sSqwgKlF/JfMITS7yreCzaUG
+	5OftfTrE+qDsYVYW0hF2/o+JHUXHHtVvEBXLYQ14IAm3yajmPrhjv8vWSq4Hn3zwZmTrLY2XFnlfI
+	xSPxOHCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1pwO-002cIh-Pg; Thu, 16 Jun 2022 13:53:44 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1o1pxG-002cpc-Rv; Thu, 16 Jun 2022 13:54:38 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1psb-002a3e-Bi; Thu, 16 Jun 2022 13:49:50 +0000
-Received: by mail-wr1-x436.google.com with SMTP id a15so1982126wrh.2;
-        Thu, 16 Jun 2022 06:49:47 -0700 (PDT)
+	id 1o1puQ-002b7P-T6
+	for linux-mediatek@lists.infradead.org; Thu, 16 Jun 2022 13:51:44 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id s37so1558703pfg.11
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jun 2022 06:51:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
+        d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=vMYX8vVEMVSTBnRO4T8a2iTEzySbI9JJmfib14Jv9h0=;
-        b=oHZ/WlVy8bLQzX5XPSluY6fi8t4wrJHCh2DNNHWAK5yiyH5xZ9COwCQrs9ZfP+6ptJ
-         93ySFOJe9wfCGwWXgHnar7m/6aGDnD0S1O+HxPC6xSk+cexyKjWkbP7CtFeceQJSn23R
-         v1G63z1Dcox5wBclBjv9DRSavVbCjhO7hmFUmwX86Rnry/7oE4lazYOsHA8QrlPHgztj
-         uR4PVch1A9250cKszi6i7e8YGVJtaKtiXz8JGxthLI1rLdfhbPsSKvbHGV5eoaEnr6rT
-         Du4Tomd7n70SIuNSI7H8BbB7wi5Tzqpa8naYoVpfCcP1QttROIseu+D9zm/KshxSL+jU
-         h+NA==
+        bh=ftHZyHw/wNXSXOb7JE7tzZIShYwLppug3sKDdxarxV0=;
+        b=MSTj0O1uiObYq3RmWcwpgd2XlA+q3StSV+EY7/gO0RfsvbeHdumMIDv3rtsYW0etPl
+         lXNHPJmMeve8eyJUs1tMPqPX4dzBhFL1AlZvo46UvFavAZtHNGszAxdIKEf5RvmEJn7y
+         xSNmT9oxEzfl9hSXSqPGwB9bBLO5m9fIaskr5TdovjEkO6DIygXDriPM4p5otH6bcWuC
+         QcOw0i+vyeVSwxWvFIULjpA7WtaeQGCifwWtkjJgkJ62mvof5qP68nJR+2zEO2mCgbtp
+         Pt0B3nuvnaGFcLhtCwxhF8lwd80dr1EpnGkToOoo+amBn/o0S12mYk2AktizYvhrIHCo
+         c/SQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=vMYX8vVEMVSTBnRO4T8a2iTEzySbI9JJmfib14Jv9h0=;
-        b=CdWhIq1Th+itnrpMKmK7Wq+cXsvOOoaHZwyjMCVHQLuGTx2biqNAq3mT/ooGI3SaAI
-         YP+BZtew36IyXfYy2Z1PJJhdUIOkHOorwWOoVjf1NCmZFVhsm3DmV1D6Yh0szoUjdKl9
-         trWs8QaZtGduJ2JnDoSH/o8SMkXytIiW9TrKta5kCKhbw6sQanI+j8fAPB4G1AlOadXX
-         WIN44kwm8YrY7thlPyLNbwSN3087aTadEkASYl6Y9znvX/LeivevEkO3ZY/pJadeNGjv
-         S7Y5aUP9UbPPnUQFcXb6prV3LAv81f7TdpJKTaYRARfbJCd2yKFq5klSY2LyV+HE/QeA
-         7OxQ==
-X-Gm-Message-State: AJIora/J7VDl4GSkdqfikY5gy0Tp0PzReyzwW4qZOWQupnSKH6q4YNPT
-	CA+mGKCg7I71dC6md0jc/nA=
-X-Google-Smtp-Source: AGRyM1s9twy4XfOTRNf07Dn5/dC+PXKASOKIAn/okFRK8bJikDResr8hjVSbZIf2IlwH1J8fURxW2Q==
-X-Received: by 2002:a05:6000:170e:b0:218:3fe0:7c72 with SMTP id n14-20020a056000170e00b002183fe07c72mr4971478wrc.572.1655387386601;
-        Thu, 16 Jun 2022 06:49:46 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id g16-20020a05600c4ed000b0039c5497deccsm13646132wmq.1.2022.06.16.06.49.44
+        bh=ftHZyHw/wNXSXOb7JE7tzZIShYwLppug3sKDdxarxV0=;
+        b=Mc9/oIqJWSzaB1v7ckXl8HErZ833vvyQlZBTsv81tuIHCfH6eO/ZK+Hesh2UYOOjZX
+         pCG79YYNGo9Kx1kv++jBHQisD+J+P6qwAsjLXEBGSF86HYR+QuTgrTQtfDr0+MomjN9V
+         +nryF6fq73uLDn3uETerPEz0M/E0OJQKDz3lj+W/9SW2iljCpzoF6u0//U3XY2RfaJ9s
+         /GlTtxSf3kJAiVTNd90aZvqSoZeM5DUJ6NuD7kGk6ZVn4LdLQDQ1ZydkPhBrskbvkTEG
+         vbd6hg/0gKguFzutJ6X8sIt/xBF5kxS5pYt2Ll+zIU9Wavd/vPHy/lTkMmzYmdH7LYhj
+         +8iw==
+X-Gm-Message-State: AJIora/Kf5wEgC3Kx+0FywDpWPgcPItj09NHH9NBKzx4UF7/8PG5Me9u
+	yV4S3zRoTbXEztg15eORjIqunw==
+X-Google-Smtp-Source: AGRyM1tjArtHfSvBr9dHM79YJP+gIsvNtTxmzvobAhS9iAdqa601s5ctpq9flyl1E+ympHGNh6ORjQ==
+X-Received: by 2002:a05:6a00:10d3:b0:4fe:5d:75c8 with SMTP id d19-20020a056a0010d300b004fe005d75c8mr4874387pfu.6.1655387499862;
+        Thu, 16 Jun 2022 06:51:39 -0700 (PDT)
+Received: from [172.20.0.255] ([192.77.111.2])
+        by smtp.gmail.com with ESMTPSA id 9-20020aa79149000000b00518424f8922sm1799565pfi.77.2022.06.16.06.51.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Jun 2022 06:49:45 -0700 (PDT)
-Message-ID: <22c40a7f-d759-5b4a-f554-cf679102d91f@gmail.com>
-Date: Thu, 16 Jun 2022 15:49:44 +0200
+        Thu, 16 Jun 2022 06:51:39 -0700 (PDT)
+Message-ID: <e1a9b1b4-19ab-38dc-3343-017d05655922@linaro.org>
+Date: Thu, 16 Jun 2022 06:51:38 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v2 2/5] iommu/mediatek: Add error path for loop of
- mm_dts_parse
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v2 1/2] dt-bindings: mfd: mt6397: Add compatibles for
+ MT6331 RTC and keys
 Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>
-Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
- chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
- xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-References: <20220616054203.11365-1-yong.wu@mediatek.com>
- <20220616054203.11365-3-yong.wu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220616054203.11365-3-yong.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ lee.jones@linaro.org
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, johnson.wang@mediatek.com,
+ hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220616091531.12646-1-angelogioacchino.delregno@collabora.com>
+ <20220616091531.12646-2-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220616091531.12646-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_064949_453514_B127A37B 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20220616_065142_984698_B193D379 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,71 +98,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 16/06/2022 07:42, Yong Wu wrote:
-> The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the i+1
-> larb is parsed fail(return -EINVAL), we should of_node_put for the 0..i
-> larbs. In the fail path, one of_node_put matches with of_parse_phandle in
-> it.
+On 16/06/2022 02:15, AngeloGioacchino Del Regno wrote:
+> The MT6331 PMIC provides many sub modules: regulators, audio
+> codec, LED controller, keys, RTC and some GPIOs.
+> It is always paired with a MT6332 Companion PMIC, which provides
+> thermistors, WLEDs (display LED backlight), secondary AP cluster
+> regulators, modem clocks, battery charger and fuel gauge.
 > 
-> Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->   drivers/iommu/mtk_iommu.c | 21 ++++++++++++++++-----
->   1 file changed, 16 insertions(+), 5 deletions(-)
+> Add the necessary compatibles to start implementing the basics.
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 3b2489e8a6dd..ab24078938bf 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1071,12 +1071,12 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   
-
-Don't we need to call the goto also on error case of:
-
-larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-Regards,
-Matthias
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 
->   		plarbdev = of_find_device_by_node(larbnode);
->   		if (!plarbdev) {
-> -			of_node_put(larbnode);
-> -			return -ENODEV;
-> +			ret = -ENODEV;
-> +			goto err_larbnode_put;
->   		}
->   		if (!plarbdev->dev.driver) {
-> -			of_node_put(larbnode);
-> -			return -EPROBE_DEFER;
-> +			ret = -EPROBE_DEFER;
-> +			goto err_larbnode_put;
->   		}
->   		data->larb_imu[id].dev = &plarbdev->dev;
->   
-> @@ -1107,9 +1107,20 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
->   			       DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
->   	if (!link) {
->   		dev_err(dev, "Unable to link %s.\n", dev_name(data->smicomm_dev));
-> -		return -EINVAL;
-> +		ret = -EINVAL;
-> +		goto err_larbnode_put;
->   	}
->   	return 0;
-> +
-> +err_larbnode_put:
-> +	while (i--) {
-> +		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
-> +		if (larbnode && of_device_is_available(larbnode)) {
-> +			of_node_put(larbnode);
-> +			of_node_put(larbnode);
-> +		}
-> +	}
-> +	return ret;
->   }
->   
->   static int mtk_iommu_probe(struct platform_device *pdev)
+Best regards,
+Krzysztof
 
