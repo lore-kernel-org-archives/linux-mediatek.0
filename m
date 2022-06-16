@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 540E9C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 08:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 002E0C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 08:36:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fe98tMRyBE1Tw7N++IK7D5zMd5TnwFJTETCbZA6OPZM=; b=R6vdzYvR8pofFnY2dZgDu1QH0N
-	h0oT2jvPP5ENFXylfiEpHDwTHweZZmxQLlhVZLJBLL0doO2d32Z8VG5kZJAyxCZE+mS8NOh/YoLJp
-	EBby9CLRyVaS6EO7EkZQKz0GcNQkTGMfBHPuQ+M91GEFAZgO/qRnFWURgoixSFNgOHP0taV9MQHmU
-	anAInpFjM7f4aiDgTPAv4pclw4LdsX6+fqtLfFi0gOu6X0VeU4GgS1fgUQa1CHgeWKf9b+9UGZm6j
-	YQcHxF+IqiZHf32LU7+F0DZV/9Q/bEdRsSVJV64hqHwTGNPWOAlsHUExOF3CaRXJjhIyt6RPzgkhA
-	4sMEM3Tg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IzOMw7DCRjyHlr193oZekmqfRjIyFGacbxaFl9FSfzI=; b=A+6rITD2whK0nugokisMwbi9fK
+	sIdb8Z8557VsVWJNMypKSRv4+ZeMaC6iXKMe67D4szz9xlT9vU2YMFRDoG2n821SWmCqM7IsqlaZt
+	3k814SMkmqdXEQqF20cZLxSIHpUKtPLtMfkbKwFWniIWcAACpQRN4PyOCmxuve/6lXcCO9w6v4jbh
+	II/dnbq6DqF1hlQlbcAyKBPbhpdGAGJaSb+mu/BEclQwrDG7vsrPtWDPeQuAcnyI18V/RGB249RpA
+	xHMGBSpyE+5Tj/XN7OVAJKnIPXSpoKG5aW1W5HlTmk9XJYDSvibLpY29hP36ESv4/fMKlXZ5yfItW
+	AKcoM31Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1kZg-001Jeb-EO; Thu, 16 Jun 2022 08:09:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o1kzY-001Ozs-97; Thu, 16 Jun 2022 08:36:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1kXM-001IWa-49; Thu, 16 Jun 2022 08:07:33 +0000
-X-UUID: bb4ef7e9f8614932963e3427554915ce-20220616
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:1edc3bb4-17b7-4668-ae36-59e82f6c5f64,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:b14ad71,CLOUDID:b33ab948-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: bb4ef7e9f8614932963e3427554915ce-20220616
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <yf.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1451769769; Thu, 16 Jun 2022 01:07:29 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Jun 2022 00:59:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 16 Jun 2022 15:59:38 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 16 Jun 2022 15:59:36 +0800
-From: <yf.wang@mediatek.com>
-To: <robin.murphy@arm.com>
-CC: <Libo.Kang@mediatek.com>, <iommu@lists.linux-foundation.org>,
-	<joro@8bytes.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>, <ning.li@mediatek.com>,
-	<will@kernel.org>, <wsd_upstream@mediatek.com>, <yf.wang@mediatek.com>,
-	<yong.wu@mediatek.com>
-Subject: Re: [PATCH v9 3/3] iommu/mediatek: Allow page table PA up to 35bit
-Date: Thu, 16 Jun 2022 15:52:46 +0800
-Message-ID: <20220616075246.11076-1-yf.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <81b55048-a6f1-660f-95b0-6798aa4efc38@arm.com>
-References: <81b55048-a6f1-660f-95b0-6798aa4efc38@arm.com>
+	id 1o1kzN-001OxU-Rg; Thu, 16 Jun 2022 08:36:31 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 892186601742;
+	Thu, 16 Jun 2022 09:36:26 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655368587;
+	bh=sZsgXd3fsTLEaC/Xa6ctCUmW5czgXrHSQtatfJPolH8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oh5qpCD3V6oh6r/2TKz+Q+MKTyKQMmqKGCm2+QOTXj5M81oeyTNgA0Q1B/KKFLGPK
+	 dQpX2zFOgEvgdWqHug3QdgxOX5ap4oD3scMMuqy9oweuaAzyfrEekgowFefU4mAwev
+	 cTrnfntaRAxUQ/vnhYAzVxnT1qbxNlUnmz066On3+ld+sUHbgvJAzJcFvleKDS1yMb
+	 FCe08b/71GIYKrpYSgM46vowqUISG8Vr3KWISTMzo+qWMZgPAG5SDVAi4hAdIjYEHN
+	 At0MtK8VkEACsAnFQD90Lfw4h4HqE+k9p+Tdm0Zmj0Wi714a0mb96vNMRSn4IlE8IC
+	 D64EfVolwbN0w==
+Message-ID: <2859add6-74c3-5a4e-d3fa-68b311418459@collabora.com>
+Date: Thu, 16 Jun 2022 10:36:23 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 1/2] dt-bindings: mfd: mt6397: Add compatibles for MT6331
+ RTC and keys
+Content-Language: en-US
+To: Lee Jones <lee.jones@linaro.org>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, johnson.wang@mediatek.com,
+ hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220520124617.228808-1-angelogioacchino.delregno@collabora.com>
+ <20220520124617.228808-2-angelogioacchino.delregno@collabora.com>
+ <YqpTrwlXmXMYuDd0@google.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <YqpTrwlXmXMYuDd0@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_010732_247157_D7022B5B 
-X-CRM114-Status: GOOD (  25.97  )
+X-CRM114-CacheID: sfid-20220616_013630_155761_7BD40272 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,94 +79,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-06-15 at 18:25 +0100, Robin Murphy wrote:
-> On 2022-06-15 17:12, yf.wang--- via iommu wrote:
-> > From: Yunfei Wang <yf.wang@mediatek.com>
-> > 
-> > Single memory zone feature will remove ZONE_DMA32 and ZONE_DMA. So
-> > add
-> > the quirk IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT to let level 1 and
-> > level 2
-> > pgtable support at most 35bit PA.
+Il 15/06/22 23:48, Lee Jones ha scritto:
+> On Fri, 20 May 2022, AngeloGioacchino Del Regno wrote:
 > 
-> I'm not sure how this works in practice, given that you don't seem to
-> be 
-> setting the IOMMU's own DMA masks to more than 32 bits, so the DMA 
-> mapping in io-pgtable is going to fail if you ever do actually
-> allocate 
-> a pagetable page above 4GB :/
+>> MT6331 is a multifunction device, providing RTC, keys and more: add
 > 
+> No such thing as an MFD.  What does the data-sheet call it?
 
-Hi Robin,
-About DMA masks, the master device has set dma mask, when iommu do dma map,
-it will check the dam_mask of the master dev to determine which range the
-address of the iova alloc is in.
+Datasheets for this chip, or the other (6332) are not public ... and I have no
+access to any: whatever you see here is done with an accurate reading of downstream
+drivers and a lot of debugging and research.
 
-Add the quirk ARM_MTK_TTBR_EXT to let pgtable support larger phys memory.
-Do actually test work fine, example:
-pgtable phys address:0x12054006a, encoded to 32 bits ttbr:0x20540001
+Anyway, MT6331 is a PMIC, MT6332 is also a PMIC (in this case, a companion pmic).
 
-
-> > Signed-off-by: Ning Li <ning.li@mediatek.com>
-> > Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
-> > ---
-> >   drivers/iommu/mtk_iommu.c | 14 +++++++++-----
-> >   1 file changed, 9 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 3d62399e8865..4dbc33758711 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -138,6 +138,7 @@
-> >   /* PM and clock always on. e.g. infra iommu */
-> >   #define PM_CLK_AO			BIT(15)
-> >   #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
-> > +#define PGTABLE_PA_35_EN		BIT(17)
-> >   
-> >   #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
-> >   				((((pdata)->flags) & (mask)) == (_x))
-> > @@ -240,6 +241,7 @@ struct mtk_iommu_data {
-> >   struct mtk_iommu_domain {
-> >   	struct io_pgtable_cfg		cfg;
-> >   	struct io_pgtable_ops		*iop;
-> > +	u32				ttbr;
-> >   
-> >   	struct mtk_iommu_bank_data	*bank;
-> >   	struct iommu_domain		domain;
-> > @@ -596,6 +598,9 @@ static int mtk_iommu_domain_finalise(struct
-> > mtk_iommu_domain *dom,
-> >   		.iommu_dev = data->dev,
-> >   	};
-> >   
-> > +	if (MTK_IOMMU_HAS_FLAG(data->plat_data, PGTABLE_PA_35_EN))
-> > +		dom->cfg.quirks |= IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT;
-> > +
-> >   	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_4GB_MODE))
-> >   		dom->cfg.oas = data->enable_4GB ? 33 : 32;
-> >   	else
-> > @@ -684,8 +689,8 @@ static int mtk_iommu_attach_device(struct
-> > iommu_domain *domain,
-> >   			goto err_unlock;
-> >   		}
-> >   		bank->m4u_dom = dom;
-> > -		writel(dom->cfg.arm_v7s_cfg.ttbr & MMU_PT_ADDR_MASK,
-> > -		       bank->base + REG_MMU_PT_BASE_ADDR);
-> > +		bank->m4u_dom->ttbr = MTK_IOMMU_ADDR(dom-
-> > >cfg.arm_v7s_cfg.ttbr);
-> > +		writel(bank->m4u_dom->ttbr, data->base +
-> > REG_MMU_PT_BASE_ADDR);
 > 
-> To add to my comment on patch #1, having to make this change here 
-> further indicates that you're using it the wrong way.
-> 
-> Thanks,
-> Robin.
+> What "more"?
 > 
 
-Hi Robin,
-According to your Path#1's suggestion, next version will keep ttbr to encoded 32 bits,
-then will don't need to modify it.
+More is voltage regulators, display backlight PWM, LED PWM, some GPIOs, battery
+charging, fuel gauge... and I think nothing else.
 
-Thanks,
-Yunfei.
+Anyway, okay I will list things out in the commit description.
+
+>> the necessary compatibles to start implementing the basics.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   Documentation/devicetree/bindings/mfd/mt6397.txt | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+>> index d59063503b0d..2a9533c47365 100644
+>> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+>> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+>> @@ -30,6 +30,7 @@ Optional subnodes:
+>>   - rtc
+>>   	Required properties: Should be one of follows
+>>   		- compatible: "mediatek,mt6323-rtc"
+>> +		- compatible: "mediatek,mt6331-rtc"
+>>   		- compatible: "mediatek,mt6358-rtc"
+>>   		- compatible: "mediatek,mt6397-rtc"
+>>   	For details, see ../rtc/rtc-mt6397.txt
+>> @@ -55,6 +56,7 @@ Optional subnodes:
+>>   - keys
+>>   	Required properties:
+>>   		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
+>> +			      or "mediatek,mt6331-keys"
+> 
+> Please place these in a vertical list.
+
+Will do!
+
+Regards,
+Angelo
 
