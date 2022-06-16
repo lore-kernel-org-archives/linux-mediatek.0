@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C33CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 08:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB4BC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 09:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AjDoG/C6ft2MYf/nDnKdk8cpxbo+WyxBcildjt0SDNM=; b=4eUVbJ9wzZStx9chieYkmdA+re
-	4HJE/xwG+Wpp7M7x6IhnP/UZJHxt7IyCZstHrZaS3ZHbEOye1oqbAkRWw8byD/1JIagVIVZATP/th
-	RZkANQ3drUaqWQPKGlQelLBq4r63M45f4N4hxGVyS1XDCjQp6M/X1+z87pVBv2jgl4DWVzNR+79ig
-	cjqRXwyssNbK4QvOE2aL2K5tdQYM5vnW/9vyVPh9JOx0eaehs8KaarE05ipranU4dioQ+dwzx7Lh7
-	wgTgknhzf/JytCoq04AQE5XnEPFZeX8d97ej8cP+tan0C+RPeVGc7GdQf5jxblFLx5A01f6LqcAdh
-	6Wmo5UsA==;
+	bh=XVVw5hZJEJKBE1J3Kg5p+rRbl7dE64f2W3zO6x7Pr9s=; b=ODd7xCw12ajWAnzPjPIFcaz9Io
+	s7E+Be/C0fLFlwYL+eYv30i2UyehHIIt+8avlzGKOWM00rxufCMn5DEav1Sa8hwlcqILcjzdVXWXm
+	d/NsgX7vQ7UHqttmd07ye4uSGfcZxiwND+V0QA0iNT9gM2NIJ3q+oJZYMEFA1SDjybYD3jV9mdSqo
+	93l/MoZ88gsRlP+W0tlSmxfszRdRvhU39qpUb8DZHsnbjd7BWU/8f3oy2L/LInURZgxOrjvXVBASG
+	A9wueHz1ROkJ/hiMjChUi2bzTYt5ChqBZWF2gjpUJ86raqPY4A3pzmFc8EeP2rj9JQzAKBYAMBVAe
+	M1ZzF+Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1lEb-001Tpd-30; Thu, 16 Jun 2022 08:52:13 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1lEO-001TmJ-Tb; Thu, 16 Jun 2022 08:52:02 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9ED816601745;
-	Thu, 16 Jun 2022 09:51:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655369519;
-	bh=23ovZaBNRPxqVpFGtTYFhJNEhe3Arny8xrxLGcB24LU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bte3D/ZevCMuzsqY8vuxglJ8b5kBWgRtByfk6Ts/443xXWkEun3wFQJKzpjHV33pT
-	 1IlBD41Er+scyhSwviQcpNof+IK+MgipYVGAKVD4CSiEer9GuICckzrY9HhU/Q4PE8
-	 tSTfICGpDsKtMHdyHiHon1IR4vrJiNeuEnXnzngkZB+LnqWCdD6mjP2LbNqWvCR8qi
-	 yy8C1fO7WaynvaSsBwru9Rq8yeIzoDjBXw5ZW0IUed4mRRI2f3I2BbBHsAeEqt9u+K
-	 KlKHMLHtf0M2ldftRkT/jaLdyOaf43AVC8enfVVFy2SuWA9rZmUuUb0xwmL4VSq0z8
-	 YVM/3z78FRqgQ==
-Message-ID: <b48b3de0-d521-a9ad-f9f9-1312f8486ba7@collabora.com>
-Date: Thu, 16 Jun 2022 10:51:55 +0200
+	id 1o1lMT-001WLV-Ab; Thu, 16 Jun 2022 09:00:21 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o1lMG-001WGI-7d; Thu, 16 Jun 2022 09:00:09 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 509B512FC;
+	Thu, 16 Jun 2022 02:00:02 -0700 (PDT)
+Received: from [10.57.82.209] (unknown [10.57.82.209])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4E8203F7F5;
+	Thu, 16 Jun 2022 01:59:59 -0700 (PDT)
+Message-ID: <e2091397-b6e2-7296-1378-dc10b24c6ef4@arm.com>
+Date: Thu, 16 Jun 2022 09:59:53 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH] clk: mediatek: clk-mt8195-vdo0: Set rate on
- vdo0_dp_intf0_dp_intf's parent
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>
-Cc: "sboyd@kernel.org" <sboyd@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "wenst@chromium.org" <wenst@chromium.org>,
- =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>,
- "chun-jie.chen@mediatek.com" <chun-jie.chen@mediatek.com>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- jitao.shi@mediatek.com, mandyjh.liu@mediatek.com
-References: <20220614091020.21472-1-angelogioacchino.delregno@collabora.com>
- <3de597c1ab963cc8f6dd89da089c6f0660517f34.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <3de597c1ab963cc8f6dd89da089c6f0660517f34.camel@mediatek.com>
+Subject: Re: [PATCH v2 2/5] iommu/mediatek: Add error path for loop of
+ mm_dts_parse
+Content-Language: en-GB
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
+Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+References: <20220616054203.11365-1-yong.wu@mediatek.com>
+ <20220616054203.11365-3-yong.wu@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220616054203.11365-3-yong.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_015201_137003_3CFE2114 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20220616_020008_375228_E93EF65A 
+X-CRM114-Status: GOOD (  19.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +70,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/06/22 09:12, Rex-BC Chen ha scritto:
-> On Tue, 2022-06-14 at 17:10 +0800, AngeloGioacchino Del Regno wrote:
->> Add the CLK_SET_RATE_PARENT flag to the CLK_VDO0_DP_INTF0_DP_INTF
->> clock: this is required to trigger clock source selection on
->> CLK_TOP_EDP, while avoiding to manage the enablement of the former
->> separately from the latter in the displayport driver.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/clk/mediatek/clk-mt8195-vdo0.c | 7 ++++++-
->>   1 file changed, 6 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/clk/mediatek/clk-mt8195-vdo0.c
->> b/drivers/clk/mediatek/clk-mt8195-vdo0.c
->> index 261a7f76dd3c..07b46bfd5040 100644
->> --- a/drivers/clk/mediatek/clk-mt8195-vdo0.c
->> +++ b/drivers/clk/mediatek/clk-mt8195-vdo0.c
->> @@ -37,6 +37,10 @@ static const struct mtk_gate_regs vdo0_2_cg_regs =
->> {
->>   #define GATE_VDO0_2(_id, _name, _parent, _shift)			
->> \
->>   	GATE_MTK(_id, _name, _parent, &vdo0_2_cg_regs, _shift,
->> &mtk_clk_gate_ops_setclr)
->>   
->> +#define GATE_VDO0_2_FLAGS(_id, _name, _parent, _shift, _flags)	
->> 	\
->> +	GATE_MTK_FLAGS(_id, _name, _parent, &vdo0_2_cg_regs, _shift,	
->> \
->> +		       &mtk_clk_gate_ops_setclr, _flags)
->> +
->>   static const struct mtk_gate vdo0_clks[] = {
->>   	/* VDO0_0 */
->>   	GATE_VDO0_0(CLK_VDO0_DISP_OVL0, "vdo0_disp_ovl0", "top_vpp",
->> 0),
->> @@ -85,7 +89,8 @@ static const struct mtk_gate vdo0_clks[] = {
->>   	/* VDO0_2 */
->>   	GATE_VDO0_2(CLK_VDO0_DSI0_DSI, "vdo0_dsi0_dsi", "top_dsi_occ",
->> 0),
->>   	GATE_VDO0_2(CLK_VDO0_DSI1_DSI, "vdo0_dsi1_dsi", "top_dsi_occ",
->> 8),
->> -	GATE_VDO0_2(CLK_VDO0_DP_INTF0_DP_INTF, "vdo0_dp_intf0_dp_intf",
->> "top_edp", 16),
->> +	GATE_VDO0_2_FLAGS(CLK_VDO0_DP_INTF0_DP_INTF,
->> "vdo0_dp_intf0_dp_intf",
->> +			  "top_edp", 16, CLK_SET_RATE_PARENT),
->>   };
->>   
->>   static int clk_mt8195_vdo0_probe(struct platform_device *pdev)
->> -- 
->> 2.35.1
->>
+On 2022-06-16 06:42, Yong Wu wrote:
+> The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the i+1
+> larb is parsed fail(return -EINVAL), we should of_node_put for the 0..i
+> larbs. In the fail path, one of_node_put matches with of_parse_phandle in
+> it.
 > 
-> Hello Angelo,
+> Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 21 ++++++++++++++++-----
+>   1 file changed, 16 insertions(+), 5 deletions(-)
 > 
-> Thanks for this patch.
-> Another dp clock should also be fix.
-> After confirming with Jitao who is our dp expert.
-> The parent of CLK_VDO1_DPINTF should be top_dp instead of top_vpp.
-> 
-> Thanks!
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 3b2489e8a6dd..ab24078938bf 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1071,12 +1071,12 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>   
+>   		plarbdev = of_find_device_by_node(larbnode);
+>   		if (!plarbdev) {
+> -			of_node_put(larbnode);
+> -			return -ENODEV;
+> +			ret = -ENODEV;
+> +			goto err_larbnode_put;
+>   		}
+>   		if (!plarbdev->dev.driver) {
+> -			of_node_put(larbnode);
+> -			return -EPROBE_DEFER;
+> +			ret = -EPROBE_DEFER;
+> +			goto err_larbnode_put;
+>   		}
+>   		data->larb_imu[id].dev = &plarbdev->dev;
+>   
+> @@ -1107,9 +1107,20 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+>   			       DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
+>   	if (!link) {
+>   		dev_err(dev, "Unable to link %s.\n", dev_name(data->smicomm_dev));
+> -		return -EINVAL;
+> +		ret = -EINVAL;
+> +		goto err_larbnode_put;
+>   	}
+>   	return 0;
+> +
+> +err_larbnode_put:
+> +	while (i--) {
+> +		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
+> +		if (larbnode && of_device_is_available(larbnode)) {
+> +			of_node_put(larbnode);
+> +			of_node_put(larbnode);
+> +		}
 
-Hey.
+This looks a bit awkward - could we not just iterate through 
+data->larb_imu and put dev->of_node for each valid dev?
 
-Yes, we should really fix that, I can send a separated series with:
-* A first commit fixing the clock parent (with a Fixes: tag)
-* A second commit adding the CLK_SET_RATE_PARENT
+Also, of_find_device_by_node() takes a reference on the struct device 
+itself, so strictly we should be doing put_device() on those as well if 
+we're bailing out.
 
-...and I'll do that ASAP.
+Robin.
 
-Thank you!
-Angelo
+> +	}
+> +	return ret;
+>   }
+>   
+>   static int mtk_iommu_probe(struct platform_device *pdev)
 
