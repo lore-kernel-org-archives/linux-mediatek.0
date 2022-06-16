@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A87C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 21:16:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC159C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 21:28:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tml1AzLWRr4YzF3sAdjGFBXOgQpNGM4CdcoqHXy6fq8=; b=WaawfsBV8VTon+OUzK67RS9zMV
-	IwS+gVhLYQx/aShMBhvsuhQJLlhCmfwbYnO2/rXXQwlHRZDUdB5hEem4ltlAQotlI/XvSgZ/CKku5
-	oa9azCGulhxJJDdqBKH9fUDVzGE80BGDJtdy5Ay5J6OmcM5xmiPp6qgHeO5glKw2jn7Jd6ZJQ5Ggu
-	EN274/O7qUJ2/16LD1K6vD2WjoC+/JSCsE6SeftsHaVdlszs6r1BajI/U1OkzAIFeG3JeNPbbKuTE
-	N4ZRapdqf6/HQcpM35m7sbfRYXCWCSjfSszvTYUwRMoR7FPep3ktb8pB05UCje1rh2c0oYpV1xgC6
-	Nehvtkzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p2fPALb1JPQ4AHcfCxgMf5Jxk8npv4hWtBM7JpKyakw=; b=DwCHyydpnNmF4CTJUulbAtWyxI
+	Y7wDEyIT82djAh85n90drll97PMfdVNB3+xK0bKdjWajMi7Gz7KW+NvQ33Hc05HIN+jpIlIQiXXs4
+	bXW2aPVtSkEsGU3E7TJeohjVoZPiZgx/HLb6Dzwf52BjhKJckbSZE6oD3dBbSiOrPanUaQTR5pwjg
+	qoRT8cSBWKXZsc+CxHbfuydlB3hXLVFV35cBinCCbY62VAX/IBqxE6le064CUCjydp7v6Vf4fOr1d
+	bIXulPjiJZy9dBRZVF4GjhqmJvtZvMDCHCEjVwnV1RCdOiHXnMbgTj+w7Gq7JgKU1uIaI8i7WeU4V
+	qy0Jq98A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1wqJ-004OsZ-De; Thu, 16 Jun 2022 21:15:55 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1o1x2L-004R6z-TU; Thu, 16 Jun 2022 21:28:21 +0000
+Received: from mail-il1-f172.google.com ([209.85.166.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1wqE-004OpR-SP
-	for linux-mediatek@lists.infradead.org; Thu, 16 Jun 2022 21:15:53 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id d129so2314626pgc.9
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jun 2022 14:15:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=tml1AzLWRr4YzF3sAdjGFBXOgQpNGM4CdcoqHXy6fq8=;
-        b=jqIsk7Q+m6EcCuXgHO5qdrSbk9XCkK4QrELg4P/y5TFyxvqpcMjqJNM+E8zK9d5Q7c
-         FcDjUcLBJ/8XBeegZ7WhoXEoQ9Rms8fcCrmoVVla5DeUWH6FcdNUr90bcpBiNfd+0yX0
-         QUgEc7zEmcPW4VNgURMMFv7Yf6dnaMW3BF2L0DpMkLVllk6pUf88SARfSTB/OlxSXWd/
-         S/ngORpZ2XySJVG+qWCpq4u1c45IieRfdipQCz36HZit/QPrMn0O9wYhQRmtnisyxeFf
-         qptBWeOlEWksEUDXOIzm9lezHFrXuazZFiYdP96fsDiKS/P1FjazmQAqxUHu6o5SMaQW
-         SbNQ==
+	id 1o1x2I-004R4H-81; Thu, 16 Jun 2022 21:28:19 +0000
+Received: by mail-il1-f172.google.com with SMTP id d6so1789522ilm.4;
+        Thu, 16 Jun 2022 14:28:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=tml1AzLWRr4YzF3sAdjGFBXOgQpNGM4CdcoqHXy6fq8=;
-        b=pRm0ZTShfoCwe+d84B3Qf3GIjPF+yJhWQTvnnC8PdLPfcSVrirbVWsBGIFfy4ZezU9
-         8TyhZ4pxfpV3yYin+chK0nMj1lelczj+/4O/kN+dgTkDlU5YSk6EbwFuKnoFZmeWcEcg
-         NlScrMMb88PBnr3SNVmWiSVc+JWTxSs5NAO6Lq8AyzksuvaOFw2G5XQyitdqfidUsJ2D
-         +oM7ImN8qrN/bzVHDplIgqhvdtvtmu1y4rMR8g9yVcWn4iBDPh19MGNEBHMURKNH1+sk
-         ixHLG3S+X6DL04IueaWzz3YAY+k1O+W0+zZrwyg28QQr9UkBUjuuO+lfsyCMhgpFaglE
-         TBeA==
-X-Gm-Message-State: AJIora+EWiUOAymN9HizeOSlreLQsaIv/EUwH3mxtYMP8yt3FXOzUf2n
-	Ys/BNX+YfJtobrb0MD0NcTjA9g==
-X-Google-Smtp-Source: AGRyM1sh6e+GuWnqSFtrhbHqrmFWx8Qa99sAGwZCXTtI91IuORU3SI44Gi/lqC6ObXbqOvNYusLNiw==
-X-Received: by 2002:a63:3ec7:0:b0:408:d3ac:9c0c with SMTP id l190-20020a633ec7000000b00408d3ac9c0cmr6200985pga.176.1655414146402;
-        Thu, 16 Jun 2022 14:15:46 -0700 (PDT)
-Received: from [172.22.33.138] ([192.77.111.2])
-        by smtp.gmail.com with ESMTPSA id b13-20020a170902d88d00b0016196bcf743sm2052571plz.275.2022.06.16.14.15.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Jun 2022 14:15:46 -0700 (PDT)
-Message-ID: <28b73da7-d97c-5ea5-0b22-724fa971aeb0@linaro.org>
-Date: Thu, 16 Jun 2022 14:15:44 -0700
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=p2fPALb1JPQ4AHcfCxgMf5Jxk8npv4hWtBM7JpKyakw=;
+        b=McoR5V6bYryOcUwMxx1kqJjJTXPx4QluFmSdoCpnBKZJyh1CW0fsrnLVd85cqlAG/g
+         cgCgcGikLS7lo1bSxjVo0uVY2VOp6/385nk483cZDDB9yx32uy+DHafEePpPQ0ksfhej
+         6ow3JxBAF+qZ6e7AQBK2016kiIhIlEIZFvdwZ6Udsg3SYn1Zsx+PPv3ktn2w1uyuKzUe
+         WMhK0N1Fn7jTWX4FZSUGjzPQebz8CEesN2HntDE8W5TvC0rCd/XsipzgjrnmWRkWX/Bm
+         45X+/3uEHuJySmypqIRQZJAeFVx3P8hqh6PWvgFnJpJH/qZLAk9uqq/mhd2opy/W7T+D
+         jNhg==
+X-Gm-Message-State: AJIora+nSfk4ajmSQTofiow5/97CrOSM28IQNemySQOTbZFtsqBasufJ
+	QlsNjrfj15vYqWCJhkXa+g==
+X-Google-Smtp-Source: AGRyM1vXz8zr1qepnCDtLqZTRG9xKb9gNBJydHo8HDS0dVqWruV80818zrXGU2iTTEoR7y/TLi/J4w==
+X-Received: by 2002:a05:6e02:1bc8:b0:2d4:342:9c68 with SMTP id x8-20020a056e021bc800b002d403429c68mr4075981ilv.254.1655414896016;
+        Thu, 16 Jun 2022 14:28:16 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.251])
+        by smtp.gmail.com with ESMTPSA id j8-20020a02a688000000b003314f874ac8sm1357939jam.36.2022.06.16.14.28.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Jun 2022 14:28:15 -0700 (PDT)
+Received: (nullmailer pid 4024739 invoked by uid 1000);
+	Thu, 16 Jun 2022 21:28:13 -0000
+Date: Thu, 16 Jun 2022 15:28:13 -0600
+From: Rob Herring <robh@kernel.org>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, daniel@ffwll.ch, krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie, msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com, wenst@chromium.org, angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v11 01/10] dt-bindings: mediatek,dp: Add Display Port
+ binding
+Message-ID: <20220616212813.GA3991754-robh@kernel.org>
+References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
+ <20220610105522.13449-2-rex-bc.chen@mediatek.com>
+ <20220614202336.GA2400714-robh@kernel.org>
+ <aeebb6879d62865f8baf037e541c568eb9310f23.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 06/15] dt-bindings: mfd: Add Mediatek MT6370
-Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>, jic23@kernel.org, lars@metafoo.de,
- matthias.bgg@gmail.com, lee.jones@linaro.org, daniel.thompson@linaro.org,
- jingoohan1@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com,
- ChiYuan Huang <cy_huang@richtek.com>
-References: <20220613111146.25221-1-peterwu.pub@gmail.com>
- <20220613111146.25221-7-peterwu.pub@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220613111146.25221-7-peterwu.pub@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aeebb6879d62865f8baf037e541c568eb9310f23.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_141551_074887_12346901 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20220616_142818_325059_93F5A47E 
+X-CRM114-Status: GOOD (  28.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,82 +80,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/06/2022 04:11, ChiaEn Wu wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+On Thu, Jun 16, 2022 at 09:22:16PM +0800, Rex-BC Chen wrote:
+> On Tue, 2022-06-14 at 14:23 -0600, Rob Herring wrote:
+> > On Fri, Jun 10, 2022 at 06:55:13PM +0800, Bo-Chen Chen wrote:
+> > > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > 
+> > > This controller is present on several mediatek hardware. Currently
+> > > mt8195 and mt8395 have this controller without a functional
+> > > difference,
+> > > so only one compatible field is added.
+> > > 
+> > > The controller can have two forms, as a normal display port and as
+> > > an
+> > > embedded display port.
+> > > 
+> > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > > [Bo-Chen: Fix reviewers' comment]
+> > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > > ---
+> > >  .../display/mediatek/mediatek,dp.yaml         | 101
+> > > ++++++++++++++++++
+> > >  1 file changed, 101 insertions(+)
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> > > 
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.ya
+> > > ml
+> > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.ya
+> > > ml
+> > > new file mode 100644
+> > > index 000000000000..10f50a0dcf49
+> > > --- /dev/null
+> > > +++
+> > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.ya
+> > > ml
+> > > @@ -0,0 +1,101 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: 
+> > > https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml*__;Iw!!CTRNKA9wMg0ARbw!yqAl1KhfbHqHN7-5aeqhzqeOVhPU_Z5beko5q-y-s5pcfp1WL5oVGvY5UF4EfWm4PWjc5mjBwyBUMsr_RI45ipbhsw$
+> > >  
+> > > +$schema: 
+> > > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!yqAl1KhfbHqHN7-5aeqhzqeOVhPU_Z5beko5q-y-s5pcfp1WL5oVGvY5UF4EfWm4PWjc5mjBwyBUMsr_RI5WzYKENQ$
+> > >  
+> > > +
+> > > +title: MediaTek Display Port Controller
+> > > +
+> > > +maintainers:
+> > > +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> > > +  - Jitao shi <jitao.shi@mediatek.com>
+> > > +
+> > > +description: |
+> > > +  Device tree bindings for the MediaTek display port and
+> > > +  embedded display port controller present on some MediaTek SoCs.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    enum:
+> > > +      - mediatek,mt8195-dp-tx
+> > > +      - mediatek,mt8195-edp-tx
+> > > +
+> > > +  reg:
+> > > +    maxItems: 1
+> > > +
+> > > +  nvmem-cells:
+> > > +    maxItems: 1
+> > > +    description: efuse data for display port calibration
+> > > +
+> > > +  nvmem-cell-names:
+> > > +    const: dp_calibration_data
+> > > +
+> > > +  power-domains:
+> > > +    maxItems: 1
+> > > +
+> > > +  interrupts:
+> > > +    maxItems: 1
+> > > +
+> > > +  ports:
+> > > +    $ref: /schemas/graph.yaml#/properties/ports
+> > > +    properties:
+> > > +      port@0:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: Input endpoint of the controller, usually
+> > > dp_intf
+> > > +
+> > > +      port@1:
+> > > +        $ref: /schemas/graph.yaml#/properties/port
+> > > +        description: Output endpoint of the controller
+> > > +
+> > > +    required:
+> > > +      - port@0
+> > > +      - port@1
+> > > +
+> > > +  max-lanes:
+> > > +    maxItems: 1
+> > > +    description: maximum number of lanes supported by the
+> > > hardware.
+> > 
+> > We already have a 'data-lanes' property defined in 
+> > 'video-interfaces.yaml' that can serve this purpose.
+> > 
 > 
-> Add Mediatek MT6370 binding documentation.
+> Hello Rob,
 > 
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> ---
->  .../bindings/mfd/mediatek,mt6370.yaml         | 279 ++++++++++++++++++
->  .../dt-bindings/iio/adc/mediatek,mt6370_adc.h |  18 ++
->  2 files changed, 297 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
->  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-> new file mode 100644
-> index 000000000000..6c2639e81e50
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-> @@ -0,0 +1,279 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6370.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek MT6370 SubPMIC
-> +
-> +maintainers:
-> +  - ChiYuan Huang <cy_huang@richtek.com>
-> +
-> +description: |
-> +  MT6370 is a highly-integrated smart power management IC, which includes a
-> +  single cell Li-Ion/Li-Polymer switching battery charger, a USB Type-C &
-> +  Power Delivery (PD) controller, dual flash LED current sources, a RGB LED
-> +  driver, a backlight WLED driver, a display bias driver and a general LDO for
-> +  portable devices.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6370
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  wakeup-source: true
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  interrupt-controller: true
-> +
-> +  '#interrupt-cells':
-> +    const: 1
-> +
-> +  adc:
-> +    type: object
-> +    description: |
-> +      Provides 9 channels for system monitoring, including vbusdiv5, vbusdiv2,
-> +      vbat, vsys, chg_vddp, ts_bat, ibus, ibat, and temp_jc.
-> +
-> +    properties:
-> +      compatible:
-> +        const: mediatek,mt6370-adc
-> +
-> +      "#io-channel-cells":
-> +        const: 1
-> +
-> +    required:
-> +      - compatible
-> +      - '#io-channel-cells'
+> Thanks for review.
+> From the description of video-interfaces.yaml, I think it's not quite
+> match what we need. We only need this value be one of "1,2,4".
 
-Decide in your entire patchset whether you use ' or ". Don't mix.
+data-lanes = <0>;
+data-lanes = <0 1>;
+data-lanes = <0 1 2 3>;
 
-Since you did not test your bindings, I am not reviewing it. First, test
-them. No need for me to do the job of a automated tool, right?
+Limiting the number of lanes to something less than the max is exactly 
+how this property is used in addition to being able to show the mapping 
+of lanes.
 
-Best regards,
-Krzysztof
+Rob
 
