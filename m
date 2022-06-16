@@ -4,198 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA6BBC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 06:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437E6C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 06:45:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+nfco/YnimOw+M+FtBa9xY1hx0crAnA91SKxyclMgiM=; b=H70qMKL4v+YLey6c4EtR8CbGcv
-	jT4HjYKiGekqvFu/ZdXZ1YNuiU7eKlnTJ5KZbAjfzcX8K9LHYzVcv7vlzsLOjtN9Z2pVPPiQvc8/Y
-	87vvY74yqTDdGGPei+aFtLDA512aTbQ1JlPl7DPwmF5hAPYKFxBnlHjAV7l3Z0jxIOzuROuZ4Ewm+
-	T22nGMn7ux28wwA3n01dqV3oqVgW3DjtyfSfhvYbqxbnD6vZQy8frPDFJiDvnUUwXGObj4edeNpXa
-	wtN7VofDiR7s1nY7ZAI5O8RrUYIoub/z1U1Z3dpXyTHQNNT/F0Zsn0O2dcLq7YBRweamk5jCE8K8E
-	ZVwGUwmQ==;
+	bh=UsAk1w8Lj6hLXiDWuf8YHNiQ7X+4pylozJpOMnTh0VI=; b=zWnnw0aporbAd5FkDDeOj3TdHU
+	+lYhXG1taLT5Twhkj2nmhNzOAkRo45Z53yO9Go8p844QFqUksZeJp9xCM9S4Rvl39jpz1MV9JHttg
+	4mHy2omaUxP48FK9vvlTyaVzL3f/V+3o1td/tgIwUer6UPGHjz7C7DnltQ9UWpeEvIqz1PzK5aQNF
+	kJofuC/a3eLFzpVfa/viKiqCUXQLkWSOPHbZ4Ncy6Xyhmz/hG6nZZttk7BB8BxIC2uOgRo1Rre1zR
+	gvsh200am/iYlVQcuVske/fAXWAolp0OETh88kDPAvi5+p8doW2WSYlspGEMG3hrVlJaAcFPhTBeG
+	zRO/o7zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1jBm-000lp5-00; Thu, 16 Jun 2022 06:41:10 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1o1jFe-000oHF-PT; Thu, 16 Jun 2022 06:45:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1jBE-000lUt-03; Thu, 16 Jun 2022 06:40:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1655361635; x=1686897635;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=+nfco/YnimOw+M+FtBa9xY1hx0crAnA91SKxyclMgiM=;
-  b=c5+WlBD0mfYWi0A2vHwlo3ujoatKU2aHLPQY2AvWCX+D/IQVvxA7YcRM
-   4JS85F/9iv7wNt5Gmgmrkg8eZPuis5RyDkXIuhMU+nKMvDWoRnPVGI2rz
-   HL9Zz53eQ15meKIJhk+iFrh5IkY4+AEJ8sDCyFko8iSpQYLn5Dq5QrSU9
-   VlPbCMqRFA/qo/b80qN2MlDQ5n2d95r8ztPBjBt91y02/QvRu1rkxdwUJ
-   LgtkT17IrYMncBVN3sFbXf8iT9XKteWJS8QJrRdDjyCOWDZg5LqUKZKE5
-   vOw/twiJiiwYCaEWFonM7soldemnJYVPJgkXLwcegKW9V/SKC7oerS9Ub
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10379"; a="340835465"
-X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; 
-   d="scan'208";a="340835465"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2022 23:40:33 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; 
-   d="scan'208";a="653028808"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
-  by fmsmga004.fm.intel.com with ESMTP; 15 Jun 2022 23:40:21 -0700
-Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Wed, 15 Jun 2022 23:40:18 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Wed, 15 Jun 2022 23:40:18 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.173)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Wed, 15 Jun 2022 23:40:17 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=i/ZFAQu8/uGjO3oaWf6u5xWkafkt+Llp6LrJ4YOCzJDWJv9c5nXAmPsbqqGy/wWLZnw1IIOe9FOEbIQWPBFwZCDweK84487EdA5HlC54Ep3iBFtKJzOFkDwruY0dAMX3Bs8CKi1ZouGMOXiIItOcB/vv6rrGvPfneWQP95ILamzbVboBOoQuG/4pQwoujgBj8aGOzLQqr6nM6cD/LMppq6NvRiph+1guzA5AGADldJyQQKT2x0/ypHLJ1KQRIXl4YLN3ktqZTWPjiLoDYqTKsTjkestbDP5GosubuIaKSjKyH+eQjWjgZ+dCPMubFVgHEycLvgoSyzYwYmQDPbXjlg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+nfco/YnimOw+M+FtBa9xY1hx0crAnA91SKxyclMgiM=;
- b=hrgMab7/XWPwHoG1eUKrezuMx6nLWN21e+chzlYGPzdsiHR4eq6z3vSIHW/b4mx9VHDB582UFZEE/xio7PScXZaIRmBoYsqN4UFzEoJ2fVMqjkBYunPLGzyy8qtps0Auu8qp8l2MgqsnUYT1iHW2veE8t2c5IgJXCO9K7C8qmHJoyYfHGvQEXpJskH/FpvFQyB5BhsPfJLrPjbXlNn4aPH9Vj8P4kdpV6H+ueVxOoob0vv/f4gE0xYSWl33OD5fnhqHt53CdkW5C7eQRlAfmPqCM9/nr9B8KkeWSAOG1SqzrRt3DPo6xVVqaBig7ZzCkFfMx0TEmDTYkg7XMhCg5hA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL1PR11MB5271.namprd11.prod.outlook.com (2603:10b6:208:31a::21)
- by SA1PR11MB5921.namprd11.prod.outlook.com (2603:10b6:806:22a::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.15; Thu, 16 Jun
- 2022 06:40:14 +0000
-Received: from BL1PR11MB5271.namprd11.prod.outlook.com
- ([fe80::4847:321e:a45e:2b69]) by BL1PR11MB5271.namprd11.prod.outlook.com
- ([fe80::4847:321e:a45e:2b69%6]) with mapi id 15.20.5332.022; Thu, 16 Jun 2022
- 06:40:14 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Nicolin Chen <nicolinc@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
-	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
-	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "orsonzhai@gmail.com"
-	<orsonzhai@gmail.com>, "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
-	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, "alex.williamson@redhat.com"
-	<alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>
-CC: "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
-	"alyssa@rosenzweig.io" <alyssa@rosenzweig.io>, "dwmw2@infradead.org"
-	<dwmw2@infradead.org>, "yong.wu@mediatek.com" <yong.wu@mediatek.com>,
-	"mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
-	"gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
-	"thierry.reding@gmail.com" <thierry.reding@gmail.com>, "vdumpa@nvidia.com"
-	<vdumpa@nvidia.com>, "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
-	"cohuck@redhat.com" <cohuck@redhat.com>, "thunder.leizhen@huawei.com"
-	<thunder.leizhen@huawei.com>, "tglx@linutronix.de" <tglx@linutronix.de>,
-	"christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
-	"john.garry@huawei.com" <john.garry@huawei.com>, "chenxiang66@hisilicon.com"
-	<chenxiang66@hisilicon.com>, "saiprakash.ranjan@codeaurora.org"
-	<saiprakash.ranjan@codeaurora.org>, "isaacm@codeaurora.org"
-	<isaacm@codeaurora.org>, "yangyingliang@huawei.com"
-	<yangyingliang@huawei.com>, "jordan@cosmicpenguin.net"
-	<jordan@cosmicpenguin.net>, "iommu@lists.linux-foundation.org"
-	<iommu@lists.linux-foundation.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-s390@vger.kernel.org"
-	<linux-s390@vger.kernel.org>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "virtualization@lists.linux-foundation.org"
-	<virtualization@lists.linux-foundation.org>, "kvm@vger.kernel.org"
-	<kvm@vger.kernel.org>
-Subject: RE: [PATCH v2 3/5] vfio/iommu_type1: Remove the domain->ops
- comparison
-Thread-Topic: [PATCH v2 3/5] vfio/iommu_type1: Remove the domain->ops
- comparison
-Thread-Index: AQHYgRSGh5VNWlGZFU2izdpXwolvG61Rkriw
-Date: Thu, 16 Jun 2022 06:40:14 +0000
-Message-ID: <BL1PR11MB52717050DBDE29A81637BBFA8CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-4-nicolinc@nvidia.com>
-In-Reply-To: <20220616000304.23890-4-nicolinc@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e90be828-31a3-477c-0f8e-08da4f6311c8
-x-ms-traffictypediagnostic: SA1PR11MB5921:EE_
-x-microsoft-antispam-prvs: <SA1PR11MB592187D2F0591A20856F122C8CAC9@SA1PR11MB5921.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: b4xcTcwz5eVBGFk74nCe1SGiehBd3y4jDK7nFvmL/w2fGxAzL6yCuDzLf4J6uR5DXKB6+PKq2P7RizRtfEL5HGP1tmAaIqxTmChypeWcVZNRkRw3BVJBNRoMVS6r7vmkiR8QrzXJ0Q1XGETndQY+hKqQGZ2N0vDOESDDOPQyVSmcVDcu89EfngRYR5Dfr7vtsWtS7cUwllH62vWRKDO56crBlHQBWtiYJs0Vbzz/uSV9P/4TyZinWzQQ27bM0cCxtglc0gs4Vek8bm/+SfjZzoTupY+vim6LsNRbJv5DzZWb4E4R3OvCuRR4eckTkve3UL5qTgh9jy6PhccDDcYo6B1AvupG0E4QThBy9dyKYn1j0jsj40OMMjt5kZHXYSbcqKKrlzofi2eQGX3p+nJASTaNWyFFYA+bScOd82FCArbffEftqdw4gAKUkRH/71sCCVBZ4tJubAjVZS17/oMhMOPAzvdI0sRoWE2BhQwmZsRNyNIg+Ucstb9MF/1QsJC6eUs9MoM4dQEDQ8KYHB1eUQdGhue7ZH2QfZyIzx4zUM9NHU2dYDmfNf52x8VOTfocmGgsPSk8s8ME+wfjC+Xkag5HxJMamViPL16bb3QgEvh7JBakAsmu6kTJgKlQ4kKi1TrQY5f7D+eO78TUDl69jssPIsmmI9/ZOo9mUKDnr2paZxmTPysCdTXwFdnsyTkifiV/9OStxHctuiT5lu/ZpWOxD+hm2JIev9txw5BTaQSnBgc73u+qTUvDVj9Lj6YvhXQNU8dhuk6X8NCCyYPI3QXYSYU9XfTTgHbY8UiquBgtGpn0GPYkgUNJSF0XUTPI
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL1PR11MB5271.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(366004)(4744005)(54906003)(55016003)(76116006)(7406005)(7416002)(52536014)(33656002)(26005)(921005)(86362001)(122000001)(71200400001)(5660300002)(38100700002)(2906002)(82960400001)(8936002)(316002)(7696005)(64756008)(8676002)(66446008)(66476007)(66946007)(4326008)(6506007)(66556008)(9686003)(186003)(508600001)(966005)(38070700005)(110136005);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RThrTjhXekMrT1gxL3hnczhwTzFoSnh6OG8vcFRac0xScWRxb3pDaVY0cXhQ?=
- =?utf-8?B?VFlQQXpudTRCMzk4ajRxaTZrRnBRU1BCMVI5OWNkclhBckVzNEVXZFZmTEx2?=
- =?utf-8?B?bDNpbHJKNTYyN21sendMNXBvR3NJS2g2dFhOWU1kazVhaDJIMXV5NjM4V3p3?=
- =?utf-8?B?S2tPaWNoczhQTm96S0g3TlR2VmgwcXlLK0FjNm95ekRJWDVGQXp4WWduUVFN?=
- =?utf-8?B?K0xPSUVyNWxJamQvZ0YrTVpBMVBpQkR2Nzhya295bzFaYy91S2Z4OHhSUGR4?=
- =?utf-8?B?M1dSRkZyUUZFRHpyOG12Y2tNZllFVEpkWFpnM2tJTm5nUENpZUlYZWs1YlRN?=
- =?utf-8?B?VnJ4UldvcVV1OUNXNHFTZjBNQ0RHL1hXTUJOK1dOV3BLdnpISDVHTFZmQTR5?=
- =?utf-8?B?cmN6VWxldERNSnhjZW1mQVpHV01nRGNqQWFqZ3oxV0t1dkZZd3NOUXArN0ha?=
- =?utf-8?B?eGFpc2x5VDc0c0RPdG8xWW5Zc3pjVVgwK0NlQVBTYVFrQjdoZFZadklKVGJh?=
- =?utf-8?B?RldFL201d0h6c0dnd2xPY1QwR1paQmQ5Lyt0eWRqUWhscEQ0LzZNcFlCZXlr?=
- =?utf-8?B?OHA0L1lVdUJYdXFzUGtSVGpySTQ4aEZQSi9hN0hpVlpGSWlvcW1mVUFCSmE3?=
- =?utf-8?B?N29zbHNRdzlEVHVYeVBxdXdrZFdoUVNlVi9oMmVkMkpjdUhzVXVnUjNGcTNT?=
- =?utf-8?B?dkRIOGlGaG1pUVRBa3pleGFoNFZwSEVlVmcyR1pQU3IwM1F2OEw3Rk9yaVBY?=
- =?utf-8?B?ajAyQnZoQVlBbzBWWFVnWnEvL0JqRVBnVk1OK2h5SWFoOUczZmd2QzZJY1Zq?=
- =?utf-8?B?SU40STBhUy9xMTl2OXc3S3ZNZ2FkdUVETDIvOFpFZlR1WWVPQmlIOWdTaXJs?=
- =?utf-8?B?TCtUQzJvT090NXY2cFYrSDMzZnk5UkRxYktEQ2hMZUlvTFpKZ3pLRW9yZncw?=
- =?utf-8?B?UUFvU1RYc2lVcmZLZ2VFWVhSN2FpWThVaFhkWnM4eXQ0MFVwaCtDSTVWd1hm?=
- =?utf-8?B?NFBZb2tGVjE4OHZBQmoyUjVFODZrbUoxTmZTT1puSWw5NzlpWjEwMzE3UEhv?=
- =?utf-8?B?MDNFcDVFTldXZVd5UnVKTEtoWWtPZkgxeG83enF2UDRCZ1lKZW42aW5Xb0cr?=
- =?utf-8?B?Z2YvM0tkT1lpT2pXM1lYVzdZS2w2TDBUaE84dnJFemJqbzg4L1lvYUs1WFRG?=
- =?utf-8?B?YWF6TmlacTQvZTNnbG0yZjlMMnV5MElhUmFVWVJFaVdJNmY5N0d3dFg2TDls?=
- =?utf-8?B?bVN6czdtS2luZFFGTkNmOHhkRnFGZ0lkMEVnTzNJOGo0eGF5TmtQUkMwQ3Mw?=
- =?utf-8?B?YlQvZ0wvUnk5S0p6YlN2VWg1cERMaEM0bHJFYVI5WC9idWRNTnBNYUNPVkh6?=
- =?utf-8?B?WUt2RStxREFma1V3M3dpQjdJenFnWjNURSsvYU1ZbDI5bHlVN1JuZjZNanRD?=
- =?utf-8?B?ZUtsQm1UVE90aDVYYVdQTmdWNUQ5SzBISEUweWRZK2J6LzUyOUlHRWZOUGpy?=
- =?utf-8?B?RmtmNlZQRDlRZFlYcGlCQ3JVWGcvY2xvaStnVGY3eEJOSkFLOWFkUmlzdk51?=
- =?utf-8?B?blJWRHp4RjBCNnhBaWc5UEtsdWZzWU9sOVppNnZWL0lpV3ZSOGVUK0gwTXhv?=
- =?utf-8?B?VUlhamRYbHlEOURITE1rUFh3czdlazUzWjNlWFZLOUlQcmlJTzZ5by9qQTd1?=
- =?utf-8?B?d2RXWlNlQjNmV0lKNG1ocFNxVGNLOHJLejhyZzh4a2RZSkUvRVR5ZU5iVGpl?=
- =?utf-8?B?R2dGbXdvTFZsbHRVSXJjYW5aWnBRMmRScWovS2N1czJYcGFDeStkN3p1L1lv?=
- =?utf-8?B?ZDdPL0VPWFJPQ21YUFNpN3gyYThBYUhkb3pkTG1JTTBjUHV0emdJYlJLeUxC?=
- =?utf-8?B?Q2kvazBpUHZWUUVYTGpKZWdHY3ZSRnJkcURDMVRZOFREblRuMU1UZVVoMG5t?=
- =?utf-8?B?WnB2TmYwOUpXNjdQNERzUkh0cGI3MkVEL04zWFkzbElzWk9KejdqdElIbEdk?=
- =?utf-8?B?MWIyQk5LUzgzR2hNNmFHZ0M4QlExKzV0TFVrZXhoR2ZvMDZFMlpwVDNIY3pT?=
- =?utf-8?B?SitON2trd0lhTWxMN2VWblNjS2FZelgyZ2ViTUVqd052TXV2K2VWdjRlaUsv?=
- =?utf-8?B?cTRhWHBIYjcrbU4yZXNtTXlvRmRJbStDQkVKaWFpakpNMVQ1eXA3NFM3TkRJ?=
- =?utf-8?B?dDJ3ZktGc1hiam9TZ212L0J2YXVrVitpa3BsSGJia2xYT2tlUzcxSDNSMndN?=
- =?utf-8?B?Y1lHSXlFTHdWdlh5Sjl3bTJrK1paQ3RGeXo0bVgwMFBUWGEwQUxwRVJWRHNF?=
- =?utf-8?B?UjVxelYzUE4wS1ZtT2JzNGhkZDlZYVptblFzYm5BdlE3WGRRT2Nudz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	id 1o1jDx-000nGJ-72; Thu, 16 Jun 2022 06:43:27 +0000
+X-UUID: b279b5d17bec4e28998039775eb061b9-20220615
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:53956f23-dafc-4f73-99e5-e891c864c141,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:e05bb548-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: b279b5d17bec4e28998039775eb061b9-20220615
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 497992383; Wed, 15 Jun 2022 23:43:21 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Jun 2022 23:33:19 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 16 Jun 2022 14:33:17 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 16 Jun 2022 14:33:16 +0800
+From: <yf.wang@mediatek.com>
+To: <robin.murphy@arm.com>
+CC: <Libo.Kang@mediatek.com>, <Yong.Wu@mediatek.com>,
+	<iommu@lists.linux-foundation.org>, <isaacm@codeaurora.org>,
+	<joro@8bytes.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>, <ning.li@mediatek.com>,
+	<quic_c_gdjako@quicinc.com>, <sven@svenpeter.dev>, <will@kernel.org>,
+	<wsd_upstream@mediatek.com>, <yf.wang@mediatek.com>
+Subject: Re: [PATCH v9 1/3] iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
+Date: Thu, 16 Jun 2022 14:26:28 +0800
+Message-ID: <20220616062628.10101-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <5083aed9-fa31-b91c-6ca6-29dbc4d0807a@arm.com>
+References: <5083aed9-fa31-b91c-6ca6-29dbc4d0807a@arm.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL1PR11MB5271.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e90be828-31a3-477c-0f8e-08da4f6311c8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jun 2022 06:40:14.4558
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: o52ctLCHYJu68sj97+tHVQUANz93iJAl177OjS9u8/tVekxF53A/s2gA2/KFaEi5NF7kuXc2FWOfjCqG1ijaZg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB5921
-X-OriginatorOrg: intel.com
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_234036_129941_FF3622D8 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20220615_234325_336333_47B2BA62 
+X-CRM114-Status: GOOD (  29.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -210,23 +82,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiBGcm9tOiBOaWNvbGluIENoZW4gPG5pY29saW5jQG52aWRpYS5jb20+DQo+IFNlbnQ6IFRodXJz
-ZGF5LCBKdW5lIDE2LCAyMDIyIDg6MDMgQU0NCj4gDQo+IFRoZSBkb21haW4tPm9wcyB2YWxpZGF0
-aW9uIHdhcyBhZGRlZCwgYXMgYSBwcmVjYXV0aW9uLCBmb3IgbWl4ZWQtZHJpdmVyDQo+IHN5c3Rl
-bXMuIEhvd2V2ZXIsIGF0IHRoaXMgbW9tZW50IG9ubHkgb25lIGlvbW11IGRyaXZlciBpcyBwb3Nz
-aWJsZS4gU28NCj4gcmVtb3ZlIGl0Lg0KDQpJdCdzIHRydWUgb24gYSBwaHlzaWNhbCBwbGF0Zm9y
-bS4gQnV0IEknbSBub3Qgc3VyZSB3aGV0aGVyIGEgdmlydHVhbCBwbGF0Zm9ybQ0KaXMgYWxsb3dl
-ZCB0byBpbmNsdWRlIG11bHRpcGxlIGUuZy4gb25lIHZpcnRpby1pb21tdSBhbG9uZ3NpZGUgYSB2
-aXJ0dWFsIFZULWQNCm9yIGEgdmlydHVhbCBzbW11LiBJdCBtaWdodCBiZSBjbGVhcmVyIHRvIGNs
-YWltIHRoYXQgKGFzIFJvYmluIHBvaW50ZWQgb3V0KQ0KdGhlcmUgaXMgcGxlbnR5IG1vcmUgc2ln
-bmlmaWNhbnQgcHJvYmxlbXMgdGhhbiB0aGlzIHRvIHNvbHZlIGluc3RlYWQgb2Ygc2ltcGx5DQpz
-YXlpbmcgdGhhdCBvbmx5IG9uZSBpb21tdSBkcml2ZXIgaXMgcG9zc2libGUgaWYgd2UgZG9uJ3Qg
-aGF2ZSBleHBsaWNpdCBjb2RlDQp0byByZWplY3Qgc3VjaCBjb25maWd1cmF0aW9uLiDwn5iKDQoN
-Cj4gDQo+IFBlciBkaXNjdXNzaW9uIHdpdGggUm9iaW4sIGluIGZ1dHVyZSB3aGVuIG1hbnkgY2Fu
-IGJlIHBlcm1pdHRlZCB3ZSB3aWxsDQo+IHJlbHkgb24gdGhlIElPTU1VIGNvcmUgY29kZSB0byBj
-aGVjayB0aGUgZG9tYWluLT5vcHM6DQo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWlv
-bW11LzY1NzVkZTZkLTk0YmEtYzQyNy01YjFlLQ0KPiA5Njc3NTBkZGZmMjNAYXJtLmNvbS8NCj4g
-DQo+IFNpZ25lZC1vZmYtYnk6IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT4NCg0K
-QXBhcnQgZnJvbSB0aGF0LA0KDQpSZXZpZXdlZC1ieTogS2V2aW4gVGlhbiA8a2V2aW4udGlhbkBp
-bnRlbC5jb20+DQo=
+On Wed, 2022-06-15 at 18:03 +0100, Robin Murphy wrote:
+> On 2022-06-15 17:12, yf.wang@mediatek.com wrote:
+> > 
+> >   static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
+> >   				  struct io_pgtable_cfg *cfg)
+> >   {
+> > @@ -240,10 +245,17 @@ static void *__arm_v7s_alloc_table(int lvl,
+> > gfp_t gfp,
+> >   	dma_addr_t dma;
+> >   	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
+> >   	void *table = NULL;
+> > +	gfp_t gfp_l1;
+> > +
+> > +	/*
+> > +	 * ARM_MTK_TTBR_EXT extend the translation table base support
+> > all
+> > +	 * memory address.
+> > +	 */
+> > +	gfp_l1 = cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
+> > +		 GFP_KERNEL : ARM_V7S_TABLE_GFP_DMA;
+> >   
+> >   	if (lvl == 1)
+> > -		table = (void *)__get_free_pages(
+> > -			__GFP_ZERO | ARM_V7S_TABLE_GFP_DMA,
+> > get_order(size));
+> > +		table = (void *)__get_free_pages(gfp_l1 | __GFP_ZERO,
+> > get_order(size));
+> >   	else if (lvl == 2)
+> >   		table = kmem_cache_zalloc(data->l2_tables, gfp);
+> >   
+> > @@ -251,7 +263,8 @@ static void *__arm_v7s_alloc_table(int lvl,
+> > gfp_t gfp,
+> >   		return NULL;
+> >   
+> >   	phys = virt_to_phys(table);
+> > -	if (phys != (arm_v7s_iopte)phys) {
+> > +	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
+> > +	    phys >= (1ULL << cfg->oas) : phys != (arm_v7s_iopte)phys) {
+> 
+> Given that the comment above says it supports all of memory, how
+> would 
+> phys >= (1ULL << cfg->oas) ever be true?
+> 
+
+Hi Robin,
+
+Since Mediatek IOMMU hardware support at most 35bit PA in pgtable,
+so add a quirk to allow the PA of pgtables support up to bit35,
+but need to check oas do error hanlde.
+
+
+> >   		/* Doesn't fit in PTE */
+> >   		dev_err(dev, "Page table does not fit in PTE: %pa",
+> > &phys);
+> >   		goto out_free;
+> > arm_v7s_install_table(arm_v7s_iopte *table,
+> >   					   arm_v7s_iopte curr,
+> >   					   struct io_pgtable_cfg *cfg)
+
+...
+ 
+> > diff --git a/include/linux/io-pgtable.h b/include/linux/io-
+> > pgtable.h
+> > index 86af6f0a00a2..c9189716f6bd 100644
+> > --- a/include/linux/io-pgtable.h
+> > +++ b/include/linux/io-pgtable.h
+> > @@ -74,17 +74,22 @@ struct io_pgtable_cfg {
+> >   	 *	to support up to 35 bits PA where the bit32, bit33 and
+> > bit34 are
+> >   	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
+> >   	 *
+> > +	 * IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT: (ARM v7s format) MediaTek
+> > IOMMUs
+> > +	 *	extend the translation table base support up to 35 bits PA,
+> > the
+> > +	 *	encoding format is same with IO_PGTABLE_QUIRK_ARM_MTK_EXT.
+> > +	 *
+> >   	 * IO_PGTABLE_QUIRK_ARM_TTBR1: (ARM LPAE format) Configure the
+> > table
+> >   	 *	for use in the upper half of a split address space.
+> >   	 *
+> >   	 * IO_PGTABLE_QUIRK_ARM_OUTER_WBWA: Override the outer-
+> > cacheability
+> >   	 *	attributes set in the TCR for a non-coherent page-table
+> > walker.
+> >   	 */
+> > -	#define IO_PGTABLE_QUIRK_ARM_NS		BIT(0)
+> > -	#define IO_PGTABLE_QUIRK_NO_PERMS	BIT(1)
+> > -	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT	BIT(3)
+> > -	#define IO_PGTABLE_QUIRK_ARM_TTBR1	BIT(5)
+> > -	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA	BIT(6)
+> > +	#define IO_PGTABLE_QUIRK_ARM_NS			BIT(0)
+> > +	#define IO_PGTABLE_QUIRK_NO_PERMS		BIT(1)
+> > +	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT		BIT(3)
+> > +	#define IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT	BIT(4)
+> > +	#define IO_PGTABLE_QUIRK_ARM_TTBR1		BIT(5)
+> > +	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA		BIT(6)
+> >   	unsigned long			quirks;
+> >   	unsigned long			pgsize_bitmap;
+> >   	unsigned int			ias;
+> > @@ -122,7 +127,7 @@ struct io_pgtable_cfg {
+> >   		} arm_lpae_s2_cfg;
+> >   
+> >   		struct {
+> > -			u32	ttbr;
+> > +			u64	ttbr;
+> 
+> The point of this is to return an encoded TTBR register value, not a
+> raw 
+> base address. I see from the other patches that your register is
+> still 
+> 32 bits, so I'd prefer to follow the standard pattern and not need
+> this 
+> change.
+> 
+> Thanks,
+> Robin.
+> 
+
+Hi Robin,
+Thanks for your suggestion, next version will recovery ttbr to 32 bits,
+will modify arm_v7s_alloc_pgtable to return an encoded TTBR, encoded
+PA bits[34:32] to to lower bits, as follows:
+
+/* TTBR */
+phys_addr_t paddr;
+paddr = virt_to_phys(data->pgd);
+cfg->arm_v7s_cfg.ttbr = virt_to_phys(data->pgd) | ARM_V7S_TTBR_S |
+			(cfg->coherent_walk ? (ARM_V7S_TTBR_NOS |
+			 ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_WBWA) |
+			 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_WBWA)) :
+			(ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_NC) |
+			 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_NC)));
+
+if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
+	cfg->arm_v7s_cfg.ttbr = (paddr & GENMASK(31, 7)) |
+				upper_32_bits(paddr);
+
+Thanks,
+Yunfei.
+
+> >   			u32	tcr;
+> >   			u32	nmrr;
+> >   			u32	prrr;
 
