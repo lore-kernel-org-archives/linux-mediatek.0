@@ -4,189 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD34FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 07:08:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 392A6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 07:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Qn7KeKMFd+BaxI/33ypzN2GkVATVsJMxaD4eLYNElw=; b=g8EJuA1nKypv7jOCSJLTw4K7r1
-	An2Fr0kccvq8b6bze6PTO5rFaEDogHD0dQyiiWu4jMIk35CRT3nGClXaS4gqzFw6P0QZeDAMa+6nS
-	6xDtY/FuRJBlouNU0S43ur90mYbIy3snxkaxuAOy7MSHrhDWY9pztCtH1f2CDZ07R/QvnEsCRWfHn
-	jTQzFZaXydORfVE43jPD15i68TMMvFIDjE+qx0s/n+RDQZiRQb+vYHLvXh8zUmFJL/IQcyObSQfVN
-	LHOOVLgMsxK5E0tpUo0pDn+20AsXlbJdu2X6cmNJMeV1Yoxe6UiXUYr71ruUTzBFHQDhXpDpElmTw
-	n1I3Ojyw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2zjQFvvKJN5m4o+5cSn2hbJ86PtZMhHs4OQCuuJ7Bcc=; b=bFcaVTZzkn9RTkuy01OHa+IDpR
+	jCoezB2Gadedo3zi1adLKWX3s98zMR+lqE7Xm4+10ThTl2T3UN50tjwnieN4LzVG4YXmBYY8j6SDA
+	xcnAUmJ6Bh1jSxGvXNH1VyTi92zJBIU3l3BTlbz37eBa6v/zrUdbWlE5vLRYGe0KRnOliqQvlVaYk
+	y284LoU/FtOlHmRIHzghSpGRbb7OGI6fci0jAjL6L07KegjKZhgOX2hcL/538Nnj15P5VtAvioBhi
+	ANvqyMGL+2Ah4MvnvpHOZjXf8azgaA5rh+C+LEiRrht1IxaNW2uBnkAdMG7YB+ZeFt1OIWwO+oasH
+	FMOKlCHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1jcD-000xYP-TQ; Thu, 16 Jun 2022 07:08:29 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1o1jgN-000yW4-QO; Thu, 16 Jun 2022 07:12:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1jbz-000xT0-LA; Thu, 16 Jun 2022 07:08:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1655363295; x=1686899295;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=UXuGf8aiYEHvq8TG1B3SPdsJ7KrdO2AQU8Aqtd7i/ns=;
-  b=EOj+5NFl2RX7IJN3jyD7KZqG5JkAZIxbnavl3EuI4ALaDjz7UaHunpO9
-   VXsNbPvx1UPJVWcjZpimIORxKXnLivTIn9RwelFhTttgvach/q9CxqJF3
-   poD+PCa9gac4NGcNFKWTrmdyk7MQCSK6slEX6nkcHieHuceIkf7UURpkQ
-   0J8uZeoVH8tihuUAfneHwZX9NvD86y1e7ba7mGSslUAPOpGJm+oGcvPru
-   9LXlLjNV7Q/LlFp4TW7VqO2KCgakSoGnt2b8MN4dU6UrJv6/sHc3aw9uy
-   RFpCDT+WKYSGPS06oCIpTKjwMnWYGPLHSPpSZM3+/dDInt6vQrencfrnm
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10379"; a="279900241"
-X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; 
-   d="scan'208";a="279900241"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2022 00:08:14 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,304,1647327600"; 
-   d="scan'208";a="912040866"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
-  by fmsmga005.fm.intel.com with ESMTP; 16 Jun 2022 00:08:13 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Thu, 16 Jun 2022 00:08:13 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27; Thu, 16 Jun 2022 00:08:12 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.27 via Frontend Transport; Thu, 16 Jun 2022 00:08:12 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.172)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2308.27; Thu, 16 Jun 2022 00:08:12 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nNAP8+domOPKxBJ4QELOtRizy4c24NKXmfMBz8MHisr9HQoB79rtNi2Xbe/sJHAid023+aIHmaoPIvmAvQ8LgvOw8ZGGEhMRQSRr+zrCnOzit33LOpfIBsRQ6yW/MZqV/Rv0fOJ2oco8qajqEYhovq6cvJ/zLJ1WpzmzRP/NLGWrl+9vZ88Blbc34k5qMnORqWIf7AhFfiOET3UpTXKnAEbwhvwlJ+7YnECh85easACUfYBncokuJnkdwDvTYjF9tG3Shp08/vUKqlUKBwazrJ1k6zXatkmAeJRI52JSoQxpkJw9/MoefH8FOUQ59n/NdKLGrH6UeiJq0CzscDAPew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0Qn7KeKMFd+BaxI/33ypzN2GkVATVsJMxaD4eLYNElw=;
- b=N7qaFa6zdEUAK2ApGCxjLjMAsHMjeOrgJ5iU6SY7RF8ybvY3vnW7fDOeo/PAUC8+6X3Hgw320BW0tFlfH+wbk8c03Z/KHKbiycHVFnPCu37zHpMxsFGRzMpY68LhQHfpYeIed7z8rmYNFnqaI7sRq3hLaCFVY7eqNbCxjaY2x8lm8rBp8jqP09xevRPhpmkRInxW8QvGaw4jW2xetxX90/7gL+5bb8h/kKVKzMBOBWSwBZdcBgWstgo66PhlUv3zDcz9UEZEtuTr8qFBlWH4ob9QwuCUPgvUnngapLvCbVhtj3o1D/jndpCRZoASVzOw1L7CHxA2elL2Dy1iN0IslA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL1PR11MB5271.namprd11.prod.outlook.com (2603:10b6:208:31a::21)
- by MN2PR11MB4494.namprd11.prod.outlook.com (2603:10b6:208:194::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14; Thu, 16 Jun
- 2022 07:08:10 +0000
-Received: from BL1PR11MB5271.namprd11.prod.outlook.com
- ([fe80::4847:321e:a45e:2b69]) by BL1PR11MB5271.namprd11.prod.outlook.com
- ([fe80::4847:321e:a45e:2b69%6]) with mapi id 15.20.5332.022; Thu, 16 Jun 2022
- 07:08:10 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Nicolin Chen <nicolinc@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
-	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
-	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "orsonzhai@gmail.com"
-	<orsonzhai@gmail.com>, "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
-	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, "alex.williamson@redhat.com"
-	<alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>
-CC: "jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
-	"thierry.reding@gmail.com" <thierry.reding@gmail.com>, "alyssa@rosenzweig.io"
-	<alyssa@rosenzweig.io>, "linux-s390@vger.kernel.org"
-	<linux-s390@vger.kernel.org>, "saiprakash.ranjan@codeaurora.org"
-	<saiprakash.ranjan@codeaurora.org>, "kvm@vger.kernel.org"
-	<kvm@vger.kernel.org>, "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "yangyingliang@huawei.com"
-	<yangyingliang@huawei.com>, "gerald.schaefer@linux.ibm.com"
-	<gerald.schaefer@linux.ibm.com>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "christophe.jaillet@wanadoo.fr"
-	<christophe.jaillet@wanadoo.fr>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "tglx@linutronix.de" <tglx@linutronix.de>,
-	"virtualization@lists.linux-foundation.org"
-	<virtualization@lists.linux-foundation.org>, "isaacm@codeaurora.org"
-	<isaacm@codeaurora.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"dwmw2@infradead.org" <dwmw2@infradead.org>
-Subject: RE: [PATCH v2 5/5] vfio/iommu_type1: Simplify group attachment
-Thread-Topic: [PATCH v2 5/5] vfio/iommu_type1: Simplify group attachment
-Thread-Index: AQHYgRSKHdu8hpsyN0qjOVzlAFzvDq1RlxsA
-Date: Thu, 16 Jun 2022 07:08:10 +0000
-Message-ID: <BL1PR11MB52710E360B50DDA99C9A65D18CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-6-nicolinc@nvidia.com>
-In-Reply-To: <20220616000304.23890-6-nicolinc@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.6.500.17
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1274b422-2fb1-4cf6-b2ae-08da4f66f8d1
-x-ms-traffictypediagnostic: MN2PR11MB4494:EE_
-x-microsoft-antispam-prvs: <MN2PR11MB4494FDF554777EEFC611FF6B8CAC9@MN2PR11MB4494.namprd11.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: aCC/EDEw07wUEIuTxxpxm7Gkav126ifNEvw12h7cHnwn9D9rA1Ks207ZjzKtwqqdvgLiNL7HnOujyRT/c+jlR2MEz+4nZgbvT533yzHraMsgCLl4POsALB6NiTjjfyY6R4u9ckHwcpfE1fl/BZPUz6BsDNjmYVRmZAKVq8hym1gg8wncwhFd5eCskF6EadvMnT640B369VKiP9dbOXa5oFKfprH+sA6VSW9GGVjnj8bBXMvN4zCGEt70H3wffBgDaEeSP0DbUk2PFQnU3uF+aYk3Xd8a9VwsshLXiz7Fk5d5za6Vrf1HbuJR/jH9sv4rtis9XD+piOof+FNsbz/1fxjnMkp3iUnNcDX/CWvsC/A+RABdSq84ApTfaSuaNdbaPUKegLJisUEivwoL98H5SJ6OpPhN3yyMNcy+U/XybhzRVQi74cja2osMHSXAUKryyv03KH4gb2w/Q290lEDPlAtwtXbHmfUlYT6UF8/ojnBJ3LlFjD8oM/Clca7psD6f5Jq13qeYR85RYV0E+6R7hf6Wk+OTZiYkLih2m6tyvoAscf8sNSIVfhuzp6y6T0SwRVQXKGpbHlD/9wHqD6+Sp8HDO/xYEUY9aDk9tDQ5x0c4gDhYbj/HimMEiLOxX/hjhwmEYYuc5afNxDUKwkg35Ft2mVeDNIupS2pSeVfUaOU6FCjldfI44+opJAn3GCncB9b9Zh21CMQnJNN1iMUiX16159+jLC29ZKH9RpfpCfg=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL1PR11MB5271.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(366004)(71200400001)(82960400001)(33656002)(86362001)(38100700002)(316002)(921005)(66556008)(76116006)(8676002)(38070700005)(4326008)(64756008)(66476007)(66446008)(66946007)(122000001)(54906003)(6506007)(26005)(9686003)(7696005)(52536014)(110136005)(508600001)(7406005)(8936002)(186003)(2906002)(7416002)(5660300002)(83380400001)(55016003);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?L9fefZ9gJ6c68+/kMGNd2gOHB/Ryet3AQJGRUY7OOczRMBjof/2O8wZlG7M/?=
- =?us-ascii?Q?trVqTEVWUmsg0Eeti8NAKpLIHVzqYwcJJheNT2q8bnFJ6dk9e3mTQk0f9Iu6?=
- =?us-ascii?Q?K6ikjARIFUcll5LBY30ZQdnlUIzVE6S+Jx8YNom72mFbeGJqerOlh5kAoKqJ?=
- =?us-ascii?Q?qdNRU0dmWAzMoWxEOE6+2CrKXh2WFakhYSeQHEdUEW1T/3O97D6dlj8gDntx?=
- =?us-ascii?Q?X+K19XXSkj9V/qvwB7mHBrzknHnqemy2ygPRgYLB2/wMY53Vf4jiLozMhR08?=
- =?us-ascii?Q?22ins0H5M4Hq4H90heh7vgAY+hcEp0fRvKJwwVHPvTheyQVdQ8juaFoo6f3U?=
- =?us-ascii?Q?F5Wd2qffShLXf+Rh162h8M6nqbjMlENWFi8/218GuOPNDdahfxUalcHQ9uy6?=
- =?us-ascii?Q?Vo8UcPR/GLQxTT4deIq08rNq0hkPLDGZzr/o7rrBm8q0Yn2FRJkGqbk/T3qW?=
- =?us-ascii?Q?CnyVlhq3ncu5E3QLt6mqdUZkisHvaxH0YZd8DdIExxKuu7RZBjMkOR+zxLAG?=
- =?us-ascii?Q?ElN+IVpgCf0Vc6mybD/D7Qt8kH2zCnqRLKHaGCAX2anbPr7VASLjCniRys9E?=
- =?us-ascii?Q?2gACzf0ulY8yD/JpL1K+b5aGkG9Pulp/wVpaw4s+ZkZk1NVA7qviGHm8ljGA?=
- =?us-ascii?Q?1FKzEMz4G5/zkGuM7Fkj5hWysPuJ/ZcGy5Fk4XjB1MziHBXrwr8QWrFTv4sb?=
- =?us-ascii?Q?q1aFWepLEdlJTup1cvkVkAquTciU47Ucf12cVe+WdjB7k3DRP5OnO+FGSrMx?=
- =?us-ascii?Q?rO1iEUXupnhlHzmxz360dvoaiRzWUA4ihNV2joUbicyyerfgHnJuaxUdhDjq?=
- =?us-ascii?Q?FWoFx3sylS5Gw5IEpNyJYkLj/BQf7wDwFBIJiRAgPdkkmSm9VjDG8i41jGzo?=
- =?us-ascii?Q?2bJ/pDBczIXwGnMgKRkFh8VQ3hUOaZ9pCJRW/FacWGhEnKIAz8JcEZqrlru2?=
- =?us-ascii?Q?yhlRtvwHhbYbf2dlgx7p2s0q8crRER81ntjtdwSL/OnHlVWRqjRZSSQIc7JW?=
- =?us-ascii?Q?sznehBeFo4MOYMpIopOOkvj065G1+/1vEkTnBQOHNqbaNBEtW8uGa5ntd2Ev?=
- =?us-ascii?Q?3dO8McRBKeebOeGAHDJvZZG8qMDlUYnn5ws0ZghjOvZFHXze2d0vwALS5s/Y?=
- =?us-ascii?Q?VY1vXDvQJ4HdgEdt/oeJ7aesi0kpFU4Bg4eZsbj6x6IPNH/lKJMujvbFxHa6?=
- =?us-ascii?Q?kMfBMUmbRRzonfUKKdC2IpTB4r7/1JdpCcjEGchIqTUTc2kVwdjCTXFZT/vR?=
- =?us-ascii?Q?KsHVYx+K9U4mlTnfgSogndAJW7mPz0tj6fouLqOvvv6HmicxHBmtijLuwuPo?=
- =?us-ascii?Q?/O4i9rTEo1mpWtFfox28HeSSGvRMptWUZjemZBNvU4mnkHXpTJTrnBuQ0SVX?=
- =?us-ascii?Q?V8a47htd+sDTEvTshjNbGJZcfiLfWEca/3ee2IhSgV4E1HWTRkGTyvJ4sBjL?=
- =?us-ascii?Q?njYLgGTps2Or/sJZiJQ0NKlY+wfn2KlrzEJ43FNWQdCHnYANywrP6N77aFNO?=
- =?us-ascii?Q?eXIHzk3N3bRE5RSWj7BkgM9hGen/jyS9RNsfYCVqrHxwClRM3N49yW/6wgMT?=
- =?us-ascii?Q?409K1uxYj+HIBF+tOiW0XTrAXuA5C2Mo/FeZlaDLQ9W8NQH7XiP6FEvRQX0E?=
- =?us-ascii?Q?ETp8+DkvjjtFHQy91SzeGqfUcpicw/Mmlow6T0mTGwSFcHaD/drC1xyQYurp?=
- =?us-ascii?Q?W/VOQoI2ebOCAN4MYq+a4GPz7tdB94ttdaB5793X+MazekY4yvxDIOLvMNxn?=
- =?us-ascii?Q?lAxph7UyoQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1o1jgC-000yTb-LG; Thu, 16 Jun 2022 07:12:38 +0000
+X-UUID: 4350ab4944d4484da9fe4bb9f93942df-20220616
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:cd473f60-3dc5-4c16-a362-24b41055d2b9,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:b4b0b648-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 4350ab4944d4484da9fe4bb9f93942df-20220616
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1050467535; Thu, 16 Jun 2022 00:12:31 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 16 Jun 2022 00:12:29 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 16 Jun 2022 15:12:28 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 16 Jun 2022 15:12:28 +0800
+Message-ID: <3de597c1ab963cc8f6dd89da089c6f0660517f34.camel@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: clk-mt8195-vdo0: Set rate on
+ vdo0_dp_intf0_dp_intf's parent
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"mturquette@baylibre.com" <mturquette@baylibre.com>
+CC: "sboyd@kernel.org" <sboyd@kernel.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "wenst@chromium.org" <wenst@chromium.org>, "Miles
+ Chen =?UTF-8?Q?=28=E9=99=B3=E6=B0=91=E6=A8=BA=29?="
+	<Miles.Chen@mediatek.com>, "chun-jie.chen@mediatek.com"
+	<chun-jie.chen@mediatek.com>, "linux-clk@vger.kernel.org"
+	<linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, <jitao.shi@mediatek.com>,
+	<mandyjh.liu@mediatek.com>
+Date: Thu, 16 Jun 2022 15:12:28 +0800
+In-Reply-To: <20220614091020.21472-1-angelogioacchino.delregno@collabora.com>
+References: <20220614091020.21472-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL1PR11MB5271.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1274b422-2fb1-4cf6-b2ae-08da4f66f8d1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jun 2022 07:08:10.5941
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: /pgIASoA9/LtUWOSHRAzUEFdlV4uiXzBUJRTv9bJtl3qyR7FZKA9GV1N/ItvsojMGY5sU9oqpUtunUPvF0dwlA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4494
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_000815_828930_2635911F 
-X-CRM114-Status: GOOD (  22.93  )
+X-CRM114-CacheID: sfid-20220616_001236_743430_B2D54BE9 
+X-CRM114-Status: GOOD (  18.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -201,102 +88,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> From: Nicolin Chen
-> Sent: Thursday, June 16, 2022 8:03 AM
->=20
-> Un-inline the domain specific logic from the attach/detach_group ops into
-> two paired functions vfio_iommu_alloc_attach_domain() and
-> vfio_iommu_detach_destroy_domain() that strictly deal with creating and
-> destroying struct vfio_domains.
->=20
-> Add the logic to check for EMEDIUMTYPE return code of
-> iommu_attach_group()
-> and avoid the extra domain allocations and attach/detach sequences of the
-> old code. This allows properly detecting an actual attach error, like
-> -ENOMEM, vs treating all attach errors as an incompatible domain.
->=20
-> Co-developed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+On Tue, 2022-06-14 at 17:10 +0800, AngeloGioacchino Del Regno wrote:
+> Add the CLK_SET_RATE_PARENT flag to the CLK_VDO0_DP_INTF0_DP_INTF
+> clock: this is required to trigger clock source selection on
+> CLK_TOP_EDP, while avoiding to manage the enablement of the former
+> separately from the latter in the displayport driver.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/vfio/vfio_iommu_type1.c | 298 +++++++++++++++++---------------
->  1 file changed, 163 insertions(+), 135 deletions(-)
->=20
-
-...
-> +static struct vfio_domain *
-> +vfio_iommu_alloc_attach_domain(struct bus_type *bus, struct vfio_iommu
-> *iommu,
-> +			       struct vfio_iommu_group *group)
-> +{
-> +	struct iommu_domain *new_domain;
-> +	struct vfio_domain *domain;
-> +	int ret =3D 0;
+>  drivers/clk/mediatek/clk-mt8195-vdo0.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt8195-vdo0.c
+> b/drivers/clk/mediatek/clk-mt8195-vdo0.c
+> index 261a7f76dd3c..07b46bfd5040 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-vdo0.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-vdo0.c
+> @@ -37,6 +37,10 @@ static const struct mtk_gate_regs vdo0_2_cg_regs =
+> {
+>  #define GATE_VDO0_2(_id, _name, _parent, _shift)			
+> \
+>  	GATE_MTK(_id, _name, _parent, &vdo0_2_cg_regs, _shift,
+> &mtk_clk_gate_ops_setclr)
+>  
+> +#define GATE_VDO0_2_FLAGS(_id, _name, _parent, _shift, _flags)	
+> 	\
+> +	GATE_MTK_FLAGS(_id, _name, _parent, &vdo0_2_cg_regs, _shift,	
+> \
+> +		       &mtk_clk_gate_ops_setclr, _flags)
 > +
-> +	/* Try to match an existing compatible domain */
-> +	list_for_each_entry (domain, &iommu->domain_list, next) {
-> +		ret =3D iommu_attach_group(domain->domain, group-
-> >iommu_group);
-> +		if (ret =3D=3D -EMEDIUMTYPE)
-> +			continue;
+>  static const struct mtk_gate vdo0_clks[] = {
+>  	/* VDO0_0 */
+>  	GATE_VDO0_0(CLK_VDO0_DISP_OVL0, "vdo0_disp_ovl0", "top_vpp",
+> 0),
+> @@ -85,7 +89,8 @@ static const struct mtk_gate vdo0_clks[] = {
+>  	/* VDO0_2 */
+>  	GATE_VDO0_2(CLK_VDO0_DSI0_DSI, "vdo0_dsi0_dsi", "top_dsi_occ",
+> 0),
+>  	GATE_VDO0_2(CLK_VDO0_DSI1_DSI, "vdo0_dsi1_dsi", "top_dsi_occ",
+> 8),
+> -	GATE_VDO0_2(CLK_VDO0_DP_INTF0_DP_INTF, "vdo0_dp_intf0_dp_intf",
+> "top_edp", 16),
+> +	GATE_VDO0_2_FLAGS(CLK_VDO0_DP_INTF0_DP_INTF,
+> "vdo0_dp_intf0_dp_intf",
+> +			  "top_edp", 16, CLK_SET_RATE_PARENT),
+>  };
+>  
+>  static int clk_mt8195_vdo0_probe(struct platform_device *pdev)
+> -- 
+> 2.35.1
+> 
 
-Probably good to add one line comment here for what EMEDIUMTYPE
-represents. It's not a widely-used retry type like EAGAIN. A comment
-can save the time of digging out the fact by jumping to iommu file.
+Hello Angelo,
 
-...
-> -	if (resv_msi) {
-> +	if (resv_msi && !domain->msi_cookie) {
->  		ret =3D iommu_get_msi_cookie(domain->domain,
-> resv_msi_base);
->  		if (ret && ret !=3D -ENODEV)
->  			goto out_detach;
-> +		domain->msi_cookie =3D true;
->  	}
+Thanks for this patch.
+Another dp clock should also be fix.
+After confirming with Jitao who is our dp expert.
+The parent of CLK_VDO1_DPINTF should be top_dp instead of top_vpp.
 
-why not moving to alloc_attach_domain() then no need for the new
-domain field? It's required only when a new domain is allocated.
+Thanks!
 
-...
-> -		if (list_empty(&domain->group_list)) {
-> -			if (list_is_singular(&iommu->domain_list)) {
-> -				if (list_empty(&iommu-
-> >emulated_iommu_groups)) {
-> -					WARN_ON(iommu->notifier.head);
-> -
-> 	vfio_iommu_unmap_unpin_all(iommu);
-> -				} else {
-> -
-> 	vfio_iommu_unmap_unpin_reaccount(iommu);
-> -				}
-> -			}
-> -			iommu_domain_free(domain->domain);
-> -			list_del(&domain->next);
-> -			kfree(domain);
-> -			vfio_iommu_aper_expand(iommu, &iova_copy);
+--- a/drivers/clk/mediatek/clk-mt8195-vdo1.c
++++ b/drivers/clk/mediatek/clk-mt8195-vdo1.c
+@@ -43,6 +43,9 @@ static const struct mtk_gate_regs vdo1_3_cg_regs = {
+ #define GATE_VDO1_2(_id, _name, _parent,
+_shift)                       \
+        GATE_MTK(_id, _name, _parent, &vdo1_2_cg_regs, _shift,
+&mtk_clk_gate_ops_setclr)
 
-Previously the aperture is adjusted when a domain is freed...
++#define GATE_VDO1_2_FLAGS(_id, _name, _parent, _shift,
+_flags)                 \
++       GATE_MTK_FLAGS(_id, _name, _parent, &vdo1_2_cg_regs, _shift,
+&mtk_clk_gate_ops_setclr, _flags)
++
+ #define GATE_VDO1_3(_id, _name, _parent,
+_shift)                       \
+        GATE_MTK(_id, _name, _parent, &vdo1_3_cg_regs, _shift,
+&mtk_clk_gate_ops_setclr)
 
-> -			vfio_update_pgsize_bitmap(iommu);
-> -		}
-> -		/*
-> -		 * Removal of a group without dirty tracking may allow
-> -		 * the iommu scope to be promoted.
-> -		 */
-> -		if (!group->pinned_page_dirty_scope) {
-> -			iommu->num_non_pinned_groups--;
-> -			if (iommu->dirty_page_tracking)
-> -				vfio_iommu_populate_bitmap_full(iommu);
-> -		}
-> +		vfio_iommu_detach_destroy_domain(domain, iommu,
-> group);
->  		kfree(group);
->  		break;
->  	}
->=20
-> +	vfio_iommu_aper_expand(iommu, &iova_copy);
+@@ -99,7 +102,7 @@ static const struct mtk_gate vdo1_clks[] = {
+        GATE_VDO1_2(CLK_VDO1_DISP_MONITOR_DPI0,
+"vdo1_disp_monitor_dpi0", "top_vpp", 1),
+        GATE_VDO1_2(CLK_VDO1_DPI1, "vdo1_dpi1", "top_vpp", 8),
+        GATE_VDO1_2(CLK_VDO1_DISP_MONITOR_DPI1,
+"vdo1_disp_monitor_dpi1", "top_vpp", 9),
+-       GATE_VDO1_2(CLK_VDO1_DPINTF, "vdo1_dpintf", "top_vpp", 16),
++       GATE_VDO1_2_FLAGS(CLK_VDO1_DPINTF, "vdo1_dpintf", "top_dp", 16,
+CLK_SET_RATE_PARENT),
 
-but now it's done for every group detach. The aperture is decided
-by domain geometry which is not affected by attached groups.
+BRs,
+Bo-Chen
 
 
