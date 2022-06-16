@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA5DDC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 12:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37168CCA47F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jun 2022 12:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JfBqVva54woOzs9chin3GtUUoK5oXoADLEv7C5fHDME=; b=uMBPxC5APDsG1P3xQh+R3NhLKa
-	flgzU2PwZ4hdBgg+2nVBsCiPnLVfk+vwkPoS/Xex5TSKM/cv4M0vP3dVeR9MagYPhk2tadwwR9jEb
-	c1lm1KgojMUFv9C8iXxqMN14Ds8jU/27uSmcOwy9MynHY/n0n3rz5Nq4wOqTqwzvyu+3fs1vLi1hc
-	Er5a1O8l/DN/Vo8vIPo/hjpwnmHjElyttOgzc0LPVWLvnlwNvzmYhUfafNYFEljxlkT/6qJi9pwaq
-	Jc/EsXN6EyCDxb+CsRB1HkhhCGmQrNQzxylpPs7Dq7nmNRjipwYafDJPi+mtEbTN/tcKnLE7Ez22P
-	z6U+dAxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Kj5ALIYQe+XRZU1hDCKPqiFyvQENoJtM313+MEMwVpQ=; b=CmwFkC11ycwAsLnhVzZyB5xKcB
+	9RRmv9LjB0VXOXQmsvghXv+X0GGvG0F+CKsN3Iy6K9aHud56eogKWWE04HBDBF87fkrHQ7ZjvhIBK
+	0FiDAnHVIbdZYJSz+j9NxZTL4RfptR5c/lVpVJy4VPOmFYJ7cngClcEXkYuKZ/NKFQaVvIPVjXMim
+	9zBePGMrafzSYDIQiqCv9dXvREvt/F4Kcwwr7b3jsrxxFowGbMpZGEfUMw0ubfkssliMX9So6x0uf
+	f4hC7R9oO7rEJXPdcP7H0hPLD9dCuOLmnzHsi+cEyttRYu72suvPC1E8/kB0gHXKN1CXzfHSXufMX
+	nYTHOpgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1oE2-002Do6-Oj; Thu, 16 Jun 2022 12:03:50 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o1oOh-002GVf-Gg; Thu, 16 Jun 2022 12:14:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1oDq-002DlL-Tx; Thu, 16 Jun 2022 12:03:40 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 279BB660163F;
-	Thu, 16 Jun 2022 13:03:36 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655381017;
-	bh=W6TnXzN7tlg8HsJN6dq/ufsPn63iDCWZZX6PZhUj48w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=g6MVcgFlrnrif1J+IZnTY4MAvlm4tJWVrplsCk/XVWz0npsRRUxGRI449dqyXP1/Y
-	 GuQRxmQ/YkX+Ze8/RocIoEMNOnlGwpSPRVgXdOcf7lx2vKIDm1pngOb7yylYKNEu+P
-	 zA/5+v9NgCzNH0Xomjb3zqp5ufv213dVxr5htDNqJ8KCtyeAVz7O0/0ssa+7P+7J5L
-	 hwFXD5SNaPzyD0TksPWENoeuEwaO1kpYq2ZE1EGSCZMyoxQ4AJg68f7sv5hvaQBqPw
-	 N2H2NpmZb4OJSnDHALEaurOLRww3y5LBbb2fM7XdrES5qYAtPeWjH30WNgrVR420HQ
-	 vNoVgEsbxacmg==
-Message-ID: <37676cad-bbe8-0e4b-6632-ab57d29bdb20@collabora.com>
-Date: Thu, 16 Jun 2022 14:03:33 +0200
+	id 1o1oOT-002GSo-JS; Thu, 16 Jun 2022 12:14:40 +0000
+X-UUID: 584946f1aae14090ab3196508a30db79-20220616
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:329fd049-9769-4a9c-a3aa-e6b525d9cdfa,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:b14ad71,CLOUDID:41fdc148-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 584946f1aae14090ab3196508a30db79-20220616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1240406619; Thu, 16 Jun 2022 05:14:32 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 16 Jun 2022 05:14:31 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 16 Jun 2022 20:14:29 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 16 Jun 2022 20:14:28 +0800
+From: <yf.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
+ SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Yong Wu
+	<Yong.Wu@mediatek.com>, Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH v10 0/2] iommu/mediatek: TTBR up to 35bit support
+Date: Thu, 16 Jun 2022 20:07:10 +0800
+Message-ID: <20220616120713.12728-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 5/5] iommu/mediatek: Remove a unused "mapping" which is
- only for v1
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
-Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
- chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
- xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-References: <20220616054203.11365-1-yong.wu@mediatek.com>
- <20220616054203.11365-6-yong.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220616054203.11365-6-yong.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_050339_149164_6E2AF7C7 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220616_051437_687923_0F8446FC 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,21 +77,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/06/22 07:42, Yong Wu ha scritto:
-> Just remove a unused variable that only is for mtk_iommu_v1.
-> 
-> Fixes: 9485a04a5bb9 ("iommu/mediatek: Separate mtk_iommu_data for v1 and v2")
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+This patchset adds MediaTek TTBR up to 35bit support for single normal zone.
 
-The title isn't immediately clear, looks like you're removing some mapping, not
-a struct member...
 
-Perhaps... iommu/mediatek: Remove unused "mapping" member from mtk_iommu_data ?
+Changes in v10:
+- According to Robin's suggestion in [PATCH v8] to update patch
+  - Recovery ttbr to u32, encoded PA bits[34:32] to ttbr lower bits.
+  - Remove PATCH: Rename MTK_IOMMU_TLB_ADDR to MTK_IOMMU_ADDR.
 
-After clarifying the commit title:
+Changes in v9:
+- According to Will's suggestion in [PATCH v8 1/3] update [PATCH 1/3]
+  - Rename function to_iopte_mtk to to_mtk_iopte.
+  - Modify gfp_l1 and slab_flag and add comment explaining.
+  - Add checking that the address is within 35 bits use cfg->oas.
+  - PATCH 1/3 & PATCH 2/3 no change.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Changes in v8:
+- Add and update patch
+  - Add [2/3] patch update MTK_IOMMU_ADDR to calculate the special ttbr.
+  - Save the special ttbr to mtk_iommu_domain avoid calculate it again.
 
-Cheers,
-Angelo
+Changes in v7:
+- Update patch and commit message
+  - Extend arm_v7s_cfg.ttbr to u64.
+  - Move the special ttbr logical into mtk_iommu.c.
+  - Update commit message for single normal zone.
+
+Changes in v6:
+- Update patch: gfp_l1 = GFP_KERNEL | __GFP_ZERO;
+- Update commit message for single normal zone.
+
+Changes in v5:
+- Only update message-ID.
+
+Changes in v4:
+- Fix build test WARNING: use GENMASK_ULL replace GENMASK.
+
+Changes in v3:
+- Add version changes description, there is No new code change in V3.
+
+Changes in v2:
+- Update patch and commit message
+  - Add Level 1 pgtable PA up to 35bit.
+  - This is new feature, remove stable@vger.kernel.org
+  - Update commit message.
+
+Ning Li (2):
+  iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
+  iommu/mediatek: Allow page table PA up to 35bit
+
+ drivers/iommu/io-pgtable-arm-v7s.c | 67 +++++++++++++++++++++++-------
+ drivers/iommu/mtk_iommu.c          | 22 ++++++++------
+ include/linux/io-pgtable.h         | 15 ++++---
+ 3 files changed, 80 insertions(+), 24 deletions(-)
+
+
 
