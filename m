@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A74F7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 23:14:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BD3C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 23:18:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=10mVd//XJbMVb3Cy5Pks+pC6niMtAwguM0D0PFkeb/0=; b=YwFM9DUhyUNYlcsabL7AK7PXVu
-	8SeDXLRK9WDvs18AU0IN1+XxQ0zTU6nUZe34a+W2xUVFQYO/la9zDCbx/LSQ6+1g7OnuZZ88afFwj
-	IXgWc2I/VC7F1+MO+CSzElfTx0JTUqJdmDn5nQoZr7RtUCckwuJqNLeQPCFAVF4YM9VrHDIeLdcNy
-	tiEv6LCf3kG1A+vfPQS7QpCCpVlnaqBLAJRxw8RFiNmqdFY8vj45TuM7fChF7jY6TD0Ebz5kl3Apy
-	rBdOCfeYfeqf+6QAlUGAvbBmiGKEcXTd9EqD7GkLhelVSj6xo/VLMtE0dMUTPE0mCd8p5BBimgYqV
-	98vmXwgg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dnlvDERG8oowX1HgALJdegPeU3FrNxjdXcUUPk217Kc=; b=PFK3vIxOeUfgALGnqCmxr+bXOY
+	+9VoAR+KOOTlVPJmgq7EPEO9aoSMQNHNZoRsQ+1ru5re6EUwhnLhpzf12A/n7qK44/UDXIyxPpc8L
+	5sVlatvT8BaaTLxw98E4eosLmCJPadDJ7emMvunz5bBdJdk82nmbZ30RsG0YbxRxWwVXTwp5M+VX/
+	YfzNVZVzIiGrDcPrz4ALgjCmmBuAWr+N+hgdmGyQ7wsbdtBAfh/nSAgbp7WUbNg7eIO/aHFMlAEGl
+	p8atR9XZI1/mGb+Pc9SHB0lT/6NW1oEKSzi4VlOQsPDz1qTzTs/frzi7eeJVqkNL3CV0cz1bmFA5o
+	ADZ2VzJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2LAE-009Ymu-Ae; Fri, 17 Jun 2022 23:14:06 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1o2LEi-009a7N-OA; Fri, 17 Jun 2022 23:18:44 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2L9z-009Yes-Ss
-	for linux-mediatek@lists.infradead.org; Fri, 17 Jun 2022 23:13:53 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id g16-20020a17090a7d1000b001ea9f820449so5771995pjl.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jun 2022 16:13:47 -0700 (PDT)
+	id 1o2LEf-009a6V-Hb
+	for linux-mediatek@lists.infradead.org; Fri, 17 Jun 2022 23:18:42 +0000
+Received: by mail-pf1-x431.google.com with SMTP id u37so5345695pfg.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jun 2022 16:18:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=10mVd//XJbMVb3Cy5Pks+pC6niMtAwguM0D0PFkeb/0=;
-        b=ftsgA9iCXVg14SM3UhGJNZroNcKteQOV8fhn/TQ4qmubLGEYc9goTyY9cqxWv/Vujz
-         vvqm9Hc1xj1CilJkuFjGUkxiPQmxIGRA6ZWY937f+DBGH4jZKoO1kMpGaa8atsr2iy+c
-         jInXea+ezAu5ezkR5e9DqoDPRxhK80c23I0Rxem6Hv76djU0l3rMSkohW6NtZA/wT8Xq
-         kkbN94pT99l5RfQhhgeyyK0XqowM7S3hyzY9US2HlPGSSPmBn1VE+8RMyrvOvwk/qSQO
-         VuNIIi8ERnbIixzMX8MQ/LZDa52WzzLDJSlri5vEF8FF0NVgt/kmQO5wufOCoypheUaN
-         mQ7g==
+         :references:from:in-reply-to:content-transfer-encoding;
+        bh=dnlvDERG8oowX1HgALJdegPeU3FrNxjdXcUUPk217Kc=;
+        b=dYgOoOJ+N1WQxKWgcZXmEa3c1hdI0FiUiq4kjgxMtELC1+LGpzl7e3X18OpxsPSLM6
+         Z/Md1Q8QQHTehEao5xTscQMo7T5Lz4/pzDY3ntkLraiKoKzWL7ROaL2cao0FuDoT9stK
+         Y6P4ABr9fN3CpUeRy0JOTZbpI9REGz0+47sTJIsSUOPeGNaoMlC+f+NCcpS6t8dOO/i0
+         k26TzfWBvaDMUogUbaw/ePh4I1gdsJWFEU4PXk4hYL0DfC4g6chOMd3nJE1h86wiO1et
+         1I9ZkUSlHIQ81Yj27Bv60tr/T2MsJF/eku397IM1VZwlVgBppgapkFlTfY5NfCWNSsqt
+         MDnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+         :content-language:to:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=10mVd//XJbMVb3Cy5Pks+pC6niMtAwguM0D0PFkeb/0=;
-        b=mAe5+WFBtyki9R9nAJwNVKIJ5GzTzTB67RTIiNFTVDjvd9LHkRNfC6haiOgjCxWPfr
-         lbHdPhZj2wZdQ8N9ciudi8ztuQWR6laQ0BSOSFgO6xbvbK/chXKeBw3aXJDzhd2EleeB
-         4dtnF0ZUxQgJ9XaKUbKxEeoQ9EqwV2rNhyR7is6qNjZ3vrXdGqtvCQksRj6MoLcQ2VmN
-         osIsWXLhTyxgO1Op7+F06dY8xep2tBNHYhyLdZuebSrYcWCpXpV8vBVDcNaR/X2zgRq0
-         PztDd/Ui1J5o4SJcAsDc2l3PUaVQgjgLmjJ6lFtIzVKgiflFOi8eHZ4GulG2fsPDot/j
-         ha8A==
-X-Gm-Message-State: AJIora/ygYvax3RdhiWtm3+ldoVlFrh7BuwpRSJTs5Wl0Iq1JJDonfzt
-	HnCWA+FFeHtcmiaV3VLTV8Wd3Q==
-X-Google-Smtp-Source: AGRyM1t/dM7EAh0Y7mmMWaeiTHeXaEw5ea7tY/IXesEX0mn/1dH62oUOXAC46KuZhDOj2XfNQPbrog==
-X-Received: by 2002:a17:90b:3701:b0:1ea:9f82:59ef with SMTP id mg1-20020a17090b370100b001ea9f8259efmr13153806pjb.239.1655507627413;
-        Fri, 17 Jun 2022 16:13:47 -0700 (PDT)
+        bh=dnlvDERG8oowX1HgALJdegPeU3FrNxjdXcUUPk217Kc=;
+        b=oP1iwDwpQmY8ebLIGXWZzvxY0Ive9zOM3VMLZ6o4JcAzDgcpij1pDISw/B2aM+a7c5
+         eZGj7bOw/w2CdR1T9SUE71sssSxXr/26CnK8+mwEbXCVsQow5fPBsHiVac6fOkZLCH1f
+         QKr4vbOnbzjQddPfImEvXxyH3ocVwR5oWfJ0K9HdMFwrVTgLZEARPclt0ZTRg8oHW03c
+         x95A+pZkrZfA/u8SLWhbLilkY6NgktuGqFD9oPS17nEVClXlJYtk1qpk7b3ixpx51j3n
+         PGV+1g0xrHYJ8pNBSPNbEysbQttRygG0XHSAmRmZiPGVEzGVZQM7CkY8BeuvxHHcU2bH
+         3qvA==
+X-Gm-Message-State: AJIora+jo5ZBsYmYKTpX4lxRbGRFjND37t0wmF0FanIu4FqEQneAqZxM
+	gdco+LfB006XqkvGw1mcmfE7sA==
+X-Google-Smtp-Source: AGRyM1u/txoKu7R37NfERg5G/UkpHCJc9k3H5j4ALGDpTt/qdkZUdeh8lUa7533JzX4jdxzHyO1UDw==
+X-Received: by 2002:a05:6a00:2410:b0:522:9837:581f with SMTP id z16-20020a056a00241000b005229837581fmr12316295pfh.11.1655507920906;
+        Fri, 17 Jun 2022 16:18:40 -0700 (PDT)
 Received: from [172.31.235.92] ([216.9.110.6])
-        by smtp.gmail.com with ESMTPSA id j1-20020a170903028100b0016784c93f23sm4054315plr.197.2022.06.17.16.13.45
+        by smtp.gmail.com with ESMTPSA id l4-20020a170903120400b001620eb3a2d6sm4088846plh.203.2022.06.17.16.18.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Jun 2022 16:13:46 -0700 (PDT)
-Message-ID: <9b567f78-e12b-d665-2f11-96436fe9ed08@linaro.org>
-Date: Fri, 17 Jun 2022 16:13:42 -0700
+        Fri, 17 Jun 2022 16:18:40 -0700 (PDT)
+Message-ID: <542f4f86-7bf9-b5fb-16d2-849121b6ee6d@linaro.org>
+Date: Fri, 17 Jun 2022 16:18:37 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH v2 05/15] dt-bindings: backlight: Add Mediatek MT6370
- backlight
+Subject: Re: [PATCH v3 17/40] arm64: dts: mediatek: mt7622-rfb1: correct
+ gpio-keys properties
 Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com,
- lee.jones@linaro.org, Daniel Thompson <daniel.thompson@linaro.org>,
- jingoohan1@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, linux-iio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-fbdev@vger.kernel.org, szunichen@gmail.com,
- ChiYuan Huang <cy_huang@richtek.com>
-References: <20220613111146.25221-1-peterwu.pub@gmail.com>
- <20220613111146.25221-6-peterwu.pub@gmail.com>
- <9c38f708-1376-aa89-2c56-c08d320bcf2b@linaro.org>
- <CABtFH5KhijZDRA+K=stpOV0t8K3cqCMoLXpLShcdm9F8emrKCA@mail.gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, arm@kernel.org,
+ soc@kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+ <20220616005333.18491-17-krzysztof.kozlowski@linaro.org>
+ <fcc5f00b-0776-9511-845a-5eac5d4c7876@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CABtFH5KhijZDRA+K=stpOV0t8K3cqCMoLXpLShcdm9F8emrKCA@mail.gmail.com>
+In-Reply-To: <fcc5f00b-0776-9511-845a-5eac5d4c7876@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_161351_975723_4E945C81 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20220617_161841_652547_AC8D8A89 
+X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,32 +98,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/06/2022 03:35, ChiaEn Wu wrote:
-> +        - 3: 6
+On 17/06/2022 03:41, Matthias Brugger wrote:
+> On 16/06/2022 02:53, Krzysztof Kozlowski wrote:
+>> gpio-keys children do not use unit addresses.
 >>
->> Nope, I said last time:
->> "In any case you cannot have values mapping"
->>
->> Please use proper real world value, not some register bits. The property
->> name also needs fixing.
 > 
-> I so apologized for misunderstanding your meaning...
-> I try to modify it like below.
-> --------
-> mediatek,bled-pwm-hys-input-threshold-steps:
->   $ref: /schemas/types.yaml#/definitions/uint8
->   enum: [1, 4, 16, 64]
->   description: |
->     The selection of the upper and lower bounds threshold of backlight
->     PWM resolution. If we choose selection 64, the variation of PWM
->     resolution needs over 64 steps.
-> --------
-> If these changes meet your expectations, I will try to modify
-> "bled-ovp-microvolt" and "bled-ocp-microamp" in the same way.
-> Thank you so much.
+> Is it me or doesn't the commit message match the actual commit? Change looks 
+> good, but message puzzles me.
 > 
 
-This looks good. Thank you.
+Indeed, wrong commit msg. Thanks for spotting it, I will send a v4 of
+this patch alone.
 
 
 Best regards,
