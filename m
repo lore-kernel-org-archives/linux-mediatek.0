@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D934C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 08:33:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 747F8C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 08:34:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ClX7wbfIkJPh9OT+9mvXVfATd/yGxImdKCgozNWWSmI=; b=H2blsFKHARW1XhSBaNjzSbN+Hd
-	/Q8q9HQTfGRryM2/2CHHJ+IOxE8T7dn/W0ypkjhVQg981CbjrY1XVuVmCWKJF3mnZNpgZTtNXgu+p
-	a1iapiTBbdt5L/C9bCqesqEIQ7rTjj2zf/pnJYByOW/WIY2H/Mo3iHdi147TAyI1V3w0NTCUumChQ
-	+nxL5L2zeb4jefH0h+dPXNZ4etecrmQ3BxfgPKLoBYietkrPyKEXna/pQZFr1d40xFgmPeiyOOr2J
-	GFlAbmmQj3Uhbj7DdFl2oCPt9jA3giuMWJu9Qu4MG0LkAdXzZLvxjb48i/FOMn9GNVVwtiyP6hiWr
-	PQEOsyZQ==;
+	bh=d/ptm2u6GhdQhl9VyO0h0zEmH2w8JUsdL359ug3Iy7k=; b=VZN4y3JPseUXCGRoPOMISf4p5l
+	EhAWg0o/8sCboQWGdI0HsS3vDro3TWXB7KJLneGgNcHCDvWnQxggS0PVp/hdRypAyfqs1EVuVt46S
+	51riEvmFSgrmxSiQwPCWtQNbaAs3IT9s4pQtn+6EN+v2TYmGz+uQIAbww3NipK20KugFRudAyxvYA
+	L3UJ64h32mhzsxK9ieNcYg8a/ZT7GSC/vsm81wvKYLmmWdi+Eg6+9zY/gogT4PlG2kn9aq2cAVurm
+	JEIBSuCC7s2UtKxBJImjLuyteR4tKDRKHl2VHyWCeOdw874HN6N1RfNvYHI7ReMhkFEvW4rQbYnsZ
+	p3uc0cPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o27QE-006L9e-OG; Fri, 17 Jun 2022 08:33:42 +0000
+	id 1o27Qm-006LQf-5R; Fri, 17 Jun 2022 08:34:16 +0000
 Received: from mailgw01.mediatek.com ([66.171.122.165])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o27PK-006Kml-Ru; Fri, 17 Jun 2022 08:32:48 +0000
-X-UUID: 5d89686d4f4b422c8502b1c889a86ee6-20220617
+	id 1o27PK-006KmL-Rq; Fri, 17 Jun 2022 08:32:50 +0000
+X-UUID: 9a9a8f91d4324c5b96d774613e571588-20220617
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:0c554a25-2340-4a0b-bd54-68bd3eba5a91,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.6,REQID:607b33e0-4118-40ba-adcb-5e168c1a6221,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:0364e348-4c92-421c-ad91-b806c0f58b2a,C
+X-CID-META: VersionHash:b14ad71,CLOUDID:c008a0f6-e099-41ba-a32c-13b8bfe63214,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 5d89686d4f4b422c8502b1c889a86ee6-20220617
+X-UUID: 9a9a8f91d4324c5b96d774613e571588-20220617
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 748659822; Fri, 17 Jun 2022 01:32:40 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+	with ESMTP id 630109725; Fri, 17 Jun 2022 01:32:40 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Jun 2022 01:28:45 -0700
+ 15.0.1497.2; Fri, 17 Jun 2022 01:27:01 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Fri, 17 Jun 2022 16:28:44 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 17 Jun 2022 16:26:56 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 17 Jun 2022 16:28:44 +0800
-Message-ID: <4c801d6c6e9642d4f2d0b639cdd95718ea45df13.camel@mediatek.com>
+ Transport; Fri, 17 Jun 2022 16:26:56 +0800
+Message-ID: <9d924423c2b7ded984e2daf42a3667332dabbee2.camel@mediatek.com>
 Subject: Re: [PATCH v11 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
  driver
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
@@ -72,19 +72,19 @@ CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
 	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
 	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 17 Jun 2022 16:28:43 +0800
-In-Reply-To: <1cf3e33dfc10e948094f11a7ce439ced1b43f4c9.camel@mediatek.com>
+Date: Fri, 17 Jun 2022 16:26:55 +0800
+In-Reply-To: <d5416a2f2a655f6574b17597fdc22615fe2fc22a.camel@mediatek.com>
 References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
 	 <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-	 <1cf3e33dfc10e948094f11a7ce439ced1b43f4c9.camel@mediatek.com>
+	 <d5416a2f2a655f6574b17597fdc22615fe2fc22a.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_013246_930145_30EDEA95 
-X-CRM114-Status: GOOD (  27.49  )
+X-CRM114-CacheID: sfid-20220617_013246_928088_03305065 
+X-CRM114-Status: GOOD (  35.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,7 +99,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-06-15 at 13:50 +0800, CK Hu wrote:
+On Wed, 2022-06-15 at 10:58 +0800, CK Hu wrote:
 > Hi, Bo-Chen:
 > 
 > On Fri, 2022-06-10 at 18:55 +0800, Bo-Chen Chen wrote:
@@ -178,18 +178,21 @@ On Wed, 2022-06-15 at 13:50 +0800, CK Hu wrote:
 > > +		train_retries++;
 > > +		if (!mtk_dp->train_info.cable_plugged_in ||
 > > +		    mtk_dp->train_info.irq_sta.hpd_disconnect) {
-> > +			return -ENODEV;
-> > +		}
-> > +
-> > +		if (mtk_dp->train_state < MTK_DP_TRAIN_STATE_TRAINING)
 > 
-> This checking would never be true, so remove it.
+> In mtk_dp_hpd_isr_handler(), train_info.irq_sta.hpd_disconnect would
+> finally be set to false, so you need not to check it here. So remove
+> it
+> here.
 > 
 
 Hello CK,
 
-ok, I will do this.
+ok, I will drop this.
 
+> > +			return -ENODEV;
+> > +		}
+> > +
+> > +		if (mtk_dp->train_state < MTK_DP_TRAIN_STATE_TRAINING)
 > > +			return -EAGAIN;
 > > +
 > > +		if (!pass_tps1) {
@@ -229,14 +232,6 @@ ok, I will do this.
 > > +					      lane_adjust);
 > > +	} while (train_retries < MTK_DP_TRAIN_RETRY_LIMIT &&
 > > +		 iteration_count < MTK_DP_TRAIN_MAX_ITERATIONS);
-> 
-> mtk_dp_train_tps_1() & mtk_dp_train_tps_2_3() would only be called
-> once
-> and never be called twice, so remove this loop.
-> 
-> Regards,
-> CK
-> 
 > > +
 > > +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_PATTERN_SET,
 > > +			   DP_TRAINING_PATTERN_DISABLE);
@@ -259,6 +254,167 @@ ok, I will do this.
 > > +
 > > +	return ret;
 > > +}
+> > +
+> 
+> [snip]
+> 
+> > +
+> > +/*
+> > + * We need to handle HPD signal in eDP even though eDP is a always
+> > connected
+> > + * device. Besides connected status, there is another feature for
+> > HPD signal -
+> > + * HPD pulse: it presents an IRQ from sink devices to source
+> > devices
+> > (Refer to
+> > + * 5.1.4 of DP1.4 spec).
+> > + */
+> > +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
+> > +{
+> > +	bool connected;
+> > +	u32 irq_status = mtk_dp_swirq_get_clear(mtk_dp) |
+> > +			 mtk_dp_hwirq_get_clear(mtk_dp);
+> > +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
+> > +
+> > +	if (irq_status & MTK_DP_HPD_INTERRUPT)
+> > +		train_info->irq_sta.hpd_inerrupt = true;
+> > +	if (irq_status & MTK_DP_HPD_CONNECT)
+> > +		train_info->irq_sta.hpd_connect = true;
+> > +	if (irq_status & MTK_DP_HPD_DISCONNECT)
+> > +		train_info->irq_sta.hpd_disconnect = true;
+> > +
+> 
+> train_info->irq_sta.hpd_connect is used only in this function, so let
+> hpd_connect to be local variable.
+> 
+
+ok
+
+> > +	if (!irq_status)
+> > +		return IRQ_HANDLED;
+> > +
+> > +	connected = mtk_dp_plug_state(mtk_dp);
+> > +	if (connected || !train_info->cable_plugged_in)
+> > +		train_info->irq_sta.hpd_disconnect  = false;
+> > +	else if (!connected || train_info->cable_plugged_in)
+> > +		train_info->irq_sta.hpd_connect = false;
+> > +
+> > +	if (!(train_info->irq_sta.hpd_connect ||
+> > +	      train_info->irq_sta.hpd_disconnect))
+> > +		return IRQ_WAKE_THREAD;
+> > +
+> > +	if (train_info->irq_sta.hpd_connect) {
+> > +		train_info->irq_sta.hpd_connect = false;
+> > +		train_info->cable_plugged_in = true;
+> > +	} else {
+> > +		train_info->irq_sta.hpd_disconnect = false;
+> > +		train_info->cable_plugged_in = false;
+> > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
+> > +	}
+> > +	train_info->cable_state_change = true;
+> > +
+> > +	return IRQ_WAKE_THREAD;
+> > +}
+> > +
+> 
+> [snip]
+> 
+> > +
+> > +static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
+> > +				   struct drm_dp_aux_msg *msg)
+> > +{
+> > +	struct mtk_dp *mtk_dp;
+> > +	bool is_read;
+> > +	u8 request;
+> > +	size_t accessed_bytes = 0;
+> > +	int ret = 0;
+> > +
+> > +	mtk_dp = container_of(mtk_aux, struct mtk_dp, aux);
+> > +
+> > +	if (!mtk_dp->train_info.cable_plugged_in ||
+> > +	    mtk_dp->train_info.irq_sta.hpd_disconnect) {
+> 
+> In mtk_dp_hpd_isr_handler(), train_info.irq_sta.hpd_disconnect would
+> finally be set to false, so you need not to check it here. So remove
+> it
+> here.
+> 
+
+ok, I will drop this
+
+BRs,
+Bo-Chen
+
+> Regards,
+> CK
+> 
+> > +		ret = -EAGAIN;
+> > +		goto err;
+> > +	}
+> > +
+> > +	switch (msg->request) {
+> > +	case DP_AUX_I2C_MOT:
+> > +	case DP_AUX_I2C_WRITE:
+> > +	case DP_AUX_NATIVE_WRITE:
+> > +	case DP_AUX_I2C_WRITE_STATUS_UPDATE:
+> > +	case DP_AUX_I2C_WRITE_STATUS_UPDATE | DP_AUX_I2C_MOT:
+> > +		request = msg->request &
+> > ~DP_AUX_I2C_WRITE_STATUS_UPDATE;
+> > +		is_read = false;
+> > +		break;
+> > +	case DP_AUX_I2C_READ:
+> > +	case DP_AUX_NATIVE_READ:
+> > +	case DP_AUX_I2C_READ | DP_AUX_I2C_MOT:
+> > +		request = msg->request;
+> > +		is_read = true;
+> > +		break;
+> > +	default:
+> > +		drm_err(mtk_aux->drm_dev, "invalid aux cmd = %d\n",
+> > +			msg->request);
+> > +		ret = -EINVAL;
+> > +		goto err;
+> > +	}
+> > +
+> > +	if (msg->size == 0) {
+> > +		ret = mtk_dp_aux_do_transfer(mtk_dp, is_read, request,
+> > +					     msg->address +
+> > accessed_bytes,
+> > +					     msg->buffer +
+> > accessed_bytes, 0);
+> > +	} else {
+> > +		while (accessed_bytes < msg->size) {
+> > +			size_t to_access =
+> > +				min_t(size_t, DP_AUX_MAX_PAYLOAD_BYTES,
+> > +				      msg->size - accessed_bytes);
+> > +
+> > +			ret = mtk_dp_aux_do_transfer(mtk_dp, is_read,
+> > request,
+> > +						     msg->address +
+> > accessed_bytes,
+> > +						     msg->buffer +
+> > accessed_bytes,
+> > +						     to_access);
+> > +
+> > +			if (ret) {
+> > +				drm_info(mtk_dp->drm_dev,
+> > +					 "Failed to do AUX transfer:
+> > %d\n", ret);
+> > +				break;
+> > +			}
+> > +			accessed_bytes += to_access;
+> > +		}
+> > +	}
+> > +err:
+> > +	if (ret) {
+> > +		msg->reply = DP_AUX_NATIVE_REPLY_NACK |
+> > DP_AUX_I2C_REPLY_NACK;
+> > +		return ret;
+> > +	}
+> > +
+> > +	msg->reply = DP_AUX_NATIVE_REPLY_ACK | DP_AUX_I2C_REPLY_ACK;
+> > +	return msg->size;
+> > +}
+> > +
 > 
 > 
 
