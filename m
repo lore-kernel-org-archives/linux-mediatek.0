@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76181C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 11:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B18CCA479
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 11:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4fo2G9n7fj7d+xwoh8TC0dgh9mB2KmiapPb2p9Jb4oc=; b=PDZKfNFcgV+kasl5McKZn5HaMT
-	3y1hSksyKiDVWgvBu2rAeWoVv1abjYvxDHzQNS3IiiaW8KqjwGUgzb+dxEZKNsP04CgWP4HO8gq2z
-	wYS7WY8O7ZvixRDxBjTDjEerfsavlX5ijssuE2DlzE+NeVYWdieCjqDompXo4k3dmCaPjWvrOcNlg
-	Ojt2R2qQrU9NX+1ZBNiPKkqeUQK2u2wNC9rjSGClu5839L+ci+5hxycOJEmRiSDiuD0BSFiT5PAhz
-	Sr/dOcLci16gjRzxyRjJrfU7SAhSe9OAHQJbxayLa1qmLUEfQyX+f/MFOkTp8KSiVtC6iOxl38Ygu
-	EfPG33xg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZCFP8uL5IXVJZLDTixBw+XLuGXuyo++hxpKEx0dyxpk=; b=KoErW0hFloBCgJGqmx3CN4e9H/
+	vcXxQVPDJxdfIXsmw7BtI0tn2AhtwAJ+2/4nE8Sv4kGHizc2jB7anhc8tmAoBuoFbyeDDO+lYYhxv
+	+M2WjudYk5HrBMxCC4pqBAJ9QijBPo2lhPAodWHch+4WLUMt1YZeBiyJcoya7B1nF49RjzOUSVTGf
+	0u6DGpZsxquh1JKMlsZBqYpxRtCfCr04l6xOvX6nIyvl2eukaaVm/c5h8DJtn8xQLoWr7UwT5Jfbj
+	pAjYmPD6zErhtwnv4AhUAjnyDsru6e4OQ9JGyXuQqRlgyfI3zMS4hli8lbBm0W6v0fYp+AwCpfrF6
+	UAxUPX8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29ro-007Dei-1V; Fri, 17 Jun 2022 11:10:20 +0000
+	id 1o29rq-007Dfx-Ny; Fri, 17 Jun 2022 11:10:22 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29pC-007Cdl-Eq; Fri, 17 Jun 2022 11:07:40 +0000
+	id 1o29pB-007CdP-VJ; Fri, 17 Jun 2022 11:07:40 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8FAF4660179B;
-	Fri, 17 Jun 2022 12:07:36 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DA3E9660179A;
+	Fri, 17 Jun 2022 12:07:35 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655464057;
-	bh=wxT88oQqGVwEkp3rg/ZJOnJEaa8bNQoe2qAp5DUjU20=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OwOtV4QKYzMhyWoOLuoOZtDsR2x7X7Hoip5KQI4g5onHO1s2ghuqvRDlyiie0cSvT
-	 SOczvohcA+6oHOW9tRb0fqbubBpiZdv4V5xHknoMGGn+gBpx901ja3SuGG9KuVO+X7
-	 Tm8ZAl+a4BZm3ml9h7dHsKpmP57dx/kzHo2Nn8RLErPGrYft7ZdfceQstQ/+Q4bQFs
-	 Fu/qrghUB6OUBZUu5xQMRvKk8E1PyGsWhGEQhij6RhBLJyPGss+dyOdrMwen5JM+cS
-	 kEjpSh8RDhwLJnleozSTdD+U1/iEBupY1bNn6XhxTQM/cuZfSSrq+YJoGb72OMes4j
-	 uHM8urC7LRx3w==
+	s=mail; t=1655464056;
+	bh=OlBFW53ERgizRVRtQgKbH+lzxjyhexAWk8aT0tzSoZ0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=QdX6jUJgR7tgj/RIoZpnhXa/CLZMW8q+eI3ShgKImy4sHx2nujjj9sfzX37le/+yE
+	 KY1OfP3+MdF+yWHaHbKTCXMc1Ao0ppSnoPyqaPwDqXEAaSvCXddzvJmelreynOKDA1
+	 6b26PnbLLlph/HEb94oZpTk4aqAwKF76o1/9xviP/Tw6RusEa3W6G/FXcJCGd96Ouu
+	 rsCBHfVMigyv0hLXh/7Uxa7PAUoYAv5oSMDgZ3eJsWnmf9TTOHS8loDwHcCUDqP/5i
+	 EbqGa1FPibAsi+katm1iVvcKjr/riKK8FMogD5oaDJOyLGNhKoVFvZUnmFitufD1Em
+	 OMv5ND8U7+VLQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: lee.jones@linaro.org
 Cc: robh+dt@kernel.org,
@@ -52,19 +52,16 @@ Cc: robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 1/2] dt-bindings: mfd: mt6397: Add compatibles for MT6331 RTC and keys
-Date: Fri, 17 Jun 2022 13:07:27 +0200
-Message-Id: <20220617110728.90132-2-angelogioacchino.delregno@collabora.com>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/2] MediaTek Helio X10 MT6795 - MT6331/6332 PMIC MFD integration
+Date: Fri, 17 Jun 2022 13:07:26 +0200
+Message-Id: <20220617110728.90132-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220617110728.90132-1-angelogioacchino.delregno@collabora.com>
-References: <20220617110728.90132-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_040738_711696_F504E457 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20220617_040738_186863_27E43032 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +76,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT6331 PMIC provides many sub modules: regulators, audio
-codec, LED controller, keys, RTC and some GPIOs.
-It is always paired with a MT6332 Companion PMIC, which provides
-thermistors, WLEDs (display LED backlight), secondary AP cluster
-regulators, modem clocks, battery charger and fuel gauge.
+In an effort to give some love to the apparently forgotten MT6795 SoC,
+I am upstreaming more components that are necessary to support platforms
+powered by this one apart from a simple boot to serial console.
 
-Add the necessary compatibles to start implementing the basics.
+This series adds the necessary headers and support for the MT6331 with
+MT6332 companion PMIC in the mt6397 MFD driver, along with some basic
+devices.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- Documentation/devicetree/bindings/mfd/mt6397.txt | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Adding support to each driver in each subsystem will be done in different
+patch series as to avoid spamming uninteresting patches to maintainers.
 
-diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-index 293db2a71ef2..500275d2c2b4 100644
---- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-+++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-@@ -29,6 +29,7 @@ Optional subnodes:
- - rtc
- 	Required properties: Should be one of follows
- 		- compatible: "mediatek,mt6323-rtc"
-+		- compatible: "mediatek,mt6331-rtc"
- 		- compatible: "mediatek,mt6358-rtc"
- 		- compatible: "mediatek,mt6397-rtc"
- 	For details, see ../rtc/rtc-mt6397.txt
-@@ -52,8 +53,10 @@ Optional subnodes:
- 	see ../leds/leds-mt6323.txt
- 
- - keys
--	Required properties:
--		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
-+	Required properties: Should be one of the following
-+		- compatible: "mediatek,mt6323-keys"
-+		- compatible: "mediatek,mt6331-keys"
-+		- compatible: "mediatek,mt6397-keys"
- 	see ../input/mtk-pmic-keys.txt
- 
- - power-controller
+This series depends on another series [1] named
+"MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper", meaning that
+even if this builds without, the changes in said series are necessary
+to actually use these PMICs.
+
+Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+
+[1]: https://lore.kernel.org/lkml/20220520124039.228314-1-angelogioacchino.delregno@collabora.com/T/#t
+
+Changes in v3:
+ - Removed unused macros in mt6331/core.h, mt6332/core.h
+
+Changes in v2:
+ - Reworded commit description for commit [1/2] to include a list of
+   the submodules provided by this hardware
+ - Changed keys compatible documentation to a list
+
+AngeloGioacchino Del Regno (2):
+  dt-bindings: mfd: mt6397: Add compatibles for MT6331 RTC and keys
+  mfd: mt6397: Add basic support for MT6331+MT6332 PMIC
+
+ .../devicetree/bindings/mfd/mt6397.txt        |   7 +-
+ drivers/mfd/mt6397-core.c                     |  47 ++
+ drivers/mfd/mt6397-irq.c                      |   9 +-
+ include/linux/mfd/mt6331/core.h               |  40 ++
+ include/linux/mfd/mt6331/registers.h          | 584 ++++++++++++++++
+ include/linux/mfd/mt6332/core.h               |  65 ++
+ include/linux/mfd/mt6332/registers.h          | 642 ++++++++++++++++++
+ include/linux/mfd/mt6397/core.h               |   2 +
+ 8 files changed, 1393 insertions(+), 3 deletions(-)
+ create mode 100644 include/linux/mfd/mt6331/core.h
+ create mode 100644 include/linux/mfd/mt6331/registers.h
+ create mode 100644 include/linux/mfd/mt6332/core.h
+ create mode 100644 include/linux/mfd/mt6332/registers.h
+
 -- 
 2.35.1
 
