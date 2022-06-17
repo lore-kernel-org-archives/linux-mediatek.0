@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0E8EC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 07:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 374EEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 08:19:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wc8b54ib4p0YjJfjY8+DsviI0qAHAjK0UvvBe++hrCU=; b=bna2dWNzXvVa5ygzrej1+mUDMS
-	TyVXMhFT+IxF1f/OQUWhRCKR/GcbWraLDtiHX7k10fT5ly4EJhkvcHMurARNjswZnYOXOEtF5ts0Q
-	yovs7ulMJSHXAirWaPAG1urHgtCbikbno34Ld6rX8Oxm2BqS5PZZgh8v7bNcwXAP6SMd3+x0BUfnW
-	2q7+b00KvcZUjuypkd35Oj/9KIN4CAAm2kOU5yzVNV4wtgai8xwVvW1WUZvg4Lz3ap43VEsHGm5g5
-	UA0F50hmv7BWeO5QfBewZqruzJstvZoR9BylzGfE0+4DzsZAnGu8sKPJfTqCLv6VA8q/B5ObxxVAK
-	dvXDdGSw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+zfxAXUXstiy9HFbkcUgRLR8H01OXibXa/AaMrxxFvw=; b=bcS8rzPDDAZN63kjT1txiIQygy
+	qlSnIv44rATiq3K1whsc0tuiJQLXTxaav7AwS4nRqkb+UGBlNWENxFn4YNGFkvnOGbm8UiJElf8Sk
+	njypN47Pcoso429K24EGzYdkdhkLAnWpN0E5IED8e6Qt/O1lxesMRNyN1z5pGBAcagqWq7HRSc0Xl
+	+1QDLEc7dgFGkHAE86cnzMsH47p480FsW3qLjUwEUx8w126uxrBiBPQ7v6J41svIU4KWiB8hPdth5
+	ZBmUZW2CSPahmnYfSSk/lET8OOBKfvoULyl6RJXzseVFz9G4ufTFQ3h5xMF+b/2dVKngRbQy6boRx
+	vJ7SVceg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o26jb-0066V2-PG; Fri, 17 Jun 2022 07:49:39 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o27CE-006FqD-CN; Fri, 17 Jun 2022 08:19:14 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o26W3-005zxu-FU; Fri, 17 Jun 2022 07:35:41 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 524266601798;
-	Fri, 17 Jun 2022 08:35:33 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655451333;
-	bh=6OlSCHB6/1AgdhTBa59KtFNBtIbrr/K3qDKoofVrLIc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=L3r/BTfW0+I/X3sUn+BdiylDXpmsjf8iieZgFV8CwmcjK/UAFCpaCnYgreBZMhcFx
-	 GuPdOIM9G+rkv+JMVAIVuD2zmNojIBAY4uzMdY19I94mxP6FiWxAd1ZxGaBBKHMnZC
-	 GxzOqetg+zTQ2VRx8lje6scxRmLGnSL2Bczr2CG1e6Z5v9vzTNxcBqiLDFqO6fOcrF
-	 zTchzC/wAT7SwN48po97IdCIYyYgQ/jyv33++011ERNL2tmIUxIAW8DDF02cHNI5m1
-	 5AZCrrk74KGsFRKA3ikjjogNvyfX5h4Buav/CCkr5idGuiwzTBAEuOkDLYevQk0KcG
-	 Rz8S2h+ROUFBw==
-Message-ID: <ef6d3ee1-550c-c243-31c1-7e088cc0f9c3@collabora.com>
-Date: Fri, 17 Jun 2022 09:35:31 +0200
+	id 1o27CB-006FoV-1y
+	for linux-mediatek@lists.infradead.org; Fri, 17 Jun 2022 08:19:13 +0000
+Received: by mail-wm1-x335.google.com with SMTP id a10so1921108wmj.5
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jun 2022 01:19:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=+zfxAXUXstiy9HFbkcUgRLR8H01OXibXa/AaMrxxFvw=;
+        b=0/lpT5HykZNP39UyQqCjq47YFnbNhY6JYeUpCQof3XsUCTKrQxaR6kA28RIQxTsbd6
+         1LEw0QDrN9P2uFjEA4gyoQ7AYXPWDm88DQ0XGhQzPDkWiZP5GoHzZaZ9lxAkY/imqrZr
+         OxKFwb9rRWc2WMYOqSmapsicbLo5l+Ja0iMnyEsotqYS/ssTeCAl2EQeq9PuZhBGQ0f4
+         SCrQSvV7U5fEf17jmRCIvxNuAxCpvn28FEJhgz3Qw4bsLodKjeeow04oKVRWlrHSrmRE
+         4JvJEcYARhLkW9ETjyCako/k/bFGcivdLZH212LSaMl/R4vpsEF86YDRiinIbLXTzctp
+         ntZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=+zfxAXUXstiy9HFbkcUgRLR8H01OXibXa/AaMrxxFvw=;
+        b=g1Zxg10hLjv9Cx75qRAY4kRWCPavRaTew4Bk6QJ3L573F4/qqDLX2aXE3FTT+3CaUS
+         5Di66k39y4tCzidqa9E8INcWI0JwhDZySNWAMFirQwz4c5OtaLTZgFDIiry0reKsYND+
+         zGM1pEBwkEyAbzAmE4zIYs3Hs2BFmBh1fcQVPMuh8wNtXrJ4LjFRmI9u5JlS/bD1aAwa
+         DvDS5gyWXFmqTfTAPa984/Wj16f7n/KKmVcQoDaUYmZMucA87qn5D1XD1bhk1kSXrwBi
+         yXuD121rVz8/FwRGgB8FXJYohZQJLMPIskWNnxI2y20pEn/40BFBY1JqmTvAaLscWxpx
+         njvw==
+X-Gm-Message-State: AJIora+QpO1KSj74qN2L+LFodKqkU8u19EcAJIlb/rAFdCxFtE9ypCMN
+	GqF1xvGHHvEDY+dXj5UTM7P4Zg==
+X-Google-Smtp-Source: AGRyM1uA1po67esnYEyNcEdUlzYn0dRDp8zP7JR6MJK74I8T9W1lnpShELLVdMBsJIPq0QGFqWNaXg==
+X-Received: by 2002:a7b:ce87:0:b0:39c:5509:660c with SMTP id q7-20020a7bce87000000b0039c5509660cmr8961277wmj.163.1655453947001;
+        Fri, 17 Jun 2022 01:19:07 -0700 (PDT)
+Received: from groot.. ([2a01:cb19:85e6:1900:b8a0:45dd:a367:2e65])
+        by smtp.gmail.com with ESMTPSA id l9-20020a05600c4f0900b0039db500714fsm4970245wmq.6.2022.06.17.01.19.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Jun 2022 01:19:06 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	linux-input@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Subject: [PATCH v3 0/2] Input: mt6779-keypad - fix hw code logic and row/col selection
+Date: Fri, 17 Jun 2022 10:19:00 +0200
+Message-Id: <20220617081902.2931099-1-mkorpershoek@baylibre.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 2/2] mfd: mt6397: Add basic support for MT6331+MT6332 PMIC
-Content-Language: en-US
-To: Lee Jones <lee.jones@linaro.org>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, johnson.wang@mediatek.com,
- hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220520124617.228808-1-angelogioacchino.delregno@collabora.com>
- <20220520124617.228808-3-angelogioacchino.delregno@collabora.com>
- <Yqt5HPIXbOab6ik5@google.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <Yqt5HPIXbOab6ik5@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_003539_697754_078EB667 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20220617_011911_123320_9A3CDF75 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +93,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/06/22 20:40, Lee Jones ha scritto:
-> On Fri, 20 May 2022, AngeloGioacchino Del Regno wrote:
-> 65;6800;1c
->> Add support for the MT6331 PMIC with MT6332 Companion PMIC, found
->> in MT6795 Helio X10 smartphone platforms.
->>
->> This combo has support for multiple devices but, for a start,
->> only the following have been implemented:
->> - Regulators (two instances, one in MT6331, one in MT6332)
->> - RTC (MT6331)
->> - Keys (MT6331)
->> - Interrupts (MT6331 also dispatches MT6332's interrupts)
->>
->> There's more to be implemented, especially for MT6332, which
->> will come at a later stage.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/mfd/mt6397-core.c            |  47 ++
->>   drivers/mfd/mt6397-irq.c             |   9 +-
->>   include/linux/mfd/mt6331/core.h      |  53 +++
->>   include/linux/mfd/mt6331/registers.h | 584 ++++++++++++++++++++++++
->>   include/linux/mfd/mt6332/core.h      |  53 +++
->>   include/linux/mfd/mt6332/registers.h | 642 +++++++++++++++++++++++++++
->>   include/linux/mfd/mt6397/core.h      |   2 +
->>   7 files changed, 1389 insertions(+), 1 deletion(-)
->>   create mode 100644 include/linux/mfd/mt6331/core.h
->>   create mode 100644 include/linux/mfd/mt6331/registers.h
->>   create mode 100644 include/linux/mfd/mt6332/core.h
->>   create mode 100644 include/linux/mfd/mt6332/registers.h
-> 
-> For my own reference (apply this as-is to your sign-off block):
-> 
->    Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-> 
+This serie is the first follow-up on the mt6779-keypad in
+order to enable it on the MediaTek mt8183-pumpkin board.
 
-I've already pushed a v2 of this one :-)
-Should I resend?
+To fully enable it on mt8183-pumpkin, we still need:
+* double key support
+* dts changes
+
+To ease up reviewing, I preferred sending this first.
+
+The first patch fixes the row/column logic to match the underlying
+hardware matrix.
+The second patch configures the keypad correctly in order to not
+report bogus values.
+
+Thank you,
+Mattijs
+
+Changes in v3:
+* reworked row/column logic as discussed in [1] 
+* Dropped Angelo's review since patch 1 changed
+
+Changes in v2:
+* Simplified SEL_COL/ROW_MASK macros as suggested by Dmitry
+* Added Angelo's Reviewed-by on patch 1
+
+Mattijs Korpershoek (2):
+  Input: mt6779-keypad - match hardware matrix organization
+  Input: mt6779-keypad - implement row/column selection
+
+ drivers/input/keyboard/mt6779-keypad.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+[1] https://lore.kernel.org/r/YpMDZORAlHmg/x/0@google.com
+
+base-commit: 69cf890d8b283c8d3a77d28dbd3024f58ae236a9
+-- 
+2.34.1
+
 
