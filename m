@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BDBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 11:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76181C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 11:10:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UX0tutY1C5/15azw7Wry0J61sOmCtZFSquxklOsmCSE=; b=KIb+AR9iMoiRmcXWvAQFoNI5Np
-	sp+JOdMwnEdV6y9YmKoghb/CrgXgCWx89hU4LPO3lwqayZ8lS9X7Iypvx8Mh+shyJLC3D+aZojEr2
-	N1SzwyC6j+xO4cJadV46eeFp1nbBkKUUj7cF6kUmEQxjY/Vnn09Q0MLBQykTh0exnUNgajim+QiWt
-	RiZcCA4srbv/jw+BbbPR+mKvtdSMyVniV0AjcKsKUnQ9UQWxaRQ3YaSh3o5igwL+U4EzRFbxkG1U4
-	YEjvNPmjCDtbfkoA21jxqo9JGfia275ZmA14Ir1re57Es/ilT/SNnPaVXDT5JA15ZEhjpUes1mSbF
-	sXWBmicw==;
+	bh=4fo2G9n7fj7d+xwoh8TC0dgh9mB2KmiapPb2p9Jb4oc=; b=PDZKfNFcgV+kasl5McKZn5HaMT
+	3y1hSksyKiDVWgvBu2rAeWoVv1abjYvxDHzQNS3IiiaW8KqjwGUgzb+dxEZKNsP04CgWP4HO8gq2z
+	wYS7WY8O7ZvixRDxBjTDjEerfsavlX5ijssuE2DlzE+NeVYWdieCjqDompXo4k3dmCaPjWvrOcNlg
+	Ojt2R2qQrU9NX+1ZBNiPKkqeUQK2u2wNC9rjSGClu5839L+ci+5hxycOJEmRiSDiuD0BSFiT5PAhz
+	Sr/dOcLci16gjRzxyRjJrfU7SAhSe9OAHQJbxayLa1qmLUEfQyX+f/MFOkTp8KSiVtC6iOxl38Ygu
+	EfPG33xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29jq-0079na-1o; Fri, 17 Jun 2022 11:02:06 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o29ro-007Dei-1V; Fri, 17 Jun 2022 11:10:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29Wt-0073UD-Rr; Fri, 17 Jun 2022 10:48:45 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	id 1o29pC-007Cdl-Eq; Fri, 17 Jun 2022 11:07:40 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id ED2B5660179A;
-	Fri, 17 Jun 2022 11:48:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8FAF4660179B;
+	Fri, 17 Jun 2022 12:07:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655462919;
-	bh=iolRVPHpQh6u3gC87otykET26yu59XGpf0xquwJFbtc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XRs4/BwLMzqZniW2WQLPzcxJs6DepjVBYQa2NqHJpTL1av7Khq/gdaL+nLrDEyn07
-	 /gHguPuCdGwlXhpoxmLoKUeoxg3Xk2yk9vJ6qwvinAbc/Wbob/QdYw8TOcIWeL7AUC
-	 yXyuajtPBLCLGs/orx4F4ZHVuZwavLZNZ7yHZI7VumHdqNqB7BHdL/OlZiXRrWUv7N
-	 dspWvd1xqc9JENEkB4sW/inqQPJbmRrF3ZLRurk40raNh9icJDGstAyH2iGL/5/0zZ
-	 C0MKJ7N3lZXU5ysNCR5BNdL78R93hH5yJaXAKvPZHa4fPb/dKk6yjPQ4ll04rXwKqS
-	 0aufFhxGXKFIw==
-Message-ID: <7da07c36-e449-dcfc-b1d3-897bead0f23f@collabora.com>
-Date: Fri, 17 Jun 2022 12:48:36 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH] cpufreq: Add MT8186 to cpufreq-dt-platdev blocklist
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>, rafael@kernel.org
-Cc: viresh.kumar@linaro.org, rex-bc.chen@mediatek.com,
- jia-wei.chang@mediatek.com, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20220617090652.56247-1-angelogioacchino.delregno@collabora.com>
- <71bf73f9-fa60-e4ba-a339-64d876514af2@gmail.com>
+	s=mail; t=1655464057;
+	bh=wxT88oQqGVwEkp3rg/ZJOnJEaa8bNQoe2qAp5DUjU20=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=OwOtV4QKYzMhyWoOLuoOZtDsR2x7X7Hoip5KQI4g5onHO1s2ghuqvRDlyiie0cSvT
+	 SOczvohcA+6oHOW9tRb0fqbubBpiZdv4V5xHknoMGGn+gBpx901ja3SuGG9KuVO+X7
+	 Tm8ZAl+a4BZm3ml9h7dHsKpmP57dx/kzHo2Nn8RLErPGrYft7ZdfceQstQ/+Q4bQFs
+	 Fu/qrghUB6OUBZUu5xQMRvKk8E1PyGsWhGEQhij6RhBLJyPGss+dyOdrMwen5JM+cS
+	 kEjpSh8RDhwLJnleozSTdD+U1/iEBupY1bNn6XhxTQM/cuZfSSrq+YJoGb72OMes4j
+	 uHM8urC7LRx3w==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <71bf73f9-fa60-e4ba-a339-64d876514af2@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: lee.jones@linaro.org
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	johnson.wang@mediatek.com,
+	hsin-hsiung.wang@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 1/2] dt-bindings: mfd: mt6397: Add compatibles for MT6331 RTC and keys
+Date: Fri, 17 Jun 2022 13:07:27 +0200
+Message-Id: <20220617110728.90132-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220617110728.90132-1-angelogioacchino.delregno@collabora.com>
+References: <20220617110728.90132-1-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_034844_235975_6FB53BA2 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20220617_040738_711696_F504E457 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +79,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/06/22 12:16, Matthias Brugger ha scritto:
-> 
-> 
-> On 17/06/2022 11:06, AngeloGioacchino Del Regno wrote:
->> This SoC shall use the mediatek-cpufreq driver, or the system will
->> crash upon any clock scaling request: add it to the cpufreq-dt-platdev
->> blocklist.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Fixes: 39b360102f3a ("cpufreq: mediatek: Add support for MT8186")
-> 
-> Fixes tag should be before any Rb, SoB etc tags.
+The MT6331 PMIC provides many sub modules: regulators, audio
+codec, LED controller, keys, RTC and some GPIOs.
+It is always paired with a MT6332 Companion PMIC, which provides
+thermistors, WLEDs (display LED backlight), secondary AP cluster
+regulators, modem clocks, battery charger and fuel gauge.
 
-Oh wow, I really did that.
+Add the necessary compatibles to start implementing the basics.
 
-Sorry, I'll send a v2 in a minute or two.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ Documentation/devicetree/bindings/mfd/mt6397.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-> 
-> With that:
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> 
->> ---
->>   drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c 
->> b/drivers/cpufreq/cpufreq-dt-platdev.c
->> index 96de1536e1cb..2c96de3f2d83 100644
->> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
->> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
->> @@ -127,6 +127,7 @@ static const struct of_device_id blocklist[] __initconst = {
->>       { .compatible = "mediatek,mt8173", },
->>       { .compatible = "mediatek,mt8176", },
->>       { .compatible = "mediatek,mt8183", },
->> +    { .compatible = "mediatek,mt8186", },
->>       { .compatible = "mediatek,mt8365", },
->>       { .compatible = "mediatek,mt8516", },
-
+diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+index 293db2a71ef2..500275d2c2b4 100644
+--- a/Documentation/devicetree/bindings/mfd/mt6397.txt
++++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+@@ -29,6 +29,7 @@ Optional subnodes:
+ - rtc
+ 	Required properties: Should be one of follows
+ 		- compatible: "mediatek,mt6323-rtc"
++		- compatible: "mediatek,mt6331-rtc"
+ 		- compatible: "mediatek,mt6358-rtc"
+ 		- compatible: "mediatek,mt6397-rtc"
+ 	For details, see ../rtc/rtc-mt6397.txt
+@@ -52,8 +53,10 @@ Optional subnodes:
+ 	see ../leds/leds-mt6323.txt
+ 
+ - keys
+-	Required properties:
+-		- compatible: "mediatek,mt6397-keys" or "mediatek,mt6323-keys"
++	Required properties: Should be one of the following
++		- compatible: "mediatek,mt6323-keys"
++		- compatible: "mediatek,mt6331-keys"
++		- compatible: "mediatek,mt6397-keys"
+ 	see ../input/mtk-pmic-keys.txt
+ 
+ - power-controller
+-- 
+2.35.1
 
 
