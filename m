@@ -4,67 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0858C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 11:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C51C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 11:21:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2S8b5DUHEbwwIg/JHiM4Zwgh4MVdeOOlwj2S2/ZcyXc=; b=3tibZTypGFta3NyjBqTAkFbe+B
-	eAKowvqNFcm87sT3Rrb4D5gV4k03cZP1sbFElwjPqZD6kQUpvalf6vIcY0AHn2mZRUw2lYCEqG0ZX
-	DedOYT8NImHCYBmXIWY8n44dl4GX1uMxbLeeqaAyVTZCv58D7K5lqBF2V6wsnOWHFwnDpsuXXk1t4
-	c8IrRCtlprbMJGY/NGQDj4Otji3xoo0C/kezCPQKtnJBTA1GMOppgzvnxvSb/dPuakipHNKwLLUfJ
-	yLCq5X7o2QlkMrQKFZyf2waYJR8yDZMQ0jQaiCcrx7xcmRA8lZ+QsYBGGfsXiwipcMFddOAyNO3SR
-	1GI0XRiw==;
+	bh=t/crlnZbBJQszYNcH9+aCU70dM7HBkp9N2s5QyPNLUk=; b=ASd0v/yYJJlkBI6ft0tf9KQGNR
+	s7BjgSOxdM4defrk/Q9TQ4OsMHdcX/kQuFCw2FJmXRa8+L4wyAh020+irQZze41dl/ue+RMk7TMsD
+	Sa1arIe7UQuKvdw5ABFZ89PxAiiskocVfuQGjz09YkWJm0f+KM9v9gmv0F+PcOGut2hUZ2Mg2+J7D
+	IH0oLowfIImkfNcUfk6VtX1Y87CWzlmgBXUOv2pX8vm4Bk1+e/AIDPn+1PWsmqB4AlRThJJMmIAH0
+	fD0qlklMCxejrOGjrj3uTmBigBB/eKWyXYR3rHR5O1DDDqlMd4M4TBe9+thouk1ifoGTghewlDa9n
+	nvtQiSFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2A1D-007Hg1-HP; Fri, 17 Jun 2022 11:20:03 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o2A2i-007IPE-Io; Fri, 17 Jun 2022 11:21:36 +0000
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29uJ-007Eok-2r; Fri, 17 Jun 2022 11:12:57 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3BEF6660179C;
-	Fri, 17 Jun 2022 12:12:53 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655464373;
-	bh=WkHnfO6PWMXpQT5nfqhbXwC+34pz7EH8/LW7Tl1ijxg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Obv9xiDNpffYAoSPYZnZ7QmMSL58msikQgc5w93Wyz9tLLs3ioDEaeEi4WA7DAye8
-	 V+jPOG2RlvhqgzdyqsnybDiaLlvV2VmXujycQ40JFq53x7CoTh5iCLQVC3WKJaLM11
-	 91mKIGRoBqFfOkTMj035vrg4zwH4fzJVo2X/4YNz/a8KMDMeS3tgQMsvqTCW1R4t5a
-	 pH/jMI4hpv+NI2nrSC+7BLQMwRLlnqur07BFL57eH3JvEZmo2G6APEErreI91ze/ie
-	 nXj8VrldqZDeaQcV9HwIe0m6XB5J3e82urD5+Xp4hva9UJVf7JaCMYYcMca+Xbfah4
-	 WlYFDY9vPFnQw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	wenst@chromium.org,
-	angelogioacchino.delregno@collabora.com,
-	miles.chen@mediatek.com,
-	chun-jie.chen@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 2/2] clk: mediatek: clk-mt8195-vdo1: Reparent and set rate on vdo1_dpintf's parent
-Date: Fri, 17 Jun 2022 13:12:48 +0200
-Message-Id: <20220617111248.90505-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220617111248.90505-1-angelogioacchino.delregno@collabora.com>
-References: <20220617111248.90505-1-angelogioacchino.delregno@collabora.com>
+	id 1o29xM-007G60-4j; Fri, 17 Jun 2022 11:16:06 +0000
+Received: by mail-io1-xd31.google.com with SMTP id d123so4186013iof.10;
+        Fri, 17 Jun 2022 04:16:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=t/crlnZbBJQszYNcH9+aCU70dM7HBkp9N2s5QyPNLUk=;
+        b=KjYSoJjQbHSzBiIh2OvctpgUON2u4IbMNHkuAcnrPX5S/8O+2ZqVL+M1OTWti1TgGE
+         U3a+c0waowlN8KRIlHNwYNlX5PWBWecrqUFBF2t3EinouRe/3mJ3rUJmCVzpd4yKgyB7
+         XAQjJrF5yzz/4IN635jYJA6DDgneEYjQIzB19Mv89dJJg1k3jF0EPSbZbfZy8eD5BmJv
+         umqzL5gXktsRNmAiumwyLQQIsRbOm0kcPe2HywZwOMl/bFqj4uo9yMOhxmtIYtFNnKfx
+         7kpkppI8wiEpDGOFh8+AmBeXhAgGr/cVeZamCja94WfRWTAgXgfTFpQckCHWWnOziQwd
+         aSfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=t/crlnZbBJQszYNcH9+aCU70dM7HBkp9N2s5QyPNLUk=;
+        b=xvBptc/SB2uxleZ2kGBqnXQQCFN0RxggIldqRsxTpiVVCOHQcLUL1XHVSFUAYiaX3V
+         GaDAiB/guJ/CTSJT0T7YMzXB8goGFnu6tiSSo09yjmXXb2zRPsUmryP3pb1/o/64H7eH
+         M53fTN7y1kJUgQ0sNX/INKFgEoCkBLRM946NmERxGe+seguYv0cMh4G9L2VuEGQYjowm
+         ueEQ4Wtslmz9HTU2dXkh7/zZFYOKYvCXmjPy1ihqUOTn3bv48kmWxxD82ZIf2j/mUmZu
+         GR/UVco4iaZYgDsGqCMZ9aH8fbtcnzYhRxXTL3cE4W5CFCsCSoL1plrbAtwdBq3kafZV
+         BWxw==
+X-Gm-Message-State: AJIora/z99vgst+SAYHweDAl57ZnrU4P2DX5JzxLEabF8bsLrEPlMVSo
+	0RcB+y6sv+o5nbQfJGSn+DwRnlsLPvIL9Pe7nCg=
+X-Google-Smtp-Source: AGRyM1tFKZjYJUHdgUMGn9EB6+U2f/oxJq7gDzAwy6h/11fXVSFDBb4uXbC7kjFkRKwg/y/yQilyfk1BrMK1DcJRUUI=
+X-Received: by 2002:a5d:9d8d:0:b0:669:cd5e:f953 with SMTP id
+ ay13-20020a5d9d8d000000b00669cd5ef953mr4655343iob.153.1655464561141; Fri, 17
+ Jun 2022 04:16:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20220613111146.25221-1-peterwu.pub@gmail.com> <20220613111146.25221-7-peterwu.pub@gmail.com>
+ <1655127197.567546.3564136.nullmailer@robh.at.kernel.org>
+In-Reply-To: <1655127197.567546.3564136.nullmailer@robh.at.kernel.org>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Fri, 17 Jun 2022 19:15:49 +0800
+Message-ID: <CABtFH5JPu5tOg4wGJf5ay1-NJHLcPTK4XxADGTksHW1-6wjMRQ@mail.gmail.com>
+Subject: Re: [PATCH v2 06/15] dt-bindings: mfd: Add Mediatek MT6370
+To: Rob Herring <robh@kernel.org>
+Cc: pavel@ucw.cz, robh+dt@kernel.org, linux-pm@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, krzysztof.kozlowski+dt@linaro.org, 
+	linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, szunichen@gmail.com, lars@metafoo.de, 
+	matthias.bgg@gmail.com, Daniel Thompson <daniel.thompson@linaro.org>, lee.jones@linaro.org, 
+	ChiYuan Huang <cy_huang@richtek.com>, linux-leds@vger.kernel.org, 
+	linux-fbdev@vger.kernel.org, jingoohan1@gmail.com, devicetree@vger.kernel.org, 
+	jic23@kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-iio@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_041255_297933_7B8ECFAA 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20220617_041604_291983_6416EFAD 
+X-CRM114-Status: GOOD (  19.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +91,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Like it was done for the vdo0_dp_intf0_dp_intf clock (used for eDP),
-add the CLK_SET_RATE_PARENT flag to CLK_VDO1_DPINTF (used for DP)
-and also fix its parent clock name as it has to be "top_dp" for two
-reasons:
- - This is its real parent!
- - Likewise to eDP/VDO0 counterpart, we need clock source
-   selection on CLK_TOP_DP.
+Hi Rob,
 
-Fixes: 269987505ba9 ("clk: mediatek: Add MT8195 vdosys1 clock support")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
----
- drivers/clk/mediatek/clk-mt8195-vdo1.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Rob Herring <robh@kernel.org> =E6=96=BC 2022=E5=B9=B46=E6=9C=8813=E6=97=A5 =
+=E9=80=B1=E4=B8=80 =E6=99=9A=E4=B8=8A9:33=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> On Mon, 13 Jun 2022 19:11:37 +0800, ChiaEn Wu wrote:
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> >
+> > Add Mediatek MT6370 binding documentation.
+> >
+> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> > ---
+> >  .../bindings/mfd/mediatek,mt6370.yaml         | 279 ++++++++++++++++++
+> >  .../dt-bindings/iio/adc/mediatek,mt6370_adc.h |  18 ++
+> >  2 files changed, 297 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt63=
+70.yaml
+> >  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
+> >
+>
+> My bot found errors running 'make DT_CHECKER_FLAGS=3D-m dt_binding_check'
+> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+>
+> yamllint warnings/errors:
+>
+> dtschema/dtc warnings/errors:
+> ./Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml: Unable to f=
+ind schema file matching $id: http://devicetree.org/schemas/leds/backlight/=
+mediatek,mt6370-backlight.yaml
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/=
+mediatek,mt6370.example.dtb: pmic@34: backlight: False schema does not allo=
+w {'compatible': ['mediatek,mt6370-backlight'], 'mediatek,bled-channel-use'=
+: b'\x0f'}
+>         From schema: /builds/robherring/linux-dt-review/Documentation/dev=
+icetree/bindings/mfd/mediatek,mt6370.yaml
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/=
+mediatek,mt6370.example.dtb: pmic@34: charger: False schema does not allow =
+{'compatible': ['mediatek,mt6370-charger'], 'interrupts': [[48], [68], [6]]=
+, 'interrupt-names': ['attach_i', 'uvp_d_evt', 'mivr'], 'io-channels': [[1,=
+ 5]], 'usb-otg-vbus-regulator': {'regulator-name': ['mt6370-usb-otg-vbus'],=
+ 'regulator-min-microvolt': [[4350000]], 'regulator-max-microvolt': [[58000=
+00]], 'regulator-min-microamp': [[500000]], 'regulator-max-microamp': [[300=
+0000]], 'phandle': [[2]]}}
+>         From schema: /builds/robherring/linux-dt-review/Documentation/dev=
+icetree/bindings/mfd/mediatek,mt6370.yaml
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/=
+mediatek,mt6370.example.dtb: pmic@34: tcpc: False schema does not allow {'c=
+ompatible': ['mediatek,mt6370-tcpc'], 'interrupts-extended': [[4294967295, =
+4, 8]], 'connector': {'compatible': ['usb-c-connector'], 'label': ['USB-C']=
+, 'vbus-supply': [[2]], 'data-role': ['dual'], 'power-role': ['dual'], 'try=
+-power-role': ['sink'], 'source-pdos': [[570527844]], 'sink-pdos': [[570527=
+944]], 'op-sink-microwatt': [[10000000]], 'ports': {'#address-cells': [[1]]=
+, '#size-cells': [[0]], 'port@0': {'reg': [[0]], 'endpoint': {'remote-endpo=
+int': [[4294967295]]}}, 'port@1': {'reg': [[1]], 'endpoint': {'remote-endpo=
+int': [[4294967295]]}}, 'port@2': {'reg': [[2]], 'endpoint': {'remote-endpo=
+int': [[4294967295]]}}}}}
+>         From schema: /builds/robherring/linux-dt-review/Documentation/dev=
+icetree/bindings/mfd/mediatek,mt6370.yaml
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/=
+mediatek,mt6370.example.dtb: pmic@34: indicator: False schema does not allo=
+w {'compatible': ['mediatek,mt6370-indicator'], '#address-cells': [[1]], '#=
+size-cells': [[0]], 'multi-led@0': {'reg': [[0]], 'function': ['indicator']=
+, 'color': [[9]], 'led-max-microamp': [[24000]], '#address-cells': [[1]], '=
+#size-cells': [[0]], 'led@0': {'reg': [[0]], 'color': [[1]]}, 'led@1': {'re=
+g': [[1]], 'color': [[2]]}, 'led@2': {'reg': [[2]], 'color': [[3]]}}, 'led@=
+3': {'reg': [[3]], 'function': ['indicator'], 'color': [[0]], 'led-max-micr=
+oamp': [[6000]]}}
+>         From schema: /builds/robherring/linux-dt-review/Documentation/dev=
+icetree/bindings/mfd/mediatek,mt6370.yaml
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/=
+mediatek,mt6370.example.dtb: pmic@34: flashlight: False schema does not all=
+ow {'compatible': ['mediatek,mt6370-flashlight'], '#address-cells': [[1]], =
+'#size-cells': [[0]], 'led@0': {'reg': [[0]], 'led-sources': [[0]], 'functi=
+on': ['flash'], 'color': [[0]], 'function-enumerator': [[1]], 'led-max-micr=
+oamp': [[200000]], 'flash-max-microamp': [[500000]], 'flash-max-timeout-us'=
+: [[1248000]]}, 'led@1': {'reg': [[1]], 'led-sources': [[1]], 'function': [=
+'flash'], 'color': [[0]], 'function-enumerator': [[2]], 'led-max-microamp':=
+ [[200000]], 'flash-max-microamp': [[500000]], 'flash-max-timeout-us': [[12=
+48000]]}}
+>         From schema: /builds/robherring/linux-dt-review/Documentation/dev=
+icetree/bindings/mfd/mediatek,mt6370.yaml
+> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/=
+mediatek,mt6370.example.dtb: backlight: mediatek,bled-channel-use: b'\x0f' =
+is not of type 'object', 'array', 'boolean', 'null'
+>         From schema: /usr/local/lib/python3.10/dist-packages/dtschema/sch=
+emas/dt-core.yaml
+> Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:0:0: /e=
+xample-0/i2c/pmic@34/backlight: failed to match any schema with compatible:=
+ ['mediatek,mt6370-backlight']
+> Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:0:0: /e=
+xample-0/i2c/pmic@34/charger: failed to match any schema with compatible: [=
+'mediatek,mt6370-charger']
+> Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:0:0: /e=
+xample-0/i2c/pmic@34/indicator: failed to match any schema with compatible:=
+ ['mediatek,mt6370-indicator']
+> Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:0:0: /e=
+xample-0/i2c/pmic@34/flashlight: failed to match any schema with compatible=
+: ['mediatek,mt6370-flashlight']
+> Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:0:0: /e=
+xample-0/i2c/pmic@34/tcpc: failed to match any schema with compatible: ['me=
+diatek,mt6370-tcpc']
+>
 
-diff --git a/drivers/clk/mediatek/clk-mt8195-vdo1.c b/drivers/clk/mediatek/clk-mt8195-vdo1.c
-index 3378487d2c90..d54d7726d186 100644
---- a/drivers/clk/mediatek/clk-mt8195-vdo1.c
-+++ b/drivers/clk/mediatek/clk-mt8195-vdo1.c
-@@ -43,6 +43,10 @@ static const struct mtk_gate_regs vdo1_3_cg_regs = {
- #define GATE_VDO1_2(_id, _name, _parent, _shift)			\
- 	GATE_MTK(_id, _name, _parent, &vdo1_2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
- 
-+#define GATE_VDO1_2_FLAGS(_id, _name, _parent, _shift, _flags)		\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &vdo1_2_cg_regs, _shift,	\
-+		       &mtk_clk_gate_ops_setclr, _flags)
-+
- #define GATE_VDO1_3(_id, _name, _parent, _shift)			\
- 	GATE_MTK(_id, _name, _parent, &vdo1_3_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
- 
-@@ -99,7 +103,7 @@ static const struct mtk_gate vdo1_clks[] = {
- 	GATE_VDO1_2(CLK_VDO1_DISP_MONITOR_DPI0, "vdo1_disp_monitor_dpi0", "top_vpp", 1),
- 	GATE_VDO1_2(CLK_VDO1_DPI1, "vdo1_dpi1", "top_vpp", 8),
- 	GATE_VDO1_2(CLK_VDO1_DISP_MONITOR_DPI1, "vdo1_disp_monitor_dpi1", "top_vpp", 9),
--	GATE_VDO1_2(CLK_VDO1_DPINTF, "vdo1_dpintf", "top_vpp", 16),
-+	GATE_VDO1_2_FLAGS(CLK_VDO1_DPINTF, "vdo1_dpintf", "top_dp", 16, CLK_SET_RATE_PARENT),
- 	GATE_VDO1_2(CLK_VDO1_DISP_MONITOR_DPINTF, "vdo1_disp_monitor_dpintf", "top_vpp", 17),
- 	/* VDO1_3 */
- 	GATE_VDO1_3(CLK_VDO1_26M_SLOW, "vdo1_26m_slow", "clk26m", 8),
--- 
-2.35.1
+Before we submitted these patches, we had already checked by running
+this command below,
+"make DT_CHECKER_FLAGS=3D-m dt_binding_check
+DT_SCHEMA_FILES=3DDocumentation/devicetree/bindings/mfd/mediatek,mt6370.yam=
+l".
+But we could not find any errors like your error msg after the checking pro=
+cess.
 
+Our mfd dt-binding patch is dependent on "backlight dt-binding",
+"charger dt-binding", "tcpc dt-binding", "indicator dt-binding" and
+"flashlight dt-binding" patches.
+Would you please apply them before you check mfd dt-binding patch?
+Thank you so much!
+
+> doc reference errors (make refcheckdocs):
+>
+> See https://patchwork.ozlabs.org/patch/
+>
+> This check can fail if there are any dependencies. The base for a patch
+> series is generally the most recent rc1.
+>
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up to
+> date:
+>
+> pip3 install dtschema --upgrade
+>
+> Please check and re-submit.
+>
+
+Best regards,
+ChiaEn Wu
 
