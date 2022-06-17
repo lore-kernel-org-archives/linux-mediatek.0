@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E46C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 03:21:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C48C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 04:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kt7JVJofzvWzYk0qd5F4TJETF0d7VJ03WMjmpZVjRqc=; b=JLeVDC27DbNUzyJa5K+i6IENFY
-	hFs6vcUDWnX8Eb0oS0hIXa4mzFZEL9+U60SMHDQHL/OHcrX/D2J5xoaNyt1tmJmBeLHWn0gOHObvC
-	JW7CvrhhuIvDHMhzcDcUYzLjqn536reEZVQTKff1S08ChySAkQF2VzNLnIq6Yxp0igJCd14J42iZF
-	cpNgbZZH1noN8uWQUztJk0JeGyvHsBfv03zqBbH17ps+CXX2OE5p87gY5IwQStprUpj2JSe5/Dw5Y
-	q1Xudj7oZsMDUH9NDMFxpdZ0b3P6LTo8+M8cdSbstIpDJ6//LFrZWAaaTMsf5kN15LB+p3TONthT9
-	NHBUnQfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rcxqsl0CXt4YmHe2GybS1LZYSP8y4V9JuwvGQx9VeUE=; b=qDWSJ2Qib4AGGG4ehuQRg+6xH7
+	NGe6w+fpmqkdwGk2jxzh9YRktWvKXaUhvkNfcrMg1oJL1JD5y7UrD8tOE2zyk3KWc3gYt3X42+IsJ
+	JqM+6jHlMmQ+UvR1SHjIZi493SxSdTT1/h8qIeTOZ6UsuvJTcMq1lw3PTP9vhRTnMn1O6RPBmVhH6
+	/4fNz5K2ud0GEUjijxGyXfQnQX6ZiL+eq12yGQTnL7QaqVoC/esESoZreCyKZ9egvvuHtjfi+vTX+
+	XhuEv+vkc1TUTupqBarbqZx4xCX9IA9YJ3qxZLbvgrDftvhaN56zOhMIAbAScQiDyTnjouVlQ1Zu5
+	sD6rE6UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o22YH-005HVs-3g; Fri, 17 Jun 2022 03:21:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o23ML-005Owx-8x; Fri, 17 Jun 2022 04:13:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o22Y6-005HS9-KA; Fri, 17 Jun 2022 03:21:32 +0000
-X-UUID: f99cb65c53f84c7189648eb734c65095-20220616
+	id 1o23MA-005Osd-62; Fri, 17 Jun 2022 04:13:16 +0000
+X-UUID: 0f630d0f4c6b40949e96e618da6b1eae-20220616
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:a8f3126b-7c63-416f-8f5e-e900ea624878,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:0d56d648-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.6,REQID:8af61e46-4530-4164-add2-ee60589f262d,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:bfb2d848-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: f99cb65c53f84c7189648eb734c65095-20220616
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+X-UUID: 0f630d0f4c6b40949e96e618da6b1eae-20220616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <lecopzer.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 87074302; Thu, 16 Jun 2022 20:21:20 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+	with ESMTP id 828334491; Thu, 16 Jun 2022 21:13:07 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Jun 2022 20:21:18 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 17 Jun 2022 11:21:16 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 17 Jun 2022 11:21:15 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
-	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
- Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] media: mediatek: vcodec: Fix non subdev architecture open power fail
-Date: Fri, 17 Jun 2022 11:21:13 +0800
-Message-ID: <20220617032113.18576-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ 15.0.1497.2; Thu, 16 Jun 2022 21:07:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 17 Jun 2022 12:07:40 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 17 Jun 2022 12:07:40 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <mark.rutland@arm.com>, <will@kernel.org>
+CC: <lecopzer.chen@mediatek.com>, <acme@kernel.org>,
+	<akpm@linux-foundation.org>, <alexander.shishkin@linux.intel.com>,
+	<catalin.marinas@arm.com>, <davem@davemloft.net>, <jolsa@redhat.com>,
+	<jthierry@redhat.com>, <keescook@chromium.org>, <kernelfans@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-perf-users@vger.kernel.org>,
+	<masahiroy@kernel.org>, <matthias.bgg@gmail.com>, <maz@kernel.org>,
+	<mcgrof@kernel.org>, <mingo@redhat.com>, <namhyung@kernel.org>,
+	<nixiaoming@huawei.com>, <peterz@infradead.org>, <pmladek@suse.com>,
+	<sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>, <wangqing@vivo.com>,
+	<yj.chiang@mediatek.com>
+Subject: RE: [PATCH v6 0/6] Support hld delayed init based on Pseudo-NMI for arm64
+Date: Fri, 17 Jun 2022 12:07:40 +0800
+Message-ID: <20220617040740.25631-1-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220614062835.7196-1-lecopzer.chen@mediatek.com>
+References: <20220614062835.7196-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_202130_691290_2B0C6B38 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20220616_211314_259552_0D32F54A 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,28 +86,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to subdev_bitmap bit value to open hardware power, need to
-set subdev_bitmap value for non subdev architecture.
+Hi Will, Mark
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-index 995e6e2fb1ab..4103d7c1b638 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-@@ -386,6 +386,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 			mtk_v4l2_err("Main device of_platform_populate failed.");
- 			goto err_reg_cont;
- 		}
-+	} else {
-+		set_bit(MTK_VDEC_CORE, dev->subdev_bitmap);
- 	}
- 
- 	ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, -1);
--- 
-2.18.0
+Could you help review arm parts of this patchset, please?
 
+For the question mention in both [1] and [2],
+
+> I'd still like Mark's Ack on this, as the approach you have taken doesn't
+> really sit with what he was suggesting.
+>
+> I also don't understand how all the CPUs get initialised with your patch,
+> since the PMU driver will be initialised after SMP is up and running.
+
+The hardlock detector utilizes the softlockup_start_all() to start all
+the cpu on watchdog_allowed_mask, which will do watchdog_nmi_enable()
+that registers perf event on each CPUs.
+Thus we simply need to retry lockup_detector_init() in a single cpu which
+will reconfig and call to softlockup_start_all().
+
+Also, the CONFIG_HARDLOCKUP_DETECTOR_PERF selects SOFTLOCKUP_DETECTOR,
+IMO, this shows that hardlockup detector supports from softlockup.
+
+
+> We should know whether pNMIs are possible once we've completed
+> setup_arch() (and possibly init_IRQ()), long before SMP, so so I reckon
+> we should have all the information available once we get to
+> lockup_detector_init(), even if that requires some preparatory rework.
+
+Hardlockup depends on PMU driver , I think the only way is moving
+pmu driver at setup_arch() or any point which is earlier than
+lockup_detector_init(), and I guess we have to reorganize the architecture
+of arm PMU.
+
+The retry function should benifit all the arch/ not only for arm64.
+Any arch who needs to probe its pmu as module can use this without providing
+a chance to mess up the setup order. 
+
+
+Please let me know if you have any concern about this, thank you
+
+
+[1] https://lore.kernel.org/all/CAFA6WYPPgUvHCpN5=EpJ2Us5h5uVWCbBA59C-YwYQX2ovyVeEw@mail.gmail.com/
+[2] https://lore.kernel.org/linux-arm-kernel/20210419170331.GB31045@willie-the-truck/
+
+
+BRs,
+Lecopzer
 
