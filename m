@@ -4,140 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B3D5C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 23:07:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16D6AC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 23:08:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZLqILRQ8qtWCoOCdvWIzsW3EHWsqOopa7YG7IislUhQ=; b=fJ0sCdmjwfZ9h0Zy9z7Cr04fln
-	V4jLsCNOdEOVjby5pjbyVpIBPX/sJGbJQ57FE2djnc5MPDoXUg2RCU64FjW5qyOhv8bszND1NEa7x
-	SNaH7eGyQIdtuqdaJR5nmoBqrvUKWvAQ93dpirEXKBHF9T0OtEulYw8VH3PpuGglvOXxyOu6kI7XB
-	Kg/1SYX7WrQIGWOIgH9quZaqHxSAS8KvtWjhoiSQs6hSbb49255W45A5Cb4ZJVH8Towa/MyJ3cs/6
-	C7sB2CUoC2ilHX0OhgwF/UR/kzMefOZ326zd33hfMN957JDBT08Si9ZV8QQg2lH+muuTZxLhGkWb8
-	KBSrcujw==;
+	bh=boBsEYeSmkjb+BOCaUDQtsmmY5mPhlPnMP5EgdS/R1I=; b=yGLUzuOYsdq98lk7qbyhvbL6v0
+	kRLk/mDV9lahAOTXM5XFqc83vM3jemzgt5vgJ6CWBiuzg9god+plA/ICRMIJSPgw3ZF03v+C7NGjx
+	taJh7LTGYGE0jTGkzwNPR2+lPqo7h8yUgF23GAwid+jdzU3beWYlcsEVbKgRExZkrxhKg+w7L/rE9
+	0+au+efbBtfyzRJM0O0V3HawM72Daqw0+kndd1svFa8mzHvnUcUVUOPrlQ0L063YTSkHnriSFKpWK
+	+2orVpmRaTRlDKvDCUJQEKYn+UuOw3IwNheFXvRXqIa7EU0UWn/ttJ98PxlS88V6iMwGjdOLzY+cb
+	bbW+nY3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2L43-009Wjl-2H; Fri, 17 Jun 2022 23:07:43 +0000
-Received: from mail-bn8nam04on20605.outbound.protection.outlook.com ([2a01:111:f400:7e8d::605] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+	id 1o2L4o-009X0k-Jg; Fri, 17 Jun 2022 23:08:30 +0000
+Received: from mail-il1-f176.google.com ([209.85.166.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2L3p-009Wbl-7I; Fri, 17 Jun 2022 23:07:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=B2u1DuZRSJtYp1iYwBrTRinuMfGzrZL9LEraKsC9XGIevLrpfG7FQa/DXfJgh3WYPBVpZkg8R1HKgauL+oE4ogIyiBDhczlJCBgi6rdZofHqVq97NxK1OkjFbqtdH2PM9AV+bBz9iSBhD5QztoAir5etC0Y7/2dHgNSLmnUxUcCjDIA3ivTglW1mBeOq6fVPsq3vpVc2zFtxIVmL2cAUoh8pBSWpDWbvAffn7LYzheSoWU9OAOYbX006hjw/NDtEUJjbYLT+IrO1jXqv0S5NQXAm3ejlunludt5iyiEYOf0VlarrOrLIfB9Pnn+Tu5y1VW38OhECWw8ooQZmJ5HRnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZLqILRQ8qtWCoOCdvWIzsW3EHWsqOopa7YG7IislUhQ=;
- b=niPg26Two2vNEDuiElaBDjx2COtJriFJvOLp0uIaCL2rlrGuSIbk2D0RpUE+6zazMA9GLSRh63swn/pKktvHhbYegMcDBBnLMmUw4tUVK63ibN2bjkW2Ohdm2qhJn+pj9gGdWvviqAGjsxi9eUuufP3cDkShr8v31Y33M0BdMA9wgBXwIWlfGP5/WtS0hBmuZnObllDRHaxVAEE2IJTC7Ui4TbSgr/onHuTCdWgg3sVXtJIyeOIU2BD0VlOpOxtcavuZ2WBe2G15s6ie0HXAmxAySHhytd2lMbLmSRVb4FnDloC0I/MLquZQ2PG794nIyuDm5ChPL4rGz0VKraEpfQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.234) smtp.rcpttodomain=svenpeter.dev smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZLqILRQ8qtWCoOCdvWIzsW3EHWsqOopa7YG7IislUhQ=;
- b=N6EY401QARm2CcqK/sz57/2L26KKb/UTfFojb0OqFFGZlk91ppipJDvblWmndJTRNljY7KYyrCEUHecgPYftA+GfEzuIUdD/G8Kz1JZJXHLXRxag8Unz6uModf8jbkXih9IwSk6783gbFmemug8gheFy6xRrZneH4X3SfLFzQ45YLRx1bJxVFTCqYrUIyIiHCCo4R3FHN+CJz0nX8HAErQ7mPqQr2i1zpcBgPE3I0yHhqAbx+rylIV+4uIsfTZTuXhgWhGJCdp9yK8UFkei07eKnDqLux8t/BDXUP+YfBxUHy9Bp7fJVd6qIjyuKqqYb+QWv/HFhsT4Cf6xLYDETEQ==
-Received: from DM3PR14CA0132.namprd14.prod.outlook.com (2603:10b6:0:53::16) by
- PH7PR12MB5975.namprd12.prod.outlook.com (2603:10b6:510:1da::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.14; Fri, 17 Jun
- 2022 23:07:24 +0000
-Received: from DM6NAM11FT046.eop-nam11.prod.protection.outlook.com
- (2603:10b6:0:53:cafe::e) by DM3PR14CA0132.outlook.office365.com
- (2603:10b6:0:53::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14 via Frontend
- Transport; Fri, 17 Jun 2022 23:07:24 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.234)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.234 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.234; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.234) by
- DM6NAM11FT046.mail.protection.outlook.com (10.13.172.121) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5353.14 via Frontend Transport; Fri, 17 Jun 2022 23:07:24 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- DRHQMAIL101.nvidia.com (10.27.9.10) with Microsoft SMTP Server (TLS) id
- 15.0.1497.32; Fri, 17 Jun 2022 23:07:24 +0000
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Fri, 17 Jun 2022 16:07:23 -0700
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
- Transport; Fri, 17 Jun 2022 16:07:21 -0700
-Date: Fri, 17 Jun 2022 16:07:20 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: "robin.murphy@arm.com" <robin.murphy@arm.com>, "Tian, Kevin"
-	<kevin.tian@intel.com>
-CC: "joro@8bytes.org" <joro@8bytes.org>, "will@kernel.org" <will@kernel.org>,
-	"marcan@marcan.st" <marcan@marcan.st>, "sven@svenpeter.dev"
-	<sven@svenpeter.dev>, "robdclark@gmail.com" <robdclark@gmail.com>,
-	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "orsonzhai@gmail.com"
-	<orsonzhai@gmail.com>, "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
-	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, "alex.williamson@redhat.com"
-	<alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
-	"jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
-	"thierry.reding@gmail.com" <thierry.reding@gmail.com>, "alyssa@rosenzweig.io"
-	<alyssa@rosenzweig.io>, "linux-s390@vger.kernel.org"
-	<linux-s390@vger.kernel.org>, "saiprakash.ranjan@codeaurora.org"
-	<saiprakash.ranjan@codeaurora.org>, "kvm@vger.kernel.org"
-	<kvm@vger.kernel.org>, "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "yangyingliang@huawei.com"
-	<yangyingliang@huawei.com>, "gerald.schaefer@linux.ibm.com"
-	<gerald.schaefer@linux.ibm.com>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "christophe.jaillet@wanadoo.fr"
-	<christophe.jaillet@wanadoo.fr>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "tglx@linutronix.de" <tglx@linutronix.de>,
-	"virtualization@lists.linux-foundation.org"
-	<virtualization@lists.linux-foundation.org>, "isaacm@codeaurora.org"
-	<isaacm@codeaurora.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"dwmw2@infradead.org" <dwmw2@infradead.org>
-Subject: Re: [PATCH v2 5/5] vfio/iommu_type1: Simplify group attachment
-Message-ID: <Yq0JKBiQfTkWh4nq@Asurada-Nvidia>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-6-nicolinc@nvidia.com>
- <BL1PR11MB52710E360B50DDA99C9A65D18CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
- <YquxcH2S1fM+llOf@Asurada-Nvidia>
- <BN9PR11MB5276C7BFA77C2C176491B56A8CAF9@BN9PR11MB5276.namprd11.prod.outlook.com>
+	id 1o2L4V-009Wuc-KL; Fri, 17 Jun 2022 23:08:13 +0000
+Received: by mail-il1-f176.google.com with SMTP id m16so2390749ilf.6;
+        Fri, 17 Jun 2022 16:08:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=boBsEYeSmkjb+BOCaUDQtsmmY5mPhlPnMP5EgdS/R1I=;
+        b=m4zc59dv/Ufg8rDG3fveEvQP13r60neaupHdW+BCU6KwDuXTU0wdETPxJq2ubj8+zI
+         SMy3bx0FlGgCuzTSem3F1QHIhukZpsDtiH6R7cvMGYYnu6jHkyuvP+BKAEyF9+JXasua
+         eNxxmYuOY+wD3kkbeG7NCAyKBurNed33n46ZJwF6lJAr0gmoFm6ObbA3kYVJUUYZnA1X
+         xXO7lf7TOWqD0IUE15kKHVyqWkFsR1aHtpNepfM6FbdBgkQvBxEU49LXuQp75ehdZ4gT
+         UFKv5LqcbW6fun49v2xgBBwW9b8JcJcr81FCTMlI5DQoxKkP2FOE1vmrLOQkioC8JLX5
+         IYgA==
+X-Gm-Message-State: AJIora95/FH1GYufz1mGXnfN6n8T4e6RswYLar3kfyziXIKHP8QJ1DVM
+	MMfhvKEut5ix4XW9CnKC5w==
+X-Google-Smtp-Source: AGRyM1uXiG8Xggf+u/lRmTS4EnGutEnUuUzhwGjsExceUCQKBvQOrA5/yQzEqlo4Qn7q5VQa0INI7Q==
+X-Received: by 2002:a92:dc91:0:b0:2d8:ecc3:ffb5 with SMTP id c17-20020a92dc91000000b002d8ecc3ffb5mr1765920iln.170.1655507290320;
+        Fri, 17 Jun 2022 16:08:10 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.251])
+        by smtp.gmail.com with ESMTPSA id h18-20020a02c732000000b0032e3b0933c6sm2730805jao.162.2022.06.17.16.08.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Jun 2022 16:08:09 -0700 (PDT)
+Received: (nullmailer pid 2608063 invoked by uid 1000);
+	Fri, 17 Jun 2022 23:08:08 -0000
+Date: Fri, 17 Jun 2022 17:08:08 -0600
+From: Rob Herring <robh@kernel.org>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>, angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com, wenst@chromium.org, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>, xia.jiang@mediatek.com, maoguang.meng@mediatek.com, kyrie wu <kyrie.wu@mediatek.com>, srv_heupstream@mediatek.com
+Subject: Re: [RESEND V3,1/8] dt-bindings: mediatek: Add
+ mediatek,mt8195-jpgdec compatible
+Message-ID: <20220617230808.GA2594727-robh@kernel.org>
+References: <20220614121004.31616-1-irui.wang@mediatek.com>
+ <20220614121004.31616-2-irui.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <BN9PR11MB5276C7BFA77C2C176491B56A8CAF9@BN9PR11MB5276.namprd11.prod.outlook.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 74598408-44ba-43b6-c24e-08da50b62411
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5975:EE_
-X-Microsoft-Antispam-PRVS: 	<PH7PR12MB59753098F671ED317266ADB0ABAF9@PH7PR12MB5975.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	rHBGjZj+43wUi5J064DSf+xSBM6gqkjXjw8pjRCTikmQ0UCv2CXBfRvisL+HhxpcTIwK8PXxKGXgE/ZuzSWbkzp4x5hui4L6zvMDZRjzjZFGyMk+u+xJ8vltErWCFCVE9ebu04/ciUDkBXLKmJCB8goEkXpXweUQQNg0SHHJ9qkTgrWFyW3NXwV404h6oDEcqhvhiGcxXaiXa3t3aFumJpW7q1czcoI6SXVvlcQQYaaToCuw19VxliBJpeXWrDZ8MUiEA2eXvtaQ4Rz8SQTCIKqNCWGtK3JcnFtdgh4EK4u8eGHOH5WOhy/VbMn+H39kdAkiJLCfI/fPa4QMoCPo5LwurP7xRPueUyTkMz7eFn7HcWAvTILnB46iS5doggpgQJDJ1SbLUboryP45zO9+AfaleuFQkV0v8LePFu8R0sQM/LATxb7UQEG7f0kmJx7O9fo2m4LdoAidvd4ilWbred2r2QrIHQ8aQ8ZAMdAClFqJ37TU2ObVmjywLDERUTqZOVSPzQ7cMts+cnhhd1NssKLcm5LcUj6qr0FxcxvVtjYfYI6ewoK0KuBjtLJec/M6WGKiPnjSI1Zz6zMruIcLCkM0E0X6HYSIb9qVMNgEFYd/tvj6ct4ogXfUfAT//zeK+iv43TL0e7uSxV7Bx//70Boqvi8z6AkehopmXex2d+aoaXnl4MhV/IWyrhljnSOZPrGD3p41hX4WpPF1DxrwPQ==
-X-Forefront-Antispam-Report: 	CIP:12.22.5.234;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(36840700001)(40470700004)(46966006)(4326008)(26005)(70586007)(86362001)(7416002)(82310400005)(33716001)(316002)(2906002)(40460700003)(9686003)(83380400001)(7406005)(8676002)(5660300002)(47076005)(498600001)(8936002)(186003)(55016003)(70206006)(426003)(81166007)(110136005)(356005)(54906003)(36860700001)(336012)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jun 2022 23:07:24.4666
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 74598408-44ba-43b6-c24e-08da50b62411
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.234];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT046.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB5975
+In-Reply-To: <20220614121004.31616-2-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_160729_497683_D5BA71D6 
-X-CRM114-Status: GOOD (  21.91  )
+X-CRM114-CacheID: sfid-20220617_160811_698242_8033B0EF 
+X-CRM114-Status: GOOD (  20.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,70 +78,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 17, 2022 at 02:53:13AM +0000, Tian, Kevin wrote:
-> > > ...
-> > > > -     if (resv_msi) {
-> > > > +     if (resv_msi && !domain->msi_cookie) {
-> > > >               ret = iommu_get_msi_cookie(domain->domain,
-> > > > resv_msi_base);
-> > > >               if (ret && ret != -ENODEV)
-> > > >                       goto out_detach;
-> > > > +             domain->msi_cookie = true;
-> > > >       }
-> > >
-> > > why not moving to alloc_attach_domain() then no need for the new
-> > > domain field? It's required only when a new domain is allocated.
-> >
-> > When reusing an existing domain that doesn't have an msi_cookie,
-> > we can do iommu_get_msi_cookie() if resv_msi is found. So it is
-> > not limited to a new domain.
+On Tue, Jun 14, 2022 at 08:09:57PM +0800, Irui Wang wrote:
+> From: kyrie wu <kyrie.wu@mediatek.com>
 > 
-> Looks msi_cookie requirement is per platform (currently only
-> for smmu. see arm_smmu_get_resv_regions()). If there is
-> no mixed case then above check is not required.
-
-Do you mean "reusing existing domain" for the "mixed case"?
-
-> But let's hear whether Robin has a different thought here.
-
-Yea, sure.
-
-> > > > -                     iommu_domain_free(domain->domain);
-> > > > -                     list_del(&domain->next);
-> > > > -                     kfree(domain);
-> > > > -                     vfio_iommu_aper_expand(iommu, &iova_copy);
-> > >
-> > > Previously the aperture is adjusted when a domain is freed...
-> > >
-> > > > -                     vfio_update_pgsize_bitmap(iommu);
-> > > > -             }
-> > > > -             /*
-> > > > -              * Removal of a group without dirty tracking may allow
-> > > > -              * the iommu scope to be promoted.
-> > > > -              */
-> > > > -             if (!group->pinned_page_dirty_scope) {
-> > > > -                     iommu->num_non_pinned_groups--;
-> > > > -                     if (iommu->dirty_page_tracking)
-> > > > -                             vfio_iommu_populate_bitmap_full(iommu);
-> > > > -             }
-> > > > +             vfio_iommu_detach_destroy_domain(domain, iommu,
-> > > > group);
-> > > >               kfree(group);
-> > > >               break;
-> > > >       }
-> > > >
-> > > > +     vfio_iommu_aper_expand(iommu, &iova_copy);
-> > >
-> > > but now it's done for every group detach. The aperture is decided
-> > > by domain geometry which is not affected by attached groups.
-> >
-> > Yea, I've noticed this part. Actually Jason did this change for
-> > simplicity, and I think it'd be safe to do so?
+> Add mediatek,mt8195-jpgdec compatible to binding document.
 > 
-> Perhaps detach_destroy() can return a Boolean to indicate whether
-> a domain is destroyed.
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> ---
+>  .../media/mediatek,mt8195-jpegdec.yaml        | 175 ++++++++++++++++++
+>  1 file changed, 175 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> new file mode 100644
+> index 000000000000..7b3df7c714aa
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> @@ -0,0 +1,175 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mt8195-jpegdec.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek JPEG Encoder Device Tree Bindings
+> +
+> +maintainers:
+> +  - kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
+> +
+> +description: |-
+> +  MediaTek JPEG Decoder is the JPEG decode hardware present in MediaTek SoCs
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt8195-jpgdec
+> +
+> +  mediatek,jpegdec-multi-core:
+> +    type: boolean
+> +    description: |
+> +      Indicates whether the jpeg encoder has multiple cores or not.
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    maxItems: 6
+> +    description: |
+> +      Points to the respective IOMMU block with master port as argument, see
+> +      Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+> +      Ports are according to the HW.
+> +
+> +  "#address-cells":
+> +    const: 2
+> +
+> +  "#size-cells":
+> +    const: 2
+> +
+> +  ranges: true
+> +
+> +# Required child node:
+> +patternProperties:
+> +  "^jpgdec@[0-9a-f]+$":
+> +    type: object
+> +    description: |
+> +      The jpeg decoder hardware device node which should be added as subnodes to
+> +      the main jpeg node.
+> +
+> +    properties:
+> +      compatible:
+> +        const: mediatek,mt8195-jpgdec-hw
+> +
+> +      reg:
+> +        maxItems: 1
+> +
+> +      hw_id:
+> +        description: |
+> +          Current jpegdec hw id.
 
-It could be a solution but doesn't feel that common for a clean
-function to have a return value indicating a special case. Maybe
-passing in "&domain" so that we can check if it's NULL after?
+What's this for and how is it used? We generally don't do indexes in DT.
+
+> +
+> +      iommus:
+> +        minItems: 1
+> +        maxItems: 32
+> +        description: |
+> +          List of the hardware port in respective IOMMU block for current Socs.
+> +          Refer to bindings/iommu/mediatek,iommu.yaml.
+> +
+> +      interrupts:
+> +        maxItems: 1
+> +
+> +      clocks:
+> +        maxItems: 1
+> +
+> +      clock-names:
+> +        items:
+> +          - const: jpgdec
+> +
+> +      power-domains:
+> +        maxItems: 1
+> +
+> +    required:
+> +      - compatible
+> +      - reg
+> +      - hw_id
+> +      - iommus
+> +      - interrupts
+> +      - clocks
+> +      - clock-names
+> +      - power-domains
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - power-domains
+> +  - iommus
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        jpgdec_master {
+> +                compatible = "mediatek,mt8195-jpgdec";
+> +                mediatek,jpegdec-multi-core;
+> +                power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
+> +                iommus = <&iommu_vpp M4U_PORT_L19_JPGDEC_WDMA0>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BSDMA0>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_WDMA1>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BSDMA1>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+> +                #address-cells = <2>;
+> +                #size-cells = <2>;
+> +                ranges;
+> +
+> +                jpgdec@1a040000 {
+> +                    compatible = "mediatek,mt8195-jpgdec-hw";
+> +                    reg = <0 0x1a040000 0 0x10000>;/* JPGDEC_C0 */
+> +                    hw_id = <0>;
+> +                    iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+> +                    interrupts = <GIC_SPI 343 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                    clocks = <&vencsys CLK_VENC_JPGDEC>;
+> +                    clock-names = "jpgdec";
+> +                    power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
+> +                };
+> +
+> +                jpgdec@1a050000 {
+> +                    compatible = "mediatek,mt8195-jpgdec-hw";
+> +                    reg = <0 0x1a050000 0 0x10000>;/* JPGDEC_C1 */
+> +                    hw_id = <1>;
+> +                    iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+> +                    interrupts = <GIC_SPI 344 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                    clocks = <&vencsys CLK_VENC_JPGDEC_C1>;
+> +                    clock-names = "jpgdec";
+> +                    power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
+> +                };
+> +
+> +                jpgdec@1b040000 {
+> +                    compatible = "mediatek,mt8195-jpgdec-hw";
+> +                    reg = <0 0x1b040000 0 0x10000>;/* JPGDEC_C2 */
+> +                    hw_id = <2>;
+> +                    iommus = <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA0>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BSDMA0>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA1>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BSDMA1>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BUFF_OFFSET1>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BUFF_OFFSET0>;
+> +                    interrupts = <GIC_SPI 348 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                    clocks = <&vencsys_core1 CLK_VENC_CORE1_JPGDEC>;
+> +                    clock-names = "jpgdec";
+> +                    power-domains = <&spm MT8195_POWER_DOMAIN_VDEC2>;
+> +                };
+> +        };
+> +    };
+> -- 
+> 2.18.0
+> 
+> 
 
