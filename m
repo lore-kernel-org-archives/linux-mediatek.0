@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EBB2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 10:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1781DCCA479
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 10:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3sQe4OCMr89XG9iHBUxkc2PNK6gGzzEwO560LqJSs+U=; b=Os62R+R3OzltNosZPlxlCcbV+K
-	fUeznkC+Px6/y7naQoS6lPGg0qgqmuJoqXgq+EHk5ULGShLziYvYuYUpzM5PfYlcELQGMYTKNuZy8
-	0Cq1p3pIIPlrEtTPQbwpezNdDtQ2B7ClrO6qZSF4awsOn869qpRaKHwPhUimEjTwV5ypf2jXuVkVs
-	leVMv/n2DjEZ/cMQ11rTxa+RQPbinrlMxeqJy80+/ewpTb4aeU1gu5pxzuBtnhvEpSOt7UUcFvUc8
-	jYAhpSCgWy857/kCkMX5KP5VCgOpH5iaGvZ7YG8/8IcYcOmNiAm5Pfz5oRxKl45cbh2Q43/NtQJQH
-	LYxHyZjA==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AiGd/G18mnXfAnwyT/vN2yw57fx/1UEELfONJBgsPiU=; b=OY0hWJFE9pi3HPQGlr2Hqhl/5z
+	bC08ZjBSFCfzjOEO5mgBg1Ryd3v0YUdIjzE7Hsp+DxorrYY495hKT6FtxFgNAcL0qONkEkPVMkj8R
+	szVmhFJtwxNO56CgIou/FIhFdJzOwlelLDWExgD1JElRAolMMJNc5Yb2moozS120W0bEQ23s1SEUt
+	3Ss+1JSBmGBhYnbz4+v7BkA1HO6oGecM3HzKR8bEKnxT1gn9amZGA/LUb0vFS6iXD94iM4k+J3/s6
+	tbaW0lQkSNzDf+6wbXn0LC1OYBt/K/Bhpx9OoX24ISsVyCopkit2cBdVRaJmqAjV9yTKx9Bcgtwea
+	qok3P61A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29Sf-00715F-If; Fri, 17 Jun 2022 10:44:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o29Sz-0071IG-Dw; Fri, 17 Jun 2022 10:44:41 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29S0-0070n3-Vs; Fri, 17 Jun 2022 10:43:43 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E95E7660179A;
-	Fri, 17 Jun 2022 11:43:34 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655462615;
-	bh=pFTBW1Zh7xOWnfG5j0ce7qDXmci6BaoqwUQ7UixScpM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MONmR2Bg8gdLljZi9brFqmUNwblg2wc5HVnMI03qwBR7GWqnaQafxjrcvyDPwe7ks
-	 cqXbi/klmn+yRGLSUjt1LAQkVJi/w/E7OiqULn3uBXq/9GCA7FsAF3KDs6FVZJ21g7
-	 z0pw8DbAFnLwzn6u/uX/GiHooNDY1GfqvbjDWcSiqJSHNxJfesoeVUMj28YYLnr6iQ
-	 21to0rqNYEhI+MhoqzJnYaTiI+ZTb0UMED4ZXjwl5s5dbFBK8tZWPK267wzfamCGDl
-	 kthMhrjHEy/1LFEvKCObCQ+Z5HIrcVBa2OXmaGPPRtISntL6uMP/ISPcBBJPqxDz9X
-	 H3I5JBoXikNdg==
-Message-ID: <c5573088-4bf6-e665-4921-05f57f1f4580@collabora.com>
-Date: Fri, 17 Jun 2022 12:43:32 +0200
+	id 1o29SC-0070rJ-GO; Fri, 17 Jun 2022 10:43:54 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id h23so7963688ejj.12;
+        Fri, 17 Jun 2022 03:43:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :references:from:in-reply-to:content-transfer-encoding;
+        bh=AiGd/G18mnXfAnwyT/vN2yw57fx/1UEELfONJBgsPiU=;
+        b=VJGDBaLwKCaTN0E3YXVF9jHgxLrlNG7667EGq4tM8lH0Jj5v9IeJ8Bp5VWKq5NMyYb
+         5iMXOXz2KivIOmNkOxjk4YgJL5l3L9HKBsazeqCv8lVt/dcBtU8qfDqfmHEQZZQdetrq
+         97mTgq9S+mBB4iprd0LRRQxKEmQGn6d9auRVXTdQ3HImBt3EiTBui/aJIK98KA5pph6p
+         OZNU0KgucPKhFX8qM53dhe3LQUOFyJCpS/tcexfirlbNPevl5K7UwUwf92nmrtSCtUHL
+         t+BKrJoviExSkCSNDQLMaY3h82RHo66dvs7SjNMGC6SKbB9SZexPspyWcaBwwm7yTdJ/
+         UKIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=AiGd/G18mnXfAnwyT/vN2yw57fx/1UEELfONJBgsPiU=;
+        b=PsvX+Iwhfe4hmMMnAcpO0PwJ0qgKWO2wCRUzAKM1nN+WKj37FKV8GO87+N0njSiZPA
+         dEB2GhKSmhgl50dsHiJzizxG2DcWSp0+yVEYIlkU5ZYMwLocbkFII4B3P0cZoM+x4eFp
+         v8Y06sZou2fuAu5SlkqGYkrAZQpPxLh/8q30RzEW9qpAzCYHOWhfnxWsdX6ktqt8o+OX
+         87jGzdsKJDqCKZ2ZEeCg6FKc23pOwfI1klbrfsSmTXYZMrS20CFGoymn6ZzdaXHzxot1
+         Bt2nb5VwFEouCXtWJl1eMNung6VhivSJUbl8Qp7RTXudba3zpNlRj6NP/u8E0wTnw3wL
+         5OzA==
+X-Gm-Message-State: AJIora/vCSMBvpJNMD4ni2nauf773C7Y0aZQbyq20Ct/mw9FZbt6B+ps
+	46pz639Em6s3PxOqqFutjjQ=
+X-Google-Smtp-Source: AGRyM1u5wVHvSt+IqLZK0au6HLE1grAgjeBZEKVVVQaH/p4dMq24y0opu3PhRSo42Jyp+s1jT4scDg==
+X-Received: by 2002:a17:906:7a57:b0:711:faf1:587d with SMTP id i23-20020a1709067a5700b00711faf1587dmr8328834ejo.581.1655462628898;
+        Fri, 17 Jun 2022 03:43:48 -0700 (PDT)
+Received: from [192.168.0.24] (80.174.78.229.dyn.user.ono.com. [80.174.78.229])
+        by smtp.gmail.com with ESMTPSA id i24-20020a05640200d800b0042dcac2afc6sm3425003edu.72.2022.06.17.03.43.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 Jun 2022 03:43:47 -0700 (PDT)
+Message-ID: <8f9d7850-fe31-41b3-cded-63a020356e13@gmail.com>
+Date: Fri, 17 Jun 2022 12:43:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 2/2] mfd: mt6397: Add basic support for MT6331+MT6332
- PMIC
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v3 16/40] arm64: dts: mediatek: mt7622-bananapi-bpi-r64:
+ align led node names with dtschema
 Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>, lee.jones@linaro.org
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- johnson.wang@mediatek.com, hsin-hsiung.wang@mediatek.com,
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, arm@kernel.org,
+ soc@kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220616091531.12646-1-angelogioacchino.delregno@collabora.com>
- <20220616091531.12646-3-angelogioacchino.delregno@collabora.com>
- <870ec36b-bc3c-377b-114a-4a9417942be2@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <870ec36b-bc3c-377b-114a-4a9417942be2@gmail.com>
+References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+ <20220616005333.18491-16-krzysztof.kozlowski@linaro.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220616005333.18491-16-krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_034341_341631_B8F6F087 
-X-CRM114-Status: GOOD (  31.17  )
+X-CRM114-CacheID: sfid-20220617_034352_639802_1834C30E 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,269 +95,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/06/22 12:12, Matthias Brugger ha scritto:
+
+
+On 16/06/2022 02:53, Krzysztof Kozlowski wrote:
+> The node names should be generic and DT schema expects certain pattern
+> with 'led'.  Use generic color properties instead of the node name.
 > 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Applied, thanks!
+
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 7 +++++--
+>   1 file changed, 5 insertions(+), 2 deletions(-)
 > 
-> On 16/06/2022 11:15, AngeloGioacchino Del Regno wrote:
->> Add support for the MT6331 PMIC with MT6332 Companion PMIC, found
->> in MT6795 Helio X10 smartphone platforms.
->>
->> This combo has support for multiple devices but, for a start,
->> only the following have been implemented:
->> - Regulators (two instances, one in MT6331, one in MT6332)
->> - RTC (MT6331)
->> - Keys (MT6331)
->> - Interrupts (MT6331 also dispatches MT6332's interrupts)
->>
->> There's more to be implemented, especially for MT6332, which
->> will come at a later stage.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/mfd/mt6397-core.c            |  47 ++
->>   drivers/mfd/mt6397-irq.c             |   9 +-
->>   include/linux/mfd/mt6331/core.h      |  53 +++
->>   include/linux/mfd/mt6331/registers.h | 584 ++++++++++++++++++++++++
->>   include/linux/mfd/mt6332/core.h      |  53 +++
->>   include/linux/mfd/mt6332/registers.h | 642 +++++++++++++++++++++++++++
->>   include/linux/mfd/mt6397/core.h      |   2 +
->>   7 files changed, 1389 insertions(+), 1 deletion(-)
->>   create mode 100644 include/linux/mfd/mt6331/core.h
->>   create mode 100644 include/linux/mfd/mt6331/registers.h
->>   create mode 100644 include/linux/mfd/mt6332/core.h
->>   create mode 100644 include/linux/mfd/mt6332/registers.h
->>
->> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
->> index 1a368ad08f58..1c974132dc0b 100644
->> --- a/drivers/mfd/mt6397-core.c
->> +++ b/drivers/mfd/mt6397-core.c
->> @@ -12,10 +12,12 @@
->>   #include <linux/regmap.h>
->>   #include <linux/mfd/core.h>
->>   #include <linux/mfd/mt6323/core.h>
->> +#include <linux/mfd/mt6331/core.h>
->>   #include <linux/mfd/mt6358/core.h>
->>   #include <linux/mfd/mt6359/core.h>
->>   #include <linux/mfd/mt6397/core.h>
->>   #include <linux/mfd/mt6323/registers.h>
->> +#include <linux/mfd/mt6331/registers.h>
->>   #include <linux/mfd/mt6358/registers.h>
->>   #include <linux/mfd/mt6359/registers.h>
->>   #include <linux/mfd/mt6397/registers.h>
->> @@ -23,6 +25,9 @@
->>   #define MT6323_RTC_BASE        0x8000
->>   #define MT6323_RTC_SIZE        0x40
->> +#define MT6331_RTC_BASE        0x4000
->> +#define MT6331_RTC_SIZE        0x40
->> +
->>   #define MT6358_RTC_BASE        0x0588
->>   #define MT6358_RTC_SIZE        0x3c
->> @@ -37,6 +42,11 @@ static const struct resource mt6323_rtc_resources[] = {
->>       DEFINE_RES_IRQ(MT6323_IRQ_STATUS_RTC),
->>   };
->> +static const struct resource mt6331_rtc_resources[] = {
->> +    DEFINE_RES_MEM(MT6331_RTC_BASE, MT6331_RTC_SIZE),
->> +    DEFINE_RES_IRQ(MT6331_IRQ_STATUS_RTC),
->> +};
->> +
->>   static const struct resource mt6358_rtc_resources[] = {
->>       DEFINE_RES_MEM(MT6358_RTC_BASE, MT6358_RTC_SIZE),
->>       DEFINE_RES_IRQ(MT6358_IRQ_RTC),
->> @@ -66,6 +76,11 @@ static const struct resource mt6323_keys_resources[] = {
->>       DEFINE_RES_IRQ_NAMED(MT6323_IRQ_STATUS_FCHRKEY, "homekey"),
->>   };
->> +static const struct resource mt6331_keys_resources[] = {
->> +    DEFINE_RES_IRQ_NAMED(MT6331_IRQ_STATUS_PWRKEY, "powerkey"),
->> +    DEFINE_RES_IRQ_NAMED(MT6331_IRQ_STATUS_HOMEKEY, "homekey"),
->> +};
->> +
->>   static const struct resource mt6397_keys_resources[] = {
->>       DEFINE_RES_IRQ_NAMED(MT6397_IRQ_PWRKEY, "powerkey"),
->>       DEFINE_RES_IRQ_NAMED(MT6397_IRQ_HOMEKEY, "homekey"),
->> @@ -100,6 +115,27 @@ static const struct mfd_cell mt6323_devs[] = {
->>       },
->>   };
->> +/* MT6331 is always used in combination with MT6332 */
->> +static const struct mfd_cell mt6331_mt6332_devs[] = {
->> +    {
->> +        .name = "mt6331-rtc",
->> +        .num_resources = ARRAY_SIZE(mt6331_rtc_resources),
->> +        .resources = mt6331_rtc_resources,
->> +        .of_compatible = "mediatek,mt6331-rtc",
->> +    }, {
->> +        .name = "mt6331-regulator",
->> +        .of_compatible = "mediatek,mt6331-regulator"
->> +    }, {
->> +        .name = "mt6332-regulator",
->> +        .of_compatible = "mediatek,mt6332-regulator"
->> +    }, {
->> +        .name = "mtk-pmic-keys",
->> +        .num_resources = ARRAY_SIZE(mt6331_keys_resources),
->> +        .resources = mt6331_keys_resources,
->> +        .of_compatible = "mediatek,mt6331-keys"
->> +    },
->> +};
->> +
->>   static const struct mfd_cell mt6358_devs[] = {
->>       {
->>           .name = "mt6358-regulator",
->> @@ -179,6 +215,14 @@ static const struct chip_data mt6323_core = {
->>       .irq_init = mt6397_irq_init,
->>   };
->> +static const struct chip_data mt6331_mt6332_core = {
->> +    .cid_addr = MT6331_HWCID,
->> +    .cid_shift = 0,
->> +    .cells = mt6331_mt6332_devs,
->> +    .cell_size = ARRAY_SIZE(mt6331_mt6332_devs),
->> +    .irq_init = mt6397_irq_init,
->> +};
->> +
->>   static const struct chip_data mt6358_core = {
->>       .cid_addr = MT6358_SWCID,
->>       .cid_shift = 8,
->> @@ -261,6 +305,9 @@ static const struct of_device_id mt6397_of_match[] = {
->>       {
->>           .compatible = "mediatek,mt6323",
->>           .data = &mt6323_core,
->> +    }, {
->> +        .compatible = "mediatek,mt6331",
->> +        .data = &mt6331_mt6332_core,
->>       }, {
->>           .compatible = "mediatek,mt6358",
->>           .data = &mt6358_core,
->> diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
->> index 2924919da991..eff53fed8fe7 100644
->> --- a/drivers/mfd/mt6397-irq.c
->> +++ b/drivers/mfd/mt6397-irq.c
->> @@ -12,6 +12,8 @@
->>   #include <linux/suspend.h>
->>   #include <linux/mfd/mt6323/core.h>
->>   #include <linux/mfd/mt6323/registers.h>
->> +#include <linux/mfd/mt6331/core.h>
->> +#include <linux/mfd/mt6331/registers.h>
->>   #include <linux/mfd/mt6397/core.h>
->>   #include <linux/mfd/mt6397/registers.h>
->> @@ -172,7 +174,12 @@ int mt6397_irq_init(struct mt6397_chip *chip)
->>           chip->int_status[0] = MT6323_INT_STATUS0;
->>           chip->int_status[1] = MT6323_INT_STATUS1;
->>           break;
->> -
->> +    case MT6331_CHIP_ID:
-> 
-> I'm a bit puzzeld about the IDs of both are the same, should we at least add "case 
-> MT6332_CHIP_ID:" here to make clear this holds for bot chips?
-> 
-
-There's a catch here: the MT6332 int_con/int_status registers are different and
-this one does actually needs to be registered accordingly... the logic in here is
-that we currently register only MT6331's interrupt controller - we will be unable
-(temporarily, of course) to *manage* (mask/unmask) MT6332's interrupts (but if the
-registers are configured to unmask interrupts before booting linux, these will
-fire through MT6331's external interrupt line).
-
-I didn't want to implement this for the companion because of three reasons:
-   1. I need to think about a good and clean strategy for that;
-   2. I don't want to push untested code upstream;
-   3. I currently have *no way* to test the interrupts that the companion
-      will be firing, as they're about the battery charger... and there's no
-      driver for that, and implementing it is a bit complicated, I am indeed
-      planning to implement that later, but for a first push of the actual
-      PMIC basics, it's not really a good idea (because again, requires more
-      time).
-
-There's another interesting interrupt in MT6332, which is for the flash LED
-and should be easier to implement... but still, please, not right now, as I
-really don't materially have the time that's required to do that.
-
-So that's about it - we're registering with one compatible (the one for the
-"main pmic"), then whatever concerns the companion PMIC is done with some
-sort companion specific flow variation (check how I've modeled this in the
-mtk-pmic-wrap.c driver [1]):
-
-
-[1]: 
-https://lore.kernel.org/lkml/20220520124039.228314-1-angelogioacchino.delregno@collabora.com/T/#t
-
-
-
->> +        chip->int_con[0] = MT6331_INT_CON0;
->> +        chip->int_con[1] = MT6331_INT_CON1;
->> +        chip->int_status[0] = MT6331_INT_STATUS_CON0;
->> +        chip->int_status[1] = MT6331_INT_STATUS_CON1;
->> +        break;
->>       case MT6391_CHIP_ID:
->>       case MT6397_CHIP_ID:
->>           chip->int_con[0] = MT6397_INT_CON0;
->> diff --git a/include/linux/mfd/mt6331/core.h b/include/linux/mfd/mt6331/core.h
->> new file mode 100644
->> index 000000000000..d0fabcd53eb4
->> --- /dev/null
->> +++ b/include/linux/mfd/mt6331/core.h
->> @@ -0,0 +1,53 @@
->> +/* SPDX-License-Identifier: GPL-2.0-only */
->> +/*
->> + * Copyright (c) 2021 AngeloGioacchino Del Regno 
->> <angelogioacchino.delregno@collabora.com>
->> + */
->> +
->> +#ifndef __MFD_MT6331_CORE_H__
->> +#define __MFD_MT6331_CORE_H__
->> +
->> +enum mt6331_irq_status_numbers {
->> +    MT6331_IRQ_STATUS_PWRKEY = 0,
->> +    MT6331_IRQ_STATUS_HOMEKEY,
->> +    MT6331_IRQ_STATUS_CHRDET,
->> +    MT6331_IRQ_STATUS_THR_H,
->> +    MT6331_IRQ_STATUS_THR_L,
->> +    MT6331_IRQ_STATUS_BAT_H,
->> +    MT6331_IRQ_STATUS_BAT_L,
->> +    MT6331_IRQ_STATUS_RTC,
->> +    MT6331_IRQ_STATUS_AUDIO,
->> +    MT6331_IRQ_STATUS_MAD,
->> +    MT6331_IRQ_STATUS_ACCDET,
->> +    MT6331_IRQ_STATUS_ACCDET_EINT,
->> +    MT6331_IRQ_STATUS_ACCDET_NEGV = 12,
->> +    MT6331_IRQ_STATUS_VDVFS11_OC = 16,
->> +    MT6331_IRQ_STATUS_VDVFS12_OC,
->> +    MT6331_IRQ_STATUS_VDVFS13_OC,
->> +    MT6331_IRQ_STATUS_VDVFS14_OC,
->> +    MT6331_IRQ_STATUS_GPU_OC,
->> +    MT6331_IRQ_STATUS_VCORE1_OC,
->> +    MT6331_IRQ_STATUS_VCORE2_OC,
->> +    MT6331_IRQ_STATUS_VIO18_OC,
->> +    MT6331_IRQ_STATUS_LDO_OC,
->> +    MT6331_IRQ_STATUS_NR,
->> +};
->> +
->> +#define MT6331_IRQ_CON0_BASE    MT6331_IRQ_STATUS_PWRKEY
->> +#define MT6331_IRQ_CON0_BITS    (MT6331_IRQ_STATUS_ACCDET_NEGV + 1)
->> +#define MT6331_IRQ_CON1_BASE    MT6331_IRQ_STATUS_VDVFS11_OC
->> +#define MT6331_IRQ_CON1_BITS    (MT6331_IRQ_STATUS_LDO_OC - 
->> MT6331_IRQ_STATUS_VDFS11_OC + 1)
->> +
->> +#define MT6331_INT_GEN(sp)                \
->> +{                            \
->> +    .hwirq_base = MT6331_IRQ_##sp##_BASE,        \
->> +    .num_int_regs =                    \
->> +        ((MT6331_IRQ_##sp##_BITS - 1) /        \
->> +        MTK_PMIC_REG_WIDTH) + 1,        \
->> +    .en_reg = MT6331_INT_##sp##,            \
->> +    .en_reg_shift = 0x6,                \
->> +    .sta_reg = MT6331_INT_STATUS0_##sp##,        \
->> +    .sta_reg_shift = 0x2,                \
->> +    .top_offset = MT6331_##sp##_TOP,        \
->> +}
-> 
-> What will we need this macro for? It's not used here.
-> 
-
-Thanks for catching that!!!!
-
-This is a leftover, we don't need it at all and we will probably never need
-it, and it's the same for the 6332 one.
-
-Will send a new one that removes these useless macros asap.
-
-Cheers,
-Angelo
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> index c2311733d2de..7d1ecf72a6c3 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> @@ -8,6 +8,7 @@
+>   /dts-v1/;
+>   #include <dt-bindings/input/input.h>
+>   #include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/leds/common.h>
+>   
+>   #include "mt7622.dtsi"
+>   #include "mt6380.dtsi"
+> @@ -56,14 +57,16 @@ wps-key {
+>   	leds {
+>   		compatible = "gpio-leds";
+>   
+> -		green {
+> +		led-0 {
+>   			label = "bpi-r64:pio:green";
+> +			color = <LED_COLOR_ID_GREEN>;
+>   			gpios = <&pio 89 GPIO_ACTIVE_HIGH>;
+>   			default-state = "off";
+>   		};
+>   
+> -		red {
+> +		led-1 {
+>   			label = "bpi-r64:pio:red";
+> +			color = <LED_COLOR_ID_RED>;
+>   			gpios = <&pio 88 GPIO_ACTIVE_HIGH>;
+>   			default-state = "off";
+>   		};
 
