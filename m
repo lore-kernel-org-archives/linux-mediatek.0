@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 747F8C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 08:34:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82536C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 08:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d/ptm2u6GhdQhl9VyO0h0zEmH2w8JUsdL359ug3Iy7k=; b=VZN4y3JPseUXCGRoPOMISf4p5l
-	EhAWg0o/8sCboQWGdI0HsS3vDro3TWXB7KJLneGgNcHCDvWnQxggS0PVp/hdRypAyfqs1EVuVt46S
-	51riEvmFSgrmxSiQwPCWtQNbaAs3IT9s4pQtn+6EN+v2TYmGz+uQIAbww3NipK20KugFRudAyxvYA
-	L3UJ64h32mhzsxK9ieNcYg8a/ZT7GSC/vsm81wvKYLmmWdi+Eg6+9zY/gogT4PlG2kn9aq2cAVurm
-	JEIBSuCC7s2UtKxBJImjLuyteR4tKDRKHl2VHyWCeOdw874HN6N1RfNvYHI7ReMhkFEvW4rQbYnsZ
-	p3uc0cPw==;
+	bh=0Akty9E+4cwobC/kYyekXkzh/9JPXGz5SU1JwQ8OtfU=; b=DMqk4O/kKKREaqx7I/Bf6hjw/s
+	g1XjI4/xWoGb+LsKfLi8w8dnU/wNRFQd4PojxnwAAQphZoOZeBKHuuXAdu3cQtDTeTuTAmYpMn89O
+	DAx9ppkHmX2qMTO2Xx1AxVqyZGuxOOKGcXH92lqNsw+ZLMzavXzi27ZNJo2bkzg+wdjna5nEr2nQO
+	x/cBIY9x6GhaWY7MNm/l0/KESNeVYKG+Jbg3CtGXidfuItD7/2rbRQRPr2zPAhkCpq/qNTUNglxy5
+	Mx8Add0p/EVsDKBuC61WDgS11jppD/r132dpsNQy+b6CKvZryrmFLQjcliMMJt3cgZ4VmyRKOyJ2x
+	y7d+QQ+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o27Qm-006LQf-5R; Fri, 17 Jun 2022 08:34:16 +0000
-Received: from mailgw01.mediatek.com ([66.171.122.165])
+	id 1o27hh-006Tky-Dk; Fri, 17 Jun 2022 08:51:45 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o27PK-006KmL-Rq; Fri, 17 Jun 2022 08:32:50 +0000
-X-UUID: 9a9a8f91d4324c5b96d774613e571588-20220617
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:607b33e0-4118-40ba-adcb-5e168c1a6221,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:c008a0f6-e099-41ba-a32c-13b8bfe63214,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 9a9a8f91d4324c5b96d774613e571588-20220617
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 630109725; Fri, 17 Jun 2022 01:32:40 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Jun 2022 01:27:01 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 17 Jun 2022 16:26:56 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 17 Jun 2022 16:26:56 +0800
-Message-ID: <9d924423c2b7ded984e2daf42a3667332dabbee2.camel@mediatek.com>
-Subject: Re: [PATCH v11 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "mripard@kernel.org"
-	<mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
-	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
-CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 17 Jun 2022 16:26:55 +0800
-In-Reply-To: <d5416a2f2a655f6574b17597fdc22615fe2fc22a.camel@mediatek.com>
-References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
-	 <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-	 <d5416a2f2a655f6574b17597fdc22615fe2fc22a.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o27WA-006O2n-PS
+	for linux-mediatek@lists.infradead.org; Fri, 17 Jun 2022 08:39:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	 s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=0Akty9E+4cwobC/kYyekXkzh/9JPXGz5SU1JwQ8OtfU=; b=nU3KQEiw7kM/xNShDAc8aV1N8q
+	i7Ait6136VZG9uLOfQsrrkYpMrmEJu3SuNho2GalR6AwRVxF2iWCsKeM7eCcvYwmFtPVp0VwuwpNh
+	0deOXzmvaTPElPbQr3BstPzQpQehD9aRjXfe3Ndo9c04e8q5U2kyX8TtOd/wKNu/tzpE=;
+Received: from p54ae95bf.dip0.t-ipconnect.de ([84.174.149.191] helo=nf.local)
+	by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.89)
+	(envelope-from <nbd@nbd.name>)
+	id 1o27Vt-0004hM-WB; Fri, 17 Jun 2022 10:39:34 +0200
+Message-ID: <b7e3006a-03a9-fad6-3f57-10aed678f211@nbd.name>
+Date: Fri, 17 Jun 2022 10:39:33 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.10.0
+Subject: Re: [PATCH] mt76: mt7921: fix aggregation subframes setting to HE max
+Content-Language: en-US
+To: Deren Wu <Deren.Wu@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+ Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+ Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
+ Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>,
+ Stella Chang <Stella.Chang@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <7f5145276d732cb4aebcbffd6fc4a5eb852dd3be.1655393246.git.deren.wu@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <7f5145276d732cb4aebcbffd6fc4a5eb852dd3be.1655393246.git.deren.wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_013246_928088_03305065 
-X-CRM114-Status: GOOD (  35.67  )
+X-CRM114-CacheID: sfid-20220617_013951_111223_3C7F09CD 
+X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,323 +80,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-06-15 at 10:58 +0800, CK Hu wrote:
-> Hi, Bo-Chen:
+On 16.06.22 17:57, Deren Wu wrote:
+> From: Deren Wu <deren.wu@mediatek.com>
 > 
-> On Fri, 2022-06-10 at 18:55 +0800, Bo-Chen Chen wrote:
-> > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > 
-> > This patch adds a embedded displayport driver for the MediaTek
-> > mt8195
-> > SoC.
-> > 
-> > It supports the MT8195, the embedded DisplayPort units. It offers
-> > DisplayPort 1.4 with up to 4 lanes.
-> > 
-> > The driver creates a child device for the phy. The child device
-> > will
-> > never exist without the parent being active. As they are sharing a
-> > register range, the parent passes a regmap pointer to the child so
-> > that
-> > both can work with the same register range. The phy driver sets
-> > device
-> > data that is read by the parent to get the phy device that can be
-> > used
-> > to control the phy properties.
-> > 
-> > This driver is based on an initial version by
-> > Jitao shi <jitao.shi@mediatek.com>
-> > 
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > [Bo-Chen: Cleanup the drivers and modify comments from reviewers]
-> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > ---
+> mt7921/mt7922 support HE max aggregation subframes 256 for both tx/rx.
+> Get better throughput then before.
 > 
-> [snip]
-> 
-> > +
-> > +static int mtk_dp_train_flow(struct mtk_dp *mtk_dp, u8
-> > target_link_rate,
-> > +			     u8 target_lane_count)
-> > +{
-> > +	u8 lane_adjust[2] = {};
-> > +	bool pass_tps1 = false;
-> > +	bool pass_tps2_3 = false;
-> > +	int train_retries;
-> > +	int status_control;
-> > +	int iteration_count;
-> > +	int ret;
-> > +	u8 prev_lane_adjust;
-> > +
-> > +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LINK_BW_SET,
-> > target_link_rate);
-> > +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LANE_COUNT_SET,
-> > +			   target_lane_count |
-> > DP_LANE_COUNT_ENHANCED_FRAME_EN);
-> > +
-> > +	if (mtk_dp->train_info.sink_ssc)
-> > +		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_DOWNSPREAD_CTRL,
-> > +				   DP_SPREAD_AMP_0_5);
-> > +
-> > +	train_retries = 0;
-> > +	status_control = 0;
-> > +	iteration_count = 1;
-> > +	prev_lane_adjust = 0xFF;
-> > +
-> > +	mtk_dp_set_lanes(mtk_dp, target_lane_count / 2);
-> > +	ret = mtk_dp_phy_configure(mtk_dp, target_link_rate,
-> > target_lane_count);
-> > +	if (ret)
-> > +		return -EINVAL;
-> > +
-> > +	dev_dbg(mtk_dp->dev,
-> > +		"Link train target_link_rate = 0x%x, target_lane_count
-> > = 0x%x\n",
-> > +		target_link_rate, target_lane_count);
-> > +
-> > +	do {
-> > +		train_retries++;
-> > +		if (!mtk_dp->train_info.cable_plugged_in ||
-> > +		    mtk_dp->train_info.irq_sta.hpd_disconnect) {
-> 
-> In mtk_dp_hpd_isr_handler(), train_info.irq_sta.hpd_disconnect would
-> finally be set to false, so you need not to check it here. So remove
-> it
-> here.
-> 
+> Fixes: 94bb18b03d43 ("mt76: mt7921: fix max aggregation subframes setting")
+> Tested-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> Reviewed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+When I made the change that you're reverting here, I used the values 
+from the reference SDK that I got, and the change actually seemed to 
+improve performance in my tests.
+Did something change in the firmware, or is there a related chipset 
+difference between 7921 and 7922?
 
-Hello CK,
-
-ok, I will drop this.
-
-> > +			return -ENODEV;
-> > +		}
-> > +
-> > +		if (mtk_dp->train_state < MTK_DP_TRAIN_STATE_TRAINING)
-> > +			return -EAGAIN;
-> > +
-> > +		if (!pass_tps1) {
-> > +			ret = mtk_dp_train_tps_1(mtk_dp,
-> > target_lane_count,
-> > +						 &iteration_count,
-> > lane_adjust,
-> > +						 &status_control,
-> > +						 &prev_lane_adjust);
-> > +			if (!ret) {
-> > +				pass_tps1 = true;
-> > +				train_retries = 0;
-> > +			} else if (ret == -EINVAL) {
-> > +				break;
-> > +			}
-> > +		} else {
-> > +			ret = mtk_dp_train_tps_2_3(mtk_dp,
-> > target_link_rate,
-> > +						   target_lane_count,
-> > +						   &iteration_count,
-> > +						   lane_adjust,
-> > &status_control,
-> > +						   &prev_lane_adjust);
-> > +			if (!ret) {
-> > +				pass_tps2_3 = true;
-> > +				break;
-> > +			} else if (ret == -EINVAL) {
-> > +				break;
-> > +			}
-> > +		}
-> > +
-> > +		drm_dp_dpcd_read(&mtk_dp->aux,
-> > DP_ADJUST_REQUEST_LANE0_1,
-> > +				 lane_adjust, sizeof(lane_adjust));
-> > +		mtk_dp_train_update_swing_pre(mtk_dp,
-> > target_lane_count,
-> > +					      lane_adjust);
-> > +	} while (train_retries < MTK_DP_TRAIN_RETRY_LIMIT &&
-> > +		 iteration_count < MTK_DP_TRAIN_MAX_ITERATIONS);
-> > +
-> > +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_PATTERN_SET,
-> > +			   DP_TRAINING_PATTERN_DISABLE);
-> > +	ret = mtk_dp_train_set_pattern(mtk_dp, 0);
-> > +	if (ret)
-> > +		return -EINVAL;
-> > +
-> > +	if (!pass_tps2_3)
-> > +		return -ETIMEDOUT;
-> > +
-> > +	mtk_dp->train_info.link_rate = target_link_rate;
-> > +	mtk_dp->train_info.lane_count = target_lane_count;
-> > +
-> > +	mtk_dp_training_set_scramble(mtk_dp, true);
-> > +
-> > +	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LANE_COUNT_SET,
-> > +			   target_lane_count |
-> > +				   DP_LANE_COUNT_ENHANCED_FRAME_EN);
-> > +	mtk_dp_set_enhanced_frame_mode(mtk_dp, true);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> 
-> [snip]
-> 
-> > +
-> > +/*
-> > + * We need to handle HPD signal in eDP even though eDP is a always
-> > connected
-> > + * device. Besides connected status, there is another feature for
-> > HPD signal -
-> > + * HPD pulse: it presents an IRQ from sink devices to source
-> > devices
-> > (Refer to
-> > + * 5.1.4 of DP1.4 spec).
-> > + */
-> > +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
-> > +{
-> > +	bool connected;
-> > +	u32 irq_status = mtk_dp_swirq_get_clear(mtk_dp) |
-> > +			 mtk_dp_hwirq_get_clear(mtk_dp);
-> > +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
-> > +
-> > +	if (irq_status & MTK_DP_HPD_INTERRUPT)
-> > +		train_info->irq_sta.hpd_inerrupt = true;
-> > +	if (irq_status & MTK_DP_HPD_CONNECT)
-> > +		train_info->irq_sta.hpd_connect = true;
-> > +	if (irq_status & MTK_DP_HPD_DISCONNECT)
-> > +		train_info->irq_sta.hpd_disconnect = true;
-> > +
-> 
-> train_info->irq_sta.hpd_connect is used only in this function, so let
-> hpd_connect to be local variable.
-> 
-
-ok
-
-> > +	if (!irq_status)
-> > +		return IRQ_HANDLED;
-> > +
-> > +	connected = mtk_dp_plug_state(mtk_dp);
-> > +	if (connected || !train_info->cable_plugged_in)
-> > +		train_info->irq_sta.hpd_disconnect  = false;
-> > +	else if (!connected || train_info->cable_plugged_in)
-> > +		train_info->irq_sta.hpd_connect = false;
-> > +
-> > +	if (!(train_info->irq_sta.hpd_connect ||
-> > +	      train_info->irq_sta.hpd_disconnect))
-> > +		return IRQ_WAKE_THREAD;
-> > +
-> > +	if (train_info->irq_sta.hpd_connect) {
-> > +		train_info->irq_sta.hpd_connect = false;
-> > +		train_info->cable_plugged_in = true;
-> > +	} else {
-> > +		train_info->irq_sta.hpd_disconnect = false;
-> > +		train_info->cable_plugged_in = false;
-> > +		mtk_dp->train_state = MTK_DP_TRAIN_STATE_TRAINING;
-> > +	}
-> > +	train_info->cable_state_change = true;
-> > +
-> > +	return IRQ_WAKE_THREAD;
-> > +}
-> > +
-> 
-> [snip]
-> 
-> > +
-> > +static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
-> > +				   struct drm_dp_aux_msg *msg)
-> > +{
-> > +	struct mtk_dp *mtk_dp;
-> > +	bool is_read;
-> > +	u8 request;
-> > +	size_t accessed_bytes = 0;
-> > +	int ret = 0;
-> > +
-> > +	mtk_dp = container_of(mtk_aux, struct mtk_dp, aux);
-> > +
-> > +	if (!mtk_dp->train_info.cable_plugged_in ||
-> > +	    mtk_dp->train_info.irq_sta.hpd_disconnect) {
-> 
-> In mtk_dp_hpd_isr_handler(), train_info.irq_sta.hpd_disconnect would
-> finally be set to false, so you need not to check it here. So remove
-> it
-> here.
-> 
-
-ok, I will drop this
-
-BRs,
-Bo-Chen
-
-> Regards,
-> CK
-> 
-> > +		ret = -EAGAIN;
-> > +		goto err;
-> > +	}
-> > +
-> > +	switch (msg->request) {
-> > +	case DP_AUX_I2C_MOT:
-> > +	case DP_AUX_I2C_WRITE:
-> > +	case DP_AUX_NATIVE_WRITE:
-> > +	case DP_AUX_I2C_WRITE_STATUS_UPDATE:
-> > +	case DP_AUX_I2C_WRITE_STATUS_UPDATE | DP_AUX_I2C_MOT:
-> > +		request = msg->request &
-> > ~DP_AUX_I2C_WRITE_STATUS_UPDATE;
-> > +		is_read = false;
-> > +		break;
-> > +	case DP_AUX_I2C_READ:
-> > +	case DP_AUX_NATIVE_READ:
-> > +	case DP_AUX_I2C_READ | DP_AUX_I2C_MOT:
-> > +		request = msg->request;
-> > +		is_read = true;
-> > +		break;
-> > +	default:
-> > +		drm_err(mtk_aux->drm_dev, "invalid aux cmd = %d\n",
-> > +			msg->request);
-> > +		ret = -EINVAL;
-> > +		goto err;
-> > +	}
-> > +
-> > +	if (msg->size == 0) {
-> > +		ret = mtk_dp_aux_do_transfer(mtk_dp, is_read, request,
-> > +					     msg->address +
-> > accessed_bytes,
-> > +					     msg->buffer +
-> > accessed_bytes, 0);
-> > +	} else {
-> > +		while (accessed_bytes < msg->size) {
-> > +			size_t to_access =
-> > +				min_t(size_t, DP_AUX_MAX_PAYLOAD_BYTES,
-> > +				      msg->size - accessed_bytes);
-> > +
-> > +			ret = mtk_dp_aux_do_transfer(mtk_dp, is_read,
-> > request,
-> > +						     msg->address +
-> > accessed_bytes,
-> > +						     msg->buffer +
-> > accessed_bytes,
-> > +						     to_access);
-> > +
-> > +			if (ret) {
-> > +				drm_info(mtk_dp->drm_dev,
-> > +					 "Failed to do AUX transfer:
-> > %d\n", ret);
-> > +				break;
-> > +			}
-> > +			accessed_bytes += to_access;
-> > +		}
-> > +	}
-> > +err:
-> > +	if (ret) {
-> > +		msg->reply = DP_AUX_NATIVE_REPLY_NACK |
-> > DP_AUX_I2C_REPLY_NACK;
-> > +		return ret;
-> > +	}
-> > +
-> > +	msg->reply = DP_AUX_NATIVE_REPLY_ACK | DP_AUX_I2C_REPLY_ACK;
-> > +	return msg->size;
-> > +}
-> > +
-> 
-> 
-
+- Felix
 
