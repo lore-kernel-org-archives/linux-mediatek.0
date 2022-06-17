@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CC90C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 09:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D29C2C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 10:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uklWM9IaLcaNqUTKHRn0pghw1KPLMP2s/huJtr0APeU=; b=oR5esNZGt422TpTzzzxsi4ufeU
-	sA365yhlPwn9q0udIMbQG71n20dt16Xp0SaWRzurqo6tptFAlLEE9sA9G+9S6u3FFuRv2PUFeLFgL
-	CStu/IRisiACoOTa+VrGBsH4UfcQUMQugp5h8lxMs9cJZo967VbZ81YJMtWO2EGfEcvUuiCV8Tnn1
-	cHJwwWs0hBNIwJq/6YqdrJltjfyu7EWPpx/wMZ2bCr+CG81XA/mUZj86E454OD+cZUEazY/L+hKa+
-	bdYcPwg5xIUuHKZM9hL23Lxz/Gkf9FS4AMGh5Fo/d+MSPEypPUiu4Tg2MnfMR/LCQEmwFqSiQaNoD
-	aGhTglVA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JUh/bHw36MKI9KfeYCyLalDxvnkYkNzB5fpZd7noo7A=; b=fhjkxqev9vY+Me
+	+qrdkjBlnf1CJZ68UwScnDOZSBdrNuZb6BfGx4QEtSFqcscFHR1imoqEjudfgw/NVybzJqjKSdX/s
+	F/FIswxvgVQppRZOlagwCEELlcJHNcsPtwF1MM6Hsbm7/FF7Hxi5/5aOAmqzK3tJZDYesvPk+mXa9
+	okdwvuITVeXq4D2lEEgCd/bID8OgCNLx9V19Jl2MxrFz6Nygq5N7OmAiYnB2w5l3Sem48Eyu+o+L8
+	+g8SGuEUQVmQJiLwcIcK5AQa3AfCwM2clKlei0LrVorRH3QMgfULJSy8H7bLEhiKmeBVsykKUtOgw
+	gvZCCV+1Srhfs9ZW1UTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o28ku-006rqA-Od; Fri, 17 Jun 2022 09:59:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o28vD-006tMT-5w; Fri, 17 Jun 2022 10:09:47 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o28kc-006re9-5Y; Fri, 17 Jun 2022 09:58:51 +0000
-X-UUID: 3b8bae22a7514dd6940a0109f4ccb280-20220617
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:0e6f30ed-76ce-4a67-8ea2-bcf78ad683b5,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:0816e748-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 3b8bae22a7514dd6940a0109f4ccb280-20220617
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 227716657; Fri, 17 Jun 2022 02:58:45 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Jun 2022 02:58:44 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Fri, 17 Jun 2022 17:58:42 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 17 Jun 2022 17:58:42 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Min Guo
-	<min.guo@mediatek.com>, MandyJH Liu <mandyjh.liu@mediatek.com>, Eddie Hung
-	<eddie.hung@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, "Rafael
- J . Wysocki" <rafael@kernel.org>, Kevin Hilman <khilman@kernel.org>, "Ulf
- Hansson" <ulf.hansson@linaro.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4] soc: mediatek: Add support always on flag
-Date: Fri, 17 Jun 2022 17:58:41 +0800
-Message-ID: <20220617095841.23031-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1o28vA-006tLd-28
+	for linux-mediatek@lists.infradead.org; Fri, 17 Jun 2022 10:09:46 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id x1-20020a17090abc8100b001ec7f8a51f5so149918pjr.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jun 2022 03:09:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=JUh/bHw36MKI9KfeYCyLalDxvnkYkNzB5fpZd7noo7A=;
+        b=EBcPCrvNrluTSrKM0n6wApN287TyqIr9nV0eEF20OBwFtM9Bej0q/bAUjf/svaLoVn
+         Ai/CmuhHaA+QXb4hVeknvDmwAVQwHVG1EAWhtibEc0eSjLdnS1AzCYeYt2slCt75sh9t
+         loaz7o7UhssdYICnUoit5N6TBY03YQtXr4juA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=JUh/bHw36MKI9KfeYCyLalDxvnkYkNzB5fpZd7noo7A=;
+        b=6cqNQaQHjZtg05N07tDrqoXcU6ld+N/W+YObGwGc1c2l8/ufdz/7McvLq1PQbRFfBG
+         64im1wp/x0lS2Ajk48SyDdWqgzpDsxPxRk721LvzeJd7tGujpFbtGopB7tEmX/TKNbWk
+         72x4c2xg0ExynFsp4oxE/tPB7yEy39n6xaV2k6nNP1ZOg2OioCwjI97RFSHd8KjELo8m
+         t8lgcmYFlnwUL3OxXeUcmvISEj26+x3uJaszFMKPiHy9jFJWryYmxVT3Gato40VQg68G
+         529trPv1GFdqpIIlyQaoE7az6PyhXg0IYUE5dk4GfTDBasElbR27hDSXLS2lEDgBsH3P
+         6Gqg==
+X-Gm-Message-State: AJIora+9c+00KV1Sq1GYz5pGNvqiRjwu2yRRX+kwkvQtXNO3jqiV6vaA
+	qvkpG/cWtC2WG9rpKdRHHYOFtA==
+X-Google-Smtp-Source: AGRyM1vR4p23EKYSOBmxfH5Y3pMbGolPl1H0MOWkXYoT2MFmzc0ACWYKnY2gHyd0rGFDz3Llpf+bkg==
+X-Received: by 2002:a17:903:22d0:b0:164:ec0:178c with SMTP id y16-20020a17090322d000b001640ec0178cmr9145864plg.127.1655460580273;
+        Fri, 17 Jun 2022 03:09:40 -0700 (PDT)
+Received: from fshao-glinux.tpe.corp.google.com ([2401:fa00:1:10:e616:b34a:9b5b:24ef])
+        by smtp.gmail.com with ESMTPSA id o12-20020a62f90c000000b0051b4e53c487sm3337533pfh.45.2022.06.17.03.09.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Jun 2022 03:09:39 -0700 (PDT)
+From: Fei Shao <fshao@chromium.org>
+To: Mark Brown <broonie@kernel.org>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: mt8186: Fix mutex double unlock in GPIO request
+Date: Fri, 17 Jun 2022 18:06:33 +0800
+Message-Id: <20220617100632.1447811-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.36.1.476.g0c4daa206d-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_025850_250702_6A955661 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20220617_030944_651422_DAC3AB5F 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,73 +79,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a t-phy shared by PCIe and USB3 on mt8195, if the t-phy is
-used by PCIe, when power off its mtcmos, need software reset it
-(workaround way, usually hardware do it, but has an issue on mt8195),
-but it has side effect to USB2 phy(works with USB3 phy to support
-USB3.2 Gen1), so add support GENPD_FLAG_ALWAYS_ON flag, and make its
-power always on;
-Another reason is that USB3.2 Gen1/2 need keep power always on when
-support runtime-pm due to hardware limitation until now;
+The lockdep mechanism reveals an unbalanced unlocking on MT8186:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+  [    2.993966] WARNING: bad unlock balance detected!
+  [    2.993971] 5.15.46-421fef3b44d7-lockdep #16 Not tainted
+  [    2.993978] -------------------------------------
+  [    2.993983] kworker/u16:1/10 is trying to release lock (gpio_request_mutex) at:
+  [    2.993994] [<ffffffdcd9adebf8>] mt8186_afe_gpio_request+0xf8/0x210
+  [    2.994012] but there are no more locks to release!
+  [    2.994017]
+  [    2.994017] other info that might help us debug this:
+  [    2.994022] 3 locks held by kworker/u16:1/10:
+  [    2.994028]  #0: ffffff80c004a148 ((wq_completion)events_unbound){+.+.}-{0:0}, at: process_one_work+0x1a8/0x364
+  [    2.994054]  #1: ffffffc0080d3d58 (deferred_probe_work){+.+.}-{0:0}, at: process_one_work+0x1d0/0x364
+  [    2.994074]  #2: ffffff80c12ab9a0 (&dev->mutex){....}-{3:3}, at: __device_attach+0x44/0x150
+  [    2.994096]
+  [    2.994096] stack backtrace:
+  [    2.994102] CPU: 6 PID: 10 Comm: kworker/u16:1 Not tainted 5.15.46-421fef3b44d7-lockdep #16 a2af0e2c6b3eeab6799b5aa8091c1d05d3a7bbb1
+  [    2.994113] Hardware name: Google Kingler board (DT)
+  [    2.994120] Workqueue: events_unbound deferred_probe_work_func
+  [    2.994130] Call trace:
+  [    2.994135]  dump_backtrace+0x0/0x1d4
+  [    2.994144]  show_stack+0x20/0x2c
+  [    2.994152]  dump_stack_lvl+0x78/0x9c
+  [    2.994163]  dump_stack+0x18/0x44
+  [    2.994172]  print_unlock_imbalance_bug+0xf0/0xf4
+  [    2.994184]  lock_release+0x150/0x388
+  [    2.994193]  __mutex_unlock_slowpath+0x4c/0x1bc
+  [    2.994202]  mutex_unlock+0x44/0x50
+  [    2.994210]  mt8186_afe_gpio_request+0xf8/0x210
+  [    2.994220]  mt8186_afe_gpio_init+0xcc/0x134
+  [    2.994230]  mt8186_mt6366_rt1019_rt5682s_dev_probe+0x14c/0x220
+  [    2.994238]  platform_probe+0xb0/0xd0
+  [    2.994247]  really_probe+0xcc/0x2c8
+  [    2.994253]  __driver_probe_device+0xbc/0xe8
+  [    2.994264]  driver_probe_device+0x48/0xf0
+  [    2.994271]  __device_attach_driver+0xa0/0xc8
+  [    2.994278]  bus_for_each_drv+0x8c/0xd8
+  [    2.994288]  __device_attach+0xc4/0x150
+  [    2.994298]  device_initial_probe+0x1c/0x28
+  [    2.994308]  bus_probe_device+0x3c/0xa0
+  [    2.994318]  deferred_probe_work_func+0xa0/0xe0
+  [    2.994325]  process_one_work+0x208/0x364
+  [    2.994334]  worker_thread+0x288/0x3fc
+  [    2.994343]  kthread+0x140/0x160
+  [    2.994351]  ret_from_fork+0x10/0x20
+
+The cause is that the mutex will be double unlocked if dai is unknown
+during GPIO selection, and this patch fixes it.
+
+Fixes: cfa9a966f12a ("ASoC: mediatek: mt8186: support gpio control in platform driver")
+
+Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
-v4: add reviewed-by AngeloGioacchino
 
-v3: make always-on flag exclusive with defualt-off flag
+ sound/soc/mediatek/mt8186/mt8186-afe-gpio.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-v2: keep active_wakeup flag for mt8195
----
- drivers/soc/mediatek/mt8195-pm-domains.h | 2 +-
- drivers/soc/mediatek/mtk-pm-domains.c    | 3 +++
- drivers/soc/mediatek/mtk-pm-domains.h    | 2 ++
- 3 files changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/soc/mediatek/mt8195-pm-domains.h b/drivers/soc/mediatek/mt8195-pm-domains.h
-index 938f4d51f5ae..0529d130b675 100644
---- a/drivers/soc/mediatek/mt8195-pm-domains.h
-+++ b/drivers/soc/mediatek/mt8195-pm-domains.h
-@@ -67,7 +67,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8195[] = {
- 		.ctl_offs = 0x334,
- 		.pwr_sta_offs = 0x174,
- 		.pwr_sta2nd_offs = 0x178,
--		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP | MTK_SCPD_ALWAYS_ON,
- 	},
- 	[MT8195_POWER_DOMAIN_CSI_RX_TOP] = {
- 		.name = "csi_rx_top",
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index 5ced254b082b..a3dae391a38a 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.c
-+++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -428,6 +428,9 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
- 			goto err_put_subsys_clocks;
- 		}
-+
-+		if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON))
-+			pd->genpd.flags |= GENPD_FLAG_ALWAYS_ON;
+diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
+index 255ffba637d3..274c0c8ec2f2 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
++++ b/sound/soc/mediatek/mt8186/mt8186-afe-gpio.c
+@@ -230,7 +230,6 @@ int mt8186_afe_gpio_request(struct device *dev, bool enable,
+ 		sel = enable ? MT8186_AFE_GPIO_PCM_ON : MT8186_AFE_GPIO_PCM_OFF;
+ 		break;
+ 	default:
+-		mutex_unlock(&gpio_request_mutex);
+ 		dev_err(dev, "%s(), invalid dai %d\n", __func__, dai);
+ 		goto unlock;
  	}
- 
- 	if (scpsys->domains[id]) {
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-index daa24e890dd4..7d3c0c36316c 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.h
-+++ b/drivers/soc/mediatek/mtk-pm-domains.h
-@@ -8,6 +8,8 @@
- #define MTK_SCPD_SRAM_ISO		BIT(2)
- #define MTK_SCPD_KEEP_DEFAULT_OFF	BIT(3)
- #define MTK_SCPD_DOMAIN_SUPPLY		BIT(4)
-+/* can't set MTK_SCPD_KEEP_DEFAULT_OFF at the same time */
-+#define MTK_SCPD_ALWAYS_ON		BIT(5)
- #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
- 
- #define SPM_VDE_PWR_CON			0x0210
 -- 
-2.18.0
+2.36.1.476.g0c4daa206d-goog
 
 
