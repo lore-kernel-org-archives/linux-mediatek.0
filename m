@@ -4,86 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C26BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 10:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE51EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 10:36:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iA5EBcmQ2c66Y7u9KNeT7Oa6qN+dCkHMcbRicp+TCdo=; b=KZlPThWKj+cYtC6MlsGpCgPPzq
-	LYY25wQJRnDZe0Qyay9ghilsqY/vnhIe3stp6nIYD84ApJjgMGNTRkeble/76172EUKWyysjQTTDR
-	pbrSdw8rwFtHAQ0+PGXMZOZiIXVIffCnEvfbAKUdKaMUGnaGPTx3yyx2QO+u6q9Fx/pWk/Hq80TvZ
-	ILGq4GRmM8T7MSeOe2nEeeMc5TNY2i+gAQ0CmcToG9OPzus7ZvG115AF4T9MKmYG/1in/jzRvn7Gm
-	vIiX7h/ulhm220u5X0745Fju6+9s5iZa6EfzQhr0OXzxqVe3DonpEn/Q7pytfJbXS5M1NJDYeSNWH
-	DC6jKe4Q==;
+	bh=rOxytpr3JE53RNJSPRdeBWhwwL5aBsV68OtuK0gPSKc=; b=ZF1+4JEJbTeAtqSYhKbvvVeRvi
+	z5Pdty9uZrTnPHxfygOzBqeXhZb7eM8UwgML4oZRMyl4sKA//EquXpDLXgzfvjPSlYNZc4rjAscCU
+	BwsuA/7qRN7EmCAivWEY5J+esYs1D1AaoVd4y0Y8BwY0vFUqOI+HwGjG//VfIdRi8pq4cvfFx1OGB
+	qI2qkcQfTdJuKIW2DoYG+nlZsOG/uoT1/3ov15SpHSZoGGOqEkI9SHrMqDgQfgRoLcep/FJxke03Y
+	SvEfIacxwscxTyvBi+dCZ6SoWoQ9EVQKA4Q9WSeoTmMtJUfR2evHJxblIzEIs8i9/ZZz44l/wIVvF
+	ula8Bi0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29HX-006yMH-6q; Fri, 17 Jun 2022 10:32:51 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1o29Ka-006yvu-ID; Fri, 17 Jun 2022 10:36:00 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o29HU-006yKi-5T; Fri, 17 Jun 2022 10:32:49 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id i10so1442664wrc.0;
-        Fri, 17 Jun 2022 03:32:45 -0700 (PDT)
+	id 1o29KP-006ysl-39; Fri, 17 Jun 2022 10:35:50 +0000
+Received: by mail-io1-xd36.google.com with SMTP id 19so4097099iou.12;
+        Fri, 17 Jun 2022 03:35:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=iA5EBcmQ2c66Y7u9KNeT7Oa6qN+dCkHMcbRicp+TCdo=;
-        b=Q4Xq9nPeLmza0xBivwLO25heE+A+TUnj/WZPvFO68o9h13OrMKzYQU34eaB/Hf8ova
-         5eSQfSwpIpry1VgIA5pqyLOYk2Q+gkVYx3MQkaC1vcPY4WXsm2ZkYOitNdtPH4UzowS0
-         Whd7Vcpepoylf0ieasWfwAhwUtvyW2lhyCa/RB7vCgtCNs9Ul1oOqtx6tH4N6upnTtt7
-         8/gNLXgCRVtuLvl+7bDjmAuMwGIC8O+ydxspWVNjjM8PJgxmVJIpzw9tjsoPRsztkSGZ
-         bkQsN7fSCUXh1k8ZrjhW6so4sttZVALFkobi9njTL7p2VucNEXaRCQ6Ouq7jahxTMBbT
-         gj9Q==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=rOxytpr3JE53RNJSPRdeBWhwwL5aBsV68OtuK0gPSKc=;
+        b=VXLvhpaQU0zgeMjKkkqDHD1I+K0rIshiGzQkNBPk2HQGNqDDUZT5LxEKFLtoSchSaZ
+         fKpgnNsU0HTiilSwtx0LgLcenSKqGXiW3QiesMvmIoG8bZYBxjvxIm4ZMCMJssMi06O7
+         DmqBTjSMvAsNPKw0iZwY8THSaeWRxbZvzA5XCoxwOMwh8aFihG4t0lDRFgRD8H/l72fJ
+         4WO9j/DcS912xHkAAyWAdl+uQmxw6JQHU9ZhlfeMjFsP+HiYKJpSZDjCjXLCjJ4UMtG5
+         sj63siSb6Jqs6FXFchQDLzzEq6UOf/Duny841OrK6jdAGRvH8toYDeFHZA1bsbuZ+Yvc
+         ewGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=iA5EBcmQ2c66Y7u9KNeT7Oa6qN+dCkHMcbRicp+TCdo=;
-        b=hIvPGaDvQEitZ+cCoHhupdusmCg4nMFU7QJNNvIy+WKFDYisRFWVw1s9dpR/5g98Ee
-         c0oNQWXkG37muTyNw0C0RtLe1KYiYvKgNLS5leWWo6NbWH/hXTTNhHxkVszIv9EaAU6C
-         Rk/HOFqON5xHOwuSuTSsyk7nqz5NOvkDUo8rbvZT83MVieml3n0PN3rJe09FdcK+bvXD
-         k31ePPLyNGaLpsUxYjJesNxengQ2/W04i8gOSFRtEngQkzlcfu3A7WakA9z9CgjYAgWY
-         8c0gPzE0h4GDcmVOYfxo6d6KQDEVy/ztonFqIqmz503ZrFA+0WA4X7g8+bGg128rjVGY
-         f1pw==
-X-Gm-Message-State: AJIora/7XKmimboSs4Acwc0Ekkot0Og8sbXeCOlb3uh5vq+iEYo4U388
-	q+lU2sO9YhtcfOHKhewHDc8=
-X-Google-Smtp-Source: AGRyM1uYjq5wWC/zJtt6I45f6wFuWH7TuoP4yuwyBDBcRtSPi5ZO0u8mVAdeLwt9O7+QKkwBI1AHBg==
-X-Received: by 2002:a5d:448c:0:b0:21a:91e9:b896 with SMTP id j12-20020a5d448c000000b0021a91e9b896mr2606677wrq.296.1655461964551;
-        Fri, 17 Jun 2022 03:32:44 -0700 (PDT)
-Received: from [192.168.0.24] (80.174.78.229.dyn.user.ono.com. [80.174.78.229])
-        by smtp.gmail.com with ESMTPSA id d8-20020adfc088000000b00213ba0cab3asm4269032wrf.44.2022.06.17.03.32.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Jun 2022 03:32:43 -0700 (PDT)
-Message-ID: <3c2ac364-5eaf-b26f-2f93-d4cd93b53828@gmail.com>
-Date: Fri, 17 Jun 2022 12:32:42 +0200
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=rOxytpr3JE53RNJSPRdeBWhwwL5aBsV68OtuK0gPSKc=;
+        b=77+32EEqgjt/8ZeFpNb+CnO38fhHbsc2Jz5zxSgmzkjnyU3tgoorO0jPUw+s2IMWPN
+         rIdcp+2ZO062heiF6+g9YV5Jz0LtDitsnNlq/JaqSE3C1bu6ZGsF8ry1PP37RHV8k1/G
+         wiqQMD0iKx5IKCoNRj6AwHlq0umnQ4gtCPvUEg3ojpkawSe35SGkrYTzWyLyK1IPbCz4
+         +B7jqPMwLXLIDTpIiZgeJwBfxeKmuy4TDApjJ8/Qy7S6BWNS220F+Pynn4cyFtlVIAKR
+         ut7DyWPjeTGek3w/Fl0u9fglnfVofREYjimCF+iXyDNNAu7VTgF8KHnTv3sBaVJP3775
+         CdSw==
+X-Gm-Message-State: AJIora8kSqpEFfjuOdJC49iRTpF7UpMCzvqGDUyhcetj2ypDxHyRV8Np
+	U4mOOGym7Jpjxu24hNow4NfQqjsRq5nkCcvwdh4=
+X-Google-Smtp-Source: AGRyM1udgMHgKDiQMYRnn7E3oN5h0pbJ2A1MrxTn2OBrvOJsKft+xj/e2gq23SyVxC5kFN9WD040jXi32G7pqDTUjpk=
+X-Received: by 2002:a05:6638:2113:b0:331:feae:af81 with SMTP id
+ n19-20020a056638211300b00331feaeaf81mr4897345jaj.196.1655462146064; Fri, 17
+ Jun 2022 03:35:46 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v3 6/6] iommu: mtk_iommu: Lookup phandle to retrieve
- syscon to pericfg
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- yong.wu@mediatek.com
-Cc: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- krzysztof.kozlowski@linaro.org
-References: <20220609100802.54513-1-angelogioacchino.delregno@collabora.com>
- <20220609100802.54513-7-angelogioacchino.delregno@collabora.com>
- <8b31b1d2-4ed7-11a1-2124-4641c8f3abcd@gmail.com>
- <e4a2c56e-8e38-b44c-04b4-fd792fbf2f74@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <e4a2c56e-8e38-b44c-04b4-fd792fbf2f74@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20220613111146.25221-1-peterwu.pub@gmail.com> <20220613111146.25221-6-peterwu.pub@gmail.com>
+ <9c38f708-1376-aa89-2c56-c08d320bcf2b@linaro.org>
+In-Reply-To: <9c38f708-1376-aa89-2c56-c08d320bcf2b@linaro.org>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Fri, 17 Jun 2022 18:35:34 +0800
+Message-ID: <CABtFH5KhijZDRA+K=stpOV0t8K3cqCMoLXpLShcdm9F8emrKCA@mail.gmail.com>
+Subject: Re: [PATCH v2 05/15] dt-bindings: backlight: Add Mediatek MT6370 backlight
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com, 
+	lee.jones@linaro.org, Daniel Thompson <daniel.thompson@linaro.org>, jingoohan1@gmail.com, 
+	pavel@ucw.cz, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com, 
+	ChiYuan Huang <cy_huang@richtek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_033248_271849_2792175F 
-X-CRM114-Status: GOOD (  34.25  )
+X-CRM114-CacheID: sfid-20220617_033549_180550_EC787580 
+X-CRM114-Status: GOOD (  23.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,129 +91,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
+Thanks for your helpful feedback, I have some questions want to
+confirm with you below.
 
-On 15/06/2022 14:28, AngeloGioacchino Del Regno wrote:
-> Il 15/06/22 14:09, Matthias Brugger ha scritto:
->>
->>
->> On 09/06/2022 12:08, AngeloGioacchino Del Regno wrote:
->>> On some SoCs (of which only MT8195 is supported at the time of writing),
->>> the "R" and "W" (I/O) enable bits for the IOMMUs are in the pericfg_ao
->>> register space and not in the IOMMU space: as it happened already with
->>> infracfg, it is expected that this list will grow.
->>>
->>> Instead of specifying pericfg compatibles on a per-SoC basis, following
->>> what was done with infracfg, let's lookup the syscon by phandle instead.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno 
->>> <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   drivers/iommu/mtk_iommu.c | 23 +++++++++++++----------
->>>   1 file changed, 13 insertions(+), 10 deletions(-)
->>>
->>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
->>> index 90685946fcbe..0ea0848581e9 100644
->>> --- a/drivers/iommu/mtk_iommu.c
->>> +++ b/drivers/iommu/mtk_iommu.c
->>> @@ -138,6 +138,8 @@
->>>   /* PM and clock always on. e.g. infra iommu */
->>>   #define PM_CLK_AO            BIT(15)
->>>   #define IFA_IOMMU_PCIE_SUPPORT        BIT(16)
->>> +/* IOMMU I/O (r/w) is enabled using PERICFG_IOMMU_1 register */
->>> +#define HAS_PERI_IOMMU1_REG        BIT(17)
->>
->>  From what I can see MTK_IOMMU_TYPE_INFRA is only set in MT8195 which uses 
->> pericfg. So we don't need a new flag here. For me the flag name 
->> MTK_IOMMU_TYPE_INFRA was confusing as it has nothing to do with the use of 
->> infracfg. I'll hijack this patch to provide some feedback on the actual code, 
->> please see below.
->>
->>>   #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)    \
->>>                   ((((pdata)->flags) & (mask)) == (_x))
->>> @@ -187,7 +189,6 @@ struct mtk_iommu_plat_data {
->>>       u32            flags;
->>>       u32            inv_sel_reg;
->>> -    char            *pericfg_comp_str;
->>>       struct list_head    *hw_list;
->>>       unsigned int        iova_region_nr;
->>>       const struct mtk_iommu_iova_region    *iova_region;
->>> @@ -1218,14 +1219,16 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->>>               goto out_runtime_disable;
->>>           }
->>>       } else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
->>> -           data->plat_data->pericfg_comp_str) {
->>
->> Check for pericfg_comp_str is not needed, we only have one platform that uses 
->> MTK_IOMMU_TYPE_INFRA.
->>
-> 
-> Fair enough. I agree.
-> 
->>> -        infracfg = 
->>> syscon_regmap_lookup_by_compatible(data->plat_data->pericfg_comp_str);
->>
->> We can do something like this to make the code clearer:
->> data->pericfg = 
->> syscon_regmap_lookup_by_compatible(data->plat_data->pericfg_comp_str);
->>          if (IS_ERR(data->pericfg)) {
->>
->> Using infracfg variable here is confusing as it has nothing to do with 
->> infracfg used with HAS_4GB_MODE flag.
-> 
-> Yes Matthias, using the infracfg variable is confusing - that's why I changed that
-> already....
-> 
->>
->> Regards,
->> Matthias
->>
->>> -        if (IS_ERR(infracfg)) {
->>> -            ret = PTR_ERR(infracfg);
->>> -            goto out_runtime_disable;
->>> +           MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_PERI_IOMMU1_REG)) {
-> 
-> 
-> 
->>> +        data->pericfg = syscon_regmap_lookup_by_phandle(dev->of_node, 
->>> "mediatek,pericfg");
-> 
-> ....Here, where I'm assigning directly to data->pericfg :-P
-> 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> =E6=96=BC 2022=E5=B9=
+=B46=E6=9C=8817=E6=97=A5 =E9=80=B1=E4=BA=94 =E6=B8=85=E6=99=A85:13=E5=AF=AB=
+=E9=81=93=EF=BC=9A
+>
+> On 13/06/2022 04:11, ChiaEn Wu wrote:
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> >
+> > Add mt6370 backlight binding documentation.
+> >
+> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> > ---
+> >  .../backlight/mediatek,mt6370-backlight.yaml  | 107 ++++++++++++++++++
+> >  1 file changed, 107 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/leds/backlight/me=
+diatek,mt6370-backlight.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/leds/backlight/mediatek,=
+mt6370-backlight.yaml b/Documentation/devicetree/bindings/leds/backlight/me=
+diatek,mt6370-backlight.yaml
+> > new file mode 100644
+> > index 000000000000..25a05e607e83
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/leds/backlight/mediatek,mt6370-=
+backlight.yaml
+> > @@ -0,0 +1,107 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/leds/backlight/mediatek,mt6370-back=
+light.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Mediatek MT6370 Backlight
+> > +
+> > +maintainers:
+> > +  - ChiaEn Wu <chiaen_wu@richtek.com>
+> > +
+> > +description: |
+> > +  This module is part of the MT6370 MFD device.
+> > +  The MT6370 Backlight WLED driver supports up to a 29V output voltage=
+ for
+> > +  4 channels of 8 series WLEDs. Each channel supports up to 30mA of cu=
+rrent
+> > +  capability with 2048 current steps (11 bits) in exponential or linea=
+r
+> > +  mapping curves.
+> > +
+> > +allOf:
+> > +  - $ref: common.yaml#
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt6370-backlight
+> > +
+> > +  default-brightness:
+> > +    minimum: 0
+> > +    maximum: 2048
+> > +
+> > +  max-brightness:
+> > +    minimum: 0
+> > +    maximum: 2048
+> > +
+> > +  enable-gpios:
+> > +    description: External backlight 'enable' pin
+> > +    maxItems: 1
+> > +
+> > +  mediatek,bled-pwm-enable:
+> > +    description: |
+> > +      Enable external PWM input for backlight dimming
+> > +    type: boolean
+> > +
+> > +  mediatek,bled-pwm-hys-enable:
+> > +    description: |
+> > +      Enable the backlight input-hysteresis for PWM mode
+> > +    type: boolean
+> > +
+> > +  mediatek,bled-pwm-hys-input-bit:
+> > +    $ref: /schemas/types.yaml#/definitions/uint8
+> > +    enum: [0, 1, 2, 3]
+> > +    description: |
+> > +      The selection of the upper and lower bounds threshold of backlig=
+ht
+> > +      PWM resolution. If we choose selection 3 (6 bits), the variation=
+ of PWM
+> > +      resolution needs over than 64 steps (2^6).
+> > +      value mapping:
+> > +        - 0: 1
+> > +        - 1: 2
+> > +        - 2: 4
+> > +        - 3: 6
+>
+> Nope, I said last time:
+> "In any case you cannot have values mapping"
+>
+> Please use proper real world value, not some register bits. The property
+> name also needs fixing.
 
-Uuuups, sorry, did look too much on the existing code and not enough on your patch.
+I so apologized for misunderstanding your meaning...
+I try to modify it like below.
+--------
+mediatek,bled-pwm-hys-input-threshold-steps:
+  $ref: /schemas/types.yaml#/definitions/uint8
+  enum: [1, 4, 16, 64]
+  description: |
+    The selection of the upper and lower bounds threshold of backlight
+    PWM resolution. If we choose selection 64, the variation of PWM
+    resolution needs over 64 steps.
+--------
+If these changes meet your expectations, I will try to modify
+"bled-ovp-microvolt" and "bled-ocp-microamp" in the same way.
+Thank you so much.
 
-> By the way, since it was only about one platform, my intention was to remove the
-> pericfg_comp_str from struct iommu_plat_data (as you can see), but then, with the
-> current code, I had to assign .....
-> 
-> 
->>> +        if (IS_ERR(data->pericfg)) {
->>> +            p = "mediatek,mt8195-pericfg_ao";
-> 
-> ...the string to 'p', because otherwise it would go over 100 columns.
-> 
-> In any case, I just checked and, apparently, MT8195 is really the one and only SoC
-> that needs this pericfg register to be managed by Linux... even the latest and
-> greatest smartphone chip (Dimensity 9000, MT6983) doesn't need this (at least,
-> from what I can read on a downstream kernel).
-> 
-> On an afterthought, perhaps the best idea is to just leave this as it is and, as
-> you proposed, avoid using that confusing infracfg variable, without adding the
-> pericfg handle at all.
+>
+> > +
+> > +  mediatek,bled-ovp-shutdown:
+> > +    description: |
+> > +      Enable the backlight shutdown when OVP level triggered
+> > +    type: boolean
+> > +
+> > +  mediatek,bled-ovp-microvolt:
+> > +    enum: [0, 1, 2, 3]
+> > +    description: |
+> > +      Backlight OVP level selection.
+> > +      value mapping:
+> > +        - 0: 17000000
+> > +        - 1: 21000000
+> > +        - 2: 25000000
+> > +        - 3: 29000000
+>
+> No. Please test your bindings.
+>
+> microvolt cannot be 1 mV. It's 21000000, not 1. No value mappings.
+>
+> > +
+> > +  mediatek,bled-ocp-shutdown:
+> > +    description: |
+> > +      Enable the backlight shutdown when OCP level triggerred.
+> > +    type: boolean
+> > +
+> > +  mediatek,bled-ocp-microamp:
+> > +    enum: [0, 1, 2, 3]
+> > +    description: |
+> > +      Backlight OC level selection.
+> > +      value mapping:
+> > +        - 0: 900000
+> > +        - 1: 1200000
+> > +        - 2: 1500000
+> > +        - 3: 1800000
+>
+> Nope.
+>
+> > +
+> > +  mediatek,bled-channel-use:
+> > +    $ref: /schemas/types.yaml#/definitions/uint8
+> > +    description: |
+> > +      Backlight LED channel to be used.
+> > +      Each bit mapping to:
+> > +        - 0: CH4
+> > +        - 1: CH3
+> > +        - 2: CH2
+> > +        - 3: CH1
+> > +    minimum: 1
+> > +    maximum: 15
+> > +
+> > +required:
+> > +  - compatible
+> > +  - mediatek,bled-channel-use
+> > +
+> > +additionalProperties: false
+>
+>
+> Best regards,
+> Krzysztof
 
-Either this or get also rid of the pericfg_comp_str in the _plat_data. I'm 
-unemotional about this :)
-
-Regards,
-Matthias
-
-> 
-> After all, it's just one single SoC.
-> 
-> I'll send a new version soon!
-> 
-> Cheers,
-> Angelo
-> 
+Best regards,
+ChiaEn Wu
 
