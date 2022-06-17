@@ -4,140 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 186B0C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 16:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 553DAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 17:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F8ZlprZcEA0IdQfoERzQKZmzhv3x747ABVMdW/D2/Qk=; b=NebCEIkYTJo+ltjUd6o4mM/+bq
-	TprrHA60v+VMutWqmznEEAriA4cgygE+uopsIlLYN3/H9/znTqUBKoPmmArd9eagbP9uJa0CoYLd2
-	el2UbAvORsr2deDvsSfh38tt/j/A6b5DxtByQ/Ix89vqYp7O5PPQpsjOUDYg0ZpU45nqBIHz6tJ7M
-	ile5EmX6x/twczZtRHx5w51NsS6jNhfxWVB695T8qfK81lVODZcmwsE/wN77CnZx2rTwlogwAK6px
-	gm62wThqcENWHnknbyws1lPTs4eTBOeZk22wZ1MXMWilBr9In3bRkJhfa9BGISNZdQkeOq3WfumDz
-	6sFOch7A==;
+	bh=WApVYEZOyKxD0bymeRi03xrIA536BXHW5Zo78mfLkVk=; b=4HnrPKUK/Rm3jITbOOCn0QD8Bg
+	cMN0PsXIUSGvbU3NFhtMIwM7ah9BfdAe/CBnZcvxoAAppnuSEC7Wf90v8JW7mkAaCKpOa6NtZNokN
+	UCmq+LozcRwiGYPd5fbHGyLDV7RqBmP09I4d3ftD802h5YQGAChHtX/MK2xtQPITa4GyKl4Mhmc7A
+	vvz623XmhulryONjg71ciu89HkbkLxDP3TKLDnvaTLSD7TLqBsV+6vEqTzw6qejLFDdndoG3n1TQc
+	m3Twd0Wh8aKdyg5/qjRljnZzqFNJSkQgGcbcKHwzHCCnS3xJEq5zF+WdE3huzqT0PeeTGOecLlx47
+	ZsM5vkyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2EVr-008DjL-3w; Fri, 17 Jun 2022 16:07:59 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1o2FZj-008P7R-58; Fri, 17 Jun 2022 17:16:03 +0000
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2EVj-008DgQ-SP; Fri, 17 Jun 2022 16:07:57 +0000
-Received: from pps.filterd (m0288072.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25HD2D4h027682;
-	Fri, 17 Jun 2022 17:59:01 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=selector1;
- bh=F8ZlprZcEA0IdQfoERzQKZmzhv3x747ABVMdW/D2/Qk=;
- b=LAttdVjX2WVLH9ToVlCA6fFzXv+vSFkAY4VAXA35jr1NHusfPMve1a2fNUAdryKXRzUM
- wXeR6QriEffZLA+A7pR3x6xh/TBESKeAi1CFqvlWDrnzZwIqCAGsWMWCREK6fdQF/Shx
- oA+/wz4pisHSZeXblekpXpbldqaGaZrC85xKtXx+R+nOQ5jBCQeF2AkPCoUkkM5FLT7x
- 9TbzTLkolhIn7qDTZ0QVtSNGwEYGYyXSDO1DtAtqWp72Y9ty+IRCl5C6z9gMpq7X6Ugb
- ThkkES9/iPUXIARYl5n0JAjkLA/3MeQMy5Ydn97JTg95+H/iwhtv/qa8CmO6xB8BsUSJ Mw== 
-Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3gqd187hvh-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 17 Jun 2022 17:59:01 +0200
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id 5DCD710002A;
-	Fri, 17 Jun 2022 17:58:56 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node2.st.com [10.75.129.70])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 2A1DD231500;
-	Fri, 17 Jun 2022 17:58:56 +0200 (CEST)
-Received: from [10.252.21.28] (10.75.127.49) by SHFDAG1NODE2.st.com
- (10.75.129.70) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.2308.20; Fri, 17 Jun
- 2022 17:58:52 +0200
-Message-ID: <5a292a46-71d0-a078-f92f-158deb58a764@foss.st.com>
-Date: Fri, 17 Jun 2022 17:58:51 +0200
+	id 1o2FZV-008P1R-3a; Fri, 17 Jun 2022 17:15:51 +0000
+Received: by mail-io1-xd2d.google.com with SMTP id n11so5179325iod.4;
+        Fri, 17 Jun 2022 10:15:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=WApVYEZOyKxD0bymeRi03xrIA536BXHW5Zo78mfLkVk=;
+        b=A/pPcgrfg1m2yA6MEEdDBKTaOJ2GZoXeRj89sq7ibmlWvQbg3NGm3kcfLcPEsu0cKF
+         BavHO0Z3VmnqtQaxK7UMzJ94Xa4VMuG5VzjG5fue0Slb+tq9JqcYWTt23xdN1CsV4FtT
+         Uw5cyLFCIm9gNgIxSjIwmZml06alk4EIcChdHxtQ4ljRPZSLZz0edhvOp2Yp2HTOfW13
+         jTE0N8HfNfb8VWy5zkhxVREkQVv5j2Uj1BiIEC/JNhyQpbFM1tNKT5itOXMHFwt0P8Or
+         RgtLwqVAFeStwSqdAspH7oCjwmj42wDxOvpErnvt+8vcIn4RlOh+brO7oJwK7FHKIn+6
+         VZUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=WApVYEZOyKxD0bymeRi03xrIA536BXHW5Zo78mfLkVk=;
+        b=n3YFu8hIFT/S2Ng72B0n0CQF800Vqo5YfOPT/M3VJlxjZGhhBliInZSVA44+NddHGe
+         4aZ5ZXASnznnhSpiNH3jIRHpPm0yS/uAEzeHqGpOQW/ET1ZR5Gn0Fuldd3+LlOt/JNrz
+         2LSv42gghmcqsCvA+IDEm+QEKtd1mEMBRdD9MkD4IS/RSQlh4sRu0TeNR7Ti/Vh9bvAl
+         iltKFRALj5iDUYkzzcEtiRHojbXo6E0/Zabbwo/divaNXfSHlTNEZHH7TEzTeQEyA8TL
+         zVHuOo33Mqjd/s3p9eNrzH8/AHCHTMYF0044PFNIA8qrF19R7j7i4cwxSiYQI5ggsFpt
+         rv3g==
+X-Gm-Message-State: AJIora/8HppvSz+Vw32iy7wP8UdNISsm0McPOfI4Q/Dw79+G9U2s3riv
+	g+aOEoN7Bf7jgEJs/WVvcFKFk/FAcvXFsB9jvH0=
+X-Google-Smtp-Source: AGRyM1t9ErBDC4z6wUWd3rr2PZHkKy4brF52F6NkwgA2if8GQk3nkvvrwVcBhAPB/cuDHIsaYScUFQeCm4VxyhYwyG8=
+X-Received: by 2002:a05:6638:2113:b0:331:feae:af81 with SMTP id
+ n19-20020a056638211300b00331feaeaf81mr5877071jaj.196.1655486145516; Fri, 17
+ Jun 2022 10:15:45 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 32/34] iio: adc: stm32-adc: convert to device properties
-Content-Language: en-US
-To: Jonathan Cameron <jic23@kernel.org>,
-        =?UTF-8?Q?Nuno_S=c3=a1?=
-	<nuno.sa@analog.com>
-CC: <linux-imx@nxp.com>, <linux-renesas-soc@vger.kernel.org>,
-        <linux-mips@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <chrome-platform@lists.linux.dev>,
-        Lad Prabhakar
-	<prabhakar.mahadev-lad.rj@bp.renesas.com>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-arm-msm@vger.kernel.org>, <linux-iio@vger.kernel.org>,
-        <openbmc@lists.ozlabs.org>, Cai Huoqing
-	<cai.huoqing@linux.dev>,
-        Benjamin Fair <benjaminfair@google.com>,
-        Jishnu
- Prakash <quic_jprakash@quicinc.com>,
-        Linus Walleij
-	<linus.walleij@linaro.org>,
-        Lars-Peter Clausen <lars@metafoo.de>,
-        Alexandre
- Torgue <alexandre.torgue@foss.st.com>,
-        Amit Kucheria <amitk@kernel.org>, Andy
- Gross <agross@kernel.org>,
-        Michael Hennerich <Michael.Hennerich@analog.com>,
-        Haibo Chen <haibo.chen@nxp.com>, Benson Leung <bleung@chromium.org>,
-        "Rafael
- J. Wysocki" <rafael@kernel.org>,
-        Alexandre Belloni
-	<alexandre.belloni@bootlin.com>,
-        Christophe Branchereau
-	<cbranchereau@gmail.com>,
-        Patrick Venture <venture@google.com>, Arnd Bergmann
-	<arnd@arndb.de>,
-        Nancy Yuen <yuenn@google.com>, Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Daniel Lezcano <daniel.lezcano@linaro.org>,
-        Gwendal
- Grignou <gwendal@chromium.org>,
-        Saravanan Sekar <sravanhome@gmail.com>,
-        Tali
- Perry <tali.perry1@gmail.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Paul Cercueil <paul@crapouillou.net>,
-        Thara Gopinath
-	<thara.gopinath@linaro.org>,
-        Avi Fishman <avifishman70@gmail.com>,
-        Lorenzo
- Bianconi <lorenzo@kernel.org>,
-        Claudiu Beznea <claudiu.beznea@microchip.com>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Andy Shevchenko
-	<andy.shevchenko@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        Tomer
- Maimon <tmaimon77@gmail.com>,
-        Bjorn Andersson <bjorn.andersson@linaro.org>,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Zhang Rui <rui.zhang@intel.com>, Shawn Guo <shawnguo@kernel.org>,
-        Guenter Roeck <groeck@chromium.org>,
-        Fabio
- Estevam <festevam@gmail.com>,
-        Olivier Moysan <olivier.moysan@foss.st.com>,
-        Eugen Hristev <eugen.hristev@microchip.com>,
-        Miquel Raynal
-	<miquel.raynal@bootlin.com>
-References: <20220610084545.547700-1-nuno.sa@analog.com>
- <20220610084545.547700-33-nuno.sa@analog.com>
- <20220611164745.3e99b730@jic23-huawei>
-From: Fabrice Gasnier <fabrice.gasnier@foss.st.com>
-In-Reply-To: <20220611164745.3e99b730@jic23-huawei>
+References: <20220613111146.25221-1-peterwu.pub@gmail.com> <20220613111146.25221-9-peterwu.pub@gmail.com>
+ <Yqph8jwHU8rPooJA@google.com>
+In-Reply-To: <Yqph8jwHU8rPooJA@google.com>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Sat, 18 Jun 2022 01:15:29 +0800
+Message-ID: <CABtFH5KLVQFYOBGZ--9+s4GrHXbsDao-yL-KCFwL3FD_kbNhjg@mail.gmail.com>
+Subject: Re: [PATCH v2 08/15] mfd: mt6370: Add Mediatek MT6370 support
+To: Lee Jones <lee.jones@linaro.org>
+Cc: jic23@kernel.org, lars@metafoo.de, matthias.bgg@gmail.com, 
+	Daniel Thompson <daniel.thompson@linaro.org>, jingoohan1@gmail.com, pavel@ucw.cz, 
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com, 
+	ChiYuan Huang <cy_huang@richtek.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.75.127.49]
-X-ClientProxiedBy: SFHDAG2NODE3.st.com (10.75.127.6) To SHFDAG1NODE2.st.com
- (10.75.129.70)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.64.514
- definitions=2022-06-17_10,2022-06-17_01,2022-02-23_01
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_090752_780180_433E643C 
-X-CRM114-Status: GOOD (  42.11  )
+X-CRM114-CacheID: sfid-20220617_101549_224430_52BA1469 
+X-CRM114-Status: GOOD (  25.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,406 +91,506 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/11/22 17:47, Jonathan Cameron wrote:
-> On Fri, 10 Jun 2022 10:45:43 +0200
-> Nuno Sá <nuno.sa@analog.com> wrote:
-> 
->> Make the conversion to firmware agnostic device properties. As part of
->> the conversion the IIO inkern interface 'of_xlate()' is also converted to
->> 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence OF
->> dependencies from IIO.
->>
->> Signed-off-by: Nuno Sá <nuno.sa@analog.com>
-> 
-> One trivial comment inline. 
-> 
-> In general this particular refactor is complex, so I either want
-> eyes of those familiar with the driver and / or testing or we may want
-> to reduce the scope to just the fwnode_xlate() and leave the more
-> complex conversions for when we can get that testing done.
-> 
-> Let's see if we get the necessary review on this more complex patch.
-> I just don't want us to get stalled by trying to do too much at once!
-> 
-> Jonathan
-> 
-> 
->> ---
->>  drivers/iio/adc/stm32-adc.c | 128 ++++++++++++++++++++----------------
->>  1 file changed, 70 insertions(+), 58 deletions(-)
->>
->> diff --git a/drivers/iio/adc/stm32-adc.c b/drivers/iio/adc/stm32-adc.c
->> index a68ecbda6480..87acef31ace1 100644
->> --- a/drivers/iio/adc/stm32-adc.c
->> +++ b/drivers/iio/adc/stm32-adc.c
->> @@ -21,11 +21,11 @@
->>  #include <linux/io.h>
->>  #include <linux/iopoll.h>
->>  #include <linux/module.h>
->> +#include <linux/mod_devicetable.h>
->>  #include <linux/nvmem-consumer.h>
->>  #include <linux/platform_device.h>
->>  #include <linux/pm_runtime.h>
->> -#include <linux/of.h>
->> -#include <linux/of_device.h>
->> +#include <linux/property.h>
->>  
->>  #include "stm32-adc-core.h"
->>  
->> @@ -1524,8 +1524,8 @@ static int stm32_adc_update_scan_mode(struct iio_dev *indio_dev,
->>  	return ret;
->>  }
->>  
->> -static int stm32_adc_of_xlate(struct iio_dev *indio_dev,
->> -			      const struct of_phandle_args *iiospec)
->> +static int stm32_adc_fwnode_xlate(struct iio_dev *indio_dev,
->> +				  const struct fwnode_reference_args *iiospec)
->>  {
->>  	int i;
->>  
->> @@ -1579,7 +1579,7 @@ static const struct iio_info stm32_adc_iio_info = {
->>  	.hwfifo_set_watermark = stm32_adc_set_watermark,
->>  	.update_scan_mode = stm32_adc_update_scan_mode,
->>  	.debugfs_reg_access = stm32_adc_debugfs_reg_access,
->> -	.of_xlate = stm32_adc_of_xlate,
->> +	.fwnode_xlate = stm32_adc_fwnode_xlate,
->>  };
->>  
->>  static unsigned int stm32_adc_dma_residue(struct stm32_adc *adc)
->> @@ -1776,14 +1776,14 @@ static const struct iio_chan_spec_ext_info stm32_adc_ext_info[] = {
->>  	{},
->>  };
->>  
->> -static int stm32_adc_of_get_resolution(struct iio_dev *indio_dev)
->> +static int stm32_adc_fw_get_resolution(struct iio_dev *indio_dev)
->>  {
->> -	struct device_node *node = indio_dev->dev.of_node;
->> +	struct device *dev = &indio_dev->dev;
->>  	struct stm32_adc *adc = iio_priv(indio_dev);
->>  	unsigned int i;
->>  	u32 res;
->>  
->> -	if (of_property_read_u32(node, "assigned-resolution-bits", &res))
->> +	if (device_property_read_u32(dev, "assigned-resolution-bits", &res))
->>  		res = adc->cfg->adc_info->resolutions[0];
->>  
->>  	for (i = 0; i < adc->cfg->adc_info->num_res; i++)
->> @@ -1867,11 +1867,11 @@ static void stm32_adc_chan_init_one(struct iio_dev *indio_dev,
->>  
->>  static int stm32_adc_get_legacy_chan_count(struct iio_dev *indio_dev, struct stm32_adc *adc)
->>  {
->> -	struct device_node *node = indio_dev->dev.of_node;
->> +	struct device *dev = &indio_dev->dev;
->>  	const struct stm32_adc_info *adc_info = adc->cfg->adc_info;
->>  	int num_channels = 0, ret;
->>  
->> -	ret = of_property_count_u32_elems(node, "st,adc-channels");
->> +	ret = device_property_count_u32(dev, "st,adc-channels");
->>  	if (ret > adc_info->max_channels) {
->>  		dev_err(&indio_dev->dev, "Bad st,adc-channels?\n");
->>  		return -EINVAL;
->> @@ -1879,18 +1879,17 @@ static int stm32_adc_get_legacy_chan_count(struct iio_dev *indio_dev, struct stm
->>  		num_channels += ret;
->>  	}
->>  
->> -	ret = of_property_count_elems_of_size(node, "st,adc-diff-channels",
->> -					      sizeof(struct stm32_adc_diff_channel));
->> -	if (ret > adc_info->max_channels) {
->> +	ret = device_property_count_u32(dev, "st,adc-diff-channels");
->> +	if ((ret / 2) > adc_info->max_channels) {
-> hmm. The magic '2' that is introduced here kind of looses some of the meaning
-> that existed for the *_count_elems_of_size()
-> 
-> Perhaps introduce a define or a comment on why it is 2?
+Hi Lee,
 
-Hi Nuno,
+Thanks for your helpful comments, we have some questions and replies below.
 
-Thanks for your patch, please find some remarks below.
+Lee Jones <lee.jones@linaro.org> =E6=96=BC 2022=E5=B9=B46=E6=9C=8816=E6=97=
+=A5 =E9=80=B1=E5=9B=9B =E6=B8=85=E6=99=A86:49=E5=AF=AB=E9=81=93=EF=BC=9A
 
-First, I agree with Jonathan here. (Just suggesting) Would it be
-possible to keep a reference to the target struct to ease long term
-maintenance ? I'm thinking of:
-sizeof(struct stm32_adc_diff_channel) / sizeof(u32).
-Or possibly a better approach...
+>
+> On Mon, 13 Jun 2022, ChiaEn Wu wrote:
+>
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> >
+> > Add Mediatek MT6370 MFD support.
+> >
+> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> > ---
+> >  drivers/mfd/Kconfig  |  13 ++
+> >  drivers/mfd/Makefile |   1 +
+> >  drivers/mfd/mt6370.c | 349 +++++++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 363 insertions(+)
+> >  create mode 100644 drivers/mfd/mt6370.c
+> >
+> > diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+> > index 3b59456f5545..d9a7524a3e0e 100644
+> > --- a/drivers/mfd/Kconfig
+> > +++ b/drivers/mfd/Kconfig
+> > @@ -937,6 +937,19 @@ config MFD_MT6360
+> >         PMIC part includes 2-channel BUCKs and 2-channel LDOs
+> >         LDO part includes 4-channel LDOs
+> >
+> > +config MFD_MT6370
+> > +     tristate "Mediatek MT6370 SubPMIC"
+> > +     select MFD_CORE
+> > +     select REGMAP_I2C
+> > +     select REGMAP_IRQ
+> > +     depends on I2C
+> > +     help
+> > +       Say Y here to enable MT6370 SubPMIC functional support.
+> > +       It integrate single cell battery charger with adc monitoring, R=
+GB
+>
+> s/integrates/consists of a/
+>
+> "ADC"
 
-> 
->>  		dev_err(&indio_dev->dev, "Bad st,adc-diff-channels?\n");
->>  		return -EINVAL;
->> -	} else if (ret > 0) {
->> -		adc->num_diff = ret;
->> -		num_channels += ret;
->> +	} else if ((ret / 2) > 0) {
->> +		adc->num_diff = ret / 2;
->> +		num_channels += ret / 2;
->>  	}
->>  
->>  	/* Optional sample time is provided either for each, or all channels */
->> -	ret = of_property_count_u32_elems(node, "st,min-sample-time-nsecs");
->> +	ret = device_property_count_u32(dev, "st,min-sample-time-nsecs");
->>  	if (ret > 1 && ret != num_channels) {
->>  		dev_err(&indio_dev->dev, "Invalid st,min-sample-time-nsecs\n");
->>  		return -EINVAL;
->> @@ -1901,21 +1900,20 @@ static int stm32_adc_get_legacy_chan_count(struct iio_dev *indio_dev, struct stm
->>  
->>  static int stm32_adc_legacy_chan_init(struct iio_dev *indio_dev,
->>  				      struct stm32_adc *adc,
->> -				      struct iio_chan_spec *channels)
->> +				      struct iio_chan_spec *channels,
->> +				      int nchans)
->>  {
->> -	struct device_node *node = indio_dev->dev.of_node;
->>  	const struct stm32_adc_info *adc_info = adc->cfg->adc_info;
->>  	struct stm32_adc_diff_channel diff[STM32_ADC_CH_MAX];
->> +	struct device *dev = &indio_dev->dev;
->>  	u32 num_diff = adc->num_diff;
->>  	int size = num_diff * sizeof(*diff) / sizeof(u32);
->> -	int scan_index = 0, val, ret, i;
->> -	struct property *prop;
->> -	const __be32 *cur;
->> -	u32 smp = 0;
->> +	int scan_index = 0, ret, i;
->> +	u32 smp = 0, nsmps, smps[STM32_ADC_CH_MAX], chans[STM32_ADC_CH_MAX];
->>  
->>  	if (num_diff) {
->> -		ret = of_property_read_u32_array(node, "st,adc-diff-channels",
->> -						 (u32 *)diff, size);
->> +		ret = device_property_read_u32_array(dev, "st,adc-diff-channels",
->> +						     (u32 *)diff, size);
->>  		if (ret) {
->>  			dev_err(&indio_dev->dev, "Failed to get diff channels %d\n", ret);
->>  			return ret;
->> @@ -1936,32 +1934,51 @@ static int stm32_adc_legacy_chan_init(struct iio_dev *indio_dev,
->>  		}
->>  	}
->>  
->> -	of_property_for_each_u32(node, "st,adc-channels", prop, cur, val) {
->> -		if (val >= adc_info->max_channels) {
->> -			dev_err(&indio_dev->dev, "Invalid channel %d\n", val);
->> +	ret = device_property_read_u32_array(dev, "st,adc-channels", chans,
->> +					     nchans);
->> +	if (ret)
->> +		return ret;
->> +
->> +	for (i = 0; i < nchans; i++) {
+We will fine it in the next patch.
 
-Shouldn't use 'i' variable as is.
+>
+> > +       LEDs, dual channel flashlight, WLED backlight driver, display b=
+ias
+>
+> > +       voltage supply, one general purpose LDO, and cc logic
+> > +       controller with USBPD commmunication capable.
+>
+> The last part makes no sense - "and is USBPD"?
 
-I tested at my end. There's a bug around here, as the same variable 'i'
-is used already in next for loop. It creates an endless loop, that ends
-up in incrementing scan_index indefinitely until some oops occurs.
+If we modify this help text to
+"one general purpose LDO, and the USB Type-C & PD controller complies
+with the latest USB Type-C and PD standards",
+did these modifications meet your expectations?
 
-I fixed that locally for quick testing by using another variable.
+>
+> >  config MFD_MT6397
+> >       tristate "MediaTek MT6397 PMIC Support"
+> >       select MFD_CORE
+> > diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+> > index 858cacf659d6..62b27125420e 100644
+> > --- a/drivers/mfd/Makefile
+> > +++ b/drivers/mfd/Makefile
+> > @@ -242,6 +242,7 @@ obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)        +=3D inte=
+l_soc_pmic_bxtwc.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)   +=3D intel_soc_pmic_chtwc.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)        +=3D intel_soc_pmic_chtdc=
+_ti.o
+> >  obj-$(CONFIG_MFD_MT6360)     +=3D mt6360-core.o
+> > +obj-$(CONFIG_MFD_MT6370)     +=3D mt6370.o
+> >  mt6397-objs                  :=3D mt6397-core.o mt6397-irq.o mt6358-ir=
+q.o
+> >  obj-$(CONFIG_MFD_MT6397)     +=3D mt6397.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)   +=3D intel_soc_pmic_mrfld.o
+> > diff --git a/drivers/mfd/mt6370.c b/drivers/mfd/mt6370.c
+> > new file mode 100644
+> > index 000000000000..6af9f73c9c0c
+> > --- /dev/null
+> > +++ b/drivers/mfd/mt6370.c
+> > @@ -0,0 +1,349 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +
+> > +#include <linux/bits.h>
+> > +#include <linux/i2c.h>
+> > +#include <linux/interrupt.h>
+> > +#include <linux/kernel.h>
+> > +#include <linux/mfd/core.h>
+> > +#include <linux/module.h>
+> > +#include <linux/regmap.h>
+> > +
+> > +enum {
+> > +     MT6370_USBC_I2C =3D 0,
+> > +     MT6370_PMU_I2C,
+> > +     MT6370_MAX_I2C
+> > +};
+> > +
+> > +#define MT6370_REG_DEV_INFO  0x100
+> > +#define MT6370_REG_CHG_IRQ1  0x1C0
+> > +#define MT6370_REG_CHG_MASK1 0x1E0
+> > +
+> > +#define MT6370_VENID_MASK    GENMASK(7, 4)
+> > +
+> > +#define MT6370_NUM_IRQREGS   16
+> > +#define MT6370_USBC_I2CADDR  0x4E
+> > +#define MT6370_REG_ADDRLEN   2
+> > +#define MT6370_REG_MAXADDR   0x1FF
+> > +
+> > +/* IRQ definitions */
+> > +#define MT6370_IRQ_DIRCHGON          0
+> > +#define MT6370_IRQ_CHG_TREG          4
+> > +#define MT6370_IRQ_CHG_AICR          5
+> > +#define MT6370_IRQ_CHG_MIVR          6
+> > +#define MT6370_IRQ_PWR_RDY           7
+> > +#define MT6370_IRQ_FL_CHG_VINOVP     11
+> > +#define MT6370_IRQ_CHG_VSYSUV                12
+> > +#define MT6370_IRQ_CHG_VSYSOV                13
+> > +#define MT6370_IRQ_CHG_VBATOV                14
+> > +#define MT6370_IRQ_CHG_VINOVPCHG     15
+> > +#define MT6370_IRQ_TS_BAT_COLD               20
+> > +#define MT6370_IRQ_TS_BAT_COOL               21
+> > +#define MT6370_IRQ_TS_BAT_WARM               22
+> > +#define MT6370_IRQ_TS_BAT_HOT                23
+> > +#define MT6370_IRQ_TS_STATC          24
+> > +#define MT6370_IRQ_CHG_FAULT         25
+> > +#define MT6370_IRQ_CHG_STATC         26
+> > +#define MT6370_IRQ_CHG_TMR           27
+> > +#define MT6370_IRQ_CHG_BATABS                28
+> > +#define MT6370_IRQ_CHG_ADPBAD                29
+> > +#define MT6370_IRQ_CHG_RVP           30
+> > +#define MT6370_IRQ_TSHUTDOWN         31
+> > +#define MT6370_IRQ_CHG_IINMEAS               32
+> > +#define MT6370_IRQ_CHG_ICCMEAS               33
+> > +#define MT6370_IRQ_CHGDET_DONE               34
+> > +#define MT6370_IRQ_WDTMR             35
+> > +#define MT6370_IRQ_SSFINISH          36
+> > +#define MT6370_IRQ_CHG_RECHG         37
+> > +#define MT6370_IRQ_CHG_TERM          38
+> > +#define MT6370_IRQ_CHG_IEOC          39
+> > +#define MT6370_IRQ_ADC_DONE          40
+> > +#define MT6370_IRQ_PUMPX_DONE                41
+> > +#define MT6370_IRQ_BST_BATUV         45
+> > +#define MT6370_IRQ_BST_MIDOV         46
+> > +#define MT6370_IRQ_BST_OLP           47
+> > +#define MT6370_IRQ_ATTACH            48
+> > +#define MT6370_IRQ_DETACH            49
+> > +#define MT6370_IRQ_HVDCP_STPDONE     51
+> > +#define MT6370_IRQ_HVDCP_VBUSDET_DONE        52
+> > +#define MT6370_IRQ_HVDCP_DET         53
+> > +#define MT6370_IRQ_CHGDET            54
+> > +#define MT6370_IRQ_DCDT                      55
+> > +#define MT6370_IRQ_DIRCHG_VGOK               59
+> > +#define MT6370_IRQ_DIRCHG_WDTMR              60
+> > +#define MT6370_IRQ_DIRCHG_UC         61
+> > +#define MT6370_IRQ_DIRCHG_OC         62
+> > +#define MT6370_IRQ_DIRCHG_OV         63
+> > +#define MT6370_IRQ_OVPCTRL_SWON              67
+> > +#define MT6370_IRQ_OVPCTRL_UVP_D     68
+> > +#define MT6370_IRQ_OVPCTRL_UVP               69
+> > +#define MT6370_IRQ_OVPCTRL_OVP_D     70
+> > +#define MT6370_IRQ_OVPCTRL_OVP               71
+> > +#define MT6370_IRQ_FLED_STRBPIN              72
+> > +#define MT6370_IRQ_FLED_TORPIN               73
+> > +#define MT6370_IRQ_FLED_TX           74
+> > +#define MT6370_IRQ_FLED_LVF          75
+> > +#define MT6370_IRQ_FLED2_SHORT               78
+> > +#define MT6370_IRQ_FLED1_SHORT               79
+> > +#define MT6370_IRQ_FLED2_STRB                80
+> > +#define MT6370_IRQ_FLED1_STRB                81
+> > +#define mT6370_IRQ_FLED2_STRB_TO     82
+> > +#define MT6370_IRQ_FLED1_STRB_TO     83
+> > +#define MT6370_IRQ_FLED2_TOR         84
+> > +#define MT6370_IRQ_FLED1_TOR         85
+> > +#define MT6370_IRQ_OTP                       93
+> > +#define MT6370_IRQ_VDDA_OVP          94
+> > +#define MT6370_IRQ_VDDA_UV           95
+> > +#define MT6370_IRQ_LDO_OC            103
+> > +#define MT6370_IRQ_BLED_OCP          118
+> > +#define MT6370_IRQ_BLED_OVP          119
+> > +#define MT6370_IRQ_DSV_VNEG_OCP              123
+> > +#define MT6370_IRQ_DSV_VPOS_OCP              124
+> > +#define MT6370_IRQ_DSV_BST_OCP               125
+> > +#define MT6370_IRQ_DSV_VNEG_SCP              126
+> > +#define MT6370_IRQ_DSV_VPOS_SCP              127
+> > +
+> > +struct mt6370_info {
+> > +     struct i2c_client *i2c[MT6370_MAX_I2C];
+> > +     struct device *dev;
+> > +     struct regmap *regmap;
+> > +     struct regmap_irq_chip_data *irq_data;
+> > +};
+>
+> Can we shove all of the above into a header file?
 
-Isn't there a helper to achive this (e.g. like of_property_for_each_u32) ?
+Well... In Patch v1, we put these "#define IRQ" into
+"include/dt-bindings/mfd/mediatek,mt6370.h".
+But the reviewer of DT files hoped us to remove this header file, we
+put these "#define IRQ" in this .c file.
+Shall we leave them here or put them into the header file in
+"driver/power/supply/mt6370-charger.h"?
 
->> +		if (chans[i] >= adc_info->max_channels) {
->> +			dev_err(&indio_dev->dev, "Invalid channel %d\n",
->> +				chans[i]);
->>  			return -EINVAL;
->>  		}
->>  
->>  		/* Channel can't be configured both as single-ended & diff */
->>  		for (i = 0; i < num_diff; i++) {
->> -			if (val == diff[i].vinp) {
->> -				dev_err(&indio_dev->dev, "channel %d misconfigured\n",	val);
->> +			if (chans[i] == diff[i].vinp) {
->> +				dev_err(&indio_dev->dev, "channel %d misconfigured\n",	chans[i]);
->>  				return -EINVAL;
->>  			}
->>  		}
->> -		stm32_adc_chan_init_one(indio_dev, &channels[scan_index], val,
->> -					0, scan_index, false);
->> +		stm32_adc_chan_init_one(indio_dev, &channels[scan_index],
->> +					chans[i], 0, scan_index, false);
->>  		scan_index++;
->>  	}
->>  
->> +	nsmps = device_property_count_u32(dev, "st,min-sample-time-nsecs");
->> +	if (nsmps) {
->> +		if (nsmps >= nchans)
+>
+> > +static const struct regmap_irq mt6370_irqs[] =3D {
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHGON, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TREG, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_AICR, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_MIVR, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_PWR_RDY, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FL_CHG_VINOVP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VSYSUV, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VSYSOV, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VBATOV, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VINOVPCHG, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_COLD, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_COOL, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_WARM, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_HOT, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_STATC, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_FAULT, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_STATC, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TMR, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_BATABS, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_ADPBAD, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_RVP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_TSHUTDOWN, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_IINMEAS, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_ICCMEAS, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHGDET_DONE, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_WDTMR, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_SSFINISH, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_RECHG, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TERM, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_IEOC, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_ADC_DONE, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_PUMPX_DONE, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_BATUV, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_MIDOV, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_OLP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_ATTACH, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DETACH, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_STPDONE, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_VBUSDET_DONE, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_DET, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHGDET, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DCDT, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_VGOK, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_WDTMR, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_UC, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_OC, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_OV, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_SWON, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_UVP_D, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_UVP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_OVP_D, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_OVP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_STRBPIN, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_TORPIN, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_TX, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_LVF, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_SHORT, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_SHORT, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_STRB, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB, 8),
+> > +     REGMAP_IRQ_REG_LINE(mT6370_IRQ_FLED2_STRB_TO, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB_TO, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_TOR, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_TOR, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_OTP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_VDDA_OVP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_VDDA_UV, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_LDO_OC, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_BLED_OCP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_BLED_OVP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VNEG_OCP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VPOS_OCP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_BST_OCP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VNEG_SCP, 8),
+> > +     REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VPOS_SCP, 8)
+> > +};
+> > +
+> > +static const struct regmap_irq_chip mt6370_irq_chip =3D {
+> > +     .name           =3D "mt6370-irqs",
+> > +     .status_base    =3D MT6370_REG_CHG_IRQ1,
+> > +     .mask_base      =3D MT6370_REG_CHG_MASK1,
+> > +     .num_regs       =3D MT6370_NUM_IRQREGS,
+> > +     .irqs           =3D mt6370_irqs,
+> > +     .num_irqs       =3D ARRAY_SIZE(mt6370_irqs),
+> > +};
+> > +
+> > +static const struct resource mt6370_regulator_irqs[] =3D {
+> > +     DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VPOS_SCP, "db_vpos_scp"),
+> > +     DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VNEG_SCP, "db_vneg_scp"),
+> > +     DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_BST_OCP, "db_vbst_ocp"),
+> > +     DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VPOS_OCP, "db_vpos_ocp"),
+> > +     DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VNEG_OCP, "db_vneg_ocp"),
+> > +     DEFINE_RES_IRQ_NAMED(MT6370_IRQ_LDO_OC, "ldo_oc")
+> > +};
+> > +
+> > +static const struct mfd_cell mt6370_devices[] =3D {
+> > +     MFD_CELL_OF("adc", NULL, NULL, 0, 0, "mediatek,mt6370-adc"),
+> > +     MFD_CELL_OF("charger", NULL, NULL, 0, 0, "mediatek,mt6370-charger=
+"),
+> > +     MFD_CELL_OF("backlight", NULL, NULL, 0, 0, "mediatek,mt6370-backl=
+ight"),
+> > +     MFD_CELL_OF("flashlight", NULL, NULL, 0, 0, "mediatek,mt6370-flas=
+hlight"),
+> > +     MFD_CELL_OF("indicator", NULL, NULL, 0, 0, "mediatek,mt6370-indic=
+ator"),
+> > +     MFD_CELL_OF("tcpc", NULL, NULL, 0, 0, "mediatek,mt6370-tcpc"),
+> > +     MFD_CELL_RES("regulator", mt6370_regulator_irqs)
+> > +};
+> > +
+> > +static int mt6370_check_vendor_info(struct mt6370_info *info)
+> > +{
+> > +     unsigned int devinfo;
+> > +     int ret;
+> > +
+> > +     ret =3D regmap_read(info->regmap, MT6370_REG_DEV_INFO, &devinfo);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     switch (FIELD_GET(MT6370_VENID_MASK, devinfo)) {
+> > +     case 0x8: /* RT5081 */
+> > +     case 0xA: /* RT5081A */
+> > +     case 0xE: /* MT6370 */
+> > +     case 0xF: /* MT6371 */
+> > +     case 0x9: /* MT6372P */
+> > +     case 0xB: /* MT6372CP */
+>
+> Please define these and drop the comments.
 
-nit: if (nsmps > nchans)
+OK, we will refine them in the next patch! Thanks!
 
->> +			nsmps = nchans;
+>
+> > +             break;
+> > +     default:
+> > +             dev_err(info->dev, "Not invalid value 0x%02x\n", devinfo)=
+;
+> > +             return -ENODEV;
+> > +     }
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int mt6370_regmap_read(void *context, const void *reg_buf,
+> > +                           size_t reg_size, void *val_buf, size_t val_=
+size)
+> > +{
+> > +     struct mt6370_info *info =3D context;
+> > +     u8 bank_idx =3D *(u8 *)reg_buf, bank_addr =3D *(u8 *)(reg_buf + 1=
+);
+>
+> Looks a little scruffy.  Perhaps allocate the values below.
+>
+> > +     int ret;
+> > +
+> > +     ret =3D i2c_smbus_read_i2c_block_data(info->i2c[bank_idx], bank_a=
+ddr,
+> > +                                         val_size, val_buf);
+> > +     if (ret !=3D val_size)
+> > +             return ret;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int mt6370_regmap_write(void *context, const void *data, size_t=
+ count)
+> > +{
+> > +     struct mt6370_info *info =3D context;
+> > +     u8 bank_idx =3D *(u8 *)data, bank_addr =3D *(u8 *)(data + 1);
+>
+> As above.
 
-There's a bit of redundancy in checking nsmps,
-"st,min-sample-time-nsecs" is already sanitized in
-stm32_adc_get_legacy_chan_count():
+OK, we will try to refine these parts in the next patch.
 
-/* Optional sample time is provided either for each, or all channels */
-ret = device_property_count_u32(dev, "st,min-sample-time-nsecs");
-if (ret > 1 && ret != num_channels) {
-	dev_err(...
+>
+> > +     int len =3D count - MT6370_REG_ADDRLEN;
+> > +
+> > +     return i2c_smbus_write_i2c_block_data(info->i2c[bank_idx], bank_a=
+ddr,
+> > +                                           len, data + MT6370_REG_ADDR=
+LEN);
+> > +}
+> > +
+> > +static const struct regmap_bus mt6370_regmap_bus =3D {
+> > +     .read           =3D mt6370_regmap_read,
+> > +     .write          =3D mt6370_regmap_write,
+> > +};
+> > +
+> > +static const struct regmap_config mt6370_regmap_config =3D {
+> > +     .reg_bits               =3D 16,
+> > +     .val_bits               =3D 8,
+> > +     .reg_format_endian      =3D REGMAP_ENDIAN_BIG,
+> > +     .max_register           =3D MT6370_REG_MAXADDR,
+> > +};
+> > +
+> > +static int mt6370_probe(struct i2c_client *i2c)
+> > +{
+> > +     struct mt6370_info *info;
+> > +     struct i2c_client *usbc_i2c;
+> > +     int ret;
+> > +
+> > +     info =3D devm_kzalloc(&i2c->dev, sizeof(*info), GFP_KERNEL);
+> > +     if (!info)
+> > +             return -ENOMEM;
+> > +
+> > +     info->dev =3D &i2c->dev;
+> > +
+> > +     usbc_i2c =3D devm_i2c_new_dummy_device(&i2c->dev, i2c->adapter,
+> > +                                          MT6370_USBC_I2CADDR);
+> > +     if (IS_ERR(usbc_i2c)) {
+> > +             ret =3D PTR_ERR(usbc_i2c);
+> > +             dev_err(&i2c->dev, "Failed to register usbc i2c client %d=
+\n", ret);
+>
+> "USB-C I2C"?
 
-So just sharing my thoughts here:
-- Maybe this could be dropped ?
-  (Thinking loudly) The earliest this gets sanitized, the less un-needed
-initialisations happen before failing?
-- Or the earlier check could be moved here ?
+MT6370 have two slave address, one is for the USB PD module and
+another one is for other modules.
+So we use "USB-C I2C" to refer to the USB PD module.
 
-I've no strong opinion.
+>
+> > +             return ret;
+> > +     }
+> > +
+> > +     /* Assign I2C client for PMU and TypeC */
+> > +     info->i2c[MT6370_PMU_I2C] =3D i2c;
+> > +     info->i2c[MT6370_USBC_I2C] =3D usbc_i2c;
+> > +
+> > +     info->regmap =3D devm_regmap_init(&i2c->dev, &mt6370_regmap_bus, =
+info,
+> > +                                     &mt6370_regmap_config);
+> > +     if (IS_ERR(info->regmap)) {
+> > +             ret =3D PTR_ERR(info->regmap);
+> > +             dev_err(&i2c->dev, "Failed to register regmap (%d)\n", re=
+t);
+> > +             return ret;
+> > +     }
+> > +
+> > +     ret =3D mt6370_check_vendor_info(info);
+> > +     if (ret) {
+> > +             dev_err(&i2c->dev, "Failed to check vendor info (%d)\n", =
+ret);
+> > +             return ret;
+> > +     }
+> > +
+> > +     ret =3D devm_regmap_add_irq_chip(&i2c->dev, info->regmap, i2c->ir=
+q,
+> > +                                    IRQF_ONESHOT, -1, &mt6370_irq_chip=
+,
+> > +                                    &info->irq_data);
+> > +     if (ret) {
+> > +             dev_err(&i2c->dev, "Failed to add irq chip (%d)\n", ret);
+> > +             return ret;
+> > +     }
+> > +
+> > +     return devm_mfd_add_devices(&i2c->dev, PLATFORM_DEVID_AUTO,
+> > +                                 mt6370_devices, ARRAY_SIZE(mt6370_dev=
+ices),
+> > +                                 NULL, 0,
+> > +                                 regmap_irq_get_domain(info->irq_data)=
+);
+> > +}
+> > +
+> > +static const struct of_device_id mt6370_match_table[] =3D {
+> > +     { .compatible =3D "mediatek,mt6370", },
+> > +     {}
+> > +};
+> > +MODULE_DEVICE_TABLE(of, mt6370_match_table);
+> > +
+> > +static struct i2c_driver mt6370_driver =3D {
+> > +     .driver =3D {
+> > +             .name =3D "mt6370",
+> > +             .of_match_table =3D mt6370_match_table,
+> > +     },
+> > +     .probe_new =3D mt6370_probe,
+> > +};
+> > +module_i2c_driver(mt6370_driver);
+> > +
+> > +MODULE_AUTHOR("ChiYuan Huang <cy_huang@richtek.com>");
+> > +MODULE_DESCRIPTION("MT6370 I2C MFD Driver");
+>
+> Drop all references to "MFD" please.
 
->> +
->> +		ret = device_property_read_u32_array(dev, "st,min-sample-time-nsecs",
->> +						     smps, nsmps);
->> +		if (ret)
->> +			return ret;
->> +	}
->> +
->>  	for (i = 0; i < scan_index; i++) {
->>  		/*
->> -		 * Using of_property_read_u32_index(), smp value will only be
->> -		 * modified if valid u32 value can be decoded. This allows to
->> -		 * get either no value, 1 shared value for all indexes, or one
->> -		 * value per channel.
->> +		 * This check is used with the above logic so that smp value
->> +		 * will only be modified if valid u32 value can be decoded. This
->> +		 * allows to get either no value, 1 shared value for all indexes,
->> +		 * or one value per channel. The point is to have the same
->> +		 * behavior as 'of_property_read_u32_index()'.
->>  		 */
->> -		of_property_read_u32_index(node, "st,min-sample-time-nsecs", i, &smp);
->> +		if (i < nsmps)
->> +			smp = smps[i];
+OK, we will drop them in the next patch. Thank you so much!
 
-Minor remark, I'm wondering if using a switch (nsmps) {.. case} or
-similar would help to improve understandabilty / readability ?
+>
+> > +MODULE_LICENSE("GPL v2");
+>
+> --
+> Lee Jones [=E6=9D=8E=E7=90=BC=E6=96=AF]
+> Principal Technical Lead - Developer Services
+> Linaro.org =E2=94=82 Open source software for Arm SoCs
+> Follow Linaro: Facebook | Twitter | Blog
 
-Best Regards,
-Fabrice
-
->>  
->>  		/* Prepare sampling time settings */
->>  		stm32_adc_smpr_init(adc, channels[i].channel, smp);
->> @@ -2004,22 +2021,21 @@ static int stm32_adc_generic_chan_init(struct iio_dev *indio_dev,
->>  				       struct stm32_adc *adc,
->>  				       struct iio_chan_spec *channels)
->>  {
->> -	struct device_node *node = indio_dev->dev.of_node;
->>  	const struct stm32_adc_info *adc_info = adc->cfg->adc_info;
->> -	struct device_node *child;
->> +	struct fwnode_handle *child;
->>  	const char *name;
->>  	int val, scan_index = 0, ret;
->>  	bool differential;
->>  	u32 vin[2];
->>  
->> -	for_each_available_child_of_node(node, child) {
->> -		ret = of_property_read_u32(child, "reg", &val);
->> +	device_for_each_child_node(&indio_dev->dev, child) {
->> +		ret = fwnode_property_read_u32(child, "reg", &val);
->>  		if (ret) {
->>  			dev_err(&indio_dev->dev, "Missing channel index %d\n", ret);
->>  			goto err;
->>  		}
->>  
->> -		ret = of_property_read_string(child, "label", &name);
->> +		ret = fwnode_property_read_string(child, "label", &name);
->>  		/* label is optional */
->>  		if (!ret) {
->>  			if (strlen(name) >= STM32_ADC_CH_SZ) {
->> @@ -2044,7 +2060,7 @@ static int stm32_adc_generic_chan_init(struct iio_dev *indio_dev,
->>  		}
->>  
->>  		differential = false;
->> -		ret = of_property_read_u32_array(child, "diff-channels", vin, 2);
->> +		ret = fwnode_property_read_u32_array(child, "diff-channels", vin, 2);
->>  		/* diff-channels is optional */
->>  		if (!ret) {
->>  			differential = true;
->> @@ -2061,7 +2077,7 @@ static int stm32_adc_generic_chan_init(struct iio_dev *indio_dev,
->>  		stm32_adc_chan_init_one(indio_dev, &channels[scan_index], val,
->>  					vin[1], scan_index, differential);
->>  
->> -		ret = of_property_read_u32(child, "st,min-sample-time-ns", &val);
->> +		ret = fwnode_property_read_u32(child, "st,min-sample-time-ns", &val);
->>  		/* st,min-sample-time-ns is optional */
->>  		if (!ret) {
->>  			stm32_adc_smpr_init(adc, channels[scan_index].channel, val);
->> @@ -2079,14 +2095,13 @@ static int stm32_adc_generic_chan_init(struct iio_dev *indio_dev,
->>  	return scan_index;
->>  
->>  err:
->> -	of_node_put(child);
->> +	fwnode_handle_put(child);
->>  
->>  	return ret;
->>  }
->>  
->> -static int stm32_adc_chan_of_init(struct iio_dev *indio_dev, bool timestamping)
->> +static int stm32_adc_chan_fw_init(struct iio_dev *indio_dev, bool timestamping)
->>  {
->> -	struct device_node *node = indio_dev->dev.of_node;
->>  	struct stm32_adc *adc = iio_priv(indio_dev);
->>  	const struct stm32_adc_info *adc_info = adc->cfg->adc_info;
->>  	struct iio_chan_spec *channels;
->> @@ -2096,7 +2111,7 @@ static int stm32_adc_chan_of_init(struct iio_dev *indio_dev, bool timestamping)
->>  	for (i = 0; i < STM32_ADC_INT_CH_NB; i++)
->>  		adc->int_ch[i] = STM32_ADC_INT_CH_NONE;
->>  
->> -	num_channels = of_get_available_child_count(node);
->> +	num_channels = device_get_child_node_count(&indio_dev->dev);
->>  	/* If no channels have been found, fallback to channels legacy properties. */
->>  	if (!num_channels) {
->>  		legacy = true;
->> @@ -2127,7 +2142,8 @@ static int stm32_adc_chan_of_init(struct iio_dev *indio_dev, bool timestamping)
->>  		return -ENOMEM;
->>  
->>  	if (legacy)
->> -		ret = stm32_adc_legacy_chan_init(indio_dev, adc, channels);
->> +		ret = stm32_adc_legacy_chan_init(indio_dev, adc, channels,
->> +						 num_channels);
->>  	else
->>  		ret = stm32_adc_generic_chan_init(indio_dev, adc, channels);
->>  	if (ret < 0)
->> @@ -2209,9 +2225,6 @@ static int stm32_adc_probe(struct platform_device *pdev)
->>  	bool timestamping = false;
->>  	int ret;
->>  
->> -	if (!pdev->dev.of_node)
->> -		return -ENODEV;
->> -
->>  	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*adc));
->>  	if (!indio_dev)
->>  		return -ENOMEM;
->> @@ -2220,17 +2233,16 @@ static int stm32_adc_probe(struct platform_device *pdev)
->>  	adc->common = dev_get_drvdata(pdev->dev.parent);
->>  	spin_lock_init(&adc->lock);
->>  	init_completion(&adc->completion);
->> -	adc->cfg = (const struct stm32_adc_cfg *)
->> -		of_match_device(dev->driver->of_match_table, dev)->data;
->> +	adc->cfg = device_get_match_data(dev);
->>  
->>  	indio_dev->name = dev_name(&pdev->dev);
->> -	indio_dev->dev.of_node = pdev->dev.of_node;
->> +	device_set_node(&indio_dev->dev, dev_fwnode(&pdev->dev));
->>  	indio_dev->info = &stm32_adc_iio_info;
->>  	indio_dev->modes = INDIO_DIRECT_MODE | INDIO_HARDWARE_TRIGGERED;
->>  
->>  	platform_set_drvdata(pdev, indio_dev);
->>  
->> -	ret = of_property_read_u32(pdev->dev.of_node, "reg", &adc->offset);
->> +	ret = device_property_read_u32(dev, "reg", &adc->offset);
->>  	if (ret != 0) {
->>  		dev_err(&pdev->dev, "missing reg property\n");
->>  		return -EINVAL;
->> @@ -2259,7 +2271,7 @@ static int stm32_adc_probe(struct platform_device *pdev)
->>  		}
->>  	}
->>  
->> -	ret = stm32_adc_of_get_resolution(indio_dev);
->> +	ret = stm32_adc_fw_get_resolution(indio_dev);
->>  	if (ret < 0)
->>  		return ret;
->>  
->> @@ -2276,7 +2288,7 @@ static int stm32_adc_probe(struct platform_device *pdev)
->>  		timestamping = true;
->>  	}
->>  
->> -	ret = stm32_adc_chan_of_init(indio_dev, timestamping);
->> +	ret = stm32_adc_chan_fw_init(indio_dev, timestamping);
->>  	if (ret < 0)
->>  		goto err_dma_disable;
->>  
-> 
+Best regards,
+ChiaEn Wu
 
