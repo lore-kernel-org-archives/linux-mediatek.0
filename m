@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37C4DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 14:21:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C05C5C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 14:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DiUqu/ZvQMOhjtUVfOlgfb3YMlzVWJ3V5xvmxD/pgOo=; b=HymWqFZgwyegidfBIQlocR9aBQ
-	p4sv2JmMaDSt7de/5NBFEySI+THjHdjPO5gHPb/7jtvYjCuYa/wgWSsJbmBRgELNz+x/htXtbfQhB
-	XeC/CoZTemr0GKO8xuL/jLRGVBfMkm/ZU9IdabybV/c+Ew4/tLo3app5xaP1X3hRGhNofTJ/kbPda
-	RENLPYCk6UP/85YVhNJLjA16oCijDN3Ot1h7eBUNawbc2I3og79h8TXwQdnWBCTRg3C8U68o+crLS
-	FL+2QObAKZTRTxx8AHYTCpZI7TdgR9aNi1+BaWiOSEs5nk+BMJj+0XXSPP89jF8C8XWJY0Pn3pNYm
-	aqwl6K8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=83FZWiL0crF525APjinz8Kw//Gs5G6caFf4d0M9B9Ak=; b=Ot58hBHsphZDoJFwwxfJB9Cify
+	2/9N00QGf0J1U7BeF0TbHAy1pDTPL0vp5gT6Q8rsyA2V28atXribFyQBveu3mzzdx8adtIeXZIgXM
+	v0JtCXPIIk/29HuTUoI44RRt256TUqwNbGILgKBRxFUUe0aN9lbSQQJ4WitDWVZxngH+AWbvPvDad
+	TI+L6pi9wKGHnF/QRoOHFJgX1cbJ3tEaTCdHwuMtyc9pmxyiWSBD00zyhknK4Jcdoepkn5ORorU+v
+	DB/0Rh9ssXqNZQ2cTmdcnxT/Ic65bs3+40ZwnHl+XZmfveMiR2ZoQTv7G4cL/mUlsOaAVyoHcqc9G
+	lrAwTqLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2Cqe-007yEK-FU; Fri, 17 Jun 2022 14:21:20 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1o2CvA-007zFM-Fu; Fri, 17 Jun 2022 14:26:00 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2CqJ-007y7K-TT; Fri, 17 Jun 2022 14:21:01 +0000
-Received: by mail-wr1-x430.google.com with SMTP id e25so2105426wrc.13;
-        Fri, 17 Jun 2022 07:20:58 -0700 (PDT)
+	id 1o2Cv2-007z74-TN
+	for linux-mediatek@lists.infradead.org; Fri, 17 Jun 2022 14:25:54 +0000
+Received: by mail-ej1-x631.google.com with SMTP id g25so9080320ejh.9
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jun 2022 07:25:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=DiUqu/ZvQMOhjtUVfOlgfb3YMlzVWJ3V5xvmxD/pgOo=;
-        b=Kf/CeLJMAEn0XCZZoL763C6InA7fYrW3/0r08jUFf/0bN3UqkcghfdNrNmY2R7g+R9
-         SGQul+4nxXssTOIA2IhYn5UWTTyTb+OufWoeUr1WWBI2ZWcmm1vRW6xcO+Ihk3nKYAdL
-         /f6v2hMRfwRpol0pUg3yhuFRxHIL8LUipnCUZH38Ry+fZXY2ajHi8le/S5o8RiG2t9aO
-         uZ+eGCnuvLwzFcSVjvWo9KNJnk0AxGvE6NX0GwhE4draaYD1AZqBxR152b9xtWxcDUla
-         0MZ0SeYlwRlYMAe0Ta80Vj3k+7s0a4H+aBaI80pDfVcddIZ4jF7+ILVlf4z16ZbWQl9B
-         SjNg==
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=83FZWiL0crF525APjinz8Kw//Gs5G6caFf4d0M9B9Ak=;
+        b=GHJIHuMigTU+g9hI8iabwpQIuDSL7XyuMpSYvmlYhgfC1CIFWEIm1BQ+hSd4bjDOG5
+         Rskzt+EOb8aIo94mQFzPQAjullV8lRQ1JR2nEa9GsHHd/BrpeGa8jCWJ9d2l0VXwLBgm
+         ZSXjCJoEKsrynHrhheJbBED0jjesuT6+bcpTQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=DiUqu/ZvQMOhjtUVfOlgfb3YMlzVWJ3V5xvmxD/pgOo=;
-        b=s0BRzDlpgbDNI9jX5i9wzi+VUOIdYalKnTvddMCkHZYCyUwxyJiAdpj9x/VIp60a/X
-         oMmJ6feuXdTfw6K9LSXRxm/dH96dQfjHEfS9vx6j4EkNg7eDzYX46xWBOYCtH0LTJ89S
-         J9U9TRW+4EHNKR5IDUP1RKt7Dklc3i3nfkSmSDUIWgpUljoXhsW1fAjSieXzmbApCRTx
-         nelZbY7Wge2tEeYtvt4CCd3Q9eOWBDU5AtqaM0iBx35y+QTGVQKpRlTrUvjPNlmMotVy
-         CcvEryDOavUI0+rSVLG60SZ5yvd6DW4qqpikQQ1XTT2uFz/C/Q432qFlZGKvHco1/Duu
-         T65g==
-X-Gm-Message-State: AJIora9+62S7y1cHFudJ2fXKWklN70vqdfUvWr/VO2Tj0Uk0KfuaTjUN
-	Nagkyz4xgrTmmhY+PYeq7Xs=
-X-Google-Smtp-Source: AGRyM1srTE67A9a63p6nduZvVQjcBeOscO0fRW1gvDbt3V9Q+jeuxrZQd6n86OSPkaXKnqZhikdKRQ==
-X-Received: by 2002:a5d:5a18:0:b0:21a:2b34:7074 with SMTP id bq24-20020a5d5a18000000b0021a2b347074mr9555683wrb.590.1655475657348;
-        Fri, 17 Jun 2022 07:20:57 -0700 (PDT)
-Received: from [192.168.0.24] (80.174.78.229.dyn.user.ono.com. [80.174.78.229])
-        by smtp.gmail.com with ESMTPSA id v6-20020a1cac06000000b0039c673952bfsm9448983wme.6.2022.06.17.07.20.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Jun 2022 07:20:56 -0700 (PDT)
-Message-ID: <fc9f18aa-fc32-c1ec-9056-e6158d0bd1ce@gmail.com>
-Date: Fri, 17 Jun 2022 16:20:55 +0200
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=83FZWiL0crF525APjinz8Kw//Gs5G6caFf4d0M9B9Ak=;
+        b=s7Z1VN12Qe/Fl6soIvmeA97V63fQPGwNnapsf8oKL5fs5bWA1sp8qedEcqK+UIBpPO
+         wUnD6DI+8ITuOvupWz4dFYbh2ft27R7aGAijp2QMbrfOthLmy7qdXei9betsk6xyP7v5
+         aAqwnk5RB3EKrcFRBYT7JIWyM2lhK/5S00Y70/wodYu4/aACruARj8/gCwotB1UYCY8o
+         vN+iJsBMxitXF3d8O5XT/Il3XTq+tYesnrt/pHzrhLXcWO5VL1QIfzcX0IbXtkieWFH0
+         VW1GrtX/RlHhTv/Zn+BYGDe9wQQ2PsKPSWwZP1+03cFWQzLlwnmiyHizs/PzZ1dPrGOL
+         1Wsw==
+X-Gm-Message-State: AJIora9YR+Q4zrZwDuhKjKM9ihfU2IIXkhYCvE0RtTVtofFWPFQ3ckj5
+	pE76exqJFwe1YWiLLePl5nuO62PLyV8iu/h/33QWPg==
+X-Google-Smtp-Source: AGRyM1sHQWP15zLPj2yCwvO447y117lYiVJu4mAWBp6EFASZb6mVwG/jc+KGYlyL13Wi6k2yq/6HTYn7xjYL2VjVjco=
+X-Received: by 2002:a17:906:ced1:b0:710:f654:87ef with SMTP id
+ si17-20020a170906ced100b00710f65487efmr9824783ejb.194.1655475937079; Fri, 17
+ Jun 2022 07:25:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH 2/4] soc: mediatek: Add support of WAYEN operations
-Content-Language: en-US
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Alexandre Bailon <abailon@baylibre.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220530204214.913251-1-fparent@baylibre.com>
- <20220530204214.913251-2-fparent@baylibre.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220530204214.913251-2-fparent@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220530113033.124072-1-hsinyi@chromium.org> <20220530113033.124072-2-hsinyi@chromium.org>
+ <CAJMQK-jw+sgunEwgEQAw-V8DAbybZ7WVnZJ6vwOdzQ+-SX_bQg@mail.gmail.com> <c3286fc9-06ed-d1e1-a731-94cdefdf7fab@gmail.com>
+In-Reply-To: <c3286fc9-06ed-d1e1-a731-94cdefdf7fab@gmail.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Fri, 17 Jun 2022 22:25:11 +0800
+Message-ID: <CAJMQK-gJ4AoNQtLeKoOO=GLLtjDRhCdVnYuPJSBD4ZnFWJ5qrw@mail.gmail.com>
+Subject: Re: [PATCH 2/2] arm64: dts: mt8183: Add panel rotation
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Hans de Goede <hdegoede@redhat.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
+	Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, Rob Clark <robdclark@chromium.org>, 
+	Stephen Boyd <swboyd@chromium.org>, Douglas Anderson <dianders@chromium.org>, 
+	Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_072100_010621_7A65538A 
-X-CRM114-Status: GOOD (  21.74  )
+X-CRM114-CacheID: sfid-20220617_072552_988647_B04AC0E7 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,218 +86,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jun 17, 2022 at 10:10 PM Matthias Brugger
+<matthias.bgg@gmail.com> wrote:
+>
+> Hi Hsin-Yi Wang,
+>
+> On 06/06/2022 17:29, Hsin-Yi Wang wrote:
+> > On Mon, May 30, 2022 at 7:30 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+> >>
+> >> krane, kakadu, and kodama boards have a default panel rotation.
+> >>
+> >> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> >> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> >> Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> >> ---
+> >
+> > Hi Matthias,
+> >
+> > The series ("Add a panel API to return panel orientation") might land
+> > in drm-misc. With this series applied, we can add this patch to give
+> > the correct default orientation for mt8183 kukui devices.
+> > I didn't send this patch again with the series, since they might land
+> > in different trees.
+> >
+>
+> I had a look on Linux next (next-20220617) and wasn't able to find the mtk_dsi.c
+> changes. What is the status of this?
+>
+The mtk_dsi change got dropped. The latest is this series:
+https://lore.kernel.org/lkml/20220609072722.3488207-1-hsinyi@chromium.org/,
+still waiting to be picked or others' comments.
+
+If the dts patch is picked without the drm series, there will be a
+WARN, but won't affect boot or display up.
 
 
-On 30/05/2022 22:42, Fabien Parent wrote:
-> From: Alexandre Bailon <abailon@baylibre.com>
-> 
-> This updates the power domain to support WAYEN operations.
-
-Please explain better what the WAYEN operation is. Never heard of that word.
-
-Regards,
-Matthias
-
-> This is required by the mt8365 for the MM power domain.
-> 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
->   drivers/soc/mediatek/mtk-pm-domains.c | 64 +++++++++++++++++++++------
->   drivers/soc/mediatek/mtk-pm-domains.h | 27 ++++++-----
->   2 files changed, 67 insertions(+), 24 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index 5ced254b082b..90b91b3b19a8 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -44,6 +44,7 @@ struct scpsys_domain {
->   	struct clk_bulk_data *subsys_clks;
->   	struct regmap *infracfg;
->   	struct regmap *smi;
-> +	struct regmap *infracfg_nao;
->   	struct regulator *supply;
->   };
->   
-> @@ -116,23 +117,38 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
->   					MTK_POLL_TIMEOUT);
->   }
->   
-> -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
-> +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
-> +				      struct regmap *regmap, struct regmap *infracfg_nao)
->   {
->   	int i, ret;
->   
->   	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
-> -		u32 val, mask = bpd[i].bus_prot_mask;
-> +		u32 mask = bpd[i].bus_prot_mask;
-> +		u32 val = mask, sta_mask = mask;
-> +		struct regmap *ack_regmap = regmap;
->   
->   		if (!mask)
->   			break;
->   
-> +		if (bpd[i].wayen) {
-> +			if (!infracfg_nao)
-> +				return -ENODEV;
-> +
-> +			val = 0;
-> +			sta_mask = bpd[i].bus_prot_sta_mask;
-> +			ack_regmap = infracfg_nao;
-> +		}
-> +
->   		if (bpd[i].bus_prot_reg_update)
-> -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
-> +			regmap_update_bits(regmap, bpd[i].bus_prot_set, mask, val);
->   		else
->   			regmap_write(regmap, bpd[i].bus_prot_set, mask);
->   
-> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
-> -					       val, (val & mask) == mask,
-> +		if (bpd[i].ignore_clr_ack)
-> +			continue;
-> +
-> +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
-> +					       val, (val & sta_mask) == sta_mask,
->   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->   		if (ret)
->   			return ret;
-> @@ -145,34 +161,49 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
->   {
->   	int ret;
->   
-> -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
-> +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
-> +			pd->infracfg, pd->infracfg_nao);
->   	if (ret)
->   		return ret;
->   
-> -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
-> +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
->   }
->   
-> +#define mask_cond(wayen, val, mask) \
-> +	((wayen && ((val & mask) == mask)) || (!wayen && !(val & mask)))
-> +
->   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
-> -				       struct regmap *regmap)
-> +				       struct regmap *regmap, struct regmap *infracfg_nao)
->   {
->   	int i, ret;
->   
->   	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
-> -		u32 val, mask = bpd[i].bus_prot_mask;
-> +		u32 val = 0, mask = bpd[i].bus_prot_mask;
-> +		u32 sta_mask = mask;
-> +		struct regmap *ack_regmap = regmap;
->   
->   		if (!mask)
->   			continue;
->   
-> +		if (bpd[i].wayen) {
-> +			if (!infracfg_nao)
-> +				return -ENODEV;
-> +
-> +			val = mask;
-> +			sta_mask = bpd[i].bus_prot_sta_mask;
-> +			ack_regmap = infracfg_nao;
-> +		}
-> +
->   		if (bpd[i].bus_prot_reg_update)
-> -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
-> +			regmap_update_bits(regmap, bpd[i].bus_prot_clr, mask, val);
->   		else
->   			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
->   
->   		if (bpd[i].ignore_clr_ack)
->   			continue;
->   
-> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
-> -					       val, !(val & mask),
-> +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
-> +					       val, mask_cond(bpd[i].wayen, val, sta_mask),
->   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->   		if (ret)
->   			return ret;
-> @@ -185,11 +216,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
->   {
->   	int ret;
->   
-> -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
-> +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
->   	if (ret)
->   		return ret;
->   
-> -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
-> +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
-> +			pd->infracfg, pd->infracfg_nao);
->   }
->   
->   static int scpsys_regulator_enable(struct regulator *supply)
-> @@ -363,6 +395,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
->   			return ERR_CAST(pd->smi);
->   	}
->   
-> +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(node, "mediatek,infracfg_nao");
-> +	if (IS_ERR(pd->infracfg_nao))
-> +		return ERR_CAST(pd->infracfg_nao);
-> +
->   	num_clks = of_clk_get_parent_count(node);
->   	if (num_clks > 0) {
->   		/* Calculate number of subsys_clks */
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> index daa24e890dd4..a3955d960233 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> @@ -39,23 +39,28 @@
->   
->   #define SPM_MAX_BUS_PROT_DATA		6
->   
-> -#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
-> -		.bus_prot_mask = (_mask),			\
-> -		.bus_prot_set = _set,				\
-> -		.bus_prot_clr = _clr,				\
-> -		.bus_prot_sta = _sta,				\
-> -		.bus_prot_reg_update = _update,			\
-> -		.ignore_clr_ack = _ignore,			\
-> +#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _wayen) {	\
-> +		.bus_prot_mask = (_mask),				\
-> +		.bus_prot_set = _set,					\
-> +		.bus_prot_clr = _clr,					\
-> +		.bus_prot_sta = _sta,					\
-> +		.bus_prot_sta_mask = _sta_mask,				\
-> +		.bus_prot_reg_update = _update,				\
-> +		.ignore_clr_ack = _ignore,				\
-> +		.wayen = _wayen,					\
->   	}
->   
->   #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
-> -		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
-> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
->   
->   #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
-> -		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
-> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
->   
->   #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
-> -		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
-> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
-> +
-> +#define BUS_PROT_WAYEN(_en_mask, _sta_mask, _set, _sta)		\
-> +		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, true)
->   
->   #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
->   		BUS_PROT_UPDATE(_mask,				\
-> @@ -68,8 +73,10 @@ struct scpsys_bus_prot_data {
->   	u32 bus_prot_set;
->   	u32 bus_prot_clr;
->   	u32 bus_prot_sta;
-> +	u32 bus_prot_sta_mask;
->   	bool bus_prot_reg_update;
->   	bool ignore_clr_ack;
-> +	bool wayen;
->   };
->   
->   /**
+> Regards,
+> Matthias
+>
+> > Thanks.
+> >
+> >>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
+> >>   1 file changed, 1 insertion(+)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> >> index 8d5bf73a9099..f0dd5a06629d 100644
+> >> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> >> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> >> @@ -276,6 +276,7 @@ panel: panel@0 {
+> >>                  avee-supply = <&ppvarp_lcd>;
+> >>                  pp1800-supply = <&pp1800_lcd>;
+> >>                  backlight = <&backlight_lcd0>;
+> >> +               rotation = <270>;
+> >>                  port {
+> >>                          panel_in: endpoint {
+> >>                                  remote-endpoint = <&dsi_out>;
+> >> --
+> >> 2.36.1.124.g0e6072fb45-goog
+> >>
 
