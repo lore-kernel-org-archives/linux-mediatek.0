@@ -4,57 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0DD0CCA479
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 23:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E272EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 23:21:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TS7S0/NUFZCZPWZZaJQ12zl/oK7tziHeU2BA3Bhjfjc=; b=pQWrq6NKhRnrhjsGDqHvlffSPA
-	sNOylyYhjftyCOCCGTZ8K756idOiT6uqeF/2sWSa7Q9BqqsBdP4VYNOsOHmInEIv+UPRBVO78yi2Z
-	xpiI7RvzAiKs4MwbJx5u1xU5wfvZMcvZobzs4DkkPFLOcOdW+vsfjF7RmTwg5f02hLngjwEUQmjnZ
-	Y4t+dM9GgE8yxIDTxqvukcTyBLm08X846/KipuWJJSeG4P+2N8ATg0PThFEmeD4/ug/1g3dlLTE81
-	M7KLTeSwpxmAoUtzB2Ky4yJvkgQv/+0EFtKi3g6WnK1raCNsHSwRClhgyXDpK5Ws+1urCZy/PHF4x
-	sUIvqfMA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QdJypCW0UuDMsne3jEHW30VIejQbPsslyYr5uuRVmd0=; b=aVLE0nSFp3T9JhyGOvipU12GSg
+	kGcVOSO8zQoHUU27PyRc1FeBIpiKrkLfkIZ86TWVMmQ2MXWESt0BAp/df0evk+U4bXf38zoc+k94i
+	wvWpXbPQZBcrqtH3r9LHoapRghLDrHr63C1Vhyz7229VJRZaZANzsHAj7cnD1suGuCW/eyhsyVHpt
+	yib8Pa7CbPmPc2eOZRplOxrvSlvy3ctrtffd8/kFfUp6g3//iTMr+74PYxh91vw3jdQ3cUyn7VJaX
+	2+VnFGBskvBDDRFWeqqY6DnKiOCHa8HhfzeyMAg5q+0Zo2O06JdlP+2JP9JHcC38t9MGmB0NFoKkB
+	q0VUG0TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2LGA-009ada-Fu; Fri, 17 Jun 2022 23:20:14 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1o2LHV-009bKl-TL; Fri, 17 Jun 2022 23:21:37 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2LFl-009aTh-JF; Fri, 17 Jun 2022 23:19:51 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id DA4BFCE2D81;
-	Fri, 17 Jun 2022 23:19:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEC44C3411B;
-	Fri, 17 Jun 2022 23:19:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655507984;
-	bh=VtNJbvspHUs35Tn5OYelrC56+LY9y645NyYD8WwY/BE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=biJN97UERqtusKpdqZOLkc8npgf4Ip0seEShYYNVx6p+bRjaxF0ksDkDDNa/JiaCs
-	 d9VSB+XZZlKrV+96ejddsf3x7gPSnqkRYFRh9MxTlVj1qHlkslW02vX2x2VvkKXTC9
-	 AEbmLfDvO1lUki/m81RbLA78+HjKw+dUEIive4YLLmidHus7QcUe59zkNdnuuRmdpN
-	 YsNb2I8676V1lX9qbyErvXPlaGW3G26PEVqdLmSo5WRpYWokf//RnvtLoUry6rQAb0
-	 ViLFAivaLWR5dAkmh97USctZgdAl20pEXZVVKo6g+nd+zlyqpJvPWkadjcZT28XcRp
-	 fmhfpiTe6+HZw==
-From: Mark Brown <broonie@kernel.org>
-To: jiaxin.yu@mediatek.com, fshao@chromium.org
-Cc: linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20220617100632.1447811-1-fshao@chromium.org>
-References: <20220617100632.1447811-1-fshao@chromium.org>
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: Fix mutex double unlock in GPIO request
-Message-Id: <165550798257.994018.15965487016237461990.b4-ty@kernel.org>
-Date: Sat, 18 Jun 2022 00:19:42 +0100
+	id 1o2LHS-009bG9-K5
+	for linux-mediatek@lists.infradead.org; Fri, 17 Jun 2022 23:21:35 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id mh16-20020a17090b4ad000b001e8313301f1so8026078pjb.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jun 2022 16:21:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=QdJypCW0UuDMsne3jEHW30VIejQbPsslyYr5uuRVmd0=;
+        b=rKoF++nLIneka1QOKMgcZeIv/wUy/H28Ej2jEIjyQ8JlDyf4nxwek7iU1V8NRNUOqS
+         yhVguY0CI1xW3nau4JfzdzDuCieg4hg+cSpbvT/2gMezxYerBkrGJd20qv5NYgopSBp1
+         a+TU3Wn3CJbxhJTOZp9e8v2qmoL3oAOdClOxDhVR3ZfR6lSXMMTbmW1l5VLonrO/Oq/r
+         0jbX+7axSfAvktxeAW6sbofDipEOYgMrCDPwTsti3wWOBphQNSS1vsiCK46PN2pBUMCh
+         da3g+Gt4HptUZ2or650YEKyLcduX3BqkkyzJNYtuBCuBtbc5HVAibyPbU6S0lK+55IMC
+         9OVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=QdJypCW0UuDMsne3jEHW30VIejQbPsslyYr5uuRVmd0=;
+        b=ZYUtm3bWye1Rvc3BHzAbU+jjxfltL2PoeXQyEGVxOlFi/ZxEuCwIzggTg1gHrquXJH
+         Bi46ZFsAyGyJyGhp41YtjpFsQCLGOl+9Kv2y7larLABfIZECwxs0oDSsNXMjLJhSL3qO
+         4UbhHHj1jWJcfe3KkbOS574jswr0fQGNB9v6ZQBlBvBFbHvvptlMw09C/ByW7RhqOap0
+         /QJZDQ+XONQ6hyiycW50ca2G69ek1W7ndtj5xe/44Z36so7P1LrNebCoe8HcjgUJQXc2
+         MlsF6GJwZcd4AhNs9ibuz43uJx/sxvqdEa5o5IN0HcJMEDC8bT6Ru14lXCxYE10jJKFZ
+         SzsA==
+X-Gm-Message-State: AJIora92DERV/Fhe19fulkee9F3sZTXRXoYzaRYjYB1ZtNO3HUu6blpg
+	QXtZpcG4gYng9YXjZZlprbk2jQ==
+X-Google-Smtp-Source: AGRyM1ucPevf10WOCo3szS8jM2+bTtrtkki4IQTjHS3j2ZGUU1BghBpBqAUBSm1dcO9pBwaxbfPOvw==
+X-Received: by 2002:a17:902:e78e:b0:163:caf2:2ef2 with SMTP id cp14-20020a170902e78e00b00163caf22ef2mr11764443plb.3.1655508090012;
+        Fri, 17 Jun 2022 16:21:30 -0700 (PDT)
+Received: from krzk-bin.. ([216.9.110.6])
+        by smtp.gmail.com with ESMTPSA id j1-20020a170903028100b00164097a779fsm4065427plr.147.2022.06.17.16.21.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Jun 2022 16:21:29 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH] arm64: dts: mediatek: mt7622-rfb1: remove wrong gpio-keys property
+Date: Fri, 17 Jun 2022 16:21:24 -0700
+Message-Id: <20220617232124.7022-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_161950_029805_DB8400AA 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20220617_162134_678789_C15ECB7D 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,80 +91,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 17 Jun 2022 18:06:33 +0800, Fei Shao wrote:
-> The lockdep mechanism reveals an unbalanced unlocking on MT8186:
-> 
->   [    2.993966] WARNING: bad unlock balance detected!
->   [    2.993971] 5.15.46-421fef3b44d7-lockdep #16 Not tainted
->   [    2.993978] -------------------------------------
->   [    2.993983] kworker/u16:1/10 is trying to release lock (gpio_request_mutex) at:
->   [    2.993994] [<ffffffdcd9adebf8>] mt8186_afe_gpio_request+0xf8/0x210
->   [    2.994012] but there are no more locks to release!
->   [    2.994017]
->   [    2.994017] other info that might help us debug this:
->   [    2.994022] 3 locks held by kworker/u16:1/10:
->   [    2.994028]  #0: ffffff80c004a148 ((wq_completion)events_unbound){+.+.}-{0:0}, at: process_one_work+0x1a8/0x364
->   [    2.994054]  #1: ffffffc0080d3d58 (deferred_probe_work){+.+.}-{0:0}, at: process_one_work+0x1d0/0x364
->   [    2.994074]  #2: ffffff80c12ab9a0 (&dev->mutex){....}-{3:3}, at: __device_attach+0x44/0x150
->   [    2.994096]
->   [    2.994096] stack backtrace:
->   [    2.994102] CPU: 6 PID: 10 Comm: kworker/u16:1 Not tainted 5.15.46-421fef3b44d7-lockdep #16 a2af0e2c6b3eeab6799b5aa8091c1d05d3a7bbb1
->   [    2.994113] Hardware name: Google Kingler board (DT)
->   [    2.994120] Workqueue: events_unbound deferred_probe_work_func
->   [    2.994130] Call trace:
->   [    2.994135]  dump_backtrace+0x0/0x1d4
->   [    2.994144]  show_stack+0x20/0x2c
->   [    2.994152]  dump_stack_lvl+0x78/0x9c
->   [    2.994163]  dump_stack+0x18/0x44
->   [    2.994172]  print_unlock_imbalance_bug+0xf0/0xf4
->   [    2.994184]  lock_release+0x150/0x388
->   [    2.994193]  __mutex_unlock_slowpath+0x4c/0x1bc
->   [    2.994202]  mutex_unlock+0x44/0x50
->   [    2.994210]  mt8186_afe_gpio_request+0xf8/0x210
->   [    2.994220]  mt8186_afe_gpio_init+0xcc/0x134
->   [    2.994230]  mt8186_mt6366_rt1019_rt5682s_dev_probe+0x14c/0x220
->   [    2.994238]  platform_probe+0xb0/0xd0
->   [    2.994247]  really_probe+0xcc/0x2c8
->   [    2.994253]  __driver_probe_device+0xbc/0xe8
->   [    2.994264]  driver_probe_device+0x48/0xf0
->   [    2.994271]  __device_attach_driver+0xa0/0xc8
->   [    2.994278]  bus_for_each_drv+0x8c/0xd8
->   [    2.994288]  __device_attach+0xc4/0x150
->   [    2.994298]  device_initial_probe+0x1c/0x28
->   [    2.994308]  bus_probe_device+0x3c/0xa0
->   [    2.994318]  deferred_probe_work_func+0xa0/0xe0
->   [    2.994325]  process_one_work+0x208/0x364
->   [    2.994334]  worker_thread+0x288/0x3fc
->   [    2.994343]  kthread+0x140/0x160
->   [    2.994351]  ret_from_fork+0x10/0x20
-> 
-> [...]
+gpio-keys (regular, not polling) does not use "poll-interval" property.
 
-Applied to
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+---
 
-Thanks!
+Changes since v3:
+1. Correct commit msg (Matthias)
+---
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
-[1/1] ASoC: mediatek: mt8186: Fix mutex double unlock in GPIO request
-      commit: 6c9e9046e1ff356bda66661213735d33c6cfea53
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+index c28da9323a9c..1a86857c9027 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+@@ -40,7 +40,6 @@ cpu@1 {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		poll-interval = <100>;
+ 
+ 		key-factory {
+ 			label = "factory";
+-- 
+2.34.1
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
