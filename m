@@ -4,92 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D823C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jun 2022 03:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6004C43334
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jun 2022 07:40:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v9iLe16OQzDjus8PgEyzt81ju785zygpn75Qb7cPKDk=; b=wmTTYKnSwC7mORem3Dvfz6kSaU
-	zn/uWyW8emxiyvFSjrgxT3dH7FFzfpijz5pfAYOAJd0NmbTS5ToZVeyLfFqUaq79Uw7XVxUk8j7zK
-	QYbrdUGMdtzQvk3+eq5igCUiJCUR+isfhTcQAX3YTtEol5qroSHXUC6YapmQq+u4SqbB8gLG+mhY4
-	VuIndRsrjQIlPqiBH4HzDmmD6y2ZmtEzubn1O0JOdrbU4uuONO0TE1adxQC4TlqIXGtNoNDvAmvha
-	VQ67Cuj53QcFwUmD5Ka4bs7ZAFDylpibqiZHOIZ9RQ6rmnDEQGcc4M53fbaSpMwuh0/QSxzB5nD0x
-	1PU8Nn7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=m14MUUWu7+R7DMXsb2mOHRxBGRCTQqx2GiwowmDPjeM=; b=47nqsIPMdThpgFsEqeLYmFpw+T
+	gpaKz6FPffgDKNwRpShhnarjcNmrBaECU1w/QVkGUjLExMAauW3JPmXWiL2d7+jQpO7gvFM9yqx9J
+	L7kNiVOxwrn9GK5M5qGBjyTG2bXX+b/xpsKUekE2HbgIgDntjSm79NWrYPT3zucTYyMmsJAHQxiD0
+	1s7wlhacbuG6bsbskGR/0372MiuDm6/CbCWhJnfkZRCyI/7KQB7YDYfR/0gtl3mDxY+ScycwaI1Z5
+	xBE1x2jpEZJ7f74fWmJ806DjPqGEybCf3+v8VTRk4Du8WMnyW5qRks0uZQwxcaAsNkIY+hfztKrB1
+	uZO/X9Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2Ojj-00AB3u-Tr; Sat, 18 Jun 2022 03:02:59 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1o2T3i-00AfP3-D6; Sat, 18 Jun 2022 07:39:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2Ojh-00AB30-DV; Sat, 18 Jun 2022 03:02:58 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 25I32Nt4004650;
-	Fri, 17 Jun 2022 22:02:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1655521343;
-	bh=v9iLe16OQzDjus8PgEyzt81ju785zygpn75Qb7cPKDk=;
-	h=From:To:CC:Subject:Date:In-Reply-To:References;
-	b=ubm9+IAhGGTk3kdTt5x7vdcv21zn8SduavN1QPsDFtatpMEQLnnpq14kmxzjhSdoM
-	 EhSYzwprF+3qoaWgxqEa7tkCA7AfNzT0CIUyyPN2V1vMiSYZKDtU+T7Pvq2yIkEfs4
-	 7jCtmDUFYShPMx+ispwTz24Ou/91SMS8cN3blxkI=
-Received: from DLEE103.ent.ti.com (dlee103.ent.ti.com [157.170.170.33])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 25I32NTI008896
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 17 Jun 2022 22:02:23 -0500
-Received: from DLEE108.ent.ti.com (157.170.170.38) by DLEE103.ent.ti.com
- (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2308.14; Fri, 17
- Jun 2022 22:02:22 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE108.ent.ti.com
- (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2308.14 via
- Frontend Transport; Fri, 17 Jun 2022 22:02:22 -0500
-Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 25I32MBg024730;
-	Fri, 17 Jun 2022 22:02:22 -0500
-From: Nishanth Menon <nm@ti.com>
-To: <krzysztof.kozlowski@linaro.org>, <olof@lixom.net>, <soc@kernel.org>,
-        Arnd
- Bergmann <arnd@arndb.de>, <arm@kernel.org>
-CC: Nishanth Menon <nm@ti.com>, <linux-input@vger.kernel.org>,
-        <khuong@os.amperecomputing.com>, <heiko@sntech.de>,
-        <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-        <jonathanh@nvidia.com>, <sebastian.hesselbarth@gmail.com>,
-        <agross@kernel.org>, <linux-omap@vger.kernel.org>,
-        <linux-gpio@vger.kernel.org>, <tony@atomide.com>,
-        <nicolas.ferre@microchip.com>, <joel@jms.id.au>,
-        <linux-arm-msm@vger.kernel.org>, <robh+dt@kernel.org>,
-        <bcousson@baylibre.com>, <thierry.reding@gmail.com>,
-        <claudiu.beznea@microchip.com>, <vigneshr@ti.com>,
-        <bjorn.andersson@linaro.org>, <openbmc@lists.ozlabs.org>,
-        <peda@axentia.se>, <andrew@lunn.ch>, <linux-aspeed@lists.ozlabs.org>,
-        <linus.walleij@linaro.org>, <festevam@gmail.com>,
-        <xuwei5@hisilicon.com>, <alexandre.belloni@bootlin.com>,
-        <leoyang.li@nxp.com>, <michal.simek@xilinx.com>, <andrew@aj.id.au>,
-        <kristo@kernel.org>, <linux-imx@nxp.com>,
-        <krzysztof.kozlowski+dt@linaro.org>, <shawnguo@kernel.org>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        <linux-arm-kernel@lists.infradead.org>, <matthias.bgg@gmail.com>,
-        <j.neuschaefer@gmx.net>, <gregory.clement@bootlin.com>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>, <linux@armlinux.org.uk>,
-        <kernel@pengutronix.de>, <dmitry.torokhov@gmail.com>,
-        <linux-tegra@vger.kernel.org>
-Subject: Re: (subset) [PATCH v3 00/40] dt-bindings: input: gpio-keys: rework matching children
-Date: Fri, 17 Jun 2022 22:02:21 -0500
-Message-ID: <165552126299.28422.3856100388848453087.b4-ty@ti.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
-References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+	id 1o2T3X-00AfNO-OS; Sat, 18 Jun 2022 07:39:45 +0000
+X-UUID: 9dc47a9d20a547a88f890ba7e8879ba4-20220618
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:cad1a3d5-bf3a-4241-a2e9-bfe2e0dddf3a,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:b14ad71,CLOUDID:0cc1fc48-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 9dc47a9d20a547a88f890ba7e8879ba4-20220618
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1724855748; Sat, 18 Jun 2022 00:39:36 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 18 Jun 2022 00:29:34 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 18 Jun 2022 15:29:32 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 18 Jun 2022 15:29:30 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] media: mediatek: vcodec: Initialize decoder parameters after getting dec_capability
+Date: Sat, 18 Jun 2022 15:29:29 +0800
+Message-ID: <20220618072929.28783-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_200257_587021_5411D12E 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20220618_003943_829128_830B990E 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,45 +89,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof Kozlowski,
+Need to get dec_capability from scp first, then initialize decoder
+supported format and other parameters according to dec_capability value.
 
-On Wed, 15 Jun 2022 17:52:24 -0700, Krzysztof Kozlowski wrote:
-> Merging
-> =======
-> 1. dt-bindings: rebased on top of Rob's:
->    https://lore.kernel.org/all/20220608211207.2058487-1-robh@kernel.org/
-> 
-> 2. DTS patches are independent. They can be picked up directly by sub-arch
->    maintainers, by Arnd or Olof, or eventually by me (if you wish).
-> 
-> [...]
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c     | 2 --
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 2 ++
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-I have applied the following to branch ti-k3-dts-next on [1].
-Thank you!
-
-[29/40] arm64: dts: ti: align gpio-key node names with dtschema
-        commit: 85423386c9763fb20159892631eccc481a2d9b71
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent up the chain during
-the next merge window (or sooner if it is a relevant bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-[1] git://git.kernel.org/pub/scm/linux/kernel/git/ti/linux.git
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 1465ddff1c6b..41589470da32 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -112,8 +112,6 @@ void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_ctx *ctx)
+ {
+ 	struct mtk_q_data *q_data;
+ 
+-	ctx->dev->vdec_pdata->init_vdec_params(ctx);
+-
+ 	ctx->m2m_ctx->q_lock = &ctx->dev->dev_mutex;
+ 	ctx->fh.m2m_ctx = ctx->m2m_ctx;
+ 	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index 4103d7c1b638..99d7b15f2b9d 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -208,6 +208,8 @@ static int fops_vcodec_open(struct file *file)
+ 
+ 		dev->dec_capability =
+ 			mtk_vcodec_fw_get_vdec_capa(dev->fw_handler);
++		ctx->dev->vdec_pdata->init_vdec_params(ctx);
++
+ 		mtk_v4l2_debug(0, "decoder capability %x", dev->dec_capability);
+ 	}
+ 
 -- 
-Regards,
-Nishanth Menon
-Key (0xDDB5849D1736249D) / Fingerprint: F8A2 8693 54EB 8232 17A3  1A34 DDB5 849D 1736 249D
+2.18.0
 
 
