@@ -4,67 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72859C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jun 2022 23:32:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE9BEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jun 2022 01:21:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HhRg7v7iVwbYcPixKt4d734zL1BGaOlTNX8WioMZxOg=; b=rfqRBql1pz2msnK8FBx/3zHNaQ
-	0P6WGxMEfifioCOxMuQmiIGPHpI1zom/fSbNk8qzQR6m7kHle3KsJlEOjB1+mf9jeXiZ7EIwLL7qt
-	j9gInEnHa4ayve9qWKeF+0fDz7NSf+gFR7Va8uKcOIm3ddObbGxIzrAakwt5DNxFama1BuwQvPKuS
-	Cq6Yj6ZVw6f2AkmdVoqLONKSpR3kE0H6B+eLrWgopy6KFH8FQCL8E67ednXwzwtGujWrIhH3tqGG6
-	ISzZe7aIU65rRnyywbNFYvvS0fzF9WiORTRItceZjL2qjWULpcwFIuxF2+DgphS3GnzcpIPiD3FN7
-	d0AHlWyA==;
+	bh=F+G5vrMheUscNqcqfe/Vgn/7QPQWiVKmIQiHsQqGhT4=; b=rpRM5V53fB5dOSGaRdK1D06xCY
+	g2oRA442aQtE0vlktZK3kO7yte8cUVmk9FUwdX9pT0WAxWLBKkvikaLFsEi2+JwF5gtGVXdE0tGgB
+	0zYMxLY0AqduPGWKnN42aqK2G15yt1EzrSNsjcseSrAc/xRzyOyV0xcZZOFeyds882rmnc4aoVGEs
+	M/YaAhwgO6MtgzC/JajvyyF5SGfLCmqTK2VwhrIpwrFq7lz3Re0tU1aww+pQmhHBPVKnKiMNT+eOP
+	DSyBgHwDmN7CVmzmxqUkuHf46J4YVoxDp6VWiBbpf3kK5WDE/Evoc5bwLRg4iGlwOnKJEgIL28YDx
+	5gKUF3Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2LS3-009eFh-2r; Fri, 17 Jun 2022 23:32:31 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o2N9H-009tgB-4Z; Sat, 18 Jun 2022 01:21:15 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2LRZ-009e6c-6v; Fri, 17 Jun 2022 23:32:02 +0000
-Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E2CD66017DD;
-	Sat, 18 Jun 2022 00:31:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655508720;
-	bh=nIpAmQ9qPs2TwbqhrUmn9gsTTFLPJRRk9xBahMemHjw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oozUUfD3UffUQZwHuB2+M1iZ+3Ch+qEgieLytLLvI9yMSJJpEBBZCT1b3tzK7mC8A
-	 QKQ9WRQbhIPXXcfo+mHW0g1FryTBU6JulOWp3dKVlEx5cMaveNlywPh+oqWXH8NkJ+
-	 MXFHNSVoOkt7iDczhlz5GlUbovLN9rf8IDWuszQChIdM77kM/G8tfivQsl8Je/uOZA
-	 XQYUM9a2y60siCyWOMA7QNIzS+CXADx9lTeRjMWgwFoC6a40BFzJuE/XnSIJDwiasN
-	 VCUb8QpvMO5gptarMIkgFD0cnaVsQ+vfmnqpWECza9c6hUlQNKkrZ+u5tUY0HOPcD6
-	 9DFfd17exuMxw==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	James Liao <jamesjj.liao@mediatek.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/2] arm64: dts: mt8192: Fix idle-states entry-method
-Date: Fri, 17 Jun 2022 19:31:50 -0400
-Message-Id: <20220617233150.2466344-3-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220617233150.2466344-1-nfraprado@collabora.com>
-References: <20220617233150.2466344-1-nfraprado@collabora.com>
+	id 1o2N9E-009ter-1q
+	for linux-mediatek@lists.infradead.org; Sat, 18 Jun 2022 01:21:13 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id y13-20020a17090a154d00b001eaaa3b9b8dso5524113pja.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jun 2022 18:21:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=F+G5vrMheUscNqcqfe/Vgn/7QPQWiVKmIQiHsQqGhT4=;
+        b=m3E2TWWtMPsLtGy3UNkP6R2CyUrzzErld4HxIC7V5BUUbuMycPgbuQxuJXJI6bqpUX
+         XL+ggljtounUakjSM7xIXhsd/6cboev8E1hTu0iwWKgRcPu7clb6PDXCSIleNBhl+Acu
+         My7gjrw+AEcNH+ZcO6+Z0yZfIHrR1Ym+7US0r2O92V/+PiDyw+zptZXEFo8bGCLQMxEK
+         DCYQ+RsB952kDvDBvnI0U9NkgKgGASPBXrpFOwpt+BdM91H/3rQnHWsLR6vg+kNpLbyw
+         qs/Ub35o86VjzVCU6iZr5CUT3ozgGtztWiPl41S9nRLkdFp89euxhhJUwhH2I7thst5c
+         iu/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=F+G5vrMheUscNqcqfe/Vgn/7QPQWiVKmIQiHsQqGhT4=;
+        b=lD4pes2qB6AFp8TTFf4skfFUHSNoZSqV8hL5s5Ayj1buKlpPiLF307560mbMtdWxpY
+         KLEoemJvwtqJviuWWgDO0Lu+HoGtGB6vt+J8QQbTXRBqEIV9LPxIVmx3vhlK48wDePt/
+         /Trnytw1WoxCBWCyyP3lzXzsgXMl0Kgqglr0XW1p8xp2A8dXLIfebXk1UU1b7BEm26ep
+         OsLk9kS11e0tYOtojwO43Zqnf5CVWMb80tCGiSpxCtyLQxOrRz5uyIFm4A7PemF/8ww/
+         MD+fLqT7Xu9IiLkFKjC5UP1PZbE8phUP/nxmC+DDJ2ZrFAvr90cmtaAp/0FgxkMNICAg
+         qSQg==
+X-Gm-Message-State: AJIora+bWC3MMSS4cvx9IKCn3CiAIZmz3cZbMEr7V3V/HLhFJlM0Ie9e
+	RA5tieVf24mxqCoD0yiGw08B/w==
+X-Google-Smtp-Source: AGRyM1vG4KjjPKtlm1wgmX54+UP4p9y1x0Anp/mA9ON9D45XnW3TBdS/hae7OlqnJfOS0AB4kGjomA==
+X-Received: by 2002:a17:90a:df91:b0:1e3:4dc8:46e7 with SMTP id p17-20020a17090adf9100b001e34dc846e7mr24426222pjv.106.1655515268980;
+        Fri, 17 Jun 2022 18:21:08 -0700 (PDT)
+Received: from [172.31.235.92] ([216.9.110.6])
+        by smtp.gmail.com with ESMTPSA id o22-20020a17090ac09600b001e2a36fb4aasm6038921pjs.43.2022.06.17.18.21.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 Jun 2022 18:21:08 -0700 (PDT)
+Message-ID: <91395246-7d94-c35b-b336-9c193e5d2b9e@linaro.org>
+Date: Fri, 17 Jun 2022 18:21:00 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] dt-bindings: mmc: mtk-sd: Set clocks based on compatible
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Wenbin Mei <wenbin.mei@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org
+References: <20220617230114.2438875-1-nfraprado@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220617230114.2438875-1-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_163201_420207_E180DD75 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20220617_182112_137958_C7A2954B 
+X-CRM114-Status: GOOD (  18.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,32 +98,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The entry-method property of the idle-states node should be "psci" as
-described in the idle-states binding, since this is already the value of
-enable-method in the CPU nodes. Fix it to get rid of a dtbs_check
-warning.
+On 17/06/2022 16:01, Nícolas F. R. A. Prado wrote:
+> The binding was describing a single clock list for all platforms, but
+> that's not really suitable: mt2712 requires an extra 'bus_clk' on some
+> of its controllers, while mt8192 requires four different extra clocks.
+> The rest of the platforms can share the same 3 clocks, with the third
+> being optional as it's not present on all platforms.
+> 
+> Move the clock definitions inside if blocks that match on the
+> compatibles. In practice this gets rid of dtbs_check warnings on mt8192,
+> since the 'bus_clk' clock from mt2712 is no longer expected on this
+> platform.
+> 
+> Fixes: 59a23395d8aa ("dt-bindings: mmc: Add support for MT8192 SoC")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> ---
+> 
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 115 ++++++++++++------
+>  1 file changed, 81 insertions(+), 34 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 2a2e9fa8c188..ba48ff041299 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -10,9 +10,6 @@ maintainers:
+>    - Chaotian Jing <chaotian.jing@mediatek.com>
+>    - Wenbin Mei <wenbin.mei@mediatek.com>
+>  
+> -allOf:
+> -  - $ref: mmc-controller.yaml#
+> -
+>  properties:
+>    compatible:
+>      oneOf:
+> @@ -48,28 +45,8 @@ properties:
+>    clocks:
+>      description:
+>        Should contain phandle for the clock feeding the MMC controller.
+> -    minItems: 2
 
-Fixes: 9260918d3a4f ("arm64: dts: mt8192: Add cpu-idle-states")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
+Keep minItems and maxItems matching the widest constraints.
 
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> -    items:
+> -      - description: source clock (required).
+> -      - description: HCLK which used for host (required).
+> -      - description: independent source clock gate (required for MT2712).
+> -      - description: bus clock used for internal register access (required for MT2712 MSDC0/3).
+> -      - description: msdc subsys clock gate (required for MT8192).
+> -      - description: peripheral bus clock gate (required for MT8192).
+> -      - description: AXI bus clock gate (required for MT8192).
+> -      - description: AHB bus clock gate (required for MT8192).
+> -
+> -  clock-names:
+> -    minItems: 2
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index c739e910883a..d5cae38c842a 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -172,7 +172,7 @@ l3_0: l3-cache {
- 		};
- 
- 		idle-states {
--			entry-method = "arm,psci";
-+			entry-method = "psci";
- 			cpu_sleep_l: cpu-sleep-l {
- 				compatible = "arm,idle-state";
- 				arm,psci-suspend-param = <0x00010001>;
--- 
-2.36.1
+ditto
 
+>  
+
+
+Best regards,
+Krzysztof
 
