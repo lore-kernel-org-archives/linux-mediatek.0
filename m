@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC919C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jun 2022 11:48:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1365C43334
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jun 2022 11:49:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JIO2mY682oPXJiHyGHgrm7/Q9vi5siXInrOrzmj3AUo=; b=lP/k8fx+ARCSXPx5NBEA3wBPtt
-	sbdFhgcEJ5iW7icJQG+Kq5ewKNpsFpHVk+A8nlRGpq4W8cxb/V0CP+hgz5DEcbnPoRMRYEbs3yaEs
-	CEoriRpQb25jtgj7hDButI+ITyov7Pa3EYKVD5dV+3v6BgChfw9/NIjp3wBQ5IwqhI930nX0PCnjj
-	tiOs7OkW48MpGKogmeg01Xkr4ooWTwPO2qJukvlcRH4IGqMBbVdEinDiTiQRVGvsmiM+oi18NZm7/
-	NN31XUQzf+RrptvDaBu0gMBXb3OlsVpM1JeUwPIaxQlbhHRK13+cVNGVhO2JTG0RRG4/0uXHPqVVt
-	H/tQr+Gg==;
+	bh=Yp4bmUkucrfn0YoCb3947aiyNMhaiNjLfndCRiuztxU=; b=qMsxFcKiy3cYPz0kAc5dRw0SlC
+	mNqP0BS/CjUF1yTQozCdKj+goTPyoNHhGHkBP4btWraQsLFMfs8u7W/SksDtenvqRzTFV5N+paolw
+	YawLOwEOSecw9tCXyCOKefsDX/RSDHfjf+vAeI8BzXytro8vjy+ZubzYxZvshtUSBIwNx5YmiEVdg
+	a/fPLsRaraj8NjHsw1ckpgGZ4g3i0TYLNJqwtT1spz+siEU1wD1KMeXot2Z3mArbGyFQYFO8sALnN
+	3rU1F6vfND5Ncc9P22XTagR6tAMyPHnKiJH5SBuL8TDMr0RUkaMrJSDHWbd4K3G/uVbemF1dFNOhI
+	Ixyyfe7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2tPa-00E3xg-Oa; Sun, 19 Jun 2022 11:48:14 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1o2tR2-00E4gl-6a; Sun, 19 Jun 2022 11:49:44 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2tNk-00E3Ep-KK
-	for linux-mediatek@lists.infradead.org; Sun, 19 Jun 2022 11:46:22 +0000
-Received: by mail-ej1-x633.google.com with SMTP id gl15so16258127ejb.4
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jun 2022 04:46:20 -0700 (PDT)
+	id 1o2tQS-00E4Px-Ej
+	for linux-mediatek@lists.infradead.org; Sun, 19 Jun 2022 11:49:10 +0000
+Received: by mail-ed1-x533.google.com with SMTP id o9so2328631edt.12
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jun 2022 04:49:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=JIO2mY682oPXJiHyGHgrm7/Q9vi5siXInrOrzmj3AUo=;
-        b=wdwMtYbnB3sGlyq5lBSmHcAWE2vsrrpF/vtNGPPHqz8dnsvflVypNxXbyL3sZClRLN
-         Txh8nCv5gntNEbG067+KrIUpeT1ndJbe5pKlowuafbGQ8YLlXY5H2MXMp0XqF22hkO6p
-         2GBiB0fbY7KjLdEpoa1Mi3C33+E/ognIiGcRYF7SzSz0V4fu2f2rwm8RfYA8t6C7U7PQ
-         s55KRClprD+V6LjCLA9Cv7PvmEg5CE/KC/O09D5ZzAjJikI3IDrDjdH0/K8UoNCu6DEV
-         BML3PCmmgnVNW1qVhFr2GmWP+64xbBEeg6lrkca0P7GtaUAXNGA79+vqaYF/I5OWv55Q
-         R80Q==
+        bh=Yp4bmUkucrfn0YoCb3947aiyNMhaiNjLfndCRiuztxU=;
+        b=yr+bG3jG4+68iQNvAiVbY3Z1gBJqsRvJGx5qiy0JF4mCyAGs2+gQW+U/llayv2QvZa
+         JObgwL6nY/In7vN0HgMJyKOHcXvcqtzdmIISyxAbBNQcLPd/7bs5WSSXoP1BF4CC0oSj
+         cOA/+WUR3Mjc/ZGuFAcYgKsUk8uEOUyOsnHY2Kdcj/KV2McZ7G5VwDWc+oYaFweytQiE
+         3DWEEJAHPlikXDtlaqwLSmEuovXWj4PGrR2gjXnxInhsq+/pVhYHn++AcQqqzmdENG9M
+         mGqPzpp9dyG8QRwIRiVCBK/yzkGrKuwNwcUEZGSzbCoak4I6gm0aJOkIY6vumz7Ed2+i
+         k4Hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=JIO2mY682oPXJiHyGHgrm7/Q9vi5siXInrOrzmj3AUo=;
-        b=atcTFyRcXn8Vjv5p+Yfo44EOJcbcSR7uvYF5C3Zat0Lk7oXjxGhNXAS5n6hHmIOuzv
-         /zEslMe0oK2bsBtTFUbQydA0HFUcJ1fxm2QFYpq2VXdK4/iyX+IPjxCnuN54BdPVopWU
-         2wFSyED27v5u8N/wiINuOB6RrrHA79v301H//3EKZyObMyqurdg2B92qwYxIGIs9DPrH
-         tvK1wQIeG/pS7SToW3oRA5nCjUSp168+Y4HcTc4gmOE+u9vVlIcq5kg+gDeT05wVRw9D
-         zzw1SaDwZkfTLVggogTveaWSoNLBrJi/lFwSRptCT2yrsEIGL482zpIx6R6JK/EcDCDy
-         Hr/Q==
-X-Gm-Message-State: AJIora/CMp1jXA+6PVWCuIW/VE4360dfdAVEgRS0tsBet2YuDbiEiMdp
-	gdXGiIGP/3ExQ8x2vCgdsdb5CA==
-X-Google-Smtp-Source: AGRyM1sePyl4/VzHcBtPb/raB3YCRxdOJNwaHxIh3b+epV2BiUpRnbkGH44ooVVXzFb9O5txZOn4/Q==
-X-Received: by 2002:a17:907:9813:b0:711:d5ac:b9ef with SMTP id ji19-20020a170907981300b00711d5acb9efmr16721384ejc.95.1655639178872;
-        Sun, 19 Jun 2022 04:46:18 -0700 (PDT)
+        bh=Yp4bmUkucrfn0YoCb3947aiyNMhaiNjLfndCRiuztxU=;
+        b=0vciKCJUOJQN+tz/nnzDDpNDtiWd60rj7LfWPeX+8xYjWLjFmNHZZm5tCDolUE9Wp/
+         jdgCFltW2UjuRL6TFB/6TF+HvSp3IQn8xPgvCrJ5EgxXuZ/VzH4eSuPKuRBVWJmwHROV
+         Kt5As+qD1R6MD7S84vQvyVKuMAyLrEPwNBWMxiVXq2beZIXKDXGs36+ZjVl/kcLsHoXg
+         QNq0qasr37HiNEC4DSFmmPKI+3Muew86NbGFJxlwVLfwzGm/wUWi2KzZCrbq9RJAjAIw
+         7AuRAW2mYGWn6MbXdHGHn1uChXyEyVank/s2mAFHbC374N/pdOulTGPFZ3LxlKHL3/Tl
+         qoCg==
+X-Gm-Message-State: AJIora+aLD8ZMFF4DtOgbGSg1Yg94N/8JM3Nhy4PLIEv4exkrI6HJ9lj
+	xf2+GZ8MXVB/uw/8LCnORds/iw==
+X-Google-Smtp-Source: AGRyM1uf/0HgCvqeSezyCxo06xRPdiDZsKSIjIh9ayuMCVtMgx1owUBRCkmcqmcT3JXy2reZyX/UXQ==
+X-Received: by 2002:aa7:cb13:0:b0:433:4985:1b54 with SMTP id s19-20020aa7cb13000000b0043349851b54mr22955689edt.182.1655639346743;
+        Sun, 19 Jun 2022 04:49:06 -0700 (PDT)
 Received: from [192.168.0.206] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id g1-20020a17090604c100b006fec56c57e6sm4521040eja.46.2022.06.19.04.46.17
+        by smtp.gmail.com with ESMTPSA id fd18-20020a056402389200b0043570d96d25sm2987288edb.95.2022.06.19.04.49.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 19 Jun 2022 04:46:18 -0700 (PDT)
-Message-ID: <8fbee49a-8215-32b7-3545-66df70ecc38d@linaro.org>
-Date: Sun, 19 Jun 2022 13:46:17 +0200
+        Sun, 19 Jun 2022 04:49:06 -0700 (PDT)
+Message-ID: <5c7a1763-01fb-249d-a301-9164e2139ac6@linaro.org>
+Date: Sun, 19 Jun 2022 13:49:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH] dt-bindings: phy: make phy-cells description a text
+Subject: Re: [PATCH 2/3] dt-bindings: usb: mtk-xhci: Allow middle optional
+ clocks to be missing
 Content-Language: en-US
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Anurag Kumar Vulisha <anurag.kumar.vulisha@xilinx.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Sean Anderson <sean.anderson@seco.com>
-References: <20220619113325.21396-1-krzysztof.kozlowski@linaro.org>
- <Yq8LHN+WGVpXDwiM@pendragon.ideasonboard.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-usb@vger.kernel.org
+References: <20220617222916.2435618-1-nfraprado@collabora.com>
+ <20220617222916.2435618-3-nfraprado@collabora.com>
+ <d95e046262751a7f746fabc5f1d9a39e675730b3.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <Yq8LHN+WGVpXDwiM@pendragon.ideasonboard.com>
+In-Reply-To: <d95e046262751a7f746fabc5f1d9a39e675730b3.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_044620_723041_A9D2FE24 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20220619_044908_542109_D239CC75 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,24 +101,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/06/2022 13:40, Laurent Pinchart wrote:
-> Hi Krzysztof,
+On 19/06/2022 09:40, Chunfeng Yun wrote:
+> On Fri, 2022-06-17 at 18:29 -0400, Nícolas F. R. A. Prado wrote:
+>> The current clock list in the binding doesn't allow for one of the
+>> optional clocks to be missing and a subsequent clock to be present.
+>> An
+>> example where this is an issue is in mt8192.dtsi, which has "sys_ck",
+>> "ref_ck", "xhci_ck" and would cause dtbs_check warnings.
+> How about using fixed clock instead to fix the check warning?
+> Using enum way seems make it more complex.
 > 
-> Thank you for the patch.
-> 
-> On Sun, Jun 19, 2022 at 01:33:25PM +0200, Krzysztof Kozlowski wrote:
->> The description field is a string, so using YAML inside phy-cells
->> description is not actually helpful.
-> 
-> Does it hurt though ? For xlnx,zynqmp-psgtr.yaml I wrote it that way to
-> prepare for a future where it could be described using a YAML schema
-> (but such future may never come).
 
-No, it does not hurt. It is however confusing some folks and they think
-schema goes into description. The description should be
-readable/descriptive for humans, so if you think your approach is
-better, I am perfectly fine with it.
-
+That would mean the clock is not actually optional. The DTS should
+reflect the hardware so either you have the clock there or not. Either
+it is an input or not. Of course there are some exceptions (like
+non-controllable clock or regulator which not always has to be modeled).
 
 Best regards,
 Krzysztof
