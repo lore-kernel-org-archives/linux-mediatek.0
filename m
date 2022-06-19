@@ -4,92 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBD46C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jun 2022 17:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD6FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jun 2022 07:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1qL4LSJ37uneUzdmQuDv/9dH/OcfjCdYFv/imv1JQgs=; b=G8U1plxkqeRybLq03mk6QAMKES
-	nssAB47ituHjiN3Y14Gi6b136Cv7zqlJc2ND0gI2Yqfa+yNUf22b8WU7HCcJlM7pq6dceSODQ2SZf
-	qq72TWz/i5g9VygOiepqBY3dbsI99JeLiHZK45g2IAqwJqoRyHrV9qRKxBOqQPxJit+q3PgyYkCLT
-	fhGZjSINwxsxgKdwprgGG69hi6vQl4uGw/kn+FdKJQJW21sKSkG5pcp3I81O77oJkWP6WOh+UQoqJ
-	zDcA8hCVUvV4xmnmu+l296dNI/vvk7L+VfM6J4VM4fWKfyTbv6oIeUee8W91HUcFYS6gBpnVOHVLi
-	V7s33cbw==;
+	bh=xHPM+Xgpgx3kefDBg2xT163QBJBuJlm18tJR6+yetHc=; b=po1gSJty9iWsCkSEa2rqfWBkfb
+	Wa3lv1UW3vn6pFiizBxPMhepCi/y+CSCEJWqmRAU0I9rAFuiIr39CheR/iD3PRiq4F5LC12piloAA
+	W94w9islCf4ZzdaeDvpTRgSliIMYKlSeugfBFwIdxRAOq/oVfSRhAkL+ecTVmhFiCoV1chgxkxWHX
+	Jrf7YI5jLlvIu0bWP8D9WKkAlh/XpUG+Gjyt72ehWbkx4I9otwrgy0Wi2YZXNgToKtJuE6w05ViOQ
+	OeDXM39WJN6Tw+rEHFvcSoSnbR9ouMRawQ4JSLnuuAQdz6Br1EjR+bWVC2+QUE1YN4RmUO1BFgPW8
+	BORj6Nvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2c8k-00BxOt-P4; Sat, 18 Jun 2022 17:21:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1o2pO7-00DSoI-W1; Sun, 19 Jun 2022 07:30:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2c8f-00BxOK-4j; Sat, 18 Jun 2022 17:21:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8580460DB4;
-	Sat, 18 Jun 2022 17:21:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41652C3411A;
-	Sat, 18 Jun 2022 17:21:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655572894;
-	bh=s9rzUJH1dCU78egHZ+iIG03v6Lj+ion9PzSseqxJCFI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=mLbJ4PLP002IFIyUS/mFXkt7VRPo37gj1dl2UgXLay+Jd+5DxzlSRZxjCKSQfzLtm
-	 w4ERJv/y4Vtvf+zMWg/hqpOjfO75ncGomxEsmRBeblvqyljZF/cJ0Ghsf1i8AkvVYy
-	 CTfCUKo5VD9g1SiBv2jluSBhogu0x0nNfUVOBKIfVg9HtAQUAAfDJ/p33a5g0kx2kd
-	 QlWaytpoO91OuQliAYmBYJC3yq5N6Q8XpHivXx5gTE7c7v/ixy3a9u9FLFcZpTIv8D
-	 BUJ5TsJBVILC9zkvhKEqh4bM/awT4sH6gM4Y9KEH1IVSYXTDyOvr87C/r8rkSapHHo
-	 AwM2FiuCayWcQ==
-Date: Sat, 18 Jun 2022 18:30:40 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>
-Cc: <linux-imx@nxp.com>, <linux-renesas-soc@vger.kernel.org>,
- <linux-mips@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <chrome-platform@lists.linux.dev>, Lad Prabhakar
- <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- <linux-mediatek@lists.infradead.org>,
- <linux-stm32@st-md-mailman.stormreply.com>,
- <linux-arm-msm@vger.kernel.org>, <linux-iio@vger.kernel.org>,
- <openbmc@lists.ozlabs.org>, Cai Huoqing <cai.huoqing@linux.dev>, Benjamin
- Fair <benjaminfair@google.com>, Jishnu Prakash <quic_jprakash@quicinc.com>,
- Linus Walleij <linus.walleij@linaro.org>, Lars-Peter Clausen
- <lars@metafoo.de>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Amit
- Kucheria <amitk@kernel.org>, Andy Gross <agross@kernel.org>, Michael
- Hennerich <Michael.Hennerich@analog.com>, Haibo Chen <haibo.chen@nxp.com>,
- Benson Leung <bleung@chromium.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Christophe Branchereau <cbranchereau@gmail.com>, Patrick Venture
- <venture@google.com>, Arnd Bergmann <arnd@arndb.de>, Nancy Yuen
- <yuenn@google.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Gwendal Grignou <gwendal@chromium.org>,
- Saravanan Sekar <sravanhome@gmail.com>, Tali Perry <tali.perry1@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Paul Cercueil
- <paul@crapouillou.net>, Thara Gopinath <thara.gopinath@linaro.org>, Avi
- Fishman <avifishman70@gmail.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Claudiu Beznea <claudiu.beznea@microchip.com>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Andy Shevchenko <andy.shevchenko@gmail.com>,
- Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Bjorn
- Andersson <bjorn.andersson@linaro.org>, Nicolas Ferre
- <nicolas.ferre@microchip.com>, Zhang Rui <rui.zhang@intel.com>, Shawn Guo
- <shawnguo@kernel.org>, Guenter Roeck <groeck@chromium.org>, Fabio Estevam
- <festevam@gmail.com>, Olivier Moysan <olivier.moysan@foss.st.com>, Eugen
- Hristev <eugen.hristev@microchip.com>, Miquel Raynal
- <miquel.raynal@bootlin.com>
-Subject: Re: [PATCH 20/34] iio: inkern: only relase the device node when
- done with it
-Message-ID: <20220618183040.29ed935d@jic23-huawei>
-In-Reply-To: <20220610084545.547700-21-nuno.sa@analog.com>
-References: <20220610084545.547700-1-nuno.sa@analog.com>
-	<20220610084545.547700-21-nuno.sa@analog.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
+	id 1o2pNv-00DSkM-9Q; Sun, 19 Jun 2022 07:30:18 +0000
+X-UUID: e184babc49fb47b08b09a766c6c36e6e-20220619
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=xHPM+Xgpgx3kefDBg2xT163QBJBuJlm18tJR6+yetHc=;
+	b=mW87C9cAol8W3lUgwTzRV4x/U83I4HGeQYOXvZovZK/6LXry0yyorQuRm1fAkaBTBFXWBg2XroRYUkNOFW9W9iw1Ku+qeubRDHL8jUwMO11QItCOQNVwgkDAVTgxjsGZGtSqKazr19Ebq6UPY3Dm6XPLrQBjur1uKGfmAtW1SxE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:c9ddf381-6f96-4f46-aa5c-d885ed098544,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:37080e49-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: e184babc49fb47b08b09a766c6c36e6e-20220619
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1371468779; Sun, 19 Jun 2022 00:30:06 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 19 Jun 2022 00:30:04 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Sun, 19 Jun 2022 15:30:03 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 19 Jun 2022 15:30:02 +0800
+Message-ID: <fbcafb3c519c4d6a914254d8958633a922267cf6.camel@mediatek.com>
+Subject: Re: [PATCH v4] soc: mediatek: Add support always on flag
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Min Guo
+	<min.guo@mediatek.com>, MandyJH Liu <mandyjh.liu@mediatek.com>, Eddie Hung
+	<eddie.hung@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, "Rafael
+ J . Wysocki" <rafael@kernel.org>, Kevin Hilman <khilman@kernel.org>, "Ulf
+ Hansson" <ulf.hansson@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+Date: Sun, 19 Jun 2022 15:30:02 +0800
+In-Reply-To: <eb498209-3d5f-b60a-b596-4d3f46b5f9b1@gmail.com>
+References: <20220617095841.23031-1-chunfeng.yun@mediatek.com>
+	 <eb498209-3d5f-b60a-b596-4d3f46b5f9b1@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220618_102137_303542_8BEE0A81 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20220619_003015_381213_90C75392 
+X-CRM114-Status: GOOD (  28.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,51 +87,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Jun 2022 10:45:31 +0200
-Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
-
-Typo in patch title (just noticed whilst scrolling past)
-
-release
-
-
-> 'of_node_put()' can potentially release the memory pointed to by
-> 'iiospec.np' which would leave us with an invalid pointer (and we would
-> still pass it in 'of_xlate()'). As such, we can only release the node
-> after we are done with it.
->=20
-> Fixes: 17d82b47a215d ("iio: Add OF support")
-> Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-> ---
->  drivers/iio/inkern.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/iio/inkern.c b/drivers/iio/inkern.c
-> index df74765d33dc..9d87057794fc 100644
-> --- a/drivers/iio/inkern.c
-> +++ b/drivers/iio/inkern.c
-> @@ -165,9 +165,10 @@ static int __of_iio_channel_get(struct iio_channel *=
-channel,
-> =20
->  	idev =3D bus_find_device(&iio_bus_type, NULL, iiospec.np,
->  			       iio_dev_node_match);
-> -	of_node_put(iiospec.np);
-> -	if (idev =3D=3D NULL)
-> +	if (idev =3D=3D NULL) {
-> +		of_node_put(iiospec.np);
->  		return -EPROBE_DEFER;
-> +	}
-> =20
->  	indio_dev =3D dev_to_iio_dev(idev);
->  	channel->indio_dev =3D indio_dev;
-> @@ -175,6 +176,7 @@ static int __of_iio_channel_get(struct iio_channel *c=
-hannel,
->  		index =3D indio_dev->info->of_xlate(indio_dev, &iiospec);
->  	else
->  		index =3D __of_iio_simple_xlate(indio_dev, &iiospec);
-> +	of_node_put(iiospec.np);
->  	if (index < 0)
->  		goto err_put;
->  	channel->channel =3D &indio_dev->channels[index];
+T24gRnJpLCAyMDIyLTA2LTE3IGF0IDEzOjUyICswMjAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3Rl
+Og0KPiANCj4gT24gMTcvMDYvMjAyMiAxMTo1OCwgQ2h1bmZlbmcgWXVuIHdyb3RlOg0KPiA+IFRo
+ZXJlIGlzIGEgdC1waHkgc2hhcmVkIGJ5IFBDSWUgYW5kIFVTQjMgb24gbXQ4MTk1LCBpZiB0aGUg
+dC1waHkgaXMNCj4gPiB1c2VkIGJ5IFBDSWUsIHdoZW4gcG93ZXIgb2ZmIGl0cyBtdGNtb3MsIG5l
+ZWQgc29mdHdhcmUgcmVzZXQgaXQNCj4gPiAod29ya2Fyb3VuZCB3YXksIHVzdWFsbHkgaGFyZHdh
+cmUgZG8gaXQsIGJ1dCBoYXMgYW4gaXNzdWUgb24NCj4gPiBtdDgxOTUpLA0KPiA+IGJ1dCBpdCBo
+YXMgc2lkZSBlZmZlY3QgdG8gVVNCMiBwaHkod29ya3Mgd2l0aCBVU0IzIHBoeSB0byBzdXBwb3J0
+DQo+ID4gVVNCMy4yIEdlbjEpLCBzbyBhZGQgc3VwcG9ydCBHRU5QRF9GTEFHX0FMV0FZU19PTiBm
+bGFnLCBhbmQgbWFrZQ0KPiA+IGl0cw0KPiA+IHBvd2VyIGFsd2F5cyBvbjsNCj4gPiBBbm90aGVy
+IHJlYXNvbiBpcyB0aGF0IFVTQjMuMiBHZW4xLzIgbmVlZCBrZWVwIHBvd2VyIGFsd2F5cyBvbiB3
+aGVuDQo+ID4gc3VwcG9ydCBydW50aW1lLXBtIGR1ZSB0byBoYXJkd2FyZSBsaW1pdGF0aW9uIHVu
+dGlsIG5vdzsNCj4gPiANCj4gPiBSZXZpZXdlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVn
+bm8gPA0KPiA+IGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4NCj4gPiBT
+aWduZWQtb2ZmLWJ5OiBDaHVuZmVuZyBZdW4gPGNodW5mZW5nLnl1bkBtZWRpYXRlay5jb20+DQo+
+IA0KPiBJIGNoYW5nZWQgdGhlIHN1YmplY3QgbGluZSB0byBhZGQgcG0tZG9tYWlucyB0byBpdC4g
+QWxzbyBSZXZpZXdlZC1ieQ0KPiB0YWdzIGNvbWUgDQo+IHVuZGVyIHRoZSBwYXRjaCBhdXRob3Ig
+U2lnbmVkLW9mZi1ieSB0YWcuDQo+IA0KPiBGb3IgdGhlIG5leHQgdGltZSwgcGxlYXNlIHRyeSB0
+byBnZXQgYSBiZXR0ZXIgY29tbWl0IG1lc3NhZ2UuIEl0J3MNCj4gZGlmZmljdWx0IHRvIA0KPiB1
+bmRlcnN0YW5kIHdoZW4gcmVhZGluZyB0aGUgZmlyc3QgdGltZS4NCkdvdCBpdCwgdGhhbmtzIGEg
+bG90DQoNCj4gDQo+IEFwcGxpZWQsIHRoYW5rcyENCj4gDQo+ID4gLS0tDQo+ID4gdjQ6IGFkZCBy
+ZXZpZXdlZC1ieSBBbmdlbG9HaW9hY2NoaW5vDQo+ID4gDQo+ID4gdjM6IG1ha2UgYWx3YXlzLW9u
+IGZsYWcgZXhjbHVzaXZlIHdpdGggZGVmdWFsdC1vZmYgZmxhZw0KPiA+IA0KPiA+IHYyOiBrZWVw
+IGFjdGl2ZV93YWtldXAgZmxhZyBmb3IgbXQ4MTk1DQo+ID4gLS0tDQo+ID4gICBkcml2ZXJzL3Nv
+Yy9tZWRpYXRlay9tdDgxOTUtcG0tZG9tYWlucy5oIHwgMiArLQ0KPiA+ICAgZHJpdmVycy9zb2Mv
+bWVkaWF0ZWsvbXRrLXBtLWRvbWFpbnMuYyAgICB8IDMgKysrDQo+ID4gICBkcml2ZXJzL3NvYy9t
+ZWRpYXRlay9tdGstcG0tZG9tYWlucy5oICAgIHwgMiArKw0KPiA+ICAgMyBmaWxlcyBjaGFuZ2Vk
+LCA2IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCj4gPiANCj4gPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXQ4MTk1LXBtLWRvbWFpbnMuaA0KPiA+IGIvZHJpdmVycy9z
+b2MvbWVkaWF0ZWsvbXQ4MTk1LXBtLWRvbWFpbnMuaA0KPiA+IGluZGV4IDkzOGY0ZDUxZjVhZS4u
+MDUyOWQxMzBiNjc1IDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZlcnMvc29jL21lZGlhdGVrL210ODE5
+NS1wbS1kb21haW5zLmgNCj4gPiArKysgYi9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdDgxOTUtcG0t
+ZG9tYWlucy5oDQo+ID4gQEAgLTY3LDcgKzY3LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBzY3Bz
+eXNfZG9tYWluX2RhdGENCj4gPiBzY3BzeXNfZG9tYWluX2RhdGFfbXQ4MTk1W10gPSB7DQo+ID4g
+ICAJCS5jdGxfb2ZmcyA9IDB4MzM0LA0KPiA+ICAgCQkucHdyX3N0YV9vZmZzID0gMHgxNzQsDQo+
+ID4gICAJCS5wd3Jfc3RhMm5kX29mZnMgPSAweDE3OCwNCj4gPiAtCQkuY2FwcyA9IE1US19TQ1BE
+X0FDVElWRV9XQUtFVVAsDQo+ID4gKwkJLmNhcHMgPSBNVEtfU0NQRF9BQ1RJVkVfV0FLRVVQIHwg
+TVRLX1NDUERfQUxXQVlTX09OLA0KPiA+ICAgCX0sDQo+ID4gICAJW01UODE5NV9QT1dFUl9ET01B
+SU5fQ1NJX1JYX1RPUF0gPSB7DQo+ID4gICAJCS5uYW1lID0gImNzaV9yeF90b3AiLA0KPiA+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstcG0tZG9tYWlucy5jDQo+ID4gYi9k
+cml2ZXJzL3NvYy9tZWRpYXRlay9tdGstcG0tZG9tYWlucy5jDQo+ID4gaW5kZXggNWNlZDI1NGIw
+ODJiLi5hM2RhZTM5MWEzOGEgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsv
+bXRrLXBtLWRvbWFpbnMuYw0KPiA+ICsrKyBiL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1wbS1k
+b21haW5zLmMNCj4gPiBAQCAtNDI4LDYgKzQyOCw5IEBAIGdlbmVyaWNfcG1fZG9tYWluICpzY3Bz
+eXNfYWRkX29uZV9kb21haW4oc3RydWN0DQo+ID4gc2Nwc3lzICpzY3BzeXMsIHN0cnVjdCBkZXZp
+Y2Vfbm8NCj4gPiAgIAkJCWRldl9lcnIoc2Nwc3lzLT5kZXYsICIlcE9GOiBmYWlsZWQgdG8gcG93
+ZXIgb24NCj4gPiBkb21haW46ICVkXG4iLCBub2RlLCByZXQpOw0KPiA+ICAgCQkJZ290byBlcnJf
+cHV0X3N1YnN5c19jbG9ja3M7DQo+ID4gICAJCX0NCj4gPiArDQo+ID4gKwkJaWYgKE1US19TQ1BE
+X0NBUFMocGQsIE1US19TQ1BEX0FMV0FZU19PTikpDQo+ID4gKwkJCXBkLT5nZW5wZC5mbGFncyB8
+PSBHRU5QRF9GTEFHX0FMV0FZU19PTjsNCj4gPiAgIAl9DQo+ID4gICANCj4gPiAgIAlpZiAoc2Nw
+c3lzLT5kb21haW5zW2lkXSkgew0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3NvYy9tZWRpYXRl
+ay9tdGstcG0tZG9tYWlucy5oDQo+ID4gYi9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstcG0tZG9t
+YWlucy5oDQo+ID4gaW5kZXggZGFhMjRlODkwZGQ0Li43ZDNjMGMzNjMxNmMgMTAwNjQ0DQo+ID4g
+LS0tIGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLXBtLWRvbWFpbnMuaA0KPiA+ICsrKyBiL2Ry
+aXZlcnMvc29jL21lZGlhdGVrL210ay1wbS1kb21haW5zLmgNCj4gPiBAQCAtOCw2ICs4LDggQEAN
+Cj4gPiAgICNkZWZpbmUgTVRLX1NDUERfU1JBTV9JU08JCUJJVCgyKQ0KPiA+ICAgI2RlZmluZSBN
+VEtfU0NQRF9LRUVQX0RFRkFVTFRfT0ZGCUJJVCgzKQ0KPiA+ICAgI2RlZmluZSBNVEtfU0NQRF9E
+T01BSU5fU1VQUExZCQlCSVQoNCkNCj4gPiArLyogY2FuJ3Qgc2V0IE1US19TQ1BEX0tFRVBfREVG
+QVVMVF9PRkYgYXQgdGhlIHNhbWUgdGltZSAqLw0KPiA+ICsjZGVmaW5lIE1US19TQ1BEX0FMV0FZ
+U19PTgkJQklUKDUpDQo+ID4gICAjZGVmaW5lIE1US19TQ1BEX0NBUFMoX3NjcGQsIF94KQkoKF9z
+Y3BkKS0+ZGF0YS0+Y2FwcyAmIChfeCkpDQo+ID4gICANCj4gPiAgICNkZWZpbmUgU1BNX1ZERV9Q
+V1JfQ09OCQkJMHgwMjEwDQo=
 
 
