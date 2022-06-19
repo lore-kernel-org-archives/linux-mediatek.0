@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4ED1C43334
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jun 2022 11:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC919C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jun 2022 11:48:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YnGwRhsQBkxYAnVmuKe5h12qgOtj1Xt3xoLVcSICx4c=; b=R78MrxhnLK+PlIa0ey+qids8dP
-	Kh/NTT+HbGX1X6jE5nCjyZaNLc00F8l4BOSBNpDsK6P+rUcnEGiglXQmmHhmXhnlrF4ARXXaMVnWT
-	C3K6Z1CuGSR4LuXjk4H+b7iuIe3KZ2ut4qam0/ea8L8fchqZbZOyKKMEMZQLq5m+NPGb10KBCyQsz
-	alPmFD/42fw265VaPZjaaUZ6cHGZt6HF8HKJo9k9r7SFpVo22WrVpFgmwCygFWF5cJF0I7gW1Wh6o
-	bZn8LBeJ/NqSFiMII5XQJOVgczj+HY1oxET1oJRshc/E/m6LiVFAGNC2xJIdQvVNIIsS3yJD3B4tg
-	WZqqOZcw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JIO2mY682oPXJiHyGHgrm7/Q9vi5siXInrOrzmj3AUo=; b=lP/k8fx+ARCSXPx5NBEA3wBPtt
+	sbdFhgcEJ5iW7icJQG+Kq5ewKNpsFpHVk+A8nlRGpq4W8cxb/V0CP+hgz5DEcbnPoRMRYEbs3yaEs
+	CEoriRpQb25jtgj7hDButI+ITyov7Pa3EYKVD5dV+3v6BgChfw9/NIjp3wBQ5IwqhI930nX0PCnjj
+	tiOs7OkW48MpGKogmeg01Xkr4ooWTwPO2qJukvlcRH4IGqMBbVdEinDiTiQRVGvsmiM+oi18NZm7/
+	NN31XUQzf+RrptvDaBu0gMBXb3OlsVpM1JeUwPIaxQlbhHRK13+cVNGVhO2JTG0RRG4/0uXHPqVVt
+	H/tQr+Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2tIH-00E1i0-DG; Sun, 19 Jun 2022 11:40:41 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o2tPa-00E3xg-Oa; Sun, 19 Jun 2022 11:48:14 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2tI5-00E1dR-TT; Sun, 19 Jun 2022 11:40:31 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BCC3925E;
-	Sun, 19 Jun 2022 13:40:26 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655638826;
-	bh=F985BgbPk6OEp+5ogkDCv/89Z7ithnzpRugLwEVYEp8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JUHkgqIQ4eCmyE3s1Ug0PS5cPnbkHC1bVg5u4Kzwc9F7zsf4U4y7zVpSYYhXRdz3D
-	 W0psvcSnd25rEngNNlURd57Ohq3pRoND2QH76OMOuuaz98Q82wDLZ7w4Q3fiJe8boX
-	 fxZERRMUkJZzKAfXZlMeBapvfLj/GVg+N0MPpeyk=
-Date: Sun, 19 Jun 2022 14:40:12 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Anurag Kumar Vulisha <anurag.kumar.vulisha@xilinx.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Sean Anderson <sean.anderson@seco.com>
-Subject: Re: [PATCH] dt-bindings: phy: make phy-cells description a text
-Message-ID: <Yq8LHN+WGVpXDwiM@pendragon.ideasonboard.com>
-References: <20220619113325.21396-1-krzysztof.kozlowski@linaro.org>
+	id 1o2tNk-00E3Ep-KK
+	for linux-mediatek@lists.infradead.org; Sun, 19 Jun 2022 11:46:22 +0000
+Received: by mail-ej1-x633.google.com with SMTP id gl15so16258127ejb.4
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jun 2022 04:46:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=JIO2mY682oPXJiHyGHgrm7/Q9vi5siXInrOrzmj3AUo=;
+        b=wdwMtYbnB3sGlyq5lBSmHcAWE2vsrrpF/vtNGPPHqz8dnsvflVypNxXbyL3sZClRLN
+         Txh8nCv5gntNEbG067+KrIUpeT1ndJbe5pKlowuafbGQ8YLlXY5H2MXMp0XqF22hkO6p
+         2GBiB0fbY7KjLdEpoa1Mi3C33+E/ognIiGcRYF7SzSz0V4fu2f2rwm8RfYA8t6C7U7PQ
+         s55KRClprD+V6LjCLA9Cv7PvmEg5CE/KC/O09D5ZzAjJikI3IDrDjdH0/K8UoNCu6DEV
+         BML3PCmmgnVNW1qVhFr2GmWP+64xbBEeg6lrkca0P7GtaUAXNGA79+vqaYF/I5OWv55Q
+         R80Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=JIO2mY682oPXJiHyGHgrm7/Q9vi5siXInrOrzmj3AUo=;
+        b=atcTFyRcXn8Vjv5p+Yfo44EOJcbcSR7uvYF5C3Zat0Lk7oXjxGhNXAS5n6hHmIOuzv
+         /zEslMe0oK2bsBtTFUbQydA0HFUcJ1fxm2QFYpq2VXdK4/iyX+IPjxCnuN54BdPVopWU
+         2wFSyED27v5u8N/wiINuOB6RrrHA79v301H//3EKZyObMyqurdg2B92qwYxIGIs9DPrH
+         tvK1wQIeG/pS7SToW3oRA5nCjUSp168+Y4HcTc4gmOE+u9vVlIcq5kg+gDeT05wVRw9D
+         zzw1SaDwZkfTLVggogTveaWSoNLBrJi/lFwSRptCT2yrsEIGL482zpIx6R6JK/EcDCDy
+         Hr/Q==
+X-Gm-Message-State: AJIora/CMp1jXA+6PVWCuIW/VE4360dfdAVEgRS0tsBet2YuDbiEiMdp
+	gdXGiIGP/3ExQ8x2vCgdsdb5CA==
+X-Google-Smtp-Source: AGRyM1sePyl4/VzHcBtPb/raB3YCRxdOJNwaHxIh3b+epV2BiUpRnbkGH44ooVVXzFb9O5txZOn4/Q==
+X-Received: by 2002:a17:907:9813:b0:711:d5ac:b9ef with SMTP id ji19-20020a170907981300b00711d5acb9efmr16721384ejc.95.1655639178872;
+        Sun, 19 Jun 2022 04:46:18 -0700 (PDT)
+Received: from [192.168.0.206] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id g1-20020a17090604c100b006fec56c57e6sm4521040eja.46.2022.06.19.04.46.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 19 Jun 2022 04:46:18 -0700 (PDT)
+Message-ID: <8fbee49a-8215-32b7-3545-66df70ecc38d@linaro.org>
+Date: Sun, 19 Jun 2022 13:46:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20220619113325.21396-1-krzysztof.kozlowski@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] dt-bindings: phy: make phy-cells description a text
+Content-Language: en-US
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Anurag Kumar Vulisha <anurag.kumar.vulisha@xilinx.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Sean Anderson <sean.anderson@seco.com>
+References: <20220619113325.21396-1-krzysztof.kozlowski@linaro.org>
+ <Yq8LHN+WGVpXDwiM@pendragon.ideasonboard.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <Yq8LHN+WGVpXDwiM@pendragon.ideasonboard.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_044030_164409_B6DDD138 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20220619_044620_723041_A9D2FE24 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,122 +100,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-Thank you for the patch.
-
-On Sun, Jun 19, 2022 at 01:33:25PM +0200, Krzysztof Kozlowski wrote:
-> The description field is a string, so using YAML inside phy-cells
-> description is not actually helpful.
-
-Does it hurt though ? For xlnx,zynqmp-psgtr.yaml I wrote it that way to
-prepare for a future where it could be described using a YAML schema
-(but such future may never come).
-
-> Make it a proper text.
+On 19/06/2022 13:40, Laurent Pinchart wrote:
+> Hi Krzysztof,
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  .../bindings/phy/mediatek,tphy.yaml           | 14 ++++----
->  .../bindings/phy/mediatek,xsphy.yaml          | 10 +++---
->  .../bindings/phy/xlnx,zynqmp-psgtr.yaml       | 32 ++++++++-----------
->  3 files changed, 23 insertions(+), 33 deletions(-)
+> Thank you for the patch.
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> index 4b638c1d4221..bd0e4c4915ed 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> @@ -154,14 +154,12 @@ patternProperties:
->        "#phy-cells":
->          const: 1
->          description: |
-> -          The cells contain the following arguments.
-> -
-> -          - description: The PHY type
-> -              enum:
-> -                - PHY_TYPE_USB2
-> -                - PHY_TYPE_USB3
-> -                - PHY_TYPE_PCIE
-> -                - PHY_TYPE_SATA
-> +          The cells contain the following arguments::
-> +            - The PHY type::
-> +              - PHY_TYPE_USB2
-> +              - PHY_TYPE_USB3
-> +              - PHY_TYPE_PCIE
-> +              - PHY_TYPE_SATA
->  
->        nvmem-cells:
->          items:
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> index 598fd2b95c29..7262b8e184e2 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
-> @@ -100,12 +100,10 @@ patternProperties:
->        "#phy-cells":
->          const: 1
->          description: |
-> -          The cells contain the following arguments.
-> -
-> -          - description: The PHY type
-> -              enum:
-> -                - PHY_TYPE_USB2
-> -                - PHY_TYPE_USB3
-> +          The cells contain the following arguments::
-> +            - The PHY type::
-> +              - PHY_TYPE_USB2
-> +              - PHY_TYPE_USB3
->  
->        # The following optional vendor properties are only for debug or HQA test
->        mediatek,eye-src:
-> diff --git a/Documentation/devicetree/bindings/phy/xlnx,zynqmp-psgtr.yaml b/Documentation/devicetree/bindings/phy/xlnx,zynqmp-psgtr.yaml
-> index 79906519c652..7083eddb467c 100644
-> --- a/Documentation/devicetree/bindings/phy/xlnx,zynqmp-psgtr.yaml
-> +++ b/Documentation/devicetree/bindings/phy/xlnx,zynqmp-psgtr.yaml
-> @@ -18,25 +18,19 @@ properties:
->    "#phy-cells":
->      const: 4
->      description: |
-> -      The cells contain the following arguments.
-> -
-> -      - description: The GTR lane
-> -        minimum: 0
-> -        maximum: 3
-> -      - description: The PHY type
-> -        enum:
-> -          - PHY_TYPE_DP
-> -          - PHY_TYPE_PCIE
-> -          - PHY_TYPE_SATA
-> -          - PHY_TYPE_SGMII
-> -          - PHY_TYPE_USB3
-> -      - description: The PHY instance
-> -        minimum: 0
-> -        maximum: 1 # for DP, SATA or USB
-> -        maximum: 3 # for PCIE or SGMII
-> -      - description: The reference clock number
-> -        minimum: 0
-> -        maximum: 3
-> +      The cells contain the following arguments::
-> +        - The GTR lane (minimum:: 0, maximum:: 3)
-> +        - The PHY type::
-> +            - PHY_TYPE_DP
-> +            - PHY_TYPE_PCIE
-> +            - PHY_TYPE_SATA
-> +            - PHY_TYPE_SGMII
-> +            - PHY_TYPE_USB3
-> +      - The PHY instance::
-> +          minimum:: 0
-> +          maximum:: 1 # for DP, SATA or USB
-> +          maximum:: 3 # for PCIE or SGMII
-> +      - The reference clock number (minimum:: 0, maximum:: 3)
->  
->    compatible:
->      enum:
-> -- 
-> 2.34.1
+> On Sun, Jun 19, 2022 at 01:33:25PM +0200, Krzysztof Kozlowski wrote:
+>> The description field is a string, so using YAML inside phy-cells
+>> description is not actually helpful.
 > 
+> Does it hurt though ? For xlnx,zynqmp-psgtr.yaml I wrote it that way to
+> prepare for a future where it could be described using a YAML schema
+> (but such future may never come).
 
--- 
-Regards,
+No, it does not hurt. It is however confusing some folks and they think
+schema goes into description. The description should be
+readable/descriptive for humans, so if you think your approach is
+better, I am perfectly fine with it.
 
-Laurent Pinchart
+
+Best regards,
+Krzysztof
 
