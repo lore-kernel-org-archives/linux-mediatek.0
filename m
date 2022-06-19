@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D94A8C43334
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jun 2022 12:05:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE34AC43334
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jun 2022 14:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jakXNefXr+d4XHXk3yMQZ4OQ2nmGeDzmNhlPkvj1/X4=; b=OOA8hgrlVLoc2OudelB6r7Kj5i
-	tpXQOOq4KphKaALGze+8j4u6/SnxKY3dbM4AqFgy507fv8/0+Jq4HWIycoT05oo8sCmoQa1HCRw3E
-	+PYcFl3TnRVtmT42H7duUoXr4Q1M8GW5+r50k46KQJkQFK76QU3IXrbwK/FcFQe+epHAEeNjeplTL
-	m/pHLd1vCbfRgFN2lZxkB1Xa0Y49+3bphjGrbUNp4gQuqujsM+cm2YgEHH/th/F7MqpzG+VMqN4Ov
-	ustZSmTdltGhYL96hGqvlvUVcJXFKf7XceLImTm03TujVCA4DFLnISD84ZSwn/dx4t0nk/7a+AI37
-	SLns3v7g==;
+	bh=CA+7COREAB6bATPrfYdSbfqsNjqeTmXkIAoOlMRruwI=; b=EH0SfStB/LeKImxM+tVLwhXEF9
+	nxTOmmk1/8CNTXP2iTk3l5qUxE9qDMO5wOuVCklCsS0mvPTxCFRVfYZ97d20DCXZwN1hwWKn1w2GW
+	ksXSnkU/vVORLdOro99p3ob+megDU0GAbrFTUFOe77/WX7o7KUWsnEXbNOcY9ZrkWUDSJ/jeqhGFF
+	RuMzc8bttfw7ztEuD3Z4bW4ln1E1fArRx2tQVYH3SqHgP3ClDGkWQJ717MwqsMlBBIAB3Hp3RNIo3
+	Ts8R576IVqcsRqazAKLoPICjPtEmps5IiKZfFcyTTYz/tVNMKDgNOzQj7Di4XfI3enC607im0Zns3
+	S18+OLNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2tgZ-00E9P2-5F; Sun, 19 Jun 2022 12:05:47 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1o2veS-00EMOS-FX; Sun, 19 Jun 2022 14:11:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2tgN-00E9Is-9A
-	for linux-mediatek@lists.infradead.org; Sun, 19 Jun 2022 12:05:38 +0000
-Received: by mail-ed1-x530.google.com with SMTP id p8so1348858edc.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jun 2022 05:05:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=jakXNefXr+d4XHXk3yMQZ4OQ2nmGeDzmNhlPkvj1/X4=;
-        b=D58WLVKUXyi+dx4Z2fQfDcotvsZXCiAWSQWbsXluKMHKlXC6jSVQM+0nw+Sdn9K6XF
-         rTjtQGmVXuQyIQHrFGrwUojJHyTCDl5nxMHbA8cGs2aZVFWVFeJnwJXC5Ffr8pbiH+Jr
-         JResf2C3FcIn/SNNowXrLlVKeprt7jHqsyiJsOIbawrR7MzGbgFqkCbfrFvdAR57vC6R
-         R9rotoR4f0NPXh5/1HZoWVgPYWqB+lin1Nv+sHnQWY6Ex5AibOj2dpTzaepVk2XXAjeX
-         R+AAhW+DbWMclZiMvAsPoUNTLW+MFB78voLjhmewSuXZpfdxoiMuMfOhCKmptP35fzqR
-         740Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=jakXNefXr+d4XHXk3yMQZ4OQ2nmGeDzmNhlPkvj1/X4=;
-        b=7xmgef5GmdCN+MhcxcP9jv2xtN2oghkcSd61l1MrmQ4+FRpaWETHzU6Xzyob4i91w5
-         P4315JMeHWRJVMeVNIQI4tcgUo9bwjiyIJChgp3OB2DEZB19ezVDAw2DNhLGH4uZcXMk
-         kBsS5IBZJqy7dGKaENkFh/DjG6xh6mca1yZ42W1LZ/lUmEL671QEyS6PMbm1WNrIE16h
-         BwShZbRvK+N6BcuYoaXULHq61jUzaCpCHx5OOM/WMqDt+v2Pz6yLkVdBysg+zaagQvnv
-         zsIWRa/lpGY+W2HLTJzW3xDg84cBTU3ZIEeM6DIWWxq+V5zPr1xVfCclvZxj0UnPdICA
-         AWJw==
-X-Gm-Message-State: AJIora+gQ1tt3M9Uyu0VqiAZMPhZH7/UxemG0YIctqfGv9uahx/GvhWA
-	w1x7zFNW86hik5JxQn9+Kj3D3Q==
-X-Google-Smtp-Source: AGRyM1ubMh4MAcbm8HuB4hANaOoImVAB4pUW4EYnaEi/EHV0T9LSSNyaYUlQlOGQLgoD6UW/FDUnnw==
-X-Received: by 2002:a05:6402:350e:b0:42f:b2c1:9393 with SMTP id b14-20020a056402350e00b0042fb2c19393mr23592753edd.11.1655640332791;
-        Sun, 19 Jun 2022 05:05:32 -0700 (PDT)
-Received: from [192.168.0.206] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id o16-20020a50fd90000000b0042617ba63basm7708329edt.68.2022.06.19.05.05.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 19 Jun 2022 05:05:32 -0700 (PDT)
-Message-ID: <bc5458fe-083c-d679-9fcb-95810a290da8@linaro.org>
-Date: Sun, 19 Jun 2022 14:05:30 +0200
+	id 1o2veO-00EMNF-Co; Sun, 19 Jun 2022 14:11:43 +0000
+X-UUID: 99e6cace09f34c2b956839c2a1761724-20220619
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:782e8f91-a097-4ceb-a963-f5735f2a883a,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:44491249-4c92-421c-ad91-b806c0f58b2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 99e6cace09f34c2b956839c2a1761724-20220619
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <stanley.chu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1482383552; Sun, 19 Jun 2022 07:11:30 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 19 Jun 2022 07:11:28 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sun, 19 Jun 2022 22:11:27 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Sun, 19 Jun 2022 22:11:27 +0800
+Message-ID: <54053ba2b6ca09658a9c360397593a286446c06f.camel@mediatek.com>
+Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error and type
+ unmatch
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: Ren Zhijie <renzhijie2@huawei.com>, <jejb@linux.ibm.com>,
+	<martin.petersen@oracle.com>, <matthias.bgg@gmail.com>,
+	<powen.kao@mediatek.com>
+CC: <linux-scsi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Date: Sun, 19 Jun 2022 22:11:27 +0800
+In-Reply-To: <20220619115432.205504-1-renzhijie2@huawei.com>
+References: <20220619115432.205504-1-renzhijie2@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 2/3] dt-bindings: usb: mtk-xhci: Allow middle optional
- clocks to be missing
-Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- kernel@collabora.com, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-usb@vger.kernel.org
-References: <20220617222916.2435618-1-nfraprado@collabora.com>
- <20220617222916.2435618-3-nfraprado@collabora.com>
- <8639e64d-c659-7090-2d0a-078fd96cfbd4@linaro.org>
- <bb460aa483cc888ffa36709d9e9c1f2e3be0e000.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <bb460aa483cc888ffa36709d9e9c1f2e3be0e000.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_050535_380299_0F6D9A1F 
-X-CRM114-Status: GOOD (  16.59  )
+X-CRM114-CacheID: sfid-20220619_071140_478603_AD952B6C 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,64 +81,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/06/2022 09:46, Chunfeng Yun wrote:
-> On Fri, 2022-06-17 at 18:25 -0700, Krzysztof Kozlowski wrote:
->> On 17/06/2022 15:29, Nícolas F. R. A. Prado wrote:
->>> The current clock list in the binding doesn't allow for one of the
->>> optional clocks to be missing and a subsequent clock to be present.
->>> An
->>> example where this is an issue is in mt8192.dtsi, which has
->>> "sys_ck",
->>> "ref_ck", "xhci_ck" and would cause dtbs_check warnings.
->>>
->>> Change the clock list in a way that allows the middle optional
->>> clocks to
->>> be missing, while still guaranteeing a fixed order. The "ref_ck" is
->>> kept
->>> as a const even though it is optional for simplicity, since it is
->>> present in all current dts files.
->>>
->>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>> ---
->>>
->>>  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml       | 9
->>> +++++++--
->>>  1 file changed, 7 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-
->>> xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-
->>> xhci.yaml
->>> index 63cbc2b62d18..99a1b233ec90 100644
->>> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
->>> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
->>> @@ -80,8 +80,13 @@ properties:
->>>      items:
->>>        - const: sys_ck  # required, the following ones are optional
->>>        - const: ref_ck
->>> -      - const: mcu_ck
->>> -      - const: dma_ck
->>> +      - enum:
->>> +          - mcu_ck
->>> +          - dma_ck
->>> +          - xhci_ck
->>> +      - enum:
->>> +          - dma_ck
->>> +          - xhci_ck
->>>        - const: xhci_ck
->>
->> You allow now almost any order here, including incorrect like
->> sys,ref,xhci,xhci,xhci.
->>
->> The order of clocks has to be fixed and we cannot allow flexibility.
->> Are
->> you sure that these clocks are actually optional (not wired to the
->> device)?
-> In fact, these optional clocks are fixed, due to no gates are provided,
-> SW can't control them by CCF;
-> In this case, I usually use a fixed clock, or ignore it.
+On Sun, 2022-06-19 at 19:54 +0800, Ren Zhijie wrote:
+> If CONFIG_PM_SLEEP is not set.
+> 
+> make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-, will be failed,
+> like this:
+> 
+> drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_vreg_fix_vcc’:
+> drivers/ufs/host/ufs-mediatek.c:688:46: warning: format ‘%u’ expects
+> argument of type ‘unsigned int’, but argument 4 has type ‘long
+> unsigned int’ [-Wformat=]
+>     snprintf(vcc_name, MAX_VCC_NAME, "vcc-opt%u", res.a1);
+>                                              ~^   ~~~~~~
+>                                              %lu
+> drivers/ufs/host/ufs-mediatek.c: In function
+> ‘ufs_mtk_system_suspend’:
+> drivers/ufs/host/ufs-mediatek.c:1371:8: error: implicit declaration
+> of function ‘ufshcd_system_suspend’; did you mean
+> ‘ufs_mtk_system_suspend’? [-Werror=implicit-function-declaration]
+>   ret = ufshcd_system_suspend(dev);
+>         ^~~~~~~~~~~~~~~~~~~~~
+>         ufs_mtk_system_suspend
+> drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_system_resume’:
+> drivers/ufs/host/ufs-mediatek.c:1386:9: error: implicit declaration
+> of function ‘ufshcd_system_resume’; did you mean
+> ‘ufs_mtk_system_resume’? [-Werror=implicit-function-declaration]
+>   return ufshcd_system_resume(dev);
+>          ^~~~~~~~~~~~~~~~~~~~
+>          ufs_mtk_system_resume
+> cc1: some warnings being treated as errors
+> 
+> The declaration of func "ufshcd_system_suspend()" is depended on
+> CONFIG_PM_SLEEP, so the function wrapper "ufs_mtk_system_suspend()"
+> should warpped by CONFIG_PM_SLEEP too.
+> 
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Fixes: 3fd23b8dfb54("scsi: ufs: ufs-mediatek: Fix the timing of
+> configuring device regulators")
+> Signed-off-by: Ren Zhijie <renzhijie2@huawei.com>
 
-But in some versions these clocks are controllable or not?
+Thanks for the fix!
 
-Best regards,
-Krzysztof
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+
+
 
