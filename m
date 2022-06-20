@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE455C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 04:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF71C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 04:43:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tfLRO/pAA92X02VqRkj1CSl9IX3T4zevJen4W6IYYm8=; b=LsnzL7CoxsrFNHeIjfro0HAqfQ
-	yNj3EKzkqHJp6HDRK70aBE4VzmrMjSY01YnIjQSEpH8JzTsJLgmefbaacFMgDx2XRwbYmSAHa+E29
-	P9qaPHusqXEhPRYwV761Qv24iGySveth3FiWJnq2h40I5dczyyd1MUdM1WegbRDfguq0yzUCXISgA
-	KfIUkXnujCCpa6ZNNfWSfEcCnay0JNrLUoCNczgwcOvZjg/1Zk8J7wIwWXVngTA19uGMf4LZpTWup
-	w9ltMgwtf9l6cQotjIoBkHgXfPkDV5cNRd4JmNhzBh7ST7LQ6yPoknt5IhSJpBvdxUeRpRlUpqeId
-	ILmDbCAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XuPCzTzhcmOZzHOmk2sFdgEFNoZlfvJu9dKlztxiN/Y=; b=PqoAszcpOA+6cdojfDUxgMtR+r
+	whDkAqEnecyECw8/DBjFiTt1pn00bSUqGQgh+t/VvsOnE+RppHpa9oBjfagBApxgbw7fOvNrC6E+p
+	fGlmO1lFEnZUbTIX76ASpdsMShdSZFr24S56J07o9kYtE3MDjJ1DyD4scvOEcPIxKy/DLhf1dEj3O
+	hwrB4Uo+8tkT1QtdJ6VWCLuedoNYBgP2mX83+joNnjumQS89A/Rcrpnvk1OTi5v5uQDVU7shm7HBh
+	chfanDa+jwIqD/g+qn4efLOHQbAWzUFsXu7AIkldqEGRWfc+3VLxV39/kaIDJ6bhMc4fXvG4GT0V7
+	PG3mdwNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o38f0-00G7f7-8q; Mon, 20 Jun 2022 04:05:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o39Fq-00GAed-JQ; Mon, 20 Jun 2022 04:43:14 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o38ep-00G7cz-8B; Mon, 20 Jun 2022 04:05:00 +0000
-X-UUID: 49e88d03f56c480fa41839ec511a832d-20220619
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:f5c92779-27b6-4593-9ba2-003fb4991bae,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:d6c67e2d-1756-4fa3-be7f-474a6e4be921,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 49e88d03f56c480fa41839ec511a832d-20220619
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1075307086; Sun, 19 Jun 2022 21:04:56 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Jun 2022 20:54:53 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 20 Jun 2022 11:54:52 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 20 Jun 2022 11:54:52 +0800
-Message-ID: <597d190f72427d5d1da7a4ca46b219e2edb69693.camel@mediatek.com>
-Subject: Re: [PATCH v11 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 20 Jun 2022 11:54:52 +0800
-In-Reply-To: <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
-	 <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o39Fg-00GAbf-LJ
+	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 04:43:05 +0000
+Received: by mail-pf1-x434.google.com with SMTP id t21so2910332pfq.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jun 2022 21:43:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=XuPCzTzhcmOZzHOmk2sFdgEFNoZlfvJu9dKlztxiN/Y=;
+        b=v2uTas0ITpi6sQ50rCEMiLgEQR9vCoVW8ykoCP10v0VHG7XLW9lbVQXcTERpNEkdBl
+         yQGU3U23/U+g3a64sDok8eq+zzWMr1dnUcDpvansrDgbrCg66FWQZYKvva4AkLKbMWoZ
+         8dbbX8Fo4bmY8KFxhOYkNuHZ4W/pEwF7wYX3oXNGZOBY+UaVRJxNT2sFIonlJAR7ap7p
+         OgV3hh4RJGh+onEG9mQKJvwMGM0HVbp/asqZxsudKFOh9bK3xv/cW+v4aatOIlIzpg4K
+         IrpKKR7Yu+MwA/BgE54nYrAlkva2582Ea+Pn9asSrhQCryKo/YKsWFb4cZUuWTPMCA8H
+         s8Jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=XuPCzTzhcmOZzHOmk2sFdgEFNoZlfvJu9dKlztxiN/Y=;
+        b=rinkEsjojh3X6mWNlyF39AURm0l9HZNAIwg9VT+54PT0C32c2ilow4HupwJBYtuKJI
+         H7taLfrmnseInW4sa4xcw+98IlrTQTZhqG8kmnvUSphejaXsY+ZmqgUmSii2EY8bzyC3
+         ea/SenJ8GpeHpCXdaR9qfWuUmZIHGtHXndSFk/zNMiRmq5h0pF69PLkzNHbUYtIi4WIH
+         963srh7cnMQaEtf9A2xtw07THDS3lURjjGhW73mIhi+qzYwH7rsHWWznAOoWcLmvOSoA
+         mWykyXMAEDBbcax6fzSCoMy18mz4tK+JSJa8oK0xjukbDrzqu7HxlkDh6S7oe4/pkT6c
+         G/yQ==
+X-Gm-Message-State: AJIora8Oz0v8FqyVFsLK+50ExvIoIq2DJsHVI/juYKJ+7rGpG014O1bd
+	Lz/MNJBI5BWSk6EHkUuY3NQt/Q==
+X-Google-Smtp-Source: AGRyM1u9VfNHrad/tqs9W/bOQOD4E8u6NsMRQEd+0M8Qya2WVZ9s43KSlqXGkWaUUjAwmTx+ToXCLw==
+X-Received: by 2002:a05:6a00:198c:b0:51c:7547:58e0 with SMTP id d12-20020a056a00198c00b0051c754758e0mr22239590pfl.82.1655700181896;
+        Sun, 19 Jun 2022 21:43:01 -0700 (PDT)
+Received: from localhost ([122.162.234.2])
+        by smtp.gmail.com with ESMTPSA id h2-20020a170902f70200b0015e8d4eb231sm7527303plo.123.2022.06.19.21.43.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 19 Jun 2022 21:43:01 -0700 (PDT)
+Date: Mon, 20 Jun 2022 10:12:51 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: rafael@kernel.org, matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
+	jia-wei.chang@mediatek.com, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] cpufreq: Add MT8186 to cpufreq-dt-platdev blocklist
+Message-ID: <20220620044251.ice5qcuw26utmups@vireshk-i7>
+References: <20220617110926.90313-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220617110926.90313-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_210459_300659_1A387783 
-X-CRM114-Status: GOOD (  23.16  )
+X-CRM114-CacheID: sfid-20220619_214304_723735_8F86B2F1 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,87 +89,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rex:
-
-On Fri, 2022-06-10 at 18:55 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+On 17-06-22, 13:09, AngeloGioacchino Del Regno wrote:
+> This SoC shall use the mediatek-cpufreq driver, or the system will
+> crash upon any clock scaling request: add it to the cpufreq-dt-platdev
+> blocklist.
 > 
-> This patch adds a embedded displayport driver for the MediaTek mt8195
-> SoC.
-> 
-> It supports the MT8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
-> 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
-> 
-> This driver is based on an initial version by
-> Jitao shi <jitao.shi@mediatek.com>
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> [Bo-Chen: Cleanup the drivers and modify comments from reviewers]
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Fixes: 39b360102f3a ("cpufreq: mediatek: Add support for MT8186")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 > ---
+> 
+> v2: Moved fixes tag on top of SoB (oops!), added Matthias' R-b
+> 
+>  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
+> index 96de1536e1cb..2c96de3f2d83 100644
+> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
+> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
+> @@ -127,6 +127,7 @@ static const struct of_device_id blocklist[] __initconst = {
+>  	{ .compatible = "mediatek,mt8173", },
+>  	{ .compatible = "mediatek,mt8176", },
+>  	{ .compatible = "mediatek,mt8183", },
+> +	{ .compatible = "mediatek,mt8186", },
+>  	{ .compatible = "mediatek,mt8365", },
+>  	{ .compatible = "mediatek,mt8516", },
 
-[snip]
+Applied. Thanks.
 
-> +
-> +static int mtk_dp_bridge_atomic_check(struct drm_bridge *bridge,
-> +				      struct drm_bridge_state
-> *bridge_state,
-> +				      struct drm_crtc_state
-> *crtc_state,
-> +				      struct drm_connector_state
-> *conn_state)
-> +{
-> +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
-> +	struct drm_crtc *crtc = conn_state->crtc;
-> +	unsigned int input_bus_format;
-> +
-> +	input_bus_format = bridge_state->input_bus_cfg.format;
-> +
-> +	dev_dbg(mtk_dp->dev, "input format 0x%04x, output format
-> 0x%04x\n",
-> +		bridge_state->input_bus_cfg.format,
-> +		 bridge_state->output_bus_cfg.format);
-> +
-> +	mtk_dp->input_fmt = input_bus_format;
-> +	if (mtk_dp->input_fmt == MEDIA_BUS_FMT_YUYV8_1X16)
-
-input_fmt is used only in this function, so let it be local variable.
-
-Regards,
-CK
-
-> +		mtk_dp->info.format = DP_PIXELFORMAT_YUV422;
-> +	else
-> +		mtk_dp->info.format = DP_PIXELFORMAT_RGB;
-> +
-> +	if (!crtc) {
-> +		drm_err(mtk_dp->drm_dev,
-> +			"Can't enable bridge as connector state doesn't
-> have a crtc\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	mtk_dp_parse_drm_mode_timings(mtk_dp, &crtc_state-
-> >adjusted_mode);
-> +	if (mtk_dp_parse_capabilities(mtk_dp)) {
-> +		drm_err(mtk_dp->drm_dev,
-> +			"Can't enable bridge as nothing is plugged
-> in\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
-> +}
-
+-- 
+viresh
 
