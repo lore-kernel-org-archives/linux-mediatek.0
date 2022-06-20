@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 839E2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 07:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13332C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 08:01:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IzuBmTU5lBUUf1flwcYEanGRhMfEjICrHZl5C4mHcXc=; b=VNFA+4AU7PKwV2TP8hOR/K9eE+
-	T8lv+gKlxRup2JqN3x2xzZRD1qowHOsktOAbqUJq8Jeb84q6mQWXzB+m7boFlFP1AvHYWiK0O6gRH
-	VIGpaoM9kJ54hvUmYBDhISko7Bc9pQ8CZBUKePbOj/gYoeIHzLkhVSPc0mlJ/fJ0vErV3pXgL1fpg
-	Lq+DbLemxLMsHRd5AK+4awYHzoT4KvV+7NkSFKCP1HYmnC2DUU17UoIXv56pl9mvKAFuulNMTQjqN
-	8es375Y2XD9gRqTciVaG/Abov+Sb44HlqCg0IPu1LlimSOAYfai5XNIPFk84KEx6Qo+Zfgaf95cvI
-	fYCL7rkA==;
+	bh=AUyKQc/Z8ewkRhDVjvFGG6Q+T3KYZzd0pgLuScPyFbM=; b=Gt2vN+KEVVErOGhKBuPEEAdLU0
+	KuUR+81IJzBrK3z9U2MGiTHNdYJT+VMQl70OsOHOK1UZGzJWfoidoTjy1UilJfqx1NKBrPfQfTEIn
+	/eGocwk0vArSOmoYJj+dQWo1Hpbm0sNGOWPw6163R7rh2+TVTu6p6okcarM/2nqlxk198JDvaPFL/
+	U4YEyl2lr+YL6WJS2NUPvqCl3bLuXcd2Jv5WMmgL0V4J+/6TYztL2Y3r8BSPNHMZeC8h45lmtt7X5
+	hu0plXoKbCwGdMFXgkFIE2EDVQS6D4aamYNxhFac4/az7A+VzEOaBJyMbEf61ggp2OODpowU4O7HU
+	iXzIIUNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3CIi-00Gnxr-SW; Mon, 20 Jun 2022 07:58:24 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o3CLy-00Gov5-1v; Mon, 20 Jun 2022 08:01:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3CIS-00Gnr9-L4; Mon, 20 Jun 2022 07:58:10 +0000
+	id 1o3CLn-00Gosi-9C; Mon, 20 Jun 2022 08:01:36 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DF5CB660166E;
-	Mon, 20 Jun 2022 08:58:03 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 60363660166E;
+	Mon, 20 Jun 2022 09:01:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655711884;
-	bh=B+xTwEj2LWopnY2Mek8C1LH6BBhcx/zrcxMtLnoeiVA=;
+	s=mail; t=1655712092;
+	bh=1QfDJm0Il75vWMVfyjj3z3sKxluz2uEePpUdetg+Ws8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bx3CK9FAayRadGaBkxRj+jDh8Ivqjyz8uLq8JVnqfkvTTAcl7dsjQlbZ3H6jE5FoC
-	 vqcJ7Rgji2FSDrJFY+TW96nMRslPkAGFK0FkBemRiCkNwa2XEz4iSqGW+GmxYKaAaL
-	 oU6vnJi9MfLd4v1+cdzHl4XP14h5yhVrctSjyd+eRKIzJ08+38kW7WAhTrzzwdlQIj
-	 KRxr0LSjZv4u6Y+qAo36FuMDq1XHtz2hdy+cYVS2U1aOLxxbIJYcbxst/+CMmikcrj
-	 nLxkkoZPPPAI8JRcs+O52gs2Nork5+RJqR9rKhhq3G7vj9IhLi8+5BMI9XHjyYBVr4
-	 mpHugrqh4gHHQ==
-Message-ID: <8956bb3e-60d7-a882-3672-f2a2f0bf858d@collabora.com>
-Date: Mon, 20 Jun 2022 09:58:01 +0200
+	b=hWCb+WR2UI/EwmUEQ127NgCyTcFmAPnPG6VTgs1BbRO3hZRz0q2kqJmPhDceua0zL
+	 4+mjlQU1CIigYkJGddLQxDF53wux+6w5bB8totm/p1oXOoH7vV2mNdxucDbm4gqEho
+	 Yv6XMqSb+/imR2zIT7fP7wRMzMvyVpo89/3bNq/DT8yR5UJsFD8QfyIe8kYjSJH+xE
+	 7jDpyoI5P/1WrCSrrfqH0vMZc7kRrJoFF6BDUBDbKbTM7CSnPfvxvwv9q2yts0x7Ek
+	 uMagYu57KO2nIXVW0feS1e0Niyic81EGvxdb1u0TmRjfja4nbGFQsvypvCDeuRLkZ2
+	 zxsRyrRM3Jung==
+Message-ID: <abb9a03f-f873-1f28-b8a6-ddd2b66c15f7@collabora.com>
+Date: Mon, 20 Jun 2022 10:01:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH] media: mediatek: vcodec: Drop
- platform_get_resource(IORESOURCE_IRQ)
+Subject: Re: [PATCH 1/2] arm64: dts: mt8192: Fix idle-states nodes naming
+ scheme
 Content-Language: en-US
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Marc Zyngier <maz@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, James Liao <jamesjj.liao@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220617203906.2422868-1-nfraprado@collabora.com>
+ linux-mediatek@lists.infradead.org
+References: <20220617233150.2466344-1-nfraprado@collabora.com>
+ <20220617233150.2466344-2-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220617203906.2422868-1-nfraprado@collabora.com>
+In-Reply-To: <20220617233150.2466344-2-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_005808_956627_F3478AD4 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20220620_010135_488875_B47B8C22 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,38 +80,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/06/22 22:39, Nícolas F. R. A. Prado ha scritto:
-> Commit a1a2b7125e10 ("of/platform: Drop static setup of IRQ resource
-> from DT core") removed support for calling platform_get_resource(...,
-> IORESOURCE_IRQ, ...) on DT-based drivers, but the probe() function of
-> mtk-vcodec's encoder was still making use of it. This caused the encoder
-> driver to fail probe.
+Il 18/06/22 01:31, Nícolas F. R. A. Prado ha scritto:
+> Tweak the name of the idle-states subnodes so that they follow the
+> binding pattern, getting rid of dtbs_check warnings.
 > 
-> Since the platform_get_resource() call was only being used to check for
-> the presence of the interrupt (its returned resource wasn't even used)
-> and platform_get_irq() was already being used to get the IRQ, simply
-> drop the use of platform_get_resource(IORESOURCE_IRQ) and handle the
-> failure of platform_get_irq(), to get the driver probing again.
+> Only the usage of "-" in the name was necessary, but "off" was also
+> exchanged for "sleep" since that seems to be a more common wording in
+> other dts files.
 > 
-> Fixes: a1a2b7125e10 ("of/platform: Drop static setup of IRQ resource from DT core")
+> Fixes: 9260918d3a4f ("arm64: dts: mt8192: Add cpu-idle-states")
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 > 
-> ---
-> Tested on mt8192-asurada-spherion.
-
-Yep, that's totally necessary... Except the Fixes tag should be wrong here,
-as you're not fixing that commit, but the mtk-vcodec driver in relation to
-what's happening due to said commit.
-
-I get that you're trying to tell everyone "this is an urgent fix", though,
-and I agree that this *has to* get in v5.19 to avoid breaking this driver.
-
-Finally, for the code:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-...but I think that you have to send a v2 that drops that Fixes tag.
-
-Cheers,
-Angelo
 
