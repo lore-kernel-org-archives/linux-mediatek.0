@@ -4,77 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75668C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 07:28:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 839E2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 07:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vhfxXzYTtRIMiRyoVHj5RqW+ceNuA3aByIg+ARTSbMI=; b=WNK5dCSDs+y7gdhjQ1RWbmEh0F
-	JA8b+GZfa7f/wcrJq+oHoYju5feJVWzZ6VbRFM3Hp0+SIuHrAJMqaHw0p8JfX3tq0ZgtLCzp3PzT7
-	SOG7p14DnKHi8Rfw1eUugM8QxEaApV7efmtyYx3ZQRhl0qsmXG+07aPcNjq7GcOHBRXBw+NMpCZQt
-	leFgvWA5Z8UOwq9wMbBMs/Rhu7eaplDL1mnTODvG4yY8aQKYWrDNcDW8RHryOaFqYytLXVvvc2QEh
-	OMB4Vc48z72LUuDNOxwFcsuvy9CZC8VFGzBCqNR66g3uF5aeh6Ki4sUXtjrfUDO+s+2A7HvO34w2q
-	I+kWNOhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IzuBmTU5lBUUf1flwcYEanGRhMfEjICrHZl5C4mHcXc=; b=VNFA+4AU7PKwV2TP8hOR/K9eE+
+	T8lv+gKlxRup2JqN3x2xzZRD1qowHOsktOAbqUJq8Jeb84q6mQWXzB+m7boFlFP1AvHYWiK0O6gRH
+	VIGpaoM9kJ54hvUmYBDhISko7Bc9pQ8CZBUKePbOj/gYoeIHzLkhVSPc0mlJ/fJ0vErV3pXgL1fpg
+	Lq+DbLemxLMsHRd5AK+4awYHzoT4KvV+7NkSFKCP1HYmnC2DUU17UoIXv56pl9mvKAFuulNMTQjqN
+	8es375Y2XD9gRqTciVaG/Abov+Sb44HlqCg0IPu1LlimSOAYfai5XNIPFk84KEx6Qo+Zfgaf95cvI
+	fYCL7rkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Bq2-00Gfob-2M; Mon, 20 Jun 2022 07:28:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o3CIi-00Gnxr-SW; Mon, 20 Jun 2022 07:58:24 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Bpq-00GfnZ-Qr; Mon, 20 Jun 2022 07:28:36 +0000
-X-UUID: 2a108e7dc93d448294a7a1e99145908b-20220620
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:eea408a2-90f2-45bc-9675-02a249fa035a,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:100
-X-CID-META: VersionHash:b14ad71,CLOUDID:6d84842d-1756-4fa3-be7f-474a6e4be921,C
-	OID:IGNORED,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 2a108e7dc93d448294a7a1e99145908b-20220620
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1413239206; Mon, 20 Jun 2022 00:28:24 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jun 2022 00:18:21 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 20 Jun 2022 15:18:20 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 20 Jun 2022 15:18:18 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH] MAINTAINERS: add Yunfei Dong as mediatek vcodec driver maintainer
-Date: Mon, 20 Jun 2022 15:18:17 +0800
-Message-ID: <20220620071817.11685-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1o3CIS-00Gnr9-L4; Mon, 20 Jun 2022 07:58:10 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DF5CB660166E;
+	Mon, 20 Jun 2022 08:58:03 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655711884;
+	bh=B+xTwEj2LWopnY2Mek8C1LH6BBhcx/zrcxMtLnoeiVA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Bx3CK9FAayRadGaBkxRj+jDh8Ivqjyz8uLq8JVnqfkvTTAcl7dsjQlbZ3H6jE5FoC
+	 vqcJ7Rgji2FSDrJFY+TW96nMRslPkAGFK0FkBemRiCkNwa2XEz4iSqGW+GmxYKaAaL
+	 oU6vnJi9MfLd4v1+cdzHl4XP14h5yhVrctSjyd+eRKIzJ08+38kW7WAhTrzzwdlQIj
+	 KRxr0LSjZv4u6Y+qAo36FuMDq1XHtz2hdy+cYVS2U1aOLxxbIJYcbxst/+CMmikcrj
+	 nLxkkoZPPPAI8JRcs+O52gs2Nork5+RJqR9rKhhq3G7vj9IhLi8+5BMI9XHjyYBVr4
+	 mpHugrqh4gHHQ==
+Message-ID: <8956bb3e-60d7-a882-3672-f2a2f0bf858d@collabora.com>
+Date: Mon, 20 Jun 2022 09:58:01 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] media: mediatek: vcodec: Drop
+ platform_get_resource(IORESOURCE_IRQ)
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: kernel@collabora.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Marc Zyngier <maz@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220617203906.2422868-1-nfraprado@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220617203906.2422868-1-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_002834_899192_07346737 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20220620_005808_956627_F3478AD4 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,28 +80,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I have been working on mediatek driver development for a very long time,
-and sent many patches to change the driver architecture. Add myself as
-co-maintainer for mediatek vcodec driver.
+Il 17/06/22 22:39, Nícolas F. R. A. Prado ha scritto:
+> Commit a1a2b7125e10 ("of/platform: Drop static setup of IRQ resource
+> from DT core") removed support for calling platform_get_resource(...,
+> IORESOURCE_IRQ, ...) on DT-based drivers, but the probe() function of
+> mtk-vcodec's encoder was still making use of it. This caused the encoder
+> driver to fail probe.
+> 
+> Since the platform_get_resource() call was only being used to check for
+> the presence of the interrupt (its returned resource wasn't even used)
+> and platform_get_irq() was already being used to get the IRQ, simply
+> drop the use of platform_get_resource(IORESOURCE_IRQ) and handle the
+> failure of platform_get_irq(), to get the driver probing again.
+> 
+> Fixes: a1a2b7125e10 ("of/platform: Drop static setup of IRQ resource from DT core")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> ---
+> Tested on mt8192-asurada-spherion.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+Yep, that's totally necessary... Except the Fixes tag should be wrong here,
+as you're not fixing that commit, but the mtk-vcodec driver in relation to
+what's happening due to said commit.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e22a79ffa4d0..1b3a30f33f0c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -12389,6 +12389,7 @@ F:	drivers/media/platform/mediatek/vpu/
- MEDIATEK MEDIA DRIVER
- M:	Tiffany Lin <tiffany.lin@mediatek.com>
- M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-+M:	Yunfei Dong <yunfei.dong@mediatek.com>
- S:	Supported
- F:	Documentation/devicetree/bindings/media/mediatek,vcodec*.yaml
- F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
--- 
-2.25.1
+I get that you're trying to tell everyone "this is an urgent fix", though,
+and I agree that this *has to* get in v5.19 to avoid breaking this driver.
 
+Finally, for the code:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+...but I think that you have to send a v2 that drops that Fixes tag.
+
+Cheers,
+Angelo
 
