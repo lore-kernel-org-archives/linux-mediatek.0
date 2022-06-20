@@ -4,93 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D13C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 11:54:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B224C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 12:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y+1ESBA9IsI+iRB5+jQBFbcdOi0iPcqA++20lElc3hg=; b=BjIshrPf8HAIWObjKI3XeJIvoo
-	LiF8Vo2vPGxytKip7Q2qVJ/fk9juepW5BceWnRt250Dug0Pe4wZACGdwqSvv+L18CI2Ch+wIj5QUM
-	ghWb6zaTnYAo5udRUg4yZYB6yVDL1gunjZVEikDbixwltMoS/CUp0EtGkiPmPfKnxeWHKD4Xk1oY8
-	/0SFqUQf/pKoih6ai18U0a1y14KY2LcFBuXM5aykm/Sms1Ua/he62EKWRpbp1X9rq7VnDIwmUqG1t
-	RTXvM7QNurNK425jno7NAyZwCqorIjRG3iE08i2Lu+oLFdJ7cWGQqKimamIiNeZfNlqbYCou18UUo
-	JupKR/8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nNEiU+F8if8bfRu7ahSG/Gm6auudUkAhDLTjKe+ovsM=; b=d48bT7KxJSqz/QT31/bZ0q1ovr
+	97WGJ/EdA/DAhbnJf5WFPX9ZEkTsjS7FmbYP3yBQpgm+JbLVLcxbtAM43O3dWIEJgGohp8UUTDYO8
+	lyMjvi2w4N8m6BHJh+mhbFJ6EZbfmwTafTuFWSSD+ibqxJVZMnkZvhZiqO7PBOOYW8+m3lttkFTDd
+	gQ8PJdGGG1HxHl6npEkijzxJgTJtXRlRyG5N6oRTwIgdEfHaV4xAaU9kBwM2dPxbtJxDDlx0gyyio
+	5Mnhud8ZQh9pK9WRRTzCndL37SOWW8ULNy85JV3zWEKITGK7jcB83jCFNi/bjFw30PgvHrsZvLUuW
+	fJGmhl8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Fyk-000BVo-HJ; Mon, 20 Jun 2022 11:54:02 +0000
-Received: from out4-smtp.messagingengine.com ([66.111.4.28])
+	id 1o3GFr-000Io7-P8; Mon, 20 Jun 2022 12:11:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3FyY-000BQI-6y; Mon, 20 Jun 2022 11:53:52 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id 002EC5C016C;
-	Mon, 20 Jun 2022 07:53:44 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Mon, 20 Jun 2022 07:53:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1655726024; x=1655812424; bh=Y+1ESBA9Is
-	I+iRB5+jQBFbcdOi0iPcqA++20lElc3hg=; b=Io6UhmJvaC1FoVxHZJrCKFpyOh
-	rINcO69oMm/0UV11V3RH7maqJe6sbNp/IhEJqhUd9KKM2md4OY4w4CiIicJ9yFNZ
-	rZCFvQrjzlS29BFCtnh4ZRQlYTKw2qYdDXOOr3DP/uhMkyUFfJjV+aUnP/PKkT1q
-	iM4aEbSzm6rGdKCjNYNeBVXLWx0FCmXx1TKU+PSKjjx3dC+/7jJxLF6MP8xd2r3a
-	AmCgP8nt9vgpSr7aUq4Pak6X0aYRdrqlteG1OQft/6xgLLmniLNTU3caxVfs5Kyh
-	S/nYTji5Xi/e8XeNy6vvbgcoS/DRWIqAE/L3w6P1/buzzMOwzgnS8vyznSow==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm2; t=1655726024; x=1655812424; bh=Y+1ESBA9IsI+iRB5+jQBFbcdOi0i
-	PcqA++20lElc3hg=; b=ZQKehoPa92vHTB3MVokYv0jGD3YgpQGvHsf+7hFhM6bZ
-	ctnu+AlzMCAwOAPIhtIZXfGPTsJE7al3E5I0t36vg9o0rj5H8Fq1qKDmpnvN1Feb
-	9ln3Cneoqx3rif8B7ZorZr+vscztBQKzPkxchGDw4M7bAlU5kJ0H0OTHg5yB4Wvn
-	wjfESFXEHcxU/2COzMIs/u4leikWuz6IeEsMRR7RXji6E6bsEhFcaGsW1L/3GoS0
-	FNe1EGJjbI5bnGoY1Q6BPm4nmfZ9AVSxw72P0oLmJ5m2jop6b3sH39ZbGwLr0TZg
-	uHpWbd/Wxeqc7EKoL0yVKaPa0aTPvs2opaiLe+licQ==
-X-ME-Sender: <xms:yF-wYgAP5MfdxDk7JW_Kk_KgOM075cRy1l5AA6Nf7nY8ThN63z4RRw>
-    <xme:yF-wYih_ih0c5JjpzIJvUkxTpm3XI_cuRJq3VhwCikId4AJUP4agxhRvSTWscfcd0
-    RDlqX7-Ozkbhw>
-X-ME-Received: <xmr:yF-wYjlsduLWkjj5PPvg5nUHkxpA_U3T9j69UicGafWeyCfuxjURlojKK3j8HZMjWLi1V9PyuPKvb-f2br4UVYz6SHmCpn3r>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudefuddggeeiucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
-    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepgeehue
-    ehgfdtledutdelkeefgeejteegieekheefudeiffdvudeffeelvedttddvnecuffhomhgr
-    ihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmh
-    epmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
-X-ME-Proxy: <xmx:yF-wYmy2FklshFwWNHRNFtFirhSO2PFccWwOJrRpYPs4cdYcF-RWAA>
-    <xmx:yF-wYlR4ZJZ6TuavJxxGeYdSn8YBrebt3kQD-fzfXJzcuTdfOkM_GQ>
-    <xmx:yF-wYhZQOZOGmJIHCoWEvHyiNRm0cuD0Pw7zbW-IJN8A8YfNHhseHA>
-    <xmx:yF-wYmSJ73Wh2ZjQveb_0CpkecEnzMkLq5iisX5MOzp8Snbz-XzueQ>
-Feedback-ID: i787e41f1:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 20 Jun 2022 07:53:43 -0400 (EDT)
-Date: Mon, 20 Jun 2022 13:53:41 +0200
-From: Greg KH <greg@kroah.com>
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	stable@vger.kernel.org, Masami Hiramatsu <mhiramat@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5.4] arm64: kprobes: Use BRK instead of single-step when
- executing instructions out-of-line
-Message-ID: <YrBfxXwumb30FEtV@kroah.com>
-References: <20220615015928.19181-1-mark-pk.tsai@mediatek.com>
+	id 1o3GEo-000IBP-WF; Mon, 20 Jun 2022 12:10:40 +0000
+X-UUID: 318d832d632e479882ef7e24a8dc4e3d-20220620
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:33c52b39-448a-4860-b179-c582def74aa6,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:b14ad71,CLOUDID:6d2703ea-f7af-4e69-92ee-0fd74a0c286c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 318d832d632e479882ef7e24a8dc4e3d-20220620
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 388691244; Mon, 20 Jun 2022 05:10:33 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Jun 2022 05:10:31 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 20 Jun 2022 20:10:29 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 20 Jun 2022 20:10:29 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
+	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<ck.hu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v12 00/14] drm/mediatek: Add MT8195 dp_intf driver
+Date: Mon, 20 Jun 2022 20:10:14 +0800
+Message-ID: <20220620121028.29234-1-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220615015928.19181-1-mark-pk.tsai@mediatek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_045350_752282_C7942EFF 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20220620_051039_093317_9619FA47 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,31 +82,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 15, 2022 at 09:59:23AM +0800, Mark-PK Tsai wrote:
-> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> 
-> commit 7ee31a3aa8f490c6507bc4294df6b70bed1c593e upstream.
-> 
-> Commit 36dadef23fcc ("kprobes: Init kprobes in early_initcall") enabled
-> using kprobes from early_initcall. Unfortunately at this point the
-> hardware debug infrastructure is not operational. The OS lock may still
-> be locked, and the hardware watchpoints may have unknown values when
-> kprobe enables debug monitors to single-step instructions.
-> 
-> Rather than using hardware single-step, append a BRK instruction after
-> the instruction to be executed out-of-line.
-> 
-> Fixes: 36dadef23fcc ("kprobes: Init kprobes in early_initcall")
-> Suggested-by: Will Deacon <will@kernel.org>
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Acked-by: Masami Hiramatsu <mhiramat@kernel.org>
-> Link: https://lore.kernel.org/r/20201103134900.337243-1-jean-philippe@linaro.org
-> Signed-off-by: Will Deacon <will@kernel.org>
-> Link: https://lore.kernel.org/lkml/20220610063619.7921-1-mark-pk.tsai@mediatek.com/
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+The dpi/dpintf driver and the added helper functions are required for
+the DisplayPort driver to work.
 
-Now queued up, thanks.
+This series is separated from [1] which is original from Guillaume.
+The display port driver is [2].
 
-greg k-h
+Changes for v12:
+1. Remove pll_gate.
+2. Add more detailed commit message.
+3. Separate tvd_clk patch and yuv422 output support from add dpintf
+   support patch
+4. Remove limit patch and use common driver codes to determine this.
+
+Changes for v11:
+1. Rename ck_cg to pll_gate.
+2. Add some commit message to clarify the modification reason.
+3. Fix some driver order and modify for reviewers' comments.
+
+[1]:https://lore.kernel.org/all/20220523104758.29531-1-granquet@baylibre.com/
+[2]:https://lore.kernel.org/all/20220610105522.13449-1-rex-bc.chen@mediatek.com/
+
+Bo-Chen Chen (3):
+  drm/mediatek: dpi: Add support for quantization range
+  drm/mediatek: dpi: Add tvd_clk enable/disable flow
+  drm/mediatek: dpi: Add YUV422 output support
+
+Guillaume Ranquet (10):
+  drm/mediatek: dpi: implement a CK/DE pol toggle in SoC config
+  drm/mediatek: dpi: implement a swap_input toggle in SoC config
+  drm/mediatek: dpi: move dimension mask to SoC config
+  drm/mediatek: dpi: move hvsize_mask to SoC config
+  drm/mediatek: dpi: move swap_shift to SoC config
+  drm/mediatek: dpi: move the yuv422_en_bit to SoC config
+  drm/mediatek: dpi: move the csc_enable bit to SoC config
+  drm/mediatek: dpi: Add dpintf support
+  drm/mediatek: dpi: Only enable dpi after the bridge is enabled
+  drm/mediatek: dpi: Add matrix_sel helper
+
+Markus Schneider-Pargmann (1):
+  dt-bindings: mediatek,dpi: Add DP_INTF compatible
+
+ .../display/mediatek/mediatek,dpi.yaml        |  11 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c            | 248 +++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h       |  16 ++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |   4 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |   1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   3 +
+ 6 files changed, 235 insertions(+), 48 deletions(-)
+
+-- 
+2.18.0
+
 
