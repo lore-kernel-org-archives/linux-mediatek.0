@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A15BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 06:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 686B6C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 06:45:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0vs0tgt9raEej8jrvGBPwUdp/s+o158I85o2pIeLDN4=; b=Y9mHh1aKm3o46UFfLe1mc1x5Dk
-	I63Yb/I/0hKewjNRnTmTqHC2wkUzATWJgDKro6d1wXeuIChsJ77H+hBWxXzBF9F1AE2vSj58QudaK
-	d0HrugGokpvk865JdNsnANWsHA3KkY/n9r2ifdFKrIAl+M6NyGuapCv7xLH8wiGw3q65jXpWPQ2FY
-	g/UYOtdc+8mKyeiNc1u2mCcau9sktZYlBUgvZmTT2OnkzZWzQXMemcMhnP8syXa3sBYYv+pruMKll
-	ZEaCttKNmI4ZbQDaSpPtM8yLlFKxrMfSiXlgxNxZoQq6flQMZovd8Urj8Af4Jr4LvK2qNAPgkWSQZ
-	6ybr0ffA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KyRdkqEtBdMFu5dmjx0PacN2tWJ1iUD+F44uHQqTTg0=; b=pyBG8BQJBw9DVwgL+N3tv9J+QY
+	qmpJ0O/Ahn4bzgLAAiPB+956lEfHCGvdX6y7VDyDCCPcP0EvEPVCa0zxOn5Ae5AoQJcJ/6NSUBuqY
+	EuTRoubNAixdehvO9Jh/F4CtjT1SUvZaUbxEK9ueK26H5ogIxmmgYlk5uXxpNkZySXCUo66q+MZ91
+	z19AhYLeReScFuPoGAVzKooAgtdNeoUp651rt/zLBnF/5UJjU3UZgQXlwhOw4fomZeGyJ4wen++UZ
+	7SPRTFoz9Gzg0XzGif+Spc7FsesV/RqNCW07a6rxe3YLa+k0umuDj5f2ZD0U9WTL4MhPc+OWXi10q
+	0AyFlFew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3B4j-00GSRS-Q7; Mon, 20 Jun 2022 06:39:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o3B9b-00GTma-Tk; Mon, 20 Jun 2022 06:44:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3B4Y-00GSNt-HV; Mon, 20 Jun 2022 06:39:43 +0000
-X-UUID: 6b44303833ae4cbb83b433ff77d4b075-20220619
+	id 1o3B9W-00GTl1-H7; Mon, 20 Jun 2022 06:44:54 +0000
+X-UUID: fb692da7e7e74c3ca92a641a1d212b7f-20220619
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:1fdada5c-a7a9-40c9-9d12-0e256b7b5d92,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:1c78fae9-f7af-4e69-92ee-0fd74a0c286c,C
+X-CID-O-INFO: VERSION:1.1.6,REQID:32d67ad5-aeb5-4aab-b959-c2f5f90f6c29,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:f529832d-1756-4fa3-be7f-474a6e4be921,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 6b44303833ae4cbb83b433ff77d4b075-20220619
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+X-UUID: fb692da7e7e74c3ca92a641a1d212b7f-20220619
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1053130741; Sun, 19 Jun 2022 23:39:34 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Jun 2022 23:32:22 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 1273844429; Sun, 19 Jun 2022 23:44:45 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 19 Jun 2022 23:40:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 20 Jun 2022 14:32:20 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ Mon, 20 Jun 2022 14:40:55 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 20 Jun 2022 14:32:18 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
-	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+ Transport; Mon, 20 Jun 2022 14:40:55 +0800
+Message-ID: <af32751dd7013a96dac5d165c35e132fda87f2ac.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: dsp: mediatek: Use meaningful names
+ for mbox
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Pierre-Louis Bossart
+	<pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Bard Liao
+	<yung-chuan.liao@linux.intel.com>, Ranjani Sridharan
+	<ranjani.sridharan@linux.intel.com>, Kai Vehmanen
+	<kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
+ Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+	<tiwai@suse.com>, YC Hung <yc.hung@mediatek.com>, Curtis Malainey
+	<cujomalainey@chromium.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH, v2] media: mediatek: vcodec: Initialize decoder parameters after getting dec_capability
-Date: Mon, 20 Jun 2022 14:32:17 +0800
-Message-ID: <20220620063217.9867-1-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+Date: Mon, 20 Jun 2022 14:40:55 +0800
+In-Reply-To: <629e761b-e3ad-0861-1937-ad660a8a900b@linaro.org>
+References: <20220616073042.13229-1-tinghan.shen@mediatek.com>
+	 <20220616073042.13229-2-tinghan.shen@mediatek.com>
+	 <629e761b-e3ad-0861-1937-ad660a8a900b@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_233942_612723_7E3F7203 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20220619_234450_605742_10E5FD24 
+X-CRM114-Status: GOOD (  17.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,47 +94,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Need to get dec_capability from scp first, then initialize decoder
-supported format and other parameters according to dec_capability value.
+Hi Krzysztof,
 
-Fixes: fd00d90330d1 ("media: mtk-vcodec: vdec: move stateful ops into their own file")
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
----
-compared witch v1:
-- add Fixes lables
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c     | 2 --
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 2 ++
- 2 files changed, 2 insertions(+), 2 deletions(-)
+On Thu, 2022-06-16 at 06:55 -0700, Krzysztof Kozlowski wrote:
+> On 16/06/2022 00:30, Tinghan Shen wrote:
+> > Rename mbox according to actions instead of 'mbox0' and 'mbox1'.
+> > 
+> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml   | 10 +++++-----
+> >  1 file changed, 5 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
+> > b/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
+> > index b7e68b0dfa13..ca8d8661f872 100644
+> > --- a/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
+> > +++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
+> > @@ -50,13 +50,13 @@ properties:
+> >  
+> >    mboxes:
+> >      items:
+> > -      - description: ipc reply between host and audio DSP.
+> > -      - description: ipc request between host and audio DSP.
+> > +      - description: mailbox for receiving audio DSP requests.
+> > +      - description: mailbox for transmitting requests to audio DSP.
+> >  
+> >    mbox-names:
+> >      items:
+> > -      - const: mbox0
+> > -      - const: mbox1
+> > +      - const: rx
+> > +      - const: tx
+> >  
+> 
+> Commit msg lacks important piece - do you break any users with this? Do
+> you have any users of this binding?
+> 
+> 
+> Best regards,
+> Krzysztof
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index 1465ddff1c6b..41589470da32 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -112,8 +112,6 @@ void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_ctx *ctx)
- {
- 	struct mtk_q_data *q_data;
- 
--	ctx->dev->vdec_pdata->init_vdec_params(ctx);
--
- 	ctx->m2m_ctx->q_lock = &ctx->dev->dev_mutex;
- 	ctx->fh.m2m_ctx = ctx->m2m_ctx;
- 	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-index 4103d7c1b638..99d7b15f2b9d 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
-@@ -208,6 +208,8 @@ static int fops_vcodec_open(struct file *file)
- 
- 		dev->dec_capability =
- 			mtk_vcodec_fw_get_vdec_capa(dev->fw_handler);
-+		ctx->dev->vdec_pdata->init_vdec_params(ctx);
-+
- 		mtk_v4l2_debug(0, "decoder capability %x", dev->dec_capability);
- 	}
- 
--- 
-2.25.1
+The 8195 dsp node, which uses this binding, has not yet been added to the 8195 devicetree.
+
+
+Thanks,
+TingHan
 
 
