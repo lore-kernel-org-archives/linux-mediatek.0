@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0BE6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 14:53:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38163C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 15:37:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pNKBTiyzazOQiPLalZw7RlUKoJHDeGxtG5eUGa/jo3c=; b=EgQ7Fevb4JcToDufWQAV4m9SVc
-	mhVOqiMHNuT1DUJdbK6KLxzmmdV6nf9sRv1UavKAPzcuKVfZYBefLP7da/IJfXAW4a0nXHPWQwpVx
-	rQNTcd80qaVU4iFSav7A6VdE5QFaAjL/uTsCx0CUiCjyP3CIHWbdSB92PcFOqkrP0giXPLEzqMMe/
-	RDJKZOGMFv9nfJLRKbLOv1Hf1bTsuD7MadvC4eP78YB73pyNJt6A44wo7Ae1FuQqBg3ZTceO4N5g3
-	5GQL0R7UMM2M2PCJgMvB0lx3ah2ZR/3Tw8iNDRvLXdvm5tbYYrB/WAC5wbTX279SOm6VBp63RY76s
-	MQolaoQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rKs1d2vkDI5mFyd8YnUM+5H6GgVUPfSlSckLrJWjud0=; b=cILl6QGRJjZZVNPnymOpmsG2yc
+	4aA4Rf91FDTpkf8pSpXSq5QbtkWaftDh3KwC+Jp19/Rx9xP691FfgJI60gQMEZD7G+6pPRXgPLQyG
+	QCDZ5i/6xprhD/Iy/TPZYEtIGemKFVF5ZvBrSlikq63cN4iuOJEznK83HnFIQowSCFzB/CWKimbro
+	jORwBY1iNxw/RGfi4zlyCt+4ge2hmcg9wqjIRH0wq7R1goQExqBwtXutiv/LJi/EUX9D3RWlimQAc
+	UdMM5Cz/GLgRWlpKNyGmr0SD3LXpINuJtqVMVlLWY53mvGWNJWpsCd1fCuN3akjh4RWWMxlpD3fgv
+	0vh+9xqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3ImD-0019BF-Pl; Mon, 20 Jun 2022 14:53:17 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o3JSn-001H16-LG; Mon, 20 Jun 2022 15:37:17 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Im2-0018nL-75; Mon, 20 Jun 2022 14:53:07 +0000
-Received: from notapiano (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4726F66016AC;
-	Mon, 20 Jun 2022 15:52:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655736779;
-	bh=xp4iD9VvxWQO3iGiqNjrIMxyQ6VBElMaMUahY/LVwS8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XNPFGstPolfiS0TNNLwD/ZuqLGWms3hLfb0mCuHXIBvhlPkfrbiHDXTKwQBkzrQo2
-	 GnYcz5WCgY3LpG4tM1pnJ80w207ca795BCIQWOFF8KndwzN6Kd9UhZ5inCJlvlsqpX
-	 D/w4hzylaPUB/JC+HZxJ51rima4VzY6PdhPgWJ9gmzKV+KpZ5tVJriJQQGW5pS5rPT
-	 VLpt/6/BPRVw+Tlc74Fr9krCwGkk+WP0i2vsrACx9Kroamo82JveYuWTsAlcFPQO9O
-	 yCDXTFeHuZEXH4CwbUlL2qDYsnorpIdaDe0CqiseTi5iG944mKGUHReQ3R7YUXc0eA
-	 JW5IM7pU3haBg==
-Date: Mon, 20 Jun 2022 10:52:54 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, kernel@collabora.com,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Marc Zyngier <maz@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] media: mediatek: vcodec: Drop
- platform_get_resource(IORESOURCE_IRQ)
-Message-ID: <20220620145254.p52iqrfloteof7py@notapiano>
-References: <20220617203906.2422868-1-nfraprado@collabora.com>
- <8956bb3e-60d7-a882-3672-f2a2f0bf858d@collabora.com>
+	id 1o3JSl-001Gzd-Pn
+	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 15:37:17 +0000
+Received: by mail-ed1-x532.google.com with SMTP id e2so4719715edv.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jun 2022 08:37:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=rKs1d2vkDI5mFyd8YnUM+5H6GgVUPfSlSckLrJWjud0=;
+        b=Fe0GSqhWe9eTXTVLLz1n+pRkr2nN92iFMO7IwVlrQHb/n/O/S229BToHeicXgTpXrM
+         eygUfXKrjLon1dYoUNSbRTbTpgM/8iO0Vaqqn80XyNkobgCurWUdijJ9I3TmwlcLhSK8
+         p9/y8SRcZNR+gToKm10R+b+IfZtkT5yOU9Av0x2LHDTEZyYXv4ChSygmuEBB439/pSgz
+         3Xfh4ZCnTOMxcjaMJaeTAeGCq0BQkNDV2uSUlHefUwuy+VN+mG8q6IdJowrkClZClx1p
+         c9R5GQzzBYFXaQAxGIR0Ix37NvTIMmIgqq5BMnVc6ICSg2vVUwdJERJ1WRGDKDQ7Ss+g
+         Dl2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=rKs1d2vkDI5mFyd8YnUM+5H6GgVUPfSlSckLrJWjud0=;
+        b=7X0aBJjtSwg+pgkETUA3Lt0Zo4Pg7Pu+tyAK8Pt4WD91VEQCH2SYfId8d7qWRHrTai
+         jikBwVeOcxtTyUY/dWvIaCNUyphCAvYa1KpDX1kSf29nbje0vbMRfZn9c9N5dj6dwc95
+         ZXt1eS5zHqsLSLa/12sHCilPEJgYM0ybiMDbhJMRo4e+RvAzhNxu+GHW6zLS1pJ9xMfY
+         PxMuLI6gX5YDehx+kgkfD+C/hoFeQpWhqMNyibfKkXWVbDTieno8exHn9emyOOliwjxo
+         fi10xjKdprU8sjA6XIaA9Tebzic9BEmqLMYjd4BnhWiJmMX+POhsXZPAIj/uqQkPjl66
+         Vt5g==
+X-Gm-Message-State: AJIora/jJ6S8TXWy54aulXZZA9wFykSK+KiJz49/uokfXn/ieicgAXxs
+	Zv8tJnjYFKeMlyJlIIsNdKM=
+X-Google-Smtp-Source: AGRyM1u7dzuQLXUIjf1pmLPwxSZm4QUtECpkliEB6ppHXLJKZEp7qDfMTWogqsG1j7JjDb+67VdLbA==
+X-Received: by 2002:a05:6402:2548:b0:42d:dd95:5bfe with SMTP id l8-20020a056402254800b0042ddd955bfemr30193903edb.285.1655739431915;
+        Mon, 20 Jun 2022 08:37:11 -0700 (PDT)
+Received: from [192.168.0.24] (80.174.78.229.dyn.user.ono.com. [80.174.78.229])
+        by smtp.gmail.com with ESMTPSA id r18-20020a17090609d200b006fe0abb00f0sm6126653eje.209.2022.06.20.08.37.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Jun 2022 08:37:10 -0700 (PDT)
+Message-ID: <fd8d057c-8531-f7df-55e2-023b8757e867@gmail.com>
+Date: Mon, 20 Jun 2022 17:37:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH] PM / devfreq: mediatek: Fix possible dereference of null
+ pointer
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ matthias.bgg@kernel.org, dan.carpenter@oracle.com, johnson.wang@mediatek.com
+Cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220617133330.6510-1-matthias.bgg@kernel.org>
+ <25da54a7-3fc1-39c2-ed93-0ad72ce54e11@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <25da54a7-3fc1-39c2-ed93-0ad72ce54e11@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <8956bb3e-60d7-a882-3672-f2a2f0bf858d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_075306_429173_74EE5CD6 
-X-CRM114-Status: GOOD (  24.89  )
+X-CRM114-CacheID: sfid-20220620_083715_872244_84A2D5F0 
+X-CRM114-Status: GOOD (  19.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +93,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 20, 2022 at 09:58:01AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 17/06/22 22:39, N�colas F. R. A. Prado ha scritto:
-> > Commit a1a2b7125e10 ("of/platform: Drop static setup of IRQ resource
-> > from DT core") removed support for calling platform_get_resource(...,
-> > IORESOURCE_IRQ, ...) on DT-based drivers, but the probe() function of
-> > mtk-vcodec's encoder was still making use of it. This caused the encoder
-> > driver to fail probe.
-> > 
-> > Since the platform_get_resource() call was only being used to check for
-> > the presence of the interrupt (its returned resource wasn't even used)
-> > and platform_get_irq() was already being used to get the IRQ, simply
-> > drop the use of platform_get_resource(IORESOURCE_IRQ) and handle the
-> > failure of platform_get_irq(), to get the driver probing again.
-> > 
-> > Fixes: a1a2b7125e10 ("of/platform: Drop static setup of IRQ resource from DT core")
-> > Signed-off-by: N�colas F. R. A. Prado <nfraprado@collabora.com>
-> > 
-> > ---
-> > Tested on mt8192-asurada-spherion.
-> 
-> Yep, that's totally necessary... Except the Fixes tag should be wrong here,
-> as you're not fixing that commit, but the mtk-vcodec driver in relation to
-> what's happening due to said commit.
-> 
-> I get that you're trying to tell everyone "this is an urgent fix", though,
-> and I agree that this *has to* get in v5.19 to avoid breaking this driver.
 
-The commit I'm pointing to in the Fixes tag [1] says "Now that all the DT
-drivers have switched to platform_get_irq() we can now safely drop the static
-setup of IRQ resource from DT core code.", and while there were patches by the
-author [2] to do the required changes on some drivers beforehand, some were
-missed, including the mtk-vcodec-enc driver which I fix here. I see at least one
-other driver that was missed [3], and it also used the same Fixes tag.
 
-I know that my change isn't meant to be part of the commit in the Fixes, but I
-still think it makes the most sense to keep this tag, since its meaning is that
-that commit broke the support for this driver and this commit fixes it. Wherever
-that commit is applied, this one should too to make sure the mtk-vcodec driver
-keeps working.
+On 20/06/2022 16:21, AngeloGioacchino Del Regno wrote:
+> Il 17/06/22 15:33, matthias.bgg@kernel.org ha scritto:
+>> From: Matthias Brugger <matthias.bgg@gmail.com>
+>>
+>> We dereference the driver data before checking of it's valid.
+>> This patch fixes this, by accessing the PLL data struct after cheching
+>> the pointer
+>>
+> 
+> Hello Matthias,
+> 
+> honestly, I don't think that this commit is right: mtk_ccifreq_target() is the
+> devfreq_dev_profile's .target() callback!
+> 
+> Checking mtk_ccifreq_probe(), we are setting drvdata long before adding the
+> devfreq device so, actually, it's impossible for dev_get_drvdata(dev) to return
+> NULL, or whatever invalid pointer.
+> 
+> This means that the right thing to do in mtk_ccifreq_target() is to simply remove
+> the `drv` NULL check, as this can never happen! :-)
+> 
+
+Yes you are right. Probe will error out if drv can't be allocated or cci_clk 
+isn't present. I'll send a new patch.
 
 Thanks,
-N�colas
+Matthias
 
-[1] https://lore.kernel.org/all/20220316200633.28974-1-prabhakar.mahadev-lad.rj@bp.renesas.com/
-[2] https://lore.kernel.org/all/20211220011524.17206-1-prabhakar.mahadev-lad.rj@bp.renesas.com/
-[3] https://lore.kernel.org/all/20220609161457.69614-1-jean-philippe@linaro.org/
-
-> 
-> Finally, for the code:
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> ...but I think that you have to send a v2 that drops that Fixes tag.
-> 
 > Cheers,
 > Angelo
+> 
+>> Fixes: 07dc787be231 ("Add linux-next specific files for 20220617")
+>> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+>> ---
+>>   drivers/devfreq/mtk-cci-devfreq.c | 3 ++-
+>>   1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/devfreq/mtk-cci-devfreq.c 
+>> b/drivers/devfreq/mtk-cci-devfreq.c
+>> index 71abb3fbd042..77522f16c878 100644
+>> --- a/drivers/devfreq/mtk-cci-devfreq.c
+>> +++ b/drivers/devfreq/mtk-cci-devfreq.c
+>> @@ -127,7 +127,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned 
+>> long *freq,
+>>                     u32 flags)
+>>   {
+>>       struct mtk_ccifreq_drv *drv = dev_get_drvdata(dev);
+>> -    struct clk *cci_pll = clk_get_parent(drv->cci_clk);
+>> +    struct clk *cci_pll;
+>>       struct dev_pm_opp *opp;
+>>       unsigned long opp_rate;
+>>       int voltage, pre_voltage, inter_voltage, target_voltage, ret;
+>> @@ -138,6 +138,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned 
+>> long *freq,
+>>       if (drv->pre_freq == *freq)
+>>           return 0;
+>> +    cci_pll = clk_get_parent(drv->cci_clk);
+>>       inter_voltage = drv->inter_voltage;
+>>       opp_rate = *freq;
+>>
+> 
+> 
 
