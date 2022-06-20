@@ -4,76 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8BE4C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 03:47:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70F58C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 04:03:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=spUmOEFRfOCIFLMYu1D18/a3LdwhVS5TTHInNYJ01Fo=; b=TFCPGAVQ/HgKtbgJ9pWt1QVtQL
-	ZUltCYBqnvHcLxKaW28GQpWtb6pOoYNaqRoFnjp+FywKHxLo+HlxP+mNkUziisdH8pcoPS10tlm0T
-	kXRS60vzQDscL2EyNk9Vys67JfiAylarL2YOuRruPZshXrk29aVcthc3i0w7MD1EletXBCCwX2bLo
-	K7iy2/+Xz7+XCKAotJcjyXeJzSJBg79SZ5JrORMkCWV4DkwjVHzDdyZc0fuKEJJRphysypNPERLnn
-	cZ02cZzL3Im4Vn6YNEmaAyMsiE1Y0to0fg+CaNfDTcNnHP+3KXkpVDssvx7yXYeb3/mbtLzZnYz1u
-	UYwEO0mA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ThP5EeQ+ZDBCUXmcDbpoKwZw2UMTcvHh72ohLmzMXLk=; b=gcDZlnD6QUPqa+W8UbUBpQbPIj
+	ZnYYpEoWV4UZ2no6prqjZYVrB/Ix6qfmfx8yE204/y2xsZ22ImrUn9Gys8QKbkBzZzvBjdRaN/VZq
+	uJ90KxfRIURIErcCYxVeKs8w6wA3WHtrY3eg4q9s4mWe84CVUFsqtvGNllMJ6ApPETswOlKo6J1It
+	k6upJH9+vOCtS1IAnjlMeSp/tbnFmb0mjbaCYXJfIknpdTtgdsC2iMqHdvW3CHfPq+xOKCfGh5q0Y
+	Lk4pSwzGozTIvFiGwhnG5Ea1TeSAiWS9bnRfyIAp8gFJvhRWNbk4VG/zhJGfJ3hdXxkucP55WVPtn
+	upN4dHqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o38Nh-00G2fS-3F; Mon, 20 Jun 2022 03:47:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o38dV-00G7RK-0N; Mon, 20 Jun 2022 04:03:37 +0000
+Received: from mail-dm6nam12on2050.outbound.protection.outlook.com ([40.107.243.50] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o38MW-00G21F-8V; Mon, 20 Jun 2022 03:46:05 +0000
-X-UUID: 52961e49e98a43258539e29af431b58e-20220619
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:756cac8f-98fd-4ff9-a771-e8bfb6321448,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:4f397e2d-1756-4fa3-be7f-474a6e4be921,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 52961e49e98a43258539e29af431b58e-20220619
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 2071898715; Sun, 19 Jun 2022 20:46:00 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Jun 2022 20:45:59 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 20 Jun 2022 11:45:56 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 20 Jun 2022 11:45:56 +0800
-Message-ID: <602191e9a61687a8ed05b216d0faad0092b05168.camel@mediatek.com>
-Subject: Re: [PATCH v11 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 20 Jun 2022 11:45:56 +0800
-In-Reply-To: <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-References: <20220610105522.13449-1-rex-bc.chen@mediatek.com>
-	 <20220610105522.13449-6-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o38dI-00G7PW-Fl; Mon, 20 Jun 2022 04:03:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hcUG2y8RZUYoSJtn7EFnVv6ogPh6f9dgHPlAJmJ3ue7k3x7DTUhnFTkchoy9uxhkj9y0xY0JSoi+rh/lk6kktU1eMJ5DjlPCh1FX05pXEAPg9Pfy/dWIP0M568uDxBEcZvL4aX/uDjszL9oJJfuxbGGzkM16nt5/d2BlSJlfPDjuernf2RRd2V0obLyBrJZMvz7WCao58y/EJKvfx4lJNjGrbiCHAsOG6pYY6EXA17cU13ZV+3xhpI+mdJpAv2lEXr8xaN5nXMjmrWhBQD+sATWNylTc77lz9J4bZiI/L30vsw+wZKc+f4+YMP8I7YS/mjhpnfNMzeo0pb7O2GKMVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ThP5EeQ+ZDBCUXmcDbpoKwZw2UMTcvHh72ohLmzMXLk=;
+ b=C8rgNEcx8M751S1FKgmVLi9b9dBb3JXt+VBQpNDKEAwQVCJ2neehCfC8Cf45a0EPFbWFupzlNAw6zWjSKlLzRhMJoZP7BpmKU/Zdmi4lZvNQGu6eYgIiegwSdmiMhV2dGrdZaxrWRnevys6CDSAcvp+LEhpOaeTHngpUDUArvVm0gAPJSPD4x9zg4Rl4jfmk9u/0e1lbyyH9mPJy+66h3iy3OtS64zgLlNSyUNe79VpYOKxWBExx4C0JyQIlfEZLo0xaVctyzg3wSBC6xNZ5c6LIozMxnrgMAKp68SvwrobOileNZ2xux/Ev2xKd/cPA1+FeZpo5vuHvptjpVhE/EA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ThP5EeQ+ZDBCUXmcDbpoKwZw2UMTcvHh72ohLmzMXLk=;
+ b=Io2bu4a1GWJWiXgpz/3pFq0JSIAKkvKuXXWKO9guT7zf4pcD0zNccYFZjstkEka9rlTxhbPBJoUJ7if6TjqqL5ceXkP/ZDP+GfoBBuH9O8QGmH3jBU8kOOQ0no8zIJ4QdlKkWGHunzFOwWuigg492aCv3zjHmYM2bBsT99RXPta2CQlXP0LnBz0RcQW4d6l3V0c/0oBgeqeAGHU+lxj2VABiGPPUo2hp5Ss63EgLKDGO2inA9h7Bnj/HIfkjuBaceEtho26ML05mg+lexaNMpV48IXv9JUoE7/E4BxEtrZFIAIfK9gAXyHBr1Ud5ut5bKI8T+52j6niIPs4p+Fnhpw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+ by DS7PR12MB5743.namprd12.prod.outlook.com (2603:10b6:8:72::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.18; Mon, 20 Jun
+ 2022 04:03:20 +0000
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ac35:7c4b:3282:abfb]) by MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ac35:7c4b:3282:abfb%3]) with mapi id 15.20.5353.022; Mon, 20 Jun 2022
+ 04:03:20 +0000
+Date: Mon, 20 Jun 2022 01:03:17 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: "robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"Tian, Kevin" <kevin.tian@intel.com>,
+	"joro@8bytes.org" <joro@8bytes.org>,
+	"will@kernel.org" <will@kernel.org>,
+	"marcan@marcan.st" <marcan@marcan.st>,
+	"sven@svenpeter.dev" <sven@svenpeter.dev>,
+	"robdclark@gmail.com" <robdclark@gmail.com>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"orsonzhai@gmail.com" <orsonzhai@gmail.com>,
+	"baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
+	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
+	"thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+	"alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"saiprakash.ranjan@codeaurora.org" <saiprakash.ranjan@codeaurora.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+	"jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"yangyingliang@huawei.com" <yangyingliang@huawei.com>,
+	"gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
+	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+	"christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
+	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+	"tglx@linutronix.de" <tglx@linutronix.de>,
+	"virtualization@lists.linux-foundation.org" <virtualization@lists.linux-foundation.org>,
+	"isaacm@codeaurora.org" <isaacm@codeaurora.org>,
+	"cohuck@redhat.com" <cohuck@redhat.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"dwmw2@infradead.org" <dwmw2@infradead.org>
+Subject: Re: [PATCH v2 5/5] vfio/iommu_type1: Simplify group attachment
+Message-ID: <20220620040317.GD5219@nvidia.com>
+References: <20220616000304.23890-1-nicolinc@nvidia.com>
+ <20220616000304.23890-6-nicolinc@nvidia.com>
+ <BL1PR11MB52710E360B50DDA99C9A65D18CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
+ <YquxcH2S1fM+llOf@Asurada-Nvidia>
+ <BN9PR11MB5276C7BFA77C2C176491B56A8CAF9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <Yq0JKBiQfTkWh4nq@Asurada-Nvidia>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Yq0JKBiQfTkWh4nq@Asurada-Nvidia>
+X-ClientProxiedBy: MW2PR2101CA0018.namprd21.prod.outlook.com
+ (2603:10b6:302:1::31) To MN2PR12MB4192.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::15)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 2ffc12fa-3882-4ffd-dd09-08da5271cfd2
+X-MS-TrafficTypeDiagnostic: DS7PR12MB5743:EE_
+X-Microsoft-Antispam-PRVS: 	<DS7PR12MB5743D38F2F8B191654273127C2B09@DS7PR12MB5743.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	1OlNCIDP/VA0Nw3FuQSHjfU89hetjcCk0gBu20znr05wprqCEoHNmLiFn6qgpf5oTIsxMqqt34UwzQnJ8zE1Jvt9EMYZxYIlIvQSgUWe2oYY6Mv7+M3c+pqKmSnkjFCcaRUOG5E35pEr14QyFszwOejjVpn0Q5B2PpI23wjL7A7eEh4YvKChJhBSFA8a0OY1kCRAWoUIQwT/vss0cah9axJXsc8wPxt3fCYIG4A7mB7Aza7iukgJSfoGBdUcSnF72QdDEQQUMVBU8PS8PuxT9XhxC5XQ2jNh/D12BVy0udDCHv694dl4eXEEeLkEXz68DBp5CSJZ0sgx/lSxODcw+T4lz66wurT3JtMXMXjyW+cBxCFz9sd5V87X7xSjnsp7utgvX2P68lgvo7dG4oAtN9yVARPYjWNp2K9bYwMenulLfDLppMZ/DJZ6yAA53T6EcrL3fCE0xLc2SEUer4eAdcA4KXF9IQ8fbVKJwrPd5eWgFucnE3xODwnjoId/azk/vQKwM1a38D1wZwPNULNuT/gemURbRRyENssVdodbHegn7dWcfD2Y+9Kadc76k/PqeftivgBhMrtLJAQL8+6ky0iFWLJjfMEoG/Y2rHhOvoErDUjte7iQuRpSSJXaJVqB+TezMjtfU42jbqSEGsv5rw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB4192.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(366004)(39860400002)(136003)(376002)(346002)(396003)(6862004)(6506007)(2906002)(66476007)(66556008)(4326008)(8676002)(478600001)(8936002)(7406005)(36756003)(26005)(4744005)(316002)(6666004)(6486002)(83380400001)(37006003)(66946007)(54906003)(6636002)(38100700002)(86362001)(7416002)(5660300002)(6512007)(2616005)(1076003)(186003)(33656002)(41300700001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?TLROKD5CyEvZwCEnYD+GwakM1HU80UbqCmUp6VciYy3HN6tADoFspt2LtA8b?=
+ =?us-ascii?Q?LGjtqYvQOzlY/Xxsyl2hfIqPkVMhKBe1bTCoNNg1UZnMoMZO4edeaeFJ8/do?=
+ =?us-ascii?Q?2IJLxdl04coMCUqRr7rxELADb0qzaaqgKQjR+X6B9pSu4VVDlar1mUaluOyh?=
+ =?us-ascii?Q?TsUvXx2L87KVKihrV2JOHbM+b6xuw9rrO3hoSAf0qui0OVDBNrWAq4KMyVUl?=
+ =?us-ascii?Q?BgCtbtAuTCLrco8g8ObiaPaEsgcyFxoFjW+FLE3jFaDgUXoPdHjz5yduNsdf?=
+ =?us-ascii?Q?8MrA/NIwvJQffK6tUZ7+4CpAW5Ruf8sMgpCqj0YpRqT/1sTpUkVTNMAuFzBU?=
+ =?us-ascii?Q?Nr56fInXKRXFykXH740ac1prA1N9IpOi45Hq2qycrENH0eqwiB4ndibeO8Zc?=
+ =?us-ascii?Q?9Ylhy71E0Uq/fJLUhec6/QK3FeJJFguDnC06wQWvXJIZEQHHi5YssE3lGr88?=
+ =?us-ascii?Q?Bs12EhkeU9KTqKnX/owBPd1vhrD4Pd7egL/8FLcJg80kHoksx6tVq6bORjYO?=
+ =?us-ascii?Q?u+p63AHJrG9HFoDy1fT5x29ax7R+2+gvpseRrqBofSKStlG5JtLe9pwHcUfk?=
+ =?us-ascii?Q?jByM7I+UMr1KH+8b9BExQqdrmZ1kpnTClTqIBbDpQJ9Yu3Risimd2uOyqOtX?=
+ =?us-ascii?Q?/kAdvEPsIO7GFf47AQv1jOrrxx7Df2MER2wvJx0uaOrsWUX9TjPHBBVBnucb?=
+ =?us-ascii?Q?T2z7CYXfpKpGb7VnUga/7H0arAx/AB/1ys+F8spl8m9kk9S1tK3rIoKb0dC7?=
+ =?us-ascii?Q?X6rmrRfvmCZmoEgfOe/ktuxfP5ATQbBqYljfSffD2qhFJruNaf17zsh7jMle?=
+ =?us-ascii?Q?8Q2+ekV6YOngLVk88pvKB4AwnVYSWT/1sMUZepXrzzHrIAS6KZnquUTVbL99?=
+ =?us-ascii?Q?Oo1JYJ2xTeYIzIUc+1Kluje/r14M4x5Ic16jyPmUsxqBMLWhYVXwcSIb17vX?=
+ =?us-ascii?Q?zRt33TPmhGcmDEiTFihjA4wMYHu5Ncw72gq7IYp8wFSoIOoVo3myGbFwDo8F?=
+ =?us-ascii?Q?cH3UjKtHIF/XRpzcqG8xctytB8xa7UIb+AmMBr+Mtv8HYide59+RNYkNTDP4?=
+ =?us-ascii?Q?dNtxUbub+1//9HjFmZXuzJDj1DTllWPBPIrBeJLqOAkJZQRBc6HEuozqvD0H?=
+ =?us-ascii?Q?qw9PHAoaW6oVKSvup3Um3hvPGSswEE/y0FZdqagwDx88kVyhOeUg6fKTb4Hb?=
+ =?us-ascii?Q?rZkSHy0glyHPESeseDHUDI2VBdhCTg0oC5PhtEbvjXWEeXhkC+tw6g9YeyBd?=
+ =?us-ascii?Q?CpkkE7Q16rLxBmuE+NGQQaF8de9ZBYN+pRtgjsyQ7E28Y1QT4zEkLF5BexGU?=
+ =?us-ascii?Q?icTvlfgytvVLBjcCYrQn0j2GMK3BXcrPmNQio1+xKUFa7Mok0e8+a4Rxei6d?=
+ =?us-ascii?Q?gSiSI6kzcsnVtXEZ3bHUjIWnAh/AJreRJxy4PU/UmBaf74Kxxs9M/OC1FJV9?=
+ =?us-ascii?Q?ox5W9vVA/c0aCey4/DeD6cgX+xLfgizZI5sHQIprmKeTIVxekt7vcZlUU5jh?=
+ =?us-ascii?Q?3j1u8zOM8lSu5KmNBLEYcZMi/delh2fW6WbVT5XzyOK//RrEfdEkdNfGLEkJ?=
+ =?us-ascii?Q?MojxSFQ3Bw2xSbCVRf4NYyzFnvxI+Fa7QKzPONfXgpsYZCqPZBCRHq5+h/BE?=
+ =?us-ascii?Q?W22YqjCnzNQaMhMksaXArA1l7elvpzL+XcS5whxq9jnP/Gy67yH6ZydsZiXV?=
+ =?us-ascii?Q?eGQFGLzFCa9o0hSbtdSssMg/nQSKWuk30D3E1Kz4CXbikUbDtDeix3BEqMkd?=
+ =?us-ascii?Q?FVtfifxlFQ=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2ffc12fa-3882-4ffd-dd09-08da5271cfd2
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2022 04:03:20.0967
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: oRZunGZtKJI1pF4+CC1DhZ8W9+HBQAB2476EZ0NtLO8aMbrpDgLnqm3qQb2EGifz
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5743
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_204604_367726_1D9AE31C 
-X-CRM114-Status: GOOD (  21.26  )
+X-CRM114-CacheID: sfid-20220619_210324_728841_B60DAE49 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,85 +171,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rex:
+On Fri, Jun 17, 2022 at 04:07:20PM -0700, Nicolin Chen wrote:
 
-On Fri, 2022-06-10 at 18:55 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > > > +     vfio_iommu_aper_expand(iommu, &iova_copy);
+> > > >
+> > > > but now it's done for every group detach. The aperture is decided
+> > > > by domain geometry which is not affected by attached groups.
+> > >
+> > > Yea, I've noticed this part. Actually Jason did this change for
+> > > simplicity, and I think it'd be safe to do so?
+> > 
+> > Perhaps detach_destroy() can return a Boolean to indicate whether
+> > a domain is destroyed.
 > 
-> This patch adds a embedded displayport driver for the MediaTek mt8195
-> SoC.
-> 
-> It supports the MT8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
-> 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
-> 
-> This driver is based on an initial version by
-> Jitao shi <jitao.shi@mediatek.com>
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> [Bo-Chen: Cleanup the drivers and modify comments from reviewers]
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
+> It could be a solution but doesn't feel that common for a clean
+> function to have a return value indicating a special case. Maybe
+> passing in "&domain" so that we can check if it's NULL after?
 
-[snip]
+It is harmless to do every time, it just burns a few CPU cycles on a
+slow path. We don't need complexity to optmize it.
 
-> +
-> +static void mtk_dp_poweroff(struct mtk_dp *mtk_dp)
-> +{
-> +	mutex_lock(&mtk_dp->dp_lock);
-> +
-> +	mtk_dp_hwirq_enable(mtk_dp, false);
-> +	mtk_dp_power_disable(mtk_dp);
-> +	phy_exit(mtk_dp->phy);
-> +
-> +	mutex_unlock(&mtk_dp->dp_lock);
-> +}
-> +
-> +static int mtk_dp_poweron(struct mtk_dp *mtk_dp)
-> +{
-> +	int ret = 0;
-> +
-> +	mutex_lock(&mtk_dp->dp_lock);
-
-The dp_poweron/off is only called by bridge_attach/detach, and I think
-drm core would not call attach/detach concurrently, so this mutex is
-redundant. Remove it.
-
-Regards,
-CK
-
-> +
-> +	ret = phy_init(mtk_dp->phy);
-> +	if (ret) {
-> +		dev_err(mtk_dp->dev, "Failed to initialize phy: %d\n",
-> ret);
-> +		goto err_phy_init;
-> +	}
-> +	ret = mtk_dp_phy_configure(mtk_dp, MTK_DP_LINKRATE_RBR, 1);
-> +	if (ret) {
-> +		dev_err(mtk_dp->dev, "Failed to configure phy: %d\n",
-> ret);
-> +		goto err_phy_config;
-> +	}
-> +
-> +	mtk_dp_init_port(mtk_dp);
-> +	mtk_dp_power_enable(mtk_dp);
-> +
-> +err_phy_config:
-> +	phy_exit(mtk_dp->phy);
-> +err_phy_init:
-> +	mutex_unlock(&mtk_dp->dp_lock);
-> +	return ret;
-> +}
-
+Jason
 
