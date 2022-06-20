@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B35DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 01:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02FEC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 03:08:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LMxohULAuuYfI5l2/+Li5GYtdpMqDqV8rdtZO8xS1J8=; b=b3vSddf+2lG6z1hLHeh0HIu1Jn
-	sIhc/+f0CFIKai/YMbx9nyj5QkzJdAs8QohQ67a/ONb2tFcB+MAcodaDQhy9cyvWINQbQgzKepkky
-	/Y7CbnTDU0Us2nIy+FoIRmB+V3MYvqylvGLSuJnRpDhBq6EAf4WExXHF0xjXfw+vbnCDUC9M/3ppL
-	5J0NI1B7rSqiCXc4x6/Es7curIlAa2oUVZY1Vx6ThqFGwMR2tnKP2hXGIhVuSvourCqFzcMjgY2X6
-	zOIri98b4KkMJDyEC0ZxFZC9QyD3HxXrjRM1Kz87LFpQW2Ydhrg0JvIVnF/ZDp5wJIi6xtoKZJVAG
-	+o8duK6w==;
+	bh=ClA6mV7hozr21kuBkeCxjd9fGNxXJpc68c5A8HEJUUI=; b=vTkAVTWCcUgyC5RGYmx42RMieH
+	ZR/wBe0+oITsVlbg38a/8v30zueylDlgDuXB7ZYLCdlO/JyTlVhYYW/pPMHkHFC3PKHFpktfMWuuR
+	JmhkD9OinYcat186NeMuYkOjt+2OLn8ZDTuAc87A8uS80d01MGhnE61LeNKJ7JqHXzXgbDbnLQ9Au
+	4IZCLTQHBYYgkjlW+HhQdqXKGcjW7VTYHJQ7mLdZ/1QPx8wDtZVyKz0YQNEycyA21B6aVjPDA1hTn
+	Urpd166LOxhD6f8ofn7CJfF2QuAh1OxsPBWDyALGm/NjL7jDS/wQ/iKJ2HEX5bv89DuHiAm4nWdNi
+	qn/Nd/nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o36RW-00FjDg-8Q; Mon, 20 Jun 2022 01:43:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o37lb-00FvWp-JE; Mon, 20 Jun 2022 03:07:55 +0000
+Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o36RR-00FjCa-6s; Mon, 20 Jun 2022 01:43:03 +0000
-X-UUID: 503f6fcfd5184576b952db181896cea3-20220619
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:cbed7c0a-1378-47da-b3ac-364965c10b7b,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:f26f1d49-4c92-421c-ad91-b806c0f58b2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 503f6fcfd5184576b952db181896cea3-20220619
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1986011637; Sun, 19 Jun 2022 18:42:53 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Jun 2022 18:36:26 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 20 Jun 2022 09:36:24 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 20 Jun 2022 09:36:24 +0800
-Message-ID: <a982aa2fb069e498ee259e43501025936b005091.camel@mediatek.com>
-Subject: Re: [PATCH v20 0/6] Add mutex support for MDP
-From: moudy.ho <moudy.ho@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
-	<roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Date: Mon, 20 Jun 2022 09:36:24 +0800
-In-Reply-To: <5f53e0a4-f6d5-f9be-222b-e6361b837071@gmail.com>
-References: <20220610063424.7800-1-moudy.ho@mediatek.com>
-	 <5f53e0a4-f6d5-f9be-222b-e6361b837071@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o37lN-00FvQj-UJ; Mon, 20 Jun 2022 03:07:43 +0000
+Received: by mail-il1-x135.google.com with SMTP id k18so1062392ilr.11;
+        Sun, 19 Jun 2022 20:07:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=ClA6mV7hozr21kuBkeCxjd9fGNxXJpc68c5A8HEJUUI=;
+        b=gOpv1108ut5ySpAPndiTka0cdAPZs7Flmw6QF/XASUursDWrwbsAx9Vt+ZXF5kcdEw
+         TCakBrMFGrsxiKWEOhenPFzr9LBdXhjmxW5370IMQcOOlgaFHdTNkBB+FXGyNxJcg61e
+         E1CcWHlUQ+QDQ0SBGzNysb+dxHy8expVECKExkABctkP/dtbwAAACdK2L7UDO9Gbz48K
+         ji3tgBrL0udfA8TkFrC8hp8qz2em39uxnCPqC9QkBkCfnnMqz+vlX4RNa8QIDVPQFIsS
+         Tfem3Y9ER0V16TcCeQoXqA7MiKjEXoKy5//qqMQChDe5hPDjkyy9/RyTBkvqD/PR7kp3
+         aZZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=ClA6mV7hozr21kuBkeCxjd9fGNxXJpc68c5A8HEJUUI=;
+        b=xpA+oUEyrideUIulAdCYfW9D0XW65MehkvcxGd/0nCMZhxxmfVIPUwGSxxKHXLtu0N
+         lDprAHRynEOmqBXAoSFZF6+IimczKzsVvIUCH+8CeIxA8IGXrE84S6sbLBsffwNdVKgI
+         wE9H9Ly4hU76+5w9wNe5si3ILpL/eHpz0xsiYBBOIjVMuSxTDmcDkwDMcuBJ4T/gK9I+
+         LxhOrDlQ5Xkwx9zmSJCZKUFKogThB7ypL6O/2I0NAuIaRTioCTWiM25EuyGbygPo3Lp+
+         4S0OhTOiJLuZATU6JLPiinieORJYdIRUQPMIk5VwF/yNsLr4okEMtx9y5mMd4IHBAsvI
+         YIBg==
+X-Gm-Message-State: AJIora94f3BVqMfbHVPYGK7J94lZNDiuonncNLflYe7vEnAwIHNs+JLD
+	8iWul165ufDheT6Ykom60blBnQlL6s8mnc9n19c=
+X-Google-Smtp-Source: AGRyM1uWx3Xja5gAlxQTsI9Gy8E4mbdwpO+4QcNSHclRnN4Pr80zjlE1E8X1wNostXJGk9TU7gkWHZtEAVASNa5cJX8=
+X-Received: by 2002:a05:6e02:1bc1:b0:2d1:96b3:b961 with SMTP id
+ x1-20020a056e021bc100b002d196b3b961mr12302759ilv.213.1655694460188; Sun, 19
+ Jun 2022 20:07:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+References: <20220613111146.25221-1-peterwu.pub@gmail.com> <20220613111146.25221-4-peterwu.pub@gmail.com>
+ <91e9e3af-8208-7535-1864-08744f934593@linaro.org>
+In-Reply-To: <91e9e3af-8208-7535-1864-08744f934593@linaro.org>
+From: szuni chen <szunichen@gmail.com>
+Date: Mon, 20 Jun 2022 11:07:29 +0800
+Message-ID: <CA+hk2fZbh0=8gurGS95XpXrYyF3NbwFbFMcygcrW_q10m0zinA@mail.gmail.com>
+Subject: Re: [PATCH v2 03/15] dt-bindings: leds: mt6370: Add Mediatek mt6370
+ current sink type LED indicator
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Jonathan Cameron <jic23@kernel.org>, 
+	Lars-Peter Clausen <lars@metafoo.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	Linux PM <linux-pm@vger.kernel.org>, USB <linux-usb@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, ChiYuan Huang <cy_huang@richtek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_184301_285015_2C819B20 
-X-CRM114-Status: GOOD (  32.07  )
+X-CRM114-CacheID: sfid-20220619_200742_045040_264D6C9C 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,139 +94,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-06-17 at 15:54 +0200, Matthias Brugger wrote:
-> 
-> On 10/06/2022 08:34, Moudy Ho wrote:
-> > Change since V19:
-> > - Reduce parameters pass to function "mtk_mutex_write_sof"
-> >    to avoid redundant action.
-> > 
-> > Change since V18:
-> > - Rebase on v5.19-rc1
-> > - Remove unnecessary functions:
-> >    "mtk_mutex_set_mod", "mtk_mutex_clear_mod",
-> >    "mtk_mutex_set_sof" and "mtk_mutex_clear_sof", and export
-> >    "mtk_mutex_write_mod" and "mtk_mutex_write_sof" to
-> >    set MOD/SOF directly.
-> > - Remove unnecessary SOF tables and add new enumerations of SOF
-> > instead.
-> > - Adjust the error checking for CMDQ operations.
-> > 
-> > Change since V17:
-> > - Rebase on v5.18-rc6
-> > - Fix undeclared identifier causing compilation to fail.
-> > 
-> > Change since V16:
-> > - Rebase on v5.18-rc4
-> > - Fix misplacement of definition "CONFIG_MTK_CMDQ" which
-> >    caused compilation error when CMD is not supported.
-> > 
-> > Change since V15:
-> > - Rebase on linux-next.
-> > - As suggested by Angelo, split common parts into independent
-> > functions to
-> >    make functions more concise.
-> > - Based on safety considerations, increase the returned error
-> > number and
-> >    message to facilitate error handling.
-> > 
-> > Change since V14:
-> > - Rebase on linux-next.
-> > - Add new SOF and MOD table for general interface to integrate the
-> > requirement
-> >    of different modules.
-> > - Remove unnecessary MOD structure.
-> > - By Rob Herring's suggestion, revise the description of
-> >    "mediatek,gce-client-reg" in MUTEX dt-bindings.
-> > - Delete the redundant definition of MTK_MUTEX_ENABLE and modify
-> > corresponding
-> >    function.
-> > 
-> > Change since V13:
-> > - Rebase on linux-next tag:next-20220316
-> > - Adjust the MUTEX MOD table structure and corresponding functions.
-> > - Adjust the definition style about 8183 MDP MOD.
-> > - Remove redundant definitions and enumerations.
-> > - Adjust the CMDQ operation in MUTEX to be backward compatible
-> > 
-> > Change since V12:
-> > - Rebase on linux-next
-> > - Remove ISP related settings in MMSYS
-> > - Removed CMDQ operations previously used by MDP in MMSYS
-> > - Move mediatek MUTEX dt-binding path
-> > - Add additional property in MUTEX for CMDQ operations
-> > 
-> > Change since V11:
-> > - Rebase on v5.17-rc6.
-> > 
-> > [1]: 
-> > https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.17-next*soc&id=5f9b5b757e44de47ebdc116c14b90e3cc8bc7acb__;Lw!!CTRNKA9wMg0ARbw!xbP5nA78eRJ8wIp4yFgD5aE4jwxaKHyasyrDibJyg6s4V_rFBmX96_JR5DQsUzWs$
-> >  
-> > [2]: 
-> > https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.17-next*soc&id=831785f0e5b919c29e1bc5f9a74e9ebd38289e24__;Lw!!CTRNKA9wMg0ARbw!xbP5nA78eRJ8wIp4yFgD5aE4jwxaKHyasyrDibJyg6s4V_rFBmX96_JR5AuVaksc$
-> >  
-> > [3]: 
-> > https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.17-next*soc&id=15f1768365aed810826a61fef4a744437aa5b426__;Lw!!CTRNKA9wMg0ARbw!xbP5nA78eRJ8wIp4yFgD5aE4jwxaKHyasyrDibJyg6s4V_rFBmX96_JR5NwN4SIb$
-> >  
-> > 
-> > Change since v10:
-> > - For some ISP application scenarios, such as preview and recording
-> >    at the same time.
-> >    The routing table needs to be discarded, and the calculation
-> > result
-> >    on the SCP side is used to write a suitable mux setting for
-> >    1 input and 2 output.
-> > - Adjust the GCE client register parsing method to avoid redundant
-> > warning logs.
-> > 
-> > Change since v9:
-> > - Add API for MDP getting mutex mod.
-> > 
-> > Hi,
-> > 
-> > This patch splits mmsys and mutex settings from Media Data Path 3
-> > (MDP3),
-> > and original mailling list list below:
-> > 
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/cover/20211201095031.31606-1-moudy.ho@mediatek.com/__;!!CTRNKA9wMg0ARbw!xbP5nA78eRJ8wIp4yFgD5aE4jwxaKHyasyrDibJyg6s4V_rFBmX96_JR5Ov7mlf5$
-> >  
-> > Corresponding settings and interfaces are added for MDP operation
-> > in the
-> > mmsys and mutex drivers, which increases the independence of the
-> > modules
-> > 
-> > Moudy Ho (6):
-> >    soc: mediatek: mutex: add common interface for modules setting
-> >    soc: mediatek: mutex: add 8183 MUTEX MOD settings for MDP
-> >    dt-bindings: soc: mediatek: move out common module from display
-> > folder
-> >    dt-bindings: soc: mediatek: add gce-client-reg for MUTEX
-> >    dts: arm64: mt8183: add GCE client property for Mediatek MUTEX
-> 
-> If fixed the commit subject to arm64: dts: mt8183...
-> Whole series applied,
-> 
-> Thanks!
-> 
+Dear Krzysztof,
 
-Hi Matthias,
+Thank you for the valuable command.
 
-Thanks for the correction, I'll fix it as soon as possible.
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> =E6=96=BC 2022=E5=B9=
+=B46=E6=9C=8817=E6=97=A5 =E9=80=B1=E4=BA=94 =E6=B8=85=E6=99=A85:09=E5=AF=AB=
+=E9=81=93=EF=BC=9A
+>
+> On 13/06/2022 04:11, ChiaEn Wu wrote:
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> >
+> > Add Mediatek mt6370 current sink type LED indicator binding documentati=
+on.
+> >
+> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> > ---
+> >  .../leds/mediatek,mt6370-indicator.yaml       | 48 +++++++++++++++++++
+> >  1 file changed, 48 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6=
+370-indicator.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-ind=
+icator.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indica=
+tor.yaml
+> > new file mode 100644
+> > index 000000000000..42b96c8047a3
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.=
+yaml
+> > @@ -0,0 +1,48 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/leds/mediatek,mt6370-indicator.yaml=
+#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: LED driver for MT6370 PMIC from MediaTek Integrated.
+> > +
+> > +maintainers:
+> > +  - Alice Chen <alice_chen@richtek.com>
+> > +
+> > +description: |
+> > +  This module is part of the MT6370 MFD device.
+> > +  Add MT6370 LED driver include 4-channel RGB LED support Register/PWM=
+/Breath Mode
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt6370-indicator
+> > +
+> > +  "#address-cells":
+> > +    const: 1
+> > +
+> > +  "#size-cells":
+> > +    const: 0
+> > +
+> > +patternProperties:
+> > +  "^(multi-)?led@[0-3]$":
+>
+> If this is multi-led, then you should reference
+> /schemas/leds/leds-pwm-multicolor.yaml
+>
+> See other examples using it.
 
-Regards,
-Moudy
+In my opinion, leds-pwm-multicolor.yaml is used for external pwm
+signals, and needs to assign an external pwm property.
+But our pwm leds use an internal clock to generate the pwm signal. Is
+leds-class-multicolor.yaml more appropriate?
 
-> >    soc: mediatek: mutex: add functions that operate registers by
-> > CMDQ
-> > 
-> >   .../mediatek/mediatek,mutex.yaml              |  14 ++-
-> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   1 +
-> >   drivers/soc/mediatek/mtk-mutex.c              | 119
-> > +++++++++++++++++-
-> >   include/linux/soc/mediatek/mtk-mutex.h        |  27 ++++
-> >   4 files changed, 159 insertions(+), 2 deletions(-)
-> >   rename Documentation/devicetree/bindings/{display =>
-> > soc}/mediatek/mediatek,mutex.yaml (81%)
-> > 
-
+Sincerely,
+Alice
+>
+>
+>
+> Best regards,
+> Krzysztof
 
