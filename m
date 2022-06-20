@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0383C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 07:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75668C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 07:28:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eZxNhueMBF9WoNcsQRrgiB02jKYBhNhqYGBvBdIMT/o=; b=wIXp4PLF3tcOfvUkD0f7aYORA3
-	HDgA1jlHZSAXahEn0gAjLOfrIIJx/a7JKzIRStpbZpq8Xn0HitI5HcoLJ+dFGO6tDE2Kl61JFttRO
-	+wkjef65CkByl0veDqnV78VfmwGUIRmXniIu0NRni3qSXA/v3/jlwfu6jQVIWY85q/sutc4BtYOI2
-	a8c6BmvYi/egpuOc4PRzsypdcuzB6ouKhakjw6DjULzmaOGUHl7Q5UdRA6fySnz6+lPcee6tb0cW/
-	jrAsAP0pwWCCBcg8Jxg8TY/gCTgD7+OebwNBmdivSfrLmARStucVBlR5/ullQBxY+Bd5dq9bDO2le
-	V+Tfb5uA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vhfxXzYTtRIMiRyoVHj5RqW+ceNuA3aByIg+ARTSbMI=; b=WNK5dCSDs+y7gdhjQ1RWbmEh0F
+	JA8b+GZfa7f/wcrJq+oHoYju5feJVWzZ6VbRFM3Hp0+SIuHrAJMqaHw0p8JfX3tq0ZgtLCzp3PzT7
+	SOG7p14DnKHi8Rfw1eUugM8QxEaApV7efmtyYx3ZQRhl0qsmXG+07aPcNjq7GcOHBRXBw+NMpCZQt
+	leFgvWA5Z8UOwq9wMbBMs/Rhu7eaplDL1mnTODvG4yY8aQKYWrDNcDW8RHryOaFqYytLXVvvc2QEh
+	OMB4Vc48z72LUuDNOxwFcsuvy9CZC8VFGzBCqNR66g3uF5aeh6Ki4sUXtjrfUDO+s+2A7HvO34w2q
+	I+kWNOhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3BbA-00GcES-EQ; Mon, 20 Jun 2022 07:13:24 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1o3Bq2-00Gfob-2M; Mon, 20 Jun 2022 07:28:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Bb7-00GcCV-MX
-	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 07:13:22 +0000
-Received: by mail-ed1-x533.google.com with SMTP id eq6so6441508edb.6
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jun 2022 00:13:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=eZxNhueMBF9WoNcsQRrgiB02jKYBhNhqYGBvBdIMT/o=;
-        b=fy3dwtBDvc791ioyRN1572SmjL/QCaIVbg2+MyM1rCFfoafQv0OE0oBW1d4YrWIIi3
-         DIrhnywVf88jJaKxiRQGAN/hGXKMSYTj4hhcL6B1cMYP7QofkT5dyPwudtEpoWiedZkf
-         vKInpa/OhzZib4wmyfrDVCwTf9f6YX67mE25E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=eZxNhueMBF9WoNcsQRrgiB02jKYBhNhqYGBvBdIMT/o=;
-        b=ZxWzsTUXfu+0BlinnbN8DFf+ZpEok6y6JsulHEHdVQ4Elh5zrc92Vzkh4fIeawJpoB
-         qyODsb+9talm2QmUnIWuRMUoLwPoUu8xH/ROtymB93Pe+vkpJnv8Qxp7YLvc1HiJD9pW
-         FWfJJRtPNDUrnlJMPmD4WzN4Zj1t9gwbX9br8Oxv0KD9YSyOZ7CARITv/gqUflIpIAWn
-         +joeKVkavmMhdpl3Hrbcsz2ANSEvT6iuhaB87L+cuOsj34YsvyLuMI+HBZkGKUstPx3c
-         zydwb2YkdbrxuOxv9ymngwrbKXZKhG6ljRMaeiRzzAZjeVEmkj3Ev36KJzRU1d3RO7A+
-         Aqmg==
-X-Gm-Message-State: AJIora+nCvHpvpzj84me9ocI0F5n0SuQrwifpIaNijM9OY3fVTl4d4LR
-	KKsJ0UGRIYL2cjPgHejIN9c13Z3M6f4sP0n9NqXRFw==
-X-Google-Smtp-Source: AGRyM1sL5dIl8AH46jNJrBl/TTzwbPT5YrA248QQiwP24rFmBUawcT2ZGIJ6uCWt77gKUpazkmOZ3P3/igx2WCEym9c=
-X-Received: by 2002:aa7:d6c9:0:b0:435:6698:589a with SMTP id
- x9-20020aa7d6c9000000b004356698589amr17234634edr.59.1655709199702; Mon, 20
- Jun 2022 00:13:19 -0700 (PDT)
+	id 1o3Bpq-00GfnZ-Qr; Mon, 20 Jun 2022 07:28:36 +0000
+X-UUID: 2a108e7dc93d448294a7a1e99145908b-20220620
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:eea408a2-90f2-45bc-9675-02a249fa035a,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+	TION:release,TS:100
+X-CID-META: VersionHash:b14ad71,CLOUDID:6d84842d-1756-4fa3-be7f-474a6e4be921,C
+	OID:IGNORED,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 2a108e7dc93d448294a7a1e99145908b-20220620
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1413239206; Mon, 20 Jun 2022 00:28:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Jun 2022 00:18:21 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 20 Jun 2022 15:18:20 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 20 Jun 2022 15:18:18 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] MAINTAINERS: add Yunfei Dong as mediatek vcodec driver maintainer
+Date: Mon, 20 Jun 2022 15:18:17 +0800
+Message-ID: <20220620071817.11685-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20220617072521.21551-1-yunfei.dong@mediatek.com>
-In-Reply-To: <20220617072521.21551-1-yunfei.dong@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 20 Jun 2022 15:13:08 +0800
-Message-ID: <CAGXv+5GG1rKsECDotA_RpXay1i7ido+te1=CbX0d21638=+Z2A@mail.gmail.com>
-Subject: Re: [PATCH, v2] media: mediatek: vcodec: Fix non subdev architecture
- open power fail
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Alexandre Courbot <acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Tomasz Figa <tfiga@google.com>, Irui Wang <irui.wang@mediatek.com>, 
-	George Sun <george.sun@mediatek.com>, Steve Cho <stevecho@chromium.org>, 
-	devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Xiaoyong Lu <xiaoyong.lu@mediatek.com>, linux-mediatek@lists.infradead.org, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_001321_789088_4C506E1E 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220620_002834_899192_07346737 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,18 +89,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 17, 2022 at 3:25 PM Yunfei Dong <yunfei.dong@mediatek.com> wrote:
->
-> According to subdev_bitmap bit value to open hardware power, need to
-> set subdev_bitmap value for non subdev architecture.
->
-> Fixes: c05bada35f01 ("media: mtk-vcodec: Add to support multi hardware decode")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+I have been working on mediatek driver development for a very long time,
+and sent many patches to change the driver architecture. Add myself as
+co-maintainer for mediatek vcodec driver.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-on MT8183 on next-20220617. This makes the hardware operate correctly.
-Previously it kept timing out, presumably because the hardware wasn't
-properly enabled.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e22a79ffa4d0..1b3a30f33f0c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -12389,6 +12389,7 @@ F:	drivers/media/platform/mediatek/vpu/
+ MEDIATEK MEDIA DRIVER
+ M:	Tiffany Lin <tiffany.lin@mediatek.com>
+ M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
++M:	Yunfei Dong <yunfei.dong@mediatek.com>
+ S:	Supported
+ F:	Documentation/devicetree/bindings/media/mediatek,vcodec*.yaml
+ F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
+-- 
+2.25.1
+
 
