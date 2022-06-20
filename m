@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 999BEC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 12:11:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A1EC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 12:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8SmfUFzTIt02c+IJ4zd58vhfGUOu2w2PAUhJnv+o5Ww=; b=CCif7mIedaPFhGez/IgFXmWVBi
-	dxDvylRnuqAsFU1BgyTA5E4GWR4q0lZ9O4wSAQs7m4E8AJRYXYyuWaPFZxrLtJ+dQmkNU0Gw/zK/v
-	J1ZYR0jZiICABW23x58QN/a90GEfTnON8i8ngvgfADxPCQa25E2fvO7GIQ5xbnaZ4ESdBa41DP4A6
-	Edy+4G/Hb5ORYgJqFnizZk1coJ7q+5eBNxedYxCBjDhraDThNyMH4Upt/ET2FP4sXCa8a7QPfbpGB
-	X0hJbsRGAeC75i6JHMGg4Ed1jyk+DTcGZOfCVbBHhqw24HY1Y/zp8TbvTHHPLIdHamrnvV0hv2HGZ
-	ywivOM9Q==;
+	bh=4mtANhVFYWvaalRstbkc+GMlG+bA+RdTN0YP8GLGrsE=; b=WHaDzNlauDrAzrGbNU+Gtya5uJ
+	ECZViH+DgBsy7ZBEDmalUOVH54Y25RjZ6Hk1ChEdrSa0WQDic6Ie88CRHLRIjJvVFMppWIKgCf3PM
+	3nn7xBIXrkhVMT4iTC8khhHG2o7Yb32tLlDJxHZwuynF1xq6OUTH7V0XXgoEFLr65rdBCgA5a5G0d
+	frzkEdYF0fAG4sHx+Bt7tp56CrdnULftT/8S9vEp8ORULqWjosuPiBdysRgkNqGkZi/n512HCMSRF
+	JN4ww0xhF14wocdqqV44FdJykJQ7lBFvydC+TmP224j5Q6X/u7a8MsUToFSNi5NhBVRGLVrPJAHfI
+	N/rqUOhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3GFt-000Ip0-TB; Mon, 20 Jun 2022 12:11:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o3GFw-000IqB-Gr; Mon, 20 Jun 2022 12:11:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3GEo-000IBH-WB; Mon, 20 Jun 2022 12:10:41 +0000
-X-UUID: 1174369fcd7645ebb815d69696bfb47b-20220620
+	id 1o3GEq-000ICb-5m; Mon, 20 Jun 2022 12:10:42 +0000
+X-UUID: c1433cb1bd9048eab3f09af4b7fbfef6-20220620
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:d80bda26-1ed7-45e0-96b9-d76ccfd2b766,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:b14ad71,CLOUDID:8d37333d-9948-4b2a-a784-d8a6c1086106,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:5,IP:nil,URL:0,File:nil,
-	QS:nil,BEC:nil,COL:0
-X-UUID: 1174369fcd7645ebb815d69696bfb47b-20220620
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.6,REQID:6860585f-73d5-4841-add3-d9fd31f13b9d,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:942703ea-f7af-4e69-92ee-0fd74a0c286c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: c1433cb1bd9048eab3f09af4b7fbfef6-20220620
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 573699531; Mon, 20 Jun 2022 05:10:33 -0700
+	with ESMTP id 2078810536; Mon, 20 Jun 2022 05:10:34 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jun 2022 05:10:32 -0700
+ 15.0.1497.2; Mon, 20 Jun 2022 05:10:33 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -58,9 +58,9 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v12 02/14] drm/mediatek: dpi: Add support for quantization range
-Date: Mon, 20 Jun 2022 20:10:16 +0800
-Message-ID: <20220620121028.29234-3-rex-bc.chen@mediatek.com>
+Subject: [PATCH v12 06/14] drm/mediatek: dpi: move hvsize_mask to SoC config
+Date: Mon, 20 Jun 2022 20:10:20 +0800
+Message-ID: <20220620121028.29234-7-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220620121028.29234-1-rex-bc.chen@mediatek.com>
 References: <20220620121028.29234-1-rex-bc.chen@mediatek.com>
@@ -68,8 +68,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_051039_122065_364F8AE4 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20220620_051040_426647_969F66DF 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,85 +84,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For RGB colorimetry, CTA-861 support both limited and full range data
-when receiving video with RGB color space.
-We use drm_default_rgb_quant_range() to determine the correct setting.
+From: Guillaume Ranquet <granquet@baylibre.com>
 
+Add flexibility by moving the hvsize mask to SoC specific config.
+
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 34 ++++++++++++++++++------------
- 1 file changed, 21 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index e61cd67b978f..21ad5623b568 100644
+index da3859dffd1d..f9c7c258d2af 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -235,16 +235,30 @@ static void mtk_dpi_config_fb_size(struct mtk_dpi *dpi, u32 width, u32 height)
- 	mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE, VSIZE_MASK);
+@@ -129,6 +129,8 @@ struct mtk_dpi_conf {
+ 	bool swap_input_support;
+ 	/* Mask used for HWIDTH, HPORCH, VSYNC_WIDTH and VSYNC_PORCH (no shift) */
+ 	u32 dimension_mask;
++	/* HSIZE and VSIZE mask (no shift) */
++	u32 hvsize_mask;
+ };
+ 
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+@@ -242,8 +244,10 @@ static void mtk_dpi_config_interface(struct mtk_dpi *dpi, bool inter)
+ 
+ static void mtk_dpi_config_fb_size(struct mtk_dpi *dpi, u32 width, u32 height)
+ {
+-	mtk_dpi_mask(dpi, DPI_SIZE, width << HSIZE, HSIZE_MASK);
+-	mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE, VSIZE_MASK);
++	mtk_dpi_mask(dpi, DPI_SIZE, width << HSIZE,
++		     dpi->conf->hvsize_mask << HSIZE);
++	mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE,
++		     dpi->conf->hvsize_mask << VSIZE);
  }
  
--static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi,
--					 struct mtk_dpi_yc_limit *limit)
-+static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi)
- {
--	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_bottom << Y_LIMINT_BOT,
-+	struct mtk_dpi_yc_limit limit;
-+
-+	if (drm_default_rgb_quant_range(&dpi->mode) ==
-+	    HDMI_QUANTIZATION_RANGE_LIMITED) {
-+		limit.y_bottom = 0x10;
-+		limit.y_top = 0xfe0;
-+		limit.c_bottom = 0x10;
-+		limit.c_top = 0xfe0;
-+	} else {
-+		limit.y_bottom = 0;
-+		limit.y_top = 0xfff;
-+		limit.c_bottom = 0;
-+		limit.c_top = 0xfff;
-+	}
-+
-+	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_bottom << Y_LIMINT_BOT,
- 		     Y_LIMINT_BOT_MASK);
--	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_top << Y_LIMINT_TOP,
-+	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_top << Y_LIMINT_TOP,
- 		     Y_LIMINT_TOP_MASK);
--	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_bottom << C_LIMIT_BOT,
-+	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_bottom << C_LIMIT_BOT,
- 		     C_LIMIT_BOT_MASK);
--	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_top << C_LIMIT_TOP,
-+	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_top << C_LIMIT_TOP,
- 		     C_LIMIT_TOP_MASK);
- }
+ static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi)
+@@ -824,6 +828,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
+ 	.is_ck_de_pol = true,
+ 	.swap_input_support = true,
+ 	.dimension_mask = HPW_MASK,
++	.hvsize_mask = HSIZE_MASK,
+ };
  
-@@ -449,7 +463,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
- static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 				    struct drm_display_mode *mode)
- {
--	struct mtk_dpi_yc_limit limit;
- 	struct mtk_dpi_polarities dpi_pol;
- 	struct mtk_dpi_sync_param hsync;
- 	struct mtk_dpi_sync_param vsync_lodd = { 0 };
-@@ -484,11 +497,6 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
- 		pll_rate, vm.pixelclock);
+ static const struct mtk_dpi_conf mt2701_conf = {
+@@ -836,6 +841,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
+ 	.is_ck_de_pol = true,
+ 	.swap_input_support = true,
+ 	.dimension_mask = HPW_MASK,
++	.hvsize_mask = HSIZE_MASK,
+ };
  
--	limit.c_bottom = 0x0010;
--	limit.c_top = 0x0FE0;
--	limit.y_bottom = 0x0010;
--	limit.y_top = 0x0FE0;
--
- 	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
- 	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
- 	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
-@@ -536,7 +544,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	else
- 		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive);
+ static const struct mtk_dpi_conf mt8183_conf = {
+@@ -847,6 +853,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
+ 	.is_ck_de_pol = true,
+ 	.swap_input_support = true,
+ 	.dimension_mask = HPW_MASK,
++	.hvsize_mask = HSIZE_MASK,
+ };
  
--	mtk_dpi_config_channel_limit(dpi, &limit);
-+	mtk_dpi_config_channel_limit(dpi);
- 	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
- 	mtk_dpi_config_channel_swap(dpi, dpi->channel_swap);
- 	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
+ static const struct mtk_dpi_conf mt8192_conf = {
+@@ -858,6 +865,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
+ 	.is_ck_de_pol = true,
+ 	.swap_input_support = true,
+ 	.dimension_mask = HPW_MASK,
++	.hvsize_mask = HSIZE_MASK,
+ };
+ 
+ static int mtk_dpi_probe(struct platform_device *pdev)
 -- 
 2.18.0
 
