@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96B93C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 13:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 520D5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 14:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+r2FhS3eqCLunmApmW+5P1UeeiguuExUqm//eLKZET8=; b=BL5Kya0/Xj0qlyS0QfWOeqHInM
-	hudjz6mixZm2HIfFtoG9c1H4O9eE/5PluuENlOSw8tveBp3eagOSmZu37O5+DVRMk0TuMstnoGPfI
-	FlHPEgTuCAS0cnvxBiZ5BchyaDUS/daoDBdv1jd+gJQ5RQfm0k3X1xhwu/o72pt2J83rTD9bY12Ld
-	vaI48bPIEqnhOflUgs7Yywg26BvKT+VsX56TTPVSYqVSt1bgKf2c3eiNO4FOfZXzuslFSvYv6TrEJ
-	0WcSFcxFG06ruBgnDH90j9z1xNK72iM4cO13R666e2eV8Z1nBkwMVmIh+fdsW8onZtl2tZLQOxAX5
-	xmtZu/fg==;
+	bh=wQqA3RHlmqC4wh5/JEeyEKSsMFTNG/ptCy+X6tAb/JY=; b=PqoZZLO+7b3SNJZxL/jjgr5Vbf
+	ctaPO/okQzuKFJaMFswjyVg1Im7Eq0c4FGp3aJ8xjUMIMfw1MWNKtp+iNGoaIWpUFQoUlRDmOmLRv
+	P9XfXUzTCxxY+dnA8PegLO8fd4qoqJldOCUhCkMajbhPUtLKGqgW9Ej159wtOCkhh4ekmiAptlCmV
+	fUpwq7O2L09kLoO69SzMdBmY4llgkFkhC3qzaWmUez9IBIRog9Tvv4Q3uqMsGicwWDKCMqUG4hEc4
+	6k1alb04Roi6qW8f8I3aAt7HBDEyilfmAadd5qjNh4IR6OQkpqvt0AG9RobPHXJMSnlvU7PsllIoL
+	R9wOmgaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3HYY-000tY6-Ju; Mon, 20 Jun 2022 13:35:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o3IHE-0013Qr-B1; Mon, 20 Jun 2022 14:21:16 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3HYT-000tSk-00; Mon, 20 Jun 2022 13:35:04 +0000
-X-UUID: 2d150e638f534c39aad2ed520737dfff-20220620
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=+r2FhS3eqCLunmApmW+5P1UeeiguuExUqm//eLKZET8=;
-	b=su2C1iN9VzfXavhO1DFguPIZOkobihocG8hLkILUC44UQac6m9iTayuLUtGnx1Rdrsd2j/9ZYnLG0m20z1tkM1ZHz9vaXGHp/yB5DNfmK4AWdVvZSukPYoXCQOX7F4awe/G8hqlMvDYKnTf+fHE1EYtAid7wSvIxjEH0RQnB780=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:c0abd42d-29da-4d7e-b177-10dbb3231c54,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:be3604ea-f7af-4e69-92ee-0fd74a0c286c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,IP:nil,URL:1,File:ni
-	l,QS:nil,BEC:nil,COL:0
-X-UUID: 2d150e638f534c39aad2ed520737dfff-20220620
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 813301834; Mon, 20 Jun 2022 06:34:51 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jun 2022 06:31:55 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 20 Jun 2022 21:31:53 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 20 Jun 2022 21:31:53 +0800
-Message-ID: <b4574843defba94e2abfaac29a9ab7be2555c5ec.camel@mediatek.com>
-Subject: Re: FW: [PATCH 1/7] dt-bindings: display: mediatek: dpi: add
- power-domains property
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: <fparent@baylibre.com>, <matthias.bgg@gmail.com>, <jitao.shi@mediatek.com>
-CC: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<allen-kh.cheng@mediatek.com>
-Date: Mon, 20 Jun 2022 21:32:29 +0800
-In-Reply-To: <PS1PR03MB5084CE11996065F4DD6959F9A6B09@PS1PR03MB5084.apcprd03.prod.outlook.com>
-References: <20220530201436.902505-1-fparent@baylibre.com>
-	 <1c53c2c73875cf565b819f67267d0e725d49f3c2.camel@mediatek.com>
-	 <PS1PR03MB5084CE11996065F4DD6959F9A6B09@PS1PR03MB5084.apcprd03.prod.outlook.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o3IHC-0013Q7-7X
+	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 14:21:15 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 997DD660159D;
+	Mon, 20 Jun 2022 15:21:11 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655734871;
+	bh=1IzybNISo/qb6ajNmb/E3/HYWTJnWgW68XVLtKxjpQw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=R+Zk4qEZVjVF10Y0lFJzWvE1/eed+MdfL/c3tDFkgtrZX38tOIjJd1c0QMXwToIaC
+	 uE1XLJ/nHZd95PXP8CzGxccUfszQWWoSnM8RnbHYc+x34QabPELyrevasvliIFGch8
+	 GNHwPT+f3LiQQGOe5OnWPyapchfVR2QY+f7gSg4xIJKP6T+cwiMlQP2dy+QOtLKAxO
+	 FbN6trgIEWvQtDucS4hATU3oPsPFqd8uNlExwFbgJ7wTmuU66tvFPdPObEu29ocKe1
+	 m+ehzep8YZlO3DjSQuuy/eTBih8ycSU30gOfHx2F5a90Ksxc+ML7zRRlIXKsEljAwE
+	 NufvhcuMZ4xmA==
+Message-ID: <25da54a7-3fc1-39c2-ed93-0ad72ce54e11@collabora.com>
+Date: Mon, 20 Jun 2022 16:21:08 +0200
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] PM / devfreq: mediatek: Fix possible dereference of null
+ pointer
+Content-Language: en-US
+To: matthias.bgg@kernel.org, dan.carpenter@oracle.com,
+ johnson.wang@mediatek.com
+Cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20220617133330.6510-1-matthias.bgg@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220617133330.6510-1-matthias.bgg@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_063501_271112_B0AFFF52 
-X-CRM114-Status: GOOD (  23.38  )
+X-CRM114-CacheID: sfid-20220620_072114_448198_10887753 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,61 +76,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBMaW51eC1tZWRpYXRlayA8bGlu
-dXgtbWVkaWF0ZWstYm91bmNlc0BsaXN0cy5pbmZyYWRlYWQub3JnPiBPbg0KPiBCZWhhbGYgT2Yg
-Q0sgSHUNCj4gU2VudDogRnJpZGF5LCBKdW5lIDE3LCAyMDIyIDE6MzEgUE0NCj4gVG86IEZhYmll
-biBQYXJlbnQgPGZwYXJlbnRAYmF5bGlicmUuY29tPjsgbWF0dGhpYXMuYmdnQGdtYWlsLmNvbTsN
-Cj4gSml0YW8gU2hpICjnn7PorrDmtpspIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPjsgDQo+IGty
-enlzenRvZi5rb3psb3dza2krZHRAbGluYXJvLm9yZzsgcm9iaCtkdEBrZXJuZWwub3JnDQo+IENj
-OiBjaHVua3VhbmcuaHVAa2VybmVsLm9yZzsgcC56YWJlbEBwZW5ndXRyb25peC5kZTsgYWlybGll
-ZEBsaW51eC5pZQ0KPiA7IGRhbmllbEBmZndsbC5jaDsgZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZzsgDQo+IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmc7IGRldmljZXRy
-ZWVAdmdlci5rZXJuZWwub3JnOyANCj4gbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzsgbGlu
-dXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0gg
-MS83XSBkdC1iaW5kaW5nczogZGlzcGxheTogbWVkaWF0ZWs6IGRwaTogYWRkDQo+IHBvd2VyLWRv
-bWFpbnMgcHJvcGVydHkNCj4gDQo+IEhpLCBGYWJpZW46DQo+IA0KPiBPbiBNb24sIDIwMjItMDUt
-MzAgYXQgMjI6MTQgKzAyMDAsIEZhYmllbiBQYXJlbnQgd3JvdGU6DQo+ID4gRFBJIGlzIHBhcnQg
-b2YgdGhlIGRpc3BsYXkgLyBtdWx0aW1lZGlhIGJsb2NrIGluIE1lZGlhVGVrIFNvQ3MsDQo+ID4g
-YW5kIA0KPiA+IGFsd2F5cyBoYXZlIGEgcG93ZXItZG9tYWluIChhdCBsZWFzdCBpbiB0aGUgdXBz
-dHJlYW0gZGV2aWNlLXRyZWVzKS4NCj4gPiBBZGQgdGhlIHBvd2VyLWRvbWFpbnMgcHJvcGVydHkg
-dG8gdGhlIGJpbmRpbmcgZG9jdW1lbnRhdGlvbi4NCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBG
-YWJpZW4gUGFyZW50IDxmcGFyZW50QGJheWxpYnJlLmNvbT4NCj4gPiAtLS0NCj4gPiAgLi4uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkcGkueWFtbCAgfCA2
-DQo+ID4gKysrKysrDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKykNCj4gPiAN
-Cj4gPiBkaWZmIC0tZ2l0DQo+ID4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-ZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkcGkueQ0KPiA+IGFtDQo+ID4gbA0KPiA+IGIvRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWss
-ZHBpLnkNCj4gPiBhbQ0KPiA+IGwNCj4gPiBpbmRleCA3N2VlMWI5MjM5OTEuLmNhZjRjODg3MDhm
-NCAxMDA2NDQNCj4gPiAtLS0NCj4gPiBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRwaS55DQo+ID4gYW0NCj4gPiBsDQo+ID4gKysr
-DQo+ID4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRl
-ay9tZWRpYXRlayxkcGkueQ0KPiA+IGFtDQo+ID4gbA0KPiA+IEBAIC01Nyw2ICs1Nyw5IEBAIHBy
-b3BlcnRpZXM6DQo+ID4gICAgICAgIE91dHB1dCBwb3J0IG5vZGUuIFRoaXMgcG9ydCBzaG91bGQg
-YmUgY29ubmVjdGVkIHRvIHRoZQ0KPiA+IGlucHV0IA0KPiA+IHBvcnQgb2YgYW4NCj4gPiAgICAg
-ICAgYXR0YWNoZWQgSERNSSBvciBMVkRTIGVuY29kZXIgY2hpcC4NCj4gPiAgDQo+ID4gKyAgcG93
-ZXItZG9tYWluczoNCj4gPiArICAgIG1heEl0ZW1zOiAxDQo+ID4gKw0KPiA+ICByZXF1aXJlZDoN
-Cj4gPiAgICAtIGNvbXBhdGlibGUNCj4gPiAgICAtIHJlZw0KPiA+IEBAIC02NCw2ICs2Nyw3IEBA
-IHJlcXVpcmVkOg0KPiA+ICAgIC0gY2xvY2tzDQo+ID4gICAgLSBjbG9jay1uYW1lcw0KPiA+ICAg
-IC0gcG9ydA0KPiA+ICsgIC0gcG93ZXItZG9tYWlucw0KPiA+ICANCj4gPiAgYWRkaXRpb25hbFBy
-b3BlcnRpZXM6IGZhbHNlDQo+ID4gIA0KPiA+IEBAIC03MSwxMSArNzUsMTMgQEAgZXhhbXBsZXM6
-DQo+ID4gICAgLSB8DQo+ID4gICAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50ZXJydXB0LWNv
-bnRyb2xsZXIvYXJtLWdpYy5oPg0KPiA+ICAgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2Nsb2Nr
-L210ODE3My1jbGsuaD4NCj4gPiArICAgICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9wb3dlci9tdDgx
-ODMtcG93ZXIuaD4NCj4gDQo+IFdoeSBkbyB5b3UgaW5jbHVkZSBtdDgxODMgcG93ZXIgaGVhZGVy
-IGZpbGUgZm9yIG10ODE3MyBkcGkgbm9kZT8NCj4gDQo+IFJlZ2FyZHMsDQo+IENLDQo+IA0KPiA+
-ICANCj4gPiAgICAgIGRwaTA6IGRwaUAxNDAxZDAwMCB7DQo+ID4gICAgICAgICAgY29tcGF0aWJs
-ZSA9ICJtZWRpYXRlayxtdDgxNzMtZHBpIjsNCj4gPiAgICAgICAgICByZWcgPSA8MHgxNDAxZDAw
-MCAweDEwMDA+Ow0KPiA+ICAgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxOTQgSVJRX1RZ
-UEVfTEVWRUxfTE9XPjsNCj4gPiArICAgICAgICBwb3dlci1kb21haW5zID0gPCZzcG0gTVQ4MTcz
-X1BPV0VSX0RPTUFJTl9NTT47DQo+ID4gICAgICAgICAgY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1f
-RFBJX1BJWEVMPiwNCj4gPiAgICAgICAgICAgICAgIDwmbW1zeXMgQ0xLX01NX0RQSV9FTkdJTkU+
-LA0KPiA+ICAgICAgICAgICAgICAgPCZhcG1peGVkc3lzIENMS19BUE1JWEVEX1RWRFBMTD47DQo+
-IA0KPiANCg0KSGkgZnBhcmVudDoNCg0KSSB0aGluayBDSydzIHN1Z2dlc3Rpb24sIHByb2JhYmx5
-IGJlY2F1c2UgeW91IGluY2x1ZGVkIHRoZSB3cm9uZyBoZWFkZXINCmZpbGUgZm9yIHBvd2VyLg0K
-QmVjYXVzZSBJIGRpZCBub3QgZmluZCB0aGUgZGVmaW5pdGlvbiBvZiBNVDgxNzNfUE9XRVJfRE9N
-QUlOX01NIGluIHRoZQ0KcGF0aCBvZiBkdC1iaW5kaW5ncy9wb3dlci9tdDgxODMtcG93ZXIuaCwg
-aXQgd2FzIGRlZmluZWQgaW4gZHQtDQpiaW5kaW5ncy9wb3dlci9tdDgxNzMtcG93ZXIuaC4NClBs
-ZWFzZSBkaXNjdXNzIGlmIHlvdSBoYXZlIGRpZmZlcmVudCBvcGluaW9ucy4NCg0KQmVzdCBSZWdh
-cmRzIQ0KeGlubGVpDQo=
+Il 17/06/22 15:33, matthias.bgg@kernel.org ha scritto:
+> From: Matthias Brugger <matthias.bgg@gmail.com>
+> 
+> We dereference the driver data before checking of it's valid.
+> This patch fixes this, by accessing the PLL data struct after cheching
+> the pointer
+> 
+
+Hello Matthias,
+
+honestly, I don't think that this commit is right: mtk_ccifreq_target() is the
+devfreq_dev_profile's .target() callback!
+
+Checking mtk_ccifreq_probe(), we are setting drvdata long before adding the
+devfreq device so, actually, it's impossible for dev_get_drvdata(dev) to return
+NULL, or whatever invalid pointer.
+
+This means that the right thing to do in mtk_ccifreq_target() is to simply remove
+the `drv` NULL check, as this can never happen! :-)
+
+Cheers,
+Angelo
+
+> Fixes: 07dc787be231 ("Add linux-next specific files for 20220617")
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>   drivers/devfreq/mtk-cci-devfreq.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
+> index 71abb3fbd042..77522f16c878 100644
+> --- a/drivers/devfreq/mtk-cci-devfreq.c
+> +++ b/drivers/devfreq/mtk-cci-devfreq.c
+> @@ -127,7 +127,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
+>   			      u32 flags)
+>   {
+>   	struct mtk_ccifreq_drv *drv = dev_get_drvdata(dev);
+> -	struct clk *cci_pll = clk_get_parent(drv->cci_clk);
+> +	struct clk *cci_pll;
+>   	struct dev_pm_opp *opp;
+>   	unsigned long opp_rate;
+>   	int voltage, pre_voltage, inter_voltage, target_voltage, ret;
+> @@ -138,6 +138,7 @@ static int mtk_ccifreq_target(struct device *dev, unsigned long *freq,
+>   	if (drv->pre_freq == *freq)
+>   		return 0;
+>   
+> +	cci_pll = clk_get_parent(drv->cci_clk);
+>   	inter_voltage = drv->inter_voltage;
+>   
+>   	opp_rate = *freq;
+> 
+
 
 
