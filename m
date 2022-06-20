@@ -4,85 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BEA9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 10:11:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91971C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 10:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WUXDVPgO9ryfMeHmYe6I7BW7Did8T/4d5YvyHueStJ8=; b=lIyWGd9hEqYRkn0W64kdOWwYaf
-	125rUpYQdXUXRlkDB/n0/VGeefBnCH1ig22EV/2uG2hbgBHSB7h0WdLGpEcQT5Fceb+TXRJCQxfFl
-	ITr3O986JxZw6gh64JWXvdZ6H5cYrCgY1zuryhweamSsF1sry/uS9d4eJnw4aKjT0f2dR6gvQN7gK
-	r4igNezHqg24NFGoPWVK00dUX/nBwMGP/z1F+QmF5suhhuIvMn+8XPNjAN/7BgeId/MAL4lDE1m4g
-	xdYhzW3lDGL6LdiGMMQ2WIi+153X72fw1caynh/v23+JWm49WVmG9+0+gXy4RYcFoZJ3XUgAVkqrT
-	bIx/kYOw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yq8Rg+jYi6EHGS9ySrHVIP9Er8qQvO4+7q3rAcXlAS4=; b=u3VMQfE0dYfk1F+azLjUvRZYv7
+	TL8umh+t8OFJ483+Me1fACcALyQ/1UFRwZAwEzkzFsxXQFH39KCBsa9uvdzeqZjD/FzzRFRL2Jy1Z
+	dBAPs/vgvoAM0sKvPKcJueK4pXqlpaaXEeJ9oBf6eg5DZo77VFwnlNLElvTXxHyCvY65ZpQfDLuWG
+	UlLPdumVT5QNmjr0fZvPyTi5mI2LXIcHYAHw1vYKYZrhWRtozq7ryyNq0+i+pPZMrrRBMMy5bv67U
+	JCVEYUl/TkNTXs0vKHBUvV5zznITHbp0RP+kpEzQ6kt73V1b5Djx2Qxzv+njZxf/eg/GXNK+zEYTk
+	h/QYtyQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3ENX-00HPP5-VE; Mon, 20 Jun 2022 10:11:31 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3ENK-00HPLG-S7; Mon, 20 Jun 2022 10:11:22 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C40DE113E;
-	Mon, 20 Jun 2022 03:11:10 -0700 (PDT)
-Received: from [10.57.84.159] (unknown [10.57.84.159])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 162D83F7D7;
-	Mon, 20 Jun 2022 03:11:05 -0700 (PDT)
-Message-ID: <55e352d5-3fea-7e46-0530-b41d323b6fcf@arm.com>
-Date: Mon, 20 Jun 2022 11:11:01 +0100
+	id 1o3Ear-00HR2B-UL; Mon, 20 Jun 2022 10:25:17 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o3Eag-00HQzg-MP; Mon, 20 Jun 2022 10:25:08 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3AC2E660166D;
+	Mon, 20 Jun 2022 11:24:58 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655720698;
+	bh=2y7HCdJit3cXRA/sDODSECzq5lWWkGtctbxdIAXtr5U=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JRR5D1caw1ZcwxMgpxW97vZsMeHafj7w8aot2aPajs1M7TM3xcsOef6iQPvE+dsl0
+	 CeOy9FUfLZwMlTaks+kXcjbamsg0eFmqKSLym6WD/WrRHFoB9Stv8IRMM88rc/PoFY
+	 /fLJF/KT2rQInCoc7Y5Pp55JG174wzdiJRV3tG3aU1MPnyrNzsHDnKA1JeWsQbAJrm
+	 89yG32Gu7SICP9amZOPiE5Wv/Axa5B7St5ogalkjH6SoD9D8IVO5A7n2oOsa4o4vp1
+	 2VXOvCkoYLPMwjNsQY+aR6vkzfhh8lhIiJOdr4RCcNbYCoYy+vNAvPFT7gs65Yr1dA
+	 Ts5btv9Tp7fow==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: fparent@baylibre.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] soc: mediatek: mutex: Use DDP_COMPONENT_DITHER0 mod index for MT8365
+Date: Mon, 20 Jun 2022 12:24:54 +0200
+Message-Id: <20220620102454.131417-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 5/5] vfio/iommu_type1: Simplify group attachment
-Content-Language: en-GB
-To: "Tian, Kevin" <kevin.tian@intel.com>, Nicolin Chen <nicolinc@nvidia.com>
-Cc: "cohuck@redhat.com" <cohuck@redhat.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
- "will@kernel.org" <will@kernel.org>,
- "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "saiprakash.ranjan@codeaurora.org" <saiprakash.ranjan@codeaurora.org>,
- "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
- "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "jgg@nvidia.com" <jgg@nvidia.com>,
- "yangyingliang@huawei.com" <yangyingliang@huawei.com>,
- "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
- "gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "isaacm@codeaurora.org" <isaacm@codeaurora.org>,
- "dwmw2@infradead.org" <dwmw2@infradead.org>,
- "marcan@marcan.st" <marcan@marcan.st>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-6-nicolinc@nvidia.com>
- <BL1PR11MB52710E360B50DDA99C9A65D18CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
- <YquxcH2S1fM+llOf@Asurada-Nvidia>
- <BN9PR11MB5276C7BFA77C2C176491B56A8CAF9@BN9PR11MB5276.namprd11.prod.outlook.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <BN9PR11MB5276C7BFA77C2C176491B56A8CAF9@BN9PR11MB5276.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_031119_050284_E04E0647 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220620_032506_924022_10329C18 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,37 +71,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-17 03:53, Tian, Kevin wrote:
->> From: Nicolin Chen <nicolinc@nvidia.com>
->> Sent: Friday, June 17, 2022 6:41 AM
->>
->>> ...
->>>> -     if (resv_msi) {
->>>> +     if (resv_msi && !domain->msi_cookie) {
->>>>                ret = iommu_get_msi_cookie(domain->domain,
->>>> resv_msi_base);
->>>>                if (ret && ret != -ENODEV)
->>>>                        goto out_detach;
->>>> +             domain->msi_cookie = true;
->>>>        }
->>>
->>> why not moving to alloc_attach_domain() then no need for the new
->>> domain field? It's required only when a new domain is allocated.
->>
->> When reusing an existing domain that doesn't have an msi_cookie,
->> we can do iommu_get_msi_cookie() if resv_msi is found. So it is
->> not limited to a new domain.
-> 
-> Looks msi_cookie requirement is per platform (currently only
-> for smmu. see arm_smmu_get_resv_regions()). If there is
-> no mixed case then above check is not required.
-> 
-> But let's hear whether Robin has a different thought here.
+In commit
+4e8988c634a1 ("soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for mt8195 vdosys0")
+the enum mtk_ddp_comp_id was modified to add an index number to the
+DITHER component because some new SoCs have multiple dither blocks.
 
-Yes, the cookie should logically be tied to the lifetime of the domain 
-itself. In the relevant context, "an existing domain that doesn't have 
-an msi_cookie" should never exist.
+As a result, all of the mutex mod arrays have been changed to use the
+new definition instead of the old one (even if that's retained): for
+consistency purposes, follow the same trend on the newly introduced
+MT8365 mutex mod array.
 
-Thanks,
-Robin.
+This commit brings no functional changes.
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index fa8e0ba38803..2fd8318c3bdc 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -358,7 +358,7 @@ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
+ 	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
+ 	[DDP_COMPONENT_COLOR0] = MT8365_MUTEX_MOD_DISP_COLOR0,
+-	[DDP_COMPONENT_DITHER] = MT8365_MUTEX_MOD_DISP_DITHER,
++	[DDP_COMPONENT_DITHER0] = MT8365_MUTEX_MOD_DISP_DITHER,
+ 	[DDP_COMPONENT_DPI0] = MT8365_MUTEX_MOD_DISP_DPI0,
+ 	[DDP_COMPONENT_DSI0] = MT8365_MUTEX_MOD_DISP_DSI0,
+ 	[DDP_COMPONENT_GAMMA] = MT8365_MUTEX_MOD_DISP_GAMMA,
+-- 
+2.35.1
+
 
