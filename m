@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB162C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 09:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31956C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 09:29:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9RJbb2Y28OHdUhKh4P7MBQDON1kdgjTC/GtHAnm9aPY=; b=aoRemvHfOVohIdYhDN57w3pMgI
-	P7DD11M17DKTp8+V2EyMZO/MleNo74ulIeW175177Mcetap/ehNnR5WSRCNINhn0lQBbYQGbyvNYK
-	VLODHT0C1/HiFlSAWXLmqeh6A0KDKXG3764U/W4n9mVAZjkLK/Y+tN2BXLc1Gsx1pAiNctw2qKAeV
-	zWz01/q7GXoajxX4CoStaa0uyNrKEGsKgu+BiqdP7RN+M+UvHK2+X/7jTf9vGC+fs3GOxIvpiJ1Qg
-	CMCbY2yVlFo8oj0k5kVFqNkS484IFk6MJ/42lJy9PLWIKtkeN4C+t24M0/9/GESvcfA77Sf2DnX76
-	VokEoOKA==;
+	bh=jGCSTU95MfpAEmQfFhWKxuClQ7cCEGwQgu1eflbzcpA=; b=GV7lnk2kkGWpTylDH/eSleYc1p
+	1PVQc45P33zzre+M6aiIoByMkoIf/OtQVUy9z9K1VBIilxyZ8fy7+0mCxghUJnhkShgCQZW8clCJb
+	OuvYc/p+guEpcrQx/RPHyBj7Ulf6etXwWgqmT6CgPM3qvzu/xZrtTHiLtQttFASPKUULIN2/zolBF
+	2JYaLFXeElSyca19ksWwj+0IhBVHe93+p2nVP5EqcHwmO14DjL6mlR5nCk+qp8O8i7O7s2Q/y+vDA
+	vZ0zB/mAq3zHRF/u7YKpvnV6oHjcuiPK+m/mqeYykPoahZH0vOxUtpW64+MW1dQasUxBPSux37NSQ
+	e9zGTHLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3DgN-00HAd3-50; Mon, 20 Jun 2022 09:26:55 +0000
+	id 1o3Dil-00HBXF-UR; Mon, 20 Jun 2022 09:29:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Dfw-00HAQX-E4; Mon, 20 Jun 2022 09:26:32 +0000
-X-UUID: 9b18f1feb7f24efc9df5ef53f8fd6076-20220620
+	id 1o3Dfz-00HAPa-Q6; Mon, 20 Jun 2022 09:26:34 +0000
+X-UUID: 51d47cebe39244fcba1a7733d5d81620-20220620
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:f0c42fbe-e05e-4957-a38b-835d250be533,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:20
-X-CID-META: VersionHash:b14ad71,CLOUDID:2955882d-1756-4fa3-be7f-474a6e4be921,C
+X-CID-O-INFO: VERSION:1.1.6,REQID:681b612a-d803-4d20-8e1b-6a6d49550b8b,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:2655882d-1756-4fa3-be7f-474a6e4be921,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 9b18f1feb7f24efc9df5ef53f8fd6076-20220620
+X-UUID: 51d47cebe39244fcba1a7733d5d81620-20220620
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
 	(envelope-from <nancy.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 711169832; Mon, 20 Jun 2022 02:26:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 2048885205; Mon, 20 Jun 2022 02:26:22 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Jun 2022 02:19:34 -0700
+ 15.0.1497.2; Mon, 20 Jun 2022 02:19:39 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 20 Jun 2022 17:19:32 +0800
+ Mon, 20 Jun 2022 17:19:33 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 20 Jun 2022 17:19:32 +0800
+ 15.2.792.3 via Frontend Transport; Mon, 20 Jun 2022 17:19:33 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -61,9 +61,9 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
 	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
 	<singo.chang@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v23 01/14] dt-bindings: mediatek: add vdosys1 RDMA definition for mt8195
-Date: Mon, 20 Jun 2022 17:19:17 +0800
-Message-ID: <20220620091930.27797-2-nancy.lin@mediatek.com>
+Subject: [PATCH v23 11/14] drm/mediatek: add dma dev get function
+Date: Mon, 20 Jun 2022 17:19:27 +0800
+Message-ID: <20220620091930.27797-12-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220620091930.27797-1-nancy.lin@mediatek.com>
 References: <20220620091930.27797-1-nancy.lin@mediatek.com>
@@ -71,8 +71,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_022628_518782_836E2AB3 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20220620_022631_897757_B567CE0B 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,111 +87,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add vdosys1 RDMA definition.
+This is a preparation for adding support for the ovl_adaptor sub driver
+Ovl_adaptor is a DRM sub driver, which doesn't have dma dev. Add
+dma_dev_get function for getting representative dma dev in ovl_adaptor.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: AngeloGioachino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- .../display/mediatek/mediatek,mdp-rdma.yaml   | 88 +++++++++++++++++++
- 1 file changed, 88 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 15 +++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  8 ++++++++
+ 3 files changed, 24 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
-new file mode 100644
-index 000000000000..dd12e2ff685c
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-rdma.yaml
-@@ -0,0 +1,88 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 42cc7052b050..5251bf070e6e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -59,6 +59,7 @@ struct mtk_drm_crtc {
+ #endif
+ 
+ 	struct device			*mmsys_dev;
++	struct device			*dma_dev;
+ 	struct mtk_mutex		*mutex;
+ 	unsigned int			ddp_comp_nr;
+ 	struct mtk_ddp_comp		**ddp_comp;
+@@ -866,6 +867,13 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 	return 0;
+ }
+ 
++struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
++{
++	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
 +
-+title: MediaTek MDP RDMA
++	return mtk_crtc->dma_dev;
++}
 +
-+maintainers:
-+  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-+  - Philipp Zabel <p.zabel@pengutronix.de>
+ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			const enum mtk_ddp_comp_id *path, unsigned int path_len)
+ {
+@@ -954,6 +962,13 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			return ret;
+ 	}
+ 
++	/*
++	 * Default to use the first component as the dma dev.
++	 * In the case of ovl_adaptor sub driver, it needs to use the
++	 * dma_dev_get function to get representative dma dev.
++	 */
++	mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(&priv->ddp_comp[path[0]]);
 +
-+description:
-+  The MediaTek MDP RDMA stands for Read Direct Memory Access.
-+  It provides real time data to the back-end panel driver, such as DSI,
-+  DPI and DP_INTF.
-+  It contains one line buffer to store the sufficient pixel data.
-+  RDMA device node must be siblings to the central MMSYS_CONFIG node.
-+  For a description of the MMSYS_CONFIG binding, see
-+  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
+ 	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
+ 	if (ret < 0)
+ 		return ret;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+index cb9a36c48d4f..f5a6e80c5265 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+@@ -22,5 +22,6 @@ int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			     struct mtk_plane_state *state);
+ void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			       struct drm_atomic_state *plane_state);
++struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc);
+ 
+ #endif /* MTK_DRM_CRTC_H */
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index a43d82c12a9a..b04e656cb251 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -70,6 +70,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*bgclr_in_off)(struct device *dev);
+ 	void (*ctm_set)(struct device *dev,
+ 			struct drm_crtc_state *state);
++	struct device * (*dma_dev_get)(struct device *dev);
+ };
+ 
+ struct mtk_ddp_comp {
+@@ -202,6 +203,13 @@ static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
+ 		comp->funcs->ctm_set(comp->dev, state);
+ }
+ 
++static inline struct device *mtk_ddp_comp_dma_dev_get(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->dma_dev_get)
++		return comp->funcs->dma_dev_get(comp->dev);
++	return comp->dev;
++}
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt8195-vdo1-rdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: RDMA Clock
-+
-+  iommus:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    description:
-+      The register of display function block to be set by gce. There are 4 arguments,
-+      such as gce node, subsys id, offset and register size. The subsys id that is
-+      mapping to the register of display function blocks is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - power-domains
-+  - clocks
-+  - iommus
-+  - mediatek,gce-client-reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/power/mt8195-power.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+    #include <dt-bindings/memory/mt8195-memory-port.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        rdma@1c104000 {
-+            compatible = "mediatek,mt8195-vdo1-rdma";
-+            reg = <0 0x1c104000 0 0x1000>;
-+            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
-+            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-+            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
-+            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x4000 0x1000>;
-+        };
-+    };
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type);
+ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
 -- 
 2.18.0
 
