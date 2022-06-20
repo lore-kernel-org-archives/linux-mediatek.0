@@ -4,81 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04174C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 08:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D0A0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 08:51:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ytMUXjmaN8uHSvhOnNn2seCP4qJ7rfDpUHNy7RTqCxM=; b=ZzIVbRREY6Z5iUS5/DiDUlp7pm
-	FsRIyozu7buBzvRVuvQKTnowA2aCrl4nB3kGklWgieKo6yE7vMkH7bjFI4iqVro8X9cKYxXGiGn3N
-	d4NENv/wRAtZXY7GRJb2BeiHJGXQUUU5nTMs5MUQsw1abWSn0wmj2sUkdENiM7FyH4GEAVkE7oc+9
-	FHA+BKwj1mbRO+4VzsWYczDGqPCBAFqvQLyc0S0LDjp7SEvjc/j8ga9R9C/iMUyNMm69PH33uk4xz
-	/w3AQP+qjfkN1ONAaZ4lomg25jjtpwRUdmpCbmSdad/iWHfTuT5oy15T7trhYPisjt0UOpKLFNTXM
-	mtz7S6+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l921OzWrKWAkvgffalKJcegxOLa36ztSxqMp8PQLuKE=; b=AsdGeYIx/cKrCFVuV56rpvDw0T
+	d5xQX1nslvIIQ+qDP2m670NSZPxKWpSMAMURixn0WZXFxeFlVpfxF+CSd1W9L6KuUuudSPZMhvhAr
+	LhNCIvUdXZ0FblPAm0pTIVX9UOdEG+XDtcLNLNVo9zC0nYEjotCIcM62T2LxTRFlIVFK2jPpOZ65E
+	PEB2ffwX/7BuleW01wT15ZCyEKs4nGbU9b4vIkgWm7f+sTHwjLQjkOit/KytxdKZGA+awbXIFi2xl
+	udQ8ESrhQKCmv7SLLhXO+3juOTZsP+KinGcctZv9OgK+rRXVnVVZ34k9yGujTI2D5miB7oWy43TgO
+	sc7Ky1mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Cjz-00GshB-0V; Mon, 20 Jun 2022 08:26:35 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1o3D7i-00H0DS-Ki; Mon, 20 Jun 2022 08:51:06 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Cjh-00Gsa6-JI
-	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 08:26:18 +0000
-Received: by mail-ed1-x535.google.com with SMTP id e40so1478852eda.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jun 2022 01:26:13 -0700 (PDT)
+	id 1o3D7f-00H0A8-Ai
+	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 08:51:04 +0000
+Received: by mail-ej1-x629.google.com with SMTP id v1so19647315ejg.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jun 2022 01:51:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ytMUXjmaN8uHSvhOnNn2seCP4qJ7rfDpUHNy7RTqCxM=;
-        b=hd1CcsMoEubcv6jr6mmIlVzkPnefJUP8r20R0zYK/c+jUCgKI8Q3JnLWgClt35Uisy
-         4KbHXd9q38JNpI5fY6UQgh6EaWIHQxw+4tio8Di8lZre94OlHMYRIdM/jJdTFqHVz7B3
-         bSbk0rAc/JmUZdW8yMVeBf8pChYxs09lHNpEo=
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=l921OzWrKWAkvgffalKJcegxOLa36ztSxqMp8PQLuKE=;
+        b=K8YhUSw2j90oN35WVE7NTJrtHV0dTZB20ol4mTQLyuO94nvyW83AU6qr2lg51vXODD
+         o9R3B4RVANHBRkwyy5TbfSI5mdDhNLzseI0fobTy4UBH7yf9wD34/VB0ukydEmAnDfEM
+         r6RAuE4N+pbS9G/7F5TcxO3zeAPrHW3QK7tL8XYJ1N5qLb5Z4l5makzcW+3y4rT+aUMZ
+         5ZICp0zJ7tQCeNGS4S2hCy54OrzCp0unX7VKSKximXDZomJApbztoGxg0RIc7KDgsDsy
+         m9yTbwwjbzu1OkI5yydxa1OjRCcqzZsnk2F0p2yKA+eyL3eUr1/iWAjbNiwlkdLcj0jT
+         6N1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ytMUXjmaN8uHSvhOnNn2seCP4qJ7rfDpUHNy7RTqCxM=;
-        b=qwKYgNhcVQbC5F1VwG+fWRI9rsCa9FH9mcyNqam2ag/zVIe9wQ1o3IGUp5ED/0a5eM
-         fSGe4rzjPjEFiJukdGRFO3NGDpI5WOBpIPNI+RsB/YhU6rWm1BVmPOi86W/vBXnTe7Oo
-         SXtfp/AlUtRQ1nU0cyPzE6HVXrWytdXNhz2mildSdRCMxrTx8QCxKHSUACH+DJAQuOHJ
-         Oshuc45qzFkFlVLcGDPoMrasz0lNSeaxNESWWxHqOrluk6z3Gw3Sd0IdTuKiE9/CfMh9
-         iE0hCgBX4I4Dxnnz7q6xjtQza2nGTuVOvjELlGYUf6U4dbgK/tjTPeRB7b9JcoS2G+1L
-         jJFw==
-X-Gm-Message-State: AJIora93u/4ZTgi6i+L+/f5VX2YsSG0gPjA7XgxGuu8MgmPTCKInk9Au
-	1HZmCQQjBvV6/wTX/MxiBS+HL8JY1vt1DWKn+0RnOQ==
-X-Google-Smtp-Source: AGRyM1sW1N2WJNAFBze0aVQVaROgZ8Ht/RO6hxNo4xmROEhN05naPzIBxPQWeqLSKYLqFDl/OC2uAiiLvkZXDWbHcKQ=
-X-Received: by 2002:aa7:c84d:0:b0:431:4226:70c9 with SMTP id
- g13-20020aa7c84d000000b00431422670c9mr27849166edt.51.1655713572457; Mon, 20
- Jun 2022 01:26:12 -0700 (PDT)
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=l921OzWrKWAkvgffalKJcegxOLa36ztSxqMp8PQLuKE=;
+        b=7RYmFa9ezPW9nUEAACBDHUzj86KSjrnKPv4wS5ng0Q2nu6P3wwcvxpp0clS+56prf3
+         hClOSZGV7hAxPwZbOuokPdvipyF3n1mdDu/wgPAIXI2Pgz0kWMJTfMG61yqaI7NLgwKy
+         YoKDz5w8HC1Dg88ZpehvCAFor6Uabpe05KiobYbQeQx4GdvbV9Is4d+YQdmUn/RupG+D
+         uQecKDxsloSKSWgP0dsuxhUvT4EFPWh19rSjvKYKTc9R+kPXC6mSs2nLQdSOkeqCxeii
+         9+/GCMnrVkod52uz+CJYMhfeQ844tavL3+by3jYMJgk43ybjPHYbecOK7YaW346xuyW+
+         Mhzg==
+X-Gm-Message-State: AJIora9QVwLcHxrO1lZNDyy6GzEkcXuxy3a5zBkr05WFlzxYzr4c45cs
+	B6ve+jzdVa4ZVTNYR60V+HTKZQ==
+X-Google-Smtp-Source: AGRyM1vg839TPzO9Llk78TgzhogRHGaP18+CEPGCz+ZqKqNWO6QJy5rQo9Fs6ITkPjHkEQ3FwxwpLw==
+X-Received: by 2002:a17:907:16a2:b0:711:d048:7d41 with SMTP id hc34-20020a17090716a200b00711d0487d41mr20355368ejc.126.1655715059676;
+        Mon, 20 Jun 2022 01:50:59 -0700 (PDT)
+Received: from [192.168.0.207] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id ff10-20020a1709069c0a00b006fec69696a0sm5512140ejc.220.2022.06.20.01.50.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Jun 2022 01:50:59 -0700 (PDT)
+Message-ID: <a24c24e6-fdee-df79-fd2f-6a71540bd9b3@linaro.org>
+Date: Mon, 20 Jun 2022 10:50:57 +0200
 MIME-Version: 1.0
-References: <20220620063217.9867-1-yunfei.dong@mediatek.com>
-In-Reply-To: <20220620063217.9867-1-yunfei.dong@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 20 Jun 2022 16:26:01 +0800
-Message-ID: <CAGXv+5F8jvzz9DkM4x0MKQ_hZGpYXwQNfOEp_Gvqr__t-WDW+w@mail.gmail.com>
-Subject: Re: [PATCH, v2] media: mediatek: vcodec: Initialize decoder
- parameters after getting dec_capability
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Tomasz Figa <tfiga@google.com>, George Sun <george.sun@mediatek.com>, 
-	Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
-	dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, 
-	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 2/3] dt-bindings: usb: mtk-xhci: Allow middle optional
+ clocks to be missing
+Content-Language: en-US
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-usb@vger.kernel.org
+References: <20220617222916.2435618-1-nfraprado@collabora.com>
+ <20220617222916.2435618-3-nfraprado@collabora.com>
+ <8639e64d-c659-7090-2d0a-078fd96cfbd4@linaro.org>
+ <bb460aa483cc888ffa36709d9e9c1f2e3be0e000.camel@mediatek.com>
+ <bc5458fe-083c-d679-9fcb-95810a290da8@linaro.org>
+ <af50210b95d0cd8b2e3103b3d4a9702aeeba9452.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <af50210b95d0cd8b2e3103b3d4a9702aeeba9452.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_012617_665422_F9C8EF9A 
-X-CRM114-Status: UNSURE (   7.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220620_015103_428261_FA134F1D 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,14 +104,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 20, 2022 at 2:32 PM Yunfei Dong <yunfei.dong@mediatek.com> wrote:
->
-> Need to get dec_capability from scp first, then initialize decoder
-> supported format and other parameters according to dec_capability value.
->
-> Fixes: fd00d90330d1 ("media: mtk-vcodec: vdec: move stateful ops into their own file")
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+On 20/06/2022 08:59, Chunfeng Yun wrote:
+> On Sun, 2022-06-19 at 14:05 +0200, Krzysztof Kozlowski wrote:
+>> On 19/06/2022 09:46, Chunfeng Yun wrote:
+>>> On Fri, 2022-06-17 at 18:25 -0700, Krzysztof Kozlowski wrote:
+>>>> On 17/06/2022 15:29, Nícolas F. R. A. Prado wrote:
+>>>>> The current clock list in the binding doesn't allow for one of
+>>>>> the
+>>>>> optional clocks to be missing and a subsequent clock to be
+>>>>> present.
+>>>>> An
+>>>>> example where this is an issue is in mt8192.dtsi, which has
+>>>>> "sys_ck",
+>>>>> "ref_ck", "xhci_ck" and would cause dtbs_check warnings.
+>>>>>
+>>>>> Change the clock list in a way that allows the middle optional
+>>>>> clocks to
+>>>>> be missing, while still guaranteeing a fixed order. The
+>>>>> "ref_ck" is
+>>>>> kept
+>>>>> as a const even though it is optional for simplicity, since it
+>>>>> is
+>>>>> present in all current dts files.
+>>>>>
+>>>>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>>>> ---
+>>>>>
+>>>>>  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml       | 9
+>>>>> +++++++--
+>>>>>  1 file changed, 7 insertions(+), 2 deletions(-)
+>>>>>
+>>>>> diff --git
+>>>>> a/Documentation/devicetree/bindings/usb/mediatek,mtk-
+>>>>> xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-
+>>>>> xhci.yaml
+>>>>> index 63cbc2b62d18..99a1b233ec90 100644
+>>>>> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-
+>>>>> xhci.yaml
+>>>>> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-
+>>>>> xhci.yaml
+>>>>> @@ -80,8 +80,13 @@ properties:
+>>>>>      items:
+>>>>>        - const: sys_ck  # required, the following ones are
+>>>>> optional
+>>>>>        - const: ref_ck
+>>>>> -      - const: mcu_ck
+>>>>> -      - const: dma_ck
+>>>>> +      - enum:
+>>>>> +          - mcu_ck
+>>>>> +          - dma_ck
+>>>>> +          - xhci_ck
+>>>>> +      - enum:
+>>>>> +          - dma_ck
+>>>>> +          - xhci_ck
+>>>>>        - const: xhci_ck
+>>>>
+>>>> You allow now almost any order here, including incorrect like
+>>>> sys,ref,xhci,xhci,xhci.
+>>>>
+>>>> The order of clocks has to be fixed and we cannot allow
+>>>> flexibility.
+>>>> Are
+>>>> you sure that these clocks are actually optional (not wired to
+>>>> the
+>>>> device)?
+>>>
+>>> In fact, these optional clocks are fixed, due to no gates are
+>>> provided,
+>>> SW can't control them by CCF;
+>>> In this case, I usually use a fixed clock, or ignore it.
+>>
+>> But in some versions these clocks are controllable or not?
+> Some SoCs are controllable, some ones are not (fixed clock).
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Thanks for confirming. Then I would prefer to make these clocks required
+(not optional) and always provide them - via common clock framework or
+fixed-clock.
+
+Best regards,
+Krzysztof
 
