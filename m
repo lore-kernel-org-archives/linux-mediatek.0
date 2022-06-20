@@ -4,59 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91971C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 10:25:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D13C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 11:54:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yq8Rg+jYi6EHGS9ySrHVIP9Er8qQvO4+7q3rAcXlAS4=; b=u3VMQfE0dYfk1F+azLjUvRZYv7
-	TL8umh+t8OFJ483+Me1fACcALyQ/1UFRwZAwEzkzFsxXQFH39KCBsa9uvdzeqZjD/FzzRFRL2Jy1Z
-	dBAPs/vgvoAM0sKvPKcJueK4pXqlpaaXEeJ9oBf6eg5DZo77VFwnlNLElvTXxHyCvY65ZpQfDLuWG
-	UlLPdumVT5QNmjr0fZvPyTi5mI2LXIcHYAHw1vYKYZrhWRtozq7ryyNq0+i+pPZMrrRBMMy5bv67U
-	JCVEYUl/TkNTXs0vKHBUvV5zznITHbp0RP+kpEzQ6kt73V1b5Djx2Qxzv+njZxf/eg/GXNK+zEYTk
-	h/QYtyQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y+1ESBA9IsI+iRB5+jQBFbcdOi0iPcqA++20lElc3hg=; b=BjIshrPf8HAIWObjKI3XeJIvoo
+	LiF8Vo2vPGxytKip7Q2qVJ/fk9juepW5BceWnRt250Dug0Pe4wZACGdwqSvv+L18CI2Ch+wIj5QUM
+	ghWb6zaTnYAo5udRUg4yZYB6yVDL1gunjZVEikDbixwltMoS/CUp0EtGkiPmPfKnxeWHKD4Xk1oY8
+	/0SFqUQf/pKoih6ai18U0a1y14KY2LcFBuXM5aykm/Sms1Ua/he62EKWRpbp1X9rq7VnDIwmUqG1t
+	RTXvM7QNurNK425jno7NAyZwCqorIjRG3iE08i2Lu+oLFdJ7cWGQqKimamIiNeZfNlqbYCou18UUo
+	JupKR/8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Ear-00HR2B-UL; Mon, 20 Jun 2022 10:25:17 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o3Fyk-000BVo-HJ; Mon, 20 Jun 2022 11:54:02 +0000
+Received: from out4-smtp.messagingengine.com ([66.111.4.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3Eag-00HQzg-MP; Mon, 20 Jun 2022 10:25:08 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3AC2E660166D;
-	Mon, 20 Jun 2022 11:24:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655720698;
-	bh=2y7HCdJit3cXRA/sDODSECzq5lWWkGtctbxdIAXtr5U=;
-	h=From:To:Cc:Subject:Date:From;
-	b=JRR5D1caw1ZcwxMgpxW97vZsMeHafj7w8aot2aPajs1M7TM3xcsOef6iQPvE+dsl0
-	 CeOy9FUfLZwMlTaks+kXcjbamsg0eFmqKSLym6WD/WrRHFoB9Stv8IRMM88rc/PoFY
-	 /fLJF/KT2rQInCoc7Y5Pp55JG174wzdiJRV3tG3aU1MPnyrNzsHDnKA1JeWsQbAJrm
-	 89yG32Gu7SICP9amZOPiE5Wv/Axa5B7St5ogalkjH6SoD9D8IVO5A7n2oOsa4o4vp1
-	 2VXOvCkoYLPMwjNsQY+aR6vkzfhh8lhIiJOdr4RCcNbYCoYy+vNAvPFT7gs65Yr1dA
-	 Ts5btv9Tp7fow==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: fparent@baylibre.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] soc: mediatek: mutex: Use DDP_COMPONENT_DITHER0 mod index for MT8365
-Date: Mon, 20 Jun 2022 12:24:54 +0200
-Message-Id: <20220620102454.131417-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+	id 1o3FyY-000BQI-6y; Mon, 20 Jun 2022 11:53:52 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id 002EC5C016C;
+	Mon, 20 Jun 2022 07:53:44 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute2.internal (MEProxy); Mon, 20 Jun 2022 07:53:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
+	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm2; t=1655726024; x=1655812424; bh=Y+1ESBA9Is
+	I+iRB5+jQBFbcdOi0iPcqA++20lElc3hg=; b=Io6UhmJvaC1FoVxHZJrCKFpyOh
+	rINcO69oMm/0UV11V3RH7maqJe6sbNp/IhEJqhUd9KKM2md4OY4w4CiIicJ9yFNZ
+	rZCFvQrjzlS29BFCtnh4ZRQlYTKw2qYdDXOOr3DP/uhMkyUFfJjV+aUnP/PKkT1q
+	iM4aEbSzm6rGdKCjNYNeBVXLWx0FCmXx1TKU+PSKjjx3dC+/7jJxLF6MP8xd2r3a
+	AmCgP8nt9vgpSr7aUq4Pak6X0aYRdrqlteG1OQft/6xgLLmniLNTU3caxVfs5Kyh
+	S/nYTji5Xi/e8XeNy6vvbgcoS/DRWIqAE/L3w6P1/buzzMOwzgnS8vyznSow==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm2; t=1655726024; x=1655812424; bh=Y+1ESBA9IsI+iRB5+jQBFbcdOi0i
+	PcqA++20lElc3hg=; b=ZQKehoPa92vHTB3MVokYv0jGD3YgpQGvHsf+7hFhM6bZ
+	ctnu+AlzMCAwOAPIhtIZXfGPTsJE7al3E5I0t36vg9o0rj5H8Fq1qKDmpnvN1Feb
+	9ln3Cneoqx3rif8B7ZorZr+vscztBQKzPkxchGDw4M7bAlU5kJ0H0OTHg5yB4Wvn
+	wjfESFXEHcxU/2COzMIs/u4leikWuz6IeEsMRR7RXji6E6bsEhFcaGsW1L/3GoS0
+	FNe1EGJjbI5bnGoY1Q6BPm4nmfZ9AVSxw72P0oLmJ5m2jop6b3sH39ZbGwLr0TZg
+	uHpWbd/Wxeqc7EKoL0yVKaPa0aTPvs2opaiLe+licQ==
+X-ME-Sender: <xms:yF-wYgAP5MfdxDk7JW_Kk_KgOM075cRy1l5AA6Nf7nY8ThN63z4RRw>
+    <xme:yF-wYih_ih0c5JjpzIJvUkxTpm3XI_cuRJq3VhwCikId4AJUP4agxhRvSTWscfcd0
+    RDlqX7-Ozkbhw>
+X-ME-Received: <xmr:yF-wYjlsduLWkjj5PPvg5nUHkxpA_U3T9j69UicGafWeyCfuxjURlojKK3j8HZMjWLi1V9PyuPKvb-f2br4UVYz6SHmCpn3r>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudefuddggeeiucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
+    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepgeehue
+    ehgfdtledutdelkeefgeejteegieekheefudeiffdvudeffeelvedttddvnecuffhomhgr
+    ihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmh
+    epmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
+X-ME-Proxy: <xmx:yF-wYmy2FklshFwWNHRNFtFirhSO2PFccWwOJrRpYPs4cdYcF-RWAA>
+    <xmx:yF-wYlR4ZJZ6TuavJxxGeYdSn8YBrebt3kQD-fzfXJzcuTdfOkM_GQ>
+    <xmx:yF-wYhZQOZOGmJIHCoWEvHyiNRm0cuD0Pw7zbW-IJN8A8YfNHhseHA>
+    <xmx:yF-wYmSJ73Wh2ZjQveb_0CpkecEnzMkLq5iisX5MOzp8Snbz-XzueQ>
+Feedback-ID: i787e41f1:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 20 Jun 2022 07:53:43 -0400 (EDT)
+Date: Mon, 20 Jun 2022 13:53:41 +0200
+From: Greg KH <greg@kroah.com>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com,
+	Jean-Philippe Brucker <jean-philippe@linaro.org>,
+	stable@vger.kernel.org, Masami Hiramatsu <mhiramat@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 5.4] arm64: kprobes: Use BRK instead of single-step when
+ executing instructions out-of-line
+Message-ID: <YrBfxXwumb30FEtV@kroah.com>
+References: <20220615015928.19181-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220615015928.19181-1-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_032506_924022_10329C18 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20220620_045350_752282_C7942EFF 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,37 +105,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit
-4e8988c634a1 ("soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for mt8195 vdosys0")
-the enum mtk_ddp_comp_id was modified to add an index number to the
-DITHER component because some new SoCs have multiple dither blocks.
+On Wed, Jun 15, 2022 at 09:59:23AM +0800, Mark-PK Tsai wrote:
+> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> 
+> commit 7ee31a3aa8f490c6507bc4294df6b70bed1c593e upstream.
+> 
+> Commit 36dadef23fcc ("kprobes: Init kprobes in early_initcall") enabled
+> using kprobes from early_initcall. Unfortunately at this point the
+> hardware debug infrastructure is not operational. The OS lock may still
+> be locked, and the hardware watchpoints may have unknown values when
+> kprobe enables debug monitors to single-step instructions.
+> 
+> Rather than using hardware single-step, append a BRK instruction after
+> the instruction to be executed out-of-line.
+> 
+> Fixes: 36dadef23fcc ("kprobes: Init kprobes in early_initcall")
+> Suggested-by: Will Deacon <will@kernel.org>
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> Acked-by: Masami Hiramatsu <mhiramat@kernel.org>
+> Link: https://lore.kernel.org/r/20201103134900.337243-1-jean-philippe@linaro.org
+> Signed-off-by: Will Deacon <will@kernel.org>
+> Link: https://lore.kernel.org/lkml/20220610063619.7921-1-mark-pk.tsai@mediatek.com/
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 
-As a result, all of the mutex mod arrays have been changed to use the
-new definition instead of the old one (even if that's retained): for
-consistency purposes, follow the same trend on the newly introduced
-MT8365 mutex mod array.
+Now queued up, thanks.
 
-This commit brings no functional changes.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-mutex.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index fa8e0ba38803..2fd8318c3bdc 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -358,7 +358,7 @@ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
- 	[DDP_COMPONENT_COLOR0] = MT8365_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8365_MUTEX_MOD_DISP_DITHER,
-+	[DDP_COMPONENT_DITHER0] = MT8365_MUTEX_MOD_DISP_DITHER,
- 	[DDP_COMPONENT_DPI0] = MT8365_MUTEX_MOD_DISP_DPI0,
- 	[DDP_COMPONENT_DSI0] = MT8365_MUTEX_MOD_DISP_DSI0,
- 	[DDP_COMPONENT_GAMMA] = MT8365_MUTEX_MOD_DISP_GAMMA,
--- 
-2.35.1
-
+greg k-h
 
