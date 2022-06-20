@@ -4,77 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF71C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 04:43:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AA0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jun 2022 04:54:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XuPCzTzhcmOZzHOmk2sFdgEFNoZlfvJu9dKlztxiN/Y=; b=PqoAszcpOA+6cdojfDUxgMtR+r
-	whDkAqEnecyECw8/DBjFiTt1pn00bSUqGQgh+t/VvsOnE+RppHpa9oBjfagBApxgbw7fOvNrC6E+p
-	fGlmO1lFEnZUbTIX76ASpdsMShdSZFr24S56J07o9kYtE3MDjJ1DyD4scvOEcPIxKy/DLhf1dEj3O
-	hwrB4Uo+8tkT1QtdJ6VWCLuedoNYBgP2mX83+joNnjumQS89A/Rcrpnvk1OTi5v5uQDVU7shm7HBh
-	chfanDa+jwIqD/g+qn4efLOHQbAWzUFsXu7AIkldqEGRWfc+3VLxV39/kaIDJ6bhMc4fXvG4GT0V7
-	PG3mdwNA==;
+	bh=mukyLCtBBbCJ6QLdWGYeYZEZ9YqINwpy/ZdfkORqBZE=; b=dq/UlDdzNzwbBpc/K1VYfZLRnl
+	TyVy2VWpR9mSK7OfyjVFWF78ugtBXAYA9RtVGvlAX+JACGrrc5XYuD5pIvc1S1yeBQe6/6mWYD0F8
+	nQgZm80UtLJrUxNpXQfPjxDiHcF3opyBhA9d8SW9d/j7ltzH5z7qiT9afC0SDbAdlqT2Rup2kht0M
+	AkuM9MLfAUoSDQ0XONKyRTVW3ovZeuwco7BpfZO0ZtaE5ogP8ylXQdRwxIf8GP96PRwObgcuHM99s
+	8F2V4kPSx2NUTSGmEsK+7OzcZTz+LddQ0DDuR5Bn8x0WXwLkPxpL8WwRCgMvnoKEW2mKJ1Etje2jH
+	1uTzMqvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o39Fq-00GAed-JQ; Mon, 20 Jun 2022 04:43:14 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1o39Qj-00GCSA-HJ; Mon, 20 Jun 2022 04:54:29 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o39Fg-00GAbf-LJ
-	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 04:43:05 +0000
-Received: by mail-pf1-x434.google.com with SMTP id t21so2910332pfq.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jun 2022 21:43:02 -0700 (PDT)
+	id 1o39Qh-00GCQy-02
+	for linux-mediatek@lists.infradead.org; Mon, 20 Jun 2022 04:54:28 +0000
+Received: by mail-ed1-x535.google.com with SMTP id eq6so6087071edb.6
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jun 2022 21:54:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=XuPCzTzhcmOZzHOmk2sFdgEFNoZlfvJu9dKlztxiN/Y=;
-        b=v2uTas0ITpi6sQ50rCEMiLgEQR9vCoVW8ykoCP10v0VHG7XLW9lbVQXcTERpNEkdBl
-         yQGU3U23/U+g3a64sDok8eq+zzWMr1dnUcDpvansrDgbrCg66FWQZYKvva4AkLKbMWoZ
-         8dbbX8Fo4bmY8KFxhOYkNuHZ4W/pEwF7wYX3oXNGZOBY+UaVRJxNT2sFIonlJAR7ap7p
-         OgV3hh4RJGh+onEG9mQKJvwMGM0HVbp/asqZxsudKFOh9bK3xv/cW+v4aatOIlIzpg4K
-         IrpKKR7Yu+MwA/BgE54nYrAlkva2582Ea+Pn9asSrhQCryKo/YKsWFb4cZUuWTPMCA8H
-         s8Jg==
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=mukyLCtBBbCJ6QLdWGYeYZEZ9YqINwpy/ZdfkORqBZE=;
+        b=UKNKFhdL+7ivgne6rJC21mSSfiaLKZHX9yoOuIh9UmqiDzzaewQHD7yYJipRMbN5SI
+         sqMO9Scex5fT2OG4s3idcHiBshzVzr83BQRiz9MclD5AgLHLh9ef6R0EaL7PWErhcE/g
+         wKYAz5furNCnzUMXK/fAv/VmQ0Psdwl6aMHDw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=XuPCzTzhcmOZzHOmk2sFdgEFNoZlfvJu9dKlztxiN/Y=;
-        b=rinkEsjojh3X6mWNlyF39AURm0l9HZNAIwg9VT+54PT0C32c2ilow4HupwJBYtuKJI
-         H7taLfrmnseInW4sa4xcw+98IlrTQTZhqG8kmnvUSphejaXsY+ZmqgUmSii2EY8bzyC3
-         ea/SenJ8GpeHpCXdaR9qfWuUmZIHGtHXndSFk/zNMiRmq5h0pF69PLkzNHbUYtIi4WIH
-         963srh7cnMQaEtf9A2xtw07THDS3lURjjGhW73mIhi+qzYwH7rsHWWznAOoWcLmvOSoA
-         mWykyXMAEDBbcax6fzSCoMy18mz4tK+JSJa8oK0xjukbDrzqu7HxlkDh6S7oe4/pkT6c
-         G/yQ==
-X-Gm-Message-State: AJIora8Oz0v8FqyVFsLK+50ExvIoIq2DJsHVI/juYKJ+7rGpG014O1bd
-	Lz/MNJBI5BWSk6EHkUuY3NQt/Q==
-X-Google-Smtp-Source: AGRyM1u9VfNHrad/tqs9W/bOQOD4E8u6NsMRQEd+0M8Qya2WVZ9s43KSlqXGkWaUUjAwmTx+ToXCLw==
-X-Received: by 2002:a05:6a00:198c:b0:51c:7547:58e0 with SMTP id d12-20020a056a00198c00b0051c754758e0mr22239590pfl.82.1655700181896;
-        Sun, 19 Jun 2022 21:43:01 -0700 (PDT)
-Received: from localhost ([122.162.234.2])
-        by smtp.gmail.com with ESMTPSA id h2-20020a170902f70200b0015e8d4eb231sm7527303plo.123.2022.06.19.21.43.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Jun 2022 21:43:01 -0700 (PDT)
-Date: Mon, 20 Jun 2022 10:12:51 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: rafael@kernel.org, matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
-	jia-wei.chang@mediatek.com, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] cpufreq: Add MT8186 to cpufreq-dt-platdev blocklist
-Message-ID: <20220620044251.ice5qcuw26utmups@vireshk-i7>
-References: <20220617110926.90313-1-angelogioacchino.delregno@collabora.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=mukyLCtBBbCJ6QLdWGYeYZEZ9YqINwpy/ZdfkORqBZE=;
+        b=YjY7Srw7fXKag5Sl+rKB2iOyDkKTS6QJJZ/9NzE52+Sleb5NgWsvvunFBPOKNR81IS
+         mhsXpSs08nIlJQmN9RV/Qc7RzLsdHqml2Gs7m16hgMhQ+ov/ihSv7kUIOh6YR3Gy4e+Q
+         mi/9jFqHl8u3w2j2Izkd6gk4qJNU/+eodsl8gFbFSxXrRDrtVyQ6K75sY8yIkldAXRet
+         jDsVygFBBiwQoBXizRSvq5seWnX66tu5oBSMSGkxwyeZi69YFxURnSOYqI/mH6xdz/9W
+         XbfS4OZmqOV1cLR8h370rEyJvp1ZG7HUs1kdeHaHIHeJT37NHJbJ0x9uIzwU7Y9M1rMR
+         kPGg==
+X-Gm-Message-State: AJIora+pe2W4XsUQ+tyo4wothIkNOsSuGeB4MeTVeI80q0VynTCcwt40
+	aWojMzqrJjtlFNyMjDJZalydhntawHQPmqKnVNWZOA==
+X-Google-Smtp-Source: AGRyM1uRThNT8XmE57SQVNixL8TMkzT1S2u9lzIBzMfvygATaLlCkuFrLWUz2Cy72NYhPuNYT7dU009axLMuI9/ox2A=
+X-Received: by 2002:a05:6402:3785:b0:435:5d0e:2a2e with SMTP id
+ et5-20020a056402378500b004355d0e2a2emr19724945edb.307.1655700863894; Sun, 19
+ Jun 2022 21:54:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220617110926.90313-1-angelogioacchino.delregno@collabora.com>
+References: <20220618072929.28783-1-yunfei.dong@mediatek.com>
+In-Reply-To: <20220618072929.28783-1-yunfei.dong@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 20 Jun 2022 12:54:12 +0800
+Message-ID: <CAGXv+5EFkZ6-bvu68dV4hr795+N3tAwbXYg5WCJp+Zd+pf1Aqw@mail.gmail.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: Initialize decoder parameters
+ after getting dec_capability
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Nicolas Dufresne <nicolas@ndufresne.ca>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Tomasz Figa <tfiga@google.com>, George Sun <george.sun@mediatek.com>, 
+	Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
+	dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, 
+	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_214304_723735_8F86B2F1 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20220619_215427_106265_C31492DE 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,35 +93,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17-06-22, 13:09, AngeloGioacchino Del Regno wrote:
-> This SoC shall use the mediatek-cpufreq driver, or the system will
-> crash upon any clock scaling request: add it to the cpufreq-dt-platdev
-> blocklist.
-> 
-> Fixes: 39b360102f3a ("cpufreq: mediatek: Add support for MT8186")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
-> 
-> v2: Moved fixes tag on top of SoB (oops!), added Matthias' R-b
-> 
->  drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
-> index 96de1536e1cb..2c96de3f2d83 100644
-> --- a/drivers/cpufreq/cpufreq-dt-platdev.c
-> +++ b/drivers/cpufreq/cpufreq-dt-platdev.c
-> @@ -127,6 +127,7 @@ static const struct of_device_id blocklist[] __initconst = {
->  	{ .compatible = "mediatek,mt8173", },
->  	{ .compatible = "mediatek,mt8176", },
->  	{ .compatible = "mediatek,mt8183", },
-> +	{ .compatible = "mediatek,mt8186", },
->  	{ .compatible = "mediatek,mt8365", },
->  	{ .compatible = "mediatek,mt8516", },
+On Sat, Jun 18, 2022 at 3:29 PM Yunfei Dong <yunfei.dong@mediatek.com> wrote:
+>
+> Need to get dec_capability from scp first, then initialize decoder
+> supported format and other parameters according to dec_capability value.
+>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-Applied. Thanks.
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
--- 
-viresh
+Tested on MT8183 on mainline 20220617-next with the vcodec-dec DT node
+copied from the ChromeOS v5.10 kernel.
+
+This fixes an issue where the first attempt to enumerate formats on the
+device right after boot returns an empty list.
 
