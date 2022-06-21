@@ -4,139 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF44C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 21:11:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A49FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 21:18:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IN2rjHI7mae8Dk8au2O2opi72iO/joSCgRpCxMnXvhI=; b=QppSkkT4uqQRrQdF7RWySgpjU7
-	9JBPXYAkQIfPLZl9IvMswvuFaOj79Qjw298Kz4hG0Svjllra+Ol36Lp7a52/eWu2KeUIaxysU46i8
-	pq1YzZJc5V/kFarMhCeqLFR8ypXANKsk+Kad3YDuyF69T/kC7r0iiLpeprNN2GEcwRFEgtRmG/yFf
-	fALHB0MpIwyEuMhpVzHuBvXelM9f4mDCwBmANfOBo3MMt9W8tbxJ5HUbf8pIByZtLOGnTKW1qE7ZC
-	vyqZoT4aQ3eeEV5x/FGjlNPIemiDNI8sJDMhoPaH3ZJIDXEd2EuwyK+Wh/VkeIx5K8+wm6s0ihFgi
-	70RG8EYw==;
+	bh=4uHOtcRDuJ6Hr4qJcQ25dxSac4NZlMYdDK3wVM8Cvvc=; b=mTQG51Vk9cRQNc6e8C2Tzojv1a
+	N1If5VCI3n4mZ3upH7OrQN6y4Y46NDvhzRB3gk1O0lVrXo7kyMqxgSOe13sEKy6UrtXOGlWSg4JFu
+	QvcKDYY39OhuHz6cMmwU20nedaudGV9BqzESMcn0cBvIxn11E3Rkiw6FajISgHsbhCF5wzHiAH+RL
+	3YWAwfJUoamxj0fvk+bXUTEbGRrYTrwgToCZNLtcPTAdmOnG/uJ7H+ftg75SWCYLBOq1LY6EMGnoj
+	c5So1fJJJGWxM6QJMU602b6YEe7LMG4nxVSXynaOqaFu0YN1seSijXkfAl3o+BwTrO+p2TceRlW+s
+	zuNdB00g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3l9G-007GKS-MD; Tue, 21 Jun 2022 21:10:58 +0000
-Received: from mail-bn7nam10on2049.outbound.protection.outlook.com ([40.107.92.49] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1o3lFy-007Ibd-8d; Tue, 21 Jun 2022 21:17:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3l72-007FKd-RB; Tue, 21 Jun 2022 21:08:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cZdXE1OJzBaUYlWF6NbMVt0TwWrbxS3mzOOWXZrEyEAXoHax+XVJtUK0AucL4rrbEAfsK/CPUJt+a/ZVtpuqqRs8pZgoNk01BTfQksKYqoz9v3AU1f8N3Nz+2GK0FLSahgyIZy5cPXe3ZxqPM5Zt4mgLV7W/RzKR5D9G9jIK50m+uiJy0Fg5spR/NM+wtsmqaEVE10u4yfrpKE8emdyVz/aNFqYbXOnz6gFkfO0BEzvvyuo8b62KUxnCswMB/WSv1w5glx5X5+uzE0VtCHOIJZfnaPWhj5JF2NDJ7IJWNrgIB8p9Hc+TvUNqJZlz35qyaWU67DeXePo5MSLwWWW5Uw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=IN2rjHI7mae8Dk8au2O2opi72iO/joSCgRpCxMnXvhI=;
- b=Ko8Wvmuv8sXGmpbDKVIFKUXug38k7W8jjTeCFGPi2DAiGMUX/Pb/BiHMpVsoDo8HQJRrFv/RIkzYTvIzvAJMTf2Me6O437lDYkbxBM1s38KwOP/cNe+J0MrTaMO4Hn5+aXO7G95gVRlRb817z3Qje4xAa009ejVxuRekjMN4kLY55uXQ+5i1Uil9K2kHBuWzXrxUve9p+9O5mWkd3lS+iVag/tv6ZnpFEcbuc9WPpk7NsI1wj+GSZvMnZeSEpiZetmiqirVUJWcl/vsUn1kkHbWxlKOYrGdj/GktS/BM5zQSE7MM26M4CJKM4KLM7zHfFY2yQ/oCwHEGIgCQlgDOxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.234) smtp.rcpttodomain=linaro.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IN2rjHI7mae8Dk8au2O2opi72iO/joSCgRpCxMnXvhI=;
- b=RdM18ZKL/YFzY2wSIpWBZg3bwhM//xU6WMblFKeRFYlGM+yu9olWMiFF0PdbaLWvhsN4jgUy2knfh9TCxdy7d7K+z2SDCEv2Mk+nxLxtClxFe9KcOTahypm99nEJxI7jZqA9NFM0BFd5cRra7SkVUwCvUSxtqjXfpRoxh/wST3kAYEDvxr9fd0MhX1EA5ylWcAn93u9g6cH2Wd3tgg5FWRhYfwYPXckrEZkRWXeGqRFC7r+/0wn5xKWHPJd0sH7QMpKdA9HQE6G3BvwntlSfllD55DTfrOoDbvxp1849gVO0uEicyRFMMu9u5hG0MPgy8hSYhKF6C6T0RyUErm692w==
-Received: from BN6PR16CA0014.namprd16.prod.outlook.com (2603:10b6:404:f5::24)
- by PH7PR12MB5976.namprd12.prod.outlook.com (2603:10b6:510:1db::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.14; Tue, 21 Jun
- 2022 21:08:35 +0000
-Received: from BN8NAM11FT018.eop-nam11.prod.protection.outlook.com
- (2603:10b6:404:f5:cafe::bd) by BN6PR16CA0014.outlook.office365.com
- (2603:10b6:404:f5::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.15 via Frontend
- Transport; Tue, 21 Jun 2022 21:08:35 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.234)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.234 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.234; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.234) by
- BN8NAM11FT018.mail.protection.outlook.com (10.13.176.89) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5373.15 via Frontend Transport; Tue, 21 Jun 2022 21:08:35 +0000
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- DRHQMAIL101.nvidia.com (10.27.9.10) with Microsoft SMTP Server (TLS) id
- 15.0.1497.32; Tue, 21 Jun 2022 21:08:34 +0000
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.22; Tue, 21 Jun 2022 14:08:34 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
- Transport; Tue, 21 Jun 2022 14:08:31 -0700
-Date: Tue, 21 Jun 2022 14:08:29 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Robin Murphy <robin.murphy@arm.com>
-CC: "Tian, Kevin" <kevin.tian@intel.com>, "cohuck@redhat.com"
-	<cohuck@redhat.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
-	"jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
-	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
-	"thierry.reding@gmail.com" <thierry.reding@gmail.com>, "will@kernel.org"
-	<will@kernel.org>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	"saiprakash.ranjan@codeaurora.org" <saiprakash.ranjan@codeaurora.org>,
-	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
-	"iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
-	"jonathanh@nvidia.com" <jonathanh@nvidia.com>, "jgg@nvidia.com"
-	<jgg@nvidia.com>, "yangyingliang@huawei.com" <yangyingliang@huawei.com>,
-	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "gerald.schaefer@linux.ibm.com"
-	<gerald.schaefer@linux.ibm.com>, "linux-s390@vger.kernel.org"
-	<linux-s390@vger.kernel.org>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "alex.williamson@redhat.com"
-	<alex.williamson@redhat.com>, "christophe.jaillet@wanadoo.fr"
-	<christophe.jaillet@wanadoo.fr>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "tglx@linutronix.de" <tglx@linutronix.de>,
-	"virtualization@lists.linux-foundation.org"
-	<virtualization@lists.linux-foundation.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "isaacm@codeaurora.org"
-	<isaacm@codeaurora.org>, "dwmw2@infradead.org" <dwmw2@infradead.org>,
-	"marcan@marcan.st" <marcan@marcan.st>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "baolin.wang7@gmail.com"
-	<baolin.wang7@gmail.com>, "linux-mediatek@lists.infradead.org"
+	id 1o3lFu-007IZr-Mz
+	for linux-mediatek@lists.infradead.org; Tue, 21 Jun 2022 21:17:53 +0000
+X-UUID: 2b65fa87e1c74a49b26f8a7e355250da-20220621
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:7ab2bae8-bd3d-4e14-9a3b-f57ca5364b68,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:c91f1938-5e4b-44d7-80b2-bb618cb09d29,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 2b65fa87e1c74a49b26f8a7e355250da-20220621
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1947959210; Tue, 21 Jun 2022 14:17:45 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Jun 2022 14:17:43 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jun 2022 05:17:42 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 22 Jun 2022 05:17:42 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <jemele@google.com>, <abhishekpandit@google.com>,
+	<shawnku@google.com>, <linux-wireless@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2 5/5] vfio/iommu_type1: Simplify group attachment
-Message-ID: <YrIzTX2Vg/iJ95hM@Asurada-Nvidia>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-6-nicolinc@nvidia.com>
- <BL1PR11MB52710E360B50DDA99C9A65D18CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
- <YquxcH2S1fM+llOf@Asurada-Nvidia>
- <BN9PR11MB5276C7BFA77C2C176491B56A8CAF9@BN9PR11MB5276.namprd11.prod.outlook.com>
- <55e352d5-3fea-7e46-0530-b41d323b6fcf@arm.com>
+Subject: [PATCH v2 2/2] mt76: mt7921: enable HW beacon filter in the initialization stage
+Date: Wed, 22 Jun 2022 05:17:39 +0800
+Message-ID: <d8edd12387a766e9a5c3745c5a921d5deba8fe41.1655846049.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <b85224ecea092174ee901e14afd5d322744d8fd9.1655846049.git.objelf@gmail.com>
+References: <b85224ecea092174ee901e14afd5d322744d8fd9.1655846049.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <55e352d5-3fea-7e46-0530-b41d323b6fcf@arm.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c3ac24fe-ad8d-49f4-dc15-08da53ca3455
-X-MS-TrafficTypeDiagnostic: PH7PR12MB5976:EE_
-X-Microsoft-Antispam-PRVS: 	<PH7PR12MB59763051D992F16AF8F05BD6ABB39@PH7PR12MB5976.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	Fl9OyWh50jzl4t+AuMzoHMYy9C3TFAwRDDPSgk4pLciNlWeqOPXQR6GdNkxh3SxcHy+t++zthderbcYcU+Hwq29AiqGvXQAXmU+HZkbgbp5K3MGf8NLym6BVfeEJtOlSYexF7RVbD8jIUigPBl6+2kXFJT2n6P8V2SBY0iCHOj29DYTFcQkB9XoKqWjaiUfLfdBvItjYKZTZyLxSfiB74P6LDqY1HcOD5Y+ITeGsejfVmKlVl+EXRm0U+aIYnd8Dpsp9lmLTg56kJbmEjLFAdFV5Z2ahl4HTM6uFxLxJEU28RJgzc+k59j2676oCgx8rMlS3cLsHE5EfINhbrNt9UgbsbFuk5ebJMrokYbehcP39/aUmWwP2Ldlbc+1GyXVt36XSRdtKV1PIU/31ErYuAStdT8Hzw4xZc42WkZE1oosYaums+9EUKtOdl9KON3kvy5SOFej0aylW2cxUI035DuKXXKpK0KcCk/Z7af4uhB2aVqS1HPdI7wCPpM6oNxTY+zcbyG5HJoPM4TTMmJOLnBU2BJwaZ8G4kvruD3Afyx0gRX/7IcpV/ED5TOYO/i6F0tJEYqZuXzyBhg1kGGWIG57NXn8DZZJwI4ttQcKJ+Zztk0O7yHk9/JMnB2i7E7zA+Iu3MolPU7YfY/Y6Tc6ynT8FW4q2GA5XSCjNNLlbRoa1mPGtB+5LeDiO+szo7/I7JNO7m/MJ9ogR8wkhW1l8OZOmb2U6GktScpmBy4awXHXH3KqJ3H8HUXBfNPKUNNQG
-X-Forefront-Antispam-Report: 	CIP:12.22.5.234;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(376002)(346002)(39860400002)(136003)(396003)(36840700001)(46966006)(40470700004)(41300700001)(26005)(82310400005)(47076005)(53546011)(54906003)(6916009)(36860700001)(186003)(83380400001)(5660300002)(356005)(2906002)(81166007)(478600001)(426003)(8676002)(40480700001)(86362001)(70206006)(8936002)(70586007)(9686003)(316002)(336012)(7416002)(40460700003)(33716001)(4326008)(82740400003)(7406005)(55016003)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2022 21:08:35.1169
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c3ac24fe-ad8d-49f4-dc15-08da53ca3455
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.234];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT018.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB5976
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_140840_995150_956238D7 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20220621_141750_804758_5DE122AD 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,41 +85,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 20, 2022 at 11:11:01AM +0100, Robin Murphy wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> On 2022-06-17 03:53, Tian, Kevin wrote:
-> > > From: Nicolin Chen <nicolinc@nvidia.com>
-> > > Sent: Friday, June 17, 2022 6:41 AM
-> > > 
-> > > > ...
-> > > > > -     if (resv_msi) {
-> > > > > +     if (resv_msi && !domain->msi_cookie) {
-> > > > >                ret = iommu_get_msi_cookie(domain->domain,
-> > > > > resv_msi_base);
-> > > > >                if (ret && ret != -ENODEV)
-> > > > >                        goto out_detach;
-> > > > > +             domain->msi_cookie = true;
-> > > > >        }
-> > > > 
-> > > > why not moving to alloc_attach_domain() then no need for the new
-> > > > domain field? It's required only when a new domain is allocated.
-> > > 
-> > > When reusing an existing domain that doesn't have an msi_cookie,
-> > > we can do iommu_get_msi_cookie() if resv_msi is found. So it is
-> > > not limited to a new domain.
-> > 
-> > Looks msi_cookie requirement is per platform (currently only
-> > for smmu. see arm_smmu_get_resv_regions()). If there is
-> > no mixed case then above check is not required.
-> > 
-> > But let's hear whether Robin has a different thought here.
-> 
-> Yes, the cookie should logically be tied to the lifetime of the domain
-> itself. In the relevant context, "an existing domain that doesn't have
-> an msi_cookie" should never exist.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Thanks for the explanation. I will move the iommu_get_msi_cookie()
-into alloc_attach_domain(), as Kevin suggested.
+The current driver has worked with HW beacon filter and connection
+monitor all the way, here we move the enablement into the initialization
+stage like other HW features being done to get rid of others are
+confused why these configurations would be changed at runtime.
+
+We still leave a way to turn off these offload features in debugfs knobs
+but that is just for debugging purposes.
+
+Tested-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2:
+rebase and apply to the latest mt76 tree
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c |  1 +
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 16 +++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c  |  5 -----
+ 3 files changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 79023992715e..29ccf58ede46 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -97,6 +97,7 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	ieee80211_hw_set(hw, SUPPORTS_PS);
+ 	ieee80211_hw_set(hw, SUPPORTS_DYNAMIC_PS);
+ 	ieee80211_hw_set(hw, SUPPORTS_VHT_EXT_NSS_BW);
++	ieee80211_hw_set(hw, CONNECTION_MONITOR);
+ 
+ 	if (dev->pm.enable)
+ 		ieee80211_hw_set(hw, CONNECTION_MONITOR);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 4070bedc8eae..29ff88892cae 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -352,6 +352,7 @@ static int mt7921_add_interface(struct ieee80211_hw *hw,
+ 		mtxq->wcid = idx;
+ 	}
+ 
++	vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
+ out:
+ 	mt7921_mutex_release(dev);
+ 
+@@ -495,8 +496,21 @@ static void
+ mt7921_pm_interface_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
+ {
+ 	struct mt7921_dev *dev = priv;
++	struct ieee80211_hw *hw = mt76_hw(dev);
++	bool pm_enable = dev->pm.enable;
++	int err;
+ 
+-	mt7921_mcu_set_beacon_filter(dev, vif, dev->pm.enable);
++	err = mt7921_mcu_set_beacon_filter(dev, vif, pm_enable);
++	if (err < 0)
++		return;
++
++	if (pm_enable) {
++		vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
++		ieee80211_hw_set(hw, CONNECTION_MONITOR);
++	} else {
++		vif->driver_flags &= ~IEEE80211_VIF_BEACON_FILTER;
++		__clear_bit(IEEE80211_HW_CONNECTION_MONITOR, hw->flags);
++	}
+ }
+ 
+ static void
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index bc434e60dfc6..69834ecbad89 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -855,7 +855,6 @@ int mt7921_mcu_set_beacon_filter(struct mt7921_dev *dev,
+ 				 struct ieee80211_vif *vif,
+ 				 bool enable)
+ {
+-	struct ieee80211_hw *hw = mt76_hw(dev);
+ 	int err;
+ 
+ 	if (enable) {
+@@ -863,8 +862,6 @@ int mt7921_mcu_set_beacon_filter(struct mt7921_dev *dev,
+ 		if (err)
+ 			return err;
+ 
+-		vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
+-		ieee80211_hw_set(hw, CONNECTION_MONITOR);
+ 		mt76_set(dev, MT_WF_RFCR(0), MT_WF_RFCR_DROP_OTHER_BEACON);
+ 
+ 		return 0;
+@@ -874,8 +871,6 @@ int mt7921_mcu_set_beacon_filter(struct mt7921_dev *dev,
+ 	if (err)
+ 		return err;
+ 
+-	vif->driver_flags &= ~IEEE80211_VIF_BEACON_FILTER;
+-	__clear_bit(IEEE80211_HW_CONNECTION_MONITOR, hw->flags);
+ 	mt76_clear(dev, MT_WF_RFCR(0), MT_WF_RFCR_DROP_OTHER_BEACON);
+ 
+ 	return 0;
+-- 
+2.25.1
+
 
