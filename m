@@ -4,82 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 392C0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 14:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13028C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 14:53:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Us5unMMOUBPzuFEiHM0v1mwK/JxXZgMtN7G9faNpjJY=; b=h+CYbWYYPIBa9pzivrfxBOlTm0
-	fzgiAPVb2Sv8u88SiQd4ybc8DgGuawwPJZtkwSOXOd0TIVT40uYfJWFnLNK7PCAoaH4vq1JBfq68+
-	HMOL7b/ManBUV8PQjn2o/vUQz0FMFu2w5tOkyf3qjurxX2P4kQp+7mYLneU3msrRvsvIB5plrQv8r
-	DonOZwQSf/LcODjiKSYUJ17TRl1Ud0MJq/zQpz/369RUboFqA3obSXeDnvwNbTlWln3h8YOMisQOi
-	JMSUO6Q+NDk05YMKGUbz5SINBO7PVYzFQGfwbuuDYyxv5uF0KopCbjozfkimtt0oSYsi6peOx0PHG
-	9TMG88mA==;
+	bh=4CJokh7B1WxuOOnVzN+yThWg5pHH6UQSvVgZwzzPLXk=; b=mO2Jmi2ur42boaZn8a1y+WYUsh
+	Ss+Au21gBLl9XeqDkxOHAoqqHyz6HLGV3EfNDCZ3afE96tM+U7dlajFjHa6d6G5IBji0TD2V/zL/9
+	4w+wPghIm5S+wOAS2Df69Po7+kIIJlQmc8mZJHPd07r1sjVlbE6tf2RNH0bmcwFKufjN9V3DyCUFD
+	GiIEjF4JoqUSKliNtsW9pHUG5cNMOF2jr1+v1rxxSLTB4i1M8e7kcQgI/HwIpArVWDZ+nmzEV+HuP
+	iKVsIx+hvqRf1Efn/km2QirptdbI6/miMSfL3QdubG3PcuF/t8CU9gU7P+qCHz1yP47g+pY6ft4Qz
+	2zUdEs0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3emA-005qdw-Fg; Tue, 21 Jun 2022 14:22:42 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
+	id 1o3fFh-005zQy-3q; Tue, 21 Jun 2022 14:53:13 +0000
+Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3em8-005qc6-02
-	for linux-mediatek@lists.infradead.org; Tue, 21 Jun 2022 14:22:41 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id 88so17026351qva.9
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jun 2022 07:22:36 -0700 (PDT)
+	id 1o3fFd-005zPN-O8
+	for linux-mediatek@lists.infradead.org; Tue, 21 Jun 2022 14:53:11 +0000
+Received: by mail-qk1-x734.google.com with SMTP id d128so10269160qkg.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jun 2022 07:53:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
         h=message-id:subject:from:to:cc:date:in-reply-to:references
          :content-transfer-encoding:user-agent:mime-version;
-        bh=Us5unMMOUBPzuFEiHM0v1mwK/JxXZgMtN7G9faNpjJY=;
-        b=fpezBkIMLFOFzWxjpswbf4s/HCObOkBJEpbZsvdUKYst5H6NWHqDs8wBlp+Kfb3t1J
-         WCDbDD+W/UILz5SULbQBeGw3zI42w/R4iGfGDceX2IxLMvHjycu9J3rzltECOtAqK5zd
-         S1VwMo1hmgkAV9BgjIH2JNXUnwPJ0g9l9A0OUp5EUD74cvr9H2fAOYpCBaLrEqsMq2aG
-         BjAyJBstblU/2hrODyjaqJ1T88aTeVDZu/kgxbdpXnGnuUvJ8CuKi3RbMVG/rZ4CJD5N
-         vFRg0q+IwMcigLgjeZJ3cSC4SO0B9gHReKtaB326ru1FkYNJe+F2WeYBPM6Zrclav4oK
-         FvuQ==
+        bh=4CJokh7B1WxuOOnVzN+yThWg5pHH6UQSvVgZwzzPLXk=;
+        b=EOtY1/wStPDCBOI1q5ntdj6Qx1LIa9kGbnk2aqCuWx/umUgFEsfTa9EhYWjVkaiCTg
+         NIbgtPxYv2gRP2BkTbvZqgkIVn6H+yqglClOLEp7NW3kMsqMLLAfe4aT+wYjUVThH48J
+         Bx3TmVpKRRN+MYv9CG55KfDVDld4Z4Ck5C+Xe5oBZq6hn2z5cvoimLLL9p1Gs4M6zXCb
+         wcMT37eUkK7jhTWJEWv0Cry9HB/DpMkLrocxmUXtDbO335p9BSaTAsRdlFm8sayVM40u
+         JlSQEMgvMUMr5g/WtIAhRHoR94zt259CttnyDH3OQ7C/JhkvTIQZRmidHqGi5NAzFStC
+         fe5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
          :references:content-transfer-encoding:user-agent:mime-version;
-        bh=Us5unMMOUBPzuFEiHM0v1mwK/JxXZgMtN7G9faNpjJY=;
-        b=CC9ggxf850xkyHLdVOfcX3TY7LH/pm+lItKuVX2R8UpHxy+p+cIlepQ72Nm/hWJe+X
-         +Eq7QRPM4z1d9uJza1lNkjePGNHDKTme0Dz+ZnMcZ7DbrVpzrRdNQjzWTAfgj8UqnNeA
-         xHEz2aBEvFmGMKJq2/k73xTnUGvv9PllTA2FK+oXiJZHLJtQ2vBgkMPrnlZ6oqFRa6L3
-         lyr6v4KNAMs+fhJS+01qvdaYKwSr3U7TQFM1LR30HSQ3vl52TVtl75Plqbgp+cL54Pg8
-         1YNjwxHCdwQojgv5j1Vc+iC96TvXexy2FPNKI85p4QKGhm9KAauM1IqBxIPPX7oY9RcK
-         mO7Q==
-X-Gm-Message-State: AJIora/i0yfU8rU+5EtscJU3TGzUBvSCdyyjRCf1wkWqf4PJoEsGt/sB
-	ifkRbfA3vxpqXlWzGiV7roZKOg==
-X-Google-Smtp-Source: AGRyM1vWXzMwB6hYFPiRehDN/2RBDuFRyqd4NGtand04O8n4nIKe/fYzERyGTr9do0RK2hCoRoE2Rw==
-X-Received: by 2002:a05:622a:412:b0:306:74e9:869c with SMTP id n18-20020a05622a041200b0030674e9869cmr24545108qtx.230.1655821356013;
-        Tue, 21 Jun 2022 07:22:36 -0700 (PDT)
+        bh=4CJokh7B1WxuOOnVzN+yThWg5pHH6UQSvVgZwzzPLXk=;
+        b=i+107eoDQj9QOXgCfJTxR1fEvXN9/bkVivRDRLSG2jOJZdNV74/bX2NUUkzu8GiEn6
+         kc08F0kzS8cYUFrjcKAak65khZioTuVVQAjELufcE1L7De4hMVxMXRckuWvwkTMhhhDB
+         ZuOwb+ad7CtfBskKbisoLb4hjj0C9MERayb3u116TRfZ+0ptpgg+uHkHmsGTPr0+pySQ
+         pcWj1XCtET3vzf0hR/XWAuEAaXcdkff8zAPyqmWeVVsDeUuZ2qmb4aCHDKlfwOlYvoUc
+         tQcB8vpvrURQqKh19hqgbviMWY+TloEgzcE4PkNmhaulOy21rkMGk2ess6wXuxAU/FF0
+         winQ==
+X-Gm-Message-State: AJIora+RynNBmfMXv8nCUg9rprmFHPayWL53ba7tvvN3iDgSNXvVkyz/
+	n47Hzd8nmvKF8b6aNfR3CYmZJg==
+X-Google-Smtp-Source: AGRyM1sRE+GqAParHnU3dmSx9dZduWZRG37ok/V4XsNHxiJWm0NRbF062Y7A5bT43p/ISCL17Il+IA==
+X-Received: by 2002:a05:620a:3182:b0:6a7:3ac8:afb9 with SMTP id bi2-20020a05620a318200b006a73ac8afb9mr20066051qkb.482.1655823187281;
+        Tue, 21 Jun 2022 07:53:07 -0700 (PDT)
 Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net. [192.222.136.102])
-        by smtp.gmail.com with ESMTPSA id q13-20020a37f70d000000b006a91da2fc8dsm13809503qkj.0.2022.06.21.07.22.35
+        by smtp.gmail.com with ESMTPSA id az32-20020a05620a172000b006a780aa9fc4sm14537410qkb.96.2022.06.21.07.53.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jun 2022 07:22:35 -0700 (PDT)
-Message-ID: <9f37792d9de58cf88c3b21d6d96fc83ff30768da.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: mediatek: vcodec: Skip SOURCE_CHANGE & EOS
- events for stateless
+        Tue, 21 Jun 2022 07:53:06 -0700 (PDT)
+Message-ID: <0f8f32e2b05a93f305e64a67177acd487a6966f4.camel@ndufresne.ca>
+Subject: Re: [PATCH v4, 3/3] media: mediatek: vcodec: add h264 decoder
+ driver for mt8186
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Chen-Yu Tsai <wenst@chromium.org>, Tiffany Lin
- <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno
-	 <angelogioacchino.delregno@collabora.com>, Yunfei Dong
-	 <yunfei.dong@mediatek.com>
-Date: Tue, 21 Jun 2022 10:22:34 -0400
-In-Reply-To: <20220620063349.2754116-1-wenst@chromium.org>
-References: <20220620063349.2754116-1-wenst@chromium.org>
+To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tomasz
+ Figa <tfiga@google.com>
+Cc: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>,  Hsin-Yi Wang <hsinyi@chromium.org>, Fritz
+ Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,  dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Tue, 21 Jun 2022 10:53:04 -0400
+In-Reply-To: <2e1584f4804c88c4ae9a460c7cb2d4a57ff72e7d.camel@mediatek.com>
+References: <20220512034620.30500-1-yunfei.dong@mediatek.com>
+	 <20220512034620.30500-4-yunfei.dong@mediatek.com>
+	 <7c0ab49b01c4e80835000eb1d3fd58db542385f2.camel@ndufresne.ca>
+	 <2e1584f4804c88c4ae9a460c7cb2d4a57ff72e7d.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.44.2 (3.44.2-1.fc36) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_072240_072671_21366DCE 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20220621_075309_832586_04EA00F6 
+X-CRM114-Status: GOOD (  34.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,55 +105,312 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le lundi 20 juin 2022 =C3=A0 14:33 +0800, Chen-Yu Tsai a =C3=A9crit=C2=A0:
-> The stateless decoder API does not specify the usage of SOURCE_CHANGE
-> and EOF events. These events are used by stateful decoders to signal
-> changes in the bitstream. They do not make sense for stateless decoders.
+Le mercredi 15 juin 2022 =C3=A0 19:33 +0800, yunfei.dong@mediatek.com a =C3=
+=A9crit=C2=A0:
+> Hi Nicolas,
 >=20
-> Do not handle subscription for these two types of events for stateless
-> decoder instances. This fixes the last v4l2-compliance error:
+> Thanks for your comments.
+> On Mon, 2022-06-13 at 16:08 -0400, Nicolas Dufresne wrote:
+> > Le jeudi 12 mai 2022 =C3=A0 11:46 +0800, Yunfei Dong a =C3=A9crit :
+> > > Add h264 decode driver to support mt8186. For the architecture
+> > > is single core, need to add new interface to decode.
+> > >=20
+> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > ---
+> > >  .../vcodec/vdec/vdec_h264_req_multi_if.c      | 177
+> > > +++++++++++++++++-
+> > >  1 file changed, 176 insertions(+), 1 deletion(-)
+> > >=20
+> > > diff --git
+> > > a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
+> > > f.c
+> > > b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
+> > > f.c
+> > > index a96f203b5d54..1d9e753cf894 100644
+> > > ---
+> > > a/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
+> > > f.c
+> > > +++
+> > > b/drivers/media/platform/mediatek/vcodec/vdec/vdec_h264_req_multi_i
+> > > f.c
+> > > @@ -140,6 +140,9 @@ struct vdec_h264_slice_share_info {
+> > >   * @vsi:		vsi used for lat
+> > >   * @vsi_core:		vsi used for core
+> > >   *
+> > > + * @vsi_ctx:		Local VSI data for this decoding
+> > > context
+> > > + * @h264_slice_param:	the parameters that hardware use to
+> > > decode
+> > > + *
+> > >   * @resolution_changed:resolution changed
+> > >   * @realloc_mv_buf:	reallocate mv buffer
+> > >   * @cap_num_planes:	number of capture queue plane
+> > > @@ -157,6 +160,9 @@ struct vdec_h264_slice_inst {
+> > >  	struct vdec_h264_slice_vsi *vsi;
+> > >  	struct vdec_h264_slice_vsi *vsi_core;
+> > > =20
+> > > +	struct vdec_h264_slice_vsi vsi_ctx;
+> > > +	struct vdec_h264_slice_lat_dec_param h264_slice_param;
+> > > +
+> > >  	unsigned int resolution_changed;
+> > >  	unsigned int realloc_mv_buf;
+> > >  	unsigned int cap_num_planes;
+> > > @@ -208,6 +214,61 @@ static int
+> > > vdec_h264_slice_fill_decode_parameters(struct vdec_h264_slice_inst
+> > > *i
+> > >  	return 0;
+> > >  }
+> > > =20
+> > > +static int get_vdec_sig_decode_parameters(struct
+> > > vdec_h264_slice_inst *inst)
+> > > +{
+> > > +	const struct v4l2_ctrl_h264_decode_params *dec_params;
+> > > +	const struct v4l2_ctrl_h264_sps *sps;
+> > > +	const struct v4l2_ctrl_h264_pps *pps;
+> > > +	const struct v4l2_ctrl_h264_scaling_matrix *scaling_matrix;
+> > > +	struct vdec_h264_slice_lat_dec_param *slice_param =3D &inst-
+> > > > h264_slice_param;
+> > > +	struct v4l2_h264_reflist_builder reflist_builder;
+> > > +	u8 *p0_reflist =3D slice_param->decode_params.ref_pic_list_p0;
+> > > +	u8 *b0_reflist =3D slice_param->decode_params.ref_pic_list_b0;
+> > > +	u8 *b1_reflist =3D slice_param->decode_params.ref_pic_list_b1;
+> > > +
+> > > +	dec_params =3D
+> > > +		mtk_vdec_h264_get_ctrl_ptr(inst->ctx,
+> > > V4L2_CID_STATELESS_H264_DECODE_PARAMS);
+> > > +	if (IS_ERR(dec_params))
+> > > +		return PTR_ERR(dec_params);
+> > > +
+> > > +	sps =3D mtk_vdec_h264_get_ctrl_ptr(inst->ctx,
+> > > V4L2_CID_STATELESS_H264_SPS);
+> > > +	if (IS_ERR(sps))
+> > > +		return PTR_ERR(sps);
+> > > +
+> > > +	pps =3D mtk_vdec_h264_get_ctrl_ptr(inst->ctx,
+> > > V4L2_CID_STATELESS_H264_PPS);
+> > > +	if (IS_ERR(pps))
+> > > +		return PTR_ERR(pps);
+> > > +
+> > > +	scaling_matrix =3D
+> > > +		mtk_vdec_h264_get_ctrl_ptr(inst->ctx,
+> > > V4L2_CID_STATELESS_H264_SCALING_MATRIX);
+> > > +	if (IS_ERR(scaling_matrix))
+> > > +		return PTR_ERR(scaling_matrix);
+> > > +
+> > > +	mtk_vdec_h264_update_dpb(dec_params, inst->dpb);
+> > > +
+> > > +	mtk_vdec_h264_copy_sps_params(&slice_param->sps, sps);
+> > > +	mtk_vdec_h264_copy_pps_params(&slice_param->pps, pps);
+> > > +	mtk_vdec_h264_copy_scaling_matrix(&slice_param->scaling_matrix,=20
+> > > scaling_matrix);
+> > > +
+> > > +	mtk_vdec_h264_copy_decode_params(&slice_param->decode_params,
+> > > dec_params, inst->dpb);
+> > > +	mtk_vdec_h264_fill_dpb_info(inst->ctx, &slice_param-
+> > > > decode_params,
+> > > +				    slice_param->h264_dpb_info);
+> > > +
+> > > +	/* Build the reference lists */
+> > > +	v4l2_h264_init_reflist_builder(&reflist_builder, dec_params,
+> > > sps, inst->dpb);
+> > > +	v4l2_h264_build_p_ref_list(&reflist_builder, p0_reflist);
+> > > +
+> > > +	v4l2_h264_build_b_ref_lists(&reflist_builder, b0_reflist,
+> > > b1_reflist);
+> > > +	/* Adapt the built lists to the firmware's expectations */
+> > > +	mtk_vdec_h264_fixup_ref_list(p0_reflist,
+> > > reflist_builder.num_valid);
+> > > +	mtk_vdec_h264_fixup_ref_list(b0_reflist,
+> > > reflist_builder.num_valid);
+> > > +	mtk_vdec_h264_fixup_ref_list(b1_reflist,
+> > > reflist_builder.num_valid);
+> > > +	memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
+> > > +	       sizeof(inst->vsi_ctx.h264_slice_params));
+> >=20
+> > This function looks very redundant across multiple variants, could
+> > you try and
+> > make a helper to reduce the duplication ?
+> >=20
+> At first, I try to add one helper function for single core and lat
+> decode.
 >=20
-> Control ioctls:
-> 		fail: v4l2-test-controls.cpp(946): have_source_change || have_eos
-> 	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
->=20
-> Fixes: 8cdc3794b2e3 ("media: mtk-vcodec: vdec: support stateless API")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> But these two hardware have big differences, need to add many condition
+> to separate. So just add new function for mt8186 single core
+> architecture.
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+I still think you could have a very small helper that turns the reflist_bui=
+lder
+incantation (which are fully identical in all SoC), to be one line/call. It=
+ was
+annoying when I recently had to update this driver for some internal API ch=
+ange.
 
-> ---
 >=20
-> This should apply cleanly on next-20220617. The other media patches I
-> have on my branch:
+> Best Regards,
+> Yunfei Dong
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > >  static void vdec_h264_slice_fill_decode_reflist(struct
+> > > vdec_h264_slice_inst *inst,
+> > >  						struct
+> > > vdec_h264_slice_lat_dec_param *slice_param,
+> > >  						struct
+> > > vdec_h264_slice_share_info *share_info)
+> > > @@ -596,6 +657,120 @@ static int vdec_h264_slice_lat_decode(void
+> > > *h_vdec, struct mtk_vcodec_mem *bs,
+> > >  	return err;
+> > >  }
+> > > =20
+> > > +static int vdec_h264_slice_single_decode(void *h_vdec, struct
+> > > mtk_vcodec_mem *bs,
+> > > +					 struct vdec_fb *unused, bool
+> > > *res_chg)
+> > > +{
+> > > +	struct vdec_h264_slice_inst *inst =3D h_vdec;
+> > > +	struct vdec_vpu_inst *vpu =3D &inst->vpu;
+> > > +	struct mtk_video_dec_buf *src_buf_info, *dst_buf_info;
+> > > +	struct vdec_fb *fb;
+> > > +	unsigned char *buf;
+> > > +	unsigned int data[2], i;
+> > > +	u64 y_fb_dma, c_fb_dma;
+> > > +	struct mtk_vcodec_mem *mem;
+> > > +	int err, nal_start_idx;
+> > > +
+> > > +	/* bs NULL means flush decoder */
+> > > +	if (!bs)
+> > > +		return vpu_dec_reset(vpu);
+> > > +
+> > > +	fb =3D inst->ctx->dev->vdec_pdata->get_cap_buffer(inst->ctx);
+> > > +	src_buf_info =3D container_of(bs, struct mtk_video_dec_buf,
+> > > bs_buffer);
+> > > +	dst_buf_info =3D container_of(fb, struct mtk_video_dec_buf,
+> > > frame_buffer);
+> > > +
+> > > +	y_fb_dma =3D fb ? (u64)fb->base_y.dma_addr : 0;
+> > > +	c_fb_dma =3D fb ? (u64)fb->base_c.dma_addr : 0;
+> > > +	mtk_vcodec_debug(inst, "[h264-dec] [%d] y_dma=3D%llx c_dma=3D%llx",
+> > > +			 inst->ctx->decoded_frame_cnt, y_fb_dma,
+> > > c_fb_dma);
+> > > +
+> > > +	inst->vsi_ctx.dec.bs_buf_addr =3D (u64)bs->dma_addr;
+> > > +	inst->vsi_ctx.dec.bs_buf_size =3D bs->size;
+> > > +	inst->vsi_ctx.dec.y_fb_dma =3D y_fb_dma;
+> > > +	inst->vsi_ctx.dec.c_fb_dma =3D c_fb_dma;
+> > > +	inst->vsi_ctx.dec.vdec_fb_va =3D (u64)(uintptr_t)fb;
+> > > +
+> > > +	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb,
+> > > +				   &dst_buf_info->m2m_buf.vb, true);
+> > > +	err =3D get_vdec_sig_decode_parameters(inst);
+> > > +	if (err)
+> > > +		goto err_free_fb_out;
+> > > +
+> > > +	buf =3D (unsigned char *)bs->va;
+> > > +	nal_start_idx =3D mtk_vdec_h264_find_start_code(buf, bs->size);
+> > > +	if (nal_start_idx < 0) {
+> > > +		err =3D -EINVAL;
+> > > +		goto err_free_fb_out;
+> > > +	}
+> > > +	inst->vsi_ctx.dec.nal_info =3D buf[nal_start_idx];
+> > > +
+> > > +	*res_chg =3D inst->resolution_changed;
+> > > +	if (inst->resolution_changed) {
+> > > +		mtk_vcodec_debug(inst, "- resolution changed -");
+> > > +		if (inst->realloc_mv_buf) {
+> > > +			err =3D vdec_h264_slice_alloc_mv_buf(inst, &inst-
+> > > > ctx->picinfo);
+> > > +			inst->realloc_mv_buf =3D false;
+> > > +			if (err)
+> > > +				goto err_free_fb_out;
+> > > +		}
+> > > +		inst->resolution_changed =3D false;
+> > > +
+> > > +		for (i =3D 0; i < H264_MAX_MV_NUM; i++) {
+> > > +			mem =3D &inst->mv_buf[i];
+> > > +			inst->vsi_ctx.mv_buf_dma[i] =3D mem->dma_addr;
+> > > +		}
+> > > +	}
+> > > +
+> > > +	memcpy(inst->vpu.vsi, &inst->vsi_ctx, sizeof(inst->vsi_ctx));
+> > > +	err =3D vpu_dec_start(vpu, data, 2);
+> > > +	if (err)
+> > > +		goto err_free_fb_out;
+> > > +
+> > > +	/* wait decoder done interrupt */
+> > > +	err =3D mtk_vcodec_wait_for_done_ctx(inst->ctx,
+> > > MTK_INST_IRQ_RECEIVED,
+> > > +					   WAIT_INTR_TIMEOUT_MS,
+> > > MTK_VDEC_CORE);
+> > > +	if (err)
+> > > +		mtk_vcodec_err(inst, "decode timeout: pic_%d",
+> > > +			       inst->ctx->decoded_frame_cnt);
+> > > +
+> > > +	inst->vsi->dec.timeout =3D !!err;
+> > > +	err =3D vpu_dec_end(vpu);
+> > > +	if (err)
+> > > +		goto err_free_fb_out;
+> > > +
+> > > +	memcpy(&inst->vsi_ctx, inst->vpu.vsi, sizeof(inst->vsi_ctx));
+> > > +	mtk_vcodec_debug(inst, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x
+> > > 0x%x 0x%x 0x%x",
+> > > +			 inst->ctx->decoded_frame_cnt,
+> > > +			 inst->vsi_ctx.dec.crc[0], inst-
+> > > > vsi_ctx.dec.crc[1],
+> > > +			 inst->vsi_ctx.dec.crc[2], inst-
+> > > > vsi_ctx.dec.crc[3],
+> > > +			 inst->vsi_ctx.dec.crc[4], inst-
+> > > > vsi_ctx.dec.crc[5],
+> > > +			 inst->vsi_ctx.dec.crc[6], inst-
+> > > > vsi_ctx.dec.crc[7]);
+> > > +
+> > > +	inst->ctx->decoded_frame_cnt++;
+> > > +	return 0;
+> > > +
+> > > +err_free_fb_out:
+> > > +	mtk_vcodec_err(inst, "dec frame number: %d err: %d",
+> > > +		       inst->ctx->decoded_frame_cnt, err);
+> > > +	return err;
+> > > +}
+> > > +
+> > > +static int vdec_h264_slice_decode(void *h_vdec, struct
+> > > mtk_vcodec_mem *bs,
+> > > +				  struct vdec_fb *unused, bool
+> > > *res_chg)
+> > > +{
+> > > +	struct vdec_h264_slice_inst *inst =3D h_vdec;
+> > > +	int ret;
+> > > +
+> > > +	if (!h_vdec)
+> > > +		return -EINVAL;
+> > > +
+> > > +	if (inst->ctx->dev->vdec_pdata->hw_arch =3D=3D
+> > > MTK_VDEC_PURE_SINGLE_CORE)
+> > > +		ret =3D vdec_h264_slice_single_decode(h_vdec, bs, unused,
+> > > res_chg);
+> > > +	else
+> > > +		ret =3D vdec_h264_slice_lat_decode(h_vdec, bs, unused,
+> > > res_chg);
+> > > +
+> > > +	return ret;
+> > > +}
+> > > +
+> > >  static int vdec_h264_slice_get_param(void *h_vdec, enum
+> > > vdec_get_param_type type,
+> > >  				     void *out)
+> > >  {
+> > > @@ -620,7 +795,7 @@ static int vdec_h264_slice_get_param(void
+> > > *h_vdec, enum vdec_get_param_type type
+> > > =20
+> > >  const struct vdec_common_if vdec_h264_slice_multi_if =3D {
+> > >  	.init		=3D vdec_h264_slice_init,
+> > > -	.decode		=3D vdec_h264_slice_lat_decode,
+> > > +	.decode		=3D vdec_h264_slice_decode,
+> > >  	.get_param	=3D vdec_h264_slice_get_param,
+> > >  	.deinit		=3D vdec_h264_slice_deinit,
+> > >  };
+> >=20
+> >=20
 >=20
-> media: mediatek: vcodec: Initialize decoder parameters after getting dec_=
-capability
-> media: mediatek: vcodec: Fix non subdev architecture open power fail
->=20
-> should not interfere, though the second is required for proper operation
-> of the decoder on MT8183.
->=20
->  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/dr=
-ivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> index 62f29b6fa104..a5fbc0a1c6bc 100644
-> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> @@ -234,6 +234,11 @@ static int vidioc_vdec_querycap(struct file *file, v=
-oid *priv,
->  static int vidioc_vdec_subscribe_evt(struct v4l2_fh *fh,
->  				     const struct v4l2_event_subscription *sub)
->  {
-> +	struct mtk_vcodec_ctx *ctx =3D fh_to_ctx(fh);
-> +
-> +	if (ctx->dev->vdec_pdata->uses_stateless_api)
-> +		return v4l2_ctrl_subscribe_event(fh, sub);
-> +
->  	switch (sub->type) {
->  	case V4L2_EVENT_EOS:
->  		return v4l2_event_subscribe(fh, sub, 2, NULL);
 
 
