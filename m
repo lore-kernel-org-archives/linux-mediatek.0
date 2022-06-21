@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3E53C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 12:45:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC20C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 13:27:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lBbMh4VJQSENMww0dOzgXxo1RM/VlCElXB1csm8/4yk=; b=MFay6SNxqhib8nakUbWrtoVBJe
-	R1Cj52Vi5S0AG5/IuPEZz3TsgHFTFAoeA/7dj0mMBVWFVCVJJQRUrAwHuxylbumIgitDJBpeCISer
-	aeZ6FhwaxlvzZbEZXCVN2vEcasdjYU9jdFmMf2ryaGlgaELHZ083uA2o/GBvVDotLVisjcbCeqNYR
-	aCVDwAx4OiJJsYgYL2QJTBWIyw66C0RAqqwFKhKThmvKKZAUOG2hU8B2rRq1sQ0lHKN5Gkl5j18XI
-	k70g3Z/OCxAeUqIaLWcLtKeYf6dVWc77oTDQ+j+uly35elXrfMZGzfrEqpOc6Ysi53cbKfYpuCsph
-	zr6YgaUw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W9WeDI65l7hytKaAT8RGk61jhM3h0WPR8+pTmgn/A5Q=; b=yKrl7WLbDM9G/wN1kjdZLCBAIs
+	o+W2pBFy+JdbInzMTLC59CMTjJOf+aiGp7hFXI1Kh0FXdsFntfVaIIVbC6KppdTw6hZPZkcMhdRHG
+	SFHiq2HcDSToEUVRtNS/Pb96q7ZgkNGvspP4EC5RUo2eor8038lWfXcKKMALTNafjYAwmVRG/kRgg
+	Uh/PK8GYm5nJDxSMBJ0XKNmEkjzuP0Ih0OvI0CDveN4HOmh647STdg5jgMVTLg3XXvtrSsxMzXwAr
+	CUB/NIs1tWYyPcr/MJ/y89jGROn96u6stSRImdVp98di8Xha98HqUQ8h+IDgTlfcnbSOKCBjomB2I
+	Mg2xjoOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3dFk-005PSJ-L7; Tue, 21 Jun 2022 12:45:08 +0000
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+	id 1o3duf-005dcZ-W5; Tue, 21 Jun 2022 13:27:26 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3dFO-005PH1-6L; Tue, 21 Jun 2022 12:44:48 +0000
-Received: by mail-oi1-x233.google.com with SMTP id q11so16883678oih.10;
-        Tue, 21 Jun 2022 05:44:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=lBbMh4VJQSENMww0dOzgXxo1RM/VlCElXB1csm8/4yk=;
-        b=eolm2QQGIWVt9QGJZP7tr72BIW3micukjnoCEafo7KN3jMzs3m4Elt5xV/fiYg+lOd
-         vir4bPdilxNpZlovp5y+FTc5/9GKgAWLg2rYAWI4DCjZnGVqziDReoL8DlblgxyRpUwR
-         xnBePY1UrQC/lYHe7a6asq6bjM5aKrl/Z1fKRcuNtZj92nmKrSmt69XnsYMnO7eq27fM
-         IgN8ycYrO/V81iMl1wYK1Ygdzrw2xIB1C0whXaZEjXmYezgjxNb1LNEum7A7arTZ9t+h
-         E8m8x0ID7HdUCiWTKKIAagp6KX3Z7QStVXmoffBq9lS+sH1UxGG2KnvNvqPS2Oa4ItWK
-         Ebug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=lBbMh4VJQSENMww0dOzgXxo1RM/VlCElXB1csm8/4yk=;
-        b=P+wek1Tz0oU6Iknqdj30sgYMkjGV84+UM7KLLBAmq2v7YFgeihDU/2zFthkzlU9m3P
-         toQbxUvtDp29LRiMdp0bMus9U++2Lcnfw350mQYNwv3KfNcDWfMuXrKPx4NGBwe0roXC
-         kUbOLBXjGUpLM+lDfrv1b0vFvnX9XbUzx/Sc+mGDAJCCE2U4yc5Zt6WBzaX6VRNCH17P
-         /kcztSFeC8YANoQduqbYePoNZKQ0wv/O/qHNbn5Z2kHjg3Qopl16Jc2QvZVhsdklsXqL
-         bQR/vaU7CD0aFKXDAxf9oZ5MzbqSQuigxUoidiI6L4W0SmG7BURpsxjmnggrSmZBqiRY
-         a0eA==
-X-Gm-Message-State: AJIora8R98ZPeI3t2N3bpo+epNAjykPJiW39QsqtACvNGGbS2Ii9t7x5
-	gM4+NudcoW0OlNfzg4uPkDk=
-X-Google-Smtp-Source: AGRyM1sq4B19d7lmERuBrPFlV3/m2YkAYtRTELTucq5c/IRSj7me2X0BE8FuHX0EtJp00/WkU+EhaA==
-X-Received: by 2002:a05:6808:f92:b0:32f:6e27:6cc7 with SMTP id o18-20020a0568080f9200b0032f6e276cc7mr14067682oiw.36.1655815484060;
-        Tue, 21 Jun 2022 05:44:44 -0700 (PDT)
-Received: from localhost.localdomain ([2804:14c:485:4b69:8593:ab55:c903:7d93])
-        by smtp.gmail.com with ESMTPSA id s22-20020a056870e6d600b000f33ced2c50sm8898350oak.56.2022.06.21.05.44.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jun 2022 05:44:43 -0700 (PDT)
-From: Fabio Estevam <festevam@gmail.com>
-To: matthias.bgg@gmail.com
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org,
-	Fabio Estevam <festevam@denx.de>
-Subject: [PATCH] arm64: dts: mediatek: Replace 'enable-sdio-wakeup'
-Date: Tue, 21 Jun 2022 09:44:35 -0300
-Message-Id: <20220621124435.121740-1-festevam@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	id 1o3dr3-005cAL-8Z; Tue, 21 Jun 2022 13:23:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1AB30B817CE;
+	Tue, 21 Jun 2022 13:23:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7579FC3411C;
+	Tue, 21 Jun 2022 13:23:34 +0000 (UTC)
+Message-ID: <1cce42c6-98ea-16d0-8167-3c0cf6f5f0af@xs4all.nl>
+Date: Tue, 21 Jun 2022 15:23:32 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [RESEND V3,0/8] Support multi-hardware jpeg decoder for MT8195
+Content-Language: en-US
+To: Irui Wang <irui.wang@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
+ angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com,
+ wenst@chromium.org
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
+ kyrie wu <kyrie.wu@mediatek.com>, srv_heupstream@mediatek.com
+References: <20220614121004.31616-1-irui.wang@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20220614121004.31616-1-irui.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_054446_271852_35573228 
-X-CRM114-Status: UNSURE (   9.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220621_062341_646366_5D7AD918 
+X-CRM114-Status: GOOD (  22.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,74 +72,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabio Estevam <festevam@denx.de>
+Why resend this series and the v9 series?
 
-As explained in Documentation/devicetree/bindings/mmc/mmc-controller.yaml,
-the 'enable-sdio-wakeup' property is considered deprecated.
+There is generally no reason to do so. If you want to remind people that
+something has to be reviewed, then just reply to the cover letter asking
+for that.
 
-Replace it with the 'wakeup-source' property instead.
+A resend is only needed if the original series didn't make it to
+https://patchwork.linuxtv.org/ for some reason.
 
-Signed-off-by: Fabio Estevam <festevam@denx.de>
----
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi    | 2 +-
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts     | 2 +-
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi  | 2 +-
- arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+Regards,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 923c1c3477e5..e21feb85d822 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -410,7 +410,7 @@ &mmc3 {
- 	sd-uhs-sdr50;
- 	sd-uhs-sdr104;
- 	keep-power-in-suspend;
--	enable-sdio-wakeup;
-+	wakeup-source;
- 	cap-sdio-irq;
- 	vmmc-supply = <&sdio_fixed_3v3>;
- 	vqmmc-supply = <&mt6397_vgp3_reg>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index 7ac9864db9de..52dc4a50e34d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -134,7 +134,7 @@ &mmc1 {
- 	vmmc-supply = <&mt6358_vmch_reg>;
- 	vqmmc-supply = <&mt6358_vmc_reg>;
- 	keep-power-in-suspend;
--	enable-sdio-wakeup;
-+	wakeup-source;
- 	non-removable;
- };
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index b50261e8b9ed..89e4358f140a 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -382,7 +382,7 @@ &mmc1 {
- 	sd-uhs-sdr50;
- 	sd-uhs-sdr104;
- 	keep-power-in-suspend;
--	enable-sdio-wakeup;
-+	wakeup-source;
- 	cap-sdio-irq;
- 	non-removable;
- 	no-mmc;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index afeb5cd37826..530e0c9ce0c9 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -159,7 +159,7 @@ &mmc1 {
- 	vmmc-supply = <&mt6358_vmch_reg>;
- 	vqmmc-supply = <&mt6358_vmc_reg>;
- 	keep-power-in-suspend;
--	enable-sdio-wakeup;
-+	wakeup-source;
- 	non-removable;
- };
- 
--- 
-2.25.1
+	Hans
 
+On 6/14/22 14:09, Irui Wang wrote:
+> From: kyrie wu <kyrie.wu@mediatek.com>
+> 
+> This series adds support for multi hardware jpeg decoding,
+> by first adding use of_platform_populate to manage each hardware
+> information: interrupt, clock, register bases and power.
+> Secondly add decoding work queue to deal with the decoding requests
+> of multi-hardware at the same time. Lastly, add output picture
+> reorder function interface to eliminate the out of order images.
+> 
+> This series has been tested with both MT8195.
+> Decoding worked for this chip.
+> 
+> Patch 1 Adds jpeg decoder dt-bindings for mt8195
+> 
+> Patches 2 jpeg decoder builds three module for using Multi-HW,
+> export some functions to make them visible by other modules.
+> 
+> Patch 3 use of_platform_populate to manage multi-hardware.
+> 
+> Patch 4 add jpeg decoding timeout function to judge hardware timeout.
+> 
+> Patch 5 add decoding work queue to deal with multi-hardware decoding
+> at the same time.
+> 
+> Patch 6 add output picture reorder function to order images.
+> 
+> Patch 7 refactor jpegdec func interface for HW working.
+> 
+> Patch 8 add stop cmd function to deal with EOS operation.
+> 
+> ---
+> This series patches dependent on:
+> media_stage tree:
+> [1]
+> https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
+> 
+> patch1 new jpegdec dt-bindings included files
+> [2] MM IOMMU binding:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
+> 
+> [3] MT8195 power domain:
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+> 
+> Changes compared with v2:
+> - add stop cmd function.
+> - some modifications for patch v1's review comments.
+> 
+> Changes compared with v1:
+> - new yaml file for mt8195 jpeg decoder.
+> - some modifications for patch v1's review comments.
+> 
+> kyrie wu (8):
+>   dt-bindings: mediatek: Add mediatek,mt8195-jpgdec compatible
+>   media: mtk-jpegdec: export jpeg decoder functions
+>   media: mtk-jpegdec: manage jpegdec multi-hardware
+>   media: mtk-jpegdec: add jpegdec timeout func interface
+>   media: mtk-jpegdec: add jpeg decode worker interface
+>   media: mtk-jpegdec: add output pic reorder interface
+>   media: mtk-jpegdec: refactor jpegdec func interface
+>   mtk-jpegdec: add stop cmd interface for jpgdec
+> 
+>  .../media/mediatek,mt8195-jpegdec.yaml        | 175 ++++++++++
+>  drivers/media/platform/mediatek/jpeg/Makefile |   5 +-
+>  .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 244 +++++++++++++-
+>  .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  46 +++
+>  .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 309 ++++++++++++++++--
+>  .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |   3 +-
+>  .../platform/mediatek/jpeg/mtk_jpeg_dec_reg.h |   1 +
+>  7 files changed, 751 insertions(+), 32 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> 
 
