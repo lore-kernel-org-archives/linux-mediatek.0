@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B7A7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 12:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34BECC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 12:13:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1DFH+0Ia93BdzZB+WHLJE3vf6P3R7M1IbAKARp70spQ=; b=TQLZHkDBP98RodKXikKt/TBs1L
-	Vj9u0cLB0yAZRn5rud/gbSItFs6shdGxbInq4NITC20XgWmReXiyG11KP0a7IK/eMDWOwxD6wtOq1
-	3Wn1HCNmxF1kNfB9CVTncSvKPy/lpidDoneNr3UzOy1Y/httOqY+6oogA/XGmNd0xm19xUTjTZno9
-	S+VYjsi1Sagd+uwbmYrNWtgz9i8MrCKduoQmX7FHpKtYybJhQSlHBOAt/6MAKEMIHxkGfxGlse23a
-	l6mFcS66eiH4/AGeRbGQ0UFl3I81x3PQAdcs6v0gd4Vu0a6Ox2yUzYysHvgjhemfmloG/FuQ18tCX
-	Jss9jSFg==;
+	bh=v4QZlXJW+zuiE5yRBLx7xMlGPP/R1nTVq7Rn+xjjtQs=; b=uXtiYLRAwO4/fsxKYtJnLUgi2g
+	grnt7hY375EqmUaP/vsP6y5Xlw+3EHoGhn7P8GbU4x3Bc7Eh6DvPra+1W/ZpSRIXLWSPccAgK8n1r
+	cQtux902o1qTz2i+w1FCjzGTqG7AGrbSwhuvuNbStoVrQlVgoA1lwWTm95cOD4t+6X1GPUtGeKPyL
+	uvAtivT+vYo5Mc2z86iNIw+3EyM9KBnc0t8cPjpsakCTYCKMlBbXOqss/wXZGQFdC2wHCG3uI2mM6
+	xxIklPPFs6pxgUiU3Vq1znJBgyDYS01QLxWZDKdcqBDJbzxTTFp7PaE1iBKHJdnSWZaXXoI2bNJ/P
+	uOgBnLVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3cku-005FUE-Jj; Tue, 21 Jun 2022 12:13:16 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o3clF-005Fgo-DZ; Tue, 21 Jun 2022 12:13:37 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3cjY-005Ehf-FW; Tue, 21 Jun 2022 12:11:53 +0000
+	id 1o3cjd-005ElB-LP; Tue, 21 Jun 2022 12:11:59 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6EAB166017A0;
-	Tue, 21 Jun 2022 13:11:50 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 68146660174F;
+	Tue, 21 Jun 2022 13:11:55 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655813511;
-	bh=3DNZncrYFTRRbUO04o6Ge6N5kK8kJIUMsdhLMMKQi+4=;
+	s=mail; t=1655813516;
+	bh=eoqC+ap4P2hb2zlxPni+x1COpwjVm+TE+Yg1s60B24o=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lafu2kFH4eYbRD042lfKr6WjPY9d7n5gsArkZVhHroikIBxBjeglJNt3unTNUTWDd
-	 ocncTNUaP7weV5RCq7rWmSBlOw9uSw7Sdz8PHpsnfgUJMSPZPNfZtoCwV7ttbCAMQv
-	 R3lVliXvnCZvdStXdTxpVS5cuBZYbHAFOE2GITuwOwMfWDsjIgnNC+5KQxER1vWKDm
-	 nn9j1+K7Qc+sG4KyKy1fu4go62OMLWEbL7kH/Eybs5ZK57J5i5UwOj/K57OlRS7Hwg
-	 +gIVxd7ZQPzcOx+Icd6RC9e4uEua/Z6+f7WJHG+48AtPmK96Nj6CsQ/X++ikufnylO
-	 OfL/AfdBi4XQA==
-Message-ID: <f590a525-2ae8-ef78-6c47-dce91e4e7f7e@collabora.com>
-Date: Tue, 21 Jun 2022 14:11:47 +0200
+	b=UuLs3CyL4DP3wA3w/BLytMrh3d+ohdDT7bB541UNpQ/xTyw0GngZf1uy4FRYbx6fT
+	 ZJmlaEREL65aQTK0IVMVzCojsQQuihyF2LvjhUNWXpX1t/W6Uuo1PMODXKuhKk9op+
+	 nZCKlbJWHMc/z4nUgk7yke1eCMl2t/ODiUuyh+HoB5oi8sxcoFxbhQj2yn2B8Ojh5H
+	 YJ4h0OUfHHrMH0xWLpeNoKhMYc+vt4Tn0s3cGw2w8VLZxKKY+nSrHDgy03vDbWCT/Z
+	 GjcwZw6T8r/pSwKzNPQHo1w/pgEpmkKoGys2G3lhGWGndd3QitxDUFDKr6nnNveQou
+	 B1MraZh3CPq0A==
+Message-ID: <7e4ce7cc-365c-82ad-3517-f54e18589a74@collabora.com>
+Date: Tue, 21 Jun 2022 14:11:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH v13 02/14] drm/mediatek: dpi: Add kernel document for
- struct mtk_dpi_conf
+Subject: Re: [PATCH v13 01/14] dt-bindings: mediatek,dpi: Add DP_INTF
+ compatible
 Content-Language: en-US
 To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
  p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
@@ -58,15 +58,14 @@ Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220621113732.11595-1-rex-bc.chen@mediatek.com>
- <20220621113732.11595-3-rex-bc.chen@mediatek.com>
+ <20220621113732.11595-2-rex-bc.chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220621113732.11595-3-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220621113732.11595-2-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_051152_716303_6F7F0462 
-X-CRM114-Status: UNSURE (   7.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220621_051157_893302_7D272A63 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,10 +81,22 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 21/06/22 13:37, Bo-Chen Chen ha scritto:
-> This driver will support dp_intf and there are many configs between dpi
-> and dp_intf. Therefore, we will add many configs in "struct mtk_dpi_conf".
-> To let this structure more readable, we add this kernel doc.
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
 > 
+> DP_INTF is similar to DPI but does not have the exact same feature set
+> or register layouts.
+> 
+> DP_INTF is the sink of the display pipeline that is connected to the
+> DisplayPort controller and encoder unit. It takes the same clocks as
+> DPI.
+> 
+> In this patch, we also do these string replacement:
+> - s/mediatek/MediaTek/ in title.
+> - s/Mediatek/MediaTek/ in description.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> [Bo-Chen: Modify reviewers' comments.]
 > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
