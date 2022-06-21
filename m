@@ -4,105 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C39CBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 22:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A78C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 22:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f/+1/Xy/oMl85EwlznQPMBlg4SJKLxQKry9nxTTQZbw=; b=tjU+ttSMWc8/g8NpKYwq+GNCt9
-	U/Cst6Uhbm8na0DDr8NxyuA5PtiyzslTZGTGPueSjXXhk3W7G9X+xn7o4CYZiED2ysWKaMkXBecCl
-	NcA+vupDL5wRC/eJD1Xn/ak3Heo9zxG/jq1kObsF1me+kw30drcU/yGZFQVYJWKsp9lhWtXyKoLc5
-	s6jVeLIHqef+3rH8BM/YqBCiuWgH0YY3ebTLrAgUXx2FoqFf4/Qihz5ZGrqRUZKJ4dypcDLKqYEj4
-	2vK7Eh+y5lZBuwKIksbqEbvKNx/rs34mhQgqUYbzX3Q1qwxRp2Bhub+lWI56MENohmVMZj3q8AXNT
-	wrYbhdOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OED5+XLGpZE9O3sicmye54Xog+i2Z3HG5tduXpVm1qE=; b=IxeXBcoaXVgyM60yZT9aCE+pFF
+	JaDJHTBNosy5Cc53UMOJTWH4gxPLGClsxO0bhf7E30Y07Q9TYT+liqt4E1B1flMAA399Pwcp0OAPV
+	GJyt8cu6/Doe/DHEgXUTUGFE++xELBgnDAFeO81jQ2yNM4QPUfyLsAMRrPpqEV3BYRoihIdouGOjs
+	UeQoYDbCT1xbsaM9HB1JFGSrXrPXx9/Pf/skkXWPGL5wACfiM8EgZ82t0Xx72cQ4BW2ppPiiauVxd
+	9m2A2+QaiPMKEg7jB2/x5l6x2HvzhG6qxJASSxTJL9mB5TDV48DA+9USDGPEWa0Ad91zNAgRpItqB
+	2JIfW4vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3mdU-007XGT-9K; Tue, 21 Jun 2022 22:46:16 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1o3mj0-007dZN-F6; Tue, 21 Jun 2022 22:51:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3mdR-007XF9-Js
-	for linux-mediatek@lists.infradead.org; Tue, 21 Jun 2022 22:46:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1655851567;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=f/+1/Xy/oMl85EwlznQPMBlg4SJKLxQKry9nxTTQZbw=;
-	b=Xig8AL7bKmoYrVt3KaOD6ZubfTjvJ95Z/iKKaeu4FmsD6e4BRA0kk5O6toWz43616jEavp
-	31pZ6D4Czl9IS0ucpR8VD7XG2jarpF94jm6yftW88mjROVNgZs8jKwdA+dYZhWQRvtMgDz
-	MxgTgFzZdt1QuRURiLBcmwfgs0p1puA=
-Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
- [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-381-ItnRz_hmPpu065qN-DSawA-1; Tue, 21 Jun 2022 18:46:06 -0400
-X-MC-Unique: ItnRz_hmPpu065qN-DSawA-1
-Received: by mail-il1-f197.google.com with SMTP id l4-20020a056e021c0400b002d92232d76dso2939635ilh.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jun 2022 15:46:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
-         :references:organization:mime-version:content-transfer-encoding;
-        bh=f/+1/Xy/oMl85EwlznQPMBlg4SJKLxQKry9nxTTQZbw=;
-        b=iNXk28lqMSp7NIrPDq0s6b9gzIjU55Tj/lxcVPNbsmyvY51fE+1Ul3FpJcU77qkABX
-         YCVw4oNS5U9Rk99j87G6ZcgA7JDhBcV51XBuMVDWyTTSQ0dkhBF2A63TuKgSOAAC8zqZ
-         FV95LoBsl/MayYT2A4UQgO1iNyPtGcE0WhKikYeuLheXRBJAyr/s58K9UGxKcSr/MgMk
-         4NiaHZ8ATK6oqC1GRidXmBGL0epQvSSPvh8+40mjIi16eWQqjL6wxmfzkeZQ+Fo1vuN3
-         T/3Me5CfP33Cv9202bd8JHcsqY4MwvoathVsXlXQpp8067tqwU7HDcIAPyTpMX8TI8Ey
-         IiEg==
-X-Gm-Message-State: AJIora8uVK/WzAHrlSM5PU2PslzxnN4d+ICodHhJFeTz08HXCfEMwG/r
-	YOzJh/W84bLZPk/qafJbjt9pcEoWpdNtEmS+eQbWyiSWkdDlFuU3PbUr+B9y7wUFcjMV7aGAgU+
-	FqnldVoyTVjnXDPc32Ay/OmRLKsdcuHIk
-X-Received: by 2002:a6b:ba43:0:b0:669:a9b2:48fb with SMTP id k64-20020a6bba43000000b00669a9b248fbmr192979iof.125.1655851566152;
-        Tue, 21 Jun 2022 15:46:06 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tCBBV2lQEfTtXWwkhfe9gHC1iihjOMaGFwTYEcz2D9BCipjXjT/6swp6lkrYHefJSlpm5AwA==
-X-Received: by 2002:a6b:ba43:0:b0:669:a9b2:48fb with SMTP id k64-20020a6bba43000000b00669a9b248fbmr192927iof.125.1655851565803;
-        Tue, 21 Jun 2022 15:46:05 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239])
-        by smtp.gmail.com with ESMTPSA id m3-20020a056638224300b00339c015fd84sm2073679jas.59.2022.06.21.15.46.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jun 2022 15:46:05 -0700 (PDT)
-Date: Tue, 21 Jun 2022 16:46:02 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: <joro@8bytes.org>, <will@kernel.org>, <marcan@marcan.st>,
- <sven@svenpeter.dev>, <robin.murphy@arm.com>, <robdclark@gmail.com>,
- <baolu.lu@linux.intel.com>, <matthias.bgg@gmail.com>,
- <orsonzhai@gmail.com>, <baolin.wang7@gmail.com>, <zhang.lyra@gmail.com>,
- <jean-philippe@linaro.org>, <jgg@nvidia.com>, <kevin.tian@intel.com>,
- <suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
- <dwmw2@infradead.org>, <yong.wu@mediatek.com>, <mjrosato@linux.ibm.com>,
- <gerald.schaefer@linux.ibm.com>, <thierry.reding@gmail.com>,
- <vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <cohuck@redhat.com>,
- <thunder.leizhen@huawei.com>, <tglx@linutronix.de>,
- <christophe.jaillet@wanadoo.fr>, <john.garry@huawei.com>,
- <chenxiang66@hisilicon.com>, <saiprakash.ranjan@codeaurora.org>,
- <isaacm@codeaurora.org>, <yangyingliang@huawei.com>,
- <jordan@cosmicpenguin.net>, <iommu@lists.linux-foundation.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-s390@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
- <virtualization@lists.linux-foundation.org>, <kvm@vger.kernel.org>
-Subject: Re: [PATCH v2 2/5] vfio/iommu_type1: Prefer to reuse domains vs
- match enforced cache coherency
-Message-ID: <20220621164602.4079bf43.alex.williamson@redhat.com>
-In-Reply-To: <20220616000304.23890-3-nicolinc@nvidia.com>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
-	<20220616000304.23890-3-nicolinc@nvidia.com>
-Organization: Red Hat
+	id 1o3mix-007dYF-1k
+	for linux-mediatek@lists.infradead.org; Tue, 21 Jun 2022 22:51:56 +0000
+X-UUID: 772fb19e650541e58c8d71bd75236f42-20220621
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:ef3ef978-f21d-4bf5-af4e-8a8cc1225a71,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:8
+X-CID-META: VersionHash:b14ad71,CLOUDID:de4ead2d-1756-4fa3-be7f-474a6e4be921,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 772fb19e650541e58c8d71bd75236f42-20220621
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1033449243; Tue, 21 Jun 2022 15:51:48 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Jun 2022 15:51:47 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jun 2022 06:51:45 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 22 Jun 2022 06:51:45 +0800
+From: <sean.wang@mediatek.com>
+To: <pmenzel@molgen.mpg.de>
+CC: <marcel@holtmann.org>, <johan.hedberg@gmail.com>,
+	<sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
+	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+	<abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>,
+	<shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH] Bluetooth: btmtksdio: Add in-band wakeup support
+Date: Wed, 22 Jun 2022 06:51:44 +0800
+Message-ID: <1655851904-15022-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1472eccd-429b-0a18-565c-7de2e5ed44f2@molgen.mpg.de--annotate>
+References: <1472eccd-429b-0a18-565c-7de2e5ed44f2@molgen.mpg.de--annotate>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=alex.williamson@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_154613_755983_E083297F 
-X-CRM114-Status: GOOD (  28.10  )
+X-CRM114-CacheID: sfid-20220621_155155_140219_51815F67 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,66 +86,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 15 Jun 2022 17:03:01 -0700
-Nicolin Chen <nicolinc@nvidia.com> wrote:
+From: Sean Wang <sean.wang@mediatek.com>
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> 
-> The KVM mechanism for controlling wbinvd is based on OR of the coherency
-> property of all devices attached to a guest, no matter those devices are
-> attached to a single domain or multiple domains.
-> 
-> So, there is no value in trying to push a device that could do enforced
-> cache coherency to a dedicated domain vs re-using an existing domain
-> which is non-coherent since KVM won't be able to take advantage of it.
-> This just wastes domain memory.
-> 
-> Simplify this code and eliminate the test. This removes the only logic
-> that needed to have a dummy domain attached prior to searching for a
-> matching domain and simplifies the next patches.
-> 
-> It's unclear whether we want to further optimize the Intel driver to
-> update the domain coherency after a device is detached from it, at
-> least not before KVM can be verified to handle such dynamics in related
-> emulation paths (wbinvd, vcpu load, write_cr0, ept, etc.). In reality
-> we don't see an usage requiring such optimization as the only device
-> which imposes such non-coherency is Intel GPU which even doesn't
-> support hotplug/hot remove.
+>Dear Sean,
+>
+>
+>Thank you for the patch.
+>
+>Am 10.06.22 um 02:17 schrieb sean.wang@mediatek.com:
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> 'ce64b3e94919 ("Bluetooth: mt7921s: Support wake on bluetooth")'
+>> have added the waken-on-bluetooth via dedicated GPIO.
+>
+>Maybe:
+>
+>Commit ce64b3e94919 ("Bluetooth: mt7921s: Support wake on bluetooth") adds the wake on bluethooth via a dedicated GPIO.
 
-The 2nd paragraph above is quite misleading in this respect.  I think
-it would be more accurate to explain that the benefit to using separate
-domains was that devices attached to domains supporting enforced cache
-coherency always mapped with the attributes necessary to provide that
-feature, therefore if a non-enforced domain was dropped, the associated
-group removal would re-trigger an evaluation by KVM.  We can then go on
-to discuss that in practice the only known cases of such mixed domains
-included an Intel IGD device behind an IOMMU lacking snoop control,
-where such devices do not support hotplug, therefore this scenario lacks
-testing and is not considered sufficiently relevant to support.  Thanks,
+Thanks! Look good to me. I will add it in the next version.
 
-Alex
+>
+>> The patch extends the function to the waken-on-bluetooth via SDIO DAT1
+>> pin (inband wakeup) when the SDIO host driver is able to support.
+>
+>Maybe:
+>
+>Extend the wake-on-bluetooth to use the SDIO DAT1 pin (in-band wakeup), when supported by the SDIO host driver.
+>
 
-> 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> ---
->  drivers/vfio/vfio_iommu_type1.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-> index c13b9290e357..f4e3b423a453 100644
-> --- a/drivers/vfio/vfio_iommu_type1.c
-> +++ b/drivers/vfio/vfio_iommu_type1.c
-> @@ -2285,9 +2285,7 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
->  	 * testing if they're on the same bus_type.
->  	 */
->  	list_for_each_entry(d, &iommu->domain_list, next) {
-> -		if (d->domain->ops == domain->domain->ops &&
-> -		    d->enforce_cache_coherency ==
-> -			    domain->enforce_cache_coherency) {
-> +		if (d->domain->ops == domain->domain->ops) {
->  			iommu_detach_group(domain->domain, group->iommu_group);
->  			if (!iommu_attach_group(d->domain,
->  						group->iommu_group)) {
+Thanks! Look good to me. I will add it in the next version.
 
+>How did you test this? In what datasheet is it documented?
+
+We tested it on the MT8186 platform with wakening up by the keyboard or mouse when the platform is in the suspend state.
+
+We can see the details on SDIO DAT1 pin in SDIO specification ver 3.00 section 8.2 Asynchronous Interrupt:
+During the asynchronous interrupt period, the host can stop providing an SD clock to the card and the card
+can generate an interrupt via SDIO DATA1 without SD clock.
+
+or you can check the patch ("mmc: mediatek: add support for SDIO eint wakup IRQ")
+in https://patchwork.kernel.org/project/linux-arm-kernel/patch/20220523074017.12649-4-axe.yang@mediatek.com/
+that is the actual patch btmtksdio was tested against on MT8186 platfrom.
+
+>
+>> Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+>> Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> ---
+>>   drivers/bluetooth/btmtksdio.c | 8 ++++++++
+>>   1 file changed, 8 insertions(+)
+>>
+>> diff --git a/drivers/bluetooth/btmtksdio.c
+>> b/drivers/bluetooth/btmtksdio.c index d6700efcfe8c..9ed3af4ba51a
+>> 100644
+>> --- a/drivers/bluetooth/btmtksdio.c
+>> +++ b/drivers/bluetooth/btmtksdio.c
+>> @@ -118,6 +118,7 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
+>>   #define BTMTKSDIO_FUNC_ENABLED		3
+>>   #define BTMTKSDIO_PATCH_ENABLED		4
+>>   #define BTMTKSDIO_HW_RESET_ACTIVE	5
+>> +#define BTMTKSDIO_INBAND_WAKEUP		6
+>>
+>>   struct mtkbtsdio_hdr {
+>>	__le16	len;
+>> @@ -1294,6 +1295,9 @@ static bool btmtksdio_sdio_wakeup(struct hci_dev *hdev)
+>>		.wakeup_delay = cpu_to_le16(0x20),
+>>	};
+>>
+>> +	if (test_bit(BTMTKSDIO_INBAND_WAKEUP, &bdev->tx_state))
+>> +		return may_wakeup;
+>> +
+>>	if (may_wakeup && bdev->data->chipid == 0x7921) {
+>>		struct sk_buff *skb;
+>>
+>> @@ -1384,6 +1388,10 @@ static int btmtksdio_probe(struct sdio_func *func,
+>>	 */
+>>	pm_runtime_put_noidle(bdev->dev);
+>>
+>> +	/* Mark if the mmc host can support waken by SDIO */
+>
+>Maybe:
+>
+>Mark if MMC host supports wake on bluetooth by SDIO
+
+Thanks! Look good to me. I will add it in the next version.
+
+>
+>> +	if (device_can_wakeup(func->card->host->parent))
+>> +		set_bit(BTMTKSDIO_INBAND_WAKEUP, &bdev->tx_state);
+>> +
+>>	err = device_init_wakeup(bdev->dev, true);
+>>	if (err)
+>>		bt_dev_err(hdev, "failed to initialize device wakeup");
+>
+>
+>Kind regards,
+>
+>Paul
+>
+>
 
