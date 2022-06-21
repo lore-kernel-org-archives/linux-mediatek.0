@@ -4,95 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D1A7CCA473
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 15:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AEB4C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 21:07:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dy8yeG9fTBHltWG4kJedgv5LPIew+OWd8uTBYekbBzc=; b=M6KHzyxYuG6w0dlO7YexcuMcbl
-	LniVc3SEiftdkrvm3Ay5Pxp2jqnPUmW+nqLmveGYEGhmh+S43CaF/kZjtzsXAvthKIvvCJJ0B1an8
-	vyKR4xHU2EZduDIZMQcei5GAS06pGXG6vCls4FU/14AcFBFuojGOnV7M52Uub7maRm8QTsL3k48zl
-	fduRlmXmCzN16ORtO4eHSZ8x428mK6/kfu8R37Dwkk1wo9HikWHPOodt0X6rNIWj7q6sWtuLE1VH5
-	LPZcHNugyEwDdJjsbpkgvQzC0c3jzXbVTSFS9OuekZ1Zf3g8+tehkmpxZX5QmFyQPb3C+j6M9w/eg
-	KuxWceXw==;
+	bh=L2zPddrz7DMH2w1GwVWYEI6yBRnFoUWwhGSJj5EH538=; b=j6CqjUeOX3AfIiANUaNO0IpYke
+	lDZBwbVIVEkLY/y/gG2N+9cJxEYpxj1TBR/aM3p1NZPR3sHGCYcZdygmzgAvNQap91ayrZ+NBJEQi
+	cJ1LNbqShueInVOfMj4zDw4hKe6A03CvhR6z4Sq8bjEHflbR0fRXpHxq0/MvhCvwfFR3P4SmG8Tub
+	Vqu6CnuKroFW4dk7nuqAZo429KPeGBzoPZYmN5Xo23c0SYGdismwes3unz/F+kkcpj45SARfGqhEJ
+	pPMToUFRg7yd49frInbSVtCHlH2+3iqZBNPDF/ap1cV2bsTjjgSQEiyV5IeVVxPBCMbrXsPEvNkrh
+	wrIy9gaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3fsX-006BWg-7N; Tue, 21 Jun 2022 15:33:21 +0000
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
+	id 1o3l5x-007EpN-Tj; Tue, 21 Jun 2022 21:07:33 +0000
+Received: from mail-dm6nam10on2051.outbound.protection.outlook.com ([40.107.93.51] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3fsT-006BV5-Uf
-	for linux-mediatek@lists.infradead.org; Tue, 21 Jun 2022 15:33:19 +0000
-Received: by mail-qv1-xf2b.google.com with SMTP id y14so15582188qvs.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jun 2022 08:33:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :content-transfer-encoding:user-agent:mime-version;
-        bh=dy8yeG9fTBHltWG4kJedgv5LPIew+OWd8uTBYekbBzc=;
-        b=ApJ/dLZCmEw0l/GZjONyC5HqMPHnP/1v5EjjO1KCkzHQMylqrSeF7f1PAqFEtcA5p7
-         B5L7VLmvKXMkO3mBusxE4aofO5gnetF3tBYYwFOBpVJp+ZHpNjY2yIJIKkIC5ik+xBVg
-         uADxSpGmWIuEmcvyscNyZq4wRAFjkfTGd5fw8vkIUElXZ7Fh7K0t4I4f6BB6HMBT5br2
-         7NCDPnMq22xS1dnrAdLeSQoiWz64pI/Jrs0HO9z4O6pbFJ4oAYasBaxsv3sEwsv/op3Y
-         PyNof9m1d/UwIgmRDoOP1CmTU/y+FXB4dNy3XB838qTtpSSnqKp5JlrXrGTQNEKwf5FG
-         7rhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:content-transfer-encoding:user-agent:mime-version;
-        bh=dy8yeG9fTBHltWG4kJedgv5LPIew+OWd8uTBYekbBzc=;
-        b=z+XALsZFqtj0/cXafPCJPJSB+7prHi7ZgVgR6jr5J3L6WbeZIsPjcp3Bg+SEeL+vKb
-         9UL8xmtLlYBAvn4gQLIlG3p/vVgf3sGscz6jEdvF/3YWIrbGnFJ37s4uGMHJdzNhVYEe
-         8qr8bfYr6d1KkppPjnHeNZXoUTuWvVEMxcaAwpgrSz3NZO/Eprl+hCr2WmY2URhqEW+O
-         U0bFZO74keqWysOoKBDYX8niKirgiA/HAslrKw5XjTn0DmBSOcSHWVmVTNxa3JZye539
-         bHL4VjAcjWkhRrrvVbCnbErJ2b05YJpV2u/iMGaswzPPp4ljSM+Wrf/opv/zYST6tBgZ
-         bYfQ==
-X-Gm-Message-State: AJIora/UOA2LSS/KHTO5qQlqApO+j9KHIgTnIbMMr2zCsxsFaaQS9Eib
-	0WuD5VwuGNXsuL9jqFAeyWgjKw==
-X-Google-Smtp-Source: AGRyM1srW5WWOiSz7XlL+lVwbQcKJ8mCJy/w+hJaCXN4HQuLbalFyFAI4j3aN7yjXcA9VUwq7W66HA==
-X-Received: by 2002:a05:622a:1054:b0:306:3216:4f00 with SMTP id f20-20020a05622a105400b0030632164f00mr24570852qte.109.1655825596108;
-        Tue, 21 Jun 2022 08:33:16 -0700 (PDT)
-Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net. [192.222.136.102])
-        by smtp.gmail.com with ESMTPSA id 20-20020ac85754000000b002f93554c009sm11589284qtx.59.2022.06.21.08.33.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jun 2022 08:33:15 -0700 (PDT)
-Message-ID: <e95f2b43c131927a488f86081683c15b885efea7.camel@ndufresne.ca>
-Subject: Re: [PATCH v7, 04/15] media: mtk-vcodec: Read max resolution from
- dec_capability
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi
- Shih <tzungbi@chromium.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, George Sun
- <george.sun@mediatek.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi
- Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Dafna
- Hirschfeld <dafna.hirschfeld@collabora.com>,  Daniel Vetter
- <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
- <irui.wang@mediatek.com>,  Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Date: Tue, 21 Jun 2022 11:33:14 -0400
-In-Reply-To: <YqwjOurt2DCV6snP@google.com>
-References: <20220223034008.15781-1-yunfei.dong@mediatek.com>
-	 <20220223034008.15781-5-yunfei.dong@mediatek.com>
-	 <cb7cf296bc7df7334f55cc51ef11b671572559ac.camel@ndufresne.ca>
-	 <YqwjOurt2DCV6snP@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.2 (3.44.2-1.fc36) 
+	id 1o3kyn-007B3w-Hc; Tue, 21 Jun 2022 21:00:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZikeTw0S7ttyzgdzUwFhbCUqhlGkSHs6vGsOB2gVwsQN8WFaC4xFxReXjKQndC2dmmu2VdwXrdnCAB+dIVllZXtJfPAPZWwmWphLJHRSYGwYaIe+LAzpxUjQ8CZJNPJSIYCryJg3qv6vBE0mRte82PEjH4MHvrNPMcO3P5xOLbz+O7RjWD7KKaCMZhWhHsF9D0QcQQzd5uD4te84DCy8Tckxg3Z08EAXXkohzrmLJo7s85+XkQ3Ut77NA+ldNAs81uRjkKaO6/rlaElx4EoMbMcjFZLbhlwFsQXubsXVozHhTsX5gEI5rZsnZv9qM8jrFdy8GFx3CHUSKS8zUyDMig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=L2zPddrz7DMH2w1GwVWYEI6yBRnFoUWwhGSJj5EH538=;
+ b=eceuP3QNjy0tlStTbvYBBLsKtkSx3VzEThxHLSRZGQsPzb8thRMRG422tz7QLikA1ZWxLnQHzQ5c0hNhQDzLT4Ygo48QhfjrgsraT37mjWsKtIrHOfemw0Fq5i7VB24wigDRqjyqPbJoN4xcL980NpaKTgd8u9BKxKteZ429XBuTstGX7T2RukUCxWY2uxWFUVEGyLHKd+h/lGIY735V3bBlDTsrmCb7oCuPbaYmDEnfWBNxS/5YfJlmc/9VZrvPkmn3yG7T9LtMklPX7hBYgGqhAgQdh2bFljAEXTjLqwWr8bIPZZTxGkA0PWNLbSpaq6Xyk2dh5Jbx/+IahSUkAw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.238) smtp.rcpttodomain=svenpeter.dev smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=L2zPddrz7DMH2w1GwVWYEI6yBRnFoUWwhGSJj5EH538=;
+ b=BttZqUv4GkeEhYDXThM9SJ5dEvYS3UOV8Wy8kAwXUtt5gfWDaQV8jVt8CI1KRqFp8+6aOf01vY4as7EERb+tjYMRADoJ3BR8vViTBNw1CJdkDAK83+/uq1myr6vYaZBWJLVNeXjknHylytm3oNpQM7c+K5uwirvXZR0Pj4pq9mOFwibkegXoz5SzMGrLi+AzU3aY9WK2FhsgIbVisjfPuLdVqeFKE4imb8DTnlr2ob6wXyy2hQWpgTWMEWdEvC681N4KSrI38teYgl+scbGMXTT3mMz6rHZKP8gy/bCxb3HJ8dyyyY6ODzrybSYWidKWAtchC+myY+BBB+YPfs9ArQ==
+Received: from BN6PR20CA0053.namprd20.prod.outlook.com (2603:10b6:404:151::15)
+ by DM6PR12MB4371.namprd12.prod.outlook.com (2603:10b6:5:2a3::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.15; Tue, 21 Jun
+ 2022 21:00:03 +0000
+Received: from BN8NAM11FT008.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:404:151:cafe::2c) by BN6PR20CA0053.outlook.office365.com
+ (2603:10b6:404:151::15) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.22 via Frontend
+ Transport; Tue, 21 Jun 2022 21:00:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.238)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.238 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.238; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.238) by
+ BN8NAM11FT008.mail.protection.outlook.com (10.13.177.95) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5353.14 via Frontend Transport; Tue, 21 Jun 2022 21:00:03 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ DRHQMAIL105.nvidia.com (10.27.9.14) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.32; Tue, 21 Jun 2022 21:00:01 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.22; Tue, 21 Jun 2022 14:00:00 -0700
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
+ Transport; Tue, 21 Jun 2022 13:59:57 -0700
+Date: Tue, 21 Jun 2022 13:59:55 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>
+CC: "robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
+	<joro@8bytes.org>, "will@kernel.org" <will@kernel.org>, "marcan@marcan.st"
+	<marcan@marcan.st>, "sven@svenpeter.dev" <sven@svenpeter.dev>,
+	"robdclark@gmail.com" <robdclark@gmail.com>, "baolu.lu@linux.intel.com"
+	<baolu.lu@linux.intel.com>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
+	"baolin.wang7@gmail.com" <baolin.wang7@gmail.com>, "zhang.lyra@gmail.com"
+	<zhang.lyra@gmail.com>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, "alex.williamson@redhat.com"
+	<alex.williamson@redhat.com>, "jordan@cosmicpenguin.net"
+	<jordan@cosmicpenguin.net>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"saiprakash.ranjan@codeaurora.org" <saiprakash.ranjan@codeaurora.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
+	<jonathanh@nvidia.com>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "yangyingliang@huawei.com"
+	<yangyingliang@huawei.com>, "gerald.schaefer@linux.ibm.com"
+	<gerald.schaefer@linux.ibm.com>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "christophe.jaillet@wanadoo.fr"
+	<christophe.jaillet@wanadoo.fr>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "tglx@linutronix.de" <tglx@linutronix.de>,
+	"virtualization@lists.linux-foundation.org"
+	<virtualization@lists.linux-foundation.org>, "isaacm@codeaurora.org"
+	<isaacm@codeaurora.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"dwmw2@infradead.org" <dwmw2@infradead.org>
+Subject: Re: [PATCH v2 5/5] vfio/iommu_type1: Simplify group attachment
+Message-ID: <YrIxG616H5Pi0Qod@Asurada-Nvidia>
+References: <20220616000304.23890-1-nicolinc@nvidia.com>
+ <20220616000304.23890-6-nicolinc@nvidia.com>
+ <BL1PR11MB52710E360B50DDA99C9A65D18CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
+ <YquxcH2S1fM+llOf@Asurada-Nvidia>
+ <BN9PR11MB5276C7BFA77C2C176491B56A8CAF9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <Yq0JKBiQfTkWh4nq@Asurada-Nvidia>
+ <20220620040317.GD5219@nvidia.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20220620040317.GD5219@nvidia.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 411cd746-5d6e-41c0-c242-08da53c90330
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4371:EE_
+X-Microsoft-Antispam-PRVS: 	<DM6PR12MB43716BA7C7D60392851AF721ABB39@DM6PR12MB4371.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	/E1h6WDkvbtStPqf/PKdR7QqRL8imWhkrZ8wFMOmjIL7hJPTwK970ScQSskzv/f7VV283OPC8of4cP+eSeb5GWW3hmpPvDtqjAOsZoHm1nXZCZmlTjijI0BrCTlxlxVHXSdTdIEmwHlVagQGxMs8xVo59T6XouJEKeoWddyNgas7aTyAftf0SDFTY8c6hrmXl+953ojmm44PQ6CFPmgnnX0Pc3RgggDaVw0pK/jo3deu5LbCO9RG7oQ1J4urL0nd+LGoKWhjiOC/62Jk+ntMw3OsiYioa1wuODHrVW2vLx0V9XpzZSkUHxPNwZ2G1Rq3YhkbF/yy80eDrgpYlgoL/z32nKXbmwqQLrI6nDNMUEeA4jR6dCtwHlMcYbAWqr/zCUmzm+lf241+ZMhW98xPys24BJ0RDGucEU8F6NqRDS3LE2KN4V9Ni97R479Xc0mQlElD23abDdZvU9QSTzc0v9I1MT8yupYne/C0nnHZxdVnBSolORgyBqnrTEsj7D8tyVDdQAX9OJPciZCu/2StbH5PW23NKbHKuGFxPWZM+14drseXl88+HENXgcoznYaekcGqm3C3eOCnRYS8IA9+VNYDh0LD21j3JfWr4Feoo8YkHFWBk9YdcsuSD4tn/+zooynylGWLziEAyA/J4VumKzZrq9WHJ92/7QlICBqnRYO0GUEZ7NqR9e1t5DnJm5vO0LVTjaUNBHp1WetTdII+LiaqauXITya9UcCP6K6/s9+IOUQrt/x1Qi25ficuGLih
+X-Forefront-Antispam-Report: 	CIP:12.22.5.238;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(39860400002)(376002)(396003)(136003)(346002)(40470700004)(36840700001)(46966006)(40460700003)(356005)(5660300002)(55016003)(81166007)(47076005)(41300700001)(336012)(33716001)(4326008)(7416002)(40480700001)(82740400003)(9686003)(426003)(82310400005)(316002)(186003)(54906003)(110136005)(86362001)(70586007)(70206006)(8676002)(2906002)(8936002)(36860700001)(83380400001)(26005)(478600001)(7406005)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2022 21:00:03.1686
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 411cd746-5d6e-41c0-c242-08da53c90330
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.238];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT008.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4371
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_083318_026024_A63C8C8E 
-X-CRM114-Status: GOOD (  33.27  )
+X-CRM114-CacheID: sfid-20220621_140009_782097_5612746C 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,164 +153,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le vendredi 17 juin 2022 =C3=A0 14:46 +0800, Chen-Yu Tsai a =C3=A9crit=C2=
-=A0:
-> Hi,
->=20
-> On Mon, Feb 28, 2022 at 04:29:15PM -0500, Nicolas Dufresne wrote:
-> > Hi Yunfei,
-> >=20
-> > this patch does not work unless userland calls enum_framesizes, which i=
-s
-> > completely optional. See comment and suggestion below.
-> >=20
-> > Le mercredi 23 f=C3=A9vrier 2022 =C3=A0 11:39 +0800, Yunfei Dong a =C3=
-=A9crit=C2=A0:
-> > > Supported max resolution for different platforms are not the same: 2K
-> > > or 4K, getting it according to dec_capability.
-> > >=20
-> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
-> > > ---
-> > >  .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 29 +++++++++++------=
---
-> > >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  4 +++
-> > >  2 files changed, 21 insertions(+), 12 deletions(-)
-> > >=20
-> > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/dri=
-vers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> > > index 130ecef2e766..304f5afbd419 100644
-> > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> > > @@ -445,7 +447,7 @@ static int vidioc_vdec_s_fmt(struct file *file, v=
-oid *priv,
-> > >  		return -EINVAL;
-> > > =20
-> > >  	q_data->fmt =3D fmt;
-> > > -	vidioc_try_fmt(f, q_data->fmt);
-> > > +	vidioc_try_fmt(ctx, f, q_data->fmt);
-> > >  	if (f->type =3D=3D V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-> > >  		q_data->sizeimage[0] =3D pix_mp->plane_fmt[0].sizeimage;
-> > >  		q_data->coded_width =3D pix_mp->width;
-> > > @@ -545,6 +547,9 @@ static int vidioc_enum_framesizes(struct file *fi=
-le, void *priv,
-> > >  				fsize->stepwise.min_height,
-> > >  				fsize->stepwise.max_height,
-> > >  				fsize->stepwise.step_height);
-> > > +
-> > > +		ctx->max_width =3D fsize->stepwise.max_width;
-> > > +		ctx->max_height =3D fsize->stepwise.max_height;
-> >=20
-> > The spec does not require calling enum_fmt, so changing the maximum her=
-e is
-> > incorrect (and fail with GStreamer). If userland never enum the framesi=
-zes, the
-> > resolution get limited to 1080p.
-> >=20
-> > As this only depends and the OUTPUT format and the device being open()
-> > (condition being dev_capability being set and OUTPUT format being known=
- / not
-> > VP8), you could initialize the cxt max inside s_fmt(OUTPUT) instead, wh=
-ich is a
-> > mandatory call. I have tested this change to verify this:
-> >=20
-> >=20
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drive=
-rs/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> > index 044e3dfbdd8c..3e7c571526a4 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> > @@ -484,6 +484,14 @@ static int vidioc_vdec_s_fmt(struct file *file, vo=
-id *priv,
-> >  	if (fmt =3D=3D NULL)
-> >  		return -EINVAL;
-> > =20
-> > +	if (f->type =3D=3D V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE &&
-> > +	    !(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED) &&
-> > +	    fmt->fourcc !=3D V4L2_PIX_FMT_VP8_FRAME) {
-> > +		mtk_v4l2_debug(3, "4K is enabled");
-> > +		ctx->max_width =3D VCODEC_DEC_4K_CODED_WIDTH;
-> > +		ctx->max_height =3D VCODEC_DEC_4K_CODED_HEIGHT;
-> > +	}
-> > +
-> >  	q_data->fmt =3D fmt;
-> >  	vidioc_try_fmt(ctx, f, q_data->fmt);
-> >  	if (f->type =3D=3D V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-> > @@ -574,15 +582,9 @@ static int vidioc_enum_framesizes(struct file *fil=
-e, void *priv,
-> > =20
-> >  		fsize->type =3D V4L2_FRMSIZE_TYPE_STEPWISE;
-> >  		fsize->stepwise =3D dec_pdata->vdec_framesizes[i].stepwise;
-> > -		if (!(ctx->dev->dec_capability &
-> > -				VCODEC_CAPABILITY_4K_DISABLED) &&
-> > -				fsize->pixel_format !=3D V4L2_PIX_FMT_VP8_FRAME) {
-> > -			mtk_v4l2_debug(3, "4K is enabled");
-> > -			fsize->stepwise.max_width =3D
-> > -					VCODEC_DEC_4K_CODED_WIDTH;
-> > -			fsize->stepwise.max_height =3D
-> > -					VCODEC_DEC_4K_CODED_HEIGHT;
-> > -		}
-> > +		fsize->stepwise.max_width =3D ctx->max_width;
-> > +		fsize->stepwise.max_height =3D ctx->max_height;
-> > +
->=20
-> Recent testing on ChromeOS suggests this doesn't work. The spec implies
-> that querying capabilities could happen before the output format is set.
-> And also, supported frame sizes are detected for each given format,
-> which may not be the one current set.
+On Mon, Jun 20, 2022 at 01:03:17AM -0300, Jason Gunthorpe wrote:
+> On Fri, Jun 17, 2022 at 04:07:20PM -0700, Nicolin Chen wrote:
+> 
+> > > > > > +     vfio_iommu_aper_expand(iommu, &iova_copy);
+> > > > >
+> > > > > but now it's done for every group detach. The aperture is decided
+> > > > > by domain geometry which is not affected by attached groups.
+> > > >
+> > > > Yea, I've noticed this part. Actually Jason did this change for
+> > > > simplicity, and I think it'd be safe to do so?
+> > > 
+> > > Perhaps detach_destroy() can return a Boolean to indicate whether
+> > > a domain is destroyed.
+> > 
+> > It could be a solution but doesn't feel that common for a clean
+> > function to have a return value indicating a special case. Maybe
+> > passing in "&domain" so that we can check if it's NULL after?
+> 
+> It is harmless to do every time, it just burns a few CPU cycles on a
+> slow path. We don't need complexity to optmize it.
 
-In v4l2, formats are always set. Perhaps the problem is that we don't
-automatically set ctx->max_width/height for the default format when the fir=
-mware
-is up. I noticed recently the chromium always do G_FMT before S_FMT, so per=
-haps
-it can skip S_FMT if the default format is appropriate, and that endup avoi=
-ding
-the code I've just suggested. At the time I wrote that, I only had GStreame=
-r
-available to test, and it always calls S_FMT, which is mandatory, see 4.5.3=
-.2.
-Initialization step 1. But I cannot say userland would be wrong to skip if =
-that
-format was "initially" correct.
+OK. I will keep it simple then. If Kevin or other has a further
+objection, please let us know.
 
-If my understanding is not correct, then perhaps you should provide a tad m=
-ore
-details on how this failed for you, and we can then better judge an appropr=
-iate
-fix.
-
-regards,
-Nicolas
-
->=20
-> So the if block above has to be reintroduced in some form. I'll take a
-> look at this.
->=20
->=20
-> Regards
-> ChenYu
->=20
-> >  		mtk_v4l2_debug(1, "%x, %d %d %d %d %d %d",
-> >  				ctx->dev->dec_capability,
-> >  				fsize->stepwise.min_width,
-> > @@ -592,8 +594,6 @@ static int vidioc_enum_framesizes(struct file *file=
-, void *priv,
-> >  				fsize->stepwise.max_height,
-> >  				fsize->stepwise.step_height);
-> > =20
-> > -		ctx->max_width =3D fsize->stepwise.max_width;
-> > -		ctx->max_height =3D fsize->stepwise.max_height;
-> >  		return 0;
-> >  	}
-> > =20
-> >=20
-> >=20
-> > >  		return 0;
-> > >  	}
-> > > =20
->=20
-> [...]
->=20
-
+Thanks
+Nic
 
