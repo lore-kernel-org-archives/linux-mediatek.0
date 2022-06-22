@@ -4,66 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2916C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 06:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3BBCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 07:55:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FpleBhi5f5r0iw2+2sLLv8AIuLh7a6iCpi7m4JTAHkc=; b=YxnfesjrXjy621pbvrJOgsCceb
-	wkA3xmVRnJri+skqZt40fH2o2vzXsqy93nzjxXD+a4L3O8gs8DwU1iCbGQ+FPX6Gxb7hHPcXfV81Y
-	pU2MMOcQ9L0aTc440cUYBlLivysczJ/yNwlaDEmA7Bw4XIw76JLNwQAQGhvn+eHf6o5UKNr7597Sp
-	nM+8c78n4YKzaTVQoBMLoaRBdoQQ9/8ndfkL+xuRmmnpOmxycIkRda2Y+xq58WlCRqK8F/TrtnAQ/
-	noVEkqWvIawVLgi11hDX1fE9AWb+ZYjFQe/it64EjKHsSzx0/mHBPSstZGB/aEXj/WdUHSpqJLj+d
-	y97wUoRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rchGM1fF+RYgWqnyfC5Ww/R4cCYqH2vrKZDRw4lHq9g=; b=zdLm/oqBsdraRqsmev3jKDrTuB
+	wHPz6HuMHVZQEhJDqbY6UeEj1kgmGrE7HjTqcDehASZnhB3J1VbQNihmN5hp0R5OwrXJxAJlDmrcd
+	H4trPWd61jXUbHOcRntdl27ZeVdqeXIWETABMULUbAkGps31r4ZX9VzxgoEUTh3wA/avnSTbQ0y+H
+	3EPXK5poaUZQ1UtQcyK27d9pte/+MdNA43qkf6bpKEcgC171WOrAqRTR0Kzl5JQkcXn1rWHdehZZA
+	T21Qu04x9U3fO7uQ7dDeacopuzB+Bf+vIRDZ8sWxv+TbYeK9JIeZRnuu+PILDobuNqwE5uVtKOkIX
+	tAYSF7XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3uAf-008vXs-Fw; Wed, 22 Jun 2022 06:49:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3uAO-008vP6-Tr; Wed, 22 Jun 2022 06:48:47 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 57A34614F3;
-	Wed, 22 Jun 2022 06:48:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0E55C34114;
-	Wed, 22 Jun 2022 06:48:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1655880523;
-	bh=zM0SW3vqNvu0Oc6om+TTIoJUvS2PT8GEnviSnb9hLno=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=wmQzKyb3CG2gPCAVJkj+/LikY9zwkW/roOS6Db+Gf/QOqKsegmYt85n7+SdefA31H
-	 OA90DiFFcTRC8MPwNm/G/bhIPujlIXjzBK/3jeZqYd8ckmg8BTLhRalTVMBB8WE37G
-	 WT1Dojj2sBqWI1BUEd9ltg/tbiGenB7NSv9xJD98=
-Date: Wed, 22 Jun 2022 08:48:35 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Peter Wang <peter.wang@mediatek.com>
-Cc: matthias.bgg@gmail.com, len.brown@intel.com, pavel@ucw.cz,
-	rafael@kernel.org, stanley.chu@mediatek.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, martin.petersen@oracle.com,
-	avri.altman@wdc.com, alim.akhtar@samsung.com, jejb@linux.ibm.com,
-	wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
-	chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-	cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-	jiajie.hao@mediatek.com, powen.kao@mediatek.com,
-	qilin.tan@mediatek.com, lin.gui@mediatek.com,
-	tun-yu.yu@mediatek.com
-Subject: Re: [PATCH v1] PM-runtime: Check supplier_preactivated before
- release supplier
-Message-ID: <YrK7Q7yFUIHRoKLS@kroah.com>
-References: <20220613120755.14306-1-peter.wang@mediatek.com>
- <a6ed562c-5ec0-231d-0eee-a35f2ba7a344@mediatek.com>
+	id 1o3vCg-00989U-Gg; Wed, 22 Jun 2022 07:55:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o3vCV-00986S-Cw; Wed, 22 Jun 2022 07:55:00 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AC87913D5;
+	Wed, 22 Jun 2022 00:54:56 -0700 (PDT)
+Received: from [10.57.85.1] (unknown [10.57.85.1])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2E50B3F66F;
+	Wed, 22 Jun 2022 00:54:50 -0700 (PDT)
+Message-ID: <6e1280c5-4b22-ebb3-3912-6c72bc169982@arm.com>
+Date: Wed, 22 Jun 2022 08:54:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a6ed562c-5ec0-231d-0eee-a35f2ba7a344@mediatek.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v2 3/5] vfio/iommu_type1: Remove the domain->ops
+ comparison
+Content-Language: en-GB
+To: Nicolin Chen <nicolinc@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>
+Cc: "joro@8bytes.org" <joro@8bytes.org>, "will@kernel.org" <will@kernel.org>,
+ "marcan@marcan.st" <marcan@marcan.st>,
+ "sven@svenpeter.dev" <sven@svenpeter.dev>,
+ "robdclark@gmail.com" <robdclark@gmail.com>,
+ "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
+ "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
+ "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+ "dwmw2@infradead.org" <dwmw2@infradead.org>,
+ "yong.wu@mediatek.com" <yong.wu@mediatek.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
+ "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+ "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
+ "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "thunder.leizhen@huawei.com" <thunder.leizhen@huawei.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
+ "john.garry@huawei.com" <john.garry@huawei.com>,
+ "chenxiang66@hisilicon.com" <chenxiang66@hisilicon.com>,
+ "saiprakash.ranjan@codeaurora.org" <saiprakash.ranjan@codeaurora.org>,
+ "isaacm@codeaurora.org" <isaacm@codeaurora.org>,
+ "yangyingliang@huawei.com" <yangyingliang@huawei.com>,
+ "jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
+ "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "virtualization@lists.linux-foundation.org"
+ <virtualization@lists.linux-foundation.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>
+References: <20220616000304.23890-1-nicolinc@nvidia.com>
+ <20220616000304.23890-4-nicolinc@nvidia.com>
+ <BL1PR11MB52717050DBDE29A81637BBFA8CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
+ <YqutYjgtFOTXCF0+@Asurada-Nvidia>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <YqutYjgtFOTXCF0+@Asurada-Nvidia>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_234845_039879_AAEACA20 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20220622_005459_572996_CFB889BA 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +106,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A: http://en.wikipedia.org/wiki/Top_post
-Q: Were do I find info about this thing called top-posting?
-A: Because it messes up the order in which people normally read text.
-Q: Why is top-posting such a bad thing?
-A: Top-posting.
-Q: What is the most annoying thing in e-mail?
-
-A: No.
-Q: Should I include quotations after my reply?
-
-
-http://daringfireball.net/2007/07/on_top
-
-On Wed, Jun 22, 2022 at 02:09:16PM +0800, Peter Wang wrote:
-> Hi all,
+On 2022-06-16 23:23, Nicolin Chen wrote:
+> On Thu, Jun 16, 2022 at 06:40:14AM +0000, Tian, Kevin wrote:
 > 
+>>> The domain->ops validation was added, as a precaution, for mixed-driver
+>>> systems. However, at this moment only one iommu driver is possible. So
+>>> remove it.
+>>
+>> It's true on a physical platform. But I'm not sure whether a virtual platform
+>> is allowed to include multiple e.g. one virtio-iommu alongside a virtual VT-d
+>> or a virtual smmu. It might be clearer to claim that (as Robin pointed out)
+>> there is plenty more significant problems than this to solve instead of simply
+>> saying that only one iommu driver is possible if we don't have explicit code
+>> to reject such configuration. 😊
 > 
-> gentle ping for this bug fix review.
+> Will edit this part. Thanks!
 
-It's only been 1 week, please give us a chance.  To help out, always
-feel free to review other patch submissions.
+Oh, physical platforms with mixed IOMMUs definitely exist already. The 
+main point is that while bus_set_iommu still exists, the core code 
+effectively *does* prevent multiple drivers from registering - even in 
+emulated cases like the example above, virtio-iommu and VT-d would both 
+try to bus_set_iommu(&pci_bus_type), and one of them will lose. The 
+aspect which might warrant clarification is that there's no combination 
+of supported drivers which claim non-overlapping buses *and* could 
+appear in the same system - even if you tried to contrive something by 
+emulating, say, VT-d (PCI) alongside rockchip-iommu (platform), you 
+could still only describe one or the other due to ACPI vs. Devicetree.
 
-thanks,
-
-greg k-h
+Thanks,
+Robin.
 
