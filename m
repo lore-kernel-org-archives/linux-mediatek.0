@@ -4,67 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1271C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 01:08:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9237EC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 01:17:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NKFJdhMRCL8JdwSNDs5aCtNeROGI5oqeNDvse4Eapr0=; b=cbCxMhk82UyGucp3Ir3uxKszZp
-	TmBqoxIlbIGhRrTR+vuAfDSjrfNzGS9mUcxanJhOq7E0GhwFHccvXj6wmPIhU72MyPZ91RTnAsBgL
-	7BFWLJW8VHQNOMTCcK1Gl0PZ27WZTF/y1fBBb4twkXMkZidSF6iJiInFj3Pk51sYJtsezXxM1WhJO
-	APqm1hHgCfizs2kEOBcRtx5viS97dp+o50ogyx2cTk7xVTkAL3MDIwxBZbRpE1tLueIQqYiUjcDGU
-	yjtX/c7hT0GxAiCDyYgFt98QzS1dd7zx3lXYahoGqoxNC1TKpFBqeW4GDJxjkSJwCFePPwJjDvSgH
-	XU5wuYsw==;
+	bh=r+pqw0lVLKpkoUxBjbVytWnG69u1Bj1sw9D9pvX7brU=; b=OlVFg0xWuwXws31xwBgaoiH25O
+	c6N4Gqaq4UgTdxVfoWdRJuPjXbyBbPmq5dPmJQbfLKWRvMfDb0NRT9kEO2yvFUMX1eEjkJGnNyEwV
+	EW5WOlknkbmVxTcW7BOnM13AGHTYcPqcNZuTk8I3u8pQa0kRg8EbArtcuQXg+Y83ir+YvOeuabIhm
+	5j0VOO1jl8SujFbwSOnA/d2ZRdhuZ4IkfK1cNTnB4KKVafVpGXTxJCvx422HSbT1ZfxNBetb9CYP+
+	f5ZtMFSs7b0bg/gn52+vfO6SK3nhYvMAIGu6tL2xLrWLPiG9TB8YNh+NkdS9Umv/9SLZvoHC1Ee6I
+	6XN/GU5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3orC-007wVr-83; Wed, 22 Jun 2022 01:08:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o3ozJ-007yAY-7y; Wed, 22 Jun 2022 01:16:57 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3or9-007wUY-2H
-	for linux-mediatek@lists.infradead.org; Wed, 22 Jun 2022 01:08:33 +0000
-X-UUID: 866dcc9b16f84ffe98810d8a1312a7eb-20220621
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:aa7167c4-d70b-46b4-a153-127d845a2a2e,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:c70427ea-f7af-4e69-92ee-0fd74a0c286c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 866dcc9b16f84ffe98810d8a1312a7eb-20220621
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <chui-hao.chiu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 251990802; Tue, 21 Jun 2022 18:08:25 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jun 2022 18:08:23 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 22 Jun 2022 09:08:22 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 22 Jun 2022 09:08:22 +0800
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
-To: Johannes Berg <johannes.berg@intel.com>
-CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.Lee@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Peter
- Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH] mac80211: add s1g action frame in _ieee80211_is_robust_mgmt_frame
-Date: Wed, 22 Jun 2022 09:08:20 +0800
-Message-ID: <20220622010820.17522-1-chui-hao.chiu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1o3oz8-007y7h-4E; Wed, 22 Jun 2022 01:16:48 +0000
+Received: from dggpeml500021.china.huawei.com (unknown [172.30.72.55])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4LSQRT21M1zkWbq;
+	Wed, 22 Jun 2022 09:15:17 +0800 (CST)
+Received: from dggpeml100012.china.huawei.com (7.185.36.121) by
+ dggpeml500021.china.huawei.com (7.185.36.21) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Wed, 22 Jun 2022 09:16:29 +0800
+Received: from zelda.huawei.com (10.175.103.14) by
+ dggpeml100012.china.huawei.com (7.185.36.121) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Wed, 22 Jun 2022 09:16:28 +0800
+From: Jin Xiaoyun <jinxiaoyun2@huawei.com>
+To: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<khilman@baylibre.com>, <zhengbin13@huawei.com>, <gaochao49@huawei.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Jin
+ Xiaoyun" <jinxiaoyun2@huawei.com>
+Subject: [PATCH -next] soc: mediatek: SVS: Make svs_resume and svs_suspend defined when CONFIG_PM_SLEEP is y
+Date: Wed, 22 Jun 2022 09:34:10 +0800
+Message-ID: <20220622013410.2786760-1-jinxiaoyun2@huawei.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.103.14]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpeml100012.china.huawei.com (7.185.36.121)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_180831_147944_06B801C1 
-X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-CacheID: sfid-20220621_181646_376727_52DA2BE3 
+X-CRM114-Status: UNSURE (   8.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,27 +70,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-S1g action frame with code 22 is not protected so update the robust
-action frame list.
+The svs_resume and svs_suspend is defined through SIMPLE_DEV_PM_OPS. If CONFIG_PM_SLEEP
+is not defined, SIMPLE_DEV_PM_OPS is equivalent to an empty function. In this case,
+the defination of svs_resume and svs_suspend is meaningless.
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Fix build error:
+drivers/soc/mediatek/mtk-svs.c:1515:12: error: ‘svs_resume’ defined but not used [-Werror=unused-function]
+drivers/soc/mediatek/mtk-svs.c:1481:12: error: ‘svs_suspend’ defined but not used [-Werror=unused-function]
+
+Signed-off-by: Jin Xiaoyun <jinxiaoyun2@huawei.com>
 ---
- include/linux/ieee80211.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/soc/mediatek/mtk-svs.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/include/linux/ieee80211.h b/include/linux/ieee80211.h
-index 5c65ae6b8..4c25207b3 100644
---- a/include/linux/ieee80211.h
-+++ b/include/linux/ieee80211.h
-@@ -4094,6 +4094,7 @@ static inline bool _ieee80211_is_robust_mgmt_frame(struct ieee80211_hdr *hdr)
- 			*category != WLAN_CATEGORY_SELF_PROTECTED &&
- 			*category != WLAN_CATEGORY_UNPROT_DMG &&
- 			*category != WLAN_CATEGORY_VHT &&
-+			*category != WLAN_CATEGORY_S1G &&
- 			*category != WLAN_CATEGORY_VENDOR_SPECIFIC;
- 	}
- 
--- 
-2.18.0
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 606a00a2e57d..8440058784dc 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -1478,6 +1478,7 @@ static int svs_start(struct svs_platform *svsp)
+ 	return 0;
+ }
+
++#ifdef CONFIG_PM_SLEEP
+ static int svs_suspend(struct device *dev)
+ {
+ 	struct svs_platform *svsp = dev_get_drvdata(dev);
+@@ -1537,6 +1538,7 @@ static int svs_resume(struct device *dev)
+
+ 	return 0;
+ }
++#endif
+
+ static int svs_bank_resource_setup(struct svs_platform *svsp)
+ {
+--
+2.25.1
 
 
