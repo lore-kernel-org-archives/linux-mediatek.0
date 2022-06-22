@@ -4,51 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F7E4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 12:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C19D0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 13:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2c1HhWtDIHsURC5mQ49E1uvCVDZP8Bpo/BagcTZukIw=; b=twcdJ/ChPvmhlvwh5noudko0Bd
-	LMH26rUjx9vn3ojwbhNhyeHllWTufSBYGUFEwW7c//T0iyJhYoBgp80eMS3IVrqVnHq/zxv+qiWIg
-	AFbF7jEJwJmnmm6G1jTWq/x+gOUmtPQMNUaVjnBBt8bIEOogvnsqSPjDli8INIoknkkuYV0ajOhQg
-	gXRfTb+DP+5MKij8GdJcTGsGAxze9YWS7lDr+FSXMCWSzVm7vlTBo4w29vl5xr/FVdrxDwd1O1r9m
-	MuqaUyafBi1F6RBOZGw6dIvr5Nc3hwkNLlOC5ZBrKlM853yFJXqJ5ldBisINtkK3pq8qHvkqo/Zab
-	BDLEpefg==;
+	bh=iJvl1AJ62XbF/NWdQfiMvzMWzZk+B4mehuV33aftDNU=; b=Yb0URLWVO2IDLm5zK30l6LQN4+
+	tiqxwD18zZJFAVPbk0IlrTU2Xz5am32l4GXZhURQW/JBUaj0grg3aiqe32FKiiPYjQj6CMp6p1tzr
+	XqU9uNSnDOOvvA3ksnf4YhVsFgq+MB5qGANDJSA0VQM9vGpuZNm2GWVcL+Y5nv62hYMUB6OA1CrHJ
+	yhr5n7qle5Iv5z2LPZuqrU0apkgAZahsfWgQfKxi5raIqY8Z3ETgfWIn6i+iq1/zIk9Cpcp+2KDsD
+	P3y11D3uu9Vk5GaN9tWrI/v2TU4B5WnVwr0QMUxWVda0wtUb65AeODBnDowmj9P91O/Hr25rVBDUD
+	RYNWSazw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3zkr-00AMXQ-4p; Wed, 22 Jun 2022 12:46:45 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889] helo=theia.8bytes.org)
+	id 1o407Y-00AQZ3-GX; Wed, 22 Jun 2022 13:10:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3zkf-00AMV1-Bo; Wed, 22 Jun 2022 12:46:35 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
-	id 994612D0; Wed, 22 Jun 2022 14:46:26 +0200 (CEST)
-Date: Wed, 22 Jun 2022 14:46:19 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: yf.wang@mediatek.com
-Cc: Will Deacon <will@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	"open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Yong Wu <Yong.Wu@mediatek.com>, Ning Li <ning.li@mediatek.com>
-Subject: Re: [PATCH] iommu/dma: Fix race condition during iova_domain
- initialization
-Message-ID: <YrMPG4dIEnFkCbi9@8bytes.org>
-References: <20220530120748.31733-1-yf.wang@mediatek.com>
+	id 1o407T-00AQVW-KB; Wed, 22 Jun 2022 13:10:10 +0000
+X-UUID: 54e1fc61e6794d75a16dcad14dac13af-20220622
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:288a2e51-9e43-4b09-9d5a-8763a7a8827b,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:a1db39ea-f7af-4e69-92ee-0fd74a0c286c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 54e1fc61e6794d75a16dcad14dac13af-20220622
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <nancy.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 824932543; Wed, 22 Jun 2022 06:09:57 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jun 2022 06:08:30 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 22 Jun 2022 21:08:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 22 Jun 2022 21:08:28 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
+ Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
+	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
+	<singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v24 01/10] dt-bindings: reset: mt8195: add vdosys1 reset control bit
+Date: Wed, 22 Jun 2022 21:08:15 +0800
+Message-ID: <20220622130824.29143-2-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220622130824.29143-1-nancy.lin@mediatek.com>
+References: <20220622130824.29143-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220530120748.31733-1-yf.wang@mediatek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_054633_746599_C1FE7F1A 
-X-CRM114-Status: GOOD (  23.28  )
+X-CRM114-CacheID: sfid-20220622_061007_721181_76EE3B19 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,104 +87,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Please re-send with
+Add vdosys1 reset control bit for MT8195 platform.
 
-	Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ include/dt-bindings/reset/mt8195-resets.h | 45 +++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-in Cc.
+diff --git a/include/dt-bindings/reset/mt8195-resets.h b/include/dt-bindings/reset/mt8195-resets.h
+index 0b1937f14b36..c87ba621e72e 100644
+--- a/include/dt-bindings/reset/mt8195-resets.h
++++ b/include/dt-bindings/reset/mt8195-resets.h
+@@ -32,4 +32,49 @@
+ #define MT8195_INFRA_RST3_THERM_CTRL_PTP_SWRST 1
+ #define MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST 2
+ 
++/* VDOSYS1 */
++#define MT8195_VDOSYS1_SW0_RST_B_SMI_LARB2                     0
++#define MT8195_VDOSYS1_SW0_RST_B_SMI_LARB3                     1
++#define MT8195_VDOSYS1_SW0_RST_B_GALS                          2
++#define MT8195_VDOSYS1_SW0_RST_B_FAKE_ENG0                     3
++#define MT8195_VDOSYS1_SW0_RST_B_FAKE_ENG1                     4
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA0                     5
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA1                     6
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA2                     7
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA3                     8
++#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE0                    9
++#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE1                    10
++#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE2                    11
++#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE3                    12
++#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE4                    13
++#define MT8195_VDOSYS1_SW0_RST_B_VPP2_TO_VDO1_DL_ASYNC         14
++#define MT8195_VDOSYS1_SW0_RST_B_VPP3_TO_VDO1_DL_ASYNC         15
++#define MT8195_VDOSYS1_SW0_RST_B_DISP_MUTEX                    16
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA4                     17
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA5                     18
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA6                     19
++#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA7                     20
++#define MT8195_VDOSYS1_SW0_RST_B_DP_INTF0                      21
++#define MT8195_VDOSYS1_SW0_RST_B_DPI0                          22
++#define MT8195_VDOSYS1_SW0_RST_B_DPI1                          23
++#define MT8195_VDOSYS1_SW0_RST_B_DISP_MONITOR                  24
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE0_DL_ASYNC               25
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE1_DL_ASYNC               26
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE2_DL_ASYNC               27
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE3_DL_ASYNC               28
++#define MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC               29
++#define MT8195_VDOSYS1_SW0_RST_B_VDO0_DSC_TO_VDO1_DL_ASYNC     30
++#define MT8195_VDOSYS1_SW0_RST_B_VDO0_MERGE_TO_VDO1_DL_ASYNC   31
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0                   32
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0                   33
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE                    34
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1                   48
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1                   49
++#define MT8195_VDOSYS1_SW1_RST_B_DISP_MIXER                    50
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC          51
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC          52
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC          53
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC          54
++#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC           55
++
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8195 */
+-- 
+2.18.0
 
-On Mon, May 30, 2022 at 08:07:45PM +0800, yf.wang@mediatek.com wrote:
-> From: Yunfei Wang <yf.wang@mediatek.com>
-> 
-> When many devices share the same iova domain, iommu_dma_init_domain()
-> may be called at the same time. The checking of iovad->start_pfn will
-> all get false in iommu_dma_init_domain() and both enter init_iova_domain()
-> to do iovad initialization.
-> 
-> Fix this by protecting init_iova_domain() with iommu_dma_cookie->mutex.
-> 
-> Exception backtrace:
-> rb_insert_color(param1=0xFFFFFF80CD2BDB40, param3=1) + 64
-> init_iova_domain() + 180
-> iommu_setup_dma_ops() + 260
-> arch_setup_dma_ops() + 132
-> of_dma_configure_id() + 468
-> platform_dma_configure() + 32
-> really_probe() + 1168
-> driver_probe_device() + 268
-> __device_attach_driver() + 524
-> __device_attach() + 524
-> bus_probe_device() + 64
-> deferred_probe_work_func() + 260
-> process_one_work() + 580
-> worker_thread() + 1076
-> kthread() + 332
-> ret_from_fork() + 16
-> 
-> Signed-off-by: Ning Li <ning.li@mediatek.com>
-> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
-> ---
->  drivers/iommu/dma-iommu.c | 17 +++++++++++++----
->  1 file changed, 13 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-> index 09f6e1c0f9c0..b38c5041eeab 100644
-> --- a/drivers/iommu/dma-iommu.c
-> +++ b/drivers/iommu/dma-iommu.c
-> @@ -63,6 +63,7 @@ struct iommu_dma_cookie {
->  
->  	/* Domain for flush queue callback; NULL if flush queue not in use */
->  	struct iommu_domain		*fq_domain;
-> +	struct mutex			mutex;
->  };
->  
->  static DEFINE_STATIC_KEY_FALSE(iommu_deferred_attach_enabled);
-> @@ -309,6 +310,7 @@ int iommu_get_dma_cookie(struct iommu_domain *domain)
->  	if (!domain->iova_cookie)
->  		return -ENOMEM;
->  
-> +	mutex_init(&domain->iova_cookie->mutex);
->  	return 0;
->  }
->  
-> @@ -549,26 +551,33 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
->  	}
->  
->  	/* start_pfn is always nonzero for an already-initialised domain */
-> +	mutex_lock(&cookie->mutex);
->  	if (iovad->start_pfn) {
->  		if (1UL << order != iovad->granule ||
->  		    base_pfn != iovad->start_pfn) {
->  			pr_warn("Incompatible range for DMA domain\n");
-> -			return -EFAULT;
-> +			ret = -EFAULT;
-> +			goto done_unlock;
->  		}
->  
-> -		return 0;
-> +		ret = 0;
-> +		goto done_unlock;
->  	}
->  
->  	init_iova_domain(iovad, 1UL << order, base_pfn);
->  	ret = iova_domain_init_rcaches(iovad);
->  	if (ret)
-> -		return ret;
-> +		goto done_unlock;
->  
->  	/* If the FQ fails we can simply fall back to strict mode */
->  	if (domain->type == IOMMU_DOMAIN_DMA_FQ && iommu_dma_init_fq(domain))
->  		domain->type = IOMMU_DOMAIN_DMA;
->  
-> -	return iova_reserve_iommu_regions(dev, domain);
-> +	ret = iova_reserve_iommu_regions(dev, domain);
-> +
-> +done_unlock:
-> +	mutex_unlock(&cookie->mutex);
-> +	return ret;
->  }
->  
->  /**
-> -- 
-> 2.18.0
 
