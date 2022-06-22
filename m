@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774ACC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3841C43334
 	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 13:22:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+Mwy3dXdFvN9Ea/mDlx0WA13vVY+lyG5oUL/7/sIPtE=; b=VSxmFL14vajGWDgGf6udqCnqfi
-	M27pbgxeK0LXkIr/ekiIjLbUxFcUTrQVbL05vtjZkCfvcQUWC4TRLapu8ZqyFrmczp02VnzNgXe5m
-	YK4THEWLO3XBj8LV6vBiPiiuXe3Fad1Q0p4f/McNui0k+UxIXd6gaeXrKFeDLeOlP9DZcdJAOeCkZ
-	WKIr4zR084sFTf/zs8h1U+u4awiUVjf0tbZbqtiHZcthoEYFvWvFyQoSpcZxFYeqQLl1x0yW1QG5y
-	2FT9IDg8ak2AdHnBko7hNMgqXRyQgdBvKVgp1p+ZuKxv7IoOYBoVsPGH2EB4yJ+FJSORt9ZrQTZ/f
-	nBb/6c7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zE7F+foH7SBVe5rHqE7hdXALIS9VjE0ZpgXeec+ndWM=; b=qx6PKZ62IUU39RsQJuWPcm5CS6
+	pV9gWfgHzQYuZpjlognMUxw50Q5DlsO+p70+U8giu4kPcW0KFV45Nt4/RzIc6fRkZ2k6dpXaD8CbA
+	rmSdVoa0X3WL/ggwIMUXOz21gmXQfaKwStyPBiITGTS/59az0VSavR1zXEsADXIiX1Pf/8SuiBgSQ
+	wAXAyuzM1lfcj7jyOjTyTIsJ+SBZvFbSVcrTvy0jsgzow5fblFFOuyZ4Hh3iw4hgqnGl80htCHKbT
+	qYLSIo5MfV1ae4vop54OsqG8JEXNgz6KGKbgU4JVMvITdBsY+honEn/+Yk4krThpwnu3jiF3iw1K5
+	uCc/DTfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40Jm-00AVsC-Of; Wed, 22 Jun 2022 13:22:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o40Jl-00AVrq-Mf; Wed, 22 Jun 2022 13:22:49 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40Je-00AVog-H7; Wed, 22 Jun 2022 13:22:43 +0000
-X-UUID: c3246b02398b4aada562fd0dd19c7e20-20220622
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:b7e7a8b6-2cbf-4289-8828-fd8532a9be3d,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:af1c2f38-5e4b-44d7-80b2-bb618cb09d29,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: c3246b02398b4aada562fd0dd19c7e20-20220622
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 385083807; Wed, 22 Jun 2022 06:22:34 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jun 2022 06:19:55 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 22 Jun 2022 21:19:53 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 22 Jun 2022 21:19:53 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Fabien Parent
-	<fparent@baylibre.com>
-CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, "Nancy
- Lin" <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jason-JH.Lin
-	<jason-jh.lin@mediatek.com>
-Subject: [PATCH] soc: mediatek: mutex: add suffix 0 to DDP_COMPONENT_DITHER for mt8395
-Date: Wed, 22 Jun 2022 21:19:52 +0800
-Message-ID: <20220622131952.29583-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1o40JX-00AVkD-6t; Wed, 22 Jun 2022 13:22:37 +0000
+Received: from notapiano (unknown [194.36.25.10])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 17BDC66017B3;
+	Wed, 22 Jun 2022 14:22:24 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655904148;
+	bh=QGer2+WExG8zvGaah1wIlZ38pfIs0JV+iFqSuscS98w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Bg9jN1q4MqLcePbJVH15YQvXfV+TiSmR6IMIqxnXBapnL/C8uo+tx+ruFIXNEVT8M
+	 M96gdCtX+gsWrui7vwRbxImJHDHcVw8kLrQvX0IuoZLc+1YMRsncEB0CpiQm3cVmwJ
+	 Ie6dRKu2vyiFEKgnTrSEINfl8iP4UrB8T7vrmBFhbtKUpHumPyNPleoQPfs//nXCcG
+	 g9kmBIsAHTYZ1IQTmPMzSspPechoh6Sm8KBLSZpIH3YQ65xSuAjaKp5mBide0Pc1CT
+	 ElNlhLpoF0Fpi4CQo4VQBIqM6iKe9cGz0ox44PNOixqj1Akug37n628Lwh7MSFqAGu
+	 u27BAThLBZL3w==
+Date: Wed, 22 Jun 2022 09:22:19 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org
+Subject: Re: [PATCH 2/3] dt-bindings: usb: mtk-xhci: Allow middle optional
+ clocks to be missing
+Message-ID: <20220622132219.36rvznhip2egujec@notapiano>
+References: <20220617222916.2435618-3-nfraprado@collabora.com>
+ <8639e64d-c659-7090-2d0a-078fd96cfbd4@linaro.org>
+ <bb460aa483cc888ffa36709d9e9c1f2e3be0e000.camel@mediatek.com>
+ <bc5458fe-083c-d679-9fcb-95810a290da8@linaro.org>
+ <af50210b95d0cd8b2e3103b3d4a9702aeeba9452.camel@mediatek.com>
+ <a24c24e6-fdee-df79-fd2f-6a71540bd9b3@linaro.org>
+ <20220620155057.a6qilnhm7snzhapa@notapiano>
+ <afae6179-3681-f5c6-4615-3228f16f1271@linaro.org>
+ <ba6cccfa05aed087d14f5adc6db06496547a5094.camel@mediatek.com>
+ <2705069844be7b3152a810e21b9f737a88d0302d.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2705069844be7b3152a810e21b9f737a88d0302d.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_062242_611629_0EFA4C0B 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20220622_062235_642223_402CB71C 
+X-CRM114-Status: GOOD (  56.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +89,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add suffix 0 to DDP_COMPONENT_DITHER for mt8395.
+On Wed, Jun 22, 2022 at 02:10:55PM +0800, Wenbin Mei wrote:
+> On Wed, 2022-06-22 at 09:57 +0800, Chunfeng Yun wrote:
+> > On Tue, 2022-06-21 at 09:14 +0200, Krzysztof Kozlowski wrote:
+> > > On 20/06/2022 17:50, Nícolas F. R. A. Prado wrote:
+> > > > On Mon, Jun 20, 2022 at 10:50:57AM +0200, Krzysztof Kozlowski
+> > > > wrote:
+> > > > > On 20/06/2022 08:59, Chunfeng Yun wrote:
+> > > > > > On Sun, 2022-06-19 at 14:05 +0200, Krzysztof Kozlowski wrote:
+> > > > > > > On 19/06/2022 09:46, Chunfeng Yun wrote:
+> > > > > > > > On Fri, 2022-06-17 at 18:25 -0700, Krzysztof Kozlowski
+> > > > > > > > wrote:
+> > > > > > > > > On 17/06/2022 15:29, Nícolas F. R. A. Prado wrote:
+> > > > > > > > > > The current clock list in the binding doesn't allow
+> > > > > > > > > > for
+> > > > > > > > > > one of
+> > > > > > > > > > the
+> > > > > > > > > > optional clocks to be missing and a subsequent clock
+> > > > > > > > > > to
+> > > > > > > > > > be
+> > > > > > > > > > present.
+> > > > > > > > > > An
+> > > > > > > > > > example where this is an issue is in mt8192.dtsi,
+> > > > > > > > > > which
+> > > > > > > > > > has
+> > > > > > > > > > "sys_ck",
+> > > > > > > > > > "ref_ck", "xhci_ck" and would cause dtbs_check
+> > > > > > > > > > warnings.
+> > > > > > > > > > 
+> > > > > > > > > > Change the clock list in a way that allows the middle
+> > > > > > > > > > optional
+> > > > > > > > > > clocks to
+> > > > > > > > > > be missing, while still guaranteeing a fixed order.
+> > > > > > > > > > The
+> > > > > > > > > > "ref_ck" is
+> > > > > > > > > > kept
+> > > > > > > > > > as a const even though it is optional for simplicity,
+> > > > > > > > > > since it
+> > > > > > > > > > is
+> > > > > > > > > > present in all current dts files.
+> > > > > > > > > > 
+> > > > > > > > > > Signed-off-by: Nícolas F. R. A. Prado <
+> > > > > > > > > > nfraprado@collabora.com>
+> > > > > > > > > > ---
+> > > > > > > > > > 
+> > > > > > > > > >  .../devicetree/bindings/usb/mediatek,mtk-
+> > > > > > > > > > xhci.yaml       | 9
+> > > > > > > > > > +++++++--
+> > > > > > > > > >  1 file changed, 7 insertions(+), 2 deletions(-)
+> > > > > > > > > > 
+> > > > > > > > > > diff --git
+> > > > > > > > > > a/Documentation/devicetree/bindings/usb/mediatek,mtk-
+> > > > > > > > > > xhci.yaml
+> > > > > > > > > > b/Documentation/devicetree/bindings/usb/mediatek,mtk-
+> > > > > > > > > > xhci.yaml
+> > > > > > > > > > index 63cbc2b62d18..99a1b233ec90 100644
+> > > > > > > > > > ---
+> > > > > > > > > > a/Documentation/devicetree/bindings/usb/mediatek,mtk-
+> > > > > > > > > > xhci.yaml
+> > > > > > > > > > +++
+> > > > > > > > > > b/Documentation/devicetree/bindings/usb/mediatek,mtk-
+> > > > > > > > > > xhci.yaml
+> > > > > > > > > > @@ -80,8 +80,13 @@ properties:
+> > > > > > > > > >      items:
+> > > > > > > > > >        - const: sys_ck  # required, the following
+> > > > > > > > > > ones
+> > > > > > > > > > are
+> > > > > > > > > > optional
+> > > > > > > > > >        - const: ref_ck
+> > > > > > > > > > -      - const: mcu_ck
+> > > > > > > > > > -      - const: dma_ck
+> > > > > > > > > > +      - enum:
+> > > > > > > > > > +          - mcu_ck
+> > > > > > > > > > +          - dma_ck
+> > > > > > > > > > +          - xhci_ck
+> > > > > > > > > > +      - enum:
+> > > > > > > > > > +          - dma_ck
+> > > > > > > > > > +          - xhci_ck
+> > > > > > > > > >        - const: xhci_ck
+> > > > > > > > > 
+> > > > > > > > > You allow now almost any order here, including
+> > > > > > > > > incorrect
+> > > > > > > > > like
+> > > > > > > > > sys,ref,xhci,xhci,xhci.
+> > > > > > > > > 
+> > > > > > > > > The order of clocks has to be fixed and we cannot allow
+> > > > > > > > > flexibility.
+> > > > > > > > > Are
+> > > > > > > > > you sure that these clocks are actually optional (not
+> > > > > > > > > wired to
+> > > > > > > > > the
+> > > > > > > > > device)?
+> > > > > > > > 
+> > > > > > > > In fact, these optional clocks are fixed, due to no gates
+> > > > > > > > are
+> > > > > > > > provided,
+> > > > > > > > SW can't control them by CCF;
+> > > > > > > > In this case, I usually use a fixed clock, or ignore it.
+> > > > > > > 
+> > > > > > > But in some versions these clocks are controllable or not?
+> > > > > > 
+> > > > > > Some SoCs are controllable, some ones are not (fixed clock).
+> > > > > 
+> > > > > Thanks for confirming. Then I would prefer to make these clocks
+> > > > > required
+> > > > > (not optional) and always provide them - via common clock
+> > > > > framework or
+> > > > > fixed-clock.
+> > > > 
+> > > > Hi Krzysztof and Chunfeng,
+> > > > 
+> > > > thank you both for the feedback.
+> > > > 
+> > > > Since the solution I proposed in this patch is not acceptable I
+> > > > see
+> > > > two options:
+> > > > 1. Split the clocks in several if blocks matched by compatibles
+> > > > 2. Make the clocks required and use fixed-clock nodes for the
+> > > > missing clocks in
+> > > >    the DT
+> > > > 
+> > > > My understanding is that 1 is the desirable solution if the clock
+> > > > is really
+> > > > missing in some hardware variants, while 2 is desirable if all
+> > > > hardware variants
+> > > > really receive all the clocks, only that on some variants they're
+> > > > fixed and not
+> > > > controlable by SW.
+> > > > 
+> > > > From what I'm reading of this discussion it seems that the latter
+> > > > is the case
+> > > > here and thus we should go for 2. Is this correct?
+> > > 
+> > > This is how I understood it as well, so correct from my side.
+> > 
+> > Also right for me.
+> > 
+> > > 
+> > > > 
+> > > > Also Chunfeng, do you have information on whether the same is
+> > > > true
+> > > > for the MMC
+> > > > HW block? I recently submitted some changes to that binding [1]
+> > > > but
+> > > > I followed
+> > > > approach 1 there instead. However if all the clocks are present
+> > > > in
+> > > > the HW level
+> > > > there as well it would make more sense for me to change it to
+> > > > follow approach 2.
+> > 
+> > I discussed it with Wenbin, MMC seems a little different with USB,
+> > 
+> > Hi Wenbin,
+> > 
+> >    Please give some comments about MMC, thanks
+> > 
+> Hi Chunfeng,
+> 
+> As we discussed, the following change is the desirable solution for the
+> Mediatek MMC HW.
+> 
+> https://lists.infradead.org/pipermail/linux-mediatek/2022-June/043691.html
 
-Fixes: 141311b856d8 ("soc: mediatek: mutex: add MT8365 support")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/soc/mediatek/mtk-mutex.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Got it, thank you both. I'll keep that approach for MMC then, and change the one
+here for USB.
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index fa8e0ba38803..3b25fd6b91aa 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -130,7 +130,7 @@
- #define MT8365_MUTEX_MOD_DISP_CCORR		13
- #define MT8365_MUTEX_MOD_DISP_AAL		14
- #define MT8365_MUTEX_MOD_DISP_GAMMA		15
--#define MT8365_MUTEX_MOD_DISP_DITHER		16
-+#define MT8365_MUTEX_MOD_DISP_DITHER0		16
- #define MT8365_MUTEX_MOD_DISP_DSI0		17
- #define MT8365_MUTEX_MOD_DISP_PWM0		20
- #define MT8365_MUTEX_MOD_DISP_DPI0		22
-@@ -358,7 +358,7 @@ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
- 	[DDP_COMPONENT_COLOR0] = MT8365_MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_DITHER] = MT8365_MUTEX_MOD_DISP_DITHER,
-+	[DDP_COMPONENT_DITHER0] = MT8365_MUTEX_MOD_DISP_DITHER0,
- 	[DDP_COMPONENT_DPI0] = MT8365_MUTEX_MOD_DISP_DPI0,
- 	[DDP_COMPONENT_DSI0] = MT8365_MUTEX_MOD_DISP_DSI0,
- 	[DDP_COMPONENT_GAMMA] = MT8365_MUTEX_MOD_DISP_GAMMA,
--- 
-2.18.0
-
+Thanks,
+Nícolas
 
