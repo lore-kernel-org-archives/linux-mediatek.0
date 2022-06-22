@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E625EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 10:23:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AB0C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 11:05:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WEVhjpiOvZ+pEh8GGZKGcv5+QGesHyZqdQjiwLOYI+s=; b=0nuOSSVmteXhVTkMRmYn1SHsaO
-	l6vvMfsX4YN+dpZtmvrIRTVAy0yxKgxmUNbJXWanZ1RHzPrMBk2m+kW4lr2V3rObeyp6bkTFv0NVJ
-	JkNcWY/kfGRPBmL6y9ydAnUtyqyZED8WZylH4DE16J+kX8h0ng4leNgpNyr2DEC3BKJWkhYzj3TTX
-	g6ma9a1CjAG7sKdZCBCSXlGwyoiadA+HwMqpC0UfFo93ISWpj0KEsb0SaBQxZZDVFOYxs424OR17y
-	FUaOTMpHZnbi/efxzESaKbjIgHmhGPggFjGceG2v5zStE4yAwi2c1ca+CoSO0rktYEW/77Al10RBE
-	KQStJhEA==;
+	bh=BsWeZKTMRUjS4UGWGKXKi/F6OhLV9oNlEr0sqKPjdhY=; b=vTG+MK4pXl96D52+PgbpOG0rss
+	gzkcLTJoiEuPUKJH+relyOtHA7Yyv9UuAwt6nA8RvVN6S5X1zMQIpEe7FaMemfCqIJQQ+w23Buqhp
+	5RkfUT6L8GnvPKH80hfnQd/3hk7YOeCpJpX5xWOSzFr6IGssAhC6w43jp1jqLsyOI/YN+qz2Ajlg6
+	7LM6TnYBAnJIrzEqHus7EuL1QwZPEwK4dJzHLxJXZvlWlbm6El8oVEf/ECyCjr9bIaMenGZggnRJk
+	KNCGrra4Md1kiH1yPxjsJy0p0FLmKOYp90dv/8GugywNeCxBgqPAdHpjZcGur20jDZykHi1jEjssY
+	sOR3pkOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3xWA-009ri8-RN; Wed, 22 Jun 2022 10:23:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o3yAu-00A42H-Ex; Wed, 22 Jun 2022 11:05:32 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3xRS-009pZ9-2h; Wed, 22 Jun 2022 10:18:35 +0000
-X-UUID: 759e28edb04841fb9cb71b3f8ea05a9a-20220622
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:be9b981d-0333-4a80-8eae-bf5e2d3c8320,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:000f2c38-5e4b-44d7-80b2-bb618cb09d29,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 759e28edb04841fb9cb71b3f8ea05a9a-20220622
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <tiffany.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1036488352; Wed, 22 Jun 2022 03:18:25 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jun 2022 03:08:23 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 22 Jun 2022 18:08:21 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 22 Jun 2022 18:08:21 +0800
-Message-ID: <a509c9d1240c1c29f4ae416cf29298e0d2b04f09.camel@mediatek.com>
-Subject: Re: [PATCH] MAINTAINERS: add Yunfei Dong as mediatek vcodec driver
- maintainer
-From: tiffany.lin <tiffany.lin@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Andrew-CT Chen
-	<andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
-	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
- Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 22 Jun 2022 18:08:21 +0800
-In-Reply-To: <20220620071817.11685-1-yunfei.dong@mediatek.com>
-References: <20220620071817.11685-1-yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o3yAh-00A3yL-B9; Wed, 22 Jun 2022 11:05:20 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id e40so10811911eda.2;
+        Wed, 22 Jun 2022 04:05:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=BsWeZKTMRUjS4UGWGKXKi/F6OhLV9oNlEr0sqKPjdhY=;
+        b=goSSVIS2xMmIt8+zQ+4MnTruyoXO+gM/WRoEM6Cuo0Prstx1aOOwxieSEas175GI/Y
+         pR2Ri8ptjhMZM/G7BHcC7rgqDl7INoPAriq7bsCHGZaWu/qkjeRlUw4V0ROTlGdz8Jsz
+         ZGNVA9rlMFvvpoELJv0Gr/0V7oP28iDObt/v/9fSfFXohainHuDFWRfYpz0WhcPFSn5v
+         TZkEbd++U+4Lt5ORaWDswJ87h+OTBxqy3lfL3eFCaJcKfpk3IXE4l8eYzXXW4G6vNZaq
+         /7L3bJjNz22oFeOw74YdcXFiGlAiK/Hpa+Ha3pZuSu6M0TMMTi0rSX0YXOE9lEsDAZtb
+         l3oQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=BsWeZKTMRUjS4UGWGKXKi/F6OhLV9oNlEr0sqKPjdhY=;
+        b=S637LoltonVAN2eRGtfhvAT8oJqTkcDikDn9PsKXDH7pFL6hEVZ6Rpmh2ACAovIKxA
+         Q09t2N01Mf9GUFwAzmg2VY6EQcoptfliamwCJpQVOPb4yLUoxQyqvGqsX6KSjcQbBkRP
+         NWtyT1mPYb6/f2sjnhh2zAf6AFLTtbfbn5mN0Wz3WwpqV/A5/KV+TJHIFDGeYo7zMwCZ
+         66iWRen9gNxNrUfPnvuUjixXWfeRkRHX9JjT7Y8vNBI0HgE32g/Dul4oyOT0Gj0LX8GT
+         N9KfLTIqaZiTidu3jHbQYEVfX/kEUfcXEmU0xpybo1sPeTC4y3IzDP2iWnfDKCAhN/2k
+         YGmQ==
+X-Gm-Message-State: AJIora+GrlcqAtFLWBDRPr0YLGrWvddZZUYDstlpNY6oIYjfvP8sKZFP
+	ylKTQfoOtsvunLBg5yU0WMA=
+X-Google-Smtp-Source: AGRyM1s9nDUowq9+/oNlBIcMXsoZizGRGfHc6q9TiQd5vkG3V7Wuhzig5PXTkxlYtZVA2ciTT6f/JA==
+X-Received: by 2002:a05:6402:4385:b0:435:9104:955b with SMTP id o5-20020a056402438500b004359104955bmr3470937edc.45.1655895915755;
+        Wed, 22 Jun 2022 04:05:15 -0700 (PDT)
+Received: from [192.168.0.24] (80.174.78.229.dyn.user.ono.com. [80.174.78.229])
+        by smtp.gmail.com with ESMTPSA id b12-20020a17090630cc00b00722edb5fb53sm1007705ejb.116.2022.06.22.04.05.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Jun 2022 04:05:14 -0700 (PDT)
+Message-ID: <6b4f108c-b4bc-72cf-5972-222fbb2f3fca@gmail.com>
+Date: Wed, 22 Jun 2022 13:05:13 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH v6 15/16] arm64: dts: mediatek: Add infra #reset-cells
+ property for MT8192
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
+Cc: p.zabel@pengutronix.de, angelogioacchino.delregno@collabora.com,
+ chun-jie.chen@mediatek.com, wenst@chromium.org, runyang.chen@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
+ <20220503093856.22250-16-rex-bc.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220503093856.22250-16-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_031834_197583_0DD37B9F 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20220622_040519_446378_DDAC9AEA 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,31 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-06-20 at 15:18 +0800, Yunfei Dong wrote:
-> I have been working on mediatek driver development for a very long
-> time,
-> and sent many patches to change the driver architecture. Add myself
-> as
-> co-maintainer for mediatek vcodec driver.
+
+
+On 03/05/2022 11:38, Rex-BC Chen wrote:
+> To support reset of infra, we add property of #reset-cells.
 > 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Applied, thanks!
 
 > ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index e22a79ffa4d0..1b3a30f33f0c 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -12389,6 +12389,7 @@ F:	drivers/media/platform/mediatek/vpu/
->  MEDIATEK MEDIA DRIVER
->  M:	Tiffany Lin <tiffany.lin@mediatek.com>
->  M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-> +M:	Yunfei Dong <yunfei.dong@mediatek.com>
->  S:	Supported
->  F:	Documentation/devicetree/bindings/media/mediatek,vcodec*.yaml
->  F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
-
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index 411feb294613..79803420d8ef 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -269,6 +269,7 @@
+>   			compatible = "mediatek,mt8192-infracfg", "syscon";
+>   			reg = <0 0x10001000 0 0x1000>;
+>   			#clock-cells = <1>;
+> +			#reset-cells = <1>;
+>   		};
+>   
+>   		pericfg: syscon@10003000 {
 
