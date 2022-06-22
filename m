@@ -4,126 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25558C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jun 2022 23:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E635C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 01:02:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	In-Reply-To:Date:References:Message-ID:From:Subject:Cc:To:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aqJHOQmxrxlatNO2xMwYxJVq0MrIa0oXWWVFnxwgEkU=; b=zZuSzgYtxgCknWOF0YBXFFqT2L
-	64xUj+mkBbxdeWlaUATkMbn005NL49s5JZnW/t7Na62Ybt84p2Fgaq5Gw5fRThku7zK0cn9Vw8Njc
-	RXH7oNsbrgeeDFEXLaUngU/udWpkd7y1ApsdtgYIDwNDUW7RGCrY7orfRd7/H82gx5WlkA2lMD8CT
-	rcArAO7FrmdL40AhnTJpS6ogSIcOjZch2eOj9LqesFF51YrTDJ6I+SqOWi6YMfMeBPZwx/G2Pa/VC
-	rxBkLoQOT8XEvcXQD/jMLFN5+iHZIV5oyZ1xpC4tZcvrLC4+3BCeY1+9fQo5PuAzCUBU5sFP8BuG5
-	0XQiXi8g==;
+	bh=sivU7Ajjma7J+69aw6E+PzzWxyNFz/JeXLyPWeg6bz4=; b=vqGd1Vuq+8xsGlYwS7M7Y2mTAN
+	KFhuoRd5ACTfzDRv27pivzw2u+uEeIwUlQmqamm9TQrwGIyjFl3wTPsBxR1JAB5l2UOSfXnjHXD06
+	HRcKfZaLKwkkpVW6lXOgW5kSzrte4oD+tRgQKW7ajQuml5Q87nxYvrmt1YXkU64K8E3FAPTG6lHqV
+	rSzTyMSv9zxm9+fu8eNG9YO9IygXhPk02yUo0agCGqbBEH4NiI8NbPgtahk+Gb2ax7OdU0/i4YZCD
+	w2UhuP4fypOslW9ZM6nOSe+fl/XCv8rR+ilHLQ/UCF0stPHH4mwmrrk0Ue96hyD2UVeD1B/jKdiKP
+	yCniTHgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3naw-007hdb-6o; Tue, 21 Jun 2022 23:47:42 +0000
-Received: from mail-co1nam11on2085.outbound.protection.outlook.com ([40.107.220.85] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1o3okf-007vAj-44; Wed, 22 Jun 2022 01:01:49 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3nak-007has-FM; Tue, 21 Jun 2022 23:47:32 +0000
+	id 1o3okc-007v9N-Vn; Wed, 22 Jun 2022 01:01:48 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25M0Il85017637;
+	Wed, 22 Jun 2022 01:01:29 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : content-type :
+ mime-version; s=corp-2021-07-09;
+ bh=sivU7Ajjma7J+69aw6E+PzzWxyNFz/JeXLyPWeg6bz4=;
+ b=fsFoklZJ25qMIKbrBI9VK52NWj4JJxDjXBpDQF1PVcqfgF4A2D4z6TiNqwwi/xzlCpaS
+ ynyk1fecBGyImqgJbEGL/AitMNprTWJgBJls9i3A7mANObuAnKCuI56D5qDwIT3OnY6q
+ e79lTNfAPSZrAZ0I9vST1k2OziDSX7jgRJMj2ye7s7EGpoPhV8LoqPMm0/tIbk9KuadT
+ a25NM1AauxWhSZZ2tjsi5MjUK/+lfH60g8m918QMOqBWEyDrziwI05vdJkEwA7vlWIPJ
+ WDr3D2xV6v4t3sMuJn2Pz4lRF6diyQsOpBcuK517tBKbz5dCwVoIcah3uLDmOyPCiw6b tQ== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3gs78ty2hf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 22 Jun 2022 01:01:28 +0000
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 25M10khF001871;
+	Wed, 22 Jun 2022 01:01:27 GMT
+Received: from nam04-dm6-obe.outbound.protection.outlook.com (mail-dm6nam04lp2048.outbound.protection.outlook.com [104.47.73.48])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id 3gtg5uxhhj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 22 Jun 2022 01:01:27 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kCi8pM01KDslTxSC1v0wpTaefyN5VX3ILYNNAlmIfSFbtAeX+iua2UixPzeaAtOtYzKAeEJwZpCRx0Fm1Giz5rSDggLQCfY/Ez2r23VeQtTLUEmxIvqFg7rFcHkhKoXDPcX4uwI7ShLxeMSUrz+j8HHDih06F1ToIgP8kze58wFBL3DihmKhEjK56u0gKQ8QzGS3LUe5sXqRxIpe7SjrPLAJBoNH7BaNRP1u+O6w1MAl7ZKQ4KmyRH6FwY2g4VQK4ZGj0V+/eYhBJjqToRycLrirJFYSU8QYx7rGSz1BwZohexSzC7BdBA4WAFRuY1ImV0eUvbJ3265xvvtWpcTrOA==
+ b=HLERr1mkVZ6WKsByKt6K8c8utcF8VCHDxxIZCKnZoMTt6GX2FXqJSE2jSpr0xm1nzMwAMF9hmErxEmc3XFWGY36HqbjsWwI/5yjErr5ZZWhSu8oPsH/h6VNoGahlmbUvlVyiFikfvyfhP5lpVXuXIAaF0Rry0w2fFGTXYTFcPJUY7KvS38M6zgzAaFIEAcai/4HSfG7quZOq6RSB496bVIY9ngzIlkLt+G7G9NcZadxtZxk4rFS4zx0mDvtZ155c75r79KmGczyuWLuw4iHB/CwmtQk8jG3/w8r733jbaoVB9NoEe1kVWUR3itR4BjU0NENoQIfvObTkMR6SHPCKDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=aqJHOQmxrxlatNO2xMwYxJVq0MrIa0oXWWVFnxwgEkU=;
- b=kyyEjv8pKRQyS4xhF2jWhFMnPkSN6fQfYmU8rHgRfrAUuAknwC+J9Ct0vlC8Gawbgqr34rAiwTL8n8wCUOdZotajLpMV/HukCNA3aq+UPDoXtVDWxTdvtuZjfNlOlUbj6huTi/9+E3RoJ9Mh076agEQSy8OTdVJA80Imt6SFSLCD9fNoDqBX1gG8vDGcuvTH3iemqXoRaqc53m0j7vDkGbpDCe2GamO+1Cpsip7rBzdJyE1XWRAf4tKYOBfa+qoLIKpHFfMnsnCGAY9xG2bicJarlCSrG4lsclS3nST3Ram8oczITdlKcQzuY8/LhLZKLH9UepGxfRa1QQPssg05PA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.238) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com; dmarc=pass
- (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
- (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
+ bh=sivU7Ajjma7J+69aw6E+PzzWxyNFz/JeXLyPWeg6bz4=;
+ b=Pgeu59Ac40/K385QOFbVwlQuB2LtsN/B6iZecvUVLXPLbVlVZC3UxiYucIcpAe1wyAtFhHAPZhdFKbo8bN1kkck4CkXrk0nlrB5W9bHJQcBf6Qq9wvMR10xuMAm/5NgdN4zP3i7yf52OoMUoPxhWluBarZ6TlZ93sCaITCbjl2vAxI0UmAaWOAsjjbDP2rutW817YOqCk068NV1kW50ukur4QJU6XYsoK4KPTT1hKyzB3MKO+Jhdnwra/ynq5tIFwIJvB9FCgCzuSsSBNC9OKMyieqE3Kh5EgDbPuk2/p5Dhe30ck8ky8WHJArhNKXmAfkfNu67IomsdBnlyPd7P/Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aqJHOQmxrxlatNO2xMwYxJVq0MrIa0oXWWVFnxwgEkU=;
- b=IN9npoapkbB8oXv441aT7uIWUmJRTWO3QfDBLJ3NXVgbNQRgzEawfifkbG/+QCyCIMfbLPRYA/bB2baK8ZQ0SpQDhdc/2QUTxsTMsbVvoJNKEhiw5yW+VkWniwDd9xwWPgxyL5gDmjW1qA5AWop/EiikrCtwVaJmFyhP897Ae5FYRwk0vLTe9sCoCetmO9RRMfSur6oO1htHE8sTl4igEuJ0svwp5K02vk7hjj1tQLaC7RrSbxkjJZC0/mfhpRy20zcjiIdkPQ6RqYzcp7b5ceBhd0ncWuUr7j1KSOLkqhiTVjriw9pZmqMhiZL0YCaMbn/ooiYR0ZjXlM7NHJMBEg==
-Received: from DS7PR03CA0295.namprd03.prod.outlook.com (2603:10b6:5:3ad::30)
- by BYAPR12MB3479.namprd12.prod.outlook.com (2603:10b6:a03:dc::26) with
+ bh=sivU7Ajjma7J+69aw6E+PzzWxyNFz/JeXLyPWeg6bz4=;
+ b=RG/OaXKpqiKyYT5Zf8Rg13LVJXGKIoNXRmyDHwnRIWwMI12PS71WPjyfA3upnVIcdUhEKXHdr5Eid791M12jffThiBlZOGBPwIZTN5gVLjecBmKrwdRA5Q3lj50VtihTHsNiKLfhX07qhOIIk5TYN9M+sX9VmFDbGIA5yJIKss0=
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
+ by SJ0PR10MB4654.namprd10.prod.outlook.com (2603:10b6:a03:2d2::16) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.21; Tue, 21 Jun
- 2022 23:47:25 +0000
-Received: from DM6NAM11FT025.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:3ad:cafe::13) by DS7PR03CA0295.outlook.office365.com
- (2603:10b6:5:3ad::30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.20 via Frontend
- Transport; Tue, 21 Jun 2022 23:47:24 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.238)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.238 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.238; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.238) by
- DM6NAM11FT025.mail.protection.outlook.com (10.13.172.197) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5373.15 via Frontend Transport; Tue, 21 Jun 2022 23:47:24 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by DRHQMAIL105.nvidia.com
- (10.27.9.14) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Tue, 21 Jun
- 2022 23:47:24 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Tue, 21 Jun
- 2022 16:47:23 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
- Transport; Tue, 21 Jun 2022 16:47:18 -0700
-Date: Tue, 21 Jun 2022 16:47:16 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-CC: <joro@8bytes.org>, <will@kernel.org>, <marcan@marcan.st>,
-	<sven@svenpeter.dev>, <robin.murphy@arm.com>, <robdclark@gmail.com>,
-	<baolu.lu@linux.intel.com>, <matthias.bgg@gmail.com>, <orsonzhai@gmail.com>,
-	<baolin.wang7@gmail.com>, <zhang.lyra@gmail.com>, <jean-philippe@linaro.org>,
-	<jgg@nvidia.com>, <kevin.tian@intel.com>, <suravee.suthikulpanit@amd.com>,
-	<alyssa@rosenzweig.io>, <dwmw2@infradead.org>, <yong.wu@mediatek.com>,
-	<mjrosato@linux.ibm.com>, <gerald.schaefer@linux.ibm.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<cohuck@redhat.com>, <thunder.leizhen@huawei.com>, <tglx@linutronix.de>,
-	<christophe.jaillet@wanadoo.fr>, <john.garry@huawei.com>,
-	<chenxiang66@hisilicon.com>, <saiprakash.ranjan@codeaurora.org>,
-	<isaacm@codeaurora.org>, <yangyingliang@huawei.com>,
-	<jordan@cosmicpenguin.net>, <iommu@lists.linux-foundation.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
-	<virtualization@lists.linux-foundation.org>, <kvm@vger.kernel.org>
-Subject: Re: [PATCH v2 2/5] vfio/iommu_type1: Prefer to reuse domains vs
- match enforced cache coherency
-Message-ID: <YrJYhIiivpiJ1t4f@Asurada-Nvidia>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-3-nicolinc@nvidia.com>
- <20220621164602.4079bf43.alex.williamson@redhat.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14; Wed, 22 Jun
+ 2022 01:01:25 +0000
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::6516:e908:d2bd:ca45]) by PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::6516:e908:d2bd:ca45%5]) with mapi id 15.20.5353.022; Wed, 22 Jun 2022
+ 01:01:25 +0000
+To: Ren Zhijie <renzhijie2@huawei.com>
+Cc: <stanley.chu@mediatek.com>, <jejb@linux.ibm.com>,
+        <martin.petersen@oracle.com>, <matthias.bgg@gmail.com>,
+        <powen.kao@mediatek.com>, <linux-scsi@vger.kernel.org>,
+        <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error and type
+ unmatch
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1y1xpjyud.fsf@ca-mkp.ca.oracle.com>
+References: <20220619115432.205504-1-renzhijie2@huawei.com>
+Date: Tue, 21 Jun 2022 21:01:23 -0400
+In-Reply-To: <20220619115432.205504-1-renzhijie2@huawei.com> (Ren Zhijie's
+	message of "Sun, 19 Jun 2022 19:54:32 +0800")
+Content-Type: text/plain
+X-ClientProxiedBy: SA1P222CA0033.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:806:2d0::6) To PH0PR10MB4759.namprd10.prod.outlook.com
+ (2603:10b6:510:3d::12)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20220621164602.4079bf43.alex.williamson@redhat.com>
-X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 83bbd326-a75f-47d9-b6a0-08da53e06440
-X-MS-TrafficTypeDiagnostic: BYAPR12MB3479:EE_
-X-Microsoft-Antispam-PRVS: 	<BYAPR12MB3479D56EB2C3CE3D32569B32ABB39@BYAPR12MB3479.namprd12.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: b825e598-540b-4a5a-c728-08da53eabae4
+X-MS-TrafficTypeDiagnostic: SJ0PR10MB4654:EE_
+X-Microsoft-Antispam-PRVS: 	<SJ0PR10MB4654A56AA497D5D174174AA08EB29@SJ0PR10MB4654.namprd10.prod.outlook.com>
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	8NwIxgGiwtZsX9DG5RYiN32gAOfze5/tHQkp+2/EouFLvJOnuWFOd471Cz5Jl5gYgAUOXfqy5Wr+5NtKJVEZ3Qg+R0CJeF6/IcgIDERf3FtOBJWDpvn9hiQcVDgi2B7o3V8XlxyOC10oADVBAkVSS74F4DgmBYUJMd9ZIY43esDyXNhzvjM6V09g5UD+6hca2/FXncFjBzrplsG7I44g51AEMOepe6dTXA//7yT7sIF6SMzkoQcDqaav8L/RndMvpXmKm4GU+AIFjhCTry0vSif6jeOoeZeB2wIuSfqAEv3VW1BQzOxN7i08+GZKCc1WjnVnnACf45HViXnBFNxg4syidc2AaVEvBtgnkoGl9+BHSx1ckgrGQOCBF6+zXvFAW/5m7JE2gkBKPK/QBoeQ14bBIMMzaz7eSqW1CHUKFJoqFzljM6XYJuZtP6Fj5xxFfTlF94tQ0UcUuUpbhVL5cL34n/9lsR0bs5CyhLZnyo2DbKH3dpwdlgYIKbiYEkhUwExPOrhJMU1cy8uY6FvdXHBuH23fGLzk3Me+8aqbERqrg2yzKpjWfJzpVMFutxwNK8hMTf765uI03HoY3cbDw4s4uJtkQdvIfyLewn84BzCBpbqEw9kJ4o+qQPTS+7PK6MsD+/HGyGP8+EwwwKlH6FzkcX7edz/VyZrbCBOs/KNc+0CV/KhlbnMdjF8UpYRqkxkSlBn3f1+ls7XECv+7fI7ahSW39MDxPyuAmH2YyCZndmi6C684ASePTby+pJkT
-X-Forefront-Antispam-Report: 	CIP:12.22.5.238;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(136003)(39860400002)(396003)(346002)(376002)(36840700001)(40470700004)(46966006)(70586007)(54906003)(2906002)(7406005)(40460700003)(7416002)(6916009)(8676002)(186003)(81166007)(70206006)(36860700001)(33716001)(4326008)(47076005)(55016003)(8936002)(426003)(82740400003)(9686003)(40480700001)(356005)(26005)(336012)(478600001)(82310400005)(41300700001)(86362001)(316002)(83380400001)(5660300002)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2022 23:47:24.4682
+X-Microsoft-Antispam-Message-Info: 	Cpm8ZyePLAJYDDgMblC57CHUcr8DVU2fklTAng6Hm2WDIcuqbKHboFrIfZKQItRv+VsdKVpGK5BG4UdZ0KM5BTjR/PsFUnfH1/LQ0zN10bU5d+8qDDswXIjhtgaFyMaRrx+WA6caU1HvvedefDrWNK3F+QcRoQsyJXZ1alCINb5u0+eAElrcY5vL5yP6U6fi6OByG8v96pS780rPSFszu0qxftXvm7Ii4B4jVmP2tycGUfspUh7m1YJveVkv0kJAwSt2cAXkHCaeFG5gRf5+9LFMigoik1nf2N21cK+6GG9TJXY1Zr6ttlv0yfm6TQUK5ncFcw3+K76Qlk7GAI10xwYRzViFGcgAWTmb3ZwA6eTegTWsXoONo88OHnhctHAdoRywsVcui3bo1JBynbDUP8P1H44RqGIs84qmkLs6Y4ydtIHkP9Cawmj00p2+RHNcGiDDBMVPHfw/mttAHiHBtjQGkIovjkqm+iLFJv9dqzyjb90ucuuYVmt1QwbIUHmSqrT3EhFG9MlVPyN+X15nnXk4XM0OhtojqeUvljStWBgGDqfDEly4yggrM8vt0qR3swNkzH8iwRS2ZB1uXJhL0kNbDX3L/m8X8LGP8dC96MfMxhYtPOKWjuCtYbdMzGnc9B6eMn8sTMGJ2SurXiLp67JLIdzPDHzwJqs+IWMcyzsJV3Lbu0VFHCLkU3CHsNonb9agfDdi4ppcxGGeiZHctg==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(136003)(366004)(396003)(376002)(346002)(39860400002)(38100700002)(6512007)(41300700001)(6916009)(38350700002)(52116002)(36916002)(8676002)(86362001)(26005)(5660300002)(54906003)(66556008)(6506007)(66946007)(186003)(6486002)(558084003)(4326008)(2906002)(478600001)(316002)(66476007)(8936002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?ANINadEVbOql5dQ8W/gdsPDNcvM1aGxTsSEs/qsJYjZvL0l7QQB+WhvakGxb?=
+ =?us-ascii?Q?iQOieNLcjm9FNK+m+okNFSLxevQyFCNEfRQ9oJ0LodfRZI9urNolP6Wx7JFW?=
+ =?us-ascii?Q?SMKOZm3CxQEW5m9kChurgwBdWHo7wRgGnoVkfXJRuUtDWyojsLsp+sHTTT/u?=
+ =?us-ascii?Q?nnQVfy9eOJZvSTx6sjOp7cbnYCCNFSwRiG/QewvyOJqmkP1p0JGaPKiokPIu?=
+ =?us-ascii?Q?XdKvLe1NQV8WlS4o+uWeNWz1KGIFf6aWmQ/g/ReS680q93LTvWezKAQU6taq?=
+ =?us-ascii?Q?a6/3EkX5W+YFA2tG+6rZv27cJqwDiBU8w4HwHPlSFdMqg55F37Tt4Nc7VBm2?=
+ =?us-ascii?Q?cpg9EvU+kTvReud2COSHUtAjfF2oAe+/fCz0x4bJ+9ujnKXiQzvwbe94DLDU?=
+ =?us-ascii?Q?FDQbCf0ms+BRMcR/az0czcau4iJX2R/UL6JtJulR2J2euxdifkcT1Zewy1e2?=
+ =?us-ascii?Q?0CAILAq55DzJvg6TqXb7kBZBPhyIz0eX6/YBxtay3vMYFEvKbABAnq2m8mDP?=
+ =?us-ascii?Q?BxvqhGLvDurM312InW79m/Ff+E+YjEub/KsRU4T786kvJnbkFigbqsY8zClW?=
+ =?us-ascii?Q?5WRtUb+EQPny86oo7pAjwoGaiLKehKhWb2a0LDkkITkEg0ONIQad9sEaC02Y?=
+ =?us-ascii?Q?6JwnPeNVcYFnoRQVlIqkEgyxI2oeFvwlZLhSclu8TSdthLRPU0rDGWpW4F5D?=
+ =?us-ascii?Q?BSNy0zT0RMtcrc/RfPuRKGz+UJk/HDodwGpn49ay592src7OXIbqqRI2iojG?=
+ =?us-ascii?Q?G4aKLQqNpaTpicGjuiD3dTw/+kNMCT3AR7gonFpFGwu+Ee/kP95CfzgQ9SuY?=
+ =?us-ascii?Q?qFlRCXa2gdSRi/Yc+stgaOXFyOlMUsFI4z84T7m970Y3iB1RHpYFq5m3JeDz?=
+ =?us-ascii?Q?o/bi8YM4fHMNyWDPcoxN/0+/CVW3TIsuD28TMtRT0RUE3ODzyfA7sUeEwM5T?=
+ =?us-ascii?Q?NvklaKunPxPm2OLxmb/x+KNWhGKz49k3w4903JzefgMlQYUnIpEJBEyYyUP3?=
+ =?us-ascii?Q?/xpGMtogJWCAOGcckw1xN+t9offuhM90Ah864pNxT6jzNo9en6czMbQcCHsn?=
+ =?us-ascii?Q?7aVPY0vggUlTaE4QakRGAbmuqHhMmNU5lAU4CsP+ha/yImbNWCiOchEgJEv+?=
+ =?us-ascii?Q?usKpkZmUNRWkD962PphipS6clYqD8ekamnA1AU003Vb0/KXPXlYWyNXNguOP?=
+ =?us-ascii?Q?SiOQvOonegb1gE/0w3EB0xqNPHG87sZRnIBEhpH07VYowR1UMgxyMHAgV0JV?=
+ =?us-ascii?Q?h0bcqMSmPZCQSmWaz1Vp5xs0EPNP15OHeDUhCnxGkh78vpwq0KwEkcPXsXZb?=
+ =?us-ascii?Q?RDg8d1Zt9p/ZYqZgCoLxpnIusR8towmeIkmrD2eixeRSZv94x+3apMVSclC6?=
+ =?us-ascii?Q?wc+5jyUy290fBgy2Uh3MGIRYezx26d+5ApuujfiXGUt5hte+YJLn3gOHRKxM?=
+ =?us-ascii?Q?f3BiaYFbxDXJMz9k5WGG+KOgE+uSq7SPeJtJALtsYUScvtMcrkTBF7di6yht?=
+ =?us-ascii?Q?VGvhQ4JnU2kY3x6OF8ZaE8LnpO2CAahC+ZzbLqCqGiVgMPEQZFw4RRuTrmCC?=
+ =?us-ascii?Q?mkbMkeSG33hEafpEnswgZp2GaMyXhDO+26J99bC60VXzNkekuj1wWUsGz7wR?=
+ =?us-ascii?Q?l98n3I/CutN9bqRQ5XnvuJrMTa4L8z2w86pYR82HIcdd53R7tr+2U7W4BEGH?=
+ =?us-ascii?Q?0bMWvnSEvBjuHhHk8XRC4FGlKlPM6D6N4vicyB96KK3yDjd8Gp4dVsSjfgCi?=
+ =?us-ascii?Q?jhhUPFMyjPtv1jgx9JsC72iTINQBm6g=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b825e598-540b-4a5a-c728-08da53eabae4
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jun 2022 01:01:25.5134
  (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 83bbd326-a75f-47d9-b6a0-08da53e06440
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.238];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT025.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR12MB3479
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: NE2zUsgn+0S3b/5gUI1V5vlZec8o5yZiXpNznTP1a+3DXELNSzWOb+4X59EKtYyaNasYsmTzp7fajyZ6Q87DFUXtsf+JaFkNbAXSkBOVmjM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR10MB4654
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.517,18.0.883
+ definitions=2022-06-21_11:2022-06-21,2022-06-21 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 malwarescore=0
+ mlxlogscore=778 bulkscore=0 phishscore=0 suspectscore=0 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2204290000 definitions=main-2206220004
+X-Proofpoint-GUID: yrkEVqHMA5demBozSHWx9ghTnmJBq2xV
+X-Proofpoint-ORIG-GUID: yrkEVqHMA5demBozSHWx9ghTnmJBq2xV
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_164730_746372_39A97131 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20220621_180147_068067_AAEECE93 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,79 +167,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 21, 2022 at 04:46:02PM -0600, Alex Williamson wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> On Wed, 15 Jun 2022 17:03:01 -0700
-> Nicolin Chen <nicolinc@nvidia.com> wrote:
-> 
-> > From: Jason Gunthorpe <jgg@nvidia.com>
-> >
-> > The KVM mechanism for controlling wbinvd is based on OR of the coherency
-> > property of all devices attached to a guest, no matter those devices are
-> > attached to a single domain or multiple domains.
-> >
-> > So, there is no value in trying to push a device that could do enforced
-> > cache coherency to a dedicated domain vs re-using an existing domain
-> > which is non-coherent since KVM won't be able to take advantage of it.
-> > This just wastes domain memory.
-> >
-> > Simplify this code and eliminate the test. This removes the only logic
-> > that needed to have a dummy domain attached prior to searching for a
-> > matching domain and simplifies the next patches.
-> >
-> > It's unclear whether we want to further optimize the Intel driver to
-> > update the domain coherency after a device is detached from it, at
-> > least not before KVM can be verified to handle such dynamics in related
-> > emulation paths (wbinvd, vcpu load, write_cr0, ept, etc.). In reality
-> > we don't see an usage requiring such optimization as the only device
-> > which imposes such non-coherency is Intel GPU which even doesn't
-> > support hotplug/hot remove.
-> 
-> The 2nd paragraph above is quite misleading in this respect.  I think
-> it would be more accurate to explain that the benefit to using separate
-> domains was that devices attached to domains supporting enforced cache
-> coherency always mapped with the attributes necessary to provide that
-> feature, therefore if a non-enforced domain was dropped, the associated
-> group removal would re-trigger an evaluation by KVM.  We can then go on
-> to discuss that in practice the only known cases of such mixed domains
-> included an Intel IGD device behind an IOMMU lacking snoop control,
-> where such devices do not support hotplug, therefore this scenario lacks
-> testing and is not considered sufficiently relevant to support.  Thanks,
 
-Thanks for the input. I integrated that into the commit log:
+Ren,
 
-    vfio/iommu_type1: Prefer to reuse domains vs match enforced cache coherency
+> If CONFIG_PM_SLEEP is not set.
+>
+> make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-, will be failed, like this:
 
-    The KVM mechanism for controlling wbinvd is based on OR of the coherency
-    property of all devices attached to a guest, no matter whether those
-    devices are attached to a single domain or multiple domains.
+Applied to 5.20/scsi-staging, thanks!
 
-    On the other hand, the benefit to using separate domains was that those
-    devices attached to domains supporting enforced cache coherency always
-    mapped with the attributes necessary to provide that feature, therefore
-    if a non-enforced domain was dropped, the associated group removal would
-    re-trigger an evaluation by KVM.
-
-    In practice however, the only known cases of such mixed domains included
-    an Intel IGD device behind an IOMMU lacking snoop control, where such
-    devices do not support hotplug, therefore this scenario lacks testing and
-    is not considered sufficiently relevant to support.
-
-    After all, KVM won't take advantage of trying to push a device that could
-    do enforced cache coherency to a dedicated domain vs re-using an existing
-    domain, which is non-coherent.
-
-    Simplify this code and eliminate the test. This removes the only logic
-    that needed to have a dummy domain attached prior to searching for a
-    matching domain and simplifies the next patches.
-
-    It's unclear whether we want to further optimize the Intel driver to
-    update the domain coherency after a device is detached from it, at
-    least not before KVM can be verified to handle such dynamics in related
-    emulation paths (wbinvd, vcpu load, write_cr0, ept, etc.). In reality
-    we don't see an usage requiring such optimization as the only device
-    which imposes such non-coherency is Intel GPU which even doesn't
-    support hotplug/hot remove.
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
