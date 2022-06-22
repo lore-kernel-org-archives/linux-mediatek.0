@@ -4,82 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 047CBC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:18:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63A6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:58:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kdeSlF5fWHZ3xXKBzKY62W+xebc6UMKioDmTRwyUM5I=; b=ti7TBR1/J57iGh3fkiGlsHVs1x
-	aq6yEyx6cTBQjsJx+IVoJrcRz4vTe4sYEoHbK8n8QlgdsmnOXmYCpvwZJnVuFR/zNJ4UVBBci4v5B
-	IdUBMipcr12VRxgXj26KitJzNkhgP6re5mHM8LZG2dZGZC9y5m7VPx1v+DSWQfdSdYUJnqSe9MTXh
-	8+f8RgoCGlVOUATG8AAPNolI7ck68S/7sj3Q/tQjpQVOnl3dNxDQIu9cxOq/agOpDc2tc1MRLew78
-	vAc7BrrPq2fSCy5W4xgC+G+KZdztVnVDKiX3wyTK+FrpOpcsMfY7PowpgiQdeBX/CqNoWsYbskMI5
-	p9KU1TcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+vTVF5SdHXlvqRyY3nxv867K1R/sDzEEvR5kQulD3oI=; b=FekTmYjw8hXCXY3OjRQYtzE8qy
+	evQRaEwmaJ1OB+QY6rRdCGZLmk5yenEzsXQfDb+1ZZ1kWSbmX7GWGKau0/6U7u6qDLyMO4nU5UAkj
+	yAGK8xbC+QZQ9A3x4PpPLufRTQnSr7IfvR7h821VUMAQanM5RECCSyT/P6nCfjcquqV53Gl2le0iG
+	A56WtMb9ESEkitbiczxgX+Rxw3CmZbnIVDhmaiGk/+M6uZ0m3pwy6d0NNZsfkS6e8uNVUmFsP+5r/
+	0PwLXX6zLooZOAP+rwls+zFZEOVHPa0i17BoHCWmIq8pKjLQs1G57Er9CIEx2kZuc9cbDXvLEtMni
+	CxoEnz7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o41B5-00Arxb-C4; Wed, 22 Jun 2022 14:17:55 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o41Ag-00Arnq-HW; Wed, 22 Jun 2022 14:17:34 +0000
-Received: by mail-ej1-x631.google.com with SMTP id g25so34535954ejh.9;
-        Wed, 22 Jun 2022 07:17:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :references:from:in-reply-to:content-transfer-encoding;
-        bh=kdeSlF5fWHZ3xXKBzKY62W+xebc6UMKioDmTRwyUM5I=;
-        b=a3an+DWnKpt2DOtE2474+dpyWuKuuqp8cZVdW/LNxjfmHudnzTYBQ5HGDjGCVHI6TK
-         0YV0twS6tEDlqOqIbncsXYNFrMZheYXU4f45+TlMmfeFRtipFBJYAYol6gd35vXM8nm8
-         21/TujgU7Bj63LzBSs/dwhtQvHlL2M4DHxSYsb7KjZ7DHD1uzVd5W8oG2CjyrrC4H6zK
-         ZTkfw06DnQzzHhjH8Jo2zsf4rdcxpeHiMWlUbV0EVoxy112jL3kXMCHfFpAg6cax4NN0
-         hlSZD8qc3NZfXs4/WV6vDg3bVSM1M5wUUL0THtu1GlnTBt8EHGQaDMMVy72ur6G1utWo
-         AnEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=kdeSlF5fWHZ3xXKBzKY62W+xebc6UMKioDmTRwyUM5I=;
-        b=ItJpvuH5FgnazzyB9ZHGWpfjpLdzYjTmLVZ8dYiHhevQO58VKqoZelIEoZDU+/1J87
-         DwgNvo6eKi1V49uj2oqJeTzaj9Rb2Q8o17CkxWHFemFrNh2OP/FXNwxnj/xqrlKAaMrF
-         p1O+PRjAEcxbLGf8InfaYsyWqvRdaPgTNhgKwaYnS+ou5xKreIsFfct8/aSGPUlnJIfM
-         TX2edqY48CD6Yww77uftdn9fJEQuptx6+dyqLSNJHiYNn2Odu9IWsT2IO+bSK1WVtHE7
-         ERzqb4gUhEKjjFx/a0zWXsT2sE7LjgHp6DYwxetuzoWFVs1Cai7Pj7x2x5qRdERR/Qvs
-         tpSg==
-X-Gm-Message-State: AJIora8KKvgSXLcPOIqkwYCOB4i/XNwVvOgneFuynpsTNywOcjGzYNLT
-	KUaQJrpc58Rcp2xK/sUC75E=
-X-Google-Smtp-Source: AGRyM1tzJAEA91jxTi42bg0jzLDgIiPpJr86EGq+c8M1jJUUBWaaiyXJ/8e9nNQgCTcL9ByigtTVdw==
-X-Received: by 2002:a17:907:1c07:b0:711:c966:f02e with SMTP id nc7-20020a1709071c0700b00711c966f02emr3441603ejc.221.1655907446732;
-        Wed, 22 Jun 2022 07:17:26 -0700 (PDT)
-Received: from [192.168.0.16] ([37.223.148.38])
-        by smtp.gmail.com with ESMTPSA id lb13-20020a170907784d00b006fe9ec4ba9esm9419558ejc.52.2022.06.22.07.17.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Jun 2022 07:17:25 -0700 (PDT)
-Message-ID: <ec6b910e-01fd-94ef-945c-31d48b2d47f7@gmail.com>
-Date: Wed, 22 Jun 2022 16:17:24 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH] arm64: dts: mediatek: mt7622-rfb1: remove wrong gpio-keys
- property
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220617232124.7022-1-krzysztof.kozlowski@linaro.org>
- <834af774-ecdd-1929-86eb-6a814c5d774c@linaro.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <834af774-ecdd-1929-86eb-6a814c5d774c@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+	id 1o41oM-00B37y-L0; Wed, 22 Jun 2022 14:58:30 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o41o9-00B2xz-0z; Wed, 22 Jun 2022 14:58:20 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5F33213D5;
+	Wed, 22 Jun 2022 07:58:11 -0700 (PDT)
+Received: from e123648.arm.com (unknown [10.57.38.162])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 6B7AC3F792;
+	Wed, 22 Jun 2022 07:58:08 -0700 (PDT)
+From: Lukasz Luba <lukasz.luba@arm.com>
+To: linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org
+Cc: daniel.lezcano@linaro.org,
+	amitk@kernel.org,
+	rui.zhang@intel.com,
+	lukasz.luba@arm.com,
+	viresh.kumar@linaro.org,
+	rafael@kernel.org,
+	dietmar.eggemann@arm.com,
+	nm@ti.com,
+	sboyd@kernel.org,
+	sudeep.holla@arm.com,
+	cristian.marussi@arm.com,
+	matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 0/4] Energy Model power in micro-Watts and SCMI v3.1 alignment
+Date: Wed, 22 Jun 2022 15:57:58 +0100
+Message-Id: <20220622145802.13032-1-lukasz.luba@arm.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_071730_660621_BC0DFB28 
-X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-CacheID: sfid-20220622_075817_147573_206E08DC 
+X-CRM114-Status: UNSURE (   6.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,26 +69,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi all,
 
+This is a patch set which changes Energy Model power values scale to
+micro-Watts. It also upgrades the SCMI performance layer + scmi-cpufreq
+driver to leverage the SCMI v3.1 spec and process micro-Watts power values
+coming from FW. The higher precision in EM power field solves an issue
+of a rounding error, which then can be misinterpreted as 'inefficient OPP'.
+An example rounding issue calculation is present in patch 1/4 description.
 
-On 18/06/2022 01:22, Krzysztof Kozlowski wrote:
-> On 17/06/2022 16:21, Krzysztof Kozlowski wrote:
->> gpio-keys (regular, not polling) does not use "poll-interval" property.
->>
->> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->>
->> ---
->>
->> Changes since v3:
->> 1. Correct commit msg (Matthias)
->> ---
-> 
-> Eh, jetlag hurts the brain. This should be [PATCH v4] in the subject.
+Regards,
+Lukasz Luba
 
-No worries, applied now. Thanks!
+Lukasz Luba (4):
+  PM: EM: convert power field to micro-Watts precision and align drivers
+  Documentation: EM: Switch to micro-Watts scale
+  firmware: arm_scmi: Get detailed power scale from perf
+  cpufreq: scmi: Support the power scale in micro-Watts in SCMI v3.1
 
-> 
-> 
-> Best regards,
-> Krzysztof
+ Documentation/power/energy-model.rst  | 14 +++---
+ drivers/cpufreq/mediatek-cpufreq-hw.c |  7 +--
+ drivers/cpufreq/scmi-cpufreq.c        | 15 ++++++-
+ drivers/firmware/arm_scmi/perf.c      | 18 +++++---
+ drivers/opp/of.c                      | 15 ++++---
+ drivers/powercap/dtpm_cpu.c           |  5 +--
+ drivers/thermal/cpufreq_cooling.c     | 13 +++++-
+ drivers/thermal/devfreq_cooling.c     | 19 ++++++--
+ include/linux/energy_model.h          | 63 ++++++++++++++++++++-------
+ include/linux/scmi_protocol.h         |  8 +++-
+ kernel/power/energy_model.c           | 31 ++++++++-----
+ 11 files changed, 146 insertions(+), 62 deletions(-)
+
+-- 
+2.17.1
+
 
