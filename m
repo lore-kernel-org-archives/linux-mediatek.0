@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67430C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F5A5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kUoPBZyP0axk6nRKrhH6g/mHLGZVisdHs+5kDGpekpo=; b=GouHgPClSXtElTCAAuWUixh5XP
-	iH2H5mOiPJBGGOeSnhHUXwjlFmU0s0nUkqwDHviGwcNususMQ4tEuJXwm4cf/aZNT/QBtUaUTdRwj
-	ycpsBNok5KXZD1eUHlbtiXwzWelQPTT3IPj4NyxkYyI0ZKgUXf0B577X4fiz81D2dntr5174Vmui2
-	LRla0k2kogX64hTn/OIGyO2tX9+EGTaFCXHTTlBdRKiGXA80DySN7IBexkS1R0eOzCRoR7B2Yteaz
-	v8NTe/DKyXAKK4TdfoE4fQ2pBcNCDq8Jz7DV1oMk8FzRnnGFGKkoP4Ugfcak1XWzZLyqVL8yLhx8O
-	m5o1g0Xw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e2GTDbUmRu18NwC+1WvY5Rsf+dw1KVd96phhm5UWgsA=; b=u41hj6C83y9K//KW0B/Z/dWTu9
+	Pe4R/YYb6IYagP3gnRuOEB+T8FHcctv8GVfxQXthFB7kVizPOpILkPrdkULl+ZCK+fFcbTWUUUJyw
+	vnyw1TN91PeZIhrRE71uKncT5rIj69Oe+PHNAnzCpm/AeuvazeJx0cO/D8+XCp6cKahEPaCPL7yfK
+	jjc2dbgq3REDucnWoeHBbn2hVoH2bxT50dO/q9jAaLrpiD+yVMIQRlhRgD/y/zGYLjzZd7lh+ubow
+	wXNfkJ63439AlCqSnATvVR3NvsfK9hnFRgiwY3mGV7s9Rg9Uje+kB65CXM1UNEGhYpLvxbGCTjGpG
+	AsUy8/Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40vB-00AlWn-1F; Wed, 22 Jun 2022 14:01:29 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1o40x1-00AmH4-5m; Wed, 22 Jun 2022 14:03:23 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40uZ-00AlHc-1u; Wed, 22 Jun 2022 14:00:52 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id n1so23315363wrg.12;
-        Wed, 22 Jun 2022 07:00:45 -0700 (PDT)
+	id 1o40wg-00Am8W-Mm; Wed, 22 Jun 2022 14:03:04 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id i10so19807278wrc.0;
+        Wed, 22 Jun 2022 07:02:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=kUoPBZyP0axk6nRKrhH6g/mHLGZVisdHs+5kDGpekpo=;
-        b=k1Ju7wSZg82QWvOtXh5C+tGY8yQTX/08iv3KdTAcyuRnqE58hCx1JQexXSe+URDpdE
-         p0ImgnAGaHjE4JislySg6qecoHYrJEejC/GKLB6sT9jN3wrUP9rOG2XIOForITnd02x0
-         jhYNwfPB2Ui/+rtwPhJukncCC+3XlAS1L+lRz2bl36BP7Jua1NPToYPE73iRGmqhze51
-         o7wdeYArozyn8VTtFZYDGYT6lbHLJjuhRIUJRJsvCozJh1TMeIXHlFc7KREnPbjXtdY+
-         CfZiTET5VyMN8qT2QjXSp7TEVMHYK/7YO0SOSiusTq/eFQ92Wv1PlC+bAT9u9ZB3fSWN
-         vzXQ==
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=e2GTDbUmRu18NwC+1WvY5Rsf+dw1KVd96phhm5UWgsA=;
+        b=Gr5BDyX/k/r9/SHskmWky1cirIzDw/jMRmY8Mm+hStke7+GZxDU+zP++m+NIpp64fq
+         owApReBr3/VwoZEacCr8KgHf7dmyG3ubOUgchqqWY3DrPrlUi4Fzd5veVO6gX9neaa5f
+         EZR7sOgX9iU4ixgoFfZtFh/pK/pOTnUX+2DLjujRiWRS363uoiAAFhTrm9bIJ2tRPZI8
+         LVExA8AwtXEIUNro1vp1hcvwPR1qyAIx5x2pQozXhCpGBzhfPs8v9Qh7k2lfftDQIFrO
+         5DJJ9Apvp69AJ+eiVxcwsxREaA/o19sqcdYz2sM3OroOkg+Uk8JEPVD2iQa0Q/mfIqm4
+         Ov3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=kUoPBZyP0axk6nRKrhH6g/mHLGZVisdHs+5kDGpekpo=;
-        b=KLZHuZdFG916KaWrlMJa12JvHy16EkaeSAGYlMw1Q0w3KANsLsDvuoR2wk049jzYoO
-         wOLIkb+A2kRYQpqqjXikC6fhl/RKSLqMqsPC23Wm+Q4/3a82E9mzTBZM0xXLvu4TI9iM
-         nr4vCDFI5nwyRo2GbAaGy/LtVFJo939Zneg9qjZ1Ae+OvqiFeDQNaVwB0xUaOyPptjxz
-         pZdx73m0J9fD15Wbr9kn9YXzcbSoE4mwKsizg7v8wwn4z3NWA+9se+XLXdwNWafSebYf
-         RqGhRFTjbanaqsX+awS+JNNrqiDrmylh8vLFSLo/xgS0s5QsVvY3PM9EqMAJQ2uBjQKl
-         4w4A==
-X-Gm-Message-State: AJIora+MZTFbT9nfA9Qn3Vi1toRbtSRz1zzpEKpqT+zxgFYtdYNv65Jp
-	SOGjd3JHy/K5gVENJbjj7/hICbWyzUs=
-X-Google-Smtp-Source: AGRyM1tHnt/jgPsUPVHQvg5sU4veue4z+CecoIbCr7Phmv2bIYomTp7Bt+U4+PUBWvt0gfS8ohWH7g==
-X-Received: by 2002:adf:fb10:0:b0:207:af88:1eb9 with SMTP id c16-20020adffb10000000b00207af881eb9mr3598860wrr.238.1655906444093;
-        Wed, 22 Jun 2022 07:00:44 -0700 (PDT)
-Received: from orome (p200300e41f12c800f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f12:c800:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id o4-20020adfcf04000000b0020ff877cfbdsm16655568wrj.87.2022.06.22.07.00.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jun 2022 07:00:43 -0700 (PDT)
-Date: Wed, 22 Jun 2022 16:00:40 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
-	Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: pwm: add MT8365 SoC binding
-Message-ID: <YrMgiCPMsb3Y8Zd9@orome>
-References: <20220530205038.917431-1-fparent@baylibre.com>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=e2GTDbUmRu18NwC+1WvY5Rsf+dw1KVd96phhm5UWgsA=;
+        b=HYhhA/uxcgDNOZZkDGwt2ekJre5pq39oEceegtjbvJ50xO+x9ay7KAqO09ub14yEjS
+         ySZ/jj4YBNA53doGYr6zl/UuKkSzSPDFD7xrGH2xV4XLyLhBaFEjOwOP5SW157kDm6c9
+         F2J25qaS4Q+Jw554ZQCNqFBDRW6U0sKJx1+xvN4z8+1+vaj2BkTIjm313oRZ//x5uBa1
+         ZtsjCLMjW7T/hVYc2P2GrgCXT4Vpn3/+n/VTmqx9EMoNqtz+KAautvYLgIDdOHUHOiJt
+         1RYuB/H0w21r9b7MHv+wMeNl9JchSkgwes0hjqncr0401B9Rfr0Fe3LlEtuWpoHxwcIy
+         xikA==
+X-Gm-Message-State: AJIora96H7ySt187UrR/sN8UvLdym8mbK4jkNz0J5/2/DbiNskjkTjEz
+	wYfZZarw4rm7Sl4SuH7VpNpGH+9yoTH+tg==
+X-Google-Smtp-Source: AGRyM1veyrLsvSIgFm2G1Nn8pqcbhMb1D+Cmbvb6GGNrC03EewmSkf80cEfjccnmNy2HiPly6p7Mag==
+X-Received: by 2002:a5d:48c8:0:b0:21b:826a:6f86 with SMTP id p8-20020a5d48c8000000b0021b826a6f86mr3531919wrs.220.1655906578348;
+        Wed, 22 Jun 2022 07:02:58 -0700 (PDT)
+Received: from [192.168.0.16] ([37.223.148.38])
+        by smtp.gmail.com with ESMTPSA id f27-20020a5d58fb000000b0021b9e8d4c22sm2300195wrd.61.2022.06.22.07.02.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 22 Jun 2022 07:02:57 -0700 (PDT)
+Message-ID: <f48e0cca-644a-bad7-282b-28e3e0d5d437@gmail.com>
+Date: Wed, 22 Jun 2022 16:02:56 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="iKffDT5KCf9O/u8c"
-Content-Disposition: inline
-In-Reply-To: <20220530205038.917431-1-fparent@baylibre.com>
-User-Agent: Mutt/2.2.4 (c3baa83e) (2022-04-30)
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH] soc: mediatek: fix missing clk_disable_unprepare() on err
+ in svs_resume()
+Content-Language: en-US
+To: Peng Wu <wupeng58@huawei.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, liwei391@huawei.com
+References: <20220621114658.10054-1-wupeng58@huawei.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220621114658.10054-1-wupeng58@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_070051_168934_46D2B476 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20220622_070302_808972_D35CCE6D 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,44 +92,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---iKffDT5KCf9O/u8c
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, May 30, 2022 at 10:50:37PM +0200, Fabien Parent wrote:
-> Add binding documentation for the MT8365 SoC.
->=20
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+On 21/06/2022 13:46, Peng Wu wrote:
+> Fix the missing clk_disable_unprepare() before return
+> from svs_resume() in the error handling case.
+> 
+> Signed-off-by: Peng Wu <wupeng58@huawei.com>
+> Reported-by: Hulk Robot <hulkci@huawei.com>
 > ---
-> v2: fix clock description (five -> three)
->=20
->  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 2 ++
->  1 file changed, 2 insertions(+)
+>   drivers/soc/mediatek/mtk-svs.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> index 606a00a2e57d..1b5c297aaec5 100644
+> --- a/drivers/soc/mediatek/mtk-svs.c
+> +++ b/drivers/soc/mediatek/mtk-svs.c
+> @@ -1525,6 +1525,7 @@ static int svs_resume(struct device *dev)
+>   
+>   	ret = reset_control_deassert(svsp->rst);
+>   	if (ret) {
+> +		clk_disable_unprepare(svsp->main_clk);
 
-Both patches applied, thanks.
+Same holds for the error path of svs_init02(), correct?
 
-Thierry
+Regards,
+Matthias
 
---iKffDT5KCf9O/u8c
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmKzIIgACgkQ3SOs138+
-s6EZwhAAtTbNvEnm90ZYyOiXMFI5+PaLF4vJyVAEMi3M8wnJERzD+fx6zlfpdey5
-HUOgg7d+R4Oma1wuGFo3HAMcIuG+/pel+eE8f7zGiYkcb2QNpzTrRsVQwBrjCPoY
-6upls6fu2Xhzebdkntda3Nnj+JqbPExxmAmrDVgudViBVXKGLLo8l+aFAf1xJYoZ
-AphfyPCLyxnC+MB4G0qrQVcPOdTQq433t+BnXZ9C4EnaEZA0vcjFk/CpIYXYme03
-sPbI06xJDZVuGluoEaoRq4O6r/v0foxfThn5tjZuwQJvSc2qEX5eJD0U1IFZdsj9
-3fJKnrmTQYA7zORslHNQV7aGCIRTtf9v87XvilY9G9P8n0Lp7rGiJrBQg0Kx/cXN
-Bb3j+0JnXQtzBB+v4226k/PMP/SDMviTKkQMp3Ls4DM4QOFb8Rn0pdGEhtKVV/FS
-ms3inwjO91jM11En+7DZgQHcA2Lm6fuHBhqiOzvyVTzRFj8BHrjg7iddjnhRW5uU
-I3V7ln95+aPaQzTQd0qFdg0cngmtc7Tgs04YmV2Rb1e2Nk4Db64h17jiOaeHsU03
-9gOBNpRUQ1neEkTRQ+dZCnXfUxnPgSeWHsOkrYIQgEmc4YrGAEIkgSFZUVSYQJFZ
-uCQYV9nCrnBcs+PoOwb7aX+5Bk3Cj+xeM0xp9KChkwt4Km/hM1E=
-=9amw
------END PGP SIGNATURE-----
-
---iKffDT5KCf9O/u8c--
+>   		dev_err(svsp->dev, "cannot deassert reset %d\n", ret);
+>   		return ret;
+>   	}
 
