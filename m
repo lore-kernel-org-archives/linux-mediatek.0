@@ -4,78 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08811C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 06:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7961C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 06:48:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KDV2ODCZwLKVG1Rtucar7yT5VJ/zDwIZZB6YmfkpPO4=; b=DuTG1UfJygV8k9pw4QLxqDocod
-	+wAJCT0CoNGgeGujqcQ+mq2oGE64N54tvT6+Cfjxp+usigSibbCDXzJD3W4GdqLjQ/G6na6yxIlWN
-	bhmfXXMrY3ZisDWGSZq/quEwMXtPo36ek8EypLygaTHyjWkZ+G3sWmYDYe2622EP8gwrERjuCZj3k
-	gmg/BNcURfTPorg7iGsBTl/bjDXGytBPt6Nr4sqWCBqFiQTLxh2ekO+DagfU+edF/aS+X2q77qUk4
-	LBO/ohAc2dySkzjuFK+jMZ5tbAnMs8SF+YaMKI0Ddrz+d1yv8amQcAKYUpFg06CkWcQ6gVN/kWUda
-	sTdb4Y+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qAnZeifJB1tfWk8inHLUTOUmAujkXZ9aNoOnoucGw1M=; b=QHX5VlJzrtG3zE+/r6FIfpelx0
+	TiWnCtlW1nRQSxp7SShhCUdLqgaimyl6RaLCIJVE7MoV4z6w+Wd4Vy2biVKDHbd0PTaYKNyJxOUUG
+	eSfmgn6A9oO85x9KCsJ0Eu8nBaQaXkzz4GwzMMXc2t/TwP0FPQTuNFuvantSFu5gMVS/k2iNay+Vl
+	MILyXRz7GGm3SQaeU2ICih4uGP7XpqjnOVmqHSNOFjTz2scCJu2aXxaq0yCg1v7m24DUM4yHi9esr
+	+UujRd6mu6298hRgOFoz6P7Z/rwpacAN9ej62Uva0e2dyqjue9JmVYkqERx+EEPe88nMH8o4GZo+u
+	bO9Nmnsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3txc-008qAB-2S; Wed, 22 Jun 2022 06:35:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o3u9c-008v2k-57; Wed, 22 Jun 2022 06:47:56 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3ttq-008ocq-Sp; Wed, 22 Jun 2022 06:31:40 +0000
-X-UUID: b75c8bed0ec940128271b52e69800a5c-20220621
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:0976d98a-a4f4-4122-ae5b-12e55af3f766,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:20
-X-CID-META: VersionHash:b14ad71,CLOUDID:ff0530ea-f7af-4e69-92ee-0fd74a0c286c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: b75c8bed0ec940128271b52e69800a5c-20220621
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1051415489; Tue, 21 Jun 2022 23:31:31 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Jun 2022 23:22:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 22 Jun 2022 14:22:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 22 Jun 2022 14:22:47 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Pierre-Louis Bossart
-	<pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Bard Liao
-	<yung-chuan.liao@linux.intel.com>, Ranjani Sridharan
-	<ranjani.sridharan@linux.intel.com>, Kai Vehmanen
-	<kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
- Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
-	<tiwai@suse.com>, Tinghan Shen <tinghan.shen@mediatek.com>, YC Hung
-	<yc.hung@mediatek.com>, Curtis Malainey <cujomalainey@chromium.org>, Allen-KH
- Cheng <allen-kh.cheng@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<sound-open-firmware@alsa-project.org>, <alsa-devel@alsa-project.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4 3/4] dt-bindings: dsp: mediatek: Add mt8186 dsp document
-Date: Wed, 22 Jun 2022 14:22:44 +0800
-Message-ID: <20220622062245.21021-4-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220622062245.21021-1-tinghan.shen@mediatek.com>
-References: <20220622062245.21021-1-tinghan.shen@mediatek.com>
+	id 1o3u9Y-008uzO-KC
+	for linux-mediatek@lists.infradead.org; Wed, 22 Jun 2022 06:47:54 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25M6MnT1004401;
+	Wed, 22 Jun 2022 06:47:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=qAnZeifJB1tfWk8inHLUTOUmAujkXZ9aNoOnoucGw1M=;
+ b=UdRnM8r/10J14/KzAfa+7iE3ycStcpR2ZORwdG4YZb1Z7R4t8RhDJccxorqDAIg1WW6k
+ jJwiMaqz3pjGTn5P3heMJmpDleJLof9VdI+cXmz66kaXmdGbj4S4jRXHqjlCOlit5Z4s
+ PINEPYpmJMQN9Ffa9Sc1us/urscgph13/D9g7xj/KWTtOLbOEdxQwZWTSgbgVx/p2ysV
+ RYPGc3wGv3g2ARL3aYBkzaka1TvLBJmym6QUhPuITLEq91eNOebHXh6pDCvhGTX9Wfm5
+ NJJOGFjYUayppgw+CT+GJvc4dQn3BqDoCeLYYYLL0IOPpaX7TDOJemyQ+e5ZorMc4hJu wQ== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3gs54cqhxh-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 22 Jun 2022 06:47:47 +0000
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 25M6Ve4g038318;
+	Wed, 22 Jun 2022 06:47:46 GMT
+Received: from nam12-dm6-obe.outbound.protection.outlook.com (mail-dm6nam12lp2168.outbound.protection.outlook.com [104.47.59.168])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id 3gtg5v5pes-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 22 Jun 2022 06:47:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=auYOwM5KSQ5QZIRX/c4zE7AR2V80J5ymEEFMEATaOzS+Uj5dGfxBomeQ4fcTEbrUUnRJ9XDtJbAsoffsySww9DlJCntyzAbtGpWhsqRklqhpbzIWviZ/e1b5UZfgyW5LYh5it6z5sZEl220vdYNNnCZ1qxCy6O6/dUG1H9kaGKnNuGK+vBTRTEw/FWDJRMKTU3qqtnH4a7JLVLsaG3XlLn5TPaUBi06hK8nmeikB9HYlxJxVF7uIn2VyYf7U1b7Rk0YjhoTgB+3NfQ3319uzX0Gmi/xQC5CR9zFIXKfM80VIzMGeiAQHjFgCf6ZwXpda3IpYwXBQ9yZTapcgCmdz2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qAnZeifJB1tfWk8inHLUTOUmAujkXZ9aNoOnoucGw1M=;
+ b=d8O+zUyPtM03fpdC1s/IUxRVMj1+KyG0iio3izbgoxdpfdLh6EdKeivI40e9F9kSBuEdxp6pvaHeAmsaaojJJ+fACpff3k5AhUUWT3tt8LAeD6l+qclkc7UJplJ9Sd26l4mX9b1EtPDZfFXIrpj48HPYPLIupV5ZKpfyAAvA5B5TcJOcr8+XxP0q/jEehrtvXNhhRsBOAoe0L21/JLg4yb7FWbbZ8l3HHSCmvYvPeV40nbIoASIrFyfU9qvG5eLPXCaF5dP4HLdo6ziiuxPPR3VkWu+hBsDYkkYmO5TMn0+SAzsfUUSQLuWd2+tOQUW00BZeFPeee2Fq1eZDYpx48Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qAnZeifJB1tfWk8inHLUTOUmAujkXZ9aNoOnoucGw1M=;
+ b=TFrucjYaD/fZMlRCNEZ3GBHov+UHAjwhLX8I+m/VL7/sCWzdz/eE0NgtriqUi9fplAbzJHeQ4MLt/lH2Rv9zEWvK4cAPPHBPg56DP8vsdTS7igSxOjLPBEnsFoccU8O78xBuCQnKgy0bNx84+BA63DGIureTmdQxDDL5F95HwKc=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by BY5PR10MB3986.namprd10.prod.outlook.com
+ (2603:10b6:a03:1fb::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14; Wed, 22 Jun
+ 2022 06:47:44 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5020:9b82:5917:40b]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5020:9b82:5917:40b%6]) with mapi id 15.20.5373.015; Wed, 22 Jun 2022
+ 06:47:43 +0000
+Date: Wed, 22 Jun 2022 09:47:34 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: roger.lu@mediatek.com
+Cc: linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [bug report] soc: mediatek: SVS: add mt8192 SVS GPU driver
+Message-ID: <YrK7BkMp5zbgziBq@kili>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-ClientProxiedBy: ZR0P278CA0077.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:22::10) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 902af848-01e2-4510-a457-08da541b1ba8
+X-MS-TrafficTypeDiagnostic: BY5PR10MB3986:EE_
+X-Microsoft-Antispam-PRVS: 	<BY5PR10MB3986C83DA2246E103A6A30528EB29@BY5PR10MB3986.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	6OheyPL9+xWQhYD1eY4s4brXif9RcIQAe6r4sVAsQG5MYVArN+O/kUGKWsF6mo+sZn12hXnec2Er8a+m4vKLf4ae+SCaBWJY21mCLcYf0OZdcxvi+3HR+yqgNLlwNEyOWriGDA2TXfDni9hihCshH4bgHvN7QzZ0zXLMb/Keh0a1WCkQywmGdsp1QkfrmTXGjF2f5IuVaxgBem4HFxb3V8TbBMIX2hOoE/OgQzZT16ooC85qNO1n6etl7Nh/2T4MeuhrxtZkDtUw7V5RZOHyTzUr4/bp+RtNdSkI4foax/F3O5sqWbpOYTjdZleu+RUKR09Qqx0A6oDh6YdQwn39aQlG9f73AYViXxh/bviwaqaOm63zO9kHDe9kub+PxaEIaB0FfT38GWjltx9F0dvRlxJbEN1IRcHBXdTo3u3Wcmve8bwpFeLXNDCoMnRmKB0keKRRcBgv2zkuNMb7P/T7wtr0t8n+5C2ShURyU3A+jfoopvYO5h+8+sSFUhY13os70u4OekKF83Edk4S0mmtvlwpd0qoULD3Cr4qHBrrG/GWfh2jBUzwof4GTImpiLszxulLDMCHe8bDS7FONgB3CcJPPHe4k5dDiVyMJuPKW74yVEm6cj8OEkQtmiLNlrY98xwokvPF15u1KakbkBNy3QoQ3KizrQZTMiZftoSCXEpfRerWVcujGvhR4ReI3ucwRK3/trbqaGyOknIGkkPxPjoJWQ2IxS7V870GgSF8o0C2GbnGJ18ibZ9kkLOx5nJMzJdhx02kQr5GmEMbIm82F6A==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(396003)(346002)(39860400002)(136003)(366004)(376002)(6666004)(26005)(6512007)(52116002)(38100700002)(9686003)(186003)(38350700002)(86362001)(41300700001)(66556008)(6916009)(66946007)(6506007)(316002)(4326008)(83380400001)(6486002)(478600001)(33716001)(5660300002)(2906002)(44832011)(8676002)(66476007)(8936002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?xcobfARbxQw8bMzWzs6G4NMRNbyiO4BDuL+MdLvuIoH+DVWnTlMABFY22C7D?=
+ =?us-ascii?Q?uvUU/stxfWlG1lNEPQ4jsde6qtcqNrkGwrClQAk6yoxg4D0VSot4f3SHpuqz?=
+ =?us-ascii?Q?n2fyPHjKcLwhNtmc3GWpm6pLvxn322lbDz3lAN0qahfKqKj56BMF+Cjf+R5U?=
+ =?us-ascii?Q?kPVE/LgAn7qBssLTjVJ9Pzt/rDlhv2o5PNOGNuw47U6DDZcPhaYz/0eO0HKk?=
+ =?us-ascii?Q?5+9Afrvpw078cIxJYA1wgs5Pp1oJrgDq3mHmjAm5OiNFJM7OPEiuE5cWmS4y?=
+ =?us-ascii?Q?Ry4XFqjvRW7BQ3elzCiS6S+WIYQuZBodMO0xHR1C3dGlTxLKXjAq4BKt0fUR?=
+ =?us-ascii?Q?/N/2vPd4v7VavdHenrO/pP4zGHB1/fQ2xcqeg0Zxjtohz8h8MfAf5HB05jY5?=
+ =?us-ascii?Q?O3D6QjfboSaoE4sDHyiZHPQiWjI5FwX5x0F7JHBmgU1IK/F1Hecb5gMhxZEK?=
+ =?us-ascii?Q?jCANoZuFK/DHvu6iaq3mKx1XbhXFt1ORcY3tyD/7aaTyJv9YhUajOIr89CK/?=
+ =?us-ascii?Q?ZAWVNi4RwWwRbiHegNEA0onQe5HBpsS3yGR6OMbCXFPqo3hYjo7xH9oYnK9D?=
+ =?us-ascii?Q?0J6uHEdoYCL77VS29dh8MpvKXqL1y0L1U65w1x2Kyuj6EaO1RdUotOu7vex8?=
+ =?us-ascii?Q?aEeBhHkFci4sCb2qctA1KYYlNyyFVO/0buqmmQsvAtaaOkERrPa+bBTstvX9?=
+ =?us-ascii?Q?vJMaZOgAF81aMYcprGTcNdx05e4DCPO2aPdd+/cKz/0UqHmlSkG8y6uIvI6I?=
+ =?us-ascii?Q?ZP1NTORelOiWuQ4uFRn9+dcIaJJ8hGuAIynvni7l/lCuJCxnWboS5/BfswBf?=
+ =?us-ascii?Q?WVUXiGV6EJWMo2cBJZ0R8A7nlq6T6Q87aHyhxerxj5jJEs5JGYntiSBM5CNp?=
+ =?us-ascii?Q?nUBdMKyEZEQBrWMSGchTFhjVn4BIXtmfYfRS1u19HIy58yRLf4X+Swuf+owQ?=
+ =?us-ascii?Q?zN7xRZvxP1weC/P016G8TlTQKeDehW+HVOAAxaSXTbilvJBhNACqi34XLWsv?=
+ =?us-ascii?Q?TaaM0uIE8wCmXo37CCpmTMIyJ2jAwqInnviEV8myiSCVSTtv1HMtfnaCXmGp?=
+ =?us-ascii?Q?/GzVs21R2cpG5k73LQ49tmHmmTfNysE5anNfqSfXP7wHN2WFTKBw4ANQWxcK?=
+ =?us-ascii?Q?4lDWeapi1nAehgj0pq15pnp+4bxPVprLnc1TKjaY99I3FR3RgCT2uoviRI2Z?=
+ =?us-ascii?Q?n3LP4K5vTEQQFv7sQlQAevw4fQ3U/7TvH5v1FrZtwtZf6KYKHOP6RH8A3VUg?=
+ =?us-ascii?Q?zdBE8ioMGRMPiLhYT6cMjDGwewt7NSMMxGnys9eZsOw1qIZfdenu9a/nzsFG?=
+ =?us-ascii?Q?NF8RYy3grGvSvT5xazNFqc6vHkilET52ZwEPsB5GddWLWYH83BQCKwrkhKaO?=
+ =?us-ascii?Q?GHHSL8lefWgHmz5s58dGkmxABevNiNfliiAt+oXd0Rcz2Y3Yzdun7kmn3yKR?=
+ =?us-ascii?Q?ihvRB07uSVxoJOTjXW+ThQ+KDIYn/WnJBn9lEdDoke7Dty6bqfr7RHbnmfKw?=
+ =?us-ascii?Q?3WJrIC3FA/OTNOEgGFPQFkXxiU57D/4ML6SSCfMKV0VEEgyMOKE1HkGFjQJa?=
+ =?us-ascii?Q?58Lh9e2sE2GTLIuhxAY7Kfy41Ds5TLTHXoTTR2nh9cFYzafwOzbOpd+KzHoj?=
+ =?us-ascii?Q?NFkdaU1r9bFT8+/gpFBmf7xZ360rnKwcjr7ciY9OX9qbjzIJTXKneW6R22cv?=
+ =?us-ascii?Q?sJrWw3AbcIvQHh6vQhin8vk5vOVVGbnkXUeRoWjXWDYMIPhV/Zao5fbrG6Mb?=
+ =?us-ascii?Q?tpSaNCt7PQC0jxyb+lPC6GAN+RX4Nxw=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 902af848-01e2-4510-a457-08da541b1ba8
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jun 2022 06:47:43.7326
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: NnviVXoF5rjJywRaLHzOjtsRQ+4F0bMxTHpRGq+bVqS+npm+OgLeV9QkbFn1a1dZNDNY+gZ2oqxWmZvOC+iPuHBEittU4WsOzO6TmM3L628=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR10MB3986
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.517,18.0.883
+ definitions=2022-06-21_11:2022-06-21,2022-06-21 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 malwarescore=0
+ mlxlogscore=763 bulkscore=0 phishscore=0 suspectscore=0 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2204290000 definitions=main-2206220033
+X-Proofpoint-GUID: Q4F6gfjicT177aAs-wuImTUMZom677UN
+X-Proofpoint-ORIG-GUID: Q4F6gfjicT177aAs-wuImTUMZom677UN
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_233138_961345_55619D13 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20220621_234752_855626_65FF9033 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,115 +159,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds mt8186 dsp document. The dsp is used for Sound Open
-Firmware driver node. It includes registers, clocks, memory regions,
-and mailbox for dsp.
+Hello Roger Lu,
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 91 +++++++++++++++++++
- 1 file changed, 91 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+The patch 0bbb09b2af9d: "soc: mediatek: SVS: add mt8192 SVS GPU
+driver" from May 16, 2022, leads to the following (unpublished) Smatch
+static checker warning:
 
-diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
-new file mode 100644
-index 000000000000..3e63f79890b4
---- /dev/null
-+++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
-@@ -0,0 +1,91 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/dsp/mediatek,mt8186-dsp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek mt8186 DSP core
-+
-+maintainers:
-+  - Tinghan Shen <tinghan.shen@mediatek.com>
-+
-+description: |
-+  MediaTek mt8186 SoC contains a DSP core used for
-+  advanced pre- and post- audio processing.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8186-dsp
-+
-+  reg:
-+    items:
-+      - description: Address and size of the DSP config registers
-+      - description: Address and size of the DSP SRAM
-+      - description: Address and size of the DSP secure registers
-+      - description: Address and size of the DSP bus registers
-+
-+  reg-names:
-+    items:
-+      - const: cfg
-+      - const: sram
-+      - const: sec
-+      - const: bus
-+
-+  clocks:
-+    items:
-+      - description: mux for audio dsp clock
-+      - description: mux for audio dsp local bus
-+
-+  clock-names:
-+    items:
-+      - const: audiodsp
-+      - const: adsp_bus
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  mboxes:
-+    items:
-+      - description: mailbox for receiving audio DSP requests.
-+      - description: mailbox for transmitting requests to audio DSP.
-+
-+  mbox-names:
-+    items:
-+      - const: rx
-+      - const: tx
-+
-+  memory-region:
-+    items:
-+      - description: dma buffer between host and DSP.
-+      - description: DSP system memory.
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - clocks
-+  - clock-names
-+  - power-domains
-+  - mbox-names
-+  - mboxes
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8186-clk.h>
-+    dsp@10680000 {
-+        compatible = "mediatek,mt8186-dsp";
-+        reg = <0x10680000 0x2000>,
-+              <0x10800000 0x100000>,
-+              <0x1068b000 0x100>,
-+              <0x1068f000 0x1000>;
-+        reg-names = "cfg", "sram", "sec", "bus";
-+        clocks = <&topckgen CLK_TOP_AUDIODSP>,
-+                 <&topckgen CLK_TOP_ADSP_BUS>;
-+        clock-names = "audiodsp",
-+                      "adsp_bus";
-+        power-domains = <&spm 6>;
-+        mbox-names = "rx", "tx";
-+        mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
-+    };
--- 
-2.18.0
+	drivers/soc/mediatek/mtk-svs.c:532 svs_adjust_pm_opp_volts()
+	warn: loop overwrites return value 'ret'
 
+drivers/soc/mediatek/mtk-svs.c
+    487 static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
+    488 {
+    489         int ret = -EPERM, tzone_temp = 0;
+                    ^^^^^^^^^^^^^
+What is this -EPERM for?
+
+    490         u32 i, svsb_volt, opp_volt, temp_voffset = 0, opp_start, opp_stop;
+    491 
+    492         mutex_lock(&svsb->lock);
+    493 
+    494         /*
+    495          * 2-line bank updates its corresponding opp volts.
+    496          * 1-line bank updates all opp volts.
+    497          */
+    498         if (svsb->type == SVSB_HIGH) {
+    499                 opp_start = 0;
+    500                 opp_stop = svsb->turn_pt;
+    501         } else if (svsb->type == SVSB_LOW) {
+    502                 opp_start = svsb->turn_pt;
+    503                 opp_stop = svsb->opp_count;
+    504         } else {
+    505                 opp_start = 0;
+    506                 opp_stop = svsb->opp_count;
+    507         }
+    508 
+    509         /* Get thermal effect */
+    510         if (svsb->phase == SVSB_PHASE_MON) {
+    511                 ret = thermal_zone_get_temp(svsb->tzd, &tzone_temp);
+    512                 if (ret || (svsb->temp > SVSB_TEMP_UPPER_BOUND &&
+    513                             svsb->temp < SVSB_TEMP_LOWER_BOUND)) {
+    514                         dev_err(svsb->dev, "%s: %d (0x%x), run default volts\n",
+    515                                 svsb->tzone_name, ret, svsb->temp);
+    516                         svsb->phase = SVSB_PHASE_ERROR;
+
+ret is set here but there is no goto unlock_mutex;
+
+    517                 }
+    518 
+    519                 if (tzone_temp >= svsb->tzone_htemp)
+    520                         temp_voffset += svsb->tzone_htemp_voffset;
+    521                 else if (tzone_temp <= svsb->tzone_ltemp)
+    522                         temp_voffset += svsb->tzone_ltemp_voffset;
+    523 
+    524                 /* 2-line bank update all opp volts when running mon mode */
+    525                 if (svsb->type == SVSB_HIGH || svsb->type == SVSB_LOW) {
+    526                         opp_start = 0;
+    527                         opp_stop = svsb->opp_count;
+    528                 }
+    529         }
+    530 
+    531         /* vmin <= svsb_volt (opp_volt) <= default opp voltage */
+--> 532         for (i = opp_start; i < opp_stop; i++) {
+
+I guess the bug is that there was supposed to be an explicit check?
+
+	if (opp_start == opp_stop) {
+		ret = -EPERM;
+		goto unlock_mutex;
+	}
+
+Otherwise, we are possibly returning the ret from the /* Get thermal
+effect */ block.
+
+    533                 switch (svsb->phase) {
+    534                 case SVSB_PHASE_ERROR:
+    535                         opp_volt = svsb->opp_dvolt[i];
+    536                         break;
+    537                 case SVSB_PHASE_INIT01:
+    538                         /* do nothing */
+    539                         goto unlock_mutex;
+    540                 case SVSB_PHASE_INIT02:
+    541                         svsb_volt = max(svsb->volt[i], svsb->vmin);
+    542                         opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
+    543                                                              svsb->volt_step,
+    544                                                              svsb->volt_base);
+    545                         break;
+    546                 case SVSB_PHASE_MON:
+    547                         svsb_volt = max(svsb->volt[i] + temp_voffset, svsb->vmin);
+    548                         opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
+    549                                                              svsb->volt_step,
+    550                                                              svsb->volt_base);
+    551                         break;
+    552                 default:
+    553                         dev_err(svsb->dev, "unknown phase: %u\n", svsb->phase);
+    554                         ret = -EINVAL;
+    555                         goto unlock_mutex;
+    556                 }
+    557 
+    558                 opp_volt = min(opp_volt, svsb->opp_dvolt[i]);
+    559                 ret = dev_pm_opp_adjust_voltage(svsb->opp_dev,
+    560                                                 svsb->opp_dfreq[i],
+    561                                                 opp_volt, opp_volt,
+    562                                                 svsb->opp_dvolt[i]);
+    563                 if (ret) {
+    564                         dev_err(svsb->dev, "set %uuV fail: %d\n",
+    565                                 opp_volt, ret);
+    566                         goto unlock_mutex;
+    567                 }
+    568         }
+    569 
+    570 unlock_mutex:
+    571         mutex_unlock(&svsb->lock);
+    572 
+    573         return ret;
+    574 }
+
+regards,
+dan carpenter
 
