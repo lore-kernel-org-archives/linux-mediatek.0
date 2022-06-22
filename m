@@ -4,166 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C3AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 09:35:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E197C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 09:47:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VvRaryundAGVZARY+lmn3X2P5+EKxGyTEutDJ3JKopI=; b=GnrD2lLOCH0bp/mvN4oaBXJ9Ph
-	lEYCN5gb1m9UdL2l9TuuP4mu6JEthy3iM4q6AJPuHsgwT2H25B9RoJ0kxjy0alV082zpa1YGduIzm
-	3wmjB6u8UBoiD7RIia2E+0hhjIJSC7XnvCkHKOx2ZZQAG1yaU10JTwwjNpzX8Ilutlf1p7LsnOTPZ
-	c4mxaHXtGKcabDI9tICRIHX9vhRNqWC+Mhzv8sVaGxbkthYltnJqj6K3wIvHPea5Yu0skaL1UKG+7
-	5mlcS/I+wgOUNi+BfWvj32FbAaMhXtIJ+37ns7HuIT9W/kyASklk0fAjkYTdJRPZGqNvTwRVFKHfs
-	yX0/fdrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zKkAu8sBmZ8AUWqqGaZNWJ0ySqq2Qh8VC8e0QTwAd24=; b=hthEPL8AAKFVgsdHhdfYEHceK0
+	rmKphc1vByguC+yUlO/BxpfkYXLzf9+cCQXOpNaYN0lTSAuCSPG+HBqY99Db335MNeo9X5AUmiVFF
+	m+C/s271M16ESxYiGaMWSXOs0ezqkqiTGMTVtGNCjcuILaJMmqt7tY9H1jSumKFmqU7oYEMeMkRTq
+	KfGMj9Rdn6oaV3nKEUmKyXAWxj3Xzh/PYCyekidMPL85G3+jCWeePRxaoQUhaVB/j992O1c34shiY
+	qSmt54RUFrY+A+15Yl1yUCrzOHjJdi46vBAhPi7B0M2lumpZCNJP09pj1ngJr9skqSEElQTIkfMyy
+	7cVqe8Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3wli-009f6x-JW; Wed, 22 Jun 2022 09:35:26 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1o3wxP-009hkd-CL; Wed, 22 Jun 2022 09:47:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3wlf-009f6G-Ew
-	for linux-mediatek@lists.infradead.org; Wed, 22 Jun 2022 09:35:25 +0000
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25M9YWa4020408;
-	Wed, 22 Jun 2022 09:35:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type :
- content-transfer-encoding : in-reply-to : mime-version; s=corp-2021-07-09;
- bh=VvRaryundAGVZARY+lmn3X2P5+EKxGyTEutDJ3JKopI=;
- b=Ux3XizRE1FTF714+oJs9tR/pELl6RZV2R3hvvQfzbPNO1EJauRPnshGDVpMRqZJRh6it
- ltPjitttKrq7X7HK146FRPZehhC2lJPgvDJW8zG7EtySWao6zGLeYJzgF5uSSZAy6mWq
- +MoInDulTEDbLAGwP5cuZ/KIJdk87JZHk109DOWR8hRjmQ4QjaSGozDLnZ8Zh4f7Yakc
- aHcQ0iazJoh4V5DvbjRMEO0efEok+jfBcOjnplu7raEJNu1T/v5vl1VvkGKQd51r8B4y
- 9NxM8vkIeSBCgT3wNFMrnDp7pvRev5rOdIwXXulDskHOdMR0EvtyXgPvAzy2CHGjgLzt VA== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3gs6kf7un5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 22 Jun 2022 09:35:21 +0000
-Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 25M9Qdno024712;
-	Wed, 22 Jun 2022 09:35:21 GMT
-Received: from nam04-mw2-obe.outbound.protection.outlook.com (mail-mw2nam04lp2173.outbound.protection.outlook.com [104.47.73.173])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id 3gth8xasw8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 22 Jun 2022 09:35:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=of/jvQONdplU0Y8yPZhuxPjHbTMhE2vcFT79c8f8TDSwhYkyWDSyoKnPSwDL0Ld9xrfziMI+hVlNoeRbZt6p/X3DrejwBPBCRKBB8vCUBlb/z/tRZRCkttgP84w4w0q2sxl5zRj9ofc/KQuAwL73YosbJTsLPGEMxMFlORfWH1tcOteco31fsGGnHCl3WV9+qGbRG1VyfyakImDHrEd0d9JryAoFot4tl2ZTwsvsu6ywBjgaDUdxe/DiUzBoDk6c9wMuQ4B0d43Drpm0jAu23UyZBQ6O3elV9zJPOBtVGPTNr4oXTCM7IQNm4tjf2K8TBNyhFXzpGrbZfDp96AIZ+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VvRaryundAGVZARY+lmn3X2P5+EKxGyTEutDJ3JKopI=;
- b=VD62URo9apJ7zx+4NgqMxCT9/qMfMwX+H2QJS3MX9NneejnTT2knPmubuir3dbXVfUWKMEGy5ED+C1Zy7pAdcTST5kNNYVjQ6s2gu2aJCdtUY2dN3tH6DBW4MpRk7d4lBnGR5Po4DgHkOoo/5TG8rMBg3zg4g1pYS6BwQKs+IP7yH9eSwwNwRzYjv2YY4wN9izMlUM6kua20KbfxtzLT/EcDjBF6jd1nWNfMYqJh+pd76hNXiCXIRT7M3hIjI0eSq/ybL/wm2zN6yBaCzAZwebdp2UoGEcKvf6CZLun59jy+0hDbCgbEf+IcTXKSvGDl8LU2GjONqpRixOYH1CRu3g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VvRaryundAGVZARY+lmn3X2P5+EKxGyTEutDJ3JKopI=;
- b=ft/ACZIqwBPmmHKhwSht/pNpMPVAjqwkLMqKBwq/pcqU80/JRFjlrk/jlM/KvCsraNbD+KZzTP/+tE3cuIRCva7NhPZH3yST5CMdB70/M/kh8VYXLlqMMb5xtwhVkhjmt9f/BT3XO2n4Hmm8D0d1kn5APfw1omIpxrFEYFos7zA=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by DM4PR10MB6159.namprd10.prod.outlook.com
- (2603:10b6:8:ba::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.15; Wed, 22 Jun
- 2022 09:35:19 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::5020:9b82:5917:40b]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::5020:9b82:5917:40b%6]) with mapi id 15.20.5373.015; Wed, 22 Jun 2022
- 09:35:18 +0000
-Date: Wed, 22 Jun 2022 12:34:59 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Roger Lu =?utf-8?B?KOmZuOeRnuWCkSk=?= <Roger.Lu@mediatek.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-        "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
-        Fan Chen =?utf-8?B?KOmZs+WHoSk=?= <fan.chen@mediatek.com>,
-        Allen-yy Lin =?utf-8?B?KOael+Wlleepjik=?= <Allen-yy.Lin@mediatek.com>,
-        Jia-wei Chang =?utf-8?B?KOW8teS9s+WBiSk=?= <Jia-wei.Chang@mediatek.com>
-Subject: Re: [bug report] soc: mediatek: SVS: add mt8192 SVS GPU driver
-Message-ID: <20220622093458.GO1999@kadam>
-References: <YrK7BkMp5zbgziBq@kili>
- <HK0PR03MB34269237A97091637A9A9A13F1B29@HK0PR03MB3426.apcprd03.prod.outlook.com>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <HK0PR03MB34269237A97091637A9A9A13F1B29@HK0PR03MB3426.apcprd03.prod.outlook.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JNAP275CA0019.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4d::23)
- To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
+	id 1o3wxM-009hhR-DK
+	for linux-mediatek@lists.infradead.org; Wed, 22 Jun 2022 09:47:30 +0000
+X-UUID: a44be47bce364229ba35f7eb03c77323-20220622
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:59da1923-c032-4e15-b9c7-aedc78b53c22,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:626b2b38-5e4b-44d7-80b2-bb618cb09d29,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: a44be47bce364229ba35f7eb03c77323-20220622
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+	(envelope-from <meichia.chiu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 210609809; Wed, 22 Jun 2022 02:47:20 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Jun 2022 02:47:18 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 22 Jun 2022 17:47:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 22 Jun 2022 17:47:17 +0800
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, MeiChia Chiu
+	<MeiChia.Chiu@mediatek.com>, Money Wang <Money.Wang@mediatek.com>
+Subject: [PATCH] mt76: mt7915: update the maximum size of beacon offload
+Date: Wed, 22 Jun 2022 17:46:55 +0800
+Message-ID: <20220622094655.26594-1-MeiChia.Chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 5c45ea30-1375-4474-80b9-08da54328532
-X-MS-TrafficTypeDiagnostic: DM4PR10MB6159:EE_
-X-Microsoft-Antispam-PRVS: 	<DM4PR10MB6159D75422BDA03D60D56EC68EB29@DM4PR10MB6159.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	8A7GYPkSoE/8hY24m84QemTmod6E9jQMDyReGJA+83SLZgr3HLjXUwUHqWvlbfNTOWjrC99t5L7++Dqbm8PKvlYvIjBfkIGxRWqvgROSoG2hsSQaevC1ArJejqccQNHqT1BdapOoFYGbdo8ZFmAKjTTkZ4AMFL41Y8J9BnqFXekacOzT1bmuz63EPTBJWW4xEP8wDmNHWKpSpEuaTlLuFKT9lWF9EunYI7o82bosSThD02IrBa5yYFU8wFAIDP5t8j/j5SVzRQVz+E4SWIt1aT0QjhtXdjmHkYhAAD8uKUvNSS4bJ6bpfhBwTwHVSXcjwvYvTqkv8XHhtZMl+lkvaVz/D/BPodTP1aWBKpODpub7Ymv48QLhme1I0XDzncyz6xO07CYuNsIgcRtaZJ7bUdYS3zpyO+Ap33+ZEILHVAhGynTQb2iECeLdjyhOg9RkoPbEMFaCp7sii7Z03VcpcnGxmO1UckyUmzD5Pp0qNMQUqgsyxDUDjkwcS/4VUUeT7FfLs/rNeBlzUtdXbbS4p0Ke/+wdzhHtwcZhCjTmzGb5N2azZ5HTxJZyENS0Bfe4MY9YNrP/0QgyoSIK9MQJ7+LOp+GWHFQ6jN9DGaT1RpNiAjyJDQBPQjToOfteQq99UMd3Q7GVThSC9qyl5UPXv0TMivb+iDBmUICto/q4sh5vnlwHUJM2UTAUfNnShct74chEZtmFBnzukyBh6yXmhp8Vd0y/CdX9NGdHfcEw0l60bSZpX0PINjWmTA5X2bwNuyhQ+toNf8TS/Qwesl8qVA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(39860400002)(396003)(136003)(376002)(346002)(366004)(6506007)(52116002)(53546011)(6512007)(26005)(33656002)(44832011)(9686003)(8936002)(6666004)(41300700001)(478600001)(6486002)(2906002)(83380400001)(5660300002)(66946007)(38100700002)(33716001)(86362001)(1076003)(186003)(6916009)(54906003)(316002)(38350700002)(66476007)(4326008)(66556008)(8676002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?K2F1dndYR0pxanZzU1VDcDJrcmdadlBjcnRMdVhaRVVVcVl1OWZueTF2TWhN?=
- =?utf-8?B?MFBFbUNIb2Jadk1PekIxS3EzK0FyYzcySnpPbWVBUE9TWGxtUVRGaWVKbFpr?=
- =?utf-8?B?V1JMNi9TK3JsSGtKaUplYW1GTnVKNmNlZmNiS1VQY3RQTmh2RWp5Y0ZYcXdn?=
- =?utf-8?B?Q1c5b0tDMjV1YmJxVk5wSWFGbVgxTjNXVWE2Z0l0ZTIrdHJ3SFpTWDg3Y0hU?=
- =?utf-8?B?V2d0dGMyYWp4SmhsSFZzRlB1bnBCUU9kN0pZMi9TY0RPMnZwR2RlWEhoN3J4?=
- =?utf-8?B?TCtaWkYvVWdRTVBkOVplV2Z4cDlMUUNHSHVxRFM5WGxZSW1EUXpkMXJyZkFO?=
- =?utf-8?B?U2pvWEtYblFzL1plMTBtNDBUK3R3OEhnaEtzcnJHeFJkWHp4R2h2cTFkVTZr?=
- =?utf-8?B?TjlEZVRhS0pzbnB4STZKeFdGOVFLTmZ2cWlqU3dFOCsyN2E4OGYralNUeC95?=
- =?utf-8?B?b244QkNvS1pHWVEzZ2hJRENCVTNpSzNDNHBJLzhxaW5jcGFDZE1Lbk5KR0lR?=
- =?utf-8?B?VmloR0hKQ1dGdU9IVGJGNmlVdkdBZG4yZVRSTDdrdDNtaURqR1oxZVpFKzJI?=
- =?utf-8?B?djZ6LzNlOU4yakFhMjlLdStGalkzeStxTFNVN3ZBbllnSnNwZ0ZVTHdQcXdH?=
- =?utf-8?B?VkFpaGF0dWxMT2NWa2FBWloxbVl0eVk1UTNjTTYybGhqSlVqYWJ5b0VzUS9M?=
- =?utf-8?B?RkIyYURhdWJya3BLUjdwa0c0NlVWY1JaMVIwd3k0eUFUenFuMzM1SEZCbkRD?=
- =?utf-8?B?amhMVTRidk5NdDQwd0NIQWJNYTJnaTVtczQ0NGJEMzlWa0JqVFBZcjQ1M0Zk?=
- =?utf-8?B?M3UrNkpDY2l3N3BNZHFPZG1sbVVrRjJQZUxzVTluRHAxaHIzZTJqeFFEWXhF?=
- =?utf-8?B?dS9jU0FOT1JybjMrTTFxdzRlemxXKzRIMCtSUGg0K2F0WGxEb2ZHWjBGbndG?=
- =?utf-8?B?SGZxMVJnWm1RKzdYODI3bDFWTXhCLy9FZURzQkpWYzFneFN2RTlJcjJXNy9J?=
- =?utf-8?B?SExZYUFYSG5iWlk1L0NtNWs0VlJSWHBjVTFkNCsvR2QwNTQ1U1I1SUhGcHFp?=
- =?utf-8?B?WEd1VCtoUTJ1Z1RDQ1VoNTQ2akE3eVJKV3gyY0V4QTludGpUV1FzS2lEQUY4?=
- =?utf-8?B?NmpKdmhDaDVYZDlwSndRNVNHTXJnVG4xRk1hL1N1WnhvSytCNXNUUC9henlV?=
- =?utf-8?B?OE1zbDRaMGRJRmw0UFdkZ1E1b01KR0wyVHlrU3VLWHBRT1B1TFpMYk8wcnNn?=
- =?utf-8?B?b2Z6NnhGazl2UWl5TDVvZyt6Yk95RHh5eDdZV1hNOCs0SVg3bG9zOUU0QkJ3?=
- =?utf-8?B?SndtcWhFWVlZSnFPU3JYOWdIYWpyK0xwSDVDcGFWdXJwOXltdTRDNzlWbXYz?=
- =?utf-8?B?U1lVUCthUi9xWDJQTW1qZHgyNDFuRXpsS3lLWXRJZjArK2tLMUpKQTNCZmwv?=
- =?utf-8?B?Uml3bC8yN2ZEcDVLT0U5eUVSRGFLUytacGFDcnNqd1JnamhpU0xOM0l0cXVz?=
- =?utf-8?B?bFJFSWdTWXVpc1pkRGJOY0QxR1h6YzgwRmhyZTZSdy9MVW0wWGM4bVFlNDVl?=
- =?utf-8?B?Q1hMUDVFN0xHbW5sSGJYVnNSaGRveHJiVEVBZDNhOFVqM0xITWZlTzF3WFZx?=
- =?utf-8?B?TVE4V2dKVnRmTjZrTUlYWUgrdUFiZ1JybHdJVjZqZG1hT1AzdSs3ODBqeEhr?=
- =?utf-8?B?dFg4Rkg3MitLREFGWjUyVERBa05Bc1EvWHJzckpJVXhrVy9UTWFaNTY5bXRC?=
- =?utf-8?B?anB6MU83aTdEOG5nUG1sd29aMnhJNGduU1hiTExwYlR1dlV0bzdzNVRBRmZQ?=
- =?utf-8?B?azAya3pMdys4T0RFalh3blMvZjFHcm5Lb0kwYlhqMzJtMjNPclcwMHpoWmN5?=
- =?utf-8?B?SEw3aXVrTmFwMHR3RmVsQThSWUlOTlF3RXJpeTcweVhGWlVsUjN0b2s4YXZR?=
- =?utf-8?B?VkV0MHNEN2swcUlrRUtDOTJGbllBWWtTdm9pc0R5dkZ4ajB5MVFhVFFBV2g3?=
- =?utf-8?B?OUZUSnFGL1QxVkNtTWV0N2VmSXQrWFV3d2RkcWZ6ZzI2Mm80cUZwRjE0VmM2?=
- =?utf-8?B?QjUxQmkrbzNjTlFFZUE2RnNMY1JYMlpYQStKS0dUS0YzaG1UN2NPb0psbk5D?=
- =?utf-8?B?eWYrbThXQk1aWkR4Z2R6RkE2eExENWhqdE8xVHJRR0x3aTRUS2JXZ2FaR3pP?=
- =?utf-8?B?WE5yRXI1VHp1d2hXSG54RXpTQWdVeXdiTFkyejhhRjhGZDdqMUFFeHNQVm9l?=
- =?utf-8?B?OVUzblBhcnQ5Sm4vQkpHeURjM2pvQjlsNWE2bGVtTUg5TzZKWjZ2UEtXc2Vo?=
- =?utf-8?B?SjU5OHl6QVZwL0pTZmdwd2FaTVVoN3pVby9sUW1ESUtDQkN4YldXVGR2dmRU?=
- =?utf-8?Q?bLPEIGbjt5SGyaDk=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5c45ea30-1375-4474-80b9-08da54328532
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jun 2022 09:35:18.7373
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: TRKf3iVs6iZH6leCwPdndgihfNGct6k1pQax9RgGcDBHtXufT34waJcBGQ9jnxH5EyK1F55NQR1/s0JiCiC44wNJF4uKWlbe2LPHnwZ/7Oo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR10MB6159
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.517,18.0.883
- definitions=2022-06-22_01:2022-06-22,2022-06-22 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 malwarescore=0 mlxscore=0
- phishscore=0 adultscore=0 suspectscore=0 mlxlogscore=999 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2204290000
- definitions=main-2206220045
-X-Proofpoint-ORIG-GUID: _rBZvZ8fIPqeTg6HGAT9cWztO_1Ctf0c
-X-Proofpoint-GUID: _rBZvZ8fIPqeTg6HGAT9cWztO_1Ctf0c
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_023523_842977_DFE06F49 
-X-CRM114-Status: GOOD (  28.22  )
+X-CRM114-CacheID: sfid-20220622_024728_492411_2E94F56C 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,144 +79,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 22, 2022 at 09:18:25AM +0000, Roger Lu (陸瑞傑) wrote:
-> Hi Dan,
-> 
-> Excuse me, I didn't see the warning raised and explain in-line from your email. Please search "Roger (0622)" for the reply. Thanks a lot.
-> 
-> Sincerely,
-> Roger Lu.
-> 
-> -----Original Message-----
-> From: Dan Carpenter <dan.carpenter@oracle.com> 
-> Sent: Wednesday, June 22, 2022 2:48 PM
-> To: Roger Lu (陸瑞傑) <Roger.Lu@mediatek.com>
-> Cc: linux-mediatek@lists.infradead.org; kernel-janitors@vger.kernel.org
-> Subject: [bug report] soc: mediatek: SVS: add mt8192 SVS GPU driver
-> 
-> Hello Roger Lu,
-> 
-> The patch 0bbb09b2af9d: "soc: mediatek: SVS: add mt8192 SVS GPU driver" from May 16, 2022, leads to the following (unpublished) Smatch static checker warning:
-> 
-> 	drivers/soc/mediatek/mtk-svs.c:532 svs_adjust_pm_opp_volts()
-> 	warn: loop overwrites return value 'ret'
-> 
-> drivers/soc/mediatek/mtk-svs.c
->     487 static int svs_adjust_pm_opp_volts(struct svs_bank *svsb)
->     488 {
->     489         int ret = -EPERM, tzone_temp = 0;
->                     ^^^^^^^^^^^^^
-> What is this -EPERM for?
-> Roger (0622): This -EPERM initialization is required. The `ret` value assignment in this function is put into if-statement so it needs the initialization.
-> 
+Since an in-band discovery frame is offloaded by MCU,
+here we enlarge the command size to accommodate the additional content.
 
-There is no if statement which uses this assignment.  I have copy and
-pasted the code from linux-next into this email so it should be easy to
-check.
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Money Wang <Money.Wang@mediatek.com>
+Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 9 +++++++--
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.h | 6 ++++++
+ 2 files changed, 13 insertions(+), 2 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 3a7051858892..417f6402aff4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1980,6 +1980,12 @@ mt7915_mcu_beacon_inband_discov(struct mt7915_dev *dev, struct ieee80211_vif *vi
+ 	len = sizeof(*discov) + MT_TXD_SIZE + skb->len;
+ 	len = (len & 0x3) ? ((len | 0x3) + 1) : len;
+ 
++	if (len > (MAX_BSS_OFFLOAD_SIZE - rskb->len)) {
++		dev_err(dev->mt76.dev, "inband discovery size limit exceed\n");
++		dev_kfree_skb(skb);
++		return;
++	}
++
+ 	tlv = mt7915_mcu_add_nested_subtlv(rskb, BSS_INFO_BCN_DISCOV,
+ 					   len, &bcn->sub_ntlv, &bcn->len);
+ 	discov = (struct bss_info_inband_discovery *)tlv;
+@@ -2002,7 +2008,6 @@ mt7915_mcu_beacon_inband_discov(struct mt7915_dev *dev, struct ieee80211_vif *vi
+ int mt7915_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			  int en, u32 changed)
+ {
+-#define MAX_BEACON_SIZE 512
+ 	struct mt7915_dev *dev = mt7915_hw_dev(hw);
+ 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
+ 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
+@@ -2011,7 +2016,7 @@ int mt7915_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	struct sk_buff *skb, *rskb;
+ 	struct tlv *tlv;
+ 	struct bss_info_bcn *bcn;
+-	int len = MT7915_BEACON_UPDATE_SIZE + MAX_BEACON_SIZE;
++	int len = MAX_BSS_OFFLOAD_SIZE;
+ 	bool ext_phy = phy != &dev->phy;
+ 
+ 	if (vif->bss_conf.nontransmitted)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 5abde482a97f..f73259d376b0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -489,6 +489,12 @@ enum {
+ 	SER_RECOVER
+ };
+ 
++#define MAX_BEACON_SIZE		512
++#define MAX_INBND_FRME_SIZE	256
++#define MAX_BSS_OFFLOAD_SIZE	(MAX_BEACON_SIZE +	  \
++				 MAX_INBND_FRME_SIZE +	  \
++				 MT7915_BEACON_UPDATE_SIZE)
++
+ #define MT7915_BSS_UPDATE_MAX_SIZE	(sizeof(struct sta_req_hdr) +	\
+ 					 sizeof(struct bss_info_omac) +	\
+ 					 sizeof(struct bss_info_basic) +\
+-- 
+2.18.0
 
->     490         u32 i, svsb_volt, opp_volt, temp_voffset = 0, opp_start, opp_stop;
->     491 
->     492         mutex_lock(&svsb->lock);
->     493 
->     494         /*
->     495          * 2-line bank updates its corresponding opp volts.
->     496          * 1-line bank updates all opp volts.
->     497          */
->     498         if (svsb->type == SVSB_HIGH) {
->     499                 opp_start = 0;
->     500                 opp_stop = svsb->turn_pt;
->     501         } else if (svsb->type == SVSB_LOW) {
->     502                 opp_start = svsb->turn_pt;
->     503                 opp_stop = svsb->opp_count;
->     504         } else {
->     505                 opp_start = 0;
->     506                 opp_stop = svsb->opp_count;
->     507         }
->     508 
->     509         /* Get thermal effect */
->     510         if (svsb->phase == SVSB_PHASE_MON) {
->     511                 ret = thermal_zone_get_temp(svsb->tzd, &tzone_temp);
->     512                 if (ret || (svsb->temp > SVSB_TEMP_UPPER_BOUND &&
->     513                             svsb->temp < SVSB_TEMP_LOWER_BOUND)) {
->     514                         dev_err(svsb->dev, "%s: %d (0x%x), run default volts\n",
->     515                                 svsb->tzone_name, ret, svsb->temp);
->     516                         svsb->phase = SVSB_PHASE_ERROR;
-> 
-> ret is set here but there is no goto unlock_mutex;
-> Roger (0622): We don't need goto here. If we cannot get temperature here, SVS bank will apply default voltages to DVFS. So we change SVS bank's phase to `SVSB_PHASE_ERROR` only.
-> 
->     517                 }
->     518 
->     519                 if (tzone_temp >= svsb->tzone_htemp)
->     520                         temp_voffset += svsb->tzone_htemp_voffset;
->     521                 else if (tzone_temp <= svsb->tzone_ltemp)
->     522                         temp_voffset += svsb->tzone_ltemp_voffset;
->     523 
->     524                 /* 2-line bank update all opp volts when running mon mode */
->     525                 if (svsb->type == SVSB_HIGH || svsb->type == SVSB_LOW) {
->     526                         opp_start = 0;
->     527                         opp_stop = svsb->opp_count;
->     528                 }
->     529         }
->     530 
->     531         /* vmin <= svsb_volt (opp_volt) <= default opp voltage */
-> --> 532         for (i = opp_start; i < opp_stop; i++) {
-> 
-> I guess the bug is that there was supposed to be an explicit check?
-> 
-> 	if (opp_start == opp_stop) {
-> 		ret = -EPERM;
-> 		goto unlock_mutex;
-> 	}
-> 
-> Otherwise, we are possibly returning the ret from the /* Get thermal effect */ block.
-> 
->     533                 switch (svsb->phase) {
->     534                 case SVSB_PHASE_ERROR:
->     535                         opp_volt = svsb->opp_dvolt[i];
->     536                         break;
->     537                 case SVSB_PHASE_INIT01:
->     538                         /* do nothing */
->     539                         goto unlock_mutex;
->     540                 case SVSB_PHASE_INIT02:
->     541                         svsb_volt = max(svsb->volt[i], svsb->vmin);
->     542                         opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
->     543                                                              svsb->volt_step,
->     544                                                              svsb->volt_base);
->     545                         break;
->     546                 case SVSB_PHASE_MON:
->     547                         svsb_volt = max(svsb->volt[i] + temp_voffset, svsb->vmin);
->     548                         opp_volt = svs_bank_volt_to_opp_volt(svsb_volt,
->     549                                                              svsb->volt_step,
->     550                                                              svsb->volt_base);
->     551                         break;
->     552                 default:
->     553                         dev_err(svsb->dev, "unknown phase: %u\n", svsb->phase);
->     554                         ret = -EINVAL;
->     555                         goto unlock_mutex;
->     556                 }
->     557 
->     558                 opp_volt = min(opp_volt, svsb->opp_dvolt[i]);
->     559                 ret = dev_pm_opp_adjust_voltage(svsb->opp_dev,
->     560                                                 svsb->opp_dfreq[i],
->     561                                                 opp_volt, opp_volt,
->     562                                                 svsb->opp_dvolt[i]);
->     563                 if (ret) {
->     564                         dev_err(svsb->dev, "set %uuV fail: %d\n",
->     565                                 opp_volt, ret);
->     566                         goto unlock_mutex;
->     567                 }
->     568         }
->     569 
->     570 unlock_mutex:
->     571         mutex_unlock(&svsb->lock);
->     572 
->     573         return ret;
->     574 }
-> 
-> regards,
-> dan carpenter
 
