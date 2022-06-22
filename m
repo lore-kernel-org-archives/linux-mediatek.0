@@ -4,82 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 440AEC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 12:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F7E4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 12:46:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4gu2BxNIuijIF1Juvej7fHAZo9d8DyE5aHPWFVjJ3oo=; b=f0TvKEciHyhNPfwnpCduNwsneA
-	a6B7l04iWH7W4Z9YkMPmRyDl2mmGulohImVGx3fRQKqQEuR0SOL3xjJzLBRFhN4YH+zdOCFtIHSb9
-	IF1u1vDChFy0FEKqUQhbz6eE/ujZBVQRu4MMVujSdOqcXA5+aCGxlTUotrife3bkcDatvJ0jbrB81
-	RRzvkf1uMoSc6HVEqqbXoDaKDFpuHXNPAKf9LQXibh1s2hintR8HSNK9M12503x8QsolIfl1XMgUk
-	YmA65l1auqN25wD4mUqkB4XTWmAPdpkFqqx20N27lmIutNHv1WSzdTJRPdLlW/38XGw/e3ue3/5r8
-	E6rvnRpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2c1HhWtDIHsURC5mQ49E1uvCVDZP8Bpo/BagcTZukIw=; b=twcdJ/ChPvmhlvwh5noudko0Bd
+	LMH26rUjx9vn3ojwbhNhyeHllWTufSBYGUFEwW7c//T0iyJhYoBgp80eMS3IVrqVnHq/zxv+qiWIg
+	AFbF7jEJwJmnmm6G1jTWq/x+gOUmtPQMNUaVjnBBt8bIEOogvnsqSPjDli8INIoknkkuYV0ajOhQg
+	gXRfTb+DP+5MKij8GdJcTGsGAxze9YWS7lDr+FSXMCWSzVm7vlTBo4w29vl5xr/FVdrxDwd1O1r9m
+	MuqaUyafBi1F6RBOZGw6dIvr5Nc3hwkNLlOC5ZBrKlM853yFJXqJ5ldBisINtkK3pq8qHvkqo/Zab
+	BDLEpefg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3z9U-00AILH-VI; Wed, 22 Jun 2022 12:08:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o3zkr-00AMXQ-4p; Wed, 22 Jun 2022 12:46:45 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889] helo=theia.8bytes.org)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3z9I-00AIIh-4R; Wed, 22 Jun 2022 12:07:59 +0000
-X-UUID: 95218065ea6840ad80b2453e7bd96150-20220622
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:8d479821-2ef8-4018-80e4-8ecdba2b29b0,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:ae6ec12d-1756-4fa3-be7f-474a6e4be921,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 95218065ea6840ad80b2453e7bd96150-20220622
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 417099821; Wed, 22 Jun 2022 05:07:48 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jun 2022 05:06:11 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 22 Jun 2022 20:06:10 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 22 Jun 2022 20:06:10 +0800
-Message-ID: <9a02f733ffcffd03d173bd7d0daac1802b7dcff3.camel@mediatek.com>
-Subject: Re: [PATCH v6 16/16] arm64: dts: mediatek: Add infra #reset-cells
- property for MT8195
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, "mturquette@baylibre.com"
-	<mturquette@baylibre.com>, "sboyd@kernel.org" <sboyd@kernel.org>,
-	"robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-CC: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "chun-jie.chen@mediatek.com"
-	<chun-jie.chen@mediatek.com>, "wenst@chromium.org" <wenst@chromium.org>,
-	Runyang Chen =?UTF-8?Q?=28=E9=99=88=E6=B6=A6=E6=B4=8B=29?=
-	<Runyang.Chen@mediatek.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-clk@vger.kernel.org"
-	<linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 22 Jun 2022 20:06:10 +0800
-In-Reply-To: <3a587e20-f991-adf8-fe4e-a09caa1e14c7@gmail.com>
-References: <20220503093856.22250-1-rex-bc.chen@mediatek.com>
-	 <20220503093856.22250-17-rex-bc.chen@mediatek.com>
-	 <3a587e20-f991-adf8-fe4e-a09caa1e14c7@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o3zkf-00AMV1-Bo; Wed, 22 Jun 2022 12:46:35 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+	id 994612D0; Wed, 22 Jun 2022 14:46:26 +0200 (CEST)
+Date: Wed, 22 Jun 2022 14:46:19 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: yf.wang@mediatek.com
+Cc: Will Deacon <will@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Yong Wu <Yong.Wu@mediatek.com>, Ning Li <ning.li@mediatek.com>
+Subject: Re: [PATCH] iommu/dma: Fix race condition during iova_domain
+ initialization
+Message-ID: <YrMPG4dIEnFkCbi9@8bytes.org>
+References: <20220530120748.31733-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220530120748.31733-1-yf.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_050756_225905_79BD25DB 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20220622_054633_746599_C1FE7F1A 
+X-CRM114-Status: GOOD (  23.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,80 +63,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-06-22 at 19:08 +0800, Matthias Brugger wrote:
+Please re-send with
+
+	Robin Murphy <robin.murphy@arm.com>
+
+in Cc.
+
+On Mon, May 30, 2022 at 08:07:45PM +0800, yf.wang@mediatek.com wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
 > 
-> On 03/05/2022 11:38, Rex-BC Chen wrote:
-> > We will use mediatek clock reset as infracfg_ao reset instead of
-> > ti-syscon. To support this, remove property of ti reset and add
-> > property of #reset-cells for mediatek clock reset.
-> > 
-> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
+> When many devices share the same iova domain, iommu_dma_init_domain()
+> may be called at the same time. The checking of iovad->start_pfn will
+> all get false in iommu_dma_init_domain() and both enter init_iova_domain()
+> to do iovad initialization.
 > 
-> My understanding is that using the old DTS with a newer kernel
-> wouldn't 
-> introduce a regression, correct?
+> Fix this by protecting init_iova_domain() with iommu_dma_cookie->mutex.
 > 
-> Applied, thanks!
+> Exception backtrace:
+> rb_insert_color(param1=0xFFFFFF80CD2BDB40, param3=1) + 64
+> init_iova_domain() + 180
+> iommu_setup_dma_ops() + 260
+> arch_setup_dma_ops() + 132
+> of_dma_configure_id() + 468
+> platform_dma_configure() + 32
+> really_probe() + 1168
+> driver_probe_device() + 268
+> __device_attach_driver() + 524
+> __device_attach() + 524
+> bus_probe_device() + 64
+> deferred_probe_work_func() + 260
+> process_one_work() + 580
+> worker_thread() + 1076
+> kthread() + 332
+> ret_from_fork() + 16
 > 
-
-Hello Matthias,
-
-yes, because there is no user for this infra reset controller in
-upstream mainline.
-
-In addition, could you also help to give us some suggestion for Nancy's
-series?
-
-Thanks for your big support!
-
-[1]: 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=651900
-
-BRs,
-Bo-Chen
-
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 13 +------------
-> >   1 file changed, 1 insertion(+), 12 deletions(-)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > index b57e620c2c72..8e5ac11b19f1 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > @@ -10,7 +10,6 @@
-> >   #include <dt-bindings/interrupt-controller/irq.h>
-> >   #include <dt-bindings/phy/phy.h>
-> >   #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
-> > -#include <dt-bindings/reset/ti-syscon.h>
-> >   
-> >   / {
-> >   	compatible = "mediatek,mt8195";
-> > @@ -295,17 +294,7 @@
-> >   			compatible = "mediatek,mt8195-infracfg_ao",
-> > "syscon", "simple-mfd";
-> >   			reg = <0 0x10001000 0 0x1000>;
-> >   			#clock-cells = <1>;
-> > -
-> > -			infracfg_rst: reset-controller {
-> > -				compatible = "ti,syscon-reset";
-> > -				#reset-cells = <1>;
-> > -				ti,reset-bits = <
-> > -					0x140 18 0x144 18 0 0
-> > (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* pcie */
-> > -					0x120 0  0x124 0  0 0
-> > (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* thermal */
-> > -					0x730 10 0x734 10 0 0
-> > (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* thermal */
-> > -					0x150 5  0x154 5  0 0
-> > (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* svs gpu */
-> > -				>;
-> > -			};
-> > +			#reset-cells = <1>;
-> >   		};
-> >   
-> >   		pericfg: syscon@10003000 {
-
+> Signed-off-by: Ning Li <ning.li@mediatek.com>
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> ---
+>  drivers/iommu/dma-iommu.c | 17 +++++++++++++----
+>  1 file changed, 13 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+> index 09f6e1c0f9c0..b38c5041eeab 100644
+> --- a/drivers/iommu/dma-iommu.c
+> +++ b/drivers/iommu/dma-iommu.c
+> @@ -63,6 +63,7 @@ struct iommu_dma_cookie {
+>  
+>  	/* Domain for flush queue callback; NULL if flush queue not in use */
+>  	struct iommu_domain		*fq_domain;
+> +	struct mutex			mutex;
+>  };
+>  
+>  static DEFINE_STATIC_KEY_FALSE(iommu_deferred_attach_enabled);
+> @@ -309,6 +310,7 @@ int iommu_get_dma_cookie(struct iommu_domain *domain)
+>  	if (!domain->iova_cookie)
+>  		return -ENOMEM;
+>  
+> +	mutex_init(&domain->iova_cookie->mutex);
+>  	return 0;
+>  }
+>  
+> @@ -549,26 +551,33 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
+>  	}
+>  
+>  	/* start_pfn is always nonzero for an already-initialised domain */
+> +	mutex_lock(&cookie->mutex);
+>  	if (iovad->start_pfn) {
+>  		if (1UL << order != iovad->granule ||
+>  		    base_pfn != iovad->start_pfn) {
+>  			pr_warn("Incompatible range for DMA domain\n");
+> -			return -EFAULT;
+> +			ret = -EFAULT;
+> +			goto done_unlock;
+>  		}
+>  
+> -		return 0;
+> +		ret = 0;
+> +		goto done_unlock;
+>  	}
+>  
+>  	init_iova_domain(iovad, 1UL << order, base_pfn);
+>  	ret = iova_domain_init_rcaches(iovad);
+>  	if (ret)
+> -		return ret;
+> +		goto done_unlock;
+>  
+>  	/* If the FQ fails we can simply fall back to strict mode */
+>  	if (domain->type == IOMMU_DOMAIN_DMA_FQ && iommu_dma_init_fq(domain))
+>  		domain->type = IOMMU_DOMAIN_DMA;
+>  
+> -	return iova_reserve_iommu_regions(dev, domain);
+> +	ret = iova_reserve_iommu_regions(dev, domain);
+> +
+> +done_unlock:
+> +	mutex_unlock(&cookie->mutex);
+> +	return ret;
+>  }
+>  
+>  /**
+> -- 
+> 2.18.0
 
