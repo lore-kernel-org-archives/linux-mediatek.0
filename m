@@ -4,80 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B51AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF27AC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:08:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MzKWleynAfOZzr1G32uJu4jvVPYdSV6qOcoCG8BDdeI=; b=aJXCvq5RrF83lSDMpexs3eDkwt
-	XSs21Vhp87mE+Hr6pEL0tQcgf6cuoXAeqB50Fl7MVX6oWmx2nnHqSbMOnU2sEkCYJDMQKfYX7eZ/5
-	u5LYJN9niR/+m7+2Wl/B1I3szZkAJt27HX8QEgxrw9vn0ynvjKknSHHUnl920Jz96ingZ6GPJQuJc
-	ocWX9BvvHnOOb+AHS4ZqXosxLtFZBvefHVaW2XRYN4l+Zp4PIsY8Koxka+ZmzYMGDzJMKR5bS1wUa
-	S/rG9p7oFuaMGawr1tFAZrhv/0xKAtcpaSwXrGzLaKalXLl0MPt4H9mgrDCBgYdRS0dw1i7mIvmUn
-	0EeOFh4w==;
+	bh=ZeIhb3fqnfUnJd59yfyLJJmoBp7Kjl/67o9t6auf+NQ=; b=dR9xuqsRvVea++Ik1OqWjv3NfM
+	RymiytxXH3eM0+tNSQwLHq7xdClkO1HgBwPdXWqAbWSZkAp+eigpNh4pBjx9Ejh+iyWlrqblBqFDh
+	snN+CQF44xCFCdTN5V2zps1NdvGpHLFjjgSTO3QEq0zD0LDF7bP9Wskz8oxBm/sGJTZW2kaqDITd2
+	KZjBYspO3/tqo7w/DE95ESyiTmpdU77bzTT1SjupNfKTzf4815nuVWItgTGdfjIanoixkrOXegNE9
+	XxGs0zMSh1zKNhZpOxgEBcpVhmUq0A2RuIgkpUkb48R3+brzDePZcHBrVFgNuDkI+377MjOY/iKCB
+	YICKi3zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o410x-00AnZD-HQ; Wed, 22 Jun 2022 14:07:27 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1o4126-00Ao1w-Lp; Wed, 22 Jun 2022 14:08:38 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o410c-00AnRD-4W; Wed, 22 Jun 2022 14:07:09 +0000
-Received: by mail-wm1-x330.google.com with SMTP id l2-20020a05600c4f0200b0039c55c50482so11172017wmq.0;
-        Wed, 22 Jun 2022 07:07:03 -0700 (PDT)
+	id 1o411q-00AnvU-P9; Wed, 22 Jun 2022 14:08:24 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id c130-20020a1c3588000000b0039c6fd897b4so11156458wma.4;
+        Wed, 22 Jun 2022 07:08:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=MzKWleynAfOZzr1G32uJu4jvVPYdSV6qOcoCG8BDdeI=;
-        b=Yybid874HpfGUBNJPUpQicuLtK79W9BMcpg+PcvVhrK/OVuHkXUoO2oqO3aymUPI4H
-         NjAF+XpIeU4InRKHibe6EaWdY1PBtBghxcvFcZXuZVWsn9dEfxEbD8kYZ16iQuS+7Fyg
-         5Do1T/02aka/OxICUl+TNKuG09evEQSRXIOv4Z4j2KYRCT1TZdJ8bK1xUhG65QOFVYKl
-         B1vUz+CI8CSimhaytO2075oJnFb5Ul6L+h55TV5yYgA3AM2r8zCFoF+BYCaiFfcbb4A+
-         W3XSyCT1SxqdvvpkDHFX5njMe7qafyIXIppomoQAG6PsniNW9eb3Bq5mX8l6dr+41RCS
-         pVgA==
+        bh=ZeIhb3fqnfUnJd59yfyLJJmoBp7Kjl/67o9t6auf+NQ=;
+        b=bg1rYK3aOnpstgV5X8JCVaDxfceJZZ+RnGbdMAR3z0JOQaj8FAvyLlvsXswGx4zP2f
+         +pwmfDO1TCJP9j1hgOBk3MKDRWQidXRKiOsmPR9To+Lplruhu6v/Ic07mVynXLabvHdH
+         oR5ypF0BUqVcSQ2L3Yjdy8y02iYsYrxPGwmo1ruYebDXAKzlKFhx5p2ECB+PFTjjac+Q
+         Z1iPJJeIsX84zpy21pYvTcI2BIj8zML4PVMwdyL7oP91c1wjx3HFibDfmqri6XA6pl2/
+         6MAogt3P2Fxc0r702Kp911Tdx81yozjSlrJ4bV5a59mVLgbpfh9yuKaKhUn2e54L7T7y
+         3ZFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=MzKWleynAfOZzr1G32uJu4jvVPYdSV6qOcoCG8BDdeI=;
-        b=VZPUWFGuT69XO/neKi5YI8A9CzzYmfcryTc31pmrUT2T0GvbPBwprumCgVEDpMK94u
-         Qfe6Ph7mpeeQ0m9tytSWo4KylrDUsq0LfQWPtnhhdJkHyhfH1cchYZuPpOtwIqXMmZln
-         jDTKoDag+bpC/CDu9PCJWRnticpzvt0RWj1IGGa3Vu3BsLaTaKUaXUp7YF4/pvxTl25o
-         p4gaAhmoreIZ51KHCE7hB8cHWDfEzZMH7S6ki9ZBVwAHgU3KWc4+b61Ph8U2K3aCQA/7
-         9rFs5TCXp7uTjqfjhYazq7a8Q8frd9Pz5ESDYdttv4rtTAJBlkGPUf1bWMyZJ1eJttVv
-         EJUw==
-X-Gm-Message-State: AOAM533JAvGmvJljj41vov6be3G75/M8KNlQGaLdzSsXz8u6eNkpdMZs
-	gkgFioD8VjSy1gwoO6uMUGA=
-X-Google-Smtp-Source: ABdhPJze2ccttYHD6Z+ReNpSXGvAL7/WlO9i1HO+wGVa0wB4egIBmMjI9h78jpnILe5ZX0+xYrulJA==
-X-Received: by 2002:a7b:c4cb:0:b0:39c:35b3:e8c1 with SMTP id g11-20020a7bc4cb000000b0039c35b3e8c1mr46816236wmk.183.1655906822523;
-        Wed, 22 Jun 2022 07:07:02 -0700 (PDT)
+        bh=ZeIhb3fqnfUnJd59yfyLJJmoBp7Kjl/67o9t6auf+NQ=;
+        b=ux5ymewO/BRJvhPbA4gHdAmQiAXefrPUPZRMsw7w4/dmtvRG3rAtwlmh7jr8MmjF5y
+         QYPR1IH06nA3W2M3pAP4auru1cE3g02I0PnKk8DeEXknv77efeIazTjH61FLzY9Xmr8+
+         iDxCNy/oV575FVpMFvqri/U6VVRKsZpRHOvcsXabAv8c3VljsMhdJm+0sW+6cpl1rmpK
+         Jgt5O7oefIHtmqL5Xgg55S3kKQhTVfdq90EVAIZfzQIjQKVV+V5MYxpxXpaWg67p8tqR
+         aujWJEYgHlM/ZzplEKwiNC8ZYHX+i9QncCJ3eyrUUX/3lswwQo97xXYJ5xwk6HaaX2Uc
+         1Vvg==
+X-Gm-Message-State: AJIora/zJgpdLTDxEfBaKCNUv7xupZ/kVS5VwqzFsClKb5vxWFXd5Dkg
+	l2jVwVtmu0h9FrO0K0eSJJg=
+X-Google-Smtp-Source: AGRyM1vgoX0sI0/GRhToJAs8ji8QUFOvvt8sJNBlMLAEP22kjBbSxxSrn5djZK1qdK3AMGl1UgmRpg==
+X-Received: by 2002:a05:600c:3505:b0:39c:93d4:5eec with SMTP id h5-20020a05600c350500b0039c93d45eecmr4138902wmq.179.1655906899095;
+        Wed, 22 Jun 2022 07:08:19 -0700 (PDT)
 Received: from [192.168.0.16] ([37.223.148.38])
-        by smtp.gmail.com with ESMTPSA id d7-20020adfef87000000b0021b9153f80fsm8644703wro.71.2022.06.22.07.07.01
+        by smtp.gmail.com with ESMTPSA id n1-20020a5d6b81000000b0021b9416fa13sm8265850wrx.90.2022.06.22.07.08.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Jun 2022 07:07:01 -0700 (PDT)
-Message-ID: <d93c3721-8415-ad4d-2f68-2d55adbd1fff@gmail.com>
-Date: Wed, 22 Jun 2022 16:06:59 +0200
+        Wed, 22 Jun 2022 07:08:18 -0700 (PDT)
+Message-ID: <3de83337-389e-4fd0-b6a5-c9deed31ef19@gmail.com>
+Date: Wed, 22 Jun 2022 16:08:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.1
-Subject: Re: [PATCH] soc: mediatek: mutex: Use DDP_COMPONENT_DITHER0 mod index
- for MT8365
+Subject: Re: [PATCH 0/2] dtbs_check warning fixes for idle-states nodes in
+ mt8192.dtsi
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: fparent@baylibre.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- "jason-jh.lin" <jason-jh.lin@mediatek.com>
-References: <20220620102454.131417-1-angelogioacchino.delregno@collabora.com>
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, James Liao <jamesjj.liao@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220617233150.2466344-1-nfraprado@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220620102454.131417-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220617233150.2466344-1-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_070706_249851_C0514A85 
-X-CRM114-Status: GOOD (  18.40  )
+X-CRM114-CacheID: sfid-20220622_070822_830995_DECB4649 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,40 +98,20 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 20/06/2022 12:24, AngeloGioacchino Del Regno wrote:
-> In commit
-> 4e8988c634a1 ("soc: mediatek: add DDP_DOMPONENT_DITHER0 enum for mt8195 vdosys0")
-> the enum mtk_ddp_comp_id was modified to add an index number to the
-> DITHER component because some new SoCs have multiple dither blocks.
+On 18/06/2022 01:31, Nícolas F. R. A. Prado wrote:
 > 
-> As a result, all of the mutex mod arrays have been changed to use the
-> new definition instead of the old one (even if that's retained): for
-> consistency purposes, follow the same trend on the newly introduced
-> MT8365 mutex mod array.
+> A couple of simple changes to get rid of dtbs_check warnings on
+> idle-states nodes in mt8192.dtsi.
 > 
-> This commit brings no functional changes.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Nícolas F. R. A. Prado (2):
+>    arm64: dts: mt8192: Fix idle-states nodes naming scheme
+>    arm64: dts: mt8192: Fix idle-states entry-method
 
-Applied, thanks!
+Both applied, thanks!
 
-Matthias
-
-> ---
->   drivers/soc/mediatek/mtk-mutex.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-> index fa8e0ba38803..2fd8318c3bdc 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -358,7 +358,7 @@ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
->   	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
->   	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
->   	[DDP_COMPONENT_COLOR0] = MT8365_MUTEX_MOD_DISP_COLOR0,
-> -	[DDP_COMPONENT_DITHER] = MT8365_MUTEX_MOD_DISP_DITHER,
-> +	[DDP_COMPONENT_DITHER0] = MT8365_MUTEX_MOD_DISP_DITHER,
->   	[DDP_COMPONENT_DPI0] = MT8365_MUTEX_MOD_DISP_DPI0,
->   	[DDP_COMPONENT_DSI0] = MT8365_MUTEX_MOD_DISP_DSI0,
->   	[DDP_COMPONENT_GAMMA] = MT8365_MUTEX_MOD_DISP_GAMMA,
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 26 ++++++++++++------------
+>   1 file changed, 13 insertions(+), 13 deletions(-)
+> 
 
