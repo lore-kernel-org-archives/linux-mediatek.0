@@ -4,59 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947A4C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 13:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873AFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 13:40:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b1CzVAN2x3XqSNbnvalqdVA8xeb7gjeGwzeljqOJR5Q=; b=qR2wdffe8UMYWNFApx91RNeBQ1
-	KA/LwNbUrcTpQbceFQnCX4bc2ZA06f9XPxakwxN79b0CmT3TUKjYRFbqi/fbjr03KK6EmrDLSm8fy
-	dD2WmfHQa1GWU8SIQjG/+0gQ8FHmYgTjYh2tajptuxUJ7yv6x8xg1oRzU+8Y2SqcfFpLBlOi6IT2O
-	kCDrb7NhwNgC/Pj9DAzKsZYG5LsxUgfQ0d2mAjMJCGYuNJod/MoeZKSlmwAlnLL05N86F0r32Kapi
-	eNLOq5OnVFN0HTmmQBEs7h95KYxEDwOCwGHZ36+1pgCWjR6IgU+p8jBKysmld6PedaAW2NZKzecsV
-	rqi4Se2Q==;
+	bh=cLW9UqZ3huNHz58Vq+trpaeBdfg6OYq23RDpbPWybbw=; b=bwYMuG9WhUGDgFKM0dnh6zhZgV
+	eARwtn00aCta/UcBZzU13xzR/I19AK8bP3+jkEPKOzb9EI501MaijE5V3jwx5XJgomOCe0Q2j6UnM
+	HyUXiluZSoAZHCA/oPSW8t1x1Uwa5CFY4dbGBU8fXEDqvsDFafKoMOJQ+V7Q05VSqoH5bCyv6M+IA
+	64Z90lYffJAFZENpUSdVgTvp9u0TvvkTmak7Fb/bXgIWG8goVj9XVKtA26IJnAQPe1qblPUJzyRBf
+	jZZAy870vf1qHn0bWqRfNPgTfff77V/6DgdQh0qCBRmo2KqchgxVvbfI4en17S5bsd96Opb2/ym4i
+	mX5hfSgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40YN-00AccW-DB; Wed, 22 Jun 2022 13:37:55 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40Ov-00AYOQ-9R; Wed, 22 Jun 2022 13:28:11 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 83B1113D5;
-	Wed, 22 Jun 2022 06:28:03 -0700 (PDT)
-Received: from [10.57.85.1] (unknown [10.57.85.1])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 398063F534;
-	Wed, 22 Jun 2022 06:28:01 -0700 (PDT)
-Message-ID: <a0f0d3da-6992-7033-5262-156ffa5316e7@arm.com>
-Date: Wed, 22 Jun 2022 14:27:57 +0100
+	id 1o40aP-00AdYm-5m; Wed, 22 Jun 2022 13:40:01 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o40Sb-00Aa7Z-5r; Wed, 22 Jun 2022 13:32:01 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5A94566017B3;
+	Wed, 22 Jun 2022 14:31:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655904714;
+	bh=GXPW8eVZucPlabvBsj1O4A8AjaBWiHsVboTbgSoHxTA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JLPoC68GILDBMexQ17xPftwnfPgsXyisoN95ynJ5FFvZ+KnXtDVl1tkBCMu3nCIBo
+	 P6SL0TVSKYV4VXFrD0QpYfYby2tCFSYtk/UiqurbS6d7G0WyJs25/jfhx+8MJ4EkN8
+	 qKOLW/e6wDmsD1bfuViqWlt74K6dddUmyNxHdn+k5ORYLSZ4ZgJreaFdXtN/sU3oOA
+	 ZAqyNQk08cdyUHIlbc6XOJwe8KbGEjjo8mZey708+TwvoFmLh64g2N0qDY4iZJ3dwV
+	 TMC3FHkgOpsxy1NXG94K46X00EEHmc8P6HqnE3pzwBBbINCy80z5931SXOm8I4Vyfa
+	 Eo71nviG5ZSXQ==
+Message-ID: <26854a9b-09c2-c14e-eabe-cfc574d6012e@collabora.com>
+Date: Wed, 22 Jun 2022 15:31:51 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH] iommu/dma: Fix race condition during iova_domain
- initialization
-Content-Language: en-GB
-To: Joerg Roedel <joro@8bytes.org>, yf.wang@mediatek.com
-Cc: Miles Chen <miles.chen@mediatek.com>, wsd_upstream@mediatek.com,
- open list <linux-kernel@vger.kernel.org>, Libo Kang
- <Libo.Kang@mediatek.com>,
- "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Ning Li <ning.li@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
-References: <20220530120748.31733-1-yf.wang@mediatek.com>
- <YrMPG4dIEnFkCbi9@8bytes.org>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <YrMPG4dIEnFkCbi9@8bytes.org>
+Subject: Re: [PATCH] soc: mediatek: mutex: add suffix 0 to
+ DDP_COMPONENT_DITHER for mt8395
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Fabien Parent <fparent@baylibre.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220622131952.29583-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220622131952.29583-1-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_062809_510842_F95285DF 
-X-CRM114-Status: GOOD (  21.98  )
+X-CRM114-CacheID: sfid-20220622_063157_439166_1884F243 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,128 +80,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-22 13:46, Joerg Roedel wrote:
-> Please re-send with
+Il 22/06/22 15:19, Jason-JH.Lin ha scritto:
+> Add suffix 0 to DDP_COMPONENT_DITHER for mt8395.
 > 
-> 	Robin Murphy <robin.murphy@arm.com>
+> Fixes: 141311b856d8 ("soc: mediatek: mutex: add MT8365 support")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+
+
+Hello Jason-JH,
+
+you must've missed my commit, sent two days ago, which is doing the same:
+
+https://lore.kernel.org/lkml/20220620102454.131417-1-angelogioacchino.delregno@collabora.com/T/#u
+
+Anyway, I have avoided to rename the definition, as from what I understand
+MT8365 has only one dither mod and that's called "DITHER", not "DITHER0"...
+...but I've added the suffix to the array assignment, as that's what we have
+in the enumeration.
+
+I think that #define MT8365_MUTEX_MOD_DISP_DITHER should be kept as-is.
+
+Also... this commit is not fixing anything, as it was already working before,
+so the Fixes tag shouldn't be present.
+
+Regards,
+Angelo
+
+> ---
+>   drivers/soc/mediatek/mtk-mutex.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> in Cc.
+> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+> index fa8e0ba38803..3b25fd6b91aa 100644
+> --- a/drivers/soc/mediatek/mtk-mutex.c
+> +++ b/drivers/soc/mediatek/mtk-mutex.c
+> @@ -130,7 +130,7 @@
+>   #define MT8365_MUTEX_MOD_DISP_CCORR		13
+>   #define MT8365_MUTEX_MOD_DISP_AAL		14
+>   #define MT8365_MUTEX_MOD_DISP_GAMMA		15
+> -#define MT8365_MUTEX_MOD_DISP_DITHER		16
+> +#define MT8365_MUTEX_MOD_DISP_DITHER0		16
+>   #define MT8365_MUTEX_MOD_DISP_DSI0		17
+>   #define MT8365_MUTEX_MOD_DISP_PWM0		20
+>   #define MT8365_MUTEX_MOD_DISP_DPI0		22
+> @@ -358,7 +358,7 @@ static const unsigned int mt8365_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+>   	[DDP_COMPONENT_AAL0] = MT8365_MUTEX_MOD_DISP_AAL,
+>   	[DDP_COMPONENT_CCORR] = MT8365_MUTEX_MOD_DISP_CCORR,
+>   	[DDP_COMPONENT_COLOR0] = MT8365_MUTEX_MOD_DISP_COLOR0,
+> -	[DDP_COMPONENT_DITHER] = MT8365_MUTEX_MOD_DISP_DITHER,
+> +	[DDP_COMPONENT_DITHER0] = MT8365_MUTEX_MOD_DISP_DITHER0,
+>   	[DDP_COMPONENT_DPI0] = MT8365_MUTEX_MOD_DISP_DPI0,
+>   	[DDP_COMPONENT_DSI0] = MT8365_MUTEX_MOD_DISP_DSI0,
+>   	[DDP_COMPONENT_GAMMA] = MT8365_MUTEX_MOD_DISP_GAMMA,
 
-Apologies, I did spot this before, I've just been tied up with other 
-things and dropping everything non-critical on the floor, so didn't get 
-round to replying before it slipped my mind again.
 
-In summary, I hate it, but mostly because the whole situation of calling 
-iommu_probe_device off the back of driver probe is fundamentally broken. 
-I'm still a few steps away from fixing that properly, at which point I 
-can just as well rip all these little bodges out again. If it really 
-does need mitigating in the meantime (i.e. this is real-world async 
-probe, not just some contrived testcase), then I can't easily think of 
-any cleaner hack, so,
-
-Acked-by: Robin Murphy <robin.murphy@arm.com>
-
-(somewhat reluctantly)
-
-Cheers,
-Robin.
-
-> On Mon, May 30, 2022 at 08:07:45PM +0800, yf.wang@mediatek.com wrote:
->> From: Yunfei Wang <yf.wang@mediatek.com>
->>
->> When many devices share the same iova domain, iommu_dma_init_domain()
->> may be called at the same time. The checking of iovad->start_pfn will
->> all get false in iommu_dma_init_domain() and both enter init_iova_domain()
->> to do iovad initialization.
->>
->> Fix this by protecting init_iova_domain() with iommu_dma_cookie->mutex.
->>
->> Exception backtrace:
->> rb_insert_color(param1=0xFFFFFF80CD2BDB40, param3=1) + 64
->> init_iova_domain() + 180
->> iommu_setup_dma_ops() + 260
->> arch_setup_dma_ops() + 132
->> of_dma_configure_id() + 468
->> platform_dma_configure() + 32
->> really_probe() + 1168
->> driver_probe_device() + 268
->> __device_attach_driver() + 524
->> __device_attach() + 524
->> bus_probe_device() + 64
->> deferred_probe_work_func() + 260
->> process_one_work() + 580
->> worker_thread() + 1076
->> kthread() + 332
->> ret_from_fork() + 16
->>
->> Signed-off-by: Ning Li <ning.li@mediatek.com>
->> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
->> ---
->>   drivers/iommu/dma-iommu.c | 17 +++++++++++++----
->>   1 file changed, 13 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
->> index 09f6e1c0f9c0..b38c5041eeab 100644
->> --- a/drivers/iommu/dma-iommu.c
->> +++ b/drivers/iommu/dma-iommu.c
->> @@ -63,6 +63,7 @@ struct iommu_dma_cookie {
->>   
->>   	/* Domain for flush queue callback; NULL if flush queue not in use */
->>   	struct iommu_domain		*fq_domain;
->> +	struct mutex			mutex;
->>   };
->>   
->>   static DEFINE_STATIC_KEY_FALSE(iommu_deferred_attach_enabled);
->> @@ -309,6 +310,7 @@ int iommu_get_dma_cookie(struct iommu_domain *domain)
->>   	if (!domain->iova_cookie)
->>   		return -ENOMEM;
->>   
->> +	mutex_init(&domain->iova_cookie->mutex);
->>   	return 0;
->>   }
->>   
->> @@ -549,26 +551,33 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
->>   	}
->>   
->>   	/* start_pfn is always nonzero for an already-initialised domain */
->> +	mutex_lock(&cookie->mutex);
->>   	if (iovad->start_pfn) {
->>   		if (1UL << order != iovad->granule ||
->>   		    base_pfn != iovad->start_pfn) {
->>   			pr_warn("Incompatible range for DMA domain\n");
->> -			return -EFAULT;
->> +			ret = -EFAULT;
->> +			goto done_unlock;
->>   		}
->>   
->> -		return 0;
->> +		ret = 0;
->> +		goto done_unlock;
->>   	}
->>   
->>   	init_iova_domain(iovad, 1UL << order, base_pfn);
->>   	ret = iova_domain_init_rcaches(iovad);
->>   	if (ret)
->> -		return ret;
->> +		goto done_unlock;
->>   
->>   	/* If the FQ fails we can simply fall back to strict mode */
->>   	if (domain->type == IOMMU_DOMAIN_DMA_FQ && iommu_dma_init_fq(domain))
->>   		domain->type = IOMMU_DOMAIN_DMA;
->>   
->> -	return iova_reserve_iommu_regions(dev, domain);
->> +	ret = iova_reserve_iommu_regions(dev, domain);
->> +
->> +done_unlock:
->> +	mutex_unlock(&cookie->mutex);
->> +	return ret;
->>   }
->>   
->>   /**
->> -- 
->> 2.18.0
-> _______________________________________________
-> iommu mailing list
-> iommu@lists.linux-foundation.org
-> https://lists.linuxfoundation.org/mailman/listinfo/iommu
 
