@@ -4,77 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3841C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 13:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947A4C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 13:38:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zE7F+foH7SBVe5rHqE7hdXALIS9VjE0ZpgXeec+ndWM=; b=qx6PKZ62IUU39RsQJuWPcm5CS6
-	pV9gWfgHzQYuZpjlognMUxw50Q5DlsO+p70+U8giu4kPcW0KFV45Nt4/RzIc6fRkZ2k6dpXaD8CbA
-	rmSdVoa0X3WL/ggwIMUXOz21gmXQfaKwStyPBiITGTS/59az0VSavR1zXEsADXIiX1Pf/8SuiBgSQ
-	wAXAyuzM1lfcj7jyOjTyTIsJ+SBZvFbSVcrTvy0jsgzow5fblFFOuyZ4Hh3iw4hgqnGl80htCHKbT
-	qYLSIo5MfV1ae4vop54OsqG8JEXNgz6KGKbgU4JVMvITdBsY+honEn/+Yk4krThpwnu3jiF3iw1K5
-	uCc/DTfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b1CzVAN2x3XqSNbnvalqdVA8xeb7gjeGwzeljqOJR5Q=; b=qR2wdffe8UMYWNFApx91RNeBQ1
+	KA/LwNbUrcTpQbceFQnCX4bc2ZA06f9XPxakwxN79b0CmT3TUKjYRFbqi/fbjr03KK6EmrDLSm8fy
+	dD2WmfHQa1GWU8SIQjG/+0gQ8FHmYgTjYh2tajptuxUJ7yv6x8xg1oRzU+8Y2SqcfFpLBlOi6IT2O
+	kCDrb7NhwNgC/Pj9DAzKsZYG5LsxUgfQ0d2mAjMJCGYuNJod/MoeZKSlmwAlnLL05N86F0r32Kapi
+	eNLOq5OnVFN0HTmmQBEs7h95KYxEDwOCwGHZ36+1pgCWjR6IgU+p8jBKysmld6PedaAW2NZKzecsV
+	rqi4Se2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40Jl-00AVrq-Mf; Wed, 22 Jun 2022 13:22:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40JX-00AVkD-6t; Wed, 22 Jun 2022 13:22:37 +0000
-Received: from notapiano (unknown [194.36.25.10])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 17BDC66017B3;
-	Wed, 22 Jun 2022 14:22:24 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655904148;
-	bh=QGer2+WExG8zvGaah1wIlZ38pfIs0JV+iFqSuscS98w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Bg9jN1q4MqLcePbJVH15YQvXfV+TiSmR6IMIqxnXBapnL/C8uo+tx+ruFIXNEVT8M
-	 M96gdCtX+gsWrui7vwRbxImJHDHcVw8kLrQvX0IuoZLc+1YMRsncEB0CpiQm3cVmwJ
-	 Ie6dRKu2vyiFEKgnTrSEINfl8iP4UrB8T7vrmBFhbtKUpHumPyNPleoQPfs//nXCcG
-	 g9kmBIsAHTYZ1IQTmPMzSspPechoh6Sm8KBLSZpIH3YQ65xSuAjaKp5mBide0Pc1CT
-	 ElNlhLpoF0Fpi4CQo4VQBIqM6iKe9cGz0ox44PNOixqj1Akug37n628Lwh7MSFqAGu
-	 u27BAThLBZL3w==
-Date: Wed, 22 Jun 2022 09:22:19 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Wenbin Mei <wenbin.mei@mediatek.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org
-Subject: Re: [PATCH 2/3] dt-bindings: usb: mtk-xhci: Allow middle optional
- clocks to be missing
-Message-ID: <20220622132219.36rvznhip2egujec@notapiano>
-References: <20220617222916.2435618-3-nfraprado@collabora.com>
- <8639e64d-c659-7090-2d0a-078fd96cfbd4@linaro.org>
- <bb460aa483cc888ffa36709d9e9c1f2e3be0e000.camel@mediatek.com>
- <bc5458fe-083c-d679-9fcb-95810a290da8@linaro.org>
- <af50210b95d0cd8b2e3103b3d4a9702aeeba9452.camel@mediatek.com>
- <a24c24e6-fdee-df79-fd2f-6a71540bd9b3@linaro.org>
- <20220620155057.a6qilnhm7snzhapa@notapiano>
- <afae6179-3681-f5c6-4615-3228f16f1271@linaro.org>
- <ba6cccfa05aed087d14f5adc6db06496547a5094.camel@mediatek.com>
- <2705069844be7b3152a810e21b9f737a88d0302d.camel@mediatek.com>
+	id 1o40YN-00AccW-DB; Wed, 22 Jun 2022 13:37:55 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o40Ov-00AYOQ-9R; Wed, 22 Jun 2022 13:28:11 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 83B1113D5;
+	Wed, 22 Jun 2022 06:28:03 -0700 (PDT)
+Received: from [10.57.85.1] (unknown [10.57.85.1])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 398063F534;
+	Wed, 22 Jun 2022 06:28:01 -0700 (PDT)
+Message-ID: <a0f0d3da-6992-7033-5262-156ffa5316e7@arm.com>
+Date: Wed, 22 Jun 2022 14:27:57 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2705069844be7b3152a810e21b9f737a88d0302d.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] iommu/dma: Fix race condition during iova_domain
+ initialization
+Content-Language: en-GB
+To: Joerg Roedel <joro@8bytes.org>, yf.wang@mediatek.com
+Cc: Miles Chen <miles.chen@mediatek.com>, wsd_upstream@mediatek.com,
+ open list <linux-kernel@vger.kernel.org>, Libo Kang
+ <Libo.Kang@mediatek.com>,
+ "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, Ning Li <ning.li@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
+References: <20220530120748.31733-1-yf.wang@mediatek.com>
+ <YrMPG4dIEnFkCbi9@8bytes.org>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <YrMPG4dIEnFkCbi9@8bytes.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_062235_642223_402CB71C 
-X-CRM114-Status: GOOD (  56.44  )
+X-CRM114-CacheID: sfid-20220622_062809_510842_F95285DF 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,172 +71,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 22, 2022 at 02:10:55PM +0800, Wenbin Mei wrote:
-> On Wed, 2022-06-22 at 09:57 +0800, Chunfeng Yun wrote:
-> > On Tue, 2022-06-21 at 09:14 +0200, Krzysztof Kozlowski wrote:
-> > > On 20/06/2022 17:50, Nícolas F. R. A. Prado wrote:
-> > > > On Mon, Jun 20, 2022 at 10:50:57AM +0200, Krzysztof Kozlowski
-> > > > wrote:
-> > > > > On 20/06/2022 08:59, Chunfeng Yun wrote:
-> > > > > > On Sun, 2022-06-19 at 14:05 +0200, Krzysztof Kozlowski wrote:
-> > > > > > > On 19/06/2022 09:46, Chunfeng Yun wrote:
-> > > > > > > > On Fri, 2022-06-17 at 18:25 -0700, Krzysztof Kozlowski
-> > > > > > > > wrote:
-> > > > > > > > > On 17/06/2022 15:29, Nícolas F. R. A. Prado wrote:
-> > > > > > > > > > The current clock list in the binding doesn't allow
-> > > > > > > > > > for
-> > > > > > > > > > one of
-> > > > > > > > > > the
-> > > > > > > > > > optional clocks to be missing and a subsequent clock
-> > > > > > > > > > to
-> > > > > > > > > > be
-> > > > > > > > > > present.
-> > > > > > > > > > An
-> > > > > > > > > > example where this is an issue is in mt8192.dtsi,
-> > > > > > > > > > which
-> > > > > > > > > > has
-> > > > > > > > > > "sys_ck",
-> > > > > > > > > > "ref_ck", "xhci_ck" and would cause dtbs_check
-> > > > > > > > > > warnings.
-> > > > > > > > > > 
-> > > > > > > > > > Change the clock list in a way that allows the middle
-> > > > > > > > > > optional
-> > > > > > > > > > clocks to
-> > > > > > > > > > be missing, while still guaranteeing a fixed order.
-> > > > > > > > > > The
-> > > > > > > > > > "ref_ck" is
-> > > > > > > > > > kept
-> > > > > > > > > > as a const even though it is optional for simplicity,
-> > > > > > > > > > since it
-> > > > > > > > > > is
-> > > > > > > > > > present in all current dts files.
-> > > > > > > > > > 
-> > > > > > > > > > Signed-off-by: Nícolas F. R. A. Prado <
-> > > > > > > > > > nfraprado@collabora.com>
-> > > > > > > > > > ---
-> > > > > > > > > > 
-> > > > > > > > > >  .../devicetree/bindings/usb/mediatek,mtk-
-> > > > > > > > > > xhci.yaml       | 9
-> > > > > > > > > > +++++++--
-> > > > > > > > > >  1 file changed, 7 insertions(+), 2 deletions(-)
-> > > > > > > > > > 
-> > > > > > > > > > diff --git
-> > > > > > > > > > a/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > > > > > > xhci.yaml
-> > > > > > > > > > b/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > > > > > > xhci.yaml
-> > > > > > > > > > index 63cbc2b62d18..99a1b233ec90 100644
-> > > > > > > > > > ---
-> > > > > > > > > > a/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > > > > > > xhci.yaml
-> > > > > > > > > > +++
-> > > > > > > > > > b/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > > > > > > xhci.yaml
-> > > > > > > > > > @@ -80,8 +80,13 @@ properties:
-> > > > > > > > > >      items:
-> > > > > > > > > >        - const: sys_ck  # required, the following
-> > > > > > > > > > ones
-> > > > > > > > > > are
-> > > > > > > > > > optional
-> > > > > > > > > >        - const: ref_ck
-> > > > > > > > > > -      - const: mcu_ck
-> > > > > > > > > > -      - const: dma_ck
-> > > > > > > > > > +      - enum:
-> > > > > > > > > > +          - mcu_ck
-> > > > > > > > > > +          - dma_ck
-> > > > > > > > > > +          - xhci_ck
-> > > > > > > > > > +      - enum:
-> > > > > > > > > > +          - dma_ck
-> > > > > > > > > > +          - xhci_ck
-> > > > > > > > > >        - const: xhci_ck
-> > > > > > > > > 
-> > > > > > > > > You allow now almost any order here, including
-> > > > > > > > > incorrect
-> > > > > > > > > like
-> > > > > > > > > sys,ref,xhci,xhci,xhci.
-> > > > > > > > > 
-> > > > > > > > > The order of clocks has to be fixed and we cannot allow
-> > > > > > > > > flexibility.
-> > > > > > > > > Are
-> > > > > > > > > you sure that these clocks are actually optional (not
-> > > > > > > > > wired to
-> > > > > > > > > the
-> > > > > > > > > device)?
-> > > > > > > > 
-> > > > > > > > In fact, these optional clocks are fixed, due to no gates
-> > > > > > > > are
-> > > > > > > > provided,
-> > > > > > > > SW can't control them by CCF;
-> > > > > > > > In this case, I usually use a fixed clock, or ignore it.
-> > > > > > > 
-> > > > > > > But in some versions these clocks are controllable or not?
-> > > > > > 
-> > > > > > Some SoCs are controllable, some ones are not (fixed clock).
-> > > > > 
-> > > > > Thanks for confirming. Then I would prefer to make these clocks
-> > > > > required
-> > > > > (not optional) and always provide them - via common clock
-> > > > > framework or
-> > > > > fixed-clock.
-> > > > 
-> > > > Hi Krzysztof and Chunfeng,
-> > > > 
-> > > > thank you both for the feedback.
-> > > > 
-> > > > Since the solution I proposed in this patch is not acceptable I
-> > > > see
-> > > > two options:
-> > > > 1. Split the clocks in several if blocks matched by compatibles
-> > > > 2. Make the clocks required and use fixed-clock nodes for the
-> > > > missing clocks in
-> > > >    the DT
-> > > > 
-> > > > My understanding is that 1 is the desirable solution if the clock
-> > > > is really
-> > > > missing in some hardware variants, while 2 is desirable if all
-> > > > hardware variants
-> > > > really receive all the clocks, only that on some variants they're
-> > > > fixed and not
-> > > > controlable by SW.
-> > > > 
-> > > > From what I'm reading of this discussion it seems that the latter
-> > > > is the case
-> > > > here and thus we should go for 2. Is this correct?
-> > > 
-> > > This is how I understood it as well, so correct from my side.
-> > 
-> > Also right for me.
-> > 
-> > > 
-> > > > 
-> > > > Also Chunfeng, do you have information on whether the same is
-> > > > true
-> > > > for the MMC
-> > > > HW block? I recently submitted some changes to that binding [1]
-> > > > but
-> > > > I followed
-> > > > approach 1 there instead. However if all the clocks are present
-> > > > in
-> > > > the HW level
-> > > > there as well it would make more sense for me to change it to
-> > > > follow approach 2.
-> > 
-> > I discussed it with Wenbin, MMC seems a little different with USB,
-> > 
-> > Hi Wenbin,
-> > 
-> >    Please give some comments about MMC, thanks
-> > 
-> Hi Chunfeng,
+On 2022-06-22 13:46, Joerg Roedel wrote:
+> Please re-send with
 > 
-> As we discussed, the following change is the desirable solution for the
-> Mediatek MMC HW.
+> 	Robin Murphy <robin.murphy@arm.com>
 > 
-> https://lists.infradead.org/pipermail/linux-mediatek/2022-June/043691.html
+> in Cc.
 
-Got it, thank you both. I'll keep that approach for MMC then, and change the one
-here for USB.
+Apologies, I did spot this before, I've just been tied up with other 
+things and dropping everything non-critical on the floor, so didn't get 
+round to replying before it slipped my mind again.
 
-Thanks,
-Nícolas
+In summary, I hate it, but mostly because the whole situation of calling 
+iommu_probe_device off the back of driver probe is fundamentally broken. 
+I'm still a few steps away from fixing that properly, at which point I 
+can just as well rip all these little bodges out again. If it really 
+does need mitigating in the meantime (i.e. this is real-world async 
+probe, not just some contrived testcase), then I can't easily think of 
+any cleaner hack, so,
+
+Acked-by: Robin Murphy <robin.murphy@arm.com>
+
+(somewhat reluctantly)
+
+Cheers,
+Robin.
+
+> On Mon, May 30, 2022 at 08:07:45PM +0800, yf.wang@mediatek.com wrote:
+>> From: Yunfei Wang <yf.wang@mediatek.com>
+>>
+>> When many devices share the same iova domain, iommu_dma_init_domain()
+>> may be called at the same time. The checking of iovad->start_pfn will
+>> all get false in iommu_dma_init_domain() and both enter init_iova_domain()
+>> to do iovad initialization.
+>>
+>> Fix this by protecting init_iova_domain() with iommu_dma_cookie->mutex.
+>>
+>> Exception backtrace:
+>> rb_insert_color(param1=0xFFFFFF80CD2BDB40, param3=1) + 64
+>> init_iova_domain() + 180
+>> iommu_setup_dma_ops() + 260
+>> arch_setup_dma_ops() + 132
+>> of_dma_configure_id() + 468
+>> platform_dma_configure() + 32
+>> really_probe() + 1168
+>> driver_probe_device() + 268
+>> __device_attach_driver() + 524
+>> __device_attach() + 524
+>> bus_probe_device() + 64
+>> deferred_probe_work_func() + 260
+>> process_one_work() + 580
+>> worker_thread() + 1076
+>> kthread() + 332
+>> ret_from_fork() + 16
+>>
+>> Signed-off-by: Ning Li <ning.li@mediatek.com>
+>> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+>> ---
+>>   drivers/iommu/dma-iommu.c | 17 +++++++++++++----
+>>   1 file changed, 13 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+>> index 09f6e1c0f9c0..b38c5041eeab 100644
+>> --- a/drivers/iommu/dma-iommu.c
+>> +++ b/drivers/iommu/dma-iommu.c
+>> @@ -63,6 +63,7 @@ struct iommu_dma_cookie {
+>>   
+>>   	/* Domain for flush queue callback; NULL if flush queue not in use */
+>>   	struct iommu_domain		*fq_domain;
+>> +	struct mutex			mutex;
+>>   };
+>>   
+>>   static DEFINE_STATIC_KEY_FALSE(iommu_deferred_attach_enabled);
+>> @@ -309,6 +310,7 @@ int iommu_get_dma_cookie(struct iommu_domain *domain)
+>>   	if (!domain->iova_cookie)
+>>   		return -ENOMEM;
+>>   
+>> +	mutex_init(&domain->iova_cookie->mutex);
+>>   	return 0;
+>>   }
+>>   
+>> @@ -549,26 +551,33 @@ static int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base,
+>>   	}
+>>   
+>>   	/* start_pfn is always nonzero for an already-initialised domain */
+>> +	mutex_lock(&cookie->mutex);
+>>   	if (iovad->start_pfn) {
+>>   		if (1UL << order != iovad->granule ||
+>>   		    base_pfn != iovad->start_pfn) {
+>>   			pr_warn("Incompatible range for DMA domain\n");
+>> -			return -EFAULT;
+>> +			ret = -EFAULT;
+>> +			goto done_unlock;
+>>   		}
+>>   
+>> -		return 0;
+>> +		ret = 0;
+>> +		goto done_unlock;
+>>   	}
+>>   
+>>   	init_iova_domain(iovad, 1UL << order, base_pfn);
+>>   	ret = iova_domain_init_rcaches(iovad);
+>>   	if (ret)
+>> -		return ret;
+>> +		goto done_unlock;
+>>   
+>>   	/* If the FQ fails we can simply fall back to strict mode */
+>>   	if (domain->type == IOMMU_DOMAIN_DMA_FQ && iommu_dma_init_fq(domain))
+>>   		domain->type = IOMMU_DOMAIN_DMA;
+>>   
+>> -	return iova_reserve_iommu_regions(dev, domain);
+>> +	ret = iova_reserve_iommu_regions(dev, domain);
+>> +
+>> +done_unlock:
+>> +	mutex_unlock(&cookie->mutex);
+>> +	return ret;
+>>   }
+>>   
+>>   /**
+>> -- 
+>> 2.18.0
+> _______________________________________________
+> iommu mailing list
+> iommu@lists.linux-foundation.org
+> https://lists.linuxfoundation.org/mailman/listinfo/iommu
 
