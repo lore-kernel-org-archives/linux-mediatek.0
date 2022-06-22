@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E298C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:58:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CDBFC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 14:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gXSrHoHiRp8Ma8A4orU5oSTQwEKnOGJ/89XGJP2/7Hc=; b=UGAvZgIKgYMDTpckTr9UbXAYjP
-	Jz/R44faDoGdqyWfHtEPlxOlLcRxZCqITphuSBUuWZi2A3xyAcdxh3I3+LgK1LqfnjY4A5zojIixH
-	h9XhWnu09RK0O4UmMQclBHHsvRFJgpUgn2h1NrqSFk4Elxebi7sG5DCS4IdjvkB8yyz8LzhFfGUNE
-	5Kz4QHyWryqfovi4BJ1X5xdYRSu+83U3fc+r3zvlNyH7Dt0Uc0fhbnB54/7QtyJio9KknCrs9xQgH
-	Ix2mMm8f7K7379S0Z2PMGVX+2lz7L4mskUA+Zt896KT+9SD+7N2fJvNL8/ucSyZ5LEBg6iabgdAJb
-	ul2ErfGQ==;
+	bh=i1MA/RDgkO+/P26+QERE8cd/P/DjCZz2b2axPTCwuc4=; b=vwQRKRSoZ0mtXBkgd1SPzB3qkz
+	wiFynLQ1X1bAbIBi2eUWeEAbf4eXDLyw37tgppcYbGWKFMIRObtxGL127fhquU1sMIWvp3AaRU/AZ
+	nnwEg2FSGKP5Wa4XeD86v4wRgA/U4aCDQTekcPTKzhxgEN96FweuS15rYBt3zS2yMgTxvOK7kuATA
+	6ePUVhHE3dPo9WGj7ve9hnKR6WV6bCfqY4PFFBdClw+4kNyBN5m8CwIZwgXB67Hh5iVm4bdEzAn0h
+	Qrp+X+S40cEZgSGT2jBsBvTteP2+OGAsKG269GDtAHQ8uzY/Kg0EVNlGWSRm6a4jy8z1qICNN4Zit
+	RIiDOSrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o41oj-00B3I7-9A; Wed, 22 Jun 2022 14:58:53 +0000
+	id 1o41p3-00B3Tx-5l; Wed, 22 Jun 2022 14:59:13 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o41oC-00B31c-9X; Wed, 22 Jun 2022 14:58:22 +0000
+	id 1o41oE-00B33l-3O; Wed, 22 Jun 2022 14:58:24 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AE974150C;
-	Wed, 22 Jun 2022 07:58:17 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C01B913D5;
+	Wed, 22 Jun 2022 07:58:20 -0700 (PDT)
 Received: from e123648.arm.com (unknown [10.57.38.162])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id BCFD23F792;
-	Wed, 22 Jun 2022 07:58:14 -0700 (PDT)
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id D18293F792;
+	Wed, 22 Jun 2022 07:58:17 -0700 (PDT)
 From: Lukasz Luba <lukasz.luba@arm.com>
 To: linux-kernel@vger.kernel.org,
 	linux-pm@vger.kernel.org
@@ -47,15 +47,15 @@ Cc: daniel.lezcano@linaro.org,
 	matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/4] Documentation: EM: Switch to micro-Watts scale
-Date: Wed, 22 Jun 2022 15:58:00 +0100
-Message-Id: <20220622145802.13032-3-lukasz.luba@arm.com>
+Subject: [PATCH 3/4] firmware: arm_scmi: Get detailed power scale from perf
+Date: Wed, 22 Jun 2022 15:58:01 +0100
+Message-Id: <20220622145802.13032-4-lukasz.luba@arm.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220622145802.13032-1-lukasz.luba@arm.com>
 References: <20220622145802.13032-1-lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_075820_548006_F86328EA 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20220622_075822_261830_159CD995 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,76 +70,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The EM now uses the micro-Watts scale for the power values. Update
-related documentation to reflect that fact.
-
-Fix also a problematic sentence in the doc "to:" which triggers test
-scripts complaining about wrong email address.
+In SCMI v3.1 the power scale can be in micro-Watts. The upper layers, e.g.
+cpufreq and EM should handle received power values properly (upscale when
+needed). Thus, provide an interface which allows to check what is the
+scale for power values. The old interface allowed to distinguish between
+bogo-Watts and milli-Watts only (which was good for older SCMI spec).
 
 Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
 ---
- Documentation/power/energy-model.rst | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/firmware/arm_scmi/perf.c | 18 +++++++++++-------
+ include/linux/scmi_protocol.h    |  8 +++++++-
+ 2 files changed, 18 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/power/energy-model.rst b/Documentation/power/energy-model.rst
-index feb257b7f350..ef341be2882b 100644
---- a/Documentation/power/energy-model.rst
-+++ b/Documentation/power/energy-model.rst
-@@ -20,20 +20,20 @@ possible source of information on its own, the EM framework intervenes as an
- abstraction layer which standardizes the format of power cost tables in the
- kernel, hence enabling to avoid redundant work.
+diff --git a/drivers/firmware/arm_scmi/perf.c b/drivers/firmware/arm_scmi/perf.c
+index bbb0331801ff..92414e53f908 100644
+--- a/drivers/firmware/arm_scmi/perf.c
++++ b/drivers/firmware/arm_scmi/perf.c
+@@ -170,8 +170,7 @@ struct perf_dom_info {
+ struct scmi_perf_info {
+ 	u32 version;
+ 	int num_domains;
+-	bool power_scale_mw;
+-	bool power_scale_uw;
++	enum scmi_power_scale power_scale;
+ 	u64 stats_addr;
+ 	u32 stats_size;
+ 	struct perf_dom_info *dom_info;
+@@ -201,9 +200,13 @@ static int scmi_perf_attributes_get(const struct scmi_protocol_handle *ph,
+ 		u16 flags = le16_to_cpu(attr->flags);
  
--The power values might be expressed in milli-Watts or in an 'abstract scale'.
-+The power values might be expressed in micro-Watts or in an 'abstract scale'.
- Multiple subsystems might use the EM and it is up to the system integrator to
- check that the requirements for the power value scale types are met. An example
- can be found in the Energy-Aware Scheduler documentation
- Documentation/scheduler/sched-energy.rst. For some subsystems like thermal or
- powercap power values expressed in an 'abstract scale' might cause issues.
- These subsystems are more interested in estimation of power used in the past,
--thus the real milli-Watts might be needed. An example of these requirements can
-+thus the real micro-Watts might be needed. An example of these requirements can
- be found in the Intelligent Power Allocation in
- Documentation/driver-api/thermal/power_allocator.rst.
- Kernel subsystems might implement automatic detection to check whether EM
- registered devices have inconsistent scale (based on EM internal flag).
- Important thing to keep in mind is that when the power values are expressed in
--an 'abstract scale' deriving real energy in milli-Joules would not be possible.
-+an 'abstract scale' deriving real energy in micro-Joules would not be possible.
+ 		pi->num_domains = le16_to_cpu(attr->num_domains);
+-		pi->power_scale_mw = POWER_SCALE_IN_MILLIWATT(flags);
++
++		if (POWER_SCALE_IN_MILLIWATT(flags))
++			pi->power_scale = SCMI_POWER_MILLIWATTS;
+ 		if (PROTOCOL_REV_MAJOR(pi->version) >= 0x3)
+-			pi->power_scale_uw = POWER_SCALE_IN_MICROWATT(flags);
++			if (POWER_SCALE_IN_MICROWATT(flags))
++				pi->power_scale = SCMI_POWER_MICROWATTS;
++
+ 		pi->stats_addr = le32_to_cpu(attr->stats_addr_low) |
+ 				(u64)le32_to_cpu(attr->stats_addr_high) << 32;
+ 		pi->stats_size = le32_to_cpu(attr->stats_size);
+@@ -792,11 +795,12 @@ static bool scmi_fast_switch_possible(const struct scmi_protocol_handle *ph,
+ 	return dom->fc_info && dom->fc_info->level_set_addr;
+ }
  
- The figure below depicts an example of drivers (Arm-specific here, but the
- approach is applicable to any architecture) providing power costs to the EM
-@@ -98,7 +98,7 @@ Drivers are expected to register performance domains into the EM framework by
- calling the following API::
+-static bool scmi_power_scale_mw_get(const struct scmi_protocol_handle *ph)
++static enum scmi_power_scale
++scmi_power_scale_get(const struct scmi_protocol_handle *ph)
+ {
+ 	struct scmi_perf_info *pi = ph->get_priv(ph);
  
-   int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
--		struct em_data_callback *cb, cpumask_t *cpus, bool milliwatts);
-+		struct em_data_callback *cb, cpumask_t *cpus, bool microwatts);
+-	return pi->power_scale_mw;
++	return pi->power_scale;
+ }
  
- Drivers must provide a callback function returning <frequency, power> tuples
- for each performance state. The callback function provided by the driver is free
-@@ -106,10 +106,10 @@ to fetch data from any relevant location (DT, firmware, ...), and by any mean
- deemed necessary. Only for CPU devices, drivers must specify the CPUs of the
- performance domains using cpumask. For other devices than CPUs the last
- argument must be set to NULL.
--The last argument 'milliwatts' is important to set with correct value. Kernel
-+The last argument 'microwatts' is important to set with correct value. Kernel
- subsystems which use EM might rely on this flag to check if all EM devices use
- the same scale. If there are different scales, these subsystems might decide
--to: return warning/error, stop working or panic.
-+to return warning/error, stop working or panic.
- See Section 3. for an example of driver implementing this
- callback, or Section 2.4 for further documentation on this API
+ static const struct scmi_perf_proto_ops perf_proto_ops = {
+@@ -811,7 +815,7 @@ static const struct scmi_perf_proto_ops perf_proto_ops = {
+ 	.freq_get = scmi_dvfs_freq_get,
+ 	.est_power_get = scmi_dvfs_est_power_get,
+ 	.fast_switch_possible = scmi_fast_switch_possible,
+-	.power_scale_mw_get = scmi_power_scale_mw_get,
++	.power_scale_get = scmi_power_scale_get,
+ };
  
-@@ -137,7 +137,7 @@ The .get_cost() allows to provide the 'cost' values which reflect the
- efficiency of the CPUs. This would allow to provide EAS information which
- has different relation than what would be forced by the EM internal
- formulas calculating 'cost' values. To register an EM for such platform, the
--driver must set the flag 'milliwatts' to 0, provide .get_power() callback
-+driver must set the flag 'microwatts' to 0, provide .get_power() callback
- and provide .get_cost() callback. The EM framework would handle such platform
- properly during registration. A flag EM_PERF_DOMAIN_ARTIFICIAL is set for such
- platform. Special care should be taken by other frameworks which are using EM
+ static int scmi_perf_set_notify_enabled(const struct scmi_protocol_handle *ph,
+diff --git a/include/linux/scmi_protocol.h b/include/linux/scmi_protocol.h
+index 704111f63993..a0a246310ba1 100644
+--- a/include/linux/scmi_protocol.h
++++ b/include/linux/scmi_protocol.h
+@@ -60,6 +60,12 @@ struct scmi_clock_info {
+ 	};
+ };
+ 
++enum scmi_power_scale {
++	SCMI_POWER_BOGOWATTS,
++	SCMI_POWER_MILLIWATTS,
++	SCMI_POWER_MICROWATTS
++};
++
+ struct scmi_handle;
+ struct scmi_device;
+ struct scmi_protocol_handle;
+@@ -135,7 +141,7 @@ struct scmi_perf_proto_ops {
+ 			     unsigned long *rate, unsigned long *power);
+ 	bool (*fast_switch_possible)(const struct scmi_protocol_handle *ph,
+ 				     struct device *dev);
+-	bool (*power_scale_mw_get)(const struct scmi_protocol_handle *ph);
++	enum scmi_power_scale (*power_scale_get)(const struct scmi_protocol_handle *ph);
+ };
+ 
+ /**
 -- 
 2.17.1
 
