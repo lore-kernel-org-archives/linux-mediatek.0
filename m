@@ -4,83 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C15C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 15:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30B7BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jun 2022 16:20:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6HvjioZHPtwBf4fSwa9wIuwFcez8I2M80JFO0QJMojs=; b=GaNN6/VgDqf37zcenksfLg2eRX
-	5vFPMYLwLfdzatHUxlfMZxpmWj/nLOp/D3NtYDJ5TBcMqQML5N9AwjVIVPz4fgZnAaHcU8m6RtgnH
-	Uj2OsjMPeyEL+aeklft/VhzBt8W78G8jlQ50dgiW3cxgA4xcdrc8fHrUbCCHksUiDnnGicAdozzhX
-	m7xg57LyRwwNiMNT/v8wo0VvuzXOrKvdcYM9emQHGXxg+fghMXsvb6GlDsKN8o5PpyGDdGb7Mm/cy
-	42iitHpziLl8SAXefSxgGRsG1QPEju8LT/VcilGztXjyJ04QIeGy1qVGFO7FV4tofAxaYZOVyu4An
-	67sl7E8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OEvyHC/V3o+KcdfeT4iOEKnwu5y44NftQ4d5zwCT9TE=; b=3j3bZE0LDCFDRZ38huNFNJNn3f
+	u86jhCE4OhY4sZXC6FK2I56zzaq63Na+QerCRIjn3PoUZkpQIfvTiY7kkuhKoFOt9fsCzxi+gAOh4
+	5AcWZeGm6GyXyv7aXcbuAta7cBzaRcEj82QED37nLqT25xOCAaOXd3Aw2YL1LbCV4Bm6HkCyA9ls2
+	FlvsIeUDBwHAxh7oyrshVLGmyZRvFOEjvZQc2wrpMUrScrTkkeM9LyizdaBvHEk3udCc38KBRmfhj
+	50DsBzRBa1fZhMidDdTPjMvdlefCq/Y+GtFhNrXY6CcRlPsNUjn/2KvOeAJi9mUzU0J+z3I0PxT0k
+	WNMtskeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o42TX-00BDzW-Sg; Wed, 22 Jun 2022 15:41:03 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o42TM-00BDxT-4c; Wed, 22 Jun 2022 15:40:53 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id x6-20020a1c7c06000000b003972dfca96cso13488wmc.4;
-        Wed, 22 Jun 2022 08:40:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=6HvjioZHPtwBf4fSwa9wIuwFcez8I2M80JFO0QJMojs=;
-        b=dpZHPTmcfuFjzjJ0Lys34TeMfY59Nf1bKZM5XTxOYpqqCBsl7Y6AhxrXkzb+gPakMK
-         FloXTG3essSGnodFfCg3jtPf0tPM+4wamt0q6BPSfR89FBPb/HfsmktFXGDn/eile+Y8
-         /yK/eD6l6WjEX6SjenLshLSETc34Dq0GIAUxh5to/GL+FYMWttj7fc3sYov1tPtYCCOR
-         dBP/PX7cqo2YrMZAIB7/zxxxT0TtRBoETiX67M1AssNL8bCqTidpwSyWiO3dm0cdg1ES
-         JdHLImitJR/7Tnz6Cv6zOWfoqt9Zh8aGFUZVk+pLR7jGoIrbbaB8qllQxWmm2FDQhN5q
-         Yt4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=6HvjioZHPtwBf4fSwa9wIuwFcez8I2M80JFO0QJMojs=;
-        b=Za6lZk6KMg8qlxHMNByCgjCpdFvgerkAfMnz6muy9hj/IVSKBe+8I2CcbwF++0hfPB
-         l5x7ypvklO0ga5iwTOOPiBXU6e0em0lLQt+qPKrFngFYaFhggMelM5pO2KfRQmf+o+K9
-         ULjD6ZKLhWtpED52YK14ICAJzc3h6rwICDGQS1mllezUB97XAZlHeRy9uJDCEsLyEo1Y
-         MZh0kumOSnk/3edU4vCvrqnOu3IdIAEnDAjXvrg22cLb1PT9Yb7rjYk2R3NX7OtxUNn6
-         nPE5FntVR8hdMf+R2a4ClgDf/2aK4RvHwF3aPJNcHzM3x58uzhQxtyMypbHYXh9oETuX
-         EWkw==
-X-Gm-Message-State: AJIora85/5viib3NlDcPIarv/0+s1AyTRjIkJCtujF1mAqFHHkDZM34j
-	GGzygk0qMX/bp1OInjt0QJ0=
-X-Google-Smtp-Source: AGRyM1ulMlpI/C9yUV5vRRJTaw3SQd1l5jIXTUtRosaGOoW6+N4l7XU10IynPKr7U0RVMv8wVfr7bw==
-X-Received: by 2002:a7b:c402:0:b0:3a0:2ba7:1fa7 with SMTP id k2-20020a7bc402000000b003a02ba71fa7mr3160994wmi.152.1655912449594;
-        Wed, 22 Jun 2022 08:40:49 -0700 (PDT)
-Received: from [192.168.0.16] ([37.223.148.38])
-        by smtp.gmail.com with ESMTPSA id r64-20020a1c4443000000b003942a244f39sm31645408wma.18.2022.06.22.08.40.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Jun 2022 08:40:48 -0700 (PDT)
-Message-ID: <37fb545a-bc45-65b0-b67b-5ef1b0346777@gmail.com>
-Date: Wed, 22 Jun 2022 17:40:43 +0200
+	id 1o4360-00BT9T-De; Wed, 22 Jun 2022 16:20:48 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o42gg-00BIQd-FT; Wed, 22 Jun 2022 15:54:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2888712FC;
+	Wed, 22 Jun 2022 08:54:37 -0700 (PDT)
+Received: from bogus (unknown [10.57.36.82])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id F15B53F792;
+	Wed, 22 Jun 2022 08:54:33 -0700 (PDT)
+Date: Wed, 22 Jun 2022 16:53:22 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Lukasz Luba <lukasz.luba@arm.com>
+Cc: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+	daniel.lezcano@linaro.org, amitk@kernel.org, rui.zhang@intel.com,
+	viresh.kumar@linaro.org, rafael@kernel.org,
+	dietmar.eggemann@arm.com, nm@ti.com, sboyd@kernel.org,
+	cristian.marussi@arm.com, matthias.bgg@gmail.com,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 3/4] firmware: arm_scmi: Get detailed power scale from
+ perf
+Message-ID: <20220622155322.g2idz2623nxi6mu3@bogus>
+References: <20220622145802.13032-1-lukasz.luba@arm.com>
+ <20220622145802.13032-4-lukasz.luba@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v11 0/3] Add basic node support for MediaTek MT8186 SoC
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- hsinyi@chromium.org
-References: <20220520122217.30716-1-allen-kh.cheng@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220520122217.30716-1-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220622145802.13032-4-lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_084052_230005_99A85990 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20220622_085438_650201_FFE6F0B1 
+X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,87 +68,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jun 22, 2022 at 03:58:01PM +0100, Lukasz Luba wrote:
+> In SCMI v3.1 the power scale can be in micro-Watts. The upper layers, e.g.
+> cpufreq and EM should handle received power values properly (upscale when
+> needed). Thus, provide an interface which allows to check what is the
+> scale for power values. The old interface allowed to distinguish between
+> bogo-Watts and milli-Watts only (which was good for older SCMI spec).
+>
 
+Assuming you will take this as a series,
 
-On 20/05/2022 14:22, Allen-KH Cheng wrote:
-> MT8186 is a SoC based on 64bit ARMv8 architecture.
-> It contains 6 CA55 and 2 CA76 cores.
-> MT8186 share many HW IP with MT65xx series.
-> 
-> This patchset was tested on MT8186 evaluation board to shell.
-> 
+Acked-by: Sudeep Holla <sudeep.holla@arm.com>
 
-Applied, thanks!
-
-> Based on next-20220519, linux-next/master
-> 
-> changes since v9:
->   - remove some merged PATCHs from series
->   - reorder nodes in dts (cpu-map)
->   - remove okay status in auxadc
->   - remove unnecessary suffix node name for i2c
->   - add pwm node
->   - add dsi-phy node
->   - add dpi node
-> 
-> changes since v9:
->   - add one space before equal sign of drive-strength-adv
->   - corect compatible name for big cores (ca76)
->   - use upper case of address in pinctrl
->   - add pwrap node
->   - add pwm node
-> 
-> changes since v8:
->   - change name from pins_bus to pins-sda-scl
->   - correct email address
->   - add capacity-dmips-mhz for each CPU
->   - add ppi-partitions in gic node
->   - change name to power-domain
->   - remove status "okay" in scp node
->   - update timer and pericfg compatible in series
-> 
-> changes since v7:
->   - add scp&auxadc node
-> 
-> changes since v6:
->   - remove unnecessary blank line
-> 
-> changes since v5:
->   - replace Mediatek a to MediaTek
->   - use GPL-2.0-only OR BSD-2-Clause
-> 
-> changes since v4:
->   - correct driver clock of mt8186
->   - add power domains controller and clock controllers
->   - add pinctrl, usb host, spi and i2c nodes
->   - add node status in mt8186-evb.dts
->   - correct some dtbs_check warnings
-> 
-> changes since v3:
->   - remove serial, mmc and phy patch from series. (already merged)
->   - remove mcusysoff node
->   - move oscillator nodes at the head of dts
->   - change name from usb-phy to t-phy
-> 
-> changes since v2:
->   - add soc {} in mt8186.dtsi
-> 
-> changes since v1:
->   - add dt-bindings: arm: Add compatible for MediaTek MT8186
-> 
-> Allen-KH Cheng (3):
->    dt-bindings: arm: mediatek: Add mt8186 pericfg compatible
->    dt-bindings: arm: Add compatible for MediaTek MT8186
->    arm64: dts: Add MediaTek SoC MT8186 dts and evaluation board and
->      Makefile
-> 
->   .../devicetree/bindings/arm/mediatek.yaml     |    4 +
->   .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
->   arch/arm64/boot/dts/mediatek/Makefile         |    1 +
->   arch/arm64/boot/dts/mediatek/mt8186-evb.dts   |  232 ++++
->   arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 1016 +++++++++++++++++
->   5 files changed, 1254 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> 
+-- 
+Regards,
+Sudeep
 
