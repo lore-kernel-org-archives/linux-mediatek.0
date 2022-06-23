@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F464CCA480
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 10:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E794C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 11:23:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iTzfwVQNhQYk3LSeDUOpai/aL5+NZ7UnxvSU/1W/PzI=; b=uoS28dAdgsBqN1z9HIc2py6BGU
-	oqhuretyUQOzKiLm8HBp+FRI8lu3Akm4++viBMcnaGa6o8QsOOrF8CbLIy7QcotVowYu6LhnhSV3m
-	cvOUcXLQcEtpeT09LWzLA4E+8EXkllbnrPqvIMDV1Smf7IHWGf+UiOzslly2xGDNzYQlM762yBfIV
-	N18UQUSmtI/nW6mV5xZKcZlYy6rn3+kHv78wn8DWxlumg32j/g35pnA6xLClbrMVOOhJpKNIdVOBn
-	koCEvi3HcPW3gcxQeUmoojdnyp6KOD8y16NOI17k5q4dm0RYeRQ4HLGo71caZVBjmCbkd88a6hFgg
-	8pubm3wA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sm76w41pAm8PnOIyccnGOO5LV1X4Kpl21+W+/cD3KqE=; b=ekJ6Nncs0JQVqwbBDfqXmfugxB
+	hQxR+GpYuFq4Te15zCEUqoc86Uf1OkURzEmOUyzSXYuqha8d9jdWNsVSQ50gd3z4J8tboKpQnogaO
+	LfwAd51rO7hL+8m1dOjRDQiwHNyUicExKmG0lAQ46jJzNR1UNBkdb9qqpWCFmZcfeigtUMNnZcLs4
+	kuMsr02BR6oHx73PREYfPKeRNVaAxz2ZQha/BkIHzF5dt658p0/Mte+jg44Yi8MCDJDr7SSLRBdo7
+	+omGm305zU9SMc+BjF8RteiyzufCuG8JZu3ilnEzaPKKLnTGbt/lGJ+yBMDJ3cpFtjI++k5p88BU0
+	JhNJ5F2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4JoG-00ESev-Qc; Thu, 23 Jun 2022 10:11:36 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o4Kve-00EhSM-73; Thu, 23 Jun 2022 11:23:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Jmr-00ERtI-8G; Thu, 23 Jun 2022 10:10:10 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36FD566017D0;
-	Thu, 23 Jun 2022 11:10:06 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655979006;
-	bh=ZgzmMPSygjLJDHZK16WVrb6boCW48PbwILdNxmzVx4o=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b5OyyYCZT9D/A+T06gMVb/yfzIImNPIFoiDSaLXV7pCtC7jU0XBbKh2GzOSlIQmME
-	 Qs0f4Xqi+zl93TDWEQzkMHrunxW/5YaAMorotCo3mbNBI2WUFdWbp6kQaS9ndcxiYF
-	 ITIVZOlPzV8KKrwTxgDLu7jibHCZFYvQcP2+mqCEyhSbzcL/UZrISOlsW5MwR08jz1
-	 QMp4o72jSPLlmWk1fbdjJC8YZicdctiqDkQxj/5uVmvOEFuMUpdgcT0R4pfXsc/1KK
-	 TfNLq/StExqA7YQo+jXRDe1fzmP0S4GC8BJJMEtvypmOi58ZmMqBIvd7nzu4Oaa9ma
-	 OPv4QeDWmruqQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	wenst@chromium.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 5/5] arm64: dts: mediatek: mt8183-kukui: Assign sram supply to mfg_async pd
-Date: Thu, 23 Jun 2022 12:09:51 +0200
-Message-Id: <20220623100951.21153-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
-References: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
+	id 1o4Kvb-00EhQW-QU; Thu, 23 Jun 2022 11:23:17 +0000
+X-UUID: d2946e6c663d40baad0a61ca4e0d7e0a-20220623
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:3da2f226-3a40-4bdf-84b2-3b7732b717a5,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:0c5254ea-f7af-4e69-92ee-0fd74a0c286c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: d2946e6c663d40baad0a61ca4e0d7e0a-20220623
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+	(envelope-from <yee.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1758445860; Thu, 23 Jun 2022 04:23:06 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jun 2022 04:19:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 23 Jun 2022 19:19:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Thu, 23 Jun 2022 19:19:54 +0800
+From: <yee.lee@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: Yee Lee <yee.lee@mediatek.com>, Alexander Potapenko <glider@google.com>,
+	Marco Elver <elver@google.com>, Dmitry Vyukov <dvyukov@google.com>, "Andrew
+ Morton" <akpm@linux-foundation.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, "open list:KFENCE" <kasan-dev@googlegroups.com>,
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support"
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/1] mm: kfence: skip kmemleak alloc in kfence_pool
+Date: Thu, 23 Jun 2022 19:19:35 +0800
+Message-ID: <20220623111937.6491-2-yee.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220623111937.6491-1-yee.lee@mediatek.com>
+References: <20220623111937.6491-1-yee.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_031009_488518_6E0B4343 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20220623_042315_909857_FD9CA06D 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,45 +83,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a phandle to the MT8183_POWER_DOMAIN_MFG_ASYNC power domain and
-assign the GPU VSRAM supply to this in mt8183-kukui: this allows to
-keep the sram powered up while the GPU is used.
+From: Yee Lee <yee.lee@mediatek.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Use MEMBLOCK_ALLOC_NOLEAKTRACE to skip kmemleak registration when
+the kfence pool is allocated from memblock. And the kmemleak_free
+later can be removed too.
+
+Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+
 ---
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 2 +-
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ mm/kfence/core.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 89e4358f140a..33f3bf277ce9 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -821,6 +821,10 @@ cros_ec {
- 	};
- };
+diff --git a/mm/kfence/core.c b/mm/kfence/core.c
+index 4e7cd4c8e687..0d33d83f5244 100644
+--- a/mm/kfence/core.c
++++ b/mm/kfence/core.c
+@@ -600,14 +600,6 @@ static unsigned long kfence_init_pool(void)
+ 		addr += 2 * PAGE_SIZE;
+ 	}
  
-+&mfg_async {
-+	domain-supply = <&mt6358_vsram_gpu_reg>;
-+};
-+
- &mfg {
- 	domain-supply = <&mt6358_vgpu_reg>;
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 9485c1efc87c..9d32871973a2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -788,7 +788,7 @@ power-domain@MT8183_POWER_DOMAIN_CONN {
- 					#power-domain-cells = <0>;
- 				};
+-	/*
+-	 * The pool is live and will never be deallocated from this point on.
+-	 * Remove the pool object from the kmemleak object tree, as it would
+-	 * otherwise overlap with allocations returned by kfence_alloc(), which
+-	 * are registered with kmemleak through the slab post-alloc hook.
+-	 */
+-	kmemleak_free(__kfence_pool);
+-
+ 	return 0;
+ }
  
--				power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
-+				mfg_async: power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
- 					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
- 					clocks = <&topckgen CLK_TOP_MUX_MFG>;
- 					clock-names = "mfg";
+@@ -831,8 +823,14 @@ void __init kfence_alloc_pool(void)
+ {
+ 	if (!kfence_sample_interval)
+ 		return;
+-
+-	__kfence_pool = memblock_alloc(KFENCE_POOL_SIZE, PAGE_SIZE);
++	/*
++	 * The pool is live and will never be deallocated from this point on.
++	 * Skip the pool object from the kmemleak object allocation, as it would
++	 * otherwise overlap with allocations returned by kfence_alloc(), which
++	 * are registered with kmemleak through the slab post-alloc hook.
++	 */
++	__kfence_pool = memblock_alloc_try_nid(KFENCE_POOL_SIZE, PAGE_SIZE,
++		 MEMBLOCK_LOW_LIMIT, MEMBLOCK_ALLOC_NOLEAKTRACE, NUMA_NO_NODE);
+ 
+ 	if (!__kfence_pool)
+ 		pr_err("failed to allocate pool\n");
 -- 
-2.35.1
+2.18.0
 
 
