@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43318C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 10:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F464CCA480
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 10:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LMgCK3pwnxf5oYWJe93ENbvYx0hUewwpFIPzFHxOi/k=; b=sRRgjBe45RRNhYQ+JdcM9vKvFs
-	7LXjifB7nWLJm/JlP9J4UDvNfmMp/8cPG2S5uSkv/vf3fHnxsHXpGvxG8scoxAeNKom+YbGcPdtwr
-	z9dhPHfenM+UGEErwfBvLdN8ET4F0rcsp6CSKWhtP+7fN4RfA3JahnFonVWkzdYl69kRNrpOSrDO1
-	DDa73eOcSQ4UM+xrm6AmtGKaXccGDbs3cW57cC3OxKDf0bosv70AbSj5V06aKXI9syCBAHGkGuahr
-	DPuq4cnkJ2++EnHHnshz60vjRuUo5QIj1gAA6UKsqlQnxpNkVPQD4O5XTwkpg3jQ0AEiEZE4jmUQO
-	Cx3P1rVg==;
+	bh=iTzfwVQNhQYk3LSeDUOpai/aL5+NZ7UnxvSU/1W/PzI=; b=uoS28dAdgsBqN1z9HIc2py6BGU
+	oqhuretyUQOzKiLm8HBp+FRI8lu3Akm4++viBMcnaGa6o8QsOOrF8CbLIy7QcotVowYu6LhnhSV3m
+	cvOUcXLQcEtpeT09LWzLA4E+8EXkllbnrPqvIMDV1Smf7IHWGf+UiOzslly2xGDNzYQlM762yBfIV
+	N18UQUSmtI/nW6mV5xZKcZlYy6rn3+kHv78wn8DWxlumg32j/g35pnA6xLClbrMVOOhJpKNIdVOBn
+	koCEvi3HcPW3gcxQeUmoojdnyp6KOD8y16NOI17k5q4dm0RYeRQ4HLGo71caZVBjmCbkd88a6hFgg
+	8pubm3wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4JoF-00ESeD-Tj; Thu, 23 Jun 2022 10:11:35 +0000
+	id 1o4JoG-00ESev-Qc; Thu, 23 Jun 2022 10:11:36 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Jmr-00ERsn-8F; Thu, 23 Jun 2022 10:10:10 +0000
+	id 1o4Jmr-00ERtI-8G; Thu, 23 Jun 2022 10:10:10 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 892C666017D1;
-	Thu, 23 Jun 2022 11:10:05 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 36FD566017D0;
+	Thu, 23 Jun 2022 11:10:06 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1655979006;
-	bh=ArWDB16Gc91tVSWokUuwuvangO7rCvezoVWw+007RDo=;
+	bh=ZgzmMPSygjLJDHZK16WVrb6boCW48PbwILdNxmzVx4o=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=i+VlilDqcFJfuiZNeFUzVfy19TIIdmZyQrqcwbm0C5oiznKm+2WoqBKMTB78nm/Ya
-	 S6Ggl+YSv1lT2DrAmfTXeX9lV8aXrkUI3/r0DXVe2pchDedAjnZNq5MPHEOBD5iP3+
-	 ySUtIuYVk7vYTEZCmemo5FaDesfv/wBPqadqGY528bMIJksgidERS0HHajvx3R3dbW
-	 sLOSLLM6ANkwGSKcrRRdNSSxuHzf9yFULxB4yQGdz8Q0jset7C0NPoYkmOArXG4jpF
-	 isQPEpwGAFxUVHoMOduqZGkWlI/2eRmsV/iGQxDPRRce/Tj8vCx9k01VFlDQTww4il
-	 ukVy4Rpw7YiYg==
+	b=b5OyyYCZT9D/A+T06gMVb/yfzIImNPIFoiDSaLXV7pCtC7jU0XBbKh2GzOSlIQmME
+	 Qs0f4Xqi+zl93TDWEQzkMHrunxW/5YaAMorotCo3mbNBI2WUFdWbp6kQaS9ndcxiYF
+	 ITIVZOlPzV8KKrwTxgDLu7jibHCZFYvQcP2+mqCEyhSbzcL/UZrISOlsW5MwR08jz1
+	 QMp4o72jSPLlmWk1fbdjJC8YZicdctiqDkQxj/5uVmvOEFuMUpdgcT0R4pfXsc/1KK
+	 TfNLq/StExqA7YQo+jXRDe1fzmP0S4GC8BJJMEtvypmOi58ZmMqBIvd7nzu4Oaa9ma
+	 OPv4QeDWmruqQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -51,17 +51,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-kernel@vger.kernel.org,
 	wenst@chromium.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 4/5] soc: mediatek: mt8186-pm-domains: Allow probing vreg supply on MFG1
-Date: Thu, 23 Jun 2022 12:09:50 +0200
-Message-Id: <20220623100951.21153-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 5/5] arm64: dts: mediatek: mt8183-kukui: Assign sram supply to mfg_async pd
+Date: Thu, 23 Jun 2022 12:09:51 +0200
+Message-Id: <20220623100951.21153-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
 References: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_031009_498660_8ECFB975 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20220623_031009_488518_6E0B4343 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +76,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the MTK_SCPD_DOMAIN_SUPPLY cap to the MFG1 power domain in MT8186
-to allow voting for sram regulators on/off.
+Add a phandle to the MT8183_POWER_DOMAIN_MFG_ASYNC power domain and
+assign the GPU VSRAM supply to this in mt8183-kukui: this allows to
+keep the sram powered up while the GPU is used.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mt8186-pm-domains.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/soc/mediatek/mt8186-pm-domains.h b/drivers/soc/mediatek/mt8186-pm-domains.h
-index bf2dd0cdc3a8..108af61854a3 100644
---- a/drivers/soc/mediatek/mt8186-pm-domains.h
-+++ b/drivers/soc/mediatek/mt8186-pm-domains.h
-@@ -51,7 +51,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
- 				MT8186_TOP_AXI_PROT_EN_1_CLR,
- 				MT8186_TOP_AXI_PROT_EN_1_STA),
- 		},
--		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY,
- 	},
- 	[MT8186_POWER_DOMAIN_MFG2] = {
- 		.name = "mfg2",
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index 89e4358f140a..33f3bf277ce9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -821,6 +821,10 @@ cros_ec {
+ 	};
+ };
+ 
++&mfg_async {
++	domain-supply = <&mt6358_vsram_gpu_reg>;
++};
++
+ &mfg {
+ 	domain-supply = <&mt6358_vgpu_reg>;
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 9485c1efc87c..9d32871973a2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -788,7 +788,7 @@ power-domain@MT8183_POWER_DOMAIN_CONN {
+ 					#power-domain-cells = <0>;
+ 				};
+ 
+-				power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
++				mfg_async: power-domain@MT8183_POWER_DOMAIN_MFG_ASYNC {
+ 					reg = <MT8183_POWER_DOMAIN_MFG_ASYNC>;
+ 					clocks = <&topckgen CLK_TOP_MUX_MFG>;
+ 					clock-names = "mfg";
 -- 
 2.35.1
 
