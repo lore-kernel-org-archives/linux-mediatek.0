@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A062C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 11:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF74C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 11:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pUBtsagIsVkX8Y3XaZ3P+E6UwRwPnXULrf1i7+CDAYk=; b=WMs6ZJDrbbHAWo7CddXPdc0/GF
-	zS8n6s5fxS8kv5qkAawYsOk7QLGP25fYiu+rXWulh+jlEQ9Fj+5srF6jrV30T7jAzfVkFcuu0GlN6
-	8DxT3fdpghatelW6Djrpa/p9Er1RTomcZE6+yJTYL+nTqXViZRnaJQT9PTYr/TLrh1USmm7ZyMpAY
-	5NWY7GfhJAt7b+aHPUEROqt0zKiVBOq0vZ2xJnyXZPQ+3LtWtPo447ytGPRmj4Y8BuhNYfJy4uMbx
-	y+UMLbyQbJoicfjq9gFxd+zhaM0BjRlDGRh0jL6uAEfT0tGA+mVmB0bLtmK32FvGJ3e9gNYZUyUju
-	rsTJKC9g==;
+	bh=M5oBLDeH2TFPPE1qW+095x6ar1U98gaW60A2FSoyamQ=; b=KhvxEO1piQztA9hXXY8B8TsvRe
+	w0PmPeTX2XvsyZkRuTPuFAXAXlpBo9bEYIuXp1y1jDKiiMda4bnzIEtrVBMVEb8JYxBp6YTCYraQA
+	VIxuFkL3e3x0X/Bnyw1c4aXNMZfOxHVp8NQhhpvDEekFI1jz+dQZUOJ1E3ZYmWwx2aQ9dW5s7Ouh5
+	yFQDrEhqDmWzEq5NO9O4yToYhlaxQvX1tzEOZ5YOLSW3tImCWtnWhGWTRYL8bWZXQHyhq7lrRjr0h
+	AWsXpLNxdyqgDna4ynXqcIslG7nzXVZyx3+DOz5Btumhmmj1DzKyl4ytj05/YYrtmLTkDZc3I2Myt
+	QTJFda2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4LTA-00Eo86-7p; Thu, 23 Jun 2022 11:57:56 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1o4LU8-00Eogd-Im; Thu, 23 Jun 2022 11:58:56 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4LSb-00Enjg-Tl; Thu, 23 Jun 2022 11:57:23 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id n16-20020a17090ade9000b001ed15b37424so451473pjv.3;
-        Thu, 23 Jun 2022 04:57:17 -0700 (PDT)
+	id 1o4LSg-00EnoH-EW; Thu, 23 Jun 2022 11:57:28 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id n12so11951528pfq.0;
+        Thu, 23 Jun 2022 04:57:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=pUBtsagIsVkX8Y3XaZ3P+E6UwRwPnXULrf1i7+CDAYk=;
-        b=HUqGrLrAyQxEgyQxCKoJIayS2tvkFNjWmplRFdMK1iO8SGvV4tEinbq75vS0cBu5PL
-         XgH273UsGvrqERUSGbu1r2oXrED2leZrGYtEVo7qB3dvfMdJkIM4QNUiOCViKrqBKKgX
-         +qDBGXPT+Bmxkeqj6riTOkA5nfRjIzvi0v/2xZQ94J62XosDTuvDJ+1o441hzQbp4wEi
-         1sp+DfsLwVjXFCMItlbeV6Zp3Fjs1t673VTr81jY6v6sDO5ISthwJ7oAib9DPrpPwqEB
-         gJxrgu+AL5vyQnvSC5RyMwUirmtWNXgEGoSuXIIfbAFnbcho4bJx66zLGRJtwJyw6vHI
-         38Ww==
+        bh=M5oBLDeH2TFPPE1qW+095x6ar1U98gaW60A2FSoyamQ=;
+        b=PcxhtUBnyPDnzbGcjPOH22wXUg64coBDrbIKm55BA3uBCZt/v0IKz/meTcap2SGjfB
+         OAcyzRkqDFgj4gT5v9h8X67lB1yjdI9ZAyixj1KSxpOIjrnSZ1e1c9ZzXQxo9DrgvgLa
+         EPp1YijsJXMTxKlaJO2mkfyWZfyydkymswth5pdzC1bR2GVbnonCWv5RlGypNuNly0pT
+         9dZotbzBxyhN/3Q81oUMzbBRJ+w2n8GyXCz4SQJRfnCREQ8qXmvhiTCOt4UzrPhNIqtT
+         hjCEfw3BwBKpMvGZGDhfyXBpK6vYDap9fFAbWjHb1Kq1q2Pl5jVEGRtxPnCy5gwo61/O
+         BxGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=pUBtsagIsVkX8Y3XaZ3P+E6UwRwPnXULrf1i7+CDAYk=;
-        b=dWo4O5fS1WJVi+x45RfKbL/LdYLIVUZzV9skQtI9TtOxqR433wsO1I6ln73fwY0mcg
-         pU3+4GiepXYyZsnnTH9kBtKRcHE1op5HKyBvQD6ikf8hGqg/MqVwworgThSuP62t9TUM
-         5UUZjC8nSmeYjnCis/hk/BuspgiwM6SwQv+5IVZYW0VpmtmuT8i1+NhSf8i5ZSa+6WSq
-         A6hWuE7he8A2/fVWypm4F1JGP4yx3He19DT0nZeHIl04zBxP6FmMng8KfACid4FGjyTF
-         DO+iQ+DeL57v9tmrtcNyN5uHPyoa0A7rknfiACYy8GK7FV4a66TLK7op9Dr5KMz93J1z
-         4OpQ==
-X-Gm-Message-State: AJIora+qzKd7nFIpAbOMXtUbxzYnwJegIDIGIS9oKBRrabuytunELcdY
-	M26kZd6oGAz5XXFnmOzGQWk=
-X-Google-Smtp-Source: AGRyM1vhaWgaoShKoMGABtGUhnYLtLbNBz5rjPqyBvlkLjDrmroIA6VhBGVRXbYC4LbB1KTob0Elvw==
-X-Received: by 2002:a17:902:ea04:b0:16a:1f33:cb0d with SMTP id s4-20020a170902ea0400b0016a1f33cb0dmr21465257plg.103.1655985437347;
-        Thu, 23 Jun 2022 04:57:17 -0700 (PDT)
+        bh=M5oBLDeH2TFPPE1qW+095x6ar1U98gaW60A2FSoyamQ=;
+        b=AIEuq8L+hJH48ql7vnmf+PXxMfn87k+gy/MLgtwRrG7rZQj3Pw6MGsYghdzKgrPegu
+         dfWbCQWBtl1yTcaafJOdsrbwSwxFbFheshRshEA7mxCfGry88DZkmzWbsxkC1RzVwD0P
+         V5tAn4KRwLExqNzSYiacjsAJ/RHaRoQ88ctJcHFclQWEs2Aonb6wSEuQ1aYDWkQj6Fg6
+         XSv6Uo4YKKWJsbcqEZXm/gisYtxRT2V1ww6D/yK7i87MRyoOkJProlvtUU6l5AmyfUqF
+         sv+z0VrKE8o7n2J1YtlX1h3Wp+G+78+KWv5IkITZBT8bn11Yn4X1X5JLXryix/LSIt/t
+         w3eg==
+X-Gm-Message-State: AJIora8ayR2/F+ZCh/0FxBTslIurd7UWpQ1WHxmxh4wPktqNC7LnGcCl
+	7CaM7ZMhdfGbhMmMTejIYI0=
+X-Google-Smtp-Source: AGRyM1v2dS8GCsHCr6bAYJn0dJ8H5c9Q7wS9pSlJJ8PZKZKq3RJ5NeGGUM/SZNXaholm+I9PvXwMjw==
+X-Received: by 2002:a05:6a00:22ce:b0:51c:15ac:3977 with SMTP id f14-20020a056a0022ce00b0051c15ac3977mr40443294pfj.3.1655985443535;
+        Thu, 23 Jun 2022 04:57:23 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (111-71-94-93.emome-ip.hinet.net. [111.71.94.93])
-        by smtp.gmail.com with ESMTPSA id t6-20020a63b246000000b003fbfe88be17sm15016516pgo.24.2022.06.23.04.57.11
+        by smtp.gmail.com with ESMTPSA id t6-20020a63b246000000b003fbfe88be17sm15016516pgo.24.2022.06.23.04.57.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jun 2022 04:57:17 -0700 (PDT)
+        Thu, 23 Jun 2022 04:57:23 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: lee.jones@linaro.org,
 	daniel.thompson@linaro.org,
@@ -89,17 +89,17 @@ Cc: chiaen_wu@richtek.com,
 	linux-iio@vger.kernel.org,
 	linux-fbdev@vger.kernel.org,
 	szunichen@gmail.com
-Subject: [PATCH v3 02/14] dt-bindings: power: supply: Add Mediatek MT6370 Charger
-Date: Thu, 23 Jun 2022 19:56:19 +0800
-Message-Id: <20220623115631.22209-3-peterwu.pub@gmail.com>
+Subject: [PATCH v3 03/14] dt-bindings: leds: mt6370: Add Mediatek mt6370 current sink type LED indicator
+Date: Thu, 23 Jun 2022 19:56:20 +0800
+Message-Id: <20220623115631.22209-4-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220623115631.22209-1-peterwu.pub@gmail.com>
 References: <20220623115631.22209-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_045722_009887_E27A371B 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20220623_045726_561792_8C8428EE 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,116 +114,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiaEn Wu <chiaen_wu@richtek.com>
+From: ChiYuan Huang <cy_huang@richtek.com>
 
-Add Mediatek MT6370 Charger binding documentation.
+Add Mediatek mt6370 current sink type LED indicator binding documentation.
 
-Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
 ---
 
 v3
-- Add items and remove maxItems of io-channels
-- Add io-channel-names and describe each item
-- Add "unevaluatedProperties: false" in "usb-otg-vbus-regulator"
-- Rename "enable-gpio" to "enable-gpios" in "usb-otg-vbus-regulator"
+- Use leds-class-multicolor.yaml instead of common.yaml.
+- Split multi-led and led node.
+- Add subdevice "led" in "multi-led".
 ---
- .../power/supply/mediatek,mt6370-charger.yaml      | 87 ++++++++++++++++++++++
- 1 file changed, 87 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+ .../bindings/leds/mediatek,mt6370-indicator.yaml   | 77 ++++++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
 
-diff --git a/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
 new file mode 100644
-index 0000000..f138db6
+index 0000000..45030f3
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
-@@ -0,0 +1,87 @@
++++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+@@ -0,0 +1,77 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/power/supply/mediatek,mt6370-charger.yaml#
++$id: http://devicetree.org/schemas/leds/mediatek,mt6370-indicator.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Mediatek MT6370 Battery Charger
++title: LED driver for MT6370 PMIC from MediaTek Integrated.
 +
 +maintainers:
-+  - ChiaEn Wu <chiaen_wu@richtek.com>
++  - Alice Chen <alice_chen@richtek.com>
 +
 +description: |
 +  This module is part of the MT6370 MFD device.
-+  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
++  Add MT6370 LED driver include 4-channel RGB LED support Register/PWM/Breath Mode
++
++allOf:
++  - $ref: leds-class-multicolor.yaml#
 +
 +properties:
 +  compatible:
-+    const: mediatek,mt6370-charger
++    const: mediatek,mt6370-indicator
 +
-+  interrupts:
-+    description: |
-+      Specify what irqs are needed to be handled by MT6370 Charger driver. IRQ
-+      "MT6370_IRQ_CHG_MIVR", "MT6370_IRQ_ATTACH" and "MT6370_IRQ_OVPCTRL_UVP_D"
-+      are required.
-+    items:
-+      - description: BC1.2 done irq
-+      - description: usb plug in irq
-+      - description: mivr irq
++  "#address-cells":
++    const: 1
 +
-+  interrupt-names:
-+    items:
-+      - const: attach_i
-+      - const: uvp_d_evt
-+      - const: mivr
++  "#size-cells":
++    const: 0
 +
-+  io-channels:
-+    description: |
-+      Use ADC channel to read VBUS, IBUS, IBAT, etc., info.
-+    minItems: 1
-+    items:
-+      - description: |
-+          VBUS voltage with lower accuracy (+-75mV) but higher measure
-+          range (1~22V)
-+      - description: |
-+          VBUS voltage with higher accuracy (+-30mV) but lower measure
-+          range (1~9.76V)
-+      - description: the main system input voltage
-+      - description: battery voltage
-+      - description: battery temperature-sense input voltage
-+      - description: IBUS current (required)
-+      - description: battery current
-+      - description: |
-+          regulated output voltage to supply for the PWM low-side gate driver
-+          and the bootstrap capacitor
-+      - description: IC junction temperature
-+
-+  io-channel-names:
-+    items:
-+      - const: vbusdiv5
-+      - const: vbusdiv2
-+      - const: vsys
-+      - const: vbat
-+      - const: ts_bat
-+      - const: ibus
-+      - const: ibat
-+      - const: chg_vddp
-+      - const: temp_jc
-+
-+  usb-otg-vbus-regulator:
++patternProperties:
++  "^multi-led@[0-3]$":
 +    type: object
-+    description: OTG boost regulator.
-+    unevaluatedProperties: false
-+    $ref: /schemas/regulator/regulator.yaml#
 +
 +    properties:
-+      enable-gpios:
-+        maxItems: 1
++      reg:
++        enum: [0, 1, 2, 3]
++
++      "#address-cells":
++        const: 1
++
++      "#size-cells":
++        const: 0
++
++    patternProperties:
++      "^led@[0-2]$":
++        type: object
++        $ref: common.yaml#
++        unevaluatedProperties: false
++
++        required:
++          - reg
++          - color
++
++    required:
++      - reg
++      - color
++      - "#address-cells"
++      - "#size-cells"
++
++  "^led@[0-3]$":
++    type: object
++    $ref: common.yaml#
++    unevaluatedProperties: false
++
++    properties:
++      reg:
++        enum: [0, 1, 2, 3]
++
++    required:
++      - reg
++      - color
 +
 +required:
 +  - compatible
-+  - interrupts
-+  - interrupt-names
-+  - io-channels
++  - "#address-cells"
++  - "#size-cells"
 +
 +additionalProperties: false
-+
-+...
 -- 
 2.7.4
 
