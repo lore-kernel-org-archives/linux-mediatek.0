@@ -4,80 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4B6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 09:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF4BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 10:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UPcwSf/6QO4HpZ12PIq0E8dxfa+SOYiABgHmOP2/u74=; b=A1HkWMpo/YZ5A2OiMswqG68fLH
-	QNeY2oIjYWbPTmtmPrLvvPAkw/P6b3d6LLus/d7zruKOPvvlUr6s7xJ8p4uGqDFlVrEc/NwWQBF7C
-	r9ZC7kSAyvmMx8rijtzEa/YQQl8/mNE3eOAb8RDOPhsalvUfY/xq9VuY2UM8QI0nUCMt7ZhUfgqX+
-	U7KEixg8uIpZTLNlWuJV95PP9iKt3+iSicIl4TMmyINklYAzMuMxmLGcBgEGlCsJEYOgHxBYmGyAC
-	Jpnt4o9NNWrOHE1kKKXBMbV/7yb1DS/7Wev3dqBjKG21rZ5fcW57YtLJh0rqYyuDrVTfeKajV4jtV
-	w3YMJLag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uyk9JVTxThBmfJpeJ7TsWYa1/AtyCS53MUIwtwsHjA4=; b=R5Op7bYpyDh0yUGKFNLpgxXVw1
+	XaZ2sV71KwgVDZt+z9yxV5j/gaTOHNVCIbdFCPSewmeNmDklfn016COgCtgVe71Bzk55XWJVjV7Nt
+	ffM+JJIGCczw6/s0Y7jZK4lgmxCTmsK8ugQW1EQI1YIxiIxYNS4FSf+aCqkstKmnmQ3zF1zAo1Uih
+	WOHC6FIaGN8miz3pFGmqGkslbYeEFykvwa7pzEXhGio578am2ctPBrgCcBAryxOQVXAhx/AQE6b30
+	iAtRmvmPp7cCu3ff8Ye5ueW+77bPgJiV5Afsdg1SN800Ozqu6xcybIvMSXG2zcKA/NrH9fO1aZtKh
+	JSpZjmSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4JCS-00EKzA-15; Thu, 23 Jun 2022 09:32:32 +0000
-Received: from 60-251-196-230.hinet-ip.hinet.net ([60.251.196.230] helo=ironport.ite.com.tw)
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4JCG-00EKwI-Re; Thu, 23 Jun 2022 09:32:23 +0000
-Received: from unknown (HELO mse.ite.com.tw) ([192.168.35.30])
-  by ironport.ite.com.tw with ESMTP; 23 Jun 2022 17:32:12 +0800
-Received: from CSBMAIL1.internal.ite.com.tw (CSBMAIL1.internal.ite.com.tw [192.168.65.58])
-	by mse.ite.com.tw with ESMTP id 25N9W7mn009951;
-	Thu, 23 Jun 2022 17:32:07 +0800 (GMT-8)
-	(envelope-from allen.chen@ite.com.tw)
-Received: from VirtualBox.internal.ite.com.tw (192.168.70.46) by
- CSBMAIL1.internal.ite.com.tw (192.168.65.58) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.14; Thu, 23 Jun 2022 17:32:07 +0800
-From: allen <allen.chen@ite.com.tw>
-To: 
-CC: Allen Chen <allen.chen@ite.com.tw>, Pin-yen Lin <treapking@google.com>,
-        Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
-        Hermes Wu <Hermes.Wu@ite.com.tw>,
-        Kenneth Hung <Kenneth.Hung@ite.com.tw>,
-        Allen-kh Cheng
-	<allen-kh.cheng@mediatek.corp-partner.google.com>,
-        Pin-yen Lin
-	<treapking@chromium.org>,
-        Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil
- Armstrong <narmstrong@baylibre.com>,
-        Robert Foss <robert.foss@linaro.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman
-	<jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        David Airlie
-	<airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        "open list:DRM DRIVERS"
-	<dri-devel@lists.freedesktop.org>,
-        open list <linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] drm/bridge: add it6505 driver read config from dt property
-Date: Thu, 23 Jun 2022 17:31:54 +0800
-Message-ID: <20220623093154.52701-1-allen.chen@ite.com.tw>
-X-Mailer: git-send-email 2.25.1
+	id 1o4Jli-00ERYy-LK; Thu, 23 Jun 2022 10:08:58 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o4JlW-00ERWJ-U7; Thu, 23 Jun 2022 10:08:48 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CF97712FC;
+	Thu, 23 Jun 2022 03:08:42 -0700 (PDT)
+Received: from [10.57.85.4] (unknown [10.57.85.4])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 291B53F534;
+	Thu, 23 Jun 2022 03:08:40 -0700 (PDT)
+Message-ID: <2f66f488-687c-033c-a5a2-9d54633838cd@arm.com>
+Date: Thu, 23 Jun 2022 11:08:36 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [192.168.70.46]
-X-ClientProxiedBy: CSBMAIL1.internal.ite.com.tw (192.168.65.58) To
- CSBMAIL1.internal.ite.com.tw (192.168.65.58)
-X-TM-SNTS-SMTP: 	532277101033EC0C5799347BF5418EF1C05372C83BD9777B75A722A680D091252002:8
-X-MAIL: mse.ite.com.tw 25N9W7mn009951
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v2 2/5] iommu/mediatek: Add error path for loop of
+ mm_dts_parse
+Content-Language: en-GB
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
+ chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+References: <20220616054203.11365-1-yong.wu@mediatek.com>
+ <20220616054203.11365-3-yong.wu@mediatek.com>
+ <e2091397-b6e2-7296-1378-dc10b24c6ef4@arm.com>
+ <b2ea919315d0084adb465378e6970dbfa4f0829e.camel@mediatek.com>
+ <521ed82e-f213-f635-6f5e-3e35ff8cc020@arm.com>
+ <a53c4a4d9922c9a3fc774976494dea6da1bd8daa.camel@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <a53c4a4d9922c9a3fc774976494dea6da1bd8daa.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_023221_203799_F492A86A 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20220623_030847_114850_B7058BBC 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,91 +75,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: allen chen <allen.chen@ite.com.tw>
+On 2022-06-23 02:54, Yong Wu wrote:
+> On Thu, 2022-06-16 at 11:31 +0100, Robin Murphy wrote:
+>> On 2022-06-16 11:08, Yong Wu wrote:
+>>> On Thu, 2022-06-16 at 09:59 +0100, Robin Murphy wrote:
+>>>> On 2022-06-16 06:42, Yong Wu wrote:
+>>>>> The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if
+>>>>> the
+>>>>> i+1
+>>>>> larb is parsed fail(return -EINVAL), we should of_node_put for
+>>>>> the
+>>>>> 0..i
+>>>>> larbs. In the fail path, one of_node_put matches with
+>>>>> of_parse_phandle in
+>>>>> it.
+>>>>>
+>>>>> Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow
+>>>>> with
+>>>>> the MM TYPE")
+>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>>>> ---
+>>>>>     drivers/iommu/mtk_iommu.c | 21 ++++++++++++++++-----
+>>>>>     1 file changed, 16 insertions(+), 5 deletions(-)
+> 
+> [snip..]
+> 
+>>>>> +err_larbnode_put:
+>>>>> +	while (i--) {
+>>>>> +		larbnode = of_parse_phandle(dev->of_node,
+>>>>> "mediatek,larbs", i);
+>>>>> +		if (larbnode &&
+>>>>> of_device_is_available(larbnode)) {
+>>>>> +			of_node_put(larbnode);
+>>>>> +			of_node_put(larbnode);
+>>>>> +		}
+>>>>
+>>>> This looks a bit awkward - could we not just iterate through
+>>>> data->larb_imu and put dev->of_node for each valid dev?
+>>>
+>>> It should work. Thanks very much.
+>>>
+>>>>
+>>>> Also, of_find_device_by_node() takes a reference on the struct
+>>>> device
+>>>> itself, so strictly we should be doing put_device() on those as
+>>>> well
+>>>> if we're bailing out.
+>>>
+>>> Thanks for this hint. A new reference for me. I will add it.
+>>
+>> In fact, thinking about it some more we may as well do the
+>> of_node_put()
+>> unconditionally immediately after the of_find_device_by_node() call,
+> 
+> of_node_put is called in component_release_of in the normal case, thus
+> we shouldn't call of_node_put unconditionally. Right?
 
-add read max-lane and max-pixel-clock from dt property
+As it stands, yes. However I'm also figuring that we could just use 
+component_match_add() there, and probably also switch to 
+component_compare_dev as the the comparison, since we've already 
+resolved the larb device, and it is the device itself that we're 
+interested in here, rather than just its of_node.
 
-Signed-off-by: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
----
- drivers/gpu/drm/bridge/ite-it6505.c | 35 ++++++++++++++++++++++++++---
- 1 file changed, 32 insertions(+), 3 deletions(-)
+I *think* this idea could end up with simpler code overall, but as 
+always, feel free to ignore the suggestion if you think it wouldn't make 
+enough difference to be worth the bother.
 
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 4b673c4792d77..c9121d4635a52 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -436,6 +436,8 @@ struct it6505 {
- 	bool powered;
- 	bool hpd_state;
- 	u32 afe_setting;
-+	u32 max_dpi_pixel_clock;
-+	u32 max_lane_count;
- 	enum hdcp_state hdcp_status;
- 	struct delayed_work hdcp_work;
- 	struct work_struct hdcp_wait_ksv_list;
-@@ -1466,7 +1468,8 @@ static void it6505_parse_link_capabilities(struct it6505 *it6505)
- 	it6505->lane_count = link->num_lanes;
- 	DRM_DEV_DEBUG_DRIVER(dev, "Sink support %d lanes training",
- 			     it6505->lane_count);
--	it6505->lane_count = min_t(int, it6505->lane_count, MAX_LANE_COUNT);
-+	it6505->lane_count = min_t(int, it6505->lane_count,
-+				   it6505->max_lane_count);
- 
- 	it6505->branch_device = drm_dp_is_branch(it6505->dpcd);
- 	DRM_DEV_DEBUG_DRIVER(dev, "Sink %sbranch device",
-@@ -2895,7 +2898,7 @@ it6505_bridge_mode_valid(struct drm_bridge *bridge,
- 	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
- 		return MODE_NO_INTERLACE;
- 
--	if (mode->clock > DPI_PIXEL_CLK_MAX)
-+	if (mode->clock > it6505->max_dpi_pixel_clock)
- 		return MODE_CLOCK_HIGH;
- 
- 	it6505->video_info.clock = mode->clock;
-@@ -3057,6 +3060,8 @@ static void it6505_parse_dt(struct it6505 *it6505)
- {
- 	struct device *dev = &it6505->client->dev;
- 	u32 *afe_setting = &it6505->afe_setting;
-+	u32 *max_lane_count = &it6505->max_lane_count;
-+	u32 *max_dpi_pixel_clock = &it6505->max_dpi_pixel_clock;
- 
- 	it6505->lane_swap_disabled =
- 		device_property_read_bool(dev, "no-laneswap");
-@@ -3072,7 +3077,31 @@ static void it6505_parse_dt(struct it6505 *it6505)
- 	} else {
- 		*afe_setting = 0;
- 	}
--	DRM_DEV_DEBUG_DRIVER(dev, "using afe_setting: %d", *afe_setting);
-+
-+	if (device_property_read_u32(dev, "max-lane-count",
-+				     max_lane_count) == 0) {
-+		if (*max_lane_count > 4 || *max_lane_count == 3) {
-+			dev_err(dev, "max lane count error, use default");
-+			*max_lane_count = MAX_LANE_COUNT;
-+		}
-+	} else {
-+		*max_lane_count = MAX_LANE_COUNT;
-+	}
-+
-+	if (device_property_read_u32(dev, "max-dpi-pixel-clock",
-+				     max_dpi_pixel_clock) == 0) {
-+		if (*max_dpi_pixel_clock > 297000) {
-+			dev_err(dev, "max pixel clock error, use default");
-+			*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
-+		}
-+	} else {
-+		*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
-+	}
-+
-+	DRM_DEV_DEBUG_DRIVER(dev, "using afe_setting: %u, max_lane_count: %u",
-+			     it6505->afe_setting, it6505->max_lane_count);
-+	DRM_DEV_DEBUG_DRIVER(dev, "using max_dpi_pixel_clock: %u kHz",
-+			     it6505->max_dpi_pixel_clock);
- }
- 
- static ssize_t receive_timing_debugfs_show(struct file *file, char __user *buf,
--- 
-2.25.1
-
+Thanks,
+Robin.
 
