@@ -4,120 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D640FC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 20:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFAB1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 20:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6lQkyMkplKbQHcqGH5YFAzHcgEPv2A86aLtKZgyrHgk=; b=AfzSbiibgoPhTb7NAnf/I2sefn
-	8fenpY5RVxd5eLS8jkayqXL8UtUxBJChVCnc3lEJZoVCWl8YAb2ipgG74utCfyG+ocNTtqEXIi/Z6
-	FAYLE1/6lLpGv6H5utWFaBybcVD8OQudKet0JsD1wcWAxK0ugcLYoy2K+0b+di+yAApsDJKz/eGo1
-	SXNXjpxWyF99XKxFNR80VAk0e0WXO+abmalwf4qZtxpzWuyAiszvGq9qm5uWVys8UQXcS/njM0cdT
-	K9D3S74sbLDvjuZb3ftrJDyA+/6ip6YbkRoL1ik+YWQZi7Iva4WUn1osWH57iipEq02Nb62pNqrwQ
-	XEqAVO6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CwJWERs17seH2L9znKdrb5djlZxs4xLLte7g+23UWAQ=; b=LlTnZd9L4s6cGcY8AbRsSrTxwu
+	S14n2E+mEFlkUY0sLggcXfaCBNmTFid+GrvoHa8juNwJLIi4bjSo2IffVy3F6FvR0ahCiskHN/xLG
+	l1QVT3BPIWh5YApiPwVDMcLideZMMIhGlXCE/KusI9EysH5QAo33UZjG9EYqUmlfScHlSLzlXnWe3
+	fcKQ+wxUekx0+xNvHh2yvJGx72V8i7DJ5KvFONAGtuGEHDVibOc0EDsG7tFy9giwJo3eQSP8hn1NY
+	5xtlNPJ3JKXQegIYmRcAuZDKAbSg59e9vkbRP2zgLSkeHRdkQH5deZuGv/aypjle+QrLxAdLO/jS4
+	75dMgb5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4T3N-00Gfyk-9Z; Thu, 23 Jun 2022 20:03:49 +0000
-Received: from mail-bn8nam12on2073.outbound.protection.outlook.com ([40.107.237.73] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+	id 1o4TWR-00GkHU-2K; Thu, 23 Jun 2022 20:33:51 +0000
+Received: from mga14.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4T1T-00Gf6f-7M; Thu, 23 Jun 2022 20:01:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IRbTCqaqKCDwb1tE0z/IcOKc8JVrg4gv8gFlmXo1sXJwkkT5sA0xQYBKjNBU/JD2tUcEoTRbCFth/05RBmqviGesfahmQwfOUkN5XQ8P5lPPdw3P7qyWmwMs3ztSY+o9O+sWsm8uhqDSGZprMA+jcfixNlJO9JFwWB42bYyA/cZ50i+y2j7hbmOWJtg7V1i6C+rAJo7482COyzF4TiOwONLLn0xdhJfCtenmSl0A0R7mjFXqZXlAMJF3Gbb4Defkgh+KorRQrsxa9g4GvPqGP5kA/oFVIhgqanCj5bemWsB+Et02I7WpQTBODxZt3LEj8iXbxlRD7+E/Rd3cYRkaBA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6lQkyMkplKbQHcqGH5YFAzHcgEPv2A86aLtKZgyrHgk=;
- b=m8sHzo1qEfl/z7pcwkaV5sUQCDsBuVLnL7ZXnLMdzyFUenY1XIPYGzhBv4Vun1YMOfDCH10YtdHQU3S2NGQr47qsbdyLOoRiGMJQc9AbIUSjQLhbDtPsAabUijOHMZkWDr1pbK7frACBa3DSTO1qPyw5s5Zgk1rmfJS82x+v39tDllycAnPs1lOk2Vxqa0glUNEqWPWg9qMJNdm36maa/RP0ZSlCm+m2gfzQkmOagpv55OddSAKxOUAH07vEgTOB8rp/plRjFEqGZLdD0SyD3wB4BJgjMT6hwUCCIJyKE8EJvgLyBZgSze2jKV+gWOYp6irSUqloMMXQV8RNooISVg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.236) smtp.rcpttodomain=linux.intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6lQkyMkplKbQHcqGH5YFAzHcgEPv2A86aLtKZgyrHgk=;
- b=HDvnVV0v2CSYvIYqvi4KIowz8s+szJOh4D7QY6Tb1Fhzcjb1AURyMtgSHX0KeJxboafrJXMKFgV4lcgg5geDfIlirPefGp+933Pgk6XbOX77MC7+9lmNm6OeNYmN030nh5wOZ7d71OR4qjTtCC9UUoohaYTRAwzZoVdCBl4mt/IUnNZMNUnKxPYSUeQXjuZU0OGvtrwDTKmHtvFNIysAR8Vzuz/Ttq9gmDIFINMD6CapWkb8ZEt8MKPMMjwsFyPr7/68gFOYJJl2Dtp4Qe8ak0R+O0cb6aA6T9/4Fnsi8Wg6ziY773OPK+RHsZSUukcT4xcKR1xzV1W1WhFLYTuq2A==
-Received: from DM6PR14CA0054.namprd14.prod.outlook.com (2603:10b6:5:18f::31)
- by BN9PR12MB5129.namprd12.prod.outlook.com (2603:10b6:408:136::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.16; Thu, 23 Jun
- 2022 20:01:45 +0000
-Received: from DM6NAM11FT057.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:18f:cafe::f5) by DM6PR14CA0054.outlook.office365.com
- (2603:10b6:5:18f::31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.19 via Frontend
- Transport; Thu, 23 Jun 2022 20:01:45 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.236)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.236 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.236; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.236) by
- DM6NAM11FT057.mail.protection.outlook.com (10.13.172.252) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5373.15 via Frontend Transport; Thu, 23 Jun 2022 20:01:45 +0000
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by DRHQMAIL109.nvidia.com
- (10.27.9.19) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Thu, 23 Jun
- 2022 20:01:44 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail203.nvidia.com
- (10.129.68.9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Thu, 23 Jun
- 2022 13:01:43 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.10) by mail.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server id 15.2.986.26 via Frontend
- Transport; Thu, 23 Jun 2022 13:01:41 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <joro@8bytes.org>, <will@kernel.org>, <marcan@marcan.st>,
-	<sven@svenpeter.dev>, <robin.murphy@arm.com>, <robdclark@gmail.com>,
-	<baolu.lu@linux.intel.com>, <matthias.bgg@gmail.com>, <orsonzhai@gmail.com>,
-	<baolin.wang7@gmail.com>, <zhang.lyra@gmail.com>, <jean-philippe@linaro.org>,
-	<alex.williamson@redhat.com>, <jgg@nvidia.com>, <kevin.tian@intel.com>
-CC: <suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
-	<dwmw2@infradead.org>, <yong.wu@mediatek.com>, <mjrosato@linux.ibm.com>,
-	<gerald.schaefer@linux.ibm.com>, <thierry.reding@gmail.com>,
-	<vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <cohuck@redhat.com>,
-	<thunder.leizhen@huawei.com>, <tglx@linutronix.de>,
-	<chenxiang66@hisilicon.com>, <christophe.jaillet@wanadoo.fr>,
-	<john.garry@huawei.com>, <yangyingliang@huawei.com>,
-	<jordan@cosmicpenguin.net>, <iommu@lists.linux-foundation.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
-	<virtualization@lists.linux-foundation.org>, <kvm@vger.kernel.org>
-Subject: [PATCH v3 5/5] vfio/iommu_type1: Simplify group attachment
-Date: Thu, 23 Jun 2022 13:00:29 -0700
-Message-ID: <20220623200029.26007-6-nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220623200029.26007-1-nicolinc@nvidia.com>
-References: <20220623200029.26007-1-nicolinc@nvidia.com>
+	id 1o4TWN-00GkFF-CC
+	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 20:33:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1656016427; x=1687552427;
+  h=date:from:to:cc:subject:message-id:mime-version:
+   content-transfer-encoding;
+  bh=xVP6IBvS10VcE/UoVWHMP5OyXkvp5D6taRQrJ8Y7uqU=;
+  b=Wd/L1ldD1JjcU6K9I0ogzaxHqQJoKhqIa9P6DVq+hzysV+khUFmJzxKu
+   ORrdLYo4dlIOXgGYZMZR5z1pN2tVTPraB2TJR6Dg4DoSaG2U+kfNcHN3P
+   3/eP+TwRbBOms3+74zKQ3SJY2ixg6KgYIJo8f/v5sFiBhww02q/4IhSjA
+   1GS+Hnt3TlaPJPAgHbff8DbDHIUsMx3bQuxDgOkXqgKs5rE6yKTSr8t91
+   KmMtKC+4DlWOZFO5Z0HJs4T12F58pbzX6ZPoDJRm38pWpXKrUjOZxa9nm
+   6weWJ2AjfIUJ8vXVWV289WYifKfvJxaG2XClpDOh8y+0iH/q61aYlpl/1
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10387"; a="280877905"
+X-IronPort-AV: E=Sophos;i="5.92,217,1650956400"; 
+   d="scan'208";a="280877905"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2022 13:33:41 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,217,1650956400"; 
+   d="scan'208";a="621456992"
+Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
+  by orsmga001.jf.intel.com with ESMTP; 23 Jun 2022 13:33:38 -0700
+Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1o4TWE-00035o-0j;
+	Thu, 23 Jun 2022 20:33:38 +0000
+Date: Fri, 24 Jun 2022 04:33:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: netdev@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-xfs@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-scsi@vger.kernel.org, linux-perf-users@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, kvm@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org,
+ Linux Memory Management List <linux-mm@kvack.org>
+Subject: [linux-next:master] BUILD REGRESSION
+ 08897940f458ee55416cf80ab13d2d8b9f20038e
+Message-ID: <62b4ce20.4xihIb4cSyCXNJ12%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 36d7d09a-9a4e-4e66-cf69-08da55533300
-X-MS-TrafficTypeDiagnostic: BN9PR12MB5129:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	gNhZireHiuSNVSHTJm/ZOZYocFVGm3ljZzYLTM3RW6sJDJ/yg4f6RngPQcMoqXvMjNa1J9Hm9xHrsvoWD3UmFTQ2VgaXfCHLJGAK/BPdclhVBq8YdQH7L+TB0g7k2DuLmpnZyF5lrWb8R0WKocEfR7azZAoeROzlAKa6WxqC3tpFvwQySCRXjf+Mavr322XS97b0FEe4qiv80X7jVQhF2+/L4vyjgzUNSGqY7/V8OBwvhzv1xX9m0Al0wb1de6+5yvmyyw9XLKduDGvB56HOYToczfrVovJFnbGuH2lmIE0ppT4XSIO3LKh233maJQau0ax/Yy2ei3IMfuXNCeww6sQoa/DGD5W79vDx/fa9TPAIAkJj38v9S/t25lmUn/B1s7VLzZrdWvGr7/JIns6msF9cB+cH/22hL1H3kvDxSVrBht3JXimssJshw0QiPlx0aiQtq/AqbcKASR+hudsqWHyuTvcpObMk6VbcDlmVqGkaC1mwmbvmgmdU/2Pw9Y6fNUva8MFag3eRXzGbprC3Z1VwEphYlvIwskpdLqFU5ZN2Fr5ohU51OaqCop2M7T5H0JEoLajc2wMn2LtrBPBBfDYVGPcAXFVwOD+kUITEuP6ii5wsiMSdTJQp/hQEElTLw4S2cUAwEMnNCBgL6wqasC6PbCWL20cbEYoFKQOljpJYG3gKy9gBzVl5EIpE8HCM7V09PO+5m6wVUaSjU52MBjMxCVwKWPkYSTXLKrAjoAk3vb/9EusqIMUOhkTLoYkPe/6xA74ar+ZfM564khezE4PLn4Li8uj8QmEHzupYdgYU1ZyRTlkokofnW7PP/GgN9Y5QaBmZJi8vXCpg8Iy73467YdOAgj5bJ0jYzpRuZRPg9nJckrsq0YfFr5gvb7BjiMCy6R88iwNy4sxsHKaGjw==
-X-Forefront-Antispam-Report: 	CIP:12.22.5.236;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(39860400002)(136003)(396003)(346002)(376002)(36840700001)(46966006)(40470700004)(5660300002)(30864003)(36756003)(40480700001)(86362001)(7696005)(7406005)(70586007)(7416002)(54906003)(70206006)(110136005)(40460700003)(316002)(2906002)(8676002)(478600001)(356005)(186003)(36860700001)(81166007)(41300700001)(82310400005)(4326008)(8936002)(921005)(26005)(336012)(426003)(2616005)(47076005)(82740400003)(6666004)(83380400001)(1076003)(2101003)(83996005)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2022 20:01:45.0965
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 36d7d09a-9a4e-4e66-cf69-08da55533300
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.236];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT057.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR12MB5129
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_130151_452737_E2FDE691 
-X-CRM114-Status: GOOD (  20.91  )
+X-CRM114-CacheID: sfid-20220623_133347_527410_4D50871A 
+X-CRM114-Status: UNSURE (   5.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,421 +86,369 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Un-inline the domain specific logic from the attach/detach_group ops into
-two paired functions vfio_iommu_alloc_attach_domain() and
-vfio_iommu_detach_destroy_domain() that strictly deal with creating and
-destroying struct vfio_domains.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: 08897940f458ee55416cf80ab13d2d8b9f20038e  Add linux-next specific files for 20220623
 
-Add the logic to check for EMEDIUMTYPE return code of iommu_attach_group()
-and avoid the extra domain allocations and attach/detach sequences of the
-old code. This allows properly detecting an actual attach error, like
--ENOMEM, vs treating all attach errors as an incompatible domain.
+Error/Warning reports:
 
-Co-developed-by: Jason Gunthorpe <jgg@nvidia.com>
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
----
- drivers/vfio/vfio_iommu_type1.c | 321 +++++++++++++++++---------------
- 1 file changed, 174 insertions(+), 147 deletions(-)
+https://lore.kernel.org/linux-mm/202206212029.Yr5m7Cd3-lkp@intel.com
+https://lore.kernel.org/linux-mm/202206212033.3lgl72Fw-lkp@intel.com
+https://lore.kernel.org/lkml/202206071511.FI7WLdZo-lkp@intel.com
 
-diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-index b9ccb3cfac5d..3ffa4e2d9d18 100644
---- a/drivers/vfio/vfio_iommu_type1.c
-+++ b/drivers/vfio/vfio_iommu_type1.c
-@@ -2153,15 +2153,174 @@ static void vfio_iommu_iova_insert_copy(struct vfio_iommu *iommu,
- 	list_splice_tail(iova_copy, iova);
- }
- 
-+static struct vfio_domain *
-+vfio_iommu_alloc_attach_domain(struct bus_type *bus, struct vfio_iommu *iommu,
-+			       struct vfio_iommu_group *group,
-+			       struct list_head *group_resv_regions)
-+{
-+	struct iommu_domain *new_domain;
-+	struct vfio_domain *domain;
-+	phys_addr_t resv_msi_base;
-+	int ret = 0;
-+
-+	/* Try to match an existing compatible domain */
-+	list_for_each_entry (domain, &iommu->domain_list, next) {
-+		ret = iommu_attach_group(domain->domain, group->iommu_group);
-+		/* -EMEDIUMTYPE means an incompatible domain, so try next one */
-+		if (ret == -EMEDIUMTYPE)
-+			continue;
-+		if (ret)
-+			return ERR_PTR(ret);
-+		goto done;
-+	}
-+
-+	new_domain = iommu_domain_alloc(bus);
-+	if (!new_domain)
-+		return ERR_PTR(-EIO);
-+
-+	if (iommu->nesting) {
-+		ret = iommu_enable_nesting(new_domain);
-+		if (ret)
-+			goto out_free_iommu_domain;
-+	}
-+
-+	ret = iommu_attach_group(new_domain, group->iommu_group);
-+	if (ret)
-+		goto out_free_iommu_domain;
-+
-+	domain = kzalloc(sizeof(*domain), GFP_KERNEL);
-+	if (!domain) {
-+		ret = -ENOMEM;
-+		goto out_detach;
-+	}
-+
-+	domain->domain = new_domain;
-+	vfio_test_domain_fgsp(domain);
-+
-+	/*
-+	 * If the IOMMU can block non-coherent operations (ie PCIe TLPs with
-+	 * no-snoop set) then VFIO always turns this feature on because on Intel
-+	 * platforms it optimizes KVM to disable wbinvd emulation.
-+	 */
-+	if (new_domain->ops->enforce_cache_coherency)
-+		domain->enforce_cache_coherency =
-+			new_domain->ops->enforce_cache_coherency(new_domain);
-+
-+	/* replay mappings on new domains */
-+	ret = vfio_iommu_replay(iommu, domain);
-+	if (ret)
-+		goto out_free_domain;
-+
-+	if (vfio_iommu_has_sw_msi(group_resv_regions, &resv_msi_base)) {
-+		ret = iommu_get_msi_cookie(domain->domain, resv_msi_base);
-+		if (ret && ret != -ENODEV)
-+			goto out_free_domain;
-+	}
-+
-+	INIT_LIST_HEAD(&domain->group_list);
-+	list_add(&domain->next, &iommu->domain_list);
-+	vfio_update_pgsize_bitmap(iommu);
-+
-+done:
-+	list_add(&group->next, &domain->group_list);
-+
-+	/*
-+	 * An iommu backed group can dirty memory directly and therefore
-+	 * demotes the iommu scope until it declares itself dirty tracking
-+	 * capable via the page pinning interface.
-+	 */
-+	iommu->num_non_pinned_groups++;
-+
-+	return domain;
-+
-+out_free_domain:
-+	kfree(domain);
-+out_detach:
-+	iommu_detach_group(new_domain, group->iommu_group);
-+out_free_iommu_domain:
-+	iommu_domain_free(new_domain);
-+	return ERR_PTR(ret);
-+}
-+
-+static void vfio_iommu_unmap_unpin_all(struct vfio_iommu *iommu)
-+{
-+	struct rb_node *node;
-+
-+	while ((node = rb_first(&iommu->dma_list)))
-+		vfio_remove_dma(iommu, rb_entry(node, struct vfio_dma, node));
-+}
-+
-+static void vfio_iommu_unmap_unpin_reaccount(struct vfio_iommu *iommu)
-+{
-+	struct rb_node *n, *p;
-+
-+	n = rb_first(&iommu->dma_list);
-+	for (; n; n = rb_next(n)) {
-+		struct vfio_dma *dma;
-+		long locked = 0, unlocked = 0;
-+
-+		dma = rb_entry(n, struct vfio_dma, node);
-+		unlocked += vfio_unmap_unpin(iommu, dma, false);
-+		p = rb_first(&dma->pfn_list);
-+		for (; p; p = rb_next(p)) {
-+			struct vfio_pfn *vpfn = rb_entry(p, struct vfio_pfn,
-+							 node);
-+
-+			if (!is_invalid_reserved_pfn(vpfn->pfn))
-+				locked++;
-+		}
-+		vfio_lock_acct(dma, locked - unlocked, true);
-+	}
-+}
-+
-+static void vfio_iommu_detach_destroy_domain(struct vfio_domain *domain,
-+					     struct vfio_iommu *iommu,
-+					     struct vfio_iommu_group *group)
-+{
-+	iommu_detach_group(domain->domain, group->iommu_group);
-+	list_del(&group->next);
-+	if (!list_empty(&domain->group_list))
-+		goto out_dirty;
-+
-+	/*
-+	 * Group ownership provides privilege, if the group list is empty, the
-+	 * domain goes away. If it's the last domain with iommu and external
-+	 * domain doesn't exist, then all the mappings go away too. If it's the
-+	 * last domain with iommu and external domain exist, update accounting
-+	 */
-+	if (list_is_singular(&iommu->domain_list)) {
-+		if (list_empty(&iommu->emulated_iommu_groups)) {
-+			WARN_ON(iommu->notifier.head);
-+			vfio_iommu_unmap_unpin_all(iommu);
-+		} else {
-+			vfio_iommu_unmap_unpin_reaccount(iommu);
-+		}
-+	}
-+	iommu_domain_free(domain->domain);
-+	list_del(&domain->next);
-+	kfree(domain);
-+	vfio_update_pgsize_bitmap(iommu);
-+
-+out_dirty:
-+	/*
-+	 * Removal of a group without dirty tracking may allow the iommu scope
-+	 * to be promoted.
-+	 */
-+	if (!group->pinned_page_dirty_scope) {
-+		iommu->num_non_pinned_groups--;
-+		if (iommu->dirty_page_tracking)
-+			vfio_iommu_populate_bitmap_full(iommu);
-+	}
-+}
-+
- static int vfio_iommu_type1_attach_group(void *iommu_data,
- 		struct iommu_group *iommu_group, enum vfio_group_type type)
- {
- 	struct vfio_iommu *iommu = iommu_data;
- 	struct vfio_iommu_group *group;
--	struct vfio_domain *domain, *d;
-+	struct vfio_domain *domain;
- 	struct bus_type *bus = NULL;
--	bool resv_msi, msi_remap;
--	phys_addr_t resv_msi_base = 0;
-+	bool msi_remap;
- 	struct iommu_domain_geometry *geo;
- 	LIST_HEAD(iova_copy);
- 	LIST_HEAD(group_resv_regions);
-@@ -2197,26 +2356,17 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
- 	if (ret)
- 		goto out_free_group;
- 
--	ret = -ENOMEM;
--	domain = kzalloc(sizeof(*domain), GFP_KERNEL);
--	if (!domain)
-+	ret = iommu_get_group_resv_regions(iommu_group, &group_resv_regions);
-+	if (ret)
- 		goto out_free_group;
- 
--	ret = -EIO;
--	domain->domain = iommu_domain_alloc(bus);
--	if (!domain->domain)
--		goto out_free_domain;
--
--	if (iommu->nesting) {
--		ret = iommu_enable_nesting(domain->domain);
--		if (ret)
--			goto out_domain;
-+	domain = vfio_iommu_alloc_attach_domain(bus, iommu, group,
-+						&group_resv_regions);
-+	if (IS_ERR(domain)) {
-+		ret = PTR_ERR(domain);
-+		goto out_free_group;
- 	}
- 
--	ret = iommu_attach_group(domain->domain, group->iommu_group);
--	if (ret)
--		goto out_domain;
--
- 	/* Get aperture info */
- 	geo = &domain->domain->geometry;
- 	if (vfio_iommu_aper_conflict(iommu, geo->aperture_start,
-@@ -2225,10 +2375,6 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
- 		goto out_detach;
- 	}
- 
--	ret = iommu_get_group_resv_regions(iommu_group, &group_resv_regions);
--	if (ret)
--		goto out_detach;
--
- 	if (vfio_iommu_resv_conflict(iommu, &group_resv_regions)) {
- 		ret = -EINVAL;
- 		goto out_detach;
-@@ -2252,11 +2398,6 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
- 	if (ret)
- 		goto out_detach;
- 
--	resv_msi = vfio_iommu_has_sw_msi(&group_resv_regions, &resv_msi_base);
--
--	INIT_LIST_HEAD(&domain->group_list);
--	list_add(&group->next, &domain->group_list);
--
- 	msi_remap = irq_domain_check_msi_remap() ||
- 		    iommu_capable(bus, IOMMU_CAP_INTR_REMAP);
- 
-@@ -2267,107 +2408,25 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
- 		goto out_detach;
- 	}
- 
--	/*
--	 * If the IOMMU can block non-coherent operations (ie PCIe TLPs with
--	 * no-snoop set) then VFIO always turns this feature on because on Intel
--	 * platforms it optimizes KVM to disable wbinvd emulation.
--	 */
--	if (domain->domain->ops->enforce_cache_coherency)
--		domain->enforce_cache_coherency =
--			domain->domain->ops->enforce_cache_coherency(
--				domain->domain);
--
--	/* Try to match an existing compatible domain */
--	list_for_each_entry(d, &iommu->domain_list, next) {
--		iommu_detach_group(domain->domain, group->iommu_group);
--		if (!iommu_attach_group(d->domain, group->iommu_group)) {
--			list_add(&group->next, &d->group_list);
--			iommu_domain_free(domain->domain);
--			kfree(domain);
--			goto done;
--		}
--
--		ret = iommu_attach_group(domain->domain,  group->iommu_group);
--		if (ret)
--			goto out_domain;
--	}
--
--	vfio_test_domain_fgsp(domain);
--
--	/* replay mappings on new domains */
--	ret = vfio_iommu_replay(iommu, domain);
--	if (ret)
--		goto out_detach;
--
--	if (resv_msi) {
--		ret = iommu_get_msi_cookie(domain->domain, resv_msi_base);
--		if (ret && ret != -ENODEV)
--			goto out_detach;
--	}
--
--	list_add(&domain->next, &iommu->domain_list);
--	vfio_update_pgsize_bitmap(iommu);
--done:
- 	/* Delete the old one and insert new iova list */
- 	vfio_iommu_iova_insert_copy(iommu, &iova_copy);
- 
--	/*
--	 * An iommu backed group can dirty memory directly and therefore
--	 * demotes the iommu scope until it declares itself dirty tracking
--	 * capable via the page pinning interface.
--	 */
--	iommu->num_non_pinned_groups++;
- 	mutex_unlock(&iommu->lock);
- 	vfio_iommu_resv_free(&group_resv_regions);
- 
- 	return 0;
- 
- out_detach:
--	iommu_detach_group(domain->domain, group->iommu_group);
--out_domain:
--	iommu_domain_free(domain->domain);
--	vfio_iommu_iova_free(&iova_copy);
--	vfio_iommu_resv_free(&group_resv_regions);
--out_free_domain:
--	kfree(domain);
-+	vfio_iommu_detach_destroy_domain(domain, iommu, group);
- out_free_group:
- 	kfree(group);
- out_unlock:
- 	mutex_unlock(&iommu->lock);
-+	vfio_iommu_iova_free(&iova_copy);
-+	vfio_iommu_resv_free(&group_resv_regions);
- 	return ret;
- }
- 
--static void vfio_iommu_unmap_unpin_all(struct vfio_iommu *iommu)
--{
--	struct rb_node *node;
--
--	while ((node = rb_first(&iommu->dma_list)))
--		vfio_remove_dma(iommu, rb_entry(node, struct vfio_dma, node));
--}
--
--static void vfio_iommu_unmap_unpin_reaccount(struct vfio_iommu *iommu)
--{
--	struct rb_node *n, *p;
--
--	n = rb_first(&iommu->dma_list);
--	for (; n; n = rb_next(n)) {
--		struct vfio_dma *dma;
--		long locked = 0, unlocked = 0;
--
--		dma = rb_entry(n, struct vfio_dma, node);
--		unlocked += vfio_unmap_unpin(iommu, dma, false);
--		p = rb_first(&dma->pfn_list);
--		for (; p; p = rb_next(p)) {
--			struct vfio_pfn *vpfn = rb_entry(p, struct vfio_pfn,
--							 node);
--
--			if (!is_invalid_reserved_pfn(vpfn->pfn))
--				locked++;
--		}
--		vfio_lock_acct(dma, locked - unlocked, true);
--	}
--}
--
- /*
-  * Called when a domain is removed in detach. It is possible that
-  * the removed domain decided the iova aperture window. Modify the
-@@ -2482,44 +2541,12 @@ static void vfio_iommu_type1_detach_group(void *iommu_data,
- 		group = find_iommu_group(domain, iommu_group);
- 		if (!group)
- 			continue;
--
--		iommu_detach_group(domain->domain, group->iommu_group);
--		list_del(&group->next);
--		/*
--		 * Group ownership provides privilege, if the group list is
--		 * empty, the domain goes away. If it's the last domain with
--		 * iommu and external domain doesn't exist, then all the
--		 * mappings go away too. If it's the last domain with iommu and
--		 * external domain exist, update accounting
--		 */
--		if (list_empty(&domain->group_list)) {
--			if (list_is_singular(&iommu->domain_list)) {
--				if (list_empty(&iommu->emulated_iommu_groups)) {
--					WARN_ON(iommu->notifier.head);
--					vfio_iommu_unmap_unpin_all(iommu);
--				} else {
--					vfio_iommu_unmap_unpin_reaccount(iommu);
--				}
--			}
--			iommu_domain_free(domain->domain);
--			list_del(&domain->next);
--			kfree(domain);
--			vfio_iommu_aper_expand(iommu, &iova_copy);
--			vfio_update_pgsize_bitmap(iommu);
--		}
--		/*
--		 * Removal of a group without dirty tracking may allow
--		 * the iommu scope to be promoted.
--		 */
--		if (!group->pinned_page_dirty_scope) {
--			iommu->num_non_pinned_groups--;
--			if (iommu->dirty_page_tracking)
--				vfio_iommu_populate_bitmap_full(iommu);
--		}
-+		vfio_iommu_detach_destroy_domain(domain, iommu, group);
- 		kfree(group);
- 		break;
- 	}
- 
-+	vfio_iommu_aper_expand(iommu, &iova_copy);
- 	if (!vfio_iommu_resv_refresh(iommu, &iova_copy))
- 		vfio_iommu_iova_insert_copy(iommu, &iova_copy);
- 	else
+Error/Warning: (recently discovered and may have been fixed)
+
+arch/powerpc/kernel/interrupt.c:542:55: error: suggest braces around empty body in an 'if' statement [-Werror=empty-body]
+arch/powerpc/kernel/interrupt.c:542:55: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]
+drivers/gpu/drm/amd/amdgpu/../display/dc/core/dc_link.c:1025:33: warning: variable 'pre_connection_type' set but not used [-Wunused-but-set-variable]
+net/ipv6/raw.c:335:25: warning: variable 'saddr' set but not used [-Wunused-but-set-variable]
+net/ipv6/raw.c:335:32: warning: variable 'saddr' set but not used [-Wunused-but-set-variable]
+net/ipv6/raw.c:335:33: warning: variable 'daddr' set but not used [-Wunused-but-set-variable]
+net/ipv6/raw.c:335:40: warning: variable 'daddr' set but not used [-Wunused-but-set-variable]
+
+Unverified Error/Warning (likely false positive, please contact us if interested):
+
+drivers/ufs/host/ufs-mediatek.c:1391:5: sparse: sparse: symbol 'ufs_mtk_runtime_suspend' was not declared. Should it be static?
+drivers/ufs/host/ufs-mediatek.c:1405:5: sparse: sparse: symbol 'ufs_mtk_runtime_resume' was not declared. Should it be static?
+
+Error/Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- alpha-allmodconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- alpha-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- arc-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- arm-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- arm-aspeed_g5_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- arm-defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- arm-u8500_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- arm64-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- arm64-randconfig-s031-20220622
+|   |-- drivers-misc-lkdtm-cfi.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|   |-- drivers-ufs-host-ufs-mediatek.c:sparse:sparse:symbol-ufs_mtk_runtime_resume-was-not-declared.-Should-it-be-static
+|   |-- drivers-ufs-host-ufs-mediatek.c:sparse:sparse:symbol-ufs_mtk_runtime_suspend-was-not-declared.-Should-it-be-static
+|   |-- drivers-vfio-pci-vfio_pci_config.c:sparse:sparse:restricted-pci_power_t-degrades-to-integer
+|   |-- fs-xfs-xfs_file.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-vm_fault_t-usertype-ret-got-int
+|   |-- fs-xfs-xfs_file.c:sparse:sparse:incorrect-type-in-return-expression-(different-base-types)-expected-int-got-restricted-vm_fault_t
+|   `-- kernel-signal.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-struct-lockdep_map-const-lock-got-struct-lockdep_map-noderef-__rcu
+|-- i386-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|   `-- ntb_perf.c:(.text):undefined-reference-to-__umoddi3
+|-- i386-debian-10.3
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-debian-10.3-kselftests
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a001
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|   `-- ntb_perf.c:(.text):undefined-reference-to-__umoddi3
+|-- i386-randconfig-a003
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a005
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a012
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a014
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a016
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-m021
+|   |-- arch-x86-events-core.c-init_hw_perf_events()-warn:missing-error-code-err
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- ia64-allmodconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- m68k-allmodconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- m68k-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- m68k-atari_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- m68k-sun3x_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- microblaze-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- microblaze-randconfig-r013-20220622
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- mips-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- mips-decstation_r4k_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- openrisc-randconfig-r021-20220622
+|   |-- pcs-xpcs.c:(.text):undefined-reference-to-phylink_mii_c22_pcs_decode_state
+|   `-- pcs-xpcs.c:(.text):undefined-reference-to-phylink_mii_c22_pcs_encode_advertisement
+|-- openrisc-randconfig-s032-20220622
+|   |-- fs-xfs-xfs_file.c:sparse:sparse:incorrect-type-in-assignment-(different-base-types)-expected-restricted-vm_fault_t-usertype-ret-got-int
+|   `-- kernel-signal.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-struct-lockdep_map-const-lock-got-struct-lockdep_map-noderef-__rcu
+|-- parisc64-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- powerpc-allmodconfig
+|   |-- arch-powerpc-kernel-interrupt.c:warning:suggest-braces-around-empty-body-in-an-if-statement
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- powerpc-allnoconfig
+|   `-- arch-powerpc-kernel-interrupt.c:error:suggest-braces-around-empty-body-in-an-if-statement
+|-- powerpc-arches_defconfig
+|   `-- arch-powerpc-kernel-interrupt.c:error:suggest-braces-around-empty-body-in-an-if-statement
+|-- powerpc-mgcoge_defconfig
+|   `-- arch-powerpc-kernel-interrupt.c:error:suggest-braces-around-empty-body-in-an-if-statement
+|-- powerpc-ppc6xx_defconfig
+|   |-- arch-powerpc-kernel-interrupt.c:error:suggest-braces-around-empty-body-in-an-if-statement
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- powerpc-randconfig-r001-20220622
+|   `-- arch-powerpc-kernel-interrupt.c:warning:suggest-braces-around-empty-body-in-an-if-statement
+|-- powerpc-taishan_defconfig
+|   `-- arch-powerpc-kernel-interrupt.c:error:suggest-braces-around-empty-body-in-an-if-statement
+|-- riscv-rv32_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- sh-allmodconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- sh-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- sparc-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- sparc-randconfig-r003-20220622
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-allyesconfig
+|   |-- drivers-staging-rtl8723bs-hal-hal_btcoex.c:warning:variable-pHalData-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a002
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   |-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|   |-- pcs-xpcs.c:(.text):undefined-reference-to-phylink_mii_c22_pcs_decode_state
+|   `-- pcs-xpcs.c:(.text):undefined-reference-to-phylink_mii_c22_pcs_encode_advertisement
+|-- x86_64-randconfig-a004
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a006
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a011
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a013
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-m001
+|   |-- arch-x86-events-core.c-init_hw_perf_events()-warn:missing-error-code-err
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-rhel-8.3
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-rhel-8.3-func
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-rhel-8.3-kselftests
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-rhel-8.3-kunit
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+`-- x86_64-rhel-8.3-syz
+    |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+    `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+
+clang_recent_errors
+|-- arm-colibri_pxa300_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- hexagon-randconfig-r045-20220622
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a002
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a004
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a011
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- i386-randconfig-a013
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- mips-malta_kvm_defconfig
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a001
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a003
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a012
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+|-- x86_64-randconfig-a014
+|   |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+|   `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+`-- x86_64-randconfig-a016
+    |-- net-ipv6-raw.c:warning:variable-daddr-set-but-not-used
+    `-- net-ipv6-raw.c:warning:variable-saddr-set-but-not-used
+
+elapsed time: 726m
+
+configs tested: 89
+configs skipped: 3
+
+gcc tested configs:
+arm                                 defconfig
+arm                              allyesconfig
+arm64                            allyesconfig
+m68k                          atari_defconfig
+arc                    vdk_hs38_smp_defconfig
+sh                             espt_defconfig
+m68k                        m5407c3_defconfig
+arm                         lubbock_defconfig
+powerpc                     taishan_defconfig
+mips                 decstation_r4k_defconfig
+sh                                  defconfig
+powerpc                      arches_defconfig
+nios2                         10m50_defconfig
+sh                        sh7785lcr_defconfig
+powerpc                      ppc6xx_defconfig
+arm                       aspeed_g5_defconfig
+arm                           u8500_defconfig
+xtensa                              defconfig
+m68k                          sun3x_defconfig
+arm                          pxa3xx_defconfig
+sh                           se7206_defconfig
+ia64                             allmodconfig
+arc                              allyesconfig
+alpha                            allyesconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+sh                               allmodconfig
+i386                              debian-10.3
+i386                   debian-10.3-kselftests
+i386                                defconfig
+i386                             allyesconfig
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+x86_64                        randconfig-a002
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+x86_64                        randconfig-a015
+i386                          randconfig-a014
+i386                          randconfig-a012
+i386                          randconfig-a016
+arc                  randconfig-r043-20220622
+arc                  randconfig-r043-20220623
+riscv                randconfig-r042-20220623
+s390                 randconfig-r044-20220623
+riscv                             allnoconfig
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
+x86_64                          rhel-8.3-func
+x86_64                         rhel-8.3-kunit
+x86_64                    rhel-8.3-kselftests
+x86_64                           rhel-8.3-syz
+
+clang tested configs:
+mips                           ip22_defconfig
+powerpc                          g5_defconfig
+arm                  colibri_pxa300_defconfig
+mips                           ip28_defconfig
+arm                     am200epdkit_defconfig
+powerpc                      katmai_defconfig
+powerpc                 xes_mpc85xx_defconfig
+mips                      malta_kvm_defconfig
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64                        randconfig-a005
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+x86_64                        randconfig-a016
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+i386                          randconfig-a013
+i386                          randconfig-a015
+i386                          randconfig-a011
+hexagon              randconfig-r041-20220623
+hexagon              randconfig-r041-20220622
+s390                 randconfig-r044-20220622
+hexagon              randconfig-r045-20220622
+riscv                randconfig-r042-20220622
+hexagon              randconfig-r045-20220623
+
 -- 
-2.17.1
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
