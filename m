@@ -4,67 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EDDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 19:44:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED055CCA47C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 20:01:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kAR/hR48Z4JWRReIraf0Hn2W5p4nz3sdYZJnNs0q0yI=; b=eDg3UPNMgfFWZSGctvtZSKFftS
-	+ft8hGubBQP8uQgqiDu60ZHNThns5H8IAQryhX8xwQqGiqyfV3Cao1S8fn1fEs7Jg8So99KJICzM4
-	3epZse/JC8PILC4IrdKA28kwx6tDrvk0U2hRGhqnQcGkJDL+bydk0w0egCmFl5J+uO32RPGAF16T3
-	vibqOysDlmgMaY9asYX8Yok+P0QBmnEmX6AqmBr/Olq0nfcMAM4MKDyRXnkzQSQ8BDfchyIqWjhCc
-	yxxcwcOc6/ZkjxSDeRUFCuK0DX2dFT6fMnENmQDSocfXbra3jFH14PB8d4PJ88YKZ5YR2bt3eHxJu
-	aiqE+64g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=F86+RvzjkgjzMtSa8CwsA63oaKihCbAPxS/B+zVQWH4=; b=EXUnuHQeXLNzf4CN0AuZL0VAN7
+	kNKJMG4JA7QxVWK9nI0Nxoo8G239oSq9uCpq/aoRH9W0ligIR5sVbTX045W5GmCF7MT65pg3cFf8C
+	6RirOwMoP0UuJLgNBKaIrLmjvRpYYqLGy8WVUpuCJny7TxiRxToLKjFlpC4fknSNxrXydAZDJyZIB
+	FScRrk0aUZA3rvBaEO8tbtf+G+UHxbGz2zS37L0GV2g6/p9i83c7RIIQZpX6QpAmWjIQ8xSSNUL4p
+	2wJn+tZUcY4twvI3zjJL8Oy4hNjS8Y6SVKDYY7+Smvu7ZPmCdrNxs7IPkVvrahgsVROxUGJdzenhi
+	TzwdPq1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4SkH-00Ga48-Jl; Thu, 23 Jun 2022 19:44:05 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o4T1Q-00Gf7H-J8; Thu, 23 Jun 2022 20:01:48 +0000
+Received: from mail-co1nam11on2088.outbound.protection.outlook.com ([40.107.220.88] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Sde-00GWrn-1G; Thu, 23 Jun 2022 19:37:16 +0000
-Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 976A566017ED;
-	Thu, 23 Jun 2022 20:37:11 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656013032;
-	bh=/LxDQPxHfyiUgre3GB0q3RHmhgoanHBngDjpfGX6Yog=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YIJmxzUzOGfV1BE9Z0Gl813sbwN2bP6aPOeYICMsWlLBhiyw4cZHuqfQwcoTESyXP
-	 26OdUbC0sFhQDxvVVYfyziQsR4dIKL0aw+7+iOTMw04i73FV3uY2MUWpHoDJ3QHPft
-	 LBfycqcEv8D/U+tobyVXMm9P9XCx+WhduJShgqt4hyZEqERJYQZ0Qdjlh7guDqnGp3
-	 8O0dZKwAmcK6QeAFt/EOVuQMUs5YTbnyOA2WJesqGv/zCNtOPS9E2NtyUsz26vwxfB
-	 g3vYlbR+R25VGetwCC00lXXZko8tdV4y2p0G9ZGuDlP6b1150NxuVM0j9HeVTE6osv
-	 i4NL/dGxAA1nw==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 3/4] arm64: dts: mediatek: Set fixed-clock for missing XHCI clocks
-Date: Thu, 23 Jun 2022 15:37:01 -0400
-Message-Id: <20220623193702.817996-4-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220623193702.817996-1-nfraprado@collabora.com>
-References: <20220623193702.817996-1-nfraprado@collabora.com>
+	id 1o4T1E-00Gf2K-9B; Thu, 23 Jun 2022 20:01:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ioz+3T6XL/LOssSuOvDzhkh7lr4NxBmrBOpZSkczDCC870NdSesfT+mWbugGkbpxTp1YoVv+KGLUqrR6YoZN97ym7764a3PBU4UB/HD009GaPcIADAZxCvJn0aovrTxSXWGaFUkb0wTt1sUMo2+p5EZU2bP0vWScOuiH9fT7QnHHYT6W6lKKCLuRPXrmm7s5ekHgCDEUmmltbt8EK1KNzpzFsk5vMyPUO4T+5Zw7laP/AFqaun/RGQ4AO4YxULjp7IUNfAJTyO2tT2shx1cg6Szg/R2UZLB/LVjBFmmj+SluNXJoKHOWbVd8ZQ/xkxlntwctdX2VZeTpP54EP8Ah0Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=F86+RvzjkgjzMtSa8CwsA63oaKihCbAPxS/B+zVQWH4=;
+ b=XWo+NSFjycn8F0mOlZHtyhn8ifCegdJ3I2RvkElRmGVfmBWOEDAG8hxH4ty+ywTmBoEVmlUjFT2g+7uGilBupXrmxBnug3eJZWkJoEZBJQ7clZSq/o/Ze/FOK1uFHV5HNrCwBK/ZMoLVFOIiRzl2K0YAHUg08AaRdHSt+YEBwDk7dAIUf2ZB3RUjnRhsBBwF/qzPNYqhAfFo/Vw8LfW/AIYjVxvkTdcNGzQyLi35+Apodn6gslZ+MhrijQ07Papu39ygQma5jJulMJXsMbvIpJJudvzpklgAj7HA5HF9lCH1iQcCf/AUMeT7nfkd7c4Sbd6ItMXxOE1D1R/eagv5aw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.235) smtp.rcpttodomain=linux.intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=F86+RvzjkgjzMtSa8CwsA63oaKihCbAPxS/B+zVQWH4=;
+ b=JIAyEzIH2R2iPILKwFCZIi1wAz2utkwn6aeRrYUHx4S52d83MV5Hkxc5AhLgQqQeJfF3oevKLmySZxL7hpXHYp0R0dNvl/vHJ6raMPH00I9JhkfWgq3htGFp4beF4UnWvhFHmo27ayBsS3ip8f5DMQwEAP3ommYMAJBz8OtVfVFCIzI6VB8TLFKssbxPueIPxejbBxU6uXeaBSHtFwdOiQ31193ISSinowmhBPbMYSCSdoqSfkRhEpJOkMJX10FyG0QQ323CRh7yzta/qqwIsXEsS1snHioJzhmEjVUW0FYCBZ/d13a1yxF7HbgAzkQbyaJL5WFvUoHI81pfa+W3ZA==
+Received: from BN6PR14CA0046.namprd14.prod.outlook.com (2603:10b6:404:13f::32)
+ by SN1PR12MB2525.namprd12.prod.outlook.com (2603:10b6:802:29::28) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.17; Thu, 23 Jun
+ 2022 20:01:32 +0000
+Received: from BN8NAM11FT049.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:404:13f:cafe::98) by BN6PR14CA0046.outlook.office365.com
+ (2603:10b6:404:13f::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.18 via Frontend
+ Transport; Thu, 23 Jun 2022 20:01:31 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.235)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.235 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.235; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.235) by
+ BN8NAM11FT049.mail.protection.outlook.com (10.13.177.157) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5373.15 via Frontend Transport; Thu, 23 Jun 2022 20:01:31 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by DRHQMAIL107.nvidia.com
+ (10.27.9.16) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Thu, 23 Jun
+ 2022 20:01:31 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Thu, 23 Jun
+ 2022 13:01:30 -0700
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.10) by mail.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server id 15.2.986.26 via Frontend
+ Transport; Thu, 23 Jun 2022 13:01:27 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <joro@8bytes.org>, <will@kernel.org>, <marcan@marcan.st>,
+	<sven@svenpeter.dev>, <robin.murphy@arm.com>, <robdclark@gmail.com>,
+	<baolu.lu@linux.intel.com>, <matthias.bgg@gmail.com>, <orsonzhai@gmail.com>,
+	<baolin.wang7@gmail.com>, <zhang.lyra@gmail.com>, <jean-philippe@linaro.org>,
+	<alex.williamson@redhat.com>, <jgg@nvidia.com>, <kevin.tian@intel.com>
+CC: <suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
+	<dwmw2@infradead.org>, <yong.wu@mediatek.com>, <mjrosato@linux.ibm.com>,
+	<gerald.schaefer@linux.ibm.com>, <thierry.reding@gmail.com>,
+	<vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <cohuck@redhat.com>,
+	<thunder.leizhen@huawei.com>, <tglx@linutronix.de>,
+	<chenxiang66@hisilicon.com>, <christophe.jaillet@wanadoo.fr>,
+	<john.garry@huawei.com>, <yangyingliang@huawei.com>,
+	<jordan@cosmicpenguin.net>, <iommu@lists.linux-foundation.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-s390@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
+	<virtualization@lists.linux-foundation.org>, <kvm@vger.kernel.org>
+Subject: [PATCH v3 0/5] Simplify vfio_iommu_type1 attach/detach routine
+Date: Thu, 23 Jun 2022 13:00:24 -0700
+Message-ID: <20220623200029.26007-1-nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 76548f47-483f-43be-535a-08da55532af8
+X-MS-TrafficTypeDiagnostic: SN1PR12MB2525:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	=?us-ascii?Q?XbHupQRekQ/jWGmhFPXbCar4gKVjHlyVGsmHEQU069ocuou0rvok7c1jeLWc?=
+ =?us-ascii?Q?DZYn/bVfp7lgf6EqZDB88kQ66QzuGskMXIX3cDOHIJ3gggjC0FMubLyF5xHq?=
+ =?us-ascii?Q?mZhWk0hZnleTbgUzhk/zkpUBkJFOLdvwwFTEFtBnwljKp8K5y529//PEKyMQ?=
+ =?us-ascii?Q?uxiDXb0fBz72ktufTP7OLpEASCcNbq54sv50Ui/L5pBQCdl/veDhE0xAdETc?=
+ =?us-ascii?Q?kvAgzBGq65QM4VZZNQxbPJcRidbv1MZ4H5BpjDwlLGLPBhfHDnz2MPZyDUxG?=
+ =?us-ascii?Q?mmfTxPaRUBF1IgO05NrXnYWNsGj09jL3mRGEt5TTThh6rZcoTJEeWenTbEI7?=
+ =?us-ascii?Q?olDCW/7buNYCQNAIJmtzvEtGHM0RCsC7Xuma1VPXyNKPy1iQceJFPpyhD0wq?=
+ =?us-ascii?Q?8sf8SUIDU6xkWAx7HOzF8hnzU2NZzK5d/Tf8Wai0QgrTe1eIv4IACaeAp0zg?=
+ =?us-ascii?Q?7/tzkUiy3P6atov25Yxlg8Fuc8V58VlP0FkgUaAwAHJa5MvVjL88RG17eSo7?=
+ =?us-ascii?Q?7M2kEvJIrgOJV0znUWQ9vGCmyPhU7PzKn13IstacxU73hQo6lBCCNJzoRtm8?=
+ =?us-ascii?Q?1oF+WzQaSOCKzJDvA99hRXp8sWocOteVZYMOTuUuYLgCnAM70o6MIufiLweZ?=
+ =?us-ascii?Q?Rqpi0xWKP3cJTDkDwQYdjNTh+S1XCKry7P7P4zC2ZhBzoUns/IW1WZDW5jRT?=
+ =?us-ascii?Q?ER+bTnY6I90ndhEfzG55FJRdnKmIQeNFmpra15QHnRL0Ip7Y/Cifdjk9nQTe?=
+ =?us-ascii?Q?l9FsajEyzxFTbzX2NMnZgRcK7V9E4PaphTISG/tbLWR4ipDi2HUhMD3Waegc?=
+ =?us-ascii?Q?2RhjdEaAige8tqpkoqM2mePVV60Qwn+/1d0JIc9f7hNEBcEsgpL6pdN8TM6n?=
+ =?us-ascii?Q?M/CKPAXZg73II45c31ccUP8AaBfEjJDH2xZ8sB8+q4vGn1qVxLuQ2JXBP5Uj?=
+ =?us-ascii?Q?tGAyQD8HeDVqjlglitoUi9XdDPR2AcQnrpljXAIH7cLp7ZGbhESni0slS+qi?=
+ =?us-ascii?Q?I3BCbKgYReew7Xen/K4UKHUqdA=3D=3D?=
+X-Forefront-Antispam-Report: 	CIP:12.22.5.235;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(346002)(136003)(39860400002)(396003)(376002)(46966006)(36840700001)(40470700004)(316002)(966005)(54906003)(8676002)(70206006)(186003)(356005)(40480700001)(4326008)(41300700001)(36756003)(8936002)(81166007)(2906002)(86362001)(7416002)(5660300002)(2616005)(26005)(478600001)(7696005)(110136005)(921005)(82740400003)(1076003)(7406005)(336012)(36860700001)(82310400005)(6666004)(426003)(70586007)(83380400001)(40460700003)(47076005)(83996005)(2101003)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2022 20:01:31.6191
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 76548f47-483f-43be-535a-08da55532af8
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.235];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT049.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1PR12MB2525
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_123714_444737_C56D9697 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20220623_130136_370509_E41CF6D7 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,200 +147,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The XHCI controller hardware always has all clocks wired, however
-depending on the SoC, some of them might be fixed (ie not controllable).
-These fixed clocks were previously omitted from the devicetree entirely.
+This is a preparatory series for IOMMUFD v2 patches. It enforces error
+code -EMEDIUMTYPE in iommu_attach_device() and iommu_attach_group() when
+an IOMMU domain and a device/group are incompatible. It also drops the
+useless domain->ops check since it won't fail in current environment.
 
-In order to better describe the hardware on the devicetree, and to have
-a fixed order of clocks for all SoCs, add the missing non-controllable
-clocks as phandles to a fixed-clock node.
+These allow VFIO iommu code to simplify its group attachment routine, by
+avoiding the extra IOMMU domain allocations and attach/detach sequences
+of the old code.
 
-By keeping a fixed clock order, this gets rid of dtbs_check warnings on
-mt8192 and mt8195.
+Worths mentioning the exact match for enforce_cache_coherency is removed
+with this series, since there's very less value in doing that since KVM
+won't be able to take advantage of it -- this just wastes domain memory.
+Instead, we rely on Intel IOMMU driver taking care of that internally.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+This is on github:
+https://github.com/nicolinc/iommufd/commits/vfio_iommu_attach
 
----
+Changelog
+v3:
+ * Dropped all dev_err since -EMEDIUMTYPE clearly indicates what error.
+ * Updated commit message of enforce_cache_coherency removing patch.
+ * Updated commit message of domain->ops removing patch.
+ * Replaced "goto out_unlock" with simply mutex_unlock() and return.
+ * Added a line of comments for -EMEDIUMTYPE return check.
+ * Moved iommu_get_msi_cookie() into alloc_attach_domain() as a cookie
+   should be logically tied to the lifetime of a domain itself.
+ * Added Kevin's "Reviewed-by".
+v2: https://lore.kernel.org/kvm/20220616000304.23890-1-nicolinc@nvidia.com/
+ * Added -EMEDIUMTYPE to more IOMMU drivers that fit the category.
+ * Changed dev_err to dev_dbg for -EMEDIUMTYPE to avoid kernel log spam.
+ * Dropped iommu_ops patch, and removed domain->ops in VFIO directly,
+   since there's no mixed-driver use case that would fail the sanity.
+ * Updated commit log of the patch removing enforce_cache_coherency.
+ * Fixed a misplace of "num_non_pinned_groups--" in detach_group patch.
+ * Moved "num_non_pinned_groups++" in PATCH-5 to the common path between
+   domain-reusing and new-domain pathways, like the code previously did.
+ * Fixed a typo in EMEDIUMTYPE patch.
+v1: https://lore.kernel.org/kvm/20220606061927.26049-1-nicolinc@nvidia.com/
 
-Changes in v2:
-- Instead of simply reordering the clocks on mt8192, added missing fixed
-  clocks for all arm64 dts
-- Rewrote commit message and title
+Jason Gunthorpe (1):
+  vfio/iommu_type1: Prefer to reuse domains vs match enforced cache
+    coherency
 
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 18 ++++++++++++++----
- arch/arm64/boot/dts/mediatek/mt7622.dtsi  |  5 +++--
- arch/arm64/boot/dts/mediatek/mt8173.dtsi  |  9 +++++++--
- arch/arm64/boot/dts/mediatek/mt8183.dtsi  |  8 ++++++--
- arch/arm64/boot/dts/mediatek/mt8192.dtsi  |  9 ++++++---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi  | 18 ++++++++++++++----
- 6 files changed, 50 insertions(+), 17 deletions(-)
+Nicolin Chen (4):
+  iommu: Return -EMEDIUMTYPE for incompatible domain and device/group
+  vfio/iommu_type1: Remove the domain->ops comparison
+  vfio/iommu_type1: Clean up update_dirty_scope in detach_group()
+  vfio/iommu_type1: Simplify group attachment
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-index 623eb3beabf2..941d6a19075c 100644
---- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-@@ -816,8 +816,13 @@ usb_host0: usb@11270000 {
- 			reg-names = "mac";
- 			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_LOW>;
- 			power-domains = <&scpsys MT2712_POWER_DOMAIN_USB>;
--			clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
--			clock-names = "sys_ck", "ref_ck";
-+			clocks = <&topckgen CLK_TOP_USB30_SEL>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			status = "disabled";
- 		};
- 	};
-@@ -880,8 +885,13 @@ usb_host1: usb@112c0000 {
- 			reg-names = "mac";
- 			interrupts = <GIC_SPI 249 IRQ_TYPE_LEVEL_LOW>;
- 			power-domains = <&scpsys MT2712_POWER_DOMAIN_USB2>;
--			clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
--			clock-names = "sys_ck", "ref_ck";
-+			clocks = <&topckgen CLK_TOP_USB30_SEL>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&clk26m>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			status = "disabled";
- 		};
- 	};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 146e18b5b1f4..04ba0773dda3 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -752,8 +752,9 @@ ssusb: usb@1a0c0000 {
- 		clocks = <&ssusbsys CLK_SSUSB_SYS_EN>,
- 			 <&ssusbsys CLK_SSUSB_REF_EN>,
- 			 <&ssusbsys CLK_SSUSB_MCU_EN>,
--			 <&ssusbsys CLK_SSUSB_DMA_EN>;
--		clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck";
-+			 <&ssusbsys CLK_SSUSB_DMA_EN>,
-+			 <&clk25m>;
-+		clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
- 		phys = <&u2port0 PHY_TYPE_USB2>,
- 		       <&u3port0 PHY_TYPE_USB3>,
- 		       <&u2port1 PHY_TYPE_USB2>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index d1f3dc5dec35..3b64651f7a43 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -943,8 +943,13 @@ usb_host: usb@11270000 {
- 				reg-names = "mac";
- 				interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
- 				power-domains = <&spm MT8173_POWER_DOMAIN_USB>;
--				clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
--				clock-names = "sys_ck", "ref_ck";
-+				clocks = <&topckgen CLK_TOP_USB30_SEL>,
-+					 <&clk26m>,
-+					 <&clk26m>,
-+					 <&clk26m>,
-+					 <&clk26m>;
-+				clock-names = "sys_ck", "ref_ck", "mcu_ck",
-+					      "dma_ck", "xhci_ck";
- 				status = "disabled";
- 			};
- 		};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index e92a0b8c1ee2..fe114f70f677 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1471,8 +1471,12 @@ usb_host: usb@11200000 {
- 				reg-names = "mac";
- 				interrupts = <GIC_SPI 73 IRQ_TYPE_LEVEL_LOW>;
- 				clocks = <&infracfg CLK_INFRA_UNIPRO_SCK>,
--					 <&infracfg CLK_INFRA_USB>;
--				clock-names = "sys_ck", "ref_ck";
-+					 <&infracfg CLK_INFRA_USB>,
-+					 <&clk26m>,
-+					 <&clk26m>,
-+					 <&clk26m>;
-+				clock-names = "sys_ck", "ref_ck", "mcu_ck",
-+					      "dma_ck", "xhci_ck";
- 				status = "disabled";
- 			};
- 		};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 733aec2e7f77..fd2ab1f2a1bb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -723,9 +723,12 @@ xhci: usb@11200000 {
- 			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
- 						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
- 			clocks = <&infracfg CLK_INFRA_SSUSB>,
--				 <&infracfg CLK_INFRA_SSUSB_XHCI>,
--				 <&apmixedsys CLK_APMIXED_USBPLL>;
--			clock-names = "sys_ck", "xhci_ck", "ref_ck";
-+				 <&apmixedsys CLK_APMIXED_USBPLL>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&infracfg CLK_INFRA_SSUSB_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			wakeup-source;
- 			mediatek,syscon-wakeup = <&pericfg 0x420 102>;
- 			status = "disabled";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 3ad14e0e0956..8e9783953795 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -571,8 +571,10 @@ xhci0: usb@11200000 {
- 			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB>,
- 				 <&topckgen CLK_TOP_SSUSB_REF>,
- 				 <&apmixedsys CLK_APMIXED_USB1PLL>,
-+				 <&clk26m>,
- 				 <&infracfg_ao CLK_INFRA_AO_SSUSB_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "mcu_ck", "xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 103>;
- 			wakeup-source;
- 			status = "disabled";
-@@ -636,8 +638,10 @@ xhci1: usb@11290000 {
- 			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_1P_BUS>,
- 				 <&topckgen CLK_TOP_SSUSB_P1_REF>,
- 				 <&apmixedsys CLK_APMIXED_USB1PLL>,
-+				 <&clk26m>,
- 				 <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "mcu_ck","xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 104>;
- 			wakeup-source;
- 			status = "disabled";
-@@ -657,8 +661,11 @@ xhci2: usb@112a0000 {
- 						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
- 			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_2P_BUS>,
- 				 <&topckgen CLK_TOP_SSUSB_P2_REF>,
-+				 <&clk26m>,
-+				 <&clk26m>,
- 				 <&pericfg_ao CLK_PERI_AO_SSUSB_2P_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 105>;
- 			wakeup-source;
- 			status = "disabled";
-@@ -678,8 +685,11 @@ xhci3: usb@112b0000 {
- 						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
- 			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_3P_BUS>,
- 				 <&topckgen CLK_TOP_SSUSB_P3_REF>,
-+				 <&clk26m>,
-+				 <&clk26m>,
- 				 <&pericfg_ao CLK_PERI_AO_SSUSB_3P_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 106>;
- 			wakeup-source;
- 			status = "disabled";
+ drivers/iommu/amd/iommu.c                   |   2 +-
+ drivers/iommu/apple-dart.c                  |   4 +-
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c |  15 +-
+ drivers/iommu/arm/arm-smmu/arm-smmu.c       |   6 +-
+ drivers/iommu/arm/arm-smmu/qcom_iommu.c     |   9 +-
+ drivers/iommu/intel/iommu.c                 |  10 +-
+ drivers/iommu/iommu.c                       |  28 ++
+ drivers/iommu/ipmmu-vmsa.c                  |   4 +-
+ drivers/iommu/mtk_iommu_v1.c                |   2 +-
+ drivers/iommu/omap-iommu.c                  |   3 +-
+ drivers/iommu/s390-iommu.c                  |   2 +-
+ drivers/iommu/sprd-iommu.c                  |   6 +-
+ drivers/iommu/tegra-gart.c                  |   2 +-
+ drivers/iommu/virtio-iommu.c                |   3 +-
+ drivers/vfio/vfio_iommu_type1.c             | 340 ++++++++++----------
+ 15 files changed, 225 insertions(+), 211 deletions(-)
+
 -- 
-2.36.1
+2.17.1
 
 
