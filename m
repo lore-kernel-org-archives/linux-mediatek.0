@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9BBEC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 06:37:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A002FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 06:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=huFclQEn2REgGaGb4jQDSgcESRp46aErvmHSGQ1f6cg=; b=U/n/3uXMgQ2Q1ZeyeCKUYS/VeC
-	X92SVzfvUmW/ATIA/kbt6rUo5y3rszF/fwDRW1Zf9jx1WN+rFzOlNigZYw0lVa82m0RIvJ5MLkxHN
-	09qRbQU8nCI3QYkrAnsstFfH6sgCA0tfS3gJfI8ksp/MeujnASyL5D7OJk6A/r7ry9NJ4PZFdq8/W
-	clO4IYY7rczrSpul2OuRxfq4YmFyFjtxjzcuzHlwIPViYS2VFaH6wd091yHhTHVcPEzLjnyzNyKr2
-	hrP7Y3/Mn3MG2UWX04XTmMX1wO7pYFk9vgW4tZi6GndDwZLbmxlw6Ie7s1nU3285UDXmbqo2ictYe
-	tPXfjhtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OdS2oecJpSoVSYVWm4W+CfUdoD4L8ZlMM+fSiZBh1sw=; b=O6s3FMCiY/ueuIlw4Fn1xek1i0
+	dER9UuXymy5zw7MfiF7jrs3gsjR87NlkNqJ81nRNBO8yveGrzy8VGR3TzXgfn1TSfv+dTk9z48wUI
+	dfuew2BYM55wY9ZaXQcYtbWG/Gomj3OQKVI7tL2/lxY9jAs8HjMJYCCBQdVCw4pap2w++jko0Vzfq
+	7333+wGRtQKbeGkl1FIw+4rOPsmmxqAfs9wodAe7PY/7TFgPKmzjOeWFtEa8Uw3aT2InFtw3qqdAD
+	XCSH7GG+6NwF/RV7TJA+g4EHa7g74PW9yTUZCofNUWLk5oNbMILY4XJ2olO4aXLVHJu5tfIdb0H5Q
+	B5OWN1BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4GSj-00Divx-V6; Thu, 23 Jun 2022 06:37:09 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1o4GfW-00Dl2D-O7; Thu, 23 Jun 2022 06:50:22 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4GSZ-00DitZ-A6; Thu, 23 Jun 2022 06:37:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E55EBB82165;
-	Thu, 23 Jun 2022 06:36:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AD2EC3411B;
-	Thu, 23 Jun 2022 06:36:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655966215;
-	bh=L/HtZBe8zfTCnMDIyq2DhtLoHfHks0NxfofySG0XV9s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hT1mVhq0udRcgy8oU0WisKa8/OPYSHG0lKmSa+3PFcKW84ty6BVzt6wvJO6L8OcB7
-	 WIP8xOX5mjNYGnRS63obGply7lvVS1IdGa7PKRAViK7vnOJEOztQIUELGt0cOUySNU
-	 QQDKSCJcebadwBgyhmVCgo6W+PLXSU/rCQCQPHC/1PAU3gAE/QwLoRTeVwHQokKFrS
-	 bVsXRpBxosPui8zyHdteaqX3sujNNX0N5Er6D5401IDijWcUnS2EDvVWF7CyM+v76D
-	 9npbK4XTDjrcEkPhZEbezJQX6IL4t7olkVQCg+zPJZtuACZz4j0k8DVLukYJKM+WC6
-	 QxWZLPDEOvWNg==
-Received: from johan by xi.lan with local (Exim 4.94.2)
-	(envelope-from <johan@kernel.org>)
-	id 1o4GSQ-0004VV-Vx; Thu, 23 Jun 2022 08:36:51 +0200
-Date: Thu, 23 Jun 2022 08:36:50 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Miles Chen <miles.chen@mediatek.com>,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>,
-	Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, stable@vger.kernel.org,
-	Ballon Shi <ballon.shi@quectel.com>
-Subject: Re: [PATCH] USB: serial: option: add Quectel RM500K module support
-Message-ID: <YrQKApkdi//0ysiP@hovoldconsulting.com>
-References: <20220623035214.20124-1-macpaul.lin@mediatek.com>
+	id 1o4GfL-00Dkwz-T7; Thu, 23 Jun 2022 06:50:13 +0000
+Received: from kwepemi500023.china.huawei.com (unknown [172.30.72.53])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4LT9lJ3PpyzSh98;
+	Thu, 23 Jun 2022 14:46:36 +0800 (CST)
+Received: from [10.174.176.254] (10.174.176.254) by
+ kwepemi500023.china.huawei.com (7.221.188.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Thu, 23 Jun 2022 14:50:00 +0800
+Subject: Re: [PATCH] soc: mediatek: fix missing clk_disable_unprepare() on err
+ in svs_resume()
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<liwei391@huawei.com>
+References: <20220621114658.10054-1-wupeng58@huawei.com>
+ <f48e0cca-644a-bad7-282b-28e3e0d5d437@gmail.com>
+From: "wupeng (D)" <wupeng58@huawei.com>
+Message-ID: <6b1751c2-28c9-8b1b-4273-3f3c5681151a@huawei.com>
+Date: Thu, 23 Jun 2022 14:50:00 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220623035214.20124-1-macpaul.lin@mediatek.com>
+In-Reply-To: <f48e0cca-644a-bad7-282b-28e3e0d5d437@gmail.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.174.176.254]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ kwepemi500023.china.huawei.com (7.221.188.76)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_233659_679795_EC33A6C1 
-X-CRM114-Status: GOOD (  23.94  )
+X-CRM114-CacheID: sfid-20220622_235012_160185_56D34612 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,118 +70,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 23, 2022 at 11:52:14AM +0800, Macpaul Lin wrote:
-> Add usb product id of the Quectel RM500K module.
+On 2022/6/22 22:02, Matthias Brugger wrote:
 > 
-> RM500K provides 2 maindatory interfaces to Linux host after enumeration.
-
-typo: mandatory
-
->  - /dev/ttyUSB5: this is a serial interface for control path. User needs
->    to write AT commands to this device node to query status, set APN,
->    set PIN code, and enable/disable the data connection to 5G network.
->  - ethX: this is the data path provided as a RNDIS devices. After the
->    data connection has been established, Linux host can access 5G data
->    network via this interface.
 > 
-> The following kernel settings is required for RM500K.
->  - CONFIG_USB_SERIAL_GENERIC
->  - CONFIG_USB_SERIAL_CONSOLE
-
-You shouldn't need either of those.
-
->  - CONFIG_USB_NET_RNDIS_HOST
->  - CONFIG_USB_SERIAL_WWAN
->  - CONFIG_USB_SERIAL_OPTION
-
-And OPTION selects WWAN so no need to mention that.
-
-But you can probably just drop this paragraph.
-
-> usb-devices output for 0x7001:
-> T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  3 Spd=480 MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=2c7c ProdID=7001 Rev=00.01
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=USB DATA CARD
-> S:  SerialNumber=869206050009672
-> C:  #Ifs=10 Cfg#= 1 Atr=a0 MxPwr=500mA
-> I:  If#= 0 Alt= 0 #EPs= 1 Cls=02(commc) Sub=02 Prot=ff Driver=rndis_host
-> E:  Ad=82(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 1 Alt= 0 #EPs= 2 Cls=0a(data ) Sub=00 Prot=00 Driver=rndis_host
-> E:  Ad=01(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=81(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 2 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=00 Prot=00 Driver=option
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=83(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 3 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=00 Prot=00 Driver=option
-> E:  Ad=03(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=84(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 4 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=00 Prot=00 Driver=option
-> E:  Ad=04(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=85(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 5 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=42 Prot=01 Driver=(none)
-> E:  Ad=05(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=86(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 6 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=00 Prot=00 Driver=option
-> E:  Ad=06(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=87(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 7 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=00 Prot=00 Driver=option
-> E:  Ad=07(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=88(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 8 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=00 Prot=00 Driver=option
-> E:  Ad=08(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=89(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:  If#= 9 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=00 Prot=00 Driver=option
-> E:  Ad=09(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=8a(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-
-Can you say something about what the other interfaces are for?
-
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Signed-off-by: Ballon Shi <ballon.shi@quectel.com>
-
-The submitters SoB always goes last (to reflect how the patch was
-forwarded).
-
-If Ballon is the primary author you need to add a From line at the
-beginning of mail body.
-
-Otherwise you should add a Co-developed-by tag before the co-author's
-SoB.
-
-More details in
-
-	Documentation/process/submitting-patches.rst
-
-> Cc: stable@vger.kernel.org
-> ---
->  drivers/usb/serial/option.c | 2 ++
->  1 file changed, 2 insertions(+)
+> On 21/06/2022 13:46, Peng Wu wrote:
+>> Fix the missing clk_disable_unprepare() before return
+>> from svs_resume() in the error handling case.
+>>
+>> Signed-off-by: Peng Wu <wupeng58@huawei.com>
+>> Reported-by: Hulk Robot <hulkci@huawei.com>
+>> ---
+>>   drivers/soc/mediatek/mtk-svs.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+>> index 606a00a2e57d..1b5c297aaec5 100644
+>> --- a/drivers/soc/mediatek/mtk-svs.c
+>> +++ b/drivers/soc/mediatek/mtk-svs.c
+>> @@ -1525,6 +1525,7 @@ static int svs_resume(struct device *dev)
+>>       ret = reset_control_deassert(svsp->rst);
+>>       if (ret) {
+>> +        clk_disable_unprepare(svsp->main_clk);
 > 
-> diff --git a/drivers/usb/serial/option.c b/drivers/usb/serial/option.c
-> index e7755d9cfc61..e2587a3c7600 100644
-> --- a/drivers/usb/serial/option.c
-> +++ b/drivers/usb/serial/option.c
-> @@ -253,6 +253,7 @@ static void option_instat_callback(struct urb *urb);
->  #define QUECTEL_PRODUCT_BG96			0x0296
->  #define QUECTEL_PRODUCT_EP06			0x0306
->  #define QUECTEL_PRODUCT_EM12			0x0512
-> +#define QUECTEL_PRODUCT_RM500K			0x7001
+> Same holds for the error path of svs_init02(), correct?
+> 
+> Regards,
+> Matthias
+> 
+>>           dev_err(svsp->dev, "cannot deassert reset %d\n", ret);
+>>           return ret;
+>>       }
+> .
+Yes, the error path of svs_init02() requires the same operation.
+I will resubmit a patch.
 
-Please keep the defines sorted by PID here.
-
->  #define QUECTEL_PRODUCT_RM500Q			0x0800
->  #define QUECTEL_PRODUCT_EC200S_CN		0x6002
->  #define QUECTEL_PRODUCT_EC200T			0x6026
-> @@ -1135,6 +1136,7 @@ static const struct usb_device_id option_ids[] = {
->  	{ USB_DEVICE_AND_INTERFACE_INFO(QUECTEL_VENDOR_ID, 0x0620, 0xff, 0, 0) },
->  	{ USB_DEVICE_INTERFACE_CLASS(QUECTEL_VENDOR_ID, 0x0700, 0xff), /* BG95 */
->  	  .driver_info = RSVD(3) | ZLP },
-> +	{ USB_DEVICE_AND_INTERFACE_INFO(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_RM500K, 0xff, 0x00, 0x00) },
->  	{ USB_DEVICE_AND_INTERFACE_INFO(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_RM500Q, 0xff, 0xff, 0x30) },
->  	{ USB_DEVICE_AND_INTERFACE_INFO(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_RM500Q, 0xff, 0, 0) },
->  	{ USB_DEVICE_AND_INTERFACE_INFO(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_RM500Q, 0xff, 0xff, 0x10),
-
-Johan
+Regards,
+Peng
 
