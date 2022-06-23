@@ -4,58 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B22AC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 07:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA38C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 08:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tzwXHQqkRfK+C1fCKRfEF4VfpORlNvrus74Gvzg+BHQ=; b=GB68DUVZBN/6IcBxj2qnvzaeiw
-	xVW0NkUzJl/GWWGQd1dziscehL/rh1HdvB8zUU2iaAH91EDFeT0vBOH9okdenPu/nrxpoQmu1ycTN
-	TKpptr0J0PUg7RIx/dpjq69Wt5lsZFWYVChHcHKYHkGnGzUI3kpadCmDFE7m1tBgrsdBkVC9GoB1P
-	0xfT60+6lZPnsKWtgf1Csvbs5MDmbjFPXAdTiGWAOD+Kw2XcK56ii5sdUMpyZXx/k3MX1H9Sw0HAH
-	Y4aSxBNekgOXJf2GbCTNhYmpTVPQGM99W/uvW9ht6SirBQhKz6Vv8YwTzPs+0bJsXfL+iciXIk0Qm
-	5JKiZEmQ==;
+	bh=6IyvfwMHH5J6RGveILMnRqY90+quKBsg4EFMniIhpp4=; b=g9Qo04yn7dybUFz3Q143vU98RE
+	EqyTfFtV5plAHr7Mj7NcX+XWt4gERsW16lTmAxwEyWmvmBT7x89uie7X/9T4i6adZHVuGCMFro24X
+	hCkbIJxAZLTv70uNncONx6Q8CSC9Jd9H9QwJ0hvOpW+wOzXutCFyA8yKdblD4ht/oeKPuhzJE+A5f
+	Q9F/FWslGRgVpSXZe2KGxwnLfos4ZFctSl8Vg4v/psFzDIl4eAy45nCtYkHVRmlPiRrNxZz8qKHU+
+	et25uor9eGhZQywEd3+KXMLTZeQ1fpEinBYeG5lFr46tNdpcD7IReP2hbFErTMmIbmsYlBUpeSY4+
+	8IyCkVQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Hbi-00DwcL-Am; Thu, 23 Jun 2022 07:50:30 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4HbW-00DwXr-Py; Thu, 23 Jun 2022 07:50:20 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7FAD612FC;
-	Thu, 23 Jun 2022 00:50:15 -0700 (PDT)
-Received: from [192.168.33.6] (unknown [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E0FFB3F792;
-	Thu, 23 Jun 2022 00:50:12 -0700 (PDT)
-Message-ID: <e9dc0752-269f-bdfc-1036-17f5bfd95680@arm.com>
-Date: Thu, 23 Jun 2022 08:50:03 +0100
+	id 1o4HyB-00E1lT-ID; Thu, 23 Jun 2022 08:13:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o4Hxy-00E1fY-6B; Thu, 23 Jun 2022 08:13:31 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5CA8A66016E1;
+	Thu, 23 Jun 2022 09:13:25 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655972006;
+	bh=aKUeSQS7JjwmLoA51+Y/QiVigSc3OYpsPtreXvN2cyY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=iCOPl6Mb1zctioVnRoo1h+YmE6mUnuFw6iO0R+k3aLmZKHCKnku7NBVDmt00tdhoN
+	 DhQE2vLNb8WLU+xrS2XgPH4MFO/HJ8LPVVJZR7V83SApXqioJXOHOLzBujAgm0PYCW
+	 Zki3btv0GC5UionwXKUjI+CLAY0lueTfh9o4u/dwYtALK60Su/15OzH+rDzbNnrZLm
+	 A+LS85neuTq48igqYhv8BjyuTWQg484OqXKz3PFsezICja8Ei/GbaeAHbZ9wPQFcul
+	 cAbmjq7ULZ1Nhhxk1lx9mWiFWL9yKSjbbtaQG3whgyH3mF9tJJx6ds9IDhYz1Nm0e2
+	 0bHCntzaXUQNg==
+Message-ID: <ff4dc55c-bb87-ac15-2d39-1f1ed41f4221@collabora.com>
+Date: Thu, 23 Jun 2022 10:13:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 3/4] firmware: arm_scmi: Get detailed power scale from
- perf
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] soc: mediatek: mutex: add suffix 0 to
+ DDP_COMPONENT_DITHER for mt8395
 Content-Language: en-US
-To: Sudeep Holla <sudeep.holla@arm.com>
-Cc: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- daniel.lezcano@linaro.org, amitk@kernel.org, rui.zhang@intel.com,
- viresh.kumar@linaro.org, rafael@kernel.org, dietmar.eggemann@arm.com,
- nm@ti.com, sboyd@kernel.org, cristian.marussi@arm.com,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20220622145802.13032-1-lukasz.luba@arm.com>
- <20220622145802.13032-4-lukasz.luba@arm.com>
- <20220622155322.g2idz2623nxi6mu3@bogus>
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <20220622155322.g2idz2623nxi6mu3@bogus>
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Fabien Parent <fparent@baylibre.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220622131952.29583-1-jason-jh.lin@mediatek.com>
+ <26854a9b-09c2-c14e-eabe-cfc574d6012e@collabora.com>
+ <66d3a7719eb7797acfe3ccfd8ed0f710ea384023.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <66d3a7719eb7797acfe3ccfd8ed0f710ea384023.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_005018_938290_5435FCB3 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220623_011330_489451_BEAAE464 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,24 +82,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 23/06/22 02:33, Jason-JH Lin ha scritto:
+> Hi Angelo,
+> 
+> Yes, I missed that!
+> So just forget about this patch and use yours.
+> 
+> Thanks for your help :)
+> 
 
+No worries, it happens...
+Btw, you're welcome.
 
-On 6/22/22 16:53, Sudeep Holla wrote:
-> On Wed, Jun 22, 2022 at 03:58:01PM +0100, Lukasz Luba wrote:
->> In SCMI v3.1 the power scale can be in micro-Watts. The upper layers, e.g.
->> cpufreq and EM should handle received power values properly (upscale when
->> needed). Thus, provide an interface which allows to check what is the
->> scale for power values. The old interface allowed to distinguish between
->> bogo-Watts and milli-Watts only (which was good for older SCMI spec).
+Cheers!
+
+> Regard,
+> Jason-JH.Lin
+> 
+> On Wed, 2022-06-22 at 15:31 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 22/06/22 15:19, Jason-JH.Lin ha scritto:
+>>> Add suffix 0 to DDP_COMPONENT_DITHER for mt8395.
+>>>
+>>> Fixes: 141311b856d8 ("soc: mediatek: mutex: add MT8365 support")
+>>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 >>
-> 
-> Assuming you will take this as a series,
-> 
-> Acked-by: Sudeep Holla <sudeep.holla@arm.com>
-> 
-
-Thanks Sudeep for the ACKs!
-
-Regards,
-Lukasz
+>>
+>> Hello Jason-JH,
+>>
+>> you must've missed my commit, sent two days ago, which is doing the
+>> same:
+>>
+>>
+> https://lore.kernel.org/lkml/20220620102454.131417-1-angelogioacchino.delregno@collabora.com/T/#u
+>>
+>> Anyway, I have avoided to rename the definition, as from what I
+>> understand
+>> MT8365 has only one dither mod and that's called "DITHER", not
+>> "DITHER0"...
+>> ...but I've added the suffix to the array assignment, as that's what
+>> we have
+>> in the enumeration.
+>>
+>> I think that #define MT8365_MUTEX_MOD_DISP_DITHER should be kept as-
+>> is.
+>>
+>> Also... this commit is not fixing anything, as it was already working
+>> before,
+>> so the Fixes tag shouldn't be present.
+>>
+>> Regards,
+>> Angelo
+>>
 
