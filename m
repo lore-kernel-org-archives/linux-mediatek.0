@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5259C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 13:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD01C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 15:32:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:Subject:To:From:MIME-Version:Date:Message-ID:Reply-To:Cc:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WNf30pWmomVijQS487Jkw5NSj+2vHNyDaCao+8QVliQ=; b=g7ky7vH3XKyfHAc0E9yOFpyhh7
-	/P02mHDN2iKq/MD1i6kD5gQxTLpo6T07r1ecm0G0kV4R8TbI85la+bXW7SM5WAGj45tTVepSgMp5m
-	+oAFF3VxbBYNtn8jRVuAnr+RRwwezcznkxRh4MRkQoqv6qPJRA2sXZOAdAiPrnZrpcr3KFPXua3KC
-	h7GNGAII+kLnb5qHbOsIDkCpz5ltV0AMq/QrzqzotqdBBynmLe+/k9rd+GvQwa7axuMvAiXEZeewi
-	U+O3w/s7R3+HBcDjxTM6whv83WM/dHsutYg4NTwIfjp3D5FBOoT4y46PGlXRTda75vJuaxWZVAzui
-	5SpD3AYg==;
+	bh=G9r9WfOgycWJ4bI8LSx9NrrT1zkorjRsnv5Ba9gPKUI=; b=maDFTep5SFrzJeCB5EcvuhTQ+F
+	Z5NAR0wlqHAinggIe8OzVSkEo4B/Ysfhy5xqa+ChDw194YipogYk2pfpQjRikj/qjHqCaaH+U3Mse
+	PJqwqMfKoBQs2oYz8Or7dTD5j6xxB2TBpqsH8pozQSAiGyHv7cb58nXEg/Odhlnt8um2tNWkjSLTt
+	KZbtA+tvfb6DGhiUm0SztbrhmZBp6OmwwTV+qQ1fWo4fquLS2t3Q4CnECBLyplm2tpNKqH1/9fDQ4
+	IF0QOT/FbNhWrVf7h02G5bJNDNlrYadDlTaKNVuYIfmEOF2fAHWnA5mGhD4QGIrc+XbEbWbc50nKG
+	HMOu53wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4NJa-00FR4w-PN; Thu, 23 Jun 2022 13:56:10 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o4OoX-00FhQi-K1; Thu, 23 Jun 2022 15:32:13 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4NJP-00FR1Q-3m; Thu, 23 Jun 2022 13:56:00 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E0E366016F0;
-	Thu, 23 Jun 2022 14:55:52 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655992553;
-	bh=5sW6BimoFPL/i1s52PKt0YiCTWn44ik1RGWDhHeRQB8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=GTpfEeIXrd13paiafv+YQrIByKTXvEY8Kobd/ORfWfGqYDriEyp7pXCDWz50aDhgZ
-	 TibaaQhb+61Y8I3n8ArhBomHaS19myHn6oBFMKy1fo+9c+Q3G6vvJSv/Z7h2w7mZQw
-	 +a8LmC6RiJYmFasz2ExpGsgYF5SbQb28iMa3LU77J6IvkIOR9Hxo8J3GDYQENC1OOQ
-	 SgHfMYpI6EecpMdjC5tK3HqZJwvmHBcj9LAN5NBVsNpeMsi8pgt//y07L6uVeHQNii
-	 M2E/bZO3odjkn1upiIo9ASYmLtzjxSLm6FGMApfqmtepna0AL962LvJdzAZoUgjXjI
-	 I8lc8ThwNgOiA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: minghsiu.tsai@mediatek.com
-Cc: houlong.wei@mediatek.com,
-	andrew-ct.chen@mediatek.com,
-	mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	hans.verkuil@cisco.com,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	acourbot@chromium.org,
-	irui.wang@mediatek.com,
-	yunfei.dong@mediatek.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] media: platform: mtk-mdp: Fix mdp_ipi_comm structure alignment
-Date: Thu, 23 Jun 2022 15:55:46 +0200
-Message-Id: <20220623135546.121344-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+	id 1o4OoV-00FhPR-Vc
+	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 15:32:13 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id l126-20020a1c2584000000b0039c1a10507fso1696323wml.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jun 2022 08:32:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:from:to:subject
+         :content-transfer-encoding;
+        bh=G9r9WfOgycWJ4bI8LSx9NrrT1zkorjRsnv5Ba9gPKUI=;
+        b=OJ/WrSFAUczzDJJfMeMeUrzWecyWZy/1G7l3yIJ84hOrAaQc9yzaYHUy8/QyRTYYx8
+         y81bm611DJvH7WlTcyc7rM9c05qSnBIkYHGT06NL6OnimUbLTrw7B6JbfhvcD9LKO+pz
+         cwBsTpio9izbs33kCUYQ84DpkWrdB4qLm3yGXaUTKmCbI0F6cwEaClPwdzA369H799xY
+         ACv4LCrzjv6OoJcesKV3n2SkYzbWuH1f6pfvvYGvJzNosgh4wtyRnJtKF8JFt0co73L+
+         RuQ4MZ3xiyfFjeQyS+tGoEcFMeSZZwoMonI9jhPBg0BP8+BOre70LYqKByMmAMlvU0Nr
+         PTvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:from:to:subject
+         :content-transfer-encoding;
+        bh=G9r9WfOgycWJ4bI8LSx9NrrT1zkorjRsnv5Ba9gPKUI=;
+        b=BtILMA2bkfksTFqupLl8YCeVaBrc74G1qkeGFcENNEP9HYTleFDXkQbTEKQxmJRSpm
+         zv09Z8C1WDX0keklQqpljn1uyWrYzGPERXbg7r/HloAUCZvphbau2NyliPcr2rWc2quX
+         m26M+CYxYPZZYfnz5zSz2Chz8IE1NFzsiFDVwCESFeR6B9Q4v8tcQWajV1Y0y8S90mnC
+         3I11enSAGy2pfeZAoGQ1GqUkbXE8l19LuOtHQKBBLdDWDpTyvS9WwAkZRGtgya+z0QPf
+         q8HmgPqf/YIZg+42AvwfGah7cxYDwGY1OpPU+cMZda8kAFA2o9wO/N81mvhea9A0O7z8
+         fYAQ==
+X-Gm-Message-State: AJIora+NOEddMgQwAkG4T18MdIQ6nnYzaq11nEXlF0zeOA3z3She8xNi
+	3bEIc3uzXcWB+fPkJ0vVn47u1l6rgYM=
+X-Google-Smtp-Source: AGRyM1uG41+SJFxIpQD9ZMcsywra1VKVOsyQNPZHifUGjXZeYZRz0im7Iqco2sUvwPZC3oG+arUf2g==
+X-Received: by 2002:a05:600c:34b:b0:39d:b617:805 with SMTP id u11-20020a05600c034b00b0039db6170805mr4886630wmd.62.1655998327571;
+        Thu, 23 Jun 2022 08:32:07 -0700 (PDT)
+Received: from DESKTOP-DLIJ48C ([39.42.130.216])
+        by smtp.gmail.com with ESMTPSA id d6-20020adfef86000000b0021b8d1b0568sm13765415wro.52.2022.06.23.08.32.06
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Thu, 23 Jun 2022 08:32:06 -0700 (PDT)
+Message-ID: <62b48776.1c69fb81.7d536.b29d@mx.google.com>
+Date: Thu, 23 Jun 2022 08:32:06 -0700 (PDT)
+X-Google-Original-Date: 23 Jun 2022 11:32:08 -0400
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: schreiber.crosslandestimation@gmail.com
+To: linux-mediatek@lists.infradead.org
+Subject: Quote To Bid
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_065559_309365_22F09165 
-X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-CacheID: sfid-20220623_083212_050315_EB3B9810 
+X-CRM114-Status: UNSURE (   2.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,52 +86,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mdp_ipi_comm structure defines a command that is either
-PROCESS (start processing) or DEINIT (destroy instance); we
-are using this one to send PROCESS or DEINIT commands from Linux
-to an MDP instance through a VPU write but, while the first wants
-us to stay 4-bytes aligned, the VPU instead requires an 8-bytes
-data alignment.
-
-Keeping in mind that these commands are executed immediately
-after sending them (hence not chained with others before the
-VPU/MDP "actually" start executing), it is fine to simply add
-a padding of 4 bytes to this structure: this keeps the same
-performance as before, as we're still stack-allocating it,
-while avoiding hackery inside of mtk-vpu to ensure alignment
-bringing a definitely bigger performance impact.
-
-Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
-Reviewed-by: Irui Wang <irui.wang@mediatek.com>
----
-
-Changes in v2: Rebased on next-20220623
-
- drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h b/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
-index 2cb8cecb3077..b810c96695c8 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
-@@ -40,12 +40,14 @@ struct mdp_ipi_init {
-  * @ipi_id        : IPI_MDP
-  * @ap_inst       : AP mtk_mdp_vpu address
-  * @vpu_inst_addr : VPU MDP instance address
-+ * @padding       : Alignment padding
-  */
- struct mdp_ipi_comm {
- 	uint32_t msg_id;
- 	uint32_t ipi_id;
- 	uint64_t ap_inst;
- 	uint32_t vpu_inst_addr;
-+	uint32_t padding;
- };
- 
- /**
--- 
-2.35.1
+Hi,=0D=0A=0D=0AWe provide estimation & quantities takeoff service=
+s. We are providing 98-100 accuracy in our estimates and take-off=
+s. Please tell us if you need any estimating services regarding y=
+our projects.=0D=0A=0D=0ASend over the plans and mention the exac=
+t scope of work and shortly we will get back with a proposal on w=
+hich our charges and turnaround time will be mentioned=0D=0A=0D=0A=
+You may ask for sample estimates and take-offs. Thanks.=0D=0A=0D=0A=
+Kind Regards=0D=0ASchreiber Lane=0D=0ACrossland Estimating, INC=20
 
 
