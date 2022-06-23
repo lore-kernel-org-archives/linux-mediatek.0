@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F55AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 09:10:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42B60C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 09:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bd3SZNw3xpk9iHEdnyrmQOOxWBTiJkEbpXFjsHtFWOQ=; b=fCHwFW6n/hmDNvNqMPUo9Yp/st
-	AipWWW2+d1QoX2oK5ghVUEWNXhcd2Bc6tL2gSOnRzbx57LVKiRys2zfHmqtKi66ejerGREEk7lrWm
-	SMwrkZpnUV2fR8q5eMaB6lbT5hij5WZklsDMMMjC+BT7oNIRU2X30WXhpWBZlogbU1gJWttHt4YbC
-	Dkzxg/fAhPnxGXkJr8SEQg4bDWQWueR6wa/uEIHbP3W2gqBnXhi44Ch0UnOan2dbtpe/7IBKRV8v5
-	PBVt+8I7Jopx3sUpWpDvxx0fKtZMpfKIEsOKPt5Q4Y0xCcVunyDNcDFZ/Boy3TZPeMZBvN5y1rE2c
-	g5cIlBag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pvak8vXpsDRjOHTXooC25SFXlSSfbACSqePH2JW+Esk=; b=UYmYSewg6PVg+dmp43yd/UBvoR
+	7as5S3GD9leJZtBDC11KjA5fKg0Qx7Ta6Pq+LHKK+6gAE3IBQpj9BAAnbyutcKs+B/dSX1YiT7SSs
+	jnyoLXLje65ZOzlkaFrAOIM/gaWxm0BHs45oIWvLm31vK0VU8iCXZhX3f57BKUqt5KxrfQL5nsIi6
+	MK17cYhXw8q4C8t8+U65lVb97Tce0nEm/F3Usi32rbo8Smp2b0DfN+rvyGBosGQCMKpNSp0QDf5VS
+	NY6yM5nwdA9tMXhOvs0Uapx/6dO6JCqLyPcjtGFMgZ4awjlROyMB1C+zli49d4mzAmXnx0Ol8rKQT
+	l36jUyaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Iqa-00EFyf-It; Thu, 23 Jun 2022 09:09:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o4J04-00EIqG-Pr; Thu, 23 Jun 2022 09:19:44 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Ipi-00EFYH-26; Thu, 23 Jun 2022 09:09:04 +0000
-X-UUID: c46395bc246c41fe8b094f0e726bcc35-20220623
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:af2c973a-e63e-47fc-bdf0-fdc18623324f,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:e13151ea-f7af-4e69-92ee-0fd74a0c286c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: c46395bc246c41fe8b094f0e726bcc35-20220623
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
-	(envelope-from <axe.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 323888101; Thu, 23 Jun 2022 02:08:46 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jun 2022 02:05:09 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 23 Jun 2022 17:05:07 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Jun 2022 17:05:06 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
-	Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
-	<satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
-	<axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
-	<ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
-	<swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
-	<huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
-	<angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Yong Mao
-	<yong.mao@mediatek.com>
-Subject: [PATCH v13 3/3] mmc: mediatek: add support for SDIO eint wakup IRQ
-Date: Thu, 23 Jun 2022 17:04:45 +0800
-Message-ID: <20220623090445.1401-4-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220623090445.1401-1-axe.yang@mediatek.com>
-References: <20220623090445.1401-1-axe.yang@mediatek.com>
+	id 1o4Izt-00EImA-5A; Thu, 23 Jun 2022 09:19:34 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2FF226601752;
+	Thu, 23 Jun 2022 10:19:28 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655975969;
+	bh=jvTSpUApFuNR+zry7deDGr045Bs+SsvwvHOVl8kQWBE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HtlXJ6FpjazjmbTMa4K2OgCwmcUvIgnEBsNkestc/XFp/KcB1WYvMxf57uDyTjU79
+	 +UmT84cZ5l7aebBlizcY3SvC9cSANEU7MooekayQBaJAEImjOp+g7A8BYnJgcNLPtM
+	 HKogcZk+1CnKeTDKJYkek4EsPkyAtW+kBdvfFMnolf26yDoAHWwi+DbDHc2S9OGX3B
+	 9JpOCV8Q9ApJstpZHhUJRjKjRG9H3rJdInA/HmgqlkLwwUpCd+L6QlezzR6rLy7otL
+	 aKC3KUaagtPTXQDtZkzncR+c/SlrbTVmiLf5z396DxfIBcDp7IExBd4oSehUKKvTDC
+	 hcOy74FkPmOpg==
+Message-ID: <0b065a56-5ab1-9be4-d92c-f7bfec629a3e@collabora.com>
+Date: Thu, 23 Jun 2022 11:19:26 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v4 0/4] Add MT8186 ADSP dt-binding
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ YC Hung <yc.hung@mediatek.com>, Curtis Malainey <cujomalainey@chromium.org>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220622062245.21021-1-tinghan.shen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220622062245.21021-1-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_020902_151638_00F5A331 
-X-CRM114-Status: GOOD (  23.88  )
+X-CRM114-CacheID: sfid-20220623_021933_468638_C269DFF9 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,207 +88,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for eint IRQ when MSDC is used as an SDIO host. This
-feature requires SDIO device support async IRQ function. With this
-feature, SDIO host can be awakened by SDIO card in suspend state,
-without additional pin.
 
-MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
-turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
-resume, switch GPIO function back to DAT1 mode then turn on clock.
+For the entire series:
 
-Some device tree property should be added or modified in MSDC node
-to support SDIO eint IRQ. Pinctrls "state_eint" is mandatory. Since
-this feature depends on asynchronous interrupts, "wakeup-source",
-"keep-power-in-suspend" and "cap-sdio-irq" flags are necessary, and
-the interrupts list should be extended(the interrupt named with
-sdio_wakeup):
-        &mmcX {
-		...
-		interrupt-names = "msdc", "sdio_wakeup";
-		interrupts-extended = <...>,
-                              	      <&pio xxx IRQ_TYPE_LEVEL_LOW>;
-                ...
-                pinctrl-names = "default", "state_uhs", "state_eint";
-                ...
-                pinctrl-2 = <&mmc2_pins_eint>;
-                ...
-                cap-sdio-irq;
-		keep-power-in-suspend;
-		wakeup-source;
-                ...
-        };
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Co-developed-by: Yong Mao <yong.mao@mediatek.com>
-Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 84 ++++++++++++++++++++++++++++++++++++---
- 1 file changed, 78 insertions(+), 6 deletions(-)
+Cheers,
+Angelo
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 195dc897188b..f907b96cfd87 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /*
-- * Copyright (c) 2014-2015 MediaTek Inc.
-+ * Copyright (c) 2014-2015, 2022 MediaTek Inc.
-  * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
-  */
- 
-@@ -20,6 +20,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/pm_runtime.h>
-+#include <linux/pm_wakeirq.h>
- #include <linux/regulator/consumer.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
-@@ -440,8 +441,10 @@ struct msdc_host {
- 	struct pinctrl *pinctrl;
- 	struct pinctrl_state *pins_default;
- 	struct pinctrl_state *pins_uhs;
-+	struct pinctrl_state *pins_eint;
- 	struct delayed_work req_timeout;
- 	int irq;		/* host interrupt */
-+	int eint_irq;		/* interrupt from sdio device for waking up system */
- 	struct reset_control *reset;
- 
- 	struct clk *src_clk;	/* msdc source clock */
-@@ -1520,17 +1523,46 @@ static void __msdc_enable_sdio_irq(struct msdc_host *host, int enb)
- 
- static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
- {
--	unsigned long flags;
- 	struct msdc_host *host = mmc_priv(mmc);
-+	unsigned long flags;
-+	int ret;
- 
- 	spin_lock_irqsave(&host->lock, flags);
- 	__msdc_enable_sdio_irq(host, enb);
- 	spin_unlock_irqrestore(&host->lock, flags);
- 
--	if (enb)
--		pm_runtime_get_noresume(host->dev);
--	else
--		pm_runtime_put_noidle(host->dev);
-+	if (mmc_card_enable_async_irq(mmc->card) && host->pins_eint) {
-+		if (enb) {
-+			/*
-+			 * In dev_pm_set_dedicated_wake_irq_reverse(), eint pin will be set to
-+			 * GPIO mode. We need to restore it to SDIO DAT1 mode after that.
-+			 * Since the current pinstate is pins_uhs, to ensure pinctrl select take
-+			 * affect successfully, we change the pinstate to pins_eint firstly.
-+			 */
-+			pinctrl_select_state(host->pinctrl, host->pins_eint);
-+			ret = dev_pm_set_dedicated_wake_irq_reverse(host->dev, host->eint_irq);
-+
-+			if (ret) {
-+				dev_err(host->dev, "Failed to register SDIO wakeup irq!\n");
-+				host->pins_eint = NULL;
-+				pm_runtime_get_noresume(host->dev);
-+			} else {
-+				dev_dbg(host->dev, "SDIO eint irq: %d!\n", host->eint_irq);
-+			}
-+
-+			pinctrl_select_state(host->pinctrl, host->pins_uhs);
-+		} else {
-+			dev_pm_clear_wake_irq(host->dev);
-+		}
-+	} else {
-+		if (enb) {
-+			/* Ensure host->pins_eint is NULL */
-+			host->pins_eint = NULL;
-+			pm_runtime_get_noresume(host->dev);
-+		} else {
-+			pm_runtime_put_noidle(host->dev);
-+		}
-+	}
- }
- 
- static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
-@@ -2631,6 +2663,20 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 		goto host_free;
- 	}
- 
-+	/* Support for SDIO eint irq ? */
-+	if ((mmc->pm_caps & MMC_PM_WAKE_SDIO_IRQ) && (mmc->pm_caps & MMC_PM_KEEP_POWER)) {
-+		host->eint_irq = platform_get_irq_byname(pdev, "sdio_wakeup");
-+		if (host->eint_irq > 0) {
-+			host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
-+			if (IS_ERR(host->pins_eint)) {
-+				dev_err(&pdev->dev, "Cannot find pinctrl eint!\n");
-+				host->pins_eint = NULL;
-+			} else {
-+				device_init_wakeup(&pdev->dev, true);
-+			}
-+		}
-+	}
-+
- 	msdc_of_property_parse(pdev, host);
- 
- 	host->dev = &pdev->dev;
-@@ -2845,6 +2891,13 @@ static int __maybe_unused msdc_runtime_suspend(struct device *dev)
- 	struct msdc_host *host = mmc_priv(mmc);
- 
- 	msdc_save_reg(host);
-+
-+	if (host->pins_eint) {
-+		disable_irq(host->irq);
-+		pinctrl_select_state(host->pinctrl, host->pins_eint);
-+		if (sdio_irq_claimed(mmc))
-+			__msdc_enable_sdio_irq(host, 0);
-+	}
- 	msdc_gate_clock(host);
- 	return 0;
- }
-@@ -2860,12 +2913,18 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
- 		return ret;
- 
- 	msdc_restore_reg(host);
-+
-+	if (host->pins_eint) {
-+		pinctrl_select_state(host->pinctrl, host->pins_uhs);
-+		enable_irq(host->irq);
-+	}
- 	return 0;
- }
- 
- static int __maybe_unused msdc_suspend(struct device *dev)
- {
- 	struct mmc_host *mmc = dev_get_drvdata(dev);
-+	struct msdc_host *host = mmc_priv(mmc);
- 	int ret;
- 
- 	if (mmc->caps2 & MMC_CAP2_CQE) {
-@@ -2874,11 +2933,24 @@ static int __maybe_unused msdc_suspend(struct device *dev)
- 			return ret;
- 	}
- 
-+	/*
-+	 * Bump up runtime PM usage counter otherwise dev->power.needs_force_resume will
-+	 * not be marked as 1, pm_runtime_force_resume() will go out directly.
-+	 */
-+	if (host->pins_eint)
-+		pm_runtime_get_noresume(dev);
-+
- 	return pm_runtime_force_suspend(dev);
- }
- 
- static int __maybe_unused msdc_resume(struct device *dev)
- {
-+	struct mmc_host *mmc = dev_get_drvdata(dev);
-+	struct msdc_host *host = mmc_priv(mmc);
-+
-+	if (host->pins_eint)
-+		pm_runtime_put_noidle(dev);
-+
- 	return pm_runtime_force_resume(dev);
- }
- 
--- 
-2.25.1
+> v3 -> v4:
+> 1. Update commit message of patch 1/4
+> 2. Add review tag to path 3/4
+> 
+> v2 -> v3:
+> 1. Change mbox-names to rx/tx for both mt8186 and mt8195.
+> 2. Update description of mbox-names
+> 3. Use static string array instead of kasprintf
+> 4. Align clock names in dsp driver with dt-bindings
+> 
+> v1 -> v2:
+> 1. Change mbox-names from mbox0/mbox1 to rep/req for both mt8186 and mt8195.
+> 2. rename clock-names and remove unused headers
+> 
+> Tinghan Shen (4):
+>    dt-bindings: dsp: mediatek: Use meaningful names for mbox
+>    firmware: mediatek: Use meaningful names for mbox
+>    dt-bindings: dsp: mediatek: Add mt8186 dsp document
+>    ASoC: SOF: mediatek: Align mt8186 clock names with dt-bindings
+> 
+>   .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 91 +++++++++++++++++++
+>   .../bindings/dsp/mediatek,mt8195-dsp.yaml     | 10 +-
+>   drivers/firmware/mtk-adsp-ipc.c               | 36 +++-----
+>   sound/soc/sof/mediatek/mt8186/mt8186-clk.c    |  4 +-
+>   4 files changed, 110 insertions(+), 31 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
+> 
 
 
