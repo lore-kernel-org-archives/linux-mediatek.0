@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99E53C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 18:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF04C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 18:19:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pVm8MjXTsJMX8WBaTQ/Z/W23uteGk2WgxtylOJuMvn4=; b=qXX5UPBI1G4a4ChE76wVyZHvws
-	MGZoloMKoj8T93+/GtFAxyAVzLIClsH61rjFwtj3zHbH5g0MuRCi5IrNU10s99N6Ti24hhoyVXdYT
-	oyjM66dEdI4U9AVkYnlift/qtIW+wJK4FSTQNFQBVMsDVkDbL/OXJO5wta+EAU9voqpGnUwi0tclN
-	fitgUy/lZv2UmAhZyBcmH9JxuvfxC7Ci3tb6BKDlogl11ZCOZcu4efFNMD1DcvlFSui1PRDoBHKjn
-	+Q+SpoN6NJykOZ9Peq0sGT+r94hIGyCvdeQf9wRrEP8bLOm51+qthH2HFKMQKoNVWGaiTICraH/sX
-	4OnRKHug==;
+	bh=sBMGPYDRnJPeUwS8rUCcWoIIaqQNv7Xsce74kY6zINI=; b=uiJdiNgfEljFByOaShFMCi3+K1
+	wJ7e6bXtEUXghfvIAhnJtRtBmocY6mCXjjkQex/lGZUxGz+7oz8iiFjSMTfJfoORdWI3BDOvugBEn
+	Skv6z1Pe4lsL9j9cidozt361H0CthekpwBZzmQA0zcrXZbRmTtoslmNfMzg3SMO4+pLjUMc6SEG8s
+	fBMHgBj+7TGKXthM0JY/Rfz3Zs+qyDyxDlXVoIwvkuptm4ShytTfVXKk2f6qopW5WyEPrghpUPHBh
+	rBCWjS/yToLBTpjnouSKKTow/0rW5KfCJLLIsHjOwL9wTYoRNAuNlGUFoSZTZcGsHOWT3wCC3sfco
+	7aX54zxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4RFQ-00GG9L-Mg; Thu, 23 Jun 2022 18:08:08 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1o4RQh-00GIwP-HW; Thu, 23 Jun 2022 18:19:47 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4RFE-00GG6R-L7; Thu, 23 Jun 2022 18:07:58 +0000
-Received: by mail-lj1-x234.google.com with SMTP id s14so86554ljs.3;
-        Thu, 23 Jun 2022 11:07:55 -0700 (PDT)
+	id 1o4RQW-00GIt0-LY; Thu, 23 Jun 2022 18:19:38 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id j21so427823lfe.1;
+        Thu, 23 Jun 2022 11:19:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=pVm8MjXTsJMX8WBaTQ/Z/W23uteGk2WgxtylOJuMvn4=;
-        b=ROMSf98OAyUaa6eEUsFo3GNphishFltifgt5QEQzrZNe7sjAM+HfSxcOzzy9W6RXT/
-         G9dAp8BarXJwUQv1+UFIl9pO6g0/KNAziFw8OQyNNA2F7tBBoJs6F4EVswlaZ/mtrOUr
-         QkvM84BF5zxaVCCNT37WNd2okHNEk6IyyAzwEh1EwAophtbnp7iFhuLKO8Z/XOD1lnUl
-         suS5mf6pbLbWkjRhB9QoLtb2LLY0TBOsJTxfjC7JtzRG8wnlujGjvT+fxjiuxQ7n37lq
-         7hRGbeT6p1p4iK5XNA2XXK6FCYcJpRLpc3dd/qxtlN637sF3jF8kcCu0NSjABQOuH24p
-         9Wcw==
+        bh=sBMGPYDRnJPeUwS8rUCcWoIIaqQNv7Xsce74kY6zINI=;
+        b=BJrh0YPvvBPOk2FgsQMFRa2Mypjcm71ylJrq31IKtpANvhN4g8KLB7ntFQNq9IZHVF
+         l6ZhSU+TlBFMgNnWeh7Eoj5Ib1pOugR8/ndpuPy4VRRMJ6LnlT4CTMEzgfF4vBExrKon
+         Wo9h20LnpfRWOTcCAHW7Udyx6kQ1lpY2Hv/XvCOnPkvGMJrQAMlcIYbPHW/+QvkLPw/v
+         z1lAydtVEKdwcueGxWsSL7la7BCLCRYzBxgeXh32PNyM7jHQtn8jXHCrjG/yF8ym1dip
+         s0nAMXw5V2WlQuo+mpIp+OLG/gu7Zn8xLGMejPmMkd4+e9tWrl/+j7x7jETixBbgqiPc
+         vqew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=pVm8MjXTsJMX8WBaTQ/Z/W23uteGk2WgxtylOJuMvn4=;
-        b=00uAx+atqiqB4w/NmvCUn6yFqPgIDjbPjc/UYNTwTIFSXXO328Aqn2wUb0deKZC8DY
-         7rp4scdUeTr0q2z69/HPYB2KSbm9eOxi+qrFL0wGWjmMwVanxONr8b0B+M1qwRzINKT9
-         rq+yEKgez0cKDXOejJXTGq1ICUv2yVtb91/Cl35gNVkECQtB0LGCH/V344ZhhFIRk4iC
-         b2XmaH9d/RT+bqe/LoXrfUnlMnqgd7NxAVzhj6Xvc6rl4iy/WupGVEg82zkGIrUQSt5P
-         Sk4G9qPF4RhEby5STUPkPAzVtujzqQX4VS9a+jtXcBQDMR0QXxaC7dbLaMLdNDvWiSjB
-         Jzwg==
-X-Gm-Message-State: AJIora+RWSy/4O4vJuXHrmU2J3MMglFOSncMCCsqm905A13f8JASLtxa
-	xBkvW64+LgECOR3cEJNoQ6b9hKBJFf5QxxEY36ex6i09DiF32Q==
-X-Google-Smtp-Source: AGRyM1vZgKzYKINQvL/hjv/QKJoSpgQjofBcH1c6rGieXJWJEFKaIjpnuwM4pmWPjKf5o83t+GJsAhFvgJCR3nJUMSQ=
-X-Received: by 2002:a2e:b8d2:0:b0:255:93e3:6fb2 with SMTP id
- s18-20020a2eb8d2000000b0025593e36fb2mr5737201ljp.334.1656007673996; Thu, 23
- Jun 2022 11:07:53 -0700 (PDT)
+        bh=sBMGPYDRnJPeUwS8rUCcWoIIaqQNv7Xsce74kY6zINI=;
+        b=l/TaugY2+Za3miDoL5elg7HMYxR8R5oFbXtSar5ACjnbjuCRGUl5JArpMhbLbL3OD9
+         sTRmgRQLEADcsTqliPZslsGK6olw/Tn8mMjaQ9QtTgDMRJnEACWVaV10nUaidU+q01i7
+         O4BuAZ0/h2i3P6RzN+5HPax3EQApyu5l9Yanj29umVyejCXzcG50B1+r69Y/10wCC8jF
+         GQeMqP+O+7G5sZVDwCtuHXzqW3lqzS3fYqJkgJjgKDy+4Th+eqLNRl9+0W44ehtGRarw
+         Fit/ynEEOXRYYmhpLxX6kFqFYhsJvAZTd43dwdA7yi5vnTq+Gd3F2thw7PaUNBi62/Mg
+         AutQ==
+X-Gm-Message-State: AJIora/jMV4AdtJ2JmDPJ6osTY5YHVRN2dghn3b84J6aO2PsI5mAtVSC
+	MG7So7A3OlASGUQRaduq5YpolKGz/B/m2jz6Mjs=
+X-Google-Smtp-Source: AGRyM1sSt9RqJEWu2voYn8rYod2JWrA9S0VKzO5KainJy6NBR3RGPl9JAy9lFNfNLGcH9lioXFXtCJIfjWl2wSCUbcc=
+X-Received: by 2002:a05:6512:151f:b0:47d:dd0c:1d1c with SMTP id
+ bq31-20020a056512151f00b0047ddd0c1d1cmr6036883lfb.207.1656008372915; Thu, 23
+ Jun 2022 11:19:32 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-9-peterwu.pub@gmail.com>
-In-Reply-To: <20220623115631.22209-9-peterwu.pub@gmail.com>
+References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-10-peterwu.pub@gmail.com>
+In-Reply-To: <20220623115631.22209-10-peterwu.pub@gmail.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Thu, 23 Jun 2022 20:07:17 +0200
-Message-ID: <CAHp75Vchspgg_VaM+7JHD+2x+-JPkJXSdtLoqQGAx=kg5uAdSg@mail.gmail.com>
-Subject: Re: [PATCH v3 08/14] usb: typec: tcpci_mt6370: Add Mediatek MT6370
- tcpci driver
+Date: Thu, 23 Jun 2022 20:18:56 +0200
+Message-ID: <CAHp75VdgxR9aFQmi_MPrX=t7RMnKDiLAwWMvxbpW9OoQMJkKyw@mail.gmail.com>
+Subject: Re: [PATCH v3 09/14] regulator: mt6370: Add mt6370 DisplayBias and
+ VibLDO support
 To: ChiaEn Wu <peterwu.pub@gmail.com>
 Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
 	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
@@ -81,8 +81,8 @@ Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.or
 	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_110756_752356_6AAFB22A 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20220623_111936_716184_59F25DE6 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,126 +101,99 @@ On Thu, Jun 23, 2022 at 2:00 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 >
 > From: ChiYuan Huang <cy_huang@richtek.com>
 >
-> Add chip level mt6370 tcpci driver.
-
-...
-
-> +config TYPEC_TCPCI_MT6370
-> +       tristate "Mediatek MT6370 Type-C driver"
-> +       depends on MFD_MT6370
-> +       help
-> +         Mediatek MT6370 is a multi-functional IC that includes
-> +         USB Type-C. It works with Type-C Port Controller Manager
-> +         to provide USB PD and USB Type-C functionalities.
-
-What will be the module name?
+> Add mt6370 DisplayBias and VibLDO support.
 
 ...
 
 > +#include <linux/bits.h>
+> +#include <linux/gpio/consumer.h>
 > +#include <linux/interrupt.h>
 > +#include <linux/kernel.h>
 > +#include <linux/module.h>
 
 > +#include <linux/of.h>
 
-No user of this header is found in this file.
+Any users of this? (See below)
 
 > +#include <linux/platform_device.h>
-> +#include <linux/pm_wakeup.h>
-> +#include <linux/pm_wakeirq.h>
 > +#include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
-> +#include <linux/usb/tcpm.h>
-> +#include "tcpci.h"
+> +#include <linux/regulator/driver.h>
+> +#include <linux/regulator/machine.h>
 
 ...
 
-> +       if (did == MT6370_TCPC_DID_A) {
-> +               ret = regmap_write(data->regmap, TCPC_FAULT_CTRL, 0x80);
-> +               if (ret)
+> +#define MT6370_LDO_MINUV       1600000
+> +#define MT6370_LDO_STPUV       200000
+> +#define MT6370_LDO_N_VOLT      13
+> +#define MT6370_DBVBOOST_MINUV  4000000
+> +#define MT6370_DBVBOOST_STPUV  50000
+> +#define MT6370_DBVBOOST_N_VOLT 45
+> +#define MT6370_DBVOUT_MINUV    4000000
+> +#define MT6370_DBVOUT_STPUV    50000
+> +#define MT6370_DBVOUT_N_VOLT   41
+
+If UV is a unit suffix, make it _UV.
+
+...
+
+> +               .of_match = of_match_ptr("dsvbst"),
+
+Would it even be called / used if CONFIG_OF=n?
+
+...
+
+> +               .regulators_node = of_match_ptr("regulators"),
+
+Ditto.
+
+...
+
+> +       for (i = 0; i < ARRAY_SIZE(mt6370_irqs); i++) {
+> +               irq = platform_get_irq_byname(pdev, mt6370_irqs[i].name);
+> +
+> +               rdev = priv->rdev[mt6370_irqs[i].rid];
+> +
+> +               ret = devm_request_threaded_irq(priv->dev, irq, NULL,
+> +                                               mt6370_irqs[i].handler, 0,
+> +                                               mt6370_irqs[i].name, rdev);
+> +               if (ret) {
+
+> +                       dev_err(priv->dev,
+> +                               "Failed to register (%d) interrupt\n", i);
 > +                       return ret;
 
-return regmap_write(...);
+return dev_err_probe(...); ?
 
+> +               }
 > +       }
-> +
-> +       return 0;
 
 ...
 
-> +       if (ret && !source)
-> +               ret = regulator_disable(priv->vbus);
-> +       else if (!ret && source)
-> +               ret = regulator_enable(priv->vbus);
-> +       else
-> +               ret = 0;
+> +       for (i = 0; i < MT6370_MAX_IDX; i++) {
+> +               rdev = devm_regulator_register(priv->dev,
+> +                                              mt6370_regulator_descs + i,
+> +                                              &cfg);
+> +               if (IS_ERR(rdev)) {
+
+> +                       dev_err(priv->dev,
+> +                               "Failed to register (%d) regulator\n", i);
+> +                       return PTR_ERR(rdev);
+
+return dev_err_probe(...); ?
+
+> +               }
 > +
-> +       return ret;
-
-Can it be
-
-  if (ret && ...)
-    return regulator_disable(...);
-  if (!ret && ...)
-    return regulator_enable(...);
-
-  return 0;
-
-?
+> +               priv->rdev[i] = rdev;
+> +       }
 
 ...
 
-> +       if (!priv->tcpci_data.regmap) {
+> +       if (!priv->regmap) {
 > +               dev_err(&pdev->dev, "Failed to init regmap\n");
 > +               return -ENODEV;
 > +       }
 
-return dev_err_probe(...); ?
-
-...
-
-> +       if (ret) {
-> +               dev_err(&pdev->dev, "Failed to check vendor info (%d)\n", ret);
-> +               return ret;
-> +       }
-
-Ditto.
-
-...
-
-> +       priv->irq = platform_get_irq(pdev, 0);
-> +       if (priv->irq < 0) {
-
-> +               dev_err(&pdev->dev, "Failed to get TCPC irq (%d)\n", priv->irq);
-
-The message like this is printed in case of error inside
-platform_get_irq(), no need to duplicate.
-
-> +               return priv->irq;
-> +       }
-
-...
-
-> +       priv->tcpci = tcpci_register_port(&pdev->dev, &priv->tcpci_data);
-> +       if (IS_ERR(priv->tcpci)) {
-> +               dev_err(&pdev->dev, "Failed to register tcpci port\n");
-> +               return PTR_ERR(priv->tcpci);
-
-return dev_err_probe(); ?
-
-> +       }
-
-...
-
-> +       if (ret) {
-> +               dev_err(&pdev->dev, "Failed to allocate irq (%d)\n", ret);
-> +               tcpci_unregister_port(priv->tcpci);
-> +               return ret;
-
-Ditto.
-
-> +       }
+return dev_err_probe(...);
 
 -- 
 With Best Regards,
