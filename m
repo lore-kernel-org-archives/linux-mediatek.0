@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA38C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 08:13:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF69C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 08:42:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6IyvfwMHH5J6RGveILMnRqY90+quKBsg4EFMniIhpp4=; b=g9Qo04yn7dybUFz3Q143vU98RE
-	EqyTfFtV5plAHr7Mj7NcX+XWt4gERsW16lTmAxwEyWmvmBT7x89uie7X/9T4i6adZHVuGCMFro24X
-	hCkbIJxAZLTv70uNncONx6Q8CSC9Jd9H9QwJ0hvOpW+wOzXutCFyA8yKdblD4ht/oeKPuhzJE+A5f
-	Q9F/FWslGRgVpSXZe2KGxwnLfos4ZFctSl8Vg4v/psFzDIl4eAy45nCtYkHVRmlPiRrNxZz8qKHU+
-	et25uor9eGhZQywEd3+KXMLTZeQ1fpEinBYeG5lFr46tNdpcD7IReP2hbFErTMmIbmsYlBUpeSY4+
-	8IyCkVQQ==;
+	bh=10P4WcE1jL5ZWJcaqGZV23Qsl+UQzJzlX+JiQUSb1BU=; b=riYPPwQiTkBcPPXxnN0FC8FMZF
+	HqFTC16tCJxKjNK8a+GoQqFde37IEA02wZr1NYto++PdwU2UakH2sekzmmeIjoDgMCW9WlbkFGpI3
+	SOXuuuaRfqlhIX6r4OhFIyq2RcJgayqCT7mb/JsEtkc2pO27nxhuzZPE+2Ig5vJPN21s7FFt3Fd9D
+	LhjqzsxPmunf9mPcpjOn2c0P0iAcNagWe3E3l9etE8dKPxkclOHToYfOafnHa0gW/FPOZ/XWwpfwN
+	Kldgd1vjT5amIB7b54EQhwKdaUO6BY6IEZAKKiyOjake5Zl9HYF5SSlghroGfWlNU9oKwtPk5Jsu5
+	FBbdQoGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4HyB-00E1lT-ID; Thu, 23 Jun 2022 08:13:43 +0000
+	id 1o4IQ6-00E8uB-Fc; Thu, 23 Jun 2022 08:42:34 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Hxy-00E1fY-6B; Thu, 23 Jun 2022 08:13:31 +0000
+	id 1o4IQ3-00E8sz-CB
+	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 08:42:32 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5CA8A66016E1;
-	Thu, 23 Jun 2022 09:13:25 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 968FB6601792;
+	Thu, 23 Jun 2022 09:42:28 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655972006;
-	bh=aKUeSQS7JjwmLoA51+Y/QiVigSc3OYpsPtreXvN2cyY=;
+	s=mail; t=1655973749;
+	bh=a3qg+o/OwgqXslU/4j4RlR9cUNoRYrfj19YE44y2v3E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iCOPl6Mb1zctioVnRoo1h+YmE6mUnuFw6iO0R+k3aLmZKHCKnku7NBVDmt00tdhoN
-	 DhQE2vLNb8WLU+xrS2XgPH4MFO/HJ8LPVVJZR7V83SApXqioJXOHOLzBujAgm0PYCW
-	 Zki3btv0GC5UionwXKUjI+CLAY0lueTfh9o4u/dwYtALK60Su/15OzH+rDzbNnrZLm
-	 A+LS85neuTq48igqYhv8BjyuTWQg484OqXKz3PFsezICja8Ei/GbaeAHbZ9wPQFcul
-	 cAbmjq7ULZ1Nhhxk1lx9mWiFWL9yKSjbbtaQG3whgyH3mF9tJJx6ds9IDhYz1Nm0e2
-	 0bHCntzaXUQNg==
-Message-ID: <ff4dc55c-bb87-ac15-2d39-1f1ed41f4221@collabora.com>
-Date: Thu, 23 Jun 2022 10:13:23 +0200
+	b=XKQK0beGg3vTWSmevrEBFXfg7Q50EHWuJlc9pwCXzaWUO+VBLRPh9p4Oy3qQRBUsS
+	 2W7qVoYtzbfrOv/1RrewUg21ryne4VDHhJZdOO+WEWkFcAQl8p6YG9Y+YzRVi4CRh7
+	 77J6K81IQ+QSFtfhS/4wVHmTXZUfaz5CxrZSyP/VVqdmpOArk9s+lvIvrNdEEYSOfr
+	 CBDGOw97CVusucf5EYiBq65amZ8Ldr1FtzeutiCuujc2zWnCK1610hxEMZth5xs6pP
+	 VkcNlnAigF0gFT5diFw0gsC73kN0Q+5Xn4BKM5vlj5aMhsn+c4uYuAv4ZZxidv0ULF
+	 dzHKBOcezZn1w==
+Message-ID: <c379dca6-88a7-8ed6-c585-714ea411bd02@collabora.com>
+Date: Thu, 23 Jun 2022 10:42:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH] soc: mediatek: mutex: add suffix 0 to
- DDP_COMPONENT_DITHER for mt8395
+Subject: Re: [PATCH v2] Bluetooth: btmtksdio: Add in-band wakeup support
 Content-Language: en-US
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Fabien Parent <fparent@baylibre.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220622131952.29583-1-jason-jh.lin@mediatek.com>
- <26854a9b-09c2-c14e-eabe-cfc574d6012e@collabora.com>
- <66d3a7719eb7797acfe3ccfd8ed0f710ea384023.camel@mediatek.com>
+To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com
+Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
+ robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
+ posh.sun@mediatek.com, ted.huang@mediatek.com, Eric.Liang@mediatek.com,
+ Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
+ jsiuda@google.com, frankgor@google.com, abhishekpandit@google.com,
+ michaelfsun@google.com, mcchou@chromium.org, shawnku@google.com,
+ linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Yake Yang <yake.yang@mediatek.com>
+References: <52b63a1be094a1ccbb20f2c89472580d95f0652a.1655934689.git.objelf@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <66d3a7719eb7797acfe3ccfd8ed0f710ea384023.camel@mediatek.com>
+In-Reply-To: <52b63a1be094a1ccbb20f2c89472580d95f0652a.1655934689.git.objelf@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_011330_489451_BEAAE464 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20220623_014231_604406_DC0170C9 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,55 +81,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/06/22 02:33, Jason-JH Lin ha scritto:
-> Hi Angelo,
+Il 22/06/22 23:56, sean.wang@mediatek.com ha scritto:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Yes, I missed that!
-> So just forget about this patch and use yours.
+> Commit ce64b3e94919 ("Bluetooth: mt7921s: Support wake on bluetooth")
+> adds the wake on bluethooth via a dedicated GPIO.
 > 
-> Thanks for your help :)
+> Extend the wake-on-bluetooth to use the SDIO DAT1 pin (in-band wakeup),
+> when supported by the SDIO host driver.
 > 
+> Co-developed-by: Yake Yang <yake.yang@mediatek.com>
+> Signed-off-by: Yake Yang <yake.yang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+> v2: enhance the patch description and comments
+> ---
+>   drivers/bluetooth/btmtksdio.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+> index d6700efcfe8c..9d79c9107b3a 100644
+> --- a/drivers/bluetooth/btmtksdio.c
+> +++ b/drivers/bluetooth/btmtksdio.c
+> @@ -118,6 +118,7 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
+>   #define BTMTKSDIO_FUNC_ENABLED		3
+>   #define BTMTKSDIO_PATCH_ENABLED		4
+>   #define BTMTKSDIO_HW_RESET_ACTIVE	5
+> +#define BTMTKSDIO_INBAND_WAKEUP		6
+>   
+>   struct mtkbtsdio_hdr {
+>   	__le16	len;
+> @@ -1294,6 +1295,9 @@ static bool btmtksdio_sdio_wakeup(struct hci_dev *hdev)
+>   		.wakeup_delay = cpu_to_le16(0x20),
+>   	};
+>   
+> +	if (test_bit(BTMTKSDIO_INBAND_WAKEUP, &bdev->tx_state))
+> +		return may_wakeup;
+> +
 
-No worries, it happens...
-Btw, you're welcome.
+Uhm... this flag is either *always* set, or *always not set*... and we decide that
+during probe time... and we use it in just one function as well.
 
-Cheers!
+At this point, I would just avoid the addition of the BTMTKSDIO_INBAND_WAKEUP flag
+and add a new function for handling the .wakeup() callback - something like:
 
-> Regard,
-> Jason-JH.Lin
-> 
-> On Wed, 2022-06-22 at 15:31 +0200, AngeloGioacchino Del Regno wrote:
->> Il 22/06/22 15:19, Jason-JH.Lin ha scritto:
->>> Add suffix 0 to DDP_COMPONENT_DITHER for mt8395.
->>>
->>> Fixes: 141311b856d8 ("soc: mediatek: mutex: add MT8365 support")
->>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
->>
->>
->> Hello Jason-JH,
->>
->> you must've missed my commit, sent two days ago, which is doing the
->> same:
->>
->>
-> https://lore.kernel.org/lkml/20220620102454.131417-1-angelogioacchino.delregno@collabora.com/T/#u
->>
->> Anyway, I have avoided to rename the definition, as from what I
->> understand
->> MT8365 has only one dither mod and that's called "DITHER", not
->> "DITHER0"...
->> ...but I've added the suffix to the array assignment, as that's what
->> we have
->> in the enumeration.
->>
->> I think that #define MT8365_MUTEX_MOD_DISP_DITHER should be kept as-
->> is.
->>
->> Also... this commit is not fixing anything, as it was already working
->> before,
->> so the Fixes tag shouldn't be present.
->>
->> Regards,
->> Angelo
->>
+static bool btmtksdio_sdio_inband_wakeup(struct hci_dev *hdev)
+{
+	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
+
+	return device_may_wakeup(bdev->dev);
+}
+
+static int btmtksdio_probe(...)
+{
+	.... code ....
+
+	/*
+	 * If SDIO controller supports wake on Bluetooth, sending a wakeon
+	 * command is not necessary.
+	 */
+	if (device_can_wakeup(func->card->host->parent))
+		hdev->wakeup = btmtksdio_sdio_inband_wakeup;
+	else
+		hdev->wakeup = btmtksdio_sdio_wakeup;
+
+	.... etc ....
+}
+
+Regards,
+Angelo
 
