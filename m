@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF04C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 18:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1133FC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 18:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sBMGPYDRnJPeUwS8rUCcWoIIaqQNv7Xsce74kY6zINI=; b=uiJdiNgfEljFByOaShFMCi3+K1
-	wJ7e6bXtEUXghfvIAhnJtRtBmocY6mCXjjkQex/lGZUxGz+7oz8iiFjSMTfJfoORdWI3BDOvugBEn
-	Skv6z1Pe4lsL9j9cidozt361H0CthekpwBZzmQA0zcrXZbRmTtoslmNfMzg3SMO4+pLjUMc6SEG8s
-	fBMHgBj+7TGKXthM0JY/Rfz3Zs+qyDyxDlXVoIwvkuptm4ShytTfVXKk2f6qopW5WyEPrghpUPHBh
-	rBCWjS/yToLBTpjnouSKKTow/0rW5KfCJLLIsHjOwL9wTYoRNAuNlGUFoSZTZcGsHOWT3wCC3sfco
-	7aX54zxw==;
+	bh=WFXpnCRvpVBhsuNFE1ahfBGJsqNDQt8dQxVvfN6MrL0=; b=whC75BUgdNhi2JXQWyp35UAv/W
+	zNYwprY0ZsOE++Eamm9JKgouUQFsHuG2+ceteyTHtgef3b+umcRLmcNDrmFoF84XL/Y91/ex2aELt
+	2BU0+0GB/BS/Mmwwil7S/TS62ZqSsp4Gfe7LNil9wlNKe1ZC21y3EWCGYi4LXebGKtqnYX5GBr+Ll
+	d/XAzz4VfslrG8zsqzetjHDsRR9qDYR7d5XxiyLRUJPpSrkA3exUopKNik1vVCpEYIrw8wBSqroqs
+	ECceXZd8d8LG2t5iH8w15JNG1KF093WnnOHfESFhRtkmjmZfnxr/F08zN1TuPxfRogxMYQpgGkX1a
+	7cO7R7zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4RQh-00GIwP-HW; Thu, 23 Jun 2022 18:19:47 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1o4RXN-00GKhT-V1; Thu, 23 Jun 2022 18:26:41 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4RQW-00GIt0-LY; Thu, 23 Jun 2022 18:19:38 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id j21so427823lfe.1;
-        Thu, 23 Jun 2022 11:19:34 -0700 (PDT)
+	id 1o4RX9-00GKcr-LM; Thu, 23 Jun 2022 18:26:29 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id i18so395820lfu.8;
+        Thu, 23 Jun 2022 11:26:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=sBMGPYDRnJPeUwS8rUCcWoIIaqQNv7Xsce74kY6zINI=;
-        b=BJrh0YPvvBPOk2FgsQMFRa2Mypjcm71ylJrq31IKtpANvhN4g8KLB7ntFQNq9IZHVF
-         l6ZhSU+TlBFMgNnWeh7Eoj5Ib1pOugR8/ndpuPy4VRRMJ6LnlT4CTMEzgfF4vBExrKon
-         Wo9h20LnpfRWOTcCAHW7Udyx6kQ1lpY2Hv/XvCOnPkvGMJrQAMlcIYbPHW/+QvkLPw/v
-         z1lAydtVEKdwcueGxWsSL7la7BCLCRYzBxgeXh32PNyM7jHQtn8jXHCrjG/yF8ym1dip
-         s0nAMXw5V2WlQuo+mpIp+OLG/gu7Zn8xLGMejPmMkd4+e9tWrl/+j7x7jETixBbgqiPc
-         vqew==
+        bh=WFXpnCRvpVBhsuNFE1ahfBGJsqNDQt8dQxVvfN6MrL0=;
+        b=DalKGI6li9osCh4k7iO37g3v5OUCWoMlA9lcg8wxp3/qi5HIMenhTTdp7lkfmkxaFO
+         5i56DaW7feuRINiq2kOC05AY8brpkmge87NEOdDGkcHQCABHBrM/lR06xLa/uYNXD2JN
+         HByhcVabc+qx2jAze76QRQrmHqJQ43fznNb6YOxVQdupQu3sbTr5FFXwdhK74fJl0jvb
+         eciLddbEjTkpfnvpSmNtkeUy899xl8kuFlza0mCjMLlY6mqMYFafWfL0HXdzY9mmrBbl
+         tiYMDiQrKJpSB3DVDSB21zZOwwu+OGmacE6r0lbpRpEmfZUo1aV2LD7kFZYuIORe47QB
+         7iCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=sBMGPYDRnJPeUwS8rUCcWoIIaqQNv7Xsce74kY6zINI=;
-        b=l/TaugY2+Za3miDoL5elg7HMYxR8R5oFbXtSar5ACjnbjuCRGUl5JArpMhbLbL3OD9
-         sTRmgRQLEADcsTqliPZslsGK6olw/Tn8mMjaQ9QtTgDMRJnEACWVaV10nUaidU+q01i7
-         O4BuAZ0/h2i3P6RzN+5HPax3EQApyu5l9Yanj29umVyejCXzcG50B1+r69Y/10wCC8jF
-         GQeMqP+O+7G5sZVDwCtuHXzqW3lqzS3fYqJkgJjgKDy+4Th+eqLNRl9+0W44ehtGRarw
-         Fit/ynEEOXRYYmhpLxX6kFqFYhsJvAZTd43dwdA7yi5vnTq+Gd3F2thw7PaUNBi62/Mg
-         AutQ==
-X-Gm-Message-State: AJIora/jMV4AdtJ2JmDPJ6osTY5YHVRN2dghn3b84J6aO2PsI5mAtVSC
-	MG7So7A3OlASGUQRaduq5YpolKGz/B/m2jz6Mjs=
-X-Google-Smtp-Source: AGRyM1sSt9RqJEWu2voYn8rYod2JWrA9S0VKzO5KainJy6NBR3RGPl9JAy9lFNfNLGcH9lioXFXtCJIfjWl2wSCUbcc=
-X-Received: by 2002:a05:6512:151f:b0:47d:dd0c:1d1c with SMTP id
- bq31-20020a056512151f00b0047ddd0c1d1cmr6036883lfb.207.1656008372915; Thu, 23
- Jun 2022 11:19:32 -0700 (PDT)
+        bh=WFXpnCRvpVBhsuNFE1ahfBGJsqNDQt8dQxVvfN6MrL0=;
+        b=pINeOg0qTaKNZ0wcyuh/fDt2lLZS44dqEH2IbibGquy4Vf+gfeteZYZ4+cigCdJI+0
+         2LWq3Cm8rmnsOKR7XWxBzFBfyFX+PR1IAEYVB0ojqpgCrWmm1rfQYZsD3rAFx/biSk3K
+         rV9Rsnv/f8ZZ0rQR/Z9kKYRJzCTdMcBBgv9OQl7dwthq3tzUwjRlrA62hHSxnBE4Q3IY
+         63zrfDwbjcCNAKrKKYU4SNHP7rrm1YvJ3zeMMNG94wOrQB+49wpdDoykel8rxMJh6/oj
+         BHbAW180W60EIX0vhsI/pgewbZ9oQMuJpqlJD3Z6ntgjOAyPpyS7CM/+ZqhQXfYw9UzD
+         FNKQ==
+X-Gm-Message-State: AJIora/f68CjEQIqJIAFCIEH7cVFR0pOSKC/RI+naeNRpMihT3xdXgaH
+	aLd0Buub1HtFQJw4GZRcWU3Ym7LZEW+8zlScplU=
+X-Google-Smtp-Source: AGRyM1v7QBH+pV6lYrEVLjv5TY6/p8FX2jSroN/uPAnqjFf8QnXVnznfAY6JW5aADd3D+pMmLcYkM8NpE0OLf3DC0nc=
+X-Received: by 2002:a05:6512:348f:b0:47f:8b25:e9f9 with SMTP id
+ v15-20020a056512348f00b0047f8b25e9f9mr6543451lfr.512.1656008785046; Thu, 23
+ Jun 2022 11:26:25 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-10-peterwu.pub@gmail.com>
-In-Reply-To: <20220623115631.22209-10-peterwu.pub@gmail.com>
+References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-11-peterwu.pub@gmail.com>
+In-Reply-To: <20220623115631.22209-11-peterwu.pub@gmail.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Thu, 23 Jun 2022 20:18:56 +0200
-Message-ID: <CAHp75VdgxR9aFQmi_MPrX=t7RMnKDiLAwWMvxbpW9OoQMJkKyw@mail.gmail.com>
-Subject: Re: [PATCH v3 09/14] regulator: mt6370: Add mt6370 DisplayBias and
- VibLDO support
+Date: Thu, 23 Jun 2022 20:25:48 +0200
+Message-ID: <CAHp75VexwvAVeY4MtwKfpNY96eJ1C9eqadd-L+20O2sg2+gYNg@mail.gmail.com>
+Subject: Re: [PATCH v3 10/14] iio: adc: mt6370: Add Mediatek MT6370 support
 To: ChiaEn Wu <peterwu.pub@gmail.com>
 Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
 	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
@@ -81,8 +80,8 @@ Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.or
 	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_111936_716184_59F25DE6 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20220623_112627_794794_EE0DD192 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,101 +98,115 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Thu, Jun 23, 2022 at 2:00 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 >
-> From: ChiYuan Huang <cy_huang@richtek.com>
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
 >
-> Add mt6370 DisplayBias and VibLDO support.
+> Add Mediatek MT6370 ADC support.
 
 ...
 
+> +config MEDIATEK_MT6370_ADC
+> +       tristate "Mediatek MT6370 ADC driver"
+> +       depends on MFD_MT6370
+> +       help
+> +         Say yes here to enable Mediatek MT6370 ADC support.
+> +
+> +         This ADC driver provides 9 channels for system monitoring (charger
+> +         current, voltage, and temperature).
+
+What will be the module name?
+
+...
+
+> +#include <dt-bindings/iio/adc/mediatek,mt6370_adc.h>
+
+Usually this goes after linux/* asm/* as it's not so generic.
+
 > +#include <linux/bits.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/interrupt.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/iio/iio.h>
 > +#include <linux/kernel.h>
 > +#include <linux/module.h>
 
-> +#include <linux/of.h>
+> +#include <linux/mod_devicetable.h>
 
-Any users of this? (See below)
+I believe the order should be otherwise, this is first followed by module.h.
 
+> +#include <linux/mutex.h>
 > +#include <linux/platform_device.h>
 > +#include <linux/regmap.h>
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/machine.h>
 
 ...
 
-> +#define MT6370_LDO_MINUV       1600000
-> +#define MT6370_LDO_STPUV       200000
-> +#define MT6370_LDO_N_VOLT      13
-> +#define MT6370_DBVBOOST_MINUV  4000000
-> +#define MT6370_DBVBOOST_STPUV  50000
-> +#define MT6370_DBVBOOST_N_VOLT 45
-> +#define MT6370_DBVOUT_MINUV    4000000
-> +#define MT6370_DBVOUT_STPUV    50000
-> +#define MT6370_DBVOUT_N_VOLT   41
+> +#define ADC_CONV_POLLING_TIME          1000
 
-If UV is a unit suffix, make it _UV.
+If it's time, add a unit suffix, if it's a counter, make it clear.
 
 ...
 
-> +               .of_match = of_match_ptr("dsvbst"),
+> +       msleep(ADC_CONV_TIME_US / 1000);
 
-Would it even be called / used if CONFIG_OF=n?
-
-...
-
-> +               .regulators_node = of_match_ptr("regulators"),
-
-Ditto.
+Why define microseconds if milliseconds are in use?
 
 ...
 
-> +       for (i = 0; i < ARRAY_SIZE(mt6370_irqs); i++) {
-> +               irq = platform_get_irq_byname(pdev, mt6370_irqs[i].name);
-> +
-> +               rdev = priv->rdev[mt6370_irqs[i].rid];
-> +
-> +               ret = devm_request_threaded_irq(priv->dev, irq, NULL,
-> +                                               mt6370_irqs[i].handler, 0,
-> +                                               mt6370_irqs[i].name, rdev);
-> +               if (ret) {
+> +       ret = regmap_read_poll_timeout(priv->regmap,
+> +                                      MT6370_REG_CHG_ADC, reg_val,
+> +                                      !(reg_val & MT6370_ADC_START_MASK),
+> +                                      ADC_CONV_POLLING_TIME,
+> +                                      ADC_CONV_TIME_US * 3);
+> +       if (ret) {
+> +               if (ret == -ETIMEDOUT)
+> +                       dev_err(priv->dev, "Failed to wait ADC conversion\n");
 
+wait for
+
+> +               else
 > +                       dev_err(priv->dev,
-> +                               "Failed to register (%d) interrupt\n", i);
-> +                       return ret;
+> +                               "Failed to read ADC register (%d)\n", ret);
 
-return dev_err_probe(...); ?
+Do you really need to differentiate the errors here? I believe the
+latter one covers all cases.
 
-> +               }
+> +               goto adc_unlock;
 > +       }
 
 ...
 
-> +       for (i = 0; i < MT6370_MAX_IDX; i++) {
-> +               rdev = devm_regulator_register(priv->dev,
-> +                                              mt6370_regulator_descs + i,
-> +                                              &cfg);
-> +               if (IS_ERR(rdev)) {
+> +#define MT6370_ADC_CHAN(_idx, _type, _addr, _extra_info) {     \
+> +       .type = _type,                                          \
+> +       .channel = MT6370_CHAN_##_idx,                          \
+> +       .address = _addr,                                       \
+> +       .scan_index = MT6370_CHAN_##_idx,                       \
+> +       .indexed = 1,                                           \
+> +       .info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |          \
+> +                             BIT(IIO_CHAN_INFO_SCALE) |        \
+> +                             _extra_info                       \
 
-> +                       dev_err(priv->dev,
-> +                               "Failed to register (%d) regulator\n", i);
-> +                       return PTR_ERR(rdev);
+Leave a comma after the last member as well.
 
-return dev_err_probe(...); ?
-
-> +               }
-> +
-> +               priv->rdev[i] = rdev;
-> +       }
+> +}
 
 ...
 
-> +       if (!priv->regmap) {
-> +               dev_err(&pdev->dev, "Failed to init regmap\n");
+> +       regmap = dev_get_regmap(pdev->dev.parent, NULL);
+> +       if (!regmap) {
+
+> +               dev_err(&pdev->dev, "Failed to get regmap\n");
 > +               return -ENODEV;
-> +       }
 
 return dev_err_probe(...);
+
+> +       }
+
+...
+
+> +       ret = regmap_write(priv->regmap, MT6370_REG_CHG_ADC, 0);
+> +       if (ret) {
+> +               dev_err(&pdev->dev, "Failed to reset ADC\n");
+> +               return ret;
+> +       }
+
+Ditto.
 
 -- 
 With Best Regards,
