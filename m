@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1013CC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 09:22:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4B6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 09:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fCM1P9rV5zl208qDFOusuoIotypBhZJEvh6oAixkUpI=; b=lLtqY26gD4doKGLwx5wN/bJ158
-	1WHpPpGaYjwLtVMUWdeEbn6gXvJrcairdRrmII2xsTXBoqM1t5NbzTvgbQD2pffj5vDar6W90v347
-	+TcOHpDar1/VtgGjis24IMw/eQAK/TH4GonMlRM7qLh+1psBI/HMlA6IkSRq0sjNhvizmewIidenN
-	OuUAzWiiSnZLojs5N3OfOWolspMaESiHVZzVslRgp72VsR8D0Onc49ZeF+7+e4VjgW4bpjxcEZFTb
-	XsrpP5/9x812+i6squMEdCkiGKkbE6TY2nr40ZQqGamzTM+eU+I37iTm97WPP6dehr8PhX7DnVsvA
-	odm6kDBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UPcwSf/6QO4HpZ12PIq0E8dxfa+SOYiABgHmOP2/u74=; b=A1HkWMpo/YZ5A2OiMswqG68fLH
+	QNeY2oIjYWbPTmtmPrLvvPAkw/P6b3d6LLus/d7zruKOPvvlUr6s7xJ8p4uGqDFlVrEc/NwWQBF7C
+	r9ZC7kSAyvmMx8rijtzEa/YQQl8/mNE3eOAb8RDOPhsalvUfY/xq9VuY2UM8QI0nUCMt7ZhUfgqX+
+	U7KEixg8uIpZTLNlWuJV95PP9iKt3+iSicIl4TMmyINklYAzMuMxmLGcBgEGlCsJEYOgHxBYmGyAC
+	Jpnt4o9NNWrOHE1kKKXBMbV/7yb1DS/7Wev3dqBjKG21rZ5fcW57YtLJh0rqYyuDrVTfeKajV4jtV
+	w3YMJLag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4J2S-00EJPm-IU; Thu, 23 Jun 2022 09:22:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o4JCS-00EKzA-15; Thu, 23 Jun 2022 09:32:32 +0000
+Received: from 60-251-196-230.hinet-ip.hinet.net ([60.251.196.230] helo=ironport.ite.com.tw)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4J2P-00EJPB-Ls
-	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 09:22:11 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E77946601752;
-	Thu, 23 Jun 2022 10:22:07 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655976128;
-	bh=i/BTlmTsubNTSWq020jFczUKEvkkr5DvhZf1Py61tB0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=crODGwY+qCOyn3wMI8GsirBvApMarr1J4wwSSBxQWp2QB8OwUQBJHEXz52ZEL1JS2
-	 7lb48NzYCObcL5mNhda4L9JQjp9JA3KmVJYm+B4K6Ebb49q/e6x9b/L1YhMLOQhi+Z
-	 l21pCNuaknB7I/EBm8Th4pUogO4yZcKEHWD6lLe73dFu6HQrNc1e/M62vvLrpnsU9W
-	 a7GrwuxT0Xlv5hG+bxzI4gABYuQSsAsT3GdrcVgvbNbjGH3K41vKAQJa7RKJ4B+72O
-	 wIk5+oi/cT9y7CTdLDPtMlJfjw2FEAlbCQBRPtuTPlvP6gLuJosnp/RUqK8qKomXVf
-	 xDbnXbvWP9L/A==
-Message-ID: <460046b1-44f7-e9db-6532-44cb06e4a242@collabora.com>
-Date: Thu, 23 Jun 2022 11:22:05 +0200
+	id 1o4JCG-00EKwI-Re; Thu, 23 Jun 2022 09:32:23 +0000
+Received: from unknown (HELO mse.ite.com.tw) ([192.168.35.30])
+  by ironport.ite.com.tw with ESMTP; 23 Jun 2022 17:32:12 +0800
+Received: from CSBMAIL1.internal.ite.com.tw (CSBMAIL1.internal.ite.com.tw [192.168.65.58])
+	by mse.ite.com.tw with ESMTP id 25N9W7mn009951;
+	Thu, 23 Jun 2022 17:32:07 +0800 (GMT-8)
+	(envelope-from allen.chen@ite.com.tw)
+Received: from VirtualBox.internal.ite.com.tw (192.168.70.46) by
+ CSBMAIL1.internal.ite.com.tw (192.168.65.58) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.14; Thu, 23 Jun 2022 17:32:07 +0800
+From: allen <allen.chen@ite.com.tw>
+To: 
+CC: Allen Chen <allen.chen@ite.com.tw>, Pin-yen Lin <treapking@google.com>,
+        Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
+        Hermes Wu <Hermes.Wu@ite.com.tw>,
+        Kenneth Hung <Kenneth.Hung@ite.com.tw>,
+        Allen-kh Cheng
+	<allen-kh.cheng@mediatek.corp-partner.google.com>,
+        Pin-yen Lin
+	<treapking@chromium.org>,
+        Andrzej Hajda <andrzej.hajda@intel.com>,
+        Neil
+ Armstrong <narmstrong@baylibre.com>,
+        Robert Foss <robert.foss@linaro.org>,
+        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+        Jonas Karlman
+	<jonas@kwiboo.se>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        David Airlie
+	<airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        "open list:DRM DRIVERS"
+	<dri-devel@lists.freedesktop.org>,
+        open list <linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] drm/bridge: add it6505 driver read config from dt property
+Date: Thu, 23 Jun 2022 17:31:54 +0800
+Message-ID: <20220623093154.52701-1-allen.chen@ite.com.tw>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH] media: mediatek: vcodec: Skip SOURCE_CHANGE & EOS events
- for stateless
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Nicolas Dufresne <nicolas@ndufresne.ca>,
- Yunfei Dong <yunfei.dong@mediatek.com>
-References: <20220620063349.2754116-1-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220620063349.2754116-1-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [192.168.70.46]
+X-ClientProxiedBy: CSBMAIL1.internal.ite.com.tw (192.168.65.58) To
+ CSBMAIL1.internal.ite.com.tw (192.168.65.58)
+X-TM-SNTS-SMTP: 	532277101033EC0C5799347BF5418EF1C05372C83BD9777B75A722A680D091252002:8
+X-MAIL: mse.ite.com.tw 25N9W7mn009951
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_022209_893510_E1D67830 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220623_023221_203799_F492A86A 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,21 +92,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/06/22 08:33, Chen-Yu Tsai ha scritto:
-> The stateless decoder API does not specify the usage of SOURCE_CHANGE
-> and EOF events. These events are used by stateful decoders to signal
-> changes in the bitstream. They do not make sense for stateless decoders.
-> 
-> Do not handle subscription for these two types of events for stateless
-> decoder instances. This fixes the last v4l2-compliance error:
-> 
-> Control ioctls:
-> 		fail: v4l2-test-controls.cpp(946): have_source_change || have_eos
-> 	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
-> 
-> Fixes: 8cdc3794b2e3 ("media: mtk-vcodec: vdec: support stateless API")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+From: allen chen <allen.chen@ite.com.tw>
 
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+add read max-lane and max-pixel-clock from dt property
+
+Signed-off-by: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+---
+ drivers/gpu/drm/bridge/ite-it6505.c | 35 ++++++++++++++++++++++++++---
+ 1 file changed, 32 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
+index 4b673c4792d77..c9121d4635a52 100644
+--- a/drivers/gpu/drm/bridge/ite-it6505.c
++++ b/drivers/gpu/drm/bridge/ite-it6505.c
+@@ -436,6 +436,8 @@ struct it6505 {
+ 	bool powered;
+ 	bool hpd_state;
+ 	u32 afe_setting;
++	u32 max_dpi_pixel_clock;
++	u32 max_lane_count;
+ 	enum hdcp_state hdcp_status;
+ 	struct delayed_work hdcp_work;
+ 	struct work_struct hdcp_wait_ksv_list;
+@@ -1466,7 +1468,8 @@ static void it6505_parse_link_capabilities(struct it6505 *it6505)
+ 	it6505->lane_count = link->num_lanes;
+ 	DRM_DEV_DEBUG_DRIVER(dev, "Sink support %d lanes training",
+ 			     it6505->lane_count);
+-	it6505->lane_count = min_t(int, it6505->lane_count, MAX_LANE_COUNT);
++	it6505->lane_count = min_t(int, it6505->lane_count,
++				   it6505->max_lane_count);
+ 
+ 	it6505->branch_device = drm_dp_is_branch(it6505->dpcd);
+ 	DRM_DEV_DEBUG_DRIVER(dev, "Sink %sbranch device",
+@@ -2895,7 +2898,7 @@ it6505_bridge_mode_valid(struct drm_bridge *bridge,
+ 	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+ 		return MODE_NO_INTERLACE;
+ 
+-	if (mode->clock > DPI_PIXEL_CLK_MAX)
++	if (mode->clock > it6505->max_dpi_pixel_clock)
+ 		return MODE_CLOCK_HIGH;
+ 
+ 	it6505->video_info.clock = mode->clock;
+@@ -3057,6 +3060,8 @@ static void it6505_parse_dt(struct it6505 *it6505)
+ {
+ 	struct device *dev = &it6505->client->dev;
+ 	u32 *afe_setting = &it6505->afe_setting;
++	u32 *max_lane_count = &it6505->max_lane_count;
++	u32 *max_dpi_pixel_clock = &it6505->max_dpi_pixel_clock;
+ 
+ 	it6505->lane_swap_disabled =
+ 		device_property_read_bool(dev, "no-laneswap");
+@@ -3072,7 +3077,31 @@ static void it6505_parse_dt(struct it6505 *it6505)
+ 	} else {
+ 		*afe_setting = 0;
+ 	}
+-	DRM_DEV_DEBUG_DRIVER(dev, "using afe_setting: %d", *afe_setting);
++
++	if (device_property_read_u32(dev, "max-lane-count",
++				     max_lane_count) == 0) {
++		if (*max_lane_count > 4 || *max_lane_count == 3) {
++			dev_err(dev, "max lane count error, use default");
++			*max_lane_count = MAX_LANE_COUNT;
++		}
++	} else {
++		*max_lane_count = MAX_LANE_COUNT;
++	}
++
++	if (device_property_read_u32(dev, "max-dpi-pixel-clock",
++				     max_dpi_pixel_clock) == 0) {
++		if (*max_dpi_pixel_clock > 297000) {
++			dev_err(dev, "max pixel clock error, use default");
++			*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
++		}
++	} else {
++		*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
++	}
++
++	DRM_DEV_DEBUG_DRIVER(dev, "using afe_setting: %u, max_lane_count: %u",
++			     it6505->afe_setting, it6505->max_lane_count);
++	DRM_DEV_DEBUG_DRIVER(dev, "using max_dpi_pixel_clock: %u kHz",
++			     it6505->max_dpi_pixel_clock);
+ }
+ 
+ static ssize_t receive_timing_debugfs_show(struct file *file, char __user *buf,
+-- 
+2.25.1
+
 
