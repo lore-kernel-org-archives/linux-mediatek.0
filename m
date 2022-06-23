@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF4BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 10:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C1ECCA47C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 10:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uyk9JVTxThBmfJpeJ7TsWYa1/AtyCS53MUIwtwsHjA4=; b=R5Op7bYpyDh0yUGKFNLpgxXVw1
-	XaZ2sV71KwgVDZt+z9yxV5j/gaTOHNVCIbdFCPSewmeNmDklfn016COgCtgVe71Bzk55XWJVjV7Nt
-	ffM+JJIGCczw6/s0Y7jZK4lgmxCTmsK8ugQW1EQI1YIxiIxYNS4FSf+aCqkstKmnmQ3zF1zAo1Uih
-	WOHC6FIaGN8miz3pFGmqGkslbYeEFykvwa7pzEXhGio578am2ctPBrgCcBAryxOQVXAhx/AQE6b30
-	iAtRmvmPp7cCu3ff8Ye5ueW+77bPgJiV5Afsdg1SN800Ozqu6xcybIvMSXG2zcKA/NrH9fO1aZtKh
-	JSpZjmSw==;
+	bh=ZeiSTA+gYS5jxsN8dxMnH3udDz0uwz0c2aWxcvJlZlg=; b=dUnMC9TLaMutYBX+s06WtTfO1K
+	EWruyEyc5SELCswwqrxV+pbXDEqzdBwlcH/g1xfKGhQcCDZROY9SlmcGJVOZktNiES6xipE6Met/3
+	ysvElYsVFTtI7qYce0v+tAiRQ+saWWmS4PNbGAnWDTKLGBfEkMq3Rbr5hticZPQx9nt5OPbDrj7tp
+	rxjl3DSbyi3jjTpM+DUrkRl+Jr4IzXIyOeGkLswlTwyMbAqpVewYDCGlruBXS6P/Al+GuxWWeO3xr
+	CwOlZLdyQwakAM07rnHz/c9DkwdULjGKPpkDk7Z0v4nXjGdYot8tk4Gjk3Lz1Sbrpkb39TToYeBYZ
+	a+zClqcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Jli-00ERYy-LK; Thu, 23 Jun 2022 10:08:58 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4JlW-00ERWJ-U7; Thu, 23 Jun 2022 10:08:48 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CF97712FC;
-	Thu, 23 Jun 2022 03:08:42 -0700 (PDT)
-Received: from [10.57.85.4] (unknown [10.57.85.4])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 291B53F534;
-	Thu, 23 Jun 2022 03:08:40 -0700 (PDT)
-Message-ID: <2f66f488-687c-033c-a5a2-9d54633838cd@arm.com>
-Date: Thu, 23 Jun 2022 11:08:36 +0100
+	id 1o4Jn8-00ES10-7w; Thu, 23 Jun 2022 10:10:26 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o4Jmn-00ERrm-CR; Thu, 23 Jun 2022 10:10:06 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A520666017CF;
+	Thu, 23 Jun 2022 11:10:03 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655979004;
+	bh=fdj/NDREE13nXimTiZFPKHxqmbz8mAHTy/iF6JaIN7U=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=KbhLxup9FZmSqGXBELMNjXZopSuyFCH+mOrVqAHuo9IseIS7pouJiI0NaKBxt3pZU
+	 KfGuMyfOxV4BQUoUe/2HsTR4sxN/RBZ8h6R7zoVdKU59whUASk6q5r6VHAanB/wKpV
+	 roAilsWSIgfpgQQSPD5XTKvIpATfhLcEr7+kEtwwvR5gBJDFQzgauAqMoOHRInP71V
+	 EGD7PH8TMKZyUNMSaDx0H/K8+FFLWgQqNiVPQEJUvG+fKqK6gJrn3gWydLZhVfmfnB
+	 /fH3TqVph350nKJnE9KIbdRdmvNZp5xWU703CvaYtwEP6LO7lCAhWWOh5DDhcxv06I
+	 2U0c7UmlIs3Cw==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	wenst@chromium.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 1/5] soc: mediatek: mt8192-pm-domains: Allow probing vreg supply on MFG0/1
+Date: Thu, 23 Jun 2022 12:09:47 +0200
+Message-Id: <20220623100951.21153-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
+References: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 2/5] iommu/mediatek: Add error path for loop of
- mm_dts_parse
-Content-Language: en-GB
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
- chengci.xu@mediatek.com, youlin.pei@mediatek.com, anan.sun@mediatek.com,
- xueqi.zhang@mediatek.com, Guenter Roeck <groeck@chromium.org>,
- Dan Carpenter <dan.carpenter@oracle.com>
-References: <20220616054203.11365-1-yong.wu@mediatek.com>
- <20220616054203.11365-3-yong.wu@mediatek.com>
- <e2091397-b6e2-7296-1378-dc10b24c6ef4@arm.com>
- <b2ea919315d0084adb465378e6970dbfa4f0829e.camel@mediatek.com>
- <521ed82e-f213-f635-6f5e-3e35ff8cc020@arm.com>
- <a53c4a4d9922c9a3fc774976494dea6da1bd8daa.camel@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <a53c4a4d9922c9a3fc774976494dea6da1bd8daa.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_030847_114850_B7058BBC 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20220623_031005_593391_4DE1BCDA 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,72 +77,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-23 02:54, Yong Wu wrote:
-> On Thu, 2022-06-16 at 11:31 +0100, Robin Murphy wrote:
->> On 2022-06-16 11:08, Yong Wu wrote:
->>> On Thu, 2022-06-16 at 09:59 +0100, Robin Murphy wrote:
->>>> On 2022-06-16 06:42, Yong Wu wrote:
->>>>> The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if
->>>>> the
->>>>> i+1
->>>>> larb is parsed fail(return -EINVAL), we should of_node_put for
->>>>> the
->>>>> 0..i
->>>>> larbs. In the fail path, one of_node_put matches with
->>>>> of_parse_phandle in
->>>>> it.
->>>>>
->>>>> Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow
->>>>> with
->>>>> the MM TYPE")
->>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>>>> ---
->>>>>     drivers/iommu/mtk_iommu.c | 21 ++++++++++++++++-----
->>>>>     1 file changed, 16 insertions(+), 5 deletions(-)
-> 
-> [snip..]
-> 
->>>>> +err_larbnode_put:
->>>>> +	while (i--) {
->>>>> +		larbnode = of_parse_phandle(dev->of_node,
->>>>> "mediatek,larbs", i);
->>>>> +		if (larbnode &&
->>>>> of_device_is_available(larbnode)) {
->>>>> +			of_node_put(larbnode);
->>>>> +			of_node_put(larbnode);
->>>>> +		}
->>>>
->>>> This looks a bit awkward - could we not just iterate through
->>>> data->larb_imu and put dev->of_node for each valid dev?
->>>
->>> It should work. Thanks very much.
->>>
->>>>
->>>> Also, of_find_device_by_node() takes a reference on the struct
->>>> device
->>>> itself, so strictly we should be doing put_device() on those as
->>>> well
->>>> if we're bailing out.
->>>
->>> Thanks for this hint. A new reference for me. I will add it.
->>
->> In fact, thinking about it some more we may as well do the
->> of_node_put()
->> unconditionally immediately after the of_find_device_by_node() call,
-> 
-> of_node_put is called in component_release_of in the normal case, thus
-> we shouldn't call of_node_put unconditionally. Right?
+The MT8192 SoC has multiple MFG power-domains, exclusively used for
+the GPU which, in turn, requires external power supplies: add the
+MTK_SCPD_DOMAIN_SUPPLY cap to MFG0 and MFG1 to allow voting for
+regulators on/off upon usage of these power domains.
 
-As it stands, yes. However I'm also figuring that we could just use 
-component_match_add() there, and probably also switch to 
-component_compare_dev as the the comparison, since we've already 
-resolved the larb device, and it is the device itself that we're 
-interested in here, rather than just its of_node.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mt8192-pm-domains.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-I *think* this idea could end up with simpler code overall, but as 
-always, feel free to ignore the suggestion if you think it wouldn't make 
-enough difference to be worth the bother.
+diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/soc/mediatek/mt8192-pm-domains.h
+index 558c4ee4784a..b97b2051920f 100644
+--- a/drivers/soc/mediatek/mt8192-pm-domains.h
++++ b/drivers/soc/mediatek/mt8192-pm-domains.h
+@@ -58,6 +58,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.caps = MTK_SCPD_DOMAIN_SUPPLY,
+ 	},
+ 	[MT8192_POWER_DOMAIN_MFG1] = {
+ 		.name = "mfg1",
+@@ -85,6 +86,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 				    MT8192_TOP_AXI_PROT_EN_2_CLR,
+ 				    MT8192_TOP_AXI_PROT_EN_2_STA1),
+ 		},
++		.caps = MTK_SCPD_DOMAIN_SUPPLY,
+ 	},
+ 	[MT8192_POWER_DOMAIN_MFG2] = {
+ 		.name = "mfg2",
+-- 
+2.35.1
 
-Thanks,
-Robin.
 
