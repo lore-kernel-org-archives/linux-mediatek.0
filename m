@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 606C1C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 13:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5259C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 13:56:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eRK+unsPW70xNn5MF8+19eCG7D3AK/lgynWxuPdsIyE=; b=JfV3Cce1aUYIlRbTspdI9SeeeH
-	mXp6jJ5U1LonEHEXCUJxqagFwRnS+BAnTTVdpxc6lSwbRcMuebVwZhi9pn0RWzAAEBDRE4ZvmI617
-	6HkeE/PIJxiAble2Z0FcSzuDVmn5qxywIXI9ba+zqRkuirsUm19Adn9oh9LMTaNTo77KfGL6clF++
-	MgpAthecvUYwQ8OXHv7kfU0k4d0BqTA2e/hdQ2CgiDMIYIAuQ78cKRciOaHH/ltvg1kLtLb9cN7yg
-	5/Cu33m3UoCATzVJrSiiX/Zr+xkBrU4QFr22xbKu5/7uNVzak7Kq7cIx3KPBC+6VoSTjstNiYLkCt
-	SFjKpZqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WNf30pWmomVijQS487Jkw5NSj+2vHNyDaCao+8QVliQ=; b=g7ky7vH3XKyfHAc0E9yOFpyhh7
+	/P02mHDN2iKq/MD1i6kD5gQxTLpo6T07r1ecm0G0kV4R8TbI85la+bXW7SM5WAGj45tTVepSgMp5m
+	+oAFF3VxbBYNtn8jRVuAnr+RRwwezcznkxRh4MRkQoqv6qPJRA2sXZOAdAiPrnZrpcr3KFPXua3KC
+	h7GNGAII+kLnb5qHbOsIDkCpz5ltV0AMq/QrzqzotqdBBynmLe+/k9rd+GvQwa7axuMvAiXEZeewi
+	U+O3w/s7R3+HBcDjxTM6whv83WM/dHsutYg4NTwIfjp3D5FBOoT4y46PGlXRTda75vJuaxWZVAzui
+	5SpD3AYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4N7P-00FOif-JW; Thu, 23 Jun 2022 13:43:35 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1o4NJa-00FR4w-PN; Thu, 23 Jun 2022 13:56:10 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4N7F-00FOeq-5c
-	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 13:43:26 +0000
-Received: by mail-wr1-x433.google.com with SMTP id o8so28050255wro.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jun 2022 06:43:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=eRK+unsPW70xNn5MF8+19eCG7D3AK/lgynWxuPdsIyE=;
-        b=KC804tV7q8m5lKxx02VfQNPyCFRxbLo+UN5MqQqk1P+QbuQa4VcB2DrqvkkpPc4wLh
-         s8YD9o2Eiw8erHMZ6g3Ia7a0hyCPKQt3dQhrWjxY7MVQ+N+R6b5WlLXKQYsrlnRxHzog
-         E2sf54tTcmTN6YbXT+A5UHQ5N/d1dBEzbXYSl58xn/DSXDKRHGikl18c1Dewu5+tmqAo
-         JWR2R+BecqmGJdKOoqPajDcTtrvcsivMLPCP1TsgqwJCt60ewBhMWun7q+A0t7wb6Fa5
-         u7SPQBBJb5LqETPHZT7BjI6j+0AwxO054RkyMDT9jgCAOSDplPJobh2EkUOEu7PwvTVI
-         nrzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=eRK+unsPW70xNn5MF8+19eCG7D3AK/lgynWxuPdsIyE=;
-        b=1n/injOSRRkaGwH/NBAnC36S4DvapdZjJBQ/roxYJkjB/0UJXnNOffX6caz6s3XusT
-         D6RNp734z4saCzf3ySgP7Gj4L7xstP8/Nc+cfhu54kAhyNFlH7D1nb0RqFfcLPY83l1y
-         OLHVjgzHs7QAk17suGL1XZgNvGW6SKZb+mbVWd6T/4kxXdKgf5v4VaV2B8UguN0UNnNx
-         /kU1TSN++EuEaSs0AvyP9z0o+lpAgxTrFbIj/PnoAORqOf1mxevpEeTRAyUNeWj0q7En
-         V0f+h0F58HD4BunWiy6udFFE1YMXqwXIMtoc0hHHMrMnDHM8zcGp6OSToI+dcWVa0VMz
-         JWmQ==
-X-Gm-Message-State: AJIora8/9EnnqlvzZCzCUdqAEW+vJZYYNCZO5+itDngr7/23KkClsMUD
-	0brq5W3iFTz01bE8zTYi7moMBg==
-X-Google-Smtp-Source: AGRyM1vjF4PN7klzy0olb9rrzdVMRPfVzufgs3EKRfc33dNmi33WjI/0td30uX34aWiNQWi+iEa1Yg==
-X-Received: by 2002:a05:6000:10b:b0:21b:88ca:9abf with SMTP id o11-20020a056000010b00b0021b88ca9abfmr8191539wrx.694.1655991799771;
-        Thu, 23 Jun 2022 06:43:19 -0700 (PDT)
-Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net. [80.7.220.175])
-        by smtp.gmail.com with ESMTPSA id p129-20020a1c2987000000b003974cb37a94sm3313906wmp.22.2022.06.23.06.43.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jun 2022 06:43:18 -0700 (PDT)
-Date: Thu, 23 Jun 2022 14:43:16 +0100
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: lee.jones@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
-	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
-	lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com, deller@gmx.de,
-	chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
-	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org,
-	szunichen@gmail.com
-Subject: Re: [PATCH v3 14/14] video: backlight: mt6370: Add Mediatek MT6370
- support
-Message-ID: <20220623134316.rg3adyobz3hkgflt@maple.lan>
-References: <20220623115631.22209-1-peterwu.pub@gmail.com>
- <20220623115631.22209-15-peterwu.pub@gmail.com>
+	id 1o4NJP-00FR1Q-3m; Thu, 23 Jun 2022 13:56:00 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E0E366016F0;
+	Thu, 23 Jun 2022 14:55:52 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655992553;
+	bh=5sW6BimoFPL/i1s52PKt0YiCTWn44ik1RGWDhHeRQB8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=GTpfEeIXrd13paiafv+YQrIByKTXvEY8Kobd/ORfWfGqYDriEyp7pXCDWz50aDhgZ
+	 TibaaQhb+61Y8I3n8ArhBomHaS19myHn6oBFMKy1fo+9c+Q3G6vvJSv/Z7h2w7mZQw
+	 +a8LmC6RiJYmFasz2ExpGsgYF5SbQb28iMa3LU77J6IvkIOR9Hxo8J3GDYQENC1OOQ
+	 SgHfMYpI6EecpMdjC5tK3HqZJwvmHBcj9LAN5NBVsNpeMsi8pgt//y07L6uVeHQNii
+	 M2E/bZO3odjkn1upiIo9ASYmLtzjxSLm6FGMApfqmtepna0AL962LvJdzAZoUgjXjI
+	 I8lc8ThwNgOiA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: minghsiu.tsai@mediatek.com
+Cc: houlong.wei@mediatek.com,
+	andrew-ct.chen@mediatek.com,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	hans.verkuil@cisco.com,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com,
+	acourbot@chromium.org,
+	irui.wang@mediatek.com,
+	yunfei.dong@mediatek.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2] media: platform: mtk-mdp: Fix mdp_ipi_comm structure alignment
+Date: Thu, 23 Jun 2022 15:55:46 +0200
+Message-Id: <20220623135546.121344-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220623115631.22209-15-peterwu.pub@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_064325_256710_7A33DA71 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20220623_065559_309365_22F09165 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,78 +81,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 23, 2022 at 07:56:31PM +0800, ChiaEn Wu wrote:
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
-> 
-> Add Mediatek MT6370 Backlight support.
-> 
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+The mdp_ipi_comm structure defines a command that is either
+PROCESS (start processing) or DEINIT (destroy instance); we
+are using this one to send PROCESS or DEINIT commands from Linux
+to an MDP instance through a VPU write but, while the first wants
+us to stay 4-bytes aligned, the VPU instead requires an 8-bytes
+data alignment.
 
-> diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/Kconfig
-> index a003e02..7cd823d 100644
-> <snip>
-> +static int mt6370_init_backlight_properties(struct mt6370_priv *priv,
-> +					    struct backlight_properties *props)
-> +{
-> +	struct device *dev = priv->dev;
-> +	u8 prop_val;
-> +	u32 brightness, ovp_uV, ocp_uA;
-> +	unsigned int mask, val;
-> +	int ret;
-> +
-> +	/* Vendor optional properties */
-> +	val = 0;
-> +	if (device_property_read_bool(dev, "mediatek,bled-pwm-enable"))
-> +		val |= MT6370_BL_PWM_EN_MASK;
-> +
-> +	if (device_property_read_bool(dev, "mediatek,bled-pwm-hys-enable"))
-> +		val |= MT6370_BL_PWM_HYS_EN_MASK;
-> +
-> +	ret = device_property_read_u8(dev,
-> +				      "mediatek,bled-pwm-hys-input-th-steps",
-> +				      &prop_val);
-> +	if (!ret) {
-> +		prop_val = clamp_val(prop_val,
-> +				     MT6370_BL_PWM_HYS_TH_MIN_STEP,
-> +				     MT6370_BL_PWM_HYS_TH_MAX_STEP);
-> +		/*
-> +		 * prop_val =  1      -->  1 steps --> 0x00
-> +		 * prop_val =  2 ~  4 -->  4 steps --> 0x01
-> +		 * prop_val =  5 ~ 16 --> 16 steps --> 0x10
-> +		 * prop_val = 17 ~ 64 --> 64 steps --> 0x11
+Keeping in mind that these commands are executed immediately
+after sending them (hence not chained with others before the
+VPU/MDP "actually" start executing), it is fine to simply add
+a padding of 4 bytes to this structure: this keeps the same
+performance as before, as we're still stack-allocating it,
+while avoiding hackery inside of mtk-vpu to ensure alignment
+bringing a definitely bigger performance impact.
 
-                                                      ^^^^^
-These numbers are binary, not hex, right? If so, the comments
-should be 0b00 to 0b03 .
+Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+Reviewed-by: Irui Wang <irui.wang@mediatek.com>
+---
 
+Changes in v2: Rebased on next-20220623
 
-> +		 */
-> +		prop_val = (ilog2(roundup_pow_of_two(prop_val)) + 1) >> 1;
-> +		val |= prop_val << (ffs(MT6370_BL_PWM_HYS_SEL_MASK) - 1);
-> +	}
-> +
-> +	ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_PWM,
-> +				 val, val);
-> +	if (ret)
-> +		return ret;
+ drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Overall, I like this approach! Easy to read and understand.
+diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h b/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
+index 2cb8cecb3077..b810c96695c8 100644
+--- a/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
++++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
+@@ -40,12 +40,14 @@ struct mdp_ipi_init {
+  * @ipi_id        : IPI_MDP
+  * @ap_inst       : AP mtk_mdp_vpu address
+  * @vpu_inst_addr : VPU MDP instance address
++ * @padding       : Alignment padding
+  */
+ struct mdp_ipi_comm {
+ 	uint32_t msg_id;
+ 	uint32_t ipi_id;
+ 	uint64_t ap_inst;
+ 	uint32_t vpu_inst_addr;
++	uint32_t padding;
+ };
+ 
+ /**
+-- 
+2.35.1
 
-
-> <snip>
-> +static int mt6370_bl_probe(struct platform_device *pdev)
-> +{
-> +	struct mt6370_priv *priv;
-> +	struct backlight_properties props = {
-> +		.type = BACKLIGHT_RAW,
-> +		.scale = BACKLIGHT_SCALE_LINEAR,
-
-Sorry, I missed this before but the KConfig comment says that the
-backlight can support both linear and exponential curves.
-
-Is there a good reason to default to linear?
-
-
-Daniel.
-> 
 
