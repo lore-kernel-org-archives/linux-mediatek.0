@@ -4,78 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E22C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 02:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE84C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 02:52:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pdQVFFCM4VJCN6tT7EBnd24VTfdCWPR1wDj/KdeULf0=; b=A7dF8hwaS9lop0R1bLXHLXb8EO
-	c0sD60EYOQVPsoDohbCTjSTxqkzxVrCgPiEX11ak0se0rTjGK+2x6M5z9kRBL4jKkYmyt41QMEyuV
-	VkWxXz3jc+x8+MH2y6JRe7Js7NKkS3ZoOnZ1DgA7MAj0CKAz5vzEXagqQJN4y0dNXQppAbR3PgRO9
-	C1JmAovxZThQAzAMQZb/CnJvEegzqzL0aWjB4ocLFJVV9rrUbSlKQXBZ7cCfiu9dT5aX1a8tEnvPK
-	MRWrBviUyZ4pBbNnqhzSkXB7gldZPXvWX1IQ7SHxKzAMphaipIWTK1l6hiXPWMc9T5/1FJbUD0Ls/
-	FQjeYGAA==;
+	bh=ucjqEYJh5s/372EbHu35ghd0/cCPI0TncnRquBSXogs=; b=fd3l4nulbLn0X8yjmcTTU45Ywy
+	gTh2IjajdEPcnWMdjpwsoFjnyvmTqTN/qkS4cwSuisCohxp0LALR5bk+vCkZz6ZiiibBdmrQmEXLV
+	iBSil9U50XKE1yLO5Wtxqc5mmx5khCReGBOn6vmjMwbz2C/SUFXBSjk6RpnNeHfMlekcCd3eMVjPi
+	ATKrYsjIoITE7NLvOuUzgN0mBEY22jnZl2CXv6o2bvosgo9dALqAh6KbBSYSYYRnYnboUIVNt3QAG
+	EMEVjz4zBLRwn01Iyq1m6EqSiydfD2KoYogvYXXgjqzdPNGkitfA/+L1tk9PNzO7D6BE6nbv33dbQ
+	PBRpbkGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4CVu-00CyIJ-64; Thu, 23 Jun 2022 02:24:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o4CxK-00D6Pc-Lp; Thu, 23 Jun 2022 02:52:30 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4CQQ-00Cvx5-IS; Thu, 23 Jun 2022 02:18:34 +0000
-X-UUID: b0ba08ac28834ddd8354e8bb46ae0a60-20220622
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=pdQVFFCM4VJCN6tT7EBnd24VTfdCWPR1wDj/KdeULf0=;
-	b=uOFVGoq9dS/IVvZ1PufyO6Tc0sBFwRSGMsrdhxuq0vNbMYYRSAeohFlUnYC1irLiapAhRgBwFMDBtT4F94DOx/rkbSsSj877tKVQPaRsvyZJ9F2VNRKg7PbeGHcmDzwc/6rxDlkLjMbVJNY/nafC9Sce+Xa7Ed/Tx5rAtMGiRbw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:9e634e6b-fa1a-4abb-bd7f-8a224da6ab36,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:5d9a3938-5e4b-44d7-80b2-bb618cb09d29,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: b0ba08ac28834ddd8354e8bb46ae0a60-20220622
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 809407221; Wed, 22 Jun 2022 19:18:25 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Jun 2022 19:12:34 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 23 Jun 2022 10:12:32 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Jun 2022 10:12:31 +0800
-Message-ID: <561adc680c9af8e8813baf698f2f6ba67ce046e9.camel@mediatek.com>
-Subject: Re: [PATCH v2 2/5] iommu/mediatek: Add error path for loop of
- mm_dts_parse
-From: Yong Wu <yong.wu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
-	<iommu@lists.linux-foundation.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>,
-	<chengci.xu@mediatek.com>, <youlin.pei@mediatek.com>,
-	<anan.sun@mediatek.com>, <xueqi.zhang@mediatek.com>, Guenter Roeck
-	<groeck@chromium.org>, Dan Carpenter <dan.carpenter@oracle.com>
-Date: Thu, 23 Jun 2022 10:12:31 +0800
-In-Reply-To: <22c40a7f-d759-5b4a-f554-cf679102d91f@gmail.com>
-References: <20220616054203.11365-1-yong.wu@mediatek.com>
-	 <20220616054203.11365-3-yong.wu@mediatek.com>
-	 <22c40a7f-d759-5b4a-f554-cf679102d91f@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o4Cx9-00D6MT-FP; Thu, 23 Jun 2022 02:52:21 +0000
+Received: from dggpeml500022.china.huawei.com (unknown [172.30.72.57])
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4LT4VD4hzZz1KC7y;
+	Thu, 23 Jun 2022 10:49:56 +0800 (CST)
+Received: from dggpeml100012.china.huawei.com (7.185.36.121) by
+ dggpeml500022.china.huawei.com (7.185.36.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Thu, 23 Jun 2022 10:52:04 +0800
+Received: from zelda.huawei.com (10.175.103.14) by
+ dggpeml100012.china.huawei.com (7.185.36.121) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Thu, 23 Jun 2022 10:52:03 +0800
+From: Jin Xiaoyun <jinxiaoyun2@huawei.com>
+To: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<khilman@baylibre.com>, <zhengbin13@huawei.com>, <gaochao49@huawei.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Jin
+ Xiaoyun" <jinxiaoyun2@huawei.com>
+Subject: [PATCH v2 -next] soc: mediatek: SVS: Use the new PM macros
+Date: Thu, 23 Jun 2022 11:09:31 +0800
+Message-ID: <20220623030931.2816013-1-jinxiaoyun2@huawei.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220622013410.2786760-1-jinxiaoyun2@huawei.com>
+References: <20220622013410.2786760-1-jinxiaoyun2@huawei.com>
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.175.103.14]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpeml100012.china.huawei.com (7.185.36.121)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_191830_670727_EB7A4EC1 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20220622_195219_717140_49B56D80 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,26 +71,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA2LTE2IGF0IDE1OjQ5ICswMjAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3Rl
-Og0KPiANCj4gT24gMTYvMDYvMjAyMiAwNzo0MiwgWW9uZyBXdSB3cm90ZToNCj4gPiBUaGUgbXRr
-X2lvbW11X21tX2R0c19wYXJzZSB3aWxsIHBhcnNlIHRoZSBzbWkgbGFyYnMgbm9kZXMuIGlmIHRo
-ZQ0KPiA+IGkrMQ0KPiA+IGxhcmIgaXMgcGFyc2VkIGZhaWwocmV0dXJuIC1FSU5WQUwpLCB3ZSBz
-aG91bGQgb2Zfbm9kZV9wdXQgZm9yIHRoZQ0KPiA+IDAuLmkNCj4gPiBsYXJicy4gSW4gdGhlIGZh
-aWwgcGF0aCwgb25lIG9mX25vZGVfcHV0IG1hdGNoZXMgd2l0aA0KPiA+IG9mX3BhcnNlX3BoYW5k
-bGUgaW4NCj4gPiBpdC4NCj4gPiANCj4gPiBGaXhlczogZDJlOWExMTAyY2ZjICgiaW9tbXUvbWVk
-aWF0ZWs6IENvbnRhaW4gTU0gSU9NTVUgZmxvdyB3aXRoDQo+ID4gdGhlIE1NIFRZUEUiKQ0KPiA+
-IFNpZ25lZC1vZmYtYnk6IFlvbmcgV3UgPHlvbmcud3VAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0K
-PiA+ICAgZHJpdmVycy9pb21tdS9tdGtfaW9tbXUuYyB8IDIxICsrKysrKysrKysrKysrKystLS0t
-LQ0KPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDE2IGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0p
-DQo+ID4gDQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaW9tbXUvbXRrX2lvbW11LmMgYi9kcml2
-ZXJzL2lvbW11L210a19pb21tdS5jDQo+ID4gaW5kZXggM2IyNDg5ZThhNmRkLi5hYjI0MDc4OTM4
-YmYgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9pb21tdS9tdGtfaW9tbXUuYw0KPiA+ICsrKyBi
-L2RyaXZlcnMvaW9tbXUvbXRrX2lvbW11LmMNCj4gPiBAQCAtMTA3MSwxMiArMTA3MSwxMiBAQCBz
-dGF0aWMgaW50IG10a19pb21tdV9tbV9kdHNfcGFyc2Uoc3RydWN0DQo+ID4gZGV2aWNlICpkZXYs
-IHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKiptDQo+ID4gICANCj4gDQo+IERvbid0IHdlIG5lZWQg
-dG8gY2FsbCB0aGUgZ290byBhbHNvIG9uIGVycm9yIGNhc2Ugb2Y6DQo+IA0KPiBsYXJibm9kZSA9
-IG9mX3BhcnNlX3BoYW5kbGUoZGV2LT5vZl9ub2RlLCAibWVkaWF0ZWssbGFyYnMiLCBpKTsNCg0K
-VGhhbmtzIHZlcnkgbXVjaC4NCg0KZXhhY3RseSByaWdodC4gSSB3aWxsIGFkZCBpbiBuZXh0IHZl
-cnNpb24uDQoNCj4gUmVnYXJkcywNCj4gTWF0dGhpYXMNCg==
+Use DEFINE_SIMPLE_DEV_PM_OPS() instead of the SIMPLE_DEV_PM_OPS()
+macro, along with using pm_sleep_ptr() as this driver doesn't handle
+runtime PM.
+
+Fix build error:
+drivers/soc/mediatek/mtk-svs.c:1515:12: error: ‘svs_resume’ defined but not used [-Werror=unused-function]
+drivers/soc/mediatek/mtk-svs.c:1481:12: error: ‘svs_suspend’ defined but not used [-Werror=unused-function]
+
+Signed-off-by: Jin Xiaoyun <jinxiaoyun2@huawei.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+v1->v2:
+- Remove the #ifdef CONFIG_PM guard around the suspend/resume functions
+- Use DEFINE_SIMPLE_DEV_PM_OPS along with using pm_sleep_ptr()
+---
+ drivers/soc/mediatek/mtk-svs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 606a00a2e57d..fae7376bd083 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -2381,13 +2381,13 @@ static int svs_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+
+-static SIMPLE_DEV_PM_OPS(svs_pm_ops, svs_suspend, svs_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(svs_pm_ops, svs_suspend, svs_resume);
+
+ static struct platform_driver svs_driver = {
+ 	.probe	= svs_probe,
+ 	.driver	= {
+ 		.name		= "mtk-svs",
+-		.pm		= &svs_pm_ops,
++		.pm		= pm_sleep_ptr(&svs_pm_ops),
+ 		.of_match_table	= of_match_ptr(svs_of_match),
+ 	},
+ };
+--
+2.25.1
 
 
