@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42B60C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 09:19:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1013CC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 09:22:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pvak8vXpsDRjOHTXooC25SFXlSSfbACSqePH2JW+Esk=; b=UYmYSewg6PVg+dmp43yd/UBvoR
-	7as5S3GD9leJZtBDC11KjA5fKg0Qx7Ta6Pq+LHKK+6gAE3IBQpj9BAAnbyutcKs+B/dSX1YiT7SSs
-	jnyoLXLje65ZOzlkaFrAOIM/gaWxm0BHs45oIWvLm31vK0VU8iCXZhX3f57BKUqt5KxrfQL5nsIi6
-	MK17cYhXw8q4C8t8+U65lVb97Tce0nEm/F3Usi32rbo8Smp2b0DfN+rvyGBosGQCMKpNSp0QDf5VS
-	NY6yM5nwdA9tMXhOvs0Uapx/6dO6JCqLyPcjtGFMgZ4awjlROyMB1C+zli49d4mzAmXnx0Ol8rKQT
-	l36jUyaA==;
+	bh=fCM1P9rV5zl208qDFOusuoIotypBhZJEvh6oAixkUpI=; b=lLtqY26gD4doKGLwx5wN/bJ158
+	1WHpPpGaYjwLtVMUWdeEbn6gXvJrcairdRrmII2xsTXBoqM1t5NbzTvgbQD2pffj5vDar6W90v347
+	+TcOHpDar1/VtgGjis24IMw/eQAK/TH4GonMlRM7qLh+1psBI/HMlA6IkSRq0sjNhvizmewIidenN
+	OuUAzWiiSnZLojs5N3OfOWolspMaESiHVZzVslRgp72VsR8D0Onc49ZeF+7+e4VjgW4bpjxcEZFTb
+	XsrpP5/9x812+i6squMEdCkiGKkbE6TY2nr40ZQqGamzTM+eU+I37iTm97WPP6dehr8PhX7DnVsvA
+	odm6kDBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4J04-00EIqG-Pr; Thu, 23 Jun 2022 09:19:44 +0000
+	id 1o4J2S-00EJPm-IU; Thu, 23 Jun 2022 09:22:12 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Izt-00EImA-5A; Thu, 23 Jun 2022 09:19:34 +0000
+	id 1o4J2P-00EJPB-Ls
+	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 09:22:11 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2FF226601752;
-	Thu, 23 Jun 2022 10:19:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E77946601752;
+	Thu, 23 Jun 2022 10:22:07 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655975969;
-	bh=jvTSpUApFuNR+zry7deDGr045Bs+SsvwvHOVl8kQWBE=;
+	s=mail; t=1655976128;
+	bh=i/BTlmTsubNTSWq020jFczUKEvkkr5DvhZf1Py61tB0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HtlXJ6FpjazjmbTMa4K2OgCwmcUvIgnEBsNkestc/XFp/KcB1WYvMxf57uDyTjU79
-	 +UmT84cZ5l7aebBlizcY3SvC9cSANEU7MooekayQBaJAEImjOp+g7A8BYnJgcNLPtM
-	 HKogcZk+1CnKeTDKJYkek4EsPkyAtW+kBdvfFMnolf26yDoAHWwi+DbDHc2S9OGX3B
-	 9JpOCV8Q9ApJstpZHhUJRjKjRG9H3rJdInA/HmgqlkLwwUpCd+L6QlezzR6rLy7otL
-	 aKC3KUaagtPTXQDtZkzncR+c/SlrbTVmiLf5z396DxfIBcDp7IExBd4oSehUKKvTDC
-	 hcOy74FkPmOpg==
-Message-ID: <0b065a56-5ab1-9be4-d92c-f7bfec629a3e@collabora.com>
-Date: Thu, 23 Jun 2022 11:19:26 +0200
+	b=crODGwY+qCOyn3wMI8GsirBvApMarr1J4wwSSBxQWp2QB8OwUQBJHEXz52ZEL1JS2
+	 7lb48NzYCObcL5mNhda4L9JQjp9JA3KmVJYm+B4K6Ebb49q/e6x9b/L1YhMLOQhi+Z
+	 l21pCNuaknB7I/EBm8Th4pUogO4yZcKEHWD6lLe73dFu6HQrNc1e/M62vvLrpnsU9W
+	 a7GrwuxT0Xlv5hG+bxzI4gABYuQSsAsT3GdrcVgvbNbjGH3K41vKAQJa7RKJ4B+72O
+	 wIk5+oi/cT9y7CTdLDPtMlJfjw2FEAlbCQBRPtuTPlvP6gLuJosnp/RUqK8qKomXVf
+	 xDbnXbvWP9L/A==
+Message-ID: <460046b1-44f7-e9db-6532-44cb06e4a242@collabora.com>
+Date: Thu, 23 Jun 2022 11:22:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH v4 0/4] Add MT8186 ADSP dt-binding
+Subject: Re: [PATCH] media: mediatek: vcodec: Skip SOURCE_CHANGE & EOS events
+ for stateless
 Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- YC Hung <yc.hung@mediatek.com>, Curtis Malainey <cujomalainey@chromium.org>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220622062245.21021-1-tinghan.shen@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Yunfei Dong <yunfei.dong@mediatek.com>
+References: <20220620063349.2754116-1-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220622062245.21021-1-tinghan.shen@mediatek.com>
+In-Reply-To: <20220620063349.2754116-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_021933_468638_C269DFF9 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20220623_022209_893510_E1D67830 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +80,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-For the entire series:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
-
-> v3 -> v4:
-> 1. Update commit message of patch 1/4
-> 2. Add review tag to path 3/4
+Il 20/06/22 08:33, Chen-Yu Tsai ha scritto:
+> The stateless decoder API does not specify the usage of SOURCE_CHANGE
+> and EOF events. These events are used by stateful decoders to signal
+> changes in the bitstream. They do not make sense for stateless decoders.
 > 
-> v2 -> v3:
-> 1. Change mbox-names to rx/tx for both mt8186 and mt8195.
-> 2. Update description of mbox-names
-> 3. Use static string array instead of kasprintf
-> 4. Align clock names in dsp driver with dt-bindings
+> Do not handle subscription for these two types of events for stateless
+> decoder instances. This fixes the last v4l2-compliance error:
 > 
-> v1 -> v2:
-> 1. Change mbox-names from mbox0/mbox1 to rep/req for both mt8186 and mt8195.
-> 2. rename clock-names and remove unused headers
+> Control ioctls:
+> 		fail: v4l2-test-controls.cpp(946): have_source_change || have_eos
+> 	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
 > 
-> Tinghan Shen (4):
->    dt-bindings: dsp: mediatek: Use meaningful names for mbox
->    firmware: mediatek: Use meaningful names for mbox
->    dt-bindings: dsp: mediatek: Add mt8186 dsp document
->    ASoC: SOF: mediatek: Align mt8186 clock names with dt-bindings
-> 
->   .../bindings/dsp/mediatek,mt8186-dsp.yaml     | 91 +++++++++++++++++++
->   .../bindings/dsp/mediatek,mt8195-dsp.yaml     | 10 +-
->   drivers/firmware/mtk-adsp-ipc.c               | 36 +++-----
->   sound/soc/sof/mediatek/mt8186/mt8186-clk.c    |  4 +-
->   4 files changed, 110 insertions(+), 31 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/dsp/mediatek,mt8186-dsp.yaml
-> 
+> Fixes: 8cdc3794b2e3 ("media: mtk-vcodec: vdec: support stateless API")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
