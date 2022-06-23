@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C1ECCA47C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99884C43334
 	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 10:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZeiSTA+gYS5jxsN8dxMnH3udDz0uwz0c2aWxcvJlZlg=; b=dUnMC9TLaMutYBX+s06WtTfO1K
-	EWruyEyc5SELCswwqrxV+pbXDEqzdBwlcH/g1xfKGhQcCDZROY9SlmcGJVOZktNiES6xipE6Met/3
-	ysvElYsVFTtI7qYce0v+tAiRQ+saWWmS4PNbGAnWDTKLGBfEkMq3Rbr5hticZPQx9nt5OPbDrj7tp
-	rxjl3DSbyi3jjTpM+DUrkRl+Jr4IzXIyOeGkLswlTwyMbAqpVewYDCGlruBXS6P/Al+GuxWWeO3xr
-	CwOlZLdyQwakAM07rnHz/c9DkwdULjGKPpkDk7Z0v4nXjGdYot8tk4Gjk3Lz1Sbrpkb39TToYeBYZ
-	a+zClqcA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XyqEjbsv+z9CUBqSGOqxXKSmOvWQaOExLXPsIsto+GU=; b=DxZnXoDetNXln7BjpPZog3RCPK
+	xOrJRVqjZWfrBfXQtJqoMSMjxsN2oMKFfGj5CrNEV53fw8PRH4cmnI6UxJJtszP26ssHyX9TAFOZG
+	VAmodsDwYacMmHvnhVDSYUYIJRSdaffUxlLqufG67fmZH5nRHc9HjOMFX86RL7SI/HvFli8HKCAQF
+	onzXeMsBFK/+0mOyONf/bYbgxfSgSAhsG3DvQQdFXhE0tWY8k0UF/YZemv5msmPfC0/26Fp1cNTSC
+	ilacR29ke6l8rPhxydT8RFmsmbKlWBc60DjBB45ldSks59LfrQHqNM4MtoR4re1jbJWFZktsdcVs2
+	8j2nTPLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Jn8-00ES10-7w; Thu, 23 Jun 2022 10:10:26 +0000
+	id 1o4Jn7-00ES0j-Ho; Thu, 23 Jun 2022 10:10:25 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Jmn-00ERrm-CR; Thu, 23 Jun 2022 10:10:06 +0000
+	id 1o4Jmn-00ERrl-5p; Thu, 23 Jun 2022 10:10:06 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A520666017CF;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0EAF56601796;
 	Thu, 23 Jun 2022 11:10:03 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655979004;
-	bh=fdj/NDREE13nXimTiZFPKHxqmbz8mAHTy/iF6JaIN7U=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KbhLxup9FZmSqGXBELMNjXZopSuyFCH+mOrVqAHuo9IseIS7pouJiI0NaKBxt3pZU
-	 KfGuMyfOxV4BQUoUe/2HsTR4sxN/RBZ8h6R7zoVdKU59whUASk6q5r6VHAanB/wKpV
-	 roAilsWSIgfpgQQSPD5XTKvIpATfhLcEr7+kEtwwvR5gBJDFQzgauAqMoOHRInP71V
-	 EGD7PH8TMKZyUNMSaDx0H/K8+FFLWgQqNiVPQEJUvG+fKqK6gJrn3gWydLZhVfmfnB
-	 /fH3TqVph350nKJnE9KIbdRdmvNZp5xWU703CvaYtwEP6LO7lCAhWWOh5DDhcxv06I
-	 2U0c7UmlIs3Cw==
+	s=mail; t=1655979003;
+	bh=+y7MosVyFMCeWL500cbHvDLPel8eiklTH/H6ZFzjZ1Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EoOSch7c2DJRjoiRID56J9pJIkXxdG+jxrFhuCoajbcuS9w4U8+i3ecTcwFwRGZF+
+	 ZJiIbbNNqkSlmgWyveYXvJiM7M9xG+K3hv6/LTDYN2eeOHBl/Px3GziBKAELJx+JoN
+	 UxeTQpejkI5tZGTAN23bCXxvtGd8mHHifERS9JSWLI8JizcmxfD0nS/CRSJmER5yDM
+	 9589/DPPRG860wFpos+BWLSD1gQXxcaD1deaS7hk8iSQ6FhtQUPuTNH/fRq+Q8cybz
+	 HM0xfxegcBAZEO9cj8VjbUaHF/PukGheZR+QVSb5EwkoCLDYniRFV4sFfzf94Leo+0
+	 AFmx/zGeuNM/Q==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -51,18 +51,15 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-kernel@vger.kernel.org,
 	wenst@chromium.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 1/5] soc: mediatek: mt8192-pm-domains: Allow probing vreg supply on MFG0/1
-Date: Thu, 23 Jun 2022 12:09:47 +0200
-Message-Id: <20220623100951.21153-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/5] Allow getting regulator on MFG for multiple SoCs
+Date: Thu, 23 Jun 2022 12:09:46 +0200
+Message-Id: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
-References: <20220623100951.21153-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_031005_593391_4DE1BCDA 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220623_031005_393954_EF0541B0 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +74,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8192 SoC has multiple MFG power-domains, exclusively used for
-the GPU which, in turn, requires external power supplies: add the
-MTK_SCPD_DOMAIN_SUPPLY cap to MFG0 and MFG1 to allow voting for
-regulators on/off upon usage of these power domains.
+This is one of the steps to enable DVFS with the Panfrost driver:
+since Panfrost is already enabling the (required) MFG power domains
+and since the mtk-pm-domains driver is already responsible for
+actually enabling the SRAM PDN, it makes sense to make sure that
+the VSRAM supply is ON when trying to reset/enable the SRAM.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mt8192-pm-domains.h | 2 ++
- 1 file changed, 2 insertions(+)
+For this reason, the MTK_SCPD_DOMAIN_SUPPLY flag was added to one
+more MFG domain, ensuring that the SRAM is actually powered and
+also not relying on the bootloader leaving this supply on; on the
+other hand, this is also making possible to avoid setting a
+sram-supply on the GPU node, making devfreq happy about having
+only one supply and finally allowing DVFS to happen.
 
-diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/soc/mediatek/mt8192-pm-domains.h
-index 558c4ee4784a..b97b2051920f 100644
---- a/drivers/soc/mediatek/mt8192-pm-domains.h
-+++ b/drivers/soc/mediatek/mt8192-pm-domains.h
-@@ -58,6 +58,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
- 		.pwr_sta2nd_offs = 0x0170,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.caps = MTK_SCPD_DOMAIN_SUPPLY,
- 	},
- 	[MT8192_POWER_DOMAIN_MFG1] = {
- 		.name = "mfg1",
-@@ -85,6 +86,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
- 				    MT8192_TOP_AXI_PROT_EN_2_CLR,
- 				    MT8192_TOP_AXI_PROT_EN_2_STA1),
- 		},
-+		.caps = MTK_SCPD_DOMAIN_SUPPLY,
- 	},
- 	[MT8192_POWER_DOMAIN_MFG2] = {
- 		.name = "mfg2",
+If no domain-supply is declared in devicetree, mtk-pm-domains driver
+probe will anyway keep going, so this is not breaking old devicetrees.
+
+No side effects either when this supply is declared for both a MFG
+domain and Panfrost together.
+
+This series has no dependencies.
+
+AngeloGioacchino Del Regno (5):
+  soc: mediatek: mt8192-pm-domains: Allow probing vreg supply on MFG0/1
+  soc: mediatek: mt8183-pm-domains: Allow probing vreg supply on
+    MFG_ASYNC
+  soc: mediatek: mt8195-pm-domains: Allow probing vreg supply on MFG1
+  soc: mediatek: mt8186-pm-domains: Allow probing vreg supply on MFG1
+  arm64: dts: mediatek: mt8183-kukui: Assign sram supply to mfg_async pd
+
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 2 +-
+ drivers/soc/mediatek/mt8183-pm-domains.h       | 1 +
+ drivers/soc/mediatek/mt8186-pm-domains.h       | 2 +-
+ drivers/soc/mediatek/mt8192-pm-domains.h       | 2 ++
+ drivers/soc/mediatek/mt8195-pm-domains.h       | 2 +-
+ 6 files changed, 10 insertions(+), 3 deletions(-)
+
 -- 
 2.35.1
 
