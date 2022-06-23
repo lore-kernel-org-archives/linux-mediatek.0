@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF69C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 08:42:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C95C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jun 2022 08:48:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=10P4WcE1jL5ZWJcaqGZV23Qsl+UQzJzlX+JiQUSb1BU=; b=riYPPwQiTkBcPPXxnN0FC8FMZF
-	HqFTC16tCJxKjNK8a+GoQqFde37IEA02wZr1NYto++PdwU2UakH2sekzmmeIjoDgMCW9WlbkFGpI3
-	SOXuuuaRfqlhIX6r4OhFIyq2RcJgayqCT7mb/JsEtkc2pO27nxhuzZPE+2Ig5vJPN21s7FFt3Fd9D
-	LhjqzsxPmunf9mPcpjOn2c0P0iAcNagWe3E3l9etE8dKPxkclOHToYfOafnHa0gW/FPOZ/XWwpfwN
-	Kldgd1vjT5amIB7b54EQhwKdaUO6BY6IEZAKKiyOjake5Zl9HYF5SSlghroGfWlNU9oKwtPk5Jsu5
-	FBbdQoGg==;
+	bh=Z+VqKBMvC1uArpVu7SR3eY2GSNmqTJvDfdUYpd+bUCE=; b=HBCWFbnuAAKYpCU9xYgcpPSnWU
+	EJb01fFZ4PvEab16b0G1pLdHKsmyQQoJR5+l66EmOm/Cv5fIpYFRk/EXN+DYR4FpT71TZlrve3agI
+	lBrFLb7XovVfBRPWTlpsI0rt9d65uINZEIXKcVeSCURxik3d3ae1b+Z9Usc32xHOejXwzyWEUe56K
+	6ycNxXr87X3ZM8QzVb3geYtUm10pNiAQma62OmxFoRraMe13BGUh6ZX80KgLRWP+gcF8/1nmcPay3
+	Cm6Z1rJ174btVC4epdIwRsp6YlNJ+C4uabr6g2P5gWpippfJcf3JsOtbPWec75OT4vYO48GuP7cy9
+	Wvo8Kkmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4IQ6-00E8uB-Fc; Thu, 23 Jun 2022 08:42:34 +0000
+	id 1o4IVb-00EAgd-Th; Thu, 23 Jun 2022 08:48:15 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4IQ3-00E8sz-CB
-	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 08:42:32 +0000
+	id 1o4IVY-00EAew-N1
+	for linux-mediatek@lists.infradead.org; Thu, 23 Jun 2022 08:48:14 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 968FB6601792;
-	Thu, 23 Jun 2022 09:42:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A635C6601792;
+	Thu, 23 Jun 2022 09:48:09 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655973749;
-	bh=a3qg+o/OwgqXslU/4j4RlR9cUNoRYrfj19YE44y2v3E=;
+	s=mail; t=1655974090;
+	bh=ylgwSvzf7Fqq4ao2tBir/3+VLMJz9T1sIuh0IuI0M2I=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XKQK0beGg3vTWSmevrEBFXfg7Q50EHWuJlc9pwCXzaWUO+VBLRPh9p4Oy3qQRBUsS
-	 2W7qVoYtzbfrOv/1RrewUg21ryne4VDHhJZdOO+WEWkFcAQl8p6YG9Y+YzRVi4CRh7
-	 77J6K81IQ+QSFtfhS/4wVHmTXZUfaz5CxrZSyP/VVqdmpOArk9s+lvIvrNdEEYSOfr
-	 CBDGOw97CVusucf5EYiBq65amZ8Ldr1FtzeutiCuujc2zWnCK1610hxEMZth5xs6pP
-	 VkcNlnAigF0gFT5diFw0gsC73kN0Q+5Xn4BKM5vlj5aMhsn+c4uYuAv4ZZxidv0ULF
-	 dzHKBOcezZn1w==
-Message-ID: <c379dca6-88a7-8ed6-c585-714ea411bd02@collabora.com>
-Date: Thu, 23 Jun 2022 10:42:26 +0200
+	b=nRkCTHiYs4l1ldAealljY6GiGIFZ/IpFvUCarTw2/Qv9TKXiGRNu9GsSVacT46H7f
+	 4oMSzMvTcwPqZaF3+tXV4CpBvndP3015KC1v77eipcxoJXz6rMfdJLnaSNHN19b13d
+	 n3LfzvTwxkq1nXrw017eyNJ6nPdHxRWF10qjz2yzhCCvEX5+RTT8Y7zaF94f18swkz
+	 N0TRldcLs5tve6ZJh7OETzpfsLlP9SwNh2nOujoi16xMbTu/uwAZfVvx+t+40rkWsd
+	 F2PvOiYuzMP6PSHRl2wi8X30Lj/tE0Hi9Anopazfxmdjk+2FzIWRd9oUQ6fvOSK3Pn
+	 vuFwb27qSWP+g==
+Message-ID: <b2769038-798c-fe93-478b-8d5bbd97b29f@collabora.com>
+Date: Thu, 23 Jun 2022 10:48:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH v2] Bluetooth: btmtksdio: Add in-band wakeup support
+Subject: Re: [PATCH 1/2] mt76: mt7921: reduce log severity levels for
+ informative messages
 Content-Language: en-US
-To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com
+To: sean.wang@mediatek.com, nbd@nbd.name, lorenzo.bianconi@redhat.com
 Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
  Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, ted.huang@mediatek.com, Eric.Liang@mediatek.com,
+ jenhao.yang@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
+ ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
  Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, abhishekpandit@google.com,
- michaelfsun@google.com, mcchou@chromium.org, shawnku@google.com,
- linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Yake Yang <yake.yang@mediatek.com>
-References: <52b63a1be094a1ccbb20f2c89472580d95f0652a.1655934689.git.objelf@gmail.com>
+ jsiuda@google.com, frankgor@google.com, kuabhs@google.com, druth@google.com,
+ abhishekpandit@google.com, shawnku@google.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <753f19393f169ad4a5fc127f68e16074f1617306.1655944385.git.objelf@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <52b63a1be094a1ccbb20f2c89472580d95f0652a.1655934689.git.objelf@gmail.com>
+In-Reply-To: <753f19393f169ad4a5fc127f68e16074f1617306.1655944385.git.objelf@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_014231_604406_DC0170C9 
-X-CRM114-Status: GOOD (  19.79  )
+X-CRM114-CacheID: sfid-20220623_014812_934060_6B99A420 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,73 +81,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/06/22 23:56, sean.wang@mediatek.com ha scritto:
+Il 23/06/22 02:35, sean.wang@mediatek.com ha scritto:
 > From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Commit ce64b3e94919 ("Bluetooth: mt7921s: Support wake on bluetooth")
-> adds the wake on bluethooth via a dedicated GPIO.
+> Use dev_info instead for the informative messages.
 > 
-> Extend the wake-on-bluetooth to use the SDIO DAT1 pin (in-band wakeup),
-> when supported by the SDIO host driver.
-> 
-> Co-developed-by: Yake Yang <yake.yang@mediatek.com>
-> Signed-off-by: Yake Yang <yake.yang@mediatek.com>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
-> v2: enhance the patch description and comments
-> ---
->   drivers/bluetooth/btmtksdio.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+>   drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-> index d6700efcfe8c..9d79c9107b3a 100644
-> --- a/drivers/bluetooth/btmtksdio.c
-> +++ b/drivers/bluetooth/btmtksdio.c
-> @@ -118,6 +118,7 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
->   #define BTMTKSDIO_FUNC_ENABLED		3
->   #define BTMTKSDIO_PATCH_ENABLED		4
->   #define BTMTKSDIO_HW_RESET_ACTIVE	5
-> +#define BTMTKSDIO_INBAND_WAKEUP		6
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> index eb1bfb682e02..2ce3a833176e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> @@ -740,7 +740,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+>   	struct mt76_connac_pm *pm = &dev->pm;
+>   	int i;
 >   
->   struct mtkbtsdio_hdr {
->   	__le16	len;
-> @@ -1294,6 +1295,9 @@ static bool btmtksdio_sdio_wakeup(struct hci_dev *hdev)
->   		.wakeup_delay = cpu_to_le16(0x20),
->   	};
->   
-> +	if (test_bit(BTMTKSDIO_INBAND_WAKEUP, &bdev->tx_state))
-> +		return may_wakeup;
-> +
+> -	dev_err(dev->mt76.dev, "chip reset\n");
+> +	dev_info(dev->mt76.dev, "chip reset\n");
 
-Uhm... this flag is either *always* set, or *always not set*... and we decide that
-during probe time... and we use it in just one function as well.
+Since this function is normally expected to be called and this message is
+describing the wanted flow and/or this worker function starting, I'd say
+that this is not a really important information anyway...
 
-At this point, I would just avoid the addition of the BTMTKSDIO_INBAND_WAKEUP flag
-and add a new function for handling the .wakeup() callback - something like:
-
-static bool btmtksdio_sdio_inband_wakeup(struct hci_dev *hdev)
-{
-	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
-
-	return device_may_wakeup(bdev->dev);
-}
-
-static int btmtksdio_probe(...)
-{
-	.... code ....
-
-	/*
-	 * If SDIO controller supports wake on Bluetooth, sending a wakeon
-	 * command is not necessary.
-	 */
-	if (device_can_wakeup(func->card->host->parent))
-		hdev->wakeup = btmtksdio_sdio_inband_wakeup;
-	else
-		hdev->wakeup = btmtksdio_sdio_wakeup;
-
-	.... etc ....
-}
+What about changing that one to a dev_dbg() instead?
 
 Regards,
 Angelo
+
+>   	dev->hw_full_reset = true;
+>   	ieee80211_stop_queues(hw);
+>   
+
 
