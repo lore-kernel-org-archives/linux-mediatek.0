@@ -4,86 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFF3EC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:20:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E5BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:22:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RgSnFxwGzpmjm+p7ZnjxYjteXl5sPOJEGrU4Scgygt8=; b=AaUuPghndBgM+9Pu4OsEaWlqIe
-	Nm8tEHnhDzCiwSmuzQ0W7c32pPiXzzNcWEBRQrZ+5qX19oFZzB7CLPiQgSQMcHCPXDhc94fDPLtnx
-	bnzeIGyi1OblIi8zEmCCVonNsw8vbTfMzSa8rojcFTyJhJGq4jd5GB+l4GU3ouwomehea1d4+f9iE
-	S/1nnx+tPjtLpDqgacjDxDTJig/z0Dl859gpw4fVQNXYZV99wi4GYs4w7THWQRAMcxf8eGaK0m6HQ
-	E8VFSo7ulPWGk480GJm3JJgb8t0lbEkNgENRZ4Y0LRvcG7fUGEgDWS3bgxb58tKPQjGRV9TghVFP2
-	neA9bmIg==;
+	bh=46eZI8EBmHCeYZ18PSz8qLsBpQq+85K2lsgJJ+Z+5NY=; b=liN9D+swWkxSCpQWPlkj03vIdX
+	IYB3tX/XJm5jaRlMPRC7rNZpEwBJ2r6YT5//nqA8JrXOrFULI0WKvfzE2Zlz6JVPd8FhZtELa9VpY
+	BWLLnAn/UFmYjh9bqkDpFnCt+dld6meJg1FiOqceGbrYHfGeyehI4jvHyjWBdFijJGi3MuSAgU0O/
+	GtwahZsrueVnvE9u0HNAG9Hr6iMfh5eQNuttZ2gI0wGOSrH+y/+ZaUCOzSo57CPW40ccdotcWVavX
+	TtycQG+7Q/G5XugS+Hh9MtXkL/cRhngYNpj2P4jKiS1WqWxBPYglNbgOFDigXJIEBPh17vQYmCvqk
+	e54PB0vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4gQ9-001iJJ-6b; Fri, 24 Jun 2022 10:20:13 +0000
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
+	id 1o4gRz-001jBQ-Ss; Fri, 24 Jun 2022 10:22:07 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4gPl-001i8s-Tp; Fri, 24 Jun 2022 10:19:51 +0000
-Received: by mail-io1-xd2c.google.com with SMTP id s17so2206226iob.7;
-        Fri, 24 Jun 2022 03:19:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=RgSnFxwGzpmjm+p7ZnjxYjteXl5sPOJEGrU4Scgygt8=;
-        b=Ksbgww2SpxbTKSeTwjSi+p9D7IjbSHXpPB6L2alhOT0rPaZ3Jdcwu4C8kKWHxpZsNs
-         pDZuW0yEoNBO0Hch6e/i/MyP8cEMrpcp0cPmroROelXTAnV/iMJJ35xzaUxnSQ80bmAt
-         FltIIv4lxmVG83sudMnDJngHdXAPymOVnnH0oSIsuglA6T+ThlE9cu/QXsyrD1halwkq
-         4K3YpgtFmjOQS4dXGRT42MgvZSQwT5yZfxY8tb0iUMGjYycTBPfNix0kpEQLPHOYAs/N
-         BZkwaH866WD1HBeagt9fSRhQwdsNkEWRuT2z/k8aQQco4QLvUdvBC6kIAJI/qCmJqBhj
-         IgeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=RgSnFxwGzpmjm+p7ZnjxYjteXl5sPOJEGrU4Scgygt8=;
-        b=GTUzVsR5Z8X5BZCn9n7FTJTRc0YCXXLRlTpZOeOYEXjhR7aRG2XjojVQrZd8T+5Hi5
-         pg0OLpMOqArxHiFS/5KQ4bGL2Yij7K+vj6LXAOhwm3qRU9701ctHCr0MBKNKkAkDiTI5
-         hdyFlgaXwNnjUFbDXyWOMlBDHAI68VfwmVj7lBeaPdxxAHrq8APOVK2ecqtzGZl2Woy4
-         8fckGSKiKCajae7RIkoxO4sqoODjvOvQTc4aMlbsaU0R87juhytR6pVrrGsk+2Dmh2j2
-         67MjAGL1G6usjEJDGp+mqKUNM9EJ0e2FN4DaTsBYWjaWeIns1byfitIn1xYBFR4ZVxjR
-         abxA==
-X-Gm-Message-State: AJIora8bqHTjpzpSVEkaqwgOGfDKA3GkhRrV0jVpyMH8pFRXUhdf2p0O
-	cT8vSzO69CCZIO0KwTM/aRK3l5CypUqCr1FTiEo=
-X-Google-Smtp-Source: AGRyM1vutyoXzSan9RSfWSnID47w2e/WTQN3pASpI53PVkOjX+Rz7wJCkOQl3pTTKmSWx4A4FnD/sHVFYCZM+YdWIVo=
-X-Received: by 2002:a5e:990f:0:b0:673:4f01:3a2a with SMTP id
- t15-20020a5e990f000000b006734f013a2amr4553113ioj.76.1656065986866; Fri, 24
- Jun 2022 03:19:46 -0700 (PDT)
+	id 1o4gRV-001iwG-G5; Fri, 24 Jun 2022 10:21:39 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1CE1F66017E1;
+	Fri, 24 Jun 2022 11:21:33 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656066093;
+	bh=XiQqaDDVsr9ct3XTN5uUy3VFBouJw2oayLQC2BD4/ig=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=B5+Qof2yy7qYYHlV/E/zYtNZe9KOOGts0UL40hc5pHask88etXUGsINGHgCieqMcR
+	 AwODsgtze+9SM0LRZgskDgBWfDJIYbP4iGXlTWHpoV3KTVtkCpVsSw9nc0cdAz2Bhv
+	 XFFAAzQ+OO2DDPIuBMa2k+ZvSyLmzR6esYY+r0GqDrnK+h3N53uVw+V/HLcsOr5PlL
+	 LcAuPwJK8wlHvz9Pt6Hz3GatnFdLsjGtzn1ie40TwLmB17LL0GviBJ/GH0XWUAXUO6
+	 kpnW13gwDPutFDHN4o293k04vXkbW0xQuQR+mH32ICYQmgy+I2ChtOy5oZ0Y59hN+I
+	 wIdGa+eZ2VcDQ==
+Message-ID: <cb36b4a2-86b0-630c-8012-d1df1b0a42de@collabora.com>
+Date: Fri, 24 Jun 2022 12:21:30 +0200
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-8-peterwu.pub@gmail.com>
- <CAHp75Vd95sEQz8y4ZcviUKaC9ic27yitR+VCwkfb38MTTe0mkg@mail.gmail.com>
-In-Reply-To: <CAHp75Vd95sEQz8y4ZcviUKaC9ic27yitR+VCwkfb38MTTe0mkg@mail.gmail.com>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Fri, 24 Jun 2022 18:19:35 +0800
-Message-ID: <CABtFH5K_vB5Rmo+2zAJ8PuMeMvC9x-yhDL93ByOLD+gc2maQYg@mail.gmail.com>
-Subject: Re: [PATCH v3 07/14] mfd: mt6370: Add Mediatek MT6370 support
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 0/7] MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper
+Content-Language: en-US
+To: lee.jones@linaro.org
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, zhiyong.tao@mediatek.com, henryc.chen@mediatek.com,
+ johnson.wang@mediatek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220520124039.228314-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220520124039.228314-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_031950_011329_7D2C2B7B 
-X-CRM114-Status: GOOD (  27.22  )
+X-CRM114-CacheID: sfid-20220624_032137_756979_41E66220 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,163 +76,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Il 20/05/22 14:40, AngeloGioacchino Del Regno ha scritto:
+> In an effort to give some love to the apparently forgotten MT6795 SoC,
+> I am upstreaming more components that are necessary to support platforms
+> powered by this one apart from a simple boot to serial console.
+> 
+> This series introduces support in the PMIC Wrapper for a different PMIC
+> topology, which is commonly found on smartphone boards, using one main
+> PMIC and one Companion PMIC;
+> be aware that this kind of topology is not *specific to* the Helio X10
+> SoC, but common across many kinds of MediaTek smartphone oriented SoCs
+> and board designs.
+> 
+> That said, support for the PMIC combo MT6331+MT6332 is provided in this
+> series in a form that will be able to initialize the PMICs with crypto
+> and DualIO but nothing else: these PMICs are very featureful, so I have
+> decided to add this support in more than just one step, as there will
+> be multiple patches for multiple different subsystems (..it's a mfd!..).
+> 
+> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+> 
+> AngeloGioacchino Del Regno (7):
+>    soc: mediatek: pwrap: Move PMIC read test sequence in function
+>    soc: mediatek: pwrap: Add kerneldoc for struct pwrap_slv_type
+>    soc: mediatek: mtk-pmic-wrap: Add support for companion PMICs
+>    dt-bindings: mfd: Add compatible for MT6331 PMIC
+>    soc: mediatek: mtk-pmic-wrap: Add support for MT6331 w/ MT6332
+>      companion
+>    dt-bindings: mediatek: pwrap: Add a compatible for MT6795 Helio X10
+>    soc: mediatek: pwrap: Add support for MT6795 Helio X10
+> 
+>   .../devicetree/bindings/mfd/mt6397.txt        |   1 +
+>   .../bindings/soc/mediatek/pwrap.txt           |   1 +
+>   drivers/soc/mediatek/mtk-pmic-wrap.c          | 287 ++++++++++++++++--
+>   3 files changed, 263 insertions(+), 26 deletions(-)
+> 
 
-Thanks for your helpful comments! We have some questions below.
 
-Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B46=E6=9C=
-=8824=E6=97=A5 =E9=80=B1=E4=BA=94 =E5=87=8C=E6=99=A82:01=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Thu, Jun 23, 2022 at 1:59 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> >
-> > From: ChiYuan Huang <cy_huang@richtek.com>
-> >
-> > Add Mediatek MT6370 MFD support.
->
-> ...
->
-> > +config MFD_MT6370
-> > +       tristate "Mediatek MT6370 SubPMIC"
-> > +       select MFD_CORE
-> > +       select REGMAP_I2C
-> > +       select REGMAP_IRQ
-> > +       depends on I2C
-> > +       help
-> > +         Say Y here to enable MT6370 SubPMIC functional support.
-> > +         It consists of a single cell battery charger with ADC monitor=
-ing, RGB
-> > +         LEDs, dual channel flashlight, WLED backlight driver, display=
- bias
-> > +         voltage supply, one general purpose LDO, and the USB Type-C &=
- PD
-> > +         controller complies with the latest USB Type-C and PD standar=
-ds.
->
-> What will be the module name in case it's chosen to be built as a module?
+Matthias, please, can you check this series?
 
-OK, we will add related text in the next patch! Thanks!
+This doesn't depend on any other series that I've sent and besides that,
+Lee has acked the actual MFD PMIC code, so this should be good to go.
 
->
-> ...
->
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)  +=3D intel_soc_pmic_bxtwc.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)     +=3D intel_soc_pmic_chtwc.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)  +=3D intel_soc_pmic_chtdc_ti.o
-> >  obj-$(CONFIG_MFD_MT6360)       +=3D mt6360-core.o
-> > +obj-$(CONFIG_MFD_MT6370)       +=3D mt6370.o
-> >  mt6397-objs                    :=3D mt6397-core.o mt6397-irq.o mt6358-=
-irq.o
-> >  obj-$(CONFIG_MFD_MT6397)       +=3D mt6397.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)     +=3D intel_soc_pmic_mrfld.o
->
-> This whole bunch of drivers is in the wrong place in Makefile.
->
-> https://lore.kernel.org/all/20220616182524.7956-2-andriy.shevchenko@linux=
-.intel.com/
->
-
-hmm... So shall we need to cherry-pick your this patch first,
-then modify the Makefile before the next submission??
-
-> ...
->
-> > +#define MT6370_REG_MAXADDR     0x1FF
->
-> Wondering if (BIT(10) - 1) gives a better hint on how hardware limits
-> this (so it will be clear it's 10-bit address).
-
-well... This "0x1FF" is just a virtual mapping value to map the max
-address of the PMU bank(0x1XX).
-So, I feel its means is different from using (BIT(10) - 1) here.
-
->
-> ...
->
-> > +static int mt6370_check_vendor_info(struct mt6370_info *info)
-> > +{
-> > +       unsigned int devinfo;
-> > +       int ret;
-> > +
-> > +       ret =3D regmap_read(info->regmap, MT6370_REG_DEV_INFO, &devinfo=
-);
-> > +       if (ret)
-> > +               return ret;
-> > +
-> > +       switch (FIELD_GET(MT6370_VENID_MASK, devinfo)) {
-> > +       case MT6370_VENID_RT5081:
-> > +       case MT6370_VENID_RT5081A:
-> > +       case MT6370_VENID_MT6370:
-> > +       case MT6370_VENID_MT6371:
-> > +       case MT6370_VENID_MT6372P:
-> > +       case MT6370_VENID_MT6372CP:
->
-> return 0;
->
-> > +               break;
-> > +       default:
-> > +               dev_err(info->dev, "Unknown Vendor ID 0x%02x\n", devinf=
-o);
-> > +               return -ENODEV;
-> > +       }
-> > +
-> > +       return 0;
->
-> ...and drop these two lines?
-
-OK! We will refine it in the next patch!
-
->
-> > +}
->
-> ...
->
-> > +       bank_idx =3D *(u8 *)reg_buf;
-> > +       bank_addr =3D *(u8 *)(reg_buf + 1);
->
-> Why not
->
->   const u8 *u8_buf =3D reg_buf;
->
->   bank_idx =3D u8_buf[0];
->   bank_addr =3D u8_buf[1];
->
-> ?
-
-We will refine it in the next patch! Thanks!
-
->
-> ...
->
-> > +       if (ret < 0)
-> > +               return ret;
-> > +       else if (ret !=3D val_size)
->
-> Redundant 'else'.
-
-I'm not quite sure what you mean, so I made the following changes first.
-------------------------------------
-       if (ret < 0)
-              return ret;
-       if (ret !=3D val_size)
-              return -EIO;
-------------------------------------
-I don't know if it meets your expectations??
-
->
-> > +               return -EIO;
->
-> ...
->
-> > +       bank_idx =3D *(u8 *)data;
-> > +       bank_addr =3D *(u8 *)(data + 1);
->
-> As per above.
->
-> --
-> With Best Regards,
-> Andy Shevchenko
-
-Best regards,
-ChiaEn Wu
+Thanks,
+Angelo
 
