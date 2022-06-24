@@ -4,89 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 481C2C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 07:20:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6E18C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 08:28:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T3cWuiVsBA+DxTai60AWhDn/fRpeEo8zydPZYQwQBPs=; b=pxTBjHlbBc33Qleg7h4ZobMasZ
-	mD61NaOIg31zaJv3+xVtXyWCjtvZjwcjSg5XP7WHTAopWTNW7iIbfaHgDh9DtcTW1JZ5ShSIOFwYS
-	Dj9j2fXatNtgpxTTe3/42CXcFhKlc4qQjliKs5WhlsfSOYlGFskGSB2QKI//78N9z8n6o/DWplDUz
-	CjK2imU1qVLR/KuD3fI+e3MYnQ9LhPOwIOSFfrdKGDlir6s9AFLX2t9qRiFOSLMeuW1JhxoSingtl
-	+4g90cnkkCzMuDpUgDCPYmvrhAcOg3kEUDfwZ4ggM63TSxxPqThTqsVIU4H8KTxt9M6sKMnrtmApG
-	RvS3bn+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=juJPwPR296pSJZwsH9/Iy+TMiLjsg5L/e3X7qop/D3w=; b=AUabQmUyUt+2597g2pNtj4Fj+g
+	rPDxfu9x1oOkV/7xxhc55w0L179+ZlPatA8FPdp15DxGuKoMb/cZv1Zo13RVwCCvvqi/ma2kVUfEv
+	fNvGAaSpn8WVFr5ceXapjri6OOI9LMSDFmbuIwuw6VLhJ/mCsArciClZk2ddOJT/vSidG6ofUngbI
+	rbQvcIkYGKzlyGpwzU2L7nldC0VCBs9Z/Z14zHBSQSBhfe3mdvvHogW7vkwjgoZjdQL4ygwuhOQiH
+	+wR1GfuTQry8r0f/noBKSBE1giRRD1A1jvuDfmihFpHu/FkjW765YsvAwjw15MI0nC13B58NU429q
+	jzTvFDBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4dcQ-000ysJ-Me; Fri, 24 Jun 2022 07:20:42 +0000
-Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
+	id 1o4egM-001Ah6-CR; Fri, 24 Jun 2022 08:28:50 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4dcN-000yqP-NI; Fri, 24 Jun 2022 07:20:40 +0000
-Received: by mail-io1-xd2a.google.com with SMTP id z7so1823583ioe.11;
-        Fri, 24 Jun 2022 00:20:36 -0700 (PDT)
+	id 1o4egJ-001Afa-DX
+	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 08:28:48 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-317a66d62dfso17677247b3.7
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jun 2022 01:28:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
+        d=google.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=T3cWuiVsBA+DxTai60AWhDn/fRpeEo8zydPZYQwQBPs=;
-        b=INkRDWkgz7QnDYd6PfjGcOd+HtbGBuFAFVtHSry5oK+uSexxmKolSWc9+ahE6Bsyiy
-         zARECUtXVj9Yxu3ivS1I4Ikbz9sEucWs/6ZUfMDlGUc1ip2twYgPIYULdbUypI86mIzl
-         mgKyYU2J5DhoBlb4HK7R3TEsu+SHK4XuGA+Sy+iylrc+8UWz0NCSlrofWvh89/4vykAo
-         bPzchCxSebnIj7stqgMYl19bvM4RMlQ20oNFDZeXuyIbbF87V3BWpZnr0GOf16WkU7KM
-         cHqCSrIR2+2R/9pWLaP9povhX5tYXh1/3O3+jKfQ8vWGEl2U54uG0vtizyP5hjPfZERr
-         EwTw==
+         :cc;
+        bh=juJPwPR296pSJZwsH9/Iy+TMiLjsg5L/e3X7qop/D3w=;
+        b=Yen0y2jHteguKUwEE6qaiTm+lhM9bjOuVD5af9lqIfB669iZhRqRU+TC8W6kj0hI3M
+         YG3d6JOmMQ5+s1J+K+s4D6C8jualhWVv70vHc3EkNIE2cpKal4D48l0vJAiqwcX0p2CG
+         F9tUhwi2kPg0X5cHoKyCGOO5FHxcxGuBLhgT0QoAI2A/xvHiRMrTQNktW6/o3SyyOGSK
+         pe7IfdAY1PfZmHSU+A1FKLxfXQUSfCB1OwSiEcWDkbmxneFZUS5YCvsT9jJQ2M4ERlt8
+         kPX6xhEblEjJUoujRI3ab/ZUqtI7zEGzWjZOQNFJU6vWPcfzfjwowpBy4gWsCdzgdpcr
+         dpQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=T3cWuiVsBA+DxTai60AWhDn/fRpeEo8zydPZYQwQBPs=;
-        b=jF9LuDviu9yc7c2vsNMbtvClFBE38CveZB+j3gUgHESVsFY2l5m9Rco9DDYMd9tFcX
-         nSF8+oYZ8Wujt71y9KdJpDmPSsf47cr7Y7r+5zfLeIenSCxngAqPW9e9F3e0it0TbMsT
-         zil2skKMJ+ZEHbfBV8FVI9kieou4Yd9NnYg6Ph/NYjvLYv4guGrSQiHpfglXPk9tvaEv
-         ayNyhOBov5GKI+szXc5lfFAwP9crd9vHqM4PG4y9Bn259h9TgZl5i99hwEhwbhDaKooY
-         iBYZz1xf9RmrPE/RA0vdjbzAXN7VyiIrzPZZgQ4SWUwSrhNgh7PE654xhXkZo0A1cCIS
-         zwCw==
-X-Gm-Message-State: AJIora/pi/QLETxDFiHo1WPOPP4U1+8XdSQMNGSi7sUYWNrbLgJJNDEo
-	5qO+EXqxRbwcV4Z3fqnQe+kpKFIAC5DvQts5jg0=
-X-Google-Smtp-Source: AGRyM1v7K77xAmtUTEcEzoILdxRbEp2wv1joH1sI9ISqx+ur3eoSMLzrP7D8toJkzHB0bsYtmy7vVz+n8Z+nifA3RX0=
-X-Received: by 2002:a05:6638:430e:b0:332:586:5182 with SMTP id
- bt14-20020a056638430e00b0033205865182mr7357424jab.225.1656055236048; Fri, 24
- Jun 2022 00:20:36 -0700 (PDT)
+         :message-id:subject:to:cc;
+        bh=juJPwPR296pSJZwsH9/Iy+TMiLjsg5L/e3X7qop/D3w=;
+        b=ubCDtkRVZy2d6Q6UG0GSVJm1GW1QBYOc8SxZC1Pr42sT6rE5GISogUSQ2PBKycGHlf
+         45HBK7ktfapYAwBPDShIRIR9JxAHjU9Dc6eTr5gfi4VECFbu9z4xz9y6kcdKXS3gLI9d
+         39np2cxA+eLqo9tsmFmPT+YeTYaoKA+/afGes2MGccg3PH14MPZIiHUdenMDaSg2EEyw
+         9rHklA/ohdNMGt+40WLq7fRcCicc6lKeT9qeAcTFtOiorWRwTfxHWTHyVX1PvCV2l6te
+         jaEhVloTqIoYo2m57Dz4aVWyspREAletcn7s9J/QewQpgtk5VRImf9iVu5U0HaxWkY3r
+         gxSQ==
+X-Gm-Message-State: AJIora92Abk2+Ancja+9r4f5vo+Ate2hiIIH4MeyhImELo5fLxrG455m
+	60qTyomZGBg+/iudp97V5Zyd6RaTB3b4mI0+NomHYw==
+X-Google-Smtp-Source: AGRyM1vpXuHX/b68bS4ayavud0a5eakM5MhbMfcsLJodMJUZ4whj1SvXh17eHSaMDiWAQlCGApLgvLq0yCqBlwuOVj0=
+X-Received: by 2002:a81:3a12:0:b0:314:6097:b801 with SMTP id
+ h18-20020a813a12000000b003146097b801mr15576175ywa.512.1656059324577; Fri, 24
+ Jun 2022 01:28:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-13-peterwu.pub@gmail.com>
- <CACRpkdZatfOFmeGXepTrjAk1or4W6KNUEaXnP+srRebfM=52AA@mail.gmail.com> <CACRpkdbzZqerE_2PeGMUWRbtjK=9P8V763cj83ZqjP4n6AVHAg@mail.gmail.com>
-In-Reply-To: <CACRpkdbzZqerE_2PeGMUWRbtjK=9P8V763cj83ZqjP4n6AVHAg@mail.gmail.com>
-From: szuni chen <szunichen@gmail.com>
-Date: Fri, 24 Jun 2022 15:20:24 +0800
-Message-ID: <CA+hk2fZEG0TxMGhGJY21w=MmXgKsH5mYCYynQV1jbhpOCyf3qg@mail.gmail.com>
-Subject: Re: [PATCH v3 12/14] leds: mt6370: Add Mediatek MT6370 current sink
- type LED Indicator support
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
-	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	devicetree <devicetree@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, alice_chen@richtek.com, 
-	Linux PM <linux-pm@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	ChiYuan Huang <cy_huang@richtek.com>, chiaen_wu@richtek.com, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>
+References: <20220623111937.6491-1-yee.lee@mediatek.com> <20220623111937.6491-2-yee.lee@mediatek.com>
+ <CANpmjNN-jsZoVmJWD2Dz6O3_YVjy0av6e0iD-+OYXpik1LbLvg@mail.gmail.com> <bdfd039fbde06113071f773ae6d5635ff4664e2c.camel@mediatek.com>
+In-Reply-To: <bdfd039fbde06113071f773ae6d5635ff4664e2c.camel@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Fri, 24 Jun 2022 10:28:08 +0200
+Message-ID: <CANpmjNPfkFjUteMCDzUSPmTKbpnSfjmWqp9ft8vb-v=B8eeRKw@mail.gmail.com>
+Subject: Re: [PATCH 1/1] mm: kfence: skip kmemleak alloc in kfence_pool
+To: Yee Lee <yee.lee@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Alexander Potapenko <glider@google.com>, 
+	Dmitry Vyukov <dvyukov@google.com>, Andrew Morton <akpm@linux-foundation.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, "open list:KFENCE" <kasan-dev@googlegroups.com>, 
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_002039_824328_7F2B4FF6 
-X-CRM114-Status: GOOD (  18.51  )
+X-CRM114-CacheID: sfid-20220624_012847_495401_5E5558F1 
+X-CRM114-Status: GOOD (  26.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,46 +88,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Linus,
-
-Thank you for the comment.
-
-Linus Walleij <linus.walleij@linaro.org> =E6=96=BC 2022=E5=B9=B46=E6=9C=882=
-4=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=882:25=E5=AF=AB=E9=81=93=EF=
-=BC=9A
+On Fri, 24 Jun 2022 at 10:20, 'Yee Lee' via kasan-dev
+<kasan-dev@googlegroups.com> wrote:
 >
-> On Fri, Jun 24, 2022 at 8:23 AM Linus Walleij <linus.walleij@linaro.org> =
-wrote:
-> > Thanks for your patch!
-> >
-> > On Thu, Jun 23, 2022 at 1:58 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote=
-:
-> >
-> > > From: ChiYuan Huang <cy_huang@richtek.com>
+> On Thu, 2022-06-23 at 13:59 +0200, Marco Elver wrote:
+> > On Thu, 23 Jun 2022 at 13:20, yee.lee via kasan-dev
+> > <kasan-dev@googlegroups.com> wrote:
 > > >
-> > > Add Mediatek MT6370 current sink type LED Indicator driver.
+> > > From: Yee Lee <yee.lee@mediatek.com>
 > > >
-> > > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> > (...)
-> > >  drivers/leds/Kconfig       |  11 +
-> > >  drivers/leds/Makefile      |   1 +
-> > >  drivers/leds/leds-mt6370.c | 989 +++++++++++++++++++++++++++++++++++=
-++++++++++
+> > > Use MEMBLOCK_ALLOC_NOLEAKTRACE to skip kmemleak registration when
+> > > the kfence pool is allocated from memblock. And the kmemleak_free
+> > > later can be removed too.
 > >
-> > There is a drivers/leds/flash subdirectory these days, put the driver
-> > in that directory instead.
+> > Is this purely meant to be a cleanup and non-functional change?
+> >
+> > > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+> > >
+> > > ---
+> > >  mm/kfence/core.c | 18 ++++++++----------
+> > >  1 file changed, 8 insertions(+), 10 deletions(-)
+> > >
+> > > diff --git a/mm/kfence/core.c b/mm/kfence/core.c
+> > > index 4e7cd4c8e687..0d33d83f5244 100644
+> > > --- a/mm/kfence/core.c
+> > > +++ b/mm/kfence/core.c
+> > > @@ -600,14 +600,6 @@ static unsigned long kfence_init_pool(void)
+> > >                 addr += 2 * PAGE_SIZE;
+> > >         }
+> > >
+> > > -       /*
+> > > -        * The pool is live and will never be deallocated from this
+> > > point on.
+> > > -        * Remove the pool object from the kmemleak object tree, as
+> > > it would
+> > > -        * otherwise overlap with allocations returned by
+> > > kfence_alloc(), which
+> > > -        * are registered with kmemleak through the slab post-alloc
+> > > hook.
+> > > -        */
+> > > -       kmemleak_free(__kfence_pool);
+> >
+> > This appears to only be a non-functional change if the pool is
+> > allocated early. If the pool is allocated late using page-alloc, then
+> > there'll not be a kmemleak_free() on that memory and we'll have the
+> > same problem.
 >
-> Sorry I'm commenting on the wrong patch.
->
-> I meant this one. Move that into drivers/leds/flash
->  drivers/leds/flash/leds-mt6370-flash.c             |  657 ++++++++++++
+> Do you mean the kzalloc(slab_is_available) in memblock_allc()? That
+> implies that MEMBLOCK_ALLOC_NOLEAKTRACE has no guarantee skipping
+> kmemleak_alloc from this. (Maybe add it?)
 
-In next version, I'll use "leds: flash: ......" instead of "leds:
-flashlight: ......" in subject.
-May I confirm that the driver has already in the drivers/leds/flash,
-so I don=E2=80=99t have to move it in next version?
-
-
-Sincerely,
-Alice Chen
+No, if KFENCE is initialized through kfence_init_late() ->
+kfence_init_pool_late() -> kfence_init_pool().
 
