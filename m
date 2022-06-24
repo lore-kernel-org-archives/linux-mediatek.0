@@ -4,125 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1FD5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 02:44:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D08FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 03:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M2R2CEdoCukeHjMxbmGYQBbhBWeg0sK5VS1VqRK1QIg=; b=aY8lxOTxtW12W1PRPIUeHivC53
-	Q5D2mgpsiVVF2zAy537xyH+sBZqCENR7uwKlo+v/vPBziSPMGKWVTWIkpuHtfctxPRK1ILzEcZsVi
-	anAiRjIzHiHsC2L8uFRoCrfcZIQVDUamx5yRqthT0GaZMDtRxglxEpDlKveCSLLIgRrkNfxQ4ZpdX
-	ao0LxkPJCRRIiWeMi0bOaqknIE6XhMXcgZgG6e8cRFWRMShLhewBLS5usL5lGPV5KRd2MhsJJ68kU
-	4/jkxCXG4eDRR8NDjvMHqMoJX1nc/2i13QF0JHXItD6L+yTqjC3dAf57VymKkjkVmh7D7PAyZtWPh
-	CvLX3q8w==;
+	bh=dqyR2HgjMeX58VbGFOVDhWRwxtXhxhAF6Nc7g5/W9E0=; b=GjYjcpRwlyG2LU0e7L6JJoRcKy
+	CIOPhXzLYT49xtzCUfwII+bf+ZiiG3Bcsy+G0CQ8Kiu5yJR+Nml/+Tp2XzvVzXmwhrTHn2ImpK1Tp
+	ZvQogEoAx04bEECzB1jmpImJ4TGVB/xo9d7Lg7Eav68xdo2O2WFDag5uUy+yVBSw6Uh407J/p/Qy/
+	TnG384oXcZ04vRbLJtJzwdFjwM8OhGwaDddVXuGpN/zzZPqm3PpOg2NsnaY6HiEOjxFR+kNewnDCH
+	i1s/zIQAVWNQpdfkwpoLApcXXxbggKIYm54fpi4fPUdoeuiZJvsPGnJPK6qsRSi0kOcIDvrz9BgjL
+	YrdjnClA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4ZJ2-00HSnW-BZ; Fri, 24 Jun 2022 02:44:24 +0000
-Received: from mail-dm6nam11on2054.outbound.protection.outlook.com ([40.107.223.54] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1o4ZlK-00HYB1-6a; Fri, 24 Jun 2022 03:13:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4ZIo-00HSj1-D5; Fri, 24 Jun 2022 02:44:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IymMV4dt7WpYsQM0Mrf5z7Mea833SSxcPQdRxMkeW35nJdu0pftW/dmnAwa0lYXCz/dxEHthE9wJaiAAnCzqcpdpf7Y2Kvl/1EBHTkvXmeZtpnjd8J7sgodLs/4b0Y7DIXT6TA3EDEtaL/QFVOeg7t50u1g6HaDJ8UbiFhamLUMlPTt/0uVO3oHEick620cSh8mYcaZbqYtYZreSdy2tToREGraKAq0W9QKbZJmCG8o9w+lkd/dd95Xr9b+4az0I05TPGBUpLC6cCW5nzfaPnDwEnismkq/KYDf7mG+satcxMWeyudmO7zLEuIDdUPmp1dE5Q5wCaX1RjY32Z/EWWg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=M2R2CEdoCukeHjMxbmGYQBbhBWeg0sK5VS1VqRK1QIg=;
- b=E/57XQnkUGQTKpumLTraj0MGvqEm8e7vEqff3CwgqWNISffDiRa5kat84m5ZsLVhIPhQCiI4aXDtHun4qNFr70q3+1JS19W0X1DcQa6HzM+Aqinj9SSrG/QWFDZW+b9efBS/QhVGkU/eviDJTBftRMpp1QS0+OgYyuxcGizibO13IbnNDp9a4xuFF9PQqsnFo89iz1oJSm5YdyguFqVla/dnA4coJE74hik+j8cFtVN2d0crUjyVRe2gj96H9qVZIgKFNlsz4w+Zv/28hzPbCSyENOrVQ5/z3jgAo7xj8qFSomBygCUNbBYcJGv8j7tzt94KjVIbgNFnfDh8fPIe6A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.236) smtp.rcpttodomain=arm.com smtp.mailfrom=nvidia.com; dmarc=pass
- (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
- (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M2R2CEdoCukeHjMxbmGYQBbhBWeg0sK5VS1VqRK1QIg=;
- b=DSae4u/2DbtodGNFd8Zgr56c2uF1OO3R44LuifpjenB2jBSayOMRdQwvY7qXyKbQ9xMX2mvtsksXqRrj2u0hQKJt9JVr2tYzrjZV6g/DGpt0QYLf/Q+yI2fVxzYD4WuejoCMN5rsDN+1JUZKRTP1tcRbWsM+8pK3IelSlzMqWnc/GzDgfLO/Q51JJfIisdapTs2NLEBvypKgIcwL/+bRqMR6GPq8EHu+EY3bN88E4UwaqUtPsf4qvsE/LdXLVMkgM84TP6MKX5HbpuBTHhgMBwe6YK91YDE01fF0H4nbTq6ymzzzSY+fNn+xAyo4Dkl3++5Nj6GPg0wKuEgCvUBSSA==
-Received: from DS7PR03CA0109.namprd03.prod.outlook.com (2603:10b6:5:3b7::24)
- by CY5PR12MB6057.namprd12.prod.outlook.com (2603:10b6:930:2e::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.15; Fri, 24 Jun
- 2022 02:44:05 +0000
-Received: from DM6NAM11FT016.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:3b7:cafe::cc) by DS7PR03CA0109.outlook.office365.com
- (2603:10b6:5:3b7::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.20 via Frontend
- Transport; Fri, 24 Jun 2022 02:44:05 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.236)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.236 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.236; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.236) by
- DM6NAM11FT016.mail.protection.outlook.com (10.13.173.139) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5373.15 via Frontend Transport; Fri, 24 Jun 2022 02:44:05 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by DRHQMAIL109.nvidia.com
- (10.27.9.19) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Fri, 24 Jun
- 2022 02:44:05 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Thu, 23 Jun
- 2022 19:44:04 -0700
-Received: from Asurada-Nvidia (10.127.8.10) by mail.nvidia.com (10.129.68.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26 via Frontend
- Transport; Thu, 23 Jun 2022 19:44:01 -0700
-Date: Thu, 23 Jun 2022 19:44:00 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Baolu Lu <baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>
-CC: <joro@8bytes.org>, <will@kernel.org>, <marcan@marcan.st>,
-	<sven@svenpeter.dev>, <robin.murphy@arm.com>, <robdclark@gmail.com>,
-	<matthias.bgg@gmail.com>, <orsonzhai@gmail.com>, <baolin.wang7@gmail.com>,
-	<zhang.lyra@gmail.com>, <jean-philippe@linaro.org>,
-	<alex.williamson@redhat.com>, <jgg@nvidia.com>, <kevin.tian@intel.com>,
-	<suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
-	<dwmw2@infradead.org>, <mjrosato@linux.ibm.com>,
-	<gerald.schaefer@linux.ibm.com>, <thierry.reding@gmail.com>,
-	<vdumpa@nvidia.com>, <jonathanh@nvidia.com>, <cohuck@redhat.com>,
-	<thunder.leizhen@huawei.com>, <tglx@linutronix.de>,
-	<chenxiang66@hisilicon.com>, <christophe.jaillet@wanadoo.fr>,
-	<john.garry@huawei.com>, <yangyingliang@huawei.com>,
-	<jordan@cosmicpenguin.net>, <iommu@lists.linux-foundation.org>,
+	id 1o4ZlG-00HY8m-Ml; Fri, 24 Jun 2022 03:13:37 +0000
+X-UUID: c28cf3abbefd4e2292a19d1b0823c1b7-20220623
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:6bfb5f26-fa6a-4508-a17b-56f782d37814,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:bc68ea2d-1756-4fa3-be7f-474a6e4be921,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: c28cf3abbefd4e2292a19d1b0823c1b7-20220623
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 376770195; Thu, 23 Jun 2022 20:13:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jun 2022 20:09:52 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 24 Jun 2022 11:09:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 24 Jun 2022 11:09:49 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
+	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>, <airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<ck.hu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
-	<virtualization@lists.linux-foundation.org>, <kvm@vger.kernel.org>
-Subject: Re: [PATCH v3 1/5] iommu: Return -EMEDIUMTYPE for incompatible
- domain and device/group
-Message-ID: <YrUk8IINqDEZLfIa@Asurada-Nvidia>
-References: <20220623200029.26007-1-nicolinc@nvidia.com>
- <20220623200029.26007-2-nicolinc@nvidia.com>
- <270eec00-8aee-2288-4069-d604e6da2925@linux.intel.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v14 10/15] drm/mediatek: dpi: move the yuv422_en_bit to SoC config
+Date: Fri, 24 Jun 2022 11:09:41 +0800
+Message-ID: <20220624030946.14961-11-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
+References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <270eec00-8aee-2288-4069-d604e6da2925@linux.intel.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 771209c9-cd43-40df-d84d-08da558b67d9
-X-MS-TrafficTypeDiagnostic: CY5PR12MB6057:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	5TW4vCqbLV1qym1IcY+Uiz8l1iDws9KZnxsjYFwpXUrdb1+vIJr8Arb3/NAPLRSEJ8EYi8+NOEyQHLCkytfYc+NIJiol1rAm+IBPPkSXLXhu2ZVnItpoSuSduXVovdNzTpxkeSyFxbiTl5IW0Fb2CET+y+uMRG5UgPiPlNyygbmnYf2csA8TOhGvzhWKu7lGPR7Xo4KXqz34/u4x0W5BcAXfDgVSyGtbiae5KxXC5ZQBY4RsBgQ7d70Wbfqcf7KKUqemEvOe0svfHg9tbj/1g2bO187YDFBS0ZtCHTlZae88Xa1HMmztvY/tOlnKGgnTI5Jk9g010Daoi3oQ9x/Lopb3dpmxZrBL3H/4bQB5cWbJ1Bb/+GhBpK1O+SATvBz5LjrgrUKMeDQwAOxcYJk2Wh6EUoGafWn76trYJSnlKjaHx4GDOtWNSEkZW9TZYgsok25u5i4dW5AwNCv1pCIDOdkYytBbomX+NItSWPA+wRZtHMu8cdhYQkNzmhNy+pr37jxG6OIdxS+tEIPV9w6ZhoiCb6ApjElQbijpomLUDQ/uB8kdIlDPWpc2fnfGyAWqEP30sIuHHthZWRxQ/kIennA9XdKZtcykr91VFQ/9lzd9DxjelMVUHC+wOGVd9vtoKf38VIQt3Lso6J62hmzrbNg6eauJwmYFmAZBUYch+O8AOMHpEE8J/P0i44D3RC9MmUA+8H1WMGCK3VY0fHwI86LDkVwpjGj/JD/QtUr5lZFsSIFPT6bua3Crk/5KjmlXPM6oauVhJCm4Bg8m8FakNGQMjDrZ8FcD7lgcWAYWEYXB2jpcFGjddGHh8p60CPcz9kxZuJDH6h499GxTjbLuQK8Gy49cv37mF3b0oOpXEw1gAIanpTsamSc8SjzmTjGW5qCcykZOrb7clbIU7GECEcbH5qJcW4ybBUz8uq4SKPo=
-X-Forefront-Antispam-Report: 	CIP:12.22.5.236;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(376002)(136003)(39860400002)(396003)(346002)(40470700004)(36840700001)(46966006)(316002)(53546011)(81166007)(7406005)(26005)(7416002)(8936002)(336012)(356005)(36860700001)(4326008)(70206006)(5660300002)(70586007)(82740400003)(47076005)(9686003)(186003)(86362001)(33716001)(40460700003)(110136005)(83380400001)(2906002)(478600001)(426003)(82310400005)(41300700001)(55016003)(54906003)(40480700001)(966005)(8676002)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jun 2022 02:44:05.6241
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 771209c9-cd43-40df-d84d-08da558b67d9
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.236];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT016.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6057
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_194410_696957_EB52745E 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20220623_201334_775097_8850D6AA 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,45 +84,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 24, 2022 at 09:35:49AM +0800, Baolu Lu wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> On 2022/6/24 04:00, Nicolin Chen wrote:
-> > diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> > index e1cb51b9866c..5386d889429d 100644
-> > --- a/drivers/iommu/mtk_iommu_v1.c
-> > +++ b/drivers/iommu/mtk_iommu_v1.c
-> > @@ -304,7 +304,7 @@ static int mtk_iommu_v1_attach_device(struct iommu_domain *domain, struct device
-> >       /* Only allow the domain created internally. */
-> >       mtk_mapping = data->mapping;
-> >       if (mtk_mapping->domain != domain)
-> > -             return 0;
-> > +             return -EMEDIUMTYPE;
-> > 
-> >       if (!data->m4u_dom) {
-> >               data->m4u_dom = dom;
-> 
-> This change looks odd. It turns the return value from success to
-> failure. Is it a bug? If so, it should go through a separated fix patch.
+From: Guillaume Ranquet <granquet@baylibre.com>
 
-Makes sense.
+Add flexibility by moving the yuv422 en bit to SoC specific config
 
-I read the commit log of the original change:
-https://lore.kernel.org/r/1589530123-30240-1-git-send-email-yong.wu@mediatek.com
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-It doesn't seem to allow devices to get attached to different
-domains other than the shared mapping->domain, created in the
-in the mtk_iommu_probe_device(). So it looks like returning 0
-is intentional. Though I am still very confused by this return
-value here, I doubt it has ever been used in a VFIO context.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index f168a24f10ce..3a5555a26cd1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -132,6 +132,7 @@ struct mtk_dpi_yc_limit {
+  *		    (no shift).
+  * @hvsize_mask: Mask of HSIZE and VSIZE mask (no shift).
+  * @channel_swap_shift: Shift value of channel swap.
++ * @yuv422_en_bit: Enable bit of yuv422.
+  */
+ struct mtk_dpi_conf {
+ 	unsigned int (*cal_factor)(int clock);
+@@ -145,6 +146,7 @@ struct mtk_dpi_conf {
+ 	u32 dimension_mask;
+ 	u32 hvsize_mask;
+ 	u32 channel_swap_shift;
++	u32 yuv422_en_bit;
+ };
+ 
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+@@ -382,7 +384,8 @@ static void mtk_dpi_config_channel_swap(struct mtk_dpi *dpi,
+ 
+ static void mtk_dpi_config_yuv422_enable(struct mtk_dpi *dpi, bool enable)
+ {
+-	mtk_dpi_mask(dpi, DPI_CON, enable ? YUV422_EN : 0, YUV422_EN);
++	mtk_dpi_mask(dpi, DPI_CON, enable ? dpi->conf->yuv422_en_bit : 0,
++		     dpi->conf->yuv422_en_bit);
+ }
+ 
+ static void mtk_dpi_config_csc_enable(struct mtk_dpi *dpi, bool enable)
+@@ -846,6 +849,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
+ 	.dimension_mask = HPW_MASK,
+ 	.hvsize_mask = HSIZE_MASK,
+ 	.channel_swap_shift = CH_SWAP,
++	.yuv422_en_bit = YUV422_EN,
+ };
+ 
+ static const struct mtk_dpi_conf mt2701_conf = {
+@@ -860,6 +864,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
+ 	.dimension_mask = HPW_MASK,
+ 	.hvsize_mask = HSIZE_MASK,
+ 	.channel_swap_shift = CH_SWAP,
++	.yuv422_en_bit = YUV422_EN,
+ };
+ 
+ static const struct mtk_dpi_conf mt8183_conf = {
+@@ -873,6 +878,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
+ 	.dimension_mask = HPW_MASK,
+ 	.hvsize_mask = HSIZE_MASK,
+ 	.channel_swap_shift = CH_SWAP,
++	.yuv422_en_bit = YUV422_EN,
+ };
+ 
+ static const struct mtk_dpi_conf mt8192_conf = {
+@@ -886,6 +892,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
+ 	.dimension_mask = HPW_MASK,
+ 	.hvsize_mask = HSIZE_MASK,
+ 	.channel_swap_shift = CH_SWAP,
++	.yuv422_en_bit = YUV422_EN,
+ };
+ 
+ static int mtk_dpi_probe(struct platform_device *pdev)
+-- 
+2.18.0
 
-Young, would you please give us some input?
-
-Overall, I feel it's better to play it safe here by dropping
-this part. If we later confirm there is a need to fix it, we
-will do that in a separate patch anyway.
-
-Thanks
-Nic
 
