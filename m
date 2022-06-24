@@ -4,59 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA4BC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 17:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A79B0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 17:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dx96b+PCiQLDVyDNyaIZFYtaUKeJSzZ4TH7iZMwSCRo=; b=Fn0tGJaYeu7bwEpDn4sdAkQ8IT
-	Tte+SYBclGMpD5xM1FxRyx3bAKV0FmQDCevAt/L0lKknhP8fIvRn4mJ8YFgYoD4ruIbcabDF9/Bhg
-	vNjzsf5erIZJtbHWzHxvDdg3BPKaV00PGJOb+0IB3dzOKqP/NU5IDQXibCREVqS9LJeRnJe8ja1lA
-	/p8G3SeKD9u6KXFNa7Vcs6ikIKgAAFC4uUN5fswLbEO+1jLY97Gq/335D1bkV48JAP4OESewaE57s
-	yCWFIxqwuvOI7f13r+KpaYGKE8KmbgNof5cz9qqBvR7anlnrOSx9W4eUMgiZixhbfH/OV0FpxrjsD
-	HflVuOTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xWDsA5LutZmEUM7IrG96DY9f8c0y1Wd0MZ7dphsyywg=; b=35uaHTzd5fdUtAPkquJD39JnIY
+	mOsJHK07cPk8uYqCepIggJFr+KKmckA4pgbe95iNEy5YXpXsKIp48kTh0YmzPRNGZN1R48WZoVpcF
+	fsAh7kFEeQ2Yt08tqqipI4qav8JyVz5usQIa/WRsCROXvCDogLeXEWeC2ZxIt5vf8xUafJssLlIet
+	SeoMmjAz+R6r+5G9az7XTKWC03wVCBHgHlYjn+kpDC0HDDnyuc7bwhGfJ9Nq1FhuxTcBEOreXt15U
+	GStRvn68IK+MDhFfD2PLFR4PXiJkp008uqehmuVrJBlyGXrvs8bMzxoMx4eVA8d8OocXsKo2wv5Gx
+	5nvqZQEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4mhX-0036lJ-Bc; Fri, 24 Jun 2022 17:02:35 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1o4mmc-00385e-SK; Fri, 24 Jun 2022 17:07:50 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4mhL-0036ij-ID; Fri, 24 Jun 2022 17:02:25 +0000
-Received: (Authenticated sender: alexandre.belloni@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id BFE93E0009;
-	Fri, 24 Jun 2022 17:02:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1656090137;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Dx96b+PCiQLDVyDNyaIZFYtaUKeJSzZ4TH7iZMwSCRo=;
-	b=TGmNmhPaJw4/nulvgGTmcHGzivvt21fLm6mQAAL/Vdao0UMVzEHRml1A6eERd2MxTsdMYc
-	4qVrSIg6IqxU0nqSopC6VdvE4yXh/ImbYTwCWYS7u9KexjyJ0JmvvMIz1/tVTebYI5gbud
-	TW6tc8pDP9xAu5znNia0nuj06EbicSw/4sJTHIWLRPwaTJUieIbtF35CX5vs6kl6JJRZRI
-	r+pDGRRzkRaG8cMNJypjoZCzR0UfjGRHNpggwTEqKmRFJgzxZkFDTHomFWoQPfJyEgPKYs
-	o6eB/t8zdTEiSeWQdPrarWSVYiW8cWpEfSeHCXhnA2Rpyv1X5xWtppiBv2pghg==
-Date: Fri, 24 Jun 2022 19:02:13 +0200
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: krzysztof.kozlowski+dt@linaro.org, a.zummo@towertech.it,
-	matthias.bgg@gmail.com, robh+dt@kernel.org,
-	allen-kh.cheng@mediatek.com
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 0/1] dt-bindings: rtc: mediatek: add mt6358 and mt6366
-Message-ID: <165609010351.26598.10943773061528441669.b4-ty@bootlin.com>
-References: <20220428092726.25814-1-allen-kh.cheng@mediatek.com>
+	id 1o4mmZ-003845-G2
+	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 17:07:49 +0000
+Received: by mail-ej1-x631.google.com with SMTP id t5so6015030eje.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jun 2022 10:07:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xWDsA5LutZmEUM7IrG96DY9f8c0y1Wd0MZ7dphsyywg=;
+        b=ZBapUNKRXvf53+qtHX5NCLLYePhguRw4kAMk2F7zjt436VkGGkBNICiMqnxz0GHvsM
+         FpMy7tJQR41GLimSCylzTa/hHGgNp71RAS9Q0tYdY5vlW9/P6Oh9znoM/zMW8+255KTV
+         b9vh1T3IDSziq/3ze5QZR1xjsDfDPsCAQkhFLDNIONRteQys2wOpd1iLVumJlrFWdbeZ
+         05r/fp2mDsZvvo5anyvNYEhbEUANPD6CNdTU9ckU8EnUoTSXJis2UeoHjwtI0vqBqDGV
+         1S9t8hKpwJY+nTP8H51X/QAT0bBjWh/MXuJQxoDnbgK7ci0Vk2ytZBUE42ku7plBiWdR
+         fEGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xWDsA5LutZmEUM7IrG96DY9f8c0y1Wd0MZ7dphsyywg=;
+        b=rrHb2lg+5BE4kKLKAmWS/27/9rn4/B93vETkmNERN48Ju4LCRzVGp9zSP/7Xb/GKvR
+         SE6kU+JC+dvPebz6GVSVvHowWr+dMInSNL3V89j8P6cxHvrjKnVYpynx8NT2ty0eS9KA
+         pGqDBEp8gIBpPAQ/Dux1puYzKzruhNU8+hpZqGMr8B9aWynxYdNKJEN4XiCNYK0ZcB6z
+         SDjKxn8bAiOxXI2l64tECP4kxtnrdDbRt4FCRYmEFBKOLC4dy2XQniEp2l6eqMu94kyz
+         uR65KEwWN5eU78PWJ/wERdLmd0eHOYaR6KaurxLWNUszWDAzr2rRR3hlyuiqj61ogkS1
+         ZGPA==
+X-Gm-Message-State: AJIora+esTah59rT0hyGx71nVswBaUap+TVSjrAZ1F1xFSzPE8MQjAqf
+	ZM1I2qqnNuUZTjgFMZddGDmQQA==
+X-Google-Smtp-Source: AGRyM1uvN4/zjWbekB9cs96yidSoVDrR43X0yFOcqdz6eQ030hUSjBrh7eT51jheRehIsj84rRqv0Q==
+X-Received: by 2002:a17:906:39d1:b0:6fa:8e62:c8a2 with SMTP id i17-20020a17090639d100b006fa8e62c8a2mr14454097eje.487.1656090465752;
+        Fri, 24 Jun 2022 10:07:45 -0700 (PDT)
+Received: from localhost.localdomain (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id b19-20020aa7dc13000000b00435959d3605sm2455929edu.84.2022.06.24.10.07.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Jun 2022 10:07:45 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rahul Bedarkar <rahulbedarkar89@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/2] MIPS: dts: correct gpio-keys names and properties
+Date: Fri, 24 Jun 2022 19:07:39 +0200
+Message-Id: <20220624170740.66271-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220428092726.25814-1-allen-kh.cheng@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_100223_776322_A5556E66 
-X-CRM114-Status: UNSURE (   5.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220624_100747_587809_BBDB77B4 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,26 +96,391 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Apr 2022 17:27:25 +0800, Allen-KH Cheng wrote:
-> Base on tag: next-20220427, linux-next/master
-> 
-> changes since v1:
->  - correct wrong compatible order for mt6366
-> 
-> Allen-KH Cheng (1):
->   dt-bindings: rtc: mediatek: add mt6358 and mt6366 compatible
-> 
-> [...]
+gpio-keys children do not use unit addresses.
 
-Applied, thanks!
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-[1/1] dt-bindings: rtc: mediatek: add mt6358 and mt6366 compatible
-      commit: 31d399dcb74ec6f0e51414b2a251b58f9a1ef87b
+---
 
-Best regards,
+See: https://lore.kernel.org/all/20220616005224.18391-1-krzysztof.kozlowski@linaro.org/
+---
+ arch/mips/boot/dts/img/pistachio_marduk.dts   |  4 +--
+ arch/mips/boot/dts/ingenic/gcw0.dts           | 31 +++++++++----------
+ arch/mips/boot/dts/ingenic/rs90.dts           | 18 +++++------
+ arch/mips/boot/dts/pic32/pic32mzda_sk.dts     |  9 ++----
+ .../boot/dts/qca/ar9132_tl_wr1043nd_v1.dts    |  6 ++--
+ arch/mips/boot/dts/qca/ar9331_dpt_module.dts  |  4 +--
+ .../mips/boot/dts/qca/ar9331_dragino_ms14.dts |  6 ++--
+ arch/mips/boot/dts/qca/ar9331_omega.dts       |  4 +--
+ .../qca/ar9331_openembed_som9331_board.dts    |  4 +--
+ arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts   |  8 ++---
+ 10 files changed, 37 insertions(+), 57 deletions(-)
 
+diff --git a/arch/mips/boot/dts/img/pistachio_marduk.dts b/arch/mips/boot/dts/img/pistachio_marduk.dts
+index a8708783f04b..a8da2f992b1a 100644
+--- a/arch/mips/boot/dts/img/pistachio_marduk.dts
++++ b/arch/mips/boot/dts/img/pistachio_marduk.dts
+@@ -59,12 +59,12 @@ led-1 {
+ 
+ 	keys {
+ 		compatible = "gpio-keys";
+-		button@1 {
++		button-1 {
+ 			label = "Button 1";
+ 			linux,code = <0x101>; /* BTN_1 */
+ 			gpios = <&gpio3 6 GPIO_ACTIVE_LOW>;
+ 		};
+-		button@2 {
++		button-2 {
+ 			label = "Button 2";
+ 			linux,code = <0x102>; /* BTN_2 */
+ 			gpios = <&gpio2 14 GPIO_ACTIVE_LOW>;
+diff --git a/arch/mips/boot/dts/ingenic/gcw0.dts b/arch/mips/boot/dts/ingenic/gcw0.dts
+index 4abb0318416c..5d33f26fd28c 100644
+--- a/arch/mips/boot/dts/ingenic/gcw0.dts
++++ b/arch/mips/boot/dts/ingenic/gcw0.dts
+@@ -130,89 +130,86 @@ backlight: backlight {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+ 		autorepeat;
+ 
+-		button@0 {
++		button-0 {
+ 			label = "D-pad up";
+ 			linux,code = <KEY_UP>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 21 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@1 {
++		button-1 {
+ 			label = "D-pad down";
+ 			linux,code = <KEY_DOWN>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 25 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@2 {
++		button-2 {
+ 			label = "D-pad left";
+ 			linux,code = <KEY_LEFT>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 23 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@3 {
++		button-3 {
+ 			label = "D-pad right";
+ 			linux,code = <KEY_RIGHT>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 24 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@4 {
++		button-4 {
+ 			label = "Button A";
+ 			linux,code = <KEY_LEFTCTRL>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 29 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@5 {
++		button-5 {
+ 			label = "Button B";
+ 			linux,code = <KEY_LEFTALT>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 20 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@6 {
++		button-6 {
+ 			label = "Button Y";
+ 			linux,code = <KEY_SPACE>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 27 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@7 {
++		button-7 {
+ 			label = "Button X";
+ 			linux,code = <KEY_LEFTSHIFT>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 28 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@8 {
++		button-8 {
+ 			label = "Left shoulder button";
+ 			linux,code = <KEY_TAB>;
+ 			linux,can-disable;
+ 			gpios = <&gpb 20 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@9 {
++		button-9 {
+ 			label = "Right shoulder button";
+ 			linux,code = <KEY_BACKSPACE>;
+ 			linux,can-disable;
+ 			gpios = <&gpe 26 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@10 {
++		button-10 {
+ 			label = "Start button";
+ 			linux,code = <KEY_ENTER>;
+ 			linux,can-disable;
+ 			gpios = <&gpb 21 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@11 {
++		button-11 {
+ 			label = "Select button";
+ 			linux,code = <KEY_ESC>;
+ 			linux,can-disable;
+@@ -223,7 +220,7 @@ button@11 {
+ 			gpios = <&gpd 18 GPIO_ACTIVE_HIGH>;
+ 		};
+ 
+-		button@12 {
++		button-12 {
+ 			label = "Power slider";
+ 			linux,code = <KEY_POWER>;
+ 			linux,can-disable;
+@@ -231,7 +228,7 @@ button@12 {
+ 			wakeup-source;
+ 		};
+ 
+-		button@13 {
++		button-13 {
+ 			label = "Power hold";
+ 			linux,code = <KEY_PAUSE>;
+ 			linux,can-disable;
+diff --git a/arch/mips/boot/dts/ingenic/rs90.dts b/arch/mips/boot/dts/ingenic/rs90.dts
+index 74fee7f01352..e8df70dd42bf 100644
+--- a/arch/mips/boot/dts/ingenic/rs90.dts
++++ b/arch/mips/boot/dts/ingenic/rs90.dts
+@@ -52,53 +52,51 @@ backlight: backlight {
+ 
+ 	keys@0 {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+-		key@0 {
++		key-0 {
+ 			label = "D-pad up";
+ 			linux,code = <KEY_UP>;
+ 			gpios = <&gpc 10 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		key@1 {
++		key-1 {
+ 			label = "D-pad down";
+ 			linux,code = <KEY_DOWN>;
+ 			gpios = <&gpc 11 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		key@2 {
++		key-2 {
+ 			label = "D-pad left";
+ 			linux,code = <KEY_LEFT>;
+ 			gpios = <&gpb 31 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		key@3 {
++		key-3 {
+ 			label = "D-pad right";
+ 			linux,code = <KEY_RIGHT>;
+ 			gpios = <&gpd 21 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		key@4 {
++		key-4 {
+ 			label = "Button A";
+ 			linux,code = <KEY_LEFTCTRL>;
+ 			gpios = <&gpc 31 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		key@5 {
++		key-5 {
+ 			label = "Button B";
+ 			linux,code = <KEY_LEFTALT>;
+ 			gpios = <&gpc 30 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		key@6 {
++		key-6 {
+ 			label = "Right shoulder button";
+ 			linux,code = <KEY_BACKSPACE>;
+ 			gpios = <&gpc 12 GPIO_ACTIVE_LOW>;
+ 			debounce-interval = <10>;
+ 		};
+ 
+-		key@7 {
++		key-7 {
+ 			label = "Start button";
+ 			linux,code = <KEY_ENTER>;
+ 			gpios = <&gpd 17 GPIO_ACTIVE_LOW>;
+diff --git a/arch/mips/boot/dts/pic32/pic32mzda_sk.dts b/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
+index d7fa5d55dbf3..ab70637bbec5 100644
+--- a/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
++++ b/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
+@@ -52,22 +52,19 @@ keys0 {
+ 		pinctrl-0 = <&user_buttons_s0>;
+ 		pinctrl-names = "default";
+ 
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		button@sw1 {
++		button-1 {
+ 			label = "ESC";
+ 			linux,code = <1>;
+ 			gpios = <&gpio1 12 0>;
+ 		};
+ 
+-		button@sw2 {
++		button-2 {
+ 			label = "Home";
+ 			linux,code = <102>;
+ 			gpios = <&gpio1 13 0>;
+ 		};
+ 
+-		button@sw3 {
++		button-3 {
+ 			label = "Menu";
+ 			linux,code = <139>;
+ 			gpios = <&gpio1 14 0>;
+diff --git a/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts b/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
+index 7fccf6357225..f3dff4009ab5 100644
+--- a/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
++++ b/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
+@@ -23,17 +23,15 @@ extosc: ref {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+-		button@0 {
++		button-0 {
+ 			label = "reset";
+ 			linux,code = <KEY_RESTART>;
+ 			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
+ 			debounce-interval = <60>;
+ 		};
+ 
+-		button@1 {
++		button-1 {
+ 			label = "qss";
+ 			linux,code = <KEY_WPS_BUTTON>;
+ 			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
+diff --git a/arch/mips/boot/dts/qca/ar9331_dpt_module.dts b/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
+index 7695d326df11..c857cd22f7db 100644
+--- a/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
++++ b/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
+@@ -33,10 +33,8 @@ led-0 {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+-		button@0 {
++		button-0 {
+ 			label = "reset";
+ 			linux,code = <KEY_RESTART>;
+ 			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
+diff --git a/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts b/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
+index d38aa73f1a2e..40e4c5da0e65 100644
+--- a/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
++++ b/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
+@@ -49,16 +49,14 @@ system {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+-		button@0 {
++		button-0 {
+ 			label = "jumpstart";
+ 			linux,code = <KEY_WPS_BUTTON>;
+ 			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
+ 		};
+ 
+-		button@1 {
++		button-1 {
+ 			label = "reset";
+ 			linux,code = <KEY_RESTART>;
+ 			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
+diff --git a/arch/mips/boot/dts/qca/ar9331_omega.dts b/arch/mips/boot/dts/qca/ar9331_omega.dts
+index 11778abacf66..ed184d861d5f 100644
+--- a/arch/mips/boot/dts/qca/ar9331_omega.dts
++++ b/arch/mips/boot/dts/qca/ar9331_omega.dts
+@@ -31,10 +31,8 @@ system {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+-		button@0 {
++		button-0 {
+ 			label = "reset";
+ 			linux,code = <KEY_RESTART>;
+ 			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
+diff --git a/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts b/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
+index e6622f8e8c2b..dc65ebd60bbc 100644
+--- a/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
++++ b/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
+@@ -33,10 +33,8 @@ led-0 {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+-		button@0 {
++		button-0 {
+ 			label = "reset";
+ 			linux,code = <KEY_RESTART>;
+ 			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
+diff --git a/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts b/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
+index c8290d36cfbe..5f424c2cd781 100644
+--- a/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
++++ b/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
+@@ -49,22 +49,20 @@ led3g {
+ 
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+-		button@0 {
++		button-0 {
+ 			label = "wps";
+ 			linux,code = <KEY_WPS_BUTTON>;
+ 			gpios = <&gpio 11 GPIO_ACTIVE_HIGH>;
+ 		};
+ 
+-		button@1 {
++		button-1 {
+ 			label = "sw1";
+ 			linux,code = <BTN_0>;
+ 			gpios = <&gpio 18 GPIO_ACTIVE_HIGH>;
+ 		};
+ 
+-		button@2 {
++		button-2 {
+ 			label = "sw2";
+ 			linux,code = <BTN_1>;
+ 			gpios = <&gpio 20 GPIO_ACTIVE_HIGH>;
 -- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+2.34.1
+
 
