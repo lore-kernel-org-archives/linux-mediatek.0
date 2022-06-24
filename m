@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 168AAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 03:18:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E668C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 03:19:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yjOReQDbVpVyV3JhGM6tFvp4d2vixzSIUbU+Nut3kEo=; b=FlljxS5IkHxM4rwMYHPvayt0/U
-	lOxBP9Zgep44cVJtTg5F3Jca7A/xTeJDtUyJH4mjS8O2a2oOMx8R2C6bFZV3898PZrEJtCTx372NQ
-	x393kaKxh4QokxuOPdO7yOq/DrlkgO59J8ehtaOvMVR6TtWgDM6SBb03R400m9nrPP6Gma5+NvK7h
-	KNmnUL+zt46Nbz8f8nsAAViwMVp6c7Lc8YdxPfDzHq6azqPVu0FyalFX72i6gHpadk1WjSORoAewM
-	JGnn2zXj0a17CUWU79j7rtdVT3LpKcZbpChSHOmkuedZqPTaJ0nBS1OcCXOKQqoSftmyf43d/va9l
-	wcV6JTBQ==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mLr46dGf1Vt1ltbEuYlN8GbtYGAd6+NAndt4j1XbZuQ=; b=tg/L6lE0Zr041iHZKGculhOgCd
+	GkEF6bxSF0eIh34H3n/+ri9vUvFDtZCa2fUzJzZq5dBvq18HNs4kJ7wS61cTNDL1xVeMahCbMrNfg
+	ngAWeEp/Cwudvmy/jZQlvQjBH9EL3+nuxzoMNAAANlGoJ7AJqrn76dfm2V4F4bJwz+qk9hY4k5XVZ
+	5tC4WXOXx6BgxfLSZcbD2pkUTROn+UhP+BsOtK8H9LueE8pC/nXcYFdjNG3QMfAP5duMJFq6acE58
+	9j7wRjmlnaqajW6UApDyQAFgygjBb5MWK8Bkp3Aqaq2jWNgu/KjAwZVHXcKDE7QDRIW9CPRZC65mL
+	r5QTl6dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4ZpS-00HaUm-Bk; Fri, 24 Jun 2022 03:17:54 +0000
+	id 1o4ZqQ-00Hb3I-8s; Fri, 24 Jun 2022 03:18:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4ZlL-00HY8m-K2; Fri, 24 Jun 2022 03:13:43 +0000
-X-UUID: 27c3cdd0faf344ffb331390954cebb27-20220623
+	id 1o4ZlL-00HY8k-NI; Fri, 24 Jun 2022 03:13:43 +0000
+X-UUID: b64533c313f54c5b88bee96dd4873097-20220623
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:907461dd-a672-40bc-a3d7-696bb2745827,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:9ae761ea-f7af-4e69-92ee-0fd74a0c286c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 27c3cdd0faf344ffb331390954cebb27-20220623
+X-CID-O-INFO: VERSION:1.1.6,REQID:6535e6bb-0836-4279-ada6-57a0b064425d,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:30
+X-CID-META: VersionHash:b14ad71,CLOUDID:9fed5638-5e4b-44d7-80b2-bb618cb09d29,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:5,IP:nil,URL:1,File:nil,
+	QS:nil,BEC:nil,COL:0
+X-UUID: b64533c313f54c5b88bee96dd4873097-20220623
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1003365460; Thu, 23 Jun 2022 20:13:29 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+	with ESMTP id 1317260548; Thu, 23 Jun 2022 20:13:29 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jun 2022 20:09:50 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ 15.0.1497.2; Thu, 23 Jun 2022 20:09:51 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 24 Jun 2022 11:09:48 +0800
+ Fri, 24 Jun 2022 11:09:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 24 Jun 2022 11:09:48 +0800
+ 15.2.792.3 via Frontend Transport; Fri, 24 Jun 2022 11:09:49 +0800
 From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
 	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -58,16 +58,18 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v14 00/15] drm/mediatek: Add MT8195 dp_intf driver
-Date: Fri, 24 Jun 2022 11:09:31 +0800
-Message-ID: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
+Subject: [PATCH v14 04/15] drm/mediatek: dpi: Add support for quantization range
+Date: Fri, 24 Jun 2022 11:09:35 +0800
+Message-ID: <20220624030946.14961-5-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
+References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_201339_757800_D5733F7C 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20220623_201339_824181_67964B08 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,73 +84,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dpi/dpintf driver and the added helper functions are required for
-the DisplayPort driver to work.
+For RGB colorimetry, CTA-861 support both limited and full range data
+when receiving video with RGB color space.
+We use drm_default_rgb_quant_range() to determine the correct setting.
 
-This series is separated from [1] which is original from Guillaume.
-The display port driver is [2].
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 34 ++++++++++++++++++------------
+ 1 file changed, 21 insertions(+), 13 deletions(-)
 
-Changes for v14:
-1. Separate a new binding patch to modify mediatek string format.
-2. Use GENMASK(4, 0) for INT_MATRIX_SEL_MASK in patch
-   "Add YUV422 output support"
-3. Change kernel doc description of support_direct_pin.
-4. Change to use pixels_per_iter to control quantity of transferred
-   pixels per iterration.
-
-Changes for v13:
-1. Change mediatek,mt8195-dp_intf to mediatek,mt8195-dp-intf.
-2. Add kernel doc for mtk_dpi_conf.
-3. Drop patch of tvd_pll enable.
-4. Squash some color format transfer related patches.
-5. Add new patch to support setting of direct connection to pins.
-6. Change fix tag of "drm/mediatek: dpi: Only enable dpi after the bridge is enabled".
-
-Changes for v12:
-1. Remove pll_gate.
-2. Add more detailed commit message.
-3. Separate tvd_clk patch and yuv422 output support from add dpintf
-   support patch
-4. Remove limit patch and use common driver codes to determine this.
-
-Changes for v11:
-1. Rename ck_cg to pll_gate.
-2. Add some commit message to clarify the modification reason.
-3. Fix some driver order and modify for reviewers' comments.
-
-[1]:https://lore.kernel.org/all/20220523104758.29531-1-granquet@baylibre.com/
-[2]:https://lore.kernel.org/all/20220610105522.13449-1-rex-bc.chen@mediatek.com/
-
-Bo-Chen Chen (5):
-  dt-bindings: mediatek,dpi: Revise mediatek strings to correct format
-  drm/mediatek: dpi: Add kernel document for struct mtk_dpi_conf
-  drm/mediatek: dpi: Add support for quantization range
-  drm/mediatek: dpi: Add YUV422 output support
-  drm/mediatek: dpi: add config to support direct connection to dpi
-    panels
-
-Guillaume Ranquet (9):
-  drm/mediatek: dpi: implement a CK/DE pol toggle in SoC config
-  drm/mediatek: dpi: implement a swap_input toggle in SoC config
-  drm/mediatek: dpi: move dimension mask to SoC config
-  drm/mediatek: dpi: move hvsize_mask to SoC config
-  drm/mediatek: dpi: move swap_shift to SoC config
-  drm/mediatek: dpi: move the yuv422_en_bit to SoC config
-  drm/mediatek: dpi: move the csc_enable bit to SoC config
-  drm/mediatek: dpi: Add dp_intf support
-  drm/mediatek: dpi: Only enable dpi after the bridge is enabled
-
-Markus Schneider-Pargmann (1):
-  dt-bindings: mediatek,dpi: Add DP_INTF compatible
-
- .../display/mediatek/mediatek,dpi.yaml        |  11 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c            | 268 +++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_dpi_regs.h       |  15 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |   4 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   3 +
- 6 files changed, 252 insertions(+), 50 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index f66a121ba0c9..24f4b5618276 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -244,16 +244,30 @@ static void mtk_dpi_config_fb_size(struct mtk_dpi *dpi, u32 width, u32 height)
+ 	mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE, VSIZE_MASK);
+ }
+ 
+-static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi,
+-					 struct mtk_dpi_yc_limit *limit)
++static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi)
+ {
+-	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_bottom << Y_LIMINT_BOT,
++	struct mtk_dpi_yc_limit limit;
++
++	if (drm_default_rgb_quant_range(&dpi->mode) ==
++	    HDMI_QUANTIZATION_RANGE_LIMITED) {
++		limit.y_bottom = 0x10;
++		limit.y_top = 0xfe0;
++		limit.c_bottom = 0x10;
++		limit.c_top = 0xfe0;
++	} else {
++		limit.y_bottom = 0;
++		limit.y_top = 0xfff;
++		limit.c_bottom = 0;
++		limit.c_top = 0xfff;
++	}
++
++	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_bottom << Y_LIMINT_BOT,
+ 		     Y_LIMINT_BOT_MASK);
+-	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_top << Y_LIMINT_TOP,
++	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_top << Y_LIMINT_TOP,
+ 		     Y_LIMINT_TOP_MASK);
+-	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_bottom << C_LIMIT_BOT,
++	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_bottom << C_LIMIT_BOT,
+ 		     C_LIMIT_BOT_MASK);
+-	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_top << C_LIMIT_TOP,
++	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_top << C_LIMIT_TOP,
+ 		     C_LIMIT_TOP_MASK);
+ }
+ 
+@@ -458,7 +472,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 				    struct drm_display_mode *mode)
+ {
+-	struct mtk_dpi_yc_limit limit;
+ 	struct mtk_dpi_polarities dpi_pol;
+ 	struct mtk_dpi_sync_param hsync;
+ 	struct mtk_dpi_sync_param vsync_lodd = { 0 };
+@@ -493,11 +506,6 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
+ 		pll_rate, vm.pixelclock);
+ 
+-	limit.c_bottom = 0x0010;
+-	limit.c_top = 0x0FE0;
+-	limit.y_bottom = 0x0010;
+-	limit.y_top = 0x0FE0;
+-
+ 	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+ 	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+ 	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
+@@ -545,7 +553,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	else
+ 		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive);
+ 
+-	mtk_dpi_config_channel_limit(dpi, &limit);
++	mtk_dpi_config_channel_limit(dpi);
+ 	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
+ 	mtk_dpi_config_channel_swap(dpi, dpi->channel_swap);
+ 	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
 -- 
 2.18.0
 
