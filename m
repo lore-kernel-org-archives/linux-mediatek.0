@@ -4,61 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B34C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 17:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDABAC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 18:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=92QKbH/mPXhxHIYJf1fLlrKB6WxLUvpdcDo1o4OtEnM=; b=FYnQidsc/BvXjOveZq12rCbKEz
-	NnHlBAhS++X+iRGH51408HSP4klu25tJVc7uTc+cNxakR0hfN3yQ6xokQuaIKiB/YWuoLhwv9qtpi
-	L+csZ522uMUrIVNH01P+QVAuBRp3rtllt7iGphK25ElD++0JhgfloNVg2WlyImx3KVHuAeJfB38RK
-	nhiB1YRZW+11wJhhPjko4dJKM8Ut+cArHJx1rfEsFn00p+HLEYJPjhMUxRdfhtGKj5lEzUa6qwjVB
-	Sxf5oppWx7ioKFJhTesHmHSuHSrchxDTKLpcsUyzC/yNvUR3TPlCWipW+5STbEbA3NZoaGBD9U9yQ
-	yHxkbAnQ==;
+	bh=VNymKOoqcg3pGTMnfjGRMvDmuCkOCa01F2ZxFC/A6/w=; b=AxYkyoJIbOFsRY+HzcgksOnoDr
+	CgYaDxRbIJJZFVpSBWST2IPfHpW9ufq+kNt7y2NHXJbdIj1xb/GDKiVi8wQ5VaABj9T0+kVMRyBLa
+	UPF/OvXxO9f4sDUkPIYkNyNUx5Ki35lP9DAoXu0wakMrNjIFsowY7dUaSbi/+nxBl9o+SUQ3HbRa2
+	LRcQPB4ga6/W36CJb6cOXho0Cz3Ufc7m/TqSGzdMV7KsouhjHDnVKqZ1uxLv6hl3L2J0cv68byAJb
+	rfVk7qOs1UZb0iffPMWHVvMIz1SGqOGxZwy7/u1168RWJYqGGpKWRhIgcGhgoBxAt7nWRhCqzsp/Y
+	QMFML/og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4n56-003ESX-Ei; Fri, 24 Jun 2022 17:26:56 +0000
-Received: from mail-io1-f52.google.com ([209.85.166.52])
+	id 1o4nlc-003QAJ-W9; Fri, 24 Jun 2022 18:10:53 +0000
+Received: from mailrelay4-1.pub.mailoutpod1-cph3.one.com ([46.30.210.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4n4r-003EOb-Q8; Fri, 24 Jun 2022 17:26:43 +0000
-Received: by mail-io1-f52.google.com with SMTP id y18so3400769iof.2;
-        Fri, 24 Jun 2022 10:26:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
-         :message-id;
-        bh=92QKbH/mPXhxHIYJf1fLlrKB6WxLUvpdcDo1o4OtEnM=;
-        b=O3HI9XpQPlKKT4ewjJg2T0SzSdNbBCaTH/1ltM6MIiKHntm1Id3+95uG8PQwwo4e/i
-         yXok449J1JrQ+4tw8iT40RqH7ElGVrFcXPCJ6lhs9y9acrNXqxch5K5lIetIMQ5UD6XH
-         kve0Sf9BXDBuBluFmBvutrSyZylUbjxm/BICQnBhLwB1ByoB0wVnwKaH9N3ByiR2GXCL
-         xgyEVZTntqWVd1q9lcaY3n95+iucNF5HuPsl3O68vq04Ms0la3nYJz+i5+6mPzdRi23A
-         +cXYRT+GVrOcJGFScGN15hh4C6iqlN+mZUD96DcdD4POF8dEWDbYLbppuaVElP5okZIf
-         RthA==
-X-Gm-Message-State: AJIora8RguLMl3LwtYJ6BsuTw1MCfL1KZCw9iwq4+peUFllr9DYNp9jg
-	RgctlHuvQ+44P8+JgMTZjw==
-X-Google-Smtp-Source: AGRyM1s8SzrwSpGacP/r2ARwl+tUdS8WymnOz9QJv44qHprtsvHiQ9e/7OSdNfiAyfKqtnqiAMvqmw==
-X-Received: by 2002:a02:90ce:0:b0:32e:e2ce:b17c with SMTP id c14-20020a0290ce000000b0032ee2ceb17cmr153954jag.268.1656091599142;
-        Fri, 24 Jun 2022 10:26:39 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.253])
-        by smtp.gmail.com with ESMTPSA id u10-20020a92da8a000000b002d925059ba6sm1354817iln.87.2022.06.24.10.26.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jun 2022 10:26:38 -0700 (PDT)
-Received: (nullmailer pid 146342 invoked by uid 1000);
-	Fri, 24 Jun 2022 17:26:34 -0000
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: tinghan.shen@mediatek.com, linux-kernel@vger.kernel.org, wenst@chromium.org, p.zabel@pengutronix.de, chun-jie.chen@mediatek.com, matthias.bgg@gmail.com, sboyd@kernel.org, konrad.dybcio@somainline.org, linux-clk@vger.kernel.org, fparent@baylibre.com, phone-devel@vger.kernel.org, robh+dt@kernel.org, y.oudjana@protonmail.com, rex-bc.chen@mediatek.com, martin.botka@somainline.org, marijn.suijten@somainline.org, sam.shih@mediatek.com, kernel@collabora.com, mturquette@baylibre.com, linux-arm-kernel@lists.infradead.org, ikjn@chromium.org, krzysztof.kozlowski+dt@linaro.org, weiyi.lu@mediatek.com, miles.chen@mediatek.com, ck.hu@mediatek.com, linux-mediatek@lists.infradead.org, jason-jh.lin@mediatek.com, ~postmarketos/upstreaming@lists.sr.ht, bgolaszewski@baylibre.com, paul.bouchara@somainline.org, devicetree@vger.kernel.org
-In-Reply-To: <20220624093525.243077-5-angelogioacchino.delregno@collabora.com>
-References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com> <20220624093525.243077-5-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v3 4/7] dt-bindings: clock: mediatek: Add clock driver bindings for MT6795
-Date: Fri, 24 Jun 2022 11:26:34 -0600
-Message-Id: <1656091594.386709.146341.nullmailer@robh.at.kernel.org>
+	id 1o4nlQ-003Q0o-7N
+	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 18:10:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=ravnborg.org; s=rsa1;
+	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
+	 from:date:from;
+	bh=VNymKOoqcg3pGTMnfjGRMvDmuCkOCa01F2ZxFC/A6/w=;
+	b=W96F2JjHh8CDcsJSZvfKw5C4AGufkvTf+lF8ecT/ZguDNkCJCdIVF/3xcGS5qEXVtkVKA+clvSb0S
+	 42vavh7CYg9GA9awDHJ9ZUcBaRdc0zunoMdqlPhe/wNWpr/tExfuiI0IXK9Kyk5TvlucCdPw3gg8XE
+	 eFs7+Pgbbgp6uvmyp7I7MMJdr9THlvG5vj3w0JypQqGumcyxf41cgser+QdAF0wZ8XDzfQz8SzHJaY
+	 vhv7P74zi1icGvbX2N9ISNw5L84gmWd0AOLdtXm57v+vtw9wfRYGIJUxmfvIYNdcBr0LHBUgs4XK0C
+	 7p9ztRCzhQRwHFtzPrRyYVFRbpDey5A==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+	d=ravnborg.org; s=ed1;
+	h=in-reply-to:content-type:mime-version:references:message-id:subject:cc:to:
+	 from:date:from;
+	bh=VNymKOoqcg3pGTMnfjGRMvDmuCkOCa01F2ZxFC/A6/w=;
+	b=1b5J72DSnPYK8nZWg70GlTAiNPwhCRsGn6Xj/QYy6JxRwSLhHbirlBE7WXSYi3R1NhtqiwNoZMBMG
+	 dxYuiu9AQ==
+X-HalOne-Cookie: c7b4917d86e3993e0abb9103ff3df1cade167dbb
+X-HalOne-ID: ee825b54-f3e8-11ec-8233-d0431ea8bb10
+Received: from mailproxy2.cst.dirpod3-cph3.one.com (80-162-45-141-cable.dk.customer.tdc.net [80.162.45.141])
+	by mailrelay4.pub.mailoutpod1-cph3.one.com (Halon) with ESMTPSA
+	id ee825b54-f3e8-11ec-8233-d0431ea8bb10;
+	Fri, 24 Jun 2022 18:10:30 +0000 (UTC)
+Date: Fri, 24 Jun 2022 20:10:28 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: allen <allen.chen@ite.com.tw>
+Cc: "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	Kenneth Hung <Kenneth.Hung@ite.com.tw>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
+	David Airlie <airlied@linux.ie>,
+	"open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
+	Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	Robert Foss <robert.foss@linaro.org>,
+	Neil Armstrong <narmstrong@baylibre.com>,
+	Pin-yen Lin <treapking@chromium.org>,
+	Hermes Wu <Hermes.Wu@ite.com.tw>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Pin-yen Lin <treapking@google.com>
+Subject: Re: [PATCH] drm/bridge: add it6505 driver read config from dt
+ property
+Message-ID: <YrX+FOAycejw8wV0@ravnborg.org>
+References: <20220623093154.52701-1-allen.chen@ite.com.tw>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220623093154.52701-1-allen.chen@ite.com.tw>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_102641_896472_1A7CF365 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20220624_111040_570405_64388957 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +93,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 24 Jun 2022 11:35:22 +0200, AngeloGioacchino Del Regno wrote:
-> Add the bindings for the clock drivers of the MediaTek Helio X10
-> MT6795 SoC.
+Hi allen.
+
+On Thu, Jun 23, 2022 at 05:31:54PM +0800, allen wrote:
+> From: allen chen <allen.chen@ite.com.tw>
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> add read max-lane and max-pixel-clock from dt property
+> 
+> Signed-off-by: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
+Can you fix so your s-o-b mail and author mail matches?
+As it is now an error is flagged as they do not match.
+
+	Sam
+
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 > ---
->  .../bindings/clock/mediatek,mt6795-clock.yaml | 66 +++++++++++++++++
->  .../clock/mediatek,mt6795-sys-clock.yaml      | 74 +++++++++++++++++++
->  2 files changed, 140 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
+>  drivers/gpu/drm/bridge/ite-it6505.c | 35 ++++++++++++++++++++++++++---
+>  1 file changed, 32 insertions(+), 3 deletions(-)
 > 
-
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.example.dtb: power-controller@10001000: '#power-domain-cells' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/power/power-domain.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.example.dtb: power-controller@10003000: '#power-domain-cells' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/power/power-domain.yaml
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+> diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
+> index 4b673c4792d77..c9121d4635a52 100644
+> --- a/drivers/gpu/drm/bridge/ite-it6505.c
+> +++ b/drivers/gpu/drm/bridge/ite-it6505.c
+> @@ -436,6 +436,8 @@ struct it6505 {
+>  	bool powered;
+>  	bool hpd_state;
+>  	u32 afe_setting;
+> +	u32 max_dpi_pixel_clock;
+> +	u32 max_lane_count;
+>  	enum hdcp_state hdcp_status;
+>  	struct delayed_work hdcp_work;
+>  	struct work_struct hdcp_wait_ksv_list;
+> @@ -1466,7 +1468,8 @@ static void it6505_parse_link_capabilities(struct it6505 *it6505)
+>  	it6505->lane_count = link->num_lanes;
+>  	DRM_DEV_DEBUG_DRIVER(dev, "Sink support %d lanes training",
+>  			     it6505->lane_count);
+> -	it6505->lane_count = min_t(int, it6505->lane_count, MAX_LANE_COUNT);
+> +	it6505->lane_count = min_t(int, it6505->lane_count,
+> +				   it6505->max_lane_count);
+>  
+>  	it6505->branch_device = drm_dp_is_branch(it6505->dpcd);
+>  	DRM_DEV_DEBUG_DRIVER(dev, "Sink %sbranch device",
+> @@ -2895,7 +2898,7 @@ it6505_bridge_mode_valid(struct drm_bridge *bridge,
+>  	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
+>  		return MODE_NO_INTERLACE;
+>  
+> -	if (mode->clock > DPI_PIXEL_CLK_MAX)
+> +	if (mode->clock > it6505->max_dpi_pixel_clock)
+>  		return MODE_CLOCK_HIGH;
+>  
+>  	it6505->video_info.clock = mode->clock;
+> @@ -3057,6 +3060,8 @@ static void it6505_parse_dt(struct it6505 *it6505)
+>  {
+>  	struct device *dev = &it6505->client->dev;
+>  	u32 *afe_setting = &it6505->afe_setting;
+> +	u32 *max_lane_count = &it6505->max_lane_count;
+> +	u32 *max_dpi_pixel_clock = &it6505->max_dpi_pixel_clock;
+>  
+>  	it6505->lane_swap_disabled =
+>  		device_property_read_bool(dev, "no-laneswap");
+> @@ -3072,7 +3077,31 @@ static void it6505_parse_dt(struct it6505 *it6505)
+>  	} else {
+>  		*afe_setting = 0;
+>  	}
+> -	DRM_DEV_DEBUG_DRIVER(dev, "using afe_setting: %d", *afe_setting);
+> +
+> +	if (device_property_read_u32(dev, "max-lane-count",
+> +				     max_lane_count) == 0) {
+> +		if (*max_lane_count > 4 || *max_lane_count == 3) {
+> +			dev_err(dev, "max lane count error, use default");
+> +			*max_lane_count = MAX_LANE_COUNT;
+> +		}
+> +	} else {
+> +		*max_lane_count = MAX_LANE_COUNT;
+> +	}
+> +
+> +	if (device_property_read_u32(dev, "max-dpi-pixel-clock",
+> +				     max_dpi_pixel_clock) == 0) {
+> +		if (*max_dpi_pixel_clock > 297000) {
+> +			dev_err(dev, "max pixel clock error, use default");
+> +			*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
+> +		}
+> +	} else {
+> +		*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
+> +	}
+> +
+> +	DRM_DEV_DEBUG_DRIVER(dev, "using afe_setting: %u, max_lane_count: %u",
+> +			     it6505->afe_setting, it6505->max_lane_count);
+> +	DRM_DEV_DEBUG_DRIVER(dev, "using max_dpi_pixel_clock: %u kHz",
+> +			     it6505->max_dpi_pixel_clock);
+>  }
+>  
+>  static ssize_t receive_timing_debugfs_show(struct file *file, char __user *buf,
+> -- 
+> 2.25.1
 
