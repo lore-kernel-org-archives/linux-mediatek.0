@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36160C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CDCCC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=keiVJynF+S+m8Kw5lMXhzeWZLnL1Xg+dWMl3kQYc6LQ=; b=4rfc10P3I6N0wpZtPniHeZwfyv
-	WksrWrE62AZKnzEZ9O9miyjBtw7AVTEnk/12F0qZ166ewqlyNNl5LcSvoPooP29oIgGm9EGgEjyxq
-	Ue+yQUTI793x1ybLkeUJA8+nE03S8jGw0dnC7014jKpKdK18Pdg3P2BG4pXWD4NwuqSOfyPtPAext
-	+phUcvV2RTAEn5ORA888U48nhehcBvXr/HpTP/GJKhyzYQMqcP98CUd5PTLk1EXrYfclHo4KweMTk
-	8JVGF0oXdYMc0zE1tRVYCW2BO4YtbDiMe4dYSuDxrTSlUtCvpLJcZPAFyb+qshzjZv5CkCg7k4DgE
-	VMnoUbfw==;
+	bh=PCYG4BfCv0gEsfsJXfhqPWj3FytHJMcF0n0IOUPeRZ0=; b=B6U6nA6YRyDrql6QvvlDU+WBNW
+	OpOt/4iOrj8kh/AYTCNLhbQh3AyHMa2Gn64FOatEicYOZ8xJJWg7yDYYot+GtpGyfeBZbIlSFG2KG
+	gfNIHgU6MrcIC5bei20kyPSopK9w4zDcjN3ZMaztzqsQEjyTwTW99dvA7GTHznzPkmENXfQU/AgjJ
+	7+AthCqGUsG9P0fkPUBX/ai5THj6nh0/rjpExIIHk2NRRQeR+jx5EkZck/5PwES7umq1fnme9Qw6b
+	wTNCcl6+EpDD28B9Cxct55r15fwV4FE2UcIHk7SOsi9GKn6O9y5JytVuGtB8SXGo06EMg3uIHMiZ+
+	EcmBs9qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4flO-001Sug-KM; Fri, 24 Jun 2022 09:38:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o4flQ-001SvT-C5; Fri, 24 Jun 2022 09:38:08 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4fiz-001Rr8-SJ; Fri, 24 Jun 2022 09:35:40 +0000
+	id 1o4fiz-001RtI-H7; Fri, 24 Jun 2022 09:35:39 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C459666017FD;
-	Fri, 24 Jun 2022 10:35:31 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E77EB66017FF;
+	Fri, 24 Jun 2022 10:35:34 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656063333;
-	bh=dVpnFJPWijR0G8zrYTyz0cKQZgjOoyAvap7TVzXSsS0=;
+	s=mail; t=1656063336;
+	bh=M2e0ZrWkdh3RbPDwwXtVmUaEbwdMfwojrO66mYtNtOQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Y4Co0gSCm0tLPLO0JQxtcFV863Ms2LHq6GOUqvDjLYgkEr9I6nhNvlVdshi+ORkhm
-	 H5EP+1RCILLBpsV+6DeKxjd7aDPXVZ4eWvleI/ZDl+ypyq0HYdVF6l7MTf/mZ9bITo
-	 nwRAAs/KrEvkh2iB77yDpmUQ6e8Rzl6nqXXykY30Uk/+SBkBIICxeHYfHDUK9nseEe
-	 9pdjxTZ+w2Z/o7kIr4USrxYk5YFtWgQecU2aGZ2UfpaoCwfKXuzHPqtqfRDaYuUl7M
-	 T1ri4mHUQu/68OWkoLPT6MA/CREKlchF5fNscBAS4hM78CX94FQi2cqNUUQfrqhJMN
-	 lH+NMw7yd/5zw==
+	b=JWuOY5MKdjzO59PTABreHlp4uXBg4pqsE11ADGxBR5JufkwJVZ7pqnQYqCpaEfPmp
+	 W0sp6r9LdnG2rnt4JXFJo5l2oHsAhcpP8vHG97OjJ8PKk1mdX5DIpX8os5ljxhEN8d
+	 kMRNtLkheBAr4dTFHuMTiTYGBjSnGKJhhI23og4SBdBnb8tkBsVT6Bvm2TEsvOfn5Y
+	 nxtfGyqDu87dq21I5FXXZKv5TUSQDFk58atCwpe3dgCTsARebv1P2Q5coBYTXCO2fx
+	 +j1EisRCTDWTkoJ529JalhDI+xwggftMPwqF44m3itep0C0Mlp2SZC8JSqdIc4xYrz
+	 /AtKntWwWm6rA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -75,18 +75,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	paul.bouchara@somainline.org,
 	kernel@collabora.com,
 	Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 1/7] dt-bindings: mediatek: Document MT6795 system controllers bindings
-Date: Fri, 24 Jun 2022 11:35:19 +0200
-Message-Id: <20220624093525.243077-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 3/7] dt-bindings: reset: Add bindings for MT6795 Helio X10 reset controllers
+Date: Fri, 24 Jun 2022 11:35:21 +0200
+Message-Id: <20220624093525.243077-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
 References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_023538_244462_B1945E2F 
-X-CRM114-Status: UNSURE (   7.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220624_023537_800264_E5E3CDBC 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,87 +100,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the MediaTek Helio X10 (MT6795) bindings for the apmixedsys,
-infracfg, topckgen, pericfg and mmsys system controllers.
+Add the reset controller bindings for MT6795.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Acked-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml     | 2 ++
- .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 1 +
- .../devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml      | 1 +
- .../devicetree/bindings/clock/mediatek,apmixedsys.yaml          | 1 +
- Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml  | 1 +
- 5 files changed, 6 insertions(+)
+ include/dt-bindings/reset/mt6795-resets.h | 50 +++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+ create mode 100644 include/dt-bindings/reset/mt6795-resets.h
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-index 8681b785ed6d..1d7c837d9378 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
-@@ -23,6 +23,7 @@ properties:
-               - mediatek,mt2701-infracfg
-               - mediatek,mt2712-infracfg
-               - mediatek,mt6765-infracfg
-+              - mediatek,mt6795-infracfg
-               - mediatek,mt6779-infracfg_ao
-               - mediatek,mt6797-infracfg
-               - mediatek,mt7622-infracfg
-@@ -60,6 +61,7 @@ if:
-         enum:
-           - mediatek,mt2701-infracfg
-           - mediatek,mt2712-infracfg
-+          - mediatek,mt6795-infracfg
-           - mediatek,mt7622-infracfg
-           - mediatek,mt7986-infracfg
-           - mediatek,mt8135-infracfg
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-index 6ad023eec193..597ef18f3c5f 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-@@ -25,6 +25,7 @@ properties:
-               - mediatek,mt2712-mmsys
-               - mediatek,mt6765-mmsys
-               - mediatek,mt6779-mmsys
-+              - mediatek,mt6795-mmsys
-               - mediatek,mt6797-mmsys
-               - mediatek,mt8167-mmsys
-               - mediatek,mt8173-mmsys
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-index 611f666f359d..c518ed3c4153 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
-@@ -21,6 +21,7 @@ properties:
-               - mediatek,mt2701-pericfg
-               - mediatek,mt2712-pericfg
-               - mediatek,mt6765-pericfg
-+              - mediatek,mt6795-pericfg
-               - mediatek,mt7622-pericfg
-               - mediatek,mt7629-pericfg
-               - mediatek,mt8135-pericfg
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-index 770546195fb5..731bfe0408c2 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
-@@ -34,6 +34,7 @@ properties:
-               - mediatek,mt2712-apmixedsys
-               - mediatek,mt6765-apmixedsys
-               - mediatek,mt6779-apmixedsys
-+              - mediatek,mt6795-apmixedsys
-               - mediatek,mt7629-apmixedsys
-               - mediatek,mt8167-apmixedsys
-               - mediatek,mt8183-apmixedsys
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
-index 5b8b37a2e594..81531b5b0db7 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
-@@ -33,6 +33,7 @@ properties:
-               - mediatek,mt2712-topckgen
-               - mediatek,mt6765-topckgen
-               - mediatek,mt6779-topckgen
-+              - mediatek,mt6795-topckgen
-               - mediatek,mt7629-topckgen
-               - mediatek,mt7986-topckgen
-               - mediatek,mt8167-topckgen
+diff --git a/include/dt-bindings/reset/mt6795-resets.h b/include/dt-bindings/reset/mt6795-resets.h
+new file mode 100644
+index 000000000000..0a6514884eae
+--- /dev/null
++++ b/include/dt-bindings/reset/mt6795-resets.h
+@@ -0,0 +1,50 @@
++/* SPDX-License-Identifier: (GPL-2.0+ OR BSD-2-Clause) */
++/*
++ * Copyright (c) 2022 Collabora Ltd.
++ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++ */
++
++#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT6795
++#define _DT_BINDINGS_RESET_CONTROLLER_MT6795
++
++/* INFRACFG resets */
++#define MT6795_INFRA_SCPSYS_RST			0
++#define MT6795_INFRA_PMIC_WRAP_RST		1
++
++/* MMSYS resets */
++#define MT6795_MMSYS_SW0_RST_B_SMI_COMMON	0
++#define MT6795_MMSYS_SW0_RST_B_SMI_LARB		1
++#define MT6795_MMSYS_SW0_RST_B_CAM_MDP		2
++#define MT6795_MMSYS_SW0_RST_B_MDP_RDMA0	3
++#define MT6795_MMSYS_SW0_RST_B_MDP_RDMA1	4
++#define MT6795_MMSYS_SW0_RST_B_MDP_RSZ0		5
++#define MT6795_MMSYS_SW0_RST_B_MDP_RSZ1		6
++#define MT6795_MMSYS_SW0_RST_B_MDP_RSZ2		7
++#define MT6795_MMSYS_SW0_RST_B_MDP_TDSHP0	8
++#define MT6795_MMSYS_SW0_RST_B_MDP_TDSHP1	9
++#define MT6795_MMSYS_SW0_RST_B_MDP_WDMA		10
++#define MT6795_MMSYS_SW0_RST_B_MDP_WROT0	11
++#define MT6795_MMSYS_SW0_RST_B_MDP_WROT1	12
++#define MT6795_MMSYS_SW0_RST_B_MDP_CROP		13
++
++/*  PERICFG resets */
++#define MT6795_PERI_NFI_SW_RST			0
++#define MT6795_PERI_THERM_SW_RST		1
++#define MT6795_PERI_MSDC1_SW_RST		2
++
++/* TOPRGU resets */
++#define MT6795_TOPRGU_INFRA_SW_RST		0
++#define MT6795_TOPRGU_MM_SW_RST			1
++#define MT6795_TOPRGU_MFG_SW_RST		2
++#define MT6795_TOPRGU_VENC_SW_RST		3
++#define MT6795_TOPRGU_VDEC_SW_RST		4
++#define MT6795_TOPRGU_IMG_SW_RST		5
++#define MT6795_TOPRGU_DDRPHY_SW_RST		6
++#define MT6795_TOPRGU_MD_SW_RST			7
++#define MT6795_TOPRGU_INFRA_AO_SW_RST		8
++#define MT6795_TOPRGU_MD_LITE_SW_RST		9
++#define MT6795_TOPRGU_APMIXED_SW_RST		10
++#define MT6795_TOPRGU_PWRAP_SPI_CTL_RST		11
++#define MT6795_TOPRGU_SW_RST_NUM		12
++
++#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT6795 */
 -- 
 2.35.1
 
