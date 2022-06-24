@@ -4,96 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948EDC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 18:32:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18E84C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 18:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4QZIZrxv32O2DTlTZzPr7qRJKGYdXktq4RK6QJQM9kA=; b=QzWaJ3S0jQanFiGryxBSIpTbly
-	XIEuPTLaxWK6YRGV8kGQpAha9CcOPuphGBEgAPz611TAeJLyvgutqGAay1ThA+VdoGfQOxxmg+Q0U
-	hxHBeDdQlXm+jTQwF49SR3woEOm1lG9/+hjUjWL0M7U7JJJbfVqe7gf7WlbFgXZ8REZXTtIZd1/Hp
-	QkphFkwaAkJWtQp+8tDNNHpV3lifxKGn1G1i5VHYMjOy2iXbwSgbPMdc12kR4REM5kBKbqI7vA0D1
-	3Sfbk7xeCxSQi5Hy5yGIeoNR6IUib5v+G3ceP4ucrORXyK5fSRQ6mz73vXN3prnWJ8kF3uz4LylE+
-	KFnzmIKw==;
+	bh=aP2GWjAY8tTeHxJL3lRG6JblOqVNcNfjxS45eRxJL50=; b=tp9zNzR+BxzB2kie00cLUdSMt3
+	cCT+ShagIJgamnbDPf+XqwfIdG5Z8X6IOrUdFSxH99pWcp5I7cbwjOaH6eVYV3pvaXjMTSHlvNaTj
+	hpR0La6DJe6QzZCCVW9bfyDHOhPkvwsxkXTSpWI4NrcGwT+/VXEQvcsHqwCxJqQXIHpv09pedd1+V
+	O18CoOxmnlvIFJ0typkfMbAOOcrWqANo4t5FdHZY52CCLQgGpLOZ+ApMAM62tNZ2X3fvnK5+1bcCH
+	+P2nCcZP6lfdliJ9HQYhpqEQtFEkqn8DeFN5Hw9l/n09M+d8O2ZZ7Cb8DDns75sXFV7tCkrY9uwwe
+	DwLjBtgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4o6J-003TaG-A9; Fri, 24 Jun 2022 18:32:15 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4o66-003TVV-HW; Fri, 24 Jun 2022 18:32:04 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E9BE31042;
-	Fri, 24 Jun 2022 11:31:59 -0700 (PDT)
-Received: from [10.57.84.111] (unknown [10.57.84.111])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 862573F792;
-	Fri, 24 Jun 2022 11:31:53 -0700 (PDT)
-Message-ID: <c9dee5e3-4525-b9bf-3775-30995d59af9e@arm.com>
-Date: Fri, 24 Jun 2022 19:31:47 +0100
+	id 1o4oF8-003VAX-KR; Fri, 24 Jun 2022 18:41:22 +0000
+Received: from aposti.net ([89.234.176.197])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o4oEw-003V6T-Gi; Fri, 24 Jun 2022 18:41:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1656096057; h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=aP2GWjAY8tTeHxJL3lRG6JblOqVNcNfjxS45eRxJL50=;
+	b=SoaqmUIUdkihuZ0kA76Saf4Fu6K9/mb9blMKf9wEkAXWim9bO3BOPfmVuGucAKS2IV4vg6
+	Jazmi0j6qtB5eHKyLBTIGqCsZTBU0GXTmKhXIycWw2lYAYNt6Qprn+jaeIv2ej/Kp+IHfB
+	gFAMa6F1VNCU66ePtMtTHfMRnIpSkZo=
+Date: Fri, 24 Jun 2022 19:40:47 +0100
+From: Paul Cercueil <paul@crapouillou.net>
+Subject: Re: [PATCH 1/2] MIPS: dts: correct gpio-keys names and properties
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rahul Bedarkar <rahulbedarkar89@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Thomas Bogendoerfer
+	<tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+	=?iso-8859-9?b?QXL9bucg3E5BTA==?= <arinc.unal@arinc9.com>, Sergio Paracuellos
+	<sergio.paracuellos@gmail.com>, linux-mips@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-Id: <ZVVZDR.R2QT2GMTT9WS1@crapouillou.net>
+In-Reply-To: <20220624170740.66271-1-krzysztof.kozlowski@linaro.org>
+References: <20220624170740.66271-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 3/5] vfio/iommu_type1: Remove the domain->ops
- comparison
-Content-Language: en-GB
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Nicolin Chen <nicolinc@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>,
- "joro@8bytes.org" <joro@8bytes.org>, "will@kernel.org" <will@kernel.org>,
- "marcan@marcan.st" <marcan@marcan.st>,
- "sven@svenpeter.dev" <sven@svenpeter.dev>,
- "robdclark@gmail.com" <robdclark@gmail.com>,
- "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
- "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
- "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
- "dwmw2@infradead.org" <dwmw2@infradead.org>,
- "yong.wu@mediatek.com" <yong.wu@mediatek.com>,
- "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
- "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
- "vdumpa@nvidia.com" <vdumpa@nvidia.com>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "thunder.leizhen@huawei.com" <thunder.leizhen@huawei.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
- "john.garry@huawei.com" <john.garry@huawei.com>,
- "chenxiang66@hisilicon.com" <chenxiang66@hisilicon.com>,
- "saiprakash.ranjan@codeaurora.org" <saiprakash.ranjan@codeaurora.org>,
- "isaacm@codeaurora.org" <isaacm@codeaurora.org>,
- "yangyingliang@huawei.com" <yangyingliang@huawei.com>,
- "jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
- "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>
-References: <20220616000304.23890-1-nicolinc@nvidia.com>
- <20220616000304.23890-4-nicolinc@nvidia.com>
- <BL1PR11MB52717050DBDE29A81637BBFA8CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
- <YqutYjgtFOTXCF0+@Asurada-Nvidia>
- <6e1280c5-4b22-ebb3-3912-6c72bc169982@arm.com>
- <20220624131611.GM4147@nvidia.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220624131611.GM4147@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=iso-8859-1; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_113202_727837_50EC17E4 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20220624_114110_744583_98CBF95F 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,54 +69,420 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-24 14:16, Jason Gunthorpe wrote:
-> On Wed, Jun 22, 2022 at 08:54:45AM +0100, Robin Murphy wrote:
->> On 2022-06-16 23:23, Nicolin Chen wrote:
->>> On Thu, Jun 16, 2022 at 06:40:14AM +0000, Tian, Kevin wrote:
->>>
->>>>> The domain->ops validation was added, as a precaution, for mixed-driver
->>>>> systems. However, at this moment only one iommu driver is possible. So
->>>>> remove it.
->>>>
->>>> It's true on a physical platform. But I'm not sure whether a virtual platform
->>>> is allowed to include multiple e.g. one virtio-iommu alongside a virtual VT-d
->>>> or a virtual smmu. It might be clearer to claim that (as Robin pointed out)
->>>> there is plenty more significant problems than this to solve instead of simply
->>>> saying that only one iommu driver is possible if we don't have explicit code
->>>> to reject such configuration. 😊
->>>
->>> Will edit this part. Thanks!
->>
->> Oh, physical platforms with mixed IOMMUs definitely exist already. The main
->> point is that while bus_set_iommu still exists, the core code effectively
->> *does* prevent multiple drivers from registering - even in emulated cases
->> like the example above, virtio-iommu and VT-d would both try to
->> bus_set_iommu(&pci_bus_type), and one of them will lose. The aspect which
->> might warrant clarification is that there's no combination of supported
->> drivers which claim non-overlapping buses *and* could appear in the same
->> system - even if you tried to contrive something by emulating, say, VT-d
->> (PCI) alongside rockchip-iommu (platform), you could still only describe one
->> or the other due to ACPI vs. Devicetree.
-> 
-> Right, and that is still something we need to protect against with
-> this ops check. VFIO is not checking that the bus's are the same
-> before attempting to re-use a domain.
-> 
-> So it is actually functional and does protect against systems with
-> multiple iommu drivers on different busses.
+Hi Krzysztof,
 
-But as above, which systems *are* those? Everything that's on my radar 
-would have drivers all competing for the platform bus - Intel and s390 
-are somewhat the odd ones out in that respect, but are also non-issues 
-as above. FWIW my iommu/bus dev branch has got as far as the final bus 
-ops removal and allowing multiple driver registrations, and before it 
-allows that, it does now have the common attach check that I sketched 
-out in the previous discussion of this.
+Le ven., juin 24 2022 at 19:07:39 +0200, Krzysztof Kozlowski=20
+<krzysztof.kozlowski@linaro.org> a =E9crit :
+> gpio-keys children do not use unit addresses.
+>=20
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>=20
+> ---
+>=20
+> See:=20
+> https://lore.kernel.org/all/20220616005224.18391-1-krzysztof.kozlowski@li=
+naro.org/
+> ---
+>  arch/mips/boot/dts/img/pistachio_marduk.dts   |  4 +--
+>  arch/mips/boot/dts/ingenic/gcw0.dts           | 31=20
+> +++++++++----------
+>  arch/mips/boot/dts/ingenic/rs90.dts           | 18 +++++------
+>  arch/mips/boot/dts/pic32/pic32mzda_sk.dts     |  9 ++----
+>  .../boot/dts/qca/ar9132_tl_wr1043nd_v1.dts    |  6 ++--
+>  arch/mips/boot/dts/qca/ar9331_dpt_module.dts  |  4 +--
+>  .../mips/boot/dts/qca/ar9331_dragino_ms14.dts |  6 ++--
+>  arch/mips/boot/dts/qca/ar9331_omega.dts       |  4 +--
+>  .../qca/ar9331_openembed_som9331_board.dts    |  4 +--
+>  arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts   |  8 ++---
+>  10 files changed, 37 insertions(+), 57 deletions(-)
+>=20
+> diff --git a/arch/mips/boot/dts/img/pistachio_marduk.dts=20
+> b/arch/mips/boot/dts/img/pistachio_marduk.dts
+> index a8708783f04b..a8da2f992b1a 100644
+> --- a/arch/mips/boot/dts/img/pistachio_marduk.dts
+> +++ b/arch/mips/boot/dts/img/pistachio_marduk.dts
+> @@ -59,12 +59,12 @@ led-1 {
+>=20
+>  	keys {
+>  		compatible =3D "gpio-keys";
+> -		button@1 {
+> +		button-1 {
+>  			label =3D "Button 1";
+>  			linux,code =3D <0x101>; /* BTN_1 */
+>  			gpios =3D <&gpio3 6 GPIO_ACTIVE_LOW>;
+>  		};
+> -		button@2 {
+> +		button-2 {
+>  			label =3D "Button 2";
+>  			linux,code =3D <0x102>; /* BTN_2 */
+>  			gpios =3D <&gpio2 14 GPIO_ACTIVE_LOW>;
+> diff --git a/arch/mips/boot/dts/ingenic/gcw0.dts=20
+> b/arch/mips/boot/dts/ingenic/gcw0.dts
+> index 4abb0318416c..5d33f26fd28c 100644
+> --- a/arch/mips/boot/dts/ingenic/gcw0.dts
+> +++ b/arch/mips/boot/dts/ingenic/gcw0.dts
+> @@ -130,89 +130,86 @@ backlight: backlight {
+>=20
+>  	gpio-keys {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
 
-It's probably also noteworthy that domain->ops is no longer the same 
-domain->ops that this code was written to check, and may now be 
-different between domains from the same driver.
+Are you sure you can remove these?
 
-Thanks,
-Robin.
+Looking at paragraph 2.3.5 of the DT spec, I would think they have to=20
+stay (although with #address-cells =3D <0>).
+
+Cheers,
+-Paul
+
+> -
+>  		autorepeat;
+>=20
+> -		button@0 {
+> +		button-0 {
+>  			label =3D "D-pad up";
+>  			linux,code =3D <KEY_UP>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 21 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@1 {
+> +		button-1 {
+>  			label =3D "D-pad down";
+>  			linux,code =3D <KEY_DOWN>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 25 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@2 {
+> +		button-2 {
+>  			label =3D "D-pad left";
+>  			linux,code =3D <KEY_LEFT>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 23 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@3 {
+> +		button-3 {
+>  			label =3D "D-pad right";
+>  			linux,code =3D <KEY_RIGHT>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 24 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@4 {
+> +		button-4 {
+>  			label =3D "Button A";
+>  			linux,code =3D <KEY_LEFTCTRL>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 29 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@5 {
+> +		button-5 {
+>  			label =3D "Button B";
+>  			linux,code =3D <KEY_LEFTALT>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 20 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@6 {
+> +		button-6 {
+>  			label =3D "Button Y";
+>  			linux,code =3D <KEY_SPACE>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 27 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@7 {
+> +		button-7 {
+>  			label =3D "Button X";
+>  			linux,code =3D <KEY_LEFTSHIFT>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 28 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@8 {
+> +		button-8 {
+>  			label =3D "Left shoulder button";
+>  			linux,code =3D <KEY_TAB>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpb 20 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@9 {
+> +		button-9 {
+>  			label =3D "Right shoulder button";
+>  			linux,code =3D <KEY_BACKSPACE>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpe 26 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@10 {
+> +		button-10 {
+>  			label =3D "Start button";
+>  			linux,code =3D <KEY_ENTER>;
+>  			linux,can-disable;
+>  			gpios =3D <&gpb 21 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@11 {
+> +		button-11 {
+>  			label =3D "Select button";
+>  			linux,code =3D <KEY_ESC>;
+>  			linux,can-disable;
+> @@ -223,7 +220,7 @@ button@11 {
+>  			gpios =3D <&gpd 18 GPIO_ACTIVE_HIGH>;
+>  		};
+>=20
+> -		button@12 {
+> +		button-12 {
+>  			label =3D "Power slider";
+>  			linux,code =3D <KEY_POWER>;
+>  			linux,can-disable;
+> @@ -231,7 +228,7 @@ button@12 {
+>  			wakeup-source;
+>  		};
+>=20
+> -		button@13 {
+> +		button-13 {
+>  			label =3D "Power hold";
+>  			linux,code =3D <KEY_PAUSE>;
+>  			linux,can-disable;
+> diff --git a/arch/mips/boot/dts/ingenic/rs90.dts=20
+> b/arch/mips/boot/dts/ingenic/rs90.dts
+> index 74fee7f01352..e8df70dd42bf 100644
+> --- a/arch/mips/boot/dts/ingenic/rs90.dts
+> +++ b/arch/mips/boot/dts/ingenic/rs90.dts
+> @@ -52,53 +52,51 @@ backlight: backlight {
+>=20
+>  	keys@0 {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+>=20
+> -		key@0 {
+> +		key-0 {
+>  			label =3D "D-pad up";
+>  			linux,code =3D <KEY_UP>;
+>  			gpios =3D <&gpc 10 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		key@1 {
+> +		key-1 {
+>  			label =3D "D-pad down";
+>  			linux,code =3D <KEY_DOWN>;
+>  			gpios =3D <&gpc 11 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		key@2 {
+> +		key-2 {
+>  			label =3D "D-pad left";
+>  			linux,code =3D <KEY_LEFT>;
+>  			gpios =3D <&gpb 31 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		key@3 {
+> +		key-3 {
+>  			label =3D "D-pad right";
+>  			linux,code =3D <KEY_RIGHT>;
+>  			gpios =3D <&gpd 21 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		key@4 {
+> +		key-4 {
+>  			label =3D "Button A";
+>  			linux,code =3D <KEY_LEFTCTRL>;
+>  			gpios =3D <&gpc 31 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		key@5 {
+> +		key-5 {
+>  			label =3D "Button B";
+>  			linux,code =3D <KEY_LEFTALT>;
+>  			gpios =3D <&gpc 30 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		key@6 {
+> +		key-6 {
+>  			label =3D "Right shoulder button";
+>  			linux,code =3D <KEY_BACKSPACE>;
+>  			gpios =3D <&gpc 12 GPIO_ACTIVE_LOW>;
+>  			debounce-interval =3D <10>;
+>  		};
+>=20
+> -		key@7 {
+> +		key-7 {
+>  			label =3D "Start button";
+>  			linux,code =3D <KEY_ENTER>;
+>  			gpios =3D <&gpd 17 GPIO_ACTIVE_LOW>;
+> diff --git a/arch/mips/boot/dts/pic32/pic32mzda_sk.dts=20
+> b/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
+> index d7fa5d55dbf3..ab70637bbec5 100644
+> --- a/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
+> +++ b/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
+> @@ -52,22 +52,19 @@ keys0 {
+>  		pinctrl-0 =3D <&user_buttons_s0>;
+>  		pinctrl-names =3D "default";
+>=20
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+> -
+> -		button@sw1 {
+> +		button-1 {
+>  			label =3D "ESC";
+>  			linux,code =3D <1>;
+>  			gpios =3D <&gpio1 12 0>;
+>  		};
+>=20
+> -		button@sw2 {
+> +		button-2 {
+>  			label =3D "Home";
+>  			linux,code =3D <102>;
+>  			gpios =3D <&gpio1 13 0>;
+>  		};
+>=20
+> -		button@sw3 {
+> +		button-3 {
+>  			label =3D "Menu";
+>  			linux,code =3D <139>;
+>  			gpios =3D <&gpio1 14 0>;
+> diff --git a/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts=20
+> b/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
+> index 7fccf6357225..f3dff4009ab5 100644
+> --- a/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
+> +++ b/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
+> @@ -23,17 +23,15 @@ extosc: ref {
+>=20
+>  	gpio-keys {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+>=20
+> -		button@0 {
+> +		button-0 {
+>  			label =3D "reset";
+>  			linux,code =3D <KEY_RESTART>;
+>  			gpios =3D <&gpio 3 GPIO_ACTIVE_LOW>;
+>  			debounce-interval =3D <60>;
+>  		};
+>=20
+> -		button@1 {
+> +		button-1 {
+>  			label =3D "qss";
+>  			linux,code =3D <KEY_WPS_BUTTON>;
+>  			gpios =3D <&gpio 7 GPIO_ACTIVE_LOW>;
+> diff --git a/arch/mips/boot/dts/qca/ar9331_dpt_module.dts=20
+> b/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
+> index 7695d326df11..c857cd22f7db 100644
+> --- a/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
+> +++ b/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
+> @@ -33,10 +33,8 @@ led-0 {
+>=20
+>  	gpio-keys {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+>=20
+> -		button@0 {
+> +		button-0 {
+>  			label =3D "reset";
+>  			linux,code =3D <KEY_RESTART>;
+>  			gpios =3D <&gpio 11 GPIO_ACTIVE_LOW>;
+> diff --git a/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts=20
+> b/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
+> index d38aa73f1a2e..40e4c5da0e65 100644
+> --- a/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
+> +++ b/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
+> @@ -49,16 +49,14 @@ system {
+>=20
+>  	gpio-keys {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+>=20
+> -		button@0 {
+> +		button-0 {
+>  			label =3D "jumpstart";
+>  			linux,code =3D <KEY_WPS_BUTTON>;
+>  			gpios =3D <&gpio 11 GPIO_ACTIVE_LOW>;
+>  		};
+>=20
+> -		button@1 {
+> +		button-1 {
+>  			label =3D "reset";
+>  			linux,code =3D <KEY_RESTART>;
+>  			gpios =3D <&gpio 12 GPIO_ACTIVE_LOW>;
+> diff --git a/arch/mips/boot/dts/qca/ar9331_omega.dts=20
+> b/arch/mips/boot/dts/qca/ar9331_omega.dts
+> index 11778abacf66..ed184d861d5f 100644
+> --- a/arch/mips/boot/dts/qca/ar9331_omega.dts
+> +++ b/arch/mips/boot/dts/qca/ar9331_omega.dts
+> @@ -31,10 +31,8 @@ system {
+>=20
+>  	gpio-keys {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+>=20
+> -		button@0 {
+> +		button-0 {
+>  			label =3D "reset";
+>  			linux,code =3D <KEY_RESTART>;
+>  			gpios =3D <&gpio 11 GPIO_ACTIVE_HIGH>;
+> diff --git=20
+> a/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts=20
+> b/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
+> index e6622f8e8c2b..dc65ebd60bbc 100644
+> --- a/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
+> +++ b/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
+> @@ -33,10 +33,8 @@ led-0 {
+>=20
+>  	gpio-keys {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+>=20
+> -		button@0 {
+> +		button-0 {
+>  			label =3D "reset";
+>  			linux,code =3D <KEY_RESTART>;
+>  			gpios =3D <&gpio 11 GPIO_ACTIVE_HIGH>;
+> diff --git a/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts=20
+> b/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
+> index c8290d36cfbe..5f424c2cd781 100644
+> --- a/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
+> +++ b/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
+> @@ -49,22 +49,20 @@ led3g {
+>=20
+>  	gpio-keys {
+>  		compatible =3D "gpio-keys";
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+>=20
+> -		button@0 {
+> +		button-0 {
+>  			label =3D "wps";
+>  			linux,code =3D <KEY_WPS_BUTTON>;
+>  			gpios =3D <&gpio 11 GPIO_ACTIVE_HIGH>;
+>  		};
+>=20
+> -		button@1 {
+> +		button-1 {
+>  			label =3D "sw1";
+>  			linux,code =3D <BTN_0>;
+>  			gpios =3D <&gpio 18 GPIO_ACTIVE_HIGH>;
+>  		};
+>=20
+> -		button@2 {
+> +		button-2 {
+>  			label =3D "sw2";
+>  			linux,code =3D <BTN_1>;
+>  			gpios =3D <&gpio 20 GPIO_ACTIVE_HIGH>;
+> --
+> 2.34.1
+>=20
+
+
 
