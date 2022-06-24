@@ -4,83 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14138C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 06:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75142C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 06:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3WRM/jegNDF7MJkfKHHwllsaLEoDBdN6Clej3P/Y4lI=; b=er+0mmIGAudKp6xNC6yyA6G8dM
-	U26gNtrWVsPGZuAVIAa3nZb5gm2XTbO1D1BGbfkY/OuhoVeGMCkeI8bp5QRjPy9jDXn3WOn0hYg7L
-	g6URtdVyLJX9TMa0yycyPlSsNHBSK935ukbCAvdVkjsaCayYgPrROvmnDd9BSiYGUrrvH+qR+451P
-	a9+uBSUR2CehXNJyjDU1+nfzEU6Q7+Tn9vpaq0gEzXumPx+VHkT9p6hLXn8bypy0/3pXww70jz0W0
-	LRFwKkPUoerpyN5nLpujexqtCic1jBzSIkLBmzjZxv5AGiNPDIMZMrYRuLe75k120mkpt/XyS3Bre
-	KtBk+vFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9kzgjd2siOm2VvCiTpf3g1ywuGEVoFHr6U7cwlGS0CQ=; b=MLMlj92HcYn34FyLr55MBioKjM
+	/MUuVR41YNjpyVnmHbh/OaCCExo/6trChmxOi587JtnYJLX8Np0POKARoghxRwMEG7gioM0+EyPt+
+	UnXBfP5iVsrEcNTzJNYb5NvL0iugFfI0Fjbj+hihHEYMP8dLh+OPAYp6HjqespWaym6gBl0Md4SGd
+	y7wXE8beX8HrY1KiLKDUOnjcTeRw34h+Ex2MFjC09+qKEuBmDpGlitgZfl8ZBgfbFK/0nDRUcr/DE
+	MPdpUS1BLCkaeEUmbyOftEvJpvnAZfYLypndyPnpwUDHWsi39hL1Ehk1qqLid75lGoy9fwWrC0eVr
+	emA6xwzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4clE-000py4-4Z; Fri, 24 Jun 2022 06:25:44 +0000
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+	id 1o4cqj-000qkN-5A; Fri, 24 Jun 2022 06:31:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4clB-000px0-CZ
-	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 06:25:42 +0000
-Received: by mail-yb1-xb30.google.com with SMTP id l11so2831082ybu.13
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jun 2022 23:25:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=3WRM/jegNDF7MJkfKHHwllsaLEoDBdN6Clej3P/Y4lI=;
-        b=D530abNNVW04AkYbW5cBkqRo9d5231SDuKgu4fDW7AaH4jE4mVT5OFUcx+HC+Oclit
-         8chp6jbBbNGEk0P3WtO4E/T3LUNKEl4CZYHCB8kDC72f1y33a5Jl8zQdYz/7h8rofzI9
-         molKE7wLhlBuYhpF8PG8/LP34IC1bse0Fsc34U93w63mTGtgoR/kSBJU3IAZV6RJIDoX
-         vewJ811NMZGN+RX3N8aqUoPR3IjQiufTbvKsQ7KYzVX9rrK377CYprRQ3djZSphTlWnA
-         kr90KekhWjo1rMkgj80oOFkzfZZBsx36WCy428UlmluupR0YrGtaLVqkr96HnOa5PXRo
-         +Ovg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=3WRM/jegNDF7MJkfKHHwllsaLEoDBdN6Clej3P/Y4lI=;
-        b=uhJNyUJnv9T1zgD/kUNPkeA0zjQs4E/jR4T54Wlu8AR9dP+eckiyAqKI229tjBtjn3
-         3mMhpJzHBwYEWuyQOKTtGmrvzJwNQMkueJOnOiVnjFkqVh7PQ1OvDzKsq8aC+izsF3L+
-         IhQw0/2sdu74WCbwocXq9U+5PnpRFXhXY7LrLFsCbldn+c97sRWeM7r6lBiLnVhmXOqu
-         Vc7bzwFjKBuLeVjEBizRNu2gvLpEXvgy98hQewyjNDnLnyUltAb8j1Xzo1HAlrCWp9+f
-         UGTerAPCGJ4XrRzyllo6PTP7OZs1MhOyGwQImFWOVXSphgvX0VSqX4pTHvzSkCBmzK14
-         kSGg==
-X-Gm-Message-State: AJIora9qkgprtM+IQX9HVPMoEIQDtihzWosMXhw3VwsAr3P9eAyc9i12
-	HTqTfi6v7FjSeq9lzkkJgkVqX3XaVuXDE2uPAttgZQ==
-X-Google-Smtp-Source: AGRyM1sT2bkts91ktfEoGKQU7+LXoN5AOODxkIaXfQ8ZFlQvpAh1fKz3hE77tVb6U5oyh1MbZfwUv7onSbM8QOjAaWU=
-X-Received: by 2002:a25:1f57:0:b0:669:b6fa:167e with SMTP id
- f84-20020a251f57000000b00669b6fa167emr4052148ybf.295.1656051940195; Thu, 23
- Jun 2022 23:25:40 -0700 (PDT)
+	id 1o4cqV-000qi8-Pq; Fri, 24 Jun 2022 06:31:15 +0000
+X-UUID: e2b2d89b96d94c3aa28674d4298c3f17-20220623
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:c9e6b74c-6459-4702-b9c0-5c9e65ef406f,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:b14ad71,CLOUDID:88c866ea-f7af-4e69-92ee-0fd74a0c286c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: e2b2d89b96d94c3aa28674d4298c3f17-20220623
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1428739317; Thu, 23 Jun 2022 23:31:05 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Jun 2022 23:27:28 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 24 Jun 2022 14:27:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 24 Jun 2022 14:27:26 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
+	<chunfeng.yun@mediatek.com>, <kishon@ti.com>, <vkoul@kernel.org>,
+	<matthias.bgg@gmail.com>, <airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<ck.hu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v12 1/1] phy: phy-mtk-dp: Add driver for DP phy
+Date: Fri, 24 Jun 2022 14:27:25 +0800
+Message-ID: <20220624062725.4095-1-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-13-peterwu.pub@gmail.com>
- <CACRpkdZatfOFmeGXepTrjAk1or4W6KNUEaXnP+srRebfM=52AA@mail.gmail.com>
-In-Reply-To: <CACRpkdZatfOFmeGXepTrjAk1or4W6KNUEaXnP+srRebfM=52AA@mail.gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 24 Jun 2022 08:25:29 +0200
-Message-ID: <CACRpkdbzZqerE_2PeGMUWRbtjK=9P8V763cj83ZqjP4n6AVHAg@mail.gmail.com>
-Subject: Re: [PATCH v3 12/14] leds: mt6370: Add Mediatek MT6370 current sink
- type LED Indicator support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: lee.jones@linaro.org, daniel.thompson@linaro.org, jingoohan1@gmail.com, 
-	pavel@ucw.cz, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com, 
-	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de, 
-	lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net, 
-	heikki.krogerus@linux.intel.com, deller@gmx.de, devicetree@vger.kernel.org, 
-	linux-fbdev@vger.kernel.org, szunichen@gmail.com, alice_chen@richtek.com, 
-	linux-pm@vger.kernel.org, linux-iio@vger.kernel.org, 
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, cy_huang@richtek.com, chiaen_wu@richtek.com, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-leds@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_232541_453044_A47BAF85 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20220623_233111_872192_E0B6D5A5 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +82,297 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 24, 2022 at 8:23 AM Linus Walleij <linus.walleij@linaro.org> wrote:
-> Thanks for your patch!
->
-> On Thu, Jun 23, 2022 at 1:58 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
->
-> > From: ChiYuan Huang <cy_huang@richtek.com>
-> >
-> > Add Mediatek MT6370 current sink type LED Indicator driver.
-> >
-> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> (...)
-> >  drivers/leds/Kconfig       |  11 +
-> >  drivers/leds/Makefile      |   1 +
-> >  drivers/leds/leds-mt6370.c | 989 +++++++++++++++++++++++++++++++++++++++++++++
->
-> There is a drivers/leds/flash subdirectory these days, put the driver
-> in that directory instead.
+From: Markus Schneider-Pargmann <msp@baylibre.com>
 
-Sorry I'm commenting on the wrong patch.
+This is a new driver that supports the integrated DisplayPort phy for
+mediatek SoCs, especially the mt8195. The phy is integrated into the
+DisplayPort controller and will be created by the mtk-dp driver. This
+driver expects a struct regmap to be able to work on the same registers
+as the DisplayPort controller. It sets the device data to be the struct
+phy so that the DisplayPort controller can easily work with it.
 
-I meant this one. Move that into drivers/leds/flash
- drivers/leds/flash/leds-mt6370-flash.c             |  657 ++++++++++++
+The driver does not have any devicetree bindings because the datasheet
+does not list the controller and the phy as distinct units.
 
+The interaction with the controller can be covered by the configure
+callback of the phy framework and its displayport parameters.
 
-Yours,
-Linus Walleij
+Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+[Bo-Chen: Modify reviewers' comments.]
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+----
+This series display port phy drivers and separated from [1] which is
+original from Guillaume.
+The display port driver is [2].
+
+Changes for v12:
+1. Add copyright strings in phy-mtk-dp.c.
+
+Changes for v11:
+1. Fix register definition.
+
+[1]:https://lore.kernel.org/all/20220523104758.29531-1-granquet@baylibre.com/
+[2]:https://lore.kernel.org/all/20220610105522.13449-1-rex-bc.chen@mediatek.com/
+----
+---
+ MAINTAINERS                       |   1 +
+ drivers/phy/mediatek/Kconfig      |   8 ++
+ drivers/phy/mediatek/Makefile     |   1 +
+ drivers/phy/mediatek/phy-mtk-dp.c | 202 ++++++++++++++++++++++++++++++
+ 4 files changed, 212 insertions(+)
+ create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 6cc825857722..5965b8cfa199 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -6719,6 +6719,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Supported
+ F:	Documentation/devicetree/bindings/display/mediatek/
+ F:	drivers/gpu/drm/mediatek/
++F:	drivers/phy/mediatek/phy-mtk-dp.c
+ F:	drivers/phy/mediatek/phy-mtk-hdmi*
+ F:	drivers/phy/mediatek/phy-mtk-mipi*
+ 
+diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+index 55f8e6c048ab..d631525d12e1 100644
+--- a/drivers/phy/mediatek/Kconfig
++++ b/drivers/phy/mediatek/Kconfig
+@@ -55,3 +55,11 @@ config PHY_MTK_MIPI_DSI
+ 	select GENERIC_PHY
+ 	help
+ 	  Support MIPI DSI for Mediatek SoCs.
++
++config PHY_MTK_DP
++	tristate "MediaTek DP-PHY Driver"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on OF
++	select GENERIC_PHY
++	help
++	  Support DisplayPort PHY for MediaTek SoCs.
+diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+index ace660fbed3a..4ba1e0650434 100644
+--- a/drivers/phy/mediatek/Makefile
++++ b/drivers/phy/mediatek/Makefile
+@@ -3,6 +3,7 @@
+ # Makefile for the phy drivers.
+ #
+ 
++obj-$(CONFIG_PHY_MTK_DP)		+= phy-mtk-dp.o
+ obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+ obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+ obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+new file mode 100644
+index 000000000000..715bd2336c17
+--- /dev/null
++++ b/drivers/phy/mediatek/phy-mtk-dp.c
+@@ -0,0 +1,202 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * MediaTek DisplayPort PHY driver
++ *
++ * Copyright (c) 2022, BayLibre Inc.
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#include <linux/delay.h>
++#include <linux/io.h>
++#include <linux/mfd/syscon.h>
++#include <linux/of.h>
++#include <linux/phy/phy.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++
++#define PHY_OFFSET			0x1000
++
++#define MTK_DP_PHY_DIG_PLL_CTL_1	(PHY_OFFSET + 0x14)
++#define TPLL_SSC_EN			BIT(3)
++
++#define MTK_DP_PHY_DIG_BIT_RATE		(PHY_OFFSET + 0x3C)
++#define BIT_RATE_RBR			0
++#define BIT_RATE_HBR			1
++#define BIT_RATE_HBR2			2
++#define BIT_RATE_HBR3			3
++
++#define MTK_DP_PHY_DIG_SW_RST		(PHY_OFFSET + 0x38)
++#define DP_GLB_SW_RST_PHYD		BIT(0)
++
++#define MTK_DP_LANE0_DRIVING_PARAM_3		(PHY_OFFSET + 0x138)
++#define MTK_DP_LANE1_DRIVING_PARAM_3		(PHY_OFFSET + 0x238)
++#define MTK_DP_LANE2_DRIVING_PARAM_3		(PHY_OFFSET + 0x338)
++#define MTK_DP_LANE3_DRIVING_PARAM_3		(PHY_OFFSET + 0x438)
++#define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT	BIT(4)
++#define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT	(BIT(10) | BIT(12))
++#define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT	GENMASK(20, 19)
++#define XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT	GENMASK(29, 29)
++#define DRIVING_PARAM_3_DEFAULT	(XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT | \
++				 XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT | \
++				 XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT | \
++				 XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT)
++
++#define XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT	GENMASK(4, 3)
++#define XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT	GENMASK(12, 9)
++#define XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT	(BIT(18) | BIT(21))
++#define XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT	GENMASK(29, 29)
++#define DRIVING_PARAM_4_DEFAULT	(XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT | \
++				 XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT | \
++				 XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT | \
++				 XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT)
++
++#define XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT	(BIT(3) | BIT(5))
++#define XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT	GENMASK(13, 12)
++#define DRIVING_PARAM_5_DEFAULT	(XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT | \
++				 XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT)
++
++#define XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT	0
++#define XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT	GENMASK(10, 10)
++#define XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT	GENMASK(19, 19)
++#define XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT	GENMASK(28, 28)
++#define DRIVING_PARAM_6_DEFAULT	(XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT | \
++				 XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT | \
++				 XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT | \
++				 XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT)
++
++#define XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT	0
++#define XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT	GENMASK(10, 9)
++#define XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT	GENMASK(19, 18)
++#define XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT	0
++#define DRIVING_PARAM_7_DEFAULT	(XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT | \
++				 XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT | \
++				 XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT | \
++				 XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT)
++
++#define XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT	GENMASK(3, 3)
++#define XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT	0
++#define DRIVING_PARAM_8_DEFAULT	(XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT | \
++				 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
++
++struct mtk_dp_phy {
++	struct regmap *regs;
++};
++
++static int mtk_dp_phy_init(struct phy *phy)
++{
++	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
++	u32 driving_params[] = {
++		DRIVING_PARAM_3_DEFAULT,
++		DRIVING_PARAM_4_DEFAULT,
++		DRIVING_PARAM_5_DEFAULT,
++		DRIVING_PARAM_6_DEFAULT,
++		DRIVING_PARAM_7_DEFAULT,
++		DRIVING_PARAM_8_DEFAULT
++	};
++
++	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE0_DRIVING_PARAM_3,
++			  driving_params, ARRAY_SIZE(driving_params));
++	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE1_DRIVING_PARAM_3,
++			  driving_params, ARRAY_SIZE(driving_params));
++	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE2_DRIVING_PARAM_3,
++			  driving_params, ARRAY_SIZE(driving_params));
++	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE3_DRIVING_PARAM_3,
++			  driving_params, ARRAY_SIZE(driving_params));
++
++	return 0;
++}
++
++static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
++{
++	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
++	u32 val;
++
++	if (opts->dp.set_rate) {
++		switch (opts->dp.link_rate) {
++		default:
++			dev_err(&phy->dev,
++				"Implementation error, unknown linkrate %x\n",
++				opts->dp.link_rate);
++			return -EINVAL;
++		case 1620:
++			val = BIT_RATE_RBR;
++			break;
++		case 2700:
++			val = BIT_RATE_HBR;
++			break;
++		case 5400:
++			val = BIT_RATE_HBR2;
++			break;
++		case 8100:
++			val = BIT_RATE_HBR3;
++			break;
++		}
++		regmap_write(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE, val);
++	}
++
++	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_PLL_CTL_1,
++			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
++
++	return 0;
++}
++
++static int mtk_dp_phy_reset(struct phy *phy)
++{
++	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
++
++	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
++			   DP_GLB_SW_RST_PHYD, 0);
++	usleep_range(50, 200);
++	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
++			   DP_GLB_SW_RST_PHYD, 1);
++
++	return 0;
++}
++
++static const struct phy_ops mtk_dp_phy_dev_ops = {
++	.init = mtk_dp_phy_init,
++	.configure = mtk_dp_phy_configure,
++	.reset = mtk_dp_phy_reset,
++	.owner = THIS_MODULE,
++};
++
++static int mtk_dp_phy_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct mtk_dp_phy *dp_phy;
++	struct phy *phy;
++	struct regmap *regs;
++
++	regs = *(struct regmap **)dev->platform_data;
++	if (!regs)
++		return dev_err_probe(dev, EINVAL,
++				     "No data passed, requires struct regmap**\n");
++
++	dp_phy = devm_kzalloc(dev, sizeof(*dp_phy), GFP_KERNEL);
++	if (!dp_phy)
++		return -ENOMEM;
++
++	dp_phy->regs = regs;
++	phy = devm_phy_create(dev, NULL, &mtk_dp_phy_dev_ops);
++	if (IS_ERR(phy))
++		return dev_err_probe(dev, PTR_ERR(phy),
++				     "Failed to create DP PHY\n");
++
++	phy_set_drvdata(phy, dp_phy);
++	if (!dev->of_node)
++		phy_create_lookup(phy, "dp", dev_name(dev));
++
++	return 0;
++}
++
++struct platform_driver mtk_dp_phy_driver = {
++	.probe = mtk_dp_phy_probe,
++	.driver = {
++		.name = "mediatek-dp-phy",
++	},
++};
++module_platform_driver(mtk_dp_phy_driver);
++
++MODULE_AUTHOR("Markus Schneider-Pargmann <msp@baylibre.com>");
++MODULE_DESCRIPTION("MediaTek DP PHY Driver");
++MODULE_LICENSE("GPL");
+-- 
+2.18.0
+
 
