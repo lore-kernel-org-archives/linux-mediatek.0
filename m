@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB47CCA473
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CADDC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zxPYwYxuzIB2lspJFpIbIV+URIK0IGlGuBwbMwtHjJ4=; b=s0CdgDJCWmWkVF6HX05mz35zkT
-	CKUCc10mHGFDAcwI2i2u+xWmuYDfEs2T1mKeM3XUE8xxqTdulQtgZO7zeglKsc23Z65MbQM6OoyPS
-	hFz+9ZVJssRNiEEriZL17X3tTgvX0Oc6BnfuJzUzNAuw32OvTuo3Lbo+9E3YkOnEykXh73IzzqoGW
-	j7AlVBM5+3IaKICOkHMf5ibAvmuv1rx2xiYt079q5MS3xAU2Y/dPJhaqjZl66F/jLiK3i84Vdf0OY
-	yupxxkk65aMC5dt9Hy1bKh+CDp6lb+obsP9AKApJBXPGIjFhBkFTRnS0xqm7e2Hlqn1hmDUCGsyLY
-	g6ssOmDQ==;
+	bh=GtDx/4MtrxYt8hYrk4oMF8kIZqBnmvODq04HfBb169o=; b=LBxFnuIRy+vJfdbcGjH0beS64c
+	A4q9yPnkE7g9uKwTRI02G1sbfrye9nWoHBV690M6HLXIYDGMXrtbyMYJK5IfevAzS6CRzPVOICR4E
+	YptderI/TPCg5itH/AS9YPSL6yH2XzfiUe/jFeLx6NE1sZpUiogvm+/mwT2rqdpWNYDh98hPlp0eR
+	YZxk8lx9mk/I45TnV1YYCPJ+OLPk+E4vYtnzKsbCqXlew5T8RyCMZeKE/y0JVj82s/mCeE+fBU7T1
+	HcYmztHEiCSPFlak7VoD1cEm1iNWJ9OehT/vZN0GGRc7gvBRYTgu1rswU/jEe5Oui8LZ8sCJsMWv9
+	6oDx5XaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4g8B-001bJO-Rq; Fri, 24 Jun 2022 10:01:39 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o4g8z-001bsA-9e; Fri, 24 Jun 2022 10:02:29 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4g76-001ahA-0u; Fri, 24 Jun 2022 10:00:33 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C668C66017FF;
-	Fri, 24 Jun 2022 11:00:29 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656064830;
-	bh=J0LbHH8P+ASApYmsYhsNx95/wSGxhHDFIBcm2kP0y+o=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ZYner7Ocf1klmF+QAW3PT0bFy8OFw8nogLlK/7RDiguhlqtOm6nM6gvJZZOhdmk6L
-	 9y2sODvA3BwCpoahueUJiexAzIhljBUipbriNf2HESs9ZhAv4RAzx3Hsd5Q2w0kald
-	 A43BbKALW+Gq/qsjDwsX6g6gnXfEauPNcWk0pqMzzwWHeECJ0GRXFYYNaM2kgygFwP
-	 f2WSBQCS7u+nXOPQ+eAL5P7oppWxAeTD0xgGUISi8dqIxIvBATFIAaI+/UkBg31U1s
-	 nHirbnM2YGa/DTn1up3HJa0KTfokhkb7TA7apZbSLp/UKAUJ7+i+VktlkMfc6kNeOx
-	 LT512uLGkRpbQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: yong.wu@mediatek.com
-Cc: joro@8bytes.org,
-	will@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	iommu@lists.linux-foundation.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	konrad.dybcio@somainline.org,
-	marijn.suijten@somainline.org,
-	martin.botka@somainline.org,
-	~postmarketos/upstreaming@lists.sr.ht,
-	phone-devel@vger.kernel.org,
-	paul.bouchara@somainline.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 3/3] iommu/mediatek: Add support for MT6795 Helio X10 M4Us
-Date: Fri, 24 Jun 2022 12:00:16 +0200
-Message-Id: <20220624100016.246442-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220624100016.246442-1-angelogioacchino.delregno@collabora.com>
-References: <20220624100016.246442-1-angelogioacchino.delregno@collabora.com>
+	id 1o4g8t-001blo-J3
+	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 10:02:27 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id t5so3707489eje.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jun 2022 03:02:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=GtDx/4MtrxYt8hYrk4oMF8kIZqBnmvODq04HfBb169o=;
+        b=EPz+7sJNDH++V1yMWLrc5mRkOsO+NqZvLBrjqveEPoRRpCThZZ41cOoejZek82+QIG
+         28oBv6aGSlevvdxpkzAkvGzcY201imYWhlJNA5NPN/m/8oVaPWKug7D1CfKK5p14lz55
+         QffaEfY+Y4qMXPxB1unyi1u8N9j+/oWBz86a0NptnrYcqC0/eNqg04+K8wUCbeMzYdbd
+         GKmEV6EeeXdzPfmU6cAv14I0z3c8CIK8QUt7x3COZTbu11U1q0p/q8r+5Xmrpth5PUnh
+         VVO2uDmWpLrqkcL+bp5CZJkgvJYl9JM6P22l9/2AL9SIT3Mzf3uyf3FQsdeWRsijrCKz
+         kLfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=GtDx/4MtrxYt8hYrk4oMF8kIZqBnmvODq04HfBb169o=;
+        b=zGna4Mmutr+Ydx4gh2Lp+epHVa0qgErpYaTW6Dn3oZuCbiRXFyBlugNtLuyepydL9j
+         lwrym6z6QCCwpZmd+ipzFpdqCrdV9aDsC8bFZZ0Zlcv3PiCdjB8f/z14XNggNwcqtqwj
+         4sVXU+idK3AdEMr0VlhfLkIYCjexCYs2u/B1QOE4k8MWcGkt+S9KFq4XS9akbwCgglE7
+         htmLKUEtBWp1vQhRZGrIyXawVeGJNIed25g2A33qUoafGieNU9hEsTaJtrupf9hCnhMj
+         uzPUHFB2ukGE3vRtXXoZz8me3m36i9up9G4wGYR2omHOxd+hPuF/jHEBhkXJ1yuKhV0q
+         6wtg==
+X-Gm-Message-State: AJIora8nqPH/nIJ8NHNbHeRHqitr5ZC+C9h8oyPduUKbe+vXxzYQ0092
+	j2oyFhq938WUASFUJXBI50wsNg==
+X-Google-Smtp-Source: AGRyM1sefjpiKJ7ux0kcypv9fmdJCP+pCzqZ3OVhjn3YCPERtUsWGvmVzsziW2GqNk3WP0rJOKi51A==
+X-Received: by 2002:a17:906:5047:b0:710:456a:695e with SMTP id e7-20020a170906504700b00710456a695emr12397953ejk.433.1656064940041;
+        Fri, 24 Jun 2022 03:02:20 -0700 (PDT)
+Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id uz12-20020a170907118c00b00711aed17047sm850487ejb.28.2022.06.24.03.02.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 24 Jun 2022 03:02:18 -0700 (PDT)
+Message-ID: <5a19a73a-e81a-8f7e-e26c-6c1d8e8331a4@linaro.org>
+Date: Fri, 24 Jun 2022 12:02:17 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v2] dt-bindings: mmc: mtk-sd: Set clocks based on
+ compatible
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Wenbin Mei <wenbin.mei@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org
+References: <20220623154038.771874-1-nfraprado@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220623154038.771874-1-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_030032_269494_DCCBF4C9 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220624_030223_712722_B288E1D4 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +99,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the M4Us found in the MT6795 Helio X10 SoC.
+On 23/06/2022 17:40, Nícolas F. R. A. Prado wrote:
+> The binding was describing a single clock list for all platforms, but
+> that's not really suitable: mt2712 requires an extra 'bus_clk' on some
+> of its controllers, while mt8192 requires four different extra clocks.
+> The rest of the platforms can share the same 3 clocks, with the third
+> being optional as it's not present on all platforms.
+> 
+> Move the clock definitions inside if blocks that match on the
+> compatibles. In practice this gets rid of dtbs_check warnings on mt8192,
+> since the 'bus_clk' clock from mt2712 is no longer expected on this
+> platform.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+And now we see that you introduce incompatible change and ABI break.
+This should not be combined with that patch but instead separate patch
+explaining why ABI break is ok.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 63df612cf2e0..82eba647c183 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -158,6 +158,7 @@
- enum mtk_iommu_plat {
- 	M4U_MT2712,
- 	M4U_MT6779,
-+	M4U_MT6795,
- 	M4U_MT8167,
- 	M4U_MT8173,
- 	M4U_MT8183,
-@@ -1419,6 +1420,19 @@ static const struct mtk_iommu_plat_data mt6779_data = {
- 	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
- };
- 
-+static const struct mtk_iommu_plat_data mt6795_data = {
-+	.m4u_plat     = M4U_MT6795,
-+	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
-+			HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM |
-+			TF_PORT_TO_ADDR_MT8173,
-+	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
-+	.banks_num    = 1,
-+	.banks_enable = {true},
-+	.iova_region  = single_domain,
-+	.iova_region_nr = ARRAY_SIZE(single_domain),
-+	.larbid_remap = {{0}, {1}, {2}, {3}, {4}}, /* Linear mapping. */
-+};
-+
- static const struct mtk_iommu_plat_data mt8167_data = {
- 	.m4u_plat     = M4U_MT8167,
- 	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM,
-@@ -1531,6 +1545,7 @@ static const struct mtk_iommu_plat_data mt8195_data_vpp = {
- static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
- 	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
-+	{ .compatible = "mediatek,mt6795-m4u", .data = &mt6795_data},
- 	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
- 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
- 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
--- 
-2.35.1
-
+Best regards,
+Krzysztof
 
