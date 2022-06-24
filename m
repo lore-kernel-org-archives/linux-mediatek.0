@@ -4,82 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AA9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:57:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF600C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:00:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M4nnsvgHgIi0r2ItWc5dFuhTU+zH2GcT6p/faSXA7jc=; b=YDQ3HrrNVNe4bK3csTQVIRkuJ2
-	jbnsJlJlCAwc69/9J2eLc6NIIrrQdqfc97UotDbUpG9Ir3a8kOqgLchX4R0hLtvKaPzBKQbmyBk/K
-	k5ap4ZQ6upKyCjk9u33jz6DBWs1aT2nuX7864djzrDXQ1q0KXxV2pQyTkvSapJvccJhNRSoEIrLf4
-	1qwJJAE2TJcSDHT5JNIJeUn7aD4JFlJ7MWAUCLmTF9R88ytrElFFB7FDUqwcV0sqDW6CH3DInuGlP
-	vpU/8prq2qTZDK2K0S1mthlUsE9d8NPgQh/J3Xnaq+ko6q5PCXczqehvmoANA1gbckKmM04aaZ9qi
-	Zhs+By6g==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sX1znADOY1PNnggEB2TurbxGPI1DvXLgYVslEZyTdxg=; b=QHSLEevjTu5ozm69TNVRSAg3FW
+	8H965h26Jf1EtVm9Um2N8VBNiF0pjBIgknGe/nh/aq6sVtCYpWTrvqtEaTSh7pJqMl6qgfhP0+kXG
+	bIkVKxnT3VAe8cJ6sO1V3uiHE74kpkE2X7tCpQTMbUhe/GIsYyVt4STMwQ0fWXmQXOeqzhbeDYhNy
+	rVyhiRKHs/YJFCOVHJIRsV+JPRHBvbFWFLYoWtvgo+AjtMG6qREJDU/RsQRcCebUO8ppRZO4HOb9g
+	Pd/0j66ZSDT6ygz3C2Ts1UX5kODtp+1c5J6yzYSfILl/v1o1lUYS8EsdoeizIYFXrFNQ4d1NXOl97
+	Hzeg4+nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4g3l-001Zrc-BT; Fri, 24 Jun 2022 09:57:05 +0000
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
+	id 1o4g7H-001anU-68; Fri, 24 Jun 2022 10:00:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4g3Z-001ZoM-Ux; Fri, 24 Jun 2022 09:56:55 +0000
-Received: by mail-il1-x12f.google.com with SMTP id i17so1130666ils.12;
-        Fri, 24 Jun 2022 02:56:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=M4nnsvgHgIi0r2ItWc5dFuhTU+zH2GcT6p/faSXA7jc=;
-        b=HsRYekV2sU4Xv613pAvXWZuwPyAd8ueafTN7t5ELrygCaBWqwnSFn/yimTyvXphliU
-         rk/k1nDNQ3ECBrZQCQibcC5/SXphAPug9oObZB9Femn+4ZMKO367Z07kbw302ugSier+
-         3u6Ie+cqpVmNjf+nVQ2o9wUhernyrputNPwEkW+iFxQ7yrQw609omGwbvjVllqqdkQlb
-         DFP5VJKZgPzIyttK1WQpTnymekzhmxmCFLdIDv+zhBnfs0Quw4/dsjyIWcL8P0Yv01Hh
-         HffrHojwf2vBBMXK+Xv5kciDDgUaOI7o+FqSBYVUB7RtJd64wGJ3mx0TRrsc6+x3jNA+
-         Uofw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=M4nnsvgHgIi0r2ItWc5dFuhTU+zH2GcT6p/faSXA7jc=;
-        b=Lm06BYUVmSD3icW23rczh6xgDUMOPoGm/5NfnJLqGGq2JOnb0clHmiHC+yu99T3+AC
-         TI1avTBaukkgXWjo5Q/UrkvtIOmlNYtfmK51vhCB3uemS/PZzvPRJmuINronGGIQjEFr
-         mpSZfnseN6PXWoK9sS2RyQI3tuvo3e4oa5V5OOCAQFBj/cELpM27DSsu+7yqx7bhVVv9
-         mDpOGxMlKtQ0KiFqRehoTFLOyZoJ/34fwgsNa+5DOLCqi5mjIbk1/cQvNEayo4M3cJKM
-         ZB9GRzOBNOQYdQWgAQckvLGKJ6qcIB1i0un68fjbwxHY/QwVT9iC/8EHv0C4k0Xq7ZCe
-         p5cQ==
-X-Gm-Message-State: AJIora+X2FE6Tr1EJ/rEkpyJj39DWmy+yS26rMW13D95FVmloPZW1BhB
-	pSDAl3WQ+2iuM34lxlsKNPRcs84hkoToP2gBfqA=
-X-Google-Smtp-Source: AGRyM1u4tHhqAdEi5ogAeS0dS5voh35vGz3kiJUl5ktCSsYPoM0YYC7H2ztWgE2w6YlrhoWKAwKgDMijTEOWiU+6IC8=
-X-Received: by 2002:a05:6e02:10cf:b0:2d9:2310:e6b3 with SMTP id
- s15-20020a056e0210cf00b002d92310e6b3mr7601053ilj.212.1656064612053; Fri, 24
- Jun 2022 02:56:52 -0700 (PDT)
+	id 1o4g72-001afe-TZ; Fri, 24 Jun 2022 10:00:30 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9BB146601706;
+	Fri, 24 Jun 2022 11:00:26 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656064827;
+	bh=kE25mZowYawxksYFtTK6e46BuEVPPKrDas/B81hlGfU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=dK5lHwZzHT0WmQPPa28n8ROtFdjlfq8SR8AslZ7EoynyJLA/3w7rSAvvob5e2QiNJ
+	 UAkKJdGIUyczVADiyyXi/M4xZHLQSnHe2zlu5QZb4BdC8O+QQW2gszJAxnbAMoTi1D
+	 MkyjnSF2M+f3dYN5t5eDVX6yTdJbvsEeIC2T6jV20ic6Jbpfe2vLSp5B/wd7Gp5x/H
+	 QMUcz2WId2rgFUNWNeXvAsaWS8YpoPpG4lMZuh6D9sVM4Yhbkofx1bKstiQoH6yA3j
+	 /jMklss5NuhsJCUAkbsez2Nj4IpaGZOuXaD61mBrn0it050z6qWwcng93VF4FTKLKm
+	 0PcpX0tzAyySw==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: yong.wu@mediatek.com
+Cc: joro@8bytes.org,
+	will@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	iommu@lists.linux-foundation.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	konrad.dybcio@somainline.org,
+	marijn.suijten@somainline.org,
+	martin.botka@somainline.org,
+	~postmarketos/upstreaming@lists.sr.ht,
+	phone-devel@vger.kernel.org,
+	paul.bouchara@somainline.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 0/3] MediaTek Helio X10 MT6795 - M4U/IOMMU Support
+Date: Fri, 24 Jun 2022 12:00:13 +0200
+Message-Id: <20220624100016.246442-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-15-peterwu.pub@gmail.com>
- <20220623134316.rg3adyobz3hkgflt@maple.lan>
-In-Reply-To: <20220623134316.rg3adyobz3hkgflt@maple.lan>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Fri, 24 Jun 2022 17:56:41 +0800
-Message-ID: <CABtFH5JnAAGh46i9yb1J6c2gAZfRHgTOhK19dOCdCuvdLW1ALg@mail.gmail.com>
-Subject: Re: [PATCH v3 14/14] video: backlight: mt6370: Add Mediatek MT6370 support
-To: Daniel Thompson <daniel.thompson@linaro.org>
-Cc: Lee Jones <lee.jones@linaro.org>, jingoohan1@gmail.com, pavel@ucw.cz, 
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
-	sre@kernel.org, chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, 
-	Jonathan Cameron <jic23@kernel.org>, lars@metafoo.de, lgirdwood@gmail.com, broonie@kernel.org, 
-	linux@roeck-us.net, heikki.krogerus@linux.intel.com, deller@gmx.de, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	ChiYuan Huang <cy_huang@richtek.com>, dri-devel@lists.freedesktop.org, 
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, linux-iio@vger.kernel.org, 
-	linux-fbdev@vger.kernel.org, szunichen@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_025654_059246_68457CA9 
-X-CRM114-Status: GOOD (  25.58  )
+X-CRM114-CacheID: sfid-20220624_030029_126990_1AFD7F2D 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,115 +84,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+In an effort to give some love to the apparently forgotten MT6795 SoC,
+I am upstreaming more components that are necessary to support platforms
+powered by this one apart from a simple boot to serial console.
 
-Thanks for your comments!
+This series introduces support for the IOMMUs found on this SoC.
 
-Daniel Thompson <daniel.thompson@linaro.org> =E6=96=BC 2022=E5=B9=B46=E6=9C=
-=8823=E6=97=A5 =E9=80=B1=E5=9B=9B =E6=99=9A=E4=B8=8A9:43=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Thu, Jun 23, 2022 at 07:56:31PM +0800, ChiaEn Wu wrote:
-> > From: ChiaEn Wu <chiaen_wu@richtek.com>
-> >
-> > Add Mediatek MT6370 Backlight support.
-> >
-> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
->
-> > diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/=
-Kconfig
-> > index a003e02..7cd823d 100644
-> > <snip>
-> > +static int mt6370_init_backlight_properties(struct mt6370_priv *priv,
-> > +                                         struct backlight_properties *=
-props)
-> > +{
-> > +     struct device *dev =3D priv->dev;
-> > +     u8 prop_val;
-> > +     u32 brightness, ovp_uV, ocp_uA;
-> > +     unsigned int mask, val;
-> > +     int ret;
-> > +
-> > +     /* Vendor optional properties */
-> > +     val =3D 0;
-> > +     if (device_property_read_bool(dev, "mediatek,bled-pwm-enable"))
-> > +             val |=3D MT6370_BL_PWM_EN_MASK;
-> > +
-> > +     if (device_property_read_bool(dev, "mediatek,bled-pwm-hys-enable"=
-))
-> > +             val |=3D MT6370_BL_PWM_HYS_EN_MASK;
-> > +
-> > +     ret =3D device_property_read_u8(dev,
-> > +                                   "mediatek,bled-pwm-hys-input-th-ste=
-ps",
-> > +                                   &prop_val);
-> > +     if (!ret) {
-> > +             prop_val =3D clamp_val(prop_val,
-> > +                                  MT6370_BL_PWM_HYS_TH_MIN_STEP,
-> > +                                  MT6370_BL_PWM_HYS_TH_MAX_STEP);
-> > +             /*
-> > +              * prop_val =3D  1      -->  1 steps --> 0x00
-> > +              * prop_val =3D  2 ~  4 -->  4 steps --> 0x01
-> > +              * prop_val =3D  5 ~ 16 --> 16 steps --> 0x10
-> > +              * prop_val =3D 17 ~ 64 --> 64 steps --> 0x11
->
->                                                       ^^^^^
-> These numbers are binary, not hex, right? If so, the comments
-> should be 0b00 to 0b03 .
+Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
 
-Ohh! Yes! These numbers are binary!
-I so apologize for making this mistake...
-I will revise the comments in the next patch!
-Thank you so much!
+Changes in v4:
+ - Retitled mtk_iommu commits to iommu/mediatek as suggested by Yong Wu
+ - Removed unused M4U_LARB5_ID definition
+ - Rebased on next-20220624 and
+   https://patchwork.kernel.org/project/linux-mediatek/list/?series=650969
 
->
->
-> > +              */
-> > +             prop_val =3D (ilog2(roundup_pow_of_two(prop_val)) + 1) >>=
- 1;
-> > +             val |=3D prop_val << (ffs(MT6370_BL_PWM_HYS_SEL_MASK) - 1=
-);
-> > +     }
-> > +
-> > +     ret =3D regmap_update_bits(priv->regmap, MT6370_REG_BL_PWM,
-> > +                              val, val);
-> > +     if (ret)
-> > +             return ret;
->
-> Overall, I like this approach! Easy to read and understand.
->
->
-> > <snip>
-> > +static int mt6370_bl_probe(struct platform_device *pdev)
-> > +{
-> > +     struct mt6370_priv *priv;
-> > +     struct backlight_properties props =3D {
-> > +             .type =3D BACKLIGHT_RAW,
-> > +             .scale =3D BACKLIGHT_SCALE_LINEAR,
->
-> Sorry, I missed this before but the KConfig comment says that the
-> backlight can support both linear and exponential curves.
->
-> Is there a good reason to default to linear?
+Changes in v3:
+ - Added new flag as suggested by Yong Wu
+ - Rebased on top of https://patchwork.kernel.org/project/linux-mediatek/list/?series=648784
 
-Well...
-The customers who used this PMIC have very few or even no use exponential c=
-urve,
-so I set the default to linear.
+Changes in v2:
+ - Rebased on top of https://patchwork.kernel.org/project/linux-mediatek/list/?series=642681
 
-If you think this is inappropriate, I will add a DT property to
-control this feature in the next patch!
 
-By the way,
-I found some mistakes in my probe() function... I didn't use "return"
-when I use dev_err_probe()...
-I will refine it in the next patch!
+AngeloGioacchino Del Regno (3):
+  dt-bindings: mediatek: Add bindings for MT6795 M4U
+  iommu/mediatek: Introduce new flag TF_PORT_TO_ADDR_MT8173
+  iommu/mediatek: Add support for MT6795 Helio X10 M4Us
 
->
->
-> Daniel.
-> >
+ .../bindings/iommu/mediatek,iommu.yaml        |  4 +
+ drivers/iommu/mtk_iommu.c                     | 21 +++-
+ include/dt-bindings/memory/mt6795-larb-port.h | 95 +++++++++++++++++++
+ 3 files changed, 118 insertions(+), 2 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt6795-larb-port.h
 
-Best regards,
-ChiaEn Wu
+-- 
+2.35.1
+
 
