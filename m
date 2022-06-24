@@ -4,64 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7544CC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 370A4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:30:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F2m7ah4ntAnKl0oynZtdOfbCtCaDCItOyCmYz+9IdxM=; b=O7pQBfCfiyqbb3cMS4SiTsHVLQ
-	toEoqRgoJrLWxGGNJwnmTjkyUSdrmhfcnrSrt7em2FrS9IxJc3Hc/Tew1gQXzSZV358w8eK/uKuye
-	F4iqF8k55GXR8q27v7R8qcWa+1nQeNtMQfZVnWdKZ6F/B2Zvy1JQ9dyyF4naBdEgXPE3CwySFR/8e
-	kF0a7flJp0uSxvgU+JaDlWXDIFwGJuUtKK1WHE1CftyomQw2mM0T1ta8wq+laXMb6JdLhzS6HjaS0
-	fhxeI4ghY5qvaXwHthofMftOlpz1jDikMO5ijAYEa58o5yZhRzqjiXmW/9gooOLRXtUDbwKSS9G8f
-	CZ31wxSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UMNtrfRgYrVkc9aCHy7VWaDQPwzbKa4H912ka0pupVk=; b=P6wxj2eCue/TYrYUqlbnAwdA9f
+	Rw0gDsAP5URvrRmpD8Li5gTBRoZNLBPBhixp0SfIM7+1JEbuAcK1pAWaIlsOC7BGdLZj3kzT0a3ul
+	35Zo8ydgbBBudzaz7KNGybFbhVWf6/bvEYsp7nAcRCsGHhGUsVrFNTVTReGnBGWN+jtrigtq2ZWkF
+	8x0sJBN98Au4veYC0QKMI24Sj9FDmoOylGZa4rFGDz2GqGfsyeNDnPb4ozzt5nlPZ4J9EQJXUadg+
+	2CvDy0bPrxVzxpw1jy2dpzGxtoFZYoAf0HjWglkUThNeN4DYPgrgjY3nGKGTbhVIw9stBp0vnS3M7
+	fd+YtMuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4fWy-001Nql-Vr; Fri, 24 Jun 2022 09:23:13 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o4fdY-001Peh-6P; Fri, 24 Jun 2022 09:30:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4fWn-001Np8-K9; Fri, 24 Jun 2022 09:23:02 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3B5AC66017FA;
-	Fri, 24 Jun 2022 10:22:59 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656062579;
-	bh=9Soc6n0CqFUw5ZJ1qMew3TiS4i4OwU3mvCqAavwe5wg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nZIokHZdtJm1ECwVKvDQBwV3vTQoam56MCQ88jG9j5oK+852SDX86EZmXOFd0MyFM
-	 aoOE3XTvgjpadKYCkxndt1Fas9058NPUY8vNw3kHZOMiuHXGccY9f2ZTQYYdAx6r/T
-	 J2JMHnSOU6z96e42d6BHK+l0SK/zlsDiktujVK2C7O8qom6vUZasdBNbl8FOK+aFgo
-	 L5WtM+UGHO1v54ID07R6DN4hoVSg32VC1bt5mOYZAWIqvgbBYEwJH4FDvU40sPK0hv
-	 bJSDok7cdWaGlT0XXmEJLpP2aydZ2bBXIn50iJrGg3WO8N9ivD+y65P+hB+7uvKfoO
-	 c90owLut6DaDw==
-Message-ID: <26ff5b3e-00f6-783e-04ec-b4fcd600175e@collabora.com>
-Date: Fri, 24 Jun 2022 11:22:56 +0200
+	id 1o4fdT-001PcY-Vp; Fri, 24 Jun 2022 09:29:57 +0000
+X-UUID: 4aa90c647d614ef6bbd47a4bf90a64d8-20220624
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:a29ef365-488f-4fdc-b597-88980ee636c5,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:b14ad71,CLOUDID:942f7ad8-850a-491d-a127-60d9309b2b3e,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 4aa90c647d614ef6bbd47a4bf90a64d8-20220624
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 931244446; Fri, 24 Jun 2022 02:29:46 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Jun 2022 02:24:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Jun 2022 17:24:01 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 24 Jun 2022 17:24:01 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, daoyuan huang
+	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+	<river.cheng@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>
+Subject: [PATCH v19 2/4] dt-binding: mediatek: add bindings for MediaTek CCORR and WDMA
+Date: Fri, 24 Jun 2022 17:23:57 +0800
+Message-ID: <20220624092359.11908-3-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220624092359.11908-1-moudy.ho@mediatek.com>
+References: <20220624092359.11908-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 0/2] MediaTek Helio X10 MT6795 - power domains
-Content-Language: en-US
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, krzysztof.kozlowski@linaro.org,
- matthias.bgg@gmail.com, chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com,
- mbrugger@suse.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, nfraprado@collabora.com
-References: <20220503141441.125852-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220503141441.125852-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_022301_839108_F55805C3 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20220624_022956_071668_2445E53A 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,39 +93,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/05/22 16:14, AngeloGioacchino Del Regno ha scritto:
-> In an effort to give some love to the apparently forgotten MT6795 SoC,
-> I am upstreaming more components that are necessary to support platforms
-> powered by this one apart from a simple boot to serial console.
-> 
-> This series introduces support for the MTCMOS power domains found on
-> the Helio X10.
-> 
-> Tested on a Sony Xperia M5 (codename "Holly") smartphone.
-> 
-> Changes in v2:
->   - Changed license header for mt6795-power.h binding as per
->     Krzysztof's review.
-> 
-> AngeloGioacchino Del Regno (2):
->    dt-bindings: power: Add MediaTek Helio X10 MT6795 power domains
->    soc: mediatek: pm-domains: Add support for Helio X10 MT6795
-> 
->   .../power/mediatek,power-controller.yaml      |   2 +
->   drivers/soc/mediatek/mt6795-pm-domains.h      | 112 ++++++++++++++++++
->   drivers/soc/mediatek/mtk-pm-domains.c         |   5 +
->   include/dt-bindings/power/mt6795-power.h      |  16 +++
->   4 files changed, 135 insertions(+)
->   create mode 100644 drivers/soc/mediatek/mt6795-pm-domains.h
->   create mode 100644 include/dt-bindings/power/mt6795-power.h
-> 
+This patch adds DT binding documentation for MediaTek's CCORR and
+WDMA components.
+These components exist in both MediaTek's Media Data Path 3(MDP3) and DRM,
+and the bindings are placed under the folder "./soc/mediatek" to prevent
+duplicate builds.
 
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/soc/mediatek/mediatek,ccorr.yaml | 58 +++++++++++++++
+ .../bindings/soc/mediatek/mediatek,wdma.yaml  | 71 +++++++++++++++++++
+ 2 files changed, 129 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 
-Gentle ping for this series...
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+new file mode 100644
+index 000000000000..20d02cb4ad0a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+@@ -0,0 +1,58 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,ccorr.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek color correction
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++
++description: |
++  Mediatek color correction with 3X3 matrix.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-ccorr
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++
++    mdp3_ccorr: mdp3-ccorr@1401c000 {
++      compatible = "mediatek,mt8183-mdp3-ccorr";
++      reg = <0x1401c000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
++      clocks = <&mmsys CLK_MM_MDP_CCORR>;
++    };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+new file mode 100644
+index 000000000000..102d9e163139
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+@@ -0,0 +1,71 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,wdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Write Direct Memory Access
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++
++description: |
++  Mediatek Write Direct Memory Access(WDMA) component used to write
++  the data into DMA.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-wdma
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++
++  iommus:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - power-domains
++  - clocks
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/power/mt8183-power.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++
++    mdp3_wdma: mdp3-wdma@14006000 {
++      compatible = "mediatek,mt8183-mdp3-wdma";
++      reg = <0x14006000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
++      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++      clocks = <&mmsys CLK_MM_MDP_WDMA0>;
++      iommus = <&iommu>;
++    };
+-- 
+2.18.0
 
-I've verified it still applies cleanly on next-20220624.. can we please
-get it merged in?
-
-Thanks,
-Angelo
 
