@@ -4,57 +4,164 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18E84C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 18:41:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D13C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 18:46:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aP2GWjAY8tTeHxJL3lRG6JblOqVNcNfjxS45eRxJL50=; b=tp9zNzR+BxzB2kie00cLUdSMt3
-	cCT+ShagIJgamnbDPf+XqwfIdG5Z8X6IOrUdFSxH99pWcp5I7cbwjOaH6eVYV3pvaXjMTSHlvNaTj
-	hpR0La6DJe6QzZCCVW9bfyDHOhPkvwsxkXTSpWI4NrcGwT+/VXEQvcsHqwCxJqQXIHpv09pedd1+V
-	O18CoOxmnlvIFJ0typkfMbAOOcrWqANo4t5FdHZY52CCLQgGpLOZ+ApMAM62tNZ2X3fvnK5+1bcCH
-	+P2nCcZP6lfdliJ9HQYhpqEQtFEkqn8DeFN5Hw9l/n09M+d8O2ZZ7Cb8DDns75sXFV7tCkrY9uwwe
-	DwLjBtgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FSZzvPV6iaZAbi16zYQI65Bu7ISOVdZ2SPQfnk1uxGY=; b=FOEk063m4SEiclEPe1Hem9fMFN
+	+pR2xRGsVm2WHfrfb2UZxl7bsYGlfXhVj2NHB7ETREpeiUmVVuq9s8pkpSF7RlOx7QMoWkkJFvfT7
+	3JIbJXfGKLJvcm7uC7hwq7zEjx20q9xJJhtSacIfr2P855aMV0e4HIEWbe6XTv+SS6WFBFLZWwNoS
+	smp6FnMLnFpONwurcyxab5B1j0Ok8WjNyz+UYncv/I5ro/2NYv6OEjsV+Q8aPz2skVFb8gAZKlvU2
+	VfWdCQNk/EjedrQWmEUj2B4Vctje0TrdKrYKmXHRjEvr/3a9OcFmz9MGhrSGh9jj5nO8sYxXdPFIB
+	xMk3pDSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4oF8-003VAX-KR; Fri, 24 Jun 2022 18:41:22 +0000
-Received: from aposti.net ([89.234.176.197])
+	id 1o4oK2-003W7n-Lg; Fri, 24 Jun 2022 18:46:26 +0000
+Received: from mail-dm6nam12on2055.outbound.protection.outlook.com ([40.107.243.55] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4oEw-003V6T-Gi; Fri, 24 Jun 2022 18:41:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1656096057; h=from:from:sender:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=aP2GWjAY8tTeHxJL3lRG6JblOqVNcNfjxS45eRxJL50=;
-	b=SoaqmUIUdkihuZ0kA76Saf4Fu6K9/mb9blMKf9wEkAXWim9bO3BOPfmVuGucAKS2IV4vg6
-	Jazmi0j6qtB5eHKyLBTIGqCsZTBU0GXTmKhXIycWw2lYAYNt6Qprn+jaeIv2ej/Kp+IHfB
-	gFAMa6F1VNCU66ePtMtTHfMRnIpSkZo=
-Date: Fri, 24 Jun 2022 19:40:47 +0100
-From: Paul Cercueil <paul@crapouillou.net>
-Subject: Re: [PATCH 1/2] MIPS: dts: correct gpio-keys names and properties
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rahul Bedarkar <rahulbedarkar89@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Thomas Bogendoerfer
-	<tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>,
-	=?iso-8859-9?b?QXL9bucg3E5BTA==?= <arinc.unal@arinc9.com>, Sergio Paracuellos
-	<sergio.paracuellos@gmail.com>, linux-mips@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Message-Id: <ZVVZDR.R2QT2GMTT9WS1@crapouillou.net>
-In-Reply-To: <20220624170740.66271-1-krzysztof.kozlowski@linaro.org>
-References: <20220624170740.66271-1-krzysztof.kozlowski@linaro.org>
+	id 1o4oJr-003W3S-CC; Fri, 24 Jun 2022 18:46:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=EchjWnnT77Xm6DWf0380ZJzF+14dXyH63D6HAfdiLX+1W8r6GDrQThR9N06zSpA/jZV1mPfPKl1coHRIBEKwSLCfCu+0cZCEx1xP49pDmy5hG2kDiNjg3/ejSrx6OEzd7OFRUbQK64zD/Gn2FjSJXFD2sd1d9vS9hm3iu+yZxez25pu6iVaCyjsO+MXsHG+Vn6p48SMxByPMGcx+sggaf5zjuHZfWeJixUZ+IlXkhvAudIYgWrvOeZxdj7ZchIqAohvbevVQzaA8BXTKObydndEqpjCPJEJV9+LRRh4sGy4jiT5C5lQXnG+WQ1IaYd4ke1lrOOYH7MJGOU1qGilZrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FSZzvPV6iaZAbi16zYQI65Bu7ISOVdZ2SPQfnk1uxGY=;
+ b=FdatiJZlxwiyzfGNI01Wgnl1SWo+j/NBmtNMf5GKvJbtYjM/7Q9Hb/xa4elyr+LSBYyIs4sVz1e9y288c1wB/FA0Wjpse+rFe6RxiXiq3EQuSnn+HksRwxac4bmmToGABd8pc29n23cN1SKlsKGwaNqYK7Nm4A8AlZtbaLKZXRCGuFqSLt84DK5hvQfYebWsmeJwMeSjoLCcUs+MohERvEduq0hz5iGbjghnNutTgcoGQOTsnxiRQ6zr93R50htrfN6x7Ttbjb/szfdBijXat+YEh2ZDUt0wC9azqBH6ZpGmF/e/rOUy6wND5+Pll6atRy6RBqV80l5Mm2e/hIlg2w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FSZzvPV6iaZAbi16zYQI65Bu7ISOVdZ2SPQfnk1uxGY=;
+ b=i0zvBaOt3gm+IiRly9ebuE0z67u6x2XhMq0S1P8CyxXgo2QsbnXePK9jchLkP3vVEQXLrJJ4SaubEtbBd9DHGMQZFsK9/ojEgV+fFIegfn7kjIv+/RCNtegUT1/FRxBy2ntFjC2hoyQtK2QWQyTISbSBSt0v9yDQAXiy1aFvRRRMKNzs/MHWfvYWRxhOid6oflIIOEyGADynpQuThB7SJxLeofKDC/ojY2PcLXCGgaqnLXH8/y+ghgaAYF+GeW5nmnChf9McvVSlS7JtXYisOXwhZwSsTmblDUF3eD6Iy0KJKCI/p4D29/jJPk6wPYM0zh4mwQv98s71p3AEpk0oFw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+ by CH2PR12MB4232.namprd12.prod.outlook.com (2603:10b6:610:a4::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.17; Fri, 24 Jun
+ 2022 18:46:11 +0000
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ac35:7c4b:3282:abfb]) by MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::ac35:7c4b:3282:abfb%3]) with mapi id 15.20.5373.016; Fri, 24 Jun 2022
+ 18:46:11 +0000
+Date: Fri, 24 Jun 2022 15:46:09 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Nicolin Chen <nicolinc@nvidia.com>,
+	"Tian, Kevin" <kevin.tian@intel.com>,
+	"joro@8bytes.org" <joro@8bytes.org>,
+	"will@kernel.org" <will@kernel.org>,
+	"marcan@marcan.st" <marcan@marcan.st>,
+	"sven@svenpeter.dev" <sven@svenpeter.dev>,
+	"robdclark@gmail.com" <robdclark@gmail.com>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"orsonzhai@gmail.com" <orsonzhai@gmail.com>,
+	"baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
+	"zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+	"alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"dwmw2@infradead.org" <dwmw2@infradead.org>,
+	"yong.wu@mediatek.com" <yong.wu@mediatek.com>,
+	"mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+	"gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
+	"thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+	"vdumpa@nvidia.com" <vdumpa@nvidia.com>,
+	"jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+	"cohuck@redhat.com" <cohuck@redhat.com>,
+	"thunder.leizhen@huawei.com" <thunder.leizhen@huawei.com>,
+	"tglx@linutronix.de" <tglx@linutronix.de>,
+	"christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
+	"john.garry@huawei.com" <john.garry@huawei.com>,
+	"chenxiang66@hisilicon.com" <chenxiang66@hisilicon.com>,
+	"saiprakash.ranjan@codeaurora.org" <saiprakash.ranjan@codeaurora.org>,
+	"isaacm@codeaurora.org" <isaacm@codeaurora.org>,
+	"yangyingliang@huawei.com" <yangyingliang@huawei.com>,
+	"jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
+	"iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+	"virtualization@lists.linux-foundation.org" <virtualization@lists.linux-foundation.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>
+Subject: Re: [PATCH v2 3/5] vfio/iommu_type1: Remove the domain->ops
+ comparison
+Message-ID: <20220624184609.GX4147@nvidia.com>
+References: <20220616000304.23890-1-nicolinc@nvidia.com>
+ <20220616000304.23890-4-nicolinc@nvidia.com>
+ <BL1PR11MB52717050DBDE29A81637BBFA8CAC9@BL1PR11MB5271.namprd11.prod.outlook.com>
+ <YqutYjgtFOTXCF0+@Asurada-Nvidia>
+ <6e1280c5-4b22-ebb3-3912-6c72bc169982@arm.com>
+ <20220624131611.GM4147@nvidia.com>
+ <c9dee5e3-4525-b9bf-3775-30995d59af9e@arm.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c9dee5e3-4525-b9bf-3775-30995d59af9e@arm.com>
+X-ClientProxiedBy: BL1P222CA0020.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:208:2c7::25) To MN2PR12MB4192.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::15)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 47e049fc-fa31-4747-c506-08da5611ceda
+X-MS-TrafficTypeDiagnostic: CH2PR12MB4232:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	x+UbGabsh6n/qandmYg2gMW/qTzy0dfeyjAPBbPrISucYYPYJ0HoT/09J3elJGGsar38LCpnHPydsVUbT9bVIQEC+TGq8qgvjTAez6Na5Jbv/mSMsm2i93akEBM+MiUkxzJGeWGVi8rRXvocoBNi/JqpX/um2uMEGoiH9eHCi+VgG1zsTvwVNVORiTYObk0lllcRpRw84TRiJ00rfipALu2l3Q4CgJc0fzk/+YhKLWxpuxSftmnFwGeciyDPDpNv28xKlapGhxiWI/O4b8btGO10UGO9Rlw8mI5j1QhCNAsgXpRYr97zqtLA4Yk753An6k2h8BBu+mPPozeGq6KDk0flPMItRGYO7GhxKM50+2kCg0kDLjGirE0EiA8KoYxsw84b/gDIL+I72trdS1xcJOb1vFv/MviNYpzxyPd/QOMOiUdDLvmnAWvWo8YqlZPOquy3bAHXAwklWzYgi906wShyVoAVUH4YsUJd7T6F2JG+10VyNXLKYpCkPWUe4HCjfWeEk9jBWk08x+1sZZcMchSbOa426ptnwPrPYny9Ea/2bdVUnVV6i3YwydTz+o9uiYT2UaOw2n6i+XSndmp7BgL0RqWk7pmgnKGNB43RvtnemIv/R302v5XJejStNVH2YudVelJcB7PK1qfUR0EtPMjoZmZ2G4nvA92E8Y9Sq5ZbJ5EKV9DLR2cNW/ioFscSzePfTMJoL5FPyOZ1qvgXVR1mTV2Q9ZSzLGaGXasD2wk9sKG8Wv2DbXNminKmHutv
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB4192.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(366004)(346002)(376002)(39860400002)(136003)(396003)(6512007)(6506007)(5660300002)(33656002)(6486002)(316002)(2906002)(36756003)(26005)(41300700001)(38100700002)(478600001)(66946007)(2616005)(66556008)(8676002)(66476007)(4326008)(54906003)(86362001)(7416002)(186003)(8936002)(6916009)(1076003)(7406005);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?CDzARChBtb4DsZpFKWqzJw8w+TTcJG5Bn+s12ZV+7IHOmFLEgei+XtTQqJBu?=
+ =?us-ascii?Q?7ddmJJHn00mYx9kiqlka7PUbBgasvq5mMxAvo7lzI9VgMqqGckUIhQ1XIcnC?=
+ =?us-ascii?Q?m+AWAi1OrqXvsiPB3jP9F0cUAFTxeKmW312iB02FGPJUqSX9IuQGbtMXoyfF?=
+ =?us-ascii?Q?9OmkDCdOCgTAVoBlecBQSi9zMs8Fl2bMge92THL6Yhi/N2K+u+crUgYv84zq?=
+ =?us-ascii?Q?s4cLDJtT2uy6ygApTOjoyDLW52Ntzf4uG0O47nMltDYHK0LkqKg+m12WXpW1?=
+ =?us-ascii?Q?NhSNo+pQAoHBbMiw42Ruuh5+vvJR9hJHrHh3la7ojmy9z3v1lr0yyJ/muM/j?=
+ =?us-ascii?Q?3lqVyvLXIqwCLVgB7SdMwxU9J6EtOlpgTWfozXVqq3rK3rUAQE50mzLDn8k2?=
+ =?us-ascii?Q?it4E4WGXcAAD8/2aEDtEf2aAeMbRtk7EJ8j9no6Hnx91rklC8ATsg4IL3vvn?=
+ =?us-ascii?Q?nrJVFCr1cDo1i3XnH1eUWyKLAOgjc5bW7DjosbQQuLU/NGOmHEzCBtPBqGV7?=
+ =?us-ascii?Q?apaMulFUwUNWJYUZFLGPSRlx84aLxvwUo5WluKrJNr2VlRXZc176XVnL25mF?=
+ =?us-ascii?Q?IGI7VePrSCfOututwQrWMDOK2WnmhLa8XB0dVspYHA9+TvLmbSHZWK+sdM8k?=
+ =?us-ascii?Q?ZrtOqNQz/AkKYPFNy6+vU06BbWplt7yR9GsXNP05islB9AoWsX1zoU8t5TuZ?=
+ =?us-ascii?Q?xyApmwpXS9WQvGVFCACQDcDEZwsyIdWd0RLcU31OM8y1ZeqBA2D5FT2UXW4U?=
+ =?us-ascii?Q?9cmFRYUxeEVa2HiPXHsnl2wVgXh6MmagCnB5vBBJRcRjozDWi+f0ooNFx3qs?=
+ =?us-ascii?Q?WmYue8AtQ49VW1YGSQuUg3upQyPU6rnTZotCo87swg8pTy2VA90IxceF0DEQ?=
+ =?us-ascii?Q?XuAuM/2kSj1K3/OhuY0RNeRVMkcATeDw6yetnkCf2Wdh+PuI3Y9h3rz0im8P?=
+ =?us-ascii?Q?ZuYcuwA1M8qzvXdTPZ/5CAMQhZ0tsbvBylQIux0O1Di+3TfxhwsUQ8TVE6LS?=
+ =?us-ascii?Q?6gIyZRvAV+1uU3vpiYG+yuJTfOuT/DfHhXknV58xTFQTSTahVox0jQDcXq70?=
+ =?us-ascii?Q?LA4xUJpifb6KJDkx469kIc8XS52hni1CxVlJe/UzayL0NxpXKgcxHwEZxq73?=
+ =?us-ascii?Q?vPqCqkNOxaLCxRCG6jbyUd3s+nKei918Hsub8HhPl9YQgaTjCu7lXam9NWEp?=
+ =?us-ascii?Q?YPaBpZEeqyEoGAzokRaLGLaKhNuueB/Fdt9faL7oRzsfqOtoutZRw4CYMBeZ?=
+ =?us-ascii?Q?h+rJqjiKmoSnwl+SzazvLJgM85VbJbAzMLpXPsIQyEEFECXTha1N76SQ57aR?=
+ =?us-ascii?Q?wuXjHHDkMAWVrAOAdWZO1nDWoR+2F6g9Y7e9RMc6/SfuIhMCo9xAlzL2G4p0?=
+ =?us-ascii?Q?Zws5dCCeKmpkrK2LMT6iLiq6OAXgGCr1pd1OK0iC+VxbWvZ/udaLrrxCcivg?=
+ =?us-ascii?Q?g9AQLcV+85WzN/RHwVK+tK3MjJGQq/lmGfkuZoXMjjZgwIgvzgUMJ492taSA?=
+ =?us-ascii?Q?j1R/ngk9Yo3DPJdtXidhoGcDjZ6JspSWlujOvWG85Bg2tfMCUHNMN2qxgnXu?=
+ =?us-ascii?Q?L7BxI4iLHHEppOl3z52pwDY8rl4vXdv5nTl2EaHr?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 47e049fc-fa31-4747-c506-08da5611ceda
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jun 2022 18:46:11.2941
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: bbaDrGTtc3w0r4jgKFCsk/V410TJZFDwCXiogPLDeGyPjsoCr7B/Bioxqlz3Ox07
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4232
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_114110_744583_98CBF95F 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20220624_114615_443701_8AD7B447 
+X-CRM114-Status: GOOD (  22.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,420 +176,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On Fri, Jun 24, 2022 at 07:31:47PM +0100, Robin Murphy wrote:
 
-Le ven., juin 24 2022 at 19:07:39 +0200, Krzysztof Kozlowski=20
-<krzysztof.kozlowski@linaro.org> a =E9crit :
-> gpio-keys children do not use unit addresses.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->=20
-> ---
->=20
-> See:=20
-> https://lore.kernel.org/all/20220616005224.18391-1-krzysztof.kozlowski@li=
-naro.org/
-> ---
->  arch/mips/boot/dts/img/pistachio_marduk.dts   |  4 +--
->  arch/mips/boot/dts/ingenic/gcw0.dts           | 31=20
-> +++++++++----------
->  arch/mips/boot/dts/ingenic/rs90.dts           | 18 +++++------
->  arch/mips/boot/dts/pic32/pic32mzda_sk.dts     |  9 ++----
->  .../boot/dts/qca/ar9132_tl_wr1043nd_v1.dts    |  6 ++--
->  arch/mips/boot/dts/qca/ar9331_dpt_module.dts  |  4 +--
->  .../mips/boot/dts/qca/ar9331_dragino_ms14.dts |  6 ++--
->  arch/mips/boot/dts/qca/ar9331_omega.dts       |  4 +--
->  .../qca/ar9331_openembed_som9331_board.dts    |  4 +--
->  arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts   |  8 ++---
->  10 files changed, 37 insertions(+), 57 deletions(-)
->=20
-> diff --git a/arch/mips/boot/dts/img/pistachio_marduk.dts=20
-> b/arch/mips/boot/dts/img/pistachio_marduk.dts
-> index a8708783f04b..a8da2f992b1a 100644
-> --- a/arch/mips/boot/dts/img/pistachio_marduk.dts
-> +++ b/arch/mips/boot/dts/img/pistachio_marduk.dts
-> @@ -59,12 +59,12 @@ led-1 {
->=20
->  	keys {
->  		compatible =3D "gpio-keys";
-> -		button@1 {
-> +		button-1 {
->  			label =3D "Button 1";
->  			linux,code =3D <0x101>; /* BTN_1 */
->  			gpios =3D <&gpio3 6 GPIO_ACTIVE_LOW>;
->  		};
-> -		button@2 {
-> +		button-2 {
->  			label =3D "Button 2";
->  			linux,code =3D <0x102>; /* BTN_2 */
->  			gpios =3D <&gpio2 14 GPIO_ACTIVE_LOW>;
-> diff --git a/arch/mips/boot/dts/ingenic/gcw0.dts=20
-> b/arch/mips/boot/dts/ingenic/gcw0.dts
-> index 4abb0318416c..5d33f26fd28c 100644
-> --- a/arch/mips/boot/dts/ingenic/gcw0.dts
-> +++ b/arch/mips/boot/dts/ingenic/gcw0.dts
-> @@ -130,89 +130,86 @@ backlight: backlight {
->=20
->  	gpio-keys {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
+> > > Oh, physical platforms with mixed IOMMUs definitely exist already. The main
+> > > point is that while bus_set_iommu still exists, the core code effectively
+> > > *does* prevent multiple drivers from registering - even in emulated cases
+> > > like the example above, virtio-iommu and VT-d would both try to
+> > > bus_set_iommu(&pci_bus_type), and one of them will lose. The aspect which
+> > > might warrant clarification is that there's no combination of supported
+> > > drivers which claim non-overlapping buses *and* could appear in the same
+> > > system - even if you tried to contrive something by emulating, say, VT-d
+> > > (PCI) alongside rockchip-iommu (platform), you could still only describe one
+> > > or the other due to ACPI vs. Devicetree.
+> > 
+> > Right, and that is still something we need to protect against with
+> > this ops check. VFIO is not checking that the bus's are the same
+> > before attempting to re-use a domain.
+> > 
+> > So it is actually functional and does protect against systems with
+> > multiple iommu drivers on different busses.
+> 
+> But as above, which systems *are* those? 
 
-Are you sure you can remove these?
+IDK it seems wrong that the system today will allow different buses to
+have different IOMMU drivers and not provide a trivial protection
+check.
 
-Looking at paragraph 2.3.5 of the DT spec, I would think they have to=20
-stay (although with #address-cells =3D <0>).
+> FWIW my iommu/bus dev branch has got as far as the final bus ops removal and
+> allowing multiple driver registrations, and before it allows that, it does
+> now have the common attach check that I sketched out in the previous
+> discussion of this.
 
-Cheers,
--Paul
+If you want to put the check in your series that seems fine too, as
+long as we get it in the end.
 
-> -
->  		autorepeat;
->=20
-> -		button@0 {
-> +		button-0 {
->  			label =3D "D-pad up";
->  			linux,code =3D <KEY_UP>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 21 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@1 {
-> +		button-1 {
->  			label =3D "D-pad down";
->  			linux,code =3D <KEY_DOWN>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 25 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@2 {
-> +		button-2 {
->  			label =3D "D-pad left";
->  			linux,code =3D <KEY_LEFT>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 23 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@3 {
-> +		button-3 {
->  			label =3D "D-pad right";
->  			linux,code =3D <KEY_RIGHT>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 24 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@4 {
-> +		button-4 {
->  			label =3D "Button A";
->  			linux,code =3D <KEY_LEFTCTRL>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 29 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@5 {
-> +		button-5 {
->  			label =3D "Button B";
->  			linux,code =3D <KEY_LEFTALT>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 20 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@6 {
-> +		button-6 {
->  			label =3D "Button Y";
->  			linux,code =3D <KEY_SPACE>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 27 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@7 {
-> +		button-7 {
->  			label =3D "Button X";
->  			linux,code =3D <KEY_LEFTSHIFT>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 28 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@8 {
-> +		button-8 {
->  			label =3D "Left shoulder button";
->  			linux,code =3D <KEY_TAB>;
->  			linux,can-disable;
->  			gpios =3D <&gpb 20 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@9 {
-> +		button-9 {
->  			label =3D "Right shoulder button";
->  			linux,code =3D <KEY_BACKSPACE>;
->  			linux,can-disable;
->  			gpios =3D <&gpe 26 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@10 {
-> +		button-10 {
->  			label =3D "Start button";
->  			linux,code =3D <KEY_ENTER>;
->  			linux,can-disable;
->  			gpios =3D <&gpb 21 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@11 {
-> +		button-11 {
->  			label =3D "Select button";
->  			linux,code =3D <KEY_ESC>;
->  			linux,can-disable;
-> @@ -223,7 +220,7 @@ button@11 {
->  			gpios =3D <&gpd 18 GPIO_ACTIVE_HIGH>;
->  		};
->=20
-> -		button@12 {
-> +		button-12 {
->  			label =3D "Power slider";
->  			linux,code =3D <KEY_POWER>;
->  			linux,can-disable;
-> @@ -231,7 +228,7 @@ button@12 {
->  			wakeup-source;
->  		};
->=20
-> -		button@13 {
-> +		button-13 {
->  			label =3D "Power hold";
->  			linux,code =3D <KEY_PAUSE>;
->  			linux,can-disable;
-> diff --git a/arch/mips/boot/dts/ingenic/rs90.dts=20
-> b/arch/mips/boot/dts/ingenic/rs90.dts
-> index 74fee7f01352..e8df70dd42bf 100644
-> --- a/arch/mips/boot/dts/ingenic/rs90.dts
-> +++ b/arch/mips/boot/dts/ingenic/rs90.dts
-> @@ -52,53 +52,51 @@ backlight: backlight {
->=20
->  	keys@0 {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
->=20
-> -		key@0 {
-> +		key-0 {
->  			label =3D "D-pad up";
->  			linux,code =3D <KEY_UP>;
->  			gpios =3D <&gpc 10 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		key@1 {
-> +		key-1 {
->  			label =3D "D-pad down";
->  			linux,code =3D <KEY_DOWN>;
->  			gpios =3D <&gpc 11 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		key@2 {
-> +		key-2 {
->  			label =3D "D-pad left";
->  			linux,code =3D <KEY_LEFT>;
->  			gpios =3D <&gpb 31 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		key@3 {
-> +		key-3 {
->  			label =3D "D-pad right";
->  			linux,code =3D <KEY_RIGHT>;
->  			gpios =3D <&gpd 21 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		key@4 {
-> +		key-4 {
->  			label =3D "Button A";
->  			linux,code =3D <KEY_LEFTCTRL>;
->  			gpios =3D <&gpc 31 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		key@5 {
-> +		key-5 {
->  			label =3D "Button B";
->  			linux,code =3D <KEY_LEFTALT>;
->  			gpios =3D <&gpc 30 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		key@6 {
-> +		key-6 {
->  			label =3D "Right shoulder button";
->  			linux,code =3D <KEY_BACKSPACE>;
->  			gpios =3D <&gpc 12 GPIO_ACTIVE_LOW>;
->  			debounce-interval =3D <10>;
->  		};
->=20
-> -		key@7 {
-> +		key-7 {
->  			label =3D "Start button";
->  			linux,code =3D <KEY_ENTER>;
->  			gpios =3D <&gpd 17 GPIO_ACTIVE_LOW>;
-> diff --git a/arch/mips/boot/dts/pic32/pic32mzda_sk.dts=20
-> b/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
-> index d7fa5d55dbf3..ab70637bbec5 100644
-> --- a/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
-> +++ b/arch/mips/boot/dts/pic32/pic32mzda_sk.dts
-> @@ -52,22 +52,19 @@ keys0 {
->  		pinctrl-0 =3D <&user_buttons_s0>;
->  		pinctrl-names =3D "default";
->=20
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
-> -
-> -		button@sw1 {
-> +		button-1 {
->  			label =3D "ESC";
->  			linux,code =3D <1>;
->  			gpios =3D <&gpio1 12 0>;
->  		};
->=20
-> -		button@sw2 {
-> +		button-2 {
->  			label =3D "Home";
->  			linux,code =3D <102>;
->  			gpios =3D <&gpio1 13 0>;
->  		};
->=20
-> -		button@sw3 {
-> +		button-3 {
->  			label =3D "Menu";
->  			linux,code =3D <139>;
->  			gpios =3D <&gpio1 14 0>;
-> diff --git a/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts=20
-> b/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
-> index 7fccf6357225..f3dff4009ab5 100644
-> --- a/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
-> +++ b/arch/mips/boot/dts/qca/ar9132_tl_wr1043nd_v1.dts
-> @@ -23,17 +23,15 @@ extosc: ref {
->=20
->  	gpio-keys {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
->=20
-> -		button@0 {
-> +		button-0 {
->  			label =3D "reset";
->  			linux,code =3D <KEY_RESTART>;
->  			gpios =3D <&gpio 3 GPIO_ACTIVE_LOW>;
->  			debounce-interval =3D <60>;
->  		};
->=20
-> -		button@1 {
-> +		button-1 {
->  			label =3D "qss";
->  			linux,code =3D <KEY_WPS_BUTTON>;
->  			gpios =3D <&gpio 7 GPIO_ACTIVE_LOW>;
-> diff --git a/arch/mips/boot/dts/qca/ar9331_dpt_module.dts=20
-> b/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
-> index 7695d326df11..c857cd22f7db 100644
-> --- a/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
-> +++ b/arch/mips/boot/dts/qca/ar9331_dpt_module.dts
-> @@ -33,10 +33,8 @@ led-0 {
->=20
->  	gpio-keys {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
->=20
-> -		button@0 {
-> +		button-0 {
->  			label =3D "reset";
->  			linux,code =3D <KEY_RESTART>;
->  			gpios =3D <&gpio 11 GPIO_ACTIVE_LOW>;
-> diff --git a/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts=20
-> b/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
-> index d38aa73f1a2e..40e4c5da0e65 100644
-> --- a/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
-> +++ b/arch/mips/boot/dts/qca/ar9331_dragino_ms14.dts
-> @@ -49,16 +49,14 @@ system {
->=20
->  	gpio-keys {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
->=20
-> -		button@0 {
-> +		button-0 {
->  			label =3D "jumpstart";
->  			linux,code =3D <KEY_WPS_BUTTON>;
->  			gpios =3D <&gpio 11 GPIO_ACTIVE_LOW>;
->  		};
->=20
-> -		button@1 {
-> +		button-1 {
->  			label =3D "reset";
->  			linux,code =3D <KEY_RESTART>;
->  			gpios =3D <&gpio 12 GPIO_ACTIVE_LOW>;
-> diff --git a/arch/mips/boot/dts/qca/ar9331_omega.dts=20
-> b/arch/mips/boot/dts/qca/ar9331_omega.dts
-> index 11778abacf66..ed184d861d5f 100644
-> --- a/arch/mips/boot/dts/qca/ar9331_omega.dts
-> +++ b/arch/mips/boot/dts/qca/ar9331_omega.dts
-> @@ -31,10 +31,8 @@ system {
->=20
->  	gpio-keys {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
->=20
-> -		button@0 {
-> +		button-0 {
->  			label =3D "reset";
->  			linux,code =3D <KEY_RESTART>;
->  			gpios =3D <&gpio 11 GPIO_ACTIVE_HIGH>;
-> diff --git=20
-> a/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts=20
-> b/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
-> index e6622f8e8c2b..dc65ebd60bbc 100644
-> --- a/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
-> +++ b/arch/mips/boot/dts/qca/ar9331_openembed_som9331_board.dts
-> @@ -33,10 +33,8 @@ led-0 {
->=20
->  	gpio-keys {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
->=20
-> -		button@0 {
-> +		button-0 {
->  			label =3D "reset";
->  			linux,code =3D <KEY_RESTART>;
->  			gpios =3D <&gpio 11 GPIO_ACTIVE_HIGH>;
-> diff --git a/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts=20
-> b/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
-> index c8290d36cfbe..5f424c2cd781 100644
-> --- a/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
-> +++ b/arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts
-> @@ -49,22 +49,20 @@ led3g {
->=20
->  	gpio-keys {
->  		compatible =3D "gpio-keys";
-> -		#address-cells =3D <1>;
-> -		#size-cells =3D <0>;
->=20
-> -		button@0 {
-> +		button-0 {
->  			label =3D "wps";
->  			linux,code =3D <KEY_WPS_BUTTON>;
->  			gpios =3D <&gpio 11 GPIO_ACTIVE_HIGH>;
->  		};
->=20
-> -		button@1 {
-> +		button-1 {
->  			label =3D "sw1";
->  			linux,code =3D <BTN_0>;
->  			gpios =3D <&gpio 18 GPIO_ACTIVE_HIGH>;
->  		};
->=20
-> -		button@2 {
-> +		button-2 {
->  			label =3D "sw2";
->  			linux,code =3D <BTN_1>;
->  			gpios =3D <&gpio 20 GPIO_ACTIVE_HIGH>;
-> --
-> 2.34.1
->=20
+> It's probably also noteworthy that domain->ops is no longer the same
+> domain->ops that this code was written to check, and may now be different
+> between domains from the same driver.
 
+Yes, the vfio check is not good anymore.
 
+Jason
 
