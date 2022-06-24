@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 858EAC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:33:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5070EC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U226G+gJXjVu8Couc5Qv56p1SRGwVv16nFZEn3RxVtU=; b=MujJmMYppMoTGZY2HIE1HGZFWL
-	g0y9vAHUO/nVMYS2b3oSZ9dUxhlJuUvUXY0cM312CHgQVwu03fa3C55nH84AQVFxscyBRjKdmmqo1
-	u5ad21Oja65w2g+jVYM9fCI8TzFndjFuo/nHg9jllJqkPcF7cG2HTh6dZU/+MhSTkavdne99Y3ZWb
-	PYwo7WZxricpakPQKHUb0dVNprIOkdrhl2KdNPr/aPDId6ge0xg8Y5CTk6oy5R4tlqDhnT8UNkuu3
-	rqh5x+Sjtc7LLRx3Lz74azcrjsHUrIDMWnyfJnW7ozv/GcNMZhoOrQ3XXQ6v8rwp8e/gjXKOXRVq/
-	+unr1V9A==;
+	bh=GeySHEpfB0/asXQLszsfiLjDcMnpUMVH0jqVoWkX/7o=; b=mSGDVTTj3BNSd30WF7cAkUCdyv
+	Ac46ExkvanlXXZ5SuzDG0ERR14icGyAaSfY8QTNM7BK4oTcTNNtiX4qERuNtDbJJYaV0XEsxBPYGk
+	kU1/J9qss8ZmmeWPON/0WjJ4gAZ5nMjtzgDyzP2ZEllLrXxEsGzOLC3iOPJ+btU4I/l7i0+xiIvz4
+	Fx7nhFWU6tzsrrEcaMO90uwWgBg+vsIGlb0o/baq2fGioO4vXdAITDb5VjejWwE19H+CVfv7k1vwW
+	ePib3dJB08yMe6K0jqLW/IhEXuj6J7wl12gRvlOzSzNmO0Ae3QMkOI0L0hRHLQ81W+vLXknwcjUO4
+	UE2psneQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4gcr-001nGz-FU; Fri, 24 Jun 2022 10:33:21 +0000
-Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
+	id 1o4gex-001nuG-BO; Fri, 24 Jun 2022 10:35:31 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4gca-001nBP-5t; Fri, 24 Jun 2022 10:33:07 +0000
-Received: by mail-il1-x136.google.com with SMTP id p13so1245263ilq.0;
-        Fri, 24 Jun 2022 03:33:00 -0700 (PDT)
+	id 1o4geu-001nsx-66
+	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 10:35:29 +0000
+Received: by mail-ej1-x635.google.com with SMTP id mf9so3928886ejb.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jun 2022 03:35:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=U226G+gJXjVu8Couc5Qv56p1SRGwVv16nFZEn3RxVtU=;
-        b=WZpsM51CgSRUFkewgWRiMqQCwdfKsPxTQTY1/FdwFAv5v1w7p4JLgRHq9illM8ReYx
-         z2I4w1oylu873NcQ0QfYk817rCiBPB0mGufQXo76zV/Icu9IEwOjioYXN0WrZaKX6cL9
-         07Rb+d983LgBkl7ZA2fWK1F/kNdQF9BiZL9Ob4HxWbn3065/DVrpR2hnCisuhiIvh29F
-         a1SdXgqZZPfRMBvTu2ZBrFXqF+/UDBm+1z8lmHXxgxBO4vl/CMvHhqBbS1k+4Bl/Ubp3
-         3Gnny6BLEYiAhqOwP9WZrt/sWfajs0WI0/NMdBj55eW9CetTpTBVfPJIFkRQKlBHknZx
-         L3Ww==
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=GeySHEpfB0/asXQLszsfiLjDcMnpUMVH0jqVoWkX/7o=;
+        b=uZ1wC8VHxURHrghX2//skAqQ30um2Rme3cIPNULf/p3DBJwzdeGZCHn64BbW1bwOoh
+         MK7I4FRm4lPVfnOutTChG+9M+lYc4y4yEjHQmcsNNibkepmTc5kqbxTtx/VHfIwqpSFA
+         A7a2fOZ7cvl48zaPYnFMhKsgQgSk6uKOAABQ6m5HcNHn+pYfMPqsOfrhh43gWvLbEKIG
+         AMwez5zF4oib8KlCHUoPbdzUVBf2Mmj6iqKOZO4I2HmkzMfM5iXV86deY5+S7vEL+BT9
+         wv3F9Puov/5GuHxXic5VvIIGs7RASkq12ilmGiKxF+k5qkfHOarvRWT8G3ev/yK3xUvF
+         FD0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=U226G+gJXjVu8Couc5Qv56p1SRGwVv16nFZEn3RxVtU=;
-        b=pwTHRdByqw1YhEUZy5VsJpKKa4hwmPBDtAIo7luHNTKGdsD5kN1C1Bwua5/cnWI6+P
-         C5obPvNG6nVPx7uiAsgmR/hVWEa4tpvDJLt75KlkXKBsHJ1P0gWDznv2ovld6t6pcBmA
-         LlIHe0W3lSm8sQqnpT6jNrG1zNDdlvEj2+e2Pkv7rSQsP0tFjtiMV0dBv5Vqxe302z8D
-         DoPccfFCywmvWxaUgjz5fCTVXU55MmfcyCn/0fI4T1do8wWJ7rc7GNZi6MtZWJIVcrSo
-         9vXK5RuYDEkV+XG4/H51awtsvdT/bozK8zpoAu+4Mgp4ykac46nNNh/XL/Ya6BlvjuK5
-         jCcA==
-X-Gm-Message-State: AJIora9qwMvK/FHbfneOMbYalSeIVgZxGE94XJHUV3ZRcd59Jz7m0AKW
-	D0KlG6uiFDHQDlozDcg+WAfUjBWhOpHjlWqQLNQ=
-X-Google-Smtp-Source: AGRyM1vwKPbWsq2euM9m6UqA1rwAUWYo4r1L6FV6jbw4QbMXoRJS9w4dpuFfMGm93LZs8AZ6tCdsbCCLj6aHRPRFCko=
-X-Received: by 2002:a05:6e02:1bc6:b0:2d3:dba7:f626 with SMTP id
- x6-20020a056e021bc600b002d3dba7f626mr8034868ilv.299.1656066780324; Fri, 24
- Jun 2022 03:33:00 -0700 (PDT)
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=GeySHEpfB0/asXQLszsfiLjDcMnpUMVH0jqVoWkX/7o=;
+        b=qOYx4ZUomIHU3uUnXgBA3bGH1qkjIbbKrYtU33R+Nhqn8D2jPLzczeWB3Muc68Q3f7
+         j7Z5kzFT0i+1gEFUavtHzEk4OvA7NoMllE3GAHQn6e1j0AaQiK/ovuZpqOCpT+3oMq4o
+         om7FU9klNvh9z3Vq4cCEZeB+Iv9w8hKFezJU1yZF6cq/kMMfvW7w046gKku9KyRHMmyO
+         7+wtGZFoDD9Zx3wN8lhC96gEL/0mUSH9qQLZ2pyKcFiNG3ZlT6trhOe0f34PXDU56KTW
+         7wMubKhbxG/In//VDY1OctulGshA7UkElMbB1fLK0Ovb1NjCu6ALRhsWkyjsbe8FCHqv
+         Zj7w==
+X-Gm-Message-State: AJIora9GoR98onHVXMBDsf2pd9QvhL72DTVtHxTGVZa+qcEuK0uU1ndF
+	uqWDtUHKDmRBESSa78RJvKfF2Q==
+X-Google-Smtp-Source: AGRyM1sqyv+H/bBGuPYg4PIFRLo9cOE04f0nH/20g7zmKiDRIOyqtdjIViwQXday1ZlmdpGjP7k8OA==
+X-Received: by 2002:a17:907:1694:b0:716:14a4:fba with SMTP id hc20-20020a170907169400b0071614a40fbamr13073900ejc.290.1656066926720;
+        Fri, 24 Jun 2022 03:35:26 -0700 (PDT)
+Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id q21-20020aa7cc15000000b0042617ba638esm1683916edt.24.2022.06.24.03.35.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 24 Jun 2022 03:35:25 -0700 (PDT)
+Message-ID: <aec8ecdb-7c76-1261-216b-b40e450d1bf8@linaro.org>
+Date: Fri, 24 Jun 2022 12:35:23 +0200
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-10-peterwu.pub@gmail.com>
- <CAHp75VdgxR9aFQmi_MPrX=t7RMnKDiLAwWMvxbpW9OoQMJkKyw@mail.gmail.com>
-In-Reply-To: <CAHp75VdgxR9aFQmi_MPrX=t7RMnKDiLAwWMvxbpW9OoQMJkKyw@mail.gmail.com>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Fri, 24 Jun 2022 18:32:49 +0800
-Message-ID: <CABtFH5+YLpYdWNsy1DwkKf19L6THo5NYvQ8e3rpo9wkTS9HxwQ@mail.gmail.com>
-Subject: Re: [PATCH v3 09/14] regulator: mt6370: Add mt6370 DisplayBias and
- VibLDO support
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v3 03/14] dt-bindings: leds: mt6370: Add Mediatek mt6370
+ current sink type LED indicator
+Content-Language: en-US
+To: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
+ daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
+ gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
+ lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
+ heikki.krogerus@linux.intel.com, deller@gmx.de
+Cc: chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
+ dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com
+References: <20220623115631.22209-1-peterwu.pub@gmail.com>
+ <20220623115631.22209-4-peterwu.pub@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220623115631.22209-4-peterwu.pub@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_033304_276675_4AE4BBE8 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20220624_033528_309385_D8F9BBEE 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,130 +103,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+On 23/06/2022 13:56, ChiaEn Wu wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
+> 
+> Add Mediatek mt6370 current sink type LED indicator binding documentation.
+> 
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> ---
+> 
+> v3
+> - Use leds-class-multicolor.yaml instead of common.yaml.
+> - Split multi-led and led node.
+> - Add subdevice "led" in "multi-led".
+> ---
+>  .../bindings/leds/mediatek,mt6370-indicator.yaml   | 77 ++++++++++++++++++++++
+>  1 file changed, 77 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+> new file mode 100644
+> index 0000000..45030f3
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+> @@ -0,0 +1,77 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/leds/mediatek,mt6370-indicator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: LED driver for MT6370 PMIC from MediaTek Integrated.
+> +
+> +maintainers:
+> +  - Alice Chen <alice_chen@richtek.com>
+> +
+> +description: |
+> +  This module is part of the MT6370 MFD device.
+> +  Add MT6370 LED driver include 4-channel RGB LED support Register/PWM/Breath Mode
+> +
+> +allOf:
+> +  - $ref: leds-class-multicolor.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6370-indicator
+> +
+> +  "#address-cells":
+> +    const: 1
+> +
+> +  "#size-cells":
+> +    const: 0
+> +
+> +patternProperties:
+> +  "^multi-led@[0-3]$":
+> +    type: object
 
-Thanks for your helpful comments!
+Here as well unevaluatedProperties:false (on the type level)
 
-Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B46=E6=9C=
-=8824=E6=97=A5 =E9=80=B1=E4=BA=94 =E5=87=8C=E6=99=A82:19=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Thu, Jun 23, 2022 at 2:00 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> >
-> > From: ChiYuan Huang <cy_huang@richtek.com>
-> >
-> > Add mt6370 DisplayBias and VibLDO support.
->
-> ...
->
-> > +#include <linux/bits.h>
-> > +#include <linux/gpio/consumer.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/module.h>
->
-> > +#include <linux/of.h>
->
-> Any users of this? (See below)
->
-> > +#include <linux/platform_device.h>
-> > +#include <linux/regmap.h>
-> > +#include <linux/regulator/driver.h>
-> > +#include <linux/regulator/machine.h>
->
-> ...
->
-> > +#define MT6370_LDO_MINUV       1600000
-> > +#define MT6370_LDO_STPUV       200000
-> > +#define MT6370_LDO_N_VOLT      13
-> > +#define MT6370_DBVBOOST_MINUV  4000000
-> > +#define MT6370_DBVBOOST_STPUV  50000
-> > +#define MT6370_DBVBOOST_N_VOLT 45
-> > +#define MT6370_DBVOUT_MINUV    4000000
-> > +#define MT6370_DBVOUT_STPUV    50000
-> > +#define MT6370_DBVOUT_N_VOLT   41
->
-> If UV is a unit suffix, make it _UV.
->
-> ...
->
-> > +               .of_match =3D of_match_ptr("dsvbst"),
->
-> Would it even be called / used if CONFIG_OF=3Dn?
+> +
+> +    properties:
+> +      reg:
+> +        enum: [0, 1, 2, 3]
+> +
+> +      "#address-cells":
+> +        const: 1
+> +
+> +      "#size-cells":
+> +        const: 0
+> +
+> +    patternProperties:
+> +      "^led@[0-2]$":
+> +        type: object
+> +        $ref: common.yaml#
+> +        unevaluatedProperties: false
+> +
+> +        required:
+> +          - reg
+> +          - color
+> +
+> +    required:
+> +      - reg
+> +      - color
+> +      - "#address-cells"
+> +      - "#size-cells"
+> +
+> +  "^led@[0-3]$":
+> +    type: object
+> +    $ref: common.yaml#
+> +    unevaluatedProperties: false
+> +
+> +    properties:
+> +      reg:
+> +        enum: [0, 1, 2, 3]
+> +
+> +    required:
+> +      - reg
+> +      - color
+> +
+> +required:
+> +  - compatible
+> +  - "#address-cells"
+> +  - "#size-cells"
+> +
+> +additionalProperties: false
 
-We got a notification from Mark telling us that this patch has been
-applied to git.
-( https://lore.kernel.org/linux-arm-kernel/165599931844.321775.808555909233=
-7130067.b4-ty@kernel.org/
-)
-So, should we need to make any other changes in the next submission?
-
->
-> ...
->
-> > +               .regulators_node =3D of_match_ptr("regulators"),
->
-> Ditto.
->
-> ...
->
-> > +       for (i =3D 0; i < ARRAY_SIZE(mt6370_irqs); i++) {
-> > +               irq =3D platform_get_irq_byname(pdev, mt6370_irqs[i].na=
-me);
-> > +
-> > +               rdev =3D priv->rdev[mt6370_irqs[i].rid];
-> > +
-> > +               ret =3D devm_request_threaded_irq(priv->dev, irq, NULL,
-> > +                                               mt6370_irqs[i].handler,=
- 0,
-> > +                                               mt6370_irqs[i].name, rd=
-ev);
-> > +               if (ret) {
->
-> > +                       dev_err(priv->dev,
-> > +                               "Failed to register (%d) interrupt\n", =
-i);
-> > +                       return ret;
->
-> return dev_err_probe(...); ?
->
-> > +               }
-> > +       }
->
-> ...
->
-> > +       for (i =3D 0; i < MT6370_MAX_IDX; i++) {
-> > +               rdev =3D devm_regulator_register(priv->dev,
-> > +                                              mt6370_regulator_descs +=
- i,
-> > +                                              &cfg);
-> > +               if (IS_ERR(rdev)) {
->
-> > +                       dev_err(priv->dev,
-> > +                               "Failed to register (%d) regulator\n", =
-i);
-> > +                       return PTR_ERR(rdev);
->
-> return dev_err_probe(...); ?
->
-> > +               }
-> > +
-> > +               priv->rdev[i] =3D rdev;
-> > +       }
->
-> ...
->
-> > +       if (!priv->regmap) {
-> > +               dev_err(&pdev->dev, "Failed to init regmap\n");
-> > +               return -ENODEV;
-> > +       }
->
-> return dev_err_probe(...);
->
-> --
-> With Best Regards,
-> Andy Shevchenko
 
 Best regards,
-ChiaEn Wu
+Krzysztof
 
