@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC233C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20BDEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:36:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MP9RQT0mw2gx9xecm41XDjO0xQp/A9AAK0cYbd+v7PM=; b=n5Sp1C7sJAfZCuWh8jj42GlByH
-	mxgQbuar9kTp6GsXewyD3nzNXkdtQAaQK6AvTwEeOOdq97s9rVu+caGCxbICXXy/HCSw0W1Fh2xoK
-	CpglbzOb5YrjvpJCQTr5bU2p4vZupB4K1jvdUtN/5qG3rNltnwaswrNgUOvCCHtSTJEz5/+d8lPeS
-	Hgf9Rzd+uD4uvWg3aJb7h2G2u5CUC7atqS/zDi9Bv7DPSdVzW61WlJK4cEFS/JjoPCBa3bNXWYTGc
-	g3grT1kqYjovIay5jEuhoV2dxFp4IoNxTbDqE+7a0V6fmnF4OaEStKZcFt0sQUnKa2uR9tZJBvL/Z
-	U78OvWDA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=K66IhwI06I8VNNRjyicgtlsimNusMO1dSitgU4+So5s=; b=R3Da5TikDn0890EKHVgpLCVwHl
+	Wace0iELPT2kksgjjeCGeW69I6OxQZcAzjEjx3A0PCpmhLcVfuCWYlcbYnaeQA69U4+E/8IKEDEOj
+	kJopRVQAgrw4nbMD9bFsiXe19u5oECz+35KjHtsp/0o7VGt4065nLWMh9NZ9W3k1TVIkATsCFpYip
+	Ya26mzDJfuK3XgfvzVbur3hMlTwSqYY6NEGYUp+Z/v/EcSaDzVGy3wAtEtDR08dicrhlo2LflqPEs
+	hMXZ7u+xcI8U35f9WdERc3FWJdllVEXZxE+vt8z7N61+nCHvlE7XkOnROugI5XdDLBR7G9yxRtR63
+	s4bBuiDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4fiW-001RhJ-7a; Fri, 24 Jun 2022 09:35:08 +0000
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
+	id 1o4fjW-001S8s-O2; Fri, 24 Jun 2022 09:36:10 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4fiE-001RaM-Sz; Fri, 24 Jun 2022 09:34:52 +0000
-Received: by mail-io1-xd2b.google.com with SMTP id a10so2099479ioe.9;
-        Fri, 24 Jun 2022 02:34:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=MP9RQT0mw2gx9xecm41XDjO0xQp/A9AAK0cYbd+v7PM=;
-        b=XOSjJie8EVvJ68P8cDkEuXXdIP7YNykFHD5ucaFHa23sPTgdW5s+vEyYglwP5ITADf
-         de6ih0EGdaikqxaCCoMYFOazeMTR+HJ2Od3FO0aVrMGZ9Ao0YQc3IGKpdK1KsldTwlvh
-         mNgixo6yDK8vv6W4zP9rFZEgeSROQH0wRlhznnuez0r+LK3zlRzbpSDq8zkiXpRGsUdD
-         wlBFXBP+v/yudkNVKvRuUvTnfyVEt9q4H+CcHi3K0tEYuY/us9b2jbsRIceZSdwT323h
-         bCW6ZtoKL/DDgyl9mBYWdF/TeTYV9OJiSRhfvnTTdEl5HuLFgATDlbAUJ79bLaqNIqyo
-         pjrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=MP9RQT0mw2gx9xecm41XDjO0xQp/A9AAK0cYbd+v7PM=;
-        b=2NVZP8l8f5cMRC4Ha4bBtT/9YDHl5z+4LjUzbpidmo9d7BTVTC4Z1nmT5vZ49igQZL
-         SUOunnIKTkP9Zf4XndoGCszTUJ56KdCaAcOO90SADYvLC7d1oxoN0X07uF8cGON3xvSh
-         AqbibpO2RlQ3nb9Wd2fD4/K/zOe/uRej0eUjUMcO0fh9KMJhxmStXBvESBPFmllPo94b
-         X6Kmxxht1fvRzM5tEtRM7QfVRLmOAKH92aclBQOWFNv66H2/+GuULDGceTq5TcD694Ti
-         PzVdlN6evbK63EVPdSTzmPpSSLD8QzyY8JcYTaw+AAX4gUWpo5Pa5PzMMozeRXqVOAR5
-         2M0w==
-X-Gm-Message-State: AJIora/azGY144jJvL+ewVlE7WfMv/Q21fginofu8aw0mIoAoeacM7Th
-	wMcpf4sR1/sBrEbiMQNWhZZp+3/es1h1B77RuGU=
-X-Google-Smtp-Source: AGRyM1uasjCkCSVNNk3dqGVMtMHhWuLiOU+3vPo8KNEsy3IZCmdFQUJiWYJTC/E8bQMesuaOX1oy1FkolQJLbHcM1Io=
-X-Received: by 2002:a05:6638:348d:b0:331:d8f0:fd9d with SMTP id
- t13-20020a056638348d00b00331d8f0fd9dmr7928714jal.165.1656063287244; Fri, 24
- Jun 2022 02:34:47 -0700 (PDT)
+	id 1o4fiv-001Rqa-Dk; Fri, 24 Jun 2022 09:35:35 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4089066017FA;
+	Fri, 24 Jun 2022 10:35:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656063331;
+	bh=A9xe/sGqzmkRfQhZtK9jRoIxN0wnfqZ56lwtoZGUlJc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Gd7ZBDvG6QevmoMb3wGI2/By8ED74CVS3Q354nLN+R9byrCt6Yfga7mRRq4SKcGQd
+	 0sr4odCctpOAx4W03U9o+xW2f4oduV4xtE6QnxdR+DDNm97mK/PhI8GTc5Y23Vxwmb
+	 Q+HyD6HJoKbRzHITHaDU5r90/Z0r5K4rIaliMGEQ/GaPstYBET0ZnDskvtPYQcQl2b
+	 geDQRigu2B9TTIU4JEaDTIqoFAwNM948WqIeMOsf9j8hLUvMmuERMSPI7St8Lez3r1
+	 4JNPw+QYKRB04VKLSh8FNF4+dYVK9JruWMDRrWdVwhf+gVrNoYGc2sXHmjGaBxj6+4
+	 Zywmgd/prNigA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	mturquette@baylibre.com,
+	sboyd@kernel.org,
+	p.zabel@pengutronix.de,
+	y.oudjana@protonmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	ck.hu@mediatek.com,
+	fparent@baylibre.com,
+	rex-bc.chen@mediatek.com,
+	tinghan.shen@mediatek.com,
+	chun-jie.chen@mediatek.com,
+	weiyi.lu@mediatek.com,
+	ikjn@chromium.org,
+	miles.chen@mediatek.com,
+	sam.shih@mediatek.com,
+	wenst@chromium.org,
+	bgolaszewski@baylibre.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	konrad.dybcio@somainline.org,
+	marijn.suijten@somainline.org,
+	martin.botka@somainline.org,
+	~postmarketos/upstreaming@lists.sr.ht,
+	phone-devel@vger.kernel.org,
+	paul.bouchara@somainline.org,
+	kernel@collabora.com
+Subject: [PATCH v3 0/7] MediaTek Helio X10 MT6795 - Clock drivers
+Date: Fri, 24 Jun 2022 11:35:18 +0200
+Message-Id: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-6-peterwu.pub@gmail.com>
- <YrRny9TPqMUW7Yr/@spruce>
-In-Reply-To: <YrRny9TPqMUW7Yr/@spruce>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Fri, 24 Jun 2022 17:34:36 +0800
-Message-ID: <CABtFH5JdPHfvGi+tG+EKh_-XH0YxWHR3o=LsPAdW38e8fFoBeg@mail.gmail.com>
-Subject: Re: [PATCH v3 05/14] dt-bindings: backlight: Add Mediatek MT6370 backlight
-To: Joe Simmons-Talbott <joetalbott@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	jingoohan1@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, sre@kernel.org, 
-	chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, 
-	Jonathan Cameron <jic23@kernel.org>, lars@metafoo.de, lgirdwood@gmail.com, broonie@kernel.org, 
-	linux@roeck-us.net, heikki.krogerus@linux.intel.com, deller@gmx.de, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	ChiYuan Huang <cy_huang@richtek.com>, dri-devel@lists.freedesktop.org, 
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, linux-iio@vger.kernel.org, 
-	linux-fbdev@vger.kernel.org, szunichen@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_023451_005778_9EBB05E0 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20220624_023533_817112_36406A51 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,152 +97,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Joe,
+In an effort to give some love to the apparently forgotten MT6795 SoC,
+I am upstreaming more components that are necessary to support platforms
+powered by this one apart from a simple boot to serial console.
 
-Joe Simmons-Talbott <joetalbott@gmail.com> =E6=96=BC 2022=E5=B9=B46=E6=9C=
-=8823=E6=97=A5 =E9=80=B1=E5=9B=9B =E6=99=9A=E4=B8=8A9:17=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Thu, Jun 23, 2022 at 07:56:22PM +0800, ChiaEn Wu wrote:
-> > From: ChiYuan Huang <cy_huang@richtek.com>
-> >
-> > Add mt6370 backlight binding documentation.
-> >
-> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> > ---
-> >
-> > v3
-> > - Rename "mediatek,bled-pwm-hys-input-threshold-steps" to
-> >   "mediatek,bled-pwm-hys-input-th-steps"
-> > - Refine "bled-pwm-hys-input-th-steps", "bled-ovp-microvolt",
-> >   "bled-ocp-microamp" enum values
-> > ---
-> >  .../leds/backlight/mediatek,mt6370-backlight.yaml  | 92 ++++++++++++++=
-++++++++
-> >  1 file changed, 92 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/leds/backlight/me=
-diatek,mt6370-backlight.yaml
-> >
-> > diff --git a/Documentation/devicetree/bindings/leds/backlight/mediatek,=
-mt6370-backlight.yaml b/Documentation/devicetree/bindings/leds/backlight/me=
-diatek,mt6370-backlight.yaml
-> > new file mode 100644
-> > index 0000000..26563ae
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/leds/backlight/mediatek,mt6370-=
-backlight.yaml
-> > @@ -0,0 +1,92 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/leds/backlight/mediatek,mt6370-back=
-light.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Mediatek MT6370 Backlight
-> > +
-> > +maintainers:
-> > +  - ChiaEn Wu <chiaen_wu@richtek.com>
-> > +
-> > +description: |
-> > +  This module is part of the MT6370 MFD device.
-> > +  The MT6370 Backlight WLED driver supports up to a 29V output voltage=
- for
-> > +  4 channels of 8 series WLEDs. Each channel supports up to 30mA of cu=
-rrent
-> > +  capability with 2048 current steps (11 bits) in exponential or linea=
-r
-> > +  mapping curves.
-> > +
-> > +allOf:
-> > +  - $ref: common.yaml#
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,mt6370-backlight
-> > +
-> > +  default-brightness:
-> > +    minimum: 0
-> > +    maximum: 2048
-> > +
-> > +  max-brightness:
-> > +    minimum: 0
-> > +    maximum: 2048
-> > +
-> > +  enable-gpios:
-> > +    description: External backlight 'enable' pin
-> > +    maxItems: 1
-> > +
-> > +  mediatek,bled-pwm-enable:
-> > +    description: |
-> > +      Enable external PWM input for backlight dimming
-> > +    type: boolean
-> > +
-> > +  mediatek,bled-pwm-hys-enable:
-> > +    description: |
-> > +      Enable the backlight input-hysteresis for PWM mode
-> > +    type: boolean
-> > +
-> > +  mediatek,bled-pwm-hys-input-th-steps:
-> > +    $ref: /schemas/types.yaml#/definitions/uint8
-> > +    enum: [1, 4, 16, 64]
-> > +    description: |
-> > +      The selection of the upper and lower bounds threshold of backlig=
-ht
-> > +      PWM resolution. If we choose selection 64, the variation of PWM
-> > +      resolution needs over than 64 steps.
->
-> more than?
->
-> Thanks,
-> Joe
->
+This (very big) series introduces system clock, multimedia clock drivers
+(including resets) for this SoC.
 
-Thanks for your helpful comments!
-I will revise this in the next patch. Thanks!
+Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
 
-> > +
-> > +  mediatek,bled-ovp-shutdown:
-> > +    description: |
-> > +      Enable the backlight shutdown when OVP level triggered
-> > +    type: boolean
-> > +
-> > +  mediatek,bled-ovp-microvolt:
-> > +    enum: [17000000, 21000000, 25000000, 29000000]
-> > +    description: |
-> > +      Backlight OVP level selection.
-> > +
-> > +  mediatek,bled-ocp-shutdown:
-> > +    description: |
-> > +      Enable the backlight shutdown when OCP level triggerred.
-> > +    type: boolean
-> > +
-> > +  mediatek,bled-ocp-microamp:
-> > +    enum: [900000, 1200000, 1500000, 1800000]
-> > +    description: |
-> > +      Backlight OC level selection.
-> > +
-> > +  mediatek,bled-channel-use:
-> > +    $ref: /schemas/types.yaml#/definitions/uint8
-> > +    description: |
-> > +      Backlight LED channel to be used.
-> > +      Each bit mapping to:
-> > +        - 0: CH4
-> > +        - 1: CH3
-> > +        - 2: CH2
-> > +        - 3: CH1
-> > +    minimum: 1
-> > +    maximum: 15
-> > +
-> > +required:
-> > +  - compatible
-> > +  - mediatek,bled-channel-use
-> > +
-> > +additionalProperties: false
-> > --
-> > 2.7.4
-> >
+This series depends on, and can be merged on top of:
+[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=640122
+[2]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=637849
 
-Best regards,
-ChiaEn Wu
+Changes in v3:
+ - Fixed typo in commit [4/7]
+
+Changes in v2:
+ - Fixed yaml clock bindings as per Rob's review
+ - Added ability to compile all MT6795 clock drivers as modules
+ - Added commits to export some symbols, required to compile as module
+
+AngeloGioacchino Del Regno (7):
+  dt-bindings: mediatek: Document MT6795 system controllers bindings
+  dt-bindings: clock: Add MediaTek Helio X10 MT6795 clock bindings
+  dt-bindings: reset: Add bindings for MT6795 Helio X10 reset
+    controllers
+  dt-bindings: clock: mediatek: Add clock driver bindings for MT6795
+  clk: mediatek: clk-apmixed: Remove unneeded __init annotation
+  clk: mediatek: Export required symbols to compile clk drivers as
+    module
+  clk: mediatek: Add MediaTek Helio X10 MT6795 clock drivers
+
+ .../arm/mediatek/mediatek,infracfg.yaml       |   2 +
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
+ .../arm/mediatek/mediatek,pericfg.yaml        |   1 +
+ .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
+ .../bindings/clock/mediatek,mt6795-clock.yaml |  66 ++
+ .../clock/mediatek,mt6795-sys-clock.yaml      |  74 +++
+ .../bindings/clock/mediatek,topckgen.yaml     |   1 +
+ drivers/clk/mediatek/Kconfig                  |  37 ++
+ drivers/clk/mediatek/Makefile                 |   6 +
+ drivers/clk/mediatek/clk-apmixed.c            |   3 +-
+ drivers/clk/mediatek/clk-cpumux.c             |   2 +
+ drivers/clk/mediatek/clk-mt6795-apmixedsys.c  | 157 +++++
+ drivers/clk/mediatek/clk-mt6795-infracfg.c    | 148 +++++
+ drivers/clk/mediatek/clk-mt6795-mfg.c         |  50 ++
+ drivers/clk/mediatek/clk-mt6795-mm.c          | 106 +++
+ drivers/clk/mediatek/clk-mt6795-pericfg.c     | 160 +++++
+ drivers/clk/mediatek/clk-mt6795-topckgen.c    | 610 ++++++++++++++++++
+ drivers/clk/mediatek/clk-mt6795-vdecsys.c     |  55 ++
+ drivers/clk/mediatek/clk-mt6795-vencsys.c     |  50 ++
+ drivers/clk/mediatek/clk-mtk.c                |   2 +
+ drivers/clk/mediatek/reset.c                  |   1 +
+ include/dt-bindings/clock/mt6795-clk.h        | 275 ++++++++
+ include/dt-bindings/reset/mt6795-resets.h     |  50 ++
+ 23 files changed, 1857 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
+ create mode 100644 include/dt-bindings/clock/mt6795-clk.h
+ create mode 100644 include/dt-bindings/reset/mt6795-resets.h
+
+-- 
+2.35.1
+
 
