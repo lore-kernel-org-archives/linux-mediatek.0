@@ -4,64 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E5BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 847F5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 10:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=46eZI8EBmHCeYZ18PSz8qLsBpQq+85K2lsgJJ+Z+5NY=; b=liN9D+swWkxSCpQWPlkj03vIdX
-	IYB3tX/XJm5jaRlMPRC7rNZpEwBJ2r6YT5//nqA8JrXOrFULI0WKvfzE2Zlz6JVPd8FhZtELa9VpY
-	BWLLnAn/UFmYjh9bqkDpFnCt+dld6meJg1FiOqceGbrYHfGeyehI4jvHyjWBdFijJGi3MuSAgU0O/
-	GtwahZsrueVnvE9u0HNAG9Hr6iMfh5eQNuttZ2gI0wGOSrH+y/+ZaUCOzSo57CPW40ccdotcWVavX
-	TtycQG+7Q/G5XugS+Hh9MtXkL/cRhngYNpj2P4jKiS1WqWxBPYglNbgOFDigXJIEBPh17vQYmCvqk
-	e54PB0vQ==;
+	bh=Nuxc36+s4sWQDaVadkc6oPNaa2rIDEmkVevDjA38UUQ=; b=p5m/DUqY2RBMg+6V52JcZdUqEb
+	YZ6onfuB3n/qmEDHpxDjqwHT0GVKIxIL9PKP687dg2B7ZmWqnBi/Dt+mnniJegr0cT9sejshShs2K
+	U+cq3LGBVEqz/WJkf00Y2RX70CPA3EPg71yI5QmMQXgQbPIJGTzq51b7AflA7HMxfnRsyVT6Zv6sb
+	PunMH+JBPUUIrv588oALt+Qk6C4Cffb2zxO7TgnJXHF8lgKtei1bF0u/NUytHUhxnrUcW589YA8/Y
+	E8LBDvhSuAUeZ3dVaqMxifatayt3BSSO91XfdpGpWOZbYEMyQdcN/2PSfld/cTTVC2RxymOUZezGi
+	ETv6GU3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4gRz-001jBQ-Ss; Fri, 24 Jun 2022 10:22:07 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o4gXx-001lG7-70; Fri, 24 Jun 2022 10:28:17 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4gRV-001iwG-G5; Fri, 24 Jun 2022 10:21:39 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1CE1F66017E1;
-	Fri, 24 Jun 2022 11:21:33 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656066093;
-	bh=XiQqaDDVsr9ct3XTN5uUy3VFBouJw2oayLQC2BD4/ig=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B5+Qof2yy7qYYHlV/E/zYtNZe9KOOGts0UL40hc5pHask88etXUGsINGHgCieqMcR
-	 AwODsgtze+9SM0LRZgskDgBWfDJIYbP4iGXlTWHpoV3KTVtkCpVsSw9nc0cdAz2Bhv
-	 XFFAAzQ+OO2DDPIuBMa2k+ZvSyLmzR6esYY+r0GqDrnK+h3N53uVw+V/HLcsOr5PlL
-	 LcAuPwJK8wlHvz9Pt6Hz3GatnFdLsjGtzn1ie40TwLmB17LL0GviBJ/GH0XWUAXUO6
-	 kpnW13gwDPutFDHN4o293k04vXkbW0xQuQR+mH32ICYQmgy+I2ChtOy5oZ0Y59hN+I
-	 wIdGa+eZ2VcDQ==
-Message-ID: <cb36b4a2-86b0-630c-8012-d1df1b0a42de@collabora.com>
-Date: Fri, 24 Jun 2022 12:21:30 +0200
+	id 1o4gXX-001l1e-IX
+	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 10:27:57 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id lw20so3797866ejb.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jun 2022 03:27:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=Nuxc36+s4sWQDaVadkc6oPNaa2rIDEmkVevDjA38UUQ=;
+        b=Lu/cMZDQbpDrvP88FBrvMyrvBoGMLxkakNs1O/w0KJCcIFSPOUBY6OryS/oCJ06YOn
+         GbDK7li6a4UHrHldXUyUMMOWrNS7pm9L5bfCAY7TmNWPkoDDJz8VXQFe9Fhpv3m1uc0L
+         t4Sa3S5fCj+Jep4qZr+X95xroO/Fz5Hy4UOnCnNBFg2IacvUZRBw/4DLZFBdZxUBHoUe
+         5PIG9v7XeqxkrKqcy2iOjNxequ8IQZPQLNBUYSNE3EU48hl1FQubHzyALQeSD5oD6gy4
+         XQLb1KUjFcLMpjEJx38RU1Cy1e+e8w6rEg3l9/raR6EjGfIkJCCDcDqn2DXE/qEDSWEt
+         gzVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=Nuxc36+s4sWQDaVadkc6oPNaa2rIDEmkVevDjA38UUQ=;
+        b=TdCT0xRWwjdEUNf20WOo9OnpCtlOMmE+1kkXZonQMbCSieURIKRuLnWdc77jfDCAzi
+         jgySMK2sxBxILu4qA/aBaMAOoflcoDow0lJ/bVGqXKGrSQHsThQpV3UmxkppF/QeD2AI
+         vCuv+D7Zi0BpmNyG1d1CJlG1iSfXZqUoMnC8VqNyYsPvIzoNkz226gGMUqXPyC/Mv8y3
+         mQGPA8xuOhgys7e5kf2aPb55QC4F6f0+Sbox9Ei3BYaqXTsLOWiqtHPPkvjiXkbuSDYC
+         ES4EWVHMZDfzGyXU/C6d9KNgq7px2xZMU39xE2jGy/3OLSeJEh29+62KDaJX6WFV6Ink
+         xOaw==
+X-Gm-Message-State: AJIora8v0pDYqFUJX5SU/o9XJpGAcUAcOT0WPBcnrWybv4SlT9h+YKT+
+	rWvKinLVcXC/99eErxQ/bU0H9w==
+X-Google-Smtp-Source: AGRyM1t4wJC/XeeqGXInCg0idKMgknVDGZX7X/fQzRWF0oldACj/ylYne3Hz/Rt8agVjJawt7AOTzw==
+X-Received: by 2002:a17:907:94cb:b0:721:252c:d4bb with SMTP id dn11-20020a17090794cb00b00721252cd4bbmr12681930ejc.148.1656066465307;
+        Fri, 24 Jun 2022 03:27:45 -0700 (PDT)
+Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id o12-20020a056402038c00b0043561e0c9adsm1640034edv.52.2022.06.24.03.27.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 24 Jun 2022 03:27:44 -0700 (PDT)
+Message-ID: <06819889-2c00-83d8-0d25-ce6c2559105a@linaro.org>
+Date: Fri, 24 Jun 2022 12:27:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 0/7] MediaTek Helio X10 MT6795 - MT6331/6332 PMIC Wrapper
+Subject: Re: [PATCH v3 02/14] dt-bindings: power: supply: Add Mediatek MT6370
+ Charger
 Content-Language: en-US
-To: lee.jones@linaro.org
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, zhiyong.tao@mediatek.com, henryc.chen@mediatek.com,
- johnson.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220520124039.228314-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220520124039.228314-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
+ daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
+ gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
+ lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
+ heikki.krogerus@linux.intel.com, deller@gmx.de
+Cc: chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
+ dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com
+References: <20220623115631.22209-1-peterwu.pub@gmail.com>
+ <20220623115631.22209-3-peterwu.pub@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220623115631.22209-3-peterwu.pub@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_032137_756979_41E66220 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20220624_032751_668427_9FD8DAB0 
+X-CRM114-Status: GOOD (  18.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,48 +103,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/05/22 14:40, AngeloGioacchino Del Regno ha scritto:
-> In an effort to give some love to the apparently forgotten MT6795 SoC,
-> I am upstreaming more components that are necessary to support platforms
-> powered by this one apart from a simple boot to serial console.
+On 23/06/2022 13:56, ChiaEn Wu wrote:
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
 > 
-> This series introduces support in the PMIC Wrapper for a different PMIC
-> topology, which is commonly found on smartphone boards, using one main
-> PMIC and one Companion PMIC;
-> be aware that this kind of topology is not *specific to* the Helio X10
-> SoC, but common across many kinds of MediaTek smartphone oriented SoCs
-> and board designs.
+> Add Mediatek MT6370 Charger binding documentation.
 > 
-> That said, support for the PMIC combo MT6331+MT6332 is provided in this
-> series in a form that will be able to initialize the PMICs with crypto
-> and DualIO but nothing else: these PMICs are very featureful, so I have
-> decided to add this support in more than just one step, as there will
-> be multiple patches for multiple different subsystems (..it's a mfd!..).
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> ---
 > 
-> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+> v3
+> - Add items and remove maxItems of io-channels
+> - Add io-channel-names and describe each item
+> - Add "unevaluatedProperties: false" in "usb-otg-vbus-regulator"
+> - Rename "enable-gpio" to "enable-gpios" in "usb-otg-vbus-regulator"
+> ---
+>  .../power/supply/mediatek,mt6370-charger.yaml      | 87 ++++++++++++++++++++++
+>  1 file changed, 87 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
 > 
-> AngeloGioacchino Del Regno (7):
->    soc: mediatek: pwrap: Move PMIC read test sequence in function
->    soc: mediatek: pwrap: Add kerneldoc for struct pwrap_slv_type
->    soc: mediatek: mtk-pmic-wrap: Add support for companion PMICs
->    dt-bindings: mfd: Add compatible for MT6331 PMIC
->    soc: mediatek: mtk-pmic-wrap: Add support for MT6331 w/ MT6332
->      companion
->    dt-bindings: mediatek: pwrap: Add a compatible for MT6795 Helio X10
->    soc: mediatek: pwrap: Add support for MT6795 Helio X10
-> 
->   .../devicetree/bindings/mfd/mt6397.txt        |   1 +
->   .../bindings/soc/mediatek/pwrap.txt           |   1 +
->   drivers/soc/mediatek/mtk-pmic-wrap.c          | 287 ++++++++++++++++--
->   3 files changed, 263 insertions(+), 26 deletions(-)
-> 
+> diff --git a/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+> new file mode 100644
+> index 0000000..f138db6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+> @@ -0,0 +1,87 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/power/supply/mediatek,mt6370-charger.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT6370 Battery Charger
+> +
+> +maintainers:
+> +  - ChiaEn Wu <chiaen_wu@richtek.com>
+> +
+> +description: |
+> +  This module is part of the MT6370 MFD device.
+> +  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6370-charger
+> +
+> +  interrupts:
+> +    description: |
+> +      Specify what irqs are needed to be handled by MT6370 Charger driver. IRQ
+> +      "MT6370_IRQ_CHG_MIVR", "MT6370_IRQ_ATTACH" and "MT6370_IRQ_OVPCTRL_UVP_D"
+> +      are required.
+> +    items:
+> +      - description: BC1.2 done irq
+> +      - description: usb plug in irq
+> +      - description: mivr irq
+> +
+> +  interrupt-names:
+> +    items:
+> +      - const: attach_i
+> +      - const: uvp_d_evt
+> +      - const: mivr
+> +
+> +  io-channels:
+> +    description: |
+> +      Use ADC channel to read VBUS, IBUS, IBAT, etc., info.
+> +    minItems: 1
+> +    items:
+> +      - description: |
+> +          VBUS voltage with lower accuracy (+-75mV) but higher measure
+> +          range (1~22V)
+> +      - description: |
+> +          VBUS voltage with higher accuracy (+-30mV) but lower measure
+> +          range (1~9.76V)
+> +      - description: the main system input voltage
+> +      - description: battery voltage
+> +      - description: battery temperature-sense input voltage
+> +      - description: IBUS current (required)
+> +      - description: battery current
+> +      - description: |
+> +          regulated output voltage to supply for the PWM low-side gate driver
+> +          and the bootstrap capacitor
+> +      - description: IC junction temperature
+> +
+> +  io-channel-names:
 
+It does not match io-channels, you need minItems here as well.
 
-Matthias, please, can you check this series?
+> +    items:
+> +      - const: vbusdiv5
+> +      - const: vbusdiv2
+> +      - const: vsys
+> +      - const: vbat
+> +      - const: ts_bat
+> +      - const: ibus
+> +      - const: ibat
+> +      - const: chg_vddp
+> +      - const: temp_jc
+> +
 
-This doesn't depend on any other series that I've sent and besides that,
-Lee has acked the actual MFD PMIC code, so this should be good to go.
-
-Thanks,
-Angelo
+Best regards,
+Krzysztof
 
