@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75142C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 06:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B39DDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 07:17:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9kzgjd2siOm2VvCiTpf3g1ywuGEVoFHr6U7cwlGS0CQ=; b=MLMlj92HcYn34FyLr55MBioKjM
-	/MUuVR41YNjpyVnmHbh/OaCCExo/6trChmxOi587JtnYJLX8Np0POKARoghxRwMEG7gioM0+EyPt+
-	UnXBfP5iVsrEcNTzJNYb5NvL0iugFfI0Fjbj+hihHEYMP8dLh+OPAYp6HjqespWaym6gBl0Md4SGd
-	y7wXE8beX8HrY1KiLKDUOnjcTeRw34h+Ex2MFjC09+qKEuBmDpGlitgZfl8ZBgfbFK/0nDRUcr/DE
-	MPdpUS1BLCkaeEUmbyOftEvJpvnAZfYLypndyPnpwUDHWsi39hL1Ehk1qqLid75lGoy9fwWrC0eVr
-	emA6xwzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HxpZ0nOqLjtRHtUKnNbPCyrgSal2iGOegGyws6047DE=; b=SDe5Al14vlMi+i9MLLIxxnNOqu
+	b+f8a1Mh52ZCRYMZaIqdn/Kf6vIeP8i7DKoWsh1iVKU5qZpiMkQoQCTBhDTx8dVl3A/eq4qD+vl7o
+	IEFCA9OIWIyFB0y+EkuPbpiFFZGqoOwhOlKzmsVJI6huJAOk3D9TNYRFyBh4QRGvbXzxQQkQt8OTJ
+	r/bLYlsaBQPDRSgUgJLr238wYFiX54StDZUTbS3mQzple1x7/RrIOa08E1at4VnXUEj+VAN4jlFHP
+	5UisobDttx/5PLz6PwnsctKir2AAPNaOQqItsaqcHjvZNRZyjdTJ4NtQUY+N4raO3k9cNhxQvzJn1
+	7nW+YWFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4cqj-000qkN-5A; Fri, 24 Jun 2022 06:31:25 +0000
+	id 1o4dZP-000yM6-Fw; Fri, 24 Jun 2022 07:17:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4cqV-000qi8-Pq; Fri, 24 Jun 2022 06:31:15 +0000
-X-UUID: e2b2d89b96d94c3aa28674d4298c3f17-20220623
+	id 1o4dZC-000yJw-5N; Fri, 24 Jun 2022 07:17:25 +0000
+X-UUID: 9cfc2913d9c1419aa414fd4e1f363e0e-20220624
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:c9e6b74c-6459-4702-b9c0-5c9e65ef406f,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:88c866ea-f7af-4e69-92ee-0fd74a0c286c,C
+X-CID-O-INFO: VERSION:1.1.6,REQID:026f67a4-e21d-4e48-8045-180d546b7afc,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:6688f02d-1756-4fa3-be7f-474a6e4be921,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: e2b2d89b96d94c3aa28674d4298c3f17-20220623
+X-UUID: 9cfc2913d9c1419aa414fd4e1f363e0e-20220624
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+	(envelope-from <edward-jw.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1428739317; Thu, 23 Jun 2022 23:31:05 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 1165500962; Fri, 24 Jun 2022 00:17:15 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Jun 2022 23:27:28 -0700
+ 15.0.1497.2; Fri, 24 Jun 2022 00:12:41 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 24 Jun 2022 14:27:26 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 24 Jun 2022 14:27:26 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
-	<chunfeng.yun@mediatek.com>, <kishon@ti.com>, <vkoul@kernel.org>,
-	<matthias.bgg@gmail.com>, <airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<ck.hu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v12 1/1] phy: phy-mtk-dp: Add driver for DP phy
-Date: Fri, 24 Jun 2022 14:27:25 +0800
-Message-ID: <20220624062725.4095-1-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Fri, 24 Jun 2022 15:12:40 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Fri, 24 Jun 2022 15:12:40 +0800
+Message-ID: <9addc9fb0c949e921f915fcf128783393214bfde.camel@mediatek.com>
+Subject: Re: [RFC PATCH 2/2] clk: mediatek: Add frequency hopping support
+From: Edward-JW Yang <edward-jw.yang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Johnson Wang =?UTF-8?Q?=28=E7=8E=8B=E8=81=96=E9=91=AB=29?=
+	<Johnson.Wang@mediatek.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@kernel.org"
+	<sboyd@kernel.org>
+CC: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<yu-chang.wang@mediatek.com>, <kuan-hsin.lee@mediatek.com>
+Date: Fri, 24 Jun 2022 15:12:39 +0800
+In-Reply-To: <ca4b9a0e-b1ca-6861-e4c0-30a8c8a5c99c@collabora.com>
+References: <20220612135414.3003-1-johnson.wang@mediatek.com>
+	 <20220612135414.3003-3-johnson.wang@mediatek.com>
+	 <ca4b9a0e-b1ca-6861-e4c0-30a8c8a5c99c@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_233111_872192_E0B6D5A5 
-X-CRM114-Status: GOOD (  25.13  )
+X-CRM114-CacheID: sfid-20220624_001722_279442_D08E94D4 
+X-CRM114-Status: GOOD (  56.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,297 +91,925 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Markus Schneider-Pargmann <msp@baylibre.com>
+Hi AngeloGioacchino,
 
-This is a new driver that supports the integrated DisplayPort phy for
-mediatek SoCs, especially the mt8195. The phy is integrated into the
-DisplayPort controller and will be created by the mtk-dp driver. This
-driver expects a struct regmap to be able to work on the same registers
-as the DisplayPort controller. It sets the device data to be the struct
-phy so that the DisplayPort controller can easily work with it.
+Thanks for all the advices.
 
-The driver does not have any devicetree bindings because the datasheet
-does not list the controller and the phy as distinct units.
+On Mon, 2022-06-13 at 17:43 +0800, AngeloGioacchino Del Regno wrote:
+> Il 12/06/22 15:54, Johnson Wang ha scritto:
+> > Add frequency hopping support and spread spectrum clocking
+> > control for MT8186.
+> > 
+> > Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
+> > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> 
+> Before going on with the review, there's one important consideration:
+> the Frequency Hopping control is related to PLLs only (so, no other clock
+> types get in the mix).
+> 
+> Checking the code, the *main* thing that we do here is initializing the
+> FHCTL by setting some registers, and we're performing the actual frequency
+> hopping operation in clk-pll, which is right but, at this point, I think
+> that the best way to proceed is to add the "FHCTL superpowers" to clk-pll
+> itself, instead of adding multiple new files and devicetree bindings that
+> are specific to the FHCTL itself.
+> 
+> This would mean that the `fh-id` and `perms` params that you're setting in
+> the devicetree get transferred to clk-mt8186 (and hardcoded there), as to
+> extend the PLL declarations to include these two: that will also simplify
+> the driver so that you won't have to match names here and there.
+> 
+> Just an example:
+> 
+> 	PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x0224, 0x0230, 0,
+> 
+> 	    PLL_AO, 0, 22, 0x0228, 24, 0, 0, 0, 0x0228, 2, FHCTL_PERM_DBG_DUMP),
+> 
+> Besides, there are another couple of reasons why you should do that instead,
+> of which:
+>   - The devicetree should be "generic enough", we shall not see the direct value
+>     to write to the registers in there (yet, perms assigns exactly that)
+>   - These values won't change on a per-device basis, I believe? They're SoC-related,
+>     not board-related, right?
+> 
+> In case they're board related (and/or related to TZ permissions), we can always add
+> a bool property to the apmixedsys to advertise that board X needs to use an
+> alternative permission (ex.: `mediatek,secure-fhctl`).
 
-The interaction with the controller can be covered by the configure
-callback of the phy framework and its displayport parameters.
+I think we should remain clk-fhctl files because FHCTL is a independent HW and is
+not a necessary component of clk-pll.
+Frequency hopping function from FHCTL is not used to replace original flow of
+set_rate in clk-pll. They are two different ways to change PLL's frequency. The
+current set_rate method in clk-pll changes PLL register setting directly. Another
+way uses FHCTL to change PLL rate. We will set some PLL's frequency be controlled
+by clk-pll and some are controlled by FHCTL. And use `perms` param to decide
+whether a PLL is using FHCTL to change its frequency.
 
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-[Bo-Chen: Modify reviewers' comments.]
-Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-----
-This series display port phy drivers and separated from [1] which is
-original from Guillaume.
-The display port driver is [2].
+FHCTL has another function called SSC(spread spectrum clocking) which is used to
+solve PLL de-sense problem. De-sense problem is board-related so we introduce a
+`ssc-rate` param in the devicetree to decide whether SSC is enabled and how many
+rate should be set. Mixing SSC function into clk-pll may cause clk-pll more
+complex.
 
-Changes for v12:
-1. Add copyright strings in phy-mtk-dp.c.
+> 
+> In any case, to speed up development (I believe that transferring this in clk-pll
+> means that the code will still be more or less the same), I've performed a review
+> on the code; check below.
+> 
+> > ---
+> >   drivers/clk/mediatek/Kconfig          |   8 +
+> >   drivers/clk/mediatek/Makefile         |   2 +
+> >   drivers/clk/mediatek/clk-fhctl-ap.c   | 347 ++++++++++++++++++++++++++
+> >   drivers/clk/mediatek/clk-fhctl-pll.c  | 209 ++++++++++++++++
+> >   drivers/clk/mediatek/clk-fhctl-pll.h  |  74 ++++++
+> >   drivers/clk/mediatek/clk-fhctl-util.h |  24 ++
+> >   drivers/clk/mediatek/clk-fhctl.c      | 191 ++++++++++++++
+> >   drivers/clk/mediatek/clk-fhctl.h      |  45 ++++
+> >   drivers/clk/mediatek/clk-pll.c        |   5 +-
+> >   drivers/clk/mediatek/clk-pll.h        |   5 +
+> >   10 files changed, 909 insertions(+), 1 deletion(-)
+> >   create mode 100644 drivers/clk/mediatek/clk-fhctl-ap.c
+> >   create mode 100644 drivers/clk/mediatek/clk-fhctl-pll.c
+> >   create mode 100644 drivers/clk/mediatek/clk-fhctl-pll.h
+> >   create mode 100644 drivers/clk/mediatek/clk-fhctl-util.h
+> >   create mode 100644 drivers/clk/mediatek/clk-fhctl.c
+> >   create mode 100644 drivers/clk/mediatek/clk-fhctl.h
+> > 
+> > diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> > index d5936cfb3bee..fd887c537a91 100644
+> > --- a/drivers/clk/mediatek/Kconfig
+> > +++ b/drivers/clk/mediatek/Kconfig
+> > @@ -622,4 +622,12 @@ config COMMON_CLK_MT8516_AUDSYS
+> >   	help
+> >   	  This driver supports MediaTek MT8516 audsys clocks.
+> >   
+> > +config COMMON_CLK_MTK_FREQ_HOPPING
+> > +	tristate "MediaTek frequency hopping driver"
+> 
+> If this goes inside of clk-pll, this configuration option can be safely removed.
 
-Changes for v11:
-1. Fix register definition.
+I think we should keep this for clk-fhctl* files.
 
-[1]:https://lore.kernel.org/all/20220523104758.29531-1-granquet@baylibre.com/
-[2]:https://lore.kernel.org/all/20220610105522.13449-1-rex-bc.chen@mediatek.com/
-----
----
- MAINTAINERS                       |   1 +
- drivers/phy/mediatek/Kconfig      |   8 ++
- drivers/phy/mediatek/Makefile     |   1 +
- drivers/phy/mediatek/phy-mtk-dp.c | 202 ++++++++++++++++++++++++++++++
- 4 files changed, 212 insertions(+)
- create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
+> 
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	select COMMON_CLK_MEDIATEK
+> > +	help
+> > +	  This driver supports frequency hopping and spread spectrum clocking
+> > +	  control for some MediaTek SoCs.
+> > +
+> >   endmenu
+> > diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> > index caf2ce93d666..3c0e9bd3978b 100644
+> > --- a/drivers/clk/mediatek/Makefile
+> > +++ b/drivers/clk/mediatek/Makefile
+> > @@ -99,3 +99,5 @@ obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o clk-mt8195-topckgen.o
+> >   				   clk-mt8195-apusys_pll.o
+> >   obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+> >   obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+> > +obj-$(CONFIG_COMMON_CLK_MTK_FREQ_HOPPING) += fhctl.o
+> > +fhctl-objs += clk-fhctl.o clk-fhctl-ap.o clk-fhctl-pll.o
+> > diff --git a/drivers/clk/mediatek/clk-fhctl-ap.c b/drivers/clk/mediatek/clk-fhctl-ap.c
+> > new file mode 100644
+> > index 000000000000..9e3226a9c1ca
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-fhctl-ap.c
+> > @@ -0,0 +1,347 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2022 MediaTek Inc.
+> > + */
+> > +
+> > +#include <linux/device.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/string.h>
+> > +#include <linux/slab.h>
+> > +#include "clk-fhctl.h"
+> > +#include "clk-fhctl-pll.h"
+> > +#include "clk-fhctl-util.h"
+> > +
+> > +#define FHCTL_TARGET FHCTL_AP
+> > +
+> > +#define PERCENT_TO_DDSLMT(dds, percent_m10) \
+> > +	((((dds) * (percent_m10)) >> 5) / 100)
+> > +
+> > +struct fh_ap_match {
+> > +	char *name;
+> > +	struct fh_hdlr *hdlr;
+> > +	int (*init)(struct pll_dts *array, struct fh_ap_match *match);
+> > +};
+> > +
+> > +struct hdlr_data {
+> > +	struct pll_dts *array;
+> > +	struct fh_pll_domain *domain;
+> > +	spinlock_t *lock;
+> > +};
+> > +
+> > +static int fhctl_set_ssc_regs(struct fh_pll_regs *regs,
+> > +			      struct fh_pll_data *data,
+> > +			      int fh_id, int rate)
+> > +{
+> > +	unsigned int updnlmt_val;
+> > +
+> > +	if (rate > 0) {
+> > +		fh_set_field(regs->reg_cfg, data->frddsx_en, 0);
+> > +		fh_set_field(regs->reg_cfg, data->sfstrx_en, 0);
+> > +		fh_set_field(regs->reg_cfg, data->fhctlx_en, 0);
+> 
+> Are all of these writes to be performed with a barrier?
+> Can't we use writel_relaxed() for some, with a "final" writel() where ordering
+> *really* matters?
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6cc825857722..5965b8cfa199 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -6719,6 +6719,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
- S:	Supported
- F:	Documentation/devicetree/bindings/display/mediatek/
- F:	drivers/gpu/drm/mediatek/
-+F:	drivers/phy/mediatek/phy-mtk-dp.c
- F:	drivers/phy/mediatek/phy-mtk-hdmi*
- F:	drivers/phy/mediatek/phy-mtk-mipi*
- 
-diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-index 55f8e6c048ab..d631525d12e1 100644
---- a/drivers/phy/mediatek/Kconfig
-+++ b/drivers/phy/mediatek/Kconfig
-@@ -55,3 +55,11 @@ config PHY_MTK_MIPI_DSI
- 	select GENERIC_PHY
- 	help
- 	  Support MIPI DSI for Mediatek SoCs.
-+
-+config PHY_MTK_DP
-+	tristate "MediaTek DP-PHY Driver"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on OF
-+	select GENERIC_PHY
-+	help
-+	  Support DisplayPort PHY for MediaTek SoCs.
-diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
-index ace660fbed3a..4ba1e0650434 100644
---- a/drivers/phy/mediatek/Makefile
-+++ b/drivers/phy/mediatek/Makefile
-@@ -3,6 +3,7 @@
- # Makefile for the phy drivers.
- #
- 
-+obj-$(CONFIG_PHY_MTK_DP)		+= phy-mtk-dp.o
- obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
- obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
- obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
-diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-new file mode 100644
-index 000000000000..715bd2336c17
---- /dev/null
-+++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -0,0 +1,202 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * MediaTek DisplayPort PHY driver
-+ *
-+ * Copyright (c) 2022, BayLibre Inc.
-+ * Copyright (c) 2022, MediaTek Inc.
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/io.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/of.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#define PHY_OFFSET			0x1000
-+
-+#define MTK_DP_PHY_DIG_PLL_CTL_1	(PHY_OFFSET + 0x14)
-+#define TPLL_SSC_EN			BIT(3)
-+
-+#define MTK_DP_PHY_DIG_BIT_RATE		(PHY_OFFSET + 0x3C)
-+#define BIT_RATE_RBR			0
-+#define BIT_RATE_HBR			1
-+#define BIT_RATE_HBR2			2
-+#define BIT_RATE_HBR3			3
-+
-+#define MTK_DP_PHY_DIG_SW_RST		(PHY_OFFSET + 0x38)
-+#define DP_GLB_SW_RST_PHYD		BIT(0)
-+
-+#define MTK_DP_LANE0_DRIVING_PARAM_3		(PHY_OFFSET + 0x138)
-+#define MTK_DP_LANE1_DRIVING_PARAM_3		(PHY_OFFSET + 0x238)
-+#define MTK_DP_LANE2_DRIVING_PARAM_3		(PHY_OFFSET + 0x338)
-+#define MTK_DP_LANE3_DRIVING_PARAM_3		(PHY_OFFSET + 0x438)
-+#define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT	BIT(4)
-+#define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT	(BIT(10) | BIT(12))
-+#define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT	GENMASK(20, 19)
-+#define XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT	GENMASK(29, 29)
-+#define DRIVING_PARAM_3_DEFAULT	(XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT | \
-+				 XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT | \
-+				 XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT | \
-+				 XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT)
-+
-+#define XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT	GENMASK(4, 3)
-+#define XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT	GENMASK(12, 9)
-+#define XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT	(BIT(18) | BIT(21))
-+#define XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT	GENMASK(29, 29)
-+#define DRIVING_PARAM_4_DEFAULT	(XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT | \
-+				 XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT | \
-+				 XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT | \
-+				 XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT)
-+
-+#define XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT	(BIT(3) | BIT(5))
-+#define XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT	GENMASK(13, 12)
-+#define DRIVING_PARAM_5_DEFAULT	(XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT | \
-+				 XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT)
-+
-+#define XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT	0
-+#define XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT	GENMASK(10, 10)
-+#define XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT	GENMASK(19, 19)
-+#define XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT	GENMASK(28, 28)
-+#define DRIVING_PARAM_6_DEFAULT	(XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT | \
-+				 XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT | \
-+				 XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT | \
-+				 XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT)
-+
-+#define XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT	0
-+#define XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT	GENMASK(10, 9)
-+#define XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT	GENMASK(19, 18)
-+#define XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT	0
-+#define DRIVING_PARAM_7_DEFAULT	(XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT | \
-+				 XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT | \
-+				 XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT | \
-+				 XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT)
-+
-+#define XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT	GENMASK(3, 3)
-+#define XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT	0
-+#define DRIVING_PARAM_8_DEFAULT	(XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT | \
-+				 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
-+
-+struct mtk_dp_phy {
-+	struct regmap *regs;
-+};
-+
-+static int mtk_dp_phy_init(struct phy *phy)
-+{
-+	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
-+	u32 driving_params[] = {
-+		DRIVING_PARAM_3_DEFAULT,
-+		DRIVING_PARAM_4_DEFAULT,
-+		DRIVING_PARAM_5_DEFAULT,
-+		DRIVING_PARAM_6_DEFAULT,
-+		DRIVING_PARAM_7_DEFAULT,
-+		DRIVING_PARAM_8_DEFAULT
-+	};
-+
-+	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE0_DRIVING_PARAM_3,
-+			  driving_params, ARRAY_SIZE(driving_params));
-+	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE1_DRIVING_PARAM_3,
-+			  driving_params, ARRAY_SIZE(driving_params));
-+	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE2_DRIVING_PARAM_3,
-+			  driving_params, ARRAY_SIZE(driving_params));
-+	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE3_DRIVING_PARAM_3,
-+			  driving_params, ARRAY_SIZE(driving_params));
-+
-+	return 0;
-+}
-+
-+static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
-+{
-+	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
-+	u32 val;
-+
-+	if (opts->dp.set_rate) {
-+		switch (opts->dp.link_rate) {
-+		default:
-+			dev_err(&phy->dev,
-+				"Implementation error, unknown linkrate %x\n",
-+				opts->dp.link_rate);
-+			return -EINVAL;
-+		case 1620:
-+			val = BIT_RATE_RBR;
-+			break;
-+		case 2700:
-+			val = BIT_RATE_HBR;
-+			break;
-+		case 5400:
-+			val = BIT_RATE_HBR2;
-+			break;
-+		case 8100:
-+			val = BIT_RATE_HBR3;
-+			break;
-+		}
-+		regmap_write(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE, val);
-+	}
-+
-+	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_PLL_CTL_1,
-+			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
-+
-+	return 0;
-+}
-+
-+static int mtk_dp_phy_reset(struct phy *phy)
-+{
-+	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
-+
-+	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
-+			   DP_GLB_SW_RST_PHYD, 0);
-+	usleep_range(50, 200);
-+	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
-+			   DP_GLB_SW_RST_PHYD, 1);
-+
-+	return 0;
-+}
-+
-+static const struct phy_ops mtk_dp_phy_dev_ops = {
-+	.init = mtk_dp_phy_init,
-+	.configure = mtk_dp_phy_configure,
-+	.reset = mtk_dp_phy_reset,
-+	.owner = THIS_MODULE,
-+};
-+
-+static int mtk_dp_phy_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_dp_phy *dp_phy;
-+	struct phy *phy;
-+	struct regmap *regs;
-+
-+	regs = *(struct regmap **)dev->platform_data;
-+	if (!regs)
-+		return dev_err_probe(dev, EINVAL,
-+				     "No data passed, requires struct regmap**\n");
-+
-+	dp_phy = devm_kzalloc(dev, sizeof(*dp_phy), GFP_KERNEL);
-+	if (!dp_phy)
-+		return -ENOMEM;
-+
-+	dp_phy->regs = regs;
-+	phy = devm_phy_create(dev, NULL, &mtk_dp_phy_dev_ops);
-+	if (IS_ERR(phy))
-+		return dev_err_probe(dev, PTR_ERR(phy),
-+				     "Failed to create DP PHY\n");
-+
-+	phy_set_drvdata(phy, dp_phy);
-+	if (!dev->of_node)
-+		phy_create_lookup(phy, "dp", dev_name(dev));
-+
-+	return 0;
-+}
-+
-+struct platform_driver mtk_dp_phy_driver = {
-+	.probe = mtk_dp_phy_probe,
-+	.driver = {
-+		.name = "mediatek-dp-phy",
-+	},
-+};
-+module_platform_driver(mtk_dp_phy_driver);
-+
-+MODULE_AUTHOR("Markus Schneider-Pargmann <msp@baylibre.com>");
-+MODULE_DESCRIPTION("MediaTek DP PHY Driver");
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
+Do this mean use writel_relaxed() on the first two and writel() on the thrid?
+
+> 
+> Also, at least these three field settings are common between (rate > 0) and
+> (rate <= 0), so they can go outside of the conditional.
+
+OK, we will move them to outside of conditional. Thanks.
+
+> 
+> > +
+> > +		/* Set the relative parameter registers (dt/df/upbnd/downbnd) */
+> > +		fh_set_field(regs->reg_cfg, data->msk_frddsx_dys, data->df_val);
+> > +		fh_set_field(regs->reg_cfg, data->msk_frddsx_dts, data->dt_val);
+> > +
+> > +		writel((readl(regs->reg_con_pcw) & data->dds_mask) |
+> > +			data->tgl_org, regs->reg_dds);
+> > +
+> > +		/* Calculate UPDNLMT */
+> > +		updnlmt_val = PERCENT_TO_DDSLMT((readl(regs->reg_dds) &
+> > +						 data->dds_mask), rate) <<
+> > +						 data->updnlmt_shft;
+> > +
+> > +		writel(updnlmt_val, regs->reg_updnlmt);
+> > +
+> > +		fh_set_field(regs->reg_hp_en, BIT(fh_id), 1);
+> > +
+> > +		/* Enable SSC */
+> > +		fh_set_field(regs->reg_cfg, data->frddsx_en, 1);
+> > +		/* Enable Hopping control */
+> > +		fh_set_field(regs->reg_cfg, data->fhctlx_en, 1);
+> > +
+> > +	} else {
+> > +		fh_set_field(regs->reg_cfg, data->frddsx_en, 0);
+> > +		fh_set_field(regs->reg_cfg, data->sfstrx_en, 0);
+> > +		fh_set_field(regs->reg_cfg, data->fhctlx_en, 0);
+> > +
+> > +		/* Switch to APMIXEDSYS control */
+> > +		fh_set_field(regs->reg_hp_en, BIT(fh_id), 0);
+> > +
+> > +		/* Wait for DDS to be stable */
+> > +		udelay(30);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int hopping_hw_flow(void *priv_data, char *domain_name, int fh_id,
+> > +			   unsigned int new_dds, int postdiv)
+> > +{
+> > +	struct fh_pll_domain *domain;
+> > +	struct fh_pll_regs *regs;
+> > +	struct fh_pll_data *data;
+> > +	unsigned int dds_mask;
+> > +	unsigned int mon_dds = 0;
+> > +	int ret = 0;
+> > +	unsigned int con_pcw_tmp;
+> > +	struct hdlr_data *d = (struct hdlr_data *)priv_data;
+> > +	struct pll_dts *array = d->array;
+> > +
+> > +	domain = d->domain;
+> > +	regs = &domain->regs[fh_id];
+> > +	data = &domain->data[fh_id];
+> > +	dds_mask = data->dds_mask;
+> 
+> Just perform these assignments in the variable declarations... with some
+> reordering as well, and drop the zero assignment to ret.
+> 
+> In few words:
+> 
+> 	struct hdlr_data *d = (struct hdlr_data *)priv_data;
+> 
+> 	struct fh_pll_domain *domain = d->domain;
+> 
+> 	struct fh_pll_regs *regs = &domain->regs[fh_id];
+> 
+> 	struct fh_pll_data *data = &domain->data[fh_id];
+> 
+> 	struct pll_dts *array = d->array;
+> 
+> 	u32 con_pcw_tmp, dds_mask;
+> 
+> 	u32 mon_dds = 0;
+> 
+> 	int ret;
+> 
+> This comment is valid for some other functions as well - I won't repeat
+> this for every instance... :-)
+
+OK, we will merge them. Thanks.
+
+> 
+> > +
+> > +	if (array->ssc_rate)
+> > +		fhctl_set_ssc_regs(regs, data, fh_id, 0);
+> > +
+> > +	writel((readl(regs->reg_con_pcw) & dds_mask) |
+> > +		data->tgl_org, regs->reg_dds);
+> > +
+> > +	fh_set_field(regs->reg_cfg, data->sfstrx_en, 1);
+> > +	fh_set_field(regs->reg_cfg, data->fhctlx_en, 1);
+> > +	writel(data->slope0_value, regs->reg_slope0);
+> > +	writel(data->slope1_value, regs->reg_slope1);
+> > +
+> > +	fh_set_field(regs->reg_hp_en, BIT(fh_id), 1);
+> > +	writel((new_dds) | (data->dvfs_tri), regs->reg_dvfs);
+> > +
+> > +	/* Wait 1000 us until DDS stable */
+> > +	ret = readl_poll_timeout_atomic(regs->reg_mon, mon_dds,
+> > +				(mon_dds & dds_mask) == new_dds, 10, 1000);
+> 
+> Why are you writing to CON_PCW even when this returns en error?
+> Please add a comment explaining the reasons.
+
+Oh, we will add a warning log and dump HW register when this returns an error
+The reg_mon is a register reflects the current frequency rate. So, it's fine to
+write the current rate back to CON_PCW. We will also add a comment on it. Thanks
+
+> 
+> > +
+> > +	con_pcw_tmp = readl(regs->reg_con_pcw) & (~dds_mask);
+> > +	con_pcw_tmp = (con_pcw_tmp | (readl(regs->reg_mon) & dds_mask) |
+> > +		       data->pcwchg);
+> > +
+> > +	writel(con_pcw_tmp, regs->reg_con_pcw);
+> > +
+> > +	fh_set_field(regs->reg_hp_en, BIT(fh_id), 0);
+> > +
+> > +	if (array->ssc_rate)
+> > +		fhctl_set_ssc_regs(regs, data, fh_id, array->ssc_rate);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static unsigned int __get_postdiv(struct fh_pll_regs *regs,
+> > +				  struct fh_pll_data *data)
+> > +{
+> > +	unsigned int regval;
+> > +
+> > +	regval = (readl(regs->reg_con_postdiv) & data->postdiv_mask)
+> > +		  >> data->postdiv_offset;
+> > +
+> > +	return data->postdiv_table[regval];
+> 
+> Can we instead simply reuse `struct clk_div_table` from clk-provider.h?
+
+"postdiv" is part of setting in PCW_CON, not a individual clk divider. I think
+it's not suitable to use `struct clk_div_table` here.
+
+> 
+> > +}
+> > +
+> > +static void __set_postdiv(struct fh_pll_regs *regs, struct fh_pll_data *data,
+> > +			  int postdiv)
+> > +{
+> > +	unsigned int regval, temp;
+> > +
+> > +	for (regval = 0 ; regval < data->postdiv_table_size ; regval++) {
+> > +		if (data->postdiv_table[regval] > postdiv) {
+> > +			regval--;
+> > +			break;
+> > +		}
+> > +	}
+> > +
+> > +	temp = (readl(regs->reg_con_postdiv)) & ~(data->postdiv_mask);
+> > +	temp |= regval << data->postdiv_offset;
+> > +	writel(temp, regs->reg_con_postdiv);
+> > +}
+> > +
+> > +static int fhctl_ap_hopping(void *priv_data, char *domain_name, int fh_id,
+> > +			    unsigned int new_dds, int postdiv)
+> > +{
+> > +	struct fh_pll_domain *domain;
+> > +	struct fh_pll_regs *regs;
+> > +	struct fh_pll_data *data;
+> > +	int ret = 0;
+> > +	struct hdlr_data *d = (struct hdlr_data *)priv_data;
+> > +	spinlock_t *lock = d->lock;
+> > +	unsigned long flags = 0;
+> > +	unsigned int pll_postdiv;
+> > +
+> > +	domain = d->domain;
+> > +	regs = &domain->regs[fh_id];
+> > +	data = &domain->data[fh_id];
+> > +
+> > +	if (postdiv > 0) {
+> > +		pll_postdiv = __get_postdiv(regs, data);
+> > +
+> > +		if (postdiv > pll_postdiv)
+> > +			__set_postdiv(regs, data, postdiv);
+> > +	}
+> > +
+> > +	spin_lock_irqsave(lock, flags);
+> > +
+> > +	ret = hopping_hw_flow(priv_data, domain_name, fh_id, new_dds, postdiv);
+> > +
+> > +	spin_unlock_irqrestore(lock, flags);
+> > +
+> > +	if (postdiv > 0) {
+> > +		if (postdiv < pll_postdiv)
+> > +			__set_postdiv(regs, data, postdiv);
+> > +	}
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int fhctl_ap_ssc_enable(void *priv_data, char *domain_name,
+> > +			       int fh_id, int rate)
+> > +{
+> > +	struct fh_pll_domain *domain;
+> > +	struct fh_pll_regs *regs;
+> > +	struct fh_pll_data *data;
+> > +	struct hdlr_data *d = (struct hdlr_data *)priv_data;
+> > +	spinlock_t *lock = d->lock;
+> > +	struct pll_dts *array = d->array;
+> > +	unsigned long flags = 0;
+> > +
+> > +	spin_lock_irqsave(lock, flags);
+> > +
+> > +	domain = d->domain;
+> > +	regs = &domain->regs[fh_id];
+> > +	data = &domain->data[fh_id];
+> > +
+> > +	fhctl_set_ssc_regs(regs, data, fh_id, rate);
+> > +
+> > +	array->ssc_rate = rate;
+> > +
+> > +	spin_unlock_irqrestore(lock, flags);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int fhctl_ap_ssc_disable(void *priv_data, char *domain_name, int fh_id)
+> > +{
+> > +	struct fh_pll_domain *domain;
+> > +	struct fh_pll_regs *regs;
+> > +	struct fh_pll_data *data;
+> > +	struct hdlr_data *d = (struct hdlr_data *)priv_data;
+> > +	spinlock_t *lock = d->lock;
+> > +	struct pll_dts *array = d->array;
+> > +	unsigned long flags = 0;
+> > +
+> > +	spin_lock_irqsave(lock, flags);
+> > +
+> > +	domain = d->domain;
+> > +	regs = &domain->regs[fh_id];
+> > +	data = &domain->data[fh_id];
+> > +
+> > +	fhctl_set_ssc_regs(regs, data, fh_id, 0);
+> > +
+> > +	array->ssc_rate = 0;
+> > +
+> > +	spin_unlock_irqrestore(lock, flags);
+> > +
+> > +	return 0;
+> > +}
+> 
+> 
+> Just commonize these two...
+> 
+> static int __fhctl_ap_ssc_enable(struct hdlr_data *d, int fh_id, int rate)
+> {
+> 	struct fh_pll_domain *domain = d->domain;
+> 
+> 	struct fh_pll_regs *regs = &domain->regs[fh_id];
+> 
+> 	struct fh_pll_data *data = &domain->data[fh_id];
+> 
+> 	struct pll_dts *array = d->array;
+> 
+> 	spinlock_t *lock = d->lock;
+> 
+> 	unsigned long flags = 0;
+> 
+> 
+> 
+> 	spin_lock_irqsave(lock, flags);
+> 
+> 
+> 
+> 	fhctl_set_ssc_regs(regs, data, fh_id, rate);
+> 
+> 
+> 
+> 	array->ssc_rate = rate;
+> 
+> 
+> 
+> 	spin_unlock_irqrestore(lock, flags);
+> 
+> 
+> 
+> 	return 0;
+> }
+> 
+> static int fhctl_ap_ssc_enable(void *priv_data, char *domain_name, int fh_id, int rate)
+> {
+> 	return __fhctl_ap_ssc_enable((struct hdlr_data *)priv_data, domain_name,
+> 				     fh_id, rate);
+> }
+> 
+> static int fhctl_ap_ssc_disable(void *priv_data, char *domain_name, int fh_id)
+> {
+> 	return __fhctl_ap_ssc_enable((struct hdlr_data *)priv_data, domain_name,
+> 				     fh_id, 0);
+> }
+
+OK, we will commonize these. Thanks.
+
+> 
+> 
+> > +
+> > +static int fhctl_ap_hw_init(struct pll_dts *array, struct fh_ap_match *match)
+> > +{
+> > +	static DEFINE_SPINLOCK(lock);
+> > +	struct hdlr_data *priv_data;
+> > +	struct fh_hdlr *hdlr;
+> > +	struct fh_pll_domain *domain;
+> > +	int fh_id = array->fh_id;
+> > +	struct fh_pll_regs *regs;
+> > +	struct fh_pll_data *data;
+> > +	int mask = BIT(fh_id);
+> > +
+> > +	priv_data = kzalloc(sizeof(*priv_data), GFP_KERNEL);
+> > +	hdlr = kzalloc(sizeof(*hdlr), GFP_KERNEL);
+> > +	init_fh_domain(array->domain, array->comp, array->fhctl_base,
+> > +		       array->apmixed_base);
+> > +
+> > +	priv_data->array = array;
+> > +	priv_data->lock = &lock;
+> > +	priv_data->domain = get_fh_domain(array->domain);
+> > +
+> > +	/* do HW init */
+> > +	domain = priv_data->domain;
+> > +	regs = &domain->regs[fh_id];
+> > +	data = &domain->data[fh_id];
+> > +
+> > +	fh_set_field(regs->reg_clk_con, mask, 1);
+> > +	fh_set_field(regs->reg_rst_con, mask, 0);
+> > +	fh_set_field(regs->reg_rst_con, mask, 1);
+> > +	writel(0x0, regs->reg_cfg);
+> > +	writel(0x0, regs->reg_updnlmt);
+> > +	writel(0x0, regs->reg_dds);
+> > +
+> > +	/* hook to array */
+> > +	hdlr->data = priv_data;
+> > +	hdlr->ops = match->hdlr->ops;
+> > +	/* hook hdlr to array is the last step */
+> > +	mb();
+> 
+> I really don't think that you need this barrier here - if there's something that
+> I have misunderstood about that, please provide an extensive explanation.
+
+Actually we can remove this mb(), the original thought is that make sure once
+hdlr is used, hdlr->data and hdlr->ops is prepared.
+After review, hdlr won't be used during fhctl_ap_hw_init, so it can be safely
+removed. Thanks.
+
+> 
+> > +	array->hdlr = hdlr;
+> > +
+> > +	/* do SSC */
+> > +	if (array->ssc_rate) {
+> > +		struct fh_hdlr *hdlr = array->hdlr;
+> > +
+> > +		hdlr->ops->ssc_enable(hdlr->data, array->domain, array->fh_id,
+> > +				      array->ssc_rate);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static struct fh_operation fhctl_ap_ops = {
+> > +	.hopping = fhctl_ap_hopping,
+> > +	.ssc_enable = fhctl_ap_ssc_enable,
+> > +	.ssc_disable = fhctl_ap_ssc_disable,
+> > +};
+> > +
+> > +static struct fh_hdlr mt8186_hdlr = {
+> > +	.ops = &fhctl_ap_ops,
+> > +};
+> > +
+> > +static struct fh_ap_match mt8186_match = {
+> > +	.name = "mediatek,mt8186-fhctl",
+> > +	.hdlr = &mt8186_hdlr,
+> > +	.init = &fhctl_ap_hw_init,
+> > +};
+> > +
+> > +static struct fh_ap_match *matches[] = {
+> > +	&mt8186_match,
+> > +	NULL,
+> > +};
+> > +
+> > +int fhctl_ap_init(struct pll_dts *array)
+> > +{
+> > +	int i;
+> > +	int num_pll = array->num_pll;
+> > +	struct fh_ap_match **match = matches;
+> > +
+> > +	/* find match by compatible */
+> > +	for (i = 0; i < ARRAY_SIZE(matches); i++) {
+> > +		char *comp = (*match)->name;
+> > +		char *target = array->comp;
+> > +
+> > +		if (!strcmp(comp, target))
+> > +			break;
+> > +		match++;
+> > +	}
+> > +
+> > +	if (*match == NULL)
+> > +		return -1;
+> > +
+> > +	/* init flow for every pll */
+> > +	for (i = 0; i < num_pll; i++, array++) {
+> > +		char *method = array->method;
+> > +
+> > +		if (!strcmp(method, FHCTL_TARGET))
+> > +			(*match)->init(array, *match);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > diff --git a/drivers/clk/mediatek/clk-fhctl-pll.c b/drivers/clk/mediatek/clk-fhctl-pll.c
+> > new file mode 100644
+> > index 000000000000..b3ccbbd04e1b
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-fhctl-pll.c
+> > @@ -0,0 +1,209 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2022 MediaTek Inc.
+> > + */
+> > +
+> > +#include <linux/device.h>
+> > +#include <linux/module.h>
+> > +#include "clk-fhctl-pll.h"
+> > +#include "clk-fhctl-util.h"
+> > +
+> > +#define REG_ADDR(base, x) ((void __iomem *)((unsigned long)base + (x)))
+> > +
+> > +struct fh_pll_match {
+> > +	char *compatible;
+> > +	struct fh_pll_domain **domain_list;
+> > +};
+> > +
+> > +static int fhctl_pll_init(struct fh_pll_domain *d, void __iomem *fhctl_base,
+> > +			  void __iomem *apmixed_base)
+> > +{
+> > +	struct fh_pll_data *data = d->data;
+> > +	struct fh_pll_offset *offset = d->offset;
+> > +	struct fh_pll_regs *regs = d->regs;
+> > +
+> > +	if (regs->reg_hp_en)
+> > +		return 0;
+> > +
+> > +	while (data->dds_mask != 0) {
+> > +		int regs_offset;
+> > +
+> > +		/* fhctl common part */
+> > +		regs->reg_hp_en = REG_ADDR(fhctl_base, offset->offset_hp_en);
+> > +		regs->reg_clk_con = REG_ADDR(fhctl_base,
+> > +					     offset->offset_clk_con);
+> > +		regs->reg_rst_con = REG_ADDR(fhctl_base,
+> > +					     offset->offset_rst_con);
+> > +		regs->reg_slope0 = REG_ADDR(fhctl_base, offset->offset_slope0);
+> > +		regs->reg_slope1 = REG_ADDR(fhctl_base, offset->offset_slope1);
+> > +
+> > +		/* fhctl pll part */
+> > +		regs_offset = offset->offset_fhctl + offset->offset_cfg;
+> > +		regs->reg_cfg = REG_ADDR(fhctl_base, regs_offset);
+> > +		regs->reg_updnlmt = REG_ADDR(regs->reg_cfg,
+> > +					     offset->offset_updnlmt);
+> > +		regs->reg_dds = REG_ADDR(regs->reg_cfg, offset->offset_dds);
+> > +		regs->reg_dvfs = REG_ADDR(regs->reg_cfg, offset->offset_dvfs);
+> > +		regs->reg_mon = REG_ADDR(regs->reg_cfg, offset->offset_mon);
+> > +
+> > +		/* apmixed part */
+> > +		regs->reg_con_pcw = REG_ADDR(apmixed_base,
+> > +					     offset->offset_con_pcw);
+> > +		regs->reg_con_postdiv = REG_ADDR(apmixed_base,
+> > +						 offset->offset_con_postdiv);
+> > +
+> > +		data++;
+> > +		offset++;
+> > +		regs++;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static unsigned int __postdiv_pow_tbl[8] = {1, 2, 4, 8, 16, 1, 1, 1};
+> > +#define POSTDIV_TABLE_SIZE (sizeof(__postdiv_pow_tbl)\
+> > +	/sizeof(unsigned int))
+> > +
+> > +#define SIZE_8186_TOP (sizeof(mt8186_top_data)\
+> > +	/sizeof(struct fh_pll_data))
+> > +#define DATA_8186_TOP(_name) {						\
+> 
+> Is it just only about the name?
+> I mean, are there other SoCs for which each PLL needs different parameters?
+> 
+> If not, there are many ways to commonize these params instead of repeating
+> them over and over again...
+
+Some parameters are difference on other SoCs. We will find a way to commonize
+these. Thanks.
+
+> 
+> > +		.name = _name,						\
+> > +		.dds_mask = GENMASK(21, 0),				\
+> > +		.postdiv_mask = GENMASK(26, 24),			\
+> > +		.postdiv_offset = 24,					\
+> > +		.postdiv_table = __postdiv_pow_tbl,			\
+> > +		.postdiv_table_size = POSTDIV_TABLE_SIZE,		\
+> > +		.slope0_value = 0x6003c97,				\
+> > +		.slope1_value = 0x6003c97,				\
+> > +		.sfstrx_en = BIT(2),					\
+> > +		.frddsx_en = BIT(1),					\
+> > +		.fhctlx_en = BIT(0),					\
+> > +		.tgl_org = BIT(31),					\
+> > +		.dvfs_tri = BIT(31),					\
+> > +		.pcwchg = BIT(31),					\
+> > +		.dt_val = 0x0,						\
+> > +		.df_val = 0x9,						\
+> > +		.updnlmt_shft = 16,					\
+> > +		.msk_frddsx_dys = GENMASK(23, 20),			\
+> > +		.msk_frddsx_dts = GENMASK(19, 16),			\
+> > +	}
+> > +#define OFFSET_8186_TOP(_fhctl, _con_pcw) {				\
+> > +		.offset_fhctl = _fhctl,					\
+> > +		.offset_con_pcw = _con_pcw,				\
+> > +		.offset_con_postdiv = _con_pcw,				\
+> > +		.offset_hp_en = 0x0,					\
+> > +		.offset_clk_con = 0x8,					\
+> > +		.offset_rst_con = 0xc,					\
+> > +		.offset_slope0 = 0x10,					\
+> > +		.offset_slope1 = 0x14,					\
+> > +		.offset_cfg = 0x0,					\
+> > +		.offset_updnlmt = 0x4,					\
+> > +		.offset_dds = 0x8,					\
+> > +		.offset_dvfs = 0xc,					\
+> > +		.offset_mon = 0x10,					\
+> > +	}
+> > +static struct fh_pll_data mt8186_top_data[] = {
+> > +	DATA_8186_TOP("armpll_ll"),
+> > +	DATA_8186_TOP("armpll_bl"),
+> > +	DATA_8186_TOP("ccipll"),
+> > +	DATA_8186_TOP("mainpll"),
+> > +	DATA_8186_TOP("mmpll"),
+> > +	DATA_8186_TOP("tvdpll"),
+> > +	DATA_8186_TOP("mpll"),
+> > +	DATA_8186_TOP("adsppll"),
+> > +	DATA_8186_TOP("mfgpll"),
+> > +	DATA_8186_TOP("nnapll"),
+> > +	DATA_8186_TOP("nna2pll"),
+> > +	DATA_8186_TOP("msdcpll"),
+> > +	DATA_8186_TOP("mempll"),
+> > +	{}
+> > +};
+> > +static struct fh_pll_offset mt8186_top_offset[] = {
+> > +	OFFSET_8186_TOP(0x003C, 0x0208),
+> > +	OFFSET_8186_TOP(0x0050, 0x0218),
+> > +	OFFSET_8186_TOP(0x0064, 0x0228),
+> > +	OFFSET_8186_TOP(0x0078, 0x0248),
+> > +	OFFSET_8186_TOP(0x008C, 0x0258),
+> > +	OFFSET_8186_TOP(0x00A0, 0x0268),
+> > +	OFFSET_8186_TOP(0x00B4, 0x0278),
+> > +	OFFSET_8186_TOP(0x00C8, 0x0308),
+> > +	OFFSET_8186_TOP(0x00DC, 0x0318),
+> > +	OFFSET_8186_TOP(0x00F0, 0x0360),
+> > +	OFFSET_8186_TOP(0x0104, 0x0370),
+> > +	OFFSET_8186_TOP(0x0118, 0x0390),
+> > +	OFFSET_8186_TOP(0x012c, 0xdeb1),
+> > +	{}
+> > +};
+> > +static struct fh_pll_regs mt8186_top_regs[SIZE_8186_TOP];
+> > +static struct fh_pll_domain mt8186_top = {
+> > +	.name = "top",
+> > +	.data = (struct fh_pll_data *)&mt8186_top_data,
+> > +	.offset = (struct fh_pll_offset *)&mt8186_top_offset,
+> > +	.regs = (struct fh_pll_regs *)&mt8186_top_regs,
+> > +	.init = &fhctl_pll_init,
+> > +};
+> > +static struct fh_pll_domain *mt8186_domain[] = {
+> > +	&mt8186_top,
+> > +	NULL,
+> > +};
+> > +static struct fh_pll_match mt8186_match = {
+> > +	.compatible = "mediatek,mt8186-fhctl",
+> > +	.domain_list = (struct fh_pll_domain **)mt8186_domain,
+> > +};
+> > +
+> > +static const struct fh_pll_match *matches[] = {
+> > +	&mt8186_match,
+> > +	NULL
+> > +};
+> > +
+> > +
+> > +static struct fh_pll_domain **get_list(char *comp)
+> > +{
+> > +	struct fh_pll_match **match;
+> > +	static struct fh_pll_domain **list;
+> > +	int i;
+> > +
+> > +	match = (struct fh_pll_match **)matches;
+> > +
+> > +	/* name used only if !list */
+> > +	if (!list) {
+> > +		for (i = 0; i < ARRAY_SIZE(matches); i++) {
+> > +			if (!strcmp(comp, (*match)->compatible)) {
+> > +				list = (*match)->domain_list;
+> > +				break;
+> > +			}
+> > +			match++;
+> > +		}
+> > +	}
+> > +	return list;
+> > +}
+> > +void init_fh_domain(const char *domain, char *comp, void __iomem *fhctl_base,
+> > +		    void __iomem *apmixed_base)
+> > +{
+> > +	struct fh_pll_domain **list;
+> > +
+> > +	list = get_list(comp);
+> > +
+> > +	while (*list != NULL) {
+> > +		if (!strcmp(domain, (*list)->name)) {
+> > +			(*list)->init(*list, fhctl_base, apmixed_base);
+> > +			return;
+> > +		}
+> > +		list++;
+> > +	}
+> > +}
+> > +
+> > +struct fh_pll_domain *get_fh_domain(const char *domain)
+> > +{
+> > +	struct fh_pll_domain **list;
+> > +
+> > +	list = get_list(NULL);
+> > +
+> > +	/* find instance */
+> > +	while (*list != NULL) {
+> > +		if (!strcmp(domain, (*list)->name))
+> > +			return *list;
+> > +		list++;
+> > +	}
+> > +	return NULL;
+> > +}
+> > diff --git a/drivers/clk/mediatek/clk-fhctl-pll.h b/drivers/clk/mediatek/clk-fhctl-pll.h
+> > new file mode 100644
+> > index 000000000000..7f0f7577f7a5
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-fhctl-pll.h
+> > @@ -0,0 +1,74 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Copyright (c) 2022 MediaTek Inc.
+> > + */
+> > +
+> > +#ifndef __CLK_FHCTL_PLL_H
+> > +#define __CLK_FHCTL_PLL_H
+> > +#include <linux/types.h>
+> > +#include <linux/bitops.h>
+> > +#include <linux/iopoll.h>
+> > +
+> > +struct fh_pll_data {
+> > +	char *name;
+> > +	unsigned int dds_mask;
+> > +	unsigned int postdiv_mask;
+> > +	unsigned int postdiv_offset;
+> > +	unsigned int *postdiv_table;
+> > +	unsigned int postdiv_table_size;
+> > +	unsigned int slope0_value;
+> > +	unsigned int slope1_value;
+> > +	unsigned int sfstrx_en;
+> > +	unsigned int frddsx_en;
+> > +	unsigned int fhctlx_en;
+> > +	unsigned int tgl_org;
+> > +	unsigned int dvfs_tri;
+> > +	unsigned int pcwchg;
+> > +	unsigned int dt_val;
+> > +	unsigned int df_val;
+> > +	unsigned int updnlmt_shft;
+> > +	unsigned int msk_frddsx_dys;
+> > +	unsigned int msk_frddsx_dts;
+> 
+> That's describing some hardware, so... you should really use `u32` here
+> as that would be more descriptive.
+
+OK, we will fix it. Thanks.
+
+> 
+> > +};
+> > +struct fh_pll_offset {
+> > +	int offset_fhctl;
+> > +	int offset_con_pcw;
+> > +	int offset_con_postdiv;
+> > +	int offset_hp_en;
+> > +	int offset_clk_con;
+> > +	int offset_rst_con;
+> > +	int offset_slope0;
+> > +	int offset_slope1;
+> > +	int offset_cfg;
+> > +	int offset_updnlmt;
+> > +	int offset_dds;
+> > +	int offset_dvfs;
+> > +	int offset_mon;
+> 
+> These also seem to be describing HW registers, and I don't think that
+> we'll ever see a negative offset for any of these?
+
+Oh, you are right, these are positive value. We will fix it. Thanks.
+
+> 
+> > +};
+> > +struct fh_pll_regs {
+> > +	void __iomem *reg_hp_en;
+> > +	void __iomem *reg_clk_con;
+> > +	void __iomem *reg_rst_con;
+> > +	void __iomem *reg_slope0;
+> > +	void __iomem *reg_slope1;
+> > +	void __iomem *reg_cfg;
+> > +	void __iomem *reg_updnlmt;
+> > +	void __iomem *reg_dds;
+> > +	void __iomem *reg_dvfs;
+> > +	void __iomem *reg_mon;
+> > +	void __iomem *reg_con_pcw;
+> > +	void __iomem *reg_con_postdiv;
+> > +};
+> > +struct fh_pll_domain {
+> > +	char *name;
+> > +	struct fh_pll_data *data;
+> > +	struct fh_pll_offset *offset;
+> > +	struct fh_pll_regs *regs;
+> > +	int (*init)(struct fh_pll_domain *d, void __iomem *fhctl_base,
+> > +		    void __iomem *apmixed_base);
+> > +};
+> > +extern struct fh_pll_domain *get_fh_domain(const char *name);
+> > +extern void init_fh_domain(const char *domain_name, char *comp_name,
+> > +			   void __iomem *fhctl_base,
+> > +			   void __iomem *apmixed_base);
+> > +#endif
+> 
+> ...and I think this covers enough of the code that may be transferred to clk-pll.
+> 
+> Excited to see the next iteration of this one!
+> 
+> Cheers,
+> Angelo
 
 
