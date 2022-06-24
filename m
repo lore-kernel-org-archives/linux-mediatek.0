@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CDCCC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:38:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1526C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 09:38:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PCYG4BfCv0gEsfsJXfhqPWj3FytHJMcF0n0IOUPeRZ0=; b=B6U6nA6YRyDrql6QvvlDU+WBNW
-	OpOt/4iOrj8kh/AYTCNLhbQh3AyHMa2Gn64FOatEicYOZ8xJJWg7yDYYot+GtpGyfeBZbIlSFG2KG
-	gfNIHgU6MrcIC5bei20kyPSopK9w4zDcjN3ZMaztzqsQEjyTwTW99dvA7GTHznzPkmENXfQU/AgjJ
-	7+AthCqGUsG9P0fkPUBX/ai5THj6nh0/rjpExIIHk2NRRQeR+jx5EkZck/5PwES7umq1fnme9Qw6b
-	wTNCcl6+EpDD28B9Cxct55r15fwV4FE2UcIHk7SOsi9GKn6O9y5JytVuGtB8SXGo06EMg3uIHMiZ+
-	EcmBs9qg==;
+	bh=1OUEV1EAfBFRmfNjGgMDPAyfHwiyN/g3MTDHMJpYz+E=; b=Sxezey77j5JojQJeBZYlRk/DQb
+	4Tnqxv2n6C168CMHxN2Wwbt5uhEHAEAdox79f1XeMBCLnCoLWfckyB6WJMpi+uev5vfizQkIS2bBc
+	eifOSN630VSkjCENlDk2EujBj2PZCLyP7EvEPPU467C7uaI5XaXADGNy7vVPE214T7d1LMa6XpmMY
+	GV3V+PY5yT5IePXD3LT3k2Wft7DivIuXH5qTuNgdTEenZC/5eVXw9/tklFIvxyNzt5279Ma7fd2Jk
+	SeJJgjP/QQuDSKSP57wFj4aQx9TCgjgQIccZYFyvfafKSI6OJLXfM5OwxX/8B6yXBcYIM3WsYUggu
+	ji63PItw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4flQ-001SvT-C5; Fri, 24 Jun 2022 09:38:08 +0000
+	id 1o4flS-001Swa-R2; Fri, 24 Jun 2022 09:38:10 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4fiz-001RtI-H7; Fri, 24 Jun 2022 09:35:39 +0000
+	id 1o4fj1-001Rtz-8A; Fri, 24 Jun 2022 09:35:41 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E77EB66017FF;
-	Fri, 24 Jun 2022 10:35:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7EF746601804;
+	Fri, 24 Jun 2022 10:35:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656063336;
-	bh=M2e0ZrWkdh3RbPDwwXtVmUaEbwdMfwojrO66mYtNtOQ=;
+	s=mail; t=1656063337;
+	bh=IV/psV6YPB9snM6EndyxMf85gHE//ateC2V3rgX3Dus=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JWuOY5MKdjzO59PTABreHlp4uXBg4pqsE11ADGxBR5JufkwJVZ7pqnQYqCpaEfPmp
-	 W0sp6r9LdnG2rnt4JXFJo5l2oHsAhcpP8vHG97OjJ8PKk1mdX5DIpX8os5ljxhEN8d
-	 kMRNtLkheBAr4dTFHuMTiTYGBjSnGKJhhI23og4SBdBnb8tkBsVT6Bvm2TEsvOfn5Y
-	 nxtfGyqDu87dq21I5FXXZKv5TUSQDFk58atCwpe3dgCTsARebv1P2Q5coBYTXCO2fx
-	 +j1EisRCTDWTkoJ529JalhDI+xwggftMPwqF44m3itep0C0Mlp2SZC8JSqdIc4xYrz
-	 /AtKntWwWm6rA==
+	b=CywtvmvesUWGfnhNP6DNTaNuH0NfLxPieVQsPAwOjnvChq/7r7taFwgJE1giN+TXB
+	 pmKWzPBiMF+Bt7BNM9J9QjbbsxEJepVTdqV5b0qv3TsHAdeLa25yAow64eYVXQRuGa
+	 THjjn+sxYqUCwCecMKV7Drx/RWNj2rFuF4YVVVKQdICuO8O5II/JBn00YHNlULF9TE
+	 A26LBCwBFO1RDn1UbCjDt7K4g/SHfDD1wlWrz37a8DaoReNHgZVXeJoX2yYomrSc+x
+	 lp1NKnLVSgAiyDLu29judObMJGP5UxmRvzUXpCzJLdrqVhFt7vapHOEe1O8IO0q/C2
+	 FPLX8SZ6eXHNA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -73,19 +73,18 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	phone-devel@vger.kernel.org,
 	paul.bouchara@somainline.org,
-	kernel@collabora.com,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 3/7] dt-bindings: reset: Add bindings for MT6795 Helio X10 reset controllers
-Date: Fri, 24 Jun 2022 11:35:21 +0200
-Message-Id: <20220624093525.243077-4-angelogioacchino.delregno@collabora.com>
+	kernel@collabora.com
+Subject: [PATCH v3 4/7] dt-bindings: clock: mediatek: Add clock driver bindings for MT6795
+Date: Fri, 24 Jun 2022 11:35:22 +0200
+Message-Id: <20220624093525.243077-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
 References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_023537_800264_E5E3CDBC 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20220624_023539_653033_D442DC6B 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,71 +99,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the reset controller bindings for MT6795.
+Add the bindings for the clock drivers of the MediaTek Helio X10
+MT6795 SoC.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
 ---
- include/dt-bindings/reset/mt6795-resets.h | 50 +++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
- create mode 100644 include/dt-bindings/reset/mt6795-resets.h
+ .../bindings/clock/mediatek,mt6795-clock.yaml | 66 +++++++++++++++++
+ .../clock/mediatek,mt6795-sys-clock.yaml      | 74 +++++++++++++++++++
+ 2 files changed, 140 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
 
-diff --git a/include/dt-bindings/reset/mt6795-resets.h b/include/dt-bindings/reset/mt6795-resets.h
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
 new file mode 100644
-index 000000000000..0a6514884eae
+index 000000000000..795fb18721c3
 --- /dev/null
-+++ b/include/dt-bindings/reset/mt6795-resets.h
-@@ -0,0 +1,50 @@
-+/* SPDX-License-Identifier: (GPL-2.0+ OR BSD-2-Clause) */
-+/*
-+ * Copyright (c) 2022 Collabora Ltd.
-+ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
+@@ -0,0 +1,66 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/clock/mediatek,mt6795-clock.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
 +
-+#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT6795
-+#define _DT_BINDINGS_RESET_CONTROLLER_MT6795
++title: MediaTek Functional Clock Controller for MT6795
 +
-+/* INFRACFG resets */
-+#define MT6795_INFRA_SCPSYS_RST			0
-+#define MT6795_INFRA_PMIC_WRAP_RST		1
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
 +
-+/* MMSYS resets */
-+#define MT6795_MMSYS_SW0_RST_B_SMI_COMMON	0
-+#define MT6795_MMSYS_SW0_RST_B_SMI_LARB		1
-+#define MT6795_MMSYS_SW0_RST_B_CAM_MDP		2
-+#define MT6795_MMSYS_SW0_RST_B_MDP_RDMA0	3
-+#define MT6795_MMSYS_SW0_RST_B_MDP_RDMA1	4
-+#define MT6795_MMSYS_SW0_RST_B_MDP_RSZ0		5
-+#define MT6795_MMSYS_SW0_RST_B_MDP_RSZ1		6
-+#define MT6795_MMSYS_SW0_RST_B_MDP_RSZ2		7
-+#define MT6795_MMSYS_SW0_RST_B_MDP_TDSHP0	8
-+#define MT6795_MMSYS_SW0_RST_B_MDP_TDSHP1	9
-+#define MT6795_MMSYS_SW0_RST_B_MDP_WDMA		10
-+#define MT6795_MMSYS_SW0_RST_B_MDP_WROT0	11
-+#define MT6795_MMSYS_SW0_RST_B_MDP_WROT1	12
-+#define MT6795_MMSYS_SW0_RST_B_MDP_CROP		13
++description: |
++  The clock architecture in MediaTek like below
++  PLLs -->
++          dividers -->
++                      muxes
++                           -->
++                              clock gate
 +
-+/*  PERICFG resets */
-+#define MT6795_PERI_NFI_SW_RST			0
-+#define MT6795_PERI_THERM_SW_RST		1
-+#define MT6795_PERI_MSDC1_SW_RST		2
++  The devices provide clock gate control in different IP blocks.
 +
-+/* TOPRGU resets */
-+#define MT6795_TOPRGU_INFRA_SW_RST		0
-+#define MT6795_TOPRGU_MM_SW_RST			1
-+#define MT6795_TOPRGU_MFG_SW_RST		2
-+#define MT6795_TOPRGU_VENC_SW_RST		3
-+#define MT6795_TOPRGU_VDEC_SW_RST		4
-+#define MT6795_TOPRGU_IMG_SW_RST		5
-+#define MT6795_TOPRGU_DDRPHY_SW_RST		6
-+#define MT6795_TOPRGU_MD_SW_RST			7
-+#define MT6795_TOPRGU_INFRA_AO_SW_RST		8
-+#define MT6795_TOPRGU_MD_LITE_SW_RST		9
-+#define MT6795_TOPRGU_APMIXED_SW_RST		10
-+#define MT6795_TOPRGU_PWRAP_SPI_CTL_RST		11
-+#define MT6795_TOPRGU_SW_RST_NUM		12
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6795-mfgcfg
++      - mediatek,mt6795-vdecsys
++      - mediatek,mt6795-vencsys
 +
-+#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT6795 */
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - '#clock-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        mfgcfg: clock-controller@13000000 {
++            compatible = "mediatek,mt6795-mfgcfg";
++            reg = <0 0x13000000 0 0x1000>;
++            #clock-cells = <1>;
++        };
++
++        vdecsys: clock-controller@16000000 {
++            compatible = "mediatek,mt6795-vdecsys";
++            reg = <0 0x16000000 0 0x1000>;
++            #clock-cells = <1>;
++        };
++
++        vencsys: clock-controller@18000000 {
++            compatible = "mediatek,mt6795-vencsys";
++            reg = <0 0x18000000 0 0x1000>;
++            #clock-cells = <1>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
+new file mode 100644
+index 000000000000..44b96af9ceaf
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
+@@ -0,0 +1,74 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/clock/mediatek,mt6795-sys-clock.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: MediaTek System Clock Controller for MT6795
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
++
++description:
++  The Mediatek system clock controller provides various clocks and system configuration
++  like reset and bus protection on MT6795.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt6795-apmixedsys
++          - mediatek,mt6795-infracfg
++          - mediatek,mt6795-pericfg
++          - mediatek,mt6795-topckgen
++      - const: syscon
++
++  reg:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++  '#reset-cells':
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - '#clock-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        topckgen: clock-controller@10000000 {
++            compatible = "mediatek,mt6795-topckgen", "syscon";
++            reg = <0 0x10000000 0 0x1000>;
++            #clock-cells = <1>;
++        };
++
++        infracfg: power-controller@10001000 {
++            compatible = "mediatek,mt6795-infracfg", "syscon";
++            reg = <0 0x10001000 0 0x1000>;
++            #clock-cells = <1>;
++            #reset-cells = <1>;
++        };
++
++        pericfg: power-controller@10003000 {
++            compatible = "mediatek,mt6795-pericfg", "syscon";
++            reg = <0 0x10003000 0 0x1000>;
++            #clock-cells = <1>;
++            #reset-cells = <1>;
++        };
++
++        apmixedsys: clock-controller@10209000 {
++            compatible = "mediatek,mt6795-apmixedsys", "syscon";
++            reg = <0 0x10209000 0 0x1000>;
++            #clock-cells = <1>;
++        };
++    };
 -- 
 2.35.1
 
