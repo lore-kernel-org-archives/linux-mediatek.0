@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DCBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jun 2022 23:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC99C43334
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jun 2022 23:26:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=snp3iGaqneZhCYcg+mJvYJdoRp3WEYe5KB6c2iCBNGY=; b=QM67Tmiss6YxEQBTAEm4LY2C+S
-	yjjoV45FNF1qOxY9qMaCdWT950cxAbWqAEzaP36lIwqFVj5V2yPpczkt/aKZd9iKTIpkbLHyj/5YA
-	Q7L360jxZDY1hx4ztrfMCfgm6J1IIhTY8IxelfRnXv8Ef00c6ecYgHSMnz2qMms1XofB1W4rPwExp
-	TGZHh/cx6MYjzV23dFr44Cyx2VzvFkZlkEpiR053FK04bzQQO2+hL+fQ6aaBM4+iSeX72Yom6GKPd
-	HbrJYXW3oOy9FE3Op14FIqrkc28QG1MKMd6ZZZakEo1MkRmXcJyVh/HwS1m4phOo02e1VahmWx6Gt
-	DBzKP5rg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BQOyEVvkOJL2O83DI3UYBzVtSEaEMIpzCqozO0F2ehY=; b=J+ufZKkwWRblF61L0HMso1+UUN
+	OIl2V3TSXgkjrTC6faw7Irz7C9AX6tH8xc1/rK6au66YIqQeX4wggEsvEnZ9Y6+6T0aheEza5OtiZ
+	3JeuVw6xXohKfB+2sCbXScHK554ha/fEkOX6zdMlP/27d6c6LSL1iJhlEzsNozOQwu3aedJ8QPepe
+	GJhvUPLCrgP4nzu6mOxX9369R9UA0ffBpbhrQK4QaGM6xcW5cRfRKyD32LN9aTR3///4NQ4gWt1jh
+	KHrfoC+8fIJFeAzWIa10XBvs25OSiRy+C+tlmnJZWeyS7MjTqM0OEXy+5RD89UURBWEFahAruk7bI
+	1dDE0WSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5F8R-008Oee-LS; Sat, 25 Jun 2022 23:24:15 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1o5FAg-008PQo-EM; Sat, 25 Jun 2022 23:26:34 +0000
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5F8H-008OaH-3R
-	for linux-mediatek@lists.infradead.org; Sat, 25 Jun 2022 23:24:06 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id r3so10648741ybr.6
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jun 2022 16:24:03 -0700 (PDT)
+	id 1o5FAU-008PMM-Op
+	for linux-mediatek@lists.infradead.org; Sat, 25 Jun 2022 23:26:24 +0000
+Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-317710edb9dso55642317b3.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jun 2022 16:26:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=snp3iGaqneZhCYcg+mJvYJdoRp3WEYe5KB6c2iCBNGY=;
-        b=mX7ki9rdSmFBpOM7J2F6TpAVrh+q9AOugB561QqMKdnnPsvj7lTxpDAjw1YZrpr/lK
-         a6o/OSuXHO4aVEEvTgYx8Z4S0zLR7B7bqICfUPf4E519FKemyslijarshb7JNYNP7sF4
-         U5yMjul43oUFF8uyxSxEzDyIl5zobf7y+ju6Zm8OiYxEpGcyxse7I1jKnapm3DAvHO+7
-         D1aJo1feW7h5ZI6P//qg3y9oHuqPFu7gJw1rDlGPpNFDlHwPsohM0bhQaFMWRgY495qi
-         pECOfUBgU/hXN7H8y2pXjMMYW7tCMCF2fTr4DbhBZuzwylronNmHSQO26HtfIPHr1k73
-         x7/A==
+         :cc;
+        bh=BQOyEVvkOJL2O83DI3UYBzVtSEaEMIpzCqozO0F2ehY=;
+        b=LUGhV1hM4lSiMfJut49bsCyWlxE9bBgIv0BYhD/c68f0dyP4chEex43VO0HjGECLn8
+         vC6LJWh5KX0Y+5JPYFbP1Y8wjcBrdLnF285kh/OTROeylflSMu1vDbGZHwtM6oRS29LV
+         bShm3gxKztrn65SmCKmmyUhdqnrYIqiOBIYFlNv5ocKBrvNS2GoAn2bj1xgfGwbwsKdr
+         569lMbYnZt+idn4Ucx/SzIhvH7PBzewwg/uaMWU4nYnZ+UQ5aSxditS1jcX9njz3sne2
+         p1NVFgErVGxYzl+YuSSOk0tv/SdgWJXOj/wYVGPkhDQ9nCbCYwj/mZbEDPDO5GsBdgtG
+         D8eQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=snp3iGaqneZhCYcg+mJvYJdoRp3WEYe5KB6c2iCBNGY=;
-        b=LTVmXIoyNg0vzRPAuXGLp2GXeYkbFQMehHczE5cBzZqbHVo30LMiJox+vgHLl8nnGy
-         gzTidLaQIGic1gzKnNtdKRmeKDCgkjOpEAuaHLYkAt+7bv6ro1fxtbLS/UYXyIocYRFK
-         xRBXoVCewgJKCRMYb0P5cLlREn7EKLid6vzUXUF4l94xamDbIzrR1Qh77iu/9w4ADvhP
-         hCjFZZRu40bBWGwhMtB2zFuQIDU3dJHxshRJaAoYPJYRMHoQZ5yvJ6NHqQJjnauL7sj0
-         kAllDso7a+e6+vJvHyqu+ycxXviDo2PFi47SlqdPegq6L5PYEajkM4dsc7unn0qW7srB
-         nZEw==
-X-Gm-Message-State: AJIora9xKidOBdu6GdenIOYG18VD860xYlo9FaFbt6WCMctWpY00HlCf
-	gN/mHRPmQ3WTgkf8NP3Bi8LU8p9lQ5faeD2oFzbMog==
-X-Google-Smtp-Source: AGRyM1v4F5AeLVv70A169NE0jVQ7LLku1NuKEEf7NHHauCphgfotPTI5cBGnpuqg7yZrgwUSLBTpBG0C9goQXoQgre4=
-X-Received: by 2002:a25:7255:0:b0:668:a372:b433 with SMTP id
- n82-20020a257255000000b00668a372b433mr6460882ybc.626.1656199443079; Sat, 25
- Jun 2022 16:24:03 -0700 (PDT)
+         :message-id:subject:to:cc;
+        bh=BQOyEVvkOJL2O83DI3UYBzVtSEaEMIpzCqozO0F2ehY=;
+        b=KjjhRbO2J94n8SSBT7PapjVLwoyPfD5dLOIJhX9ZOMxI7zV7zyRpE3RZgBbeDVbZfY
+         CmgMoQpSOwFzgtUwjUIJMZl35OmaBV7DHSuyne4juOySjho9MbER4OhiM5Km+ZQpPlxQ
+         3VxqcWddYX6P52WONO4euBFZXTSADJdKQ9vLGPiuD8EaILhpZw3hFHHoX83cV5XypqGw
+         IzwhWKQvwnwa52jiiYLURecSz/CrwSAvz5BgsMM4Na/ZM4yDB40SHtr308sDw8jAE4H0
+         ybdRGOr555vgA7Vt5uOwTuTLf1M8CbC6C1O/HDaeoAJDdRJvuVcM0EVZf+HbrCIxGcHq
+         z3Jw==
+X-Gm-Message-State: AJIora9m39RPkTKrElz+UqN31yfRO7rXMg5sB/lr3lj8teLq3xbVUjvr
+	Wq9/sv48ghBPDUUCJCAtGMe2l8WnkbcWhPV+ExPEKQ==
+X-Google-Smtp-Source: AGRyM1u38IgiG0U5f2CoPUsFms818bBD2ITxCAUhVuGu7Ttqjznp9wPrDXECN0JNJA3aCRZ/2Q/4pDq9x1jfenFR7jc=
+X-Received: by 2002:a81:6587:0:b0:318:38c2:2fb1 with SMTP id
+ z129-20020a816587000000b0031838c22fb1mr6855740ywb.118.1656199581552; Sat, 25
+ Jun 2022 16:26:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220531221954.160036-1-nfraprado@collabora.com>
- <CACRpkdYe=qhUvyCw-xKRUihWiaezaEyQdHFhPt2aD6bmkWTpBw@mail.gmail.com> <20220615142349.qgxsnaln7mtbhgur@notapiano>
-In-Reply-To: <20220615142349.qgxsnaln7mtbhgur@notapiano>
+References: <20220624133700.15487-1-guodong.liu@mediatek.com> <20220624133700.15487-2-guodong.liu@mediatek.com>
+In-Reply-To: <20220624133700.15487-2-guodong.liu@mediatek.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 26 Jun 2022 01:23:51 +0200
-Message-ID: <CACRpkda1TDihnE1u+zVqn6_H6eQ3nDvRh1KTx7m_Yp+x_15Uqw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] MT8192 pinctrl properties adjustments
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Sun, 26 Jun 2022 01:26:10 +0200
+Message-ID: <CACRpkdaErxz-D6XQbTsAvPWAc+YSxGzzD+UfyP+Wv8YDAx662Q@mail.gmail.com>
+Subject: Re: [PATCH v2 1/5] pinctrl: mediatek: add generic driving setup
+ property on mt8192
+To: Guodong Liu <guodong.liu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Sean Wang <sean.wang@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220625_162405_171650_8264AEF6 
-X-CRM114-Status: GOOD (  21.48  )
+X-CRM114-CacheID: sfid-20220625_162622_904913_77DC1EAD 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,74 +90,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 15, 2022 at 4:23 PM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
-> On Wed, Jun 15, 2022 at 03:31:00PM +0200, Linus Walleij wrote:
-> > On Wed, Jun 1, 2022 at 12:19 AM N=C3=ADcolas F. R. A. Prado
-> > <nfraprado@collabora.com> wrote:
-> >
-> > > The two patches in this series substitute properties in the mt8192
-> > > pinctrl dt-binding for ones which have a clearer meaning and are more
-> > > standardized. At this point there's no DT using the mt8192 pinctrl
-> > > binding, so if such changes are to be made, they need to happen now.
-> > >
-> > > v1: https://lore.kernel.org/linux-mediatek/20220525155714.1837360-1-n=
-fraprado@collabora.com/
-> > >
-> > > Changes in v2:
-> > > - Dropped Fixes tags
-> > > - Added 'if' blocks to enforce mutual exclusion of properties
-> >
-> > This does not apply on the current pinctrl devel branch:
-> > https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.gi=
-t/log/?h=3Ddevel
-> >
-> > Could you please rebase onto my branch and resend as v3?
->
-> Hi Linus,
->
-> I checked out your branch locally and was able to apply the patch cleanly=
-. Maybe
-> you haven't pushed out all your local changes to that branch yet? Otherwi=
-se let
-> me know and I'll send a rebased v3 to see if it helps in some way.
+On Fri, Jun 24, 2022 at 3:37 PM Guodong Liu <guodong.liu@mediatek.com> wrote:
 
-Doing this:
+> 1. The dt-binding expects that drive-strength arguments be passed
+> in mA, but the driver was expecting raw values. And that this
+> commit changes the driver so that it is aligned with the binding.
+> 2. This commit provides generic driving setup, which support
+> 2/4/6/8/10/12/14/16mA driving, original driver just set raw data
+> setup setting when use drive-strength property.
+>
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
 
-[linus@fedora linux-pinctrl]$ b4 am -t -S
-20220531221954.160036-1-nfraprado@collabora.com
-Analyzing 8 messages in the thread
-Checking attestation on all messages, may take a moment...
----
-  =E2=9C=93 [PATCH v2 1/2] dt-bindings: pinctrl: mt8192: Switch
-drive-strength-adv for -microamp
-  =E2=9C=93 [PATCH v2 2/2] dt-bindings: pinctrl: mt8192: Use generic bias
-instead of pull-*-adv
-  ---
-  =E2=9C=93 Signed: DKIM/collabora.com
----
-Total patches: 2
----
-Cover: ./v2_20220531_nfraprado_mt8192_pinctrl_properties_adjustments.cover
- Link: https://lore.kernel.org/r/20220531221954.160036-1-nfraprado@collabor=
-a.com
- Base: not specified
-       git am ./v2_20220531_nfraprado_mt8192_pinctrl_properties_adjustments=
-.mbx
-[linus@fedora linux-pinctrl]$ git am --signoff
-./v2_20220531_nfraprado_mt8192_pinctrl_properties_adjustments.mbx
-Applying: dt-bindings: pinctrl: mt8192: Switch drive-strength-adv for -micr=
-oamp
-error: patch failed:
-Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml:80
-error: Documentation/devicetree/bindings/pinctrl/pinctrl-mt8192.yaml:
-patch does not apply
-Patch failed at 0001 dt-bindings: pinctrl: mt8192: Switch
-drive-strength-adv for -microamp
-hint: Use 'git am --show-current-patch=3Ddiff' to see the failed patch
-When you have resolved this problem, run "git am --continue".
-If you prefer to skip this patch, run "git am --skip" instead.
-To restore the original branch and stop patching, run "git am --abort".
+All patches 1-5 applied, thanks!
 
 Yours,
 Linus Walleij
