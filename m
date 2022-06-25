@@ -4,91 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C11E5CCA473
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jun 2022 21:36:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 696F1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jun 2022 00:17:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cGTylEOWtLkcLIsxYVoGzfL+q0nSap9+8NoSlXBuXe4=; b=galAVWC1ZmQ8AGqoOxllIXdiog
-	gbfWMipecVSSP88BfjnJpYbq7qeELhNgfuQTSayyHfN1UvAUqGDa5nppElohUUKNjmF7aalWtRCKe
-	kpLZuvUHaDmRzkDzApmZN9U6tuY1Lzi20Hqm1vRsW/GtvHtAw0c/mbEouquQVwT2H6l6IfN32hIHb
-	R3m4wxCX6/5g/+yP/OiZ3SLmCf1eqwjey6XNuG4Jk1RklHpwBXAs4gnmmHw8HyiYueMYDsUl8//JR
-	c29rovl1lMkgzveapVOkTcRG8Mb8AHOJVu8slgR7Tlbp5tEFdn35Dgk5n0VqIPUMglc//LHYa5pbO
-	aduLsj2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5iKDGc2cXXIODKc/5/oQxn29ATJNZs1cXL4Nd7ZWS7s=; b=DybIHQ2L6sqqTVsm3KWRsm1N/N
+	9y3qvfahpD4e7Yhym24e1ZIWjl877L7Iq9IwAicLxWPDts+GGuEOrTaeJ5TcaHweh/5CLTS6h2ia6
+	JRq8cQdQJ5nUFhNofYEDPOv9syr3pwSU1BWjRDonfDT+7cDglKScrYXo2GboRR1qgL4ah80bpd/ag
+	7cLB9cXiJwSM2hWi01JuwCebeJUk/WiVgVLPQIpWLd+Af8Bs7ZjqEFJriQC8l70Hd+/RQxNhKmJMO
+	TKYs2032xc6WBNWhEyRbZ6cZq4KDMPAvbxN6o3mR4K+lOySgC/XqdoSjy8EZZobVM9yGEpSzMRF9w
+	DuoCKo2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4qyd-003sPO-3O; Fri, 24 Jun 2022 21:36:31 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1o4tUT-004Cpb-Cg; Sat, 25 Jun 2022 00:17:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4qyR-003sLk-EG
-	for linux-mediatek@lists.infradead.org; Fri, 24 Jun 2022 21:36:20 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-3176b6ed923so36404517b3.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jun 2022 14:36:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=cGTylEOWtLkcLIsxYVoGzfL+q0nSap9+8NoSlXBuXe4=;
-        b=cmDy8lsyV2rPNiNRuYkEb5rHWD8XZVHKqJZAeKf3TnWZFLlj+/DTdLUMbXEmtTuv9s
-         4KLbNJHfJqFtWZDtoSIB0jA5BkjqsNets6Rbr/qrINRnJTlQirI2k20GLR/Ql3zSe9Wq
-         Pb5aXUq1NZ5lDKQQMD7a39HTujZM62LjFsQtIqhJoX7pGAoQGMqpg1+inV2FswApITO2
-         CmT3BH618Yqgt62CZsqxQ5e1jZosKUxMbd0fExcTgjLrAxPBxkG7CVcmjw/O8dvTmdbG
-         l6UouC6UHf0T16KEM/mMUtmMtJOh0vyJl540PkTEmkGnFr3Ic8OHzXavkS9AsevSsxDH
-         c7uQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=cGTylEOWtLkcLIsxYVoGzfL+q0nSap9+8NoSlXBuXe4=;
-        b=MSn2nOOzGHqw9X7VUfv03muuZGgz39NWLe+wRmyemfuDcY93dAbg4jUqQ30IB1w/9g
-         XvVz6aUBRgOfN2suk50+TaCSzV/Id3+X0Gux08RqxF6cs2OgrNxVtMdVvKCBGZ7BQ8CB
-         f+4yodMIRC4FNPDR6IQnLO/4+epTLP1abL9q29oBSoIrhx/Juo5P7JE9ih2ZTSunj/24
-         3wEqh8VVD0ae4PyRy1qzL3ROgzGOyMwW8W7S5Vob171ggF7uCDMYt80+2waine3HPasL
-         frm+3SvTpadZy6IBbYH4tRDeEjblyFtc1U5LaIkfndmmLZj6NpYEJFUCy4wl2V5Ps4Pz
-         sZww==
-X-Gm-Message-State: AJIora9HdZsFeMc7OzcURcZUGEBU09NjDuaPFzzD5En08nXkXOMopJIS
-	sJfEKt2vTa5tM/VH9rtI1YdnhjZPSgkt5F2mQOG1wQ==
-X-Google-Smtp-Source: AGRyM1v7bTPADut4sgzebmriq1YeKB4PBfCCubvcMefuaUSK78eOKMtZqJdaXmsewcrgPAHhOp3HhKhV310/qVQEQyc=
-X-Received: by 2002:a0d:cc54:0:b0:317:752c:bcf3 with SMTP id
- o81-20020a0dcc54000000b00317752cbcf3mr1068283ywd.437.1656106577632; Fri, 24
- Jun 2022 14:36:17 -0700 (PDT)
+	id 1o4tUQ-004Cn4-8K; Sat, 25 Jun 2022 00:17:32 +0000
+X-UUID: b298af789bd341e0b7bbc173616d42e6-20220624
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:0f2ed634-c70a-4d21-8034-0845bec713e2,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:d5a084d8-850a-491d-a127-60d9309b2b3e,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: b298af789bd341e0b7bbc173616d42e6-20220624
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <miles.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1433817064; Fri, 24 Jun 2022 17:17:20 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Jun 2022 17:07:49 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Sat, 25 Jun 2022 08:07:47 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 25 Jun 2022 08:07:47 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <bgolaszewski@baylibre.com>, <chun-jie.chen@mediatek.com>,
+	<ck.hu@mediatek.com>, <devicetree@vger.kernel.org>, <fparent@baylibre.com>,
+	<ikjn@chromium.org>, <jason-jh.lin@mediatek.com>, <kernel@collabora.com>,
+	<konrad.dybcio@somainline.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<marijn.suijten@somainline.org>, <martin.botka@somainline.org>,
+	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
+	<mturquette@baylibre.com>, <p.zabel@pengutronix.de>,
+	<paul.bouchara@somainline.org>, <phone-devel@vger.kernel.org>,
+	<rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>, <sam.shih@mediatek.com>,
+	<sboyd@kernel.org>, <tinghan.shen@mediatek.com>, <weiyi.lu@mediatek.com>,
+	<wenst@chromium.org>, <y.oudjana@protonmail.com>,
+	<~postmarketos/upstreaming@lists.sr.ht>
+Subject: Re: [PATCH v3 7/7] clk: mediatek: Add MediaTek Helio X10 MT6795 clock drivers
+Date: Sat, 25 Jun 2022 08:07:47 +0800
+Message-ID: <20220625000747.12582-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220624093525.243077-8-angelogioacchino.delregno@collabora.com>
+References: <20220624093525.243077-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-13-peterwu.pub@gmail.com>
- <CACRpkdZatfOFmeGXepTrjAk1or4W6KNUEaXnP+srRebfM=52AA@mail.gmail.com>
- <CACRpkdbzZqerE_2PeGMUWRbtjK=9P8V763cj83ZqjP4n6AVHAg@mail.gmail.com> <CA+hk2fZEG0TxMGhGJY21w=MmXgKsH5mYCYynQV1jbhpOCyf3qg@mail.gmail.com>
-In-Reply-To: <CA+hk2fZEG0TxMGhGJY21w=MmXgKsH5mYCYynQV1jbhpOCyf3qg@mail.gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 24 Jun 2022 23:36:06 +0200
-Message-ID: <CACRpkdYoR9SGQdxJQmUReP7SLk_BxG0yuTWAL__o90PuO8sCqA@mail.gmail.com>
-Subject: Re: [PATCH v3 12/14] leds: mt6370: Add Mediatek MT6370 current sink
- type LED Indicator support
-To: szuni chen <szunichen@gmail.com>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
-	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	devicetree <devicetree@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, alice_chen@richtek.com, 
-	Linux PM <linux-pm@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	ChiYuan Huang <cy_huang@richtek.com>, chiaen_wu@richtek.com, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_143619_503731_C0095580 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20220624_171730_338889_244D65D6 
+X-CRM114-Status: GOOD (  18.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,19 +89,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 24, 2022 at 9:20 AM szuni chen <szunichen@gmail.com> wrote:
+Hi Angelo,
 
-> > I meant this one. Move that into drivers/leds/flash
-> >  drivers/leds/flash/leds-mt6370-flash.c             |  657 ++++++++++++
->
-> In next version, I'll use "leds: flash: ......" instead of "leds:
-> flashlight: ......" in subject.
-> May I confirm that the driver has already in the drivers/leds/flash,
-> so I don=E2=80=99t have to move it in next version?
+> Add the clock drivers for the entire clock tree of MediaTek Helio X10
+> MT6795, including system clocks (apmixedsys, infracfg, pericfg, topckgen)
+> and multimedia clocks (mmsys, mfg, vdecsys, vencsys).
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>  drivers/clk/mediatek/Kconfig                 |  37 ++
+>  drivers/clk/mediatek/Makefile                |   6 +
+>  drivers/clk/mediatek/clk-mt6795-apmixedsys.c | 157 +++++
+>  drivers/clk/mediatek/clk-mt6795-infracfg.c   | 148 +++++
+>  drivers/clk/mediatek/clk-mt6795-mfg.c        |  50 ++
+>  drivers/clk/mediatek/clk-mt6795-mm.c         | 106 ++++
+>  drivers/clk/mediatek/clk-mt6795-pericfg.c    | 160 +++++
+>  drivers/clk/mediatek/clk-mt6795-topckgen.c   | 610 +++++++++++++++++++
+>  drivers/clk/mediatek/clk-mt6795-vdecsys.c    |  55 ++
+>  drivers/clk/mediatek/clk-mt6795-vencsys.c    |  50 ++
+>  10 files changed, 1379 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
+> 
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index d5936cfb3bee..da8142dff3c3 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -259,6 +259,43 @@ config COMMON_CLK_MT6779_AUDSYS
+>  	help
+>  	  This driver supports Mediatek MT6779 audsys clocks.
+>  
+> +config COMMON_CLK_MT6795
+> +	tristate "Clock driver for MediaTek MT6795"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	select COMMON_CLK_MEDIATEK
+> +	default ARCH_MEDIATEK
+> +	help
+> +	  This driver supports MediaTek MT6795 basic clocks and clocks
+> +	  required for various peripherals found on MediaTek.
+> +
+> +config COMMON_CLK_MT6795_MFGCFG
+> +	tristate "Clock driver for MediaTek MT6795 mfgcfg"
+> +	depends on COMMON_CLK_MT6795
+> +	default COMMON_CLK_MT6795
+> +	help
+> +	  This driver supports MediaTek MT6795 mfgcfg clocks.
+> +
+> +config COMMON_CLK_MT6795_MMSYS
+> +       tristate "Clock driver for MediaTek MT6795 mmsys"
 
-Yeah you're right, I am just writing wrong comments today, it is already
-correct. Sorry!
+snip...
 
-Yours,
-Linus Walleij
+> +	{ /* sentinel */ }
+> +};
+> +
+> +static int clk_mt6795_infracfg_probe(struct platform_device *pdev)
+> +{
+> +	struct clk_hw_onecell_data *clk_data;
+> +	struct device_node *node = pdev->dev.of_node;
+> +	void __iomem *base;
+> +	int ret;
+> +
+> +	base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(base))
+> +		return PTR_ERR(base);
+> +
+> +	clk_data = mtk_alloc_clk_data(CLK_INFRA_NR_CLK);
+> +	if (!clk_data)
+> +		return -ENOMEM;
+> +
+> +	ret = mtk_register_reset_controller_with_dev(&pdev->dev, &clk_rst_desc);
+> +	if (ret)
+> +		goto free_clk_data;
+> +
+> +	ret = mtk_clk_register_gates(node, infra_gates, ARRAY_SIZE(infra_gates), clk_data);
+> +	if (ret)
+> +		goto free_clk_data;
+
+While checking the error path, I learned that
+mtk_register_reset_controller_with_dev uses devm_reset_controller_register and it will
+be unregister the reset automatically if probe failed.
+
+Thanks for this patch!
+
+Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
+
+
+thanks,
+Miles
+
+> +
+> +	ret = mtk_clk_register_cpumuxes(node, cpu_muxes, ARRAY_SIZE(cpu_muxes), clk_data);
+> +	if (ret)
+> +		goto unregister_gates;
+> +
+> +	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> +	if (ret)
+> +		goto unregister_cpumuxes;
+> +
+> +	return 0;
+> +
+> +unregister_cpumuxes:
+> +	mtk_clk_unregister_cpumuxes(cpu_muxes, ARRAY_SIZE(cpu_muxes), clk_data);
+> +unregister_gates:
+> +	mtk_clk_unregister_gates(infra_gates, ARRAY_SIZE(infra_gates), clk_data);
+> +free_clk_data:
+> +	mtk_free_clk_data(clk_data);
+> +	return ret;
+> +}
+> +
+> +static int clk_mt6795_infracfg_remove(struct platform_device *pdev)
+> +{
 
