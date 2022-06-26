@@ -4,95 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3EF4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 10:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4384DC43334
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 23:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uid1nPU8KOeE8niwF3D46qRU8qJY11HwGt4P2APkK6s=; b=HPuBNOYValsoMG3eP40IKOpGFd
-	KeA7FN97MM8OgPq3dHfYbnIrwvpzFvn4jDlXMgYorVBZ5OctJmDXVJy7mrlJ8A+LylQnE9MwU0dEn
-	frpvg2jRv6LiuzcRXhyT7LOz9VNgUEPqNXZmekYbtaLccKvwOnFjGCoWxbnUsvSjy0EHHHcR3/YUP
-	J2/FajfmUksS34QDFye0W8KvU1n9A5KHaDVPF5EeSGgHawYxzsToQ9Ty4sg7GohaT1QA5lA2zZwxh
-	19N6m4ywQfpBXFqmqt4gV0RCwWfToVC9mUTnWLud3BSX361f+eGFCHeL3uswH0iWrIBEg1lIfJkO9
-	5qkiDQ1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=W3IApYJvb3l42mOhliNSNWOKx3WDmAmfHSRKGyBRvyw=; b=kP6Nfx10fzoV7yec7ZeVTBlr64
+	XeyoQP6WNAryW6r9tcYJAi7YtP+P2OFT8tdNW5I1/1SXYFgzTXdk47RsmBv7+Cnyd9FG7LbXQK/lv
+	7aBzZSsZoZhyop8FMia2lIfmseLczh5FOExfgetA57Y6fCdQ7fCM0w+EVuJSoL4AKC5jTunLKPuhm
+	BbGuWnMIoa+ossUcM+TUaJLXh11Fz3reU+GubqB1hZNy+HxSJeBnrVugf1833FLet1DRqOvMt3KjQ
+	jx67PTKVkgAEfcGtYS7bra91RhhZiayO9o5lgrLsw7SUI7HwtBnnvrt9DZuebmbRN5lQIYb7spaIn
+	STyknxVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5PYN-00BAzC-4L; Sun, 26 Jun 2022 10:31:43 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1o5bil-00E5o5-TA; Sun, 26 Jun 2022 23:31:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5PYJ-00BAwk-ME
-	for linux-mediatek@lists.infradead.org; Sun, 26 Jun 2022 10:31:41 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id d2so1568203ejy.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 26 Jun 2022 03:31:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=uid1nPU8KOeE8niwF3D46qRU8qJY11HwGt4P2APkK6s=;
-        b=XAAC8AAlqRMmEzIHciueTzD3m22dmzWily6b8BHr6rpAvs0uXwzFyjFU045Lj7kkAe
-         E79BdJ7MTKVbCL4wI6W9DsNgbpv6aW6GnwH7FZ4j3Es873/RwWQZOYfEASsZ8PPpzVP5
-         dP5C+APcEInT67HZF1QBAf2do2AqTi8t07BAr4Gnx6UU+kyFOgz3SrYCkQ0LvoCC2dY5
-         wAIMpoeO6Tp2eb8BRQqGfvmaMIF2KLt6qtodk3zqF8PF3YIfXCn9TvG9r4GjheCfMRFh
-         8ec2U8O7uXcId5goQakMrd/qdV1II34NJfmrTyvrbe0MNI60NvlpB6Mwy0F/+l4Rqp0l
-         6+eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=uid1nPU8KOeE8niwF3D46qRU8qJY11HwGt4P2APkK6s=;
-        b=I4cf0NJG+N6dHyuxWoGSq718tVHgGoH/12OMKrfBm0GPXEhmM9aNbEVnOI0P5vh+Y/
-         7SAkMxGzbTLzOdHk7XPNSari/L9Usa1HgQ3Dn9viHTZlj7h3yR11n4SD1StiDFZbGVi/
-         AAm0PjJWYSUnupO2YbKTxRBReXPxa56jOyjmfHCm8oaBobZdyT7GCk0JvDEtvTpIMTdX
-         F4FJhiDCWcMEdEbfU5x86t51Vwfkrmd4oZa7l8fP8WTxcGoxpfCg7fMd0xq8VC0i2b/B
-         aYnaUth8geZZzGkjueevAGPjwNK/UOUZUQOCZu7WchLmsefoMVTCxes4cQ78stX2Hdqj
-         Z9Cg==
-X-Gm-Message-State: AJIora/L0wZLZeukAzoTOH78+loLVim2VqTmSlUyk7oPk62oPeFWpyw2
-	0cbyRsQvxEKpDUBsZ+GfI5eflg==
-X-Google-Smtp-Source: AGRyM1v5PkYm9NSDHkT60vS80gGlYU4SSApNwB4dG6nO+r0o1Sb57gZPEpYSfK3zIyIeGsRQtSZH7A==
-X-Received: by 2002:a17:907:980a:b0:722:f4a7:e00 with SMTP id ji10-20020a170907980a00b00722f4a70e00mr7752467ejc.114.1656239497724;
-        Sun, 26 Jun 2022 03:31:37 -0700 (PDT)
-Received: from [192.168.0.239] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id g10-20020aa7dc4a000000b0043567edac3csm5724723edu.61.2022.06.26.03.31.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Jun 2022 03:31:37 -0700 (PDT)
-Message-ID: <ee945844-5d78-7c2b-215e-25fe5617b481@linaro.org>
-Date: Sun, 26 Jun 2022 12:31:35 +0200
+	id 1o5bii-00E5m3-SS
+	for linux-mediatek@lists.infradead.org; Sun, 26 Jun 2022 23:31:14 +0000
+X-UUID: 1d6cba4126a44e63bc7b4caa425215c2-20220626
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:cf282c82-86de-4413-a877-0064d3ee4586,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:eee9132e-1756-4fa3-be7f-474a6e4be921,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 1d6cba4126a44e63bc7b4caa425215c2-20220626
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 983770413; Sun, 26 Jun 2022 16:31:04 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 26 Jun 2022 16:27:08 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jun 2022 07:27:07 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 27 Jun 2022 07:27:07 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 1/2] mt76: mt7921: reduce log severity levels for informative messages
+Date: Mon, 27 Jun 2022 07:27:05 +0800
+Message-ID: <0f3f0b2c6910f685a04bb13699c85f4a3e9f1996.1656221826.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v3 4/7] dt-bindings: clock: mediatek: Add clock driver
- bindings for MT6795
-Content-Language: en-US
-To: David Heidelberg <david.heidelberg@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- y.oudjana@protonmail.com, jason-jh.lin@mediatek.com, ck.hu@mediatek.com,
- fparent@baylibre.com, rex-bc.chen@mediatek.com, tinghan.shen@mediatek.com,
- chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
- miles.chen@mediatek.com, sam.shih@mediatek.com, wenst@chromium.org,
- bgolaszewski@baylibre.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
- kernel@collabora.com
-References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
- <20220624093525.243077-5-angelogioacchino.delregno@collabora.com>
- <cea65d6a-7d9b-7b14-9984-bcd7f115da47@linaro.org>
- <728b2c54-0dc0-533f-bab8-fca228f6c1b1@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <728b2c54-0dc0-533f-bab8-fca228f6c1b1@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220626_033139_785975_780C8594 
-X-CRM114-Status: GOOD (  16.77  )
+X-CRM114-CacheID: sfid-20220626_163112_965805_DD1C1822 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,132 +83,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/06/2022 11:47, David Heidelberg wrote:
-> On 25/06/2022 22:29, Krzysztof Kozlowski wrote:
->> On 24/06/2022 11:35, AngeloGioacchino Del Regno wrote:
->>> Add the bindings for the clock drivers of the MediaTek Helio X10
->>> MT6795 SoC.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   .../bindings/clock/mediatek,mt6795-clock.yaml | 66 +++++++++++++++++
->>>   .../clock/mediatek,mt6795-sys-clock.yaml      | 74 +++++++++++++++++++
->>>   2 files changed, 140 insertions(+)
->>>   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->>>   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->>>
->>> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->>> new file mode 100644
->>> index 000000000000..795fb18721c3
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->>> @@ -0,0 +1,66 @@
->>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: "http://devicetree.org/schemas/clock/mediatek,mt6795-clock.yaml#"
->>> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
->>> +
->>> +title: MediaTek Functional Clock Controller for MT6795
->>> +
->>> +maintainers:
->>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
->>> +
->>> +description: |
->>> +  The clock architecture in MediaTek like below
->>> +  PLLs -->
->>> +          dividers -->
->>> +                      muxes
->>> +                           -->
->>> +                              clock gate
->>> +
->>> +  The devices provide clock gate control in different IP blocks.
->>> +
->>> +properties:
->>> +  compatible:
->>> +    enum:
->>> +      - mediatek,mt6795-mfgcfg
->>> +      - mediatek,mt6795-vdecsys
->>> +      - mediatek,mt6795-vencsys
->>> +
->>> +  reg:
->>> +    maxItems: 1
->>> +
->>> +  '#clock-cells':
->>> +    const: 1
->>> +
->>> +required:
->>> +  - compatible
->>> +  - reg
->>> +  - '#clock-cells'
->>> +
->>> +additionalProperties: false
->>> +
->>> +examples:
->>> +  - |
->>> +    soc {
->>> +        #address-cells = <2>;
->>> +        #size-cells = <2>;
->>> +
->>> +        mfgcfg: clock-controller@13000000 {
->>> +            compatible = "mediatek,mt6795-mfgcfg";
->>> +            reg = <0 0x13000000 0 0x1000>;
->>> +            #clock-cells = <1>;
->>> +        };
->>> +
->>> +        vdecsys: clock-controller@16000000 {
->>> +            compatible = "mediatek,mt6795-vdecsys";
->>> +            reg = <0 0x16000000 0 0x1000>;
->>> +            #clock-cells = <1>;
->>> +        };
->>> +
->>> +        vencsys: clock-controller@18000000 {
->>> +            compatible = "mediatek,mt6795-vencsys";
->>> +            reg = <0 0x18000000 0 0x1000>;
->>> +            #clock-cells = <1>;
->>> +        };
->>> +    };
->>> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->>> new file mode 100644
->>> index 000000000000..44b96af9ceaf
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->>> @@ -0,0 +1,74 @@
->>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: "http://devicetree.org/schemas/clock/mediatek,mt6795-sys-clock.yaml#"
->>> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
->>> +
->>> +title: MediaTek System Clock Controller for MT6795
->>> +
->>> +maintainers:
->>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
->>> +
->>> +description:
->>> +  The Mediatek system clock controller provides various clocks and system configuration
->> Wrap according to Linux coding convention, so at 80.
-> 
-> What I understood that 100 length was agreed [1] as a limit. I haven't 
-> noticed any recent change regarding to line length.
-> 
-> [1] 
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bdc48fa11e46f867ea4d75fa59ee87a7f48be144
+From: Sean Wang <sean.wang@mediatek.com>
 
-The coding style (also in change above) clearly states:
-"The preferred limit on the length of a single line is 80 columns."
-Just read the first line of new diff/hunk...
+Use dev_dbg instead for the diagnostic messages.
 
-checkpatch was indeed long time converted not to complain on 80 but on
-100, but that does not change coding style. The point of that was only
-to accept 100 wrapping when it is beneficial,  iow, it increases the
-code readability.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2: use dev_dbg instead
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-It's not the case here and coding style clearly asks for 80. Wrap at 80.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index eb1bfb682e02..3ea7d8f43118 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -740,7 +740,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+ 	struct mt76_connac_pm *pm = &dev->pm;
+ 	int i;
+ 
+-	dev_err(dev->mt76.dev, "chip reset\n");
++	dev_dbg(dev->mt76.dev, "chip reset\n");
+ 	dev->hw_full_reset = true;
+ 	ieee80211_stop_queues(hw);
+ 
+-- 
+2.25.1
 
-
-Best regards,
-Krzysztof
 
