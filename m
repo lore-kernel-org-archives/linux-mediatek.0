@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC99C43334
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jun 2022 23:26:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFED2C43334
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 04:50:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BQOyEVvkOJL2O83DI3UYBzVtSEaEMIpzCqozO0F2ehY=; b=J+ufZKkwWRblF61L0HMso1+UUN
-	OIl2V3TSXgkjrTC6faw7Irz7C9AX6tH8xc1/rK6au66YIqQeX4wggEsvEnZ9Y6+6T0aheEza5OtiZ
-	3JeuVw6xXohKfB+2sCbXScHK554ha/fEkOX6zdMlP/27d6c6LSL1iJhlEzsNozOQwu3aedJ8QPepe
-	GJhvUPLCrgP4nzu6mOxX9369R9UA0ffBpbhrQK4QaGM6xcW5cRfRKyD32LN9aTR3///4NQ4gWt1jh
-	KHrfoC+8fIJFeAzWIa10XBvs25OSiRy+C+tlmnJZWeyS7MjTqM0OEXy+5RD89UURBWEFahAruk7bI
-	1dDE0WSQ==;
+	bh=YZhw/pqxBUV0VzvHVGvG6Wjbkk4CPjY5cJPbwNnbpjY=; b=vVsTmqq18ajyKq42oRLufL9kl5
+	UKbX9ltyEQ96lrNHENZ3D27deIjoCkldCvg839+zFvGN2oDhxarU5JpBMdUG5/df3Bk3dIco6oHRV
+	GU6+ssy70u+BExl/WcH4LXt5pgEe6KTBXxexZ+YhVNm1ZKIDtNaGab7oqjLvtWUxMp1Mj0quOFLad
+	1/1hpmJ0hmebyKIJvCu8YafhW8fY1XpccyJtL56IaEXewzCbIj8T718fOa6T2385f/K4qrzi29MUU
+	aFH5E70JmebF6vC+cQSX9UQ4ic4rmNhWnJ0O9by6gr/g1z7OXk5WeK9zJZUceQaToXlxvV8Im7Sto
+	ni4dwLog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5FAg-008PQo-EM; Sat, 25 Jun 2022 23:26:34 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+	id 1o5KEE-009bnn-KX; Sun, 26 Jun 2022 04:50:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5FAU-008PMM-Op
-	for linux-mediatek@lists.infradead.org; Sat, 25 Jun 2022 23:26:24 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-317710edb9dso55642317b3.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jun 2022 16:26:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=BQOyEVvkOJL2O83DI3UYBzVtSEaEMIpzCqozO0F2ehY=;
-        b=LUGhV1hM4lSiMfJut49bsCyWlxE9bBgIv0BYhD/c68f0dyP4chEex43VO0HjGECLn8
-         vC6LJWh5KX0Y+5JPYFbP1Y8wjcBrdLnF285kh/OTROeylflSMu1vDbGZHwtM6oRS29LV
-         bShm3gxKztrn65SmCKmmyUhdqnrYIqiOBIYFlNv5ocKBrvNS2GoAn2bj1xgfGwbwsKdr
-         569lMbYnZt+idn4Ucx/SzIhvH7PBzewwg/uaMWU4nYnZ+UQ5aSxditS1jcX9njz3sne2
-         p1NVFgErVGxYzl+YuSSOk0tv/SdgWJXOj/wYVGPkhDQ9nCbCYwj/mZbEDPDO5GsBdgtG
-         D8eQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=BQOyEVvkOJL2O83DI3UYBzVtSEaEMIpzCqozO0F2ehY=;
-        b=KjjhRbO2J94n8SSBT7PapjVLwoyPfD5dLOIJhX9ZOMxI7zV7zyRpE3RZgBbeDVbZfY
-         CmgMoQpSOwFzgtUwjUIJMZl35OmaBV7DHSuyne4juOySjho9MbER4OhiM5Km+ZQpPlxQ
-         3VxqcWddYX6P52WONO4euBFZXTSADJdKQ9vLGPiuD8EaILhpZw3hFHHoX83cV5XypqGw
-         IzwhWKQvwnwa52jiiYLURecSz/CrwSAvz5BgsMM4Na/ZM4yDB40SHtr308sDw8jAE4H0
-         ybdRGOr555vgA7Vt5uOwTuTLf1M8CbC6C1O/HDaeoAJDdRJvuVcM0EVZf+HbrCIxGcHq
-         z3Jw==
-X-Gm-Message-State: AJIora9m39RPkTKrElz+UqN31yfRO7rXMg5sB/lr3lj8teLq3xbVUjvr
-	Wq9/sv48ghBPDUUCJCAtGMe2l8WnkbcWhPV+ExPEKQ==
-X-Google-Smtp-Source: AGRyM1u38IgiG0U5f2CoPUsFms818bBD2ITxCAUhVuGu7Ttqjznp9wPrDXECN0JNJA3aCRZ/2Q/4pDq9x1jfenFR7jc=
-X-Received: by 2002:a81:6587:0:b0:318:38c2:2fb1 with SMTP id
- z129-20020a816587000000b0031838c22fb1mr6855740ywb.118.1656199581552; Sat, 25
- Jun 2022 16:26:21 -0700 (PDT)
+	id 1o5KDr-009bbx-P0; Sun, 26 Jun 2022 04:50:13 +0000
+X-UUID: 15dc7351ea084a0b85a43f07ba355b32-20220625
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:9dc55b4b-c7e9-4b84-856d-db3c2e2784b7,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:e3cb0b2e-1756-4fa3-be7f-474a6e4be921,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 15dc7351ea084a0b85a43f07ba355b32-20220625
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <guodong.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1241075564; Sat, 25 Jun 2022 21:50:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 25 Jun 2022 21:40:07 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Sun, 26 Jun 2022 12:40:05 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 26 Jun 2022 12:40:04 +0800
+From: Guodong Liu <guodong.liu@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
+	<sean.wang@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Zhiyong Tao
+	<zhiyong.tao@mediatek.com>,
+	=?UTF-8?q?N=EDcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, <linux-gpio@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Guodong Liu
+	<guodong.liu@mediatek.com>
+Subject: [PATCH v3 3/5] pinctrl: mediatek: add rsel setting on mt8192
+Date: Sun, 26 Jun 2022 12:39:53 +0800
+Message-ID: <20220626043955.32756-4-guodong.liu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220626043955.32756-1-guodong.liu@mediatek.com>
+References: <20220626043955.32756-1-guodong.liu@mediatek.com>
 MIME-Version: 1.0
-References: <20220624133700.15487-1-guodong.liu@mediatek.com> <20220624133700.15487-2-guodong.liu@mediatek.com>
-In-Reply-To: <20220624133700.15487-2-guodong.liu@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 26 Jun 2022 01:26:10 +0200
-Message-ID: <CACRpkdaErxz-D6XQbTsAvPWAc+YSxGzzD+UfyP+Wv8YDAx662Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/5] pinctrl: mediatek: add generic driving setup
- property on mt8192
-To: Guodong Liu <guodong.liu@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Sean Wang <sean.wang@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Zhiyong Tao <zhiyong.tao@mediatek.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220625_162622_904913_77DC1EAD 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20220625_215011_904449_F845B1B7 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,19 +87,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 24, 2022 at 3:37 PM Guodong Liu <guodong.liu@mediatek.com> wrote:
+1. I2C pins's resistance value can be controlled by rsel register.
+This patch provides rsel (resistance selection) setting on mt8192.
+2. Also add the missing pull type array for mt8192 to document the
+pull type of each pin and prevent invalid pull type settings.
 
-> 1. The dt-binding expects that drive-strength arguments be passed
-> in mA, but the driver was expecting raw values. And that this
-> commit changes the driver so that it is aligned with the binding.
-> 2. This commit provides generic driving setup, which support
-> 2/4/6/8/10/12/14/16mA driving, original driver just set raw data
-> setup setting when use drive-strength property.
->
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt8192.c | 136 ++++++++++++++++++++++
+ 1 file changed, 136 insertions(+)
 
-All patches 1-5 applied, thanks!
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
+index efabeb422aea..a920098d7350 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
+@@ -1285,7 +1285,141 @@ static const struct mtk_pin_field_calc mt8192_pin_drv_adv_range[] = {
+ 	PIN_FIELD_BASE(205, 205, 8, 0x0010, 0x10, 6, 3),
+ };
+ 
++static const struct mtk_pin_field_calc mt8192_pin_rsel_range[] = {
++	PIN_FIELD_BASE(118, 118, 4, 0x00e0, 0x10, 0, 2),
++	PIN_FIELD_BASE(119, 119, 4, 0x00e0, 0x10, 12, 2),
++	PIN_FIELD_BASE(120, 120, 4, 0x00e0, 0x10, 10, 2),
++	PIN_FIELD_BASE(121, 121, 4, 0x00e0, 0x10, 22, 2),
++	PIN_FIELD_BASE(122, 122, 4, 0x00e0, 0x10, 8, 2),
++	PIN_FIELD_BASE(123, 123, 4, 0x00e0, 0x10, 20, 2),
++	PIN_FIELD_BASE(124, 124, 4, 0x00e0, 0x10, 6, 2),
++	PIN_FIELD_BASE(125, 125, 4, 0x00e0, 0x10, 18, 2),
++	PIN_FIELD_BASE(139, 139, 4, 0x00e0, 0x10, 4, 2),
++	PIN_FIELD_BASE(140, 140, 4, 0x00e0, 0x10, 16, 2),
++	PIN_FIELD_BASE(141, 141, 4, 0x00e0, 0x10, 2, 2),
++	PIN_FIELD_BASE(142, 142, 4, 0x00e0, 0x10, 14, 2),
++	PIN_FIELD_BASE(160, 160, 7, 0x00f0, 0x10, 0, 2),
++	PIN_FIELD_BASE(161, 161, 7, 0x00f0, 0x10, 2, 2),
++	PIN_FIELD_BASE(200, 200, 8, 0x0070, 0x10, 2, 2),
++	PIN_FIELD_BASE(201, 201, 8, 0x0070, 0x10, 6, 2),
++	PIN_FIELD_BASE(202, 202, 5, 0x0070, 0x10, 0, 2),
++	PIN_FIELD_BASE(203, 203, 5, 0x0070, 0x10, 2, 2),
++	PIN_FIELD_BASE(204, 204, 8, 0x0070, 0x10, 0, 2),
++	PIN_FIELD_BASE(205, 205, 8, 0x0070, 0x10, 4, 2),
++};
+ 
++static const unsigned int mt8192_pull_type[] = {
++	MTK_PULL_PU_PD_TYPE,/*0*/ MTK_PULL_PU_PD_TYPE,/*1*/
++	MTK_PULL_PU_PD_TYPE,/*2*/ MTK_PULL_PU_PD_TYPE,/*3*/
++	MTK_PULL_PU_PD_TYPE,/*4*/ MTK_PULL_PU_PD_TYPE,/*5*/
++	MTK_PULL_PU_PD_TYPE,/*6*/ MTK_PULL_PU_PD_TYPE,/*7*/
++	MTK_PULL_PU_PD_TYPE,/*8*/ MTK_PULL_PU_PD_TYPE,/*9*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*10*/ MTK_PULL_PUPD_R1R0_TYPE,/*11*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*12*/ MTK_PULL_PUPD_R1R0_TYPE,/*13*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*14*/ MTK_PULL_PUPD_R1R0_TYPE,/*15*/
++	MTK_PULL_PU_PD_TYPE,/*16*/ MTK_PULL_PU_PD_TYPE,/*17*/
++	MTK_PULL_PU_PD_TYPE,/*18*/ MTK_PULL_PU_PD_TYPE,/*19*/
++	MTK_PULL_PU_PD_TYPE,/*20*/ MTK_PULL_PU_PD_TYPE,/*21*/
++	MTK_PULL_PU_PD_TYPE,/*22*/ MTK_PULL_PU_PD_TYPE,/*23*/
++	MTK_PULL_PU_PD_TYPE,/*24*/ MTK_PULL_PU_PD_TYPE,/*25*/
++	MTK_PULL_PU_PD_TYPE,/*26*/ MTK_PULL_PU_PD_TYPE,/*27*/
++	MTK_PULL_PU_PD_TYPE,/*28*/ MTK_PULL_PU_PD_TYPE,/*29*/
++	MTK_PULL_PU_PD_TYPE,/*30*/ MTK_PULL_PU_PD_TYPE,/*31*/
++	MTK_PULL_PU_PD_TYPE,/*32*/ MTK_PULL_PU_PD_TYPE,/*33*/
++	MTK_PULL_PU_PD_TYPE,/*34*/ MTK_PULL_PU_PD_TYPE,/*35*/
++	MTK_PULL_PU_PD_TYPE,/*36*/ MTK_PULL_PU_PD_TYPE,/*37*/
++	MTK_PULL_PU_PD_TYPE,/*38*/ MTK_PULL_PU_PD_TYPE,/*39*/
++	MTK_PULL_PU_PD_TYPE,/*40*/ MTK_PULL_PU_PD_TYPE,/*41*/
++	MTK_PULL_PU_PD_TYPE,/*42*/ MTK_PULL_PU_PD_TYPE,/*43*/
++	MTK_PULL_PU_PD_TYPE,/*44*/ MTK_PULL_PUPD_R1R0_TYPE,/*45*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*46*/ MTK_PULL_PUPD_R1R0_TYPE,/*47*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*48*/ MTK_PULL_PUPD_R1R0_TYPE,/*49*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*50*/ MTK_PULL_PUPD_R1R0_TYPE,/*51*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*52*/ MTK_PULL_PUPD_R1R0_TYPE,/*53*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*54*/ MTK_PULL_PUPD_R1R0_TYPE,/*55*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*56*/ MTK_PULL_PU_PD_TYPE,/*57*/
++	MTK_PULL_PU_PD_TYPE,/*58*/ MTK_PULL_PU_PD_TYPE,/*59*/
++	MTK_PULL_PU_PD_TYPE,/*60*/ MTK_PULL_PU_PD_TYPE,/*61*/
++	MTK_PULL_PU_PD_TYPE,/*62*/ MTK_PULL_PU_PD_TYPE,/*63*/
++	MTK_PULL_PU_PD_TYPE,/*64*/ MTK_PULL_PU_PD_TYPE,/*65*/
++	MTK_PULL_PU_PD_TYPE,/*66*/ MTK_PULL_PU_PD_TYPE,/*67*/
++	MTK_PULL_PU_PD_TYPE,/*68*/ MTK_PULL_PU_PD_TYPE,/*69*/
++	MTK_PULL_PU_PD_TYPE,/*70*/ MTK_PULL_PU_PD_TYPE,/*71*/
++	MTK_PULL_PU_PD_TYPE,/*72*/ MTK_PULL_PU_PD_TYPE,/*73*/
++	MTK_PULL_PU_PD_TYPE,/*74*/ MTK_PULL_PU_PD_TYPE,/*75*/
++	MTK_PULL_PU_PD_TYPE,/*76*/ MTK_PULL_PU_PD_TYPE,/*77*/
++	MTK_PULL_PU_PD_TYPE,/*78*/ MTK_PULL_PU_PD_TYPE,/*79*/
++	MTK_PULL_PU_PD_TYPE,/*80*/ MTK_PULL_PU_PD_TYPE,/*81*/
++	MTK_PULL_PU_PD_TYPE,/*82*/ MTK_PULL_PU_PD_TYPE,/*83*/
++	MTK_PULL_PU_PD_TYPE,/*84*/ MTK_PULL_PU_PD_TYPE,/*85*/
++	MTK_PULL_PU_PD_TYPE,/*86*/ MTK_PULL_PU_PD_TYPE,/*87*/
++	MTK_PULL_PU_PD_TYPE,/*88*/ MTK_PULL_PU_PD_TYPE,/*89*/
++	MTK_PULL_PU_PD_TYPE,/*90*/ MTK_PULL_PU_PD_TYPE,/*91*/
++	MTK_PULL_PU_PD_TYPE,/*92*/ MTK_PULL_PU_PD_TYPE,/*93*/
++	MTK_PULL_PU_PD_TYPE,/*94*/ MTK_PULL_PU_PD_TYPE,/*95*/
++	MTK_PULL_PU_PD_TYPE,/*96*/ MTK_PULL_PU_PD_TYPE,/*97*/
++	MTK_PULL_PU_PD_TYPE,/*98*/ MTK_PULL_PU_PD_TYPE,/*99*/
++	MTK_PULL_PU_PD_TYPE,/*100*/ MTK_PULL_PU_PD_TYPE,/*101*/
++	MTK_PULL_PU_PD_TYPE,/*102*/ MTK_PULL_PU_PD_TYPE,/*103*/
++	MTK_PULL_PU_PD_TYPE,/*104*/ MTK_PULL_PU_PD_TYPE,/*105*/
++	MTK_PULL_PU_PD_TYPE,/*106*/ MTK_PULL_PU_PD_TYPE,/*107*/
++	MTK_PULL_PU_PD_TYPE,/*108*/ MTK_PULL_PU_PD_TYPE,/*109*/
++	MTK_PULL_PU_PD_TYPE,/*110*/ MTK_PULL_PU_PD_TYPE,/*111*/
++	MTK_PULL_PU_PD_TYPE,/*112*/ MTK_PULL_PU_PD_TYPE,/*113*/
++	MTK_PULL_PU_PD_TYPE,/*114*/ MTK_PULL_PU_PD_TYPE,/*115*/
++	MTK_PULL_PU_PD_TYPE,/*116*/ MTK_PULL_PU_PD_TYPE,/*117*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*118*/ MTK_PULL_PU_PD_RSEL_TYPE,/*119*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*120*/ MTK_PULL_PU_PD_RSEL_TYPE,/*121*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*122*/ MTK_PULL_PU_PD_RSEL_TYPE,/*123*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*124*/ MTK_PULL_PU_PD_RSEL_TYPE,/*125*/
++	MTK_PULL_PU_PD_TYPE,/*126*/ MTK_PULL_PU_PD_TYPE,/*127*/
++	MTK_PULL_PU_PD_TYPE,/*128*/ MTK_PULL_PU_PD_TYPE,/*129*/
++	MTK_PULL_PU_PD_TYPE,/*130*/ MTK_PULL_PU_PD_TYPE,/*131*/
++	MTK_PULL_PU_PD_TYPE,/*132*/ MTK_PULL_PU_PD_TYPE,/*133*/
++	MTK_PULL_PU_PD_TYPE,/*134*/ MTK_PULL_PU_PD_TYPE,/*135*/
++	MTK_PULL_PU_PD_TYPE,/*136*/ MTK_PULL_PU_PD_TYPE,/*137*/
++	MTK_PULL_PU_PD_TYPE,/*138*/ MTK_PULL_PU_PD_RSEL_TYPE,/*139*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*140*/ MTK_PULL_PU_PD_RSEL_TYPE,/*141*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*142*/ MTK_PULL_PU_PD_TYPE,/*143*/
++	MTK_PULL_PU_PD_TYPE,/*144*/ MTK_PULL_PU_PD_TYPE,/*145*/
++	MTK_PULL_PU_PD_TYPE,/*146*/ MTK_PULL_PU_PD_TYPE,/*147*/
++	MTK_PULL_PU_PD_TYPE,/*148*/ MTK_PULL_PU_PD_TYPE,/*149*/
++	MTK_PULL_PU_PD_TYPE,/*150*/ MTK_PULL_PU_PD_TYPE,/*151*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*152*/ MTK_PULL_PUPD_R1R0_TYPE,/*153*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*154*/ MTK_PULL_PUPD_R1R0_TYPE,/*155*/
++	MTK_PULL_PU_PD_TYPE,/*156*/ MTK_PULL_PU_PD_TYPE,/*157*/
++	MTK_PULL_PU_PD_TYPE,/*158*/ MTK_PULL_PU_PD_TYPE,/*159*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*160*/ MTK_PULL_PU_PD_RSEL_TYPE,/*161*/
++	MTK_PULL_PU_PD_TYPE,/*162*/ MTK_PULL_PU_PD_TYPE,/*163*/
++	MTK_PULL_PU_PD_TYPE,/*164*/ MTK_PULL_PU_PD_TYPE,/*165*/
++	MTK_PULL_PU_PD_TYPE,/*166*/ MTK_PULL_PU_PD_TYPE,/*167*/
++	MTK_PULL_PU_PD_TYPE,/*168*/ MTK_PULL_PU_PD_TYPE,/*169*/
++	MTK_PULL_PU_PD_TYPE,/*170*/ MTK_PULL_PU_PD_TYPE,/*171*/
++	MTK_PULL_PU_PD_TYPE,/*172*/ MTK_PULL_PU_PD_TYPE,/*173*/
++	MTK_PULL_PU_PD_TYPE,/*174*/ MTK_PULL_PU_PD_TYPE,/*175*/
++	MTK_PULL_PU_PD_TYPE,/*176*/ MTK_PULL_PU_PD_TYPE,/*177*/
++	MTK_PULL_PU_PD_TYPE,/*178*/ MTK_PULL_PU_PD_TYPE,/*179*/
++	MTK_PULL_PU_PD_TYPE,/*180*/ MTK_PULL_PU_PD_TYPE,/*181*/
++	MTK_PULL_PU_PD_TYPE,/*182*/ MTK_PULL_PUPD_R1R0_TYPE,/*183*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*184*/ MTK_PULL_PUPD_R1R0_TYPE,/*185*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*186*/ MTK_PULL_PUPD_R1R0_TYPE,/*187*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*188*/ MTK_PULL_PUPD_R1R0_TYPE,/*189*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*190*/ MTK_PULL_PUPD_R1R0_TYPE,/*191*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*192*/ MTK_PULL_PUPD_R1R0_TYPE,/*193*/
++	MTK_PULL_PUPD_R1R0_TYPE,/*194*/ MTK_PULL_PU_PD_TYPE,/*195*/
++	MTK_PULL_PU_PD_TYPE,/*196*/ MTK_PULL_PU_PD_TYPE,/*197*/
++	MTK_PULL_PU_PD_TYPE,/*198*/ MTK_PULL_PU_PD_TYPE,/*199*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*200*/ MTK_PULL_PU_PD_RSEL_TYPE,/*201*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*202*/ MTK_PULL_PU_PD_RSEL_TYPE,/*203*/
++	MTK_PULL_PU_PD_RSEL_TYPE,/*204*/ MTK_PULL_PU_PD_RSEL_TYPE,/*205*/
++	MTK_PULL_PU_PD_TYPE,/*206*/ MTK_PULL_PU_PD_TYPE,/*207*/
++	MTK_PULL_PU_PD_TYPE,/*208*/ MTK_PULL_PU_PD_TYPE,/*209*/
++	MTK_PULL_PU_PD_TYPE,/*210*/ MTK_PULL_PU_PD_TYPE,/*211*/
++	MTK_PULL_PU_PD_TYPE,/*212*/ MTK_PULL_PU_PD_TYPE,/*213*/
++	MTK_PULL_PU_PD_TYPE,/*214*/ MTK_PULL_PU_PD_TYPE,/*215*/
++	MTK_PULL_PU_PD_TYPE,/*216*/ MTK_PULL_PU_PD_TYPE,/*217*/
++	MTK_PULL_PU_PD_TYPE,/*218*/ MTK_PULL_PU_PD_TYPE,/*219*/
++};
+ 
+ static const char * const mt8192_pinctrl_register_base_names[] = {
+ 	"iocfg0", "iocfg_rm", "iocfg_bm", "iocfg_bl", "iocfg_br",
+@@ -1314,6 +1448,7 @@ static const struct mtk_pin_reg_calc mt8192_reg_cals[PINCTRL_PIN_REG_MAX] = {
+ 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8192_pin_r0_range),
+ 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8192_pin_r1_range),
+ 	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8192_pin_drv_adv_range),
++	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt8192_pin_rsel_range),
+ };
+ 
+ static const struct mtk_pin_soc mt8192_data = {
+@@ -1323,6 +1458,7 @@ static const struct mtk_pin_soc mt8192_data = {
+ 	.ngrps = ARRAY_SIZE(mtk_pins_mt8192),
+ 	.base_names = mt8192_pinctrl_register_base_names,
+ 	.nbase_names = ARRAY_SIZE(mt8192_pinctrl_register_base_names),
++	.pull_type = mt8192_pull_type,
+ 	.eint_hw = &mt8192_eint_hw,
+ 	.nfuncs = 8,
+ 	.gpio_m = 0,
+-- 
+2.25.5
 
-Yours,
-Linus Walleij
 
