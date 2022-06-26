@@ -4,75 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63222C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 04:53:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903FEC43334
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 08:33:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z02ErGRAgJUe+o2q8k7u9nmB9m0B6KSedFdYgEg8jQg=; b=AefCmQthjRu1T4UqN9LswAahnT
-	ZzH6bWYApXF50LXh1oVcaw3eoMe9ZtxJe2K8dXAHITcDqMe6QH7X6Sk+KlMoEFhCgJv2JZmLUjneH
-	I8z+IGoyOF6eV2Jn2SFARxSpPuHQ7GHXpzVbWvryDeQgNyZM405FRcji/pAmsk7Qs0pl824lG9PJ/
-	qleXECo6irA5HP8IaBCdRhU1Q6aufr2B3w74SvVXXcwDIRFC2s8SBYcOR8zgKbY9QFRhynCpiAcRV
-	lSJ/Uv/A0QNVD3t/pO4up33sCTwNwhRGaTUo9MItCwLpxn42rMfkRTw5ZrvUMC86DIyYN7ymtie4U
-	JG9njLaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9wvC+OH7U+HX4ezxcVDdejjd5tKC3JDQMIGtr9Z0T+g=; b=XX9ztWY8c38soFOM3r+LWBbpbj
+	DY+RjeZT+IElzK38EZPuixnB8428lPbv3gtpGU3mfU+8M2L2qehfF4Mm+yBiJijDN8ENPXv7s94Pd
+	cPDD5CTzX1oK4pq4MACO/1XJHbV3Hs5Vucn66ZpWyl5LP5eqkTO+nEbRHkmHQvF/UhIajN/fNS6IM
+	3/XL0JWZ6YuHYOXt9OrCuL5rkIocgQKwiSBjs99TmVT/1e4CPoMnb57Dz2IPKH8NPYXmp4ueL2jdr
+	aTVIxv80HINYWZrLioSiKB+uiOgMkd0sXkc8Nru7iubBDgnCTN/1QsjlVKL1MfST24airMbyarN9I
+	iRPD9AuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5KGy-009dds-I4; Sun, 26 Jun 2022 04:53:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o5Nhw-00AdhA-2R; Sun, 26 Jun 2022 08:33:28 +0000
+Received: from smtp09.smtpout.orange.fr ([80.12.242.131] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5KDt-009bcf-Ji; Sun, 26 Jun 2022 04:50:17 +0000
-X-UUID: 597d549c5311485bb9f89fd503af6784-20220625
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:3719e0d8-fe88-4283-95dc-c70de37f2336,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:-20
-X-CID-META: VersionHash:b14ad71,CLOUDID:decb0b2e-1756-4fa3-be7f-474a6e4be921,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 597d549c5311485bb9f89fd503af6784-20220625
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
-	(envelope-from <guodong.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1728998125; Sat, 25 Jun 2022 21:50:02 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 25 Jun 2022 21:40:05 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Sun, 26 Jun 2022 12:40:03 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 26 Jun 2022 12:40:02 +0800
-From: Guodong Liu <guodong.liu@mediatek.com>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
-	<sean.wang@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Zhiyong Tao
-	<zhiyong.tao@mediatek.com>,
-	=?UTF-8?q?N=EDcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, <linux-gpio@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Guodong Liu
-	<guodong.liu@mediatek.com>
-Subject: [PATCH v3 2/5] pinctrl: mediatek: add drive for I2C related pins on mt8192
-Date: Sun, 26 Jun 2022 12:39:52 +0800
-Message-ID: <20220626043955.32756-3-guodong.liu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220626043955.32756-1-guodong.liu@mediatek.com>
-References: <20220626043955.32756-1-guodong.liu@mediatek.com>
+	id 1o5Nhs-00Adcq-8c
+	for linux-mediatek@lists.infradead.org; Sun, 26 Jun 2022 08:33:26 +0000
+Received: from [192.168.1.18] ([90.11.190.129])
+	by smtp.orange.fr with ESMTPA
+	id 5NhgocNcnOXCy5NhhoLboN; Sun, 26 Jun 2022 10:33:15 +0200
+X-ME-Helo: [192.168.1.18]
+X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
+X-ME-Date: Sun, 26 Jun 2022 10:33:15 +0200
+X-ME-IP: 90.11.190.129
+Message-ID: <c8b888fc-dff9-c278-da10-6883c4277289@wanadoo.fr>
+Date: Sun, 26 Jun 2022 10:33:12 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v8 2/8] ASoC: mediatek: mt8186: add platform driver
+Content-Language: en-US
+To: jiaxin.yu@mediatek.com
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, aaronyu@google.com,
+ alsa-devel@alsa-project.org, angelogioacchino.delregno@collabora.com,
+ broonie@kernel.org, devicetree@vger.kernel.org, julianbraha@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, trevor.wu@mediatek.com, tzungbi@google.com
+References: <20220625190852.29130-1-jiaxin.yu@mediatek.com>
+ <20220625190852.29130-3-jiaxin.yu@mediatek.com>
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+In-Reply-To: <20220625190852.29130-3-jiaxin.yu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220625_215013_737113_C0156FAD 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220626_013324_489360_91954E7D 
+X-CRM114-Status: GOOD (  19.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,139 +69,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch provides the advanced drive raw data setting version
-for I2C used pins on mt8192
+Le 25/06/2022 à 21:08, Jiaxin Yu a écrit :
+> Add mt8186 platform and affiliated driver.
+> 
+> Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   sound/soc/mediatek/Kconfig                    |   12 +
+>   sound/soc/mediatek/Makefile                   |    1 +
+>   sound/soc/mediatek/mt8186/Makefile            |   19 +
+>   sound/soc/mediatek/mt8186/mt8186-afe-common.h |  235 ++
+>   .../soc/mediatek/mt8186/mt8186-afe-control.c  |  255 ++
+>   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    | 3011 +++++++++++++++++
+>   6 files changed, 3533 insertions(+)
+>   create mode 100644 sound/soc/mediatek/mt8186/Makefile
+>   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-common.h
+>   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-control.c
+>   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
 
-Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
----
- drivers/pinctrl/mediatek/pinctrl-mt8192.c | 96 ++++++-----------------
- 1 file changed, 26 insertions(+), 70 deletions(-)
+[...]
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-index 2421a12fc573..efabeb422aea 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-@@ -1259,74 +1259,32 @@ static const struct mtk_pin_field_calc mt8192_pin_r1_range[] = {
- 	PIN_FIELD_BASE(205, 205, 8, 0x0070, 0x10, 5, 1),
- };
- 
--static const struct mtk_pin_field_calc mt8192_pin_e1e0en_range[] = {
--	PIN_FIELD_BASE(118, 118, 4, 0x0040, 0x10, 0, 1),
--	PIN_FIELD_BASE(119, 119, 4, 0x0040, 0x10, 18, 1),
--	PIN_FIELD_BASE(120, 120, 4, 0x0040, 0x10, 15, 1),
--	PIN_FIELD_BASE(121, 121, 4, 0x0050, 0x10, 3, 1),
--	PIN_FIELD_BASE(122, 122, 4, 0x0040, 0x10, 12, 1),
--	PIN_FIELD_BASE(123, 123, 4, 0x0050, 0x10, 0, 1),
--	PIN_FIELD_BASE(124, 124, 4, 0x0040, 0x10, 9, 1),
--	PIN_FIELD_BASE(125, 125, 4, 0x0040, 0x10, 27, 1),
--	PIN_FIELD_BASE(139, 139, 4, 0x0040, 0x10, 6, 1),
--	PIN_FIELD_BASE(140, 140, 4, 0x0040, 0x10, 24, 1),
--	PIN_FIELD_BASE(141, 141, 4, 0x0040, 0x10, 3, 1),
--	PIN_FIELD_BASE(142, 142, 4, 0x0040, 0x10, 21, 1),
--	PIN_FIELD_BASE(160, 160, 7, 0x0030, 0x10, 0, 1),
--	PIN_FIELD_BASE(161, 161, 7, 0x0030, 0x10, 3, 1),
--	PIN_FIELD_BASE(200, 200, 8, 0x0010, 0x10, 3, 1),
--	PIN_FIELD_BASE(201, 201, 8, 0x0010, 0x10, 9, 1),
--	PIN_FIELD_BASE(202, 202, 5, 0x0020, 0x10, 0, 1),
--	PIN_FIELD_BASE(203, 203, 5, 0x0020, 0x10, 3, 1),
--	PIN_FIELD_BASE(204, 204, 8, 0x0010, 0x10, 0, 1),
--	PIN_FIELD_BASE(205, 205, 8, 0x0010, 0x10, 6, 1),
--};
-+static const struct mtk_pin_field_calc mt8192_pin_drv_adv_range[] = {
-+	PIN_FIELD_BASE(89, 89, 2, 0x0040, 0x10, 0, 5),
-+	PIN_FIELD_BASE(90, 90, 2, 0x0040, 0x10, 5, 5),
- 
--static const struct mtk_pin_field_calc mt8192_pin_e0_range[] = {
--	PIN_FIELD_BASE(118, 118, 4, 0x0040, 0x10, 1, 1),
--	PIN_FIELD_BASE(119, 119, 4, 0x0040, 0x10, 19, 1),
--	PIN_FIELD_BASE(120, 120, 4, 0x0040, 0x10, 16, 1),
--	PIN_FIELD_BASE(121, 121, 4, 0x0050, 0x10, 4, 1),
--	PIN_FIELD_BASE(122, 122, 4, 0x0040, 0x10, 13, 1),
--	PIN_FIELD_BASE(123, 123, 4, 0x0050, 0x10, 1, 1),
--	PIN_FIELD_BASE(124, 124, 4, 0x0040, 0x10, 10, 1),
--	PIN_FIELD_BASE(125, 125, 4, 0x0040, 0x10, 28, 1),
--	PIN_FIELD_BASE(139, 139, 4, 0x0040, 0x10, 7, 1),
--	PIN_FIELD_BASE(140, 140, 4, 0x0040, 0x10, 25, 1),
--	PIN_FIELD_BASE(141, 141, 4, 0x0040, 0x10, 4, 1),
--	PIN_FIELD_BASE(142, 142, 4, 0x0040, 0x10, 22, 1),
--	PIN_FIELD_BASE(160, 160, 7, 0x0030, 0x10, 1, 1),
--	PIN_FIELD_BASE(161, 161, 7, 0x0030, 0x10, 4, 1),
--	PIN_FIELD_BASE(200, 200, 8, 0x0010, 0x10, 4, 1),
--	PIN_FIELD_BASE(201, 201, 8, 0x0010, 0x10, 10, 1),
--	PIN_FIELD_BASE(202, 202, 5, 0x0020, 0x10, 1, 1),
--	PIN_FIELD_BASE(203, 203, 5, 0x0020, 0x10, 4, 1),
--	PIN_FIELD_BASE(204, 204, 8, 0x0010, 0x10, 1, 1),
--	PIN_FIELD_BASE(205, 205, 8, 0x0010, 0x10, 7, 1),
-+	PIN_FIELD_BASE(118, 118, 4, 0x0040, 0x10, 0, 3),
-+	PIN_FIELD_BASE(119, 119, 4, 0x0040, 0x10, 18, 3),
-+	PIN_FIELD_BASE(120, 120, 4, 0x0040, 0x10, 15, 3),
-+	PIN_FIELD_BASE(121, 121, 4, 0x0050, 0x10, 3, 3),
-+	PIN_FIELD_BASE(122, 122, 4, 0x0040, 0x10, 12, 3),
-+	PIN_FIELD_BASE(123, 123, 4, 0x0050, 0x10, 0, 3),
-+	PIN_FIELD_BASE(124, 124, 4, 0x0040, 0x10, 9, 3),
-+	PIN_FIELD_BASE(125, 125, 4, 0x0040, 0x10, 27, 3),
-+	PIN_FIELD_BASE(139, 139, 4, 0x0040, 0x10, 6, 3),
-+	PIN_FIELD_BASE(140, 140, 4, 0x0040, 0x10, 24, 3),
-+	PIN_FIELD_BASE(141, 141, 4, 0x0040, 0x10, 3, 3),
-+	PIN_FIELD_BASE(142, 142, 4, 0x0040, 0x10, 21, 3),
-+	PIN_FIELD_BASE(160, 160, 7, 0x0030, 0x10, 0, 3),
-+	PIN_FIELD_BASE(161, 161, 7, 0x0030, 0x10, 3, 3),
-+	PIN_FIELD_BASE(200, 200, 8, 0x0010, 0x10, 3, 3),
-+	PIN_FIELD_BASE(201, 201, 8, 0x0010, 0x10, 9, 3),
-+	PIN_FIELD_BASE(202, 202, 5, 0x0020, 0x10, 0, 3),
-+	PIN_FIELD_BASE(203, 203, 5, 0x0020, 0x10, 3, 3),
-+	PIN_FIELD_BASE(204, 204, 8, 0x0010, 0x10, 0, 3),
-+	PIN_FIELD_BASE(205, 205, 8, 0x0010, 0x10, 6, 3),
- };
- 
--static const struct mtk_pin_field_calc mt8192_pin_e1_range[] = {
--	PIN_FIELD_BASE(118, 118, 4, 0x0040, 0x10, 2, 1),
--	PIN_FIELD_BASE(119, 119, 4, 0x0040, 0x10, 20, 1),
--	PIN_FIELD_BASE(120, 120, 4, 0x0040, 0x10, 17, 1),
--	PIN_FIELD_BASE(121, 121, 4, 0x0050, 0x10, 5, 1),
--	PIN_FIELD_BASE(122, 122, 4, 0x0040, 0x10, 14, 1),
--	PIN_FIELD_BASE(123, 123, 4, 0x0050, 0x10, 2, 1),
--	PIN_FIELD_BASE(124, 124, 4, 0x0040, 0x10, 11, 1),
--	PIN_FIELD_BASE(125, 125, 4, 0x0040, 0x10, 29, 1),
--	PIN_FIELD_BASE(139, 139, 4, 0x0040, 0x10, 8, 1),
--	PIN_FIELD_BASE(140, 140, 4, 0x0040, 0x10, 26, 1),
--	PIN_FIELD_BASE(141, 141, 4, 0x0040, 0x10, 5, 1),
--	PIN_FIELD_BASE(142, 142, 4, 0x0040, 0x10, 23, 1),
--	PIN_FIELD_BASE(160, 160, 7, 0x0030, 0x10, 2, 1),
--	PIN_FIELD_BASE(161, 161, 7, 0x0030, 0x10, 5, 1),
--	PIN_FIELD_BASE(200, 200, 8, 0x0010, 0x10, 5, 1),
--	PIN_FIELD_BASE(201, 201, 8, 0x0010, 0x10, 11, 1),
--	PIN_FIELD_BASE(202, 202, 5, 0x0020, 0x10, 2, 1),
--	PIN_FIELD_BASE(203, 203, 5, 0x0020, 0x10, 5, 1),
--	PIN_FIELD_BASE(204, 204, 8, 0x0010, 0x10, 2, 1),
--	PIN_FIELD_BASE(205, 205, 8, 0x0010, 0x10, 8, 1),
--};
- 
- 
- static const char * const mt8192_pinctrl_register_base_names[] = {
-@@ -1355,9 +1313,7 @@ static const struct mtk_pin_reg_calc mt8192_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt8192_pin_pupd_range),
- 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8192_pin_r0_range),
- 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8192_pin_r1_range),
--	[PINCTRL_PIN_REG_DRV_EN] = MTK_RANGE(mt8192_pin_e1e0en_range),
--	[PINCTRL_PIN_REG_DRV_E0] = MTK_RANGE(mt8192_pin_e0_range),
--	[PINCTRL_PIN_REG_DRV_E1] = MTK_RANGE(mt8192_pin_e1_range),
-+	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8192_pin_drv_adv_range),
- };
- 
- static const struct mtk_pin_soc mt8192_data = {
-@@ -1376,8 +1332,8 @@ static const struct mtk_pin_soc mt8192_data = {
- 	.drive_get = mtk_pinconf_drive_get_rev1,
- 	.adv_pull_get = mtk_pinconf_adv_pull_get,
- 	.adv_pull_set = mtk_pinconf_adv_pull_set,
--	.adv_drive_get = mtk_pinconf_adv_drive_get,
--	.adv_drive_set = mtk_pinconf_adv_drive_set,
-+	.adv_drive_get = mtk_pinconf_adv_drive_get_raw,
-+	.adv_drive_set = mtk_pinconf_adv_drive_set_raw,
- };
- 
- static const struct of_device_id mt8192_pinctrl_of_match[] = {
--- 
-2.25.5
+> +	MT8186_DAI_HOSTLESS_SRC_AAUDIO,
+> +	MT8186_DAI_HOSTLESS_SRC_1,	/* just an exmpale */
 
+example?
+
+> +	MT8186_DAI_HOSTLESS_SRC_BARGEIN,
+> +	MT8186_DAI_HOSTLESS_UL1,
+
+[...]
+
+> +#define MTK_SPK_I2S_0_STR "MTK_SPK_I2S_0"
+> +#define MTK_SPK_I2S_1_STR "MTK_SPK_I2S_1"
+> +#define MTK_SPK_I2S_2_STR "MTK_SPK_I2S_2"
+> +#define MTK_SPK_I2S_3_STR "MTK_SPK_I2S_3"
+
+Out of curiosity, why no 4?
+Or, if related to mtk_spk_i2s_type below, why  6, 7, 8 and 9?
+
+> +#define MTK_SPK_I2S_5_STR "MTK_SPK_I2S_5"
+> +#define MTK_SPK_I2S_6_STR "MTK_SPK_I2S_6"
+> +#define MTK_SPK_I2S_7_STR "MTK_SPK_I2S_7"
+> +#define MTK_SPK_I2S_8_STR "MTK_SPK_I2S_8"
+> +#define MTK_SPK_I2S_9_STR "MTK_SPK_I2S_9"
+> +
+
+[...]
+
+> +
+> +enum mtk_spk_i2s_type {
+> +	MTK_SPK_I2S_TYPE_INVALID = -1,
+> +	MTK_SPK_I2S_0,
+> +	MTK_SPK_I2S_1,
+> +	MTK_SPK_I2S_2,
+> +	MTK_SPK_I2S_3,
+> +	MTK_SPK_I2S_5,
+> +	MTK_SPK_I2S_TYPE_NUM
+> +};
+
+[...]
+
+> +static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_base_afe *afe;
+> +	struct mt8186_afe_private *afe_priv;
+> +	struct resource *res;
+> +	struct reset_control *rstc;
+> +	struct device *dev = &pdev->dev;
+> +	int i, ret, irq_id;
+> +
+> +	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(34));
+> +	if (ret)
+> +		return ret;
+> +
+> +	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
+> +	if (!afe)
+> +		return -ENOMEM;
+> +	platform_set_drvdata(pdev, afe);
+> +
+> +	afe->platform_priv = devm_kzalloc(dev, sizeof(*afe_priv), GFP_KERNEL);
+> +	if (!afe->platform_priv)
+> +		return -ENOMEM;
+> +
+> +	afe_priv = afe->platform_priv;
+> +	afe->dev = &pdev->dev;
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	afe->base_addr = devm_ioremap_resource(&pdev->dev, res);
+> +	if (IS_ERR(afe->base_addr))
+> +		return PTR_ERR(afe->base_addr);
+> +
+> +	/* init audio related clock */
+> +	ret = mt8186_init_clock(afe);
+> +	if (ret) {
+> +		dev_err(dev, "init clock error, ret %d\n", ret);
+> +		return ret;
+> +	}
+
+There is a mt8186_deinit_clock() call in the remove function.
+Should this also be called in the error handling path below?
+Or should a devm_add_action_or_reset() be used to ease error handling?
+
+> +
+> +	/* init memif */
+> +	afe->memif_32bit_supported = 0;
+> +	afe->memif_size = MT8186_MEMIF_NUM;
+> +	afe->memif = devm_kcalloc(dev, afe->memif_size, sizeof(*afe->memif),
+> +				  GFP_KERNEL);
+> +
+
+Nit: no need for an empty line here.
+
+> +	if (!afe->memif)
+> +		return -ENOMEM;
+> +
+
+[...]
+
+> +
+> +	return 0;
+> +
+> +err_pm_disable:
+> +	pm_runtime_put_noidle(dev);
+> +	pm_runtime_set_suspended(dev);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mt8186_afe_pcm_dev_remove(struct platform_device *pdev)
+> +{
+> +	struct mtk_base_afe *afe = platform_get_drvdata(pdev);
+> +
+> +	if (!pm_runtime_status_suspended(&pdev->dev))
+> +		mt8186_afe_runtime_suspend(&pdev->dev);
+
+Out of curiosity, is it normal to have some pm_runtime related code here 
+that does not look the same as the one in the error handling of the probe?
+(I don't know much about pm, but usually, .remove() functions and error 
+handling in the probe look quite close)
+
+> +
+> +	mt8186_deinit_clock(afe);
+> +
+> +	return 0;
+> +}
+> +
+
+[...]
 
