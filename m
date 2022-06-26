@@ -4,57 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903FEC43334
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 08:33:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA84C43334
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 09:48:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9wvC+OH7U+HX4ezxcVDdejjd5tKC3JDQMIGtr9Z0T+g=; b=XX9ztWY8c38soFOM3r+LWBbpbj
-	DY+RjeZT+IElzK38EZPuixnB8428lPbv3gtpGU3mfU+8M2L2qehfF4Mm+yBiJijDN8ENPXv7s94Pd
-	cPDD5CTzX1oK4pq4MACO/1XJHbV3Hs5Vucn66ZpWyl5LP5eqkTO+nEbRHkmHQvF/UhIajN/fNS6IM
-	3/XL0JWZ6YuHYOXt9OrCuL5rkIocgQKwiSBjs99TmVT/1e4CPoMnb57Dz2IPKH8NPYXmp4ueL2jdr
-	aTVIxv80HINYWZrLioSiKB+uiOgMkd0sXkc8Nru7iubBDgnCTN/1QsjlVKL1MfST24airMbyarN9I
-	iRPD9AuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZBhVm6IGWseUER7MkXUlFCT29ycUychI6NdxaG+9H94=; b=NuAryrYXQL5RlF/i+eSG4GQw2T
+	n3T4GnNOa6zeVVIqzSPRq1jsadHKVDUAk8ClxWcGAWS3tthVKPu/5yKfNBNWdbHScmt/mFcf69GWf
+	2Tb6gX3UYTlFEgxVX3h+81mXnQLu+yIRGxsKkF7DzbfYMd1eMprwemGOR2D4ZPAwSZd6jIC7P/DfY
+	FWxftul5nhXgleinT+38TGcqKXKEtn3YdBu3ee9PY/e9V7WQvsqwWhwDuX9tfacFn1nFZXS7P1UA0
+	X2GOv2Q4pvpRGnjSaMUSxNTEtRQVHzAYCbaUOo59O+C1XTRsLH8a5gX7PFZONlf3S024VOZG3G79X
+	z5XEbSlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5Nhw-00AdhA-2R; Sun, 26 Jun 2022 08:33:28 +0000
-Received: from smtp09.smtpout.orange.fr ([80.12.242.131] helo=smtp.smtpout.orange.fr)
+	id 1o5OsI-00AzI6-Dt; Sun, 26 Jun 2022 09:48:14 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5Nhs-00Adcq-8c
-	for linux-mediatek@lists.infradead.org; Sun, 26 Jun 2022 08:33:26 +0000
-Received: from [192.168.1.18] ([90.11.190.129])
-	by smtp.orange.fr with ESMTPA
-	id 5NhgocNcnOXCy5NhhoLboN; Sun, 26 Jun 2022 10:33:15 +0200
-X-ME-Helo: [192.168.1.18]
-X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Sun, 26 Jun 2022 10:33:15 +0200
-X-ME-IP: 90.11.190.129
-Message-ID: <c8b888fc-dff9-c278-da10-6883c4277289@wanadoo.fr>
-Date: Sun, 26 Jun 2022 10:33:12 +0200
+	id 1o5Os6-00AzB9-Q1; Sun, 26 Jun 2022 09:48:05 +0000
+Received: from [10.0.0.163] (ip-94-112-206-30.net.upcbroadband.cz [94.112.206.30])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: david.heidelberg)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 72C3366016D9;
+	Sun, 26 Jun 2022 10:47:57 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656236878;
+	bh=ZBhVm6IGWseUER7MkXUlFCT29ycUychI6NdxaG+9H94=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QQSQB7DpPodscJDotm27LdPwtvKQBhPJink12zTUxiTf78vdtog82vhEEXSPVG5xS
+	 TAIXfK6BsNQyVFktTkAscotdLCOZ5HaqtE3BwSfJ7WotKB0jHMYC/eeeGLqY9tYYXu
+	 gMZpdTdhxY8KTl+sEE18b3EVcIKv/tIASVu+I89zUF53k3NV0eWN1q2VLD4n5nKy5J
+	 9Ew89pAXHluttSW+sk3h4VmSObHVTlLErOWFcJDf0rM0aHxGhEQ7Ha5wWZJK7rk76x
+	 3yZVkhu6Fr1ySgtrmZPuuLHVWF9TWaQyhGDTtLVa0C98brBtkl+apxnTDq0bMKUzrU
+	 Q71bzJBYLHZ0w==
+Message-ID: <728b2c54-0dc0-533f-bab8-fca228f6c1b1@collabora.com>
+Date: Sun, 26 Jun 2022 11:47:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v8 2/8] ASoC: mediatek: mt8186: add platform driver
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v3 4/7] dt-bindings: clock: mediatek: Add clock driver
+ bindings for MT6795
 Content-Language: en-US
-To: jiaxin.yu@mediatek.com
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, aaronyu@google.com,
- alsa-devel@alsa-project.org, angelogioacchino.delregno@collabora.com,
- broonie@kernel.org, devicetree@vger.kernel.org, julianbraha@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- robh+dt@kernel.org, trevor.wu@mediatek.com, tzungbi@google.com
-References: <20220625190852.29130-1-jiaxin.yu@mediatek.com>
- <20220625190852.29130-3-jiaxin.yu@mediatek.com>
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <20220625190852.29130-3-jiaxin.yu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
+ y.oudjana@protonmail.com, jason-jh.lin@mediatek.com, ck.hu@mediatek.com,
+ fparent@baylibre.com, rex-bc.chen@mediatek.com, tinghan.shen@mediatek.com,
+ chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
+ miles.chen@mediatek.com, sam.shih@mediatek.com, wenst@chromium.org,
+ bgolaszewski@baylibre.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+ konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
+ martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
+ phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
+ kernel@collabora.com
+References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
+ <20220624093525.243077-5-angelogioacchino.delregno@collabora.com>
+ <cea65d6a-7d9b-7b14-9984-bcd7f115da47@linaro.org>
+From: David Heidelberg <david.heidelberg@collabora.com>
+Autocrypt: addr=david.heidelberg@collabora.com; keydata=
+ xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGNPwqEeILN
+ MURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFib3JhLmNvbT7ClgQT
+ FggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsDBQkFo5qABQsJCAcCBhUKCQgL
+ AgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5YqSWAOuIumAqgWvke6BEsaIGWGQzXSuKj
+ er/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQB
+ l1UBBQEBB0AEk7jXEwDApGOwMH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYh
+ BEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0Y
+ uAOKJCnnwrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
+ wueLHBdwHg6zAQ==
+In-Reply-To: <cea65d6a-7d9b-7b14-9984-bcd7f115da47@linaro.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------01SB8j7fsrDg1UCCZJHvnO6w"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220626_013324_489360_91954E7D 
-X-CRM114-Status: GOOD (  19.22  )
+X-CRM114-CacheID: sfid-20220626_024803_248134_C6796C71 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,150 +99,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 25/06/2022 à 21:08, Jiaxin Yu a écrit :
-> Add mt8186 platform and affiliated driver.
-> 
-> Signed-off-by: Jiaxin Yu <jiaxin.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   sound/soc/mediatek/Kconfig                    |   12 +
->   sound/soc/mediatek/Makefile                   |    1 +
->   sound/soc/mediatek/mt8186/Makefile            |   19 +
->   sound/soc/mediatek/mt8186/mt8186-afe-common.h |  235 ++
->   .../soc/mediatek/mt8186/mt8186-afe-control.c  |  255 ++
->   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    | 3011 +++++++++++++++++
->   6 files changed, 3533 insertions(+)
->   create mode 100644 sound/soc/mediatek/mt8186/Makefile
->   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-common.h
->   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-control.c
->   create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------01SB8j7fsrDg1UCCZJHvnO6w
+Content-Type: multipart/mixed; boundary="------------igpTnjsExajZs0wD231Hp3a8";
+ protected-headers="v1"
+From: David Heidelberg <david.heidelberg@collabora.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
+ y.oudjana@protonmail.com, jason-jh.lin@mediatek.com, ck.hu@mediatek.com,
+ fparent@baylibre.com, rex-bc.chen@mediatek.com, tinghan.shen@mediatek.com,
+ chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
+ miles.chen@mediatek.com, sam.shih@mediatek.com, wenst@chromium.org,
+ bgolaszewski@baylibre.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+ konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
+ martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
+ phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
+ kernel@collabora.com
+Message-ID: <728b2c54-0dc0-533f-bab8-fca228f6c1b1@collabora.com>
+Subject: Re: [PATCH v3 4/7] dt-bindings: clock: mediatek: Add clock driver
+ bindings for MT6795
+References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
+ <20220624093525.243077-5-angelogioacchino.delregno@collabora.com>
+ <cea65d6a-7d9b-7b14-9984-bcd7f115da47@linaro.org>
+In-Reply-To: <cea65d6a-7d9b-7b14-9984-bcd7f115da47@linaro.org>
 
-[...]
+--------------igpTnjsExajZs0wD231Hp3a8
+Content-Type: multipart/mixed; boundary="------------4TT4k8GW9tO0EQaIeP92D69x"
 
-> +	MT8186_DAI_HOSTLESS_SRC_AAUDIO,
-> +	MT8186_DAI_HOSTLESS_SRC_1,	/* just an exmpale */
+--------------4TT4k8GW9tO0EQaIeP92D69x
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-example?
+T24gMjUvMDYvMjAyMiAyMjoyOSwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToNCj4gT24g
+MjQvMDYvMjAyMiAxMTozNSwgQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gd3JvdGU6DQo+
+PiBBZGQgdGhlIGJpbmRpbmdzIGZvciB0aGUgY2xvY2sgZHJpdmVycyBvZiB0aGUgTWVkaWFU
+ZWsgSGVsaW8gWDEwDQo+PiBNVDY3OTUgU29DLg0KPj4NCj4+IFNpZ25lZC1vZmYtYnk6IEFu
+Z2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNv
+bGxhYm9yYS5jb20+DQo+PiAtLS0NCj4+ICAgLi4uL2JpbmRpbmdzL2Nsb2NrL21lZGlhdGVr
+LG10Njc5NS1jbG9jay55YW1sIHwgNjYgKysrKysrKysrKysrKysrKysNCj4+ICAgLi4uL2Ns
+b2NrL21lZGlhdGVrLG10Njc5NS1zeXMtY2xvY2sueWFtbCAgICAgIHwgNzQgKysrKysrKysr
+KysrKysrKysrKw0KPj4gICAyIGZpbGVzIGNoYW5nZWQsIDE0MCBpbnNlcnRpb25zKCspDQo+
+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvY2xvY2svbWVkaWF0ZWssbXQ2Nzk1LWNsb2NrLnlhbWwNCj4+ICAgY3JlYXRlIG1vZGUg
+MTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9tZWRpYXRl
+ayxtdDY3OTUtc3lzLWNsb2NrLnlhbWwNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL21lZGlhdGVrLG10Njc5NS1jbG9jay55
+YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL21lZGlhdGVr
+LG10Njc5NS1jbG9jay55YW1sDQo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NA0KPj4gaW5kZXgg
+MDAwMDAwMDAwMDAwLi43OTVmYjE4NzIxYzMNCj4+IC0tLSAvZGV2L251bGwNCj4+ICsrKyBi
+L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9tZWRpYXRlayxtdDY3
+OTUtY2xvY2sueWFtbA0KPj4gQEAgLTAsMCArMSw2NiBAQA0KPj4gKyMgU1BEWC1MaWNlbnNl
+LUlkZW50aWZpZXI6IChHUEwtMi4wIE9SIEJTRC0yLUNsYXVzZSkNCj4+ICslWUFNTCAxLjIN
+Cj4+ICstLS0NCj4+ICskaWQ6ICJodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9jbG9j
+ay9tZWRpYXRlayxtdDY3OTUtY2xvY2sueWFtbCMiDQo+PiArJHNjaGVtYTogImh0dHA6Ly9k
+ZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvY29yZS55YW1sIyINCj4+ICsNCj4+ICt0aXRs
+ZTogTWVkaWFUZWsgRnVuY3Rpb25hbCBDbG9jayBDb250cm9sbGVyIGZvciBNVDY3OTUNCj4+
+ICsNCj4+ICttYWludGFpbmVyczoNCj4+ICsgIC0gQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVn
+bm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4NCj4+ICsgIC0g
+Q2h1bi1KaWUgQ2hlbiA8Y2h1bi1qaWUuY2hlbkBtZWRpYXRlay5jb20+DQo+PiArDQo+PiAr
+ZGVzY3JpcHRpb246IHwNCj4+ICsgIFRoZSBjbG9jayBhcmNoaXRlY3R1cmUgaW4gTWVkaWFU
+ZWsgbGlrZSBiZWxvdw0KPj4gKyAgUExMcyAtLT4NCj4+ICsgICAgICAgICAgZGl2aWRlcnMg
+LS0+DQo+PiArICAgICAgICAgICAgICAgICAgICAgIG11eGVzDQo+PiArICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgLS0+DQo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+Y2xvY2sgZ2F0ZQ0KPj4gKw0KPj4gKyAgVGhlIGRldmljZXMgcHJvdmlkZSBjbG9jayBnYXRl
+IGNvbnRyb2wgaW4gZGlmZmVyZW50IElQIGJsb2Nrcy4NCj4+ICsNCj4+ICtwcm9wZXJ0aWVz
+Og0KPj4gKyAgY29tcGF0aWJsZToNCj4+ICsgICAgZW51bToNCj4+ICsgICAgICAtIG1lZGlh
+dGVrLG10Njc5NS1tZmdjZmcNCj4+ICsgICAgICAtIG1lZGlhdGVrLG10Njc5NS12ZGVjc3lz
+DQo+PiArICAgICAgLSBtZWRpYXRlayxtdDY3OTUtdmVuY3N5cw0KPj4gKw0KPj4gKyAgcmVn
+Og0KPj4gKyAgICBtYXhJdGVtczogMQ0KPj4gKw0KPj4gKyAgJyNjbG9jay1jZWxscyc6DQo+
+PiArICAgIGNvbnN0OiAxDQo+PiArDQo+PiArcmVxdWlyZWQ6DQo+PiArICAtIGNvbXBhdGli
+bGUNCj4+ICsgIC0gcmVnDQo+PiArICAtICcjY2xvY2stY2VsbHMnDQo+PiArDQo+PiArYWRk
+aXRpb25hbFByb3BlcnRpZXM6IGZhbHNlDQo+PiArDQo+PiArZXhhbXBsZXM6DQo+PiArICAt
+IHwNCj4+ICsgICAgc29jIHsNCj4+ICsgICAgICAgICNhZGRyZXNzLWNlbGxzID0gPDI+Ow0K
+Pj4gKyAgICAgICAgI3NpemUtY2VsbHMgPSA8Mj47DQo+PiArDQo+PiArICAgICAgICBtZmdj
+Zmc6IGNsb2NrLWNvbnRyb2xsZXJAMTMwMDAwMDAgew0KPj4gKyAgICAgICAgICAgIGNvbXBh
+dGlibGUgPSAibWVkaWF0ZWssbXQ2Nzk1LW1mZ2NmZyI7DQo+PiArICAgICAgICAgICAgcmVn
+ID0gPDAgMHgxMzAwMDAwMCAwIDB4MTAwMD47DQo+PiArICAgICAgICAgICAgI2Nsb2NrLWNl
+bGxzID0gPDE+Ow0KPj4gKyAgICAgICAgfTsNCj4+ICsNCj4+ICsgICAgICAgIHZkZWNzeXM6
+IGNsb2NrLWNvbnRyb2xsZXJAMTYwMDAwMDAgew0KPj4gKyAgICAgICAgICAgIGNvbXBhdGli
+bGUgPSAibWVkaWF0ZWssbXQ2Nzk1LXZkZWNzeXMiOw0KPj4gKyAgICAgICAgICAgIHJlZyA9
+IDwwIDB4MTYwMDAwMDAgMCAweDEwMDA+Ow0KPj4gKyAgICAgICAgICAgICNjbG9jay1jZWxs
+cyA9IDwxPjsNCj4+ICsgICAgICAgIH07DQo+PiArDQo+PiArICAgICAgICB2ZW5jc3lzOiBj
+bG9jay1jb250cm9sbGVyQDE4MDAwMDAwIHsNCj4+ICsgICAgICAgICAgICBjb21wYXRpYmxl
+ID0gIm1lZGlhdGVrLG10Njc5NS12ZW5jc3lzIjsNCj4+ICsgICAgICAgICAgICByZWcgPSA8
+MCAweDE4MDAwMDAwIDAgMHgxMDAwPjsNCj4+ICsgICAgICAgICAgICAjY2xvY2stY2VsbHMg
+PSA8MT47DQo+PiArICAgICAgICB9Ow0KPj4gKyAgICB9Ow0KPj4gZGlmZiAtLWdpdCBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9tZWRpYXRlayxtdDY3OTUt
+c3lzLWNsb2NrLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xv
+Y2svbWVkaWF0ZWssbXQ2Nzk1LXN5cy1jbG9jay55YW1sDQo+PiBuZXcgZmlsZSBtb2RlIDEw
+MDY0NA0KPj4gaW5kZXggMDAwMDAwMDAwMDAwLi40NGI5NmFmOWNlYWYNCj4+IC0tLSAvZGV2
+L251bGwNCj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9j
+ay9tZWRpYXRlayxtdDY3OTUtc3lzLWNsb2NrLnlhbWwNCj4+IEBAIC0wLDAgKzEsNzQgQEAN
+Cj4+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCBPUiBCU0QtMi1DbGF1
+c2UpDQo+PiArJVlBTUwgMS4yDQo+PiArLS0tDQo+PiArJGlkOiAiaHR0cDovL2RldmljZXRy
+ZWUub3JnL3NjaGVtYXMvY2xvY2svbWVkaWF0ZWssbXQ2Nzk1LXN5cy1jbG9jay55YW1sIyIN
+Cj4+ICskc2NoZW1hOiAiaHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9jb3Jl
+LnlhbWwjIg0KPj4gKw0KPj4gK3RpdGxlOiBNZWRpYVRlayBTeXN0ZW0gQ2xvY2sgQ29udHJv
+bGxlciBmb3IgTVQ2Nzk1DQo+PiArDQo+PiArbWFpbnRhaW5lcnM6DQo+PiArICAtIEFuZ2Vs
+b0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxh
+Ym9yYS5jb20+DQo+PiArICAtIENodW4tSmllIENoZW4gPGNodW4tamllLmNoZW5AbWVkaWF0
+ZWsuY29tPg0KPj4gKw0KPj4gK2Rlc2NyaXB0aW9uOg0KPj4gKyAgVGhlIE1lZGlhdGVrIHN5
+c3RlbSBjbG9jayBjb250cm9sbGVyIHByb3ZpZGVzIHZhcmlvdXMgY2xvY2tzIGFuZCBzeXN0
+ZW0gY29uZmlndXJhdGlvbg0KPiBXcmFwIGFjY29yZGluZyB0byBMaW51eCBjb2RpbmcgY29u
+dmVudGlvbiwgc28gYXQgODAuDQoNCldoYXQgSSB1bmRlcnN0b29kIHRoYXQgMTAwIGxlbmd0
+aCB3YXMgYWdyZWVkIFsxXSBhcyBhIGxpbWl0LiBJIGhhdmVuJ3QgDQpub3RpY2VkIGFueSBy
+ZWNlbnQgY2hhbmdlIHJlZ2FyZGluZyB0byBsaW5lIGxlbmd0aC4NCg0KWzFdIA0KaHR0cHM6
+Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGlu
+dXguZ2l0L2NvbW1pdC8/aWQ9YmRjNDhmYTExZTQ2Zjg2N2VhNGQ3NWZhNTllZTg3YTdmNDhi
+ZTE0NA0KDQo+DQo+PiArICBsaWtlIHJlc2V0IGFuZCBidXMgcHJvdGVjdGlvbiBvbiBNVDY3
+OTUuDQo+PiArDQo+PiArcHJvcGVydGllczoNCj4+ICsgIGNvbXBhdGlibGU6DQo+PiArICAg
+IGl0ZW1zOg0KPj4gKyAgICAgIC0gZW51bToNCj4+ICsgICAgICAgICAgLSBtZWRpYXRlayxt
+dDY3OTUtYXBtaXhlZHN5cw0KPj4gKyAgICAgICAgICAtIG1lZGlhdGVrLG10Njc5NS1pbmZy
+YWNmZw0KPj4gKyAgICAgICAgICAtIG1lZGlhdGVrLG10Njc5NS1wZXJpY2ZnDQo+PiArICAg
+ICAgICAgIC0gbWVkaWF0ZWssbXQ2Nzk1LXRvcGNrZ2VuDQo+PiArICAgICAgLSBjb25zdDog
+c3lzY29uDQo+PiArDQo+PiArICByZWc6DQo+PiArICAgIG1heEl0ZW1zOiAxDQo+PiArDQo+
+PiArICAnI2Nsb2NrLWNlbGxzJzoNCj4+ICsgICAgY29uc3Q6IDENCj4+ICsNCj4+ICsgICcj
+cmVzZXQtY2VsbHMnOg0KPj4gKyAgICBjb25zdDogMQ0KPj4gKw0KPj4gK3JlcXVpcmVkOg0K
+Pj4gKyAgLSBjb21wYXRpYmxlDQo+PiArICAtIHJlZw0KPj4gKyAgLSAnI2Nsb2NrLWNlbGxz
+Jw0KPj4gKw0KPj4gK2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQ0KPj4gKw0KPj4gK2V4
+YW1wbGVzOg0KPj4gKyAgLSB8DQo+PiArICAgIHNvYyB7DQo+PiArICAgICAgICAjYWRkcmVz
+cy1jZWxscyA9IDwyPjsNCj4+ICsgICAgICAgICNzaXplLWNlbGxzID0gPDI+Ow0KPj4gKw0K
+Pj4gKyAgICAgICAgdG9wY2tnZW46IGNsb2NrLWNvbnRyb2xsZXJAMTAwMDAwMDAgew0KPj4g
+KyAgICAgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ2Nzk1LXRvcGNrZ2VuIiwg
+InN5c2NvbiI7DQo+PiArICAgICAgICAgICAgcmVnID0gPDAgMHgxMDAwMDAwMCAwIDB4MTAw
+MD47DQo+PiArICAgICAgICAgICAgI2Nsb2NrLWNlbGxzID0gPDE+Ow0KPj4gKyAgICAgICAg
+fTsNCj4+ICsNCj4+ICsgICAgICAgIGluZnJhY2ZnOiBwb3dlci1jb250cm9sbGVyQDEwMDAx
+MDAwIHsNCj4+ICsgICAgICAgICAgICBjb21wYXRpYmxlID0gIm1lZGlhdGVrLG10Njc5NS1p
+bmZyYWNmZyIsICJzeXNjb24iOw0KPj4gKyAgICAgICAgICAgIHJlZyA9IDwwIDB4MTAwMDEw
+MDAgMCAweDEwMDA+Ow0KPj4gKyAgICAgICAgICAgICNjbG9jay1jZWxscyA9IDwxPjsNCj4+
+ICsgICAgICAgICAgICAjcmVzZXQtY2VsbHMgPSA8MT47DQo+IE5vIG5lZWQgZm9yIGZvdXIg
+ZXhhbXBsZXMgb2YgdGhlIHNhbWUuIFRoZXkgZGlmZmVyIG9ubHkgYnkgY29tcGF0aWJsZSwN
+Cj4gc28gdGhpcyBpcyBqdXN0IHVubmVjZXNzYXJ5IGNvZGUuLi4gd2hpY2ggYXMgeW91IGNh
+biBzZWUgZG9lcyBub3QgcGFzcw0KPiB0aGUgY2hlY2tzLiBUaGlzIGFsc28gaGFzIHRvIGJl
+IGZpeGVkLg0KPg0KPiBNYXliZSBrZWVwIGl0IGFzIGNsb2NrLWNvbnRyb2xsZXI/DQo+DQo+
+DQo+IEJlc3QgcmVnYXJkcywNCj4gS3J6eXN6dG9mDQo+DQotLSANCkRhdmlkIEhlaWRlbGJl
+cmcNCkNvbnN1bHRhbnQgU29mdHdhcmUgRW5naW5lZXINCg0KQ29sbGFib3JhIEx0ZC4NClBs
+YXRpbnVtIEJ1aWxkaW5nLCBTdCBKb2huJ3MgSW5ub3ZhdGlvbiBQYXJrLCBDYW1icmlkZ2Ug
+Q0I0IDBEUywgVUsNClJlZ2lzdGVyZWQgaW4gRW5nbGFuZCAmIFdhbGVzLCBuby4gNTUxMzcx
+OA0KDQo=
+--------------4TT4k8GW9tO0EQaIeP92D69x
+Content-Type: application/pgp-keys; name="OpenPGP_0x69F567861C1EC014.asc"
+Content-Disposition: attachment; filename="OpenPGP_0x69F567861C1EC014.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
 
-> +	MT8186_DAI_HOSTLESS_SRC_BARGEIN,
-> +	MT8186_DAI_HOSTLESS_UL1,
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
-[...]
+xjMEYlvLOxYJKwYBBAHaRw8BAQdA5CoWEzz4igpwK4h6lK6ZformRk84+ymcfkGN
+PwqEeILNMURhdmlkIEhlaWRlbGJlcmcgPGRhdmlkLmhlaWRlbGJlcmdAY29sbGFi
+b3JhLmNvbT7ClgQTFggAPhYhBEo7kSl22BK0F1Np/mn1Z4YcHsAUBQJiW8s7AhsD
+BQkFo5qABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGn1Z4YcHsAU84kBAK5Y
+qSWAOuIumAqgWvke6BEsaIGWGQzXSuKjer/TXuFuAQCwc9ITSVXWWTSpdFt2+4z7
+Wch8tIGlbIFcS9dCFddwCc44BGJbyzsSCisGAQQBl1UBBQEBB0AEk7jXEwDApGOw
+MH/X0UAPBH8Y3isjxhNMjpyRcnl2CwMBCAfCfgQYFggAJhYhBEo7kSl22BK0F1Np
+/mn1Z4YcHsAUBQJiW8s7AhsMBQkFo5qAAAoJEGn1Z4YcHsAU0PEA/j0YuAOKJCnn
+wrkf3ozPP0sutA5bojoARwcIaZKO/zvIAP9PwTC9DGLg+8LJm7m2Lyf0LxLA8FXD
+wueLHBdwHg6zAQ=3D=3D
+=3DOQS+
+-----END PGP PUBLIC KEY BLOCK-----
 
-> +#define MTK_SPK_I2S_0_STR "MTK_SPK_I2S_0"
-> +#define MTK_SPK_I2S_1_STR "MTK_SPK_I2S_1"
-> +#define MTK_SPK_I2S_2_STR "MTK_SPK_I2S_2"
-> +#define MTK_SPK_I2S_3_STR "MTK_SPK_I2S_3"
+--------------4TT4k8GW9tO0EQaIeP92D69x--
 
-Out of curiosity, why no 4?
-Or, if related to mtk_spk_i2s_type below, why  6, 7, 8 and 9?
+--------------igpTnjsExajZs0wD231Hp3a8--
 
-> +#define MTK_SPK_I2S_5_STR "MTK_SPK_I2S_5"
-> +#define MTK_SPK_I2S_6_STR "MTK_SPK_I2S_6"
-> +#define MTK_SPK_I2S_7_STR "MTK_SPK_I2S_7"
-> +#define MTK_SPK_I2S_8_STR "MTK_SPK_I2S_8"
-> +#define MTK_SPK_I2S_9_STR "MTK_SPK_I2S_9"
-> +
+--------------01SB8j7fsrDg1UCCZJHvnO6w
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
 
-[...]
+-----BEGIN PGP SIGNATURE-----
 
-> +
-> +enum mtk_spk_i2s_type {
-> +	MTK_SPK_I2S_TYPE_INVALID = -1,
-> +	MTK_SPK_I2S_0,
-> +	MTK_SPK_I2S_1,
-> +	MTK_SPK_I2S_2,
-> +	MTK_SPK_I2S_3,
-> +	MTK_SPK_I2S_5,
-> +	MTK_SPK_I2S_TYPE_NUM
-> +};
+iHUEARYIAB0WIQRKO5EpdtgStBdTaf5p9WeGHB7AFAUCYrgrSwAKCRBp9WeGHB7A
+FI9aAPwKZ9qdy8fkfWuR5+0DNALpnxhA22wMeS/Rr+FJzCIO6wD/Q/q4xqSAb6h2
+Q4m/b/mqOFD4AYAJ416vkMM4dwJj0wg=
+=NSS0
+-----END PGP SIGNATURE-----
 
-[...]
-
-> +static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
-> +{
-> +	struct mtk_base_afe *afe;
-> +	struct mt8186_afe_private *afe_priv;
-> +	struct resource *res;
-> +	struct reset_control *rstc;
-> +	struct device *dev = &pdev->dev;
-> +	int i, ret, irq_id;
-> +
-> +	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(34));
-> +	if (ret)
-> +		return ret;
-> +
-> +	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
-> +	if (!afe)
-> +		return -ENOMEM;
-> +	platform_set_drvdata(pdev, afe);
-> +
-> +	afe->platform_priv = devm_kzalloc(dev, sizeof(*afe_priv), GFP_KERNEL);
-> +	if (!afe->platform_priv)
-> +		return -ENOMEM;
-> +
-> +	afe_priv = afe->platform_priv;
-> +	afe->dev = &pdev->dev;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	afe->base_addr = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(afe->base_addr))
-> +		return PTR_ERR(afe->base_addr);
-> +
-> +	/* init audio related clock */
-> +	ret = mt8186_init_clock(afe);
-> +	if (ret) {
-> +		dev_err(dev, "init clock error, ret %d\n", ret);
-> +		return ret;
-> +	}
-
-There is a mt8186_deinit_clock() call in the remove function.
-Should this also be called in the error handling path below?
-Or should a devm_add_action_or_reset() be used to ease error handling?
-
-> +
-> +	/* init memif */
-> +	afe->memif_32bit_supported = 0;
-> +	afe->memif_size = MT8186_MEMIF_NUM;
-> +	afe->memif = devm_kcalloc(dev, afe->memif_size, sizeof(*afe->memif),
-> +				  GFP_KERNEL);
-> +
-
-Nit: no need for an empty line here.
-
-> +	if (!afe->memif)
-> +		return -ENOMEM;
-> +
-
-[...]
-
-> +
-> +	return 0;
-> +
-> +err_pm_disable:
-> +	pm_runtime_put_noidle(dev);
-> +	pm_runtime_set_suspended(dev);
-> +
-> +	return ret;
-> +}
-> +
-> +static int mt8186_afe_pcm_dev_remove(struct platform_device *pdev)
-> +{
-> +	struct mtk_base_afe *afe = platform_get_drvdata(pdev);
-> +
-> +	if (!pm_runtime_status_suspended(&pdev->dev))
-> +		mt8186_afe_runtime_suspend(&pdev->dev);
-
-Out of curiosity, is it normal to have some pm_runtime related code here 
-that does not look the same as the one in the error handling of the probe?
-(I don't know much about pm, but usually, .remove() functions and error 
-handling in the probe look quite close)
-
-> +
-> +	mt8186_deinit_clock(afe);
-> +
-> +	return 0;
-> +}
-> +
-
-[...]
+--------------01SB8j7fsrDg1UCCZJHvnO6w--
 
