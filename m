@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCFD7C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 11:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8987ACCA47F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 11:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Bdt/pZAOacqJuCFzII9rBWAKqWiyNAPCi+XwvqCQy0=; b=yVNXSdgSagWsvUFRvjDp8fAcic
-	vPTLZheaC9gElqvrIKknctDRrWBCJUrNbDGbHoEt14DhHfnI280yByWrGxJM9hPdfsqCx/qiQKjEu
-	BuE1FqGco8bXWyltwm8BWcA4nWbPXiG55617SGsS1dW+ILpOwxLY946LDrGVrUzk0pblX3WGT3+0L
-	aky/GgCErdgxgLm02+9VyABIzzSyJqAIX5JcJXzTaza+fwNs9iHQFUXZBBWKOPnx1of2x68+ruYvM
-	HnM0+vdQ5si3oBbpG+Pdh5oAMGxw7N4GaZXE5H1zplBYcFxbtWzoBMsX8uA20T0DTMlUSQGKDIkIH
-	kMmbz/cQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XGLjigKahLIbEiIjs4vb9AiZqSJH2kvHBxMmjbNszGQ=; b=l4wUjk/6k+8d87m7nnAdta2jyy
+	WYSbGlhNMOc7YJQgb9BLGnMxDNnptP4EoDS1nXPy38Eru/94BKIs0fSKSQnMIhQHE5Hi2Oa08SJ84
+	HlVFzIPTW2238GuClNTCDzQWrib1ydHgXD90vraj1wGztXDKX+IbevkT4CFo+BTRkC4Hm1U58T31z
+	2xuU63XCtQ/Ag+y4OzNPCimu+R+n4339CzhSgw/rBejFqvuBZzmUO6/MU7Vvzo2sBwcrRhOUXI9pU
+	zzj3ZOFk+aKQihAZudvilqtNLxpuSIgfBpLiCJassXPmvOmCBuKynUIx//doeakV5nXHGwJQdWaOE
+	b+0cOUJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5mrk-000TgQ-K8; Mon, 27 Jun 2022 11:25:16 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1o5n7j-000bva-RE; Mon, 27 Jun 2022 11:41:47 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5mre-000Tan-T8
-	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 11:25:12 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id c205so8718032pfc.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jun 2022 04:25:08 -0700 (PDT)
+	id 1o5n7U-000bkq-UG
+	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 11:41:34 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id i25so7130992wrc.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jun 2022 04:41:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=+Bdt/pZAOacqJuCFzII9rBWAKqWiyNAPCi+XwvqCQy0=;
-        b=gND2N7zr6zJtFEQ1/Qh++AaC/I3sYIjuvDxr52m7Vusjymll7C22xQJnXtQSAgXqpJ
-         r89NGcuSNrr6jtyaN6WQTCKIh/3bqzP4HhpSMrh/aHkJRp7fHeZuEPYn9tacdAUncKNg
-         MRC5No3iihpOW7bs07Qq05whWNJSKaynJZWv8=
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=XGLjigKahLIbEiIjs4vb9AiZqSJH2kvHBxMmjbNszGQ=;
+        b=aPvmFznj7yqy4vj7LQLlbbcOIzC9aADXBp0AZlgIo456NCt8eVi6q37s5G+UG6Iigm
+         9iY7kl9/Mq2qyMAK3FgNVLrJ6oiNEeBtvY431Q0iuqZIUYR0lSTG+VhgSDRM9bc7ZOwI
+         nazBwO094kgX/wWej7vNXtwHePuuulFp46SC7Xif4L7pR+BmyneLm+h656KBMtrqAXHN
+         eZMaLz3fYaWmtX/DFKq13ZM9PQtYu/F5iMSJJgNgcG9tgD10XAl6Po+wAZIr01kQkSev
+         osJenA2uOk/VHO2aYlLGGMs7IwgYseZB3BeP32J5XhOlIdOItPsOT8/nQ5eZufUuRDC4
+         pD/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=+Bdt/pZAOacqJuCFzII9rBWAKqWiyNAPCi+XwvqCQy0=;
-        b=s3341STSVxftvWDzpO9/TYf0A/Nwm83tIvpqpWutvSraIqBu33qk84N9UK+WtHHZ/u
-         p/gBjav7/gv9L7HB2HuGbGv8TZHC1/OvnhMJa+F+5iSZhATV3pRpuG+y1jNoFX1fEciG
-         uETmXXl2r6cT1nWHtHSilRUEo+h3qljOstc5WBJo0coKSDE3gBmcjSVRZxsjvFzcJA+m
-         LWvnDK+918JClMH7aQv5Ak6MBd+/uLrl8M/nDnJ8nEGQsoJe6sVLJ5l13Tnw0eu6hnZ6
-         ammkn13dEtNQ/3MBjgZb+gfOewIXMuUqaFkQSNsR9jAYrRaNog+ewz9QCIxue3advQIj
-         k4vQ==
-X-Gm-Message-State: AJIora/mxfvq1N0z5rJCvfjN4De8k0o25hpMCrdZDgWrWcr6pwMgdGrP
-	YhP6vN/2WpHxEY3Sz6ig9rLmbg==
-X-Google-Smtp-Source: AGRyM1upMeiOln1K4lkc+rTedGu7rooW/59+/KUoBEA/D4qTE+BzMxTrodbWQsrklKjwp/RQ1Lgmcw==
-X-Received: by 2002:a65:6045:0:b0:399:3a5e:e25a with SMTP id a5-20020a656045000000b003993a5ee25amr12685653pgp.139.1656329107880;
-        Mon, 27 Jun 2022 04:25:07 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:2dc1:c31b:b5ed:f3aa])
-        by smtp.gmail.com with ESMTPSA id lj4-20020a17090b344400b001ece32cbec9sm9246889pjb.24.2022.06.27.04.25.05
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=XGLjigKahLIbEiIjs4vb9AiZqSJH2kvHBxMmjbNszGQ=;
+        b=cCrz4a22vOqaDfRXt0bbMJcairrtxhLrFe0uibvhlPhBI8bbCfnJ6ScelEbru6kkHU
+         G4hNnFNLO4nGwhxrwj3b0VRm0dI/LtdnGbK9W8Z981eTax/2Fl8sKk0ThpEwHsH/Vjka
+         qBnC+0couyLAamtQ4sdETJTy4zhEVimTDip5yls+/FZMU5pmScPBUEZihpuXy6wWpyma
+         JbjXmPTUlEG5ajc0aPN1EIh3QiggCBPUH7/iK9WVcJNDy8ANMO4UPAxt3l2DXLx23KZc
+         1tq7dnbv/B+Tgb5F+mlk4YfTXTsTP6892KQEWOtHwjdN7zJQy6f6tW0xgryAahwYET1i
+         bXhQ==
+X-Gm-Message-State: AJIora8qX3AVSKjDUI50EZp4EHx8OH7qVsOTeeIM/apIY0Ae2bFmqZsd
+	6Lijb8Wrd1RmopuVxwoz+jm1uA==
+X-Google-Smtp-Source: AGRyM1tano6gA3YQd1oWYRrXYlajjDR3D5/RPCRCXOlsa7JV+jUhPYwOBPQeaAZ+HX6xShSm0p7Hxg==
+X-Received: by 2002:adf:dbc1:0:b0:219:e994:6ba7 with SMTP id e1-20020adfdbc1000000b00219e9946ba7mr11742596wrj.229.1656330090193;
+        Mon, 27 Jun 2022 04:41:30 -0700 (PDT)
+Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net. [86.27.177.88])
+        by smtp.gmail.com with ESMTPSA id m12-20020adffe4c000000b0020d106c0386sm10066389wrs.89.2022.06.27.04.41.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jun 2022 04:25:07 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>
-Subject: [PATCH 4/4] media: mediatek: vcodec: dec: Set maximum resolution when S_FMT on output only
-Date: Mon, 27 Jun 2022 19:24:02 +0800
-Message-Id: <20220627112402.2332046-5-wenst@chromium.org>
-X-Mailer: git-send-email 2.37.0.rc0.161.g10f37bed90-goog
-In-Reply-To: <20220627112402.2332046-1-wenst@chromium.org>
-References: <20220627112402.2332046-1-wenst@chromium.org>
+        Mon, 27 Jun 2022 04:41:29 -0700 (PDT)
+Date: Mon, 27 Jun 2022 12:41:27 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, johnson.wang@mediatek.com,
+	hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: mfd: mt6397: Add compatibles for
+ MT6331 RTC and keys
+Message-ID: <YrmXZyNHNrHtzOUC@google.com>
+References: <20220617110728.90132-1-angelogioacchino.delregno@collabora.com>
+ <20220617110728.90132-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220617110728.90132-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_042510_989627_8A111542 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20220627_044133_022941_ACEC67A5 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,34 +95,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Only the coded format impacts whether 4K resolution is supported: the
-decoder does not support 4K for VP8, but does for other formats.
+On Fri, 17 Jun 2022, AngeloGioacchino Del Regno wrote:
 
-Update the maximum resolution in S_FMT only when called for the output
-format. Otherwise we could set output format for VP8, then set capture
-format, and then the resolution limit becomes inconsistent.
+> The MT6331 PMIC provides many sub modules: regulators, audio
+> codec, LED controller, keys, RTC and some GPIOs.
+> It is always paired with a MT6332 Companion PMIC, which provides
+> thermistors, WLEDs (display LED backlight), secondary AP cluster
+> regulators, modem clocks, battery charger and fuel gauge.
+> 
+> Add the necessary compatibles to start implementing the basics.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
 
-Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution from dec_capability")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Applied, thanks.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-index ea951cb3b927..995c61d6a40e 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-@@ -521,7 +521,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 	if (fmt == NULL)
- 		return -EINVAL;
- 
--	if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED) &&
-+	if (V4L2_TYPE_IS_OUTPUT(f->type) &&
-+	    !(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED) &&
- 	    fmt->fourcc != V4L2_PIX_FMT_VP8_FRAME) {
- 		mtk_v4l2_debug(3, "4K is enabled");
- 		ctx->max_width = VCODEC_DEC_4K_CODED_WIDTH;
 -- 
-2.37.0.rc0.161.g10f37bed90-goog
-
+Lee Jones [李琼斯]
+Principal Technical Lead - Developer Services
+Linaro.org │ Open source software for Arm SoCs
+Follow Linaro: Facebook | Twitter | Blog
 
