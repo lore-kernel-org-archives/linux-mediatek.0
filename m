@@ -4,83 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B98C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 04:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB3BCCA485
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 04:43:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gMnSOcvbTDlXR43t/ktpoIDfcoDhdhy8+H8ezm6lVs8=; b=KqhqdOR92nnTw6/N9dp2Il3vIl
-	liUs76svqvd6KRJytWsdHagxXlZcaY/8XARkwmJSP+G2CFYlVn//D2Ri9yHmuT52tizO4/nv8vprX
-	U2h6Pdimkyh1d+KWD3oufZ/KVXE1SEUvJwGCbjnjAO/3/QIVFjKfIrdnb+YOq+CrfZjzOO5oisaoj
-	T/SIR20ogFuZ39YrkBRRdkpUqZX41rCHlrc8O5jiG1lXUhj4xLBl8UDb+XifcBGBkZAZDDUaB7fUL
-	QmeqAcVmtWmYKj5MWD+kza+3NP79NKopg4w8rZdroCipNn8A+uwjUMg5nMHdc+Gi+1bo6QOujFpcz
-	NsKD+yAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nNx1TNd02XU5nWbvCJwS79wPQDHEkqOQKTYwqrHRfuY=; b=AsT8tgUlr463OTNCUe/FVQK4xr
+	vceU+CaZxS55Ou8iHFFpAYSNhZHHo5PjlAy//lX0uoge39CugHheY1D05IFEEQmsvFgeVQ4PdIj1/
+	Z80zGRjF7Wwnhs4R5/ImQwl88zQg0QxLl13hiONJ3CHnqH7ojTfIqVIFJICg1eE+GVXSq5g8c0G+X
+	o/WmUz5ipmQ4puOIohaX39p2QE+7q/oB/pC/MBstVFHMtqdKU4F4+BH1XQJx7/hLrYI4zO4aoO3q6
+	eABoQtFy5G5V7EvZO6RHY0jFBU0AB+xsWQ1Lme3+QqO1fawFD8Yeism9xZEJZ1bD0Y2OoKuPXpnId
+	pMwRxJbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5fwD-00FF1t-5V; Mon, 27 Jun 2022 04:01:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o5gbE-00FOZe-I0; Mon, 27 Jun 2022 04:43:48 +0000
+Received: from mail-mw2nam12on2093.outbound.protection.outlook.com ([40.107.244.93] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5fw1-00FEsQ-UT; Mon, 27 Jun 2022 04:01:15 +0000
-X-UUID: 5dc71521f8f64a5c9bac9f9033011617-20220626
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:d42d493f-e33e-4972-9549-653875179d2c,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:b14ad71,CLOUDID:27021b2e-1756-4fa3-be7f-474a6e4be921,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 5dc71521f8f64a5c9bac9f9033011617-20220626
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 1095045888; Sun, 26 Jun 2022 21:01:04 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 26 Jun 2022 20:51:02 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jun 2022 11:51:01 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 27 Jun 2022 11:51:01 +0800
-Message-ID: <61dfe9671e83970e806dfcea2af35eab2a83f273.camel@mediatek.com>
-Subject: Re: [PATCH v19 4/4] media: platform: mtk-mdp3: add Mediatek MDP3
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
-	<roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Date: Mon, 27 Jun 2022 11:51:00 +0800
-In-Reply-To: <20220624092359.11908-5-moudy.ho@mediatek.com>
-References: <20220624092359.11908-1-moudy.ho@mediatek.com>
-	 <20220624092359.11908-5-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o5gbB-00FOYE-Hy; Mon, 27 Jun 2022 04:43:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=fg+GaX0/o5Pv/+sdt9k9nmFks3ulUKcMyfMbA8gfDCcVvto+SOJeuEUBsbdjbApUDgBqm9ej0StNrizWFTLXd4YMixXFa8dpCwZ0jozDw/DPcbufuQUINhN44Hxg+Y4D+OqG3DJve8q8nMv3wMSRppTmnhpBSyhtmCghmHR6nEv0y1TNqxEfpTgNid4bnGRtC5w3y0bGGPIWEUo3DpCOIWE0lIaPNTVlbXxUSPHFXUq13I/c4YmVJGts3lXYsTCU9K+pjuQ51tAeg/xtgOPvlga687G7k//bYVy7B31Pmb3/AuyvngkdZ6j660RyYGQ44VVM5cgKcp35bWu/AN+J4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nNx1TNd02XU5nWbvCJwS79wPQDHEkqOQKTYwqrHRfuY=;
+ b=ImdVZYglIMvOmNTU6fj87eCRTT6cuf5augAMHctaVVcsccs8tPSx9kJdptvb04BMpNpBqQm3s3+BqrroBkw9H2reKuzDac7seAxwi1y7iktrFdFSfFijO4tJuqsfy81oJF2zhhAw1OmTbbKE57JrXbQWNhgXDtIp+IEopeGMvcjochUf+lLyn8nvrjutXG44QghLrZJCt8MyIJywaWabaPEw6uY6AfV8+ItN515ckTGeyTAFE/QydSjEmBGAWdByFyZOafqx3fuIhxl5d7O8x3neZ8iD0JJmGr0FKDSmi1HTu82fcFODxKiqa9UNDrRM1RyqlcU5Rh5ejYVeJtY//g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nNx1TNd02XU5nWbvCJwS79wPQDHEkqOQKTYwqrHRfuY=;
+ b=rR3Eauz/qmz7bk6zwRs4IzyK0RyOU3HhlvpNZxS8KEBKCP/YPPtH4dydWxTH4lwKjCxY1zSs0VwiOXZedQoUAAFmbCqONVD/EsHmNXXQ/NPI9KwX9Dv6kPQMuHW+7e0e92sknx80VffHJVb+ukrpwyhQITkqyeNdhmFzKx/zQPU=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by CY4PR04MB0630.namprd04.prod.outlook.com (2603:10b6:903:e9::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.18; Mon, 27 Jun
+ 2022 04:43:39 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::ec96:5112:c2d5:9377]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::ec96:5112:c2d5:9377%8]) with mapi id 15.20.5373.018; Mon, 27 Jun 2022
+ 04:43:38 +0000
+From: Xin Ji <xji@analogixsemi.com>
+To: Guenter Roeck <linux@roeck-us.net>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: bliang@analogixsemi.com,
+	qwen@analogixsemi.com,
+	jli@analogixsemi.com,
+	Xin Ji <xji@analogixsemi.com>,
+	linux-usb@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v11 1/3] usb: typec: tcpci: move tcpci.h to include/linux/usb/
+Date: Mon, 27 Jun 2022 12:43:29 +0800
+Message-Id: <20220627044331.2180641-1-xji@analogixsemi.com>
+X-Mailer: git-send-email 2.25.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TYBP286CA0003.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:404:ce::15) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 54b8c7aa-76b8-4134-3d5b-08da57f79a5c
+X-MS-TrafficTypeDiagnostic: CY4PR04MB0630:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	xBYihBaaTfA9p2v2wEbZSbQYyH8gR9eDknx4GEFNMAhPHF1aF2c+SK84Dj7PQr3DtKIS11+ABl+ZrijppYP3uiZzu31n/v0Ca3Fk7GEOzpjRpY2SWZosKlgy68DamPLGlhEko14TiWUMDeyvsL84YdgFnIVgARXPjpktUeCdDAE/uzDJG5bmUz7mOG/pA1Mz4WuM/o1XZXEgrg4n9YI9WYoJJ+BifZq0veDBgkPtc/tssLLUnQBAfA9Bs4LG33IJrrz9supws64LVuMXix3aqGhqXG+5oHx0dI7NhMdYmETLAZjl3jcFHhhiCqfxQIZlOVoijgCb/1YLPF3Tq70VoYe3b+eoZRX7netGUiaTTfTzJp9qgaNIUSATKjCfjr3o1N3Buwk8M1Up9XNJlMLXSF8kyKEwsKGPo4smG6xp/79CIIL9Z+cG6LA7n41uK3rlm4bJ2bYrLbFfykt8dKi5CF05bzg8Cj6Hsarjzn5N/Th0KMQ+5M68B8RbUMWpetPwpMZ92WBhAM4/1H2lFsJtE6bRNjbO5DW20yEyMptYkYm9vR4nHyKKv5ez33Q5V1qNGBWaf9aPQxGcyRaP9gvsGmR7RF1mTG9q/2UU9Tr7Fl6yzh37sOy026PelspKnezPhbSxhHAPpu6YCn9lMpunJbgOsnCbDQEWWN8IWQdotrUPNn9dfqrxDq1U6xQcdjYtvsrWklyAsE83Zph3XRjipLNXOlPAfFb/iQdhoa91aMGsIUfrJGtmDiL13yXhR/fMzNvaMxRhozgBGLazrX69x7DZlG+q0LX7w1ZZf+9gjsc=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR04MB6739.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(366004)(136003)(346002)(376002)(396003)(39840400004)(2906002)(478600001)(38100700002)(8936002)(6486002)(36756003)(83380400001)(316002)(6512007)(26005)(66556008)(6506007)(2616005)(38350700002)(41300700001)(186003)(4326008)(66946007)(1076003)(6666004)(66476007)(110136005)(86362001)(5660300002)(8676002)(55236004)(52116002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?NkY1WK8waCZ5ssqEYtHHxdJX+kIiJS3lRWgOEVml/6O8A2KJT18R20ikBT7X?=
+ =?us-ascii?Q?Ao7Lm09BOyErkHjkHmHMgY8KbtZMpZ7+JqIlXEKnqcUxvgiBwaOu/IYDI3Bx?=
+ =?us-ascii?Q?m4lAa5NzmvaMmDn/pvFQT/v7tKfh/I3iPjaqEY5ZPnEo9RClngiyxnJFbSTW?=
+ =?us-ascii?Q?/qqwUm/HI/JZOparZIm1MF+UAuSqCyQaOO0j0huUALzBvRxzRCP/a54a71du?=
+ =?us-ascii?Q?moG4aIATIEX/Ynmsr7lqxpKligyskmnuikyvfZCF6f0b00IXD2KC0pj/Sl+M?=
+ =?us-ascii?Q?yb63T1XcF6Hz4QqR4WNlfTXeyMCIfi0rqQHFrly3mV4kwYctC2MzU51GD/Jw?=
+ =?us-ascii?Q?Yfny3BiHOewLiYXBsoqRCcIAwndqk1B0RYRwgTVZb8q5ztCo7VkjgRO6e/ga?=
+ =?us-ascii?Q?GiKL7I0Orlv9kf1poSvLlJSyYYwjZGDdqbBA7Oszm0gVI8rOeg05T/AQPskE?=
+ =?us-ascii?Q?DHaPwoa7kg2xt46qXh17Mya5Lw1QdaAdZypBFZILZGs9jJ/zPXPT/71TpG6H?=
+ =?us-ascii?Q?32GZFzUFXOhwhdz5SQq1V0doiOVyZPloJdcMlP3yYrlDMPsJv1USlmslxoup?=
+ =?us-ascii?Q?bobw6jKoLbKgKn0Gsee/jEJXbdbfi4e3r+8W59TvnZk2D6UgbTkWHnV7OeFl?=
+ =?us-ascii?Q?93ycbyNvOh4WVcZOiVRHOl2f8aS+pRPyR6MR4ludul8mQ6u4N7vQuiRtkMZl?=
+ =?us-ascii?Q?rjSInNaqcfrKF8LT/0qxmSo7jxQ9OQHJcNxz24+FX4trnyXUOhq8WuYYmFXJ?=
+ =?us-ascii?Q?TD93fhAIYbreRP2xM4J9BPd/nz26d8vGq0cXjvO3Ip5HKat+klDy7Y3X3Hji?=
+ =?us-ascii?Q?U7bId4QKAz0jhyd+/WB6qI8MPpp9lTvT7ObT+eMLzfxTwa21fJ09C9AjwX9b?=
+ =?us-ascii?Q?yScyvAlhNnay4QDEuMqsDC/SlEMWm24kt+RqznNUqafJdp0q9pM4gtZ/czCJ?=
+ =?us-ascii?Q?YhDAhhK4crk/3lNBO1nykO/letaJAD5/p3sftb8LxzoXx5tk8gB2Z8T8QYR+?=
+ =?us-ascii?Q?qgC27lOtg37VlxVOqg5KDgyO8rwTXFGKbG+jVu93CrCZbTgD0wShFQRuaU7K?=
+ =?us-ascii?Q?mZnyJzYyFmpbcQSErRLTRwT+hTsgzeR0BMY71qnoWA4A8kPyI1XkI6vM3Qrv?=
+ =?us-ascii?Q?LX/pW1X/5SIaPDzy38z27MT8gCOqHiLsm7tdK9mL8qttmYuqGXUyRYsHgbRM?=
+ =?us-ascii?Q?d3SHyQfcTCtIUTpG+kAqabhgizWHSLFdEyOoERf/noUsSbcSPscVHHjNAlP5?=
+ =?us-ascii?Q?4lMeWjAWwKX7ansa+UiUs9EnwYZ3/nYCX/eZaz3koi7Aqa77CF2WJ+cfSvzF?=
+ =?us-ascii?Q?tMPk2fqSU+vWsoRt68a4+YghQgLM81pEq+cLfXcuC1DWx82Lh0WXd5rFxhml?=
+ =?us-ascii?Q?WbVDMK2J9dZijECmLBkMO0sr8xdEig6qZ0TmtndN7ogSQb3CC00PIwgJ8XLl?=
+ =?us-ascii?Q?aSZ97FeTd6OMCHXP6EWyeFIVRgjK6NC5t01+bHtcXh7XM4dMGbOVIlaRBBl+?=
+ =?us-ascii?Q?C+zhMQNYnk8Tm5aPVqMC0fpmvMqNwhNaWulgKqBIpn1poKAxps9B7rKiyLog?=
+ =?us-ascii?Q?UtgC3P6WsDEwJcen1Ca6xQta7V+pJ9lIEAa4eAx5?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 54b8c7aa-76b8-4134-3d5b-08da57f79a5c
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jun 2022 04:43:38.6808
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ue6apeRhRwkA9LWxhS2u6qUVdgDJF2SvXQ9spcwxG6OqF2WA6x8pFg6BNkkGS8kshaK3t6P/UwaZXUrxT/TVtA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR04MB0630
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220626_210114_014650_61FAD898 
-X-CRM114-Status: GOOD (  20.62  )
+X-CRM114-CacheID: sfid-20220626_214345_678450_05D8CAF1 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,153 +137,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+and a port controller (TCPC) - may require that the driver for the PD
+controller accesses directly also the on-chip port controller in some cases.
 
-On Fri, 2022-06-24 at 17:23 +0800, Moudy Ho wrote:
-> This patch adds driver for Mediatek's Media Data Path ver.3 (MDP3).
-> It provides the following functions:
->   color transform, format conversion, resize, crop, rotate, flip
->   and additional image quality enhancement.
-> 
-> The MDP3 driver is mainly used for Google Chromebook products to
-> import the new architecture to set the HW settings as shown below:
->   User -> V4L2 framework
->     -> MDP3 driver -> SCP (setting calculations)
->       -> MDP3 driver -> CMDQ (GCE driver) -> HW
-> 
-> Each modules' related operation control is sited in mtk-mdp3-comp.c
-> Each modules' register table is defined in file with "mdp_reg_"
-> prefix
-> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> Probe, power, suspend/resume, system level functions are defined in
-> mtk-mdp3-core.c
-> 
+Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
 
-[snip]
+Signed-off-by: Xin Ji <xji@analogixsemi.com>
 
-> 
-> +
-> +int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
-> +{
-> +	struct mdp_path *path = NULL;
-> +	struct mdp_cmdq_cmd *cmd = NULL;
-> +	struct mdp_comp *comps = NULL;
-> +	struct device *dev = &mdp->pdev->dev;
-> +	int i, ret;
-> +
-> +	atomic_inc(&mdp->job_count);
-> +	if (atomic_read(&mdp->suspended)) {
-> +		atomic_dec(&mdp->job_count);
-> +		return -ECANCELED;
-> +	}
-> +
-> +	cmd = kzalloc(sizeof(*cmd), GFP_KERNEL);
-> +	if (!cmd) {
-> +		ret = -ENOMEM;
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	if (mdp_cmdq_pkt_create(mdp->cmdq_clt, &cmd->pkt, SZ_16K)) {
-> +		ret = -ENOMEM;
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	comps = kcalloc(param->config->num_components, sizeof(*comps),
-> +			GFP_KERNEL);
-> +	if (!comps) {
-> +		ret = -ENOMEM;
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	path = kzalloc(sizeof(*path), GFP_KERNEL);
-> +	if (!path) {
-> +		ret = -ENOMEM;
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	path->mdp_dev = mdp;
-> +	path->config = param->config;
-> +	path->param = param->param;
-> +	for (i = 0; i < param->param->num_outputs; i++) {
-> +		path->bounds[i].left = 0;
-> +		path->bounds[i].top = 0;
-> +		path->bounds[i].width =
-> +			param->param->outputs[i].buffer.format.width;
-> +		path->bounds[i].height =
-> +			param->param->outputs[i].buffer.format.height;
-> +		path->composes[i] = param->composes[i] ?
-> +			param->composes[i] : &path->bounds[i];
-> +	}
-> +
-> +	ret = mdp_path_ctx_init(mdp, path);
-> +	if (ret) {
-> +		dev_err(dev, "mdp_path_ctx_init error\n");
-> +		goto err_cmdq_data;
-> +	}
-> +
-> +	cmd->event = &mdp->event[0];
-> +	ret = mdp_path_config(mdp, cmd, path);
-> +	if (ret) {
-> +		dev_err(dev, "mdp_path_config error\n");
-> +		goto err_cmdq_data;
-> +	}
-> +	cmdq_pkt_finalize(&cmd->pkt);
-> +
-> +	for (i = 0; i < param->config->num_components; i++)
-> +		memcpy(&comps[i], path->comps[i].comp,
-> +		       sizeof(struct mdp_comp));
-> +
-> +	mdp->cmdq_clt->client.rx_callback = mdp_handle_cmdq_callback;
-> +	cmd->mdp = mdp;
-> +	cmd->user_cmdq_cb = param->cmdq_cb;
-> +	cmd->user_cb_data = param->cb_data;
-> +	cmd->comps = comps;
-> +	cmd->num_comps = param->config->num_components;
-> +	cmd->mdp_ctx = param->mdp_ctx;
-> +
-> +	mtk_mutex_prepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
-> +	ret = mdp_comp_clocks_on(&mdp->pdev->dev, cmd->comps, cmd-
-> >num_comps);
-> +	if (ret) {
-> +		dev_err(dev, "comp %d failed to enable clock!\n", ret);
-> +		goto err_clock_off;
-> +	}
-> +
-> +	dma_sync_single_for_device(mdp->cmdq_clt->chan->mbox->dev,
-> +				   cmd->pkt.pa_base, cmd-
-> >pkt.cmd_buf_size,
-> +				   DMA_TO_DEVICE);
-> +	ret = mbox_send_message(mdp->cmdq_clt->chan, &cmd->pkt);
-> +	if (ret < 0) {
-> +		dev_err(dev, "mbox send message fail %d!\n", ret);
-> +		goto err_clock_off;
-> +	}
-> +	mbox_client_txdone(mdp->cmdq_clt->chan, 0);
-> +
-> +	kfree(path);
-> +	return 0;
-> +
-> +err_clock_off:
-> +	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
-> +	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
-> +			    cmd->num_comps);
-> +err_cmdq_data:
-> +	kfree(path);
-> +	atomic_dec(&mdp->job_count);
-> +	wake_up(&mdp->callback_wq);
-> +	if (cmd->pkt.buf_size > 0)
-> +		mdp_cmdq_pkt_destroy(&cmd->pkt);
-> +	kfree(comps);
-> +	kfree(cmd);
-> +	return ret;
-> +}
+---
+V9 -> V10: Rebase on the latest code
+V8 -> V9 : Add more commit message
+V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+---
+ drivers/usb/typec/tcpm/tcpci.c                        | 3 +--
+ drivers/usb/typec/tcpm/tcpci_maxim.c                  | 3 +--
+ drivers/usb/typec/tcpm/tcpci_mt6360.c                 | 3 +--
+ drivers/usb/typec/tcpm/tcpci_rt1711h.c                | 2 +-
+ {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h | 1 +
+ 5 files changed, 5 insertions(+), 7 deletions(-)
+ rename {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h (99%)
 
-EXPORT_SYMBOL(mdp_cmdq_send);
-
-So other kernel module could call this function.
-
-Regards,
-CK
+diff --git a/drivers/usb/typec/tcpm/tcpci.c b/drivers/usb/typec/tcpm/tcpci.c
+index f33e08eb7670..812784702d53 100644
+--- a/drivers/usb/typec/tcpm/tcpci.c
++++ b/drivers/usb/typec/tcpm/tcpci.c
+@@ -13,11 +13,10 @@
+ #include <linux/property.h>
+ #include <linux/regmap.h>
+ #include <linux/usb/pd.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ #include <linux/usb/typec.h>
+ 
+-#include "tcpci.h"
+-
+ #define	PD_RETRY_COUNT_DEFAULT			3
+ #define	PD_RETRY_COUNT_3_0_OR_HIGHER		2
+ #define	AUTO_DISCHARGE_DEFAULT_THRESHOLD_MV	3500
+diff --git a/drivers/usb/typec/tcpm/tcpci_maxim.c b/drivers/usb/typec/tcpm/tcpci_maxim.c
+index df2505570f07..4b6705f3d7b7 100644
+--- a/drivers/usb/typec/tcpm/tcpci_maxim.c
++++ b/drivers/usb/typec/tcpm/tcpci_maxim.c
+@@ -11,11 +11,10 @@
+ #include <linux/module.h>
+ #include <linux/regmap.h>
+ #include <linux/usb/pd.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ #include <linux/usb/typec.h>
+ 
+-#include "tcpci.h"
+-
+ #define PD_ACTIVITY_TIMEOUT_MS				10000
+ 
+ #define TCPC_VENDOR_ALERT				0x80
+diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+index 8a952eaf9016..1b7c31278ebb 100644
+--- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
++++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+@@ -11,10 +11,9 @@
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ 
+-#include "tcpci.h"
+-
+ #define MT6360_REG_PHYCTRL1	0x80
+ #define MT6360_REG_PHYCTRL3	0x82
+ #define MT6360_REG_PHYCTRL7	0x86
+diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+index b56a0880a044..3291ca4948da 100644
+--- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
++++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+@@ -10,9 +10,9 @@
+ #include <linux/i2c.h>
+ #include <linux/interrupt.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/usb/tcpci.h>
+ #include <linux/usb/tcpm.h>
+ #include <linux/regmap.h>
+-#include "tcpci.h"
+ 
+ #define RT1711H_VID		0x29CF
+ #define RT1711H_PID		0x1711
+diff --git a/drivers/usb/typec/tcpm/tcpci.h b/include/linux/usb/tcpci.h
+similarity index 99%
+rename from drivers/usb/typec/tcpm/tcpci.h
+rename to include/linux/usb/tcpci.h
+index b2edd45f13c6..20c0bedb8ec8 100644
+--- a/drivers/usb/typec/tcpm/tcpci.h
++++ b/include/linux/usb/tcpci.h
+@@ -9,6 +9,7 @@
+ #define __LINUX_USB_TCPCI_H
+ 
+ #include <linux/usb/typec.h>
++#include <linux/usb/tcpm.h>
+ 
+ #define TCPC_VENDOR_ID			0x0
+ #define TCPC_PRODUCT_ID			0x2
+-- 
+2.25.1
 
 
