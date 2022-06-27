@@ -4,74 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F15C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 08:54:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AB1FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 08:57:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6u1Eur2RMJ00zr+rd/Oc9fnnz2dBvlHh5y32OQMRqd0=; b=u3AiZk4EUW34I1ttzG3TQqO53J
-	YzuLk7E5Hf/8NcLCLgA3uho1MpIEJl0q5GWbOYra6n+AT+Gd6GBwUk9ILXO2UhWhMlvZ3Tx82xV6D
-	5LOTNRob1pNqpAUjHkEXSGqVpq4A7hvYhhUaZ/+yMYja83mryM7hXD/jJJn6V5NxM2DcFDs3lZx5L
-	7I2fA/6WyCMg8YZAQYHMbEi4t57dtAN2/R89kJs1SkHabtw9rbcbY7acyphP3nDrkTEZTZw8G3hpw
-	udyrgl7fEtzlqZQbHqnyhlq02vHcD9tIYOAxqZsGrXAl0zPOMWH8fG14qHcnKHeVwXQoRc+2udXO4
-	4teT8STg==;
+	bh=keiVJynF+S+m8Kw5lMXhzeWZLnL1Xg+dWMl3kQYc6LQ=; b=qeAlP24gzzoQEbyPFoUEl46v4b
+	LJz1k56zm2BrWCyJVNv1STsUuiozWO+d9ULYkpOhx3mG97CoTMl0+FdM8AVmc3dNcRpdqpyPmknsr
+	txnjwJYEaFngwnmLpkLThBPlwCpvyXccKFryM8qqkoIbSpGvkGXRKq4VnOxMoHMKCjYkuk/j5U5ly
+	5RT1eQaeo6qjRrKBlX8JI3Ag/3Jwfz4fvAkBwJGVZdfj/OS2ImUXxaGH6s9Zx74XkUFQALV55o4qu
+	oAU5HwxJ7L4I0SE/53MxEPfYrMiVEsIu+zRXKIxJxreCvnwM/KutPv7URSRiiKKDk2QXxiyjw086F
+	TDKy+GAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5kVj-00H19u-0g; Mon, 27 Jun 2022 08:54:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o5kYP-00H30z-Jf; Mon, 27 Jun 2022 08:57:09 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5kVf-00H14c-Tm; Mon, 27 Jun 2022 08:54:21 +0000
-X-UUID: 1959d46b23304943b1cdf9661a152ef0-20220627
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:48bcf84b-c548-4b6d-a114-157c86948866,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:b14ad71,CLOUDID:0be79aea-f7af-4e69-92ee-0fd74a0c286c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 1959d46b23304943b1cdf9661a152ef0-20220627
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 137995307; Mon, 27 Jun 2022 01:54:11 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jun 2022 01:54:10 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jun 2022 16:54:09 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 27 Jun 2022 16:54:09 +0800
-Message-ID: <fa4618ebd369664edd823f3883f5183152b34097.camel@mediatek.com>
-Subject: Re: [PATCH v14 03/15] drm/mediatek: dpi: Add kernel document for
- struct mtk_dpi_conf
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 27 Jun 2022 16:54:09 +0800
-In-Reply-To: <20220624030946.14961-4-rex-bc.chen@mediatek.com>
-References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
-	 <20220624030946.14961-4-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o5kXz-00H2hr-1K; Mon, 27 Jun 2022 08:56:44 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0D7FA6601822;
+	Mon, 27 Jun 2022 09:56:40 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656320201;
+	bh=dVpnFJPWijR0G8zrYTyz0cKQZgjOoyAvap7TVzXSsS0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=f0eTFG078bq1vDwgn6mH2kwtLuZB/1aJR3CwBUQWwfvp8YUM2E1cfdvqunawx4PMH
+	 j8xIlVTKaxY6mvD8HWl1WAWg1pIzynxp+giiLlmTgN6WIJToFGTADaj/CODniVh3Z3
+	 NIOqNPPeaawv3QLc4ice0Kpm9vybRHysn2Z9p47bxKaIxD82opkKYvS4S1DuuxkU9X
+	 vFK4ddM+zlVKVxqm7eobh6QRWvZ/ZzxcyceEpRsgC6Zlovfz5rLGw+5rUNHpt/0Fye
+	 zVOiASElw+MTzHhkH1j+iIGcdVRhRSA7PGNHtqrn7W3L9dAXxgQzpmFW9io8jw+Wbd
+	 YU+vU7jk4xIgA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	mturquette@baylibre.com,
+	sboyd@kernel.org,
+	p.zabel@pengutronix.de,
+	y.oudjana@protonmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jason-jh.lin@mediatek.com,
+	ck.hu@mediatek.com,
+	fparent@baylibre.com,
+	rex-bc.chen@mediatek.com,
+	tinghan.shen@mediatek.com,
+	chun-jie.chen@mediatek.com,
+	weiyi.lu@mediatek.com,
+	ikjn@chromium.org,
+	miles.chen@mediatek.com,
+	sam.shih@mediatek.com,
+	wenst@chromium.org,
+	bgolaszewski@baylibre.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	konrad.dybcio@somainline.org,
+	marijn.suijten@somainline.org,
+	martin.botka@somainline.org,
+	~postmarketos/upstreaming@lists.sr.ht,
+	phone-devel@vger.kernel.org,
+	paul.bouchara@somainline.org,
+	kernel@collabora.com,
+	Rob Herring <robh@kernel.org>
+Subject: [PATCH v4 1/7] dt-bindings: mediatek: Document MT6795 system controllers bindings
+Date: Mon, 27 Jun 2022 10:56:26 +0200
+Message-Id: <20220627085632.23797-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220627085632.23797-1-angelogioacchino.delregno@collabora.com>
+References: <20220627085632.23797-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_015420_015991_C6A8CEE3 
-X-CRM114-Status: GOOD (  15.54  )
+X-CRM114-CacheID: sfid-20220627_015643_359598_2B86187C 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,46 +101,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
+Document the MediaTek Helio X10 (MT6795) bindings for the apmixedsys,
+infracfg, topckgen, pericfg and mmsys system controllers.
 
-On Fri, 2022-06-24 at 11:09 +0800, Bo-Chen Chen wrote:
-> This driver will support dp_intf and there are many configs between
-> dpi
-> and dp_intf. Therefore, we will add many configs in "struct
-> mtk_dpi_conf".
-> To let this structure more readable, we add this kernel doc.
-> 
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml     | 2 ++
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 1 +
+ .../devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml      | 1 +
+ .../devicetree/bindings/clock/mediatek,apmixedsys.yaml          | 1 +
+ Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml  | 1 +
+ 5 files changed, 6 insertions(+)
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index e61cd67b978f..f66a121ba0c9 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -118,6 +118,15 @@ struct mtk_dpi_yc_limit {
->  	u16 c_bottom;
->  };
->  
-> +/**
-> + * struct mtk_dpi_conf - Configuration of mediatek dpi.
-> + * @cal_factor: Callback function to calculate factor value.
-> + * @reg_h_fre_con: Register address of frequency control.
-> + * @max_clock_khz: Max clock frequency supported for this SoCs in
-> khz units.
-> + * @edge_sel_en: Enable of edge selection.
-> + * @output_fmts: Array of supported output formats.
-> + * @num_output_fmts: Quantity of supported output formats.
-> + */
->  struct mtk_dpi_conf {
->  	unsigned int (*cal_factor)(int clock);
->  	u32 reg_h_fre_con;
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+index 8681b785ed6d..1d7c837d9378 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+@@ -23,6 +23,7 @@ properties:
+               - mediatek,mt2701-infracfg
+               - mediatek,mt2712-infracfg
+               - mediatek,mt6765-infracfg
++              - mediatek,mt6795-infracfg
+               - mediatek,mt6779-infracfg_ao
+               - mediatek,mt6797-infracfg
+               - mediatek,mt7622-infracfg
+@@ -60,6 +61,7 @@ if:
+         enum:
+           - mediatek,mt2701-infracfg
+           - mediatek,mt2712-infracfg
++          - mediatek,mt6795-infracfg
+           - mediatek,mt7622-infracfg
+           - mediatek,mt7986-infracfg
+           - mediatek,mt8135-infracfg
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 6ad023eec193..597ef18f3c5f 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -25,6 +25,7 @@ properties:
+               - mediatek,mt2712-mmsys
+               - mediatek,mt6765-mmsys
+               - mediatek,mt6779-mmsys
++              - mediatek,mt6795-mmsys
+               - mediatek,mt6797-mmsys
+               - mediatek,mt8167-mmsys
+               - mediatek,mt8173-mmsys
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+index 611f666f359d..c518ed3c4153 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+@@ -21,6 +21,7 @@ properties:
+               - mediatek,mt2701-pericfg
+               - mediatek,mt2712-pericfg
+               - mediatek,mt6765-pericfg
++              - mediatek,mt6795-pericfg
+               - mediatek,mt7622-pericfg
+               - mediatek,mt7629-pericfg
+               - mediatek,mt8135-pericfg
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+index 770546195fb5..731bfe0408c2 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+@@ -34,6 +34,7 @@ properties:
+               - mediatek,mt2712-apmixedsys
+               - mediatek,mt6765-apmixedsys
+               - mediatek,mt6779-apmixedsys
++              - mediatek,mt6795-apmixedsys
+               - mediatek,mt7629-apmixedsys
+               - mediatek,mt8167-apmixedsys
+               - mediatek,mt8183-apmixedsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+index 5b8b37a2e594..81531b5b0db7 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+@@ -33,6 +33,7 @@ properties:
+               - mediatek,mt2712-topckgen
+               - mediatek,mt6765-topckgen
+               - mediatek,mt6779-topckgen
++              - mediatek,mt6795-topckgen
+               - mediatek,mt7629-topckgen
+               - mediatek,mt7986-topckgen
+               - mediatek,mt8167-topckgen
+-- 
+2.35.1
 
 
