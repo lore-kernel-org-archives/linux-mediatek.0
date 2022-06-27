@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E110CCCA47E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 08:49:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F15C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 08:54:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yHsawi7GFeUNITSXWDFXC/pLKfZmjkcuQKQBm6T5Dm0=; b=l7KLFZJJSy80AI7oJz7PGKZ+9P
-	GdsCdB1tYMM2v87YqvrrBULLyEe0dE1zTcZNZzANNDWDk1XhFFgee9nLN7QF9AsbE8qjJPyn8PxTv
-	iSn7Rwf2smnlz97SqEndki+AKZsApRBIuY2qao9TU1jH87ycN76KE72q+qiaH9xgmTmrVjqpyPUE9
-	9YF2aQsFCMOvHCtL379y2PhwohovnnAPWupGZ47DNorHQ8votaXMb8gOObCIqeNKU9POJlkMNmu3L
-	RDY44psnVcj6sTTZfisTGZMFzW/mO+Nv8HOGaXwOlCy02ODzbJJ4vDV8W7E4sU5BFoBvjSgIVo8MG
-	oRzOyfiw==;
+	bh=6u1Eur2RMJ00zr+rd/Oc9fnnz2dBvlHh5y32OQMRqd0=; b=u3AiZk4EUW34I1ttzG3TQqO53J
+	YzuLk7E5Hf/8NcLCLgA3uho1MpIEJl0q5GWbOYra6n+AT+Gd6GBwUk9ILXO2UhWhMlvZ3Tx82xV6D
+	5LOTNRob1pNqpAUjHkEXSGqVpq4A7hvYhhUaZ/+yMYja83mryM7hXD/jJJn6V5NxM2DcFDs3lZx5L
+	7I2fA/6WyCMg8YZAQYHMbEi4t57dtAN2/R89kJs1SkHabtw9rbcbY7acyphP3nDrkTEZTZw8G3hpw
+	udyrgl7fEtzlqZQbHqnyhlq02vHcD9tIYOAxqZsGrXAl0zPOMWH8fG14qHcnKHeVwXQoRc+2udXO4
+	4teT8STg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5kR1-00GyrT-KD; Mon, 27 Jun 2022 08:49:31 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o5kVj-00H19u-0g; Mon, 27 Jun 2022 08:54:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5kQq-00Gyi8-Az; Mon, 27 Jun 2022 08:49:21 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CB5FA6601828;
-	Mon, 27 Jun 2022 09:49:12 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656319754;
-	bh=o4KMjR/ZJMxFhZCtqu5FCmZbc0KpnWFELMON025GNow=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YEcKuN9F7zr9YHZJ6SYqEkxZ03gQ8MkukZCgHEIgsdT0jrBqRB4H8xzKH2yIUiVix
-	 uAwnTIW0oa2ltYINpE6E5EWHfcW4oOXAinDlHd/Wk3VrObMjKuC9vN3CByop4pWHJs
-	 +PdewMxVydIslZSVxLsSTpRhzJQR6KvHtcPRvMr5r+mhDd+ZCAEJRBhph4SETfcs+6
-	 wqR+2tgzir/S++iNAm6++irP1L0fP99p7p1SPHrnGvAdwK53KGJ2EY9OFGyEHqpudc
-	 dD9MzF2c1ffEb8GtoDzj0wWHAQDjK851hRs+TffQlba/Mo7dLBSlDKKV7BzhuZO7ON
-	 iu3d7G+wgu69A==
-Message-ID: <9554982a-c48b-e902-2d96-b317c46df698@collabora.com>
-Date: Mon, 27 Jun 2022 10:49:10 +0200
+	id 1o5kVf-00H14c-Tm; Mon, 27 Jun 2022 08:54:21 +0000
+X-UUID: 1959d46b23304943b1cdf9661a152ef0-20220627
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:48bcf84b-c548-4b6d-a114-157c86948866,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:b14ad71,CLOUDID:0be79aea-f7af-4e69-92ee-0fd74a0c286c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 1959d46b23304943b1cdf9661a152ef0-20220627
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 137995307; Mon, 27 Jun 2022 01:54:11 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jun 2022 01:54:10 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jun 2022 16:54:09 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 27 Jun 2022 16:54:09 +0800
+Message-ID: <fa4618ebd369664edd823f3883f5183152b34097.camel@mediatek.com>
+Subject: Re: [PATCH v14 03/15] drm/mediatek: dpi: Add kernel document for
+ struct mtk_dpi_conf
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 27 Jun 2022 16:54:09 +0800
+In-Reply-To: <20220624030946.14961-4-rex-bc.chen@mediatek.com>
+References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
+	 <20220624030946.14961-4-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v3 2/7] dt-bindings: clock: Add MediaTek Helio X10 MT6795
- clock bindings
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- y.oudjana@protonmail.com, jason-jh.lin@mediatek.com, ck.hu@mediatek.com,
- fparent@baylibre.com, rex-bc.chen@mediatek.com, tinghan.shen@mediatek.com,
- chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
- miles.chen@mediatek.com, sam.shih@mediatek.com, wenst@chromium.org,
- bgolaszewski@baylibre.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
- kernel@collabora.com, Rob Herring <robh@kernel.org>
-References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
- <20220624093525.243077-3-angelogioacchino.delregno@collabora.com>
- <de5a0e6f-411f-0c7b-ae1e-1117a4126d2d@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <de5a0e6f-411f-0c7b-ae1e-1117a4126d2d@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_014920_560627_55542CFF 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20220627_015420_015991_C6A8CEE3 
+X-CRM114-Status: GOOD (  15.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,33 +86,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/06/22 22:30, Krzysztof Kozlowski ha scritto:
-> On 24/06/2022 11:35, AngeloGioacchino Del Regno wrote:
->> Add the bindings for MT6795's clock controller.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Acked-by: Rob Herring <robh@kernel.org>
->> ---
->>   include/dt-bindings/clock/mt6795-clk.h | 275 +++++++++++++++++++++++++
->>   1 file changed, 275 insertions(+)
->>   create mode 100644 include/dt-bindings/clock/mt6795-clk.h
->>
->> diff --git a/include/dt-bindings/clock/mt6795-clk.h b/include/dt-bindings/clock/mt6795-clk.h
->> new file mode 100644
->> index 000000000000..9902906ac902
->> --- /dev/null
->> +++ b/include/dt-bindings/clock/mt6795-clk.h
-> 
-> Vendor prefix.
+Hi, Bo-Chen:
+
+On Fri, 2022-06-24 at 11:09 +0800, Bo-Chen Chen wrote:
+> This driver will support dp_intf and there are many configs between
+> dpi
+> and dp_intf. Therefore, we will add many configs in "struct
+> mtk_dpi_conf".
+> To let this structure more readable, we add this kernel doc.
 > 
 
-For consistency, I'd really like to keep the filename as it is.
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
-At least in this directory, all of the MediaTek clock bindings
-are using the format mtXXXX-clk.h... and that's not only seen
-in MediaTek, but also in Broadcom, Renesas, RockChip, HiSilicon,
-nVidia, etc.
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index e61cd67b978f..f66a121ba0c9 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -118,6 +118,15 @@ struct mtk_dpi_yc_limit {
+>  	u16 c_bottom;
+>  };
+>  
+> +/**
+> + * struct mtk_dpi_conf - Configuration of mediatek dpi.
+> + * @cal_factor: Callback function to calculate factor value.
+> + * @reg_h_fre_con: Register address of frequency control.
+> + * @max_clock_khz: Max clock frequency supported for this SoCs in
+> khz units.
+> + * @edge_sel_en: Enable of edge selection.
+> + * @output_fmts: Array of supported output formats.
+> + * @num_output_fmts: Quantity of supported output formats.
+> + */
+>  struct mtk_dpi_conf {
+>  	unsigned int (*cal_factor)(int clock);
+>  	u32 reg_h_fre_con;
 
-Thanks,
-Angelo
 
