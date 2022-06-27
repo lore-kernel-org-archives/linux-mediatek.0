@@ -4,95 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41134C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 09:00:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC2F1CCA473
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 09:25:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OJD3PXeQcR9dqZ5Y7yZVLU8WDdZSUs8hEAVEMiuij4s=; b=frGyEJI3uTRvzBrcNcfSgffz9r
-	z/nGUkOe7z+V/kF8p1t8dBRe+MyXAYY6043X6XVjgk/In7OnxzWsKc8ENG+9mYlDKTE6k2k6YDzJx
-	a4Wev1rKu52g9eoLlx09FbMhisA9I7f79x1BjtPVN/bdf+Ko0P01j7Y7oEaZaQMGxiGqSt8JrJkIO
-	W5+kOT0ZYLdhd177orAqL/Ea8+dji57f53BQO6iFNOAC3g1gOo4dRKZwX4GfGCocXewP3wfObT+uz
-	jq9g3txkcKDp/fBYItrIJlWBbt70hMGzCHf5NEn9OxMd2dz6UcKl/jt2BqiQx+DkDnDHDzVRq9fqd
-	zKR+3ntw==;
+	bh=nSIbGRtrJNkxPLIaeEJUTMrkdxk+l4TO9gUv35qqzO8=; b=nkjVks0Ng7KMU6zjN7VlNQOCF6
+	fplCKPKcWnHsJefBqzYgJCX1r7IuSsLnUTpF6fso4+7tOCFlrDNLE0wPk20swIHm3R3+WQAX/he+v
+	tTMHGJ5qvD0x58aW/OECG5i7NN99LIJzDyh6A6adWQe/F7oE4ETpfxnWYVsQf1P6m67TN69tysX3Z
+	qrHdS10g9MEcHoxp514h+dC4WldUgtlAXrTVG+3oJHvkjQ+nb8+GO39rcymXfFBICB1bJ2xGnEF1W
+	IvVQUOLzgEsodtgqXaxyh99qOm/eG3ycyzuaOTX4VOs8fUqVwEbkupmQtt8Dwo54p+q9pc2KKCOCn
+	fSI1g9eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5kbw-00H5Zz-5k; Mon, 27 Jun 2022 09:00:48 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1o5kzT-00HHac-5L; Mon, 27 Jun 2022 09:25:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5kb9-00H4vt-Ls
-	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 09:00:01 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id ej4so11965674edb.7
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jun 2022 01:59:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=OJD3PXeQcR9dqZ5Y7yZVLU8WDdZSUs8hEAVEMiuij4s=;
-        b=mBcUp//R90f/Wq5aerXEP5Jb3KTttQ3I+AqwSlNt/W7te4T7VYw+iFp0bnSvhyclS5
-         SuaYvm9L+9uEl7UZwFbpIvCpwbiuSo6BhQ8jzrn/7Nl/3EBUqzMK1KEpc09m4+VuS9Ia
-         TXyP+XGJZKLTzLyq1Qyl4jyhHiiMz6S0NgesKDKGmDv1QhulRYmsCGo/BAVk5kb8NqJx
-         0q8wQgaqz43l3T+r/p1tHqEviIJYRfTiSvK8M0bHYs7qgkA5hfeHpPHUKo5lyc/MC+Oh
-         jLNPwkhR9c/Sh1h18sYqi0iQUaayC9xcNnwwzbcunlvd/UpaZ3A23OkZS2rDJxAtogBV
-         ikMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=OJD3PXeQcR9dqZ5Y7yZVLU8WDdZSUs8hEAVEMiuij4s=;
-        b=SO3ODVZJ0eC3meepjbz0WomNKSpMo17tBGAlOJuFxDnu6khMiHgqVUI3vXVO14OdNG
-         aDKiVNUjUB6jwEcCIk8UXjmiJr0JsSMrfyTNck3/wn0yK6X1PFhvvI2R/KG9XAdOAZHE
-         XkGHqqeRRP0T/0e+98paOkHP+1U8PQPfSKUt9mfqfryZqaPhh58AL93hOxhmnNWS6/yG
-         22CpOjungR9pn9rz/u6ZmgkhMuYjxsXHnoKfR5PSYaunf3qwPlEH89SFMOWupo+bh/en
-         +7DbuzusyrqI+P6JSeiHilPcwyW/JXZVLgAZSykob3XMjZ/5KXuUCN2nAdk8bLkLBpL2
-         i76Q==
-X-Gm-Message-State: AJIora/RHlTBJlRbrzK2Mnq2XuX10F80ET1sCm7OGILQ0KeIBxwkIo7I
-	O2/2TiHbrtky3D6dTn+bNVFfIQ==
-X-Google-Smtp-Source: AGRyM1vx9hW9lzNzpgqm+U8e8cip5LlD6oegAC5bL8EXEcSPE33v/USYPPy/Vv76y2er5Hvfx5q6kg==
-X-Received: by 2002:a05:6402:1d50:b0:436:beac:a4e3 with SMTP id dz16-20020a0564021d5000b00436beaca4e3mr15491833edb.191.1656320398400;
-        Mon, 27 Jun 2022 01:59:58 -0700 (PDT)
-Received: from [192.168.0.247] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id o19-20020a17090611d300b007109b15c109sm4806316eja.66.2022.06.27.01.59.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Jun 2022 01:59:58 -0700 (PDT)
-Message-ID: <6fa1db53-6e4e-b6b1-2313-dee7aadad5ae@linaro.org>
-Date: Mon, 27 Jun 2022 10:59:56 +0200
+	id 1o5ksD-00HE3H-4o; Mon, 27 Jun 2022 09:17:39 +0000
+X-UUID: f479340e9f3444f4a5f4b253bdcabb52-20220627
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:405bd4f7-a2f2-43d6-bcf6-e38158b0ca77,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:87442a2,CLOUDID:fda79bea-f7af-4e69-92ee-0fd74a0c286c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: f479340e9f3444f4a5f4b253bdcabb52-20220627
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 44680292; Mon, 27 Jun 2022 02:17:31 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jun 2022 02:07:29 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 27 Jun 2022 17:07:28 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 27 Jun 2022 17:07:28 +0800
+Message-ID: <5a5d11158dd45355e5e6c3b5decbe41495bd19ad.camel@mediatek.com>
+Subject: Re: [PATCH v14 01/15] dt-bindings: mediatek,dpi: Add DP_INTF
+ compatible
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 27 Jun 2022 17:07:28 +0800
+In-Reply-To: <a2612c2628eefbbf909d4847b3d0067746813f33.camel@mediatek.com>
+References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
+	 <20220624030946.14961-2-rex-bc.chen@mediatek.com>
+	 <a2612c2628eefbbf909d4847b3d0067746813f33.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v3 2/7] dt-bindings: clock: Add MediaTek Helio X10 MT6795
- clock bindings
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- y.oudjana@protonmail.com, jason-jh.lin@mediatek.com, ck.hu@mediatek.com,
- fparent@baylibre.com, rex-bc.chen@mediatek.com, tinghan.shen@mediatek.com,
- chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
- miles.chen@mediatek.com, sam.shih@mediatek.com, wenst@chromium.org,
- bgolaszewski@baylibre.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
- kernel@collabora.com, Rob Herring <robh@kernel.org>
-References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
- <20220624093525.243077-3-angelogioacchino.delregno@collabora.com>
- <de5a0e6f-411f-0c7b-ae1e-1117a4126d2d@linaro.org>
- <9554982a-c48b-e902-2d96-b317c46df698@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <9554982a-c48b-e902-2d96-b317c46df698@collabora.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_015959_767463_4A74247A 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20220627_021737_205356_8E484C81 
+X-CRM114-Status: GOOD (  25.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,41 +88,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/06/2022 10:49, AngeloGioacchino Del Regno wrote:
-> Il 25/06/22 22:30, Krzysztof Kozlowski ha scritto:
->> On 24/06/2022 11:35, AngeloGioacchino Del Regno wrote:
->>> Add the bindings for MT6795's clock controller.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> Acked-by: Rob Herring <robh@kernel.org>
->>> ---
->>>   include/dt-bindings/clock/mt6795-clk.h | 275 +++++++++++++++++++++++++
->>>   1 file changed, 275 insertions(+)
->>>   create mode 100644 include/dt-bindings/clock/mt6795-clk.h
->>>
->>> diff --git a/include/dt-bindings/clock/mt6795-clk.h b/include/dt-bindings/clock/mt6795-clk.h
->>> new file mode 100644
->>> index 000000000000..9902906ac902
->>> --- /dev/null
->>> +++ b/include/dt-bindings/clock/mt6795-clk.h
->>
->> Vendor prefix.
->>
+On Mon, 2022-06-27 at 15:50 +0800, CK Hu wrote:
+> Hi, Bo-Chen:
 > 
-> For consistency, I'd really like to keep the filename as it is.
+> On Fri, 2022-06-24 at 11:09 +0800, Bo-Chen Chen wrote:
+> > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > 
+> > DP_INTF is similar to DPI but does not have the exact same feature
+> > set
+> > or register layouts.
+> > 
+> > DP_INTF is the sink of the display pipeline that is connected to
+> > the
+> > DisplayPort controller and encoder unit. It takes the same clocks
+> > as
+> > DPI.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > [Bo-Chen: Modify reviewers' comments.]
 > 
-> At least in this directory, all of the MediaTek clock bindings
-> are using the format mtXXXX-clk.h... and that's not only seen
-> in MediaTek, but also in Broadcom, Renesas, RockChip, HiSilicon,
-> nVidia, etc.
+> Except this line,
+> 
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> 
 
-Several new files are introduced with vendor prefix. The same as in
-bindings - old bindings were without vendor, so for consistency we would
-never switch to vendor one.
+Hello CK,
 
-For consistency with Documentation/devicetree/bindings and with all new
-files in binding headers, please add vendor prefix.
+What do you mean?
+Do you mean I should drop this line?
 
-Best regards,
-Krzysztof
+BRs,
+Bo-Chen
+> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++-
+> > --
+> > --
+> >  1 file changed, 6 insertions(+), 5 deletions(-)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > index 77ee1b923991..8e526a4b134e 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.y
+> > am
+> > l
+> > @@ -4,16 +4,16 @@
+> >  $id: 
+> > http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+> >  $schema: http://devicetree.org/meta-schemas/core.yaml#
+> >  
+> > -title: mediatek DPI Controller Device Tree Bindings
+> > +title: mediatek DPI and DP_INTF Controller
+> >  
+> >  maintainers:
+> >    - CK Hu <ck.hu@mediatek.com>
+> >    - Jitao shi <jitao.shi@mediatek.com>
+> >  
+> >  description: |
+> > -  The Mediatek DPI function block is a sink of the display
+> > subsystem
+> > and
+> > -  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a
+> > parallel
+> > -  output bus.
+> > +  The Mediatek DPI and DP_INTF function blocks are a sink of the
+> > display
+> > +  subsystem and provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422
+> > pixel data on a
+> > +  parallel output bus.
+> >  
+> >  properties:
+> >    compatible:
+> > @@ -24,6 +24,7 @@ properties:
+> >        - mediatek,mt8183-dpi
+> >        - mediatek,mt8186-dpi
+> >        - mediatek,mt8192-dpi
+> > +      - mediatek,mt8195-dp-intf
+> >  
+> >    reg:
+> >      maxItems: 1
+> > @@ -55,7 +56,7 @@ properties:
+> >      $ref: /schemas/graph.yaml#/properties/port
+> >      description:
+> >        Output port node. This port should be connected to the input
+> > port of an
+> > -      attached HDMI or LVDS encoder chip.
+> > +      attached HDMI, LVDS or DisplayPort encoder chip.
+> >  
+> >  required:
+> >    - compatible
+> 
+> 
+
 
