@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF1E8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 19:29:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34145C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 19:41:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=00sk1nkqFTzRRBvGDEbf19owLEwm7v5mN2NfaZqIsZo=; b=ZWiZQpbciFQM7vmKkxaNKSceHB
-	hZNQ/Dolya+H2Ii6LS8Da3QD/6MBIlIOtKA+nMqmzDEoqUw8sO0HdvehV2UWGku4npUhv/OydnIm6
-	SJDVt+W5254eEbIP4mNK7uTVwhH+rnwbyMPG5J4HR3Nk+4WXdzI6HW31ADQeTtrMjuTT/SYxB4kEG
-	IXKh1NGrPzP3uwjLrhjzE61BeJ5ZezZl3AA4n0TjqjKF7AAa/kFx70eGaoUlfXYB5CEaSvS+ACRUb
-	qMI7SHYXTbCgxJPm+8HdmEOCluZYOt2wLKoZrsCfR2QODJkJxJtgMa2ofZIIbuiaKtUIZhMswW+E1
-	vtGpomlA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jkTqV8w0FEV4is7RriDBIjg23gLSuIjJLEaWlyZ12kE=; b=iwRSnfQK04ez7LgkZvlUl5a9s8
+	GhEtpBwS3RcRokS+bY0fRADP3bPrr/UpyEd4j2LsaX+4ZediOnyGRPOg5EKJVqJCwg/LJlce8VkaF
+	sJbtEpoKvdtxmR66uvMU3W5VfS6K1l0/wJmjS/5ulxyXzeH7ebgSmkrMmczvnNuH8pztZRV0kLbRT
+	CaqZhLrq/mBe4DISnSYQyRJk9EAg3rRguUnciNKDHjL/d2uoDWrJpvR47YqpUKWlVQXVIFSw9OW/S
+	UIyoLSB/OBJzh/ZVvDKSYuRd7zd97PYQkbxMMSoQmf0JAHilAgEfuBJFVGUk+GLh7Q3jcSKqiETX/
+	7giacjlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5uPs-002Y2A-NN; Mon, 27 Jun 2022 19:29:00 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o5ubT-002aZs-C6; Mon, 27 Jun 2022 19:40:59 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5uPq-002Xzx-48
-	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 19:29:00 +0000
-Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3A3726601667;
-	Mon, 27 Jun 2022 20:28:52 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656358133;
-	bh=JZYd0oVkoFsjInwx5U+1zSTfshvu3TjOpPrckSxmunY=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=KPL/iEY8nrk6fxhY0AV6HQHyyclAKSz9FgBDVYmg2cHkOANS8ggYrC8ykwlknpC9R
-	 /EZzxnPh/RcveQnL9H3XiHDBUtYF+pZe+zul8tJ3+CoHt5hDpPhpQ8hNjD9D0SlluM
-	 xHaTDmuShtIX+ZRnRzwUGv+OIUfXoJPGER0ymYd4uM/Ih0dNyIZRYq4/UU+/bAaqFd
-	 T59Od+iA1h9FJuf7UQurtcXGNBNKjU6e2SshvTkCthlh6+W9tYvIkX3viv78U3Rl9g
-	 0NYHMHGS+Jsx/3ZC/2MTWCfpUl0ED4Y90qNyoKpYT69UTR6gphElinlVPKDJ4vUeTm
-	 6jmGVIL68RPgw==
-Message-ID: <f05953a93fb8f250f4da7c3384b6e1c43c7b1605.camel@collabora.com>
-Subject: Re: [PATCH 1/4] media: mediatek: vcodec: dec: Fix 4K frame size
- enumeration
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org,  linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>
-Date: Mon, 27 Jun 2022 15:28:42 -0400
-In-Reply-To: <CAGXv+5GA04LBN0bnLDdL8g_+_8HXpc-KwtPxpXyXi_WgUOPrtQ@mail.gmail.com>
-References: <20220627112402.2332046-1-wenst@chromium.org>
-	 <20220627112402.2332046-2-wenst@chromium.org>
-	 <f5e68826df868ae5a3cd5737fd9d7f7683bbad73.camel@collabora.com>
-	 <CAGXv+5GA04LBN0bnLDdL8g_+_8HXpc-KwtPxpXyXi_WgUOPrtQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.2 (3.44.2-1.fc36) 
+	id 1o5ubQ-002aYe-0o; Mon, 27 Jun 2022 19:40:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1656358855; x=1687894855;
+  h=date:from:to:cc:subject:message-id:mime-version:
+   content-transfer-encoding;
+  bh=8CuvkP0vcHWHYz4O+MpXmhInxvjdtTkynfXQVhQtVvU=;
+  b=FcH4UoqsFYoauV8lUBlvcSwtX/Bx1U0HU92J+jPR5K7CTwimDg6v1rpG
+   GhPGR0BWZI5ZvYMHi12tAQEDFhACt0fffTPiSrZ4dnc/PGpcTiOuy2VCA
+   TrRVUssqoMFsJX8xLaEWnzFY6ZPIstoy+LYunaaJrDcDWcE3gFU/I4Ryz
+   XRNnmAQv3pbh2Qr7dtJOV0E/vczfWMzCIeJuUKEvBtseVb5GCEKyISHnU
+   VjSmQ7aKA05Rt9ETwTHy+J80C47V+dN6GslePGI7oAACy6okH6e2taltr
+   lqTjVPOaj//FHMHj2OVSYPBA/PLqe8RmO2eV4nXd5RrGgWhwLln2S6GIN
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10391"; a="261959048"
+X-IronPort-AV: E=Sophos;i="5.92,227,1650956400"; 
+   d="scan'208";a="261959048"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jun 2022 12:40:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,227,1650956400"; 
+   d="scan'208";a="766877478"
+Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
+  by orsmga005.jf.intel.com with ESMTP; 27 Jun 2022 12:40:46 -0700
+Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1o5ubG-0008wF-9g;
+	Mon, 27 Jun 2022 19:40:46 +0000
+Date: Tue, 28 Jun 2022 03:40:41 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: sound-open-firmware@alsa-project.org, ntb@lists.linux.dev,
+ mjpeg-users@lists.sourceforge.net, linuxppc-dev@lists.ozlabs.org,
+ linux-usb@vger.kernel.org, linux-perf-users@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-acpi@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ Linux Memory Management List <linux-mm@kvack.org>
+Subject: [linux-next:master] BUILD REGRESSION
+ aab35c3d5112df6e329a1a5a5a1881e5c4ca3821
+Message-ID: <62ba07b9.qFa7tsWUZhZoW2FF%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_122858_474738_F6FAAC94 
-X-CRM114-Status: GOOD (  41.08  )
+X-CRM114-CacheID: sfid-20220627_124056_138009_942C3FE5 
+X-CRM114-Status: UNSURE (   5.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,169 +86,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mardi 28 juin 2022 =C3=A0 00:08 +0800, Chen-Yu Tsai a =C3=A9crit=C2=A0:
-> On Mon, Jun 27, 2022 at 11:32 PM Nicolas Dufresne
-> <nicolas.dufresne@collabora.com> wrote:
-> >=20
-> > Hi Chen-Yu,
-> >=20
-> > Le lundi 27 juin 2022 =C3=A0 19:23 +0800, Chen-Yu Tsai a =C3=A9crit :
-> > > This partially reverts commit b018be06f3c7 ("media: mediatek: vcodec:
-> > > Read max resolution from dec_capability"). In this commit, the maximu=
-m
-> > > resolution ended up being a function of both the firmware capability =
-and
-> > > the current set format.
-> > >=20
-> > > However, frame size enumeration for output (coded) formats should not
-> > > depend on the format set, but should return supported resolutions for
-> > > the format requested by userspace.
-> >=20
-> > Good point. Though, I don't see any special casing for the CAPTURE case=
-. As this
-> > HW does not include a scaler, it must only return 1 resolution when bei=
-ng
-> > enumerated for CAPTURE side (or not implement that enumeration, but its
-> > complicated to half implement something in m2m). The return unique size=
- should
-> > match what G_FMT(CAPTURE) would return.
->=20
-> There are no frame sizes added for the capture formats, so this function
-> effectively returns -EINVAL for any of them. This is also what rkvdec
-> does: it only looks through the list of coded formats.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: aab35c3d5112df6e329a1a5a5a1881e5c4ca3821  Add linux-next specific files for 20220627
 
-This is effectively against the spec, ENOTTY would be the only alternative =
-to
-not implementing both sides. Though, I'll agree with you, this bugs predate=
-s
-anything here. Perhaps you could at add MM21 to the switch and returns ENOT=
-TY
-there ?
+Error/Warning: (recently discovered and may have been fixed)
 
->=20
-> Also, struct v4l2_frmsizeenum does not have a field saying whether it's
-> capture or output side; it simply specifies a pixel format.
+arch/powerpc/kernel/interrupt.c:542:55: error: suggest braces around empty body in an 'if' statement [-Werror=empty-body]
+arch/powerpc/kernel/interrupt.c:542:55: warning: suggest braces around empty body in an 'if' statement [-Wempty-body]
+drivers/gpu/drm/amd/amdgpu/../display/dc/core/dc_link.c:1025:33: warning: variable 'pre_connection_type' set but not used [-Wunused-but-set-variable]
+drivers/ntb/test/ntb_perf.c:1145: undefined reference to `__umoddi3'
+drivers/pci/endpoint/functions/pci-epf-vntb.c:975:5: warning: no previous prototype for 'pci_read' [-Wmissing-prototypes]
+drivers/pci/endpoint/functions/pci-epf-vntb.c:984:5: warning: no previous prototype for 'pci_write' [-Wmissing-prototypes]
+vmlinux.o: warning: objtool: __ct_user_enter+0x8c: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_idle_enter+0x19: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_idle_exit+0x3e: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_irq_enter+0x6a: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_irq_exit+0x6a: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_kernel_enter.constprop.0+0x2a: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_kernel_enter_state+0x2d: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_kernel_exit.constprop.0+0x53: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_kernel_exit_state+0x2d: call to ftrace_likely_update() leaves .noinstr.text section
+vmlinux.o: warning: objtool: ct_nmi_enter+0x4b: call to ftrace_likely_update() leaves .noinstr.text section
 
-Acked.
+Unverified Error/Warning (likely false positive, please contact us if interested):
 
->=20
-> >=20
-> > >=20
-> > > Fix this so that the driver returns the supported resolutions correct=
-ly,
-> > > even if the instance only has default settings, or if the output form=
-at
-> > > is currently set to VP8F, which does not support 4K.
-> > >=20
-> > > Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution fr=
-om dec_capability")
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > ---
-> > >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c    | 2 --
-> > >  .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c    | 7 +++++=
-++
-> > >  2 files changed, 7 insertions(+), 2 deletions(-)
-> > >=20
-> > > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c =
-b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > > index 5d6fdf18c3a6..fcb4b8131c49 100644
-> > > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > > @@ -595,8 +595,6 @@ static int vidioc_enum_framesizes(struct file *fi=
-le, void *priv,
-> > >               fsize->type =3D V4L2_FRMSIZE_TYPE_STEPWISE;
-> > >               fsize->stepwise =3D dec_pdata->vdec_framesizes[i].stepw=
-ise;
-> > >=20
-> > > -             fsize->stepwise.max_width =3D ctx->max_width;
-> > > -             fsize->stepwise.max_height =3D ctx->max_height;
-> > >               mtk_v4l2_debug(1, "%x, %d %d %d %d %d %d",
-> > >                               ctx->dev->dec_capability,
-> > >                               fsize->stepwise.min_width,
-> > > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_st=
-ateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless=
-.c
-> > > index 16d55785d84b..9a4d3e3658aa 100644
-> > > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless=
-.c
-> > > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless=
-.c
-> > > @@ -360,6 +360,13 @@ static void mtk_vcodec_add_formats(unsigned int =
-fourcc,
-> > >=20
-> > >               mtk_vdec_framesizes[count_framesizes].fourcc =3D fourcc=
-;
-> > >               mtk_vdec_framesizes[count_framesizes].stepwise =3D step=
-wise_fhd;
-> > > +             if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_D=
-ISABLED) &&
-> > > +                 fourcc !=3D V4L2_PIX_FMT_VP8_FRAME) {
-> > > +                     mtk_vdec_framesizes[count_framesizes].stepwise.=
-max_width =3D
-> > > +                             VCODEC_DEC_4K_CODED_WIDTH;
-> > > +                     mtk_vdec_framesizes[count_framesizes].stepwise.=
-max_height =3D
-> > > +                             VCODEC_DEC_4K_CODED_HEIGHT;
-> > > +             }
-> >=20
-> > I don't particularly like to see this special cased check being added i=
-nto
-> > multiple places. Its also in your patch 2, and I think it exist in a th=
-ird
-> > place. Could it be possible to have an internal helper to ensure we don=
-'t
->=20
-> It's also in s_fmt(), so touched on in patch 4. I could also rewrite it s=
-o
-> only this spot has the special case, and all the other places look though
-> mtk_vdec_framesizes to get the maximum, like what I did for try_fmt in
-> patch 3. What do you think?
+drivers/acpi/scan.c:615:35: warning: Uninitialized variable: acpi_device_bus_id->bus_id [uninitvar]
+drivers/phy/qualcomm/phy-qcom-qmp-combo.c:1701:19: warning: Value stored to 'qmp' during its initialization is never read [clang-analyzer-deadcode.DeadStores]
+drivers/soc/mediatek/mtk-mutex.c:799:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/staging/media/zoran/zr36016.c:430:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/staging/media/zoran/zr36050.c:829:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/staging/media/zoran/zr36060.c:869:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/thunderbolt/tmu.c:758:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+sound/soc/sof/intel/mtl.c:547:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
 
-I don't have a strong opinion, could be a totally internal (and unrelated t=
-o any
-ioctl naming) helper that does the right thing.
+Error/Warning ids grouped by kconfigs:
 
->=20
-> Ultimately I think it would be better to move framesizes into the
-> (driver-specific) pixel format data structure. That is a bigger refactori=
-ng
-> than a simple fix though.
+gcc_recent_errors
+|-- alpha-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- arc-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|   |-- drivers-soc-mediatek-mtk-mutex.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-staging-media-zoran-zr36016.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-staging-media-zoran-zr36050.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-staging-media-zoran-zr36060.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-thunderbolt-tmu.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   `-- sound-soc-sof-intel-mtl.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|-- arm-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- arm64-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- i386-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|   `-- ntb_perf.c:(.text):undefined-reference-to-__umoddi3
+|-- i386-randconfig-a013-20220627
+|   `-- ERROR:__umoddi3-drivers-ntb-test-ntb_perf.ko-undefined
+|-- i386-randconfig-m021-20220627
+|   `-- arch-x86-events-core.c-init_hw_perf_events()-warn:missing-error-code-err
+|-- i386-randconfig-p001-20220627
+|   `-- drivers-acpi-scan.c:warning:Uninitialized-variable:acpi_device_bus_id-bus_id-uninitvar
+|-- ia64-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- mips-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- powerpc-allmodconfig
+|   |-- ERROR:__umoddi3-drivers-ntb-test-ntb_perf.ko-undefined
+|   |-- arch-powerpc-kernel-interrupt.c:warning:suggest-braces-around-empty-body-in-an-if-statement
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- powerpc-allnoconfig
+|   `-- arch-powerpc-kernel-interrupt.c:error:suggest-braces-around-empty-body-in-an-if-statement
+|-- powerpc-buildonly-randconfig-r003-20220627
+|   `-- arch-powerpc-kernel-interrupt.c:error:suggest-braces-around-empty-body-in-an-if-statement
+|-- powerpc-buildonly-randconfig-r005-20220627
+|   |-- arch-powerpc-kernel-interrupt.c:warning:suggest-braces-around-empty-body-in-an-if-statement
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|-- powerpc-randconfig-r023-20220627
+|   `-- arch-powerpc-kernel-interrupt.c:warning:suggest-braces-around-empty-body-in-an-if-statement
+|-- riscv-randconfig-r012-20220627
+|   |-- ERROR:__umoddi3-drivers-ntb-test-ntb_perf.ko-undefined
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|-- s390-buildonly-randconfig-r001-20220627
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|-- sparc-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- sparc-randconfig-r032-20220627
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|-- x86_64-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link.c:warning:variable-pre_connection_type-set-but-not-used
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- x86_64-randconfig-a011-20220627
+|   |-- vmlinux.o:warning:objtool:__ct_user_enter:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_idle_enter:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_idle_exit:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_irq_enter:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_irq_exit:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_kernel_enter:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_kernel_enter_state:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_kernel_exit:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   |-- vmlinux.o:warning:objtool:ct_kernel_exit_state:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|   `-- vmlinux.o:warning:objtool:ct_nmi_enter:call-to-ftrace_likely_update()-leaves-.noinstr.text-section
+|-- x86_64-randconfig-m001-20220627
+|   `-- arch-x86-events-core.c-init_hw_perf_events()-warn:missing-error-code-err
+`-- xtensa-randconfig-r024-20220627
+    `-- drivers-ntb-test-ntb_perf.c:undefined-reference-to-__umoddi3
 
-Agreed.
+clang_recent_errors
+`-- riscv-randconfig-c006-20220617
+    `-- drivers-phy-qualcomm-phy-qcom-qmp-combo.c:warning:Value-stored-to-qmp-during-its-initialization-is-never-read-clang-analyzer-deadcode.DeadStores
 
->=20
-> > duplicate this logic ? Somehow, it seems there is something in common b=
-etween
-> > set_default, try_fmt and this code.
->=20
-> Yes. That is what I mentioned in chat about refactoring the ioctls and fo=
-rmat
-> handling code. set_default should really not set anything format specific=
-,
-> but instead call set_fmt with a default format.
+elapsed time: 726m
 
-So if this could have a simple helper that returns the max width/height for=
- the
-specified format and HW capability, I'm then fine with the series. If you c=
-an
-change the EINVAL (which means nothing is supported) into ENOTTY for the MM=
-21
-case, I'd also be more confortable (even though still a bit odd, but no lon=
-ger a
-lie).
+configs tested: 52
+configs skipped: 2
 
-regards,
-Nicolas
+gcc tested configs:
+arm                                 defconfig
+arm                              allyesconfig
+arm64                            allyesconfig
+ia64                             allmodconfig
+alpha                            allyesconfig
+m68k                             allmodconfig
+arc                              allyesconfig
+m68k                             allyesconfig
+powerpc                           allnoconfig
+sh                               allmodconfig
+powerpc                          allmodconfig
+mips                             allyesconfig
+i386                                defconfig
+i386                             allyesconfig
+x86_64               randconfig-a012-20220627
+x86_64               randconfig-a011-20220627
+x86_64               randconfig-a013-20220627
+x86_64               randconfig-a014-20220627
+x86_64               randconfig-a015-20220627
+x86_64               randconfig-a016-20220627
+i386                 randconfig-a012-20220627
+i386                 randconfig-a011-20220627
+i386                 randconfig-a013-20220627
+i386                 randconfig-a014-20220627
+i386                 randconfig-a015-20220627
+i386                 randconfig-a016-20220627
+arc                  randconfig-r043-20220627
+s390                 randconfig-r044-20220627
+riscv                randconfig-r042-20220627
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                         rhel-8.3-kunit
+x86_64                           rhel-8.3-syz
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
 
->=20
->=20
-> Regards
-> ChenYu
->=20
-> >=20
-> > >               num_framesizes++;
-> > >               break;
-> > >       case V4L2_PIX_FMT_MM21:
-> >=20
+clang tested configs:
+i386                 randconfig-a001-20220627
+i386                 randconfig-a002-20220627
+i386                 randconfig-a003-20220627
+i386                 randconfig-a006-20220627
+i386                 randconfig-a005-20220627
+i386                 randconfig-a004-20220627
+x86_64               randconfig-a002-20220627
+x86_64               randconfig-a003-20220627
+x86_64               randconfig-a001-20220627
+x86_64               randconfig-a006-20220627
+x86_64               randconfig-a005-20220627
+x86_64               randconfig-a004-20220627
+hexagon              randconfig-r041-20220627
+hexagon              randconfig-r045-20220627
 
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
