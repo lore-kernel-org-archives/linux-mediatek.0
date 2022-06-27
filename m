@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB61C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 07:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B1F3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 07:51:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PNpWaJO6K3PBbOX8APxK84QiUQgVI9ObWT2Agio8Dlk=; b=w/ze3BFW2I8GecrWO/1dcGZpKh
-	9YJfZmdGOohPfKKeTfwDBqqUyvuwTXEPr5Y2H/FdvVK1D8IkQnMyzJJ/18yBzzXzQoIM5kwl9WS5V
-	NgbFldQYnIjEoYSETPzrOtFdEh5ntXOJwhwSBFLfRlPR/LgaGqDFord879CBqFgaI8h4EGAENn06c
-	7Agr869h8I9TaRYR3PXpe9UjnGvxllDWxaRFdxgAuXGYzzXtN9oSwfQT887SHXldtFvI4MPDkhC24
-	cPg2wY5U2npwibbQfNsDU2LiFFsPrs/GbpdkmBtqqhXouyXKTEna4n1ikKWzmNCul18vppaPH6B8p
-	NKr5sCGw==;
+	bh=aWI34LOK5qbOsO6rpEuJYmRCPkCGmF4oyfWXMPrP/EE=; b=OGrDmyn/fuQ7vVGog2udPG88wu
+	VktJCbruCbwFA3hAbNbbQsePWdZxNHrjXmRAxyvAD42eOvekrmrQrX3+slFrgE+1EfXAvRfhlm1hx
+	TrHsXMT/T3z3pmFStZN/6tAEDchePqV9nm5GAnZ5MeGqCTRr5f9R9eNvnqhn48qLH08PYH6wnzo+n
+	4qIN2CM+RxKz3KR0k7fXYMDl796/eB2nASrqKdUZDTeGC9tinJWxJ42tRV4HJQwxSIa2ktLwl/ee2
+	WtKVYrKrgTaOmrI8WxOxLl9jD/XDdtLwhqgi/EbOp5Vr73eDjYd/d1Dip8qwqCKRUlSkOPu/nIG0n
+	9nY6la8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5jQv-00GUTh-0F; Mon, 27 Jun 2022 07:45:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o5jX0-00GXIr-Sl; Mon, 27 Jun 2022 07:51:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5jQY-00GUGA-PC; Mon, 27 Jun 2022 07:45:01 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E35756601824;
-	Mon, 27 Jun 2022 08:44:52 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656315894;
-	bh=98ifQbG2wsM55eIgKV0UnH7X42SVzBCwPS6JtUzdqNY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PdCo2C2OuBcV/T11XPWp3z93NWE6k8d2tKMy8CgviMeERazXsNCHqTRs9GyOv+C4n
-	 THQkk2DRJ+WpUEDCgUzzwj5JNLoyFMLW4145KxoQbJW75T5jnlV1kpYXlCcposD0f1
-	 0HG5CdK7NerVKo0eo6Vg+wBJhxPz65aCVl383FpEXXPk3q8xnPhnFUgblpDFji74ZI
-	 GNDCgN91TPbmYWbjuLRUdqgD7MNsgDKaOlu36YONK1gaYWSSmerV0oEbLRwaRFfFkl
-	 6o0qNC1sOJq7VrK6xl7YHt8QpGkC2bltAKKusU/l+CRq0HuuZvKiwVFvGiWp5Uzw8r
-	 iGL8eWcTylyXA==
-Message-ID: <2111b4a7-d195-0333-1d43-02fcd91f89e2@collabora.com>
-Date: Mon, 27 Jun 2022 09:44:50 +0200
+	id 1o5jWy-00GXGn-7A; Mon, 27 Jun 2022 07:51:38 +0000
+X-UUID: a2402b1a62b64b3da3c71d42ec5cbf9f-20220627
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.6,REQID:0c608e68-0876-49d0-bcf2-6df3676d743f,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:b14ad71,CLOUDID:9856212e-1756-4fa3-be7f-474a6e4be921,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: a2402b1a62b64b3da3c71d42ec5cbf9f-20220627
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+	with ESMTP id 1059818832; Mon, 27 Jun 2022 00:51:30 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jun 2022 00:50:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 27 Jun 2022 15:50:53 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 27 Jun 2022 15:50:53 +0800
+Message-ID: <a2612c2628eefbbf909d4847b3d0067746813f33.camel@mediatek.com>
+Subject: Re: [PATCH v14 01/15] dt-bindings: mediatek,dpi: Add DP_INTF
+ compatible
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 27 Jun 2022 15:50:52 +0800
+In-Reply-To: <20220624030946.14961-2-rex-bc.chen@mediatek.com>
+References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
+	 <20220624030946.14961-2-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v3 4/7] dt-bindings: clock: mediatek: Add clock driver
- bindings for MT6795
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- David Heidelberg <david.heidelberg@collabora.com>
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- y.oudjana@protonmail.com, jason-jh.lin@mediatek.com, ck.hu@mediatek.com,
- fparent@baylibre.com, rex-bc.chen@mediatek.com, tinghan.shen@mediatek.com,
- chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
- miles.chen@mediatek.com, sam.shih@mediatek.com, wenst@chromium.org,
- bgolaszewski@baylibre.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
- kernel@collabora.com
-References: <20220624093525.243077-1-angelogioacchino.delregno@collabora.com>
- <20220624093525.243077-5-angelogioacchino.delregno@collabora.com>
- <cea65d6a-7d9b-7b14-9984-bcd7f115da47@linaro.org>
- <728b2c54-0dc0-533f-bab8-fca228f6c1b1@collabora.com>
- <ee945844-5d78-7c2b-215e-25fe5617b481@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <ee945844-5d78-7c2b-215e-25fe5617b481@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_004459_144703_C748EBCB 
-X-CRM114-Status: GOOD (  21.45  )
+X-CRM114-CacheID: sfid-20220627_005136_313093_9C32A618 
+X-CRM114-Status: GOOD (  20.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,139 +87,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/06/22 12:31, Krzysztof Kozlowski ha scritto:
-> On 26/06/2022 11:47, David Heidelberg wrote:
->> On 25/06/2022 22:29, Krzysztof Kozlowski wrote:
->>> On 24/06/2022 11:35, AngeloGioacchino Del Regno wrote:
->>>> Add the bindings for the clock drivers of the MediaTek Helio X10
->>>> MT6795 SoC.
->>>>
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> ---
->>>>    .../bindings/clock/mediatek,mt6795-clock.yaml | 66 +++++++++++++++++
->>>>    .../clock/mediatek,mt6795-sys-clock.yaml      | 74 +++++++++++++++++++
->>>>    2 files changed, 140 insertions(+)
->>>>    create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->>>>    create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->>>> new file mode 100644
->>>> index 000000000000..795fb18721c3
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->>>> @@ -0,0 +1,66 @@
->>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>>> +%YAML 1.2
->>>> +---
->>>> +$id: "http://devicetree.org/schemas/clock/mediatek,mt6795-clock.yaml#"
->>>> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
->>>> +
->>>> +title: MediaTek Functional Clock Controller for MT6795
->>>> +
->>>> +maintainers:
->>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
->>>> +
->>>> +description: |
->>>> +  The clock architecture in MediaTek like below
->>>> +  PLLs -->
->>>> +          dividers -->
->>>> +                      muxes
->>>> +                           -->
->>>> +                              clock gate
->>>> +
->>>> +  The devices provide clock gate control in different IP blocks.
->>>> +
->>>> +properties:
->>>> +  compatible:
->>>> +    enum:
->>>> +      - mediatek,mt6795-mfgcfg
->>>> +      - mediatek,mt6795-vdecsys
->>>> +      - mediatek,mt6795-vencsys
->>>> +
->>>> +  reg:
->>>> +    maxItems: 1
->>>> +
->>>> +  '#clock-cells':
->>>> +    const: 1
->>>> +
->>>> +required:
->>>> +  - compatible
->>>> +  - reg
->>>> +  - '#clock-cells'
->>>> +
->>>> +additionalProperties: false
->>>> +
->>>> +examples:
->>>> +  - |
->>>> +    soc {
->>>> +        #address-cells = <2>;
->>>> +        #size-cells = <2>;
->>>> +
->>>> +        mfgcfg: clock-controller@13000000 {
->>>> +            compatible = "mediatek,mt6795-mfgcfg";
->>>> +            reg = <0 0x13000000 0 0x1000>;
->>>> +            #clock-cells = <1>;
->>>> +        };
->>>> +
->>>> +        vdecsys: clock-controller@16000000 {
->>>> +            compatible = "mediatek,mt6795-vdecsys";
->>>> +            reg = <0 0x16000000 0 0x1000>;
->>>> +            #clock-cells = <1>;
->>>> +        };
->>>> +
->>>> +        vencsys: clock-controller@18000000 {
->>>> +            compatible = "mediatek,mt6795-vencsys";
->>>> +            reg = <0 0x18000000 0 0x1000>;
->>>> +            #clock-cells = <1>;
->>>> +        };
->>>> +    };
->>>> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->>>> new file mode 100644
->>>> index 000000000000..44b96af9ceaf
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->>>> @@ -0,0 +1,74 @@
->>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>>> +%YAML 1.2
->>>> +---
->>>> +$id: "http://devicetree.org/schemas/clock/mediatek,mt6795-sys-clock.yaml#"
->>>> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
->>>> +
->>>> +title: MediaTek System Clock Controller for MT6795
->>>> +
->>>> +maintainers:
->>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
->>>> +
->>>> +description:
->>>> +  The Mediatek system clock controller provides various clocks and system configuration
->>> Wrap according to Linux coding convention, so at 80.
->>
->> What I understood that 100 length was agreed [1] as a limit. I haven't
->> noticed any recent change regarding to line length.
->>
->> [1]
->> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bdc48fa11e46f867ea4d75fa59ee87a7f48be144
-> 
-> The coding style (also in change above) clearly states:
-> "The preferred limit on the length of a single line is 80 columns."
-> Just read the first line of new diff/hunk...
-> 
-> checkpatch was indeed long time converted not to complain on 80 but on
-> 100, but that does not change coding style. The point of that was only
-> to accept 100 wrapping when it is beneficial,  iow, it increases the
-> code readability.
-> 
-> It's not the case here and coding style clearly asks for 80. Wrap at 80.
-> 
+Hi, Bo-Chen:
 
-Hello David, Krzysztof,
+On Fri, 2022-06-24 at 11:09 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> DP_INTF is similar to DPI but does not have the exact same feature
+> set
+> or register layouts.
+> 
+> DP_INTF is the sink of the display pipeline that is connected to the
+> DisplayPort controller and encoder unit. It takes the same clocks as
+> DPI.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> [Bo-Chen: Modify reviewers' comments.]
 
-there's no problem at all, I can resend... after all, it's a fast fix and
-all it takes is 10 minutes of my time!
+Except this line,
 
-Cheers,
-Angelo
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> ---
+>  .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++---
+> --
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git
+> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> index 77ee1b923991..8e526a4b134e 100644
+> ---
+> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> +++
+> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> @@ -4,16 +4,16 @@
+>  $id: 
+> http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  
+> -title: mediatek DPI Controller Device Tree Bindings
+> +title: mediatek DPI and DP_INTF Controller
+>  
+>  maintainers:
+>    - CK Hu <ck.hu@mediatek.com>
+>    - Jitao shi <jitao.shi@mediatek.com>
+>  
+>  description: |
+> -  The Mediatek DPI function block is a sink of the display subsystem
+> and
+> -  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a
+> parallel
+> -  output bus.
+> +  The Mediatek DPI and DP_INTF function blocks are a sink of the
+> display
+> +  subsystem and provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422
+> pixel data on a
+> +  parallel output bus.
+>  
+>  properties:
+>    compatible:
+> @@ -24,6 +24,7 @@ properties:
+>        - mediatek,mt8183-dpi
+>        - mediatek,mt8186-dpi
+>        - mediatek,mt8192-dpi
+> +      - mediatek,mt8195-dp-intf
+>  
+>    reg:
+>      maxItems: 1
+> @@ -55,7 +56,7 @@ properties:
+>      $ref: /schemas/graph.yaml#/properties/port
+>      description:
+>        Output port node. This port should be connected to the input
+> port of an
+> -      attached HDMI or LVDS encoder chip.
+> +      attached HDMI, LVDS or DisplayPort encoder chip.
+>  
+>  required:
+>    - compatible
 
 
