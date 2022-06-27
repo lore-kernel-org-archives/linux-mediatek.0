@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C01C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 12:55:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64475C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 13:20:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=88zMslVk41CeYoxYwG8qzdKRCKatsSnm21KTQqGOpbI=; b=jEtkNjaX3DoTB6AE/eM0010l8a
-	6p62xLKU+7/cQ9cJECHFeQxtN8Cyji1gnDuTsI2oHuYf0jvShTuH0dGxjOTYGRaymgikRBPjqx71j
-	nUKDdBnThqa6zITyy8e1hogUkzfKZLTSY/wSfdIBIMYYWpUO3+36QH337NN/wRcMASuLjpCYRRN4y
-	SMof7/UDV5AwcpyqCso7X2Cqpq6i1ZaFzlvX7WAfS5qClzxpbQDJQd8dYTrFUbZkSbYX1bZZ1Lepa
-	CXwFkyb8ebrH0eRn/Mo9OvtPlxdt7zRCnRKaQEAJ/peEgB8840x2lQiwNE+YpSd0gywJzZ4nD+jwx
-	mCyYkyCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BvXK7IjPr/dvxpOEs8Wgz5utHO2JpiAKUO7kvolbpGE=; b=EwguyQ9bKLQf5xU+QgEl/jm061
+	MlIm2lqHVJjkKWInstchGr4TshfPkQTxSsIWLmfhGBwrQ3xmyI2UHwvJdJ/1k8Czzd4kPi79AZPPm
+	hFUqRR5lwcO5/+LguBeAnFYHBnTUy87iy4R/dkxIsJrhIr8fpYFOb0nH6HuDRS+7HcWc1eqMX0wQy
+	INdWGs/BLzj+UXDbzD/mulcbE18vUEw4QPDXIf6E8AYDTFqUie4yrMUmT1uRmjZnxwsWEMXZjCfBm
+	EKs/x5B8nZd6MDN1jNFmFVEjM+GHrCodWwFfcCg6e3k+R/h1S0lHor48EYADpLKDpI/oaAOjCzYFU
+	nuLr9v9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5oHN-0011G1-Bl; Mon, 27 Jun 2022 12:55:49 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o5oez-0017aa-Iu; Mon, 27 Jun 2022 13:20:13 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5oHB-0011Cj-S4; Mon, 27 Jun 2022 12:55:39 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 14261660178D;
-	Mon, 27 Jun 2022 13:55:32 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656334533;
-	bh=ifdpDVxFAJ7x6mxjxCa3kTl2O13CzEnu51wJDDLj6yY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RyIN62IlNGKr46nFhj1YIqMhkUGQA5IpK/U7l43Krbqfr1kdu0XwcBrWz/6/2uwvx
-	 SKOWM6L2frNS1rf/I1Bl2/V14E6B2P34q/WCw4ZiIZWUJJtLK2Dqgm3IIZHo2/2a9I
-	 BUNNlbpAaT6821/KUUXllBkfX8H3dKMtFWfMQlNE6O4GPj94f+aMBwCoEejB/0muHR
-	 a55UMYRUGRXWBdpe95SIRu13607xv7YY/qQXnQw70/T0dZnL1nDtgI2E6YobpgXWMT
-	 AiiX+KvNvYjxJfBdz85+RVYBnM7/fqY/MifNQmUTJl922YDOAZaaVm1o/uLKtcj7n7
-	 Syo3ePm5kq9qQ==
-Message-ID: <7f565036-df78-a4e7-db5e-259115daaf79@collabora.com>
-Date: Mon, 27 Jun 2022 14:55:29 +0200
+	id 1o5oel-0017Vx-KN; Mon, 27 Jun 2022 13:20:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1656335999; x=1687871999;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=FSVsuowTJal0OK/kAa7GOJ1gXDKBsLcY9rOM056n4Mk=;
+  b=F9gsMNnVJyUE7SZUgcaBSgadipAX2jkZFIufirctV1lmG17Dk1QbE12n
+   8251UM/HWZU4W3Uxru+lUp1MHKAPgWgTqoPgN/m1X9YwDYHZcaoDJGwX4
+   k3fRA/aQV8CQKehrvhLh1xywVaA60QEiytphPLU3BIsglyR/nqv9Ph4it
+   OJf9nDYLUPQ1GUvQy7StelXWHOYa98a7WlJj99lnUulUWOb8kTpMUlNCb
+   QBQoVtgaXR8UKQGDk/A95qwZ778lDbG+1ktS9njbBpwgRBru9Q1n64rfz
+   J0JDFfh5l7dpQemzBsLA/WpustEYawI0kO7OSBeptNwaL7l6yn5sRNIpZ
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10390"; a="343133896"
+X-IronPort-AV: E=Sophos;i="5.92,226,1650956400"; 
+   d="scan'208";a="343133896"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jun 2022 06:19:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,226,1650956400"; 
+   d="scan'208";a="732309491"
+Received: from kuha.fi.intel.com ([10.237.72.185])
+  by fmsmga001.fm.intel.com with SMTP; 27 Jun 2022 06:19:53 -0700
+Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Mon, 27 Jun 2022 16:19:52 +0300
+Date: Mon, 27 Jun 2022 16:19:52 +0300
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Xin Ji <xji@analogixsemi.com>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, bliang@analogixsemi.com,
+	qwen@analogixsemi.com, jli@analogixsemi.com,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v11 1/3] usb: typec: tcpci: move tcpci.h to
+ include/linux/usb/
+Message-ID: <YrmueL99Hr8iqXeA@kuha.fi.intel.com>
+References: <20220627044331.2180641-1-xji@analogixsemi.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH] drm/bridge: add it6505 driver read config from dt
- property
-Content-Language: en-US
-To: allen <allen.chen@ite.com.tw>
-Cc: Pin-yen Lin <treapking@google.com>,
- Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>, Hermes Wu
- <Hermes.Wu@ite.com.tw>, Kenneth Hung <Kenneth.Hung@ite.com.tw>,
- Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>,
- Pin-yen Lin <treapking@chromium.org>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <narmstrong@baylibre.com>,
- Robert Foss <robert.foss@linaro.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20220623093154.52701-1-allen.chen@ite.com.tw>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220623093154.52701-1-allen.chen@ite.com.tw>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220627044331.2180641-1-xji@analogixsemi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_055538_197298_C85C1D54 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20220627_061959_757747_F72ED5FE 
+X-CRM114-Status: GOOD (  19.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,93 +83,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/06/22 11:31, allen ha scritto:
-> From: allen chen <allen.chen@ite.com.tw>
+On Mon, Jun 27, 2022 at 12:43:29PM +0800, Xin Ji wrote:
+> USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+> and a port controller (TCPC) - may require that the driver for the PD
+> controller accesses directly also the on-chip port controller in some cases.
 > 
-> add read max-lane and max-pixel-clock from dt property
+> Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
 > 
-> Signed-off-by: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+> Signed-off-by: Xin Ji <xji@analogixsemi.com>
 
-Hello Allen,
+This one looks good to me.
 
-as Sam also pointed out, please fix your S-o-b email: it has to match with the
-author one.
-
-Anyway, you're adding devicetree properties, so this implies that you should
-also change the dt-bindings documentation for this driver... and also, I have
-some more comments, check below:
+Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
 > ---
->   drivers/gpu/drm/bridge/ite-it6505.c | 35 ++++++++++++++++++++++++++---
->   1 file changed, 32 insertions(+), 3 deletions(-)
+> V9 -> V10: Rebase on the latest code
+> V8 -> V9 : Add more commit message
+> V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+> ---
+>  drivers/usb/typec/tcpm/tcpci.c                        | 3 +--
+>  drivers/usb/typec/tcpm/tcpci_maxim.c                  | 3 +--
+>  drivers/usb/typec/tcpm/tcpci_mt6360.c                 | 3 +--
+>  drivers/usb/typec/tcpm/tcpci_rt1711h.c                | 2 +-
+>  {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h | 1 +
+>  5 files changed, 5 insertions(+), 7 deletions(-)
+>  rename {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h (99%)
 > 
-> diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-> index 4b673c4792d77..c9121d4635a52 100644
-> --- a/drivers/gpu/drm/bridge/ite-it6505.c
-> +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-> @@ -436,6 +436,8 @@ struct it6505 {
->   	bool powered;
->   	bool hpd_state;
->   	u32 afe_setting;
-> +	u32 max_dpi_pixel_clock;
-> +	u32 max_lane_count;
->   	enum hdcp_state hdcp_status;
->   	struct delayed_work hdcp_work;
->   	struct work_struct hdcp_wait_ksv_list;
-> @@ -1466,7 +1468,8 @@ static void it6505_parse_link_capabilities(struct it6505 *it6505)
->   	it6505->lane_count = link->num_lanes;
->   	DRM_DEV_DEBUG_DRIVER(dev, "Sink support %d lanes training",
->   			     it6505->lane_count);
-> -	it6505->lane_count = min_t(int, it6505->lane_count, MAX_LANE_COUNT);
-> +	it6505->lane_count = min_t(int, it6505->lane_count,
-> +				   it6505->max_lane_count);
->   
->   	it6505->branch_device = drm_dp_is_branch(it6505->dpcd);
->   	DRM_DEV_DEBUG_DRIVER(dev, "Sink %sbranch device",
-> @@ -2895,7 +2898,7 @@ it6505_bridge_mode_valid(struct drm_bridge *bridge,
->   	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
->   		return MODE_NO_INTERLACE;
->   
-> -	if (mode->clock > DPI_PIXEL_CLK_MAX)
-> +	if (mode->clock > it6505->max_dpi_pixel_clock)
->   		return MODE_CLOCK_HIGH;
->   
->   	it6505->video_info.clock = mode->clock;
-> @@ -3057,6 +3060,8 @@ static void it6505_parse_dt(struct it6505 *it6505)
->   {
->   	struct device *dev = &it6505->client->dev;
->   	u32 *afe_setting = &it6505->afe_setting;
-> +	u32 *max_lane_count = &it6505->max_lane_count;
-> +	u32 *max_dpi_pixel_clock = &it6505->max_dpi_pixel_clock;
->   
->   	it6505->lane_swap_disabled =
->   		device_property_read_bool(dev, "no-laneswap");
-> @@ -3072,7 +3077,31 @@ static void it6505_parse_dt(struct it6505 *it6505)
->   	} else {
->   		*afe_setting = 0;
->   	}
-> -	DRM_DEV_DEBUG_DRIVER(dev, "using afe_setting: %d", *afe_setting);
-> +
-> +	if (device_property_read_u32(dev, "max-lane-count",
+> diff --git a/drivers/usb/typec/tcpm/tcpci.c b/drivers/usb/typec/tcpm/tcpci.c
+> index f33e08eb7670..812784702d53 100644
+> --- a/drivers/usb/typec/tcpm/tcpci.c
+> +++ b/drivers/usb/typec/tcpm/tcpci.c
+> @@ -13,11 +13,10 @@
+>  #include <linux/property.h>
+>  #include <linux/regmap.h>
+>  #include <linux/usb/pd.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  #include <linux/usb/typec.h>
+>  
+> -#include "tcpci.h"
+> -
+>  #define	PD_RETRY_COUNT_DEFAULT			3
+>  #define	PD_RETRY_COUNT_3_0_OR_HIGHER		2
+>  #define	AUTO_DISCHARGE_DEFAULT_THRESHOLD_MV	3500
+> diff --git a/drivers/usb/typec/tcpm/tcpci_maxim.c b/drivers/usb/typec/tcpm/tcpci_maxim.c
+> index df2505570f07..4b6705f3d7b7 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_maxim.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_maxim.c
+> @@ -11,11 +11,10 @@
+>  #include <linux/module.h>
+>  #include <linux/regmap.h>
+>  #include <linux/usb/pd.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  #include <linux/usb/typec.h>
+>  
+> -#include "tcpci.h"
+> -
+>  #define PD_ACTIVITY_TIMEOUT_MS				10000
+>  
+>  #define TCPC_VENDOR_ALERT				0x80
+> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> index 8a952eaf9016..1b7c31278ebb 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> @@ -11,10 +11,9 @@
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  
+> -#include "tcpci.h"
+> -
+>  #define MT6360_REG_PHYCTRL1	0x80
+>  #define MT6360_REG_PHYCTRL3	0x82
+>  #define MT6360_REG_PHYCTRL7	0x86
+> diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> index b56a0880a044..3291ca4948da 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> @@ -10,9 +10,9 @@
+>  #include <linux/i2c.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/gpio/consumer.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  #include <linux/regmap.h>
+> -#include "tcpci.h"
+>  
+>  #define RT1711H_VID		0x29CF
+>  #define RT1711H_PID		0x1711
+> diff --git a/drivers/usb/typec/tcpm/tcpci.h b/include/linux/usb/tcpci.h
+> similarity index 99%
+> rename from drivers/usb/typec/tcpm/tcpci.h
+> rename to include/linux/usb/tcpci.h
+> index b2edd45f13c6..20c0bedb8ec8 100644
+> --- a/drivers/usb/typec/tcpm/tcpci.h
+> +++ b/include/linux/usb/tcpci.h
+> @@ -9,6 +9,7 @@
+>  #define __LINUX_USB_TCPCI_H
+>  
+>  #include <linux/usb/typec.h>
+> +#include <linux/usb/tcpm.h>
+>  
+>  #define TCPC_VENDOR_ID			0x0
+>  #define TCPC_PRODUCT_ID			0x2
+> -- 
+> 2.25.1
 
-Please use the standard property "data-lanes" from video-interfaces.yaml.
-
-> +				     max_lane_count) == 0) {
-> +		if (*max_lane_count > 4 || *max_lane_count == 3) {
-> +			dev_err(dev, "max lane count error, use default");
-> +			*max_lane_count = MAX_LANE_COUNT;
-> +		}
-> +	} else {
-> +		*max_lane_count = MAX_LANE_COUNT;
-> +	}
-> +
-> +	if (device_property_read_u32(dev, "max-dpi-pixel-clock",
-> +				     max_dpi_pixel_clock) == 0) {
-
-What about "max-pixel-clock-khz" or "max-pixel-clock-hz"?
-
-
-Regards,
-Angelo
+-- 
+heikki
 
