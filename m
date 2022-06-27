@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBE89C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 19:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF1E8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 19:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rBNw7xXQioxzgqOQKpFDuGhIR7glkYA10EWg8sjqgd4=; b=tSpbgp2gQysEUD+s6UEbtNA3oX
-	RbBNnvDb4DfyKCu8Wfb5HuAc2MfcpxRKYEueYiqAdaFMefTjzSipl+4LrJvV9Is5cWVW8XTDhMJu4
-	SUTKlrrrX1+Zb8+cQA74WTiGiMBLealWZ/lQalOGm0bas6El16YLnRMCu/Sl3vGHQe5aFY/spmYk/
-	mVu6twql+47fb8s8YP+4iUe7znhp7YYnffwh9xlqYlKZyp6z3yFg+ZXqTfzlMaPmMtWdNEFvXpZwB
-	8i3nCM0huXM1+pd3GczzgFtY4xPn1dBMC019eyUGoe6DyvsI7T7+4vpVZBOfI/eWW/iQq8RPY2SsG
-	YNE4014Q==;
+	bh=00sk1nkqFTzRRBvGDEbf19owLEwm7v5mN2NfaZqIsZo=; b=ZWiZQpbciFQM7vmKkxaNKSceHB
+	hZNQ/Dolya+H2Ii6LS8Da3QD/6MBIlIOtKA+nMqmzDEoqUw8sO0HdvehV2UWGku4npUhv/OydnIm6
+	SJDVt+W5254eEbIP4mNK7uTVwhH+rnwbyMPG5J4HR3Nk+4WXdzI6HW31ADQeTtrMjuTT/SYxB4kEG
+	IXKh1NGrPzP3uwjLrhjzE61BeJ5ZezZl3AA4n0TjqjKF7AAa/kFx70eGaoUlfXYB5CEaSvS+ACRUb
+	qMI7SHYXTbCgxJPm+8HdmEOCluZYOt2wLKoZrsCfR2QODJkJxJtgMa2ofZIIbuiaKtUIZhMswW+E1
+	vtGpomlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5uAC-002VEH-JD; Mon, 27 Jun 2022 19:12:48 +0000
-Received: from mail-io1-f53.google.com ([209.85.166.53])
+	id 1o5uPs-002Y2A-NN; Mon, 27 Jun 2022 19:29:00 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5uA9-002VCJ-RP; Mon, 27 Jun 2022 19:12:47 +0000
-Received: by mail-io1-f53.google.com with SMTP id y18so10583770iof.2;
-        Mon, 27 Jun 2022 12:12:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
-         :message-id;
-        bh=rBNw7xXQioxzgqOQKpFDuGhIR7glkYA10EWg8sjqgd4=;
-        b=osONvEM3/lGv5zkPAyHiNLQzsfDo5ftCkvGH75F9zAuQWKc32hsv4+i/UOe1/KfBVh
-         j2XxKU5Cxlq5T1wjEe8G5YHteKtpd9wmT/7wp8yBJNo7QOs/4CGqN0a56ac7Wqnrkiuk
-         nrjxgiQGMHPEBasW5VpfzmQzT57k4bi7meWaH0HLVHumwdRQ/2fdoJgnhtzGsIDIW2Zi
-         uktcZlOyyaWJ37OY3NbU0gQI0fltdYzsayp1R2ci8XZLdNvKqFzx4sm9XRYl39yrEGAX
-         OPlOJmNmV6GVsDC661PgA8yABHtFOQS6EIaFDUNzfX3R9Dy6Qu2zFs4rCWcF8k4bn0UE
-         cApA==
-X-Gm-Message-State: AJIora8GnWtmqd7OcUxQaofiptZRHQyLMctU9gV8qNHG6imQFA3DIdYy
-	QAET13T8JB76Asyiz6oxcA==
-X-Google-Smtp-Source: AGRyM1u2B6Wf8qeEwHG7bcsztdsHikAwGp9sb2uWhc4F9Mv0d1Tnjqyg8TLRYOrF2g2p1n5I0n92IA==
-X-Received: by 2002:a05:6638:1686:b0:331:c1ed:9f55 with SMTP id f6-20020a056638168600b00331c1ed9f55mr9142195jat.201.1656357157501;
-        Mon, 27 Jun 2022 12:12:37 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.253])
-        by smtp.gmail.com with ESMTPSA id i6-20020a056e020d8600b002d90ac862b6sm4876207ilj.55.2022.06.27.12.12.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jun 2022 12:12:36 -0700 (PDT)
-Received: (nullmailer pid 2785808 invoked by uid 1000);
-	Mon, 27 Jun 2022 19:12:35 -0000
-From: Rob Herring <robh@kernel.org>
-To: =?utf-8?b?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, kernel@collabora.com, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220623193702.817996-3-nfraprado@collabora.com>
-References: <20220623193702.817996-1-nfraprado@collabora.com> <20220623193702.817996-3-nfraprado@collabora.com>
-Subject: Re: [PATCH v2 2/4] dt-bindings: usb: mtk-xhci: Make all clocks required
-Date: Mon, 27 Jun 2022 13:12:35 -0600
-Message-Id: <1656357155.295131.2785807.nullmailer@robh.at.kernel.org>
+	id 1o5uPq-002Xzx-48
+	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 19:29:00 +0000
+Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3A3726601667;
+	Mon, 27 Jun 2022 20:28:52 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656358133;
+	bh=JZYd0oVkoFsjInwx5U+1zSTfshvu3TjOpPrckSxmunY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=KPL/iEY8nrk6fxhY0AV6HQHyyclAKSz9FgBDVYmg2cHkOANS8ggYrC8ykwlknpC9R
+	 /EZzxnPh/RcveQnL9H3XiHDBUtYF+pZe+zul8tJ3+CoHt5hDpPhpQ8hNjD9D0SlluM
+	 xHaTDmuShtIX+ZRnRzwUGv+OIUfXoJPGER0ymYd4uM/Ih0dNyIZRYq4/UU+/bAaqFd
+	 T59Od+iA1h9FJuf7UQurtcXGNBNKjU6e2SshvTkCthlh6+W9tYvIkX3viv78U3Rl9g
+	 0NYHMHGS+Jsx/3ZC/2MTWCfpUl0ED4Y90qNyoKpYT69UTR6gphElinlVPKDJ4vUeTm
+	 6jmGVIL68RPgw==
+Message-ID: <f05953a93fb8f250f4da7c3384b6e1c43c7b1605.camel@collabora.com>
+Subject: Re: [PATCH 1/4] media: mediatek: vcodec: dec: Fix 4K frame size
+ enumeration
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,  linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>
+Date: Mon, 27 Jun 2022 15:28:42 -0400
+In-Reply-To: <CAGXv+5GA04LBN0bnLDdL8g_+_8HXpc-KwtPxpXyXi_WgUOPrtQ@mail.gmail.com>
+References: <20220627112402.2332046-1-wenst@chromium.org>
+	 <20220627112402.2332046-2-wenst@chromium.org>
+	 <f5e68826df868ae5a3cd5737fd9d7f7683bbad73.camel@collabora.com>
+	 <CAGXv+5GA04LBN0bnLDdL8g_+_8HXpc-KwtPxpXyXi_WgUOPrtQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.2 (3.44.2-1.fc36) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_121245_930589_72FF7916 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20220627_122858_474738_F6FAAC94 
+X-CRM114-Status: GOOD (  41.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,78 +80,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 23 Jun 2022 15:37:00 -0400, Nícolas F. R. A. Prado wrote:
-> All of the clocks listed in the binding are always wired to the XHCI
-> controller hardware blocks on all SoCs. The reason some clocks were made
-> optional in the binding was to account for the fact that depending on
-> the SoC, some of the clocks might be fixed (ie not controlled by
-> software).
-> 
-> Given that the devicetree should represent the hardware, make all clocks
-> required in the binding. Subsequent patches will make the DTS changes to
-> specify fixed-clocks for the clocks that aren't controllable.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
-> ---
-> 
-> Changes in v2:
-> - Undid clock list changes that allowed middle clocks to be missing from
->   v1 and made all clocks required instead
-> - Rewrote commit message and title
-> 
->  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
+Le mardi 28 juin 2022 =C3=A0 00:08 +0800, Chen-Yu Tsai a =C3=A9crit=C2=A0:
+> On Mon, Jun 27, 2022 at 11:32 PM Nicolas Dufresne
+> <nicolas.dufresne@collabora.com> wrote:
+> >=20
+> > Hi Chen-Yu,
+> >=20
+> > Le lundi 27 juin 2022 =C3=A0 19:23 +0800, Chen-Yu Tsai a =C3=A9crit :
+> > > This partially reverts commit b018be06f3c7 ("media: mediatek: vcodec:
+> > > Read max resolution from dec_capability"). In this commit, the maximu=
+m
+> > > resolution ended up being a function of both the firmware capability =
+and
+> > > the current set format.
+> > >=20
+> > > However, frame size enumeration for output (coded) formats should not
+> > > depend on the format set, but should return supported resolutions for
+> > > the format requested by userspace.
+> >=20
+> > Good point. Though, I don't see any special casing for the CAPTURE case=
+. As this
+> > HW does not include a scaler, it must only return 1 resolution when bei=
+ng
+> > enumerated for CAPTURE side (or not implement that enumeration, but its
+> > complicated to half implement something in m2m). The return unique size=
+ should
+> > match what G_FMT(CAPTURE) would return.
+>=20
+> There are no frame sizes added for the capture formats, so this function
+> effectively returns -EINVAL for any of them. This is also what rkvdec
+> does: it only looks through the list of coded formats.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+This is effectively against the spec, ENOTTY would be the only alternative =
+to
+not implementing both sides. Though, I'll agree with you, this bugs predate=
+s
+anything here. Perhaps you could at add MM21 to the switch and returns ENOT=
+TY
+there ?
 
-yamllint warnings/errors:
+>=20
+> Also, struct v4l2_frmsizeenum does not have a field saying whether it's
+> capture or output side; it simply specifies a pixel format.
 
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11271000: usb@11270000:clocks: [[4294967295, 94], [4294967295]] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11271000: usb@11270000:clock-names: ['sys_ck', 'ref_ck'] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11270000: clocks: [[4294967295, 94], [4294967295]] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11270000: clock-names: ['sys_ck', 'ref_ck'] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@112c1000: usb@11270000:clocks: [[4294967295, 94], [4294967295]] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@112c1000: usb@11270000:clock-names: ['sys_ck', 'ref_ck'] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11270000: clocks: [[4294967295, 94], [4294967295]] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11270000: clock-names: ['sys_ck', 'ref_ck'] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11201000: usb@11200000:clocks: [[4294967295]] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11201000: usb@11200000:clock-names: ['sys_ck'] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11200000: clocks: [[4294967295]] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtu3.example.dtb: usb@11200000: clock-names: ['sys_ck'] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.example.dtb: usb@11270000: clocks: [[4294967295, 94], [4294967295]] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.example.dtb: usb@11270000: clock-names: ['sys_ck', 'ref_ck'] is too short
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+Acked.
 
-doc reference errors (make refcheckdocs):
+>=20
+> >=20
+> > >=20
+> > > Fix this so that the driver returns the supported resolutions correct=
+ly,
+> > > even if the instance only has default settings, or if the output form=
+at
+> > > is currently set to VP8F, which does not support 4K.
+> > >=20
+> > > Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution fr=
+om dec_capability")
+> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > > ---
+> > >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c    | 2 --
+> > >  .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c    | 7 +++++=
+++
+> > >  2 files changed, 7 insertions(+), 2 deletions(-)
+> > >=20
+> > > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c =
+b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> > > index 5d6fdf18c3a6..fcb4b8131c49 100644
+> > > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> > > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> > > @@ -595,8 +595,6 @@ static int vidioc_enum_framesizes(struct file *fi=
+le, void *priv,
+> > >               fsize->type =3D V4L2_FRMSIZE_TYPE_STEPWISE;
+> > >               fsize->stepwise =3D dec_pdata->vdec_framesizes[i].stepw=
+ise;
+> > >=20
+> > > -             fsize->stepwise.max_width =3D ctx->max_width;
+> > > -             fsize->stepwise.max_height =3D ctx->max_height;
+> > >               mtk_v4l2_debug(1, "%x, %d %d %d %d %d %d",
+> > >                               ctx->dev->dec_capability,
+> > >                               fsize->stepwise.min_width,
+> > > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_st=
+ateless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless=
+.c
+> > > index 16d55785d84b..9a4d3e3658aa 100644
+> > > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless=
+.c
+> > > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless=
+.c
+> > > @@ -360,6 +360,13 @@ static void mtk_vcodec_add_formats(unsigned int =
+fourcc,
+> > >=20
+> > >               mtk_vdec_framesizes[count_framesizes].fourcc =3D fourcc=
+;
+> > >               mtk_vdec_framesizes[count_framesizes].stepwise =3D step=
+wise_fhd;
+> > > +             if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_D=
+ISABLED) &&
+> > > +                 fourcc !=3D V4L2_PIX_FMT_VP8_FRAME) {
+> > > +                     mtk_vdec_framesizes[count_framesizes].stepwise.=
+max_width =3D
+> > > +                             VCODEC_DEC_4K_CODED_WIDTH;
+> > > +                     mtk_vdec_framesizes[count_framesizes].stepwise.=
+max_height =3D
+> > > +                             VCODEC_DEC_4K_CODED_HEIGHT;
+> > > +             }
+> >=20
+> > I don't particularly like to see this special cased check being added i=
+nto
+> > multiple places. Its also in your patch 2, and I think it exist in a th=
+ird
+> > place. Could it be possible to have an internal helper to ensure we don=
+'t
+>=20
+> It's also in s_fmt(), so touched on in patch 4. I could also rewrite it s=
+o
+> only this spot has the special case, and all the other places look though
+> mtk_vdec_framesizes to get the maximum, like what I did for try_fmt in
+> patch 3. What do you think?
 
-See https://patchwork.ozlabs.org/patch/
+I don't have a strong opinion, could be a totally internal (and unrelated t=
+o any
+ioctl naming) helper that does the right thing.
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+>=20
+> Ultimately I think it would be better to move framesizes into the
+> (driver-specific) pixel format data structure. That is a bigger refactori=
+ng
+> than a simple fix though.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Agreed.
 
-pip3 install dtschema --upgrade
+>=20
+> > duplicate this logic ? Somehow, it seems there is something in common b=
+etween
+> > set_default, try_fmt and this code.
+>=20
+> Yes. That is what I mentioned in chat about refactoring the ioctls and fo=
+rmat
+> handling code. set_default should really not set anything format specific=
+,
+> but instead call set_fmt with a default format.
 
-Please check and re-submit.
+So if this could have a simple helper that returns the max width/height for=
+ the
+specified format and HW capability, I'm then fine with the series. If you c=
+an
+change the EINVAL (which means nothing is supported) into ENOTTY for the MM=
+21
+case, I'd also be more confortable (even though still a bit odd, but no lon=
+ger a
+lie).
+
+regards,
+Nicolas
+
+>=20
+>=20
+> Regards
+> ChenYu
+>=20
+> >=20
+> > >               num_framesizes++;
+> > >               break;
+> > >       case V4L2_PIX_FMT_MM21:
+> >=20
 
 
