@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1E6C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 16:13:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D34C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 16:26:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YSimcfIaUu8P8Zd0kHKcHjUirkPTuMp+KjnpxJVA5io=; b=Xu9JcSw1kf5htQ4j9edC/jpDn4
-	+Bac/Kf1Kyyb+qVX3yEwMfcU8mnxwriH5+OIPNEg4l5fdcbmVu6XCabVLdDLLV2tvE584UMKV1xkc
-	M+cNkluzuAJ2qZD04L0JSmSVYGreMgrR0XX5QrGsAxW3tI4grDwfJnOLd42qfBe5ybZHcr6jMLrmg
-	YJfoSO2OVeUtQJ1e0ApnsLIkgChIORSdI/v6MDPQuOjiK+iiZYIfBHM20DLhvprUvYCRjcXCueTeL
-	jDGjB0Cuz9asSuOQ6a41V9M1pSwK6HjmnXIVY9isrB6P4WxNgKJ9uzXDxcmnRX2Om00O3ly+KydOb
-	IOazmZ5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EuuLB19nPdoRWR6VTPDRWm0q3TcaRzfzIWmlZYHlX+I=; b=N7tpebotI8m/TvMhDkx1xWFUVg
+	cciWgB0Ndpk1vSJWqA5PkU80MnSOcizPwaZ+geBmECgUTi6awO15El93Q0XbWJIbXEet7CEAsaqXB
+	D+kQ3ncbiC8A22p/q05CAjyXR+TE4CRjdkjwY0gHzUsyFMZMGBSt3zcY55K/d70j4on2V3EV8eSVj
+	8K9wYy9ARjTZZ6gVxJG6ZHYnwucQrqclB1STDrrVP6P2nmOP2EIj3OiTnv5wCr+PoP/O+Uy+F/syl
+	pDCVMDXe/BD+DoLSylXogSTE1F19rXRp00Nz72ZcsgR5ybTLvpQ4orW3p+216NJpDMgiY5rrBs+r+
+	h5rVPhDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5rMs-001lyg-Nt; Mon, 27 Jun 2022 16:13:42 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1o5rYr-001oRd-DV; Mon, 27 Jun 2022 16:26:05 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5rMq-001lxA-9c
-	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 16:13:41 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id cw10so20244651ejb.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jun 2022 09:13:37 -0700 (PDT)
+	id 1o5rYL-001oCn-42
+	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 16:25:36 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id n1so13791399wrg.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jun 2022 09:25:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=YSimcfIaUu8P8Zd0kHKcHjUirkPTuMp+KjnpxJVA5io=;
-        b=NOr80kINOxbn9hWrJtWZUy0A7Z5bnVxhfzNk7yGXC9cX2y5Is9kq5gu7JXvFN2fKFO
-         Wkyx/XoC6NxV63yEjFUm+CKEDH8bzoDu0gT9Dha0paYgM87Rncz+9YnPlG/fcD+ak9Db
-         R7vWps1VSNAgUGBxVJVHDYadM4SEd0ThYN40Q=
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=EuuLB19nPdoRWR6VTPDRWm0q3TcaRzfzIWmlZYHlX+I=;
+        b=iDIMSiufHbi+xgIRT5AbjsSLnfhOEsXV3kFd+8fH/quYNvQG7dlgBWGu1U0sm3BEnm
+         RQJBcG7+v1RnRsxWwkMFS2H88CYK9VvDTwSfkRYvLi5+fywj/cH+XElUIc8x+ht4bLRf
+         YMpg06mOK0hQnotBtt4KM3AB6QXpJxRuAtqXXuDhgZzLZnSdWDs1EY0tLS4to3F4YFAi
+         UZwkYY/6X9658a5LeUujrjwO0y3HXNgnckW96rXLhFLCsOMx4iSjssdfTxDix+DcvnaV
+         943KksdUMGA0W2A2iN8uxHIcK/25Gb1E2Q/P0McW3GlWkXf7WZBlBSHrA/cODWUG3swK
+         moIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=YSimcfIaUu8P8Zd0kHKcHjUirkPTuMp+KjnpxJVA5io=;
-        b=ZufGzBB7AJwumQrxyHSHoe0I9TyomezyE/BpQnk443AMTfBmPEDFdsjlgkqxJtBtGP
-         Img0U1rB7UGkRyk/ti5ZBxCskWBdqRSZh5bq+LCkLk6yQaAY66oBYnAa4a1NaGJGLXHU
-         Nsr6+LhF5Gj/r7Ap/iACpsJqok79RfsOzoI0UmaAoJgiQfD7EOuadaDtaYzh3NfHW13q
-         cfwoHmxPQ8nQ6PEHj8/EZB0vcmhDDCS/0jSSFz9jrjbnRjrkX/CeQJHMs3NabHphYTwP
-         FCReiFeF+E9Tw4E9Gn/Ni3ynd8W6Mo+v6iL03YkZbPcuNIo1dQXTj19XAxXd1wDy38vX
-         HFQw==
-X-Gm-Message-State: AJIora/bVQFORYamcLJKJOOanVb2MYjtlz3PVLjL0LvtjOfJOQwigVNB
-	h9DWX7mx0rvfzFcpWS+ThG7Bj6DtTxZUjk6gdEbVIQ==
-X-Google-Smtp-Source: AGRyM1t4SKs8xAPTAkOLharE1S0BnU6t82l9azV9EQCQJnwi3GPWnDhaPL0W18baR+3XPfgOOSa38vx0CCtKssnCvvQ=
-X-Received: by 2002:a17:906:f84:b0:711:eda5:db31 with SMTP id
- q4-20020a1709060f8400b00711eda5db31mr13441225ejj.397.1656346416538; Mon, 27
- Jun 2022 09:13:36 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=EuuLB19nPdoRWR6VTPDRWm0q3TcaRzfzIWmlZYHlX+I=;
+        b=kWQowmYtabNPcZSZILLqEsa4Y+s3W41HjNRm4LWoxI5mr4Sf2Iq9aMs2Yvwvj9GkpT
+         i7aSkzQvXdYOWMg7ZGs2BvU5Tt5dcu2TfuOAVnrRMDwumgfUKRdtNASZ6FhVmxYV3wOb
+         o3p7uxEN6d7wFeLYnKNgmfWrQkUI5kPgMQIBBPHvl9PTaHykI248O69Oz0gGdYVBWE7L
+         5Dw98OVJawbXEZ2lQTgZK4OmG4GO9IEFSswGm1RJUYVMPkHeK2hunThRT9nIrRMFDucc
+         hpgGUjoUFakM82oVhMzjER6wKdIGwUxZ3qEXKQOqXwYLedhwvx8SV4o2XE3n3d4g6ti/
+         5bOQ==
+X-Gm-Message-State: AJIora9dxCF831iTzSrlNIqJt2QThCaMy7KUcsOY4J+8RI8d0ACrC32i
+	cDeRCnZHyeDdMuvekR5YuylSZg==
+X-Google-Smtp-Source: AGRyM1u5yKiCGRmmUpnMuvGGKabEaEMzTgNLY5p7btvY9mfVytbr0ZajDdU6octtLhEhes4aRkFqIA==
+X-Received: by 2002:a05:6000:1705:b0:21b:bcff:39d3 with SMTP id n5-20020a056000170500b0021bbcff39d3mr12311802wrc.502.1656347130862;
+        Mon, 27 Jun 2022 09:25:30 -0700 (PDT)
+Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net. [86.27.177.88])
+        by smtp.gmail.com with ESMTPSA id o14-20020a05600c4fce00b00397122e63b6sm14044617wmq.29.2022.06.27.09.25.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Jun 2022 09:25:30 -0700 (PDT)
+Date: Mon, 27 Jun 2022 17:25:28 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, johnson.wang@mediatek.com,
+	hsin-hsiung.wang@mediatek.com, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4] mfd: mt6397: Add basic support for MT6331+MT6332 PMIC
+Message-ID: <YrnZ+AUcYygsrQ02@google.com>
+References: <20220627123954.64299-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-References: <20220627112402.2332046-1-wenst@chromium.org> <20220627112402.2332046-2-wenst@chromium.org>
- <43f393d2dcdd0bfac66bfc420e9261d31b3ceedc.camel@collabora.com>
-In-Reply-To: <43f393d2dcdd0bfac66bfc420e9261d31b3ceedc.camel@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 28 Jun 2022 00:13:25 +0800
-Message-ID: <CAGXv+5GweDwKPczT3GTYeiRCuaHNzV7+q4xfC_pgvo4GFDPOUg@mail.gmail.com>
-Subject: Re: [PATCH 1/4] media: mediatek: vcodec: dec: Fix 4K frame size enumeration
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Yunfei Dong <yunfei.dong@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220627123954.64299-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_091340_363727_4F89566D 
-X-CRM114-Status: GOOD (  25.36  )
+X-CRM114-CacheID: sfid-20220627_092533_216128_167701C0 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,86 +92,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 27, 2022 at 11:33 PM Nicolas Dufresne
-<nicolas.dufresne@collabora.com> wrote:
->
-> Le lundi 27 juin 2022 =C3=A0 19:23 +0800, Chen-Yu Tsai a =C3=A9crit :
-> > This partially reverts commit b018be06f3c7 ("media: mediatek: vcodec:
-> > Read max resolution from dec_capability"). In this commit, the maximum
-> > resolution ended up being a function of both the firmware capability an=
-d
-> > the current set format.
-> >
-> > However, frame size enumeration for output (coded) formats should not
-> > depend on the format set, but should return supported resolutions for
-> > the format requested by userspace.
-> >
-> > Fix this so that the driver returns the supported resolutions correctly=
-,
-> > even if the instance only has default settings, or if the output format
-> > is currently set to VP8F, which does not support 4K.
-> >
-> > Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution from=
- dec_capability")
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c    | 2 --
-> >  .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c    | 7 +++++++
-> >  2 files changed, 7 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/=
-drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > index 5d6fdf18c3a6..fcb4b8131c49 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
-> > @@ -595,8 +595,6 @@ static int vidioc_enum_framesizes(struct file *file=
-, void *priv,
-> >               fsize->type =3D V4L2_FRMSIZE_TYPE_STEPWISE;
-> >               fsize->stepwise =3D dec_pdata->vdec_framesizes[i].stepwis=
-e;
-> >
-> > -             fsize->stepwise.max_width =3D ctx->max_width;
-> > -             fsize->stepwise.max_height =3D ctx->max_height;
-> >               mtk_v4l2_debug(1, "%x, %d %d %d %d %d %d",
-> >                               ctx->dev->dec_capability,
-> >                               fsize->stepwise.min_width,
-> > diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stat=
-eless.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-> > index 16d55785d84b..9a4d3e3658aa 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-> > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
-> > @@ -360,6 +360,13 @@ static void mtk_vcodec_add_formats(unsigned int fo=
-urcc,
-> >
-> >               mtk_vdec_framesizes[count_framesizes].fourcc =3D fourcc;
-> >               mtk_vdec_framesizes[count_framesizes].stepwise =3D stepwi=
-se_fhd;
->
-> While at it, can you constify stepwise_fhd, it is scary to think that som=
-eone
-> could modify it and cause big headache.
+On Mon, 27 Jun 2022, AngeloGioacchino Del Regno wrote:
 
-I noticed that as well, but since a planned refactoring would get rid of it=
-,
-I didn't fix it in this series.
+> Add support for the MT6331 PMIC with MT6332 Companion PMIC, found
+> in MT6795 Helio X10 smartphone platforms.
+> 
+> This combo has support for multiple devices but, for a start,
+> only the following have been implemented:
+> - Regulators (two instances, one in MT6331, one in MT6332)
+> - RTC (MT6331)
+> - Keys (MT6331)
+> - Interrupts (MT6331 also dispatches MT6332's interrupts)
+> 
+> There's more to be implemented, especially for MT6332, which
+> will come at a later stage.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+> ---
+> 
+> Changes in v4:
+>  - Rebased on next-20220627
+> 
+>  drivers/mfd/mt6397-core.c            |  47 ++
+>  drivers/mfd/mt6397-irq.c             |   9 +-
+>  include/linux/mfd/mt6331/core.h      |  40 ++
+>  include/linux/mfd/mt6331/registers.h | 584 ++++++++++++++++++++++++
+>  include/linux/mfd/mt6332/core.h      |  65 +++
+>  include/linux/mfd/mt6332/registers.h | 642 +++++++++++++++++++++++++++
+>  include/linux/mfd/mt6397/core.h      |   2 +
+>  7 files changed, 1388 insertions(+), 1 deletion(-)
+>  create mode 100644 include/linux/mfd/mt6331/core.h
+>  create mode 100644 include/linux/mfd/mt6331/registers.h
+>  create mode 100644 include/linux/mfd/mt6332/core.h
+>  create mode 100644 include/linux/mfd/mt6332/registers.h
 
-I can add a patch for that.
+Applied, thanks.
 
-
-ChenYu
-
-> > +             if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DIS=
-ABLED) &&
-> > +                 fourcc !=3D V4L2_PIX_FMT_VP8_FRAME) {
-> > +                     mtk_vdec_framesizes[count_framesizes].stepwise.ma=
-x_width =3D
-> > +                             VCODEC_DEC_4K_CODED_WIDTH;
-> > +                     mtk_vdec_framesizes[count_framesizes].stepwise.ma=
-x_height =3D
-> > +                             VCODEC_DEC_4K_CODED_HEIGHT;
-> > +             }
-> >               num_framesizes++;
-> >               break;
-> >       case V4L2_PIX_FMT_MM21:
->
+-- 
+Lee Jones [李琼斯]
+Principal Technical Lead - Developer Services
+Linaro.org │ Open source software for Arm SoCs
+Follow Linaro: Facebook | Twitter | Blog
 
