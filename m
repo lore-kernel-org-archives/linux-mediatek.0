@@ -4,46 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4470AC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 08:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86818C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 08:07:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OXnWuopmwdCKH+QWkGaX4t0DyLaZmVt+JYW6/vLmcRI=; b=SzUpSHFdhu4/q5pJB3Wjl6+QA0
-	5h7EvrC1aLk36BuuTsNziX+vNoNnMkaYooDMROYqh1D626z5gEe9WWRDyts8VQG71cIe9F4BYf879
-	fCWFXZ7lNOoiThDXKWcwgbNYT0nmrZ4pUcAAoyLW39dt8CXqjs5d7tVNjFdWSSDXcDVkEXlXPnl9A
-	bPFZGoKO6/UvYQoNgMTdKGamgjUalkMbXYvvzjQACnVtObpySxO+H5s8QcxbrnYSyuI41o2z4x3h2
-	Khs+Wc4TGMk/HIaUksQ7GGInLBGpEpfl/Z/fUrazPqmlZMIIKo/Uly/SMACMm1YN+s9jhBkFhKott
-	iQCZ/Spw==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=F96vzJK+ojLWqVpCJzKDMSpTsQHriDve3aoVWGnCz3c=; b=YKKNrIoL0WTWQimljHd2YGXB6a
+	CkGkEdRzkQqSHsKnj6H8NblxkzK7mkB0SZXBOt9rvVJxzMl1czApbIrT1o1ZOujJVBAfDQdNAdPHc
+	IN+bxAPt8vJPArOFPUsbyZOzxOWdAy/qLO6GRzcbeB1/ct2V6p/wIQGal4J90jWQzo3h8OjWbs9JE
+	vcm8QdrtqrUl5uKbbo0loYotojSbEDiy1QXKBZlPQaRY6LEiZq5HYKkoiqYyx3XG+bJUNmaLAYTC4
+	t+EOQZa/MHvAEzfXk7uv5/dZKgIYElGvZ5FrPLpYf+AfxX4BBGe8fzVg95f8CxP/lA/eY2yWenYlz
+	NVv2cC2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5jmD-00GeD8-8C; Mon, 27 Jun 2022 08:07:21 +0000
+	id 1o5jmJ-00GeIM-Sl; Mon, 27 Jun 2022 08:07:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5jl0-00GdVh-Tr; Mon, 27 Jun 2022 08:06:09 +0000
-X-UUID: aa567159f1f142b785f0b7545d004eea-20220627
+	id 1o5jl1-00GdWf-VH; Mon, 27 Jun 2022 08:06:11 +0000
+X-UUID: bdd92a4abfb94f81a2b7e6cebb28ac3a-20220627
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:bc6b92c2-e5fb-46f2-978f-e02a56b54634,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:b14ad71,CLOUDID:dc9ca7d8-850a-491d-a127-60d9309b2b3e,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.6,REQID:3e87b902-1d89-4a62-9940-2a8a809ea6a8,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b14ad71,CLOUDID:ce9ca7d8-850a-491d-a127-60d9309b2b3e,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: aa567159f1f142b785f0b7545d004eea-20220627
+X-UUID: bdd92a4abfb94f81a2b7e6cebb28ac3a-20220627
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 431277540; Mon, 27 Jun 2022 01:06:01 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 296084611; Mon, 27 Jun 2022 01:06:01 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Jun 2022 01:03:44 -0700
+ 15.0.1497.2; Mon, 27 Jun 2022 01:03:45 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 27 Jun 2022 16:03:43 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Jun 2022 16:03:43 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.3 via Frontend Transport; Mon, 27 Jun 2022 16:03:43 +0800
@@ -60,16 +59,18 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v12 00/10] drm/mediatek: Add MT8195 DisplayPort driver
-Date: Mon, 27 Jun 2022 16:03:31 +0800
-Message-ID: <20220627080341.5087-1-rex-bc.chen@mediatek.com>
+Subject: [PATCH v12 02/10] drm/edid: Convert cea_sad helper struct to kernelDoc
+Date: Mon, 27 Jun 2022 16:03:33 +0800
+Message-ID: <20220627080341.5087-3-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220627080341.5087-1-rex-bc.chen@mediatek.com>
+References: <20220627080341.5087-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_010607_006955_7E248FBC 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20220627_010608_052041_0FB1337C 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,124 +85,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch is separated from v10 which is including dp driver, phy driver
-and dpintf driver. This series is only contained the DisplayPort driver.
+From: Guillaume Ranquet <granquet@baylibre.com>
 
-This series can be tested using 5.19-rc2 kernel and I test it in MT8195
-Tomato Chromebook. Modetest these modes:
+To illustrate the cea_sad helper struct more clear, we convert the
+driver comments to kernelDoc.
 
-for eDP:
-  #0 2256x1504 60.00 2256 2304 2336 2536 1504 1507 1513 1549 235690 flags: phsync, nvsync; type: preferred, driver
-  #1 2256x1504 48.00 2256 2304 2336 2536 1504 1507 1513 1549 188550 flags: phsync, nvsync; type: driver
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+[Bo-Chen: Add commit message and modify reviewers' comments.]
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ include/drm/drm_edid.h | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-for DP:
-  #0 1920x1080 60.00 1920 2008 2052 2200 1080 1084 1089 1125 148500 flags: phsync, pvsync; type: preferred, driver
-  #1 1920x1080 59.94 1920 2008 2052 2200 1080 1084 1089 1125 148352 flags: phsync, pvsync; type: driver
-  #2 1920x1080 50.00 1920 2448 2492 2640 1080 1084 1089 1125 148500 flags: phsync, pvsync; type: driver
-  #3 1680x1050 59.95 1680 1784 1960 2240 1050 1053 1059 1089 146250 flags: nhsync, pvsync; type: driver
-  #4 1600x900 60.00 1600 1624 1704 1800 900 901 904 1000 108000 flags: phsync, pvsync; type: driver
-  #5 1280x1024 60.02 1280 1328 1440 1688 1024 1025 1028 1066 108000 flags: phsync, pvsync; type: driver
-  #6 1280x800 59.81 1280 1352 1480 1680 800 803 809 831 83500 flags: nhsync, pvsync; type: driver
-  #7 1280x720 60.00 1280 1390 1430 1650 720 725 730 750 74250 flags: phsync, pvsync; type: driver
-  #8 1280x720 59.94 1280 1390 1430 1650 720 725 730 750 74176 flags: phsync, pvsync; type: driver
-  #9 1280x720 50.00 1280 1720 1760 1980 720 725 730 750 74250 flags: phsync, pvsync; type: driver
-  #10 1024x768 60.00 1024 1048 1184 1344 768 771 777 806 65000 flags: nhsync, nvsync; type: driver
-  #11 800x600 60.32 800 840 968 1056 600 601 605 628 40000 flags: phsync, pvsync; type: driver
-  #12 720x576 50.00 720 732 796 864 576 581 586 625 27000 flags: nhsync, nvsync; type: driver
-  #13 720x480 60.00 720 736 798 858 480 489 495 525 27027 flags: nhsync, nvsync; type: driver
-  #14 720x480 59.94 720 736 798 858 480 489 495 525 27000 flags: nhsync, nvsync; type: driver
-  #15 640x480 60.00 640 656 752 800 480 490 492 525 25200 flags: nhsync, nvsync; type: driver
-  #16 640x480 59.94 640 656 752 800 480 490 492 525 25175 flags: nhsync, nvsync; type: driver
-
-Changes from v11 for dp driver:
-dt-binding:
-  - Use data-lanes to determine the max supported lane numbers.
-  - Add mhz to max-linkrate to show the units.
-embedded dp drivers:
-  - Modify Makefile.
-  - Drop some unused/redundant drivers.
-  - Move some features to patches of external dp and audio.
-  - Modify break condition of training loop to control cr/eq fail.
-  - Replace some function/definition with ones of common drm drivers.
-  - Remove dp_lock mutex because it's only locked in power_on/off.
-  - Add drm_dp_aux_(un)register in mtk_dp_bridge_(de)attach.
-
-Changes from v10 for dp driver:
-- Drop return value for write registers to make code more clear.
-- Refine training state.
-- Add property for dt-binding.
-- Add new bug fix patches for audio and suspend.
-- Rebase to v5.19-rc1.
-
-Changes from v9:
-- The DP-Phy is back to being a child device of the DP driver (as in v8)
-- hot plug detection has been added back to Embedded Display Port... as
-  after discussing with mediatek experts, this is needed eventhough the
-  Embedded Display port is not un-pluggable
-- rebased on linux-next
-- simplified/split train_handler function, as suggested by Rex
-- added comments on the sleep/delays present in the code
-- removed previous patch introducing retries when receiving AUX_DEFER as
-  this is already handled in the dp_aux framework
-- added max-lane and max-linkrate device tree u8 properties instead of
-  hardcoded #defines
-
-Older revisions:
-RFC - https://lore.kernel.org/linux-mediatek/20210816192523.1739365-1-msp@baylibre.com/
-v1  - https://lore.kernel.org/linux-mediatek/20210906193529.718845-1-msp@baylibre.com/
-v2  - https://lore.kernel.org/linux-mediatek/20210920084424.231825-1-msp@baylibre.com/
-v3  - https://lore.kernel.org/linux-mediatek/20211001094443.2770169-1-msp@baylibre.com/
-v4  - https://lore.kernel.org/linux-mediatek/20211011094624.3416029-1-msp@baylibre.com/
-v5  - https://lore.kernel.org/all/20211021092707.3562523-1-msp@baylibre.com/
-v6  - https://lore.kernel.org/linux-mediatek/20211110130623.20553-1-granquet@baylibre.com/
-v7  - https://lore.kernel.org/linux-mediatek/20211217150854.2081-1-granquet@baylibre.com/
-v8  - https://lore.kernel.org/linux-mediatek/20220218145437.18563-1-granquet@baylibre.com/
-v9  - https://lore.kernel.org/all/20220327223927.20848-1-granquet@baylibre.com/
-v10 - https://lore.kernel.org/all/20220523104758.29531-1-granquet@baylibre.com/
-v11 - https://lore.kernel.org/r/20220610105522.13449-1-rex-bc.chen@mediatek.com
-
-Functional dependencies are:
-- Add Mediatek Soc DRM (vdosys0) support for mt8195
-  https://lore.kernel.org/all/20220526102126.19756-1-jason-jh.lin@mediatek.com/
-- Add MediaTek SoC DRM (vdosys1) support for mt8195
-  https://lore.kernel.org/all/20220622130824.29143-1-nancy.lin@mediatek.com/
-  https://lore.kernel.org/all/20220620091930.27797-1-nancy.lin@mediatek.com/
-
-Bo-Chen Chen (2):
-  drm/mediatek: set monitor to DP_SET_POWER_D3 to avoid garbage
-  drm/mediatek: fix no audio when resolution change
-
-Guillaume Ranquet (4):
-  drm/edid: Convert cea_sad helper struct to kernelDoc
-  drm/edid: Add cea_sad helpers for freq/length
-  drm/mediatek: Add MT8195 External DisplayPort support
-  drm/mediatek: DP audio support for MT8195
-
-Jitao Shi (1):
-  drm/mediatek: add hpd debounce
-
-Markus Schneider-Pargmann (3):
-  dt-bindings: mediatek,dp: Add Display Port binding
-  video/hdmi: Add audio_infoframe packing for DP
-  drm/mediatek: Add MT8195 Embedded DisplayPort driver
-
- .../display/mediatek/mediatek,dp.yaml         |  108 +
- drivers/gpu/drm/drm_edid.c                    |   73 +
- drivers/gpu/drm/mediatek/Kconfig              |   10 +
- drivers/gpu/drm/mediatek/Makefile             |    1 +
- drivers/gpu/drm/mediatek/mtk_dp.c             | 3042 +++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  545 +++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |    3 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |    3 +
- drivers/video/hdmi.c                          |   82 +-
- include/drm/display/drm_dp.h                  |    2 +
- include/drm/drm_edid.h                        |   26 +-
- include/linux/hdmi.h                          |    7 +-
- 12 files changed, 3879 insertions(+), 23 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
- create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
-
+diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
+index b2756753370b..c2c43a4af681 100644
+--- a/include/drm/drm_edid.h
++++ b/include/drm/drm_edid.h
+@@ -359,12 +359,18 @@ struct edid {
+ 
+ #define EDID_PRODUCT_ID(e) ((e)->prod_code[0] | ((e)->prod_code[1] << 8))
+ 
+-/* Short Audio Descriptor */
++/**
++ * struct cea_sad - CEA Short Audio Descriptor.
++ * @format: See HDMI_AUDIO_CODING_TYPE_*.
++ * @channels: max number of channels - 1.
++ * @freq: See CEA_SAD_FREQ_*.
++ * @byte2: meaning depends on format.
++ */
+ struct cea_sad {
+ 	u8 format;
+-	u8 channels; /* max number of channels - 1 */
++	u8 channels;
+ 	u8 freq;
+-	u8 byte2; /* meaning depends on format */
++	u8 byte2;
+ };
+ 
+ struct drm_encoder;
 -- 
 2.18.0
 
