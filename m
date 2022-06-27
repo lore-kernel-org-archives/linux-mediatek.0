@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F826C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 14:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B8E7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 15:34:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ausyBxe1EwSltgsOW+aLx9gGKbI9xmb58xvni35q/8=; b=ECcDTm2w1kOVF7IUjm82lxlAhU
-	dmkdnXrzAnNoLNhA0cqGxE2JBGWEhU4RleLN9qetVZGKkShQkhcmgfeQRzEx+AQTHPGTGczIP3Jc8
-	MG/MP7hOzP05CRZlspPfbElP+meBAj00oG1P5zEBG52SxHfktXXPEDrivO79Ptb3gFkONgVKo4a0T
-	G5Bt9RRRuLWbxU6QNUo22dtNaQ+beh976VNdMqvAnn7MWc1wi4joGVA6XXZrq8K/ljxmi9EgXR8iN
-	NAgv4QrqNG2ngZ2n02l36s9q2eM0QUmiDwotFDhT7qX6VPWXWW8WweJuZU+h4CBL3BjPBha+27gBh
-	kX5kabIg==;
+	bh=Dp+dDl69CAkllbj0bfnYU2d5i3uAAljtVZ2thP5N1Qw=; b=Dp7i9YN4jHq+Jm5wvPOaHlLkwn
+	myasCVb6x1CUZt2QR0UDCe+Z+xnLcI3IE+yNDJ3wVqh3Z2EqtcofPZMCzsZFxrXaTVt+AII1QFnMs
+	N5GwcumdtXHCtdbxq9LmC4OFDLBTkoWxGsfAuAB3a+4OzR+0Ti85+GAtnhVE2QcrnB2+bjj+ndyGL
+	Btvk9y8uQBAW+fyXBzHRr0Gwl20z8Ob48AXSwIYQ9xBBkAXMMGfVxU/mhX1klfsWK65tOuQnVIOZ+
+	6l+omX34NwKgPLHC9veWOkdYhuNqS2cEHecR83FOJKjbPY2OsPf1Ca3Q3DUaU8QYf47IvsZ4b4C2W
+	XCgLom5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5pil-001Pjq-29; Mon, 27 Jun 2022 14:28:11 +0000
-Received: from mail-yw1-f177.google.com ([209.85.128.177])
+	id 1o5qkR-001g0u-T1; Mon, 27 Jun 2022 15:33:59 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5piZ-001PeS-Lu; Mon, 27 Jun 2022 14:28:01 +0000
-Received: by mail-yw1-f177.google.com with SMTP id 00721157ae682-3176d94c236so87486837b3.3;
-        Mon, 27 Jun 2022 07:27:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=2ausyBxe1EwSltgsOW+aLx9gGKbI9xmb58xvni35q/8=;
-        b=WzHvdaUB2JK2uSqjchQcFy/22QR8TucH7/t6gR8Yi/+ZfSCJh1TkdZeig6vLAmKK1Q
-         zK4kLt3FW6QgVVm0iBU3MvGl2jdrCbNDJTBeDAa7lkbAYhGH/sgPtdaMT+i/JhOs8rfD
-         PppyghkGQTtj1jHWbh+WwsFR06Yn6xf01oY3vqbVAtnZpnlfwtmJBTpaY9Q3vZZezlfX
-         w4ifbzk921pikyWgKnVs25Mz9zHgC6AZJq4fgv3jHMvRw9EsAFQcJhhiZv5+hu+gjIMP
-         YTEoOVO6SK9mKC54sl2hNEILwhtj8+RJ/RqY6LHJCCzZb1QVb6O6BvaMMmsfcGFDrSCF
-         lz8g==
-X-Gm-Message-State: AJIora/2lzPXryDvEVcKVUYZZGTAc5MbwPGQBymJ3znwkY592iOVEUfa
-	OPOyCHNESeG10D1Hvl3OEsIq2sG49m92vrJD5Ww=
-X-Google-Smtp-Source: AGRyM1vIcglL1E5IuPFyWS28U+Yjuq52Iosbfn31LhbYRsuDUhrfMrQfTgx6LXwcWn1lzMGswldF2MiwAQkGGvT1aJ8=
-X-Received: by 2002:a81:1b97:0:b0:2db:640f:49d8 with SMTP id
- b145-20020a811b97000000b002db640f49d8mr14642063ywb.326.1656340076401; Mon, 27
- Jun 2022 07:27:56 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220613120755.14306-1-peter.wang@mediatek.com> <Yrm7QSRXKZg4/q7s@kroah.com>
-In-Reply-To: <Yrm7QSRXKZg4/q7s@kroah.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Mon, 27 Jun 2022 16:27:45 +0200
-Message-ID: <CAJZ5v0iFyTXc8TfEq5vHZvRmi9YbW-OA_G3n4xULhsw7=gdZ5A@mail.gmail.com>
-Subject: Re: [PATCH v1] PM-runtime: Check supplier_preactivated before release supplier
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: peter.wang@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Stanley Chu <stanley.chu@mediatek.com>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Avri Altman <avri.altman@wdc.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
-	wsd_upstream <wsd_upstream@mediatek.com>, 
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, chun-hung.wu@mediatek.com, 
-	alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com, 
-	jiajie.hao@mediatek.com, powen.kao@mediatek.com, qilin.tan@mediatek.com, 
-	lin.gui@mediatek.com, tun-yu.yu@mediatek.com
+	id 1o5qkO-001fwQ-6T
+	for linux-mediatek@lists.infradead.org; Mon, 27 Jun 2022 15:33:58 +0000
+Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A9F666015C9;
+	Mon, 27 Jun 2022 16:33:49 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656344030;
+	bh=WzLxqB/YMSV3d8PSEanjQ/qOkirN2jSeH7M6yPLb6bY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Kiw/fpDfzNHiUkjVs5KgG9+JKq/bEnX5sBvOJou4gARcDdyWQEWnOpE6wjVVzoT5R
+	 PKlViGOxmcFVp2K64r3AqSr7C+D+lYPib6ILwuYE6mGtJ3BE610P8ggr9TkqmQ3YQl
+	 GpXr8Jmr7yGCS34fBur97iMYWJdnQvN1XtskYxPPG/2zzOS/kbY7MEISCTzeTZE75p
+	 cuvLUFQx5TxlsLizuLMqGDxch++RQLBcNTy9dyi3pL4LPcsoVlfpxuQ1R20KwmyQIE
+	 nzmoBkV4nw/n65h/2D2lEH4/jkfOi/iI3dDispFKhCHkEN6UawbQqGRHuhEabZpRBm
+	 yTTGP/y8FRr/g==
+Message-ID: <43f393d2dcdd0bfac66bfc420e9261d31b3ceedc.camel@collabora.com>
+Subject: Re: [PATCH 1/4] media: mediatek: vcodec: dec: Fix 4K frame size
+ enumeration
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Tiffany Lin
+ <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>, Yunfei Dong
+	 <yunfei.dong@mediatek.com>
+Date: Mon, 27 Jun 2022 11:33:39 -0400
+In-Reply-To: <20220627112402.2332046-2-wenst@chromium.org>
+References: <20220627112402.2332046-1-wenst@chromium.org>
+	 <20220627112402.2332046-2-wenst@chromium.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.2 (3.44.2-1.fc36) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_072759_756570_ED103FB9 
-X-CRM114-Status: GOOD (  29.14  )
+X-CRM114-CacheID: sfid-20220627_083356_384740_FBD3E437 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +79,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 27, 2022 at 4:14 PM Greg KH <gregkh@linuxfoundation.org> wrote:
->
-> On Mon, Jun 13, 2022 at 08:07:55PM +0800, peter.wang@mediatek.com wrote:
-> > From: Peter Wang <peter.wang@mediatek.com>
-> >
-> > With divice link of DL_FLAG_PM_RUNTIME, if consumer call pm_runtime_get_suppliers
-> > to prevent supplier enter suspend, pm_runtime_release_supplier should
-> > check supplier_preactivated before let supplier enter suspend.
-> >
-> > If the link is drop or release, bypass check supplier_preactivated.
-> >
-> > Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-> > ---
-> >  drivers/base/core.c          |  2 +-
-> >  drivers/base/power/runtime.c | 15 ++++++++++++---
-> >  include/linux/pm_runtime.h   |  5 +++--
-> >  3 files changed, 16 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/drivers/base/core.c b/drivers/base/core.c
-> > index 7cd789c4985d..3b9cc559928f 100644
-> > --- a/drivers/base/core.c
-> > +++ b/drivers/base/core.c
-> > @@ -486,7 +486,7 @@ static void device_link_release_fn(struct work_struct *work)
-> >       /* Ensure that all references to the link object have been dropped. */
-> >       device_link_synchronize_removal();
-> >
-> > -     pm_runtime_release_supplier(link, true);
-> > +     pm_runtime_release_supplier(link, true, true);
-> >
-> >       put_device(link->consumer);
-> >       put_device(link->supplier);
-> > diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
-> > index 676dc72d912d..3c4f425937a1 100644
-> > --- a/drivers/base/power/runtime.c
-> > +++ b/drivers/base/power/runtime.c
-> > @@ -314,10 +314,19 @@ static int rpm_get_suppliers(struct device *dev)
-> >   * and if @check_idle is set, check if that device is idle (and so it can be
-> >   * suspended).
-> >   */
-> > -void pm_runtime_release_supplier(struct device_link *link, bool check_idle)
-> > +void pm_runtime_release_supplier(struct device_link *link, bool check_idle,
-> > +     bool drop)
->
-> This is just making this horrible api even worse.  Now there are 2
-> boolean flags required, 2 more than really should even be here at all.
-> Every time you see this function being used, you will now have to look
-> up the definition  to see what it really does.
->
-> Please make a new function that calls the internal function with the
-> flag set properly, so that it is obvious what is happening when the call
-> is made.
->
-> and really, the same thing should be done for the check_idle flag,
-> that's not good either.
+Le lundi 27 juin 2022 =C3=A0 19:23 +0800, Chen-Yu Tsai a =C3=A9crit=C2=A0:
+> This partially reverts commit b018be06f3c7 ("media: mediatek: vcodec:
+> Read max resolution from dec_capability"). In this commit, the maximum
+> resolution ended up being a function of both the firmware capability and
+> the current set format.
+>=20
+> However, frame size enumeration for output (coded) formats should not
+> depend on the format set, but should return supported resolutions for
+> the format requested by userspace.
+>=20
+> Fix this so that the driver returns the supported resolutions correctly,
+> even if the instance only has default settings, or if the output format
+> is currently set to VP8F, which does not support 4K.
+>=20
+> Fixes: b018be06f3c7 ("media: mediatek: vcodec: Read max resolution from d=
+ec_capability")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c    | 2 --
+>  .../platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c    | 7 +++++++
+>  2 files changed, 7 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/dr=
+ivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> index 5d6fdf18c3a6..fcb4b8131c49 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+> @@ -595,8 +595,6 @@ static int vidioc_enum_framesizes(struct file *file, =
+void *priv,
+>  		fsize->type =3D V4L2_FRMSIZE_TYPE_STEPWISE;
+>  		fsize->stepwise =3D dec_pdata->vdec_framesizes[i].stepwise;
+> =20
+> -		fsize->stepwise.max_width =3D ctx->max_width;
+> -		fsize->stepwise.max_height =3D ctx->max_height;
+>  		mtk_v4l2_debug(1, "%x, %d %d %d %d %d %d",
+>  				ctx->dev->dec_capability,
+>  				fsize->stepwise.min_width,
+> diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_statel=
+ess.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+> index 16d55785d84b..9a4d3e3658aa 100644
+> --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+> +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c
+> @@ -360,6 +360,13 @@ static void mtk_vcodec_add_formats(unsigned int four=
+cc,
+> =20
+>  		mtk_vdec_framesizes[count_framesizes].fourcc =3D fourcc;
+>  		mtk_vdec_framesizes[count_framesizes].stepwise =3D stepwise_fhd;
 
-Agreed, and let me take care of this.
+While at it, can you constify stepwise_fhd, it is scary to think that someo=
+ne
+could modify it and cause big headache.
+
+> +		if (!(ctx->dev->dec_capability & VCODEC_CAPABILITY_4K_DISABLED) &&
+> +		    fourcc !=3D V4L2_PIX_FMT_VP8_FRAME) {
+> +			mtk_vdec_framesizes[count_framesizes].stepwise.max_width =3D
+> +				VCODEC_DEC_4K_CODED_WIDTH;
+> +			mtk_vdec_framesizes[count_framesizes].stepwise.max_height =3D
+> +				VCODEC_DEC_4K_CODED_HEIGHT;
+> +		}
+>  		num_framesizes++;
+>  		break;
+>  	case V4L2_PIX_FMT_MM21:
+
 
