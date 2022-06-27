@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 436D5CCA47C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jun 2022 23:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 863FEC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 02:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kcfyo+Il335uQAK4TOb/qbQsBrSUKl+s/J4ZZH/62TQ=; b=hymK32n5hXCI7paQ1wSI7KAHdW
-	VqkJk/KW9vi1VNIlKkd5gIRHvgZ2o8yyLiblWysfzmBFrZTpQFgojsx1zgdMl7QSwzqNJWaqR9nzf
-	aHV7Jq49+pkFZfy+YfeiMgn/rBdp1jDkHmy3x4M7Cz0nwmKma2X1zE3IFqUxoOi9ZYieiMdpJWC9q
-	3b11TlB+Vs/7v5vsv8USG29tWjUT2BM2fHvDyBzqXBTP+wRYpUzLPrtl9eLdyuA0pLy9tmianf/CO
-	5ntX9ZOOFvD9Kk81MeK4Z3DnGsBHTlojev8WBT8cUuaIc5OH/DiYSjerxtoBKAAJKjflB+79qsek2
-	Xs+k8hcA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=V6BCMZaPmbxagVpCVUucgwQkntVzmvtlKzOdQDEvKGg=; b=nlUcdVEi3i/mjzYjCziBga2ytD
+	LhsA8gDHguhZ1GFGs1gcKR6WVhdfYhLEHL3Crp/IQapisJhaHwayj4XHr0XVGxPnUmqDkQqe5jwx1
+	dYBRsabHS9BwFZ7laf7XBydo/NIMyPEnPan8P6CcImIqMwRdcIhR8/nRhQBylef09Br7l9S637Aqs
+	8C1Hf0RUl5ubjzNgp5CT45Tu2NhWUrbsxwbgzw7BF14IH/PLXgcS66mTopAdpFvPzz3P7d58+LSvQ
+	9OWp/wGJ80diLU0GK8mAg1utIpE8dN4bsBCB8Uspw4PcpOF0BK+Vx8/vgznpDVU7ZwiXnQiPSpvXH
+	xs3+188g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5bio-00E5oo-HX; Sun, 26 Jun 2022 23:31:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o5evu-00EowZ-2s; Mon, 27 Jun 2022 02:57:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5bij-00E5mT-R2
-	for linux-mediatek@lists.infradead.org; Sun, 26 Jun 2022 23:31:15 +0000
-X-UUID: 6c04bc1d5cc74a90a1803f2fe3981cd3-20220626
+	id 1o5evh-00EopC-OY; Mon, 27 Jun 2022 02:56:51 +0000
+X-UUID: 119f282cf8384b2682e28f23ba705693-20220626
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.6,REQID:291833d5-a141-4a12-b15a-5bb84edafecd,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:b14ad71,CLOUDID:4bbb99d8-850a-491d-a127-60d9309b2b3e,C
+X-CID-O-INFO: VERSION:1.1.6,REQID:d57e0b4d-ab4c-475c-8525-00daca4dbf61,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:b14ad71,CLOUDID:f68f90ea-f7af-4e69-92ee-0fd74a0c286c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 6c04bc1d5cc74a90a1803f2fe3981cd3-20220626
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
+X-UUID: 119f282cf8384b2682e28f23ba705693-20220626
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
-	with ESMTP id 889219624; Sun, 26 Jun 2022 16:31:04 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 49583120; Sun, 26 Jun 2022 19:56:40 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 26 Jun 2022 16:27:09 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 27 Jun 2022 07:27:08 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 27 Jun 2022 07:27:08 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
-	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
-	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
-	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
-	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 2/2] mt76: mt7921: reduce the mutex lock scope during reset
-Date: Mon, 27 Jun 2022 07:27:06 +0800
-Message-ID: <77f2b8ccced3cfe659823fa86270a42423d4ba00.1656221826.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <0f3f0b2c6910f685a04bb13699c85f4a3e9f1996.1656221826.git.objelf@gmail.com>
-References: <0f3f0b2c6910f685a04bb13699c85f4a3e9f1996.1656221826.git.objelf@gmail.com>
+ 15.0.1497.2; Sun, 26 Jun 2022 19:55:44 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Mon, 27 Jun 2022 10:55:43 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 27 Jun 2022 10:55:42 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, kyrie wu
+	<kyrie.wu@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [V4,0/8] Support multi-hardware jpeg decoder for MT8195
+Date: Mon, 27 Jun 2022 10:55:32 +0800
+Message-ID: <20220627025540.8901-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220626_163113_920153_4988DA7E 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20220626_195649_826296_7D48587D 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +84,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Reduce the mutex lock scope for reset to get rid of possible task hung
-e.g wpa_supplicant and to allow the user-space process to keep running
-during we need more retries to complete the reset.
+This series adds support for multi hardware jpeg decoding,
+by first adding use of_platform_populate to manage each hardware
+information: interrupt, clock, register bases and power.
+Secondly add decoding work queue to deal with the decoding requests
+of multi-hardware at the same time. Lastly, add output picture
+reorder function interface to eliminate the out of order images.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Suggested-by: YN Chen <YN.Chen@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+This series has been tested with both MT8195.
+Decoding worked for this chip.
+
+Patch 1 Adds jpeg decoder dt-bindings for mt8195
+
+Patches 2 jpeg decoder builds three module for using Multi-HW,
+export some functions to make them visible by other modules.
+
+Patch 3 use of_platform_populate to manage multi-hardware.
+
+Patch 4 add jpeg decoding timeout function to judge hardware timeout.
+
+Patch 5 add decoding work queue to deal with multi-hardware decoding
+at the same time.
+
+Patch 6 add output picture reorder function to order images.
+
+Patch 7 refactor jpegdec func interface for HW working.
+
+Patch 8 add stop cmd function to deal with EOS operation.
 
 ---
-v2: add Reviewed-by from AngeloGioacchino
----
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+This series patches dependent on:
+media_stage tree:
+[1]
+https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 3ea7d8f43118..81c528298913 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -738,7 +738,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
- 					      reset_work);
- 	struct ieee80211_hw *hw = mt76_hw(dev);
- 	struct mt76_connac_pm *pm = &dev->pm;
--	int i;
-+	int i, ret;
- 
- 	dev_dbg(dev->mt76.dev, "chip reset\n");
- 	dev->hw_full_reset = true;
-@@ -748,11 +748,14 @@ void mt7921_mac_reset_work(struct work_struct *work)
- 	cancel_delayed_work_sync(&pm->ps_work);
- 	cancel_work_sync(&pm->wake_work);
- 
--	mutex_lock(&dev->mt76.mutex);
--	for (i = 0; i < 10; i++)
--		if (!mt7921_dev_reset(dev))
-+	for (i = 0; i < 10; i++) {
-+		mutex_lock(&dev->mt76.mutex);
-+		ret = mt7921_dev_reset(dev);
-+		mutex_unlock(&dev->mt76.mutex);
-+
-+		if (!ret)
- 			break;
--	mutex_unlock(&dev->mt76.mutex);
-+	}
- 
- 	if (i == 10)
- 		dev_err(dev->mt76.dev, "chip reset failed\n");
+patch1 new jpegdec dt-bindings included files
+[2] MM IOMMU binding:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
+
+[3] MT8195 power domain:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+
+Changes compared with v3:
+- some modifications for patch v3's review comments.
+
+Changes compared with v2:
+- add stop cmd function.
+- some modifications for patch v1's review comments.
+
+Changes compared with v1:
+- new yaml file for mt8195 jpeg decoder.
+- some modifications for patch v1's review comments.
+
+kyrie wu (8):
+  dt-bindings: mediatek: Add mediatek,mt8195-jpgdec compatible
+  media: mtk-jpegdec: export jpeg decoder functions
+  media: mtk-jpegdec: manage jpegdec multi-hardware
+  media: mtk-jpegdec: add jpegdec timeout func interface
+  media: mtk-jpegdec: add jpeg decode worker interface
+  media: mtk-jpegdec: add output pic reorder interface
+  media: mtk-jpegdec: refactor jpegdec func interface
+  mtk-jpegdec: add stop cmd interface for jpgdec
+
+ .../media/mediatek,mt8195-jpegdec.yaml        | 176 ++++++++++
+ drivers/media/platform/mediatek/jpeg/Makefile |   5 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 246 +++++++++++++-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  47 +++
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 310 ++++++++++++++++--
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |   3 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_reg.h |   1 +
+ 7 files changed, 754 insertions(+), 34 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+
 -- 
-2.25.1
+2.18.0
 
 
