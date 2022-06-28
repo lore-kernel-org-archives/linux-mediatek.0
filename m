@@ -4,125 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10DB3C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 04:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B3A1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 05:51:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sGfzsoXJkyPafAfFD9ICTdIP4sAg+iiYn910Rf8B5o8=; b=W1NEvX0GkusHrE6uGKaQBfpw4Z
-	afJfbnIwAjxxb2+XX8k7kElUMGYswpKj0fbeoOeviBf2ZBS3Hrly2UeZwka7PHzduq2eP2jhwW6TP
-	bry6ITlaWB/SWrhD/3DLepvrOpK7k2oAoLyfbo+5mku9rnoZJiu2duYUCXzZkgj2XFJ+jvPvhW2CL
-	ofxRaFh9YUVSAjsg/AQkkUpS8L3Br430yc2omE+i+6RTl9kw7l/Pm2R3LJb1VzH6khQjX0BEWMrh2
-	QS23/79Qd4KW9l6hvSglb+gIJmRqpcyFQDE+Wqu4AXGAi3OHnyn6XeU9TMs+9AKU6p7NdkVAwlWmm
-	szbXvz9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jFc9WcolGCeImNeWHT7XRABT7k0G2fAk8MMLMAlBwrU=; b=hQ5xg8aXMy9+eoPowPtIvJ8s7O
+	vGGFBkR07hKi9EshupJ5HJG0A1fxV/Umhy0bENX1qm2hMtQTcywMPLnOTuwh8U4Z1MNhwcOkHyyL2
+	GuAyIpkGZp+bsDqR9lktXjDouD6UHYkeEH0X6nPTFMLXDzD7mFUgkRLCOICaUPguxVDWu3M5/B7fJ
+	P46lIfVHdGuywaZgxCPi3mBfXfcCOOInMbLRzUOW0cIKxY5Vxlk71cF3RCQqtCbV1IjEKfJvbcC/S
+	f3Mr09pwJW8SQIl2KmsrrXtHxemKdp8nEpFDyhgkdLj9fXtjO4p5jFmoZOyDhwUFxOxw1QP/DkWF2
+	t0gH52Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o639w-004F4B-H1; Tue, 28 Jun 2022 04:49:08 +0000
-Received: from mail-dm6nam10on2110.outbound.protection.outlook.com ([40.107.93.110] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1o647t-004STt-Uj; Tue, 28 Jun 2022 05:51:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o639s-004F1n-SG; Tue, 28 Jun 2022 04:49:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GdQVCQS9dh9meecX0FRGNAVQ1K5YE4dVsmA+UtdYkl4uMqpWlJMad013qr/PoJRbjyX0GYRaPuvYjKp8JgcVECotcPWxwl3QR9/HDT93EorTfOeciyL5yf1107+1irCTdTzmlCSiZMAlAE6+ivLwR7CWZcwu4G1CPlt4UfJ5oe0s53F2b27+tBqH5xoT7JzkGwc5Zj046jGmPUNP2SFLzV7PmX0NIIZg6lS/lvUJLwMQ/Hwq5lLasOwKZGfkZQFvFEkYQD5P7uTzzrLTyzXCe/6zika/gyk412LKEUCG2Q3/E+6rHYDNECh7FdygBhd1IyuZdlkGOu0sYsdUrJXlkQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sGfzsoXJkyPafAfFD9ICTdIP4sAg+iiYn910Rf8B5o8=;
- b=WfxrnTLK7z1rHLA2hpc17kLsEybK3D4E/ETVVeXy83zWQue100LdmMfXCiO7Yuuv+NkmsIh+U38sBZyOnZ2keXj/kop+1m4ISYUvGdvcqqsb1URAbU1ShVBLOP758yPbHckyiFq3/gdOScSYfgXJsUL2WNNnR4ZDSqzRtgktGeUvBOFxx4KUPMhQKHbxrbJycwlJeqKt5i6vfJYH+sWk7z4Znj9/KVMzlrdmaxPhq1VIJFLvUzR5dhA3XyekFYlXWywsmoh0eVTf04oEeJrhjJmUidibGDefVqp8yO16jrbVLUZ/EPXOi89vTRBzX1DAYNSFuAtLh2Eh6dGdW9d2zQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sGfzsoXJkyPafAfFD9ICTdIP4sAg+iiYn910Rf8B5o8=;
- b=iV0s9vsMopVnw0oWoWDQh7DhPmO0tG7w79+kDUf/G5L1h9Le9Z6/Bo+vsHbIfeeGAiUdo1StjJ4G7++IQoY7aslbOfcsfrSFEenbGdxtEG1K2Yo//fk3nY6gXlNq3tJOzjBBzwI11SmDqn74DyU4wOCxl48VPeIUEQbSlk6NAS0=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by DM6PR04MB5724.namprd04.prod.outlook.com (2603:10b6:5:163::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.17; Tue, 28 Jun
- 2022 04:48:59 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::ec96:5112:c2d5:9377]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::ec96:5112:c2d5:9377%8]) with mapi id 15.20.5373.018; Tue, 28 Jun 2022
- 04:48:59 +0000
-From: Xin Ji <xji@analogixsemi.com>
-To: Guenter Roeck <linux@roeck-us.net>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: bliang@analogixsemi.com,
-	qwen@analogixsemi.com,
-	jli@analogixsemi.com,
-	Xin Ji <xji@analogixsemi.com>,
-	linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v12 1/3] usb: typec: tcpci: move tcpci.h to include/linux/usb/
-Date: Tue, 28 Jun 2022 12:48:40 +0800
-Message-Id: <20220628044843.2257885-1-xji@analogixsemi.com>
-X-Mailer: git-send-email 2.25.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: TY2PR04CA0020.apcprd04.prod.outlook.com
- (2603:1096:404:f6::32) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+	id 1o646c-004S2o-4U; Tue, 28 Jun 2022 05:49:48 +0000
+X-UUID: 53691585e15e46e58f736582d756b417-20220627
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:e2c1d045-1143-474c-87ae-63f1458c8dec,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:1aebf485-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 53691585e15e46e58f736582d756b417-20220627
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 808020349; Mon, 27 Jun 2022 22:49:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 28 Jun 2022 11:27:50 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Tue, 28 Jun 2022 11:27:50 +0800
+Message-ID: <b67519058c36e2331da6e1995f6f7a66c3eef081.camel@mediatek.com>
+Subject: Re: [PATCH v14 12/15] drm/mediatek: dpi: Add YUV422 output support
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 28 Jun 2022 11:27:49 +0800
+In-Reply-To: <7713b73db7d0f2763661a7e328f4313bd72d497d.camel@mediatek.com>
+References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
+	 <20220624030946.14961-13-rex-bc.chen@mediatek.com>
+	 <a59a61a81e45fd361774a28a66ffd3d673cb3148.camel@mediatek.com>
+	 <5b0613b9cc983e24a997c122b2892b35cf8346d3.camel@mediatek.com>
+	 <c3a2feae4295f3300f723a9bfd8cdf0b1c938c81.camel@mediatek.com>
+	 <4bc40d79d6f6d3b2bf470a7c09375859a31b5e40.camel@mediatek.com>
+	 <7713b73db7d0f2763661a7e328f4313bd72d497d.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 298737b4-3037-4f02-cea5-08da58c183c4
-X-MS-TrafficTypeDiagnostic: DM6PR04MB5724:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	fhyorkbkDmyUzBQJcFTyEYxEwZCJ8xCWMszFVUFTOQ6Z4zErzRo/iVIeli3H1r+x+gRVbeQ7UMaPN3ruwB0U/Vnz/r1fxvib5QgGpoqoSVM7ZgtizPwAtgwYozUDt1/BUHwfKLO6qePpyKQozFOXAe/a7LQsMCYUk6gL8bAJhy+Lkb1e8kDwANum3ehygSHRENrpUepPNOfQUC7ybzYD+IuwW66dX9UkaSgCKI/XL1IPMzDC2vKGQtbjyPn1qUQu5/fTnvTuTFP2+wuKzu7dPompvJyHoceF4S3ML5J0ghGCtoOrzhCQV+e8ldyJB/2KmU1YwgDP1kWh5uOZaKNkR/kLbabUDdTt0ULo6NPTEjh6/ZzUvFKDNjR0KI/3bLLZcCdUIomBze6mTgab1/c8ULnuhgnpBO0LlsN7RxCLGKPBi/XWewF1xl+sEkYl9tZJnBYNv8qVczTKBhUtXPHIaHr1LTQ2Y+7mfoy3JRiElXcsykZQcZjTehPG4PZ4kQcOrzBFK2MDmo2rSJToemC6AgR8dNy6/jdWlXvloV5Lq+t/X7PavuYb48vgiCmY1iDsg0Qt4ydkocUfeCy3fr8ysU242kfDtd7HPkrG1nJpTlbIsYgKJ0CUbfkUoSngE2pxTbRpxDg90HKVoZHJltzVX0odcH6mEaHlM9EdyJ5u+v9Jx7tRheJxzhlVCtvg/nKBGfNvUE2//omsF96WlVzMTOV2VV+cp5qCX+I7n07CVqx/0xZmLW2LAYe7Ekouj9TUI30VTuzfb/5RUh/Yijzx3AYCz6EDvRR/44EWhEUYerI=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR04MB6739.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(136003)(396003)(366004)(39840400004)(376002)(346002)(6512007)(83380400001)(66556008)(52116002)(66946007)(316002)(66476007)(110136005)(8676002)(4326008)(26005)(6486002)(5660300002)(55236004)(38350700002)(8936002)(86362001)(2616005)(6506007)(38100700002)(2906002)(1076003)(6666004)(186003)(478600001)(36756003)(41300700001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?1Nax4CdBl4ZIBfNe8ApUeplhFROE0MegjU724V06EiVdf6ga9defzWyKpPi1?=
- =?us-ascii?Q?+EvuWii6wssykOEbx/yvHMfAt7UucoqXPhdeuLywieFRI0KQi9D9M7RX2wt7?=
- =?us-ascii?Q?/wL9HGu8IHCuhTm7D+FRgHbkezipZ+7vHn1p71ZZLed0p5/UhQjE5NdPspZT?=
- =?us-ascii?Q?Njab3dNienWJY2wvbz40ez4+TCRwzf2ChdGELTMK0KsTG69vIs/HYxFJmBgw?=
- =?us-ascii?Q?HqcVAGvG6pKctiJK5va++DoYQycm5sbYOzoqv3E1pJ4Vko8O1gSc7xKWySjC?=
- =?us-ascii?Q?wIWgqWdXi6+jzY5nRhiaV1/oH1684+PbkuOc7dKcXDu0borrXcNpAXZjZ/sa?=
- =?us-ascii?Q?CteyPBhEdFnPvGbkFcWVmedhHOnZee0tn/wCWpuTEmaWZSRdYwBEgBnNUUeC?=
- =?us-ascii?Q?R544UojJGa4ENd0u29WyqG/+FWjxLQb7Q/cOrqisnBCChGlEGD3kVbR60fvf?=
- =?us-ascii?Q?BuyGFwosriRDJuYsTep3E6LeROoxq41pMTT4Xvi6OlZkxT564T1eYh5HUL3S?=
- =?us-ascii?Q?qWyJ7SM054nt1vAT0+zZ5PphA0GhTBBErxT2aag3pkvJytt2EjEUgZ/SoaX5?=
- =?us-ascii?Q?mLDJYgK1F7zM6Fgrz1x4w6QM1l26P0IQ7KpXyJRzEFPr/L5lkWENljPxhZYp?=
- =?us-ascii?Q?KgX38L+mrZfGkittJ8lpfstDbvD0DIL9MJ2JSkAJlJwozs1l5U9LR5XwJKLV?=
- =?us-ascii?Q?0K91K+i583ul/gknhurb+M4bHZty4RCxEV4bKY0lxgmbCaxB6gbtVEQeb7/M?=
- =?us-ascii?Q?ID+eIMVazf5sgBvL9BvZjLReUvk3brLzqRPVeRH5HcqPOHKDkQuLrcoBcI+p?=
- =?us-ascii?Q?5HL6aiK97DAJEs9ZdbGuG5HAiGq6nj+nwK1ki7bORvpP+aCd+GH7lrQ03+OO?=
- =?us-ascii?Q?u5HgErxL6vaGPdvdG76iRLI6NMyBtooINrMxtudRWAf9lD60JukQLsOrVQDA?=
- =?us-ascii?Q?zgA72s7A9Tatw6wu2zPl1XNyH+ijts5kZmZUuVi9RjYfGZ5G5RURMi+Hgkg2?=
- =?us-ascii?Q?wVY7xWLjyy6c5CBjIXOrPKtGfuch9nRiliYqgnFzipVWVaStr4SJFj2PbbvE?=
- =?us-ascii?Q?m4BO+Z0zdd95IM8KckRdMRv6WWH0v85iF/XO7oHxUPIlNTyr9LQLRV01RgT4?=
- =?us-ascii?Q?e5duWEn+fgNHs6riTmQ/upK6kDhMdSFm3YE4F9r16Rix4xp8l4tOy7CmICDJ?=
- =?us-ascii?Q?Ierk0lxgKNAaoskjEQIzfULP8c/SlmPrwm+CnfoMxA92MkqwGgv6o2CmxlYz?=
- =?us-ascii?Q?fEXQwR8illTZKC3bCeZfVu2yil7kqwBx/Um19ohhDlgNZlvdLkhr012WL8dh?=
- =?us-ascii?Q?Jg8zq43lFUxsihVKGhOJ9bgRC81//x5a0SuIpIJurFtIqnl3NE3BrQ2792Cj?=
- =?us-ascii?Q?wZ9YUO+AZnYS4BXXDcSwyauOdoAMqk4HWxY7xWMM8plglH9IohwZsE3l1Ynj?=
- =?us-ascii?Q?Cy57M9H530YHdkoMN9hQTHHCXp3IMJG9cLrOn/aDUtKMisMQLc7cHT4ky/wb?=
- =?us-ascii?Q?FzycnYmkiPf4tH225Ct/5rf/OrQYxUJltp0e4XgE8qOqNw7Lg5QIBy8IspbA?=
- =?us-ascii?Q?KzG2sgtnr/lxU2BKVHufBrVuqZ6vIof3pF3dMR7K?=
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 298737b4-3037-4f02-cea5-08da58c183c4
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jun 2022 04:48:59.1504
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AtdDC1rA/wkfocJKagzU46A199af+hxVC+k7P+72jFnyTzNwnsXZyzdGwrh2/zIfSVDEr99jzawtxcmtn1umhA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB5724
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_214905_154237_05FA6E70 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20220627_224946_237247_8C8AB399 
+X-CRM114-Status: GOOD (  53.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,111 +88,300 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-USB PD controllers which consisting of a microcontroller (acting as the TCPM)
-and a port controller (TCPC) - may require that the driver for the PD
-controller accesses directly also the on-chip port controller in some cases.
+On Tue, 2022-06-28 at 11:23 +0800, CK Hu wrote:
+> On Tue, 2022-06-28 at 11:01 +0800, Rex-BC Chen wrote:
+> > On Tue, 2022-06-28 at 10:38 +0800, CK Hu wrote:
+> > > On Tue, 2022-06-28 at 10:28 +0800, Rex-BC Chen wrote:
+> > > > On Tue, 2022-06-28 at 10:15 +0800, CK Hu wrote:
+> > > > > Hi, Bo-Chen:
+> > > > > 
+> > > > > On Fri, 2022-06-24 at 11:09 +0800, Bo-Chen Chen wrote:
+> > > > > > Dp_intf supports YUV422 as output format. In MT8195 Chrome
+> > > > > > project,
+> > > > > > YUV422 output format is used for 4K resolution.
+> > > > > > 
+> > > > > > To support this, it is also needed to support color format
+> > > > > > transfer.
+> > > > > > Color format transfer is a new feature for both dpi and
+> > > > > > dpintf
+> > > > > > of
+> > > > > > MT8195.
+> > > > > > 
+> > > > > > The input format could be RGB888 and output format for
+> > > > > > dp_intf
+> > > > > > should
+> > > > > > be
+> > > > > > YUV422. Therefore, we add a mtk_dpi_matrix_sel() helper to
+> > > > > > update
+> > > > > > the
+> > > > > > DPI_MATRIX_SET register depending on the color format.
+> > > > > > 
+> > > > > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > > > > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > > > > > Reviewed-by: AngeloGioacchino Del Regno <
+> > > > > > angelogioacchino.delregno@collabora.com>
+> > > > > > ---
+> > > > > >  drivers/gpu/drm/mediatek/mtk_dpi.c      | 34
+> > > > > > ++++++++++++++++++++++++-
+> > > > > >  drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  3 +++
+> > > > > >  2 files changed, 36 insertions(+), 1 deletion(-)
+> > > > > > 
+> > > > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > > > > > b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > > > > > index 9e4250356342..438bf3bc5e4a 100644
+> > > > > > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > > > > > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > > > > > @@ -128,6 +128,7 @@ struct mtk_dpi_yc_limit {
+> > > > > >   * @num_output_fmts: Quantity of supported output formats.
+> > > > > >   * @is_ck_de_pol: Support CK/DE polarity.
+> > > > > >   * @swap_input_support: Support input swap function.
+> > > > > > + * @color_fmt_trans_support: Enable color format transfer.
+> > > > > >   * @dimension_mask: Mask used for HWIDTH, HPORCH,
+> > > > > > VSYNC_WIDTH
+> > > > > > and
+> > > > > > VSYNC_PORCH
+> > > > > >   *		    (no shift).
+> > > > > >   * @hvsize_mask: Mask of HSIZE and VSIZE mask (no shift).
+> > > > > > @@ -144,6 +145,7 @@ struct mtk_dpi_conf {
+> > > > > >  	u32 num_output_fmts;
+> > > > > >  	bool is_ck_de_pol;
+> > > > > >  	bool swap_input_support;
+> > > > > > +	bool color_fmt_trans_support;
+> > > > > >  	u32 dimension_mask;
+> > > > > >  	u32 hvsize_mask;
+> > > > > >  	u32 channel_swap_shift;
+> > > > > > @@ -412,6 +414,31 @@ static void
+> > > > > > mtk_dpi_config_disable_edge(struct
+> > > > > > mtk_dpi *dpi)
+> > > > > >  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0,
+> > > > > > EDGE_SEL_EN);
+> > > > > >  }
+> > > > > >  
+> > > > > > +static void mtk_dpi_matrix_sel(struct mtk_dpi *dpi,
+> > > > > > +			       enum mtk_dpi_out_color_format
+> > > > > > format)
+> > > > > > +{
+> > > > > > +	u32 matrix_sel = 0;
+> > > > > > +
+> > > > > > +	if (!dpi->conf->color_fmt_trans_support) {
+> > > > > > +		dev_info(dpi->dev, "matrix_sel is not
+> > > > > > supported.\n");
+> > > > > > +		return;
+> > > > > > +	}
+> > > > > > +
+> > > > > > +	switch (format) {
+> > > > > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
+> > > > > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL:
+> > > > > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_444:
+> > > > > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL:
+> > > > > 
+> > > > > I think the transform formula are different for full range
+> > > > > and
+> > > > > non-
+> > > > > full 
+> > > > > range. Please make sure '0x2' is for full range or non-full
+> > > > > range.
+> > > > > If
+> > > > > you are not sure, you could provide the transform matrix of
+> > > > > '0x2'
+> > > > > so
+> > > > > we
+> > > > > could find out it's full or non-full.
+> > > > > 
+> > > > > > +	case MTK_DPI_COLOR_FORMAT_XV_YCC:
+> > > > > > +		if (dpi->mode.hdisplay <= 720)
+> > > > > > +			matrix_sel = 0x2;
+> > > > > 
+> > > > > Symbolize '0x2'.
+> > > > > 
+> > > > > > +		break;
+> > > > > > +	default:
+> > > > > > +		break;
+> > > > > > +	}
+> > > > > > +	mtk_dpi_mask(dpi, DPI_MATRIX_SET, matrix_sel,
+> > > > > > INT_MATRIX_SEL_MASK);
+> > > > > > +}
+> > > > > > +
+> > > > > >  static void mtk_dpi_config_color_format(struct mtk_dpi
+> > > > > > *dpi,
+> > > > > >  					enum
+> > > > > > mtk_dpi_out_color_format
+> > > > > > format)
+> > > > > >  {
+> > > > > > @@ -419,6 +446,7 @@ static void
+> > > > > > mtk_dpi_config_color_format(struct
+> > > > > > mtk_dpi *dpi,
+> > > > > >  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
+> > > > > >  		mtk_dpi_config_yuv422_enable(dpi, false);
+> > > > > >  		mtk_dpi_config_csc_enable(dpi, true);
+> > > > > > +		mtk_dpi_matrix_sel(dpi, format);
+> > > > > 
+> > > > > Why mt8173 support MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL but it
+> > > > > does
+> > > > > not
+> > > > > call mtk_dpi_matrix_sel()? It seems that mt8173 also need to
+> > > > > call
+> > > > > mtk_dpi_matrix_sel() but lost and this patch looks like a bug
+> > > > > fix
+> > > > > for
+> > > > > all SoC DPI driver.
+> > > > > 
+> > > > > Regards,
+> > > > > CK
+> > > > > 
+> > > > 
+> > > > Hello CK,
+> > > > 
+> > > > MT8173 does not support MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL as
+> > > > output
+> > > > format, the output format is:
+> > > > 
+> > > > static const u32 mt8173_output_fmts[] = {
+> > > > 	MEDIA_BUS_FMT_RGB888_1X24,
+> > > > };
+> > > > 
+> > > > or do I misunderstand?
+> > > 
+> > > In the first patch [1], it define
+> > > 
+> > > +enum mtk_dpi_out_color_format {
+> > > +	MTK_DPI_COLOR_FORMAT_RGB,
+> > > +	MTK_DPI_COLOR_FORMAT_RGB_FULL,
+> > > +	MTK_DPI_COLOR_FORMAT_YCBCR_444,
+> > > +	MTK_DPI_COLOR_FORMAT_YCBCR_422,
+> > > +	MTK_DPI_COLOR_FORMAT_XV_YCC,
+> > > +	MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL,
+> > > +	MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL
+> > > +};
+> > > 
+> > > and this function also process MTK_DPI_COLOR_FORMAT_YCBCR_444,
+> > > MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL,
+> > > MTK_DPI_COLOR_FORMAT_YCBCR_422,
+> > > and MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL. So I think it want to
+> > > process
+> > > output YUV but the caller of mtk_dpi_config_color_format() just
+> > > pass
+> > > RGB into this function. If mt8173 does not support YUV output, I
+> > > think
+> > > you should remove YUV processing in this function first, and then
+> > > add
+> > > back YUV processing in this function.
+> > > 
+> > > [1] 
+> > > 
+> > 
+> > 
+> 
+> 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dpi.c?h=v5.19-rc4&id=9e629c17aa8d7a75b8c1d99ed42892cd8ba7cdc4
+> > > 
+> > > Regards,
+> > > CK
+> > > 
+> > 
+> > Hello CK,
+> > 
+> > I don't think it should be remove. After all, it is accepted and
+> > from
+> > [1], we can see it assgin output format always as RGB.
+> > +	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
+> > 
+> > After that, it also added patch of supporting changing output
+> > format[2].
+> > 
+> > We have support output as YUV422 now. I think it's ok to just add
+> > this.
+> > If we remove them and add them back, I think it is a little bit
+> > redundant. And I also can add a commit message like "output format
+> > YUV422 is not support for previous MediaTek SoCs. MT8195 supports
+> > output format as YUV422.."
+> > 
+> > What do you think?
+> 
+> If we have no information about mt8173 support YUV or not, we could
+> just treat it as not support YUV. I like to make things clean before
+> apply new feature. If you do not want to remove it, I would send a
+> patch to remove it.
+> 
+> Regards,
+> CK
+> 
 
-Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
+Hello CK,
 
-Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
+ok, I will confirm whether 8173 support yuv422 as output. If no
+answerd, I will also remove them in next version of this series.
 
----
-V9 -> V10: Rebase on the latest code
-V8 -> V9 : Add more commit message
-V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+Thanks.
 
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
----
- drivers/usb/typec/tcpm/tcpci.c                        | 3 +--
- drivers/usb/typec/tcpm/tcpci_maxim.c                  | 3 +--
- drivers/usb/typec/tcpm/tcpci_mt6360.c                 | 3 +--
- drivers/usb/typec/tcpm/tcpci_rt1711h.c                | 2 +-
- {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h | 1 +
- 5 files changed, 5 insertions(+), 7 deletions(-)
- rename {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h (99%)
+BRs,
+Bo-Chen
 
-diff --git a/drivers/usb/typec/tcpm/tcpci.c b/drivers/usb/typec/tcpm/tcpci.c
-index f33e08eb7670..812784702d53 100644
---- a/drivers/usb/typec/tcpm/tcpci.c
-+++ b/drivers/usb/typec/tcpm/tcpci.c
-@@ -13,11 +13,10 @@
- #include <linux/property.h>
- #include <linux/regmap.h>
- #include <linux/usb/pd.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- #include <linux/usb/typec.h>
- 
--#include "tcpci.h"
--
- #define	PD_RETRY_COUNT_DEFAULT			3
- #define	PD_RETRY_COUNT_3_0_OR_HIGHER		2
- #define	AUTO_DISCHARGE_DEFAULT_THRESHOLD_MV	3500
-diff --git a/drivers/usb/typec/tcpm/tcpci_maxim.c b/drivers/usb/typec/tcpm/tcpci_maxim.c
-index df2505570f07..4b6705f3d7b7 100644
---- a/drivers/usb/typec/tcpm/tcpci_maxim.c
-+++ b/drivers/usb/typec/tcpm/tcpci_maxim.c
-@@ -11,11 +11,10 @@
- #include <linux/module.h>
- #include <linux/regmap.h>
- #include <linux/usb/pd.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- #include <linux/usb/typec.h>
- 
--#include "tcpci.h"
--
- #define PD_ACTIVITY_TIMEOUT_MS				10000
- 
- #define TCPC_VENDOR_ALERT				0x80
-diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-index 8a952eaf9016..1b7c31278ebb 100644
---- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
-+++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-@@ -11,10 +11,9 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- 
--#include "tcpci.h"
--
- #define MT6360_REG_PHYCTRL1	0x80
- #define MT6360_REG_PHYCTRL3	0x82
- #define MT6360_REG_PHYCTRL7	0x86
-diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-index b56a0880a044..3291ca4948da 100644
---- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-+++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-@@ -10,9 +10,9 @@
- #include <linux/i2c.h>
- #include <linux/interrupt.h>
- #include <linux/gpio/consumer.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- #include <linux/regmap.h>
--#include "tcpci.h"
- 
- #define RT1711H_VID		0x29CF
- #define RT1711H_PID		0x1711
-diff --git a/drivers/usb/typec/tcpm/tcpci.h b/include/linux/usb/tcpci.h
-similarity index 99%
-rename from drivers/usb/typec/tcpm/tcpci.h
-rename to include/linux/usb/tcpci.h
-index b2edd45f13c6..20c0bedb8ec8 100644
---- a/drivers/usb/typec/tcpm/tcpci.h
-+++ b/include/linux/usb/tcpci.h
-@@ -9,6 +9,7 @@
- #define __LINUX_USB_TCPCI_H
- 
- #include <linux/usb/typec.h>
-+#include <linux/usb/tcpm.h>
- 
- #define TCPC_VENDOR_ID			0x0
- #define TCPC_PRODUCT_ID			0x2
--- 
-2.25.1
+> > 
+> > [2]: 
+> > 
+> 
+> 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dpi.c?h=v5.19-rc4&id=be63f6e8601ff21139da93623754717e92cbd8db
+> > 
+> > BRs,
+> > Bo-Chen
+> > > > 
+> > > > BRs,
+> > > > Bo-Chen
+> > > > 
+> > > > > >  		if (dpi->conf->swap_input_support)
+> > > > > >  			mtk_dpi_config_swap_input(dpi, false);
+> > > > > >  		mtk_dpi_config_channel_swap(dpi,
+> > > > > > MTK_DPI_OUT_CHANNEL_SWAP_BGR);
+> > > > > > @@ -426,6 +454,7 @@ static void
+> > > > > > mtk_dpi_config_color_format(struct
+> > > > > > mtk_dpi *dpi,
+> > > > > >  		   (format ==
+> > > > > > MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
+> > > > > >  		mtk_dpi_config_yuv422_enable(dpi, true);
+> > > > > >  		mtk_dpi_config_csc_enable(dpi, true);
+> > > > > > +		mtk_dpi_matrix_sel(dpi, format);
+> > > > > >  		if (dpi->conf->swap_input_support)
+> > > > > >  			mtk_dpi_config_swap_input(dpi, true);
+> > > > > >  		else
+> > > > > > @@ -673,7 +702,10 @@ static int
+> > > > > > mtk_dpi_bridge_atomic_check(struct
+> > > > > > drm_bridge *bridge,
+> > > > > >  	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
+> > > > > >  	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
+> > > > > >  	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
+> > > > > > -	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
+> > > > > > +	if (out_bus_format == MEDIA_BUS_FMT_YUYV8_1X16)
+> > > > > > +		dpi->color_format =
+> > > > > > MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL;
+> > > > > > +	else
+> > > > > > +		dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
+> > > > > >  
+> > > > > >  	return 0;
+> > > > > >  }
+> > > > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> > > > > > b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> > > > > > index 3a02fabe1662..cca0dccb84a2 100644
+> > > > > > --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> > > > > > +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> > > > > > @@ -217,4 +217,7 @@
+> > > > > >  
+> > > > > >  #define EDGE_SEL_EN			BIT(5)
+> > > > > >  #define H_FRE_2N			BIT(25)
+> > > > > > +
+> > > > > > +#define DPI_MATRIX_SET		0xB4
+> > > > > > +#define INT_MATRIX_SEL_MASK		GENMASK(4, 0)
+> > > > > >  #endif /* __MTK_DPI_REGS_H */
+> > > > > 
+> > > > > 
+> > > > 
+> > > > 
+> > > 
+> > > 
+> > 
+> > 
+> 
+> 
 
 
