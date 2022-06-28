@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E19BFC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jun 2022 23:47:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F3CCCA482
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 02:19:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oRvWZ9TeKvYoId4Is7bsf/P3csJZYeH6unVDw+FoBLU=; b=Rg5/ZB9k+oCZK5Fgo557V6lUrS
-	/WWsWN9OAz4h9a61uFHTnVxAI3BaF98xRHoxZbn+wCVLx7Q45TPn+xyGCaD2pUM1fhw+SDgsHSuzM
-	mXb6s8MqzzyN+5mcs8OsVh0dGB8Rre89KhOfaWQG9IgB9g9lOq8cUV16FRBtM0CGBSFnlHUK9bu75
-	UTTQe4PKkkEjDQGMnEXFwQH0ttiGqKEn4+v8VILjljh+LFmBRUVqy2twoilianBXXcsFJyxB3T9Yc
-	b5ABqg0qyAy+kfc1pur1PNcvsXsSQLGYzKQr5JzwuvsruQrup/dfPCHn0NCQfz3jDTuHSM+P+VDNb
-	YWCrgBUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xjyts7DUF8IJ2dRdvXYB/VSubKrpO8B283MZXrdO+9M=; b=bIf976IC6YqAW2ahNmm8R564d0
+	ZgRigf3ZOlmV7/SM9bCo/I9vuCR3fmZGZCxT04/FPG0JfVPaPFBCj2HKKvLDWDuXXDQEMAfG3ba30
+	AdxIVhnaKb94DS326irMe27DEaEoUKKMX2Q0xJiRY2kfOLxATbJWfSXT1YZHoZ4l+BjdeYiMq67B5
+	Sag9rSDmpNHywG7NVPx4wKz3g7UdRhgMmzql49LVVoAEZoYZ9C+FTlEtgeWcfT316ULEVvQaYLoVI
+	lwz4FpMRR+HRyqrKVizVal/qAnjSelNFfgXm9gKFusHHL3uV8askRQNy3tzWl6X9SFTiNWXnjE8Jx
+	fagDyFzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5ySH-003KvK-Nc; Mon, 27 Jun 2022 23:47:45 +0000
-Received: from mail-io1-f41.google.com ([209.85.166.41])
+	id 1o60p6-003eTB-8z; Tue, 28 Jun 2022 02:19:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5yS7-003Ktx-LB; Mon, 27 Jun 2022 23:47:36 +0000
-Received: by mail-io1-f41.google.com with SMTP id a10so11264932ioe.9;
-        Mon, 27 Jun 2022 16:47:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=oRvWZ9TeKvYoId4Is7bsf/P3csJZYeH6unVDw+FoBLU=;
-        b=2cAz3UHhU6DWqTWw3aVldUrKdf/nlok2VLwOmKlmaUFXAtwaVkq03Zw69qL0Iea8Wi
-         WuV6b7OtnOT+phqiJfYVDYHGKgVSQcYXLXt8/0pTpQLSDrAIHNJ3X6CR5TOuhbgigl9X
-         XOeWMgJ+M+OHNWneibZhotq+xA7VmSq/yzj+5vqWQ9MxaJwc99H0qkJSHAZT3d4Jposg
-         7SjHZwAi36XzuJBY16aN2TDNE99ryHA4YBsQpV/dEQK+JkDM2tAzH2bv/wxoMHI71cA5
-         FxHGkMVjYP+tlaec9+0FdOBZw3eCIk93nntx1Wz982OFIwjwpJg/EpH99bhS5R6OkoDf
-         qS4Q==
-X-Gm-Message-State: AJIora9aLip4zDcbNIHu1FCWqe366Cat0va8TYxrUyLFnmHv0bUXGW8e
-	AJdn+YFhL+CRPTXrsuUl1A==
-X-Google-Smtp-Source: AGRyM1sfviI8ea8JVeUGZ7ysyjsRGHtyP3Kc3Y6dB0rkpSKEubWLB6skv7nEn5awW3d9L+56SWnBOg==
-X-Received: by 2002:a05:6638:1344:b0:331:f546:69e with SMTP id u4-20020a056638134400b00331f546069emr9894555jad.131.1656373653305;
-        Mon, 27 Jun 2022 16:47:33 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.253])
-        by smtp.gmail.com with ESMTPSA id b201-20020a6bb2d2000000b00674c8448c3csm5993564iof.6.2022.06.27.16.47.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jun 2022 16:47:32 -0700 (PDT)
-Received: (nullmailer pid 3193779 invoked by uid 1000);
-	Mon, 27 Jun 2022 23:47:29 -0000
-Date: Mon, 27 Jun 2022 17:47:29 -0600
-From: Rob Herring <robh@kernel.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Anurag Kumar Vulisha <anurag.kumar.vulisha@xilinx.com>, Michal Simek <michal.simek@xilinx.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Sean Anderson <sean.anderson@seco.com>
-Subject: Re: [PATCH] dt-bindings: phy: make phy-cells description a text
-Message-ID: <20220627234729.GA3169775-robh@kernel.org>
-References: <20220619113325.21396-1-krzysztof.kozlowski@linaro.org>
- <Yq8LHN+WGVpXDwiM@pendragon.ideasonboard.com>
+	id 1o60os-003eN9-UY; Tue, 28 Jun 2022 02:19:16 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 88686617DB;
+	Tue, 28 Jun 2022 02:19:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3051C341CD;
+	Tue, 28 Jun 2022 02:19:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1656382752;
+	bh=SVjIUq468ZnkreE+5CnjX830DKpi6K2VxXz1oYBEyvA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=rn6u6QlxLBnmRNY35IZnY6ItdgcwojK2IcrNULdcPkP1u9i98Q3quXvWVyu5vSMSE
+	 lPPv/o8jfPKAmFpUIo3leXW37ErEKHbuRqEtzOadimDhou+2X0TLEbDPCLYf6R6Cnq
+	 wmI3Lt5BuoutKRUOQvX5pwzxcjUsGm/LiKV5nNFodV88t8c37mJ7C9Ymi8KNPjXRla
+	 BwFAJEzsnTvZqHBDCp63XlFF7EcwWiYJcCokF1lfWiu3vlI33pWWYznpj1DFmJJ8ON
+	 jbuHAy0lS/6uvu2/Qre6R2na8HSEKT7SOefGkubFPsp9BB/l4eHMnWdqDTSAcATyys
+	 t5g3FNjCr0XOg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Bart Van Assche <bvanassche@acm.org>,
+	Stanley Chu <stanley.chu@mediatek.com>,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Sasha Levin <sashal@kernel.org>,
+	jejb@linux.ibm.com,
+	matthias.bgg@gmail.com,
+	beanhuo@micron.com,
+	avri.altman@wdc.com,
+	daejun7.park@samsung.com,
+	linux-scsi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.18 14/53] scsi: ufs: Simplify ufshcd_clear_cmd()
+Date: Mon, 27 Jun 2022 22:18:00 -0400
+Message-Id: <20220628021839.594423-14-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220628021839.594423-1-sashal@kernel.org>
+References: <20220628021839.594423-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Yq8LHN+WGVpXDwiM@pendragon.ideasonboard.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_164735_734383_3B1B5D2E 
-X-CRM114-Status: GOOD (  16.12  )
+X-CRM114-CacheID: sfid-20220627_191915_042930_591E6C81 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +84,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 19, 2022 at 02:40:12PM +0300, Laurent Pinchart wrote:
-> Hi Krzysztof,
-> 
-> Thank you for the patch.
-> 
-> On Sun, Jun 19, 2022 at 01:33:25PM +0200, Krzysztof Kozlowski wrote:
-> > The description field is a string, so using YAML inside phy-cells
-> > description is not actually helpful.
-> 
-> Does it hurt though ? 
+From: Bart Van Assche <bvanassche@acm.org>
 
-Unfortunately, I see this a bit. It's convenient because the schema 
-passes all the checks. Doh! And I usually stare at it wondering how it 
-passed.
+[ Upstream commit da8badd7d3583f447eac2ab65a332f2d773deca1 ]
 
-Though I probably did review this, so IDK...
+Remove the local variable 'err'. This patch does not change any
+functionality.
 
-> For xlnx,zynqmp-psgtr.yaml I wrote it that way to
-> prepare for a future where it could be described using a YAML schema
-> (but such future may never come).
+Link: https://lore.kernel.org/r/20220613214442.212466-2-bvanassche@acm.org
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/scsi/ufs/ufshcd.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-There's 2 parts. There's the resolving the defines and then applying the 
-schema to the cells. I actually think the latter would be easier. At 
-least from a documenting standpoint, we just need to define our own 
-keyword to stick the schema under. With the tools doing dtb based 
-validation now, the tools already get the phandle node and get the cell 
-size from the DT. It's just another step to extract the 
-node's compatible, find it's schema, and get its cell format schema. Any 
-volunteers?
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 4c9eb4be449c..8f26c4c09c66 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -2856,7 +2856,6 @@ static int ufshcd_compose_dev_cmd(struct ufs_hba *hba,
+ static int
+ ufshcd_clear_cmd(struct ufs_hba *hba, int tag)
+ {
+-	int err = 0;
+ 	unsigned long flags;
+ 	u32 mask = 1 << tag;
+ 
+@@ -2869,11 +2868,8 @@ ufshcd_clear_cmd(struct ufs_hba *hba, int tag)
+ 	 * wait for h/w to clear corresponding bit in door-bell.
+ 	 * max. wait is 1 sec.
+ 	 */
+-	err = ufshcd_wait_for_register(hba,
+-			REG_UTP_TRANSFER_REQ_DOOR_BELL,
+-			mask, ~mask, 1000, 1000);
+-
+-	return err;
++	return ufshcd_wait_for_register(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL,
++					mask, ~mask, 1000, 1000);
+ }
+ 
+ static int
+-- 
+2.35.1
 
-Rob
 
