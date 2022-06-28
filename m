@@ -4,132 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C84ABC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 14:00:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B37F2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 14:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZM1ocdvI1trZHbh5G72ndtn3p+0zFkFamMHCf9aRtL0=; b=akmto0olXZCskJtgmoJYi2NAv/
-	Xa4rNtbVyXUsq3MQ6aET2/pR9Snb0BHJ6Q/FSxMD8f1ykfq41c8R9KFN+5eHl4ndxKzzcnZ8KezXu
-	RD/YYhJgRmMCflJFN8a1r7NBNEqV0S0YMfabtZaiZaY/7gPNIXdvZUeejPuSeueuetJoqD9zCjVO+
-	MlLD7YPSJ2N7mjYRy1tdxw9FHCemT3QJ5tLqapCN4sX6T+C6iUN4TXKIdkgGqJOaI7D+NWEdI60g3
-	58uVCrzwb3ndLh3em/yi9oCQFtWI5s0fdhjCHqKnwP645wBNQxEdP3aC7PpfJa562Q3X39sCe0aa7
-	B4fF/xZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=we5ZALKIcZuWUs35jjg9o55Ctsjy2HnxYxmPXSuiDyg=; b=PxJPolOTcKQMbnUuo9/k+vq8ff
+	FTg/ODRXbFV6HCozODWYeEMMwgww+sNDPTqpF2drmoq+UgCJH4tcLw6Rj6wXNQ6HBmL8OIlkFWlFL
+	yc2oa5PgJG4S0T07er16sEw6yBDGvPkJHI5tKSd81VWPtEpKsx8449hbLBHJt8l3LDIKsUK8v3qAd
+	N9HdKiZtUb9KHY56qkFBW/8Zgjo6V9GgQkRZZme8jNkDgO+0kjRECiMbxsHeFHyUarMDbS2tnw8mY
+	AELFFBKYlBqeRhnrCeBxwkFb7uTOOzDPE1amOEvthp3wItJEeQWcTsn4z10cXylk/7FQNV1+MNBzH
+	jG7bhZ1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Ble-006bcO-Pu; Tue, 28 Jun 2022 14:00:38 +0000
-Received: from sym.noone.org ([178.63.92.236] helo=sym2.noone.org)
+	id 1o6C1F-006fhv-Vh; Tue, 28 Jun 2022 14:16:46 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6BlZ-006bXI-Fk; Tue, 28 Jun 2022 14:00:35 +0000
-Received: by sym2.noone.org (Postfix, from userid 1002)
-	id 4LXR7Z2Gb9zvjfm; Tue, 28 Jun 2022 16:00:26 +0200 (CEST)
-Date: Tue, 28 Jun 2022 16:00:26 +0200
-From: Tobias Klauser <tklauser@distanz.ch>
-To: Saravana Kannan <saravanak@google.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
-	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Al Cooper <alcooperx@gmail.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Vineet Gupta <vgupta@kernel.org>,
-	Richard Genoud <richard.genoud@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Alexander Shiyan <shc_work@mail.ru>,
-	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Karol Gugala <kgugala@antmicro.com>,
-	Mateusz Holenko <mholenko@antmicro.com>,
-	Gabriel Somlo <gsomlo@gmail.com>,
-	Neil Armstrong <narmstrong@baylibre.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Pali Rohar <pali@kernel.org>, Andreas Farber <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang7@gmail.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Hammer Hsieh <hammerh0314@gmail.com>,
-	Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Rob Herring <robh@kernel.org>, sascha hauer <sha@pengutronix.de>,
-	peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>,
-	ulf hansson <ulf.hansson@linaro.org>,
-	len brown <len.brown@intel.com>, pavel machek <pavel@ucw.cz>,
-	joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>,
-	andrew lunn <andrew@lunn.ch>,
-	heiner kallweit <hkallweit1@gmail.com>,
-	eric dumazet <edumazet@google.com>,
-	jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>,
-	linus walleij <linus.walleij@linaro.org>,
-	hideaki yoshifuji <yoshfuji@linux-ipv6.org>,
-	david ahern <dsahern@kernel.org>, kernel-team@android.com,
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-	iommu@lists.linux-foundation.org, netdev@vger.kernel.org,
-	linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
-	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org, linux-snps-arc@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-actions@lists.infradead.org, linux-unisoc@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	sparclinux@vger.kernel.org, Ahmad Fatoum <a.fatoum@pengutronix.de>
-Subject: Re: [PATCH v1 2/2] serial: Set probe_no_timeout for all DT based
- drivers
-Message-ID: <20220628140025.qpom64ptru4ub6fu@distanz.ch>
-References: <20220628020110.1601693-1-saravanak@google.com>
- <20220628020110.1601693-3-saravanak@google.com>
+	id 1o6C1D-006fgm-DD
+	for linux-mediatek@lists.infradead.org; Tue, 28 Jun 2022 14:16:44 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-3177f4ce3e2so118546197b3.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jun 2022 07:16:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=we5ZALKIcZuWUs35jjg9o55Ctsjy2HnxYxmPXSuiDyg=;
+        b=Eyd9FyAYXxniWyCJYJAkq2hVEGZtwL37/io0dfps5oXoGF9tQvN0UI0xhOQzqpcDR+
+         81ACSPLs6vR9gNEPPX6mzpEqhfkqcFtcXODLCvSZ052+43VrQ6YhTXiSRbXCyeik8rXe
+         0miraYk+TxbuFt4D+8hs+jR/K47yYaYDtR7B1p1kMFpoK5KNd539fnbJRsIpGggfdKlD
+         gfcytA/R9tSBaSCamjLMxfwiinGImTqJcKtssfwHZgiPZS/zn95H9omu8G9a/rvnouiW
+         9Lt/am7oME2JJgyri8zSnjm3Stqp2jqUtKBN3pK62Q23qVibf0OGiel/85TyZzDwmKwb
+         GbfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=we5ZALKIcZuWUs35jjg9o55Ctsjy2HnxYxmPXSuiDyg=;
+        b=vrV7fIKRRPvF15CIEcZYYQi/y3c/BzkValo7D/szRXtFJDuf6sU2rlDxeC6FQXURSi
+         VbInJsNmdtX5Obq387O1I3C0GuVgmmBbYi7BGGo+KPvWlcL2f6ilglu/1AKmqBLiA6it
+         gsSLx8CaEWKD07kwJUnYi5b+FeKZKuTGDCEHWJtbuti+XZqwkqMujLrqDvugYOCCujTH
+         rGIWLIwlECHpsSrumr6JqnMU5wgRaJi+cPllOzekviYqT8/svtm0m1BqRuSmsLtCKa9H
+         JJxeNii4BeNwLLMNldNQdHejsvycaZDoLNYCwtKLw1vAjII2M+9GGtm+ho6Qk5/3XtT9
+         lgGQ==
+X-Gm-Message-State: AJIora+G5b1X5FCKazKYFv0c2iJ3mExaa/tLXhHTjgfyv8OdfXhcSvWe
+	b0caZOFZfAbOybv+Z1yexHI+Lv65njY21OSWfJUf5Q==
+X-Google-Smtp-Source: AGRyM1tUYDLFiLuFmKGH4vxI5KGQ3ut80NYRMBi3vRrXwmdeTwR14llzPy5yY/ZHPhJ3bpF4NVMUrneTqSzU7ULR33w=
+X-Received: by 2002:a0d:e20a:0:b0:317:ce36:a3a0 with SMTP id
+ l10-20020a0de20a000000b00317ce36a3a0mr22477892ywe.448.1656425799830; Tue, 28
+ Jun 2022 07:16:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220628020110.1601693-3-saravanak@google.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
+References: <20220627173209.604400-1-nfraprado@collabora.com>
+In-Reply-To: <20220627173209.604400-1-nfraprado@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 28 Jun 2022 16:16:28 +0200
+Message-ID: <CACRpkdbqfH5jG7jZdvoGhNGqWPMBB+ntHgBCL-Od1Y9f9tiiHg@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mt8192: Add RSEL values to bias-pull-{up,down}
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: kernel@collabora.com, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_070033_728581_5BEA207D 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20220628_071643_507866_715DD0AC 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,18 +90,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-28 at 04:01:03 +0200, Saravana Kannan <saravanak@google.com> wrote:
-> diff --git a/drivers/tty/serial/8250/8250_acorn.c b/drivers/tty/serial/8250/8250_acorn.c
-> index 758c4aa203ab..5a6f2f67de4f 100644
-> --- a/drivers/tty/serial/8250/8250_acorn.c
-> +++ b/drivers/tty/serial/8250/8250_acorn.c
-> @@ -114,7 +114,6 @@ static const struct ecard_id serial_cids[] = {
->  static struct ecard_driver serial_card_driver = {
->  	.probe		= serial_card_probe,
->  	.remove		= serial_card_remove,
-> -	.id_table	= serial_cids,
+On Mon, Jun 27, 2022 at 7:32 PM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
 
-Is this change intentional? All other drivers are only changed to set
-.probe_no_time and I don't see anything mentioned in the commit message
-re. this driver's change.
+> Commit fe44e4984018 ("pinctrl: mediatek: add rsel setting on mt8192")
+> added RSEL bias type definition for some pins on mt8192. In order to be
+> able to configure the bias on those pins, add the RSEL values in the
+> bias-pull-up and bias-pull-down properties in the binding.
+>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+
+Patch applied as uncontroversial and you obviously need this.
+
+Yours,
+Linus Walleij
 
