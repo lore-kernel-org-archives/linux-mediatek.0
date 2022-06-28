@@ -4,154 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC58C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 11:15:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52D05C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 11:49:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oiBoTNDwyVYnp/k8YvHLkWovLgqLCCLY+5EADxfgnR4=; b=Tp0ERZKI41rdg6HPQj6w3dwDw2
-	Ddq47aGNyLzIgIJ8n1W0FOmR+pjdkhA3xAebdEGaOz1DUZLiJ9B2ZvDlOWm5K4i2/2/J8DokauMjH
-	EWwVcpitW/2DHq+P/ohWs6dIpoVaxMyBsb7utj4UyqK0jaBxj3UTYQIF4X/acH+qBH4sYE2XbpEA0
-	fUKNFiKHkg29WuzbIzNGrqAwmkfIvXBoU5Fae+FYYUf8vgwwCZ2A5ajt0x7gWL1nD/TxQQhU6oDKE
-	rOu0dVwdhFP17hV++AnzBEzMZtLvDE1Qmqmug4J9YbH8aBppTqnThfpUrN1zumxHydpXD8W7nsioJ
-	3ijkiIaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YBkQLleTWrfB+RKhzuLwsu8Qt8+hczyVZ3A4HQVm23w=; b=HAM1g18Zydb7aFbvp01HL7oToK
+	lMGAur7GKVen6T3Tozik7RsTB3L16FDKJBC62b5hSntsbfzwULXFP40/zrEWKu1AJ/0ivNAjtKQ3w
+	yWi/0xD2Y2vDOIsHaa0MXLyAGehqgixm6hg6V8rDoE6ZNccVXHAQ1oKBBf22ybDqMh+ax/v5TUD7B
+	hY5jidnEK8GvSLBY4bkY7UElBsRGVpnk1mAezr4veLyMkWpjNM+WVf8I7FMAbtlrKObw+L3ZTtoBQ
+	8H/cC0pBJoRuOwo6XFcQasr3KO78rh1kHYostuUOrltNLkbE2wzIRxbVG+coI0S+ejsoNAX73Z2Tm
+	ZgULHKAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o69CB-005sI4-EQ; Tue, 28 Jun 2022 11:15:51 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1o69ik-00614Q-Pi; Tue, 28 Jun 2022 11:49:30 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o69C5-005sCm-Fa; Tue, 28 Jun 2022 11:15:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1656414945; x=1687950945;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=VAm8GqMxSVbXa5l11MJLdH5RISvLfde2v1QEXHVyiio=;
-  b=HRBsKKPDtpbtyLVdjR9THOK1h86J8RZxN7df8fXQhvGxGxEJsF2w0rWr
-   B9xN/EBai9qTk3bCJsIa9Eeit/DSFFLigVPMIb0dMaOkYHsMM1bj3L5Dt
-   U35LWXssooBcqjpmKvOMfi5AMYF4nh269Z7x6Z41PTk/lwUffCZQZEzXn
-   W+X4Ap7gSkVfLnb0KHmuKUTXEpSZ2Rm9P429/eAMO/VqLZPadGoNf4H+t
-   S8hd/remurn7Tm3x5lk3EWDjc0BOk1g/hWHtFxPDJJj1fB+O9e/lZfIFS
-   fxY6+UE3pXxJqbcTDKr3NgNwF383Es15TXBAIsztti3y6GpQhMLHVpea6
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10391"; a="343402312"
-X-IronPort-AV: E=Sophos;i="5.92,227,1650956400"; 
-   d="scan'208";a="343402312"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2022 04:15:39 -0700
-X-IronPort-AV: E=Sophos;i="5.92,227,1650956400"; 
-   d="scan'208";a="540456672"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2022 04:15:17 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.95)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1o69BV-000wl7-8C;
-	Tue, 28 Jun 2022 14:15:09 +0300
-Date: Tue, 28 Jun 2022 14:15:09 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Saravana Kannan <saravanak@google.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
-	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Al Cooper <alcooperx@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Tobias Klauser <tklauser@distanz.ch>,
-	Russell King <linux@armlinux.org.uk>,
-	Vineet Gupta <vgupta@kernel.org>,
-	Richard Genoud <richard.genoud@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Alexander Shiyan <shc_work@mail.ru>,
-	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Karol Gugala <kgugala@antmicro.com>,
-	Mateusz Holenko <mholenko@antmicro.com>,
-	Gabriel Somlo <gsomlo@gmail.com>,
-	Neil Armstrong <narmstrong@baylibre.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Pali Rohar <pali@kernel.org>, Andreas Farber <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang7@gmail.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Hammer Hsieh <hammerh0314@gmail.com>,
-	Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Rob Herring <robh@kernel.org>, sascha hauer <sha@pengutronix.de>,
-	peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>,
-	ulf hansson <ulf.hansson@linaro.org>,
-	len brown <len.brown@intel.com>, pavel machek <pavel@ucw.cz>,
-	joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>,
-	andrew lunn <andrew@lunn.ch>,
-	heiner kallweit <hkallweit1@gmail.com>,
-	eric dumazet <edumazet@google.com>,
-	jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>,
-	linus walleij <linus.walleij@linaro.org>,
-	hideaki yoshifuji <yoshfuji@linux-ipv6.org>,
-	david ahern <dsahern@kernel.org>, kernel-team@android.com,
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-	iommu@lists.linux-foundation.org, netdev@vger.kernel.org,
-	linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
-	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org, linux-snps-arc@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-actions@lists.infradead.org, linux-unisoc@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	sparclinux@vger.kernel.org
-Subject: Re: [PATCH v1 0/2] Fix console probe delay when stdout-path isn't set
-Message-ID: <Yrrivbk2NSK3loBW@smile.fi.intel.com>
-References: <20220628020110.1601693-1-saravanak@google.com>
+	id 1o69iT-0060vH-TQ; Tue, 28 Jun 2022 11:49:15 +0000
+Received: from [192.168.2.145] (109-252-118-164.nat.spd-mgts.ru [109.252.118.164])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: dmitry.osipenko)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3321A660184F;
+	Tue, 28 Jun 2022 12:49:09 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656416949;
+	bh=HGQEPLnVH+jJ83Zot50l0PdSWCuDqpbeVYS48mJP2vs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kdJe+hsxGDkqHitC4VywwVUdMSa0p1LJvIbmEMvG8yLFoS8FoF05EUhaL7RdtdOiL
+	 ODglyQWuRcqO8Z4xTd9YwEoObsgo/eMMBpbHCocY/hUgQ9X3Wj888YUAqLbMXakCvd
+	 AjV+jKscFH196pEGB/x6rxUPw3eYVPWpp92JrejLsBjhM+zkPwa7hl6ZeTZlusqnGV
+	 gqrYQnbaGmY3NjMUyYfdk4tQJ82vMXZbgFv5xicP4WfdL6eSFVPfQo/UezmQ9Z9Bpo
+	 2B/QR++KoJOGMprTXnWMhvpZzccFpEOU2BTwAYxT+d6+8LfU8Q9I6U6caMsZyxmTI/
+	 y3ZDg+Bvli1Mg==
+Message-ID: <ed9e1326-b62a-bc98-027a-79121fe2914c@collabora.com>
+Date: Tue, 28 Jun 2022 14:49:06 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220628020110.1601693-1-saravanak@google.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v2] soc: mediatek: Introduce mediatek-regulator-coupler
+ driver
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wenst@chromium.org,
+ alyssa.rosenzweig@collabora.com, nfraprado@collabora.com, digetx@gmail.com
+References: <20220628110128.64137-1-angelogioacchino.delregno@collabora.com>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20220628110128.64137-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_041545_654337_1559F2A4 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20220628_044914_126811_75664D58 
+X-CRM114-Status: UNSURE (   7.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,20 +77,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 27, 2022 at 07:01:01PM -0700, Saravana Kannan wrote:
-> Since the series that fixes console probe delay based on stdout-path[1] got
-> pulled into driver-core-next, I made these patches on top of them.
-> 
-> Even if stdout-path isn't set in DT, this patch should take console
-> probe times back to how they were before the deferred_probe_timeout
-> clean up series[2].
+Hi Angelo,
 
-Are you sure it's only limited to the serial drivers?
-(just asking, I don't know myself the answer)
+On 6/28/22 14:01, AngeloGioacchino Del Regno wrote:
+> +		mrc->vsram_rdev = rdev;
+> +	} else if (!strstr(rdev_name, "vgpu") && !strstr(rdev_name, "Vgpu"))
+> +		return 1;
+
+Nit: checkpatch --strict should warn about the missing {} here. In
+general braces are always needed for each condition if they were needed
+once in the if-else.
+
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
-
+Best regards,
+Dmitry
 
