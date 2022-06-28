@@ -4,125 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7EBC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 03:15:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5567CC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 03:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:References:Mime-Version:Message-Id:In-Reply-To:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YzHIr0V9HMEpxWmEi0Xj1DJ+4d2XCpwecNoe7o3TDGc=; b=scIjRkEwQ8zDKVv9BZ9lWdSIJo
-	EAieF1kdbshRxnaNGOdN60sxV/2oKtw8ItKed27vT/ZqXhRT1RuDW4pRUwgJNX2VzbwdpaWqoQVtV
-	VxrmoFEGxtzCYeKNSp9wLwKHEkADsxOzfZfXdzoKnmCG2Dcc2w5LmKp9/fJ64n99YO2xSEgIpHT9A
-	0qSFV6JjoQRL4HcmLp6nHVK3IGe0nBIfSzWhRdZN0DVJFYJGj7XLbvFxmfmCNrimTj6nXQJqEM05I
-	YtAtRbmdhcHPem4yr+Wqg/0D4hXspW9OF9jJBf3ihUdQNSll/16bZPLDleKkY5bntbd3DnR+r/nHH
-	M9Gse2rQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mhRYrwrdEVUyJTZMUcSbnZcHfY2diOyWfIhBcpExmUI=; b=BVIDE9USYfAZkc4Gb4y7InC4sC
+	snfrTGrHHbxjejGinEbrxxWUuUKMlsxvpW6LcTjgisdF9lDh8lKsL50anw8/b1ccQk7Ft11GMD1aY
+	LmUlyBXeVBJbTzG9IPRMWTZ3oz8MPQvCYiGKyo24T0jAGa3fS8yN+4xr8HQkxwMwgPDBEi1HfIp0n
+	XoExMwfKklx789nKsaj1RFawD+cziKsdukplm50M541vW5APeH9k3QdjdUzLy+b36RV4cG6nBDNSe
+	OTlf45SQOj7iBykvR+ENbpCW4w7tNzpOxt/P0/CSyy5KeQ/QbtsMd5iA3zJnBj23g0JxxtDVt2/46
+	7VpZ0+5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o61hG-003ygs-UX; Tue, 28 Jun 2022 03:15:26 +0000
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+	id 1o61qk-0041Fe-Fv; Tue, 28 Jun 2022 03:25:14 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o60ZK-003c4d-2l
-	for linux-mediatek@lists.infradead.org; Tue, 28 Jun 2022 02:03:17 +0000
-Received: by mail-yw1-x114a.google.com with SMTP id 00721157ae682-317765eb7ccso92346547b3.13
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jun 2022 19:03:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=date:in-reply-to:message-id:mime-version:references:subject:from:to
-         :cc;
-        bh=YzHIr0V9HMEpxWmEi0Xj1DJ+4d2XCpwecNoe7o3TDGc=;
-        b=WOYPYkzcX52RhlZvpifs4I6lPFXV+5C99yJcPGn4swZ412myqZhpEpJGG6JT8I+diP
-         wmRTXCjvAFpcr/KomN65nvaJHvYHD4UymktEo8kdn5KBIufKB90oBi6uJgpha1QorqN4
-         FoHUev8RwrPNG+R9y5XCbQZGHm1ydbiuEHKmkqJMqr5AQVuz0Cn/swj+fCPxGk277wcm
-         FeyAuVEaB9fajv1pTRajXKWxqwQb5RRy57WkXDveO+g9jxpPIug/uOD6UHEfjE7VM4eE
-         2vOtDCyMr9g/g/WN/lFcVpdMLesGVIWYzLk/qWic19C/MVsZG3elryvTosIN7O8GZ4ml
-         x6ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:in-reply-to:message-id:mime-version
-         :references:subject:from:to:cc;
-        bh=YzHIr0V9HMEpxWmEi0Xj1DJ+4d2XCpwecNoe7o3TDGc=;
-        b=pwIbjm9mdEhH6KJkuIAkANkz95kzDcIDoCmG3KUCFxb9udpRC+YU8KIJwFID3xPnS6
-         UDQHvGFT/l6j/S1mj0CmtHvZgg/PR07n9hy00Gyx6D8l16Oz2QnimE3oNiPfMf/hpWiT
-         YKd+T/vRcRYZK3P+knM6RWtRDtjq7+JErS2MbTqTsIw4W4x1qEP/S2QKvG/XmC2u+89/
-         +ZAKA253NzzduC7taLwEoJ+ARsyyA28hUmaxjUDzh2OJpee7Gd4SLCXL4PeZOII9ZmzU
-         45aiZMU4QfkRGVxuzv4yklnnNN1Az0U//+77J7hicvJ7FVDJG67uFroBRvoX2tVpkTQY
-         LYUA==
-X-Gm-Message-State: AJIora9bE4pWp+OyOK26GVFGUZmzll1JqmEmDTBf4PNA6WueMYGSGGMt
-	kMmXP9NEhmxhtPqKRDMy5i28G1E5K7LkQyI=
-X-Google-Smtp-Source: AGRyM1u1CI3RZWjDOxskNtWWSrcYu4D2aM8Nq4tr5iOtzOleCFvS4Q121j5zvIY5WKw81S4m4Q0aaxhGddgoJuc=
-X-Received: from saravanak.san.corp.google.com ([2620:15c:2d:3:1f27:a302:2101:1c82])
- (user=saravanak job=sendgmr) by 2002:a81:12d3:0:b0:317:aa20:e4eb with SMTP id
- 202-20020a8112d3000000b00317aa20e4ebmr18821146yws.352.1656381787829; Mon, 27
- Jun 2022 19:03:07 -0700 (PDT)
-Date: Mon, 27 Jun 2022 19:01:02 -0700
-In-Reply-To: <20220628020110.1601693-1-saravanak@google.com>
-Message-Id: <20220628020110.1601693-2-saravanak@google.com>
-Mime-Version: 1.0
-References: <20220628020110.1601693-1-saravanak@google.com>
-X-Mailer: git-send-email 2.37.0.rc0.161.g10f37bed90-goog
-Subject: [PATCH v1 1/2] driver core: Add probe_no_timeout flag for drivers
-From: Saravana Kannan <saravanak@google.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jiri Slaby <jirislaby@kernel.org>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, 
-	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, Al Cooper <alcooperx@gmail.com>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Tobias Klauser <tklauser@distanz.ch>, Russell King <linux@armlinux.org.uk>, 
-	Vineet Gupta <vgupta@kernel.org>, Richard Genoud <richard.genoud@gmail.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Alexander Shiyan <shc_work@mail.ru>, 
-	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, 
-	Gabriel Somlo <gsomlo@gmail.com>, Neil Armstrong <narmstrong@baylibre.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <bjorn.andersson@linaro.org>, Pali Rohar <pali@kernel.org>, 
-	Andreas Farber <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laxman Dewangan <ldewangan@nvidia.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, "David S. Miller" <davem@davemloft.net>, 
-	Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, 
-	Michal Simek <michal.simek@xilinx.com>, Saravana Kannan <saravanak@google.com>
-Cc: Rob Herring <robh@kernel.org>, sascha hauer <sha@pengutronix.de>, peng fan <peng.fan@nxp.com>, 
-	kevin hilman <khilman@kernel.org>, ulf hansson <ulf.hansson@linaro.org>, 
-	len brown <len.brown@intel.com>, pavel machek <pavel@ucw.cz>, joerg roedel <joro@8bytes.org>, 
-	will deacon <will@kernel.org>, andrew lunn <andrew@lunn.ch>, heiner kallweit <hkallweit1@gmail.com>, 
-	eric dumazet <edumazet@google.com>, jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>, 
-	linus walleij <linus.walleij@linaro.org>, hideaki yoshifuji <yoshfuji@linux-ipv6.org>, 
-	david ahern <dsahern@kernel.org>, kernel-team@android.com, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, iommu@lists.linux-foundation.org, 
-	netdev@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-serial@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-snps-arc@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-actions@lists.infradead.org, 
-	linux-unisoc@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	sparclinux@vger.kernel.org, Ahmad Fatoum <a.fatoum@pengutronix.de>
-Content-Type: text/plain; charset="UTF-8"
+	id 1o61qh-0041EE-D9; Tue, 28 Jun 2022 03:25:12 +0000
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25S0uqoE002157;
+	Tue, 28 Jun 2022 03:25:04 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2021-07-09;
+ bh=mhRYrwrdEVUyJTZMUcSbnZcHfY2diOyWfIhBcpExmUI=;
+ b=YeyrHQrYRXVwVBmcVCOK2kDO9TorNTA5VB4ajD3ADd2S20wc8G4MpDC6uGxcoWivkWh7
+ gVqQ6QHubcRAha57TiqWNPi0F3dLeGt19UrxqdNR24DNJImJFPmHURUSB+4wwgewjpuQ
+ n/vzJyE12TburwZbTZ20YNkzK0ArDMop5cscZDpKpQlYbTdbxGzxiFszhi8Pba04sQbc
+ aZTOPbS4KPlhfDbEgZm0+avohuu1Njca92Q6yfrkqeZUD4oCvJGLn+Z+LkB6VVd7Mqxi
+ cpx6L6MHxxkjDXegYXwuwPL14RMncUCcq78pFuVRy2PGpf30QFO5N3kyqg6rIQKofjSx Vw== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3gws52cuq3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 28 Jun 2022 03:25:03 +0000
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 25S3F1p5002510;
+	Tue, 28 Jun 2022 03:25:03 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id 3gwrt7jjns-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 28 Jun 2022 03:25:03 +0000
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 25S3NvqO016584;
+	Tue, 28 Jun 2022 03:25:02 GMT
+Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id 3gwrt7jjkg-14;
+	Tue, 28 Jun 2022 03:25:02 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: matthias.bgg@gmail.com, stanley.chu@mediatek.com, jejb@linux.ibm.com,
+        powen.kao@mediatek.com, Ren Zhijie <renzhijie2@huawei.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-scsi@vger.kernel.org
+Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error and type unmatch
+Date: Mon, 27 Jun 2022 23:24:52 -0400
+Message-Id: <165638665782.7726.5510380683354329362.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220619115432.205504-1-renzhijie2@huawei.com>
+References: <20220619115432.205504-1-renzhijie2@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: 3boWjZ63gARTFCZNv0ieh5AH9WDu0tt7
+X-Proofpoint-GUID: 3boWjZ63gARTFCZNv0ieh5AH9WDu0tt7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_190310_152645_BCF4CCA1 
-X-CRM114-Status: GOOD (  23.55  )
+X-CRM114-CacheID: sfid-20220627_202511_596262_89E7D437 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,151 +87,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This flag only needs to be set for drivers of devices that meet all the
-following conditions:
-- Need to probe successfully before userspace init in started
-- Have optional suppliers
-- Can't wait for deferred_probe_timeout to expire
+On Sun, 19 Jun 2022 19:54:32 +0800, Ren Zhijie wrote:
 
-fw_devlink=on uses this info, as needed, to ignore dependencies on supplier
-devices that have not been added or supplier devices that don't have any
-drivers.  It's still up to the driver to decide which of the missing
-suppliers are optional or not.
+> If CONFIG_PM_SLEEP is not set.
+> 
+> make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-, will be failed, like this:
+> 
+> drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_vreg_fix_vcc’:
+> drivers/ufs/host/ufs-mediatek.c:688:46: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 4 has type ‘long unsigned int’ [-Wformat=]
+>     snprintf(vcc_name, MAX_VCC_NAME, "vcc-opt%u", res.a1);
+>                                              ~^   ~~~~~~
+>                                              %lu
+> drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_system_suspend’:
+> drivers/ufs/host/ufs-mediatek.c:1371:8: error: implicit declaration of function ‘ufshcd_system_suspend’; did you mean ‘ufs_mtk_system_suspend’? [-Werror=implicit-function-declaration]
+>   ret = ufshcd_system_suspend(dev);
+>         ^~~~~~~~~~~~~~~~~~~~~
+>         ufs_mtk_system_suspend
+> drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_system_resume’:
+> drivers/ufs/host/ufs-mediatek.c:1386:9: error: implicit declaration of function ‘ufshcd_system_resume’; did you mean ‘ufs_mtk_system_resume’? [-Werror=implicit-function-declaration]
+>   return ufshcd_system_resume(dev);
+>          ^~~~~~~~~~~~~~~~~~~~
+>          ufs_mtk_system_resume
+> cc1: some warnings being treated as errors
+> 
+> [...]
 
-Fixes: 71066545b48e ("driver core: Set fw_devlink.strict=1 by default")
-Reported-by: Sascha Hauer <sha@pengutronix.de>
-Reported-by: Peng Fan <peng.fan@nxp.com>
-Reported-by: Fabio Estevam <festevam@gmail.com>
-Reported-by: Ahmad Fatoum <a.fatoum@pengutronix.de>
-Signed-off-by: Saravana Kannan <saravanak@google.com>
----
- drivers/base/base.h           |  1 +
- drivers/base/core.c           |  7 +++++++
- drivers/base/dd.c             |  3 +++
- include/linux/device.h        |  7 +++++++
- include/linux/device/driver.h | 11 +++++++++++
- 5 files changed, 29 insertions(+)
+Applied to 5.20/scsi-queue, thanks!
 
-diff --git a/drivers/base/base.h b/drivers/base/base.h
-index b3a43a164dcd..149822d2086f 100644
---- a/drivers/base/base.h
-+++ b/drivers/base/base.h
-@@ -193,6 +193,7 @@ extern void device_links_no_driver(struct device *dev);
- extern bool device_links_busy(struct device *dev);
- extern void device_links_unbind_consumers(struct device *dev);
- extern void fw_devlink_drivers_done(void);
-+extern void fw_devlink_probe_no_timeout(void);
- 
- /* device pm support */
- void device_pm_move_to_tail(struct device *dev);
-diff --git a/drivers/base/core.c b/drivers/base/core.c
-index ccdd5b4295de..8e18904a1584 100644
---- a/drivers/base/core.c
-+++ b/drivers/base/core.c
-@@ -54,6 +54,7 @@ static unsigned int defer_sync_state_count = 1;
- static DEFINE_MUTEX(fwnode_link_lock);
- static bool fw_devlink_is_permissive(void);
- static bool fw_devlink_drv_reg_done;
-+static bool fw_devlink_no_timeout;
- static bool fw_devlink_best_effort;
- 
- /**
-@@ -969,6 +970,7 @@ static void device_links_missing_supplier(struct device *dev)
- static bool dev_is_best_effort(struct device *dev)
- {
- 	return (fw_devlink_best_effort && dev->can_match) ||
-+		(fw_devlink_no_timeout && dev->probe_no_timeout) ||
- 		(dev->fwnode && (dev->fwnode->flags & FWNODE_FLAG_BEST_EFFORT));
- }
- 
-@@ -1688,6 +1690,11 @@ void fw_devlink_drivers_done(void)
- 	device_links_write_unlock();
- }
- 
-+void fw_devlink_probe_no_timeout(void)
-+{
-+	fw_devlink_no_timeout = true;
-+}
-+
- /**
-  * wait_for_init_devices_probe - Try to probe any device needed for init
-  *
-diff --git a/drivers/base/dd.c b/drivers/base/dd.c
-index e600dd2afc35..9b0ef2b6a058 100644
---- a/drivers/base/dd.c
-+++ b/drivers/base/dd.c
-@@ -324,6 +324,8 @@ static int deferred_probe_initcall(void)
- 
- 	if (!IS_ENABLED(CONFIG_MODULES))
- 		fw_devlink_drivers_done();
-+	else
-+		fw_devlink_probe_no_timeout();
- 
- 	/*
- 	 * Trigger deferred probe again, this time we won't defer anything
-@@ -734,6 +736,7 @@ static int __driver_probe_device(struct device_driver *drv, struct device *dev)
- 		return -EBUSY;
- 
- 	dev->can_match = true;
-+	dev->probe_no_timeout = drv->probe_no_timeout;
- 	pr_debug("bus: '%s': %s: matched device %s with driver %s\n",
- 		 drv->bus->name, __func__, dev_name(dev), drv->name);
- 
-diff --git a/include/linux/device.h b/include/linux/device.h
-index 424b55df0272..e6246b6cf6cf 100644
---- a/include/linux/device.h
-+++ b/include/linux/device.h
-@@ -536,6 +536,12 @@ struct device_physical_location {
-  * @can_match:	The device has matched with a driver at least once or it is in
-  *		a bus (like AMBA) which can't check for matching drivers until
-  *		other devices probe successfully.
-+ * @probe_no_timeout: Set by driver core to indicate that this device's probe
-+ *		can't wait till driver_probe_timeout expires. This information
-+ *		is used by fw_devlink=on to avoid deferring the probe of this
-+ *		device to wait on supplier devices that haven't been added or
-+ *		probed successfully.
-+ *		See also: probe_no_timeout in struct driver.
-  * @dma_coherent: this particular device is dma coherent, even if the
-  *		architecture supports non-coherent devices.
-  * @dma_ops_bypass: If set to %true then the dma_ops are bypassed for the
-@@ -642,6 +648,7 @@ struct device {
- 	bool			of_node_reused:1;
- 	bool			state_synced:1;
- 	bool			can_match:1;
-+	bool			probe_no_timeout:1;
- #if defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_DEVICE) || \
-     defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_CPU) || \
-     defined(CONFIG_ARCH_HAS_SYNC_DMA_FOR_CPU_ALL)
-diff --git a/include/linux/device/driver.h b/include/linux/device/driver.h
-index 7acaabde5396..2ce60e511504 100644
---- a/include/linux/device/driver.h
-+++ b/include/linux/device/driver.h
-@@ -55,6 +55,15 @@ enum probe_type {
-  * @owner:	The module owner.
-  * @mod_name:	Used for built-in modules.
-  * @suppress_bind_attrs: Disables bind/unbind via sysfs.
-+ * @probe_no_timeout: Set to true by drivers that bind to devices that meet all
-+ *		these conditions:
-+ *		- Need to probe successfully before userspace init in started
-+ *		- Have optional suppliers
-+ *		- Can't wait for deferred_probe_timeout to expire
-+ *		fw_devlink=on uses this info, as needed, to ignore dependencies
-+ *		on supplier devices that have not been added or supplier devices
-+ *		that don't have any drivers. It's still up to the driver to
-+ *		decide which of the missing suppliers are optional or not.
-  * @probe_type:	Type of the probe (synchronous or asynchronous) to use.
-  * @of_match_table: The open firmware table.
-  * @acpi_match_table: The ACPI match table.
-@@ -101,6 +110,8 @@ struct device_driver {
- 	const char		*mod_name;	/* used for built-in modules */
- 
- 	bool suppress_bind_attrs;	/* disables bind/unbind via sysfs */
-+	bool probe_no_timeout;
-+
- 	enum probe_type probe_type;
- 
- 	const struct of_device_id	*of_match_table;
+[1/1] scsi: ufs: ufs-mediatek: Fix build error and type unmatch
+      https://git.kernel.org/mkp/scsi/c/f54912b228a8
+
 -- 
-2.37.0.rc0.161.g10f37bed90-goog
-
+Martin K. Petersen	Oracle Linux Engineering
 
