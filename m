@@ -4,70 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F396C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 15:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C46B3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 16:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M2M/nWMIArWh6jatNaLmjqxVllqrja+AOnsO6CfEGJk=; b=HdLLOTWCkcq5Y5ClgOW363a51Z
-	z58W2u6jNpQBz0qG5l18kKQdBRhWHG3qXQyrEix2lvJmpAhuCCxu7qx6dn2cm38e92lxv1aAwtHVr
-	I5c0IzN1lm5kG0kb4fWH8uSFpcjFR30U5Lk/+MVx8jwo4ZUiqwkVhu0pIYBxSxvPCK1hdONAV/29u
-	LhS969QD2XqyRM0Uc3lSYoBLrnfvOkXLaZbdtOcmPMm0fUtBCRVu/0B7IMY02i7btlik6e8hELBSX
-	xEBBnsz4Qleb3+jlt7u+uiYr1AZa4vBHI+lqYidrsdMgXgNvpchQnK3i0OF+sjoZBbEqyG1KB1G+j
-	hJAIrxpA==;
+	bh=a+P6wSeN2x0ZvD2/JjzHKyqS9/n/5A6tY5jiA6Lhnb8=; b=nEkH8s+Pc8rLbbJ3QZXiHj7uOJ
+	gveiA5F4XuLHXtpx+QahXRfgCbwVcUADQDoh1VjRzeyAfzHWGOx+wqPAV41HoAdG6YQ2mL2ZkufJm
+	15PBVN+HTtN5XdoOnrV3Thxz7hvoiBCb8GW1kD9Rs6E+T4X2VBhTnqba05aCWEXxkghwCWDbEvXf6
+	i7QUPorCbuY4pe7f7J9cxgfHfFf0BfTpecmh+6p8gUvslUhGokldXBcyVJnH5lFPVbHBsJe6YwsGa
+	FPjDODZ5o/fJHe4Sl0Zr05TE5b0z6gmCh3iwNoLac+5AkTYcnDhM6JIIlacA5N6WvN/k78kkw+PfX
+	5iSf41qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6DYS-0074bj-Gr; Tue, 28 Jun 2022 15:55:08 +0000
-Received: from mail-yb1-f176.google.com ([209.85.219.176])
+	id 1o6Dtn-0079jI-Ch; Tue, 28 Jun 2022 16:17:11 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6DYF-0074U0-Qc; Tue, 28 Jun 2022 15:54:57 +0000
-Received: by mail-yb1-f176.google.com with SMTP id l11so22895530ybu.13;
-        Tue, 28 Jun 2022 08:54:53 -0700 (PDT)
+	id 1o6Dti-0079fP-No
+	for linux-mediatek@lists.infradead.org; Tue, 28 Jun 2022 16:17:09 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id i15so23137204ybp.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jun 2022 09:17:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=a+P6wSeN2x0ZvD2/JjzHKyqS9/n/5A6tY5jiA6Lhnb8=;
+        b=svPPiUXmjLu4A2+b3rJgoCqrzxWVmAH7KXTvVP4AwaLTDrIN9AN3BtNG2XiV2ycJ8x
+         6Y9oMX5BQlCl6K+KL9J1KxqNRcb1MdTb/c18nJgwvmc5rVyOe8EKUyj+KrCbNC70iJoL
+         OlJOsi9x5Scvw9W8cP8d/OYBAk6luTiA/PE8w/jzj7tOJ+ICpHFzyCnfh2xqrRn3YVLo
+         nvgpT4pJzONw4hikJOgq/y8DRHjrG2lOfrc2hEWRc02ovhuxlfgkK9/gOnTwVGME5DOU
+         4AXMX65QfUYiz76GEkrT/465op3M51kj45IkhJmeQobRe1+J32FVHZumFFaJBd9Gan88
+         /wYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=M2M/nWMIArWh6jatNaLmjqxVllqrja+AOnsO6CfEGJk=;
-        b=19py3JleUPcflq3jjSwOxT8rhG5IJtOQ8aGu0MhbXSi58T6I3jhuSUQ8lMZflIR76E
-         rwIsOvMc7TA4AHJQA8oW3J6T9RkdFN3OayK5NAGcCd5Dq63AfDjAFBdexIxwl/RNfOSX
-         AelDOm7w9icVfA/zxTPCjpFoHFeFfC8ntKNK6gZtue99L5v/9WwO26LfDhzowsoz1GCB
-         K57EanjYPyEuAse7DI0+fMywImRaW/i3oaL27wbXLw8eEdWaQq5YjVuF2KQXK8+ipI6y
-         dk4/3213aI70pC/ZtWgD+0Lq53eHEhW2HHr0bxenMQ5EIt79+phQRc4aXRh5srmL1SSs
-         LnIg==
-X-Gm-Message-State: AJIora/EVBROqvpIn2GzJS1byYxgU08L7H0WOXL8h+CZBaqaWKnefbfO
-	dbs521dLz9YHeZpvJi7j+45qNKk4rkWAR5W+kXA=
-X-Google-Smtp-Source: AGRyM1v35HaVSm8aGnI7ET9CfTgX4A2FHre43lUkb7LAgas5M9aN2OgQHgFB+2vu3UVCEj1r+eu3tSjcm/Nu5ocohJc=
-X-Received: by 2002:a25:9847:0:b0:669:b4c6:d081 with SMTP id
- k7-20020a259847000000b00669b4c6d081mr19508238ybo.633.1656431692627; Tue, 28
- Jun 2022 08:54:52 -0700 (PDT)
+        bh=a+P6wSeN2x0ZvD2/JjzHKyqS9/n/5A6tY5jiA6Lhnb8=;
+        b=GbOss8r1ToRndS4uoZHCarF4LMSzcHuIrU/i6rIOG+Pmrf4g7EmMpIt4EaYE8qgOpP
+         cwzL5Qx5yDG87S2uv4BINm0H/AIjJlvD0sRUSA1XnAb2viyUrSghdqZFPafiWLjjizf0
+         5MxJfMDG2Laiv4Tt9KZT3oSXeIWVnfF2NnLxqYH/IP2Hnhgh2jhAHxaofbKgOLGohOyI
+         vr4vjT841aGsIgEBu9KtA7uKFQSgbQm2vKpxXGS2XWYwLbbGZv/0lT4fhqooUSAaEbpc
+         ubDZLpzzoRmdSCHQo6h+EgD+yQ/Ccayz+cwm1TvqqIiZi34iqdFaY61NsMw4Df2WFwbh
+         M5fw==
+X-Gm-Message-State: AJIora8xqFsq1PmVJ/jDnVabqCoWXWmfMTkxcODAVkBCI7e/U0GYohKO
+	TqcJbcp4I8M/eRWe1yxgxCh1WDXiOtmF8tiwpE9vSw==
+X-Google-Smtp-Source: AGRyM1vHa4WRnJlk4sln0xuJGdVhcpu8QS15R2N9PrbVvkglI7Nzwr0PBFdp1lTun6HJ/nUSS1O/TmeoEjFZPidRK0U=
+X-Received: by 2002:a25:5bc3:0:b0:669:b722:beb8 with SMTP id
+ p186-20020a255bc3000000b00669b722beb8mr20258885ybb.447.1656433020483; Tue, 28
+ Jun 2022 09:17:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220613120755.14306-1-peter.wang@mediatek.com>
- <CAJZ5v0ipi5frHBGWWcFpGCYL7au=dF6vUG772h0r0pnCYsi5Zg@mail.gmail.com> <028eba89-8176-740f-42df-736a0fcf26e7@mediatek.com>
-In-Reply-To: <028eba89-8176-740f-42df-736a0fcf26e7@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 28 Jun 2022 17:54:41 +0200
-Message-ID: <CAJZ5v0g7kuD9CNBUv+9CuthX79Sq01_e4DQAvbUqFPKsMYkedA@mail.gmail.com>
-Subject: Re: [PATCH v1] PM-runtime: Check supplier_preactivated before release supplier
-To: Peter Wang <peter.wang@mediatek.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stanley Chu <stanley.chu@mediatek.com>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Avri Altman <avri.altman@wdc.com>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
-	wsd_upstream <wsd_upstream@mediatek.com>, 
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, chun-hung.wu@mediatek.com, 
-	alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com, 
-	jiajie.hao@mediatek.com, powen.kao@mediatek.com, qilin.tan@mediatek.com, 
-	lin.gui@mediatek.com, tun-yu.yu@mediatek.com
+References: <20220628020110.1601693-1-saravanak@google.com>
+ <20220628020110.1601693-3-saravanak@google.com> <20220628140025.qpom64ptru4ub6fu@distanz.ch>
+In-Reply-To: <20220628140025.qpom64ptru4ub6fu@distanz.ch>
+From: Saravana Kannan <saravanak@google.com>
+Date: Tue, 28 Jun 2022 09:16:24 -0700
+Message-ID: <CAGETcx_7jS3H2cphiXdk=NBfmuPzsusEwPBx75n3PrP6YTnjnA@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] serial: Set probe_no_timeout for all DT based drivers
+To: Tobias Klauser <tklauser@distanz.ch>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jiri Slaby <jirislaby@kernel.org>, 
+	Michael Ellerman <mpe@ellerman.id.au>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, 
+	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
+	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Nicolas Saenz Julienne <nsaenz@kernel.org>, Al Cooper <alcooperx@gmail.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Russell King <linux@armlinux.org.uk>, Vineet Gupta <vgupta@kernel.org>, 
+	Richard Genoud <richard.genoud@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Alexander Shiyan <shc_work@mail.ru>, 
+	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+	Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, 
+	Gabriel Somlo <gsomlo@gmail.com>, Neil Armstrong <narmstrong@baylibre.com>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <bjorn.andersson@linaro.org>, Pali Rohar <pali@kernel.org>, 
+	Andreas Farber <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Laxman Dewangan <ldewangan@nvidia.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, "David S. Miller" <davem@davemloft.net>, 
+	Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, 
+	Michal Simek <michal.simek@xilinx.com>, Rob Herring <robh@kernel.org>, 
+	sascha hauer <sha@pengutronix.de>, peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>, 
+	ulf hansson <ulf.hansson@linaro.org>, len brown <len.brown@intel.com>, 
+	pavel machek <pavel@ucw.cz>, joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>, 
+	andrew lunn <andrew@lunn.ch>, heiner kallweit <hkallweit1@gmail.com>, 
+	eric dumazet <edumazet@google.com>, jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>, 
+	linus walleij <linus.walleij@linaro.org>, hideaki yoshifuji <yoshfuji@linux-ipv6.org>, 
+	david ahern <dsahern@kernel.org>, kernel-team@android.com, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, iommu@lists.linux-foundation.org, 
+	netdev@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	linuxppc-dev@lists.ozlabs.org, linux-serial@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	linux-snps-arc@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-actions@lists.infradead.org, 
+	linux-unisoc@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+	sparclinux@vger.kernel.org, Ahmad Fatoum <a.fatoum@pengutronix.de>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_085455_903398_E68A1D2C 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20220628_091706_879776_191FCAA3 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,20 +136,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 28, 2022 at 3:53 AM Peter Wang <peter.wang@mediatek.com> wrote:
+On Tue, Jun 28, 2022 at 7:00 AM Tobias Klauser <tklauser@distanz.ch> wrote:
 >
+> On 2022-06-28 at 04:01:03 +0200, Saravana Kannan <saravanak@google.com> wrote:
+> > diff --git a/drivers/tty/serial/8250/8250_acorn.c b/drivers/tty/serial/8250/8250_acorn.c
+> > index 758c4aa203ab..5a6f2f67de4f 100644
+> > --- a/drivers/tty/serial/8250/8250_acorn.c
+> > +++ b/drivers/tty/serial/8250/8250_acorn.c
+> > @@ -114,7 +114,6 @@ static const struct ecard_id serial_cids[] = {
+> >  static struct ecard_driver serial_card_driver = {
+> >       .probe          = serial_card_probe,
+> >       .remove         = serial_card_remove,
+> > -     .id_table       = serial_cids,
 >
-> On 6/28/22 3:00 AM, Rafael J. Wysocki wrote:
-> > On Mon, Jun 13, 2022 at 2:08 PM <peter.wang@mediatek.com> wrote:
-> >> From: Peter Wang <peter.wang@mediatek.com>
-> >>
-> >> With divice link of DL_FLAG_PM_RUNTIME, if consumer call pm_runtime_get_suppliers
-> >> to prevent supplier enter suspend, pm_runtime_release_supplier should
-> >> check supplier_preactivated before let supplier enter suspend.
-> > Why?
->
-> because supplier_preactivated is true means supplier cannot enter
-> suspend, right?
+> Is this change intentional? All other drivers are only changed to set
+> .probe_no_time and I don't see anything mentioned in the commit message
+> re. this driver's change.
 
-No, it doesn't mean that.
+No, that's a mistake. Thanks for catching it! I'll check this patch again.
+
+-Saravana
 
