@@ -4,72 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DBB8C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 02:31:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFB76C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 02:31:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iMBDLShSFZGhf9MPmCMP4kHQ8JD/jxuWPn53udaSr34=; b=icceLKFlBoxrWKNvVO57DjqZk7
-	0bMb/AeTQik49U07aZoWhAfR9i8zY9rbmUKJTgPeGpJrz0wrX7KccWmesWHDvLGeq3mbKXznnHJrZ
-	38+vThUMz6x9hKnnSOIlJ39yJr/u09DyNlo0zJAzrzxU3+osKCgRoN0qujwTK6pTqmsa2h2fDGFlE
-	VaEkaXymNyXjrphvvSRnzyRHBmfkncgTp7tftj5deWVp0LKcwHEBvnbrZnYU4yN8MVR0AvYzFvLz5
-	9wfAPIlSMKOxdM2CnYvoqqhH9j3wTkrhiLqy+pwa86w6f2nWDUk9YcD6Hm/DO2TDqbFgefcrS9sUP
-	Zyf9Fw+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HJxtqab0/tMiakWNEyC3nFz1/Ap3ZwjlyjInjl9oQ08=; b=CbTBXsGr1IBnI3Y3pxEKJzNfuX
+	hE1R6FkleC8uWlLlzCfXq528gOPDoxGRsAKUlra4IYKHUOpEb4xDms51pDtl/Yap7d4SbwKdm+5Vc
+	XLLEdXZmd4aRMdXS0JAe3f3g3ROBBl4daHOUpMWA7uPwI8Kl2bon21hdMcznskbWFpebBKnMoIwhx
+	9SlNIe22gTtckAVAITLo6azg1+dWcz3Q0zkJpP5zoeYh6/fgRty+bS+6o8NWa+21P9XJ4rlPukMFe
+	Jq9H1AZOU3zsjOQsq3OojZUvByp8wjznieP2vW/fVYzFKaY2y/A4LbwNrWLJJC9PV7/VH2fGpH/O1
+	H6nMi7vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o610H-003l5l-R3; Tue, 28 Jun 2022 02:31:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o610N-003l8r-Lh; Tue, 28 Jun 2022 02:31:07 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o60sb-003gjH-HB; Tue, 28 Jun 2022 02:23:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 125F9617CA;
-	Tue, 28 Jun 2022 02:23:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B58BDC34115;
-	Tue, 28 Jun 2022 02:23:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656382984;
-	bh=61r4ir6D/oIz9lNaR6B0OiZXPVrxN4SE4g4dd6RhOsI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=B4NeMg5jurjxLGgjvSeM692KbnzLa0uPlfTrK/OF5P02LOSbPbaVGQLwk9gEc+Z6D
-	 FNKHwUyTLtN8JtWaqqCAzBJVDIEaLSkc++3IH5/3cF5/Bn+91vo/DYERrCfTRht16v
-	 8eUhLQn9TtMZ9bJb1Ul8LKLhcF92FPicHyMlNpU1tPrjnG7isTcMjULwTVAQMke73I
-	 /kI3PSdZ9b04v/iYcNsSBylRrLh/kwpT0d64ELQt8Zcfq0Q0rUh9ns8TVa5fdUCuA9
-	 /XTHnsH9ltpV0ylS6Y/SG+osWAd7Zg5hIG/PcLdrmaPXkclG4ePWqaUPJ+P3Xipi5F
-	 wclgZiC0OkInA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Bart Van Assche <bvanassche@acm.org>,
-	Stanley Chu <stanley.chu@mediatek.com>,
-	Adrian Hunter <adrian.hunter@intel.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	Sasha Levin <sashal@kernel.org>,
-	jejb@linux.ibm.com,
-	matthias.bgg@gmail.com,
-	beanhuo@micron.com,
-	avri.altman@wdc.com,
-	daejun7.park@samsung.com,
-	linux-scsi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 09/34] scsi: ufs: Simplify ufshcd_clear_cmd()
-Date: Mon, 27 Jun 2022 22:22:16 -0400
-Message-Id: <20220628022241.595835-9-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220628022241.595835-1-sashal@kernel.org>
-References: <20220628022241.595835-1-sashal@kernel.org>
+	id 1o60sb-003ghz-91; Tue, 28 Jun 2022 02:23:07 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id x138so8019067pfc.3;
+        Mon, 27 Jun 2022 19:23:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=HJxtqab0/tMiakWNEyC3nFz1/Ap3ZwjlyjInjl9oQ08=;
+        b=GtISRQAw32VwWkIqJjbS6kPz10YSeb/J+R05thf6bFPMAOY82jKQN3UdU/3Xm5A6wE
+         tMPJ9jiXwXd5WIpoNmuhYObSQi+a4vbyn3XjCacf3FIX++nTWeWgUHF+xWdV2kFekLbZ
+         0OzYqNi1FmudYoMCCJZeGvG2ye4sCgduv0rk2Zt4nVkQ98BfuFa3NPGjGKGgPVG9KtHY
+         DntPc1msd2JalXRAlzsxyFpEjwPnKkzTvOPkfaVuXEaP+ZKelLBEm4Nr7ZrcOOgm/4RV
+         HPa6kkD+OJGFCcd57tIyozXxW7wCGRkiieRac/DfVSrfyK1ch327OFoWU4ImG2SclPJ9
+         uIig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=HJxtqab0/tMiakWNEyC3nFz1/Ap3ZwjlyjInjl9oQ08=;
+        b=gPq7GBn2xlBiHswEe8h7X99LpWc/2oe2LvqVGaoS2+xoYlbTcOIp1uWu/Fs0QeLfSg
+         in6rDa+aQLZbvIidErD7Z/6kmTcrU2WObeDavZcSU4etgLPLmFkx9bQY4EqyhLN2odLs
+         qCXS1ibOz+z7HbIkq/Jq0yIa/INbv8GEXqO9Srh+9jO7pk6mlfkkw4pXbyNwfnHumct5
+         C06yXOQys08yaxqfX0tN+8KwTVfMNZLx/RZJSmq29fuDVbKRTsqn5aFdVdCTqKfSzCKC
+         66C29orUXMGAhVVBRPZ/9Znc+ForTZD0gnSffIIcrXReeYVEHONHSGnza3uSuk0tPTzt
+         jGYQ==
+X-Gm-Message-State: AJIora8leMpDZn2itwTPafUknQcnjIQbSM4+MqMDhBF09ZcOTV1Yh8pV
+	Dk1EWjl+o6V2LAbBbshZoPooXVFBVImZNMZ0yQ4=
+X-Google-Smtp-Source: AGRyM1tkELEQsXZZ9rCiYz26Ox2Bo3COuaabo0ODviEYu2B5j99coTUXvXqjCJz9EcYG+uOHPMvd9KNaBAGlSJExO9A=
+X-Received: by 2002:a65:6a0e:0:b0:405:2310:22d0 with SMTP id
+ m14-20020a656a0e000000b00405231022d0mr15760605pgu.290.1656382983124; Mon, 27
+ Jun 2022 19:23:03 -0700 (PDT)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Content-Transfer-Encoding: 8bit
+References: <20220628020110.1601693-1-saravanak@google.com>
+In-Reply-To: <20220628020110.1601693-1-saravanak@google.com>
+From: Fabio Estevam <festevam@gmail.com>
+Date: Mon, 27 Jun 2022 23:22:52 -0300
+Message-ID: <CAOMZO5D29QqH_-pktht6yO_Ga7B7KgeGXxzyUHJWGYfGTJr4pw@mail.gmail.com>
+Subject: Re: [PATCH v1 0/2] Fix console probe delay when stdout-path isn't set
+To: Saravana Kannan <saravanak@google.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jiri Slaby <jirislaby@kernel.org>, 
+	Michael Ellerman <mpe@ellerman.id.au>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, 
+	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
+	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Nicolas Saenz Julienne <nsaenz@kernel.org>, Al Cooper <alcooperx@gmail.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Tobias Klauser <tklauser@distanz.ch>, Russell King <linux@armlinux.org.uk>, 
+	Vineet Gupta <vgupta@kernel.org>, Richard Genoud <richard.genoud@gmail.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Alexander Shiyan <shc_work@mail.ru>, 
+	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	NXP Linux Team <linux-imx@nxp.com>, Karol Gugala <kgugala@antmicro.com>, 
+	Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, 
+	Neil Armstrong <narmstrong@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
+	Bjorn Andersson <bjorn.andersson@linaro.org>, Pali Rohar <pali@kernel.org>, 
+	Andreas Farber <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Laxman Dewangan <ldewangan@nvidia.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, "David S. Miller" <davem@davemloft.net>, 
+	Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, 
+	Michal Simek <michal.simek@xilinx.com>, Rob Herring <robh@kernel.org>, 
+	sascha hauer <sha@pengutronix.de>, peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>, 
+	ulf hansson <ulf.hansson@linaro.org>, len brown <len.brown@intel.com>, 
+	pavel machek <pavel@ucw.cz>, joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>, 
+	andrew lunn <andrew@lunn.ch>, heiner kallweit <hkallweit1@gmail.com>, 
+	eric dumazet <edumazet@google.com>, jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>, 
+	linus walleij <linus.walleij@linaro.org>, hideaki yoshifuji <yoshfuji@linux-ipv6.org>, 
+	david ahern <dsahern@kernel.org>, kernel-team@android.com, 
+	linux-kernel <linux-kernel@vger.kernel.org>, linux-pm@vger.kernel.org, 
+	iommu@lists.linux-foundation.org, netdev <netdev@vger.kernel.org>, 
+	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, 
+	linux-serial@vger.kernel.org, 
+	"moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, linux-aspeed@lists.ozlabs.org, 
+	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	linux-snps-arc@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-actions@lists.infradead.org, 
+	linux-unisoc@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+	sparclinux@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_192305_650085_0728BBFA 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20220627_192305_471155_47FD1E87 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,50 +136,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bart Van Assche <bvanassche@acm.org>
+Hi Saravana,
 
-[ Upstream commit da8badd7d3583f447eac2ab65a332f2d773deca1 ]
+On Mon, Jun 27, 2022 at 11:03 PM Saravana Kannan <saravanak@google.com> wrote:
+>
+> Since the series that fixes console probe delay based on stdout-path[1] got
+> pulled into driver-core-next, I made these patches on top of them.
+>
+> Even if stdout-path isn't set in DT, this patch should take console
+> probe times back to how they were before the deferred_probe_timeout
+> clean up series[2].
+>
+> Fabio/Ahmad/Sascha,
+>
+> Can you give this a shot please?
 
-Remove the local variable 'err'. This patch does not change any
-functionality.
+This series works fine for me (with and without stdout-path), thanks:
 
-Link: https://lore.kernel.org/r/20220613214442.212466-2-bvanassche@acm.org
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Adrian Hunter <adrian.hunter@intel.com>
-Signed-off-by: Bart Van Assche <bvanassche@acm.org>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/scsi/ufs/ufshcd.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index ea6ceab1a1b2..1b32d4f4e21e 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -2649,7 +2649,6 @@ static int ufshcd_compose_dev_cmd(struct ufs_hba *hba,
- static int
- ufshcd_clear_cmd(struct ufs_hba *hba, int tag)
- {
--	int err = 0;
- 	unsigned long flags;
- 	u32 mask = 1 << tag;
- 
-@@ -2662,11 +2661,8 @@ ufshcd_clear_cmd(struct ufs_hba *hba, int tag)
- 	 * wait for for h/w to clear corresponding bit in door-bell.
- 	 * max. wait is 1 sec.
- 	 */
--	err = ufshcd_wait_for_register(hba,
--			REG_UTP_TRANSFER_REQ_DOOR_BELL,
--			mask, ~mask, 1000, 1000);
--
--	return err;
-+	return ufshcd_wait_for_register(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL,
-+					mask, ~mask, 1000, 1000);
- }
- 
- static int
--- 
-2.35.1
-
+Tested-by: Fabio Estevam <festevam@gmail.com>
 
