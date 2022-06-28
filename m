@@ -4,63 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F34CCA47F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 12:18:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C84ABC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 14:00:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8B2z6IPndmsVzjNP4/LzyYmoTz2wVna9IEAuZjAXSDg=; b=WW5qJE+AnBQey+CPtO9luAmyXg
-	KpyGbXlAkglZbJVdOFuDLkJm/LEUdGo8FAl8753F0zQG2kqAyDewtQ9/vS5yMnVgGZhoozqmHCIps
-	jythQJdbj+hKAe6wZqIV+gct5D5OK1GKnxTfQqX0wp0vIKFIIcAPOLVu6kwtKrZXdJlHktLG4mqLQ
-	Putz/VZndLDWaEci1C/Ha6NRTowEDgGrMAEirfAKOWIiOSuTyRaezVBvRWpXRxKl23Xz0xJTkli73
-	+2XJ03KQeA2DJbWteE5B255v1slCSDO/47OamynrBuvMTPe58fFZJ7Cd8MwRL6y5XmINAtuROkBBk
-	ZMXsPDyw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZM1ocdvI1trZHbh5G72ndtn3p+0zFkFamMHCf9aRtL0=; b=akmto0olXZCskJtgmoJYi2NAv/
+	Xa4rNtbVyXUsq3MQ6aET2/pR9Snb0BHJ6Q/FSxMD8f1ykfq41c8R9KFN+5eHl4ndxKzzcnZ8KezXu
+	RD/YYhJgRmMCflJFN8a1r7NBNEqV0S0YMfabtZaiZaY/7gPNIXdvZUeejPuSeueuetJoqD9zCjVO+
+	MlLD7YPSJ2N7mjYRy1tdxw9FHCemT3QJ5tLqapCN4sX6T+C6iUN4TXKIdkgGqJOaI7D+NWEdI60g3
+	58uVCrzwb3ndLh3em/yi9oCQFtWI5s0fdhjCHqKnwP645wBNQxEdP3aC7PpfJa562Q3X39sCe0aa7
+	B4fF/xZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6AAe-0068HW-SW; Tue, 28 Jun 2022 12:18:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o6Ble-006bcO-Pu; Tue, 28 Jun 2022 14:00:38 +0000
+Received: from sym.noone.org ([178.63.92.236] helo=sym2.noone.org)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6AAQ-0068Be-KE; Tue, 28 Jun 2022 12:18:07 +0000
-X-UUID: cdfe5688c3f54f58bcdfc1ccee3d0c6a-20220628
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:c28d9641-7c6a-476d-bf79-f4203a7832e4,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:dbbdfe85-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: cdfe5688c3f54f58bcdfc1ccee3d0c6a-20220628
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yee.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 389162432; Tue, 28 Jun 2022 05:17:54 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 28 Jun 2022 19:37:17 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 28 Jun 2022 19:37:17 +0800
-From: <yee.lee@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: <catalin.marinas@arm.com>, Yee Lee <yee.lee@mediatek.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 0/1] mm: kfence: fix unexpected leak scan on kfence pool
-Date: Tue, 28 Jun 2022 19:37:10 +0800
-Message-ID: <20220628113714.7792-1-yee.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1o6BlZ-006bXI-Fk; Tue, 28 Jun 2022 14:00:35 +0000
+Received: by sym2.noone.org (Postfix, from userid 1002)
+	id 4LXR7Z2Gb9zvjfm; Tue, 28 Jun 2022 16:00:26 +0200 (CEST)
+Date: Tue, 28 Jun 2022 16:00:26 +0200
+From: Tobias Klauser <tklauser@distanz.ch>
+To: Saravana Kannan <saravanak@google.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Al Cooper <alcooperx@gmail.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Vineet Gupta <vgupta@kernel.org>,
+	Richard Genoud <richard.genoud@gmail.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Alexander Shiyan <shc_work@mail.ru>,
+	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Karol Gugala <kgugala@antmicro.com>,
+	Mateusz Holenko <mholenko@antmicro.com>,
+	Gabriel Somlo <gsomlo@gmail.com>,
+	Neil Armstrong <narmstrong@baylibre.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Pali Rohar <pali@kernel.org>, Andreas Farber <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang7@gmail.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Rob Herring <robh@kernel.org>, sascha hauer <sha@pengutronix.de>,
+	peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>,
+	ulf hansson <ulf.hansson@linaro.org>,
+	len brown <len.brown@intel.com>, pavel machek <pavel@ucw.cz>,
+	joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>,
+	andrew lunn <andrew@lunn.ch>,
+	heiner kallweit <hkallweit1@gmail.com>,
+	eric dumazet <edumazet@google.com>,
+	jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>,
+	linus walleij <linus.walleij@linaro.org>,
+	hideaki yoshifuji <yoshfuji@linux-ipv6.org>,
+	david ahern <dsahern@kernel.org>, kernel-team@android.com,
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+	iommu@lists.linux-foundation.org, netdev@vger.kernel.org,
+	linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-snps-arc@lists.infradead.org,
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-unisoc@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	sparclinux@vger.kernel.org, Ahmad Fatoum <a.fatoum@pengutronix.de>
+Subject: Re: [PATCH v1 2/2] serial: Set probe_no_timeout for all DT based
+ drivers
+Message-ID: <20220628140025.qpom64ptru4ub6fu@distanz.ch>
+References: <20220628020110.1601693-1-saravanak@google.com>
+ <20220628020110.1601693-3-saravanak@google.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220628020110.1601693-3-saravanak@google.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_051806_706288_0F49EBAD 
-X-CRM114-Status: UNSURE (   7.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220628_070033_728581_5BEA207D 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,52 +144,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yee Lee <yee.lee@mediatek.com>
+On 2022-06-28 at 04:01:03 +0200, Saravana Kannan <saravanak@google.com> wrote:
+> diff --git a/drivers/tty/serial/8250/8250_acorn.c b/drivers/tty/serial/8250/8250_acorn.c
+> index 758c4aa203ab..5a6f2f67de4f 100644
+> --- a/drivers/tty/serial/8250/8250_acorn.c
+> +++ b/drivers/tty/serial/8250/8250_acorn.c
+> @@ -114,7 +114,6 @@ static const struct ecard_id serial_cids[] = {
+>  static struct ecard_driver serial_card_driver = {
+>  	.probe		= serial_card_probe,
+>  	.remove		= serial_card_remove,
+> -	.id_table	= serial_cids,
 
-Since the latest patches of kmemleak separated its address management 
-to two rb-trees, phys and virt, the kmemleak_free failed to free kfence_pool
-from the virt tree. It caused unexpected scan the blocks and triggered
-kfence faults.
-
-Reference: 
-https://lore.kernel.org/linux-mm/20220611035551.1823303-1-patrick.wang.shcn@gmail.com/
-
- ==================================================================
- BUG: KFENCE: invalid read in scan_block+0x13c/0x838
-
-  Invalid read at 0x000000003dc26873:
-  scan_block+0x13c/0x838
-  scan_gray_list+0x1f0/0x478
-  kmemleak_scan+0x63c/0xd64
-  kmemleak_write+0x618/0x8cc
-  full_proxy_write+0x70/0x138
-  vfs_write+0x108/0x314
-  ksys_write+0x7c/0x14c
-  __arm64_sys_write+0x20/0x30
-  el0_svc_common+0xa8/0x144
-  do_el0_svc+0x30/0xd4
-  el0_svc+0x38/0x15c
-  el0t_64_sync_handler+0x88/0xf8
-  el0t_64_sync+0x1a0/0x1a4
-
- CPU: 0 PID: 128 Comm: sh Not tainted 5.18.0-mainline-40996-g7d83a175ff4a-dirty #1
- Hardware name: linux,dummy-virt (DT)
- ==================================================================
-
-This patch applies kmemleak_ignore_phys() to replace the original kmemleak_free and
-adapts it to the late enabling case. 
-
-v1->v2:
- - use kmemleak_ignore_phys() to bypass the scanning.
- - move out the freeing opeartion from late enabling as it's trivial.
-
-Yee Lee (1):
-  mm: kfence: apply kmemleak_ignore_phys on early allocated pool
-
- mm/kfence/core.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
--- 
-2.18.0
-
+Is this change intentional? All other drivers are only changed to set
+.probe_no_time and I don't see anything mentioned in the commit message
+re. this driver's change.
 
