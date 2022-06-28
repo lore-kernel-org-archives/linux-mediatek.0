@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 266D4CCA479
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 12:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F34CCA47F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 12:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7zXu0ktyw7BMrjs+/PsBz2fQRMG/j+JasIZ/NDWZBX0=; b=4jKnNnfElaAW1+Gh/IYhAmSYUB
-	iMubsNGcs1EEWc+CDSjbB8o06rUiRSpUNpncMEDyxQ3jZr8G+T3Eh4f9TPYC4mkEobDJ9D0EOtZW7
-	vm7xaGHZsxmkLqGDc86NNjXjhPJhwOIKLKiWzjZ72B+LhqutdHkfZFHUlhsTrjtznSHyMf3V1WHNN
-	Crdh33oVbk+94zPZDx6uRSjl+cI4OyIW/3DWEOB0fGdKqAdEQdxNLQklZHVsHwMVDv6P6lf9FSyD0
-	zUNhJnZS1nyEl7U3yjyCiQk/G4RCxnE32iWYLxq29AVZbMoFxtCvaB5IkXixrNzW//wNNTEAavs7m
-	Kj5UX7MQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8B2z6IPndmsVzjNP4/LzyYmoTz2wVna9IEAuZjAXSDg=; b=WW5qJE+AnBQey+CPtO9luAmyXg
+	KpyGbXlAkglZbJVdOFuDLkJm/LEUdGo8FAl8753F0zQG2kqAyDewtQ9/vS5yMnVgGZhoozqmHCIps
+	jythQJdbj+hKAe6wZqIV+gct5D5OK1GKnxTfQqX0wp0vIKFIIcAPOLVu6kwtKrZXdJlHktLG4mqLQ
+	Putz/VZndLDWaEci1C/Ha6NRTowEDgGrMAEirfAKOWIiOSuTyRaezVBvRWpXRxKl23Xz0xJTkli73
+	+2XJ03KQeA2DJbWteE5B255v1slCSDO/47OamynrBuvMTPe58fFZJ7Cd8MwRL6y5XmINAtuROkBBk
+	ZMXsPDyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6AAT-0068FB-B6; Tue, 28 Jun 2022 12:18:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o6AAe-0068HW-SW; Tue, 28 Jun 2022 12:18:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6AAQ-0068BQ-2x; Tue, 28 Jun 2022 12:18:07 +0000
-X-UUID: 24d200fb1ecc478781ce5c9009635f16-20220628
+	id 1o6AAQ-0068Be-KE; Tue, 28 Jun 2022 12:18:07 +0000
+X-UUID: cdfe5688c3f54f58bcdfc1ccee3d0c6a-20220628
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:0e93d573-6df8-4583-9bd7-bb5a313d2dd0,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.7,REQID:c28d9641-7c6a-476d-bf79-f4203a7832e4,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:7a500ed6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-META: VersionHash:87442a2,CLOUDID:dbbdfe85-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 24d200fb1ecc478781ce5c9009635f16-20220628
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: cdfe5688c3f54f58bcdfc1ccee3d0c6a-20220628
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yee.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 587943295; Tue, 28 Jun 2022 05:17:53 -0700
+	with ESMTP id 389162432; Tue, 28 Jun 2022 05:17:54 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 28 Jun 2022 19:37:18 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 28 Jun 2022 19:37:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 28 Jun 2022 19:37:18 +0800
+ Transport; Tue, 28 Jun 2022 19:37:17 +0800
 From: <yee.lee@mediatek.com>
 To: <linux-kernel@vger.kernel.org>
-CC: <catalin.marinas@arm.com>, Yee Lee <yee.lee@mediatek.com>, "Alexander
- Potapenko" <glider@google.com>, Marco Elver <elver@google.com>, Dmitry Vyukov
-	<dvyukov@google.com>, Andrew Morton <akpm@linux-foundation.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, "open list:KFENCE"
-	<kasan-dev@googlegroups.com>, "open list:MEMORY MANAGEMENT"
-	<linux-mm@kvack.org>, "moderated list:ARM/Mediatek SoC support"
+CC: <catalin.marinas@arm.com>, Yee Lee <yee.lee@mediatek.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support"
 	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
  support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early allocated pool
-Date: Tue, 28 Jun 2022 19:37:11 +0800
-Message-ID: <20220628113714.7792-2-yee.lee@mediatek.com>
+Subject: [PATCH v2 0/1] mm: kfence: fix unexpected leak scan on kfence pool
+Date: Tue, 28 Jun 2022 19:37:10 +0800
+Message-ID: <20220628113714.7792-1-yee.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220628113714.7792-1-yee.lee@mediatek.com>
-References: <20220628113714.7792-1-yee.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_051806_177043_5BEE17FA 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20220628_051806_706288_0F49EBAD 
+X-CRM114-Status: UNSURE (   7.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,59 +77,49 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yee Lee <yee.lee@mediatek.com>
 
-This patch solves two issues.
+Since the latest patches of kmemleak separated its address management 
+to two rb-trees, phys and virt, the kmemleak_free failed to free kfence_pool
+from the virt tree. It caused unexpected scan the blocks and triggered
+kfence faults.
 
-(1) The pool allocated by memblock needs to unregister from
-kmemleak scanning. Apply kmemleak_ignore_phys to replace the
-original kmemleak_free as its address now is stored in the phys tree.
+Reference: 
+https://lore.kernel.org/linux-mm/20220611035551.1823303-1-patrick.wang.shcn@gmail.com/
 
-(2) The pool late allocated by page-alloc doesn't need to unregister.
-Move out the freeing operation from its call path.
+ ==================================================================
+ BUG: KFENCE: invalid read in scan_block+0x13c/0x838
 
-Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
-Suggested-by: Marco Elver <elver@google.com>
-Signed-off-by: Yee Lee <yee.lee@mediatek.com>
----
+  Invalid read at 0x000000003dc26873:
+  scan_block+0x13c/0x838
+  scan_gray_list+0x1f0/0x478
+  kmemleak_scan+0x63c/0xd64
+  kmemleak_write+0x618/0x8cc
+  full_proxy_write+0x70/0x138
+  vfs_write+0x108/0x314
+  ksys_write+0x7c/0x14c
+  __arm64_sys_write+0x20/0x30
+  el0_svc_common+0xa8/0x144
+  do_el0_svc+0x30/0xd4
+  el0_svc+0x38/0x15c
+  el0t_64_sync_handler+0x88/0xf8
+  el0t_64_sync+0x1a0/0x1a4
+
+ CPU: 0 PID: 128 Comm: sh Not tainted 5.18.0-mainline-40996-g7d83a175ff4a-dirty #1
+ Hardware name: linux,dummy-virt (DT)
+ ==================================================================
+
+This patch applies kmemleak_ignore_phys() to replace the original kmemleak_free and
+adapts it to the late enabling case. 
+
+v1->v2:
+ - use kmemleak_ignore_phys() to bypass the scanning.
+ - move out the freeing opeartion from late enabling as it's trivial.
+
+Yee Lee (1):
+  mm: kfence: apply kmemleak_ignore_phys on early allocated pool
+
  mm/kfence/core.c | 18 +++++++++---------
  1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/mm/kfence/core.c b/mm/kfence/core.c
-index 4e7cd4c8e687..32a4a75e820c 100644
---- a/mm/kfence/core.c
-+++ b/mm/kfence/core.c
-@@ -600,14 +600,6 @@ static unsigned long kfence_init_pool(void)
- 		addr += 2 * PAGE_SIZE;
- 	}
- 
--	/*
--	 * The pool is live and will never be deallocated from this point on.
--	 * Remove the pool object from the kmemleak object tree, as it would
--	 * otherwise overlap with allocations returned by kfence_alloc(), which
--	 * are registered with kmemleak through the slab post-alloc hook.
--	 */
--	kmemleak_free(__kfence_pool);
--
- 	return 0;
- }
- 
-@@ -620,8 +612,16 @@ static bool __init kfence_init_pool_early(void)
- 
- 	addr = kfence_init_pool();
- 
--	if (!addr)
-+	if (!addr) {
-+		/*
-+		 * The pool is live and will never be deallocated from this point on.
-+		 * Ignore the pool object from the kmemleak phys object tree, as it would
-+		 * otherwise overlap with allocations returned by kfence_alloc(), which
-+		 * are registered with kmemleak through the slab post-alloc hook.
-+		 */
-+		kmemleak_ignore_phys(__pa(__kfence_pool));
- 		return true;
-+	}
- 
- 	/*
- 	 * Only release unprotected pages, and do not try to go back and change
 -- 
 2.18.0
 
