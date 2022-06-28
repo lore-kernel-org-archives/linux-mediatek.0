@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63201C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 06:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BF95C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 06:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YCflgZYLsDCCZqaXFDcO5i1/XzmQVtGYNBpTYftNe7w=; b=UOJEYBBZumlVB2W4D/JQdJ796O
-	YIGhYyy/kOve4ulDcvg1vyVIO1cm2DO/4jzD0TpnRXszy9kPdpfskXwhvxIgHIVUo6Zl0eUUJpn/a
-	QZ0Z/jWt3TAf+ETMjDeql2Kyg747PPpq/rrcCPfulchmhFjhECLQvMEShvjF1B0JPh53Nn+rLs3LZ
-	pCHzNAu9K5wJVUiUmCwdYdivxNcQljD1g50v4pX7tyb4pPQgtYB0XDblwcGmFmnG93Q9NKyGrTQce
-	uE736Vn3Yp8V6LNSBQnilLK1b21vrXxLqwRSG6WGW7iFftKnFFLiCc76H2Wp5DO8Z65Wn/rnLPKhs
-	iYt2LUrg==;
+	bh=jrd18jDkL+GyX8NAgPyqfz48Y92XMpElU+1xaowr3Oo=; b=SoHrP/wkIseVudJAGCP3N1Bb/d
+	qP2GkVTH3sOSuXccwLKdoVer3D8cyfrqDHi2U+EdsJsH8Un9iEkBsaL1uHn0fwYgTd38dCgYRHjBj
+	xlGjsP/NpNN4YHk9EipyoxTQzKQuUJupbs+KAIpbMz4JcVzjyyu/Et+x19F2AFv4ThOWqXj7bcXNj
+	cwRIkh2M5Eh8lVgvG0oMhBieMmC1+4r67ih2r1UB2lGw1n7Rn/lgGpYcgVZ/PwZxBkbi1/ALtC1LI
+	GGVQkdDEY0Hk4kUlALkKslWw9aR8xJIVsgH1hPyz0QtPIv5CVD+uSUaXFmSCSxZlN8CJuwXUJkLhk
+	5mamr7/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o64PG-004aXX-C1; Tue, 28 Jun 2022 06:09:02 +0000
+	id 1o64PH-004aYC-LC; Tue, 28 Jun 2022 06:09:03 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o64EZ-004VVY-Hw; Tue, 28 Jun 2022 05:58:01 +0000
-X-UUID: 8cbd1e7b46974ff5af0d40208b33f60a-20220627
+	id 1o64Ec-004VWq-TG; Tue, 28 Jun 2022 05:58:07 +0000
+X-UUID: 0b86b7094b944875834adf21acc6c788-20220627
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:d65bfb12-7e80-46aa-8ce8-0f516ec27ce3,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:87442a2,CLOUDID:0475d262-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-O-INFO: VERSION:1.1.7,REQID:ce43f788-bddb-4732-8f7c-579561fa82bd,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:6b1af585-57f0-47ca-ba27-fe8c57fbf305,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 8cbd1e7b46974ff5af0d40208b33f60a-20220627
+X-UUID: 0b86b7094b944875834adf21acc6c788-20220627
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1111351666; Mon, 27 Jun 2022 22:57:55 -0700
+	with ESMTP id 1225414644; Mon, 27 Jun 2022 22:57:57 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 28 Jun 2022 09:32:21 +0800
+ Tue, 28 Jun 2022 09:37:58 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 28 Jun 2022 09:32:20 +0800
-Message-ID: <eb096460b04fed32d29db9f6b66c839e964d2a74.camel@mediatek.com>
-Subject: Re: [PATCH v23 04/14] drm/mediatek: add display merge advance
- config API for MT8195
+ Transport; Tue, 28 Jun 2022 09:37:58 +0800
+Message-ID: <e58b55e1992ce37f35491f90cf7ccfb419a739e2.camel@mediatek.com>
+Subject: Re: [PATCH v23 06/14] drm/mediatek: add display merge mute/unmute
+ support for MT8195
 From: CK Hu <ck.hu@mediatek.com>
 To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
@@ -61,18 +61,18 @@ CC: <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
  Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>
-Date: Tue, 28 Jun 2022 09:32:21 +0800
-In-Reply-To: <20220620091930.27797-5-nancy.lin@mediatek.com>
+Date: Tue, 28 Jun 2022 09:37:58 +0800
+In-Reply-To: <20220620091930.27797-7-nancy.lin@mediatek.com>
 References: <20220620091930.27797-1-nancy.lin@mediatek.com>
-	 <20220620091930.27797-5-nancy.lin@mediatek.com>
+	 <20220620091930.27797-7-nancy.lin@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_225759_649774_A8DC3B16 
-X-CRM114-Status: GOOD (  24.53  )
+X-CRM114-CacheID: sfid-20220627_225803_029546_9168C216 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,10 +90,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Nancy:
 
 On Mon, 2022-06-20 at 17:19 +0800, Nancy.Lin wrote:
-> Add merge new advance config API. The original merge API is
-> mtk_ddp_comp_funcs function prototype. The API interface parameters
-> cannot be modified, so add a new config API for extension. This is
-> the preparation for ovl_adaptor merge control.
+> Add merge mute/unmute setting for MT8195.
+> MT8195 Vdosys1 merge1~merge4 support HW mute function.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -112,147 +110,67 @@ CK
 > angelogioacchino.delregno@collabora.com>
 > Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  3 ++
->  drivers/gpu/drm/mediatek/mtk_disp_merge.c | 52 ++++++++++++++++++++-
-> --
->  2 files changed, 48 insertions(+), 7 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_disp_merge.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> index 2cd1c660ace3..e847e90f436d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> @@ -63,6 +63,9 @@ void mtk_merge_config(struct device *dev, unsigned
-> int width,
->  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
->  void mtk_merge_start(struct device *dev);
->  void mtk_merge_stop(struct device *dev);
-> +void mtk_merge_advance_config(struct device *dev, unsigned int l_w,
-> unsigned int r_w,
-> +			      unsigned int h, unsigned int vrefresh,
-> unsigned int bpc,
-> +			      struct cmdq_pkt *cmdq_pkt);
->  
->  void mtk_ovl_bgclr_in_on(struct device *dev);
->  void mtk_ovl_bgclr_in_off(struct device *dev);
 > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
 > b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-> index 45face638153..40da0555416d 100644
+> index c7af5ccab916..2e13d2fb429e 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-> @@ -17,6 +17,7 @@
->  #define DISP_REG_MERGE_CTRL		0x000
->  #define MERGE_EN				1
->  #define DISP_REG_MERGE_CFG_0		0x010
-> +#define DISP_REG_MERGE_CFG_1		0x014
->  #define DISP_REG_MERGE_CFG_4		0x020
->  #define DISP_REG_MERGE_CFG_10		0x038
->  /* no swap */
-> @@ -25,9 +26,12 @@
->  #define DISP_REG_MERGE_CFG_12		0x040
->  #define CFG_10_10_1PI_2PO_BUF_MODE		6
->  #define CFG_10_10_2PI_2PO_BUF_MODE		8
-> +#define CFG_11_10_1PI_2PO_MERGE			18
->  #define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
->  #define DISP_REG_MERGE_CFG_24		0x070
->  #define DISP_REG_MERGE_CFG_25		0x074
-> +#define DISP_REG_MERGE_CFG_26		0x078
-> +#define DISP_REG_MERGE_CFG_27		0x07c
->  #define DISP_REG_MERGE_CFG_36		0x0a0
->  #define ULTRA_EN				BIT(0)
->  #define PREULTRA_EN				BIT(4)
-> @@ -98,12 +102,19 @@ static void mtk_merge_fifo_setting(struct
-> mtk_disp_merge *priv,
->  void mtk_merge_config(struct device *dev, unsigned int w,
->  		      unsigned int h, unsigned int vrefresh,
->  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-> +{
-> +	mtk_merge_advance_config(dev, w, 0, h, vrefresh, bpc,
-> cmdq_pkt);
-> +}
+> @@ -58,12 +58,15 @@
+>  #define FLD_PREULTRA_TH_LOW			GENMASK(15, 0)
+>  #define FLD_PREULTRA_TH_HIGH			GENMASK(31, 16)
+>  
+> +#define DISP_REG_MERGE_MUTE_0		0xf00
 > +
-> +void mtk_merge_advance_config(struct device *dev, unsigned int l_w,
-> unsigned int r_w,
-> +			      unsigned int h, unsigned int vrefresh,
-> unsigned int bpc,
-> +			      struct cmdq_pkt *cmdq_pkt)
+>  struct mtk_disp_merge {
+>  	void __iomem			*regs;
+>  	struct clk			*clk;
+>  	struct clk			*async_clk;
+>  	struct cmdq_client_reg		cmdq_reg;
+>  	bool				fifo_en;
+> +	bool				mute_support;
+>  };
+>  
+>  void mtk_merge_start(struct device *dev)
+> @@ -80,6 +83,10 @@ void mtk_merge_start_cmdq(struct device *dev,
+> struct cmdq_pkt *cmdq_pkt)
 >  {
 >  	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
->  	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
 >  
-> -	if (!h || !w) {
-> -		dev_err(dev, "%s: input width(%d) or height(%d) is
-> invalid\n", __func__, w, h);
-> +	if (!h || !l_w) {
-> +		dev_err(dev, "%s: input width(%d) or height(%d) is
-> invalid\n", __func__, l_w, h);
->  		return;
->  	}
+> +	if (priv->mute_support)
+> +		mtk_ddp_write(cmdq_pkt, 0x0, &priv->cmdq_reg, priv-
+> >regs,
+> +			      DISP_REG_MERGE_MUTE_0);
+> +
+>  	mtk_ddp_write(cmdq_pkt, 1, &priv->cmdq_reg, priv->regs,
+>  		      DISP_REG_MERGE_CTRL);
+>  }
+> @@ -88,6 +95,10 @@ void mtk_merge_stop_cmdq(struct device *dev,
+> struct cmdq_pkt *cmdq_pkt)
+>  {
+>  	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
 >  
-> @@ -112,14 +123,41 @@ void mtk_merge_config(struct device *dev,
-> unsigned int w,
->  		mode = CFG_10_10_2PI_2PO_BUF_MODE;
->  	}
+> +	if (priv->mute_support)
+> +		mtk_ddp_write(cmdq_pkt, 0x1, &priv->cmdq_reg, priv-
+> >regs,
+> +			      DISP_REG_MERGE_MUTE_0);
+> +
+>  	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
+>  		      DISP_REG_MERGE_CTRL);
+>  }
+> @@ -262,6 +273,8 @@ static int mtk_disp_merge_probe(struct
+> platform_device *pdev)
+>  	priv->fifo_en = of_property_read_bool(dev->of_node,
+>  					      "mediatek,merge-fifo-
+> en");
 >  
-> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
-> >regs,
-> +	if (r_w)
-> +		mode = CFG_11_10_1PI_2PO_MERGE;
-> +
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv-
-> >regs,
->  		      DISP_REG_MERGE_CFG_0);
-> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
-> >regs,
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv-
-> >regs,
-> +		      DISP_REG_MERGE_CFG_1);
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | (l_w + r_w), &priv->cmdq_reg, 
-> priv->regs,
->  		      DISP_REG_MERGE_CFG_4);
-> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
-> >regs,
-> +	/*
-> +	 * DISP_REG_MERGE_CFG_24 is merge SRAM0 w/h
-> +	 * DISP_REG_MERGE_CFG_25 is merge SRAM1 w/h.
-> +	 * If r_w > 0, the merge is in merge mode (input0 and input1
-> merge together),
-> +	 * the input0 goes to SRAM0, and input1 goes to SRAM1.
-> +	 * If r_w = 0, the merge is in buffer mode, the input goes
-> through SRAM0 and
-> +	 * then to SRAM1. Both SRAM0 and SRAM1 are set to the same
-> size.
-> +	 */
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv-
-> >regs,
->  		      DISP_REG_MERGE_CFG_24);
-> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
-> >regs,
-> -		      DISP_REG_MERGE_CFG_25);
-> +	if (r_w)
-> +		mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, 
-> priv->regs,
-> +			      DISP_REG_MERGE_CFG_25);
-> +	else
-> +		mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, 
-> priv->regs,
-> +			      DISP_REG_MERGE_CFG_25);
-> +
-> +	/*
-> +	 * DISP_REG_MERGE_CFG_26 and DISP_REG_MERGE_CFG_27 is only used
-> in LR merge.
-> +	 * Only take effect when the merge is setting to merge mode.
-> +	 */
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv-
-> >regs,
-> +		      DISP_REG_MERGE_CFG_26);
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv-
-> >regs,
-> +		      DISP_REG_MERGE_CFG_27);
-> +
->  	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv-
-> >regs,
->  			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
->  	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
+> +	priv->mute_support = of_property_read_bool(dev->of_node,
+> +						   "mediatek,merge-
+> mute");
+>  	platform_set_drvdata(pdev, priv);
+>  
+>  	ret = component_add(dev, &mtk_disp_merge_component_ops);
 
 
