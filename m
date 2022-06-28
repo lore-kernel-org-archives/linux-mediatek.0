@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E3A9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 12:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D696DC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 12:11:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sdUuFr5Nx7B2qjawZqlY0+EEhVjVre+aziD2rXxErZY=; b=coqqz5JFXtn96RvGptCgV6w4wy
-	DSQf6aNOumKURtRv86ZRRPynCY81M8z6BQLTWEYHbMhnhmqwh/QZAbMn9uDKGUDNyQh5KZnfwvPY8
-	KHS7BDgsAudx02FydD0XY7VWGgUuj8TNHhLACfjAwo3GG9bbD/q6QLY3uhy8IyRSFa/MuYlILvGgs
-	qQ2BmC6RLtBWjocwJj8OULQKGEgHZD1ecFKCB5I2AEpTKF4fMn8uKhFKYJ7CIdDoZwms1xjcZ9eNn
-	VbsfKQN5277PUyRqyHH+7nx/CG223Gf8vJNPphNbUg96/dIUqMSJW5HoZciG2CV2yrKWHmG6X+ttX
-	J39TCSeg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kivkjIcW/dBwtKQGxzqBhqyQNzFDh/iWcq1jAKuPzjQ=; b=hqmLRDEzYrebojJOC84sDKSt7Z
+	1HoNaRenK80mqXJquKVF9NJYU7dK3k7Lj/FO20T+pDix6HquEtSmoouYMDBWQF3zsm/4DcId/jZ8J
+	64cCmDGFEf3pbYz+a94s6YXLBoNHWHM1yHBBIbqh3sPAWZHYFqWq19fJyP6N2NkmqVl5t4agqDIxk
+	P87QBqsWcKD0NjJVmqNeHoivQ0E4lblkKSBLJc480Nb34rlCs5pw3nq8hpJyGh5WcXOJ94xOF1Rko
+	myDYh6xmTSGCvD2PZaFAZnOOrgl0tzvzIsQn542ih0nI49h8QCtrWB2sM5ir520+3LWMRg6Vip7R/
+	RYXe1N7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o69vY-0065GQ-CF; Tue, 28 Jun 2022 12:02:44 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o6A3h-0066wS-UJ; Tue, 28 Jun 2022 12:11:09 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o69vM-0065Du-0R; Tue, 28 Jun 2022 12:02:34 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C3B38660184F;
-	Tue, 28 Jun 2022 13:02:29 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656417750;
-	bh=zNEAitTxqpTa6w1mAZhs+XcqE/Shqwgw6vOI8uxrafY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=kA6HW3K5Wu3J9ADp6WCzs2EnF5F4f/tqvBaICY/tgpwiun0P/CBIWppSwUkhcZ0Jv
-	 3dgAA1fU1L/pEpU5dDEm/X8gGkrOBpaQH3EQPHFMDj0+ymhUBwRtm7/y7YjFRcJmuf
-	 1iTEQfNIAtlWoXI8HUT1HdOtNDPx8SWIywOTuDQPe9gPIZLuK+SQ7clDutRuQRkXy4
-	 gpyqS/YzTy/eVclmc9hjLcCmXI1Vlsw6AthxAygBIuSowJ3e9dBN+HrO7VTr/iCY1t
-	 gIRQxt/Ri1oCYtbf0Xt050TwXFfGICStjPtbv5maYcLdzXSXTmgYmN/jmS0tuqIzQt
-	 TL639fgBibysg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	wenst@chromium.org,
-	alyssa.rosenzweig@collabora.com,
-	nfraprado@collabora.com,
-	dmitry.osipenko@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3] soc: mediatek: Introduce mediatek-regulator-coupler driver
-Date: Tue, 28 Jun 2022 14:02:24 +0200
-Message-Id: <20220628120224.81180-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+	id 1o6A3W-0066sO-Fa
+	for linux-mediatek@lists.infradead.org; Tue, 28 Jun 2022 12:11:00 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id i15so21934529ybp.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jun 2022 05:10:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=kivkjIcW/dBwtKQGxzqBhqyQNzFDh/iWcq1jAKuPzjQ=;
+        b=CLRflZYyQbg2Iw8XCTaSt3HhmxKw/xrafgduTJjfhqjN2UgMgl+t/Gw4w6ILs6K9J4
+         MiBhpvtp9dwuJoICS/Nb1ZrtA3RQX7LEA7Mz5j+bBQgqJZtt6/ayHu+r5Hhb3qNZ4MWa
+         hFjTG4fGYnkRgTZZBBgzYCRgfxmHlPzv/4ipJqE4P/j7/2M+hTvxyKMHh77AZQv+DXXp
+         HhfG34tq68ucJafyFKHbBlkKZIavzOm2MyDj5K6/Q7swKn5I+xF/JVEwmlCwkvsZvZHr
+         w9cyP8LjUEu4elAD/I0i18jI8ov478QkOC5jYowuBKa+OZLBRkMIuuXZdJu9woKbWYNY
+         OIWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=kivkjIcW/dBwtKQGxzqBhqyQNzFDh/iWcq1jAKuPzjQ=;
+        b=Swc+QVi/Q/mheERyZPiH7l/u01K7ENETqSltxMk7n2a7QUsbxXtmR+Czjofpcw3qHG
+         5x0CCd8mDLWE2nb3UWpcPUXmigNAgidmhyQXpO+yDm9fvYHh5sffMn/cvCaa+xTppS9j
+         7qgpMECSEWv6XrmMChU+EhFT3N6MtHUd88B/VTfJmzObvu9oClgQe533vBBwQQs1TsEB
+         vPfbGUVeEpvB/zXH1XHKGk6kdGcEqNl0ltvzmmEHL6iR/ZslaMq4Om50aFjlQWH1MCQb
+         +VkzMW9nIn5Tf04+8Ni78HyO5FclcUrpUOhf7zB8Z7Ei5vWySIoS7VPfL4I69YiqRdeT
+         pldA==
+X-Gm-Message-State: AJIora9nbhq5tf40DNbDKPUA4O5CXJfqIKK4MUfaDRObR8M144DxS4di
+	3lmizRHnEWUl/ideoTRc12GsJuf8j1BHOzN0zM0oDg==
+X-Google-Smtp-Source: AGRyM1smrNVxZFq8RnZCs9l8cbaNFOI8pfYR4MykJ5KZXRx6x1Zw9wNjdz4oF5DQdShpdaP6Z1l8ckzfBHZHCRervgg=
+X-Received: by 2002:a25:cc56:0:b0:66c:d0f6:2f0e with SMTP id
+ l83-20020a25cc56000000b0066cd0f62f0emr10988742ybf.168.1656418254817; Tue, 28
+ Jun 2022 05:10:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20220628113714.7792-1-yee.lee@mediatek.com> <20220628113714.7792-2-yee.lee@mediatek.com>
+In-Reply-To: <20220628113714.7792-2-yee.lee@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Tue, 28 Jun 2022 14:10:18 +0200
+Message-ID: <CANpmjNNSHEksMq+xR62mV5dzb0ZO7UPhUzt2ghSbqcR-Bsm_2w@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early
+ allocated pool
+To: yee.lee@mediatek.com
+Cc: linux-kernel@vger.kernel.org, catalin.marinas@arm.com, 
+	Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	"open list:KFENCE" <kasan-dev@googlegroups.com>, 
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_050232_492223_B1868A80 
-X-CRM114-Status: GOOD (  30.10  )
+X-CRM114-CacheID: sfid-20220628_051058_591600_8FBAA017 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,237 +89,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This driver currently deals with GPU-SRAM regulator coupling, ensuring
-that the SRAM voltage is always between a specific range of distance to
-the GPU voltage, depending on the SoC, necessary in order to achieve
-system stability across the full range of supported GPU frequencies.
+On Tue, 28 Jun 2022 at 13:37, yee.lee via kasan-dev
+<kasan-dev@googlegroups.com> wrote:
+>
+> From: Yee Lee <yee.lee@mediatek.com>
+>
+> This patch solves two issues.
+>
+> (1) The pool allocated by memblock needs to unregister from
+> kmemleak scanning. Apply kmemleak_ignore_phys to replace the
+> original kmemleak_free as its address now is stored in the phys tree.
+>
+> (2) The pool late allocated by page-alloc doesn't need to unregister.
+> Move out the freeing operation from its call path.
+>
+> Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
+> Suggested-by: Marco Elver <elver@google.com>
+> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
----
+Reviewed-by: Marco Elver <elver@google.com>
 
-Changes in v3:
- - Added braces to else-if branch
+Does this want a Fixes tag?
 
-Changes in v2:
- - Added check for n_coupled
- - Added check for vgpu to enforce attaching to vgpu<->sram coupling only
-
-Context:
-This driver is one of the pieces of a bigger puzzle, aiming to finally
-enable Dynamic Voltage/Frequency Scaling for Mali GPUs found on MediaTek
-SoCs on the fully open source graphics stack (Panfrost driver).
-
-No devicetree bindings are provided because this does not require any
-driver-specific binding at all.
-
-Last but not least: it was chosen to have this driver enabled for
-( ARCH_MEDIATEK && REGULATOR ) without really giving a free configuration
-choice because, once the DVFS mechanism will be fully working, using one
-of the listed MediaTek SoCs *without* this coupling mechanism *will* lead
-to unstabilities and system crashes.
-For COMPILE_TEST, choice is given for obvious reasons.
-
- drivers/soc/mediatek/Kconfig                 |   5 +
- drivers/soc/mediatek/Makefile                |   1 +
- drivers/soc/mediatek/mtk-regulator-coupler.c | 159 +++++++++++++++++++
- 3 files changed, 165 insertions(+)
- create mode 100644 drivers/soc/mediatek/mtk-regulator-coupler.c
-
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index 3c3eedea35f7..cfa24fc6287b 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -43,6 +43,11 @@ config MTK_PMIC_WRAP
- 	  on different MediaTek SoCs. The PMIC wrapper is a proprietary
- 	  hardware to connect the PMIC.
- 
-+config MTK_REGULATOR_COUPLER
-+	bool "MediaTek SoC Regulator Coupler" if COMPILE_TEST
-+	default ARCH_MEDIATEK
-+	depends on REGULATOR
-+
- config MTK_SCPSYS
- 	bool "MediaTek SCPSYS Support"
- 	default ARCH_MEDIATEK
-diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-index 0e9e703c931a..8c0ddacbcde8 100644
---- a/drivers/soc/mediatek/Makefile
-+++ b/drivers/soc/mediatek/Makefile
-@@ -3,6 +3,7 @@ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
- obj-$(CONFIG_MTK_DEVAPC) += mtk-devapc.o
- obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
- obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
-+obj-$(CONFIG_MTK_REGULATOR_COUPLER) += mtk-regulator-coupler.o
- obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
- obj-$(CONFIG_MTK_SCPSYS_PM_DOMAINS) += mtk-pm-domains.o
- obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
-diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
-new file mode 100644
-index 000000000000..ad2ed42aa697
---- /dev/null
-+++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
-@@ -0,0 +1,159 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Voltage regulators coupler for MediaTek SoCs
-+ *
-+ * Copyright (C) 2022 Collabora, Ltd.
-+ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
-+
-+#include <linux/init.h>
-+#include <linux/kernel.h>
-+#include <linux/of.h>
-+#include <linux/regulator/coupler.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/machine.h>
-+#include <linux/suspend.h>
-+
-+#define to_mediatek_coupler(x)	container_of(x, struct mediatek_regulator_coupler, coupler)
-+
-+struct mediatek_regulator_coupler {
-+	struct regulator_coupler coupler;
-+	struct regulator_dev *vsram_rdev;
-+};
-+
-+/*
-+ * We currently support only couples of not more than two vregs and
-+ * modify the vsram voltage only when changing voltage of vgpu.
-+ *
-+ * This function is limited to the GPU<->SRAM voltages relationships.
-+ */
-+static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
-+					      struct regulator_dev *rdev,
-+					      suspend_state_t state)
-+{
-+	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
-+	int max_spread = rdev->constraints->max_spread[0];
-+	int vsram_min_uV = mrc->vsram_rdev->constraints->min_uV;
-+	int vsram_max_uV = mrc->vsram_rdev->constraints->max_uV;
-+	int vsram_target_min_uV, vsram_target_max_uV;
-+	int min_uV = 0;
-+	int max_uV = INT_MAX;
-+	int ret;
-+
-+	/*
-+	 * If the target device is on, setting the SRAM voltage directly
-+	 * is not supported as it scales through its coupled supply voltage.
-+	 *
-+	 * An exception is made in case the use_count is zero: this means
-+	 * that this is the first time we power up the SRAM regulator, which
-+	 * implies that the target device has yet to perform initialization
-+	 * and setting a voltage at that time is harmless.
-+	 */
-+	if (rdev == mrc->vsram_rdev) {
-+		if (rdev->use_count == 0)
-+			return regulator_do_balance_voltage(rdev, state, true);
-+
-+		return -EPERM;
-+	}
-+
-+	ret = regulator_check_consumers(rdev, &min_uV, &max_uV, state);
-+	if (ret < 0)
-+		return ret;
-+
-+	if (min_uV == 0) {
-+		ret = regulator_get_voltage_rdev(rdev);
-+		if (ret < 0)
-+			return ret;
-+		min_uV = ret;
-+	}
-+
-+	ret = regulator_check_voltage(rdev, &min_uV, &max_uV);
-+	if (ret < 0)
-+		return ret;
-+
-+	/*
-+	 * If we're asked to set a voltage less than VSRAM min_uV, set
-+	 * the minimum allowed voltage on VSRAM, as in this case it is
-+	 * safe to ignore the max_spread parameter.
-+	 */
-+	vsram_target_min_uV = max(vsram_min_uV, min_uV + max_spread);
-+	vsram_target_max_uV = min(vsram_max_uV, vsram_target_min_uV + max_spread);
-+
-+	/* Make sure we're not out of range */
-+	vsram_target_min_uV = min(vsram_target_min_uV, vsram_max_uV);
-+
-+	pr_debug("Setting voltage %d-%duV on %s (minuV %d)\n",
-+		 vsram_target_min_uV, vsram_target_max_uV,
-+		 rdev_get_name(mrc->vsram_rdev), min_uV);
-+
-+	ret = regulator_set_voltage_rdev(mrc->vsram_rdev, vsram_target_min_uV,
-+					 vsram_target_max_uV, state);
-+	if (ret)
-+		return ret;
-+
-+	/* The sram voltage is now balanced: update the target vreg voltage */
-+	return regulator_do_balance_voltage(rdev, state, true);
-+}
-+
-+static int mediatek_regulator_attach(struct regulator_coupler *coupler,
-+				     struct regulator_dev *rdev)
-+{
-+	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
-+	const char *rdev_name = rdev_get_name(rdev);
-+
-+	/*
-+	 * If we're getting a coupling of more than two regulators here and
-+	 * this means that this is surely not a GPU<->SRAM couple: in that
-+	 * case, we may want to use another coupler implementation, if any,
-+	 * or the generic one: the regulator core will keep walking through
-+	 * the list of couplers when any .attach_regulator() cb returns 1.
-+	 */
-+	if (rdev->coupling_desc.n_coupled > 2)
-+		return 1;
-+
-+	if (strstr(rdev_name, "sram")) {
-+		if (mrc->vsram_rdev)
-+			return -EINVAL;
-+		mrc->vsram_rdev = rdev;
-+	} else if (!strstr(rdev_name, "vgpu") && !strstr(rdev_name, "Vgpu")) {
-+		return 1;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mediatek_regulator_detach(struct regulator_coupler *coupler,
-+				     struct regulator_dev *rdev)
-+{
-+	struct mediatek_regulator_coupler *mrc = to_mediatek_coupler(coupler);
-+
-+	if (rdev == mrc->vsram_rdev)
-+		mrc->vsram_rdev = NULL;
-+
-+	return 0;
-+}
-+
-+static struct mediatek_regulator_coupler mediatek_coupler = {
-+	.coupler = {
-+		.attach_regulator = mediatek_regulator_attach,
-+		.detach_regulator = mediatek_regulator_detach,
-+		.balance_voltage = mediatek_regulator_balance_voltage,
-+	},
-+};
-+
-+static int mediatek_regulator_coupler_init(void)
-+{
-+	if (!of_machine_is_compatible("mediatek,mt8183") &&
-+	    !of_machine_is_compatible("mediatek,mt8186") &&
-+	    !of_machine_is_compatible("mediatek,mt8192"))
-+		return 0;
-+
-+	return regulator_coupler_register(&mediatek_coupler.coupler);
-+}
-+arch_initcall(mediatek_regulator_coupler_init);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek Regulator Coupler driver");
-+MODULE_LICENSE("GPL");
--- 
-2.35.1
-
+> ---
+>  mm/kfence/core.c | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+>
+> diff --git a/mm/kfence/core.c b/mm/kfence/core.c
+> index 4e7cd4c8e687..32a4a75e820c 100644
+> --- a/mm/kfence/core.c
+> +++ b/mm/kfence/core.c
+> @@ -600,14 +600,6 @@ static unsigned long kfence_init_pool(void)
+>                 addr += 2 * PAGE_SIZE;
+>         }
+>
+> -       /*
+> -        * The pool is live and will never be deallocated from this point on.
+> -        * Remove the pool object from the kmemleak object tree, as it would
+> -        * otherwise overlap with allocations returned by kfence_alloc(), which
+> -        * are registered with kmemleak through the slab post-alloc hook.
+> -        */
+> -       kmemleak_free(__kfence_pool);
+> -
+>         return 0;
+>  }
+>
+> @@ -620,8 +612,16 @@ static bool __init kfence_init_pool_early(void)
+>
+>         addr = kfence_init_pool();
+>
+> -       if (!addr)
+> +       if (!addr) {
+> +               /*
+> +                * The pool is live and will never be deallocated from this point on.
+> +                * Ignore the pool object from the kmemleak phys object tree, as it would
+> +                * otherwise overlap with allocations returned by kfence_alloc(), which
+> +                * are registered with kmemleak through the slab post-alloc hook.
+> +                */
+> +               kmemleak_ignore_phys(__pa(__kfence_pool));
+>                 return true;
+> +       }
+>
+>         /*
+>          * Only release unprotected pages, and do not try to go back and change
+> --
+> 2.18.0
 
