@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B6BCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 06:11:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15731C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 06:11:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X78eTb8Q2gabbv/xJ6loOKVtqKXMOdApAOEkgitbTZQ=; b=jVvpHh+knrjZ4dGOBulvJ3J2S6
-	KrzQjrZwzIcYW1p6JdP0KQay/Lh0IXRBPd4LQx5gmfGTv/YgbaKd31Np2TGJST8evudPJGCBtaQ9l
-	yLw4HJFiZeonL0XCx/17oLJrdRR1Xdf7pl39fKo84a7GphPKSBV9rzkVENcm1C9bCmYzq9GNqt9Ua
-	5sc67yOdLwRgmIWf6a4xJfcO/j+0OEnx1yhycatZgDXLAfIPh+MYJ2VvAoqknNmM3APQTykedUn98
-	X+xchSaoyCFDtLqJ3LD2xKIyw8C4LZKGEdh4Z8c6OOVhxk+EiHSUdJaqxFSsKeHQCYNQbJ1Hez6lt
-	lqLsqjvw==;
+	bh=P0jpRmKfl5KZXNJMdYP7Bim01DF90AgiWJC04Xp+FbI=; b=PvvOg5G3WH+kXFCSwnVne2B+oX
+	s1YN7kG7Gg30DoC36SKZeQkLk8B6QfEEDNurqomMllzbeLhKN5Jeold3ZWYKXP9IsRJG1y2Sdc+K9
+	2KuKFS4+mGy3mH9YqNmg8lKTxlGTCP5fKkpzwt740WyrRiCXhAN76shq7VkUlS54JTvPZ/ivUkH01
+	ewiHFaSS4ikPyRcHWhLUShhR7c3Sf90HvTibSpYjaWW+J+IDHTuRpD7ednN2oSbvc8Xr4ntkb3BhM
+	SPadcmmPVIAT+F8oj717iMnJ37xoqWiVOP6wOZWSscAqfCLfdZIS239ZWdYfijyl9ukOhxhcIMII9
+	efkBNwzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o64RZ-004boD-3D; Tue, 28 Jun 2022 06:11:25 +0000
+	id 1o64Rd-004bpm-Am; Tue, 28 Jun 2022 06:11:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o64Ft-004W20-IA; Tue, 28 Jun 2022 05:59:23 +0000
-X-UUID: 4ffbbc6e770e4e03ae60f0cf63c9bcd4-20220627
+	id 1o64Ft-004W1i-Hy; Tue, 28 Jun 2022 05:59:23 +0000
+X-UUID: 83391d3c26df4cfbb6845834a03ba319-20220627
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:51792cb6-d5bd-4329-bc29-7eb55967064b,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:87442a2,CLOUDID:d2b204d6-5d6d-4eaf-a635-828a3ee48b7c,C
+X-CID-O-INFO: VERSION:1.1.7,REQID:5cb8c69b-9d48-4068-acc8-e3e1a9bb1e74,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:87442a2,CLOUDID:447cd262-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 4ffbbc6e770e4e03ae60f0cf63c9bcd4-20220627
+X-UUID: 83391d3c26df4cfbb6845834a03ba319-20220627
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 748282303; Mon, 27 Jun 2022 22:59:16 -0700
+	with ESMTP id 1515129431; Mon, 27 Jun 2022 22:59:16 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 28 Jun 2022 13:54:24 +0800
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ Tue, 28 Jun 2022 13:54:27 +0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Jun 2022 10:42:54 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 28 Jun 2022 10:42:54 +0800
-Message-ID: <b025e0ffdedc46df69b08d39c1615d75c09f0774.camel@mediatek.com>
-Subject: Re: [PATCH v14 01/15] dt-bindings: mediatek,dpi: Add DP_INTF
- compatible
+ 15.0.1497.2; Tue, 28 Jun 2022 09:35:43 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 28 Jun 2022 09:35:43 +0800
+Message-ID: <4c74f395d42152470c317965813180a3a4616d13.camel@mediatek.com>
+Subject: Re: [PATCH v23 05/14] drm/mediatek: add display merge start/stop
+ API for cmdq support
 From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 28 Jun 2022 10:42:53 +0800
-In-Reply-To: <5a5d11158dd45355e5e6c3b5decbe41495bd19ad.camel@mediatek.com>
-References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
-	 <20220624030946.14961-2-rex-bc.chen@mediatek.com>
-	 <a2612c2628eefbbf909d4847b3d0067746813f33.camel@mediatek.com>
-	 <5a5d11158dd45355e5e6c3b5decbe41495bd19ad.camel@mediatek.com>
+To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+	<wim@linux-watchdog.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: <devicetree@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, "jason-jh .
+ lin" <jason-jh.lin@mediatek.com>, <singo.chang@mediatek.com>,
+	<llvm@lists.linux.dev>, Nick Desaulniers <ndesaulniers@google.com>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
+ Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Date: Tue, 28 Jun 2022 09:35:43 +0800
+In-Reply-To: <20220620091930.27797-6-nancy.lin@mediatek.com>
+References: <20220620091930.27797-1-nancy.lin@mediatek.com>
+	 <20220620091930.27797-6-nancy.lin@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_225921_627244_FB3803D7 
-X-CRM114-Status: GOOD (  28.09  )
+X-CRM114-CacheID: sfid-20220627_225921_629674_7D98C82B 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,127 +90,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-06-27 at 17:07 +0800, Rex-BC Chen wrote:
-> On Mon, 2022-06-27 at 15:50 +0800, CK Hu wrote:
-> > Hi, Bo-Chen:
-> > 
-> > On Fri, 2022-06-24 at 11:09 +0800, Bo-Chen Chen wrote:
-> > > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > 
-> > > DP_INTF is similar to DPI but does not have the exact same
-> > > feature
-> > > set
-> > > or register layouts.
-> > > 
-> > > DP_INTF is the sink of the display pipeline that is connected to
-> > > the
-> > > DisplayPort controller and encoder unit. It takes the same clocks
-> > > as
-> > > DPI.
-> > > 
-> > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > > [Bo-Chen: Modify reviewers' comments.]
-> > 
-> > Except this line,
-> > 
-> > Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> > 
-> 
-> Hello CK,
-> 
-> What do you mean?
-> Do you mean I should drop this line?
+Hi, Nancy:
 
-Yes, drop this line. I think every patch is reviewed and modified, so
-this line is redundant.
+On Mon, 2022-06-20 at 17:19 +0800, Nancy.Lin wrote:
+> Add merge start/stop API for cmdq support. The ovl_adaptor merges
+> are configured with each drm plane update. Need to enable/disable
+> merge with cmdq making sure all the settings taken effect in the
+> same vblank.
+
+Applied to mediatek-drm-next [1], thanks.
+
+[1] 
+https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
 
 Regards,
 CK
 
 > 
-> BRs,
-> Bo-Chen
-> > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno <
-> > > angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >  .../bindings/display/mediatek/mediatek,dpi.yaml       | 11
-> > > ++++++-
-> > > --
-> > > --
-> > >  1 file changed, 6 insertions(+), 5 deletions(-)
-> > > 
-> > > diff --git
-> > > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi
-> > > .y
-> > > am
-> > > l
-> > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi
-> > > .y
-> > > am
-> > > l
-> > > index 77ee1b923991..8e526a4b134e 100644
-> > > ---
-> > > a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi
-> > > .y
-> > > am
-> > > l
-> > > +++
-> > > b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi
-> > > .y
-> > > am
-> > > l
-> > > @@ -4,16 +4,16 @@
-> > >  $id: 
-> > > http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
-> > >  $schema: http://devicetree.org/meta-schemas/core.yaml#
-> > >  
-> > > -title: mediatek DPI Controller Device Tree Bindings
-> > > +title: mediatek DPI and DP_INTF Controller
-> > >  
-> > >  maintainers:
-> > >    - CK Hu <ck.hu@mediatek.com>
-> > >    - Jitao shi <jitao.shi@mediatek.com>
-> > >  
-> > >  description: |
-> > > -  The Mediatek DPI function block is a sink of the display
-> > > subsystem
-> > > and
-> > > -  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on
-> > > a
-> > > parallel
-> > > -  output bus.
-> > > +  The Mediatek DPI and DP_INTF function blocks are a sink of the
-> > > display
-> > > +  subsystem and provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422
-> > > pixel data on a
-> > > +  parallel output bus.
-> > >  
-> > >  properties:
-> > >    compatible:
-> > > @@ -24,6 +24,7 @@ properties:
-> > >        - mediatek,mt8183-dpi
-> > >        - mediatek,mt8186-dpi
-> > >        - mediatek,mt8192-dpi
-> > > +      - mediatek,mt8195-dp-intf
-> > >  
-> > >    reg:
-> > >      maxItems: 1
-> > > @@ -55,7 +56,7 @@ properties:
-> > >      $ref: /schemas/graph.yaml#/properties/port
-> > >      description:
-> > >        Output port node. This port should be connected to the
-> > > input
-> > > port of an
-> > > -      attached HDMI or LVDS encoder chip.
-> > > +      attached HDMI, LVDS or DisplayPort encoder chip.
-> > >  
-> > >  required:
-> > >    - compatible
-> > 
-> > 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> Tested-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  2 ++
+>  drivers/gpu/drm/mediatek/mtk_disp_merge.c | 18 +++++++++++++++---
+>  2 files changed, 17 insertions(+), 3 deletions(-)
 > 
-> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index e847e90f436d..33e61a136bbc 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -66,6 +66,8 @@ void mtk_merge_stop(struct device *dev);
+>  void mtk_merge_advance_config(struct device *dev, unsigned int l_w,
+> unsigned int r_w,
+>  			      unsigned int h, unsigned int vrefresh,
+> unsigned int bpc,
+>  			      struct cmdq_pkt *cmdq_pkt);
+> +void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt
+> *cmdq_pkt);
+> +void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt
+> *cmdq_pkt);
+>  
+>  void mtk_ovl_bgclr_in_on(struct device *dev);
+>  void mtk_ovl_bgclr_in_off(struct device *dev);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> index 40da0555416d..c7af5ccab916 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> @@ -67,17 +67,29 @@ struct mtk_disp_merge {
+>  };
+>  
+>  void mtk_merge_start(struct device *dev)
+> +{
+> +	mtk_merge_start_cmdq(dev, NULL);
+> +}
+> +
+> +void mtk_merge_stop(struct device *dev)
+> +{
+> +	mtk_merge_stop_cmdq(dev, NULL);
+> +}
+> +
+> +void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt
+> *cmdq_pkt)
+>  {
+>  	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+>  
+> -	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
+> +	mtk_ddp_write(cmdq_pkt, 1, &priv->cmdq_reg, priv->regs,
+> +		      DISP_REG_MERGE_CTRL);
+>  }
+>  
+> -void mtk_merge_stop(struct device *dev)
+> +void mtk_merge_stop_cmdq(struct device *dev, struct cmdq_pkt
+> *cmdq_pkt)
+>  {
+>  	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+>  
+> -	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
+> +	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
+> +		      DISP_REG_MERGE_CTRL);
+>  }
+>  
+>  static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
 
 
