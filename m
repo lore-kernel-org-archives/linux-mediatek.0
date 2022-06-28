@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33686C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 08:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BEDCC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 08:24:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4RnN8f28Wulk/jVyz2Pu0AFmL+DKXdhJpmQjHifCIuk=; b=zBw/gGUX+06HgXa0nxAXa8SLsh
-	N05L0V8AgTC+ZkJJgZ6fXmvaqrmKZO/jaHbYR41j0RIv5B/HGnUHa5Lo6Zx4426pXG+m9PVcmSXFH
-	iBBfl9rpmrhgRyN+8eJ+csHFQ1Q7QR5inqiwKp7ieDftNrNAPHp2EHdMAZs7OKNsiz0U7foFyKjgj
-	+vJD0kQbI1yyWK944HOdjKQjzLcM/1bD8zg3/+Q/+meyA931EUBqUSR9R7oYDIOCsjt/Hz1SPVt/B
-	V4EiMj2cFdE0J5zIrTAbwJhQy6/LXMKsOosjlnr9AgPxoZfewDiD4ljBOAGOLp8DWkmgZU7qwfImR
-	WcZh8IkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xU7QE9xsJQx9Qz2iPrK6TRetQaJpLDQiwCYJOKUwq5c=; b=YtB+Jk2CZ3lJjZio+MZlOtY7qn
+	HNrIBA7HQEljJCr44BtFoHvu6aQhiHO0a0NAulWgR+BJv13VgIfqWWccaoGF4GSt7QQCgacrLMC18
+	bFdRxMJbPJQ+iAJQCwxKkyZoJiKEAEwVtoPVK0U9ciEM6LxHvi0HpMcSDGAY2pYz5SHmtvyjJHXkt
+	0boEsQoZM5KidiNWlFb8rzNrHSZuklss1aUx1KEnccgW46AhtOErE01pNd9z0FHjshjrfUYIwdTow
+	8ZTVHXqgBqrV9X6hnUF7tfbhBLAbUpaXzmgZxv05aYklSb4736nzVAHc+0U31DFy3FKeB/Ev4bMAU
+	06c96htA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o66IM-0059vn-5h; Tue, 28 Jun 2022 08:10:02 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1o66WG-005EtP-B4; Tue, 28 Jun 2022 08:24:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o66IJ-0059ud-Dh
-	for linux-mediatek@lists.infradead.org; Tue, 28 Jun 2022 08:10:00 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id h9-20020a17090a648900b001ecb8596e43so11842670pjj.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jun 2022 01:09:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=4RnN8f28Wulk/jVyz2Pu0AFmL+DKXdhJpmQjHifCIuk=;
-        b=TtmePMQSWGcgrs/nnw3RcYmNr53evsSLpuxjQykQ5SfqpEh99Fa3BVmYjBrtYZzvE+
-         nLgDpPDclC4BDYKmWcL5JnfSMvhOd2XMkCBobJRFN9cdkvvMK0VQHJhtHDQKquA0su04
-         WrquO/3bgfDsPdzpvxpBQleO+50guMXUI6+mB3/wNhTnOdPjiiX6ZxeYjRvWx89Azu8W
-         JbqdByzF4+jFr8rpzqulKfq3IGBxn4c5eFi11vxu1qx8utmgxXLiaw04dK4kRfNQXVKe
-         Qk/VnzKC+3d53gNY9SPQwgx22v3n0hdGOKDYGxOh0agz3KTkNvNyGXNiqC9SpvCLv5w8
-         JzqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=4RnN8f28Wulk/jVyz2Pu0AFmL+DKXdhJpmQjHifCIuk=;
-        b=hy1RojfWcLFVdlJDLNqwYzUVAazBBm0qQ7THGMypuCw5IVeH36K9ofz3tVNaMCgUMJ
-         NGuXcKoz+Adi27PK9QDjY2NWkqTvy+hrOK8bayrdmTOCJXyUhTrh/qQ04wGyxA1x8U7b
-         S1z9wPZl839cqeiFxathO3/i+q9vcgos0tuvChHlXfX4qfUy8kPX3iuZizJqn/0CNzQU
-         m9zO8l3BbAxK7ZMq7aju66ylBC7SNiRsiZOQYILIxWeTJtmaYgZw+Rb/nOCBX38Jbc40
-         WOHXKlLPIR6BgFqfvO2T27jZGAqKZHe8hN8WP2s+ZDHrhEbRQ8adUD0TaxDHjoKgGNmg
-         UOQw==
-X-Gm-Message-State: AJIora/xhhAsjdroFcx3RN8JYN86peyOSiurbbXle3m/8SRkyXWN4mkR
-	8gTG2HudNC4wnroVic7oW7+n7w==
-X-Google-Smtp-Source: AGRyM1taEy9Zc+52VE5JMWnVI0vSslas0OOT9IG6YqrEq6+1e2igaSBqB/cyyIf6cJPCygAwUxwaig==
-X-Received: by 2002:a17:902:ea02:b0:16a:4b1d:71d9 with SMTP id s2-20020a170902ea0200b0016a4b1d71d9mr2534420plg.52.1656403798143;
-        Tue, 28 Jun 2022 01:09:58 -0700 (PDT)
-Received: from localhost ([122.172.201.58])
-        by smtp.gmail.com with ESMTPSA id a4-20020a62bd04000000b00525714c3e07sm8690147pff.48.2022.06.28.01.09.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Jun 2022 01:09:57 -0700 (PDT)
-Date: Tue, 28 Jun 2022 13:39:55 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Yang Yingliang <yangyingliang@huawei.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
-	rex-bc.chen@mediatek.com, jia-wei.chang@mediatek.com,
-	angelogioacchino.delregno@collabora.com, khilman@baylibre.com
-Subject: Re: [PATCH -next] cpufreq: mediatek: fix error return code in
- mtk_cpu_dvfs_info_init()
-Message-ID: <20220628080955.rw7gb3rnmhl7qujw@vireshk-i7>
-References: <20220517133450.2266243-1-yangyingliang@huawei.com>
+	id 1o66Ru-005CgP-DG; Tue, 28 Jun 2022 08:19:56 +0000
+X-UUID: 95f692fe3d8a4da58203d4288d8d3e3f-20220628
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=xU7QE9xsJQx9Qz2iPrK6TRetQaJpLDQiwCYJOKUwq5c=;
+	b=cnBARmfWbmAcvrdihDh1SxswtF3i4ggbXLvP6KkJy/pwjeu8d0p4qAcgmlR/rssmBiMV91p7NEeGBzoWnCFuFY6xXIChlQ6xsOcU39vtQTKRUPdVjGmShfIhIvuVnJNbFThT0kRXDaOUXgm0KO7AlGHKRZkMwglSYSvFt7iqPpA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:cbc1d79b-30ec-4b64-b5e3-692a7f675024,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:87442a2,CLOUDID:b712d762-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 95f692fe3d8a4da58203d4288d8d3e3f-20220628
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 790976983; Tue, 28 Jun 2022 01:19:44 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 28 Jun 2022 16:19:32 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 28 Jun 2022 16:19:31 +0800
+Message-ID: <4dbbdd1f5886f72d5603ea45fd24602087ac01fc.camel@mediatek.com>
+Subject: Re: [PATCH v10 2/2] phy: mediatek: Add PCIe PHY driver
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Jianjun Wang <jianjun.wang@mediatek.com>, Kishon Vijay Abraham I
+	<kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chen-Yu
+ Tsai" <wenst@chromium.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
+	<krzk@kernel.org>
+CC: Wei-Shun Chang <weishunc@google.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <rex-bc.chen@mediatek.com>,
+	<randy.wu@mediatek.com>, <jieyy.yang@mediatek.com>,
+	<chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
+	<jian.yang@mediatek.com>
+Date: Tue, 28 Jun 2022 16:19:31 +0800
+In-Reply-To: <20220617070246.20142-3-jianjun.wang@mediatek.com>
+References: <20220617070246.20142-1-jianjun.wang@mediatek.com>
+	 <20220617070246.20142-3-jianjun.wang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220517133450.2266243-1-yangyingliang@huawei.com>
+X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_010959_511002_9ED981A9 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20220628_011954_594972_15E2520F 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,32 +90,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17-05-22, 21:34, Yang Yingliang wrote:
-> If regulator_get_voltage() fails, it should return the error code in
-> mtk_cpu_dvfs_info_init().
-> 
-> Fixes: 0daa47325bae ("cpufreq: mediatek: Link CCI device to CPU")
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 37a1eb20f5ba..3a2be4552020 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -474,6 +474,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  	if (info->soc_data->ccifreq_supported) {
->  		info->vproc_on_boot = regulator_get_voltage(info->proc_reg);
->  		if (info->vproc_on_boot < 0) {
-> +			ret = info->vproc_on_boot;
->  			dev_err(info->cpu_dev,
->  				"invalid Vproc value: %d\n", info->vproc_on_boot);
->  			goto out_disable_inter_clock;
+T24gRnJpLCAyMDIyLTA2LTE3IGF0IDE1OjAyICswODAwLCBKaWFuanVuIFdhbmcgd3JvdGU6DQo+
+IEFkZCBQQ0llIEdFTjMgUEhZIGRyaXZlciBzdXBwb3J0IG9uIE1lZGlhVGVrIGNoaXBzZXRzLg0K
+PiANCj4gU2lnbmVkLW9mZi1ieTogSmlhbmp1biBXYW5nIDxqaWFuanVuLndhbmdAbWVkaWF0ZWsu
+Y29tPg0KPiAtLS0NCj4gIGRyaXZlcnMvcGh5L21lZGlhdGVrL0tjb25maWcgICAgICAgIHwgIDEx
+ICsrDQo+ICBkcml2ZXJzL3BoeS9tZWRpYXRlay9NYWtlZmlsZSAgICAgICB8ICAgMSArDQo+ICBk
+cml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLXBjaWUuYyB8IDI2Nw0KPiArKysrKysrKysrKysr
+KysrKysrKysrKysrKysrDQo+ICAzIGZpbGVzIGNoYW5nZWQsIDI3OSBpbnNlcnRpb25zKCspDQo+
+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9waHkvbWVkaWF0ZWsvcGh5LW10ay1wY2llLmMN
+Cj4gDQpSZXZpZXdlZC1ieTogQ2h1bmZlbmcgWXVuIDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29t
+Pg0KDQpUaGFua3MNCg==
 
-Applied. Thanks.
-
--- 
-viresh
 
