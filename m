@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F3CCCA482
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 02:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBE8C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 02:19:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xjyts7DUF8IJ2dRdvXYB/VSubKrpO8B283MZXrdO+9M=; b=bIf976IC6YqAW2ahNmm8R564d0
-	ZgRigf3ZOlmV7/SM9bCo/I9vuCR3fmZGZCxT04/FPG0JfVPaPFBCj2HKKvLDWDuXXDQEMAfG3ba30
-	AdxIVhnaKb94DS326irMe27DEaEoUKKMX2Q0xJiRY2kfOLxATbJWfSXT1YZHoZ4l+BjdeYiMq67B5
-	Sag9rSDmpNHywG7NVPx4wKz3g7UdRhgMmzql49LVVoAEZoYZ9C+FTlEtgeWcfT316ULEVvQaYLoVI
-	lwz4FpMRR+HRyqrKVizVal/qAnjSelNFfgXm9gKFusHHL3uV8askRQNy3tzWl6X9SFTiNWXnjE8Jx
-	fagDyFzw==;
+	bh=5Ollu8Eo/zrgGj4bhTM1g/XkFhYStTy2ueSCzJ5XOjo=; b=ZQJ5FUVgOrzFlpiHISIjd782qK
+	Me7kHCO1QHNuvCCF7WYP9Zklql1e9QeD994cDS89ue/BocZbqQS1/Bl2EqsoU+xV7lxmlLrcDxWWj
+	2+DYHUSpzGQUYNLxJIiH/Pxdn/9wfqDur7BcXAJ4AeFzykzcJCfefUGT7DnkZA18H1e+N0J8xj4Lp
+	bS237G5j6TbF4GqXJhyzyEWGfP5LmEWRvBsYPCh6LKQK+bOHGzRGx+Q8RsOH1/pi0i2ekbrcnxjEW
+	xYGMzyNfgc6C0l7neSy3ZjIh9ycIV+brGQ7dMRP11b9pWwT7Ql7faF6b3b8SqLFhBQsr9oZNewtgQ
+	Bd0XOVjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o60p6-003eTB-8z; Tue, 28 Jun 2022 02:19:28 +0000
+	id 1o60pO-003eeX-5g; Tue, 28 Jun 2022 02:19:46 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o60os-003eN9-UY; Tue, 28 Jun 2022 02:19:16 +0000
+	id 1o60ow-003ePM-OO; Tue, 28 Jun 2022 02:19:20 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 88686617DB;
-	Tue, 28 Jun 2022 02:19:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3051C341CD;
-	Tue, 28 Jun 2022 02:19:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 59814617CF;
+	Tue, 28 Jun 2022 02:19:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0438FC341CA;
+	Tue, 28 Jun 2022 02:19:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656382752;
-	bh=SVjIUq468ZnkreE+5CnjX830DKpi6K2VxXz1oYBEyvA=;
+	s=k20201202; t=1656382757;
+	bh=7tE0ql2XrQD09WJ13TAQiKiQZHx6yrVocONLZbPTu1Q=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=rn6u6QlxLBnmRNY35IZnY6ItdgcwojK2IcrNULdcPkP1u9i98Q3quXvWVyu5vSMSE
-	 lPPv/o8jfPKAmFpUIo3leXW37ErEKHbuRqEtzOadimDhou+2X0TLEbDPCLYf6R6Cnq
-	 wmI3Lt5BuoutKRUOQvX5pwzxcjUsGm/LiKV5nNFodV88t8c37mJ7C9Ymi8KNPjXRla
-	 BwFAJEzsnTvZqHBDCp63XlFF7EcwWiYJcCokF1lfWiu3vlI33pWWYznpj1DFmJJ8ON
-	 jbuHAy0lS/6uvu2/Qre6R2na8HSEKT7SOefGkubFPsp9BB/l4eHMnWdqDTSAcATyys
-	 t5g3FNjCr0XOg==
+	b=Dq/etxFuAvDhHrL+xk+OAEEyANmYUIM+K1yHbofBZxodiYloToGyV2PEjv/bPB0nK
+	 3dt3mhi/DGOUtxAqdsMBLwStZ3DflU4EwEovireNnL3Et9BbUgiyEiuQYM+rhfVYTR
+	 UKkypkZEHoHIiyfZF1jyKBsJ527l7KKkSzDRIuqqAZc7MMCRHL8l7CBPU0YE0dh58p
+	 PgU/nAixCgqLC6y2J9qNXfhno0yTljYzYrVUOQmg0d2nuUAeaXxGOdxL7MiF/vbj40
+	 YecFLAiVk7mpt6ma6iAL8KRlBRJ37YpqnOTmqSoYq+Zu/mDWb2VJhHH497HFHKs/uu
+	 GFYhNpYroW6KQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,19 +57,20 @@ Cc: Bart Van Assche <bvanassche@acm.org>,
 	linux-scsi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.18 14/53] scsi: ufs: Simplify ufshcd_clear_cmd()
-Date: Mon, 27 Jun 2022 22:18:00 -0400
-Message-Id: <20220628021839.594423-14-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.18 15/53] scsi: ufs: Support clearing multiple commands at once
+Date: Mon, 27 Jun 2022 22:18:01 -0400
+Message-Id: <20220628021839.594423-15-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220628021839.594423-1-sashal@kernel.org>
 References: <20220628021839.594423-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_191915_042930_591E6C81 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20220627_191918_946748_E6986F67 
+X-CRM114-Status: GOOD (  20.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,47 +87,112 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bart Van Assche <bvanassche@acm.org>
 
-[ Upstream commit da8badd7d3583f447eac2ab65a332f2d773deca1 ]
+[ Upstream commit d1a7644648b7cdacaf8d1013a4285001911e9bc8 ]
 
-Remove the local variable 'err'. This patch does not change any
-functionality.
+Modify ufshcd_clear_cmd() such that it supports clearing multiple commands
+at once instead of one command at a time. This change will be used in a
+later patch to reduce the time spent in the reset handler.
 
-Link: https://lore.kernel.org/r/20220613214442.212466-2-bvanassche@acm.org
+Link: https://lore.kernel.org/r/20220613214442.212466-3-bvanassche@acm.org
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 Reviewed-by: Adrian Hunter <adrian.hunter@intel.com>
 Signed-off-by: Bart Van Assche <bvanassche@acm.org>
 Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/scsi/ufs/ufshcd.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 42 ++++++++++++++++++++++++++-------------
+ 1 file changed, 28 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 4c9eb4be449c..8f26c4c09c66 100644
+index 8f26c4c09c66..f08586a4470c 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -2856,7 +2856,6 @@ static int ufshcd_compose_dev_cmd(struct ufs_hba *hba,
- static int
- ufshcd_clear_cmd(struct ufs_hba *hba, int tag)
- {
--	int err = 0;
- 	unsigned long flags;
- 	u32 mask = 1 << tag;
- 
-@@ -2869,11 +2868,8 @@ ufshcd_clear_cmd(struct ufs_hba *hba, int tag)
- 	 * wait for h/w to clear corresponding bit in door-bell.
- 	 * max. wait is 1 sec.
- 	 */
--	err = ufshcd_wait_for_register(hba,
--			REG_UTP_TRANSFER_REQ_DOOR_BELL,
--			mask, ~mask, 1000, 1000);
--
--	return err;
-+	return ufshcd_wait_for_register(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL,
-+					mask, ~mask, 1000, 1000);
+@@ -734,17 +734,28 @@ static enum utp_ocs ufshcd_get_tr_ocs(struct ufshcd_lrb *lrbp)
  }
  
- static int
+ /**
+- * ufshcd_utrl_clear - Clear a bit in UTRLCLR register
++ * ufshcd_utrl_clear() - Clear requests from the controller request list.
+  * @hba: per adapter instance
+- * @pos: position of the bit to be cleared
++ * @mask: mask with one bit set for each request to be cleared
+  */
+-static inline void ufshcd_utrl_clear(struct ufs_hba *hba, u32 pos)
++static inline void ufshcd_utrl_clear(struct ufs_hba *hba, u32 mask)
+ {
+ 	if (hba->quirks & UFSHCI_QUIRK_BROKEN_REQ_LIST_CLR)
+-		ufshcd_writel(hba, (1 << pos), REG_UTP_TRANSFER_REQ_LIST_CLEAR);
+-	else
+-		ufshcd_writel(hba, ~(1 << pos),
+-				REG_UTP_TRANSFER_REQ_LIST_CLEAR);
++		mask = ~mask;
++	/*
++	 * From the UFSHCI specification: "UTP Transfer Request List CLear
++	 * Register (UTRLCLR): This field is bit significant. Each bit
++	 * corresponds to a slot in the UTP Transfer Request List, where bit 0
++	 * corresponds to request slot 0. A bit in this field is set to ‘0’
++	 * by host software to indicate to the host controller that a transfer
++	 * request slot is cleared. The host controller
++	 * shall free up any resources associated to the request slot
++	 * immediately, and shall set the associated bit in UTRLDBR to ‘0’. The
++	 * host software indicates no change to request slots by setting the
++	 * associated bits in this field to ‘1’. Bits in this field shall only
++	 * be set ‘1’ or ‘0’ by host software when UTRLRSR is set to ‘1’."
++	 */
++	ufshcd_writel(hba, ~mask, REG_UTP_TRANSFER_REQ_LIST_CLEAR);
+ }
+ 
+ /**
+@@ -2853,15 +2864,18 @@ static int ufshcd_compose_dev_cmd(struct ufs_hba *hba,
+ 	return ufshcd_compose_devman_upiu(hba, lrbp);
+ }
+ 
+-static int
+-ufshcd_clear_cmd(struct ufs_hba *hba, int tag)
++/*
++ * Clear all the requests from the controller for which a bit has been set in
++ * @mask and wait until the controller confirms that these requests have been
++ * cleared.
++ */
++static int ufshcd_clear_cmds(struct ufs_hba *hba, u32 mask)
+ {
+ 	unsigned long flags;
+-	u32 mask = 1 << tag;
+ 
+ 	/* clear outstanding transaction before retry */
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+-	ufshcd_utrl_clear(hba, tag);
++	ufshcd_utrl_clear(hba, mask);
+ 	spin_unlock_irqrestore(hba->host->host_lock, flags);
+ 
+ 	/*
+@@ -2949,7 +2963,7 @@ static int ufshcd_wait_for_dev_cmd(struct ufs_hba *hba,
+ 		err = -ETIMEDOUT;
+ 		dev_dbg(hba->dev, "%s: dev_cmd request timedout, tag %d\n",
+ 			__func__, lrbp->task_tag);
+-		if (!ufshcd_clear_cmd(hba, lrbp->task_tag))
++		if (!ufshcd_clear_cmds(hba, 1U << lrbp->task_tag))
+ 			/* successfully cleared the command, retry if needed */
+ 			err = -EAGAIN;
+ 		/*
+@@ -6984,7 +6998,7 @@ static int ufshcd_eh_device_reset_handler(struct scsi_cmnd *cmd)
+ 	/* clear the commands that were pending for corresponding LUN */
+ 	for_each_set_bit(pos, &hba->outstanding_reqs, hba->nutrs) {
+ 		if (hba->lrb[pos].lun == lun) {
+-			err = ufshcd_clear_cmd(hba, pos);
++			err = ufshcd_clear_cmds(hba, 1U << pos);
+ 			if (err)
+ 				break;
+ 			__ufshcd_transfer_req_compl(hba, 1U << pos);
+@@ -7086,7 +7100,7 @@ static int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
+ 		goto out;
+ 	}
+ 
+-	err = ufshcd_clear_cmd(hba, tag);
++	err = ufshcd_clear_cmds(hba, 1U << tag);
+ 	if (err)
+ 		dev_err(hba->dev, "%s: Failed clearing cmd at tag %d, err %d\n",
+ 			__func__, tag, err);
 -- 
 2.35.1
 
