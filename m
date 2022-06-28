@@ -4,77 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72752C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 12:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 266D4CCA479
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 12:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bSDinnzl56D9PFKDeB860nkVQnIp9oqH1T1HFaPBfr4=; b=0gIymmQTTQeWL3wra+5e8PW306
-	uej7PdE6WLU5I8eG62haJGAZJ18CZBqxt7Tviq/ETjG/iSKkoXZL4cLTx11o3i1r/dgAMyx8AFXsP
-	axjRFIvjjHz83cG2afZJ6HeXyAFV/zKopJ4uqYikong7sTPV4JVrcX7BD+eqVJVMkHNmMsUWwkCmR
-	mLjTADOymK4QtSuwYfGpeJxoBQG7gR9dFGYIUERqKZFaZx6Uf0INYU9Ao1/DGlnNN0lOlOmrg+GH1
-	Wgve7EYOfPzGANonLhpIovn+XFZiG3nE4h9fNoN6wziIx+alGXnplMzk+EIewUzKfSZmBIphJ4Sgb
-	1QMCYyog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7zXu0ktyw7BMrjs+/PsBz2fQRMG/j+JasIZ/NDWZBX0=; b=4jKnNnfElaAW1+Gh/IYhAmSYUB
+	iMubsNGcs1EEWc+CDSjbB8o06rUiRSpUNpncMEDyxQ3jZr8G+T3Eh4f9TPYC4mkEobDJ9D0EOtZW7
+	vm7xaGHZsxmkLqGDc86NNjXjhPJhwOIKLKiWzjZ72B+LhqutdHkfZFHUlhsTrjtznSHyMf3V1WHNN
+	Crdh33oVbk+94zPZDx6uRSjl+cI4OyIW/3DWEOB0fGdKqAdEQdxNLQklZHVsHwMVDv6P6lf9FSyD0
+	zUNhJnZS1nyEl7U3yjyCiQk/G4RCxnE32iWYLxq29AVZbMoFxtCvaB5IkXixrNzW//wNNTEAavs7m
+	Kj5UX7MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6A60-0067Td-Bf; Tue, 28 Jun 2022 12:13:32 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1o6AAT-0068FB-B6; Tue, 28 Jun 2022 12:18:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6A5x-0067Sc-SW
-	for linux-mediatek@lists.infradead.org; Tue, 28 Jun 2022 12:13:31 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id m2so10903839plx.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jun 2022 05:13:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=bSDinnzl56D9PFKDeB860nkVQnIp9oqH1T1HFaPBfr4=;
-        b=LZrAI0t9vW3GfRkSpY5xnTWBpPAMoPHypn1lKSOQhWtqPjmYD3IWl5ZGZwnfqNH4cA
-         UNELUthAvR2LaChKvDDw8gu9lKukzIBW1qWYIakbZ2iOSuacjr0Xi5vGfhCIvf3edIoG
-         Iym+3aKlyhlV8HgZaFldWhGZM/KL1pBVLab4Qn0wUwzNv22YkDl/2EmzqhDUVe8vh/d5
-         CrdV9xvFs1eslvwDl+QI6nx6D4NFcuvzAk58AmdWg7p4DkFHRYMgFrunqJDT2eQ1POvO
-         OvziMaJsAhq/Ued3JYdCr+Z+mQvn1bDRO6QwdMUH2j8tNCWzZPYpUhKlJZQM0Dvi2iiF
-         FneA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=bSDinnzl56D9PFKDeB860nkVQnIp9oqH1T1HFaPBfr4=;
-        b=QaXcBDfQjBBk0+P+8jCbRizKeK5IFulBsYd/3tSVOuae3BdDJYqdS09+dNqf4XIQBS
-         XVrbqitFXtFhBkmRNdW7qQLJ9tfXnN3StAlJ0UCwrY1Q1wf3hBe5al25WYf3Jcx4agrk
-         q22mhqtE7q0vyMl5g0R0e/brT9TCCjZIKd8IEmo7Xx8gJE6G8xHm1tcrIKZI3a2Xw1gw
-         WT6m2icvNTNA9liYE6QG91idRGAcTMHNEwqJVC02RtRIEXqaTnQDAl2c7GHjrr4qA5q/
-         I9EcbMGmDVhV0lq7XkSv5Udvau9TSREtl0XqdSMuKcYHpZb3NCnaOAfZ8TVK2KRmAhQR
-         abLw==
-X-Gm-Message-State: AJIora9MhdcY3OHNIr9nqjsr/0lV4dedtM2H3sRVvfkRbG3z/vED6AyY
-	xmuagPFaNLpixQboUIVyV98=
-X-Google-Smtp-Source: AGRyM1sAf5ZuIfFPHYHjm02zMm3ex+WsIGHP3DaH/nqnRS89Qycce/vuhFMht33UFBTpn5MzHyxBPQ==
-X-Received: by 2002:a17:902:c40f:b0:16a:37de:89c2 with SMTP id k15-20020a170902c40f00b0016a37de89c2mr3505380plk.105.1656418408006;
-        Tue, 28 Jun 2022 05:13:28 -0700 (PDT)
-Received: from octofox.hsd1.ca.comcast.net ([2601:641:401:1d20:37e8:2f95:a443:c532])
-        by smtp.gmail.com with ESMTPSA id r19-20020a170902e3d300b00163f8ddf160sm9070496ple.161.2022.06.28.05.13.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Jun 2022 05:13:27 -0700 (PDT)
-From: Max Filippov <jcmvbkbc@gmail.com>
-To: linux-kernel@vger.kernel.org
-Cc: Roger Lu <roger.lu@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	linux-mediatek@lists.infradead.org,
-	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH] drivers/soc/mediatek: mark svs_resume and svs_suspend as maybe unused
-Date: Tue, 28 Jun 2022 05:13:26 -0700
-Message-Id: <20220628121326.2097912-1-jcmvbkbc@gmail.com>
-X-Mailer: git-send-email 2.30.2
+	id 1o6AAQ-0068BQ-2x; Tue, 28 Jun 2022 12:18:07 +0000
+X-UUID: 24d200fb1ecc478781ce5c9009635f16-20220628
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:0e93d573-6df8-4583-9bd7-bb5a313d2dd0,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:7a500ed6-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 24d200fb1ecc478781ce5c9009635f16-20220628
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yee.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 587943295; Tue, 28 Jun 2022 05:17:53 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 28 Jun 2022 19:37:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 28 Jun 2022 19:37:18 +0800
+From: <yee.lee@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: <catalin.marinas@arm.com>, Yee Lee <yee.lee@mediatek.com>, "Alexander
+ Potapenko" <glider@google.com>, Marco Elver <elver@google.com>, Dmitry Vyukov
+	<dvyukov@google.com>, Andrew Morton <akpm@linux-foundation.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, "open list:KFENCE"
+	<kasan-dev@googlegroups.com>, "open list:MEMORY MANAGEMENT"
+	<linux-mm@kvack.org>, "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early allocated pool
+Date: Tue, 28 Jun 2022 19:37:11 +0800
+Message-ID: <20220628113714.7792-2-yee.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220628113714.7792-1-yee.lee@mediatek.com>
+References: <20220628113714.7792-1-yee.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_051329_975227_9AA2622D 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20220628_051806_177043_5BEE17FA 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +80,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This fixes the following build errors on platforms without hibernation
-support in linux-next:
+From: Yee Lee <yee.lee@mediatek.com>
 
-drivers/soc/mediatek/mtk-svs.c:1515:12: error: ‘svs_resume’ defined but not used [-Werror=unused-function]
-drivers/soc/mediatek/mtk-svs.c:1481:12: error: ‘svs_suspend’ defined but not used [-Werror=unused-function]
+This patch solves two issues.
 
-Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-Signed-off-by: Max Filippov <jcmvbkbc@gmail.com>
+(1) The pool allocated by memblock needs to unregister from
+kmemleak scanning. Apply kmemleak_ignore_phys to replace the
+original kmemleak_free as its address now is stored in the phys tree.
+
+(2) The pool late allocated by page-alloc doesn't need to unregister.
+Move out the freeing operation from its call path.
+
+Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
+Suggested-by: Marco Elver <elver@google.com>
+Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ mm/kfence/core.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 87e05ab51552..363ab8bffa9f 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -1478,7 +1478,7 @@ static int svs_start(struct svs_platform *svsp)
+diff --git a/mm/kfence/core.c b/mm/kfence/core.c
+index 4e7cd4c8e687..32a4a75e820c 100644
+--- a/mm/kfence/core.c
++++ b/mm/kfence/core.c
+@@ -600,14 +600,6 @@ static unsigned long kfence_init_pool(void)
+ 		addr += 2 * PAGE_SIZE;
+ 	}
+ 
+-	/*
+-	 * The pool is live and will never be deallocated from this point on.
+-	 * Remove the pool object from the kmemleak object tree, as it would
+-	 * otherwise overlap with allocations returned by kfence_alloc(), which
+-	 * are registered with kmemleak through the slab post-alloc hook.
+-	 */
+-	kmemleak_free(__kfence_pool);
+-
  	return 0;
  }
  
--static int svs_suspend(struct device *dev)
-+static int __maybe_unused svs_suspend(struct device *dev)
- {
- 	struct svs_platform *svsp = dev_get_drvdata(dev);
- 	struct svs_bank *svsb;
-@@ -1512,7 +1512,7 @@ static int svs_suspend(struct device *dev)
- 	return 0;
- }
+@@ -620,8 +612,16 @@ static bool __init kfence_init_pool_early(void)
  
--static int svs_resume(struct device *dev)
-+static int __maybe_unused svs_resume(struct device *dev)
- {
- 	struct svs_platform *svsp = dev_get_drvdata(dev);
- 	int ret;
+ 	addr = kfence_init_pool();
+ 
+-	if (!addr)
++	if (!addr) {
++		/*
++		 * The pool is live and will never be deallocated from this point on.
++		 * Ignore the pool object from the kmemleak phys object tree, as it would
++		 * otherwise overlap with allocations returned by kfence_alloc(), which
++		 * are registered with kmemleak through the slab post-alloc hook.
++		 */
++		kmemleak_ignore_phys(__pa(__kfence_pool));
+ 		return true;
++	}
+ 
+ 	/*
+ 	 * Only release unprotected pages, and do not try to go back and change
 -- 
-2.30.2
+2.18.0
 
 
