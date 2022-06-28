@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9568C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 05:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B38C0C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 05:54:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2k0CEM+N2AroR1VKJVT6z66MwHE4phDvKvgcofotxy4=; b=4kgBwHQyiU7zrGx8a5IYytavGy
-	y39084zb/mQT7PjyDwQNDKVTS+V5V60MyURnOS/NhaPr+dK6kmc4Gab2rf2EJOWqvfUkrz6dctbZ/
-	f8+DxPZJywqxRcdzI9FI/EeRonS/yCUu8U8ZmtFmFgQnxQBmuOMcw/n1di3P0SA30ylq7UiDwVOYs
-	3kWwBFoGf2QVTncPwX+0FNtdVsJf64X8pKaG2bNmdPkAiJWRvC+tsvKdUykUOsrzzX5aovOJk2dW5
-	+WUhm+x7uJyCXC626SztF0H43Dg/Jzf/YdJPV7Mhd7GL+f8fg2GeYobDie5ZL3BXfYoXKiPSbYcXr
-	SocK4nnQ==;
+	bh=/XEHYS7u2txTU7dh7i5Ck7em7aL06hiEb8XHqsSPlF0=; b=l+zArOwUlCZOqfKpWHpu7dqLYg
+	ccxcGKqKteW81d7EbGrh1foLusd2wQt+RWRdjaAuEwXUOa08ACfxAfC0xKnbXLGHg90otwbH8e/tn
+	haxJnWVsU7OW2GO4KUdm1wEw+8hF3BYYykxXRpded4S4EygI+qqow9TAolUC8cDCs9cZoyPYxtyIx
+	BB0tw5K8RBsMXvqbwlMuKkbJo0N3W3jvLikIXYrX0esE2NPtDDPmBdgPbi86M9EX/W6Z/defqC1ti
+	v1eoEOhhxTsKh7S2/MKkb/n4EMhI9pMZbrS1flJcZ2XOxT0aBRcmovq9xjAvYkQOSKaUIJlZvxID+
+	10ZJS1iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o64Az-004TqP-V2; Tue, 28 Jun 2022 05:54:18 +0000
+	id 1o64B4-004Tri-DX; Tue, 28 Jun 2022 05:54:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o647k-004SQ3-7s; Tue, 28 Jun 2022 05:50:58 +0000
-X-UUID: 0ba47b3144664f758969862533e0f5f4-20220627
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=2k0CEM+N2AroR1VKJVT6z66MwHE4phDvKvgcofotxy4=;
-	b=syaARMgSV4W26DvdjOn597+TNn3cfP4ebQtRQ7x3jCCDbog5mbNa9Htokbr8DTJv26kS37jBdaB77a/9a2ncKFgUo4Zcss6vEAFDnAYsiT1RPCJTKHIPstbu1pYp3REqNmSCIZlpzjebF7EyglguqtGmXIxRxCCxywU9HaU0FGA=;
+	id 1o647k-004SQ2-KD; Tue, 28 Jun 2022 05:50:58 +0000
+X-UUID: 08e12626c8fb4785bb866701cda7a23b-20220627
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:06c9f38f-16cc-42fd-9c84-6bf49b3529d4,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:804bd262-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.7,REQID:832ac3ae-b150-4a7b-9a16-339d0fb1fdaf,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:67f1f485-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 0ba47b3144664f758969862533e0f5f4-20220627
+X-UUID: 08e12626c8fb4785bb866701cda7a23b-20220627
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <chaotian.jing@mediatek.com>)
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 276821117; Mon, 27 Jun 2022 22:50:50 -0700
+	with ESMTP id 148273730; Mon, 27 Jun 2022 22:50:50 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 28 Jun 2022 09:35:40 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ 15.2.792.15; Tue, 28 Jun 2022 09:28:50 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 28 Jun 2022 09:35:39 +0800
-Message-ID: <8be385651b909c911a9225960cacff72cac96b5b.camel@mediatek.com>
-Subject: Re: [PATCH v13 3/3] mmc: mediatek: add support for SDIO eint wakup
- IRQ
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-To: Axe Yang <axe.yang@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
-	<satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
-	<dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>, Andrew Jeffery
-	<andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim
-	<kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, Tian Tao
-	<tiantao6@hisilicon.com>, <angelogioacchino.delregno@collabora.com>,
-	<linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Yong Mao
-	<yong.mao@mediatek.com>
-Date: Tue, 28 Jun 2022 09:35:39 +0800
-In-Reply-To: <20220623090445.1401-4-axe.yang@mediatek.com>
-References: <20220623090445.1401-1-axe.yang@mediatek.com>
-	 <20220623090445.1401-4-axe.yang@mediatek.com>
+ Transport; Tue, 28 Jun 2022 09:28:50 +0800
+Message-ID: <f005cbd101130cb8f9b6a347a9c24f6a437e6140.camel@mediatek.com>
+Subject: Re: [PATCH v23 01/14] dt-bindings: mediatek: add vdosys1 RDMA
+ definition for mt8195
+From: CK Hu <ck.hu@mediatek.com>
+To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+	<wim@linux-watchdog.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: <devicetree@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, "jason-jh .
+ lin" <jason-jh.lin@mediatek.com>, <singo.chang@mediatek.com>,
+	<llvm@lists.linux.dev>, Nick Desaulniers <ndesaulniers@google.com>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
+ Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Date: Tue, 28 Jun 2022 09:28:50 +0800
+In-Reply-To: <9749550d1f0cd8fd08d8bf684ea80cb6defc90d3.camel@mediatek.com>
+References: <20220620091930.27797-1-nancy.lin@mediatek.com>
+	 <20220620091930.27797-2-nancy.lin@mediatek.com>
+	 <9749550d1f0cd8fd08d8bf684ea80cb6defc90d3.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 X-MTK: N
-Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_225056_401289_EEECB900 
-X-CRM114-Status: GOOD (  33.33  )
+X-CRM114-CacheID: sfid-20220627_225056_745151_80C388DC 
+X-CRM114-Status: GOOD (  26.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,129 +88,162 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA2LTIzIGF0IDE3OjA0ICswODAwLCBBeGUgWWFuZyB3cm90ZToNCj4gQWRk
-IHN1cHBvcnQgZm9yIGVpbnQgSVJRIHdoZW4gTVNEQyBpcyB1c2VkIGFzIGFuIFNESU8gaG9zdC4g
-VGhpcw0KPiBmZWF0dXJlIHJlcXVpcmVzIFNESU8gZGV2aWNlIHN1cHBvcnQgYXN5bmMgSVJRIGZ1
-bmN0aW9uLiBXaXRoIHRoaXMNCj4gZmVhdHVyZSwgU0RJTyBob3N0IGNhbiBiZSBhd2FrZW5lZCBi
-eSBTRElPIGNhcmQgaW4gc3VzcGVuZCBzdGF0ZSwNCj4gd2l0aG91dCBhZGRpdGlvbmFsIHBpbi4N
-Cj4gDQo+IE1TREMgZHJpdmVyIHdpbGwgdGltZS1zaGFyZSB0aGUgU0RJTyBEQVQxIHBpbi4gRHVy
-aW5nIHN1c3BlbmQsIE1TREMNCj4gdHVybiBvZmYgY2xvY2sgYW5kIHN3aXRjaCBTRElPIERBVDEg
-cGluIHRvIEdQSU8gbW9kZS4gQW5kIGR1cmluZw0KPiByZXN1bWUsIHN3aXRjaCBHUElPIGZ1bmN0
-aW9uIGJhY2sgdG8gREFUMSBtb2RlIHRoZW4gdHVybiBvbiBjbG9jay4NCj4gDQo+IFNvbWUgZGV2
-aWNlIHRyZWUgcHJvcGVydHkgc2hvdWxkIGJlIGFkZGVkIG9yIG1vZGlmaWVkIGluIE1TREMgbm9k
-ZQ0KPiB0byBzdXBwb3J0IFNESU8gZWludCBJUlEuIFBpbmN0cmxzICJzdGF0ZV9laW50IiBpcyBt
-YW5kYXRvcnkuIFNpbmNlDQo+IHRoaXMgZmVhdHVyZSBkZXBlbmRzIG9uIGFzeW5jaHJvbm91cyBp
-bnRlcnJ1cHRzLCAid2FrZXVwLXNvdXJjZSIsDQo+ICJrZWVwLXBvd2VyLWluLXN1c3BlbmQiIGFu
-ZCAiY2FwLXNkaW8taXJxIiBmbGFncyBhcmUgbmVjZXNzYXJ5LCBhbmQNCj4gdGhlIGludGVycnVw
-dHMgbGlzdCBzaG91bGQgYmUgZXh0ZW5kZWQodGhlIGludGVycnVwdCBuYW1lZCB3aXRoDQo+IHNk
-aW9fd2FrZXVwKToNCj4gICAgICAgICAmbW1jWCB7DQo+IAkJLi4uDQo+IAkJaW50ZXJydXB0LW5h
-bWVzID0gIm1zZGMiLCAic2Rpb193YWtldXAiOw0KPiAJCWludGVycnVwdHMtZXh0ZW5kZWQgPSA8
-Li4uPiwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCSAgICAgIDwmcGlvIHh4eA0K
-PiBJUlFfVFlQRV9MRVZFTF9MT1c+Ow0KPiAgICAgICAgICAgICAgICAgLi4uDQo+ICAgICAgICAg
-ICAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiLCAic3RhdGVfdWhzIiwgInN0YXRlX2Vp
-bnQiOw0KPiAgICAgICAgICAgICAgICAgLi4uDQo+ICAgICAgICAgICAgICAgICBwaW5jdHJsLTIg
-PSA8Jm1tYzJfcGluc19laW50PjsNCj4gICAgICAgICAgICAgICAgIC4uLg0KPiAgICAgICAgICAg
-ICAgICAgY2FwLXNkaW8taXJxOw0KPiAJCWtlZXAtcG93ZXItaW4tc3VzcGVuZDsNCj4gCQl3YWtl
-dXAtc291cmNlOw0KPiAgICAgICAgICAgICAgICAgLi4uDQo+ICAgICAgICAgfTsNCj4gDQo+IENv
-LWRldmVsb3BlZC1ieTogWW9uZyBNYW8gPHlvbmcubWFvQG1lZGlhdGVrLmNvbT4NCj4gU2lnbmVk
-LW9mZi1ieTogWW9uZyBNYW8gPHlvbmcubWFvQG1lZGlhdGVrLmNvbT4NCj4gU2lnbmVkLW9mZi1i
-eTogQXhlIFlhbmcgPGF4ZS55YW5nQG1lZGlhdGVrLmNvbT4NClJldmlld2VkLWJ5OiBDaGFvdGlh
-biBKaW5nIDxjaGFvdGlhbi5qaW5nQG1lZGlhdGVrLmNvbT4NCj4gLS0tDQo+ICBkcml2ZXJzL21t
-Yy9ob3N0L210ay1zZC5jIHwgODQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-LQ0KPiAtLQ0KPiAgMSBmaWxlIGNoYW5nZWQsIDc4IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25z
-KC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tbWMvaG9zdC9tdGstc2QuYyBiL2RyaXZl
-cnMvbW1jL2hvc3QvbXRrLXNkLmMNCj4gaW5kZXggMTk1ZGM4OTcxODhiLi5mOTA3Yjk2Y2ZkODcg
-MTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3QvbXRrLXNkLmMNCj4gKysrIGIvZHJpdmVy
-cy9tbWMvaG9zdC9tdGstc2QuYw0KPiBAQCAtMSw2ICsxLDYgQEANCj4gIC8vIFNQRFgtTGljZW5z
-ZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkNCj4gIC8qDQo+IC0gKiBDb3B5cmlnaHQgKGMpIDIw
-MTQtMjAxNSBNZWRpYVRlayBJbmMuDQo+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTQtMjAxNSwgMjAy
-MiBNZWRpYVRlayBJbmMuDQo+ICAgKiBBdXRob3I6IENoYW90aWFuLkppbmcgPGNoYW90aWFuLmpp
-bmdAbWVkaWF0ZWsuY29tPg0KPiAgICovDQo+ICANCj4gQEAgLTIwLDYgKzIwLDcgQEANCj4gICNp
-bmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4NCj4gICNpbmNsdWRlIDxsaW51eC9wbS5o
-Pg0KPiAgI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4NCj4gKyNpbmNsdWRlIDxsaW51eC9w
-bV93YWtlaXJxLmg+DQo+ICAjaW5jbHVkZSA8bGludXgvcmVndWxhdG9yL2NvbnN1bWVyLmg+DQo+
-ICAjaW5jbHVkZSA8bGludXgvc2xhYi5oPg0KPiAgI2luY2x1ZGUgPGxpbnV4L3NwaW5sb2NrLmg+
-DQo+IEBAIC00NDAsOCArNDQxLDEwIEBAIHN0cnVjdCBtc2RjX2hvc3Qgew0KPiAgCXN0cnVjdCBw
-aW5jdHJsICpwaW5jdHJsOw0KPiAgCXN0cnVjdCBwaW5jdHJsX3N0YXRlICpwaW5zX2RlZmF1bHQ7
-DQo+ICAJc3RydWN0IHBpbmN0cmxfc3RhdGUgKnBpbnNfdWhzOw0KPiArCXN0cnVjdCBwaW5jdHJs
-X3N0YXRlICpwaW5zX2VpbnQ7DQo+ICAJc3RydWN0IGRlbGF5ZWRfd29yayByZXFfdGltZW91dDsN
-Cj4gIAlpbnQgaXJxOwkJLyogaG9zdCBpbnRlcnJ1cHQgKi8NCj4gKwlpbnQgZWludF9pcnE7CQkv
-KiBpbnRlcnJ1cHQgZnJvbSBzZGlvIGRldmljZSBmb3INCj4gd2FraW5nIHVwIHN5c3RlbSAqLw0K
-PiAgCXN0cnVjdCByZXNldF9jb250cm9sICpyZXNldDsNCj4gIA0KPiAgCXN0cnVjdCBjbGsgKnNy
-Y19jbGs7CS8qIG1zZGMgc291cmNlIGNsb2NrICovDQo+IEBAIC0xNTIwLDE3ICsxNTIzLDQ2IEBA
-IHN0YXRpYyB2b2lkIF9fbXNkY19lbmFibGVfc2Rpb19pcnEoc3RydWN0DQo+IG1zZGNfaG9zdCAq
-aG9zdCwgaW50IGVuYikNCj4gIA0KPiAgc3RhdGljIHZvaWQgbXNkY19lbmFibGVfc2Rpb19pcnEo
-c3RydWN0IG1tY19ob3N0ICptbWMsIGludCBlbmIpDQo+ICB7DQo+IC0JdW5zaWduZWQgbG9uZyBm
-bGFnczsNCj4gIAlzdHJ1Y3QgbXNkY19ob3N0ICpob3N0ID0gbW1jX3ByaXYobW1jKTsNCj4gKwl1
-bnNpZ25lZCBsb25nIGZsYWdzOw0KPiArCWludCByZXQ7DQo+ICANCj4gIAlzcGluX2xvY2tfaXJx
-c2F2ZSgmaG9zdC0+bG9jaywgZmxhZ3MpOw0KPiAgCV9fbXNkY19lbmFibGVfc2Rpb19pcnEoaG9z
-dCwgZW5iKTsNCj4gIAlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZob3N0LT5sb2NrLCBmbGFncyk7
-DQo+ICANCj4gLQlpZiAoZW5iKQ0KPiAtCQlwbV9ydW50aW1lX2dldF9ub3Jlc3VtZShob3N0LT5k
-ZXYpOw0KPiAtCWVsc2UNCj4gLQkJcG1fcnVudGltZV9wdXRfbm9pZGxlKGhvc3QtPmRldik7DQo+
-ICsJaWYgKG1tY19jYXJkX2VuYWJsZV9hc3luY19pcnEobW1jLT5jYXJkKSAmJiBob3N0LT5waW5z
-X2VpbnQpIHsNCj4gKwkJaWYgKGVuYikgew0KPiArCQkJLyoNCj4gKwkJCSAqIEluIGRldl9wbV9z
-ZXRfZGVkaWNhdGVkX3dha2VfaXJxX3JldmVyc2UoKSwNCj4gZWludCBwaW4gd2lsbCBiZSBzZXQg
-dG8NCj4gKwkJCSAqIEdQSU8gbW9kZS4gV2UgbmVlZCB0byByZXN0b3JlIGl0IHRvIFNESU8NCj4g
-REFUMSBtb2RlIGFmdGVyIHRoYXQuDQo+ICsJCQkgKiBTaW5jZSB0aGUgY3VycmVudCBwaW5zdGF0
-ZSBpcyBwaW5zX3VocywgdG8NCj4gZW5zdXJlIHBpbmN0cmwgc2VsZWN0IHRha2UNCj4gKwkJCSAq
-IGFmZmVjdCBzdWNjZXNzZnVsbHksIHdlIGNoYW5nZSB0aGUgcGluc3RhdGUNCj4gdG8gcGluc19l
-aW50IGZpcnN0bHkuDQo+ICsJCQkgKi8NCj4gKwkJCXBpbmN0cmxfc2VsZWN0X3N0YXRlKGhvc3Qt
-PnBpbmN0cmwsIGhvc3QtDQo+ID5waW5zX2VpbnQpOw0KPiArCQkJcmV0ID0NCj4gZGV2X3BtX3Nl
-dF9kZWRpY2F0ZWRfd2FrZV9pcnFfcmV2ZXJzZShob3N0LT5kZXYsIGhvc3QtPmVpbnRfaXJxKTsN
-Cj4gKw0KPiArCQkJaWYgKHJldCkgew0KPiArCQkJCWRldl9lcnIoaG9zdC0+ZGV2LCAiRmFpbGVk
-IHRvIHJlZ2lzdGVyDQo+IFNESU8gd2FrZXVwIGlycSFcbiIpOw0KPiArCQkJCWhvc3QtPnBpbnNf
-ZWludCA9IE5VTEw7DQo+ICsJCQkJcG1fcnVudGltZV9nZXRfbm9yZXN1bWUoaG9zdC0+ZGV2KTsN
-Cj4gKwkJCX0gZWxzZSB7DQo+ICsJCQkJZGV2X2RiZyhob3N0LT5kZXYsICJTRElPIGVpbnQgaXJx
-Og0KPiAlZCFcbiIsIGhvc3QtPmVpbnRfaXJxKTsNCj4gKwkJCX0NCj4gKw0KPiArCQkJcGluY3Ry
-bF9zZWxlY3Rfc3RhdGUoaG9zdC0+cGluY3RybCwgaG9zdC0NCj4gPnBpbnNfdWhzKTsNCj4gKwkJ
-fSBlbHNlIHsNCj4gKwkJCWRldl9wbV9jbGVhcl93YWtlX2lycShob3N0LT5kZXYpOw0KPiArCQl9
-DQo+ICsJfSBlbHNlIHsNCj4gKwkJaWYgKGVuYikgew0KPiArCQkJLyogRW5zdXJlIGhvc3QtPnBp
-bnNfZWludCBpcyBOVUxMICovDQo+ICsJCQlob3N0LT5waW5zX2VpbnQgPSBOVUxMOw0KPiArCQkJ
-cG1fcnVudGltZV9nZXRfbm9yZXN1bWUoaG9zdC0+ZGV2KTsNCj4gKwkJfSBlbHNlIHsNCj4gKwkJ
-CXBtX3J1bnRpbWVfcHV0X25vaWRsZShob3N0LT5kZXYpOw0KPiArCQl9DQo+ICsJfQ0KPiAgfQ0K
-PiAgDQo+ICBzdGF0aWMgaXJxcmV0dXJuX3QgbXNkY19jbWRxX2lycShzdHJ1Y3QgbXNkY19ob3N0
-ICpob3N0LCB1MzIgaW50c3RzKQ0KPiBAQCAtMjYzMSw2ICsyNjYzLDIwIEBAIHN0YXRpYyBpbnQg
-bXNkY19kcnZfcHJvYmUoc3RydWN0DQo+IHBsYXRmb3JtX2RldmljZSAqcGRldikNCj4gIAkJZ290
-byBob3N0X2ZyZWU7DQo+ICAJfQ0KPiAgDQo+ICsJLyogU3VwcG9ydCBmb3IgU0RJTyBlaW50IGly
-cSA/ICovDQo+ICsJaWYgKChtbWMtPnBtX2NhcHMgJiBNTUNfUE1fV0FLRV9TRElPX0lSUSkgJiYg
-KG1tYy0+cG1fY2FwcyAmDQo+IE1NQ19QTV9LRUVQX1BPV0VSKSkgew0KPiArCQlob3N0LT5laW50
-X2lycSA9IHBsYXRmb3JtX2dldF9pcnFfYnluYW1lKHBkZXYsDQo+ICJzZGlvX3dha2V1cCIpOw0K
-PiArCQlpZiAoaG9zdC0+ZWludF9pcnEgPiAwKSB7DQo+ICsJCQlob3N0LT5waW5zX2VpbnQgPSBw
-aW5jdHJsX2xvb2t1cF9zdGF0ZShob3N0LQ0KPiA+cGluY3RybCwgInN0YXRlX2VpbnQiKTsNCj4g
-KwkJCWlmIChJU19FUlIoaG9zdC0+cGluc19laW50KSkgew0KPiArCQkJCWRldl9lcnIoJnBkZXYt
-PmRldiwgIkNhbm5vdCBmaW5kDQo+IHBpbmN0cmwgZWludCFcbiIpOw0KPiArCQkJCWhvc3QtPnBp
-bnNfZWludCA9IE5VTEw7DQo+ICsJCQl9IGVsc2Ugew0KPiArCQkJCWRldmljZV9pbml0X3dha2V1
-cCgmcGRldi0+ZGV2LCB0cnVlKTsNCj4gKwkJCX0NCj4gKwkJfQ0KPiArCX0NCj4gKw0KPiAgCW1z
-ZGNfb2ZfcHJvcGVydHlfcGFyc2UocGRldiwgaG9zdCk7DQo+ICANCj4gIAlob3N0LT5kZXYgPSAm
-cGRldi0+ZGV2Ow0KPiBAQCAtMjg0NSw2ICsyODkxLDEzIEBAIHN0YXRpYyBpbnQgX19tYXliZV91
-bnVzZWQNCj4gbXNkY19ydW50aW1lX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQ0KPiAgCXN0
-cnVjdCBtc2RjX2hvc3QgKmhvc3QgPSBtbWNfcHJpdihtbWMpOw0KPiAgDQo+ICAJbXNkY19zYXZl
-X3JlZyhob3N0KTsNCj4gKw0KPiArCWlmIChob3N0LT5waW5zX2VpbnQpIHsNCj4gKwkJZGlzYWJs
-ZV9pcnEoaG9zdC0+aXJxKTsNCj4gKwkJcGluY3RybF9zZWxlY3Rfc3RhdGUoaG9zdC0+cGluY3Ry
-bCwgaG9zdC0+cGluc19laW50KTsNCj4gKwkJaWYgKHNkaW9faXJxX2NsYWltZWQobW1jKSkNCj4g
-KwkJCV9fbXNkY19lbmFibGVfc2Rpb19pcnEoaG9zdCwgMCk7DQo+ICsJfQ0KPiAgCW1zZGNfZ2F0
-ZV9jbG9jayhob3N0KTsNCj4gIAlyZXR1cm4gMDsNCj4gIH0NCj4gQEAgLTI4NjAsMTIgKzI5MTMs
-MTggQEAgc3RhdGljIGludCBfX21heWJlX3VudXNlZA0KPiBtc2RjX3J1bnRpbWVfcmVzdW1lKHN0
-cnVjdCBkZXZpY2UgKmRldikNCj4gIAkJcmV0dXJuIHJldDsNCj4gIA0KPiAgCW1zZGNfcmVzdG9y
-ZV9yZWcoaG9zdCk7DQo+ICsNCj4gKwlpZiAoaG9zdC0+cGluc19laW50KSB7DQo+ICsJCXBpbmN0
-cmxfc2VsZWN0X3N0YXRlKGhvc3QtPnBpbmN0cmwsIGhvc3QtPnBpbnNfdWhzKTsNCj4gKwkJZW5h
-YmxlX2lycShob3N0LT5pcnEpOw0KPiArCX0NCj4gIAlyZXR1cm4gMDsNCj4gIH0NCj4gIA0KPiAg
-c3RhdGljIGludCBfX21heWJlX3VudXNlZCBtc2RjX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2
-KQ0KPiAgew0KPiAgCXN0cnVjdCBtbWNfaG9zdCAqbW1jID0gZGV2X2dldF9kcnZkYXRhKGRldik7
-DQo+ICsJc3RydWN0IG1zZGNfaG9zdCAqaG9zdCA9IG1tY19wcml2KG1tYyk7DQo+ICAJaW50IHJl
-dDsNCj4gIA0KPiAgCWlmIChtbWMtPmNhcHMyICYgTU1DX0NBUDJfQ1FFKSB7DQo+IEBAIC0yODc0
-LDExICsyOTMzLDI0IEBAIHN0YXRpYyBpbnQgX19tYXliZV91bnVzZWQgbXNkY19zdXNwZW5kKHN0
-cnVjdA0KPiBkZXZpY2UgKmRldikNCj4gIAkJCXJldHVybiByZXQ7DQo+ICAJfQ0KPiAgDQo+ICsJ
-LyoNCj4gKwkgKiBCdW1wIHVwIHJ1bnRpbWUgUE0gdXNhZ2UgY291bnRlciBvdGhlcndpc2UgZGV2
-LQ0KPiA+cG93ZXIubmVlZHNfZm9yY2VfcmVzdW1lIHdpbGwNCj4gKwkgKiBub3QgYmUgbWFya2Vk
-IGFzIDEsIHBtX3J1bnRpbWVfZm9yY2VfcmVzdW1lKCkgd2lsbCBnbyBvdXQNCj4gZGlyZWN0bHku
-DQo+ICsJICovDQo+ICsJaWYgKGhvc3QtPnBpbnNfZWludCkNCj4gKwkJcG1fcnVudGltZV9nZXRf
-bm9yZXN1bWUoZGV2KTsNCj4gKw0KPiAgCXJldHVybiBwbV9ydW50aW1lX2ZvcmNlX3N1c3BlbmQo
-ZGV2KTsNCj4gIH0NCj4gIA0KPiAgc3RhdGljIGludCBfX21heWJlX3VudXNlZCBtc2RjX3Jlc3Vt
-ZShzdHJ1Y3QgZGV2aWNlICpkZXYpDQo+ICB7DQo+ICsJc3RydWN0IG1tY19ob3N0ICptbWMgPSBk
-ZXZfZ2V0X2RydmRhdGEoZGV2KTsNCj4gKwlzdHJ1Y3QgbXNkY19ob3N0ICpob3N0ID0gbW1jX3By
-aXYobW1jKTsNCj4gKw0KPiArCWlmIChob3N0LT5waW5zX2VpbnQpDQo+ICsJCXBtX3J1bnRpbWVf
-cHV0X25vaWRsZShkZXYpOw0KPiArDQo+ICAJcmV0dXJuIHBtX3J1bnRpbWVfZm9yY2VfcmVzdW1l
-KGRldik7DQo+ICB9DQo+ICANCg==
+OK, it seems no one has comment on this patch, so applied to mediatek-
+drm-next [1], thanks.
+
+[1] 
+https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
+
+Regards,
+CK
+
+On Wed, 2022-06-22 at 11:55 +0800, CK Hu wrote:
+> Hi, Rob:
+> 
+> You have ask Nancy question in old version and Nancy has reply in
+> [1],
+> how do you think about Nancy's reply?
+> 
+> [1] 
+> 
+http://lists.infradead.org/pipermail/linux-mediatek/2022-April/039890.html
+> 
+> Regards,
+> CK
+> 
+> On Mon, 2022-06-20 at 17:19 +0800, Nancy.Lin wrote:
+> > Add vdosys1 RDMA definition.
+> > 
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > Tested-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  .../display/mediatek/mediatek,mdp-rdma.yaml   | 88
+> > +++++++++++++++++++
+> >  1 file changed, 88 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > new file mode 100644
+> > index 000000000000..dd12e2ff685c
+> > --- /dev/null
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,mdp-
+> > rdma.yaml
+> > @@ -0,0 +1,88 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > 
+https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,mdp-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!2V-LPisZwDTVUkpQ5cJnZhaUV4iBSohT_B1_8bY3yar4Iuacq_NaTManclYLSA$
+> >  
+> > +$schema: 
+> > 
+https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!2V-LPisZwDTVUkpQ5cJnZhaUV4iBSohT_B1_8bY3yar4Iuacq_NaTMZYdJgbgQ$
+> >  
+> > +
+> > +title: MediaTek MDP RDMA
+> > +
+> > +maintainers:
+> > +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> > +  - Philipp Zabel <p.zabel@pengutronix.de>
+> > +
+> > +description:
+> > +  The MediaTek MDP RDMA stands for Read Direct Memory Access.
+> > +  It provides real time data to the back-end panel driver, such as
+> > DSI,
+> > +  DPI and DP_INTF.
+> > +  It contains one line buffer to store the sufficient pixel data.
+> > +  RDMA device node must be siblings to the central MMSYS_CONFIG
+> > node.
+> > +  For a description of the MMSYS_CONFIG binding, see
+> > +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya
+> > ml
+> > for details.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: mediatek,mt8195-vdo1-rdma
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +  power-domains:
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: RDMA Clock
+> > +
+> > +  iommus:
+> > +    maxItems: 1
+> > +
+> > +  mediatek,gce-client-reg:
+> > +    description:
+> > +      The register of display function block to be set by gce.
+> > There
+> > are 4 arguments,
+> > +      such as gce node, subsys id, offset and register size. The
+> > subsys id that is
+> > +      mapping to the register of display function blocks is
+> > defined
+> > in the gce header
+> > +      include/dt-bindings/gce/<chip>-gce.h of each chips.
+> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> > +    items:
+> > +      items:
+> > +        - description: phandle of GCE
+> > +        - description: GCE subsys id
+> > +        - description: register offset
+> > +        - description: register size
+> > +    maxItems: 1
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - power-domains
+> > +  - clocks
+> > +  - iommus
+> > +  - mediatek,gce-client-reg
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +    #include <dt-bindings/clock/mt8195-clk.h>
+> > +    #include <dt-bindings/power/mt8195-power.h>
+> > +    #include <dt-bindings/gce/mt8195-gce.h>
+> > +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> > +
+> > +    soc {
+> > +        #address-cells = <2>;
+> > +        #size-cells = <2>;
+> > +
+> > +        rdma@1c104000 {
+> > +            compatible = "mediatek,mt8195-vdo1-rdma";
+> > +            reg = <0 0x1c104000 0 0x1000>;
+> > +            interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
+> > +            clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
+> > +            power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+> > +            iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
+> > +            mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX
+> > 0x4000
+> > 0x1000>;
+> > +        };
+> > +    };
 
 
