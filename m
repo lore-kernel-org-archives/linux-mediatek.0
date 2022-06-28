@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00B0CCA479
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 06:08:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63201C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jun 2022 06:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zp9HhcSHqY0rn775HIOk5GDhZYty19qzLaFyMr01iBA=; b=z2gJd+NhWeH8mmNbnsgMEHRzQF
-	iKw/VUVNCrsJqd1pZG4PqrhT5B6qkR8Oohmv1Oyrw+PCtptiIS6z0dVXTGmn/QjAcbZOmmdHo2zXV
-	AvZVvAjFzuqWFbu+csM+/em0D2Zrxlq/xuPa2uFdKRecj3f8I93F92Tgxa3ABqBdDsKmAjVU5wUL+
-	Ma5rhVVjeSLneNT6i78B8rtZX6WJVqRagfjTtm21briDRKNgy6T6r+dDN4F/ltJ6hvIgRp1BQdEOj
-	QY8RxcOfto5ehe1y2Evmx8EOCqgKTyzNu1L7bDyPVXxD2IyT3OqefGR1sc/vDIQQRhW55+FpU69YD
-	CEdmwFvQ==;
+	bh=YCflgZYLsDCCZqaXFDcO5i1/XzmQVtGYNBpTYftNe7w=; b=UOJEYBBZumlVB2W4D/JQdJ796O
+	YIGhYyy/kOve4ulDcvg1vyVIO1cm2DO/4jzD0TpnRXszy9kPdpfskXwhvxIgHIVUo6Zl0eUUJpn/a
+	QZ0Z/jWt3TAf+ETMjDeql2Kyg747PPpq/rrcCPfulchmhFjhECLQvMEShvjF1B0JPh53Nn+rLs3LZ
+	pCHzNAu9K5wJVUiUmCwdYdivxNcQljD1g50v4pX7tyb4pPQgtYB0XDblwcGmFmnG93Q9NKyGrTQce
+	uE736Vn3Yp8V6LNSBQnilLK1b21vrXxLqwRSG6WGW7iFftKnFFLiCc76H2Wp5DO8Z65Wn/rnLPKhs
+	iYt2LUrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o64OB-004ZzB-Nv; Tue, 28 Jun 2022 06:07:55 +0000
+	id 1o64PG-004aXX-C1; Tue, 28 Jun 2022 06:09:02 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o64EW-004VUZ-M4; Tue, 28 Jun 2022 05:57:58 +0000
-X-UUID: 40b6b3200c6b4206972992a4dc5ead17-20220627
+	id 1o64EZ-004VVY-Hw; Tue, 28 Jun 2022 05:58:01 +0000
+X-UUID: 8cbd1e7b46974ff5af0d40208b33f60a-20220627
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:88d391a9-680d-4c2f-ad4d-014efcf0ced0,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:c774d262-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-O-INFO: VERSION:1.1.7,REQID:d65bfb12-7e80-46aa-8ce8-0f516ec27ce3,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:87442a2,CLOUDID:0475d262-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 40b6b3200c6b4206972992a4dc5ead17-20220627
+X-UUID: 8cbd1e7b46974ff5af0d40208b33f60a-20220627
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 21522388; Mon, 27 Jun 2022 22:57:51 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+	with ESMTP id 1111351666; Mon, 27 Jun 2022 22:57:55 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 28 Jun 2022 13:54:31 +0800
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Jun 2022 10:38:15 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 28 Jun 2022 10:38:15 +0800
-Message-ID: <c3a2feae4295f3300f723a9bfd8cdf0b1c938c81.camel@mediatek.com>
-Subject: Re: [PATCH v14 12/15] drm/mediatek: dpi: Add YUV422 output support
+ Tue, 28 Jun 2022 09:32:21 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 28 Jun 2022 09:32:20 +0800
+Message-ID: <eb096460b04fed32d29db9f6b66c839e964d2a74.camel@mediatek.com>
+Subject: Re: [PATCH v23 04/14] drm/mediatek: add display merge advance
+ config API for MT8195
 From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 28 Jun 2022 10:38:15 +0800
-In-Reply-To: <5b0613b9cc983e24a997c122b2892b35cf8346d3.camel@mediatek.com>
-References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
-	 <20220624030946.14961-13-rex-bc.chen@mediatek.com>
-	 <a59a61a81e45fd361774a28a66ffd3d673cb3148.camel@mediatek.com>
-	 <5b0613b9cc983e24a997c122b2892b35cf8346d3.camel@mediatek.com>
+To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+	<wim@linux-watchdog.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: <devicetree@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, "jason-jh .
+ lin" <jason-jh.lin@mediatek.com>, <singo.chang@mediatek.com>,
+	<llvm@lists.linux.dev>, Nick Desaulniers <ndesaulniers@google.com>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Nathan
+ Chancellor" <nathan@kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Date: Tue, 28 Jun 2022 09:32:21 +0800
+In-Reply-To: <20220620091930.27797-5-nancy.lin@mediatek.com>
+References: <20220620091930.27797-1-nancy.lin@mediatek.com>
+	 <20220620091930.27797-5-nancy.lin@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_225756_812401_E3FEBC6B 
-X-CRM114-Status: GOOD (  39.19  )
+X-CRM114-CacheID: sfid-20220627_225759_649774_A8DC3B16 
+X-CRM114-Status: GOOD (  24.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,215 +87,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-06-28 at 10:28 +0800, Rex-BC Chen wrote:
-> On Tue, 2022-06-28 at 10:15 +0800, CK Hu wrote:
-> > Hi, Bo-Chen:
-> > 
-> > On Fri, 2022-06-24 at 11:09 +0800, Bo-Chen Chen wrote:
-> > > Dp_intf supports YUV422 as output format. In MT8195 Chrome
-> > > project,
-> > > YUV422 output format is used for 4K resolution.
-> > > 
-> > > To support this, it is also needed to support color format
-> > > transfer.
-> > > Color format transfer is a new feature for both dpi and dpintf of
-> > > MT8195.
-> > > 
-> > > The input format could be RGB888 and output format for dp_intf
-> > > should
-> > > be
-> > > YUV422. Therefore, we add a mtk_dpi_matrix_sel() helper to update
-> > > the
-> > > DPI_MATRIX_SET register depending on the color format.
-> > > 
-> > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno <
-> > > angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_dpi.c      | 34
-> > > ++++++++++++++++++++++++-
-> > >  drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  3 +++
-> > >  2 files changed, 36 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > index 9e4250356342..438bf3bc5e4a 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > @@ -128,6 +128,7 @@ struct mtk_dpi_yc_limit {
-> > >   * @num_output_fmts: Quantity of supported output formats.
-> > >   * @is_ck_de_pol: Support CK/DE polarity.
-> > >   * @swap_input_support: Support input swap function.
-> > > + * @color_fmt_trans_support: Enable color format transfer.
-> > >   * @dimension_mask: Mask used for HWIDTH, HPORCH, VSYNC_WIDTH
-> > > and
-> > > VSYNC_PORCH
-> > >   *		    (no shift).
-> > >   * @hvsize_mask: Mask of HSIZE and VSIZE mask (no shift).
-> > > @@ -144,6 +145,7 @@ struct mtk_dpi_conf {
-> > >  	u32 num_output_fmts;
-> > >  	bool is_ck_de_pol;
-> > >  	bool swap_input_support;
-> > > +	bool color_fmt_trans_support;
-> > >  	u32 dimension_mask;
-> > >  	u32 hvsize_mask;
-> > >  	u32 channel_swap_shift;
-> > > @@ -412,6 +414,31 @@ static void
-> > > mtk_dpi_config_disable_edge(struct
-> > > mtk_dpi *dpi)
-> > >  		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0,
-> > > EDGE_SEL_EN);
-> > >  }
-> > >  
-> > > +static void mtk_dpi_matrix_sel(struct mtk_dpi *dpi,
-> > > +			       enum mtk_dpi_out_color_format format)
-> > > +{
-> > > +	u32 matrix_sel = 0;
-> > > +
-> > > +	if (!dpi->conf->color_fmt_trans_support) {
-> > > +		dev_info(dpi->dev, "matrix_sel is not supported.\n");
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	switch (format) {
-> > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
-> > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL:
-> > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_444:
-> > > +	case MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL:
-> > 
-> > I think the transform formula are different for full range and non-
-> > full 
-> > range. Please make sure '0x2' is for full range or non-full range.
-> > If
-> > you are not sure, you could provide the transform matrix of '0x2'
-> > so
-> > we
-> > could find out it's full or non-full.
-> > 
-> > > +	case MTK_DPI_COLOR_FORMAT_XV_YCC:
-> > > +		if (dpi->mode.hdisplay <= 720)
-> > > +			matrix_sel = 0x2;
-> > 
-> > Symbolize '0x2'.
-> > 
-> > > +		break;
-> > > +	default:
-> > > +		break;
-> > > +	}
-> > > +	mtk_dpi_mask(dpi, DPI_MATRIX_SET, matrix_sel,
-> > > INT_MATRIX_SEL_MASK);
-> > > +}
-> > > +
-> > >  static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
-> > >  					enum mtk_dpi_out_color_format
-> > > format)
-> > >  {
-> > > @@ -419,6 +446,7 @@ static void
-> > > mtk_dpi_config_color_format(struct
-> > > mtk_dpi *dpi,
-> > >  	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
-> > >  		mtk_dpi_config_yuv422_enable(dpi, false);
-> > >  		mtk_dpi_config_csc_enable(dpi, true);
-> > > +		mtk_dpi_matrix_sel(dpi, format);
-> > 
-> > Why mt8173 support MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL but it does
-> > not
-> > call mtk_dpi_matrix_sel()? It seems that mt8173 also need to call
-> > mtk_dpi_matrix_sel() but lost and this patch looks like a bug fix
-> > for
-> > all SoC DPI driver.
-> > 
-> > Regards,
-> > CK
-> > 
-> 
-> Hello CK,
-> 
-> MT8173 does not support MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL as output
-> format, the output format is:
-> 
-> static const u32 mt8173_output_fmts[] = {
-> 	MEDIA_BUS_FMT_RGB888_1X24,
-> };
-> 
-> or do I misunderstand?
+Hi, Nancy:
 
-In the first patch [1], it define
+On Mon, 2022-06-20 at 17:19 +0800, Nancy.Lin wrote:
+> Add merge new advance config API. The original merge API is
+> mtk_ddp_comp_funcs function prototype. The API interface parameters
+> cannot be modified, so add a new config API for extension. This is
+> the preparation for ovl_adaptor merge control.
 
-+enum mtk_dpi_out_color_format {
-+	MTK_DPI_COLOR_FORMAT_RGB,
-+	MTK_DPI_COLOR_FORMAT_RGB_FULL,
-+	MTK_DPI_COLOR_FORMAT_YCBCR_444,
-+	MTK_DPI_COLOR_FORMAT_YCBCR_422,
-+	MTK_DPI_COLOR_FORMAT_XV_YCC,
-+	MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL,
-+	MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL
-+};
-
-and this function also process MTK_DPI_COLOR_FORMAT_YCBCR_444,
-MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL, MTK_DPI_COLOR_FORMAT_YCBCR_422,
-and MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL. So I think it want to process
-output YUV but the caller of mtk_dpi_config_color_format() just pass
-RGB into this function. If mt8173 does not support YUV output, I think
-you should remove YUV processing in this function first, and then add
-back YUV processing in this function.
+Applied to mediatek-drm-next [1], thanks.
 
 [1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_dpi.c?h=v5.19-rc4&id=9e629c17aa8d7a75b8c1d99ed42892cd8ba7cdc4
+https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
 
 Regards,
 CK
 
 > 
-> BRs,
-> Bo-Chen
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> Tested-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  3 ++
+>  drivers/gpu/drm/mediatek/mtk_disp_merge.c | 52 ++++++++++++++++++++-
+> --
+>  2 files changed, 48 insertions(+), 7 deletions(-)
 > 
-> > >  		if (dpi->conf->swap_input_support)
-> > >  			mtk_dpi_config_swap_input(dpi, false);
-> > >  		mtk_dpi_config_channel_swap(dpi,
-> > > MTK_DPI_OUT_CHANNEL_SWAP_BGR);
-> > > @@ -426,6 +454,7 @@ static void
-> > > mtk_dpi_config_color_format(struct
-> > > mtk_dpi *dpi,
-> > >  		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
-> > >  		mtk_dpi_config_yuv422_enable(dpi, true);
-> > >  		mtk_dpi_config_csc_enable(dpi, true);
-> > > +		mtk_dpi_matrix_sel(dpi, format);
-> > >  		if (dpi->conf->swap_input_support)
-> > >  			mtk_dpi_config_swap_input(dpi, true);
-> > >  		else
-> > > @@ -673,7 +702,10 @@ static int
-> > > mtk_dpi_bridge_atomic_check(struct
-> > > drm_bridge *bridge,
-> > >  	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
-> > >  	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
-> > >  	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
-> > > -	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
-> > > +	if (out_bus_format == MEDIA_BUS_FMT_YUYV8_1X16)
-> > > +		dpi->color_format =
-> > > MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL;
-> > > +	else
-> > > +		dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
-> > >  
-> > >  	return 0;
-> > >  }
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > > b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > > index 3a02fabe1662..cca0dccb84a2 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > > @@ -217,4 +217,7 @@
-> > >  
-> > >  #define EDGE_SEL_EN			BIT(5)
-> > >  #define H_FRE_2N			BIT(25)
-> > > +
-> > > +#define DPI_MATRIX_SET		0xB4
-> > > +#define INT_MATRIX_SEL_MASK		GENMASK(4, 0)
-> > >  #endif /* __MTK_DPI_REGS_H */
-> > 
-> > 
-> 
-> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index 2cd1c660ace3..e847e90f436d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -63,6 +63,9 @@ void mtk_merge_config(struct device *dev, unsigned
+> int width,
+>  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+>  void mtk_merge_start(struct device *dev);
+>  void mtk_merge_stop(struct device *dev);
+> +void mtk_merge_advance_config(struct device *dev, unsigned int l_w,
+> unsigned int r_w,
+> +			      unsigned int h, unsigned int vrefresh,
+> unsigned int bpc,
+> +			      struct cmdq_pkt *cmdq_pkt);
+>  
+>  void mtk_ovl_bgclr_in_on(struct device *dev);
+>  void mtk_ovl_bgclr_in_off(struct device *dev);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> index 45face638153..40da0555416d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> @@ -17,6 +17,7 @@
+>  #define DISP_REG_MERGE_CTRL		0x000
+>  #define MERGE_EN				1
+>  #define DISP_REG_MERGE_CFG_0		0x010
+> +#define DISP_REG_MERGE_CFG_1		0x014
+>  #define DISP_REG_MERGE_CFG_4		0x020
+>  #define DISP_REG_MERGE_CFG_10		0x038
+>  /* no swap */
+> @@ -25,9 +26,12 @@
+>  #define DISP_REG_MERGE_CFG_12		0x040
+>  #define CFG_10_10_1PI_2PO_BUF_MODE		6
+>  #define CFG_10_10_2PI_2PO_BUF_MODE		8
+> +#define CFG_11_10_1PI_2PO_MERGE			18
+>  #define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
+>  #define DISP_REG_MERGE_CFG_24		0x070
+>  #define DISP_REG_MERGE_CFG_25		0x074
+> +#define DISP_REG_MERGE_CFG_26		0x078
+> +#define DISP_REG_MERGE_CFG_27		0x07c
+>  #define DISP_REG_MERGE_CFG_36		0x0a0
+>  #define ULTRA_EN				BIT(0)
+>  #define PREULTRA_EN				BIT(4)
+> @@ -98,12 +102,19 @@ static void mtk_merge_fifo_setting(struct
+> mtk_disp_merge *priv,
+>  void mtk_merge_config(struct device *dev, unsigned int w,
+>  		      unsigned int h, unsigned int vrefresh,
+>  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+> +{
+> +	mtk_merge_advance_config(dev, w, 0, h, vrefresh, bpc,
+> cmdq_pkt);
+> +}
+> +
+> +void mtk_merge_advance_config(struct device *dev, unsigned int l_w,
+> unsigned int r_w,
+> +			      unsigned int h, unsigned int vrefresh,
+> unsigned int bpc,
+> +			      struct cmdq_pkt *cmdq_pkt)
+>  {
+>  	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+>  	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
+>  
+> -	if (!h || !w) {
+> -		dev_err(dev, "%s: input width(%d) or height(%d) is
+> invalid\n", __func__, w, h);
+> +	if (!h || !l_w) {
+> +		dev_err(dev, "%s: input width(%d) or height(%d) is
+> invalid\n", __func__, l_w, h);
+>  		return;
+>  	}
+>  
+> @@ -112,14 +123,41 @@ void mtk_merge_config(struct device *dev,
+> unsigned int w,
+>  		mode = CFG_10_10_2PI_2PO_BUF_MODE;
+>  	}
+>  
+> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
+> >regs,
+> +	if (r_w)
+> +		mode = CFG_11_10_1PI_2PO_MERGE;
+> +
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv-
+> >regs,
+>  		      DISP_REG_MERGE_CFG_0);
+> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
+> >regs,
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv-
+> >regs,
+> +		      DISP_REG_MERGE_CFG_1);
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | (l_w + r_w), &priv->cmdq_reg, 
+> priv->regs,
+>  		      DISP_REG_MERGE_CFG_4);
+> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
+> >regs,
+> +	/*
+> +	 * DISP_REG_MERGE_CFG_24 is merge SRAM0 w/h
+> +	 * DISP_REG_MERGE_CFG_25 is merge SRAM1 w/h.
+> +	 * If r_w > 0, the merge is in merge mode (input0 and input1
+> merge together),
+> +	 * the input0 goes to SRAM0, and input1 goes to SRAM1.
+> +	 * If r_w = 0, the merge is in buffer mode, the input goes
+> through SRAM0 and
+> +	 * then to SRAM1. Both SRAM0 and SRAM1 are set to the same
+> size.
+> +	 */
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv-
+> >regs,
+>  		      DISP_REG_MERGE_CFG_24);
+> -	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv-
+> >regs,
+> -		      DISP_REG_MERGE_CFG_25);
+> +	if (r_w)
+> +		mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, 
+> priv->regs,
+> +			      DISP_REG_MERGE_CFG_25);
+> +	else
+> +		mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, 
+> priv->regs,
+> +			      DISP_REG_MERGE_CFG_25);
+> +
+> +	/*
+> +	 * DISP_REG_MERGE_CFG_26 and DISP_REG_MERGE_CFG_27 is only used
+> in LR merge.
+> +	 * Only take effect when the merge is setting to merge mode.
+> +	 */
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv-
+> >regs,
+> +		      DISP_REG_MERGE_CFG_26);
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv-
+> >regs,
+> +		      DISP_REG_MERGE_CFG_27);
+> +
+>  	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv-
+> >regs,
+>  			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
+>  	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
 
 
