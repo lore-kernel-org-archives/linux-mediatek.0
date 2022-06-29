@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D83C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4302C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Nlg+/A/2lG7nPrwCN9OcJJY+B+CLo/eWqxjs4IwRvk=; b=IY4Yi4E/jo47PPt92aBgzGcwUd
-	6+rJCjC8z0+z6E6X1Akj+T9CJx9LqCeJGv4rlx/N5X8pp102ObPKyJFdm0NLRiMNxrTo1Wp03NveX
-	OaMIBjDPzL3sSDyhllngyGylR6YRi3LleOWE0vz51JVCFEzdEA0wPWujd1S2toT5finqr9gKpsZmS
-	HQAHHZx5d093E6qxFLFruEkRxJXoSKn7tbqvCQvoVQ6wZZ3WgTiKWASkuislCOiaxN+tGRvRMn6+S
-	MjXR8c5gJV6R+QsR63VS631A7sOO6c6yBHjpIJes8skh6suBTAQXCCMf0sauvLth7YYEfVvbL3qi3
-	4cUCSGpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yDG0KgHlLwwLq5P2u2ZEn94PMuvQBMAcwz+yxdabQsg=; b=i0RNTnoDqEJpvk28rzlvD9ZFE7
+	YU7xhqnpwff7hNcCE84hbTtPSFjFGQe8KAqk6yRamuN8ADDlrwSvOWCCwo7HgYsMczCB2Il4+mXm1
+	tpmqqcAHeEkBvGFovanrO1rSzU8KIlbzQEOzKYjCfb/5g5FUGn1n39PUJsU/gyAjZ/Hi+hbmfTDjd
+	30jfeHEcMMzL4XOClCZ6uM5kQrI5mmnKPnVio01cbBrGxioZqaYWq9leMYDWWIwukg9jYXe18xD/i
+	nJXNuKj4cXMQYzHQPnYT0dbFzM/fWcJhnB/PIqqlpdDJrsq8i5Gg09sH6n30EforDWjf+DUs7PCf+
+	mFiUKTJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6WYa-00BhZr-WF; Wed, 29 Jun 2022 12:12:33 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1o6WcE-00BjM1-P0; Wed, 29 Jun 2022 12:16:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6WYN-00BhUV-Sq; Wed, 29 Jun 2022 12:12:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1656504731; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=PGK/k9DeAdxOtwaTL/Ud+3uQ4Q+GGYlfiEYU7tvaIdpH0HgYd18h/U4BPUy2a1X/BTvVX+0Re+6i0KL8M+mptABBTC9TAKqGIEa88fdcxgSVd82I+693RbzLHKmur39aNxfYu5LBNu922V+EkH5cP9FGvnee6CObGNPVMwYPksQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1656504731; h=Content-Type:Content-Transfer-Encoding:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=7Nlg+/A/2lG7nPrwCN9OcJJY+B+CLo/eWqxjs4IwRvk=; 
-	b=bLWrd8ZFSymnFvnBMogKwxmaM2t90gywSpTObFBzNgJlHdmUOqSc1srfQkKZA5nEHuHkc/ssjNXcxVuS59QaWr9DXToMvQ565+mPPhApYS1YwHFdAMdpM8ziz9KEY15TrZp6F4FCpK5PQM52jiLYAa+4+Ky18kGSDkOJ2W475no=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1656504731;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
-	bh=7Nlg+/A/2lG7nPrwCN9OcJJY+B+CLo/eWqxjs4IwRvk=;
-	b=SO/kyUlNlVYkl9JJB8ag+o5yHnDYD5i65OTv9i3S/z2DTnU5wCe6nAsOrlXV8Mlq
-	J2tHohR+IX4gQWKvIgKjPiXUkUDNVTQg6xAuLaW/Z3XZLRQJuhGl7KHVonRv0L5qHPe
-	d6L/blNyZCKH+dL14HyDzVRYooB3QlxJugCC4dMU=
-Received: from [10.10.10.122] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1656504730341712.7546788738672; Wed, 29 Jun 2022 05:12:10 -0700 (PDT)
-Message-ID: <e20a43f7-ed3e-83ef-a863-43cb11535ec2@arinc9.com>
-Date: Wed, 29 Jun 2022 15:12:05 +0300
+	id 1o6WbG-00Biqj-6x; Wed, 29 Jun 2022 12:15:21 +0000
+X-UUID: 1dbd8f1a8bc7461f831bd6949e721b49-20220629
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:8081d05b-dcae-4f55-b738-a202f7292e51,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:6f02f762-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 1dbd8f1a8bc7461f831bd6949e721b49-20220629
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1844463532; Wed, 29 Jun 2022 05:15:07 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 29 Jun 2022 20:14:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Wed, 29 Jun 2022 20:14:02 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	"Chen-Yu Tsai" <wenst@chromium.org>, Allen-KH Cheng
+	<allen-kh.cheng@mediatek.com>
+Subject: [PATCH 2/5] arm64: dts: mt8192: Add mipi_tx node
+Date: Wed, 29 Jun 2022 20:13:55 +0800
+Message-ID: <20220629121358.19458-3-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220629121358.19458-1-allen-kh.cheng@mediatek.com>
+References: <20220629121358.19458-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 2/2] MIPS: dts: align gpio-key node names with dtschema
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Rahul Bedarkar <rahulbedarkar89@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Paul Cercueil <paul@crapouillou.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20220624170740.66271-1-krzysztof.kozlowski@linaro.org>
- <20220624170740.66271-2-krzysztof.kozlowski@linaro.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20220624170740.66271-2-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_051219_996560_EC8DB0D4 
-X-CRM114-Status: UNSURE (   6.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220629_051518_313000_3010F853 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,14 +78,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24.06.2022 20:07, Krzysztof Kozlowski wrote:
-> The node names should be generic and DT schema expects certain pattern
-> (e.g. with key/button/switch).
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Add mipi_tx node for mt8192 SoC.
 
-Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Cheers.
-Arınç
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 731bdc665b94..a07edc82d403 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -1095,6 +1095,16 @@
+ 			};
+ 		};
+ 
++		mipi_tx0: dsi-dphy@11e50000 {
++			compatible = "mediatek,mt8183-mipi-tx";
++			reg = <0 0x11e50000 0 0x1000>;
++			clocks = <&apmixedsys CLK_APMIXED_MIPID26M>;
++			#clock-cells = <0>;
++			#phy-cells = <0>;
++			clock-output-names = "mipi_tx0_pll";
++			status = "disabled";
++		};
++
+ 		i2c0: i2c@11f00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11f00000 0 0x1000>,
+-- 
+2.18.0
+
 
