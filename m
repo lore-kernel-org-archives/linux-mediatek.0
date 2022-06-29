@@ -4,87 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 742B4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 10:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37A6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 10:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LUI568KKXBWt/UbA1wIV56CczfgTe2ipRJvz8jOekL4=; b=rKLcknQn6rDVArAdYSD/aeVjVT
-	fnFgZaFg7tuHlxPss3wa/UjC7f+F5+kVIVjFeWf3zw4nJJBwmeaRIG64sAqGQEUkhuwlTJ4eH64dt
-	Kbx7Autyq7eKbuWRznmy2XS34dqeT/UYiNOgc9aaTp4gwczwSy4SPF3HQdx+ODE/3FXb3fTdtpLsq
-	b222YR+xfvpHJps/zSTFpD9ghwyjWaobDSGRNkvAa8CAN7IiHnUs5hpLpCyM2QsdD59HgI0QfWlcZ
-	m+o08wApKjRkwn1XqZMCtgcSMCqX4BG2wVOctbKLRINwyatByfyyxO9infw8UqmAedUpJnETXn8FH
-	GqK4k8Tg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0FiHfHhuJxRbKO2ZEqOegUqQO3i26pqdBinQstYyXhE=; b=fO4x9LI8lrcOZnuX3RzMu55JGk
+	GhXPVHKTGhP8KIdjDJoa1/eVQ2szd/5moTnQ7VxeEDjNT+7qqs20sylR5aKra96BBwqPl6SVAGPD/
+	U3kzQaGQsocVR2flipDjsYYw5tUeEloghlKSavpVRfVSrDWdiz1ySwMXgY17i1fYUFtxxopPdOhr5
+	BBRMzmSka/14a8GbfUv26FCLcEczDGTFSMkdr51bWOTn9E8zgOoqDR2KGNRWet+YakC4XJZ3ZVyly
+	NanOPml9RwzcK94+WI7VQrkLusNQFG1XC/V/hq6Yozl87fmqb8H74vUhgTwDM0v4F/oBLwkAceS9L
+	qlr6TteQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Up6-00AzMR-Lc; Wed, 29 Jun 2022 10:21:28 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1o6UqK-00AzlY-EL; Wed, 29 Jun 2022 10:22:44 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Up3-00AzLG-LX
-	for linux-mediatek@lists.infradead.org; Wed, 29 Jun 2022 10:21:28 +0000
-Received: by mail-wm1-x336.google.com with SMTP id l68so4017360wml.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Jun 2022 03:21:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=LUI568KKXBWt/UbA1wIV56CczfgTe2ipRJvz8jOekL4=;
-        b=Dg+/K7lGSuLotSEUfjS3gnurmv3Ls9wWXf6+SkWUT8cGyAwt/fvEJr+1Ttq4qiye9Y
-         hdXUYGJ0HMbnWxRaZs6PA2J9hJ1QmKztIGxEVZBrNp0IAJO9fpBuhsBWdANK2Tpo4QvD
-         qcnWerCjZqxRV/tFdNll1My2DNgYExo3D1raK2FrREl9oEp9VBo1JlfI/xtFTpgjb9+Z
-         XX2iTKSC+tjZKqAll7tRdmBEb08QNDXYF2+8mF21DIUneW0qNkD/q1WemgocXxI8SShR
-         kz8hLD9uhFTE4E/MfabHQsewdcdUPmic23x2KnI7UsNFlKzbQs7bjwjTpR36z5tz4GaY
-         P9QQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=LUI568KKXBWt/UbA1wIV56CczfgTe2ipRJvz8jOekL4=;
-        b=8ITolXEqMBf9Nxp2B+VdVxFGAsGxMNYjIGG4ZLzLRb38pgTI/EHfAL4YYHAfKqUjld
-         nQEIAMkCJGlknnPBBwZJT0rL20phBZebF1O3c0Kev0U9XkteMim4r0GdP6pN56o74tEr
-         r3PCsMat7n4MU3jTOG+NctHyQnsM6rbrYc9SAIuGmJ8dvaj52yQhJipTD+4zQd9D0/1e
-         VGYiGHptZwE9cEh04mVvjpXFutWolNzztVsDU2JTMJutcunlVkEBimExGw4tEYtBMiAS
-         ejoArJKI6NtQQZk843BldWgs9oyfMS8VGOUDCk+jUcCRzbe1z/787JNZiaIgcP7nD5tA
-         SUjQ==
-X-Gm-Message-State: AJIora9JBr33lopz6iUU77mLp1Dawkb3MyxvxeCFiabM6YgGL1xBJnxT
-	sVC73rCSKlNGj/81JWkgdmts+A==
-X-Google-Smtp-Source: AGRyM1t66misOvkWP/wDFaZ3DmxBe9/TdCWM/N12/+KveC7B17Rp6dA33RQzHq6OCHRATnzN0JeudQ==
-X-Received: by 2002:a7b:c196:0:b0:3a0:3d46:4620 with SMTP id y22-20020a7bc196000000b003a03d464620mr4808384wmi.26.1656498082205;
-        Wed, 29 Jun 2022 03:21:22 -0700 (PDT)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id m1-20020a7bcb81000000b003a05621dc53sm2562035wmi.29.2022.06.29.03.21.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Jun 2022 03:21:21 -0700 (PDT)
-Message-ID: <7d3fdfb5-ed03-671b-59d8-918cc0d60612@linaro.org>
-Date: Wed, 29 Jun 2022 12:21:19 +0200
+	id 1o6UqH-00AzkL-UM
+	for linux-mediatek@lists.infradead.org; Wed, 29 Jun 2022 10:22:43 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E590B60E2C;
+	Wed, 29 Jun 2022 10:22:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17DA1C34114;
+	Wed, 29 Jun 2022 10:22:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1656498160;
+	bh=Nhr8coyi2sWavxuJtuttlu+qQbvUb4AavW/PlugHUZ8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FIY3TeLb3Xh/sualnXPLQwqAz1ws2rDVJ9PokTnaVyO/61b/UX6GZqnSmQtUNWtL3
+	 v3qYzY+RzT8K7SGobkFhFh4A08kK/6YKqAkCjLWrP4fNlnx2rW3y8NKSugEv6/yixG
+	 HszVtn7gtOL1RIoCDwrpBtuqk9pDTGSoKTv4XL3U=
+Date: Wed, 29 Jun 2022 12:22:33 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Felipe Balbi <balbi@kernel.org>, Alan Stern <stern@rowland.harvard.edu>,
+	linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: support USB 3.2 function remote wake
+Message-ID: <Yrwn6Y7OMdPtN+g/@kroah.com>
+References: <cd7169df640fe6dab85f6d94cb8f40c181e08d2b.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 0/4] Energy Model power in micro-Watts and SCMI v3.1
- alignment
-Content-Language: en-US
-To: Viresh Kumar <viresh.kumar@linaro.org>, Lukasz Luba <lukasz.luba@arm.com>
-Cc: linux-pm@vger.kernel.org, amitk@kernel.org, rui.zhang@intel.com,
- rafael@kernel.org, dietmar.eggemann@arm.com, nm@ti.com, sboyd@kernel.org,
- sudeep.holla@arm.com, cristian.marussi@arm.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220622145802.13032-1-lukasz.luba@arm.com>
- <be793e51-0d89-7afd-e122-ec929a1130e9@arm.com>
- <20220629095302.bi3xx6yicsnjeff7@vireshk-i7>
- <1072cb84-4097-0cbd-f980-a864ea851b0c@arm.com>
- <20220629100148.67kevfelqq7d23n5@vireshk-i7>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20220629100148.67kevfelqq7d23n5@vireshk-i7>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cd7169df640fe6dab85f6d94cb8f40c181e08d2b.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_032125_777843_61AE1741 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20220629_032242_072460_19226B23 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,30 +68,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Hi Lukasz,
-
-On 29/06/2022 12:01, Viresh Kumar wrote:
-> On 29-06-22, 11:00, Lukasz Luba wrote:
->> Thanks for fast response. It would be great.
->>
->> I have 2 ACKs from Sudeep for the SCMI part,
->> but I don't know the status e.g. of DTPM
->> current work which is using the EM milli-Watts
->> and does conversion to uW internally.
->> I hope, I won't make issues to Daniel's work with this
->> change.
+On Wed, Jun 29, 2022 at 05:02:54PM +0800, Chunfeng Yun wrote:
+> Hi,
 > 
-> Daniel, do you have any objections to this ?
+> I plan to support function remote wakeup on our usb3 device controller
+> driver.
 
-Sorry I had no time to review the series yet, give me a couple of days, 
-may be a bit more if possible
+Is this based on dwc3 or some new silicon?
 
+> A function may signal that it wants to exit from Function Suspend by
+> sending a Function Wake Notification to the host, and the notification
+> need knows the first interface number in this function.
+> But the current gadget ops:
+>     int (*wakeup)(struct usb_gadget *);
+> does not provide information about interface number;
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Why would the interface matter as you need to do this for the whole
+device, not just one interface, right?
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+> There seems to be two ways:
+> 1. add a new parameter as below,
+>     int (*wakeup)(struct usb_gadget *, u8 intf);
+> 2. add a new ops, such as,
+>     int (*function_wakeup)(struct usb_gadget *, u8 intf);
+> 
+> Do you have any suggestions?
+
+Look at what the existing ones do, I do not think you have different
+suspend levels per USB interface, but rather the whole device.  Try it
+and see.
+
+thanks,
+
+greg k-h
 
