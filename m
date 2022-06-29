@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C072C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:50:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 997EEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iqUD70VzcyYlY5BxqwY1iE/pyhBwtZ4AsMYJqUHH9VI=; b=nnX6gpJ+CKjiCxbeIJZ29veF+S
-	2VK9ERPS/0cEUaxsNWXEgoQiF+hcX9XnUiIGeTKaZ7JUcgBc4+xZxo1H0zIOB+Y1Vc6Hpeizy3UgK
-	Q7B2PI6q7K9wBOfUDKmmg0mVbXvVTe2uV68bvL0GMvaQE5SdB21gmPwehnsrhjkANAN1tQlTQQDSv
-	LPdWYHI8DJDsCHxtRPJ6Ig96ZgB3yI/6NG1znUfe7RzKR9TNDz74EDgv+I8jJH+H2F2GSZMn9VCl0
-	1oHxvKn/asTNInruuJxSUYd6TQgMyqHJrwjwdx3t1bHlsUbMURcb8Lc297rEXJvlNYpkPW/MKHa2D
-	ZwEYi0PQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bm7bQKO0LW3PVJjnG5oiP44wehf0KZhPcmKChUwyt9Y=; b=bWWm9E37lS24Ro6ATsd9gfMUD4
+	DBqDZAU1tbnTX6q3OhfwaKgikMF29gvS3ln1SAC57JXk19v5IoF0DxEtdPZ9+/tdJ3ICR6e5fTdTG
+	AtQhQB8AgMT9hAE/VuMV71P3XPco+tG3lM5qgib8wGz7fyfRCB2kJw2tM8DGb13CZTdn4CmPudQJ/
+	/jLF1ioxgoF9FHtG9Ezb15DS0+ovCv/IO4CazH7NoQYn8n2Om2gUCu6f2+M20kcBk5trOl4DEI8Ss
+	1dSttF/stc8BgYu4Xx3wX1kX5DoFGK1rH1DJ6+0nttG2fbSeLjsrFHFL0Gh0fq8D9sXVph2VmJmnC
+	01AWgHFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6X9I-00BwzE-6m; Wed, 29 Jun 2022 12:50:28 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1o6X9W-00Bx7A-PY; Wed, 29 Jun 2022 12:50:42 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6X94-00Bwto-Pk; Wed, 29 Jun 2022 12:50:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=iqUD70VzcyYlY5BxqwY1iE/pyhBwtZ4AsMYJqUHH9VI=; b=JzGt96ETVLhbBFMBkdiQEmUmbC
-	ltPCR08T2aS4h3dDRs/kEavEqy945gNSsG19RBONrJfR5VT7Hc+pz4TEuvBpknQEAeQomCYvK8UOh
-	AKH5CcDT7qQnieRKjs1iDQzepoRzzNRwfBy2ztnKWqbmGDvkC2bn0kc3Jiu5F6Mh/csWoMdo8dKfy
-	zRiyR4kZsqzZ6ORLUjW8Iw2T7KQOHtiGFHIYFv+htjPNKKvbyXBHq67F/zdXuEY8iI26B8VoQDvJb
-	vWFKodr3cieWa99tbtDKw9VqXukKkUw/Gohb/Z+0xfkWsENky2fBh2Vb2R6MQVDOCx+42mprPcZzS
-	UoBkWPHA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33094)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1o6X8r-00035m-Ae; Wed, 29 Jun 2022 13:50:01 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1o6X8o-0005rZ-0h; Wed, 29 Jun 2022 13:49:58 +0100
-Date: Wed, 29 Jun 2022 13:49:57 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: [PATCH RFC net-next 0/6] net: dsa: always use phylink
-Message-ID: <YrxKdVmBzeMsVjsH@shell.armlinux.org.uk>
+	id 1o6X9E-00Bwxc-FW; Wed, 29 Jun 2022 12:50:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6BDA4B82429;
+	Wed, 29 Jun 2022 12:50:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4B5E9C36AEB;
+	Wed, 29 Jun 2022 12:50:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1656507020;
+	bh=22qbZjl+tGNRO/TXIBShg7yeUCuIna+Zbm1sCVa288s=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=pmYPMa5AmhgzWtFVALexiat96BVZmsO7B7kq77lmXZmB8fW7x7+9GuVPfNC7iC2Wd
+	 KRvYFQ4fs0XDAlzIIzta2dBQxi0PF1QPl5VbIQtmSGq5he+8e8Ie09GZgZCqHImwUY
+	 qaZupQXWStSFj5ZYIHN7Ly98YpjrJZ9qjSpEQW+8+VQCMCr3IDcb6Sc4qg54M1KMtA
+	 vV5udrfEDEraUr+QwduI1n0ReExOXf47chKlOrjhMzz4cjO5fbqG6Z8XXjyK7w1VXj
+	 xKJhSdM0po6eafMtrVCPGan9OATjf5+tB8xAyvYnlhdRyb9X6V5T0xuw2yT6dS+Brz
+	 CAGReuXMW3BQw==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 2B39CE49FA0;
+	Wed, 29 Jun 2022 12:50:20 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v5 00/10] add more features for mtk-star-emac
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <165650702016.9231.359699610048975854.git-patchwork-notify@kernel.org>
+Date: Wed, 29 Jun 2022 12:50:20 +0000
+References: <20220629031743.22115-1-biao.huang@mediatek.com>
+In-Reply-To: <20220629031743.22115-1-biao.huang@mediatek.com>
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: davem@davemloft.net, kuba@kernel.org, robh+dt@kernel.org, brgl@bgdev.pl,
+ fparent@baylibre.com, nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ ot_yinghua.pan@mediatek.com, macpaul.lin@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_055014_879382_20383008 
-X-CRM114-Status: GOOD (  39.22  )
+X-CRM114-CacheID: sfid-20220629_055024_869761_3AB76FF1 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,105 +77,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mostly the same as the previous RFC, except:
+Hello:
 
-1) incldues the phylink_validate_mask_caps() function
-2) has Marek's idea of searching the supported_interfaces bitmap for the
-   fastest interface we can use
-3) includes a final patch to add a print which will be useful to hear
-   from people testing it.
+This series was applied to netdev/net-next.git (master)
+by David S. Miller <davem@davemloft.net>:
 
-Some of the questions from the original RFC remain though, so I've
-included that text below. I'm guessing as they remain unanswered that
-no one has any opinions on them?
+On Wed, 29 Jun 2022 11:17:33 +0800 you wrote:
+> Changes in v5:
+> 1. correct spin_lock usage which are missed in v4.
+> 
+> Changes in v4:
+> 1. correct the usage of spin_lock/__napi_schedule.
+> 2. fix coding style issue as Jakub's comments.
+> 
+> [...]
 
- drivers/net/dsa/b53/b53_common.c       |   3 +-
- drivers/net/dsa/bcm_sf2.c              |   3 +-
- drivers/net/dsa/hirschmann/hellcreek.c |   3 +-
- drivers/net/dsa/lantiq_gswip.c         |   6 +-
- drivers/net/dsa/microchip/ksz_common.c |   3 +-
- drivers/net/dsa/mt7530.c               |   3 +-
- drivers/net/dsa/mv88e6xxx/chip.c       |  53 ++++--------
- drivers/net/dsa/ocelot/felix.c         |   3 +-
- drivers/net/dsa/qca/ar9331.c           |   3 +-
- drivers/net/dsa/qca8k.c                |   3 +-
- drivers/net/dsa/realtek/rtl8365mb.c    |   3 +-
- drivers/net/dsa/sja1105/sja1105_main.c |   3 +-
- drivers/net/dsa/xrs700x/xrs700x.c      |   3 +-
- drivers/net/phy/phylink.c              | 148 ++++++++++++++++++++++++++++++---
- include/linux/phylink.h                |   5 ++
- include/net/dsa.h                      |   3 +-
- net/dsa/port.c                         |  47 +++++++----
- 17 files changed, 215 insertions(+), 80 deletions(-)
+Here is the summary with links:
+  - [net-next,v5,01/10] net: ethernet: mtk-star-emac: store bit_clk_div in compat structure
+    https://git.kernel.org/netdev/net-next/c/c16cc6a06672
+  - [net-next,v5,02/10] net: ethernet: mtk-star-emac: modify IRQ trigger flags
+    https://git.kernel.org/netdev/net-next/c/9ccbfdefe716
+  - [net-next,v5,03/10] net: ethernet: mtk-star-emac: add support for MT8365 SoC
+    https://git.kernel.org/netdev/net-next/c/6cde23b3ace5
+  - [net-next,v5,04/10] dt-bindings: net: mtk-star-emac: add support for MT8365
+    https://git.kernel.org/netdev/net-next/c/43360697a276
+  - [net-next,v5,05/10] net: ethernet: mtk-star-emac: add clock pad selection for RMII
+    https://git.kernel.org/netdev/net-next/c/85ef60330d37
+  - [net-next,v5,06/10] net: ethernet: mtk-star-emac: add timing adjustment support
+    https://git.kernel.org/netdev/net-next/c/769c197b097c
+  - [net-next,v5,07/10] dt-bindings: net: mtk-star-emac: add description for new properties
+    https://git.kernel.org/netdev/net-next/c/320c49fe31b0
+  - [net-next,v5,08/10] net: ethernet: mtk-star-emac: add support for MII interface
+    https://git.kernel.org/netdev/net-next/c/0027340a239b
+  - [net-next,v5,09/10] net: ethernet: mtk-star-emac: separate tx/rx handling with two NAPIs
+    https://git.kernel.org/netdev/net-next/c/0a8bd81fd6aa
+  - [net-next,v5,10/10] net: ethernet: mtk-star-emac: enable half duplex hardware support
+    https://git.kernel.org/netdev/net-next/c/02e9ce07d8b8
 
-On Fri, Jun 24, 2022 at 12:41:26PM +0100, Russell King (Oracle) wrote:
-> Hi,
-> 
-> Currently, the core DSA code conditionally uses phylink for CPU and DSA
-> ports depending on whether the firmware specifies a fixed-link or a PHY.
-> If either of these are specified, then phylink is used for these ports,
-> otherwise phylink is not, and we rely on the DSA drivers to "do the
-> right thing". However, this detail is not mentioned in the DT binding,
-> but Andrew has said that this behaviour has always something that DSA
-> wants.
-> 
-> mv88e6xxx has had support for this for a long time with its "SPEED_MAX"
-> thing, which I recently reworked to make use of the mac_capabilities in
-> preparation to solving this more fully.
-> 
-> This series is an experiment to solve this properly, and it does this
-> in two steps.
-> 
-> The first step consists of the first two patches. Phylink needs to
-> know the PHY interface mode that is being used so it can (a) pass the
-> right mode into the MAC/PCS etc and (b) know the properties of the
-> link and therefore which speeds can be supported across it.
-> 
-> In order to achieve this, the DSA phylink_get_caps() method has an
-> extra argument added to it so that DSA drivers can report the
-> interface mode that they will be using for this port back to the core
-> DSA code, thereby allowing phylink to be initialised with the correct
-> interface mode.
-> 
-> Note that this can only be used for CPU and DSA ports as "user" ports
-> need a different behaviour - they rely on getting the interface mode
-> from phylib, which will only happen if phylink is initialised with
-> PHY_INTERFACE_MODE_NA. Unfortunately, changing this behaviour is likely
-> to cause widespread regressions.
-> 
-> Obvious questions:
-> 1. Should phylink_get_caps() be augmented in this way, or should it be
->    a separate method?
-> 
-> 2. DSA has traditionally used "interface mode for the maximum supported
->    speed on this port" where the interface mode is programmable (via
->    its internal port_max_speed_mode() method) but this is only present
->    for a few of the sub-drivers. Is reporting the current interface
->    mode correct where this method is not implemented?
-> 
-> The second step is to introduce a function that allows phylink to be
-> reconfigured after creation time to operate at max-speed fixed-link
-> mode for the PHY interface mode, also using the MAC capabilities to
-> determine the speed and duplex mode we should be using.
-> 
-> Obvious questions:
-> 1. Should we be allowing half-duplex for this?
-> 2. If we do allow half-duplex, should we prefer fastest speed over
->    duplex setting, or should we prefer fastest full-duplex speed
->    over any half-duplex?
-> 3. How do we sanely switch DSA from its current behaviour to always
->    using phylink for these ports without breakage - this is the
->    difficult one, because it's not obvious which drivers have been
->    coded to either work around this quirk of the DSA implementation.
->    For example, if we start forcing the link down before calling
->    dsa_port_phylink_create(), and we then fail to set max-fixed-link,
->    then the CPU/DSA port is going to fail, and we're going to have
->    lots of regressions.
-> 
-> Please look at the patches and make suggestions on how we can proceed
-> to clean up this quirk of DSA.
-
+You are awesome, thank you!
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
