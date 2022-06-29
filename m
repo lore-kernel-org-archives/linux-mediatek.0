@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B7B8C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 08:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E6FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 08:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rmYror7X2cuo+wP31gLVv3v67xXSD4f2xZ+MeNuzCqM=; b=wmp71ac+PRdg2FJrbYXDhbRJO6
-	yqOSLyuNQ2E0GpoaENCSIvwAOMCZPhivkSBbh2JD+k4bNzJyXvrB830oC+JLFUUJk9Jt9dw9JejVM
-	cWN0Ah4OCD/lwg0kOTZkHIspz+Vk98FRgm0MQYWDFzzZW9kOQZiY/szyr02whSmkJOMDGtWqVWFsG
-	32D8BQTNMldX71FouP/Ln3yW8WpR8bu38GcCqVR5XMsfB97X760nmfUhUbIgUkNA8+9Zqr+PYN8In
-	uKRTDfAVEDJ3LftK+v+LkFA+rjBw1q22ybYPmIQqy0vu9olX/Wya548i1Qtqw8/hiUJ5RKKivxcsQ
-	E+G+A8KA==;
+	bh=eSn1XjQLTySlFI1JpNHG2mj/LdM92faiVpX2ddFTkjc=; b=kpc2+68hVumsriTL1ZD5kXhv+5
+	j8UzpbzSHLGv1+xml/Q4oUyXtxD/W+3sf1JWNNGmlCfA68GtNn9FUjGtpdCBghBZk0y0Cdr40XKJA
+	J0Z0lo6PpM3oo/ISxgxZsHLkx8GfXBSsucvjHRIaWF6EWZSII3dqIlmXJ0QUYGSpUVPpHJVSaTGsN
+	xUbd+lKELcKdfjQ9TG/j/wM9uvH+XqiOq8siYP7kGeLps3pWoWEsm+eBT1XbGCXtzBdeePw+5dxiP
+	DnEcjussFYcKaEZyamfrlZl2iCqXQUerPnNgBQ7H1NbfV+JezRF2TjK5v0vRC9TOZVOndn3IozQRt
+	EemQYxtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6T3U-00AOpa-1A; Wed, 29 Jun 2022 08:28:12 +0000
+	id 1o6T5g-00APab-8e; Wed, 29 Jun 2022 08:30:28 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6T3Q-00AOo8-RD
-	for linux-mediatek@lists.infradead.org; Wed, 29 Jun 2022 08:28:10 +0000
+	id 1o6T5S-00APS8-D1; Wed, 29 Jun 2022 08:30:15 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2647A66018F4;
-	Wed, 29 Jun 2022 09:28:07 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 43B8D66018F1;
+	Wed, 29 Jun 2022 09:30:12 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656491287;
-	bh=GH2xhOUcGT/R9ajjAeKkq4p/KZEbUFVa0+S35618jKk=;
+	s=mail; t=1656491412;
+	bh=k/GBrayqjumhXVKWOQr+XlgpEvOogSVYRcWj6cKD5Lk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=U/OmEbF7QyBSwx/kXpjFoy2wtAZBeaJ4c2au+cijnLontCV72yuWA5wqePOVmKgGF
-	 UskLPCJMm4ZqpSKcKU7yUPD8XxHeuVlavouqaz9h5Y8FVdRM+qvF8x261HBXfd+tMX
-	 geM22IRqA122lCsqtelQyoapKmdNBj32JFAfSkrvwIWA5VCtR5w2nGKZtLkOOawuRs
-	 ItxOZM124S3mLGRcg15ToWiosvXXsYlxflD0CiOT1BpnymuTk67SYaGhcBjJM2pfPx
-	 MOBraxrTv65M2qSOZRHXLRNhEnjYYrnvXEN+u2NeICNveweSyDug+ev2N7ymqO9YgO
-	 blnHIIeCPxrhA==
-Message-ID: <dbb7bbad-a088-a4d9-3089-166babf99fc2@collabora.com>
-Date: Wed, 29 Jun 2022 10:28:04 +0200
+	b=UdlLwzKbbnVcC1GW8Bt2LO9bsJDdYIzHProVcOO4H3U2xFEbc7yph3W0WzowFvvGb
+	 7puOjny1P5Ih7ctJ/qoRX8G3GuogiDAJcKNCsLhdXR7coBqJ3nWZZM0cvAVRG6KhMF
+	 cyuAzw6gtvbt0H7uL1j9cCrukhclvND4IFtlM2uG6vKQX0z+1MD0lIbKEQKQ0V1dZZ
+	 UMkrMwokI2tIIQNpaMn5/jdUpItehgb1kBQw/IEwg3kbQB6N32A8jeOI30k3wV9Ic2
+	 Za/b5tKvv2K54ABmmCdb7csiCB/3CgOoBSKQoaU8wAVkXX0BPez1GHKzGNzx2/dLhU
+	 aT1VMU7AujulA==
+Message-ID: <a94b6b57-3dcb-aac8-7920-351ec729bc4d@collabora.com>
+Date: Wed, 29 Jun 2022 10:30:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH] drivers/soc/mediatek: mark svs_resume and svs_suspend as
- maybe unused
+Subject: Re: [PATCH v11 1/3] usb: typec: tcpci: move tcpci.h to
+ include/linux/usb/
 Content-Language: en-US
-To: Max Filippov <jcmvbkbc@gmail.com>, linux-kernel@vger.kernel.org
-Cc: Roger Lu <roger.lu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kevin Hilman <khilman@baylibre.com>, linux-mediatek@lists.infradead.org
-References: <20220628121326.2097912-1-jcmvbkbc@gmail.com>
+To: Xin Ji <xji@analogixsemi.com>, Guenter Roeck <linux@roeck-us.net>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: bliang@analogixsemi.com, qwen@analogixsemi.com, jli@analogixsemi.com,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220627044331.2180641-1-xji@analogixsemi.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220628121326.2097912-1-jcmvbkbc@gmail.com>
+In-Reply-To: <20220627044331.2180641-1-xji@analogixsemi.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_012809_061504_889E2D8D 
-X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-CacheID: sfid-20220629_013014_651017_6C5BB506 
+X-CRM114-Status: UNSURE (   9.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,23 +79,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/06/22 14:13, Max Filippov ha scritto:
-> This fixes the following build errors on platforms without hibernation
-> support in linux-next:
+Il 27/06/22 06:43, Xin Ji ha scritto:
+> USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+> and a port controller (TCPC) - may require that the driver for the PD
+> controller accesses directly also the on-chip port controller in some cases.
 > 
-> drivers/soc/mediatek/mtk-svs.c:1515:12: error: ‘svs_resume’ defined but not used [-Werror=unused-function]
-> drivers/soc/mediatek/mtk-svs.c:1481:12: error: ‘svs_suspend’ defined but not used [-Werror=unused-function]
+> Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
 > 
-> Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-> Signed-off-by: Max Filippov <jcmvbkbc@gmail.com>
+> Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
-Hello Max,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-This is not the right solution... and besides, there's something else in the works;
-check here:
-
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220623030931.2816013-1-jinxiaoyun2@huawei.com/
-
-Regards,
-Angelo
 
