@@ -4,87 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC710C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 15:53:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F39BDCCA47C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:00:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m3srbM8QGWrZhwGq/B370AsvjDk8BediS0HIOgFCe3E=; b=fR++wuRGAq6wwY5h0rwKUVAbxz
-	DmPd7edPxVcfMPecry0Znpm+kYpHGBo53pS6+Uvf/Sk2l/dTZqikhxvE3ybsBLnAPbalIuG7coh7K
-	8HhAVkcEsRZuIcZZk6wGCJWk3QlN1zum+aSfID0LbAWuiasfq3W0w9XkMIKLxfYpFFwdm2akFR/3B
-	dyrMeUY5hsxq+NskEHsIfRBcb+nL4XdVSi+oPOxBpYYj/gYqiev7ftoLGGjbQ1F4SpobGY7vVZDz0
-	w1rJBaeu1TT3UQB33OqDdmnUD0ABNoovvuQh8oJsPmN83d9xU7CnaM0M+4dEHigWAMHJV2CQyn0bR
-	QCBynT6Q==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hysOCPD6uzNF8ytMSDRJ2nUuPOZaiP78t3B8jFiJXEE=; b=3tsIT9r9t+Q2wiYcedg461Jj7B
+	lW1ltjXBQ9VZp7MxTq1JfqMGU7gIVo1Cng2kUYiIfamXgRwee2ZAnifFqMne0JwfMBRFnEhiMzTPg
+	KsD3eOjsscQzt3gTVmhnh5ptANZja3u0UrZ3xH725wznmnrYpuWmnDvAv5PKc4EO4hf4A3LqabjBZ
+	qhN47wbfitV3DfcMMpkVb9/UPFYxYZYlnDgid1w9QDr8mPJXXIEoDIecDVxmYRqYShYMct3dAnu5V
+	8PbC3xguTOJR8KThz0Ct8u8LZqyqIPYJMtB7gTubFI/2ustKoR1dlB1rfqBb8QkFB5mwIu+R6Scfn
+	noYsUmtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6a01-00CmFc-Sk; Wed, 29 Jun 2022 15:53:05 +0000
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
+	id 1o6a7P-00ConM-OD; Wed, 29 Jun 2022 16:00:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Zzp-00CmCi-1K; Wed, 29 Jun 2022 15:52:55 +0000
-Received: by mail-io1-xd31.google.com with SMTP id i194so16364479ioa.12;
-        Wed, 29 Jun 2022 08:52:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=m3srbM8QGWrZhwGq/B370AsvjDk8BediS0HIOgFCe3E=;
-        b=TEqaPH+b8J+kXTgX6LEBz8BN99Q66IkyfTj6NQf26Ir9KFKzJZQhZNNYMMGqRDSXRo
-         7G8RPAE3Ivq80Rkwp/+ZUB/616P7/Lyl6qshrI567HvQ9t6/P6X0G1jLWZWUOjIkoWSt
-         cWz4d4UdzcRBwtU09wfItyTJ5bA1klYc7TJ6RafHaP3Yo88QQKuHk1zI/qe3q/vWt9au
-         LlVlhUhn+6HuKRK3wVWiMaHNlFbychaZJGtyZvVICV8gpj2/STktb0MXl1ilulpiV/Zf
-         ZL+ykSxuyluILTFp3WJD6ZM2Ux79vUgPcg9FYBVp7HCc9nzlsTEp25Ooc7reCsJUgvA9
-         j6vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=m3srbM8QGWrZhwGq/B370AsvjDk8BediS0HIOgFCe3E=;
-        b=tDrOWculZdut69krADQp1B91ISy2Mjsoai59FT/2ToCXSg06cTmfgMYfw9w/iaI0+S
-         WUmplhcrFkAA1agnjWAqXiqYyKoZBWes0omSH+FKloGTugJYdSWuXnL4krd5pUaG1Qjg
-         3fxaJTyrytaGTrtI+ATcNDSysNmVrNxIlrLMOrjhLKSv5Be7RqWtLIlq7xcK/bUpvbqI
-         40FoxAI5gFamC9UK3khpfVsZPFRB1+qJQ0scZMoyer5TPj2LhvzSmqyU1jWy6IWQqFlM
-         b04Tez3ISt/wbhR1+vZgJH0FqZrpYKHcdrX83oqdiptxqBUFmbTgXImzj5n3L6ujdY3O
-         wy9Q==
-X-Gm-Message-State: AJIora/RTnFNhhSMG4wWPKVsw0KFeqlTPcIpurDJTbpZAS2ICWmYA5eK
-	atwtya6S+54wwf8E3utmj0aR3bHCm0ZBSGtisKk=
-X-Google-Smtp-Source: AGRyM1t+rE4Wwngtg5YS4SsXmN+Nyw4Tu9pZHHDpNjJP8e9iQDVbLMC6ySWAMXPj73PzqGNOmA4LXfYcAJyLHSyBKfs=
-X-Received: by 2002:a05:6638:14c7:b0:33c:c6ff:4d74 with SMTP id
- l7-20020a05663814c700b0033cc6ff4d74mr2346897jak.254.1656517968775; Wed, 29
- Jun 2022 08:52:48 -0700 (PDT)
+	id 1o6a6r-00CoNU-6G; Wed, 29 Jun 2022 16:00:11 +0000
+Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 88F06660191F;
+	Wed, 29 Jun 2022 17:00:00 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656518402;
+	bh=5jzvCGoUrHrL5/yJf6+vhjz74pv3DFTUx5ZwFy+A7lE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=VOBtIa4ti0aCegzf39rysZ4fDCzi3EmDzqdPU9xjnlfjx99gJ81qXdysK3qxh+3pN
+	 QnN//y85NmTQf455lS05Nn7IcXaHbaxPDD8sm4I+b2tPWA8NhDS6wW3l6dK/EIaXEA
+	 dAzXaf8mqiy6czNH8y/Au/dJPnibIcI9T8sFvsSU2Py4vi3/bv1UpDuvcNIxxoqL7Q
+	 npBsJixzWFH29p37i0gmdRKfyroLZwYvDVJp6kvzIhTeqsSbLb8SEwUl8OLQ1srHdy
+	 55ewnKYjM1h6cEZOqiajM3ItlHLIVF5B8SL+O2rF60B5PM3RfIXysf5kZn7t/tPD8b
+	 h8Z7HI0jab0sQ==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Luca Weiss <luca@z3ntu.xyz>,
+	Maxim Kutnij <gtk3@inbox.ru>,
+	Rob Herring <robh+dt@kernel.org>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v4 00/19] Introduce support for MediaTek MT8192 Google Chromebooks
+Date: Wed, 29 Jun 2022 11:59:37 -0400
+Message-Id: <20220629155956.1138955-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-References: <20220623115631.22209-1-peterwu.pub@gmail.com> <20220623115631.22209-12-peterwu.pub@gmail.com>
- <CAHp75Vf2UAVgWS1nu8iwNjESWHQGOMWcNMUFShZ8Q_Qp3fssdQ@mail.gmail.com>
-In-Reply-To: <CAHp75Vf2UAVgWS1nu8iwNjESWHQGOMWcNMUFShZ8Q_Qp3fssdQ@mail.gmail.com>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Wed, 29 Jun 2022 23:52:33 +0800
-Message-ID: <CABtFH5J8GVXQMKmsUs2HfjV-p_rx4gLdCTKsDP_aCJWzE4AVeQ@mail.gmail.com>
-Subject: Re: [PATCH v3 11/14] power: supply: mt6370: Add Mediatek MT6370
- charger driver
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_085253_132673_0A0FC82A 
-X-CRM114-Status: GOOD (  35.97  )
+X-CRM114-CacheID: sfid-20220629_090009_414343_6738B99D 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,530 +84,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-Sorry for the late reply, I have some questions to ask you below. Thanks!
+This series introduces Devicetrees for the MT8192-based Asurada platform
+as well as Asurada Spherion and Asurada Hayato boards.
 
-Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B46=E6=9C=
-=8824=E6=97=A5 =E9=80=B1=E4=BA=94 =E5=87=8C=E6=99=A82:56=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Thu, Jun 23, 2022 at 2:00 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> >
-> > From: ChiaEn Wu <chiaen_wu@richtek.com>
-> >
-> > Add Mediatek MT6370 charger driver.
->
-> ...
->
-> > +config CHARGER_MT6370
-> > +       tristate "Mediatek MT6370 Charger Driver"
-> > +       depends on MFD_MT6370
-> > +       depends on REGULATOR
-> > +       select LINEAR_RANGES
-> > +       help
-> > +         Say Y here to enable MT6370 Charger Part.
-> > +         The device supports High-Accuracy Voltage/Current Regulation,
-> > +         Average Input Current Regulation, Battery Temperature Sensing=
-,
-> > +         Over-Temperature Protection, DPDM Detection for BC1.2.
->
-> Module name?
->
-> ...
->
-> > +#include <dt-bindings/iio/adc/mediatek,mt6370_adc.h>
->
-> This usually goes after linux/*
->
-> > +#include <linux/atomic.h>
-> > +#include <linux/bitfield.h>
-> > +#include <linux/bits.h>
-> > +#include <linux/gpio/consumer.h>
-> > +#include <linux/iio/consumer.h>
-> > +#include <linux/init.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/kernel.h>
-> > +#include <linux/module.h>
->
-> > +#include <linux/of.h>
->
->
-> > +#include <linux/platform_device.h>
-> > +#include <linux/power_supply.h>
-> > +#include <linux/regmap.h>
-> > +#include <linux/regulator/driver.h>
-> > +#include <linux/workqueue.h>
->
-> ...
->
-> > +#define MT6370_MIVR_IBUS_TH            100000          /* 100 mA */
->
-> Instead of comment, add proper units.
->
-> ...
->
-> > +       MT6370_USB_STAT_DCP,
-> > +       MT6370_USB_STAT_CDP,
-> > +       MT6370_USB_STAT_MAX,
->
-> No comma for a terminator line.
->
-> ...
->
-> > +static inline u32 mt6370_chg_val_to_reg(const struct mt6370_chg_range =
-*range,
-> > +                                       u32 val)
-> > +static inline u32 mt6370_chg_reg_to_val(const struct mt6370_chg_range =
-*range,
-> > +                                       u8 reg)
->
-> I'm wondering if you can use the
-> https://elixir.bootlin.com/linux/v5.19-rc3/source/include/linux/linear_ra=
-nge.h
-> APIs.
+Support for the boards is added to the extent that is currently enabled
+in the mt8192.dtsi, and using only properties already merged in the
+dt-bindings, as to not add any dependencies to this series.
 
-Thanks for your helpful comments!
-I will refine it in the next patch!
+This series was peer-reviewed internally before submission.
 
->
-> ...
->
-> > +       int ret =3D 0;
->
-> This seems a redundant assignment, see below.
->
-> > +       rcfg->ena_gpiod =3D fwnode_gpiod_get_index(of_fwnode_handle(of)=
-,
-> > +                                                "enable", 0,
->
-> For index =3D=3D 0 don't use _index API.
->
-> > +                                                GPIOD_OUT_LOW |
-> > +                                                GPIOD_FLAGS_BIT_NONEXC=
-LUSIVE,
-> > +                                                rdesc->name);
-> > +       if (IS_ERR(rcfg->ena_gpiod)) {
-> > +               dev_err(priv->dev, "Failed to requeset OTG EN Pin\n");
->
-> request
->
-> > +               rcfg->ena_gpiod =3D NULL;
->
-> So, use _optional and return any errors you got.
+Series tested on next-20220629.
 
-These days, I tried to use various APIs in <gpio/consumer.h>, and also
-try to use _optional APIs.
-But my OTG regulator node is a child node of the charger node, like below.
----------------------------------------------------------------------------=
--
-// copy-paste from our mfd dt-binding example
-        charger {
-          compatible =3D "mediatek,mt6370-charger";
-          interrupts =3D <48>, <68>, <6>;
-          interrupt-names =3D "attach_i", "uvp_d_evt", "mivr";
-          io-channels =3D <&mt6370_adc MT6370_CHAN_IBUS>;
+v3: https://lore.kernel.org/all/20220512205602.158273-1-nfraprado@collabora.com/
+v2: https://lore.kernel.org/all/20220505194550.3094656-1-nfraprado@collabora.com/
+v1: https://lore.kernel.org/all/20220316151327.564214-1-nfraprado@collabora.com/
 
-          mt6370_otg_vbus: usb-otg-vbus-regulator {
-            regulator-name =3D "mt6370-usb-otg-vbus";
-            regulator-min-microvolt =3D <4350000>;
-            regulator-max-microvolt =3D <5800000>;
-            regulator-min-microamp =3D <500000>;
-            regulator-max-microamp =3D <3000000>;
-          };
-        };
----------------------------------------------------------------------------=
--
-Hence, if I use _optional APIs, it will always get NULL.
-And, If I use 'gpiod_get_from_of_node' here, this API will only parse
-the 'enable' property, not 'enable-gpio' or 'enable-gpios', we need to
-add the '-gpio' suffix before we use this API.
+Changes in v4:
+- Added patches 17-19 enabling MMC, SCP and SPI NOR flash
+- Switched mediatek,drive-strength-adv for drive-strength-microamp
+- Switched mediatek,pull-up-adv for bias-pull-up
+- Updated Vgpu minimum voltage to appropriate value
 
-Only 'fwnode_gpiod_get_index' can match this case. Although fwnode
-parsing is not preferred, 'of_parse_cb' already can guarantee the
-callback will only be used by the regulator of_node parsing.
+Changes in v3:
+- Renamed regulator nodes to be generic
+- Fixed keyboard layout for Hayato
 
->
-> > +       } else {
-> > +               val =3D MT6370_OPA_MODE_MASK | MT6370_OTG_PIN_EN_MASK;
-> > +               ret =3D regmap_update_bits(priv->regmap, MT6370_REG_CHG=
-_CTRL1,
-> > +                                        val, val);
-> > +               if (ret)
-> > +                       dev_err(priv->dev, "Failed to set otg bits\n");
-> > +       }
->
-> ...
->
-> > +       irq_num =3D platform_get_irq_byname(pdev, irq_name);
->
-> > +
->
-> Unwanted blank line.
->
-> > +       if (irq_num < 0) {
->
-> > +               dev_err(priv->dev, "Failed to get platform resource\n")=
-;
->
-> Isn't it printed by the call?
->
-> > +       } else {
-> > +               if (en)
-> > +                       enable_irq(irq_num);
-> > +               else
-> > +                       disable_irq_nosync(irq_num);
-> > +       }
->
-> ...
->
-> > +toggle_cfo_exit:
->
-> The useless label.
->
-> > +       return ret;
-> > +}
->
-> ...
->
-> > +       ret =3D mt6370_chg_get_online(priv, val);
-> > +       if (!val->intval) {
->
-> No error check?
+Changes in v2:
+- Added patches 1-2 for Mediatek board dt-bindings
+- Added patches 13-16 enabling hardware for Asurada that has since been
+  enabled on mt8192.dtsi
 
-I replace "mt6370_chg_get_online()" with "power_supply_get_property()"
-and add some error check.
-Could it meet your expectations??
+Nícolas F. R. A. Prado (19):
+  dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-spherion
+  dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-hayato
+  arm64: dts: mediatek: Introduce MT8192-based Asurada board family
+  arm64: dts: mediatek: asurada: Document GPIO names
+  arm64: dts: mediatek: asurada: Add system-wide power supplies
+  arm64: dts: mediatek: asurada: Enable and configure I2C and SPI busses
+  arm64: dts: mediatek: asurada: Add ChromeOS EC
+  arm64: dts: mediatek: asurada: Add keyboard mapping for the top row
+  arm64: dts: mediatek: asurada: Add Cr50 TPM
+  arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
+  arm64: dts: mediatek: asurada: Add I2C touchscreen
+  arm64: dts: mediatek: spherion: Add keyboard backlight
+  arm64: dts: mediatek: asurada: Enable XHCI
+  arm64: dts: mediatek: asurada: Enable PCIe and add WiFi
+  arm64: dts: mediatek: asurada: Add MT6359 PMIC
+  arm64: dts: mediatek: asurada: Add SPMI regulators
+  arm64: dts: mediatek: asurada: Enable MMC
+  arm64: dts: mediatek: asurada: Enable SCP
+  arm64: dts: mediatek: asurada: Add SPI NOR flash memory
 
->
-> > +               val->intval =3D POWER_SUPPLY_STATUS_DISCHARGING;
-> > +               return 0;
-> > +       }
->
-> ...
->
-> > +static int mt6370_chg_set_online(struct mt6370_priv *priv,
-> > +                                const union power_supply_propval *val)
-> > +{
-> > +       int attach;
-> > +       u32 pwr_rdy =3D !!val->intval;
-> > +
-> > +       mutex_lock(&priv->attach_lock);
-> > +       attach =3D atomic_read(&priv->attach);
-> > +       if (pwr_rdy =3D=3D !!attach) {
-> > +               dev_err(priv->dev, "pwr_rdy is same(%d)\n", pwr_rdy);
-> > +               mutex_unlock(&priv->attach_lock);
-> > +               return 0;
-> > +       }
-> > +
-> > +       atomic_set(&priv->attach, pwr_rdy);
-> > +       mutex_unlock(&priv->attach_lock);
-> > +
-> > +       if (!queue_work(priv->wq, &priv->bc12_work))
-> > +               dev_err(priv->dev, "bc12 work has already queued\n");
-> > +
-> > +       return 0;
->
-> > +
->
-> Unwanted blank line.
->
-> > +}
->
-> > +static int mt6370_chg_get_property(struct power_supply *psy,
-> > +                                  enum power_supply_property psp,
-> > +                                  union power_supply_propval *val)
-> > +{
-> > +       struct mt6370_priv *priv =3D power_supply_get_drvdata(psy);
-> > +       int ret =3D 0;
-> > +
-> > +       switch (psp) {
-> > +       case POWER_SUPPLY_PROP_ONLINE:
-> > +               ret =3D mt6370_chg_get_online(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_STATUS:
-> > +               ret =3D mt6370_chg_get_status(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CHARGE_TYPE:
-> > +               ret =3D mt6370_chg_get_charge_type(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
-> > +               ret =3D mt6370_chg_get_ichg(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
-> > +               ret =3D mt6370_chg_get_max_ichg(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
-> > +               ret =3D mt6370_chg_get_cv(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
-> > +               ret =3D mt6370_chg_get_max_cv(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-> > +               ret =3D mt6370_chg_get_aicr(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT:
-> > +               ret =3D mt6370_chg_get_mivr(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
-> > +               ret =3D mt6370_chg_get_iprechg(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
-> > +               ret =3D mt6370_chg_get_ieoc(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_TYPE:
-> > +               val->intval =3D priv->psy_desc->type;
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_USB_TYPE:
-> > +               val->intval =3D priv->psy_usb_type;
-> > +               break;
-> > +       default:
-> > +               ret =3D -EINVAL;
-> > +               break;
-> > +       }
-> > +
-> > +       return ret;
->
-> In all cases, return directly.
->
-> > +}
->
-> ...
->
-> > +       switch (psp) {
-> > +       case POWER_SUPPLY_PROP_ONLINE:
-> > +               ret =3D mt6370_chg_set_online(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
-> > +               ret =3D mt6370_chg_set_ichg(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
-> > +               ret =3D mt6370_chg_set_cv(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
-> > +               ret =3D mt6370_chg_set_aicr(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT:
-> > +               ret =3D mt6370_chg_set_mivr(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
-> > +               ret =3D mt6370_chg_set_iprechg(priv, val);
-> > +               break;
-> > +       case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
-> > +               ret =3D mt6370_chg_set_ieoc(priv, val);
-> > +               break;
-> > +       default:
-> > +               ret =3D -EINVAL;
-> > +       }
-> > +       return ret;
->
-> As per above.
->
-> ...
->
-> > +       for (i =3D 0; i < F_MAX; i++) {
-> > +               priv->rmap_fields[i] =3D devm_regmap_field_alloc(priv->=
-dev,
-> > +                                                              priv->re=
-gmap,
-> > +                                                              fds[i].f=
-ield);
-> > +               if (IS_ERR(priv->rmap_fields[i])) {
-> > +                       dev_err(priv->dev,
-> > +                               "Failed to allocate regmap field [%s]\n=
-",
-> > +                               fds[i].name);
-> > +                       return PTR_ERR(priv->rmap_fields[i]);
->
-> return dev_err_probe();
->
-> > +               }
-> > +       }
->
-> ...
->
-> > +       mutex_init(&priv->attach_lock);
-> > +       atomic_set(&priv->attach, 0);
->
-> Why not atomic_init() ?
-> But yeah, usage of it and other locking mechanisms in this driver are
-> questionable.
+ .../devicetree/bindings/arm/mediatek.yaml     |  13 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+ .../dts/mediatek/mt8192-asurada-hayato-r1.dts |  47 +
+ .../mediatek/mt8192-asurada-spherion-r0.dts   |  62 ++
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 959 ++++++++++++++++++
+ 5 files changed, 1083 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
 
-I will refine it in the next patch!
+-- 
+2.36.1
 
->
-> ...
->
-> > +       /* ICHG/IEOC Workaroud, ICHG can not be set less than 900mA */
->
-> Workaround
->
-> ...
->
-> > +       return IS_ERR(priv->rdev) ? PTR_ERR(priv->rdev) : 0;
->
-> PTR_ERR_OR_ZERO()
->
-> ...
->
-> > +               .of_node =3D priv->dev->of_node,
->
-> dev_of_node() ?
->
-> > +       };
-> > +
-> > +       priv->psy_desc =3D &mt6370_chg_psy_desc;
-> > +       priv->psy_desc->name =3D dev_name(priv->dev);
-> > +       priv->psy =3D devm_power_supply_register(priv->dev, priv->psy_d=
-esc, &cfg);
-> > +
-> > +       return IS_ERR(priv->psy) ? PTR_ERR(priv->psy) : 0;
->
-> PTR_ERR_OR_ZERO()
->
-> > +}
->
-> ...
->
-> > +static irqreturn_t mt6370_attach_i_handler(int irq, void *data)
-> > +{
-> > +       struct mt6370_priv *priv =3D data;
-> > +       u32 otg_en;
-> > +       int ret;
-> > +
-> > +       /* Check in otg mode or not */
-> > +       ret =3D mt6370_chg_field_get(priv, F_BOOST_STAT, &otg_en);
-> > +       if (ret < 0) {
-> > +               dev_err(priv->dev, "failed to get otg state\n");
-> > +               return IRQ_HANDLED;
->
-> Handled error?
->
-> > +       }
-> > +
-> > +       if (otg_en)
-> > +               return IRQ_HANDLED;
->
-> > +       mutex_lock(&priv->attach_lock);
-> > +       atomic_set(&priv->attach, MT6370_ATTACH_STAT_ATTACH_BC12_DONE);
-> > +       mutex_unlock(&priv->attach_lock);
->
-> Mutex around atomic?! It's interesting...
-
-I will revise it in the next patch.
-
->
-> > +       if (!queue_work(priv->wq, &priv->bc12_work))
-> > +               dev_err(priv->dev, "bc12 work has already queued\n");
-> > +
-> > +       return IRQ_HANDLED;
-> > +}
->
-> ...
->
-> > +       for (i =3D 0; i < ARRAY_SIZE(mt6370_chg_irqs); i++) {
-> > +               ret =3D platform_get_irq_byname(to_platform_device(priv=
-->dev),
-> > +                                             mt6370_chg_irqs[i].name);
-> > +               if (ret < 0) {
-> > +                       dev_err(priv->dev, "Failed to get irq %s\n",
-> > +                               mt6370_chg_irqs[i].name);
->
-> Isn't the same printed by the above call?
-
-well... yes they are similar, I will remove one of them in the next patch.
-
->
-> > +                       return ret;
-> > +               }
-> > +
-> > +               ret =3D devm_request_threaded_irq(priv->dev, ret, NULL,
-> > +                                               mt6370_chg_irqs[i].hand=
-ler,
-> > +                                               IRQF_TRIGGER_FALLING,
-> > +                                               dev_name(priv->dev),
-> > +                                               priv);
-> > +
-> > +               if (ret < 0) {
-> > +                       dev_err(priv->dev, "Failed to request irq %s\n"=
-,
-> > +                               mt6370_chg_irqs[i].name);
-> > +                       return ret;
->
-> return dev_err_probe();
->
-> > +               }
-> > +       }
->
-> ...
->
-> > +static int mt6370_chg_probe(struct platform_device *pdev)
-> > +{
->
->
-> Use return dev_err_probe(...); pattern.
->
-> > +probe_out:
-> > +       destroy_workqueue(priv->wq);
-> > +       mutex_destroy(&priv->attach_lock);
->
-> I don't see clearly the initialization of these in the ->probe().
-> Besides that, does destroy_workque() synchronize the actual queue(s)?
->
-> Mixing devm_ and non-devm_ may lead to a wrong release order that's
-> why it is better to see allocating and destroying resources in one
-> function (they may be wrapped, but should be both of them, seems like
-> you have done it only for the first parts).
-
-OK, I will try to revise these in the next patch!
-
->
-> > +       return ret;
-> > +}
->
-> ...
->
-> > +static int mt6370_chg_remove(struct platform_device *pdev)
-> > +{
-> > +       struct mt6370_priv *priv =3D platform_get_drvdata(pdev);
-> > +
-> > +       if (priv) {
->
-> Can you describe when this condition can be false?
-
-well... I will remove it in the next patch, sorry for making this
-stupid mistake...
-
->
-> > +               mt6370_chg_enable_irq(priv, "mivr", false);
-> > +               cancel_delayed_work_sync(&priv->mivr_dwork);
-> > +               destroy_workqueue(priv->wq);
-> > +               mutex_destroy(&priv->attach_lock);
-> > +       }
-> > +
-> > +       return 0;
-> > +}
->
-> ...
->
-> > +static struct platform_driver mt6370_chg_driver =3D {
-> > +       .probe =3D mt6370_chg_probe,
-> > +       .remove =3D mt6370_chg_remove,
-> > +       .driver =3D {
-> > +               .name =3D "mt6370-charger",
-> > +               .of_match_table =3D of_match_ptr(mt6370_chg_of_match),
->
-> No good use of of_match_ptr(), please drop it.
->
-> > +       },
-> > +};
->
-> --
-> With Best Regards,
-> Andy Shevchenko
-
-Thanks for your review!
-
-Best regards,
-ChiaEn Wu
 
