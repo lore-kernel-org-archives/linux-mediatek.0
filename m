@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E969AC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:05:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8826C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lOo2b8F8lnHm9Gp1gJ0KQQt/78fIFmrlOEWDanHTf/g=; b=GblP2QsOmnMZIOSa09+zLRlctO
-	l7u0AMP+f2/GqJRU+mSUueFVvX4wLoAiJlftB3rCePiV76AtTc0b22ypBlRF8z5OlUPNHzifwC0Xw
-	7jlil+A6Juw5B/PouycLObjLD8AxpdeEpiyz1jfWPe3NMMyWPCq9UAh6fxh/Fbj5Ts49g8hyOZz/n
-	DRb8W49T9f0fjyI+JKgVjUJND95LjtCNHLi9+042xSubaOqi3cDivKF8Cxj5hayv7i3EdruFpHRZS
-	qnyAxSj8vvT06XYMD9xh+mcGbPCsCiwa9f800ufn9wrZprpyi7aZ7W3rorDfEADW8/ZPkILup8k/v
-	ZQ2oD8jw==;
+	bh=vGNaiOdAjQeC19UDAKf9IZ+bbv285soodHdNMbAB700=; b=kr0vGB79ZU9ZicL1W5TY1RWuIy
+	GgZWDYoYmo+YqjvRx+E13z/6B7mO31TByWCNuQW6mLWyJ319SyEHnC/xLcnujd3RQlVYsXosa+Nhi
+	kVxx09qRyqO2/3OgAfFlSLdd+jFPmgtadTuqR1FESWDXB30Rl0RpUhkUxZPn/uYpO+AVxG3Y8mnSh
+	CLIMUsSnblAoE6JSVpxDAOEvqq2MWXmUx57qPZWS5yLHdzUf/bTycdOj51/0MtE/pBAlxemo6bpQh
+	o7bmAaQKmAbsWsurNvhua97jevwJ0OP7OAYdrpsrv3w4g2ujvY0ptd9HTDQbE5Ikjut1xCPTeum7y
+	fInZowvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6aC7-00CrK4-25; Wed, 29 Jun 2022 16:05:35 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o6aCw-00Cru0-6y; Wed, 29 Jun 2022 16:06:26 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6a71-00CoYo-Ct; Wed, 29 Jun 2022 16:00:21 +0000
+	id 1o6a72-00CoaI-T4; Wed, 29 Jun 2022 16:00:23 +0000
 Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0B60F66019D8;
-	Wed, 29 Jun 2022 17:00:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7CD8E6601977;
+	Wed, 29 Jun 2022 17:00:18 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656518418;
-	bh=o29vqqsWji0OFz7litVCz+HSv2vrNoGr04oOrOfn0YM=;
+	s=mail; t=1656518419;
+	bh=4spTm+nSjWESSW3qtK2fAkjQznUiCUQIQixr1OG7tGg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KA7L+82b3TQ37iIXoQ/ZOTFIuM2Ig0B5xZNl9IkANTbDCpSij0oVuahGvW1BjwMlO
-	 Vpn95jAVKnxoDGYxmCnUEGPW8WjJmeq6jRQdNArA2urpVCn9zT0GlVouBsXaQNjEag
-	 0ChL6N7YeAm6eVth0++RyWz4A2w1mzUbgBYpeDJUTdcJ48zZ3lsci31vnO5b69YMVu
-	 fwiI/K2VWHoDeMe5/SAusfv2dTYVb4nIemEt+TkLmHIze+Svob+tX3J6VJWbAMLrPP
-	 tNz2nhV7T2rCTZbOVqOk9j4hCvXTo4gI2k2cOYo1SLVkAA7qLgtHZTDn1y3BZkppiH
-	 hKSi2BIbzhHTA==
+	b=OIyvFqwi7EKzy9XT184H158DbWBDB7JOhQ08VdfYt4F5mrlkQR81QZjh/owIfw382
+	 6+KedYF88uUo+tKUxPm0XYJh6FWv2SZzvo/1L414dxp2AjBBLArzEbthknC29ZOa0e
+	 8n1HzV21JpgAewjKYpUWSGCRldi8s1Yq5Q/HczZLcTa6Vq8X+/9u/Q5bieQrae0mQq
+	 V9SDFI/2uXYJXDTByXUhdS/Gemjmc5KMpqd4U1ynyZdyVIWYL8KvphnHKIgpQ4kE67
+	 OcYtqyf0Lc0hdGjPVob2BC0GxGjIJcnGVdGAMnPl+lTAm08M0KEDpGG1E6OoEvn91V
+	 mN3JeqN2ZjX3A==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,9 +53,9 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 10/19] arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
-Date: Wed, 29 Jun 2022 11:59:47 -0400
-Message-Id: <20220629155956.1138955-11-nfraprado@collabora.com>
+Subject: [PATCH v4 11/19] arm64: dts: mediatek: asurada: Add I2C touchscreen
+Date: Wed, 29 Jun 2022 11:59:48 -0400
+Message-Id: <20220629155956.1138955-12-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220629155956.1138955-1-nfraprado@collabora.com>
 References: <20220629155956.1138955-1-nfraprado@collabora.com>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_090019_664911_282061BE 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20220629_090021_152465_FC07015A 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,52 +79,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the Elan eKTH3000 i2c trackpad present on Asurada. It is
-connected to the I2C2 bus and has address 0x15.
+All machines of the Asurada platform have a touchscreen at address 0x10
+in the I2C0 bus, but the devices vary: Spherion has the Elan eKTH3500
+touchscreen, while Hayato has a generic HID-over-i2c touchscreen.
+
+Add common support for the touchscreens on the platform and the
+specifics in each board file.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-
 ---
 
-Changes in v4:
-- Switched mediatek,pull-up-adv for bias-pull-up
+(no changes since v1)
 
- .../boot/dts/mediatek/mt8192-asurada.dtsi      | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ .../dts/mediatek/mt8192-asurada-hayato-r1.dts |  7 ++++++
+ .../mediatek/mt8192-asurada-spherion-r0.dts   |  4 +++
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 25 +++++++++++++++++++
+ 3 files changed, 36 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+index ca18fcf2ad4f..1e91491945f6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+@@ -38,3 +38,10 @@ MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
+ 		CROS_STD_MAIN_KEYMAP
+ 	>;
+ };
++
++&touchscreen {
++	compatible = "hid-over-i2c";
++	post-power-on-delay-ms = <10>;
++	hid-descr-addr = <0x0001>;
++	vdd-supply = <&pp3300_u>;
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
+index 30b03895de41..42db81e95fae 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
+@@ -40,3 +40,7 @@ MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
+ 		CROS_STD_MAIN_KEYMAP
+ 	>;
+ };
++
++&touchscreen {
++	compatible = "elan,ekth3500";
++};
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index fe626535ee5d..4de4235cb768 100644
+index 4de4235cb768..6eace280c14a 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -109,6 +109,16 @@ &i2c2 {
- 	clock-stretch-ns = <12600>;
+@@ -92,6 +92,13 @@ &i2c0 {
+ 	clock-frequency = <400000>;
  	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c2_pins>;
+ 	pinctrl-0 = <&i2c0_pins>;
 +
-+	trackpad@15 {
-+		compatible = "elan,ekth3000";
-+		reg = <0x15>;
-+		interrupts-extended = <&pio 15 IRQ_TYPE_LEVEL_LOW>;
++	touchscreen: touchscreen@10 {
++		reg = <0x10>;
++		interrupts-extended = <&pio 21 IRQ_TYPE_LEVEL_LOW>;
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_pins>;
-+		vcc-supply = <&pp3300_u>;
-+		wakeup-source;
++		pinctrl-0 = <&touchscreen_pins>;
 +	};
  };
  
- &i2c3 {
-@@ -436,6 +446,14 @@ pins-bus {
- 			bias-disable;
+ &i2c1 {
+@@ -454,6 +461,24 @@ pins-int-n {
+ 			bias-pull-up = <MTK_PUPD_SET_R1R0_11>;
  		};
  	};
 +
-+	trackpad_pins: trackpad-default-pins {
-+		pins-int-n {
-+			pinmux = <PINMUX_GPIO15__FUNC_GPIO15>;
++	touchscreen_pins: touchscreen-default-pins {
++		pins-irq {
++			pinmux = <PINMUX_GPIO21__FUNC_GPIO21>;
 +			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_11>;
++			bias-pull-up;
++		};
++
++		pins-reset {
++			pinmux = <PINMUX_GPIO137__FUNC_GPIO137>;
++			output-high;
++		};
++
++		pins-report-sw {
++			pinmux = <PINMUX_GPIO138__FUNC_GPIO138>;
++			output-low;
 +		};
 +	};
  };
