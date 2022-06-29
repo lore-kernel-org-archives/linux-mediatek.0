@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55BD9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 09:28:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B345C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 09:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hIsxH68If12l6e8ZGZ2goEGKTqqr0gJFrRG91cWniFs=; b=OjNyev8ip3Uhy2okbJ12zquEQx
-	V2xU7e+m9KgV/n7xuozIqN4NgDuKL+wKfQoFRW3JA+9hV+IZTUXl+Ivt/OVzyXIZq2nZZPzVn2Kw9
-	jobOFdKzJHllR3Q5MpVf9a/c+VIuTcNWhvioyGkYgA3CN9d0XCzk9hxgXuNyjEhq5u7xBKagGyQuF
-	UDOy1wYiBjqP7CPk+MOazf8juhTqdiacaweCb5ZIo0LSWS2sbgZcqM/dnLt2653F12QnqWYH6t0hP
-	h2ksdarO6iC8Rv9c0LuD7rRLhvM1rkAhGxBDqXQlmM57hB3a1h+gB2VnoxYIbMpPGmGP2U0Bng7cG
-	SL3X93HQ==;
+	MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZrRlqcV9q3ObPn6I5hZ4nUuXLUhYveVBZjfVinIuuFo=; b=GLFLred6tqfxHCA6SJ8WRKYMsC
+	2SnSQiocMlWsFcJFUOOTZQL7NKozIfvyedmIYHqlyXm4vV2z5dT7Tqrh/ZeY6mPQf+cIQlJ264JnE
+	8ap3TIL89tRUHv5Zpi1GK+GjU9EJmNwpgYEACFzRMB9kfF6DmaN0i9SyXVLv/U3AtIXsYRfTftWQh
+	ScjKgsg2k2PF4d3UK0zisSTh0SZImlyTSyoT1GGNicP1/sgdWE0a6YPuHuCJ2rDY8emT7Ei7EyG/l
+	gKVK16wigaiwbIjieCYgt1noP+rELCXy/yPL9+Lx6RLRgCoM1Y1RFx13f5XaR35S/PBb+Vfs/ayPi
+	RGEm/gdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Tzx-00Ag5K-3n; Wed, 29 Jun 2022 09:28:37 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o6U4n-00AhJ2-Kb; Wed, 29 Jun 2022 09:33:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6TzP-00Afjk-9m; Wed, 29 Jun 2022 09:28:04 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D66BB61DF0;
-	Wed, 29 Jun 2022 09:27:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8B7FC34114;
-	Wed, 29 Jun 2022 09:27:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656494879;
-	bh=zIzhNyDC6fL9K9eUM/aov3cJHME6f/of4wgLpItd2wg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=gL5d1pDXiFrYmG1vipwNaPNaeo24jSfkfosQHThuaPsHqY/kw7NisJebTx8Cap+aw
-	 xZLsVP8zkxiSWDbwbwR06IxiblOwZfCQ/HU19xiJWQ9O3TbNmYTpZTf5xqPofYt7y3
-	 K52iRF/WIsV/CzDHbLpaBb6Phvwl/viS/5Jy8CQfh74LTYWrtdiAlW7C8nw0JrmZGf
-	 ROtIHjc+8DIzb9dI5+xNXZwXC30i8U3ElT6vDoNbzT35rEdB9UfXrlP6nguAApbyyA
-	 L6IRhPrxCDPBGk6CDOrKXzC5f3EY6+nFMRpA4WbnHhDJ2RkN3KnfbnfoLEEbSGWb2M
-	 L74KvBGl1belQ==
-Date: Wed, 29 Jun 2022 11:27:50 +0200
-From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>, Heiner Kallweit
- <hkallweit1@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alvin =?UTF-8?B?xaBpcHJhZ2E=?= <alsi@bang-olufsen.dk>, Claudiu Manoil
- <claudiu.manoil@nxp.com>, "David S. Miller" <davem@davemloft.net>, DENG
- Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Florian
- Fainelli <f.fainelli@gmail.com>, George McCollister
- <george.mccollister@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, Jakub
- Kicinski <kuba@kernel.org>, Kurt Kanzenbach <kurt@linutronix.de>, Landen
- Chao <Landen.Chao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo
- Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
- UNGLinuxDriver@microchip.com, Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Woojung Huh
- <woojung.huh@microchip.com>
-Subject: Re: [PATCH RFC net-next 0/4] net: dsa: always use phylink
-Message-ID: <20220629112750.4e0ae994@thinkpad>
-In-Reply-To: <Yrv8snvIChmoNPwh@lunn.ch>
-References: <YrWi5oBFn7vR15BH@shell.armlinux.org.uk>
-	<YrtvoRhUK+4BneYC@shell.armlinux.org.uk>
-	<Yrv8snvIChmoNPwh@lunn.ch>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	id 1o6U4j-00AhHS-A8
+	for linux-mediatek@lists.infradead.org; Wed, 29 Jun 2022 09:33:36 +0000
+X-UUID: 32057c6c386e464b9c877b44580b0995-20220629
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID; bh=ZrRlqcV9q3ObPn6I5hZ4nUuXLUhYveVBZjfVinIuuFo=;
+	b=gwQ60wW9fqf5YNr0gQhO8A/aT4UJ9nyWEDO3k2VvnbsVTTYwGpx3gxb0ORZvJ27ipTwFsHPDXoAXAWppaJLoxP87pN8KhmiVljYcMtF8lzcEJS5JDoyPdpS5EWh9grmg0r0Y+CqH9xTl+eTrHNexlLZPbiunRr6i14zdiZZ66fg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:5773fc93-9891-4f90-bd98-b3ca4afdf5ac,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:6d571686-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 32057c6c386e464b9c877b44580b0995-20220629
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 252965761; Wed, 29 Jun 2022 02:33:21 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 29 Jun 2022 17:02:56 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 29 Jun 2022 17:02:54 +0800
+Message-ID: <cd7169df640fe6dab85f6d94cb8f40c181e08d2b.camel@mediatek.com>
+Subject: support USB 3.2 function remote wake
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Felipe Balbi <balbi@kernel.org>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alan Stern
+	<stern@rowland.harvard.edu>, <linux-usb@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>
+Date: Wed, 29 Jun 2022 17:02:54 +0800
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_022803_422094_14827A72 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20220629_023333_400335_0F4865F7 
+X-CRM114-Status: UNSURE (   6.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,27 +79,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 29 Jun 2022 09:18:10 +0200
-Andrew Lunn <andrew@lunn.ch> wrote:
+SGksDQoNCkkgcGxhbiB0byBzdXBwb3J0IGZ1bmN0aW9uIHJlbW90ZSB3YWtldXAgb24gb3VyIHVz
+YjMgZGV2aWNlIGNvbnRyb2xsZXINCmRyaXZlci4NCg0KQSBmdW5jdGlvbiBtYXkgc2lnbmFsIHRo
+YXQgaXQgd2FudHMgdG8gZXhpdCBmcm9tIEZ1bmN0aW9uIFN1c3BlbmQgYnkNCnNlbmRpbmcgYSBG
+dW5jdGlvbiBXYWtlIE5vdGlmaWNhdGlvbiB0byB0aGUgaG9zdCwgYW5kIHRoZSBub3RpZmljYXRp
+b24NCm5lZWQga25vd3MgdGhlIGZpcnN0IGludGVyZmFjZSBudW1iZXIgaW4gdGhpcyBmdW5jdGlv
+bi4NCkJ1dCB0aGUgY3VycmVudCBnYWRnZXQgb3BzOg0KICAgIGludCAoKndha2V1cCkoc3RydWN0
+IHVzYl9nYWRnZXQgKik7DQpkb2VzIG5vdCBwcm92aWRlIGluZm9ybWF0aW9uIGFib3V0IGludGVy
+ZmFjZSBudW1iZXI7DQoNClRoZXJlIHNlZW1zIHRvIGJlIHR3byB3YXlzOg0KMS4gYWRkIGEgbmV3
+IHBhcmFtZXRlciBhcyBiZWxvdywNCiAgICBpbnQgKCp3YWtldXApKHN0cnVjdCB1c2JfZ2FkZ2V0
+ICosIHU4IGludGYpOw0KMi4gYWRkIGEgbmV3IG9wcywgc3VjaCBhcywNCiAgICBpbnQgKCpmdW5j
+dGlvbl93YWtldXApKHN0cnVjdCB1c2JfZ2FkZ2V0ICosIHU4IGludGYpOw0KDQpEbyB5b3UgaGF2
+ZSBhbnkgc3VnZ2VzdGlvbnM/DQoNClRoYW5rcyBhIGxvdA0K
 
-> > I should point out that if a DSA port can be programmed in software to
-> > support both SGMII and 1000baseX, this will end up selecting SGMII
-> > irrespective of what the hardware was wire-strapped to and how it was
-> > initially configured. Do we believe that would be acceptable?  
-> 
-> I'm pretty sure the devel b board has 1000BaseX DSA links between its
-> two switches. Since both should end up SGMII that should be O.K.
-> 
-> Where we potentially have issues is 1000BaseX to the CPU. This is not
-> an issue for the Vybrid based boards, since they are fast Ethernet
-> only, but there are some boards with an IMX6 with 1G ethernet. I guess
-> they currently use 1000BaseX, and the CPU side of the link probably
-> has a fixed-link with phy-mode = 1000BaseX. So we might have an issue
-> there.
-
-If one side of the link (e.g. only the CPU eth interface) has 1000base-x
-specified in device-tree explicitly, the code should keep it at
-1000base-x for the DSA CPU port...
-
-Marek
 
