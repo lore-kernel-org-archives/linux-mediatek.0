@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B88C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 01:36:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52877C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 01:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MYjOugKbNuhpE9r3Uhqr/DqjT4d07O+V4Y5m7GjM64A=; b=AU12ZcRPWHDhHDerN0XW8rXFGQ
-	yNhuwc9ZwabaJmuuHuK7O4OubxQARCMz0PUxy0irzgRC8HA5LneHMyHmfIQyP61fYqZU40NatAQPV
-	FR8m3z3GGtf2rxMf1i/Wdxnat/cIihV7oY1uOPWvGIvUIcUJ1sX5TKJqBCryWLkakokg+sjMgKeBp
-	9qrRDgA1zqvATorNJfTKfibco8IgqXXZ2hYZ9As4r2cu1yOE3gPwQmKizcvgjP7lp9ZWAxhc2lY6W
-	8OGQe4T5xJU0gIpG/IpTIBYh/wLEmQek5yr5+tSaHxwtYcRGwzTFyUQKOVRtADJT86sikMRRH+wDb
-	QeHErifw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=S2ALH10CiIJ9QarbU1oFFB9yUYMcWtOsqvnVKD2phWs=; b=JJTszDSNPQegWROE4QsJvAJGCv
+	4me5HXAhxXWKfJNe0ZbmnfpiirAzqlJ1vKkTkRUKzskcG8TRn1gRjxgMweMvTYyImmOmoOpVBhOi+
+	vRgP8pkbt5VtfUeVOEADLSlWR++KFMpi7enpFHRV9jRm0I9camBJBSSS3KdW9RSa7+uo0DIEp9NDq
+	gZU1cJ2S5/wTBk6nq6/ATPlnXJgwUQygK3ENtNeOQhDA52QsKHOoXfvG7xnJ/Pqw2lD/4R6GWv+Rj
+	71ScyXX4n1KwmZoc+EDfnFe2Er++qEiVvJ35qGO4VUXr6AFgSUplGh+EAEvJzHDVlTtrASGuHQe8j
+	1epyQDDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Mck-008vxH-Ep; Wed, 29 Jun 2022 01:36:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o6Mhp-008wxR-R9; Wed, 29 Jun 2022 01:41:25 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6McY-008vtz-D4; Wed, 29 Jun 2022 01:36:01 +0000
-X-UUID: cdb8f30a8d5649458155e0347af7aa1e-20220628
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=MYjOugKbNuhpE9r3Uhqr/DqjT4d07O+V4Y5m7GjM64A=;
-	b=luMP2POki/J8+dMZRtXHnQa1zTpDsCqvhdvaI61AkRwJM/zTI+xNxZQY9YcR7kukYx92VeuYexnonz+iY94C/2K4/xYSUvG/iiQRngSD+3U7RXli2z3K8VgTGUENBAOdpA3jXxZUYomPJg97oPlHIvybP0n1I2f76s0yyBJxyUI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:9e028bac-adfa-4332-a7e6-a4e79b02e77f,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:87442a2,CLOUDID:b3bb17d6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: cdb8f30a8d5649458155e0347af7aa1e-20220628
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1968132351; Tue, 28 Jun 2022 18:35:47 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Wed, 29 Jun 2022 09:35:44 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 29 Jun 2022 09:35:43 +0800
-Message-ID: <5da71e875a65c85c30293ec74475b10e9f3d3a1d.camel@mediatek.com>
-Subject: Re: [RESEND V9,1/7] dt-bindings: mediatek: Add mediatek,
- mt8195-jpgenc compatible
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih
-	<tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
-	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
-	<srv_heupstream@mediatek.com>
-Date: Wed, 29 Jun 2022 09:35:43 +0800
-In-Reply-To: <20220628210716.GA963202-robh@kernel.org>
-References: <20220614121024.31667-1-irui.wang@mediatek.com>
-	 <20220614121024.31667-2-irui.wang@mediatek.com>
-	 <20220617231139.GA2610098-robh@kernel.org>
-	 <329eb655ddb503e4327cbe3cffef625bb44630b1.camel@mediatek.com>
-	 <20220628210716.GA963202-robh@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+	id 1o6Mhf-008wt5-6G; Wed, 29 Jun 2022 01:41:16 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id i8-20020a17090aee8800b001ecc929d14dso226301pjz.0;
+        Tue, 28 Jun 2022 18:41:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id;
+        bh=S2ALH10CiIJ9QarbU1oFFB9yUYMcWtOsqvnVKD2phWs=;
+        b=Wtpkw/+ZZca6AButPmm3hgE1RwtlB7vp2QjhuYjzW9XWR5P8J835GNQ9GfSeFSr4Kh
+         9A2cK63SET+iyqCW2bFPd0GgSjFj0viFFM2+MD/kKYKPhLzkWvjhdugQsWd5rzaRbZhR
+         WCEh+IW2w975E9HgFUnPNMC0N0mXMy8x2LaUP43iNQuvM9XlXEqO3AELxs9RKI29vkfw
+         JP1EAjSd8W+1XpcKznqvQBolr6YlNyaYggL+MqqtmWlPs7zAKGVYN9TmisZPAS4OanZb
+         MWx8xF5OrGr7gCEKgUbMq2LUGYEbYXjAZ1AkOm1OsQsbh2/HTf8eNDPVqCiBGnLWX2dV
+         /pdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=S2ALH10CiIJ9QarbU1oFFB9yUYMcWtOsqvnVKD2phWs=;
+        b=WFANLAclSp73z8yTRlgD6LfDcd9NyNfDHi/kBYarvyNEfMTQO2Z3Rf8NcnysgicjuZ
+         eDdsmXxhs5Sh6kuIS2BthdpfRxpjbxXeDWy9oQH4/2QLJz1ss2yQSiRgDSVqBVaU6Wn8
+         XhvRNvnNMbgqCjzXe29ceriFwh1QZVo9BNovz3+xrIqmK2JRoTLHIfCM570/gp7RAiko
+         lbp+vJBVYs4lg8vBNf0T1Jf3gOMqyGqf2TIGFGErj69GG5BSEbNfsXMuT2kLvr8b0NLD
+         vrbHEvR9qYnduMOwu5SSXVWU/Hhbh0j/CgF7BFQKM/CAz1YasEJBaNNv4milAzUlvUx4
+         jC6Q==
+X-Gm-Message-State: AJIora/pgPacL7kBJxdxtJ5JaReS+tuY37VamuyUBRhQPlcaPlkHR78U
+	btB9ls780aBlrxmzRQinT00=
+X-Google-Smtp-Source: AGRyM1v8CXE6gypzs36wg8Rh/T42PFlavrif+6TTtAf/MYaXBleCdFPsSq11fHsVxknSlLyhqjDIcA==
+X-Received: by 2002:a17:902:ab87:b0:16a:82a9:feb7 with SMTP id f7-20020a170902ab8700b0016a82a9feb7mr8011328plr.37.1656466869173;
+        Tue, 28 Jun 2022 18:41:09 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:46a:3e21:914b:bb3e:3e56:4806])
+        by smtp.gmail.com with ESMTPSA id u15-20020aa7838f000000b0052592a8ef62sm7182965pfm.110.2022.06.28.18.41.05
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Jun 2022 18:41:08 -0700 (PDT)
+From: cy_huang <u0084500@gmail.com>
+To: broonie@kernel.org
+Cc: lgirdwood@gmail.com,
+	matthias.bgg@gmail.com,
+	chiaen_wu@richtek.com,
+	alice_chen@richtek.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	ChiYuan Huang <cy_huang@richtek.com>
+Subject: [PATCH 1/2] regulator: mt6370: Use 'fwnode_gpiod_get_index' to fix gpio parsing
+Date: Wed, 29 Jun 2022 09:41:00 +0800
+Message-Id: <1656466861-7737-1-git-send-email-u0084500@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_183558_494675_3AC78600 
-X-CRM114-Status: GOOD (  33.27  )
+X-CRM114-CacheID: sfid-20220628_184115_275250_45F6F68F 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,73 +86,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIyLTA2LTI4IGF0IDE1OjA3IC0wNjAwLCBSb2IgSGVycmluZyB3cm90ZToNCj4g
-T24gTW9uLCBKdW4gMjAsIDIwMjIgYXQgMDI6MDQ6MzhQTSArMDgwMCwga3lyaWUud3Ugd3JvdGU6
-DQo+ID4gT24gRnJpLCAyMDIyLTA2LTE3IGF0IDE3OjExIC0wNjAwLCBSb2IgSGVycmluZyB3cm90
-ZToNCj4gPiA+IE9uIFR1ZSwgSnVuIDE0LCAyMDIyIGF0IDA4OjEwOjE4UE0gKzA4MDAsIElydWkg
-V2FuZyB3cm90ZToNCj4gPiA+ID4gRnJvbToga3lyaWUgd3UgPGt5cmllLnd1QG1lZGlhdGVrLmNv
-bT4NCj4gPiA+ID4gDQo+ID4gPiA+IEFkZCBtZWRpYXRlayxtdDgxOTUtanBnZW5jIGNvbXBhdGli
-bGUgdG8gYmluZGluZyBkb2N1bWVudC4NCj4gPiA+ID4gDQo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6
-IGt5cmllIHd1IDxreXJpZS53dUBtZWRpYXRlay5jb20+DQo+ID4gPiA+IC0tLQ0KPiA+ID4gPiAg
-Li4uL21lZGlhL21lZGlhdGVrLG10ODE5NS1qcGVnZW5jLnlhbWwgICAgICAgIHwgMTUzDQo+ID4g
-PiA+ICsrKysrKysrKysrKysrKysrKw0KPiA+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDE1MyBpbnNl
-cnRpb25zKCspDQo+ID4gPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQNCj4gPiA+ID4gRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0NCj4gPiA+ID4g
-anBlZ2VuYy55YW1sDQo+ID4gPiA+IA0KPiA+ID4gPiBkaWZmIC0tZ2l0DQo+ID4gPiA+IGEvRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0NCj4g
-PiA+ID4ganBlZ2VuYy55YW1sDQo+ID4gPiA+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0NCj4gPiA+ID4ganBlZ2VuYy55YW1sDQo+ID4g
-PiA+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0DQo+ID4gPiA+IGluZGV4IDAwMDAwMDAwMDAwMC4uYTdm
-OWY3MjNkNWRiDQo+ID4gPiA+IC0tLSAvZGV2L251bGwNCj4gPiA+ID4gKysrIGIvRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0NCj4gPiA+ID4g
-anBlZ2VuYy55YW1sDQo+ID4gPiA+IEBAIC0wLDAgKzEsMTUzIEBADQo+ID4gPiA+ICsjIFNQRFgt
-TGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCBPUiBCU0QtMi1DbGF1c2UpDQo+ID4gPiA+ICsl
-WUFNTCAxLjINCj4gPiA+ID4gKy0tLQ0KPiA+ID4gPiArJGlkOiANCj4gPiA+ID4gDQpodHRwOi8v
-ZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9tZWRpYS9tZWRpYXRlayxtdDgxOTUtanBlZ2VuYy55YW1s
-Iw0KPiA+ID4gPiArJHNjaGVtYTogaHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9j
-b3JlLnlhbWwjDQo+ID4gPiA+ICsNCj4gPiA+ID4gK3RpdGxlOiBNZWRpYVRlayBKUEVHIEVuY29k
-ZXIgRGV2aWNlIFRyZWUgQmluZGluZ3MNCj4gPiA+ID4gKw0KPiA+ID4gPiArbWFpbnRhaW5lcnM6
-DQo+ID4gPiA+ICsgIC0ga3lyaWUgd3UgPGt5cmllLnd1QG1lZGlhdGVrLmNvcnAtcGFydG5lci5n
-b29nbGUuY29tPg0KPiA+ID4gPiArDQo+ID4gPiA+ICtkZXNjcmlwdGlvbjogfC0NCj4gPiA+ID4g
-KyAgTWVkaWFUZWsgSlBFRyBFbmNvZGVyIGlzIHRoZSBKUEVHIGVuY29kZSBoYXJkd2FyZSBwcmVz
-ZW50IGluDQo+ID4gPiA+IE1lZGlhVGVrIFNvQ3MNCj4gPiA+ID4gKw0KPiA+ID4gPiArcHJvcGVy
-dGllczoNCj4gPiA+ID4gKyAgY29tcGF0aWJsZToNCj4gPiA+ID4gKyAgICBpdGVtczoNCj4gPiA+
-ID4gKyAgICAgIC0gY29uc3Q6IG1lZGlhdGVrLG10ODE5NS1qcGdlbmMNCj4gPiA+ID4gKw0KPiA+
-ID4gPiArICBtZWRpYXRlayxqcGVnZW5jLW11bHRpLWNvcmU6DQo+ID4gPiA+ICsgICAgdHlwZTog
-Ym9vbGVhbg0KPiA+ID4gPiArICAgIGRlc2NyaXB0aW9uOiB8DQo+ID4gPiA+ICsgICAgICBJbmRp
-Y2F0ZXMgd2hldGhlciB0aGUganBlZyBlbmNvZGVyIGhhcyBtdWx0aXBsZSBjb3JlcyBvcg0KPiA+
-ID4gPiBub3QuDQo+ID4gPiA+ICsNCj4gPiA+ID4gKyAgcG93ZXItZG9tYWluczoNCj4gPiA+ID4g
-KyAgICBtYXhJdGVtczogMQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsgIGlvbW11czoNCj4gPiA+ID4g
-KyAgICBtYXhJdGVtczogNA0KPiA+ID4gPiArICAgIGRlc2NyaXB0aW9uOiB8DQo+ID4gPiA+ICsg
-ICAgICBQb2ludHMgdG8gdGhlIHJlc3BlY3RpdmUgSU9NTVUgYmxvY2sgd2l0aCBtYXN0ZXIgcG9y
-dCBhcw0KPiA+ID4gPiBhcmd1bWVudCwgc2VlDQo+ID4gPiA+ICsgICAgICBEb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvaW9tbXUvbWVkaWF0ZWssaW9tbXUueQ0KPiA+ID4gPiBhbWwN
-Cj4gPiA+ID4gZm9yIGRldGFpbHMuDQo+ID4gPiA+ICsgICAgICBQb3J0cyBhcmUgYWNjb3JkaW5n
-IHRvIHRoZSBIVy4NCj4gPiA+ID4gKw0KPiA+ID4gPiArICAiI2FkZHJlc3MtY2VsbHMiOg0KPiA+
-ID4gPiArICAgIGNvbnN0OiAyDQo+ID4gPiA+ICsNCj4gPiA+ID4gKyAgIiNzaXplLWNlbGxzIjoN
-Cj4gPiA+ID4gKyAgICBjb25zdDogMg0KPiA+ID4gPiArDQo+ID4gPiA+ICsgIHJhbmdlczogdHJ1
-ZQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsjIFJlcXVpcmVkIGNoaWxkIG5vZGU6DQo+ID4gPiA+ICtw
-YXR0ZXJuUHJvcGVydGllczoNCj4gPiA+ID4gKyAgIl5qcGdlbmNAWzAtOWEtZl0rJCI6DQo+ID4g
-PiA+ICsgICAgdHlwZTogb2JqZWN0DQo+ID4gPiA+ICsgICAgZGVzY3JpcHRpb246IHwNCj4gPiA+
-ID4gKyAgICAgIFRoZSBqcGVnIGVuY29kZXIgaGFyZHdhcmUgZGV2aWNlIG5vZGUgd2hpY2ggc2hv
-dWxkIGJlDQo+ID4gPiA+IGFkZGVkDQo+ID4gPiA+IGFzIHN1Ym5vZGVzIHRvDQo+ID4gPiA+ICsg
-ICAgICB0aGUgbWFpbiBqcGVnIG5vZGUuDQo+ID4gPiA+ICsNCj4gPiA+ID4gKyAgICBwcm9wZXJ0
-aWVzOg0KPiA+ID4gPiArICAgICAgY29tcGF0aWJsZToNCj4gPiA+ID4gKyAgICAgICAgY29uc3Q6
-IG1lZGlhdGVrLG10ODE5NS1qcGdlbmMtaHcNCj4gPiA+ID4gKw0KPiA+ID4gPiArICAgICAgcmVn
-Og0KPiA+ID4gPiArICAgICAgICBtYXhJdGVtczogMQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsgICAg
-ICBod19pZDoNCj4gPiA+ID4gKyAgICAgICAgZGVzY3JpcHRpb246IHwNCj4gPiA+ID4gKyAgICAg
-ICAgICBDdXJyZW50IGpwZWdlbmMgaHcgaWQuDQo+ID4gPiANCj4gPiA+IFNhbWUgcXVlc3Rpb24g
-aGVyZS4gU3VyZWx5LCBJIGFza2VkIHNvbWV0aW1lIGluIHRoZSBsYXN0IDgNCj4gPiA+IHZlcnNp
-b25zLA0KPiA+ID4gYnV0IA0KPiA+ID4gbm8gZXhwbGFuYXRpb24gaGVyZSBhbmQgSSdtIG5vdCBn
-b2luZyB0byBnbyBsb29rIGZvciBpdC4NCj4gPiANCj4gPiBEZWFyIFJvYiwNCj4gPiBJJ20gc29y
-cnkgZm9yIG5vdCBnaXZpbmcgYW4gYWNjdXJhdGUgZXhwbGFuYXRpb24gaW4gdGltZS4NCj4gPiBU
-aGUgTVQ4MTk1IGhhcyBvd24gdHdvIGVuY29kaW5nIGhhcmR3YXJlcywgd2UgdXNlIGh3X2lkIHRv
-IA0KPiA+IHJlcHJlc2VudCB0aGVtLg0KPiA+IGh3X2lkID0gMCwgZm9yIGhhcmR3YXJlIDAsIGFu
-ZCBod19pZCA9IDEsIHJlcGVzZW50cyBhbm90aGVyIG9uZS4NCj4gPiBJIHdpbGwgaW1wcm92ZSB0
-aGUgZGVzY3JpcHRpb24gaW4gdGhlIG5leHQgdmVyc2lvbi4NCj4gDQo+IFdoeSBkbyB5b3UgY2Fy
-ZSB3aGljaCBvbmUgaXMgd2hpY2g/IA0KPiANCj4gV2UgZ2VuZXJhbGx5IGRvbid0IGRvIGluc3Rh
-bmNlIGluZGljZXMgaW4gRFQsIHNvIGZpZ3VyZSBvdXQgaG93IG5vdA0KPiB0byANCj4gbmVlZCB0
-aGlzLg0KPiANCj4gUm9iDQpIaSBCb2IsDQoNClRoYW5rcyBmb3IgeW91ciBndWlkYW5jZSwgSSB3
-aWxsIGZpeCB0aGlzIGlzc3VlIGluIHRoZSBuZXh0IHZlcnNpb24uDQoNCkt5cmllLg0K
+From: ChiYuan Huang <cy_huang@richtek.com>
+
+From the common binding, 'enable-gpio' or 'enable-gpios' are all well
+for external 'enable' gpio.
+
+'gpiod_get_from_of_node' only parse the 'enable' property, it need to
+add the gpio suffix. It's more convenient to use fwnode_gpiod_get_index.
+Although fwnode parsing is not preferred, but 'of_parse_cb' already can
+guarantee the callback will only be used by regulator of_node parsing.
+
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+ drivers/regulator/mt6370-regulator.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/regulator/mt6370-regulator.c b/drivers/regulator/mt6370-regulator.c
+index bc356b4..949b2c7 100644
+--- a/drivers/regulator/mt6370-regulator.c
++++ b/drivers/regulator/mt6370-regulator.c
+@@ -153,7 +153,8 @@ static int mt6370_of_parse_cb(struct device_node *np,
+ 	struct gpio_desc *enable_gpio;
+ 	int ret;
+ 
+-	enable_gpio = gpiod_get_from_of_node(np, "enable", 0, GPIOD_OUT_HIGH |
++	enable_gpio = fwnode_gpiod_get_index(of_fwnode_handle(np), "enable", 0,
++					     GPIOD_OUT_HIGH |
+ 					     GPIOD_FLAGS_BIT_NONEXCLUSIVE,
+ 					     desc->name);
+ 	if (IS_ERR(enable_gpio)) {
+-- 
+2.7.4
 
 
