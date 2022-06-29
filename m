@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 259B1C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:42:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C072C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=880TfxWcdGoznLDflakV5pugqMX1aKRd5S5uQ2Z+X30=; b=BACx30Q5MEKEb6dMA0XH8XJFX+
-	MNRTK5UI84qSxuwm/ckoPgKhcaUkGFe1pAG/ggFGq6gf5GV+F/5UYvTCg5w10/blN6nNQZeu5sN2V
-	+VC7YTeJNpBr1/GV1kQcGDpbj4IB9KslPw5sL20DXK8EyjhKmV8JvBRfpmtWdc+XdeVRlDOnvF9o6
-	w+FpUUEOAM3j3QzVMRHohy2JRxmbhGrHwKyoeT+zjKnqW2DkUBgsxkKblKToI4PbOFuwhChwdK05O
-	KKsCWMx5Xtw3mMLC01ZgDEBNFc1qhRhJ2DL4p0p/YEOuVv6FjULpTE6WJHH89mWGiIrWPh6ly4V2g
-	xV6b+ijQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iqUD70VzcyYlY5BxqwY1iE/pyhBwtZ4AsMYJqUHH9VI=; b=nnX6gpJ+CKjiCxbeIJZ29veF+S
+	2VK9ERPS/0cEUaxsNWXEgoQiF+hcX9XnUiIGeTKaZ7JUcgBc4+xZxo1H0zIOB+Y1Vc6Hpeizy3UgK
+	Q7B2PI6q7K9wBOfUDKmmg0mVbXvVTe2uV68bvL0GMvaQE5SdB21gmPwehnsrhjkANAN1tQlTQQDSv
+	LPdWYHI8DJDsCHxtRPJ6Ig96ZgB3yI/6NG1znUfe7RzKR9TNDz74EDgv+I8jJH+H2F2GSZMn9VCl0
+	1oHxvKn/asTNInruuJxSUYd6TQgMyqHJrwjwdx3t1bHlsUbMURcb8Lc297rEXJvlNYpkPW/MKHa2D
+	ZwEYi0PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6X1g-00BuY2-VN; Wed, 29 Jun 2022 12:42:37 +0000
+	id 1o6X9I-00BwzE-6m; Wed, 29 Jun 2022 12:50:28 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6X1B-00BuLX-VM; Wed, 29 Jun 2022 12:42:07 +0000
+	id 1o6X94-00Bwto-Pk; Wed, 29 Jun 2022 12:50:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=880TfxWcdGoznLDflakV5pugqMX1aKRd5S5uQ2Z+X30=; b=U3ODSiKBCiCsW6R6iTTTRSxJtG
-	P/DLvfWnqrmnlz+qlJn5r0kfdXLSZOQQVdRKZFXa4HtvO4es4Dp97KX4sjw8ap9HRWbck8vpWiJ5C
-	imAHHbZxVZblDMLDxLdSADMsyoi28zj3CZl5RSOnEd7p8KLsme3ETlBsWWdUH8Lm1ZrnkgZzaZ1Sw
-	2vEFzJ5RqjdetjlTEzK03ql5PVfH5oaHaI46z9dtIR+Fh2ouThCGSbuFGhDhGsxiPuVd2gHx+0LkY
-	UNmFA2jnDZvMBcLVEOp4hVoOglZfJKaNxZdybmNVvRRN7qHGStzxC8SgR2HCANvvjHLg+IOGhIla7
-	RxXllq9Q==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33092)
+	bh=iqUD70VzcyYlY5BxqwY1iE/pyhBwtZ4AsMYJqUHH9VI=; b=JzGt96ETVLhbBFMBkdiQEmUmbC
+	ltPCR08T2aS4h3dDRs/kEavEqy945gNSsG19RBONrJfR5VT7Hc+pz4TEuvBpknQEAeQomCYvK8UOh
+	AKH5CcDT7qQnieRKjs1iDQzepoRzzNRwfBy2ztnKWqbmGDvkC2bn0kc3Jiu5F6Mh/csWoMdo8dKfy
+	zRiyR4kZsqzZ6ORLUjW8Iw2T7KQOHtiGFHIYFv+htjPNKKvbyXBHq67F/zdXuEY8iI26B8VoQDvJb
+	vWFKodr3cieWa99tbtDKw9VqXukKkUw/Gohb/Z+0xfkWsENky2fBh2Vb2R6MQVDOCx+42mprPcZzS
+	UoBkWPHA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33094)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1o6X0o-00034R-00; Wed, 29 Jun 2022 13:41:42 +0100
+	id 1o6X8r-00035m-Ae; Wed, 29 Jun 2022 13:50:01 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1o6X0h-0005rL-NK; Wed, 29 Jun 2022 13:41:35 +0100
-Date: Wed, 29 Jun 2022 13:41:35 +0100
+	id 1o6X8o-0005rZ-0h; Wed, 29 Jun 2022 13:49:58 +0100
+Date: Wed, 29 Jun 2022 13:49:57 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
 	Claudiu Manoil <claudiu.manoil@nxp.com>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -68,21 +67,14 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	Vivien Didelot <vivien.didelot@gmail.com>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	Woojung Huh <woojung.huh@microchip.com>
-Subject: Re: [PATCH RFC net-next 0/4] net: dsa: always use phylink
-Message-ID: <YrxIf1tfWQZCD1w8@shell.armlinux.org.uk>
-References: <YrWi5oBFn7vR15BH@shell.armlinux.org.uk>
- <YrtvoRhUK+4BneYC@shell.armlinux.org.uk>
- <Yrv8snvIChmoNPwh@lunn.ch>
- <YrweuzL2LYNbfvAY@shell.armlinux.org.uk>
- <20220629121020.583144a5@thinkpad>
+Subject: [PATCH RFC net-next 0/6] net: dsa: always use phylink
+Message-ID: <YrxKdVmBzeMsVjsH@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220629121020.583144a5@thinkpad>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_054206_080414_4197A846 
-X-CRM114-Status: GOOD (  37.05  )
+X-CRM114-CacheID: sfid-20220629_055014_879382_20383008 
+X-CRM114-Status: GOOD (  39.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,65 +89,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 29, 2022 at 12:10:20PM +0200, Marek Behún wrote:
-> On Wed, 29 Jun 2022 10:43:23 +0100
-> "Russell King (Oracle)" <linux@armlinux.org.uk> wrote:
+Mostly the same as the previous RFC, except:
+
+1) incldues the phylink_validate_mask_caps() function
+2) has Marek's idea of searching the supported_interfaces bitmap for the
+   fastest interface we can use
+3) includes a final patch to add a print which will be useful to hear
+   from people testing it.
+
+Some of the questions from the original RFC remain though, so I've
+included that text below. I'm guessing as they remain unanswered that
+no one has any opinions on them?
+
+ drivers/net/dsa/b53/b53_common.c       |   3 +-
+ drivers/net/dsa/bcm_sf2.c              |   3 +-
+ drivers/net/dsa/hirschmann/hellcreek.c |   3 +-
+ drivers/net/dsa/lantiq_gswip.c         |   6 +-
+ drivers/net/dsa/microchip/ksz_common.c |   3 +-
+ drivers/net/dsa/mt7530.c               |   3 +-
+ drivers/net/dsa/mv88e6xxx/chip.c       |  53 ++++--------
+ drivers/net/dsa/ocelot/felix.c         |   3 +-
+ drivers/net/dsa/qca/ar9331.c           |   3 +-
+ drivers/net/dsa/qca8k.c                |   3 +-
+ drivers/net/dsa/realtek/rtl8365mb.c    |   3 +-
+ drivers/net/dsa/sja1105/sja1105_main.c |   3 +-
+ drivers/net/dsa/xrs700x/xrs700x.c      |   3 +-
+ drivers/net/phy/phylink.c              | 148 ++++++++++++++++++++++++++++++---
+ include/linux/phylink.h                |   5 ++
+ include/net/dsa.h                      |   3 +-
+ net/dsa/port.c                         |  47 +++++++----
+ 17 files changed, 215 insertions(+), 80 deletions(-)
+
+On Fri, Jun 24, 2022 at 12:41:26PM +0100, Russell King (Oracle) wrote:
+> Hi,
 > 
-> > On Wed, Jun 29, 2022 at 09:18:10AM +0200, Andrew Lunn wrote:
-> > > > I should point out that if a DSA port can be programmed in software to
-> > > > support both SGMII and 1000baseX, this will end up selecting SGMII
-> > > > irrespective of what the hardware was wire-strapped to and how it was
-> > > > initially configured. Do we believe that would be acceptable?  
-> > > 
-> > > I'm pretty sure the devel b board has 1000BaseX DSA links between its
-> > > two switches. Since both should end up SGMII that should be O.K.  
-> > 
-> > Would such a port have a programmable C_Mode, and would it specify that
-> > it supports both SGMII and 1000BaseX ? Without going through a lot of
-> > boards and documentation for every switch, I can't say.
-> > 
-> > I don't think we can come to any conclusion on what the right way to
-> > deal with this actually is - we don't have enough information about how
-> > this is used across all the platforms we have. I think we can only try
-> > something, get it merged into net-next, and wait to see whether anyone
-> > complains.
-> > 
-> > When we have a CPU or DSA port without a fixed-link, phy or sfp specified,
-> > I think we should:
-> > (a) use the phy-mode property if present, otherwise,
-> > (b,i) have the DSA driver return the interface mode that it wants to use
-> > for max speed for CPU and DSA ports.
-> > (b,ii) in the absence of the DSA driver returning a valid interface mode,
-> > we use the supported_interfaces to find an interface which gives the
-> > maximum speed (irrespective of duplex?) that falls within the
-> > mac capabilities.
-> > 
-> > If all those fail, then things will break, and we will have to wait for
-> > people to report that breakage. Does this sound a sane approach, or
-> > does anyone have any other suggestions how to solve this?
+> Currently, the core DSA code conditionally uses phylink for CPU and DSA
+> ports depending on whether the firmware specifies a fixed-link or a PHY.
+> If either of these are specified, then phylink is used for these ports,
+> otherwise phylink is not, and we rely on the DSA drivers to "do the
+> right thing". However, this detail is not mentioned in the DT binding,
+> but Andrew has said that this behaviour has always something that DSA
+> wants.
 > 
-> It is a sane approach. But in the future I think we should get rid of
-> (b,i): I always considered the max_speed_interface() method a temporary
-> solution, until the drivers report what a specific port support and the
-> subsystem can then choose whichever mode it wants that is wired and
-> supported by hardware. Then we could also make it possible to change
-> the CPU interface mode via ethtool, which would be cool...
-
-I can remotely test clearfog, which seems to do the right thing:
-
-[    5.707839] mv88e6085 f1072004.mdio-mii:04: sif=21 if=21(1000base-x) cap=bd
-[    5.715114] mv88e6085 f1072004.mdio-mii:04: configuring for fixed/1000base-x link mode
-
-meaning that the supported interfaces (sif) mask only contains
-1000base-x, phylink_create() was called with (if) 1000base-x, and the
-capabilities (cap) indicates 1000-fd, 100-(h,f)d, and 10-(h,f)d.
-
-I don't think port 5 on the 88e6176 can support any other modes, so
-this isn't a particularly good test. My ZII boards aren't powered up
-so can't test those with the extra debugging print.
-
-I'll cut a new RFC which includes the debug print so folk can try it
-out.
+> mv88e6xxx has had support for this for a long time with its "SPEED_MAX"
+> thing, which I recently reworked to make use of the mac_capabilities in
+> preparation to solving this more fully.
+> 
+> This series is an experiment to solve this properly, and it does this
+> in two steps.
+> 
+> The first step consists of the first two patches. Phylink needs to
+> know the PHY interface mode that is being used so it can (a) pass the
+> right mode into the MAC/PCS etc and (b) know the properties of the
+> link and therefore which speeds can be supported across it.
+> 
+> In order to achieve this, the DSA phylink_get_caps() method has an
+> extra argument added to it so that DSA drivers can report the
+> interface mode that they will be using for this port back to the core
+> DSA code, thereby allowing phylink to be initialised with the correct
+> interface mode.
+> 
+> Note that this can only be used for CPU and DSA ports as "user" ports
+> need a different behaviour - they rely on getting the interface mode
+> from phylib, which will only happen if phylink is initialised with
+> PHY_INTERFACE_MODE_NA. Unfortunately, changing this behaviour is likely
+> to cause widespread regressions.
+> 
+> Obvious questions:
+> 1. Should phylink_get_caps() be augmented in this way, or should it be
+>    a separate method?
+> 
+> 2. DSA has traditionally used "interface mode for the maximum supported
+>    speed on this port" where the interface mode is programmable (via
+>    its internal port_max_speed_mode() method) but this is only present
+>    for a few of the sub-drivers. Is reporting the current interface
+>    mode correct where this method is not implemented?
+> 
+> The second step is to introduce a function that allows phylink to be
+> reconfigured after creation time to operate at max-speed fixed-link
+> mode for the PHY interface mode, also using the MAC capabilities to
+> determine the speed and duplex mode we should be using.
+> 
+> Obvious questions:
+> 1. Should we be allowing half-duplex for this?
+> 2. If we do allow half-duplex, should we prefer fastest speed over
+>    duplex setting, or should we prefer fastest full-duplex speed
+>    over any half-duplex?
+> 3. How do we sanely switch DSA from its current behaviour to always
+>    using phylink for these ports without breakage - this is the
+>    difficult one, because it's not obvious which drivers have been
+>    coded to either work around this quirk of the DSA implementation.
+>    For example, if we start forcing the link down before calling
+>    dsa_port_phylink_create(), and we then fail to set max-fixed-link,
+>    then the CPU/DSA port is going to fail, and we're going to have
+>    lots of regressions.
+> 
+> Please look at the patches and make suggestions on how we can proceed
+> to clean up this quirk of DSA.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
