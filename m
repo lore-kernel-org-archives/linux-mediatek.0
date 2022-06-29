@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B453C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:09:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D83C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 12:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ukTu6MJ3bj33YMWpWKj7wdJBBihYnF+q/gqNaxzzG7Y=; b=Msk8kKkLt5c/aTou89hfrDEovH
-	D+BPx3BWss8Z+CTcqX5Dos1YkW8ryYC+tXNDrlZRwoTutzsM53gmjMz0CiA7kUbe06PldskjAsgaX
-	acbJ5k99JpHCS80NN9u1FFixseePh3Lbwcm1vlvKp2lCYYb6vyv33MCcAXzthEnsigp2DGfGZNFve
-	H+PkH8773c8E9BcqwtnrOgAi+gp3WqtS9HXw/TFAKjMqXuy5+g2R3X5bY8BWpjfbFqpOzVPSCloxk
-	chdw9MItBfxE/hbGI8iFckB8CvWyEMfiNf/V2Et+XabQ2NG+8pMiZfuWpeI30CFBdD8KNsLxjvutv
-	UjUrMRfg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7Nlg+/A/2lG7nPrwCN9OcJJY+B+CLo/eWqxjs4IwRvk=; b=IY4Yi4E/jo47PPt92aBgzGcwUd
+	6+rJCjC8z0+z6E6X1Akj+T9CJx9LqCeJGv4rlx/N5X8pp102ObPKyJFdm0NLRiMNxrTo1Wp03NveX
+	OaMIBjDPzL3sSDyhllngyGylR6YRi3LleOWE0vz51JVCFEzdEA0wPWujd1S2toT5finqr9gKpsZmS
+	HQAHHZx5d093E6qxFLFruEkRxJXoSKn7tbqvCQvoVQ6wZZ3WgTiKWASkuislCOiaxN+tGRvRMn6+S
+	MjXR8c5gJV6R+QsR63VS631A7sOO6c6yBHjpIJes8skh6suBTAQXCCMf0sauvLth7YYEfVvbL3qi3
+	4cUCSGpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6WV5-00BgMm-9O; Wed, 29 Jun 2022 12:08:55 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1o6WYa-00BhZr-WF; Wed, 29 Jun 2022 12:12:33 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6WUV-00Bg7B-44; Wed, 29 Jun 2022 12:08:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1656504487; cv=none; 
+	id 1o6WYN-00BhUV-Sq; Wed, 29 Jun 2022 12:12:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1656504731; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=bua+jMImc+TrGG0k/DW7Zq89Q5FV+VyVHYSwXyKURgqVoSC0qaDuogK7LVxo78yA54N13uUsblx2Ut+N9SKkkvmdfU2NjVtmP1y3QZM2BfXyyFrRlKAUQ+m6CjRD22o/kt2cv3V9u7fdYOj+NpeR2qNouqDjjXLPOVrBe9XQqhI=
+	b=PGK/k9DeAdxOtwaTL/Ud+3uQ4Q+GGYlfiEYU7tvaIdpH0HgYd18h/U4BPUy2a1X/BTvVX+0Re+6i0KL8M+mptABBTC9TAKqGIEa88fdcxgSVd82I+693RbzLHKmur39aNxfYu5LBNu922V+EkH5cP9FGvnee6CObGNPVMwYPksQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1656504487; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=ukTu6MJ3bj33YMWpWKj7wdJBBihYnF+q/gqNaxzzG7Y=; 
-	b=MMNhmEY57rRPUGHyB/05wbKu1+gJbL33o4erNLvIPQDHvKaE8YycxN0vR5QFu6HVY3GKkJuJBNSyELEUHTkE3f+y9AV0ABmSjAmX9COQ3iqCPMSmUPWWEs7jfW9VrmuaTTs8qTph3KEF4bEmNfN7PmH9W0tvk2rhGpZ9uBKW1Ws=
+	t=1656504731; h=Content-Type:Content-Transfer-Encoding:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=7Nlg+/A/2lG7nPrwCN9OcJJY+B+CLo/eWqxjs4IwRvk=; 
+	b=bLWrd8ZFSymnFvnBMogKwxmaM2t90gywSpTObFBzNgJlHdmUOqSc1srfQkKZA5nEHuHkc/ssjNXcxVuS59QaWr9DXToMvQ565+mPPhApYS1YwHFdAMdpM8ziz9KEY15TrZp6F4FCpK5PQM52jiLYAa+4+Ky18kGSDkOJ2W475no=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1656504487;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1656504731;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=ukTu6MJ3bj33YMWpWKj7wdJBBihYnF+q/gqNaxzzG7Y=;
-	b=ghUSA36wtapzBy8Ahob4QwwwNxMkjs5/rn9kxrFi/6Mqubh+NUZCvIkQ0Gf1kq7B
-	N4RRX9/wPr6mvTrhXSQO0jgRxIVdHIhvu3vJdrTvPbLiDLK34BOs41HOOelmcojyHJ3
-	MncuyWPK7yoNTLtDf7zfVRTpYAHsllnL5zvd3byE=
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+	bh=7Nlg+/A/2lG7nPrwCN9OcJJY+B+CLo/eWqxjs4IwRvk=;
+	b=SO/kyUlNlVYkl9JJB8ag+o5yHnDYD5i65OTv9i3S/z2DTnU5wCe6nAsOrlXV8Mlq
+	J2tHohR+IX4gQWKvIgKjPiXUkUDNVTQg6xAuLaW/Z3XZLRQJuhGl7KHVonRv0L5qHPe
+	d6L/blNyZCKH+dL14HyDzVRYooB3QlxJugCC4dMU=
 Received: from [10.10.10.122] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1656504486014929.4381961201594; Wed, 29 Jun 2022 05:08:06 -0700 (PDT)
-Message-ID: <3394a6fa-dc55-bf5d-c06e-ddf70d95c26b@arinc9.com>
-Date: Wed, 29 Jun 2022 15:08:01 +0300
+	with SMTPS id 1656504730341712.7546788738672; Wed, 29 Jun 2022 05:12:10 -0700 (PDT)
+Message-ID: <e20a43f7-ed3e-83ef-a863-43cb11535ec2@arinc9.com>
+Date: Wed, 29 Jun 2022 15:12:05 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [PATCH 1/2] MIPS: dts: correct gpio-keys names and properties
+Subject: Re: [PATCH 2/2] MIPS: dts: align gpio-key node names with dtschema
 Content-Language: en-US
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Paul Cercueil <paul@crapouillou.net>
-Cc: Rahul Bedarkar <rahulbedarkar89@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rahul Bedarkar <rahulbedarkar89@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Paul Cercueil <paul@crapouillou.net>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Sergio Paracuellos <sergio.paracuellos@gmail.com>,
  linux-mips@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20220624170740.66271-1-krzysztof.kozlowski@linaro.org>
- <ZVVZDR.R2QT2GMTT9WS1@crapouillou.net>
- <89b6a40b-eb6b-eba5-78c3-6b5f35bed717@linaro.org>
- <EXU1ER.FH53VZXY9EYP3@crapouillou.net>
- <cc81b6ae-c1c1-78ec-b4e2-e165dcd5015b@linaro.org>
+ <20220624170740.66271-2-krzysztof.kozlowski@linaro.org>
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <cc81b6ae-c1c1-78ec-b4e2-e165dcd5015b@linaro.org>
+In-Reply-To: <20220624170740.66271-2-krzysztof.kozlowski@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_050819_244697_DFA379B2 
-X-CRM114-Status: GOOD (  21.28  )
+X-CRM114-CacheID: sfid-20220629_051219_996560_EC8DB0D4 
+X-CRM114-Status: UNSURE (   6.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,171 +87,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25.06.2022 23:25, Krzysztof Kozlowski wrote:
-> On 25/06/2022 22:15, Paul Cercueil wrote:
->> Hi Krzysztof,
->>
->> Le sam., juin 25 2022 at 21:58:08 +0200, Krzysztof Kozlowski
->> <krzysztof.kozlowski@linaro.org> a écrit :
->>> On 24/06/2022 20:40, Paul Cercueil wrote:
->>>>   Hi Krzysztof,
->>>>
->>>>   Le ven., juin 24 2022 at 19:07:39 +0200, Krzysztof Kozlowski
->>>>   <krzysztof.kozlowski@linaro.org> a écrit :
->>>>>   gpio-keys children do not use unit addresses.
->>>>>
->>>>>   Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->>>>>
->>>>>   ---
->>>>>
->>>>>   See:
->>>>>   
->>>>> https://lore.kernel.org/all/20220616005224.18391-1-krzysztof.kozlowski@linaro.org/
->>>>>   ---
->>>>>    arch/mips/boot/dts/img/pistachio_marduk.dts   |  4 +--
->>>>>    arch/mips/boot/dts/ingenic/gcw0.dts           | 31
->>>>>   +++++++++----------
->>>>>    arch/mips/boot/dts/ingenic/rs90.dts           | 18 +++++------
->>>>>    arch/mips/boot/dts/pic32/pic32mzda_sk.dts     |  9 ++----
->>>>>    .../boot/dts/qca/ar9132_tl_wr1043nd_v1.dts    |  6 ++--
->>>>>    arch/mips/boot/dts/qca/ar9331_dpt_module.dts  |  4 +--
->>>>>    .../mips/boot/dts/qca/ar9331_dragino_ms14.dts |  6 ++--
->>>>>    arch/mips/boot/dts/qca/ar9331_omega.dts       |  4 +--
->>>>>    .../qca/ar9331_openembed_som9331_board.dts    |  4 +--
->>>>>    arch/mips/boot/dts/qca/ar9331_tl_mr3020.dts   |  8 ++---
->>>>>    10 files changed, 37 insertions(+), 57 deletions(-)
->>>>>
->>>>>   diff --git a/arch/mips/boot/dts/img/pistachio_marduk.dts
->>>>>   b/arch/mips/boot/dts/img/pistachio_marduk.dts
->>>>>   index a8708783f04b..a8da2f992b1a 100644
->>>>>   --- a/arch/mips/boot/dts/img/pistachio_marduk.dts
->>>>>   +++ b/arch/mips/boot/dts/img/pistachio_marduk.dts
->>>>>   @@ -59,12 +59,12 @@ led-1 {
->>>>>
->>>>>    	keys {
->>>>>    		compatible = "gpio-keys";
->>>>>   -		button@1 {
->>>>>   +		button-1 {
->>>>>    			label = "Button 1";
->>>>>    			linux,code = <0x101>; /* BTN_1 */
->>>>>    			gpios = <&gpio3 6 GPIO_ACTIVE_LOW>;
->>>>>    		};
->>>>>   -		button@2 {
->>>>>   +		button-2 {
->>>>>    			label = "Button 2";
->>>>>    			linux,code = <0x102>; /* BTN_2 */
->>>>>    			gpios = <&gpio2 14 GPIO_ACTIVE_LOW>;
->>>>>   diff --git a/arch/mips/boot/dts/ingenic/gcw0.dts
->>>>>   b/arch/mips/boot/dts/ingenic/gcw0.dts
->>>>>   index 4abb0318416c..5d33f26fd28c 100644
->>>>>   --- a/arch/mips/boot/dts/ingenic/gcw0.dts
->>>>>   +++ b/arch/mips/boot/dts/ingenic/gcw0.dts
->>>>>   @@ -130,89 +130,86 @@ backlight: backlight {
->>>>>
->>>>>    	gpio-keys {
->>>>>    		compatible = "gpio-keys";
->>>>>   -		#address-cells = <1>;
->>>>>   -		#size-cells = <0>;
->>>>
->>>>   Are you sure you can remove these?
->>>
->>> Yes, from DT spec point of view, DT bindings and Linux implementation.
->>> However this particular change was not tested, except building.
->>>
->>>>
->>>>   Looking at paragraph 2.3.5 of the DT spec, I would think they have
->>>> to
->>>>   stay (although with #address-cells = <0>).
->>>
->>> The paragraph 2.3.5 says nothing about regular properties (which can
->>> be
->>> also child nodes). It says about children of a bus, right? It's not
->>> related here, it's not a bus.
->>
->> I quote:
->> "A DTSpec-compliant boot program shall supply #address-cells and
->> #size-cells on all nodes that have children."
+On 24.06.2022 20:07, Krzysztof Kozlowski wrote:
+> The node names should be generic and DT schema expects certain pattern
+> (e.g. with key/button/switch).
 > 
-> And paragraph 2.2.3 says:
-> "A unit address may be omitted if the full path to the node is unambiguous."
-> 
-> You have address/size cells for nodes with children having unit
-> addresses. If they don't unit addresses, you don't add address/size
-> cells (with some exceptions).
-> 
-> The paragraph 2.3.5 mentions "child device nodes" and these properties
-> are not devices, although I agree that DT spec here is actually confusing.
-> 
->>
->> The gpio-keys node has children nodes, therefore it should have
->> #address-cells and #size-cells, there's no room for interpretation here.
->>
->>> Second, why exactly this one gpio-keys node is different than all
->>> other
->>> gpio-keys everywhere and than bindings? Why this one has to be
->>> incompatible/wrong according to bindings (which do not allow
->>> address-cells and nodes with unit addresses)?
->>
->> Nothing is different. I'm just stating that your proposed fix is
->> invalid if we want to enforce compliance with the DT spec.
-> 
-> In such case, we rather enforce the compliance with the bindings.
-> 
-> Best regards,
-> Krzysztof
-
-I recall them to be unnecessary as well. I have a patch of mine applied 
-identical to this:
-
-https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?id=8c9f00d4b05134164e462f27b21c8295255ffa64
-
-Also, I don't see any warnings with this patch applied:
-
-$ ARCH=mips CROSS_COMPILE=mipsel-linux-gnu- make clean dtbs -j$(nproc)
-   SYNC    include/config/auto.conf.cmd
-   HOSTCC  scripts/basic/fixdep
-   HOSTCC  scripts/kconfig/conf.o
-   HOSTCC  scripts/kconfig/confdata.o
-   HOSTCC  scripts/kconfig/expr.o
-   LEX     scripts/kconfig/lexer.lex.c
-   YACC    scripts/kconfig/parser.tab.[ch]
-   HOSTCC  scripts/kconfig/menu.o
-   HOSTCC  scripts/kconfig/preprocess.o
-   HOSTCC  scripts/kconfig/symbol.o
-   HOSTCC  scripts/kconfig/util.o
-   HOSTCC  scripts/kconfig/lexer.lex.o
-   HOSTCC  scripts/kconfig/parser.tab.o
-   HOSTLD  scripts/kconfig/conf
-   HOSTCC  scripts/dtc/dtc.o
-   HOSTCC  scripts/dtc/flattree.o
-   HOSTCC  scripts/dtc/fstree.o
-   HOSTCC  scripts/dtc/data.o
-   HOSTCC  scripts/dtc/livetree.o
-   HOSTCC  scripts/dtc/treesource.o
-   HOSTCC  scripts/dtc/srcpos.o
-   HOSTCC  scripts/dtc/checks.o
-   HOSTCC  scripts/dtc/util.o
-   LEX     scripts/dtc/dtc-lexer.lex.c
-   YACC    scripts/dtc/dtc-parser.tab.[ch]
-   HOSTCC  scripts/dtc/libfdt/fdt.o
-   HOSTCC  scripts/dtc/libfdt/fdt_ro.o
-   HOSTCC  scripts/dtc/libfdt/fdt_wip.o
-   HOSTCC  scripts/dtc/libfdt/fdt_sw.o
-   HOSTCC  scripts/dtc/libfdt/fdt_rw.o
-   HOSTCC  scripts/dtc/libfdt/fdt_strerror.o
-   HOSTCC  scripts/dtc/libfdt/fdt_empty_tree.o
-   HOSTCC  scripts/dtc/libfdt/fdt_addresses.o
-   HOSTCC  scripts/dtc/libfdt/fdt_overlay.o
-   HOSTCC  scripts/dtc/fdtoverlay.o
-   HOSTCC  scripts/dtc/dtc-lexer.lex.o
-   HOSTCC  scripts/dtc/dtc-parser.tab.o
-   HOSTLD  scripts/dtc/fdtoverlay
-   HOSTLD  scripts/dtc/dtc
-   DTC     arch/mips/boot/dts/ingenic/gcw0.dtb
-
-Have my acked-by.
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
+Cheers.
 Arınç
 
