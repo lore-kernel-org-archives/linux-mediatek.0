@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47937C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 297B0C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+4Sjt2K9FqbtOAKp1csCu0Oo/PQS/Y32V6GmBniW5fo=; b=PT1rN4YuYwiFp3sspUyg51oF73
-	tnUZkOyEDXP7db1hSE08FPJvkRC7Et63NoRcAKX0fpTUxgqPLQ5oXDEFX84MbeKEKMZ41YaAWgXT+
-	cYj+Srzi/Bcp2QaogKopAVKeXmLaOJJWSniHuhNMmSQJtfCSltwpaaoj452dCooJdP5eUQbCmwPVU
-	jq9RkbcS6VF2dzsiWpgYq3vVk2O0/MrbGgB9jaYKfSTtBaNsrGpdX4g+plRTVsbTuxHctRY8JeRsT
-	uEQFZQMNrvmfCPIE9zowzPPzfHwddg4BRpDSx5cGZ8YxpWMFSa13xvBlTN7UFQHN9APpxB/8TOrVe
-	0uBh/9Sw==;
+	bh=QHIhjtiHzQWzav1Rzj87gVh2UGLcb2euBMKf+Ai9Bno=; b=IMAlyWGrqQU672oL9hY7HgdY3x
+	QNz/lalHCkPz9D1cLtTRlI5C45442JvyeU3gRdeYah7CD5dLYU8hF67bb533+rULchW/RkdOUPI5o
+	2+QqVma2vvlQn6VTZnov6Wn5DSv3F0r2cEvmVQdVcj3HJOKOIu54Uyeb6KjypEEn6GMUuMmAgN7q8
+	3Jsh6BMJY1ZJQVpk/lvm6Xgx5dTNADhASLjZpgSZND3UV8dSBKLhA6W57Tg3gtKwIHeTERHSXStri
+	N+IUvQ2rDANrQQbQEFd4IdMvyIUcuDWAuI3sjQxay9xZIoNDkCg6AWGFjbksMdDVkR7nBpMXb0fvo
+	OGAhagpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6aEo-00Csw2-U8; Wed, 29 Jun 2022 16:08:22 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o6aFV-00CtME-Kx; Wed, 29 Jun 2022 16:09:05 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6a77-00CoeD-CU; Wed, 29 Jun 2022 16:00:26 +0000
+	id 1o6a78-00Cof2-Qu; Wed, 29 Jun 2022 16:00:28 +0000
 Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 057AA6601A28;
-	Wed, 29 Jun 2022 17:00:22 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 79AB36601956;
+	Wed, 29 Jun 2022 17:00:24 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656518424;
-	bh=gqdq1+xz9/LOr4x7zjy0Q3+2j4Bwrp8jWZIH9ix1isE=;
+	s=mail; t=1656518425;
+	bh=SNen9swPBsEHXS8P51GX0gG1JD4BO4FIhFQGHBNVKtk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nJB2DZI25Uezk14CTkd4yAkAz0+oE4+EXH2g0f59vZgs5JIdEd1epUZS0U8pJc0AI
-	 65y+l2bKNEx8qd40agBs44u5rvqSjq2Z5h84khUSJUkp/SrPpIYj51E7xyiJXu6Bmn
-	 LPqkuuRFNlIYs7T3ArzN/CEN692EKy4FxevXo5v6W5fgDlBIf2f6bIQMYRamuA3wFK
-	 qDgJ0YqwGpmz34uNGYM1Y9wXrDKAthDGYvstTNdmxhQ2WMVcqiU6x6cyfwdvfK20KP
-	 9NEckruvJi+YNtZNexa4Ka5DpjhK9fd92cEu9ieT/9eKMdxe1xssJBYERbBlpes0xU
-	 At69IliUbtFgg==
+	b=laJDhYt22pwi+Vo2pepUI0VbSlrpfKVE9+99pydYxucpyavxNZnYi1Nl2ACq9+HB+
+	 LRthalCQTGrpqz4vz1LhnohwytS9H65MFhfJWynYGPl8JitDy6N6nMeqK/GgQci/d7
+	 9+NHy6TnS3j9al0+kJPxKIYDf7+hTqttqLdBln177AoCoN9wFeyOOW4qL9SIkHd9l+
+	 pa4IARvJxESVRcwEezNEZU+E6cx+IVHfxdxidjiNXV4cTOcIvwnaKreQbN/i4QJ15q
+	 NQqp/zGUiTGU4qhvr5Ls80JcQ95czf+deolJwGbmYQnRyxU37zRp+lZ7ZpZgAWs7jy
+	 cJ4cJHL66Yxcg==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,9 +53,9 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 14/19] arm64: dts: mediatek: asurada: Enable PCIe and add WiFi
-Date: Wed, 29 Jun 2022 11:59:51 -0400
-Message-Id: <20220629155956.1138955-15-nfraprado@collabora.com>
+Subject: [PATCH v4 15/19] arm64: dts: mediatek: asurada: Add MT6359 PMIC
+Date: Wed, 29 Jun 2022 11:59:52 -0400
+Message-Id: <20220629155956.1138955-16-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220629155956.1138955-1-nfraprado@collabora.com>
 References: <20220629155956.1138955-1-nfraprado@collabora.com>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_090025_615509_C3875221 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20220629_090027_081034_AB7E28A3 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,8 +79,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable MT8192's PCIe controller and add support for the MT7921e WiFi
-card that is present on that bus for the Asurada platform.
+MT6359 is the primary PMIC present on the Asurada platform. Include its
+dtsi and configure properties specific for the platform.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -88,123 +88,69 @@ Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
 ---
 
-(no changes since v3)
-
-Changes in v3:
-- Renamed regulator node to be generic
+(no changes since v2)
 
 Changes in v2:
 - Added this patch
 
- .../boot/dts/mediatek/mt8192-asurada.dtsi     | 74 +++++++++++++++++++
- 1 file changed, 74 insertions(+)
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 30 +++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 69bb43f7b346..e59c178d3d26 100644
+index e59c178d3d26..31c9d1f8c80a 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -66,6 +66,19 @@ pp3300_u: regulator-3v3-u {
- 		vin-supply = <&pp3300_g>;
- 	};
+@@ -5,6 +5,7 @@
+  */
+ /dts-v1/;
+ #include "mt8192.dtsi"
++#include "mt6359.dtsi"
+ #include <dt-bindings/gpio/gpio.h>
  
-+	pp3300_wlan: regulator-3v3-wlan {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp3300_wlan";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pp3300_wlan_pins>;
-+		enable-active-high;
-+		gpio = <&pio 143 GPIO_ACTIVE_HIGH>;
-+	};
-+
- 	/* system wide switching 5.0V power rail */
- 	pp5000_a: regulator-5v0-a {
- 		compatible = "regulator-fixed";
-@@ -84,6 +97,17 @@ ppvar_sys: regulator-var-sys {
- 		regulator-always-on;
- 		regulator-boot-on;
- 	};
-+
-+	reserved_memory: reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		wifi_restricted_dma_region: wifi@c0000000 {
-+			compatible = "restricted-dma-pool";
-+			reg = <0 0xc0000000 0 0x4000000>;
-+		};
-+	};
- };
- 
- &i2c0 {
-@@ -144,6 +168,28 @@ &i2c7 {
+ / {
+@@ -168,6 +169,31 @@ &i2c7 {
  	pinctrl-0 = <&i2c7_pins>;
  };
  
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_pins>;
-+
-+	pcie0: pcie@0,0 {
-+		device_type = "pci";
-+		reg = <0x0000 0 0 0 0>;
-+		num-lanes = <1>;
-+		bus-range = <0x1 0x1>;
-+
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		wifi: wifi@0,0 {
-+			reg = <0x10000 0 0 0 0x100000>,
-+			      <0x10000 0 0x100000 0 0x100000>;
-+			memory-region = <&wifi_restricted_dma_region>;
-+		};
-+	};
++/* for CORE */
++&mt6359_vgpu11_buck_reg {
++	regulator-always-on;
 +};
 +
- &pio {
- 	/* 220 lines */
- 	gpio-line-names = "I2S_DP_LRCK",
-@@ -430,6 +476,34 @@ pins-bus {
- 		};
++&mt6359_vgpu11_sshub_buck_reg {
++	regulator-always-on;
++	regulator-min-microvolt = <575000>;
++	regulator-max-microvolt = <575000>;
++};
++
++&mt6359_vrf12_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359_vufs_ldo_reg {
++	regulator-always-on;
++};
++
++&mt6359codec {
++	mediatek,dmic-mode = <1>; /* one-wire */
++	mediatek,mic-type-0 = <2>; /* DMIC */
++	mediatek,mic-type-2 = <2>; /* DMIC */
++};
++
+ &pcie {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie_pins>;
+@@ -555,6 +581,10 @@ pins-report-sw {
  	};
+ };
  
-+	pcie_pins: pcie-default-pins {
-+		pins-pcie-wake {
-+			pinmux = <PINMUX_GPIO63__FUNC_PCIE_WAKE_N>;
-+			bias-pull-up;
-+		};
++&pmic {
++	interrupts-extended = <&pio 214 IRQ_TYPE_LEVEL_HIGH>;
++};
 +
-+		pins-pcie-pereset {
-+			pinmux = <PINMUX_GPIO64__FUNC_PCIE_PERESET_N>;
-+		};
-+
-+		pins-pcie-clkreq {
-+			pinmux = <PINMUX_GPIO65__FUNC_PCIE_CLKREQ_N>;
-+			bias-pull-up;
-+		};
-+
-+		pins-wifi-kill {
-+			pinmux = <PINMUX_GPIO145__FUNC_GPIO145>; /* WIFI_KILL_L */
-+			output-high;
-+		};
-+	};
-+
-+	pp3300_wlan_pins: pp3300-wlan-pins {
-+		pins-pcie-en-pp3300-wlan {
-+			pinmux = <PINMUX_GPIO143__FUNC_GPIO143>;
-+			output-high;
-+		};
-+	};
-+
- 	spi1_pins: spi1-default-pins {
- 		pins-cs-mosi-clk {
- 			pinmux = <PINMUX_GPIO157__FUNC_SPI1_A_CSB>,
+ &spi1 {
+ 	status = "okay";
+ 
 -- 
 2.36.1
 
