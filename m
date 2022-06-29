@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6A9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 08:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4540DC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 08:25:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=06Bco6uw9EGg4i+7K0hUK4MXKQJ4zPo8Mll8YkJMjvg=; b=ttVUFdd5pYFzt91ih0Zwyk8rkB
-	v/TyHqQHZ+uMbKadVnZlhzijCOsVeQcIQkI2YpmcHr7fSXwF4yJydPl1z5VU87lbtOPNDLBbk9EPv
-	/WENaPbcz5HsNC8zfWLERiGYNazOxCP4C2xwVgUEYg2VIdxurA0q9X/bZa3llt0roy1h7XMFyWNmg
-	hl9pzjWshTqLFHtomFd2+6gOLEZUy71GQUQSpOMMJscQPoIxWh8nnsMN7M+2r6LWR+o0ntSeP9NhE
-	KdF2XSGaQCyEnwBwGZg32tj6fvJQCovyMzbVK/Sr2f16t6zzwpXp4X1Pt3kGrO0fkFrOlehafQu3k
-	oQmWuETQ==;
+	bh=nm/GJJ9Czjqqoc1hhTZQDgESR07NX7R3YwJjR9HlOKY=; b=S2ctBy9c3yIkETiGqKBjl/l76m
+	u8d81vp8HCXqTSfYEhp9qyarjDm+XjSPGYOTnNxytoHSjkWktoNmFMQM3JCdOiCd+DZmSVwehtdgh
+	VpcelAXF+kdO7Tax0e6HBCClfRHiEIH6rhH0KBb4sEXp+C9b5YHYVk0zlEWO+lG+G4/A2fEYDI628
+	jdUrJx6t9YD860yNYRIae/nQdTlDsLBOg1a9RCPKyvC3SFyPKcjfMdBWne3CgBUreoiD7JgbjyDac
+	As/QlXwwVbw5KdBQ+nQPTZf1g1Xcyaj6V2KBoS/5BJvngcDRpi3HSWHq56ScArPpTdYgXV0m+7VY7
+	8gAeeJcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6SzF-00AMpy-3G; Wed, 29 Jun 2022 08:23:49 +0000
+	id 1o6T0z-00ANjr-Hz; Wed, 29 Jun 2022 08:25:37 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Sz3-00AMli-OJ; Wed, 29 Jun 2022 08:23:39 +0000
+	id 1o6T0l-00ANcV-Us; Wed, 29 Jun 2022 08:25:25 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9ADB066018F6;
-	Wed, 29 Jun 2022 09:23:35 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4CF0666018F4;
+	Wed, 29 Jun 2022 09:25:22 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656491016;
-	bh=Tlj2vF7pAPWGRIwrz16g80+PcSeGWCYrUwBN2Zp9Gqg=;
+	s=mail; t=1656491122;
+	bh=0EEMo713xuhiHvrr74nGxbYhhEiW7g5+BgdFVNHIrR8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FdcAaRzQZY9/TmuD5FpfBRWinXwWCHKIaEFfjzsgv0aXujyD0MAKsrlAn423LFy0/
-	 MeZje1XipfLs3Wlm/Z8FQ8Z9y17k2yYHH+pxqjppBZ/cpWgfd6158UDN4LdaMP7ZU3
-	 jKaSzJF1+FD7GTUy9S/ZgASDVdhDyFHLB0eLipISgn8XlVfu3x1nOiz/caleNXhnLi
-	 Z4WaIk3y8TyEC+OfSsjTDlKnBEckwAysKgztjRX/Sn1/HsN51MYGL3B7lm1ROvo8ph
-	 S8z73nEeVt0lEze3BLvOjGNhYFMMFPbe28VyUKNOdMgyggixXmkSetwv7qvjeob5a+
-	 yrRiV6PiwQ4rQ==
-Message-ID: <72d87ff5-4af2-c186-3112-bde153a6a4c5@collabora.com>
-Date: Wed, 29 Jun 2022 10:23:32 +0200
+	b=jKXRgLt656eTCfQq+Ge4efTa5Ejo/MfX5HM57WKCAjr4Pmw2RD1GATn2B89wVW7S/
+	 z2Q1Xp21o/eaVOC9jU2TDQWxa1hmRoIEy7Di7DHrYQ+pFtLMJQygDA0538Qvnz/Lmh
+	 Ewz1phtFGFO+WdgNmh6C/+0vclKcVqPc6YshCQqxQsmcz9KyxL5h25eqVdIR8yo9Lj
+	 J+GashTxqS5bmzrz3jby0xCVAFM0eR4M7ERFj02iDlUX8qC7CmMSVjf1BujyndIx/c
+	 G9Jl2bzwKDfI6+BxsO0gsxtmzSf4PzhvX/MB75GwtPPvfiNd+SctVUNXk3HFrwTdsO
+	 g+V1i0t498vIQ==
+Message-ID: <cc55775b-5e9e-ac92-581a-ff8defdf11f8@collabora.com>
+Date: Wed, 29 Jun 2022 10:25:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 2/2] regulator: mt6370: Use the correct header for
- platform_device_id
+Subject: Re: [PATCH 3/8] watchdog: mtk_wdt: Remove #ifdef guards for PM
+ related functions
 Content-Language: en-US
-To: cy_huang <u0084500@gmail.com>, broonie@kernel.org
-Cc: lgirdwood@gmail.com, matthias.bgg@gmail.com, chiaen_wu@richtek.com,
- alice_chen@richtek.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- ChiYuan Huang <cy_huang@richtek.com>
-References: <1656466861-7737-1-git-send-email-u0084500@gmail.com>
- <1656466861-7737-2-git-send-email-u0084500@gmail.com>
+To: Paul Cercueil <paul@crapouillou.net>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>
+Cc: linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220628193449.160585-1-paul@crapouillou.net>
+ <20220628193449.160585-4-paul@crapouillou.net>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1656466861-7737-2-git-send-email-u0084500@gmail.com>
+In-Reply-To: <20220628193449.160585-4-paul@crapouillou.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_012337_974169_9EEE1AFE 
-X-CRM114-Status: UNSURE (   8.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220629_012524_178641_AD447992 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,15 +77,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/06/22 03:41, cy_huang ha scritto:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+Il 28/06/22 21:34, Paul Cercueil ha scritto:
+> Use the new DEFINE_SIMPLE_DEV_PM_OPS() and pm_sleep_ptr() macros to
+> handle the .suspend/.resume callbacks.
 > 
-> 'platform_device_id' struct is defined in 'mod_devicetable.h'.
-> Even 'of.h' also includes this header usage. The 'of.h' cannot be removed
-> due to 'of_match_ptr' function.
+> These macros allow the suspend and resume functions to be automatically
+> dropped by the compiler when CONFIG_SUSPEND is disabled, without having
+> to use #ifdef guards. Not using #ifdef guards means that the code is
+> always compiled independently of any Kconfig option, and thanks to that
+> bugs and regressions are easier to catch.
 > 
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> Signed-off-by: Paul Cercueil <paul@crapouillou.net>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
