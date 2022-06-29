@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4680C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 02:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F234C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 02:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XXXG6QC2SYK1S+qWKr5ZLbN3JggH9TySZLUEdUHPY8E=; b=ljTyaQiZasBWQHp2N//0y21wA/
-	dA69gAPv88JPYSbgqjZ0XtBiS1uEhz627X19iiWXTseuJh7sVomiYeJDAAhVeKpJPt5CE5Fn6XkAA
-	dXXd9Fod88m9nTJSNk+anyeEMs2CfpVtqXM02uLUASnwNsAvQSJoxVuNnqjNsLTgQxDLqCi8KEwGP
-	vLwrNtVLJnToFR/N0W0u/9wKIJNU7aA20YAAb5GE/iisNRc0vE5sgVSwbHo1f9c2zg62dP9+C8gYw
-	vr6JT2kiD/SV6p2QRPwU0Ct7/Uu+E7RAnmstjgNZh/Q8JrwCcbUTG/CZ0zjnDPQUE9GJrItIBnv4l
-	/cUI0ubA==;
+	bh=PuPsrzPkRVIKqq14stKOaxyIJ2gGE+83nWHORquYvn4=; b=br7QD05lStQbFm5mpcdrUBoifA
+	1uGnqWqh9Mew1KfHWjtaNn8VBfdySJw6kwqrJUpvR7GKQqSbwtIDzLAeEvOAGWTYEB+jUpbYq+JOc
+	9O5vqXlnVT4Jo18PZiO1PW+LqvbNmAD5141TzqqzmObwGV2HxfaBoYlq/looxKNe54euNXdNklNzZ
+	60RzShbtPjhjq7Q713tFogQMtJ0hXLHfrTlvdERwrTvGo4KPWgSOViE7fke2idEPBPjIYPhw1btLT
+	jYMKwlzCsb9d5HZ4/hJAMDK2yaTNSaDuZ4Dp8VhFNjviI3Twj/NxF7+e6xmSDx3s3g6NHYvYeY3iV
+	IL7l70uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6NtL-0099CN-Mh; Wed, 29 Jun 2022 02:57:23 +0000
+	id 1o6Nte-0099NT-BP; Wed, 29 Jun 2022 02:57:42 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Nsw-0098zf-N1; Wed, 29 Jun 2022 02:57:01 +0000
-X-UUID: d1b1fd0e31954b33bb83d60dbe833ea2-20220628
+	id 1o6Nsw-00990n-N8; Wed, 29 Jun 2022 02:57:02 +0000
+X-UUID: 0c73063cf7ab496eb778c0e5b062b648-20220628
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:40937067-cc2e-41af-9417-272c41127614,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.7,REQID:4b7c52f2-f2cd-4d7a-8665-0eafed7f2090,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:-5
-X-CID-META: VersionHash:87442a2,CLOUDID:59161ad6-5d6d-4eaf-a635-828a3ee48b7c,C
+X-CID-META: VersionHash:87442a2,CLOUDID:83820a86-57f0-47ca-ba27-fe8c57fbf305,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: d1b1fd0e31954b33bb83d60dbe833ea2-20220628
+X-UUID: 0c73063cf7ab496eb778c0e5b062b648-20220628
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <biao.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 430614320; Tue, 28 Jun 2022 19:52:24 -0700
+	with ESMTP id 85814994; Tue, 28 Jun 2022 19:52:22 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 29 Jun 2022 10:51:26 +0800
+ Wed, 29 Jun 2022 10:51:18 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 29 Jun 2022 10:51:25 +0800
+ Transport; Wed, 29 Jun 2022 10:51:16 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: David Miller <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, "Rob
  Herring" <robh+dt@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, "Fabien
@@ -55,9 +55,9 @@ CC: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	Biao Huang <biao.huang@mediatek.com>, Yinghua Pan
 	<ot_yinghua.pan@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: [PATCH net-next v4 08/10] net: ethernet: mtk-star-emac: add support for MII interface
-Date: Wed, 29 Jun 2022 10:51:07 +0800
-Message-ID: <20220629025109.21933-9-biao.huang@mediatek.com>
+Subject: [PATCH net-next v4 03/10] net: ethernet: mtk-star-emac: add support for MT8365 SoC
+Date: Wed, 29 Jun 2022 10:51:02 +0800
+Message-ID: <20220629025109.21933-4-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220629025109.21933-1-biao.huang@mediatek.com>
 References: <20220629025109.21933-1-biao.huang@mediatek.com>
@@ -66,8 +66,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_195658_831939_D8633622 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20220628_195658_924434_948D6512 
+X-CRM114-Status: GOOD (  20.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,66 +82,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MII interface.
-If user wants to use MII, assign "MII" to "phy-mode" property in dts.
+Add Ethernet driver support for MT8365 SoC.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 Signed-off-by: Yinghua Pan <ot_yinghua.pan@mediatek.com>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 75 ++++++++++++++++---
+ 1 file changed, 64 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 05ce62202180..a1165f293494 100644
+index f161a55bd09a..3776af9ac1ff 100644
 --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
 +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -192,6 +192,7 @@ static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
- #define MTK_PERICFG_REG_NIC_CFG1_CON		0x03c8
- #define MTK_PERICFG_REG_NIC_CFG_CON_V2		0x0c10
- #define MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF	GENMASK(3, 0)
-+#define MTK_PERICFG_BIT_NIC_CFG_CON_MII		0
- #define MTK_PERICFG_BIT_NIC_CFG_CON_RMII	1
- #define MTK_PERICFG_BIT_NIC_CFG_CON_CLK		BIT(0)
- #define MTK_PERICFG_BIT_NIC_CFG_CON_CLK_V2	BIT(8)
-@@ -1462,6 +1463,7 @@ static int mtk_star_set_timing(struct mtk_star_priv *priv)
- 	unsigned int delay_val = 0;
+@@ -150,6 +150,7 @@ static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
+ #define MTK_STAR_REG_MAC_CLK_CONF		0x00ac
+ #define MTK_STAR_MSK_MAC_CLK_CONF		GENMASK(7, 0)
+ #define MTK_STAR_BIT_CLK_DIV_10			0x0a
++#define MTK_STAR_BIT_CLK_DIV_50			0x32
  
- 	switch (priv->phy_intf) {
-+	case PHY_INTERFACE_MODE_MII:
- 	case PHY_INTERFACE_MODE_RMII:
- 		delay_val |= FIELD_PREP(MTK_STAR_BIT_INV_RX_CLK, priv->rx_inv);
- 		delay_val |= FIELD_PREP(MTK_STAR_BIT_INV_TX_CLK, priv->tx_inv);
-@@ -1543,7 +1545,8 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	ret = of_get_phy_mode(of_node, &priv->phy_intf);
+ /* Counter registers. */
+ #define MTK_STAR_REG_C_RXOKPKT			0x0100
+@@ -182,9 +183,11 @@ static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
+ #define MTK_STAR_REG_C_RX_TWIST			0x0218
+ 
+ /* Ethernet CFG Control */
+-#define MTK_PERICFG_REG_NIC_CFG_CON		0x03c4
+-#define MTK_PERICFG_MSK_NIC_CFG_CON_CFG_MII	GENMASK(3, 0)
+-#define MTK_PERICFG_BIT_NIC_CFG_CON_RMII	BIT(0)
++#define MTK_PERICFG_REG_NIC_CFG0_CON		0x03c4
++#define MTK_PERICFG_REG_NIC_CFG1_CON		0x03c8
++#define MTK_PERICFG_REG_NIC_CFG_CON_V2		0x0c10
++#define MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF	GENMASK(3, 0)
++#define MTK_PERICFG_BIT_NIC_CFG_CON_RMII	1
+ 
+ /* Represents the actual structure of descriptors used by the MAC. We can
+  * reuse the same structure for both TX and RX - the layout is the same, only
+@@ -233,6 +236,7 @@ struct mtk_star_ring {
+ };
+ 
+ struct mtk_star_compat {
++	int (*set_interface_mode)(struct net_device *ndev);
+ 	unsigned char bit_clk_div;
+ };
+ 
+@@ -908,13 +912,6 @@ static void mtk_star_init_config(struct mtk_star_priv *priv)
+ 			   priv->compat_data->bit_clk_div);
+ }
+ 
+-static void mtk_star_set_mode_rmii(struct mtk_star_priv *priv)
+-{
+-	regmap_update_bits(priv->pericfg, MTK_PERICFG_REG_NIC_CFG_CON,
+-			   MTK_PERICFG_MSK_NIC_CFG_CON_CFG_MII,
+-			   MTK_PERICFG_BIT_NIC_CFG_CON_RMII);
+-}
+-
+ static int mtk_star_enable(struct net_device *ndev)
+ {
+ 	struct mtk_star_priv *priv = netdev_priv(ndev);
+@@ -1530,7 +1527,13 @@ static int mtk_star_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
+-	mtk_star_set_mode_rmii(priv);
++	if (priv->compat_data->set_interface_mode) {
++		ret = priv->compat_data->set_interface_mode(ndev);
++		if (ret) {
++			dev_err(dev, "Failed to set phy interface, err = %d\n", ret);
++			return -EINVAL;
++		}
++	}
+ 
+ 	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
  	if (ret) {
- 		return ret;
--	} else if (priv->phy_intf != PHY_INTERFACE_MODE_RMII) {
-+	} else if (priv->phy_intf != PHY_INTERFACE_MODE_RMII &&
-+		   priv->phy_intf != PHY_INTERFACE_MODE_MII) {
- 		dev_err(dev, "unsupported phy mode: %s\n",
- 			phy_modes(priv->phy_intf));
- 		return -EINVAL;
-@@ -1612,6 +1615,10 @@ static int mt8516_set_interface_mode(struct net_device *ndev)
- 	unsigned int intf_val, ret, rmii_rxc;
+@@ -1564,10 +1567,58 @@ static int mtk_star_probe(struct platform_device *pdev)
+ }
  
- 	switch (priv->phy_intf) {
-+	case PHY_INTERFACE_MODE_MII:
-+		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_MII;
-+		rmii_rxc = 0;
+ #ifdef CONFIG_OF
++static int mt8516_set_interface_mode(struct net_device *ndev)
++{
++	struct mtk_star_priv *priv = netdev_priv(ndev);
++	struct device *dev = mtk_star_get_dev(priv);
++	unsigned int intf_val;
++
++	switch (priv->phy_intf) {
++	case PHY_INTERFACE_MODE_RMII:
++		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
 +		break;
- 	case PHY_INTERFACE_MODE_RMII:
- 		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
- 		rmii_rxc = priv->rmii_rxc ? 0 : MTK_PERICFG_BIT_NIC_CFG_CON_CLK;
-@@ -1641,6 +1648,9 @@ static int mt8365_set_interface_mode(struct net_device *ndev)
- 	unsigned int intf_val;
++	default:
++		dev_err(dev, "This interface not supported\n");
++		return -EINVAL;
++	}
++
++	return regmap_update_bits(priv->pericfg,
++				  MTK_PERICFG_REG_NIC_CFG0_CON,
++				  MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF,
++				  intf_val);
++}
++
++static int mt8365_set_interface_mode(struct net_device *ndev)
++{
++	struct mtk_star_priv *priv = netdev_priv(ndev);
++	struct device *dev = mtk_star_get_dev(priv);
++	unsigned int intf_val;
++
++	switch (priv->phy_intf) {
++	case PHY_INTERFACE_MODE_RMII:
++		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
++		break;
++	default:
++		dev_err(dev, "This interface not supported\n");
++		return -EINVAL;
++	}
++
++	return regmap_update_bits(priv->pericfg,
++				  MTK_PERICFG_REG_NIC_CFG_CON_V2,
++				  MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF,
++				  intf_val);
++}
++
+ static const struct mtk_star_compat mtk_star_mt8516_compat = {
++	.set_interface_mode = mt8516_set_interface_mode,
+ 	.bit_clk_div = MTK_STAR_BIT_CLK_DIV_10,
+ };
  
- 	switch (priv->phy_intf) {
-+	case PHY_INTERFACE_MODE_MII:
-+		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_MII;
-+		break;
- 	case PHY_INTERFACE_MODE_RMII:
- 		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
- 		intf_val |= priv->rmii_rxc ? 0 : MTK_PERICFG_BIT_NIC_CFG_CON_CLK_V2;
++static const struct mtk_star_compat mtk_star_mt8365_compat = {
++	.set_interface_mode = mt8365_set_interface_mode,
++	.bit_clk_div = MTK_STAR_BIT_CLK_DIV_50,
++};
++
+ static const struct of_device_id mtk_star_of_match[] = {
+ 	{ .compatible = "mediatek,mt8516-eth",
+ 	  .data = &mtk_star_mt8516_compat },
+@@ -1575,6 +1626,8 @@ static const struct of_device_id mtk_star_of_match[] = {
+ 	  .data = &mtk_star_mt8516_compat },
+ 	{ .compatible = "mediatek,mt8175-eth",
+ 	  .data = &mtk_star_mt8516_compat },
++	{ .compatible = "mediatek,mt8365-eth",
++	  .data = &mtk_star_mt8365_compat },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, mtk_star_of_match);
 -- 
 2.25.1
 
