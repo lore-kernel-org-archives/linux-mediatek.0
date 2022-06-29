@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86CF3CCA480
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E559C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:02:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nlBAJ6umAF1V61Q4mybHN1X5a2Jj6QmSFTKvXtnjPKM=; b=GQ2asec1Igs/OJmbo0b75hEEAp
-	0CZHU3kGRjaxNDIM3IBN0TiOW5YUgPhsl3/SIIEzbQs6jBV4APuHuFOZ8id7twudgErFRkeBypnq7
-	Aln783RqRPBsz5FVMpjiEyR9dUs1077Cp5lEIV7utu+EvBK1TR8K6RZ2jr//5QdrA/A6f6st2b83g
-	emmi5BfJHks7vvUvafEiQmvLiWXhS+XpKEBVLkOfNw5Us05UhgoSpkfurdQbekLH8Y3q7YnnA9yyG
-	oesoIOAUFCma4+D7U0jVdSUpxaOYaQ7bUEamG94DSLpswaZplTOwiCT3PZFS2U1EYW4sZ6D+otoHH
-	8YIx99/w==;
+	bh=3mdziwQAspuox+PQzTApk82dB5pMzG2q9CRP+dkzB6s=; b=rc5sRBJsQp21zpObOMi2ashvwI
+	TNDtCEs9JsJJPDhMdt65mtWodpBSvO4zsQca/ktFZdfZW4IHMi31rY/1mP4WnVNEKalwoh1g7Todo
+	aWPk2o5Xyn6CEWw52yNt7cWspSAsEYixUOdchby9+8YCuAzZvubzJlJm0WEL9+mJAB+XlkutDCpPs
+	5WrE4fEWC3HZTGzgFgp1CV1RcOu+fOC0Ev+ywB3FB+Pkafqp1pHbspmQpDi5jz/ISf7HTUZOyqNzT
+	cawnMUpFqgCSoO2EfPFVZCUnWkKC56WLJ6mJJAr1ticL1bUOBmTmexILHD4gpXvpk/hQn8x2H3qKU
+	TfejHeNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6a96-00CphL-VP; Wed, 29 Jun 2022 16:02:29 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o6a98-00CpiI-Qu; Wed, 29 Jun 2022 16:02:30 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6a6s-00CoPm-LH; Wed, 29 Jun 2022 16:00:12 +0000
+	id 1o6a6u-00CoSi-2L; Wed, 29 Jun 2022 16:00:13 +0000
 Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BDAA86601948;
-	Wed, 29 Jun 2022 17:00:06 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AEAF8660194A;
+	Wed, 29 Jun 2022 17:00:09 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656518407;
-	bh=7FWouNZ6jxRvkXEGGYykyUzgA0FsaeEdzAQhsdSPeQs=;
+	s=mail; t=1656518410;
+	bh=JyFvHzF1h6JWiQjjXk8U9t+6ggzEINjp5AvOftmDRZ4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ICPLGRrsFmfJiv67vOjuykNSlEi/3AMFS5RWsC1OOpYtw5QGTrSW6RMtl07jl0+Ny
-	 ahlJtwU78hOLHfseudm9WRWJarMXzz+xoQ52DFGlxHSPhefFCXRiZM+5Oyv0FxqCiY
-	 dzTMvH/lGpjztpUkVU03Ef+RhDvPOArVPxvuGXdCp6x20bE8kEs8YKqd9cPpoHXQ9H
-	 d2zTveIpfcm13EvYLih80XYnY3Ejavsl/dzxGpmT/FGZCxJkwVWaPHhMGrA2OSIgOX
-	 swfCcrbNCR5pGRvYhUuEht12JsLegGNZ5Lqol1uF/HNjyp5K2q62wxOSpUopBHej78
-	 oKReKgY9SYaqw==
+	b=UAzu/A85hycjxEbqCXIAVNoOgHNbXQE0ToLnVqVwvptkHeqExUIFHw4d1S/y1RsU5
+	 z0WfM0faQBYKnnDUAoTfGDYOxk8RVdC+JUEjObFuYnPEVHOWnBBpTvhWzBDPW/ZcZR
+	 iaTUDa2IothvqV7AaQyVwLH2i1qEdkOqeCggP4KP8Fs5rbZfU6DTgmVt4bwHinmW3I
+	 24I4HSGWrxYz9GFx8slPdSkeGvAsvMT2YWkFoaAut1DRmEevkKA9FgJWNaROhlc1IX
+	 zBUOXYAkX1T0ivkZ1wp4ZJa1VBKvjuS3qmoZ9VYPjyq5l8no+nwNXXKeK+HC6k75L/
+	 mw7GhrKa1J3MQ==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,9 +53,9 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 03/19] arm64: dts: mediatek: Introduce MT8192-based Asurada board family
-Date: Wed, 29 Jun 2022 11:59:40 -0400
-Message-Id: <20220629155956.1138955-4-nfraprado@collabora.com>
+Subject: [PATCH v4 05/19] arm64: dts: mediatek: asurada: Add system-wide power supplies
+Date: Wed, 29 Jun 2022 11:59:42 -0400
+Message-Id: <20220629155956.1138955-6-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220629155956.1138955-1-nfraprado@collabora.com>
 References: <20220629155956.1138955-1-nfraprado@collabora.com>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_090010_901329_07E1F8C4 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20220629_090012_274902_062CE64D 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,114 +79,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce the MT8192 Asurada Chromebook platform, including the Asurada
-Spherion and Asurada Hayato boards.
-
-This is enough configuration to get serial output working on Spherion
-and Hayato.
+Add system-wide power supplies present on all of the boards in the
+Asurada family.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 ---
 
-(no changes since v2)
+(no changes since v3)
 
-Changes in v2:
-- Changed model name prefix from Mediatek to Google on Hayato and
-  Spherion dts
+Changes in v3:
+- Renamed nodes to be generic
 
- arch/arm64/boot/dts/mediatek/Makefile         |  2 ++
- .../dts/mediatek/mt8192-asurada-hayato-r1.dts | 11 ++++++++
- .../mediatek/mt8192-asurada-spherion-r0.dts   | 13 ++++++++++
- .../boot/dts/mediatek/mt8192-asurada.dtsi     | 26 +++++++++++++++++++
- 4 files changed, 52 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 64 +++++++++++++++++++
+ 1 file changed, 64 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 50a2c58c5f56..b52058965a0d 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -38,6 +38,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-new file mode 100644
-index 000000000000..00c76709a055
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-@@ -0,0 +1,11 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2020 Google LLC
-+ */
-+/dts-v1/;
-+#include "mt8192-asurada.dtsi"
-+
-+/ {
-+	model = "Google Hayato rev1";
-+	compatible = "google,hayato-rev1", "google,hayato", "mediatek,mt8192";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-new file mode 100644
-index 000000000000..d384d584bbcf
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-@@ -0,0 +1,13 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2021 Google LLC
-+ */
-+/dts-v1/;
-+#include "mt8192-asurada.dtsi"
-+
-+/ {
-+	model = "Google Spherion (rev0 - 3)";
-+	compatible = "google,spherion-rev3", "google,spherion-rev2",
-+		     "google,spherion-rev1", "google,spherion-rev0",
-+		     "google,spherion", "mediatek,mt8192";
-+};
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-new file mode 100644
-index 000000000000..277bd38943fe
---- /dev/null
+index e10636298639..ca55dd095e80 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -0,0 +1,26 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2020 MediaTek Inc.
-+ * Author: Seiya Wang <seiya.wang@mediatek.com>
-+ */
-+/dts-v1/;
-+#include "mt8192.dtsi"
+@@ -19,6 +19,70 @@ memory@40000000 {
+ 		device_type = "memory";
+ 		reg = <0 0x40000000 0 0x80000000>;
+ 	};
 +
-+/ {
-+	aliases {
-+		serial0 = &uart0;
++	/* system wide LDO 1.8V power rail */
++	pp1800_ldo_g: regulator-1v8-g {
++		compatible = "regulator-fixed";
++		regulator-name = "pp1800_ldo_g";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&pp3300_g>;
 +	};
 +
-+	chosen {
-+		stdout-path = "serial0:115200n8";
++	/* system wide switching 3.3V power rail */
++	pp3300_g: regulator-3v3-g {
++		compatible = "regulator-fixed";
++		regulator-name = "pp3300_g";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&ppvar_sys>;
 +	};
 +
-+	memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0x80000000>;
++	/* system wide LDO 3.3V power rail */
++	pp3300_ldo_z: regulator-3v3-z {
++		compatible = "regulator-fixed";
++		regulator-name = "pp3300_ldo_z";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&ppvar_sys>;
 +	};
-+};
 +
-+&uart0 {
-+	status = "okay";
-+};
++	/* separately switched 3.3V power rail */
++	pp3300_u: regulator-3v3-u {
++		compatible = "regulator-fixed";
++		regulator-name = "pp3300_u";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		/* enable pin wired to GPIO controlled by EC */
++		vin-supply = <&pp3300_g>;
++	};
++
++	/* system wide switching 5.0V power rail */
++	pp5000_a: regulator-5v0-a {
++		compatible = "regulator-fixed";
++		regulator-name = "pp5000_a";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&ppvar_sys>;
++	};
++
++	/* system wide semi-regulated power rail from battery or USB */
++	ppvar_sys: regulator-var-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "ppvar_sys";
++		regulator-always-on;
++		regulator-boot-on;
++	};
+ };
+ 
+ &pio {
 -- 
 2.36.1
 
