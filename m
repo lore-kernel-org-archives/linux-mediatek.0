@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D654C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 10:11:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 742B4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 10:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IQ/AKX93IXg+lImwKRP85P0+7Gao0cAQCKhdMpRVRsk=; b=l5OI909qhAytF6LHcrgc9OCPCJ
-	+TjP8ItuTPsJmCEJ91OeUDruB/3Yf99ftHX1yYTz/PK50koW9SFWzhdhq4i2RPz6BJnD5O4e7WFgQ
-	+y5DyywXKcOGdIVWdMimfZUjqFWUrI/NyGgiAKyjUUu06aAH7Xzo9Gu4WlzZBd4T3PGm9EUBgjBMv
-	iMOK1Bv+TyRM+UUOz9W28LWMCcMKAU1SeLWx3Na/RZU+UBn+XDmj3fU4SCD1bfEMakh2fnmgaMBlE
-	fJpI6TY6O1c+makQ8TbsjyaJ+PYM52yVFtxHnuclrjXXdZH6M0IJCnUkk/COtPIp8i5RpKgh0QjXU
-	fvWIFrQQ==;
+	bh=LUI568KKXBWt/UbA1wIV56CczfgTe2ipRJvz8jOekL4=; b=rKLcknQn6rDVArAdYSD/aeVjVT
+	fnFgZaFg7tuHlxPss3wa/UjC7f+F5+kVIVjFeWf3zw4nJJBwmeaRIG64sAqGQEUkhuwlTJ4eH64dt
+	Kbx7Autyq7eKbuWRznmy2XS34dqeT/UYiNOgc9aaTp4gwczwSy4SPF3HQdx+ODE/3FXb3fTdtpLsq
+	b222YR+xfvpHJps/zSTFpD9ghwyjWaobDSGRNkvAa8CAN7IiHnUs5hpLpCyM2QsdD59HgI0QfWlcZ
+	m+o08wApKjRkwn1XqZMCtgcSMCqX4BG2wVOctbKLRINwyatByfyyxO9infw8UqmAedUpJnETXn8FH
+	GqK4k8Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6UfI-00AwUH-6X; Wed, 29 Jun 2022 10:11:20 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1o6Up6-00AzMR-Lc; Wed, 29 Jun 2022 10:21:28 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6UeY-00Aw92-Bb; Wed, 29 Jun 2022 10:10:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B693161EDB;
-	Wed, 29 Jun 2022 10:10:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFEF3C34114;
-	Wed, 29 Jun 2022 10:10:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656497429;
-	bh=gumbGasP0T/XEgPCejFFb3EYwfVesF4bIVPFRQ3YSN8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=VdOsgqg+RS0Ue5vKZjp9OLNtY8fNDwj8+ERoCCon3jm+WRMH3w4o3HGhst8x8Y+13
-	 BoUfpZ3GStSsD3sgeAoc+EhVdYpi6Y5yavqeFNY/JOoptTR3fnKMsbhOdaK6o8Wxkl
-	 PIOtTjg2cDd+f2FE0TroCywxwOf4ueVSA+XiXe8ri8+AVF2JochONNwSJpghPYujBk
-	 lw2tV8ON9hAhmfvcreLyfwAGZcKE1zSthSaFQC8at2g0mwqD2IDe9zNbVy2+xafeGy
-	 OFuCinYQQ6u7FfnCsv78UpaF7bm04xZIW33N0RedubgVMsnPsRxGtn3h4Nue1nkgn0
-	 XoGgH85eABDog==
-Date: Wed, 29 Jun 2022 12:10:20 +0200
-From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, Alvin =?UTF-8?B?xaBp?=
- =?UTF-8?B?cHJhZ2E=?= <alsi@bang-olufsen.dk>, Claudiu Manoil
- <claudiu.manoil@nxp.com>, "David S. Miller" <davem@davemloft.net>, DENG
- Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, Florian
- Fainelli <f.fainelli@gmail.com>, George McCollister
- <george.mccollister@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>, Jakub
- Kicinski <kuba@kernel.org>, Kurt Kanzenbach <kurt@linutronix.de>, Landen
- Chao <Landen.Chao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo
- Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
- UNGLinuxDriver@microchip.com, Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Woojung Huh
- <woojung.huh@microchip.com>
-Subject: Re: [PATCH RFC net-next 0/4] net: dsa: always use phylink
-Message-ID: <20220629121020.583144a5@thinkpad>
-In-Reply-To: <YrweuzL2LYNbfvAY@shell.armlinux.org.uk>
-References: <YrWi5oBFn7vR15BH@shell.armlinux.org.uk>
-	<YrtvoRhUK+4BneYC@shell.armlinux.org.uk>
-	<Yrv8snvIChmoNPwh@lunn.ch>
-	<YrweuzL2LYNbfvAY@shell.armlinux.org.uk>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	id 1o6Up3-00AzLG-LX
+	for linux-mediatek@lists.infradead.org; Wed, 29 Jun 2022 10:21:28 +0000
+Received: by mail-wm1-x336.google.com with SMTP id l68so4017360wml.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Jun 2022 03:21:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=LUI568KKXBWt/UbA1wIV56CczfgTe2ipRJvz8jOekL4=;
+        b=Dg+/K7lGSuLotSEUfjS3gnurmv3Ls9wWXf6+SkWUT8cGyAwt/fvEJr+1Ttq4qiye9Y
+         hdXUYGJ0HMbnWxRaZs6PA2J9hJ1QmKztIGxEVZBrNp0IAJO9fpBuhsBWdANK2Tpo4QvD
+         qcnWerCjZqxRV/tFdNll1My2DNgYExo3D1raK2FrREl9oEp9VBo1JlfI/xtFTpgjb9+Z
+         XX2iTKSC+tjZKqAll7tRdmBEb08QNDXYF2+8mF21DIUneW0qNkD/q1WemgocXxI8SShR
+         kz8hLD9uhFTE4E/MfabHQsewdcdUPmic23x2KnI7UsNFlKzbQs7bjwjTpR36z5tz4GaY
+         P9QQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=LUI568KKXBWt/UbA1wIV56CczfgTe2ipRJvz8jOekL4=;
+        b=8ITolXEqMBf9Nxp2B+VdVxFGAsGxMNYjIGG4ZLzLRb38pgTI/EHfAL4YYHAfKqUjld
+         nQEIAMkCJGlknnPBBwZJT0rL20phBZebF1O3c0Kev0U9XkteMim4r0GdP6pN56o74tEr
+         r3PCsMat7n4MU3jTOG+NctHyQnsM6rbrYc9SAIuGmJ8dvaj52yQhJipTD+4zQd9D0/1e
+         VGYiGHptZwE9cEh04mVvjpXFutWolNzztVsDU2JTMJutcunlVkEBimExGw4tEYtBMiAS
+         ejoArJKI6NtQQZk843BldWgs9oyfMS8VGOUDCk+jUcCRzbe1z/787JNZiaIgcP7nD5tA
+         SUjQ==
+X-Gm-Message-State: AJIora9JBr33lopz6iUU77mLp1Dawkb3MyxvxeCFiabM6YgGL1xBJnxT
+	sVC73rCSKlNGj/81JWkgdmts+A==
+X-Google-Smtp-Source: AGRyM1t66misOvkWP/wDFaZ3DmxBe9/TdCWM/N12/+KveC7B17Rp6dA33RQzHq6OCHRATnzN0JeudQ==
+X-Received: by 2002:a7b:c196:0:b0:3a0:3d46:4620 with SMTP id y22-20020a7bc196000000b003a03d464620mr4808384wmi.26.1656498082205;
+        Wed, 29 Jun 2022 03:21:22 -0700 (PDT)
+Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id m1-20020a7bcb81000000b003a05621dc53sm2562035wmi.29.2022.06.29.03.21.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 29 Jun 2022 03:21:21 -0700 (PDT)
+Message-ID: <7d3fdfb5-ed03-671b-59d8-918cc0d60612@linaro.org>
+Date: Wed, 29 Jun 2022 12:21:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 0/4] Energy Model power in micro-Watts and SCMI v3.1
+ alignment
+Content-Language: en-US
+To: Viresh Kumar <viresh.kumar@linaro.org>, Lukasz Luba <lukasz.luba@arm.com>
+Cc: linux-pm@vger.kernel.org, amitk@kernel.org, rui.zhang@intel.com,
+ rafael@kernel.org, dietmar.eggemann@arm.com, nm@ti.com, sboyd@kernel.org,
+ sudeep.holla@arm.com, cristian.marussi@arm.com, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220622145802.13032-1-lukasz.luba@arm.com>
+ <be793e51-0d89-7afd-e122-ec929a1130e9@arm.com>
+ <20220629095302.bi3xx6yicsnjeff7@vireshk-i7>
+ <1072cb84-4097-0cbd-f980-a864ea851b0c@arm.com>
+ <20220629100148.67kevfelqq7d23n5@vireshk-i7>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20220629100148.67kevfelqq7d23n5@vireshk-i7>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_031034_531177_2AEFE151 
-X-CRM114-Status: GOOD (  33.35  )
+X-CRM114-CacheID: sfid-20220629_032125_777843_61AE1741 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,48 +99,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 29 Jun 2022 10:43:23 +0100
-"Russell King (Oracle)" <linux@armlinux.org.uk> wrote:
 
-> On Wed, Jun 29, 2022 at 09:18:10AM +0200, Andrew Lunn wrote:
-> > > I should point out that if a DSA port can be programmed in software to
-> > > support both SGMII and 1000baseX, this will end up selecting SGMII
-> > > irrespective of what the hardware was wire-strapped to and how it was
-> > > initially configured. Do we believe that would be acceptable?  
-> > 
-> > I'm pretty sure the devel b board has 1000BaseX DSA links between its
-> > two switches. Since both should end up SGMII that should be O.K.  
-> 
-> Would such a port have a programmable C_Mode, and would it specify that
-> it supports both SGMII and 1000BaseX ? Without going through a lot of
-> boards and documentation for every switch, I can't say.
-> 
-> I don't think we can come to any conclusion on what the right way to
-> deal with this actually is - we don't have enough information about how
-> this is used across all the platforms we have. I think we can only try
-> something, get it merged into net-next, and wait to see whether anyone
-> complains.
-> 
-> When we have a CPU or DSA port without a fixed-link, phy or sfp specified,
-> I think we should:
-> (a) use the phy-mode property if present, otherwise,
-> (b,i) have the DSA driver return the interface mode that it wants to use
-> for max speed for CPU and DSA ports.
-> (b,ii) in the absence of the DSA driver returning a valid interface mode,
-> we use the supported_interfaces to find an interface which gives the
-> maximum speed (irrespective of duplex?) that falls within the
-> mac capabilities.
-> 
-> If all those fail, then things will break, and we will have to wait for
-> people to report that breakage. Does this sound a sane approach, or
-> does anyone have any other suggestions how to solve this?
+Hi Lukasz,
 
-It is a sane approach. But in the future I think we should get rid of
-(b,i): I always considered the max_speed_interface() method a temporary
-solution, until the drivers report what a specific port support and the
-subsystem can then choose whichever mode it wants that is wired and
-supported by hardware. Then we could also make it possible to change
-the CPU interface mode via ethtool, which would be cool...
+On 29/06/2022 12:01, Viresh Kumar wrote:
+> On 29-06-22, 11:00, Lukasz Luba wrote:
+>> Thanks for fast response. It would be great.
+>>
+>> I have 2 ACKs from Sudeep for the SCMI part,
+>> but I don't know the status e.g. of DTPM
+>> current work which is using the EM milli-Watts
+>> and does conversion to uW internally.
+>> I hope, I won't make issues to Daniel's work with this
+>> change.
+> 
+> Daniel, do you have any objections to this ?
 
-Marek
+Sorry I had no time to review the series yet, give me a couple of days, 
+may be a bit more if possible
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
