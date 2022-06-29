@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0632EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 04:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 340A0C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 04:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IXTYQG4h55gc1RGkLdh5qYWvden+EVA7FZjd/O29GgY=; b=DJhpXcvpK8qvMArMhHu9co630t
-	8hJjYYFTieKezRDyce+ieXZQsv7fwNM/yEnaPb4faU3+H1c8e6a4VlQK3+8Wc4PpXd0tp6L8tMWca
-	/Gy+haoyuBnyVhgbSGpp/3odutfMSxIaUHWD3HUz6ZHQmtqkzXQuqskrdID+yrQNQ51v6BvqOhqcD
-	oSU1u008wrVSYEKdrQ2x4/1AdK0c29sBXNGHrQ6G9eTgsIvXpKYwhKQML3/u/+uBrOC04CLJXjT8m
-	+TKvtmdmallmk2QkVV34vN6Ipmbx+ZDD70B5iu7zhPrAqushUR6o2CPsPJsi+xzhOpEIJ3WyjfBto
-	6Yb7KOnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MZdB5FV8/i5Yh+MUh4wn2WD9KH5pYLVv5684iHvVHyc=; b=whxsyUjLybSrOEb26oFzvcWw9E
+	FLWurhwNKwHa7lV7M/W7zclySUHMyozCym+UFXdTrbMWTxrsLv6dz4+78rwsOR1kwvOz2iuL2onL2
+	FPVrVa+ldSYiOu1MeBEMkhciGoBysCPCpPEtwhSkJcE1hTfhLy41hMYcyprUfOTS14xlXlEZ+N3uf
+	IF9IqhWB8LSj4lzaFpTsvNo1oEv9t3lC5xUpKOssyY69ovvCANQtPl25QXgUZYGdwSjKPawzYMJeZ
+	qUseAWmYDo4Pv7b9OlP5rvonrQd7ZvquUGPcmS5aqadJnQDVisnV06eHB/2C5nCiR+LULo6uU0PGd
+	w72vFXgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6PAf-009RMm-2E; Wed, 29 Jun 2022 04:19:21 +0000
+	id 1o6PE0-009S01-G1; Wed, 29 Jun 2022 04:22:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6PAS-009RH0-KW; Wed, 29 Jun 2022 04:19:10 +0000
-X-UUID: 6c2b1030c5fb452fa742610581bcfb52-20220628
+	id 1o6PDx-009RzM-Jv; Wed, 29 Jun 2022 04:22:47 +0000
+X-UUID: 27a40eed08f54eefbea2dc68303b9aa9-20220628
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:7363a224-cf62-4647-8560-65f52e66d29a,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.7,REQID:8760dc59-ddf4-48aa-a6fd-0f555fe52fee,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:a774ea62-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-META: VersionHash:87442a2,CLOUDID:4d88ea62-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 6c2b1030c5fb452fa742610581bcfb52-20220628
+X-UUID: 27a40eed08f54eefbea2dc68303b9aa9-20220628
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <biao.huang@mediatek.com>)
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1983813696; Tue, 28 Jun 2022 21:18:58 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 2000657382; Tue, 28 Jun 2022 21:21:59 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 29 Jun 2022 11:18:06 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ Wed, 29 Jun 2022 11:51:24 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 29 Jun 2022 11:18:04 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: David Miller <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob
- Herring <robh+dt@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Fabien
- Parent <fparent@baylibre.com>
-CC: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, <netdev@vger.kernel.org>,
+ Transport; Wed, 29 Jun 2022 11:51:24 +0800
+Message-ID: <fcb60f65a30721970b7647633feea4f1df1bf774.camel@mediatek.com>
+Subject: Re: [PATCH v12 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Biao Huang <biao.huang@mediatek.com>, Yinghua Pan
-	<ot_yinghua.pan@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: [PATCH net-next v5 09/10] net: ethernet: mtk-star-emac: separate tx/rx handling with two NAPIs
-Date: Wed, 29 Jun 2022 11:17:42 +0800
-Message-ID: <20220629031743.22115-10-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220629031743.22115-1-biao.huang@mediatek.com>
-References: <20220629031743.22115-1-biao.huang@mediatek.com>
+	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 29 Jun 2022 11:51:24 +0800
+In-Reply-To: <20220627080341.5087-6-rex-bc.chen@mediatek.com>
+References: <20220627080341.5087-1-rex-bc.chen@mediatek.com>
+	 <20220627080341.5087-6-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_211908_739949_46571D10 
-X-CRM114-Status: GOOD (  30.39  )
+X-CRM114-CacheID: sfid-20220628_212245_692234_E6587E83 
+X-CRM114-Status: GOOD (  24.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,523 +85,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Current driver may lost tx interrupts under bidirectional test with iperf3,
-which leads to some unexpected issues.
+Hi, Bo-Chen:
 
-This patch let rx/tx interrupt enable/disable separately, and rx/tx are
-handled in different NAPIs.
+On Mon, 2022-06-27 at 16:03 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a embedded displayport driver for the MediaTek mt8195
+> SoC.
+> 
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> [Bo-Chen: Cleanup the drivers and modify comments from reviewers]
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-Signed-off-by: Yinghua Pan <ot_yinghua.pan@mediatek.com>
----
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 340 ++++++++++--------
- 1 file changed, 199 insertions(+), 141 deletions(-)
+[snip]
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index a1165f293494..87c6c9bc221d 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -33,6 +33,7 @@
- #define MTK_STAR_SKB_ALIGNMENT			16
- #define MTK_STAR_HASHTABLE_MC_LIMIT		256
- #define MTK_STAR_HASHTABLE_SIZE_MAX		512
-+#define MTK_STAR_DESC_NEEDED			(MAX_SKB_FRAGS + 4)
- 
- /* Normally we'd use NET_IP_ALIGN but on arm64 its value is 0 and it doesn't
-  * work for this controller.
-@@ -228,7 +229,8 @@ struct mtk_star_ring_desc_data {
- 	struct sk_buff *skb;
- };
- 
--#define MTK_STAR_RING_NUM_DESCS			128
-+#define MTK_STAR_RING_NUM_DESCS			512
-+#define MTK_STAR_TX_THRESH			(MTK_STAR_RING_NUM_DESCS / 4)
- #define MTK_STAR_NUM_TX_DESCS			MTK_STAR_RING_NUM_DESCS
- #define MTK_STAR_NUM_RX_DESCS			MTK_STAR_RING_NUM_DESCS
- #define MTK_STAR_NUM_DESCS_TOTAL		(MTK_STAR_RING_NUM_DESCS * 2)
-@@ -263,7 +265,8 @@ struct mtk_star_priv {
- 	struct mtk_star_ring rx_ring;
- 
- 	struct mii_bus *mii;
--	struct napi_struct napi;
-+	struct napi_struct tx_napi;
-+	struct napi_struct rx_napi;
- 
- 	struct device_node *phy_node;
- 	phy_interface_t phy_intf;
-@@ -379,19 +382,16 @@ mtk_star_ring_push_head_tx(struct mtk_star_ring *ring,
- 	mtk_star_ring_push_head(ring, desc_data, flags);
- }
- 
--static unsigned int mtk_star_ring_num_used_descs(struct mtk_star_ring *ring)
-+static unsigned int mtk_star_tx_ring_avail(struct mtk_star_ring *ring)
- {
--	return abs(ring->head - ring->tail);
--}
-+	u32 avail;
- 
--static bool mtk_star_ring_full(struct mtk_star_ring *ring)
--{
--	return mtk_star_ring_num_used_descs(ring) == MTK_STAR_RING_NUM_DESCS;
--}
-+	if (ring->tail > ring->head)
-+		avail = ring->tail - ring->head - 1;
-+	else
-+		avail = MTK_STAR_RING_NUM_DESCS - ring->head + ring->tail - 1;
- 
--static bool mtk_star_ring_descs_available(struct mtk_star_ring *ring)
--{
--	return mtk_star_ring_num_used_descs(ring) > 0;
-+	return avail;
- }
- 
- static dma_addr_t mtk_star_dma_map_rx(struct mtk_star_priv *priv,
-@@ -436,6 +436,36 @@ static void mtk_star_nic_disable_pd(struct mtk_star_priv *priv)
- 			  MTK_STAR_BIT_MAC_CFG_NIC_PD);
- }
- 
-+static void mtk_star_enable_dma_irq(struct mtk_star_priv *priv,
-+				    bool rx, bool tx)
-+{
-+	u32 value;
-+
-+	regmap_read(priv->regs, MTK_STAR_REG_INT_MASK, &value);
-+
-+	if (tx)
-+		value &= ~MTK_STAR_BIT_INT_STS_TNTC;
-+	if (rx)
-+		value &= ~MTK_STAR_BIT_INT_STS_FNRC;
-+
-+	regmap_write(priv->regs, MTK_STAR_REG_INT_MASK, value);
-+}
-+
-+static void mtk_star_disable_dma_irq(struct mtk_star_priv *priv,
-+				     bool rx, bool tx)
-+{
-+	u32 value;
-+
-+	regmap_read(priv->regs, MTK_STAR_REG_INT_MASK, &value);
-+
-+	if (tx)
-+		value |= MTK_STAR_BIT_INT_STS_TNTC;
-+	if (rx)
-+		value |= MTK_STAR_BIT_INT_STS_FNRC;
-+
-+	regmap_write(priv->regs, MTK_STAR_REG_INT_MASK, value);
-+}
-+
- /* Unmask the three interrupts we care about, mask all others. */
- static void mtk_star_intr_enable(struct mtk_star_priv *priv)
- {
-@@ -451,20 +481,11 @@ static void mtk_star_intr_disable(struct mtk_star_priv *priv)
- 	regmap_write(priv->regs, MTK_STAR_REG_INT_MASK, ~0);
- }
- 
--static unsigned int mtk_star_intr_read(struct mtk_star_priv *priv)
--{
--	unsigned int val;
--
--	regmap_read(priv->regs, MTK_STAR_REG_INT_STS, &val);
--
--	return val;
--}
--
- static unsigned int mtk_star_intr_ack_all(struct mtk_star_priv *priv)
- {
- 	unsigned int val;
- 
--	val = mtk_star_intr_read(priv);
-+	regmap_read(priv->regs, MTK_STAR_REG_INT_STS, &val);
- 	regmap_write(priv->regs, MTK_STAR_REG_INT_STS, val);
- 
- 	return val;
-@@ -736,25 +757,44 @@ static void mtk_star_free_tx_skbs(struct mtk_star_priv *priv)
- 	mtk_star_ring_free_skbs(priv, ring, mtk_star_dma_unmap_tx);
- }
- 
--/* All processing for TX and RX happens in the napi poll callback.
-- *
-- * FIXME: The interrupt handling should be more fine-grained with each
-- * interrupt enabled/disabled independently when needed. Unfortunatly this
-- * turned out to impact the driver's stability and until we have something
-- * working properly, we're disabling all interrupts during TX & RX processing
-- * or when resetting the counter registers.
-- */
-+/**
-+ * mtk_star_handle_irq - Interrupt Handler.
-+ * @irq: interrupt number.
-+ * @data: pointer to a network interface device structure.
-+ * Description : this is the driver interrupt service routine.
-+ * it mainly handles:
-+ *  1. tx complete interrupt for frame transmission.
-+ *  2. rx complete interrupt for frame reception.
-+ *  3. MAC Management Counter interrupt to avoid counter overflow.
-+ **/
- static irqreturn_t mtk_star_handle_irq(int irq, void *data)
- {
--	struct mtk_star_priv *priv;
--	struct net_device *ndev;
--
--	ndev = data;
--	priv = netdev_priv(ndev);
-+	struct net_device *ndev = data;
-+	struct mtk_star_priv *priv = netdev_priv(ndev);
-+	unsigned int intr_status = mtk_star_intr_ack_all(priv);
-+	bool rx, tx;
-+
-+	rx = (intr_status & MTK_STAR_BIT_INT_STS_FNRC) &&
-+	     napi_schedule_prep(&priv->rx_napi);
-+	tx = (intr_status & MTK_STAR_BIT_INT_STS_TNTC) &&
-+	     napi_schedule_prep(&priv->tx_napi);
-+
-+	if (rx || tx) {
-+		spin_lock(&priv->lock);
-+		/* mask Rx and TX Complete interrupt */
-+		mtk_star_disable_dma_irq(priv, rx, tx);
-+		spin_unlock(&priv->lock);
-+
-+		if (rx)
-+			__napi_schedule(&priv->rx_napi);
-+		if (tx)
-+			__napi_schedule(&priv->tx_napi);
-+	}
- 
--	if (netif_running(ndev)) {
--		mtk_star_intr_disable(priv);
--		napi_schedule(&priv->napi);
-+	/* interrupt is triggered once any counters reach 0x8000000 */
-+	if (intr_status & MTK_STAR_REG_INT_STS_MIB_CNT_TH) {
-+		mtk_star_update_stats(priv);
-+		mtk_star_reset_counters(priv);
- 	}
- 
- 	return IRQ_HANDLED;
-@@ -970,7 +1010,8 @@ static int mtk_star_enable(struct net_device *ndev)
- 	if (ret)
- 		goto err_free_skbs;
- 
--	napi_enable(&priv->napi);
-+	napi_enable(&priv->tx_napi);
-+	napi_enable(&priv->rx_napi);
- 
- 	mtk_star_intr_ack_all(priv);
- 	mtk_star_intr_enable(priv);
-@@ -1003,7 +1044,8 @@ static void mtk_star_disable(struct net_device *ndev)
- 	struct mtk_star_priv *priv = netdev_priv(ndev);
- 
- 	netif_stop_queue(ndev);
--	napi_disable(&priv->napi);
-+	napi_disable(&priv->tx_napi);
-+	napi_disable(&priv->rx_napi);
- 	mtk_star_intr_disable(priv);
- 	mtk_star_dma_disable(priv);
- 	mtk_star_intr_ack_all(priv);
-@@ -1035,13 +1077,45 @@ static int mtk_star_netdev_ioctl(struct net_device *ndev,
- 	return phy_mii_ioctl(ndev->phydev, req, cmd);
- }
- 
--static int mtk_star_netdev_start_xmit(struct sk_buff *skb,
--				      struct net_device *ndev)
-+static int __mtk_star_maybe_stop_tx(struct mtk_star_priv *priv, u16 size)
-+{
-+	netif_stop_queue(priv->ndev);
-+
-+	/* Might race with mtk_star_tx_poll, check again */
-+	smp_mb();
-+	if (likely(mtk_star_tx_ring_avail(&priv->tx_ring) < size))
-+		return -EBUSY;
-+
-+	netif_start_queue(priv->ndev);
-+
-+	return 0;
-+}
-+
-+static inline int mtk_star_maybe_stop_tx(struct mtk_star_priv *priv, u16 size)
-+{
-+	if (likely(mtk_star_tx_ring_avail(&priv->tx_ring) >= size))
-+		return 0;
-+
-+	return __mtk_star_maybe_stop_tx(priv, size);
-+}
-+
-+static netdev_tx_t mtk_star_netdev_start_xmit(struct sk_buff *skb,
-+					      struct net_device *ndev)
- {
- 	struct mtk_star_priv *priv = netdev_priv(ndev);
- 	struct mtk_star_ring *ring = &priv->tx_ring;
- 	struct device *dev = mtk_star_get_dev(priv);
- 	struct mtk_star_ring_desc_data desc_data;
-+	int nfrags = skb_shinfo(skb)->nr_frags;
-+
-+	if (unlikely(mtk_star_tx_ring_avail(ring) < nfrags + 1)) {
-+		if (!netif_queue_stopped(ndev)) {
-+			netif_stop_queue(ndev);
-+			/* This is a hard error, log it. */
-+			pr_err_ratelimited("Tx ring full when queue awake\n");
-+		}
-+		return NETDEV_TX_BUSY;
-+	}
- 
- 	desc_data.dma_addr = mtk_star_dma_map_tx(priv, skb);
- 	if (dma_mapping_error(dev, desc_data.dma_addr))
-@@ -1049,17 +1123,11 @@ static int mtk_star_netdev_start_xmit(struct sk_buff *skb,
- 
- 	desc_data.skb = skb;
- 	desc_data.len = skb->len;
--
--	spin_lock_bh(&priv->lock);
--
- 	mtk_star_ring_push_head_tx(ring, &desc_data);
- 
- 	netdev_sent_queue(ndev, skb->len);
- 
--	if (mtk_star_ring_full(ring))
--		netif_stop_queue(ndev);
--
--	spin_unlock_bh(&priv->lock);
-+	mtk_star_maybe_stop_tx(priv, MTK_STAR_DESC_NEEDED);
- 
- 	mtk_star_dma_resume_tx(priv);
- 
-@@ -1091,31 +1159,40 @@ static int mtk_star_tx_complete_one(struct mtk_star_priv *priv)
- 	return ret;
- }
- 
--static void mtk_star_tx_complete_all(struct mtk_star_priv *priv)
-+static int mtk_star_tx_poll(struct napi_struct *napi, int budget)
- {
-+	struct mtk_star_priv *priv = container_of(napi, struct mtk_star_priv,
-+						  tx_napi);
-+	int ret = 0, pkts_compl = 0, bytes_compl = 0, count = 0;
- 	struct mtk_star_ring *ring = &priv->tx_ring;
- 	struct net_device *ndev = priv->ndev;
--	int ret, pkts_compl, bytes_compl;
--	bool wake = false;
--
--	spin_lock(&priv->lock);
--
--	for (pkts_compl = 0, bytes_compl = 0;;
--	     pkts_compl++, bytes_compl += ret, wake = true) {
--		if (!mtk_star_ring_descs_available(ring))
--			break;
-+	unsigned int head = ring->head;
-+	unsigned int entry = ring->tail;
- 
-+	while (entry != head && count < (MTK_STAR_RING_NUM_DESCS - 1)) {
- 		ret = mtk_star_tx_complete_one(priv);
- 		if (ret < 0)
- 			break;
-+
-+		count++;
-+		pkts_compl++;
-+		bytes_compl += ret;
-+		entry = ring->tail;
- 	}
- 
- 	netdev_completed_queue(ndev, pkts_compl, bytes_compl);
- 
--	if (wake && netif_queue_stopped(ndev))
-+	if (unlikely(netif_queue_stopped(ndev)) &&
-+	    (mtk_star_tx_ring_avail(ring) > MTK_STAR_TX_THRESH))
- 		netif_wake_queue(ndev);
- 
--	spin_unlock(&priv->lock);
-+	if (napi_complete(napi)) {
-+		spin_lock(&priv->lock);
-+		mtk_star_enable_dma_irq(priv, false, true);
-+		spin_unlock(&priv->lock);
-+	}
-+
-+	return 0;
- }
- 
- static void mtk_star_netdev_get_stats64(struct net_device *ndev,
-@@ -1195,7 +1272,7 @@ static const struct ethtool_ops mtk_star_ethtool_ops = {
- 	.set_link_ksettings	= phy_ethtool_set_link_ksettings,
- };
- 
--static int mtk_star_receive_packet(struct mtk_star_priv *priv)
-+static int mtk_star_rx(struct mtk_star_priv *priv, int budget)
- {
- 	struct mtk_star_ring *ring = &priv->rx_ring;
- 	struct device *dev = mtk_star_get_dev(priv);
-@@ -1203,107 +1280,85 @@ static int mtk_star_receive_packet(struct mtk_star_priv *priv)
- 	struct net_device *ndev = priv->ndev;
- 	struct sk_buff *curr_skb, *new_skb;
- 	dma_addr_t new_dma_addr;
--	int ret;
-+	int ret, count = 0;
- 
--	spin_lock(&priv->lock);
--	ret = mtk_star_ring_pop_tail(ring, &desc_data);
--	spin_unlock(&priv->lock);
--	if (ret)
--		return -1;
-+	while (count < budget) {
-+		ret = mtk_star_ring_pop_tail(ring, &desc_data);
-+		if (ret)
-+			return -1;
- 
--	curr_skb = desc_data.skb;
-+		curr_skb = desc_data.skb;
- 
--	if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
--	    (desc_data.flags & MTK_STAR_DESC_BIT_RX_OSIZE)) {
--		/* Error packet -> drop and reuse skb. */
--		new_skb = curr_skb;
--		goto push_new_skb;
--	}
-+		if ((desc_data.flags & MTK_STAR_DESC_BIT_RX_CRCE) ||
-+		    (desc_data.flags & MTK_STAR_DESC_BIT_RX_OSIZE)) {
-+			/* Error packet -> drop and reuse skb. */
-+			new_skb = curr_skb;
-+			goto push_new_skb;
-+		}
- 
--	/* Prepare new skb before receiving the current one. Reuse the current
--	 * skb if we fail at any point.
--	 */
--	new_skb = mtk_star_alloc_skb(ndev);
--	if (!new_skb) {
--		ndev->stats.rx_dropped++;
--		new_skb = curr_skb;
--		goto push_new_skb;
--	}
-+		/* Prepare new skb before receiving the current one.
-+		 * Reuse the current skb if we fail at any point.
-+		 */
-+		new_skb = mtk_star_alloc_skb(ndev);
-+		if (!new_skb) {
-+			ndev->stats.rx_dropped++;
-+			new_skb = curr_skb;
-+			goto push_new_skb;
-+		}
- 
--	new_dma_addr = mtk_star_dma_map_rx(priv, new_skb);
--	if (dma_mapping_error(dev, new_dma_addr)) {
--		ndev->stats.rx_dropped++;
--		dev_kfree_skb(new_skb);
--		new_skb = curr_skb;
--		netdev_err(ndev, "DMA mapping error of RX descriptor\n");
--		goto push_new_skb;
--	}
-+		new_dma_addr = mtk_star_dma_map_rx(priv, new_skb);
-+		if (dma_mapping_error(dev, new_dma_addr)) {
-+			ndev->stats.rx_dropped++;
-+			dev_kfree_skb(new_skb);
-+			new_skb = curr_skb;
-+			netdev_err(ndev, "DMA mapping error of RX descriptor\n");
-+			goto push_new_skb;
-+		}
- 
--	/* We can't fail anymore at this point: it's safe to unmap the skb. */
--	mtk_star_dma_unmap_rx(priv, &desc_data);
-+		/* We can't fail anymore at this point:
-+		 * it's safe to unmap the skb.
-+		 */
-+		mtk_star_dma_unmap_rx(priv, &desc_data);
- 
--	skb_put(desc_data.skb, desc_data.len);
--	desc_data.skb->ip_summed = CHECKSUM_NONE;
--	desc_data.skb->protocol = eth_type_trans(desc_data.skb, ndev);
--	desc_data.skb->dev = ndev;
--	netif_receive_skb(desc_data.skb);
-+		skb_put(desc_data.skb, desc_data.len);
-+		desc_data.skb->ip_summed = CHECKSUM_NONE;
-+		desc_data.skb->protocol = eth_type_trans(desc_data.skb, ndev);
-+		desc_data.skb->dev = ndev;
-+		netif_receive_skb(desc_data.skb);
- 
--	/* update dma_addr for new skb */
--	desc_data.dma_addr = new_dma_addr;
-+		/* update dma_addr for new skb */
-+		desc_data.dma_addr = new_dma_addr;
- 
- push_new_skb:
--	desc_data.len = skb_tailroom(new_skb);
--	desc_data.skb = new_skb;
- 
--	spin_lock(&priv->lock);
--	mtk_star_ring_push_head_rx(ring, &desc_data);
--	spin_unlock(&priv->lock);
--
--	return 0;
--}
--
--static int mtk_star_process_rx(struct mtk_star_priv *priv, int budget)
--{
--	int received, ret;
-+		count++;
- 
--	for (received = 0, ret = 0; received < budget && ret == 0; received++)
--		ret = mtk_star_receive_packet(priv);
-+		desc_data.len = skb_tailroom(new_skb);
-+		desc_data.skb = new_skb;
-+		mtk_star_ring_push_head_rx(ring, &desc_data);
-+	}
- 
- 	mtk_star_dma_resume_rx(priv);
- 
--	return received;
-+	return count;
- }
- 
--static int mtk_star_poll(struct napi_struct *napi, int budget)
-+static int mtk_star_rx_poll(struct napi_struct *napi, int budget)
- {
- 	struct mtk_star_priv *priv;
--	unsigned int status;
--	int received = 0;
--
--	priv = container_of(napi, struct mtk_star_priv, napi);
--
--	status = mtk_star_intr_read(priv);
--	mtk_star_intr_ack_all(priv);
--
--	if (status & MTK_STAR_BIT_INT_STS_TNTC)
--		/* Clean-up all TX descriptors. */
--		mtk_star_tx_complete_all(priv);
-+	int work_done = 0;
- 
--	if (status & MTK_STAR_BIT_INT_STS_FNRC)
--		/* Receive up to $budget packets. */
--		received = mtk_star_process_rx(priv, budget);
-+	priv = container_of(napi, struct mtk_star_priv, rx_napi);
- 
--	if (unlikely(status & MTK_STAR_REG_INT_STS_MIB_CNT_TH)) {
--		mtk_star_update_stats(priv);
--		mtk_star_reset_counters(priv);
-+	work_done = mtk_star_rx(priv, budget);
-+	if (work_done < budget) {
-+		napi_complete_done(napi, work_done);
-+		spin_lock(&priv->lock);
-+		mtk_star_enable_dma_irq(priv, true, false);
-+		spin_unlock(&priv->lock);
- 	}
- 
--	if (received < budget)
--		napi_complete_done(napi, received);
--
--	mtk_star_intr_enable(priv);
--
--	return received;
-+	return work_done;
- }
- 
- static void mtk_star_mdio_rwok_clear(struct mtk_star_priv *priv)
-@@ -1602,7 +1657,10 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	ndev->netdev_ops = &mtk_star_netdev_ops;
- 	ndev->ethtool_ops = &mtk_star_ethtool_ops;
- 
--	netif_napi_add(ndev, &priv->napi, mtk_star_poll, NAPI_POLL_WEIGHT);
-+	netif_napi_add(ndev, &priv->rx_napi, mtk_star_rx_poll,
-+		       NAPI_POLL_WEIGHT);
-+	netif_tx_napi_add(ndev, &priv->tx_napi, mtk_star_tx_poll,
-+			  NAPI_POLL_WEIGHT);
- 
- 	return devm_register_netdev(dev, ndev);
- }
--- 
-2.25.1
+> +
+> +static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+> +{
+> +	struct mtk_dp *mtk_dp = dev;
+> +	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
+> +
+> +	if (mtk_dp->train_info.cable_state_change) {
+> +		mtk_dp->train_info.cable_state_change = false;
+> +
+> +		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
+> +				   DP_PWR_STATE_MASK);
+> +		drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
+> +		mtk_dp->train_info.link_rate =
+> +			min_t(int, mtk_dp->max_linkrate,
+> +			      buf[mtk_dp->max_linkrate]);
+> +		mtk_dp->train_info.lane_count =
+> +			min_t(int, mtk_dp->max_lanes,
+> +			      drm_dp_max_lane_count(buf));
+
+If the state_change is unplug, why do you modify link_rate and
+lane_count?
+If the state_change is plug, there is a training flow to decide
+link_rate and lane_count. I think the training flow is correct and any
+modification here is redundant.
+
+Regards,
+CK
+
+> +	}
+> +
+> +	if (mtk_dp->train_info.irq_sta.hpd_inerrupt) {
+> +		dev_dbg(mtk_dp->dev, "MTK_DP_HPD_INTERRUPT\n");
+> +		mtk_dp->train_info.irq_sta.hpd_inerrupt = false;
+> +		mtk_dp_hpd_sink_event(mtk_dp);
+> +	}
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
 
 
