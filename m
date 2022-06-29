@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF065C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E969AC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 16:05:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dDwZWCKeRaT+g4l4NKmkKyJjH4PU1u79p0NUuOLu+d4=; b=F1DXYv6lHl8of2t9eu/6WCDf1O
-	peKhftEwODEsKgyC/kc/O8HUSc4coyh3dSYCYY71bKKn/82NfATqbAeVlLdnfV8GtPaFK/3MfEg55
-	YKC1MHD4V8KGCXTzMFRNFAAH/KToiPfDFHXpo6WN4Ui795xbeKK//tbDsGOaAeyQp/wYB+bFxajNc
-	96QmEjSmxPJ0GqDvMfjrRYFmAkQY4vMjQcJCCiUh2R5FuFT8CFEtLPb40s2SU7ypgiAtygvo7Lku+
-	ti1cruuCQfJVLv/YFr+P6egJajiPiiL33JZPudEKSvVosWxPLYrPP3RxAdG0pbx68cnX2VB1mNvhQ
-	vaDxZW2A==;
+	bh=lOo2b8F8lnHm9Gp1gJ0KQQt/78fIFmrlOEWDanHTf/g=; b=GblP2QsOmnMZIOSa09+zLRlctO
+	l7u0AMP+f2/GqJRU+mSUueFVvX4wLoAiJlftB3rCePiV76AtTc0b22ypBlRF8z5OlUPNHzifwC0Xw
+	7jlil+A6Juw5B/PouycLObjLD8AxpdeEpiyz1jfWPe3NMMyWPCq9UAh6fxh/Fbj5Ts49g8hyOZz/n
+	DRb8W49T9f0fjyI+JKgVjUJND95LjtCNHLi9+042xSubaOqi3cDivKF8Cxj5hayv7i3EdruFpHRZS
+	qnyAxSj8vvT06XYMD9xh+mcGbPCsCiwa9f800ufn9wrZprpyi7aZ7W3rorDfEADW8/ZPkILup8k/v
+	ZQ2oD8jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6aC4-00CrIb-67; Wed, 29 Jun 2022 16:05:32 +0000
+	id 1o6aC7-00CrK4-25; Wed, 29 Jun 2022 16:05:35 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6a6z-00CoXU-U0; Wed, 29 Jun 2022 16:00:20 +0000
+	id 1o6a71-00CoYo-Ct; Wed, 29 Jun 2022 16:00:21 +0000
 Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8E23E660195F;
-	Wed, 29 Jun 2022 17:00:15 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0B60F66019D8;
+	Wed, 29 Jun 2022 17:00:16 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656518416;
-	bh=DkEh0i4AhAuZrJDIOKX1/1K+MmHQy1XtKrDDIPq0SBc=;
+	s=mail; t=1656518418;
+	bh=o29vqqsWji0OFz7litVCz+HSv2vrNoGr04oOrOfn0YM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mGuzmp1ExCM5zcE7UT3S1NSe2MQD7d0sS9HCaAVaseFC4I2QPRi96THo3qN+rHpN8
-	 i6HVkrIwSZlEIwusQ2V7tSfif7LJvsCk42xKv3fm9+rXmKDVleh1nHKPqzKYczIb6F
-	 H7gWCYmkJ5XnAIHOXboLgC70btl+u3z7I06+SJjEsNYB+ju7fZJ/ft2uX6mRhdl9f0
-	 xgRK69PYY9vM2C7GbxqRiB8z5zoEvnAgklCov1Q/MhxJ1Pzy3LybHRmdjck/7udDAk
-	 hSvj4dTLi01kYevztV7GrfacfroFBArZB3s7EsGzxKBlU1BHVRlJ9FsNBzmWAilzZ9
-	 W/jnPqWXGOnDg==
+	b=KA7L+82b3TQ37iIXoQ/ZOTFIuM2Ig0B5xZNl9IkANTbDCpSij0oVuahGvW1BjwMlO
+	 Vpn95jAVKnxoDGYxmCnUEGPW8WjJmeq6jRQdNArA2urpVCn9zT0GlVouBsXaQNjEag
+	 0ChL6N7YeAm6eVth0++RyWz4A2w1mzUbgBYpeDJUTdcJ48zZ3lsci31vnO5b69YMVu
+	 fwiI/K2VWHoDeMe5/SAusfv2dTYVb4nIemEt+TkLmHIze+Svob+tX3J6VJWbAMLrPP
+	 tNz2nhV7T2rCTZbOVqOk9j4hCvXTo4gI2k2cOYo1SLVkAA7qLgtHZTDn1y3BZkppiH
+	 hKSi2BIbzhHTA==
 From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,9 +53,9 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 09/19] arm64: dts: mediatek: asurada: Add Cr50 TPM
-Date: Wed, 29 Jun 2022 11:59:46 -0400
-Message-Id: <20220629155956.1138955-10-nfraprado@collabora.com>
+Subject: [PATCH v4 10/19] arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
+Date: Wed, 29 Jun 2022 11:59:47 -0400
+Message-Id: <20220629155956.1138955-11-nfraprado@collabora.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220629155956.1138955-1-nfraprado@collabora.com>
 References: <20220629155956.1138955-1-nfraprado@collabora.com>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_090018_160029_5ED6C291 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20220629_090019_664911_282061BE 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,62 +79,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Asurada platform has a Google Security Chip connected to the SPI5
-bus. It runs the cr50 firmware and provides TPM functionality. Add
-support for it.
+Add support for the Elan eKTH3000 i2c trackpad present on Asurada. It is
+connected to the I2C2 bus and has address 0x15.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+
 ---
 
-(no changes since v1)
+Changes in v4:
+- Switched mediatek,pull-up-adv for bias-pull-up
 
- .../arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ .../boot/dts/mediatek/mt8192-asurada.dtsi      | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index 07405dea4d9d..fe626535ee5d 100644
+index fe626535ee5d..4de4235cb768 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -5,6 +5,7 @@
-  */
- /dts-v1/;
- #include "mt8192.dtsi"
-+#include <dt-bindings/gpio/gpio.h>
- 
- / {
- 	aliases {
-@@ -353,6 +354,13 @@ &pio {
- 			  "AUD_DAT_MISO0",
- 			  "AUD_DAT_MISO1";
- 
-+	cr50_int: cr50-irq-default-pins {
-+		pins-gsc-ap-int-odl {
-+			pinmux = <PINMUX_GPIO171__FUNC_GPIO171>;
-+			input-enable;
-+		};
-+	};
-+
- 	cros_ec_int: cros-ec-irq-default-pins {
- 		pins-ec-ap-int-odl {
- 			pinmux = <PINMUX_GPIO5__FUNC_GPIO5>;
-@@ -513,6 +521,15 @@ &spi5 {
- 	mediatek,pad-select = <0>;
+@@ -109,6 +109,16 @@ &i2c2 {
+ 	clock-stretch-ns = <12600>;
  	pinctrl-names = "default";
- 	pinctrl-0 = <&spi5_pins>;
+ 	pinctrl-0 = <&i2c2_pins>;
 +
-+	cr50@0 {
-+		compatible = "google,cr50";
-+		reg = <0>;
-+		interrupts-extended = <&pio 171 IRQ_TYPE_EDGE_RISING>;
-+		spi-max-frequency = <1000000>;
++	trackpad@15 {
++		compatible = "elan,ekth3000";
++		reg = <0x15>;
++		interrupts-extended = <&pio 15 IRQ_TYPE_LEVEL_LOW>;
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&cr50_int>;
++		pinctrl-0 = <&trackpad_pins>;
++		vcc-supply = <&pp3300_u>;
++		wakeup-source;
 +	};
  };
  
- &uart0 {
+ &i2c3 {
+@@ -436,6 +446,14 @@ pins-bus {
+ 			bias-disable;
+ 		};
+ 	};
++
++	trackpad_pins: trackpad-default-pins {
++		pins-int-n {
++			pinmux = <PINMUX_GPIO15__FUNC_GPIO15>;
++			input-enable;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_11>;
++		};
++	};
+ };
+ 
+ &spi1 {
 -- 
 2.36.1
 
