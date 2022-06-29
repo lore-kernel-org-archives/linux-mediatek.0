@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45244C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 02:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4680C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 02:57:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=96er2U9eZkwdPU3qj4Dj8e4Wx1BQlATNLHFbB2PsSBw=; b=mpWVbvtZE00f8HbwKGPtfLWM4P
-	AIBwe7Mc0cHjKQaADyGK+45xudYSX6hPu+J1ZkL7BEdEBKkl4DF1gARY8P2zt9uwvJs9aizrWuVd+
-	VA/LXVJbymweaG92TDJvK7SzzDo5sAri+YAiZKQF1zmOR0Cmj2+WbzVloG//tLQWeB0IcQ8zIJ05l
-	9+vhKejGC/Z4+zOAnRVeMDRqAh/Tcrs+BsssdnptRrC8k/Fa/soSmtNtiYDEhr0ceiAUCJCAMUd5c
-	VqWuyUdRhbF6Tha/98L6WmI1IIPA2KgTwhqreR08tl/gstaOiqctTeR9MlZQRcbsV4kcD3i5BGgu6
-	X61fIE9A==;
+	bh=XXXG6QC2SYK1S+qWKr5ZLbN3JggH9TySZLUEdUHPY8E=; b=ljTyaQiZasBWQHp2N//0y21wA/
+	dA69gAPv88JPYSbgqjZ0XtBiS1uEhz627X19iiWXTseuJh7sVomiYeJDAAhVeKpJPt5CE5Fn6XkAA
+	dXXd9Fod88m9nTJSNk+anyeEMs2CfpVtqXM02uLUASnwNsAvQSJoxVuNnqjNsLTgQxDLqCi8KEwGP
+	vLwrNtVLJnToFR/N0W0u/9wKIJNU7aA20YAAb5GE/iisNRc0vE5sgVSwbHo1f9c2zg62dP9+C8gYw
+	vr6JT2kiD/SV6p2QRPwU0Ct7/Uu+E7RAnmstjgNZh/Q8JrwCcbUTG/CZ0zjnDPQUE9GJrItIBnv4l
+	/cUI0ubA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Nt2-00994M-A3; Wed, 29 Jun 2022 02:57:04 +0000
+	id 1o6NtL-0099CN-Mh; Wed, 29 Jun 2022 02:57:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Nsw-0098zZ-N5; Wed, 29 Jun 2022 02:57:00 +0000
-X-UUID: 0448f1a1f4954c849df4287487ae11ec-20220628
+	id 1o6Nsw-0098zf-N1; Wed, 29 Jun 2022 02:57:01 +0000
+X-UUID: d1b1fd0e31954b33bb83d60dbe833ea2-20220628
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:4eda77ad-c7ae-493a-a28c-208b110919f7,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:58161ad6-5d6d-4eaf-a635-828a3ee48b7c,C
+X-CID-O-INFO: VERSION:1.1.7,REQID:40937067-cc2e-41af-9417-272c41127614,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:87442a2,CLOUDID:59161ad6-5d6d-4eaf-a635-828a3ee48b7c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 0448f1a1f4954c849df4287487ae11ec-20220628
+X-UUID: d1b1fd0e31954b33bb83d60dbe833ea2-20220628
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <biao.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 593938408; Tue, 28 Jun 2022 19:52:23 -0700
+	with ESMTP id 430614320; Tue, 28 Jun 2022 19:52:24 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 29 Jun 2022 10:51:25 +0800
+ Wed, 29 Jun 2022 10:51:26 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 29 Jun 2022 10:51:23 +0800
+ Transport; Wed, 29 Jun 2022 10:51:25 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: David Miller <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, "Rob
  Herring" <robh+dt@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, "Fabien
@@ -54,11 +54,10 @@ CC: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	Biao Huang <biao.huang@mediatek.com>, Yinghua Pan
-	<ot_yinghua.pan@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, "Rob
- Herring" <robh@kernel.org>
-Subject: [PATCH net-next v4 07/10] dt-bindings: net: mtk-star-emac: add description for new properties
-Date: Wed, 29 Jun 2022 10:51:06 +0800
-Message-ID: <20220629025109.21933-8-biao.huang@mediatek.com>
+	<ot_yinghua.pan@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
+Subject: [PATCH net-next v4 08/10] net: ethernet: mtk-star-emac: add support for MII interface
+Date: Wed, 29 Jun 2022 10:51:07 +0800
+Message-ID: <20220629025109.21933-9-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220629025109.21933-1-biao.huang@mediatek.com>
 References: <20220629025109.21933-1-biao.huang@mediatek.com>
@@ -67,8 +66,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_195658_824985_193E9275 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20220628_195658_831939_D8633622 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,41 +82,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add description for new properties which will be parsed in driver.
+Add support for MII interface.
+If user wants to use MII, assign "MII" to "phy-mode" property in dts.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Yinghua Pan <ot_yinghua.pan@mediatek.com>
 ---
- .../bindings/net/mediatek,star-emac.yaml         | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml b/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml
-index 6b0769e831a6..64c893c98d80 100644
---- a/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek,star-emac.yaml
-@@ -48,6 +48,22 @@ properties:
-       Phandle to the device containing the PERICFG register range. This is used
-       to control the MII mode.
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index 05ce62202180..a1165f293494 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -192,6 +192,7 @@ static const char *const mtk_star_clk_names[] = { "core", "reg", "trans" };
+ #define MTK_PERICFG_REG_NIC_CFG1_CON		0x03c8
+ #define MTK_PERICFG_REG_NIC_CFG_CON_V2		0x0c10
+ #define MTK_PERICFG_REG_NIC_CFG_CON_CFG_INTF	GENMASK(3, 0)
++#define MTK_PERICFG_BIT_NIC_CFG_CON_MII		0
+ #define MTK_PERICFG_BIT_NIC_CFG_CON_RMII	1
+ #define MTK_PERICFG_BIT_NIC_CFG_CON_CLK		BIT(0)
+ #define MTK_PERICFG_BIT_NIC_CFG_CON_CLK_V2	BIT(8)
+@@ -1462,6 +1463,7 @@ static int mtk_star_set_timing(struct mtk_star_priv *priv)
+ 	unsigned int delay_val = 0;
  
-+  mediatek,rmii-rxc:
-+    type: boolean
-+    description:
-+      If present, indicates that the RMII reference clock, which is from external
-+      PHYs, is connected to RXC pin. Otherwise, is connected to TXC pin.
-+
-+  mediatek,rxc-inverse:
-+    type: boolean
-+    description:
-+      If present, indicates that clock on RXC pad will be inversed.
-+
-+  mediatek,txc-inverse:
-+    type: boolean
-+    description:
-+      If present, indicates that clock on TXC pad will be inversed.
-+
-   mdio:
-     $ref: mdio.yaml#
-     unevaluatedProperties: false
+ 	switch (priv->phy_intf) {
++	case PHY_INTERFACE_MODE_MII:
+ 	case PHY_INTERFACE_MODE_RMII:
+ 		delay_val |= FIELD_PREP(MTK_STAR_BIT_INV_RX_CLK, priv->rx_inv);
+ 		delay_val |= FIELD_PREP(MTK_STAR_BIT_INV_TX_CLK, priv->tx_inv);
+@@ -1543,7 +1545,8 @@ static int mtk_star_probe(struct platform_device *pdev)
+ 	ret = of_get_phy_mode(of_node, &priv->phy_intf);
+ 	if (ret) {
+ 		return ret;
+-	} else if (priv->phy_intf != PHY_INTERFACE_MODE_RMII) {
++	} else if (priv->phy_intf != PHY_INTERFACE_MODE_RMII &&
++		   priv->phy_intf != PHY_INTERFACE_MODE_MII) {
+ 		dev_err(dev, "unsupported phy mode: %s\n",
+ 			phy_modes(priv->phy_intf));
+ 		return -EINVAL;
+@@ -1612,6 +1615,10 @@ static int mt8516_set_interface_mode(struct net_device *ndev)
+ 	unsigned int intf_val, ret, rmii_rxc;
+ 
+ 	switch (priv->phy_intf) {
++	case PHY_INTERFACE_MODE_MII:
++		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_MII;
++		rmii_rxc = 0;
++		break;
+ 	case PHY_INTERFACE_MODE_RMII:
+ 		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
+ 		rmii_rxc = priv->rmii_rxc ? 0 : MTK_PERICFG_BIT_NIC_CFG_CON_CLK;
+@@ -1641,6 +1648,9 @@ static int mt8365_set_interface_mode(struct net_device *ndev)
+ 	unsigned int intf_val;
+ 
+ 	switch (priv->phy_intf) {
++	case PHY_INTERFACE_MODE_MII:
++		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_MII;
++		break;
+ 	case PHY_INTERFACE_MODE_RMII:
+ 		intf_val = MTK_PERICFG_BIT_NIC_CFG_CON_RMII;
+ 		intf_val |= priv->rmii_rxc ? 0 : MTK_PERICFG_BIT_NIC_CFG_CON_CLK_V2;
 -- 
 2.25.1
 
