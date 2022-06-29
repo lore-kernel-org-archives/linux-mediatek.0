@@ -4,78 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC022C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 21:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B1E2C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jun 2022 21:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oz6GKw8BpKrDIGgvnV9242qGIiYTvSr9/fjEazC9jI8=; b=Pem+HtplXXwo0dG6ShagMhzsam
-	RPvDLxnZwkHxikTF7nownh5mb3OLYcLwNwipLfJIfAen80sE/cs4NJ12f0s4X9uzjyjoL5n7GR6Ld
-	id1e4YfQcf3lxki0D8l43vmiMw3ouvJ3DkUL8z7wYNs3Bjvfi7cHimJ/+MrTRLk14eQUolEp7tOCW
-	603IBf2a3nbiNj+gEZvNrafmmvMSiSwdv4T/mT8WxaE4RdGABHQ75le4jppHNz9r4gMRWUQL7+Plx
-	wRNjAJi7thlVB5txZmyP/oZmLAHk/8s+cORBL//Tvnho6cNYm68hE1lrad057pwzTAhjhJb2iXYAE
-	55EfGwHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bslPby+Ydb7eJ2PfH2XQCc1VYqpL9TKCaQhHZ8Wf9gU=; b=YkO/CZTv9DXoSgrC10BN0LXNfU
+	ajU57MfWCibGa+nleYrQQL74Izqc+gLg+3ED9yZEB35j5iIprpaoJrSqiZtv/IAbDJFYPE+lN3G1+
+	95yNXHA1LMFJDxAF21XIWbb213f6sV1B531617vmM5++xCRByryvYCjvUTZNp2b2LnQ3vz6PiFqq7
+	c7aKz/tQqfailHBAi9jCRlq36Chdc1q1Q8e70THDMso5MqW2/3/hiM8TbApXb7tjVMZ9HVE0V360l
+	x+z78VumDCwXTpi7F0kFwOfPAi3CURGuwNg1lByxKrpAFnf+wDjAV8JHD4YnkmD09BOXNK1peok8B
+	9m9/D9LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6f77-00E6bQ-Gz; Wed, 29 Jun 2022 21:20:45 +0000
-Received: from hostingweb31-40.netsons.net ([89.40.174.40])
+	id 1o6fPb-00EAJg-5Z; Wed, 29 Jun 2022 21:39:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6f6u-00E6Z6-TA; Wed, 29 Jun 2022 21:20:34 +0000
-Received: from [37.161.29.0] (port=43545 helo=[192.168.131.30])
-	by hostingweb31.netsons.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.95)
-	(envelope-from <luca@lucaceresoli.net>)
-	id 1o6f6m-000BzC-Qd;
-	Wed, 29 Jun 2022 23:20:25 +0200
-Message-ID: <d682fb60-c254-f89e-5d6d-cdf7aa752939@lucaceresoli.net>
-Date: Wed, 29 Jun 2022 23:20:04 +0200
+	id 1o6fPP-00EAGk-KD; Wed, 29 Jun 2022 21:39:40 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id F2058616B2;
+	Wed, 29 Jun 2022 21:39:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41930C341C8;
+	Wed, 29 Jun 2022 21:39:36 +0000 (UTC)
+Date: Wed, 29 Jun 2022 22:39:33 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: yee.lee@mediatek.com
+Cc: linux-kernel@vger.kernel.org, Alexander Potapenko <glider@google.com>,
+	Marco Elver <elver@google.com>, Dmitry Vyukov <dvyukov@google.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"open list:KFENCE" <kasan-dev@googlegroups.com>,
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early
+ allocated pool
+Message-ID: <YrzGlSUtnXuiuUEK@arm.com>
+References: <20220628113714.7792-1-yee.lee@mediatek.com>
+ <20220628113714.7792-2-yee.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-From: Luca Ceresoli <luca@lucaceresoli.net>
-Subject: Re: [PATCH 6/6] i2c: Make remove callback return void
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Wolfram Sang <wsa@kernel.org>
-Cc: linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linuxppc-dev@lists.ozlabs.org, openipmi-developer@lists.sourceforge.net,
- linux-integrity@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-crypto@vger.kernel.org, linux-gpio@vger.kernel.org,
- dri-devel@lists.freedesktop.org, chrome-platform@lists.linux.dev,
- linux-rpi-kernel@lists.infradead.org, linux-input@vger.kernel.org,
- linux-hwmon@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-leds@vger.kernel.org,
- linux-media@vger.kernel.org, patches@opensource.cirrus.com,
- alsa-devel@alsa-project.org, linux-omap@vger.kernel.org,
- linux-mtd@lists.infradead.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, platform-driver-x86@vger.kernel.org,
- acpi4asus-user@lists.sourceforge.net, linux-pm@vger.kernel.org,
- linux-pwm@vger.kernel.org, linux-rtc@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-serial@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org,
- linux-watchdog@vger.kernel.org, kasan-dev@googlegroups.com,
- linux-mediatek@lists.infradead.org
-References: <20220628140313.74984-1-u.kleine-koenig@pengutronix.de>
- <20220628140313.74984-7-u.kleine-koenig@pengutronix.de>
-Content-Language: en-US
-In-Reply-To: <20220628140313.74984-7-u.kleine-koenig@pengutronix.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - hostingweb31.netsons.net
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - lucaceresoli.net
-X-Get-Message-Sender-Via: hostingweb31.netsons.net: authenticated_id: luca@lucaceresoli.net
-X-Authenticated-Sender: hostingweb31.netsons.net: luca@lucaceresoli.net
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220628113714.7792-2-yee.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_142033_136740_A23A237D 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20220629_143939_737081_C000C773 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,57 +68,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Jun 28, 2022 at 07:37:11PM +0800, yee.lee@mediatek.com wrote:
+> From: Yee Lee <yee.lee@mediatek.com>
+> 
+> This patch solves two issues.
+> 
+> (1) The pool allocated by memblock needs to unregister from
+> kmemleak scanning. Apply kmemleak_ignore_phys to replace the
+> original kmemleak_free as its address now is stored in the phys tree.
+> 
+> (2) The pool late allocated by page-alloc doesn't need to unregister.
+> Move out the freeing operation from its call path.
+> 
+> Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
+> Suggested-by: Marco Elver <elver@google.com>
+> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 
-[keeping only individuals and lists in Cc to avoid bounces]
-
-On 28/06/22 16:03, Uwe Kleine-K=C3=B6nig wrote:
-> From: Uwe Kleine-K=C3=B6nig <uwe@kleine-koenig.org>
->=20
-> The value returned by an i2c driver's remove function is mostly ignored=
-=2E
-> (Only an error message is printed if the value is non-zero that the
-> error is ignored.)
->=20
-> So change the prototype of the remove function to return no value. This=
-
-> way driver authors are not tempted to assume that passing an error to
-> the upper layer is a good idea. All drivers are adapted accordingly.
-> There is no intended change of behaviour, all callbacks were prepared t=
-o
-> return 0 before.
->=20
-> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
-
-For versaclock:
-
-> diff --git a/drivers/clk/clk-versaclock5.c b/drivers/clk/clk-versaclock=
-5.c
-> index e7be3e54b9be..657493ecce4c 100644
-> --- a/drivers/clk/clk-versaclock5.c
-> +++ b/drivers/clk/clk-versaclock5.c
-> @@ -1138,7 +1138,7 @@ static int vc5_probe(struct i2c_client *client)
->  	return ret;
->  }
-> =20
-> -static int vc5_remove(struct i2c_client *client)
-> +static void vc5_remove(struct i2c_client *client)
->  {
->  	struct vc5_driver_data *vc5 =3D i2c_get_clientdata(client);
-> =20
-> @@ -1146,8 +1146,6 @@ static int vc5_remove(struct i2c_client *client)
-> =20
->  	if (vc5->chip_info->flags & VC5_HAS_INTERNAL_XTAL)
->  		clk_unregister_fixed_rate(vc5->pin_xin);
-> -
-> -	return 0;
->  }
-> =20
->  static int __maybe_unused vc5_suspend(struct device *dev)
-
-Reviewed-by: Luca Ceresoli <luca@lucaceresoli.net>
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-
---=20
-Luca
+Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
 
