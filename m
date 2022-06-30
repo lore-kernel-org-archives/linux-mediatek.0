@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9BF6CCA47B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 09:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8FF6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 09:57:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2xk6QfBCmjgAYyXgArcsOEE0fCDce6AQZ9rpXnxSLlk=; b=OiSRTRo76TG69Glp8tWWd9D+Y+
-	qFVh6z3ShrMPxuS0sfx6OjESOiw7LoyCjSy32cdMBunrmCyI8ByOGvfY5c6BVouW2EkpEyHZ3me0J
-	iZ1Z3VFmSgXg0MsTcHN7K5Etv1zrkRGXqcEcfnUxVuS/vehIPPn/hNrztY895RS0V8D8AO5r8ZDFp
-	X6dyJa0XA8slHeOAsdb7U4vAKFc12neqm6wYZN9Aswglgtn/uLohkqHqHG/yMYADkHNyp3zebkGFM
-	wJjhC+2uqINT7YykY4UE5XpHXu26CmZeR3okKo2f2D47LK8GywMfi7uTX+ZEko9+pS74wcPsD2R0R
-	uBcdWPdg==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=k/7M7DxvVXA2pLHQXQnpa1ZjepdcYtgTv/t1T/Qzy94=; b=TG0l1L1pnXnmim0GNFv2vlA3cm
+	YQ+VmsXsaiSUkJjWT67LlxxDX85UvnD/fMCOiL17CT4EF6PkXt0fA6R5ifQL9p51LuvYA230bgKDN
+	akGQbLpmakMkmnjtavg+lJiOJ7xBi/8AQ0uiEgSNvJyRqw9DVRitJNanip0fGNtMRXmtflSzFHJjF
+	BZfsmeOuMyOEwpsTYDMCMNAxSBgAPhjXmj5C7t6L4E/eHRqVh6WQdb2KR4/w/9fS4Kqq4+dVnZJFj
+	NbTBXH5/DNrYh0BTYajJRR/vIerBDXXXl0W8nmRSUUQpMV/t65ZOR7FuIY4E8/sWOQPnfGnIdpZVY
+	bFZLT8AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6qtY-00GNVQ-Mk; Thu, 30 Jun 2022 09:55:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o6qv8-00GO9e-0A; Thu, 30 Jun 2022 09:57:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6qtL-00GNQU-83; Thu, 30 Jun 2022 09:55:20 +0000
-X-UUID: 237156e0af0c43a69ce1c97f83d69ab7-20220630
+	id 1o6qv4-00GO8H-W4; Thu, 30 Jun 2022 09:57:08 +0000
+X-UUID: f90cdef35b794037804e48e625526224-20220630
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:36aad2c8-4e13-4a5a-ae9e-58d093ebf28b,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:87442a2,CLOUDID:b4490e63-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-O-INFO: VERSION:1.1.7,REQID:a3d07d9f-5980-4538-a13b-b07de04fdfc1,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:87442a2,CLOUDID:009140d6-5d6d-4eaf-a635-828a3ee48b7c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 237156e0af0c43a69ce1c97f83d69ab7-20220630
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
+X-UUID: f90cdef35b794037804e48e625526224-20220630
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1260097411; Thu, 30 Jun 2022 02:55:17 -0700
+	with ESMTP id 601717070; Thu, 30 Jun 2022 02:57:02 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 30 Jun 2022 17:14:10 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 30 Jun 2022 17:36:25 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 30 Jun 2022 17:14:09 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
-	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
-	<river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Subject: [PATCH v20 2/4] dt-binding: mediatek: add bindings for MediaTek CCORR and WDMA
-Date: Thu, 30 Jun 2022 17:14:06 +0800
-Message-ID: <20220630091408.6438-3-moudy.ho@mediatek.com>
+ Transport; Thu, 30 Jun 2022 17:36:24 +0800
+From: <yf.wang@mediatek.com>
+To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Joerg
+ Roedel" <joro@8bytes.org>, Yong Wu <Yong.Wu@mediatek.com>, Miles Chen
+	<miles.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Ning Li
+	<ning.li@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+	<iommu@lists.linux-foundation.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v12 0/2] iommu/mediatek: TTBR up to 35bit support
+Date: Thu, 30 Jun 2022 17:29:24 +0800
+Message-ID: <20220630092927.24925-1-yf.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220630091408.6438-1-moudy.ho@mediatek.com>
-References: <20220630091408.6438-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_025519_335773_7FCBDDC0 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20220630_025707_076553_6D51B29F 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,164 +76,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds DT binding documentation for MediaTek's CCORR and
-WDMA components.
-These components exist in both MediaTek's Media Data Path 3(MDP3) and DRM,
-and the bindings are placed under the folder "./soc/mediatek" to prevent
-duplicate builds.
+This patchset adds MediaTek TTBR up to 35bit support for single normal zone.
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../bindings/soc/mediatek/mediatek,ccorr.yaml | 58 +++++++++++++++
- .../bindings/soc/mediatek/mediatek,wdma.yaml  | 71 +++++++++++++++++++
- 2 files changed, 129 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+Changes in v12:
+- Update [PATCH 1/2]: remove GENMASK(31, 7)
+- Update [PATCH 2/2]: remove MMU_PT_ADDR_MASK definition.
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-new file mode 100644
-index 000000000000..20d02cb4ad0a
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-@@ -0,0 +1,58 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/mediatek/mediatek,ccorr.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek color correction
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  Mediatek color correction with 3X3 matrix.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-ccorr
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+
-+    mdp3_ccorr: mdp3-ccorr@1401c000 {
-+      compatible = "mediatek,mt8183-mdp3-ccorr";
-+      reg = <0x1401c000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-+      clocks = <&mmsys CLK_MM_MDP_CCORR>;
-+    };
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-new file mode 100644
-index 000000000000..102d9e163139
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-@@ -0,0 +1,71 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/mediatek/mediatek,wdma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Write Direct Memory Access
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  Mediatek Write Direct Memory Access(WDMA) component used to write
-+  the data into DMA.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-wdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+
-+  iommus:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - power-domains
-+  - clocks
-+  - iommus
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+    #include <dt-bindings/power/mt8183-power.h>
-+    #include <dt-bindings/memory/mt8183-larb-port.h>
-+
-+    mdp3_wdma: mdp3-wdma@14006000 {
-+      compatible = "mediatek,mt8183-mdp3-wdma";
-+      reg = <0x14006000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
-+      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-+      iommus = <&iommu>;
-+    };
--- 
-2.18.0
+Changes in v11:
+https://lore.kernel.org/linux-mediatek/20220630062508.23512-1-yf.wang@mediatek.com/
+- According to Yong's suggestion in [PATCH v10] to update patch
+  - [PATCH 1/2]: Because keep ttbr u32, so the special logic of encoded PA
+    bits[34:32] to ttbr lower bits will apply to all the MediaTek cases,
+    not only for the quirk IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT, so remove
+    quirk check.
+  - [PATCH 2/2]: Because no need calculate the special ttbr, so remove ttbr
+    from mtk_iommu_domain and remove MMU_PT_ADDR_MASK calculate.
+
+Changes in v10:
+https://lore.kernel.org/linux-mediatek/20220616120713.12728-1-yf.wang@mediatek.com/
+- According to Robin's suggestion in [PATCH v9] to update patch
+  - Recovery ttbr to u32, encoded PA bits[34:32] to ttbr lower bits.
+  - Remove PATCH: Rename MTK_IOMMU_TLB_ADDR to MTK_IOMMU_ADDR.
+
+Changes in v9:
+https://lore.kernel.org/linux-mediatek/20220615161224.6923-1-yf.wang@mediatek.com/
+- According to Will's suggestion in [PATCH v8 1/3] update [PATCH 1/3]
+  - Rename function to_iopte_mtk to to_mtk_iopte.
+  - Modify gfp_l1 and slab_flag and add comment explaining.
+  - Add checking that the address is within 35 bits use cfg->oas.
+  - PATCH 1/3 & PATCH 2/3 no change.
+
+Changes in v8:
+https://lore.kernel.org/linux-mediatek/20220611102656.10954-1-yf.wang@mediatek.com/
+- Add and update patch
+  - Add [2/3] patch update MTK_IOMMU_ADDR to calculate the special ttbr.
+  - Save the special ttbr to mtk_iommu_domain avoid calculate it again.
+
+Changes in v7:
+https://lore.kernel.org/linux-mediatek/20220530080432.29123-1-yf.wang@mediatek.com/
+- Update patch and commit message
+  - Extend arm_v7s_cfg.ttbr to u64.
+  - Move the special ttbr logical into mtk_iommu.c.
+  - Update commit message for single normal zone.
+
+Changes in v6:
+- Update patch: gfp_l1 = GFP_KERNEL | __GFP_ZERO;
+- Update commit message for single normal zone.
+
+Changes in v5:
+- Only update message-ID.
+
+Changes in v4:
+- Fix build test WARNING: use GENMASK_ULL replace GENMASK.
+
+Changes in v3:
+- Add version changes description, there is No new code change in V3.
+
+Changes in v2:
+- Update patch and commit message
+  - Add Level 1 pgtable PA up to 35bit.
+  - This is new feature, remove stable@vger.kernel.org
+  - Update commit message.
+
+Ning Li (2):
+  iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
+  iommu/mediatek: Allow page table PA up to 35bit
+
+ drivers/iommu/io-pgtable-arm-v7s.c | 75 ++++++++++++++++++++++--------
+ drivers/iommu/mtk_iommu.c          | 13 +++--
+ include/linux/io-pgtable.h         | 15 ++++--
+ 3 files changed, 73 insertions(+), 30 deletions(-)
+
 
 
