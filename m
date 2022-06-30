@@ -4,66 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AFA8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 11:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE2A0C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 11:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1N9h956Bt3ixqVMsp1a4VhX9wVwf/p1nPZbmMs8HxH8=; b=bE0AW0mn9H9QfBMqTNhhp0cvjO
-	p7CXMxd71gaefX8pTWc65homQNe9Zxj/Sew8xTAWPBwoFOZTNh3JnAdhFy4FqDAk9sV9lajRGqfNA
-	PtYzBKPU1PXnuuIi7eZyGWFcVzOzDae7a90xqzD1+gmufwLyrIF15jFVZJ/JObKHcKKlhtnMwG0I9
-	qnZqvW0iG0lkBiDNp9qNG5F+PwgVjnkUytWMwpacMZ1iyaUtGGOT9O6IEUY7jydeERIIfowE92icz
-	o6RHAvbRSUYJxJrnJLjkOxEet4SP1wcWldw5jmuelldyrZ364I8iVgsBAuFhtb6xyKwCkM0Ttmy2u
-	6KyYhlNA==;
+	bh=OPUPtfw6pfWCiR1mZeXscth6kv6xBVcFjag/DYVBL48=; b=sXraw/ANxgPsl9xfxk239qQ7EP
+	sPbjG2HvR3J3C39L6DMF0YrngHp7+yeH5XrFJmuj4h29ny2rBUuYVDoU87JsP5jORty9ffA1AvkWi
+	tUqLnfv56BgHghJM7lo8rhUHNEe4MEINgRlqfRCjYIfYGcnrTMqKHCIkWyszSQy0dGeHO9FvQfskC
+	2EvTpIJ0FuSgtzZSP8ltKQ1ZhYo7n0+DL/bRNnj7J1/K4RGiMmIJZTZA2BooBBxw/hINpk88X81Ly
+	NlX/2QcXiT7N2XRvAiVBa2XncQnRpn1cr2PezxE1YCJ3vt9sDXiHeE8/v22cLt3bmropTwndLmHXj
+	boEMZ7EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6rzD-00GksJ-1W; Thu, 30 Jun 2022 11:05:27 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o6sIj-00GpW8-Qv; Thu, 30 Jun 2022 11:25:37 +0000
+Received: from mail1.systemli.org ([2a11:7980:3::36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6ryw-00GkmJ-Dc; Thu, 30 Jun 2022 11:05:11 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B1B6C6601948;
-	Thu, 30 Jun 2022 12:05:03 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656587104;
-	bh=eGFqIXIFYAXFE4MO2t8tHeXxZXxmMvb3vwAEEfOAIgg=;
+	id 1o6sIY-00GpTZ-Fv; Thu, 30 Jun 2022 11:25:28 +0000
+From: Nick Hainke <vincent@systemli.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=systemli.org;
+	s=default; t=1656587878;
+	bh=OPUPtfw6pfWCiR1mZeXscth6kv6xBVcFjag/DYVBL48=;
 	h=From:To:Cc:Subject:Date:From;
-	b=axcyMITDCmjnCABiyM0+gfZYWbeDjlhi8gINRkvZHtV86da9BWJ5WPUaHZn8K6JCj
-	 o+Ry4zGywO+mKDjGqkVyAiN+09ft6LyWNBHyhViJcbCuJfM5YYkwcj3fEfhL+d5pRx
-	 kpVEvo7WoPkbEJQuXcoIby2bTeRWwR/SnKicegM55mJIK6FmH9LDKrhfOO13iRw3JL
-	 bVComaH/GB6bw5BBQHJ6FUw2CFPAFZlSzR5lDE8C0eukRQhJTxUz85t2OhlOSfy8tA
-	 2ot9UJVA4VAhA4BaiF4uVhhjudZHvbjHqOn2/asQKDdlBDt7mAs8u8YdjHdHb+ojXX
-	 5acWxIqdbo4MQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linus.walleij@linaro.org
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	sean.wang@mediatek.com,
-	linux-gpio@vger.kernel.org,
+	b=+YxJ4+G0hePqtaNyGs7JHJJs4ZP3r7h0fmuyqN6Ay4vISE+ON4aL0THp0A4D3Grdh
+	 ZvAZFqesoSjzk+112z1z2DWtAWQmdBvA7crbd49LvccUcHvY5AOls1G3BPnMwnC1rK
+	 H/47i+3HpRnh82uL2dUd8pAk/rPVT896dFniOkg3HwkALOdURiN/fNd7boQqfJZOqT
+	 WKDAu+wP3eP1b79Ds/wX9MXryytTjoBXSzBBq7Lu5DU3bvkt6vHXCNSeAou4zLUrDF
+	 rq9nm6/gCqwB1HaSLJagyLcXtw66K0wE0Q94IMWCSh040V7NFeuqIrJEmIenGZ3+oN
+	 PogK2koGz7ekw==
+To: linux-mediatek@lists.infradead.org
+Cc: Nick Hainke <vincent@systemli.org>,
+	INAGAKI Hiroshi <musashino.open@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	nfraprado@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] dt-bindings: pinctrl: mt8195: Add gpio-line-names property
-Date: Thu, 30 Jun 2022 13:04:53 +0200
-Message-Id: <20220630110453.186526-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: mt7622: fix BPI-R64 WPS button
+Date: Thu, 30 Jun 2022 13:16:57 +0200
+Message-Id: <20220630111746.4098-1-vincent@systemli.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_040510_663379_3A93B8ED 
-X-CRM114-Status: UNSURE (   7.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220630_042527_036874_718E89F6 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,28 +67,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the 'gpio-line-names' property to mt8195-pinctrl, as this will be
-used in devicetrees to describe pin names.
+The bananapi R64 (BPI-R64) experiences wrong WPS button signals.
+In OpenWrt pushing the WPS button while powering on the device will set
+it to recovery mode. Currently, this also happens without any user
+interaction. In particular, the wrong signals appear while booting the
+device or restarting it, e.g. after doing a system upgrade. If the
+device is in recovery mode the user needs to manually power cycle or
+restart it.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The official BPI-R64 sources set the WPS button to GPIO_ACTIVE_LOW in
+the device tree. This setting seems to suppress the unwanted WPS button
+press signals. So this commit changes the button from GPIO_ACTIVE_HIGH to
+GPIO_ACTIVE_LOW.
+
+The official BPI-R64 sources can be found on
+https://github.com/BPI-SINOVOIP/BPI-R64-openwrt
+
+Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
+
+Suggested-by: INAGAKI Hiroshi <musashino.open@gmail.com>
+Signed-off-by: Nick Hainke <vincent@systemli.org>
 ---
- Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-index c5b755514c46..15989743afd2 100644
---- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-@@ -29,6 +29,8 @@ properties:
-     description: gpio valid number range.
-     maxItems: 1
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index 2b9bf8dd14ec..7538918c7a82 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -49,7 +49,7 @@ factory {
+ 		wps {
+ 			label = "wps";
+ 			linux,code = <KEY_WPS_BUTTON>;
+-			gpios = <&pio 102 GPIO_ACTIVE_HIGH>;
++			gpios = <&pio 102 GPIO_ACTIVE_LOW>;
+ 		};
+ 	};
  
-+  gpio-line-names: true
-+
-   reg:
-     description: |
-       Physical address base for gpio base registers. There are 8 GPIO
 -- 
-2.35.1
+2.37.0
 
 
