@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42EA0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 15:37:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E359C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 15:39:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l0H4Tb7jspgbenIwk9oZ4Yih9WscgIB/rfGdAnUnDGc=; b=G5XDfackLoRIrYihoDIp3h9fl7
-	D43j8MpkPAnebj5NaIPgMjLCbBMVFSid3duwQYaduwFp+KHR1sqtsYHhqWtGEPVXXEQ8T+r5BNFUc
-	8hn17ceBnCG4SVLeU5TuysQqWdZdWYOlgo69sx+E7MRLPN2qR4SoCBbahoHiAmLUhj6EaFkZ/RmCk
-	ldPGS7WhAwR5FtxO0DqxbR2iRLg0enEsV7cTIsdr6Avj5SfMa/1Qzc1DOmYIVaXP+JbIRNhnxZZtV
-	Sjlm3O57NdlHaiRGufEtSC4MTD60hlCUNw12Pa/RToEbBCeONgHktMZnIxkZsDJgN40IImI9qBE5R
-	Bkra6d0g==;
+	bh=dx+9BaNLIYzLxN11F6MPhEmGuNh7XKvQrsKGjaPH0Kk=; b=cfKI4u9PJFDRNfS13j/OhgljP9
+	VNF4+s+PKuHhXGOZuZhd/I5ZvpobaejJeisnhvT+SrErGLBQqj6EfMYhq98snVwzNG2RCrDN8kmI0
+	DVr7mUcnfZiuFrr/KRcreYaVXyM1jW1gBWu04+Ol6mrBRZ4hCRJAz790L8dpWHiGSFXcWUCk3h3dI
+	anvath9ycsaA+Ft9+4kAL+FUizTsuvfBMPlzV+G9VSomvP01JEivZZR4cgsOnVeuqxCb46ToeCgzc
+	cqdunIFBvyGgRX06JxTtDTkjj5GwRdVw/s6rG8ePORVFftxjQSNBfMTQ9T4s8614Y1tfrAlMszltl
+	v1VT1fGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6wEq-000Kmh-15; Thu, 30 Jun 2022 15:37:52 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o6wFs-000LRC-88; Thu, 30 Jun 2022 15:38:56 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6wAf-000IZB-Ej; Thu, 30 Jun 2022 15:33:35 +0000
+	id 1o6wAg-000IZn-CL; Thu, 30 Jun 2022 15:33:36 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B9016601977;
-	Thu, 30 Jun 2022 16:33:31 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5EA0D6601979;
+	Thu, 30 Jun 2022 16:33:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656603212;
-	bh=Z5AoNXePqDCnxXb8uAYZR8QzxcTn7tQFTixe292MpDQ=;
+	s=mail; t=1656603213;
+	bh=UHGvuNhuUk7L5c7BKtAhAhJRqJa8V9GWgDdTDxtXvvw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=d9EDnd81JFVrRCxiTNFt7rOMnjZSNr+4qseMa/IczEdoCewcK+wMLT2uYpCbgdU26
-	 90Tslt8i42cXFf+ZAgwjkVaRUPMctG2KgC5Ldp54TEqqGFK0vUbnBvpvDwH60cXST3
-	 vU4bc5fuV+tSV2yHkhTW81nMKV61DF03znoxt/jlEtJz7B+i+jOwThjpwJWDsaXGVU
-	 /xPWygGxtV1kLB2Ahk/momOOE/EsWCKeTvTRhiXP8GVT+u0s7Kx/1F/xwzOI2Rq0Do
-	 1eR1vOnxfVGYFFBf0Z4nujT8WbpNhbAYwr0mWypDdgZGalLgMCVUO0mEw/s2joztNh
-	 T3oigYwSDiqDA==
+	b=lssvneloFtoaJ59J9UcbKSZwHCwGiqV6tWJ5ePbZXkha7i7mmKQ2GXp8StPv8sQ0w
+	 xY5AOgCbS+K8uHBmBcy6jQ9JIgAwsk0Ltgr5gzlgSgRMSxQQuCx/adzp8KLtj5K+es
+	 6+M1HHqO5hEt26ijSUqRfkb775kRvpFJUY0O/hv+B+8B7+KQ1LOIDT019onrD2NFKu
+	 AEfvOhIC+4X/fAwiiMp1gQ1uFGH3GcQuDYWimFI8t2MlpwrMGMGO1ySXs5GkBKRvxH
+	 XS5sVuk9tCm+au1k7MZGkaOFS4lHV5JYNsNxdqyqp4z4HLaT25PVnx4zOxp4WQHvtw
+	 mkI4Jo/mzD5Mg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -58,17 +58,17 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org
-Subject: [PATCH 09/11] arm64: dts: mediatek: cherry: Enable MT6360 sub-pmic on I2C7
-Date: Thu, 30 Jun 2022 17:33:14 +0200
-Message-Id: <20220630153316.308767-10-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 10/11] arm64: dts: mediatek: cherry: Enable support for the SPI NOR flash
+Date: Thu, 30 Jun 2022 17:33:15 +0200
+Message-Id: <20220630153316.308767-11-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
 References: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_083333_731021_7F8C7245 
-X-CRM114-Status: UNSURE (   8.85  )
+X-CRM114-CacheID: sfid-20220630_083334_639873_FD8E4D21 
+X-CRM114-Status: UNSURE (   8.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,54 +84,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All devices of the Cherry platform have a MT6360 sub-pmic,
-providing two LDOs. Add the required node to enable the PMIC
-but without regulators yet, as these will be added in a
-later commit.
+This platform has a SPI NOR: enable support for it, completing the
+storage compartment enablement for the entire platform.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 20 +++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 31 +++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 379d0e5c4055..1668aa1be373 100644
+index 1668aa1be373..2687c6d40ac1 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -161,6 +161,18 @@ &i2c7 {
- 	clock-frequency = <400000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c7_pin>;
-+
-+	pmic@34 {
-+		#interrupt-cells = <2>;
-+		compatible = "mediatek,mt6360";
-+		reg = <0x34>;
-+		interrupt-controller;
-+		interrupts-extended = <&pio 130 IRQ_TYPE_EDGE_FALLING>;
-+		interrupt-names = "IRQB";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&subpmic_default>;
-+		wakeup-source;
-+	};
+@@ -231,6 +231,21 @@ &mt6359_vufs_ldo_reg {
+ 	regulator-always-on;
  };
  
- &mmc0 {
-@@ -558,6 +570,14 @@ pins-miso {
- 			bias-pull-down;
++&nor_flash {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&nor_pins_default>;
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <52000000>;
++		spi-rx-bus-width = <2>;
++		spi-tx-bus-width = <2>;
++	};
++};
++
+ &pio {
+ 	mediatek,rsel-resistance-in-si-unit;
+ 	pinctrl-names = "default";
+@@ -513,6 +528,22 @@ pins-rst {
  		};
  	};
+ 
++	nor_pins_default: nor-default-pins {
++		pins-ck-io {
++			pinmux = <PINMUX_GPIO142__FUNC_SPINOR_IO0>,
++				 <PINMUX_GPIO141__FUNC_SPINOR_CK>,
++				 <PINMUX_GPIO143__FUNC_SPINOR_IO1>;
++			drive-strength = <MTK_DRIVE_6mA>;
++			bias-pull-down;
++		};
 +
-+	subpmic_default: subpmic-default-pins {
-+		subpmic_pin_irq: pins-subpmic-int-n {
-+			pinmux = <PINMUX_GPIO130__FUNC_GPIO130>;
-+			input-enable;
++		pins-cs {
++			pinmux = <PINMUX_GPIO140__FUNC_SPINOR_CS>;
++			drive-strength = <MTK_DRIVE_6mA>;
 +			bias-pull-up;
 +		};
 +	};
- };
- 
- &pmic {
++
+ 	pio_default: pio-default-pins {
+ 		pins-wifi-enable {
+ 			pinmux = <PINMUX_GPIO58__FUNC_GPIO58>;
 -- 
 2.35.1
 
