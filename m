@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E173BC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 22:16:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DCDEC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 22:24:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bwQzM8Z8cc5RUevl243HXV9krJjNefuoRXCjNrL2NnE=; b=P40EPEFA1wRoXl90u1BV+8tolx
-	qiQR48N4QP2qZs0mN2/ya3cfQ35Kn803mP9+CMheGPfglpu7IJcCEEDynWrgnLwcBztwsAB7oLbnc
-	3ZGFkWlq5kVR0H+1RjR8qrtbnTE2Bsc5RtNMYNlnnVIH4KJNLamPtf+D7YZxBOLzzV/gq6Bjhj34b
-	PTESHE8pM6BvCwVWIcJ5YLFwhU0wls9nz0t89+Gs5sE2vuqKX6JwHZQgrfV0UioXVC8xC2YCJnklQ
-	pahki8NUDTKN2sZiWaPk4Jx4vExCGv1yyhD7/8AFuoseyN9eXorLQXzCDSphMAoLkIej1aNIZ+SKz
-	d436wlDw==;
+	bh=QCIN9X+au2FWfJK4vD7gv31EP7AOrK4M9CuPs1cmp3w=; b=Abd8bDv1btp7TOjFB2EubApx2L
+	iiHHkmJZzZg/QGrtziAfTboxHNlUB/7KDaNwDEaVivSRasCkMT4DzgILaPWzlur6hnkMxBuytgYsY
+	SCue5+eI1QUK1yAQR8S+IQK+EIkdTi2ClXyVZGKvT3MR8LTm9yKHlrSwSd7roEOVmspC+RIVDaPsx
+	Tlis5/x2VSloqXsIxPBYAGGs/bMRBeKfHqpAWQISc83CGw2uYM4M591g79D+MA/XUHvymGhU3NPw5
+	jDNsWiKSWBbKvjotfH63ls/UCorCBvgQBJlN6r542/2tZ2QYJWY5DZnxxlAo/z93PQX6p+6TI9X5L
+	FQKjh23g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o72Sa-001nby-Lw; Thu, 30 Jun 2022 22:16:28 +0000
+	id 1o72aN-001pRW-TH; Thu, 30 Jun 2022 22:24:31 +0000
 Received: from mail-il1-f174.google.com ([209.85.166.174])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o72SN-001nWy-Hl; Thu, 30 Jun 2022 22:16:16 +0000
-Received: by mail-il1-f174.google.com with SMTP id p14so309167ile.1;
-        Thu, 30 Jun 2022 15:16:13 -0700 (PDT)
+	id 1o72aB-001pMd-9Y; Thu, 30 Jun 2022 22:24:21 +0000
+Received: by mail-il1-f174.google.com with SMTP id k7so298385ils.8;
+        Thu, 30 Jun 2022 15:24:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=bwQzM8Z8cc5RUevl243HXV9krJjNefuoRXCjNrL2NnE=;
-        b=XcZTjwXekP4IH4LYVo6BbAh3U0jMDp5qD1sfioT2PTtp0j2WtHoACPJlNakqz3N7aV
-         c3HbFuuzPU+pKDbVrFOwE2UuD0ZGFSy7myM12NrZF4iNC4bxAdRph31Iwn87ShHQMpX2
-         pm9IXxN6cv/4CL9yNw3nvsSBEg0+7j2sush/qnfXxlsCxSqmqYGgjdAhXQXkPIGQTHP/
-         eJvP1+olp31bcikP2uc76ZA+xkeimdEoyyWoUeG+Oa9u1He7m6YvUP6OC3/5MqdRBG3+
-         FEHBUVSEYKDu6EjDLTpEU6Q10odTCNjZmx83lwbpzbFiKLj2KPg8pI9qWnvabotWi/QO
-         eomw==
-X-Gm-Message-State: AJIora9cQgF+x535D2Z9TDqVSK4Q68Dtt1iqe8hp6KJHMR0UxW64djk+
-	fvZo2QAsXp4NEDWIZru5mw==
-X-Google-Smtp-Source: AGRyM1vIk+ofmEwR6kuswgAQlqMcwDrBTvWp70c3wJfdkA9jj0wzSMn+FzZ4UshCMr+WX2wnrh8qjQ==
-X-Received: by 2002:a05:6e02:1b84:b0:2da:656a:ce11 with SMTP id h4-20020a056e021b8400b002da656ace11mr6680248ili.261.1656627372649;
-        Thu, 30 Jun 2022 15:16:12 -0700 (PDT)
+        bh=QCIN9X+au2FWfJK4vD7gv31EP7AOrK4M9CuPs1cmp3w=;
+        b=6fJ5/wdPcRjjtiKOrioF7ILY8N+99T0UASsp0v43goESzRkADui8bNjvZ1D0ypV9BJ
+         eT8oxRNAAR7VJ/FhrmrZWAhlYDdkpAqd5QlVAuzBUI3af/D57cYf+BvMO8d2AD2cJ4Xj
+         hkamX1/1AnHmucWgH6m+qVIwPyTcmaMHe4JCWGSVBQxqT4sHk/xS8aHfu0HU2AAcoQ7B
+         oAIkRuPeVjiU338ph3RDe82dpw1crFnghvQzs4/0HIXGa32baZMgt2JuaMppCkLJro/B
+         m7rEyrFZuFbmtE6RQwEmd6lh16rIPPrWQvUgaC3g4gbnjGMhT0FvpCc18gqCAafMQlIH
+         KPFw==
+X-Gm-Message-State: AJIora9SYQCd975MAe4rHcTlWLSmV2fHBJdia1aSLnqk+iMY5ejzOLXy
+	dm23xC2TIGhEFl2aUQISBw==
+X-Google-Smtp-Source: AGRyM1vuc7JqudR/4gKzjExLt1n+/E0hzumEYFNUOrWm+0+DOzzs3jZYqzgptf8ybdjqJZ1rz6Cqyg==
+X-Received: by 2002:a92:c567:0:b0:2d1:6268:2fd5 with SMTP id b7-20020a92c567000000b002d162682fd5mr6456227ilj.255.1656627858397;
+        Thu, 30 Jun 2022 15:24:18 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id x8-20020a056638026800b00339c46a5e95sm8947669jaq.89.2022.06.30.15.16.10
+        by smtp.gmail.com with ESMTPSA id k16-20020a023350000000b00339cb105ae7sm9241387jak.92.2022.06.30.15.24.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jun 2022 15:16:12 -0700 (PDT)
-Received: (nullmailer pid 3419102 invoked by uid 1000);
-	Thu, 30 Jun 2022 22:16:09 -0000
-Date: Thu, 30 Jun 2022 16:16:09 -0600
+        Thu, 30 Jun 2022 15:24:18 -0700 (PDT)
+Received: (nullmailer pid 3431797 invoked by uid 1000);
+	Thu, 30 Jun 2022 22:24:14 -0000
+Date: Thu, 30 Jun 2022 16:24:14 -0600
 From: Rob Herring <robh@kernel.org>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Cc: angelogioacchino.delregno@collabora.com, msp@baylibre.com, airlied@linux.ie, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, chunkuang.hu@kernel.org, krzysztof.kozlowski+dt@linaro.org, ck.hu@mediatek.com, granquet@baylibre.com, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, wenst@chromium.org, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de, jitao.shi@mediatek.com, robh+dt@kernel.org
-Subject: Re: [PATCH v14 02/15] dt-bindings: mediatek,dpi: Revise mediatek
- strings to correct format
-Message-ID: <20220630221609.GA3419045-robh@kernel.org>
-References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
- <20220624030946.14961-3-rex-bc.chen@mediatek.com>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, Tzung-Bi Shih <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com, Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4, 1/8] dt-bindings: media: mediatek: vcodec: Adds
+ encoder cores dt-bindings for mt8195
+Message-ID: <20220630222414.GA3419242-robh@kernel.org>
+References: <20220624082335.10165-1-irui.wang@mediatek.com>
+ <20220624082335.10165-2-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220624030946.14961-3-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220624082335.10165-2-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_151615_624546_5819DFCF 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220630_152419_364978_14F0CECE 
+X-CRM114-Status: GOOD (  29.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,16 +78,275 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 24 Jun 2022 11:09:33 +0800, Bo-Chen Chen wrote:
-> Strings replacement:
-> - s/mediatek/MediaTek/ in title.
-> - s/Mediatek/MediaTek/ in description.
-> 
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml    | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+On Fri, Jun 24, 2022 at 04:23:28PM +0800, Irui Wang wrote:
+> mt8195 has two H264 encoder hardware, which are named core0 and core1.
+> The two encoder cores are independent, we can just enable one core to
+> do encoding or enable both of them to achieve higher performance. We
+> pick core0 as main device and core1 as its subdevice, it just a way to
+> to manage the two encoder hardware, because they are two equal encoder
+> hardware with the same function.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+If the h/w is symmetrical, why did you do this?
+
+> 
+> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> ---
+>  .../media/mediatek,vcodec-encoder-core.yaml   | 225 ++++++++++++++++++
+>  .../media/mediatek,vcodec-encoder.yaml        |   1 -
+>  2 files changed, 225 insertions(+), 1 deletion(-)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
+> new file mode 100644
+> index 000000000000..afd7d645aa80
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
+> @@ -0,0 +1,225 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/media/mediatek,vcodec-encoder-core.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: MediaTek Video Encoder Accelerator With Multi Core
+> +
+> +maintainers:
+> +  - Irui Wang <irui.wang@mediatek.com>
+> +
+> +description: |
+> +  MediaTek Video Encoder is the video encoder hardware present in MediaTek
+> +  SoCs which supports high resolution encoding functionalities. To meet higher
+> +  encoder performance, there will be one or more encoder hardware inside SoC,
+> +  which named core0, core1, etc.. For example, mt8195 has two encoder hardware,
+> +  the two encoder cores block diagram, can check below.
+> +  --------------------------------------------------------------
+> +  Input frame  0     1     2     3     4     5     6
+> +               |     |     |     |     |     |     |
+> +               v     |     v     |     v     |     v
+> +           +-------+ | +-------+ | +-------+ | +-------+
+> +           | core0 | | | core0 | | | core0 | | | core0 |
+> +           +-------+ | +-------+ | +-------+ | +-------+
+> +               |     |     |     |     |     |     |
+> +               |     v     |     v     |     v     |
+> +               | +-------+ | +-------+ | +-------+ |
+> +               | | core1 | | | core1 | | | core1 | |
+> +               | +-------+ | +-------+ | +-------+ |
+> +               |     |     |     |     |     |     |
+> +               v     v     v     v     v     v     v    <parent>
+> +  --------------------------------------------------------------
+> +                            core || index               <child>
+> +                                 \/
+> +       +--------------------------------------------------+
+> +       |                     core0/core1                  |
+> +       |             enable/disable power/clk/irq         |
+> +       +--------------------------------------------------+
+> +  --------------------------------------------------------------
+> +  As above, there are two cores child devices, they are two encoder hardware
+> +  which can encode input frames in order. When start encoding, input frame 0
+> +  will be encoded by core0, and input frame 1 can be encoded by core1 even if
+> +  frame 0 has not been encoded done yet, after frame 0 encoded done, frame 2
+> +  will be encoded by core0, even input frames are encoded by core0 and odd
+> +  input frames are encoded by core1, these two encoder cores encode ench input
+> +  frames in this overlapping manner.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8195-vcodec-enc
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  mediatek,scp:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: |
+> +      The node of system control processor (SCP), using
+> +      the remoteproc & rpmsg framework.
+> +
+> +  mediatek,venc-multi-core:
+
+Can't you detect this with presence of child nodes?
+
+> +    type: boolean
+> +    description: |
+> +      Indicates whether the encoder has multiple cores or not. We use this
+> +      to probe additional encoder cores device.
+> +
+> +  iommus:
+> +    minItems: 1
+> +    maxItems: 32
+> +    description: |
+> +      List of the hardware port in respective IOMMU block for current Socs.
+> +      Refer to bindings/iommu/mediatek,iommu.yaml.
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    maxItems: 1
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  dma-ranges:
+> +    maxItems: 1
+> +    description: |
+> +      Describes the physical address space of IOMMU maps to memory.
+> +
+> +  "#address-cells":
+> +    const: 2
+> +
+> +  "#size-cells":
+> +    const: 2
+> +
+> +  ranges: true
+> +
+> +# Required child node:
+> +patternProperties:
+> +  "^venc-core@[0-9a-f]+$":
+> +    type: object
+> +    description: |
+> +      The video encoder core device node which should be added as subnodes to
+> +      the main venc node, it represents a encoder hardware.
+> +
+> +    properties:
+> +      compatible:
+> +        items:
+> +          - const: mediatek,mtk-venc-hw
+> +
+> +      reg:
+> +        maxItems: 1
+> +
+> +      mediatek,hw-id:
+> +        $ref: /schemas/types.yaml#/definitions/uint32
+> +        description: |
+> +          Current encoder core id. We use it to pick which one encoder core
+> +          will be used to encoding current input frame.
+> +
+> +      iommus:
+> +        minItems: 1
+> +        maxItems: 32
+
+It looks like there are 9 iommus. How does this vary on an mt8195 SoC?
+
+> +        description: |
+> +          List of the hardware port in respective IOMMU block for current Socs.
+> +          Refer to bindings/iommu/mediatek,iommu.yaml.
+> +
+> +      interrupts:
+> +        maxItems: 1
+> +
+> +      clocks:
+> +        maxItems: 1
+> +
+> +      clock-names:
+> +        maxItems: 1
+> +
+> +      power-domains:
+> +        maxItems: 1
+> +
+> +    required:
+> +      - compatible
+> +      - reg
+> +      - mediatek,hw-id
+> +      - iommus
+> +      - interrupts
+> +      - clocks
+> +      - clock-names
+> +      - assigned-clocks
+> +      - assigned-clock-parents
+> +      - power-domains
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - mediatek,scp
+> +  - iommus
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - dma-ranges
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        venc: venc@1a020000 {
+> +            compatible = "mediatek,mt8195-vcodec-enc";
+> +            reg = <0 0x1a020000 0 0x10000>;
+> +            mediatek,scp = <&scp>;
+> +            mediatek,venc-multi-core;
+> +            iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_REC>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_BSDMA>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_SV_COMV>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_RD_COMV>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_LUMA>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_CHROMA>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_REF_LUMA>,
+> +                     <&iommu_vdo M4U_PORT_L19_VENC_REF_CHROMA>;
+> +            interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
+> +            clocks = <&vencsys CLK_VENC_VENC>;
+> +            clock-names = "clk_venc";
+> +            power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
+> +            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+> +            #address-cells = <2>;
+> +            #size-cells = <2>;
+> +            ranges;
+> +
+> +            venc-core@1b020000 {
+> +                compatible = "mediatek,mtk-venc-hw";
+> +                reg = <0 0x1b020000 0 0x10000>;
+> +                mediatek,hw-id = <1>;
+> +                iommus = <&iommu_vpp M4U_PORT_L20_VENC_RCPU>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_REC>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_BSDMA>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_SV_COMV>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_RD_COMV>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_CUR_LUMA>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_CUR_CHROMA>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_REF_LUMA>,
+> +                         <&iommu_vpp M4U_PORT_L20_VENC_REF_CHROMA>;
+> +                interrupts = <GIC_SPI 346 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                clocks = <&vencsys_core1 CLK_VENC_CORE1_VENC>;
+> +                clock-names = "clk_venc_core1";
+> +                assigned-clocks = <&topckgen CLK_TOP_VENC>;
+> +                assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
+> +                power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
+> +            };
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> index d36fcca04cbc..11682659c4c4 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> @@ -21,7 +21,6 @@ properties:
+>        - mediatek,mt8173-vcodec-enc
+>        - mediatek,mt8183-vcodec-enc
+>        - mediatek,mt8192-vcodec-enc
+> -      - mediatek,mt8195-vcodec-enc
+>  
+>    reg:
+>      maxItems: 1
+> -- 
+> 2.18.0
+> 
+> 
 
