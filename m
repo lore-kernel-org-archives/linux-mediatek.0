@@ -4,83 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2027C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 18:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9447C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 21:10:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r0BVI/sdd04/zhgmWH7aIaeeBm4+Vvke6BUCZyn3hyg=; b=PFVQAXSFuEbKWykyzQSsSjXaZ9
-	M9WWhYE4esccATHfL7RkdnTzxwsNKQkmVmrC7YSA1WNUnfsKjjoSd7/30HT8oMwxxkcZdSZ0kWtTV
-	Yjayrrs7XkoiAlGR4EWjcUDnKI3toJTIpfym9pGv+mNcK6lAD9YdketN6AVErayv8tBMkZRXftlzB
-	CPfehU4Xu1LeUCvQOp5ZfyXZRY5VSnEJNQwnYtKnGHmQzFKoY2ZzRzbJk5x/JohcRz8mM5F2p+IoF
-	aF6wSzG8fjpHs4cktvWUJXQxyc3b6YsF7V1h4ESjgoH86kYLJQt8EiLiLSkiZDbTipnFmjsvZsx+7
-	fORoPiaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rjdHED37H0OUB684Aslr4zF7ujtW00cOnAULxFJZi2s=; b=MgEEzca/mV/dTOFN96pkIWuRp1
+	+RzrgcQfMePgY7wKixvUz1VrqZ0qXsTlKruBx2QobgrdWl+d+uAFRQqnxGxI4pWM7fdZzLDLz1Jcd
+	Y6JxqI2Cynm06Ar7VF/bBQ8uHbRS+pvpHAdq0Lf7nQj8PY8871dPy4gBBWgxH03n8aQQtO8CluuYH
+	eS/ArZ7JXCeBXf4xtycEVT+kq4FArXbw3YEwUkZkQvKEUnbU3hPkCtqxQ30hbwWguafrIzyEFTbJh
+	6mZpAIGbn5IYy+yS/ElWuxHl/coqOE+eOXKoLKmtlunK1V3z2fADoUyuoAoMKBrQtleHMIrR8RbQ+
+	lpKMaxxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6z7G-0015La-20; Thu, 30 Jun 2022 18:42:14 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1o71QT-001a8w-CF; Thu, 30 Jun 2022 21:10:13 +0000
+Received: from mail-il1-f177.google.com ([209.85.166.177])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6z75-0015Hy-Od
-	for linux-mediatek@lists.infradead.org; Thu, 30 Jun 2022 18:42:05 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id e2so54922edv.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 Jun 2022 11:41:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=r0BVI/sdd04/zhgmWH7aIaeeBm4+Vvke6BUCZyn3hyg=;
-        b=uQTmE1Um4nOuhHiHeoUXDpZUYNgOcZG0vZxcrqiB1QeU5sNRVVLaPdb2o1oZqUOXfF
-         A5sa7uthLkoOVgJDy+fMTIUpr6aOnUSjdNFaWhhriiLY4PiMOg3pIX8QBA4Uo4ssS/wV
-         qp9uGYpWrM0dQxdlb11sJihLToqdMiZwOYQO4ufTpOpWqdCkRv66MabVG6kXOORGcoUY
-         kvRRElmIve3QQM04NCRKPZh8sfP3QTPCwONY2feUHQZZVX01bwUxeWcEtrpYDlReQDz6
-         N+7T0ZVmAdDC0isxLUhFpOERJZp15rEytx4xmTeeMioSZYJg8KxWis5O9Md+XRBYEoHa
-         K5Wg==
+	id 1o71QQ-001a7F-8Q; Thu, 30 Jun 2022 21:10:11 +0000
+Received: by mail-il1-f177.google.com with SMTP id n14so183183ilt.10;
+        Thu, 30 Jun 2022 14:10:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=r0BVI/sdd04/zhgmWH7aIaeeBm4+Vvke6BUCZyn3hyg=;
-        b=OqdjKmwObpX5J0bMwCGitfklR75WJnEaIL1NBJj3N2KL1MFJPgML+3jlLXhq428PCk
-         Clw975Uh2zv7Yf4O2n2mLyOm16RK96gi6dILkswOaZLevYixnJty1mIS/bayw5F5IrxK
-         FCtTWtycpTF1As29EuOYi+bjH7ws8bZQxdVMCSzFlZanVNjAJE5xKIKgvXoy3sgsDeza
-         f8zm9gGDOy8UBkU0GbLM8B26GSOiuInfaM2AKbfUqhI79cGuIe/Y/4l1XYefqed634yy
-         Oi+Qf9RUpk+PXPpKOTIlAw87RWzeGprL+qtbTmPhcF6uCo0jW1wWycNdgKlOexwJOwW5
-         Nr/Q==
-X-Gm-Message-State: AJIora/rtk0I9MiyNh2vU4RrFBav0gi7YTirGTR1H8UeGM7bbr9r6I1y
-	WPyh8jlKMd3qbjIlplOfvqKhjw==
-X-Google-Smtp-Source: AGRyM1vkKMX06qz0erPeOdymXkH8eYsVt8dkgi/ckKf9JT6cSQDwknrl7psQLouE7nProJTlZBG24g==
-X-Received: by 2002:a05:6402:1c09:b0:435:6562:e70d with SMTP id ck9-20020a0564021c0900b004356562e70dmr13185356edb.203.1656614517044;
-        Thu, 30 Jun 2022 11:41:57 -0700 (PDT)
-Received: from [192.168.0.190] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id p9-20020a170906614900b006f3ef214dc3sm9302978ejl.41.2022.06.30.11.41.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Jun 2022 11:41:56 -0700 (PDT)
-Message-ID: <42b8bf2c-c343-8fd4-17fd-f22ed83d5d0d@linaro.org>
-Date: Thu, 30 Jun 2022 20:41:54 +0200
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=rjdHED37H0OUB684Aslr4zF7ujtW00cOnAULxFJZi2s=;
+        b=b6yan8YnvBNax1PW4k/w4MFQ+mGMt5yD+guKMOoiYONvdsik0D2c63FBQrTwdf/qEl
+         s+LdY6XQ0HjCT1VEcdxdw24dCS0NPCSY8gyU09kumbB4qBhmBMNfQ2J0p5N1tdcNKhLh
+         jE/vSVmmNTiq8T3rURkJO3ZOs3Q/92rtBNYJy8TbdnX75YtkeE6DXg9NnD+DsnIk6sz+
+         P2UIir9oQF73yiBQZnk58AeuNQicpHq0AP62XzfXe78jkV9MAhjf2eBVOizxVOK0e594
+         lSBfuV6Hc4XiDL6teuVIX6GsvWXx4oCS8NJs588j9BYq1RuF82/VPUB3YMPnr931ps4G
+         ZwMA==
+X-Gm-Message-State: AJIora8Zuy25QusGOK337/tR/6TNg6G6csGlvDhr4hwMwBVp4k6fb8KK
+	Sq8MwYI5Y01uJ5SMVoBTkw==
+X-Google-Smtp-Source: AGRyM1sb8JdYuHxyemtwGY0+ubzfkotm4D+9kKuqhtvxDwhx7morcyWKXDm1LlxKB6K0jnyQPNch7Q==
+X-Received: by 2002:a92:9412:0:b0:2da:7fb4:435d with SMTP id c18-20020a929412000000b002da7fb4435dmr6483187ili.33.1656623408168;
+        Thu, 30 Jun 2022 14:10:08 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id f26-20020a02241a000000b00339f1d1c090sm8874407jaa.113.2022.06.30.14.10.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jun 2022 14:10:07 -0700 (PDT)
+Received: (nullmailer pid 3303222 invoked by uid 1000);
+	Thu, 30 Jun 2022 21:10:02 -0000
+Date: Thu, 30 Jun 2022 15:10:02 -0600
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: martin.botka@somainline.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, y.oudjana@protonmail.com, sboyd@kernel.org, bgolaszewski@baylibre.com, jason-jh.lin@mediatek.com, ikjn@chromium.org, rex-bc.chen@mediatek.com, matthias.bgg@gmail.com, paul.bouchara@somainline.org, sam.shih@mediatek.com, linux-mediatek@lists.infradead.org, marijn.suijten@somainline.org, ck.hu@mediatek.com, p.zabel@pengutronix.de, miles.chen@mediatek.com, mturquette@baylibre.com, weiyi.lu@mediatek.com, phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht, linux-arm-kernel@lists.infradead.org, tinghan.shen@mediatek.com, konrad.dybcio@somainline.org, chun-jie.chen@mediatek.com, fparent@baylibre.com, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, devicetree@vger.kernel.org, wenst@chromium.org, kernel@collabora.com
+Subject: Re: [PATCH v5 4/7] dt-bindings: clock: mediatek: Add clock driver
+ bindings for MT6795
+Message-ID: <20220630211002.GA3303158-robh@kernel.org>
+References: <20220629110254.184213-1-angelogioacchino.delregno@collabora.com>
+ <20220629110254.184213-5-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 2/2] dt-bindings: mediatek: Add assigned clock property
- and axi clock in example
-Content-Language: en-US
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, bin.zhang@mediatek.com,
- benliang.zhao@mediatek.com, linux-mediatek@lists.infradead.org
-References: <20220630090157.29486-1-xiangsheng.hou@mediatek.com>
- <20220630090157.29486-3-xiangsheng.hou@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220630090157.29486-3-xiangsheng.hou@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220629110254.184213-5-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_114203_855702_E931E6F4 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20220630_141010_349423_BD3CCA4E 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,48 +79,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/06/2022 11:01, Xiangsheng Hou wrote:
-> For mt8173, it is needed to add the axi clock for dma mode.
-> And it is may needed to adjust default spi frequency.
+On Wed, 29 Jun 2022 13:02:51 +0200, AngeloGioacchino Del Regno wrote:
+> Add the bindings for the clock drivers of the MediaTek Helio X10
+> MT6795 SoC.
 > 
-> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml  | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
+>  .../bindings/clock/mediatek,mt6795-clock.yaml | 66 +++++++++++++++++++
+>  .../clock/mediatek,mt6795-sys-clock.yaml      | 54 +++++++++++++++
+>  2 files changed, 120 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-> index 41e60fe4b09f..7523d992a614 100644
-> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-> @@ -61,6 +61,12 @@ properties:
->        - const: axi
->        - const: axi_s
->  
-> +  assigned-clocks:
-> +    maxItems: 1
-> +
-> +  assigned-clock-parents:
-> +    maxItems: 1
-> +
 
-There is usually no reason to put this in the bindings.
-
->  required:
->    - compatible
->    - reg
-> @@ -82,8 +88,8 @@ examples:
->          compatible = "mediatek,mt8173-nor";
->          reg = <0 0x1100d000 0 0xe0>;
->          interrupts = <1>;
-> -        clocks = <&pericfg CLK_PERI_SPI>, <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-> -        clock-names = "spi", "sf";
-> +        clocks = <&pericfg CLK_PERI_SPI>, <&topckgen CLK_TOP_SPINFI_IFR_SEL>, <&pericfg CLK_PERI_NFI>;
-> +        clock-names = "spi", "sf", "axi";
->          #address-cells = <1>;
->          #size-cells = <0>;
->  
-
-
-Best regards,
-Krzysztof
+Reviewed-by: Rob Herring <robh@kernel.org>
 
