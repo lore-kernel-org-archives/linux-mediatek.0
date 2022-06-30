@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508E6C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 22:16:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E173BC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 22:16:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ak3+dnp61amEiQ9u+EY3cuHBMwvFNkOIcVD4cKlddrk=; b=4wDyPzEZud1MW1OleB8iSyuMDl
-	L+RCexL73eLYyI64XTFeS0jlgWcEcdUQQ7ZUr9PXjbuu+IQW7IsXxrURa9bVK6QyefxLLe5Q3VRKP
-	AiSr7uslPMGtMnbrYTqeIgFyqukhofrx9sKDvEBibmtNRAp4QZn3TuD7GfNupFbKRCzOcfgFLJT7+
-	/3l6D2TSHDzzRa7gPy8e32AaP0uGJSXmNTFfc074PVfeTCytTjqci79QXFis0EImYLxU3SxZX7SxS
-	8NZGKF1mIO6zMOLa9PCJbV/VJV3Dy4NAMoits8YHBmwAKlJyq/0eF07sOCbnQP31LeloB/ibcQcMN
-	5MvJYQnA==;
+	bh=bwQzM8Z8cc5RUevl243HXV9krJjNefuoRXCjNrL2NnE=; b=P40EPEFA1wRoXl90u1BV+8tolx
+	qiQR48N4QP2qZs0mN2/ya3cfQ35Kn803mP9+CMheGPfglpu7IJcCEEDynWrgnLwcBztwsAB7oLbnc
+	3ZGFkWlq5kVR0H+1RjR8qrtbnTE2Bsc5RtNMYNlnnVIH4KJNLamPtf+D7YZxBOLzzV/gq6Bjhj34b
+	PTESHE8pM6BvCwVWIcJ5YLFwhU0wls9nz0t89+Gs5sE2vuqKX6JwHZQgrfV0UioXVC8xC2YCJnklQ
+	pahki8NUDTKN2sZiWaPk4Jx4vExCGv1yyhD7/8AFuoseyN9eXorLQXzCDSphMAoLkIej1aNIZ+SKz
+	d436wlDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o72SK-001nWk-0R; Thu, 30 Jun 2022 22:16:12 +0000
-Received: from mail-io1-f48.google.com ([209.85.166.48])
+	id 1o72Sa-001nby-Lw; Thu, 30 Jun 2022 22:16:28 +0000
+Received: from mail-il1-f174.google.com ([209.85.166.174])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o72S9-001nTk-3C; Thu, 30 Jun 2022 22:16:02 +0000
-Received: by mail-io1-f48.google.com with SMTP id u20so544315iob.8;
-        Thu, 30 Jun 2022 15:15:59 -0700 (PDT)
+	id 1o72SN-001nWy-Hl; Thu, 30 Jun 2022 22:16:16 +0000
+Received: by mail-il1-f174.google.com with SMTP id p14so309167ile.1;
+        Thu, 30 Jun 2022 15:16:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=ak3+dnp61amEiQ9u+EY3cuHBMwvFNkOIcVD4cKlddrk=;
-        b=OA1JrLkKqIf9D18J0yyUghLH9LL8cURy+9O3FlGspleL6Ljrkt0SB3fVMIjUsD+rEu
-         JteBSZdV0hvn59NyXJx6+p9LLOoRg0qt6rPum9LAzgNoGlem9h6W3zWA/ugWqj+mA760
-         eEaCl+lqZyy2zj1wQf2DEcyVMOvwn10U/lAU+mMQ+MK6A0I//LkLpvaz0L5bv/P9S/dL
-         RZF4zhhfyTIyu3RFAk+AselG8lmwG03nVI49dVF/cuFah3H4q9MRtvP/0NQRXs4Tck6b
-         nyQW56Qo/+Wldc+neTg4/bb11kkuXspXsVK+5DaLA4CLpi67dHDFaVT4XVC3q0qmiECO
-         CeTA==
-X-Gm-Message-State: AJIora+TtYLUPglOcJ+RICBd6DQViDQ02dJmy1JbgdyYOXr6qK+Qzgnu
-	7Gfs/DF6eF4Oy0XIBld9lQ==
-X-Google-Smtp-Source: AGRyM1vE/h3cXANQTxAFuDv4VQARTKgj8HZVod3l/44O5+NhZJF0h2bjCBppIfPdZR/32eQjnyvy7g==
-X-Received: by 2002:a05:6602:13c8:b0:669:c3de:776f with SMTP id o8-20020a05660213c800b00669c3de776fmr5469069iov.124.1656627359098;
-        Thu, 30 Jun 2022 15:15:59 -0700 (PDT)
+        bh=bwQzM8Z8cc5RUevl243HXV9krJjNefuoRXCjNrL2NnE=;
+        b=XcZTjwXekP4IH4LYVo6BbAh3U0jMDp5qD1sfioT2PTtp0j2WtHoACPJlNakqz3N7aV
+         c3HbFuuzPU+pKDbVrFOwE2UuD0ZGFSy7myM12NrZF4iNC4bxAdRph31Iwn87ShHQMpX2
+         pm9IXxN6cv/4CL9yNw3nvsSBEg0+7j2sush/qnfXxlsCxSqmqYGgjdAhXQXkPIGQTHP/
+         eJvP1+olp31bcikP2uc76ZA+xkeimdEoyyWoUeG+Oa9u1He7m6YvUP6OC3/5MqdRBG3+
+         FEHBUVSEYKDu6EjDLTpEU6Q10odTCNjZmx83lwbpzbFiKLj2KPg8pI9qWnvabotWi/QO
+         eomw==
+X-Gm-Message-State: AJIora9cQgF+x535D2Z9TDqVSK4Q68Dtt1iqe8hp6KJHMR0UxW64djk+
+	fvZo2QAsXp4NEDWIZru5mw==
+X-Google-Smtp-Source: AGRyM1vIk+ofmEwR6kuswgAQlqMcwDrBTvWp70c3wJfdkA9jj0wzSMn+FzZ4UshCMr+WX2wnrh8qjQ==
+X-Received: by 2002:a05:6e02:1b84:b0:2da:656a:ce11 with SMTP id h4-20020a056e021b8400b002da656ace11mr6680248ili.261.1656627372649;
+        Thu, 30 Jun 2022 15:16:12 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id b9-20020a05660214c900b006762d8becd4sm139051iow.55.2022.06.30.15.15.57
+        by smtp.gmail.com with ESMTPSA id x8-20020a056638026800b00339c46a5e95sm8947669jaq.89.2022.06.30.15.16.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jun 2022 15:15:58 -0700 (PDT)
-Received: (nullmailer pid 3418639 invoked by uid 1000);
-	Thu, 30 Jun 2022 22:15:56 -0000
-Date: Thu, 30 Jun 2022 16:15:56 -0600
+        Thu, 30 Jun 2022 15:16:12 -0700 (PDT)
+Received: (nullmailer pid 3419102 invoked by uid 1000);
+	Thu, 30 Jun 2022 22:16:09 -0000
+Date: Thu, 30 Jun 2022 16:16:09 -0600
 From: Rob Herring <robh@kernel.org>
 To: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Cc: airlied@linux.ie, ck.hu@mediatek.com, devicetree@vger.kernel.org, granquet@baylibre.com, matthias.bgg@gmail.com, msp@baylibre.com, Project_Global_Chrome_Upstream_Group@mediatek.com, chunkuang.hu@kernel.org, linux-arm-kernel@lists.infradead.org, p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, jitao.shi@mediatek.com, angelogioacchino.delregno@collabora.com, daniel@ffwll.ch, wenst@chromium.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v14 01/15] dt-bindings: mediatek,dpi: Add DP_INTF
- compatible
-Message-ID: <20220630221556.GA3418578-robh@kernel.org>
+Cc: angelogioacchino.delregno@collabora.com, msp@baylibre.com, airlied@linux.ie, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, chunkuang.hu@kernel.org, krzysztof.kozlowski+dt@linaro.org, ck.hu@mediatek.com, granquet@baylibre.com, daniel@ffwll.ch, dri-devel@lists.freedesktop.org, wenst@chromium.org, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de, jitao.shi@mediatek.com, robh+dt@kernel.org
+Subject: Re: [PATCH v14 02/15] dt-bindings: mediatek,dpi: Revise mediatek
+ strings to correct format
+Message-ID: <20220630221609.GA3419045-robh@kernel.org>
 References: <20220624030946.14961-1-rex-bc.chen@mediatek.com>
- <20220624030946.14961-2-rex-bc.chen@mediatek.com>
+ <20220624030946.14961-3-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220624030946.14961-2-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220624030946.14961-3-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_151601_173880_DEE5CD1A 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20220630_151615_624546_5819DFCF 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +79,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 24 Jun 2022 11:09:32 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+On Fri, 24 Jun 2022 11:09:33 +0800, Bo-Chen Chen wrote:
+> Strings replacement:
+> - s/mediatek/MediaTek/ in title.
+> - s/Mediatek/MediaTek/ in description.
 > 
-> DP_INTF is similar to DPI but does not have the exact same feature set
-> or register layouts.
-> 
-> DP_INTF is the sink of the display pipeline that is connected to the
-> DisplayPort controller and encoder unit. It takes the same clocks as
-> DPI.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> [Bo-Chen: Modify reviewers' comments.]
 > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
+>  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml    | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
