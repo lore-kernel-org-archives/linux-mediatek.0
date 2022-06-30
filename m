@@ -4,57 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50FC3C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 11:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A2DAC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 11:43:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V978+R8+cXhZumA7lH7s7WTBG0AYU7Rvn+Frr8bsVoc=; b=P0PQQyYlATGiMAJbWX0Orcuxo5
-	nxp06yLeLemppR/jmO87k1LiRQZBIHx6Ss0GuLnh8X5mi7BMTK8zXTRguPvn2jgD+gwPjTlX84Y4o
-	c+LN8fIduVKc0JlEEzm4x9wy20lxT0BN5tJm492QTPbjcHRO0g6SzkkaB2xlfdIKXlbQmLkg6gnUo
-	hqOylcZ3rDynHvVfu1PfRaxqLMNN0ngC8xHa8AJA3ZEHq4SXX4e70O/BqkAN0kQAkyy+L7Ro9iwgX
-	MbQc11Bd78SnFeZm2LuZU9mMrgzXGzr1RtbYfGFTwTv76H/CoHnOhscbgWqrip1O87kObpmf+GwCg
-	D9Xboriw==;
+	MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2+6JslDaTIPyX+rbH4hQJJ0nKSSzOSrQAiRCaPzAUvY=; b=RQ7TgyqQiWEaJpvwgd+cJgjKD4
+	i6aUYzrqRdLrt0lVl10X5zH+d53i4pATTWVp6b+kOO/ePxKb3uJJV/knbSpHUB+RT8AD/1r7podpz
+	H/GcyRJ/vQ/MW/aX/z/66t7imJnJdTO3oMbPE80oms+R449rPebe43uSVNoULmF64C6fz9trbCefl
+	tKyqno7iJSM23KDV7DGqDG5ZP8MLdYAIgMt0mF/pCWdEnxnWkr/AeDm3RL7nWDo0PMrZIqzbVr1Xi
+	7k+jK3J8lDGu+AOnWvMdW4xkjtfr76VwLz0bVZ/qcJX7Fs1MJds5yWEcGPqxIjvcEeSw4KaUtLI/S
+	c0f47kKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6sNX-00GqOd-FC; Thu, 30 Jun 2022 11:30:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o6sZa-00GuD4-7W; Thu, 30 Jun 2022 11:43:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6sNG-00GqIJ-AD; Thu, 30 Jun 2022 11:30:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A83EF60F49;
-	Thu, 30 Jun 2022 11:30:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71319C34115;
-	Thu, 30 Jun 2022 11:30:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656588617;
-	bh=gzDOHcejGu4JioM05HpcNWxB/O66gnE2CvPqcNhcsQo=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=CimQvuX/++FtooBdfVaGQKFl2+Pb1O8v4oSpfSojUuL4n7lA57QcJAwfB/aX0vJ+7
-	 531Q/lRTYXMloZ7tPASrqQ7jUfEb52YRf0uJCXSJoUsUcmnE1gqZ0gen6zjy4nkXO+
-	 nWgogb8hfvONDEJXmxVhzXV5Ud8aUQ41GYWa+ozWeiOS/0C0bZBQCu4M4QCnAN315j
-	 AOhGhyHOEnmZrLN2UzJMkrCc2Cb6Tu74bSAOPA54CCrX0VimfEp3dTTRZXJxM9xou/
-	 qohZ92xNRQkwsRgB/cBiQ14Q93kXQKq8gPKy4dllGSCDZXIql1TDJYwu4Aczu1E4tq
-	 BHhacON8Ac1Jg==
-From: Mark Brown <broonie@kernel.org>
-To: u0084500@gmail.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, chiaen_wu@richtek.com, cy_huang@richtek.com, matthias.bgg@gmail.com, lgirdwood@gmail.com, linux-mediatek@lists.infradead.org, alice_chen@richtek.com
-In-Reply-To: <1656466861-7737-1-git-send-email-u0084500@gmail.com>
-References: <1656466861-7737-1-git-send-email-u0084500@gmail.com>
-Subject: Re: [PATCH 1/2] regulator: mt6370: Use 'fwnode_gpiod_get_index' to fix gpio parsing
-Message-Id: <165658861401.321126.9625331227015919731.b4-ty@kernel.org>
-Date: Thu, 30 Jun 2022 12:30:14 +0100
+	id 1o6sZX-00GuAv-1e; Thu, 30 Jun 2022 11:43:00 +0000
+X-UUID: 31635f4867834aa4882817eef76cb774-20220630
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:8a6a556d-357a-4c2f-8cbc-bc9daeb0cbdf,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:fd581063-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 31635f4867834aa4882817eef76cb774-20220630
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jing-ting.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1347116153; Thu, 30 Jun 2022 04:42:48 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 30 Jun 2022 18:52:11 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 30 Jun 2022 18:52:11 +0800
+Message-ID: <1978e209e71905d89651e61abd07285912d412a1.camel@mediatek.com>
+Subject: [Bug] race condition at rebind_subsystems()
+From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+To: Johannes Weiner <hannes@cmpxchg.org>
+CC: Tejun Heo <tj@kernel.org>, Zefan Li <lizefan.x@bytedance.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <cgroups@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Shakeel Butt <shakeelb@google.com>,
+	<wsd_upstream@mediatek.com>, <lixiong.liu@mediatek.com>,
+	<wenju.xu@mediatek.com>, <jonathan.jmchen@mediatek.com>
+Date: Thu, 30 Jun 2022 18:52:10 +0800
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_043018_429443_15C31C52 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20220630_044259_156638_435303EF 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,46 +78,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 29 Jun 2022 09:41:00 +0800, cy_huang wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
-> 
-> From the common binding, 'enable-gpio' or 'enable-gpios' are all well
-> for external 'enable' gpio.
-> 
-> 'gpiod_get_from_of_node' only parse the 'enable' property, it need to
-> add the gpio suffix. It's more convenient to use fwnode_gpiod_get_index.
-> Although fwnode parsing is not preferred, but 'of_parse_cb' already can
-> guarantee the callback will only be used by regulator of_node parsing.
-> 
-> [...]
+Hi Johannes
 
-Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
-Thanks!
+We find the KE(kernel exception) happened when test the reboot test
+case in T SW version with kernel-5.15.
+The issue is unable to handle kernel paging request at virtual address.
 
-[1/2] regulator: mt6370: Use 'fwnode_gpiod_get_index' to fix gpio parsing
-      commit: 4806c991bf4ff959acf921ea72f931a945a968ae
-[2/2] regulator: mt6370: Use the correct header for platform_device_id
-      commit: 46ae6fb58fd49c4cb2d1ca34e87d603b7c96ba97
+Root cause:
+The rebind_subsystems() is no lock held when move css object from A
+list to B list,then let B's head be treated as css node at
+list_for_each_entry_rcu().
+Use the wrong css to get css->ss->css_rstat_flush should get a wrong
+address.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+The call stack as following:
+kthread
+-> worker_thread
+-> process_one_work
+-> flush_memcg_stats_dwork
+-> __mem_cgroup_flush_stats
+-> cgroup_rstat_flush_irqsafe
+-> cgroup_rstat_flush_locked
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Detail:
+static void cgroup_rstat_flush_locked(struct cgroup *cgrp, bool
+may_sleep)
+{
+...
+   rcu_read_lock();
+   list_for_each_entry_rcu(css, &pos->rstat_css_list,
+                             rstat_css_node)
+        css->ss->css_rstat_flush(css, cpu);
+   rcu_read_unlock();
+...
+}
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Because the content of css->ss is not a function address,
+once the css_rstat_flush is called, kernel exception will happen.
+When the issue happened, the list of pos->rstat_css_list at group A is
+empty.
+There must be racing conditions.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+From reviewing code, we find rebind_subsystems() is no lock held when
+move css object to other list.
 
-Thanks,
-Mark
+int rebind_subsystems(struct cgroup_root *dst_root, u16 ss_mask)
+{
+...
+   if (ss->css_rstat_flush) {
+         list_del_rcu(&css->rstat_css_node);
+         list_add_rcu(&css->rstat_css_node,
+                      &dcgrp->rstat_css_list);
+   }
+...
+}
+
+If we held a css object from A group list, at same time this css object
+was moved to B group list.
+Because current pos is in B’s list, link list was link the pos->next to
+B’s head, so the pos->member will never equal A’s head, then the B’s
+head(cgroup_root->cgroup->rstat_css_list) will be treated as css
+node(css->rstat_css_node).
+list_for_each_entry_rcu() use the container_of() to get css address,
+and it treated the address of [cgroup_root->cgroup->rstat_css_list -
+rstat_css_node] to be a css address.
+cgroup_rstat_flush_locked() use the wrong css address to do css->ss-
+>css_rstat_flush, then the wrong function address will be jump.
+
+#define list_for_each_entry_rcu(pos, head, member,
+cond...)             \
+   for (__list_check_rcu(dummy, ## cond, 0), \
+     pos = list_entry_rcu((head)->next, typeof(*pos), member); \
+        &pos->member != (head);                                \
+        pos = list_entry_rcu(pos->member.next, typeof(*pos), member))
+
+
+We look the patch of move css object from A list to B list is merged by
+following link:
+
+https://android.googlesource.com/kernel/common/+/a7df69b81aac5bdeb5c5aef9addd680ce22feebf%5E%21/#F0
+
+
+Do you have any suggestion for this issue?
+Thank you.
+
+
+
+Best Regards,
+Jing-Ting Wu
+
+
 
