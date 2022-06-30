@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD906C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 15:37:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07871C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 15:37:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=re3QwCdkfZectnr5q5xdpOrt369YzI+V4L/CAK9ecY8=; b=pPk5TNLGH3WEqh2Aq/jVjckUZY
-	JJv6neHY0Atm25O2llXCSADL1FLazfS4yd3w2EPkefR1QSqDaOEQm7fimGZfb5rQvdMg9Y6ULrkC5
-	JxQVGeZB70BRh2/Kozwlls3kIySpZiNXmgohiRGYabQBbGT4aRzdHx7SsF0YFev4xLy4rC81nbpMz
-	XkqBooD3zg1ic+AK7894LjVq1AnNfftegbevUc+EjtQyzdbknpIZZ0lbq5g+ZqQ63fVPGpMPzzOpA
-	VoX7jD9CYFQK2ucaQFLxatscEXCYmIfKu1HcLVBh04KtD6ty1iUQrQysg9ht3fwz1Hjm2XKxpp3i5
-	iSnBEMyA==;
+	bh=jeEtVGru+oCixivJQ3DUF1ie0h/2qhrDPIpsYCRFUzw=; b=aEBb/poG/f/NX4WHxvWrGXPYLM
+	a0ItZMT5PeT3Bx8pxyeMaMunHoJObNoPvEp08IxTvvlyHaAVPWwAfKIpAD1SB3zArlw3uhwMn5aYI
+	eWVdOTYqWe3RbcmBKq2L4Xf9PhIXCmrnz9IIFJpp9Bsm74CdHhw50j5zUpnxB9bl9YOxWWIXvoQVa
+	gOfNrrv+8onsB3pPS/tUlMgCe6H3F+A5NGlLa/0Af8Lw8RLehNBNCUCnTUsvlWU1LKNUqQNNXUMst
+	d5wZmA3s5YVfgv6OmDs/yEvEzwfu8IylESXyE9zXI0+9jvlqiu3adPAfTAAh8A0D8CFZ9tAGf5LPn
+	jQsnlQLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6wEj-000KiF-A3; Thu, 30 Jun 2022 15:37:45 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o6wEl-000Kk9-Vs; Thu, 30 Jun 2022 15:37:48 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6wAe-000IYa-LV; Thu, 30 Jun 2022 15:33:34 +0000
+	id 1o6wAd-000IXv-Ma; Thu, 30 Jun 2022 15:33:34 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9A0716601975;
-	Thu, 30 Jun 2022 16:33:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B81E16601973;
+	Thu, 30 Jun 2022 16:33:29 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656603211;
-	bh=UVbfYKEp/UeHIzeeBg5jE/nWREPvL/7gFeHO3MKYGcw=;
+	s=mail; t=1656603210;
+	bh=Yu1ylTS6SF8MH4BwKjAHfrYNfUvsmb2vIoFkPyc5v00=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RlXswnkJyVrkDmTAsWhmp5Z99o7Hiaq3mRZtf2oNn9/iD0BV+KoCVqjzZX35r3pHL
-	 380sjv28tpyf2rhw9uMiJizg20PflFEyzheDrlUUJJakZJrVCtib8ejsReLof9ZWNZ
-	 OURhxQ0WZ++rKBjOKzRvEQxe0jNrhs4M9rHB3ozrKlqK4ZtijZO8kJiGJFKDlwwN7F
-	 CW7X3lUsw28aJCFGn2ohH5E1csQa85iWc83Zcf7jbwlAmJrEq0oskLO1FD1kpGHuO1
-	 mDlzBWTOFnSYjd8yCXq5BlTfiYogoxE4pRpdX3fkYvH6rWnoS5CXHdNm8t4vSlY3OO
-	 N6dWFemSxkiDQ==
+	b=U3Wu68ITixchJo0cENfYR9UeUrhxotEz0FR5oaFMPze40emxZOFfYB1OTVNXfNqEo
+	 7mp54uiTKLrRVWcLPbNM77ZKn4wpkUusSMZc46cZLPpHm8krJgl7pLXMg99kdd2sC0
+	 yhk/aaqDlsz/8D/t4hIwc7yhw4/zZItLMF26RYz3QzDH4f1lxd8JR9DkHJQp5drxaL
+	 7ZD3rfIV42KWj/XsAcewUOs76yMPH+IZpk3t3RZFbexmdd+Lk9zR5QnIGTUpFJlADJ
+	 bw4yizKFg3vLrVOOZbiWmmZyojwfiMeEFCYn+G9VXKH06QKckpT9TlongdQy4Wbl+k
+	 eyPU7RpymvwEw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh+dt@kernel.org
 Cc: krzysztof.kozlowski+dt@linaro.org,
@@ -58,17 +58,18 @@ Cc: krzysztof.kozlowski+dt@linaro.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	wenst@chromium.org
-Subject: [PATCH 08/11] arm64: dts: mediatek: cherry: Enable T-PHYs and USB XHCI controllers
-Date: Thu, 30 Jun 2022 17:33:13 +0200
-Message-Id: <20220630153316.308767-9-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 07/11] arm64: dts: mediatek: cherry: Enable I2C and SPI controllers
+Date: Thu, 30 Jun 2022 17:33:12 +0200
+Message-Id: <20220630153316.308767-8-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
 References: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_083332_906952_BCB5DF25 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20220630_083332_080884_ED586DAF 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,92 +84,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add USB functionality by enabling the required PHYs and the XHCI
-controllers.
-This enables all of the supported USB ports on the Cherry boards.
-
-Please note that u3phy1 also enables u3port1, which is configured
-to be a PCI-Express PHY for the second PCIe controller that is
-found on the MT8195 SoC, which will be enabled in a later commit.
+This platform uses eight I2C controllers and one SPI controller:
+in preparation for enabling devices attached to these controllers,
+add basic configuration to enable the busses.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 55 +++++++++++++++++++
- 1 file changed, 55 insertions(+)
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 150 ++++++++++++++++++
+ 1 file changed, 150 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 23a86d07274c..379d0e5c4055 100644
+index 2f70341bba91..23a86d07274c 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -93,6 +93,15 @@ ppvar_sys: regulator-ppvar-sys {
- 		regulator-always-on;
- 		regulator-boot-on;
+@@ -9,6 +9,13 @@
+ 
+ / {
+ 	aliases {
++		i2c0 = &i2c0;
++		i2c1 = &i2c1;
++		i2c2 = &i2c2;
++		i2c3 = &i2c3;
++		i2c4 = &i2c4;
++		i2c5 = &i2c5;
++		i2c7 = &i2c7;
+ 		mmc0 = &mmc0;
+ 		serial0 = &uart0;
+ 	};
+@@ -88,6 +95,65 @@ ppvar_sys: regulator-ppvar-sys {
+ 	};
+ };
+ 
++&i2c0 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c0_pin>;
++};
++
++&i2c1 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++	i2c-scl-internal-delay-ns = <12500>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c1_pin>;
++};
++
++&i2c2 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c2_pin>;
++};
++
++&i2c3 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c3_pin>;
++};
++
++&i2c4 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c4_pin>;
++};
++
++&i2c5 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c5_pin>;
++};
++
++&i2c7 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	clock-frequency = <400000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c7_pin>;
++};
++
+ &mmc0 {
+ 	status = "okay";
+ 
+@@ -300,6 +366,68 @@ &pio {
+ 		"AP_SPI_FLASH_MOSI",
+ 		"AP_SPI_FLASH_MISO";
+ 
++	i2c0_pin: i2c0-default-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
++				 <PINMUX_GPIO9__FUNC_SCL0>;
++			bias-disable;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c1_pin: i2c1-default-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO10__FUNC_SDA1>,
++				 <PINMUX_GPIO11__FUNC_SCL1>;
++			bias-pull-up = <1000>;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c2_pin: i2c2-default-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO12__FUNC_SDA2>,
++				 <PINMUX_GPIO13__FUNC_SCL2>;
++			bias-disable;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c3_pin: i2c3-default-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO14__FUNC_SDA3>,
++				 <PINMUX_GPIO15__FUNC_SCL3>;
++			bias-pull-up = <1000>;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c4_pin: i2c4-default-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO16__FUNC_SDA4>,
++				 <PINMUX_GPIO17__FUNC_SCL4>;
++			bias-pull-up = <1000>;
++			drive-strength = <MTK_DRIVE_4mA>;
++		};
++	};
++
++	i2c5_pin: i2c5-default-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO29__FUNC_SCL5>,
++				 <PINMUX_GPIO30__FUNC_SDA5>;
++			bias-disable;
++			drive-strength-microamp = <1000>;
++		};
++	};
++
++	i2c7_pin: i2c7-default-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO27__FUNC_SCL7>,
++				 <PINMUX_GPIO28__FUNC_SDA7>;
++			bias-disable;
++		};
++	};
++
+ 	mmc0_pins_default: mmc0-default-pins {
+ 		pins-cmd-dat {
+ 			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
+@@ -407,12 +535,34 @@ pins-low-power-pupd {
+ 			bias-pull-down = <MTK_PUPD_SET_R1R0_01>;
+ 		};
  	};
 +
-+	usb_vbus: regulator-5v0-usb-vbus {
-+		compatible = "regulator-fixed";
-+		regulator-name = "usb-vbus";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		enable-active-high;
-+		regulator-always-on;
++	spi0_pins: spi0-default-pins {
++		pins-cs-mosi-clk {
++			pinmux = <PINMUX_GPIO132__FUNC_SPIM0_CSB>,
++				 <PINMUX_GPIO134__FUNC_SPIM0_MO>,
++				 <PINMUX_GPIO133__FUNC_SPIM0_CLK>;
++			bias-disable;
++		};
++
++		pins-miso {
++			pinmux = <PINMUX_GPIO135__FUNC_SPIM0_MI>;
++			bias-pull-down;
++		};
 +	};
  };
  
- &i2c0 {
-@@ -563,6 +572,52 @@ &spi0 {
- 	mediatek,pad-select = <0>;
+ &pmic {
+ 	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
  };
  
-+&u3phy0 {
++&spi0 {
 +	status = "okay";
-+};
 +
-+&u3phy1 {
-+	status = "okay";
-+};
-+
-+&u3phy2 {
-+	status = "okay";
-+};
-+
-+&u3phy3 {
-+	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&spi0_pins>;
++	mediatek,pad-select = <0>;
 +};
 +
  &uart0 {
  	status = "okay";
  };
-+
-+&xhci0 {
-+	status = "okay";
-+
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	vbus-supply = <&usb_vbus>;
-+};
-+
-+&xhci1 {
-+	status = "okay";
-+
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	vbus-supply = <&usb_vbus>;
-+};
-+
-+&xhci2 {
-+	status = "okay";
-+
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	vbus-supply = <&usb_vbus>;
-+};
-+
-+&xhci3 {
-+	status = "okay";
-+
-+	/* MT7921's USB Bluetooth has issues with USB2 LPM */
-+	usb2-lpm-disable;
-+	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	vbus-supply = <&usb_vbus>;
-+};
 -- 
 2.35.1
 
