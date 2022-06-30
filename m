@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1F8DC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 02:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D0B9C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 02:55:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8DvaeLfBVvBMhiB59n0ZkisysOW7SKQpsjcikWLIwT4=; b=ORT41HGM3WBuyaTw3GteRvsfdk
-	4RHRDML7dA7cYDbE5g3oEWWVR+DimAaAFayqSRSYwAsc/xraaetPgdxrj7oLSSlWEVD6hkyXZTiOq
-	X1TvwB0gOo4RS/Zk85aZXMxKIRkHgJYjraekB/8Tdh2zL793kJ5Mwk0C2ozapIS4MHqmO6OhGKzRy
-	/dMIKEO5ltwcL/zCP/4zaHjJLuqgSwZA1e+YIXgKwoMBMoztz+g3WdprgR/49Nk5CPkSrw/AqwGyb
-	Rl8ys2zZ6oTEeREe/XXbSSmHdizs9XFDdR+GSORJw7VLK9X8tlaF1JNvJY230RCuaM00hNJMXjYoN
-	c0PxqxFw==;
+	bh=9AurOHak38iXc624EWBIYgBKt/pdKodJlWdlQHNRBF8=; b=GNGaCFKZR7Ze7Nbg78qR9fVKwY
+	vEuoqs4eTabAmKlEsVpElo2lsiaqd5NHnInM1yD+rf1ygf+rr/mcAyhZjieW9Lm43M5kUEHc7UCld
+	VYApEieHcpWdyn/U7N9OJKEcdMW+31Z6HIRu4pygG7Og3k05DJT8N2tsxfrYsWP3RMBvzq+EI10Ig
+	GyAlxI8wh2wKPkZxYjK+XFS4jrn5DY8xoc2M4sei/sRfnNqxtLflJrktDeNk26DJY/kioFDBHOmA5
+	fzpIESk2d4GyC9t4vv3duD64Z0x+t8+fcgpyWMlJWyrFJQbOlig/tMog2NJ5blaviVz+CWq0IR47j
+	7FzaWZ+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6jxz-00Em8s-If; Thu, 30 Jun 2022 02:31:39 +0000
+	id 1o6kKZ-00EpPj-Ic; Thu, 30 Jun 2022 02:54:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6jxo-00Em8D-40; Thu, 30 Jun 2022 02:31:30 +0000
-X-UUID: acd6d6f70f834ff78f8fca5a7fe7d2d1-20220629
+	id 1o6kKW-00EpOh-Ry; Thu, 30 Jun 2022 02:54:58 +0000
+X-UUID: 1c002c730a9f4c44b8afe3f41ca26aca-20220629
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:980e87e5-9873-4286-8010-905bca346f3f,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.7,REQID:d00ae480-4c54-4599-89ff-3c9f5104d389,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:9ef12486-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-META: VersionHash:87442a2,CLOUDID:d5ec0263-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: acd6d6f70f834ff78f8fca5a7fe7d2d1-20220629
+X-UUID: 1c002c730a9f4c44b8afe3f41ca26aca-20220629
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1091876458; Wed, 29 Jun 2022 19:31:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+	with ESMTP id 1750910691; Wed, 29 Jun 2022 19:54:51 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 30 Jun 2022 09:50:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ 15.2.792.15; Thu, 30 Jun 2022 10:54:42 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 30 Jun 2022 09:50:42 +0800
-Message-ID: <e9d0f85c09fc92c8e1c8876169c672769f4e16e9.camel@mediatek.com>
-Subject: Re: [PATCH v24 00/10] Add MediaTek SoC(vdosys1) support for mt8195
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
-	"wim@linux-watchdog.org" <wim@linux-watchdog.org>, "AngeloGioacchino Del
- Regno" <angelogioacchino.delregno@collabora.com>, "linux@roeck-us.net"
-	<linux@roeck-us.net>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	Jason-JH Lin =?UTF-8?Q?=28=E6=9E=97=E7=9D=BF=E7=A5=A5=29?=
-	<Jason-JH.Lin@mediatek.com>, Yongqiang Niu
- =?UTF-8?Q?=28=E7=89=9B=E6=B0=B8=E5=BC=BA=29?= <yongqiang.niu@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "llvm@lists.linux.dev"
-	<llvm@lists.linux.dev>, Singo Chang
- =?UTF-8?Q?=28=E5=BC=B5=E8=88=88=E5=9C=8B=29?= <Singo.Chang@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group
+ Transport; Thu, 30 Jun 2022 10:54:42 +0800
+Message-ID: <3e1992f0fabccb07a1994d17cc773895fea92139.camel@mediatek.com>
+Subject: Re: [PATCH v12 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 30 Jun 2022 09:50:41 +0800
-In-Reply-To: <20220622130824.29143-1-nancy.lin@mediatek.com>
-References: <20220622130824.29143-1-nancy.lin@mediatek.com>
+Date: Thu, 30 Jun 2022 10:54:41 +0800
+In-Reply-To: <20220627080341.5087-6-rex-bc.chen@mediatek.com>
+References: <20220627080341.5087-1-rex-bc.chen@mediatek.com>
+	 <20220627080341.5087-6-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_193128_200318_7C0701D2 
-X-CRM114-Status: GOOD (  30.03  )
+X-CRM114-CacheID: sfid-20220629_195456_933553_4717CF2E 
+X-CRM114-Status: GOOD (  21.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,219 +85,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-06-22 at 21:08 +0800, Nancy.Lin wrote:
-> The hardware path of vdosys1 with DPTx output need to go through by
-> several modules, such as, OVL_ADAPTOR and MERGE.
-> 
-> Add mmsys and mutex modules support by the patches below:
-> 
-> Changes in v24:
-> - fix reviewer comment
->   - refine mtk_mmsys_reset_update func
-> - rebase to next-20220622
-> 
-> Changes in v23:
-> - separate[7] mmsys/mutex and drm patches into two series
-> 
-> Changes in v22:
-> - rebase to next-20220525
-> - rebase to vdosys0 series v22
-> - separate dts to a new patch
-> 
-> Changes in v21:
-> - fix reviewer comment
->   - fix rdma and ethdr binding doc and dts
-> 
-> Changes in v20:
-> - fix reviewer comment
->   - update mmsys update bit api name
->   - add mtk_mmsys_update_bits error message if lose gce property
->   - list all mt8195 vdosys1 reset bits
-> 
-> Changes in v19:
-> - fix reviewer comment
->   - separate mt8195 mmsys component to a new patch
->   - separate mt8195 vdo0 and vdo1 routing table
->   - separate mmsys_write_reg api to a new patch and simplify write
-> reg code
->   - separate mmsys 64 bit reset to a new patch
->   - separate mtk-mutex dp_intf1 component to a new patch
-> 
-> Changes in v18:
-> - fix reviewer comment
->   - fix rdma binding doc
->   - fix ethdr binding doc
->   - refine mmsys config cmdq support
->   - refine merge reset control flow, get reset control in probe
-> function
->   - add ethdr reset control error handling and remove dbg log
-> - rebase to vdosys0 series v20 (ref [5])
-> 
-> Changes in v17:
-> - fix reviewer comment in v16
->   - separate ovl adaptor comp in mtk-mmsys and mtk-mutex
->   - separate mmsys config API
->   - move mdp_rdma binding yaml
-> - fix ovl adaptor pm runtime get sync timing issue
-> - rebase to vdosys0 series v19 (ref [5])
-> - rebase to [7] for modify vblank register change
-> 
-> Changes in v16:
-> - fix reviewer comment in v 15
->   - fix mtk_drm_ddp_comp.c alignment
->   - fix vdosys0 mmsys num before adding vdosys1 patch
-> 
-> Changes in v15:
-> - fix ethdr uppercase hex number in dts
-> 
-> Changes in v14:
-> - remove MTK_MMSYS 64 bit dependency
-> - add ethdr.yaml back and fix dt_schema check fail
-> 
-> Resend v13
-> - add related maintainer in maillist
-> 
-> Changes in v13:
-> - fix reviewer comment in v12
->   - fix rdma dt-binding format
->   - fix dts node naming
-> - fix 32 bit build error
->   - modify 64bit dependency for mtk-mmsys
-> - rebase to vdosys0 series v16. (ref [5])
-> 
-> Changes in v12:
-> - fix reviewer comment in v11
->   - modify mbox index
->   - refine dma dev for ovl_adaptor sub driver
-> 
-> Changes in v11:
-> - remove ethdr vblank spin lock
-> - refine ovl_adaptor print message
-> 
-> Changes in v10:
-> - refine ethdr reset control using
-> devm_reset_control_array_get_optional_exclusive
-> - fix ovl_adaptor mtk_ovl_adaptor_clk_enable error handle issue
-> 
-> Changes in v9:
-> - rebase on kernel-5.16-rc1
-> - rebase on vdosys0 series v13. (ref [5])
-> - fix ovl_adaptor sub driver is brought up unintentionally
-> - fix clang build test fail- duplicate ethdr/mdp_rdma
-> init_module/cleanup_module symbol issue 
-> 
-> Changes in v8:
-> - separate merge async reset to new patch.
-> - separate drm ovl_adaptor sub driver to new patch.
-> - fix reviewer comment in v7.
-> 
-> Changes in v7:
-> - rebase on vdosys0 series v12 (ref[5])
-> - add dma description in ethdr binding document.
-> - refine vdosys1 bit definition of mmsys routing table.
-> - separate merge modification into 3 pathces.
-> - separate mutex modification into 2 patches.
-> - add plane color coding for mdp_rdma csc.
-> - move mdp_rdma pm control to ovl_adaptor.
-> - fix reviewer comment in v6.
-> 
-> Changes in v6:
-> - rebase on kernel-5.15-rc1.
-> - change mbox label to gce0 for dts node of vdosys1.
-> - modify mmsys reset num for mt8195.
-> - rebase on vdosys0 series v10. (ref [5])
-> - use drm to bring up ovl_adaptor driver.
-> - move drm iommu/mutex check from kms init to drm bind.
-> - modify rdma binding doc location.
-> (Documentation/devicetree/bindings/arm/)
-> - modify for reviewer's comment in v5.
-> 
-> Changes in v5:
-> - add mmsys reset controller reference.
-> 
-> Changes in v4:
-> - use merge common driver for merge1~4.
-> - refine ovl_adaptor rdma driver.
-> - use ovl_adaptor ddp_comp function instead of ethdr.
-> - modify for reviewer's comment in v3.
-> 
-> Changes in v3:
-> - modify for reviewer's comment in v2.
-> - add vdosys1 2 pixels align limit.
-> - add mixer odd offset support.
-> 
-> Changes in v2:
-> - Merge PSEUDO_OVL and ETHDR into one DRM component.
-> - Add mmsys config API for vdosys1 hardware setting.
-> - Add mmsys reset control using linux reset framework.
-> 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> 
-> This series are based on the following patch:
-> [1] arm64: dts: Add mediatek SoC mt8195 and evaluation board
->     20220112114724.1953-4-tinghan.shen@mediatek.com
-> [2] arm64: dts: mt8195: add IOMMU and smi nodes
->     20210615173233.26682-15-tinghan.shen@mediatek.com
-> [3] arm64: dts: mt8195: add gce node
->     20220126090109.32143-1-jason-jh.lin@mediatek.com
-> [4] [v2] arm64: dts: mt8195: add display node for vdosys0
->     20220225021535.2655-1-jason-jh.lin@mediatek.com
-> [5] Add MediaTek SoC DRM (vdosys0) support for mt8195 - v22 series
->     20220526102126.19756-1-jason-jh.lin@mediatek.com
-> [6] dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
->     20220407075726.17771-2-yong.wu@mediatek.com
-> [7] Add MediaTek SoC DRM (vdosys1) support for mt8195
->     20220526110233.20080-1-nancy.lin@mediatek.com
-> 
-> Nancy.Lin (10):
->   dt-bindings: reset: mt8195: add vdosys1 reset control bit
->   soc: mediatek: add mtk-mmsys ethdr and mdp_rdma components
->   soc: mediatek: add mtk-mmsys support for mt8195 vdosys1
->   soc: mediatek: add mtk_mmsys_update_bits API
->   soc: mediatek: add mtk-mmsys config API for mt8195 vdosys1
->   soc: mediatek: add cmdq support of mtk-mmsys config API for mt8195
->     vdosys1
->   soc: mediatek: mmsys: add mmsys for support 64 reset bits
->   soc: mediatek: mmsys: add reset control for MT8195 vdosys1
->   soc: mediatek: add mtk-mutex component - dp_intf1
->   soc: mediatek: add mtk-mutex support for mt8195 vdosys1
-> 
->  drivers/soc/mediatek/mt8195-mmsys.h       | 146
-> ++++++++++++++++++++++
->  drivers/soc/mediatek/mtk-mmsys.c          | 134 +++++++++++++++-----
->  drivers/soc/mediatek/mtk-mmsys.h          |   1 +
->  drivers/soc/mediatek/mtk-mutex.c          |  37 ++++++
->  include/dt-bindings/reset/mt8195-resets.h |  45 +++++++
->  include/linux/soc/mediatek/mtk-mmsys.h    |  25 ++++
->  6 files changed, 354 insertions(+), 34 deletions(-)
-> 
-> -- 
-> 2.18.0
-> 
+Hi, Bo-Chen:
 
-Hello Matthias,
+On Mon, 2022-06-27 at 16:03 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a embedded displayport driver for the MediaTek mt8195
+> SoC.
+> 
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> [Bo-Chen: Cleanup the drivers and modify comments from reviewers]
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
 
-This series is about mmsys configuration of external display path.
+[snip]
 
-It is in version *24*, and it is reviewed by many reviewers, like CK
-and Angelo.
-The reset.h is also reviewed by Krzysztof.
+> +
+> +static void mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
+> +				    enum dp_pixelformat color_format)
+> +{
+> +	u32 val;
+> +
+> +	mtk_dp->info.format = color_format;
 
-This series is also well tested by me and Angelo.
-I tested this series with modetest successfully using 5.19-rc2 mainline
-kernel with dp/dpintf/dp phy series.([1])
+Drop this. mtk_dp->info.format is alwasy set out of this function.
 
-Could you kindly take a look for this series and give us some comments
-or feedback? We really need this series being accepted.
+> +
+> +	/* update MISC0 */
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
+> +			   color_format << DP_TEST_COLOR_FORMAT_SHIFT,
+> +			   DP_TEST_COLOR_FORMAT_MASK);
+> +
+> +	switch (color_format) {
+> +	case DP_PIXELFORMAT_YUV422:
+> +		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR422;
+> +		break;
 
-Thanks for your big support!
+This driver use only DP_PIXELFORMAT_YUV422 and DP_PIXELFORMAT_RGB, so
+keep these two and drop others.
 
-[1]:
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=654074
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=653448
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=653410
+Regards,
+CK
 
-BRs,
-Bo-Chen
+> +	case DP_PIXELFORMAT_YUV420:
+> +		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR420;
+> +		break;
+> +	case DP_PIXELFORMAT_RGB:
+> +	case DP_PIXELFORMAT_YUV444:
+> +		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_RGB;
+> +		break;
+> +	case DP_PIXELFORMAT_Y_ONLY:
+> +	case DP_PIXELFORMAT_RAW:
+> +	case DP_PIXELFORMAT_RESERVED:
+> +	default:
+> +		drm_warn(mtk_dp->drm_dev, "Unsupported color format:
+> %d\n",
+> +			 color_format);
+> +		return;
+> +	}
+> +
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
+> +			   val, PIXEL_ENCODE_FORMAT_DP_ENC0_P0_MASK);
+> +}
+> +
 
 
