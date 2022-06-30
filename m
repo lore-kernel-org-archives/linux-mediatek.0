@@ -4,87 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41591C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 08:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A2DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 09:03:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H7PLUL9aPyqBcpN5wRzcbBdsu48ESNM2H6qfRif6CjU=; b=IwtvL0HeDy3A4M1wBB5K/b0x/B
-	u80IXcfSQiYPmNzeZ7RYp5avWQCO4CC6n+FXGfZCRBmhMgeX+erXtD5WqWRcydWwYvuDWWXdR+I9Q
-	g7I3YKVcZ55PyGQv3Q3ls01H1etYjUkn/PsW/1lLO+2n4MU5mokLitlXybIID6PMnTi6cF09pvtOI
-	ZXgLJZf/ib8l6PbcAeE9sfi0ULHHHqlaAPlm576gl9cqymuYQYzu6wwj8CwUa25HWbaA+HwcU8in0
-	TVmYCSPfdwnkbmEJhuMjAbGd5dhiX9fP1oi4rgnwaMVsHOScZhw0jAK0EpMsSMW8viDrEYGMvtxBK
-	/j30k9+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Frhxa4F28je2U/FCw9H9G3VOPjVsCiPHSXSe7PXPaBE=; b=wek2XGeJdQnQPMf8SXMtUNSwPO
+	xL2r3Q5jdJG8STsDSqvW508y4SGeTQQyg0wVX/f8f/8fYM31+iCT9e8Cp4ChfxQJrbmXeHxuJPAvu
+	99SFpdJ7AoD642PG1e20CKocsKmRkDk0YXm0Z+/kXyxr2rsdkuem+pr2X3VoQsXNz/I6CMjegPM6m
+	K3dqGQA5BrHCoq2ZecCYK/wNG2kLlBfE8V6+Nk4BKIY4+h7RFJyZfApls/2lQHS5GzbF2mM91TBhN
+	pmPPqvHk6e5G2/djAUacpMMTc2XWQUm96K0yNJkLPxzkxcFsPdKIwU6NOEazp3k5zDWSRjWK0i2uT
+	tUeGEIxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6pRE-00G0Oq-JM; Thu, 30 Jun 2022 08:22:12 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6pQz-00G0Iy-1e; Thu, 30 Jun 2022 08:21:59 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BC83F1BCB;
-	Thu, 30 Jun 2022 01:21:52 -0700 (PDT)
-Received: from [10.57.85.25] (unknown [10.57.85.25])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D6A263F66F;
-	Thu, 30 Jun 2022 01:21:47 -0700 (PDT)
-Message-ID: <e5799215-8b55-90a8-7ca4-35f85ffb5969@arm.com>
-Date: Thu, 30 Jun 2022 09:21:42 +0100
+	id 1o6q4i-00G8lJ-Py; Thu, 30 Jun 2022 09:03:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o6q4e-00G8jT-JU; Thu, 30 Jun 2022 09:02:59 +0000
+X-UUID: 778acce3436f45b5ba9e0eef325e6d02-20220630
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:a8c64ca5-56b5-437f-b39a-96c31fa9d964,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:87442a2,CLOUDID:d48f2f86-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 778acce3436f45b5ba9e0eef325e6d02-20220630
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xiangsheng.hou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 561450116; Thu, 30 Jun 2022 02:02:41 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 30 Jun 2022 17:02:26 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 30 Jun 2022 17:02:25 +0800
+From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <bin.zhang@mediatek.com>,
+	<benliang.zhao@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+Subject: [PATCH v2 0/2] arm64: dts: mt8173: Fix nor flash node
+Date: Thu, 30 Jun 2022 17:01:55 +0800
+Message-ID: <20220630090157.29486-1-xiangsheng.hou@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3 1/5] iommu: Return -EMEDIUMTYPE for incompatible domain
- and device/group
-Content-Language: en-GB
-To: Nicolin Chen <nicolinc@nvidia.com>, Yong Wu <yong.wu@mediatek.com>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Baolu Lu <baolu.lu@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "jordan@cosmicpenguin.net" <jordan@cosmicpenguin.net>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
- "will@kernel.org" <will@kernel.org>,
- "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
- "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "yangyingliang@huawei.com" <yangyingliang@huawei.com>,
- "orsonzhai@gmail.com" <orsonzhai@gmail.com>,
- "gerald.schaefer@linux.ibm.com" <gerald.schaefer@linux.ibm.com>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "christophe.jaillet@wanadoo.fr" <christophe.jaillet@wanadoo.fr>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "dwmw2@infradead.org" <dwmw2@infradead.org>,
- "marcan@marcan.st" <marcan@marcan.st>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "baolin.wang7@gmail.com" <baolin.wang7@gmail.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-References: <20220623200029.26007-1-nicolinc@nvidia.com>
- <20220623200029.26007-2-nicolinc@nvidia.com>
- <270eec00-8aee-2288-4069-d604e6da2925@linux.intel.com>
- <YrUk8IINqDEZLfIa@Asurada-Nvidia>
- <8a5e9c81ab1487154828af3ca21e62e39bcce18c.camel@mediatek.com>
- <BN9PR11MB527629DEF740C909A7B7BEB38CB49@BN9PR11MB5276.namprd11.prod.outlook.com>
- <19cfb1b85a347c70c6b0937bbbca4a176a724454.camel@mediatek.com>
- <20220624181943.GV4147@nvidia.com> <YrysUpY4mdzA0h76@Asurada-Nvidia>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <YrysUpY4mdzA0h76@Asurada-Nvidia>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_012157_231214_316F9782 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20220630_020256_680584_31567212 
+X-CRM114-Status: UNSURE (   6.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,41 +77,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-29 20:47, Nicolin Chen wrote:
-> On Fri, Jun 24, 2022 at 03:19:43PM -0300, Jason Gunthorpe wrote:
->> On Fri, Jun 24, 2022 at 06:35:49PM +0800, Yong Wu wrote:
->>
->>>>> It's not used in VFIO context. "return 0" just satisfy the iommu
->>>>> framework to go ahead. and yes, here we only allow the shared
->>>>> "mapping-domain" (All the devices share a domain created
->>>>> internally).
->>
->> What part of the iommu framework is trying to attach a domain and
->> wants to see success when the domain was not actually attached ?
->>
->>>> What prevent this driver from being used in VFIO context?
->>>
->>> Nothing prevent this. Just I didn't test.
->>
->> This is why it is wrong to return success here.
-> 
-> Hi Yong, would you or someone you know be able to confirm whether
-> this "return 0" is still a must or not?
+Add axi clock since the driver change to DMA mode which need to enable
+axi clock. And change spi clock to 26MHz as default.
+Add assigned clock property and axi clock binding file.
 
- From memory, it is unfortunately required, due to this driver being in 
-the rare position of having to support multiple devices in a single 
-address space on 32-bit ARM. Since the old ARM DMA code doesn't 
-understand groups, the driver sets up its own canonical 
-dma_iommu_mapping to act like a default domain, but then has to politely 
-say "yeah OK" to arm_setup_iommu_dma_ops() for each device so that they 
-do all end up with the right DMA ops rather than dying in screaming 
-failure (the ARM code's per-device mappings then get leaked, but we 
-can't really do any better).
+Changes from v1:
+- Modify nor binding file
 
-The whole mess disappears in the proper default domain conversion, but 
-in the meantime, it's still safe to assume that nobody's doing VFIO with 
-embedded display/video codec/etc. blocks that don't even have reset drivers.
+Xiangsheng Hou (2):
+  arm64: dts: mt8173: Fix nor_flash node
+  dt-bindings: mediatek: Add assigned clock property and axi clock in
+    example
 
-Thanks,
-Robin.
+ .../devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml  | 10 ++++++++--
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi               |  7 +++++--
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+
+-- 
+2.25.1
+
 
