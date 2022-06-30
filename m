@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B328C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 15:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D68FCCA47B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jun 2022 15:34:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:To:From:MIME-Version:Date:Message-ID:Reply-To:Cc:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QPgfmGPzo0HoQgLvHwpuXu2y4ENd3LIeeJow1FQOZaw=; b=GKh7ktcdTj526rDTu7G96JtZrM
-	ce3LYyG8nktwFQgWe8AcY05qZe9wiE4pqk9wD/lTn218Od9/ceZPfufuVmpewK/szF7XZ6LwTeSez
-	dTugmYCah3DDdlU8nfDtK9mR7DKx7SmKdJRqEcH7w6iH6cVU8JiPwFK90/4ycsfGuT98hNdohUjHz
-	aXFz9CmpOgtXQtxqXh87zG/tvxnmo8OtFUdTot/b5hfX93pw7YYDLtaz0Qo+6e63FmWJS5zhf/KCp
-	JaAZVPR8WdQdxXiTxeYrDe/L6Ok8zvxjRK8N4kQAQI/7WJd/gTRiDA4Sl/OSX47Q8KWedtUKJ20sz
-	+RazJAJA==;
+	bh=oVXwZwkNbNsiEis3GpBq7zKZdG1xKS6yBmYVGW0Q2QM=; b=s2ogmpLyT12Y1ops3RjwiSa2tE
+	n0Hr71D5Ive5PdVXzpEtqbuWkmrgAlWOX1inu89Ucp64e13EOvdeMMSMeC7W2cuOwTaOZMuM4l7ZT
+	UzRzhDdSMOICkBK0DXJ7QEZK0jRDlUmxxVx2Opw/Ivu2boMguxH+xaCxiLMijMsxLHZ83oBCODmVi
+	OsWWLnURSHjSH8+rlArOlaTwKQr2kSnZ17VJDvFQtPvYrn0jAEEQbDi2pWA5jovYuWMbWEISxt0NX
+	G6YOPWKG64nPO+Ve4d30Z+a50mDXbCUZ8SJVDali2o7IzyFSv6FzM0IO+iliopWoSKJ+Wq6Zsx8Ob
+	GTOCo6NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6w8K-000HtA-3Y; Thu, 30 Jun 2022 15:31:08 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1o6wB4-000Ilw-OI; Thu, 30 Jun 2022 15:33:58 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6w8I-000HsH-8S
-	for linux-mediatek@lists.infradead.org; Thu, 30 Jun 2022 15:31:07 +0000
-Received: by mail-wr1-x431.google.com with SMTP id d17so22215571wrc.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 Jun 2022 08:31:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:from:to:subject
-         :content-transfer-encoding;
-        bh=QPgfmGPzo0HoQgLvHwpuXu2y4ENd3LIeeJow1FQOZaw=;
-        b=AVXmm+ZXfrskSt3CnXkgE32icW5o6dB1+Kr9qoI6WVf/HO8Wt8SH+hWsdhzmatAs9g
-         jKqXElYHSsvSDQLilQBFUxTF84NIN/7LyXwXmovwJ4AnMcBPGc8cErL1zGoh7UHI1tIV
-         VA/Dm1GuNzMXrEaBJ3VsDOSY+PwZ2ebqSaO3FNQfH1hMUOhFIS36QF8fJKY5nPDKzmBc
-         6HKhmM2ZJZXG+4yQJo9KjbCahupnYJag1z0wY31iEc9RVKgMfcEzeBR4TppbWhwwVSaK
-         9rXdPBoH53/uBjHF1gbz8yuiZdsiGS5xOj5p4ScuEe/Wrl/IN4shpsqHjGRxmvl6qk+Z
-         ekTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:from:to:subject
-         :content-transfer-encoding;
-        bh=QPgfmGPzo0HoQgLvHwpuXu2y4ENd3LIeeJow1FQOZaw=;
-        b=Xxlyxiitbr+SER0Q6PE7FYhUyoyXei1eMNXvY3crCG+oI7ZgkVl5d0LhqP6fqPiHnV
-         hPEHj+i0h8bcxYMkMwJOrGQtra81WRk3YuE+qHLyzG88DOikPJLD8w9JHGZ5vYwhFj8G
-         VPkixqbnM5+rJhfg5b1m8O+MoD6u4ONWlWZoLbVDUAtcoik/iJDOXXriIzuK1Px8bIwG
-         6iIhMta84Vi/7PBnKwKLolHIPfZA1AnsRnwv8OlNDoBbLUcQWwMya2/QUpXZZ6dF6js6
-         WJy7tQRYB9MrEIoxznLA5m+iZp96oUIiXu6IA5WJ78xgCPdfg6wTaO4lGnoSV8JKp+7S
-         +zUA==
-X-Gm-Message-State: AJIora92xFY6NfDCYf9m2Wx1zQtZ5JAdMHOssOPNSNFnuT0XXNuJxbgm
-	NlnSnFrmu2avEpk3mnVZvUUoVWtQwWk=
-X-Google-Smtp-Source: AGRyM1sA9RZ1YJUMhCJrhJVFfLLEpeG5MI1/vOUKW8EB8sh1ch4Zbtg776H7onLJQgPaMFElHbsl0Q==
-X-Received: by 2002:a05:6000:38f:b0:21b:aded:e791 with SMTP id u15-20020a056000038f00b0021badede791mr8550902wrf.225.1656603063329;
-        Thu, 30 Jun 2022 08:31:03 -0700 (PDT)
-Received: from DESKTOP-L1U6HLH ([39.53.244.205])
-        by smtp.gmail.com with ESMTPSA id q12-20020a5d61cc000000b0021cf31e1f7csm11860987wrv.102.2022.06.30.08.31.02
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Thu, 30 Jun 2022 08:31:02 -0700 (PDT)
-Message-ID: <62bdc1b6.1c69fb81.88069.9566@mx.google.com>
-Date: Thu, 30 Jun 2022 08:31:02 -0700 (PDT)
-X-Google-Original-Date: 30 Jun 2022 11:31:04 -0400
+	id 1o6wAZ-000IUr-O8; Thu, 30 Jun 2022 15:33:29 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8AAD26601966;
+	Thu, 30 Jun 2022 16:33:23 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656603204;
+	bh=EudDgFiZB1R9NaUbxHSruCGuiD0p7vpdf1apIJF86C8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=a22QgeEDiZNL1AUeZlBoDNE8gsCktZVRPfcQ6Tj+bhXjunFSzUdo0LsPkkxsLxllR
+	 Zs2ZkGg9cr+WB2BGKG1tvraC5g4zJTgYefqiB/WuMFtdhXe2s0yWG2vYA+7TEA7Lo4
+	 sgwR7l0/LEnGywJcbG126AEI7SOT9VhxH9IlJN7zpDH+WUImRaBi/zfKEAiWjldD7A
+	 kERUlxwVHhnAO/bmwhZ3iD9jOwenRzvhuIln1Hf24uVb6QGprJgO24V2YDR/6YiV0j
+	 OzoD1r1JCC4hQ9Lr/eXm0XKXSOo10WZaxcdDCD/cehyopMG0aBgDJUXZ3nPu/W9MyP
+	 jMmJx6cJPlbzA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	hsinyi@chromium.org,
+	nfraprado@collabora.com,
+	allen-kh.cheng@mediatek.com,
+	gtk3@inbox.ru,
+	luca@z3ntu.xyz,
+	sam.shih@mediatek.com,
+	sean.wang@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	wenst@chromium.org
+Subject: [PATCH 00/11] MT8195 Chromebooks devicetrees - Google Tomato
+Date: Thu, 30 Jun 2022 17:33:05 +0200
+Message-Id: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-From: carman.dreamlandestimation@gmail.com
-To: linux-mediatek@lists.infradead.org
-Subject: Estimating Services
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_083106_355872_A65D876D 
-X-CRM114-Status: UNSURE (   3.12  )
+X-CRM114-CacheID: sfid-20220630_083327_956390_136AAAA0 
+X-CRM114-Status: UNSURE (   9.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,14 +82,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fa!zAn, 11:10 AM=0D=0AHi,=0D=0A=0D=0AWe provide estimation & quan=
-tities takeoff services. We are providing 98-100 accuracy in our =
-estimates and take-offs. Please tell us if you need any estimatin=
-g services regarding your projects.=0D=0A=0D=0ASend over the plan=
-s and mention the exact scope of work and shortly we will get bac=
-k with a proposal on which our charges and turnaround time will b=
-e mentioned=0D=0A=0D=0AYou may ask for sample estimates and take-=
-offs. Thanks.=0D=0A=0D=0AKind Regards=0D=0ACarman Riley=0D=0ADrea=
-mland Estimation, LLC
+This is the first part for upstreaming Google's Cherry Tomato
+Chromebook (Acer Chromebook Spin 513): in this series, we introduce
+the devicetrees for the four revisions of this Chromebook and enable
+every controller and feature that can be added as per the current
+state of the main SoC devicetrees (mt8195.dtsi) and its PMIC
+devicetree (mt6359.dtsi).
+
+More parts will come as soon as more support will be added by
+MediaTek in the mt8195 devicetree.
+
+Note: This series will introduce a dtbs_check warning about a failure
+      to match compatible for 'mediatek,mt6359': that's expected, as
+      this is defined in devicetree/bindings/mfd/mt6397.txt (so there
+      is no schema, yet).
+
+
+This series depends on the following fixes:
+[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20220630110453.186526-1-angelogioacchino.delregno@collabora.com/
+[2]: https://patchwork.kernel.org/project/linux-mediatek/patch/20220630122334.216903-1-angelogioacchino.delregno@collabora.com/
+[3]: https://patchwork.kernel.org/project/linux-mediatek/patch/20220630131543.225554-1-angelogioacchino.delregno@collabora.com/
+
+AngeloGioacchino Del Regno (11):
+  dt-bindings: arm: mediatek: Add MT8195 Cherry Tomato Chromebooks
+  arm64: dts: mediatek: Introduce MT8195 Cherry platform's Tomato
+  arm64: dts: mediatek: cherry: Assign interrupt line to MT6359 PMIC
+  arm64: dts: mediatek: cherry: Add platform regulators layout and
+    config
+  arm64: dts: mediatek: cherry: Add support for internal eMMC storage
+  arm64: dts: mediatek: cherry: Document gpios and add default pin
+    config
+  arm64: dts: mediatek: cherry: Enable I2C and SPI controllers
+  arm64: dts: mediatek: cherry: Enable T-PHYs and USB XHCI controllers
+  arm64: dts: mediatek: cherry: Enable MT6360 sub-pmic on I2C7
+  arm64: dts: mediatek: cherry: Enable support for the SPI NOR flash
+  arm64: dts: mediatek: cherry: Add I2C-HID touchscreen on I2C4
+
+ .../devicetree/bindings/arm/mediatek.yaml     |  13 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+ .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |  15 +
+ .../dts/mediatek/mt8195-cherry-tomato-r2.dts  |  35 +
+ .../dts/mediatek/mt8195-cherry-tomato-r3.dts  |  36 +
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 715 ++++++++++++++++++
+ 6 files changed, 817 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+
+-- 
+2.35.1
 
 
