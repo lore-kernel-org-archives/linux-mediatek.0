@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 447B7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 12:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99AF5C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 13:11:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WeGYBPwVDixR2qJouCEO0ByS8rMRdZZ7Fc5WEDHOkR8=; b=qkE1CCZv4qTEEZReMwXFlfA8Iv
-	rwo6T9x9INabbXGNxHWc81NeNN7A7v5IGxzpwnrSB20RNalhjvOrGpvyOfBqR3LAZDggvHTOUMbMp
-	l8LhBJkHArE1kCVzcuIjEGK0QOu4kkt3nb83vzFnQlrvpuzPIukgYc80HMtjotS0MzZQjURUbkb78
-	o4pzDnOLfjeUal7iQRex3CveayzWFGXp44WRg04SvZBGh2FcBA2Q8CjXBtCygoQBjTn8/LOaoieqk
-	0fl/iucDMR/hnHC7ydfXgbMuBVluC8MUE64qyx14Uzij64AzAMmynBNOaHjzu/iw/0B/PVfTGe4B+
-	KY0ZWNRw==;
+	bh=93Mj4Iau0zpmP/JMwi/VFSHRM8pmBMuEnMbb4W4iqXI=; b=fn1vut6IDAy/s72l1gzc83gDZJ
+	0a9ccDQU/XuwoNI7mvcVq5W8JPCUydnZxgLiFLcLuQlJxXH0rNWwwKrdTm2E/y834rEp/LL1lXxpj
+	fugbV+Ywo9IHniPQMtvsQG1W4bJKcKqmqYs7jr5Qlyn9UNWBg21VrXcVMYh+rwFa3W3loM81/4LcI
+	TXbWil2cG2adeQcmdhjM7ZJ5DleZhTbWg5BOPbKdOcMo/FUJOQ/IbcrJ2aCuyjb/MJ5SkfrJbs3jW
+	/x51/fM3zrMkWVFN72IziapSXrD6sC15T1CItU6oiQh5x2ckdUYU1+ftSnLEFvWhc/wY8cnwY0VFi
+	bbpnYZ+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7G1F-004q8c-5p; Fri, 01 Jul 2022 12:45:09 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1o7GQv-004yvM-7i; Fri, 01 Jul 2022 13:11:41 +0000
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7G1C-004q7T-L7
-	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 12:45:08 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-31772f8495fso22578627b3.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 01 Jul 2022 05:45:05 -0700 (PDT)
+	id 1o7GPc-004yFN-Oe
+	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 13:10:28 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id v185so3948266ybe.8
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Jul 2022 06:10:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=WeGYBPwVDixR2qJouCEO0ByS8rMRdZZ7Fc5WEDHOkR8=;
-        b=fwJ/7oQxr9u0A+gZ+PAk5PGvMB3ZTFUSYKEOHOxcSmW6hg2LlJhh1bYkZAkskHhjud
-         nBiWx6xjWRpRv5zrvSfNVCGJw2lM/I2mR5YZ7CWbfEBcKoJewqKDF1qGILgw1+GImUsx
-         oTZz5efquRuj2iDioBDF17v7f79Dsep40ga0o=
+        bh=93Mj4Iau0zpmP/JMwi/VFSHRM8pmBMuEnMbb4W4iqXI=;
+        b=UUCeOLLSa8JxepsV6kbA1FCpTxZVNNOcRM6cLxnQj7WL62ivtMfBPCez7Gpugi+NdL
+         VmxfTuKRVEf4VR4Wc6uhRq6c1ihOtEZ/3LpSNAXvMDWX6p6PoyUu2ZPGap3qBomly4UR
+         f5rPFPHk6kFebaxaGoDQHMzC8gVIcG9TkQOLk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=WeGYBPwVDixR2qJouCEO0ByS8rMRdZZ7Fc5WEDHOkR8=;
-        b=CN5pgovfJ2gbbvLBHfAOivQIjpNL3rkF2x2wNu0nyhcQO6HH/i5jmkW95p39kfdyA3
-         I0ppwIepuXyM5F6e3bOBRwNBqG1lmdw1ak5JTKCqq6uiGhegnWuPIcfAMYlvkIfb+Og2
-         TJUOCVLzsR0561Qbzihn5+bRNdz0r/7sxvgZJ2edLGheraK9yKMYwWQgTEFEqTUmpRAC
-         CBlwSQTgJIoc+y/RdA2OIEzICEB3JNENPZG8C+lO8MWPr6SPyoDM4L1wrYrf8KOzLTiN
-         gbZrKxVHpmdn3YuSKXTPTx60jdUGmRlM1tevP6g+h0XAHEoOMpazoA4smu3WsVt8aK+5
-         F1yw==
-X-Gm-Message-State: AJIora+rHv6TwI1jcOiT5PB4ntd6MOsBC4dXwsuHBU8XFiYzQ/EEybru
-	/LVts7swEz7NIv8KPhUHI+6Z+/iBU/blnaHQCaO7cw==
-X-Google-Smtp-Source: AGRyM1sTMCFR93Cs/lcO5WPfXN00h1mu0K5SZtXz0zhdzHdEqwF3pf2Anm9v9f5YHNas1DSzoSqgOZLlmMh4l0Obodw=
-X-Received: by 2002:a05:690c:316:b0:314:2147:2b90 with SMTP id
- bg22-20020a05690c031600b0031421472b90mr15915094ywb.318.1656679504880; Fri, 01
- Jul 2022 05:45:04 -0700 (PDT)
+        bh=93Mj4Iau0zpmP/JMwi/VFSHRM8pmBMuEnMbb4W4iqXI=;
+        b=OGssMOUhKT/658hXYLYo/1ktHhMA6w3mk0bpGJMNwzGs4uqHLZohaq4nkyuSe5eUBp
+         tMfWqRGc6gTVO42e6TREa+zYeXizwYwS3vuhnHl29eFprsiM9T+FzntryWFNR8quNwc1
+         wIr0V7FljRUvQa+nH4Yi356XQYhZNI2H3Tp1jXb4j1DU0uNuulSyeKonOnLiMccAjG08
+         Z96Xq0WLDwvyK87qAQ2yIQo9Vb4q0ZAcIU9+8bIMTpIGvAsCbg7hExwRQWHySqE848BP
+         gQv/4ANEsjZDC67youJlM842Vy96WWOUaJBbfdX0Hp4UHFRf25IpJJqNaJTSkevakPZR
+         NbLA==
+X-Gm-Message-State: AJIora/aocBsgVu7IrqjqXaY/W6NdK3o2a4veEU/irG20QbqvlubWH74
+	h9GYXTAEsi96T/5lJlrZ9J3q3GBbCrSIk+VXn4MpGA==
+X-Google-Smtp-Source: AGRyM1uWKenMTsIZlQbeXynKt3mVEKH67yHcrh73gv2A0rWP5WfpVj+e/Wz0OfAPf2Dh6QAOgEjdx2kaTlA2uoioq8s=
+X-Received: by 2002:a25:81c5:0:b0:66d:55b5:d250 with SMTP id
+ n5-20020a2581c5000000b0066d55b5d250mr14906967ybm.501.1656681019536; Fri, 01
+ Jul 2022 06:10:19 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220629155956.1138955-1-nfraprado@collabora.com>
-In-Reply-To: <20220629155956.1138955-1-nfraprado@collabora.com>
+References: <20220701105237.932332-1-wenst@chromium.org> <e601a375-cc80-40cd-9791-e44e9d37cec0@email.android.com>
+In-Reply-To: <e601a375-cc80-40cd-9791-e44e9d37cec0@email.android.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 1 Jul 2022 20:44:53 +0800
-Message-ID: <CAGXv+5Epmo1=DZvoFkqj57hiO8nim=cuP1v3i9b2diZwqBe3Mw@mail.gmail.com>
-Subject: Re: [PATCH v4 00/19] Introduce support for MediaTek MT8192 Google Chromebooks
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Fabien Parent <fparent@baylibre.com>, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Luca Weiss <luca@z3ntu.xyz>, 
-	Maxim Kutnij <gtk3@inbox.ru>, Rob Herring <robh+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
+Date: Fri, 1 Jul 2022 21:10:08 +0800
+Message-ID: <CAGXv+5Hrc6RageAu1YMBCA22r0kz+-C+9qO=qdDEmn_QhSCB3w@mail.gmail.com>
+Subject: Re: [PATCH 0/6] media: mediatek-vcodec: Fix capability fields again
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+	Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_054506_755096_75D16D59 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20220701_061020_890236_E2BB0296 
+X-CRM114-Status: GOOD (  27.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,91 +85,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 30, 2022 at 12:00 AM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
+On Fri, Jul 1, 2022 at 8:45 PM Nicolas Dufresne
+<nicolas.dufresne@collabora.com> wrote:
+>
+> Hi Chen,
+>
+> Le 1 juill. 2022 06 h 52, Chen-Yu Tsai <wenst@chromium.org> a =C3=A9crit =
+:
+>
+> Hi everyone,
+>
+> The previous round of changes to the mtk-vcodec driver's returned
+> capabilities caused some issues for ChromeOS. In particular, the
+> ChromeOS stateless video decoder uses the "Driver Name" field to
+> match a video device to its media device. As the field was only
+> changed for the video device and not the media device, a match
+> could no longer be found.
 >
 >
-> This series introduces Devicetrees for the MT8192-based Asurada platform
-> as well as Asurada Spherion and Asurada Hayato boards.
->
-> Support for the boards is added to the extent that is currently enabled
-> in the mt8192.dtsi, and using only properties already merged in the
-> dt-bindings, as to not add any dependencies to this series.
->
-> This series was peer-reviewed internally before submission.
->
-> Series tested on next-20220629.
+> This match is not specified in the spec. If you feel like it should, perh=
+aps consider specifying it first. To me it's nice if they match, but it's f=
+or now just cosmetic.
 
-Just FYI I also got the internal display to work after some fixes to
-the dtsi [1] and copying the stuff over from the ChromeOS kernel tree.
+Right. Even for cosmetic reasons I think my changes make sense though.
+Fixing the matching is another thing.
 
-It might be harder to enable the external display, given that we don't
-have a good way of describing the weird design of using the DP bridge
-also as a mux. See [2] for ongoing discussion.
+> Though this requires some discussion, as userland is expected to enumerat=
+e the media device and find the video device by walking the topology. This =
+is the only specified way to match both.
+
+AFAICT, v4l2-ctl does similar matching, though by bus_info. Maybe it's
+out of convenience?
 
 ChenYu
 
-[1] https://lore.kernel.org/linux-mediatek/CAGXv+5F_Gi_=3DvV1NSk0AGRVYCa3Q8=
-+gBaE+nv3OJ1AKe2voOwg@mail.gmail.com/
-[2] https://lore.kernel.org/dri-devel/20220622173605.1168416-1-pmalani@chro=
-mium.org/
-
-> v3: https://lore.kernel.org/all/20220512205602.158273-1-nfraprado@collabo=
-ra.com/
-> v2: https://lore.kernel.org/all/20220505194550.3094656-1-nfraprado@collab=
-ora.com/
-> v1: https://lore.kernel.org/all/20220316151327.564214-1-nfraprado@collabo=
-ra.com/
 >
-> Changes in v4:
-> - Added patches 17-19 enabling MMC, SCP and SPI NOR flash
-> - Switched mediatek,drive-strength-adv for drive-strength-microamp
-> - Switched mediatek,pull-up-adv for bias-pull-up
-> - Updated Vgpu minimum voltage to appropriate value
 >
-> Changes in v3:
-> - Renamed regulator nodes to be generic
-> - Fixed keyboard layout for Hayato
+> While fixing this, I found that the current info used for the fields
+> don't make a lot of sense, and tried to fix them in this series.
 >
-> Changes in v2:
-> - Added patches 1-2 for Mediatek board dt-bindings
-> - Added patches 13-16 enabling hardware for Asurada that has since been
->   enabled on mt8192.dtsi
+> Patch 1 reverts the driver name field change. It also makes it
+> explicit that the field really should match the driver name.
 >
-> N=C3=ADcolas F. R. A. Prado (19):
->   dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-spherion
->   dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-hayato
->   arm64: dts: mediatek: Introduce MT8192-based Asurada board family
->   arm64: dts: mediatek: asurada: Document GPIO names
->   arm64: dts: mediatek: asurada: Add system-wide power supplies
->   arm64: dts: mediatek: asurada: Enable and configure I2C and SPI busses
->   arm64: dts: mediatek: asurada: Add ChromeOS EC
->   arm64: dts: mediatek: asurada: Add keyboard mapping for the top row
->   arm64: dts: mediatek: asurada: Add Cr50 TPM
->   arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
->   arm64: dts: mediatek: asurada: Add I2C touchscreen
->   arm64: dts: mediatek: spherion: Add keyboard backlight
->   arm64: dts: mediatek: asurada: Enable XHCI
->   arm64: dts: mediatek: asurada: Enable PCIe and add WiFi
->   arm64: dts: mediatek: asurada: Add MT6359 PMIC
->   arm64: dts: mediatek: asurada: Add SPMI regulators
->   arm64: dts: mediatek: asurada: Enable MMC
->   arm64: dts: mediatek: asurada: Enable SCP
->   arm64: dts: mediatek: asurada: Add SPI NOR flash memory
+> Patch 2 changes the value for the card name, making it a free form
+> string that includes the SoC model.
 >
->  .../devicetree/bindings/arm/mediatek.yaml     |  13 +
->  arch/arm64/boot/dts/mediatek/Makefile         |   2 +
->  .../dts/mediatek/mt8192-asurada-hayato-r1.dts |  47 +
->  .../mediatek/mt8192-asurada-spherion-r0.dts   |  62 ++
->  .../boot/dts/mediatek/mt8192-asurada.dtsi     | 959 ++++++++++++++++++
->  5 files changed, 1083 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1=
-.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-=
-r0.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> Patch 3 removes setting the bus_info field, instead using the default
+> value derived from the underlying |struct device| as set by the V4L2
+> core.
+>
+> Patches 4 through 6 do the same as 1 through 3 respectively, but for
+> the encoder side.
+>
+> This series is based on next-20220701, and was tested on mainline on
+> MT8183 Juniper, and on ChromeOS v5.10, on which we have a whole bunch
+> of backports pending, on MT8195 Tomato.
+>
+> Please have a look.
+>
+>
+> Thanks
+> ChenYu
+>
+> Chen-Yu Tsai (6):
+>   media: mediatek: vcodec: Revert driver name change in decoder
+>     capabilities
+>   media: mediatek: vcodec: Use meaningful decoder card name including
+>     chip name
+>   media: mediatek: vcodec: Use default bus_info for decoder capability
+>   media: mediatek: vcodec: Revert driver name change in encoder
+>     capabilities
+>   media: mediatek: vcodec: Use meaningful encoder card name including
+>     chip name
+>   media: mediatek: vcodec: Use default bus_info for encoder capability
+>
+> drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 7 ++++---
+> drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h | 1 +
+> drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 7 ++++---
+> 3 files changed, 9 insertions(+), 6 deletions(-)
 >
 > --
-> 2.36.1
+> 2.37.0.rc0.161.g10f37bed90-goog
+>
 >
 
