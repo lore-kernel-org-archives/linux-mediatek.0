@@ -4,81 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F31FECCA479
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 10:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C75C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 12:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LAb8BhaEnoy6g4TUthkAckgbU5LqWiMd2MpRJwBJ244=; b=grYdipAHMaYQkM94ZjenjUAes7
-	M0OHERFKfekv8U0SkQA3It8gSodPp0F1pSxNzMg8N9dM09iiLimHs5kHwfnIRIEvhGv7QDsRtC7Ok
-	vzjURokr/z2eoI+jUjwJKTxyaM80sDp8fqePYCoy2T666fZ2a2MxPGAdBAXanSLzo5Z43srNimvwa
-	lJE22TsmelLCPkYRt0ylhMyKnOVQ6omrfdKmpU7ji+IBcA51zaYR8WkLtX9YEol3qBArvCZIom6Sm
-	tZcLiIwao7BKy18o8kaOs3enA8Fe18tp1BRRea+FQKV6YQw3Ga0WgnBG6q3xvh+3GlnAAxXvjOTU+
-	L3F/fxcA==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=u4vljocczANnU89Yp8wpFGeJ8zLUuIGvCpPD1nKa2W0=; b=loSBKa1XL0c57eyPm/KY1m7YHj
+	dP2VWftelUrQTNkrHaVu4NysQ6CqHq/6a9EI1syFYLeDYVEm3GbHJeOEbZ5eVaHPLbriJ4s3rLZBN
+	s6PEyCmo2YXWogBjd3Cz7iBdb0oYq53fMB7ZmIVqfz78zlrhdYt6ytEVSWuQ8F+dfdy23erCCDg8V
+	nY6HCzyHJbMGJOMjsyRIXXwy8i6qnDimyhrfeB7J/NxsjvfEzl7GbPH1Rq7sdhVzhsshpsykZnLVh
+	au8/W8zGjCbfjFIO0FWaQ0aLE4Zncatt3WKjyoGHlrjH3Y0wLI25pg8eGLxJZeJyDhoaVLbK2PdCY
+	MVRvYq6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7EHC-004D5H-Ti; Fri, 01 Jul 2022 10:53:30 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1o7FWk-004ixB-6g; Fri, 01 Jul 2022 12:13:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7EH3-004CxI-Vq
-	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 10:53:23 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id g20-20020a17090a579400b001ed52939d72so2305318pji.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 01 Jul 2022 03:53:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=LAb8BhaEnoy6g4TUthkAckgbU5LqWiMd2MpRJwBJ244=;
-        b=iKv4thd0wDQP8anbuEyzEQ+Zqxa2RoLpovoXs077tea1xpsXOBelzTXGmK4y7MqftT
-         5BJnXPH8YNdKWTHrIlCKk2Y5qhZu1/pNfrnZsu0+Mx5vhh0AMDhG/LEBw6Yr2orVpLpS
-         c9Rif9I0bUJFib7BjpoRdmrjmJJMel7dBcIgE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=LAb8BhaEnoy6g4TUthkAckgbU5LqWiMd2MpRJwBJ244=;
-        b=7KUofhW7DMav9LXzTS54NU1gellBIM60auahIR24viUMaLyJq6N1d09KvExsk6kbYm
-         SWWxNd1WMUqzJ8ha8P1SXJWlBmQgzN0Za96ZLIGL9WTn4mN+dcj4b/+R32/6i8vmVv4e
-         ejXWlbIKffr7Qv4gEmeMkLPXRsLKVnVgit3z1oHtzF+sEUk1NIXvomUf5YPwhj6ElQaf
-         1ifszPrxhZpB8Qu982hlYhItGE7+3mQH/lDWp00sgH07I3FiRkeFjZxMAXL6nLHzKZir
-         YMt2MvBz4mLwII0Ii62Tz+bio/87xK+9vvydscbVS3ySqs+41OoPw5AyFeR/S9TNIQZo
-         eSHQ==
-X-Gm-Message-State: AJIora8siUXDuMhWFZbgxBmRTFF0UjukVNnxKMqGpgQLYkqrZ0VIFNWm
-	1GK2g0v78QBFNVh32pYpXvvYMg==
-X-Google-Smtp-Source: AGRyM1v7WmL7Uss1HNkKbQMy8M5hpzoThkEh0hNwmVYgcfIBghgHA/BIAT8PEL/BvGq+Wt4ZftbeQQ==
-X-Received: by 2002:a17:902:9f87:b0:16a:1efc:42fe with SMTP id g7-20020a1709029f8700b0016a1efc42femr20863524plq.124.1656672798693;
-        Fri, 01 Jul 2022 03:53:18 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:59bf:8b47:50a0:b04f])
-        by smtp.gmail.com with ESMTPSA id j2-20020a170902758200b0016a058b7547sm14906670pll.294.2022.07.01.03.53.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Jul 2022 03:53:18 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 6/6] media: mediatek: vcodec: Use default bus_info for encoder capability
-Date: Fri,  1 Jul 2022 18:52:37 +0800
-Message-Id: <20220701105237.932332-7-wenst@chromium.org>
-X-Mailer: git-send-email 2.37.0.rc0.161.g10f37bed90-goog
-In-Reply-To: <20220701105237.932332-1-wenst@chromium.org>
-References: <20220701105237.932332-1-wenst@chromium.org>
+	id 1o7FWL-004inu-GF; Fri, 01 Jul 2022 12:13:16 +0000
+X-UUID: 70c5d0450e9641c58c2ec622011bd3a3-20220701
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:3706705e-411e-4e9b-8251-271828a27af1,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:87442a2,CLOUDID:47c85ed6-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 70c5d0450e9641c58c2ec622011bd3a3-20220701
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2028074504; Fri, 01 Jul 2022 05:13:06 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 1 Jul 2022 20:12:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 20:12:30 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-remoteproc@vger.kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v2 0/1] enable cache for mt8186 SCP
+Date: Fri, 1 Jul 2022 20:12:28 +0800
+Message-ID: <20220701121229.22756-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_035322_098985_C4F7E702 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20220701_051313_603674_2B2C4743 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,34 +79,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit f2d8b6917f3b ("media: v4l: ioctl: Set bus_info in
-v4l_querycap()"), the V4L2 core provides a default value for the
-bus_info field for platform and PCI devices. This value will match
-the default value for media devices added by commit cef699749f37
-("media: mc: Set bus_info in media_device_init()"). These defaults
-are stable and device-specific.
+This patch is based on kernel/git/next/linux-next.git/#master and for
+enableing cache in SCP.
 
-Drop the custom capability bus_info from the mtk-vcodec encoder
-driver, and use the defaults.
+In mt8186 SCP, it provides parts of these features vedio encode/decode,
+camera, and CrOS EC host command. We don't have enough SRAM to support
+too many text segments, heap and stack, so SCP will use DRAM as execution
+space.·
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 1 -
- 1 file changed, 1 deletion(-)
+The DRAM power and latency is much larger than SRAM. cache is used to
+mitigate the negative effects for performace. Also it's designed in SCP
+bus architecture and does not affect implemenations where the application
+processor is using caches.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index cc286e59021e..25e816863597 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -237,7 +237,6 @@ static int vidioc_venc_querycap(struct file *file, void *priv,
- 	int platform_name = mtk_vcodec_enc_get_chip_name(priv);
- 
- 	strscpy(cap->driver, dev->driver->name, sizeof(cap->driver));
--	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:mt%d-enc", platform_name);
- 	snprintf(cap->card, sizeof(cap->card), "MT%d video encoder", platform_name);
- 
- 	return 0;
+We reserve 0x3C000 <-> 0x40000 in SRAM(SCP) to support cache and set
+I-cache and D-cache size before loading SCP FW. If there isn't no this
+patch, SCP still works with DRAM and SRAM.
+
+This driver was tested on mt8186 with below firmware
+
+This driver was tested on mt8186 with below firmware
+https://lore.kernel.org/linux-firmware/10ed0b2a78baa88f7fd1d466036c98de2f6d8e29.camel@mediatek.com/T/#t
+
+changes since v1:
+ - rebase to linux-next
+ - add more information in commit message
+
+Allen-KH Cheng (1):
+  remoteproc: mediatek: enable cache for mt8186 SCP
+
+ drivers/remoteproc/mtk_scp.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
 -- 
-2.37.0.rc0.161.g10f37bed90-goog
+2.18.0
 
 
