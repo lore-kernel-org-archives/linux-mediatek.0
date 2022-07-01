@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB56C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 06:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03AF4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 06:30:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZpJCscw4sPL7V54Zw0McE2xiupIcYtTpOpKtcqx7pEU=; b=kHtgtsPa6Ab13h5t0wK1CapdCf
-	SIUruniuBRRFMc7/oVpSUSR38MM2glTdpZ6aJF7gSaOhdOm3UfjLIxOEHXwcC+WrSDvZDNZCW7EDj
-	DGQbWKW+2OL0SDLUtV0YwLXXnA6PDmZxt0YUfoOES5trXdDc0z9kdyehhGc0UoQYFjfAnDXIaT51h
-	q6IJ7Yd4nX+9lM1WHnq1hbDlLEyjt/1oRPjydte1hjGz1qPFF2xK4La77MIkkH54ZZaD0U3lxu7OE
-	JNy007Vh3p+S0hECGA3VQ6Nf2S2gsXCDoxZm1bwp7Qq/PKE8iCa040+QhfqqzkKKpj+qwbbbQwT4J
-	IH1AL34w==;
+	bh=bYupsYkJk0Nizuy8F98BsDiUFcM1kuKWSGDLlwSXDV8=; b=p7WaZKMK6VGsTB3BiKypY5If6Q
+	NKxBA677xewv9qfV1RUgjqcTnyTh9ArSAUBXJkvQVHmxiRcqRLcR1Bq6Ymepthn/h6Ume19rnRrLN
+	qPUOHsV5Xasr9iB2Gwanfmcdoz256iuFtSQMwdwxrBXqxwEPPgehrE8bDjblO5aHpFb25G7+pl+zg
+	PSA4dWmFv5Xe+coZ4mUSafczUynrqCe5we91Sx6Tu3qLJXK6KdWbdy4NcDSyI8g+x3snmeKSUi6Gz
+	KmxsJWFcTIGMAIhPxs/fZwKcY/xgbY6dqAZR2vju/NYj9+QDzAKKXJX9YGfiFEYof1ItIJVDwe1I4
+	ILvtZKbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7AAA-003AhU-Nh; Fri, 01 Jul 2022 06:29:58 +0000
+	id 1o7AAE-003Aj6-7K; Fri, 01 Jul 2022 06:30:02 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7A9C-003ACA-LL; Fri, 01 Jul 2022 06:29:00 +0000
-X-UUID: 94840fe656e24da7bbbe7c1f71892ad6-20220630
+	id 1o7A9D-003AAa-G4; Fri, 01 Jul 2022 06:29:01 +0000
+X-UUID: 653c5c11c54b4467b5538079c80fbba6-20220630
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:983c435d-212b-497d-83e1-c11efe1877d3,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:c2a04586-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.7,REQID:2c483146-a047-4c2f-824b-50c881915d7b,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:41,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:41
+X-CID-META: VersionHash:87442a2,CLOUDID:c4a04586-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 94840fe656e24da7bbbe7c1f71892ad6-20220630
+X-UUID: 653c5c11c54b4467b5538079c80fbba6-20220630
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1802394742; Thu, 30 Jun 2022 23:28:54 -0700
+	with ESMTP id 306105294; Thu, 30 Jun 2022 23:28:54 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 1 Jul 2022 14:28:10 +0800
+ Fri, 1 Jul 2022 14:28:11 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 14:28:10 +0800
@@ -57,9 +57,9 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v13 02/10] drm/edid: Convert cea_sad helper struct to kernelDoc
-Date: Fri, 1 Jul 2022 14:28:00 +0800
-Message-ID: <20220701062808.18596-3-rex-bc.chen@mediatek.com>
+Subject: [PATCH v13 03/10] drm/edid: Add cea_sad helpers for freq/length
+Date: Fri, 1 Jul 2022 14:28:01 +0800
+Message-ID: <20220701062808.18596-4-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
 References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
@@ -67,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_232858_730419_B1F7D4FB 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20220630_232859_571655_36A8E5D0 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,42 +85,136 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Guillaume Ranquet <granquet@baylibre.com>
 
-To illustrate the cea_sad helper struct more clear, we convert the
-driver comments to kernelDoc.
+This patch adds two helper functions that extract the frequency and word
+length from a struct cea_sad.
 
+For these helper functions new defines are added that help translate the
+'freq' and 'byte2' fields into real numbers.
+
+Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- include/drm/drm_edid.h | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/drm_edid.c | 73 ++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_edid.h     | 14 ++++++++
+ 2 files changed, 87 insertions(+)
 
+diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
+index bc43e1b32092..79316d7f1fd8 100644
+--- a/drivers/gpu/drm/drm_edid.c
++++ b/drivers/gpu/drm/drm_edid.c
+@@ -4916,6 +4916,79 @@ int drm_edid_to_speaker_allocation(const struct edid *edid, u8 **sadb)
+ }
+ EXPORT_SYMBOL(drm_edid_to_speaker_allocation);
+ 
++/**
++ * drm_cea_sad_get_sample_rate - Extract the sample rate from cea_sad
++ * @sad: Pointer to the cea_sad struct
++ *
++ * Extracts the cea_sad frequency field and returns the sample rate in Hz.
++ *
++ * Return: Sample rate in Hz or a negative errno if parsing failed.
++ */
++int drm_cea_sad_get_sample_rate(const struct cea_sad *sad)
++{
++	switch (sad->freq) {
++	case DRM_CEA_SAD_FREQ_32KHZ:
++		return 32000;
++	case DRM_CEA_SAD_FREQ_44KHZ:
++		return 44100;
++	case DRM_CEA_SAD_FREQ_48KHZ:
++		return 48000;
++	case DRM_CEA_SAD_FREQ_88KHZ:
++		return 88200;
++	case DRM_CEA_SAD_FREQ_96KHZ:
++		return 96000;
++	case DRM_CEA_SAD_FREQ_176KHZ:
++		return 176400;
++	case DRM_CEA_SAD_FREQ_192KHZ:
++		return 192000;
++	default:
++		return -EINVAL;
++	}
++}
++EXPORT_SYMBOL(drm_cea_sad_get_sample_rate);
++
++static bool drm_cea_sad_is_pcm(const struct cea_sad *sad)
++{
++	switch (sad->format) {
++	case HDMI_AUDIO_CODING_TYPE_PCM:
++		return true;
++	default:
++		return false;
++	}
++}
++
++/**
++ * drm_cea_sad_get_uncompressed_word_length - Extract word length
++ * @sad: Pointer to the cea_sad struct
++ *
++ * Extracts the cea_sad byte2 field and returns the word length for an
++ * uncompressed stream.
++ *
++ * Note: This function may only be called for uncompressed audio.
++ *
++ * Return: Word length in bits or a negative errno if parsing failed.
++ */
++int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad)
++{
++	if (!drm_cea_sad_is_pcm(sad)) {
++		DRM_WARN("Unable to get the uncompressed word length for format: %u\n",
++			 sad->format);
++		return -EINVAL;
++	}
++
++	switch (sad->byte2) {
++	case DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT:
++		return 16;
++	case DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT:
++		return 20;
++	case DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT:
++		return 24;
++	default:
++		return -EINVAL;
++	}
++}
++EXPORT_SYMBOL(drm_cea_sad_get_uncompressed_word_length);
++
+ /**
+  * drm_av_sync_delay - compute the HDMI/DP sink audio-video sync delay
+  * @connector: connector associated with the HDMI/DP sink
 diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
-index b2756753370b..c2c43a4af681 100644
+index c2c43a4af681..779b710aed40 100644
 --- a/include/drm/drm_edid.h
 +++ b/include/drm/drm_edid.h
-@@ -359,12 +359,18 @@ struct edid {
- 
- #define EDID_PRODUCT_ID(e) ((e)->prod_code[0] | ((e)->prod_code[1] << 8))
- 
--/* Short Audio Descriptor */
-+/**
-+ * struct cea_sad - CEA Short Audio Descriptor.
-+ * @format: See HDMI_AUDIO_CODING_TYPE_*.
-+ * @channels: max number of channels - 1.
-+ * @freq: See CEA_SAD_FREQ_*.
-+ * @byte2: meaning depends on format.
-+ */
- struct cea_sad {
- 	u8 format;
--	u8 channels; /* max number of channels - 1 */
-+	u8 channels;
- 	u8 freq;
--	u8 byte2; /* meaning depends on format */
-+	u8 byte2;
+@@ -373,6 +373,18 @@ struct cea_sad {
+ 	u8 byte2;
  };
  
++#define DRM_CEA_SAD_FREQ_32KHZ  BIT(0)
++#define DRM_CEA_SAD_FREQ_44KHZ  BIT(1)
++#define DRM_CEA_SAD_FREQ_48KHZ  BIT(2)
++#define DRM_CEA_SAD_FREQ_88KHZ  BIT(3)
++#define DRM_CEA_SAD_FREQ_96KHZ  BIT(4)
++#define DRM_CEA_SAD_FREQ_176KHZ BIT(5)
++#define DRM_CEA_SAD_FREQ_192KHZ BIT(6)
++
++#define DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT BIT(0)
++#define DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT BIT(1)
++#define DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT BIT(2)
++
  struct drm_encoder;
+ struct drm_connector;
+ struct drm_connector_state;
+@@ -380,6 +392,8 @@ struct drm_display_mode;
+ 
+ int drm_edid_to_sad(const struct edid *edid, struct cea_sad **sads);
+ int drm_edid_to_speaker_allocation(const struct edid *edid, u8 **sadb);
++int drm_cea_sad_get_sample_rate(const struct cea_sad *sad);
++int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad);
+ int drm_av_sync_delay(struct drm_connector *connector,
+ 		      const struct drm_display_mode *mode);
+ 
 -- 
 2.18.0
 
