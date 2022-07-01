@@ -2,61 +2,61 @@ Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.in
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95F07C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 00:54:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25FFDC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 06:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HXjdGF/7O1PnCpirCRrBL4OjVW2LLDPFUGjKOrSsWmc=; b=CpVzA5pMJR4Rhcx+cXu6VFnUWd
-	m9NasLVUTqz1Kyd4MdNnKd+Jg4r7EaF5muPANCNxhY9xHyHBOzy/b6Oi3gJ/6SwjnWAEO6U9qlhl4
-	pv6nF/lVEp+xkyKz85m+h0C1B1bllEkLE1m6THpyI9qq2gUOeMNjWz6XxjLkJ4hZZZZDVFosUJ0mH
-	rQInhQLWL3TpxJLLV60K2WbsKbAApZ66Z5lJRumiCjZVsPJZDe9ndsa//b9bs8VIV8HZzkkwrSHpr
-	Dzbm/EZxJYYQu8oVhmzE+FFMY5X8fJ6kDT3WA+Qtok41C7JY10EdqvPjjcW/qKp6/wLNmtDsMRYQ/
-	LwDFK+Kg==;
+	bh=uF3ox71BpQbI9mIQcQYxOUBs8YmBFfl0Oitfb3RwP/4=; b=AhpMre+Y9sG66KEZ8QexYSfnhM
+	UwDyrG8SZgIkzaJ7hihfToefkJeeH9Ruj1wG0y0hZrDoJ+1lcFuFVkemVLMo5oznUVr81vnG7lMya
+	OXBxC84hxetFmj1VifkghqtXpSNE3V87blhE/2fvSAqcxBXY5LTVRMfi2TxF2OS7C6bhJv7HeKR7n
+	phEmyvfZrBP1LIkrHyyZro8Bm2D3oZkOYGZVPMecMcHiS8/vtFpJhz5GhTok5YYTvKX8vsP6B39IY
+	Ul5BLGrr6YJhfTh474hDrAx3Ik5sgqDgCshRZ20fbv841wXNttZ/DYBD2TpdAWKjehCbHqayOgYyv
+	/U9RuKfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o74uK-002DNd-AD; Fri, 01 Jul 2022 00:53:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o7AJ8-003Emt-KI; Fri, 01 Jul 2022 06:39:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o74uD-002DNH-Rs
-	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 00:53:15 +0000
-X-UUID: a2ff3fd4fa60492899929abab7d0ef06-20220630
+	id 1o7AJ1-003Ekd-3C
+	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 06:39:12 +0000
+X-UUID: 09a8d65a0fb2444d9792d5602ffe1530-20220630
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:79bc13fd-5dca-4f5c-8659-aae2d5222469,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.7,REQID:359fd044-d527-4ed3-991f-b9b2c570a3e9,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:-5
-X-CID-META: VersionHash:87442a2,CLOUDID:fb243c86-57f0-47ca-ba27-fe8c57fbf305,C
+X-CID-META: VersionHash:87442a2,CLOUDID:60f04586-57f0-47ca-ba27-fe8c57fbf305,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:1
-X-UUID: a2ff3fd4fa60492899929abab7d0ef06-20220630
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: 09a8d65a0fb2444d9792d5602ffe1530-20220630
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1033061143; Thu, 30 Jun 2022 17:53:00 -0700
+	with ESMTP id 462750344; Thu, 30 Jun 2022 23:38:59 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 1 Jul 2022 08:52:26 +0800
+ Fri, 1 Jul 2022 14:38:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 08:52:26 +0800
+ 15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 14:38:23 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Josh Boyer <jwboyer@kernel.org>
 CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	"Evelyn Tsai" <evelyn.tsai@mediatek.com>, <linux-firmware@kernel.org>,
+	<lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn
+ Tsai <evelyn.tsai@mediatek.com>, <linux-firmware@kernel.org>,
 	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] linux-firmware: update firmware for MT7622 WiFi device
-Date: Fri, 1 Jul 2022 08:52:24 +0800
+Subject: [PATCH v2] linux-firmware: update firmware for MT7622 WiFi device
+Date: Fri, 1 Jul 2022 14:38:23 +0800
 Message-ID: <ef90ff10187e30a8ea9180f4098a36319907e6b8.1656636174.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
-X-Spam-Note: CRM114 run bypassed due to message size (566622 bytes)
+X-Spam-Note: CRM114 run bypassed due to message size (566675 bytes)
 X-Spam-Score: 2.5 (++)
 X-Spam-Report: Spam detection software, running on the system "bombadil.infradead.org",
  has NOT identified this incoming email as spam.  The original
@@ -65,9 +65,9 @@ X-Spam-Report: Spam detection software, running on the system "bombadil.infradea
  the administrator of that system for details.
  
  Content preview:  Update binary firmware for MT7622 WiFi devices. Base : CL@89338
-    Patches : CL@90991 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com> ---
-   WHENCE | 2 +- mediatek/mt7622_n9.bin | Bin 300072 -> 300376 bytes 2 files
-   changed, 1 insertion(+), 1 deletion(-) 
+    Patches : CL@90991,CL@90993 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+    --- change since v2 - update commit message --- WHENCE | 2 +- mediatek/mt7622_n9.bin
+    | Bin 300072 -> 300376 bytes 2 files changed, 1 insertion(+), 1 d [...] 
  
  Content analysis details:   (2.5 points, 5.0 required)
  
@@ -92,13 +92,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20220701063823.11k7_dR-kpARMEWz_Igicdw86VKUolP6RnMV4LVR1B4@z>
 
 Update binary firmware for MT7622 WiFi devices.
 
 Base	: CL@89338
-Patches	: CL@90991
+Patches	: CL@90991,CL@90993
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+change since v2 - update commit message
 ---
  WHENCE                 |   2 +-
  mediatek/mt7622_n9.bin | Bin 300072 -> 300376 bytes
