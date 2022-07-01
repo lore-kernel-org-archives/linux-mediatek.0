@@ -4,60 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB51C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 16:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E836C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 16:41:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kyJt7U9YqDKmlnXjHPOeGFSqHew8842tyTNqo2cfPYc=; b=vfyHlIBeTkJYXIq2j4xrwZIAV/
-	YqHhbAffH7TDooruJicrz4FY3CSPpenEe4GRJUdsBASsTqH91an+ymqh5pP+zjRlBSjr2/omxWCmT
-	E1m5v27UtkDCJ+t5o08MpEzQMrEKXbyadIKQPK/+pgiKZ+SQx7bcgOvyIPlfhHDS083cyoWPeG58i
-	ttnKV9z/WmqQvE36qSS9m3W4looguWMN8yrvhFOQhW9uiWuzZIDmOopKL6HCC5x2jgfmK4VVMnmkZ
-	D1cCDtIPnktAquCyXLU5BDiAqQ/enkOQ7Vfo2+eYrUahR2b3bsBTuU8xrqo/B4cFTanl0ohwe8XaB
-	o1qbJXcA==;
+	bh=5fuXvCyvmG/LrNBqyqJH/sdkmUfmLbIvfk+R0vcY2gI=; b=lL0sdnwz4NKfhOGlZqLMWbhCbv
+	OcrRZLsR6yeaSLMJMDJhZ7xRw3Bz5v0RIj+Vo65USffd6YRfT05nVEhfcFA1xWG5WhykY3vbumZOe
+	+TQcWX/9RHfuFVPq5sDV+rwl5AwOhxLWZtWW4i1bhQZq6we/ypFgo/57nWqSLadFqJwWvSpWkzIK9
+	TVPvi3of1AJx6QKHgPJ0RSefdpfCb0ZLRXp94zKkChir7Jj3wRzJY81og0OyLTIt+fef+88a4N6/b
+	QsuyoBF94RO3NUpkDNgIx0vgiyoSK3ed7iGOWh1+/R2nGrPatPUOK0WS4y220s8aWCLRMnBg9rkBw
+	xS4ySvUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Jdx-0061zv-6K; Fri, 01 Jul 2022 16:37:21 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1o7JhV-00634R-Ut; Fri, 01 Jul 2022 16:41:01 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Jdl-0061vF-2N; Fri, 01 Jul 2022 16:37:10 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1o7JhJ-0062zl-W7; Fri, 01 Jul 2022 16:40:51 +0000
+Received: from notapiano (unknown [193.27.14.116])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id A046DB82DDC;
-	Fri,  1 Jul 2022 16:37:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5645C3411E;
-	Fri,  1 Jul 2022 16:37:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656693426;
-	bh=dvn0q53TXBDnV3Qt4aSdr2WzDOqUHtfan8BhemxpCOI=;
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3A2C666015DA;
+	Fri,  1 Jul 2022 17:40:45 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656693647;
+	bh=0LN1nCFHY1IULTVl6FBa/H7bg/S9tIWVbV69kp8VbnA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QkiDgZpOfaN9dOsDRrcDsbMySgGbQpKCeO+no3q1kSX+1cRgqA2x4iEzPdY/XW3UF
-	 1+2xoNv9YCEy7Q2lYD4OCwmmWsdnAYTFzcCjV1CrNKS8xmZXVPb+0Uelzf5iWfWx7g
-	 prCRoRfZtwtTMVw3j99tU/q+FAW+tbfcH1E/MTMPYNnmoM3XhZbgodSspBaCkRzIHH
-	 eXzeCb2+JRoT7Rs2YCkucN713hRlcycMY3jm5NsgaWoDCC0dtJv6efdUljoPTbJ5Oy
-	 v9buw0XVWJyeh4Dc2K3+zmhU0AgZLwv2zdi6fW/VbhS9zqdApMrLm9fSDidJRNrAH8
-	 4Eut+nwcApcRQ==
-Date: Fri, 1 Jul 2022 22:07:01 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Xiang wangx <wangxiang@cdjrlc.com>
-Cc: sean.wang@mediatek.com, matthias.bgg@gmail.com,
-	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dmaengine: mediatek: mtk-hsdma: Fix typo in comment
-Message-ID: <Yr8ircxQa4I7/jmW@matsya>
-References: <20220618130120.9783-1-wangxiang@cdjrlc.com>
+	b=BAA9Si32fplazkxh8kicyhndXMgFsW4Iwzx/0yfMwj67OTUL7wGYE4ZQyAZnKtqEO
+	 iT6m6YdR/rwyrKrIVNJcb57lJfZpOyjXfncsoT+IT9UxEBvedDLpkq9nwO5uAgNMei
+	 frFMUE0Bv7Re8x2+qC0kdXny9jG3ke/Az7B41EdbKURPBmFxbOGUxYFJeVOB0UJitA
+	 9iHPk+xxmpLp1txmzqZnuny6BoeNZZZP/hkMeo8lcfWvugQrYTeDsBht/2Dg1yPSCv
+	 Z9EeIdYXw6QCIoY/+/9UIbFEic6Ii3YwQ8Ddet0J7HWLVzn/pSaglY9OEyFrQ4muXF
+	 XEBBetMaCs1Yw==
+Date: Fri, 1 Jul 2022 12:40:41 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v2 4/6] arm64: dts: mt8192: Add display nodes
+Message-ID: <20220701164041.rbt3idraawafubcf@notapiano>
+References: <20220701090547.21429-1-allen-kh.cheng@mediatek.com>
+ <20220701090547.21429-5-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20220618130120.9783-1-wangxiang@cdjrlc.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220701090547.21429-5-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_093709_301288_B38F9109 
-X-CRM114-Status: UNSURE (   6.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220701_094050_285604_65B0C6DA 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,11 +80,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18-06-22, 21:01, Xiang wangx wrote:
-> Delete the redundant word 'be'.
+On Fri, Jul 01, 2022 at 05:05:45PM +0800, Allen-KH Cheng wrote:
+> Add display nodes and gce info for mt8192 SoC.
+> 
+> GCE (Global Command Engine) properties to the display nodes in order to
+> enable the usage of the CMDQ (Command Queue), which is required for
+> operating the display.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 137 +++++++++++++++++++++++
+>  1 file changed, 137 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index a789b7c9b2af..c4dc8777f26c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+[..]
+> +		rdma4: rdma@14015000 {
+> +			compatible = "mediatek,mt8192-disp-rdma";
 
-Applied, thanks
+You added the fallback compatible on rdma0 but missing it on this node.
 
--- 
-~Vinod
+Thanks,
+Nícolas
+
+> +			reg = <0 0x14015000 0 0x1000>;
+> +			interrupts = <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DISP_RDMA4>;
+> +			iommus = <&iommu0 M4U_PORT_L1_DISP_RDMA4>;
+> +			mediatek,rdma-fifo-size = <2048>;
+> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
+> +		};
+> +
+>  		dpi0: dpi@14016000 {
+>  			compatible = "mediatek,mt8192-dpi";
+>  			reg = <0 0x14016000 0 0x1000>;
+> -- 
+> 2.18.0
+> 
+> 
 
