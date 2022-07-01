@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70CA9C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 04:04:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1029FC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 04:04:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AL871tP0wroLf4jJg7Vlm37OySx//FTzNTSNqdnDVCM=; b=Ot/W85iIAk5qaK5wC5HXYlGLJo
-	BL+DnHXoXmK6n+IOGEaB4a0VyCu7hihpppx+eRmkcpI700OUO0O1UK5dZpX6m+GE+1g3RCvlKHtB+
-	F99bwsQJt5psYnG6lgxVgkxmfDxpBMh12haSxlKsSrUa/1FPYjTYeQlj/VGP4gU1p1tgu+1Xx/+PH
-	TlmTt9eZ/7FVZiLzzt1mhjaCn8I35ejI50VmkK0rLRvl59vzyeHQB9HpY9nVHIRNTvUAmyf+rh489
-	rZTB0BnhAskp5hDWgwOShCml2Kr2tFG2+2hy5n1C6cuR/lRGes1mbWG8/dBs85FLK3B0GtxYa4pMa
-	+A8HmchA==;
+	bh=gs/n2GndOXbl1eDP3+/gTo2o3CdLVMOD0hQSBJXiv9w=; b=iK4IaCfAAvCD3LJg/H8ceLcrml
+	iyCLtukF44k1C0uewBchePIxHMe4iWhfETH7/tafAi67V9XOW6y/icjpaIHdLeAh7gSYIRBuEqtJg
+	BAUiFbPRYFGYMMQ2O1qfa9Ko8xd6wZ2r0Cag2+xaxGVCGOLgWpPyJlNuBDv0dpuyY5VuuOKkCunYa
+	w93hz+8vXwmkMwTuO8ipn9ChYr3iy+F6gT4huiMbNFr6enbxFwmhjp17VNVxVwjSSyUPVU5uTC4Ge
+	RYL5TrVsFZDtHtIp8NGmjwLAS8m8PRIMbb7dKO9Pp7wFVfk3fA7mxNIUlhwCXoZJ6/6XiFu9/EWIv
+	npvLKs5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o77t2-002kap-6o; Fri, 01 Jul 2022 04:04:08 +0000
+	id 1o77tS-002kqd-It; Fri, 01 Jul 2022 04:04:34 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o77qW-002j5L-Di; Fri, 01 Jul 2022 04:01:34 +0000
-X-UUID: b69ab649e84540c0a5d19b67e2493aec-20220630
+	id 1o77qW-002j99-Tz; Fri, 01 Jul 2022 04:01:35 +0000
+X-UUID: 6cc90878b3a04a19929bb40e5c2d868f-20220630
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:5d297934-f934-4a4f-8629-689d78b5cfb4,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.7,REQID:b277868d-321d-4ea0-a346-56579cab8187,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:-5
-X-CID-META: VersionHash:87442a2,CLOUDID:9cf61e63-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-META: VersionHash:87442a2,CLOUDID:b43651d6-5d6d-4eaf-a635-828a3ee48b7c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: b69ab649e84540c0a5d19b67e2493aec-20220630
+X-UUID: 6cc90878b3a04a19929bb40e5c2d868f-20220630
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2090504529; Thu, 30 Jun 2022 21:01:26 -0700
+	with ESMTP id 293461960; Thu, 30 Jun 2022 21:01:25 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -56,9 +56,9 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v15 14/16] drm/mediatek: dpi: add config to support direct connection to dpi panels
-Date: Fri, 1 Jul 2022 11:58:43 +0800
-Message-ID: <20220701035845.16458-15-rex-bc.chen@mediatek.com>
+Subject: [PATCH v15 13/16] drm/mediatek: dpi: Add YUV422 output support
+Date: Fri, 1 Jul 2022 11:58:42 +0800
+Message-ID: <20220701035845.16458-14-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220701035845.16458-1-rex-bc.chen@mediatek.com>
 References: <20220701035845.16458-1-rex-bc.chen@mediatek.com>
@@ -66,8 +66,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_210132_498587_DF85A41D 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20220630_210133_038529_B568A071 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,85 +82,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek dpi supports direct connection to dpi panels while dp_intf does not
-support. Therefore, add a config "support_direct_pin" to control this.
+Dp_intf supports YUV422 as output format. In MT8195 Chrome project,
+YUV422 output format is used for 4K resolution.
 
+To support this, it is also needed to support color format transfer.
+Color format transfer is a new feature for both dpi and dpintf of MT8195.
+
+The input format could be RGB888 and output format for dp_intf should be
+YUV422. Therefore, we add a mtk_dpi_matrix_sel() helper to update the
+DPI_MATRIX_SET register depending on the color format.
+
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c      | 61 +++++++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  6 +++
+ 2 files changed, 59 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 0a604bf68b1b..a65b85c4c8d5 100644
+index 3085033becbd..0a604bf68b1b 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -124,6 +124,7 @@ struct mtk_dpi_yc_limit {
+@@ -54,7 +54,8 @@ enum mtk_dpi_out_channel_swap {
+ };
+ 
+ enum mtk_dpi_out_color_format {
+-	MTK_DPI_COLOR_FORMAT_RGB
++	MTK_DPI_COLOR_FORMAT_RGB,
++	MTK_DPI_COLOR_FORMAT_YCBCR_422
+ };
+ 
+ struct mtk_dpi {
+@@ -122,6 +123,7 @@ struct mtk_dpi_yc_limit {
+  * @num_output_fmts: Quantity of supported output formats.
   * @is_ck_de_pol: Support CK/DE polarity.
   * @swap_input_support: Support input swap function.
-  * @color_fmt_trans_support: Enable color format transfer.
-+ * @support_direct_pin: IP supports direct connection to dpi panels.
++ * @color_fmt_trans_support: Enable color format transfer.
   * @dimension_mask: Mask used for HWIDTH, HPORCH, VSYNC_WIDTH and VSYNC_PORCH
   *		    (no shift).
   * @hvsize_mask: Mask of HSIZE and VSIZE mask (no shift).
-@@ -141,6 +142,7 @@ struct mtk_dpi_conf {
+@@ -138,6 +140,7 @@ struct mtk_dpi_conf {
+ 	u32 num_output_fmts;
  	bool is_ck_de_pol;
  	bool swap_input_support;
- 	bool color_fmt_trans_support;
-+	bool support_direct_pin;
++	bool color_fmt_trans_support;
  	u32 dimension_mask;
  	u32 hvsize_mask;
  	u32 channel_swap_shift;
-@@ -608,11 +610,13 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	mtk_dpi_config_channel_limit(dpi);
- 	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
- 	mtk_dpi_config_channel_swap(dpi, dpi->channel_swap);
--	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
- 	mtk_dpi_config_color_format(dpi, dpi->color_format);
--	mtk_dpi_config_2n_h_fre(dpi);
--	mtk_dpi_dual_edge(dpi);
--	mtk_dpi_config_disable_edge(dpi);
-+	if (dpi->conf->support_direct_pin) {
-+		mtk_dpi_config_yc_map(dpi, dpi->yc_map);
-+		mtk_dpi_config_2n_h_fre(dpi);
-+		mtk_dpi_dual_edge(dpi);
-+		mtk_dpi_config_disable_edge(dpi);
+@@ -406,15 +409,54 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+ 		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
+ }
+ 
++static void mtk_dpi_matrix_sel(struct mtk_dpi *dpi,
++			       enum mtk_dpi_out_color_format format)
++{
++	u32 matrix_sel;
++
++	if (!dpi->conf->color_fmt_trans_support) {
++		dev_info(dpi->dev, "matrix_sel is not supported.\n");
++		return;
 +	}
- 	mtk_dpi_sw_reset(dpi, false);
++
++	switch (format) {
++	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
++		/*
++		 * If height is smaller than 720, we need to use RGB_TO_BT601
++		 * to transfer to yuv422. Otherwise, we use RGB_TO_JPEG.
++		 */
++		if (dpi->mode.hdisplay <= 720)
++			matrix_sel = MATRIX_SEL_RGB_TO_BT601;
++		else
++			matrix_sel = MATRIX_SEL_RGB_TO_JPEG;
++		break;
++	default:
++		matrix_sel = MATRIX_SEL_RGB_TO_JPEG;
++		break;
++	}
++	mtk_dpi_mask(dpi, DPI_MATRIX_SET, matrix_sel, INT_MATRIX_SEL_MASK);
++}
++
+ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+ 					enum mtk_dpi_out_color_format format)
+ {
+-	/* only support RGB888 */
+-	mtk_dpi_config_yuv422_enable(dpi, false);
+-	mtk_dpi_config_csc_enable(dpi, false);
+-	if (dpi->conf->swap_input_support)
+-		mtk_dpi_config_swap_input(dpi, false);
+-	mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
++	if (format == MTK_DPI_COLOR_FORMAT_YCBCR_422) {
++		mtk_dpi_config_yuv422_enable(dpi, true);
++		mtk_dpi_config_csc_enable(dpi, true);
++		mtk_dpi_matrix_sel(dpi, format);
++		if (dpi->conf->swap_input_support)
++			mtk_dpi_config_swap_input(dpi, true);
++		else
++			dev_warn(dpi->dev,
++				 "Failed to swap input, hw is not supported.\n");
++		mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
++	} else {
++		mtk_dpi_config_yuv422_enable(dpi, false);
++		mtk_dpi_config_csc_enable(dpi, false);
++		if (dpi->conf->swap_input_support)
++			mtk_dpi_config_swap_input(dpi, false);
++		mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
++	}
+ }
+ 
+ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
+@@ -649,7 +691,10 @@ static int mtk_dpi_bridge_atomic_check(struct drm_bridge *bridge,
+ 	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
+ 	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
+ 	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
+-	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
++	if (out_bus_format == MEDIA_BUS_FMT_YUYV8_1X16)
++		dpi->color_format = MTK_DPI_COLOR_FORMAT_YCBCR_422;
++	else
++		dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
  
  	return 0;
-@@ -870,6 +874,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
- 	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
- 	.is_ck_de_pol = true,
- 	.swap_input_support = true,
-+	.support_direct_pin = true,
- 	.dimension_mask = HPW_MASK,
- 	.hvsize_mask = HSIZE_MASK,
- 	.channel_swap_shift = CH_SWAP,
-@@ -886,6 +891,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
- 	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
- 	.is_ck_de_pol = true,
- 	.swap_input_support = true,
-+	.support_direct_pin = true,
- 	.dimension_mask = HPW_MASK,
- 	.hvsize_mask = HSIZE_MASK,
- 	.channel_swap_shift = CH_SWAP,
-@@ -901,6 +907,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
- 	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
- 	.is_ck_de_pol = true,
- 	.swap_input_support = true,
-+	.support_direct_pin = true,
- 	.dimension_mask = HPW_MASK,
- 	.hvsize_mask = HSIZE_MASK,
- 	.channel_swap_shift = CH_SWAP,
-@@ -916,6 +923,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
- 	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
- 	.is_ck_de_pol = true,
- 	.swap_input_support = true,
-+	.support_direct_pin = true,
- 	.dimension_mask = HPW_MASK,
- 	.hvsize_mask = HSIZE_MASK,
- 	.channel_swap_shift = CH_SWAP,
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+index 3a02fabe1662..9ce300313f3e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
++++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+@@ -217,4 +217,10 @@
+ 
+ #define EDGE_SEL_EN			BIT(5)
+ #define H_FRE_2N			BIT(25)
++
++#define DPI_MATRIX_SET		0xB4
++#define INT_MATRIX_SEL_MASK		GENMASK(4, 0)
++#define MATRIX_SEL_RGB_TO_JPEG		0
++#define MATRIX_SEL_RGB_TO_BT601		2
++
+ #endif /* __MTK_DPI_REGS_H */
 -- 
 2.18.0
 
