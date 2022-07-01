@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D7E3C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 06:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E998BC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 06:42:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XYrEbe+MtbSecPr3Tdd0F5vAU3LT96C7ifNGIm962Wk=; b=qi6eLMCgnLqxqB7u9Mj9jrJQIi
-	xTCxuo4WzFQ9MZjViuNW4h25KzGYhTHKrXoN1SXIQOuoBqKKNpIXf1i3cGAfuAxr8YUvTdrFFnOIF
-	W0/TuIOcwEGMjzsjZMyJL84owJy0eZncV3OLdErAAHsUxtR2I0JeH7qKtTzafvFH6ZXE2BPcTgsG8
-	pG6+wsmn8LsoBCg4t0Bxxk++yedXAd0pvqB/4epmQFK+O78lpxXAB3nVO8UAKOrIAzYLXSoxCmqHs
-	kWP9dTUi2RSIXcYE+h+gBbSErEOqMs+eCfkvHIvPAm8UTzf889qCpY0POlwUODv87DgWosRxFUUhW
-	x80YYFIw==;
+	bh=5hBkY6h+j+YYXYmHshRw7WyXcwzLEEQmuq8LK+MIjIA=; b=KfkP7L7bcOvUzDD3M+bqtTmgT3
+	z6EHqcbw5zeJ34Kyl8vIM/f2JXjNMqKhIm2PtPTi6uidddSzgkgpenffklaIPc4Y/OBNkrIMY9k8P
+	Iuj4v3d837q3HFdpMGbNPfGO+EvBqhbQQUCvtA/xxMg3emc4rGDfgOT2lziLSzvsqimUKHszdO1Q4
+	luldWGqZbPA3qVExH8WVgbiOBo4QnSipNy1D6eKn43toqUSOBqHxsarats80+Jd15ZAteavgLzJac
+	0pa4PZoAjWW5RLwEB2pHY5D8tEUPxUToB31SXcsUgoWAjr+oifPZQRIDaOYAnbI1V2d5gkkh5qTOb
+	G38vAiLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7AC7-003Btb-LB; Fri, 01 Jul 2022 06:31:59 +0000
+	id 1o7ALn-003FHW-2U; Fri, 01 Jul 2022 06:41:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7A9F-003AEp-OK; Fri, 01 Jul 2022 06:29:04 +0000
-X-UUID: a5875b48f99a411b9355f15b85975974-20220630
+	id 1o7ALk-003FGI-Vw; Fri, 01 Jul 2022 06:41:58 +0000
+X-UUID: b80ff722240947fd9ec18aebab58f25a-20220630
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:906a4d4d-97d0-4a53-ab5c-f2115b551735,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:763555d6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.7,REQID:3cd07d0d-ccad-4742-bf30-4594c0ecd00d,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:87442a2,CLOUDID:a09a55d6-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: a5875b48f99a411b9355f15b85975974-20220630
+X-UUID: b80ff722240947fd9ec18aebab58f25a-20220630
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1720886687; Thu, 30 Jun 2022 23:28:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 1 Jul 2022 14:28:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 14:28:11 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
-	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
-	<deller@gmx.de>, <airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<ck.hu@mediatek.com>, <liangxu.xu@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v13 06/10] drm/mediatek: Add MT8195 External DisplayPort support
-Date: Fri, 1 Jul 2022 14:28:04 +0800
-Message-ID: <20220701062808.18596-7-rex-bc.chen@mediatek.com>
+	with ESMTP id 1309211126; Thu, 30 Jun 2022 23:41:48 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Fri, 1 Jul 2022 13:40:34 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 1 Jul 2022 13:40:32 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Will Deacon <will@kernel.org>
+CC: <iommu@lists.linux-foundation.org>, <iommu@lists.linux.dev>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>,
+	<chengci.xu@mediatek.com>, <youlin.pei@mediatek.com>,
+	<anan.sun@mediatek.com>, <xueqi.zhang@mediatek.com>, Guenter Roeck
+	<groeck@chromium.org>, Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [PATCH v3 4/7] iommu/mediatek: Add error path for loop of mm_dts_parse
+Date: Fri, 1 Jul 2022 13:39:39 +0800
+Message-ID: <20220701053942.3266-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
-References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220701053942.3266-1-yong.wu@mediatek.com>
+References: <20220701053942.3266-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_232901_864831_74FF788B 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20220630_234157_062973_8C9CE416 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,356 +81,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guillaume Ranquet <granquet@baylibre.com>
+The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the i+1
+larb is parsed fail, we should put_device for the 0..i larbs.
 
-This patch adds External DisplayPort support to the mt8195 eDP driver.
+There are two places need to comment:
+1) The larbid may be not linear mapping, we should loop whole
+   the array in the error path.
+2) I move this line position: "data->larb_imu[id].dev = &plarbdev->dev;"
+   That means set data->larb_imu[id].dev before the error path.
+   then we don't need "platform_device_put(plarbdev)" again while
+   probe_defer case. All depend on "put_device" in the error path in error
+   cases.
 
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c     | 197 +++++++++++++++++++++-----
- drivers/gpu/drm/mediatek/mtk_dp_reg.h |   1 +
- 2 files changed, 161 insertions(+), 37 deletions(-)
+ drivers/iommu/mtk_iommu.c | 42 ++++++++++++++++++++++++++++-----------
+ 1 file changed, 30 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index b672d5a6f5bd..c3be97dd055c 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -105,6 +105,7 @@ struct mtk_dp {
- 	struct regmap *regs;
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 3da8c6252c2c..aa0973bafde1 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1057,8 +1057,10 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+ 		u32 id;
  
- 	bool enabled;
-+	bool has_fec;
- 
- 	struct drm_connector *conn;
- };
-@@ -117,6 +118,11 @@ static struct regmap_config mtk_dp_regmap_config = {
- 	.name = "mtk-dp-registers",
- };
- 
-+static bool mtk_dp_is_edp(struct mtk_dp *mtk_dp)
-+{
-+	return mtk_dp->next_bridge;
-+}
-+
- static struct mtk_dp *mtk_dp_from_bridge(struct drm_bridge *b)
- {
- 	return container_of(b, struct mtk_dp, bridge);
-@@ -384,6 +390,14 @@ static bool mtk_dp_plug_state(struct mtk_dp *mtk_dp)
- 		  HPD_DB_DP_TRANS_P0_MASK);
- }
- 
-+static bool mtk_dp_plug_state_avoid_pulse(struct mtk_dp *mtk_dp)
-+{
-+	bool ret;
-+
-+	return !(readx_poll_timeout(mtk_dp_plug_state, mtk_dp, ret, ret,
-+				    4000, 7 * 4000));
-+}
-+
- static void mtk_dp_aux_irq_clear(struct mtk_dp *mtk_dp)
- {
- 	mtk_dp_write(mtk_dp, MTK_DP_AUX_P0_3640,
-@@ -608,6 +622,13 @@ static void mtk_dp_reset_swing_pre_emphasis(struct mtk_dp *mtk_dp)
- 			   DP_TX3_PRE_EMPH_MASK);
- }
- 
-+static void mtk_dp_fec_enable(struct mtk_dp *mtk_dp, bool enable)
-+{
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3540,
-+			   enable ? BIT(FEC_EN_DP_TRANS_P0_SHIFT) : 0,
-+			   FEC_EN_DP_TRANS_P0_MASK);
-+}
-+
- static u32 mtk_dp_swirq_get_clear(struct mtk_dp *mtk_dp)
- {
- 	u32 irq_status = mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_35D0) &
-@@ -823,35 +844,67 @@ static void mtk_dp_get_calibration_data(struct mtk_dp *mtk_dp)
- 		return;
- 	}
- 
--	cal_data->glb_bias_trim =
--		check_cal_data_valid(mtk_dp, 1, 0x1e,
--				     (buf[3] >> 27) & 0x1f, 0xf);
--	cal_data->clktx_impse =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[0] >> 9) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[0] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 28) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[0] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 24) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[1] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 20) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[1] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 16) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[2] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 12) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[2] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 8) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_pmos[3] =
--		check_cal_data_valid(mtk_dp, 1, 0xe,
--				     (buf[2] >> 4) & 0xf, 0x8);
--	cal_data->ln_tx_impsel_nmos[3] =
--		check_cal_data_valid(mtk_dp, 1, 0xe, buf[2] & 0xf, 0x8);
-+	if (mtk_dp_is_edp(mtk_dp)) {
-+		cal_data->glb_bias_trim =
-+			check_cal_data_valid(mtk_dp, 1, 0x1e,
-+					     (buf[3] >> 27) & 0x1f, 0xf);
-+		cal_data->clktx_impse =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[0] >> 9) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 28) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 24) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 20) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 16) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 12) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 8) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[2] >> 4) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, buf[2] & 0xf, 0x8);
-+	} else {
-+		cal_data->glb_bias_trim =
-+			check_cal_data_valid(mtk_dp, 1, 0x1e,
-+					     (buf[0] >> 27) & 0x1f, 0xf);
-+		cal_data->clktx_impse =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[0] >> 13) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 28) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[0] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 24) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 20) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[1] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 16) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 12) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[2] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 8) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_pmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe,
-+					     (buf[1] >> 4) & 0xf, 0x8);
-+		cal_data->ln_tx_impsel_nmos[3] =
-+			check_cal_data_valid(mtk_dp, 1, 0xe, buf[1] & 0xf, 0x8);
-+	}
- 
- 	kfree(buf);
- }
-@@ -971,7 +1024,10 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
- 			   VIDEO_MUTE_SEL_DP_ENC0_P0_MASK |
- 			   VIDEO_MUTE_SW_DP_ENC0_P0_MASK);
- 
--	mtk_dp_sip_atf_call(mtk_dp, MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable);
-+	mtk_dp_sip_atf_call(mtk_dp,
-+			    mtk_dp_is_edp(mtk_dp) ?
-+			    MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE :
-+			    MTK_DP_SIP_ATF_VIDEO_UNMUTE, enable);
- }
- 
- static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
-@@ -1018,6 +1074,8 @@ static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
- 	mtk_dp->info.depth = DP_MSA_MISC_8_BPC;
- 	memset(&mtk_dp->info.timings, 0, sizeof(struct mtk_dp_timings));
- 	mtk_dp->info.timings.frame_rate = 60;
-+
-+	mtk_dp->has_fec = false;
- }
- 
- static void mtk_dp_setup_tu(struct mtk_dp *mtk_dp)
-@@ -1306,6 +1364,9 @@ static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
- 	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
- 	usleep_range(2000, 5000);
- 
-+	if (!mtk_dp_plug_state(mtk_dp))
-+		return -ENODEV;
-+
- 	drm_dp_read_dpcd_caps(&mtk_dp->aux, mtk_dp->rx_cap);
- 
- 	train_info->link_rate = min_t(int, mtk_dp->max_linkrate,
-@@ -1357,6 +1418,9 @@ static int mtk_dp_train_start(struct mtk_dp *mtk_dp)
- 	u8 train_limit;
- 	u8 max_link_rate;
- 
-+	if (!mtk_dp_plug_state_avoid_pulse(mtk_dp))
-+		return -ENODEV;
-+
- 	link_rate = mtk_dp->rx_cap[1];
- 	lane_count = mtk_dp->rx_cap[2] & 0x1F;
- 
-@@ -1498,15 +1562,38 @@ static int mtk_dp_init_port(struct mtk_dp *mtk_dp)
- static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- {
- 	struct mtk_dp *mtk_dp = dev;
-+	int event;
- 	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
- 
-+	event = mtk_dp_plug_state(mtk_dp) ?
-+		connector_status_connected : connector_status_disconnected;
-+
-+	if (event < 0)
-+		return IRQ_HANDLED;
-+
-+	dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
-+	drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
-+
- 	if (mtk_dp->train_info.cable_state_change) {
- 		mtk_dp->train_info.cable_state_change = false;
- 
--		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
--				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
--				   DP_PWR_STATE_MASK);
--		drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
-+		if (!mtk_dp->train_info.cable_plugged_in) {
-+			mtk_dp_video_mute(mtk_dp, true);
-+
-+			mtk_dp_initialize_priv_data(mtk_dp);
-+			mtk_dp_set_idle_pattern(mtk_dp, true);
-+			if (mtk_dp->has_fec)
-+				mtk_dp_fec_enable(mtk_dp, false);
-+
-+			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-+					   DP_PWR_STATE_BANDGAP_TPLL,
-+					   DP_PWR_STATE_MASK);
-+		} else {
-+			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-+					   DP_PWR_STATE_BANDGAP_TPLL_LANE,
-+					   DP_PWR_STATE_MASK);
-+			drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
+ 		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
+-		if (!larbnode)
+-			return -EINVAL;
++		if (!larbnode) {
++			ret = -EINVAL;
++			goto err_larbdev_put;
 +		}
- 	}
  
- 	if (mtk_dp->train_info.irq_sta.hpd_inerrupt) {
-@@ -1617,6 +1704,24 @@ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
+ 		if (!of_device_is_available(larbnode)) {
+ 			of_node_put(larbnode);
+@@ -1071,14 +1073,16 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+ 
+ 		plarbdev = of_find_device_by_node(larbnode);
+ 		of_node_put(larbnode);
+-		if (!plarbdev)
+-			return -ENODEV;
++		if (!plarbdev) {
++			ret = -ENODEV;
++			goto err_larbdev_put;
++		}
++		data->larb_imu[id].dev = &plarbdev->dev;
+ 
+ 		if (!plarbdev->dev.driver) {
+-			platform_device_put(plarbdev);
+-			return -EPROBE_DEFER;
++			ret = -EPROBE_DEFER;
++			goto err_larbdev_put;
+ 		}
+-		data->larb_imu[id].dev = &plarbdev->dev;
+ 
+ 		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
+ 		platform_device_put(plarbdev);
+@@ -1086,8 +1090,10 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+ 
+ 	/* Get smi-(sub)-common dev from the last larb. */
+ 	smi_subcomm_node = of_parse_phandle(larbnode, "mediatek,smi", 0);
+-	if (!smi_subcomm_node)
+-		return -EINVAL;
++	if (!smi_subcomm_node) {
++		ret = -EINVAL;
++		goto err_larbdev_put;
++	}
+ 
+ 	/*
+ 	 * It may have two level smi-common. the node is smi-sub-common if it
+@@ -1101,8 +1107,10 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+ 
+ 	pcommdev = of_find_device_by_node(smicomm_node);
+ 	of_node_put(smicomm_node);
+-	if (!pcommdev)
+-		return -EINVAL;
++	if (!pcommdev) {
++		ret = -EINVAL;
++		goto err_larbdev_put;
++	}
+ 	data->smicomm_dev = &pcommdev->dev;
+ 
+ 	link = device_link_add(data->smicomm_dev, dev,
+@@ -1110,9 +1118,19 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
+ 	platform_device_put(pcommdev);
+ 	if (!link) {
+ 		dev_err(dev, "Unable to link %s.\n", dev_name(data->smicomm_dev));
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_larbdev_put;
+ 	}
  	return 0;
++
++err_larbdev_put:
++	/* id may be not linear mapping, loop whole the array */
++	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
++		if (!data->larb_imu[i].dev)
++			continue;
++		put_device(data->larb_imu[i].dev);
++	}
++	return ret;
  }
  
-+static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
-+{
-+	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
-+	enum drm_connector_status ret = connector_status_disconnected;
-+	u8 sink_count = 0;
-+
-+	if (mtk_dp_is_edp(mtk_dp))
-+		return connector_status_connected;
-+
-+	if (mtk_dp_plug_state_avoid_pulse(mtk_dp)) {
-+		drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
-+		if (DP_GET_SINK_COUNT(sink_count))
-+			ret = connector_status_connected;
-+	}
-+
-+	return ret;
-+}
-+
- static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
- 				    struct drm_connector *connector)
- {
-@@ -1630,7 +1735,8 @@ static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
- 	drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
- 	usleep_range(2000, 5000);
- 
--	new_edid = drm_get_edid(connector, &mtk_dp->aux.ddc);
-+	if (mtk_dp_plug_state(mtk_dp))
-+		new_edid = drm_get_edid(connector, &mtk_dp->aux.ddc);
- 
- 	if (!enabled)
- 		drm_bridge_chain_post_disable(bridge);
-@@ -1989,6 +2095,7 @@ static const struct drm_bridge_funcs mtk_dp_bridge_funcs = {
- 	.atomic_disable = mtk_dp_bridge_atomic_disable,
- 	.mode_valid = mtk_dp_bridge_mode_valid,
- 	.get_edid = mtk_dp_get_edid,
-+	.detect = mtk_dp_bdg_detect,
- };
- 
- static int mtk_dp_probe(struct platform_device *pdev)
-@@ -2010,9 +2117,15 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 				     "failed to request dp irq resource\n");
- 
- 	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
--	if (IS_ERR(mtk_dp->next_bridge))
-+	if (IS_ERR(mtk_dp->next_bridge) &&
-+	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV) {
-+		dev_info(dev,
-+			 "No panel connected in devicetree, continue as external DP\n");
-+		mtk_dp->next_bridge = NULL;
-+	} else if (IS_ERR(mtk_dp->next_bridge)) {
- 		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
- 				     "Failed to get bridge\n");
-+	}
- 
- 	ret = mtk_dp_dt_parse(mtk_dp, pdev);
- 	if (ret)
-@@ -2055,7 +2168,10 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 
- 	mtk_dp->bridge.ops =
- 		DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
--	mtk_dp->bridge.type = DRM_MODE_CONNECTOR_eDP;
-+	if (mtk_dp_is_edp(mtk_dp))
-+		mtk_dp->bridge.type = DRM_MODE_CONNECTOR_eDP;
-+	else
-+		mtk_dp->bridge.type = DRM_MODE_CONNECTOR_DisplayPort;
- 
- 	drm_bridge_add(&mtk_dp->bridge);
- 
-@@ -2082,6 +2198,12 @@ static int mtk_dp_suspend(struct device *dev)
- {
- 	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
- 
-+	if (mtk_dp_plug_state(mtk_dp)) {
-+		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
-+		/* Ensure the sink is off before shutting down power */
-+		usleep_range(2000, 3000);
-+	}
-+
- 	mtk_dp_power_disable(mtk_dp);
- 
- 	mtk_dp_hwirq_enable(mtk_dp, false);
-@@ -2115,6 +2237,7 @@ static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
- 
- static const struct of_device_id mtk_dp_of_match[] = {
- 	{ .compatible = "mediatek,mt8195-edp-tx" },
-+	{ .compatible = "mediatek,mt8195-dp-tx" },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-index c9d587f1bacd..9b6f2e01391d 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-+++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-@@ -14,6 +14,7 @@
- #define SEC_OFFSET	0x4000
- 
- #define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE	(BIT(0) | BIT(5))
-+#define MTK_DP_SIP_ATF_VIDEO_UNMUTE	BIT(5)
- 
- #define DP_PHY_GLB_BIAS_GEN_00		0
- #define RG_XTP_GLB_BIAS_INTR_CTRL	GENMASK(20, 16)
+ static int mtk_iommu_probe(struct platform_device *pdev)
 -- 
 2.18.0
 
