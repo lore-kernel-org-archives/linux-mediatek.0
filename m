@@ -4,66 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E5E3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 22:26:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A35CC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 22:31:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VOoLANQTxH9NX0ayOpt9gV8hLmqZGDs4vcErvlk2aDM=; b=tkCx4p6Bj852O9AvkSwvM+B3FV
-	8/AtpixvobzfFZgFMmmeJNxy4x4Ek6QfmwEdTrHoppxdvoNRcERZE8CQnlw050V8t/zE4tV/2ye8a
-	1JqoqNR2jZ/pminLWVqhI/aB9lWhwA96fo3qG/0nJoin/2XFXTP3l0E/GhSMPbDMbFrPY+jQgBDtB
-	39nsXRTwjZxYGa9xswr7jSD+bm5iA9POQv+XaLcBFdMsOnnuwLnMJgGIAdxdmCqGDiRjs9wHgTUf1
-	ddiewWPvm/SMAVORQCOOhqn05nG+7Nv/PomxFVndwWAomCldEVM0R7L9GpOmhgKY4Fdxiv3BrTfuJ
-	8eMGne6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZRqXDVBh2tyzQxE0lZROBHIZNd62HH6YkugnzahAVfE=; b=pteoAqKxAabMZymJHnqRRCNCzY
+	ok6mn4YafBso44/PSBpLg44Kkyh/cI2U8Pz1B+2V4UcK8fWzV0DQr7ytfYl/d0wc2SoMwyYvdY7wF
+	ARt0QLLtcgGbM2IQ64AtaTSn84O35FEjsY0C3yOXstVhbvBgPboMnQcE+tpcPHkvSe5RfUttXF7Nc
+	2+MTG/Sz4JDDFpTTqe+m8Fvr9JA+GPTZfxl+rDQ63koizXOqV9gbhdw1qEVj1rwpYvVDQ7dTfTXTu
+	hRzOqOcWi2ZpnbuffdqDPBWqpseWDIe3Ql1CXuFQP62uvYMTHS9BUdsgfRBVkJlrFLUk586tEyX09
+	0cJgU9Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7P5q-007DKz-Mp; Fri, 01 Jul 2022 22:26:30 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o7PAI-007EHh-F5; Fri, 01 Jul 2022 22:31:06 +0000
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7P5f-007DI3-VL; Fri, 01 Jul 2022 22:26:21 +0000
-Received: from notapiano (unknown [194.36.25.35])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4E0F566017F5;
-	Fri,  1 Jul 2022 23:26:14 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656714377;
-	bh=beS5ia/epfrcQ6hdTw5AHZCvOKhrfWGiS1y5nk9Am2U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=STp0U8Ao78Klox+71MTgbfJRjfjdaEkXSCVsMjF5mHJRTTbTpaseIN+VA/bXaOYc0
-	 q4TDttde0IZm4jASx3gX9Qz6dEjt6JtTI4EnLJvcI/GlxsUqPfg/wxObtjCXbTnvrW
-	 53xvASSd4bs07A3030tOm4YsYmhAZT1rSni07usd9LH2syDI2ELgG/J8Do7vHzoA2c
-	 bRSxM+vyoGri8THfzfKwk3yRO2HZETNaq+cP0G25t56PZWLHZYef26VDjNE8SYG83W
-	 kql0SmkB4QuqKSLQk7AQz55lfZlpVaaIHcXuE6ZS8EIkDeW1IqM0G8EYiVC1dU8NKV
-	 Pw6wnMVaNLD0w==
-Date: Fri, 1 Jul 2022 18:26:09 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, hsinyi@chromium.org,
-	allen-kh.cheng@mediatek.com, gtk3@inbox.ru, luca@z3ntu.xyz,
-	sam.shih@mediatek.com, sean.wang@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wenst@chromium.org
-Subject: Re: [PATCH 04/11] arm64: dts: mediatek: cherry: Add platform
- regulators layout and config
-Message-ID: <20220701222609.w6nowe5ng4ndszol@notapiano>
-References: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
- <20220630153316.308767-5-angelogioacchino.delregno@collabora.com>
+	id 1o7PA6-007EFG-U4; Fri, 01 Jul 2022 22:30:56 +0000
+Received: by mail-qk1-x72a.google.com with SMTP id z12so2845607qki.3;
+        Fri, 01 Jul 2022 15:30:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=ZRqXDVBh2tyzQxE0lZROBHIZNd62HH6YkugnzahAVfE=;
+        b=DSaCxZBgTmQp1xce3Jhu90CL1ztuJjAzTXLm35TAcdlEwGPjL8vSEQH7DxAmv/O/39
+         uWskVo1L2IAhL6MYAVGTkn3tB+IrMnep4ORmEqpwbA8qzRJbaWJxhG7y5Vxw1Q4SL8lp
+         HR85ZmyZWwvviBhDk73MDgMkRjWnmBKFlO1RbXW2GW27wjK3i34h5wd9BhfXxeME/5Nn
+         vJwqzWzdVhWwF6LafX0GhhxljaQUnYYp/DplBCRCd7UDPhinw4luglRUCkEYaOsXKc5Z
+         edE0fg6BBBQO1I9bfOQmC1ZaEa1Qu8JWRROn6hw4RI/BbLfftcARZO6wDbvvrmy8Id51
+         IY5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=ZRqXDVBh2tyzQxE0lZROBHIZNd62HH6YkugnzahAVfE=;
+        b=BKa3atggpIhXJAZvxy/9NJTWCOrhs0KUWg2wPhE/mcyII1wHIHJk/Gkg2vzCVzcip+
+         QicbzkGkHflcLr702yEQlsKHC+BPeb9hrxG3PbTmeuUiguDANo5HSdGVQXwt42yv2hPS
+         XBgs6JCG0HR6oBuB23SVf0mOKBfLMtPWkY3CbremWlN6pPU/z8OHnR6UqDQnchbGLup2
+         C3jtgOeGLDXPC1eekZOSP3GVhzsQyOSiPCH9l3/SkxlBDLm7Fp+KO1jbrcHPZgm7bpy5
+         ncMYkf8t1sqXEsKWkZZiuil13yuE10st9fJ7NLoY2CfO5VF0bZ1Dkw21rOrU/AzHVh2o
+         oYQw==
+X-Gm-Message-State: AJIora8YA+COdKWBl6RxaqTqRLN58QYIEunk0BoLJRSvnStDhkQRHAfX
+	QGZW512pl6dnYxtreS2Uc1k=
+X-Google-Smtp-Source: AGRyM1vB1SZ62N+Gy6jjsx4kJJzWeanIHG6jkt/r0+yoo6UePFIYHvj4XFuf4u/EPQXOjEjQmUmhxQ==
+X-Received: by 2002:a05:620a:3c4:b0:6af:6468:1c0b with SMTP id r4-20020a05620a03c400b006af64681c0bmr12494113qkm.584.1656714652751;
+        Fri, 01 Jul 2022 15:30:52 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id h2-20020ac85482000000b00317cd3edab4sm14284228qtq.11.2022.07.01.15.30.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 01 Jul 2022 15:30:52 -0700 (PDT)
+Message-ID: <fe25fc8a-843c-72c2-e352-88fe9d819ac2@gmail.com>
+Date: Fri, 1 Jul 2022 15:30:45 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220630153316.308767-5-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] dt-bindings: net: dsa: mediatek,mt7530: Add missing 'reg'
+ property
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich <frank-w@public-files.de>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220701222240.1706272-1-robh@kernel.org>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20220701222240.1706272-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_152620_179241_E64611C5 
-X-CRM114-Status: GOOD (  16.96  )
+X-CRM114-CacheID: sfid-20220701_153055_051513_9F6BAE7C 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,68 +101,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 30, 2022 at 05:33:09PM +0200, AngeloGioacchino Del Regno wrote:
-> Add the regulators layout for this platform, including the basic power
-> rails controlled by the EC (and/or always on).
-> Moreover, include the MT6359 PMIC devicetree and add some configuration
-> for its regulators, essential to keep the machine alive after booting.
+On 7/1/22 15:22, Rob Herring wrote:
+> The 'reg' property is missing from the mediatek,mt7530 schema which
+> results in the following warning once 'unevaluatedProperties' is fixed:
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 102 ++++++++++++++++++
->  1 file changed, 102 insertions(+)
+> Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.example.dtb: switch@0: Unevaluated properties are not allowed ('reg' was unexpected)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index 14f8f30b1eb3..091338f7d5ff 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -5,6 +5,7 @@
->  
->  #include <dt-bindings/gpio/gpio.h>
->  #include "mt8195.dtsi"
-> +#include "mt6359.dtsi"
->  
->  / {
->  	aliases {
-> @@ -19,6 +20,107 @@ memory@40000000 {
->  		device_type = "memory";
->  		reg = <0 0x40000000 0 0x80000000>;
->  	};
-> +
-> +	/* system wide LDO 3.3V power rail */
-> +	pp3300_z5: regulator-3v3-pp3300-ldo-z5 {
+> Fixes: e0dda3119741 ("dt-bindings: net: dsa: convert binding for mediatek switches")
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-I wouldn't have both "3v3" and "pp3300" in the node name since they mean the
-same thing, but feel free to ignore this comment :).
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "pp3300_ldo_z5";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&ppvar_sys>;
-> +	};
-> +
-> +	/* separately switched 3.3V power rail */
-> +	pp3300_s3: regulator-3v3-pp3300-s3 {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "pp3300_s3";
-> +		/* automatically sequenced by PMIC EXT_PMIC_EN2 */
-> +		regulator-always-on;
-> +		regulator-boot-on;
-
-Missing regulator-min/max-microvolt?
-
-> +		vin-supply = <&pp3300_z2>;
-> +	};
-[..]
-> -- 
-> 2.35.1
-> 
-
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
-Thanks,
-Nícolas
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
