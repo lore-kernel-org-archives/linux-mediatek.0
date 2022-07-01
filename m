@@ -4,129 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC2A3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 10:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CB03C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 10:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IK1q7pWvnzmd2/yzmMQOB6gFUgHkXgsyzwODpSKqHtU=; b=N/e3t1Ln62n1hRDev+hbVTusID
-	XMuacZf/FkvISVzG+88ddPm3tXsZYD299573kCE71GwG15N2xdDE1N3UQixbki7YWgKD9RGH5A0GQ
-	Dk6vKjoxOL+2vodbJxuZuUmSLt3KUptfR+F7krEP66iekqYc1dVMBz0LVGIL5P70AJtz4SMlQvTr4
-	PZlM2V7jPIxFs9fo9/nrNLVjkXCR9NQK2RmEN6AwaHSvq+lSVYtZ4ZY34YFUEFgGQQ6xSrEKkURz0
-	0QB5yfoHd1O6wbjG3w0JMr9ZLlS9TDynDdOZ7nQvZc8HwNux0zY6yIxO8x9qXwQaafMDlrm8xxlxO
-	iwUPg2qw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tD51rba54KU0hAU4i0fWSrIVEYoYcP2aWOUIMvkrJBw=; b=jH0SmQwRf/HCRLTngLHONCpZA2
+	wkcJ1c+7Qvv6jCcWcRYs4YnfLAEQRGdInheBsUsofEEufe/3D7J8f/0YgZ9mZZN4FmJaiYzTvqxjl
+	SbXAfxfx4BeEKROtMGHookJ04w3oSPCa5gAIOnNF1wvDKP5X5iGKuBRXPCFhDKUHFSd7RmPlDqlDt
+	U8AlXP3SS5L0yZRTGXGBj3O/o3GwcoXeNRBijfYvcwVdUom46O76tHa1xJTzlpZre6cJP3Bu9d0JH
+	ySwk41EJGVflpTDUBI77nEbvhAApYeXrpVOkW09GbZShblYFWxV/AO7jv+Xj6Fy+tBtoIYWo/r4dA
+	sCe76Nig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Dj6-00436f-Be; Fri, 01 Jul 2022 10:18:16 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1o7DzT-0045zB-Rm; Fri, 01 Jul 2022 10:35:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Dj2-004356-Ql; Fri, 01 Jul 2022 10:18:14 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id r3so3229330ybr.6;
-        Fri, 01 Jul 2022 03:18:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=IK1q7pWvnzmd2/yzmMQOB6gFUgHkXgsyzwODpSKqHtU=;
-        b=jSDpH5b4ezTXYDkI+Kv1qjoulW4GueRKAo9MfvH6Or74WD1aO19b0yl9X6h7ikpgsb
-         Yzj9/9QR8pvv9s537mQBeUk8bodicRt2sYNtrKP02dXkQyCDQKSj99VRGbrzh5/zLrXe
-         3DbujuLPciSi5vALJ+old//V6zoLm6pd0LhvBAARG1SXsh/2UP6qVVa/FfV3DuM5if+u
-         lMLgaAYtih653stfzpF6JzV1TgtPEvIAiwFM7x+VFO7m6+ikg5S95jdc8NlSpoxf6NUC
-         chD7vf96GrCNEtWT2dpp9TfC5k1TkiGvGH1SczyJzPL6/3uFcjCYC/RxAKuWF753UD7k
-         NBBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=IK1q7pWvnzmd2/yzmMQOB6gFUgHkXgsyzwODpSKqHtU=;
-        b=bKEW8Ry0Dc7JWpcsTzfqOEZXgVD93DyEcOHHsubyywQFfUZ94PG/REMiyCQ1yFPlc1
-         ayfM0chkW6AIr9cJsCf65QdK7Gx6bgoQqYkqS7TIcnHhAU15zwITAxAgqUKThdLs1A+Y
-         wonqxW0cs1f5vojvbilC4isezZD5wp536hZin0Lw7cLD+7+tp1zUynbdzPEBPpx1Ooyr
-         lil0LPOX4PUc3JRNAcgQzi0r6i9/+YQD2G9MdVguJO/GgctbNCiPbPF7IwnOjfE/t8u2
-         iKaXmZN5w3gfbiWMUewxWHOCpDGetzs/dkuz1o2lpGiano869IqEsNYly1o5J2I/eUBy
-         m1hw==
-X-Gm-Message-State: AJIora89JqE6zL3KgHUrUS5nkhzJQEf+MmiTpkt2dH/dd9IfNjyCRe8j
-	of8hqQn5oJ9w5XuycenQ27US2xNEWzhjsrJ/LwI=
-X-Google-Smtp-Source: AGRyM1tvrcPaXjb6qpRZmlm3mN1+HaZ3X5zFt5Vb6BDK08mCBJ8qF4vfcIrvo5gC3LEAhM4YrPgldTFVhwpUgFcS228=
-X-Received: by 2002:a05:6902:1549:b0:66d:5f76:27ba with SMTP id
- r9-20020a056902154900b0066d5f7627bamr14092504ybu.385.1656670690515; Fri, 01
- Jul 2022 03:18:10 -0700 (PDT)
+	id 1o7DzQ-0045wi-Mv; Fri, 01 Jul 2022 10:35:09 +0000
+X-UUID: 16dcaad561b1427ca94bb44d502588c7-20220701
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:cc28242c-b2da-4684-9fa1-ec5725f74dde,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:0aee4c86-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 16dcaad561b1427ca94bb44d502588c7-20220701
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1564282399; Fri, 01 Jul 2022 03:34:56 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 1 Jul 2022 18:34:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 18:34:30 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski@canonical.com>
+CC: Lala Lin <lala.lin@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	"Chen-Yu Tsai" <wenst@chromium.org>, Allen-KH Cheng
+	<allen-kh.cheng@mediatek.com>
+Subject: [PATCH] dt-bindings: nvmem: mediatek: efuse: add support for mt8186
+Date: Fri, 1 Jul 2022 18:34:28 +0800
+Message-ID: <20220701103428.22099-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220701012647.2007122-1-saravanak@google.com> <20220701012647.2007122-3-saravanak@google.com>
-In-Reply-To: <20220701012647.2007122-3-saravanak@google.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Fri, 1 Jul 2022 12:17:33 +0200
-Message-ID: <CAHp75Vdw8pZePnqR=mmJh4pv0bPMRJE=p7-cG3akskdxMHmoKw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] serial: Set probe_no_timeout for all DT based drivers
-To: Saravana Kannan <saravanak@google.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jiri Slaby <jirislaby@kernel.org>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, 
-	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Al Cooper <alcooperx@gmail.com>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Tobias Klauser <tklauser@distanz.ch>, Russell King <linux@armlinux.org.uk>, 
-	Vineet Gupta <vgupta@kernel.org>, Richard Genoud <richard.genoud@gmail.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Alexander Shiyan <shc_work@mail.ru>, 
-	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, 
-	Gabriel Somlo <gsomlo@gmail.com>, Neil Armstrong <narmstrong@baylibre.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <bjorn.andersson@linaro.org>, Pali Rohar <pali@kernel.org>, 
-	Andreas Farber <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laxman Dewangan <ldewangan@nvidia.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, "David S. Miller" <davem@davemloft.net>, 
-	Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, 
-	Michal Simek <michal.simek@xilinx.com>, Rob Herring <robh@kernel.org>, 
-	sascha hauer <sha@pengutronix.de>, peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>, 
-	ulf hansson <ulf.hansson@linaro.org>, len brown <len.brown@intel.com>, 
-	pavel machek <pavel@ucw.cz>, joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>, 
-	andrew lunn <andrew@lunn.ch>, heiner kallweit <hkallweit1@gmail.com>, 
-	eric dumazet <edumazet@google.com>, jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>, 
-	linus walleij <linus.walleij@linaro.org>, hideaki yoshifuji <yoshfuji@linux-ipv6.org>, 
-	david ahern <dsahern@kernel.org>, Android Kernel Team <kernel-team@android.com>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	"list@263.net:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, netdev <netdev@vger.kernel.org>, 
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
-	"open list:LINUX FOR POWERPC PA SEMI PWRFICIENT" <linuxppc-dev@lists.ozlabs.org>, 
-	"open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/ASPEED MACHINE SUPPORT" <linux-aspeed@lists.ozlabs.org>, 
-	linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, 
-	"open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	linux-tegra <linux-tegra@vger.kernel.org>, linux-snps-arc@lists.infradead.org, 
-	linux-amlogic <linux-amlogic@lists.infradead.org>, 
-	linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-actions@lists.infradead.org, 
-	linux-unisoc@lists.infradead.org, 
-	Linux Samsung SOC <linux-samsung-soc@vger.kernel.org>, 
-	linux-riscv <linux-riscv@lists.infradead.org>, linux-stm32@st-md-mailman.stormreply.com, 
-	Sparc kernel list <sparclinux@vger.kernel.org>, Ahmad Fatoum <a.fatoum@pengutronix.de>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_031812_944217_140ACF2F 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20220701_033508_782858_C631051C 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,23 +79,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 1, 2022 at 3:28 AM Saravana Kannan <saravanak@google.com> wrote:
->
-> With commit 71066545b48e ("driver core: Set fw_devlink.strict=1 by
-> default") the probing of TTY consoles could get delayed if they have
-> optional suppliers that are listed in DT, but those suppliers don't
-> probe by the time kernel boot finishes. The console devices will probe
-> eventually after driver_probe_timeout expires.
->
-> However, since consoles are often used for debugging kernel issues, it
-> does not make sense to delay their probe. So, set the newly added
-> probe_no_timeout flag for all serial drivers that at DT based. This way,
-> fw_devlink will know not to delay the probing of the consoles past
-> kernel boot.
+Add compatible for mt8186 SoC.
 
-Same question, do you think only serial drivers need that?
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+---
+ Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+index 7c7233e29ecf..b5a1109f2ee1 100644
+--- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -29,6 +29,7 @@ properties:
+               - mediatek,mt7623-efuse
+               - mediatek,mt8173-efuse
+               - mediatek,mt8183-efuse
++              - mediatek,mt8186-efuse
+               - mediatek,mt8192-efuse
+               - mediatek,mt8195-efuse
+               - mediatek,mt8516-efuse
 -- 
-With Best Regards,
-Andy Shevchenko
+2.18.0
+
 
