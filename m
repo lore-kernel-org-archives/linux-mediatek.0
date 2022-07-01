@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7585DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 08:18:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35C12C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 08:20:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:In-Reply-To:References:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NKnLztvVW6F490xrJW9Rm+HbNy2lt5F9hUPllWHVNso=; b=ITO/pqS/JOf7lchTyRH88qkkoP
-	qtzl2FBs/kHuCtuqCh+uHJbzN2RglW/CLYikYNGxJDUOje++XaCgxJyPhieBXSMjydYF8BOtFvn2O
-	Zn80Sqx229nAMIU/NEF+9usS2mDWrMaEieovzSPh9l6tm1aDkzjbgm402TyI1BrVZ5f98bNaLwFSO
-	JHJIW+mFjSlz2uO4X+pwltvhwoPa44BUqOXGYL6nQV9G12f3ikrxmYb0AwESv+ggdE6wwgUoHDlYq
-	F1ucB8M6bm/RmoYHwwvQ6npydYytnGmeTp/ybSJNtXyLhjj5Uh+WfLM5RGrk++9f2SbwgZ1Aw9Zs8
-	QsBfui8g==;
+	bh=3ceKO4nhczUlmINYC2UjM32y4xvErmhFKcT1As9IY7E=; b=Y53uwVqkyZXvmHSOhUUNZi+/z6
+	szY6ip0M2ykqyq8gUTcTTF4B8653i3wPYRsThTzKv2VRaUw5UyBODMBNS1aD+eR9ZKsEq51sK8kw2
+	8q+DjlpivZRQ8DmMmYY2qOOisdUwU2l65sEBUuCwGAMzJa6wox5iG/UezrbQw9K+YmDXBYBOh+2xA
+	XKtmY9LunEB4vTm5xs6dKbpSqkjVEVAet46FMnGgerx17FYDEGwAwdRwqHMnoVTl3pt9+UTjIpz+6
+	LDC9dDH8O0qOMsjaitTFeyr5RCWtzAyRxnzuQph+rxalHjXnKtrUxsqEdk4vLU7UNi/sG10kER8Jp
+	uwBMqlGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Bqn-003a36-AP; Fri, 01 Jul 2022 08:18:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o7Bsg-003awB-TX; Fri, 01 Jul 2022 08:20:02 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Bqb-003ZxB-4o; Fri, 01 Jul 2022 08:17:54 +0000
-X-UUID: e5439b7b47cc40edad58ddfec76d008d-20220701
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:a622ce0f-2e1c-4074-a780-b707bce9e82f,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:dd282663-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: e5439b7b47cc40edad58ddfec76d008d-20220701
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1838045848; Fri, 01 Jul 2022 01:17:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 1 Jul 2022 15:37:06 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 1 Jul 2022 15:37:06 +0800
-Message-ID: <10ed0b2a78baa88f7fd1d466036c98de2f6d8e29.camel@mediatek.com>
-Subject: RE: pull request: linux-firmware: Create Mediatek MT8186 SCP
- firmware
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: "linux-firmware@kernel.org" <linux-firmware@kernel.org>
-CC: <allen-kh.cheng@mediatek.com>, <yunfei.dong@mediatek.com>,
-	<shawnku@google.com>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-remoteproc@vger.kernel.org>,
-	<rongchang@google.com>, <hsinyi@chromium.org>, <tinghan.shen@mediatek.com>
-Date: Fri, 1 Jul 2022 15:37:06 +0800
-References: <b4392c845d0af4e0e9d06493078c8af9dc39e237.camel@mediatek.com>
-In-Reply-To: <b4392c845d0af4e0e9d06493078c8af9dc39e237.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o7BsT-003apz-DH; Fri, 01 Jul 2022 08:19:50 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5F4546601974;
+	Fri,  1 Jul 2022 09:19:46 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656663587;
+	bh=fS/iT1xgWFnZF/STuxFQ2EWwRzYU7ahVyBexaMgwNOI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MVZ0UVaj0GOM+lhPo/zLqAd6wwphw9owl+wPI6t4QNosIzdxpif+1OJbFMqkPEmgK
+	 BceDORJn6eD6XpXc1J45h/cqIuUow6DMCUCsbPdYrsg5i9iC6YGZudO2UpqYr4rkFq
+	 jkT1DcMhyPm/dPKy0P5wf7XweLV/jtfSu/gfLsy+zOXWvm9NdgU8f4SF7ynzxwz5ix
+	 5PptZatYua+ko/0x+JyC7YfrZVGSmdCaCXNSkh+Gp4JWO7ZIuzCJn12SDg6f9W5VBo
+	 /t0oOFZyA7KupjTCBSNdoK50QQnE2H6PLsdW1lTKOhOVDIY9l9N5VjxsFRx7rV0k20
+	 cg8AjERufTsfQ==
+Message-ID: <60079979-c84e-a9ba-f1b0-2f82cbac2604@collabora.com>
+Date: Fri, 1 Jul 2022 10:19:43 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v13 09/10] drm/mediatek: DP audio support for MT8195
+Content-Language: en-US
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie
+Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
+ wenst@chromium.org, ck.hu@mediatek.com, liangxu.xu@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
+ <20220701062808.18596-10-rex-bc.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220701062808.18596-10-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_011753_214159_5CC4ACF4 
-X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-CacheID: sfid-20220701_011949_619470_CA9E5476 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,52 +82,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 01/07/22 08:28, Bo-Chen Chen ha scritto:
+> From: Guillaume Ranquet <granquet@baylibre.com>
+> 
+> This patch adds audio support to the DP driver for MT8195 with up to 8
+> channels.
+> 
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 
-I am sorry, there are some mistakes in CC list.
-
-Regards,
-Allen
-
------Original Message-----
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com> 
-Sent: Friday, July 1, 2022 2:32 PM
-To: linux-firmware@kernel.org
-Cc: Yunfei Dong (董云飞) <Yunfei.Dong@mediatek.com>; ";
-shawnku"@google.com
-Subject: pull request: linux-firmware: Create Mediatek MT8186 SCP
-firmware
-
-Hi maintianers,
-
-Add a new SCP firmware for MediaTek MT8186.
-Thank you!
-
-Regards,
-Allen
-
----
-
-The following changes since commit
-9ed4d42c51aca99d70adc6738d7ea55c5e897835:
-
-  amdgpu: update Yellow Carp VCN firmware (2022-06-22 06:28:03 -0400)
-
-are available in the Git repository at:
-
-  https://github.com/kuanhsuncheng/linux-firmware-scp v0.0.6
-
-for you to fetch changes up to
-1c8b6c3dddf751f5f786bdd3440aa3ce238ab808:
-
-  mediatek: Add SCP firmware for MT8186 (2022-07-01 14:20:06 +0800)
-
-----------------------------------------------------------------
-Allen-kh Cheng (1):
-      mediatek: Add SCP firmware for MT8186
-
- WHENCE                  |   2 ++
- mediatek/mt8186/scp.img | Bin 0 -> 416960 bytes
- 2 files changed, 2 insertions(+)
- create mode 100644 mediatek/mt8186/scp.img
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
