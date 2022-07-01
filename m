@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C4F9C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 03:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 327C4C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 03:56:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Yb2m2gyxpsKIX0I/PrZ5rmiyao0BxKyjw2Idv191UcM=; b=b2Dg4//zGMUSmHhb7me8v2Just
-	Mw8OBWPw9OqYd3igaXc+xTYxcQIKGvDTd4keDZjbZFMlt5E0FWXj8ARgiapZ0my8JYDigsy6+zehp
-	VmNG+F/2qjxl2QBJcxhN4MKJeFCGmUGEKnf6CIBFqWLmY97wZvMplkgv6ni+/ef6zqXBVaQkl+85F
-	E2CoGvTJRCpMmrAJJy4FfpD71C7WM+8RZt9F4N2E254io+qXludX81sXrfHjPnY5ouWrVysfAilmz
-	ytF2A86mQWAiI9+A51eKp4c6tQNDa5v+5YcwgOPbLr7PbjKxSui3RBSnLEnrccrllaLnz5MxeKPoi
-	HheuXhow==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OnVbiZerBoAbYUJ/MM4BaOfDHUOUBzHjL8VyGJM0iAc=; b=FfB6QK7/61QdtddJe//9jgsXVp
+	XVIru7n5qd0mi3XOZDh+RQ+ij4dwRZF0rF+LhIujHaQVlQgczKV4CnpT7/0CZp+9JCb+uomkcBJE6
+	1L4HdkL6hymy0+VGDsnJtHKiou1YbPq5X59Dm3q66jfqdvsy+mRQgAwmn96sIMbLORAI0tgod5s9q
+	CNF3ADXrotdBAnRndOKwKpkAvbnRRLqGy49OXxG+5CYD8nOSssRBulOnsZ6JI8xVLDIIfm+2lsiwo
+	sgMrYaUcfUmU2vVwOc+n6py48Bj+v1ehTA2hIXT2WR6bJxU6reykfIYU5/PRfUb8g+piW+F/bKW9P
+	dFLKi+iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o77er-002eLT-2g; Fri, 01 Jul 2022 03:49:29 +0000
+	id 1o77ln-002hEo-Vt; Fri, 01 Jul 2022 03:56:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o77cu-002dEA-75; Fri, 01 Jul 2022 03:47:30 +0000
-X-UUID: aafc4a0776b34a45ab7e0a0141b7ef19-20220630
+	id 1o77lc-002hAr-9T; Fri, 01 Jul 2022 03:56:29 +0000
+X-UUID: b085c5e254674ef7b62615a330d4e0e6-20220630
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:18331881-390e-4a72-b1e5-edeff2e99b58,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:87442a2,CLOUDID:bec250d6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.7,REQID:98829ffd-05b8-4945-9a4d-367faee497be,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:32c71e63-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: aafc4a0776b34a45ab7e0a0141b7ef19-20220630
+X-UUID: b085c5e254674ef7b62615a330d4e0e6-20220630
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <xinlei.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1280777475; Thu, 30 Jun 2022 20:47:22 -0700
+	with ESMTP id 2075047983; Thu, 30 Jun 2022 20:56:23 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 1 Jul 2022 11:15:55 +0800
+ 15.2.792.15; Fri, 1 Jul 2022 11:15:48 +0800
 Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 11:15:54 +0800
+ 15.2.792.3 via Frontend Transport; Fri, 1 Jul 2022 11:15:48 +0800
 From: <xinlei.lee@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
 	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <yongqiang.niu@mediatek.com>,
@@ -52,18 +52,17 @@ CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
-Subject: [PATCH 2/2] drm: mediatek: Adjust the dpi output format to MT8186
-Date: Fri, 1 Jul 2022 11:15:44 +0800
-Message-ID: <1656645344-12062-3-git-send-email-xinlei.lee@mediatek.com>
+Subject: [PATCH 0/2] Add dpi output format control for MT8186
+Date: Fri, 1 Jul 2022 11:15:42 +0800
+Message-ID: <1656645344-12062-1-git-send-email-xinlei.lee@mediatek.com>
 X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1656645344-12062-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1656645344-12062-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_204728_375393_92BB4F5C 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20220630_205628_360110_BAB23107 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,112 +79,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Dpi output needs to adjust the output format to dual edge for MT8186.
+Base on the branch of Linux-next/master.
+This series are based on the following patch:
+[1] Add MediaTek SoC(vdosys1) support for mt8195
+https://patchwork.kernel.org/project/linux-mediatek/cover/20220622130824.29143-1-nancy.lin@mediatek.com/
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
----
+When MT8186 outputs dpi signal, it is necessary to add dual edge output
+format control in mmsys.
+
+Xinlei Lee (2):
+  soc: mediatek: Add mmsys func to adapt to dpi output for MT8186
+  drm: mediatek: Adjust the dpi output format to MT8186
+
  drivers/gpu/drm/mediatek/mtk_dpi.c      | 21 +++++++++++++++++++++
  drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  5 +++++
- 2 files changed, 26 insertions(+)
+ drivers/soc/mediatek/mt8186-mmsys.h     |  1 +
+ drivers/soc/mediatek/mtk-mmsys.c        |  8 ++++++++
+ include/linux/soc/mediatek/mtk-mmsys.h  |  2 ++
+ 5 files changed, 37 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index e61cd67b978f..82a5209a1dd8 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -15,6 +15,7 @@
- #include <linux/pinctrl/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/types.h>
-+#include <linux/soc/mediatek/mtk-mmsys.h>
- 
- #include <video/videomode.h>
- 
-@@ -28,6 +29,7 @@
- #include "mtk_disp_drv.h"
- #include "mtk_dpi_regs.h"
- #include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
- 
- enum mtk_dpi_out_bit_num {
- 	MTK_DPI_OUT_BIT_NUM_8BITS,
-@@ -85,6 +87,7 @@ struct mtk_dpi {
- 	struct pinctrl_state *pins_dpi;
- 	u32 output_fmt;
- 	int refcount;
-+	struct device *mmsys_dev;
- };
- 
- static inline struct mtk_dpi *bridge_to_dpi(struct drm_bridge *b)
-@@ -125,6 +128,7 @@ struct mtk_dpi_conf {
- 	bool edge_sel_en;
- 	const u32 *output_fmts;
- 	u32 num_output_fmts;
-+	bool rgb888_dual_enable;
- };
- 
- static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
-@@ -393,6 +397,9 @@ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
- 		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
- 			     dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE ?
- 			     EDGE_SEL : 0, EDGE_SEL);
-+	if (dpi->conf->rgb888_dual_enable)
-+		mtk_mmsys_ddp_dpi_confing(dpi->mmsys_dev, DPI_RGB888_DDR_CON,
-+					  DPI_FORMAT_MASK, NULL);
- 	} else {
- 		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0);
- 	}
-@@ -705,8 +712,10 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- {
- 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
- 	struct drm_device *drm_dev = data;
-+	struct mtk_drm_private *priv = drm_dev->dev_private;
- 	int ret;
- 
-+	dpi->mmsys_dev = priv->mmsys_dev;
- 	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
- 				      DRM_MODE_ENCODER_TMDS);
- 	if (ret) {
-@@ -823,6 +832,15 @@ static const struct mtk_dpi_conf mt8192_conf = {
- 	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
- };
- 
-+static const struct mtk_dpi_conf mt8186_conf = {
-+		.cal_factor = mt8183_calculate_factor,
-+		.reg_h_fre_con = 0xe0,
-+		.max_clock_khz = 150000,
-+		.output_fmts = mt8183_output_fmts,
-+		.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
-+		.rgb888_dual_enable = true,
-+};
-+
- static int mtk_dpi_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -945,6 +963,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
- 	{ .compatible = "mediatek,mt8192-dpi",
- 	  .data = &mt8192_conf,
- 	},
-+	{ .compatible = "mediatek,mt8186-dpi",
-+	  .data = &mt8186_conf,
-+	},
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-index 3a02fabe1662..24d4cdf3696b 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-@@ -217,4 +217,9 @@
- 
- #define EDGE_SEL_EN			BIT(5)
- #define H_FRE_2N			BIT(25)
-+
-+#define DPI_FORMAT_MASK			0x1
-+#define DPI_RGB888_DDR_CON		BIT(0)
-+#define DPI_RGB565_SDR_CON		BIT(1)
-+
- #endif /* __MTK_DPI_REGS_H */
 -- 
 2.18.0
 
