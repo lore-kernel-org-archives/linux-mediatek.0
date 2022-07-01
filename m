@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4FC9C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 10:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BF2AC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 10:40:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qdoe7uBh5YdgvwDoXEs4z1E7HWiqcjddIo/k1Wuymko=; b=jH2AUmKBmUiTN7Nql/2JnTazVR
-	GiC0G+ML/ewPm2mtYCTgxdDMaKgsEzzYDzVebhzKfNzLGt6pv3ZdP8G8gTKhqt1QhOqnEWvKSj2V3
-	5I0oUpf4oXRBcE+qCLqq9FwUD8RPMMNKS+1UQjKNt5DeYIR6uzSJj4X5ZRRlRdCwnih0836anqAdJ
-	M28k8O+3XWG5gkGVk+wfTpfi/IUeehWBQfA0IVx/sfxVNuMETGSzAeoiotiU8J2HUKwrSufoYZ/98
-	wIgKxK8b2C6y8AummhhinNruG2CqYH69PxI7YPlLOPiRMui1UH0mfemu7jCyFngs0vdV8uLgPaoZc
-	YZ/8jomA==;
+	bh=QhSJpdElfxLJFyuRKCFkIgo8J87kpfyiNf5gNwRrRdk=; b=d4Qvbz4t4oj5g5nWgbyL8zouPW
+	jj9yZEjP2iNMAWKjg5fwxxFohAwdikVo6sHZRcn46XK7znfNK/+G1AKVLNOrVSmvM4mN3xmH7b9cq
+	xO2jSHNk0ifq1Bp9O3kox84s7j7BAyW+/YFtBZ1vU5k3g3VWle4Y28tyPGNpeurhZpFPhySedO5kM
+	UoQNPi0Zq3Qr1h2M4EslniXG5jN2C9VB0YG4dVCNQqHOJhTh+tV5KoOYHQ3VS+mhukP0NWXrWA7D9
+	978yryBTbTeMtKwWCazejugxOsiVStyNspDbBoak2xkYlPZfa/UbKbRafpwyP+CVw1zJfyFYMvg77
+	yP+C1Ghw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7E3k-0047TM-T3; Fri, 01 Jul 2022 10:39:36 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1o7E42-0047dh-FY; Fri, 01 Jul 2022 10:39:54 +0000
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7E3X-0047MC-ET
-	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 10:39:26 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-3176b6ed923so19075687b3.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 01 Jul 2022 03:39:21 -0700 (PDT)
+	id 1o7E3x-0047ZR-MK
+	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 10:39:51 +0000
+Received: by mail-yb1-xb30.google.com with SMTP id 205so886589ybe.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 01 Jul 2022 03:39:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=Qdoe7uBh5YdgvwDoXEs4z1E7HWiqcjddIo/k1Wuymko=;
-        b=Xb91NjUW1NKOPKi4zPVohamVP+8ax7DOIzihV1AuAcHJuFg/wSUZ4VQSqo9g4umKKB
-         PP3nvsfaz/wdbShIqCD2QerXBI4Oa/GDcwV/Gxr4OsISgq6SVElNyQK29wHQhiBHjTZ7
-         3cT/zWNf4ePJBtSiNx5pKWo1zZx+eagvmQpws=
+        bh=QhSJpdElfxLJFyuRKCFkIgo8J87kpfyiNf5gNwRrRdk=;
+        b=ocasRLLt7ZDwKINnqCUl5FR0RNg3PQjS5gXEQjvHSeo7W055JZlxinK2HUcaK9w5bh
+         eSN5A/+QtNlO1aX10mlD2JbNYLvX64ZhASo914nhKidpwAtpvu4Sta1SN077iSfCpy2t
+         CkzOa6S94V0kN8rvcfmrtw6/E3rj5yp0k5AJo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=Qdoe7uBh5YdgvwDoXEs4z1E7HWiqcjddIo/k1Wuymko=;
-        b=NhDfROhk5BaJ8yhEqWgeEdJRNGTfj1BQ1HqCRw9XoioX6DXWYppnaOiAKEW2PFMKc8
-         q/2xlmRu96h/DxDG2b1rkJIAREskgvMbyCt+K2RPJ+FBUxdAoKniJRUWJ0mYeD0GCRAs
-         XNJUSPdraLW7YxzUG8u2Z/8NiXTS2eKN9hPrK66P1LFRyD686QixO9mKz+XIV+HKBHcZ
-         QcFS0tPcKz6T/YRTIEXReL+8gwTotA+rK3Sc/lFvTDRF7FefSieMaPt5n5mnc1krEx3z
-         7yVRXMg5VaMkIr6Jgh0Daq+Ko+0/LZKLiqmCcfNDVK9t3gUG8QkAClgWGTt5gZgMAjA/
-         mXHw==
-X-Gm-Message-State: AJIora+1ejKpnZ0D4SISIWr/ysxCkhp+KaZO/jZ0KN34QbIAv7BWtLyt
-	3IUU9AGNJIHb06evcvB0q10uvqLVnkGIbnScvpx+q7uhH+wi2Q==
-X-Google-Smtp-Source: AGRyM1tbkJBX9Hzk5eZ2TzQQEIas6RfLq5EG7NxvFxwC+16yjoYuQTo0iO6rbWqDLmQcGCC2g9iUmZB7QTkK9dbk+4Y=
-X-Received: by 2002:a81:2386:0:b0:317:6586:8901 with SMTP id
- j128-20020a812386000000b0031765868901mr15850223ywj.195.1656671960400; Fri, 01
- Jul 2022 03:39:20 -0700 (PDT)
+        bh=QhSJpdElfxLJFyuRKCFkIgo8J87kpfyiNf5gNwRrRdk=;
+        b=SmabEd5Jj7FKHqwvZRwjomAO6J8ajdhyMpadKiPZOeuqtzpKxE/oP9I15GLtEbqI1B
+         MPQ+DmJb5JwPPPDa2LxEXKbK2HkJcSi+bVuK3OCMX+KFVr+sV3vRROjw5HADNgsSXH9w
+         fDCuWsuziNk2TGjSfh0AHHsh0fiHrj8W55N2XrjpHsWSEgxYvZF6nYLSz7cHPBU0TohV
+         NuZklgH1z5uNh/s2eWSIjmJ3qglbWcj6+g1Yys/AF06m+Q+mXuL65VyeCdGhyFZ+PFRa
+         O3hy2jlK2+PMRm54rUww0nLwricPJu1OJj+Qr7Fkj45OV0L1MWiaW8GsI0BI0/8YiN18
+         IcnA==
+X-Gm-Message-State: AJIora+hXSkfRrN4rypUvWfmA8xJhdPevPcvuqJIBGXVC0BYM2vX80w/
+	cBbDyd76r1LB6vDsRg+L8wISzDAFqF5uYfRp3+9pTA==
+X-Google-Smtp-Source: AGRyM1vft/EQMm1oncXjofFh3jIP3Ex+EX4u97g9AM0PzBmMCHK71dtxNdvf6XCacmM+Xex1pm9BVN9k7B5IjJg8Hv8=
+X-Received: by 2002:a25:7801:0:b0:669:b51b:10d0 with SMTP id
+ t1-20020a257801000000b00669b51b10d0mr15080419ybc.204.1656671988852; Fri, 01
+ Jul 2022 03:39:48 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220629155956.1138955-1-nfraprado@collabora.com> <20220629155956.1138955-19-nfraprado@collabora.com>
-In-Reply-To: <20220629155956.1138955-19-nfraprado@collabora.com>
+References: <20220629155956.1138955-1-nfraprado@collabora.com> <20220629155956.1138955-20-nfraprado@collabora.com>
+In-Reply-To: <20220629155956.1138955-20-nfraprado@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 1 Jul 2022 18:39:09 +0800
-Message-ID: <CAGXv+5EmQRup7x=qsTLMj-90Y0TB7mAcisOVmwm4kFiD8Lhwrg@mail.gmail.com>
-Subject: Re: [PATCH v4 18/19] arm64: dts: mediatek: asurada: Enable SCP
+Date: Fri, 1 Jul 2022 18:39:37 +0800
+Message-ID: <CAGXv+5FEM0UNg5vCK3qF6yzhCPWDryQx0iEzhFJJEQQhpx1M-w@mail.gmail.com>
+Subject: Re: [PATCH v4 19/19] arm64: dts: mediatek: asurada: Add SPI NOR flash memory
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
@@ -68,8 +68,8 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_033923_528451_5254A19B 
-X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-CacheID: sfid-20220701_033949_800704_96B3F557 
+X-CRM114-Status: UNSURE (   8.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,11 +88,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, Jun 30, 2022 at 12:00 AM N=C3=ADcolas F. R. A. Prado
 <nfraprado@collabora.com> wrote:
 >
-> Enable support for the SCP co-processor present on MT8192. It is used
-> as part of the video encoding and decoding processes.
->
-> A region of memory is carved out for its use, and remoteproc setup for
-> communication with the ChromeOS EC.
+> Add support for the SPI NOR flash memory present on the Asurada
+> platform.
 >
 > Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
