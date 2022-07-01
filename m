@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889E6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 08:14:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7585DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 08:18:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:In-Reply-To:References:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WjPShDBHHP87Imcfwdo2tTquxXkaxpf5jj9N3B/J1Sw=; b=uSwh5Y+WFfogrshvSwLBZcYj00
-	rq3jykRTf47KMlGKYlxiuHynpDYpyAI3u9ZeKaJSA+jQKOZB5DJvF6Z7H8120oNxTVQLB6qthIuDO
-	NWqR6CooUjITK2p83nXA07BrKO3fyewbuCyB1q6Ppsf0eFSZuc4mY4GCHq8Gmc/OAcaZoZtuWy1WT
-	5yd4aL23A4LrwaYUdsq0d20TXhRssNdG5BMZLmAGvQL87vEFPTjadotbLIxX4uobKn4y+8z1xZ7Vz
-	zmMdCfWOBXhZHc93nDnT9R1qkmKKaJT778mhxpQCrRp3BUTVp7aSyXfxZbwNLh9TpKidmY/9mU43t
-	ghThNVhA==;
+	bh=NKnLztvVW6F490xrJW9Rm+HbNy2lt5F9hUPllWHVNso=; b=ITO/pqS/JOf7lchTyRH88qkkoP
+	qtzl2FBs/kHuCtuqCh+uHJbzN2RglW/CLYikYNGxJDUOje++XaCgxJyPhieBXSMjydYF8BOtFvn2O
+	Zn80Sqx229nAMIU/NEF+9usS2mDWrMaEieovzSPh9l6tm1aDkzjbgm402TyI1BrVZ5f98bNaLwFSO
+	JHJIW+mFjSlz2uO4X+pwltvhwoPa44BUqOXGYL6nQV9G12f3ikrxmYb0AwESv+ggdE6wwgUoHDlYq
+	F1ucB8M6bm/RmoYHwwvQ6npydYytnGmeTp/ybSJNtXyLhjj5Uh+WfLM5RGrk++9f2SbwgZ1Aw9Zs8
+	QsBfui8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7BnH-003YxY-7b; Fri, 01 Jul 2022 08:14:27 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o7Bqn-003a36-AP; Fri, 01 Jul 2022 08:18:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Bmz-003Ypb-HK; Fri, 01 Jul 2022 08:14:14 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3FA956601974;
-	Fri,  1 Jul 2022 09:14:05 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656663247;
-	bh=oX88CugqBfAMEuhfwgO7WJ1IBMMlTDVxIs1zooaswFg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OrhyVBuFvFKAcT64g3zBqktpN6W6lmU6Z7vqgOE+kfn63T3GUrTPJf1Brz6hpDrus
-	 zY/MMpdHKye4D1rc5SHWwbNyJ/rM4S3NJsgL9538JL85q1d8o+KvsX4uW+bdplDH+d
-	 k9wzv6YqD1Ac+hOJ016TwfphmemQzRLsXI8D91pJc4Sn9vzQZP+dGY0uouTZny/68V
-	 gYpiHqbS/wmnq6esnVTOtYzOsdC73JJGMzMJ4FQKztfvN4ZgrbPK8DUFZ2w5/N7Tv3
-	 Kt9ACJ1fKb8l8eYtcMzZVJIfKWPpuNCQkyR2LQ6yNw3U8qT3IHl2+GS5UFAuBCxHye
-	 5WSCex46vm2uQ==
-Message-ID: <5971f465-9514-d830-8467-e722475ecc7f@collabora.com>
-Date: Fri, 1 Jul 2022 10:14:02 +0200
+	id 1o7Bqb-003ZxB-4o; Fri, 01 Jul 2022 08:17:54 +0000
+X-UUID: e5439b7b47cc40edad58ddfec76d008d-20220701
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:a622ce0f-2e1c-4074-a780-b707bce9e82f,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:dd282663-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: e5439b7b47cc40edad58ddfec76d008d-20220701
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1838045848; Fri, 01 Jul 2022 01:17:43 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 1 Jul 2022 15:37:06 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Fri, 1 Jul 2022 15:37:06 +0800
+Message-ID: <10ed0b2a78baa88f7fd1d466036c98de2f6d8e29.camel@mediatek.com>
+Subject: RE: pull request: linux-firmware: Create Mediatek MT8186 SCP
+ firmware
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: "linux-firmware@kernel.org" <linux-firmware@kernel.org>
+CC: <allen-kh.cheng@mediatek.com>, <yunfei.dong@mediatek.com>,
+	<shawnku@google.com>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-remoteproc@vger.kernel.org>,
+	<rongchang@google.com>, <hsinyi@chromium.org>, <tinghan.shen@mediatek.com>
+Date: Fri, 1 Jul 2022 15:37:06 +0800
+References: <b4392c845d0af4e0e9d06493078c8af9dc39e237.camel@mediatek.com>
+In-Reply-To: <b4392c845d0af4e0e9d06493078c8af9dc39e237.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v13 06/10] drm/mediatek: Add MT8195 External DisplayPort
- support
-Content-Language: en-US
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie
-Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
- wenst@chromium.org, ck.hu@mediatek.com, liangxu.xu@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
- <20220701062808.18596-7-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220701062808.18596-7-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_011409_835726_8C915B81 
-X-CRM114-Status: GOOD (  20.21  )
+X-CRM114-CacheID: sfid-20220701_011753_214159_5CC4ACF4 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,85 +79,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/07/22 08:28, Bo-Chen Chen ha scritto:
-> From: Guillaume Ranquet <granquet@baylibre.com>
-> 
-> This patch adds External DisplayPort support to the mt8195 eDP driver.
-> 
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
->   drivers/gpu/drm/mediatek/mtk_dp.c     | 197 +++++++++++++++++++++-----
->   drivers/gpu/drm/mediatek/mtk_dp_reg.h |   1 +
->   2 files changed, 161 insertions(+), 37 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-> index b672d5a6f5bd..c3be97dd055c 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> @@ -105,6 +105,7 @@ struct mtk_dp {
->   	struct regmap *regs;
->   
->   	bool enabled;
-> +	bool has_fec;
 
-You're introducing this has_fec variable here....
+I am sorry, there are some mistakes in CC list.
 
->   
->   	struct drm_connector *conn;
->   };
+Regards,
+Allen
 
+-----Original Message-----
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com> 
+Sent: Friday, July 1, 2022 2:32 PM
+To: linux-firmware@kernel.org
+Cc: Yunfei Dong (董云飞) <Yunfei.Dong@mediatek.com>; ";
+shawnku"@google.com
+Subject: pull request: linux-firmware: Create Mediatek MT8186 SCP
+firmware
 
-> @@ -1018,6 +1074,8 @@ static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
->   	mtk_dp->info.depth = DP_MSA_MISC_8_BPC;
->   	memset(&mtk_dp->info.timings, 0, sizeof(struct mtk_dp_timings));
->   	mtk_dp->info.timings.frame_rate = 60;
-> +
-> +	mtk_dp->has_fec = false;
+Hi maintianers,
 
-.... setting it as false here ....
+Add a new SCP firmware for MediaTek MT8186.
+Thank you!
 
->   }
->   
->   static void mtk_dp_setup_tu(struct mtk_dp *mtk_dp)
+Regards,
+Allen
 
-> @@ -1498,15 +1562,38 @@ static int mtk_dp_init_port(struct mtk_dp *mtk_dp)
->   static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
->   {
->   	struct mtk_dp *mtk_dp = dev;
-> +	int event;
->   	u8 buf[DP_RECEIVER_CAP_SIZE] = {};
->   
-> +	event = mtk_dp_plug_state(mtk_dp) ?
-> +		connector_status_connected : connector_status_disconnected;
-> +
-> +	if (event < 0)
-> +		return IRQ_HANDLED;
-> +
-> +	dev_info(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
+---
 
-P.S.: This should be a dev_dbg().
+The following changes since commit
+9ed4d42c51aca99d70adc6738d7ea55c5e897835:
 
-> +	drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
-> +
->   	if (mtk_dp->train_info.cable_state_change) {
->   		mtk_dp->train_info.cable_state_change = false;
->   
-> -		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-> -				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
-> -				   DP_PWR_STATE_MASK);
-> -		drm_dp_read_dpcd_caps(&mtk_dp->aux, buf);
-> +		if (!mtk_dp->train_info.cable_plugged_in) {
-> +			mtk_dp_video_mute(mtk_dp, true);
-> +
-> +			mtk_dp_initialize_priv_data(mtk_dp);
-> +			mtk_dp_set_idle_pattern(mtk_dp, true);
-> +			if (mtk_dp->has_fec)
+  amdgpu: update Yellow Carp VCN firmware (2022-06-22 06:28:03 -0400)
 
-...and you're checking it here, but there's nothing ever setting that as true!
+are available in the Git repository at:
 
-Is there anything you forgot? :-)
+  https://github.com/kuanhsuncheng/linux-firmware-scp v0.0.6
 
-Cheers,
-Angelo
+for you to fetch changes up to
+1c8b6c3dddf751f5f786bdd3440aa3ce238ab808:
+
+  mediatek: Add SCP firmware for MT8186 (2022-07-01 14:20:06 +0800)
+
+----------------------------------------------------------------
+Allen-kh Cheng (1):
+      mediatek: Add SCP firmware for MT8186
+
+ WHENCE                  |   2 ++
+ mediatek/mt8186/scp.img | Bin 0 -> 416960 bytes
+ 2 files changed, 2 insertions(+)
+ create mode 100644 mediatek/mt8186/scp.img
+
 
