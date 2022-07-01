@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31DA8C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 04:19:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C1EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 04:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zIUWHnxZ5xWzo+T4GygWZWcdkUTuQeXtXLo8U5wkiF8=; b=JacNlKPXNGeQljJZUOM1f9hbJM
-	GtuSovyeYWRnyf+PE5cHCsuII6G7b6RTXLX1zCsisnx2mBrDZz2CvjJdkLlIc8OIcoWNzkbdC9Pq5
-	GH6x6Y4X2O2ZKPqfj/VtZ3eU756AEMtabisE6y4F1GsOO753lpL7iGtvmY5BTJ4sU9bQ8p4YcmPQ8
-	fRUR4HhyjvCwFfCwRlscmyqH9Z+4A2zuoYJnx1G9K9FaCdaCE1hEyf93Wusr05ItnfKvyIwqWniEe
-	5G7QQ8gU3yjVBqNvDTGeqKZhrcLkOCpUUrm4GTT8tjn7Y+BSVjBfJYg9GXC/LlEdCkjnr0I2/0Drz
-	8+qYAU+w==;
+	bh=whs/7CXc7T0w/c4OMTjlbpiigqah0CXloJvsqwLLtQE=; b=KBTLjXmvJTIKHZImK1nPtsvY2Q
+	sKc5aI9fACrXqa50w/VhlD+E/9+qxO7vDHqK01bsfGpOAnAZrUCvZ2LXgK1ChNNOfW1xFowC9MUS8
+	7pF159xowAKINA1NMLJlHPeM5kJoOVwSa6m70hxEdWo9Rmnk31dRtAcaDmXiszlUWB392odRJBKcx
+	aICbIVcbxoRaJmoUF6BHv3dA39+p40raydGTg/FeUrypp4xbViN2zLYorQKJjdpdiZBqP8YkYxei5
+	d7oXFI32kLBB8Tc2PzBs3geXsRmDMT+3otya3fbimA+/OzSHX80hlNBuH59amne9o6PLSSqVpxfnb
+	l4kBs8Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7886-002oiC-7y; Fri, 01 Jul 2022 04:19:42 +0000
+	id 1o7891-002or8-P9; Fri, 01 Jul 2022 04:20:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o787v-002ogl-9J; Fri, 01 Jul 2022 04:19:32 +0000
-X-UUID: 6dde1136bbf84675821eb25a5760e6fa-20220630
+	id 1o788q-002op0-U8; Fri, 01 Jul 2022 04:20:30 +0000
+X-UUID: df74d81231dd448685d6e0e3fcbb1914-20220630
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:7bafbf44-e4f2-4dae-98e6-356cacf43681,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:20
-X-CID-META: VersionHash:87442a2,CLOUDID:15194286-57f0-47ca-ba27-fe8c57fbf305,C
+X-CID-O-INFO: VERSION:1.1.7,REQID:6b7f76eb-db65-4b54-8ed9-b680d50cb31a,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:87442a2,CLOUDID:1bb951d6-5d6d-4eaf-a635-828a3ee48b7c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 6dde1136bbf84675821eb25a5760e6fa-20220630
+X-UUID: df74d81231dd448685d6e0e3fcbb1914-20220630
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1116114689; Thu, 30 Jun 2022 21:19:25 -0700
+	with ESMTP id 162214112; Thu, 30 Jun 2022 21:20:25 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -56,9 +56,9 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v15 01/16] dt-bindings: mediatek,dpi: Add DP_INTF compatible
-Date: Fri, 1 Jul 2022 11:58:30 +0800
-Message-ID: <20220701035845.16458-2-rex-bc.chen@mediatek.com>
+Subject: [PATCH v15 03/16] drm/mediatek: dpi: Add kernel document for struct mtk_dpi_conf
+Date: Fri, 1 Jul 2022 11:58:32 +0800
+Message-ID: <20220701035845.16458-4-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220701035845.16458-1-rex-bc.chen@mediatek.com>
 References: <20220701035845.16458-1-rex-bc.chen@mediatek.com>
@@ -66,8 +66,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_211931_358342_E434C132 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20220630_212029_022659_58BCE74C 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,67 +83,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Markus Schneider-Pargmann <msp@baylibre.com>
+This driver will support dp_intf and there are many configs between dpi
+and dp_intf. Therefore, we will add many configs in "struct mtk_dpi_conf".
+To let this structure more readable, we add this kernel doc.
 
-DP_INTF is similar to DPI but does not have the exact same feature set
-or register layouts.
-
-DP_INTF is the sink of the display pipeline that is connected to the
-DisplayPort controller and encoder unit. It takes the same clocks as
-DPI.
-
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 77ee1b923991..8e526a4b134e 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -4,16 +4,16 @@
- $id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index e61cd67b978f..f66a121ba0c9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -118,6 +118,15 @@ struct mtk_dpi_yc_limit {
+ 	u16 c_bottom;
+ };
  
--title: mediatek DPI Controller Device Tree Bindings
-+title: mediatek DPI and DP_INTF Controller
- 
- maintainers:
-   - CK Hu <ck.hu@mediatek.com>
-   - Jitao shi <jitao.shi@mediatek.com>
- 
- description: |
--  The Mediatek DPI function block is a sink of the display subsystem and
--  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
--  output bus.
-+  The Mediatek DPI and DP_INTF function blocks are a sink of the display
-+  subsystem and provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a
-+  parallel output bus.
- 
- properties:
-   compatible:
-@@ -24,6 +24,7 @@ properties:
-       - mediatek,mt8183-dpi
-       - mediatek,mt8186-dpi
-       - mediatek,mt8192-dpi
-+      - mediatek,mt8195-dp-intf
- 
-   reg:
-     maxItems: 1
-@@ -55,7 +56,7 @@ properties:
-     $ref: /schemas/graph.yaml#/properties/port
-     description:
-       Output port node. This port should be connected to the input port of an
--      attached HDMI or LVDS encoder chip.
-+      attached HDMI, LVDS or DisplayPort encoder chip.
- 
- required:
-   - compatible
++/**
++ * struct mtk_dpi_conf - Configuration of mediatek dpi.
++ * @cal_factor: Callback function to calculate factor value.
++ * @reg_h_fre_con: Register address of frequency control.
++ * @max_clock_khz: Max clock frequency supported for this SoCs in khz units.
++ * @edge_sel_en: Enable of edge selection.
++ * @output_fmts: Array of supported output formats.
++ * @num_output_fmts: Quantity of supported output formats.
++ */
+ struct mtk_dpi_conf {
+ 	unsigned int (*cal_factor)(int clock);
+ 	u32 reg_h_fre_con;
 -- 
 2.18.0
 
