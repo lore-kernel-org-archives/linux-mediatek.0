@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5464C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 22:39:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2CAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 22:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SwgObUShWntWLsEK6RHKh/FUsOspoTQW1NB9vXgYLao=; b=zRGItd3iN33727JM1QFV1e3jh/
-	LWJ6SeHv8R1mlWX8VYrQemR7qDAdpVAg2pUzUieMngzTMhfqnRd8TTg6JmHR1U/o9Wv0ducWtp0oM
-	WuMCpF7E/XGpQEtDrjaZqTV+Q2/BB4CrWcq4XTZtZTs7sCZEUNNtVKbbFK95iju01FEvwfet0o9WO
-	NUn5hWUFpMBvhP3ZYIQhn4mZ6dLzdKvm2PcllPQpVYygrL78UdbTrmfxvOCeRBleNKMWsLuYog1Ni
-	YDN/9lzOEeAyamrKXGZYX0OYqz/zbCQH+gEMhnteOeQ04PwSfZGiDfI+oW5g8CfxVDPR49QWT64y9
-	DY9d6few==;
+	bh=qFjRzJfmZP+57GP3KeKxWOB59/a+DPQ/7bBKGHjOQa8=; b=3cy0XgzNBQV9GKfjnvVFlmfTSy
+	Abq1QZBbCibVguEyDpy27d2qfGnvyjZXVG2Q1ql1z7d6LTvCdLGRRBeFGFyBAl3KrUG87jgHdQtnE
+	h8ot1LATqwLeFpQTB5o7k/n6nRD3NOvUNClTyhBm9dWW12pmPFxg0tDYO6xrE8om9pf4jDq2Caw/r
+	WBkn1tG89onB7qS3xpepW8Seu2fRBOA5yDjBDAifJWK93tF1+Tf0PvH+3ezfwrkqcHgIRIFoFWXSi
+	8eLiikS5dkLnDQ/ieYQ0D2+LT+2MSbB3cyFJdHVKG5nkVqd5bNBTn6uJ78zKiP9JtY9SWv3pf8I4E
+	3PKUo2ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7PIL-007FuI-F2; Fri, 01 Jul 2022 22:39:25 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o7PLq-007Gjn-Em; Fri, 01 Jul 2022 22:43:02 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7PIB-007FrD-8T; Fri, 01 Jul 2022 22:39:16 +0000
+	id 1o7PLf-007GfM-6B; Fri, 01 Jul 2022 22:42:52 +0000
 Received: from notapiano (unknown [194.36.25.35])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4CEE266017F5;
-	Fri,  1 Jul 2022 23:39:10 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 82EE666017F5;
+	Fri,  1 Jul 2022 23:42:44 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656715153;
-	bh=l512ovihoT16rawAQAC0JAfcxBrLxSDWijkeeT4dNP8=;
+	s=mail; t=1656715369;
+	bh=4vl93FTFjxxc3xIXFjEIYVlIvv8NLDkDY4yTRtBdznM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=orSkZEHceprJBLM8QC9GFMaI6o65leRGBI3I0DlfpaZdPd74/Y29wAP0vjRe5An+q
-	 sjkKMEQ/t15snsouIGUwOeDpgKqfOIr9ROYN5uY6Q3rsj/mA7x6V9N1NJD6Nyxe0/C
-	 UVLzaqz8MFKFC5/gHsK1GpF64ekU8W9sLQE9sl2KilRZUlN5Wqf3hnD/r/Z1rDTYEE
-	 b5kncVGvRU/isu2jBWGA5l807MbsT2s+J9jSVN+wcjhbIZWVERCCAFcOWgZZtNDB3d
-	 uHPquQUF5ejPQOJHsiOqZS1tQmYUCJp9jG8nDWEwy5RzU8VLEMXgCp1pz3At8fab1L
-	 Z3QAVKxFcHRlQ==
-Date: Fri, 1 Jul 2022 18:39:06 -0400
+	b=CAtv26Rs0ziY74EhKPnnIdlH1f0MYN7fSA5TB5hms81a1JjkAIyTQaPs44n9t4GMX
+	 U62FjY/6hEvISXnyYC8Y0QaxCaHkJt2kcp2QnwqRX0VfxyUa3gG5klo68Pr9GUi41b
+	 Qw4AMtWKmOljBrZE7T4/WG5MFGZcTjX7Xi0gxZB2jqOAv8NSoTcaVVB4msWzrRuAwW
+	 +v9y9zPAMorexekg5Id3SVJ1cezUN49M1o4HzPDVxg7EvivaJp3aHnGpe9w5eCv5V7
+	 bKPIcLLm+wFUqnk+ObYcCuKm0fk3yJs825G757bEjGNBUuN6d16QbiY9E1cuuLWTxs
+	 PfuOu+J8eCySQ==
+Date: Fri, 1 Jul 2022 18:42:39 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
@@ -51,20 +51,19 @@ Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, wenst@chromium.org
-Subject: Re: [PATCH 06/11] arm64: dts: mediatek: cherry: Document gpios and
- add default pin config
-Message-ID: <20220701223906.ceyc2x4p2qyxfi4d@notapiano>
+Subject: Re: [PATCH 07/11] arm64: dts: mediatek: cherry: Enable I2C and SPI
+ controllers
+Message-ID: <20220701224239.n3o4ofzsnvpbdytg@notapiano>
 References: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
- <20220630153316.308767-7-angelogioacchino.delregno@collabora.com>
+ <20220630153316.308767-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220630153316.308767-7-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220630153316.308767-8-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_153915_470127_3CEF11E1 
-X-CRM114-Status: UNSURE (   6.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220701_154251_401601_C5BD7C76 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,12 +78,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 30, 2022 at 05:33:11PM +0200, AngeloGioacchino Del Regno wrote:
-> Add gpio-line-names to document GPIO names and add the default basic
-> pin configuration to allow lower power operation by setting appropriate
-> state on the unused pins.
+On Thu, Jun 30, 2022 at 05:33:12PM +0200, AngeloGioacchino Del Regno wrote:
+> This platform uses eight I2C controllers and one SPI controller:
+> in preparation for enabling devices attached to these controllers,
+> add basic configuration to enable the busses.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 150 ++++++++++++++++++
+>  1 file changed, 150 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> index 2f70341bba91..23a86d07274c 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> @@ -9,6 +9,13 @@
+>  
+>  / {
+>  	aliases {
+> +		i2c0 = &i2c0;
+> +		i2c1 = &i2c1;
+> +		i2c2 = &i2c2;
+> +		i2c3 = &i2c3;
+> +		i2c4 = &i2c4;
+> +		i2c5 = &i2c5;
+> +		i2c7 = &i2c7;
+>  		mmc0 = &mmc0;
+>  		serial0 = &uart0;
+>  	};
+> @@ -88,6 +95,65 @@ ppvar_sys: regulator-ppvar-sys {
+>  	};
+>  };
+>  
+> +&i2c0 {
+> +	status = "okay";
+> +
+> +	clock-frequency = <400000>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c0_pin>;
+
+Very nitpicky: you could name it "i2c0_pins" to be consistent with the others
+(including SPI on this patch).
+
+> +};
+[..]
+> +&i2c7 {
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+
+These *-cells are already defined in the parent dtsi, so drop.
 
 Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
