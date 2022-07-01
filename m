@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40D9DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 07:24:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B05DC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 07:25:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HRTKhZUYia/PbMPnB6U4LAsaWxv9xx2TUpRikiye010=; b=lB98CF3fd6Sw+6KVozeSjxnzrf
-	QxWVZsKmrA22e/UpvbWRF7WvJkbUk+uYUd2Isl8yU8diSyVCz6mqYnNTLAgRAmwkJWqTw6CNE9YQL
-	BAHCPU+dtl77lyBYP1z3kovGs+mQOA3VDA1YU9nwUHREaEqhCsxUuVvC10ASZNR61WEmULWFcD7M/
-	UPKTDJu/+KHOEHlbg9Im2+2Kw/XCaBR8qisWX3e0xhNu+P7s3barlFT3scD1LUJ+BXpab6UHVqip1
-	di898lkbH+X0daYL7mDWEhvqAbs4zq6vfW6NNZOQsDzq5fBdsiodt2M3OBpXoRFpt9j2CGlnqUbGY
-	m6HCqO8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y9IWiYKgNZR/aQl9O1DLXAZQre3/tpLkUqFnPmg1KyA=; b=1XiaOpaRldCQ3YDVYKEiSVOTGT
+	Aq2oieFXd1q0sxZQwWAAr9Q3JWKJwHOYs2fT4x4E/pgsF6QyieXIUfdQT7Ib8s6ntsMBatCD1JyED
+	RiAGSZAvhcPKqVWFKeUjbERJ7h+aEGV5Pw/nr6aTEdqig3/6pElFCXzIp+uwU3VuNy/jriGdp9sVN
+	m3sQeyYi7vmLTbquBCBAH+6o+SzzOIZVQBpbHVISUwD0R9mdwGvVSRq/9dU5TLNmNmiTN6iKmjbtS
+	WOeUAFsbnK3f8V2Mlv6ORbz6kTgolhWauAuvIRW0yEN0UEpuVQmgVwkTVwHGrL5NyvNxWDVTd36DV
+	Sfx1109A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7B14-003OEh-1C; Fri, 01 Jul 2022 07:24:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o7B1h-003OPY-LC; Fri, 01 Jul 2022 07:25:17 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7B0t-003OD6-DA; Fri, 01 Jul 2022 07:24:28 +0000
-X-UUID: 9eec18ed68ea4a3ea3f780a68070512e-20220701
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:a8287297-34d8-4323-86c8-f1efb91dcdab,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:99324786-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 9eec18ed68ea4a3ea3f780a68070512e-20220701
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 639453664; Fri, 01 Jul 2022 00:24:19 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 1 Jul 2022 14:33:51 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 1 Jul 2022 14:33:51 +0800
-Message-ID: <81dd89d9b77b3a16068493269f400254f94c609f.camel@mediatek.com>
-Subject: Re: [PATCH 2/2] drm: mediatek: Adjust the dpi output format to
- MT8186
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <xinlei.lee@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
-	<matthias.bgg@gmail.com>, <yongqiang.niu@mediatek.com>,
-	<enric.balletbo@collabora.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <jitao.shi@mediatek.com>
-Date: Fri, 1 Jul 2022 14:33:51 +0800
-In-Reply-To: <1656645344-12062-3-git-send-email-xinlei.lee@mediatek.com>
-References: <1656645344-12062-1-git-send-email-xinlei.lee@mediatek.com>
-	 <1656645344-12062-3-git-send-email-xinlei.lee@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o7B1Y-003OMB-2G
+	for linux-mediatek@lists.infradead.org; Fri, 01 Jul 2022 07:25:09 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1o7B1S-0004u3-9I; Fri, 01 Jul 2022 09:25:02 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1o7B1N-003k2e-R9; Fri, 01 Jul 2022 09:25:01 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1o7B1Q-002H6l-Cf; Fri, 01 Jul 2022 09:25:00 +0200
+Date: Fri, 1 Jul 2022 09:25:00 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8195: add pwm node
+Message-ID: <20220701072500.3rgvscnulhjmjhb6@pengutronix.de>
+References: <20220531114544.144785-1-fparent@baylibre.com>
+ <20220531114544.144785-2-fparent@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7jpbomglvpzfusz7"
+Content-Disposition: inline
+In-Reply-To: <20220531114544.144785-2-fparent@baylibre.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_002427_477079_38B1A1EB 
-X-CRM114-Status: GOOD (  21.07  )
+X-CRM114-CacheID: sfid-20220701_002508_174747_A464C518 
+X-CRM114-Status: GOOD (  17.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,132 +76,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-07-01 at 11:15 +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> Dpi output needs to adjust the output format to dual edge for MT8186.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+
+--7jpbomglvpzfusz7
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+On Tue, May 31, 2022 at 01:45:44PM +0200, Fabien Parent wrote:
+> MT8195's PWM IP has 4 PWM blocks.
+>=20
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c      | 21 +++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_dpi_regs.h |  5 +++++
->  2 files changed, 26 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index e61cd67b978f..82a5209a1dd8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -15,6 +15,7 @@
->  #include <linux/pinctrl/consumer.h>
->  #include <linux/platform_device.h>
->  #include <linux/types.h>
-> +#include <linux/soc/mediatek/mtk-mmsys.h>
->  
-
-Please reorder this.
-
->  #include <video/videomode.h>
->  
-> @@ -28,6 +29,7 @@
->  #include "mtk_disp_drv.h"
->  #include "mtk_dpi_regs.h"
->  #include "mtk_drm_ddp_comp.h"
-> +#include "mtk_drm_drv.h"
->  
->  enum mtk_dpi_out_bit_num {
->  	MTK_DPI_OUT_BIT_NUM_8BITS,
-> @@ -85,6 +87,7 @@ struct mtk_dpi {
->  	struct pinctrl_state *pins_dpi;
->  	u32 output_fmt;
->  	int refcount;
-> +	struct device *mmsys_dev;
->  };
->  
->  static inline struct mtk_dpi *bridge_to_dpi(struct drm_bridge *b)
-> @@ -125,6 +128,7 @@ struct mtk_dpi_conf {
->  	bool edge_sel_en;
->  	const u32 *output_fmts;
->  	u32 num_output_fmts;
-> +	bool rgb888_dual_enable;
->  };
->  
->  static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val,
-> u32 mask)
-> @@ -393,6 +397,9 @@ static void mtk_dpi_dual_edge(struct mtk_dpi
-> *dpi)
->  		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
->  			     dpi->output_fmt ==
-> MEDIA_BUS_FMT_RGB888_2X12_LE ?
->  			     EDGE_SEL : 0, EDGE_SEL);
-> +	if (dpi->conf->rgb888_dual_enable)
-> +		mtk_mmsys_ddp_dpi_confing(dpi->mmsys_dev,
-> DPI_RGB888_DDR_CON,
-> +					  DPI_FORMAT_MASK, NULL);
->  	} else {
->  		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
-> 0);
->  	}
-> @@ -705,8 +712,10 @@ static int mtk_dpi_bind(struct device *dev,
-> struct device *master, void *data)
->  {
->  	struct mtk_dpi *dpi = dev_get_drvdata(dev);
->  	struct drm_device *drm_dev = data;
-> +	struct mtk_drm_private *priv = drm_dev->dev_private;
->  	int ret;
->  
-> +	dpi->mmsys_dev = priv->mmsys_dev;
->  	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
->  				      DRM_MODE_ENCODER_TMDS);
->  	if (ret) {
-> @@ -823,6 +832,15 @@ static const struct mtk_dpi_conf mt8192_conf = {
->  	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
->  };
->  
-> +static const struct mtk_dpi_conf mt8186_conf = {
-> +		.cal_factor = mt8183_calculate_factor,
-> +		.reg_h_fre_con = 0xe0,
-> +		.max_clock_khz = 150000,
-> +		.output_fmts = mt8183_output_fmts,
-> +		.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
-> +		.rgb888_dual_enable = true,
-> +};
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8195.dtsi
+> index d076a376bdcc..366543f27a99 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -367,6 +367,21 @@ pwrap: pwrap@10024000 {
+>  			assigned-clock-parents =3D <&topckgen CLK_TOP_ULPOSC1_D10>;
+>  		};
+> =20
+> +		pwm0: pwm@10048000 {
+> +			compatible =3D "mediatek,mt8195-pwm",
+> +				     "mediatek,mt8183-pwm";
+> +			reg =3D <0 0x10048000 0 0x1000>;
+> +			#pwm-cells =3D <2>;
+> +			clocks =3D <&infracfg_ao CLK_INFRA_AO_PWM_H>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PWM>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PWM1>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PWM2>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PWM3>,
+> +				 <&infracfg_ao CLK_INFRA_AO_PWM4>;
+> +			clock-names =3D "top", "main", "pwm1", "pwm2", "pwm3",
+> +				      "pwm4";
+> +		};
 > +
 
-please put this between 8183 and 8192.
+I wonder why will pick up this patch? Will patch 1 then go the same
+path, or is that one supposed to go via the pwm tree?
 
->  static int mtk_dpi_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> @@ -945,6 +963,9 @@ static const struct of_device_id mtk_dpi_of_ids[]
-> = {
->  	{ .compatible = "mediatek,mt8192-dpi",
->  	  .data = &mt8192_conf,
->  	},
-> +	{ .compatible = "mediatek,mt8186-dpi",
-> +	  .data = &mt8186_conf,
-> +	},
+Best regards
+Uwe
 
-ditto
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
->  	{ },
->  };
->  MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> index 3a02fabe1662..24d4cdf3696b 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> @@ -217,4 +217,9 @@
->  
->  #define EDGE_SEL_EN			BIT(5)
->  #define H_FRE_2N			BIT(25)
-> +
-> +#define DPI_FORMAT_MASK			0x1
-> +#define DPI_RGB888_DDR_CON		BIT(0)
-> +#define DPI_RGB565_SDR_CON		BIT(1)
-> +
->  #endif /* __MTK_DPI_REGS_H */
+--7jpbomglvpzfusz7
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmK+oUkACgkQwfwUeK3K
+7Ang2gf+Kl9JecJpvkoirnmDAmLOLjFtUVPIXpmZTrlJ1C07oaQ3+h6VzBQ84sJT
+BbROJc039OnAHAKkscpVcssNm2nFpm+t05wBMuDO4wipvehakAzbHL4m4o4xEOTT
+wkRjbHcNEmPLB/yhJBx9U32vPNctKWygGYEG+eIYc2rNnaseHdlK73k2Ks9VH1Vg
+0gt7tSg6IA6um6QTDMwB7anVI0wWX3S6kk5Shozd65S/egyIsDFZsKwoTzgPX+qa
+W6gEhUfx9NkbHxBH3nN3rBN1TPLHNHB5QYLEm9jHWmeaupZtl2Gf14AQET+haWjT
+4YX6PFmjZMynfmh/2KKAQv1N+EhLJg==
+=hTm4
+-----END PGP SIGNATURE-----
+
+--7jpbomglvpzfusz7--
 
