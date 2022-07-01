@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E836C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 16:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA140C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 19:20:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5fuXvCyvmG/LrNBqyqJH/sdkmUfmLbIvfk+R0vcY2gI=; b=lL0sdnwz4NKfhOGlZqLMWbhCbv
-	OcrRZLsR6yeaSLMJMDJhZ7xRw3Bz5v0RIj+Vo65USffd6YRfT05nVEhfcFA1xWG5WhykY3vbumZOe
-	+TQcWX/9RHfuFVPq5sDV+rwl5AwOhxLWZtWW4i1bhQZq6we/ypFgo/57nWqSLadFqJwWvSpWkzIK9
-	TVPvi3of1AJx6QKHgPJ0RSefdpfCb0ZLRXp94zKkChir7Jj3wRzJY81og0OyLTIt+fef+88a4N6/b
-	QsuyoBF94RO3NUpkDNgIx0vgiyoSK3ed7iGOWh1+/R2nGrPatPUOK0WS4y220s8aWCLRMnBg9rkBw
-	xS4ySvUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zY2qYSxISx4hCMQU0t0luuI8qiBU93KBahj0z1z59vM=; b=xS2qXPg8cZkPc0tS04Zxmn3YNy
+	r0lk4BFc2xYPLUKNwh25quQ+pVmMdBn/3dmOwkEkWdPFNtF7eHO4ZjnENx7uxPumhG+fo2/7+8CEe
+	Xx97gySpvS52M9i/D22uuQBmG2NjR+mNApVzcodNI1Jcrmmii2hhcQ/K5ZpMAfiv6jCT7RzWztNrL
+	B9gl7BhJhgHB8Crpm1fLW6Qoc+hRfzh7KZJ1dhFBrDU96j+fjeTIZ/I/IB2S4F8p2emqYFbf3ZYai
+	z1ziWFX45uI22PuYpR8rnkICMO+1OjPx+EY/PZuhlxNo98uQsHhCNZaDwOdOsOkEchZFJFJj6kI9o
+	lyV3+3WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7JhV-00634R-Ut; Fri, 01 Jul 2022 16:41:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o7MBz-006WcR-DZ; Fri, 01 Jul 2022 19:20:39 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7JhJ-0062zl-W7; Fri, 01 Jul 2022 16:40:51 +0000
-Received: from notapiano (unknown [193.27.14.116])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1o7MBo-006WZh-2G; Fri, 01 Jul 2022 19:20:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3A2C666015DA;
-	Fri,  1 Jul 2022 17:40:45 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656693647;
-	bh=0LN1nCFHY1IULTVl6FBa/H7bg/S9tIWVbV69kp8VbnA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BAA9Si32fplazkxh8kicyhndXMgFsW4Iwzx/0yfMwj67OTUL7wGYE4ZQyAZnKtqEO
-	 iT6m6YdR/rwyrKrIVNJcb57lJfZpOyjXfncsoT+IT9UxEBvedDLpkq9nwO5uAgNMei
-	 frFMUE0Bv7Re8x2+qC0kdXny9jG3ke/Az7B41EdbKURPBmFxbOGUxYFJeVOB0UJitA
-	 9iHPk+xxmpLp1txmzqZnuny6BoeNZZZP/hkMeo8lcfWvugQrYTeDsBht/2Dg1yPSCv
-	 Z9EeIdYXw6QCIoY/+/9UIbFEic6Ii3YwQ8Ddet0J7HWLVzn/pSaglY9OEyFrQ4muXF
-	 XEBBetMaCs1Yw==
-Date: Fri, 1 Jul 2022 12:40:41 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2 4/6] arm64: dts: mt8192: Add display nodes
-Message-ID: <20220701164041.rbt3idraawafubcf@notapiano>
-References: <20220701090547.21429-1-allen-kh.cheng@mediatek.com>
- <20220701090547.21429-5-allen-kh.cheng@mediatek.com>
+	by ams.source.kernel.org (Postfix) with ESMTPS id 91B3CB831A4;
+	Fri,  1 Jul 2022 19:20:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18D10C3411E;
+	Fri,  1 Jul 2022 19:20:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1656703224;
+	bh=zY2qYSxISx4hCMQU0t0luuI8qiBU93KBahj0z1z59vM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=lNiv0701zDuP4hNtkFPn0GmsHGXoppx+x1YbNyw1DIfzUQDFVYwPT8uA/cscBrllB
+	 fja9TFWuvFPrWhnkn6z2kKV9oY2+fSZ04lcDD1EJyn9QbfKa3Bn87B/zgISLsQod5u
+	 4suqjA2GDyaVhUrHZvbxHCvnfkvO52uVDTvmHQOobzRfsgB9JR2EBohJtTABUP26ux
+	 2ghokLvkpbDz0W/bA03ZKXGBDzwew0SOryECDUJrc7da56ni+qx7Gsp+/Ccqa0J3y/
+	 ef/wwWtyq3k2+8wtzP37QrOmdVGZ4j3eoaM18mb6EcqxV6geviPY8BRIKhJpL0MyeJ
+	 eMFDPjYWjNkVg==
+Date: Fri, 1 Jul 2022 21:20:15 +0200
+From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, "Alvin __ipraga"
+ <alsi@bang-olufsen.dk>, Claudiu Manoil <claudiu.manoil@nxp.com>, "David S.
+ Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Eric
+ Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ George McCollister <george.mccollister@gmail.com>, Hauke Mehrtens
+ <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>, Kurt Kanzenbach
+ <kurt@linutronix.de>, Landen Chao <Landen.Chao@mediatek.com>, Linus Walleij
+ <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo Abeni
+ <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+ UNGLinuxDriver@microchip.com, Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Woojung Huh
+ <woojung.huh@microchip.com>
+Subject: Re: [PATCH RFC net-next 1/6] net: dsa: add support for retrieving
+ the interface mode
+Message-ID: <20220701212015.638e163c@thinkpad>
+In-Reply-To: <E1o6XAA-004pVc-Pd@rmk-PC.armlinux.org.uk>
+References: <YrxKdVmBzeMsVjsH@shell.armlinux.org.uk>
+	<E1o6XAA-004pVc-Pd@rmk-PC.armlinux.org.uk>
+X-Mailer: Claws Mail 3.19.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220701090547.21429-5-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_094050_285604_65B0C6DA 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20220701_122028_296188_38E96968 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,47 +86,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 01, 2022 at 05:05:45PM +0800, Allen-KH Cheng wrote:
-> Add display nodes and gce info for mt8192 SoC.
-> 
-> GCE (Global Command Engine) properties to the display nodes in order to
-> enable the usage of the CMDQ (Command Queue), which is required for
-> operating the display.
-> 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 137 +++++++++++++++++++++++
->  1 file changed, 137 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index a789b7c9b2af..c4dc8777f26c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-[..]
-> +		rdma4: rdma@14015000 {
-> +			compatible = "mediatek,mt8192-disp-rdma";
+On Wed, 29 Jun 2022 13:51:22 +0100
+"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk> wrote:
 
-You added the fallback compatible on rdma0 but missing it on this node.
+> DSA port bindings allow for an optional phy interface mode. When an
+> interface mode is not specified, DSA uses the NA interface mode type.
+>=20
+> However, phylink needs to know the parameters of the link, and this
+> will become especially important when using phylink for ports that
+> are devoid of all properties except the required "reg" property, so
+> that phylink can select the maximum supported link settings. Without
+> knowing the interface mode, phylink can't truely know the maximum
+> link speed.
+>=20
+> Update the prototype for the phylink_get_caps method to allow drivers
+> to report this information back to DSA, and update all DSA
+> implementations function declarations to cater for this change. No
+> code is added to the implementations.
+>=20
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
-Thanks,
-Nícolas
-
-> +			reg = <0 0x14015000 0 0x1000>;
-> +			interrupts = <GIC_SPI 269 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			power-domains = <&spm MT8192_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_DISP_RDMA4>;
-> +			iommus = <&iommu0 M4U_PORT_L1_DISP_RDMA4>;
-> +			mediatek,rdma-fifo-size = <2048>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
-> +		};
-> +
->  		dpi0: dpi@14016000 {
->  			compatible = "mediatek,mt8192-dpi";
->  			reg = <0 0x14016000 0 0x1000>;
-> -- 
-> 2.18.0
-> 
-> 
+Reviewed-by: Marek Beh=C3=BAn <kabel@kernel.org>
 
