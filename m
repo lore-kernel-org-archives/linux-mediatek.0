@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04F90C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 22:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8AD0C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Jul 2022 22:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c/RzvlBSG92tb+CS92JfmdTh03JFHrwoQW/kj8CVPH0=; b=mXJfr/U6KCJ4J5xsSAKoJV6Vs7
-	2xLyasBkDjvaAQlQiNG6E12eEK/7AvWfLjNDhYDSqFtca7cEakF7UbFnDdpphEOItrajVSJmY8HxR
-	8s5qQBRzykzedWVMLwBuMcYI7kaIurnubSjLJ5BPAt45ZnfUXP8LRr9jf2nzHWbzJsRld7anQfBwy
-	6fRdTneik7x+5+djdOPrpaGRzjjZ8Oxhu5G7Afz2Q2skDiBM9V0MSGyj9y9lyKGg0mI9+abeEieI5
-	95Bq//USD+4t7hcIISAgvLij8373aaEI35PNGH9ldusv6oSWgN5cEotUxroTebhjfTreONa8D/ya0
-	cHZYygWA==;
+	bh=nfHRon5vujv1QIDUOawdfFtXvo9UuigKDF/Tc9hvabY=; b=fCLbzooNNrC21qFflo3OJSDg3X
+	2S2pk1kZyHciaZ8PTEv9VGcv8+02ad70r3EVcaPZtEPItdSuKDZ1iQx5um9ZwIvHhi419NCKrs0w9
+	18t3ZKH5Nf9dDo7b0dIp4VQG04Sv+l5Gce0h3ROIp119oY5rVVJ6S349N7cq990l7hsswysn8V8qE
+	wrdrOXrZIiMXewGpeSYCds4IFQkZ98tfQAgmvRl/hklIqUYRgf5LCRO5+MGKH//cIyHFnGc8Y81ax
+	yvP86k8DhD8WVTkzdrHczfdbG8ZI7cUwTwv72lVTPiRPiTWkFkztdZWCouS+13B/uwAunTsuSG/4I
+	64s77miw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Os7-007A4h-Rq; Fri, 01 Jul 2022 22:12:19 +0000
+	id 1o7P0d-007C4k-Ig; Fri, 01 Jul 2022 22:21:07 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Orw-007A0P-7F; Fri, 01 Jul 2022 22:12:09 +0000
+	id 1o7P0S-007C1n-B5; Fri, 01 Jul 2022 22:20:57 +0000
 Received: from notapiano (unknown [194.36.25.35])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 644AE660177B;
-	Fri,  1 Jul 2022 23:12:03 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9463A660177B;
+	Fri,  1 Jul 2022 23:20:49 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656713526;
-	bh=vO57gVtWH9VVPfhwKrj1w3mSb/OAbqwWY5Fzq8waJtc=;
+	s=mail; t=1656714054;
+	bh=eo++abJtFM2trhQuGPaqjcct3hjPGbB9ZTDmZoj0k1I=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GAm9TKTeIYFZ/1jL+pZskQdvoZt5+1rr5343uvEnaRAtQV+EL1LFP6YYQcfzrWG9d
-	 VRY022M79HIK2A0ZUANLfskx0Ncqojd+6Adb+QtNfIf8tMNH1AemTQoZFZqBUk+RLJ
-	 OH+M/knafQKaYdHgOXC3dftIiL/rqg/cZyAZI3W40RVx6ozGh4L2X1fhd82qPGC50S
-	 RQkWhw/P7QlfXYjVQnCjNUqapiz777M+zWhpUxJD8TS6mONJD9TRkIB340QaXCt9sZ
-	 O+sAE99EM0vQVYo6E8eYK+5Kmvx6VgLgDl7D/ijhbCCr+tP061/iCslhYfE8w7mM7o
-	 XYpSBMJxfKdRQ==
-Date: Fri, 1 Jul 2022 18:11:58 -0400
+	b=EFlFCsXOTGHJosPSSpkqT3w4+Mz+1VCg1h7trqlD/0aVpMrAzX3lJWGlqiLQoaXvq
+	 2LJrJFglhIArxpmvrSWaUxeMqJMwJ6U84I1Ioc77hfqrIWr21/IEcFMOkeEf52ySuT
+	 YTyebCyBFwvQBJH2QvuIAH1G9C6INda6Jq2dxbz4vlorXG8GzV5R+QGaAvn21Hq1sh
+	 A0isuClit5UUMbaUI1u/KewO4A+bo0QRVwz03xVrdr8PPjQ8Fe6UV9A2hnHUbsbU+d
+	 42XiF+tGtOFHI2lxgl/A7CBZu9fhFQJiJ0ryvWgFg8dLqVHNN2nVziuP552LyK0yJs
+	 jswU7v95bYIJg==
+Date: Fri, 1 Jul 2022 18:20:45 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
@@ -51,19 +51,19 @@ Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, wenst@chromium.org
-Subject: Re: [PATCH 02/11] arm64: dts: mediatek: Introduce MT8195 Cherry
- platform's Tomato
-Message-ID: <20220701221158.iuw5fehgkjrqw6zh@notapiano>
+Subject: Re: [PATCH 03/11] arm64: dts: mediatek: cherry: Assign interrupt
+ line to MT6359 PMIC
+Message-ID: <20220701222045.oyzynrjdvo4bfpdc@notapiano>
 References: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
- <20220630153316.308767-3-angelogioacchino.delregno@collabora.com>
+ <20220630153316.308767-4-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220630153316.308767-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220630153316.308767-4-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_151208_436969_BE338920 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20220701_152056_555624_AECA26DC 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +78,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 30, 2022 at 05:33:07PM +0200, AngeloGioacchino Del Regno wrote:
-> Introduce the MT8195 Cherry Chromebook platform, including three
-> revisions of Cherry Tomato boards.
-> 
-> This basic configuration allows to boot Linux on all board revisions
-> and get a serial console from a ramdisk.
+On Thu, Jun 30, 2022 at 05:33:08PM +0200, AngeloGioacchino Del Regno wrote:
+> To allow MT6359 peripherals to trigger interrupts and the driver to
+> safely handle them, assign the right interrupt line for the Cherry
+> platform to the MT6359 PMIC node.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  arch/arm64/boot/dts/mediatek/Makefile         |  3 +++
->  .../dts/mediatek/mt8195-cherry-tomato-r1.dts  | 11 ++++++++
->  .../dts/mediatek/mt8195-cherry-tomato-r2.dts  | 11 ++++++++
->  .../dts/mediatek/mt8195-cherry-tomato-r3.dts  | 12 +++++++++
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 26 +++++++++++++++++++
->  5 files changed, 63 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-[..]
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> new file mode 100644
-> index 000000000000..17e9e4d6f6ab
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-> @@ -0,0 +1,11 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2021 MediaTek Inc.
-> + */
-> +/dts-v1/;
-> +#include "mt8195-cherry.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek Tomato (rev1) board";
+>  arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> index 7406d7bbf725..14f8f30b1eb3 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> @@ -21,6 +21,10 @@ memory@40000000 {
+>  	};
+>  };
+>  
+> +&pmic {
 
-Given that the compatible is "google," I believe we'll want to rename the model
-to "Google Tomato", much like was commented on the Asurada series [1], but
-better to have confirmation from someone from Google. Chen-Yu? :)
-
-Otherwise,
+This label references a node in mt6359.dtsi and you're missing the include here.
+I noticed it does show up in the following patch, so either move this commit
+after the next one or squash them.
 
 Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Thanks,
 Nícolas
 
-[1] https://lore.kernel.org/all/CAGXv+5Gv2pjPXynz6HCdgux+giPDC5qRk+KW1aFduVz82rM=+g@mail.gmail.com/
-
-> +	compatible = "google,tomato-rev1", "google,tomato", "mediatek,mt8195";
+> +	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
 > +};
-[..]
+> +
+>  &uart0 {
+>  	status = "okay";
+>  };
 > -- 
 > 2.35.1
 > 
