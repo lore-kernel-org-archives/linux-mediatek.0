@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F26DAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Jul 2022 23:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49CB3C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 01:41:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4eyxsET1uUtYDmBiIGGjIUzqUUGx8+bu39Q63tWlZoY=; b=EoNiAwPFDK1rOQfR6DLYKpgKWr
-	p9Fx/hyY+pn8UKCnzWdm0ABRBzuEMIQ6o0SdnY/vSmN8Kn3Kqd/Udxaw2g6YxJjB7VrjzAyPwc0C5
-	ZSvTxkOY6FDgEBPHYgQBzHnVt2Kt00EYr1zRfC/Tkq9oJrUvLLakzSbkBKIxFpSZVfMPWXvFMNVE+
-	/TzlVmF9pmjNldXd6VncaObjKXwqbw57YWywdY6y1nlQ62kWPWMvDrr7ad2YPu33o0/HynC2Px1wP
-	u8OfQMNnpQ4CZyiPbd4SQSunxmHPFefMJ0OB6XqUW55CISp+w2FOE9YWKBh7c1Tac8BgB4TkhY3bN
-	5U0X6giw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uD8rOMAs/3M4Oxt72ySbbZE8Pt6ja3hIhLbbcO0+n7M=; b=2RlGrrnhcKakiaDg7QSkIa634U
+	2Zl1QMdxZggh10/aPPtjRYJz8lzlake/CYPiSTcBDpp/jjEU/1VZWoNBpvQmKjvedjErNXza5LhDj
+	DagO3g/iyRnG3P/DrTylKoL9vuiZy77fWIV0WRBdOlSvmKhyscv9X0l5PagbsSzr4oTZ83jhac4cM
+	qzQuXyZBIdh7R6yMfj7U6/GHTzuAfx0v0X337L3zSWqT203rp3tsOwFwtCZhG5dg+6WOAyE3saJk8
+	78iGAYPhRCZ4ZIofcWBNRMuBhftUhyGxLRrmnh5Y7aShf6lDpr8Yk263d2GnAbC0joIWb3JTR9SpD
+	/iUfHElA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o88ow-001V2m-W7; Sun, 03 Jul 2022 23:16:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o8B5q-002yHk-Se; Mon, 04 Jul 2022 01:41:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o88ok-001Uuz-9w; Sun, 03 Jul 2022 23:15:56 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D66A16122A;
-	Sun,  3 Jul 2022 23:15:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8E80C341C6;
-	Sun,  3 Jul 2022 23:15:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
-	s=korg; t=1656890153;
-	bh=6ZlA7AQwed1b+Qbqhl49hZpBrdZGq0u3Y8Xc/8IfGvM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=I9H7MVvwCGyF5EotDM1U20idIoHdP25AYE3YpwidP8cFIoPSvTlU1Z79MBXQDiAN+
-	 U2ENsuk5lCHzaIsstSbPuR2Mm7MYzwGy+4XA3COkrhr3Iyyk8mJ1xrVBGeqJSEYxHZ
-	 c7Q8J/EwSTU2lHZPw6EGto+1c+WFT4P0LOJXoH9Y=
-Date: Sun, 3 Jul 2022 16:15:52 -0700
-From: Andrew Morton <akpm@linux-foundation.org>
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko
- <glider@google.com>, Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov
- <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, <chinwen.chang@mediatek.com>,
- <yee.lee@mediatek.com>, <casper.li@mediatek.com>,
- <andrew.yang@mediatek.com>, <kasan-dev@googlegroups.com>,
- <linux-mm@kvack.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] kasan: separate double free case from invalid free
-Message-Id: <20220703161552.6a3304c8d316e4fdcce42caa@linux-foundation.org>
-In-Reply-To: <20220615062219.22618-1-Kuan-Ying.Lee@mediatek.com>
-References: <20220615062219.22618-1-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: Sylpheed 3.7.0 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	id 1o8B5n-002yCB-ET; Mon, 04 Jul 2022 01:41:42 +0000
+X-UUID: da95c9edd0984c748bab43707b41757a-20220703
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.7,REQID:71aa4620-7783-4ef0-ac95-4b67316b8a21,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:87442a2,CLOUDID:97b94b63-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: da95c9edd0984c748bab43707b41757a-20220703
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <haibo.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1211450749; Sun, 03 Jul 2022 18:41:25 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 4 Jul 2022 09:40:52 +0800
+Received: from mszsdtcf10.gcn.mediatek.inc (10.16.4.60) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 4 Jul 2022 09:40:51 +0800
+From: Haibo Li <haibo.li@mediatek.com>
+To: Sami Tolvanen <samitolvanen@google.com>
+CC: <xiaoming.yu@mediatek.com>, Kees Cook <keescook@chromium.org>, "Nathan
+ Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Peter Zijlstra
+	<peterz@infradead.org>, Masami Hiramatsu <mhiramat@kernel.org>, "Christophe
+ Leroy" <christophe.leroy@csgroup.eu>, =?UTF-8?q?Andr=C3=A9=20Almeida?=
+	<andrealmeid@igalia.com>, Luis Chamberlain <mcgrof@kernel.org>, Juergen Gross
+	<jgross@suse.com>, Haibo Li <haibo.li@mediatek.com>, Tiezhu Yang
+	<yangtiezhu@loongson.cn>, Aaron Tomlin <atomlin@redhat.com>, Dmitry Torokhov
+	<dmitry.torokhov@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<llvm@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Lecopzer Chen
+	<lecopzer.chen@mediatek.com>
+Subject: [PATCH v2 1/2] cfi: enable sanitize for cfi.c
+Date: Mon, 4 Jul 2022 09:40:45 +0800
+Message-ID: <20220704014046.34596-2-haibo.li@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220704014046.34596-1-haibo.li@mediatek.com>
+References: <20220704014046.34596-1-haibo.li@mediatek.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220703_161554_474574_DA80B948 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20220703_184139_518304_018AFFFE 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,120 +85,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 15 Jun 2022 14:22:18 +0800 Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
+currenly,cfi.c is excluded from cfi sanitize because of cfi handler.
+The side effect is that we can not transfer function pointer to
+other files which enable cfi sanitize.
 
-> Currently, KASAN describes all invalid-free/double-free bugs as
-> "double-free or invalid-free". This is ambiguous.
-> 
-> KASAN should report "double-free" when a double-free is a more
-> likely cause (the address points to the start of an object) and
-> report "invalid-free" otherwise [1].
-> 
-> [1] https://bugzilla.kernel.org/show_bug.cgi?id=212193
-> 
-> ...
+Enable cfi sanitize for cfi.c and bypass cfi check for __cfi_slowpath_diag
 
-Could we please have some review of this?
+Signed-off-by: Haibo Li <haibo.li@mediatek.com>
+Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+---
+ kernel/Makefile | 3 ---
+ kernel/cfi.c    | 2 +-
+ 2 files changed, 1 insertion(+), 4 deletions(-)
 
-Thanks.
+diff --git a/kernel/Makefile b/kernel/Makefile
+index a7e1f49ab2b3..a997bef1a200 100644
+--- a/kernel/Makefile
++++ b/kernel/Makefile
+@@ -40,9 +40,6 @@ KCSAN_SANITIZE_kcov.o := n
+ UBSAN_SANITIZE_kcov.o := n
+ CFLAGS_kcov.o := $(call cc-option, -fno-conserve-stack) -fno-stack-protector
+ 
+-# Don't instrument error handlers
+-CFLAGS_REMOVE_cfi.o := $(CC_FLAGS_CFI)
+-
+ obj-y += sched/
+ obj-y += locking/
+ obj-y += power/
+diff --git a/kernel/cfi.c b/kernel/cfi.c
+index 08102d19ec15..6c8ae07b5835 100644
+--- a/kernel/cfi.c
++++ b/kernel/cfi.c
+@@ -311,7 +311,7 @@ static inline cfi_check_fn find_check_fn(unsigned long ptr)
+ 	return fn;
+ }
+ 
+-void __cfi_slowpath_diag(uint64_t id, void *ptr, void *diag)
++void __nocfi __cfi_slowpath_diag(u64 id, void *ptr, void *diag)
+ {
+ 	cfi_check_fn fn = find_check_fn((unsigned long)ptr);
+ 
+-- 
+2.25.1
 
-> 
-> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> index c40c0e7b3b5f..707c3a527fcb 100644
-> --- a/mm/kasan/common.c
-> +++ b/mm/kasan/common.c
-> @@ -343,7 +343,7 @@ static inline bool ____kasan_slab_free(struct kmem_cache *cache, void *object,
->  
->  	if (unlikely(nearest_obj(cache, virt_to_slab(object), object) !=
->  	    object)) {
-> -		kasan_report_invalid_free(tagged_object, ip);
-> +		kasan_report_invalid_free(tagged_object, ip, KASAN_REPORT_INVALID_FREE);
->  		return true;
->  	}
->  
-> @@ -352,7 +352,7 @@ static inline bool ____kasan_slab_free(struct kmem_cache *cache, void *object,
->  		return false;
->  
->  	if (!kasan_byte_accessible(tagged_object)) {
-> -		kasan_report_invalid_free(tagged_object, ip);
-> +		kasan_report_invalid_free(tagged_object, ip, KASAN_REPORT_DOUBLE_FREE);
->  		return true;
->  	}
->  
-> @@ -377,12 +377,12 @@ bool __kasan_slab_free(struct kmem_cache *cache, void *object,
->  static inline bool ____kasan_kfree_large(void *ptr, unsigned long ip)
->  {
->  	if (ptr != page_address(virt_to_head_page(ptr))) {
-> -		kasan_report_invalid_free(ptr, ip);
-> +		kasan_report_invalid_free(ptr, ip, KASAN_REPORT_INVALID_FREE);
->  		return true;
->  	}
->  
->  	if (!kasan_byte_accessible(ptr)) {
-> -		kasan_report_invalid_free(ptr, ip);
-> +		kasan_report_invalid_free(ptr, ip, KASAN_REPORT_DOUBLE_FREE);
->  		return true;
->  	}
->  
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index 610d60d6e5b8..01c03e45acd4 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -125,6 +125,7 @@ static inline bool kasan_sync_fault_possible(void)
->  enum kasan_report_type {
->  	KASAN_REPORT_ACCESS,
->  	KASAN_REPORT_INVALID_FREE,
-> +	KASAN_REPORT_DOUBLE_FREE,
->  };
->  
->  struct kasan_report_info {
-> @@ -277,7 +278,7 @@ static inline void kasan_print_address_stack_frame(const void *addr) { }
->  
->  bool kasan_report(unsigned long addr, size_t size,
->  		bool is_write, unsigned long ip);
-> -void kasan_report_invalid_free(void *object, unsigned long ip);
-> +void kasan_report_invalid_free(void *object, unsigned long ip, enum kasan_report_type type);
->  
->  struct page *kasan_addr_to_page(const void *addr);
->  struct slab *kasan_addr_to_slab(const void *addr);
-> diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> index b341a191651d..fe3f606b3a98 100644
-> --- a/mm/kasan/report.c
-> +++ b/mm/kasan/report.c
-> @@ -176,8 +176,12 @@ static void end_report(unsigned long *flags, void *addr)
->  static void print_error_description(struct kasan_report_info *info)
->  {
->  	if (info->type == KASAN_REPORT_INVALID_FREE) {
-> -		pr_err("BUG: KASAN: double-free or invalid-free in %pS\n",
-> -		       (void *)info->ip);
-> +		pr_err("BUG: KASAN: invalid-free in %pS\n", (void *)info->ip);
-> +		return;
-> +	}
-> +
-> +	if (info->type == KASAN_REPORT_DOUBLE_FREE) {
-> +		pr_err("BUG: KASAN: double-free in %pS\n", (void *)info->ip);
->  		return;
->  	}
->  
-> @@ -433,7 +437,7 @@ static void print_report(struct kasan_report_info *info)
->  	}
->  }
->  
-> -void kasan_report_invalid_free(void *ptr, unsigned long ip)
-> +void kasan_report_invalid_free(void *ptr, unsigned long ip, enum kasan_report_type type)
->  {
->  	unsigned long flags;
->  	struct kasan_report_info info;
-> @@ -448,7 +452,7 @@ void kasan_report_invalid_free(void *ptr, unsigned long ip)
->  
->  	start_report(&flags, true);
->  
-> -	info.type = KASAN_REPORT_INVALID_FREE;
-> +	info.type = type;
->  	info.access_addr = ptr;
->  	info.first_bad_addr = kasan_reset_tag(ptr);
->  	info.access_size = 0;
-> -- 
-> 2.18.0
-> 
 
