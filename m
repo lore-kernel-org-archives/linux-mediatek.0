@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0111C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 10:04:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C56EDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 10:14:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sInbFzdbwtyUONXXGV57/ALCerBsJUrriyEzNHkQn0s=; b=YE2fnPHy92Wfhh4Aa0MphbFkxI
-	N3QKf9tNXWSeoJppni1/R8ESKcdc5om9bxfd8hd3xMTcE4QQkt/uGHn3Y/eDx5Cjtjhk7q9Umii0/
-	sHV4J2I0xqNi0MLrEKER1YeGS1FtMpkthqCyQsjJeXS2RaycfWMspllZEotZ/j13qy9SEqDGxcwmF
-	aR0mJHjYUy6G02oFrDtailquCsgXurTPWERu8c5obnmvvU5E4TYtieMKxESeJ3wZSMeDIq4KRE3sP
-	RBPghyRtRpJYiaUmdsvCe0aKtfYAFPGr58kPKnoRZiS5Jl2zNoClZ47HPxhoh88MqXGbq8ZlXJE90
-	mIEo0gOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gPvP+FG1O9k1ZZtmBX9wBm1Bg8gpE7IXvgXX3ad/3Kc=; b=kbeqiXScBzLkd17sh9rXRSgOMa
+	OaKH3d56aGZ7rfYjPPQJb/guDPmHqQK0GGNRX8jeJhMJu8DdptomYb26HGVCsv3HwU1oSzVHTISm2
+	8MO46OgOZuFFbCI0CWwmljG/M+ltkg8FJ2lgfxVJwV4aiIxNj0lEmm3RLL0iwRUDBVySfK1MRlJYc
+	/kqkKx5cOMBMvohL2WiSN0xHqdrTtY494nF4VbJFFN1xkWobU8597vMfJDu3hi3OImEfCPgZLmBM5
+	mm/beNFzcJdH/3Zu29B8o1oA+XzqUxkP+cF69VFRaWbhJVO274QXBf01sjsUueQcEcuajoZJuR6ou
+	0UEFyB6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Iwe-006kWr-Ip; Mon, 04 Jul 2022 10:04:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o8J5W-006pty-Fy; Mon, 04 Jul 2022 10:13:54 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8ItH-006hxz-4Y; Mon, 04 Jul 2022 10:01:16 +0000
-X-UUID: 0d2f70b35a304ed88f146bdaf69e424d-20220704
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:61291adc-0318-4edf-ac4f-a3c77fc6ebc5,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:13965b63-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 0d2f70b35a304ed88f146bdaf69e424d-20220704
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 696933859; Mon, 04 Jul 2022 03:01:06 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 4 Jul 2022 18:00:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 4 Jul 2022 18:00:31 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Enric
- Balletbo i Serra" <enric.balletbo@collabora.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
-CC: <iommu@lists.linux-foundation.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jason-JH.Lin
-	<jason-jh.lin@mediatek.com>
-Subject: [PATCH v1 15/16] arm64: dts: mt8195: Add gce node
-Date: Mon, 4 Jul 2022 18:00:27 +0800
-Message-ID: <20220704100028.19932-16-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220704100028.19932-1-tinghan.shen@mediatek.com>
-References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
+	id 1o8J59-006pbm-1N; Mon, 04 Jul 2022 10:13:32 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6D2886601985;
+	Mon,  4 Jul 2022 11:13:28 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656929609;
+	bh=COlKO70QWsoa/nV38XX44C/HzQIHC3dMfXYf/7vorrg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Fqc9C9BJFA04iAdl7pBqkmyCxtr4ULPvQnE/DfGCilzYzVtInFMcHnN4iJQwhVueh
+	 zeuIQD4VRmA+hWPtR3TWuo5QNwOCixPbaECw4LIdu9YjRVxKWmRcd8sZGrcP4rIGkJ
+	 DlvQtQg3+Kuj3J62dXW1KHfkiruecy/hSWWd8O7M/4pj5XilgvGCLXngBoWl7uGHSl
+	 58B1Rd0y0qa21+jkp/k+D9sjXu2ydkZq834H96gM2EdZS34OWAmU7KD16mkLtiSEse
+	 Xujd2wGDToz6iCPArnrAGdJbQGOovXKJcgW1yM8Hpfliwmid0mTclP9gGCJkq5f/Ki
+	 mkud4a+iAd1Lg==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	hsinyi@chromium.org,
+	nfraprado@collabora.com,
+	allen-kh.cheng@mediatek.com,
+	gtk3@inbox.ru,
+	luca@z3ntu.xyz,
+	sam.shih@mediatek.com,
+	sean.wang@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	wenst@chromium.org
+Subject: [PATCH v2 01/11] dt-bindings: arm: mediatek: Add MT8195 Cherry Tomato Chromebooks
+Date: Mon,  4 Jul 2022 12:13:11 +0200
+Message-Id: <20220704101321.44835-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220704101321.44835-1-angelogioacchino.delregno@collabora.com>
+References: <20220704101321.44835-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_030115_247695_B21FA6B6 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20220704_031331_443683_4054BBC7 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,64 +84,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Document board compatibles for the MT8195 Cherry platform's
+Tomato Chromebooks, at the time of writing composed of four
+revisions (r1, r2, r3-r4).
 
-Add gce node and gce alias to mt8195 device tree.
-
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index cb2b79dc08d1..724c6ca837b6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -6,6 +6,7 @@
- 
- /dts-v1/;
- #include <dt-bindings/clock/mt8195-clk.h>
-+#include <dt-bindings/gce/mt8195-gce.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/memory/mt8195-memory-port.h>
-@@ -19,6 +20,11 @@
- 	#address-cells = <2>;
- 	#size-cells = <2>;
- 
-+	aliases {
-+		gce0 = &gce0;
-+		gce1 = &gce1;
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -739,6 +745,22 @@
- 			#iommu-cells = <1>;
- 		};
- 
-+		gce0: mailbox@10320000 {
-+			compatible = "mediatek,mt8195-gce";
-+			reg = <0 0x10320000 0 0x4000>;
-+			interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#mbox-cells = <2>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_GCE>;
-+		};
-+
-+		gce1: mailbox@10330000 {
-+			compatible = "mediatek,mt8195-gce";
-+			reg = <0 0x10330000 0 0x4000>;
-+			interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#mbox-cells = <2>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_GCE2>;
-+		};
-+
- 		scp: scp@10500000 {
- 			compatible = "mediatek,mt8195-scp";
- 			reg = <0 0x10500000 0 0x100000>,
+Note for Krzysztof:
+
+I had to add the model number to the description in here, but I
+wasn't sure whether I should've kept your Reviewed-by tag or not.
+
+Since I was in doubt, I decided to not keep it just to be on the safe side.
+
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index dd6c6e8011f9..07c0ea94e850 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -144,6 +144,19 @@ properties:
+           - const: google,spherion-rev0
+           - const: google,spherion
+           - const: mediatek,mt8192
++      - description: Acer Tomato (Acer Chromebook Spin 513 CP513-2H)
++        items:
++          - enum:
++              - google,tomato-rev2
++              - google,tomato-rev1
++          - const: google,tomato
++          - const: mediatek,mt8195
++      - description: Acer Tomato rev3 - 4 (Acer Chromebook Spin 513 CP513-2H)
++        items:
++          - const: google,tomato-rev4
++          - const: google,tomato-rev3
++          - const: google,tomato
++          - const: mediatek,mt8195
+       - items:
+           - enum:
+               - mediatek,mt8186-evb
 -- 
-2.18.0
+2.35.1
 
 
