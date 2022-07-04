@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C13F6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 02:42:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C1B2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 02:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LLWfj/1AFzRsQguCrF5ML3U/L2tUaWfj1hwjgP5BBDE=; b=H8b3oHLEmI+A5899g4SKchshON
-	3pupgPK6G2/FUcfjWT58ztcG+QInhUaaLkRzwapNo7Lrz7Xb6OVTSj61ck+A5ebtI/zjCAUO+7lUd
-	UMugq3wZya9z2IVB+VPzmhgl8wMO5CV9De3XApkglTiJWJin3s8gccm0DN10sJaKqK99EBuFbDkUS
-	HbSSJbHHAUxTvhnPmBuy9yJ1FFfrpyZjb/dlWAQ4+5rBGI8JqHYB+isuMqHdQodJpSHcJx3E0Kzse
-	Cncg4pWWzAFuroyzgQSBVZYQHYrzky7bf7guBo4oNTWK861eb4DQ/JPDuwww/0wzFXtJLXlQJGUnM
-	GzBGQhOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CsukxuE2P8jWupc4D5qBtYJ/PwXCrhcaeYH4PaXVQNI=; b=wVl/hsAUDnEnM79pCpUXBiRiyE
+	VtyHN5rwSEGtKY9+h3miu6eAhnK5DJ5MXAlKyRrF/77Hc1qW5httxShSGHBxXnJrhD5oL3SkLB4Lc
+	Z1yDO1cZxOEUO10LgeUGOnsP8PzkSQnMSN8EhVZZ25gxmXL3DE3jyAr3h/DCFOEI+vUu0sptQIm6/
+	SpFzXeuJBB1UVjd7VSOn9ND0Gj6N2OBxmooPcr5SkswNkmRnxBKDSMnSvbMegvMMy6QQTjj17Qbd7
+	nhZBhiiV7wiVCG0vlNVwpyfcJwkAXoIL46V6uPwm0ZkpjFbPHZootzmugG/SwsH2A+f4RMVW0nvZB
+	UNQDG6Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8C2J-003iiP-6B; Mon, 04 Jul 2022 02:42:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o8CIw-003u8L-Sf; Mon, 04 Jul 2022 02:59:18 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8C2G-003icX-AL; Mon, 04 Jul 2022 02:42:05 +0000
-X-UUID: 5063bae16b22404ab8e0e94c09ca734b-20220703
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:11f36f51-44f8-45a9-b7cd-9088794e0af7,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:87442a2,CLOUDID:f9b77086-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 5063bae16b22404ab8e0e94c09ca734b-20220703
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <haibo.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 998403312; Sun, 03 Jul 2022 19:41:58 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 4 Jul 2022 09:40:56 +0800
-Received: from mszsdtcf10.gcn.mediatek.inc (10.16.4.60) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 4 Jul 2022 09:40:55 +0800
-From: Haibo Li <haibo.li@mediatek.com>
-To: Sami Tolvanen <samitolvanen@google.com>
-CC: <xiaoming.yu@mediatek.com>, Kees Cook <keescook@chromium.org>, Nathan
- Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Peter Zijlstra
-	<peterz@infradead.org>, Masami Hiramatsu <mhiramat@kernel.org>, Christophe
- Leroy <christophe.leroy@csgroup.eu>, =?UTF-8?q?Andr=C3=A9=20Almeida?=
-	<andrealmeid@igalia.com>, Luis Chamberlain <mcgrof@kernel.org>, Juergen Gross
-	<jgross@suse.com>, Haibo Li <haibo.li@mediatek.com>, Tiezhu Yang
-	<yangtiezhu@loongson.cn>, Aaron Tomlin <atomlin@redhat.com>, Dmitry Torokhov
-	<dmitry.torokhov@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<llvm@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Lecopzer Chen
-	<lecopzer.chen@mediatek.com>
-Subject: [PATCH v2 2/2] cfi: free old cfi shadow asynchronously
-Date: Mon, 4 Jul 2022 09:40:46 +0800
-Message-ID: <20220704014046.34596-3-haibo.li@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220704014046.34596-1-haibo.li@mediatek.com>
-References: <20220704014046.34596-1-haibo.li@mediatek.com>
+	id 1o8CIm-003tqr-2J; Mon, 04 Jul 2022 02:59:10 +0000
+Received: from dggpeml500022.china.huawei.com (unknown [172.30.72.55])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Lbr790KjpzkWlS;
+	Mon,  4 Jul 2022 10:56:53 +0800 (CST)
+Received: from dggpeml500008.china.huawei.com (7.185.36.147) by
+ dggpeml500022.china.huawei.com (7.185.36.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Mon, 4 Jul 2022 10:58:23 +0800
+Received: from huawei.com (10.67.175.34) by dggpeml500008.china.huawei.com
+ (7.185.36.147) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 4 Jul
+ 2022 10:58:23 +0800
+From: Ren Zhijie <renzhijie2@huawei.com>
+To: <stanley.chu@mediatek.com>, <jejb@linux.ibm.com>,
+	<martin.petersen@oracle.com>, <matthias.bgg@gmail.com>, <bvanassche@acm.org>
+CC: <linux-scsi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, "Ren
+ Zhijie" <renzhijie2@huawei.com>
+Subject: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error
+Date: Mon, 4 Jul 2022 10:56:32 +0800
+Message-ID: <20220704025632.235968-1-renzhijie2@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-Originating-IP: [10.67.175.34]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpeml500008.china.huawei.com (7.185.36.147)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220703_194204_409301_27CD2A3D 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20220703_195908_324870_11AD4D3E 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,61 +70,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currenly, it uses synchronize_rcu() to wait old rcu reader to go away
-in update_shadow.In embedded platform like ARM CA7X,
-load_module blocks 40~50ms in update_shadow.
-When there are more than one hundred kernel modules,
-it blocks several seconds.
+If CONFIG_PM is not set,
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-, will be failed, like this:
+drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_suspend’:
+drivers/ufs/host/ufs-mediatek.c:1435:8: error: implicit declaration of function ‘ufshcd_runtime_suspend’; did you mean ‘ufs_mtk_runtime_suspend’? [-Werror=implicit-function-declaration]
+  ret = ufshcd_runtime_suspend(dev);
+        ^~~~~~~~~~~~~~~~~~~~~~
+        ufs_mtk_runtime_suspend
+drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_resume’:
+drivers/ufs/host/ufs-mediatek.c:1450:9: error: implicit declaration of function ‘ufshcd_runtime_resume’; did you mean ‘ufs_mtk_runtime_resume’? [-Werror=implicit-function-declaration]
+  return ufshcd_runtime_resume(dev);
+         ^~~~~~~~~~~~~~~~~~~~~
+         ufs_mtk_runtime_resume
+At top level:
+drivers/ufs/host/ufs-mediatek.c:1444:12: error: ‘ufs_mtk_runtime_resume’ defined but not used [-Werror=unused-function]
+ static int ufs_mtk_runtime_resume(struct device *dev)
+            ^~~~~~~~~~~~~~~~~~~~~~
+drivers/ufs/host/ufs-mediatek.c:1430:12: error: ‘ufs_mtk_runtime_suspend’ defined but not used [-Werror=unused-function]
+ static int ufs_mtk_runtime_suspend(struct device *dev)
+            ^~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
 
-To accelerate load_module,change synchronize_rcu to call_rcu.
+The declarations of func "ufshcd_runtime_suspend()" and "ufshcd_runtime_resume()" depended on CONFIG_PM, so the function wrappers "ufs_mtk_runtime_suspend()" and "ufs_mtk_runtime_resume()"  both should warpped by CONFIG_PM too.
 
-Signed-off-by: Haibo Li <haibo.li@mediatek.com>
-Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Fixes: e7bf1d50063c ("scsi: ufs: ufs-mediatek: Fix build warnings")
+Signed-off-by: Ren Zhijie <renzhijie2@huawei.com>
 ---
- kernel/cfi.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ drivers/ufs/host/ufs-mediatek.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/kernel/cfi.c b/kernel/cfi.c
-index 6c8ae07b5835..f61439392bf8 100644
---- a/kernel/cfi.c
-+++ b/kernel/cfi.c
-@@ -43,6 +43,8 @@ typedef u16 shadow_t;
- struct cfi_shadow {
- 	/* Page index for the beginning of the shadow */
- 	unsigned long base;
-+	/* rcu to free old cfi_shadow asynchronously */
-+	struct rcu_head rcu;
- 	/* An array of __cfi_check locations (as indices to the shadow) */
- 	shadow_t shadow[1];
- } __packed;
-@@ -182,6 +184,13 @@ static void remove_module_from_shadow(struct cfi_shadow *s, struct module *mod,
- 	}
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index c958279bdd8f..e006c2528a3a 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1427,6 +1427,7 @@ static int ufs_mtk_system_resume(struct device *dev)
  }
+ #endif
  
-+static void free_shadow(struct rcu_head *rcu)
-+{
-+	struct cfi_shadow *old = container_of(rcu, struct cfi_shadow, rcu);
-+
-+	vfree(old);
-+}
-+
- typedef void (*update_shadow_fn)(struct cfi_shadow *, struct module *,
- 			unsigned long min_addr, unsigned long max_addr);
++#ifdef CONFIG_PM
+ static int ufs_mtk_runtime_suspend(struct device *dev)
+ {
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);
+@@ -1449,6 +1450,7 @@ static int ufs_mtk_runtime_resume(struct device *dev)
  
-@@ -211,11 +220,10 @@ static void update_shadow(struct module *mod, unsigned long base_addr,
- 
- 	rcu_assign_pointer(cfi_shadow, next);
- 	mutex_unlock(&shadow_update_lock);
--	synchronize_rcu();
- 
- 	if (prev) {
- 		set_memory_rw((unsigned long)prev, SHADOW_PAGES);
--		vfree(prev);
-+		call_rcu(&prev->rcu, free_shadow);
- 	}
+ 	return ufshcd_runtime_resume(dev);
  }
++#endif
  
+ static const struct dev_pm_ops ufs_mtk_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend,
 -- 
-2.25.1
+2.17.1
 
 
