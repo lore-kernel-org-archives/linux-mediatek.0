@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88507C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 20:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9554BC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 20:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i7pfQddT00wwybN55WXtE8jeGfJuRCDhkTs8A9N9Avc=; b=YJoYyJAkY5G8ClpguW+v/q3J95
-	4oWBpdEUfuG+IJkIFd1HJ5fVod3oEN1n0kP5XkDUME34SQV+uWN7pYkagcSMTENsNLIBF3v2MjPF3
-	UU8GxSYqEcm/0pk9pjHd34CTzUMqw/7o56xbbFrsZRWl0LEWYBMSUGTeqIn2IQIHS7fI0lfHunLA+
-	ENMfY3u2LrAecysENjiC/DmYWLxdEv4if75tRYCrEP8qHY8tzMHpeSYSTLqpuisPHBsQFupG3LqRR
-	2c+BaLQ5q2O5EZIRLPfoDNtElteOzL/HT3oX9rf7izMtZ0TRcvo2wd2iq4rLwzrRPCwZ564WL18I+
-	W8Zfja7Q==;
+	bh=yX/+5EHmJzouiASTPWEy2vcXLPBh//GiWKeXcuGIwQ8=; b=duIUI/2BcIAwZSjSZRYOKy08kO
+	EoG07Fce84ohT3yltcgGBHNh/6PcO2X3aIJQOuPNJqdPWXnkjVxlziPGQuNXu9e6tqF8qh7aOUVSG
+	0UV1Ncu5O8+A6xOqaDyVxC6kZrFw+kotEczFJlYDJziLevvIcIVT0qWDFAr+/gUqLcI8MWc7QgkVh
+	n625koXhDmKV0A+hAFviWW/zN7r4neaSOmgtHVaxwehQCziAhF2LLbnqvWbrEsqZ1S/nAsWnBengD
+	ivF3rkj6Ev9G8Oys1mFH+rBJWgZWWY6ucsuInm6lcMF7L40w/8jKq6LGQVKSY3EJ+8GyHXsmruPg+
+	SukjoL1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8SoC-00CE7S-Ah; Mon, 04 Jul 2022 20:36:40 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1o8T59-00CKVf-Cj; Mon, 04 Jul 2022 20:54:11 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Snz-00CE2I-4c; Mon, 04 Jul 2022 20:36:28 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id o2so13272595yba.7;
-        Mon, 04 Jul 2022 13:36:26 -0700 (PDT)
+	id 1o8T4y-00CKQF-9Z; Mon, 04 Jul 2022 20:54:01 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id b85so5347470yba.8;
+        Mon, 04 Jul 2022 13:53:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=i7pfQddT00wwybN55WXtE8jeGfJuRCDhkTs8A9N9Avc=;
-        b=juo7rzkgyOnogzMhLYCktRvFpSFkP3vvhbMY8Uk0vJKYeWueIKW+lWdoXP3yLwbds6
-         vcrr5NUqPVbQnT0hwWaYs4EEj2Nkh5SCjrFrs18UN6hZAi3OYtxjuCQlEQvAQUlc9Dpv
-         J7v71ibaYThmJdJsc986feiZcZN+aEpDukUNqgPRhJF8LMCaE4eeOYQA30SWbqQhe9N9
-         uD2O3yv/dhvIOAfc/Yh+JrL6jYRzMb9TGUOPIk36TgGFoLO92g7jiweWYexkxNNBIGdE
-         16csuxysxq+iUAOhEZmurW/lnrwSZZbdImIhQoMrVi+ukTjz9HsWjjHwlR4I1VW1mjTI
-         xbUA==
+        bh=yX/+5EHmJzouiASTPWEy2vcXLPBh//GiWKeXcuGIwQ8=;
+        b=B3+vMtHkh7oMCAMnDoWG8DEYz2b0JCtP5ZfXbihV47SV3dWC+3OwqEGsEMwBqAFjz7
+         khAxgZHq8sJMmNaICKe6NssutaTTjWLNGJBKORgb6vraCnVB5t+OtelrciWNFx45ctsy
+         JvI3604+UpHWwrRhFauDs9e1foPdkNSdzNHqlHWwdWLiIR5uNgh7cOgQIAGgo+d4nbqk
+         vWBgis+eV5qV8Zk/AkWLLfaslFlFZF3eEW3XKUxRruxM5WjKyLFbe1tfQJnycOJwtO/v
+         olhGLIkEl+ub8ONlqXskW875SxgXQbu+BJdjC1nw7gUrRk69EDJ2IlghqhNSArZzWIXy
+         kOpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=i7pfQddT00wwybN55WXtE8jeGfJuRCDhkTs8A9N9Avc=;
-        b=mKa0nDX0vhZktQnRuVoKmqroSusGLPiwB/Gf08gxsu0v/XL5/8UmSyichHD300Yze0
-         BjkFKa9o62vgyK9kWbm68vWlUwaEnlICmU1O5oqL1bQoh3BWmPP/+ix81cq6zg8bnyy7
-         KKi9wWPqYIoulPeCNkq54MGWgxo1kEnptj+GodbcA2CFv5jEegVxv/bnmE+0uHCCmzSY
-         T4j/yaaKjQFrRIlOmO8q4Lm8FZrpzwUWILGIEZpRxU4MDcsqLXc+08JVJkFB+bw/NR4y
-         QhsYG8yJwrvblDj9goY3qkunHEzX3EwjBL9tj74vsGheEBQuTLIwqwfWqxzLuXf/aZ7v
-         0/Xw==
-X-Gm-Message-State: AJIora99PdIWAmYvqZ2aS2zv14n54V6jidbTlZHkTqMRZZf4PsuTvdqh
-	Ftz2X5M9hYpXfF1gE+MkHIMkyKPPt1vXC+UvCmw=
-X-Google-Smtp-Source: AGRyM1u/kp8kfUd0nPXCHFP2i3Eix2PxxDcpp8y9ipLkrPPb23jLPB36f0GfOZtN0YbNTf6oiGSAGugY2K6v9bhH1+c=
-X-Received: by 2002:a5b:68a:0:b0:66e:472a:83f4 with SMTP id
- j10-20020a5b068a000000b0066e472a83f4mr8583937ybq.570.1656966985988; Mon, 04
- Jul 2022 13:36:25 -0700 (PDT)
+        bh=yX/+5EHmJzouiASTPWEy2vcXLPBh//GiWKeXcuGIwQ8=;
+        b=NzLpxGpFU90sitMSWzaeUd7a6FUceItYhj2TA2/ubC1j8zfrfp4MDGUKeHlbMPJCVD
+         //+GhunvHU/VZVHwhwFIa44aWhUKGS6jlmVu/3G4V+PnMf108xtEa6bvozV7WoZ5b22T
+         YHOAQGXKE6Q1Jt8ZYOXK1FqfOGWNX+w8W5kf5Gv0ShZ0kl7pHx+z+RPli2ybWz45nsQG
+         eDYZqRjvucrwDJihJDyeHz7JnueyBJtIrvBQ23LzxMK2+U7B20pbS/6JLl/oM32g5g/t
+         /nokiHd09rdoib4PJsE9bgdPMNpbs9wyx0YiFFnwQaF7fMjA/4CfqQSRrtRlCf0oLrlH
+         IChw==
+X-Gm-Message-State: AJIora8FBZo5TpJ0R3eDInmo7mpU0YiJHKe6SUenbTSnO8QjjEYDlwlS
+	Ybp7YYBVKK+/lBBQt0SKIetKbuqfKbwIyE7EEPE=
+X-Google-Smtp-Source: AGRyM1vdKb73hFj3ExY6oJ2GrDF+CZ7xFkfm6isQFNTZlGTiO++q+Ae1pyvqGIbKKpGLxpNoMkavQ8hfM3hWhEKqjS4=
+X-Received: by 2002:a05:6902:c4:b0:64b:4677:331b with SMTP id
+ i4-20020a05690200c400b0064b4677331bmr33612017ybs.93.1656968039226; Mon, 04
+ Jul 2022 13:53:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220704053901.728-1-peterwu.pub@gmail.com> <20220704053901.728-10-peterwu.pub@gmail.com>
-In-Reply-To: <20220704053901.728-10-peterwu.pub@gmail.com>
+References: <20220704053901.728-1-peterwu.pub@gmail.com> <20220704053901.728-11-peterwu.pub@gmail.com>
+In-Reply-To: <20220704053901.728-11-peterwu.pub@gmail.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 4 Jul 2022 22:35:47 +0200
-Message-ID: <CAHp75Ve+-ht6J5PZXS1jO1qfxn6Nfd2wDfuW-NsigR_k7iRJGg@mail.gmail.com>
-Subject: Re: [PATCH v4 09/13] iio: adc: mt6370: Add Mediatek MT6370 support
+Date: Mon, 4 Jul 2022 22:53:22 +0200
+Message-ID: <CAHp75VfFWyvO44XjRCrx=caCLK0EX5gOfF6fnydZeegFBqJrzw@mail.gmail.com>
+Subject: Re: [PATCH v4 10/13] power: supply: mt6370: Add Mediatek MT6370
+ charger driver
 To: ChiaEn Wu <peterwu.pub@gmail.com>
 Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
 	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
@@ -80,8 +81,8 @@ Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.or
 	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_133627_243877_AEF60EF5 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20220704_135400_392751_20232DC0 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,10 +98,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Mon, Jul 4, 2022 at 7:42 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
->
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
->
-> Add Mediatek MT6370 ADC support.
+
+> Add Mediatek MT6370 charger driver.
 
 ...
 
@@ -108,51 +107,91 @@ On Mon, Jul 4, 2022 at 7:42 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 
 If so,
 
-> +         will be called "mt6370-adc.ko".
+> +         will be called "mt6370-charger.ko".
 
 No ".ko" part.
 
 ...
 
-> +#define ADC_CONV_TIME_US               35000
+> +#define MT6370_MIVR_IBUS_TH_100_MA     100000
 
-Since it's actually MS, drop this and use MS * 1000 whenever it's needed.
-
-
-> +#define ADC_CONV_TIME_MS               (ADC_CONV_TIME_US / 1000)
+mA
 
 ...
 
-> +static int mt6370_adc_read_label(struct iio_dev *iio_dev,
-> +                                struct iio_chan_spec const *chan, char *label)
+> +       if (mt6370_chg_fields[fd].range) {
+> +               return linear_range_get_value(mt6370_chg_fields[fd].range,
+> +                                             reg_val, val);
+
+> +       } else {
+
+Redundant 'else'.
+
+> +               *val = reg_val;
+> +               return 0;
+> +       }
+
+...
+
+> +               if (fd != F_VMIVR)
+
+Why not positive conditional?
+
+> +                       linear_range_get_selector_within(r, val, &val);
+> +               else {
+> +                       ret = linear_range_get_selector_high(r, val, &val, &f);
+> +                       if (!ret)
+> +                               val = r->max_sel;
+> +               }
+
+Checkpatch didn't complain about the absence of {} ?
+
+...
+
+> +       irq_num = platform_get_irq_byname(pdev, irq_name);
+> +       if (irq_num >= 0) {
+
+  if (irq_num < 0)
+    return;
+
+> +               if (en)
+> +                       enable_irq(irq_num);
+> +               else
+> +                       disable_irq_nosync(irq_num);
+> +       }
+
+...
+
+> +       /* Check in otg mode or not */
+
+OTG
+
+...
+
+> +static int mt6370_chg_set_online(struct mt6370_priv *priv,
+> +                                const union power_supply_propval *val)
 > +{
-> +       return snprintf(label, PAGE_SIZE, "%s\n",
-> +                       mt6370_channel_labels[chan->channel]);
+> +       unsigned int pwr_rdy = !!val->intval;
 
-sysfs_emit()
+Seems you are using int as boolean, do you need it specifically for
+something? Otherwise use boolean here.
 
+> +
+> +       mutex_lock(&priv->attach_lock);
+> +       if (pwr_rdy == !!priv->attach) {
+> +               dev_err(priv->dev, "pwr_rdy is same(%d)\n", pwr_rdy);
+> +               mutex_unlock(&priv->attach_lock);
+> +               return 0;
+> +       }
+> +
+> +       priv->attach = pwr_rdy;
+> +       mutex_unlock(&priv->attach_lock);
+> +
+> +       if (!queue_work(priv->wq, &priv->bc12_work))
+> +               dev_err(priv->dev, "bc12 work has already queued\n");
+> +
+> +       return 0;
 > +}
-
-...
-
-> +static int mt6370_adc_probe(struct platform_device *pdev)
-> +{
-> +       int ret;
-> +       struct mt6370_adc_data *priv;
-> +       struct regmap *regmap;
-> +       struct iio_dev *indio_dev;
-
-Per all your patches, use reversed xmas tree ordering ("longest line
-first" rule).
-Also it may be good to have a temporary variable for struct device pointer.
-
-> +}
-
-...
-
-> +MODULE_DESCRIPTION("MT6370 ADC Drvier");
-
-Driver. Spell check your patches.
 
 -- 
 With Best Regards,
