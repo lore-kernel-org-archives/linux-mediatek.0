@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 883D9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 12:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 495C7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 13:52:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C5JrFNsrdURrynIRcNZ5G8lGyEvwaVaUcx1O/DPUMCE=; b=JSx2MB3j19b1LHuIsyz5noLqkR
-	RiBSGjiZNVOHGWSmBhRJ/W8DAmliI23WSN11HxmMIM6o2QImWVqIeLI6scT35cPNR8LD9X0RBILwc
-	s7hM2XguSNyA0AnhVZhgjsAH2EDEpM48D954uSeWzh54WhLw4I0epVDDphCpx6kJqwDzZZrew8sTS
-	nc9TTqr3hbGGwLR4ABSGXPxXNbO/+qLQwQ8VXOaR8fDpL8Jua4fyU/ctxoTy+/0ljEk+GIqaXl3Kp
-	s3sR3YacOd57C9DG0RHEI0mCR5abAWrCQq39qiP3HJ8JXhnt41bLA0dOEcpwzE/b2QCdVECfFMBer
-	y2PH9foQ==;
+	bh=HLHDvwxSL0MxiarCghH6aFWwN83AHjX1ErBV85VRL/c=; b=0aeoOYwdclE9qKlbhCAG1BKwtt
+	oHhyKs28F/ob6HTQGeVE1ilFEKaHJJTDmDwdz7outs1A9C/K/yjcdSmUYTi9EUEQHIMFThR7U16QC
+	xZ8RW7m/Ol3vtaNn53Wfw6RSofPAcsDyo2gHqeSGiyQkfk3Vk5dcHCef5Amr5Mt4W2CaNTZa+U6Bv
+	rs43ldJ2z+vKDBbDc2W5ragWTLixICK9ylWleWyl21+pguQU2drigLWll8JKa/rcJBVz2J9/+/m+v
+	2QfEioNatUE2aP1RGL2P0WC3gr1HrOKk1CNgc1Ut3ALkHQy3HUX/UWMbyGdRu0XvymSPqmFDnuP1S
+	9fltchow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8LQa-008rjT-A1; Mon, 04 Jul 2022 12:43:48 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1o8MUY-009JX2-1y; Mon, 04 Jul 2022 13:51:58 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8LQY-008rhh-7b
-	for linux-mediatek@lists.infradead.org; Mon, 04 Jul 2022 12:43:47 +0000
-Received: by mail-lf1-x131.google.com with SMTP id c12so824822lff.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 04 Jul 2022 05:43:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=C5JrFNsrdURrynIRcNZ5G8lGyEvwaVaUcx1O/DPUMCE=;
-        b=JjPXbMtWA9vv8tvadTWpTLKLbjayx2W7t+ABNkO1YA/UxRrfamtA/YmMlUg/w2z2js
-         9udkArH5j8quI+j9Ql9xioaDARBfnPc0bEstZ2hMmTc2oviNnO5Soa1ce6lbmehPpKcV
-         t4WXObEOkimkLSUmqXqbmbyKyK6P2OZtEQOIgV6zzzvvPWBdDPv31Ntw7RKeklOIfsLm
-         Q6slfXgeFvKe6nV+Pnl1YdcRKqaI17NX3rM9akGSpDb4OIBJ8+9swkD2L5skjWRB8gfM
-         7t6Lyaq4VaKxmGciBoLo6Ih+p7rJ0zUG6vjTd6FF+NUc89vbXdbsqvg4fdnCXXwha4Sp
-         QuWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=C5JrFNsrdURrynIRcNZ5G8lGyEvwaVaUcx1O/DPUMCE=;
-        b=VkNlXXANOBTIklzqmsein/k3WFTIOpM3L9n19rWrtJeNYTnTZufKGzSmv0ijhHAs1H
-         TsPGf2YDPBx/fi3jTZlG5e8c3+XQ3yg+LIstToQtdpE4AmcJ7i/xAP1KOeSTfG9A9u4S
-         1BWZ4A65qMGG8/1Ln/fzNWbyhzJxnEY2kw9hAzWcV5HLxW2wuN4ldEEGNvLonGjuqfd7
-         LVrhM/eBO/njRR4s0zrzW4omQB+nU5VzRoimK2LaxFGvum8ZBXLnyyE18qnH6o4NnyVD
-         k5ekSP6LOiTKR7XnRySTlqdhTiS2bS4DCdk8UoqWR5wiV+lA7c6vdPlsxCgYdd6L6OPc
-         gCQA==
-X-Gm-Message-State: AJIora8WZ8fEDBHOSnnd7THiH8zAXidQe6JWRVGYvJFJNGdQaYGrWahS
-	XgXKB+u+mXCBOiv5Cr8QyAO1XA==
-X-Google-Smtp-Source: AGRyM1vteyLrUKmrJEdE96gqsOwiHpBoFFKT52joX+DoYuA8q+pmgAV06t9T0wuyGgrz7nqwUaAwiw==
-X-Received: by 2002:a19:4316:0:b0:481:484c:404c with SMTP id q22-20020a194316000000b00481484c404cmr16640237lfa.559.1656938622879;
-        Mon, 04 Jul 2022 05:43:42 -0700 (PDT)
-Received: from [192.168.1.52] ([84.20.121.239])
-        by smtp.gmail.com with ESMTPSA id bj16-20020a2eaa90000000b0025d254180d7sm284672ljb.113.2022.07.04.05.43.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Jul 2022 05:43:42 -0700 (PDT)
-Message-ID: <8c2e1b9e-9fbb-2593-912f-0893529748ed@linaro.org>
-Date: Mon, 4 Jul 2022 14:43:41 +0200
+	id 1o8MUL-009JM3-Mg; Mon, 04 Jul 2022 13:51:47 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 0D5BBB81017;
+	Mon,  4 Jul 2022 13:51:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE62DC341CD;
+	Mon,  4 Jul 2022 13:51:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1656942699;
+	bh=hAfuMRpk9TdhPZKHaCc+WuV8OqufS7bLGsHXotM88Ho=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=jxq9RUGXnffQs7/NqBRif/E6Maxq+B+XEABUVLFoONhdTRJeiTn9q99B4qRUQbW/6
+	 S6su4yTThCr+kM3+DjkYD/7RbOyE2vWp6tGTi0lHWF4dTvYyUTe/O8hA3qsFDfCcYl
+	 H+4iC778OmdLvCYid6PETCJ9D9ia2f5CLaW+Xrq/KAZu11MiOGcwOJtr8pBhXu1xls
+	 jZ0eWPyIqFgDfzIBf57zbOGqicaKXAkVTvo0OuH8yHIJnK4pXoPLjiu0Wt9IzQhoZI
+	 cAz+FrN6WVLMgoZj76qfUB17Ld5rYZP1fR4Hq8hzPi2KZnDGl2eJJj9LfBfVYWOF5i
+	 wPAIgNdUo0VvA==
+Received: by mail-wr1-f52.google.com with SMTP id d16so7278006wrv.10;
+        Mon, 04 Jul 2022 06:51:39 -0700 (PDT)
+X-Gm-Message-State: AJIora8Wy7/gY7MLgL9DiMyY1xr4DOnr+SbUGEqMx8usvxx7UFWFzX+Y
+	enjf2ptWtyTOsiorl8Z8GWGS1lpzHy4IS3fIrw==
+X-Google-Smtp-Source: AGRyM1uKp2lrpW6u+5cY6RUsSDjtF0VW1MATP4aMMyHLV7iUskweguBh2vAeN6OdOJ6Qu9KV7S3kduEtUTEV6H8/NnE=
+X-Received: by 2002:a5d:6c62:0:b0:21d:2235:d800 with SMTP id
+ r2-20020a5d6c62000000b0021d2235d800mr27450391wrz.381.1656942697923; Mon, 04
+ Jul 2022 06:51:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 01/11] dt-bindings: arm: mediatek: Add MT8195 Cherry
- Tomato Chromebooks
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- hsinyi@chromium.org, nfraprado@collabora.com, allen-kh.cheng@mediatek.com,
- gtk3@inbox.ru, luca@z3ntu.xyz, sam.shih@mediatek.com,
- sean.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org
-References: <20220704101321.44835-1-angelogioacchino.delregno@collabora.com>
- <20220704101321.44835-2-angelogioacchino.delregno@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220704101321.44835-2-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20220629190545.478113-1-hsinyi@chromium.org>
+In-Reply-To: <20220629190545.478113-1-hsinyi@chromium.org>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 4 Jul 2022 21:51:25 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__F2Ms6tfYgU=5wXS==0qVivo6OT=8txq9yA3XQLfqh-A@mail.gmail.com>
+Message-ID: <CAAOTY__F2Ms6tfYgU=5wXS==0qVivo6OT=8txq9yA3XQLfqh-A@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: ensure bridge disable happends before suspend
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, DRI Development <dri-devel@lists.freedesktop.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_054346_350154_2356CBE0 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20220704_065146_064340_E016D3B1 
+X-CRM114-Status: GOOD (  21.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,25 +83,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/07/2022 12:13, AngeloGioacchino Del Regno wrote:
-> Document board compatibles for the MT8195 Cherry platform's
-> Tomato Chromebooks, at the time of writing composed of four
-> revisions (r1, r2, r3-r4).
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi, Hsin-yi:
+
+Hsin-Yi Wang <hsinyi@chromium.org> =E6=96=BC 2022=E5=B9=B46=E6=9C=8830=E6=
+=97=A5 =E9=80=B1=E5=9B=9B =E5=87=8C=E6=99=A83:06=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Make sure bridge_disable will be called before suspend by calling
+> drm_mode_config_helper_suspend() in .prepare callback.
+
+Applied to mediatek-drm-next [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+Regards,
+Chun-Kuang.
+
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
-> 
-> Note for Krzysztof:
-> 
-> I had to add the model number to the description in here, but I
-> wasn't sure whether I should've kept your Reviewed-by tag or not.
-> 
-> Since I was in doubt, I decided to not keep it just to be on the safe side.
-
-These were trivial changes, so keep the tag. Anyway no problem:
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
+> The issue is found if suspend is called via VT2 in several MTK SoC (eg.
+> MT8173, MT8183, MT8186) chromebook boards with eDP bridge:
+> bridge disable is called through mtk-drm's suspend, and it needs to be
+> called before bridge pm runtime suspend.
+> So we move the hook to .prepare() and .complete().
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_drv.c
+> index 13a1bbe7ead7f..a42812e490007 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -828,8 +828,7 @@ static int mtk_drm_remove(struct platform_device *pde=
+v)
+>         return 0;
+>  }
+>
+> -#ifdef CONFIG_PM_SLEEP
+> -static int mtk_drm_sys_suspend(struct device *dev)
+> +static int mtk_drm_sys_prepare(struct device *dev)
+>  {
+>         struct mtk_drm_private *private =3D dev_get_drvdata(dev);
+>         struct drm_device *drm =3D private->drm;
+> @@ -840,20 +839,21 @@ static int mtk_drm_sys_suspend(struct device *dev)
+>         return ret;
+>  }
+>
+> -static int mtk_drm_sys_resume(struct device *dev)
+> +static void mtk_drm_sys_complete(struct device *dev)
+>  {
+>         struct mtk_drm_private *private =3D dev_get_drvdata(dev);
+>         struct drm_device *drm =3D private->drm;
+>         int ret;
+>
+>         ret =3D drm_mode_config_helper_resume(drm);
+> -
+> -       return ret;
+> +       if (ret)
+> +               dev_err(dev, "Failed to resume\n");
+>  }
+> -#endif
+>
+> -static SIMPLE_DEV_PM_OPS(mtk_drm_pm_ops, mtk_drm_sys_suspend,
+> -                        mtk_drm_sys_resume);
+> +static const struct dev_pm_ops mtk_drm_pm_ops =3D {
+> +       .prepare =3D mtk_drm_sys_prepare,
+> +       .complete =3D mtk_drm_sys_complete,
+> +};
+>
+>  static struct platform_driver mtk_drm_platform_driver =3D {
+>         .probe  =3D mtk_drm_probe,
+> --
+> 2.37.0.rc0.161.g10f37bed90-goog
+>
 
