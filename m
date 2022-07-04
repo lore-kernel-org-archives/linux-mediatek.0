@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 921D6C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 20:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BC45C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 20:30:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6/OYescpC12d20RwbBmj4WBQ3v7OC1u9RlDvkq13ckI=; b=y2xNzX5dZpmHmQTuGeaaJfecCO
-	FIGRUUXcCGLqfpygPfn/kAGoQ/bglkdQgP04tHn+eCergQmgBBBnONq7Yazd80nf/Bq7C5JCXA+0C
-	qm4d62IZoe14GhTghqbU9BCe2z5UPVVNgRpXpkCT/vALV6B7USOUhWltbHrhQrzD/n/30rRe42+K+
-	ENqxitxviRqYu81QPmn3zmX9/AGCM9DEMFCq/Grl4WVjQsMPEE1f+6l8tGWQd1z3Mi6YrpLXtbl6a
-	WIGDab4BA+jmGI+5eXCwnv28wQC0P17DGyaxp4y0gBgyjhLsr4WxDg0um9DmBRAVHz9hfz5Lvk+ON
-	9YkRoqaA==;
+	bh=BJ5uLmaL6h68lsnPAamuG1muud74QSPIe8Sz8xN9JKc=; b=imx7amr3B7O4fO5EFY0z29mGqx
+	Wgi14eSDujiV7qivhpa6i/WGleJIbtnv5aWDrVssgdDaXIjoVUMzktWkBjQas/FLs1/8Ykc6q7I9m
+	fI5zqifrG7wmebQr91lbz7gTZXuQyz3rM5OJk3bqPvuhSpeTfwUMMkXcfqOz07Twis5J7JkEM+hIo
+	ZU9uPTFWjkx73Ruy+r6BuUltUl2OMIrmTL9LC96iO4IL/MCxo39qXMIhGM1CRTyCjh2ogUTLGTPMm
+	nguE/11yyw98XG4Ky0147lcdTplc+tT16zFL0MNSWhREKbGmEC6EHgjWjFFqx5j7r4EtF2x1gtiom
+	No8hYB4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8SYo-00CAKZ-Ox; Mon, 04 Jul 2022 20:20:46 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1o8Shn-00CCFN-I0; Mon, 04 Jul 2022 20:30:03 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8SYd-00CAH8-4e; Mon, 04 Jul 2022 20:20:36 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id i7so18468535ybe.11;
-        Mon, 04 Jul 2022 13:20:32 -0700 (PDT)
+	id 1o8Shb-00CCBn-OC; Mon, 04 Jul 2022 20:29:53 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id g4so18528947ybg.9;
+        Mon, 04 Jul 2022 13:29:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=6/OYescpC12d20RwbBmj4WBQ3v7OC1u9RlDvkq13ckI=;
-        b=cegCCcDkUoo9P6FNcssziPe3wSPrKUvAGCjIOIIy9fhcj35RkgxKJl+LbBpnuq3wjU
-         JtZm3oS9OqN+sojHrPwB50NIagpcab7QJIX1ILsQ1nJ3StpvjNnYljM49uisc2SiVCWu
-         j+rtopNKTrfSTkSrCEj5pkG8bfUOxmoh6VMMD0Z3C7+zk3OYZ7p4bcaWrLSOEPhtwFjV
-         ukHS++YJVwKW7lmRgBitYGThBKP4TMSFRMAMUNaen1amEPS1C+rGOUMq/TS5XsdgdxNa
-         DPHYNnx/8ldISZwxJH+AJ4LPwa6A5JV5wzs0BLypkdYT38ysetCoOfRolw7meRpF0evK
-         WYMw==
+        bh=BJ5uLmaL6h68lsnPAamuG1muud74QSPIe8Sz8xN9JKc=;
+        b=IyhykYvWClWsa/rmW6Z/KwjZd5OEnZBjTZJoLjjQF9DF//3C/8TDLUZ9WgQcftxTIg
+         RSAO/m1TfA810UfvrDxUciTgRWK2V4vdbkEYBtyWoxZlfSzBqFx5f84Zp+uH4jhvnzq/
+         HsHVqaeINcK2mj/R1Ossi/8UDOV+jsLE5fw3mKztcr2IiO0IBISDLkBu1k6BwebWsnEj
+         rhZLb6XD3sUUzdCeoSWKQm/M4LzSdBs90raNvlZ4+hvPn95gzOFxzHeI3LQRisB4w0up
+         aec9JMZAW5+VoFpw7BV31bnXLr9oQpCTjtoPy02YGKT8SUHH8jzuYOAiMXH/V2hoIFH5
+         cM0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=6/OYescpC12d20RwbBmj4WBQ3v7OC1u9RlDvkq13ckI=;
-        b=N8aHYR8soynAtgWsGekgvPSXALITfC+Hl1nR/sR8Zjw/eMYClbZs0P2TX695Z7re8T
-         h0iXqJVnH13mFtK6X7bSBRolf07mzifu/mcjFuax5TcpAbNVT+sfHx338DaylbtOEiUa
-         o1pYLH8I0cjFvWjnJLNnRbRbp93Bepl/K0wrLSjQzCCcR8VjJMJrwLJ4uhgK7AD7h2wn
-         AP//nBeC5SKbIa7sAkRzScTypUdiLjf1TcBvakFH65h+GV47fHpOATcFVE4uk2U1Gm81
-         cHZaN27Kx3w+kvSGVLXrYsS7FARsxLUN5T+ikveJXGcYOiQjP0YiDOACRxg0UJURqyef
-         h1/Q==
-X-Gm-Message-State: AJIora8Yrq956CkvoH+wasX/gYb+tbqlL/0b//OQ06JMCn6DmTMa6u17
-	7OX6ApccJzMeTyyj1+Rd/STBvbe8VwYcKb55mo8=
-X-Google-Smtp-Source: AGRyM1vGN87zp2vOQSkYPHdy4U3iFiPDyi3SOwkZWy9X2zeUnXbmXLO8oItZWKupT1Gp6nG69Gr+SrGEdJWU94cJNCE=
-X-Received: by 2002:a5b:68a:0:b0:66e:472a:83f4 with SMTP id
- j10-20020a5b068a000000b0066e472a83f4mr8514627ybq.570.1656966032191; Mon, 04
- Jul 2022 13:20:32 -0700 (PDT)
+        bh=BJ5uLmaL6h68lsnPAamuG1muud74QSPIe8Sz8xN9JKc=;
+        b=WL1w/jodLlavXwjBKup1r/NuCujsNudtlKh90V0fFRYhjlGlsRC3D1h7UivxeZ5T1N
+         SzKjoMvUUOES4Za/ynLnbCcCkzp4E27YcpKniPW7/Mi185P8bkJCQhrQkDsyaoA5mm2y
+         /gaW3nXfIMY1ezKNhKV+zRvllCXd/1YCE+/neWXMm3LYuxl3POXNLGTgOcuYZE1kT+xN
+         gQ3sQ4LX6Ay5TBc/kiaIW2fusGhG7JVtX9Tscl6j/iLv6QD+M+Nck9fb9PBp95fqHP+v
+         OLA53y7IxvYNIazDv0Zb4LgxA5UYJSMmQd9UHE4622/sCmI28uaCA+Z6tCm6zlmF6aom
+         Akqg==
+X-Gm-Message-State: AJIora8Y/KgekbJMIIQxUCNectP9+JiDDaXqWMS7NTL4T12dzCTzytHg
+	5Ec3g+qktvpSt65di46s4I/9vQkXIPyGYlqlhHs=
+X-Google-Smtp-Source: AGRyM1vEHdw+U96rIzhW6zkgtaj72ZS8Mc4Jf0CUsUjgZNa7gf9zGcS1I+LbCSSAS46frig4pqKB5Woq3OBcI+Ti+RY=
+X-Received: by 2002:a25:858e:0:b0:66e:4898:63e2 with SMTP id
+ x14-20020a25858e000000b0066e489863e2mr8437278ybk.296.1656966589934; Mon, 04
+ Jul 2022 13:29:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220704053901.728-1-peterwu.pub@gmail.com> <20220704053901.728-9-peterwu.pub@gmail.com>
-In-Reply-To: <20220704053901.728-9-peterwu.pub@gmail.com>
+References: <20220704053901.728-1-peterwu.pub@gmail.com> <20220704053901.728-8-peterwu.pub@gmail.com>
+In-Reply-To: <20220704053901.728-8-peterwu.pub@gmail.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 4 Jul 2022 22:19:55 +0200
-Message-ID: <CAHp75VeNRVHr-LorfnWAkwfXzT+ix6S9sZ623OBA8+0Zi8Xucg@mail.gmail.com>
-Subject: Re: [PATCH v4 08/13] usb: typec: tcpci_mt6370: Add Mediatek MT6370
- tcpci driver
+Date: Mon, 4 Jul 2022 22:29:13 +0200
+Message-ID: <CAHp75VcmEasZu53kZFO9R0Y=gZau-XFpAPd2a00deHv3PO1ZOg@mail.gmail.com>
+Subject: Re: [PATCH v4 07/13] mfd: mt6370: Add Mediatek MT6370 support
 To: ChiaEn Wu <peterwu.pub@gmail.com>
 Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
 	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
@@ -81,8 +80,8 @@ Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.or
 	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_132035_223038_BD1C1D5C 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20220704_132951_835008_49D29685 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,108 +96,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 4, 2022 at 7:42 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+On Mon, Jul 4, 2022 at 7:41 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 >
-> Add chip level mt6370 tcpci driver.
+> Add Mediatek MT6370 MFD support.
 
 ...
 
-> +static const struct reg_sequence mt6370_reg_init[] = {
-> +       REG_SEQ(0xA0, 0x1, 1000),
-> +       REG_SEQ(0x81, 0x38, 0),
-> +       REG_SEQ(0x82, 0x82, 0),
-> +       REG_SEQ(0xBA, 0xFC, 0),
-> +       REG_SEQ(0xBB, 0x50, 0),
-> +       REG_SEQ(0x9E, 0x8F, 0),
-> +       REG_SEQ(0xA1, 0x5, 0),
-> +       REG_SEQ(0xA2, 0x4, 0),
-> +       REG_SEQ(0xA3, 0x4A, 0),
-> +       REG_SEQ(0xA4, 0x01, 0),
-> +       REG_SEQ(0x95, 0x01, 0),
-> +       REG_SEQ(0x80, 0x71, 0),
-> +       REG_SEQ(0x9B, 0x3A, 1000)
+> +         This driver can also be built as a module. If so the module
 
-Keep a comma here in case something would be added later on.
+If so,
+
+> +         will be called "mt6370.ko".
+
+".ko" part is not needed.
+
+To all your patches in the series where this applies.
+
+...
+
+> +static const struct regmap_irq mt6370_irqs[] = {
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHGON, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TREG, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_AICR, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_MIVR, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_PWR_RDY, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FL_CHG_VINOVP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VSYSUV, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VSYSOV, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VBATOV, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_VINOVPCHG, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_COLD, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_COOL, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_WARM, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_BAT_HOT, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_TS_STATC, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_FAULT, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_STATC, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TMR, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_BATABS, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_ADPBAD, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_RVP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_TSHUTDOWN, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_IINMEAS, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_ICCMEAS, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHGDET_DONE, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_WDTMR, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_SSFINISH, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_RECHG, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_TERM, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHG_IEOC, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_ADC_DONE, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_PUMPX_DONE, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_BATUV, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_MIDOV, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_BST_OLP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_ATTACH, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DETACH, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_STPDONE, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_VBUSDET_DONE, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_HVDCP_DET, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_CHGDET, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DCDT, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_VGOK, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_WDTMR, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_UC, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_OC, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DIRCHG_OV, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_SWON, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_UVP_D, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_UVP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_OVP_D, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_OVPCTRL_OVP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_STRBPIN, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_TORPIN, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_TX, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED_LVF, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_SHORT, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_SHORT, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_STRB, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB, 8),
+> +       REGMAP_IRQ_REG_LINE(mT6370_IRQ_FLED2_STRB_TO, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB_TO, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_TOR, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_TOR, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_OTP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_VDDA_OVP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_VDDA_UV, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_LDO_OC, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_BLED_OCP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_BLED_OVP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VNEG_OCP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VPOS_OCP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_BST_OCP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VNEG_SCP, 8),
+> +       REGMAP_IRQ_REG_LINE(MT6370_IRQ_DSV_VPOS_SCP, 8)
+
+Leave a comma here.
 
 > +};
 
 ...
 
-> +       if (ret && !source)
-> +               return regulator_disable(priv->vbus);
-> +       else if (!ret && source)
-> +               return regulator_enable(priv->vbus);
-> +       else
-> +               return 0;
+> +static const struct resource mt6370_regulator_irqs[] = {
+> +       DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VPOS_SCP, "db_vpos_scp"),
+> +       DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VNEG_SCP, "db_vneg_scp"),
+> +       DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_BST_OCP, "db_vbst_ocp"),
+> +       DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VPOS_OCP, "db_vpos_ocp"),
+> +       DEFINE_RES_IRQ_NAMED(MT6370_IRQ_DSV_VNEG_OCP, "db_vneg_ocp"),
+> +       DEFINE_RES_IRQ_NAMED(MT6370_IRQ_LDO_OC, "ldo_oc")
 
-'else' is redundant in both cases.
+Leave a comma here.
 
-...
-
-> +static int mt6370_check_vendor_info(struct mt6370_priv *priv)
-> +{
-> +       struct regmap *regmap = priv->tcpci_data.regmap;
-> +       u16 vid;
-> +       int ret;
+> +};
 > +
-> +       ret = regmap_raw_read(regmap, TCPC_VENDOR_ID, &vid, sizeof(u16));
-> +       if (ret)
-> +               return ret;
-> +
-> +       if (vid != MT6370_VENDOR_ID) {
-> +               dev_err(priv->dev, "Vendor ID not correct 0x%02x\n", vid);
-> +               return -ENODEV;
+> +static const struct mfd_cell mt6370_devices[] = {
+> +       MFD_CELL_OF("adc", NULL, NULL, 0, 0, "mediatek,mt6370-adc"),
+> +       MFD_CELL_OF("charger", NULL, NULL, 0, 0, "mediatek,mt6370-charger"),
+> +       MFD_CELL_OF("backlight", NULL, NULL, 0, 0, "mediatek,mt6370-backlight"),
+> +       MFD_CELL_OF("flashlight", NULL, NULL, 0, 0, "mediatek,mt6370-flashlight"),
+> +       MFD_CELL_OF("indicator", NULL, NULL, 0, 0, "mediatek,mt6370-indicator"),
+> +       MFD_CELL_OF("tcpc", NULL, NULL, 0, 0, "mediatek,mt6370-tcpc"),
+> +       MFD_CELL_RES("regulator", mt6370_regulator_irqs)
 
-return dev_err_probe(...);
+Leave a comma here.
 
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static int mt6370_tcpc_probe(struct platform_device *pdev)
-> +{
-> +       struct mt6370_priv *priv;
-> +       int ret;
-> +
-> +       priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-> +       if (!priv)
-> +               return -ENOMEM;
-> +
-> +       priv->dev = &pdev->dev;
-> +       platform_set_drvdata(pdev, priv);
-> +
-> +       priv->tcpci_data.regmap = dev_get_regmap(pdev->dev.parent, NULL);
-> +       if (!priv->tcpci_data.regmap)
+> +};
 
-> +               return dev_err_probe(&pdev->dev, -ENODEV,
-> +                                    "Failed to init regmap\n");
-
-You may save some LoCs by introducing a temporary variable
-
-  struct device *dev = &pdev->dev;
-
-and here on a single line
-
-  return dev_err_probe(dev, ...);
-
-Ditto for the rest.
-
-...
-
-> +       ret = mt6370_check_vendor_info(priv);
-> +       if (ret)
-
-> +               return dev_err_probe(&pdev->dev, ret,
-> +                                    "Failed to check vendor info\n");
-
-This duplicates (with less info given) the message from the callee.
-
-...
-
-> +       { .compatible = "mediatek,mt6370-tcpc", },
-
-Inner comma is not needed.
 
 -- 
 With Best Regards,
