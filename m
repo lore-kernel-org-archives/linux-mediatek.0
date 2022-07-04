@@ -4,80 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6767AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 04:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A488DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 05:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+yxghOszZBjdFVKydnhCMznf8HYGqQap4xfJ9PbbAtA=; b=DEb7Fms9gtNVu4/tLAGLgPIstL
-	H3jdrLiR6QT5JeA7ZFDFNBhDojg3+drzjCbLzxIcuWy0LMgCQRMNiPXpRBs1skdW+CC2i1r9KTK1O
-	1ZXU9C+btPDxpLdgXQ5CmvGlheHsCwIxjj3NcU1kSn70c4Ko4YOBHfMoyncyPNpujv8msTDdMOGLO
-	pHibri23POaopC8ulKO/oEMCdi1OtP/OH3o1AcbOe2RdadK6CGAbdSTAVzq0QDFD8bwl6id8NYaMh
-	PBcP7pHgPsQBnTlNZ4xzbC9kyZwukze7Xzi00fY/TF00PcpL7DKRbUIHdmbiAfGdvioiwXBs4+bd8
-	n25+ci6A==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AXCYs1tP3RVWM+wE/Nbrq4/WIRuAc/tat3MFvoxWwq4=; b=g+U37sgW46woMGmzMkLeVoUfPo
+	+7PjPp8gioY3DBjvcfs9dDgijKWFLwDbG/dwPEXzizMIHdlraFNdSMlqrOxCbzOfMBW9xcTCmb5W3
+	Cqft8wT0k5Cxfd+gnr3NYF4HWoAhklGp0JiYKO90BaR6w6wJqk8Mr7+Odh6aqUwyvkVhpO8k9nRWm
+	uecZj0od8oBqRgzU1Mw5xceFRD9I52y94/zAmE5YAzBOCzSxv4M4ONW2wfSYmlh2oydNYleF6gghX
+	G0LXhICZ8IFQu51dGdFP5WrVvUmgmUeJDpQrtAI6jo+I4A7r94CmxC1ri0s+bBg3P6qG7REiT7+HJ
+	TjN3p4Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8E5c-004gX2-FZ; Mon, 04 Jul 2022 04:53:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o8EoB-0053f9-EZ; Mon, 04 Jul 2022 05:39:43 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8E5P-004gQF-BY; Mon, 04 Jul 2022 04:53:30 +0000
-X-UUID: a5f1298b7ea546babd8dc99d10363d6f-20220703
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:e529fb5c-4895-478e-bd31-dc6248513eb6,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:87442a2,CLOUDID:2f1f84d6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: a5f1298b7ea546babd8dc99d10363d6f-20220703
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 204571670; Sun, 03 Jul 2022 21:53:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Mon, 4 Jul 2022 11:52:40 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 4 Jul 2022 11:52:40 +0800
-Message-ID: <d76f77e50adbf44afbb1c32d8b30c7ee543beafb.camel@mediatek.com>
-Subject: Re: [PATCH v20 3/4] arm64: dts: mt8183: add Mediatek MDP3 nodes
-From: CK Hu <ck.hu@mediatek.com>
-To: Moudy Ho <moudy.ho@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
-	<roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Date: Mon, 4 Jul 2022 11:52:40 +0800
-In-Reply-To: <20220630091408.6438-4-moudy.ho@mediatek.com>
-References: <20220630091408.6438-1-moudy.ho@mediatek.com>
-	 <20220630091408.6438-4-moudy.ho@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o8Enz-0053YY-32; Mon, 04 Jul 2022 05:39:33 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id x4so8014914pfq.2;
+        Sun, 03 Jul 2022 22:39:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=AXCYs1tP3RVWM+wE/Nbrq4/WIRuAc/tat3MFvoxWwq4=;
+        b=gqw1bkUJBy0g7w922SCzSfqpBppoz4/wfY+7W8PIvhtPcdieDA61ykbf/3np9uMmIo
+         YJxtrDFf4H3Xfb8bQlgZB2aK7c+S1qXMmUbNl77Gz4jqbZL4aJCK3+0snaWDnt4O0P/q
+         +IVJXKNzJhlMF5RmFDG38BXJWKqlnDRIqDU8Yrx4jMvnVIg2lxd3ZGVXnuR4qxJN5SU2
+         OsxRvf/2LdPLZYeYFYzLZ2Ry5QQF6jP0LaoPZxmpPtuXOqEN8j/sGLVgf5oUg55+fk68
+         BhvJH0vYRjhlhPypTQRG/qvoymoYkURwTn8foQTChFG4WMHWkjGgnrpmLi7REZN09b/J
+         Yo4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=AXCYs1tP3RVWM+wE/Nbrq4/WIRuAc/tat3MFvoxWwq4=;
+        b=cZIQcm2hnt/y1pHuWDGafUBnD3iZgsFrKvU9F2j0lEomo86OVULx6Ax8AjjAyj1WYs
+         jcveNhbgHlHph4lCrnCgAZ3/25uJlV+eKi1CPCjXnikldLfbrXEojeJbys6GJte8bDt/
+         Q/8USKA3AV3oZuDX2c8dggQHD12qQdRSmtbGUiGi/g69EYG1gr8IwrBzqsno0m9L1qsp
+         hAHNL2Ybl17XDOSnD75c3OImdpxUVuQeKIKpPqLDDM9mM+pSJU2hssraS49Z3skzCleh
+         q5gfluzFkekeCuRqD0YWBRUInAmEfmuSKf7R63oaVaIx7S/eoPDKiXDxcdD0w7jJNn50
+         /DZA==
+X-Gm-Message-State: AJIora8QcwhNK+marfRzg4JyQYp14g2dEWI/aRr/jEkNLxPVjpv7YXa4
+	zQMkf9V3iCZu9G3AwfxS2dA=
+X-Google-Smtp-Source: AGRyM1v5mLSIHJIvXqk3IwGmWzHXsHokTfrTW6HYIKy36LxlvLHGrVjlljwEGM3p415A4KhJ0QYB4A==
+X-Received: by 2002:a65:6c0a:0:b0:3fa:c20c:cbe7 with SMTP id y10-20020a656c0a000000b003fac20ccbe7mr24026870pgu.611.1656913168404;
+        Sun, 03 Jul 2022 22:39:28 -0700 (PDT)
+Received: from RD-3580-24288.rt.l (42-72-4-255.emome-ip.hinet.net. [42.72.4.255])
+        by smtp.gmail.com with ESMTPSA id h24-20020a635318000000b0040dffa7e3d7sm13904507pgb.16.2022.07.03.22.39.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 03 Jul 2022 22:39:27 -0700 (PDT)
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+To: lee.jones@linaro.org,
+	daniel.thompson@linaro.org,
+	jingoohan1@gmail.com,
+	pavel@ucw.cz,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	sre@kernel.org,
+	chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org,
+	jic23@kernel.org,
+	lars@metafoo.de,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	linux@roeck-us.net,
+	heikki.krogerus@linux.intel.com,
+	deller@gmx.de
+Cc: chiaen_wu@richtek.com,
+	alice_chen@richtek.com,
+	cy_huang@richtek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	linux-iio@vger.kernel.org,
+	linux-fbdev@vger.kernel.org,
+	szunichen@gmail.com
+Subject: [PATCH v4 00/13] Add Mediatek MT6370 PMIC support
+Date: Mon,  4 Jul 2022 13:38:48 +0800
+Message-Id: <20220704053901.728-1-peterwu.pub@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220703_215327_429741_FEC7D357 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20220703_223931_193128_919A6178 
+X-CRM114-Status: GOOD (  21.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,178 +113,333 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+From: ChiaEn Wu <chiaen_wu@richtek.com>
 
-On Thu, 2022-06-30 at 17:14 +0800, Moudy Ho wrote:
-> Add device nodes for Media Data Path 3 (MDP3) modules.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 79
-> +++++++++++++++++++++++-
->  1 file changed, 78 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 9485c1efc87c..938f0c4b7525 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1691,6 +1691,50 @@
->  			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> 0 0x1000>;
->  		};
->  
-> +		mdp3-rdma0@14001000 {
-> +			compatible = "mediatek,mt8183-mdp3-rdma";
-> +			reg = <0 0x14001000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> 0x1000 0x1000>;
-> +			power-domains = <&spm
-> MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> +				 <&mmsys CLK_MM_MDP_RSZ1>;
-> +			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-> +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-> +				 <&gce 21 CMDQ_THR_PRIO_LOWEST 0>;
-> +		};
-> +
-> +		mdp3-rsz0@14003000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
-> +			reg = <0 0x14003000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> 0x3000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-> +		};
-> +
-> +		mdp3-rsz1@14004000 {
-> +			compatible = "mediatek,mt8183-mdp3-rsz";
-> +			reg = <0 0x14004000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> 0x4000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-> +		};
-> +
-> +		mdp3-wrot0@14005000 {
-> +			compatible = "mediatek,mt8183-mdp3-wrot";
-> +			reg = <0 0x14005000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> 0x5000 0x1000>;
-> +			power-domains = <&spm
-> MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_WROT0>;
-> +			iommus = <&iommu M4U_PORT_MDP_WROT0>;
-> +		};
-> +
-> +		mdp3-wdma@14006000 {
-> +			compatible = "mediatek,mt8183-mdp3-wdma";
-> +			reg = <0 0x14006000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
-> 0x6000 0x1000>;
-> +			power-domains = <&spm
-> MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-> +			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
-> +		};
-> +
->  		ovl0: ovl@14008000 {
->  			compatible = "mediatek,mt8183-disp-ovl";
->  			reg = <0 0x14008000 0 0x1000>;
-> @@ -1809,7 +1853,33 @@
->  			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&spm
-> MT8183_POWER_DOMAIN_DISP>;
->  			mediatek,gce-events =
-> <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
-> -					      <CMDQ_EVENT_MUTEX_STREAM_
-> DONE1>;
-> +					      <CMDQ_EVENT_MUTEX_STREAM_
-> DONE1>,
-> +					      <CMDQ_EVENT_MDP_RDMA0_SOF
-> >,
-> +					      <CMDQ_EVENT_MDP_RDMA0_EOF
-> >,
+This patch series add Mediatek MT6370 PMIC support. The MT6370 is a
+highly-integrated smart power management IC, which includes a single
+cell Li-Ion/Li-Polymer switching battery charger, a USB
+Type-C & Power Delivery (PD) controller, dual Flash LED current sources,
+a RGB LED driver, a backlight WLED driver, a display bias driver and a
+general LDO for portable devices.
 
-This event is sent from MDP_RDMA0 to GCE, so move this event to
-MDP_RDMA0 node.
+In this series of patches, we based on Andy Shevchenko's mfd patch used to
+adjust the Makefile order.
+(https://lore.kernel.org/all/20220616182524.7956-2-andriy.shevchenko@linux.intel.com/)
+Among with this, we took some changes for MT6370 and refined the MT6370 device
+tree files to comply with DT specifications.
 
-> +					      <CMDQ_EVENT_MDP_RSZ0_SOF>
-> ,
-> +					      <CMDQ_EVENT_MDP_RSZ1_SOF>
-> ,
-> +					      <CMDQ_EVENT_MDP_TDSHP_SOF
-> >,
-> +					      <CMDQ_EVENT_MDP_WROT0_SOF
-> >,
-> +					      <CMDQ_EVENT_MDP_WROT0_EOF
-> >,
-> +					      <CMDQ_EVENT_MDP_WDMA0_SOF
-> >,
-> +					      <CMDQ_EVENT_MDP_WDMA0_EOF
-> >,
+Thank you,
+ChiaEn Wu
 
-This event is sent from MDP_WDMA0 to GCE, so move this event to
-MDP_WDMA0 node.
+---
+Changes in v4:
+- In patch 02/13:
+	- Add minItems of "io-channel-names"
+	- Replace text "Mediatek" with "MediaTek"
 
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_0>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_1>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_2>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_3>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_4>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_5>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_6>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_7>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_8>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_9>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_10>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_11>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_12>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_13>,
-> +					      <CMDQ_EVENT_ISP_FRAME_DON
-> E_P2_14>,
-> +					      <CMDQ_EVENT_WPE_A_DONE>,
+- In patch 06/13:
+	- Roll back all "$ref: " to v2 patch style (using
+	  "/schemas/...")
 
-This event is sent from WPE_A to GCE, so move this event to WPE_A node.
+- In patch 07/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Replace "first break and then return" with "return directly"
+	  in
+	  "mt6370_check_vendor_info()"
+	- Add module name related description in Kconfig helptext
+	- Add Copyright in the source code
+	- Add header file "mt6370.h" for all "#define IRQ"
+	- Adjust Makefile order of MT6370
+	- Refine "bank_idx" and "bank_addr" in
+	  "mt6375_regmap_read()" / "mt6375_regmap_write()"
+	- Refine redundant "else if" in "mt6370_regmap_read()"
 
-Regards,
-CK
+- In patch 08/13:
+    - Replace text "Mediatek" with "MediaTek" in Kconfig
+    - Replace "first ret=regulator_(dis/en)able and then return"
+      with "return directly" in "mt6370_tcpc_set_vbus()"
+    - Replace header file <linux/of.h> with <linux/mod_devicetable.h>
+    - Add Copyright in the source code
+    - Add module name related description in Kconfig helptext
+    - Remove header file <linux/of.h>
+    - Refine all probe error by using dev_err_probe()
 
-> +					      <CMDQ_EVENT_SPE_B_DONE>;
->  			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX
-> 0x6000 0x1000>;
->  		};
->  
-> @@ -1834,6 +1904,13 @@
->  			power-domains = <&spm
-> MT8183_POWER_DOMAIN_DISP>;
->  		};
->  
-> +		mdp3-ccorr@1401c000 {
-> +			compatible = "mediatek,mt8183-mdp3-ccorr";
-> +			reg = <0 0x1401c000 0 0x1000>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX
-> 0xc000 0x1000>;
-> +			clocks = <&mmsys CLK_MM_MDP_CCORR>;
-> +		};
-> +
->  		imgsys: syscon@15020000 {
->  			compatible = "mediatek,mt8183-imgsys",
-> "syscon";
->  			reg = <0 0x15020000 0 0x1000>;
+- In patch 09/13:
+	- Replace text "Mediatek" with "MediaTek"
+	- Replace all "first dev_err() and then return" with "return
+	  dev_err_probe()"
+	- Add Copyright in the source code
+	- Add module name related description in Kconfig
+	- Add unit suffix of macro "ADC_CONV_POLLING_TIME"
+	- Add new macro "ADC_CONV_TIME_MS"
+	- Adjust the position of include file <mediatek,mt6370_adc.h>
+	- Adjust the postions between <linux/module.h> and
+	  <linux/mod_devicetable.h>
+	- Fix some incorrect characters
+
+- In patch 10/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig and
+	  MODULE_DESCRIPTION()
+	- Replace "mt6370_chg_val_to_reg" and "mt6370_chg_reg_to_val"
+	  with
+	  "linear_range" API
+	- Replace "first break and then return" with "return directly"
+	  in all
+	  cases of get/set power_supply_property
+	- Replace all "first dev_err() and then return" with "return
+	  dev_err_probe()"
+	- Replace all "return IS_ERR(priv->rdev) ? PTR_ERR(priv->rdev) :
+	  0" with
+	  "PTR_ERR_OR_ZERO()"
+	- Replace "priv->dev->of_node" with "dev_of_node()"
+	- Add Copyright in the source code
+	- Add module name related description in Kconfig helptext
+	- Add proper unit of "MT6370_MIVR_IBUS_TH"
+	- Add error check in "mt6370_chg_get_status"
+	- Remove including <mediatek,mt6370_adc.h> header file
+	- Remove redundant comma of every enum terminator line
+	- Remove unwanted blank lines
+	- Remove the useless label (toggle_cfo_exit:)
+	- Remove using atomic
+	- Remove using of_match_ptr()
+	- Fix some incorrect characters
+	- Fix updating wrong bits when using ena_gpiod of OTG regulator
+	- Adjust the probe order in probe()
+
+- In patch 11/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Replace text "const" with "constant" in Kconfig
+	- Add Copyright in the source code
+
+- In patch 12/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Add Copyright in the source code
+
+- In patch 13/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Add Copyright in the source code
+	- Revise the comment of "PWM HYS STEPS"
+
+
+Changes in v3:
+- Remove ADC ABI file, which is added in v2 Patch 7
+- In patch 02/14:
+	- Add items and remove maxItems of io-channels
+	- Add io-channel-names and describe each item
+	- Add "unevaluatedProperties: false" in "usb-otg-vbus-regulator"
+	- Rename "enable-gpio" to "enable-gpios" in "usb-otg-vbus-regulator"
+- In patch 03/14:
+	- Use leds-class-multicolor.yaml instead of common.yaml.
+	- Split multi-led and led node.
+	- Add subdevice "led" in "multi-led".
+- In patch 04/14:
+	- Remove the description of enum.
+- In patch 05/14:
+	- Rename "mediatek,bled-pwm-hys-input-threshold-steps" to
+	  "mediatek,bled-pwm-hys-input-th-steps"
+	- Refine "bled-pwm-hys-input-th-steps", "bled-ovp-microvolt",
+	  "bled-ocp-microamp" enum values
+- In patch 06/14:
+	- Use " in entire patchset
+	- Refine ADC description
+	- Rename "enable-gpio" to "enable-gpios" in "regualtor"
+- In patch 07/14:
+	- Refine Kconfig help text
+	- Refine error message of unknown vendor ID in
+	  mt6370_check_vendor_info()
+	- Refine return value handling of mt6370_regmap_read()
+	- Refine all probe error by using dev_err_probe()
+	- Refine "bank_idx" and "bank_addr" in mt6370_regmap_read() and
+	  mt6370_regmap_write()
+	- Add "#define VENID*" and drop the comments in
+	  mt6370_check_vendor_info()
+	- Drop "MFD" in MODULE_DESCRIPTION()
+- In patch 09/14:
+	- Refine Kconfig help text
+- In patch 10/14:
+	- Refine Kconfig help text
+	- Refine all channel value in read_scale()
+		a. current: uA --> mA
+		b. voltage: uV --> mV
+		c. temperature: degrees Celsius --> milli degrees Celsius
+	- Add "default:" condition of switch statement in read_scale() and read_raw()
+	- Add error message for reading ADC register failed
+	- Add the comment for adc_lock
+	- Add <linux/mod_devicetable.h> header file for struct of_device_id
+	- Replace "adc" text with "ADC" in all of the error messages
+- In patch 12/14:
+	- Refine the grammer of the Kconfig.
+	- Change reg mode to the const current mode.
+- In patch 14/14:
+	- Refine bool properties parsing (pwm-enable, ovp-shutdown, ocp-shutdown) in DT
+	  parsing function
+	- Refine u32 and u8 properties parsing (pwm-hys-input-th-steps, ovp-microvolt,
+	  ocp-microamp), from using register value to using actual value
+	- Refine error string of "channle-use" parsing failed
+	- Refine Kconfig help text
+
+
+Changes in v2:
+- In patch 01/15:
+	- Add "unevaluatedProperties: false".
+	- Delete "DT bindings".
+	- Refine the description to fit in 80 columns.
+	- Skip the connector description.
+- In patch 02/15:
+	- Refine items description of interrupt-name
+	- Rename "usb-otg-vbus" to "usb-otg-vbus-regulator"
+	- Add constraint properties for ADC
+- In patch 03/15:
+	- Skip not useful description of "^(multi-)?led@[0-3]$"
+	  and reg.
+	- Due to the dependency, remove the mention of mfd
+	  document directory.
+	- Delete Soft-start property. In design aspect, we think
+	  soft-restart should always be enabled, our new chip
+	  has deleted the related setting register , also, we don’t
+	  allow user adjust this parameter in this chip.
+	- Refine the commit message.
+- In patch 04/15:
+	- Skip not useful description of "^led@[0-1]$" and reg.
+	- Add apace after '#'.
+	- Refine the commit message.
+- In patch 05/15:
+	- Remove "binding documentation" in subject title
+	- Refine description of mt6370 backlight binding
+	  document
+	- Refine properties name(bled-pwm-hys-input-bit,
+	  bled-ovp-microvolt, bled-ocp-microamp) and their
+	  description
+- In patch 06/15:
+	- Refine ADC and Regulator descriptions
+	- Refine include header usage in example
+	- Refine node name to generic node name("pmic@34")
+	- Refine led example indentation
+	- Refine license of mediatek,mt6370_adc.h
+	- Rename the dts example from IRQ define to number.
+	- Remove mediatek,mt6370.h
+- In patch 07/15:
+	- Add ABI documentation for mt6370 non-standard ADC
+	  sysfs interfaces.
+- In patch 08/15:
+	- Add all IRQ define into mt6370.c.
+	- Refine include header usage
+- In patch 09/15:
+	- No changes.
+- In patch 10/15:
+	- Use 'gpiod_get_from_of_node' to replace
+	  'fwnode_gpiod_get_index'.
+- In patch 11/15:
+	- Refine Kconfig mt6370 help text
+	- Refine mask&shift to FIELD_PREP()
+	- Refine mutex lock name ("lock" -> "adc_lock")
+	- Refine mt6370_adc_read_scale()
+	- Refine mt6370_adc_read_offset()
+	- Refine mt6370_channel_labels[] by using enum to index
+	  chan spec
+	- Refine MT6370_ADC_CHAN()
+	- Refine indio_dev->name
+	- Remove useless include header files
+- In patch 12/15:
+	- Refine mt6370_chg_otg_rdesc.of_match
+	  ("mt6370,otg-vbus" -> "usb-otg-vbus-regulator") to match
+	  DT binding
+- In patch 13/15:
+	- Refine Kconfig description.
+	- Remove include "linux/of.h" and use
+	  "linux/mod_devicetable.h".
+	- Place a comma for the last element of the const
+	  unsigned int array.
+	- Add a comment line for the mutex 'lock'.
+	- In probe function, use 'dev_err_probe' in some
+	  judgement to reduce the LOC.
+	- Refine include header usage.
+	  BIT/GENMASK -> linux/bits.h
+	  FIELD_GET -> linux/bitfield.h
+- In patch 14/15:
+	- Add blank line.
+	- Replace container_of() with to_mt6370_led() .
+	- Refine description of ramping.
+	- Refine the mt6370_init_common_properties function.
+	- Refine the probe return.
+- In patch 15/15:
+	- Refine MT6370 help text in Kconfig
+	- Refine DT Parse function
+	- Remove useless enum
+	- Add comment for 6372 backward compatible in
+	  bl_update_status() and
+	  check_vendor_info()
+	- Using dev_err_probe(); insteads dev_err()&return; in
+	  the probe()
+
+Alice Chen (2):
+  dt-bindings: leds: Add Mediatek MT6370 flashlight
+  leds: flashlight: mt6370: Add Mediatek MT6370 flashlight support
+
+ChiYuan Huang (7):
+  dt-bindings: usb: Add Mediatek MT6370 TCPC
+  dt-bindings: leds: mt6370: Add Mediatek mt6370 current sink type LED
+    indicator
+  dt-bindings: backlight: Add Mediatek MT6370 backlight
+  dt-bindings: mfd: Add Mediatek MT6370
+  mfd: mt6370: Add Mediatek MT6370 support
+  usb: typec: tcpci_mt6370: Add Mediatek MT6370 tcpci driver
+  leds: mt6370: Add Mediatek MT6370 current sink type LED Indicator
+    support
+
+ChiaEn Wu (4):
+  dt-bindings: power: supply: Add Mediatek MT6370 Charger
+  iio: adc: mt6370: Add Mediatek MT6370 support
+  power: supply: mt6370: Add Mediatek MT6370 charger driver
+  video: backlight: mt6370: Add Mediatek MT6370 support
+
+ .../leds/backlight/mediatek,mt6370-backlight.yaml  |   92 ++
+ .../bindings/leds/mediatek,mt6370-flashlight.yaml  |   41 +
+ .../bindings/leds/mediatek,mt6370-indicator.yaml   |   77 ++
+ .../devicetree/bindings/mfd/mediatek,mt6370.yaml   |  280 ++++++
+ .../power/supply/mediatek,mt6370-charger.yaml      |   88 ++
+ .../bindings/usb/mediatek,mt6370-tcpc.yaml         |   36 +
+ drivers/iio/adc/Kconfig                            |   12 +
+ drivers/iio/adc/Makefile                           |    1 +
+ drivers/iio/adc/mt6370-adc.c                       |  274 +++++
+ drivers/leds/Kconfig                               |   14 +
+ drivers/leds/Makefile                              |    1 +
+ drivers/leds/flash/Kconfig                         |   12 +
+ drivers/leds/flash/Makefile                        |    1 +
+ drivers/leds/flash/leds-mt6370-flash.c             |  662 ++++++++++++
+ drivers/leds/leds-mt6370.c                         |  994 ++++++++++++++++++
+ drivers/mfd/Kconfig                                |   16 +
+ drivers/mfd/Makefile                               |    1 +
+ drivers/mfd/mt6370.c                               |  289 ++++++
+ drivers/mfd/mt6370.h                               |   88 ++
+ drivers/power/supply/Kconfig                       |   14 +
+ drivers/power/supply/Makefile                      |    1 +
+ drivers/power/supply/mt6370-charger.c              | 1062 ++++++++++++++++++++
+ drivers/usb/typec/tcpm/Kconfig                     |   11 +
+ drivers/usb/typec/tcpm/Makefile                    |    1 +
+ drivers/usb/typec/tcpm/tcpci_mt6370.c              |  207 ++++
+ drivers/video/backlight/Kconfig                    |   12 +
+ drivers/video/backlight/Makefile                   |    1 +
+ drivers/video/backlight/mt6370-backlight.c         |  352 +++++++
+ include/dt-bindings/iio/adc/mediatek,mt6370_adc.h  |   18 +
+ 29 files changed, 4658 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/backlight/mediatek,mt6370-backlight.yaml
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+ create mode 100644 Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+ create mode 100644 drivers/iio/adc/mt6370-adc.c
+ create mode 100644 drivers/leds/flash/leds-mt6370-flash.c
+ create mode 100644 drivers/leds/leds-mt6370.c
+ create mode 100644 drivers/mfd/mt6370.c
+ create mode 100644 drivers/mfd/mt6370.h
+ create mode 100644 drivers/power/supply/mt6370-charger.c
+ create mode 100644 drivers/usb/typec/tcpm/tcpci_mt6370.c
+ create mode 100644 drivers/video/backlight/mt6370-backlight.c
+ create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
+
+-- 
+2.7.4
 
 
