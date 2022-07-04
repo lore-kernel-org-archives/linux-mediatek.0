@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49CB3C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 01:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48107C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 02:21:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uD8rOMAs/3M4Oxt72ySbbZE8Pt6ja3hIhLbbcO0+n7M=; b=2RlGrrnhcKakiaDg7QSkIa634U
-	2Zl1QMdxZggh10/aPPtjRYJz8lzlake/CYPiSTcBDpp/jjEU/1VZWoNBpvQmKjvedjErNXza5LhDj
-	DagO3g/iyRnG3P/DrTylKoL9vuiZy77fWIV0WRBdOlSvmKhyscv9X0l5PagbsSzr4oTZ83jhac4cM
-	qzQuXyZBIdh7R6yMfj7U6/GHTzuAfx0v0X337L3zSWqT203rp3tsOwFwtCZhG5dg+6WOAyE3saJk8
-	78iGAYPhRCZ4ZIofcWBNRMuBhftUhyGxLRrmnh5Y7aShf6lDpr8Yk263d2GnAbC0joIWb3JTR9SpD
-	/iUfHElA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6xeI5fNAsGuZCYRpmm86LumLOaMx8ngE0EkeExry2HY=; b=kGCC7ruKfjCsSfb1yL0Z6Wx2J8
+	uZHHRxRGnmwJQV988nl+qPauq2H8wrr52gX1edgbhwEza6KQzkQQ56TQn50W0/XTu6KqJvxGG6oDy
+	jnxqQmxBw1SZtclksf5+FrOm8NExtPQ2PqYB3PcvUQ/15C30fa5wmtI/8W2Fq30eehKd1kZyvJp0s
+	AdD+0S6Uk0lKTGWoHeIvlZA+1PqjvEzJNXWXzYTs1FU/o6isQBM9xpEjl6mbb0teo7MA3gBT535MD
+	04uJwU4wF21KQss9LuKQMY9G2XascQiG2leB/cgqtrEmv/JtklG+FHnXa2bpzi7cX0oEth97inCMa
+	X0HMa9dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8B5q-002yHk-Se; Mon, 04 Jul 2022 01:41:42 +0000
+	id 1o8BiO-003Unq-Td; Mon, 04 Jul 2022 02:21:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8B5n-002yCB-ET; Mon, 04 Jul 2022 01:41:42 +0000
-X-UUID: da95c9edd0984c748bab43707b41757a-20220703
+	id 1o8BiL-003Uju-Id; Mon, 04 Jul 2022 02:21:30 +0000
+X-UUID: 4f248f3201f04947b82d7141fd7c9921-20220703
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.7,REQID:71aa4620-7783-4ef0-ac95-4b67316b8a21,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:87442a2,CLOUDID:97b94b63-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.7,REQID:8cf74526-6f4e-4fb6-a497-6893bf576f80,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:87442a2,CLOUDID:c5c46f86-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: da95c9edd0984c748bab43707b41757a-20220703
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: 4f248f3201f04947b82d7141fd7c9921-20220703
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <haibo.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1211450749; Sun, 03 Jul 2022 18:41:25 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 4 Jul 2022 09:40:52 +0800
+	with ESMTP id 522663982; Sun, 03 Jul 2022 19:21:23 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 4 Jul 2022 09:40:48 +0800
 Received: from mszsdtcf10.gcn.mediatek.inc (10.16.4.60) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 4 Jul 2022 09:40:51 +0800
+ 15.2.792.3 via Frontend Transport; Mon, 4 Jul 2022 09:40:48 +0800
 From: Haibo Li <haibo.li@mediatek.com>
 To: Sami Tolvanen <samitolvanen@google.com>
-CC: <xiaoming.yu@mediatek.com>, Kees Cook <keescook@chromium.org>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+CC: <xiaoming.yu@mediatek.com>, Kees Cook <keescook@chromium.org>, Nathan
+ Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, Peter Zijlstra
-	<peterz@infradead.org>, Masami Hiramatsu <mhiramat@kernel.org>, "Christophe
- Leroy" <christophe.leroy@csgroup.eu>, =?UTF-8?q?Andr=C3=A9=20Almeida?=
+	<peterz@infradead.org>, Masami Hiramatsu <mhiramat@kernel.org>, Christophe
+ Leroy <christophe.leroy@csgroup.eu>, =?UTF-8?q?Andr=C3=A9=20Almeida?=
 	<andrealmeid@igalia.com>, Luis Chamberlain <mcgrof@kernel.org>, Juergen Gross
 	<jgross@suse.com>, Haibo Li <haibo.li@mediatek.com>, Tiezhu Yang
 	<yangtiezhu@loongson.cn>, Aaron Tomlin <atomlin@redhat.com>, Dmitry Torokhov
 	<dmitry.torokhov@gmail.com>, <linux-kernel@vger.kernel.org>,
 	<llvm@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Lecopzer Chen
-	<lecopzer.chen@mediatek.com>
-Subject: [PATCH v2 1/2] cfi: enable sanitize for cfi.c
-Date: Mon, 4 Jul 2022 09:40:45 +0800
-Message-ID: <20220704014046.34596-2-haibo.li@mediatek.com>
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 0/2] cfi: free old cfi shadow asynchronously
+Date: Mon, 4 Jul 2022 09:40:44 +0800
+Message-ID: <20220704014046.34596-1-haibo.li@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220704014046.34596-1-haibo.li@mediatek.com>
-References: <20220704014046.34596-1-haibo.li@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220703_184139_518304_018AFFFE 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20220703_192129_664146_16E56B62 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,46 +83,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-currenly,cfi.c is excluded from cfi sanitize because of cfi handler.
-The side effect is that we can not transfer function pointer to
-other files which enable cfi sanitize.
+This patchset changes synchronize_rcu to call_rcu in update_shadow.
 
-Enable cfi sanitize for cfi.c and bypass cfi check for __cfi_slowpath_diag
+Patch 1 enables the CFI sanitization for cfi.c and 
+bypass __cfi_slowpath_diag.
+It is the prerequisite for using call_rcu in cfi.c.
 
-Signed-off-by: Haibo Li <haibo.li@mediatek.com>
-Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
----
- kernel/Makefile | 3 ---
- kernel/cfi.c    | 2 +-
- 2 files changed, 1 insertion(+), 4 deletions(-)
+Patch 2 changes synchronize_rcu to call_rcu and
+free old cfi shadow in rcu cb
 
-diff --git a/kernel/Makefile b/kernel/Makefile
-index a7e1f49ab2b3..a997bef1a200 100644
---- a/kernel/Makefile
-+++ b/kernel/Makefile
-@@ -40,9 +40,6 @@ KCSAN_SANITIZE_kcov.o := n
- UBSAN_SANITIZE_kcov.o := n
- CFLAGS_kcov.o := $(call cc-option, -fno-conserve-stack) -fno-stack-protector
- 
--# Don't instrument error handlers
--CFLAGS_REMOVE_cfi.o := $(CC_FLAGS_CFI)
--
- obj-y += sched/
- obj-y += locking/
- obj-y += power/
-diff --git a/kernel/cfi.c b/kernel/cfi.c
-index 08102d19ec15..6c8ae07b5835 100644
---- a/kernel/cfi.c
-+++ b/kernel/cfi.c
-@@ -311,7 +311,7 @@ static inline cfi_check_fn find_check_fn(unsigned long ptr)
- 	return fn;
- }
- 
--void __cfi_slowpath_diag(uint64_t id, void *ptr, void *diag)
-+void __nocfi __cfi_slowpath_diag(u64 id, void *ptr, void *diag)
- {
- 	cfi_check_fn fn = find_check_fn((unsigned long)ptr);
- 
+Changes in v2:
+ - Remove _run_cfi_check,add __nocfi to __cfi_slowpath_diag directly
+ - Rename _cfi_shadow_free_rcu to free_shadow
+
+Haibo Li (2):
+  cfi: enable sanitize for cfi.c
+  cfi: free old cfi shadow asynchronously
+
+ kernel/Makefile |  3 ---
+ kernel/cfi.c    | 14 +++++++++++---
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
 -- 
 2.25.1
 
