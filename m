@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C8FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 05:40:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC2D6CCA483
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 05:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oAIuQm2COlWkK+/Z8BqCJPN5NppYOkaJmMDk8pvQT/U=; b=krV3HwMKFzXlle3R6sc8JGE9l7
-	NRlDpXU9gTVzZFHHvMcDe7W7RdwbEdjHy5bgBxuMAl0ettQJgAa+vT+bk9ODwBW26j8cuJB4N9f4v
-	QA9ivM5nmV/m/jGG6j7y6YqPXCGhLywpN+I/JlzsyWDsP7MTILumfZfWTPSM0tmx77h+wQQKtJ/OK
-	n4HE3g4nQ1XQP1S+JUnLqnKLYgWh9oR9/E9pUvcPEaSi2Gq6dUJzNVD8UvM6YKmxdWdCZv87X8FI0
-	NRb8vgBysijdrUIe5hiVCUPbDvsnKi9BThO5GTl/9MflG3djLS7HyLvt8zbUSL9bX44BHNIL+s5zS
-	D1jsryaw==;
+	bh=ZBFds6olkH7qZWoO3BcF5jnp49SAncP60CSiK32nvCU=; b=g/nNxytw7bKTZ8PFF11yyNfqgM
+	Lv96d6JPu4pNS0U6Oeal8XloJ0Y+pPp6eadbBbAkjO1PFwKXrZQdPY008Yp5jYMY39AeN10iRDNDC
+	Ofj0KIerqm+iDBDEta5fT8gJxh9Tce/sMrVyEfrlK73EYjjRlkTgoxYSqEOCWgROZaUHsK7hvYidH
+	q7L0bZ1GhzmpEeOKZj3KgAK8qBY8d88aheJsUnGWBjGuijAdg0aG2wX72PBjr4xaSPHb98Da1Wx6k
+	HeimDswrzUXZdZ7xhMKRbeTZunlZrXrLP8/1MA08UryWjB06iPsop5oE41AJcr05irjdL/0l97dOE
+	Y5JVYOKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8EpB-0054Qd-SC; Mon, 04 Jul 2022 05:40:45 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1o8Epk-0054uP-HG; Mon, 04 Jul 2022 05:41:20 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8EoF-0053gd-Fz; Mon, 04 Jul 2022 05:39:49 +0000
-Received: by mail-pf1-x434.google.com with SMTP id w185so4294280pfb.4;
-        Sun, 03 Jul 2022 22:39:46 -0700 (PDT)
+	id 1o8EoL-0053l9-Qk; Mon, 04 Jul 2022 05:39:55 +0000
+Received: by mail-pf1-x432.google.com with SMTP id y141so7994332pfb.7;
+        Sun, 03 Jul 2022 22:39:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=oAIuQm2COlWkK+/Z8BqCJPN5NppYOkaJmMDk8pvQT/U=;
-        b=EaSKmdfnWVJ+MEpeWqtg1O0K3ULAhPBZDu4y0J5yHyWuHGxf6rPYMVoveDSCrlTjR9
-         TFnf+toKwQdO2ceOqWxkRj+OW2XjezFBJEHyvgRge+bPiCAOhow8MLv60v31u0rXXeV2
-         ZjnVQu5QusuAatAcEzgnr6JoiiFWDP7dwXs72jp2mI0Hk7Nq3P4rJRfNcz0HDHPc8Yhh
-         dIocVDAVZKBFCPD4y0OyYzLiUsFhTzgXxm+hFjDiZclY7X0LOG/G5870oDbQR+i3x8XI
-         A46KXgDjsQFhKpsdYYRe53sfrWe0HN12AxU1k0KCpxf+VUs3YJOzJ4YZhxd+ARoZ6BtY
-         dERQ==
+        bh=ZBFds6olkH7qZWoO3BcF5jnp49SAncP60CSiK32nvCU=;
+        b=ghNOEPKfW/M7m5HM4dYGeASvfcvcu8tR3I9lSRY/mX2exs/qAsP7+hQu8z0Jq2sH+g
+         PevP2yOfgvyAoRpCblNCliFPwxd3Q9GNxuK7ZFQjUSFDA21mWoXzgrUntgBPAfN6rb9z
+         tA4ST2OpyzlVrguhxGijOhgZbKrTfC7nTyb50T41oeU2ugCxKrNj73JnoWnssIDSLkL4
+         5OH8BZILuCS5slgVW8rQNv2RGNazxPKs172ETLIOuXr4hPqFMz+JMBwe7LAao3IaNVo6
+         6pOEVj+V4yHLVv5WWbwqjIURYYhfBJ6s4+vLOO96roMtrpuLOoVPCTAOt2ajZDwKIawC
+         TvQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=oAIuQm2COlWkK+/Z8BqCJPN5NppYOkaJmMDk8pvQT/U=;
-        b=e0/WpWPB2yctCY2ssoBTz6OVWCS3dxjytlAaVfNtptxAfxctyMl56ga+wmB4h4jfHv
-         7Jha0PinVe9llW+65VPSHJpSnumnTb6vf/ojM2RsHXtOUcWBep8zhodnuJ6Fh5NKKWM7
-         e+Ogsm+NV8bLQbYuMAttadk4Eb7MpHEEobMRPzfouhsorMco3utMGia+1lF8KP3hFnP/
-         HwcmV0Y7T6BXIYykw8PM9Y4UJgVQTUEHNA5N1uOXex9WJGmMyhruU4iKA7cbr1rzq4eZ
-         kBlak8L7/9QmlQWrAbtyDmngVEEFR+Ls9iX9GISBmDo+tb/TAojEuL4xctkm4ykCG9IZ
-         wStw==
-X-Gm-Message-State: AJIora+fFDbctAKbkMT2oYHJkmRM3KBnzlPQJ9ir8uDnNrWN2CwncWZm
-	Su9qTVUcsHpIXi7dpQeiTLA=
-X-Google-Smtp-Source: AGRyM1sQccU+fvMq/w6AhPUj9pevtapjlIxEFCp01xKjETVAPCINpFYH0R4xwRYW8OPqboB13jMtDw==
-X-Received: by 2002:a63:86c7:0:b0:40d:af99:608 with SMTP id x190-20020a6386c7000000b0040daf990608mr24095540pgd.515.1656913186411;
-        Sun, 03 Jul 2022 22:39:46 -0700 (PDT)
+        bh=ZBFds6olkH7qZWoO3BcF5jnp49SAncP60CSiK32nvCU=;
+        b=tzyagkBQ1hWjwnU0rXG3XT+v5VIrIjHypCZ5ERPK8GoxUAEIeWheNodMKP4MeFkHYh
+         CyqbDhiK1TWYCoxE9Ny0jd3vcDManJdrAW7tq7bDljw3Lvu+XVwkXQ10kpjexa6aWidx
+         SIetbor7U1BNiMou2DL3lBTcDU3jOxiTVDhKS9lJezbiFYliqxl1LmJQvg5JgozZH9n3
+         0ur7o2HHqzc5JeUvdctUBpMLTQlxd9XnBqn8mbnuquv0rQJFt6BgFgxT/wxfzuaUkQhC
+         R01EDB7s/mKh4XllqHETS0WdoB4oqePI02bCCG4r4UpD3dJLl8H2PHfJ+TzLkp05Ims3
+         RFrQ==
+X-Gm-Message-State: AJIora/ld49tkxj3zGo1SECyTYcx4p8CBnLZiw9RfKmkbd9JcaXUUisu
+	Jijnl2xeLzJf+R8dOTrtGok=
+X-Google-Smtp-Source: AGRyM1vZ/A+Vp7yMvTtkW1G5gpiZdY17tzZRcpC8TGWh/YaaI0JZwzDLX2rNEOcvJ6ZApE0NroUE6w==
+X-Received: by 2002:a05:6a00:140a:b0:4e0:54d5:d01 with SMTP id l10-20020a056a00140a00b004e054d50d01mr34348533pfu.20.1656913192917;
+        Sun, 03 Jul 2022 22:39:52 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-72-4-255.emome-ip.hinet.net. [42.72.4.255])
-        by smtp.gmail.com with ESMTPSA id h24-20020a635318000000b0040dffa7e3d7sm13904507pgb.16.2022.07.03.22.39.40
+        by smtp.gmail.com with ESMTPSA id h24-20020a635318000000b0040dffa7e3d7sm13904507pgb.16.2022.07.03.22.39.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 03 Jul 2022 22:39:45 -0700 (PDT)
+        Sun, 03 Jul 2022 22:39:52 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: lee.jones@linaro.org,
 	daniel.thompson@linaro.org,
@@ -90,17 +90,17 @@ Cc: chiaen_wu@richtek.com,
 	linux-fbdev@vger.kernel.org,
 	szunichen@gmail.com,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v4 03/13] dt-bindings: leds: mt6370: Add Mediatek mt6370 current sink type LED indicator
-Date: Mon,  4 Jul 2022 13:38:51 +0800
-Message-Id: <20220704053901.728-4-peterwu.pub@gmail.com>
+Subject: [PATCH v4 04/13] dt-bindings: leds: Add Mediatek MT6370 flashlight
+Date: Mon,  4 Jul 2022 13:38:52 +0800
+Message-Id: <20220704053901.728-5-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220704053901.728-1-peterwu.pub@gmail.com>
 References: <20220704053901.728-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220703_223947_599655_559D832C 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20220703_223953_928099_AA8A91AD 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,44 +115,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+From: Alice Chen <alice_chen@richtek.com>
 
-Add Mediatek mt6370 current sink type LED indicator binding documentation.
+Add Mediatek MT6370 flashlight binding documentation.
 
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+Signed-off-by: Alice Chen <alice_chen@richtek.com>
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../bindings/leds/mediatek,mt6370-indicator.yaml   | 77 ++++++++++++++++++++++
- 1 file changed, 77 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+ .../bindings/leds/mediatek,mt6370-flashlight.yaml  | 41 ++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
 
-diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
 new file mode 100644
-index 0000000..45030f3
+index 0000000..e9d02ed
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-@@ -0,0 +1,77 @@
++++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+@@ -0,0 +1,41 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/leds/mediatek,mt6370-indicator.yaml#
++$id: http://devicetree.org/schemas/leds/mediatek,mt6370-flashlight.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: LED driver for MT6370 PMIC from MediaTek Integrated.
++title: Flash LED driver for MT6370 PMIC from MediaTek Integrated.
 +
 +maintainers:
 +  - Alice Chen <alice_chen@richtek.com>
 +
 +description: |
 +  This module is part of the MT6370 MFD device.
-+  Add MT6370 LED driver include 4-channel RGB LED support Register/PWM/Breath Mode
-+
-+allOf:
-+  - $ref: leds-class-multicolor.yaml#
++  Add MT6370 flash LED driver include 2-channel flash LED support Torch/Strobe Mode.
 +
 +properties:
 +  compatible:
-+    const: mediatek,mt6370-indicator
++    const: mediatek,mt6370-flashlight
 +
 +  "#address-cells":
 +    const: 1
@@ -161,47 +158,14 @@ index 0000000..45030f3
 +    const: 0
 +
 +patternProperties:
-+  "^multi-led@[0-3]$":
-+    type: object
-+
-+    properties:
-+      reg:
-+        enum: [0, 1, 2, 3]
-+
-+      "#address-cells":
-+        const: 1
-+
-+      "#size-cells":
-+        const: 0
-+
-+    patternProperties:
-+      "^led@[0-2]$":
-+        type: object
-+        $ref: common.yaml#
-+        unevaluatedProperties: false
-+
-+        required:
-+          - reg
-+          - color
-+
-+    required:
-+      - reg
-+      - color
-+      - "#address-cells"
-+      - "#size-cells"
-+
-+  "^led@[0-3]$":
++  "^led@[0-1]$":
 +    type: object
 +    $ref: common.yaml#
 +    unevaluatedProperties: false
 +
 +    properties:
 +      reg:
-+        enum: [0, 1, 2, 3]
-+
-+    required:
-+      - reg
-+      - color
++        enum: [0, 1]
 +
 +required:
 +  - compatible
