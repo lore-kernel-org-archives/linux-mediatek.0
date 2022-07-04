@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB10C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 08:57:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C62FBC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Jul 2022 09:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gTNkzd98m8basWiaAvcRIDnLNzTPaozHFodvd+MEWy0=; b=5FXvorhWyvfE8BuKMhwxLMfX3m
-	4ZTWMJ7UQvRXwKTiYxJkHjw8VVadDtKFATQGRJ9F/TLsrYl8yMjLDde/IH26KSOQGhQpwjZZ7ODpg
-	F/lHbHS5lr6TtlFrScCj35sgLEGwsv+YmyohdTMqYgRDVdGo0S77RD3KaSxbNThaGxFL5sv9a/4Fg
-	eUstKfqi3CkjOAAycs5zqHmyw05JJE6VuUVyCqtEkAzrSIzNiRNKAFyiR5SYmo2Uydp2AW5UYyqrq
-	KdMVXGdwWaA1O3Xxmb3Hfsy+BBtH6br6snz0eFVCqW4YLn5WBUW8XPWamRc9ZbYRqOQ7uYseLAsMX
-	NOBqfrfg==;
+	bh=EjXiSmZE8qt4l6SDKWvSagFOWUAnbzRXg8KGsa2R5+4=; b=WugK81lMg/nt98wUrnhfdX1q/Y
+	FUQjf9mKFVP2PSILkOF+5Ja5B3ffW7hbD9iNqd3eAB8cXzngQXU5wlVjJQBkNDYry/6kI99dYxC8C
+	7a0H21Q88x/X3d3QDX6OmyWNLBi1HUGuHcqDbqlK7X8xSqNDJJpgRrt37fvvLeTdMRg9f/XxAh2Mq
+	O/TocMhNQ/4A5N1zYx8ZkI5LqYQsrMXRQ/LcTQBz8p1/+wbuXfb2Y0Z7XMHQ7Czi3b0pKoB+2u0nn
+	9FJ4jvC+EPVUfyHjf+mx93lh7BZeRc9CFKQoktfiTCt2gwNSw8ptEHz+D/UeFDs1Yf3uiskBgv3zI
+	WXmDeYqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Hsu-006CtD-Sn; Mon, 04 Jul 2022 08:56:48 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o8HwZ-006EZl-0t; Mon, 04 Jul 2022 09:00:35 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Hsj-006Clq-38; Mon, 04 Jul 2022 08:56:38 +0000
+	id 1o8Hvi-006E8n-Jf; Mon, 04 Jul 2022 08:59:44 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 130D966015BA;
-	Mon,  4 Jul 2022 09:56:33 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4F60B66015BA;
+	Mon,  4 Jul 2022 09:59:40 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656924993;
-	bh=h88dIXJoIJXAQxMuEMOCRNyb0NRHhhEuFsKWrKzCZ3k=;
+	s=mail; t=1656925181;
+	bh=vD4hvMa+D2Y960A8Jp1pvDzf4SloHgIl/k1DXoxXJyM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ddINcCtt3FLR1cEjg2qYn/7puGj6dmBsZ8y9bjU2xY9P2Y7mN6NRJDgC3SINCsBKK
-	 svw7V5vK7wmw6+aiYfNm/vnz3GAYvOKwImKXVTKAbPFbqJEChqA4Kol+l3aMcn16O2
-	 5aGBYhqIenzshT1ysarDFRpioFSWuSONc0jDJuSaLMfaFMTKalbgKSDsNGzgmAmtAg
-	 25iv2hyM0PcfC9twPBz2AjHG5bpAYZO+06lvNA3rqK0YcGlmAQmCfjAVf1cRUkkRig
-	 YxxvZl1IAbLVf1BEZlSM6NeP0N+iaZ+0FW/NcmodvQeVjEfXTjbb+C/mH1H9J7OhFN
-	 VbD3TYvj1BlVg==
-Message-ID: <e846676e-11d7-1bdc-93e6-8999bb66b2a5@collabora.com>
-Date: Mon, 4 Jul 2022 10:56:30 +0200
+	b=XaReWsOoEXnyDB2hRvcDh0CZkYviM5JYojQpfFeQ9QLYduCj6NSMk+iMo4cvDz1DO
+	 NN99bxfRRGMIIm5kW10CYIsE36Pkw3EGIf8w7WhnthC9e40e4pu3ZxGryAX9HDeL/K
+	 2ePzLf3ATXDb+QPGpXHQM6Cj17trUxfiQ/iSSp6n57oc4diGQz25kKD0aSVGPyiiBE
+	 bAfS4gCQnH0OkYmOApxca8A+3IwRsvIeCmqcI3/SBsCR3jqjRtDCh8q3lM1tGgbcnH
+	 qa2zsdaTlCUaqISOh+0SNxJKgvHCyCQpIgKymkYHlYQNLfTwq0z7WuyQSAmAs/7EJ3
+	 sEfyV4qfZh0fw==
+Message-ID: <91e60954-d44d-f99f-2b4f-c164fb33cc0e@collabora.com>
+Date: Mon, 4 Jul 2022 10:59:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [PATCH 01/11] dt-bindings: arm: mediatek: Add MT8195 Cherry
- Tomato Chromebooks
+Subject: Re: [PATCH 02/11] arm64: dts: mediatek: Introduce MT8195 Cherry
+ platform's Tomato
 Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
  matthias.bgg@gmail.com, hsinyi@chromium.org, allen-kh.cheng@mediatek.com,
  gtk3@inbox.ru, luca@z3ntu.xyz, sam.shih@mediatek.com,
  sean.wang@mediatek.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org
+ linux-mediatek@lists.infradead.org
 References: <20220630153316.308767-1-angelogioacchino.delregno@collabora.com>
- <20220630153316.308767-2-angelogioacchino.delregno@collabora.com>
- <20220701220402.v4g6u75mzptb2fly@notapiano>
+ <20220630153316.308767-3-angelogioacchino.delregno@collabora.com>
+ <20220701221158.iuw5fehgkjrqw6zh@notapiano>
+ <CAGXv+5FwDuUjbP4THBsXorps12in-=JUtB-4VO5ygDBuQn1SeQ@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220701220402.v4g6u75mzptb2fly@notapiano>
+In-Reply-To: <CAGXv+5FwDuUjbP4THBsXorps12in-=JUtB-4VO5ygDBuQn1SeQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_015637_312585_156D5BAE 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20220704_015942_821745_82744F33 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,70 +82,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/07/22 00:04, Nícolas F. R. A. Prado ha scritto:
-> On Thu, Jun 30, 2022 at 05:33:06PM +0200, AngeloGioacchino Del Regno wrote:
->> Document board compatibles for the MT8195 Cherry platform's
->> Tomato Chromebooks, at the time of writing composed of four
->> revisions (r0, r1, r2, r3-r4).
-> 
-> Though r0 is not added in this series?
-> 
+Il 04/07/22 06:17, Chen-Yu Tsai ha scritto:
+> On Sat, Jul 2, 2022 at 6:12 AM Nícolas F. R. A. Prado
+> <nfraprado@collabora.com> wrote:
 >>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   Documentation/devicetree/bindings/arm/mediatek.yaml | 13 +++++++++++++
->>   1 file changed, 13 insertions(+)
+>> On Thu, Jun 30, 2022 at 05:33:07PM +0200, AngeloGioacchino Del Regno wrote:
+>>> Introduce the MT8195 Cherry Chromebook platform, including three
+>>> revisions of Cherry Tomato boards.
+>>>
+>>> This basic configuration allows to boot Linux on all board revisions
+>>> and get a serial console from a ramdisk.
+>>>
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>   arch/arm64/boot/dts/mediatek/Makefile         |  3 +++
+>>>   .../dts/mediatek/mt8195-cherry-tomato-r1.dts  | 11 ++++++++
+>>>   .../dts/mediatek/mt8195-cherry-tomato-r2.dts  | 11 ++++++++
+>>>   .../dts/mediatek/mt8195-cherry-tomato-r3.dts  | 12 +++++++++
+>>>   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 26 +++++++++++++++++++
+>>>   5 files changed, 63 insertions(+)
+>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
+>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> [..]
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>>> new file mode 100644
+>>> index 000000000000..17e9e4d6f6ab
+>>> --- /dev/null
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>>> @@ -0,0 +1,11 @@
+>>> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+>>> +/*
+>>> + * Copyright (C) 2021 MediaTek Inc.
+>>> + */
+>>> +/dts-v1/;
+>>> +#include "mt8195-cherry.dtsi"
+>>> +
+>>> +/ {
+>>> +     model = "MediaTek Tomato (rev1) board";
 >>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
->> index dd6c6e8011f9..3e0afa17ed2e 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
->> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
->> @@ -144,6 +144,19 @@ properties:
->>             - const: google,spherion-rev0
->>             - const: google,spherion
->>             - const: mediatek,mt8192
+>> Given that the compatible is "google," I believe we'll want to rename the model
+>> to "Google Tomato", much like was commented on the Asurada series [1], but
+>> better to have confirmation from someone from Google. Chen-Yu? :)
 > 
-> Angelo, this patch is depending on the patch from the asurada-spherion series
-> [1] to apply. Since this isn't the case for patch 2 as well, I assume this was
-> a mistake. And it does seem better to keep them independent.
+> I asked for clarification internally and it turns out we didn't get the
+> Asurada series quite right either.
+> 
+> Google only owns the reference design, that is Asurada for MT8192 and
+> Cherry for MT8195. The vendor own the end product design that is based
+> off of Google's reference design.
+> 
+> So for Tomato, the vendor is Acer. Note that "Tomato" and the other
+> codenames seen in ChromeOS are public codenames that Google uses.
+> 
+> The compatible string will likely stay "google,XXX", since this is set
+> in firmware, and updating it after the product has shipped poses both
+> a significant hurdle and risk.
+> 
 
-Yes, thanks for pointing that out - I forgot to advertise the dependency in the
-cover letter.
-
-Though, making this one independent from yours isn't really possible, as doing
-that would ruin the ordering in mediatek.yaml.
-
-I will advertise the dependency in v2.
+Yeah, makes sense. Should we call this "Acer Tomato (revX) board" then?
+...if we do that, though, we need to know if the other revisions of Tomato
+are also from Acer, or we would be getting one right and all the others wrong.
 
 Cheers,
 Angelo
 
 > 
-> [1] https://lore.kernel.org/all/20220629155956.1138955-2-nfraprado@collabora.com/
+> Regards
+> ChenYu
 > 
-> Thanks,
-> Nícolas
-> 
->> +      - description: Google Tomato (Acer Chromebook Spin 513)
->> +        items:
->> +          - enum:
->> +              - google,tomato-rev2
->> +              - google,tomato-rev1
->> +          - const: google,tomato
->> +          - const: mediatek,mt8195
->> +      - description: Google Tomato (rev3 - 4)
->> +        items:
->> +          - const: google,tomato-rev4
->> +          - const: google,tomato-rev3
->> +          - const: google,tomato
->> +          - const: mediatek,mt8195
->>         - items:
->>             - enum:
->>                 - mediatek,mt8186-evb
->> -- 
->> 2.35.1
+>> Otherwise,
 >>
-
-
+>> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>
+>> Thanks,
+>> Nícolas
+>>
+>> [1] https://lore.kernel.org/all/CAGXv+5Gv2pjPXynz6HCdgux+giPDC5qRk+KW1aFduVz82rM=+g@mail.gmail.com/
+>>
+>>> +     compatible = "google,tomato-rev1", "google,tomato", "mediatek,mt8195";
+>>> +};
+>> [..]
+>>> --
+>>> 2.35.1
+>>>
 
 
