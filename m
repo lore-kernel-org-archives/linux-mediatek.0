@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A5CC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 11:16:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D39BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 12:23:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/i0THs3tkuz8Cn7J2tkakHFla2qMfTe4o4B5oMU1Skc=; b=u4jofLSFnQX1xbatTPJxKDH9lb
-	lX6tElDdvSf+xS13/v8G/zHiqedjIkmixph9YS0l5YOaHlPVVZ/lGR2gHZa33mkUKx1F7eodEXzSD
-	RInkXdUjC9qtfeOq+iNa/7+GV+1bcWSykIsK7J3XSuDsWjur0KR8cAVfIo3m0QwSpECvlviSSK9Qs
-	w6YWhFuP9YgVcIBynXNlX4iYNd2oDb4wNTC751KtV7W/EhmcN2IBUD/9LMGG6v5pVORvKSSWudTOx
-	3lt4WIW+YKEp0KVEvog6avIr0xEVBLpYgSn312990arYIEAaTcgYtjEoWYMWCs6atqN8bdkyMaIbi
-	bjD4/62A==;
+	bh=/ii1GKEupHCQsHzVoe60E3KJDsE5TLy1tVeZYgWrzrw=; b=3gqKmMvqwvAOFO67q7RsT+x/vt
+	AM0e1VmZcjsLo+QAHbuubRuhgBomHZ/7O72U3tpctHqnsAeXN3CIuJckYo0Y1V/WEPiBDUMvLZVyF
+	kc5qGMn6jvpdZhqw5eXNaTURYUEEZa4anTWzbq9q0BOHYdkA0g67gOeSdFWtRpXVEI5vZuWOazjHY
+	AmYuwMmxwcJ1ZoyAu7aPqQIZk11KqMAgxf6J/PdpNrX4W6cbIlvMTaYWh1DULHTK6icCUT/autJb8
+	e4YkYrwbGA+ueaiYx4U4Z4ZF9wulMy0zNDGBsuAQzmVdjsruM/8cWFasTLtEGozlrGXvQoaX+PZIV
+	V+dijPgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8gXe-00HNkN-VV; Tue, 05 Jul 2022 11:16:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o8ha1-0008ss-PC; Tue, 05 Jul 2022 12:23:01 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8gXO-00HNdw-NX; Tue, 05 Jul 2022 11:16:19 +0000
-X-UUID: f5e358d55daa48d4975d474be4d27e4a-20220705
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:2cc85f81-c4eb-4e19-a4b6-9d6ece8fffa2,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:27b87663-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: f5e358d55daa48d4975d474be4d27e4a-20220705
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1508356740; Tue, 05 Jul 2022 04:16:09 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 5 Jul 2022 18:25:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 5 Jul 2022 18:25:30 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
-	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<ck.hu@mediatek.com>, <xinlei.lee@mediatek.com>, <liangxu.xu@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v16 0/5] drm/mediatek: Add MT8195 dp_intf driver
-Date: Tue, 5 Jul 2022 18:25:25 +0800
-Message-ID: <20220705102530.1344-1-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1o8hZq-0008qE-AS; Tue, 05 Jul 2022 12:22:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 638B5B817D3;
+	Tue,  5 Jul 2022 12:22:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E74CC341C7;
+	Tue,  5 Jul 2022 12:22:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657023765;
+	bh=HQMgUfRITrutcQ2G6WgPzf7h1A6dhvFf5+Wy2kcjb8A=;
+	h=Date:From:To:Cc:Subject:From;
+	b=RB5E8D/+GlB5cKRKKVj3uE0HVlhviCpjziTh0C1RHMpsaTiQz8gKfghL5KYvxJFN8
+	 M2AdsXgW8ldebeuIjB0KCsKxnyfGEQ6pT+oi9gHrxiMu12dRBoyuQGEw2foc/pplN6
+	 zU87aK3Gt2ytb449K5hZycHS+++0u46wgiggv+nfTzrVvA9/vBoJuGl+fgvn0UCpn1
+	 zq1O7A0x8Fubh2SITJ65anpcIGolky9KIr7mmcFLEjQkUUsDVg2yWWfCLk7CpS3i/n
+	 g6Drf8o4QLqWjkD1x8g438IGMd/PuCAR5vKgbkyhACJ/nNE4AIkA9BgIDtCYllxnKi
+	 dYIWoKVtAtRPQ==
+Date: Tue, 5 Jul 2022 14:22:36 +0200
+From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, "Alvin __ipraga"
+ <alsi@bang-olufsen.dk>, Claudiu Manoil <claudiu.manoil@nxp.com>, "David S.
+ Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Eric
+ Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ George McCollister <george.mccollister@gmail.com>, Hauke Mehrtens
+ <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>, Kurt Kanzenbach
+ <kurt@linutronix.de>, Landen Chao <Landen.Chao@mediatek.com>, Linus Walleij
+ <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Sean Wang
+ <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com, Vivien Didelot
+ <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, Woojung
+ Huh <woojung.huh@microchip.com>
+Cc: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Subject: DSA: request for your help with your DSA driver
+Message-ID: <20220705142236.1fab0033@thinkpad>
+X-Mailer: Claws Mail 3.19.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_041614_807206_8799682E 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20220705_052250_723451_52C081F2 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,73 +81,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dpi/dpintf driver and the added helper functions are required for
-the DisplayPort driver to work.
+Hello guys,
 
-This series is separated from [1] which is original from Guillaume.
-The display port driver is [2].
+this is a request for help/comments on the DSA drivers you have been
+working on in Linux.
 
-Changes for v16:
-1. Separate input_2pixel and pixels_per_iter to other patches.
-2. Remove function "mtk_dpi_matrix_sel" and color_fmt_trans_support
-   in patch "Add YUV422 output support".
-3. Drop patches which are accepted.
+I am writing this e-mail because people don't seem to be responding to
+RFC patches.
 
-Changes for v15:
-1. Add a patch to remove support for output yuv422 for previous socs.
-2. Only remain output format of reg888/yuv422 support for mt8195.
-3. Adjust the order of patches.
+Basically Russell and I are trying to do some development on phylink +
+DSA to move it forward, without breaking existing drivers:
 
-Changes for v14:
-1. Separate a new binding patch to modify mediatek string format.
-2. Use GENMASK(4, 0) for INT_MATRIX_SEL_MASK in patch
-   "Add YUV422 output support"
-3. Change kernel doc description of support_direct_pin.
-4. Change to use pixels_per_iter to control quantity of transferred
-   pixels per iterration.
+- we want to make it so that phylink is always used for CPU and DSA
+  ports (needed for conversion to phylink_pcs)
 
-Changes for v13:
-1. Change mediatek,mt8195-dp_intf to mediatek,mt8195-dp-intf.
-2. Add kernel doc for mtk_dpi_conf.
-3. Drop patch of tvd_pll enable.
-4. Squash some color format transfer related patches.
-5. Add new patch to support setting of direct connection to pins.
-6. Change fix tag of "drm/mediatek: dpi: Only enable dpi after the bridge
-   is enabled".
+- to do that, phylink needs to know the interface type to which the
+  port will be configure
 
-Changes for v12:
-1. Remove pll_gate.
-2. Add more detailed commit message.
-3. Separate tvd_clk patch and yuv422 output support from add dpintf
-   support patch
-4. Remove limit patch and use common driver codes to determine this.
+- many drivers don't report that information now:
+  - some use port's phy-mode property from device-tree
+  - some leave it at default (HW initialized)
+  - some choose the mode according to some information the driver
+    computes
+  - some try to find a mode that gives the maximum possible speed
+    (mv88e6xxx, for example)
 
-Changes for v11:
-1. Rename ck_cg to pll_gate.
-2. Add some commit message to clarify the modification reason.
-3. Fix some driver order and modify for reviewers' comments.
+  for example take a look at mt7530 driver
+    https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/dsa/mt7530.c?h=v5.19-rc5
+    lines 2213-2250
+       function mt7530_setup()
+          reads phy-mode from device-tree if port 5 has a node,
+          otherwise tries to determine the mode from gmac node
+    line 2847
+       function mt7531_cpu_port_config()
+          decides PHY mode according to some prior settings
 
-[1]:https://lore.kernel.org/all/20220523104758.29531-1-granquet@baylibre.com/
-[2]:https://lore.kernel.org/all/20220610105522.13449-1-rex-bc.chen@mediatek.com/
+Russell wrote a RFC series
+  https://lore.kernel.org/netdev/YsQIjC7UpcGWJovx@shell.armlinux.org.uk/T/
+in which
+- mv88e6xxx is patched to report the max speed mode to phylink
+- for other drivers, if no default interface is reported, an interface
+  will be inferred from the reported mac capabilities, such that it
+  gives maximum possible speed
 
-Bo-Chen Chen (4):
-  drm/mediatek: dpi: Add YUV422 output support
-  drm/mediatek: dpi: add config to support direct connection to dpi
-    panels
-  drm/mediatek: dpi: Add input_2pixel config support
-  drm/mediatek: dpi: Add pixels_per_iter config support
+It is very probable that this will break your drivers, and so I ask you
+to look at the RFC series, maybe test it, and give your comments or
+additional patches that make it work.
 
-Guillaume Ranquet (1):
-  drm/mediatek: dpi: Add dp_intf support
+Thank you.
 
- drivers/gpu/drm/mediatek/mtk_dpi.c          | 115 +++++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_dpi_regs.h     |  18 +++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   4 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   3 +
- 5 files changed, 126 insertions(+), 15 deletions(-)
-
--- 
-2.18.0
-
+Marek
 
