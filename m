@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C4FCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 12:57:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BC84C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 13:00:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K9aQdgjU0e26zFTjHPvnJNnRDwGAz5kf7EcMbiVFeg4=; b=qfYKusCV4/wkEi0IXfl5U+u66S
-	Fs8Nlxklmh42M+gWSaGUcDM9YEM17E4K4RRgbUmrg/DTtdJOC7fJZIZlJ58Ldtr1aHhjv5z3V0jX7
-	CzNOsMvMakefhcDnyzHEDcna5IOVYBwU3ZMr3/fr+DkpSpJyMy391I245/f3h0V4XgQjeuuXkRa37
-	UwhF7O04e4aSWbewEnQR8JSePBaZMCHAVhdtAaURI2R+nEMRsUTNkAqree5povLEcloPBAL96NuVR
-	sYkkqlzwJNixzIMBJuo+GszFuszciY/7KJQY1wq0vOS3omnzKvrg11TTpIlHlMOR3S+fVVYn1rciP
-	PW46VNDA==;
+	bh=KUFbSvfgRDb1tofHKLbgAIcqOerfr3fIlZb+75Y1MyM=; b=NuuaQ800C0+6f56xIAPCRST+uq
+	j10E4RiQnCCbbpbKwLr9InL8SR3Acl8htwkmPdrUzLMi4/O1z7CtVZxtgHXKRHFbgh/CHf/5Tex7s
+	clCKmto1G3pWPGJq5UvoE4JevHpxza54nnIeoMrjou/CGvbIE7mz/rtQ8u06xJ3ZU2oA4yF3wT1hA
+	wr6cdlx9zdiF2U8oetsvb1voeHZMycWnwspp5p5XC4LfnIM45EsV0AvqV0v++V/3nDTv6DRNbpUlq
+	zXLG3fgBwrAuyToZHm4Ol8XcS5mqO28saTNs9bejEcvf20M75wGfUgSIkmH7Lt64Q2shG5uOa2xnj
+	nvEJJVdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8i7J-000JAn-93; Tue, 05 Jul 2022 12:57:25 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o8iAN-000K9m-Nl; Tue, 05 Jul 2022 13:00:35 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8i73-000J0M-Gk; Tue, 05 Jul 2022 12:57:11 +0000
+	id 1o8iAA-000K4n-EJ; Tue, 05 Jul 2022 13:00:24 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B95BD66019D1;
-	Tue,  5 Jul 2022 13:56:53 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8993F6601638;
+	Tue,  5 Jul 2022 14:00:17 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657025814;
-	bh=mmPoxIRR9ChlnYGyGbRq7S9ABg48kE//DWKGRNjh5Ro=;
+	s=mail; t=1657026018;
+	bh=xFTfBoFvIpfrtf8roOkGSUeJlnpS93yjOxDqqSL95Lg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XwGOvaVxerCStoz0xLNMGU+RIiNH3JC1aj01myuSPataEtZUNi8XagF0yQM8EMZSU
-	 YKSWFuNtgsG/uMRF6hKryUZQjcHiRXkuZCJ95jIZ/O2vswv6EbpFesC/ODEWsLYF+/
-	 oFfFX33Jz3pSjrYQ6qwCIVNGKhJtwkqhG1t9iCUXer5rMxuLz1b3d94KYCrGeTPi7N
-	 rABSpZtJFdl1SJojdPzNt6mlcL5rINuKHZ4NrBhHBAGEtuMSiEn+qTW05O19tsaYlj
-	 wWdaOoKTFPK1gYW8dj0J5/awWfftDTzwVr5Qc7ISMwwn5ArKIbFaFy/45eSw3NlZbS
-	 A2cQEc8lXFO8w==
-Message-ID: <b12d2df4-73e8-a558-582f-200236bd6560@collabora.com>
-Date: Tue, 5 Jul 2022 14:56:51 +0200
+	b=Ku15DI+Ym+ERogIHDpcZnaA9HjaGwsN74TqmvN/9+Hmk7ry3986pmdb+PDOaOjHgO
+	 yaDSMZ8zcuPOEtzY8BAEtJ23zHHeLRfLsbW2fgldCvVf1uH0FwRL+Urr/Lz7HeQZ8H
+	 k8aQ/4YLhBAvPzqhKxKCoay+LLtUtYpeb+MK//MeipwIKB8NOp7Jn/iLuCzvtcsttO
+	 qA/G+/UoPa9lBCDmTpsUBxq03bGPMtWGLPtueTe17P8N7u7A9wXhRTSuyY/DVXKHVZ
+	 ReDQTCiTTijGbkeeM2k6V/fS2+VwMtSC3xtps3JcICVaqQFj+/qIQptfKgYrTwO12/
+	 UFy2xKaGnzbSg==
+Message-ID: <7d5986ad-40a4-f15b-8d14-aad5248379b3@collabora.com>
+Date: Tue, 5 Jul 2022 15:00:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
-Subject: Re: [V10,0/7] Enable two hardware jpeg encoder for MT8195
+Subject: Re: [V4,1/8] dt-bindings: mediatek: Add mediatek,mt8195-jpgdec
+ compatible
 Content-Language: en-US
 To: Irui Wang <irui.wang@mediatek.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -60,14 +61,15 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
  xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
  kyrie wu <kyrie.wu@mediatek.com>, srv_heupstream@mediatek.com
-References: <20220627025625.8956-1-irui.wang@mediatek.com>
+References: <20220627025540.8901-1-irui.wang@mediatek.com>
+ <20220627025540.8901-2-irui.wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220627025625.8956-1-irui.wang@mediatek.com>
+In-Reply-To: <20220627025540.8901-2-irui.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_055710_044628_F8AB6E2C 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20220705_060022_809734_51DB4A74 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,120 +84,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/06/22 04:56, Irui Wang ha scritto:
+Il 27/06/22 04:55, Irui Wang ha scritto:
 > From: kyrie wu <kyrie.wu@mediatek.com>
 > 
-> This series adds support for multi hardware jpeg encoding, by first
-> adding use of_platform_populate to manage each hardware information:
-> interrupt, clock, register bases and power. Secondly add encoding
-> work queue to deal with the encoding requestsof multi-hardware
-> at the same time. Lastly, add output picture reorder function
-> interface to eliminate the out of order images.
+> Add mediatek,mt8195-jpgdec compatible to binding document.
 > 
-> This series has been tested with MT8195 Gstreamer.
-> Encoding worked for this chip.
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> ---
+>   .../media/mediatek,mt8195-jpegdec.yaml        | 176 ++++++++++++++++++
+>   1 file changed, 176 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
 > 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> new file mode 100644
+> index 000000000000..8a255e8e2e09
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
+> @@ -0,0 +1,176 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mt8195-jpegdec.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
 
-Hello Irui,
+...snip...
 
-Unfortunately, I can't reproduce your successful test with gstreamer: when
-I try to encode a jpeg with videotestsrc input, I get a kernel panic.
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        jpgdec_master {
 
-To reproduce this behavior, please run the following:
+Additionally to Rob's review, which I of course fully agree on, this example
+devicetree does *not* work on MT8195.
 
-gst-launch-1.0 videotestsrc ! v4l2jpegenc ! filesink location=hwenctest.jpg
+[   13.015716] mtk-jpegdec-hw 1a040000.jpgdec: Adding to iommu group 1
 
+[   13.025383] mtk-jpegdec-hw 1a050000.jpgdec: Adding to iommu group 1
 
-Here's the panic log:
+[   13.034814] mtk-jpegdec-hw 1b040000.jpgdec: Adding to iommu group 1
 
-[  342.567211] Unable to handle kernel NULL pointer dereference at virtual address 
-0000000000000108
+[   13.041672] mtk-jpeg soc:jpgdec_master: invalid resource
 
-[  342.576014] Mem abort info:
-
-[  342.578805]   ESR = 0x0000000096000004
-
-[  342.582552]   EC = 0x25: DABT (current EL), IL = 32 bits
-
-[  342.587863]   SET = 0, FnV = 0
-
-[  342.590919]   EA = 0, S1PTW = 0
-
-[  342.594062]   FSC = 0x04: level 0 translation fault
-
-[  342.598941] Data abort info:
-
-[  342.601826]   ISV = 0, ISS = 0x00000004
-
-[  342.605668]   CM = 0, WnR = 0
-
-[  342.608643] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000119029000
-
-[  342.615094] [0000000000000108] pgd=0000000000000000, p4d=0000000000000000
-
-[  342.621907] Internal error: Oops: 96000004 [#1] SMP
-
-[  342.626800] Modules linked in: cdc_ether usbnet r8152 af_alg qrtr mt7921e 
-mt7921_common mt76_connac_lib mt76 mac80211 btusb btrtl btintel btmtk btbcm 
-bluetooth cfg80211 mtk_vcodec_dec_hw uvcvideo snd_sof_mt8195 ecdh_generic 
-mtk_vcodec_dec ecc mtk_adsp_common videobuf2_vmalloc snd_sof_xtensa_dsp rfkill 
-snd_sof_of v4l2_vp9 panfrost mtk_jpeg snd_sof v4l2_h264 mtk_jpeg_enc_hw 8021q 
-mtk_vcodec_common cros_ec_sensors gpu_sched cros_ec_lid_angle mtk_jpeg_dec_hw 
-hid_multitouch snd_sof_utils cros_ec_sensors_core crct10dif_ce garp 
-cros_usbpd_logger sbs_battery mrp stp llc ipmi_devintf ipmi_msghandler fuse ipv6
-
-[  342.680332] CPU: 3 PID: 180 Comm: kworker/u16:6 Tainted: G        W 
-5.19.0-rc3-next-20220622+ #814
-
-[  342.689982] Hardware name: MediaTek Tomato (rev2) board (DT)
-
-[  342.695637] Workqueue: mtk-jpeg mtk_jpegenc_worker [mtk_jpeg]
-
-[  342.701402] pstate: 604000c9 (nZCv daIF +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-
-[  342.708360] pc : mtk_jpegenc_worker+0x6c/0x3e0 [mtk_jpeg]
-
-[  342.713763] lr : mtk_jpegenc_worker+0x64/0x3e0 [mtk_jpeg]
-
-[  342.719166] sp : ffff8000093cbcd0
-
-[  342.722478] x29: ffff8000093cbcd0 x28: ffffb1f341cdb000 x27: ffff6089885d0505
-
-[  342.729618] x26: ffffb1f341ce1ee0 x25: ffffb1f341d0a2d0 x24: ffff60899078d000
-
-[  342.736758] x23: ffffb1f2e869c590 x22: ffff608990785458 x21: ffff60898a0ea120
-
-[  342.743898] x20: ffff60898a0ea080 x19: ffff60898a0ea080 x18: 0000000000000000
-
-[  342.751038] x17: 0000000000000000 x16: ffffb1f3405a58c0 x15: 0000aaaac092a3d0
-
-[  342.758178] x14: 0000000000000000 x13: 0000000000000c5f x12: 071c71c71c71c71c
-
-[  342.765318] x11: 0000000000000c5f x10: 00000000000027a0 x9 : ffffb1f33f32ce9c
-
-[  342.772458] x8 : fefefefefefefeff x7 : 0000000000000018 x6 : ffffb1f2e8699804
-
-[  342.779597] x5 : 0000000000000000 x4 : 0000000000000001 x3 : ffff608985d3c570
-
-[  342.786737] x2 : 0000000000000000 x1 : 0000000000000000 x0 : 0000000000000000
-
-[  342.793876] Call trace:
-
-[  342.796319]  mtk_jpegenc_worker+0x6c/0x3e0 [mtk_jpeg]
-
-[  342.801376]  process_one_work+0x294/0x664
-
-[  342.805392]  worker_thread+0x7c/0x45c
-
-[  342.809055]  kthread+0x104/0x110
-
-[  342.812283]  ret_from_fork+0x10/0x20
-
-[  342.815863] Code: aa1503e0 9400037e f9415662 aa0003e1 (b9410840)
-
-[  342.821956] ---[ end trace 0000000000000000 ]---
+[   13.049758] mtk-jpeg: probe of soc:jpgdec_master failed with error -22
 
 
 Regards,
 Angelo
+
+> +                compatible = "mediatek,mt8195-jpgdec";
+> +                mediatek,jpegdec-multi-core;
+> +                power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
+> +                iommus = <&iommu_vpp M4U_PORT_L19_JPGDEC_WDMA0>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BSDMA0>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_WDMA1>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BSDMA1>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+> +                     <&iommu_vpp M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+> +                #address-cells = <2>;
+> +                #size-cells = <2>;
+> +                ranges;
+> +
+> +                jpgdec@1a040000 {
+> +                    compatible = "mediatek,mt8195-jpgdec-hw";
+> +                    reg = <0 0x1a040000 0 0x10000>;/* JPGDEC_C0 */
+> +                    hw_id = <0>;
+> +                    iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+> +                    interrupts = <GIC_SPI 343 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                    clocks = <&vencsys CLK_VENC_JPGDEC>;
+> +                    clock-names = "jpgdec";
+> +                    power-domains = <&spm MT8195_POWER_DOMAIN_VDEC0>;
+> +                };
+> +
+> +                jpgdec@1a050000 {
+> +                    compatible = "mediatek,mt8195-jpgdec-hw";
+> +                    reg = <0 0x1a050000 0 0x10000>;/* JPGDEC_C1 */
+> +                    hw_id = <1>;
+> +                    iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET1>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGDEC_BUFF_OFFSET0>;
+> +                    interrupts = <GIC_SPI 344 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                    clocks = <&vencsys CLK_VENC_JPGDEC_C1>;
+> +                    clock-names = "jpgdec";
+> +                    power-domains = <&spm MT8195_POWER_DOMAIN_VDEC1>;
+> +                };
+> +
+> +                jpgdec@1b040000 {
+> +                    compatible = "mediatek,mt8195-jpgdec-hw";
+> +                    reg = <0 0x1b040000 0 0x10000>;/* JPGDEC_C2 */
+> +                    hw_id = <2>;
+> +                    iommus = <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA0>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BSDMA0>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_WDMA1>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BSDMA1>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BUFF_OFFSET1>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGDEC_BUFF_OFFSET0>;
+> +                    interrupts = <GIC_SPI 348 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                    clocks = <&vencsys_core1 CLK_VENC_CORE1_JPGDEC>;
+> +                    clock-names = "jpgdec";
+> +                    power-domains = <&spm MT8195_POWER_DOMAIN_VDEC2>;
+> +                };
+> +        };
+> +    };
+
+
+
 
