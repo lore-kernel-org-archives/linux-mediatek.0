@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632BFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 20:36:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232E0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 20:53:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CY9QZWDz8mKr/KSwcG9vTrjgFevFm37opIghkqWKem0=; b=WV+bqk5q0KmonpymTaFVUtg4cD
-	h80QodOQz3VMACvd5sGXPpdym8Q2tLobY218rx9a56pC50Q+u27xjPkW2oJI2ctIVZ1Rw+/RJNXWi
-	1eGVIiw2lW5iMVZlEfLAwWXlLFYtnMY1yyzvd6NSvqasxujcwp1kHHXI2tE0wPdj+EjgKtJcKCtme
-	+b0BpDowVSFf3EKHm4/g6tUp5BcBFxsDb/LwituFsI3g/Fg8Vah7btmpJ/moSTUCuCRpKnp2KNwyq
-	Oky7oAilNCOm02IijF1cLAMv5dPTwiB/XsL/+RYsBsY2ykrS+XTqfaP+ZHfiKwPzSe+2y9eMRhZTc
-	nsLbOk0w==;
+	bh=mzARt3SUylprTdvbWfGQj5lJEtQuB8YwyDUa4X1Y/TQ=; b=Por9H/lIE0oJo6uGJpA1ZYhpdS
+	QhmW7GFr5uz2H2MbI3uNRnySXqr5k1RvLsyZ4a35LYeIShgJOaYRyWcBMSH3YKH51hXBwc6xZVe9O
+	QpEVMwAsV6Wtk3D4T1r0HoezJI6MiioisoOsvc1zgyK11XtwnZZ818sYeUGMknZzr/sBxcRE6A9fE
+	m1XbwcLmBhLkUEoA0R7plCIhnR3mVB5OTcHxh6MCr0vrPYYdzNo/+zAdjEOAK2ar5V3PAQ2SfVsPK
+	KdlIFm6XFiBamgs2ZfSl3SzB3ACMFrcb3fSjy4qnQqMsa99lVraCFVdwldp2xJ4AZ0g7EZFJHClhY
+	oh797OQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8pHm-002eBL-FK; Tue, 05 Jul 2022 20:36:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o8pYC-002k3h-LI; Tue, 05 Jul 2022 20:53:40 +0000
+Received: from mail-io1-f43.google.com ([209.85.166.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8pHb-002e96-Lw; Tue, 05 Jul 2022 20:36:33 +0000
-Received: from notapiano (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0AC7B660180F;
-	Tue,  5 Jul 2022 21:36:25 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657053387;
-	bh=OrwB8qOVDqFzOmPNBZc6oHWmrOYIVjhvGlY/DI5Fmbk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lwmHEE/rRolwWUxTzRAtTvFqraneOsrTub3hjYLXaYUxiqQYrpdmBj+MUr4E5kfbV
-	 elmrfnZhaM09/ZMNfJ3hs+xT3nx9DgjMZPklZIp2l+bJCUJ2iBR2YSiAAcE/FEQcy3
-	 j0/S0tKcRLHASd1Adsa/qfkAZyPRiuEOzW8WOHP8O1g8vlkew1/E5mIIpYPdWgCyKp
-	 u7J/UHsDpavuRqlwAg4GOpnBWlVYS5nTT/qen3z3vRnxxtW3BMvvqCbWtPY00On4ka
-	 sY7J+WcNHBCEltQdD7sc1FWNRFLsHF9WypC9Of9jPxTA8cNr3RM3iznimFj3IyaNMI
-	 g1d0jZSQ5gQBw==
-Date: Tue, 5 Jul 2022 16:36:21 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-usb@vger.kernel.org
-Subject: Re: [PATCH v2 2/4] dt-bindings: usb: mtk-xhci: Make all clocks
- required
-Message-ID: <20220705203621.hunczzwfhiwpcrhy@notapiano>
-References: <20220623193702.817996-1-nfraprado@collabora.com>
- <20220623193702.817996-3-nfraprado@collabora.com>
- <93c6b7201533325cf7758637dd194a372f3c00c6.camel@mediatek.com>
- <20220629185546.z6rn7xp3ejpmaupi@notapiano>
- <20220701213702.GA1591697-robh@kernel.org>
- <5f85280ea5fd0d4b445307a13a70c3e3fe552ccf.camel@mediatek.com>
+	id 1o8pTl-002i2U-Cp; Tue, 05 Jul 2022 20:49:06 +0000
+Received: by mail-io1-f43.google.com with SMTP id z191so12285545iof.6;
+        Tue, 05 Jul 2022 13:49:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=mzARt3SUylprTdvbWfGQj5lJEtQuB8YwyDUa4X1Y/TQ=;
+        b=nMWO4fA18Ts5V6D4QiGo19cDHAs0JvH/FWD/2Lky0scgOUIBIUXQsirmS4PZ+exEmV
+         PforQvjLJ0iVD5uTQEFYZKmXJZS5uaqRPLQiegmnN24823SRICL3iChoXoNy/rIu8/Rv
+         ffb5YQg4OnUP7sQf0hKsDxdVamuqcKe8sjiZOM7zEe8iPW9D1xHI2RAQB/BeiLvxFNh1
+         Jg4r5YBt7jBZ3LRYtRyxGjtauijMUaIY2R8GtqBvs+WIy8cQYujgaYj8/oeFo8cWI0Z6
+         ZM05viFGPp7CPTLeuT7wQ+nxY7Bw0TLg59OVI/uQYl2YnwGU4rrQvkYUTFUWQpi5C67N
+         pIoQ==
+X-Gm-Message-State: AJIora9/dHD90zF6gSS8+s+hPlHHg7nTTjMkm/y255535h7CcUlS8gnU
+	E3MlpF77orBQqw0JXacibA==
+X-Google-Smtp-Source: AGRyM1t3Q/lWtfZuyq003ElF5s7OUqIiDA2Wq5dxaxnoKjRtLzsbmHFJ7CK7VeOkWtDkrsMgCyJuvQ==
+X-Received: by 2002:a6b:f718:0:b0:675:54cb:dda with SMTP id k24-20020a6bf718000000b0067554cb0ddamr20639324iog.114.1657054144601;
+        Tue, 05 Jul 2022 13:49:04 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id a9-20020a92c709000000b002dc133c9468sm2578869ilp.6.2022.07.05.13.49.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Jul 2022 13:49:04 -0700 (PDT)
+Received: (nullmailer pid 2598242 invoked by uid 1000);
+	Tue, 05 Jul 2022 20:49:02 -0000
+Date: Tue, 5 Jul 2022 14:49:02 -0600
+From: Rob Herring <robh@kernel.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Weiyi Lu <weiyi.lu@mediatek.com>, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v1 01/16] dt-bindings: iommu: mediatek: Increase max
+ interrupt number
+Message-ID: <20220705204902.GA2596733-robh@kernel.org>
+References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
+ <20220704100028.19932-2-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5f85280ea5fd0d4b445307a13a70c3e3fe552ccf.camel@mediatek.com>
+In-Reply-To: <20220704100028.19932-2-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_133632_108804_E2324030 
-X-CRM114-Status: GOOD (  39.05  )
+X-CRM114-CacheID: sfid-20220705_134905_531328_3B4FA782 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,113 +78,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 02, 2022 at 04:24:12PM +0800, Chunfeng Yun wrote:
-> On Fri, 2022-07-01 at 15:37 -0600, Rob Herring wrote:
-> > On Wed, Jun 29, 2022 at 02:55:46PM -0400, Nícolas F. R. A. Prado
-> > wrote:
-> > > On Tue, Jun 28, 2022 at 08:57:45AM +0800, Chunfeng Yun wrote:
-> > > > Hi Nícolas,
-> > > > 
-> > > > On Thu, 2022-06-23 at 15:37 -0400, Nícolas F. R. A. Prado wrote:
-> > > > > All of the clocks listed in the binding are always wired to the
-> > > > > XHCI
-> > > > > controller hardware blocks on all SoCs. The reason some clocks
-> > > > > were
-> > > > > made
-> > > > > optional in the binding was to account for the fact that
-> > > > > depending on
-> > > > > the SoC, some of the clocks might be fixed (ie not controlled
-> > > > > by
-> > > > > software).
-> > > > > 
-> > > > > Given that the devicetree should represent the hardware, make
-> > > > > all
-> > > > > clocks
-> > > > > required in the binding. Subsequent patches will make the DTS
-> > > > > changes
-> > > > > to
-> > > > > specify fixed-clocks for the clocks that aren't controllable.
-> > > > > 
-> > > > > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > > > > 
-> > > > > ---
-> > > > > 
-> > > > > Changes in v2:
-> > > > > - Undid clock list changes that allowed middle clocks to be
-> > > > > missing
-> > > > > from
-> > > > >   v1 and made all clocks required instead
-> > > > > - Rewrote commit message and title
-> > > > > 
-> > > > >  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml |
-> > > > > 4 +
-> > > > > ---
-> > > > >  1 file changed, 1 insertion(+), 3 deletions(-)
-> > > > > 
-> > > > > diff --git
-> > > > > a/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > xhci.yaml
-> > > > > index 63cbc2b62d18..1444d18ef9bc 100644
-> > > > > --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > xhci.yaml
-> > > > > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-
-> > > > > xhci.yaml
-> > > > > @@ -67,7 +67,6 @@ properties:
-> > > > >      maxItems: 1
-> > > > >  
-> > > > >    clocks:
-> > > > > -    minItems: 1
-> > > > >      items:
-> > > > >        - description: Controller clock used by normal mode
-> > > > >        - description: Reference clock used by low power mode
-> > > > > etc
-> > > > > @@ -76,9 +75,8 @@ properties:
-> > > > >        - description: controller clock
-> > > > >  
-> > > > >    clock-names:
-> > > > > -    minItems: 1
-> > > > >      items:
-> > > > > -      - const: sys_ck  # required, the following ones are
-> > > > > optional
-> > > > > +      - const: sys_ck
-> > > > >        - const: ref_ck
-> > > > >        - const: mcu_ck
-> > > > >        - const: dma_ck
-> > > > 
-> > > > This patch causes more check warning, I prefer to leave dt-
-> > > > bindings
-> > > > unchanged, but just fix mt8195's dts warning instead, thanks a
-> > > > lot
-> > > 
-> > > Hi Chunfeng,
-> > > 
-> > > the warnings reported by Rob's bot only happen if patches 3 and 4
-> > > aren't applied
-> > > to adapt the devicetrees. They are ABI breaking changes, but I
-> > > understood this
-> > > as the desired solution from the discussion we had with Krzysztof
-> > > on v1 [1].
-> > 
-> > The warnings have nothing to do with patches 3 and 4 as those are
-> > for 
-> > dts files. It's examples in bindings that are the problem.
-
-Sorry, you're right, I misread the errors.
-
-> Yes, I mean almost all existing dts supporting mtk-xhci will also cause
-> similar warnings, as changes in patches 3, 4;
+On Mon, Jul 04, 2022 at 06:00:13PM +0800, Tinghan Shen wrote:
+> mt8195 infra iommu has max 5 interrupts.
 > 
-> It seems less flexible to make all clock required, not only changes all
-> existing ones but also need more changes if additional clock is added.
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> ---
+>  .../devicetree/bindings/iommu/mediatek,iommu.yaml    | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> index 2ae3bbad7f1a..27eb9f6aa3ce 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -91,7 +91,8 @@ properties:
+>      maxItems: 1
+>  
+>    interrupts:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 5
+>  
+>    clocks:
+>      items:
+> @@ -175,9 +176,18 @@ allOf:
+>                const: mediatek,mt8195-iommu-infra
+>  
+>      then:
+> +      properties:
+> +        interrupts:
+> +          maxItems: 1
+> +
+>        required:
+>          - mediatek,larbs
+>  
+> +    else:
+> +      properties:
+> +        interrupts:
+> +          maxItems: 5
 
-Yes, that's a valid concern. I must have misunderstood the discussion in v1
-then.
+5 is already the max.
 
-So, I'm going to send a revert for this change and send a new patch adding fixed
-clocks on the dts for just mt8192 and mt8195 to fix the dtbs_check warnings.
-Does that sound good?
+minItems: 5
 
-Thanks,
-Nícolas
 
