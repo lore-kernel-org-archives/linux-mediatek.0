@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61F60CCA47B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 15:02:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0507DCCA47B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 15:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E2PDUqjeIaWHWlwpEFPKxmMuPZYtD5sEfn9kh6H0Tz8=; b=hnO9P6hYCZwjpOvUzNtK8/lELZ
-	b9NoKdu2bapPL+Ju+jxljDul/+U5CgeSCAqjMOHP/7+2Zpc4qnv+/0Wo5PEBZ0pxgc4pYz7iNzXC1
-	dJIAfK846CtKOvzFmu5nULZ/PK8CAigTAsRAhVj/OnINJ8VwzQifO2qIhPn6OfFEySfH0p6A+2Nia
-	SCXmmrvZ9jAcD19GJXZgp89RkiizHRi9VHB4o1SLGy5Rlqre2jQd4mDWWOhVyOjqcc49T8UxtWT2V
-	2RfTQAs9tPuqEt5LOU8/oUJ89SR21ee/c7+1r6opbGrGPSPs7yIRrbGxo0Kuz0n2o7IUpXzR1ZKps
-	KgGpwu7A==;
+	bh=NaQ8+XxDMsyg39E/X/olrr5C+3hmd5ALGJt6H2NUtg0=; b=PYDy13HMYdCriO+fHIwpBC+wEe
+	0m6meXiIsa1dVdm96I/0NQMEKfjR81NUvILM2WkwAML2oE2JNGpIh3X1n78zrxJVk98EKByuTPtMC
+	fDv76R/e+/u/l5ENWB7M248vxaIMfX+ZLAIjw0Gl28K1XNz5fsbDkvLq78S/2AHB+WNtAW4M0cmU6
+	f4b1B/ssLdl+mnF9BhJqlHTilsKiuN2cTJpVf0Z6Fl+qKm1qNGWeessL78RrgIdukx02Bpq5wKyxp
+	eyq3XYJtexO0Exym++FJtAjQkQUj9X/xizm2yfWIOCOTjqo9qljD5GCWyNTeuPzOt1APDSNduWRJu
+	BdfUgyng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8k3r-0010cb-JE; Tue, 05 Jul 2022 15:01:59 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o8kWJ-001AVc-Hk; Tue, 05 Jul 2022 15:31:23 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8k3e-0010Xb-So; Tue, 05 Jul 2022 15:01:49 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1o8kVw-001AO2-4g; Tue, 05 Jul 2022 15:31:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 75E7C6601942;
-	Tue,  5 Jul 2022 16:01:43 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657033304;
-	bh=7dtkO8dKzSBEwSst0VDFjIf/IrxOZjXKOGrdhYNUMhs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fa8YbXeEA22ARE8Gt66rR7VDYWziyJUa0DuNZEFX+8Z0Kfw3T3xNWcoRwKjia/3Vk
-	 VFa556wih1Hwvt9Mw5U3v4HIUITRHJbLEDK/04ybrSeAJbaqa5VNXRiHzPcQZrYXkx
-	 +OM/edmkCMiGvH4vvCFDW5NflyCnwlcR+PNjM7UBmkwLGUer3ExlES6MhD5/6Icmyj
-	 Yn7FcBN0nJE85U+9IuErpPjFQBVv9Ag6ij2btLkcUhFIR4RJLXeUdjl9Sof2+bNBvy
-	 dDg4rp8fbpum/S6brzpPGBUuz3ihDwq9mmGmHWQAqKEx7w3xJcmgtrTu9+Q1BI07Ju
-	 FOJwyiVZHkUMg==
-Message-ID: <bffad9a5-6154-3b9a-c39c-680ed3350a5f@collabora.com>
-Date: Tue, 5 Jul 2022 17:01:41 +0200
+	by ams.source.kernel.org (Postfix) with ESMTPS id B1BFCB8181B;
+	Tue,  5 Jul 2022 15:30:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52FEEC341CB;
+	Tue,  5 Jul 2022 15:30:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657035057;
+	bh=kUXDpKKltU2E5XUxKJ1iBTwK6bfrdSF41IJcNKUY8N4=;
+	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+	b=JSoVp6BTXh4v7n0Wnh2VXbZB8n9X7b5Xy0LEmQ8gNpehQr9/79HxzAzTH0aCoKD4o
+	 MMRlD9ojcMDadWox6EJTR43LTzLmAW9czCVB8FpoLrjCIQ2cIgEJox1X2fKDZrjojE
+	 z7wT0psCAWYc8bipXq5GGpwKW1Lim3W1aBPAtT1u5cJARTrJlwGr6HqtOzcZx/1SM2
+	 rKHOM4oj0S2WonZeBxUxVnr+fRpyrOE51wwXqWt8okhKh7fvG6x/47WfQ4NT4UzOzQ
+	 wj60XaHMQA6JBMbEvYOo0WPgfDQqf1Gtjo0Rhiw51mFodplX7q/FSO33FfHOBe+Fw3
+	 m2XROeQxcuxUA==
+Received: by mail-il1-f177.google.com with SMTP id p13so7485756ilq.0;
+        Tue, 05 Jul 2022 08:30:57 -0700 (PDT)
+X-Gm-Message-State: AJIora/yBigDthA3Bza8xPMkHgV9zAgSKWdCSjOqXKgzmh7BAGFnC8Y9
+	xl4Nri/tfywCGod+MZX4CpMtMuWfu48b3yfhypQ=
+X-Google-Smtp-Source: AGRyM1uobwKoa1jgaeSGOfqWvAr3ryhlzckYrcL9SdV5QFDDrv6yCYQkwwjkfqlw0RWJgQzkkOUmhhgtYXCbFARIUsg=
+X-Received: by 2002:a05:6e02:1be9:b0:2da:d622:6dde with SMTP id
+ y9-20020a056e021be900b002dad6226ddemr16471966ilv.2.1657035056512; Tue, 05 Jul
+ 2022 08:30:56 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v4 00/19] Introduce support for MediaTek MT8192 Google
- Chromebooks
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Luca Weiss <luca@z3ntu.xyz>, Maxim Kutnij <gtk3@inbox.ru>,
- Rob Herring <robh+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20220629155956.1138955-1-nfraprado@collabora.com>
- <CAGXv+5Epmo1=DZvoFkqj57hiO8nim=cuP1v3i9b2diZwqBe3Mw@mail.gmail.com>
- <20220701150145.2myyk2o3vxydyhql@notapiano>
- <CAGXv+5FsTNKgWG75eSKt4ngnhmSekWNT+oS1ke+P4tazHDdnzQ@mail.gmail.com>
- <20220705135611.jlfltaormhcpuutc@notapiano>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220705135611.jlfltaormhcpuutc@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <b4392c845d0af4e0e9d06493078c8af9dc39e237.camel@mediatek.com> <10ed0b2a78baa88f7fd1d466036c98de2f6d8e29.camel@mediatek.com>
+In-Reply-To: <10ed0b2a78baa88f7fd1d466036c98de2f6d8e29.camel@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Tue, 5 Jul 2022 11:30:45 -0400
+X-Gmail-Original-Message-ID: <CA+5PVA4A4ng9Hkugr6oegxkOU0CCY5c_kUWM8E70kZP63CBYyw@mail.gmail.com>
+Message-ID: <CA+5PVA4A4ng9Hkugr6oegxkOU0CCY5c_kUWM8E70kZP63CBYyw@mail.gmail.com>
+Subject: Re: pull request: linux-firmware: Create Mediatek MT8186 SCP firmware
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
+Cc: "linux-firmware@kernel.org" <linux-firmware@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	Shawn Ku <shawnku@google.com>, linux-mediatek <linux-mediatek@lists.infradead.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-remoteproc@vger.kernel.org, 
+	Rong Chang <rongchang@google.com>, hsinyi@chromium.org, 
+	Tinghan Shen <tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_080147_336173_51563460 
-X-CRM114-Status: GOOD (  28.62  )
+X-CRM114-CacheID: sfid-20220705_083100_401651_F8D78208 
+X-CRM114-Status: GOOD (  20.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,135 +82,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/07/22 15:56, Nícolas F. R. A. Prado ha scritto:
-> On Tue, Jul 05, 2022 at 12:03:08PM +0800, Chen-Yu Tsai wrote:
->> On Fri, Jul 1, 2022 at 11:01 PM Nícolas F. R. A. Prado
->> <nfraprado@collabora.com> wrote:
->>>
->>> On Fri, Jul 01, 2022 at 08:44:53PM +0800, Chen-Yu Tsai wrote:
->>>> On Thu, Jun 30, 2022 at 12:00 AM Nícolas F. R. A. Prado
->>>> <nfraprado@collabora.com> wrote:
->>>>>
->>>>>
->>>>> This series introduces Devicetrees for the MT8192-based Asurada platform
->>>>> as well as Asurada Spherion and Asurada Hayato boards.
->>>>>
->>>>> Support for the boards is added to the extent that is currently enabled
->>>>> in the mt8192.dtsi, and using only properties already merged in the
->>>>> dt-bindings, as to not add any dependencies to this series.
->>>>>
->>>>> This series was peer-reviewed internally before submission.
->>>>>
->>>>> Series tested on next-20220629.
->>>>
->>>> Just FYI I also got the internal display to work after some fixes to
->>>> the dtsi [1] and copying the stuff over from the ChromeOS kernel tree.
->>>>
->>>> It might be harder to enable the external display, given that we don't
->>>> have a good way of describing the weird design of using the DP bridge
->>>> also as a mux. See [2] for ongoing discussion.
->>>
->>> Hi ChenYu,
->>>
->>> I actually have both the internal and external display working on my local
->>> branch [1], but the commits there aren't final, and I'm also following the
->>> Type-C switch discussion to update my commits whenever the binding is settled
->>> on.
->>
->> I see. I think the internal display part is more or less final. It should
->> be worth including it, as it is a fairly visible indication that things
->> are working.
-> 
-> Yeah, it is final, but not all of the display-related nodes in mt8192.dtsi have
-> been merged yet [1] and I didn't want to introduce dependencies to the series.
-> 
-> If that series gets merged before this one, I could add the display to this
-> series as well, but I'm just worried that by introducing new commits with almost
-> every new series version, this series might never get reviewed and merged, and
-> this series is pretty big already. So I'd prefer to leave the display for a
-> following series.
-> 
-> Thanks,
-> Nícolas
-> 
-> [1] https://lore.kernel.org/all/20220701090547.21429-1-allen-kh.cheng@mediatek.com
-> 
+Pulled and pushed out.  Thank you.
 
-Matthias, can you please give an advice on that?
+josh
 
-Thank you,
-Angelo
-
-
->>
->> ChenYu
->>
->>> I noticed the lack of the mandatory display aliases in the mt8192 series but
->>> somehow missed mentioning that in the review, so thanks for adding that.
->>>
->>> Thanks,
->>> Nícolas
->>>
->>> [1] https://gitlab.collabora.com/nfraprado/linux/-/commits/mt8192-asurada
->>>
->>>>
->>>> ChenYu
->>>>
->>>> [1] https://lore.kernel.org/linux-mediatek/CAGXv+5F_Gi_=vV1NSk0AGRVYCa3Q8+gBaE+nv3OJ1AKe2voOwg@mail.gmail.com/
->>>> [2] https://lore.kernel.org/dri-devel/20220622173605.1168416-1-pmalani@chromium.org/
->>>>
->>>>> v3: https://lore.kernel.org/all/20220512205602.158273-1-nfraprado@collabora.com/
->>>>> v2: https://lore.kernel.org/all/20220505194550.3094656-1-nfraprado@collabora.com/
->>>>> v1: https://lore.kernel.org/all/20220316151327.564214-1-nfraprado@collabora.com/
->>>>>
->>>>> Changes in v4:
->>>>> - Added patches 17-19 enabling MMC, SCP and SPI NOR flash
->>>>> - Switched mediatek,drive-strength-adv for drive-strength-microamp
->>>>> - Switched mediatek,pull-up-adv for bias-pull-up
->>>>> - Updated Vgpu minimum voltage to appropriate value
->>>>>
->>>>> Changes in v3:
->>>>> - Renamed regulator nodes to be generic
->>>>> - Fixed keyboard layout for Hayato
->>>>>
->>>>> Changes in v2:
->>>>> - Added patches 1-2 for Mediatek board dt-bindings
->>>>> - Added patches 13-16 enabling hardware for Asurada that has since been
->>>>>    enabled on mt8192.dtsi
->>>>>
->>>>> Nícolas F. R. A. Prado (19):
->>>>>    dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-spherion
->>>>>    dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-hayato
->>>>>    arm64: dts: mediatek: Introduce MT8192-based Asurada board family
->>>>>    arm64: dts: mediatek: asurada: Document GPIO names
->>>>>    arm64: dts: mediatek: asurada: Add system-wide power supplies
->>>>>    arm64: dts: mediatek: asurada: Enable and configure I2C and SPI busses
->>>>>    arm64: dts: mediatek: asurada: Add ChromeOS EC
->>>>>    arm64: dts: mediatek: asurada: Add keyboard mapping for the top row
->>>>>    arm64: dts: mediatek: asurada: Add Cr50 TPM
->>>>>    arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
->>>>>    arm64: dts: mediatek: asurada: Add I2C touchscreen
->>>>>    arm64: dts: mediatek: spherion: Add keyboard backlight
->>>>>    arm64: dts: mediatek: asurada: Enable XHCI
->>>>>    arm64: dts: mediatek: asurada: Enable PCIe and add WiFi
->>>>>    arm64: dts: mediatek: asurada: Add MT6359 PMIC
->>>>>    arm64: dts: mediatek: asurada: Add SPMI regulators
->>>>>    arm64: dts: mediatek: asurada: Enable MMC
->>>>>    arm64: dts: mediatek: asurada: Enable SCP
->>>>>    arm64: dts: mediatek: asurada: Add SPI NOR flash memory
->>>>>
->>>>>   .../devicetree/bindings/arm/mediatek.yaml     |  13 +
->>>>>   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
->>>>>   .../dts/mediatek/mt8192-asurada-hayato-r1.dts |  47 +
->>>>>   .../mediatek/mt8192-asurada-spherion-r0.dts   |  62 ++
->>>>>   .../boot/dts/mediatek/mt8192-asurada.dtsi     | 959 ++++++++++++++++++
->>>>>   5 files changed, 1083 insertions(+)
->>>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
->>>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
->>>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->>>>>
->>>>> --
->>>>> 2.36.1
->>>>>
-
+On Fri, Jul 1, 2022 at 3:37 AM allen-kh.cheng
+<allen-kh.cheng@mediatek.com> wrote:
+>
+>
+> I am sorry, there are some mistakes in CC list.
+>
+> Regards,
+> Allen
+>
+> -----Original Message-----
+> From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+> Sent: Friday, July 1, 2022 2:32 PM
+> To: linux-firmware@kernel.org
+> Cc: Yunfei Dong (=E8=91=A3=E4=BA=91=E9=A3=9E) <Yunfei.Dong@mediatek.com>;=
+ ";
+> shawnku"@google.com
+> Subject: pull request: linux-firmware: Create Mediatek MT8186 SCP
+> firmware
+>
+> Hi maintianers,
+>
+> Add a new SCP firmware for MediaTek MT8186.
+> Thank you!
+>
+> Regards,
+> Allen
+>
+> ---
+>
+> The following changes since commit
+> 9ed4d42c51aca99d70adc6738d7ea55c5e897835:
+>
+>   amdgpu: update Yellow Carp VCN firmware (2022-06-22 06:28:03 -0400)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/kuanhsuncheng/linux-firmware-scp v0.0.6
+>
+> for you to fetch changes up to
+> 1c8b6c3dddf751f5f786bdd3440aa3ce238ab808:
+>
+>   mediatek: Add SCP firmware for MT8186 (2022-07-01 14:20:06 +0800)
+>
+> ----------------------------------------------------------------
+> Allen-kh Cheng (1):
+>       mediatek: Add SCP firmware for MT8186
+>
+>  WHENCE                  |   2 ++
+>  mediatek/mt8186/scp.img | Bin 0 -> 416960 bytes
+>  2 files changed, 2 insertions(+)
+>  create mode 100644 mediatek/mt8186/scp.img
+>
 
