@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2386AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 04:34:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B65C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 04:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hQHlMzDHZzb5pKe0xgnmse7K1z3JjysVyZjatTFbDlA=; b=WA9bHZ8SBjyfRs1HnsCUaIMXw4
-	qJ7FO2IHI+0/Edz7FjBbq5BfvD2aUyu4hX5lwgnI7H6LcJ6L5ZZ46p6Qx/qTTBPqjKyUoJMQv4Hen
-	ZDAe8J9Ab/winz2f0w8MmD/DXLv1QnCiVylMTquyO+IGrl41UKXgUEUEsWJi89IDSSkNxGEx0eYCn
-	y2tXwLyHAdtw7iMOaJCrrcv3tkM6uOFO+51n/a3Gak+sI1NbdBbdtiycG0apoEUo1BjNXRetGDeS4
-	kZmRKIBz9fLZsPKwyv4601r1NY3X1Hs8QQrFumWzzD+FsuOQNApkjlYyrQ+prXzCSUIVnWZeDGcFM
-	kmLtu2bQ==;
+	bh=34BJHk5+cr0RjgIhtgc/lPGbMjqNRh8yEnXHxP6fl2w=; b=RzrPL+vG18C/TS1gOPPKsN9n+2
+	EVTvBuguKGG7Wb81zxyorgJxdWbjl55HaWKlVr9QRfqoUfClCnFbn+JLJ3esevX+Z+r3t5ZlTXIlX
+	qss1UmxUV/XghGuKmfIsRrClYVHhwVVUoKmZhsRFqw1jURkIJK2y7nOb06cYF8dDuQyJAEJ/bCbR/
+	OvKsrEleWca8MGRiQiju8J7fS0j5tIY9gpFsvAf+vIBgCX1gj1XCSaZiWijVfrLrr3ohhMJg96rLZ
+	7bWIBOizfO+4flKQKpsbmZuwuM07SWj/HbF4OuOOvOX3Ys6mHnhk3YZsp7oRgFKphC3QWytBX6eMa
+	diL8HJvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8aGg-00ERp9-Kr; Tue, 05 Jul 2022 04:34:34 +0000
+	id 1o8aOM-00ETgJ-L3; Tue, 05 Jul 2022 04:42:30 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8aGV-00ERnf-O4; Tue, 05 Jul 2022 04:34:25 +0000
-X-UUID: 5ec4abc0fbdb443fbd74d735310aeae3-20220704
+	id 1o8aOB-00ETcE-IP; Tue, 05 Jul 2022 04:42:21 +0000
+X-UUID: ccda6b5aeaf745e29743b5e8361b4222-20220704
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:ee67f230-a88a-4ce1-afd4-5a0543f5a867,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:f332a1a2-3182-48e6-8229-921829d9f341,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:84ef8e86-57f0-47ca-ba27-fe8c57fbf305,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:af746c63-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 5ec4abc0fbdb443fbd74d735310aeae3-20220704
+X-UUID: ccda6b5aeaf745e29743b5e8361b4222-20220704
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 230883783; Mon, 04 Jul 2022 21:34:19 -0700
+	with ESMTP id 1214644291; Mon, 04 Jul 2022 21:42:12 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 5 Jul 2022 11:53:44 +0800
+ Tue, 5 Jul 2022 11:51:35 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 5 Jul 2022 11:53:44 +0800
-Message-ID: <04e3ec85fdb4be1456f0cca3b7493439047c059f.camel@mediatek.com>
-Subject: Re: [PATCH v15 10/16] drm/mediatek: dpi: move swap_shift to SoC
- config
+ Transport; Tue, 5 Jul 2022 11:51:35 +0800
+Message-ID: <970b3bed67850d113b9af4b3d62eb9029772642e.camel@mediatek.com>
+Subject: Re: [PATCH v15 07/16] drm/mediatek: dpi: implement a swap_input
+ toggle in SoC config
 From: CK Hu <ck.hu@mediatek.com>
 To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
 	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
@@ -59,18 +59,18 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 5 Jul 2022 11:53:44 +0800
-In-Reply-To: <20220701035845.16458-11-rex-bc.chen@mediatek.com>
+Date: Tue, 5 Jul 2022 11:51:35 +0800
+In-Reply-To: <20220701035845.16458-8-rex-bc.chen@mediatek.com>
 References: <20220701035845.16458-1-rex-bc.chen@mediatek.com>
-	 <20220701035845.16458-11-rex-bc.chen@mediatek.com>
+	 <20220701035845.16458-8-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_213423_837938_DEB62851 
-X-CRM114-Status: GOOD (  17.19  )
+X-CRM114-CacheID: sfid-20220704_214219_661959_9053C22E 
+X-CRM114-Status: GOOD (  20.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,8 +90,10 @@ Hi, Bo-Chen:
 On Fri, 2022-07-01 at 11:58 +0800, Bo-Chen Chen wrote:
 > From: Guillaume Ranquet <granquet@baylibre.com>
 > 
-> Add flexibility by moving the swap shift value to SoC specific
-> config.
+> The hardware design of dp_intf does not support input swap, so we add
+> a bit of flexibility to support SoCs without swap_input support.
+> We also add a warning message if the hardware is not supported and it
+> needs to swap input.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -104,80 +106,76 @@ CK
 > 
 > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > Reviewed-by: AngeloGioacchino Del Regno <
 > angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 > Reviewed-by: CK Hu <ck.hu@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
 > 
 > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
 > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 11724432e2f2..70a83a3c0570 100644
+> index b89ad9f38396..ba871c347d15 100644
 > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -125,6 +125,7 @@ struct mtk_dpi_yc_limit {
->   * @dimension_mask: Mask used for HWIDTH, HPORCH, VSYNC_WIDTH and
-> VSYNC_PORCH
->   *		    (no shift).
->   * @hvsize_mask: Mask of HSIZE and VSIZE mask (no shift).
-> + * @channel_swap_shift: Shift value of channel swap.
+> @@ -121,6 +121,7 @@ struct mtk_dpi_yc_limit {
+>   * @output_fmts: Array of supported output formats.
+>   * @num_output_fmts: Quantity of supported output formats.
+>   * @is_ck_de_pol: Support CK/DE polarity.
+> + * @swap_input_support: Support input swap function.
 >   */
 >  struct mtk_dpi_conf {
 >  	unsigned int (*cal_factor)(int clock);
-> @@ -137,6 +138,7 @@ struct mtk_dpi_conf {
->  	bool swap_input_support;
->  	u32 dimension_mask;
->  	u32 hvsize_mask;
-> +	u32 channel_swap_shift;
+> @@ -130,6 +131,7 @@ struct mtk_dpi_conf {
+>  	const u32 *output_fmts;
+>  	u32 num_output_fmts;
+>  	bool is_ck_de_pol;
+> +	bool swap_input_support;
 >  };
 >  
 >  static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val,
 > u32 mask)
-> @@ -367,7 +369,9 @@ static void mtk_dpi_config_channel_swap(struct
+> @@ -393,7 +395,8 @@ static void mtk_dpi_config_color_format(struct
 > mtk_dpi *dpi,
->  		break;
->  	}
->  
-> -	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << CH_SWAP,
-> CH_SWAP_MASK);
-> +	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
-> +		     val << dpi->conf->channel_swap_shift,
-> +		     CH_SWAP_MASK << dpi->conf->channel_swap_shift);
+>  	/* only support RGB888 */
+>  	mtk_dpi_config_yuv422_enable(dpi, false);
+>  	mtk_dpi_config_csc_enable(dpi, false);
+> -	mtk_dpi_config_swap_input(dpi, false);
+> +	if (dpi->conf->swap_input_support)
+> +		mtk_dpi_config_swap_input(dpi, false);
+>  	mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
 >  }
 >  
->  static void mtk_dpi_config_yuv422_enable(struct mtk_dpi *dpi, bool
-> enable)
-> @@ -817,6 +821,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
->  	.swap_input_support = true,
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
-> +	.channel_swap_shift = CH_SWAP,
+> @@ -804,6 +807,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
+>  	.output_fmts = mt8173_output_fmts,
+>  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  };
 >  
 >  static const struct mtk_dpi_conf mt2701_conf = {
-> @@ -830,6 +835,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
->  	.swap_input_support = true,
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
-> +	.channel_swap_shift = CH_SWAP,
+> @@ -814,6 +818,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
+>  	.output_fmts = mt8173_output_fmts,
+>  	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  };
 >  
 >  static const struct mtk_dpi_conf mt8183_conf = {
-> @@ -842,6 +848,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
->  	.swap_input_support = true,
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
-> +	.channel_swap_shift = CH_SWAP,
+> @@ -823,6 +828,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
+>  	.output_fmts = mt8183_output_fmts,
+>  	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  };
 >  
 >  static const struct mtk_dpi_conf mt8192_conf = {
-> @@ -854,6 +861,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
->  	.swap_input_support = true,
->  	.dimension_mask = HPW_MASK,
->  	.hvsize_mask = HSIZE_MASK,
-> +	.channel_swap_shift = CH_SWAP,
+> @@ -832,6 +838,7 @@ static const struct mtk_dpi_conf mt8192_conf = {
+>  	.output_fmts = mt8183_output_fmts,
+>  	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
+>  	.is_ck_de_pol = true,
+> +	.swap_input_support = true,
 >  };
 >  
 >  static int mtk_dpi_probe(struct platform_device *pdev)
