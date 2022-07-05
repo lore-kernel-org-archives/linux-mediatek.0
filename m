@@ -4,73 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C097C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 04:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C68CDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 04:03:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=If2XaugMGmKD0yyw5q+ObHwowGpMxkxl0rWlIvWessY=; b=AkVph9K1eAiomhwinRy/YOuy4t
-	h7640v/kPQ8Egakj7jeaZW9GprwVLzxbXjAfajl4dDr4xL2ysMnbVfWZ9TBUtoOEZvt47KbxSWrVI
-	dqdsMCWr9mdBC6fg1Gk8ILpJhy4gAzfcS88Oc5XdexsVdW5pvTBUcZyy63PEwKvurUKnHI1jlIsq7
-	aSbjaDrV0E3JSvAFCgRjggyFBrTXcuALIIL5DmxBushmq8aXd+tQLMzkpitI3iiv3RwWK+Qnvj7Hr
-	hYo2JTrigPIB4MmMJrQSuvb+7lmujsUOuKt2ox9I/B682JruSQNBmSaeHwJzYpZ/AmS/AcAZIPIhA
-	rm6RnaFg==;
+	bh=ZIG+5IDOwQA7F6MJezLrBTW+kOijOwQpQ8mK+sp/cww=; b=qubd8IVsouQJ1CbUYoXIsc0y3m
+	jFYif6oInO9VehRyfNvo/5mHS/Vow25ReYD0zlqM/GWQkkX3Mawh/bK0y/FGbTci6B+pPDd7HZRJH
+	n6Iq1H9+TqcOwev+Y6n2zdtpRPS9eScz4KXaLhspiUNv4EHO38NqHylkkz27WyM01Jb9TVmaYAfMO
+	rF4A3qsjoBkeDvNwoHl4ifedNGPD+dQZkRB0pEVHMcHiAP3M/DmSAojBGAgm37YXw0lii1DLhJZGO
+	WZ6ht3fexPTJJ3VLkdRgqm+aDtlu1HxWV+shfdTJNAYaWhDGwp5673pTOOfyD5G3XbG3cMqxl1Cvk
+	H5nmZC3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Zk7-00EKzR-CT; Tue, 05 Jul 2022 04:00:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o8Zmi-00ELbI-Fw; Tue, 05 Jul 2022 04:03:36 +0000
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Zjv-00EKwr-ME; Tue, 05 Jul 2022 04:00:46 +0000
-X-UUID: 356cc8b0f5d645e0a7c13e46d20df25d-20220704
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:cfc0381d-595a-44f2-8a79-376fddee0f1d,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:ca118e86-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 356cc8b0f5d645e0a7c13e46d20df25d-20220704
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 756136903; Mon, 04 Jul 2022 21:00:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 5 Jul 2022 11:49:33 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 5 Jul 2022 11:49:33 +0800
-Message-ID: <7847ac7e438d8c8544d88c960eca3af00d5f3520.camel@mediatek.com>
-Subject: Re: [PATCH v15 05/16] drm/mediatek: dpi: Add support for
- quantization range
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<xinlei.lee@mediatek.com>, <liangxu.xu@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 5 Jul 2022 11:49:33 +0800
-In-Reply-To: <20220701035845.16458-6-rex-bc.chen@mediatek.com>
-References: <20220701035845.16458-1-rex-bc.chen@mediatek.com>
-	 <20220701035845.16458-6-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o8ZmX-00ELVo-3B
+	for linux-mediatek@lists.infradead.org; Tue, 05 Jul 2022 04:03:26 +0000
+Received: by mail-yb1-xb2d.google.com with SMTP id 76so4136701ybd.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 04 Jul 2022 21:03:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=ZIG+5IDOwQA7F6MJezLrBTW+kOijOwQpQ8mK+sp/cww=;
+        b=SiqMzBFKpQ15lSMMZ+ieDlDHxl6ynGs457Jzqwd7ECBfx/FcQEsWWxLJ+HspHMIvdj
+         87R8nG6AsAxKMonlKHYkeT4VNDtJk+29uj8uqFXSRTbuN+d5Xa6ViDpLuOn9ZzjwfrJG
+         dE1o5C5hq6jfEFgLYl5SO13WOFvkcxnA5Ehf4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=ZIG+5IDOwQA7F6MJezLrBTW+kOijOwQpQ8mK+sp/cww=;
+        b=h4uG0u7448Gw10D37VWNExC9DaNQsZ36QCZ4ToPAs5JGpTajtY21ZhFmyH8MnYto9V
+         6BQ00bRpknOlBhZUN/dSR+A5zJGx7t5wtQG+taLYqlplVAb5gSwW5ni2xosBx9u8fPiq
+         MdccWKhU9XtWdtGe7+HLcnM9L+a68p8S2WM0g0z6GQgTO2pmAvIUfOLAzNPJxrAFfYh+
+         oVt0RdNOMeSBv9T+eX1t3ksgTCxazt1YabPYkjcw9eUVCQlBJSQSp02hv1S61mll8TLS
+         xcRnxJBzoWo7qQbc7MXAcM9XatG+68+5onq6Q+x7GZ60FR2WBPjIFoCgZpqzMBscW99N
+         Wqcw==
+X-Gm-Message-State: AJIora9jiqcZHEOYZd2dD1t8NA0ZBXZ44vKuhTTXGydDeDDPPe8f+WuV
+	/tXe/n8ZDfXR2oN6qLb8t//kA/TEoosw++6YLUSGVA==
+X-Google-Smtp-Source: AGRyM1vMJ9uYD7wpYhw4rZ23WoR+YWd2CPjnGvFMLHez7dzhY8TvkFoA0lecqOFkLC4JSsNQk8xxUusxHyarAxFXrHg=
+X-Received: by 2002:a25:81c5:0:b0:66d:55b5:d250 with SMTP id
+ n5-20020a2581c5000000b0066d55b5d250mr34484387ybm.501.1656993799717; Mon, 04
+ Jul 2022 21:03:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+References: <20220629155956.1138955-1-nfraprado@collabora.com>
+ <CAGXv+5Epmo1=DZvoFkqj57hiO8nim=cuP1v3i9b2diZwqBe3Mw@mail.gmail.com> <20220701150145.2myyk2o3vxydyhql@notapiano>
+In-Reply-To: <20220701150145.2myyk2o3vxydyhql@notapiano>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 5 Jul 2022 12:03:08 +0800
+Message-ID: <CAGXv+5FsTNKgWG75eSKt4ngnhmSekWNT+oS1ke+P4tazHDdnzQ@mail.gmail.com>
+Subject: Re: [PATCH v4 00/19] Introduce support for MediaTek MT8192 Google Chromebooks
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Fabien Parent <fparent@baylibre.com>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Luca Weiss <luca@z3ntu.xyz>, 
+	Maxim Kutnij <gtk3@inbox.ru>, Rob Herring <robh+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_210043_782638_BFDEC4FF 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20220704_210325_182566_82D0B04B 
+X-CRM114-Status: GOOD (  32.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,106 +89,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
+On Fri, Jul 1, 2022 at 11:01 PM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> On Fri, Jul 01, 2022 at 08:44:53PM +0800, Chen-Yu Tsai wrote:
+> > On Thu, Jun 30, 2022 at 12:00 AM N=C3=ADcolas F. R. A. Prado
+> > <nfraprado@collabora.com> wrote:
+> > >
+> > >
+> > > This series introduces Devicetrees for the MT8192-based Asurada platf=
+orm
+> > > as well as Asurada Spherion and Asurada Hayato boards.
+> > >
+> > > Support for the boards is added to the extent that is currently enabl=
+ed
+> > > in the mt8192.dtsi, and using only properties already merged in the
+> > > dt-bindings, as to not add any dependencies to this series.
+> > >
+> > > This series was peer-reviewed internally before submission.
+> > >
+> > > Series tested on next-20220629.
+> >
+> > Just FYI I also got the internal display to work after some fixes to
+> > the dtsi [1] and copying the stuff over from the ChromeOS kernel tree.
+> >
+> > It might be harder to enable the external display, given that we don't
+> > have a good way of describing the weird design of using the DP bridge
+> > also as a mux. See [2] for ongoing discussion.
+>
+> Hi ChenYu,
+>
+> I actually have both the internal and external display working on my loca=
+l
+> branch [1], but the commits there aren't final, and I'm also following th=
+e
+> Type-C switch discussion to update my commits whenever the binding is set=
+tled
+> on.
 
-On Fri, 2022-07-01 at 11:58 +0800, Bo-Chen Chen wrote:
-> For RGB colorimetry, CTA-861 support both limited and full range data
-> when receiving video with RGB color space.
-> We use drm_default_rgb_quant_range() to determine the correct
-> setting.
+I see. I think the internal display part is more or less final. It should
+be worth including it, as it is a fairly visible indication that things
+are working.
 
-Applied to mediatek-drm-next [1], thanks.
+ChenYu
 
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
-
-Regards,
-CK
-
-> 
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 34 ++++++++++++++++++--------
-> ----
->  1 file changed, 21 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 3473ee18ad97..0855bbdfe4e1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -238,16 +238,30 @@ static void mtk_dpi_config_fb_size(struct
-> mtk_dpi *dpi, u32 width, u32 height)
->  	mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE, VSIZE_MASK);
->  }
->  
-> -static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi,
-> -					 struct mtk_dpi_yc_limit
-> *limit)
-> +static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi)
->  {
-> -	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_bottom << Y_LIMINT_BOT,
-> +	struct mtk_dpi_yc_limit limit;
-> +
-> +	if (drm_default_rgb_quant_range(&dpi->mode) ==
-> +	    HDMI_QUANTIZATION_RANGE_LIMITED) {
-> +		limit.y_bottom = 0x10;
-> +		limit.y_top = 0xfe0;
-> +		limit.c_bottom = 0x10;
-> +		limit.c_top = 0xfe0;
-> +	} else {
-> +		limit.y_bottom = 0;
-> +		limit.y_top = 0xfff;
-> +		limit.c_bottom = 0;
-> +		limit.c_top = 0xfff;
-> +	}
-> +
-> +	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_bottom << Y_LIMINT_BOT,
->  		     Y_LIMINT_BOT_MASK);
-> -	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_top << Y_LIMINT_TOP,
-> +	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_top << Y_LIMINT_TOP,
->  		     Y_LIMINT_TOP_MASK);
-> -	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_bottom << C_LIMIT_BOT,
-> +	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_bottom << C_LIMIT_BOT,
->  		     C_LIMIT_BOT_MASK);
-> -	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_top << C_LIMIT_TOP,
-> +	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_top << C_LIMIT_TOP,
->  		     C_LIMIT_TOP_MASK);
->  }
->  
-> @@ -439,7 +453,6 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
->  static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
->  				    struct drm_display_mode *mode)
->  {
-> -	struct mtk_dpi_yc_limit limit;
->  	struct mtk_dpi_polarities dpi_pol;
->  	struct mtk_dpi_sync_param hsync;
->  	struct mtk_dpi_sync_param vsync_lodd = { 0 };
-> @@ -474,11 +487,6 @@ static int mtk_dpi_set_display_mode(struct
-> mtk_dpi *dpi,
->  	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
->  		pll_rate, vm.pixelclock);
->  
-> -	limit.c_bottom = 0x0010;
-> -	limit.c_top = 0x0FE0;
-> -	limit.y_bottom = 0x0010;
-> -	limit.y_top = 0x0FE0;
-> -
->  	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
->  	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
->  	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
-> @@ -526,7 +534,7 @@ static int mtk_dpi_set_display_mode(struct
-> mtk_dpi *dpi,
->  	else
->  		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive);
->  
-> -	mtk_dpi_config_channel_limit(dpi, &limit);
-> +	mtk_dpi_config_channel_limit(dpi);
->  	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
->  	mtk_dpi_config_channel_swap(dpi, dpi->channel_swap);
->  	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
-
+> I noticed the lack of the mandatory display aliases in the mt8192 series =
+but
+> somehow missed mentioning that in the review, so thanks for adding that.
+>
+> Thanks,
+> N=C3=ADcolas
+>
+> [1] https://gitlab.collabora.com/nfraprado/linux/-/commits/mt8192-asurada
+>
+> >
+> > ChenYu
+> >
+> > [1] https://lore.kernel.org/linux-mediatek/CAGXv+5F_Gi_=3DvV1NSk0AGRVYC=
+a3Q8+gBaE+nv3OJ1AKe2voOwg@mail.gmail.com/
+> > [2] https://lore.kernel.org/dri-devel/20220622173605.1168416-1-pmalani@=
+chromium.org/
+> >
+> > > v3: https://lore.kernel.org/all/20220512205602.158273-1-nfraprado@col=
+labora.com/
+> > > v2: https://lore.kernel.org/all/20220505194550.3094656-1-nfraprado@co=
+llabora.com/
+> > > v1: https://lore.kernel.org/all/20220316151327.564214-1-nfraprado@col=
+labora.com/
+> > >
+> > > Changes in v4:
+> > > - Added patches 17-19 enabling MMC, SCP and SPI NOR flash
+> > > - Switched mediatek,drive-strength-adv for drive-strength-microamp
+> > > - Switched mediatek,pull-up-adv for bias-pull-up
+> > > - Updated Vgpu minimum voltage to appropriate value
+> > >
+> > > Changes in v3:
+> > > - Renamed regulator nodes to be generic
+> > > - Fixed keyboard layout for Hayato
+> > >
+> > > Changes in v2:
+> > > - Added patches 1-2 for Mediatek board dt-bindings
+> > > - Added patches 13-16 enabling hardware for Asurada that has since be=
+en
+> > >   enabled on mt8192.dtsi
+> > >
+> > > N=C3=ADcolas F. R. A. Prado (19):
+> > >   dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-spherion
+> > >   dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-hayato
+> > >   arm64: dts: mediatek: Introduce MT8192-based Asurada board family
+> > >   arm64: dts: mediatek: asurada: Document GPIO names
+> > >   arm64: dts: mediatek: asurada: Add system-wide power supplies
+> > >   arm64: dts: mediatek: asurada: Enable and configure I2C and SPI bus=
+ses
+> > >   arm64: dts: mediatek: asurada: Add ChromeOS EC
+> > >   arm64: dts: mediatek: asurada: Add keyboard mapping for the top row
+> > >   arm64: dts: mediatek: asurada: Add Cr50 TPM
+> > >   arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
+> > >   arm64: dts: mediatek: asurada: Add I2C touchscreen
+> > >   arm64: dts: mediatek: spherion: Add keyboard backlight
+> > >   arm64: dts: mediatek: asurada: Enable XHCI
+> > >   arm64: dts: mediatek: asurada: Enable PCIe and add WiFi
+> > >   arm64: dts: mediatek: asurada: Add MT6359 PMIC
+> > >   arm64: dts: mediatek: asurada: Add SPMI regulators
+> > >   arm64: dts: mediatek: asurada: Enable MMC
+> > >   arm64: dts: mediatek: asurada: Enable SCP
+> > >   arm64: dts: mediatek: asurada: Add SPI NOR flash memory
+> > >
+> > >  .../devicetree/bindings/arm/mediatek.yaml     |  13 +
+> > >  arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+> > >  .../dts/mediatek/mt8192-asurada-hayato-r1.dts |  47 +
+> > >  .../mediatek/mt8192-asurada-spherion-r0.dts   |  62 ++
+> > >  .../boot/dts/mediatek/mt8192-asurada.dtsi     | 959 ++++++++++++++++=
+++
+> > >  5 files changed, 1083 insertions(+)
+> > >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayat=
+o-r1.dts
+> > >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spher=
+ion-r0.dts
+> > >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> > >
+> > > --
+> > > 2.36.1
+> > >
 
