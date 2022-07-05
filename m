@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38284C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 14:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61F60CCA47B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 15:02:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GUoK9UQUhSqzH1l8r/dSOXQ7dtAmmSxTrDlRxUddIWs=; b=Z3XpSzUlO5oLXBGaF2XKPy0ITT
-	Zgo3IxHU5a+hvOWmRsQiSVWSps95/LZVKDyECYfPhkhaaHvXkF2qdFmT9Q2zx+Aj+2sa8iQv/6FH6
-	ewbEv5yrFw/wGazznKh7CoNTyC2qa918Qhm3ntjQq1rUwSt5rIECzVH8XlINi1/5G3Sg59RcbRWMq
-	6T8ER8+5PZ/p9Jbrzc5+o8p9ZzP4IS3UCXHCtWgBCmrCs99gu+OSN+Fe8ANTv3DADsGLdy/o+1T8b
-	G3wNQtX9iZVh5Dc/Gw22cIg2lnIXJQlBLt6lhDbOOCSvZ1uyvap6oHdNiUwCixip/HYeyTzeicFe8
-	pozlSRTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E2PDUqjeIaWHWlwpEFPKxmMuPZYtD5sEfn9kh6H0Tz8=; b=hnO9P6hYCZwjpOvUzNtK8/lELZ
+	b9NoKdu2bapPL+Ju+jxljDul/+U5CgeSCAqjMOHP/7+2Zpc4qnv+/0Wo5PEBZ0pxgc4pYz7iNzXC1
+	dJIAfK846CtKOvzFmu5nULZ/PK8CAigTAsRAhVj/OnINJ8VwzQifO2qIhPn6OfFEySfH0p6A+2Nia
+	SCXmmrvZ9jAcD19GJXZgp89RkiizHRi9VHB4o1SLGy5Rlqre2jQd4mDWWOhVyOjqcc49T8UxtWT2V
+	2RfTQAs9tPuqEt5LOU8/oUJ89SR21ee/c7+1r6opbGrGPSPs7yIRrbGxo0Kuz0n2o7IUpXzR1ZKps
+	KgGpwu7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8jrH-000wod-RI; Tue, 05 Jul 2022 14:48:59 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1o8k3r-0010cb-JE; Tue, 05 Jul 2022 15:01:59 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8jr6-000wmm-Qb; Tue, 05 Jul 2022 14:48:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=GUoK9UQUhSqzH1l8r/dSOXQ7dtAmmSxTrDlRxUddIWs=; b=TgNS047Wpm9D+ufIhq/QStUVTn
-	NYAON1kWOq/7fzmoBdv0soq+OibOav7fKmPcJogLyWMaw8vuDWQJOt3DjFNXLaw090h0R7+l48kG+
-	jNrdK//b+93K+VRSVd3U3oNFNLZbWAUo7EWa582+SS7IwEMNq9zCQbOMJ/nB3xIXlytqGVDRC6E0n
-	/dQSuDTVQo8diCWGmeOdBawFwjNRVnDuUygKrbjpz39xXj8webGA/NF1yAzM8aijlOQjsBgX1LNkk
-	MsxJx1S5On85y4MoZorpzCDD20WrhhC8em9dpZ3iTjEXk/F65c1A2IHdFe225dps60GTeLtjo+IAR
-	sYKa5vNA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33194)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1o8jqr-0001S0-Jk; Tue, 05 Jul 2022 15:48:33 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1o8jqn-0003Qp-U8; Tue, 05 Jul 2022 15:48:29 +0100
-Date: Tue, 5 Jul 2022 15:48:29 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin __ipraga <alsi@bang-olufsen.dk>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: Re: DSA: request for your help with your DSA driver
-Message-ID: <YsRPPdMc31hTHH5A@shell.armlinux.org.uk>
-References: <20220705142236.1fab0033@thinkpad>
- <CACRpkdb1Z3jWy2VO2EiZ3JO_JtHz7xt24_bTcxCwGkLekea3AA@mail.gmail.com>
+	id 1o8k3e-0010Xb-So; Tue, 05 Jul 2022 15:01:49 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 75E7C6601942;
+	Tue,  5 Jul 2022 16:01:43 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657033304;
+	bh=7dtkO8dKzSBEwSst0VDFjIf/IrxOZjXKOGrdhYNUMhs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fa8YbXeEA22ARE8Gt66rR7VDYWziyJUa0DuNZEFX+8Z0Kfw3T3xNWcoRwKjia/3Vk
+	 VFa556wih1Hwvt9Mw5U3v4HIUITRHJbLEDK/04ybrSeAJbaqa5VNXRiHzPcQZrYXkx
+	 +OM/edmkCMiGvH4vvCFDW5NflyCnwlcR+PNjM7UBmkwLGUer3ExlES6MhD5/6Icmyj
+	 Yn7FcBN0nJE85U+9IuErpPjFQBVv9Ag6ij2btLkcUhFIR4RJLXeUdjl9Sof2+bNBvy
+	 dDg4rp8fbpum/S6brzpPGBUuz3ihDwq9mmGmHWQAqKEx7w3xJcmgtrTu9+Q1BI07Ju
+	 FOJwyiVZHkUMg==
+Message-ID: <bffad9a5-6154-3b9a-c39c-680ed3350a5f@collabora.com>
+Date: Tue, 5 Jul 2022 17:01:41 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CACRpkdb1Z3jWy2VO2EiZ3JO_JtHz7xt24_bTcxCwGkLekea3AA@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v4 00/19] Introduce support for MediaTek MT8192 Google
+ Chromebooks
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Luca Weiss <luca@z3ntu.xyz>, Maxim Kutnij <gtk3@inbox.ru>,
+ Rob Herring <robh+dt@kernel.org>, Sam Shih <sam.shih@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220629155956.1138955-1-nfraprado@collabora.com>
+ <CAGXv+5Epmo1=DZvoFkqj57hiO8nim=cuP1v3i9b2diZwqBe3Mw@mail.gmail.com>
+ <20220701150145.2myyk2o3vxydyhql@notapiano>
+ <CAGXv+5FsTNKgWG75eSKt4ngnhmSekWNT+oS1ke+P4tazHDdnzQ@mail.gmail.com>
+ <20220705135611.jlfltaormhcpuutc@notapiano>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220705135611.jlfltaormhcpuutc@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_074848_899398_5B1432D7 
-X-CRM114-Status: GOOD (  22.55  )
+X-CRM114-CacheID: sfid-20220705_080147_336173_51563460 
+X-CRM114-Status: GOOD (  28.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,57 +86,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 05, 2022 at 03:32:50PM +0200, Linus Walleij wrote:
-> I've seen Russell's patches and looked at the impact on the drivers
-> I maintain:
+Il 05/07/22 15:56, Nícolas F. R. A. Prado ha scritto:
+> On Tue, Jul 05, 2022 at 12:03:08PM +0800, Chen-Yu Tsai wrote:
+>> On Fri, Jul 1, 2022 at 11:01 PM Nícolas F. R. A. Prado
+>> <nfraprado@collabora.com> wrote:
+>>>
+>>> On Fri, Jul 01, 2022 at 08:44:53PM +0800, Chen-Yu Tsai wrote:
+>>>> On Thu, Jun 30, 2022 at 12:00 AM Nícolas F. R. A. Prado
+>>>> <nfraprado@collabora.com> wrote:
+>>>>>
+>>>>>
+>>>>> This series introduces Devicetrees for the MT8192-based Asurada platform
+>>>>> as well as Asurada Spherion and Asurada Hayato boards.
+>>>>>
+>>>>> Support for the boards is added to the extent that is currently enabled
+>>>>> in the mt8192.dtsi, and using only properties already merged in the
+>>>>> dt-bindings, as to not add any dependencies to this series.
+>>>>>
+>>>>> This series was peer-reviewed internally before submission.
+>>>>>
+>>>>> Series tested on next-20220629.
+>>>>
+>>>> Just FYI I also got the internal display to work after some fixes to
+>>>> the dtsi [1] and copying the stuff over from the ChromeOS kernel tree.
+>>>>
+>>>> It might be harder to enable the external display, given that we don't
+>>>> have a good way of describing the weird design of using the DP bridge
+>>>> also as a mux. See [2] for ongoing discussion.
+>>>
+>>> Hi ChenYu,
+>>>
+>>> I actually have both the internal and external display working on my local
+>>> branch [1], but the commits there aren't final, and I'm also following the
+>>> Type-C switch discussion to update my commits whenever the binding is settled
+>>> on.
+>>
+>> I see. I think the internal display part is more or less final. It should
+>> be worth including it, as it is a fairly visible indication that things
+>> are working.
 > 
-> drivers/net/dsa/realtek/rtl8366rb.c
-> Uses
-> phylink_mac_link_up -> rtl8366rb_mac_link_up()
+> Yeah, it is final, but not all of the display-related nodes in mt8192.dtsi have
+> been merged yet [1] and I didn't want to introduce dependencies to the series.
 > 
-> This will simply (possibly erroneously WRT the API) force the
-> CPU port link into 1GB mode with no autonegotiation and then
-> enable the CPU port.
+> If that series gets merged before this one, I could add the display to this
+> series as well, but I'm just worried that by introducing new commits with almost
+> every new series version, this series might never get reviewed and merged, and
+> this series is pretty big already. So I'd prefer to leave the display for a
+> following series.
 > 
-> phylink_mac_link_down -> rtl8366rb_mac_link_down()
+> Thanks,
+> Nícolas
 > 
-> This will disable the CPU port.
+> [1] https://lore.kernel.org/all/20220701090547.21429-1-allen-kh.cheng@mediatek.com
 > 
-> I suspect this is maybe not ideal. I look at the (a bit horrible) vendor
-> driver and I see it supports forcing:
-> 
-> - Link Up/Down
-> - Link speed (10M, 100M, 1G)
-> - Duplex (full/half)
-> - Optional txPause
-> - Optional rxPause
-> 
-> I suspect I should be handling all this properly with the
-> .phylink_get_caps and augment .phylib_mac_link_up to properly
-> force the requested features.
-> 
-> I'm a bit uncertain about .phylink_mac_config callbacks?
-> 
-> It seems if I should fix up this incomplete implementation I'd best do
-> that on top of Russell's patches? I can also test with the patches
-> applied but the way this driver (ab-)uses the API I think it probably
-> us a no-op.
 
-It would be good to know that this series at least does not break the
-driver.
+Matthias, can you please give an advice on that?
 
-> The other switch chip I comaintain is drivers/net/dsa/vitesse-vsc73xx-core.c
-> which isn't using any phylink callbacks at all, just .adjust_link.
-> It might need some good patching as well but I am uncertain
-> where to start with that one.
+Thank you,
+Angelo
 
-I don't see anything obvious in there which would prevent a conversion,
-and I'd suggest doing it after this series has been applied, as it makes
-the whole way phylink gets used in DSA much more sane (i.o.w. phylink
-always gets used for every port in a phylink-converted DSA driver,
-instead of only in most but not all situations.)
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+>>
+>> ChenYu
+>>
+>>> I noticed the lack of the mandatory display aliases in the mt8192 series but
+>>> somehow missed mentioning that in the review, so thanks for adding that.
+>>>
+>>> Thanks,
+>>> Nícolas
+>>>
+>>> [1] https://gitlab.collabora.com/nfraprado/linux/-/commits/mt8192-asurada
+>>>
+>>>>
+>>>> ChenYu
+>>>>
+>>>> [1] https://lore.kernel.org/linux-mediatek/CAGXv+5F_Gi_=vV1NSk0AGRVYCa3Q8+gBaE+nv3OJ1AKe2voOwg@mail.gmail.com/
+>>>> [2] https://lore.kernel.org/dri-devel/20220622173605.1168416-1-pmalani@chromium.org/
+>>>>
+>>>>> v3: https://lore.kernel.org/all/20220512205602.158273-1-nfraprado@collabora.com/
+>>>>> v2: https://lore.kernel.org/all/20220505194550.3094656-1-nfraprado@collabora.com/
+>>>>> v1: https://lore.kernel.org/all/20220316151327.564214-1-nfraprado@collabora.com/
+>>>>>
+>>>>> Changes in v4:
+>>>>> - Added patches 17-19 enabling MMC, SCP and SPI NOR flash
+>>>>> - Switched mediatek,drive-strength-adv for drive-strength-microamp
+>>>>> - Switched mediatek,pull-up-adv for bias-pull-up
+>>>>> - Updated Vgpu minimum voltage to appropriate value
+>>>>>
+>>>>> Changes in v3:
+>>>>> - Renamed regulator nodes to be generic
+>>>>> - Fixed keyboard layout for Hayato
+>>>>>
+>>>>> Changes in v2:
+>>>>> - Added patches 1-2 for Mediatek board dt-bindings
+>>>>> - Added patches 13-16 enabling hardware for Asurada that has since been
+>>>>>    enabled on mt8192.dtsi
+>>>>>
+>>>>> Nícolas F. R. A. Prado (19):
+>>>>>    dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-spherion
+>>>>>    dt-bindings: arm64: dts: mediatek: Add mt8192-asurada-hayato
+>>>>>    arm64: dts: mediatek: Introduce MT8192-based Asurada board family
+>>>>>    arm64: dts: mediatek: asurada: Document GPIO names
+>>>>>    arm64: dts: mediatek: asurada: Add system-wide power supplies
+>>>>>    arm64: dts: mediatek: asurada: Enable and configure I2C and SPI busses
+>>>>>    arm64: dts: mediatek: asurada: Add ChromeOS EC
+>>>>>    arm64: dts: mediatek: asurada: Add keyboard mapping for the top row
+>>>>>    arm64: dts: mediatek: asurada: Add Cr50 TPM
+>>>>>    arm64: dts: mediatek: asurada: Add Elan eKTH3000 I2C trackpad
+>>>>>    arm64: dts: mediatek: asurada: Add I2C touchscreen
+>>>>>    arm64: dts: mediatek: spherion: Add keyboard backlight
+>>>>>    arm64: dts: mediatek: asurada: Enable XHCI
+>>>>>    arm64: dts: mediatek: asurada: Enable PCIe and add WiFi
+>>>>>    arm64: dts: mediatek: asurada: Add MT6359 PMIC
+>>>>>    arm64: dts: mediatek: asurada: Add SPMI regulators
+>>>>>    arm64: dts: mediatek: asurada: Enable MMC
+>>>>>    arm64: dts: mediatek: asurada: Enable SCP
+>>>>>    arm64: dts: mediatek: asurada: Add SPI NOR flash memory
+>>>>>
+>>>>>   .../devicetree/bindings/arm/mediatek.yaml     |  13 +
+>>>>>   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>>>>>   .../dts/mediatek/mt8192-asurada-hayato-r1.dts |  47 +
+>>>>>   .../mediatek/mt8192-asurada-spherion-r0.dts   |  62 ++
+>>>>>   .../boot/dts/mediatek/mt8192-asurada.dtsi     | 959 ++++++++++++++++++
+>>>>>   5 files changed, 1083 insertions(+)
+>>>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
+>>>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
+>>>>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+>>>>>
+>>>>> --
+>>>>> 2.36.1
+>>>>>
+
 
