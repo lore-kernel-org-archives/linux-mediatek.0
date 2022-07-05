@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DBF9C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 01:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA811C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 03:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IGGUbbdc7XQsocKf3G/x2L9ysliPj17c694+S9fJBTg=; b=GfQC9NF0Sgnny82syab5nZaDZf
-	T/bel3oY3skSe1NhcoyUToln/OIPNR+gNsBO40FYVVM7BB7DbLn8j7DVEetbJyn5Urhnd0BPfUKVN
-	3PURuYdMYw4LX9H/Zl83i7xWm7FEG1VyICShdQQpbf2JbLZnF2heEiczDCSyHy8nkkv2oOWWgkst0
-	A96fEHjgqAjv6rYP/D/Nt/iEY/tt3Wm/haWB7zmDf24+sZw/YWbw8mloIUEGUn8t+AjPzTez4ffF1
-	zsEyp2UOk1yDYlV9SN+lazmyCWtyvoVCgWDVc2mSFXiI8HXS/g8gjLBJFqOqj04MCFQkMk6vBhrZQ
-	GxHWUD1A==;
+	bh=yLOYzV5vNL42nXQucVC52/Iitxkq2d0aXYdMBuGY0Bc=; b=WUgaJEWZZpMdYh9SLzCJ58sxDS
+	vCxNrJX2f7MnDBUio50zdO2PJpyivVA7OjDEqwf99MUlU/6lUnA2h9wBXv694qjpUls93z9PLqeaZ
+	RXEPd2EXZuRRY+9VPxSkDu5YI9x+/Fvur0gm1iJGPcrXMJXjpPHfZxAwILFtJ619PHYfS1BwgcNig
+	mXS4WeTd1F1Q3B8BLX2UQNcbQJrafijQuzUQA4s0MmUqCLF7PvRx2ELiR9Wh3cXvpJOCJVGzSoKuv
+	b0P0IM3u6/xA5f8y+8uDI843dzZnjFmVgUNWbCEvmsAVzS1a/ji0uQGhaLY3ezGHxcq2bh8kAizWs
+	gqhGcrEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Xgr-00Dqek-Rg; Tue, 05 Jul 2022 01:49:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o8ZUb-00EJ5e-66; Tue, 05 Jul 2022 03:44:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Xgp-00Dqaj-3o; Tue, 05 Jul 2022 01:49:24 +0000
-X-UUID: 5d4f4f1c86554b60b391bab7d2b2ca23-20220704
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=IGGUbbdc7XQsocKf3G/x2L9ysliPj17c694+S9fJBTg=;
-	b=o92dSns2H5OOTJcwTgw1AitQqMG0n7aQto7ARyE6MVnNAntwH4Ow5nGkSa14hNDjfgGpCjcFfLBvnUXdfwypMjIarBIFPVlV3gbQ1GTQbtDjnut8XZMHDW26bbkDphV7LaoQPPpmWWNVC9AtgLR5qg0RfayHba1lvlnjlSESQRY=;
+	id 1o8ZUO-00EJ4K-OS; Tue, 05 Jul 2022 03:44:43 +0000
+X-UUID: e28b7393c8364326870b3ce1be400ede-20220704
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:e6d9bd81-9e38-4422-9498-ad581a33adbc,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:10,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:15
-X-CID-META: VersionHash:0f94e32,CLOUDID:b9ba99d6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:bb8f5de5-99cd-4d1c-9bc5-050e26f45274,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+	TION:release,TS:20
+X-CID-META: VersionHash:0f94e32,CLOUDID:b1a58d86-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 5d4f4f1c86554b60b391bab7d2b2ca23-20220704
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
+X-UUID: e28b7393c8364326870b3ce1be400ede-20220704
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1453103970; Mon, 04 Jul 2022 18:49:11 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 1556031041; Mon, 04 Jul 2022 20:44:29 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 5 Jul 2022 09:38:38 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ Tue, 5 Jul 2022 11:43:27 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 5 Jul 2022 09:38:37 +0800
-Message-ID: <25f13cd960f786a1f39b9675c82ea37e1a16b5c3.camel@mediatek.com>
-Subject: Re: [PATCH v12 2/2] iommu/mediatek: Allow page table PA up to 35bit
-From: Yong Wu <yong.wu@mediatek.com>
-To: <yf.wang@mediatek.com>, Will Deacon <will@kernel.org>, Robin Murphy
-	<robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Miles Chen
-	<miles.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Ning Li
-	<ning.li@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
-	<iommu@lists.linux-foundation.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Date: Tue, 5 Jul 2022 09:38:37 +0800
-In-Reply-To: <20220630092927.24925-3-yf.wang@mediatek.com>
-References: <20220630092927.24925-1-yf.wang@mediatek.com>
-	 <20220630092927.24925-3-yf.wang@mediatek.com>
+ Transport; Tue, 5 Jul 2022 11:43:27 +0800
+Message-ID: <f2b5cb4c57b252005bf83416942c8d9a6bf727d6.camel@mediatek.com>
+Subject: Re: [PATCH v15 02/16] dt-bindings: mediatek,dpi: Revise mediatek
+ strings to correct format
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<xinlei.lee@mediatek.com>, <liangxu.xu@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 5 Jul 2022 11:43:26 +0800
+In-Reply-To: <20220701035845.16458-3-rex-bc.chen@mediatek.com>
+References: <20220701035845.16458-1-rex-bc.chen@mediatek.com>
+	 <20220701035845.16458-3-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 X-MTK: N
-Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_184923_365376_74C9A15F 
-X-CRM114-Status: UNSURE (   7.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220704_204440_850765_9A809E7F 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,13 +85,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA2LTMwIGF0IDE3OjI5ICswODAwLCB5Zi53YW5nQG1lZGlhdGVrLmNvbSB3
-cm90ZToNCj4gRnJvbTogWXVuZmVpIFdhbmcgPHlmLndhbmdAbWVkaWF0ZWsuY29tPg0KPiANCj4g
-U2luZ2xlIG1lbW9yeSB6b25lIGZlYXR1cmUgd2lsbCByZW1vdmUgWk9ORV9ETUEzMiBhbmQgWk9O
-RV9ETUEuIFNvDQo+IGFkZA0KPiB0aGUgcXVpcmsgSU9fUEdUQUJMRV9RVUlSS19BUk1fTVRLX1RU
-QlJfRVhUIHRvIGxldCBsZXZlbCAxIGFuZCBsZXZlbA0KPiAyDQo+IHBndGFibGUgc3VwcG9ydCBh
-dCBtb3N0IDM1Yml0IFBBLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogTmluZyBMaSA8bmluZy5saUBt
-ZWRpYXRlay5jb20+DQo+IFNpZ25lZC1vZmYtYnk6IFl1bmZlaSBXYW5nIDx5Zi53YW5nQG1lZGlh
-dGVrLmNvbT4NCg0KUmV2aWV3ZWQtYnk6IFlvbmcgV3UgPHlvbmcud3VAbWVkaWF0ZWsuY29tPg0K
+Hi, Bo-Chen:
+
+On Fri, 2022-07-01 at 11:58 +0800, Bo-Chen Chen wrote:
+> Strings replacement:
+> - s/mediatek/MediaTek/ in title.
+> - s/Mediatek/MediaTek/ in description.
+
+Applied to mediatek-drm-next [1], thanks.
+
+[1] 
+https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
+
+Regards,
+CK
+
+> 
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml    | 4
+> ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git
+> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> index 8e526a4b134e..5bb23e97cf33 100644
+> ---
+> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> +++
+> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam
+> l
+> @@ -4,14 +4,14 @@
+>  $id: 
+> http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  
+> -title: mediatek DPI and DP_INTF Controller
+> +title: MediaTek DPI and DP_INTF Controller
+>  
+>  maintainers:
+>    - CK Hu <ck.hu@mediatek.com>
+>    - Jitao shi <jitao.shi@mediatek.com>
+>  
+>  description: |
+> -  The Mediatek DPI and DP_INTF function blocks are a sink of the
+> display
+> +  The MediaTek DPI and DP_INTF function blocks are a sink of the
+> display
+>    subsystem and provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422
+> pixel data on a
+>    parallel output bus.
+>  
 
 
