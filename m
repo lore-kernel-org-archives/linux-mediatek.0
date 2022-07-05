@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88AA8C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 09:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C127CC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Jul 2022 09:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yJ3/p/b20rd9gITr340jXdoH64eB6vygRRljkiC3keQ=; b=Bn2pSU9Ju8NKrFUXKHv4xdrdib
-	QbaZQZT4l5cnhvNbja9MvQDi0UXYnlFpyeV91Jkshbddsgb3LBmu0Uauri2NK8fH1ITsf1fRaP7sl
-	B/r8S0Rb9B0WPqiOvZOapZpo9IyqxnGuScwdDDSlS2zwWIDvLjicNvhXe0bkSbom1LCgLQPt92rIi
-	bLdOB8ZTfcqsd8ikl0WyGuDuuWtPu11K7AzAcEYnajs8rIucqV3qjG5lU1DFuuXTa0WyRWEMRipvo
-	YJLbWmw1QLIa9YnawsPkKjrHehfkIxdKfNVg+VIfpeFlx6nicqAv1arbWkR3x1mQpfpViXP1J6YoH
-	H7KWUGiw==;
+	bh=m1A3BKjmMvA2HhWBa1hBKOqUGdUagM4EyV69eqLC85I=; b=Z/BnSFetBm0sZlIqQF/pPA2u6v
+	Po4LfFJX/5tvReHaTC9gNMAOmRGS39ugAJtNRySywB8JFgyTQqakB+fn7+VaWxGOxAiMo3Ym0LH0l
+	PS4/mPjTssQneS6bRE3ssa0L0O7OtXcqF9rwkBmTZH1vtQv1HVTptkppfHReqRCXDsk7NNsly3vu3
+	0+JmisSqz2cwdoTUficdfw+3L38I73Bb+vpoyXBKSzvezsY+zKpkgvFYuSEIx1+C3rlpaYHmV48zw
+	zT5aZD024/xs9H55wboYQr7DwZyzAci14dJFtBvMs/Zv/bdwEWImQykGYxzzXNKAxZOq5d609E503
+	I0+Z0L6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8eb5-00GY5k-QZ; Tue, 05 Jul 2022 09:11:55 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1o8ebC-00GYB4-Rm; Tue, 05 Jul 2022 09:12:02 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8eYV-00GWLV-6B
-	for linux-mediatek@lists.infradead.org; Tue, 05 Jul 2022 09:09:17 +0000
-Received: by mail-wr1-x429.google.com with SMTP id v16so5145982wrd.13
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 Jul 2022 02:09:12 -0700 (PDT)
+	id 1o8eZp-00GXLC-7r
+	for linux-mediatek@lists.infradead.org; Tue, 05 Jul 2022 09:10:39 +0000
+Received: by mail-wr1-x430.google.com with SMTP id s1so16577611wra.9
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Jul 2022 02:10:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=yJ3/p/b20rd9gITr340jXdoH64eB6vygRRljkiC3keQ=;
-        b=ZkMdT84ipj39vCO/c7Hf55PtVWpnxXpU4nIqZoPE9TBg3nzHvLN5uXiLRJJWJZUaFH
-         IVV75UQbUT+9xDfo9XPMnzulnGXkf0TEsJjRSIzZUi4Ckh7/Svqgm6oN4TBOEqX64CxG
-         h1KaOpT1pmbUcEpWFyctI/tMq+QCjPS5Hr+2hYok5wrZ/PJK3CVduRzjKGmy3YoOQBrb
-         SRQRym6k4u4qGoicGUV4zLsVl6uHpRCNWbzTsrDP8oIWC04qpRxzkL622nDV/MlfMoZu
-         H9yzQ2Y0LwSktRRbqcW3hWnun7r1kUQ63dSBNCTL7dvAD9Aw2G8GXycOd7X0Cd+7J08O
-         JYgQ==
+        bh=m1A3BKjmMvA2HhWBa1hBKOqUGdUagM4EyV69eqLC85I=;
+        b=lez3ifha+f6Rrr2kqrkJPNagj9VuUYOcQxtfKM5Y4ZNeAd6EkbaLAKM/Wbzg0a4ygX
+         57zsFX+r5JBezTl1TzKJMtjJTA5Oo9kAjGYphOWnLi18ZL27scIcYVB4U/U38kgKEmqq
+         gk9g5o5nmHGVyD8DXjZWNyqXG6U2/+j6Lc92SsFZ2sTjFxv2xgrdIFmqzDZxA/yF6NKI
+         GNUsV7wQAkaMXOm5/cXI3S/vnXreUpHCve+wOLJpJ5AeZEZaPD7JExzAJXj7xw15HvMb
+         z4klM0hf8PxVjZpQwrmgkqnGnRXdTU50bYGyqxjctGbC/zvfDV5mi5iUPSH1voy4wNn1
+         +Jrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=yJ3/p/b20rd9gITr340jXdoH64eB6vygRRljkiC3keQ=;
-        b=oJ87JM3ERyEt3ceLGA9QqvoI32POrfie8YOGKxz4Nvdqj9EYyMCsvLQmDEfhHsSNNm
-         p+ggN50VK+2Xj7T/NL1iejHdMht039VkKnnb/vmUO4m0RTa8ePgS2fswpqCm9iwAdLCX
-         QjAEa/XyDqAdQ5unapkfF9JqvLyOXYC6pkKSHQhIMAQ24Xfds7clrAIzwaJrIYlb7Xsc
-         efy3C7Y/b/nZryfhQc+nVF4SWynm7qlN/bogl7hU5HnBiixwI6CVuTG/2IXncDPxIOTY
-         iMAH2aATmOYN+rnE0ZgJTtUSM9wY62p1WOK0TWnEtnVlB0ROJzWTGWYUqRPGsLAnYeQz
-         bK6A==
-X-Gm-Message-State: AJIora/VAnStaKHNcG9U7A3U9DAw3UmY+fHdPw58SLaPYrcD13bPFtSd
-	F41StWHbV0A8HZjrf+lqzci/YQ==
-X-Google-Smtp-Source: AGRyM1uOmYs7yfGw762F2c9Ek0zTm5wi/+qAG9KZ9cTFCOZgYur4sj1hP42/yknm4nKxzPH5BLFvaw==
-X-Received: by 2002:a5d:4345:0:b0:21a:3b82:ad57 with SMTP id u5-20020a5d4345000000b0021a3b82ad57mr31677768wrr.176.1657012151232;
-        Tue, 05 Jul 2022 02:09:11 -0700 (PDT)
+        bh=m1A3BKjmMvA2HhWBa1hBKOqUGdUagM4EyV69eqLC85I=;
+        b=q7tmVHKVZF/a3ElUeT6NbkizJPnp6iiYgxvYnstkC9wNEm3KQdmJETlH1RvOEuYk8z
+         gpWK9lbKd5Fs6e8rJI6XXCBVilmYrE7az7kB3IFsiZzIDK5qjV+fknA0HrisYvxbzO6c
+         0FWtSpYOxO2ZDv4HCci2jvX8S+drvFBYRHR1bpc6UL8LZGzKHY4II3BmiCQckq58SEzK
+         PPrhW5CAoU0+E7ySktOnz/vo0fqBJQJjt9unXn6pTAenPp3GUQX0gdCuQtVrHuG0hy7s
+         khcigZj2KW6wxQss4Ez+B23ATv9wdOxvhsyO4/miT4lcq6HrZFHeWcAi0W/o+vCXqLMf
+         6wmA==
+X-Gm-Message-State: AJIora+TXtG3TabEaZCYS0cJK3MQg8KsonyHvM9q2eAOkII4miJgx2WF
+	tPnEL5wOWBUxUPFilsy1GpUvfg==
+X-Google-Smtp-Source: AGRyM1ub3m2eRAqQZK2SlJMJ3NmN5z/14L7w6P6uMsrbJrSaaIrj5LVZ69QvQQvaVrQt37N9Vpk9cg==
+X-Received: by 2002:adf:f38f:0:b0:21d:66b5:21c with SMTP id m15-20020adff38f000000b0021d66b5021cmr10869255wro.144.1657012234184;
+        Tue, 05 Jul 2022 02:10:34 -0700 (PDT)
 Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id l14-20020a05600c4f0e00b003a199ed4f44sm10760635wmq.27.2022.07.05.02.09.09
+        by smtp.googlemail.com with ESMTPSA id b8-20020a05600c4e0800b003974cb37a94sm19032745wmq.22.2022.07.05.02.10.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Jul 2022 02:09:10 -0700 (PDT)
-Message-ID: <3b0ce952-0674-d01d-3fc0-795d35743723@linaro.org>
-Date: Tue, 5 Jul 2022 11:09:09 +0200
+        Tue, 05 Jul 2022 02:10:33 -0700 (PDT)
+Message-ID: <be1e6e75-45e0-2c73-bace-4499b7b1af68@linaro.org>
+Date: Tue, 5 Jul 2022 11:10:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [PATCH 1/4] PM: EM: convert power field to micro-Watts precision
- and align drivers
+Subject: Re: [PATCH 2/4] Documentation: EM: Switch to micro-Watts scale
 Content-Language: en-US
 To: Lukasz Luba <lukasz.luba@arm.com>, linux-kernel@vger.kernel.org,
  linux-pm@vger.kernel.org
@@ -74,14 +73,14 @@ Cc: amitk@kernel.org, rui.zhang@intel.com, viresh.kumar@linaro.org,
  sudeep.holla@arm.com, cristian.marussi@arm.com, matthias.bgg@gmail.com,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 References: <20220622145802.13032-1-lukasz.luba@arm.com>
- <20220622145802.13032-2-lukasz.luba@arm.com>
+ <20220622145802.13032-3-lukasz.luba@arm.com>
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20220622145802.13032-2-lukasz.luba@arm.com>
+In-Reply-To: <20220622145802.13032-3-lukasz.luba@arm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_020915_346951_05743163 
-X-CRM114-Status: GOOD (  44.06  )
+X-CRM114-CacheID: sfid-20220705_021037_340321_FC54B494 
+X-CRM114-Status: GOOD (  30.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,282 +95,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/06/2022 16:57, Lukasz Luba wrote:
-> The milli-Watts precision causes rounding errors while calculating
-> efficiency cost for each OPP. This is especially visible in the 'simple'
-> Energy Model (EM), where the power for each OPP is provided from OPP
-> framework. This can cause some OPPs to be marked inefficient, while
-> using micro-Watts precision that might not happen.
+On 22/06/2022 16:58, Lukasz Luba wrote:
+> The EM now uses the micro-Watts scale for the power values. Update
+> related documentation to reflect that fact.
 > 
-> Update all EM users which access 'power' field and assume the value is
-> in milli-Watts.
+> Fix also a problematic sentence in the doc "to:" which triggers test
+> scripts complaining about wrong email address.
 > 
-> Solve also an issue with potential overflow in calculation of energy
-> estimation on 32bit machine. It's needed now since the power value
-> (thus the 'cost' as well) are higher.
-> 
-> Example calculation which shows the rounding error and impact:
-> 
-> power = 'dyn-power-coeff' * volt_mV * volt_mV * freq_MHz
-> 
-> power_a_uW = (100 * 600mW * 600mW * 500MHz) / 10^6 = 18000
-> power_a_mW = (100 * 600mW * 600mW * 500MHz) / 10^9 = 18
-> 
-> power_b_uW = (100 * 605mW * 605mW * 600MHz) / 10^6 = 21961
-> power_b_mW = (100 * 605mW * 605mW * 600MHz) / 10^9 = 21
-> 
-> max_freq = 2000MHz
-> 
-> cost_a_mW = 18 * 2000MHz/500MHz = 72
-> cost_a_uW = 18000 * 2000MHz/500MHz = 72000
-> 
-> cost_b_mW = 21 * 2000MHz/600MHz = 70 // <- artificially better
-> cost_b_uW = 21961 * 2000MHz/600MHz = 73203
-> 
-> The 'cost_b_mW' (which is based on old milli-Watts) is misleadingly
-> better that the 'cost_b_uW' (this patch uses micro-Watts) and such
-> would have impact on the 'inefficient OPPs' information in the Cpufreq
-> framework. This patch set removes the rounding issue.
-
-Thanks for this detailed description, it really helps to understand why 
-this change is needed.
-
-Perhaps it would make sense to add a power_uw in the EM structure and 
-keeping the old one with the milli-watts in order to reduce the impact 
-of the change.
-
-It is a suggestion if you find it more convenient. Otherwise I'm fine 
-with this approach too.
-
-A few comments below.
-
 > Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+
+Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+
 > ---
->   drivers/cpufreq/mediatek-cpufreq-hw.c |  7 +--
->   drivers/cpufreq/scmi-cpufreq.c        |  6 +++
->   drivers/opp/of.c                      | 15 ++++---
->   drivers/powercap/dtpm_cpu.c           |  5 +--
->   drivers/thermal/cpufreq_cooling.c     | 13 +++++-
->   drivers/thermal/devfreq_cooling.c     | 19 ++++++--
->   include/linux/energy_model.h          | 63 ++++++++++++++++++++-------
->   kernel/power/energy_model.c           | 31 ++++++++-----
->   8 files changed, 114 insertions(+), 45 deletions(-)
+>   Documentation/power/energy-model.rst | 14 +++++++-------
+>   1 file changed, 7 insertions(+), 7 deletions(-)
 > 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-> index 813cccbfe934..f0e0a35c7f21 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-> @@ -51,7 +51,7 @@ static const u16 cpufreq_mtk_offsets[REG_ARRAY_SIZE] = {
->   };
+> diff --git a/Documentation/power/energy-model.rst b/Documentation/power/energy-model.rst
+> index feb257b7f350..ef341be2882b 100644
+> --- a/Documentation/power/energy-model.rst
+> +++ b/Documentation/power/energy-model.rst
+> @@ -20,20 +20,20 @@ possible source of information on its own, the EM framework intervenes as an
+>   abstraction layer which standardizes the format of power cost tables in the
+>   kernel, hence enabling to avoid redundant work.
 >   
-
-[ ... ]
-
-> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
-> index b8151d95a806..dc19e7c80751 100644
-> --- a/drivers/thermal/cpufreq_cooling.c
-> +++ b/drivers/thermal/cpufreq_cooling.c
-> @@ -21,6 +21,7 @@
->   #include <linux/pm_qos.h>
->   #include <linux/slab.h>
->   #include <linux/thermal.h>
-> +#include <linux/units.h>
+> -The power values might be expressed in milli-Watts or in an 'abstract scale'.
+> +The power values might be expressed in micro-Watts or in an 'abstract scale'.
+>   Multiple subsystems might use the EM and it is up to the system integrator to
+>   check that the requirements for the power value scale types are met. An example
+>   can be found in the Energy-Aware Scheduler documentation
+>   Documentation/scheduler/sched-energy.rst. For some subsystems like thermal or
+>   powercap power values expressed in an 'abstract scale' might cause issues.
+>   These subsystems are more interested in estimation of power used in the past,
+> -thus the real milli-Watts might be needed. An example of these requirements can
+> +thus the real micro-Watts might be needed. An example of these requirements can
+>   be found in the Intelligent Power Allocation in
+>   Documentation/driver-api/thermal/power_allocator.rst.
+>   Kernel subsystems might implement automatic detection to check whether EM
+>   registered devices have inconsistent scale (based on EM internal flag).
+>   Important thing to keep in mind is that when the power values are expressed in
+> -an 'abstract scale' deriving real energy in milli-Joules would not be possible.
+> +an 'abstract scale' deriving real energy in micro-Joules would not be possible.
 >   
->   #include <trace/events/thermal.h>
+>   The figure below depicts an example of drivers (Arm-specific here, but the
+>   approach is applicable to any architecture) providing power costs to the EM
+> @@ -98,7 +98,7 @@ Drivers are expected to register performance domains into the EM framework by
+>   calling the following API::
 >   
-> @@ -101,6 +102,7 @@ static unsigned long get_level(struct cpufreq_cooling_device *cpufreq_cdev,
->   static u32 cpu_freq_to_power(struct cpufreq_cooling_device *cpufreq_cdev,
->   			     u32 freq)
->   {
-> +	unsigned long power_mw;
->   	int i;
+>     int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
+> -		struct em_data_callback *cb, cpumask_t *cpus, bool milliwatts);
+> +		struct em_data_callback *cb, cpumask_t *cpus, bool microwatts);
 >   
->   	for (i = cpufreq_cdev->max_level - 1; i >= 0; i--) {
-> @@ -108,16 +110,23 @@ static u32 cpu_freq_to_power(struct cpufreq_cooling_device *cpufreq_cdev,
->   			break;
->   	}
+>   Drivers must provide a callback function returning <frequency, power> tuples
+>   for each performance state. The callback function provided by the driver is free
+> @@ -106,10 +106,10 @@ to fetch data from any relevant location (DT, firmware, ...), and by any mean
+>   deemed necessary. Only for CPU devices, drivers must specify the CPUs of the
+>   performance domains using cpumask. For other devices than CPUs the last
+>   argument must be set to NULL.
+> -The last argument 'milliwatts' is important to set with correct value. Kernel
+> +The last argument 'microwatts' is important to set with correct value. Kernel
+>   subsystems which use EM might rely on this flag to check if all EM devices use
+>   the same scale. If there are different scales, these subsystems might decide
+> -to: return warning/error, stop working or panic.
+> +to return warning/error, stop working or panic.
+>   See Section 3. for an example of driver implementing this
+>   callback, or Section 2.4 for further documentation on this API
 >   
-> -	return cpufreq_cdev->em->table[i + 1].power;
-> +	power_mw = cpufreq_cdev->em->table[i + 1].power;
-> +	power_mw /= MICROWATT_PER_MILLIWATT;
-
-Won't this fail with an unresolved symbols on some archs ? I mean may be 
-do_div should be used instead ?
-
-> +
-> +	return power_mw;
->   }
-
-[ ... ]
-
->   #ifdef CONFIG_64BIT
-> -#define em_scale_power(p) ((p) * 1000)
-> +#define em_estimate_energy(cost, sum_util, scale_cpu) \
-> +	(((cost) * (sum_util)) / (scale_cpu))
->   #else
-> -#define em_scale_power(p) (p)
-> +#define em_estimate_energy(cost, sum_util, scale_cpu) \
-> +	(((cost) / (scale_cpu)) * (sum_util))
->   #endif
->   
->   struct em_data_callback {
-> @@ -112,7 +143,7 @@ struct em_data_callback {
->   	 * and frequency.
->   	 *
->   	 * In case of CPUs, the power is the one of a single CPU in the domain,
-> -	 * expressed in milli-Watts or an abstract scale. It is expected to
-> +	 * expressed in micro-Watts or an abstract scale. It is expected to
->   	 * fit in the [0, EM_MAX_POWER] range.
->   	 *
->   	 * Return 0 on success.
-> @@ -148,7 +179,7 @@ struct em_perf_domain *em_cpu_get(int cpu);
->   struct em_perf_domain *em_pd_get(struct device *dev);
->   int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->   				struct em_data_callback *cb, cpumask_t *span,
-> -				bool milliwatts);
-> +				bool microwatts);
->   void em_dev_unregister_perf_domain(struct device *dev);
->   
->   /**
-> @@ -273,7 +304,7 @@ static inline unsigned long em_cpu_energy(struct em_perf_domain *pd,
->   	 *   pd_nrg = ------------------------                       (4)
->   	 *                  scale_cpu
->   	 */
-> -	return ps->cost * sum_util / scale_cpu;
-> +	return em_estimate_energy(ps->cost, sum_util, scale_cpu);
->   }
->   
->   /**
-> @@ -297,7 +328,7 @@ struct em_data_callback {};
->   static inline
->   int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->   				struct em_data_callback *cb, cpumask_t *span,
-> -				bool milliwatts)
-> +				bool microwatts)
->   {
->   	return -EINVAL;
->   }
-> diff --git a/kernel/power/energy_model.c b/kernel/power/energy_model.c
-> index 6c373f2960e7..910668ec8838 100644
-> --- a/kernel/power/energy_model.c
-> +++ b/kernel/power/energy_model.c
-> @@ -108,10 +108,11 @@ static void em_debug_remove_pd(struct device *dev) {}
->   
->   static int em_create_perf_table(struct device *dev, struct em_perf_domain *pd,
->   				int nr_states, struct em_data_callback *cb,
-> -				unsigned long flags)
-> +				unsigned long flags, int num_devs)
->   {
->   	unsigned long power, freq, prev_freq = 0, prev_cost = ULONG_MAX;
->   	struct em_perf_state *table;
-> +	unsigned long max_cost = 0;
->   	int i, ret;
->   	u64 fmax;
->   
-> @@ -145,7 +146,7 @@ static int em_create_perf_table(struct device *dev, struct em_perf_domain *pd,
->   
->   		/*
->   		 * The power returned by active_state() is expected to be
-> -		 * positive and to fit into 16 bits.
-> +		 * positive and be in range.
->   		 */
->   		if (!power || power > EM_MAX_POWER) {
->   			dev_err(dev, "EM: invalid power: %lu\n",
-> @@ -170,7 +171,7 @@ static int em_create_perf_table(struct device *dev, struct em_perf_domain *pd,
->   				goto free_ps_table;
->   			}
->   		} else {
-> -			power_res = em_scale_power(table[i].power);
-> +			power_res = table[i].power;
->   			cost = div64_u64(fmax * power_res, table[i].frequency);
->   		}
->   
-> @@ -183,6 +184,15 @@ static int em_create_perf_table(struct device *dev, struct em_perf_domain *pd,
->   		} else {
->   			prev_cost = table[i].cost;
->   		}
-> +
-> +		if (max_cost < table[i].cost)
-> +			max_cost = table[i].cost;
-> +	}
-> +
-> +	/* Check if it won't overflow during energy estimation. */
-> +	if (em_validate_cost(max_cost, num_devs)) {
-
-I'm not finding the em_validate_cost() function
-
-> +		dev_err(dev, "EM: too big 'cost' value: %lu\n",	max_cost);
-> +		goto free_ps_table;
->   	}
->   
->   	pd->table = table;
-> @@ -199,9 +209,9 @@ static int em_create_pd(struct device *dev, int nr_states,
->   			struct em_data_callback *cb, cpumask_t *cpus,
->   			unsigned long flags)
->   {
-> +	int cpu, ret, num_devs = 1;
->   	struct em_perf_domain *pd;
->   	struct device *cpu_dev;
-> -	int cpu, ret;
->   
->   	if (_is_cpu_device(dev)) {
->   		pd = kzalloc(sizeof(*pd) + cpumask_size(), GFP_KERNEL);
-> @@ -209,13 +219,14 @@ static int em_create_pd(struct device *dev, int nr_states,
->   			return -ENOMEM;
->   
->   		cpumask_copy(em_span_cpus(pd), cpus);
-> +		num_devs = cpumask_weight(cpus);
-
-Why is this change needed ? What is the connection with the uW unit change ?
-
-
->   	} else {
->   		pd = kzalloc(sizeof(*pd), GFP_KERNEL);
->   		if (!pd)
->   			return -ENOMEM;
->   	}
->   
-> -	ret = em_create_perf_table(dev, pd, nr_states, cb, flags);
-> +	ret = em_create_perf_table(dev, pd, nr_states, cb, flags, num_devs);
->   	if (ret) {
->   		kfree(pd);
->   		return ret;
-> @@ -314,13 +325,13 @@ EXPORT_SYMBOL_GPL(em_cpu_get);
->    * @cpus	: Pointer to cpumask_t, which in case of a CPU device is
->    *		obligatory. It can be taken from i.e. 'policy->cpus'. For other
->    *		type of devices this should be set to NULL.
-> - * @milliwatts	: Flag indicating that the power values are in milliWatts or
-> + * @microwatts	: Flag indicating that the power values are in micro-Watts or
->    *		in some other scale. It must be set properly.
->    *
->    * Create Energy Model tables for a performance domain using the callbacks
->    * defined in cb.
->    *
-> - * The @milliwatts is important to set with correct value. Some kernel
-> + * The @microwatts is important to set with correct value. Some kernel
->    * sub-systems might rely on this flag and check if all devices in the EM are
->    * using the same scale.
->    *
-> @@ -331,7 +342,7 @@ EXPORT_SYMBOL_GPL(em_cpu_get);
->    */
->   int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->   				struct em_data_callback *cb, cpumask_t *cpus,
-> -				bool milliwatts)
-> +				bool microwatts)
->   {
->   	unsigned long cap, prev_cap = 0;
->   	unsigned long flags = 0;
-> @@ -381,8 +392,8 @@ int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
->   		}
->   	}
->   
-> -	if (milliwatts)
-> -		flags |= EM_PERF_DOMAIN_MILLIWATTS;
-> +	if (microwatts)
-> +		flags |= EM_PERF_DOMAIN_MICROWATTS;
->   	else if (cb->get_cost)
->   		flags |= EM_PERF_DOMAIN_ARTIFICIAL;
->   
+> @@ -137,7 +137,7 @@ The .get_cost() allows to provide the 'cost' values which reflect the
+>   efficiency of the CPUs. This would allow to provide EAS information which
+>   has different relation than what would be forced by the EM internal
+>   formulas calculating 'cost' values. To register an EM for such platform, the
+> -driver must set the flag 'milliwatts' to 0, provide .get_power() callback
+> +driver must set the flag 'microwatts' to 0, provide .get_power() callback
+>   and provide .get_cost() callback. The EM framework would handle such platform
+>   properly during registration. A flag EM_PERF_DOMAIN_ARTIFICIAL is set for such
+>   platform. Special care should be taken by other frameworks which are using EM
 
 
 -- 
