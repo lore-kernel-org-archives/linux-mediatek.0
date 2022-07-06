@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61333C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 10:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97479C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 10:12:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uws7ZBBTv1acYBJZ6w2kSLSiJ9SPBwS66raiWd4kIqM=; b=WQX8hG+d2IlTOyl18n/8B3/Anf
-	MEH7Q8zekcotiGC99ESNr2iyey/J+AiVOuwISVBuMnw54EctHYroJHd1b1uBNUP7ypg6PnsvOwsUr
-	QgawhtG/irDrK1VUiSt7T5upq8txCEsojAVdVbyvQEsBCoqsc3NqZuCLzdlA/7kCWZLQX2haCoL94
-	en28q95E3Fx/o9bNx4Jzi2JO6KzXZ+kcZTamDBOnvRdEizS6ngAggy0uVIcP8+s1W+N6IcOm79Cxg
-	uwK2GyTR9ERIJTeesj92gqFqtx4nyr4/YFYGyKOcc9VsqDRT+yjT642ZuIoiJQSSVSD/QdGhIyFXy
-	CSHPrixQ==;
+	bh=C4BBe0PKf2Eq3KOB4IhvTc9coQhA5zUie3kyDfEnxlQ=; b=rHQS5Uov3DutZdvd0X0bDY/sr6
+	lMS640pBcaI9wYVklJl9gApA+aXUq9B41BMBCOiOASktC6jfC3IvApxUA9eSjHd5Tj0Cbto/GSBa6
+	Uf3+OBejx2ehFiGUMHPWvfrnjYFIjAjsplHblUQfEcoaiIIq/oKihKrUXYxD9FfdG3wwmM/WQaF2q
+	ej3eZgoHGklZ8UuiGebpmqgeMk5MQnK1XF/1+bHHWWklxTHq8o75jF928u3xKJpRSWF0h7zNDpqoQ
+	uFPoGzWxeVDv04JYI72bM/L4AjKDBowFRI9oAYq77Sgv2c6TJTH1/K3sArCNo9wKGKiojRZdgF3O1
+	nJu1burw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91vL-00896L-Ie; Wed, 06 Jul 2022 10:06:23 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91fy-007wao-Oz; Wed, 06 Jul 2022 09:50:32 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3259A1042;
-	Wed,  6 Jul 2022 02:50:30 -0700 (PDT)
-Received: from [10.57.42.44] (unknown [10.57.42.44])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9DB933F66F;
-	Wed,  6 Jul 2022 02:50:25 -0700 (PDT)
-Message-ID: <f545c1f4-0cb5-ec4e-66e8-dbed6b992085@arm.com>
-Date: Wed, 6 Jul 2022 10:50:23 +0100
+	id 1o9210-008EjU-Cx; Wed, 06 Jul 2022 10:12:14 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o91jH-007z6o-PK
+	for linux-mediatek@lists.infradead.org; Wed, 06 Jul 2022 09:53:57 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AF779660199B;
+	Wed,  6 Jul 2022 10:53:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657101234;
+	bh=rrPM2RkTW31xk31VsC6bdTdnculyR3ZfQ48lOmZ9V5w=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Fb+2l5vidgyAGY8OhCcNd87EdHAo2OhyjbVAH1q3Nkj+8qOMGHrmL88J2W9e7/UWx
+	 3v7k9SU2nBDHgrTjbmGh3A/AtStOFFSdvQf+2oIbuJSxzlcjmKypBcm6ZkVSUM0aG7
+	 8rq5S4IduoCoUhuLeGMgx8ruXj5ChlVcYM0wWn6RuJZKZwroLp8a46WaftVQzwJAb0
+	 giPupNRNKIJssSgcW9BOVRp1EbDTtCGV9TdsMFiyT+edCjtpDhK+NgmwvYOY3G/HCg
+	 2duK7Bia6wBC0by0Z/5nqhmM29AGsjeusHhwaNRwdQSuFNXze/sojl914FsAfFCt8H
+	 5Ws55Yiq2MEMQ==
+Message-ID: <458c06ee-a617-0ebf-c7f6-c731e743c7fb@collabora.com>
+Date: Wed, 6 Jul 2022 11:53:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH V3.1 02/20] OPP: Make dev_pm_opp_set_regulators() accept
- NULL terminated list
-Content-Language: en-GB
-To: Viresh Kumar <viresh.kumar@linaro.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Chanwoo Choi
- <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Qiang Yu <yuq825@gmail.com>,
- Rob Herring <robh@kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- lima@lists.freedesktop.org, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <9730e011004b7526e79c6f409f5147fb235b414a.1656935522.git.viresh.kumar@linaro.org>
- <bcabb1a90a5158628ee1633c10f8886544723fb9.1657095331.git.viresh.kumar@linaro.org>
-From: Steven Price <steven.price@arm.com>
-In-Reply-To: <bcabb1a90a5158628ee1633c10f8886544723fb9.1657095331.git.viresh.kumar@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v2 0/6] media: mediatek: vcodec: Fix 4K decoding support
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+References: <20220706082138.2668163-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220706082138.2668163-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_025030_950702_0F9D03D6 
-X-CRM114-Status: GOOD (  21.98  )
+X-CRM114-CacheID: sfid-20220706_025356_000483_24EBCF6E 
+X-CRM114-Status: GOOD (  23.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,87 +79,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/07/2022 09:18, Viresh Kumar wrote:
-> Make dev_pm_opp_set_regulators() accept a NULL terminated list of names
-> instead of making the callers keep the two parameters in sync, which
-> creates an opportunity for bugs to get in.
+Il 06/07/22 10:21, Chen-Yu Tsai ha scritto:
+> This is v2 of the mtk-vcodec 4K decoder fixes.
 > 
-> Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
-> ---
-> V3->V3.1:
-> - Update panfrost_drv.c to include the NULL element.
+> While testing a backport of recent mtk-vcodec developments on ChromeOS
+> v5.10 kernel [1], it was found that 4K decoding support had regressed.
+> The decoder was not correctly reporting 4K frame sizes when queried,
+> and ChromeOS then determined that the hardware did not support it.
 > 
->  drivers/cpufreq/cpufreq-dt.c                |  9 ++++-----
->  drivers/cpufreq/ti-cpufreq.c                |  7 +++----
->  drivers/devfreq/exynos-bus.c                |  4 ++--
->  drivers/gpu/drm/lima/lima_devfreq.c         |  3 ++-
->  drivers/gpu/drm/panfrost/panfrost_devfreq.c |  3 +--
->  drivers/gpu/drm/panfrost/panfrost_drv.c     | 15 ++++++++++-----
->  drivers/opp/core.c                          | 18 ++++++++++++------
->  drivers/soc/tegra/pmc.c                     |  4 ++--
->  include/linux/pm_opp.h                      |  9 ++++-----
->  9 files changed, 40 insertions(+), 32 deletions(-)
+> This turned out to be a mix of different bugs:
 > 
-[...]
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-> index 194af7f607a6..5110cd9b2425 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-> @@ -101,8 +101,7 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
->  		return 0;
->  	}
->  
-> -	ret = devm_pm_opp_set_regulators(dev, pfdev->comp->supply_names,
-> -					 pfdev->comp->num_supplies);
-> +	ret = devm_pm_opp_set_regulators(dev, pfdev->comp->supply_names);
->  	if (ret) {
->  		/* Continue if the optional regulator is missing */
->  		if (ret != -ENODEV) {
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index 7fcbc2a5b6cd..8a4bef65d38c 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -625,24 +625,29 @@ static int panfrost_remove(struct platform_device *pdev)
->  	return 0;
->  }
->  
-> -static const char * const default_supplies[] = { "mali" };
-> +/*
-> + * The OPP core wants the supply names to be NULL terminated, but we need the
-> + * correct num_supplies value for regulator core. Hence, we NULL terminate here
-> + * and then initialize num_supplies with ARRAY_SIZE - 1.
-> + */
-> +static const char * const default_supplies[] = { "mali", NULL };
->  static const struct panfrost_compatible default_data = {
-> -	.num_supplies = ARRAY_SIZE(default_supplies),
-> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
->  	.supply_names = default_supplies,
->  	.num_pm_domains = 1, /* optional */
->  	.pm_domain_names = NULL,
->  };
->  
->  static const struct panfrost_compatible amlogic_data = {
-> -	.num_supplies = ARRAY_SIZE(default_supplies),
-> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
->  	.supply_names = default_supplies,
->  	.vendor_quirk = panfrost_gpu_amlogic_quirk,
->  };
->  
-> -static const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
-> +static const char * const mediatek_mt8183_supplies[] = { "mali", "sram", NULL };
->  static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
->  static const struct panfrost_compatible mediatek_mt8183_data = {
-> -	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies),
-> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies) - 1,
->  	.supply_names = mediatek_mt8183_supplies,
->  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
->  	.pm_domain_names = mediatek_mt8183_pm_domains,
+> 1. Frame size enumeration on the output side should not depend on the
+>     currently set format, or any other derived state. This is fixed in
+>     patch 2.
+> 
+> 2. TRY_FMT on the output side was incorrectly clamping the resolution
+>     based on the current maximum values. It should not. Fixed in patch
+>     4.
+> 
+> 3. The default resolution limit was not set according to the default
+>     output format determined at runtime, but hard-coded to 1080p. An
+>     S_FMT call is needed to override this. The instance resolution limit
+>     is rendered useless after patches 3 and 4, and dropped in patch 5.
+> 
+> Other patches:
+> - Patch 1 makes stepwise_fhd constant.
+> - Patch 3 drops redundant aligning of default resolution
+> - Patch 6 moves framesize inside mtk_video_fmt, making it easier to
+>    access and removes a list search that was added in patch 4.
+> 
+> Changes since v1:
+>    - Added patch to const-ify stepwise_fhd, as Nicolas requested.
+>    - Dropped old patch 2 (media: mediatek: vcodec: dec: Set default
+>      max resolution based on format)
+>    - Dropped old patch 4 (media: mediatek: vcodec: dec: Set maximum
+>      resolution when S_FMT on output only)
+>    - Made max resolution lookup for TRY_FMT return stepwise structure in
+>      patch 4, which helps with the last patch that moves framesize
+>      stepwise into mtk_video_fmt.
+>    - Did some style cleanups in patch 4
+> 
+> This series is based on next-20220705.
+> 
+> This was only tested on the backport kernel [1] on MT8195, which is the
+> only currently supported SoC that does 4K decoding. Hopefully the folks
+> at Collabora can give this a test on their mainline MT8195 integration
+> branch.
 
-Reviewed-by: Steven Price <steven.price@arm.com>
+Cannot spot any regression after fluster tests.
 
-Thanks for the rework, much cleaner.
+For the whole series:
 
-Steve
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+> 
+> 
+> Regards
+> ChenYu
+> 
+> [1] https://crrev.com/c/3713491
+> 
+> Chen-Yu Tsai (6):
+>    media: mediatek: vcodec: decoder: Const-ify stepwise_fhd
+>    media: mediatek: vcodec: decoder: Fix 4K frame size enumeration
+>    media: mediatek: vcodec: decoder: Skip alignment for default
+>      resolution
+>    media: mediatek: vcodec: decoder: Fix resolution clamping in TRY_FMT
+>    media: mediatek: vcodec: decoder: Drop max_{width,height} from
+>      mtk_vcodec_ctx
+>    media: mediatek: vcodec: decoder: Embed framesize inside mtk_video_fmt
+> 
+>   .../platform/mediatek/vcodec/mtk_vcodec_dec.c | 54 ++++++++-----------
+>   .../mediatek/vcodec/mtk_vcodec_dec_stateful.c | 29 +++-------
+>   .../vcodec/mtk_vcodec_dec_stateless.c         | 30 +++++------
+>   .../platform/mediatek/vcodec/mtk_vcodec_drv.h | 20 +------
+>   4 files changed, 41 insertions(+), 92 deletions(-)
+> 
+
+
+-- 
+AngeloGioacchino Del Regno
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
 
