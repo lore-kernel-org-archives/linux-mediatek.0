@@ -4,92 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADB18C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 15:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B7F7C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 16:27:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o34sXf13gS9dNYvfC/d9+rktJGbU/41tC7AjUNaoSfE=; b=umh+6f/sk5B3U0zMww8DltTJJE
-	iTP9pqqlfEKPniViyw7neoiZI4PSO+Jy66NN7rKdvc9VcLa1gRTlMXDkhWA+t80GR95SkbpcfNLG+
-	w/fKl2pf3iV+bplYwQAP4fJBdO3+AqyA4+DCh00k39hcwjE+73ORDsSUwV23ItAp8KZBJ6APdGtxF
-	72t8i68/mMy0d95aWflsTCocFCQdQHaDWnDAyFwEoz/muKFhYvC24ua+u3u4yrDFW8UK2faYkTujt
-	+p9a+75PDGHxiG0fGgl/us+GtU417QvMeTywQKth6JbqfHterv4RK27Yx4TvDpZ4rctLk0Dorsbst
-	IY+avwEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mD6FbA7vYl8p5caB6U3kajFbupuuP7isVoBZ2yXtdBE=; b=w4ENxwS8nwjlU4IHrHHnS7CBXB
+	LuTvsBeNOGq/cKALcR4hQP17FiLg/zxCHLhGzV9/aihnmBqqPgC4Z+lY28TM6PGf9aygkRyoLDn33
+	G4ILze2PGKesCkhdungKHuBRADRHHmJuZumrTDQ2cza/3iYetB8kM6SuupLYxjxJIKJjDVngS3zgp
+	ckFIOFA3CmZxvEDeTmUhQr00iAh3zN6pRu59omKHwLBQ2aegrKfZXDgSJHGVvM0NeDiJ71h77wQAx
+	iq9fAPGYcADaBx9MPZifvjqW2akbyM+kaMQy9L9DG70C/ppWF7EEgd8HgW3X/x7oOaL96k8LYzuJO
+	KZYYGCjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o96nv-00AyoH-Rr; Wed, 06 Jul 2022 15:19:03 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1o97rf-00BL2S-VR; Wed, 06 Jul 2022 16:27:00 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o96ng-00Ayk8-0a
-	for linux-mediatek@lists.infradead.org; Wed, 06 Jul 2022 15:18:50 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id t19so25851527lfl.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Jul 2022 08:18:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=o34sXf13gS9dNYvfC/d9+rktJGbU/41tC7AjUNaoSfE=;
-        b=tlOoP70fhClmeDGn6OyYtjbxbmb1OaS8KTC422YM24182veuP3d/kvBY7X+d7EJ367
-         LaLee21l5oFOZHt/LERQLQuMZzVzBH4W1Uh3S+LeoStH84qKP704G6G6+hDP8o5A8rdN
-         RIO7uSW8KL2kgCuCd+wAUF+QisuRSOwhJAxD/MU8ilFjcj1leWnB5Y4fXz7MuuNd0yek
-         7aW5PBGTVYZxViG2+A/e8POYcjpJoTfFaN2KaJxBMp/VxNjgGE6tr/PdyGWBzorB8GGv
-         Dz6um5/CIwWVK5q1quxiJt0dasAVA/TqoJB0lGiZBlLbTulmwkVUCyz4LAVmm6L2SDAa
-         wYOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=o34sXf13gS9dNYvfC/d9+rktJGbU/41tC7AjUNaoSfE=;
-        b=8L99e59D9jbcx3oHuRnfyUC9GRfeHh5/wWfCDmMpv6WuCoGIOqlwp04eTXV5jcfZhM
-         O97/rZKqu0XjdPUKIwLXNMLfZuzmZAmmvFiiw119mvRsg70nbESxbxkxjvRIbroSxFNQ
-         d6mfC48pPiQBIN71bsBt6Qgej5CMwe+c1grnPYq0wtp8kxsP/I8exDxRMWvup+ZZYQtn
-         OZ3uXNE8RlSi1Y29lYxWuRhiJcpE2HcT2P2he2HLjzz+yJUCdKnarAt1DRrZP0ggHb8D
-         l/LP0rWVz1XgVKcerFMG2N5EtL4byN1JWjhSeUJdjf68uomxZqeMOZ9Z6Uj5lX3jo6Pw
-         PbvQ==
-X-Gm-Message-State: AJIora9bLDA4VAS9IO0JVarxeNXVSCtDyGZDPdOxDbqNBqHeIFHBxZB8
-	twJ0rFLgXcGyK/3aTd7+LLQzSw==
-X-Google-Smtp-Source: AGRyM1vdzcWdQzM1UmXWIIm9OeMBRjPNPblppO/1Nm2JRbLD3Lswd6x84BFNiMqKX8XEm3f7WV8inw==
-X-Received: by 2002:a05:6512:3fa7:b0:47f:7387:926c with SMTP id x39-20020a0565123fa700b0047f7387926cmr25769600lfa.98.1657120722496;
-        Wed, 06 Jul 2022 08:18:42 -0700 (PDT)
-Received: from [192.168.1.52] ([84.20.121.239])
-        by smtp.gmail.com with ESMTPSA id t10-20020a056512208a00b00486944fe8d5sm313121lfr.238.2022.07.06.08.18.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Jul 2022 08:18:41 -0700 (PDT)
-Message-ID: <0301ebc6-1222-e813-f237-f14ad8444940@linaro.org>
-Date: Wed, 6 Jul 2022 17:18:40 +0200
+	id 1o97rP-00BKN1-7v; Wed, 06 Jul 2022 16:26:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=mD6FbA7vYl8p5caB6U3kajFbupuuP7isVoBZ2yXtdBE=; b=HJ2Rx3Ktvhc8W7Xp7bEM34kZ80
+	YYKJMsVog6jtD9PDr0iJKqyVXeeaUMq9h1uhzFfIO0+gqc5JOYeEn4QsaBWvqKqmpjec3LCUDXvOI
+	awjJvnH/82ddtStu7EByFQzcaMArjl0JqDcrevQY7VaowcCMkMgXUKk8RBu1fnUe0FxtXll4xnHbT
+	XzgUBlAHY8o6d/QPcZ22vCBX388+xJhwMmPFVIdXK686H6kBQOAJMVkPJyMcGftJ/NIHNwaxMW9nD
+	AaUVdjSMD2xnNsRp6GZEM2aP0MbTAaPowH2Stku89wpoaPTAINdnjnPHtBgiZpbdmGuNAO6C+4iUD
+	aaAZKPqg==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33206)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1o97p2-0002ow-7R; Wed, 06 Jul 2022 17:24:16 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1o97ov-0004Tc-KK; Wed, 06 Jul 2022 17:24:09 +0100
+Date: Wed, 6 Jul 2022 17:24:09 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
+ and DSA ports
+Message-ID: <YsW3KSeeQBiWQOz/@shell.armlinux.org.uk>
+References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
+ <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
+ <20220706102621.hfubvn3wa6wlw735@skbuf>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v1 08/16] arm64: dts: mt8195: Add power domains controller
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
- <20220704100028.19932-9-tinghan.shen@mediatek.com>
- <3b65405d-167f-a0c7-d15e-5da6f08d99b3@linaro.org>
- <eec6aee5cd023fff6d986882db0330e1ab85a59d.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <eec6aee5cd023fff6d986882db0330e1ab85a59d.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220706102621.hfubvn3wa6wlw735@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_081848_132295_D70EA5EA 
-X-CRM114-Status: GOOD (  25.46  )
+X-CRM114-CacheID: sfid-20220706_092643_310581_9B65A618 
+X-CRM114-Status: GOOD (  19.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,80 +95,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/07/2022 14:00, Tinghan Shen wrote:
-> Hi Krzysztof,
+On Wed, Jul 06, 2022 at 01:26:21PM +0300, Vladimir Oltean wrote:
+> Hello,
 > 
-> After discussing your message with our power team, 
-> we realized that we need your help to ensure we fully understand you.
+> On Tue, Jul 05, 2022 at 10:48:07AM +0100, Russell King (Oracle) wrote:
+> > diff --git a/net/dsa/port.c b/net/dsa/port.c
+> > index 35b4e1f8dc05..34487e62eb03 100644
+> > --- a/net/dsa/port.c
+> > +++ b/net/dsa/port.c
+> > @@ -1525,6 +1525,7 @@ int dsa_port_phylink_create(struct dsa_port *dp)
+> >  {
+> >  	struct dsa_switch *ds = dp->ds;
+> >  	phy_interface_t mode, def_mode;
+> > +	struct device_node *phy_np;
+> >  	int err;
+> >  
+> >  	/* Presence of phylink_mac_link_state or phylink_mac_an_restart is
+> > @@ -1559,6 +1560,13 @@ int dsa_port_phylink_create(struct dsa_port *dp)
+> >  		return PTR_ERR(dp->pl);
+> >  	}
+> >  
+> > +	if (dp->type == DSA_PORT_TYPE_CPU || dp->type == DSA_PORT_TYPE_DSA) {
+> > +		phy_np = of_parse_phandle(dp->dn, "phy-handle", 0);
+> > +		of_node_put(phy_np);
+> > +		if (!phy_np)
+> > +			err = phylink_set_max_fixed_link(dp->pl);
 > 
-> On Mon, 2022-07-04 at 14:38 +0200, Krzysztof Kozlowski wrote:
->> On 04/07/2022 12:00, Tinghan Shen wrote:
->>> Add power domains controller node for mt8195.
->>>
->>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
->>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
->>> ---
->>>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 327 +++++++++++++++++++++++
->>>  1 file changed, 327 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->>> index 8d59a7da3271..d52e140d9271 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->>> @@ -10,6 +10,7 @@
->>>  #include <dt-bindings/interrupt-controller/irq.h>
->>>  #include <dt-bindings/phy/phy.h>
->>>  #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
->>> +#include <dt-bindings/power/mt8195-power.h>
->>>  
->>>  / {
->>>  	compatible = "mediatek,mt8195";
->>> @@ -338,6 +339,332 @@
->>>  			#interrupt-cells = <2>;
->>>  		};
->>>  
->>> +		scpsys: syscon@10006000 {
->>> +			compatible = "syscon", "simple-mfd";
->>
->> These compatibles cannot be alone.
-> 
-> the scpsys sub node has the compatible of the power domain driver.
-> do you suggest that the compatible in the sub node should move to here?
+> Can we please limit phylink_set_max_link_speed() to just the CPU ports
+> where a fixed-link property is also missing, not just a phy-handle?
+> Although to be entirely correct, we can also have MLO_AN_INBAND, which
+> wouldn't be covered by these 2 checks and would still represent a valid
+> DT binding.
 
-Not necessarily, depends. You have here device node representing system
-registers. They need they own compatibles, just like everywhere in the
-kernel (except the broken cases...).
+phylink_set_max_fixed_link() already excludes itself:
 
-Whether this should be compatible of power-domain driver, it depends
-what this device node is. I don't know, I don't have your datasheets or
-your architecture diagrams...
+        if (pl->cfg_link_an_mode != MLO_AN_PHY || pl->phydev || pl->sfp_bus)
+                return -EBUSY;
 
-> 
->>> +			reg = <0 0x10006000 0 0x1000>;
->>> +			#power-domain-cells = <1>;
->>
->> If it is simple MFD, then probably it is not a power domain provider.
->> Decide.
-> 
-> this MFD device is the power controller on mt8195. 
+intentionally so that if there is anything specified for the port, be
+that a fixed link or in-band, then phylink_set_max_fixed_link() errors
+out with -EBUSY.
 
-Then it is not a simple MFD but a power controller. Do not use
-"simple-mfd" compatible.
+The only case that it can't detect is if there is a PHY that may be
+added to phylink at a later time, and that is what the check above
+is for.
 
-> Some features need 
-> to do some operations on registers in this node. We think that implement 
-> the operation of these registers as the MFD device can provide flexibility 
-> for future use. We want to clarify if you're saying that an MFD device 
-> cannot be a power domain provider.
-
-MFD device is Linuxism, so it has nothing to do here. I am talking only
-about simple-mfd. simple-mfd is a simple device only instantiating
-children and not providing anything to anyone. Neither to children. This
- the most important part. The children do not depend on anything from
-simple-mfd device. For example simple-mfd device can be shut down
-(gated) and children should still operate. Being a power domain
-controller, contradicts this usually.
-
-Best regards,
-Krzysztof
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
