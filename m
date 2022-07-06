@@ -4,64 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A635C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 12:16:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13193C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 12:30:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5fgKlm0G+8WGoMRZqsVbzcsJbuj3EfsJIbIyfKGJR6g=; b=ldC22VCp8p0VRtUI8jz4NApTnm
-	KbobDKo20QHkOWnC8awg0799K+I5a+wm9XzkWg4FIV+dB8wUl4rcOmPuYk5vvKJa3POU+An4eNHkn
-	3mQXWIGkE1B0fWcaEZ1QrwGhdAWJrbs/HfqO/zsvk9XUsEqvrVJY8VMeEaFlwTGLQ0HWigMo4EvUv
-	8ohOsEcvMavb/kjhcwFfaC/xTOUGuNB0Wbi6wOi2srYc2pvS1jbkkdrnKv3XyvYHCquAZw3KI69ei
-	Ecay0kdRTjkN7RVB/jRq/PneM839wx0NEOpwbcG3xy5LZWRz/ZZ8BLM/BDa5GyT8AcOpFokK2ac4H
-	s0fz6yLw==;
+	bh=Hb++T+TqCvDDSG4SBCoSH1P7Ah+WnHjdFZYreo/Hfko=; b=Ag/xG30fMvXMm1x2p849SVbz9i
+	Nm+QRamfSAHELGoVlbux2ZR6DoAOEGb+eREHZijLjHL51Ey8orZiBKst/haBjcrPTBjXgf5cpPHnb
+	gAG6afsNt905RraUhZDsdQ7eQPHX/MVTa/TYKwWZp9iSldBn87z53k8/3o28rGzufJptDv+MkoHXW
+	B+4Oavm4q1K79xRnYfS04BA42mfE1bpvdcTrLFTNJokMJI53bU/zvKtVXeEtCC4c7/1GnBvOc/43o
+	RUVNDlsO2KHKLHxyqVouTfYDgRKJ9VWq06wlGnmxIPg6seszEMsVqSHPflxwlkMP0ZEXVOpE1IbV3
+	kGF0AaYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o93xb-009s2c-QV; Wed, 06 Jul 2022 12:16:51 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o94AE-009vSO-W9; Wed, 06 Jul 2022 12:29:55 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o93xP-009rxV-QS; Wed, 06 Jul 2022 12:16:41 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DCBB961405;
-	Wed,  6 Jul 2022 12:16:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADFCBC3411C;
-	Wed,  6 Jul 2022 12:16:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1657109798;
-	bh=5fgKlm0G+8WGoMRZqsVbzcsJbuj3EfsJIbIyfKGJR6g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qGRvBzGpYTzumBNvTzv6Eue1beyF5ALxTKiqmKi/DznjkoUpbt73aXe9FSGRvoi2s
-	 EaTDs0UoMLcClhosM5wHV2q9KRNY1sw217bBfg5Pb67fbeQPmxCmKw4G6dVXL50Y3B
-	 7WimtQqEWjaNRg3m3vtJ9/n9tk7d84VNfQJmOJD/3Rnz/ucFoA3xd++wNKcFHZxk0w
-	 YoZNNh7rSkXh+I8fRUcmhnT2IVIeHVCoHzjjusLyeU1pss+4rJUOQrkD25ROQ0D80U
-	 6IWvIcVjhsxLJCOrexoqTMy0ewRYr5E3508D/Ueemaz9X019qy8guHvRoVjY8UiM9x
-	 X4yhye68/zUCw==
-Date: Wed, 6 Jul 2022 13:16:33 +0100
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lgirdwood@gmail.com, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	id 1o94A4-009vPQ-4y; Wed, 06 Jul 2022 12:29:45 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id t3so1067916pfq.10;
+        Wed, 06 Jul 2022 05:29:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=Hb++T+TqCvDDSG4SBCoSH1P7Ah+WnHjdFZYreo/Hfko=;
+        b=BbLBe2M3A8AWYlkobJbHlvQGtkIi9eJ1fhKZi72SH5Q2ISxXT7FCisfhD8WM4lH4xn
+         W0CMzEvgH43SmSf7IKjKCnmg/2Zng2dsdDfG0DO6WyudObcH2lWwXFZn438iwngDQTy9
+         9lNAeMttwPLTSdmF32rO0PSm2NM7RttTK/QbVjE9AcaSXlFo/CwbSN7djMsEG32FDk9h
+         YSj2jTqW4IDq6AxxSnDHYlwHdgI4WrUYVmVfTbq4JHR+k7uEkbAt5rIkYXFZSA32SsdC
+         HFoTIk4jjeZsOxecJdOjOhupnXAp6o2zjzZnsywdRclt8yr/Fvg9yEPG+dn5ub7JJq6D
+         KbIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to;
+        bh=Hb++T+TqCvDDSG4SBCoSH1P7Ah+WnHjdFZYreo/Hfko=;
+        b=H7Tp4ccJmxH4z0aR5qyxDxsYQNqhoAGtmRcP+ywyhVc/y3DKCa/KCavktsrZmUvEgq
+         brEeGxO0taP7x6+/Bf89wPR9W5KJnbp43EZnVbBmmbqDcNcG+heKFQwtK3jJZcvamBfu
+         rZU++1jSAxSdp8vhBgAmaM5vtK1j8IvVCK8Nmd/5x7LTGv/amzwHkx7ZGvWdXZcoVRya
+         Hn+ZQMFJw8IYA3nUI+K7f+RgAPi2j3i81TlZDGepy8rn9FghscvM/+ef84iErxyin58I
+         w6fmzZ+yTCi7PPYnc1+x6jTga2yo6b+Kr73QzsMg2IcXdn6PHCQqAYI7VjMJrfrau8qO
+         5Lxg==
+X-Gm-Message-State: AJIora/3rSiG0CVSZnZpztBqxwCrE4PD0Y15FEVV+8TWukgtpeWeH0aV
+	khOOc/kC53+Peahw+8hYVhg=
+X-Google-Smtp-Source: AGRyM1uoDB6L35OBcFGnbcqaTY9nnQDgNQnuXvTDk9jhj/6DUZ25v7WIWUrr9kdjfBQjynFmHIdieg==
+X-Received: by 2002:a63:2b84:0:b0:412:5277:99dc with SMTP id r126-20020a632b84000000b00412527799dcmr12015920pgr.208.1657110581088;
+        Wed, 06 Jul 2022 05:29:41 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id r13-20020a63d90d000000b0041166bf9ca8sm15810700pgg.34.2022.07.06.05.29.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Jul 2022 05:29:39 -0700 (PDT)
+Date: Wed, 6 Jul 2022 05:29:37 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Xin Ji <xji@analogixsemi.com>
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, bliang@analogixsemi.com,
+	qwen@analogixsemi.com, jli@analogixsemi.com,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 RESEND 0/4] MediaTek Helio X10 MT6795 - MT6331/6332
- Regulators
-Message-ID: <YsV9IerWCoa/xtwM@sirena.org.uk>
-References: <20220706100912.200698-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v13 1/3] usb: typec: tcpci: move tcpci.h to
+ include/linux/usb/
+Message-ID: <20220706122937.GA492220@roeck-us.net>
+References: <20220705053657.2340274-1-xji@analogixsemi.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="u3plkxhfqWD9h66t"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220706100912.200698-1-angelogioacchino.delregno@collabora.com>
-X-Cookie: Only God can make random selections.
+In-Reply-To: <20220705053657.2340274-1-xji@analogixsemi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_051639_936874_540AEFF3 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20220706_052944_228938_B3C6C314 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,34 +92,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jul 05, 2022 at 01:36:54PM +0800, Xin Ji wrote:
+> USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+> and a port controller (TCPC) - may require that the driver for the PD
+> controller accesses directly also the on-chip port controller in some cases.
+> 
+> Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
+> 
+> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+> Signed-off-by: Xin Ji <xji@analogixsemi.com>
 
---u3plkxhfqWD9h66t
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
-On Wed, Jul 06, 2022 at 12:09:08PM +0200, AngeloGioacchino Del Regno wrote:
-> In an effort to give some love to the apparently forgotten MT6795 SoC,
-> I am upstreaming more components that are necessary to support platforms
-> powered by this one apart from a simple boot to serial console.
-
-This previously got 0day failures due to missing dependencies which
-need would need a merge with IIRC MFD, I see no reference in the cover
-letter to dependencies?
-
---u3plkxhfqWD9h66t
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmLFfSAACgkQJNaLcl1U
-h9BLEQf/WbdGG7PHABzm2fm6ugNRQfoy3Fefmeh9klqvS9ZuEOev+7iE6O7PQDpK
-0v+Sap6zB7+L1A8+B4LVMgunnAVfmGClRhY8/FaJXjJ1dF14sOEvn7yW1GFMmqrH
-XisVnT2VK3CxZSDab9gfpt+rUqanrXLFhTTgEYzEek4S2mSP7wUt4MWgwNU+/8sY
-4BLly2rUWlwYVoiN+6IbM/bqHnFvipJdNKiaYGlu2iDk+taD47Yof/HIt+Zchh4s
-tTvWwbQLAIKXHoiQHPLmRyVpGiJqjZXRquzMMVM8nphi0LNsXKpMGq/8hPxe5I32
-VVvI0DvdrZ72C+eQhqIqTnJSDDzeIg==
-=P5FB
------END PGP SIGNATURE-----
-
---u3plkxhfqWD9h66t--
+> 
+> ---
+> V9 -> V10: Rebase on the latest code
+> V8 -> V9 : Add more commit message
+> V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+> 
+> Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> ---
+>  drivers/usb/typec/tcpm/tcpci.c                        | 3 +--
+>  drivers/usb/typec/tcpm/tcpci_maxim.c                  | 3 +--
+>  drivers/usb/typec/tcpm/tcpci_mt6360.c                 | 3 +--
+>  drivers/usb/typec/tcpm/tcpci_rt1711h.c                | 2 +-
+>  {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h | 1 +
+>  5 files changed, 5 insertions(+), 7 deletions(-)
+>  rename {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h (99%)
+> 
+> diff --git a/drivers/usb/typec/tcpm/tcpci.c b/drivers/usb/typec/tcpm/tcpci.c
+> index f33e08eb7670..812784702d53 100644
+> --- a/drivers/usb/typec/tcpm/tcpci.c
+> +++ b/drivers/usb/typec/tcpm/tcpci.c
+> @@ -13,11 +13,10 @@
+>  #include <linux/property.h>
+>  #include <linux/regmap.h>
+>  #include <linux/usb/pd.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  #include <linux/usb/typec.h>
+>  
+> -#include "tcpci.h"
+> -
+>  #define	PD_RETRY_COUNT_DEFAULT			3
+>  #define	PD_RETRY_COUNT_3_0_OR_HIGHER		2
+>  #define	AUTO_DISCHARGE_DEFAULT_THRESHOLD_MV	3500
+> diff --git a/drivers/usb/typec/tcpm/tcpci_maxim.c b/drivers/usb/typec/tcpm/tcpci_maxim.c
+> index df2505570f07..4b6705f3d7b7 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_maxim.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_maxim.c
+> @@ -11,11 +11,10 @@
+>  #include <linux/module.h>
+>  #include <linux/regmap.h>
+>  #include <linux/usb/pd.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  #include <linux/usb/typec.h>
+>  
+> -#include "tcpci.h"
+> -
+>  #define PD_ACTIVITY_TIMEOUT_MS				10000
+>  
+>  #define TCPC_VENDOR_ALERT				0x80
+> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> index 8a952eaf9016..1b7c31278ebb 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
+> @@ -11,10 +11,9 @@
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  
+> -#include "tcpci.h"
+> -
+>  #define MT6360_REG_PHYCTRL1	0x80
+>  #define MT6360_REG_PHYCTRL3	0x82
+>  #define MT6360_REG_PHYCTRL7	0x86
+> diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> index b56a0880a044..3291ca4948da 100644
+> --- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> +++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> @@ -10,9 +10,9 @@
+>  #include <linux/i2c.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/gpio/consumer.h>
+> +#include <linux/usb/tcpci.h>
+>  #include <linux/usb/tcpm.h>
+>  #include <linux/regmap.h>
+> -#include "tcpci.h"
+>  
+>  #define RT1711H_VID		0x29CF
+>  #define RT1711H_PID		0x1711
+> diff --git a/drivers/usb/typec/tcpm/tcpci.h b/include/linux/usb/tcpci.h
+> similarity index 99%
+> rename from drivers/usb/typec/tcpm/tcpci.h
+> rename to include/linux/usb/tcpci.h
+> index b2edd45f13c6..20c0bedb8ec8 100644
+> --- a/drivers/usb/typec/tcpm/tcpci.h
+> +++ b/include/linux/usb/tcpci.h
+> @@ -9,6 +9,7 @@
+>  #define __LINUX_USB_TCPCI_H
+>  
+>  #include <linux/usb/typec.h>
+> +#include <linux/usb/tcpm.h>
+>  
+>  #define TCPC_VENDOR_ID			0x0
+>  #define TCPC_PRODUCT_ID			0x2
+> -- 
+> 2.25.1
+> 
 
