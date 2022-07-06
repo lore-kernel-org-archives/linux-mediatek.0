@@ -4,125 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75224CCA473
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 08:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A172BC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 08:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sGfzsoXJkyPafAfFD9ICTdIP4sAg+iiYn910Rf8B5o8=; b=povddywuuVW0vuSEgmgxibWW+0
-	ai52dFHZAaD2tPC0/KEtw+IHYWQCI7/+H8gFicrKS4P5yMNV/+GGX17vDNkOS+PWXnxlN8v+ATKHX
-	hdTSsvTydRGLfLh+z3V804xUI6JpwNYlHuR7SFjdQWY0nymYRLmON/WK8bgjL36j+ZR0OA8mgGLig
-	TrJ2UqPAeF5oU2aDQ/vxWBz4Q40M4tEW9LHMGOLy5CGu0hVvLnoqAuzPiXWerIG0Nxl876WmyKqx/
-	1CCJglWvBZ6oaMe4O7c1ebDW/8Nd/ukC4oDo0XAmDvusIti5GXZKVFZAIgW0CFdp4l/Zxo1c/oPCP
-	GMVF+qdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OS/9CEIBJUwJHHxBEoAlkpNDdUCpOri/wCL2oaO78vc=; b=rrEGAOY5J2z2pE4A0mAH+blv0Z
+	0YycGcDP//3exEQ806z7KqYVkTHjLtpgeuCxBBb7qm5bp7LAmISM/m9iYw/tJ3jXkvaLgLd77w5ju
+	5wHhe5LzTLMbkr+1sj5Wx/yFOUO3PZmtv5PaNWlfw2USuWv6tfim70fZr/EO0Pjdb4BTf4a6G3EzA
+	8wFGDuX8enZ64SrqXmWiguBDl4XfXgWe2tNAgCcVjfGzuYBKE+zaeC0W5tGDbq4oRegwI8mNh3fsb
+	3m/fhh020kJQO0Gr2yfmrQ5cassQZdHhrRMM5jkr3I9q22mSIvqentB4+F6IHbnq0cbq25uVp6Ysd
+	X0lEpLnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90Uy-007Pgy-Ac; Wed, 06 Jul 2022 08:35:04 +0000
-Received: from mail-bn8nam04on2094.outbound.protection.outlook.com ([40.107.100.94] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+	id 1o90Vu-007Q95-7i; Wed, 06 Jul 2022 08:36:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90Uu-007PcU-Ts; Wed, 06 Jul 2022 08:35:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YYJBvZiHF845CN+rT+INF5GBIvTkw+CiI09o3pSg7JknTuV+MZgGX0OaqrBdmT2TUEPZ1VZh7hnULw+ySc6WDQaqNg2ufJyde2vtyFgWO83/EqVwxZa2IjW+HalXaR9/VsuHYMirYTzI5wlbhVx4Jg1PEbUpUuJmZUndVLyJ5jd4R2J7cixwxyH8ScgZA394NSDeUTAtFg3NZi3GkMJBm4Y8dsMDqrcM/NW6P0AjD0ZaxJcXhcpBqtFtskU1UDSg0ZYYkLCTTvO9Da/v/x7swy7KNp+c+NQsupZHksJbCaA5rL32qCkmp5oGgFchDrB9ujKx3m2R3p74pvWPXYkHrQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sGfzsoXJkyPafAfFD9ICTdIP4sAg+iiYn910Rf8B5o8=;
- b=WcuPRhKf1r+H5GSMfyKNywVyrdcWn7nMFJe5zeL6j7ImD/gI4lVLqsJ02bK/9r3Fm6zO9KgjcpBvfet9vuwSK2KTIMfQ2ipw0mY+Qfi/2T9hKFzJiChyVJ+Q0ynnke5B66uQvZEMgnrE9wtEtkGALnPweJo/PkPxzONncGW478/T+x9nYDm9dHCsJePxcOB10pFU4lmiZwwVv+YhAMllR1nIQ2PAK5o4T73OCrHIAEks+hnMy4c4ns+8T31+qu+9tJg3yAaAxm20b4mEdRqNrOrwrkOBbDFaM+S0Yh+c254WWVJl7sVo5HKw7Yt6ijVsvENSJAiHaloxAdy9TVwP9w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sGfzsoXJkyPafAfFD9ICTdIP4sAg+iiYn910Rf8B5o8=;
- b=JcO7J4yavZGEMKZxOGTfjzKMtD3iaod3GgLxyknnuzTtP06fPaA/E/79H6pp/acs3gRXCKvCkn1bJRLHjhooawOXQRIShPnVcK3V4urdbXkJvTzvmZWcmbsrPsdtW0oHZwKVNSBY+9HN5hFRZSZtuad1DOKzpFLV3LHoOYKycwE=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=analogixsemi.com;
-Received: from CH2PR04MB6741.namprd04.prod.outlook.com (2603:10b6:610:96::19)
- by CO6PR04MB7827.namprd04.prod.outlook.com (2603:10b6:303:139::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.16; Wed, 6 Jul
- 2022 08:34:53 +0000
-Received: from CH2PR04MB6741.namprd04.prod.outlook.com
- ([fe80::5400:a1a0:be8f:34bc]) by CH2PR04MB6741.namprd04.prod.outlook.com
- ([fe80::5400:a1a0:be8f:34bc%6]) with mapi id 15.20.5395.022; Wed, 6 Jul 2022
- 08:34:53 +0000
-From: Xin Ji <xji@analogixsemi.com>
-To: Guenter Roeck <linux@roeck-us.net>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: bliang@analogixsemi.com,
-	qwen@analogixsemi.com,
-	jli@analogixsemi.com,
-	Xin Ji <xji@analogixsemi.com>,
-	linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v14 1/3] usb: typec: tcpci: move tcpci.h to include/linux/usb/
-Date: Wed,  6 Jul 2022 16:34:31 +0800
-Message-Id: <20220706083433.2415524-1-xji@analogixsemi.com>
-X-Mailer: git-send-email 2.25.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: TYCP286CA0070.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:31a::14) To CH2PR04MB6741.namprd04.prod.outlook.com
- (2603:10b6:610:96::19)
+	id 1o90VW-007Pwg-5j; Wed, 06 Jul 2022 08:35:40 +0000
+X-UUID: 0939509533b140da92c5c23a68c74757-20220706
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:ae70a5d4-0dd1-4b4e-8b93-b2f1f71efb4e,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:0f94e32,CLOUDID:29b4b086-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 0939509533b140da92c5c23a68c74757-20220706
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1416485663; Wed, 06 Jul 2022 01:35:35 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 6 Jul 2022 15:54:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 6 Jul 2022 15:54:55 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, daoyuan huang
+	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+	<river.cheng@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>
+Subject: [PATCH v21 1/4] dt-binding: mediatek: add bindings for MediaTek MDP3 components
+Date: Wed, 6 Jul 2022 15:54:51 +0800
+Message-ID: <20220706075454.15569-2-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220706075454.15569-1-moudy.ho@mediatek.com>
+References: <20220706075454.15569-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f82740bf-04b8-47bf-6811-08da5f2a6611
-X-MS-TrafficTypeDiagnostic: CO6PR04MB7827:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	QFs0KD0tdnqAAl5+Q7sCdCBb7YYanpDGYRRHAbM8TUNcnDx5twAxQ5vXE+jQb7h0b9OTnaeEnvvOgf8q0b59FRtWLUchvapdqei7e2XFz0q9m+eMUFqsQ1Sr270moKjihoUiLVaj6E441LI+TbHjGSWhjwI4sq8CDFpP3ST4mhYm7W+fj241b9Ti5hgzVZfaJh5bz4D7fNRMkeZgFPRhBEmWvNreILXWV7f454IFAzDsLrLwqGc9492o1A/F/AANmg1mBcyCKcpr0A7Kwxu7WbzHHglALyD/qXNCds3NR02e29oZKfVttxhoMATSNxpRhgvDhb0nqkTkxM/9DXBY/ddFjpWKuaPLnzKvSK0kwA0osWW2LRCpOoRVR0MttG2mLc8jDAwbJ9ZdTvKtcYYhx/NvkM8mBzvGWl8iXTJwhqJBdWNl7k0BKr5cswsHj6ENlQkdS3V7gVsIJEaKXZgK1GBkUoC91kg4P4pjh9q4NG0Kv4ZjYNWt9spVaEn0iROYrS+VBIDlvddJglKzkwe7nh7d7zyNREbHew1Df9btSDaGSEb+KHe83148umIKS7oWL86vikCblB3ZViZLtjwN7G8zlBSgGtGaPnukmEd5pgmI/dBVPoItd5MGd/wXhZ+mj/SlVX2Vrx8yDGd/nsQhfo5ZnYV5p2TQoDBNIZ0G3Hq3PiNsASFQY67iFbJxEMelHCQqExKvWOipA/pKOMgRENF9+4nY0q4ofooXuslvrFWEoEGRL8y+NeFNScPP8AmlryP5nNkcX6C1tRA8KC4X26NBPk9JkLWAfG+cpiPg5piDnjwT7+NZKb2ubUZq+hhv
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH2PR04MB6741.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(396003)(366004)(39840400004)(376002)(136003)(346002)(41300700001)(6666004)(316002)(6512007)(1076003)(26005)(186003)(2616005)(110136005)(55236004)(52116002)(6506007)(83380400001)(86362001)(38100700002)(38350700002)(5660300002)(2906002)(6486002)(8936002)(478600001)(8676002)(4326008)(66556008)(66476007)(66946007)(36756003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?fMRtLH3gxTFOgpFJh8EHPto8mfswmzGPjeE011UhGtfYr4P/EpYPdXY++TJ6?=
- =?us-ascii?Q?q6fO8bZazWdZQs/4YLVI+FNito7N4Vahru70LIJeaZJWPA3Rz5WdUk85BBea?=
- =?us-ascii?Q?rtk+IB8cVjK6A2wMoOQzQ7a42BXqfsXNK6ozfe43w/FYrbwGtP6W7hrJG5PB?=
- =?us-ascii?Q?poUSza1WZ6vQPjwFp04SfGJiBOOCthZiV2Iuco2JTEj6FTEZSF3ufXpnOIQL?=
- =?us-ascii?Q?q4uf0d3yG/HGtcoK7aHCRl7OHbaN6Rr5lAlU5UaoQYKxHiWVNOzs8S4jDBF+?=
- =?us-ascii?Q?gejGRU0UDmCFHx+eGrQkJCvesu6tcG9g1+Z1QjDe6Ihmr6mT1oKgX9QJX0EB?=
- =?us-ascii?Q?l/YTNnvJxBatPC04MjGljIfC4h9MmjaAX4tKffhxAtBZHpy9TthrY9f9lj/i?=
- =?us-ascii?Q?WTyYfgPx6szDVBP/aZfyR1eFqBLfuhXA9LvbDjUwnsyPhCj7dcq1a2z6RcWp?=
- =?us-ascii?Q?Aq6+pFK6COEveysYR+WGiqJEarMlXIVoMj6QCOvWE72c34Py+MawbomkgqRg?=
- =?us-ascii?Q?c+WsjQ/1tkI6jLh8fPMK1tXqJMLm9ORsQyWH+HBh8VKkMeP3B9hMHjq8JOfq?=
- =?us-ascii?Q?iiYQURP6YocR8Y/EizPo8dtQ4FHH/re27uKTNfuk6FcUzQkG998GbtTT7JT5?=
- =?us-ascii?Q?+WIzWvnxOVJTrlC0Og3c/JqfrvXrHR+n0Gid0D+0xo+HLAuCldYWMBwpf8AK?=
- =?us-ascii?Q?tPnsDZDlgqlYwDudcxh9ORAaWU//1AipLtAom4/0+EdBUzQkhTpccZtjtrzm?=
- =?us-ascii?Q?Fu0dRgIizdZ6ZZT6LQZTrk+rJazuomXXF4c53IyJHgKFB5tpLTHuS0GliPRC?=
- =?us-ascii?Q?jLCWotHT0htTD79TBYkPPR3TLiUHfxt6f3k3ZBFlEsaNRB0OEJC+nJo0q6fD?=
- =?us-ascii?Q?Wy2R5nf2PISYdd6T0ESV/4Q9w0XfXp6x0gpbMVJCDhN8LTbFKVyNHz7fBTl1?=
- =?us-ascii?Q?Y2cP8Va3nxbLKwvpGczxAaiZJHyQkRozB9LcXWQYxKwpd7wSWkPQo3emOVYF?=
- =?us-ascii?Q?sU9damDf4xNBxlAz/z5DtOb2soJRa6I6ClhCu5eXSFpRw5p1xAzO8BnXk55l?=
- =?us-ascii?Q?FxkQmG5pyaKslmy+jXgy1Yt/gCR2F/nYR6YNuMTaY7IzJhDb9OiqV/nSINfB?=
- =?us-ascii?Q?uSQrC1IybPNvEjAxAVwCJ/wb6ktpazGMuWtxoydrF7eQtsesuwaNThrF+1tz?=
- =?us-ascii?Q?a8T6g+YJV1OBX0/aNYwI99d3r5ForxQ6EFWF2Mlep/xxPUEM8ySSQmwILs1A?=
- =?us-ascii?Q?kj1uvf2AMHB3YF+2nJ2uFcOWksolWnir+csIIt9m+Irt4r9esnhjj7ZZlkOt?=
- =?us-ascii?Q?ByWBwEYXFUqWXz3/NwusWcBBqOguAkJpGO8vDRetchVHbcyXqtFBxhsgt21+?=
- =?us-ascii?Q?OKE39KLueBrZHjiFNJJpUUAib0OjscvMaV8f010XNNFOJbtYfawNVfyddcdI?=
- =?us-ascii?Q?/Cz/RIW2Ss1T1k6hQiEXuycEIuTkGj2o+0VZyL0WiIwbFVF+Syf0YQVBKe7Q?=
- =?us-ascii?Q?LMRNidCyibexqc/KUY5hjVDH/yzp9sSofEqeXaUmBacmdeph8H5fqw4J/xnI?=
- =?us-ascii?Q?hPlzdRcD58agpTWgz/nTaRgOpmsvZXPf5ZjTD+6K?=
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f82740bf-04b8-47bf-6811-08da5f2a6611
-X-MS-Exchange-CrossTenant-AuthSource: CH2PR04MB6741.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2022 08:34:53.3746
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mD8rqm+L2bSSzUSpD+lQL8fo3P5abQYL0sDB1n7fV2wiMTU2/pA9Uf+saqoZrthDUKkRWx6Lu196x77x6B8PnQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR04MB7827
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_013501_183278_0A6CDBF9 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20220706_013538_264553_7E7C7C61 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,111 +91,293 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-USB PD controllers which consisting of a microcontroller (acting as the TCPM)
-and a port controller (TCPC) - may require that the driver for the PD
-controller accesses directly also the on-chip port controller in some cases.
+This patch adds DT binding documents for Media Data Path 3 (MDP3)
+a unit in multimedia system combined with several components and
+used for scaling and color format convert.
 
-Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
-
-Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
-
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-V9 -> V10: Rebase on the latest code
-V8 -> V9 : Add more commit message
-V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+ .../bindings/media/mediatek,mdp3-rdma.yaml    | 95 +++++++++++++++++++
+ .../bindings/media/mediatek,mdp3-rsz.yaml     | 77 +++++++++++++++
+ .../bindings/media/mediatek,mdp3-wrot.yaml    | 80 ++++++++++++++++
+ 3 files changed, 252 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
 
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
----
- drivers/usb/typec/tcpm/tcpci.c                        | 3 +--
- drivers/usb/typec/tcpm/tcpci_maxim.c                  | 3 +--
- drivers/usb/typec/tcpm/tcpci_mt6360.c                 | 3 +--
- drivers/usb/typec/tcpm/tcpci_rt1711h.c                | 2 +-
- {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h | 1 +
- 5 files changed, 5 insertions(+), 7 deletions(-)
- rename {drivers/usb/typec/tcpm => include/linux/usb}/tcpci.h (99%)
-
-diff --git a/drivers/usb/typec/tcpm/tcpci.c b/drivers/usb/typec/tcpm/tcpci.c
-index f33e08eb7670..812784702d53 100644
---- a/drivers/usb/typec/tcpm/tcpci.c
-+++ b/drivers/usb/typec/tcpm/tcpci.c
-@@ -13,11 +13,10 @@
- #include <linux/property.h>
- #include <linux/regmap.h>
- #include <linux/usb/pd.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- #include <linux/usb/typec.h>
- 
--#include "tcpci.h"
--
- #define	PD_RETRY_COUNT_DEFAULT			3
- #define	PD_RETRY_COUNT_3_0_OR_HIGHER		2
- #define	AUTO_DISCHARGE_DEFAULT_THRESHOLD_MV	3500
-diff --git a/drivers/usb/typec/tcpm/tcpci_maxim.c b/drivers/usb/typec/tcpm/tcpci_maxim.c
-index df2505570f07..4b6705f3d7b7 100644
---- a/drivers/usb/typec/tcpm/tcpci_maxim.c
-+++ b/drivers/usb/typec/tcpm/tcpci_maxim.c
-@@ -11,11 +11,10 @@
- #include <linux/module.h>
- #include <linux/regmap.h>
- #include <linux/usb/pd.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- #include <linux/usb/typec.h>
- 
--#include "tcpci.h"
--
- #define PD_ACTIVITY_TIMEOUT_MS				10000
- 
- #define TCPC_VENDOR_ALERT				0x80
-diff --git a/drivers/usb/typec/tcpm/tcpci_mt6360.c b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-index 8a952eaf9016..1b7c31278ebb 100644
---- a/drivers/usb/typec/tcpm/tcpci_mt6360.c
-+++ b/drivers/usb/typec/tcpm/tcpci_mt6360.c
-@@ -11,10 +11,9 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- 
--#include "tcpci.h"
--
- #define MT6360_REG_PHYCTRL1	0x80
- #define MT6360_REG_PHYCTRL3	0x82
- #define MT6360_REG_PHYCTRL7	0x86
-diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-index b56a0880a044..3291ca4948da 100644
---- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-+++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-@@ -10,9 +10,9 @@
- #include <linux/i2c.h>
- #include <linux/interrupt.h>
- #include <linux/gpio/consumer.h>
-+#include <linux/usb/tcpci.h>
- #include <linux/usb/tcpm.h>
- #include <linux/regmap.h>
--#include "tcpci.h"
- 
- #define RT1711H_VID		0x29CF
- #define RT1711H_PID		0x1711
-diff --git a/drivers/usb/typec/tcpm/tcpci.h b/include/linux/usb/tcpci.h
-similarity index 99%
-rename from drivers/usb/typec/tcpm/tcpci.h
-rename to include/linux/usb/tcpci.h
-index b2edd45f13c6..20c0bedb8ec8 100644
---- a/drivers/usb/typec/tcpm/tcpci.h
-+++ b/include/linux/usb/tcpci.h
-@@ -9,6 +9,7 @@
- #define __LINUX_USB_TCPCI_H
- 
- #include <linux/usb/typec.h>
-+#include <linux/usb/tcpm.h>
- 
- #define TCPC_VENDOR_ID			0x0
- #define TCPC_PRODUCT_ID			0x2
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+new file mode 100644
+index 000000000000..6bbc4dde0393
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+@@ -0,0 +1,95 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Read Direct Memory Access
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++
++description: |
++  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
++  It contains one line buffer to store the sufficient pixel data, and
++  must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt8183-mdp3-rdma
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: '/schemas/types.yaml#/definitions/phandle-array'
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: RDMA clock
++      - description: RSZ clock
++
++  iommus:
++    maxItems: 1
++
++  mboxes:
++    items:
++      - description: used for 1st data pipe from RDMA
++      - description: used for 2nd data pipe from RDMA
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - mediatek,gce-events
++  - power-domains
++  - clocks
++  - iommus
++  - mboxes
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/power/mt8183-power.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++
++    mdp3_rdma0: mdp3-rdma0@14001000 {
++      compatible = "mediatek,mt8183-mdp3-rdma";
++      reg = <0x14001000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
++                            <CMDQ_EVENT_MDP_RDMA0_EOF>;
++      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
++               <&mmsys CLK_MM_MDP_RSZ1>;
++      iommus = <&iommu>;
++      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
++               <&gce 21 CMDQ_THR_PRIO_LOWEST>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+new file mode 100644
+index 000000000000..b136b3845036
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Resizer
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to do frame resizing.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-rsz
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - mediatek,gce-events
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++
++    mdp3_rsz0: mdp3-rsz0@14003000 {
++      compatible = "mediatek,mt8183-mdp3-rsz";
++      reg = <0x14003000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
++                            <CMDQ_EVENT_MDP_RSZ0_EOF>;
++      clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++    };
++
++    mdp3_rsz1: mdp3-rsz1@14004000 {
++      compatible = "mediatek,mt8183-mdp3-rsz";
++      reg = <0x14004000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
++                            <CMDQ_EVENT_MDP_RSZ1_EOF>;
++      clocks = <&mmsys CLK_MM_MDP_RSZ1>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+new file mode 100644
+index 000000000000..0069b350ee64
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+@@ -0,0 +1,80 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-wrot.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Write DMA with Rotation
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to write DMA with frame rotation.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-wrot
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++
++  iommus:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - mediatek,gce-events
++  - power-domains
++  - clocks
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/power/mt8183-power.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++
++    mdp3_wrot0: mdp3-wrot0@14005000 {
++      compatible = "mediatek,mt8183-mdp3-wrot";
++      reg = <0x14005000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
++                            <CMDQ_EVENT_MDP_WROT0_EOF>;
++      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++      clocks = <&mmsys CLK_MM_MDP_WROT0>;
++      iommus = <&iommu>;
++    };
 -- 
-2.25.1
+2.18.0
 
 
