@@ -4,81 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E2C8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 09:33:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61333C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 10:06:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tMU3E4eYksx+zNdAVlL51uq6GohePbaqlSk6+eyDGGY=; b=arxZB/afUeV6WmRILSOj6J4tpJ
-	++kFm3V69SEYBrcPzoXDlBmf/+wK/J28sosdzqlesvpswMJX4k+3rIX+dVh/3NRz7f2wYIflW4NjF
-	BiEarlJodXv76dIYG579sWK8269MlvjI+48ObEgAXVYts7PUMV/R8smdaQ1Pl+rNv3qIk7yF1Cr5l
-	A5rco8zub+Qbnlmtt4MdZBqGOjZszHIKBRtrvg+czo8qTAJbyLC5ICvOOzxJL8ipVLxD/hbMsbunP
-	brGep2/HJV6//cLTqwAtkzMKpVGQRgF/fNbS3mmnyMyt8bUOcTav6snspdLY6hSeXmXf/4CycGOrm
-	9jnVmX8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Uws7ZBBTv1acYBJZ6w2kSLSiJ9SPBwS66raiWd4kIqM=; b=WQX8hG+d2IlTOyl18n/8B3/Anf
+	MEH7Q8zekcotiGC99ESNr2iyey/J+AiVOuwISVBuMnw54EctHYroJHd1b1uBNUP7ypg6PnsvOwsUr
+	QgawhtG/irDrK1VUiSt7T5upq8txCEsojAVdVbyvQEsBCoqsc3NqZuCLzdlA/7kCWZLQX2haCoL94
+	en28q95E3Fx/o9bNx4Jzi2JO6KzXZ+kcZTamDBOnvRdEizS6ngAggy0uVIcP8+s1W+N6IcOm79Cxg
+	uwK2GyTR9ERIJTeesj92gqFqtx4nyr4/YFYGyKOcc9VsqDRT+yjT642ZuIoiJQSSVSD/QdGhIyFXy
+	CSHPrixQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91Ox-007oJ8-2g; Wed, 06 Jul 2022 09:32:55 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91Ol-007oFj-P8
-	for linux-mediatek@lists.infradead.org; Wed, 06 Jul 2022 09:32:45 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1o91Nj-0005lo-Ss; Wed, 06 Jul 2022 11:31:39 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1o91Na-004jSK-Sg; Wed, 06 Jul 2022 11:31:34 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1o91Nd-003KbY-Gm; Wed, 06 Jul 2022 11:31:33 +0200
-Date: Wed, 6 Jul 2022 11:31:30 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Wolfram Sang <wsa@kernel.org>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
-	linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linuxppc-dev@lists.ozlabs.org,
-	openipmi-developer@lists.sourceforge.net,
-	linux-integrity@vger.kernel.org, linux-clk@vger.kernel.org,
-	linux-crypto@vger.kernel.org, linux-gpio@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, chrome-platform@lists.linux.dev,
-	linux-rpi-kernel@lists.infradead.org, linux-input@vger.kernel.org,
-	linux-hwmon@vger.kernel.org, linux-iio@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-leds@vger.kernel.org, linux-media@vger.kernel.org,
-	patches@opensource.cirrus.com, alsa-devel@alsa-project.org,
-	linux-omap@vger.kernel.org, linux-mtd@lists.infradead.org,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	platform-driver-x86@vger.kernel.org,
-	acpi4asus-user@lists.sourceforge.net, linux-pm@vger.kernel.org,
-	linux-pwm@vger.kernel.org, linux-rtc@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-serial@vger.kernel.org,
-	linux-usb@vger.kernel.org, linux-fbdev@vger.kernel.org,
-	linux-watchdog@vger.kernel.org, kasan-dev@googlegroups.com,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 6/6] i2c: Make remove callback return void
-Message-ID: <20220706093130.cet7y7upl76rp6ug@pengutronix.de>
-References: <20220628140313.74984-1-u.kleine-koenig@pengutronix.de>
- <20220628140313.74984-7-u.kleine-koenig@pengutronix.de>
- <20220706091315.p5k2jck3rmyjhvqw@skbuf>
+	id 1o91vL-00896L-Ie; Wed, 06 Jul 2022 10:06:23 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o91fy-007wao-Oz; Wed, 06 Jul 2022 09:50:32 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3259A1042;
+	Wed,  6 Jul 2022 02:50:30 -0700 (PDT)
+Received: from [10.57.42.44] (unknown [10.57.42.44])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9DB933F66F;
+	Wed,  6 Jul 2022 02:50:25 -0700 (PDT)
+Message-ID: <f545c1f4-0cb5-ec4e-66e8-dbed6b992085@arm.com>
+Date: Wed, 6 Jul 2022 10:50:23 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yp3ilhvx53xygi7l"
-Content-Disposition: inline
-In-Reply-To: <20220706091315.p5k2jck3rmyjhvqw@skbuf>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH V3.1 02/20] OPP: Make dev_pm_opp_set_regulators() accept
+ NULL terminated list
+Content-Language: en-GB
+To: Viresh Kumar <viresh.kumar@linaro.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Chanwoo Choi
+ <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Qiang Yu <yuq825@gmail.com>,
+ Rob Herring <robh@kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ lima@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <9730e011004b7526e79c6f409f5147fb235b414a.1656935522.git.viresh.kumar@linaro.org>
+ <bcabb1a90a5158628ee1633c10f8886544723fb9.1657095331.git.viresh.kumar@linaro.org>
+From: Steven Price <steven.price@arm.com>
+In-Reply-To: <bcabb1a90a5158628ee1633c10f8886544723fb9.1657095331.git.viresh.kumar@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_023243_890734_96DECA0A 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20220706_025030_950702_0F9D03D6 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,57 +79,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 06/07/2022 09:18, Viresh Kumar wrote:
+> Make dev_pm_opp_set_regulators() accept a NULL terminated list of names
+> instead of making the callers keep the two parameters in sync, which
+> creates an opportunity for bugs to get in.
+> 
+> Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+> ---
+> V3->V3.1:
+> - Update panfrost_drv.c to include the NULL element.
+> 
+>  drivers/cpufreq/cpufreq-dt.c                |  9 ++++-----
+>  drivers/cpufreq/ti-cpufreq.c                |  7 +++----
+>  drivers/devfreq/exynos-bus.c                |  4 ++--
+>  drivers/gpu/drm/lima/lima_devfreq.c         |  3 ++-
+>  drivers/gpu/drm/panfrost/panfrost_devfreq.c |  3 +--
+>  drivers/gpu/drm/panfrost/panfrost_drv.c     | 15 ++++++++++-----
+>  drivers/opp/core.c                          | 18 ++++++++++++------
+>  drivers/soc/tegra/pmc.c                     |  4 ++--
+>  include/linux/pm_opp.h                      |  9 ++++-----
+>  9 files changed, 40 insertions(+), 32 deletions(-)
+> 
+[...]
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+> index 194af7f607a6..5110cd9b2425 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+> @@ -101,8 +101,7 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
+>  		return 0;
+>  	}
+>  
+> -	ret = devm_pm_opp_set_regulators(dev, pfdev->comp->supply_names,
+> -					 pfdev->comp->num_supplies);
+> +	ret = devm_pm_opp_set_regulators(dev, pfdev->comp->supply_names);
+>  	if (ret) {
+>  		/* Continue if the optional regulator is missing */
+>  		if (ret != -ENODEV) {
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index 7fcbc2a5b6cd..8a4bef65d38c 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -625,24 +625,29 @@ static int panfrost_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> -static const char * const default_supplies[] = { "mali" };
+> +/*
+> + * The OPP core wants the supply names to be NULL terminated, but we need the
+> + * correct num_supplies value for regulator core. Hence, we NULL terminate here
+> + * and then initialize num_supplies with ARRAY_SIZE - 1.
+> + */
+> +static const char * const default_supplies[] = { "mali", NULL };
+>  static const struct panfrost_compatible default_data = {
+> -	.num_supplies = ARRAY_SIZE(default_supplies),
+> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
+>  	.supply_names = default_supplies,
+>  	.num_pm_domains = 1, /* optional */
+>  	.pm_domain_names = NULL,
+>  };
+>  
+>  static const struct panfrost_compatible amlogic_data = {
+> -	.num_supplies = ARRAY_SIZE(default_supplies),
+> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
+>  	.supply_names = default_supplies,
+>  	.vendor_quirk = panfrost_gpu_amlogic_quirk,
+>  };
+>  
+> -static const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
+> +static const char * const mediatek_mt8183_supplies[] = { "mali", "sram", NULL };
+>  static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
+>  static const struct panfrost_compatible mediatek_mt8183_data = {
+> -	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies),
+> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies) - 1,
+>  	.supply_names = mediatek_mt8183_supplies,
+>  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
+>  	.pm_domain_names = mediatek_mt8183_pm_domains,
 
---yp3ilhvx53xygi7l
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Steven Price <steven.price@arm.com>
 
-On Wed, Jul 06, 2022 at 12:13:15PM +0300, Vladimir Oltean wrote:
-> On Tue, Jun 28, 2022 at 04:03:12PM +0200, Uwe Kleine-K=F6nig wrote:
-> > From: Uwe Kleine-K=F6nig <uwe@kleine-koenig.org>
-> >=20
-> > The value returned by an i2c driver's remove function is mostly ignored.
-> > (Only an error message is printed if the value is non-zero that the
-> > error is ignored.)
-> >=20
-> > So change the prototype of the remove function to return no value. This
-> > way driver authors are not tempted to assume that passing an error to
-> > the upper layer is a good idea. All drivers are adapted accordingly.
-> > There is no intended change of behaviour, all callbacks were prepared to
-> > return 0 before.
-> >=20
-> > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-> > ---
->=20
-> Assuming you remove the spurious kasan change:
+Thanks for the rework, much cleaner.
 
-It's already gone in my tree, see
-https://git.pengutronix.de/cgit/ukl/linux/commit/?h=3Di2c-remove-void
+Steve
 
-> Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
-
-Thanks
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---yp3ilhvx53xygi7l
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmLFVmcACgkQwfwUeK3K
-7AkOwAgAkt7aZ38n1lpOoBzXslSDQyp/lKc47Ehs+a1LTESfOP6+4frSHSJhaIMw
-WX2bIAZO2kfHd2GJJ1+miP0YO3eys+YJus7vlVp9LsZCtTrR7uUlJ9PhG4eVmYxD
-ZPZMbP533Mkp9Tj201PJRSbnOlhRhKnwpl4kQfj9nXD478yP1zbT/7CDh4Im1isE
-dOUnNdPTAnT17u0fIRREu6TIC/hKy5Lh772ukCBsHwkBWQD4WTtLmdL1uZrspPa3
-fKxI4tIGoKufFCNMNNzK8li/dghhpkn4uy8iNwyjkkmjfCXAkNdwNJiCDlo6qPwb
-idJ3DvpJEEx44L8KdcjzBYUHdSNUkQ==
-=ZnQL
------END PGP SIGNATURE-----
-
---yp3ilhvx53xygi7l--
 
