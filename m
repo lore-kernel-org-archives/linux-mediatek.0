@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07C1C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 10:37:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83299C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 11:45:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=M+d0sFVIGh3BAb5DoIc3hEMMrIrYnc8CV7N9dbREBHY=; b=prNp8VoAb8FGmcf/NGob61pNhz
-	weUTS4Opgk1pN7/c7Wa3N6R0moLwT34+et1R1MsfOdRuk/FDrTE37zbTKSN9wS7Ay9Uy6i9l/v+zQ
-	PHBk5FLfZSrdD2P+bKeLKqBDLXFYmwlGVAOMf88GVt8zYjSV20MuDNSC1ZbVkmicTxjewWfw4Ta7/
-	c1EHQ4kfipI21YzYyLdQtYvnKYYEdYhbMwbc3kIAP+KSJGZyIVezlNWIXfFt6Jme/yygZI9ZmoNPx
-	c1yhkGEbAZ/KZJjx9mUr3YG9Bpd8rSYXo/ARbbGhkfIkUrYwHVDkCPr/FJGbrOXczc35jSa+4MSc7
-	/+XFq0nw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z8eS2rTzcqdOlJMWiIMUaYsTGj4T3vcWNS3erwMrH+Q=; b=UbN5/c5P3acPBDT/1yet4TZ7Ub
+	QQfM0lHlvGkdASVIjx7FHt9x2IUnYglvpoS/8buvu8uj3YB7bAp5ari6DIcHdClghxgJBaC97Mhjk
+	3Od5GKE8bJTlqpQue5yPmbmgIj3YUtIGJkygMIZCk6MLBD85geNMcHAG9UIbbApSyKXszoRe2iAtE
+	JU3DwMMDVnRO0M7cFR8225sMYmPVU7flGtXdlfgk5Ph5U/lOGdI3R0Hm+wyIPjF3a+2xdf+nC3dCV
+	cOBwB6N/fT2cddepEeiWgP2S3G52w3yxMoWLYVO1lbUzytpWHLt1+CtQPkfS2ok6zFhX1IZM0bfPd
+	MgxyX9PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o92Pj-008eZP-VK; Wed, 06 Jul 2022 10:37:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1o93TM-009gkX-Ul; Wed, 06 Jul 2022 11:45:36 +0000
+Received: from mga03.intel.com ([134.134.136.65])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o92Fz-008TJ7-OP; Wed, 06 Jul 2022 10:27:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=M+d0sFVIGh3BAb5DoIc3hEMMrIrYnc8CV7N9dbREBHY=; b=g7yIc6l7ooEwLgjMN6a6paMUMl
-	ZXAYkIGn3J+bjg6QoYHem0JfwgNNQ2ULC14bXItbfCvswDochgDO2NM0+oQM1Cue6YuRMr7rLINxb
-	yxvM/27bEdiomitW4mAMJqfRUaZ9iso9XkXFx7DkWshm2GB71leWNiXmFRF2RlsmG8w/u/IcLxfnr
-	iDXfYkuV40z+KWi/MQvDKA9l3jVSqGVyzGH0mROxXxOHg2gbS8jQQMdDZyaDeEFjJJxXtw7impH5N
-	Q1c58JBg6HOrkeNU8ocLMAkZ2cVKGoVWdVsy83iU1NZKT7c8B7YcGaNIK3kEoLOu67vM4b8LvP0dN
-	7A6+BPgg==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o920J-000QTQ-I2; Wed, 06 Jul 2022 10:11:38 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D3DE566019AB;
-	Wed,  6 Jul 2022 11:11:29 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657102290;
-	bh=Xhl1Ow9x+DfI22vAa93ClvjHOF/I+FiiBOeSds25YTo=;
-	h=From:To:Cc:Subject:Date:From;
-	b=krrLDBECxk0hdNlHvDKeZS2C+hDOHY3M44vURPYvwp1rLnnRGpRQn9y7VE/oW+IeX
-	 DhyIlEzxzCla5C9R4zyXioRvvUd8Ix+mmOsj7kBV11kMKbx2h9GS1jq7eRzRgOURoq
-	 iSySAHqvClcqZhNNe1GAnUrEP0pjqhckU8fFqo+7oXQ5WTiCe6w+6UigRq04h1H9+N
-	 RfvEmeMEoIHQFg5PiRfkqRFNfIddz09A9j4IzgtgiAtTTiIMZRu23tFC5nFK4nZtfT
-	 Xd6h8iHFgxnMFKIY27ojZfVWO6Li3oomo1XeyZh38nFKy6J1s0Xzp0IfDPtiOxUKo7
-	 WJEDgeCJXp2EA==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: dmitry.torokhov@gmail.com
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	mkorpershoek@baylibre.com,
-	linux-input@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 RESEND] Input: mtk-pmic-keys - Add support for MT6331 PMIC keys
-Date: Wed,  6 Jul 2022 12:11:22 +0200
-Message-Id: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
+	id 1o93TB-009ghk-W1; Wed, 06 Jul 2022 11:45:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1657107925; x=1688643925;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=9O/uk8hzidHlOKBk1K4kxy0EkY6O5XjVCbjq4/nqvi0=;
+  b=E8jmvS8IbkkR5f55Pm2X6ECkuJK6tBXIxklmEAxwkgo32rTtU4GsVr/M
+   zHPGB+Iqa/P90XgGB0qXTuivBb6OQ01RAorZ83Rb3QfhESz2EItHUsrNI
+   V9yRLa/05fligcrYK8q7jw1/qkqXbmbWBxkHV7fqZR2ReV+eqo9DGg6FT
+   Xhv7bvYTA/oegT87ubEatC+glEgcFORGh0WQZnmqJFQe04ro+M0lQtYzq
+   CR2RXFpmHmzWPJXjGpNfrsBHF1sybzNcyly5MrrR2OV4AJVYlaw3ApsLo
+   J+EHTdaoh/pZGF5EhPmPgj6zPEUS93nSHdW/JX+n7lA6JlqiR887Dw9+K
+   w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10399"; a="284844337"
+X-IronPort-AV: E=Sophos;i="5.92,249,1650956400"; 
+   d="scan'208";a="284844337"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jul 2022 04:45:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,249,1650956400"; 
+   d="scan'208";a="682890850"
+Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
+  by FMSMGA003.fm.intel.com with ESMTP; 06 Jul 2022 04:45:01 -0700
+Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1o93Sm-000KXF-CP;
+	Wed, 06 Jul 2022 11:45:00 +0000
+Date: Wed, 6 Jul 2022 19:44:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dmitry.torokhov@gmail.com
+Cc: kbuild-all@lists.01.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, mkorpershoek@baylibre.com,
+	linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 RESEND] Input: mtk-pmic-keys - Add support for MT6331
+ PMIC keys
+Message-ID: <202207061915.tYTQKEhu-lkp@intel.com>
+References: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_111137_212968_818CADB1 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20220706_044526_134870_7419B1BD 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +84,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for PMIC Keys of the MT6331 PMIC.
+Hi AngeloGioacchino,
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
----
- drivers/input/keyboard/mtk-pmic-keys.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+Thank you for the patch! Yet something to improve:
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index 6404081253ea..9b34da0ec260 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -9,6 +9,7 @@
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
- #include <linux/mfd/mt6323/registers.h>
-+#include <linux/mfd/mt6331/registers.h>
- #include <linux/mfd/mt6358/registers.h>
- #include <linux/mfd/mt6397/core.h>
- #include <linux/mfd/mt6397/registers.h>
-@@ -22,6 +23,10 @@
- #define MTK_PMIC_PWRKEY_RST	BIT(6)
- #define MTK_PMIC_HOMEKEY_RST	BIT(5)
- 
-+#define MTK_PMIC_MT6331_RST_DU_MASK	GENMASK(13, 12)
-+#define MTK_PMIC_MT6331_PWRKEY_RST	BIT(9)
-+#define MTK_PMIC_MT6331_HOMEKEY_RST	BIT(8)
-+
- #define MTK_PMIC_PWRKEY_INDEX	0
- #define MTK_PMIC_HOMEKEY_INDEX	1
- #define MTK_PMIC_MAX_KEY_COUNT	2
-@@ -72,6 +77,19 @@ static const struct mtk_pmic_regs mt6323_regs = {
- 	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
- };
- 
-+static const struct mtk_pmic_regs mt6331_regs = {
-+	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6331_TOPSTATUS, 0x2,
-+				   MT6331_INT_MISC_CON, 0x4,
-+				   MTK_PMIC_MT6331_PWRKEY_RST),
-+	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6331_TOPSTATUS, 0x4,
-+				   MT6331_INT_MISC_CON, 0x2,
-+				   MTK_PMIC_MT6331_HOMEKEY_RST),
-+	.pmic_rst_reg = MT6331_TOP_RST_MISC,
-+	.rst_lprst_mask = MTK_PMIC_MT6331_RST_DU_MASK,
-+};
-+
- static const struct mtk_pmic_regs mt6358_regs = {
- 	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
- 		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
-@@ -255,6 +273,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt6323-keys",
- 		.data = &mt6323_regs,
-+	}, {
-+		.compatible = "mediatek,mt6331-keys",
-+		.data = &mt6331_regs,
- 	}, {
- 		.compatible = "mediatek,mt6358-keys",
- 		.data = &mt6358_regs,
+[auto build test ERROR on dtor-input/next]
+[also build test ERROR on linus/master v5.19-rc5 next-20220705]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/Input-mtk-pmic-keys-Add-support-for-MT6331-PMIC-keys/20220706-181323
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/dtor/input.git next
+config: arc-randconfig-r043-20220703 (https://download.01.org/0day-ci/archive/20220706/202207061915.tYTQKEhu-lkp@intel.com/config)
+compiler: arceb-elf-gcc (GCC) 11.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/5e286347fa7c13c4674f97ed475e4f42a49ce5b4
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/Input-mtk-pmic-keys-Add-support-for-MT6331-PMIC-keys/20220706-181323
+        git checkout 5e286347fa7c13c4674f97ed475e4f42a49ce5b4
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash drivers/input/keyboard/
+
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+>> drivers/input/keyboard/mtk-pmic-keys.c:12:10: fatal error: linux/mfd/mt6331/registers.h: No such file or directory
+      12 | #include <linux/mfd/mt6331/registers.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   compilation terminated.
+
+
+vim +12 drivers/input/keyboard/mtk-pmic-keys.c
+
+  > 12	#include <linux/mfd/mt6331/registers.h>
+    13	#include <linux/mfd/mt6358/registers.h>
+    14	#include <linux/mfd/mt6397/core.h>
+    15	#include <linux/mfd/mt6397/registers.h>
+    16	#include <linux/module.h>
+    17	#include <linux/of_device.h>
+    18	#include <linux/of.h>
+    19	#include <linux/platform_device.h>
+    20	#include <linux/regmap.h>
+    21	
+
 -- 
-2.35.1
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
