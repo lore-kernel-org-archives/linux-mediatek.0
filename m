@@ -4,79 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A172BC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 08:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD253C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 09:07:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OS/9CEIBJUwJHHxBEoAlkpNDdUCpOri/wCL2oaO78vc=; b=rrEGAOY5J2z2pE4A0mAH+blv0Z
-	0YycGcDP//3exEQ806z7KqYVkTHjLtpgeuCxBBb7qm5bp7LAmISM/m9iYw/tJ3jXkvaLgLd77w5ju
-	5wHhe5LzTLMbkr+1sj5Wx/yFOUO3PZmtv5PaNWlfw2USuWv6tfim70fZr/EO0Pjdb4BTf4a6G3EzA
-	8wFGDuX8enZ64SrqXmWiguBDl4XfXgWe2tNAgCcVjfGzuYBKE+zaeC0W5tGDbq4oRegwI8mNh3fsb
-	3m/fhh020kJQO0Gr2yfmrQ5cassQZdHhrRMM5jkr3I9q22mSIvqentB4+F6IHbnq0cbq25uVp6Ysd
-	X0lEpLnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9cirdPwbXBH3Kf192a+asO2rTwobWYTczATwpKCjPkE=; b=TT2PnELrB1HewJlFKtchi69dGo
+	Vb9Q3pzs7iIA9RzxxHFnoafmJBC2zeujySDoFpbyeJdmNQ++OzRYbq+pKSfzgtU2HnHfESfpo0Tg2
+	OXxZWw6vbu1JRNmytUhcFS4P2yoeU3QOlxeEnDEmvN0VbQ0WMizkmpf2TZX53tJ0Omm9GxB2IUlMT
+	DdQHzNbviiTYr1ZfGBWiY2mn7b1hFNT4trsQsOiaWeqK8zzjgZOyn+7IlUgk8FSxCdaKGrgLC42+X
+	zRF+WRn2UWNRUWCZnjCHVvt+GlS0ArIXN5f6/JwkXjyEoWRvqsLHL6bhv3cSZWD5Cb9FzwjxHFjiT
+	qCd4KR4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90Vu-007Q95-7i; Wed, 06 Jul 2022 08:36:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90VW-007Pwg-5j; Wed, 06 Jul 2022 08:35:40 +0000
-X-UUID: 0939509533b140da92c5c23a68c74757-20220706
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:ae70a5d4-0dd1-4b4e-8b93-b2f1f71efb4e,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:0f94e32,CLOUDID:29b4b086-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 0939509533b140da92c5c23a68c74757-20220706
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1416485663; Wed, 06 Jul 2022 01:35:35 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Wed, 6 Jul 2022 15:54:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 6 Jul 2022 15:54:55 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
-	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
-	<river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Subject: [PATCH v21 1/4] dt-binding: mediatek: add bindings for MediaTek MDP3 components
-Date: Wed, 6 Jul 2022 15:54:51 +0800
-Message-ID: <20220706075454.15569-2-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220706075454.15569-1-moudy.ho@mediatek.com>
-References: <20220706075454.15569-1-moudy.ho@mediatek.com>
+	id 1o9102-007dIf-W1; Wed, 06 Jul 2022 09:07:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o90yu-007cYG-L9; Wed, 06 Jul 2022 09:06:05 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CBE0F15A1;
+	Wed,  6 Jul 2022 02:05:54 -0700 (PDT)
+Received: from [10.57.9.19] (unknown [10.57.9.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A8B9B3F66F;
+	Wed,  6 Jul 2022 02:05:51 -0700 (PDT)
+Message-ID: <50fb0d2f-fca8-4e82-a778-544161029979@arm.com>
+Date: Wed, 6 Jul 2022 10:05:49 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 1/4] PM: EM: convert power field to micro-Watts precision
+ and align drivers
+Content-Language: en-US
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: amitk@kernel.org, rui.zhang@intel.com, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, viresh.kumar@linaro.org, rafael@kernel.org,
+ dietmar.eggemann@arm.com, nm@ti.com, sboyd@kernel.org, sudeep.holla@arm.com,
+ cristian.marussi@arm.com, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+References: <20220622145802.13032-1-lukasz.luba@arm.com>
+ <20220622145802.13032-2-lukasz.luba@arm.com>
+ <3b0ce952-0674-d01d-3fc0-795d35743723@linaro.org>
+From: Lukasz Luba <lukasz.luba@arm.com>
+In-Reply-To: <3b0ce952-0674-d01d-3fc0-795d35743723@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_013538_264553_7E7C7C61 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20220706_020600_904206_C530130C 
+X-CRM114-Status: GOOD (  42.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,293 +68,301 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds DT binding documents for Media Data Path 3 (MDP3)
-a unit in multimedia system combined with several components and
-used for scaling and color format convert.
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../bindings/media/mediatek,mdp3-rdma.yaml    | 95 +++++++++++++++++++
- .../bindings/media/mediatek,mdp3-rsz.yaml     | 77 +++++++++++++++
- .../bindings/media/mediatek,mdp3-wrot.yaml    | 80 ++++++++++++++++
- 3 files changed, 252 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-new file mode 100644
-index 000000000000..6bbc4dde0393
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -0,0 +1,95 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Read Direct Memory Access
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
-+  It contains one line buffer to store the sufficient pixel data, and
-+  must be siblings to the central MMSYS_CONFIG node.
-+  For a description of the MMSYS_CONFIG binding, see
-+  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+  for details.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8183-mdp3-rdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  mediatek,gce-events:
-+    description:
-+      The event id which is mapping to the specific hardware event signal
-+      to gce. The event id is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: RDMA clock
-+      - description: RSZ clock
-+
-+  iommus:
-+    maxItems: 1
-+
-+  mboxes:
-+    items:
-+      - description: used for 1st data pipe from RDMA
-+      - description: used for 2nd data pipe from RDMA
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - mediatek,gce-events
-+  - power-domains
-+  - clocks
-+  - iommus
-+  - mboxes
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+    #include <dt-bindings/power/mt8183-power.h>
-+    #include <dt-bindings/memory/mt8183-larb-port.h>
-+
-+    mdp3_rdma0: mdp3-rdma0@14001000 {
-+      compatible = "mediatek,mt8183-mdp3-rdma";
-+      reg = <0x14001000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-+                            <CMDQ_EVENT_MDP_RDMA0_EOF>;
-+      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-+               <&mmsys CLK_MM_MDP_RSZ1>;
-+      iommus = <&iommu>;
-+      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
-+               <&gce 21 CMDQ_THR_PRIO_LOWEST>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-new file mode 100644
-index 000000000000..b136b3845036
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-@@ -0,0 +1,77 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Resizer
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to do frame resizing.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-rsz
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  mediatek,gce-events:
-+    description:
-+      The event id which is mapping to the specific hardware event signal
-+      to gce. The event id is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - mediatek,gce-events
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+
-+    mdp3_rsz0: mdp3-rsz0@14003000 {
-+      compatible = "mediatek,mt8183-mdp3-rsz";
-+      reg = <0x14003000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
-+                            <CMDQ_EVENT_MDP_RSZ0_EOF>;
-+      clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-+    };
-+
-+    mdp3_rsz1: mdp3-rsz1@14004000 {
-+      compatible = "mediatek,mt8183-mdp3-rsz";
-+      reg = <0x14004000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
-+                            <CMDQ_EVENT_MDP_RSZ1_EOF>;
-+      clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-new file mode 100644
-index 000000000000..0069b350ee64
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-@@ -0,0 +1,80 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-wrot.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Write DMA with Rotation
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to write DMA with frame rotation.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-wrot
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  mediatek,gce-events:
-+    description:
-+      The event id which is mapping to the specific hardware event signal
-+      to gce. The event id is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+
-+  iommus:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - mediatek,gce-events
-+  - power-domains
-+  - clocks
-+  - iommus
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+    #include <dt-bindings/power/mt8183-power.h>
-+    #include <dt-bindings/memory/mt8183-larb-port.h>
-+
-+    mdp3_wrot0: mdp3-wrot0@14005000 {
-+      compatible = "mediatek,mt8183-mdp3-wrot";
-+      reg = <0x14005000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
-+                            <CMDQ_EVENT_MDP_WROT0_EOF>;
-+      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_WROT0>;
-+      iommus = <&iommu>;
-+    };
--- 
-2.18.0
+On 7/5/22 10:09, Daniel Lezcano wrote:
+> On 22/06/2022 16:57, Lukasz Luba wrote:
+>> The milli-Watts precision causes rounding errors while calculating
+>> efficiency cost for each OPP. This is especially visible in the 'simple'
+>> Energy Model (EM), where the power for each OPP is provided from OPP
+>> framework. This can cause some OPPs to be marked inefficient, while
+>> using micro-Watts precision that might not happen.
+>>
+>> Update all EM users which access 'power' field and assume the value is
+>> in milli-Watts.
+>>
+>> Solve also an issue with potential overflow in calculation of energy
+>> estimation on 32bit machine. It's needed now since the power value
+>> (thus the 'cost' as well) are higher.
+>>
+>> Example calculation which shows the rounding error and impact:
+>>
+>> power = 'dyn-power-coeff' * volt_mV * volt_mV * freq_MHz
+>>
+>> power_a_uW = (100 * 600mW * 600mW * 500MHz) / 10^6 = 18000
+>> power_a_mW = (100 * 600mW * 600mW * 500MHz) / 10^9 = 18
+>>
+>> power_b_uW = (100 * 605mW * 605mW * 600MHz) / 10^6 = 21961
+>> power_b_mW = (100 * 605mW * 605mW * 600MHz) / 10^9 = 21
+>>
+>> max_freq = 2000MHz
+>>
+>> cost_a_mW = 18 * 2000MHz/500MHz = 72
+>> cost_a_uW = 18000 * 2000MHz/500MHz = 72000
+>>
+>> cost_b_mW = 21 * 2000MHz/600MHz = 70 // <- artificially better
+>> cost_b_uW = 21961 * 2000MHz/600MHz = 73203
+>>
+>> The 'cost_b_mW' (which is based on old milli-Watts) is misleadingly
+>> better that the 'cost_b_uW' (this patch uses micro-Watts) and such
+>> would have impact on the 'inefficient OPPs' information in the Cpufreq
+>> framework. This patch set removes the rounding issue.
+> 
+> Thanks for this detailed description, it really helps to understand why 
+> this change is needed.
+> 
+> Perhaps it would make sense to add a power_uw in the EM structure and 
+> keeping the old one with the milli-watts in order to reduce the impact 
+> of the change.
+> 
+> It is a suggestion if you find it more convenient. Otherwise I'm fine 
+> with this approach too.
+
+I see your point, it could go with 2 patches instead of one. If there
+will be a need of v2 I will consider this split.
+
+> 
+> A few comments below.
+> 
+>> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+>> ---
+>>   drivers/cpufreq/mediatek-cpufreq-hw.c |  7 +--
+>>   drivers/cpufreq/scmi-cpufreq.c        |  6 +++
+>>   drivers/opp/of.c                      | 15 ++++---
+>>   drivers/powercap/dtpm_cpu.c           |  5 +--
+>>   drivers/thermal/cpufreq_cooling.c     | 13 +++++-
+>>   drivers/thermal/devfreq_cooling.c     | 19 ++++++--
+>>   include/linux/energy_model.h          | 63 ++++++++++++++++++++-------
+>>   kernel/power/energy_model.c           | 31 ++++++++-----
+>>   8 files changed, 114 insertions(+), 45 deletions(-)
+>>
+>> diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c 
+>> b/drivers/cpufreq/mediatek-cpufreq-hw.c
+>> index 813cccbfe934..f0e0a35c7f21 100644
+>> --- a/drivers/cpufreq/mediatek-cpufreq-hw.c
+>> +++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+>> @@ -51,7 +51,7 @@ static const u16 cpufreq_mtk_offsets[REG_ARRAY_SIZE] 
+>> = {
+>>   };
+> 
+> [ ... ]
+> 
+>> diff --git a/drivers/thermal/cpufreq_cooling.c 
+>> b/drivers/thermal/cpufreq_cooling.c
+>> index b8151d95a806..dc19e7c80751 100644
+>> --- a/drivers/thermal/cpufreq_cooling.c
+>> +++ b/drivers/thermal/cpufreq_cooling.c
+>> @@ -21,6 +21,7 @@
+>>   #include <linux/pm_qos.h>
+>>   #include <linux/slab.h>
+>>   #include <linux/thermal.h>
+>> +#include <linux/units.h>
+>>   #include <trace/events/thermal.h>
+>> @@ -101,6 +102,7 @@ static unsigned long get_level(struct 
+>> cpufreq_cooling_device *cpufreq_cdev,
+>>   static u32 cpu_freq_to_power(struct cpufreq_cooling_device 
+>> *cpufreq_cdev,
+>>                    u32 freq)
+>>   {
+>> +    unsigned long power_mw;
+>>       int i;
+>>       for (i = cpufreq_cdev->max_level - 1; i >= 0; i--) {
+>> @@ -108,16 +110,23 @@ static u32 cpu_freq_to_power(struct 
+>> cpufreq_cooling_device *cpufreq_cdev,
+>>               break;
+>>       }
+>> -    return cpufreq_cdev->em->table[i + 1].power;
+>> +    power_mw = cpufreq_cdev->em->table[i + 1].power;
+>> +    power_mw /= MICROWATT_PER_MILLIWATT;
+> 
+> Won't this fail with an unresolved symbols on some archs ? I mean may be 
+> do_div should be used instead ?
+
+I've run that code in internal CI for all archs and didn't crash.
+We already have a division in IPA or in devfreq_cooling where
+the variables are 32bit and works fine.
+
+> 
+>> +
+>> +    return power_mw;
+>>   }
+> 
+> [ ... ]
+
+
+The em_validate_cost() is in this cut section.
+
+
+> 
+>>   #ifdef CONFIG_64BIT
+>> -#define em_scale_power(p) ((p) * 1000)
+>> +#define em_estimate_energy(cost, sum_util, scale_cpu) \
+>> +    (((cost) * (sum_util)) / (scale_cpu))
+>>   #else
+>> -#define em_scale_power(p) (p)
+>> +#define em_estimate_energy(cost, sum_util, scale_cpu) \
+>> +    (((cost) / (scale_cpu)) * (sum_util))
+>>   #endif
+>>   struct em_data_callback {
+>> @@ -112,7 +143,7 @@ struct em_data_callback {
+>>        * and frequency.
+>>        *
+>>        * In case of CPUs, the power is the one of a single CPU in the 
+>> domain,
+>> -     * expressed in milli-Watts or an abstract scale. It is expected to
+>> +     * expressed in micro-Watts or an abstract scale. It is expected to
+>>        * fit in the [0, EM_MAX_POWER] range.
+>>        *
+>>        * Return 0 on success.
+>> @@ -148,7 +179,7 @@ struct em_perf_domain *em_cpu_get(int cpu);
+>>   struct em_perf_domain *em_pd_get(struct device *dev);
+>>   int em_dev_register_perf_domain(struct device *dev, unsigned int 
+>> nr_states,
+>>                   struct em_data_callback *cb, cpumask_t *span,
+>> -                bool milliwatts);
+>> +                bool microwatts);
+>>   void em_dev_unregister_perf_domain(struct device *dev);
+>>   /**
+>> @@ -273,7 +304,7 @@ static inline unsigned long em_cpu_energy(struct 
+>> em_perf_domain *pd,
+>>        *   pd_nrg = ------------------------                       (4)
+>>        *                  scale_cpu
+>>        */
+>> -    return ps->cost * sum_util / scale_cpu;
+>> +    return em_estimate_energy(ps->cost, sum_util, scale_cpu);
+>>   }
+>>   /**
+>> @@ -297,7 +328,7 @@ struct em_data_callback {};
+>>   static inline
+>>   int em_dev_register_perf_domain(struct device *dev, unsigned int 
+>> nr_states,
+>>                   struct em_data_callback *cb, cpumask_t *span,
+>> -                bool milliwatts)
+>> +                bool microwatts)
+>>   {
+>>       return -EINVAL;
+>>   }
+>> diff --git a/kernel/power/energy_model.c b/kernel/power/energy_model.c
+>> index 6c373f2960e7..910668ec8838 100644
+>> --- a/kernel/power/energy_model.c
+>> +++ b/kernel/power/energy_model.c
+>> @@ -108,10 +108,11 @@ static void em_debug_remove_pd(struct device 
+>> *dev) {}
+>>   static int em_create_perf_table(struct device *dev, struct 
+>> em_perf_domain *pd,
+>>                   int nr_states, struct em_data_callback *cb,
+>> -                unsigned long flags)
+>> +                unsigned long flags, int num_devs)
+>>   {
+>>       unsigned long power, freq, prev_freq = 0, prev_cost = ULONG_MAX;
+>>       struct em_perf_state *table;
+>> +    unsigned long max_cost = 0;
+>>       int i, ret;
+>>       u64 fmax;
+>> @@ -145,7 +146,7 @@ static int em_create_perf_table(struct device 
+>> *dev, struct em_perf_domain *pd,
+>>           /*
+>>            * The power returned by active_state() is expected to be
+>> -         * positive and to fit into 16 bits.
+>> +         * positive and be in range.
+>>            */
+>>           if (!power || power > EM_MAX_POWER) {
+>>               dev_err(dev, "EM: invalid power: %lu\n",
+>> @@ -170,7 +171,7 @@ static int em_create_perf_table(struct device 
+>> *dev, struct em_perf_domain *pd,
+>>                   goto free_ps_table;
+>>               }
+>>           } else {
+>> -            power_res = em_scale_power(table[i].power);
+>> +            power_res = table[i].power;
+>>               cost = div64_u64(fmax * power_res, table[i].frequency);
+>>           }
+>> @@ -183,6 +184,15 @@ static int em_create_perf_table(struct device 
+>> *dev, struct em_perf_domain *pd,
+>>           } else {
+>>               prev_cost = table[i].cost;
+>>           }
+>> +
+>> +        if (max_cost < table[i].cost)
+>> +            max_cost = table[i].cost;
+>> +    }
+>> +
+>> +    /* Check if it won't overflow during energy estimation. */
+>> +    if (em_validate_cost(max_cost, num_devs)) {
+> 
+> I'm not finding the em_validate_cost() function
+
+It's in the energy_model.h
+
+> 
+>> +        dev_err(dev, "EM: too big 'cost' value: %lu\n",    max_cost);
+>> +        goto free_ps_table;
+>>       }
+>>       pd->table = table;
+>> @@ -199,9 +209,9 @@ static int em_create_pd(struct device *dev, int 
+>> nr_states,
+>>               struct em_data_callback *cb, cpumask_t *cpus,
+>>               unsigned long flags)
+>>   {
+>> +    int cpu, ret, num_devs = 1;
+>>       struct em_perf_domain *pd;
+>>       struct device *cpu_dev;
+>> -    int cpu, ret;
+>>       if (_is_cpu_device(dev)) {
+>>           pd = kzalloc(sizeof(*pd) + cpumask_size(), GFP_KERNEL);
+>> @@ -209,13 +219,14 @@ static int em_create_pd(struct device *dev, int 
+>> nr_states,
+>>               return -ENOMEM;
+>>           cpumask_copy(em_span_cpus(pd), cpus);
+>> +        num_devs = cpumask_weight(cpus);
+> 
+> Why is this change needed ? What is the connection with the uW unit 
+> change ?
+
+We support 32bit arch still with the 'unsigned long power' variable,
+but we would store e.g. 1.2 Watts there as:
+power = 1200000 // 0x124f80
+not
+power = 1200 // 0x4b0
+
+This would use > 20bits as you can see. We then calculate:
+cost_i = power_i * fmax / freq_i
+which is used by EAS.
+
+The value from the 'cost' is used for calculating energy in EAS:
+
+unsigned long energy = (cost * sum_utilization) / cpu_arch_capacity
+OR on 32bit machines:
+unsigned long energy = (cost / cpu_arch_capacity) * sum_utilization
+
+We cannot overflow in any use case. The 'num_devs' is part of this
+mechanism. as you can see in this example for 32bit:
+max_possible_cost_for_fmax = 64000000 //64Watts
+energy = (64000000 / cpu_arch_capacity) * (num_cpus * 
+max_cpu_utilization) =>
+// assume: cpu_arch_capacity == max_cpu_utilization is true
+unsigned long energy = 64000000 * num_cpus
+Then question:
+Q: how many cpus you can have to not overflow?
+A: depends on your max_power and then 'cost'
+In the above example:
+num_cpus must be < 68
+
+I can simplify this to just put a new define for 32bit
+machines like num_cpus=16 for safety:
+
+#ifdef CONFIG_64BIT
+#define EM_MAX_NUM_CPUS UINT_MAX
+#else
+#define EM_MAX_NUM_CPUS 16 /*we don't expect more than that */
+
+Then there is no need to modify that calculation function
+em_create_perf_table()
+
+The more I look at this the more I'm convinced to do that...
+
+In the old code, the power value had limit to 16bits, the num_cpus
+also had limit IIRC to 16bit, thus multiplication wasn't a problem.
+
 
 
