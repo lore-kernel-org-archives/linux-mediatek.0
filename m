@@ -4,99 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C646C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 08:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8998EC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 08:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NqXzjmPYyKxRNJu+3EE3ctlFFdR9chxtKAJZd/jje28=; b=yabDo/O2PuuQljBa8fIlDvrS0Z
-	1G35lF+sp99VojS0zWFR8x+zY3d61V4JoQMqbLEv56qLxdia3jn/JFyDtOsL+HCPcynLseZFZ0ay/
-	pS9H5218cGBOR31M855tVNZ4vbZYZC1SPku+1BL4Nl0Sp+P2BOIw+0uPu2WEu5hcPtDGX74XtjCtG
-	tWR5biKL/rHxE3NyboWvwz76yEC035hRjb2FgO2k8BR4yybrQ7XJ+UfZXyvbzw4oDH1NpJftEIZ9p
-	0W99l/5FV7kzrpQbZVnsqKLC4T9WqNXffAH9lw6axYIFPzgLwzl5YQirJ9sI6C3Fwa9T2kX2rNvza
-	OpFW0xCQ==;
+	bh=YjVd886B5QcZWMWidMOnwPUQ+kcHBzZvehnO6j/gx2k=; b=MAyL+WGRB159tGMrLoc2MsM3TQ
+	VkRrE7cQaPs/LyNCDYL6L51Tkqb7u/t1Gk1VUFbo2Wwe86fUPv6PNqv5fmrJMYTGpZhnEKddXNWjg
+	pvWgOD739+cGZHa4bEyJ8XUqWVknuk9SxuXQhYdkA9TFxIHXTlkotMacarwLkHcyMlkijgR0hA9HK
+	HvFr3wMXgp94ts3NUNp8uPGPSNvtt8mWlq/KwqwMV9E75GIyD1WrZeUnS5B5xIxXaBaSyvNcQB9rt
+	eHYAjFHhXtbJLnlu6pNw4xZbO0fLZsPWiNHiPIPgnyyDHPMnXUzjeXC5rcySvatOylNCXAoL1Q48P
+	negIMJZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90Fc-007KIT-7n; Wed, 06 Jul 2022 08:19:12 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1o90GK-007KYl-IP; Wed, 06 Jul 2022 08:19:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90FR-007KD0-9L
-	for linux-mediatek@lists.infradead.org; Wed, 06 Jul 2022 08:19:03 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id y14-20020a17090a644e00b001ef775f7118so11204781pjm.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Jul 2022 01:18:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=NqXzjmPYyKxRNJu+3EE3ctlFFdR9chxtKAJZd/jje28=;
-        b=bWOaqY+oD2MoE3bAUV542QSF69+/YjuH0KSMBb93mlMaBM9SkSmw4M/Eww9Etumq5w
-         EOz3wwH/DGCSmEMW8iBWuf6FNTZ5/Vg7Xyn1l5OCy3/kPWAjkm0f5TNUF9drdXooTFnN
-         3cY3fZIlG0yoD7TV4lcYVrGkY5FHaz0brIDCRxm8Tw7TOtmIQznTH0n745mku1l4xq1N
-         W+DRfuLqtIaM+4SSZA96/icF6VqKypcjJbRe7pEe6DluRxl4nFz35WQ0r6u6qgnyb+ZM
-         TWW/sNIMvXN2gqStPI8Cr/1LpN6CA9PWIfEB3EYHy5DTP/kVF3sBKRylLRrm0gtE3dx9
-         f0zA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=NqXzjmPYyKxRNJu+3EE3ctlFFdR9chxtKAJZd/jje28=;
-        b=E/eHltH9u6DZEFRYw3XIiIAtDZNdyyexT8D4C6k44EtV+tkqak0zRfnGA8WUrJK/uX
-         5h75Xsl+lyvZazkm0pxkJPmIoyS11K9VJk68Nx6suI2nGRo/9Tx2sic6ruCAConX+YRE
-         me2nBSCFM4FEo1U9Ib2dc+YgrHuOpUdIa030RYrNvEShXswwA7LYMjuhXpVwtC29Bjir
-         RlOYbsIblErqhpH1hZukK8txgROQ2KNUs9UTFOLVmMIBXKMCVf9YsbZ02R6f6dULtcqm
-         9AgvVK+kq+BWYCH5tue/AbwBLvQsQzQ9Sdio/XcoHRJ9nTaJN/loGYRwOkFs6kqvahso
-         Tazg==
-X-Gm-Message-State: AJIora/AQRJ4vGGOqIFXqrJRnEW30gredOfI9U+EkBnGNm4BbcNQ6P8v
-	+FwXukJdybZE9feIodwkIJXjhw==
-X-Google-Smtp-Source: AGRyM1vt9yUrP6MoG5193YDPSXa0cl6x1FFMtkPhXDvjGRGTz4KSpoNBOFHZ2yK8hfpclXRzbZO0qA==
-X-Received: by 2002:a17:90b:1bc5:b0:1ee:9563:2fca with SMTP id oa5-20020a17090b1bc500b001ee95632fcamr46186864pjb.87.1657095538233;
-        Wed, 06 Jul 2022 01:18:58 -0700 (PDT)
-Received: from localhost ([122.171.18.80])
-        by smtp.gmail.com with ESMTPSA id k8-20020a170902c40800b0016bf2dc1724sm3158688plk.247.2022.07.06.01.18.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Jul 2022 01:18:57 -0700 (PDT)
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Viresh Kumar <viresh.kumar@linaro.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Qiang Yu <yuq825@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Tomeu Vizoso <tomeu.vizoso@collabora.com>,
-	Steven Price <steven.price@arm.com>,
-	Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
-	Nishanth Menon <nm@ti.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-kernel@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	lima@lists.freedesktop.org,
-	linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH V3.1 02/20] OPP: Make dev_pm_opp_set_regulators() accept NULL terminated list
-Date: Wed,  6 Jul 2022 13:48:51 +0530
-Message-Id: <bcabb1a90a5158628ee1633c10f8886544723fb9.1657095331.git.viresh.kumar@linaro.org>
-X-Mailer: git-send-email 2.31.1.272.g89b43f80a514
-In-Reply-To: <9730e011004b7526e79c6f409f5147fb235b414a.1656935522.git.viresh.kumar@linaro.org>
-References: <9730e011004b7526e79c6f409f5147fb235b414a.1656935522.git.viresh.kumar@linaro.org>
+	id 1o90G5-007KTP-Om; Wed, 06 Jul 2022 08:19:44 +0000
+X-UUID: e71d72acd29a441496a27d443468defc-20220706
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:32914785-5b88-47d5-a3e9-8db0217bb1e1,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:1e3fb086-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: e71d72acd29a441496a27d443468defc-20220706
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1348715643; Wed, 06 Jul 2022 01:19:38 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 6 Jul 2022 15:39:02 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 6 Jul 2022 15:39:02 +0800
+Message-ID: <ed97563a3139e711d2d93d9567d8cd2bd9ebfdd4.camel@mediatek.com>
+Subject: Re: [PATCH v20 3/4] arm64: dts: mt8183: add Mediatek MDP3 nodes
+From: moudy.ho <moudy.ho@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, daoyuan huang
+	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+	<randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
+	<roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>
+Date: Wed, 6 Jul 2022 15:39:02 +0800
+In-Reply-To: <d76f77e50adbf44afbb1c32d8b30c7ee543beafb.camel@mediatek.com>
+References: <20220630091408.6438-1-moudy.ho@mediatek.com>
+	 <20220630091408.6438-4-moudy.ho@mediatek.com>
+	 <d76f77e50adbf44afbb1c32d8b30c7ee543beafb.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_011901_360753_7784F0B6 
-X-CRM114-Status: GOOD (  23.89  )
+X-CRM114-CacheID: sfid-20220706_011941_844745_35763805 
+X-CRM114-Status: GOOD (  19.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,278 +93,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make dev_pm_opp_set_regulators() accept a NULL terminated list of names
-instead of making the callers keep the two parameters in sync, which
-creates an opportunity for bugs to get in.
+On Mon, 2022-07-04 at 11:52 +0800, CK Hu wrote:
+> Hi, Moudy:
+> 
+> On Thu, 2022-06-30 at 17:14 +0800, Moudy Ho wrote:
+> > Add device nodes for Media Data Path 3 (MDP3) modules.
+> > 
+> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 79
+> > +++++++++++++++++++++++-
+> >  1 file changed, 78 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index 9485c1efc87c..938f0c4b7525 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -1691,6 +1691,50 @@
+> >  			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0 0x1000>;
+> >  		};
+> >  
+> > +		mdp3-rdma0@14001000 {
+> > +			compatible = "mediatek,mt8183-mdp3-rdma";
+> > +			reg = <0 0x14001000 0 0x1000>;
+> > +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0x1000 0x1000>;
+> > +			power-domains = <&spm
+> > MT8183_POWER_DOMAIN_DISP>;
+> > +			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+> > +				 <&mmsys CLK_MM_MDP_RSZ1>;
+> > +			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+> > +			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
+> > +				 <&gce 21 CMDQ_THR_PRIO_LOWEST 0>;
+> > +		};
+> > +
+> > +		mdp3-rsz0@14003000 {
+> > +			compatible = "mediatek,mt8183-mdp3-rsz";
+> > +			reg = <0 0x14003000 0 0x1000>;
+> > +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0x3000 0x1000>;
+> > +			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
+> > +		};
+> > +
+> > +		mdp3-rsz1@14004000 {
+> > +			compatible = "mediatek,mt8183-mdp3-rsz";
+> > +			reg = <0 0x14004000 0 0x1000>;
+> > +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0x4000 0x1000>;
+> > +			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
+> > +		};
+> > +
+> > +		mdp3-wrot0@14005000 {
+> > +			compatible = "mediatek,mt8183-mdp3-wrot";
+> > +			reg = <0 0x14005000 0 0x1000>;
+> > +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0x5000 0x1000>;
+> > +			power-domains = <&spm
+> > MT8183_POWER_DOMAIN_DISP>;
+> > +			clocks = <&mmsys CLK_MM_MDP_WROT0>;
+> > +			iommus = <&iommu M4U_PORT_MDP_WROT0>;
+> > +		};
+> > +
+> > +		mdp3-wdma@14006000 {
+> > +			compatible = "mediatek,mt8183-mdp3-wdma";
+> > +			reg = <0 0x14006000 0 0x1000>;
+> > +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX
+> > 0x6000 0x1000>;
+> > +			power-domains = <&spm
+> > MT8183_POWER_DOMAIN_DISP>;
+> > +			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
+> > +			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
+> > +		};
+> > +
+> >  		ovl0: ovl@14008000 {
+> >  			compatible = "mediatek,mt8183-disp-ovl";
+> >  			reg = <0 0x14008000 0 0x1000>;
+> > @@ -1809,7 +1853,33 @@
+> >  			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
+> >  			power-domains = <&spm
+> > MT8183_POWER_DOMAIN_DISP>;
+> >  			mediatek,gce-events =
+> > <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
+> > -					      <CMDQ_EVENT_MUTEX_STREAM_
+> > DONE1>;
+> > +					      <CMDQ_EVENT_MUTEX_STREAM_
+> > DONE1>,
+> > +					      <CMDQ_EVENT_MDP_RDMA0_SOF
+> > > ,
+> > 
+> > +					      <CMDQ_EVENT_MDP_RDMA0_EOF
+> > > ,
+> 
+> This event is sent from MDP_RDMA0 to GCE, so move this event to
+> MDP_RDMA0 node.
+> 
+> > +					      <CMDQ_EVENT_MDP_RSZ0_SOF>
+> > ,
+> > +					      <CMDQ_EVENT_MDP_RSZ1_SOF>
+> > ,
+> > +					      <CMDQ_EVENT_MDP_TDSHP_SOF
+> > > ,
+> > 
+> > +					      <CMDQ_EVENT_MDP_WROT0_SOF
+> > > ,
+> > 
+> > +					      <CMDQ_EVENT_MDP_WROT0_EOF
+> > > ,
+> > 
+> > +					      <CMDQ_EVENT_MDP_WDMA0_SOF
+> > > ,
+> > 
+> > +					      <CMDQ_EVENT_MDP_WDMA0_EOF
+> > > ,
+> 
+> This event is sent from MDP_WDMA0 to GCE, so move this event to
+> MDP_WDMA0 node.
+> 
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_0>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_1>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_2>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_3>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_4>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_5>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_6>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_7>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_8>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_9>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_10>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_11>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_12>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_13>,
+> > +					      <CMDQ_EVENT_ISP_FRAME_DON
+> > E_P2_14>,
+> > +					      <CMDQ_EVENT_WPE_A_DONE>,
+> 
+> This event is sent from WPE_A to GCE, so move this event to WPE_A
+> node.
+> 
+> Regards,
+> CK
+> 
 
-Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
-V3->V3.1:
-- Update panfrost_drv.c to include the NULL element.
+Hi CK,
 
- drivers/cpufreq/cpufreq-dt.c                |  9 ++++-----
- drivers/cpufreq/ti-cpufreq.c                |  7 +++----
- drivers/devfreq/exynos-bus.c                |  4 ++--
- drivers/gpu/drm/lima/lima_devfreq.c         |  3 ++-
- drivers/gpu/drm/panfrost/panfrost_devfreq.c |  3 +--
- drivers/gpu/drm/panfrost/panfrost_drv.c     | 15 ++++++++++-----
- drivers/opp/core.c                          | 18 ++++++++++++------
- drivers/soc/tegra/pmc.c                     |  4 ++--
- include/linux/pm_opp.h                      |  9 ++++-----
- 9 files changed, 40 insertions(+), 32 deletions(-)
+Thanks for the reminder, I'll move all the events to the corresponding
+node ad suggested.
 
-diff --git a/drivers/cpufreq/cpufreq-dt.c b/drivers/cpufreq/cpufreq-dt.c
-index 8fcaba541539..be0c19b3ffa5 100644
---- a/drivers/cpufreq/cpufreq-dt.c
-+++ b/drivers/cpufreq/cpufreq-dt.c
-@@ -193,7 +193,7 @@ static int dt_cpufreq_early_init(struct device *dev, int cpu)
- 	struct private_data *priv;
- 	struct device *cpu_dev;
- 	bool fallback = false;
--	const char *reg_name;
-+	const char *reg_name[] = { NULL, NULL };
- 	int ret;
- 
- 	/* Check if this CPU is already covered by some other policy */
-@@ -218,10 +218,9 @@ static int dt_cpufreq_early_init(struct device *dev, int cpu)
- 	 * OPP layer will be taking care of regulators now, but it needs to know
- 	 * the name of the regulator first.
- 	 */
--	reg_name = find_supply_name(cpu_dev);
--	if (reg_name) {
--		priv->opp_table = dev_pm_opp_set_regulators(cpu_dev, &reg_name,
--							    1);
-+	reg_name[0] = find_supply_name(cpu_dev);
-+	if (reg_name[0]) {
-+		priv->opp_table = dev_pm_opp_set_regulators(cpu_dev, reg_name);
- 		if (IS_ERR(priv->opp_table)) {
- 			ret = PTR_ERR(priv->opp_table);
- 			if (ret != -EPROBE_DEFER)
-diff --git a/drivers/cpufreq/ti-cpufreq.c b/drivers/cpufreq/ti-cpufreq.c
-index 8f9fdd864391..560d67a6bef1 100644
---- a/drivers/cpufreq/ti-cpufreq.c
-+++ b/drivers/cpufreq/ti-cpufreq.c
-@@ -173,7 +173,7 @@ static struct ti_cpufreq_soc_data omap34xx_soc_data = {
-  *    seems to always read as 0).
-  */
- 
--static const char * const omap3_reg_names[] = {"cpu0", "vbb"};
-+static const char * const omap3_reg_names[] = {"cpu0", "vbb", NULL};
- 
- static struct ti_cpufreq_soc_data omap36xx_soc_data = {
- 	.reg_names = omap3_reg_names,
-@@ -326,7 +326,7 @@ static int ti_cpufreq_probe(struct platform_device *pdev)
- 	const struct of_device_id *match;
- 	struct opp_table *ti_opp_table;
- 	struct ti_cpufreq_data *opp_data;
--	const char * const default_reg_names[] = {"vdd", "vbb"};
-+	const char * const default_reg_names[] = {"vdd", "vbb", NULL};
- 	int ret;
- 
- 	match = dev_get_platdata(&pdev->dev);
-@@ -387,8 +387,7 @@ static int ti_cpufreq_probe(struct platform_device *pdev)
- 		if (opp_data->soc_data->reg_names)
- 			reg_names = opp_data->soc_data->reg_names;
- 		ti_opp_table = dev_pm_opp_set_regulators(opp_data->cpu_dev,
--							 reg_names,
--							 ARRAY_SIZE(default_reg_names));
-+							 reg_names);
- 		if (IS_ERR(ti_opp_table)) {
- 			dev_pm_opp_put_supported_hw(opp_data->opp_table);
- 			ret =  PTR_ERR(ti_opp_table);
-diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
-index e689101abc93..541baff93ee8 100644
---- a/drivers/devfreq/exynos-bus.c
-+++ b/drivers/devfreq/exynos-bus.c
-@@ -180,10 +180,10 @@ static int exynos_bus_parent_parse_of(struct device_node *np,
- {
- 	struct device *dev = bus->dev;
- 	struct opp_table *opp_table;
--	const char *vdd = "vdd";
-+	const char *supplies[] = { "vdd", NULL };
- 	int i, ret, count, size;
- 
--	opp_table = dev_pm_opp_set_regulators(dev, &vdd, 1);
-+	opp_table = dev_pm_opp_set_regulators(dev, supplies);
- 	if (IS_ERR(opp_table)) {
- 		ret = PTR_ERR(opp_table);
- 		dev_err(dev, "failed to set regulators %d\n", ret);
-diff --git a/drivers/gpu/drm/lima/lima_devfreq.c b/drivers/gpu/drm/lima/lima_devfreq.c
-index 8989e215dfc9..dc83c5421125 100644
---- a/drivers/gpu/drm/lima/lima_devfreq.c
-+++ b/drivers/gpu/drm/lima/lima_devfreq.c
-@@ -111,6 +111,7 @@ int lima_devfreq_init(struct lima_device *ldev)
- 	struct dev_pm_opp *opp;
- 	unsigned long cur_freq;
- 	int ret;
-+	const char *regulator_names[] = { "mali", NULL };
- 
- 	if (!device_property_present(dev, "operating-points-v2"))
- 		/* Optional, continue without devfreq */
-@@ -122,7 +123,7 @@ int lima_devfreq_init(struct lima_device *ldev)
- 	if (ret)
- 		return ret;
- 
--	ret = devm_pm_opp_set_regulators(dev, (const char *[]){ "mali" }, 1);
-+	ret = devm_pm_opp_set_regulators(dev, regulator_names);
- 	if (ret) {
- 		/* Continue if the optional regulator is missing */
- 		if (ret != -ENODEV)
-diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-index 194af7f607a6..5110cd9b2425 100644
---- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-@@ -101,8 +101,7 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
- 		return 0;
- 	}
- 
--	ret = devm_pm_opp_set_regulators(dev, pfdev->comp->supply_names,
--					 pfdev->comp->num_supplies);
-+	ret = devm_pm_opp_set_regulators(dev, pfdev->comp->supply_names);
- 	if (ret) {
- 		/* Continue if the optional regulator is missing */
- 		if (ret != -ENODEV) {
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 7fcbc2a5b6cd..8a4bef65d38c 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -625,24 +625,29 @@ static int panfrost_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--static const char * const default_supplies[] = { "mali" };
-+/*
-+ * The OPP core wants the supply names to be NULL terminated, but we need the
-+ * correct num_supplies value for regulator core. Hence, we NULL terminate here
-+ * and then initialize num_supplies with ARRAY_SIZE - 1.
-+ */
-+static const char * const default_supplies[] = { "mali", NULL };
- static const struct panfrost_compatible default_data = {
--	.num_supplies = ARRAY_SIZE(default_supplies),
-+	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
- 	.supply_names = default_supplies,
- 	.num_pm_domains = 1, /* optional */
- 	.pm_domain_names = NULL,
- };
- 
- static const struct panfrost_compatible amlogic_data = {
--	.num_supplies = ARRAY_SIZE(default_supplies),
-+	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
- 	.supply_names = default_supplies,
- 	.vendor_quirk = panfrost_gpu_amlogic_quirk,
- };
- 
--static const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
-+static const char * const mediatek_mt8183_supplies[] = { "mali", "sram", NULL };
- static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
- static const struct panfrost_compatible mediatek_mt8183_data = {
--	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies),
-+	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies) - 1,
- 	.supply_names = mediatek_mt8183_supplies,
- 	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
- 	.pm_domain_names = mediatek_mt8183_pm_domains,
-diff --git a/drivers/opp/core.c b/drivers/opp/core.c
-index e166bfe5fc90..4e4593957ec5 100644
---- a/drivers/opp/core.c
-+++ b/drivers/opp/core.c
-@@ -2105,13 +2105,20 @@ EXPORT_SYMBOL_GPL(dev_pm_opp_put_prop_name);
-  * This must be called before any OPPs are initialized for the device.
-  */
- struct opp_table *dev_pm_opp_set_regulators(struct device *dev,
--					    const char * const names[],
--					    unsigned int count)
-+					    const char * const names[])
- {
- 	struct dev_pm_opp_supply *supplies;
-+	const char * const *temp = names;
- 	struct opp_table *opp_table;
- 	struct regulator *reg;
--	int ret, i;
-+	int count = 0, ret, i;
-+
-+	/* Count number of regulators */
-+	while (*temp++)
-+		count++;
-+
-+	if (!count)
-+		return ERR_PTR(-EINVAL);
- 
- 	opp_table = _add_opp_table(dev, false);
- 	if (IS_ERR(opp_table))
-@@ -2236,12 +2243,11 @@ static void devm_pm_opp_regulators_release(void *data)
-  * Return: 0 on success and errorno otherwise.
-  */
- int devm_pm_opp_set_regulators(struct device *dev,
--			       const char * const names[],
--			       unsigned int count)
-+			       const char * const names[])
- {
- 	struct opp_table *opp_table;
- 
--	opp_table = dev_pm_opp_set_regulators(dev, names, count);
-+	opp_table = dev_pm_opp_set_regulators(dev, names);
- 	if (IS_ERR(opp_table))
- 		return PTR_ERR(opp_table);
- 
-diff --git a/drivers/soc/tegra/pmc.c b/drivers/soc/tegra/pmc.c
-index 5611d14d3ba2..6a4b8f7e7948 100644
---- a/drivers/soc/tegra/pmc.c
-+++ b/drivers/soc/tegra/pmc.c
-@@ -1384,7 +1384,7 @@ tegra_pmc_core_pd_opp_to_performance_state(struct generic_pm_domain *genpd,
- static int tegra_pmc_core_pd_add(struct tegra_pmc *pmc, struct device_node *np)
- {
- 	struct generic_pm_domain *genpd;
--	const char *rname = "core";
-+	const char *rname[] = { "core", NULL};
- 	int err;
- 
- 	genpd = devm_kzalloc(pmc->dev, sizeof(*genpd), GFP_KERNEL);
-@@ -1395,7 +1395,7 @@ static int tegra_pmc_core_pd_add(struct tegra_pmc *pmc, struct device_node *np)
- 	genpd->set_performance_state = tegra_pmc_core_pd_set_performance_state;
- 	genpd->opp_to_performance_state = tegra_pmc_core_pd_opp_to_performance_state;
- 
--	err = devm_pm_opp_set_regulators(pmc->dev, &rname, 1);
-+	err = devm_pm_opp_set_regulators(pmc->dev, rname);
- 	if (err)
- 		return dev_err_probe(pmc->dev, err,
- 				     "failed to set core OPP regulator\n");
-diff --git a/include/linux/pm_opp.h b/include/linux/pm_opp.h
-index 6708b4ec244d..4c490865d574 100644
---- a/include/linux/pm_opp.h
-+++ b/include/linux/pm_opp.h
-@@ -159,9 +159,9 @@ void dev_pm_opp_put_supported_hw(struct opp_table *opp_table);
- int devm_pm_opp_set_supported_hw(struct device *dev, const u32 *versions, unsigned int count);
- struct opp_table *dev_pm_opp_set_prop_name(struct device *dev, const char *name);
- void dev_pm_opp_put_prop_name(struct opp_table *opp_table);
--struct opp_table *dev_pm_opp_set_regulators(struct device *dev, const char * const names[], unsigned int count);
-+struct opp_table *dev_pm_opp_set_regulators(struct device *dev, const char * const names[]);
- void dev_pm_opp_put_regulators(struct opp_table *opp_table);
--int devm_pm_opp_set_regulators(struct device *dev, const char * const names[], unsigned int count);
-+int devm_pm_opp_set_regulators(struct device *dev, const char * const names[]);
- struct opp_table *dev_pm_opp_set_clkname(struct device *dev, const char *name);
- void dev_pm_opp_put_clkname(struct opp_table *opp_table);
- int devm_pm_opp_set_clkname(struct device *dev, const char *name);
-@@ -379,7 +379,7 @@ static inline struct opp_table *dev_pm_opp_set_prop_name(struct device *dev, con
- 
- static inline void dev_pm_opp_put_prop_name(struct opp_table *opp_table) {}
- 
--static inline struct opp_table *dev_pm_opp_set_regulators(struct device *dev, const char * const names[], unsigned int count)
-+static inline struct opp_table *dev_pm_opp_set_regulators(struct device *dev, const char * const names[])
- {
- 	return ERR_PTR(-EOPNOTSUPP);
- }
-@@ -387,8 +387,7 @@ static inline struct opp_table *dev_pm_opp_set_regulators(struct device *dev, co
- static inline void dev_pm_opp_put_regulators(struct opp_table *opp_table) {}
- 
- static inline int devm_pm_opp_set_regulators(struct device *dev,
--					     const char * const names[],
--					     unsigned int count)
-+					     const char * const names[])
- {
- 	return -EOPNOTSUPP;
- }
--- 
-2.31.1.272.g89b43f80a514
+Regards,
+Moudy
+> > +					      <CMDQ_EVENT_SPE_B_DONE>;
+> >  			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX
+> > 0x6000 0x1000>;
+> >  		};
+> >  
+> > @@ -1834,6 +1904,13 @@
+> >  			power-domains = <&spm
+> > MT8183_POWER_DOMAIN_DISP>;
+> >  		};
+> >  
+> > +		mdp3-ccorr@1401c000 {
+> > +			compatible = "mediatek,mt8183-mdp3-ccorr";
+> > +			reg = <0 0x1401c000 0 0x1000>;
+> > +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX
+> > 0xc000 0x1000>;
+> > +			clocks = <&mmsys CLK_MM_MDP_CCORR>;
+> > +		};
+> > +
+> >  		imgsys: syscon@15020000 {
+> >  			compatible = "mediatek,mt8183-imgsys",
+> > "syscon";
+> >  			reg = <0 0x15020000 0 0x1000>;
+> 
+> 
 
 
