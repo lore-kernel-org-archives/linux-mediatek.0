@@ -4,95 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D335FC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 10:37:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07C1C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 10:37:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SjRmVROgCVCrD68mnMllqSYMo0WntjWjA9LHp6o9oqA=; b=pgMeXnuAttZgC1x4IrpDB0/WzL
-	+K2PJqJfNkEHr1/vzrVEbovjgh5IZRWBMJ7cuRRluWHIL0la67E7GP5FZkGtfcnxakm9Qfm+hZVyH
-	7kybY8HCHPHNxC7NbxOjweLiJcziKeRwga0MxyoAQMf0NvBzovtd9AAVO2jCZMALoVkAfvG3GVVyg
-	prmsmQPbC9jPJ75pQiuBMmma11AMN1i9ZPV6Y3AApZ+T4V5yj4rc5M5Fo9CBUVxPfMYSOQUntmMsJ
-	vd6Z6tcKW/PbO4CqMHEeLjXMUOaFI6NgvE542Ch255RJRfQiAcLSXuVIS+JAld3Ub3gY7dpPoZc03
-	/2qefo2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=M+d0sFVIGh3BAb5DoIc3hEMMrIrYnc8CV7N9dbREBHY=; b=prNp8VoAb8FGmcf/NGob61pNhz
+	weUTS4Opgk1pN7/c7Wa3N6R0moLwT34+et1R1MsfOdRuk/FDrTE37zbTKSN9wS7Ay9Uy6i9l/v+zQ
+	PHBk5FLfZSrdD2P+bKeLKqBDLXFYmwlGVAOMf88GVt8zYjSV20MuDNSC1ZbVkmicTxjewWfw4Ta7/
+	c1EHQ4kfipI21YzYyLdQtYvnKYYEdYhbMwbc3kIAP+KSJGZyIVezlNWIXfFt6Jme/yygZI9ZmoNPx
+	c1yhkGEbAZ/KZJjx9mUr3YG9Bpd8rSYXo/ARbbGhkfIkUrYwHVDkCPr/FJGbrOXczc35jSa+4MSc7
+	/+XFq0nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o92PK-008duN-Et; Wed, 06 Jul 2022 10:37:22 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1o92Pj-008eZP-VK; Wed, 06 Jul 2022 10:37:48 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o92Em-008ScM-MV; Wed, 06 Jul 2022 10:26:30 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id q6so26232361eji.13;
-        Wed, 06 Jul 2022 03:26:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=SjRmVROgCVCrD68mnMllqSYMo0WntjWjA9LHp6o9oqA=;
-        b=h452JCJnpG7zK1uEExxGDG1FY4Hi8dSeNLe1kHcxTsFX4KW+GQOfDktDGUWDlvzn8+
-         KFs53/28jO+EcrGpZE/lAigEIpSL29aYT4vl2tVBb7tPgmNF9V5W/pCIoWRmtUvcXPRG
-         AzgMPQNFOF8+m1TCzBV0ptAu/kpEFHUcEn6qSqTpPTU6kKwyaEIocypEW7TpULcEvDwe
-         sHH4UjWMGX1/cTWXz7LwBKz+eLB2cUuEHqxjvyswRi3ARvO7SuscsBKrN2hwqIlHQPmg
-         e3at6kDn8WVtg5QxYJGj+S1nlY70le1uFqmt5iMMOXQ/uSGq7v370lGVA8G6DBrqzcnn
-         H4XQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=SjRmVROgCVCrD68mnMllqSYMo0WntjWjA9LHp6o9oqA=;
-        b=JQCegfbdt1qkbIZBT5Gl5SCpfVa97nFyly/UMMETG90NqnDZi9Nb7LVTqVPT3/84NQ
-         gKICgI6Pa+vgUxpacLNYMCqmWT7FJ1hzM5xeSZ+b9tznfR5DuUwkT8fDlBQ5AFsZc/YS
-         D/GBw94LNfitLp7j5FoTCtK/qhRyBrGfZL4sPtgp967BmWeJTuotc00ItnQkJQxx/azg
-         N+ywF/2zr/0cZtkTSF3SzGBcMcimLzrWVsGOo0U5A0fAkyhKsFHSp3Wb4zhGgJxvGpNm
-         rLK2RJAFXEy8666dTmZj54mFjeWl5trXH8uLB16nibZC0Oyv8uM59n/2GW1Dz8iGGjuQ
-         POgQ==
-X-Gm-Message-State: AJIora9DFCGgxftMH3PvMqx8DnRHq0hAqUwXNchSukfSq9Qk7VMuxY8S
-	EBL3FYYLdQOyE5v2yLSQ2R8=
-X-Google-Smtp-Source: AGRyM1uku0il88KlzBKlOIlDgPqYgrK6xuOSEqnGuVCo1KHCmKWAVPGNlq/47Q03sMFpOBjdzU1G9g==
-X-Received: by 2002:a17:907:7e81:b0:726:2912:7467 with SMTP id qb1-20020a1709077e8100b0072629127467mr38178464ejc.373.1657103185019;
-        Wed, 06 Jul 2022 03:26:25 -0700 (PDT)
-Received: from skbuf ([188.26.185.61])
-        by smtp.gmail.com with ESMTPSA id p4-20020a056402154400b0043a46f5fb82sm7370964edx.73.2022.07.06.03.26.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Jul 2022 03:26:23 -0700 (PDT)
-Date: Wed, 6 Jul 2022 13:26:21 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin __ipraga <alsi@bang-olufsen.dk>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
+	id 1o92Fz-008TJ7-OP; Wed, 06 Jul 2022 10:27:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=M+d0sFVIGh3BAb5DoIc3hEMMrIrYnc8CV7N9dbREBHY=; b=g7yIc6l7ooEwLgjMN6a6paMUMl
+	ZXAYkIGn3J+bjg6QoYHem0JfwgNNQ2ULC14bXItbfCvswDochgDO2NM0+oQM1Cue6YuRMr7rLINxb
+	yxvM/27bEdiomitW4mAMJqfRUaZ9iso9XkXFx7DkWshm2GB71leWNiXmFRF2RlsmG8w/u/IcLxfnr
+	iDXfYkuV40z+KWi/MQvDKA9l3jVSqGVyzGH0mROxXxOHg2gbS8jQQMdDZyaDeEFjJJxXtw7impH5N
+	Q1c58JBg6HOrkeNU8ocLMAkZ2cVKGoVWdVsy83iU1NZKT7c8B7YcGaNIK3kEoLOu67vM4b8LvP0dN
+	7A6+BPgg==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o920J-000QTQ-I2; Wed, 06 Jul 2022 10:11:38 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D3DE566019AB;
+	Wed,  6 Jul 2022 11:11:29 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657102290;
+	bh=Xhl1Ow9x+DfI22vAa93ClvjHOF/I+FiiBOeSds25YTo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=krrLDBECxk0hdNlHvDKeZS2C+hDOHY3M44vURPYvwp1rLnnRGpRQn9y7VE/oW+IeX
+	 DhyIlEzxzCla5C9R4zyXioRvvUd8Ix+mmOsj7kBV11kMKbx2h9GS1jq7eRzRgOURoq
+	 iSySAHqvClcqZhNNe1GAnUrEP0pjqhckU8fFqo+7oXQ5WTiCe6w+6UigRq04h1H9+N
+	 RfvEmeMEoIHQFg5PiRfkqRFNfIddz09A9j4IzgtgiAtTTiIMZRu23tFC5nFK4nZtfT
+	 Xd6h8iHFgxnMFKIY27ojZfVWO6Li3oomo1XeyZh38nFKy6J1s0Xzp0IfDPtiOxUKo7
+	 WJEDgeCJXp2EA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: dmitry.torokhov@gmail.com
+Cc: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	mkorpershoek@baylibre.com,
+	linux-input@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
-Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
- and DSA ports
-Message-ID: <20220706102621.hfubvn3wa6wlw735@skbuf>
-References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
- <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 RESEND] Input: mtk-pmic-keys - Add support for MT6331 PMIC keys
+Date: Wed,  6 Jul 2022 12:11:22 +0200
+Message-Id: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_032628_804302_E85543FC 
-X-CRM114-Status: GOOD (  19.03  )
+X-CRM114-CacheID: sfid-20220706_111137_212968_818CADB1 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,72 +86,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+Add support for PMIC Keys of the MT6331 PMIC.
 
-On Tue, Jul 05, 2022 at 10:48:07AM +0100, Russell King (Oracle) wrote:
-> diff --git a/net/dsa/port.c b/net/dsa/port.c
-> index 35b4e1f8dc05..34487e62eb03 100644
-> --- a/net/dsa/port.c
-> +++ b/net/dsa/port.c
-> @@ -1525,6 +1525,7 @@ int dsa_port_phylink_create(struct dsa_port *dp)
->  {
->  	struct dsa_switch *ds = dp->ds;
->  	phy_interface_t mode, def_mode;
-> +	struct device_node *phy_np;
->  	int err;
->  
->  	/* Presence of phylink_mac_link_state or phylink_mac_an_restart is
-> @@ -1559,6 +1560,13 @@ int dsa_port_phylink_create(struct dsa_port *dp)
->  		return PTR_ERR(dp->pl);
->  	}
->  
-> +	if (dp->type == DSA_PORT_TYPE_CPU || dp->type == DSA_PORT_TYPE_DSA) {
-> +		phy_np = of_parse_phandle(dp->dn, "phy-handle", 0);
-> +		of_node_put(phy_np);
-> +		if (!phy_np)
-> +			err = phylink_set_max_fixed_link(dp->pl);
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+---
+ drivers/input/keyboard/mtk-pmic-keys.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-Can we please limit phylink_set_max_link_speed() to just the CPU ports
-where a fixed-link property is also missing, not just a phy-handle?
-Although to be entirely correct, we can also have MLO_AN_INBAND, which
-wouldn't be covered by these 2 checks and would still represent a valid
-DT binding.
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index 6404081253ea..9b34da0ec260 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -9,6 +9,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
+ #include <linux/mfd/mt6323/registers.h>
++#include <linux/mfd/mt6331/registers.h>
+ #include <linux/mfd/mt6358/registers.h>
+ #include <linux/mfd/mt6397/core.h>
+ #include <linux/mfd/mt6397/registers.h>
+@@ -22,6 +23,10 @@
+ #define MTK_PMIC_PWRKEY_RST	BIT(6)
+ #define MTK_PMIC_HOMEKEY_RST	BIT(5)
+ 
++#define MTK_PMIC_MT6331_RST_DU_MASK	GENMASK(13, 12)
++#define MTK_PMIC_MT6331_PWRKEY_RST	BIT(9)
++#define MTK_PMIC_MT6331_HOMEKEY_RST	BIT(8)
++
+ #define MTK_PMIC_PWRKEY_INDEX	0
+ #define MTK_PMIC_HOMEKEY_INDEX	1
+ #define MTK_PMIC_MAX_KEY_COUNT	2
+@@ -72,6 +77,19 @@ static const struct mtk_pmic_regs mt6323_regs = {
+ 	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+ };
+ 
++static const struct mtk_pmic_regs mt6331_regs = {
++	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
++		MTK_PMIC_KEYS_REGS(MT6331_TOPSTATUS, 0x2,
++				   MT6331_INT_MISC_CON, 0x4,
++				   MTK_PMIC_MT6331_PWRKEY_RST),
++	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
++		MTK_PMIC_KEYS_REGS(MT6331_TOPSTATUS, 0x4,
++				   MT6331_INT_MISC_CON, 0x2,
++				   MTK_PMIC_MT6331_HOMEKEY_RST),
++	.pmic_rst_reg = MT6331_TOP_RST_MISC,
++	.rst_lprst_mask = MTK_PMIC_MT6331_RST_DU_MASK,
++};
++
+ static const struct mtk_pmic_regs mt6358_regs = {
+ 	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+ 		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
+@@ -255,6 +273,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt6323-keys",
+ 		.data = &mt6323_regs,
++	}, {
++		.compatible = "mediatek,mt6331-keys",
++		.data = &mt6331_regs,
+ 	}, {
+ 		.compatible = "mediatek,mt6358-keys",
+ 		.data = &mt6358_regs,
+-- 
+2.35.1
 
-> +	}
-> +
->  	return 0;
->  }
->  
-> @@ -1663,20 +1671,14 @@ static int dsa_port_phylink_register(struct dsa_port *dp)
->  int dsa_port_link_register_of(struct dsa_port *dp)
->  {
->  	struct dsa_switch *ds = dp->ds;
-> -	struct device_node *phy_np;
->  	int port = dp->index;
->  
->  	if (!ds->ops->adjust_link) {
-> -		phy_np = of_parse_phandle(dp->dn, "phy-handle", 0);
-> -		if (of_phy_is_fixed_link(dp->dn) || phy_np) {
-> -			if (ds->ops->phylink_mac_link_down)
-> -				ds->ops->phylink_mac_link_down(ds, port,
-> -					MLO_AN_FIXED, PHY_INTERFACE_MODE_NA);
-> -			of_node_put(phy_np);
-> -			return dsa_port_phylink_register(dp);
-> -		}
-> -		of_node_put(phy_np);
-> -		return 0;
-> +		if (ds->ops->phylink_mac_link_down)
-> +			ds->ops->phylink_mac_link_down(ds, port,
-> +				MLO_AN_FIXED, PHY_INTERFACE_MODE_NA);
-
-Can you please align these arguments to the open bracket?
-
-> +
-> +		return dsa_port_phylink_register(dp);
->  	}
->  
->  	dev_warn(ds->dev,
-> -- 
-> 2.30.2
-> 
 
