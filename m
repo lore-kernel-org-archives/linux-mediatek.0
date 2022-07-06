@@ -4,70 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77584C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 14:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82C87C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 14:17:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Iw+meNfzzIV1Almfx5ThT7o1FyVZQQjN7oxJZ18EGrw=; b=GOfFED1VFLqSkQyqzLnTZQZTcV
-	dLHAFuv8AgKx7u0I5tzRcnJbE9aZ7+AQOnD1V+DIfCpDH9eUMQJTch0VFWOY93m67hPoQGJhaicUf
-	ZFxicQ3ijv24+vDdqsLfgbQ7BiFNJcwKdYe6XIx2+kc4UKInJgfZ0yZl+axYDWqUNRIbzt/7Ffa4t
-	KF9HUO1x3igOoais67pD4xSXbuiAsqxy2UBafp8WtCCDOlzrb4K71roNnA5PFdnMiuP8dkayS97Th
-	BEEnelzC+ZxGNI3qNuleYIOQ2LS7o9iaXp11Yn51+zjea1wEuLNLXVGn6VJXk8K4FBFJjF34ZDKsF
-	TARfOLzQ==;
+	bh=oBjTfdSvT6+YtSeTRdHKnKoOw+XuKEMSvxYcA1ivcKQ=; b=3/XBf8ps0ZeUc6lJUlxnIL+dZH
+	o4pMoSXlNGQeQKYBFfRtIY21hi6UJes6/SXhLbnMvHS8R/ekfZnLbRhYlfDFWPm0j93HWyluXULp7
+	NhPJbwxfgZD7J2TVap8tzQHkpvw+pFPYgiNoJTKvlGrEwMrQlFaQSrK9GT81reSfNWUUwJlLHPmvk
+	LHNXIHEweQYoxQi+eZ9cqsbzE9LfEi6hWnYH25rLIojJFB+FVhwFou27cJfRBoJkYfzY8ihwddFpN
+	2NGuyGXYU6JI8w6TnTMeGGvBGbdLYeVK4pLzQRGCqDAM4b+OfVxNGBrLMF32MdUhfzd5iR2eOSYMx
+	FerOC9Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o95Zb-00AUuz-6X; Wed, 06 Jul 2022 14:00:11 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o95qY-00Aa9h-QU; Wed, 06 Jul 2022 14:17:42 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o95ZQ-00AUro-1Z; Wed, 06 Jul 2022 14:00:02 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 090DC660186F;
-	Wed,  6 Jul 2022 14:59:57 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657115998;
-	bh=hlSoJlMQ1wNrpKuPTKn+3MdUzD6VbIFbGoYJHvb0jKU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=X9+ALsZmAkZHB57bQsEqs/yp/DtoHi+5edpM+LAwaBt2OVVBP/IlUYu+L52n3To7z
-	 R3jSDTxLpQcdkUD/oM3E9Iqe12UPRPe8qdAiAqFDv0P+YEbsphVdVxhtMsfzMpL36u
-	 Zli3i5AdW3v8EfJEckF5TQ4fi+lr9njpbTpjQ0M6ZzXhTDjBEAKQTwnB6aomuRjQNT
-	 FoPAn52JK414APBY+eBHYAT/hjh1qJfNG22hkWRhU4ujNkeYo+WOnfL5qLPZldKL/I
-	 blCDOZYR/NFIhT3uaIK4onFqjOdbDQ455gBYC8FOkWa3KJNMVO7jh68GeDWgB6oWCr
-	 d0hUXXTkUbQbw==
-Message-ID: <a7c7e807-5489-c731-224f-a4b681952917@collabora.com>
-Date: Wed, 6 Jul 2022 15:59:55 +0200
+	id 1o95qN-00AZyS-07; Wed, 06 Jul 2022 14:17:32 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id cl1so22302791wrb.4;
+        Wed, 06 Jul 2022 07:17:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=oBjTfdSvT6+YtSeTRdHKnKoOw+XuKEMSvxYcA1ivcKQ=;
+        b=ScNTSzTZ43bEjkZfE92oTcQAP6gXZbZLcCw7IIVhNgSGDkhW8Sik3t4w/nHqscG+FM
+         7H8zQnOXlPsQ7lFH/yIccetqoYONxKapCHHn16FOOOJ0Ll6v1muH0WtOSEse6oxl4rR/
+         SIi57+De/Zzyg5wcXUk/zJCruld/3z6qNsog3EQJxTtm9N6JZoTClLIIgQHZz9EKKtLU
+         4UVXKXIFiwWrxYi+z3IFgb6Njvhx3WfXEWEdu9wveYxl2YX6ucrSn090gKWim4fnedki
+         WrJyZMB1rJeJ5B61+2pZA97RszQ2JnMU7fhWx2PtcmNHpGKmqnyLYPuc3+Bsgc2eOvWl
+         vEVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=oBjTfdSvT6+YtSeTRdHKnKoOw+XuKEMSvxYcA1ivcKQ=;
+        b=imlZTkjAmE76NaL6N1tdtLZuqBmctgTd9PC1rGyiTDz2djBbzfLnDqteJIeeeMgj6V
+         Q1Bwabo7pGB+VsLEsXdQ11ulsAer1pKxTtMrL6HdXoDPGVguUsCPheb0rq9kECoOGNSG
+         oL+//FiiDTc6LM5Qi2jiMbVTWx61H8QBToBY/Zhql4RX4zxump0XG4PgLPLtHgshyjAj
+         QE3qLAtXlaEX1Hv3TuIIIJK3u8u7juWcLmRTkuL0/6X1S2TrfvT9dNi99fApOKSk2Hgo
+         MCWjOo9q2j/YpE3iI/lB3+NJhKvy94HqLDoBKAW/mnWlMoeUKZfGeI8CGhDe0V3goVgi
+         A+Ag==
+X-Gm-Message-State: AJIora9bfFUn3+cs45lMj38UdzJpigdpJDyDigXLJ9Uj2iusKDgLZakS
+	cTkG1hCswCtXKwJmNhL2jEo=
+X-Google-Smtp-Source: AGRyM1tVJy2MpNcYGjr+fAf+4MEWqrwAuT7nsZz4knx9ascE2+u/ba0RqCbDeLBIC0OuklmJHVMfrw==
+X-Received: by 2002:a5d:6504:0:b0:21d:7376:6411 with SMTP id x4-20020a5d6504000000b0021d73766411mr8697884wru.512.1657117048804;
+        Wed, 06 Jul 2022 07:17:28 -0700 (PDT)
+Received: from [192.168.0.14] ([37.223.147.254])
+        by smtp.gmail.com with ESMTPSA id h4-20020a5d4304000000b0021b829d111csm36607497wrq.112.2022.07.06.07.17.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 06 Jul 2022 07:17:27 -0700 (PDT)
+Message-ID: <8b70f376-5f83-a713-c5de-ed5bba68c937@gmail.com>
+Date: Wed, 6 Jul 2022 16:17:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v3 RESEND 0/4] MediaTek Helio X10 MT6795 - MT6331/6332
- Regulators
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 0/2] Add mt8186 mutex support for mdp3
 Content-Language: en-US
-To: Mark Brown <broonie@kernel.org>
-Cc: lgirdwood@gmail.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- lee.jones@linaro.org
-References: <20220706100912.200698-1-angelogioacchino.delregno@collabora.com>
- <YsV9IerWCoa/xtwM@sirena.org.uk>
- <57367b11-f2d4-476b-b92d-16c1726316c0@collabora.com>
- <YsWG0jfqAf4EqojE@sirena.org.uk>
- <82736173-b3b8-1e1a-3e2e-25d9ca3287eb@collabora.com>
- <YsWTt3YSHI9LLpnw@sirena.org.uk>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <YsWTt3YSHI9LLpnw@sirena.org.uk>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_070000_247661_705584DD 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20220706_071731_112142_0951CCED 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +95,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/07/22 15:52, Mark Brown ha scritto:
-> On Wed, Jul 06, 2022 at 03:38:34PM +0200, AngeloGioacchino Del Regno wrote:
->> Il 06/07/22 14:57, Mark Brown ha scritto:
->>> On Wed, Jul 06, 2022 at 02:49:56PM +0200, AngeloGioacchino Del Regno wrote:
->>>> Il 06/07/22 14:16, Mark Brown ha scritto:
->>>
->>>>> This previously got 0day failures due to missing dependencies which
->>>>> need would need a merge with IIRC MFD, I see no reference in the cover
->>>>> letter to dependencies?
->>>
->>>> The only blocker for this series was the MFD patch, which got picked and
->>>> it's present in next-20220706 (as you suggested me to resend when things
->>>> were picked... I decided to wait until they actually landed on -next...)
->>>
->>> Right, I also said I'd need a pull request - if I apply the patches
->>> without having the MFD bits they depend on in my tree then it will fail
->>> to build.
->>
->> I remember writing that to Lee... how do we proceed in this case?
->> Should we add him to the Cc's of this patch to notify him or..?
+
+
+On 05/07/2022 14:26, Allen-KH Cheng wrote:
+> This series are based on matthias.bgg/linux.git, for-next and provide
+> mt8186 mutex support for Media Data Path 3 (MDP3).
 > 
-> Lee, Angelo has sent me this series for Helio X10 which needs some MFD
-> bits (not 100% sure which, I guess Angelo can fill that in) - is there a
-> tagged branch available to pull in?
+> Allen-KH Cheng (2):
+>    dt-bindings: soc: mediatek: add mdp3 mutex support for mt8186
+>    soc: mediatek: mutex: add mt8186 mutex mod settings for mdp3
 
+Whole series applied to v5.19-next/soc
 
-(Thank you, Mark!)
+Thanks
 
-The required bits are all in just one commit:
-
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220627123954.64299-1-angelogioacchino.delregno@collabora.com/
-
-Landed on next-20220706 with ID ad7f984a6aa9722443c1db9e8f72609bf06a8910
-
-...which can be also found here:
-https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git/log/?h=for-mfd-next
+> 
+>   .../bindings/soc/mediatek/mediatek,mutex.yaml |  1 +
+>   drivers/soc/mediatek/mtk-mutex.c              | 23 +++++++++++++++++++
+>   include/linux/soc/mediatek/mtk-mutex.h        |  2 ++
+>   3 files changed, 26 insertions(+)
+> 
 
