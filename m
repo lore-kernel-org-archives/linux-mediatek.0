@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50165CCA473
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 07:00:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB720C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 07:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7E5sMw25JUXlpFDF9Y78XPF+LUEd5XZrD+R8KmH6/UI=; b=JoxeiZde9dAsjye2adOwntUD95
-	d6IuVmritM5XLrHncX2rzliN8nnaMQfKhsR7QZHaZKa8M9xM5Me2okoTh8QAuuWFCZEw8ubjEMlvX
-	+CDhmMJ/fbJ0tJ3BMltB9Uu2+gFRlehr5q85cZY6GiI/aMeyVAVu8hGWJ0afb5fGRaVEilK0ZVQi/
-	LJ3QOA5Rt4WJRPPCPjreWB+5duuxYTScjQGA5QMwEkGfjzRoSf+GTnYImNlED7gEFLgl3MQkyLQmE
-	u3rCS4dVJyoUlrhONIKvAJGpp1jL3bzK/DC1WCk3s2ATsJPdDQohAexZdklB3RIZ9IICa0lK/c6w2
-	hr8X/27A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KDlzAnMg0JQo/lH8R3ckxjirwG+ADUGETvbgixcfci0=; b=nHsBJfoPOZJiScbz8WgRv3Dv8G
+	2s7fDCyfuMPL/iYndpcNfSb22t4EL4ZpWZ3NCLPz8YefHb9LXUSEhOXQ6SmmkXukXjAM1HAgHfel+
+	UGjmA9R/BIltdbZDZn3681bhN8Ka9DyN3vm8MBZQ2Ug5pdH62IFV/fWjCaiMPyA1uITfrUO5Xrl1/
+	lTyNDH5lJtiV1KxFrF9Pe4MXe3CRgE0R3r0sFUeq8gdmXtB9uhMdRzOASm6JEQb1ditdiV91bnUmx
+	sIGwKD51j5KAlWjJkzzhJVodtPsbRthbb9D1GqU0/DiuuPuoVkBcucYXNWeIA7WGHWvYGHPQ4o6+S
+	BBiVOD2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8z11-006tVP-Qu; Wed, 06 Jul 2022 07:00:03 +0000
+	id 1o8ztV-007Dp6-02; Wed, 06 Jul 2022 07:56:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8z0p-006tOx-3E; Wed, 06 Jul 2022 06:59:53 +0000
-X-UUID: 426e5fa848944145a482d1c9c10b3ba0-20220705
+	id 1o8ztH-007DkE-TJ; Wed, 06 Jul 2022 07:56:10 +0000
+X-UUID: 13a5396dbbcd4102af71e0c5863b099a-20220706
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:da193176-217d-411a-a7d5-96324971778c,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:f293bdd6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:4997117b-7589-477f-9567-6b75bdd3ad03,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:d58daf86-57f0-47ca-ba27-fe8c57fbf305,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 426e5fa848944145a482d1c9c10b3ba0-20220705
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+X-UUID: 13a5396dbbcd4102af71e0c5863b099a-20220706
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 689766027; Tue, 05 Jul 2022 23:59:46 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 6 Jul 2022 14:19:08 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 6 Jul 2022 14:19:08 +0800
-Message-ID: <b5667c052447d1b3c3498131af98d80a07ed4767.camel@mediatek.com>
-Subject: Re: [PATCH v1 03/16] dt-bindings: power: mediatek: Refine multiple
- level power domain nodes
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Enric
- Balletbo i Serra" <enric.balletbo@collabora.com>, Weiyi Lu
-	<weiyi.lu@mediatek.com>, <iommu@lists.linux-foundation.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	with ESMTP id 945637165; Wed, 06 Jul 2022 00:56:02 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 6 Jul 2022 15:54:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 6 Jul 2022 15:54:55 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 6 Jul 2022 14:19:08 +0800
-In-Reply-To: <20220705205739.GA2599256-robh@kernel.org>
-References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
-	 <20220704100028.19932-4-tinghan.shen@mediatek.com>
-	 <20220705205739.GA2599256-robh@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, daoyuan huang
+	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+	<river.cheng@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>
+Subject: [PATCH v21 3/4] arm64: dts: mt8183: add Mediatek MDP3 nodes
+Date: Wed, 6 Jul 2022 15:54:53 +0800
+Message-ID: <20220706075454.15569-4-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220706075454.15569-1-moudy.ho@mediatek.com>
+References: <20220706075454.15569-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_235951_200204_C62F6A3E 
-X-CRM114-Status: GOOD (  28.16  )
+X-CRM114-CacheID: sfid-20220706_005607_975615_BDA43236 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,290 +92,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-07-05 at 14:57 -0600, Rob Herring wrote:
-> On Mon, Jul 04, 2022 at 06:00:15PM +0800, Tinghan Shen wrote:
-> > Extract duplicated properties and support more levels of power
-> > domain nodes.
-> > 
-> > This change fix following error when do dtbs_check,
-> >     arch/arm64/boot/dts/mediatek/mt8195-evb.dtb: power-controller: power-domain@15:
-> > power-domain@16:power-domain@18: 'power-domain@19', 'power-domain@20', 'power-domain@21' do not
-> > match any of the regexes: 'pinctrl-[0-9]+'
-> > 	 From schema: Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > 
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > ---
-> >  .../power/mediatek,power-controller.yaml      | 132 ++----------------
-> >  1 file changed, 12 insertions(+), 120 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > index 135c6f722091..09a537a802b8 100644
-> > --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > @@ -39,8 +39,17 @@ properties:
-> >    '#size-cells':
-> >      const: 0
-> >  
-> > +required:
-> > +  - compatible
-> > +
-> > +additionalProperties: false
-> > +
-> >  patternProperties:
-> >    "^power-domain@[0-9a-f]+$":
-> > +    $ref: "#/$defs/power-domain-node"
-> > +
-> > +$defs:
-> > +  power-domain-node:
-> >      type: object
-> >      description: |
-> >        Represents the power domains within the power controller node as documented
-> > @@ -98,127 +107,10 @@ patternProperties:
-> >          $ref: /schemas/types.yaml#/definitions/phandle
-> >          description: phandle to the device containing the SMI register range.
-> >  
-> > -    patternProperties:
-> > -      "^power-domain@[0-9a-f]+$":
-> > -        type: object
-> > -        description: |
-> > -          Represents a power domain child within a power domain parent node.
-> > -
-> > -        properties:
-> > -
-> > -          '#power-domain-cells':
-> > -            description:
-> > -              Must be 0 for nodes representing a single PM domain and 1 for nodes
-> > -              providing multiple PM domains.
-> > -
-> > -          '#address-cells':
-> > -            const: 1
-> > -
-> > -          '#size-cells':
-> > -            const: 0
-> > -
-> > -          reg:
-> > -            maxItems: 1
-> > -
-> > -          clocks:
-> > -            description: |
-> > -              A number of phandles to clocks that need to be enabled during domain
-> > -              power-up sequencing.
-> > -
-> > -          clock-names:
-> > -            description: |
-> > -              List of names of clocks, in order to match the power-up sequencing
-> > -              for each power domain we need to group the clocks by name. BASIC
-> > -              clocks need to be enabled before enabling the corresponding power
-> > -              domain, and should not have a '-' in their name (i.e mm, mfg, venc).
-> > -              SUSBYS clocks need to be enabled before releasing the bus protection,
-> > -              and should contain a '-' in their name (i.e mm-0, isp-0, cam-0).
-> > -
-> > -              In order to follow properly the power-up sequencing, the clocks must
-> > -              be specified by order, adding first the BASIC clocks followed by the
-> > -              SUSBSYS clocks.
-> > -
-> > -          domain-supply:
-> > -            description: domain regulator supply.
-> > -
-> > -          mediatek,infracfg:
-> > -            $ref: /schemas/types.yaml#/definitions/phandle
-> > -            description: phandle to the device containing the INFRACFG register range.
-> > -
-> > -          mediatek,smi:
-> > -            $ref: /schemas/types.yaml#/definitions/phandle
-> > -            description: phandle to the device containing the SMI register range.
-> > -
-> > -        patternProperties:
-> > -          "^power-domain@[0-9a-f]+$":
-> > -            type: object
-> > -            description: |
-> > -              Represents a power domain child within a power domain parent node.
-> > -
-> > -            properties:
-> > +      required:
-> > +        - reg
-> >  
-> > -              '#power-domain-cells':
-> > -                description:
-> > -                  Must be 0 for nodes representing a single PM domain and 1 for nodes
-> > -                  providing multiple PM domains.
-> > -
-> > -              '#address-cells':
-> > -                const: 1
-> > -
-> > -              '#size-cells':
-> > -                const: 0
-> > -
-> > -              reg:
-> > -                maxItems: 1
-> > -
-> > -              clocks:
-> > -                description: |
-> > -                  A number of phandles to clocks that need to be enabled during domain
-> > -                  power-up sequencing.
-> > -
-> > -              clock-names:
-> > -                description: |
-> > -                  List of names of clocks, in order to match the power-up sequencing
-> > -                  for each power domain we need to group the clocks by name. BASIC
-> > -                  clocks need to be enabled before enabling the corresponding power
-> > -                  domain, and should not have a '-' in their name (i.e mm, mfg, venc).
-> > -                  SUSBYS clocks need to be enabled before releasing the bus protection,
-> > -                  and should contain a '-' in their name (i.e mm-0, isp-0, cam-0).
-> > -
-> > -                  In order to follow properly the power-up sequencing, the clocks must
-> > -                  be specified by order, adding first the BASIC clocks followed by the
-> > -                  SUSBSYS clocks.
-> > -
-> > -              domain-supply:
-> > -                description: domain regulator supply.
-> > -
-> > -              mediatek,infracfg:
-> > -                $ref: /schemas/types.yaml#/definitions/phandle
-> > -                description: phandle to the device containing the INFRACFG register range.
-> > -
-> > -              mediatek,smi:
-> > -                $ref: /schemas/types.yaml#/definitions/phandle
-> > -                description: phandle to the device containing the SMI register range.
-> > -
-> > -            required:
-> > -              - reg
-> > -
-> > -            additionalProperties: false
-> > -
-> > -        required:
-> > -          - reg
-> > -
-> > -        additionalProperties: false
-> > -
-> > -    required:
-> > -      - reg
-> > -
-> > -    additionalProperties: false
-> > -
-> > -required:
-> > -  - compatible
-> > -
-> > -additionalProperties: false
-> > +      additionalProperties: false
-> $ make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/power/mediatek,power-
-> controller.yaml O=out
-> make[1]: Entering directory '/proj/mtk15399/upstream-cros/src/third_party/kernel/v5.10/out'
->   LINT    Documentation/devicetree/bindings
->   CHKDT   Documentation/devicetree/bindings/processed-schema.json
->   SCHEMA  Documentation/devicetree/bindings/processed-schema.json
-> /proj/mtk15399/upstream-
-> cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/iio/temperature/adi,ltc2983.ya
-> ml: ignoring, error in schema: patternProperties: ^thermistor@: properties: adi,excitation-
-> current-nanoamp
-> /proj/mtk15399/upstream-
-> cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/display/tegra/nvidia,tegra124-
-> sor.yaml: ignoring, error in schema: allOf: 1: if: not: properties
-> /proj/mtk15399/upstream-
-> cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/mfd/mps,mp2629.yaml: ignoring,
-> error parsing file
->   DTEX    Documentation/devicetree/bindings/power/mediatek,power-controller.example.dts
->   DTC     Documentation/devicetree/bindings/power/mediatek,power-controller.example.dtb
->   CHECK   Documentation/devicetree/bindings/power/mediatek,power-controller.example.dtb
-> Traceback (most recent call last):
->   File "/proj/mtk15399/.venv/py3.9/bin/dt-validate", line 173, in <module>
->     testtree = dtschema.load(filename, line_number=args.line_number)
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 913, in load
->     return [ dtschema.dtb.fdt_unflatten(f.read()) ]
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/dtb.py", line 463, in
-> fdt_unflatten
->     p = dtschema.get_prop_types()
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 892, in
-> get_prop_types
->     props = dtschema.extract_types(schema_cache)
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 883, in
-> extract_types
->     _extract_subschema_types(props, sch, sch)
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 874, in
-> _extract_subschema_types
-> 
-> [...snip...]
-> 
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 803, in
-> _extract_prop_type
->     _extract_prop_type(props, schema, propname, subschema)
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 794, in
-> _extract_prop_type
->     _extract_subschema_types(props, schema, subschema)
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 874, in
-> _extract_subschema_types
->     _extract_prop_type(props, schema, p, v)
->   File "/proj/mtk15399/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 790, in
-> _extract_prop_type
->     if not isinstance(subschema, dict):
-> RecursionError: maximum recursion depth exceeded while calling a Python object
-> make[1]: Leaving directory '/proj/mtk15399/upstream-cros/src/third_party/kernel/v5.10/out'
-> You now aren't checking more than 1 level because you have defined 
-> 'additionalProperties' to be a DT property. Check the indentation.
-> 
-> You need this in $defs/power-domain-node to recurse:
-> 
->     additionalProperties:
->       $ref: #/$defs/power-domain-node
-Hi Rob,
+Add device nodes for Media Data Path 3 (MDP3) modules.
 
-I get the following error after adding the 'additionalProperties' to $defs/power-domain-node.
-The same error occurs when I run dt_binding_check on power/renesas,sysc-rmobile.yaml, which has the
-similar property.
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 63 ++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
-$ make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/power/mediatek,power-
-controller.yaml O=out
-make[1]: Entering directory '/test/upstream-cros/src/third_party/kernel/v5.10/out'
-  LINT    Documentation/devicetree/bindings
-  CHKDT   Documentation/devicetree/bindings/processed-schema.json
-  SCHEMA  Documentation/devicetree/bindings/processed-schema.json
-/test/upstream-
-cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/iio/temperature/adi,ltc2983.yaml
-: ignoring, error in schema: patternProperties: ^thermistor@: properties: adi,excitation-current-
-nanoamp
-/test/upstream-
-cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/display/tegra/nvidia,tegra124-
-sor.yaml: ignoring, error in schema: allOf: 1: if: not: properties
-/test/upstream-
-cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/mfd/mps,mp2629.yaml: ignoring,
-error parsing file
-  DTEX    Documentation/devicetree/bindings/power/mediatek,power-controller.example.dts
-  DTC     Documentation/devicetree/bindings/power/mediatek,power-controller.example.dtb
-  CHECK   Documentation/devicetree/bindings/power/mediatek,power-controller.example.dtb
-Traceback (most recent call last):
-  File "/test/.venv/py3.9/bin/dt-validate", line 173, in <module>
-    testtree = dtschema.load(filename, line_number=args.line_number)
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 913, in load
-    return [ dtschema.dtb.fdt_unflatten(f.read()) ]
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/dtb.py", line 463, in fdt_unflatten
-    p = dtschema.get_prop_types()
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 892, in get_prop_types
-    props = dtschema.extract_types(schema_cache)
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 883, in extract_types
-    _extract_subschema_types(props, sch, sch)
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 874, in
-_extract_subschema_types
-
-[...snip...]
-
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 803, in
-_extract_prop_type
-    _extract_prop_type(props, schema, propname, subschema)
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 794, in
-_extract_prop_type
-    _extract_subschema_types(props, schema, subschema)
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 874, in
-_extract_subschema_types
-    _extract_prop_type(props, schema, p, v)
-  File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 790, in
-_extract_prop_type
-    if not isinstance(subschema, dict):
-RecursionError: maximum recursion depth exceeded while calling a Python object
-make[1]: Leaving directory '/test/upstream-cros/src/third_party/kernel/v5.10/out'
-
-
-Best Regards,
-TingHan
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 9485c1efc87c..daad94a60fb8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1691,6 +1691,60 @@
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
+ 		};
+ 
++		mdp3-rdma0@14001000 {
++			compatible = "mediatek,mt8183-mdp3-rdma";
++			reg = <0 0x14001000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
++					      <CMDQ_EVENT_MDP_RDMA0_EOF>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
++				 <&mmsys CLK_MM_MDP_RSZ1>;
++			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
++			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
++				 <&gce 21 CMDQ_THR_PRIO_LOWEST 0>;
++		};
++
++		mdp3-rsz0@14003000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14003000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
++					      <CMDQ_EVENT_MDP_RSZ0_EOF>;
++			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++		};
++
++		mdp3-rsz1@14004000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14004000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
++					      <CMDQ_EVENT_MDP_RSZ1_EOF>;
++			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
++		};
++
++		mdp3-wrot0@14005000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x14005000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
++					      <CMDQ_EVENT_MDP_WROT0_EOF>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_MDP_WROT0>;
++			iommus = <&iommu M4U_PORT_MDP_WROT0>;
++		};
++
++		mdp3-wdma@14006000 {
++			compatible = "mediatek,mt8183-mdp3-wdma";
++			reg = <0 0x14006000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_WDMA0_SOF>,
++					      <CMDQ_EVENT_MDP_WDMA0_EOF>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
++			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
++		};
++
+ 		ovl0: ovl@14008000 {
+ 			compatible = "mediatek,mt8183-disp-ovl";
+ 			reg = <0 0x14008000 0 0x1000>;
+@@ -1834,6 +1888,15 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 		};
+ 
++		mdp3-ccorr@1401c000 {
++			compatible = "mediatek,mt8183-mdp3-ccorr";
++			reg = <0 0x1401c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_CCORR_SOF>,
++					      <CMDQ_EVENT_MDP_CCORR_EOF>;
++			clocks = <&mmsys CLK_MM_MDP_CCORR>;
++		};
++
+ 		imgsys: syscon@15020000 {
+ 			compatible = "mediatek,mt8183-imgsys", "syscon";
+ 			reg = <0 0x15020000 0 0x1000>;
+-- 
+2.18.0
 
 
