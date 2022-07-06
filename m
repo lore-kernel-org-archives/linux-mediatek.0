@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEEF2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 12:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D154FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 12:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CD6qBSGMwwhziKw7AqsMm4SoHVzEtoIvWOjnoFjfKS0=; b=w/QFi6cK+PZS5wIjIxpya+11tI
-	2+0OD+vQfhKUZ+I+IiqHWDqHie1sCY0tHXa8pzEHuuNBGqw3KREdc9gchYHgXh6Wl09R8hT58AVUv
-	1nnzUd4mxAZiQvsJEUX4GOdRsnInCvgBheHgEJfCnRRdbqon5rxpT2toCGwiXdpCY1HSlaCGJFOdX
-	xYrJ61zbqDdFNUA+fBG6i7lx6uD+Xq5ja9QbJKN9eK7nzJjf08SMaA4mfKTmSRry0L2iLcyCmlP+U
-	zd7OHM7oqPKmkJYSdypsVq5XI1SlplMu2SZodz83wAYI0pRP1JFnQCu1NisAhKQQpcVIsRpULH5dV
-	ww6l5DCQ==;
+	bh=cRX3modhZzddJ3x4ad0CNl/Nh7spAOjd+TFz/FdhIjU=; b=WoeBAy50a/X2bSAbGhbqhMoEQR
+	GSOu5dDptaPeuTnqPD00y5FkmDOgSYGrkbiE58EVZVHnhO6wBx57PZ13Ro6NMqUsJJv9dPshPkAr4
+	VOGluGqNtdoDN0lIWoFXLN1BC7HEykXgwZaCxYkYrtyF5i3rdl64ELr1tHgWFaPiQ8q3Rb5XuXCJ7
+	Ku5K9sRz3/20m9MBq5NIMPTUZcPvdllUavzsOLL8Xmf4RmysAKsu7GP6sV1vNn/F4c75G/fRq0msR
+	HthFvi3mLQ9fIxM7whIXO0gF7fuu0dCR79RTG/xoHtDF93MqodPw3Z/WxMKOe7kYITuXoC9PuMUy1
+	O6q6hoyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o93if-009n0Y-2h; Wed, 06 Jul 2022 12:01:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o93uw-009r5B-Ca; Wed, 06 Jul 2022 12:14:06 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o93iQ-009mtt-UT; Wed, 06 Jul 2022 12:01:12 +0000
-X-UUID: 30de24a1603744a8ac0bcad31c9164d6-20220706
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:569aeb10-f23c-49da-8e7e-1468024033ff,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:8410c5d6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 30de24a1603744a8ac0bcad31c9164d6-20220706
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 542843085; Wed, 06 Jul 2022 05:01:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 6 Jul 2022 20:00:32 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Wed, 6 Jul 2022 20:00:32 +0800
-Message-ID: <eec6aee5cd023fff6d986882db0330e1ab85a59d.camel@mediatek.com>
-Subject: Re: [PATCH v1 08/16] arm64: dts: mt8195: Add power domains
- controller
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Yong Wu
-	<yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon
-	<will@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Enric
- Balletbo i Serra" <enric.balletbo@collabora.com>, Weiyi Lu
-	<weiyi.lu@mediatek.com>
-CC: <iommu@lists.linux-foundation.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 6 Jul 2022 20:00:32 +0800
-In-Reply-To: <3b65405d-167f-a0c7-d15e-5da6f08d99b3@linaro.org>
-References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
-	 <20220704100028.19932-9-tinghan.shen@mediatek.com>
-	 <3b65405d-167f-a0c7-d15e-5da6f08d99b3@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o93uj-009qy2-Fv; Wed, 06 Jul 2022 12:13:55 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 074D8660199B;
+	Wed,  6 Jul 2022 13:13:46 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657109627;
+	bh=2t6an7ht5+yC7+PkXcKGyRHYvhD0KwqrgG+sCGpknV0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=I7+pJxvj8QKrPt8AqHOdoMj/JaWxoFIsBuu34K1/BPeWknPODXtmKVCf0/fFutsn5
+	 +CND8+23+VmYTE15beI3VZ/Y4GBp2YjFPEdQI32d+2DcGak2oGSr2wI6r3DbHpqjhG
+	 5Q3budolLZYAIiT663I+VPqnA2vtKSXDNxgqHamjouwLLTyr8Gtfmv592KNWkna+Cj
+	 giA6RjDeX1YIH2l97eiJrOdnrot+QKDJOFv5AYRLB1odmVkdBC0rAfK2M77QJCo6hf
+	 h+gscEkJCL6+hXqmC1HXaI+JP0GXkczmF0MGd2HX2MFGLSFqi5gNtOOFs097nBxLzr
+	 FgNj3gcjln8Mw==
+Message-ID: <4e55465d-ccf1-56b0-dfa4-84832edfa937@collabora.com>
+Date: Wed, 6 Jul 2022 14:13:45 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v2 RESEND] Input: mtk-pmic-keys - Add support for MT6331
+ PMIC keys
+Content-Language: en-US
+To: kernel test robot <lkp@intel.com>, dmitry.torokhov@gmail.com
+Cc: kbuild-all@lists.01.org, matthias.bgg@gmail.com,
+ mkorpershoek@baylibre.com, linux-input@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
+ <202207061915.tYTQKEhu-lkp@intel.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <202207061915.tYTQKEhu-lkp@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_050111_053316_6BAACF31 
-X-CRM114-Status: GOOD (  20.35  )
+X-CRM114-CacheID: sfid-20220706_051353_806455_90056934 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,63 +77,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-After discussing your message with our power team, 
-we realized that we need your help to ensure we fully understand you.
-
-On Mon, 2022-07-04 at 14:38 +0200, Krzysztof Kozlowski wrote:
-> On 04/07/2022 12:00, Tinghan Shen wrote:
-> > Add power domains controller node for mt8195.
-> > 
-> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 327 +++++++++++++++++++++++
-> >  1 file changed, 327 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > index 8d59a7da3271..d52e140d9271 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > @@ -10,6 +10,7 @@
-> >  #include <dt-bindings/interrupt-controller/irq.h>
-> >  #include <dt-bindings/phy/phy.h>
-> >  #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
-> > +#include <dt-bindings/power/mt8195-power.h>
-> >  
-> >  / {
-> >  	compatible = "mediatek,mt8195";
-> > @@ -338,6 +339,332 @@
-> >  			#interrupt-cells = <2>;
-> >  		};
-> >  
-> > +		scpsys: syscon@10006000 {
-> > +			compatible = "syscon", "simple-mfd";
+Il 06/07/22 13:44, kernel test robot ha scritto:
+> Hi AngeloGioacchino,
 > 
-> These compatibles cannot be alone.
-
-the scpsys sub node has the compatible of the power domain driver.
-do you suggest that the compatible in the sub node should move to here?
-
-> > +			reg = <0 0x10006000 0 0x1000>;
-> > +			#power-domain-cells = <1>;
+> Thank you for the patch! Yet something to improve:
 > 
-> If it is simple MFD, then probably it is not a power domain provider.
-> Decide.
-
-this MFD device is the power controller on mt8195. Some features need 
-to do some operations on registers in this node. We think that implement 
-the operation of these registers as the MFD device can provide flexibility 
-for future use. We want to clarify if you're saying that an MFD device 
-cannot be a power domain provider.
+> [auto build test ERROR on dtor-input/next]
+> [also build test ERROR on linus/master v5.19-rc5 next-20220705]
 
 
-
-Best regards,
-TingHan
+This patch compiles fine on next-20220706.
 
 
-
+> [If your patch is applied to the wrong git tree, kindly drop us a note.
+> And when submitting patch, we suggest to use '--base' as documented in
+> https://git-scm.com/docs/git-format-patch]
+> 
+> url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/Input-mtk-pmic-keys-Add-support-for-MT6331-PMIC-keys/20220706-181323
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/dtor/input.git next
+> config: arc-randconfig-r043-20220703 (https://download.01.org/0day-ci/archive/20220706/202207061915.tYTQKEhu-lkp@intel.com/config)
+> compiler: arceb-elf-gcc (GCC) 11.3.0
+> reproduce (this is a W=1 build):
+>          wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>          chmod +x ~/bin/make.cross
+>          # https://github.com/intel-lab-lkp/linux/commit/5e286347fa7c13c4674f97ed475e4f42a49ce5b4
+>          git remote add linux-review https://github.com/intel-lab-lkp/linux
+>          git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/Input-mtk-pmic-keys-Add-support-for-MT6331-PMIC-keys/20220706-181323
+>          git checkout 5e286347fa7c13c4674f97ed475e4f42a49ce5b4
+>          # save the config file
+>          mkdir build_dir && cp config build_dir/.config
+>          COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash drivers/input/keyboard/
+> 
+> If you fix the issue, kindly add following tag where applicable
+> Reported-by: kernel test robot <lkp@intel.com>
+> 
+> All errors (new ones prefixed by >>):
+> 
+>>> drivers/input/keyboard/mtk-pmic-keys.c:12:10: fatal error: linux/mfd/mt6331/registers.h: No such file or directory
+>        12 | #include <linux/mfd/mt6331/registers.h>
+>           |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>     compilation terminated.
+> 
+> 
+> vim +12 drivers/input/keyboard/mtk-pmic-keys.c
+> 
+>    > 12	#include <linux/mfd/mt6331/registers.h>
+>      13	#include <linux/mfd/mt6358/registers.h>
+>      14	#include <linux/mfd/mt6397/core.h>
+>      15	#include <linux/mfd/mt6397/registers.h>
+>      16	#include <linux/module.h>
+>      17	#include <linux/of_device.h>
+>      18	#include <linux/of.h>
+>      19	#include <linux/platform_device.h>
+>      20	#include <linux/regmap.h>
+>      21	
+> 
 
 
