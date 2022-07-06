@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83299C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 11:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8963C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 11:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z8eS2rTzcqdOlJMWiIMUaYsTGj4T3vcWNS3erwMrH+Q=; b=UbN5/c5P3acPBDT/1yet4TZ7Ub
-	QQfM0lHlvGkdASVIjx7FHt9x2IUnYglvpoS/8buvu8uj3YB7bAp5ari6DIcHdClghxgJBaC97Mhjk
-	3Od5GKE8bJTlqpQue5yPmbmgIj3YUtIGJkygMIZCk6MLBD85geNMcHAG9UIbbApSyKXszoRe2iAtE
-	JU3DwMMDVnRO0M7cFR8225sMYmPVU7flGtXdlfgk5Ph5U/lOGdI3R0Hm+wyIPjF3a+2xdf+nC3dCV
-	cOBwB6N/fT2cddepEeiWgP2S3G52w3yxMoWLYVO1lbUzytpWHLt1+CtQPkfS2ok6zFhX1IZM0bfPd
-	MgxyX9PQ==;
+	bh=bSHjRVPar9koOkxdjkkwZ1okh8e3buyb9glVelQGPJA=; b=KsQaTD7Rb00MHFAJviavNOUjcU
+	dV8Zs+9wPL7X6yg03jRysud0JFG+gq3PY2wrhi694xAfXVbTTdj/JtZP4WouHKXzj+F5OaGS5wskE
+	4moPEmod2p7Bclmzkpuuymlzq+1YqR6l0qVrLIOfauFRJucHLoAns1s0wyFs+wrZVqnnBsKZW2wiQ
+	a+I8ay8ns/YkRkd3PB6vI9cf/V0yOKKputXnLr6lUdLp3kw/PMXiruxhBxMkj690wUBrx08PiGGoj
+	D9Qqit062zbHsb8U0/2eZ3US8b6egDIwGlN9xMbyMLPEnZia3ClJyBB0cM9xpmx/1IZBwm3+SnJox
+	xAdTblDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o93TM-009gkX-Ul; Wed, 06 Jul 2022 11:45:36 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1o93YR-009ia2-E3; Wed, 06 Jul 2022 11:50:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o93TB-009ghk-W1; Wed, 06 Jul 2022 11:45:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1657107925; x=1688643925;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=9O/uk8hzidHlOKBk1K4kxy0EkY6O5XjVCbjq4/nqvi0=;
-  b=E8jmvS8IbkkR5f55Pm2X6ECkuJK6tBXIxklmEAxwkgo32rTtU4GsVr/M
-   zHPGB+Iqa/P90XgGB0qXTuivBb6OQ01RAorZ83Rb3QfhESz2EItHUsrNI
-   V9yRLa/05fligcrYK8q7jw1/qkqXbmbWBxkHV7fqZR2ReV+eqo9DGg6FT
-   Xhv7bvYTA/oegT87ubEatC+glEgcFORGh0WQZnmqJFQe04ro+M0lQtYzq
-   CR2RXFpmHmzWPJXjGpNfrsBHF1sybzNcyly5MrrR2OV4AJVYlaw3ApsLo
-   J+EHTdaoh/pZGF5EhPmPgj6zPEUS93nSHdW/JX+n7lA6JlqiR887Dw9+K
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10399"; a="284844337"
-X-IronPort-AV: E=Sophos;i="5.92,249,1650956400"; 
-   d="scan'208";a="284844337"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jul 2022 04:45:03 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,249,1650956400"; 
-   d="scan'208";a="682890850"
-Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
-  by FMSMGA003.fm.intel.com with ESMTP; 06 Jul 2022 04:45:01 -0700
-Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
-	(envelope-from <lkp@intel.com>)
-	id 1o93Sm-000KXF-CP;
-	Wed, 06 Jul 2022 11:45:00 +0000
-Date: Wed, 6 Jul 2022 19:44:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dmitry.torokhov@gmail.com
-Cc: kbuild-all@lists.01.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, mkorpershoek@baylibre.com,
-	linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 RESEND] Input: mtk-pmic-keys - Add support for MT6331
- PMIC keys
-Message-ID: <202207061915.tYTQKEhu-lkp@intel.com>
-References: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
+	id 1o93YE-009iVZ-MP; Wed, 06 Jul 2022 11:50:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E559B61EF0;
+	Wed,  6 Jul 2022 11:50:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E43FFC3411C;
+	Wed,  6 Jul 2022 11:50:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657108237;
+	bh=pIkja7u4jVh70cjtOcr/icdaQPCTUe5JoMbq34s2vCA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AZcs/8PQUqBcCYbonWkSDNfeylddwt8DzSYGJceY9yQoymUm1LGtSSG4b7LjShl/7
+	 WZ2qs49p9ECdbmNoFL8nhUg0Q0m7QIs0zLU37eHfOGr1GFyMoHEh8juucfoVjyMmIR
+	 ajvq7TmLNCUyZHv4keoy/mTWt3SOqE0iwG5syLwvpZymYoObj/wihM6BGcOawmgbrz
+	 9uQ1gruOt4q9DFe5vAQv1ino7n6NpOQ+V3+FOiz3OSXF0FdnoZ5C9r6yFG2643vVpN
+	 9/N7yibHBWvj1Zmjy0dc0nHzxgb9JO/SxG+7fIHDKcyvqfDrpbhM0h+SSJGjUP1So6
+	 OMmUMmPsp7dHw==
+Date: Wed, 6 Jul 2022 12:50:31 +0100
+From: Will Deacon <will@kernel.org>
+To: yf.wang@mediatek.com
+Cc: Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+	Yong Wu <Yong.Wu@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
+	Ning Li <ning.li@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v12 0/2] iommu/mediatek: TTBR up to 35bit support
+Message-ID: <20220706115028.GC2403@willie-the-truck>
+References: <20220630092927.24925-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220630092927.24925-1-yf.wang@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_044526_134870_7419B1BD 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20220706_045038_786327_C883032A 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,56 +79,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Thu, Jun 30, 2022 at 05:29:24PM +0800, yf.wang@mediatek.com wrote:
+> This patchset adds MediaTek TTBR up to 35bit support for single normal zone.
+> 
+> Changes in v12:
+> - Update [PATCH 1/2]: remove GENMASK(31, 7)
+> - Update [PATCH 2/2]: remove MMU_PT_ADDR_MASK definition.
 
-Thank you for the patch! Yet something to improve:
+For both patches:
 
-[auto build test ERROR on dtor-input/next]
-[also build test ERROR on linus/master v5.19-rc5 next-20220705]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+Acked-by: Will Deacon <will@kernel.org>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/Input-mtk-pmic-keys-Add-support-for-MT6331-PMIC-keys/20220706-181323
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/dtor/input.git next
-config: arc-randconfig-r043-20220703 (https://download.01.org/0day-ci/archive/20220706/202207061915.tYTQKEhu-lkp@intel.com/config)
-compiler: arceb-elf-gcc (GCC) 11.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/5e286347fa7c13c4674f97ed475e4f42a49ce5b4
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/Input-mtk-pmic-keys-Add-support-for-MT6331-PMIC-keys/20220706-181323
-        git checkout 5e286347fa7c13c4674f97ed475e4f42a49ce5b4
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash drivers/input/keyboard/
+Joerg -- please can you pick these up for 5.20?
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+Thanks,
 
-All errors (new ones prefixed by >>):
-
->> drivers/input/keyboard/mtk-pmic-keys.c:12:10: fatal error: linux/mfd/mt6331/registers.h: No such file or directory
-      12 | #include <linux/mfd/mt6331/registers.h>
-         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   compilation terminated.
-
-
-vim +12 drivers/input/keyboard/mtk-pmic-keys.c
-
-  > 12	#include <linux/mfd/mt6331/registers.h>
-    13	#include <linux/mfd/mt6358/registers.h>
-    14	#include <linux/mfd/mt6397/core.h>
-    15	#include <linux/mfd/mt6397/registers.h>
-    16	#include <linux/module.h>
-    17	#include <linux/of_device.h>
-    18	#include <linux/of.h>
-    19	#include <linux/platform_device.h>
-    20	#include <linux/regmap.h>
-    21	
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Will
 
