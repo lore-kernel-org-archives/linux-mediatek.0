@@ -4,63 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CD07C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 09:13:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E2C8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 09:33:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WKlacHhWVR2IblvCAgYMcCw7cvtmo7gBzlhxFpijOWM=; b=oSP8sL8tKfWrFpLYSP+QI9N5Nj
-	WoLvVMidJz4jRAtur2TmifKIRFWJnkVp/VKAbL2tlNN1hMiwDaxRxcm0LaTJrbCo+vef4ACZg1sF9
-	JCsusiqtWEKVlMMaTrTjHFTJY60ME0iA0uRXxGL+zA6VjqlzVheeW75NbaCMDi18eUaCj32r3EQda
-	qbYsNmFGqF9nzD8g7Ye9awbGQWiHqJ13zMca9eWBztcAeVUf7MzFbVM5j35Cp9ubbVdcLLVEzUmxy
-	ouWLvY6R9/KCws2mKNRQfc3w1H6n8pz/Cjz/3MFd2X936OvA80dZ0+Nujz1JBnZkkzSTTo8k5OLSd
-	UKrbAUBg==;
+	bh=tMU3E4eYksx+zNdAVlL51uq6GohePbaqlSk6+eyDGGY=; b=arxZB/afUeV6WmRILSOj6J4tpJ
+	++kFm3V69SEYBrcPzoXDlBmf/+wK/J28sosdzqlesvpswMJX4k+3rIX+dVh/3NRz7f2wYIflW4NjF
+	BiEarlJodXv76dIYG579sWK8269MlvjI+48ObEgAXVYts7PUMV/R8smdaQ1Pl+rNv3qIk7yF1Cr5l
+	A5rco8zub+Qbnlmtt4MdZBqGOjZszHIKBRtrvg+czo8qTAJbyLC5ICvOOzxJL8ipVLxD/hbMsbunP
+	brGep2/HJV6//cLTqwAtkzMKpVGQRgF/fNbS3mmnyMyt8bUOcTav6snspdLY6hSeXmXf/4CycGOrm
+	9jnVmX8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o916S-007gTo-Ac; Wed, 06 Jul 2022 09:13:48 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1o91Ox-007oJ8-2g; Wed, 06 Jul 2022 09:32:55 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9162-007gE3-FC; Wed, 06 Jul 2022 09:13:23 +0000
-Received: by mail-ed1-x536.google.com with SMTP id m16so2943943edb.11;
-        Wed, 06 Jul 2022 02:13:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=WKlacHhWVR2IblvCAgYMcCw7cvtmo7gBzlhxFpijOWM=;
-        b=UyINPEp8aUU7+iO4UvYReAysG8acJi4s0lW7fYS990hIHuI2KgReqshlPjlC0FcdQX
-         RWLEJ1iagzj5JHTLAwg1Tfl34CjKErUg06qCwRi5FpbuqXpIfRK0B8kuUc2l5x+40o+8
-         2YldATzAdsq2GhIZIL2D0cZi8oKOkVG5Y5xLvvP4kajNiX5yCXAJSyEYBx1RvA9W9SdO
-         piij5Lfa0VXVwqnHofYdHxRPOmYTBO/NXTATLm6C9JRKYr2iRvgzlsZTZRGqO8gtc9pI
-         zkPBxco6Fa5B8qkZy3WblPhpXY+1PsQ3ol/zLxC+L8wAov5SdI1JA4byrn/VHyXJavbs
-         ZPkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=WKlacHhWVR2IblvCAgYMcCw7cvtmo7gBzlhxFpijOWM=;
-        b=oSe3/8keCNFk8WMgW9t+LfnfoxEFaOO8zdo8x1h3GcHMzBO9hwMlFhJmAxGtfRW24H
-         1PSS/eIWWq5kpzvBPw46UFQCTcsubIEXqvsuth6jryhUmDoD3rT+jlHOv7FGgkHGT1DK
-         Sq8YSWLboDghQbdYb7LTdu/Ga1L7vkFwc0nAohED01AB3oTeUVc2TEz4gtdyNQUq6/k9
-         CF8WM3v22IVqZyWT63pufaSLaUpcSUmGG6B7Y80AZsEKN5wdsxYof56x4FCjgPjDjlao
-         yQS2E768iUaaJBdHZSL6HbM57gt9QoMcXHCkiF3csD5TF3sHGRs7+7U0E+cJuw3gtOw9
-         vc4Q==
-X-Gm-Message-State: AJIora869NsRZOzgiSKeQaI1Qmof352cb/Iqup7z2bacXNu1O/SYmrCB
-	cnb7rZi5mZk0Yq2zvCEPBD8=
-X-Google-Smtp-Source: AGRyM1tgzHocOxIjG9HexS+g9z9ap2nsem/HblqVyMjIbl5ZbLhG8nAvflW5PCvUObUWjIPHfLadCA==
-X-Received: by 2002:a05:6402:350a:b0:435:df44:30aa with SMTP id b10-20020a056402350a00b00435df4430aamr51209856edd.403.1657098799156;
-        Wed, 06 Jul 2022 02:13:19 -0700 (PDT)
-Received: from skbuf ([188.26.185.61])
-        by smtp.gmail.com with ESMTPSA id er13-20020a056402448d00b0043a5bcf80a2sm6350790edb.60.2022.07.06.02.13.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Jul 2022 02:13:18 -0700 (PDT)
-Date: Wed, 6 Jul 2022 12:13:15 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+	id 1o91Ol-007oFj-P8
+	for linux-mediatek@lists.infradead.org; Wed, 06 Jul 2022 09:32:45 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1o91Nj-0005lo-Ss; Wed, 06 Jul 2022 11:31:39 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1o91Na-004jSK-Sg; Wed, 06 Jul 2022 11:31:34 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1o91Nd-003KbY-Gm; Wed, 06 Jul 2022 11:31:33 +0200
+Date: Wed, 6 Jul 2022 11:31:30 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Vladimir Oltean <olteanv@gmail.com>
 Cc: Wolfram Sang <wsa@kernel.org>,
 	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
 	linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -84,17 +63,22 @@ Cc: Wolfram Sang <wsa@kernel.org>,
 	linux-watchdog@vger.kernel.org, kasan-dev@googlegroups.com,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH 6/6] i2c: Make remove callback return void
-Message-ID: <20220706091315.p5k2jck3rmyjhvqw@skbuf>
+Message-ID: <20220706093130.cet7y7upl76rp6ug@pengutronix.de>
 References: <20220628140313.74984-1-u.kleine-koenig@pengutronix.de>
  <20220628140313.74984-7-u.kleine-koenig@pengutronix.de>
+ <20220706091315.p5k2jck3rmyjhvqw@skbuf>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yp3ilhvx53xygi7l"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220628140313.74984-7-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <20220706091315.p5k2jck3rmyjhvqw@skbuf>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_021322_559615_8D07E95B 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20220706_023243_890734_96DECA0A 
+X-CRM114-Status: GOOD (  19.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,23 +93,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 28, 2022 at 04:03:12PM +0200, Uwe Kleine-König wrote:
-> From: Uwe Kleine-König <uwe@kleine-koenig.org>
-> 
-> The value returned by an i2c driver's remove function is mostly ignored.
-> (Only an error message is printed if the value is non-zero that the
-> error is ignored.)
-> 
-> So change the prototype of the remove function to return no value. This
-> way driver authors are not tempted to assume that passing an error to
-> the upper layer is a good idea. All drivers are adapted accordingly.
-> There is no intended change of behaviour, all callbacks were prepared to
-> return 0 before.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
-> ---
 
-Assuming you remove the spurious kasan change:
+--yp3ilhvx53xygi7l
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+On Wed, Jul 06, 2022 at 12:13:15PM +0300, Vladimir Oltean wrote:
+> On Tue, Jun 28, 2022 at 04:03:12PM +0200, Uwe Kleine-K=F6nig wrote:
+> > From: Uwe Kleine-K=F6nig <uwe@kleine-koenig.org>
+> >=20
+> > The value returned by an i2c driver's remove function is mostly ignored.
+> > (Only an error message is printed if the value is non-zero that the
+> > error is ignored.)
+> >=20
+> > So change the prototype of the remove function to return no value. This
+> > way driver authors are not tempted to assume that passing an error to
+> > the upper layer is a good idea. All drivers are adapted accordingly.
+> > There is no intended change of behaviour, all callbacks were prepared to
+> > return 0 before.
+> >=20
+> > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+> > ---
+>=20
+> Assuming you remove the spurious kasan change:
+
+It's already gone in my tree, see
+https://git.pengutronix.de/cgit/ukl/linux/commit/?h=3Di2c-remove-void
+
+> Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+
+Thanks
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--yp3ilhvx53xygi7l
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmLFVmcACgkQwfwUeK3K
+7AkOwAgAkt7aZ38n1lpOoBzXslSDQyp/lKc47Ehs+a1LTESfOP6+4frSHSJhaIMw
+WX2bIAZO2kfHd2GJJ1+miP0YO3eys+YJus7vlVp9LsZCtTrR7uUlJ9PhG4eVmYxD
+ZPZMbP533Mkp9Tj201PJRSbnOlhRhKnwpl4kQfj9nXD478yP1zbT/7CDh4Im1isE
+dOUnNdPTAnT17u0fIRREu6TIC/hKy5Lh772ukCBsHwkBWQD4WTtLmdL1uZrspPa3
+fKxI4tIGoKufFCNMNNzK8li/dghhpkn4uy8iNwyjkkmjfCXAkNdwNJiCDlo6qPwb
+idJ3DvpJEEx44L8KdcjzBYUHdSNUkQ==
+=ZnQL
+-----END PGP SIGNATURE-----
+
+--yp3ilhvx53xygi7l--
 
