@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C972FC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 09:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 732CDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Jul 2022 09:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QukefwJaKKo44e1d14LzmbgMnsgci/AmGnuZWRiBhKw=; b=fj63ohNGjXslAr6OrsYBK6ZUrN
-	EtIS+SUNhIxVqN6hCvshwf8evTdAwsc5/opi5cyDt8nP+g3K3CUpk9Mn/cXF8ZbuzKwPxhisSc2L8
-	N7bjD+08V56KN/h727oloou5qVL1X9NSlfHQNKK2d2tvJCH8N6R6FnjhHM9i8eqH/tLGsPUOaYC2u
-	IsNYvLANrJcjywG4C3twxdnC6R3uiorYDngVpz0aJK4gX0qcEDunHp6s5NRgI/iyzVC4n/pkMLN1q
-	p1O5i+e6pDjsximtWoSs26kHGIfO4e5II0ycn6aju1j0AnSoJBCvVYEuxUDGZf5Oim5GzkFHg0hbT
-	THtwjvnQ==;
+	bh=q6Dux5fMTxURnflKZSbjOk0x93w1gw0BOVgqiKA6vZA=; b=ZbJJh94t8EcysBaBCNi5g6i/31
+	WIDRHj7OQ2//QOkiiQWbNyBJekM7DDh26q4vuHarlB8aSi+vexdHYH5S5z1o2etpgW21sco+0sltc
+	A1gMweHJ1ll3nwPL2pft1tiAqbNM5jSFR/bte4jPSOcUZsljcBZyz/U7QS8BQAVKls0+fyZcCrKM5
+	k1zlpGCxHvu+JCp/Unwqm6F/Wlp6eBFKb45oywl1iRhshGgy2MNhGB3b5NJduj0ciu57w7JLoHJcD
+	9ec9iEXI9qlnQKoEj7uHRBK79+gXQ5LKkqdg9d5XCr3GBRlmvcR8gNHEFxXkXiVKJEefAgbrVG7T2
+	8TPueMaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o910v-007dqP-UJ; Wed, 06 Jul 2022 09:08:05 +0000
+	id 1o911h-007eMn-Pg; Wed, 06 Jul 2022 09:08:53 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90zT-007cuY-OK; Wed, 06 Jul 2022 09:06:37 +0000
+	id 1o9110-007dtc-QV; Wed, 06 Jul 2022 09:08:12 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6A0FE15A1;
-	Wed,  6 Jul 2022 02:06:35 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2673115A1;
+	Wed,  6 Jul 2022 02:08:10 -0700 (PDT)
 Received: from [10.57.9.19] (unknown [10.57.9.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6EFA43F66F;
-	Wed,  6 Jul 2022 02:06:31 -0700 (PDT)
-Message-ID: <51b98350-0278-8e5d-90f9-3996e378a4a9@arm.com>
-Date: Wed, 6 Jul 2022 10:06:29 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 08F243F66F;
+	Wed,  6 Jul 2022 02:08:06 -0700 (PDT)
+Message-ID: <95d76278-ce40-aab8-1418-322f8b4a3072@arm.com>
+Date: Wed, 6 Jul 2022 10:08:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
-Subject: Re: [PATCH 2/4] Documentation: EM: Switch to micro-Watts scale
+Subject: Re: [PATCH 4/4] cpufreq: scmi: Support the power scale in micro-Watts
+ in SCMI v3.1
 Content-Language: en-US
 To: Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: amitk@kernel.org, rui.zhang@intel.com, viresh.kumar@linaro.org,
  rafael@kernel.org, dietmar.eggemann@arm.com, nm@ti.com, sboyd@kernel.org,
- sudeep.holla@arm.com, cristian.marussi@arm.com, matthias.bgg@gmail.com,
+ sudeep.holla@arm.com, cristian.marussi@arm.com,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
+ linux-pm@vger.kernel.org
 References: <20220622145802.13032-1-lukasz.luba@arm.com>
- <20220622145802.13032-3-lukasz.luba@arm.com>
- <be1e6e75-45e0-2c73-bace-4499b7b1af68@linaro.org>
+ <20220622145802.13032-5-lukasz.luba@arm.com>
+ <653f63e5-c794-27fb-115a-7b051850991b@linaro.org>
 From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <be1e6e75-45e0-2c73-bace-4499b7b1af68@linaro.org>
+In-Reply-To: <653f63e5-c794-27fb-115a-7b051850991b@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_020635_885945_5E4E7990 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220706_020810_991075_F377B936 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,18 +71,80 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 7/5/22 10:10, Daniel Lezcano wrote:
+On 7/5/22 10:25, Daniel Lezcano wrote:
 > On 22/06/2022 16:58, Lukasz Luba wrote:
->> The EM now uses the micro-Watts scale for the power values. Update
->> related documentation to reflect that fact.
->>
->> Fix also a problematic sentence in the doc "to:" which triggers test
->> scripts complaining about wrong email address.
+>> The SCMI v3.1 adds support for power values in micro-Watts. They are not
+>> always in milli-Watts anymore (ignoring the bogo-Watts). Thus, the power
+>> must be converted conditionally before sending to Energy Model. Add the
+>> logic which handles the needed checks and conversions.
 >>
 >> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+>> ---
+>>   drivers/cpufreq/scmi-cpufreq.c | 15 ++++++++++-----
+>>   1 file changed, 10 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/cpufreq/scmi-cpufreq.c 
+>> b/drivers/cpufreq/scmi-cpufreq.c
+>> index bfd35583d653..513a071845c2 100644
+>> --- a/drivers/cpufreq/scmi-cpufreq.c
+>> +++ b/drivers/cpufreq/scmi-cpufreq.c
+>> @@ -100,7 +100,7 @@ static int __maybe_unused
+>>   scmi_get_cpu_power(struct device *cpu_dev, unsigned long *power,
+>>              unsigned long *KHz)
+>>   {
+>> -    bool power_scale_mw = perf_ops->power_scale_mw_get(ph);
+>> +    enum scmi_power_scale power_scale = perf_ops->power_scale_get(ph);
+>>       unsigned long Hz;
+>>       int ret, domain;
+>> @@ -114,8 +114,8 @@ scmi_get_cpu_power(struct device *cpu_dev, 
+>> unsigned long *power,
+>>       if (ret)
+>>           return ret;
+>> -    /* Provide bigger resolution power to the Energy Model */
+>> -    if (power_scale_mw)
+>> +    /* Convert the power to uW if it is mW (ignore bogoW) */
+>> +    if (power_scale == SCMI_POWER_MILLIWATTS)
+>>           *power *= MICROWATT_PER_MILLIWATT;
+>>       /* The EM framework specifies the frequency in KHz. */
+>> @@ -255,8 +255,9 @@ static int scmi_cpufreq_exit(struct cpufreq_policy 
+>> *policy)
+>>   static void scmi_cpufreq_register_em(struct cpufreq_policy *policy)
+>>   {
+>>       struct em_data_callback em_cb = EM_DATA_CB(scmi_get_cpu_power);
+>> -    bool power_scale_mw = perf_ops->power_scale_mw_get(ph);
+>> +    enum scmi_power_scale power_scale = perf_ops->power_scale_get(ph);
+>>       struct scmi_data *priv = policy->driver_data;
+>> +    bool em_power_scale = false;
 > 
-> Reviewed-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> 
+> Just pass 'false' to em_dev_register_perf_domain()
 
-Thanks for the reviews!
+We cannot,
+
+> 
+>>       /*
+>>        * This callback will be called for each policy, but we don't 
+>> need to
+>> @@ -268,9 +269,13 @@ static void scmi_cpufreq_register_em(struct 
+>> cpufreq_policy *policy)
+>>       if (!priv->nr_opp)
+>>           return;
+>> +    if (power_scale == SCMI_POWER_MILLIWATTS
+>> +        || power_scale == SCMI_POWER_MICROWATTS)
+>> +        em_power_scale = true;
+>> +
+
+because sometimes it's 'true'.
+
+>>       em_dev_register_perf_domain(get_cpu_device(policy->cpu), 
+>> priv->nr_opp,
+>>                       &em_cb, priv->opp_shared_cpus,
+>> -                    power_scale_mw);
+>> +                    em_power_scale);
+
+Then we just use the variable here in single call.
+
+>>   }
+>>   static struct cpufreq_driver scmi_cpufreq_driver = {
+> 
+> 
 
