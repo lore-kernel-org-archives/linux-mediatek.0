@@ -4,49 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69AC0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 17:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954C8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 19:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U98DsMJrp9V9Xsv6e0KzL3H3dc3snXiiKZfAaSGYqZc=; b=QF0UtWg0rGyA5AkZ+NDoro0YaZ
-	mAkhIZaK323kZq6PtAMEyVc12O14sC0xqqB6m38yVO39rgb6l/yDO+cHuLUc9FkEphMQKckin/oCM
-	U5A8+Conq13geu5HtkPIT/SAqHDU/+YG0jrrPH/h9byImcglVJ6h1UuIvB/xoMyYuMBuJlHrgaHsC
-	cveG1NqScKsirzBKcotSdwl2oYhv4WsL8YDdPEIR0Fmhw3FSISnJAZEccW7Ho0gef3oSYS9eSOB0p
-	Y3ADwQMr1ATlsWWaO9+cTSa7NpS1SCCGseE2LijZA+8zADSqJRykKWe+1GDyUvshV/IKfeFMThXgP
-	C5C6vIyQ==;
+	bh=Y+Pd0C2Jgul09TUL3U/74kKKrdzHD+XdDczHatmVnZs=; b=o2u2gKzRpoc56H8Si5UuJUZ4o1
+	bSKgNqS703cCayJLScbK19/t8T41JNCuSE8sO7yjJKZwZL8tkcUaHprHtA84tRoQZp98nVsVe3eFe
+	ACChO5ilOqXfVnGnYFQkfovv2vpXJJ6k/yDc+JvCtW0JFoDjqrpzIErlCZt+11RIRvUOXHEgb5cmo
+	ExoEAVjZftm7KmGjHlU7jR+antsemOEHhAPB89R3ndC091pj/uzMp+bg6AR8R1knMEjKX8V0OTNQL
+	4or5a/CNknHaHyKk/61w7H4VoBzf1w17Fpm6pDLMwOumCmq1NzqPQWmNagpu3gIyDbppyuD+Mbyu7
+	xENnp8tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9V7B-00HBdV-Ex; Thu, 07 Jul 2022 17:16:33 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1o9XKH-00HZku-Ce; Thu, 07 Jul 2022 19:38:13 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9V6z-00HBWo-8x; Thu, 07 Jul 2022 17:16:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=U98DsMJrp9V9Xsv6e0KzL3H3dc3snXiiKZfAaSGYqZc=; b=lh2uPKUSARX5UrfXRH9nkiKEKN
-	uLz64EoEaBZ94vKg1Gxta/01zw95gS8JX12EMLKxzUY2ENWYr6mpNpWQdFo4ZtQd75jvyKRrzPpC+
-	GPkQNrblVBtJldOkTxCs5ARHGTpl6WUXpyghoLB3DOka+18z7Gdo7fglsCIADBDYX18qRj9Nfb+jT
-	15P/tmqBaUX22I4xCs7GNN81nUR9MhYhq0Gf1Dw7CODiar2bX90cBHg5euzlIDSSC70TaF38rbml9
-	C8tlC8Nsl6jRe3ycdeYbrM+Y1Ciz2N6tQ5mMcmg1Lyfgli0FYbmL7O1qRjZNU8pJlbBWwNe4LQ0LC
-	p6meKMLA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33234)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1o9V6X-0004B5-Td; Thu, 07 Jul 2022 18:15:53 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1o9V6Q-0005RN-A0; Thu, 07 Jul 2022 18:15:46 +0100
-Date: Thu, 7 Jul 2022 18:15:46 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
+	id 1o9XK4-00HZiX-55; Thu, 07 Jul 2022 19:38:02 +0000
+Received: by mail-ej1-x631.google.com with SMTP id u15so9742047ejx.9;
+        Thu, 07 Jul 2022 12:37:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=Y+Pd0C2Jgul09TUL3U/74kKKrdzHD+XdDczHatmVnZs=;
+        b=IK3gzNI+jOL0G0of3wETHrg/P8KDzw6Ry651iZPE+2mMp5j3AAOhV72BfH4hKlJayv
+         c3VLQpxTSCEORD0C3zQ7AB5b4UDKubO6zrKxhJtUzZXCfrALPTLmJCirlCA52jZ0Wal8
+         VD48BckmSK8VokT/TlNXPv4RjHVA+n0DNK+E1QtnOmt3FB95fYEXRZnRdG52ttXLMcDA
+         i/20boy/3DbbV3rz55Qdp1tPMPVvGPOLre19ZpKg2kdkmvoq8J6iZAueH0JHsWTh5WMK
+         Ua9hvL0gcZ9CB0BW24HG4tJXA4pdRFWibGhG6YQRFj93biZ1HclXo54V8Lo3rq+AhmI9
+         aLKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=Y+Pd0C2Jgul09TUL3U/74kKKrdzHD+XdDczHatmVnZs=;
+        b=oE1VZePe1WAXt+dHmhscWxNsRDvMHmNus5L8OdppkTrf4ZpECQPbqtXYiwaPE1cz9C
+         oxIG5etfn5nS1NEV8wB+5gN3OxJagiUBQL1Vn1RE/jBs6SnEjYFyXwtnG3dcq7lG/q+4
+         Ndxg0uqJqrK02gsOdrdMtUrJKIr6ulwtNq+ABGJ7fbNoE7pOAp3qRn+s2eGQ6V6MFYdn
+         OTYvOnukvkQ4Mha9PqLXbStCyAKdkeHWa6fRT0AX9j1XJwkv8zmWPm6peMCnhB5JTBbe
+         neyl8WN7fkAh3d2om5N+Y3lj8Y0SqKEsOir7ltgUjNYzBptnZ8UbNCCwpcDGgDIs9Ocd
+         MmBQ==
+X-Gm-Message-State: AJIora8nI2EHUBRIMEQC/XXbCWrpqcTPUH7aKEi0Ih2HRZlDK6mQ2b5v
+	ivmvk0KlkrT46iLyWEw/muI=
+X-Google-Smtp-Source: AGRyM1viMS1WLe3J6Lfqog+t1VwZSwuFbxf1jMCYjES0tbSRvOTKBlGijGZWZzAKmcnlB/8LL6nqQw==
+X-Received: by 2002:a17:907:6e26:b0:726:97af:9846 with SMTP id sd38-20020a1709076e2600b0072697af9846mr46805072ejc.300.1657222676241;
+        Thu, 07 Jul 2022 12:37:56 -0700 (PDT)
+Received: from skbuf ([188.25.231.143])
+        by smtp.gmail.com with ESMTPSA id s12-20020a170906354c00b0072637b9c8c0sm18493755eja.219.2022.07.07.12.37.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Jul 2022 12:37:55 -0700 (PDT)
+Date: Thu, 7 Jul 2022 22:37:53 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Alvin __ipraga <alsi@bang-olufsen.dk>,
@@ -67,10 +80,10 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	UNGLinuxDriver@microchip.com,
 	Vivien Didelot <vivien.didelot@gmail.com>,
 	Woojung Huh <woojung.huh@microchip.com>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
 Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
  and DSA ports
-Message-ID: <YscUwrPnBZ3dzpQ/@shell.armlinux.org.uk>
+Message-ID: <20220707193753.2j67ni3or3bfkt6k@skbuf>
 References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
  <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
  <20220706102621.hfubvn3wa6wlw735@skbuf>
@@ -79,13 +92,14 @@ References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
  <20220707152727.foxrd4gvqg3zb6il@skbuf>
  <YscAPP7mF3KEE1/p@shell.armlinux.org.uk>
  <20220707163831.cjj54a6ys5bceb22@skbuf>
+ <YscUwrPnBZ3dzpQ/@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220707163831.cjj54a6ys5bceb22@skbuf>
+In-Reply-To: <YscUwrPnBZ3dzpQ/@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_101621_505314_A9CC0E21 
-X-CRM114-Status: GOOD (  59.95  )
+X-CRM114-CacheID: sfid-20220707_123800_262558_C0485969 
+X-CRM114-Status: GOOD (  55.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,168 +114,396 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 07, 2022 at 07:38:31PM +0300, Vladimir Oltean wrote:
-> On Thu, Jul 07, 2022 at 04:48:12PM +0100, Russell King (Oracle) wrote:
-> > Let's go through this step by step.
+On Thu, Jul 07, 2022 at 06:15:46PM +0100, Russell King (Oracle) wrote:
+> > This is why dsa_port_phylink_register() calls phylink_of_phy_connect()
+> > without checking whether it has a fixed-link or a PHY, because it
+> > doesn't fail even if it doesn't do anything.
 > > 
-> > 1. pl->cfg_link_an_mode != MLO_AN_PHY
-> >    The default value for cfg_link_an_mode is MLO_AN_PHY. If it's
-> >    anything other than that, then a fixed-link or in-band mode has
-> >    been specified, and we don't want to override that. So this call
-> >    needs to fail.
+> > In fact I've wanted to make a correction to my previous phrasing that
+> > "this function shouldn't be called if phylink_{,fwnode_}connect_phy() is
+> > going to be called later". The correction is "... with a phy-handle".
 > 
-> Thanks for the explanation.
-> 
-> Yes, I noticed that phylink_set_max_fixed_link() relies on the fact that
-> pl->cfg_link_an_mode has the unset value of 0, which coincidentally is
-> MLO_AN_PHY.
-> 
-> > 2. pl->phydev
-> >    If a PHY has been attached, then the pre-condition for calling this
-> >    function immediately after phylink_create() has been violated,
-> >    because the only way it can be non-NULL is if someone's called one of
-> >    the phylink functions that connects a PHY. Note: SFPs will not set
-> >    their PHY here, because, for them to discover that there's a PHY, the
-> >    network interface needs to be up, and it will never be up here... but
-> >    in any case...
-> 
-> Ok, so this does check for a precondition that the caller did something
-> correctly. But it doesn't (and can't) check that all preconditions and
-> postconditions are satisfied. That's one of my irks, why bother checking
-> the easy to satisfy precondition (which depends on the code organization,
-> static information, easy to check), and give up on the hard one (which
-> depends on the device tree blob, dynamic information, not so easy).
+> I'm not sure that clarification makes sense when talking about
+> phylink_connect_phy(), so I think if you're clarifying it with a
+> firmware property, you're only talking about
+> phylink_fwnode_connect_phy() now?
 
-So what you're asking is: why bother doing any checks if you can't do
-all of them?
+Yes, it's super hard to verbalize, and this is the reason why I didn't
+add "... with a phy-handle" in the first place.
 
-My response would be: isn't best effort better than doing nothing?
+I wanted to say: phylink_connect_phy(), OR phylink_fwnode_connect_phy()
+WITH a phy-handle. I shouldn't have conflated them in the first place.
 
-In my mind, it is best effort, because:
-
-a) if you've called it when the preconditions (with the exception of a
-future PHY) are not satisfied, then it fails with -EBUSY.
-b) if this call succeeds, then it locks out the future ability to bind
-a PHY.
-
-So, if one forgets to check whether there'll be a future PHY, and call
-this anyway, then a future attempt to bind a PHY to phylink fails and
-you get a failure.
-
-Considering that we are only talking about DSA making use of this (no
-other network driver has this behaviour) and this is being handled by
-core DSA code, we could label this up as "this is for DSA use only."
-
-> > > So this is what I don't understand. If we've called phylink_set_max_fixed_link()
-> > > we've changed pl->cfg_link_an_mode to MLO_AN_FIXED and this will
-> > > silently break future calls to phylink_{,fwnode_}connect_phy(), so DSA
-> > > predicts if it's going to call either of those connect_phy() functions,
-> > > and calls phylink_set_max_fixed_link() only if it won't. Right?
+> > > > Can phylink absorb all this logic, and automatically call phylink_set_max_fixed_link()
+> > > > based on the following?
+> > > > 
+> > > > (1) struct phylink_config gets extended with a bool fallback_max_fixed_link.
+> > > > (2) DSA CPU and DSA ports set this to true in dsa_port_phylink_register().
+> > > > (3) phylink_set_max_fixed_link() is hooked into this -ENODEV error
+> > > >     condition from phylink_fwnode_phy_connect():
+> > > > 
+> > > > 	phy_fwnode = fwnode_get_phy_node(fwnode);
+> > > > 	if (IS_ERR(phy_fwnode)) {
+> > > > 		if (pl->cfg_link_an_mode == MLO_AN_PHY)
+> > > > 			return -ENODEV; <- here
+> > > > 		return 0;
+> > > > 	}
 > > > 
-> > > You've structured the checks in this "distributed" way because phylink
-> > > can't really predict whether phylink_{,fwnode_}connect_phy() will be
-> > > called after phylink_set_max_fixed_link(), right? I mean, it can
-> > > probably predict the fwnode_ variant, but not phylink_connect_phy, and
-> > > this is why it is up to the caller to decide when to call and when not to.
+> > > My question in response would be - why should this DSA specific behaviour
+> > > be handled completely internally within phylink, when it's a DSA
+> > > specific behaviour? Why do we need boolean flags for this?
 > > 
-> > phylink has no idea whether phylink_fwnode_connect_phy() will be called
-> > with the same fwnode as phylink_create(), so it really can't make any
-> > assumptions about whether there will be a PHY or not.
-> 
-> This is interesting. Is there a use case for passing a different
-> fwnode_handle to the 2 functions?
-
-That depends on the driver. It looks like
-drivers/net/ethernet/ti/am65-cpsw-nuss.c may well pass in different nodes
-in the firmware tree.
-
-> > > It should maybe also
-> > > say that this function shouldn't be called if phylink_{,fwnode_}connect_phy()
-> > > is going to be called later.
+> > Because the end result will be simpler if we respect the separation of
+> > concerns that continues to exist, and it's still phylink's business to
+> > say what is and isn't valid. DSA still isn't aware of the bindings
+> > required by phylink, it just passes its fwnode to it. Practically
+> > speaking, I wouldn't be scratching my head as to why we're checking for
+> > half the prerequisites of phylink_set_max_fixed_link() in one place and
+> > for the other half in another.
 > > 
-> > It's already a precondition that phylink_{,fwnode_}connect_phy() fail if
-> > we're in fixed-link mode (because PHYs have never been supported when in
-> > fixed-link mode - if one remembers, the old fixed-link code used to
-> > provide its own emulation of a PHY to make fixed-links work.) So PHYs
-> > and fixed-links have always been mutually exclusive before phylink, and
-> > continue to be so with phylink.
-> 
-> Define "fail" exactly, because if I look in phylink_fwnode_phy_connect(), I see:
-> 
-> 	/* Fixed links and 802.3z are handled without needing a PHY */
-> 	if (pl->cfg_link_an_mode == MLO_AN_FIXED ||
-> 	    (pl->cfg_link_an_mode == MLO_AN_INBAND &&
-> 	     phy_interface_mode_is_8023z(pl->link_interface)))
-> 		return 0; <- does this count as failure?
-
-Sorry, yes, that is correct - it ignores the attempt (so drivers don't
-have to conditionalise the call for this everywhere.)
-
-> This is why dsa_port_phylink_register() calls phylink_of_phy_connect()
-> without checking whether it has a fixed-link or a PHY, because it
-> doesn't fail even if it doesn't do anything.
-> 
-> In fact I've wanted to make a correction to my previous phrasing that
-> "this function shouldn't be called if phylink_{,fwnode_}connect_phy() is
-> going to be called later". The correction is "... with a phy-handle".
-
-I'm not sure that clarification makes sense when talking about
-phylink_connect_phy(), so I think if you're clarifying it with a
-firmware property, you're only talking about
-phylink_fwnode_connect_phy() now?
-
-> > > Can phylink absorb all this logic, and automatically call phylink_set_max_fixed_link()
-> > > based on the following?
-> > > 
-> > > (1) struct phylink_config gets extended with a bool fallback_max_fixed_link.
-> > > (2) DSA CPU and DSA ports set this to true in dsa_port_phylink_register().
-> > > (3) phylink_set_max_fixed_link() is hooked into this -ENODEV error
-> > >     condition from phylink_fwnode_phy_connect():
-> > > 
-> > > 	phy_fwnode = fwnode_get_phy_node(fwnode);
-> > > 	if (IS_ERR(phy_fwnode)) {
-> > > 		if (pl->cfg_link_an_mode == MLO_AN_PHY)
-> > > 			return -ENODEV; <- here
-> > > 		return 0;
-> > > 	}
+> > True, through this patch set DSA is creating its own context specific
+> > extension of phylink bindings, but arguably those existed before DSA was
+> > even integrated with phylink, and we're just fixing something now we
+> > didn't realize at the time we'd need to do.
 > > 
-> > My question in response would be - why should this DSA specific behaviour
-> > be handled completely internally within phylink, when it's a DSA
-> > specific behaviour? Why do we need boolean flags for this?
+> > I can reverse the question, why would phylink even want to be involved
+> > in how the max fixed link parameters are deduced, and it doesn't just
+> > require that a fixed-link software node is constructed somehow
+> > (irrelevant to phylink how), and phylink is just modified to find and
+> > work with that if it exists? Isn't it for the exact same reason,
+> > separation of concerns, that it's easiest for phylink to figure out what
+> > is the most appropriate maximum fixed-link configuration?
 > 
-> Because the end result will be simpler if we respect the separation of
-> concerns that continues to exist, and it's still phylink's business to
-> say what is and isn't valid. DSA still isn't aware of the bindings
-> required by phylink, it just passes its fwnode to it. Practically
-> speaking, I wouldn't be scratching my head as to why we're checking for
-> half the prerequisites of phylink_set_max_fixed_link() in one place and
-> for the other half in another.
+> If that could be done, I'd love it, because then we don't have this in
+> phylink at all, and it can all be a DSA problem to solve. It also means
+> that others won't be tempted to use the interface incorrectly.
 > 
-> True, through this patch set DSA is creating its own context specific
-> extension of phylink bindings, but arguably those existed before DSA was
-> even integrated with phylink, and we're just fixing something now we
-> didn't realize at the time we'd need to do.
-> 
-> I can reverse the question, why would phylink even want to be involved
-> in how the max fixed link parameters are deduced, and it doesn't just
-> require that a fixed-link software node is constructed somehow
-> (irrelevant to phylink how), and phylink is just modified to find and
-> work with that if it exists? Isn't it for the exact same reason,
-> separation of concerns, that it's easiest for phylink to figure out what
-> is the most appropriate maximum fixed-link configuration?
+> I'm not sure how practical that is when we have both DT and ACPI to deal
+> with, and ACPI is certainly out of my knowledge area to be able to
+> construct a software node to specify a fixed-link. Maybe it can be done
+> at the fwnode layer? I don't know.
 
-If that could be done, I'd love it, because then we don't have this in
-phylink at all, and it can all be a DSA problem to solve. It also means
-that others won't be tempted to use the interface incorrectly.
+I don't want to be misunderstood. I brought up software nodes because
+I'm sure you must have thought about this too, before proposing what you
+did here. And unless there's a technical reason against software nodes
+(which there doesn't appear to be, but I don't want to get ahead of
+myself), I figured you must be OK with phylink absorbing the logic, case
+in which I just don't understand why you are pushing back on a proposal
+how to make phylink absorb the logic completely.
 
-I'm not sure how practical that is when we have both DT and ACPI to deal
-with, and ACPI is certainly out of my knowledge area to be able to
-construct a software node to specify a fixed-link. Maybe it can be done
-at the fwnode layer? I don't know.
+> Do you have a handy example of what you're suggesting?
 
-Do you have a handy example of what you're suggesting?
+No, I didn't, but I thought, how hard can it be, and here's a hacked up
+attempt on one of my boards:
 
+From 5d002f03c91b357be304d41f7422969d0dd89f5b Mon Sep 17 00:00:00 2001
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+Date: Thu, 7 Jul 2022 21:04:32 +0300
+Subject: [PATCH] dsa_port_fixup_broken_dt
+
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+---
+ arch/arm/boot/dts/ls1021a-tsn.dts      |  5 --
+ drivers/base/swnode.c                  | 14 +++-
+ drivers/net/dsa/sja1105/sja1105_main.c |  4 +-
+ include/linux/property.h               |  4 ++
+ net/dsa/dsa_priv.h                     |  2 +-
+ net/dsa/port.c                         | 99 +++++++++++++++++++++-----
+ net/dsa/slave.c                        |  2 +-
+ 7 files changed, 100 insertions(+), 30 deletions(-)
+
+diff --git a/arch/arm/boot/dts/ls1021a-tsn.dts b/arch/arm/boot/dts/ls1021a-tsn.dts
+index 1ea32fff4120..c577f90057c7 100644
+--- a/arch/arm/boot/dts/ls1021a-tsn.dts
++++ b/arch/arm/boot/dts/ls1021a-tsn.dts
+@@ -94,11 +94,6 @@ port@4 {
+ 				rx-internal-delay-ps = <0>;
+ 				tx-internal-delay-ps = <0>;
+ 				reg = <4>;
+-
+-				fixed-link {
+-					speed = <1000>;
+-					full-duplex;
+-				};
+ 			};
+ 		};
+ 	};
+diff --git a/drivers/base/swnode.c b/drivers/base/swnode.c
+index 0a482212c7e8..b2ea08f0e898 100644
+--- a/drivers/base/swnode.c
++++ b/drivers/base/swnode.c
+@@ -972,8 +972,9 @@ void software_node_unregister(const struct software_node *node)
+ EXPORT_SYMBOL_GPL(software_node_unregister);
+ 
+ struct fwnode_handle *
+-fwnode_create_software_node(const struct property_entry *properties,
+-			    const struct fwnode_handle *parent)
++fwnode_create_named_software_node(const struct property_entry *properties,
++				  const struct fwnode_handle *parent,
++				  const char *name)
+ {
+ 	struct fwnode_handle *fwnode;
+ 	struct software_node *node;
+@@ -991,6 +992,7 @@ fwnode_create_software_node(const struct property_entry *properties,
+ 		return ERR_CAST(node);
+ 
+ 	node->parent = p ? p->node : NULL;
++	node->name = name;
+ 
+ 	fwnode = swnode_register(node, p, 1);
+ 	if (IS_ERR(fwnode))
+@@ -998,6 +1000,14 @@ fwnode_create_software_node(const struct property_entry *properties,
+ 
+ 	return fwnode;
+ }
++EXPORT_SYMBOL_GPL(fwnode_create_named_software_node);
++
++struct fwnode_handle *
++fwnode_create_software_node(const struct property_entry *properties,
++			    const struct fwnode_handle *parent)
++{
++	return fwnode_create_named_software_node(properties, parent, NULL);
++}
+ EXPORT_SYMBOL_GPL(fwnode_create_software_node);
+ 
+ void fwnode_remove_software_node(struct fwnode_handle *fwnode)
+diff --git a/drivers/net/dsa/sja1105/sja1105_main.c b/drivers/net/dsa/sja1105/sja1105_main.c
+index b253e27bcfb4..6c7deebc8d76 100644
+--- a/drivers/net/dsa/sja1105/sja1105_main.c
++++ b/drivers/net/dsa/sja1105/sja1105_main.c
+@@ -1218,8 +1218,8 @@ static int sja1105_parse_ports_node(struct sja1105_private *priv,
+ 			if (!of_phy_is_fixed_link(child)) {
+ 				dev_err(dev, "phy-handle or fixed-link "
+ 					"properties missing!\n");
+-				of_node_put(child);
+-				return -ENODEV;
++//				of_node_put(child);
++//				return -ENODEV;
+ 			}
+ 			/* phy-handle is missing, but fixed-link isn't.
+ 			 * So it's a fixed link. Default to PHY role.
+diff --git a/include/linux/property.h b/include/linux/property.h
+index a5b429d623f6..23330ae2b1fa 100644
+--- a/include/linux/property.h
++++ b/include/linux/property.h
+@@ -492,6 +492,10 @@ void software_node_unregister(const struct software_node *node);
+ struct fwnode_handle *
+ fwnode_create_software_node(const struct property_entry *properties,
+ 			    const struct fwnode_handle *parent);
++struct fwnode_handle *
++fwnode_create_named_software_node(const struct property_entry *properties,
++				  const struct fwnode_handle *parent,
++				  const char *name);
+ void fwnode_remove_software_node(struct fwnode_handle *fwnode);
+ 
+ int device_add_software_node(struct device *dev, const struct software_node *node);
+diff --git a/net/dsa/dsa_priv.h b/net/dsa/dsa_priv.h
+index d9722e49864b..95c4e13e2dbf 100644
+--- a/net/dsa/dsa_priv.h
++++ b/net/dsa/dsa_priv.h
+@@ -284,7 +284,7 @@ int dsa_port_mrp_add_ring_role(const struct dsa_port *dp,
+ 			       const struct switchdev_obj_ring_role_mrp *mrp);
+ int dsa_port_mrp_del_ring_role(const struct dsa_port *dp,
+ 			       const struct switchdev_obj_ring_role_mrp *mrp);
+-int dsa_port_phylink_create(struct dsa_port *dp);
++int dsa_port_phylink_create(struct dsa_port *dp, struct fwnode_handle *fwnode);
+ int dsa_port_link_register_of(struct dsa_port *dp);
+ void dsa_port_link_unregister_of(struct dsa_port *dp);
+ int dsa_port_hsr_join(struct dsa_port *dp, struct net_device *hsr);
+diff --git a/net/dsa/port.c b/net/dsa/port.c
+index 3738f2d40a0b..4ed9075468f4 100644
+--- a/net/dsa/port.c
++++ b/net/dsa/port.c
+@@ -1521,15 +1521,14 @@ static const struct phylink_mac_ops dsa_port_phylink_mac_ops = {
+ 	.mac_link_up = dsa_port_phylink_mac_link_up,
+ };
+ 
+-int dsa_port_phylink_create(struct dsa_port *dp)
++int dsa_port_phylink_create(struct dsa_port *dp, struct fwnode_handle *fwnode)
+ {
+ 	struct dsa_switch *ds = dp->ds;
+ 	phy_interface_t mode;
+ 	int err;
+ 
+-	err = of_get_phy_mode(dp->dn, &mode);
+-	if (err)
+-		mode = PHY_INTERFACE_MODE_NA;
++	err = fwnode_get_phy_mode(fwnode);
++	mode = err < 0 ? PHY_INTERFACE_MODE_NA : err;
+ 
+ 	/* Presence of phylink_mac_link_state or phylink_mac_an_restart is
+ 	 * an indicator of a legacy phylink driver.
+@@ -1541,8 +1540,8 @@ int dsa_port_phylink_create(struct dsa_port *dp)
+ 	if (ds->ops->phylink_get_caps)
+ 		ds->ops->phylink_get_caps(ds, dp->index, &dp->pl_config);
+ 
+-	dp->pl = phylink_create(&dp->pl_config, of_fwnode_handle(dp->dn),
+-				mode, &dsa_port_phylink_mac_ops);
++	dp->pl = phylink_create(&dp->pl_config, fwnode, mode,
++				&dsa_port_phylink_mac_ops);
+ 	if (IS_ERR(dp->pl)) {
+ 		pr_err("error creating PHYLINK: %ld\n", PTR_ERR(dp->pl));
+ 		return PTR_ERR(dp->pl);
+@@ -1627,16 +1626,19 @@ static int dsa_port_phylink_register(struct dsa_port *dp)
+ {
+ 	struct dsa_switch *ds = dp->ds;
+ 	struct device_node *port_dn = dp->dn;
++	struct fwnode_handle *fwnode;
+ 	int err;
+ 
+ 	dp->pl_config.dev = ds->dev;
+ 	dp->pl_config.type = PHYLINK_DEV;
+ 
+-	err = dsa_port_phylink_create(dp);
++	fwnode = port_dn->fwnode.secondary ? : of_fwnode_handle(port_dn);
++
++	err = dsa_port_phylink_create(dp, fwnode);
+ 	if (err)
+ 		return err;
+ 
+-	err = phylink_of_phy_connect(dp->pl, port_dn, 0);
++	err = phylink_fwnode_phy_connect(dp->pl, fwnode, 0);
+ 	if (err && err != -ENODEV) {
+ 		pr_err("could not attach to PHY: %d\n", err);
+ 		goto err_phy_connect;
+@@ -1649,23 +1651,82 @@ static int dsa_port_phylink_register(struct dsa_port *dp)
+ 	return err;
+ }
+ 
++static int dsa_port_fixup_broken_dt(struct dsa_port *dp)
++{
++	struct property_entry fixed_link_props[] = {
++		PROPERTY_ENTRY_BOOL("full-duplex"),
++		PROPERTY_ENTRY_U32("speed", 1000), /* TODO determine actual speed */
++		{},
++	};
++	struct property_entry port_props[3] = {};
++	struct fwnode_handle *fixed_link_fwnode;
++	struct fwnode_handle *new_port_fwnode;
++	struct device_node *dn = dp->dn;
++	phy_interface_t mode;
++	int err;
++
++	if (of_parse_phandle(dn, "phy-handle", 0) ||
++	    of_phy_is_fixed_link(dn))
++		/* Nothing broken, nothing to fix.
++		 * TODO: As discussed with Russell, maybe phylink could provide
++		 * a more comprehensive helper to determine what constitutes a
++		 * valid fwnode binding than this guerilla kludge.
++		 */
++		return 0;
++
++	err = of_get_phy_mode(dn, &mode);
++	if (err)
++		/* TODO this may be missing too, ask the driver for the
++		 * max-speed interface mode for this port
++		 */
++		mode = PHY_INTERFACE_MODE_NA;
++
++	port_props[0] = PROPERTY_ENTRY_U32("reg", dp->index);
++	port_props[1] = PROPERTY_ENTRY_STRING("phy-mode", phy_modes(mode));
++
++	new_port_fwnode = fwnode_create_software_node(port_props, NULL);
++	if (IS_ERR(new_port_fwnode))
++		return PTR_ERR(new_port_fwnode);
++
++	/* Node needs to be named so that phylink's call to
++	 * fwnode_get_named_child_node() finds it.
++	 */
++	fixed_link_fwnode = fwnode_create_named_software_node(fixed_link_props,
++							      new_port_fwnode,
++							      "fixed-link");
++	if (IS_ERR(fixed_link_fwnode)) {
++		fwnode_remove_software_node(new_port_fwnode);
++		return PTR_ERR(fixed_link_fwnode);
++	}
++
++	/* set_secondary_fwnode() takes a struct device as argument,
++	 * and we have none for a port. TODO we need to free this.
++	 */
++	dn->fwnode.secondary = new_port_fwnode;
++
++	return 0;
++}
++
+ int dsa_port_link_register_of(struct dsa_port *dp)
+ {
+ 	struct dsa_switch *ds = dp->ds;
+-	struct device_node *phy_np;
+ 	int port = dp->index;
++	int err;
++
++	err = dsa_port_fixup_broken_dt(dp);
++	if (err) {
++		dev_err(ds->dev,
++			"Failed to fix up broken DT for shared port %d: %pe\n",
++			dp->index, ERR_PTR(err));
++		return err;
++	}
+ 
+ 	if (!ds->ops->adjust_link) {
+-		phy_np = of_parse_phandle(dp->dn, "phy-handle", 0);
+-		if (of_phy_is_fixed_link(dp->dn) || phy_np) {
+-			if (ds->ops->phylink_mac_link_down)
+-				ds->ops->phylink_mac_link_down(ds, port,
+-					MLO_AN_FIXED, PHY_INTERFACE_MODE_NA);
+-			of_node_put(phy_np);
+-			return dsa_port_phylink_register(dp);
+-		}
+-		of_node_put(phy_np);
+-		return 0;
++		if (ds->ops->phylink_mac_link_down)
++			ds->ops->phylink_mac_link_down(ds, port, MLO_AN_FIXED,
++						       PHY_INTERFACE_MODE_NA);
++
++		return dsa_port_phylink_register(dp);
+ 	}
+ 
+ 	dev_warn(ds->dev,
+diff --git a/net/dsa/slave.c b/net/dsa/slave.c
+index ad6a6663feeb..f243e73cb522 100644
+--- a/net/dsa/slave.c
++++ b/net/dsa/slave.c
+@@ -2245,7 +2245,7 @@ static int dsa_slave_phy_setup(struct net_device *slave_dev)
+ 		dp->pl_config.poll_fixed_state = true;
+ 	}
+ 
+-	ret = dsa_port_phylink_create(dp);
++	ret = dsa_port_phylink_create(dp, of_fwnode_handle(dp->dn));
+ 	if (ret)
+ 		return ret;
+ 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.25.1
+
+
+It boots and works:
+
+[    4.315754] sja1105 spi0.1: configuring for fixed/rgmii link mode
+[    4.322653] sja1105 spi0.1 swp5 (uninitialized): PHY [mdio@2d24000:06] driver [Broadcom BCM5464] (irq=POLL)
+[    4.334796] sja1105 spi0.1 swp2 (uninitialized): PHY [mdio@2d24000:03] driver [Broadcom BCM5464] (irq=POLL)
+[    4.345853] sja1105 spi0.1 swp3 (uninitialized): PHY [mdio@2d24000:04] driver [Broadcom BCM5464] (irq=POLL)
+[    4.356859] sja1105 spi0.1 swp4 (uninitialized): PHY [mdio@2d24000:05] driver [Broadcom BCM5464] (irq=POLL)
+[    4.367245] device eth2 entered promiscuous mode
+[    4.371864] DSA: tree 0 setup
+[    4.376971] sja1105 spi0.1: Link is Up - 1Gbps/Full - flow control off
+(...)
+root@black:~# ip link set swp2 up && dhclient -i swp2 && ip addr show swp2
+[   64.762756] fsl-gianfar soc:ethernet@2d90000 eth2: Link is Up - 1Gbps/Full - flow control off
+[   64.771530] sja1105 spi0.1 swp2: configuring for phy/rgmii-id link mode
+[   68.955048] sja1105 spi0.1 swp2: Link is Up - 1Gbps/Full - flow control off
+12: swp2@eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:1f:7b:63:02:48 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.0.68/24 brd 10.0.0.255 scope global dynamic swp2
+       valid_lft 600sec preferred_lft 600sec
+
+It's by far the messiest patch I've posted to the list (in the interest
+of responding quickly), but if you study the code you can obviously see
+what's missing, basically I've hardcoded the speed to 1000 and I'm
+copying the phy-mode from the real DT node.
+
+Unfortunately I don't have the time (and most importantly the interest)
+in pushing this any further than that. If you want to take this from
+here and integrate it with phylink_get_caps() I'd be glad to review
+the result. Otherwise, feel free to continue with phylink_set_max_fixed_link().
 
