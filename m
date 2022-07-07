@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F47C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 09:41:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8881C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 09:51:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KzcoFhGBop3Dr3qrgA6FnfDOc9NV/gjra01y9OpQ03E=; b=BM8EoDKXRvJORUB/PqknJ1XweK
-	ONc76+Bq4OMSwYxdHf4fx5jY1ncyF7Lidy67c2RrtOmyhWvNWEEYaR3bsIaMNf31u6C1IiqtTkp51
-	DEwcrKIPLBI4tyl9vNPj6lsuK5keHZM14UEJqNVN4Db70HQQ41TI6L/LOzRM1tp0mZHBzbND0UFcW
-	GshHXDe0TvZPAqOsDCENT84CpA+9AQsuhBfVr9O5KwdIcSyW8NX+gpjDEFfKB3YbW6Weh4JRTti8H
-	GIzycQpFGYcPxdEOLc7cjfwnj59zYX9/wroXcB199Lca/L4PVe4Ctd/ZxeGUvozfX+oJ9H8FpvJzK
-	b0MKY6MQ==;
+	bh=wlAs9J9OtnasN9NYQ8J7AnmjI2pVJyjMAeiv8uBp2Kw=; b=jaZUhSAvGTspZzTr6/ANqWQPmQ
+	y7C3z6Nz4UUXY1flrliAbY6gEXl5LhReR4lJU7vUwNUEjkfXU3FZccpj90dRf9nD+Fkiqh4X9iCTn
+	oClGKpEqhBketj+7xn0vlqxzg9xFJqOz19DWK30RrF0ta/kWVHC5oLNOBNkjwppN7VEho5jW756Bd
+	bJZtWBXmYv6jarzubHySrat9NjugMHpDo37JJxfWUrd/KOlI4BlfWWW9PbDstMHXMGv1yi9yp1upk
+	cM7uwkNl4tFKuKJW+8ueoeGIdmb/lhqJC30484WkKd/bbdaRsHvKOT/2TR30KyEcAlaX/IeUnXurq
+	3Dgi23xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9O0D-00FQvQ-7V; Thu, 07 Jul 2022 09:40:53 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1o9OAp-00FT5c-06; Thu, 07 Jul 2022 09:51:51 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9Nzx-00FQaF-2K; Thu, 07 Jul 2022 09:40:38 +0000
-Received: by mail-wr1-x433.google.com with SMTP id o4so25492186wrh.3;
-        Thu, 07 Jul 2022 02:40:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language
-         :from:to:cc:references:in-reply-to:content-transfer-encoding;
-        bh=KzcoFhGBop3Dr3qrgA6FnfDOc9NV/gjra01y9OpQ03E=;
-        b=d4C8549OVT/OTfYI2dsl8Y3TYD1BSb9zXe1l4DYZ3uv6ATbmseapVMOFsMRQZVrpQI
-         DRYfZ4FQx0DrPKMqL+e29YpcSB1APqwPtOZ4QvVvAGP85zNjBVbxry4jWgE7cbIvE/Ob
-         hLlI9AypWPX8S5/ClEvxWwZZgQIethgKSRjwFoCYgpL39mwjbas4a3GGPstHsBYggdCy
-         25hCt+2fGMEg0pel3fMAgp1qlveIatuxMRbQ0Na0T5jS68EmMb8jFaHoYoyjK3+komvK
-         IC0yx5aZ1+B/DwBMKfJCFe7A6P7eIVA7NWP494X3rx5ZJYJGSLCllcVYHoBN6vaFQEsb
-         lVxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:from:to:cc:references:in-reply-to
-         :content-transfer-encoding;
-        bh=KzcoFhGBop3Dr3qrgA6FnfDOc9NV/gjra01y9OpQ03E=;
-        b=ZOnMkeorg9ueDRC5ObhBk98CcB6nadzsjOa+VdaG2gKk6G7mqJGH4NOHx4OZFgISmC
-         jZAfbk7kZhfizLxwgp7JuxmLpBxRKHlmnnQ3jEdp1OinM2pLwXDXbYBWIU7tKDuUKZPp
-         8Z0/YcFCakeMuJayvQhsaQCKRYr/3uILYUf67YpfxPW5dcO0NTYOIzRuFP2dQmHdln8i
-         e8DBNV09T60G9xIKXYRrpLvcjVL26y1daek97O2cIK5y05qeQtqwIbSI96VCGgaHqD09
-         ZwLWDexmvfI95zUt/i6uFQDPbdeZ09xMYx53a6rNpoUuBxdHnJctl70zNHIQmJ8YJQEA
-         J3cA==
-X-Gm-Message-State: AJIora+47iElhYqeDD5m7hC8eDRhsboPnE0jEoc8/aDlV89iJo+nTxda
-	Y9tL5E5FK6ZdzD1OVwRcv5w=
-X-Google-Smtp-Source: AGRyM1talsypiyhvDrz+cqTOcMGBF2fEVNMqtrU/unM4e6cE62b3PJIhpaTGU+Cj8oBlP8vh9KBoLA==
-X-Received: by 2002:adf:e112:0:b0:21d:7195:3a8d with SMTP id t18-20020adfe112000000b0021d71953a8dmr13968308wrz.371.1657186836348;
-        Thu, 07 Jul 2022 02:40:36 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id h4-20020a5d4304000000b0021b829d111csm38650085wrq.112.2022.07.07.02.40.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Jul 2022 02:40:35 -0700 (PDT)
-Message-ID: <0f758c3d-a1cd-5e28-d3bb-70833b53c14b@gmail.com>
-Date: Thu, 7 Jul 2022 11:40:34 +0200
+	id 1o9OAe-00FT2u-Be; Thu, 07 Jul 2022 09:51:41 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9BC2666019AA;
+	Thu,  7 Jul 2022 10:51:37 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657187498;
+	bh=9cJkFbeGAUaiuZQ1tk/q71MLcCqv08gXnUsskyh+OSU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=iklc8JelOW6VhhEVCPvFwprlF/PtO1UiLbHjv1p8qAO+07GEsSfkqhh82UATV+2yR
+	 vZ6W6oQ+tUvgQY5mdEh0FvE/gIPW94z2dcz9ukkiOyPbO7UmNnW3RgZgXkc6BCCo7r
+	 s5tIDcPkIzF4nyW5SM19RQtEzF52PpcOe3U3gGmTLnmmF/hAxn3Lnt1FKMpfUWw3xq
+	 tVS1FvQlWqcUFeyONlRidVYyQwfP524W2AFBQSBsbqimnIimNlTt4R0FVMdozDK3gL
+	 SYDJjrJqH7NtrCgD/3Dru5zEKWXq67riOPJ1+ySr0EKY9dQQVnRtuFUb6PxCfMqIZy
+	 Wil+TudE8xb+A==
+Message-ID: <e0452b8a-0544-5647-5d3c-ce6a208f2b69@collabora.com>
+Date: Thu, 7 Jul 2022 11:51:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v11 0/3] Add basic node support for MediaTek MT8186 SoC
+ Thunderbird/91.10.0
+Subject: Re: [PATCH] dt-bindings: mmc: Add compatible for MediaTek MT8188
 Content-Language: en-US
-From: Matthias Brugger <matthias.bgg@gmail.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+To: Johnson Wang <johnson.wang@mediatek.com>, ulf.hansson@linaro.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
- hsinyi@chromium.org
-References: <20220520122217.30716-1-allen-kh.cheng@mediatek.com>
- <37fb545a-bc45-65b0-b67b-5ef1b0346777@gmail.com>
-In-Reply-To: <37fb545a-bc45-65b0-b67b-5ef1b0346777@gmail.com>
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220707054710.1396-1-johnson.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220707054710.1396-1-johnson.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_024037_158029_5E02CC5D 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20220707_025140_659580_BD3E0985 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,97 +76,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 22/06/2022 17:40, Matthias Brugger wrote:
+Il 07/07/22 07:47, Johnson Wang ha scritto:
+> This commit adds dt-binding documentation of mmc for MediaTek MT8188 SoC
+> platform.
 > 
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> ---
+>   Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 +++
+>   1 file changed, 3 insertions(+)
 > 
-> On 20/05/2022 14:22, Allen-KH Cheng wrote:
->> MT8186 is a SoC based on 64bit ARMv8 architecture.
->> It contains 6 CA55 and 2 CA76 cores.
->> MT8186 share many HW IP with MT65xx series.
->>
->> This patchset was tested on MT8186 evaluation board to shell.
->>
-> 
-> Applied, thanks!
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 2a2e9fa8c188..3fbf33ad4f7c 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -32,6 +32,9 @@ properties:
+>         - items:
+>             - const: mediatek,mt8186-mmc
+>             - const: mediatek,mt8183-mmc
+> +      - items:
+> +          - const: mediatek,mt8188-mmc
+> +          - const: mediatek,mt8183-mmc
+>         - items:
+>             - const: mediatek,mt8192-mmc
+>             - const: mediatek,mt8183-mmc
 > 
 
-Based on the review from Angelo I dropped patch 3 from the tree. Please address 
-the issues and submit again.
+Hello Johnson,
 
-Regards,
-Matthias
+if I'm not wrong, this should be...
+(check with dt_binding_check!)
 
->> Based on next-20220519, linux-next/master
->>
->> changes since v9:
->>   - remove some merged PATCHs from series
->>   - reorder nodes in dts (cpu-map)
->>   - remove okay status in auxadc
->>   - remove unnecessary suffix node name for i2c
->>   - add pwm node
->>   - add dsi-phy node
->>   - add dpi node
->>
->> changes since v9:
->>   - add one space before equal sign of drive-strength-adv
->>   - corect compatible name for big cores (ca76)
->>   - use upper case of address in pinctrl
->>   - add pwrap node
->>   - add pwm node
->>
->> changes since v8:
->>   - change name from pins_bus to pins-sda-scl
->>   - correct email address
->>   - add capacity-dmips-mhz for each CPU
->>   - add ppi-partitions in gic node
->>   - change name to power-domain
->>   - remove status "okay" in scp node
->>   - update timer and pericfg compatible in series
->>
->> changes since v7:
->>   - add scp&auxadc node
->>
->> changes since v6:
->>   - remove unnecessary blank line
->>
->> changes since v5:
->>   - replace Mediatek a to MediaTek
->>   - use GPL-2.0-only OR BSD-2-Clause
->>
->> changes since v4:
->>   - correct driver clock of mt8186
->>   - add power domains controller and clock controllers
->>   - add pinctrl, usb host, spi and i2c nodes
->>   - add node status in mt8186-evb.dts
->>   - correct some dtbs_check warnings
->>
->> changes since v3:
->>   - remove serial, mmc and phy patch from series. (already merged)
->>   - remove mcusysoff node
->>   - move oscillator nodes at the head of dts
->>   - change name from usb-phy to t-phy
->>
->> changes since v2:
->>   - add soc {} in mt8186.dtsi
->>
->> changes since v1:
->>   - add dt-bindings: arm: Add compatible for MediaTek MT8186
->>
->> Allen-KH Cheng (3):
->>    dt-bindings: arm: mediatek: Add mt8186 pericfg compatible
->>    dt-bindings: arm: Add compatible for MediaTek MT8186
->>    arm64: dts: Add MediaTek SoC MT8186 dts and evaluation board and
->>      Makefile
->>
->>   .../devicetree/bindings/arm/mediatek.yaml     |    4 +
->>   .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
->>   arch/arm64/boot/dts/mediatek/Makefile         |    1 +
->>   arch/arm64/boot/dts/mediatek/mt8186-evb.dts   |  232 ++++
->>   arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 1016 +++++++++++++++++
->>   5 files changed, 1254 insertions(+)
->>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
->>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
->>
+properties:
+   compatible:
+     oneOf:
+       - enum:
+         - mediatek,mt2701-mmc
+         - .... everything else ....
+       - items:
+         - enum:
+             - mediatek,mt8186-mmc
+             - ... the others ...
+         - const: mediatek.mt8183-mmc
+
+Cheers,
+Angelo
 
