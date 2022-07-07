@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AE87C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 09:32:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F47C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 09:41:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ti1cFvcNmpeErqbzYnNjcvLuzOWjLf/S4o2UxanXgu8=; b=ryh1EDSb88gH2BQLQjXJkLRm8g
-	fvNuMghQWBG7M4vbp03uZDXF8Y50INuC+I1tq8J+HridZ2bij689ilGoLFdSMpojtRoXGGeugMfjy
-	GroK1SQNo4bZMQqNJQy6DgExL98uc8D4XNOaa2VVHOWjolgK9jvsD6ySiaF+6k1oavggsxaX189NL
-	2vkFu0weMxfbDZLlwZikjC2+sA6zMngITwoUZdrSho7px5mK0vugVSbmM7QY0JuNgTJqcIw/uEbhw
-	paMyGd2D3SZ10/6mYbijV42muIYLZ/bvl8b+cZ3nNchHrjq9GlUeWGvxXTwR8QF3vZ6TIcrVKJ+Rb
-	4yReXoxQ==;
+	bh=KzcoFhGBop3Dr3qrgA6FnfDOc9NV/gjra01y9OpQ03E=; b=BM8EoDKXRvJORUB/PqknJ1XweK
+	ONc76+Bq4OMSwYxdHf4fx5jY1ncyF7Lidy67c2RrtOmyhWvNWEEYaR3bsIaMNf31u6C1IiqtTkp51
+	DEwcrKIPLBI4tyl9vNPj6lsuK5keHZM14UEJqNVN4Db70HQQ41TI6L/LOzRM1tp0mZHBzbND0UFcW
+	GshHXDe0TvZPAqOsDCENT84CpA+9AQsuhBfVr9O5KwdIcSyW8NX+gpjDEFfKB3YbW6Weh4JRTti8H
+	GIzycQpFGYcPxdEOLc7cjfwnj59zYX9/wroXcB199Lca/L4PVe4Ctd/ZxeGUvozfX+oJ9H8FpvJzK
+	b0MKY6MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9NrR-00FP6u-7c; Thu, 07 Jul 2022 09:31:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o9O0D-00FQvQ-7V; Thu, 07 Jul 2022 09:40:53 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9NrG-00FP3d-A5; Thu, 07 Jul 2022 09:31:40 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 28BF66601978;
-	Thu,  7 Jul 2022 10:31:35 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657186295;
-	bh=Ath3rq3p03H6MtSS6xBSdyqJicwlhpDEfZjXuEK6owM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gc+OBbTWuskc8471X915+qFwxJBafpGBa11wxtFgGBIYZWkvX/vj5OH6RYobXXc+W
-	 Z3tMlf8Tb3/OPLHaxEh4Dj6J6gfHCFfiHtKLBAj4NAh98Wfh/Pcg3FL+/rDKchUdnl
-	 ZTBbZTSIeRogDNhL2Wg/78lvx6B0yjYur/AdtszkHvB496RYqc8bj066knggGRbMmc
-	 fuOCV9Em3Rbrx9CxJZE9ahczAy4RshJSoCrqSk+wI0K/f4AFKZLCwyccBk1rk4ziCt
-	 ozt1pM4ZSye+gAOvAQH2ISxUgxrfCzNF+YaQNOEYmhu0nZkXeqsey56+YszWpjT37t
-	 bsml5VhahXBcg==
-Message-ID: <ca179698-d79d-f643-95a8-a27d51efddef@collabora.com>
-Date: Thu, 7 Jul 2022 11:31:32 +0200
+	id 1o9Nzx-00FQaF-2K; Thu, 07 Jul 2022 09:40:38 +0000
+Received: by mail-wr1-x433.google.com with SMTP id o4so25492186wrh.3;
+        Thu, 07 Jul 2022 02:40:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language
+         :from:to:cc:references:in-reply-to:content-transfer-encoding;
+        bh=KzcoFhGBop3Dr3qrgA6FnfDOc9NV/gjra01y9OpQ03E=;
+        b=d4C8549OVT/OTfYI2dsl8Y3TYD1BSb9zXe1l4DYZ3uv6ATbmseapVMOFsMRQZVrpQI
+         DRYfZ4FQx0DrPKMqL+e29YpcSB1APqwPtOZ4QvVvAGP85zNjBVbxry4jWgE7cbIvE/Ob
+         hLlI9AypWPX8S5/ClEvxWwZZgQIethgKSRjwFoCYgpL39mwjbas4a3GGPstHsBYggdCy
+         25hCt+2fGMEg0pel3fMAgp1qlveIatuxMRbQ0Na0T5jS68EmMb8jFaHoYoyjK3+komvK
+         IC0yx5aZ1+B/DwBMKfJCFe7A6P7eIVA7NWP494X3rx5ZJYJGSLCllcVYHoBN6vaFQEsb
+         lVxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:from:to:cc:references:in-reply-to
+         :content-transfer-encoding;
+        bh=KzcoFhGBop3Dr3qrgA6FnfDOc9NV/gjra01y9OpQ03E=;
+        b=ZOnMkeorg9ueDRC5ObhBk98CcB6nadzsjOa+VdaG2gKk6G7mqJGH4NOHx4OZFgISmC
+         jZAfbk7kZhfizLxwgp7JuxmLpBxRKHlmnnQ3jEdp1OinM2pLwXDXbYBWIU7tKDuUKZPp
+         8Z0/YcFCakeMuJayvQhsaQCKRYr/3uILYUf67YpfxPW5dcO0NTYOIzRuFP2dQmHdln8i
+         e8DBNV09T60G9xIKXYRrpLvcjVL26y1daek97O2cIK5y05qeQtqwIbSI96VCGgaHqD09
+         ZwLWDexmvfI95zUt/i6uFQDPbdeZ09xMYx53a6rNpoUuBxdHnJctl70zNHIQmJ8YJQEA
+         J3cA==
+X-Gm-Message-State: AJIora+47iElhYqeDD5m7hC8eDRhsboPnE0jEoc8/aDlV89iJo+nTxda
+	Y9tL5E5FK6ZdzD1OVwRcv5w=
+X-Google-Smtp-Source: AGRyM1talsypiyhvDrz+cqTOcMGBF2fEVNMqtrU/unM4e6cE62b3PJIhpaTGU+Cj8oBlP8vh9KBoLA==
+X-Received: by 2002:adf:e112:0:b0:21d:7195:3a8d with SMTP id t18-20020adfe112000000b0021d71953a8dmr13968308wrz.371.1657186836348;
+        Thu, 07 Jul 2022 02:40:36 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id h4-20020a5d4304000000b0021b829d111csm38650085wrq.112.2022.07.07.02.40.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 Jul 2022 02:40:35 -0700 (PDT)
+Message-ID: <0f758c3d-a1cd-5e28-d3bb-70833b53c14b@gmail.com>
+Date: Thu, 7 Jul 2022 11:40:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v11 3/3] arm64: dts: Add MediaTek SoC MT8186 dts and
- evaluation board and Makefile
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v11 0/3] Add basic node support for MediaTek MT8186 SoC
 Content-Language: en-US
+From: Matthias Brugger <matthias.bgg@gmail.com>
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -58,14 +75,13 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
  hsinyi@chromium.org
 References: <20220520122217.30716-1-allen-kh.cheng@mediatek.com>
- <20220520122217.30716-4-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220520122217.30716-4-allen-kh.cheng@mediatek.com>
+ <37fb545a-bc45-65b0-b67b-5ef1b0346777@gmail.com>
+In-Reply-To: <37fb545a-bc45-65b0-b67b-5ef1b0346777@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_023138_669903_0F74B956 
-X-CRM114-Status: GOOD (  24.15  )
+X-CRM114-CacheID: sfid-20220707_024037_158029_5E02CC5D 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,384 +96,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/05/22 14:22, Allen-KH Cheng ha scritto:
-> Add basic chip support for MediaTek MT8186.
+
+
+On 22/06/2022 17:40, Matthias Brugger wrote:
 > 
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile       |    1 +
->   arch/arm64/boot/dts/mediatek/mt8186-evb.dts |  232 +++++
->   arch/arm64/boot/dts/mediatek/mt8186.dtsi    | 1016 +++++++++++++++++++
->   3 files changed, 1249 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index c7d4636a2cb7..50a2c58c5f56 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -37,6 +37,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-demo.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-evb.dts b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
-> new file mode 100644
-> index 000000000000..3e8018c1e802
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
-> @@ -0,0 +1,232 @@
-> +// SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +/*
-> + * Copyright (C) 2022 MediaTek Inc.
-> + */
-> +/dts-v1/;
-> +#include "mt8186.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek MT8186 evaluation board";
-> +	compatible = "mediatek,mt8186-evb", "mediatek,mt8186";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:921600n8";
-> +	};
-> +
-> +	memory {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x80000000>;
-> +	};
-> +};
-> +
-> +&i2c0 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c0_pins>;
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c1 {
-> +	clock-frequency = <400000>;
-> +	i2c-scl-internal-delay-ns = <8000>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c1_pins>;
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +	status = "okay";
-> +};
-> +
+> On 20/05/2022 14:22, Allen-KH Cheng wrote:
+>> MT8186 is a SoC based on 64bit ARMv8 architecture.
+>> It contains 6 CA55 and 2 CA76 cores.
+>> MT8186 share many HW IP with MT65xx series.
+>>
+>> This patchset was tested on MT8186 evaluation board to shell.
+>>
+> 
+> Applied, thanks!
+> 
 
-Can you please reorder like:
-
-&i2c1 {
-	status = "okay";
-
-	clock-frequency = <400000>;
-	i2c-scl-internal-delay-ns = <12500>;
-	pinctrl-names = "default";
-	pinctrl-0 = <&i2c1_pins>;
-};
-
-Also, address and size cells are common properties and will not change
-on a per-board basis: please define them in mt8186.dtsi instead.
-
-Same for the other nodes.
-
-
-> +&i2c2 {
-
-..snip..
-
-> +
-> +&pio {
-> +	i2c0_pins: i2c0{
-
-Please perform a dtbs_check before pushing devicetrees upstream:
-this node will give you a warning, bindings related warnings are
-considered like code warnings and they shall not happen.
-
-pinctrl-mt8186.yaml defines patternProperties as '-pins$'
-so this should be:
-
-	i2c0_pins: i2c0-pins {
-
-Please fix.
-
-
-> +		pins-sda-scl {
-> +			pinmux = <PINMUX_GPIO128__FUNC_SDA0>,
-> +				 <PINMUX_GPIO127__FUNC_SCL0>;
-> +			bias-disable;
-> +			mediatek,drive-strength-adv = <0>;
-
-Do not use mediatek,drive-strength-adv: it's not right in principle
-to have this property, as it can be expressed with the standard
-drive-strength-microamp property instead.
-
-Check pinctrl-mt8192.yaml (or my commits to pinctrl-mt8195.yaml) for
-more information.
-
-> +			drive-strength = <MTK_DRIVE_4mA>;
-
-MTK_DRIVE_(x)mA maps to the actual value in mA: please stop using this
-definition and simply define this as
-
-			drive-strength = <4>;
-
-
-> +			input-enable;
-> +		};
-> +	};
-> +
-
-..snip..
-
-> +
-> +&u3phy0 {
-> +	status="okay";
-
-This should be
-
-	status = "okay";
-
-> +};
-> +
-> +&u3phy1 {
-> +	status="okay";
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> +
-> +&xhci0 {
-> +	status = "okay";
-> +};
-> +
-> +&xhci1 {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> new file mode 100644
-> index 000000000000..35281db2e2b9
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> @@ -0,0 +1,1016 @@
-> +// SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +/*
-> + * Copyright (C) 2022 MediaTek Inc.
-> + * Author: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> + */
-> +/dts-v1/;
-> +#include <dt-bindings/clock/mt8186-clk.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/pinctrl/mt8186-pinfunc.h>
-> +#include <dt-bindings/power/mt8186-power.h>
-> +#include <dt-bindings/phy/phy.h>
-> +#include <dt-bindings/reset/mt8186-resets.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt8186";
-> +	interrupt-parent = <&gic>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-
-..snip..
-
-> +
-> +		cpu0: cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55";
-> +			reg = <0x000>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2000000000>;
-> +			capacity-dmips-mhz = <382>;
-> +			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
-> +			next-level-cache = <&l2_0>;
-
-No cooling cells?
-
-> +		};
-> +
-
-..snip..
-
-
-> +
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		gic: interrupt-controller@c000000 {
-> +			compatible = "arm,gic-v3";
-> +			#interrupt-cells = <3>;
-
-You're describing PPI partitions below... even if you're not currently
-planning to define PPI affinity just yet, interrupt cells should be 4
-so that defining affinity will be pretty straightforward in the future.
-
-Please change interrupt-cells to 4.
-
-> +			#address-cells = <2>;
-> +			#size-cells = <2>;
-> +			#redistributor-regions = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupt-controller;
-> +			reg = <0 0x0c000000 0 0x40000>,
-> +			      <0 0x0c040000 0 0x200000>;
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +
-> +			ppi-partitions {
-> +				ppi_cluster0: interrupt-partition-0 {
-> +					affinity = <&cpu0 &cpu1 &cpu2 &cpu3 &cpu4 &cpu5>;
-> +				};
-> +
-> +				ppi_cluster1: interrupt-partition-1 {
-> +					affinity = <&cpu6 &cpu7>;
-> +				};
-> +			};
-> +		};
-> +
-> +		mcusys: syscon@c53a000 {
-> +			compatible = "mediatek,mt8186-mcusys", "syscon";
-> +			reg = <0 0xc53a000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		topckgen: syscon@10000000 {
-> +			compatible = "mediatek,mt8186-topckgen", "syscon";
-> +			reg = <0 0x10000000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		infracfg_ao: syscon@10001000 {
-> +			compatible = "mediatek,mt8186-infracfg_ao", "syscon";
-> +			reg = <0 0x10001000 0 0x1000>;
-> +			#clock-cells = <1>;
-
-You missed reset-cells here. This driver is also defining a reset controller.
-
-> +		};
-> +
-> +		pericfg: syscon@10003000 {
-> +			compatible = "mediatek,mt8186-pericfg", "syscon";
-> +			reg = <0 0x10003000 0 0x1000>;
-> +		};
-> +
-> +		pio: pinctrl@10005000 {
-> +			compatible = "mediatek,mt8186-pinctrl";
-> +			reg = <0 0x10005000 0 0x1000>,
-> +			      <0 0x10002000 0 0x0200>,
-> +			      <0 0x10002200 0 0x0200>,
-> +			      <0 0x10002400 0 0x0200>,
-> +			      <0 0x10002600 0 0x0200>,
-> +			      <0 0x10002A00 0 0x0200>,
-> +			      <0 0x10002C00 0 0x0200>,
-> +			      <0 0x1000B000 0 0x1000>;
-> +			reg-names = "iocfg0", "iocfg_lt", "iocfg_lm", "iocfg_lb",
-> +				    "iocfg_bl", "iocfg_rb", "iocfg_rt", "eint";
-> +			gpio-controller;
-> +			#gpio-cells = <2>;
-> +			gpio-ranges = <&pio 0 0 185>;
-> +			interrupt-controller;
-> +			interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_HIGH>;
-> +			#interrupt-cells = <2>;
-> +		};
-> +
-> +		scpsys: syscon@10006000 {
-> +			compatible = "syscon", "simple-mfd";
-> +			reg = <0 0x10006000 0 0x1000>;
-> +			#power-domain-cells = <1>;
-> +
-> +			/* System Power Manager */
-> +			spm: power-controller {
-> +				compatible = "mediatek,mt8186-power-controller";
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				#power-domain-cells = <1>;
-> +
-> +				/* power domain of the SoC */
-> +				mfg0: power-domain@MT8186_POWER_DOMAIN_MFG0 {
-> +					reg = <MT8186_POWER_DOMAIN_MFG0>;
-> +					clocks = <&topckgen CLK_TOP_MFG>;
-> +					clock-names= "mfg00";
-
-Missing space: `clock-names = "mfg00";`
-
-> +					#address-cells = <1>;
-> +					#size-cells = <0>;
-> +					#power-domain-cells = <1>;
-> +
-> +					power-domain@MT8186_POWER_DOMAIN_MFG1 {
-> +						reg = <MT8186_POWER_DOMAIN_MFG1>;
-> +						mediatek,infracfg = <&infracfg_ao>;
-> +						#address-cells = <1>;
-> +						#size-cells = <0>;
-> +						#power-domain-cells = <1>;
-> +
-> +						power-domain@MT8186_POWER_DOMAIN_MFG2 {
-> +							reg = <MT8186_POWER_DOMAIN_MFG2>;
-> +							#power-domain-cells = <0>;
-> +						};
-> +
-> +						power-domain@MT8186_POWER_DOMAIN_MFG3 {
-> +							reg = <MT8186_POWER_DOMAIN_MFG3>;
-> +							#power-domain-cells = <0>;
-> +						};
-> +					};
-> +				};
-> +
-> +				power-domain@MT8186_POWER_DOMAIN_CSIRX_TOP {
-> +					reg = <MT8186_POWER_DOMAIN_CSIRX_TOP>;
-> +					clocks = <&topckgen CLK_TOP_SENINF>,
-> +						 <&topckgen CLK_TOP_SENINF1>;
-> +					clock-names= "csirx_top0", "csirx_top1";
-
-Same here.
-
-> +					#power-domain-cells = <0>;
-> +				};
-> +
-> +				power-domain@MT8186_POWER_DOMAIN_SSUSB {
-> +					reg = <MT8186_POWER_DOMAIN_SSUSB>;
-> +					#power-domain-cells = <0>;
-> +				};
-> +
-> +				power-domain@MT8186_POWER_DOMAIN_SSUSB_P1 {
-> +					reg = <MT8186_POWER_DOMAIN_SSUSB_P1>;
-> +					#power-domain-cells = <0>;
-> +				};
-> +
-> +				power-domain@MT8186_POWER_DOMAIN_ADSP_AO {
-> +					reg = <MT8186_POWER_DOMAIN_ADSP_AO>;
-> +					clocks = <&topckgen CLK_TOP_AUDIODSP>,
-> +						 <&topckgen CLK_TOP_ADSP_BUS>;
-> +					clock-names= "adsp_ao0", "adsp_ao1";
-
-...and here, and everywhere else, please fix.
-
-> +					#address-cells = <1>;
-> +					#size-cells = <0>;
-> +					#power-domain-cells = <1>;
-> +
+Based on the review from Angelo I dropped patch 3 from the tree. Please address 
+the issues and submit again.
 
 Regards,
-Angelo
+Matthias
 
-
+>> Based on next-20220519, linux-next/master
+>>
+>> changes since v9:
+>>   - remove some merged PATCHs from series
+>>   - reorder nodes in dts (cpu-map)
+>>   - remove okay status in auxadc
+>>   - remove unnecessary suffix node name for i2c
+>>   - add pwm node
+>>   - add dsi-phy node
+>>   - add dpi node
+>>
+>> changes since v9:
+>>   - add one space before equal sign of drive-strength-adv
+>>   - corect compatible name for big cores (ca76)
+>>   - use upper case of address in pinctrl
+>>   - add pwrap node
+>>   - add pwm node
+>>
+>> changes since v8:
+>>   - change name from pins_bus to pins-sda-scl
+>>   - correct email address
+>>   - add capacity-dmips-mhz for each CPU
+>>   - add ppi-partitions in gic node
+>>   - change name to power-domain
+>>   - remove status "okay" in scp node
+>>   - update timer and pericfg compatible in series
+>>
+>> changes since v7:
+>>   - add scp&auxadc node
+>>
+>> changes since v6:
+>>   - remove unnecessary blank line
+>>
+>> changes since v5:
+>>   - replace Mediatek a to MediaTek
+>>   - use GPL-2.0-only OR BSD-2-Clause
+>>
+>> changes since v4:
+>>   - correct driver clock of mt8186
+>>   - add power domains controller and clock controllers
+>>   - add pinctrl, usb host, spi and i2c nodes
+>>   - add node status in mt8186-evb.dts
+>>   - correct some dtbs_check warnings
+>>
+>> changes since v3:
+>>   - remove serial, mmc and phy patch from series. (already merged)
+>>   - remove mcusysoff node
+>>   - move oscillator nodes at the head of dts
+>>   - change name from usb-phy to t-phy
+>>
+>> changes since v2:
+>>   - add soc {} in mt8186.dtsi
+>>
+>> changes since v1:
+>>   - add dt-bindings: arm: Add compatible for MediaTek MT8186
+>>
+>> Allen-KH Cheng (3):
+>>    dt-bindings: arm: mediatek: Add mt8186 pericfg compatible
+>>    dt-bindings: arm: Add compatible for MediaTek MT8186
+>>    arm64: dts: Add MediaTek SoC MT8186 dts and evaluation board and
+>>      Makefile
+>>
+>>   .../devicetree/bindings/arm/mediatek.yaml     |    4 +
+>>   .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
+>>   arch/arm64/boot/dts/mediatek/Makefile         |    1 +
+>>   arch/arm64/boot/dts/mediatek/mt8186-evb.dts   |  232 ++++
+>>   arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 1016 +++++++++++++++++
+>>   5 files changed, 1254 insertions(+)
+>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+>>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
+>>
 
