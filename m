@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B216C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 11:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DE6FCCA479
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 11:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=laa01Z9ThJW6Tse/Ll0TvQqINCmdIJiCEgp3d7b9XJA=; b=BkV8n/BX7OV63CqZQCrw2Z/8/A
-	wuKNVOCYs+52xrvHSonBbgM7PPYzjx/+qcIevpKo5UVyAE/ing/cQEqw2gP++FEZiyy4XVEAR0zMW
-	p339HH8v6/OfCRI0QlsvMjr/4oxZkGcpyHqppDjY+XnlKHn9vOG3AKzRwCB2Mc1DkXlTwLQY746nF
-	NaFR0G9MAAE298N9nIQLAZdeMAEmQCaEuhrVClffc6y8NBkptZXHrMmvF5vn/gE82EzVw6f+kwi42
-	ayKSfRyeHTvG783JOb/SKsmJNsjUcL7Hu9nvmz1wZU4hsdY4HWty4EIfWvqWyLhbeD5IRPPOCOYze
-	1KX5YetA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=meTVCLauPT8tVIXdbiSRm0UrVZwGUwqcYXp+qq9WOhg=; b=yOQXxq6CmI54Fb5XRJaWhsnTVX
+	3JS4op3JsTX8BUEg505HW4GYHoMXgp1yxetQpFke0i/tiM3N3Efaelva84HKRU/+WFrwIUdrV1wG+
+	sp8rob5YbTHNnie51O7DQ2XGH9Ap93kJZrFlJdIy5MrDuMQ1GDAHuDGJwChb3hRZZmBEEgzelS6aI
+	P0zBvGdKefShIw8Id7fldduM39gqzj7uVtd0C4EE5RliBxNN+y8u0hkTN3dIAl9KDTorj+kx8Yj7+
+	AbF85azN35xDkQ6eAj6BT7IVdeEyZVYj+2xjZRVIuXw5Ey/Grb+frShiQ2Q3pi4+oqGn6vL8PYT2x
+	jB5fayEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9PEu-00FiL0-He; Thu, 07 Jul 2022 11:00:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o9PGC-00FinR-LT; Thu, 07 Jul 2022 11:01:28 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9PEe-00FiDl-HS; Thu, 07 Jul 2022 10:59:54 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0319466019AF;
-	Thu,  7 Jul 2022 11:59:47 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657191588;
-	bh=Ncasodb0mlhKue8G5um/dzJDJSNHJ442SPjDYU2q3GI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=G3Wb0DHsH05SDtLOudN/tZyJYo7/p+kDkzNgTgA/qmXdIPemFSZ5Gp8mg7sHTnbo8
-	 EPxxgeujFcYAVjQWRmi3qfj0zHSvYLfSCJC7H6tEaliGTh6w4anzitaB/H/gJ5bKg8
-	 y6mxUghQ6cvnE7Zbp3n7ePsPsO2hydtEIAZvXjCZTbehGd3YfouYSxL2CMjMF8WUsR
-	 sVeeDqcJCbu71+gQBISChVWgpY4jm8gwFQ158lXk2y0LfWpX3u9/isgH09jXZ5KUkd
-	 LNYC/F0a9UMtAqWxw34Bh3k+NGCc4o611IAAe3qUf2hkIaZgOGItUzdibxR5gvgoB4
-	 joD5hcJd9qoBg==
-Message-ID: <243b30ca-a552-3cb7-8a4e-6e54a56ff60a@collabora.com>
-Date: Thu, 7 Jul 2022 12:59:45 +0200
+	id 1o9PG1-00FikI-Hk; Thu, 07 Jul 2022 11:01:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=meTVCLauPT8tVIXdbiSRm0UrVZwGUwqcYXp+qq9WOhg=; b=QhwPrliKQE2sX6Vo81x5t3GmUz
+	0frJ+45A0xAQG6fYJLL30EAE34Z0C1AYKNqxRPXZ+ef79FpNVuTwQsh5ZboleolRvK/oGX5nrzXaK
+	PJOdM2/Qb2fSfCDJqlWMDbBWLPd3lxHanjKIaxsvmeMcPw3babpGJtx+xYvXyKqVWZQvwIX+feRdi
+	MCJbvK+C/xLcWMuCOhxMc6qo5cWypGaxY41SM3xLEmy9GfbrXETZpT1yCd3LDrPJpLgIg4aThM96V
+	HU3NsH7a+JFN3T7O5hJ3YGgO1nafpbH1UyVWhMncs78DpHT7fut8WIV1lAufurr4W3WK+vkKeHNaT
+	tyjHpQTA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33218)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1o9PFk-0003nU-T9; Thu, 07 Jul 2022 12:01:00 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1o9PFe-0005Db-VO; Thu, 07 Jul 2022 12:00:54 +0100
+Date: Thu, 7 Jul 2022 12:00:54 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
+ and DSA ports
+Message-ID: <Ysa85mJIUfo5m4dJ@shell.armlinux.org.uk>
+References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
+ <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
+ <20220706102621.hfubvn3wa6wlw735@skbuf>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: add mdp3 mutex support
- for mt8186
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Xiandong Wang <xiandong.wang@mediatek.com>
-References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
- <20220705122627.2273-2-allen-kh.cheng@mediatek.com>
- <5916c91b-41a1-c97a-84b4-7d48739a0639@collabora.com>
- <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220706102621.hfubvn3wa6wlw735@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_035952_843228_F065A339 
-X-CRM114-Status: GOOD (  16.17  )
+X-CRM114-CacheID: sfid-20220707_040117_632182_1E9CC512 
+X-CRM114-Status: GOOD (  18.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,59 +95,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/07/22 12:41, Matthias Brugger ha scritto:
+On Wed, Jul 06, 2022 at 01:26:21PM +0300, Vladimir Oltean wrote:
+> Hello,
 > 
+> On Tue, Jul 05, 2022 at 10:48:07AM +0100, Russell King (Oracle) wrote:
+> > diff --git a/net/dsa/port.c b/net/dsa/port.c
+> > index 35b4e1f8dc05..34487e62eb03 100644
+> > --- a/net/dsa/port.c
+> > +++ b/net/dsa/port.c
+> > @@ -1525,6 +1525,7 @@ int dsa_port_phylink_create(struct dsa_port *dp)
+> >  {
+> >  	struct dsa_switch *ds = dp->ds;
+> >  	phy_interface_t mode, def_mode;
+> > +	struct device_node *phy_np;
+> >  	int err;
+> >  
+> >  	/* Presence of phylink_mac_link_state or phylink_mac_an_restart is
+> > @@ -1559,6 +1560,13 @@ int dsa_port_phylink_create(struct dsa_port *dp)
+> >  		return PTR_ERR(dp->pl);
+> >  	}
+> >  
+> > +	if (dp->type == DSA_PORT_TYPE_CPU || dp->type == DSA_PORT_TYPE_DSA) {
+> > +		phy_np = of_parse_phandle(dp->dn, "phy-handle", 0);
+> > +		of_node_put(phy_np);
+> > +		if (!phy_np)
+> > +			err = phylink_set_max_fixed_link(dp->pl);
 > 
-> On 07/07/2022 10:52, AngeloGioacchino Del Regno wrote:
->> Il 05/07/22 14:26, Allen-KH Cheng ha scritto:
->>> Add mdp3 mutex compatible for mt8186 SoC.
->>>
->>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
->>> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
->>
->>
->> Please drop this commit. Adding a mdp3-mutex compatible is not needed here.
->>
-> 
-> Thanks for checking. We probably would need a fallback compatible. We can only know 
-> from the HW engineers that can confirm if the IP block is the same as the disp 
-> mutex or a different one.
-> 
-> I'll drop both patches for now until things got clear.
-> 
+> Can we please limit phylink_set_max_link_speed() to just the CPU ports
+> where a fixed-link property is also missing, not just a phy-handle?
+> Although to be entirely correct, we can also have MLO_AN_INBAND, which
+> wouldn't be covered by these 2 checks and would still represent a valid
+> DT binding.
 
-They're located in a different iospace from each other, but either the platform
-data needs to *not be* joined together, or if they're together, I would not like
-having two different compatible strings for essentially the same thing.
+More importantly, we need your input on Ocelot, which you are listed as
+a maintainer for, and Ocelot is the only DSA driver that does stuff
+differently (due to the rate adapting PCS). It doesn't set
+mac_capabilities, and therefore phylink_set_max_fixed_link() will not
+work here.
 
-I would at this point prefer dropping '-disp' from 'mediatek,mt8186-disp-mutex'
-so that we would be able to declare two 'mediatek,mt8186-mutex' in devicetree...
-...or simply have two mediatek,mt8186-disp-mutex (although logically incorrect?).
+Has Ocelot ever made use of this DSA feature where, when nothing is
+specified for a CPU or DSA port, we use an effective fixed-link setup
+with an interface mode that gives the highest speed? Or does this not
+apply to this DSA driver?
 
-Cheers,
-Angelo
+Thanks.
 
-> Regards,
-> Matthias
-> 
->>> ---
->>>   .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
->>>   1 file changed, 1 insertion(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml 
->>> b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->>> index 627dcc3e8b32..234fa5dc07c2 100644
->>> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->>> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->>> @@ -30,6 +30,7 @@ properties:
->>>         - mediatek,mt8173-disp-mutex
->>>         - mediatek,mt8183-disp-mutex
->>>         - mediatek,mt8186-disp-mutex
->>> +      - mediatek,mt8186-mdp3-mutex
->>>         - mediatek,mt8192-disp-mutex
->>>         - mediatek,mt8195-disp-mutex
->>
->>
->>
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
