@@ -4,87 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2C3BC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 14:53:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74D99C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 15:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7RZhPlwt1IWmYSR6QIVRvM1HZdmbksMxnLZ6G0dxCYQ=; b=kgn/KTFhP5Alpf3FqA4+PADjnr
-	yeGGbYWg59fSWwm1oxIIoUFnNUli0rZxJSpSuIazkMIsxY+/la6pmE3IewrnYgqJ0Bool7Aq9uvp6
-	h0mrCKvg2zasZ4zXDttFIcFxkzZfT5hYVKIBByH8nacmRUYmYpme42xDtrj7c4ZymoObcc9st2221
-	ONaxdT+A9xJgLA0db/0WS75h3fDlumyGzj5NwaCjsm4G+RexqiF2i9l5BrUm7nMnrUpxMwAiyl0CH
-	TiE1OiD9nlgmHS3VuGl/G87oMMST+yNJbYWqhPRtFbgamd5vO06OuZ+YiYdKKRWT/LrWU88bCQE+l
-	9ykYO+Vg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L+i2VKDCE1a0IVY2FYEleoaw7pLpG4up9Kj32QFKNUU=; b=CQHe6wiML9NS/e+YMo0BMAnq4t
+	fMxHnAK1nVz47rmaO18Q4aXp1HzRqBgvvsiToljZl/iyYXVd/d+7YMRBZJJrIJapR+THL1o6pvJRy
+	F3LTJpM42PHIR1+KybZh2RcJiIYMAxUnEBGGWCiAvxrpdaxqQIk/6PiLKEfIfZU9sdqujEFNJX+YL
+	NokVsHSKxDSed6lj6Ja9IB7/1JNLThlvi4t/VpWvI2q5Fon+P8Y4PAn9QIywM4ls28QVbkOTjs/Ua
+	FD862l7RbBMUuuBq6YhMqddDXwXx9rpmjGSWRrpXfwxBS/ipOQ/NtGWry7Vs8vEjLDy+7rW6VPEnf
+	iP2uK8Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9Ssk-00GdGf-Ap; Thu, 07 Jul 2022 14:53:30 +0000
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
+	id 1o9TPt-00GmOq-Nf; Thu, 07 Jul 2022 15:27:45 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9Ssg-00GdDQ-GY; Thu, 07 Jul 2022 14:53:28 +0000
-Received: by mail-io1-xd2c.google.com with SMTP id 190so952534iou.6;
-        Thu, 07 Jul 2022 07:53:26 -0700 (PDT)
+	id 1o9TPj-00GmNP-6x; Thu, 07 Jul 2022 15:27:36 +0000
+Received: by mail-ed1-x530.google.com with SMTP id eq6so23579439edb.6;
+        Thu, 07 Jul 2022 08:27:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=7RZhPlwt1IWmYSR6QIVRvM1HZdmbksMxnLZ6G0dxCYQ=;
-        b=dbVWNRlsTl7pk7ptifukmXY/Z4krWR8gWS1OPftdqSoHwDjWWnGVMVy30wrrJmPKKM
-         m0ZjLpTxKOMe2z/X6TWznoYb3kbkXITLAxeWjACt51IJ9WoapHp2v1xGaRa9UDPSfk7X
-         GpEOzxaenVdYrb//0k6tqNyS2ahPCcwz9r6jjuTurfbgqiOUgMcHkoLGNCx80BPAwRkb
-         cqxPGv08JM1nzHaSW8paawSNd7Zk81EwVEk0stflMy7AX3tTrPs4FAgk+NK+wQg+euEt
-         BYzYXF1shibZRX60BLl6dzud3s0hIauMRUtUgOp2j6JbGhDl4wOG53FHmw1ki6dzr9De
-         07dQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=L+i2VKDCE1a0IVY2FYEleoaw7pLpG4up9Kj32QFKNUU=;
+        b=imZ9ANuAa3a7nKrVOBBqe0V2bpJHfSjTkUz+CahjxlWI6osnO+cqvBX0vuAGRpAVwV
+         iFCkDsEYyRSGcSOyyFcWt5h0BsduWYVW82w8/l59hfnC31fk9YilLFsdqFgMOr3P/aHs
+         favxQISfH4ARGDeGFvun+Z7hXdlGSBYNYrDv2Z5jKDietGapf8YUNt3spDapLLYhzPNp
+         rtkYgOx1pmkMqanv4uTwpVBGNz98WnZa/LyMnPoZJXSs6L3AjskftZfjMkO2Mvub4u+H
+         MS/+GFFV/5vFtUOLbkRXfzVJdmWt87SKll888rx67Tjdp79km6SCyTlogUxTZbE60GFF
+         RIHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=7RZhPlwt1IWmYSR6QIVRvM1HZdmbksMxnLZ6G0dxCYQ=;
-        b=AXN+DfeoMg7jikXzfHxyCOIyOVpJhDbXQGU54xQ7rypR9VF/a+5Rad54xuoNw5XjpO
-         QrenbKnhXZUjBiKViLvmF21jEx8tbMmo1wR5OQ4IpAJ/wjCfWFyv5xn+r+hvQMs4FLWO
-         KXKR11WHaePdipvOBSa4JEp3MmqadOo4OF6PMwGlUKlUrpeMob97Mgt6ELUBlOsLaLAt
-         2MzI/yo+upZEViWpkDWL08JD8JMAmIfflivVlcSsaNmj2kD1gPTq8CNzZv7DkYorKEiQ
-         Jyh6aDu+trTD9CpPsN9zinYFUdao5hVO1Duk/e8K9N0XyTArtS4EqcmPsMbWQf7XXbKO
-         tOsA==
-X-Gm-Message-State: AJIora+T15NKO9Q4WkEffJyKQCwQDAb2BtfwsAebLUOEBz2diY27OcO7
-	kEQq12yMorj5QbLH5rMqaO3+71q0BYGspw==
-X-Google-Smtp-Source: AGRyM1trLe7RvY+9Rq0/Nq/y6Bbr3vIvsEr0rsX6bbBeVsNbTLy47V5SXuWGN+FGfuJ/2U+3fJpyLw==
-X-Received: by 2002:a05:6602:154b:b0:675:8bce:8a5 with SMTP id h11-20020a056602154b00b006758bce08a5mr24784705iow.108.1657205605448;
-        Thu, 07 Jul 2022 07:53:25 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id w1-20020a5ed601000000b00675305c58bdsm14794205iom.18.2022.07.07.07.53.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Jul 2022 07:53:24 -0700 (PDT)
-Message-ID: <15fe441c-205e-2953-44b4-d3c377cba7b1@gmail.com>
-Date: Thu, 7 Jul 2022 16:53:21 +0200
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=L+i2VKDCE1a0IVY2FYEleoaw7pLpG4up9Kj32QFKNUU=;
+        b=UtxSeO04xzklt9iLotmZNHgMJjEXK6UU920CkhX+UT0nyY3vFzNrp/QNaRbIOFpwKN
+         3ffSYtVSDR2Ifg3SyJ8dAVGWelpBK5qY4hdM1r3XqxRNJrtQveaGjT/vYlQ6Llj2m+qv
+         dfQfsC3QBnlhCJ0iZVi+Oeo6aXdSsvkVhns66npUDNsMzUe1kw+OAdqKOpvT9bFnnk9/
+         vH7amgRrULADIgA6en+NNaP+wqF+DEVXlsFPiIhnpLS1RVR97jMi/J0Yvg09Gt4At6VN
+         JDZUNksRFP3ib/vbD/XESD1piiVARPm/TJ9jBudtZ1rmniLqEcQCwJ6Rp7rEaLGxRt87
+         3Fqg==
+X-Gm-Message-State: AJIora+m0EkUPPh8gMAd7c3d8jTCaKQsVGbM5yhrBThkk0dE9sv14vIZ
+	GucWgtrkdOJPrNQ/7A9lFes=
+X-Google-Smtp-Source: AGRyM1tt4zPclKXxrskJcAhd0l4cLyni1GDXPAelDG0Cead02xKNZE5V4PhtrG18Fbv3SVXuYD+PRg==
+X-Received: by 2002:a05:6402:3307:b0:43a:826c:d8b4 with SMTP id e7-20020a056402330700b0043a826cd8b4mr16134904eda.32.1657207650767;
+        Thu, 07 Jul 2022 08:27:30 -0700 (PDT)
+Received: from skbuf ([188.25.231.143])
+        by smtp.gmail.com with ESMTPSA id kw24-20020a170907771800b0072a3216c23asm11915163ejc.154.2022.07.07.08.27.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Jul 2022 08:27:29 -0700 (PDT)
+Date: Thu, 7 Jul 2022 18:27:27 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
+Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
+ and DSA ports
+Message-ID: <20220707152727.foxrd4gvqg3zb6il@skbuf>
+References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
+ <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
+ <20220706102621.hfubvn3wa6wlw735@skbuf>
+ <YsW3KSeeQBiWQOz/@shell.armlinux.org.uk>
+ <Ysaw56lKTtKMh84b@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 2/2] arm64: dts: mt8183: Add panel rotation
-Content-Language: en-US
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Hans de Goede <hdegoede@redhat.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Rob Clark <robdclark@chromium.org>, Stephen Boyd <swboyd@chromium.org>,
- Douglas Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220530113033.124072-1-hsinyi@chromium.org>
- <20220530113033.124072-2-hsinyi@chromium.org>
- <CAJMQK-jw+sgunEwgEQAw-V8DAbybZ7WVnZJ6vwOdzQ+-SX_bQg@mail.gmail.com>
- <c3286fc9-06ed-d1e1-a731-94cdefdf7fab@gmail.com>
- <CAJMQK-gJ4AoNQtLeKoOO=GLLtjDRhCdVnYuPJSBD4ZnFWJ5qrw@mail.gmail.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <CAJMQK-gJ4AoNQtLeKoOO=GLLtjDRhCdVnYuPJSBD4ZnFWJ5qrw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Ysaw56lKTtKMh84b@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_075326_595452_71847174 
-X-CRM114-Status: GOOD (  20.28  )
+X-CRM114-CacheID: sfid-20220707_082735_298276_12C3A052 
+X-CRM114-Status: GOOD (  33.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,70 +110,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Jul 07, 2022 at 11:09:43AM +0100, Russell King (Oracle) wrote:
+> On Wed, Jul 06, 2022 at 05:24:09PM +0100, Russell King (Oracle) wrote:
+> > On Wed, Jul 06, 2022 at 01:26:21PM +0300, Vladimir Oltean wrote:
+> > > Can we please limit phylink_set_max_link_speed() to just the CPU ports
+> > > where a fixed-link property is also missing, not just a phy-handle?
+> > > Although to be entirely correct, we can also have MLO_AN_INBAND, which
+> > > wouldn't be covered by these 2 checks and would still represent a valid
+> > > DT binding.
+> > 
+> > phylink_set_max_fixed_link() already excludes itself:
+> > 
+> >         if (pl->cfg_link_an_mode != MLO_AN_PHY || pl->phydev || pl->sfp_bus)
+                                                      ~~~~~~~~~~
 
+If not NULL, this is an SFP PHY, right? In other words, it's supposed to protect from
+phylink_sfp_connect_phy() - code involuntarily triggered by phylink_create() ->
+phylink_register_sfp() - and not from calls to phylink_{,fwnode_}connect_phy()
+that were initiated by the phylink user between phylink_create() and
+phylink_set_max_fixed_link(), correct? Those are specified as invalid in the
+kerneldoc and that's about it - that's not what the checking is for, correct?
 
-On 17/06/2022 16:25, Hsin-Yi Wang wrote:
-> On Fri, Jun 17, 2022 at 10:10 PM Matthias Brugger
-> <matthias.bgg@gmail.com> wrote:
->>
->> Hi Hsin-Yi Wang,
->>
->> On 06/06/2022 17:29, Hsin-Yi Wang wrote:
->>> On Mon, May 30, 2022 at 7:30 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
->>>>
->>>> krane, kakadu, and kodama boards have a default panel rotation.
->>>>
->>>> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
->>>> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->>>> Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->>>> ---
->>>
->>> Hi Matthias,
->>>
->>> The series ("Add a panel API to return panel orientation") might land
->>> in drm-misc. With this series applied, we can add this patch to give
->>> the correct default orientation for mt8183 kukui devices.
->>> I didn't send this patch again with the series, since they might land
->>> in different trees.
->>>
->>
->> I had a look on Linux next (next-20220617) and wasn't able to find the mtk_dsi.c
->> changes. What is the status of this?
->>
-> The mtk_dsi change got dropped. The latest is this series:
-> https://lore.kernel.org/lkml/20220609072722.3488207-1-hsinyi@chromium.org/,
-> still waiting to be picked or others' comments.
+But if so, why even check for pl->phydev, if you check for pl->sfp_bus?
+
+> >                 return -EBUSY;
+> > 
+> > intentionally so that if there is anything specified for the port, be
+> > that a fixed link or in-band, then phylink_set_max_fixed_link() errors
+> > out with -EBUSY.
+> > 
+> > The only case that it can't detect is if there is a PHY that may be
+> > added to phylink at a later time, and that is what the check above
+> > is for.
+
+Here by "PHY added at a later time", you do mean calling phylink_{,fwnode_}connect_phy()
+after phylink_set_max_fixed_link(), right?
+
+So this is what I don't understand. If we've called phylink_set_max_fixed_link()
+we've changed pl->cfg_link_an_mode to MLO_AN_FIXED and this will
+silently break future calls to phylink_{,fwnode_}connect_phy(), so DSA
+predicts if it's going to call either of those connect_phy() functions,
+and calls phylink_set_max_fixed_link() only if it won't. Right?
+
+You've structured the checks in this "distributed" way because phylink
+can't really predict whether phylink_{,fwnode_}connect_phy() will be
+called after phylink_set_max_fixed_link(), right? I mean, it can
+probably predict the fwnode_ variant, but not phylink_connect_phy, and
+this is why it is up to the caller to decide when to call and when not to.
+
+> I've updated the function description to mention this detail:
 > 
-
-I saw this got merged, so merging this patch now.
-
-Thanks!
-
-> If the dts patch is picked without the drm series, there will be a
-> WARN, but won't affect boot or display up.
+> +/**
+> + * phylink_set_max_fixed_link() - set a fixed link configuration for phylink
+> + * @pl: a pointer to a &struct phylink returned from phylink_create()
+> + *
+> + * Set a maximum speed fixed-link configuration for the chosen interface mode
+> + * and MAC capabilities for the phylink instance if the instance has not
+> + * already been configured with a SFP, fixed link, or in-band AN mode. If the
+> + * interface mode is PHY_INTERFACE_MODE_NA, then search the supported
+> + * interfaces bitmap for the first interface that gives the fastest supported
+> + * speed.
 > 
+> Does this address your concern?
 > 
->> Regards,
->> Matthias
->>
->>> Thanks.
->>>
->>>>    arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
->>>>    1 file changed, 1 insertion(+)
->>>>
->>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
->>>> index 8d5bf73a9099..f0dd5a06629d 100644
->>>> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
->>>> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
->>>> @@ -276,6 +276,7 @@ panel: panel@0 {
->>>>                   avee-supply = <&ppvarp_lcd>;
->>>>                   pp1800-supply = <&pp1800_lcd>;
->>>>                   backlight = <&backlight_lcd0>;
->>>> +               rotation = <270>;
->>>>                   port {
->>>>                           panel_in: endpoint {
->>>>                                   remote-endpoint = <&dsi_out>;
->>>> --
->>>> 2.36.1.124.g0e6072fb45-goog
->>>>
+> Thanks.
+
+Not really, no, sorry, it just confuses me more. It should maybe also
+say that this function shouldn't be called if phylink_{,fwnode_}connect_phy()
+is going to be called later.
+
+Can phylink absorb all this logic, and automatically call phylink_set_max_fixed_link()
+based on the following?
+
+(1) struct phylink_config gets extended with a bool fallback_max_fixed_link.
+(2) DSA CPU and DSA ports set this to true in dsa_port_phylink_register().
+(3) phylink_set_max_fixed_link() is hooked into this -ENODEV error
+    condition from phylink_fwnode_phy_connect():
+
+	phy_fwnode = fwnode_get_phy_node(fwnode);
+	if (IS_ERR(phy_fwnode)) {
+		if (pl->cfg_link_an_mode == MLO_AN_PHY)
+			return -ENODEV; <- here
+		return 0;
+	}
 
