@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72D24C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 08:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C3FDC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 08:08:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/9Uz0zHjeoG76ZZOGOnlljxC76lbx7wPs1BuFA0M2hQ=; b=bMUAGMv6uuDwBqObnSGsiHqotV
-	xOjYQTvPmeJGOOCxdXFK+sIo9Yy5zGTnnCmw35XPc5eTn+TbDj21qLztnQ2HPHE5v/XuQ32D3FTgg
-	gY67plJh3HwJ2SuYPWxFCmN1o9xn43pSK1v1ObH75aSGB1TDmtMb5KcADTGwVkueUKLmZEDVDjxZR
-	xxoQmy1unc7CkIbKzHLs4wF5L4ZmZ75cVXmcbPAC/6A47IR0QdwYb/xjwgSsOF660z49HS1Cf38MD
-	b+VcsxncyoSsbvduHm2LYbTcvI/UuXv9wF16ehoBKJMNYbuu7viTcEoKwlEcGDZ6ufJ6eikYStBX3
-	ZM6F7Dvw==;
+	bh=JST7cuunnCWaWqB/Ysz2O/SzlVrX8TRBKhg48iKfK30=; b=2MOKLqRoFe8eiZS/mdZP8OuMIs
+	qBhD67pvq/vhF1651QIIgL40QenggMI1DB2JZQ+hag/kxpOzkrte4Md8sv47HvmWpjAosRQYVkMli
+	RfKJODGQZ7Y34mYe0iJH2ltTZj4JTEEpTSLnmMPmh78SGo+1jHZp7rKWNOJKqpi28GbP8qNdcqimg
+	+NKADom/0vdLQjnwFGJ5SjVWTCixNuIUD4k1c80tP4wxzJXNVoSf/WQusIfW6yvycX2aDl79iMFk6
+	Q38K6aXvfIZ5Ie/oZLpYG/ZsSE7BmRvwNdy2SWnWZwBY+zXeGjK/Tt32KFKw44WM9Lb2A8p6HOaE+
+	f4leguDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9MSA-00F13f-QS; Thu, 07 Jul 2022 08:01:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o9MYF-00F41u-RY; Thu, 07 Jul 2022 08:07:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9MS6-00F0ww-JA; Thu, 07 Jul 2022 08:01:37 +0000
-X-UUID: 765fbe9e45ac43e59ce6e03cb170a242-20220707
+	id 1o9MYD-00F405-AG; Thu, 07 Jul 2022 08:07:54 +0000
+X-UUID: ce6284228f294e618e27cb127c64c389-20220707
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:c5cc52ee-8c3d-4178-871c-4c44c2343ab4,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:1477c9f0-c483-46d3-a43d-018f3accf10e,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:8420cb86-57f0-47ca-ba27-fe8c57fbf305,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:245dcb86-57f0-47ca-ba27-fe8c57fbf305,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 765fbe9e45ac43e59ce6e03cb170a242-20220707
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: ce6284228f294e618e27cb127c64c389-20220707
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 574608819; Thu, 07 Jul 2022 01:01:28 -0700
+	with ESMTP id 565932887; Thu, 07 Jul 2022 01:07:45 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 7 Jul 2022 16:00:53 +0800
+ Thu, 7 Jul 2022 15:57:07 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 7 Jul 2022 16:00:53 +0800
-Message-ID: <7af5710c5a9c0c30e38ca81a72fe30c1c7749bbb.camel@mediatek.com>
+ Transport; Thu, 7 Jul 2022 15:57:07 +0800
+Message-ID: <b84eb2804ac74b1851dea800d471d415ced7e2c4.camel@mediatek.com>
 Subject: Re: [PATCH v13 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
  driver
 From: CK Hu <ck.hu@mediatek.com>
@@ -60,7 +60,7 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 7 Jul 2022 16:00:53 +0800
+Date: Thu, 7 Jul 2022 15:57:07 +0800
 In-Reply-To: <20220701062808.18596-6-rex-bc.chen@mediatek.com>
 References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
 	 <20220701062808.18596-6-rex-bc.chen@mediatek.com>
@@ -70,8 +70,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_010134_686727_D9FC28C7 
-X-CRM114-Status: GOOD (  21.53  )
+X-CRM114-CacheID: sfid-20220707_010753_369540_3A68C2C1 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,40 +118,38 @@ On Fri, 2022-07-01 at 14:28 +0800, Bo-Chen Chen wrote:
 [snip]
 
 > +
-> +static int mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
-> +				   enum dp_pixelformat color_format)
+> +static int mtk_dp_set_color_depth(struct mtk_dp *mtk_dp)
 > +{
 > +	u32 val;
+> +	/* Only support 8 bits currently */
+> +	u32 color_depth = DP_MSA_MISC_8_BPC;
 > +
-> +	/* update MISC0 */
+> +	mtk_dp->info.depth = color_depth;
+> +
+> +	/* Update MISC0 */
 > +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
-> +			   color_format << DP_TEST_COLOR_FORMAT_SHIFT,
-> +			   DP_TEST_COLOR_FORMAT_MASK);
+> +			   color_depth, DP_TEST_BIT_DEPTH_MASK);
 > +
-> +	switch (color_format) {
-> +	case DP_PIXELFORMAT_YUV422:
-> +		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR422;
-> +		break;
-> +	case DP_PIXELFORMAT_RGB:
-> +		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_RGB;
-> +		break;
-> +	default:
+> +	switch (color_depth) {
 
-The default case would never happen, remove it.
+Drop the switch because color_depth is always DP_MSA_MISC_8_BPC.
 
 Regards,
 CK
 
-> +		drm_warn(mtk_dp->drm_dev, "Unsupported color format:
+> +	case DP_MSA_MISC_8_BPC:
+> +		val = VIDEO_COLOR_DEPTH_DP_ENC0_P0_8BIT;
+> +		break;
+> +	default:
+> +		drm_warn(mtk_dp->drm_dev, "Unsupported color depth
 > %d\n",
-> +			 color_format);
+> +			 color_depth);
 > +		return -EINVAL;
 > +	}
 > +
-> +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
-> +			   val, PIXEL_ENCODE_FORMAT_DP_ENC0_P0_MASK);
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C, val,
+> +			   VIDEO_COLOR_DEPTH_DP_ENC0_P0_MASK);
 > +	return 0;
 > +}
-> +
 
 
