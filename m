@@ -4,56 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A4CEC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 10:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B216C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 11:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UvY7srQ/LIkAuXQ+h5XZf30EwRZQgjiO+d/pVoZwROw=; b=tZBHJ3exAAL7GDMXPeFN2+m9bF
-	N+iJ72zGkD7mOyHqSKa14iMCyYgHyboMRQzZpz6wYKYQAxAP5dG1o4o5tAME4zlJyQ4AwveGMtoWD
-	rthGbyI4Y7yh4VNpZ2+zETS/OujWVqFCu0eBoXxBWkvNihIC6gUxB9No75ZCnyDGbDJwiR9SA3UeC
-	h0afDz2QIhRebSgzKyHyI0lG9nnPHn/KUizvGXYT3unLaXRqgInZlUb63f0ztGalrs8gZ8yOu/4Du
-	rkVEkGk1VsBwzh2YeZskUgbwPVKJKRHDmVNvnXGRFBl5P1xVZ/B2xoTUGaJXLZP7U2Dw1GuTNKn3R
-	qVUSgDeA==;
+	bh=laa01Z9ThJW6Tse/Ll0TvQqINCmdIJiCEgp3d7b9XJA=; b=BkV8n/BX7OV63CqZQCrw2Z/8/A
+	wuKNVOCYs+52xrvHSonBbgM7PPYzjx/+qcIevpKo5UVyAE/ing/cQEqw2gP++FEZiyy4XVEAR0zMW
+	p339HH8v6/OfCRI0QlsvMjr/4oxZkGcpyHqppDjY+XnlKHn9vOG3AKzRwCB2Mc1DkXlTwLQY746nF
+	NaFR0G9MAAE298N9nIQLAZdeMAEmQCaEuhrVClffc6y8NBkptZXHrMmvF5vn/gE82EzVw6f+kwi42
+	ayKSfRyeHTvG783JOb/SKsmJNsjUcL7Hu9nvmz1wZU4hsdY4HWty4EIfWvqWyLhbeD5IRPPOCOYze
+	1KX5YetA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9P9B-00Fgev-1x; Thu, 07 Jul 2022 10:54:13 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9P8u-00FgWF-FG; Thu, 07 Jul 2022 10:53:58 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2C2E41063;
-	Thu,  7 Jul 2022 03:53:55 -0700 (PDT)
-Received: from [10.57.11.194] (unknown [10.57.11.194])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1918F3F66F;
-	Thu,  7 Jul 2022 03:53:51 -0700 (PDT)
-Message-ID: <85d48b3c-2c13-f0b9-900a-b67471948b38@arm.com>
-Date: Thu, 7 Jul 2022 11:53:50 +0100
+	id 1o9PEu-00FiL0-He; Thu, 07 Jul 2022 11:00:08 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o9PEe-00FiDl-HS; Thu, 07 Jul 2022 10:59:54 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0319466019AF;
+	Thu,  7 Jul 2022 11:59:47 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657191588;
+	bh=Ncasodb0mlhKue8G5um/dzJDJSNHJ442SPjDYU2q3GI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=G3Wb0DHsH05SDtLOudN/tZyJYo7/p+kDkzNgTgA/qmXdIPemFSZ5Gp8mg7sHTnbo8
+	 EPxxgeujFcYAVjQWRmi3qfj0zHSvYLfSCJC7H6tEaliGTh6w4anzitaB/H/gJ5bKg8
+	 y6mxUghQ6cvnE7Zbp3n7ePsPsO2hydtEIAZvXjCZTbehGd3YfouYSxL2CMjMF8WUsR
+	 sVeeDqcJCbu71+gQBISChVWgpY4jm8gwFQ158lXk2y0LfWpX3u9/isgH09jXZ5KUkd
+	 LNYC/F0a9UMtAqWxw34Bh3k+NGCc4o611IAAe3qUf2hkIaZgOGItUzdibxR5gvgoB4
+	 joD5hcJd9qoBg==
+Message-ID: <243b30ca-a552-3cb7-8a4e-6e54a56ff60a@collabora.com>
+Date: Thu, 7 Jul 2022 12:59:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v2 1/4] PM: EM: convert power field to micro-Watts
- precision and align drivers
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: add mdp3 mutex support
+ for mt8186
 Content-Language: en-US
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- daniel.lezcano@linaro.org, amitk@kernel.org, rui.zhang@intel.com,
- rafael@kernel.org, dietmar.eggemann@arm.com, nm@ti.com, sboyd@kernel.org,
- sudeep.holla@arm.com, cristian.marussi@arm.com, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20220707071555.10085-1-lukasz.luba@arm.com>
- <20220707071555.10085-2-lukasz.luba@arm.com>
- <20220707105307.wl2pnqbf3j4fo75z@vireshk-i7>
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <20220707105307.wl2pnqbf3j4fo75z@vireshk-i7>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Xiandong Wang <xiandong.wang@mediatek.com>
+References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
+ <20220705122627.2273-2-allen-kh.cheng@mediatek.com>
+ <5916c91b-41a1-c97a-84b4-7d48739a0639@collabora.com>
+ <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_035356_613583_9ECC0B09 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20220707_035952_843228_F065A339 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,60 +84,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 7/7/22 11:53, Viresh Kumar wrote:
-> On 07-07-22, 08:15, Lukasz Luba wrote:
->> The milli-Watts precision causes rounding errors while calculating
->> efficiency cost for each OPP. This is especially visible in the 'simple'
->> Energy Model (EM), where the power for each OPP is provided from OPP
->> framework. This can cause some OPPs to be marked inefficient, while
->> using micro-Watts precision that might not happen.
->>
->> Update all EM users which access 'power' field and assume the value is
->> in milli-Watts.
->>
->> Solve also an issue with potential overflow in calculation of energy
->> estimation on 32bit machine. It's needed now since the power value
->> (thus the 'cost' as well) are higher.
->>
->> Example calculation which shows the rounding error and impact:
->>
->> power = 'dyn-power-coeff' * volt_mV * volt_mV * freq_MHz
->>
->> power_a_uW = (100 * 600mW * 600mW * 500MHz) / 10^6 = 18000
->> power_a_mW = (100 * 600mW * 600mW * 500MHz) / 10^9 = 18
->>
->> power_b_uW = (100 * 605mW * 605mW * 600MHz) / 10^6 = 21961
->> power_b_mW = (100 * 605mW * 605mW * 600MHz) / 10^9 = 21
->>
->> max_freq = 2000MHz
->>
->> cost_a_mW = 18 * 2000MHz/500MHz = 72
->> cost_a_uW = 18000 * 2000MHz/500MHz = 72000
->>
->> cost_b_mW = 21 * 2000MHz/600MHz = 70 // <- artificially better
->> cost_b_uW = 21961 * 2000MHz/600MHz = 73203
->>
->> The 'cost_b_mW' (which is based on old milli-Watts) is misleadingly
->> better that the 'cost_b_uW' (this patch uses micro-Watts) and such
->> would have impact on the 'inefficient OPPs' information in the Cpufreq
->> framework. This patch set removes the rounding issue.
->>
->> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
->> ---
->>   drivers/cpufreq/mediatek-cpufreq-hw.c |  7 ++--
->>   drivers/cpufreq/scmi-cpufreq.c        |  6 +++
->>   drivers/opp/of.c                      | 15 ++++----
->>   drivers/powercap/dtpm_cpu.c           |  5 +--
->>   drivers/thermal/cpufreq_cooling.c     | 13 ++++++-
->>   drivers/thermal/devfreq_cooling.c     | 19 ++++++++--
->>   include/linux/energy_model.h          | 54 +++++++++++++++++++--------
->>   kernel/power/energy_model.c           | 24 ++++++++----
->>   8 files changed, 100 insertions(+), 43 deletions(-)
+Il 07/07/22 12:41, Matthias Brugger ha scritto:
 > 
-> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> 
+> On 07/07/2022 10:52, AngeloGioacchino Del Regno wrote:
+>> Il 05/07/22 14:26, Allen-KH Cheng ha scritto:
+>>> Add mdp3 mutex compatible for mt8186 SoC.
+>>>
+>>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>>> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
+>>
+>>
+>> Please drop this commit. Adding a mdp3-mutex compatible is not needed here.
+>>
+> 
+> Thanks for checking. We probably would need a fallback compatible. We can only know 
+> from the HW engineers that can confirm if the IP block is the same as the disp 
+> mutex or a different one.
+> 
+> I'll drop both patches for now until things got clear.
 > 
 
-Thank you Viresh for the ACKs!
+They're located in a different iospace from each other, but either the platform
+data needs to *not be* joined together, or if they're together, I would not like
+having two different compatible strings for essentially the same thing.
+
+I would at this point prefer dropping '-disp' from 'mediatek,mt8186-disp-mutex'
+so that we would be able to declare two 'mediatek,mt8186-mutex' in devicetree...
+...or simply have two mediatek,mt8186-disp-mutex (although logically incorrect?).
+
+Cheers,
+Angelo
+
+> Regards,
+> Matthias
+> 
+>>> ---
+>>>   .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
+>>>   1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml 
+>>> b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>>> index 627dcc3e8b32..234fa5dc07c2 100644
+>>> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>>> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>>> @@ -30,6 +30,7 @@ properties:
+>>>         - mediatek,mt8173-disp-mutex
+>>>         - mediatek,mt8183-disp-mutex
+>>>         - mediatek,mt8186-disp-mutex
+>>> +      - mediatek,mt8186-mdp3-mutex
+>>>         - mediatek,mt8192-disp-mutex
+>>>         - mediatek,mt8195-disp-mutex
+>>
+>>
+>>
+
 
