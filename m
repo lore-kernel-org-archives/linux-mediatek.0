@@ -4,104 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7925BCCA479
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 08:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965C3C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 08:11:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DRAgGkNlEApO14xdbpaohrTK093Nc5BwCNonMU/XOOk=; b=Mi7Qjy9ajdfxBB0kiUEG78OEpf
-	ZGpquABTe0VG9aLVxiGrzDUK9mkIr+OyMPGQwjsa7MWDneStqBVtRBvyy80gPvBt6l/78STNtfNCn
-	dJrpw5/RfSaY2z6ELK6Wp/1ALQCRACd16FOrRE1oFZFpmqOMimWUIoggVzVEPjh1GIrqnBo2e+GT3
-	A8UpnRVWplQoPUIlJeJOqVcqELF1oY4B+yE+puhlBAEBe1or/Afghoi651xe6zAXWL7ejcJUG1wmw
-	W5rZ2uCKC1Rpg4hmJlm5/OJeyV9TH1Tn+fc378rJvj2vad1CJ7yzlBIjUBBtS3sxnpdJ7Lb61ybxd
-	BSyP4SGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Sjp35FYW2DvIAP0zoNwUfgH2L5GQoLJfswI5u8d0Szo=; b=XZodN8yi3On+Ik7/tRKLnq7/dU
+	6/SAcyCmNR+Md9tDyt89Glob9Un3OmmU8LqFOfpVTtA2HMgp/rO36ZxwjvYYyqB3yi0oXPCN30xo8
+	pgdF3JmfVLrpfFcaB0rG8cgcmL85VetGJEQhNopwKZ7Vah2h9ZP/zNtIdpKxJMViptLuJlWtYH9UF
+	IHUnpON6URMEWqCmRCMdQ4fe6Ae7sZ+Tt6veKvUrSN9fOPMRBg8msJmIwKvE//XqVtJUsHvhLgMcc
+	ghA/iP6SV9m0Is831FfKHKgJPsbKxrUM9D7go24J7m3igywUxhFTQgJDq7N1q0ew5pCZgUtgq0JG7
+	sWqmmT3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9MZ5-00F4NK-DB; Thu, 07 Jul 2022 08:08:47 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1o9MbD-00F5kA-Ke; Thu, 07 Jul 2022 08:10:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9MYx-00F4Hp-OU; Thu, 07 Jul 2022 08:08:41 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B2D21B81ADA;
-	Thu,  7 Jul 2022 08:08:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C8D2C3411E;
-	Thu,  7 Jul 2022 08:08:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1657181316;
-	bh=Mzw+guaGxcvS7S4YlQr9bq/AYy4U/puT8v9DMSRjm+c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=o8T0RPLH1+QXuxRGiOx0iOcZa4PNW1RYnmq0rwqP4JlY+PYLChMX98BzUOmDLYQt5
-	 WHtgniPDP3fJS/IKoiVXIaVBC8g4rRYZFs4Es7HO3CMez5153+NrgRKDzbP84fxvsI
-	 PrLKzhYgkU2Ze+gIXne4sqvbIkFu3tT1lxy0BeOk=
-Date: Thu, 7 Jul 2022 10:08:33 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: kernel test robot <lkp@intel.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>,
-	virtualization@lists.linux-foundation.org,
-	usbb2k-api-dev@nongnu.org, tipc-discussion@lists.sourceforge.net,
-	target-devel@vger.kernel.org, sound-open-firmware@alsa-project.org,
-	samba-technical@lists.samba.org, rds-devel@oss.oracle.com,
-	patches@opensource.cirrus.com, osmocom-net-gprs@lists.osmocom.org,
-	openipmi-developer@lists.sourceforge.net, nvdimm@lists.linux.dev,
-	ntb@lists.linux.dev, netfilter-devel@vger.kernel.org,
-	netdev@vger.kernel.org, mjpeg-users@lists.sourceforge.net,
-	megaraidlinux.pdl@broadcom.com, linuxppc-dev@lists.ozlabs.org,
-	linux1394-devel@lists.sourceforge.net, linux-x25@vger.kernel.org,
-	linux-wpan@vger.kernel.org, linux-wireless@vger.kernel.org,
-	linux-watchdog@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-unionfs@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-staging@lists.linux.dev, linux-serial@vger.kernel.org,
-	linux-sctp@vger.kernel.org, linux-scsi@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-rdma@vger.kernel.org,
-	linux-raid@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-perf-users@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-parport@lists.infradead.org,
-	linux-parisc@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-nfc@lists.01.org, linux-mtd@lists.infradead.org,
-	linux-mmc@vger.kernel.org, linux-mm@kvack.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	linux-leds@vger.kernel.org, linux-integrity@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-iio@vger.kernel.org,
-	linux-ide@vger.kernel.org, linux-hwmon@vger.kernel.org,
-	linux-fsdevel@vger.kernel.org, linux-fpga@vger.kernel.org,
-	linux-fbdev@vger.kernel.org, linux-ext4@vger.kernel.org,
-	linux-efi@vger.kernel.org, linux-doc@vger.kernel.org,
-	linux-cxl@vger.kernel.org, linux-crypto@vger.kernel.org,
-	linux-clk@vger.kernel.org, linux-cifs@vger.kernel.org,
-	linux-btrfs@vger.kernel.org, linux-bluetooth@vger.kernel.org,
-	linux-block@vger.kernel.org, linux-bcache@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linaro-mm-sig@lists.linaro.org,
-	legousb-devel@lists.sourceforge.net, kvm@vger.kernel.org,
-	keyrings@vger.kernel.org, isdn4linux@listserv.isdn4linux.de,
-	iommu@lists.linux.dev, iommu@lists.linux-foundation.org,
-	intel-wired-lan@lists.osuosl.org, greybus-dev@lists.linaro.org,
-	dri-devel@lists.freedesktop.org, dm-devel@redhat.com,
-	devicetree@vger.kernel.org, dev@openvswitch.org,
-	dccp@vger.kernel.org, damon@lists.linux.dev, coreteam@netfilter.org,
-	cgroups@vger.kernel.org, ceph-devel@vger.kernel.org,
-	ath11k@lists.infradead.org, apparmor@lists.ubuntu.com,
-	amd-gfx@lists.freedesktop.org, alsa-devel@alsa-project.org,
-	accessrunner-general@lists.sourceforge.net
-Subject: Re: [linux-next:master] BUILD REGRESSION
- 088b9c375534d905a4d337c78db3b3bfbb52c4a0
-Message-ID: <YsaUgfPbOg7WuBuB@kroah.com>
-References: <62c683a2.g1VSVt6BrQC6ZzOz%lkp@intel.com>
+	id 1o9MbA-00F5f5-AW; Thu, 07 Jul 2022 08:10:57 +0000
+X-UUID: 45e4e3fe98d541f58e1eeee429d8381b-20220707
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:5968a2d1-1864-4cf8-ab25-4bdd94ea73ba,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:12e1a863-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 45e4e3fe98d541f58e1eeee429d8381b-20220707
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1786758055; Thu, 07 Jul 2022 01:10:50 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 7 Jul 2022 15:50:12 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 7 Jul 2022 15:50:12 +0800
+Message-ID: <d7078ff355a797081fcbd374c33fa5f4c74f4c98.camel@mediatek.com>
+Subject: Re: [PATCH v13 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 7 Jul 2022 15:50:12 +0800
+In-Reply-To: <20220701062808.18596-6-rex-bc.chen@mediatek.com>
+References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
+	 <20220701062808.18596-6-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <62c683a2.g1VSVt6BrQC6ZzOz%lkp@intel.com>
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_010840_139556_5126D48E 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20220707_011056_404637_6C56FD9A 
+X-CRM114-Status: GOOD (  29.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,71 +86,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 07, 2022 at 02:56:34PM +0800, kernel test robot wrote:
-> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-> branch HEAD: 088b9c375534d905a4d337c78db3b3bfbb52c4a0  Add linux-next specific files for 20220706
-> 
-> Error/Warning reports:
-> 
-> https://lore.kernel.org/linux-doc/202207070644.x48XOOvs-lkp@intel.com
-> 
-> Error/Warning: (recently discovered and may have been fixed)
-> 
-> Documentation/arm/google/chromebook-boot-flow.rst: WARNING: document isn't included in any toctree
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x1108): undefined reference to `__aeabi_ddiv'
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x1124): undefined reference to `__aeabi_ui2d'
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x1164): undefined reference to `__aeabi_dmul'
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x1170): undefined reference to `__aeabi_dadd'
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x1180): undefined reference to `__aeabi_dsub'
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x1190): undefined reference to `__aeabi_d2uiz'
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x162c): undefined reference to `__aeabi_d2iz'
-> arm-linux-gnueabi-ld: dc_dmub_srv.c:(.text+0x16b0): undefined reference to `__aeabi_i2d'
-> dc_dmub_srv.c:(.text+0x10f8): undefined reference to `__aeabi_ui2d'
-> dc_dmub_srv.c:(.text+0x464): undefined reference to `__floatunsidf'
-> dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x33c): undefined reference to `__floatunsidf'
-> drivers/pci/endpoint/functions/pci-epf-vntb.c:975:5: warning: no previous prototype for 'pci_read' [-Wmissing-prototypes]
-> drivers/pci/endpoint/functions/pci-epf-vntb.c:984:5: warning: no previous prototype for 'pci_write' [-Wmissing-prototypes]
-> drivers/vfio/vfio_iommu_type1.c:2141:35: warning: cast to smaller integer type 'enum iommu_cap' from 'void *' [-Wvoid-pointer-to-enum-cast]
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x34c): undefined reference to `__floatunsidf'
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x378): undefined reference to `__divdf3'
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x38c): undefined reference to `__muldf3'
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x3a0): undefined reference to `__adddf3'
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x3b4): undefined reference to `__subdf3'
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x3d4): undefined reference to `__fixunsdfsi'
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x750): undefined reference to `__fixdfsi'
-> mips-linux-ld: dc_dmub_srv.c:(.text.dc_dmub_setup_subvp_dmub_command+0x7c0): undefined reference to `__floatsidf'
-> powerpc-linux-ld: drivers/pci/endpoint/functions/pci-epf-vntb.c:174: undefined reference to `ntb_link_event'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x468): undefined reference to `__divdf3'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x46c): undefined reference to `__muldf3'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x470): undefined reference to `__adddf3'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x474): undefined reference to `__subdf3'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x478): undefined reference to `__fixunsdfsi'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x47c): undefined reference to `__fixdfsi'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x480): undefined reference to `__floatsidf'
-> xtensa-linux-ld: dc_dmub_srv.c:(.text+0x60c): undefined reference to `__floatunsidf'
-> 
-> Unverified Error/Warning (likely false positive, please contact us if interested):
-> 
-> arch/x86/events/core.c:2114 init_hw_perf_events() warn: missing error code 'err'
-> drivers/android/binder.c:1481:19-23: ERROR: from is NULL but dereferenced.
-> drivers/android/binder.c:2920:29-33: ERROR: target_thread is NULL but dereferenced.
-> drivers/android/binder.c:353:25-35: ERROR: node -> proc is NULL but dereferenced.
-> drivers/android/binder.c:4888:16-20: ERROR: t is NULL but dereferenced.
-> drivers/base/regmap/regmap.c:1996:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> drivers/char/random.c:869:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> drivers/firmware/arm_scmi/clock.c:394:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> drivers/firmware/arm_scmi/powercap.c:376:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> drivers/gpu/drm/amd/amdgpu/../pm/powerplay/hwmgr/vega10_powertune.c:1214:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> drivers/gpu/drm/amd/display/dc/os_types.h: drm/drm_print.h is included more than once.
-> drivers/gpu/drm/bridge/ite-it66121.c:1398:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
-> drivers/greybus/operation.c:617:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+Hi, Bo-Chen:
 
-<snip>
+On Fri, 2022-07-01 at 14:28 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a embedded displayport driver for the MediaTek mt8195
+> SoC.
+> 
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
 
-When the compiler crashes, why are you blaming all of these different
-mailing lists?  Perhaps you need to fix your compiler :)
+[snip]
 
-thanks,
+> +/*
+> + * We need to handle HPD signal in eDP even though eDP is a always
+> connected
+> + * device. Besides connected status, there is another feature for
+> HPD signal -
+> + * HPD pulse: it presents an IRQ from sink devices to source devices
+> (Refer to
+> + * 5.1.4 of DP1.4 spec).
+> + */
+> +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
+> +{
+> +	bool connected;
+> +	bool hpd_connect_sta;
+> +	u32 irq_status = mtk_dp_swirq_get_clear(mtk_dp) |
+> +			 mtk_dp_hwirq_get_clear(mtk_dp);
+> +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
+> +
+> +	if (irq_status & MTK_DP_HPD_INTERRUPT)
+> +		train_info->irq_sta.hpd_inerrupt = true;
+> +	if (irq_status & MTK_DP_HPD_CONNECT)
+> +		hpd_connect_sta = true;
+> +	if (irq_status & MTK_DP_HPD_DISCONNECT)
+> +		train_info->irq_sta.hpd_disconnect = true;
 
-greg k-h
+hpd_disconnect is used only in this function, so let it be local
+variable.
+
+> +
+> +	if (!irq_status)
+> +		return IRQ_HANDLED;
+
+Move this to top of this function.
+
+> +
+> +	connected = mtk_dp_plug_state(mtk_dp);
+> +	if (connected || !train_info->cable_plugged_in)
+> +		train_info->irq_sta.hpd_disconnect  = false;
+
+The truth table of (irq_status & MTK_DP_HPD_DISCONNECT, connected,
+cable_plugged_in, hpd_disconnect) is
+
+0 0 0 0
+0 0 1 0
+0 1 0 0
+0 1 1 0
+1 0 0 0
+1 0 1 1
+1 1 0 0
+1 1 1 0
+
+So the only case that hpd_disconnect is true is
+
+(irq_status & MTK_DP_HPD_DISCONNECT) && !connected && train_info-
+>cable_plugged_in)
+
+And train_info->cable_plugged_in is the previous status. The previous
+status is connected. And irq_status and connected is the new status.
+The new status is disconnected.
+
+I have a question. Why we need both irq_status and connected for new
+status? I think connected is enough for new status, so we could ignore
+irq_status.
+
+Regards,
+CK
+
+> +	else if (!connected || train_info->cable_plugged_in)
+> +		hpd_connect_sta = false;
+> +
+> +	if (!(hpd_connect_sta || train_info->irq_sta.hpd_disconnect))
+> +		return IRQ_WAKE_THREAD;
+> +
+> +	if (hpd_connect_sta) {
+> +		hpd_connect_sta = false;
+> +		train_info->cable_plugged_in = true;
+> +	} else {
+> +		train_info->irq_sta.hpd_disconnect = false;
+> +		train_info->cable_plugged_in = false;
+> +	}
+> +	train_info->cable_state_change = true;
+> +
+> +	return IRQ_WAKE_THREAD;
+> +}
+> +
+
 
