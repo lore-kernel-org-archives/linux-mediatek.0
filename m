@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9723CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 10:16:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5557BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 10:42:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d/HBPx1CbTs6kyTT+icjI/8L1wM9zWEeGfg9iuHuqEg=; b=YyztdkMapZ2rIC6vMWFR3v5zKk
-	pAVsNdl163Dz2uo8jYB77sXmAJyMDBbAuKiVYDv/QulvAARXXirqauGOqvDbPjhub80jzLTmT+2it
-	Z+9x6TFRBWx+fQjI7YYYIW2K4r4kYNQ7vhap3nomwTdLMNG5lu7uKedtalyx2/k6A3cCWvZbk4D37
-	nj1q3dGTE5QUC2hPScyhwtLDPn0Fyd1A+0CMwvzAVkJSsHqBxdMnfVbvpoO9qeA/QhnoRddBgIkYF
-	a00td0Ejk/11d+4rDmozffV37R9lzJ/IaAPXIZvLPr5UeGRnP90PgQA2FEUVi0sXw9t4vxJvH7ORX
-	drMFFHrA==;
+	bh=AWk1Z5M5SWdApDSOa1sdcUjH/ZrS41Uj70CxP1iIBEY=; b=4zM7h6Z8XtwBDoyxPD+viiOvgn
+	/44ViUl3riV4g7L/DUc7mQvqWX/PkXnvqlvkhxTb4xgoioeUvTL1e96nyhyE3Qi6APxIVj6USHwiy
+	Oqbk+GfhYYXnfUW4LtmnZ+1p1VP0Z9WaqFIQS9AA2pB1g1KFOUxq66ikBoB1nX24T5as03ShYG9ax
+	kqobawcQ3D3GRPYb+nPz5M8T7r0mjje1P06/JaGsU6N5VJ+WCrLrI2eDmhEP0WBDQP6oWhiFm0ld4
+	Airmu1A8fIuYM93f/l0rAXOSkSK7+qPLA09XKnhKHS+ycDJSvVCReYcH2v97/1NL71KZhNJmpgiJ3
+	2QJeitrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9OYc-00FY5p-54; Thu, 07 Jul 2022 10:16:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o9OxX-00Fd6h-6z; Thu, 07 Jul 2022 10:42:11 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9OYY-00FY3b-Pn; Thu, 07 Jul 2022 10:16:24 +0000
-X-UUID: 1bf1abf9d7ef44c7ae79d8602df4ee2d-20220707
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:e2f4efe6-3bbb-40e6-a093-1a745e0972ab,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:0b4eac63-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 1bf1abf9d7ef44c7ae79d8602df4ee2d-20220707
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 322311525; Thu, 07 Jul 2022 03:16:16 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 7 Jul 2022 18:15:38 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Jul 2022 18:15:38 +0800
-Message-ID: <75855b7c8784909086db4e773c13a8e2eb591292.camel@mediatek.com>
-Subject: Re: [PATCH v11 0/3] Add basic node support for MediaTek MT8186 SoC
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	"Chen-Yu Tsai" <wenst@chromium.org>, Ryder Lee <ryder.lee@kernel.org>,
-	<hsinyi@chromium.org>
-Date: Thu, 7 Jul 2022 18:15:38 +0800
-In-Reply-To: <0f758c3d-a1cd-5e28-d3bb-70833b53c14b@gmail.com>
-References: <20220520122217.30716-1-allen-kh.cheng@mediatek.com>
-	 <37fb545a-bc45-65b0-b67b-5ef1b0346777@gmail.com>
-	 <0f758c3d-a1cd-5e28-d3bb-70833b53c14b@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o9OxE-00FcuZ-8d; Thu, 07 Jul 2022 10:41:53 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id v16so14262444wrd.13;
+        Thu, 07 Jul 2022 03:41:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:content-language:to:cc
+         :references:from:subject:in-reply-to:content-transfer-encoding;
+        bh=AWk1Z5M5SWdApDSOa1sdcUjH/ZrS41Uj70CxP1iIBEY=;
+        b=Q9i8+V9mX7CMwLFG1MVGGhx8nrZVt5/zzB9FFoo4v8WHX89lbh1JhLeXgY5L9pKoco
+         iRbJ7H2bZDSvjTe6f/HnJob3uyUBaV55v2LPxGsdH94HrSQ4kvebHFCeCGv7LlB9AKu7
+         RrDEddLM6hngxF1yJMMC5JraOJsa1DnjE6RzRYjDsl4jBAqBV3rqxPXREKp8TwzsOkdt
+         Eg5XbdWvU5CFUhtBHkzXrvapyIWK1NQh9z3wjMr66enK0/aW/HMuDsJXPkttKS0NPW92
+         w+rYrB9voK80ctcuQI7pAdE/tLsBOd9B3EfrrL1e3CGs20Giw5HDR3jgeO8aneXyBXtk
+         bXfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent
+         :content-language:to:cc:references:from:subject:in-reply-to
+         :content-transfer-encoding;
+        bh=AWk1Z5M5SWdApDSOa1sdcUjH/ZrS41Uj70CxP1iIBEY=;
+        b=E1FJChhafIDysE+LjbdwkPjdKJ09M5T9o1WWoCV/8SzPGlALo17Mq26Oh/d1lKrghP
+         L2hXGxAq1bfu1I/+huYpkDZIW1TJH6XjWaL/0m1bCpREpJkmHln34XFbaaWs4OabiEW5
+         WURE5GB2QB0LhwVHVabjoG8AL/2y514/Ac3Hjuk4MUKQ8oJ0G2mVqTHDEfYUdERtaBI8
+         yf4p5Gpj3qb2zi/MvJDl3uXei9xmF+Sy4Ls9e/BVVWyUykHU0U3Yt37LvMB2y/m+Vcx1
+         XcAgy8TZ/ws+vHZj8hXJp9XEYd8k2r9dx+6X05IHPFRncRd7zmavx8iPe9iPwLyaeWYF
+         PhJw==
+X-Gm-Message-State: AJIora8+UQqITa9HUemoUnIo9OZFOK5gqxhIu3pekRWe6x9uNSPVPRCS
+	tfG1p5FBc0iQ+3eVhwIUaZk=
+X-Google-Smtp-Source: AGRyM1t2zasbMiF3MWY2dw1TcEEKZ25K4+xE5Ii9yxj9FzxvwTPc8TRwQ7+xwCe9gkFE7vgFIV8tuw==
+X-Received: by 2002:a5d:6da2:0:b0:21b:c9cb:f96c with SMTP id u2-20020a5d6da2000000b0021bc9cbf96cmr42764518wrs.670.1657190506913;
+        Thu, 07 Jul 2022 03:41:46 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id d7-20020a5d5387000000b0021d5c52f4b4sm14133497wrv.34.2022.07.07.03.41.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 Jul 2022 03:41:45 -0700 (PDT)
+Message-ID: <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
+Date: Thu, 7 Jul 2022 12:41:44 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Xiandong Wang <xiandong.wang@mediatek.com>
+References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
+ <20220705122627.2273-2-allen-kh.cheng@mediatek.com>
+ <5916c91b-41a1-c97a-84b4-7d48739a0639@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: add mdp3 mutex support
+ for mt8186
+In-Reply-To: <5916c91b-41a1-c97a-84b4-7d48739a0639@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_031622_878908_41C18BCE 
-X-CRM114-Status: GOOD (  28.20  )
+X-CRM114-CacheID: sfid-20220707_034152_355490_87F06183 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,121 +100,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
 
-On Thu, 2022-07-07 at 11:40 +0200, Matthias Brugger wrote:
+
+On 07/07/2022 10:52, AngeloGioacchino Del Regno wrote:
+> Il 05/07/22 14:26, Allen-KH Cheng ha scritto:
+>> Add mdp3 mutex compatible for mt8186 SoC.
+>>
+>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
 > 
-> On 22/06/2022 17:40, Matthias Brugger wrote:
-> > 
-> > 
-> > On 20/05/2022 14:22, Allen-KH Cheng wrote:
-> > > MT8186 is a SoC based on 64bit ARMv8 architecture.
-> > > It contains 6 CA55 and 2 CA76 cores.
-> > > MT8186 share many HW IP with MT65xx series.
-> > > 
-> > > This patchset was tested on MT8186 evaluation board to shell.
-> > > 
-> > 
-> > Applied, thanks!
-> > 
 > 
-> Based on the review from Angelo I dropped patch 3 from the tree.
-> Please address 
-> the issues and submit again.
-> 
-> Regards,
-> Matthias
+> Please drop this commit. Adding a mdp3-mutex compatible is not needed here.
 > 
 
-Sure, thanks for the comments from Angelo.
+Thanks for checking. We probably would need a fallback compatible. We can only 
+know from the HW engineers that can confirm if the IP block is the same as the 
+disp mutex or a different one.
 
-I will update in next version.
+I'll drop both patches for now until things got clear.
 
-BTW, could you please take a look into this series ?
+Regards,
+Matthias
 
-
-https://lore.kernel.org/all/20220622130824.29143-1-nancy.lin@mediatek.com/
-
-This series is blocked for long time and it's in verion 24.
-
-I would appreciate your help.
-
-Best regards,
-Allen
-
-> > > Based on next-20220519, linux-next/master
-> > > 
-> > > changes since v9:
-> > >   - remove some merged PATCHs from series
-> > >   - reorder nodes in dts (cpu-map)
-> > >   - remove okay status in auxadc
-> > >   - remove unnecessary suffix node name for i2c
-> > >   - add pwm node
-> > >   - add dsi-phy node
-> > >   - add dpi node
-> > > 
-> > > changes since v9:
-> > >   - add one space before equal sign of drive-strength-adv
-> > >   - corect compatible name for big cores (ca76)
-> > >   - use upper case of address in pinctrl
-> > >   - add pwrap node
-> > >   - add pwm node
-> > > 
-> > > changes since v8:
-> > >   - change name from pins_bus to pins-sda-scl
-> > >   - correct email address
-> > >   - add capacity-dmips-mhz for each CPU
-> > >   - add ppi-partitions in gic node
-> > >   - change name to power-domain
-> > >   - remove status "okay" in scp node
-> > >   - update timer and pericfg compatible in series
-> > > 
-> > > changes since v7:
-> > >   - add scp&auxadc node
-> > > 
-> > > changes since v6:
-> > >   - remove unnecessary blank line
-> > > 
-> > > changes since v5:
-> > >   - replace Mediatek a to MediaTek
-> > >   - use GPL-2.0-only OR BSD-2-Clause
-> > > 
-> > > changes since v4:
-> > >   - correct driver clock of mt8186
-> > >   - add power domains controller and clock controllers
-> > >   - add pinctrl, usb host, spi and i2c nodes
-> > >   - add node status in mt8186-evb.dts
-> > >   - correct some dtbs_check warnings
-> > > 
-> > > changes since v3:
-> > >   - remove serial, mmc and phy patch from series. (already
-> > > merged)
-> > >   - remove mcusysoff node
-> > >   - move oscillator nodes at the head of dts
-> > >   - change name from usb-phy to t-phy
-> > > 
-> > > changes since v2:
-> > >   - add soc {} in mt8186.dtsi
-> > > 
-> > > changes since v1:
-> > >   - add dt-bindings: arm: Add compatible for MediaTek MT8186
-> > > 
-> > > Allen-KH Cheng (3):
-> > >    dt-bindings: arm: mediatek: Add mt8186 pericfg compatible
-> > >    dt-bindings: arm: Add compatible for MediaTek MT8186
-> > >    arm64: dts: Add MediaTek SoC MT8186 dts and evaluation board
-> > > and
-> > >      Makefile
-> > > 
-> > >   .../devicetree/bindings/arm/mediatek.yaml     |    4 +
-> > >   .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
-> > >   arch/arm64/boot/dts/mediatek/Makefile         |    1 +
-> > >   arch/arm64/boot/dts/mediatek/mt8186-evb.dts   |  232 ++++
-> > >   arch/arm64/boot/dts/mediatek/mt8186.dtsi      | 1016
-> > > +++++++++++++++++
-> > >   5 files changed, 1254 insertions(+)
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
-> > >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> > > 
-
+>> ---
+>>   .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git 
+>> a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml 
+>> b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>> index 627dcc3e8b32..234fa5dc07c2 100644
+>> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>> @@ -30,6 +30,7 @@ properties:
+>>         - mediatek,mt8173-disp-mutex
+>>         - mediatek,mt8183-disp-mutex
+>>         - mediatek,mt8186-disp-mutex
+>> +      - mediatek,mt8186-mdp3-mutex
+>>         - mediatek,mt8192-disp-mutex
+>>         - mediatek,mt8195-disp-mutex
+> 
+> 
+> 
 
