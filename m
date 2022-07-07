@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965C3C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 08:11:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D6ECCA480
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 08:23:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sjp35FYW2DvIAP0zoNwUfgH2L5GQoLJfswI5u8d0Szo=; b=XZodN8yi3On+Ik7/tRKLnq7/dU
-	6/SAcyCmNR+Md9tDyt89Glob9Un3OmmU8LqFOfpVTtA2HMgp/rO36ZxwjvYYyqB3yi0oXPCN30xo8
-	pgdF3JmfVLrpfFcaB0rG8cgcmL85VetGJEQhNopwKZ7Vah2h9ZP/zNtIdpKxJMViptLuJlWtYH9UF
-	IHUnpON6URMEWqCmRCMdQ4fe6Ae7sZ+Tt6veKvUrSN9fOPMRBg8msJmIwKvE//XqVtJUsHvhLgMcc
-	ghA/iP6SV9m0Is831FfKHKgJPsbKxrUM9D7go24J7m3igywUxhFTQgJDq7N1q0ew5pCZgUtgq0JG7
-	sWqmmT3A==;
+	bh=qhGXVYTI3y8DQIyLbAUR63DvhKZD5q4V66nvFencTLk=; b=EZaFxoiFgdp2KyCzliorH/Qk8E
+	3I1J/B4xX3TEE8cM68zMFnbkqsicYOH8kSUk1kj2tGq5la/o///4o43IjRKGVFs4afObhkeAk82JA
+	QgPmQEOVmBDSFOD500CfRb3vF1gDQDWHJx7VXAG3rXM79ziuzfpW5y94r5GkSmtthQBIcdGDyVd++
+	220ByXYD/owvvBjxE4TpTAGBkXvYqzxVAYgSa8+snvdqu+8lOurDUF3ptWreTUJk+9vOovf2V1Tez
+	PlhnYkXFtybZqZEfRergx9nBKfCnED2zShj5m4+XAi+xdiGolQk5lx5pNC3AsnRBtfhF55kHMNmJ0
+	mLBzvnWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9MbD-00F5kA-Ke; Thu, 07 Jul 2022 08:10:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o9Mmr-00FBYi-8E; Thu, 07 Jul 2022 08:23:01 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9MbA-00F5f5-AW; Thu, 07 Jul 2022 08:10:57 +0000
-X-UUID: 45e4e3fe98d541f58e1eeee429d8381b-20220707
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:5968a2d1-1864-4cf8-ab25-4bdd94ea73ba,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:12e1a863-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 45e4e3fe98d541f58e1eeee429d8381b-20220707
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1786758055; Thu, 07 Jul 2022 01:10:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 7 Jul 2022 15:50:12 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 7 Jul 2022 15:50:12 +0800
-Message-ID: <d7078ff355a797081fcbd374c33fa5f4c74f4c98.camel@mediatek.com>
-Subject: Re: [PATCH v13 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 7 Jul 2022 15:50:12 +0800
-In-Reply-To: <20220701062808.18596-6-rex-bc.chen@mediatek.com>
-References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
-	 <20220701062808.18596-6-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o9Mmh-00FBVR-Bf; Thu, 07 Jul 2022 08:22:52 +0000
+Received: by mail-wr1-x432.google.com with SMTP id f2so19828919wrr.6;
+        Thu, 07 Jul 2022 01:22:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=qhGXVYTI3y8DQIyLbAUR63DvhKZD5q4V66nvFencTLk=;
+        b=JANdJtCKSYGSLRjWg5hHnlbZIlWenXHZf7OwKO/iz4ZkE0C5zRGbauFi2RFsendG3S
+         CuWitByG9S1tvGSCsJtTdPl/JvlumojnNy0sWeZimrn8deIg3HrFj46zlFlT+UwaEmgS
+         9iMqLbiYuDldjB4x3ah17Kt+SxJ2mZovhXphhZMpnMnNdwiaK1zpQuKLfKXjOh1q/OaU
+         PxX7spWKgC4hZMXDQTHvS6sFBVoRExNYSEwWBy1C/kEEtdID92rGO5eeQ5yaLwgh9Hc/
+         4a5IG7ax2SPiET044buBxgqeM/J/+miTPgJJSvY3WwX4MNEBjRjGo/FgFS0SjcXRXgfz
+         M4/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=qhGXVYTI3y8DQIyLbAUR63DvhKZD5q4V66nvFencTLk=;
+        b=kSiGJVp+tKY1+TqzIFXthmOY2Jm0ATY7NRK6ZGe5ycUorhRwhiA+3RfWJj59g/24Ie
+         e6oLwdSy4vV4l4rlqJM7LQwFzAtZ+TM925qpon3aDtNI1lDK66tENoAOdbdEEPDI/Txj
+         sIOiNWgXn7/k+FF3z9kBlmEbf0vCHlkGvmsjDTpbQAeak+YJgzhI4rLr6CBg932WzF65
+         A8a7YgPmCkhwEtg+XBO65880685I8bxbvmiXe2b8+uYizRUB6GfWyf8i5iuzW/EwmZ6I
+         F7qE1ZBwY4QH1IRo3O+R4+sanZQd2tVIYV5Gmz29uN0yRdxRT3Mb5Zxux4RFDDwuDISL
+         mixg==
+X-Gm-Message-State: AJIora91Q1S4TmiYo8aJt2ofZWOyz8TFoJbq/nL4eq3bqVF/uxJJh15n
+	j1Hi8mnV0Ik45+UBC4Stj9o=
+X-Google-Smtp-Source: AGRyM1sHiG77D0vjoRwIBlJ8Gd7/ObAkRjVGUunFWo8VBLXawqC8R+7+zUbbAO8F9/OrcLlvKKY6Xg==
+X-Received: by 2002:a05:6000:1689:b0:21d:22d0:8e5e with SMTP id y9-20020a056000168900b0021d22d08e5emr41859376wrd.574.1657182168406;
+        Thu, 07 Jul 2022 01:22:48 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id 22-20020a05600c029600b003a2b8461ddbsm8424500wmk.41.2022.07.07.01.22.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 Jul 2022 01:22:47 -0700 (PDT)
+Message-ID: <a0059fb3-c734-84eb-88ee-e0d34fcbca1b@gmail.com>
+Date: Thu, 7 Jul 2022 10:22:45 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v2 0/2] Allow getting regulator on MFG for multiple SoCs
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, wenst@chromium.org
+References: <20220623123850.110225-1-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220623123850.110225-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_011056_404637_6C56FD9A 
-X-CRM114-Status: GOOD (  29.01  )
+X-CRM114-CacheID: sfid-20220707_012251_449272_A85988E7 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,120 +92,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
 
-On Fri, 2022-07-01 at 14:28 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+
+On 23/06/2022 14:38, AngeloGioacchino Del Regno wrote:
+> This is one of the steps to enable DVFS with the Panfrost driver:
+> since Panfrost is already enabling the (required) MFG power domains
+> and since the mtk-pm-domains driver is already responsible for
+> actually enabling the SRAM PDN, it makes sense to make sure that
+> the VSRAM supply is ON when trying to reset/enable the SRAM.
 > 
-> This patch adds a embedded displayport driver for the MediaTek mt8195
-> SoC.
+> For this reason, the MTK_SCPD_DOMAIN_SUPPLY flag was added to one
+> more MFG domain, ensuring that the SRAM is actually powered and
+> also not relying on the bootloader leaving this supply on; on the
+> other hand, this is also making possible to avoid setting a
+> sram-supply on the GPU node, making devfreq happy about having
+> only one supply and finally allowing DVFS to happen.
 > 
-> It supports the MT8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
+> If no domain-supply is declared in devicetree, mtk-pm-domains driver
+> probe will anyway keep going, so this is not breaking old devicetrees.
 > 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
+> No side effects either when this supply is declared for both a MFG
+> domain and Panfrost together.
 > 
-> This driver is based on an initial version by
-> Jitao shi <jitao.shi@mediatek.com>
+> This series has no dependencies.
+
+Both patches applied, thanks!
+
 > 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
-
-[snip]
-
-> +/*
-> + * We need to handle HPD signal in eDP even though eDP is a always
-> connected
-> + * device. Besides connected status, there is another feature for
-> HPD signal -
-> + * HPD pulse: it presents an IRQ from sink devices to source devices
-> (Refer to
-> + * 5.1.4 of DP1.4 spec).
-> + */
-> +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
-> +{
-> +	bool connected;
-> +	bool hpd_connect_sta;
-> +	u32 irq_status = mtk_dp_swirq_get_clear(mtk_dp) |
-> +			 mtk_dp_hwirq_get_clear(mtk_dp);
-> +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
-> +
-> +	if (irq_status & MTK_DP_HPD_INTERRUPT)
-> +		train_info->irq_sta.hpd_inerrupt = true;
-> +	if (irq_status & MTK_DP_HPD_CONNECT)
-> +		hpd_connect_sta = true;
-> +	if (irq_status & MTK_DP_HPD_DISCONNECT)
-> +		train_info->irq_sta.hpd_disconnect = true;
-
-hpd_disconnect is used only in this function, so let it be local
-variable.
-
-> +
-> +	if (!irq_status)
-> +		return IRQ_HANDLED;
-
-Move this to top of this function.
-
-> +
-> +	connected = mtk_dp_plug_state(mtk_dp);
-> +	if (connected || !train_info->cable_plugged_in)
-> +		train_info->irq_sta.hpd_disconnect  = false;
-
-The truth table of (irq_status & MTK_DP_HPD_DISCONNECT, connected,
-cable_plugged_in, hpd_disconnect) is
-
-0 0 0 0
-0 0 1 0
-0 1 0 0
-0 1 1 0
-1 0 0 0
-1 0 1 1
-1 1 0 0
-1 1 1 0
-
-So the only case that hpd_disconnect is true is
-
-(irq_status & MTK_DP_HPD_DISCONNECT) && !connected && train_info-
->cable_plugged_in)
-
-And train_info->cable_plugged_in is the previous status. The previous
-status is connected. And irq_status and connected is the new status.
-The new status is disconnected.
-
-I have a question. Why we need both irq_status and connected for new
-status? I think connected is enough for new status, so we could ignore
-irq_status.
-
-Regards,
-CK
-
-> +	else if (!connected || train_info->cable_plugged_in)
-> +		hpd_connect_sta = false;
-> +
-> +	if (!(hpd_connect_sta || train_info->irq_sta.hpd_disconnect))
-> +		return IRQ_WAKE_THREAD;
-> +
-> +	if (hpd_connect_sta) {
-> +		hpd_connect_sta = false;
-> +		train_info->cable_plugged_in = true;
-> +	} else {
-> +		train_info->irq_sta.hpd_disconnect = false;
-> +		train_info->cable_plugged_in = false;
-> +	}
-> +	train_info->cable_state_change = true;
-> +
-> +	return IRQ_WAKE_THREAD;
-> +}
-> +
-
+>   Changes in v2:
+>    - Squashed all mtXXXX-pm-domains.h changes in one patch
+> 
+> AngeloGioacchino Del Regno (2):
+>    soc: mediatek: mtk-pm-domains: Allow probing vreg supply on two MFGs
+>    arm64: dts: mediatek: mt8183-kukui: Assign sram supply to mfg_async pd
+> 
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi       | 2 +-
+>   drivers/soc/mediatek/mt8183-pm-domains.h       | 1 +
+>   drivers/soc/mediatek/mt8186-pm-domains.h       | 2 +-
+>   drivers/soc/mediatek/mt8192-pm-domains.h       | 2 ++
+>   drivers/soc/mediatek/mt8195-pm-domains.h       | 2 +-
+>   6 files changed, 10 insertions(+), 3 deletions(-)
+> 
 
