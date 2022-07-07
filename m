@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B060C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 14:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 428F9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 14:45:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7zB98bE99TWpQmWntZaNoL4upEKygyq+84KXNA7Ndxg=; b=pmUg1aITN2zcZxiZ3GmxQ2/QIo
-	oXZQ1wSMmFJZgX8hzi1kD/hJ01IOa1vWUC8N7KdBgkpAe+EuJzYCiUw2zR9tim92reKajjvN3o1wR
-	z7xt3AE6/V+1qascDz/FMMNDLNHvdUWy37cI7SXClKyv4Oc6EVHS1yOWlouGLeqJ+l71qKQQngjdh
-	TETZnlsBa2JIyUWR4GnUIY9eE2p2hB8TN9IBKwrhDqgQxfYSF8rOQHjJ02wzaHaZEoqDObM/V1Ft6
-	FdwB1MhBkT6pkdGUuZS0P6deYG9qPL7lG2lfeatROc0zO8QBxjWpZWzhsRXQzYEzxOvnHysHr0tP/
-	zlj/8BdQ==;
+	bh=0vvOcF04of4eueNy3j0/G+PNUIgeaFTAvFOiC1ayUAM=; b=ZahJ3lAHP9i3pfkOAspCGuZQ04
+	c6Y0S8fEQRqWcIJ06gzKMZ+IoPUfkMsvByh1JCr4M09xsTT+xGlNPiyvnb2KBnkAV3vL2IGqpMV2z
+	ATDHnR4XXn4kkiZ13hoTkrF6aN1WQe93u1QB6Sl8Q+Mvr4Xtb4NNJgwxduGr4I0mW/4+WFIeGitCq
+	xEPemg/+ZgLTomEBUk9FiqmF47dOCFCqrJiYV1BLU5C4+8LPf5o+r4s6uSmoHwb00PSaAzh1829OE
+	BfDVB++1YNqGKkA3mlhjTMFhZ04D231eYohb1BDYYCgz+cLtT4kAStR1NH6HsBMKFB9sEgnj4yPzM
+	Ew9mJoRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9SjY-00GYjQ-3q; Thu, 07 Jul 2022 14:44:00 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1o9Sl8-00GZhI-Ey; Thu, 07 Jul 2022 14:45:38 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9SjJ-00GYaV-TD; Thu, 07 Jul 2022 14:43:47 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id bk26so11575359wrb.11;
-        Thu, 07 Jul 2022 07:43:43 -0700 (PDT)
+	id 1o9Sl5-00GZb6-6K; Thu, 07 Jul 2022 14:45:36 +0000
+Received: by mail-wr1-x429.google.com with SMTP id b26so26685811wrc.2;
+        Thu, 07 Jul 2022 07:45:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=7zB98bE99TWpQmWntZaNoL4upEKygyq+84KXNA7Ndxg=;
-        b=lmEPdC/BP3rLuGsEFqwbhkQSrZXQSMy1hAHabWq/q5z6rud561BSLIXnt2SeGcmjXs
-         3b1CRRK56UM0VRWQZld5EPJfrvTXMJBgjY12MZUG3n4Widm6figX5vxB6YtVFS31C8Fg
-         pvVZfcpv1BNCOi3simlg1B7FHULlojFXG6IHoqeSiGuWaX69tW7sdBB62OZKO86GapXa
-         TCAkK97Uyz+8OUfzo0LeVF/nt1XPItN6iEPdDjbmOi+8q/mkyB8QvgvjkvEeBPduSic9
-         giLlhicb1fcw2IBVfdrGUGMHyZKSu6kVq0KKsSCjyNUfiKK0mlChvRrqkjd8MG6M0UaK
-         T8MQ==
+        bh=0vvOcF04of4eueNy3j0/G+PNUIgeaFTAvFOiC1ayUAM=;
+        b=YoegBB6KD2BGYIwIFRuRldiaXMtgQZEaon/lxSPUd/NBq5ujfuIiFdwN/Kk9CF9tdK
+         m+6sCUv0gqnFnqu1i4kEiFHay3+ZgSbUYH0IYJipabvCJ44Sp+uN70qHfJu5fLygqBPa
+         RtMkk5Ds78rZTaUGBBpLJpWrCGF8x5kF+uXNKwMO2PWTawaAacXeEytSLMnJhtR/gxi9
+         JJbw9w1+8kwfDx8c7MaYBsGSME72NkmqggVbbgq/+NLCfOjNrTAEbUMcRunSdX+kzWhN
+         KBdcIAGmcDoC7+3rGU+TOcT8NGPMjoU1GQkBes2xKamQp69VvQO7yGZvMHVtH7HDFoi6
+         uhKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=7zB98bE99TWpQmWntZaNoL4upEKygyq+84KXNA7Ndxg=;
-        b=ofXaCFVRAaGTGaXe0azYPF3zNLmYLVgBdGfmdsvruXwHT00j8vnFHOq7YNvLGOatYn
-         5sLceZ9vfvHEy/P2PpIuN4f+SE+ZuNU8OZJWoheJys52iLHsbJw+2/86L83yDc3hPrxk
-         sqswwbYpFG7kQ91xegiSPSbbJRfMHX2dHDPg7tImRBizZVjAE/M9A9e+azr0gN+bevXa
-         99vBMBMWBRzM/KnICDCcvJ7EramcWWN+t/Xf9sdHJ5VUKRzCElK6uFax/7zrz3SjLiDp
-         LhjVsp/k7DmzZjVtO/oBMxx5rV/zLxcCA7As8Gs5vb7Kr7D1yfzou3A9wlQP07AeLqH8
-         HGPw==
-X-Gm-Message-State: AJIora9VQ3nfSaIu8oyB9jwZM4gGISMyhZhQREhV/VUiDiPozLVpFW4X
-	/U7ant9bXXUZO9puaMuV7s8=
-X-Google-Smtp-Source: AGRyM1vd3p8horCjkhzOZE22jq24Fc4VcQFDE+KNDBYFXZdgJnYoUBJxiMzjuTvWG3Nk+dC/p4eXaA==
-X-Received: by 2002:a05:6000:104c:b0:21d:87bf:63a2 with SMTP id c12-20020a056000104c00b0021d87bf63a2mr2885660wrx.461.1657205022637;
-        Thu, 07 Jul 2022 07:43:42 -0700 (PDT)
+        bh=0vvOcF04of4eueNy3j0/G+PNUIgeaFTAvFOiC1ayUAM=;
+        b=v/g3ZgfrA76hStDLlNumyB2I9qKUvn+qjF0ehn7a/wcFp79sgYod1WDVo1UeFFybNy
+         HsdMCSeEcMNAQykKqCShShjVBK7lkdrew1A4i8uqAqwdz2HslH1TBxmDlUtdoja7Cl7y
+         3Y21/A+ex7Ie48xJyVZzw/x0G6YyHzpJEloDjNef0sBMC6qrwdl68+G+4UPeZyJIu1aV
+         Dgyu3JsccOKE9NTF7CRV2ZpjxL0gwWmTrjqs5vwaP1869PjaFZVtyflqG0dRdCfmV1gp
+         f0yIhq8+k1xkUpaVsvXIMp2bGxHoOluzDEg4tMwwZL5nZq8mQl5Qjm3WvMKKjLcFKhb0
+         +bRg==
+X-Gm-Message-State: AJIora9aWWyKwlAlpPXXHE6zfXiw3ma5Fghx4r+TBmI1nRQxxMS4hXTC
+	6w/iSSF6+jaJtwZM7oLjRWw=
+X-Google-Smtp-Source: AGRyM1tfcd/EN9bNHOdB0lihfDHNkoRbGPVjLa6AfF628mIVWi+vg43I+Azq7HsKQTP5OitdCjQiuA==
+X-Received: by 2002:a05:6000:1ac7:b0:21d:134e:5d74 with SMTP id i7-20020a0560001ac700b0021d134e5d74mr44844340wry.78.1657205128650;
+        Thu, 07 Jul 2022 07:45:28 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id n5-20020a1ca405000000b0039c587342d8sm24719301wme.3.2022.07.07.07.43.41
+        by smtp.gmail.com with ESMTPSA id g3-20020a05600c140300b0039c96b97359sm29684100wmi.37.2022.07.07.07.45.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Jul 2022 07:43:41 -0700 (PDT)
-Message-ID: <24bf3c0f-7070-0bcd-2fae-9fe086d146b2@gmail.com>
-Date: Thu, 7 Jul 2022 16:43:40 +0200
+        Thu, 07 Jul 2022 07:45:27 -0700 (PDT)
+Message-ID: <4447e5dc-8c79-7260-2d65-d86b5416d9a2@gmail.com>
+Date: Thu, 7 Jul 2022 16:45:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v2 1/2] arm64: dts: mt8173: Fix nor_flash node
+Subject: Re: [PATCH] arm64: dts: mt7622: fix BPI-R64 WPS button
 Content-Language: en-US
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, bin.zhang@mediatek.com,
- benliang.zhao@mediatek.com, linux-mediatek@lists.infradead.org
-References: <20220630090157.29486-1-xiangsheng.hou@mediatek.com>
- <20220630090157.29486-2-xiangsheng.hou@mediatek.com>
+To: Nick Hainke <vincent@systemli.org>, linux-mediatek@lists.infradead.org
+Cc: INAGAKI Hiroshi <musashino.open@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220630111746.4098-1-vincent@systemli.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220630090157.29486-2-xiangsheng.hou@mediatek.com>
+In-Reply-To: <20220630111746.4098-1-vincent@systemli.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_074345_975360_EC937D22 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20220707_074535_309507_46C63F74 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,35 +95,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/06/2022 11:01, Xiangsheng Hou wrote:
-> Add axi clock since the driver change to DMA mode which need
-> to enable axi clock. And change spi clock to 26MHz as default.
+On 30/06/2022 13:16, Nick Hainke wrote:
+> The bananapi R64 (BPI-R64) experiences wrong WPS button signals.
+> In OpenWrt pushing the WPS button while powering on the device will set
+> it to recovery mode. Currently, this also happens without any user
+> interaction. In particular, the wrong signals appear while booting the
+> device or restarting it, e.g. after doing a system upgrade. If the
+> device is in recovery mode the user needs to manually power cycle or
+> restart it.
 > 
-> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+> The official BPI-R64 sources set the WPS button to GPIO_ACTIVE_LOW in
+> the device tree. This setting seems to suppress the unwanted WPS button
+> press signals. So this commit changes the button from GPIO_ACTIVE_HIGH to
+> GPIO_ACTIVE_LOW.
+> 
+> The official BPI-R64 sources can be found on
+> https://github.com/BPI-SINOVOIP/BPI-R64-openwrt
+> 
+> Fixes: 0b6286dd96c0 ("arm64: dts: mt7622: add bananapi BPI-R64 board")
+> 
+> Suggested-by: INAGAKI Hiroshi <musashino.open@gmail.com>
+> Signed-off-by: Nick Hainke <vincent@systemli.org>
 
 Applied, thanks!
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 7 +++++--
->   1 file changed, 5 insertions(+), 2 deletions(-)
+>   arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 40d7b47fc52e..e603170100af 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -790,9 +790,12 @@ thermal: thermal@1100b000 {
->   		nor_flash: spi@1100d000 {
->   			compatible = "mediatek,mt8173-nor";
->   			reg = <0 0x1100d000 0 0xe0>;
-> +			assigned-clocks = <&topckgen CLK_TOP_SPI_SEL>;
-> +			assigned-clock-parents = <&clk26m>;
->   			clocks = <&pericfg CLK_PERI_SPI>,
-> -				 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-> -			clock-names = "spi", "sf";
-> +				 <&topckgen CLK_TOP_SPINFI_IFR_SEL>,
-> +				 <&pericfg CLK_PERI_NFI>;
-> +			clock-names = "spi", "sf", "axi";
->   			#address-cells = <1>;
->   			#size-cells = <0>;
->   			status = "disabled";
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> index 2b9bf8dd14ec..7538918c7a82 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> @@ -49,7 +49,7 @@ factory {
+>   		wps {
+>   			label = "wps";
+>   			linux,code = <KEY_WPS_BUTTON>;
+> -			gpios = <&pio 102 GPIO_ACTIVE_HIGH>;
+> +			gpios = <&pio 102 GPIO_ACTIVE_LOW>;
+>   		};
+>   	};
+>   
 
