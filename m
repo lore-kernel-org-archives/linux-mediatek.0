@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A28CCCA479
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E80E5C433EF
 	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 10:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,53 +12,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vme1WD+iWy/YBwYhXVZ5Fyl3XOzLIAAM2gpN+oRGDyA=; b=Q5EZd6Z3lfxVeB2KBbwCmjft9U
-	aW2m9eDKINFN19MnYztfCvTbE3kZuGheC2d/0h+zYD7dv9d9MQRydQntzW8BYYOjMgOwNv5pkqxkz
-	qM0RxY2dlsCOWn6TMKp7tJ14Pm75lBhenxDh+V0OZQgKHy0W/FJwz3M7l+/uD43KbBEyx85w+6w2m
-	fOY69ePNm/GqgjLurOrzpQnoBAQtOzYDSnDmID09CaQ8bKSt0i3HjO0vmhEN6DpN08SmAH6pVya79
-	QBdpvNNHUxyVqaYBkCfb5f4ffdtDTyeyMVkDf/zXTA00nPuBp00aYMh+Zd/omvR4BO09zCz4KDRzN
-	COVdM7Jw==;
+	bh=o2TkSbcKxozTBX+199C68EfPygrcFe2Tw030jZ4Z9vM=; b=ZflplIDbrgJlL2Tc6PqFeYuKd0
+	7UxIBpTa30rieEetcId07D8TaZAta2qcZY6pvMPWtCYZFhrdquBdavEo10XyWH4tAaTIhJr/Z4gaX
+	AGIc7eOObZ3O5hM/tOtjsrx5qkHvokvr56W6AXC/FDAWTpeWJ3jsFScTEvNkqWsdHThApEqBUOn7R
+	OVqHqmpig9SSf4Quh1WeEfqcy4EWddSxypcFLybxK5IRili4VDzcJQHozOTZmuaYc5yGPZ9i3w1j8
+	eWSgCNGfL0SiecROnjYsI+d93CGQdWD8y3usZZwo6QmpbS9W9rJ4cVJHuELrUr3dbsCK22RLGz/ZH
+	+W0Bwn0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9P8F-00FgDz-LQ; Thu, 07 Jul 2022 10:53:15 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1o9P8G-00FgEn-Oq; Thu, 07 Jul 2022 10:53:16 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9P84-00FgAZ-RX
-	for linux-mediatek@lists.infradead.org; Thu, 07 Jul 2022 10:53:06 +0000
-Received: by mail-pf1-x436.google.com with SMTP id j3so5941941pfb.6
-        for <linux-mediatek@lists.infradead.org>; Thu, 07 Jul 2022 03:53:00 -0700 (PDT)
+	id 1o9P8B-00FgCX-NP
+	for linux-mediatek@lists.infradead.org; Thu, 07 Jul 2022 10:53:13 +0000
+Received: by mail-pf1-x433.google.com with SMTP id o12so5030579pfp.5
+        for <linux-mediatek@lists.infradead.org>; Thu, 07 Jul 2022 03:53:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to;
-        bh=vme1WD+iWy/YBwYhXVZ5Fyl3XOzLIAAM2gpN+oRGDyA=;
-        b=CHhXBdKrPgAdIE/UFI3/0M6OBcDh66dbcuv7oZMlg7z3qZk11c8xDpPMusruE50NJM
-         5BVcPEsL6yaU++TO9AB9UVgP7+RFsF6OhjLMz53uSvPq0yX7LB7MD1cqlfMuqsu56/Jq
-         0Au9AL5gZ82Y912D4Sl0K2cnGZapN5QZNAB957w/zQyf+CGqMg/IiuGhkR6lS1Pr/slC
-         +oBvcfrOwnFYLpsqXlrRIUo9vaSgyiAIiB+mGqXrqFlUtS3I0kVrAyFzw3z5VnD4jrby
-         cFXuhWc3UPQX0xNg1igLGA5aHi0YDmzIHag2jsjqx4U/aGDrD0yLIR8hKPtgfEX3q2ik
-         yyJg==
+        bh=o2TkSbcKxozTBX+199C68EfPygrcFe2Tw030jZ4Z9vM=;
+        b=GgGDiY3sxbPO69gH48Dooa8AKF4BOxgykhbQ+1ouSF8dLGeghVSxbRuSNK0BPAx24f
+         APydzglFENyyildEjJPmyUFjC3ALeywiRgIWzCsL0tD6jlJw7wgdw5SPOpK13mOYQp1m
+         iRE8czv4iIOBp8tHhVqGmvMQtjgmCQQP57BnEdZHwyNe49xS3VcFh0QSulsNKyyMgCPW
+         m9xDOwuQqIdAk3VF7wOBs1NrObJARy3N3uedK5oGEldvOtNMJf+FjcuB3iPYSAB5BZg5
+         zMj+O7USQ4J2eFtVwGZENKFjQzn1jraVue4zr1H3BuKAKaC0F8j1hN7HCCb152wGGCzu
+         POoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=vme1WD+iWy/YBwYhXVZ5Fyl3XOzLIAAM2gpN+oRGDyA=;
-        b=ddOo52sCJcNSRj8KN4JWanSUzDPxBBtOiBzDZQ7Z+EaRhVUWUk7GfheKFHUsJ+GF+5
-         xVJQPGgsHsjohnqzLgofo5o24WAhZL6NIUj5WTC2X5CGdavDmOjaJySWI+qMyN+H4Sgu
-         AIf95TFEJAgt2p8Oj5fJ0TAusVKlqSBTnLKuz61GOJyeek4/BjUBLo0AlsGDCxkt7tGG
-         UThO+CfnTt+KVpCOueRzS/WkF5qS8FfQ+ZkMPPgigq0fF2RoZBJsRriGsPNhg4ddbW9S
-         bWZykeiuycPvHEntZC8WDMgBI5TIF1aOZ7Oyq6e4DLpefqu1u6afWJ1kxzAWISxWsZPf
-         QRYg==
-X-Gm-Message-State: AJIora/N69sAJcprpaksDQfthpObA9MqHdG1xsFFiTN3Yi5I8v1AxHoI
-	Q1RQfPP72wPIGUC0W7fkHONXRw==
-X-Google-Smtp-Source: AGRyM1uiL/1NSSmW4kr5Bqvpj4UnhCSl4Nsiie+u+ka5NvNDUAzLdq3b18xSNR8cpsvmwnksbU4guA==
-X-Received: by 2002:a65:4b82:0:b0:412:4346:f594 with SMTP id t2-20020a654b82000000b004124346f594mr19277469pgq.593.1657191179791;
-        Thu, 07 Jul 2022 03:52:59 -0700 (PDT)
+        bh=o2TkSbcKxozTBX+199C68EfPygrcFe2Tw030jZ4Z9vM=;
+        b=mNCDfEGD9WpS8plPa98oZ7MFue+jI3C/Tvzi5PhGUfCxpVsoRDGdYV+3no/DC5dBSu
+         y8NHjrnjjgKmhb+auDyHafDlCBGRIy70Gzmge7p+KktDeqTmINZYXHv//7OEqB9mIWWG
+         96K04U1qrZmSg7kqJ03CU2nfaeyXETcggNpQvFN/91aEYdG1mPdWbQ/PXMoiIaXBjVsj
+         /v40eBpd1gKhQcZUD/r/0khUBefq5LbploagKY5ZCsBjWaxnsBVv5FukINNVRpT3aonv
+         RoPSMWXCpukYCvZz8zpI9lfiBkRa+xoGtDxNpuDdPLTS1HVW47thiNN7FroOj/AhkBSg
+         Q0jw==
+X-Gm-Message-State: AJIora/0AbiiIeKhvXjbpJUbMfodALX0qxjxRG9IL8cCEotFaogk4bkc
+	4I3R5dGX++uPeSDcXSe0l1VK7w==
+X-Google-Smtp-Source: AGRyM1tpqLIhCdElS4dIR3n1+S+tHgSxDTJ1ClIjp5xZogOgUFu5j/N9tejt6VOIggYIE9m6DdN9ow==
+X-Received: by 2002:a17:902:e885:b0:16c:408:9317 with SMTP id w5-20020a170902e88500b0016c04089317mr7760209plg.62.1657191189998;
+        Thu, 07 Jul 2022 03:53:09 -0700 (PDT)
 Received: from localhost ([122.171.18.80])
-        by smtp.gmail.com with ESMTPSA id h14-20020aa796ce000000b005281d926733sm13925071pfq.199.2022.07.07.03.52.59
+        by smtp.gmail.com with ESMTPSA id f8-20020a170902ab8800b0016a0bf0ce2esm27552884plr.92.2022.07.07.03.53.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Jul 2022 03:52:59 -0700 (PDT)
-Date: Thu, 7 Jul 2022 16:22:57 +0530
+        Thu, 07 Jul 2022 03:53:09 -0700 (PDT)
+Date: Thu, 7 Jul 2022 16:23:07 +0530
 From: Viresh Kumar <viresh.kumar@linaro.org>
 To: Lukasz Luba <lukasz.luba@arm.com>
 Cc: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
@@ -67,18 +67,18 @@ Cc: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
 	sboyd@kernel.org, sudeep.holla@arm.com, cristian.marussi@arm.com,
 	matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 4/4] cpufreq: scmi: Support the power scale in
- micro-Watts in SCMI v3.1
-Message-ID: <20220707105257.wgqbgoumwvbonvml@vireshk-i7>
+Subject: Re: [PATCH v2 1/4] PM: EM: convert power field to micro-Watts
+ precision and align drivers
+Message-ID: <20220707105307.wl2pnqbf3j4fo75z@vireshk-i7>
 References: <20220707071555.10085-1-lukasz.luba@arm.com>
- <20220707071555.10085-5-lukasz.luba@arm.com>
+ <20220707071555.10085-2-lukasz.luba@arm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220707071555.10085-5-lukasz.luba@arm.com>
+In-Reply-To: <20220707071555.10085-2-lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_035304_916410_CE0C961F 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20220707_035311_823379_7EF838CB 
+X-CRM114-Status: GOOD (  17.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,16 +94,53 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 07-07-22, 08:15, Lukasz Luba wrote:
-> The SCMI v3.1 adds support for power values in micro-Watts. They are not
-> always in milli-Watts anymore (ignoring the bogo-Watts). Thus, the power
-> must be converted conditionally before sending to Energy Model. Add the
-> logic which handles the needed checks and conversions.
+> The milli-Watts precision causes rounding errors while calculating
+> efficiency cost for each OPP. This is especially visible in the 'simple'
+> Energy Model (EM), where the power for each OPP is provided from OPP
+> framework. This can cause some OPPs to be marked inefficient, while
+> using micro-Watts precision that might not happen.
 > 
-> Acked-by: Sudeep Holla <sudeep.holla@arm.com>
+> Update all EM users which access 'power' field and assume the value is
+> in milli-Watts.
+> 
+> Solve also an issue with potential overflow in calculation of energy
+> estimation on 32bit machine. It's needed now since the power value
+> (thus the 'cost' as well) are higher.
+> 
+> Example calculation which shows the rounding error and impact:
+> 
+> power = 'dyn-power-coeff' * volt_mV * volt_mV * freq_MHz
+> 
+> power_a_uW = (100 * 600mW * 600mW * 500MHz) / 10^6 = 18000
+> power_a_mW = (100 * 600mW * 600mW * 500MHz) / 10^9 = 18
+> 
+> power_b_uW = (100 * 605mW * 605mW * 600MHz) / 10^6 = 21961
+> power_b_mW = (100 * 605mW * 605mW * 600MHz) / 10^9 = 21
+> 
+> max_freq = 2000MHz
+> 
+> cost_a_mW = 18 * 2000MHz/500MHz = 72
+> cost_a_uW = 18000 * 2000MHz/500MHz = 72000
+> 
+> cost_b_mW = 21 * 2000MHz/600MHz = 70 // <- artificially better
+> cost_b_uW = 21961 * 2000MHz/600MHz = 73203
+> 
+> The 'cost_b_mW' (which is based on old milli-Watts) is misleadingly
+> better that the 'cost_b_uW' (this patch uses micro-Watts) and such
+> would have impact on the 'inefficient OPPs' information in the Cpufreq
+> framework. This patch set removes the rounding issue.
+> 
 > Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
 > ---
->  drivers/cpufreq/scmi-cpufreq.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
+>  drivers/cpufreq/mediatek-cpufreq-hw.c |  7 ++--
+>  drivers/cpufreq/scmi-cpufreq.c        |  6 +++
+>  drivers/opp/of.c                      | 15 ++++----
+>  drivers/powercap/dtpm_cpu.c           |  5 +--
+>  drivers/thermal/cpufreq_cooling.c     | 13 ++++++-
+>  drivers/thermal/devfreq_cooling.c     | 19 ++++++++--
+>  include/linux/energy_model.h          | 54 +++++++++++++++++++--------
+>  kernel/power/energy_model.c           | 24 ++++++++----
+>  8 files changed, 100 insertions(+), 43 deletions(-)
 
 Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
